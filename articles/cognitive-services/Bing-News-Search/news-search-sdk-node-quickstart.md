@@ -1,34 +1,34 @@
 ---
-title: Rychlé spuštění vyhledávání SDK uzlu zprávy | Microsoft Docs
-description: Nastavit SDK Search zprávy konzolové aplikace
-titleSuffix: Azure cognitive services
+title: 'Rychlý start: Sada SDK Bingu pro vyhledávání zpráv, Node'
+titleSuffix: Azure Cognitive Services
+description: Nastavení konzolové aplikace sady SDK Bingu pro vyhledávání zpráv
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-news-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 02/12/2018
 ms.author: v-gedod
-ms.openlocfilehash: 4ae99aa100b697a0dd75863c6f0c3c556dfa3d21
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: 2279a6475ab8c39b3ff599f7244caea59d622651
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343665"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48802997"
 ---
-# <a name="news-search-sdk-node-quickstart"></a>Rychlé spuštění vyhledávání SDK uzlu zprávy
+# <a name="quickstart-bing-news-search-sdk-with-node"></a>Rychlý start: Sada SDK Bingu pro vyhledávání zpráv s využitím jazyka Node
 
-Sada SDK vyhledávání zprávy Bing obsahuje funkci rozhraní REST API pro zprávy dotazy a analýzy výsledků. 
+Sada SDK Bingu pro vyhledávání zpráv obsahuje funkce rozhraní REST API pro dotazy na zprávy a parsování výsledků. 
 
-[Zdrojový kód pro uzel Bing zprávy vyhledávání SDK ukázky](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/newsSearch.js) je k dispozici v centru Git.
+[Zdrojový kód pro ukázky sady SDK Bingu pro vyhledávání zpráv v Node](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/newsSearch.js) je dostupný na GitHubu.
 
-## <a name="application-dependencies"></a>Závislosti aplikací
+## <a name="application-dependencies"></a>Závislosti aplikace
 
-Chcete-li nastavit konzolovou aplikaci pomocí sady SDK vyhledávání zprávy Bing, spusťte `npm install azure-cognitiveservices-newssearch` ve vašem vývojovém prostředí.
+Pokud chcete nastavit konzolovou aplikaci pomocí sady SDK Bingu pro vyhledávání zpráv, spusťte ve vašem vývojovém prostředí `npm install azure-cognitiveservices-newssearch`.
 
-## <a name="news-search-client"></a>Příspěvky hledání klienta
-Získání [kognitivní služby přístupový klíč](https://azure.microsoft.com/try/cognitive-services/) pod *vyhledávání*. Vytvoření instance `CognitiveServicesCredentials`:
+## <a name="news-search-client"></a>Klient pro vyhledávání zpráv
+Načtěte si pod *Search* (Hledání) [přístupový klíč služeb Cognitive Services](https://azure.microsoft.com/try/cognitive-services/). Vytvoření instance `CognitiveServicesCredentials`:
 ```
 const CognitiveServicesCredentials = require('ms-rest-azure').CognitiveServicesCredentials;
 let credentials = new CognitiveServicesCredentials('YOUR-ACCESS-KEY');
@@ -38,7 +38,7 @@ Potom vytvořte instanci klienta:
 const NewsSearchAPIClient = require('azure-cognitiveservices-newssearch');
 let client = new NewsSearchAPIClient(credentials);
 ```
-Klient použijte při hledání se text dotazu, v tomto případě 'Jedná o zimní olympiáda':
+Pomocí klienta vyhledejte text dotazu, v tomto případě „Winter Olympics“.
 ```
 client.newsOperations.search('Winter Olympics').then((result) => {
     console.log(result.value);
@@ -47,16 +47,16 @@ client.newsOperations.search('Winter Olympics').then((result) => {
 });
 
 ```
-Kód zobrazí `result.value` položky ke konzole bez Analýza textu. Výsledky, pokud existuje podle kategorií, bude zahrnovat:
-- _zadejte: 'NewsArticle.
-- _zadejte: 'webové stránky.
-- _zadejte: 'VideoObject.
-- _zadejte: 'ImageObject.
+Kód vytiskne položky `result.value` do konzoly bez analýzy textu. Případné výsledky podle kategorií budou zahrnovat tyto položky:
+- _type: 'NewsArticle'
+- _type: 'WebPage'
+- _type: 'VideoObject'
+- _type: 'ImageObject'
 
 <!-- Remove until we can replace with santized version
 ![News results](media/node-sdk-quickstart-results.png)
 -->
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-[Kognitivní služby ukázky Node.js SDK](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)
+[Ukázky kognitivních služeb sady Node.js SDK](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)

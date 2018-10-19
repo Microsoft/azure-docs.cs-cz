@@ -8,20 +8,20 @@ ms.service: dns
 ms.topic: quickstart
 ms.date: 6/13/2018
 ms.author: victorh
-ms.openlocfilehash: 3ec2c44c168b47fd66d1ffa9a0c8d0069600ecb0
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0acb5bf18c078d8b7eb6a5c14a61fcef622f9f2d
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46958097"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48831123"
 ---
 # <a name="quickstart-configure-azure-dns-for-name-resolution-using-the-azure-portal"></a>Rychlý start: Konfigurace Azure DNS k překladu názvů pomocí webu Azure Portal
 
- Azure DNS můžete nakonfigurovat k překladu názvů hostitelů ve veřejné doméně. Pokud jste například zakoupili název domény contoso.com od registrátora názvu domény, můžete nakonfigurovat Azure DNS k hostování domény contoso.com a přeložit www.contoso.com na IP adresu k webovému serveru nebo webové aplikaci.
+ Azure DNS můžete nakonfigurovat k překladu názvů hostitelů ve veřejné doméně. Pokud jste například zakoupili název domény contoso.com od registrátora názvů domén, můžete nakonfigurovat Azure DNS pro hostování domény contoso.com a přeložit www.contoso.com na IP adresu vašeho webového serveru nebo webové aplikace.
 
-V tomto rychlém startu vytvoříte testovací doménu a pak vytvoříte záznam adresy s názvem „www“, který ji přeloží na IP adresu 10.10.10.10.
+V tomto rychlém startu vytvoříte testovací doménu a potom vytvoříte záznam adresy s názvem „www“, který ji přeloží na IP adresu 10.10.10.10.
 
-Uvědomte si, že všechny názvy a IP adresy použité v tomto rychlém startu jsou jenom příklady a neodpovídají skutečným situacím. V určitých případech jsou ale popsané i skutečné situace.
+Mějte na paměti, že všechny názvy a IP adresy použité v tomto rychlém startu jsou jenom příklady a neodpovídají skutečným situacím. V určitých případech jsou ale popsané i skutečné situace.
 
 <!---
 You can also perform these steps using [Azure PowerShell](dns-getstarted-powershell.md) or the cross-platform [Azure CLI](dns-getstarted-cli.md).
@@ -34,16 +34,16 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 ## <a name="create-a-dns-zone"></a>Vytvoření zóny DNS
 
 1. Přihlaste se k portálu Azure.
-2. Vlevo nahoře klikněte na **+ Vytvořit prostředek**, dále na **Sítě** a pak klikněte na **Zóna DNS**. Otevře se stránka **Vytvořit zónu DNS**.
+2. Vlevo nahoře klikněte na **+ Vytvořit prostředek**, potom na **Sítě** a nakonec na **Zóna DNS**. Otevře se stránka **Vytvořit zónu DNS**.
 
     ![Zóna DNS](./media/dns-getstarted-portal/openzone650.png)
 
-4. Na stránce **Vytvořit zónu DNS** zadejte následující hodnoty a pak klikněte na **Vytvořit**:
+4. Na stránce **Vytvořit zónu DNS** zadejte následující hodnoty a potom klikněte na **Vytvořit**:
 
 
    | **Nastavení** | **Hodnota** | **Podrobnosti** |
    |---|---|---|
-   |**Název**|contoso.xyz|Název zóny DNS v tomto příkladu. V tomto rychlém startu můžete použít libovolnou hodnotu, která není nakonfigurovaná na serverech Azure DNS. Ve skutečné situaci byste použili doménu zakoupenou od registrátora názvu domény.|
+   |**Název**|contoso.xyz|Jako název zóny DNS může v tomto příkladu posloužit jakákoli hodnota, kterou chcete v tomto rychlém startu použít, pokud už není nakonfigurovaná na serverech Azure DNS. Ve skutečné situaci byste použili doménu zakoupenou od registrátora názvu domény.|
    |**Předplatné**|[Vaše předplatné]|Vyberte předplatné, ve kterém chcete vytvořit zónu DNS.|
    |**Skupina prostředků**|**Vytvořit nový:** dns-test|Vytvořte skupinu prostředků. Název skupiny prostředků musí být v rámci vybraného předplatného jedinečný. |
    |**Umístění**|USA – východ||
@@ -74,7 +74,7 @@ Protože si v tomto rychlém startu skutečný název domény nekupujete, není 
 
 ## <a name="test-the-name-resolution"></a>Testování překladu IP adres
 
-Když už máte testovací zónu se záznamem „A“, můžete překlad názvů otestovat nástrojem nslookup. 
+Když už máte testovací zónu se záznamem „A“, můžete překlad názvů otestovat nástrojem *nslookup*. 
 
 1. Nejprve si poznamenejte názvové servery Azure DNS, které chcete v nástroji nslookup použít. 
 
@@ -96,7 +96,7 @@ Mělo by se zobrazit něco podobného jako následující snímek obrazovky:
 
 ![nslookup](media/dns-getstarted-portal/nslookup.PNG)
 
-Tímto se ověřilo, že překlad názvů funguje správně. Adresa www.contoso.xyz se překládá na IP adresu 10.10.10.10 přesně tak, jak jste to nakonfigurovali.
+Tímto se ověřilo, že překlad názvů funguje správně. Adresa www.contoso.xyz se překládá na IP adresu 10.10.10.10, přesně v souladu s konfigurací, kterou jste nastavili.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

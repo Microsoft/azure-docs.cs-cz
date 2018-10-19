@@ -2,19 +2,18 @@
 title: Rychlý start – Vytvoření privátního registru Dockeru v Azure pomocí Azure CLI
 description: Rychle se naučíte, jak vytvořit privátní registr Dockeru pomocí Azure CLI.
 services: container-registry
-author: mmacy
-manager: jeconnoc
+author: dlepow
 ms.service: container-registry
 ms.topic: quickstart
 ms.date: 03/03/2018
-ms.author: marsma
+ms.author: danlep
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: b17df81dd1d972f3e559140e9f43963e9c8cab2a
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 57c72056b669865278fa8109cd7f4963a1f0887a
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42023203"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48855234"
 ---
 # <a name="quickstart-create-a-container-registry-using-the-azure-cli"></a>Rychlý start: Vytvoření registru kontejnerů pomocí Azure CLI
 
@@ -22,7 +21,7 @@ Azure Container Registry je spravovaná služba registru kontejnerů Dockeru slo
 
 Tento rychlý start vyžaduje použití Azure CLI verze 2.0.27 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli].
 
-Je také nutné mít Docker nainstalovaný místně. Docker nabízí balíčky pro snadnou konfiguraci Dockeru na jakémkoli [Macu][docker-mac] nebo systému [Windows][docker-windows] či [Linux][docker-linux].
+Je také nutné mít Docker nainstalovaný místně. Docker nabízí balíčky pro snadnou konfiguraci Dockeru v libovolném systému [macOS][docker-mac], [Windows][docker-windows] nebo [Linux][docker-linux].
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 

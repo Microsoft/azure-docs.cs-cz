@@ -8,14 +8,14 @@ services: iot-hub
 ms.devlang: python
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 04/30/2018
+ms.date: 09/07/2018
 ms.author: dobett
-ms.openlocfilehash: 7d5f2246eec20144a30e0abbc31038bdf04ab2b0
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 2d851bc8d5af7f824512cc9f14e6b1120026dd07
+ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43339272"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48785151"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-the-telemetry-from-the-hub-with-a-back-end-application-python"></a>Rychlý start: Odesílání telemetrických dat ze zařízení do centra IoT a čtení telemetrických dat z centra pomocí back-endové aplikace (Python)
 
@@ -33,7 +33,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Dvě ukázkové aplikace, které spustíte v tomto rychlém startu, jsou napsány pomocí Pythonu. Na vývojovém počítači musíte mít Python 2.7.x nebo 3.5.x.
 
-Python pro různé platformy si můžete stáhnout z webu [Python.org](https://www.python.org/downloads/).
+Python pro různé platformy si můžete stáhnout z webu [Python.org](https://www.python.org/downloads/). To, který instalační program Pythonu zvolíte, by mělo vycházet z architektury systému, ve kterém pracujete. Pokud má váš systém 32bitovou architekturu CPU, stáhněte verzi x86, což je výchozí instalační program na webu Python.org. V případě 64bitové architektury je potřeba stáhnout instalační program x86-64.
 
 Aktuální verzi Pythonu na počítači používaném pro vývoj můžete ověřit pomocí jednoho z následujících příkazů:
 
@@ -46,20 +46,6 @@ python3 --version
 ```
 
 Stáhněte si ukázkový projekt Python z https://github.com/Azure-Samples/azure-iot-samples-python/archive/master.zip a extrahujte archiv ZIP.
-
-Pokud chcete nainstalovat nástroj CLI, který čte telemetrická data z centra IoT, nainstalujte nejprve na počítač používaný pro vývoj Node.js v4.x.x nebo novější. Node.js pro různé platformy si můžete stáhnout z webu [nodejs.org](https://nodejs.org).
-
-Aktuální verzi Node.js na počítači používaném pro vývoj můžete ověřit pomocí následujícího příkazu:
-
-```cmd/sh
-node --version
-```
-
-Pokud chcete nainstalovat nástroj CLI `iothub-explorer`, spusťte následující příkaz:
-
-```cmd/sh
-npm install -g iothub-explorer
-```
 
 ## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
 
@@ -85,14 +71,6 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
     ```
 
     Poznamenejte si připojovací řetězec zařízení, který vypadá nějak takto: `Hostname=...=`. Tuto hodnotu použijete později v tomto rychlém startu.
-
-1. Potřebujete také _připojovací řetězec služby_, abyste nástroji CLI `iothub-explorer` umožnili připojit se k centru IoT a načíst zprávy. Následující příkaz načte připojovací řetězec služby pro vaše centrum IoT:
-
-    ```azurecli-interactive
-    az iot hub show-connection-string --hub-name {YourIoTHubName} --output table
-    ```
-
-    Poznamenejte si připojovací řetězec služby, který vypadá nějak takto: `Hostname=...=`. Tuto hodnotu použijete později v tomto rychlém startu. Připojovací řetězec služby se liší od připojovacího řetězce zařízení.
 
 ## <a name="send-simulated-telemetry"></a>Odesílání simulovaných telemetrických dat
 
@@ -122,15 +100,15 @@ Aplikace simulovaného zařízení se připojí ke koncovému bodu vašeho centr
 
 ## <a name="read-the-telemetry-from-your-hub"></a>Čtení telemetrických dat z centra
 
-Nástroj příkazového řádku `iothub-explorer` se připojí ke koncovému bodu **Events** (Události) na straně služby ve vaší službě IoT Hub. Nástroj přijímá zprávy typu zařízení-cloud odeslané ze simulovaného zařízení. Back-endová aplikace služby IoT Hub se obvykle spouští v cloudu, aby mohla přijímat a zpracovávat zprávy typu zařízení-cloud.
+Rozšíření IoT Hub CLI se může ve vaší službě IoT Hub připojit ke koncovému bodu **Události** na straně služby. Toto rozšíření přijímá zprávy ze zařízení do cloudu odesílané z vašeho simulovaného zařízení. Back-endová aplikace služby IoT Hub se obvykle spouští v cloudu, aby mohla přijímat a zpracovávat zprávy typu zařízení-cloud.
 
-V jiném okně terminálu spusťte následující příkazy, ve kterých `{your hub service connection string}` nahradíte připojovacím řetězcem služby, který jste si předtím poznamenali:
+Spusťte následující příkazy Azure CLI a položku `{YourIoTHubName}` nahraďte názvem centra IoT:
 
-```cmd/sh
-iothub-explorer monitor-events MyPythonDevice --login "{your hub service connection string}"
+```azurecli-interactive
+az iot hub monitor-events --device-id MyPythonDevice --hub-name {YourIoTHubName}
 ```
 
-Následující snímek obrazovky ukazuje výstup, zatímco nástroj přijímá telemetrická data odeslaná simulovaným zařízením do centra:
+Následující snímek obrazovky ukazuje výstup, když rozšíření přijímá telemetrická data odesílaná simulovaným zařízením do centra:
 
 ![Spuštění back-endové aplikace](media/quickstart-send-telemetry-python/ReadDeviceToCloud.png)
 

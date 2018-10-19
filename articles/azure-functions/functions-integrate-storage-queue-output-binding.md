@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 09/19/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 84783472adda9a4a74670f0579790aac69feb23d
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: e48eac4cdc1e98e21a122850b1dc7d3e8f4efe07
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44094990"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48854520"
 ---
 # <a name="add-messages-to-an-azure-storage-queue-using-functions"></a>Přidání zpráv do fronty Azure Storage pomocí funkcí
 
@@ -25,7 +25,7 @@ Vstupní a výstupní vazby ve službě Azure Functions poskytují deklarativní
 
 ![Zpráva fronty zobrazená v Průzkumníku služby Storage](./media/functions-integrate-storage-queue-output-binding/function-queue-storage-output-view-queue.png)
 
-## <a name="prerequisites"></a>Požadavky 
+## <a name="prerequisites"></a>Požadavky
 
 K provedení kroků v tomto kurzu Rychlý start je potřeba:
 
@@ -39,15 +39,19 @@ V této části použijete uživatelské rozhraní portálu pro přidání výst
 
 1. Na webu Azure Portal otevřete stránku pro aplikaci funkcí, kterou jste vytvořili v tématu [Vytvoření první funkce na webu Azure Portal](functions-create-first-azure-function.md). Stačí vybrat **Všechny služby > Aplikace funkcí** a pak vybrat vaši aplikaci funkcí.
 
-2. Vyberte funkci, kterou jste vytvořili v tomto dřívějším rychlém startu.
+1. Vyberte funkci, kterou jste vytvořili v tomto dřívějším rychlém startu.
 
 1. Vyberte **Integrovat > Nový výstup > Azure Queue Storage**.
 
 1. Klikněte na **Vybrat**.
-    
+
     ![Přidejte výstupní vazbu Queue Storage do funkce na webu Azure Portal.](./media/functions-integrate-storage-queue-output-binding/function-add-queue-storage-output-binding.png)
 
-3. V části **výstupu Azure Queue Storage** použijte nastavení uvedená v tabulce za tímto snímkem obrazovky: 
+1. Pokud se zobrazí zpráva **Rozšíření nejsou nainstalovaná**, výběrem možnosti **Instalovat** nainstalujte do aplikace funkcí rozšíření vazby služby Storage. Tento proces může trvat jednu či dvě minuty.
+
+    ![Instalace rozšíření vazby služby Storage](./media/functions-integrate-storage-queue-output-binding/functions-integrate-install-binding-extension.png)
+
+1. V části **výstupu Azure Queue Storage** použijte nastavení uvedená v tabulce za tímto snímkem obrazovky: 
 
     ![Přidejte výstupní vazbu Queue Storage do funkce na webu Azure Portal.](./media/functions-integrate-storage-queue-output-binding/function-add-queue-storage-output-binding-2.png)
 
@@ -57,52 +61,58 @@ V této části použijete uživatelské rozhraní portálu pro přidání výst
     | **Připojení k účtu úložiště** | AzureWebJobsStorage | Můžete použít připojení k účtu úložiště, které už používá vaše aplikace Function App, nebo můžete vytvořit nové.  |
     | **Název fronty**   | outqueue    | Název fronty, ke které se připojíte ve svém účtu úložiště. |
 
-4. Kliknutím na **Uložit** přidejte vazbu.
- 
+1. Kliknutím na **Uložit** přidejte vazbu.
+
 Teď máte definovanou výstupní vazbu a je potřeba aktualizovat kód tak, aby tuto vazbu využíval k přidávání zpráv do fronty.  
 
 ## <a name="add-code-that-uses-the-output-binding"></a>Přidání kódu, který používá výstupní vazbu
 
 V této části přidáte kód, který zapíše zprávu do výstupní fronty. Zpráva obsahuje hodnotu, která se předala triggeru HTTP v řetězci dotazu. Pokud například řetězec dotazu obsahuje `name=Azure`, zpráva fronty bude *Name passed to the function: Azure*.
 
-1. Vybráním určité funkce zobrazíte kód této funkce v editoru. 
+1. Vybráním určité funkce zobrazíte kód této funkce v editoru.
 
-2. Pro funkci v jazyce C# přidejte parametr metody pro vazbu a napište kód pro jeho použití:
+1. Aktualizujte kód funkce v závislosti na jazyku funkce:
 
-   Přidejte parametr **outputQueueItem** do podpisu metody, jak ukazuje následující obrázek. Název parametru je stejný jako název zadaný do pole **Název parametru zprávy** při vytváření vazby.
+    # <a name="ctabcsharp"></a>[C\#](#tab/csharp)
 
-   ```cs   
-   public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, 
-       ICollector<string> outputQueueItem, TraceWriter log)
-   {
-       ...
-   }
-   ```
+    Přidejte parametr **outputQueueItem** do podpisu metody, jak ukazuje následující obrázek.
 
-   V těle funkce C# bezprostředně před příkazem `return` zadejte kód, který použije tento parametr k vytvoření zprávy fronty.
+    ```cs
+    public static async Task<IActionResult> Run(HttpRequest req,
+        ICollector<string> outputQueueItem, ILogger log)
+    {
+        ...
+    }
+    ```
 
-   ```cs
-   outputQueueItem.Add("Name passed to the function: " + name);     
-   ```
+    V těle funkce bezprostředně před příkazem `return` zadejte kód, který použije tento parametr k vytvoření zprávy fronty.
 
-3. Pro funkci v jazyce JavaScript přidejte kód, který používá výstupní vazbu objektu `context.bindings` k vytvoření zprávy fronty. Vložte tento kód před příkaz `context.done`.
+    ```cs
+    outputQueueItem.Add("Name passed to the function: " + name);
+    ```
 
-   ```javascript
-   context.bindings.outputQueueItem = "Name passed to the function: " + 
-               (req.query.name || req.body.name);
-   ```
+    # <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
 
-4. Změny uložíte tak, že vyberete **Uložit**.
- 
-## <a name="test-the-function"></a>Testování funkce 
+    Přidejte kód, který používá výstupní vazbu objektu `context.bindings` k vytvoření zprávy fronty. Vložte tento kód před příkaz `context.done`.
+
+    ```javascript
+    context.bindings.outputQueueItem = "Name passed to the function: " + 
+                (req.query.name || req.body.name);
+    ```
+
+    ---
+
+1. Změny uložíte tak, že vyberete **Uložit**.
+
+## <a name="test-the-function"></a>Testování funkce
 
 1. Po uložení změn kódu vyberte **Spustit**. 
 
     ![Přidejte výstupní vazbu Queue Storage do funkce na webu Azure Portal.](./media/functions-integrate-storage-queue-output-binding/functions-test-run-function.png)
 
-   Všimněte si, že **text žádosti** jako `name` obsahuje hodnotu *Azure*. Tato hodnota se zobrazí ve zprávě fronty, která se vytvoří při vyvolání této funkce.
-
-   Jako alternativu k volbě **Spustit** můžete tuto funkci volat také tak, že zadáte adresu URL do prohlížeče a v řetězci dotazu uvedete hodnotu `name`. Metodu s použitím prohlížeče najdete v [předchozím rychlém startu](functions-create-first-azure-function.md#test-the-function).
+    Všimněte si, že **text žádosti** jako `name` obsahuje hodnotu *Azure*. Tato hodnota se zobrazí ve zprávě fronty, která se vytvoří při vyvolání této funkce.
+    
+    Jako alternativu k volbě **Spustit** můžete tuto funkci volat také tak, že zadáte adresu URL do prohlížeče a v řetězci dotazu uvedete hodnotu `name`. Metodu s použitím prohlížeče najdete v [předchozím rychlém startu](functions-create-first-azure-function.md#test-the-function).
 
 2. Zkontrolujte protokoly a zkontrolujte, jestli se spuštění funkce zdařilo. 
 

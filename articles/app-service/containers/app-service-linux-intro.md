@@ -13,15 +13,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 02/16/2017
+ms.date: 10/09/2018
 ms.author: wesmc
 ms.custom: mvc
-ms.openlocfilehash: 5ab5452aec5b0371caaf437b6e364ed7b922db3a
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 9efa6dc8427c58c82702fd5b3449fcd4805bf9e3
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44162253"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48902089"
 ---
 # <a name="introduction-to-azure-app-service-on-linux"></a>Seznámení se službou Azure App Service v Linuxu
 
@@ -33,12 +33,12 @@ App Service v Linuxu podporuje řadu integrovaných imagí za účelem zvýšen�
 
 | Jazyk | Podporované verze |
 |---|---|
-| Node.js | 4.4, 4.5, 4.8, 6.2, 6.6, 6.9, 6.10, 6.11, 8.0, 8.1, 8.2, 8.8, 8.9, 9.4 |
+| Node.js | 4.4, 4.5, 4.8, 6.2, 6.6, 6.9, 6.10, 6.11, 8.0, 8.1, 8.2, 8.8, 8.9, 8.11, 9.4, 10.1 |
 | Java* | 8.0 |
 | PHP | 5.6, 7.0, 7.2 |
+| Python (Preview) | 3.7 |
 | .NET Core | 1.0, 1.1, 2.0 |
 | Ruby | 2.3 |
-| Přejít | 1.0 |
 | Apache Tomcat | 8.5, 9.0 |
 
 Další podrobnosti najdete v tématu [Vytvoření webové aplikace v Javě ve službě App Service v Linuxu](https://docs.microsoft.com/azure/app-service/containers/quickstart-java).
@@ -91,15 +91,25 @@ Na web SCM můžete přejít přes možnost **Rozšířené nástroje** v nabíd
 
 ## <a name="next-steps"></a>Další kroky
 
-Následující odkazy vám pomůžou začít se službou App Service v Linuxu. Otázky a připomínky můžete publikovat na [našem fóru](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazurewebsitespreview).
+Tyto články vám pomůžou začít používat službu App Service v Linuxu pomocí webových aplikací napsaných v různých jazycích:
 
-* [Jak používat vlastní image Dockeru pro službu Web App for Containers](quickstart-docker-go.md)
-* [Použití .NET Core ve službě Azure App Service v Linuxu](quickstart-dotnetcore.md)
-* [Použití Ruby ve službě Azure App Service v Linuxu](quickstart-ruby.md)
-* [Azure App Service Web App for Containers – Nejčastější dotazy](app-service-linux-faq.md)
-* [Podpora SSH pro službu Azure App Service v Linuxu](app-service-linux-ssh-support.md)
-* [Nastavení přípravných prostředí ve službě Azure App Service](../../app-service/web-sites-staged-publishing.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
-* [Průběžné nasazování z Docker Hubu pomocí služby Web App for Containers](./app-service-linux-ci-cd.md)
+* [.NET Core](quickstart-dotnetcore.md)
+* [PHP](quickstart-dotnetcore.md)
+* [Node.js](quickstart-nodejs.md)
+* [Java](quickstart-java.md)
+* [Python](quickstart-python.md)
+* [Ruby](quickstart-ruby.md)
+* [Go](quickstart-docker-go.md)
+* [Vícekontejnerové aplikace](quickstart-multi-container.md)
+
+Další podrobnosti o službě App Service v Linuxu najdete v následujících článcích:
+
+* [Nejčastější dotazy k App Service pro Linux](app-service-linux-faq.md)
+* [Podpora SSH pro službu App Service v Linuxu](app-service-linux-ssh-support.md)
+* [Nastavení přípravných prostředí ve službě App Service](../../app-service/web-sites-staged-publishing.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
+* [Průběžné nasazování pomocí Centra Dockeru](app-service-linux-ci-cd.md)
+
+Otázky a připomínky můžete publikovat na [našem fóru](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazurewebsitespreview).
 
 <!--Image references-->
 [1]: ./media/app-service-linux-intro/kudu-docker-logs.png

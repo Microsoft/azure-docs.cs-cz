@@ -6,16 +6,16 @@ services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
-ms.technology: qna-maker
+ms.component: qna-maker
 ms.topic: quickstart
 ms.date: 09/12/2018
 ms.author: diberry
-ms.openlocfilehash: 5dfea3a8b4b5a79585b910fd2fad4ffbda4729fd
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: e8a876d1e5416547d0eead0882b69bdf68818c5d
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47037605"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48886207"
 ---
 # <a name="create-a-new-knowledge-base-in-java"></a>Vytvoření nové znalostní báze v Javě
 
@@ -27,7 +27,7 @@ Níže jsou uvedeny dvě ukázkové adresy URL nejčastějších dotazů (v kb.u
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pro kompilaci a spuštění tohoto kódu budete potřebovat [JDK 7 nebo 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html). Můžete použít prostředí Java IDE, pokud je vaše oblíbené, ale stačit bude i textový editor.
+Pro kompilaci a spuštění tohoto kódu budete potřebovat [JDK 7 nebo 8](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html). Můžete použít prostředí Java IDE, pokud je vaše oblíbené, ale stačit bude i textový editor.
 
 Musíte mít [účet rozhraní API služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) se **službou QnA Maker**, kterou jste zvolili jako svůj prostředek. Budete potřebovat placené klíče předplatného ze svého nového účtu rozhraní API na [řídicím panelu Azure](https://portal.azure.com/#create/Microsoft.CognitiveServices). V tomto rychlém startu bude fungovat každý z těchto klíčů.
 

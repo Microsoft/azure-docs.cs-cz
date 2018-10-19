@@ -5,19 +5,19 @@ services: event-grid
 keywords: ''
 author: tfitzmac
 ms.author: tomfitz
-ms.date: 07/05/2018
+ms.date: 10/09/2018
 ms.topic: quickstart
 ms.service: event-grid
-ms.openlocfilehash: b5be37ede208ba14fbfe8270bff317a782bf655a
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 0d8504dc002fa43c25f689b4c5b3f78c822cf5b0
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39425880"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49069416"
 ---
 # <a name="route-custom-events-to-azure-event-hubs-with-azure-cli-and-event-grid"></a>Směrování vlastních událostí do služby Azure Event Hubs pomocí Azure CLI a Event Gridu
 
-Azure Event Grid je služba zpracování událostí pro cloud. Služba Azure Event Hubs je jednou z podporovaných obslužných rutin události. V tomto článku pomocí Azure CLI vytvoříte vlastní téma, přihlásíte se k jeho odběru a aktivujete událost, abyste viděli výsledek. Události odešlete do centra událostí.
+Azure Event Grid je služba zpracování událostí pro cloud. Služba Azure Event Hubs je jednou z podporovaných obslužných rutin události. V tomto článku vytvoříte pomocí Azure CLI vlastní téma, přihlásíte se k jeho odběru a aktivujete událost, abyste viděli výsledek. Události odešlete do centra událostí.
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 
@@ -37,7 +37,7 @@ az group create --name gridResourceGroup --location westus2
 
 ## <a name="create-a-custom-topic"></a>Vytvoření vlastního tématu
 
-Téma Event Gridu poskytuje uživatelsky definovaný koncový bod, do kterého odesíláte události. Následující příklad vytvoří vlastní téma ve vaší skupině prostředků. Nahraďte `<your-topic-name>` jedinečným názvem vašeho tématu. Název tématu musí být jedinečný, protože je reprezentován položkou DNS.
+Téma Event Gridu poskytuje uživatelsky definovaný koncový bod, do kterého odesíláte události. Následující příklad vytvoří vlastní téma ve vaší skupině prostředků. Nahraďte `<your-topic-name>` jedinečným názvem vlastního tématu. Název vlastního tématu musí být jedinečný, protože ho reprezentuje položka DNS.
 
 ```azurecli-interactive
 topicname=<your-topic-name>
@@ -46,7 +46,7 @@ az eventgrid topic create --name $topicname -l westus2 -g gridResourceGroup
 
 ## <a name="create-event-hub"></a>Vytvoření centra událostí
 
-Před přihlášením k odběru tématu vytvoříme koncový bod pro zprávy události. Vytvoříte centrum událostí pro shromažďování událostí.
+Před přihlášením k odběru vlastního tématu vytvoříme koncový bod pro zprávy události. Vytvoříte centrum událostí pro shromažďování událostí.
 
 ```azurecli-interactive
 namespace=<unique-namespace-name>
@@ -56,9 +56,9 @@ az eventhubs namespace create --name $namespace --resource-group gridResourceGro
 az eventhubs eventhub create --name $hubname --namespace-name $namespace --resource-group gridResourceGroup
 ```
 
-## <a name="subscribe-to-a-topic"></a>Přihlášení k odběru tématu
+## <a name="subscribe-to-a-custom-topic"></a>Přihlášení k odběru vlastního tématu
 
-K odběru tématu se přihlašujete, aby služba Event Grid věděla, které události chcete sledovat. Následující příklad se přihlásí k odběru tématu, které jste vytvořili, a předá ID prostředku centra událostí pro koncový bod. Koncový bod je ve formátu:
+K odběru tématu Event Gridu se přihlašujete, aby služba Event Grid věděla, které události chcete sledovat. Následující příklad se přihlásí k odběru vlastního tématu, které jste vytvořili, a předá ID prostředku centra událostí pro koncový bod. Koncový bod je ve formátu:
 
 `/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.EventHub/namespaces/<namespace-name>/eventhubs/<hub-name>`
 
@@ -75,7 +75,9 @@ az eventgrid event-subscription create \
   --endpoint $hubid
 ```
 
-## <a name="send-an-event-to-your-topic"></a>Odeslání události do tématu
+Účet, který vytváří odběr události, musí mít přístup k zápisu do služby centra událostí.
+
+## <a name="send-an-event-to-your-custom-topic"></a>Odeslání události do vlastního tématu
 
 Teď aktivujeme událost, abychom viděli, jak služba Event Grid distribuuje zprávu do vašeho koncového bodu. Nejprve získáme adresu URL a klíč vlastního tématu.
 
@@ -84,13 +86,13 @@ endpoint=$(az eventgrid topic show --name $topicname -g gridResourceGroup --quer
 key=$(az eventgrid topic key list --name $topicname -g gridResourceGroup --query "key1" --output tsv)
 ```
 
-Pro zjednodušení tohoto článku použijte k odeslání do tématu ukázková data události. Obvykle by aplikace nebo služba Azure odesílala data události. CURL je nástroj, který odesílá požadavky HTTP. V tomto článku používáme nástroj CURL k odeslání události do tématu.  Následující příklad odešle tři události do tématu Event Gridu:
+V zájmu zjednodušení tohoto článku použijte k odeslání do vlastního tématu ukázková data události. Obvykle by aplikace nebo služba Azure odesílala data události. CURL je nástroj, který odesílá požadavky HTTP. V tomto článku používáme nástroj CURL k odeslání události do vlastního tématu.  Následující příklad odešle tři události do tématu Event Gridu:
 
 ```azurecli-interactive
 for i in 1 2 3
 do
-   body=$(eval echo "'$(curl https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/event-grid/customevent.json)'")
-   curl -X POST -H "aeg-sas-key: $key" -d "$body" $endpoint
+   event='[ {"id": "'"$RANDOM"'", "eventType": "recordInserted", "subject": "myapp/vehicles/motorcycles", "eventTime": "'`date +%Y-%m-%dT%H:%M:%S%z`'", "data":{ "make": "Ducati", "model": "Monster"},"dataVersion": "1.0"} ]'
+   curl -X POST -H "aeg-sas-key: $key" -d "$event" $endpoint
 done
 ```
 

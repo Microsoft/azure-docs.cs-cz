@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: quickstart
 ms.date: 06/20/2018
 ms.author: jingwang
-ms.openlocfilehash: d314c04a40155fccc99660bacdb9f646ce77b22f
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: a4e41408a3af2e6bb68c14f2e34bf1141bf349c1
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43107584"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48017803"
 ---
 # <a name="use-the-copy-data-tool-to-copy-data"></a>Kopírování dat pomocí nástroje pro kopírování dat 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service that you are using:"]
@@ -52,13 +52,9 @@ V tomto rychlém startu použijete Azure Portal k vytvoření datové továrny. 
 1. Jako **Verzi** vyberte **V2**.
 1. Jako **Umístění** vyberte umístění datové továrny. 
 
-   V seznamu se zobrazují pouze podporovaná umístění. Úložiště dat (např. Azure Storage nebo Azure SQL Database) a výpočetní prostředí (např. Azure HDInsight) používaná službou Data Factory můžou být v jiných umístěních nebo oblastech.
+   Seznam obsahuje jenom umístění podporovaná službou Data Factory, do kterých se budou ukládat vaše metadata Azure Data Factory. Upozorňujeme, že související úložiště dat (třeba Azure Storage a Azure SQL Database) a výpočetní prostředí (jako Azure HDInsight) používaná službou Data Factory můžou běžet v jiných oblastech.
 
-1. Zaškrtněte **Připnout na řídicí panel**.     
 1. Vyberte **Vytvořit**.
-1. Na řídicím panelu se zobrazí následující dlaždice se stavem **Nasazování datové továrny**: 
-
-    ![Dlaždice Nasazování datové továrny](media/quickstart-create-data-factory-copy-data-tool/deploying-data-factory.png)
 1. Po vytvoření se zobrazí stránka **Datová továrna**. Kliknutím na dlaždici **Vytvořit a monitorovat** spusťte na samostatné kartě aplikaci uživatelského rozhraní služby Azure Data Factory.
    
    ![Domovská stránka datové továrny s dlaždici Author & Monitor (Vytvořit a sledovat)](./media/quickstart-create-data-factory-copy-data-tool/data-factory-home-page.png)

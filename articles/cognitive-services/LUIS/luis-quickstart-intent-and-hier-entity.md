@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 92b6327cbb97ed871cd4b10977bcd73a81494e20
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: a469bc600715b2e276d6654596da50d75659aadb
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47042121"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48831020"
 ---
 # <a name="tutorial-5-extract-contextually-related-data"></a>Kurz 5: Extrakce dat souvisejících s kontextem
 V tomto kurzu vyhledáte související části dat na základě kontextu. Spolu například souvisí počáteční a cílová umístění pro fyzický přesun z jedné budovy a kanceláře do jiné. Pro vygenerování pracovního zařazení se mohou vyžadovat obě části dat, které spolu vzájemně souvisí.  
@@ -39,20 +39,20 @@ Hierarchická entita je vhodná pro tento typ dat, protože obě části dat:
 > * Přidání hierarchické entity polohy s podřízenými entitami počátku a cíle
 > * Trénování
 > * Publikování
-> * Získat záměry a entity z koncového bodu
+> * Zjistit záměry a entity z koncového bodu
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="use-existing-app"></a>Použití existující aplikace
 Pokračujte s aplikací **HumanResources**, kterou jste vytvořili v posledním kurzu. 
 
-Pokud tuto aplikaci nemáte, proveďte tyto kroky:
+Pokud aplikaci HumanResources z předchozího kurzu nemáte, postupujte takto:
 
-1.  Stáhněte a uložte si [soubor JSON aplikace](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-list-HumanResources.json).
+1.  Stáhněte si [soubor JSON aplikace](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-list-HumanResources.json) a uložte si ho.
 
-2. Naimportujte JSON do nové aplikace.
+2. Naimportujte soubor JSON do nové aplikace.
 
-3. V části **Manage** (Správa) na kartě **Versions** (Verze) naklonujte verzi a pojmenujte ji `hier`. Klonování představuje skvělý způsob, jak si můžete vyzkoušet různé funkce služby LUIS, aniž by to mělo vliv na původní verzi. Název verze je součástí cesty URL, a proto může obsahovat jenom znaky podporované v adresách URL. 
+3. V části **Manage** (Správa) na kartě **Versions** (Verze) naklonujte verzi a pojmenujte ji `hier`. Klonování představuje skvělý způsob, jak si můžete vyzkoušet různé funkce služby LUIS, aniž by to mělo vliv na původní verzi. Název verze je součástí cesty URL, a proto smí obsahovat jenom znaky, které jsou platné v adresách URL. 
 
 ## <a name="remove-prebuilt-number-entity-from-app"></a>Odebrání předem připravené entity čísla z aplikace
 Abyste mohli vidět celou promluvu a mohli označit podřízené prvky hierarchické entity, odeberte dočasně předem připravenou entitu čísla.
@@ -61,7 +61,7 @@ Abyste mohli vidět celou promluvu a mohli označit podřízené prvky hierarchi
 
 2. V levé nabídce vyberte **Entities** (Entity).
 
-3. V seznamu vyberte tlačítko se třemi tečkami (***...***) vpravo od entity čísla. Vyberte **Odstranit**. 
+3. V seznamu zaškrtněte políčko vlevo od entity čísla. Vyberte **Odstranit**. 
 
 ## <a name="add-utterances-to-moveemployee-intent"></a>Přidání projevů do záměru MoveEmployee
 

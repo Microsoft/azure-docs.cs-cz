@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 09/14/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 692d8c0a1a427fa65a94d474f78792b1a071de46
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 2b9997fb1fe86d8ffdb67e74fc053773997fb113
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47219715"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48816476"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-in-the-azure-portal"></a>Rychlý start: Vytvoření virtuálního počítače s Windows na webu Azure Portal
 
@@ -72,7 +72,7 @@ Vytvořte připojení ke vzdálené ploše virtuálního počítače. Tyto pokyn
 
 2. Otevřete stažený soubor RDP a po zobrazení výzvy klikněte na **Připojit**. 
 
-3. V okně **Zabezpečení systému Windows** vyberte **Další možnosti** a pak **Použít jiný účet**. Zadejte uživatelské jméno ve formátu *název_virtuálního_počítače*\\*uživatelské_jméno* a heslo, které jste pro virtuální počítač vytvořili, a pak klikněte na **OK**.
+3. V okně **Zabezpečení systému Windows** vyberte **Další možnosti** a pak **Použít jiný účet**. Zadejte uživatelské jméno ve formátu **místní_hostitel**\\*uživatelské_jméno* a heslo, které jste pro virtuální počítač vytvořili, a potom klikněte na **OK**.
 
 4. Během procesu přihlášení se může zobrazit upozornění certifikátu. Klikněte na **Ano** nebo **Pokračovat** a vytvořte připojení.
 

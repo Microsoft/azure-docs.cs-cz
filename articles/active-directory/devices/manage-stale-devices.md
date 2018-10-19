@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 09/20/2018
+ms.date: 10/03/2018
 ms.author: markvi
-ms.reviewer: jairoc
-ms.openlocfilehash: f9664e22be5d7a17dd2a2a7c328593d8168c26f0
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.reviewer: spunukol
+ms.openlocfilehash: 1b8a6e6a6b5f482a4e3575c4da18a02a958c4081
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434734"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48249362"
 ---
 # <a name="how-to-manage-the-stale-devices-in-azure-ad"></a>Návod: Správa zastaralých zařízení ve službě Azure AD
 
@@ -111,10 +111,10 @@ Pokud je zařízení pod kontrolou Intune nebo jiných řešení MDM, před zak�
 
 ### <a name="system-managed-devices"></a>Zařízení spravovaná systémem
 
-Neodstraňujte zařízení spravovaná systémem. Jedná se obecně o zařízení, jako je například autopilot. Po odstranění nelze tato zařízení znovu zřídit. Nová rutina Get-MmsolDevice standardně vylučuje zařízení spravovaná systémem. 
+Neodstraňujte zařízení spravovaná systémem. Jedná se obecně o zařízení, jako je například autopilot. Po odstranění nelze tato zařízení znovu zřídit. Nová rutina `get-msoldevice` standardně vylučuje zařízení spravovaná systémem. 
 
 
-### <a name="hybrid-azure-ad-joined-devices"></a>Zařízení hybridně připojená k Azure AD
+### <a name="hybrid-azure-ad-joined-devices"></a>Hybridní zařízení připojená k Azure AD
 
 Zařízení hybridně připojená k Azure AD by měla dodržovat zásady pro správu místních zastaralých zařízení. 
 
@@ -137,7 +137,7 @@ Zakažte nebo odstraňte zařízení zaregistrovaná v Azure AD ve službě Azur
 
 
 
-## <a name="cleanup-stale-devices-in-the-azure-portal"></a>Úklid zastaralých zařízení na webu Azure Portal  
+## <a name="clean-up-stale-devices-in-the-azure-portal"></a>Vymazání zastaralých zařízení na webu Azure Portal  
 
 I když zastaralá zařízení můžete uklidit na webu Azure Portal, je efektivnější použít k tomuto účelu powershellový skript. Pomocí nejnovějšího modulu PowerShell V1 můžete použít filtr časového razítka a odfiltrovat zařízení spravovaná systémem, například autopilot. V tento okamžik není doporučeno používat PowerShell V2.
 
@@ -150,7 +150,9 @@ Typická rutina se skládá z následujících kroků:
 
 3. Zakázání zařízení pomocí rutiny [Disable-MsolDevice](https://docs.microsoft.com/powershell/module/msonline/disable-msoldevice?view=azureadps-1.0) 
 
-4. Odebrání zařízení pomocí rutiny [Remove-MsolDevice](https://docs.microsoft.com/powershell/module/msonline/remove-msoldevice?view=azureadps-1.0)
+4. Před odstraněním zařízení vyčkejte po období odkladu, jehož délku ve dnech si zvolíte.
+
+5. Odebrání zařízení pomocí rutiny [Remove-MsolDevice](https://docs.microsoft.com/powershell/module/msonline/remove-msoldevice?view=azureadps-1.0)
 
 ### <a name="get-the-list-of-devices"></a>Získání seznamu zařízení
 

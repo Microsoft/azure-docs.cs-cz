@@ -1,63 +1,56 @@
 ---
-title: Rychlý start k analýze vzdáleného obrázku pomocí počítačového zpracování obrazu s Pythonem | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: V tomto rychlém startu budete analyzovat vzdálený obrázek pomocí počítačového zpracování obrazu s Pythonem ve službách Cognitive Services.
+title: 'Rychlý start: Analýza vzdáleného obrázku – REST, Python – počítačové zpracování obrazu'
+titleSuffix: Azure Cognitive Services
+description: V tomto rychlém startu budete analyzovat vzdálený obrázek pomocí rozhraní API pro počítačové zpracování obrazu a jazyka Python.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: v-deken
-ms.openlocfilehash: 65f9b0d4fb007a6a9b8ef489ca59f384e047a0dd
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 1fc7c58ec4e5c200ae62c70698db7ec813d82703
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43769346"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48883937"
 ---
-# <a name="quickstart-analyze-a-remote-image---rest-python"></a>Rychlý start: Analýza vzdáleného obrázku – REST, Python
+# <a name="quickstart-analyze-a-remote-image-using-the-rest-api-and-python-in-computer-vision"></a>Rychlý start: Analýza vzdáleného obrázku pomocí rozhraní REST API a Pythonu za pomoci počítačového zpracování obrazu
 
-V tomto rychlém startu budete analyzovat vzdálený obrázek pomocí počítačového zpracování obrazu. Pokud chcete analyzovat místní obrázek, přečtěte si článek o [analýze místního obrázku pomocí Pythonu](python-disk.md).
+V tomto rychlém startu analyzujete obrázek uložený vzdáleně za účelem extrakce vizuálních prvků pomocí rozhraní REST API počítačového zpracování obrazu. Pomocí metody [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) můžete extrahovat vizuální prvky na základě obsahu obrázku.
 
 Tento rychlý start můžete spustit jako podrobný návod pomocí Jupyter Notebooku na webu [MyBinder](https://mybinder.org). Pokud chcete spustit Binder, vyberte následující tlačítko:
 
 [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=VisionAPI.ipynb)
 
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) před tím, než začnete.
+
 ## <a name="prerequisites"></a>Požadavky
 
-Abyste mohli počítačové zpracování obrazu použít, potřebujete klíč předplatného. Přečtěte si, [jak získat klíče předplatného](../Vision-API-How-to-Topics/HowToSubscribe.md).
+- Pokud chcete spustit tuto ukázku v místním prostředí, musíte mít nainstalovaný jazyk [Python](https://www.python.org/downloads/).
+- Musíte mít klíč předplatného pro počítačové zpracování obrazu. Abyste získali klíč předplatného přejděte do tématu [Jak získat klíče předplatného](../Vision-API-How-to-Topics/HowToSubscribe.md).
 
-## <a name="analyze-a-remote-image"></a>Analýza vzdáleného obrázku
+## <a name="create-and-run-the-sample"></a>Vytvoření a spuštění ukázky
 
-Pomocí [metody Analyze Image](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) můžete extrahovat vizuální funkce na základě obsahu obrázku. Obrázek můžete nahrát nebo můžete určit jeho adresu URL a vybrat funkce, které se mají vrátit, včetně:
+Pokud chcete vytvořit a spustit ukázku, postupujte takto:
 
-* Podrobného seznamu značek souvisejících s obsahem obrázku
-* Popisu obsahu obrázku v celé větě
-* Souřadnic, pohlaví a věku veškerých obličejů na obrázku
-* Typu obrázku (klipart nebo perokresba)
-* Převládající barvy, doplňkové barvy a toho, jestli je obrázek černobílý
-* Kategorie definované v této [taxonomii](../Category-Taxonomy.md)
-* Je obsah obrázku určený pro dospělé nebo se jedná o sexuálně sugestivní obsah?
-
-Pokud chcete spustit ukázku, postupujte následovně:
-
-1. Následující kód zkopírujte do nového souboru pythonového skriptu.
-1. `<Subscription Key>` nahraďte platným klíčem předplatného.
-1. V případě potřeby změňte hodnotu `vision_base_url` na umístění, kde jste získali klíče předplatného.
-1. Volitelně můžete hodnotu `image_url` změnit na jiný obrázek.
-1. Spusťte skript.
-
-Následující kód používá knihovnu `requests` Pythonu k volání rozhraní API pro analýzu obrázku počítačového zpracování obrazu. Výsledky vrátí jako objekt JSON. Klíč rozhraní API se předává prostřednictvím slovníku `headers`. Typy rozeznávaných funkcí se předávají prostřednictvím slovníku `params`.
-
-## <a name="analyze-image-request"></a>Žádost Analyze Image
+1. Zkopírujte do textového editoru následující kód.
+1. Proveďte v kódu na příslušných místech následující změny:
+    1. Hodnotu `subscription_key` nahraďte klíčem předplatného.
+    1. Hodnotu `vision_base_url` nahraďte adresou URL koncového bodu prostředku počítačového zpracování obrazu z oblasti Azure, kde jste získali klíče předplatného, pokud je to potřeba.
+    1. Volitelně můžete hodnotu `image_url` nahradit adresou URL jiného obrázku, který chcete analyzovat.
+1. Uložte kód jako soubor s příponou `.py`. Například, `analyze-image.py`.
+1. Otevřete okno příkazového řádku.
+1. Ke spuštění ukázky na příkazovém řádku použijte příkaz `python`. Například, `python analyze-image.py`.
 
 ```python
 import requests
 # If you are using a Jupyter notebook, uncomment the following line.
 #%matplotlib inline
 import matplotlib.pyplot as plt
+import json
 from PIL import Image
 from io import BytesIO
 
@@ -89,7 +82,7 @@ response.raise_for_status()
 # The 'analysis' object contains various fields that describe the image. The most
 # relevant caption for the image is obtained from the 'description' property.
 analysis = response.json()
-print(analysis)
+print(json.dumps(response.json()))
 image_caption = analysis["description"]["captions"][0]["text"].capitalize()
 
 # Display the image and overlay it with the caption.
@@ -97,11 +90,12 @@ image = Image.open(BytesIO(requests.get(image_url).content))
 plt.imshow(image)
 plt.axis("off")
 _ = plt.title(image_caption, size="x-large", y=-0.1)
+plt.show()
 ```
 
-## <a name="analyze-image-response"></a>Odpověď metody Analyze Image
+## <a name="examine-the-response"></a>Prozkoumání odpovědi
 
-Úspěšná odpověď se vrátí ve formátu JSON, například:
+Úspěšná odpověď se vrátí ve formátu JSON. Ukázková webová stránka provede analýzu a zobrazí úspěšnou odpověď v okně příkazového řádku, podobně jako v následujícím příkladu:
 
 ```json
 {
@@ -175,9 +169,13 @@ _ = plt.title(image_caption, size="x-large", y=-0.1)
 }
 ```
 
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Pokud už soubor nepotřebujete, odstraňte ho.
+
 ## <a name="next-steps"></a>Další kroky
 
-Prozkoumejte aplikaci v Pythonu používající počítačové zpracování obrazu k optickému rozpoznávání znaků (OCR), vytváření chytře oříznutých miniatur, zjišťování, kategorizaci, označení a popis vizuálních prvků, včetně obličejů, v obrázku. Pokud chcete rychle vyzkoušet rozhraní API pro počítačové zpracování obrazu, vyzkoušejte [testovací konzolu rozhraní Open API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
+Prozkoumejte aplikaci v Pythonu používající počítačové zpracování obrazu k optickému rozpoznávání znaků (OCR), vytváření chytře oříznutých miniatur, zjišťování, kategorizaci, označení a popis vizuálních prvků, včetně obličejů, v obrázku. Pokud chcete rychle vyzkoušet rozhraní API pro počítačové zpracování obrazu, vyzkoušejte [testovací konzolu Open API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
 
 > [!div class="nextstepaction"]
 > [Kurz k rozhraní API pro počítačové zpracování obrazu a Pythonu](../Tutorials/PythonTutorial.md)

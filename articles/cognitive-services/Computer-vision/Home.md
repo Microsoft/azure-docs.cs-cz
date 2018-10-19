@@ -10,12 +10,12 @@ ms.component: computer-vision
 ms.topic: overview
 ms.date: 08/22/2018
 ms.author: v-deken
-ms.openlocfilehash: 030a8351a8f41c7404fa4ca8d243fff1ad818c2f
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 9a0acae20a6361f5a9b69e427d46dd1b9c7db05e
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47433595"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48869342"
 ---
 # <a name="what-is-computer-vision"></a>Co je počítačové zpracování obrazu?
 
@@ -61,7 +61,7 @@ Počítačové zpracování obrazu dokáže analyzovat obrázky, které splňuj�
 - Obrázek musí být ve formátu JPEG, PNG, GIF nebo BMP.
 - Velikost souboru obrázku musí být menší než 4 megabajty (MB).
 - Rozměry obrázku musí být větší než 50 × 50 pixelů.  
-  Technologie OCR vyžaduje, aby měl obrázek rozměr 50 × 50 až 4200 × 4200 pixelů. Obrázek nesmí být větší než 10 megapixelů.
+  Pro účely OCR musí mít vstupní obrázek rozměry 50 × 50 až 4200 × 4200 pixelů.
 
 ## <a name="next-steps"></a>Další kroky
 

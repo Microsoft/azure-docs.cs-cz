@@ -12,15 +12,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 09/13/2018
+ms.date: 10/09/2018
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: c3089ad11dc951d3105b25b6857b7697f8c38d1a
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 52429d44c41d990fb0de4c01c63d4af9fe5863d4
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47432063"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48902888"
 ---
 # <a name="create-a-python-web-app-in-azure-app-service-on-linux-preview"></a>Vytvoření webové aplikace v Pythonu ve službě Azure App Service v Linuxu (verze Preview)
 
@@ -37,7 +37,7 @@ Postup v tomto článku můžete použít v případě počítačů se systémem
 K provedení kroků v tomto kurzu Rychlý start je potřeba:
 
 * <a href="https://www.python.org/downloads/" target="_blank">Nainstalovat Python 3.7</a>
-* <a href="https://git-scm.com/" target="_blank">Nainstalovat Git</a>
+* <a href="https://git-scm.com/" target="_blank">Nainstalovat Git</a>.
 
 ## <a name="download-the-sample"></a>Stažení ukázky
 
@@ -172,13 +172,13 @@ Levá nabídka obsahuje odkazy na různé stránky pro konfiguraci vaší aplika
 
 ## <a name="next-steps"></a>Další kroky
 
-Integrovaná image Pythonu ve službě App Service v Linuxu je aktuálně ve verzi Preview. Produkční aplikace v Pythonu můžete místo ní vytvářet s využitím vlastního kontejneru.
+Integrovaná image v Pythonu v rámci služby App Service v Linuxu je aktuálně ve verzi Preview a je možné přizpůsobit příkaz sloužící ke spuštění vaší aplikace. Produkční aplikace v Pythonu můžete místo toho vytvářet taky s využitím vlastního kontejneru.
 
 > [!div class="nextstepaction"]
 > [Python sh PostgreSQL](tutorial-python-postgresql-app.md)
 
 > [!div class="nextstepaction"]
-> [Konfigurace integrované image Pythonu](how-to-configure-python.md)
+> [Konfigurace vlastního spouštěcího příkazu](how-to-configure-python.md#custom-startup-command)
 
 > [!div class="nextstepaction"]
 > [Použití vlastní image](tutorial-custom-docker-image.md)

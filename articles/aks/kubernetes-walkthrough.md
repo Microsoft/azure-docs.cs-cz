@@ -6,15 +6,15 @@ author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: quickstart
-ms.date: 07/31/2018
+ms.date: 09/24/2018
 ms.author: iainfou
 ms.custom: H1Hack27Feb2017, mvc, devcenter
-ms.openlocfilehash: f52551e9d57ccfc44502992b59412878c4092c0d
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: caf3607dbd33d75916ff65b0ab498fa228e2a823
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39436898"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49068907"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster"></a>Rychlý start: Nasazení clusteru Azure Kubernetes Service (AKS)
 
@@ -26,7 +26,7 @@ V tomto rychlém startu se předpokládá základní znalost konceptů Kubernete
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít Azure CLI verze 2.0.43 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli-install].
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku v místním prostředí, potřebujete Azure CLI verze 2.0.46 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli-install].
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
@@ -55,7 +55,7 @@ Výstup:
 
 ## <a name="create-aks-cluster"></a>Vytvoření clusteru AKS
 
-Pomocí příkazu [az aks create][az-aks-create] vytvořte cluster AKS. Následující příklad vytvoří cluster *myAKSCluster* s jedním uzlem. Kromě toho se pomocí parametru *--enable-addons monitoring* povolí monitorování stavu clusteru. Další informace o povolení řešení monitorování stavu kontejneru najdete v tématu [Monitorování stavu služby Azure Kubernetes Service][aks-monitor].
+Pomocí příkazu [az aks create][az-aks-create] vytvořte cluster AKS. Následující příklad vytvoří cluster *myAKSCluster* s jedním uzlem. Kromě toho se dá pomocí parametru *--enable-addons monitoring* povolit Azure Monitor pro kontejnery. Další informace o povolení řešení monitorování stavu kontejneru najdete v tématu [Monitorování stavu služby Azure Kubernetes Service][aks-monitor].
 
 ```azurecli-interactive
 az aks create --resource-group myAKSCluster --name myAKSCluster --node-count 1 --enable-addons monitoring --generate-ssh-keys
@@ -114,6 +114,13 @@ spec:
       containers:
       - name: azure-vote-back
         image: redis
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 250m
+            memory: 256Mi
         ports:
         - containerPort: 6379
           name: redis
@@ -142,6 +149,13 @@ spec:
       containers:
       - name: azure-vote-front
         image: microsoft/azure-vote-front:v1
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 250m
+            memory: 256Mi
         ports:
         - containerPort: 80
         env:
@@ -209,16 +223,19 @@ Při vytvoření clusteru AKS se povolilo monitorování za účelem zachycován
 Pokud chcete zobrazit aktuální stav, dobu provozu a využití prostředků pro pody Azure Vote, proveďte následující kroky:
 
 1. Otevřete webový prohlížeč a přejděte na web Azure Portal na adrese [https://portal.azure.com][azure-portal].
-1. Vyberte vaši skupinu prostředků, například *myResourceGroup*, a pak váš cluster AKS, například *myAKSCluster*. 
-1. Zvolte **Monitorovat stav kontejneru**, vyberte **výchozí** obor názvů a pak vyberte **Kontejnery**.
+1. Vyberte vaši skupinu prostředků, například *myResourceGroup*, a pak váš cluster AKS, například *myAKSCluster*.
+1. V části **Sledování** na levé straně zvolte **Přehledy (Preview)**
+1. V horní části zvolte **+ Přidat filtr**
+1. Jako vlastnost vyberte *Obor názvů* a potom zvolte *\<Všechny kromě kube-system\>*.
+1. Vyberte zobrazení **Kontejnery**.
 
-Naplnění těchto dat na webu Azure Portal, jak je znázorněno v následujícím příkladu, může trvat několik minut:
+Zobrazí se kontejnery *azure-vote-back* a *azure-vote-front*, jak ukazuje následující příklad:
 
-![Vytvoření clusteru AKS 1](media/kubernetes-walkthrough/view-container-health.png)
+![Zobrazení stavu spuštěných kontejnerů v AKS](media/kubernetes-walkthrough-portal/monitor-containers.png)
 
-Pokud chcete zobrazit protokoly pro pod `azure-vote-front`, vyberte odkaz **Zobrazit protokoly** na pravé straně seznamu kontejnerů. Tyto protokoly obsahují streamy výstupů *stdout* a *stderr* z kontejneru.
+Pokud chcete zobrazit protokoly pro pod `azure-vote-front`, vyberte odkaz **Zobrazit protokoly kontejnerů** na pravé straně seznamu kontejnerů. Tyto protokoly obsahují streamy výstupů *stdout* a *stderr* z kontejneru.
 
-![Vytvoření clusteru AKS 1](media/kubernetes-walkthrough/view-container-logs.png)
+![Zobrazení protokolů kontejneru v AKS](media/kubernetes-walkthrough-portal/monitor-container-logs.png)
 
 ## <a name="delete-cluster"></a>Odstranění clusteru
 

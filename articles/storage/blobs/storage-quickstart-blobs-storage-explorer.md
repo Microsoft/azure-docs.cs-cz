@@ -6,14 +6,14 @@ author: tamram
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 08/27/2018
+ms.date: 10/09/2018
 ms.author: tamram
-ms.openlocfilehash: 3f0418e9ccdc5fe3babd2f1ac4482795994fe3b4
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 336fecf95dab36dcf00b5a0c92b700297622cc6d
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46996124"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48902973"
 ---
 # <a name="quickstart-use-azure-storage-explorer-to-create-a-blob-in-object-storage"></a>Rychlý start: Vytvoření objektu blob v úložišti objektů pomocí Průzkumníka služby Azure Storage
 
@@ -79,7 +79,7 @@ Když chcete stáhnout objekty blob pomocí **Průzkumníka služby Azure Storag
 
 ## <a name="manage-snapshots"></a>Správa snímků
 
-Průzkumník služby Azure Storage umožňuje vytváření a správu [snímků](storage-blob-snapshots.md) objektů blob. Snímek objektu blob pořídíte tak, že na něho kliknete pravým tlačítkem a vyberte **Vytvořit snímek**. Chcete-li snímek objektu blob zobrazit, klikněte na něho pravým tlačítkem a vyberte **Spravovat snímky**. Na aktuální kartě se zobrazí seznam snímků pro tento objekt blob.
+Průzkumník služby Azure Storage umožňuje vytváření a správu [snímků](storage-blob-snapshots.md) objektů blob. Snímek objektu blob pořídíte tak, že na něj kliknete pravým tlačítkem a vyberete **Vytvořit snímek**. Chcete-li snímek objektu blob zobrazit, klikněte na něho pravým tlačítkem a vyberte **Spravovat snímky**. Na aktuální kartě se zobrazí seznam snímků pro tento objekt blob.
 
 ![Průzkumník služby Microsoft Azure Storage – seznam objektů blob v kontejneru](media/storage-quickstart-blobs-storage-explorer/snapshots.png)
 

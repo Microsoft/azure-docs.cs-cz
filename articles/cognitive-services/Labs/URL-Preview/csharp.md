@@ -1,41 +1,43 @@
 ---
-title: Rychlý start C# pro náhled adresy URL projektu - kognitivní služby Microsoft | Microsoft Docs
-description: Začněte používat Preview adresa URL projektu v kognitivní služby společnosti Microsoft na platformě Azure.
+title: 'Rychlý start: Project URL Preview, C#'
+titlesuffix: Azure Cognitive Services
+description: Začněte používat funkci Project URL Preview za použití jazyka C#.
 services: cognitive-services
 author: mikedodaro
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: project-url-preview
-ms.topic: article
+ms.component: project-url-preview
+ms.topic: quickstart
 ms.date: 03/16/2018
-ms.author: rosh, v-gedod
-ms.openlocfilehash: 17d44bd0c23d0a1e67da5a0e91248700d3166c1a
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.author: rosh
+ms.openlocfilehash: 8d31d3a83f9873ce550b9c78626eea0d96ac39bb
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343246"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48867438"
 ---
-# <a name="url-preview-query-in-c"></a>Adresa URL Preview dotazu v jazyce C#
+# <a name="quickstart-url-preview-query-in-c"></a>Rychlý start: URL Preview s využitím C#
 
-Následující příklad jazyka C# vytvoří Náhled adresy Url pro web SwiftKey: https://swiftkey.com/en.
+Následující příklady v jazyce C# vytvoří náhled adresy URL pro web SwiftKey: https://swiftkey.com/en.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Budete potřebovat [Visual Studio 2017](https://www.visualstudio.com/downloads/) pro spuštění tohoto kódu v systému Windows. (Bezplatná edice Community bude fungovat.)
+Ke spuštění tohoto kódu ve Windows budete potřebovat [Visual Studio 2017](https://www.visualstudio.com/downloads/). (Bude stačit bezplatná verze Community Edition.)
 
-Získat přístupový klíč pro bezplatné zkušební verze [kognitivní Labs služby](https://aka.ms/answersearchsubscription)
+Získání přístupového klíče k bezplatné zkušební verzi služby [Cognitive Services Labs](https://aka.ms/answersearchsubscription)
 
 ## <a name="code-scenario"></a>Scénář kódu
 
-Následující kód C# vytvoří náhled adresu URL webu SwiftKey: https://swiftkey.com/en. 
+Následující kód v jazyce C# vytvoří náhled adresy URL pro web SwiftKey: https://swiftkey.com/en. 
 
-Jsou implementované v následujících krocích:
-1. Deklarujte proměnné zadat koncový bod a adresu URL dotazu si verzi preview.  
-2. Vytvoření požadavku.
-3. Přidat *Ocp-Apim-Subscription-Key* záhlaví. 
+Implementuje se v následujících krocích:
+1. Deklarujte proměnné, které určují koncový bod a adresu URL dotazu k náhledu.  
+2. Vytvořte požadavek.
+3. Přidejte hlavičku *Ocp-Apim-Subscription-Key*. 
 4. Asynchronně spusťte webový požadavek. 
-5. Přečtěte si odpovědi.
-6. Tisk záhlaví a výsledky JSON do konzoly.
+5. Přečtěte si odpověď.
+6. Zobrazte hlavičky a výsledky JSON v konzole.
 
 **Zdrojový kód**
 
@@ -153,15 +155,15 @@ namespace UrlPrevCshp
 ```
 ## <a name="running-the-application"></a>Spouštění aplikace.
 
-Ke spuštění aplikace:
+Spusťte aplikaci:
 
-1. Vytvořte nové řešení konzoly v sadě Visual Studio.
-2. Nahraďte `Program.cs` s poskytnutý kód.
-3. Nahraďte `YOUR-ACCESS-KEY` hodnotu s platnou přístupový klíč pro vaše předplatné.
+1. Vytvořte nové konzolové řešení v sadě Visual Studio.
+2. Nahraďte `Program.cs` uvedeným kódem.
+3. Hodnotu `YOUR-ACCESS-KEY` nahraďte platným přístupovým klíčem pro vaše předplatné.
 4. Spusťte program.
 
-## <a name="next-steps"></a>Další postup
-- [Rychlý start Java](java-quickstart.md)
-- [Rychlý start JavaScript](javascript.md)
-- [Rychlé spuštění uzlu](node-quickstart.md)
-- [Rychlý start Python](python-quickstart.md)
+## <a name="next-steps"></a>Další kroky
+- [Rychlý start pro Javu](java-quickstart.md)
+- [Rychlý start pro JavaScript](javascript.md)
+- [Rychlý start pro Node](node-quickstart.md)
+- [Rychlý start pro Python](python-quickstart.md)

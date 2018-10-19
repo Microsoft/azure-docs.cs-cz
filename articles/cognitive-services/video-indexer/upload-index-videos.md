@@ -10,12 +10,12 @@ ms.component: video-indexer
 ms.topic: sample
 ms.date: 09/15/2018
 ms.author: juliako
-ms.openlocfilehash: e84411535b82b3e4861b529f490bdde0eb25fd42
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: f3889d1cddce92cbdd3049d4421bfdffc69da41e
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45983881"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48884302"
 ---
 # <a name="example-upload-and-index-your-videos"></a>Příklad: Nahrání videí na server a jejich indexování  
 
@@ -36,6 +36,11 @@ Tento článek ukazuje, jak používat API [Upload video](https://api-portal.vid
 - Při nahrávání videa na server podle zadané adresy URL (upřednostňovaná možnost) musí být koncový bod zabezpečený pomocí protokolu TLS 1.2 (nebo vyššího).
 - Možnost bajtového pole je omezená na 2 GB a vyprší po 30 min.
 - Adresa URL zadaná v parametru `videoURL` musí být zakódovaná.
+
+> [!Tip]
+> Doporučujeme používat rozhraní .NET Framework verze 4.6.2 nebo novější, protože starší rozhraní .NET Framework nemají ve výchozím nastavení protokol TLS 1.2.
+>
+> Pokud potřebujete použít starší rozhraní .NET Framework, před voláním rozhraní REST API přidejte do kódu jeden řádek:  <br/> System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
 
 ## <a name="configurations-and-params"></a>Konfigurace a parametry
 
@@ -243,8 +248,14 @@ public class AccountContractSlim
     public string AccessToken { get; set; }
 }
 ```
+## <a name="common-errors"></a>Běžné chyby
 
+Operace Upload může vrátit kódy stavu uvedené v následující tabulce.
 
+|Kód stavu|ErrorType (v textu odpovědi)|Popis|
+|---|---|---|
+|400|VIDEO_ALREADY_IN_PROGRESS|V daném účtu už probíhá zpracování stejného videa.|
+|400|VIDEO_ALREADY_FAILED|V daném účtu se méně než před 2 hodinami nepodařilo zpracovat stejné video. Klienti rozhraní API by měli před dalším nahráním videa vyčkat minimálně 2 hodiny.|
 
 ## <a name="next-steps"></a>Další kroky
 

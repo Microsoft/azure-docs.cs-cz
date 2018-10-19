@@ -1,135 +1,97 @@
 ---
-title: 'Rychlý start: Publikování znalostní báze v Node.js – QnA Maker'
+title: 'Rychlý start: Publikování znalostní báze – REST, Node.js – QnA Maker'
 titleSuffix: Azure Cognitive Services
-description: Postup publikování znalostní báze pro QnA Maker v Node.js
+description: Tento rychlý start vás provede procesem publikování znalostní báze pomocí kódu programu. Publikování odešle nejnovější verzi znalostní báze do vyhrazeného indexu Azure Search a vytvoří koncový bod, který je možné volat v aplikaci nebo chatovacím robotu.
 services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
-ms.technology: qna-maker
+ms.component: qna-maker
 ms.topic: quickstart
-ms.date: 09/12/2018
+ms.date: 10/02/2018
 ms.author: diberry
-ms.openlocfilehash: 00642661995e16bda9ad995e69545b28468779c5
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: c70b90a6e465c72193f63afd7ab9106579e2c634
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47040934"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48886606"
 ---
-# <a name="publish-a-knowledge-base-in-nodejs"></a>Publikování znalostní báze v Node.js
+# <a name="quickstart-publish-a-qna-maker-knowledge-base-in-nodejs"></a>Rychlý start: Publikování znalostní báze QnA Maker v jazyce Node.js
 
-Následující kód publikuje existující znalostní bázi pomocí metody [Publish](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fe).
+Tento rychlý start vás provede procesem publikování znalostní báze pomocí kódu programu. Publikování odešle nejnovější verzi znalostní báze do vyhrazeného indexu Azure Search a vytvoří koncový bod, který je možné volat v aplikaci nebo chatovacím robotu.
 
-[!INCLUDE [Code is available in Azure-Samples Github repo](../../../../includes/cognitive-services-qnamaker-nodejs-repo-note.md)]
+Tento rychlý start volá rozhraní API služby QnA Maker:
+* [Publikování](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fe) –toto rozhraní API nevyžaduje v těle požadavku žádné informace.
+
+## <a name="prerequisites"></a>Požadavky
+
+* [Node.js 6+](https://nodejs.org/en/download/)
+* Potřebujete [službu QnA Maker](../How-To/set-up-qnamaker-service-azure.md). Pokud chcete získat klíč, vyberte na řídicím panelu **Klíče** v části **Správa prostředků**. 
+* ID znalostní báze služby QnA Maker, které najdete v adrese URL v parametru kbid řetězce dotazu, jak vidíte níže.
+
+    ![ID znalostní báze ve službě QnA Maker](../media/qnamaker-quickstart-kb/qna-maker-id.png)
 
 Pokud znalostní bázi ještě nemáte, můžete si vytvořit ukázkovou znalostní bázi a použít ji v tomto rychlém startu. Přečtěte si o [vytvoření nové znalostní báze](create-new-kb-nodejs.md).
 
-1. Ve svém oblíbeném integrovaném vývojovém prostředí (IDE) vytvořte nový projekt Node.
-1. Přidejte níže uvedený kód.
-1. Hodnotu `subscriptionKey` nahraďte platným klíčem předplatného.
-1. Hodnotu `kb` nahraďte platným ID znalostní báze. Tuto hodnotu najdete tak, že přejdete na některou z vašich [znalostních bází služby QnA Maker](https://www.qnamaker.ai/Home/MyServices). Vyberte znalostní bázi, kterou chcete publikovat. Jakmile budete na této stránce, vyhledejte v adrese URL řetězec „kdid=“, jak je zobrazeno níže. Jeho hodnotu použijte pro svůj vzorový kód.
+[!INCLUDE [Code is available in Azure-Samples Github repo](../../../../includes/cognitive-services-qnamaker-nodejs-repo-note.md)]
 
-    ![ID znalostní báze ve službě QnA Maker](../media/qnamaker-quickstart-kb/qna-maker-id.png)
-1. Spusťte program.
+## <a name="create-a-knowledge-base-nodejs-file"></a>Vytvoření souboru Node.js znalostní báze
 
-``` Node.js
-'use strict';
+Vytvořte soubor s názvem `publish-knowledge-base.js`.
 
-let fs = require ('fs');
-let https = require ('https');
+## <a name="add-required-dependencies"></a>Přidání požadovaných závislostí
 
-// **********************************************
-// *** Update or verify the following values. ***
-// **********************************************
+Na začátek souboru `publish-knowledge-base.js` přidejte následující řádky k přidání potřebných závislostí do projektu:
 
-// Replace this with a valid subscription key.
-let subscriptionKey = 'ENTER KEY HERE';
+[!code-nodejs[Add the dependencies](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/publish-knowledge-base/publish-knowledge-base.js?range=1-4 "Add the dependencies")]
 
-// NOTE: Replace this with a valid knowledge base ID.
-let kb = 'ENTER ID HERE';
+## <a name="add-required-constants"></a>Přidání požadovaných konstant
 
-let host = 'westus.api.cognitive.microsoft.com';
-let service = '/qnamaker/v4.0';
-let method = '/knowledgebases/';
+Za předcházející požadované závislosti přidejte požadované konstanty pro přístup ke službě QnA Maker. Nahraďte hodnotu proměnné `subscriptionKey` vlastním klíčem služby QnA Maker. 
 
-let pretty_print = function (s) {
-    return JSON.stringify(JSON.parse(s), null, 4);
-}
+[!code-nodejs[Add required constants](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/publish-knowledge-base/publish-knowledge-base.js?range=10-17 "Add required constants")]
 
-// callback is the function to call when we have the entire response.
-let response_handler = function (callback, response) {
-    let body = '';
-    response.on ('data', function (d) {
-        body += d;
-    });
-    response.on ('end', function () {
-// Call the callback function with the status code, headers, and body of the response.
-        callback ({ status : response.statusCode, headers : response.headers, body : body });
-    });
-    response.on ('error', function (e) {
-        console.log ('Error: ' + e.message);
-    });
-};
+## <a name="add-knowledge-base-id"></a>Přidání ID znalostní báze
 
-// Get an HTTP response handler that calls the specified callback function when we have the entire response.
-let get_response_handler = function (callback) {
-// Return a function that takes an HTTP response, and is closed over the specified callback.
-// This function signature is required by https.request, hence the need for the closure.
-    return function (response) {
-        response_handler (callback, response);
-    }
-}
+Za předchozí konstanty přidejte ID znalostní báze a přidejte ho k cestě:
 
-// callback is the function to call when we have the entire response from the POST request.
-let post = function (path, content, callback) {
-    let request_params = {
-        method : 'POST',
-        hostname : host,
-        path : path,
-        headers : {
-            'Content-Type' : 'application/json',
-            'Content-Length' : content.length,
-            'Ocp-Apim-Subscription-Key' : subscriptionKey,
-        }
-    };
+[!code-nodejs[Add knowledge base ID](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/publish-knowledge-base/publish-knowledge-base.js?range=19-23 "Add knowledge base ID")]
 
-// Pass the callback function to the response handler.
-    let req = https.request (request_params, get_response_handler (callback));
-    req.write (content);
-    req.end ();
-}
+## <a name="add-supporting-functions"></a>Přidání podpůrných funkcí
 
-// callback is the function to call when we have the response from the /knowledgebases POST method.
-let publish_kb = function (path, req, callback) {
-    console.log ('Calling ' + host + path + '.');
-// Send the POST request.
-    post (path, req, function (response) {
-// Extract the data we want from the POST response and pass it to the callback function.
-        if (response.status == '204') {
-            let result = {'result':'Success'};
-            callback (JSON.stringify(result));
-        }
-        else {
-            callback (response.body);
-        }
-    });
-}
+V dalším kroku přidejte následující podpůrné funkce.
 
-var path = service + method + kb;
-publish_kb (path, '', function (result) {
-    console.log (pretty_print(result));
-});
-```
+1. Přidejte následující funkci pro tisk souboru JSON v čitelném formátu:
 
-## <a name="understand-what-qna-maker-returns"></a>Co služba QnA Maker vrací
+   [!code-nodejs[Add supporting functions, step 1](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/publish-knowledge-base/publish-knowledge-base.js?range=25-28 "Add supporting functions, step 1")]
 
-Úspěšná odpověď se vrátí ve formátu JSON, jak je znázorněno v následujícím příkladu:
+2. Přidejte následující funkce pro správu odpovědi HTTP a získání stavu operace vytvoření:
 
-```json
-{
-  "result": "Success."
-}
+   [!code-nodejs[Add supporting functions, step 2](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/publish-knowledge-base/publish-knowledge-base.js?range=30-52 "Add supporting functions, step 2")]
+
+## <a name="add-the-publishkb-function-and-main-function"></a>Přidání funkce publish_kb a hlavní funkce
+
+Následující kód odešle do rozhraní API služby QnA Maker požadavek HTTPS, který publikuje znalostní bázi. Potom kód přijme odpověď:
+
+[!code-nodejs[Add POST request to publish KB](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/publish-knowledge-base/publish-knowledge-base.js?range=54-71 "Add POST request to publish KB")]
+
+[!code-nodejs[Add the publish_kb function](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/publish-knowledge-base/publish-knowledge-base.js?range=73-91 "Add the publish_kb function and main function")]
+
+## <a name="add-the-main-function"></a>Přidání hlavní funkce
+
+Přidejte následující funkci pro správu požadavku a odpovědi:
+
+[!code-nodejs[Add the main function](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/publish-knowledge-base/publish-knowledge-base.js?range=94-97 "Add the main function")]
+
+## <a name="run-the-program"></a>Spuštění programu
+
+Sestavte program a spusťte ho. Program automaticky odešle požadavek na publikování znalostní báze do rozhraní API služby QnA Maker a zobrazí přijatou odpověď v okně konzoly.
+
+Po publikování znalostní báze v ní můžete vyhledávat pomocí dotazů z koncového bodu prostřednictvím klientské aplikace nebo chatovacího robota. 
+
+```bash
+node publish-knowledge-base.js
 ```
 
 ## <a name="next-steps"></a>Další kroky

@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 author: garyericson
 ms.author: garye
 ms.date: 09/24/2018
-ms.openlocfilehash: 6e0294f99d1c2291e84bf2ac5d5b1f771222b551
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 660e5515b765e133d5bc9309be5439209b957353
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47433408"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48238502"
 ---
 # <a name="what-is-azure-machine-learning-service-preview"></a>Co je služba Azure Machine Learning (Preview)?
 
@@ -48,7 +48,7 @@ Během experimentování při hledání nejlepšího řešení můžete nasazen�
 Služba Azure Machine Learning za vás dokáže automaticky vygenerovat a optimalizovat model.
 Příklad najdete v článku s [kurzem pro automatické trénování modelu klasifikace pomocí automatizovaného strojového učení Azure](tutorial-auto-train-models.md).
 
-Nebo s využitím sady Azure Machine Learning <a href="http://aka.ms/aml-sdk" target="_blank">SDK</a> pro Python v kombinaci s Open Source balíčky Pythonu si můžete v pracovním prostoru Azure Machine Learning sami sestavit a vytrénovat vysoce přesné modely strojového a hloubkového učení.
+Nebo si můžete s využitím sady Azure Machine Learning <a href="http://aka.ms/aml-sdk" target="_blank">SDK</a> pro Python v kombinaci s open source balíčky Pythonu v pracovním prostoru služby Azure Machine Learning sami sestavit a vytrénovat vysoce přesné modely strojového a hloubkového učení.
 Na výběr máte celou řadu komponent strojového učení dostupných v Open Source balíčcích Pythonu, například:
 
 - <a href="http://scikit-learn.org/stable/" target="_blank">Scikit-learn</a>
@@ -80,7 +80,7 @@ Pokud nejste předplatitel, můžete si [zdarma otevřít účet Azure](https://
 
 ## <a name="next-steps"></a>Další kroky
 
-- Vytvořte pracovní prostor strojového učení pomocí článku, ve kterém zjistíte, [jak začít pomocí webu Azure Portal](quickstart-get-started.md).
+- Vytvořte pracovní prostor služby Machine Learning na základě informací v článku, ve kterém zjistíte, [jak začít pomocí webu Azure Portal](quickstart-get-started.md).
  
 - Projděte kompletní kurz věnovaný [trénování modelu klasifikace obrázků pomocí Azure Machine Learning](tutorial-train-models-with-aml.md), kde se naučíte, jak trénovat a nasazovat modely pomocí služby Azure Machine Learning.
 

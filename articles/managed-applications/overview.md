@@ -8,30 +8,30 @@ ms.service: managed-applications
 ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
-ms.date: 07/11/2018
+ms.date: 10/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: 628a936d85eb94a1ee332205047527b0f9795d50
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: 67797f3bc5eadc126bad1051e793a8d3bc4590e5
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38990510"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48800940"
 ---
 # <a name="azure-managed-applications-overview"></a>Přehled spravovaných aplikací Azure
 
 Spravované aplikace Azure umožňují nabízet cloudová řešení, která můžou spotřebitelé snadno nasadit a spravovat. Vy implementujete infrastrukturu a poskytujete průběžnou podporu. Pokud chcete zpřístupnit spravovanou aplikaci všem zákazníkům, publikujte ji v Azure Marketplace. Pokud ji chcete zpřístupnit jenom uživatelům ve vaší organizaci, publikujte ji do interního katalogu. 
 
-Spravovaná aplikace se podobá šabloně řešení v Marketplace, ale s jedním zásadním rozdílem. Ve spravované aplikaci jsou prostředky zřízené do skupiny prostředků, kterou spravuje vydavatel aplikace. Skupina prostředků se nachází v rámci předplatného zákazníka, ale má k ní přístup určitá identita v rámci tenanta vydavatele. Jako vydavatel určujete náklady na průběžnou podporu řešení.
+Spravovaná aplikace se podobá šabloně řešení v Marketplace, ale s jedním zásadním rozdílem. Ve spravované aplikaci se prostředky nasazují do skupiny prostředků, kterou spravuje vydavatel aplikace. Skupina prostředků se nachází v rámci předplatného zákazníka, ale má k ní přístup určitá identita v rámci tenanta vydavatele. Jako vydavatel určujete náklady na průběžnou podporu řešení.
 
 ## <a name="advantages-of-managed-applications"></a>Výhody spravovaných aplikací
 
-Spravované aplikace usnadňují zákazníkům používání vašich řešení. Zákazníci díky tomu nepotřebují mít k používání vašeho řešení zkušenosti s cloudovou infrastrukturou. Zákazníci mají omezený přístup ke kriticky důležitým prostředkům. Nemusí se obávat, že při jejich správě udělají chybu. 
+Spravované aplikace usnadňují zákazníkům používání vašich řešení. Zákazníci díky tomu nepotřebují mít k používání vašeho řešení zkušenosti s cloudovou infrastrukturou. Zákazníci mají omezený přístup k zásadně důležitým prostředkům a nemusejí se obávat, že při jejich správě udělají chybu. 
 
 Spravované aplikace vám umožňují vytvořit si se zákazníky dlouhodobý vztah. Vy určujete podmínky správy aplikace a všechny platby se zpracovávají prostřednictvím fakturace v Azure.
 
 I když zákazníci nasadí tyto spravované aplikace do svého předplatného, nemusejí je spravovat, aktualizovat ani udržovat. Vy se staráte o to, aby všichni zákazníci používali schválené verze. Zákazníci si nepotřebují osvojovat znalosti jednotlivých aplikací, aby je mohli spravovat. Zákazníci automaticky získávají aktualizace aplikací, aniž by si museli dělat starosti s řešením potíží a diagnostikou problémů s aplikacemi. 
 
-Týmům IT umožňují spravované aplikace nabízet uživatelům v rámci organizace předem schválená řešení. Vy zajišťujete, aby byla tato řešení v souladu se standardy organizace.
+Týmům IT umožňují spravované aplikace nabízet uživatelům v rámci organizace předem schválená řešení. Máte jistotu, že jsou tato řešení v souladu se standardy organizace.
 
 ## <a name="types-of-managed-applications"></a>Typy spravovaných aplikací
 
@@ -41,7 +41,7 @@ Spravovanou aplikaci můžete publikovat externě nebo interně.
 
 ### <a name="service-catalog"></a>Katalog služeb
 
-Katalog služeb je interní katalog schválených řešení určených pro uživatele v rámci organizace. Katalog slouží k zajištění dodržování určitých standardů organizace při poskytování řešení pro organizaci. Zaměstnanci v katalogu najdou aplikace doporučené a schválené oddělením IT. Zobrazují se jim spravované aplikace, které s nimi sdílejí jiní lidé z jejich organizace.
+Katalog služeb je interní katalog schválených řešení určených pro uživatele v rámci organizace. Katalog slouží k dodržování určitých standardů organizace v nabídce řešení pro organizaci. Zaměstnanci v katalogu snadno najdou aplikace doporučené a schválené oddělením IT. Zobrazují se jim spravované aplikace, které s nimi sdílejí jiní lidé z jejich organizace.
 
 Informace o publikování spravované aplikace v katalogu služeb najdete v článku [Vytvoření aplikace katalogu služeb](publish-service-catalog-app.md).
 
@@ -73,10 +73,11 @@ Když zákazník spravovanou aplikaci odstraní, dojde i k odstranění spravova
 
 ## <a name="azure-policy"></a>Azure Policy
 
-Na spravovanou aplikaci můžete použít zásady [Azure Policy](../azure-policy/azure-policy-introduction.md). Zásady se používají k zajištění, že nasazené instance vaší spravované aplikace jsou v souladu s požadavky na data a zabezpečení. Pokud aplikace pracuje s citlivými daty, nezapomeňte vyhodnotit, jak by se měly chránit. Například pokud aplikace pracuje s daty z Office 365, použijte zásadu, abyste měli jistotu, že je šifrování dat zapnuté.
+Na spravovanou aplikaci můžete použít zásady [Azure Policy](../azure-policy/azure-policy-introduction.md). Zásady se používají k zajištění souladu nasazených instancí vaší spravované aplikace s požadavky na data a zabezpečení. Pokud aplikace pracuje s citlivými daty, nezapomeňte vyhodnotit, jak by se měla tato data chránit. Například pokud aplikace pracuje s daty z Office 365, použijte zásadu, abyste měli jistotu, že je šifrování dat zapnuté.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Úvod do definování a nasazení spravované aplikace najdete v článku [Vytvoření a nasazení spravované aplikace Azure pomocí rozhraní příkazového řádku Azure](managed-apps-quickstart-cli.md).
-* Informace o publikování interní aplikace najdete v článku [Vytvoření aplikace katalogu služeb](publish-service-catalog-app.md).
-* Informace o publikování spravovaných aplikací do Marketplace najdete v tématu [Vytvoření aplikace Marketplace](publish-marketplace-app.md).
+V tomto článku jste se dozvěděli o výhodách používání spravovaných aplikací. Přejděte na další článek, který se zabývá vytvořením definice spravované aplikace.
+
+> [!div class="nextstepaction"]
+> [Rychlý start: Publikování definice aplikace spravované Azure](publish-managed-app-definition-quickstart.md)

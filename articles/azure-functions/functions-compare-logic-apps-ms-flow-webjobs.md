@@ -1,26 +1,23 @@
 ---
 title: Porovnání služeb Flow, Logic Apps, Functions a WebJobs – Azure
 description: 'Porovnání cloudových služeb společnosti Microsoft, které jsou optimalizované pro úlohy integrace: Flow, Logic Apps, Functions a WebJobs'
-services: functions,app-service\logic
+services: functions, logic-apps
 documentationcenter: na
 author: ggailey777
-manager: cfowler
-tags: ''
+manager: jeconnoc
 keywords: microsoft flow, flow, logic apps, azure functions, functions, azure webjobs, webjobs, event processing, dynamic compute, serverless architecture
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: overview
-ms.tgt_pltfrm: multiple
-ms.workload: na
 ms.date: 04/09/2018
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 9e79cba0b186ace97609409f49369ac89b5a1eeb
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 789b572a1d3b049bcfd9a739182c49c4da27fc96
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39346279"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48817003"
 ---
 # <a name="compare-flow-logic-apps-functions-and-webjobs"></a>Porovnání služeb Flow, Logic Apps, Functions a WebJobs
 
@@ -56,7 +53,7 @@ Následující tabulka vám pomůže určit, jestli je pro danou integraci nejle
 
 Functions a Logic Apps jsou služby Azure, které umožňují provádění úloh bez serveru. Azure Functions je služba pro provádění výpočtů bez serveru, zatímco služba Azure Logic Apps umožňuje provádění pracovních postupů bez serveru. Obě služby můžou vytvářet komplexní *orchestrace*. Orchestrace je kolekce funkcí nebo kroků (v Logic Apps se nazývají *akce*), jejichž spouštěním se provede složitý úkol. Při zpracování dávky objednávek můžete například spustit velký počet instancí funkce současně, počkat na dokončení všech instancí a pak spustit funkci, která vypočítá výsledek pro agregaci.
 
-K vývoji orchestrací pro Azure Functions se používá zápis kódu a [rozšíření Durable Functions](durable-functions-overview.md) (ve verzi Preview). K vytváření orchestrací pro Logic Apps se používá grafické rozhraní (GUI) nebo úprava konfiguračních souborů.
+K vývoji orchestrací pro Azure Functions se používá zápis kódu a [rozšíření Durable Functions](durable-functions-overview.md). K vytváření orchestrací pro Logic Apps se používá grafické rozhraní (GUI) nebo úprava konfiguračních souborů.
 
 Při sestavování orchestrace lze služby kombinovat, takže je možné volat funkce z aplikací logiky a volat aplikace logiky z funkcí. Způsob sestavování orchestrace volte na základě možností těchto služeb nebo podle svých potřeb. Následující tabulka uvádí některé hlavní rozdíly mezi těmito službami:
  
@@ -65,7 +62,7 @@ Při sestavování orchestrace lze služby kombinovat, takže je možné volat f
 | Vývoj | Založeno na kódu (závazné) | Založeno na návrháři (deklarativní) |
 | Připojení | [Zhruba tucet předdefinovaných typů vazeb](functions-triggers-bindings.md#supported-bindings), zápis kódu pro vlastní vazby | [Rozsáhlá kolekce konektorů](../connectors/apis-list.md), [Enterprise Integration Pack pro scénáře B2B](../logic-apps/logic-apps-enterprise-integration-overview.md), [sestavení vlastních konektorů](../logic-apps/custom-connector-overview.md) |
 | Akce | Každá aktivita je funkce Azure; zápis kódu pro funkce aktivity |[Rozsáhlá kolekce předdefinovaných akcí](../logic-apps/logic-apps-workflow-actions-triggers.md)|
-| Monitorování | [Azure Application Insights](../application-insights/app-insights-overview.md) | [Azure Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md), [Operations Management Suite](../logic-apps/logic-apps-monitor-your-logic-apps-oms.md), [Log Analytics](../logic-apps/logic-apps-monitor-your-logic-apps.md)|
+| Monitorování | [Azure Application Insights](../application-insights/app-insights-overview.md) | [Azure Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md), [Log Analytics](../logic-apps/logic-apps-monitor-your-logic-apps.md)|
 | Správa | [REST API](durable-functions-http-api.md), [Visual Studio](https://docs.microsoft.com/azure/vs-azure-tools-resources-managing-with-cloud-explorer) | [Azure Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md), [REST API](https://docs.microsoft.com/rest/api/logic/), [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.logicapp/?view=azurermps-5.6.0), [Visual Studio](https://docs.microsoft.com/azure/logic-apps/manage-logic-apps-with-visual-studio) |
 | Kontext spuštění | Může se spustit [místně](functions-runtime-overview.md) nebo v cloudu. | Spouští se jenom v cloudu.|
 

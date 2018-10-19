@@ -14,12 +14,12 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 10/30/2014
 ms.author: elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork
-ms.openlocfilehash: cadd771a516270faf23f18a36f54fa9a1541e6d5
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: cdc6e082207b9128be3e3005305510f3ee493850
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38698666"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49427837"
 ---
 # <a name="how-to-send-email-using-sendgrid-from-java"></a>Odesílání e-mailu pomocí SendGrid z Javy
 Tato příručka ukazuje, jak k provádění běžných programovacích úloh s e-mailové služby SendGrid v Azure. Ukázky jsou napsané v jazyce Java. Mezi popsané scénáře patří **vytváření e-mailu**, **odesílání e-mailů**, **přidávání příloh**, **pomocí filtrů**a **aktualizují se vlastnosti**. Další informace o SendGrid a odesílání e-mailu, najdete v článku [další kroky](#next-steps) oddílu.
@@ -34,7 +34,7 @@ SendGrid je [založené na cloudu e-mailové služby] , která poskytuje spolehl
 * Předávání dotazy zákazníků
 * E-mailových oznámení z aplikace
 
-Další informace najdete v tématu <http://sendgrid.com>.
+Další informace naleznete v tématu <http://sendgrid.com>.
 
 ## <a name="create-a-sendgrid-account"></a>Vytvoření účtu SendGrid
 [!INCLUDE [sendgrid-sign-up](../includes/sendgrid-sign-up.md)]
@@ -46,7 +46,6 @@ Získat javax.mail knihovny, například z <http://www.oracle.com/technetwork/ja
 
 ```
         import java.util.Properties;
-        import javax.activation.*;
         import javax.mail.*;
         import javax.mail.internet.*;
 

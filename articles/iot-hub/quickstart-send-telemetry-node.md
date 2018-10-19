@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 06/19/2018
 ms.author: dobett
-ms.openlocfilehash: dc255a36e2347aac204f7bd32fe3e9cf25d54b19
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: 8a5a6ff2eab8a9ef5fb631ef81818a30db00078b
+ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42022900"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48784935"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-the-telemetry-from-the-hub-with-a-back-end-application-nodejs"></a>Rychlý start: Odesílání telemetrických dat ze zařízení do centra IoT a čtení telemetrických dat z centra pomocí back-endové aplikace (Node.js)
 
@@ -49,44 +49,59 @@ Stáhněte si ukázkový projekt Node.js z https://github.com/Azure-Samples/azur
 
 ## <a name="register-a-device"></a>Registrování zařízení
 
-Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připojit. V tomto rychlém startu pomocí Azure CLI zaregistrujete simulované zařízení.
+Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připojit. V tomto rychlém startu zaregistrujete simulované zařízení pomocí prostředí Azure Cloud Shell.
 
-1. Přidejte rozšíření rozhraní příkazového řádku IoT Hub a vytvořte identitu zařízení. `{YourIoTHubName}` nahraďte názvem, který jste vybrali pro centrum IoT:
+1. V prostředí Azure Cloud Shell spusťte následující příkazy pro přidání rozšíření IoT Hub CLI a vytvoření identity zařízení. 
+
+   **YourIoTHubName:** Tento zástupný text nahraďte názvem, který si zvolíte pro své centrum IoT.
 
     ```azurecli-interactive
     az extension add --name azure-cli-iot-ext
-    az iot hub device-identity create --hub-name {YourIoTHubName} --device-id MyNodeDevice
+    az iot hub device-identity create --hub-name YourIoTHubName --device-id MyNodeDevice
     ```
 
     Pokud si zvolíte jiný název zařízení, změňte ho také v ukázkových aplikacích, než je spustíte.
 
-1. Spuštěním následujícího příkazu získejte _připojovací řetězec zařízení_ pro zařízení, které jste právě zaregistrovali:
+1. Spuštěním následujícího příkazu v Azure Cloud Shellu získejte _připojovací řetězec zařízení_ pro zařízení, které jste právě zaregistrovali:
+
+   **YourIoTHubName:** Tento zástupný text nahraďte názvem, který si zvolíte pro své centrum IoT.
 
     ```azurecli-interactive
-    az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyNodeDevice --output table
+    az iot hub device-identity show-connection-string --hub-name YourIoTHubName --device-id MyNodeDevice --output table
     ```
+    
+    Poznamenejte si připojovací řetězec zařízení, který vypadá nějak takto:
 
-    Poznamenejte si připojovací řetězec zařízení, který vypadá nějak takto: `Hostname=...=`. Tuto hodnotu použijete později v tomto rychlém startu.
+   `HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyNodeDevice;SharedAccessKey={YourSharedAccessKey}`
 
-1. Potřebujete také _připojovací řetězec služby_, který back-endové aplikaci umožní připojení k vašemu centru IoT a načtení zpráv. Následující příkaz načte připojovací řetězec služby pro vaše centrum IoT:
+    Tuto hodnotu použijete později v tomto rychlém startu.
+
+1. Potřebujete taky _připojovací řetězec služby_, který back-endové aplikaci umožní připojení k vašemu centru IoT, aby mohla načítat zprávy. Následující příkaz načte připojovací řetězec služby pro vaše centrum IoT:
+   
+   **YourIoTHubName:** Tento zástupný text nahraďte názvem, který si zvolíte pro své centrum IoT.
 
     ```azurecli-interactive
-    az iot hub show-connection-string --name {YourIoTHubName} --output table
+    az iot hub show-connection-string --hub-name YourIoTHubName --output table
     ```
+     
+    Poznamenejte si připojovací řetězec služby, který vypadá nějak takto:
 
-    Poznamenejte si připojovací řetězec služby, který vypadá nějak takto: `Hostname=...=`. Tuto hodnotu použijete později v tomto rychlém startu. Připojovací řetězec služby se liší od připojovacího řetězce zařízení.
+   `HostName={YourIoTHubName}.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey={YourSharedAccessKey}`
+
+    Tuto hodnotu použijete později v tomto rychlém startu. Připojovací řetězec služby se liší od připojovacího řetězce zařízení.
+
 
 ## <a name="send-simulated-telemetry"></a>Odesílání simulovaných telemetrických dat
 
 Aplikace simulovaného zařízení se připojí ke koncovému bodu vašeho centra IoT pro konkrétní zařízení a odesílá simulovaná telemetrická data o teplotě a vlhkosti vzduchu.
 
-1. V okně terminálu přejděte do kořenové složky ukázkového projektu Node.js. Pak přejděte do složky **iot-hub\Quickstarts\simulated-device**.
+1. Otevřete okno místního terminálu a přejděte do kořenové složky ukázkového projektu Node.js. Pak přejděte do složky **iot-hub\Quickstarts\simulated-device**.
 
 1. V libovolném textovém editoru otevřete soubor **SimulatedDevice.js**.
 
     Hodnotu proměnné `connectionString` nahraďte připojovacím řetězcem zařízení, který jste si předtím poznamenali. Změny pak uložte do souboru **SimulatedDevice.js**.
 
-1. V okně terminálu spusťte následující příkazy pro instalaci požadovaných knihoven a spuštění aplikace simulovaného zařízení:
+1. V okně místního terminálu pomocí následujících příkazů nainstalujte požadované knihovny a spusťte aplikaci simulovaného zařízení:
 
     ```cmd/sh
     npm install
@@ -101,13 +116,13 @@ Aplikace simulovaného zařízení se připojí ke koncovému bodu vašeho centr
 
 Back-endová aplikace se připojí ke koncovému bodu **Events** na straně služby ve vašem centru IoT. Aplikace přijímá zprávy typu zařízení-cloud odeslané ze simulovaného zařízení. Back-endová aplikace služby IoT Hub se obvykle spouští v cloudu, aby mohla přijímat a zpracovávat zprávy typu zařízení-cloud.
 
-1. V jiném okně terminálu přejděte do kořenové složky ukázkového projektu Node.js. Potom přejděte do složky **read-d2c-messages**.
+1. Otevřete další okno místního terminálu a přejděte do kořenové složky ukázkového projektu Node.js. Potom přejděte ke složce **iot-hub\Quickstarts\read-d2c-messages**.
 
-1. V libovolném textovém editoru otevřete soubor **iot-hub\Quickstarts\ReadDeviceToCloudMessages.js**.
+1. V libovolném textovém editoru otevřete soubor **ReadDeviceToCloudMessages.js**.
 
     Hodnotu proměnné `connectionString` nahraďte připojovacím řetězcem služby, který jste si předtím poznamenali. Změny potom uložte do souboru **ReadDeviceToCloudMessages.js**.
 
-1. V okně terminálu spusťte následující příkazy pro instalaci požadovaných knihoven a spuštění back-endové aplikace:
+1. V okně místního terminálu spusťte následující příkazy pro instalaci požadovaných knihoven a spuštění back-endové aplikace:
 
     ```cmd/sh
     npm install

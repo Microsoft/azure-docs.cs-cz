@@ -5,21 +5,21 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 07/03/2018
+ms.date: 10/18/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: f6ad95eb45cc208fe2289cb2095214f98a0b250b
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 7d8bde6beeb4bd0c6234d7c5aa63be9e150953f5
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37442385"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49427242"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Zdroje dat podporované ve službě Azure Analysis Services
 
 Zdroje dat a konektory zobrazují v získat Data nebo Průvodce importem v sadě Visual Studio se zobrazí pro Azure Analysis Services a SQL Server Analysis Services. Ale ne všechny zdroje dat a konektory, zobrazí se podporují ve službě Azure Analysis Services. Typy zdrojů dat, které se můžete připojit k závisí na mnoha faktorech, jako model úroveň kompatibility, k dispozici datové konektory, typ ověřování, zprostředkovatele a podpora On-premises data gateway. 
 
-## <a name="azure-data-sources"></a>Zdroji dat v Azure
+## <a name="azure-data-sources"></a>Zdroje dat Azure
 
 |Zdroj dat  |V paměti  |DirectQuery  |
 |---------|---------|---------|

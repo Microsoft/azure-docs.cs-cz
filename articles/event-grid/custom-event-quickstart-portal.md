@@ -5,19 +5,23 @@ services: event-grid
 keywords: ''
 author: tfitzmac
 ms.author: tomfitz
-ms.date: 07/05/2018
+ms.date: 10/02/2018
 ms.topic: quickstart
 ms.service: event-grid
-ms.openlocfilehash: ec85a866279412232aa23fad8f975d1642525772
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: 630130bde0440a8a5f51589386f42214f27af59a
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42023950"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48040622"
 ---
 # <a name="create-and-route-custom-events-with-the-azure-portal-and-event-grid"></a>Vytvoření a směrování vlastních událostí pomocí webu Azure Portal a Event Gridu
 
-Azure Event Grid je služba zpracování událostí pro cloud. V tomto článku pomocí webu Azure Portal vytvoříte vlastní téma, přihlásíte se k jeho odběru a aktivujete událost, abyste viděli výsledek. Událost odešlete do funkce Azure, která zaprotokoluje data události. Až budete hotovi, uvidíte, že se data události odeslala do koncového bodu a zaprotokolovala.
+Azure Event Grid je služba zpracování událostí pro cloud. V tomto článku vytvoříte pomocí webu Azure Portal vlastní téma, přihlásíte se k jeho odběru a aktivujete událost, abyste viděli výsledek. Obvykle odesíláte události do koncového bodu, který data události zpracuje a provede akce. Pro zjednodušení tohoto článku však budete události odesílat do webové aplikace, která shromažďuje a zobrazuje zprávy.
+
+Až budete hotovi, uvidíte, že se data události odeslala do webové aplikace.
+
+![Zobrazení výsledků](./media/custom-event-quickstart-portal/view-result.png)
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 
@@ -27,7 +31,7 @@ Azure Event Grid je služba zpracování událostí pro cloud. V tomto článku 
 
 Téma Event Gridu poskytuje uživatelsky definovaný koncový bod, do kterého odesíláte události. 
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure](https://portal.azure.com/).
 
 1. Pokud chcete vytvořit vlastní téma, vyberte **Vytvořit prostředek**. 
 
@@ -61,77 +65,61 @@ Téma Event Gridu poskytuje uživatelsky definovaný koncový bod, do kterého o
 
    ![Konflikt názvů](./media/custom-event-quickstart-portal/name-conflict.png)
 
-## <a name="create-an-azure-function"></a>Vytvoření funkce Azure
+## <a name="create-a-message-endpoint"></a>Vytvoření koncového bodu zpráv
 
-Před přihlášením k odběru tématu vytvoříme koncový bod pro zprávy události. V tomto článku vytvoříte pro koncový bod aplikaci funkcí pomocí služby Azure Functions.
+Před přihlášením k odběru vlastního tématu vytvoříme koncový bod pro zprávy události. Koncový bod obvykle provede akce na základě dat události. Pro zjednodušení tohoto rychlého startu nasadíte [předem připravenou webovou aplikaci](https://github.com/Azure-Samples/azure-event-grid-viewer), která zobrazuje zprávy události. Nasazené řešení zahrnuje plán služby App Service, webovou aplikaci App Service a zdrojový kód z GitHubu.
 
-1. Pokud chcete vytvořit funkci, vyberte **Vytvořit prostředek**.
+1. Vyberte **Nasadit do Azure** a nasaďte řešení do svého předplatného. Na webu Azure Portal zadejte hodnoty pro parametry.
 
-   ![Vytvoření prostředku](./media/custom-event-quickstart-portal/create-resource-small.png)
+   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>
 
-1. Vyberte **Compute** a **Function App**.
+1. Dokončení nasazení může trvat několik minut. Po úspěšném nasazení si webovou aplikaci prohlédněte, abyste se ujistili, že funguje. Ve webovém prohlížeči přejděte na: `https://<your-site-name>.azurewebsites.net`
 
-   ![Vytvoření funkce](./media/custom-event-quickstart-portal/create-function.png)
+1. Zobrazí se web, na který se však zatím neodeslaly žádné události.
 
-1. Zadejte jedinečný název funkce Azure. Nepoužívejte název zobrazený na obrázku. Vyberte skupinu prostředků, kterou jste vytvořili v rámci tohoto článku. Jako plán hostování použijte **Plán Consumption**. Použijte navrhovaný nový účet úložiště. Můžete vypnout Application Insights. Po zadání hodnot vyberte **Vytvořit**.
+   ![Zobrazení nového webu](./media/custom-event-quickstart-portal/view-site.png)
 
-   ![Zdání hodnot funkce](./media/custom-event-quickstart-portal/provide-function-values.png)
+## <a name="subscribe-to-custom-topic"></a>Přihlášení k odběru vlastního tématu
 
-1. Po dokončení nasazení vyberte **Přejít k prostředku**.
+K odběru tématu Event Gridu se přihlašujete, aby služba Event Grid věděla, které události chcete sledovat a kam má tyto události odesílat.
 
-   ![Přejít k prostředku](./media/custom-event-quickstart-portal/go-to-resource.png)
+1. Na portálu vyberte své vlastní téma.
 
-1. Vedle položky **Funkce** vyberte **+**.
+   ![Výběr vlastního tématu](./media/custom-event-quickstart-portal/select-custom-topic.png)
 
-   ![Přidání funkce](./media/custom-event-quickstart-portal/add-function.png)
+1. Vyberte **+ Odběr události**.
 
-1. Z dostupných možností vyberte **Custom function** (Vlastní funkce).
+   ![Přidání odběru události](./media/custom-event-quickstart-portal/new-event-subscription.png)
 
-   ![Vlastní funkce](./media/custom-event-quickstart-portal/select-custom-function.png)
+1. Jako typ koncového bodu vyberte **Webhook**. Zadejte název odběru události.
 
-1. Posuňte se dolů, dokud nenajdete **Event Grid trigger** (Trigger služby Event Grid). Vyberte **C#**.
+   ![Zadání hodnot pro odběr události](./media/custom-event-quickstart-portal/provide-subscription-values.png)
 
-   ![Výběr triggeru služby Event Grid](./media/custom-event-quickstart-portal/select-event-grid-trigger.png)
+1. Zvolte **Vybrat koncový bod**. 
 
-1. Přijměte výchozí hodnoty a vyberte **Create** (Vytvořit).
+1. Jako koncový bod webhooku zadejte adresu URL vaší webové aplikace a do adresy URL domovské stránky přidejte `api/updates`. Zvolte **Potvrdit výběr**.
 
-   ![Nová funkce](./media/custom-event-quickstart-portal/new-function.png)
+   ![Zadání adresy URL koncového bodu](./media/custom-event-quickstart-portal/provide-endpoint.png)
 
-Vaše funkce je teď připravená přijímat události.
+1. Po zadání hodnot odběru události zvolte **Vytvořit**.
 
-## <a name="subscribe-to-a-topic"></a>Přihlášení k odběru tématu
+Podívejte se na webovou aplikaci znovu a všimněte si, že do ní byla odeslána událost ověření odběru. Vyberte ikonu oka a rozbalte data události. Služba Event Grid odešle událost ověření, aby koncový bod mohl ověřit, že data události chce přijímat. Webová aplikace obsahuje kód pro ověření odběru.
 
-K odběru tématu se přihlašujete, aby služba Event Grid věděla, které události chcete sledovat a kam má tyto události odesílat.
-
-1. Ve své funkci Azure vyberte **Přidání odběru Event Gridu**.
-
-   ![Přidání odběru Event Gridu](./media/custom-event-quickstart-portal/add-event-grid-subscription.png)
-
-1. Zadejte hodnoty pro odběr. Jako typ tématu vyberte **Témata Event Gridu**. Jako předplatné a skupinu prostředků vyberte předplatné a skupinu prostředků, ve kterých jste vytvořili vlastní téma. Jako instanci vyberte název vlastního tématu. Jako koncový bod odběratele je předem vyplněná adresa URL funkce.
-
-   ![Zadání hodnot odběru](./media/custom-event-quickstart-portal/provide-subscription-values.png)
-
-1. Před aktivací události otevřete protokoly funkce, kde se po odeslání zobrazí data události. V dolní části funkce Azure vyberte **Protokoly**.
-
-   ![Výběr protokolů](./media/custom-event-quickstart-portal/select-logs.png)
-
-Nyní aktivujeme událost, abychom viděli, jak služba Event Grid distribuuje zprávu do vašeho koncového bodu. Pro zjednodušení tohoto článku odešlete ukázková data události do vlastního tématu pomocí služby Cloud Shell. Obvykle by aplikace nebo služba Azure odesílala data události.
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+![Zobrazení události odběru](./media/custom-event-quickstart-portal/view-subscription-event.png)
 
 ## <a name="send-an-event-to-your-topic"></a>Odeslání události do tématu
 
-K odeslání testovací události do vlastního tématu použijte Azure CLI nebo PowerShell.
+Nyní aktivujeme událost, abychom viděli, jak služba Event Grid distribuuje zprávu do vašeho koncového bodu. K odeslání testovací události do vlastního tématu použijte Azure CLI nebo PowerShell. Obvykle by aplikace nebo služba Azure odesílala data události.
 
-V prvním příkladu se používá Azure CLI. Načte adresu URL a klíč tématu a data ukázkové události. Místo `<topic_name>` použijte název vašeho tématu. Pokud chcete zobrazit úplnou událost, použijte `echo "$body"`. Element JSON `data` je datová část vaší události. V tomto poli může být libovolný JSON ve správném formátu. Můžete také použít pole subject (předmět) pro pokročilé směrování a filtrování. CURL je nástroj, který odesílá požadavky HTTP.
+V prvním příkladu se používá Azure CLI. Načte adresu URL a klíč vlastního tématu a data ukázkové události. Místo položky `<topic_name>` použijte název vlastního tématu. Vytvoří se ukázková data události. Element JSON `data` je datová část vaší události. V tomto poli může být libovolný JSON ve správném formátu. Můžete také použít pole subject (předmět) pro pokročilé směrování a filtrování. CURL je nástroj, který odesílá požadavky HTTP.
 
 ```azurecli-interactive
 endpoint=$(az eventgrid topic show --name <topic_name> -g myResourceGroup --query "endpoint" --output tsv)
 key=$(az eventgrid topic key list --name <topic_name> -g myResourceGroup --query "key1" --output tsv)
 
-body=$(eval echo "'$(curl https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/event-grid/customevent.json)'")
+event='[ {"id": "'"$RANDOM"'", "eventType": "recordInserted", "subject": "myapp/vehicles/motorcycles", "eventTime": "'`date +%Y-%m-%dT%H:%M:%S%z`'", "data":{ "make": "Ducati", "model": "Monster"},"dataVersion": "1.0"} ]'
 
-curl -X POST -H "aeg-sas-key: $key" -d "$body" $endpoint
+curl -X POST -H "aeg-sas-key: $key" -d "$event" $endpoint
 ```
 
 V druhém příkladu se k provedení podobných kroků používá PowerShell.
@@ -165,9 +153,25 @@ $body = "["+(ConvertTo-Json $htbody)+"]"
 Invoke-WebRequest -Uri $endpoint -Method POST -Body $body -Headers @{"aeg-sas-key" = $keys.Key1}
 ```
 
-Právě jste aktivovali událost a služba Event Grid odeslala zprávu do koncového bodu, který jste nakonfigurovali při přihlášení k odběru. Podívejte se na protokoly, kde se zobrazí data události.
+Právě jste aktivovali událost a služba Event Grid odeslala zprávu do koncového bodu, který jste nakonfigurovali při přihlášení k odběru. Podívejte se na webovou aplikaci, abyste si zobrazili událost, kterou jste právě odeslali.
 
-![Zobrazení protokolů](./media/custom-event-quickstart-portal/view-log-entry.png)
+```json
+[{
+  "id": "1807",
+  "eventType": "recordInserted",
+  "subject": "myapp/vehicles/motorcycles",
+  "eventTime": "2017-08-10T21:03:07+00:00",
+  "data": {
+    "make": "Ducati",
+    "model": "Monster"
+  },
+  "dataVersion": "1.0",
+  "metadataVersion": "1",
+  "topic": "/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.EventGrid/topics/{topic}"
+}]
+```
+
+
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 08/27/2018
+ms.date: 10/03/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: ae2d312feb0fcefab85bcbbd2db7ac46c328213f
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: a23e9dc8fad52bac85de834c53d2c710423211c7
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43104978"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48269237"
 ---
 # <a name="what-is-azure-analysis-services"></a>Co je služba Azure Analysis Services?
 
@@ -39,7 +39,7 @@ Služba Azure Analysis Services je dostupná v úrovních **Developer**, **Basic
 
 ### <a name="developer-tier"></a>Úroveň Developer
 
-Tato úroveň se doporučuje pro scénáře testování, vývoje a vyhodnocení. Jeden plán zahrnuje stejné funkce jako úroveň Standard, ale s omezením výkonu, jednotek QPU a velikosti paměti. Škálování repliky dotazu na více instancí není pro tuto úroveň k dispozici. Tato úroveň nenabízí smlouvu SLA.
+Tato úroveň se doporučuje pro scénáře testování, vývoje a vyhodnocení. Jeden plán zahrnuje stejné funkce jako úroveň Standard, ale s omezením výkonu, jednotek QPU a velikosti paměti. Škálování repliky dotazu na více instancí pro tuto úroveň *není k dispozici*. Tato úroveň nenabízí smlouvu SLA.
 
 |Plánování  |Jednotky QPU  |Paměť (GB)  |
 |---------|---------|---------|
@@ -102,6 +102,7 @@ Služba Azure Analysis Services je podporována ve všech zemích/oblastech po c
 |Oblast  | Podporované plány | Repliky dotazů (pouze plány Standard) |
 |---------|---------|:---------:|
 |Austrálie – jihovýchod     | B1, B2, S0, S1, S2, S4, D1       |    1     |
+|Austrálie – východ     |    B1, B2, S0, S1, S2, S4    <br>S8, S9    |    3<br>1     |
 |Japonsko – východ  |   B1, B2, S0, S1, S2, S4, D1       |    1     |
 |Jihovýchodní Asie     |     B1, B2, S0, S1, S2, S4, S8, S9, D1     |   1      |
 |Indie – západ     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
@@ -128,7 +129,7 @@ Celková cena závisí na několika faktorech, například na zvolené oblasti, 
 
 Služba Azure Analysis Services je kompatibilní s mnoha skvělými funkcemi, které už jsou ve službě SQL Server Analysis Services Enterprise Edition. Azure Analysis Services podporuje tabulkové modely na [úrovni kompatibility](analysis-services-compat-level.md) 1200 nebo vyšší. Tabulkové modely jsou relační konstrukce modelování (model, tabulky, sloupce) vyjádřené v definicích objektů tabulkových metadat v jazyce TMSL (Tabular Model Scripting Language) a kódu tabulkového objektového modelu (TOM). Podporují se oddíly, perspektivy, zabezpečení na úrovni řádku, obousměrné relace i překlady*. Multidimenzionální modely a doplněk PowerPivot pro SharePoint se ve službě Azure Analysis Services *nepodporují*.
 
-Podporují se tabulkové modely v režimu DirectQuery i režimu v paměti. Tabulkové modely režimu v paměti (výchozí) podporují více zdrojů dat. Vzhledem k tomu, že data modelu jsou v režimu v paměti hodně komprimovaná a uložená v mezipaměti, poskytuje tento model nejrychlejší odezvu na dotazy ve velkých objemech dat. Poskytuje také největší flexibilitu pro složité datové sady a dotazy. Vytváření oddílů umožňuje přírůstkové načítání, zvyšuje paralelizaci a snižuje využití paměti. Podporují se i další pokročilé funkce modelování dat, jako jsou počítané tabulky a všechny funkce DAX. Modely v paměti se musí aktualizovat (zpracovávat) za účelem aktualizace dat v mezipaměti ze zdrojů dat. Díky podpoře instančních objektů Azure nabízí bezobslužné operace aktualizace pomocí PowerShellu, TOM, TMSL a REST flexibilitu při ověřování toho, že jsou data modelu vždy aktuální. 
+Podporují se tabulkové modely v režimu DirectQuery i režimu v paměti. Tabulkové modely režimu v paměti (výchozí) podporují více zdrojů dat. Vzhledem k tomu, že data modelu jsou v režimu v paměti hodně komprimovaná a uložená v mezipaměti, poskytuje tento model nejrychlejší odezvu na dotazy ve velkých objemech dat. Poskytuje také největší flexibilitu pro složité datové sady a dotazy. Vytváření oddílů umožňuje přírůstkové načítání, zvyšuje paralelizaci a snižuje využití paměti. Podporují se i další pokročilé funkce modelování dat, jako jsou počítané tabulky a všechny funkce DAX. Modely v paměti se musí aktualizovat (zpracovávat) za účelem aktualizace dat v mezipaměti ze zdrojů dat. Díky podpoře instančních objektů Azure nabízí bezobslužné operace aktualizace pomocí PowerShellu, TOM, TMSL a REST flexibilitu při zajišťování toho, aby byla data modelu vždy aktuální. 
 
 Režim DirectQuery* využívá relační databáze back-endu pro ukládání a spouštění dotazů. Extrémně velké datové sady ve zdrojích dat, jako je jeden SQL Server, SQL Server Data Warehouse, Azure SQL Database, Azure SQL Data Warehouse, Oracle a Teradata, se podporují. Datové sady back-endu mohou být větší než dostupná paměť prostředku serveru. Složité scénáře aktualizace datového modelu nejsou potřeba. Existují také určitá omezení, například omezené typy zdrojů dat, omezení vzorců DAX, a nepodporují se některé pokročilé funkce modelování dat. Než se rozhodnete, co je pro vás nejvhodnější, podívejte se na článek o [režimu DirectQuery](https://docs.microsoft.com/sql/analysis-services/tabular-models/directquery-mode-ssas-tabular).
 

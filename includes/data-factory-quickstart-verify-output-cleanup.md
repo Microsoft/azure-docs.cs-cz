@@ -17,6 +17,8 @@ Odstranění skupiny prostředků odstraní všechny prostředky, které v ní j
 Remove-AzureRmResourceGroup -ResourceGroupName $resourcegroupname
 ```
 
+Poznámka: Odstranění skupiny prostředků může chvíli trvat. Prosíme vás o trpělivost.
+
 Pokud chcete odstranit jenom datovou továrnu, a ne celou skupinu prostředků, spusťte následující příkaz: 
 
 ```powershell

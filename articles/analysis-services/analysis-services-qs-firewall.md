@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 07/03/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: c16a189e72edd94cf6fc60580d89dd4cfd1742e8
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 9af0c0a32706c6745412401c9136e032e2e3f9ff
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37443439"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48268914"
 ---
 # <a name="quickstart-configure-server-firewall---portal"></a>Rychlý start: Konfigurace brány firewall serveru – portál
 
@@ -32,7 +32,7 @@ V tomto rychlém startu se dozvíte, jak nakonfigurovat firewall pro server slu�
 
 1. Když kliknete na server, otevře se stránka Přehled. 
 2. V nabídce **NASTAVENÍ** > **Brána firewall** > **Povolit firewall** klikněte na **Zapnuto**.
-3. Pokud chcete povolit přístup DirectQuery ze služby Power BI, klikněte u **Povolit přístup ze služby Power BI** na **Zapnuto**.  
+3. Pokud chcete povolit přístup DirectQuery ze služby Power BI, u položky **Povolit přístup ze služby Power BI** klikněte na **Zapnuto**.  
 4. (Volitelné) Zadejte jeden nebo více rozsahů IP adres. V každém rozsahu zadejte název a počáteční a koncovou IP adresu. 
 5. Klikněte na **Uložit**.
 

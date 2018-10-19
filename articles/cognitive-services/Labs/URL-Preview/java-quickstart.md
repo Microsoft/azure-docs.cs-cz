@@ -1,31 +1,33 @@
 ---
-title: Rychlý start Java pro náhled adresy URL projektu - kognitivní služby Microsoft | Microsoft Docs
-description: Ukázka skriptu a začněte využívat ve verzi Preview adresa URL projektu v kognitivní služby společnosti Microsoft na platformě Azure.
+title: 'Rychlý start: Project URL Preview, Java'
+titlesuffix: Azure Cognitive Services
+description: Ukázkový skript, který vám pomůže rychle začít používat funkci Project URL Preview za použití Javy.
 services: cognitive-services
 author: mikedodaro
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: project-url-preview
-ms.topic: article
+ms.component: project-url-preview
+ms.topic: quickstart
 ms.date: 04/24/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: 2de74f48882605bfcf05f65723ba5d8993587f51
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: 95e33ceddc2fbbab51d3c4f0164b410847430244
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343247"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48867104"
 ---
-# <a name="url-preview-java-quickstart"></a>Adresa URL Preview Java rychlý start
+# <a name="quickstart-url-preview-with-java"></a>Rychlý start: URL Preview s využitím Javy
 
-V následujícím příkladu Java vytvoří Náhled adresy Url pro web SwiftKey: https://swiftkey.com/en.
+Následující příklady v jazyce Java vytvoří náhled adresy URL pro web SwiftKey: https://swiftkey.com/en.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Získat přístupový klíč pro bezplatné zkušební verze [kognitivní Labs služby](https://aka.ms/answersearchsubscription)
+Získání přístupového klíče k bezplatné zkušební verzi služby [Cognitive Services Labs](https://aka.ms/answersearchsubscription)
 
 ## <a name="request"></a>Žádost 
 
-Následující kód vytvoří `WebRequest`, nastaví hlavičku přístup klíče a přidá řetězec dotazu pro "https://swiftkey.com/en".  Pak odešle žádost a přiřadí odpověď na řetězec tak, aby obsahovala JSON text.
+Následující kód vytvoří požadavek `WebRequest`, nastaví hlavičku přístupového klíče a přidá řetězec dotazu „https://swiftkey.com/en“.  Potom požadavek odešle a přiřadí odpověď k řetězci obsahujícímu text JSON.
 
 ````
     // construct URL of search request (endpoint + query string)
@@ -47,13 +49,13 @@ Následující kód vytvoří `WebRequest`, nastaví hlavičku přístup klíče
     SearchResults results = new SearchResults(new HashMap<String, String>(), response);
 ````
 
-## <a name="complete-code"></a>Kompletní kód
+## <a name="complete-code"></a>Celý kód
 
-Rozhraní API služby Bing odpovědí Search vrátí výsledky z vyhledávacího webu Bing.
-1. Stáhnout nebo nainstalovat gson knihovny.
-2. Vytvoření nového projektu Java vaše oblíbené IDE nebo editoru.
-3. Přidejte kód níže uvedenou.
-4. Nahraďte hodnotu subscriptionKey přístupový klíč platný pro vaše předplatné.
+Rozhraní API Bingu pro vyhledávání odpovědí vrací výsledky z vyhledávače Bing.
+1. Stáhněte nebo nainstalujte knihovnu gson.
+2. Ve svém oblíbeném integrovaném vývojovém prostředí nebo editoru vytvořte nový projekt Javy.
+3. Přidejte níže uvedený kód.
+4. Hodnotu subscriptionKey nahraďte přístupovým klíčem platným pro vaše předplatné.
 5. Spusťte program.
 
 ````
@@ -165,8 +167,8 @@ class SearchResults{
 
 ````
 
-## <a name="next-steps"></a>Další postup
-- [Rychlý start C#](csharp.md)
-- [Rychlý start JavaScript](javascript.md)
-- [Rychlé spuštění uzlu](node-quickstart.md)
-- [Rychlý start PYthon](python-quickstart.md)
+## <a name="next-steps"></a>Další kroky
+- [Rychlý start pro jazyk C#](csharp.md)
+- [Rychlý start pro JavaScript](javascript.md)
+- [Rychlý start pro Node](node-quickstart.md)
+- [Rychlý start pro Python](python-quickstart.md)

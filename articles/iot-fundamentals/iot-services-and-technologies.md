@@ -1,27 +1,28 @@
 ---
 title: Technologie a řešení Azure Internet věcí (IoT)
 description: Představuje kolekci technologií a řešení PaaS či SaaS, které jsou k dispozici pro sestavení řešení Azure IoT.
-author: BryanLa
-manager: timlt
+author: robinsh
 ms.service: iot-fundamentals
 services: iot-fundamentals
 ms.topic: overview
-ms.date: 05/18/2018
-ms.author: bryanla
-ms.openlocfilehash: e875ec599323b3d037ba704d4cc54a48ff9b1b57
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.date: 10/09/2018
+ms.author: robinsh
+ms.openlocfilehash: 6a44c36b5dd87c28db3de34a6858e29fb5730117
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34631407"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49067330"
 ---
 # <a name="azure-iot-technologies-and-solutions-paas-and-saas"></a>Technologie a řešení Azure IoT: PaaS a SaaS
 
 Microsoft sestavil portfolio, které vyhovuje potřebám všech zákazníků a umožňuje jim přístup k výhodám digitální transformace. Produktové portfolio Azure IoT je přehledem dostupných technologií a řešení PaaS či SaaS. Představuje dvě cesty, kterými se můžete při sestavování vlastního řešení vydat:
+
 - Platforma jako služba (PaaS): sestavte si vlastní aplikaci pomocí [akcelerátorů řešení Azure IoT](https://www.azureiotsolutions.com/), což je kolekce předkonfigurovaných řešení na podnikové úrovni, která vám umožňuje urychlit vývoj vlastních řešení IoT.
+
 - Software jako služba (SaaS): začněte rychleji díky [Azure IoT Central](https://azure.microsoft.com/services/iot-central/), což je nové řešení SaaS pro vývoj aplikací IoT, aniž byste se museli vystavit složitosti řešení IoT. Pokud vaše organizace nemá dostatek prostředků na vytvoření vlastního řešení IoT, využijte Azure IoT Central, což je řešení IoT bez kódu, které dokáže vytvořit modely zařízení, řídicí panely a pravidla v řádech minut.
 
-![Technologie a řešení Azure IoT][img-paas-saas-technologies-solutions]
+![Technologie a řešení Azure IoT](./media/iot-comparison/paas-saas-technologies-solutions.png)
 
 ## <a name="solutions"></a>Řešení
 
@@ -79,7 +80,7 @@ Rozhodnutí, který produkt využít k sestavení vašeho řešení IoT, určuj�
 
 * Vaše obchodní požadavky
 * Typ řešení, které chcete sestavit
-* Dovednosti vaší organizace pro sestavování a správu řešení z dlouhodobého hlediska
+* Dovednosti vaší organizace v oblasti sestavování a dlouhodobé správy řešení
 
 ## <a name="technologies-paas"></a>Technologie (PaaS)
 
@@ -96,20 +97,12 @@ Připojte všechna svoje zařízení k Azure IoT pomocí [sad SDK pro zařízen�
 ### <a name="edge"></a>Edge
 [Azure IoT Edge](https://azure.microsoft.com/services/iot-edge/) je služba Internetu věcí (IoT). Tato služba je určená pro zákazníky, kteří chtějí analyzovat data na zařízeních, jinými slovy „na hraničních zařízeních“. Když přesunete část úloh na hraniční zařízení, snížíte tím latenci a získáte možnost offlinových scénářů.
 
-
 ### <a name="data-and-analytics"></a>Data a analýza
 Využijte ve svém řešení IoT řady nabídek PaaS pro produkty Azure pro data a analýzu. Máte na výběr řešení od přesunutí inteligentních cloudových funkcí do hraničních zařízení pomocí služby Azure Machine Learning, přes uložení dat zařízení IoT nákladově výhodným způsobem pomocí služby Azure Data Lake, až po vizualizaci obrovského množství dat ze zařízení IoT pomocí služby [Azure Time Series Insights](https://azure.microsoft.com/services/time-series-insights/).
 
 ### <a name="visualization-and-integration"></a>Vizualizace a integrace
 Microsoft Azure nabízí úplné cloudové řešení, které kombinuje neustále rostoucí kolekci integrovaných cloudových služeb se závazkem ohledně špičkové ochrany a soukromí vašich dat. Další informace o [Microsoft Azure](https://azure.microsoft.com/).
 
-
-
-
-
 ## <a name="next-steps"></a>Další kroky
 
-Pokud chcete rychle a snadno prozkoumat funkce IoT, podívejte se do části [Začínáme](/azure/iot-hub/iot-hub-get-started). Nebo pokud vás zajímají podrobnější praktické zkušenosti, vyzkoušejte jeden z [kurzů](/azure/iot-edge/tutorial-simulate-device-windows).
-
-[img-paas-saas-technologies-solutions]: media/iot-comparison/paas-saas-technologies-solutions.png
-
+Pokud chcete rychle a snadno prozkoumat funkce IoT, podívejte se do [části Začínáme v dokumentaci služby IoT Hub](/azure/iot-hub/iot-hub-get-started). Pokud stojíte o podrobnější praktické zkušenosti, vyzkoušejte jeden z [kurzů o službě IoT Edge](/azure/iot-edge/tutorial-simulate-device-windows).

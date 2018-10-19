@@ -5,15 +5,15 @@ services: data-factory
 author: linda33wj
 ms.service: data-factory
 ms.topic: include
-ms.date: 08/20/2018
+ms.date: 10/01/2018
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: ac6b53926ca6c44c8ec1e71db67321366aacb00e
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: 4b209953e957d0c2892bc5c6bca7a577992c5dee
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42617610"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48842876"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
@@ -21,18 +21,26 @@ ms.locfileid: "42617610"
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ### <a name="azure-roles"></a>Role Azure
-Pro vytvoření instancí služby Data Factory musí být uživatelský účet, který použijete pro přihlášení k Azure, členem role *přispěvatel* nebo *vlastník* nebo *správcem* předplatného Azure. Na webu Azure Portal v pravém horním rohu vyberte své uživatelské jméno a pak výběrem **Oprávnění** zobrazte oprávnění, která v předplatném máte. Pokud máte přístup k několika předplatným, vyberte odpovídající předplatné. Ukázku pokynů pro přidání uživatele k roli najdete v článku věnovaném [přidání rolí](../articles/billing/billing-add-change-azure-subscription-administrator.md).
+Pro vytvoření instancí služby Data Factory musí být uživatelský účet, který použijete pro přihlášení k Azure, členem role *přispěvatel* nebo *vlastník* nebo *správcem* předplatného Azure. Pokud chcete zobrazit oprávnění, která máte v předplatném, na webu Azure Portal v pravém horním rohu vyberte své uživatelské jméno a potom **Oprávnění**. Pokud máte přístup k několika předplatným, vyberte odpovídající předplatné. 
 
-Pokud chcete vytvářet a spravovat podřízené prostředky (včetně datových sad, propojených služeb, kanálů, triggerů a modulů runtime integrace) pro Data Factory prostřednictvím uživatelského rozhraní pro vytváření a monitorování na webu Azure Portal, musíte patřit do role **Přispěvatel Data Factory**. Pro vytváření a správu podřízených prostředků pomocí PowerShellu nebo sady SDK je dostatečná role **přispěvatele**.
+Při vytváření a správě podřízených prostředků pro službu Data Factory, včetně datových sad, propojených služeb, kanálů, triggerů a prostředí Integration Runtime, platí následující požadavky:
+- Pokud chcete vytvářet a spravovat podřízené prostředky na webu Azure Portal, je potřeba, abyste patřili do role **Přispěvatel Data Factory** na úrovni skupiny prostředků nebo vyšší.
+- Pro vytváření a správu podřízených prostředků pomocí PowerShellu nebo sady SDK na úrovni prostředku nebo vyšší je dostatečná role **Přispěvatel**.
+
+Ukázku pokynů pro přidání uživatele do role najdete v článku věnovaném [přidávání rolí](../articles/billing/billing-add-change-azure-subscription-administrator.md).
+
+Další informace najdete v následujících článcích:
+- [Role Přispěvatel Data Factory](../articles/role-based-access-control/built-in-roles.md#data-factory-contributor)
+- [Role a oprávnění pro službu Azure Data Factory](../articles/data-factory/concepts-roles-permissions.md)
 
 ### <a name="azure-storage-account"></a>Účet služby Azure Storage
 V tomto rychlém startu budete účet úložiště Azure (konkrétně úložiště objektů blob) pro obecné účely používat jako *zdrojové* i *cílové úložiště dat*. Pokud nemáte účet úložiště Azure pro obecné účely, přečtěte si téma [Vytvoření účtu úložiště](../articles/storage/common/storage-quickstart-create-account.md) a účet si vytvořte. 
 
 #### <a name="get-the-storage-account-name-and-account-key"></a>Získání názvu a klíče účtu úložiště
-V tomto rychlém startu použijete název a klíč svého účtu úložiště Azure. Následující postup předvádí kroky k získání názvu a klíče vašeho účtu úložiště. 
+V tomto rychlém startu budete potřebovat název a klíč svého účtu úložiště Azure. Následující postup předvádí kroky k získání názvu a klíče vašeho účtu úložiště. 
 
 1. Přejděte ve webovém prohlížeči na web [Azure Portal](https://portal.azure.com). Přihlaste se pomocí uživatelského jména a hesla pro Azure. 
-2. V nabídce vlevo vyberte **Další služby**, použijte filtr s klíčovým slovem **úložiště** a vyberte **Účty úložiště**.
+2. V nabídce vlevo vyberte **Všechny služby**, použijte filtr s klíčovým slovem **úložiště** a vyberte **Účty úložiště**.
 
    ![Vyhledání účtu úložiště](media/data-factory-quickstart-prerequisites/search-storage-account.png)
 3. V seznamu účtů úložiště vyfiltrujte váš účet úložiště (pokud je to potřeba) a pak vyberte váš účet úložiště. 
@@ -56,7 +64,7 @@ V této části vytvoříte v úložišti objektů blob v Azure kontejner objekt
 4. V seznamu kontejnerů vyberte **adftutorial**. 
 
    ![Výběr kontejneru](media/data-factory-quickstart-prerequisites/seelct-adftutorial-container.png)
-1. Na stránce **Kontejner** vyberte na panelu nástrojů **Nahrát**.  
+5. Na stránce **Kontejner** vyberte na panelu nástrojů **Nahrát**.  
 
    ![Tlačítko Nahrát](media/data-factory-quickstart-prerequisites/upload-toolbar-button.png)
 6. Na stránce **Nahrát objekt blob** vyberte **Upřesnit**.

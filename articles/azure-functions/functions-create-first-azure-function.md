@@ -12,16 +12,16 @@ ms.topic: quickstart
 ms.date: 03/28/2018
 ms.author: glenga
 ms.custom: mvc, devcenter, cc996988-fb4f-47
-ms.openlocfilehash: d208a4b72a27eb288d46ee591f42a8f6b71c4f70
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: a1a593dc037901f6661bc8c7268d835bc5a48c94
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44094055"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48900608"
 ---
 # <a name="create-your-first-function-in-the-azure-portal"></a>Vytvoření první funkce na webu Azure Portal
 
-Služba Azure Functions umožňuje spuštění kódu v prostředí [bez serveru](https://azure.microsoft.com/overview/serverless-computing/), aniž byste nejdřív museli vytvořit virtuální počítač nebo publikovat webovou aplikaci. V tomto tématu se dozvíte, jak pomocí služby Functions vytvořit na webu Azure Portal funkci Hello World.
+Služba Azure Functions umožňuje spuštění kódu v prostředí [bez serveru](https://azure.microsoft.com/solutions/serverless/), aniž byste nejdřív museli vytvořit virtuální počítač nebo publikovat webovou aplikaci. V tomto tématu se dozvíte, jak pomocí služby Functions vytvořit na webu Azure Portal funkci Hello World.
 
 ![Vytvoření aplikace Function App na webu Azure Portal](./media/functions-create-first-azure-function/function-app-in-portal-editor.png)
 
@@ -44,13 +44,15 @@ Dál vytvoříte v nové aplikaci Function App funkci.
 
 ## <a name="create-function"></a>Vytvoření funkce aktivované protokolem HTTP
 
-1. Rozbalte novou aplikaci Function App a potom klikněte na tlačítko **+** vedle položky **Funkce**.
+1. Rozbalte svoji novou aplikaci funkcí, vyberte tlačítko **+** vedle položky **Funkce**, zvolte **Na portálu** a potom **Pokračovat**.
 
-2.  Na stránce **Začněte rychle** vyberte **Webhook + API**, **Zvolte jazyk** funkce a klikněte na **Vytvořit tuto funkci**. 
-   
+    ![Rychlý start služby Functions – výběr platformy](./media/functions-create-first-azure-function/function-app-quickstart-choose-portal.png)
+
+1. Zvolte **Webhook + API** a potom vyberte **Vytvořit**.
+
     ![Stručný úvod do služby Functions na webu Azure Portal.](./media/functions-create-first-azure-function/function-app-quickstart-node-webhook.png)
 
-Funkce ve vybraném jazyce se vytvoří pomocí šablony funkce aktivované protokolem HTTP. Toto téma ukazuje funkci skriptu jazyka C# na portálu, ale můžete vytvořit funkci v libovolném [podporovaném jazyku](supported-languages.md). 
+Na základě šablony funkce aktivované protokolem HTTP pro určitý jazyk se vytvoří funkce.
 
 Novou funkci můžete spustit odesláním požadavku HTTP.
 
@@ -62,13 +64,13 @@ Novou funkci můžete spustit odesláním požadavku HTTP.
 
 2. Vložte adresu URL funkce do panelu Adresa vašeho prohlížeče. Na konec této adresy URL připojte hodnotu řetězce dotazu `&name=<yourname>` a stisknutím klávesy `Enter` na klávesnici požadavek proveďte. V prohlížeči by se měla zobrazit odpověď, kterou funkce vrátila.  
 
-    Následující příklad ukazuje odpověď v prohlížeči Microsoft Edge (ostatní prohlížeče můžou zahrnovat zobrazený kód XML):
+    Následující příklad ukazuje odpověď v prohlížeči:
 
     ![Odezva funkce v prohlížeči.](./media/functions-create-first-azure-function/function-app-browser-testing.png)
 
-    Adresa URL požadavku obsahuje klíč, který je ve výchozím nastavení nezbytný pro přístup k funkci přes protokol HTTP.   
+    Adresa URL požadavku obsahuje klíč, který je ve výchozím nastavení nezbytný pro přístup k funkci přes protokol HTTP.
 
-3. Při spuštění funkce se do protokolů zaznamenávají informace o trasování. Pokud chcete zobrazit výstup trasování z předchozího zpracování, vraťte se k funkci na portálu a kliknutím na šipku ve spodní části obrazovky rozbalte položku **Protokoly**. 
+3. Při spuštění funkce se do protokolů zaznamenávají informace o trasování. Pokud chcete zobrazit výstup trasování z předchozího zpracování, vraťte se k funkci na portálu a kliknutím na šipku ve spodní části obrazovky rozbalte položku **Protokoly**.
 
    ![Prohlížeč protokolu funkcí na webu Azure Portal.](./media/functions-create-first-azure-function/function-view-logs.png)
 
@@ -82,7 +84,4 @@ Vytvořili jste aplikaci Function App s jednoduchou funkcí aktivovanou protokol
 
 [!INCLUDE [Next steps note](../../includes/functions-quickstart-next-steps.md)]
 
-Další informace najdete v tématu [Vazby protokolu HTTP služby Azure Functions a vazby webhooku](functions-bindings-http-webhook.md).
-
-
-
+Další informace najdete v tématu [Vazby protokolu HTTP služby Azure Functions](functions-bindings-http-webhook.md).

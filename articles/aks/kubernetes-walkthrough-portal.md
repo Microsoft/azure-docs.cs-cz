@@ -1,20 +1,19 @@
 ---
-title: Rychlý start – rychlý start práce na portálu Azure s clusterem Kubernetes
-description: Rychle se naučíte, jak pomocí portálu Azure vytvořit cluster Kubernetes pro kontejnery Linuxu ve službě AKS.
+title: Rychlý start – vytvoření clusteru služby Azure Kubernetes Service na portálu
+description: Zjistěte, jak pomocí webu Azure Portal rychle vytvořit cluster služby AKS (Azure Kubernetes Service) a potom nasadit a monitorovat aplikaci.
 services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
 ms.topic: quickstart
-ms.date: 07/27/2018
+ms.date: 09/24/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: aceddc2594065c9c36f8dbf63fce2ad03577a383
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 5d70f00294b1f08d2cc4cede6575efd3149599dd
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39443363"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49067447"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster"></a>Rychlý start: Nasazení clusteru Azure Kubernetes Service (AKS)
 
@@ -40,15 +39,13 @@ Pokud chcete vytvořit cluster AKS, proveďte následující kroky:
     - *ŠKÁLOVÁNÍ:* Vyberte velikost virtuálního počítače pro uzly AKS. Velikost virtuálního počítače **nejde** změnit po nasazení clusteru AKS.
         - Vyberte počet uzlů, které se mají do clusteru nasadit. Pro účely tohoto rychlého startu nastavte **Počet uzlů** na hodnotu *1*. Počet uzlů **jde** upravit po nasazení clusteru.
     
-    ![Vytvoření clusteru AKS – zadání základních informací](media/kubernetes-walkthrough-portal/create-cluster-1.png)
+    ![Vytvoření clusteru AKS – zadání základních informací](media/kubernetes-walkthrough-portal/create-cluster-basics.png)
 
     Po dokončení vyberte **Další: Ověřování**.
 
 1. **Ověřování:** Nakonfigurujte následující možnosti:
     - Vytvořte nový instanční objekt nebo *nakonfigurujte* použití existujícího. Pokud použijete stávající hlavní název služby (SPN), je potřeba zadat ID klienta a tajný klíč SPN.
     - Povolte možnost řízení přístupu na základě role (RBAC) v Kubernetes. Tyto ovládací prvky poskytují podrobnější řízení přístupu k prostředkům Kubernetes nasazeným ve vašem clusteru AKS.
-
-    ![Vytvoření clusteru AKS – konfigurace ověřování](media/kubernetes-walkthrough-portal/create-cluster-2.png)
 
     Jakmile budete hotovi, vyberte **Další: Sítě**.
 
@@ -59,7 +56,7 @@ Pokud chcete vytvořit cluster AKS, proveďte následující kroky:
     
     Jakmile budete hotovi, vyberte **Další: Monitorování**.
 
-1. Při nasazování clusteru AKS můžete nakonfigurovat službu Azure Container Insights tak, monitorovala stav clusteru AKS a podů spuštěných v clusteru. Další informace o monitorování stavu clusteru najdete v tématu [Monitorování stavu služby Azure Kubernetes Service][aks-monitor].
+1. Při nasazování clusteru AKS můžete nakonfigurovat službu Azure Monitor pro kontejnery tak, aby monitorovala stav clusteru AKS a podů spuštěných v clusteru. Další informace o monitorování stavu clusteru najdete v tématu [Monitorování stavu služby Azure Kubernetes Service][aks-monitor].
 
     Výběrem možnosti **Ano** povolte monitorování kontejneru a vyberte existující pracovní prostor Log Analytics nebo vytvořte nový.
     
@@ -93,7 +90,7 @@ Následující příklad výstupu ukazuje jeden uzel vytvořený v předchozích
 
 ```
 NAME                       STATUS    ROLES     AGE       VERSION
-aks-agentpool-14693408-0   Ready     agent     10m       v1.10.5
+aks-agentpool-14693408-0   Ready     agent     10m       v1.11.2
 ```
 
 ## <a name="run-the-application"></a>Spuštění aplikace
@@ -117,6 +114,13 @@ spec:
       containers:
       - name: azure-vote-back
         image: redis
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 250m
+            memory: 256Mi
         ports:
         - containerPort: 6379
           name: redis
@@ -145,6 +149,13 @@ spec:
       containers:
       - name: azure-vote-front
         image: microsoft/azure-vote-front:v1
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 250m
+            memory: 256Mi
         ports:
         - containerPort: 80
         env:
@@ -209,13 +220,20 @@ Otevřete webový prohlížeč a přejděte na externí IP adresu vaší služby
 
 Při vytváření clusteru se povolilo monitorování přehledů o kontejnerech. Tato funkce monitorování poskytuje metriky stavu clusteru AKS i podů spuštěných na tomto clusteru. Další informace o monitorování stavu clusteru najdete v tématu [Monitorování stavu služby Azure Kubernetes Service][aks-monitor].
 
-Naplnění těchto dat na webu Azure Portal může trvat několik minut. Pokud chcete zobrazit aktuální stav, dobu provozu a využití prostředků pro pody Azure Vote, na webu Azure Portal přejděte zpět k prostředku AKS, například *myAKSCluster*. Zvolte **Monitorovat stav kontejneru**, vyberte **výchozí** obor názvů a pak vyberte **Kontejnery**.  Zobrazí se kontejnery *azure-vote-back* a *azure-vote-front*:
+Naplnění těchto dat na webu Azure Portal může trvat několik minut. Pokud chcete zobrazit aktuální stav, dobu provozu a využití prostředků pro pody Azure Vote, na webu Azure Portal přejděte zpět k prostředku AKS, například *myAKSCluster*. Přístup ke stavu potom získáte následujícím způsobem:
+
+1. V části **Sledování** na levé straně zvolte **Přehledy (Preview)**
+1. V horní části zvolte **+ Přidat filtr**
+1. Jako vlastnost vyberte *Obor názvů* a potom zvolte *\<Všechny kromě kube-system\>*.
+1. Vyberte zobrazení **Kontejnery**.
+
+Zobrazí se kontejnery *azure-vote-back* a *azure-vote-front*, jak ukazuje následující příklad:
 
 ![Zobrazení stavu spuštěných kontejnerů v AKS](media/kubernetes-walkthrough-portal/monitor-containers.png)
 
-Pokud chcete zobrazit protokoly pro pod `azure-vote-front`, vyberte odkaz **Zobrazit protokoly** na pravé straně seznamu kontejnerů. Tyto protokoly obsahují streamy výstupů *stdout* a *stderr* z kontejneru.
+Pokud chcete zobrazit protokoly pro pod `azure-vote-front`, vyberte odkaz **Zobrazit protokoly kontejnerů** na pravé straně seznamu kontejnerů. Tyto protokoly obsahují streamy výstupů *stdout* a *stderr* z kontejneru.
 
-![Zobrazení protokolů kontejneru v AKS](media/kubernetes-walkthrough-portal/monitor-containers-logs.png)
+![Zobrazení protokolů kontejneru v AKS](media/kubernetes-walkthrough-portal/monitor-container-logs.png)
 
 ## <a name="delete-cluster"></a>Odstranění clusteru
 
@@ -224,6 +242,9 @@ Když už cluster nepotřebujete, odstraňte prostředek clusteru, čímž odstr
 ```azurecli-interactive
 az aks delete --resource-group myResourceGroup --name myAKSCluster --no-wait
 ```
+
+> [!NOTE]
+> Při odstranění clusteru se neodebere instanční objekt služby Azure Active Directory používaný clusterem AKS. Postup odebrání instančního objektu najdete v tématu věnovaném [aspektům instančního objektu AKS a jeho odstranění][sp-delete].
 
 ## <a name="get-the-code"></a>Získání kódu
 
@@ -258,3 +279,4 @@ Další informace o službě AKS a podrobné vysvětlení kompletního příklad
 [aks-network]: ./networking-overview.md
 [aks-tutorial]: ./tutorial-kubernetes-prepare-app.md
 [http-routing]: ./http-application-routing.md
+[sp-delete]: kubernetes-service-principal.md#additional-considerations

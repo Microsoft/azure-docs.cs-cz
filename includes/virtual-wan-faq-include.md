@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 09/10/2018
+ms.date: 10/05/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: de744a4a23b246223ed0f42f3d079b1ac2e5521a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 761b68ca99df8ae5b4d379b95e7d2a300f7e6238
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47008817"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48874009"
 ---
 ### <a name="what-is-the-difference-between-an-azure-virtual-network-gateway-vpn-gateway-and-an-azure-virtual-wan-vpngateway"></a>Jaký je rozdíl mezi bránou virtuální sítě Azure (VPN Gateway) a Azure Virtual WAN vpngateway?
 
@@ -21,7 +21,11 @@ Virtual WAN poskytuje možnosti připojení typu Site-to-Site ve velkém měří
 
 ### <a name="which-device-providers-virtual-wan-partners-are-supported-at-launch-time"></a>Kteří poskytovatelé zařízení (partneři pro Virtual WAN) se podporují při uvedení na trh? 
 
-Plně automatizované prostředí Virtual WAN v současnosti podporují Citrix a Riverbed. Další informace najdete v tématu [Partneři Virtual WAN](https://go.microsoft.com/fwlink/p/?linkid=2019615).
+Plně automatizované prostředí Virtual WAN v současnosti podporuje celá řada partnerů. Další informace najdete v tématu [Partneři Virtual WAN](https://go.microsoft.com/fwlink/p/?linkid=2019615). 
+
+### <a name="what-are-the-virtual-wan-partner-automation-steps"></a>Jaké jsou kroky automatizace Virtual WAN u partnerů?
+
+Informace o krocích automatizace u partnerů najdete v tématu o [automatizaci Virtual WAN u partnerů](../articles/virtual-wan/virtual-wan-configure-automation-providers.md).
 
 ### <a name="am-i-required-to-use-a-preferred-partner-device"></a>Musím použít preferované partnerské zařízení?
 
@@ -41,7 +45,7 @@ Ano, Virtual WAN zavádí nové prostředky Resource Manageru. Další informace
 
 ### <a name="how-many-vpn-devices-can-connect-to-a-single-hub"></a>Kolik zařízení VPN se může připojit k jednomu rozbočovači?
 
-Podporuje se nejvýš 100 připojení na jeden virtuální rozbočovač. Každé připojení se skládá ze dvou tunelů, které jsou v konfiguraci aktivní–aktivní. Tyto tunely končí v Azure Virtual Hub vpngateway.
+Podporuje se až 1000 připojení na jeden virtuální rozbočovač. Každé připojení se skládá ze dvou tunelů, které jsou v konfiguraci aktivní–aktivní. Tyto tunely končí v Azure Virtual Hub vpngateway.
 
 ### <a name="can-the-on-premises-vpn-device-connect-to-multiple-hubs"></a>Může se místní zařízení VPN připojit k více rozbočovačům?
 
@@ -51,7 +55,7 @@ Ano. Počáteční komunikace by probíhala z místního zařízení na nejbliž
 
  Ne.
 
-### <a name="can-spoke-vnets-connected-to-a-virtual-hub-communicate-with-each-other"></a>Můžou hvězdicové virtuální sítě připojené k virtuálnímu rozbočovači vzájemně komunikovat?
+### <a name="can-spoke-vnets-connected-to-a-virtual-hub-communicate-with-each-other"></a>Mohou paprskové virtuální sítě připojené k virtuálnímu rozbočovači vzájemně komunikovat?
 
 Ano. Mezi paprsky připojenými v virtuálnímu rozbočovači je možné přímo využít VNet Peering. Další informace najdete v tématu [VNet Peering](../articles/virtual-network/virtual-network-peering-overview.md).
 
@@ -66,7 +70,6 @@ Ne. Virtuální síť připojená k virtuálnímu rozbočovači nemůže mít br
 ### <a name="is-there-support-for-bgp"></a>Podporuje se BGP?
 
 Ano, BGP se podporuje. Aby bylo zajištěno, že trasy z virtuální sítě virtuálního síťového zařízení budou odpovídajícím způsobem inzerovány, musí paprsky zakázat BGP, pokud jsou připojené k virtuální síti virtuálního síťového zařízení, která je pak připojená k virtuálnímu rozbočovači. Hvězdicové virtuální sítě dále připojte k virtuálnímu rozbočovači, abyste zajistili, že trasy hvězdicových virtuálních budou šířeny do místních systémů.
-Dá se ve virtuálním rozbočovači směrovat provoz s využitím UDR?
 
 ### <a name="can-i-direct-traffic-using-udr-in-the-virtual-hub"></a>Dá se ve virtuálním rozbočovači směrovat provoz s využitím UDR?
 
@@ -94,7 +97,7 @@ Ano.
 
 ### <a name="how-is-virtual-wan-different-from-the-existing-azure-virtual-network-gateway"></a>Jak se Virtual WAN liší od existující brány virtuální sítě Azure?
 
-Síť VPN brány virtuální sítě je omezená na 30 tunelů. Pro připojení byste měli pro rozsáhlé sítě VPN používat Virtual WAN. V rozbočovači můžete mít až 100 pobočkových připojení s rychlostí 2 Gb/s. Připojení je tunel typu aktivní-aktivní z místního zařízení VPN do virtuálního rozbočovače. V každé oblasti můžete mít jeden rozbočovač, což znamená, že můžete připojit více než 100 poboček v rámci více rozbočovačů.
+Síť VPN brány virtuální sítě je omezená na 30 tunelů. Pro připojení byste měli pro rozsáhlé sítě VPN používat Virtual WAN. Ve všech oblastech kromě oblasti USA – středozápad můžete v centru připojit až 1000 připojení poboček s rychlostí 2 GB/s. Pro oblast USA – středozápad je dostupná rychlost 20 GB/s. V budoucnu budeme postupně zavádět rychlost 20 GB/s i do dalších oblastí. Připojení je tunel typu aktivní-aktivní z místního zařízení VPN do virtuálního rozbočovače. V každé oblasti můžete mít jeden rozbočovač, což znamená, že můžete připojit více než 1000 poboček mezi různými rozbočovači.
 
 ### <a name="does-this-virtual-wan-require-expressroute-from-each-site"></a>Vyžaduje tato služba Virtual WAN ExpressRoute z každé lokality?
 
@@ -102,7 +105,7 @@ Ne, Virtual WAN nevyžaduje ExpressRoute z každé lokality. Využívá standard
 
 ### <a name="is-there-a-network-throughput-limit-when-using-azure-virtual-wan"></a>Platí při použití Azure Virtual WAN nějaké omezení propustnosti sítě?
 
-Počet poboček je omezený na 100 připojení na rozbočovač/oblast a celkem 2 Gb/s v rozbočovači.
+Počet poboček je omezený na 1000 připojení na rozbočovač/oblast a celkem 2 Gb/s v rozbočovači. Výjimkou je oblast USA – středozápad, která nabízí celkem 20 GB/s. Rychlost 20 GB/s budeme postupně zavádět i do jiných oblastí.
 
 ### <a name="does-virtual-wan-allow-the-on-premises-device-to-utilize-multiple-isps-in-parallel-or-is-it-always-a-single-vpn-tunnel"></a>Umožňuje Virtual WAN místním zařízením využívat paralelně několik poskytovatelů internetových služeb, nebo jde vždycky o jeden tunel VPN?
 
@@ -110,7 +113,7 @@ Ano, v závislosti na zařízení pobočky můžete mít z jedné pobočky tunel
 
 ### <a name="how-is-traffic-routed-on-the-azure-backbone"></a>Jak se směruje provoz v páteřní síti Azure?
 
-Přenos probíhá takto: zařízení pobočky -> poskytovatel internetových služeb -> Microsoft Edge -> datové centrum Microsoftu -> Microsoft Edge -> poskytovatel internetových služeb -> zařízení pobočky.
+Přenos probíhá takto: zařízení pobočky -> poskytovatel internetu -> Microsoft Edge -> datové centrum Microsoftu -> Microsoft Edge -> poskytovatel internetu -> zařízení pobočky.
 
 ### <a name="in-this-model-what-do-you-need-at-each-site-just-an-internet-connection"></a>Co je při použití tohoto modelu potřeba na jednotlivých lokalitách? Jenom připojení k internetu?
 

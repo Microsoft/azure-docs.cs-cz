@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: video-indexer
 ms.topic: overview
-ms.date: 09/15/2018
+ms.date: 10/10/2018
 ms.author: nolachar
-ms.openlocfilehash: fd92e91989bd1a37626227b327d644c9d704ab6c
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: cf761342bb434100920c3888f2f441b9f8c8de08
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45983010"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49077913"
 ---
 # <a name="what-is-video-indexer"></a>Co je Video Indexer?
 
@@ -38,8 +38,8 @@ Azure Video Indexer je cloudová aplikace sestavená s využitím služeb Azure 
 - **Extrakce značek**: Extrahuje značky z řeči a vizuálního textu.
 - **Detekce tváří**: Detekuje a seskupí tváře, které jsou ve videu zobrazené.
 - **Extrakce miniatur tváří („nejlepší tvář“)**: Automaticky identifikuje nejvhodnější zachycenou tvář v každé skupině tváří (podle kvality, velikosti a čelní polohy) a extrahuje ji jako obrázek.
-- **Identifikace celebrit**: Rozpozná celebrity ve videu podle databáze 1 milionu celebrit. Zdroje pochází z IMDb, Wikipedie a nejvlivnějších osob z LinkedIn.
-- **Vlastní identifikace tváří**: Rozpozná tváře na videu podle vlastního modelu vytrénovaného pro konkrétní účet.
+- **Identifikace celebrit:** Video Indexer automaticky identifikuje přes 1 milion celebrit, třeba světové vůdce, herce a herečky, sportovce, vědce nebo vůdčí osobnosti ze světa obchodu a technologií z celého světa. Data o těchto celebritách najdete taky na různých známých webech, třeba IMDB nebo v encyklopedii Wikipedia.
+- **Identifikace tváře na základě účtu:** Video Indexer trénuje model pro konkrétní účet. Potom na základě modelu vytrénovaného speciálně pro videa v příslušném účtu dokáže rozpoznat tváře ve videu.
 - **Zmírnění textového obsahu**: Detekuje explicitní text v přepisu zvuku.
 - **Detekce záběrů**: Zjistí, kdy se ve videu změnila scéna.
 - **Detekce černých snímků**: Identifikuje černé snímky ve videu.

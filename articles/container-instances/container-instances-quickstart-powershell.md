@@ -1,26 +1,25 @@
 ---
-title: Rychlý start – Vytvoření prvního kontejneru služby Azure Container Instances pomocí PowerShellu
-description: V tomto rychlém startu pomocí Azure PowerShellu nasadíte kontejner Windows ve službě Azure Container Instances.
+title: Rychlý start – spuštění aplikace ve službě Azure Container Instances
+description: V tomto rychlém startu nasadíte pomocí prostředí Azure PowerShell kontejner Dockeru ve službě Azure Container Instances.
 services: container-instances
-author: mmacy
-manager: jeconnoc
+author: dlepow
 ms.service: container-instances
 ms.topic: quickstart
-ms.date: 05/11/2018
-ms.author: marsma
+ms.date: 10/02/2018
+ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 4a1d338304dbd5e2845768b7bf0273eed23af0ec
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 33444e810a2deebee11e535c73ce3e249f42b340
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38453562"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48854639"
 ---
-# <a name="quickstart-create-your-first-container-in-azure-container-instances"></a>Rychlý start: Vytvoření prvního kontejneru ve službě Azure Container Instances
+# <a name="quickstart-run-an-application-in-azure-container-instances"></a>Rychlý start: Spuštění aplikace ve službě Azure Container Instances
 
-Služba Azure Container Instances usnadňuje vytváření a správu kontejnerů Dockeru v Azure, aniž byste museli zřizovat virtuální počítače nebo používat službu vyšší úrovně. V tomto rychlém startu vytvoříte kontejner Windows v Azure a zveřejníte ho na internetu s použitím plně kvalifikovaného názvu domény. K dokončení této operace stačí jediný příkaz. Za chvíli se ve vašem prohlížeči zobrazí spuštěná aplikace:
+Spouštějte kontejnery Dockeru v Azure rychle a snadno pomocí Azure Container Instances. Nemusíte nasazovat virtuální počítače ani používat úplnou platformu orchestrace kontejnerů jako Kubernetes. V tomto rychlém startu pomocí webu Azure Portal vytvoříte kontejner s Windows v Azure a zpřístupníte jeho aplikaci s použitím plně kvalifikovaného názvu domény. Několik sekund po provedení příkazu k jednomu nasazení můžete přejít k běžící aplikaci:
 
-![Aplikace nasazená pomocí služby Azure Container Instances zobrazená v prohlížeči][qs-powershell-01]
+![Aplikace nasazená do služby Azure Container Instances zobrazená v prohlížeči][qs-powershell-01]
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
@@ -30,7 +29,9 @@ Pokud se rozhodnete nainstalovat a používat PowerShell místně, musíte použ
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Vytvořte skupinu prostředků Azure pomocí příkazu [New-AzureRmResourceGroup][New-AzureRmResourceGroup]. Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.
+Instance kontejnerů Azure, stejně jako všechny prostředky Azure, se musí nasadit do skupiny prostředků. Skupiny prostředků vám umožňují organizaci a správu souvisejících prostředků Azure.
+
+Nejdřív pomocí následujícího příkazu [New-AzureRmResourceGroup][New-AzureRmResourceGroup] vytvořte skupinu prostředků s názvem *myResourceGroup* v umístění *eastus*:
 
  ```azurepowershell-interactive
 New-AzureRmResourceGroup -Name myResourceGroup -Location EastUS
@@ -38,15 +39,15 @@ New-AzureRmResourceGroup -Name myResourceGroup -Location EastUS
 
 ## <a name="create-a-container"></a>Vytvoření kontejneru
 
-Kontejner můžete vytvořit zadáním názvu, image Dockeru a skupiny prostředků Azure do rutiny [New-AzureRmContainerGroup][New-AzureRmContainerGroup]. Volitelně můžete kontejner zveřejnit na internetu s použitím popisku názvu DNS.
+Teď máte skupinu prostředků a můžete spustit kontejner v Azure. K vytvoření instance kontejneru pomocí Azure PowerShellu zadejte do rutiny [New-AzureRmContainerGroup][New-AzureRmContainerGroup] název skupiny prostředků, název instance kontejneru a image kontejneru Dockeru. Kontejnery můžete zveřejnit na internetu tak, že zadáte jeden nebo více otevíraných portů, popisek názvu DNS nebo oboje. V tomto rychlém startu nasadíte kontejner s popiskem názvu DNS, který je hostitelem Internetové informační služby (IIS) běžící na serveru Nano.
 
-Spuštěním následujícího příkazu spusťte kontejner Nano Server se spuštěnou Internetovou informační službou (IIS). Hodnota `-DnsNameLabel` musí být jedinečná v rámci oblasti Azure, ve které instanci vytváříte, takže ji možná budete muset pro zajištění jedinečnosti upravit.
+Spuštěním následujícího příkazu spusťte instanci kontejneru. Hodnota `-DnsNameLabel` musí být jedinečná v rámci oblasti Azure, ve které vytváříte instanci. Pokud se zobrazí chybová zpráva „Popisek názvu DNS není dostupný“, zkuste jiný popisek názvu DNS.
 
  ```azurepowershell-interactive
 New-AzureRmContainerGroup -ResourceGroupName myResourceGroup -Name mycontainer -Image microsoft/iis:nanoserver -OsType Windows -DnsNameLabel aci-demo-win
 ```
 
-Během několika sekund byste měli obdržet odpověď na váš požadavek. Zpočátku je kontejner ve stavu **Vytváření**, ale během několika minut by se měl spustit. Stav nasazení můžete zkontrolovat pomocí rutiny [Get-AzureRmContainerGroup][Get-AzureRmContainerGroup]:
+Během několika sekund by se měla zobrazit odezva z Azure. Stav `ProvisioningState` kontejneru má nejdřív hodnotu **Vytváření**, ale během jedné nebo dvou minut by se měla zobrazit hodnota **Úspěšné**. Zkontrolujte stav nasazení pomocí rutiny [Get-AzureRmContainerGroup][Get-AzureRmContainerGroup]:
 
  ```azurepowershell-interactive
 Get-AzureRmContainerGroup -ResourceGroupName myResourceGroup -Name mycontainer
@@ -78,7 +79,7 @@ State                    : Pending
 Events                   : {}
 ```
 
-Jakmile se **ProvisioningState** (Stav zřizování) clusteru změní na `Succeeded` (Úspěch), přejděte v prohlížeči na jeho plně kvalifikovaný název domény (`Fqdn`):
+Jakmile má kontejner u stavu `ProvisioningState` hodnotu **Úspěšné**, přejděte v prohlížeči na jeho položku `Fqdn`. Pokud zobrazená webová stránka vypadá přibližně takto, blahopřejeme! Úspěšně jste nasadili aplikaci spuštěnou v kontejneru Dockeru do Azure.
 
 ![Služba IIS nasazená pomocí služby Azure Container Instances zobrazená v prohlížeči][qs-powershell-01]
 
@@ -92,7 +93,7 @@ Remove-AzureRmContainerGroup -ResourceGroupName myResourceGroup -Name mycontaine
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste vytvořili instanci kontejneru Azure z image ve veřejném registru Docker Hub. Pokud si chcete sami sestavit image kontejneru a nasadit ji do služby Azure Container Instances z privátního registru kontejnerů Azure, pokračujte ke kurzu služby Azure Container Instances.
+V tomto rychlém startu jste vytvořili instanci kontejneru Azure z image ve veřejném registru Docker Hub. Pokud chcete sestavit image kontejneru a nasadit ji z privátního registru kontejnerů Azure, pokračujte ke kurzu služby Azure Container Instances.
 
 > [!div class="nextstepaction"]
 > [Kurz služby Azure Container Instances](./container-instances-tutorial-prepare-app.md)

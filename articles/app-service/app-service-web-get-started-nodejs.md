@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 09/27/2018
 ms.author: cephalin;msangapu
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 05dd53fdfda5446cf848a7b8503a09bc5e5c2d20
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 347fc291fc7357481bfdc88c9019c3d688925c2f
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47433459"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49067513"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>Vytvoření webové aplikace Node.js ve službě Azure
 
@@ -46,10 +46,15 @@ K provedení kroků v tomto kurzu Rychlý start je potřeba:
 
 Stáhněte si ukázkový projekt Node.js z [https://github.com/Azure-Samples/nodejs-docs-hello-world/archive/master.zip](https://github.com/Azure-Samples/nodejs-docs-hello-world/archive/master.zip) a extrahujte archiv ZIP.
 
-V okně terminálu přejděte do kořenového adresáře ukázkového projektu Node.js (projekt obsahující _index.js_).
+Otevřete soubor _index.js_ a vyhledejte následující řádek:
 
-> [!NOTE]
-> Pokud nechcete, nemusíte používat naši ukázkovou aplikaci, ale můžete použít vlastní kód Node. Nezapomeňte, že PORT vaší aplikace nastaví Azure v modulu runtime. Port je k dispozici jako `process.env.PORT`. Pokud používáte Express, nezapomeňte při spuštění (`app.listen`) zkontrolovat `process.env.PORT || 3000`. Pokud to neuděláte a port nebude odpovídat hodnotě, kterou nastaví Azure v modulu runtime, zobrazí se zpráva `Service Unavailable`. 
+```javascript
+var port = process.env.PORT || 1337;
+```
+
+Služba App Service vloží do vaší aplikace process.env.PORT, takže kód bude díky této proměnné vědět, na kterém portu se má naslouchat. 
+
+V okně terminálu přejděte do kořenového adresáře ukázkového projektu Node.js (projekt obsahující _index.js_).
 
 ## <a name="run-the-app-locally"></a>Místní spuštění aplikace
 
@@ -68,7 +73,7 @@ Na stránce se zobrazí zpráva **Hello World** z ukázkové aplikace.
 V okně terminálu ukončete webový server stisknutím **Ctrl + C**.
 
 > [!NOTE]
-> V Azure App Service se aplikace spouští ve službě IIS pomocí modulu [iisnode](https://github.com/tjanczuk/iisnode). Kvůli povolení spuštění aplikace pomocí modulu iisnode obsahuje kořenový adresář aplikace soubor web.config. Tento soubor může číst služba IIS a dokumentaci k nastavením souvisejícím s modulem iisnode najdete v [úložišti iisnode na GitHubu](https://github.com/tjanczuk/iisnode/blob/master/src/samples/configuration/web.config).
+> V Azure App Service se aplikace spouští ve službě IIS pomocí modulu [iisnode](https://github.com/Azure/iisnode). Kvůli povolení spuštění aplikace pomocí modulu iisnode obsahuje kořenový adresář aplikace soubor web.config. Tento soubor může číst služba IIS a dokumentaci k nastavením souvisejícím s modulem iisnode najdete v [úložišti iisnode na GitHubu](https://github.com/Azure/iisnode/blob/master/src/samples/configuration/web.config).
 
 [!INCLUDE [Create ZIP file](../../includes/app-service-web-create-zip.md)]
 

@@ -12,14 +12,14 @@ ms.devlang: NA
 ms.topic: quickstart
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/24/2018
+ms.date: 10/04/2018
 ms.author: alkohli
-ms.openlocfilehash: 514b2a026ea34f4bd82f13ebc73c09f71637ce30
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: fe15167a5e88dbc9a97383c9a074a32c91f4219a
+ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978348"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48784633"
 ---
 # <a name="quickstart-deploy-azure-data-box-using-the-azure-portal"></a>Rychlý start: Nasazení Azure Data Boxu pomocí webu Azure Portal
 
@@ -32,15 +32,16 @@ Podrobné pokyny k nasazení a sledování najdete v článku [Kurz: Objednání
 Než začnete:
 
 - Typ předplatného, které používáte pro službu Data Box, musí být jeden z následujících:
-    - Smlouva Microsoft Enterprise (EA). Přečtěte si další informace o [předplatných EA](https://azure.microsoft.com/pricing/enterprise-agreement/).
-    - Cloud Solution Provider (CSP). Přečtěte si další informace o [programu Azure CSP](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview).
-    - Využití – průběžné platby. Přečtěte si další informace o Azure [předplatných s průběžnými platbami](https://azure.microsoft.com/offers/ms-azr-0003p/).
+    - Smlouva Microsoft Enterprise (EA). Další informace o [předplatných se smlouvou Enterprise](https://azure.microsoft.com/pricing/enterprise-agreement/).
+    - Cloud Solution Provider (CSP). Další informace o [programu Azure CSP](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview).
+    - Consumption – průběžné platby. Další informace o [předplatných Azure s průběžnými platbami](https://azure.microsoft.com/offers/ms-azr-0003p/).
+    - Microsoft Azure Sponsorship. Získejte další informace o [programu Azure Sponsorship](https://azure.microsoft.com/en-in/offers/ms-azr-0036p/). 
 
 - Pokud chcete vytvořit objednávku Data Boxu, potřebujete mít u předplatného přístup vlastníka nebo přispěvatele.
 - Přečtěte si [bezpečnostní pokyny pro Data Box](data-box-safety.md).
 - Máte hostitelský počítač, který obsahuje data, která chcete zkopírovat do Data Boxu. Hostitelský počítač musí splňovat tyto požadavky:
     - Musí na něm běžet [podporovaný operační systém](data-box-system-requirements.md).
-    - Musí být připojený k vysokorychlostní síti. Důrazně doporučujeme, abyste měli připojení aspoň 10 GbE. Pokud nemáte k dispozici připojení 10 GbE, je možné použít datové propojení 1 GbE, což ale bude mít vliv na rychlosti kopírování. 
+    - Musí být připojený k vysokorychlostní síti. Důrazně doporučujeme, abyste měli připojení alespoň 10 GbE. Pokud nemáte k dispozici připojení 10 GbE, je možné použít datové propojení 1 GbE, což ale bude mít vliv na rychlosti kopírování. 
 - Data Box je potřeba umístit na rovnou plochu. Pokud chcete zařízení umístit na standardní polici v racku, potřebujete v racku datového centra slot 7U. Zařízení můžete v racku umístit na plocho nebo na výšku.
 - Pro připojení Data Boxu k hostitelském počítači je potřeba pořídit následující kabely.
     - Dva měděné kabely 10 GbE SFP+ Twinax (pro síťová rozhraní DATA 1, DATA 2)

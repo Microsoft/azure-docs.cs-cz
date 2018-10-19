@@ -1,43 +1,45 @@
 ---
-title: Rychlý start Python pro kognitivní služby společnosti Microsoft, vyhledání odpovědí projektu | Microsoft Docs
-description: Příklad Python začít používat projektu odpovědí hledání, kognitivní služby společnosti Microsoft na platformě Azure.
+title: 'Rychlý start: Project Answer Search, Python'
+titlesuffix: Azure Cognitive Services
+description: Začněte používat Project Answer Search s jazykem Python.
 services: cognitive-services
 author: mikedodaro
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: project-answer-search
-ms.topic: article
+ms.component: project-answer-search
+ms.topic: quickstart
 ms.date: 04/13/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: 9cb5406c616ed8e96d73c00c788a0d20f66dcabd
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: c33a88b65dcdf5ddddff9f5109afbe0cca7247c4
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343214"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48869824"
 ---
-# <a name="project-answer-search-python-quickstart"></a>Projekt Python vyhledávání odpovědí rychlý start
+# <a name="quickstart-project-answer-search-with-python"></a>Rychlý start: Project Answer Search s jazykem Python
 
-Následující příklad Python vytvoří a odešle žádost o informace o "Rock Gibraltar".
+Následující příklad v jazyce Python vytvoří a odešle žádost o informace o výrazu „Rock of Gibraltar“.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Získat přístupový klíč pro bezplatné zkušební verze [kognitivní Labs služby](https://aka.ms/answersearchsubscription)
+Získání přístupového klíče k bezplatné zkušební verzi služby [Cognitive Services Labs](https://aka.ms/answersearchsubscription)
 
-Tento příklad používá Python 3.6.4
+V tomto příkladu se používá Python 3.6.4.
 
 ## <a name="code-scenario"></a>Scénář kódu 
 
-Následující kód vytvoří adresu URL náhledu.
-Jsou implementované v následujících krocích:
-1. Deklarujte proměnné zadat koncový bod hostitele a cestu.
-2. Zadejte adresu URL dotazu si verzi preview a přidat parametr dotazu.  
+Následující kód vytvoří náhled adresy URL.
+Implementuje se v následujících krocích:
+1. Deklarujte proměnné, které za použití hostitele a cesty určují koncový bod.
+2. Zadejte adresu URL dotazu k náhledu a přidejte parametr dotazu.  
 3. Nastavte parametr dotazu.
-4. Definování funkce vyhledávání, která vytvoří žádost a přidá *Ocp-Apim-Subscription-Key* záhlaví.
-5. Nastavte *Ocp-Apim-Subscription-Key* záhlaví. 
-6. Zkontrolujte připojení a odeslat žádost.
-7. Tisk výsledků JSON.
+4. Definujte funkci vyhledávání, která vytvoří požadavek a přidá hlavičku *Ocp-Apim-Subscription-Key*.
+5. Nastavte hlavičku *Ocp-Apim-Subscription-Key*. 
+6. Vytvořte připojení a odešlete požadavek.
+7. Zobrazte výsledky ve formátu JSON.
 
-Kód dokončení v této ukázce takto:
+Následuje celý kód pro tuto ukázku:
 
 ````
 import http.client, urllib.parse
@@ -64,7 +66,7 @@ result = get_local()
 print (json.dumps(json.loads(result), indent=4))
 
 ````
-## <a name="next-steps"></a>Další postup
-- [Rychlý start C#](c-sharp-quickstart.md)
-- [Rychlý start Java](java-quickstart.md)
-- [Rychlé spuštění uzlu](node-quickstart.md)
+## <a name="next-steps"></a>Další kroky
+- [Rychlý start pro jazyk C#](c-sharp-quickstart.md)
+- [Rychlý start pro Javu](java-quickstart.md)
+- [Rychlý start pro Node](node-quickstart.md)

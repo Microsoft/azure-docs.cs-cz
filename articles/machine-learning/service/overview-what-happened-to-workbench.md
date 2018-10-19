@@ -1,6 +1,6 @@
 ---
-title: Co se stalo s aplikací Azure Machine Learning Workbench? | Microsoft Docs
-description: Přečtěte si, co se stalo s aplikací Workbench, co se změnilo ve službě Azure Machine Learning a jaký je časový plán podpory.
+title: Co se děje s aplikací Azure Machine Learning Workbench? | Microsoft Docs
+description: Přečtěte si, co se právě děje s aplikací Workbench, co se změnilo ve službě Azure Machine Learning a jaký je časový plán podpory.
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -9,22 +9,22 @@ ms.reviewer: jmartens
 author: j-martens
 ms.author: jmartens
 ms.date: 09/24/2018
-ms.openlocfilehash: 620d8b370b050a4d91ee6d94cba2c133b4313aed
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 88e7dad15a7080c4132a6983d949f9451ad5ce69
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47159980"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48239251"
 ---
-# <a name="what-happened-to-workbench-in-azure-machine-learning-preview"></a>Co se stalo s aplikací Workbench ve službě Azure Machine Learning (Preview)?
+# <a name="what-is-happening-to-workbench-in-azure-machine-learning-preview"></a>Co se děje s aplikací Workbench ve službě Azure Machine Learning (Preview)?
 
-Z verze vydané 18. září 2018 byla vyřazena aplikace Workbench a některé další dřívější funkce, které uvolní místo vylepšené [architektuře](concept-azure-machine-learning-architecture.md). Tato verze obsahuje řadu významných aktualizací, které reagují na připomínky zákazníků, kteří požadovali lepší prostředí. Základní funkce zkušebně spuštěného nasazeného modelu se nezměnily, ale teď můžete k plnění úkolů a kanálů spojených se strojovým učením použít robustní sadu <a href="http://aka.ms/aml-sdk" target="_blank">SDK</a> a nástroj [CLI](reference-azure-machine-learning-cli.md).  
+Ve verzi vydané v září 2018 došlo k vyřazení aplikace Workbench a některých dalších dřívějších funkcí, které uvolní místo vylepšené [architektuře](concept-azure-machine-learning-architecture.md). Tato verze obsahuje řadu významných aktualizací, které reagují na připomínky zákazníků, kteří požadovali lepší prostředí. Základní funkce zkušebně spuštěného nasazeného modelu se nezměnily, ale teď můžete k plnění úkolů a kanálů spojených se strojovým učením použít robustní sadu <a href="http://aka.ms/aml-sdk" target="_blank">SDK</a> a nástroj [CLI](reference-azure-machine-learning-cli.md).  
 
 V tomto článku se dozvíte o změnách a jejich vlivu na vaši předchozí práci se službou Azure Machine Learning.
 
 ## <a name="what-changed"></a>Co se změnilo?
 
-Nejnovější verze Azure Machine Learning zahrnuje:
+Nejnovější verze služby Azure Machine Learning zahrnuje:
 + [Zjednodušený model prostředků Azure](concept-azure-machine-learning-architecture.md)
 + [Nové uživatelské rozhraní portálu](how-to-track-experiments.md) určené ke správě experimentů a výpočetních cílů
 + Novou rozsáhlejší sadu Python <a href="http://aka.ms/aml-sdk" target="_blank">SDK</a>
@@ -73,7 +73,7 @@ Stejnou sadu <a href="http://aka.ms/aml-sdk" target="_blank">SDK</a> můžete po
 
 ## <a name="will-projects-persist"></a>Vydrží mi moje projekty?
 
-Neztratíte žádný kód ani práci. Ve starší verzi jsou projekty cloudové entity s místním adresářem. V nejnovější verzi můžete místní adresáře připojit k pracovnímu prostoru Azure Machine Learning pomocí místního konfiguračního souboru. [Prohlédněte si diagram nejnovější architektury](concept-azure-machine-learning-architecture.md).
+Neztratíte žádný kód ani práci. Ve starší verzi jsou projekty cloudové entity s místním adresářem. V nejnovější verzi můžete místní adresáře připojit k pracovnímu prostoru služby Azure Machine Learning pomocí místního konfiguračního souboru. [Prohlédněte si diagram nejnovější architektury](concept-azure-machine-learning-architecture.md).
 
 Vzhledem k tomu, že většina projektového obsahu už je na místním počítači, stačí v adresáři vytvořit konfigurační soubor a odkazovat na něj ve svém kódu, aby se připojil k vašemu pracovnímu prostoru. [Přečtěte si, jak migrovat stávající projekty.](how-to-migrate.md#projects)
 

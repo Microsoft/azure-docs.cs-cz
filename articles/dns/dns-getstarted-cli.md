@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: quickstart
 ms.date: 7/16/2018
 ms.author: victorh
-ms.openlocfilehash: 3fb39558ff99c35786dedc133a9d1d1a450b5928
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: f80488f555cfa3b7be6f35b9f23ea0a501a27fd9
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39090118"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48831593"
 ---
 # <a name="quickstart-create-an-azure-dns-zone-and-record-using-azure-cli"></a>Rychlý start: Vytvoření zóny Azure DNS a záznam pomocí Azure CLI
 
@@ -46,9 +46,9 @@ az network dns zone create -g MyResourceGroup -n contoso.com
 
 ## <a name="create-a-dns-record"></a>Vytvoření záznamu DNS
 
-K vytvoření záznamu DNS použijte příkaz `az network dns record-set [record type] add-record`. Například nápovědu k záznamům A získáte příkazem `azure network dns record-set A add-record -h`.
+K vytvoření záznamu DNS použijte příkaz `az network dns record-set [record type] add-record`. Nápovědu k záznamům A najdete v tématu `azure network dns record-set A add-record -h`.
 
-Následující příklad vytvoří záznam s relativním názvem „www“ v zóně DNS „contoso.com“ ve skupině prostředků „MyResourceGroup“. Plně kvalifikovaný název sady záznamů je „www.contoso.com“. Typ záznamu je A a používá se IP adresa 1.2.3.4 a výchozí hodnota TTL 3 600 sekund (1 hodina).
+Následující příklad vytvoří záznam s relativním názvem „www“ v zóně DNS „contoso.com“ ve skupině prostředků „MyResourceGroup“. Plně kvalifikovaný název sady záznamů je „www.contoso.com“. Typ záznamu je A a používá se IP adresa 1.2.3.4 a výchozí hodnota TTL 3600 sekund (1 hodina).
 
 ```azurecli
 az network dns record-set a add-record -g MyResourceGroup -z contoso.com -n www -a 1.2.3.4
@@ -56,7 +56,7 @@ az network dns record-set a add-record -g MyResourceGroup -z contoso.com -n www 
 
 ## <a name="view-records"></a>Zobrazení záznamů
 
-K výpisu záznamů DNS ve vaší zóně použijte:
+K výpisu záznamů DNS ve vaší zóně použijte následující příkaz:
 
 ```azurecli
 az network dns record-set list -g MyResourceGroup -z contoso.com
@@ -64,7 +64,7 @@ az network dns record-set list -g MyResourceGroup -z contoso.com
 
 ## <a name="update-name-servers"></a>Aktualizace názvových serverů
 
-Jakmile budete spokojeni se správným nastavením zóny a záznamů DNS, bude potřeba nakonfigurovat váš název domény tak, aby používal názvové servery DNS Azure. Tím umožníte ostatním uživatelům na internetu najít vaše záznamy DNS.
+Jakmile budete spokojení se správným nastavením zóny a záznamů DNS, bude potřeba nakonfigurovat váš název domény tak, aby používal názvové servery Azure DNS a umožňoval ostatním uživatelům internetu vyhledání vašich záznamů DNS.
 
 Názvové servery vaší zóny můžete zobrazit příkazem `az network dns zone show`. Chcete-li zobrazit názvy názvových serverů, použijte výstup ve formátu JSON, jak je ukázáno v následujícím příkladu.
 
@@ -94,7 +94,7 @@ Tyto názvové servery by měly být nakonfigurované u registrátora názvu dom
 
 ## <a name="delete-all-resources"></a>Odstranění všech prostředků
  
-Pokud už nejsou potřeba, můžete odstranit všechny prostředky vytvořené v rámci tohoto rychlého startu odstraněním skupiny prostředků:
+Pokud už nejsou potřeba, můžete všechny prostředky vytvořené v rámci tohoto rychlého startu odstranit odstraněním této skupiny prostředků:
 
 ```azurecli
 az group delete --name MyResourceGroup

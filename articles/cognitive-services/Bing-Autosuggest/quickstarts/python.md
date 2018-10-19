@@ -1,37 +1,37 @@
 ---
-title: Rychlý start pro Bing pro automatické návrhy v rozhraní API s Pythonem | Microsoft Docs
-description: Get informace a ukázky kódu můžete rychle začít používat rozhraní API pro automatické návrhy v Bingu v kognitivní služby Azure.
+title: 'Rychlý start: Rozhraní API pro automatické návrhy Bingu, Python'
+titlesuffix: Azure Cognitive Services
+description: Získejte informace a ukázky kódu, které vám pomůžou rychle začít používat rozhraní API pro automatické návrhy Bingu.
 services: cognitive-services
-documentationcenter: ''
 author: v-jaswel
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-autosuggest
-ms.topic: article
+ms.topic: quickstart
 ms.date: 09/14/2017
 ms.author: v-jaswel
-ms.openlocfilehash: 721dba50e1d296066c06e0f00c9f36227391018d
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: 60585b2d5884962d0f988597ef1e50107e548122
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343493"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48830613"
 ---
-# <a name="quickstart-for-bing-autosuggest-api-with-python"></a>Rychlý start pro Bing pro automatické návrhy v rozhraní API s Pythonem
-<a name="HOLTop"></a>
+# <a name="quickstart-for-bing-autosuggest-api-with-python"></a>Rychlý start pro rozhraní API pro automatické návrhy Bingu s využitím Pythonu
 
-V tomto článku se dozvíte, jak používat [rozhraní API pro automatické návrhy v Bingu](https://azure.microsoft.com/services/cognitive-services/autosuggest/) s Python. Rozhraní API pro automatické návrhy v Bingu vrátí seznam hodnot navrhované dotazy založené na řetězci částečné dotazu, že uživatel zadá do vyhledávacího pole. By obvykle volání toto rozhraní API pokaždé, když uživatel zadá znak nového do vyhledávacího pole a pak zobrazit návrhy v do vyhledávacího pole rozevíracího seznamu. Tento článek ukazuje, jak odeslat požadavek, který vrátí řetězce dotazu navržené pro *vedení*.
+V tomto článku se dozvíte, jak používat [rozhraní API pro automatické návrhy Bingu](https://azure.microsoft.com/services/cognitive-services/autosuggest/) s jazykem Python. Rozhraní API pro automatické návrhy Bingu vrací seznam navrhovaných dotazů založený na části řetězce dotazu, který uživatel do vyhledávacího pole zadává. Obvykle se toto rozhraní API volá pokaždé, když uživatel zadá do vyhledávacího pole další znak, a potom se v rozevíracím seznamu ve vyhledávacím poli zobrazí návrhy. V tomto článku se dozvíte, jak odeslat požadavek, který vrátí navrhované řetězce dotazu pro dotaz *sail*.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Budete potřebovat [Python 3.x](https://www.python.org/downloads/) pro spuštění tohoto kódu.
+Ke spuštění tohoto kódu budete potřebovat [Python 3.x](https://www.python.org/downloads/).
 
-Musíte mít [kognitivní rozhraní API služby účet](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s **rozhraní API pro automatické návrhy v Bingu v7**. [Bezplatnou zkušební verzi](https://azure.microsoft.com/try/cognitive-services/#search) stačí pro tento rychlý start. Je nutné přístupový klíč zadaný při aktivaci bezplatné zkušební verze, nebo může použít klíč placené předplatné z řídicího panelu Azure.
+Potřebujete [účet rozhraní API Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s **rozhraním API pro automatické návrhy Bingu verze 7**. Pro účely tohoto rychlého startu stačí [bezplatná zkušební verze](https://azure.microsoft.com/try/cognitive-services/#search). Při aktivaci bezplatné zkušební verze budete potřebovat poskytnutý přístupový klíč nebo můžete použít klíč placeného předplatného z řídicího panelu Azure.
 
 ## <a name="get-autosuggest-results"></a>Získání výsledků automatických návrhů
 
-1. Vytvořte nový projekt Python v vaše oblíbená rozhraní IDE.
-2. Přidejte kód níže uvedenou.
-3. Nahraďte `subscriptionKey` hodnotu s přístupový klíč platný pro vaše předplatné.
+1. V oblíbeném integrovaném vývojovém prostředí (IDE) vytvořte nový projekt Pythonu.
+2. Přidejte níže uvedený kód.
+3. Hodnotu `subscriptionKey` nahraďte přístupovým klíčem platným pro vaše předplatné.
 4. Spusťte program.
 
 ```python
@@ -135,12 +135,12 @@ print (json.dumps(json.loads(result), indent=4))
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Kurz automatické návrhy v Bingu](../tutorials/autosuggest.md)
+> [Kurz rozhraní API pro automatické návrhy Bingu](../tutorials/autosuggest.md)
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také
 
-- [Co je automatické návrhy v Bingu?](../get-suggested-search-terms.md)
-- [Referenční dokumentace rozhraní API pro automatické návrhy v Bingu v7](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v7-reference)
+- [Co jsou automatické návrhy Bingu?](../get-suggested-search-terms.md)
+- [Referenční materiály k rozhraní API pro automatické návrhy Bingu verze 7](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v7-reference)

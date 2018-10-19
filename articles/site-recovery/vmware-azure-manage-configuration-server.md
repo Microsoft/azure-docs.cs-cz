@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 10/10/2018
+ms.date: 10/15/2018
 ms.author: raynew
-ms.openlocfilehash: 35cce4e9e0b722e8ee1b2ea42a79f18a987033f0
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: bb756a89babef96b16419104737e87405b3527ab
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078632"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49407397"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vms"></a>Správa konfiguračního serveru pro virtuální počítače VMware
 
@@ -138,6 +138,9 @@ Spuštění kumulativní aktualizace se aktualizovat konfigurační server. Aktu
 - Pokud chcete provést upgrade 9.11 spustíte 9,6 nebo starší, musíte nejprve upgradovat na verzi 9.7. před 9.11.
 
 Odkazy na kumulativní aktualizace pro upgrade pro všechny verze konfiguračního serveru jsou k dispozici v [aktualizace wikistránka](https://social.technet.microsoft.com/wiki/contents/articles/38544.azure-site-recovery-service-updates.aspx).
+
+> [!IMPORTANT]
+> S každou novou verzí "n" Azure Site Recovery componenet, která je vydána, všechny verze nižší než n-4' je považován za bez podpory. Je vždy vhodné k upgradu na nejnovější verze k dispozici.
 
 Upgrade serveru následujícím způsobem:
 

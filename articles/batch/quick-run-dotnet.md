@@ -7,15 +7,15 @@ manager: jeconnoc
 ms.service: batch
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 01/16/2018
+ms.date: 09/06/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: b5431feec23e2e0681967a9fe0345edc1db567aa
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: d22e5111a0413c1774d4d41290741414c82039f7
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31513822"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48814827"
 ---
 # <a name="quickstart-run-your-first-azure-batch-job-with-the-net-api"></a>Rychlý start: Spuštění první úlohy služby Azure Batch pomocí rozhraní API .NET
 
@@ -27,7 +27,7 @@ V rámci tohoto rychlého startu spustíte úlohu služby Azure Batch z aplikace
 
 ## <a name="prerequisites"></a>Požadavky
 
-* [Visual Studio IDE](https://www.visualstudio.com/vs) (Visual Studio 2015 nebo novější verze). 
+* [Visual Studio 2017](https://www.visualstudio.com/vs) nebo [.NET Core 2.1](https://www.microsoft.com/net/download/dotnet-core/2.1) pro Linux, macOS nebo Windows. 
 
 * Účet Batch a propojený účet Azure Storage. Informace o vytvoření těchto účtů prostřednictvím [webu Azure Portal](quick-create-portal.md) nebo [rozhraní Azure CLI](quick-create-cli.md) najdete v rychlém startu služby Batch. 
 
@@ -60,9 +60,11 @@ private const string StorageAccountName = "mystorageaccount";
 private const string StorageAccountKey  = "xxxxxxxxxxxxxxxxy4/xxxxxxxxxxxxxxxxfwpbIC5aAWA8wDu+AFXZB827Mt9lybZB1nUcQbQiUrkPtilK5BQ==";
 ```
 
+[!INCLUDE [batch-credentials-include](../../includes/batch-credentials-include.md)]
+
 ## <a name="build-and-run-the-app"></a>Sestavení a spuštění aplikace
 
-Pokud chcete sledovat pracovní postup služby Batch v akci, sestavte a spusťte aplikaci. Po spuštění aplikace se podívejte do kódu a najděte si, co jednotlivé části aplikace dělají. 
+Pokud chcete vidět pracovní postup služby Batch v praxi, sestavte a spusťte aplikaci v sadě Visual Studio nebo na příkazovém řádku pomocí příkazů `dotnet build` a `dotnet run`. Po spuštění aplikace se podívejte do kódu a najděte si, co jednotlivé části aplikace dělají. Příklad pro sadu Visual Studio:
 
 * Klikněte na řešení pravým tlačítkem myši v Průzkumníku řešení a klikněte na **Sestavit řešení**. 
 
@@ -122,9 +124,9 @@ Odkaz `blobClient` slouží aplikaci k vytvoření kontejneru v účtu úložiš
 ```csharp
 List<string> inputFilePaths = new List<string>
 {
-    @"..\..\taskdata0.txt",
-    @"..\..\taskdata1.txt",
-    @"..\..\taskdata2.txt"
+    "taskdata0.txt",
+    "taskdata1.txt",
+    "taskdata2.txt"
 };
 
 List<ResourceFile> inputFiles = new List<ResourceFile>();
@@ -192,7 +194,7 @@ try
 
     job.Commit(); 
 }
-...       
+...
 ```
 
 ### <a name="create-tasks"></a>Vytvoření úkolů

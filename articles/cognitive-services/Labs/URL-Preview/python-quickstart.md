@@ -1,43 +1,45 @@
 ---
-title: Rychlý start Python pro náhled adresy URL projektu - kognitivní služby Microsoft | Microsoft Docs
-description: Ukázka skriptu rychle začít pomocí verze Preview adresa URL projektu v kognitivní služby společnosti Microsoft na platformě Azure.
+title: 'Rychlý start: Project URL Preview, JavaScript'
+titlesuffix: Azure Cognitive Services
+description: Ukázkový skript, který vám pomůže rychle začít používat funkci Project URL Preview za použití Pythonu.
 services: cognitive-services
 author: mikedodaro
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: project-url-preview
-ms.topic: article
+ms.component: project-url-preview
+ms.topic: quickstart
 ms.date: 03/29/2018
-ms.author: rosh, v-gedod
-ms.openlocfilehash: 78b2d83b02aa9ea32509029c7456e04e420b8572
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.author: rosh
+ms.openlocfilehash: c4af701188c6453bd3c067b838519c32862af13d
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343242"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48867268"
 ---
-# <a name="url-preview-python-quickstart"></a>Adresa URL Preview Python rychlý start
+# <a name="quickstart-url-preview-with-python"></a>Rychlý start: URL Preview s využitím Pythonu
 
-Následující příklad Python vytvoří Náhled adresy Url pro web SwiftKey: https://swiftkey.com/en.
+Následující příklady Pythonu vytvoří náhled adresy URL pro web SwiftKey: https://swiftkey.com/en.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Získat přístupový klíč pro bezplatné zkušební verze [kognitivní Labs služby](https://aka.ms/answersearchsubscription)
+Získání přístupového klíče k bezplatné zkušební verzi služby [Cognitive Services Labs](https://aka.ms/answersearchsubscription)
 
-Tento příklad používá Python 3.6.
+V tomto příkladu se používá Python 3.6.
 
 ## <a name="code-scenario"></a>Scénář kódu 
 
-Následující kód vytvoří adresu URL náhledu.
-Jsou implementované v následujících krocích:
-1. Deklarujte proměnné zadat koncový bod hostitele a cestu.
-2. Zadejte adresu URL dotazu si verzi preview a přidat parametr dotazu.  
+Následující kód vytvoří náhled adresy URL.
+Implementuje se v následujících krocích:
+1. Deklarujte proměnné, které za použití hostitele a cesty určují koncový bod.
+2. Zadejte adresu URL dotazu k náhledu a přidejte parametr dotazu.  
 3. Nastavte parametr dotazu.
-4. Definování funkce vyhledávání, která vytvoří žádost a přidá *Ocp-Apim-Subscription-Key* záhlaví.
-5. Nastavte *Ocp-Apim-Subscription-Key* záhlaví. 
-6. Zkontrolujte připojení a odeslat žádost.
-7. Tisk výsledků JSON.
+4. Definujte funkci vyhledávání, která vytvoří požadavek a přidá hlavičku *Ocp-Apim-Subscription-Key*.
+5. Nastavte hlavičku *Ocp-Apim-Subscription-Key*. 
+6. Vytvořte připojení a odešlete požadavek.
+7. Zobrazte výsledky ve formátu JSON.
 
-Kód dokončení v této ukázce takto:
+Následuje celý kód pro tuto ukázku:
 
 ````
 import http.client, urllib.parse
@@ -63,8 +65,8 @@ def get_preview ():
 result = get_preview ()
 print (json.dumps(json.loads(result), indent=4))
 ````
-## <a name="next-steps"></a>Další postup
-- [Rychlý start C#](csharp.md)
-- [Rychlý start Java](java-quickstart.md)
-- [Rychlý start JavaScript](javascript.md)
-- [Adresa URL uzlu rychlý start](node-quickstart.md)
+## <a name="next-steps"></a>Další kroky
+- [Rychlý start pro jazyk C#](csharp.md)
+- [Rychlý start pro Javu](java-quickstart.md)
+- [Rychlý start pro JavaScript](javascript.md)
+- [Rychlý start pro adresu URL uzlu](node-quickstart.md)

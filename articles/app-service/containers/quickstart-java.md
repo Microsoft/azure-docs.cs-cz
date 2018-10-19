@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 03/07/2018
 ms.author: msangapu
 ms.custom: mvc
-ms.openlocfilehash: b9e8d2b9eacfa5c427ffe3f27ea99bbd35651d57
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 92dde19e42c1adb6d83e1708106f844f228e8989
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47165972"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48239338"
 ---
 # <a name="quickstart-create-a-java-web-app-in-app-service-on-linux"></a>Rychlý start: Vytvoření webové aplikace v Javě ve službě App Service v Linuxu
 
@@ -127,7 +127,7 @@ Po dokončení nasazení přejděte ve webovém prohlížeči pomocí následuj�
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste použili Maven k vytvoření webové aplikace v Javě, nakonfigurovali jste [modul plug-in Maven pro Azure Web Apps (Preview)](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin) a pak nasadili webovou aplikaci v Javě zabalenou do webového archivu do App Service v Linuxu. Další informace o používání Javy v Azure získáte po kliknutí na následující odkaz.
+V tomto rychlém startu jste použili Maven k vytvoření webové aplikace v Javě, nakonfigurovali jste [modul plug-in Maven pro Azure Web Apps (Preview)](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin) a potom jste nasadili webovou aplikaci v Javě zabalenou do webového archivu do App Service v Linuxu. Další informace o používání Javy v Azure získáte po kliknutí na následující odkaz.
 
 > [!div class="nextstepaction"]
 > [Azure pro vývojáře v Javě](https://docs.microsoft.com/java/azure/)

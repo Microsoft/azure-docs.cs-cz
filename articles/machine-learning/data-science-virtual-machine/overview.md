@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 10/27/2017
 ms.author: gokuma
-ms.openlocfilehash: 62c8ff225b9c649afa7532ad5edfdd627e573d81
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: a6f085b0fa11f117b181714a3b92cdc3a7c9e9a9
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47032225"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48870668"
 ---
 # <a name="introduction-to-azure-data-science-virtual-machine-for-linux-and-windows"></a>Úvod k virtuálnímu počítači pro datové vědy pro Linux a Windows
 
@@ -30,9 +30,9 @@ Toto téma popisuje, co můžete s virtuálním počítačem pro datové vědy d
 
 
 ## <a name="what-can-i-do-with-the-data-science-virtual-machine"></a>K čemu mohu využít virtuální počítač pro datové vědy?
-Virtuální počítač pro datové vědy je určen odborníkům pracujícím s daty všech úrovní a rolí, kterým poskytuje bezproblémové předkonfigurované a plně integrované prostředí pro vědecké zpracování dat. Místo zavádění srovnatelného pracovního prostoru vlastními silami můžete zřídit virtuální počítač pro datové vědy a tím si ušetřit dny nebo dokonce _týdny_ práce s instalací, konfigurací a správou balíčků. Po přidělení virtuálního počítače pro datové vědy můžete okamžitě začít pracovat na svém projektu datové vědy.
+Virtuální počítač pro datové vědy je určený odborníkům pracujícím s daty všech úrovní a v nejrůznějších oborech, kterým poskytuje bezproblémové předkonfigurované a plně integrované prostředí pro vědecké zpracování dat. Místo zavádění srovnatelného pracovního prostoru vlastními silami můžete zřídit virtuální počítač pro datové vědy a tím si ušetřit dny nebo dokonce _týdny_ práce s instalací, konfigurací a správou balíčků. Po přidělení virtuálního počítače pro datové vědy můžete okamžitě začít pracovat na svém projektu datové vědy.
 
-Virtuální počítač pro datové vědy je nakonfigurován a navržen pro širokou řadu scénářů použití. Podle měnících se potřeb projektu můžete kapacitu prostředí vertikálně navýšit nebo snížit. K programování úloh datové vědy můžete využít upřednostňovaný jazyk. Můžete si nainstalovat i další nástroje a přizpůsobit systém přesně tak, jak potřebujete.
+Virtuální počítač pro datové vědy je nakonfigurován a navržen pro širokou řadu scénářů použití. Můžete navyšovat nebo snižovat kapacitu prostředí v závislosti na měnících se potřebách projektu, programovat úlohy datové vědy pomocí svého oblíbeného jazyka a instalovat další nástroje, kterými si systém přizpůsobíte podle svých požadavků.
 
 ## <a name="key-scenarios"></a>Hlavní scénáře
 V této části najdete několik hlavních scénářů, pro které můžete virtuální počítač pro datové vědy nasadit.
@@ -47,13 +47,13 @@ Podnikoví školitelé a lektoři, kteří přednášejí vědecké zpracování
 Hackathony nebo soutěže v oblasti datových věd nebo rozsáhlé modelování či průzkum dat vyžadují – obvykle na krátkou dobu – horizontální navýšení kapacity hardwaru. Virtuální počítač pro datové vědy umožňuje rychle replikovat prostředí pro vědecké zpracování dat na vyžádání na serverech s horizontálně navýšenou kapacitou, které umožňují spouštět experimenty vyžadující výpočetní prostředky s vysokým výkonem.
 
 ### <a name="short-term-experimentation-and-evaluation"></a>Krátkodobé experimenty a vyhodnocování
-S minimálním úsilím věnovaným nastavení je možné virtuální počítač pro datovou vědu využít k vyhodnocení nebo výuce nástrojů, jako jsou Microsoft ML Server, SQL Server, nástroje sady Visual Studio, Jupyter, sady nástrojů pro hloubkové nebo strojové učení a nové nástroje oblíbené v komunitě. Díky rychlému nastavení můžete virtuální počítač pro datovou vědu využít i v dalších scénářích krátkodobého použití, jako jsou replikace publikovaných experimentů, prezentace ukázek, procházejí postupů v online relacích nebo konferenčních kurzech.
+S minimálním úsilím věnovaným nastavení je možné virtuální počítač pro datovou vědu využít k vyhodnocení nebo výuce nástrojů, jako jsou Microsoft ML Server, SQL Server, nástroje sady Visual Studio, Jupyter, sady nástrojů pro hloubkové nebo strojové učení a nové nástroje oblíbené v komunitě. Díky rychlému nastavení můžete virtuální počítač pro datovou vědu využít i v dalších scénářích krátkodobého použití, jako jsou replikace publikovaných experimentů, prezentace ukázek, procházení postupů v online relacích nebo konferenčních kurzech.
 
 ### <a name="deep-learning"></a>Hloubkové učení
-Virtuální počítač pro datovou vědu můžete využít pro tréninkový model s použitím algoritmů hloubkového učení na hardwaru založeného na grafickém procesoru. S využitím možností škálování virtuálního počítače v cloudu Azure vám virtuální počítač pro datovou vědu umožňuje používat hardware založený na grafickém procesoru v cloudu podle potřeby. Při tréninku velkých modelů nebo potřebě vysokorychlostních výpočtů je možné přepnout na virtuální počítač založený na grafickém procesoru a stále zůstat na stejném disku s operačním systémem.  Verze Windows Serveru 2016 virtuálního počítače pro datovou vědu je dodávána s předinstalovanými ovladači grafického procesoru, architekturami a verzemi grafického procesoru architektur hloubkového učení. Na Linuxu je hloubkové učení na grafickém procesoru povoleno jak na virtuálním počítači pro datovou vědu CentOS, tak i Ubuntu. Edici 2016 virtuálního počítače pro datové vědy pro Ubuntu, CentOS nebo Windows můžete nasadit na virtuální počítač Azure, který není založený na grafickém procesoru. V takovém případě všechny architektury hloubkového učení přejdou do režimu procesoru. 
+Virtuální počítač pro datovou vědu můžete využít v tréninkových modelech s použitím algoritmů hloubkového učení na hardwaru založeného na grafickém procesoru. S využitím možností škálování virtuálního počítače v cloudu Azure vám virtuální počítač pro datovou vědu umožňuje používat hardware založený na grafickém procesoru v cloudu podle potřeby. Při tréninku velkých modelů nebo potřebě vysokorychlostních výpočtů je možné přepnout na virtuální počítač založený na grafickém procesoru a stále zůstat na stejném disku s operačním systémem.  Verze Windows Serveru 2016 virtuálního počítače pro datovou vědu je dodávána s předinstalovanými ovladači grafického procesoru, architekturami a verzemi grafického procesoru architektur hloubkového učení. V edici pro Linux je hloubkové učení na grafickém procesoru povolené jak na virtuálním počítači pro datovou vědu CentOS, tak i Ubuntu. Edici 2016 virtuálního počítače pro datové vědy pro Ubuntu, CentOS nebo Windows můžete nasadit na virtuální počítač Azure, který není založený na grafickém procesoru. V takovém případě všechny architektury hloubkového učení přejdou do režimu procesoru. 
 
 ## <a name="whats-included-in-the-data-science-vm"></a>Co je součástí virtuálního počítače pro datovou vědu?
-Virtuální počítač pro datovou vědu obsahuje mnoho oblíbených nástrojů pro datovou vědu a hloubkové učení, které jsou již nainstalovány a nakonfigurovány. Obsahuje také nástroje, které usnadňují práci s různými produkty Azure pro data a analýzu. Pomocí Microsoft ML Serveru (R, Python) nebo SQL Serveru 2017 můžete prozkoumávat a vytvářet prediktivní modely u rozsáhlých sad dat. Součástí je také hostitel dalších nástrojů od komunity open source a od Microsoftu, ale i vzorový kód a poznámkové bloky. V následující tabulce najdete výčet a srovnání hlavních komponent, které jsou součástí edic virtuálního počítače pro datovou vědu pro Windows a Linux.
+Virtuální počítač pro datovou vědu obsahuje mnoho oblíbených nástrojů pro datovou vědu a hloubkové učení, které jsou již nainstalovány a nakonfigurovány. Obsahuje taky nástroje, které usnadňují práci s různými datovými a analytickými produkty Azure, jako je Microsoft ML Server (R, Python) pro vytváření prediktivních modelů nebo SQL Server 2017 pro průzkum rozsáhlých datových sad. Součástí je také hostitel dalších nástrojů od komunity open source a od Microsoftu, ale i vzorový kód a poznámkové bloky. V následující tabulce najdete výčet a srovnání hlavních komponent, které jsou součástí edic virtuálního počítače pro datovou vědu pro Windows a Linux.
 
 
 | **Nástroj**                                                           | **Edice pro Windows** | **Edice pro Linux** |

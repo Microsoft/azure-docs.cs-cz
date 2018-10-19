@@ -1,39 +1,41 @@
 ---
-title: Rychlý úvodní kurz Node.js pro náhled adresy URL projektu - kognitivní služby Microsoft | Microsoft Docs
-description: Začněte používat ve verzi Preview adresy URL v kognitivní služby společnosti Microsoft na platformě Azure.
+title: 'Rychlý start: Project URL Preview, Node.js'
+titlesuffix: Azure Cognitive Services
+description: Začněte používat funkci náhledu adresy URL ve službě Microsoft Cognitive Services v Azure.
 services: cognitive-services
 author: mikedodaro
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: project-url-preview
-ms.topic: article
+ms.component: project-url-preview
+ms.topic: quickstart
 ms.date: 03/16/2018
-ms.author: rosh, v-gedod
-ms.openlocfilehash: 195033d2740b11873baae095cec028dc8d19ce49
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.author: rosh
+ms.openlocfilehash: b8410127ed9a0444ab400eb3242868a85bd5b2c9
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343241"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48883563"
 ---
-# <a name="url-preview-node-quickstart"></a>Adresa URL Preview uzlu rychlý start
+# <a name="quickstart-url-preview-with-nodejs"></a>Rychlý start: URL Preview s využitím Node.js 
 
-Následující příklad uzlu vytvoří Náhled adresy Url pro web SwiftKey: https://swiftkey.com/en.
+Následující příklady v jazyce Node vytvoří náhled adresy URL pro web SwiftKey: https://swiftkey.com/en.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Získat přístupový klíč pro bezplatné zkušební verze [kognitivní Labs služby](https://aka.ms/answersearchsubscription)
+Získání přístupového klíče k bezplatné zkušební verzi služby [Cognitive Services Labs](https://aka.ms/answersearchsubscription)
 
 ## <a name="code-scenario"></a>Scénář kódu 
 
-Následující kód získá adresu URL náhledu dat.
-Jsou implementované v následujících krocích:
-1. Deklarujte proměnné zadat koncový bod hostitele a cestu.
-2. Zadejte adresu URL dotazu si verzi preview a přidat parametr dotazu.  
-3. Vytvořte obslužnou rutinu pro odpověď.
-4. Definování funkce vyhledávání, která vytvoří žádost a přidá *Ocp-Apim-Subscription-Key* záhlaví.
-5. Spusťte funkci hledání. 
+Následující kód získá data náhledu adresy URL.
+Implementuje se v následujících krocích:
+1. Deklarujte proměnné, které za použití hostitele a cesty určují koncový bod.
+2. Zadejte adresu URL dotazu k náhledu a přidejte parametr dotazu.  
+3. Vytvořte pro odpověď funkci obslužné rutiny.
+4. Definujte funkci vyhledávání, která vytvoří požadavek a přidá hlavičku *Ocp-Apim-Subscription-Key*.
+5. Spusťte funkci vyhledávání. 
 
-Kód dokončení v této ukázce takto:
+Následuje celý kód pro tuto ukázku:
 
 ````
 'use strict';
@@ -83,8 +85,8 @@ Search();
 
 ````
 
-## <a name="next-steps"></a>Další postup
-- [Příklad kódu C#](csharp.md)
-- [Rychlý start Java](java-quickstart.md)
-- [Rychlý start JavaScript](javascript.md)
-- [Rychlý start Python](python-quickstart.md)
+## <a name="next-steps"></a>Další kroky
+- [Ukázkový kód v jazyce C#](csharp.md)
+- [Rychlý start pro Javu](java-quickstart.md)
+- [Rychlý start pro JavaScript](javascript.md)
+- [Rychlý start pro Python](python-quickstart.md)

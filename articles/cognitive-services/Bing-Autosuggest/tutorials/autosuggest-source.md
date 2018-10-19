@@ -1,24 +1,25 @@
 ---
-title: Získávání výsledků pro automatické návrhy pomocí API pro automatické návrhy v Bingu (kognitivní služby Azure) | Microsoft Docs
-description: Zdrojový kód pro kurz znázorňující použití rozhraní API pro automatické návrhy v Bingu v jednostránkovou webovou aplikaci.
+title: 'Kurz: Získání automatických návrhů pomocí rozhraní API pro automatické návrhy Bingu'
+titlesuffix: Azure Cognitive Services
+description: Zdrojový kód pro kurz, který ukazuje, jak používat rozhraní API pro automatické návrhy Bingu v jednostránkové webové aplikaci.
 services: cognitive-services
 author: v-jaswel
-manager: kamrani
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-autosuggest
-ms.topic: article
+ms.topic: tutorial
 ms.date: 10/04/2017
 ms.author: v-jaswel
-ms.openlocfilehash: 687183acb209ba6faae37865aa6a05fded5c26dc
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: 6124b831c11f0d72c8072c903d4d05f665448208
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343403"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48831411"
 ---
-# <a name="tutorial-single-page-web-app"></a>Kurz: Jednostránkovou webovou aplikaci
+# <a name="tutorial-single-page-web-app"></a>Kurz: Jednostránková webová aplikace
 
-Toto je popsané v úplný zdrojový kód [kurzu jednostránkové aplikace](autosuggest.md) pro rozhraní API pro automatické návrhy v Bingu. Ke spuštění aplikace, do textového editoru, zkopírujte zdrojový kód a soubor uložte jako `autosuggest.html`. Poté otevřete soubor uložený ve webovém prohlížeči.
+Toto je úplný zdrojový kód probíraný v [kurzu o jednostránkové aplikaci](autosuggest.md) pro rozhraní API pro automatické návrhy Bingu. Pokud chcete aplikaci spustit, zkopírujte zdrojový kód do textového editoru a uložte soubor jako `autosuggest.html`. Potom uložený soubor otevřete ve webovém prohlížeči.
 
 ```html
 <!DOCTYPE html>
