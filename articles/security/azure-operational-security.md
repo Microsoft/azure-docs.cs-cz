@@ -1,6 +1,6 @@
 ---
 title: Provozní zabezpečení Azure | Dokumentace Microsoftu
-description: Další informace o Microsoft Operations Management Suite (OMS), jeho služby a jak to funguje.
+description: Další informace o Microsoft Azure Log Analytics, jejích služeb a jak to funguje.
 services: security
 documentationcenter: na
 author: UnifyCloud
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 60260d7bcff07a9ce2d680c84119d11271579e7d
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: 2ae2ea14bc712563867f32b83eddbd9d4129ac1d
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37342265"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49409488"
 ---
 # <a name="azure-operational-security"></a>Provozní zabezpečení Azure
 ## <a name="introduction"></a>Úvod
@@ -40,7 +40,7 @@ Infrastruktura Azure je navržená ze zařízení do aplikace pro hostování mi
 Azure Operational Security odkazuje na služby, ovládací prvky a funkce, které jsou dostupné pro uživatele k ochraně svých dat, aplikací a dalších prostředků ve službě Microsoft Azure. Provozní zabezpečení Azure je založen na rozhraní, která zahrnuje poznatky získané při různé schopnosti, které jsou jedinečné pro Microsoftu, mezi které patří Microsoft Security Development Lifecycle (SDL), programu Microsoft Security Response Center a deep povědomí o zabezpečení.
 
 Tento dokument white paper popisuje přístup Microsoftu k provozní zabezpečení Azure v rámci cloudové platformě Microsoft Azure a zahrnuje následující služby:
-1.  [Azure Operations Management Suite](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview)
+1.  [Azure Monitor](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview)
 
 2.  [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)
 
@@ -53,17 +53,17 @@ Tento dokument white paper popisuje přístup Microsoftu k provozní zabezpečen
 6.  [Azure Active directory](https://docs.microsoft.com/azure/active-directory/active-directory-whatis)
 
 
-## <a name="microsoft-operations-management-suite"></a>Microsoft Operations Management Suite
+## <a name="microsoft-azure-log-analytics"></a>Microsoft Azure Log Analytics
 
-Microsoft Operations Management Suite (OMS) je řešení pro správu IT pro hybridní cloud. Používat samostatně nebo rozšířit existující nasazení nástroje System Center, OMS poskytuje maximální flexibilitu a ovládací prvek pro cloudovou správu infrastruktury.
+Microsoft Azure Log Analytics je řešení pro správu IT pro hybridní cloud. Používat samostatně nebo rozšířit existující nasazení nástroje System Center Log Analytics poskytuje maximální flexibilitu a kontrolu pro cloudovou správu infrastruktury.
 
-![Microsoft Operations Management Suite](./media/azure-operational-security/azure-operational-security-fig1.png)
+![Log Analytics](./media/azure-operational-security/azure-operational-security-fig1.png)
 
-S OMS můžete spravovat všechny instance v libovolném cloudu, včetně místních, Azure, AWS, Windows Server, Linux, VMware a OpenStack, s nižšími náklady než konkurenční řešení. Určená pro cloudového světa, OMS nabízí nový přístup ke správě vaší organizace, který je nejrychlejší a cenově nejvýhodnější způsob nové obchodní výzvy a zohlednit nových úloh, aplikací a cloudových prostředí.
+Pomocí služby Log Analytics můžete spravovat všechny instance v libovolném cloudu, včetně místních, Azure, AWS, Windows Server, Linux, VMware a OpenStack, s nižšími náklady než konkurenční řešení. Určená pro cloudového světa, Log Analytics nabízí nový přístup ke správě vaší organizace, která je cenově nejvýhodnější, nejrychlejší způsob, jak nové obchodní výzvy a zvládnutí nových úloh, aplikací a cloudových prostředí.
 
-### <a name="oms-services"></a>Služby OMS
+### <a name="log-analytics-services"></a>Služby log Analytics
 
-Základní funkce OMS poskytuje sada služeb, které běží v Azure. Každá služba poskytuje specifickou funkci správy a kombinováním služeb je možné dosahovat různých scénářů správy.
+Základní funkce služby Log Analytics poskytuje sadu služeb, které běží v Azure. Každá služba poskytuje specifickou funkci správy a kombinováním služeb je možné dosahovat různých scénářů správy.
 
 | Služba  | Popis|
 | :------------- | :-------------|
@@ -74,7 +74,7 @@ Základní funkce OMS poskytuje sada služeb, které běží v Azure. Každá sl
 
 ### <a name="log-analytics"></a>Log Analytics
 
-[Log Analytics](http://azure.microsoft.com/documentation/services/log-analytics) poskytuje služby monitorování pro OMS získáváním dat ze spravovaných prostředků do centrálního úložiště. Tato data mohou zahrnovat události, výkonnostní data nebo vlastní data poskytovaná prostřednictvím rozhraní API. Po získání jsou data dostupná pro výstrahy, analýzu a export.
+[Log Analytics](http://azure.microsoft.com/documentation/services/log-analytics) zajišťuje služby monitorování získáváním dat ze spravovaných prostředků do centrálního úložiště. Tato data mohou zahrnovat události, výkonnostní data nebo vlastní data poskytovaná prostřednictvím rozhraní API. Po získání jsou data dostupná pro výstrahy, analýzu a export.
 
 
 Tato metoda umožňuje konsolidovat data z různých zdrojů, takže můžete kombinovat data ze služeb Azure s vaší stávající místní prostředí. Také jasně odděluje získávání dat od akcí provedených na těchto datech, takže všechny akce jsou dostupné pro všechny druhy dat.
@@ -92,17 +92,17 @@ Služba Log Analytics spravuje vaše data založené na cloudu bezpečně pomoc�
 
 ### <a name="azure-backup"></a>Azure Backup
 
-[Azure Backup](http://azure.microsoft.com/documentation/services/backup) poskytuje data zálohování a obnovení služby a je součástí sady OMS produktů a služeb.
+[Azure Backup](http://azure.microsoft.com/documentation/services/backup) poskytuje data zálohování a obnovení služby a je součástí sady Log Analytics produktů a služeb.
 Chrání data vaší aplikace a dlouhá léta je uchovává bez nutnosti velkých investic a s minimálními provozními náklady. To můžete zálohovat data z fyzických a virtuálních serverů Windows kromě úloh aplikací, jako je SQL Server a SharePoint. Je také možné pomocí [System Center Data Protection Manager (DPM)](https://en.wikipedia.org/wiki/System_Center_Data_Protection_Manager) k replikaci chráněných dat do Azure pro redundance a dlouhodobého úložiště.
 
 
 Chráněná data ve službě Azure Backup se ukládají do trezoru záloh umístěného v konkrétní geografické oblasti. Data se replikují v rámci stejné oblasti a v závislosti na typu trezoru se můžou replikovat také do jiné oblasti pro zajištění vyšší odolnosti.
 
 ### <a name="management-solutions"></a>Řešení pro správu
-[Microsoft Operations Management Suite (OMS)](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started) je společnosti Microsoft cloudové řešení pro správu IT, která pomáhá spravovat a chránit místní a cloudovou infrastrukturu.
+[Log Analytics](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started) je společnosti Microsoft cloudové řešení pro správu IT, která pomáhá spravovat a chránit místní a cloudovou infrastrukturu.
 
 
-[Řešení pro správu](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-solutions) jsou předpřipravené sady logics, které implementují konkrétní scénáře správy pomocí jedné nebo více služeb OMS. Jsou dostupná různá řešení od Microsoftu a partnerů, která můžete snadno přidat do předplatného Azure ke zvýšení hodnoty investice do OMS. Jako partner můžete vytvořit svoje vlastní řešení pro podporu vašich aplikací a služeb a poskytnout je uživatelům prostřednictvím Azure Marketplace nebo šablon pro rychlý Start.
+[Řešení pro správu](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-solutions) jsou předpřipravené sady logics, které implementují konkrétní scénáře správy s použitím nejméně jedna služba Log Analytics. Jiná řešení jsou k dispozici od Microsoftu a partnerů můžete snadno přidat do předplatného Azure ke zvýšení hodnoty investice do Log Analytics. Jako partner můžete vytvořit svoje vlastní řešení pro podporu vašich aplikací a služeb a poskytnout je uživatelům prostřednictvím Azure Marketplace nebo šablon pro rychlý Start.
 
 
 ![Řešení pro správu](./media/azure-operational-security/azure-operational-security-fig4.png)
@@ -164,7 +164,7 @@ Azure Security Center shromažďuje dočasné kopie souborů se stavem systému 
 
 ## <a name="azure-monitor"></a>Azure Monitor
 
-[Řešení OMS Security](https://docs.microsoft.com/azure/operations-management-suite/oms-security-monitoring-resources) a auditovat řešení umožňují IT aktivně monitoruje všechny prostředky, které může pomoci minimalizovat dopad incidentů zabezpečení. OMS Security and Audit mít domény zabezpečení, které lze použít pro monitorování prostředků. Domény zabezpečení poskytuje rychlý přístup k možnostem, monitorování zabezpečení z následujících domén se věnují další podrobnosti:
+[Log Analytics zabezpečení](https://docs.microsoft.com/azure/operations-management-suite/oms-security-monitoring-resources) a auditovat řešení umožňují IT aktivně monitoruje všechny prostředky, které může pomoci minimalizovat dopad incidentů zabezpečení. Log Analytics zabezpečení a Audit mít domény zabezpečení, které lze použít pro monitorování prostředků. Domény zabezpečení poskytuje rychlý přístup k možnostem, monitorování zabezpečení z následujících domén se věnují další podrobnosti:
 
 -   Posouzení malwaru
 -   Posouzení aktualizací
@@ -312,7 +312,7 @@ Tento článek souhrny, ochraně osobních údajů a zabezpečení vašich dat p
 
 Tento článek vysvětluje
 
--   Jak data shromažďují, zpracování a zabezpečené v Operations Management Suite (OMS).
+-   Jak data shromažďují, zpracování a zabezpečené v Log Analytics suite.
 
 -   Rychlá analýza událostí z různých zdrojů dat Identifikace bezpečnostních rizik a pochopení rozsahu a dopadů hrozeb a útoků s cílem omezit škody vzniklé narušením bezpečnosti
 
@@ -335,7 +335,7 @@ Tento článek vysvětluje
 
 Microsoft navrhuje svůj služeb a softwaru zabezpečení k zajištění, že své cloudové infrastruktury je odolné a před útoky.
 
-- [Operations Management Suite | Zabezpečení a dodržování předpisů](https://www.microsoft.com/cloud-platform/security-and-compliance)
+- [Log Analytics | Zabezpečení a dodržování předpisů](https://www.microsoft.com/cloud-platform/security-and-compliance)
 
 Pomocí Microsoft zabezpečení dat a analýza provádět inteligentní a efektivní detekce hrozeb.
 

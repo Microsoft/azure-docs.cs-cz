@@ -9,12 +9,12 @@ ms.workload: core
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: shvija
-ms.openlocfilehash: 27052759ccc4664ea95ea19cb52bebeec6fec5ae
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 6d5b52c8a5dd0306a349cac5e67eecc809005c6f
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48803354"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49429180"
 ---
 # <a name="receive-events-from-azure-event-hubs-using-nodejs"></a>Příjem událostí z Azure Event Hubs pomocí Node.js
 
@@ -57,7 +57,7 @@ Sady SDK, které jste naklonovali obsahuje několik ukázek, které ukazují, ja
 
 1. Otevřete projekt ve Visual Studio Code. 
 2. Vytvořte soubor s názvem **.env** pod **procesoru** složky. Zkopírujte a vložte vzorek proměnné prostředí z **sample.env** v kořenové složce.
-3. Nakonfigurujte připojovací řetězec centra událostí, název centra událostí a koncový bod úložiště. Připojovací řetězec můžete zkopírovat z centra událostí **připojovací řetězec – primární** klíč **RootManageSharedAccessKey** na stránce centra událostí na webu Azure Portal. Podrobné pokyny najdete v článku [získání připojovacího řetězce](event-hubs-quickstart-portal.md#create-an-event-hubs-namespace).
+3. Nakonfigurujte připojovací řetězec centra událostí, název centra událostí a koncový bod úložiště. Připojovací řetězec můžete zkopírovat z centra událostí **připojovací řetězec – primární** klíč **RootManageSharedAccessKey** na stránce centra událostí na webu Azure Portal. Podrobné pokyny najdete v článku [získání připojovacího řetězce](event-hubs-create.md#create-an-event-hubs-namespace).
 4. Přejděte na svém rozhraní příkazového řádku Azure **procesoru** cesta ke složce. Instalace balíčků uzlu a sestavte projekt spuštěním následujících příkazů:
 
     ```nodejs

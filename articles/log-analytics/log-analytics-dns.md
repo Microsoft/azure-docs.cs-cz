@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 9bb7adaeec89979ff86920b4bfd74c6399bda298
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 9ac8d876e9c79e5aadfcf834e18e94f6ac8b3a30
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48043565"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49408468"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>Získejte přehled o vaší infrastruktuře DNS s řešení DNS Analytics ve verzi Preview
 
@@ -46,7 +46,7 @@ Následující tabulka popisuje připojené zdroje, které podporují toto řeš
 | --- | --- | --- |
 | [Agenti systému Windows](log-analytics-windows-agent.md) | Ano | Řešení shromažďuje informace DNS z agentů Windows. |
 | [Agenti systému Linux](log-analytics-linux-agents.md) | Ne | Řešení neshromažďuje informace DNS z přímí agenti systému Linux. |
-| [Skupina pro správu System Center Operations Manager](log-analytics-om-agents.md) | Ano | Řešení shromažďuje informace DNS z agentů v připojené skupině pro správu nástroje Operations Manager. Přímé připojení z agenta nástroje Operations Manager k Operations Management Suite se nevyžaduje. Data se přesměrovávají ze skupiny pro správu do úložiště Operations Management Suite. |
+| [Skupina pro správu System Center Operations Manager](log-analytics-om-agents.md) | Ano | Řešení shromažďuje informace DNS z agentů v připojené skupině pro správu nástroje Operations Manager. Přímé připojení z agenta Operations Manageru ke službě Log Analytics není potřeba. Data se přesměrovávají ze skupiny pro správu do pracovního prostoru Log Analytics. |
 | [Účet služby Azure Storage](log-analytics-azure-storage.md) | Ne | Úložiště Azure se nepoužívá tímto řešením. |
 
 ### <a name="data-collection-details"></a>Podrobné informace o shromažďování dat
@@ -58,7 +58,7 @@ Následující tabulka popisuje připojené zdroje, které podporují toto řeš
 Ke konfigurování řešení, použijte následující informace:
 
 - Musíte mít [Windows](log-analytics-windows-agent.md) nebo [nástroje Operations Manager](log-analytics-om-agents.md) agent na každém serveru DNS, který chcete monitorovat.
-- Řešení DNS Analytics můžete přidat do pracovního prostoru Operations Management Suite z [Azure Marketplace](https://aka.ms/dnsanalyticsazuremarketplace). Můžete také použít proces popsaný v [přidání řešení Log Analytics z Galerie řešení](log-analytics-add-solutions.md).
+- Řešení DNS Analytics můžete přidat do pracovního prostoru Log Analytics z [Azure Marketplace](https://aka.ms/dnsanalyticsazuremarketplace). Můžete také použít proces popsaný v [přidání řešení Log Analytics z Galerie řešení](log-analytics-add-solutions.md).
 
 Shromažďování dat bez nutnosti další konfigurace spuštění řešení. Přizpůsobení shromažďování dat lze však použijte následující konfiguraci.
 
@@ -76,11 +76,11 @@ Na řídicím panelu řešení, klikněte na tlačítko **konfigurace** otevřet
 
 ## <a name="management-packs"></a>Sady Management Pack
 
-Pokud používáte Microsoft Monitoring Agent pro připojení k vašemu pracovnímu prostoru Operations Management Suite, je nainstalována následující sady management pack:
+Pokud používáte Microsoft Monitoring Agent pro připojení k pracovnímu prostoru Log Analytics, je nainstalována následující sady management pack:
 
 - Microsoft DNS Data Collector Intelligence Pack (Microsft.IntelligencePacks.Dns)
 
-Pokud vaši skupinu pro správu Operations Manageru je připojený k pracovnímu prostoru Operations Management Suite, nainstaluje se následující sady management Pack v nástroji Operations Manager při přidání tohoto řešení. Neexistuje žádná požadované konfigurace ani Údržba těchto sad management Pack:
+Pokud vaši skupinu pro správu Operations Manageru je připojený k pracovnímu prostoru Log Analytics, nainstaluje se následující sady management Pack v nástroji Operations Manager při přidání tohoto řešení. Neexistuje žádná požadované konfigurace ani Údržba těchto sad management Pack:
 
 - Microsoft DNS Data Collector Intelligence Pack (Microsft.IntelligencePacks.Dns)
 - Konfigurace DNS Analytics Microsoft System Center Advisor (Microsoft.IntelligencePack.Dns.Configuration)
@@ -91,7 +91,7 @@ Další informace o způsobu, jakým se aktualizují sady pro správu řešení,
 
 Tato část vysvětluje všechny řídicí panel funkce a jejich použití.
 
-Po přidání řešení do pracovního prostoru, dlaždice řešení na stránce Přehled Operations Management Suite poskytuje rychlý přehled infrastruktury služby DNS. Obsahuje počet serverů DNS, kde se shromažďují data. Zahrnuje také počet požadavků provedených klientům přeložit škodlivé domény za posledních 24 hodin. Když kliknete na dlaždici, otevře se řídicí panel řešení.
+Po přidání řešení do pracovního prostoru Log Analytics – přehled stránka na webu Azure portal obsahuje **zobrazit řešení** odkaz na stručný přehled infrastruktury služby DNS. Obsahuje počet serverů DNS, kde se shromažďují data. Zahrnuje také počet požadavků provedených klientům přeložit škodlivé domény za posledních 24 hodin. Když kliknete na dlaždici, otevře se řídicí panel řešení.
 
 ![Dlaždice DNS Analytics](./media/log-analytics-dns/dns-tile.png)
 
@@ -185,7 +185,7 @@ Na stránce prohledávání protokolů můžete vytvořit dotaz. Můžete filtro
 
 Existují dva způsoby, jak můžete poskytnout zpětnou vazbu:
 
-- **UserVoice**. Máte nápady na DNS analytické funkce pro práci na publikovat. Přejděte [stránku Operations Management Suite UserVoice](https://aka.ms/dnsanalyticsuservoice).
+- **UserVoice**. Máte nápady na DNS analytické funkce pro práci na publikovat. Přejděte [stránku Log Analytics UserVoice](https://aka.ms/dnsanalyticsuservoice).
 - **Připojte se k naší kohorta**. Vždy zajímá s novým zákazníkům, připojte se k naší kohorty získejte dřívější přístup k novým funkcím a Pomozte nám zlepšovat kvalitu DNS Analytics. Pokud vás zajímají připojení k naší kohorty, vyplňte [tohoto rychlého průzkumu](https://aka.ms/dnsanalyticssurvey).
 
 ## <a name="next-steps"></a>Další postup

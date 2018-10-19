@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.component: core
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 950d985ca87cce484edeb7930ca1bda34d812f33
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 13820dd511d31217b79385e893edbb55a3a57693
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49344128"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49430013"
 ---
 # <a name="tune-hyperparameters-for-your-model"></a>Optimalizovat pro váš model hyperparameters
 
@@ -141,8 +141,9 @@ param_sampling = BayesianParameterSampling( {
 ```
 
 > [!NOTE]
-> Vzorkování Bayesova nepodporuje žádnou zásadu předčasné ukončení (viz [zadejte zásadu předčasné ukončení](#specify-an-early-termination-policy)). Při použití parametru vzorkování Bayesova, nastavte `early_termination_policy = None`, nebo nechte `early_termination_policy` parametru.
-`
+> Vzorkování Bayesova nepodporuje žádnou zásadu předčasné ukončení (viz [zadejte zásadu předčasné ukončení](#specify-early-termination-policy)). Při použití parametru vzorkování Bayesova, nastavte `early_termination_policy = None`, nebo nechte `early_termination_policy` parametru.
+
+<a name='specify-primary-metric-to-optimize'/>
 
 ## <a name="specify-primary-metric"></a>Zadejte primární metriku
 
@@ -158,9 +159,11 @@ primary_metric_goal=PrimaryMetricGoal.MAXIMIZE
 
 Optimalizujte běží pro maximalizaci "přesnost".  Ujistěte se, že tato hodnota přihlásit cvičný skript.
 
+<a name='log-metrics-for-hyperparameter-tuning'/>
+
 ### <a name="log-metrics-for-hyperparameter-tuning"></a>Protokolujte metriky pro hyperparametrů
 
-Skript školení pro váš model musíte se přihlásit důležité metriky během cvičení modelu. Při konfiguraci hyperparametrů určit primární metriky pro účely hodnocení výkonu spuštění. (Viz [zadejte primární metriku pro optimalizaci](#specify-a-primary-metric-to-optimize).)  Ve skriptu školení musíte se přihlásit tuto metriku tak, aby byl k dispozici hyperparameter ladění procesu.
+Skript školení pro váš model musíte se přihlásit důležité metriky během cvičení modelu. Při konfiguraci hyperparametrů určit primární metriky pro účely hodnocení výkonu spuštění. (Viz [zadejte primární metriku pro optimalizaci](#specify-primary-metric-to-optimize).)  Ve skriptu školení musíte se přihlásit tuto metriku tak, aby byl k dispozici hyperparameter ladění procesu.
 
 Tato metrika protokolu ve skriptu školení s následující ukázka fragmentu kódu:
 
@@ -171,6 +174,8 @@ run_logger.log("accuracy", float(val_accuracy))
 ```
 
 Vypočítá cvičný skript `val_accuracy` a zaznamená jako "přesnost", který se používá jako primární metriku. Metrika se protokoluje pokaždé, když se přijme hyperparameter ladění služby. Záleží model pro vývojáře a zjistěte, jak často chcete nahlásit tuto metriku.
+
+<a name='specify-early-termination-policy'/>
 
 ## <a name="specify-early-termination-policy"></a>Zadejte zásady předčasné ukončení
 
@@ -297,7 +302,7 @@ experiment = Experiment(workspace, experiment_name)
 hyperdrive_run = experiment.submit(hyperdrive_run_config)
 ```
 
-`experiment_name` je název přiřadit vaše hyperparameter ladění experiment a `workspace` je pracovní prostor, ve kterém chcete vytvořit experiment (Další informace o experimenty, naleznete v tématu [jak funguje služba Azure Machine Learning?](/concept-azure-machine-learning-architecture.md))
+`experiment_name` je název přiřadit vaše hyperparameter ladění experiment a `workspace` je pracovní prostor, ve kterém chcete vytvořit experiment (Další informace o experimenty, naleznete v tématu [jak funguje služba Azure Machine Learning?](concept-azure-machine-learning-architecture.md))
 
 ## <a name="visualize-experiment"></a>Vizualizujte experimentu
 
@@ -320,7 +325,7 @@ Kromě toho můžete vizuálně identifikovat korelace mezi výkonem a hodnoty j
 
 ![hyperparameter ladění paralelní souřadnice](media/how-to-tune-hyperparameters/HyperparameterTuningParallelCoordinates.png)
 
-Můžete vizualizovat váš hyperparameter ladění spuštění portálu Azure web. Další informace o tom, jak zobrazit experimentu na webovém portálu najdete v tématu [jak sledovat expirements](/how-to-track-experiments.md/#view-the-experiment-in-the-web-portal).
+Můžete vizualizovat váš hyperparameter ladění spuštění portálu Azure web. Další informace o tom, jak zobrazit experimentu na webovém portálu najdete v tématu [jak sledovat experimenty](how-to-track-experiments.md#view-the-experiment-in-the-web-portal).
 
 ![portál hyperparameter ladění](media/how-to-tune-hyperparameters/HyperparameterTuningPortal.png)
 

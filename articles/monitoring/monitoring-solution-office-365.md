@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2018
 ms.author: bwren
-ms.openlocfilehash: e3620bbf92cab926d56c4de0817f833b61cf2b03
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: d1fdec8e3a959aaeb68d4b63a1c71d6ef1ddd054
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46125081"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49406317"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Řešení pro správu Office 365 v Azure (Preview)
 
@@ -37,7 +37,7 @@ Je nutné provést následující před toto řešení je nainstalovaná a nakon
 
 - Organizace předplatné služeb Office 365.
 - Přihlašovací údaje pro uživatelský účet, který má oprávnění globálního správce.
-- Pokud chcete přijímat data auditu, je nutné [konfigurace auditování](https://support.office.com/en-us/article/Search-the-audit-log-in-the-Office-365-Security-Compliance-Center-0d4d0f35-390b-4518-800e-0c7ec95e946c?ui=en-US&rs=en-US&ad=US#PickTab=Before_you_begin) v rámci vašeho předplatného Office 365.  Všimněte si, že [auditování poštovní schránky](https://technet.microsoft.com/library/dn879651.aspx) je samostatně nakonfigurovaný.  Stále můžete řešení nainstalovat a shromažďovat další data, pokud není nakonfigurováno auditování.
+- Pokud chcete přijímat data auditu, je nutné [konfigurace auditování](https://support.office.com/article/Search-the-audit-log-in-the-Office-365-Security-Compliance-Center-0d4d0f35-390b-4518-800e-0c7ec95e946c?ui=en-US&rs=en-US&ad=US#PickTab=Before_you_begin) v rámci vašeho předplatného Office 365.  Všimněte si, že [auditování poštovní schránky](https://technet.microsoft.com/library/dn879651.aspx) je samostatně nakonfigurovaný.  Stále můžete řešení nainstalovat a shromažďovat další data, pokud není nakonfigurováno auditování.
  
 
 ## <a name="management-packs"></a>Sady Management Pack
@@ -477,7 +477,7 @@ Můžete odebrat pomocí procesu v řešení pro správu Office 365 [odebrat ře
 
 ## <a name="data-collection"></a>Shromažďování dat
 ### <a name="supported-agents"></a>Podporovaní agenti
-Řešení Office 365 nenačítá data z libovolného [agenty OMS](../log-analytics/log-analytics-data-sources.md).  Načte data přímo z Office 365.
+Řešení Office 365 nenačítá data z libovolného [agentů Log Analytics](../log-analytics/log-analytics-data-sources.md).  Načte data přímo z Office 365.
 
 ### <a name="collection-frequency"></a>Četnost shromažďování dat
 Může trvat několik hodin se zpočátku shromážděná data. Jakmile začne shromažďování, odešle Office 365 [oznámení webhooku](https://msdn.microsoft.com/office-365/office-365-management-activity-api-reference#receiving-notifications) s podrobná data do Log Analytics pokaždé, když je vytvořen záznam. Tento záznam je k dispozici ve službě Log Analytics v rámci pár minut od jejich obdržení.
@@ -518,7 +518,7 @@ Následující vlastnosti jsou společné pro všechny záznamy Office 365.
 | Kódu organizace | Identifikátor GUID pro tenanta Office 365 vaší organizace. Tato hodnota bude vždy stejné pro svou organizaci, bez ohledu na služby Office 365, ve kterém se vyskytuje. |
 | Typ záznamu | Typ operace provést. |
 | ResultStatus | Určuje, zda byla akce (zadaná ve vlastnosti Operation) úspěšná. Možné hodnoty jsou Succeeded, PartiallySucceded nebo Failed. Pro aktivitu správy serveru Exchange, hodnotu buď True nebo False. |
-| UserId | Hlavní název uživatele (hlavní název uživatele) uživatele, který provedl akci, jejímž výsledkem bylo zaprotokolování záznamu například my_name@my_domain_name. Všimněte si, že záznamy aktivity prováděné systémovými účty (například SHAREPOINT\system nebo NTAUTHORITY\SYSTEM) jsou zahrnuté také. | 
+| ID uživatele | Hlavní název uživatele (hlavní název uživatele) uživatele, který provedl akci, jejímž výsledkem bylo zaprotokolování záznamu například my_name@my_domain_name. Všimněte si, že záznamy aktivity prováděné systémovými účty (například SHAREPOINT\system nebo NTAUTHORITY\SYSTEM) jsou zahrnuté také. | 
 | Vlastnosti userkey jedná | Alternativní ID pro uživatele identifikovaného ve vlastnosti ID uživatele.  Například tato vlastnost naplní jedinečné ID účtu služby passport (PUID) pro události prováděné uživateli na Sharepointu, Onedrivu pro firmy a serveru Exchange. Tato vlastnost může také zadejte stejnou hodnotu jako vlastnost ID uživatele pro události, ke kterým dochází v jiných službách a akcích prováděné systémovými účty|
 | UserType | Typ uživatele, který provedl operaci.<br><br>Správce<br>Aplikace<br>DcAdmin<br>Pravidelné<br>Rezervováno<br>ServicePrincipal<br>Systémový |
 

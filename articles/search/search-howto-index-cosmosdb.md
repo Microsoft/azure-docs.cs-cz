@@ -1,21 +1,21 @@
 ---
 title: Indexování zdroje dat rozhraní Azure Cosmos DB pro službu Azure Search | Dokumentace Microsoftu
 description: Tento článek ukazuje, jak vytvořit indexeru Azure Search se zdrojem dat Azure Cosmos DB.
-author: chaosrealm
-manager: jlembicz
+ms.date: 10/17/2018
+author: mgottein
+manager: cgronlun
+ms.author: magottei
 services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
-ms.date: 05/29/2018
-ms.author: eugenesh
 robot: noindex
-ms.openlocfilehash: 769ad6dcb02efb7b2a602f387b6d223456cab45b
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: c74563ba98835403f12a4df048d7ff358014b826
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49395254"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49406666"
 ---
 # <a name="connecting-cosmos-db-with-azure-search-using-indexers"></a>Připojení služby Cosmos DB pomocí Azure Search pomocí indexerů
 

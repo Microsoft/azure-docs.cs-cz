@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 7/10/2018
 ms.author: subramar
-ms.openlocfilehash: 6ebe83794f23ed3cf637f668d2810b9ba7521084
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 7557e2b993a5059df8aea63c7394539acc28c110
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44295866"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49403520"
 ---
 # <a name="production-readiness-checklist"></a>Kontrolní seznam připravenosti k produkci
 
@@ -36,7 +36,7 @@ Je vaše aplikace a clusteru, jste připraveni udělat produkční provoz? Spuš
 6. Pochopení a vybrat [úroveň spolehlivosti](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster) typu uzlu. Doporučuje se spolehlivost stříbrné nebo vyšší.
 7. Zatížení a škálování otestovat své úlohy k identifikaci [požadavky na kapacitu](service-fabric-cluster-capacity.md) pro váš cluster. 
 8. Služby a aplikace jsou monitorovány a protokoly aplikací se vygeneruje a uložená, s výstrahy. Viz například [přidání protokolování do aplikace Service Fabric](service-fabric-how-to-diagnostics-log.md) a [monitorování kontejnerů pomocí Log Analytics](service-fabric-diagnostics-oms-containers.md).
-9. Cluster se monitoruje s výstrahy (třeba index Mei [OMS](service-fabric-diagnostics-event-analysis-oms.md)). 
+9. Cluster se monitoruje s výstrahy (třeba index Mei [Log Analytics](service-fabric-diagnostics-event-analysis-oms.md)). 
 10. Základní infrastruktura sady škálování virtuálního počítače je monitorovat pomocí upozornění (třeba index Mei [Log Analytics](service-fabric-diagnostics-oms-agent.md).
 11. Cluster má [primárního a sekundárního certifikátu](service-fabric-cluster-security-update-certs-azure.md) vždy (takže nezůstanete zamknutí).
 12. Udržujte samostatné clustery pro vývoj, přípravném nebo produkčním prostředí. 

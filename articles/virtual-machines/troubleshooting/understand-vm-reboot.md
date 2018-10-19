@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: dd9a2c6a5b2183d4909b6bcfd24dc1fae401c785
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: fa316ee47e6fdabacf22e1e419bfd501620dd83d
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47413413"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49429146"
 ---
 # <a name="understand-a-system-reboot-for-azure-vm"></a>Vysvětlení restartování systému pro virtuální počítač Azure
 
@@ -73,7 +73,7 @@ Další scénáře, které obvykle způsobí restartování virtuálního počí
 ### <a name="azure-security-center-and-windows-update"></a>Azure Security Center a Windows Update
 Azure Security Center monitoruje denní Windows a virtuální počítače s Linuxem pro chybějící aktualizace operačního systému. Security Center načte seznam dostupných zabezpečení a kritických aktualizací ze služby Windows Update nebo Windows Server Update Services (WSUS), podle toho, která služba je nakonfigurovaná na virtuálním počítači s Windows. Security Center také vyhledává nejnovějších aktualizací pro systémy Linux. Pokud se váš virtuální počítač je chybějící aktualizace systému, Security Center doporučuje použití aktualizací systému. Aplikace tyto aktualizace systému je řízen pomocí Security Center na webu Azure Portal. Po instalaci některé aktualizace, může být vyžadováno restartování virtuálních počítačů. Další informace najdete v tématu [nainstalovat aktualizace systému ve službě Azure Security Center](../../security-center/security-center-apply-system-updates.md).
 
-Podobně jako na místní servery Azure není nabízené aktualizace ze služby Windows Update pro virtuální počítače Azure s Windows, vzhledem k tomu, že tyto počítače mají spravovat přes své uživatele. Máte však doporučujeme ponechat nastavení automatické aktualizace Windows povolena. Automatická instalace aktualizací ze služby Windows Update může také způsobit restartování docházelo až se aktualizace. Další informace najdete v tématu [nejčastější dotazy k Windows Update](https://support.microsoft.com/help/12373/windows-update-faq).
+Například na místních serverech Azure není nabízené aktualizace ze služby Windows Update k virtuálním počítačům s Windows, vzhledem k tomu, že tyto počítače mají spravovat přes své uživatele. Máte však doporučujeme ponechat nastavení automatické aktualizace Windows povolena. Automatická instalace aktualizací ze služby Windows Update může také způsobit restartování docházelo až se aktualizace. Další informace najdete v tématu [nejčastější dotazy k Windows Update](https://support.microsoft.com/help/12373/windows-update-faq).
 
 ### <a name="other-situations-affecting-the-availability-of-your-vm"></a>Jindy by to mělo dopad na dostupnost virtuálního počítače
 Existují další případy, ve kterých může být Azure aktivně pozastavit používání virtuálního počítače. Obdržíte e-mailová oznámení předtím, než tuto akci, tak budete mít příležitost dobře se základní řešení. Příklady problémy, které ovlivňují dostupnost virtuálních počítačů: narušení zabezpečení a vypršení jejich platnosti platební metody.

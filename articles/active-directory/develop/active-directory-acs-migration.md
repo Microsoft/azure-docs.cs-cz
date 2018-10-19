@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 10/03/2018
 ms.author: celested
 ms.reviewer: jlu, annaba, hirsin
-ms.openlocfilehash: 3e4b4e904fd4615458e8d873baa1bf30588fe81d
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 4fd7617bf45608cdae15919a40920ea0d214acb8
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48249430"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49407467"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>Postupy: migrace ze služby Azure Access Control service
 
@@ -225,7 +225,7 @@ Integrace s Azure AD pomocí WS-Federation nebo technologie WIF, doporučujeme t
 
 Alternativním přístupem, je splnění [tento vzorový kód](https://github.com/Azure-Samples/active-directory-dotnet-webapp-wsfederation), což dává mírně odlišné pokyny pro nastavení WS-Federation. Tento vzorový kód nebude používat technologie WIF, ale místo toho middleware OWIN technologie ASP.NET 4.5. Pokyny pro registraci aplikace však platí pro aplikace pomocí technologie WIF a nevyžadují licenci Azure AD Premium. 
 
-Pokud zvolíte tuto metodu, musíte pochopit [výměna podpisových klíčů ve službě Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-signing-key-rollover). Tento přístup používá globální podpisový klíč pro vydávání tokenů Azure AD. Ve výchozím nastavení technologie WIF neaktualizuje automaticky podpisové klíče. Když Azure AD otočí globální podpisového klíče, musí být připraveni přijmout změny vaší implementace technologie WIF. Další informace najdete v tématu [důležité informace o podepisování výměny klíčů ve službě Azure AD](https://msdn.microsoft.com/en-us/library/azure/dn641920.aspx).
+Pokud zvolíte tuto metodu, musíte pochopit [výměna podpisových klíčů ve službě Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-signing-key-rollover). Tento přístup používá globální podpisový klíč pro vydávání tokenů Azure AD. Ve výchozím nastavení technologie WIF neaktualizuje automaticky podpisové klíče. Když Azure AD otočí globální podpisového klíče, musí být připraveni přijmout změny vaší implementace technologie WIF. Další informace najdete v tématu [důležité informace o podepisování výměny klíčů ve službě Azure AD](https://msdn.microsoft.com/library/azure/dn641920.aspx).
 
 Pokud můžete integrovat se službou Azure AD prostřednictvím protokoly OpenID Connect nebo OAuth, doporučujeme, abyste to. Máme k dispozici rozsáhlou dokumentaci a pokyny o tom, jak integrovat Azure AD do webové aplikace k dispozici v našich [Příručka pro vývojáře Azure AD](https://aka.ms/aaddev).
 

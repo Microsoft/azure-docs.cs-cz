@@ -12,15 +12,15 @@ ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
-ms.date: 02/28/2018
+ms.topic: article
+ms.date: 10/17/2018
 ms.author: ergreenl
-ms.openlocfilehash: 6be67a92c95ccf1161ffeeb636ee4f998c65fa05
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 0eb028e419f05843da308c824d79a8f4e1883fb2
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39503685"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49429741"
 ---
 # <a name="azure-ad-domain-services---troubleshoot-alerts"></a>Azure AD Domain Services – řešení výstrah
 Tento článek obsahuje Průvodce řešením potíží pro všechny výstrahy, které mohou nastat ve vaší spravované doméně.
@@ -39,7 +39,7 @@ Vyberte kroků pro řešení problémů, které odpovídají ID nebo zprávy ve 
 | AADDS105 | *Instanční objekt s ID aplikace "d87dcbc6-a371-462e-88e3-28ad15ec4e64" byl odstraněn a potom znovu vytvořit. Opětovnému vytvoření zůstanou za nekonzistentní oprávnění v Azure AD Domain Services prostředky potřebné pro služby spravované domény. Může mít vliv na synchronizaci hesel ve vaší spravované doméně.* | [Synchronizace hesla aplikace je zastaralá](active-directory-ds-troubleshoot-service-principals.md#alert-aadds105-password-synchronization-application-is-out-of-date) |
 | AADDS500 | *Spravovaná doména poslední synchronizace s Azure AD na [date]. Uživatelé možná nebudete moct přihlásit ve spravované doméně nebo členství ve skupinách možná není synchronizována s Azure AD.* | [K synchronizaci nedošlo nějakou dobu](#aadds500-synchronization-has-not-completed-in-a-while) |
 | AADDS501 | *Spravovaná doména posledního zálohování [Date].* | [Záloha ve chvíli zálohování](#aadds501-a-backup-has-not-been-taken-in-a-while) |
-| AADDS502 | *Certifikát protokolu secure LDAP pro spravovanou doménu vyprší [date]].* | [Certifikát protokolu secure LDAP vyprší](active-directory-ds-troubleshoot-ldaps.md#aadds502-secure-ldap-certificate-expiring) |
+| AADDS502 | *Certifikát protokolu secure LDAP pro spravovanou doménu vyprší [date].* | [Certifikát protokolu secure LDAP vyprší](active-directory-ds-troubleshoot-ldaps.md#aadds502-secure-ldap-certificate-expiring) |
 | AADDS503 | *Spravovaná doména je pozastavená, protože není aktivní předplatné Azure spojené s doménou.* | [Pozastavení z důvodu zakázaného předplatného](#aadds503-suspension-due-to-disabled-subscription) |
 | AADDS504 | *Spravovaná doména se pozastavuje z důvodu neplatné konfigurace. Služba bylo možné spravovat, opravovat ani aktualizovat řadiče domény vaší spravované domény po dlouhou dobu.* | [Pozastavení z důvodu neplatné konfigurace](#aadds504-suspension-due-to-an-invalid-configuration) |
 

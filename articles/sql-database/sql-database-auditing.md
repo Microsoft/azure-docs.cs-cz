@@ -12,12 +12,12 @@ ms.author: ronitr
 ms.reviewer: vanto
 manager: craigg
 ms.date: 10/15/2018
-ms.openlocfilehash: bd40faf8a77a8940dc78375ec516c39742540231
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: b18f7efa09b33def2851967b5fc78bb1ddbc61e6
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49352833"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49404915"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Začínáme s auditem databáze SQL
 
@@ -79,7 +79,7 @@ Následující část popisuje konfigurace auditování pomocí webu Azure porta
 
     ![Navigační podokno][3]
 
-5. **Nové** – Teď máte několik možností pro konfiguraci kam se budou zapisovat protokoly auditu. Protokoly můžete napsat do účtu služby Azure storage, s pracovním prostorem OMS k využití v Log Analytics nebo centra událostí pro využití v Centru událostí. Můžete nakonfigurovat libovolnou kombinaci těchto možností a protokoly auditu se zapíšou do každého.
+5. **Nové** – Teď máte několik možností pro konfiguraci kam se budou zapisovat protokoly auditu. Protokoly můžete napsat do účtu služby Azure storage, do pracovního prostoru Log Analytics k využití v Log Analytics nebo do centra událostí pro využití v Centru událostí. Můžete nakonfigurovat libovolnou kombinaci těchto možností a protokoly auditu se zapíšou do každého.
 
     ![možnosti úložiště](./media/sql-database-auditing-get-started/auditing-select-destination.png)
 
@@ -87,9 +87,9 @@ Následující část popisuje konfigurace auditování pomocí webu Azure porta
 
     ![účet úložiště](./media/sql-database-auditing-get-started/auditing_select_storage.png)
 
-7. Konfigurace auditování pro zápis protokolů s pracovním prostorem OMS, vyberte **Log Analytics (Náhled)** a otevřete **Log Analytics podrobnosti**. Vyberte nebo vytvořte pracovní prostor OMS, kde budou zapsány protokoly a potom klikněte na **OK**.
+7. Konfigurace auditování pro zápis protokolů s pracovním prostorem Log Analytics, vyberte **Log Analytics (Náhled)** a otevřete **Log Analytics podrobnosti**. Vyberte nebo vytvořte pracovní prostor Log Analytics, ve kterém budou zapsány protokoly a potom klikněte na **OK**.
 
-    ![OMS](./media/sql-database-auditing-get-started/auditing_select_oms.png)
+    ![Log Analytics](./media/sql-database-auditing-get-started/auditing_select_oms.png)
 
 8. Konfigurace auditování pro zápis protokolů do centra událostí, vyberte **centra událostí (Preview)** a otevřete **podrobnosti o Centru událostí**. Vyberte Centrum událostí, kde budou zapsány protokoly a potom klikněte na **OK**. Ujistěte se, že Centrum událostí je ve stejné oblasti jako databáze a serveru.
 
@@ -109,10 +109,10 @@ Pokud jste zvolili pro zápis protokolů auditu do Log Analytics:
 
 - Potom kliknutím na **otevřete v OMS** v horní části **záznamy auditu** stránka se otevře zobrazení protokolů v Log Analytics, ve kterém můžete upravit časový rozsah a vyhledávací dotaz.
 
-    ![Otevřít v OMS](./media/sql-database-auditing-get-started/auditing_open_in_oms.png)
+    ![Otevřít ve službě Log Analytics](./media/sql-database-auditing-get-started/auditing_open_in_oms.png)
 
 - Alternativně můžete také přistupovat protokolů auditu v okně Log Analytics. Otevření pracovního prostoru Log Analytics a v části **Obecné** klikněte na tlačítko **protokoly**. Můžete začít s jednoduchého dotazu, jako například: *hledání "SQLSecurityAuditEvents"* zobrazíte auditování protokoluje.
-    Z tohoto místa můžete také použít [Operations Management Suite (OMS) Log Analytics](../log-analytics/log-analytics-log-search.md) ke spuštění rozšířené hledání na data protokolů auditu. Log Analytics nabízí provozní informace v reálném čase pomocí integrovaného vyhledávání a vlastních řídicích panelů, díky kterým můžete analyzovat miliony záznamů napříč vašimi úlohami a servery. Další užitečné informace o vyhledávací jazyk OMS Log Analytics a příkazy najdete v tématu [referenční příručce k vyhledávání Log Analytics](../log-analytics/log-analytics-log-search.md).
+    Z tohoto místa můžete také použít [Log Analytics](../log-analytics/log-analytics-log-search.md) ke spuštění rozšířené hledání na data protokolů auditu. Log Analytics nabízí provozní informace v reálném čase pomocí integrovaného vyhledávání a vlastních řídicích panelů, díky kterým můžete analyzovat miliony záznamů napříč vašimi úlohami a servery. Další užitečné informace o vyhledávací jazyk Log Analytics a příkazy najdete v tématu [referenční příručce k vyhledávání Log Analytics](../log-analytics/log-analytics-log-search.md).
 
 Pokud jste zvolili pro zápis protokolů auditu do centra událostí:
 

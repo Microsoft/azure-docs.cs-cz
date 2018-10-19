@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2017
 ms.author: magoedte
-ms.openlocfilehash: f0737c6a6ff228b92a030242faf7f4d634bdd9f2
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: e9ac4b7f7a0900f8b49f95c0db9ba5e9c962fa0e
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45733175"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49404031"
 ---
 #  <a name="agent-health-solution-in-azure"></a>Řešení Agent Health v Azure
 Řešení Agent Health v Azure vám pomůže pochopit, u všech agentů odesílajících sestavy přímo do pracovního prostoru Log Analytics nebo skupinu pro správu System Center Operations Manager připojení k Log Analytics, která jsou reagovat a odešlete provozní data.  Můžete také sledovat, kolik agentů je nasazených a jak jsou geograficky distribuováni, a provádět další dotazy, abyste si udrželi přehled o distribuci agentů nasazených v Azure, dalších cloudových prostředích nebo místně.    
@@ -65,7 +65,7 @@ Kliknutím na dlaždici **Agent Health** otevřete řídicí panel **Agent Healt
 | Distribuce podle kategorie agenta | Rozdělení různých kategorií agentů, kteří odesílají události prezenčního signálu: přímí agenti, agenti nástroje Operations Manager nebo server pro správu nástroje Operations Manager.|
 | Distribuce podle skupiny pro správu | Rozdělení různých skupin pro správu nástroje SCOM ve vašem prostředí.|
 | Geografické umístění agentů | Rozdělení různých zemí, ve kterých máte agenty, a celkový počet agentů nainstalovaných v každé zemi.|
-| Počet nainstalovaných bran | Počet serverů, které mají nainstalovanou bránu analýzy protokolů a seznam těchto serverů.|
+| Počet nainstalovaných bran | Počet serverů, které mají nainstalovanou bránu Log Analytics a seznam těchto serverů.|
 
 ![Ukázka řídicího panelu řešení Agent Health](./media/monitoring-solution-agenthealth/agenthealth-solution-dashboard.png)  
 

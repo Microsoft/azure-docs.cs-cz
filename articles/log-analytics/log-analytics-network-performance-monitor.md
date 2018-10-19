@@ -15,21 +15,21 @@ ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
 ms.component: ''
-ms.openlocfilehash: 634958265193a1dedb7c860c34f712160e4120d2
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: bf10226b1d3b2153e0e17d4126c35402d096a857
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353287"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49409233"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Network Performance Monitor řešení v Azure
 
 ![Symbol sledování výkonu sítě](./media/log-analytics-network-performance-monitor/npm-symbol.png)
 
 
-Network Performance Monitor je hybridní cloudové řešení usnadňující sledování výkonu sítě mezi různými body v síťové infrastruktuře pro monitorování sítě. To zároveň pomáhá monitorovat síťové připojení k služby a aplikace koncových bodů a monitorování výkonu Azure ExpressRoute. 
+Network Performance Monitor je hybridní cloudové řešení usnadňující sledování výkonu sítě mezi různými body v síťové infrastruktuře pro monitorování sítě. Umožňuje rovněž monitorovat síťové připojení ke službě a koncovým bodům aplikace a monitorovat výkon Azure ExpressRoute. 
 
-Network Performance Monitor zjistí problémy se sítí jako provoz blackholing směrování chyby a problémy, které nejsou schopna zjistit monitorování metody konvenční sítě. Toto řešení generuje výstrahy a vás upozorní, když prahové hodnoty dojde k porušení zabezpečení pro síťové propojení. Také zajistí včas zjistit problémy s výkonem sítě a lokalizováno příčiny problému na určitém segmentu sítě nebo zařízení. 
+Network Performance Monitor zjistí problémy se sítí jako provoz blackholing směrování chyby a problémy, které nejsou schopna zjistit monitorování metody konvenční sítě. Toto řešení generuje výstrahy a upozorní vás, když u síťové linky dojde k překročení prahové hodnoty. Zajišťuje také včasné zjištění problémů s výkonem sítě a lokalizuje příčinu problému na konkrétní segment sítě nebo zařízení. 
 
 Network Performance Monitor nabízí tři různé možnosti: 
 
@@ -65,17 +65,17 @@ Můžete nainstalovat agenty na základních procesů [počítače Windows se p�
 
 ### <a name="where-to-install-the-agents"></a>Kam chcete nainstalovat agenty 
 
-* **Sledování výkonu**: instalace Operations Management Suite agenty na alespoň jednom uzlu připojeném ke všem podsítím, ze kterého chcete monitorovat síťové připojení k jiné podsítě.
+* **Sledování výkonu**: Log Analytics nainstalovat agenty na alespoň jednom uzlu připojeném ke všem podsítím, ze kterého chcete monitorovat síťové připojení k jiné podsítě.
 
     Pokud chcete monitorovat síťové propojení, nainstalujte agenty na oba koncové body tento odkaz. Pokud si nejste jisti o topologii vaší sítě, nainstalujte agenty na servery s důležitými úlohami, mezi kterými chcete monitorovat výkon sítě. Například pokud chcete monitorovat síťové připojení mezi webový server a server se systémem SQL, nainstalujte agenta na obou serverech. Agenti monitorují připojení k síti (odkazy) mezi hostiteli, ne hostitele sami. 
 
-* **Monitorování připojení služby**: nainstalujte agenta Operations Management Suite na každý uzel, ze kterého chcete monitorovat síťové připojení ke koncovému bodu služby. Příkladem je, pokud chcete monitorovat síťové připojení k Office 365 z webů office s popisky O1, O2 a O3. Nainstalujte agenta Operations Management Suite na alespoň jeden uzel v O1, O2 a O3. 
+* **Monitorování připojení služby**: nainstalujte agenta Log Analytics na každý uzel, ze kterého chcete monitorovat síťové připojení ke koncovému bodu služby. Příkladem je, pokud chcete monitorovat síťové připojení k Office 365 z webů office s popisky O1, O2 a O3. Nainstalujte agenta Log Analytics na alespoň jeden uzel v O1, O2 a O3. 
 
-* **Monitorování ExpressRoute**: nainstalujte alespoň jednoho agenta Operations Management Suite ve službě Azure virtual network. Také nainstalujte alespoň jednoho agenta do místní podsítě, která je připojená přes privátní partnerský vztah ExpressRoute.  
+* **Monitorování ExpressRoute**: nainstalujte alespoň jednoho agenta Log Analytics ve službě Azure virtual network. Také nainstalujte alespoň jednoho agenta do místní podsítě, která je připojená přes privátní partnerský vztah ExpressRoute.  
 
-### <a name="configure-operations-management-suite-agents-for-monitoring"></a>Konfigurace agentů Operations Management Suite pro monitorování 
+### <a name="configure-log-analytics-agents-for-monitoring"></a>Konfigurace agentů Log Analytics pro monitorování 
 
-Network Performance Monitor používá k monitorování výkonu sítě mezi zdrojovým a cílovým agenty syntetické transakce. Můžete zvolit TCP a ICMP jako protokol pro monitorování v možnosti sledování výkonu a monitorování připojení služby. Jen protokol TCP je k dispozici jako protokol monitorování pro monitorování ExpressRoute. Ujistěte se, že brána firewall umožňuje komunikaci mezi agenty Operations Management Suite pro monitorování na protokol, který zvolíte. 
+Network Performance Monitor používá k monitorování výkonu sítě mezi zdrojovým a cílovým agenty syntetické transakce. Můžete zvolit TCP a ICMP jako protokol pro monitorování v možnosti sledování výkonu a monitorování připojení služby. Jen protokol TCP je k dispozici jako protokol monitorování pro monitorování ExpressRoute. Ujistěte se, že brána firewall umožňuje komunikaci mezi agentů Log Analytics pro monitorování na protokol, který zvolíte. 
 
 * **Protokol TCP**: Pokud se rozhodnete TCP jako protokol pro monitorování, otevřete port brány firewall na agenty použité pro sledování výkonu sítě a monitorování ExpressRoute, abyste měli jistotu, že agenti může připojit k sobě navzájem. Chcete-li otevřít port, spusťte [EnableRules.ps1](https://aka.ms/npmpowershellscript) Powershellový skript bez parametrů v okně Powershellu s oprávněními správce.
 
@@ -109,7 +109,7 @@ Network Performance Monitor používá k monitorování výkonu sítě mezi zdro
 
    ![Dlaždice monitorování výkonu sítě](media/log-analytics-network-performance-monitor/npm-config.png)
 
-4. Na **nastavení** stránce zobrazí možnost instalace agentů Operations Management Suite a konfigurace agentů pro monitorování v **obecná nastavení** zobrazení. Jak bylo vysvětleno dříve, pokud jste nainstalovali a nakonfigurovali agenty Operations Management Suite, vyberte **nastavení** zobrazení ke konfiguraci možností, kterou chcete použít. 
+4. Na **nastavení** stránce zobrazí možnost instalace agentů Log Analytics a konfigurace agentů pro monitorování v **obecná nastavení** zobrazení. Jak bylo vysvětleno dříve, pokud jste nainstalovali a nakonfigurovali agentů Log Analytics, vyberte **nastavení** zobrazení ke konfiguraci možností, kterou chcete použít. 
 
    **Sledování výkonu**: Vyberte protokol pro syntetické transakce ve **výchozí** pravidlo monitorování výkonu a vyberte **uložit a pokračovat**. Tento výběr protokolu obsahuje pouze pro systémem generované výchozí pravidlo. Musíte zvolit protokol pokaždé, když explicitně vytvořit pravidlo monitorování výkonu. Můžete vždycky přesunout **výchozí** pravidla nastavení u **sledování výkonu** kartu (zobrazí se po dokončení konfigurace den-0) a později změnit protokol. Pokud nechcete, aby rPerfomance funkce monitorování, můžete zakázat výchozí pravidlo z **výchozí** pravidla nastavení u **sledování výkonu** kartu.
 
@@ -135,7 +135,7 @@ Network Performance Monitor používá k monitorování výkonu sítě mezi zdro
     
 Monitorování pro tyto partnerské vztahy zpočátku je v zakázaném stavu. Vyberte každý partnerský vztah, který chcete monitorovat a konfigurace monitorování pro ně ze zobrazení podrobností na pravé straně. Vyberte **Uložit** uložte konfiguraci. Další informace najdete v článku "Monitorování konfigurace ExpressRoute". 
 
-Po dokončení instalace trvá 30 minut až jednu hodinu pro naplní agregovanými daty. Při řešení agreguje data z vaší sítě, zobrazí se zpráva *řešení vyžaduje další konfiguraci* na Network Performance Monitor **přehled** dlaždici. Jakmile se data shromažďují a indexovat, **přehled** dlaždice se změní a informuje o stavu vašeho sítě v souhrnu. Potom můžete upravit monitorování uzly, na které Operations Management Suite jsou nainstalovaní agenti, stejně jako podsítě prohledány z vašeho prostředí.
+Po dokončení instalace trvá 30 minut až jednu hodinu pro naplní agregovanými daty. Při řešení agreguje data z vaší sítě, zobrazí se zpráva *řešení vyžaduje další konfiguraci* na Network Performance Monitor **přehled** dlaždici. Jakmile se data shromažďují a indexovat, **přehled** dlaždice se změní a informuje o stavu vašeho sítě v souhrnu. Potom můžete upravit monitorování uzly, na které Log Analytics jsou nainstalovaní agenti, stejně jako podsítě prohledány z vašeho prostředí.
 
 #### <a name="edit-monitoring-settings-for-subnets-and-nodes"></a>Úprava nastavení monitorování pro podsítě a uzlů 
 
@@ -176,7 +176,7 @@ V následující tabulce jsou uvedeny metody shromažďování dat a další pod
  
 
  
-Toto řešení využívá k vyhodnocení stavu sítě syntetické transakce. Operations Management Suite agenty nainstalované v různých fázích síťových paketů protokolu TCP serveru exchange nebo odezvu ICMP mezi sebou. Určuje, zda agenti použít pakety TCP nebo ICMP Echo závisí na protokol, který jste vybrali pro sledování. V procesu další agenty round-trip čas a paketů ztráty případné. Každý agent pravidelně provádí trasování cesty a jiní agenti pro vyhledání různých cest v síti, která musí být testována. Na základě těchto dat můžete odvodit agenty, latence sítě a ztrát paketů. Testy jsou opakovat každých pět sekund. Data je agregovat informace o tři minuty agenti před nahráním do služby Log Analytics.
+Toto řešení využívá k vyhodnocení stavu sítě syntetické transakce. Log Analytics agenty nainstalované v různých fázích síťových paketů protokolu TCP serveru exchange nebo odezvu ICMP mezi sebou. Určuje, zda agenti použít pakety TCP nebo ICMP Echo závisí na protokol, který jste vybrali pro sledování. V procesu další agenty round-trip čas a paketů ztráty případné. Každý agent pravidelně provádí trasování cesty a jiní agenti pro vyhledání různých cest v síti, která musí být testována. Na základě těchto dat můžete odvodit agenty, latence sítě a ztrát paketů. Testy jsou opakovat každých pět sekund. Data je agregovat informace o tři minuty agenti před nahráním do služby Log Analytics.
 
 
 
@@ -259,7 +259,7 @@ Network Performance Monitor využívá výstrah možnosti [Azure Monitor](https:
 
 To znamená, že všechna oznámení se spravují pomocí [skupiny akcí](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups#overview).  
 
-Pokud jste uživatelem NPM vytvořením výstrahy prostřednictvím OMS: 
+Pokud jste uživatelem NPM vytvořením výstrahy prostřednictvím Log Analytics: 
 1. Zobrazí se odkaz, který vás přesměrují na webu Azure Portal. Klikněte na něj pro přístup k portálu.
 2. Kliknutím na dlaždici řešení Network Performance monitoru. 
 3. Přejděte ke konfiguraci.  

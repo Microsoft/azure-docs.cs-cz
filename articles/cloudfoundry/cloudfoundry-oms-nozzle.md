@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/22/2017
 ms.author: ningk
-ms.openlocfilehash: c58c2b255d269aef7e8b3fea62d003ad0c16ef0a
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 0039536caf917a051f0ddabd6be7cf2b1be90ba2
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38971244"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49404898"
 ---
 # <a name="deploy-azure-log-analytics-nozzle-for-cloud-foundry-system-monitoring"></a>Nasazení Azure Log Analytics Nozzle pro monitorování systému Cloud Foundry
 
@@ -56,14 +56,14 @@ Před nastavením klienta příkazového řádku UAA, ujistěte se, že je nains
 
 ### <a name="3-create-a-log-analytics-workspace-in-azure"></a>3. Vytvoření pracovního prostoru Log Analytics v Azure
 
-Pracovní prostor Log Analytics můžete vytvořit ručně nebo pomocí šablony. Šablona nasadí nastavení předem nakonfigurovaná zobrazení OMS klíčového ukazatele výkonu a upozornění na konzole OMS. 
+Pracovní prostor Log Analytics můžete vytvořit ručně nebo pomocí šablony. Šablona nasadí nastavení předem nakonfigurovaná zobrazení klíčových ukazatelů výkonu a upozornění pro konzolu Log Analytics. 
 
 #### <a name="to-create-the-workspace-manually"></a>Ruční vytvoření pracovního prostoru:
 
 1. Na webu Azure Portal v seznamu služeb na webu Azure Marketplace vyhledejte a vyberte Log Analytics.
 2. Vyberte **vytvořit**a podle potřeby změňte hodnoty následujících položek:
 
-   * **Pracovní prostor OMS**: Zadejte název pro váš pracovní prostor.
+   * **Pracovní prostor log Analytics**: Zadejte název pro váš pracovní prostor.
    * **Předplatné**: Pokud máte více předplatných, vyberte ten, který je stejný jako vaše nasazení CF.
    * **Skupina prostředků**: můžete vytvořit novou skupinu prostředků nebo použijte to samé s nasazením CF.
    * **Umístění**: Zadejte umístění.
@@ -71,19 +71,19 @@ Pracovní prostor Log Analytics můžete vytvořit ručně nebo pomocí šablony
 
 Další informace najdete v tématu [Začínáme se službou Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-get-started).
 
-#### <a name="to-create-the-oms-workspace-through-the-oms-monitoring-template-from-azure-market-place"></a>Chcete-li vytvořit pracovní prostor OMS pomocí šablony monitorování OMS z Tržiště Azure:
+#### <a name="to-create-the-log-analytics-workspace-through-the-monitoring-template-from-azure-market-place"></a>Chcete-li vytvořit pracovní prostor Log Analytics prostřednictvím monitorování šablony z Tržiště Azure:
 
 1. Otevřete Azure portal.
 2. Klikněte na znaménko "+" nebo "Vytvořit prostředek" v levém horním rohu.
-3. V okně hledání zadejte "Cloud Foundry" a vyberte "Cloud Foundry monitorování řešení OMS".
-4. Cloud Foundry OMS, je načten monitorování front-stránka šablony řešení, klikněte na možnost "Vytvořit", spusťte okno šablonu.
+3. V okně hledání zadejte "Cloud Foundry" a vyberte "Cloud Foundry řešení pro monitorování".
+4. Cloud Foundry je načten monitorování front-stránka šablony řešení, klikněte na možnost "Vytvořit", spusťte okno šablonu.
 5. Zadejte požadované parametry:
-    * **Předplatné**: Vyberte předplatné Azure pro pracovní prostor OMS, obvykle stejným způsobem pracovat s Cloud Foundry nasazení.
-    * **Skupina prostředků**: Vyberte existující skupinu prostředků nebo vytvořte nový pracovní prostor OMS.
+    * **Předplatné**: Vyberte předplatné Azure pro pracovní prostor Log Analytics, obvykle stejným způsobem pracovat s Cloud Foundry nasazení.
+    * **Skupina prostředků**: Vyberte existující skupinu prostředků nebo vytvořte nový pracovní prostor Log Analytics.
     * **Umístění skupiny prostředků**: Vyberte umístění skupiny prostředků.
     * **OMS_Workspace_Name**: Zadejte název pracovního prostoru, pokud pracovní prostor neexistuje, tato šablona vytvoří nový.
     * **OMS_Workspace_Region**: Vyberte umístění pro pracovní prostor.
-    * **OMS_Workspace_Pricing_Tier**: Vyberte skladovou Položku pracovního prostoru OMS. Zobrazit [doprovodné materiály k cenám](https://azure.microsoft.com/pricing/details/log-analytics/) pro referenci.
+    * **OMS_Workspace_Pricing_Tier**: Vyberte skladovou Položku pracovního prostoru Log Analytics. Zobrazit [doprovodné materiály k cenám](https://azure.microsoft.com/pricing/details/log-analytics/) pro referenci.
     * **Právní podmínky**: klikněte na právní podmínky, klepněte na tlačítko "Vytvořit" aby přijal právní podmínky.
 - Jakmile jsou zadány všechny parametry, klikněte na možnost "Vytvořit" k nasazení šablony. Když se nasazení dokončí, stav se zobrazí na kartě oznámení.
 
@@ -137,8 +137,8 @@ cd oms-log-analytics-firehose-nozzle
 Nyní můžete nastavit proměnné prostředí v souboru manifest.yml v aktuálním adresáři. Následuje ukázka pro Nozzle manifestu aplikace. Nahraďte hodnoty konkrétní informace o pracovním prostoru Log Analytics.
 
 ```
-OMS_WORKSPACE             : Log Analytics workspace ID: open OMS portal from your Log Analytics workspace, select Settings, and select connected sources.
-OMS_KEY                   : OMS key: open OMS portal from your Log Analytics workspace, select Settings, and select connected sources.
+OMS_WORKSPACE             : Log Analytics workspace ID: Open your Log Analytics workspace in the Azure portal, select **Advanced settings**, select **Connected Sources**, and select **Windows Servers**.
+OMS_KEY                   : OMS key: Open your Log Analytics workspace in the Azure portal, select **Advanced settings**, select **Connected Sources**, and select **Windows Servers**.
 OMS_POST_TIMEOUT          : HTTP post timeout for sending events to Log Analytics. The default is 10 seconds.
 OMS_BATCH_TIME            : Interval for posting a batch to Log Analytics. The default is 10 seconds.
 OMS_MAX_MSG_NUM_PER_BATCH : The maximum number of messages in a batch to Log Analytics. The default is 1000.
@@ -177,11 +177,11 @@ cf apps
 ```
 Ujistěte se, že je OMS Nozzle aplikace spuštěna.
 
-## <a name="view-the-data-in-the-oms-portal"></a>Zobrazení dat na portálu OMS
+## <a name="view-the-data-in-the-azure-portal"></a>Zobrazení dat na webu Azure Portal
 
-Pokud jste nasadili prostřednictvím řešení pro monitorování OMS šablona Marketplace, přejděte na web Azure portal a nachází řešení OMS. Řešení můžete najít ve skupině prostředků, které jste zadali v šabloně. Klikněte na řešení, přejděte na "OMS konzoly", jsou uvedeny předem nakonfigurovaná zobrazení, klíčové ukazatele výkonu systému nejvyšší Cloud Foundry, data aplikací, výstrahy a metriky stavu virtuálního počítače. 
+Pokud jste nasadili řešení pro monitorování šablonou Marketplace, přejděte na web Azure portal a vyhledejte řešení. Řešení můžete najít ve skupině prostředků, které jste zadali v šabloně. Klikněte na řešení, vyhledejte "Log Analytics konzole", jsou uvedeny předem nakonfigurovaná zobrazení, klíčové ukazatele výkonu systému nejvyšší Cloud Foundry, data aplikací, výstrahy a metriky stavu virtuálního počítače. 
 
-Pokud jste vytvořili pracovní prostor OMS ručně, postupujte podle následujících kroků a vytvořte výstrahy a zobrazení:
+Pokud jste vytvořili pracovní prostor Log Analytics ručně, postupujte podle následujících kroků a vytvořte výstrahy a zobrazení:
 
 ### <a name="1-import-the-oms-view"></a>1. Importovat zobrazení OMS
 
@@ -246,6 +246,6 @@ Azure Log Analytics Nozzle je open source. Posílat dotazy a zpětnou vazbu, kte
 
 ## <a name="next-step"></a>Další krok
 
-Z PCF2.0 jsou metriky výkonu virtuálních počítačů k Azure log analytics nozzle přenáší systémové metriky předávání a integrovat do pracovního prostoru OMS. Už nepotřebujete agenta OMS pro metriky výkonu virtuálních počítačů. Agenta OMS ale můžete použít ke shromažďování informací Syslog. Agenta OMS je nainstalován jako doplněk Bosh k vašim virtuálním počítačům CF. 
+Z PCF2.0 jsou metriky výkonu virtuálních počítačů k Azure log analytics nozzle přenáší systémové metriky předávání a integrovat do pracovního prostoru Log Analytics. Už nepotřebujete agenta Log Analytics pro metriky výkonu virtuálních počítačů. Agenta Log Analytics ale můžete použít ke shromažďování informací Syslog. Agenta Log Analytics je nainstalován jako doplněk Bosh k vašim virtuálním počítačům CF. 
 
-Podrobnosti najdete v tématu [agenta OMS nasazení do nasazení Cloud Foundry](https://github.com/Azure/oms-agent-for-linux-boshrelease).
+Podrobnosti najdete v tématu [agenta Log Analytics nasazení do nasazení Cloud Foundry](https://github.com/Azure/oms-agent-for-linux-boshrelease).

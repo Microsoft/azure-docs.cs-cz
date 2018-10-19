@@ -1,5 +1,5 @@
 ---
-title: SQL Server na Windows Azure Virtual Machines – nejčastější dotazy | Dokumentace Microsoftu
+title: SQL Server na virtuálních počítačích Windows v Azure – nejčastější dotazy | Dokumentace Microsoftu
 description: Tento článek obsahuje odpovědi na nejčastější dotazy týkající se systémem SQL Server na virtuálních počítačích Azure.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -15,20 +15,20 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 07/12/2018
 ms.author: v-shysun
-ms.openlocfilehash: 48df858095cb867954460ec858567e41ed330063
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 906cec35c30c277ac1e8bc641d12fe37c29413dd
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39009263"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49427174"
 ---
-# <a name="frequently-asked-questions-for-sql-server-running-on-windows-azure-virtual-machines"></a>Nejčastější dotazy ke službě SQL Server běžící na virtuálních počítačích Windows Azure
+# <a name="frequently-asked-questions-for-sql-server-running-on-windows-virtual-machines-in-azure"></a>Nejčastější dotazy ke službě SQL Server běžící na virtuálních počítačích Windows v Azure
 
 > [!div class="op_single_selector"]
 > * [Windows](virtual-machines-windows-sql-server-iaas-faq.md)
 > * [Linux](../../linux/sql/sql-server-linux-faq.md)
 
-Tento článek obsahuje odpovědi na některé nejběžnější otázky o spuštění [systému SQL Server na virtuálních počítačích Windows Azure](https://azure.microsoft.com/services/virtual-machines/sql-server/).
+Tento článek obsahuje odpovědi na některé nejběžnější otázky o spuštění [SQL serveru na Windows Virtual Machines v Azure](https://azure.microsoft.com/services/virtual-machines/sql-server/).
 
 > [!NOTE]
 > Tento článek se zaměřuje na problémy, které jsou specifické pro SQL Server na virtuálních počítačích s Windows. Pokud používáte systém SQL Server na virtuálních počítačích s Linuxem, najdete v článku [Linuxu – nejčastější dotazy](../../linux/sql/sql-server-linux-faq.md).
@@ -67,7 +67,7 @@ Tento článek obsahuje odpovědi na některé nejběžnější otázky o spušt
 
    Vytvoření virtuálního počítače Azure s instancí SQL serveru. Potom migrace místních databází do této instance. Strategie migrace dat, naleznete v tématu [migrace databáze SQL serveru na SQL Server na Virtuálním počítači Azure](virtual-machines-windows-migrate-sql.md).
 
-## <a name="licensing"></a>Správa licencí
+## <a name="licensing"></a>Licencování
 
 1. **Jak mohu nainstalovat licencovanou kopii systému SQL Server na Virtuálním počítači Azure?**
 

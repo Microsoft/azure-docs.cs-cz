@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/18/2018
 ms.author: asmalser
-ms.openlocfilehash: 917baa4b0d983df858c64cd0fa5b697b0fbb316c
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 2ab2ac34132eff65e1d6c77794486bc8d9858b40
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46298264"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49408168"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning-preview"></a>Kurz: Konfigurace Workday pro uživatele automatické zřizování (preview)
 
@@ -74,7 +74,7 @@ Scénář popsaný v tomto kurzu se předpokládá, že máte následující pol
 * Platné předplatné s přístupem globální správce Azure AD Premium P1
 * Implementace klienta Workday pro účely testování a integrace
 * Oprávnění správce ve Workday a vytvořte uživatele systému integrace, provést změny k testování daty o zaměstnancích pro účely testování
-* Pro zřizování uživatelů služby Active Directory, je potřeba hostitelský server připojený k doméně se službou Windows 2012 nebo vyšší [místního agenta synchronizace](https://go.microsoft.com/fwlink/?linkid=847801)
+* Pro zřizování uživatelů služby Active Directory, je potřeba hostitel připojený k doméně serveru s Windows serverem 2012 nebo vyšší [místního agenta synchronizace](https://go.microsoft.com/fwlink/?linkid=847801)
 * [Azure AD Connect](../hybrid/whatis-hybrid-identity.md) synchronizace mezi službami Active Directory a Azure AD
 
 ### <a name="solution-architecture"></a>Architektury řešení

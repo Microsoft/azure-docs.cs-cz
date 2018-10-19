@@ -1,5 +1,5 @@
 ---
-title: Azure Event Hubs IP připojení filtry | Dokumentace Microsoftu
+title: Filtry IP služby Azure Event Hubs | Dokumentace Microsoftu
 description: Použijte IP adresu filtrování se můžete blokovat připojení z konkrétní IP adresy do služby Azure Event Hubs.
 services: event-hubs
 documentationcenter: ''
@@ -10,20 +10,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: spelluru
-ms.openlocfilehash: c229a6f84096ecca892b74f7ce65cb831fa50be3
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: d0114821b5239146f64dde0b01652dc320994585
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48886173"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49408145"
 ---
 # <a name="use-ip-filters"></a>Pomocí filtrů IP adres
 
-Pro scénáře, ve kterých Azure Event Hubs přístupný jenom některé známé servery *filtr IP* funkce umožňuje konfigurovat pravidla pro odmítnutí nebo přijímá přenos dat pocházejících z konkrétní adresy IPv4. Tyto adresy může být například těch, které podnikové bráně překladu adres.
+Pro scénáře, ve kterých Azure Event Hubs by měly být pouze přístupné z některé známé servery *filtr IP* funkce umožňuje konfigurovat pravidla pro odmítnutí nebo přijímá přenos dat pocházejících z konkrétní adresy IPv4. Tyto adresy může být například těch, které podnikové bráně překladu adres.
 
 ## <a name="when-to-use"></a>Kdy je použít
 
-Použít dvě důležité případy, ve kterých je užitečné pro blokování koncové body služby Event Hubs pro určité IP adresy jsou následující:
+Použít dvě důležité případy, ve kterých je užitečné pro blokování služby Event Hubs pro určité IP adresy jsou následující:
 
 - Vaše služby event hubs by měla přijímat provoz pouze ze zadaného rozsahu IP adres a odmítnout všechno ostatní. Například používáte Event Hubs s využitím [Azure Express Route] [ express-route] můžete vytvářet privátní připojení k vaší místní infrastruktuře. 
 - Budete muset odmítnout provoz z IP adresy, které byly identifikovány jako podezřelou správcem služby Event Hubs.
@@ -47,12 +47,12 @@ Například pokud chcete adresy v rozsahu 70.37.104.0/24 přijmout nebo odmítno
 > [!NOTE]
 > Odmítnutí IP adresy můžete zabránit interakci s centry událostí dalšími službami Azure (jako je Azure Stream Analytics, Azure Virtual Machines nebo Device Explorer na portálu).
 
-### <a name="creating-a-virtual-network-rule-with-azure-resource-manager-templates"></a>Vytvoření pravidla virtuální sítě pomocí šablon Azure Resource Manageru
+### <a name="creating-an-ip-filter-rule-with-azure-resource-manager-templates"></a>Vytvoření pravidla filtru IP pomocí šablon Azure Resource Manageru
 
 > [!IMPORTANT]
 > Virtuální sítě jsou podporovány v **standardní** a **vyhrazené** úrovně služby Event Hubs. Není podporována v úrovni basic. 
 
-Následující šablony Resource Manageru umožňuje do existujícího oboru názvů služby Event Hubs přidáte pravidlo virtuální sítě.
+Následující šablony Resource Manageru umožňuje přidání pravidlo filtru IP do existujícího oboru názvů služby Event Hubs.
 
 Parametry šablony:
 

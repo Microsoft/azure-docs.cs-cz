@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: roiyz
-ms.openlocfilehash: ae2458b6fc650961c63da2f7644dbd54d27fc2a8
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: d93fc81241053418ea2ff0576d50cbaefa0df9fb
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452101"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49428551"
 ---
 # <a name="azure-virtual-machine-agent-overview"></a>Přehled služby Azure agenta virtuálního počítače
 Agent virtuálního počítače Microsoft Azure (VM Agent) je zabezpečeného a nenáročného proces, který spravuje interakci virtuálních počítačů (VM) s Kontrolerem prostředků infrastruktury Azure. Agent virtuálního počítače má primární roli při povolování a spouštění rozšíření virtuálního počítače Azure. Rozšíření virtuálních počítačů povolit konfiguraci po nasazení virtuálního počítače, jako je například instalací a konfigurací softwaru. Rozšíření virtuálních počítačů povolit také funkce pro obnovení, jako je resetování hesla pro správu virtuálního počítače. Rozšíření virtuálních počítačů nelze spustit bez agenta virtuálního počítače Azure.
@@ -100,7 +100,8 @@ foreach ($vm in $vms) {
 ```
 
 ### <a name="manual-detection"></a>Ručního zjišťování
-Při přihlášení k virtuálnímu počítači s Windows Azure, Správce úloh je možné ke kontrole spuštěné procesy. Vyhledat agenta virtuálního počítače Azure, otevřete Správce úloh, klikněte na tlačítko *podrobnosti* kartu a najděte název procesu **WindowsAzureGuestAgent.exe**. Přítomnost tento proces se označuje, že je nainstalovaný agent virtuálního počítače.
+
+Při přihlášení k virtuálnímu počítači s Windows, Správce úloh je možné ke kontrole spuštěné procesy. Vyhledat agenta virtuálního počítače Azure, otevřete Správce úloh, klikněte na tlačítko *podrobnosti* kartu a najděte název procesu **WindowsAzureGuestAgent.exe**. Přítomnost tento proces se označuje, že je nainstalovaný agent virtuálního počítače.
 
 
 ## <a name="upgrade-the-vm-agent"></a>Upgrade agenta virtuálního počítače

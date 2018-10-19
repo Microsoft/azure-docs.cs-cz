@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/07/2018
 ms.author: sngun
-ms.openlocfilehash: 68eb567235897641d5d4027160f62c5aa6e7e4f9
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 26500f3e557a27046edc5c833b8c8d88ae266e68
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46963385"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49408995"
 ---
 # <a name="azure-cosmos-db-diagnostic-logging"></a>Protokolování diagnostiky služby Azure Cosmos DB
 
@@ -356,11 +356,14 @@ Diagnostické protokoly jsou k dispozici ve vašem účtu po dobu dvou hodin od 
 
 Pokud jste vybrali **odesílat do Log Analytics** možnost při zapnutí protokolování diagnostiky, diagnostických dat z vašeho kontejneru se předávají do Log Analytics do dvou hodin. Když se podíváte na Log Analytics hned po zapnutí protokolování, nezobrazí se žádná data. Právě počkejte po dobu dvou hodin a zkuste to znovu. 
 
-Předtím, než můžete zobrazit protokoly, zkontrolujte a zobrazit, pokud váš pracovní prostor Log Analytics má byla upgradována na nový dotazovací jazyk Log Analytics. Chcete-li zkontrolovat, otevřete [webu Azure portal](https://portal.azure.com)vyberte **Log Analytics** úplně vlevo, pak vyberte název pracovního prostoru, jak je vidět na dalším obrázku. **Pracovní prostor OMS** se zobrazí stránka:
+Předtím, než můžete zobrazit protokoly, zkontrolujte a zobrazit, pokud váš pracovní prostor Log Analytics má byla upgradována na nový dotazovací jazyk Log Analytics. Chcete-li zkontrolovat, otevřete [webu Azure portal](https://portal.azure.com)vyberte **Log Analytics** úplně vlevo, pak vyberte název pracovního prostoru, jak je vidět na dalším obrázku. **Pracovní prostor Log Analytics** se zobrazí stránka:
 
 ![Log Analytics na portálu Azure portal](./media/logging/azure-portal.png)
 
-Pokud se zobrazí následující zpráva na **pracovní prostor OMS** stránky, váš pracovní prostor nebyl byla upgradována na nový jazyk. Další informace o tom, jak upgradovat na nový dotazovací jazyk, v tématu [Upgrade pracovního prostoru Azure Log Analytics na nové prohledávání protokolů](../log-analytics/log-analytics-log-search-upgrade.md). 
+>[!NOTE]
+>Pracovní prostory OMS jsou dnes označovány jako pracovní prostory Log Analytics.  
+
+Pokud se zobrazí následující zpráva na **pracovní prostor Log Analytics** stránky, váš pracovní prostor nebyl byla upgradována na nový jazyk. Další informace o tom, jak upgradovat na nový dotazovací jazyk, v tématu [Upgrade pracovního prostoru Azure Log Analytics na nové prohledávání protokolů](../log-analytics/log-analytics-log-search-upgrade.md). 
 
 ![Zpráva upgrade log Analytics](./media/logging/upgrade-notification.png)
 

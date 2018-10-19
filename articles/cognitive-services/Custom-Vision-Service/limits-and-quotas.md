@@ -1,5 +1,5 @@
 ---
-title: Omezení a kvóty – Custom Vision Service
+title: Ceny a omezení – Custom Vision Service
 titlesuffix: Azure Cognitive Services
 description: Další informace o omezení a kvóty pro službu Custom Vision Service.
 services: cognitive-services
@@ -8,22 +8,24 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-vision
 ms.topic: conceptual
-ms.date: 03/16/2018
+ms.date: 10/16/2018
 ms.author: anroth
-ms.openlocfilehash: ce06effbce12abb6271e050829d3218f4fbbfbf4
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: d0a6b7be62afcd8e9f51b6a9387c9aa33f62d9a9
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902854"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49430064"
 ---
-# <a name="limits-and-quotas"></a>Omezení a kvóty
+# <a name="pricing-and-limits"></a>Ceny a omezení
 
-Existují tři úrovně klíče pro službu Custom Vision Service. F0 a S0 prostředky jsou získány prostřednictvím webu Azure portal. Podrobnosti o cenách a transakce definice jsou na [stránce s cenami](https://azure.microsoft.com/pricing/details/cognitive-services/custom-vision-service/).  F0 projekty můžete upgradovat na S0 projekty.
+Existují tři úrovně klíčů pro Custom Vision service. Prostředky projektu omezené zkušební verze jsou připojené k vaší vize vlastní přihlášení (to znamená, že účet služby Azure Active Directory nebo účet MSA). Jsou určeny pro krátké zkušební verze služby. Můžete se zaregistrovat pro F0 (zdarma) nebo S0 (standard) předplatné na webu Azure portal. Zobrazit odpovídající [stránce ceny služby Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/custom-vision-service/) podrobnosti o cenách a transakce.
 
-Prostředky projektu omezené zkušební verze jsou připojeny k vaše vize vlastní přihlašovací údaje (to znamená, účtu AAD nebo účtu MSA.) Jsou určeny pro krátké zkušební verze služby.  Účty vytvořené během dřívější bezplatná verze preview, před zavedením Azure verze Preview (1. března 2018) si zachovají své předchozí kvóty omezené zkušební verze. 
+Účty vytvořené během dřívější bezplatná verze preview, před zavedením Azure verze Preview (1. března 2018), si zachovají své předchozí kvóty omezené zkušební verze. 
 
-||**Omezené zkušební verze**|**F0 (Azure)**|**S0 (Azure)**|
+Počet trénovacích obrázků na projekt a značky pro každý projekt se očekává se zvýšení časem pro projekty S0.
+
+||**Omezené zkušební verze**|**F0**|**S0**|
 |-----|-----|-----|-----|
 |Projekty|2|2|100|
 |Trénovacích obrázků na projekt, klasifikace|5 000|5 000|50,000|
@@ -38,7 +40,7 @@ Prostředky projektu omezené zkušební verze jsou připojeny k vaše vize vlas
 |[Predikce](https://go.microsoft.com/fwlink/?linkid=865445) operace bez úložiště (transakcí za sekundu)|2|2|20|
 |[TrainProject](https://go.microsoft.com/fwlink/?linkid=865446) (volání za sekundu rozhraní API)|2|2|10|
 |[Další volání rozhraní API](https://go.microsoft.com/fwlink/?linkid=865446) (transakcí za sekundu)|10|10|10|
-|Maximální velikost obrázku (školení pro nahrání image) |6MB|6MB|6MB|
-|Maximální velikost obrázku (předpověď)|4MB|4MB|4MB|
+|Maximální velikost obrázku (školení pro nahrání image) |6 MB|6 MB|6 MB|
+|Maximální velikost obrázku (předpověď)|4 MB|4 MB|4 MB|
 
-Omezení *# trénovacích obrázků na projekt* a *# značky nebo projektu* se očekává, že zvýší v čase pro projekty S0. 
+

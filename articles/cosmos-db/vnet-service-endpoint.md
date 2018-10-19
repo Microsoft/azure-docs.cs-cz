@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: govindk
-ms.openlocfilehash: 868f465cc651043d3ef4b1735b4b528252572dbb
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: cc64bc1af6eee505ccf3d38e214c49ffb7e3304c
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49378081"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49404456"
 ---
 # <a name="secure-access-to-an-azure-cosmos-db-account-by-using-azure-virtual-network-service-endpoint"></a>Zabezpečený přístup k účtu služby Azure Cosmos DB s využitím koncového bodu služby virtuální sítě Azure
 
@@ -56,8 +56,8 @@ Nyní bude účtu služby Azure Cosmos DB povoluje pouze provoz z to vybrali pod
 
 1. Z **všechny prostředky** okně hledání účtu služby Azure Cosmos DB, který jste chcete zabezpečit.  
 
-> [!NOTE]
-> Pokud máte existující brány firewall protokolu IP nakonfigurovaný pro váš účet Azure Cosmos DB, mějte prosím na paměti konfigurace brány firewall, odeberte brány firewall protokolu IP a potom povolit koncový bod služby. Pokud povolíte koncový bod služby bez disbling bránu firewall, provoz z tohoto rozsahu ip budou ztraceny virtuální IP identit a se ukončí s chybovou zprávou filtru IP. Takže k této chybě zabránit zakážete vždy pravidla brány firewall, je zkopírovat, povolit koncový bod služby z podsítě a nakonec ACL podsítě ze služby Cosmos DB. Po konfiguraci koncového bodu služby a přidávání seznamu ACL můžete znovu povolit brány firewall protokolu IP znovu v případě potřeby.
+   > [!NOTE]
+   > Pokud máte existující brány firewall protokolu IP nakonfigurovaný pro váš účet Azure Cosmos DB, mějte prosím na paměti konfigurace brány firewall, odeberte brány firewall protokolu IP a potom povolit koncový bod služby. Pokud povolíte koncový bod služby bez disbling bránu firewall, provoz z tohoto rozsahu ip budou ztraceny virtuální IP identit a se ukončí s chybovou zprávou filtru IP. Takže k této chybě zabránit zakážete vždy pravidla brány firewall, je zkopírovat, povolit koncový bod služby z podsítě a nakonec ACL podsítě ze služby Cosmos DB. Po konfiguraci koncového bodu služby a přidávání seznamu ACL můžete znovu povolit brány firewall protokolu IP znovu v případě potřeby.
 
 2. Než povolíte koncový bod služby virtuální sítě, zkopírujte informace o bráně firewall IP spojenou s vaším účtem Azure Cosmos DB pro budoucí použití. Brány firewall protokolu IP můžete znovu povolit po dokončení konfigurace koncového bodu služby.  
 
@@ -97,9 +97,8 @@ Následujícím postupem nakonfigurujte koncový bod služby na účet služby A
 
 1. Nainstalujte nejnovější [prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) a [přihlášení](https://docs.microsoft.com/powershell/azure/authenticate-azureps).  Zajistěte, pamatujte nastavení brány firewall protokolu IP a zcela odstranit brány firewall protokolu IP, než povolíte koncový bod služby pro účet.
 
-
-> [!NOTE]
-> Pokud máte existující brány firewall protokolu IP nakonfigurovaný pro váš účet Azure Cosmos DB, mějte prosím na paměti konfigurace brány firewall, odeberte brány firewall protokolu IP a potom povolit koncový bod služby. Pokud povolíte koncový bod služby bez disbling bránu firewall, provoz z tohoto rozsahu ip budou ztraceny virtuální IP identit a se ukončí s chybovou zprávou filtru IP. Takže k této chybě zabránit zakážete vždy pravidla brány firewall, je zkopírovat, povolit koncový bod služby z podsítě a nakonec ACL podsítě ze služby Cosmos DB. Po konfiguraci koncového bodu služby a přidávání seznamu ACL můžete znovu povolit brány firewall protokolu IP znovu v případě potřeby.
+  > [!NOTE]
+  > Pokud máte existující brány firewall protokolu IP nakonfigurovaný pro váš účet Azure Cosmos DB, mějte prosím na paměti konfigurace brány firewall, odeberte brány firewall protokolu IP a potom povolit koncový bod služby. Pokud povolíte koncový bod služby bez disbling bránu firewall, provoz z tohoto rozsahu ip budou ztraceny virtuální IP identit a se ukončí s chybovou zprávou filtru IP. Takže k této chybě zabránit zakážete vždy pravidla brány firewall, je zkopírovat, povolit koncový bod služby z podsítě a nakonec ACL podsítě ze služby Cosmos DB. Po konfiguraci koncového bodu služby a přidávání seznamu ACL můžete znovu povolit brány firewall protokolu IP znovu v případě potřeby.
 
 2. Než povolíte koncový bod služby virtuální sítě, zkopírujte informace o bráně firewall IP spojenou s vaším účtem Azure Cosmos DB pro budoucí použití. Brány firewall protokolu IP se znovu povolit po dokončení konfigurace koncového bodu služby.  
 
@@ -270,7 +269,7 @@ Pokud jsou povolené koncové body služeb virtuální sítě, zdrojové IP adre
 
 Azure Cosmos DB je víceklientská služba s použitím veřejné IP adresy. Omezení přístupu k podsíti služby Azure Virtual network pomocí funkce pro koncový bod služby přístup omezen pro váš účet Azure Cosmos DB pomocí dané virtuální síti Azure a její podsítě.  Účet Azure Cosmos DB se nenachází v dané virtuální síti Azure. 
 
-### <a name="what-if-anything-will-be-logged-in-log-analyticsoms-if-it-is-enabled"></a>Co když nic se zaznamenají v Log Analytics a OMS je-li aktivní?  
+### <a name="what-if-anything-will-be-logged-in-log-analytics-if-it-is-enabled"></a>Co když nic se budou protokolovat v Log Analytics je-li aktivní?  
 
 Azure Cosmos DB bude nabízet protokoly s IP adresou (bez poslední oktet) se stavem 403 pro požadavek blokována seznamu ACL.  
 

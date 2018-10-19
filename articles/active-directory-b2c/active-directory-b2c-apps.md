@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/13/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: e42bc63b0c2b6edf4dc0de204bbac5fe90071a67
-ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
+ms.openlocfilehash: 7410dadabf9fda2eb36531991d1d7ff3c3747e2c
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39480508"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49406513"
 ---
 # <a name="applications-types-that-can-be-used-in-active-directory-b2c"></a>Typy aplikací, které lze použít v Active Directory B2C
 
@@ -88,11 +88,6 @@ Accept: application/json
 
 Webové rozhraní API pak může pomocí tokenu ověřit identitu volajícího a extrahovat informace o volajícím z deklarací identity zakódovaných v tokenu. Další informace o typech tokenů a deklaracích identity přístupných aplikaci najdete v tématu [Odkaz tokenu Azure AD B2C](active-directory-b2c-reference-tokens.md).
 
-> [!NOTE]
-> Azure AD B2C v současné době podporuje pouze webová rozhraní API, ke kterým přistupují vlastní, dobře známí klienti. Výsledné aplikace mohou být pro instanci aplikace pro iOS, aplikaci pro Android a back endové webové rozhraní API. Tato architektura je plně podporovaná. Povolení partnerského klienta, jako je například další aplikace pro iOS, pro přístup k stejnému webovému rozhraní API v tuto chvíli nepodporuje. Všechny komponenty kompletní aplikace musí sdílet ID jedné aplikace.
->
->
-
 Webové rozhraní API může přijímat tokeny z řady typů klientů, včetně webových aplikací, desktop a mobilní aplikace, jednostránkové aplikace, démonů na straně serveru a dalších webových rozhraní API. Tady je příklad celého toku u webové aplikace, která volá webové rozhraní API:
 
 1. Webová aplikace spouští zásady a uživatel dokončí činnost koncového uživatele.
@@ -114,11 +109,6 @@ Chcete-li zjistit, jak zabezpečit webové rozhraní API pomocí Azure AD B2C, p
 Aplikace, které jsou nainstalované na zařízeních, jako jsou mobilní i desktopové aplikace, často potřebují přístup k back endovým službám nebo webovým rozhraním API jménem uživatele. Můžete přidat vlastní činnosti správy identity pro vaše nativní aplikace a bezpečně volat back endové služby pomocí Azure AD B2C a [tok autorizačního kódu OAuth 2.0](active-directory-b2c-reference-oauth-code.md).  
 
 V tomto toku, aplikace provede [zásady](active-directory-b2c-reference-policies.md) a přijímá `authorization_code` z Azure AD poté, co uživatel vykoná zásadu. `authorization_code` Představuje oprávnění aplikace volat back endové služby jménem uživatele, který je aktuálně přihlášený. Aplikace můžete potom exchange `authorization_code` na pozadí pro `id_token` a `refresh_token`.  Aplikace můžete použít `id_token` ověřování do back endové webové rozhraní API v požadavcích HTTP. Může také použít `refresh_token` k získání nového `id_token` po vypršení platnosti toho starého.
-
-> [!NOTE]
-> Azure AD B2C momentálně podporuje pouze tokeny, které se používají pro přístup k aplikaci prvku vlastní back endové webové službě. Kompletní aplikace mohou být pro instanci aplikace pro iOS, aplikaci pro Android a back endové webové rozhraní API. Tato architektura je plně podporovaná. Tím umožní vaší aplikaci iOS k partnerskému webovému rozhraní API pomocí přístupových tokenů OAuth 2.0 se momentálně nepodporuje. Všechny komponenty kompletní aplikace musí sdílet ID jedné aplikace.
->
->
 
 ## <a name="current-limitations"></a>Aktuální omezení
 

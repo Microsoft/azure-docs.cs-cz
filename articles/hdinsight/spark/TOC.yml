@@ -219,6 +219,8 @@ items:
       href: apache-spark-settings.md
     - name: Optimalizace sparkových úloh
       href: apache-spark-perf.md
+    - name: Povolení ukládání do mezipaměti s využitím IO Cache
+      href: apache-spark-improve-performance-iocache.md
     - name: Plánování kapacity clusteru
       href: ../hdinsight-capacity-planning.md
       maintainContext: true
@@ -454,9 +456,9 @@ items:
   - name: Nástroje Windows pro HDInsight
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: 17ce2876fecd8ced03f5ddbced3657ac6b76c1e8
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 53f7e70e9ce7442ab37008c1c6614eec0783fd85
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49364434"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49428279"

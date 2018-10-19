@@ -12,12 +12,12 @@ ms.author: moslake
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 09/14/2018
-ms.openlocfilehash: 803bab4f0b91e2612abceedfa09baedaaea2a55e
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: bbcd5de0d6c2b43b220d5010093eccc1c9a76269
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49377933"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49406290"
 ---
 # <a name="manage-file-space-in-azure-sql-database"></a>Správa místo souborů ve službě Azure SQL Database
 Tento článek popisuje různé druhy prostoru úložiště v Azure SQL Database a kroky, které mohou být provedeny, když přidělené místo souborů databáze a elastické fondy je potřeba explicitně spravovat.
@@ -216,7 +216,7 @@ Další informace o tomto příkazu najdete v tématu [SHRINKDATABASE](https://d
 
 ### <a name="auto-shrink"></a>Auto-shrink
 
-Automatické zmenšení Alternativně je možné povolit pro databázi.  Zmenšení automaticky sníží složitost správy souborů a je menší dopad na výkon databází než SHRINKDATABASE nebo SHRINKFILE.  Zmenšení automaticky může být zvláště užitečné pro Správa elastických fondů pomocí velkého počtu databází.  Je však méně účinný uvolní místo souborů než SHRINKDATABASE a SHRINKFILE zmenšení automaticky.
+Automatické zmenšení Alternativně je možné povolit pro databázi.  Zmenšení automaticky sníží složitost správy souborů a je menší dopad na výkon databází než SHRINKDATABASE nebo SHRINKFILE.  Zmenšení automaticky může být zvláště užitečné pro Správa elastických fondů pomocí velkého počtu databází.  Automatické zmenšení však může být v uvolní místo souborů než SHRINKDATABASE a SHRINKFILE méně účinné.
 Pokud chcete povolit automatické zmenšení, upravte název databáze v následujícím příkazu.
 
 

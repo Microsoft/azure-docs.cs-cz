@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 8983e98bdfb99d71559e1d79d5f6e72c8366b954
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: 683efc6f772337754fc21a1e486d35b7f92e8f81
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48268525"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49428245"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>Implementace zotavení po havárii pomocí služby zálohování a obnovení ve službě Azure API Management
 
@@ -122,7 +122,7 @@ Nahraďte `{tentand id}`, `{application id}`, a `{redirect uri}` pomocí násled
 
 ## <a name="calling-the-backup-and-restore-operations"></a>Volání operace zálohování a obnovení
 
-Rozhraní REST API jsou [služby Api Management – zálohování](https://docs.microsoft.com/rest/api/apimanagement/apimanagementservice/backup) a [služby Api Management – obnovení](https://docs.microsoft.com/rest/api/apimanagement/apimanagementservice/restore).
+Rozhraní REST API jsou [služby Api Management – zálohování](https://docs.microsoft.com/rest/api/apimanagement/apimanagementservice/apimanagementservice_backup) a [služby Api Management – obnovení](https://docs.microsoft.com/rest/api/apimanagement/apimanagementservice/apimanagementservice_restore).
 
 Před voláním operace "zálohování a obnovení", které jsou popsané v následujících částech nastavte autorizační hlavičky žádosti pro volání REST.
 

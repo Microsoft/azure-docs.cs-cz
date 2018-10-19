@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 05/21/2018
 ms.author: maquaran
-ms.openlocfilehash: 6c4dafa5b15548b3dbc02a9c093232197b3f1400
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 553917a29b3564fff71d6ab994ec199891cbaae7
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44716549"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49409097"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>Stáhněte si informačního kanálu procesor změnu .NET SDK: A poznámky k verzi
 > [!div class="op_single_selector"]
@@ -42,6 +42,12 @@ ms.locfileid: "44716549"
 ## <a name="release-notes"></a>Poznámky k verzi
 
 ### <a name="v2-builds"></a>sestavení v2
+
+### <a name="a-name220220"></a><a name="2.2.0"/>2.2.0
+* Přidání podpory pro zapůjčení dělené kolekce. Klíč oddílu musí být definován jako /id.
+* Vedlejší narušující změna: metody rozhraní IChangeFeedDocumentClient a třída ChangeFeedDocumentClient byly změněny na zahrnout RequestOptions a CancellationToken parametry. IChangeFeedDocumentClient je pokročilá rozšíření bod, který umožní, abychom vám poskytli vlastní implementaci klientem dokumentu pomocí Change Feed Processor, třeba vyplnění DocumentClient a zachytit všechna volání do něj udělat dodatečné trasování, zpracování chyb , atd. S touto aktualizací se kód, který implementovat IChangeFeedDocumentClient muset být změněna, aby zahrnovala nové parametry v implementaci.
+* Vylepšení diagnostiky podverze.
+
 
 ### <a name="a-name210210"></a><a name="2.1.0"/>2.1.0
 * Přidání nového rozhraní API, úloha&lt;IReadOnlyList&lt;RemainingPartitionWork&gt; &gt; IRemainingWorkEstimator.GetEstimatedRemainingWorkPerPartitionAsync(). To je možné získat odhad práce pro každý oddíl.

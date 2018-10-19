@@ -1,5 +1,5 @@
 ---
-title: Shromažďovat data shromážděná v OMS Log Analytics | Dokumentace Microsoftu
+title: Shromažďovat data shromážděná v Log Analytics | Dokumentace Microsoftu
 description: Shromážděná je linuxového démona otevřít zdroj, který pravidelně shromažďuje data z aplikací a informace na úrovni systému.  Tento článek obsahuje informace o shromažďování dat z shromážděná v Log Analytics.
 services: log-analytics
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 05/02/2017
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: eb053ef8fc66ff9d71a9576b71eb4edfcd688638
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: a1f28103f8faabae166f09185db3f3e1fee7a5ab
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041286"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49404592"
 ---
 # <a name="collect-data-from-collectd-on-linux-agents-in-log-analytics"></a>Shromažďovat data shromážděná na agentech pro Linux ve službě Log Analytics
 [Shromážděná](https://collectd.org/) je linuxového démona otevřít zdroj, který pravidelně shromažďuje metriky výkonu z aplikace a informace na úrovni systému. Příklad aplikace obsahují Java Virtual Machine (JVM), MySQL Server a Nginxu. Tento článek obsahuje informace o shromažďování dat výkonu z shromážděná v Log Analytics.
@@ -29,7 +29,9 @@ ms.locfileid: "48041286"
 
 ![Přehled shromážděná](media/log-analytics-data-sources-collectd/overview.png)
 
-Následující konfigurace shromážděná je součástí agenta OMS pro Linux na shromážděná data trasy pro agenta OMS pro Linux.
+Následující konfigurace shromážděná je součástí agenta Log Analytics pro Linux ke směrování shromážděná data do Log Analytics agenta pro Linux.
+
+[!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)]
 
     LoadPlugin write_http
 
@@ -52,12 +54,12 @@ Kromě toho pokud se používá verzích shromážděná před 5.5 místo toho p
        </URL>
     </Plugin>
 
-Konfigurace shromážděná používá výchozí`write_http` modul plug-in, který odešlete data metrik výkonu přes port 26000 do agenta OMS pro Linux. 
+Konfigurace shromážděná používá výchozí`write_http` modul plug-in, který odešlete data metrik výkonu přes port 26000 do agenta Log Analytics pro Linux. 
 
 > [!NOTE]
 > V případě potřeby lze nastavit na vlastní port tohoto portu.
 
-Agenta OMS pro Linux také naslouchá na portu 26000 shromážděná metriky a převede je do OMS schématu metrik. Tady je agenta OMS pro Linux konfigurace `collectd.conf`.
+Agenta Log Analytics pro Linux také naslouchá na portu 26000 shromážděná metriky a převede je do Log Analytics schématu metrik. Tady je agenta Log Analytics pro Linux konfiguraci `collectd.conf`.
 
     <source>
       type http
@@ -72,19 +74,19 @@ Agenta OMS pro Linux také naslouchá na portu 26000 shromážděná metriky a p
 
 ## <a name="versions-supported"></a>Verze podporováno
 - Log Analytics v současné době podporuje shromážděná verze 4,8 a vyšší.
-- Agenta OMS pro Linux v1.1.0-217 nebo novější je vyžadováno pro shromažďování metrik shromážděná.
+- Je vyžadováno pro shromažďování metrik shromážděná agenta log Analytics pro Linux v1.1.0-217 nebo novější.
 
 
 ## <a name="configuration"></a>Konfigurace
 Tady jsou základní postup pro konfiguraci kolekce shromážděná data v Log Analytics.
 
-1. Nakonfigurujte shromážděná k odesílání dat do agenta OMS pro Linux s využitím modulu plug-in write_http.  
-2. Konfigurace agenta OMS pro Linux pro naslouchání shromážděná data na příslušný port.
-3. Restartujte shromážděná a agenta OMS pro Linux.
+1. Nakonfigurujte shromážděná k odesílání dat do agenta Log Analytics pro Linux s využitím modulu plug-in write_http.  
+2. Konfigurace agenta Log Analytics pro Linux pro naslouchání shromážděná data na příslušný port.
+3. Restartujte agenta shromážděná a Log Analytics pro Linux.
 
 ### <a name="configure-collectd-to-forward-data"></a>Konfigurace shromážděná k předávání dat 
 
-1. Na data shromážděná trasy pro agenta OMS pro Linux `oms.conf` musí být přidán do vaší shromážděná konfigurační adresář. Cílem tohoto souboru závisí na distribuce Linuxu vašeho počítače.
+1. K postupu shromážděná data do Log Analytics agenta pro Linux `oms.conf` musí být přidán do vaší shromážděná konfigurační adresář. Cílem tohoto souboru závisí na distribuce Linuxu vašeho počítače.
 
     Pokud je ve /etc/collectd.d/ adresáři shromážděná config:
 
@@ -103,12 +105,12 @@ Tady jsou základní postup pro konfiguraci kolekce shromážděná data v Log A
         sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.d/collectd.conf /etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/
         sudo chown omsagent:omiusers /etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/collectd.conf
 
-3. Pomocí následujících příkazů restartujte shromážděná a agenta OMS pro Linux.
+3. Restartujte agenta shromážděná a Log Analytics pro Linux pomocí následujících příkazů.
 
     sudo služby shromážděná restartování sudo /opt/microsoft/omsagent/bin/service_control restartování
 
 ## <a name="collectd-metrics-to-log-analytics-schema-conversion"></a>Shromážděná metriky k převodu schématu Log Analytics
-Údržba známým modelem mezi metriky infrastruktury již shromážděné agentem OMS pro Linux a nové metriky shromážděné shromážděná následující schéma mapování se používá:
+Chcete-li zachovat známým modelem mezi metriky infrastruktury ještě shromažďují pomocí agenta Log Analytics pro Linux a nové metriky shromážděné shromážděná následující schéma mapování se používá:
 
 | Metrika shromážděná pole | Log Analytics pole |
 |:--|:--|

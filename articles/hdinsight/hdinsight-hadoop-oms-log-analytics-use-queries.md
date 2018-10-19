@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: jasonh
-ms.openlocfilehash: 9550468e8bc9b93216fd4c1ecf144415badfc7dc
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 18ee51e54c1e44ba3affd6ca49bed5360211fa9c
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43103653"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49408164"
 ---
 # <a name="query-azure-log-analytics-to-monitor-hdinsight-clusters"></a>Dotazování Azure Log Analytics k monitorování clusterů HDInsight
 
@@ -32,7 +32,7 @@ Další informace o tom, jak pomocí Azure Log Analytics k monitorování cluste
 
 Zjistěte, jak hledat konkrétní metriky pro váš cluster HDInsight.
 
-1. Otevřete pracovní prostor OMS, který je přidružený k vašemu clusteru HDInsight z portálu Azure portal.
+1. Otevřete pracovní prostor Log Analytics, který je přidružený k vašemu clusteru HDInsight z portálu Azure portal.
 2. Vyberte **prohledávání protokolů** dlaždici.
 3. Zadejte následující dotaz do vyhledávacího pole vyhledejte všechny metriky pro všechny dostupné metriky pro všechny clustery HDInsight umožňují používat službu Azure Log Analytics a pak vyberte **spustit**.
 
@@ -65,7 +65,7 @@ Zjistěte, jak hledat konkrétní metriky pro váš cluster HDInsight.
 
 Zjistěte, jak se vás pod rouškou chybové zprávy během konkrétního časového okna. Zde uvedené kroky se mají zájem na jak vám můžou přijít kdykoliv chybová zpráva je pouze jeden z příkladů. Jakákoli vlastnost, která je k dispozici pro vyhledávání chyb, které se pokoušíte najít, můžete použít.
 
-1. Otevřete pracovní prostor OMS, který je přidružený k vašemu clusteru HDInsight z portálu Azure portal.
+1. Otevřete pracovní prostor Log Analytics, který je přidružený k vašemu clusteru HDInsight z portálu Azure portal.
 2. Vyberte **prohledávání protokolů** dlaždici.
 3. Zadejte následující dotaz pro vyhledání všech chybových zpráv pro všechny clustery HDInsight umožňují použít Azure Log Analytics a pak vyberte **spustit**. 
 
@@ -117,7 +117,7 @@ Chcete-li upravit nebo odstranit existující výstrahy:
 3. Vyberte výstrahu, kterou chcete upravit nebo odstranit.
 4. Máte následující možnosti: **Uložit**, **zahodit**, **zakázat**, a **odstranit**.
 
-    ![Odstranění upozornění úpravy HDInsight Log Analytics OMS](media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-edit-alert.png)
+    ![Odstranění upozornění úpravy HDInsight Log Analytics](media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-edit-alert.png)
 
 Další informace najdete v tématu [práce s pravidly upozornění v Log Analytics](../log-analytics/log-analytics-alerts-creating.md).
 

@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: a5792998654ed1d334e514591da3bef9805a5e79
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 712c729a214cdab66961fb399c9d797a758fcf7b
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47163354"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49409675"
 ---
 # <a name="monitor-sql-data-sync-with-log-analytics"></a>Monitorování synchronizace dat SQL s využitím Log Analytics 
 
@@ -97,7 +97,7 @@ Další informace o vytvoření sady runbook najdete v tématu [Můj první Powe
 
     2.  Informace o skupině synchronizace.
 
-    3.  Informace o OMS. Tyto informace najdete na portálu OMS | Nastavení | Připojené zdroje. Další informace o odesílání dat do služby Log Analytics najdete v tématu [odesílat data do Log Analytics pomocí rozhraní API kolekce dat HTTP (preview)](../log-analytics/log-analytics-data-collector-api.md).
+    3.  Protokolování informací Analytics. Tyto informace najdete na webu Azure Portal | Nastavení | Připojené zdroje. Další informace o odesílání dat do služby Log Analytics najdete v tématu [odesílat data do Log Analytics pomocí rozhraní API kolekce dat HTTP (preview)](../log-analytics/log-analytics-data-collector-api.md).
 
 11. Spustíte sadu runbook v testovací podokno. Zkontrolujte, ujistěte se, že byla úspěšná.
 
@@ -117,7 +117,7 @@ Naplánování runbooku:
 
 4.  Vyberte **vytvořit nový plán.**
 
-5.  Nastavte **opakování** periodický a nastavte interval chcete. Použijte stejný interval, ve skriptu a v OMS.
+5.  Nastavte **opakování** periodický a nastavte interval chcete. Použijte stejný interval, ve skriptu a ve službě Log Analytics.
 
 6.  Vyberte **Vytvořit**.
 
@@ -129,7 +129,7 @@ Ke sledování, zda automatizace běží podle očekávání, v části **přehl
 
 Pokud chcete vytvořit upozornění, která používá Log Analytics, proveďte následující akce. Předpokladem je budete muset mít Log Analytics propojený s pracovním prostorem Log Analytics.
 
-1.  Na portálu OMS vyberte **prohledávání protokolů**.
+1.  Na webu Azure Portal, vyberte **prohledávání protokolů**.
 
 2.  Vytvořte dotaz pro výběr chyby a upozornění ve skupině synchronizace v rámci intervalu, který jste vybrali. Příklad:
 
@@ -147,9 +147,9 @@ Pokud chcete vytvořit upozornění, která používá Log Analytics, proveďte 
 
 6.  Klikněte na **Uložit**. Zadaným příjemcům nyní přijímat e-mailová oznámení, když dojde k chybám.
 
-## <a name="create-an-oms-view-for-monitoring"></a>Vytvoření zobrazení OMS pro monitorování
+## <a name="create-a-log-analytics-view-for-monitoring"></a>Vytvoření zobrazení v Log Analytics pro monitorování
 
-Tento krok vytvoří zobrazení OMS vizuálně monitorovat všechny zadané synchronizace skupiny. Zobrazení obsahuje několik komponent:
+Tento krok vytvoří zobrazení Log Analytics pro vizuální monitorování všechny zadané synchronizace skupiny. Zobrazení obsahuje několik komponent:
 
 -   Dlaždice přehledu, který ukazuje, kolik chyb, úspěchy a upozornění mají všechny skupiny synchronizace.
 
@@ -157,9 +157,9 @@ Tento krok vytvoří zobrazení OMS vizuálně monitorovat všechny zadané sync
 
 -   Dlaždice pro každou skupinu synchronizace, který zobrazuje počet chyb, úspěchy a upozornění a poslední chybové zprávy.
 
-Konfigurace zobrazení OMS, proveďte následující akce:
+Konfigurace zobrazení Log Analytics, proveďte následující akce:
 
-1.  Na domovské stránce OMS vyberte plus na levé straně otevřete **Návrhář zobrazení**.
+1.  Na domovské stránce Log Analytics vyberte plus na levé straně otevřete **Návrhář zobrazení**.
 
 2.  Vyberte **Import** na horním panelu Návrhář zobrazení. Potom vyberte ukázkový soubor "DataSyncLogOMSView".
 

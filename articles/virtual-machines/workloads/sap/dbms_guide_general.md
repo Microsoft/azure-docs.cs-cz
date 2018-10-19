@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 09/06/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e46503f8dc97f58db1cd5acfd2122e2895fb15b0
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 3948c226f13f0ff358f9ca467f19cf0e48795911
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44162304"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49429879"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Důležité informace týkající se nasazení Azure Virtual Machines DBMS pro úlohy SAP
 [1114181]:https://launchpad.support.sap.com/#/notes/1114181
@@ -216,7 +216,7 @@ Pro nasazení řady M-Series důrazně doporučujeme použít akcelerátor zápi
 
 
 ### <a name="azure-non-persistent-disks"></a>Dočasné disky Azure
-Virtuální počítače Azure nabízejí dočasné disky po nasazení virtuálního počítače. V případě restartování virtuálního počítače vymaže veškerý obsah na těchto jednotkách. Jedná se tedy vzhledem k tomu, že datové soubory a soubory protokolů a znovu databází za žádných okolností musíte umístit na těchto jednotkách netrvalé. Můžou nastat výjimky pro některé databáze, kde tyto disky netrvalé může být vhodný pro databázi tempdb a tabulkové temp prostory. Ale Vyhněte se použití těchto jednotek pro virtuální počítače řady A-Series, od těchto jednotek netrvalé mají omezenou propustnost s rodiny virtuálních počítačů. Další podrobnosti najdete v článku [pochopení dočasné jednotky ve službě Windows Azure Virtual Machines](https://blogs.msdn.microsoft.com/mast/2013/12/06/understanding-the-temporary-drive-on-windows-azure-virtual-machines/)
+Virtuální počítače Azure nabízejí dočasné disky po nasazení virtuálního počítače. V případě restartování virtuálního počítače vymaže veškerý obsah na těchto jednotkách. Jedná se tedy vzhledem k tomu, že datové soubory a soubory protokolů a znovu databází za žádných okolností musíte umístit na těchto jednotkách netrvalé. Můžou nastat výjimky pro některé databáze, kde tyto disky netrvalé může být vhodný pro databázi tempdb a tabulkové temp prostory. Ale Vyhněte se použití těchto jednotek pro virtuální počítače řady A-Series, od těchto jednotek netrvalé mají omezenou propustnost s rodiny virtuálních počítačů. Další podrobnosti najdete v článku [pochopení dočasné jednotky na virtuálních počítačích s Windows v Azure](https://blogs.msdn.microsoft.com/mast/2013/12/06/understanding-the-temporary-drive-on-windows-azure-virtual-machines/)
 
 - - -
 > ![Windows][Logo_Windows] Windows

@@ -1,6 +1,6 @@
 ---
-title: Výkon Linuxových aplikací v OMS Log Analytics shromažďovat | Dokumentace Microsoftu
-description: Tento článek obsahuje podrobnosti pro konfiguraci agenta OMS pro Linux ke shromažďování čítačů výkonu pro MySQL a serveru Apache HTTP Server.
+title: Výkon Linuxových aplikací v Log Analytics shromažďovat | Dokumentace Microsoftu
+description: Tento článek obsahuje podrobnosti pro konfiguraci agenta Log Analytics pro Linux ke shromažďování čítačů výkonu pro MySQL a serveru Apache HTTP Server.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -15,26 +15,27 @@ ms.workload: infrastructure-services
 ms.date: 05/04/2017
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 5120fa869d9c3fe28630b189b84b9c3e3f5577e2
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: df5e55c2c03fec13ada258be91f0d98b7ce70d94
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48044565"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49406156"
 ---
 # <a name="collect-performance-counters-for-linux-applications-in-log-analytics"></a>Shromáždit čítače výkonu pro Linuxové aplikace ve službě Log Analytics 
-Tento článek obsahuje podrobné informace pro konfiguraci [agenta OMS pro Linux](https://github.com/Microsoft/OMS-Agent-for-Linux) získat čítače výkonu pro určité aplikace.  Aplikací obsažených v tomto článku jsou:  
+[!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)]
+Tento článek obsahuje podrobné informace pro konfiguraci [agenta Log Analytics pro Linux](https://github.com/Microsoft/OMS-Agent-for-Linux) získat čítače výkonu pro určité aplikace.  Aplikací obsažených v tomto článku jsou:  
 
 - [MySQL](#MySQL)
 - [Serveru Apache HTTP Server](#apache-http-server)
 
 ## <a name="mysql"></a>MySQL
-Pokud se MySQL Server nebo MariaDB serveru při instalaci agenta OMS zjistí na počítači, se automaticky nainstaluje poskytovatele pro MySQL Server monitorování výkonu. Tento zprostředkovatel připojení k místnímu serveru MySQL/MariaDB vystavit statistiky výkonu. Přihlašovací údaje uživatele MySQL je třeba nastavit tak, aby zprostředkovatel má přístup k serveru MySQL.
+Pokud se MySQL Server nebo MariaDB serveru při instalaci agenta Log Analytics zjistí na počítači, se automaticky nainstaluje poskytovatele pro MySQL Server monitorování výkonu. Tento zprostředkovatel připojení k místnímu serveru MySQL/MariaDB vystavit statistiky výkonu. Přihlašovací údaje uživatele MySQL je třeba nastavit tak, aby zprostředkovatel má přístup k serveru MySQL.
 
 ### <a name="configure-mysql-credentials"></a>Nakonfigurujte přihlašovací údaje MySQL
 Zprostředkovatel MySQL OMI vyžaduje předkonfigurované uživatele MySQL a nainstalovat klientské knihovny MySQL aby bylo možné dotazovat výkonu a informace o stavu z MySQL instance.  Tyto přihlašovací údaje jsou uložené v souboru ověřování, která je uložena na agenta pro Linux.  Ověřovacího souboru Určuje, jaké vazby adresu a port instanci MySQL naslouchá a jaké přihlašovací údaje použít ke shromažďování metrik.  
 
-Během instalace agenta OMS pro Linux MySQL OMI zprostředkovatele vyhledá MySQL my.cnf konfigurační soubory (výchozí umístění) pro vazbu adresy a portu a částečně nastavení MySQL OMI ověřovacího souboru.
+Během instalace agenta Log Analytics pro Linux MySQL OMI zprostředkovatele vyhledá MySQL my.cnf konfigurační soubory (výchozí umístění) pro vazbu adresy a portu a částečně nastavit ověřovacího souboru MySQL OMI.
 
 MySQL ověřovacího souboru je uložené v `/var/opt/microsoft/mysql-cimprov/auth/omsagent/mysql-auth`.
 
@@ -115,7 +116,7 @@ Tato oprávnění lze udělit spuštěním následujících příkazů udělení
 
 ### <a name="define-performance-counters"></a>Definování čítače výkonu
 
-Jakmile nakonfigurujete agenta OMS pro Linux pro odesílání dat do Log Analytics, je nutné nakonfigurovat shromažďování čítačů výkonu.  Použijte postup uvedený v [Windows a Linuxem zdroje dat výkonu do Log Analytics](log-analytics-data-sources-windows-events.md) s čítače v následující tabulce.
+Jakmile nakonfigurujete agenta Log Analytics pro Linux pro odesílání dat do Log Analytics, je nutné nakonfigurovat čítačů výkonu k získání.  Použijte postup uvedený v [Windows a Linuxem zdroje dat výkonu do Log Analytics](log-analytics-data-sources-windows-events.md) s čítače v následující tabulce.
 
 | Název objektu | Název počítadla |
 |:--|:--|
@@ -151,7 +152,7 @@ sudo /opt/microsoft/apache-cimprov/bin/apache_config.sh -u
 
 ### <a name="define-performance-counters"></a>Definování čítače výkonu
 
-Jakmile nakonfigurujete agenta OMS pro Linux pro odesílání dat do Log Analytics, je nutné nakonfigurovat shromažďování čítačů výkonu.  Použijte postup uvedený v [Windows a Linuxem zdroje dat výkonu do Log Analytics](log-analytics-data-sources-windows-events.md) s čítače v následující tabulce.
+Jakmile nakonfigurujete agenta Log Analytics pro Linux pro odesílání dat do Log Analytics, je nutné nakonfigurovat čítačů výkonu k získání.  Použijte postup uvedený v [Windows a Linuxem zdroje dat výkonu do Log Analytics](log-analytics-data-sources-windows-events.md) s čítače v následující tabulce.
 
 | Název objektu | Název počítadla |
 |:--|:--|

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 03/30/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: e00ccc4d55da805538801a0a8f3ee5502d871fab
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: eaf6aa538a4733528b52b1417c2d53318064e068
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48042304"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49405391"
 ---
 # <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>Správu a údržbu agenta Log Analytics pro Windows a Linux
 
@@ -34,7 +34,7 @@ Po počátečním nasazení nástroje Windows nebo Linux agenta pro Log Analytic
 
 1. Přihlaste se k počítači pomocí účtu, který má práva správce.
 2. Otevřete **Ovládací panely**.
-3. Vyberte **agenta Microsoft Monitoring Agent** a potom klikněte na tlačítko **Azure Log Analytics (OMS)** kartu.
+3. Vyberte **agenta Microsoft Monitoring Agent** a potom klikněte na tlačítko **Azure Log Analytics** kartu.
 4. Pokud odebrání pracovního prostoru, vyberte ji a pak klikněte na **odebrat**. Tento krok opakujte pro všechny ostatní pracovní prostor má agent přestanou předávat hlášení.
 5. Pokud přidáváte pracovní prostor, klikněte na tlačítko **přidat** a na **přidat pracovní prostor Log Analytics** dialogové okno, vložení ID pracovního prostoru a klíč pracovního prostoru (primární klíč). Pokud má počítač hlásit do pracovního prostoru Log Analytics v cloudu Azure Government, vyberte z rozevíracího seznamu Azure Cloud Azure US Government. 
 6. Klikněte na tlačítko **OK** a uložte změny.
@@ -101,7 +101,7 @@ Následující kroky ukazují, jak změnit konfiguraci agenta pro Linux, pokud s
 Služba agenta není nutné restartovat, aby se změny projevily.
 
 ## <a name="update-proxy-settings"></a>Aktualizovat nastavení proxy serveru 
-Konfigurace agenta pro komunikaci ve službě pomocí proxy serveru nebo [bránu OMS](log-analytics-oms-gateway.md) po nasazení, použijte jednu z následujících metod k dokončení této úlohy.
+Konfigurace agenta pro komunikaci ve službě pomocí proxy serveru nebo [Log Analytics gateway](log-analytics-oms-gateway.md) po nasazení, použijte jednu z následujících metod k dokončení této úlohy.
 
 ### <a name="windows-agent"></a>Agenta Windows
 
@@ -110,7 +110,7 @@ Konfigurace agenta pro komunikaci ve službě pomocí proxy serveru nebo [bránu
 1. Přihlaste se k počítači pomocí účtu, který má práva správce.
 2. Otevřete **Ovládací panely**.
 3. Vyberte **agenta Microsoft Monitoring Agent** a potom klikněte na tlačítko **nastavení proxy serveru** kartu.
-4. Klikněte na tlačítko **používat proxy server** a zadejte adresu URL a port číslo proxy serveru nebo brány. Pokud váš proxy server nebo bránu OMS vyžaduje ověření, zadejte uživatelské jméno a heslo k ověření a potom klikněte na tlačítko **OK**. 
+4. Klikněte na tlačítko **používat proxy server** a zadejte adresu URL a port číslo proxy serveru nebo brány. Pokud váš proxy server nebo brána Log Analytics vyžaduje ověření, zadejte uživatelské jméno a heslo k ověření a potom klikněte na tlačítko **OK**. 
 
 #### <a name="update-settings-using-powershell"></a>Aktualizovat nastavení pomocí Powershellu 
 
@@ -141,7 +141,7 @@ $healthServiceSettings.SetProxyInfo($ProxyDomainName, $ProxyUserName, $cred.GetN
 ```  
 
 ### <a name="linux-agent"></a>Agenta pro Linux
-Pokud vaše počítače s Linuxem potřebují komunikovat prostřednictvím serveru proxy nebo bránou OMS ke službě Log Analytics, proveďte následující kroky.  Hodnota konfigurace proxy má následující syntaxi: `[protocol://][user:password@]proxyhost[:port]`.  Vlastnost *proxyhost* přijímá plně kvalifikovaný název domény nebo IP adresu proxy serveru.
+Pokud vaše počítače s Linuxem potřebují komunikovat přes proxy server nebo brána Log Analytics, proveďte následující kroky.  Hodnota konfigurace proxy má následující syntaxi: `[protocol://][user:password@]proxyhost[:port]`.  Vlastnost *proxyhost* přijímá plně kvalifikovaný název domény nebo IP adresu proxy serveru.
 
 1. Spuštěním následujících příkazů upravte soubor `/etc/opt/microsoft/omsagent/proxy.conf` a změňte hodnoty na vaše konkrétní nastavení.
 
@@ -185,7 +185,9 @@ Pokud chcete agenta odebrat, spusťte v počítači s Linuxem následující př
 ## <a name="configure-agent-to-report-to-an-operations-manager-management-group"></a>Konfigurace agenta na generování sestav pro skupinu pro správu nástroje Operations Manager
 
 ### <a name="windows-agent"></a>Agenta Windows
-Provedení následujících kroků nakonfigurujte OMS Agent pro Windows oznamuje ke skupině pro správu System Center Operations Manager. 
+Proveďte následující kroky konfigurace agenta Log Analytics pro Windows oznamuje ke skupině pro správu System Center Operations Manager.
+
+[!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)] 
 
 1. Přihlaste se k počítači pomocí účtu, který má práva správce.
 2. Otevřete **Ovládací panely**. 
@@ -199,7 +201,9 @@ Provedení následujících kroků nakonfigurujte OMS Agent pro Windows oznamuje
 10. Klikněte na tlačítko **OK** zavřete **přidat skupinu pro správu** dialogové okno a potom klikněte na **OK** zavřete **vlastnosti služby Microsoft Monitoring Agent** Dialogové okno.
 
 ### <a name="linux-agent"></a>Agenta pro Linux
-Proveďte následující kroky konfigurace agenta OMS pro Linux pro hlášení skupinu pro správu System Center Operations Manager. 
+Proveďte následující kroky konfigurace agenta Log Analytics pro Linux pro hlášení skupinu pro správu System Center Operations Manager. 
+
+[!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)]
 
 1. Upravte soubor `/etc/opt/omi/conf/omiserver.conf`
 2. Ujistěte se, že řádek začínající příkazem `httpsport=` definuje port 1270. Například: `httpsport=1270`

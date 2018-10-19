@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/11/2018
 ms.author: ningk
-ms.openlocfilehash: 689730edcc98a23c82373ae8d36c3b831b33c076
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: a9f5f22cbd6e7cb39e1abb2ef712ffcfc27f55a4
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39627436"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49406139"
 ---
 # <a name="integrate-cloud-foundry-with-azure"></a>Integrace Cloud Foundry s Azure
 
@@ -70,9 +70,9 @@ Služby Azure service broker nabízí jednotné rozhraní pro správu aplikace p
 
 ## <a name="6-metrics-and-logging"></a>6. Metriky a protokolování
 Azure Log Analytics Nozzle je komponenta Cloud Foundry, která předává metriky z [Cloud Foundry loggregator firehose](https://docs.cloudfoundry.org/loggregator/architecture.html) k [Azure Log Analytics](https://azure.microsoft.com/services/log-analytics/). Nozzle můžete shromažďovat, zobrazit a analyzovat metriky stavu a výkonu systému CF mezi několika nasazeními.
-Klikněte na tlačítko [tady](https://docs.microsoft.com/azure/cloudfoundry/cloudfoundry-oms-nozzle) se dozvíte, jak nasadit Azure Log Analytics Nozzle pro Open Source a Pivotal Cloud Foundry prostředí a pak přístup k datům z konzoly Azure Log Analytics OMS. 
+Klikněte na tlačítko [tady](https://docs.microsoft.com/azure/cloudfoundry/cloudfoundry-oms-nozzle) se dozvíte, jak nasadit Azure Log Analytics Nozzle pro Open Source a Pivotal Cloud Foundry prostředí a pak přístup k datům z konzoly Azure Log Analytics. 
 > [!NOTE]
-> Z verze PCF 2.0 BOSH metrik stavu pro virtuální počítače se předávají do Loggregator Firehose ve výchozím nastavení a jsou integrované do konzoly Azure Log Analytics OMS.
+> Z verze PCF 2.0 BOSH metrik stavu pro virtuální počítače se předávají do Loggregator Firehose ve výchozím nastavení a jsou integrované do konzoly Azure Log Analytics.
 
 ## <a name="7-cost-saving"></a>7. Úspory nákladů
 ### <a name="cost-saving-for-devtest-environments"></a>Pro prostředí pro vývoj/testování pro úsporu nákladů

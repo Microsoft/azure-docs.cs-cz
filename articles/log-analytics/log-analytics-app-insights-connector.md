@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 06/29/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 4157b812fbb17b524a21814f41e0e4ec43e39e70
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 7c6d91da0634e7f847af01d1c057607ab095cdf6
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48042083"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49408204"
 ---
 # <a name="application-insights-connector-management-solution-preview"></a>Řešení správy Application Insights Connector (Preview)
 
@@ -58,8 +58,8 @@ Na rozdíl od většina jiných řešení Log Analytics data nejsou shromažďov
 ## <a name="configuration"></a>Konfigurace
 
 1. Povolení řešení Azure Web Apps Analytics z [Azure marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ApplicationInsights?tab=Overview) nebo pomocí procesu popsaného v [přidání řešení Log Analytics z Galerie řešení](log-analytics-add-solutions.md).
-2. Na portálu OMS klikněte na tlačítko **nastavení** &gt; **Data** &gt; **Application Insights**.
-3. V části **vybrat odběr, který**, vyberte předplatné, které má prostředky Application Insights a pak v části **název_aplikace**, vyberte jednu nebo více aplikací.
+2. Přejděte na web [Azure Portal](https://portal.azure.com). Vyberte **všechny služby** a otevře Application Insights. Vyhledejte Application Insights. 
+3. V části **předplatná**, vyberte předplatné, které má prostředky Application Insights a pak v části **název**, vyberte jednu nebo více aplikací.
 4. Klikněte na **Uložit**.
 
 Během přibližně 30 minut budou data k dispozici a na dlaždici služby Application Insights se aktualizuje s daty, jako na následujícím obrázku:
@@ -133,7 +133,7 @@ Součástí perspektivy jsou aktualizovány v závislosti na vyhledávací dotaz
 
 ### <a name="pivot-to-an-app-in-the-azure-portal"></a>Uveďte do aplikace na webu Azure Portal
 
-Application Insights Connector okna jsou určené k usnadnění a přesouvat na vybranou aplikaci Application Insights se tak *při použití na portálu OMS*. Řešení můžete použít jako základní monitorovací platformě, která pomáhá při řešení problémů aplikace. Až uvidíte potenciální problém v některé z připojených aplikací, můžete buď přejít k podrobnostem ho ve službě Log Analytics search nebo můžete vytvořit kontingenční přímo do aplikace Application Insights.
+Application Insights Connector okna jsou určené k usnadnění a přesouvat na vybranou aplikaci Application Insights se tak *při použití na webu Azure portal*. Řešení můžete použít jako základní monitorovací platformě, která pomáhá při řešení problémů aplikace. Až uvidíte potenciální problém v některé z připojených aplikací, můžete buď přejít k podrobnostem ho ve službě Log Analytics search nebo můžete vytvořit kontingenční přímo do aplikace Application Insights.
 
 Pro otáčení, klikněte na symbol tří teček (**...** ), který se zobrazí na konci každého řádku a vyberte **otevřít ve službě Application Insights**.
 

@@ -9,12 +9,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 10/12/2018
 ms.author: wolfma
-ms.openlocfilehash: 3a9da3b0f2165dadd99691c6dc9e41cbf3d48620
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 7f637014c5f3e246d67ae051f9304e2f2536d725
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49339997"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49427378"
 ---
 # <a name="release-notes"></a>Poznámky k verzi
 
@@ -22,12 +22,12 @@ ms.locfileid: "49339997"
 
 Vylepšení spolehlivosti a opravy chyb:
 
-* Opravte potenciální závažná chyba z důvodu časování v uvolňování modulu pro rozpoznávání
-* Opravte potenciální závažná chyba v případě zrušit nastavení vlastnosti.
-* Další chyby a Kontrola parametrů.
-* C: cíl opravit možné závažná chyba způsobená podle názvu v NSString přepsání.
-* Objectice C: nastavit viditelnost rozhraní API
-* Jazyk JavaScript: opravy týkající se událostí a instalační soubory.
+* Oprava potenciální závažná chyba z důvodu časování v uvolňování modulu pro rozpoznávání
+* Oprava potenciální závažná chyba v případě zrušit nastavení vlastnosti.
+* Přidané Další chyba a Kontrola parametrů.
+* Oprava C: cíl možné závažná chyba způsobila přepsáním název v NSString.
+* Upravit cíl na C: viditelnost rozhraní API
+* Jazyk JavaScript: Oprava týkající se událostí a instalační soubory.
 * Dokumentace k vylepšení.
 
 V našem [ukázkové úložiště](https://aka.ms/csspeech/samples), byl přidán nový ukázky pro jazyk JavaScript.

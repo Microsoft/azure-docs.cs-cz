@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: f9876f3e21a7cfccae2fb7f70913269d4ca1fdf4
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: d8f2701ca62eee261beaa49fe2a0719be7423a5b
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49115365"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49408485"
 ---
 # <a name="container-monitoring-solution-in-log-analytics"></a>Řešení pro monitorování kontejnerů ve službě Log Analytics
 
@@ -67,6 +67,7 @@ Následující tabulka popisuje orchestraci Dockeru a operační systém sledov�
 
 ### <a name="x64-linux-distributions-supported-as-container-hosts"></a>x64 distribucí systému Linux podporované jako hostitelích kontejnerů
 
+
 - Ubuntu 14.04 LTS a 16.04 LTS
 - CoreOS(stable)
 - Amazon Linux 2016.09.0
@@ -78,8 +79,10 @@ Následující tabulka popisuje orchestraci Dockeru a operační systém sledov�
 - Red Hat OpenShift Container Platform (OCP) 3.4 a 3.5
 - ACS Mesosphere DC/OS 1.7.3 až 1.8.8
 - ACS Kubernetes 1.4.5 na 1.6
-    - Události Kubernetes, Kubernetes inventáře a kontejner procesy jsou podporovány pouze s verzí 1.4.1-45 a později agenta OMS pro Linux
+    - Události Kubernetes, Kubernetes inventáře a kontejner procesy jsou podporovány pouze s verzí 1.4.1-45 a později agenta Log Analytics pro Linux
 - ACS Docker Swarm
+
+[!INCLUDE [log-analytics-agent-note.md](../../includes/log-analytics-agent-note.md)] 
 
 ### <a name="supported-windows-operating-system"></a>Podporovaný operační systém Windows
 
@@ -96,25 +99,25 @@ K instalaci a konfiguraci řešení můžete použít následující informace.
 
 1. Přidejte řešení pro monitorování kontejnerů do pracovního prostoru Log Analytics z [Azure marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ContainersOMS?tab=Overview) nebo pomocí procesu popsaného v [přidání řešení Log Analytics z Galerie řešení](log-analytics-add-solutions.md).
 
-2. Instalace a použít Docker se agenta OMS. Na základě vašeho operačního systému a orchestrátor Docker, můžete použít následující metody konfigurace agenta.
+2. Nainstalovat a používat Docker pomocí agenta Log Analytics. Na základě vašeho operačního systému a orchestrátor Docker, můžete použít následující metody konfigurace agenta.
   - Pro samostatné hostitele:
-    - Na podporovaných operačních systémech Linux, instalace a spuštění Dockeru a pak nainstalujte a nakonfigurujte [agenta OMS pro Linux](log-analytics-agent-linux.md).  
-    - V systému CoreOS nelze spustit agenta OMS pro Linux. Místo toho spustíte kontejnerizovaných verzi agenta OMS pro Linux. Kontrola [hostitelé kontejneru s Linuxem včetně CoreOS](#for-all-linux-container-hosts-including-coreos) nebo [hostitelích kontejnerů Azure Government s Linuxem, včetně CoreOS](#for-all-azure-government-linux-container-hosts-including-coreos) při práci s kontejnery v cloudu Azure Government.
+    - Na podporovaných operačních systémech Linux, instalace a spuštění Dockeru a pak nainstalujte a nakonfigurujte [agenta Log Analytics pro Linux](log-analytics-agent-linux.md).  
+    - V systému CoreOS nelze spustit agenta Log Analytics pro Linux. Místo toho spustíte kontejnerizovaných verzi agenta Log Analytics pro Linux. Kontrola [hostitelé kontejneru s Linuxem včetně CoreOS](#for-all-linux-container-hosts-including-coreos) nebo [hostitelích kontejnerů Azure Government s Linuxem, včetně CoreOS](#for-all-azure-government-linux-container-hosts-including-coreos) při práci s kontejnery v cloudu Azure Government.
     - V systému Windows Server 2016 a Windows 10 nainstalujte klienta a modul Docker potom připojit agenta k shromažďování informací a jejich odesílání do Log Analytics. Kontrola [instalace a konfigurace hostitelů Windows kontejneru](#install-and-configure-windows-container-hosts) Pokud používáte prostředí Windows.
   - Orchestrace prostřednictvím Docker více hostitelů:
-    - Pokud máte v prostředí Red Hat OpenShift, přečtěte si [konfigurace agenta OMS pro Red Hat OpenShift](#configure-an-oms-agent-for-red-hat-openshift).
+    - Pokud máte v prostředí Red Hat OpenShift, přečtěte si [konfigurace agenta Log Analytics pro Red Hat OpenShift](#configure-an-oms-agent-for-red-hat-openshift).
     - Pokud máte cluster Kubernetes pomocí služby Azure Container Service:
-       - Kontrola [konfigurace agenta OMS Linux pro Kubernetes](#configure-an-oms-linux-agent-for-kubernetes).
-       - Kontrola [konfigurace agenta OMS Windows pro Kubernetes](#configure-an-oms-windows-agent-for-kubernetes).
-       - Kontrola [Helm použijte k nasazení agenta OMS v systému Linux Kubernetes](#use-helm-to-deploy-oms-agent-on-linux-kubernetes).
-    - Pokud máte cluster Azure Container Service DC/OS, další informace najdete na [monitorování clusteru služby Azure Container Service DC/OS pomocí Operations Management Suite](../container-service/dcos-swarm/container-service-monitoring-oms.md).
-    - Pokud máte prostředí s režimem Docker Swarm, další informace najdete na [konfigurace agenta OMS pro Docker Swarm](#configure-an-oms-agent-for-docker-swarm).
-    - Pokud máte cluster Service Fabric, další informace najdete na [monitorování kontejnerů s využitím OMS Log Analytics](../service-fabric/service-fabric-diagnostics-oms-containers.md).
+       - Kontrola [konfigurace agenta Log Analytics Linux pro Kubernetes](#configure-an-oms-linux-agent-for-kubernetes).
+       - Kontrola [konfigurace agenta Windows služby Analytics protokolu Kubernetes](#configure-an-oms-windows-agent-for-kubernetes).
+       - Kontrola [pomocí Helm nasadit agenta Log Analytics na Linux Kubernetes](#use-helm-to-deploy-oms-agent-on-linux-kubernetes).
+    - Pokud máte cluster Azure Container Service DC/OS, další informace najdete na [monitorování clusteru služby Azure Container Service DC/OS pomocí Log Analytics](../container-service/dcos-swarm/container-service-monitoring-oms.md).
+    - Pokud máte prostředí s režimem Docker Swarm, další informace najdete na [konfigurace agenta Log Analytics pro Docker Swarm](#configure-an-oms-agent-for-docker-swarm).
+    - Pokud máte cluster Service Fabric, další informace najdete na [monitorování kontejnerů pomocí Log Analytics Log Analytics](../service-fabric/service-fabric-diagnostics-oms-containers.md).
 
 Zkontrolujte [modul Docker na Windows](https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/configure-docker-daemon) Další informace o tom, jak nainstalovat a nakonfigurovat váš moduly Docker v počítačích se systémem Windows.
 
 > [!IMPORTANT]
-> Docker musí běžet **před** nainstalujete [agenta OMS pro Linux](log-analytics-agent-linux.md) v hostitelích kontejnerů. Pokud jste již nainstalovali agenta před instalací Dockeru, budete muset znovu nainstalujte agenta OMS pro Linux. Další informace o Dockeru najdete v článku [Docker webu](https://www.docker.com).
+> Docker musí běžet **před** nainstalujete [agenta Log Analytics pro Linux](log-analytics-agent-linux.md) v hostitelích kontejnerů. Pokud jste již nainstalovali agenta před instalací Dockeru, budete muset přeinstalovat agenta Log Analytics pro Linux. Další informace o Dockeru najdete v článku [Docker webu](https://www.docker.com).
 
 
 ### <a name="install-and-configure-linux-container-hosts"></a>Instalace a konfigurace hostitelé kontejneru s Linuxem
@@ -123,7 +126,7 @@ Po instalaci Dockeru, použijte následující nastavení pro hostitele kontejne
 
 **Pro všechny hostitele kontejneru Linuxu s výjimkou CoreOS:**
 
-- Další informace a pokyny k instalaci agenta OMS pro Linux najdete v tématu [připojení počítačů s Linuxem ke službě Log Analytics](log-analytics-concept-hybrid.md).
+- Další informace a pokyny k instalaci agenta Log Analytics pro Linux najdete v tématu [připojení počítačů s Linuxem ke službě Log Analytics](log-analytics-concept-hybrid.md).
 
 **Pro včetně CoreOS všichni hostitelé s kontejneru Linuxu:**
 
@@ -143,11 +146,11 @@ sudo docker run --privileged -d -v /var/run/docker.sock:/var/run/docker.sock -v 
 
 **Přepínání z pomocí nainstalovaného agenta na jeden v kontejneru Linuxu**
 
-Pokud dříve použít přímo nainstalován agent a místo toho použít agenta spuštěného v kontejneru, musíte nejdřív odebrat agenta OMS pro Linux. Zobrazit [odinstalace agenta OMS pro Linux](log-analytics-agent-linux.md) pochopit, jak úspěšně odinstalace agenta.  
+Pokud dříve použít přímo nainstalován agent a místo toho použít agenta spuštěného v kontejneru, je nutné nejprve odebrat agenta Log Analytics pro Linux. Zobrazit [odinstalace agenta Log Analytics pro Linux](log-analytics-agent-linux.md) pochopit, jak úspěšně odinstalace agenta.  
 
-#### <a name="configure-an-oms-agent-for-docker-swarm"></a>Konfigurace agenta OMS pro Docker Swarm
+#### <a name="configure-a-log-analytics-agent-for-docker-swarm"></a>Konfigurace agenta Log Analytics pro Docker Swarm
 
-Agenta OMS jako globální službu můžete spouštět Docker Swarm. Následující informace použijte k vytvoření služby agenta OMS. Je třeba zadat ID pracovního prostoru Log Analytics a primární klíč.
+Agenta Log Analytics jako globální službu můžete spouštět Docker Swarm. Pokud chcete vytvořit službu agenta Log Analytics, použijte následující informace. Je třeba zadat ID pracovního prostoru Log Analytics a primární klíč.
 
 - Spusťte následující příkaz na hlavní uzel.
 
@@ -178,20 +181,20 @@ Pro Docker Swarm Jakmile je vytvořen tajný klíč pro ID pracovního prostoru 
     l9rh3n987g9c45zffuxdxetd9   KEY                 38 minutes ago      38 minutes ago
     ```
 
-3. Spusťte následující příkaz pro připojení tajné klíče kontejnerizovaných agenta OMS.
+3. Spusťte následující příkaz pro připojení tajné klíče kontejnerizovaných agenta Log Analytics.
 
     ```
     sudo docker service create  --name omsagent --mode global  --mount type=bind,source=/var/run/docker.sock,destination=/var/run/docker.sock --mount type=bind,source=/var/lib/docker/containers,destination=/var/lib/docker/containers --secret source=WSID,target=WSID --secret source=KEY,target=KEY  -p 25225:25225 -p 25224:25224/udp --restart-condition=on-failure microsoft/oms
     ```
 
-#### <a name="configure-an-oms-agent-for-red-hat-openshift"></a>Konfigurace agenta OMS pro Red Hat OpenShift
-Existují tři způsoby, jak přidat agenta OMS pro Red Hat OpenShift spustíte shromažďování dat pro monitorování kontejnerů.
+#### <a name="configure-a-log-analytics-agent-for-red-hat-openshift"></a>Konfigurace agenta Log Analytics pro Red Hat OpenShift
+Existují tři způsoby, jak přidat agenta Log Analytics do Red Hat OpenShift spustíte shromažďování dat pro monitorování kontejnerů.
 
-* [Nainstalujte agenta OMS pro Linux](log-analytics-agent-linux.md) přímo na každém uzlu Openshiftu  
+* [Instalace agenta Log Analytics pro Linux](log-analytics-agent-linux.md) přímo na každém uzlu Openshiftu  
 * [Povolení rozšíření Log Analytics pro virtuální počítač](log-analytics-azure-vm-extension.md) na každém uzlu OpenShift v Azure  
-* Nainstalujte agenta OMS jako OpenShift démon sadu  
+* Instalace agenta Log Analytics jako OpenShift démon sadu  
 
-V této části probereme kroky potřebné k instalaci agenta OMS jako démon OpenShift-set.  
+V této části probereme kroky potřebné k instalaci agenta Log Analytics jako démon OpenShift-set.  
 
 1. Přihlaste se k hlavnímu uzlu OpenShift a zkopírujte tento soubor yaml [ocp-omsagent.yaml](https://github.com/Microsoft/OMS-docker/blob/master/OpenShift/ocp-omsagent.yaml) z Githubu k hlavnímu uzlu a změňte hodnotu s ID vašeho pracovního prostoru Log Analytics a primární klíč.
 2. Spuštěním následujících příkazů vytvořte projekt pro Log Analytics a nastavit uživatelský účet.
@@ -230,7 +233,7 @@ V této části probereme kroky potřebné k instalaci agenta OMS jako démon Op
     No events.  
     ```
 
-Pokud chcete pro použití tajných kódů k zabezpečení ID pracovního prostoru Log Analytics a primární klíč, při použití souboru yaml démon sady agenta OMS, proveďte následující kroky.
+Pokud chcete pro použití tajných kódů k zabezpečení ID pracovního prostoru Log Analytics a primární klíč, když pomocí souboru yaml démon sady agenta Log Analytics, proveďte následující kroky.
 
 1. Přihlaste se k hlavnímu uzlu OpenShift a zkopírujte tento soubor yaml [ocp-ds-omsagent.yaml](https://github.com/Microsoft/OMS-docker/blob/master/OpenShift/ocp-ds-omsagent.yaml) a tajný kód generování skriptu [ocp-secretgen.sh](https://github.com/Microsoft/OMS-docker/blob/master/OpenShift/ocp-secretgen.sh) z Githubu.  Tento skript vytvoří soubor yaml tajných kódů pro ID pracovního prostoru Log Analytics a primární klíč pro zabezpečení vašich secrete informace.  
 2. Spuštěním následujících příkazů vytvořte projekt pro Log Analytics a nastavit uživatelský účet. Tajný kód generování skriptu vyzve k zadání ID vašeho pracovního prostoru Log Analytics <WSID> a primární klíč <KEY> a po dokončení se vytvoří soubor ocp secret.yaml.  
@@ -269,7 +272,7 @@ Pokud chcete pro použití tajných kódů k zabezpečení ID pracovního prosto
     No events.  
     ```
 
-6. Nasaďte soubor yaml démon sady OMS agenta spuštěním následujícího:
+6. Nasaďte soubor yaml démon sady agenta Log Analytics spuštěním následujícího:
 
     `oc create -f ocp-ds-omsagent.yaml`  
 
@@ -294,18 +297,18 @@ Pokud chcete pro použití tajných kódů k zabezpečení ID pracovního prosto
      WSID:   37 bytes  
     ```
 
-#### <a name="configure-an-oms-linux-agent-for-kubernetes"></a>Konfigurace agenta OMS Linux pro Kubernetes
+#### <a name="configure-a-log-analytics-linux-agent-for-kubernetes"></a>Konfigurace agenta Log Analytics Linux pro Kubernetes
 
-Pro Kubernetes použijte skript se vygenerovat soubor yaml tajných kódů pro ID pracovního prostoru a primární klíč pro instalaci agenta OMS pro Linux. Na [OMS Docker Kubernetes Githubu](https://github.com/Microsoft/OMS-docker/tree/master/Kubernetes) stránce, jsou soubory, které můžete použít s nebo bez něj tajných informací.
+Pro Kubernetes použijte skript se vygenerovat soubor yaml tajných kódů pro ID pracovního prostoru a primární klíč pro instalaci agenta Log Analytics pro Linux. Na [Log Analytics Docker Kubernetes Githubu](https://github.com/Microsoft/OMS-docker/tree/master/Kubernetes) stránce, jsou soubory, které můžete použít s nebo bez něj tajných informací.
 
-- Výchozí agenta OMS pro Linux DaemonSet nemá tajných informací (omsagent.yaml)
-- Agenta OMS pro Linux DaemonSet soubor yaml používá tajných informací (omsagent-ds-secrets.yaml) pomocí tajného kódu generování skriptů se vygenerovat soubor yaml (omsagentsecret.yaml) tajných kódů.
+- Výchozí Log Analytics agenta pro Linux DaemonSet nemá tajných informací (omsagent.yaml)
+- Agenta Log Analytics pro Linux DaemonSet soubor yaml používá tajných informací (omsagent-ds-secrets.yaml) pomocí tajného kódu generování skriptů se vygenerovat soubor yaml (omsagentsecret.yaml) tajných kódů.
 
 Můžete vytvořit omsagent DaemonSets s nebo bez něj tajných kódů.
 
 **Výchozí soubor yaml OMSagent DaemonSet bez tajných kódů**
 
-- Výchozí soubor yaml DaemonSet agenta OMS, nahraďte `<WSID>` a `<KEY>` WSID a klíč. Zkopírujte soubor do hlavního uzlu a spusťte následující příkaz:
+- Výchozí Log Analytics DaemonSet yaml soubor agenta, nahraďte `<WSID>` a `<KEY>` WSID a klíč. Zkopírujte soubor do hlavního uzlu a spusťte následující příkaz:
 
     ```
     sudo kubectl create -f omsagent.yaml
@@ -313,7 +316,7 @@ Můžete vytvořit omsagent DaemonSets s nebo bez něj tajných kódů.
 
 **Výchozí soubor yaml OMSagent DaemonSet s tajnými kódy**
 
-1. Pokud chcete použít DaemonSet agenta OMS pomocí tajné informace, nejprve vytvořte tajné klíče.
+1. Chcete-li používat službu Log Analytics agenta DaemonSet pomocí tajné informace, tvorba tajné klíče.
     1. Zkopírujte skript a soubor tajného kódu šablony a ujistěte se, že jsou ve stejném adresáři.
         - Generování skriptu - secret gen.sh tajný klíč
         - Šablona tajné – template.yaml tajný klíč
@@ -364,7 +367,7 @@ Můžete vytvořit omsagent DaemonSets s nebo bez něj tajných kódů.
 
     5. Vytvoření vašeho omsagent démon sady spuštěním ``` sudo kubectl create -f omsagent-ds-secrets.yaml ```
 
-2. Ověřte, že DaemonSet agenta OMS běží, podobný následujícímu:
+2. Ověřte, že agenta Log Analytics DaemonSet běží, podobný následujícímu:
 
     ```
     keiko@ubuntu16-13db:~# sudo kubectl get ds omsagent
@@ -376,7 +379,7 @@ Můžete vytvořit omsagent DaemonSets s nebo bez něj tajných kódů.
     ```
 
 
-Pro Kubernetes vygenerujte soubor yaml tajných kódů pro ID pracovního prostoru a primární klíč pro agenta OMS pro Linux pomocí skriptu. Následující příklad informace s [soubor yaml omsagent](https://github.com/Microsoft/OMS-docker/blob/master/Kubernetes/omsagent.yaml) zabezpečit tajné informace.
+Pro Kubernetes vygenerujte soubor yaml tajných kódů pro ID pracovního prostoru a primární klíč pro agenta Log Analytics pro Linux pomocí skriptu. Následující příklad informace s [soubor yaml omsagent](https://github.com/Microsoft/OMS-docker/blob/master/Kubernetes/omsagent.yaml) zabezpečit tajné informace.
 
 ```
 keiko@ubuntu16-13db:~# sudo kubectl describe secrets omsagent-secret
@@ -393,15 +396,15 @@ WSID:   36 bytes
 KEY:    88 bytes
 ```
 
-#### <a name="configure-an-oms-windows-agent-for-kubernetes"></a>Konfigurace agenta OMS Windows pro Kubernetes
-Pro Windows Kubernetes pomocí skriptu se vygenerovat soubor yaml tajných kódů pro ID pracovního prostoru a primární klíč pro instalaci agenta OMS. Na [OMS Docker Kubernetes Githubu](https://github.com/Microsoft/OMS-docker/tree/master/Kubernetes/windows) stránce, jsou soubory, které můžete použít s tajných informací.  Je potřeba nainstalovat agenta OMS zvlášť pro hlavních a agentských uzlů.  
+#### <a name="configure-a-log-analytics-windows-agent-for-kubernetes"></a>Konfigurace agenta Log Analytics Windows pro Kubernetes
+Pro Windows Kubernetes pomocí skriptu se vygenerovat soubor yaml tajných kódů pro ID pracovního prostoru a primární klíč pro instalaci agenta Log Analytics. Na [Log Analytics Docker Kubernetes Githubu](https://github.com/Microsoft/OMS-docker/tree/master/Kubernetes/windows) stránce, jsou soubory, které můžete použít s tajných informací.  Je potřeba nainstalovat agenta Log Analytics samostatně pro hlavních a agentských uzlů.  
 
-1. Použití DaemonSet agenta OMS pomocí tajných informací na hlavní uzel, přihlaste se a nejdříve vytvořit tajné klíče.
+1. Použít agenta Log Analytics DaemonSet pomocí tajných informací na hlavní uzel, přihlaste se a nejdříve vytvořit tajné klíče.
     1. Zkopírujte skript a soubor tajného kódu šablony a ujistěte se, že jsou ve stejném adresáři.
         - Generování skriptu - secret gen.sh tajný klíč
         - Šablona tajné – template.yaml tajný klíč
 
-    2. Spusťte skript, jako v následujícím příkladu. Skript vyzve k zadání ID pracovního prostoru OMS a primární klíč a po při zadávání, skript vytvoří soubor yaml tajného kódu, můžete ji spustit.   
+    2. Spusťte skript, jako v následujícím příkladu. Skript vyzve k zadání ID pracovního prostoru Log Analytics a primární klíč a po při zadávání, skript vytvoří soubor yaml tajného kódu, můžete ji spustit.   
 
         ```
         #> sudo bash ./secret-gen.sh
@@ -435,7 +438,7 @@ Pro Windows Kubernetes pomocí skriptu se vygenerovat soubor yaml tajných kód�
 
     5. Vytvoření vašeho omsagent démon sady spuštěním ```kubectl create -f ws-omsagent-de-secrets.yaml```
 
-2. Ověřte, že DaemonSet agenta OMS běží, podobný následujícímu:
+2. Ověřte, že agenta Log Analytics DaemonSet běží, podobný následujícímu:
 
     ```
     root@ubuntu16-13db:~# kubectl get deployment omsagent
@@ -445,8 +448,8 @@ Pro Windows Kubernetes pomocí skriptu se vygenerovat soubor yaml tajných kód�
 
 3. Agent na uzlu pracovního procesu, na kterém běží Windows, postupujte podle kroků v části [instalace a konfigurace hostitelů Windows kontejneru](#install-and-configure-windows-container-hosts).
 
-#### <a name="use-helm-to-deploy-oms-agent-on-linux-kubernetes"></a>Nasazení agenta OMS v systému Linux Kubernetes pomocí Helm
-Nasazení agenta OMS v prostředí Linux Kubernetes pomocí helm, proveďte následující kroky.
+#### <a name="use-helm-to-deploy-log-analytics-agent-on-linux-kubernetes"></a>Nasadit agenta Log Analytics na Linuxu Kubernetes pomocí Helm
+Pokud chcete nasadit agenta Log Analytics v prostředí Linux Kubernetes pomocí helm, proveďte následující kroky.
 
 1. Vytvoření vašeho omsagent démon sady spuštěním ```helm install --name omsagent --set omsagent.secret.wsid=<WSID>,omsagent.secret.key=<KEY> stable/msoms```
 2. Výsledky bude vypadat nějak takto:
@@ -530,7 +533,7 @@ Můžete ověřit, jestli je správně nastavené řešení pro monitorování k
 
 ## <a name="solution-components"></a>Součásti řešení
 
-Z portálu OMS, přejděte *Galerie řešení* a přidejte **řešení pro monitorování kontejnerů**. Pokud používáte Windows agenty, je při přidání tohoto řešení následující sady management pack nainstalované na každém počítači s agentem. Žádná konfigurace ani údržba je vyžadován pro sadu management pack.
+Na webu Azure Portal, přejděte *Galerie řešení* a přidejte **řešení pro monitorování kontejnerů**. Pokud používáte Windows agenty, je při přidání tohoto řešení následující sady management pack nainstalované na každém počítači s agentem. Žádná konfigurace ani údržba je vyžadován pro sadu management pack.
 
 - *ContainerManagement.xxx* nainstalované v C:\Program Files\Microsoft Monitoring Agent\Agent\Health State\Management SP
 
@@ -539,7 +542,7 @@ Z portálu OMS, přejděte *Galerie řešení* a přidejte **řešení pro monit
 
 Data jsou shromažďována každé 3 minuty, následující typy agenta.
 
-- [Agenta OMS pro Linux](log-analytics-linux-agents.md)
+- [Agenta log Analytics pro Linux](log-analytics-linux-agents.md)
 - [Agenta Windows](log-analytics-windows-agent.md)
 - [Rozšíření log Analytics virtuální počítače](log-analytics-azure-vm-extension.md)
 

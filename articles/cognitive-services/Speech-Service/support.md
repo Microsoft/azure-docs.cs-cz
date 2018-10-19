@@ -8,12 +8,12 @@ ms.component: custom-speech
 ms.topic: article
 ms.date: 07/26/2018
 ms.author: wolfma
-ms.openlocfilehash: c08cc34631afdec4a4b08b4c599b79e1a161558c
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: b5d981f06219bd2b5d7325476725ff7a4eccf3b6
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49364153"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49430098"
 ---
 # <a name="support-and-help-options"></a>Možnosti podpory a Nápověda
 
@@ -74,8 +74,41 @@ Pokud nemůžete najít odpověď na váš problém prostřednictvím vyhledáv�
 
 Ukázky jsou často odeslány jako open source. Pro dotazy a problémy, vytvořte *problém* v příslušné úložiště GitHub. Příliš můžete odeslat žádost o přijetí změn. Následující seznam obsahuje odkazy na ukázkové úložiště:
 
-* [Speech SDK](https://aka.ms/csspeech/samples)
-* [Sada SDK zařízení](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK)
+* [Speech SDK](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues)
+* [Sada SDK zařízení](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK/issues)
+
+Můžete vytvořit hlášení o chybě, žádost o funkci, nebo požádejte obecný dotaz a osvědčenými postupy. Sestavy chyb postupujte prosím podle poskytnuté šabloně:
+
+**Popis chyby**
+
+Jasné a stručné popis co se chyba nachází.
+
+**Chcete-li reprodukovat**
+
+Kroky pro reprodukci chování:
+1. ...
+2. ...
+
+**Očekávané chování**
+
+Jasný a srozumitelný popis co jste očekávali.
+
+**Verze služeb Cognitive Services řeči SDK**
+
+Kterou verzi sady SDK je používáte.
+
+**Programovací jazyk, platformu a operačního systému**
+
+ - Operační systém: [třeba Windows, Linux, Android, iOS,...] - buďte konkrétní
+ - Hardware - x64, x86, ARM...
+ - Prohlížeč [např Chrome, Safari] (pokud existuje)-buďte konkrétní
+
+**Další kontext**
+
+ - Chybové zprávy, informace protokolu trasování, zásobníku...
+ - Pokud byste nahlásit chybu pro konkrétní službu interakce, ohlaste prosím SessionId a čas (včetně časového pásma) ohlášených incidentů. SessionId je uveden ve všech-zpětných/událostí volání, který jste dostali.
+ - Jakékoli další informace
+
 
 ## <a name="uservoice-forum"></a>Fórum UserVoice
 

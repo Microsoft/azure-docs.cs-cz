@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 09/27/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: d9cf46a1fd28985d9ca98d173bbef17380b7de21
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: f3f5b656b4c90c3b39fc317160eea7ce8fea25ff
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49354389"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49409726"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Operace poskytovatele prostředků Azure Resource Manageru
 
@@ -3938,16 +3938,16 @@ Operace poskytovatele prostředků se vždy vyvíjejí. Chcete-li získat nejnov
 > [!div class="mx-tdCol2BreakAll"]
 > | Typ akce | Operace | Popis |
 > | --- | --- | --- |
-> | Akce | Microsoft.OperationsManagement/managementAssociations/delete | Odstranit existující přidružení správy |
-> | Akce | Microsoft.OperationsManagement/managementAssociations/read | Načíst existující přidružení správy |
-> | Akce | Microsoft.OperationsManagement/managementAssociations/write | Vytvořit nové přidružení správy |
-> | Akce | Microsoft.OperationsManagement/managementConfigurations/delete | Odstranit existující konfiguraci správy |
-> | Akce | Microsoft.OperationsManagement/managementConfigurations/read | Načíst existující konfiguraci správy |
-> | Akce | Microsoft.OperationsManagement/managementConfigurations/write | Vytvořit novou konfiguraci správy |
+> | Akce | Microsoft.OperationsManagement/managementAssociations/delete | Odstraňte existující přidružení správy. |
+> | Akce | Microsoft.OperationsManagement/managementAssociations/read | Načíst existující přidružení správy. |
+> | Akce | Microsoft.OperationsManagement/managementAssociations/write | Vytvořte nové přidružení správy. |
+> | Akce | Microsoft.OperationsManagement/managementConfigurations/delete | Odstraňte existující konfiguraci správy. |
+> | Akce | Microsoft.OperationsManagement/managementConfigurations/read | Načíst existující konfiguraci správy. |
+> | Akce | Microsoft.OperationsManagement/managementConfigurations/write | Vytvořte novou konfiguraci správy. |
 > | Akce | Microsoft.OperationsManagement/register/action | Registrace předplatného u poskytovatele prostředků. |
-> | Akce | Microsoft.OperationsManagement/solutions/delete | Odstranit existující řešení OMS |
-> | Akce | Microsoft.OperationsManagement/solutions/read | Získat existující řešení OMS |
-> | Akce | Microsoft.OperationsManagement/solutions/write | Vytvořit nové řešení OMS |
+> | Akce | Microsoft.OperationsManagement/solutions/delete | Odstraňte existující řešení pro monitorování. |
+> | Akce | Microsoft.OperationsManagement/solutions/read | Získáte existující řešení pro monitorování. |
+> | Akce | Microsoft.OperationsManagement/solutions/write | Vytvořte nové řešení pro monitorování. |
 
 ## <a name="microsoftpolicyinsights"></a>Microsoft.policyinsights do
 

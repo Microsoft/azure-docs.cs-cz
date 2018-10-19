@@ -8,20 +8,26 @@ ms.component: Speech
 ms.topic: article
 ms.date: 04/26/2018
 ms.author: panosper
-ms.openlocfilehash: 8f9a033ebf9cdfdb96ae8511b14202e49ec0a85e
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: c6912b45bc62ce9492e8e33bd1ffd8e7147b9d17
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48884455"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49427783"
 ---
 # <a name="batch-transcription"></a>Dávkový přepis
 
-Přepis batch je ideální, pokud máte velké množství zvuk. Můžete odkazovat na zvukové soubory pomocí identifikátoru URI a získat zpět přepisů v asynchronním režimu.
+Přepis batch je ideální, pokud máte velké množství zvuku ve službě storage. Pomocí našeho rozhraní Rest API, můžete odkazovat na zvukové soubory pomocí identifikátoru URI SAS a asynchronně přijímat přepisů.
 
 ## <a name="batch-transcription-api"></a>Přepis rozhraní API služby batch
 
-Přepis Batch API nabízí asynchronní převod řeči na text přepisu, společně s další funkce.
+Přepis Batch API nabízí asynchronní převod řeči na text přepisu, společně s další funkce. Je vystavení metody pro rozhraní REST API:
+
+1. Vytváření žádostí o zpracování služby batch
+
+2. Stav dotazu 
+
+3. Stahování trnascriptions
 
 > [!NOTE]
 > Rozhraní API služby Batch určené k transkripci je ideální pro volání Center, která obvykle accumulate tisíce hodin zvukového záznamu. Rozhraní API se řídí filozofií "vypal a zapomeň", což usnadňuje přepisy velkého objemu zvukové záznamy.
@@ -95,78 +101,77 @@ Upravte následující vzorový kód s klíč předplatného a klíč rozhraní 
         }
 ```
 
-Po obdržení tokenu, je nutné zadat identifikátor URI SAS odkazující na zvukový soubor, které vyžadují určené k transkripci. Zbytek kódu prochází stav a zobrazí výsledky.
+Po obdržení tokenu, je nutné zadat identifikátor URI SAS odkazující na zvukový soubor, které vyžadují určené k transkripci. Zbytek kódu prochází stav a zobrazí výsledky. By zpočátku jeden nastavit klíč, oblast, modely a použít a přidružení zabezpečení. jak ukazuje následující fragment kódu. Následuje instance klienta a požadavek POST. 
 
 ```cs
-   static async Task TranscribeAsync()
-        { 
             private const string SubscriptionKey = "<your Speech subscription key>";
             private const string HostName = "westus.cris.ai";
             private const int Port = 443;
     
+            // SAS URI 
+            private const string RecordingsBlobUri = "some SAS URI";
+
+            // adapted model Ids
+            private static Guid AdaptedAcousticId = new Guid("some guid");
+            private static Guid AdaptedLanguageId = new Guid("some guid");
+
             // Creating a Batch transcription API Client
             var client = CrisClient.CreateApiV2Client(SubscriptionKey, HostName, Port);
             
-            var transcriptions = await client.GetTranscriptionAsync().ConfigureAwait(false);
-
             var transcriptionLocation = await client.PostTranscriptionAsync(Name, Description, Locale, new Uri(RecordingsBlobUri), new[] { AdaptedAcousticId, AdaptedLanguageId }).ConfigureAwait(false);
+```
 
-            // get the transcription Id from the location URI
-            var createdTranscriptions = new List<Guid>();
-            createdTranscriptions.Add(new Guid(transcriptionLocation.ToString().Split('/').LastOrDefault()))
+Teď, když byla podána žádost uživatele můžete zadávat dotazy a stáhnout výsledky určené k transkripci jako fragment kódu ukazuje kód.
 
-            while (true)
+```cs
+  
+            // get all transcriptions for the user
+            transcriptions = await client.GetTranscriptionAsync().ConfigureAwait(false);
+
+            // for each transcription in the list we check the status
+            foreach (var transcription in transcriptions)
             {
-                // get all transcriptions for the user
-                transcriptions = await client.GetTranscriptionAsync().ConfigureAwait(false);
-                completed = 0; running = 0; notStarted = 0;
-
-                // for each transcription in the list we check the status
-                foreach (var transcription in transcriptions)
+                switch(transcription.Status)
                 {
-                    switch(transcription.Status)
-                    {
-                        case "Failed":
-                        case "Succeeded":
+                    case "Failed":
+                    case "Succeeded":
 
                             // we check to see if it was one of the transcriptions we created from this client.
-                            if (!createdTranscriptions.Contains(transcription.Id))
-                            {
-                                // not creted form here, continue
-                                continue;
-                            }
+                        if (!createdTranscriptions.Contains(transcription.Id))
+                        {
+                            // not creted form here, continue
+                            continue;
+                        }
                             
-                            completed++;
+                        completed++;
                             
-                            // if the transcription was successfull, check the results
-                            if (transcription.Status == "Succeeded")
-                            {
-                                var resultsUri = transcription.ResultsUrls["channel_0"];
-                                WebClient webClient = new WebClient();
-                                var filename = Path.GetTempFileName();
-                                webClient.DownloadFile(resultsUri, filename);
-                                var results = File.ReadAllText(filename);
-                                Console.WriteLine("Transcription succedded. Results: ");
-                                Console.WriteLine(results);
-                            }
-                            break;
-                        case "Running":
-                            running++;
-                            break;
-                        case "NotStarted":
-                            notStarted++;
-                            break;
+                        // if the transcription was successfull, check the results
+                        if (transcription.Status == "Succeeded")
+                        {
+                            var resultsUri = transcription.ResultsUrls["channel_0"];
+                            WebClient webClient = new WebClient();
+                            var filename = Path.GetTempFileName();
+                            webClient.DownloadFile(resultsUri, filename);
+                            var results = File.ReadAllText(filename);
+                            Console.WriteLine("Transcription succedded. Results: ");
+                            Console.WriteLine(results);
+                        }
+                    
+                    break;
+                    case "Running":
+                    running++;
+                     break;
+                    case "NotStarted":
+                    notStarted++;
+                    break;
+                    
                     }
                 }
-
-                Console.WriteLine(string.Format("Transcriptions status: {0} completed, {1} running, {2} not started yet", completed, running, notStarted));
-
-                await Task.Delay(TimeSpan.FromSeconds(5)).ConfigureAwait(false);
             }
-
-            Console.WriteLine("Press any key...");
         }
 ```
+
+Naše [dokument Swagger](https://westus.cris.ai/swagger/ui/index) poskytuje všechny podrobnosti na výše uvedené volání. Úplnou ukázku je vidět tady je na [Githubu](https://github.com/PanosPeriorellis/Speech_Service-BatchTranscriptionAPI).
 
 > [!NOTE]
 > V předchozím kódu klíč předplatného se z prostředku řeči, kterou vytvoříte na webu Azure portal. Klíče získané z prostředku služby Custom Speech Service nefungují.

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: maheshu
-ms.openlocfilehash: 22c97da35416ba1ff593dfa5e41f557ea2ab1cc0
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: 42c27df658ae810ac31813ffb94f397a0070933f
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47182242"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49429129"
 ---
 # <a name="configure-secure-ldap-ldaps-for-an-azure-ad-domain-services-managed-domain"></a>Konfigurace zabezpečeného protokolu LDAP (LDAPS) pro spravované domény služby Azure AD Domain Services
 Tento článek popisuje, jak můžete zajistit zabezpečení Lightweight Directory Access protokolu (LDAPS) pro spravované domény služby Azure AD Domain Services. Protokol Secure LDAP se také označuje jako "Directory přístup protokolu LDAP (Lightweight) přes vrstvy SSL (Secure Sockets) / zabezpečení TLS (Transport Layer)".
@@ -86,7 +86,7 @@ New-SelfSignedCertificate -Subject contoso100.com `
   -Type SSLServerAuthentication -DnsName *.contoso100.com
 ```
 
-V předchozím příkladu nahraďte "*. contoso100.com" s názvem domény DNS vaší spravované domény. For example, pokud jste vytvořili spravovanou doménu nazývá "contoso100.onmicrosoft.com", nahraďte '*. contoso100.com "v předchozím skriptu pomocí" *. contoso100.onmicrosoft.com ").
+V předchozím příkladu nahraďte názvem domény DNS vaší spravované domény "contoso100.com". Například pokud jste vytvořili spravovanou doménu nazývá "contoso100.onmicrosoft.com", nahraďte "contoso100.com" v předmětu atributu "contoso100.onmicrosoft.com" a "*. contoso100.com" v atributu DnsName s "*. contoso100.onmicrosoft.com ").
 
 ![Vyberte adresář služby Azure AD](./media/active-directory-domain-services-admin-guide/secure-ldap-powershell-create-self-signed-cert.png)
 

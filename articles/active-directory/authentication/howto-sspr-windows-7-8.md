@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: ae2fab560ca9579860aeba91f9322c6521a83de1
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 1465ba23f6fed85f0d4164f8e3fdc8c38be43ad3
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47167881"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49427722"
 ---
 # <a name="how-to-enable-password-reset-from-windows-7-8-and-81"></a>Postupy: povolení heslo resetovat z Windows 7, 8 a 8.1
 
@@ -76,6 +76,8 @@ HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\Credential Provide
 
 * Pokud chcete zapnout podrobné protokolování, vytvořte REG_DWORD: "EnableLogging" a nastavte ho na hodnotu 1.
 * Vypnout podrobné protokolování, změňte REG_DWORD "EnableLogging" na hodnotu 0.
+
+Pokud vaše počítače Windows 7, 8 a 8.1 jsou za proxy server nebo bránu firewall, má povolený provoz HTTPS (443) do passwordreset.microsoftonline.com.
 
 ## <a name="next-steps"></a>Další postup
 

@@ -1,6 +1,6 @@
 ---
-title: Platformě Azure Service Fabric na úrovni monitorování | Microsoft Docs
-description: Další informace o protokoly použít k monitorování a diagnostice clusterů Azure Service Fabric a úroveň události platformy.
+title: Monitorování na úrovni platformy Azure Service Fabric | Dokumentace Microsoftu
+description: Další informace o protokoly používá k monitorování a Diagnostika clustery Azure Service Fabric a událostí na úrovni platformy.
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
@@ -14,88 +14,88 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/25/2018
 ms.author: dekapur
-ms.openlocfilehash: 31f23e3f8e792c6b61870c640f99ec3392a940d3
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 96bbb221f5fa133ee88a09d489627e3d2f9b0713
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34211170"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49409182"
 ---
-# <a name="monitoring-the-cluster-and-platform"></a>Monitorování clusteru a platforma
+# <a name="monitoring-the-cluster-and-platform"></a>Monitorování clusteru a platformy
 
-Je důležité ke sledování na úrovni platformy k určení, zda hardware a cluster chovají podle očekávání. Když Service Fabric můžete ponechat aplikací, které běží při selhání hardwaru, ale potřebujete diagnostikovat, zda k chybě dochází v aplikaci nebo v odpovídající infrastruktury. Také měli byste sledovat clusterů lépe plánovat kapacitu, pomoc při rozhodování o o přidání nebo odebrání hardwaru.
+Je důležité monitorovat na úrovni platformy k určení, zda hardware a cluster se nechová podle očekávání. Když Service Fabric můžete ponechat aplikace během selhání hardwaru, ale je stále potřeba zjistit, jestli k chybě dochází v aplikaci nebo v základní infrastruktuře. Byste také měli sledovat vašich clusterů do lépe plánovat kapacitu, pomáhá v rozhodování o přidání nebo odebrání hardwaru.
 
-Service Fabric poskytuje několik událostí strukturovaných platformy, jako "[události Service Fabric](service-fabric-diagnostics-events.md)," prostřednictvím EventStore a různými protokolu kanály out-of-the-box. 
+Service Fabric poskytuje několik událostí strukturovaných platformy, jako "[události Service Fabric](service-fabric-diagnostics-events.md)," prostřednictvím Eventstoru a různými protokolu kanály out-of-the-box. 
 
-EventStore umožňuje přístup k vaší clusteru události na základě za entity (včetně clusteru, uzly, aplikací, služeb, oddíly, repliky a kontejnery entity) a zpřístupňuje je přes rozhraní REST API a knihovny Service Fabric klienta. Použít EventStore k monitorování vaší clustery pro vývoj/testování a získání bodu v čase Principy stavu produkčních clusterů. Další informace o to v [EventStore přehled](service-fabric-diagnostics-eventstore.md).
+Eventstoru poskytuje přístup k události váš cluster na základě za entity (včetně clusteru, uzly, aplikace, služby, oddíly, repliky a kontejnery entit) a zpřístupňuje je prostřednictvím rozhraní REST API a klientské knihovny Service Fabric. Použít Eventstoru k monitorování clusterů pro vývoj/testování a získání bodu v čase přehled o stavu vašich produkčních clusterů. Další informace najdete v [přehled Eventstoru](service-fabric-diagnostics-eventstore.md).
 
-Service Fabric obsahuje také že protokol následující kanály out-of-the-box pro nastavení kanál monitorovat produkčních clusterů:
+Service Fabric nabízí také že následující protokol kanály out-of-the-box pro nastavením kanálu pro monitorování produkčních clusterech:
 
 * [**Provozní**](service-fabric-diagnostics-event-generation-operational.md)  
-Základní operace provádí Service Fabric a cluster, včetně události pro uzel objevuje, nové nasazení aplikace nebo upgradu vrácení zpět, atd.
+Základní operace prováděné Service Fabric a clusteru, včetně událostí pro uzel vzniká, nové aplikace se nasazuje nebo upgradu vrácení zpět, atd.
 
 * **Provozní – podrobné**  
-Sestavy o stavu a rozhodnutí o vyrovnávání zatížení.
+Sestav o stavu a vyrovnávání zátěže rozhodnutí.
 
-* **Data & zasílání zpráv**  
-Kritické protokoly a události vygenerované v zasílání zpráv (aktuálně pouze ReverseProxy) a cesta k datům (modelů spolehlivé služby).
+* **Dat & zasílání zpráv**  
+Kritické protokolů a událostí vygenerovaných při zasílání zpráv (aktuálně pouze ReverseProxy) a cesta k datům (modely modelu reliable services).
 
-* **Zasílání zpráv - podrobné & dat.**  
-Podrobné kanál, který obsahuje všechny nekritické protokoly z dat a zasílání zpráv v clusteru (v tomto kanálu má velmi velký objem událostí).
+* **Dat & zasílání zpráv – podrobně**  
+Podrobné kanál, který obsahuje všechny protokoly, které jsou méně náročné z dat a zasílání zpráv v clusteru (v tomto kanálu má velmi velký objem událostí).
 
-Kromě toho existují dvě strukturovaných EventSource kanály, které poskytuje, jakož i protokoly, které shromažďujeme pro účely podpory.
+Kromě toho existují dvě strukturovaných kanály EventSource, jakož i protokoly, které shromažďujeme pro účely podpory.
 
 * [Události Reliable Services](service-fabric-reliable-services-diagnostics.md)  
-Programování modelu konkrétní události.
+Programovací model konkrétní události.
 
 * [Události Reliable Actors](service-fabric-reliable-actors-diagnostics.md)  
-Programování modelu určité události a čítače výkonu.
+Programovací model konkrétních událostí a čítačů výkonu.
 
-* Podpora protokolů  
-Protokoly systému vygenerované Service Fabric jenom na které nás použije při poskytování podpory.
+* Protokoly podpory  
+Systémové protokoly generované Service Fabric pouze pro použití stranou při poskytování podpory.
 
-Tyto různé kanály zahrnují většinu platformy úroveň protokolování, který se doporučuje. Pokud chcete zvýšit úroveň protokolování platformy, zvažte investici lepší vysvětlení stavu modelu a přidání sestavy vlastní stavu a přidání vlastní **čítače výkonu** k sestavení v reálném čase pochopení dopadu vaší služby a aplikace v clusteru.
+Tyto různé kanály pokrýval většinu úrovně protokolování platformy, které se doporučuje. Chcete-li zvýšit úroveň protokolování platformy, zvažte prošetřují lepší pochopení stavu modelu a přidání vlastních stavových sestav a přidání vlastní **čítače výkonu** k sestavení v reálném čase přehled o dopadu vaší služby a aplikace v clusteru.
 
-Aby bylo možné využít výhod tyto protokoly, důrazně doporučujeme při vytváření clusteru zapnutá "Diagnostika". Zapnutím diagnostiky při nasazování clusteru Windows Azure Diagnostics je možné potvrdit funkčnosti, spolehlivé Services a Reliable actors kanály a uložení dat jako další vysvětleno v [agregaci událostí v Azure Diagnostika](service-fabric-diagnostics-event-aggregation-wad.md).
+Abyste mohli využívat tyto protokoly, důrazně doporučujeme, aby při vytváření clusteru "Diagnostika" je povolená. Když zapnete diagnostiku, při nasazení clusteru Windows Azure Diagnostics je schopen potvrdit provozní, Reliable Services a Reliable actors kanálů a ukládání dat, jako je vysvětleno v [agregace událostí s využitím Azure Diagnostika](service-fabric-diagnostics-event-aggregation-wad.md).
 
-## <a name="azure-service-fabric-health-and-load-reporting"></a>Azure Service Fabric stavu a vytváření sestav zatížení
+## <a name="azure-service-fabric-health-and-load-reporting"></a>Stav služby Azure Service Fabric a generování sestav zatížení
 
-Service Fabric má svou vlastní stavu modelu, který je podrobně popsaná v těchto článcích:
+Service Fabric má svůj vlastní stav modelu, který je podrobně popsán v těchto článcích:
 
 - [Úvod do monitorování stavu Service Fabric](service-fabric-health-introduction.md)
 - [Hlášení a kontrola stavu služeb](service-fabric-diagnostics-how-to-report-and-check-service-health.md)
-- [Přidat vlastní sestavy stavu Service Fabric](service-fabric-report-health.md)
-- [Zobrazit sestavy stavu Service Fabric](service-fabric-view-entities-aggregated-health.md)
+- [Přidání vlastních stavových sestav Service Fabric](service-fabric-report-health.md)
+- [Zobrazení sestav health Service Fabric](service-fabric-view-entities-aggregated-health.md)
 
-Sledování stavu je velmi důležité několik aspektů operačního služby. Sledování stavu je obzvláště důležité, když Service Fabric provede upgradu s názvem aplikace. Po každé upgradované domény služby upgradu a je k dispozici pro vaše zákazníky, domény upgradu musí projít kontroly stavu, než nasazení přikročí k další upgradovací doméně. Pokud nelze dosáhnout dobrý stav, nasazení je vrácena, tak, aby aplikace je ve stavu známé a funkční. I když někteří zákazníci mohou mít vliv na předtím, než budou vráceny služeb, nebude většina zákazníků zaznamenat problém. Navíc řešení dojde k poměrně rychle a bez nutnosti čekat na akce z lidské obsluhy. Další kontroly stavu, které jsou součástí kódu, pružnější více služby je problémy při nasazení.
+Monitorování stavu je důležité pro několik aspektů provoz služby. Monitorování stavu je obzvláště důležité, když Service Fabric provádí upgrade s názvem aplikace. Po každé upgradovací doména služby se upgraduje a je k dispozici pro vaše zákazníky, upgradovací doména musí uplynout kontroly stavu nasazení přejde k další upgradovací doméně. Pokud není možné dosáhnout dobrý stav, nasazení se vrátí zpět, tak, aby aplikace ve známých a dobrý stav. I když někteří zákazníci může mít vliv na před služby jsou vráceny zpět, většina zákazníků se setkat s problémem. Řešení také vyvolá poměrně rychle a bez nutnosti čekání na akce z lidského operátora. Další kontroly stavu, které jsou součástí kódu, odolnější vaše služba má potíže s nasazením.
 
-Další aspekt stav služby je generování sestav metriky ze služby. Metriky jsou důležité v Service Fabric, protože se používají k vyrovnávání využití prostředků. Metriky taky může být indikátor stavu systému. Například můžete mít aplikace, která má mnoho služeb, a každá instance sestavy požadavků za druhé metrika (RPS). Pokud se jedna služba používá více prostředků než jiné službě, Service Fabric přesune instance služby kolem clusteru, a zkuste udržovat využití i prostředků. Podrobnější vysvětlení, jak funguje využití prostředků najdete v tématu [spravovat spotřeby prostředků a načte v Service Fabric s metriky](service-fabric-cluster-resource-manager-metrics.md).
+Dalším aspektem služby service health je generování sestav metrik ze služby. Metriky jsou důležité pro Service Fabric, protože se používají k vyrovnávání využití prostředků. Metriky taky může být indikátor stavu systému. Například může mít aplikaci, která má mnoho služeb, a každá instance sestavy požadavků na druhý metriku (předávajících stran). Pokud jedna služba používá více prostředků, než jiné službě, Service Fabric se přesune instance služby kolem clusteru, se pokouší spravovat využití prostředků i. Podrobnější vysvětlení fungování využití prostředků najdete v tématu [Správa spotřeby prostředků a načíst do Service Fabric s metrikami](service-fabric-cluster-resource-manager-metrics.md).
 
-Metriky taky může pomoct získáte přehled o výkonu služby. V čase můžete zkontrolovat, že služba nyní pracuje v rámci očekávaných parametrů metriky. Například pokud trendy ukazují, že v 9: 00 v pondělí ráno se průměr RPS 1000, pak může nastavíte sestavy stavu, která vás upozorní, pokud RPS je menší než 500 nebo vyšší než 1 500. Všechno, co může být perfektně dobře, ale může být vhodné vypadá a ujistěte se, že vaši zákazníci mají optimálního uživatelského prostředí. Služby můžete definovat sadu metriky, které mohou být oznámeny pro účely kontroly stavu, ale který neovlivňuje vyrovnávání prostředků clusteru. K tomuto účelu nastavte váha metriky na nulu. Doporučujeme spustit všechny metriky s váhou nula a není zvýšit váhu, dokud si nejste jisti, pochopit, jak vážení metriky ovlivňuje pro váš cluster vyrovnávání prostředků.
+Metriky taky může pomoct vám poskytnou přehled o tom, jaký je výkon vaší služby. V průběhu času můžete použít metriky ke kontrole, že služba je zpracovávána v rámci očekávaných parametrech. Například pokud trendy ukazují, že v 9: 00 v pondělí ráno průměr RPS je 1 000, pak může nastavíte sestavu stavu, která vás upozorní, pokud RPS je nižší než 500 nebo vyšší než 1 500. Všechno, co může být zcela v pořádku, ale může být vhodné podívat, abyste měli jistotu, že vaši zákazníci mají skvělé prostředí. Služby můžete definovat sadu metrik, která může být hlášena pro účely kontroly stavu, ale který nemají vliv na vyrovnávání prostředků clusteru. K tomuto účelu nastavte váha metriky na nulu. Doporučujeme spustit všechny metriky s váhou nula a neukončil váha, dokud si nebude jisti, že chápete, jak vážení metriky ovlivňuje prostředků pro váš cluster služby Vyrovnávání.
 
 > [!TIP]
-> Nepoužívejte příliš mnoho vyvážené metriky. Může být obtížné zjistit, proč se přesouvání instance služby pro vyrovnávání. Několik metriky můžete vyhledat celou!
+> Nepoužívejte příliš mnoho vážený metriky. Může být obtížné pochopit, proč se přesouvání instance služby pro vyrovnávání. Několik metrik můžete urazily dlouhou cestu!
 
-Veškeré informace, které může svědčit o stavu a výkonu vaší aplikace je kandidátem na metriky a stavu sestavy. Čítače výkonu procesoru se dozvíte, jak využívat vaše uzlu, ale neříká můžete jestli konkrétní službu je v pořádku, protože více služeb můžou běžet na jednom uzlu. Však metriky, například RPS, položky, které jsou zpracovány, a všechny doba vyřízení požadavku může svědčit o stavu specifické služby.
+Veškeré informace, které můžete určit stav a výkon vaší aplikace je kandidátem pro metriky a hlášení o stavu. Čítač výkonu procesoru se dozvíte, jak se využívá uzlu, ale neříká vás, jestli je konkrétní služba v pořádku a vzhledem k tomu, že několik služeb, které můžou běžet na jednom uzlu. Však RPS, zpracování položek, jako jsou metriky a všechny vyřízení požadavku můžete určit stav specifické služby.
 
-## <a name="service-fabric-support-logs"></a>Podpora protokolů Service Fabric
+## <a name="service-fabric-support-logs"></a>Protokoly podpora Service Fabric
 
-Pokud potřebujete, kontaktujte podporu společnosti Microsoft pro pomoc s cluster Azure Service Fabric, podporu protokoly jsou téměř vždy vyžaduje. Pokud je váš cluster hostovaná v Azure, jsou automaticky konfigurovány a shromážděné v průběhu vytváření clusteru s podporou podpora protokolů. Protokoly jsou uloženy v účtu vyhrazeného úložiště ve skupině prostředků vašeho clusteru. Účet úložiště nemá pevnou název, ale v účtu, uvidíte kontejnery objektů blob a tabulek s názvy začínajícími *fabric*. Informace o nastavení protokolu kolekce pro cluster s podporou samostatné najdete v tématu [vytvořit a spravovat cluster Azure Service Fabric samostatné](service-fabric-cluster-creation-for-windows-server.md) a [nastavení konfigurace pro samostatný Windows clusteru](service-fabric-cluster-manifest.md). Pro samostatné instance Service Fabric by měly být odeslány protokoly do místní sdílené složky. Jste **požadované** do mají tyto protokoly pro podporu, ale nejsou určeny k být použitelná ve kýmkoli mimo tým podpory zákazníků společnosti Microsoft.
+Pokud budete potřebovat kontaktovat podporu Microsoftu o pomoc s vaším clusterem Azure Service Fabric, podporu protokoly jsou téměř vždy povinné. Pokud váš cluster je hostovaný v Azure, podporu protokoly jsou automaticky nakonfigurované a shromažďuje jako součást vytváření clusteru. Protokoly se ukládají do vyhrazeného úložiště účtu ve skupině prostředků vašeho clusteru. Účet úložiště nemá Pevný název, ale v účtu, uvidíte kontejnery objektů blob a tabulky s názvy, které začínají *fabric*. Informace o nastavení protokolu kolekce pro samostatného clusteru najdete v tématu [vytvoření a Správa samostatného clusteru Azure Service Fabric](service-fabric-cluster-creation-for-windows-server.md) a [nastavení konfigurace pro samostatný Windows cluster](service-fabric-cluster-manifest.md). Pro samostatné instance Service Fabric protokoly odesílaných do místní sdílené složky. Jste **požadované** mít tyto protokoly pro podporu, ale nemají být použitelné kdokoli mimo tým podpory zákazníků společnosti Microsoft.
 
 ## <a name="measuring-performance"></a>Měření výkonu
 
-Míra výkonu clusteru vám pomohou pochopit, jak je schopna zpracovávat zatížení a jednotku rozhodnutí ohledně škálování clusteru (informace o škálování clusteru najdete v části [v Azure](service-fabric-cluster-scale-up-down.md), nebo [místní](service-fabric-cluster-windows-server-add-remove-nodes.md)). Údaje o výkonu je také užitečné ve srovnání s akcemi, které vám nebo vaší aplikace a služby mohou být přijata, při analýze protokolů v budoucnu. 
+Měřit výkon vašeho clusteru vám pomůže pochopit, jak je schopný zvládnout zátěž a jednotky rozhodnutí, která kolem škálování clusteru (viz informace o škálování clusteru [v Azure](service-fabric-cluster-scale-up-down.md), nebo [místní](service-fabric-cluster-windows-server-add-remove-nodes.md)). Údaje o výkonu je také užitečné ve srovnání s akcemi, které vám nebo vaší aplikace a služby mohou trvalo, při analýze protokolů v budoucnu. 
 
-Seznam čítačů výkonu, které mají shromažďovat při pomocí Service Fabric najdete v tématu [čítače výkonu v Service Fabric](service-fabric-diagnostics-event-generation-perf.md)
+Seznam čítačů výkonu k získání při použití Service Fabric najdete v tématu [čítače výkonu v Service Fabric](service-fabric-diagnostics-event-generation-perf.md)
 
-Tady jsou dvě běžné způsoby, ve kterých můžete nastavit shromažďování dat o výkonu pro váš cluster:
+Tady jsou dvě běžné způsoby, ve kterých můžete nastavit shromažďování dat výkonu pro váš cluster:
 
 * **Pomocí agenta**  
-Toto je upřednostňovaný způsob shromažďování výkonu z počítače, protože agenti mají obvykle seznam možných výkonu metriky, které se můžou shromažďovat a je poměrně snadné proces vybrat metriky, které chcete shromažďovat nebo změnit. Přečtěte si informace o [konfigurace pro Service Fabric OMS](service-fabric-diagnostics-event-analysis-oms.md) a [nastavení agenta Windows OMS](../log-analytics/log-analytics-windows-agent.md) články Další informace o agenta OMS, což je jedna takové monitorování agent, který je schopen vyzvednutí výkonu data pro virtuální počítače clusteru a nasazené kontejnery.
+Toto je upřednostňovaný způsob shromažďování výkonu z počítače, protože agenti mají obvykle seznam možného výkonu metriky, které se můžou shromažďovat, a je poměrně snadné procesu zvolit metriky, které chcete shromažďovat nebo změnit. Přečtěte si informace o [konfigurace agenta Log Analytics pro Service Fabric](service-fabric-diagnostics-event-analysis-oms.md) a [nastavení agenta Log Analytics](../log-analytics/log-analytics-windows-agent.md) články získat další informace o agenta Log Analytics, což je jedna taková agent monitorování, která je možnost vyzvednutí údaje o výkonu pro virtuální počítače clusteru a nasazených kontejnerů.
 
-* **Konfiguraci diagnostiky k zápisu do tabulky čítače výkonu**  
-Pro clustery v Azure to znamená změna konfigurace Azure Diagnostics načíst čítače výkonu odpovídající z virtuálních počítačů v clusteru a povolení se vyzvedávat docker statistiky, pokud budete nasazovat žádné kontejnery. Přečtěte si informace o konfiguraci [čítače výkonu v WAD](service-fabric-diagnostics-event-aggregation-wad.md) v Service Fabric nastavení kolekce čítače výkonu.
+* **Konfiguruje se Diagnostika pro zápis čítače výkonu do tabulky**  
+Pro clustery v Azure to znamená změnu konfigurace diagnostiky Azure ke sbírání čítačů výkonu odpovídající z virtuálních počítačů v clusteru a povolení ho ke sbírání statistiky dockeru, pokud budete současně nasazovat žádné kontejnery. Přečtěte si informace o konfiguraci [čítače výkonu v WAD](service-fabric-diagnostics-event-aggregation-wad.md) v Service Fabric k nastavení kolekce čítačů výkonu.
 
 ## <a name="next-steps"></a>Další postup
 
-Třeba agregovat před odesláním pro žádnou platformu analýzy protokolů a událostí. Přečtěte si informace o [EventFlow](service-fabric-diagnostics-event-aggregation-eventflow.md) a [WAD](service-fabric-diagnostics-event-aggregation-wad.md) lépe pochopit některé doporučené možnosti.
+Potřeba agregovat před odesláním na jakoukoli platformu analýzy protokolů a událostí. Přečtěte si informace o [využitím EventFlow](service-fabric-diagnostics-event-aggregation-eventflow.md) a [WAD](service-fabric-diagnostics-event-aggregation-wad.md) lépe pochopit některé doporučené možnosti.

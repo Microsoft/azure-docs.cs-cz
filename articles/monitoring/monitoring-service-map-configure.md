@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: daseidma;bwren
-ms.openlocfilehash: a68c35ba2f740720e3d7940d6fafa2dcfe183589
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 70cf6fe1e2256ba2ed58d020111669e59d9db56b
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47064369"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49405510"
 ---
 # <a name="configure-service-map-in-azure"></a>Konfigurace řešení Service Map v Azure
 Service Map automaticky rozpozná komponenty aplikace v systémech Windows a Linux a mapuje komunikaci mezi službami. Můžete ho zobrazit servery přirozeným způsobem – propojené systémy, které doručují důležité služby. Service Map ukazuje propojení mezi servery, procesy a porty v jakékoli architektuře propojené TCP žádnou konfiguraci kromě instalace agenta vyžaduje.
@@ -138,22 +138,22 @@ Následující část obsahuje seznam podporovaných operačních systémech pro
 | Skupina pro správu nástroje System Center Operations Manager | Ano | Řešení Service Map analyzuje a shromažďuje data z agentů Windows a Linux v připojeného [skupiny pro správu System Center Operations Manager](../log-analytics/log-analytics-om-agents.md). <br><br>Vyžaduje se přímé připojení z počítače s agentem nástroje System Center Operations Manager ke službě Log Analytics. |
 | Účet služby Azure Storage | Ne | Řešení Service Map shromažďuje data z počítačů s agenty, takže není žádná data z něj získat ze služby Azure Storage. |
 
-Na Windows, Microsoft Monitoring Agent (MMA) používá System Center Operations Manager a Log Analytics ke shromažďování a odesílání dat monitorování. (Tomuto agentovi, se nazývají System Center Operations Manager agent, agenta OMS, Log Analytics agenta, MMA nebo přímý Agent, v závislosti na kontextu.) System Center Operations Manager a Log Analytics poskytují různé out v poli verze agenta MMA. Tyto verze dokážou podávat hlášení nástroji System Center Operations Manager, službě Log Analytics nebo oběma.  
+Na Windows, Microsoft Monitoring Agent (MMA) používá System Center Operations Manager a Log Analytics ke shromažďování a odesílání dat monitorování. (Tomuto agentovi, se nazývá agenta System Center Operations Manageru, agenta Log Analytics, MMA nebo přímý Agent, v závislosti na kontextu.) System Center Operations Manager a Log Analytics poskytují různé out v poli verze agenta MMA. Tyto verze dokážou podávat hlášení nástroji System Center Operations Manager, službě Log Analytics nebo oběma.  
 
 V Linuxu, agenta Log Analytics pro Linux shromáždí a pošle monitorování dat do služby Log Analytics. Můžete použít Service Map na serverech s agentů Log Analytics se připojí přímo ke službě nebo, která se hlásí do skupiny pro správu nástroje Operations Manager integrovaný s Log Analytics.  
 
 V tomto článku budeme odkazovat na všechny agenty, zda se systémem Linux nebo Windows připojené ke skupině pro správu System Center Operations Manager nebo přímo ke službě Log Analytics, jako *agenta Log Analytics*. 
 
-Agent Service Map nepřenáší vlastní data a nevyžaduje žádné změny brány firewall nebo porty. Data v Service Map je vždy přenášených v rámci agenta Log Analytics ve službě Log Analytics, buď přímo nebo přes bránu OMS.
+Agent Service Map nepřenáší vlastní data a nevyžaduje žádné změny brány firewall nebo porty. Data v Service Map je vždy přenášených v rámci agenta Log Analytics ve službě Log Analytics, buď přímo nebo přes bránu Log Analytics.
 
 ![Řešení Service Map agentů](media/monitoring-service-map/agents.png)
 
 Pokud jste zákazníkem System Center Operations Manageru se skupiny pro správu připojené ke službě Log Analytics:
 
 - Agenty System Center Operations Manager můžete získat přístup k Internetu pro připojení ke službě Log Analytics, není nutná žádná další konfigurace.  
-- Agenty System Center Operations Manager nemůže získat přístup k Log Analytics přes Internet, musíte nakonfigurovat bránu OMS pro práci s nástrojem System Center Operations Manager.
+- Agenty System Center Operations Manager nemůže získat přístup k Log Analytics přes Internet, musíte nakonfigurovat bránu Log Analytics pro práci s nástrojem System Center Operations Manager.
   
-Pokud počítače Windows nebo Linuxem nemůžete připojit přímo ke službě, budete muset nakonfigurovat agenta Log Analytics pro připojení ke službě Log Analytics pomocí brány OMS. Další informace o tom, jak nasadit a nakonfigurovat bránu OMS najdete v tématu [bez připojení k Internetu pomocí brány OMS připojit počítače](../log-analytics/log-analytics-oms-gateway.md).  
+Pokud počítače Windows nebo Linuxem nemůžete připojit přímo ke službě, budete muset nakonfigurovat agenta Log Analytics pro připojení k pracovnímu prostoru Log Analytics pomocí brány. Další informace o tom, jak nasadit a nakonfigurovat bránu Log Analytics najdete v tématu [připojit počítače bez připojení k Internetu pomocí brány Log Analytics](../log-analytics/log-analytics-oms-gateway.md).  
 
 ### <a name="management-packs"></a>Sady Management Pack
 Při řešení Service Map se aktivuje v pracovním prostoru Log Analytics, 300 KB management pack je předán do všech serverů Windows v daném pracovním prostoru. Pokud používáte agenty System Center Operations Manager v [připojené skupiny pro správu](../log-analytics/log-analytics-om-agents.md), sada management pack Service Map bude nasazena ze System Center Operations Manager. 
@@ -165,7 +165,7 @@ Každý agent přenášet zhruba 25 MB za den, v závislosti na tom, jak komplex
 
 Agent závislostí obvykle využívá 0,1 % systémové paměti a 0,1 % systému procesoru.
 
-## <a name="diagnostic-and-usage-data"></a>Data o využití a Diagnostika
+## <a name="diagnostic-and-usage-data"></a>Diagnostická data a data použití
 Microsoft automaticky shromažďuje data o využití a výkonu prostřednictvím vašeho používání služby Service Map. Tato data Microsoft používá k poskytování a vylepšování kvality, zabezpečení a integrity služby mapa služby. Data obsahují informace o konfiguraci vašeho softwaru, jako je operační systém a verze. Aby bylo možné poskytnout přesné a efektivní možnosti pro odstraňování potíží také obsahuje IP adresu, název DNS a název pracovní stanice. Neshromažďujeme jména, adresy ani jiné kontaktní údaje.
 
 Další informace o shromažďování a používání dat najdete v článku [prohlášení o ochraně osobních údajů Microsoft Online Services](https://go.microsoft.com/fwlink/?LinkId=512132).

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2018
 ms.author: bwren
-ms.openlocfilehash: 3154a2f8b283f68ec3e10ba621ccba3ee6d77de2
-ms.sourcegitcommit: 465ae78cc22eeafb5dfafe4da4b8b2138daf5082
+ms.openlocfilehash: 82cfa9e62dcc6b3a72dcb1ccf97f1f52a88a75c4
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44324746"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49404099"
 ---
 # <a name="data-collection-details-for-management-solutions-in-azure"></a>Podrobnosti shromažďování dat pro řešení pro správu v Azure
 Tento článek obsahuje seznam [řešení pro správu](monitoring-solutions.md) od Microsoftu k dispozici s odkazy na jejich podrobnou dokumentaci.  Poskytuje také informace o jejich metoda a četnost shromažďování dat do Log Analytics.  K identifikaci různých řešení, které jsou k dispozici a lépe porozumět požadavkům datového toku a připojení pro jiné řešení, můžete použít informace v tomto článku. 
@@ -34,7 +34,7 @@ Vysvětlení sloupců jsou následující:
 - **Nástroj Operations Manager** – identické agenta jako agenta Microsoft monitoring agent. V této konfiguraci obsahuje [připojené skupiny pro správu Operations Manageru](../log-analytics/log-analytics-om-agents.md) , který je připojený ke službě Log Analytics. 
 -  **Azure Storage** – řešení shromažďuje data z účtu služby Azure storage. 
 - **Nástroj Operations Manager vyžaduje?** – Připojené skupiny pro správu Operations Manageru je nezbytná pro shromažďování dat do řešení pro správu. 
-- **Dat agenta nástroje Operations Manager odeslaná pomocí skupiny pro správu** – Pokud je agent [připojené ke skupině pro správu nástroje SCOM](../log-analytics/log-analytics-om-agents.md), pak se odešlou do služby Log Analytics ze serveru pro správu. V takovém případě agenta není nutné se připojit přímo k Log Analytics. Pokud toto políčko není zaškrtnuto, pak data odesílána z agenta přímo ke službě Log Analytics i v případě, agent je připojený ke skupině pro správu nástroje SCOM. buď bude muset být schopni komunikovat s Log Analytics prostřednictvím [bránu OMS](../log-analytics/log-analytics-oms-gateway.md).
+- **Dat agenta nástroje Operations Manager odeslaná pomocí skupiny pro správu** – Pokud je agent [připojené ke skupině pro správu nástroje SCOM](../log-analytics/log-analytics-om-agents.md), pak se odešlou do služby Log Analytics ze serveru pro správu. V takovém případě agenta není nutné se připojit přímo k Log Analytics. Pokud toto políčko není zaškrtnuto, pak data odesílána z agenta přímo ke službě Log Analytics i v případě, agent je připojený ke skupině pro správu nástroje SCOM. Ji budou muset být schopni komunikovat s Log Analytics prostřednictvím [Log Analytics gateway](../log-analytics/log-analytics-oms-gateway.md).
 - **Četnost shromažďování dat** – Určuje, jak často, že shromažďuje data řešení pro správu. 
 
 

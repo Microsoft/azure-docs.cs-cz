@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
 ms.component: ''
-ms.openlocfilehash: 04e348d2b144bdb8fd626c52f990a560d76c08a2
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: fb84b20630eb63cb53ccb1d13a383ed6287b802b
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48044667"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49406615"
 ---
 # <a name="service-connectivity-monitor"></a>Monitorování připojení služby
 
@@ -44,7 +44,7 @@ Chcete-li spustit nástroj konfigurace pro sledování výkonu sítě, otevřete
 ![Konfigurace Network Performance Monitor](media/log-analytics-network-performance-monitor/npm-configure-button.png)
 
 
-### <a name="configure-operations-management-suite-agents-for-monitoring"></a>Konfigurace agentů Operations Management Suite pro monitorování
+### <a name="configure-log-analytics-agents-for-monitoring"></a>Konfigurace agentů Log Analytics pro monitorování
 Povolte následující pravidla brány firewall na uzlech používá pro monitorování tak, že řešení najdou topologie z uzly do koncového bodu služby: 
 
 ```

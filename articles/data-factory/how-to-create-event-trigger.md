@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/11/2018
+ms.date: 10/18/2018
 ms.author: douglasl
-ms.openlocfilehash: 20ee69654a6b19365c9b7c46e1fa11e102168365
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: f744e379521fe62f4b3fbbad0cc524ccb3e1b18d
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49309343"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49429384"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-an-event"></a>Vytvoření aktivační události, která běží v reakci na událost kanálu
 
@@ -71,23 +71,26 @@ Následující tabulka obsahuje přehled elementů schématu souvisejících s t
 | **JSON Element** | **Popis** | **Typ** | **Povolené hodnoty** | **Vyžaduje** |
 | ---------------- | --------------- | -------- | ------------------ | ------------ |
 | **Obor** | Azure Resource Manageru ID prostředku účtu úložiště. | Řetězec | ID Azure Resource Manageru | Ano |
-| **Události** | Typ události, které způsobují tento aby trigger provedl akci. | Pole    | Microsoft.Storage.BlobCreated Microsoft.Storage.BlobDeleted | Ano, libovolnou kombinaci. |
-| **blobPathBeginsWith** | Cesta objektu blob musí začínat vzor pro aby trigger provedl akci k dispozici. Například "/ záznamy/objekty BLOB nebo prosince /" se pouze aktivoval aktivační událost pro objekty BLOB ve složce dne v kontejneru záznamy. | Řetězec   | | Musí být zadaná aspoň jednu z těchto vlastností: blobPathBeginsWith blobPathEndsWith. |
-| **blobPathEndsWith** | Cesta objektu blob musí končit vzor pro aby trigger provedl akci k dispozici. Například 'december/boxes.csv' bude pouze aktivoval aktivační událost pro objekty BLOB s názvem pole v složku dne. | Řetězec   | | Musí být zadaná aspoň jednu z těchto vlastností: blobPathBeginsWith blobPathEndsWith. |
+| **Události** | Typ události, které způsobují tento aby trigger provedl akci. | Pole    | Microsoft.Storage.BlobCreated Microsoft.Storage.BlobDeleted | Ano, libovolnou kombinací těchto hodnot. |
+| **blobPathBeginsWith** | Cesta objektu blob musí začínat uvedeném vzorku pro aktivační událost, která se aktivuje. Například `/records/blobs/december/` pouze aktivuje trigger pro objekty BLOB v `december` ve složce `records` kontejneru. | Řetězec   | | Je nutné zadat hodnotu pro nejméně jednu z těchto vlastností: `blobPathBeginsWith` nebo `blobPathEndsWith`. |
+| **blobPathEndsWith** | Cesta objektu blob musí končit uvedeném vzorku pro aktivační událost, která se aktivuje. Například `december/boxes.csv` pouze aktivuje trigger pro objekty BLOB s názvem `boxes` v `december` složky. | Řetězec   | | Je nutné zadat hodnotu pro nejméně jednu z těchto vlastností: `blobPathBeginsWith` nebo `blobPathEndsWith`. |
 
 ## <a name="examples-of-event-based-triggers"></a>Příklady triggery založené na události
 
 Tato část obsahuje příklady nastavení založeného na událostech aktivační události.
 
--   **Cesta k objektu BLOB začíná**("/ containername /") – přijímá události pro všechny objekty blob v kontejneru.
--   **Cesta k objektu BLOB začíná**("/ containername/objektů BLOB/foldername") – přijímá události pro všechny objekty BLOB v kontejneru containername a název_složky složky. Je také možné odkazovat podsložku; například "/ containername/objektů BLOB/název_složky/subfoldername /".
--   **Cesta k objektu BLOB začíná**("/ containername/blobs/foldername/file.txt") – přijímá události pro objekt blob s názvem soubor.txt ve složce název_složky v kontejneru containername.
--   **Cesta k objektu BLOB končí**("soubor.txt") – přijme události pro objekt blob s názvem soubor.txt v jakékoli cestě.
--   **Cesta k objektu BLOB končí**("/ containername/blobs/file.txt") – přijímá události pro objekt blob s názvem soubor.txt v kontejneru containername.
--   **Cesta k objektu BLOB končí**("foldername/file.txt") – přijme události pro objekt blob s názvem soubor.txt v název_složky složce v kontejneru.
+> [!IMPORTANT]
+> Je nutné zahrnout `/blobs/` segment cesty, jak je znázorněno v následujících příkladech pokaždé, když zadáte kontejner a složku, kontejner a složku souboru nebo kontejneru a soubor.
 
-> [!NOTE]
-> Je nutné zahrnout `/blobs/` segment cesty pokaždé, když zadáte kontejner a složku, kontejner a složku souboru nebo kontejneru a soubor.
+| Vlastnost | Příklad: | Popis |
+|---|---|---|
+| **Cesta k objektu BLOB začíná** | `/containername/` | Přijímá události pro všechny objekty blob v kontejneru. |
+| **Cesta k objektu BLOB začíná** | `/containername/blobs/foldername/` | Přijímá události pro všechny objekty BLOB v `containername` kontejneru a `foldername` složky. |
+| **Cesta k objektu BLOB začíná** | `/containername/blobs/foldername/subfoldername/` | Je také možné odkazovat podsložku. |
+| **Cesta k objektu BLOB začíná** | `/containername/blobs/foldername/file.txt` | Přijímá události pro objekt blob s názvem `file.txt` v `foldername` ve složce `containername` kontejneru. |
+| **Cesta k objektu BLOB končí** | `file.txt` | Přijímá události pro objekt blob s názvem `file.txt` můžu jakoukoli cestu. |
+| **Cesta k objektu BLOB končí** | `/containername/blobs/file.txt` | Přijímá události pro objekt blob s názvem `file.txt` v kontejneru `containername`. |
+| **Cesta k objektu BLOB končí** | `foldername/file.txt` | Přijímá události pro objekt blob s názvem `file.txt` v `foldername` složce v kontejneru. |
 
 ## <a name="next-steps"></a>Další postup
 Podrobné informace o aktivačních událostech najdete v tématu [spouštění kanálů a triggery](concepts-pipeline-execution-triggers.md#triggers).

@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2018
 ms.author: shvija
-ms.openlocfilehash: ff0ebbb140627caaaa71c5d09d0a4078eca86055
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 29b5f877065029dc271e49c1afd6d547def58a6e
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48888068"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49408128"
 ---
 # <a name="use-virtual-network-service-endpoints-with-azure-event-hubs"></a>Koncové body služeb virtuální sítě pomocí Azure Event Hubs
 
@@ -24,7 +24,7 @@ Integrace Event Hubs s využitím [koncové body služeb virtuální sítě (VNe
 > [!IMPORTANT]
 > Virtuální sítě jsou podporovány v **standardní** a **vyhrazené** úrovně služby Event Hubs. Není podporována v úrovni basic. 
 
-Po nakonfigurování navázat na koncový bod služby podsítě alespoň jednu virtuální síť, příslušný obor názvů Event Hubs již přijímá provoz z libovolného místa, ale oprávnění virtuálních sítí. Z pohledu virtuální sítě nakonfiguruje vazby obor názvů služby Event Hubs do koncového bodu služby izolované sítě tunelové propojení z podsítě virtuální sítě ke službě zasílání zpráv.
+Po nakonfigurování navázat na koncový bod služby podsítě alespoň jednu virtuální síť, příslušný obor názvů Event Hubs již přijímá provoz z libovolného místa, ale oprávnění podsítí ve virtuálních sítích. Z pohledu virtuální sítě nakonfiguruje vazby obor názvů služby Event Hubs do koncového bodu služby izolované sítě tunelové propojení z podsítě virtuální sítě ke službě zasílání zpráv.
 
 Výsledkem je privátní a izolované relaci mezi úlohami, které jsou vázány na podsíť a odpovídající obor názvů Event Hubs, přestože pozorovatelných síťovou adresu na zasílání zpráv služby koncového bodu, který v rozsahu veřejných IP.
 
@@ -38,7 +38,7 @@ To znamená, že zabezpečení citlivých Cloudová řešení nejen získat př�
 
 ## <a name="bind-event-hubs-to-virtual-networks"></a>Vytvoření vazby služby Event Hubs k virtuálním sítím
 
-*Pravidla virtuální sítě* jsou funkce zabezpečení brány firewall, která určuje, jestli váš server Azure Event Hubs akceptuje připojení z konkrétní virtuální síť podsíť.
+*Pravidla virtuální sítě* jsou funkce zabezpečení brány firewall, která určuje, zda váš obor názvů Azure Event Hubs akceptuje připojení z konkrétní virtuální síť podsíť.
 
 Obor názvů služby Event Hubs vazba k virtuální síti je dvoustupňový proces. Je nejprve potřeba vytvořit **koncový bod služby virtuální sítě** na podsíti virtuální sítě a povolit ho pro "Microsoft.EventHub", jako je vysvětleno v [přehled koncových bodů služby] [ vnet-sep]. Po přidání koncového bodu služby, můžete vytvořit vazbu oboru názvů Event Hubs přes *pravidlo virtuální sítě*.
 

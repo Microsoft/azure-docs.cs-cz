@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/02/2018
 ms.author: rkarlin
-ms.openlocfilehash: 50055befaa0a5f0bb03bda18e01edfb751e49369
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: d5a4cfa3a91b82aa0f5b1725f86c732fecf632d4
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44379991"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49405442"
 ---
 # <a name="onboarding-to-azure-security-center-standard-for-enhanced-security"></a>Připojení ke službě Azure Security Center úrovně Standard pro zvýšení zabezpečení
 Upgrade na Security Center úrovně Standard využívat správu rozšířené zabezpečení a ochrana před internetovými útoky pro vašimi hybridními cloudovými úlohami.  Můžete vyzkoušet zdarma po dobu 60 dnů Standard. Zobrazit Security Center [stránce s cenami](https://azure.microsoft.com/pricing/details/security-center/) Další informace.
@@ -42,13 +42,13 @@ Celý předplatného Azure můžete upgradovat na úroveň Standard, která děd
 
 ## <a name="upgrade-an-azure-subscription-or-workspace"></a>Upgrade pracovního prostoru nebo předplatnému Azure
 Chcete-li upgradovat předplatné nebo si pracovní prostor na úroveň Standard:
-1. V hlavní nabídce služby Security Center, vyberte **Začínáme**.
+1. V hlavní nabídce služby Security Center vyberte **Začínáme**.
   ![Začínáme](./media/security-center-onboarding/get-started.png)
-2. V části **upgradovat**, Security Center seznam předplatných a pracovních prostorů, které jsou způsobilé pro registraci. 
-   - Můžete kliknout na rozbalovacího **použít platnost svojí zkušební verze** zobrazíte seznam všech předplatných a pracovních prostorů s jejich stavem zkušební nárok.
-   -    Předplatná a pracovní prostory, které nemají nárok zkušební verze můžete upgradovat.
-   -    Můžete vybrat vhodné pracovních prostorů a používat zkušební verzi předplatného.
-3.  Klikněte na tlačítko **zahájit zkušební období** ke spuštění vaší zkušební verze na vybrané odběry.
+2. V části **Upgrade** zobrazí Security Center seznam předplatných a pracovních prostorů, ke kterým se můžete připojit. 
+   - Po kliknutí na **Využít zkušební verzi** se zobrazí seznam všech předplatných a pracovních prostorů, které jsou ve stavu bezplatné zkušební verze.
+   -    Předplatná a pracovní prostory, které si nemůžete zdarma vyzkoušet, můžete upgradovat.
+   -    V bezplatné zkušební verzi můžete začít používat vybrané pracovní prostory a předplatná.
+3.  Pokud chcete začít používat zkušební verzi vybraných předplatných, klikněte na **Zahájit zkušební období**.
   ![Vyberte předplatné](./media/security-center-onboarding/select-subscription.png)
 
 
@@ -63,11 +63,11 @@ Security Center může monitorovat stav zabezpečení počítačů mimo Azure, t
 ### <a name="add-new-non-azure-computers-from-getting-started"></a>Přidat počítače umístěné mimo Azure z **Začínáme**
 
 1. Vraťte se na **Začínáme**.   
-2. Vyberte **Začínáme** kartu.
+2. Vyberte kartu **Začínáme**.
 
   ![Mimo službu Azure](./media/security-center-onboarding/non-azure.png)
 
-3. Klikněte na tlačítko **konfigurovat** pod **přidat počítače umístěné mimo Azure**. Zobrazí se seznam vašich pracovních prostorů Log Analytics. Seznam obsahuje i výchozí pracovní prostor, který pro vás vytvořila služba Security Center při povolení automatického zřizování, pokud existuje. Vyberte tento pracovní prostor nebo jiný pracovní prostor, který chcete použít.
+3. V části **Přidat počítače umístěné mimo Azure** klikněte na **Konfigurovat**. Zobrazí se seznam vašich pracovních prostorů Log Analytics. Seznam obsahuje i výchozí pracovní prostor, který pro vás vytvořila služba Security Center při povolení automatického zřizování, pokud existuje. Vyberte tento nebo jiný pracovní prostor, který chcete použít.
 
   ![Přidání počítače umístěného mimo Azure][7]
 
@@ -82,6 +82,8 @@ Pokud máte existující pracovní prostory, jsou uvedeny v části **přidat po
    ![Přidat nový pracovní prostor][4]
 
 2. V části **zabezpečení a Audit**vyberte **pracovní prostor OMS** vytvořte nový pracovní prostor.
+> [!NOTE]
+> Pracovní prostory OMS jsou dnes označovány jako pracovní prostory Log Analytics.
 3. V části **pracovní prostor OMS**, zadejte informace pro váš pracovní prostor.
 4. V části **pracovní prostor OMS**vyberte **OK**.  Když vyberete OK, se zobrazí odkaz pro stažení agenta Windows nebo Linuxem a klíči pro ID vašeho pracovního prostoru, které použijete při konfiguraci agenta.
 5. V části **zabezpečení a Audit**vyberte **OK**.

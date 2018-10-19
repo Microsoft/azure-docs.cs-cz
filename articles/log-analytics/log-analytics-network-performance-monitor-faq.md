@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/12/2018
 ms.author: vinynigam
-ms.openlocfilehash: 008eac235cd6b75c4c1d95b64e91923dad5a5106
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 2821f3fa07d8d9ada02da212084639c93e469d0b
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49355424"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49408876"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Network Performance Monitor řešení – nejčastější dotazy
 
@@ -28,7 +28,7 @@ Tento článek zachycuje nejčastější dotazy (FAQ) o Network Performance Moni
 
 [Network Performance Monitor](/azure/networking/network-monitoring-overview) je Cloudová [monitorování sítě hybridní](log-analytics-network-performance-monitor-performance-monitor.md) řešení usnadňující sledování výkonu sítě mezi různými body v síťové infrastruktuře. To zároveň pomáhá monitorovat síťové připojení k [koncové body služby a aplikace](log-analytics-network-performance-monitor-service-endpoint.md) a [monitorování výkonu Azure ExpressRoute](log-analytics-network-performance-monitor-expressroute.md). 
 
-Network Performance Monitor zjistí problémy se sítí jako provoz blackholing směrování chyby a problémy, které nejsou schopna zjistit monitorování metody konvenční sítě. Toto řešení generuje výstrahy a vás upozorní, když prahové hodnoty dojde k porušení zabezpečení pro síťové propojení. Také zajistí včas zjistit problémy s výkonem sítě a lokalizováno příčiny problému na určitém segmentu sítě nebo zařízení. 
+Network Performance Monitor zjistí problémy se sítí jako provoz blackholing směrování chyby a problémy, které nejsou schopna zjistit monitorování metody konvenční sítě. Toto řešení generuje výstrahy a upozorní vás, když u síťové linky dojde k překročení prahové hodnoty. Zajišťuje také včasné zjištění problémů s výkonem sítě a lokalizuje příčinu problému na konkrétní segment sítě nebo zařízení. 
 
 Další informace o různých možnostech nepodporuje [Network Performance Monitor](https://docs.microsoft.com/azure/networking/network-monitoring-overview) je k dispozici online.
 
@@ -61,7 +61,7 @@ Další podrobnosti získáte na relativní výhody každý protokol [tady](log-
 ### <a name="how-can-i-configure-a-node-to-support-monitoring-using-tcp-protocol"></a>Konfiguraci uzlu pro podporu monitorování prostřednictvím protokolu TCP
 Pro uzel k podpoře monitorování prostřednictvím protokolu TCP: 
 * Ujistěte se, že uzel platformy Windows serveru (2008 SP1 nebo novější).
-* Spustit [EnableRules.ps1](https://aka.ms/npmpowershellscript) skript prostředí Powershell na uzlu. Zobrazit [pokyny](log-analytics-network-performance-monitor.md#configure-operations-management-suite-agents-for-monitoring) další podrobnosti.
+* Spustit [EnableRules.ps1](https://aka.ms/npmpowershellscript) skript prostředí Powershell na uzlu. Zobrazit [pokyny](log-analytics-network-performance-monitor.md#configure-log-analytics-agents-for-monitoring) další podrobnosti.
 
 
 ### <a name="how-can-i-change-the-tcp-port-being-used-by-npm-for-monitoring"></a>Jak mohu změnit port TCP používán NPM pro monitorování?

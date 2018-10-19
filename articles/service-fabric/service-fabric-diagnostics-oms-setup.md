@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 9/11/2018
 ms.author: srrengar
-ms.openlocfilehash: a73a288852eea713623b65324853761e10fad282
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 68374cd1675f76555ff313b42e35bdf2aed96874
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47220462"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49408077"
 ---
 # <a name="set-up-log-analytics-for-a-cluster"></a>Nastavení Log Analytics pro cluster
 
@@ -80,7 +80,7 @@ Můžete použít a upravit [Tato ukázková šablona](https://github.com/Azure-
 
 * Vytvoří cluster Service Fabric s 5 uzly
 * Vytvoří pracovní prostor Log Analytics a řešení v Service Fabric
-* Nakonfiguruje agenta OMS pro shromažďování a odesílání 2 ukázky čítače výkonu do pracovního prostoru
+* Nakonfiguruje agenta Log Analytics pro shromažďování a odesílání 2 ukázky čítače výkonu do pracovního prostoru
 * Nakonfiguruje WAD collect Service Fabric a odesílá je do tabulky v úložišti Azure (WADServiceFabric * EventTable)
 * Konfiguruje pracovní prostor Log Analytics ke čtení událostí z těchto tabulek
 

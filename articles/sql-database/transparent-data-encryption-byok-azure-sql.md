@@ -12,12 +12,12 @@ ms.author: aliceku
 ms.reviewer: vanto
 manager: craigg
 ms.date: 10/05/2018
-ms.openlocfilehash: aff1d59000a95f2b8f029b9db30ff1facb2f8ba6
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 32d1956741f739234a3fdea7034f2f1e33a4c082
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49114664"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49408221"
 ---
 # <a name="azure-sql-transparent-data-encryption-bring-your-own-key-support"></a>Azure transparentní šifrování dat SQL: Podpora Your Own Key přeneste
 
@@ -67,8 +67,6 @@ Transparentní šifrování dat, je nejprve konfigurován pro použití ochrana 
   > Pokud Azure AD Identity **je omylem odstraněn nebo byly odvolány, serveru oprávnění** pomocí zásady přístupu trezoru klíčů, server ztratí přístup k trezoru klíčů a transparentní šifrování dat šifrované databáze zařazují do 24 hodin.
 
 - Při použití brány firewall a virtuální sítě se službou Azure Key Vault, je nutné nakonfigurovat následující: 
-  - Povolit přístup z "Vybrané sítě" 
-  - Přidat existující virtuální sítě a vyberte síť, SQL Database, pokud je k dispozici (je to pro spravované instance povinných a volitelných pro jednoznačné databáze) 
   - Povolit důvěryhodným službám Microsoftu obejít tuto bránu firewall – zvolili Ano 
          
     > [!NOTE] 

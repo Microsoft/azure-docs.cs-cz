@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2017
 ms.author: bwren;dairwin
-ms.openlocfilehash: 5aca1400ddfe1522cd9dc8d68d8cba8a222e4d21
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 6fc6afa9c0ccbddcfa408556dee92618fe63c8fb
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44095194"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49407108"
 ---
 # <a name="service-map-integration-with-system-center-operations-manager"></a>Řešení Service Map integrace s nástrojem System Center Operations Manager
   > [!NOTE]
@@ -45,6 +45,9 @@ Povolení integrace mezi nástrojem Operations Manager a Service Map importován
 
 ## <a name="configure-the-service-map-integration"></a>Konfigurovat integraci řešení Service Map
 Po instalaci sady management Service Map, nový uzel, **Service Map**, se zobrazí v části **Operations Management Suite** v **správu** podokně. 
+
+>[!NOTE]
+>[Operations Management Suite se kolekce služeb](https://github.com/MicrosoftDocs/azure-docs-pr/pull/azure-monitor/azure-monitor-rebrand.md#retirement-of-operations-management-suite-brand) , které obsahovat Log Analytics, která je nyní součástí sady [Azure Monitor](https://github.com/MicrosoftDocs/azure-docs-pr/pull/azure-monitor/overview.md).
 
 Pokud chcete nakonfigurovat integraci řešení Service Map, postupujte takto:
 
@@ -104,7 +107,12 @@ Složka řešení Service Map má čtyři uzly:
     ![Diagramu distribuované aplikace Operations Manageru](media/monitoring-service-map/scom-dad.png)
 
 ## <a name="edit-or-delete-the-workspace"></a>Upravit nebo odstranit pracovní prostor
-Můžete upravit nebo odstranit nakonfigurovaný pracovní prostor prostřednictvím **Přehled služby mapy** podokně (**správu** podokně > **Operations Management Suite**  >  **Service Map**). Teď můžete nakonfigurovat pouze jeden pracovní prostor Log Analytics.
+Můžete upravit nebo odstranit nakonfigurovaný pracovní prostor prostřednictvím **Přehled služby mapy** podokně (**správu** podokně > **Operations Management Suite**  >  **Service Map**).
+
+>[!NOTE]
+>[Operations Management Suite se kolekce služeb](https://github.com/MicrosoftDocs/azure-docs-pr/pull/azure-monitor/azure-monitor-rebrand.md#retirement-of-operations-management-suite-brand) , které obsahovat Log Analytics, která je nyní součástí sady [Azure Monitor](https://github.com/MicrosoftDocs/azure-docs-pr/pull/azure-monitor/overview.md).
+
+Teď můžete nakonfigurovat pouze jeden pracovní prostor Log Analytics.
 
 ![V podokně pracovní prostor Operations Manageru upravit](media/monitoring-service-map/scom-edit-workspace.png)
 

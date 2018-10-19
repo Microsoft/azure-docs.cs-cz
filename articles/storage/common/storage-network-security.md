@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/25/2017
 ms.author: cbrooks
 ms.component: common
-ms.openlocfilehash: bcb772185f0a16183b8a6c9674419781ef41be3e
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 98972b0c52470e6a404090d993c21a47b11cd660
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49068532"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49427141"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurace virtuálních sítí a bran firewall Azure Storage
 Azure Storage poskytuje vrstvený model zabezpečení umožňuje zabezpečit vaše účty úložiště s konkrétní sadou povolených sítí.  Když jsou nakonfigurovaná pravidla sítě, můžete pouze aplikace z povolených sítí přístup k účtu úložiště.  Při volání z povolené sítě, aplikace dál vyžadují správnou autorizaci (platný přístupový klíč nebo SAS token) pro přístup k účtu úložiště.
@@ -188,7 +188,9 @@ Povolené rozsahy adres sítě internet se dá zadat pomocí [notaci CIDR](https
 > Rozsahy malé adres pomocí "/ 31" nebo "/ 32" předpony velikosti se nepodporují.  Tyto rozsahy musí být nakonfigurovaný pomocí jednotlivých pravidel IP adres.
 >
 
-Pravidla síťových IP jsou povolené jenom pro **veřejného Internetu** IP adresy.  Rozsahy IP adres vyhrazené pro privátní sítě (jak jsou definovány v dokumentu RFC 1918) nejsou povoleny v pravidlech IP.  Privátní sítě zahrnují adresy začínající hodnotami *10.\** , *172.16.\** , a *192.168.\** .
+Pravidla síťových IP jsou povolené jenom pro **veřejného Internetu** IP adresy.  IP adresy rozsahů, které jsou vyhrazené pro privátní sítě (jak je definováno v [RFC 1918](https://tools.ietf.org/html/rfc1918#section-3)) nejsou povoleny v pravidlech IP.  Privátní sítě zahrnují adresy začínající hodnotami *10.\** , *172.16.\**   -  *172.31.\**, a *192.168.\** .
+
+Všimněte si, že pravidla protokolu IP sítě nebude mít žádný efekt u požadavků pocházejících ze stejné oblasti Azure jako účet úložiště.  Pravidla virtuální sítě můžete povolit požadavky stejné oblasti.
 
 V současnosti jsou podporované jenom adresy IPV4.
 

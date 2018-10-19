@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.component: core
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 33126c094a55bc57edd49a54fbc4f5acd7401998
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 1aeb1315cfafbcdf3507a6e49d71e1f1e69b537c
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49079000"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49430183"
 ---
 # <a name="configure-your-automated-machine-learning-experiment"></a>Konfigurovat vaše automatizované experimentu strojového učení
 
@@ -147,7 +147,7 @@ Výpočetní možnosti podporované jsou následující:
 2.  Vzdálený počítač v cloudu – [virtuální počítač Azure datové vědy](https://azure.microsoft.com/services/virtual-machines/data-science-virtual-machines/) s Linuxem – máte velkou datovou sadu a chcete vertikálně navýšit kapacitu na velké počítač, který je k dispozici v cloudu Azure. 
 3.  Cluster Azure Batch AI – A spravovat cluster, který můžete nastavit pro horizontální navýšení kapacity a automatizovaných ML iterací běží paralelně. 
 
-
+<a name='configure-experiment'/>
 ## <a name="configure-your-experiment-settings"></a>Konfigurovat nastavení testu
 
 Existuje několik knoflíky, které můžete použít ke konfiguraci automatické experimentu ML. Tyto parametry jsou nastavené po vytvoření instance `AutoMLConfig` objektu.

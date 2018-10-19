@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 07/03/2018
+ms.date: 10/18/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: a629c598c94e44713f8990871c46272dc48b1359
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 6280544a42d0d5012b01446ec8c3bc386ef861dd
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46296273"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49428415"
 ---
 # <a name="authentication-and-user-permissions"></a>Ověřování a uživatelská oprávnění
 Služba Azure Analysis Services použije Azure Active Directory (Azure AD) pro ověření identity management a uživatele. Každý uživatel vytváření, Správa nebo připojení k Azure Analysis Services server musí mít platné uživatelské identity [tenanta Azure AD](../active-directory/fundamentals/active-directory-administer.md) ve stejném předplatném.
@@ -27,7 +27,7 @@ Všechny klientské aplikace a nástroje použít jeden nebo více služby Analy
 
 Všechny tři klientské knihovny pro podporu interaktivní tok Azure AD a metod jako neinteraktivní ověřování. Dvě metody jako neinteraktivní, Active Directory heslo a metody Integrované ověřování Active Directory můžete použít v aplikacích využívající AMOMD a MSOLAP. Tyto dvě metody nikdy způsobit automaticky otevíraná okna.
 
-Klientské aplikace, jako jsou aplikace Excel a Power BI Desktopu a nástrojů, jako je SSMS a SSDT nainstalujte nejnovější verze knihovny, když se aktualizuje na nejnovější verzi. Power BI Desktopu, aplikace SSMS a SSDT se aktualizuje každý měsíc. Excel je [aktualizován s Office 365](https://support.office.com/en-us/article/When-do-I-get-the-newest-features-in-Office-2016-for-Office-365-da36192c-58b9-4bc9-8d51-bb6eed468516). Aktualizace Office 365 jsou méně časté a v některých organizacích pomocí kanálu deferred channel, odkládat aktualizace význam až na tři měsíce.
+Klientské aplikace, jako jsou aplikace Excel a Power BI Desktopu a nástrojů, jako je SSMS a SSDT nainstalujte nejnovější verze knihovny, když se aktualizuje na nejnovější verzi. Power BI Desktopu, aplikace SSMS a SSDT se aktualizuje každý měsíc. Excel je [aktualizován s Office 365](https://support.office.com/article/When-do-I-get-the-newest-features-in-Office-2016-for-Office-365-da36192c-58b9-4bc9-8d51-bb6eed468516). Aktualizace Office 365 jsou méně časté a v některých organizacích pomocí kanálu deferred channel, odkládat aktualizace význam až na tři měsíce.
 
 Podle klientská aplikace nebo nástroj, který používáte může být jiný typ ověřování a jak se přihlásit. Každá aplikace může podporovat různé funkce pro připojení ke cloudovým službám, jako jsou služby Azure Analysis Services.
 

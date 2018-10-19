@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 04/05/2018
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: 98bd088d4995bd1444b059531dc5b19d0283f551
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0c045d82e47d2554c2767e6f52491c780618abc2
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46965523"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49409522"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>Batch metriky, výstrahy a protokoly pro diagnostické hodnocení a monitorování
 
@@ -39,7 +39,7 @@ Metriky jsou:
 * Vygeneruje každou 1 minutu
 * Není trvalý automaticky, ale historie se zajištěním provozu na 30 dnů. Je možné zachovat metriky aktivity v rámci [protokolování diagnostiky](#work-with-diagnostic-logs).
 
-### <a name="view-metrics"></a>Zobrazení metrik
+### <a name="view-metrics"></a>Zobrazit metriky
 
 Zobrazit metriky pro účet Batch na webu Azure Portal. **Přehled** stránky pro účet ve výchozím nastavení zobrazuje uzel klíče, core a úlohy metriky. 
 
@@ -85,7 +85,7 @@ Ostatní volitelné cíle pro diagnostické protokoly:
 
 * Stream Batch diagnostický protokol událostí do [Azure Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md). Event Hubs můžete ingestovat miliony událostí za sekundu, které pak můžete transformovat a uložit pomocí libovolného zprostředkovatele datové analýzy v reálném čase. 
 
-* Poslat protokoly pro diagnostiku [Azure Log Analytics](../log-analytics/log-analytics-overview.md), kde můžete analyzovat na portálu Operations Management Suite (OMS), nebo je exportovat pro analýzu v Power BI nebo Excelu.
+* Poslat protokoly pro diagnostiku [Azure Log Analytics](../log-analytics/log-analytics-overview.md), kde můžete analyzovat nebo exportovat pro analýzy v Power BI nebo Excelu.
 
 > [!NOTE]
 > Vám může účtovat další poplatky za uložení nebo zpracování protokol diagnostiky dat pomocí služby Azure. 

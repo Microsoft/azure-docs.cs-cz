@@ -9,12 +9,12 @@ ms.author: raymondl
 author: raymondlaghaeian
 ms.reviewer: sgilley
 ms.date: 09/24/2018
-ms.openlocfilehash: e796feaf8ef25eaa91b7db810a11a67da13e9df1
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 8a736516a598eee051b416834d2b737211e66b96
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48237173"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49429453"
 ---
 # <a name="deploy-web-services-to-azure-container-instances"></a>Nasazení webové služby Azure Container Instances 
 
@@ -82,10 +82,10 @@ aciconfig = AciWebservice.deploy_configuration(cpu_cores = 1,
 
 > Tuto požadovanou součást vynechat, pokud jste [nasazení ze souboru modelu](#deploy-from-model-file) (`Webservice.deploy()`).
 
-Zaregistrujte model použití [ `Webservice.deploy_from_model` ](#deploy-from-registered-model) nebo [ `Webservice.deploy_from_image` ](#deploy-from-image). Nebo pokud už máte registrovanému modelu, načtěte ji.
+Zaregistrujte model použití [Webservice.deploy_from_model](#deploy-from-registered-model) nebo [Webservice.deploy_from_image](#deploy-from-image). Nebo pokud už máte registrovanému modelu, načtěte ji.
 
 ### <a name="retrieve-a-registered-model"></a>Načíst registrovanému modelu
-Pokud použijete k natrénování modelu Azure Machine Learning, modelu již může být zaregistrován ve vašem pracovním prostoru.  Například na poslední krok [trénování modelu](tutorial-train-models-with-aml.md) kurzu] zaregistrovaný modelu.  Potom získá registrované modelu pro nasazení.
+Pokud použijete k natrénování modelu Azure Machine Learning, modelu již může být zaregistrován ve vašem pracovním prostoru.  Například na poslední krok [trénování modelu kurzu](tutorial-train-models-with-aml.md) zaregistrovaný modelu.  Potom získá registrované modelu pro nasazení.
 
 ```python
 from azureml.core.model import Model
@@ -109,7 +109,7 @@ model = Model.register(model_path = "sklearn_mnist_model.pkl",
                         workspace = ws)
 ```
 
-
+<a name='deploy-from-model-file'/>
 ## <a name="option-1-deploy-from-model-file"></a>Možnost 1: Nasazení ze souboru modelu
 
 Možnost nasazení ze souboru modelu vyžaduje minimální množství kódu zapisovat, ale také nabízí nejnižší možné kontrolu nad pojmenování komponenty. Tato možnost začíná soubor modelu a zaregistruje ho do pracovního prostoru.  Nelze však název modelu nebo přidružit značky a popis pro něj.  
@@ -148,6 +148,7 @@ Tato volba používá metody SDK Webservice.deploy().
 
 1. Teď můžete [testovat webovou službu](#test-web-service).
 
+<a name='deploy-from-registered-model'/>
 ## <a name="option-2-deploy-from-registered-model"></a>Možnost 2: Nasazení z registrovaného modelu
 
 Možnost k nasazení souboru registrovanému modelu má několik více řádků kódu a umožňuje některé kontrolu nad názvy výstupů. Tato možnost je pohodlný způsob, jak nasadit registrovanému modelu, které už máte.  Nelze však název image Dockeru.  
@@ -173,6 +174,7 @@ Tato volba používá metody SDK Webservice.deploy_from_model().
 
 1. Teď můžete [testovat webovou službu](#test-web-service).
 
+<a name='deploy-from-image'/>
 ## <a name="option-3-deploy-from-image"></a>Možnost 3: Nasazení z image
 
 Nasazení registrovanému modelu (`model`) pomocí `Webservice.deploy_from_image()`. Tato metoda umožňuje vytvoření image Dockeru samostatně a pak nasadit z této image.
@@ -215,6 +217,7 @@ Tato metoda poskytuje většinu kontrolu nad vytváření a pojmenování souč�
 
 Teď můžete otestovat webovou službu.
 
+<a name='test-web-service'/>
 ## <a name="test-the-web-service"></a>Test webové služby
 
 Webová služba je stejný bez ohledu na to, která byla použita metoda.  Chcete-li získat predikcí, použijte `run` metody služby.  

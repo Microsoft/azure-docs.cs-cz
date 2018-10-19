@@ -4,20 +4,20 @@ description: Zjistěte, jak řešit problémy s Update managementem
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 08/08/2018
+ms.date: 10/17/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 2e47320d5ad88edfa8ea6122f3a0abd104230974
-ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
+ms.openlocfilehash: 41883fd677d276f8f26721fdccc3ded020c3278b
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42058036"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49405221"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Řešení potíží s Update managementem
 
-Tento článek popisuje řešení Chcete-li vyřešit problémy, které může dojít při používání správy aktualizací.
+Tento článek popisuje řešení Chcete-li vyřešit problémy, které můžete spouštět napříč při použití správy aktualizací.
 
 ## <a name="general"></a>Obecné
 
@@ -36,7 +36,7 @@ The components for the 'Update Management' solution have been enabled, and now t
 Tato chyba může být způsobeno z následujících důvodů:
 
 1. Blokuje komunikaci zpět do účtu Automation.
-2. Virtuální počítač se může mít připojili pochází z klonovaného počítače, které nebyly Sysprep s nainstalovaným agentem monitorování společnosti Microsoft.
+2. Virtuální počítač právě připojili může pocházet z klonovaného počítače, který nebyl Sysprep s nainstalovaným agentem sledování Microsoft.
 
 #### <a name="resolution"></a>Řešení
 
@@ -111,6 +111,28 @@ Funkce Hybrid Runbook Worker nebyl schopen generovat certifikát podepsaný svý
 
 Ověřte systémový účet má oprávnění ke čtení do složky **C:\ProgramData\Microsoft\Crypto\RSA** a zkuste to znovu.
 
+### <a name="hresult"></a>Scénář: Počítač zobrazuje jako nevyhodnoceno a ukazuje výjimku HResult
+
+#### <a name="issue"></a>Problém
+
+Máte počítače, které se zobrazují jako **nevyhodnoceno** pod **dodržování předpisů**, a zobrazí zprávu o výjimce pod ní.
+
+#### <a name="cause"></a>Příčina
+
+Aktualizace Windows není správně nakonfigurovaný na počítači.
+
+#### <a name="resolution"></a>Řešení
+
+Poklikáním na výjimku zobrazí červeně naleznete ve zprávě celý. Projděte si následující tabulku pro potenciální řešení nebo akcí:
+
+|Výjimka  |Řešení nebo akce  |
+|---------|---------|
+|`Exception from HRESULT: 0x……C`     | Vyhledávání kódu relevantní chyby v [Windows aktualizujte seznam chyb kódu](https://support.microsoft.com/help/938205/windows-update-error-code-list) zobrazíte další podrobnosti příčina výjimky.        |
+|`0x8024402C` nebo `0x8024401C`     | Tyto chyby jsou problémy se síťovým připojením. Ujistěte se, že váš počítač má správné síťové připojení ke správě aktualizací. Naleznete v části [plánování sítě](../automation-update-management.md#ports) seznam portů a adres, které jsou požadovány.        |
+|`0x8024402C`     | Pokud používáte WSUS server, ujistěte se, že hodnoty registru `WUServer` a `WUStatusServer` v klíči registru `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate` mít správný server služby WSUS.        |
+|`The service cannot be started, either because it is disabled or because it has no enabled devices associated with it. (Exception from HRESULT: 0x80070422)`     | Ujistěte se, že službu Windows Update (wuauserv) je spuštěná a není zakázáno.        |
+|Další obecné výjimky     | Hledáním na Internetu možná řešení a pracovat s místním podpory IT.         |
+
 ## <a name="linux"></a>Linux
 
 ### <a name="scenario-update-run-fails-to-start"></a>Scénář: Hromadná postupná aktualizace se nepodaří spustit
@@ -159,7 +181,7 @@ Pokud nemůžete vyřešit problém s opravami, vytvořte kopii v následující
 
 ## <a name="next-steps"></a>Další postup
 
-Pokud nenalezli váš problém nebo nepovedlo se vyřešit vaše potíže, navštíví některý z následujících kanálů pro další podporu:
+Pokud nezobrazila váš problém nebo nelze vyřešit vaše potíže, navštíví některý z následujících kanálů pro další podporu:
 
 * Získejte odpovědi od odborníků na Azure prostřednictvím [fór Azure](https://azure.microsoft.com/support/forums/).
 * Spojte se s [@AzureSupport](https://twitter.com/azuresupport). Tento oficiální účet Microsoft Azure pomáhá vylepšovat uživatelské prostředí tím, že propojuje komunitu Azure s vhodnými zdroji: odpověďmi, podporou a odborníky.

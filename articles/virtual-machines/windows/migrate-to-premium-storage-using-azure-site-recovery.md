@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 08/15/2017
 ms.author: luywang
 ms.component: disks
-ms.openlocfilehash: 5d3c2f09a6e4c45aa477cd85911147eab6de7a2c
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 7378331e5f7540d807c76511226fcd2ed99883fa
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39714702"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49404133"
 ---
 # <a name="migrate-to-premium-storage-by-using-azure-site-recovery"></a>Migrace na Premium Storage pomocí Azure Site Recovery
 
@@ -77,8 +77,10 @@ Site Recovery můžete použít k migraci virtuálních počítačů Azure IaaS 
 ### <a name="step-1-create-a-recovery-services-vault"></a>Krok 1: Vytvoření trezoru služby Recovery Services
 
 1. Otevřete web [Azure Portal](https://portal.azure.com).
-2. Vyberte **vytvořit prostředek** > **správu** > **Backup a Site Recovery (OMS)**. Alternativně můžete vybrat **Procházet** > **trezor služby Recovery Services** > **přidat**. 
-3. Zadejte oblast, která bude replikován virtuálních počítačů. Pro účely migrace ve stejné oblasti vyberte oblast, kde je zdrojových virtuálních počítačů a účtů úložiště zdroje. 
+2. Vyberte **vytvořit prostředek** > **správu** > **Backup a Site Recovery (OMS)**. Alternativně můžete vybrat **Procházet** > **trezor služby Recovery Services** > **přidat**.
+   >[!NOTE]
+   >Backup a Site Recovery byl dříve součástí ![sadu OMS](https://github.com/MicrosoftDocs/azure-docs-pr/pull/azure-monitor/azure-monitor-rebrand.md#retirement-of-operations-management-suite-brand).
+1. Zadejte oblast, která bude replikován virtuálních počítačů. Pro účely migrace ve stejné oblasti vyberte oblast, kde je zdrojových virtuálních počítačů a účtů úložiště zdroje. 
 
 ### <a name="step-2-choose-your-protection-goals"></a>Krok 2: Volba cílů ochrany 
 

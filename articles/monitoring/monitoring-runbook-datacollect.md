@@ -1,6 +1,6 @@
 ---
 title: Shromažďování dat Log Analytics pomocí sady runbook ve službě Azure Automation | Dokumentace Microsoftu
-description: Podrobný kurz, který provede procesem vytvoření sady runbook ve službě Azure Automation ke shromažďování dat do úložiště OMS pro analýzu pomocí Log Analytics.
+description: Podrobný kurz, který provede procesem vytvoření sady runbook ve službě Azure Automation ke shromažďování dat do úložiště pro analýzu pomocí Log Analytics.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/27/2017
 ms.author: bwren
-ms.openlocfilehash: d3e8e876a6c01123d65c1e8df13328bdd5fad71f
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: f1a106a4f99c09134b8784e98ca547db51ce0eae
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37346922"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49409505"
 ---
 # <a name="collect-data-in-log-analytics-with-an-azure-automation-runbook"></a>Shromažďování dat v Log Analytics runbooku Azure Automation
 Významné množství dat v Log Analytics může shromažďovat z nejrůznějších zdrojů, včetně [zdroje dat](../log-analytics/log-analytics-data-sources.md) na agentech a také [shromažďovat data z Azure](../log-analytics/log-analytics-azure-storage.md).  Potřebujete-li shromažďovat data, která není přístupná prostřednictvím těchto zdrojů na standardní existují scénáře.  V těchto případech můžete použít [rozhraní API kolekce dat HTTP](../log-analytics/log-analytics-data-collector-api.md) zapsat data do Log Analytics z jakéhokoli klienta REST API.  Běžnou metodou k provedení této kolekce dat používá sady runbook ve službě Azure Automation.   
@@ -56,7 +56,7 @@ Galerie prostředí PowerShell ale nabízí rychlou možnost jak nasadit modul p
 
 
 ## <a name="2-create-automation-variables"></a>2. Vytvoření proměnné služeb automatizace
-[Proměnné služeb automatizace](..\automation\automation-variables.md) uložení hodnoty, které mohou využívat všechny sady runbook ve vašem účtu Automation.  Využívají sady runbook flexibilnější, neboť umožňuje tyto hodnoty změnit bez úprav skutečné sady runbook. Každý požadavek z rozhraní API kolekce dat HTTP vyžaduje ID a klíč pracovního prostoru OMS a proměnných assetů jsou ideální k ukládání příslušných informací.  
+[Proměnné služeb automatizace](..\automation\automation-variables.md) uložení hodnoty, které mohou využívat všechny sady runbook ve vašem účtu Automation.  Využívají sady runbook flexibilnější, neboť umožňuje tyto hodnoty změnit bez úprav skutečné sady runbook. Každý požadavek z rozhraní API kolekce dat HTTP vyžaduje ID a klíč pracovního prostoru Log Analytics a proměnných assetů jsou ideální k ukládání příslušných informací.  
 
 ![Proměnné](media/monitoring-runbook-datacollect/variables.png)
 

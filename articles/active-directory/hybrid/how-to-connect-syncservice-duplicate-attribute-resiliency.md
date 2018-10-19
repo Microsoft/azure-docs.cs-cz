@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: f8fe86712b59a896d1f431ef677f592ced382db8
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: e20ae31ae64483d4d11b793f1c8656107413c05d
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46312071"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49406190"
 ---
 # <a name="identity-synchronization-and-duplicate-attribute-resiliency"></a>Synchronizace identit a odolnost duplicitních atributů
 Odolnost duplicitních atributů je funkce v Azure Active Directory, ke které dojde k odstranění řešit zádrhele spojené s způsobené **UserPrincipalName** a **ProxyAddress** je v konfliktu při spuštění jedné od Microsoftu Nástroje pro synchronizaci.
@@ -122,7 +122,7 @@ Chyby synchronizace adresáře můžete zobrazit v Centru pro správu Office 365
 
 ![Aktivní uživatelé](./media/how-to-connect-syncservice-duplicate-attribute-resiliency/1234.png "aktivních uživatelů")
 
-Pokyny o tom, jak zobrazit chyby synchronizace adresáře v Centru pro správu Office 365 najdete v tématu [identifikaci chyb synchronizace adresáře v Office 365](https://support.office.com/en-us/article/Identify-directory-synchronization-errors-in-Office-365-b4fc07a5-97ea-4ca6-9692-108acab74067).
+Pokyny o tom, jak zobrazit chyby synchronizace adresáře v Centru pro správu Office 365 najdete v tématu [identifikaci chyb synchronizace adresáře v Office 365](https://support.office.com/article/Identify-directory-synchronization-errors-in-Office-365-b4fc07a5-97ea-4ca6-9692-108acab74067).
 
 ### <a name="identity-synchronization-error-report"></a>Sestava chyb synchronizace identit
 Když se zpracovává objekt s konfliktem duplicitní atribut kontaktovat toto nové chování oznámení je součástí standardní e-mailovou zprávu o chybách synchronizace identit, odeslaný technická oznámení tenanta. Je však důležité změny v rámci tohoto chování. V minulosti informace o duplicitní atribut konfliktu by být součástí každé následné chybách dokud konflikt se vyřešil. S toto nové chování oznamování chyb pro danou konflikt být použito pouze jednou – v době, kdy je v karanténě konfliktním atributem.
@@ -173,5 +173,5 @@ Mělo by odkazovat [ https://aka.ms/duplicateattributeresiliency ](https://aka.m
 ## <a name="see-also"></a>Další informace najdete v tématech
 * [Synchronizace služby Azure AD Connect](how-to-connect-sync-whatis.md)
 * [Integrování místních identit do služby Azure Active Directory](whatis-hybrid-identity.md)
-* [Identifikace chyb synchronizace adresáře v Office 365](https://support.office.com/en-us/article/Identify-directory-synchronization-errors-in-Office-365-b4fc07a5-97ea-4ca6-9692-108acab74067)
+* [Identifikace chyb synchronizace adresáře v Office 365](https://support.office.com/article/Identify-directory-synchronization-errors-in-Office-365-b4fc07a5-97ea-4ca6-9692-108acab74067)
 

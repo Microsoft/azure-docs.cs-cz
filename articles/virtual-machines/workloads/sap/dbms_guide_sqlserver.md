@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 09/26/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3cefecdf0f87483a1fb544d1eb4e3e514e388259
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 90b4bc17de60baa59d6c159105674468a63d10f9
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47406910"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49430166"
 ---
 # <a name="sql-server-azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>Nasazení SQL serveru Azure Virtual Machines DBMS pro SAP NetWeaver
 
@@ -418,7 +418,7 @@ Druhý způsob je blíže popsáno v článku [zálohování SQL serveru na adre
 
 
 ### <a name="automated-backup-for-sql-server"></a>Automatizovaná záloha pro SQL Server
-Automatizované zálohování poskytuje automatické zálohování služby pro edice SQL Server Standard a Enterprise spuštěná ve virtuálním počítači Windows Azure. Tato služba je poskytovaná [rozšíření agenta SQL Server IaaS](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension), které se automaticky instaluje do Image virtuálních počítačů Windows serveru SQL na webu Azure Portal. Pokud nasadíte Image operačního systému s nainstalovaným SQL serverem, budete muset nainstalovat rozšíření virtuálního počítače zvlášť. Nezbytné kroky popsané v tomto [článku](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension).
+Automatizované zálohování poskytuje automatické zálohování služby pro edice SQL Server Standard a Enterprise spuštěná ve virtuálním počítači s Windows v Azure. Tato služba je poskytovaná [rozšíření agenta SQL Server IaaS](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension), které se automaticky instaluje do Image virtuálních počítačů Windows serveru SQL na webu Azure Portal. Pokud nasadíte Image operačního systému s nainstalovaným SQL serverem, budete muset nainstalovat rozšíření virtuálního počítače zvlášť. Nezbytné kroky popsané v tomto [článku](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension).
 
 Další podrobnosti o možnostech této metody můžete najít v těchto článcích:
 

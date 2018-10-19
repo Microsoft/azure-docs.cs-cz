@@ -1,6 +1,6 @@
 ---
 title: Plány údržby Azure (preview) | Dokumentace Microsoftu
-description: Plánování údržby umožňuje zákazníkům naplánovat nezbytné plánované údržby události služby Azure SQL Data warehouse používá k zavedení nových funkcí, upgrady a opravy.
+description: Plánování údržby umožňuje zákazníkům naplánovat události nezbytné plánované údržby, které služba Azure SQL Data Warehouse používá k zavedení nových funkcí, upgrady a opravy.
 services: sql-data-warehouse
 author: antvgski
 manager: craigg
@@ -10,48 +10,50 @@ ms.component: design
 ms.date: 10/07/2018
 ms.author: anvang
 ms.reviewer: igorstan
-ms.openlocfilehash: a6eedc0bac7aab69a9138f4f63d0d9d802e74dfc
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 428b9970471c9365812639e251810c571698a574
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47228304"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49425951"
 ---
 # <a name="change-a-maintenance-schedule"></a>Změnit plán údržby 
 
 ## <a name="portal"></a>Portál
-Plán údržby můžete aktualizovat nebo kdykoli změnit. Ale pokud vybraná instance je aktuálně probíhá cyklus údržby aktivní nastavení bude uložen a pouze aktivuje během dalšího období údržby identifikovaný. [Další informace](https://docs.microsoft.com/azure/service-health/resource-health-overview) o monitorování služby data warehouse během události údržby aktivní. 
+Plán údržby můžete aktualizovat nebo kdykoli změnit. Pokud je vybraná instance prostřednictvím active údržby cyklu, nastavení se uloží. Po budete své aktivaci během dalšího období údržby identifikovaní. [Další informace](https://docs.microsoft.com/azure/service-health/resource-health-overview) o monitorování služby data warehouse během události údržby aktivní. 
 
-Ve verzi preview jsme se se žádostí o vyberte dva časová období údržby v období 7 dní. Každé časové období údržby může být v rozmezí 3 až 8 hodin, 3 hodin aktuálně prováděné nejkratší k dispozici možnost. Údržba může probíhat kdykoli v rámci zjištěné údržbu, ale nedojde ven z nich označen předchozí oznámení časových oken, můžete se také prostředí být stručný ke ztrátě připojení, jak služba nasadí nový kód k vašim datům sklad. 
+Plány údržby Azure jsou ve verzi preview, vyberte dva časová období údržby v období 7 dnů. Každé časové období údržby, může být tři až osm hodin. Údržba může probíhat kdykoli během časového období údržby, ale nedojde mimo časová okna bez předchozího upozornění. Budete také zaznamenáte stručný ke ztrátě připojení jako službu na váš datový sklad nasadí nový kód. 
 
 ## <a name="identifying-the-primary-and-secondary-windows"></a>Určení primárního a sekundárního systému windows
 
-Primární a sekundární windows musí být určen v rámci samostatné rozsahů (to znamená, že primární okno (úterý – Thursday), sekundární okno (sobota – neděle)
+Primární a sekundární windows musí mít samostatné rozsahů. Příkladem je okno úterý – čtvrtek na primární a sekundární okna sobota – neděle.
 
-Proveďte následující kroky, chcete-li změnit plán údržby, která byla použita k vašemu datovému skladu portálu.
+Chcete-li změnit plán údržby pro datový sklad, proveďte následující kroky:
 1.  Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
-2.  Vyberte datový sklad, který chcete aktualizovat. Na stránce se otevře v okně přehledu. 
-3.  Na stránce nastavení plánu údržby je možný buď kliknutím na údržbu plán (preview) souhrn odkaz v okně Přehled, nebo prostřednictvím možnost plánu údržby v levé nabídce prostředků.  
+2.  Vyberte datový sklad, který chcete aktualizovat. Stránka se otevře v okně přehledu. 
+3.  Otevřete stránku pro nastavení plánu údržby tak, že vyberete **plán údržby (preview) Souhrn** odkaz na kartě s přehledem. Nebo vyberte **plán údržby** možnost v nabídce na levé straně prostředku.  
 
     ![Přehled okno Možnosti](media/sql-data-warehouse-maintenance-scheduling/maintenance-change-option.png)
 
-4. Rozmezí dnů upřednostňované můžete identifikovat pro vaše primární údržbu pomocí přepínačů v horní části stránky. Tento výběr určuje, pokud primární okno dojde na jeden den v týdnu nebo přes víkend pokazil. Váš výběr aktualizuje níže uvedené hodnoty rozevíracího seznamu. Během období preview nemusí podporovat některé oblasti ještě úplnou sadu dostupných možností den. Tyto hodnoty se aktualizace v nadcházejících měsících.
+4. Určete rozsah Upřednostňovaný den pro okno údržby primární pomocí možností v horní části stránky. Tento výběr určuje, pokud primární okno dojde na jeden den v týdnu nebo přes víkend pokazil. Váš výběr se aktualizujte hodnoty rozevíracího seznamu. Ve verzi preview, nemusí některé oblasti zatím nepodporují úplnou sadu dostupných **den** možnosti.
 
    ![Okno nastavení údržby](media/sql-data-warehouse-maintenance-scheduling/maintenance-settings-page.png)
 
-5. Vyberte upřednostňovaný primární a sekundární údržby windows pomocí den, počáteční čas a umístění okna čas níže. Plán shrnutí v dolní části okna se aktualizace na základě rozevírací seznam hodnot vybrané.
+5. Vyberte váš upřednostňovaný primární a sekundární správu a údržbu pomocí rozevírací seznamy:
+   - **Den**: upřednostňované den provádění údržby během vybraného časového období.
+   - **Počáteční čas**: upřednostňované počáteční čas pro časové období údržby.
+   - **Časový interval**: upřednostňované dobu trvání časového intervalu.
 
-#### <a name="dropdown-options"></a>Rozevírací seznam možností
-- Den: Upřednostňovaný den provádění údržby během vybraného časového období.
-- Čas zahájení: upřednostňované počáteční časového období údržby.
-- Časový interval: upřednostňované dobu trvání časového intervalu.
+   **Souhrn plánu** oblast v dolní části okna je aktualizována na základě hodnot, které jste vybrali. 
+  
+6. Vyberte **Uložit**. Zobrazí se zpráva s potvrzením, že nový plán je nyní aktivní. 
 
-  Po výběru Upřednostňované časové intervaly, klikněte na Uložit. Potvrzovací zpráva se zobrazí potvrzení, že se že nový plán není aktivní. Pokud ukládáte plánu v oblasti, která zatím nepodporuje plánování údržby, se zobrazí následující zpráva. Nastavení se uloží a aktivuje, jakmile tato funkce je k dispozici ve vybrané oblasti.    
+   Pokud ukládáte plánu v oblasti, která nepodporuje plánování údržby, zobrazí se následující zpráva. Nastavení se uloží a aktivuje, jakmile tato funkce je k dispozici ve vybrané oblasti.    
 
-    ![Neaktivní v oblasti informačních zpráv](media/sql-data-warehouse-maintenance-scheduling/maintenance-notactive-toast.png)
+   ![Zpráva o dostupnosti oblast](media/sql-data-warehouse-maintenance-scheduling/maintenance-notactive-toast.png)
 
 ## <a name="next-steps"></a>Další postup
-- [Další informace](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-log-webhook) akce Webhooku pro pravidla upozornění protokolů.
-- [Další informace](https://docs.microsoft.com/azure/service-health/service-health-overview) o Azure Service Health
+- [Další informace](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-log-webhook) akce webhooku pro pravidla upozornění protokolů.
+- [Další informace](https://docs.microsoft.com/azure/service-health/service-health-overview) o Azure Service Health.
 
 

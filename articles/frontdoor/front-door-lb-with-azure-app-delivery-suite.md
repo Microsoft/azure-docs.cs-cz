@@ -11,14 +11,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 253ec8c0d1d6725e6ae5c47c79882284c633d6e9
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 05f77665352ee306f5684d5c7a09b27d4fe17650
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46984462"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49426802"
 ---
-# <a name="load-balancing-with-azures-application-delivery-suite"></a>Vyrovnávání zatížení se sadou Azure application delivery
+# <a name="load-balancing-with-azures-application-delivery-suite"></a>Vyrovnávání zatížení s využitím sady pro doručování aplikací Azure
 
 ## <a name="introduction"></a>Úvod
 Microsoft Azure poskytuje několik globální a místní služby pro správu, jak se distribuuje síťový provoz s vyrovnáváním zatížení: Traffic Manageru, branou služby, služba Application Gateway a nástroj pro vyrovnávání zatížení.  Spolu s mnoha oblastí Azure a zónové architektury, pomocí těchto služeb společně umožňují vytvářet robustní a škálovatelné vysoce výkonné aplikace.
@@ -36,7 +36,7 @@ Kombinování globální a místní služby ve vaší aplikaci poskytuje začát
 - Směrování k odeslání žadatel nejbližší back-endu z hlediska latence výkonu.
 - Priorita směrování směrovat veškerý provoz do back-end, s jiných back-EndY jako back up.
 - Vážené kruhové dotazování směrování, která distribuuje provoz podle váhy, který je přiřazen k každý back-endu.
-- Geografické směrování k zajištění, že žadatele umístěné v konkrétní zeměpisné oblasti jsou směrované na back-EndY namapované na tyto oblasti (například všechny žádosti od Španělsko směrovat do oblasti Azure USA – východ)
+- Geografické směrování k zajištění, že žadatele umístěné v konkrétní zeměpisné oblasti jsou směrované na back-EndY namapované na tyto oblasti (například všechny žádosti od Španělsko směrovat do oblasti střed Azure (Francie))
 - Podsíť směrování, která umožňuje mapování IP adresa rozsahu do back-EndY tak, aby se pošlou požadavky přicházející z těch zadané back-endu (například všichni uživatelé připojení z vaší podnikové Sídel rozsah IP adres by měl získat jiný webový obsah než obecné Uživatelé)
 
 Klient se připojí přímo do tohoto back-endu. Azure Traffic Manager zjistí, že back-end není v pořádku a pak přesměruje klienty k jiné instanci v pořádku. Odkazovat na [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) dokumentaci se dozvíte informace o službě.
@@ -83,8 +83,8 @@ Následující diagram znázorňuje architekturu tento scénář:
 
 ## <a name="next-steps"></a>Další kroky
 
-- Zjistěte, jak [vytvořit přední dveře](quickstart-create-front-door.md).
-- Přečtěte si [fungování branou](front-door-routing-architecture.md).
+- Přečtěte si, jak [vytvořit službu Front Door](quickstart-create-front-door.md).
+- Přečtěte si, [jak služba Front Door funguje](front-door-routing-architecture.md).
 
 <!--Image references-->
 [1]: ./media/front-door-lb-with-azure-app-delivery-suite/application-delivery-figure1.png

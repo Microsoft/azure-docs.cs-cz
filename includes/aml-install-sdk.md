@@ -10,11 +10,11 @@ ms.custom: include file
 ms.topic: include
 ms.date: 07/27/2018
 ms.openlocfilehash: 12f0f17a7c25696d2c8ff5b427f4b103617e5678
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47010717"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49430809"
 ---
 V okně příkazového řádku nebo prostředí vytvořte a aktivujte prostředí správce balíčků conda s rozšířeními numpy a cython. V tomto příkladu se používá Python 3.6.
 

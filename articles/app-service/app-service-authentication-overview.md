@@ -14,18 +14,18 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 08/24/2018
 ms.author: mahender,cephalin
-ms.openlocfilehash: 46f8602583329a0516edb9af59e53754ca349555
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 6aa7f8c3b9d21d9c55aee3ce49f2bc140769a855
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43336800"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49408060"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service"></a>Ověřování a autorizace v prostředí Azure App Service
 
 Azure App Service poskytuje integrované ověřování a autorizace podpory, abyste se mohli přihlásit uživatele a přístup k datům zápis minimální nebo žádný kód ve vaší webové aplikace, rozhraní API a mobilní back-end a také [Azure Functions](../azure-functions/functions-overview.md). Tento článek popisuje, jak služby App Service pomáhá zjednodušit ověřování a autorizaci pro vaši aplikaci. 
 
-Zabezpečené ověřování a autorizace vyžaduje hlubší pochopení problematiky zabezpečení, včetně federace, šifrování, [webové tokeny JSON (JWT)](https://wikipedia.org/wiki/JSON_Web_Token) správy, [typy udělení](https://oauth.net/2/grant-types/), a tak dále. Služba App Service poskytuje tyto nástroje tak, aby vám zbylo více času i energie na získává obchodní hodnotu zákazníkům.
+Zabezpečené ověřování a autorizace vyžadují hlubší pochopení problematiky zabezpečení, včetně federace, šifrování, [webové tokeny JSON (JWT)](https://wikipedia.org/wiki/JSON_Web_Token) správy, [typy udělení](https://oauth.net/2/grant-types/), a tak dále. Služba App Service poskytuje tyto nástroje tak, aby vám zbylo více času i energie na získává obchodní hodnotu zákazníkům.
 
 > [!NOTE]
 > Nejste musí používat pro ověřování a autorizaci služby App Service. Mnoho architektur webových jsou spojeny s funkcemi zabezpečení, můžete si je Pokud chcete, můžete. Pokud potřebujete větší flexibility než poskytuje služby App Service, můžete zapsat také vlastních nástrojů.  
@@ -63,9 +63,9 @@ Služba App Service poskytuje předdefinované úložiště tokenů, což je úl
 - příspěvek na časové ose Facebooku ověřeného uživatele
 - Přečtěte si firemní data uživatele z Azure Active Directory Graph API nebo dokonce Microsoft Graphu
 
-Tokeny typu id, přístupové tokeny a obnovovací tokeny v mezipaměti pro ověřená relace a jsou přístupná jenom pro příslušné uživatele.  
-
 Obvykle nutné napsat kód k shromažďování, ukládání a aktualizaci těchto tokenů ve vaší aplikaci. Pomocí tokenu úložiště jste právě [načíst tokeny](app-service-authentication-how-to.md#retrieve-tokens-in-app-code) když je potřebujete a [informace služby App Service je aktualizovat](app-service-authentication-how-to.md#refresh-access-tokens) při stanou neplatnými. 
+
+Tokeny typu id, přístupové tokeny a obnovovací tokeny v mezipaměti pro ověřená relace a jsou přístupná jenom pro příslušné uživatele.  
 
 Pokud už nebudete potřebovat pro práci s tokeny ve vaší aplikaci, můžete zakázat úložiště tokenů.
 
@@ -80,7 +80,7 @@ Služba App Service používá [Federovaná identita](https://en.wikipedia.org/w
 | Poskytovatel | Koncový bod přihlašování |
 | - | - |
 | [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) | `/.auth/login/aad` |
-| [Účet Microsoft](../active-directory/develop/active-directory-appmodel-v2-overview.md) | `/.auth/login/microsoftaccount` |
+| [Účet Microsoft](../active-directory/develop/v2-overview.md) | `/.auth/login/microsoftaccount` |
 | [Facebook](https://developers.facebook.com/docs/facebook-login) | `/.auth/login/facebook` |
 | [Google](https://developers.google.com/+/web/api/rest/oauth) | `/.auth/login/google` |
 | [Twitter](https://developer.twitter.com/en/docs/basics/authentication) | `/.auth/login/twitter` |
@@ -89,7 +89,7 @@ Když povolíte ověřování a autorizace s jedním z těchto zprostředkovatel
 
 ## <a name="authentication-flow"></a>Tok ověřování
 
-Tok ověřování je stejný pro všechny poskytovatele, ale se liší v závislosti na tom, zda se má přihlásit se prostřednictvím poskytovatele sady SDK:
+Tok ověřování je stejný pro všechny poskytovatele, ale se liší v závislosti na tom, jestli chcete se přihlásit pomocí poskytovatele sady SDK:
 
 - Bez poskytovatele sady SDK: aplikace deleguje federovaného přihlašování ve službě App Service. Obvykle se jedná o tomu u prohlížečových aplikací, které můžete předložit uživateli poskytovatele přihlašovací stránku. Do kódu serveru spravuje proces přihlašování, takže se také nazývá _směrované na server tok_ nebo _server tok_. Tento případ platí pro webové aplikace. Platí také pro nativní aplikace, které uživatele v pomocí Mobile Apps klientské sady SDK, protože sada SDK se otevře webové zobrazení pro uživatele přihlašují pomocí ověřování služby App Service. 
 - U poskytovatele sady SDK: aplikace přihlásí uživatel ručně a poté ho předá ověřovací token do služby App Service pro ověření. Obvykle se jedná o případ s aplikacemi bez prohlížeče, které nelze prezentovat poskytovatele přihlašovací stránku pro uživatele. Kód aplikace spravuje proces přihlašování, takže se také nazývá _přesměruje klienta tok_ nebo _tok klienta_. Tento případ platí pro rozhraní REST API [Azure Functions](../azure-functions/functions-overview.md)a prohlížeči klientů JavaScript, jakož i webové aplikace, které vyžadují větší flexibilitu v procesu přihlášení. Platí také pro nativní mobilní aplikace, které uživatele pomocí poskytovatele sady SDK.
@@ -121,7 +121,7 @@ Možnosti jsou popsány následující záhlaví.
 
 ### <a name="allow-all-requests-default"></a>Povolit všechny požadavky (výchozí)
 
-Ověřování a autorizace není spravován službou App Service (vypnuto). 
+Ověřování a autorizaci služby App Service (vypnuto) nespravuje. 
 
 Tuto možnost zvolte, pokud už nepotřebujete, ověřování a autorizace, nebo pokud chcete napsat vlastní kód ověřování a autorizace.
 

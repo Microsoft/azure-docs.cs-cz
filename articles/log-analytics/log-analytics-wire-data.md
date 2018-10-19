@@ -1,6 +1,6 @@
 ---
 title: Řešení Wire Data ve službě Log Analytics | Microsoft Docs
-description: Data kabelové sítě jsou konsolidovaná síťová a výkonnostní data z počítačů s agenty sady OMS včetně agentů nástroje Operations Manager a agentů připojených k Windows. Kvůli pomoci při korelaci dat se síťová data kombinují s daty protokolu.
+description: Při přenosu dat se konsolidované síti a výkonu data z počítačů s agenty Log Analytics. Kvůli pomoci při korelaci dat se síťová data kombinují s daty protokolu.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -15,20 +15,20 @@ ms.topic: conceptual
 ms.date: 10/03/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: 9ee388e8d33d293240e70ccf79ec8d3c445dffd1
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: 61ceea60962acc2e1ec032df49683e8a28381dd7
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48269153"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49405357"
 ---
 # <a name="wire-data-20-preview-solution-in-log-analytics"></a>Řešení Wire Data 2.0 (Preview) ve službě Log Analytics
 
 ![Symbol Wire Data](./media/log-analytics-wire-data/wire-data2-symbol.png)
 
-Data kabelové sítě jsou konsolidovaná síťová a výkonnostní data shromážděná z počítačů připojených k Windows a Linuxu s agentem sady OMS včetně počítačů, které ve vašem prostředí monitoruje Operations Manager. Kvůli pomoci při korelaci dat se síťová data kombinují s jinými daty protokolu.
+Při přenosu dat se konsolidované síti a výkonu data shromážděná z počítače připojeného k Windows a Linux připojené pomocí agenta Log Analytics, včetně těch, které monitorovány nástrojem Operations Manager ve vašem prostředí. Kvůli pomoci při korelaci dat se síťová data kombinují s jinými daty protokolu.
 
-Kromě agenta sady OMS využívá řešení Wire Data závislé agenty Microsoft, které instalujete do počítačů ve své IT infrastruktuře. Závislí agenti monitorují síťová data odesílaná do a z počítačů na úrovních sítě 2–3 v [modelu OSI](https://en.wikipedia.org/wiki/OSI_model), a to včetně různých použitých protokolů a portů. Data se pak do služby Log Analytics posílají pomocí agentů.  
+Kromě agenta Log Analytics řešení Wire Data používá Microsoft Agents závislostí, který nainstalujete na počítačích ve vaší infrastruktuře IT. Závislí agenti monitorují síťová data odesílaná do a z počítačů na úrovních sítě 2–3 v [modelu OSI](https://en.wikipedia.org/wiki/OSI_model), a to včetně různých použitých protokolů a portů. Data se pak do služby Log Analytics posílají pomocí agentů.  
 
 >[!NOTE]
 >Pokud jste už nasadili řešení Service Map, nebo zvažuje Service Map nebo [monitorování Azure pro virtuální počítače](../monitoring/monitoring-vminsights-overview.md), je nové připojení metriky sady dat shromažďovat a ukládat ve službě Log Analytics, která poskytuje stejné informace s Wire Data.
@@ -65,20 +65,20 @@ Protože si ale prohlížíte metadata, nemusí být užitečná při řešení 
 | Skupina pro správu nástroje System Center Operations Manager | Ano | Řešení Wire Data analyzuje a shromažďuje data z agentů systému Windows a Linux v připojené [skupině pro správu nástroje System Center Operations Manager](log-analytics-om-agents.md). <br><br> Vyžaduje se přímé připojení z počítače s agentem nástroje System Center Operations Manager ke službě Log Analytics. |
 | Účet služby Azure Storage | Ne | Řešení Wire Data shromažďuje data z počítačů s agenty, takže neobsahuje žádná data shromažďovaná z Azure Storage. |
 
-Ve Windows se Microsoft Monitoring Agent (MMA) používá nástrojem System Center Operations Manager i službou Log Analytics ke shromažďování a odesílání dat. V závislosti na kontextu se nazývá agenta System Center Operations Manager Agent, agenta OMS, agenta Log Analytics, MMA nebo přímý Agent. Nástroj System Center Operations Manager a služba Log Analytics poskytují mírně odlišné verze agenta MMA. Tyto verze dokážou podávat hlášení nástroji System Center Operations Manager, službě Log Analytics nebo oběma.
+Ve Windows se Microsoft Monitoring Agent (MMA) používá nástrojem System Center Operations Manager i službou Log Analytics ke shromažďování a odesílání dat. V závislosti na kontextu se nazývá agenta System Center Operations Manager Agent, agenta Log Analytics, MMA nebo přímý Agent. Nástroj System Center Operations Manager a služba Log Analytics poskytují mírně odlišné verze agenta MMA. Tyto verze dokážou podávat hlášení nástroji System Center Operations Manager, službě Log Analytics nebo oběma.
 
 V Linuxu agenta Log Analytics pro Linux shromažďuje a odesílá data do Log Analytics. Při přenosu dat můžete použít na servery s agenty, které jsou připojeny přímo k Log Analytics nebo na serverech, které se připojujete ke službě Log Analytics prostřednictvím skupin pro správu System Center Operations Manager.
 
-Závislý agent nepřenáší sám o sobě žádná data a nevyžaduje žádné změny bran firewall nebo portů. Data ve Wire Data se vždy přenášených v rámci agenta Log Analytics ke službě Log Analytics, buď přímo nebo přes bránu OMS.
+Závislý agent nepřenáší sám o sobě žádná data a nevyžaduje žádné změny bran firewall nebo portů. Data ve Wire Data se vždy přenášených v rámci agenta Log Analytics ke službě Log Analytics, buď přímo nebo přes bránu Log Analytics.
 
 ![Diagram agenta](./media/log-analytics-wire-data/agents.png)
 
 Pokud System Center Operations Manager používáte se skupinou pro správu připojenou ke službě Log Analytics:
 
 - Nevyžaduje se žádná další konfigurace, pokud mají agenti nástroje System Center Operations Manager přístup k internetu a mohou se připojit ke službě Log Analytics.
-- Pokud agenti nástroje System Center Operations Manager nemají přes internet přístup ke službě Log Analytics, musíte bránu sady OMS nakonfigurovat tak, aby fungovala s nástrojem System Center Operations Manager.
+- Budete muset nakonfigurovat bránu Log Analytics pro práci s nástrojem System Center Operations Manager při agenty System Center Operations Manager nemůže přistupovat k Log Analytics přes Internet.
 
-Pokud počítače Windows nebo Linuxem nemůžete připojit přímo ke službě, budete muset nakonfigurovat agenta Log Analytics pro připojení ke službě Log Analytics pomocí brány OMS. Bránu sady OMS si můžete stáhnout z webu [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=52666).
+Pokud počítače Windows nebo Linuxem nemůžete připojit přímo ke službě, budete muset nakonfigurovat agenta Log Analytics pro připojení ke službě Log Analytics pomocí brány Log Analytics. Můžete stáhnout ze brána Log Analytics [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=52666).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -211,7 +211,7 @@ Závislý agent se instaluje do počítačů s Windows prostřednictvím souboru
 
 Následujícím postupem nainstalujte závislého agenta na jednotlivé počítače s Windows:
 
-1. Podle pokynů v článku [Shromažďování dat z počítačů s Windows hostovaných ve vašem prostředí](log-analytics-windows-agent.md) nainstalujte agenta sady OMS.
+1. Instalace agenta Log Analytics, proveďte kroky v [shromažďovat data z počítačů s Windows hostovaných ve vašem prostředí](log-analytics-windows-agent.md).
 2. Stáhněte závislého agenta pro Windows pomocí odkazu v předchozí části a pak ho spusťte následujícím příkazem: `InstallDependencyAgent-Windows.exe`
 3. Pomocí průvodce agenta nainstalujte.
 4. Pokud se závislého agenta nepodaří spustit, najdete podrobné informace o chybě v protokolech. U agentů pro Windows se adresář protokolu nachází zde: %Programfiles%\Microsoft Dependency Agent\logs.
@@ -237,7 +237,7 @@ Závislý agent se do linuxových počítačů instaluje příkazem InstallDepen
 
 Následujícím postupem nainstalujte závislého agenta na jednotlivé počítače s Linuxem:
 
-1. Podle pokynů v článku [Shromažďování dat z počítačů s Linuxem hostovaných ve vašem prostředí](log-analytics-quick-collect-linux-computer.md#obtain-workspace-id-and-key) nainstalujte agenta sady OMS.
+1. Instalace agenta Log Analytics, proveďte kroky v [shromažďovat data z počítačů s Linuxem hostovaných ve vašem prostředí](log-analytics-quick-collect-linux-computer.md#obtain-workspace-id-and-key).
 2. Stáhněte závislého agenta pro Linux pomocí odkazu v předchozí části a pak ho nainstalujte jako uživatel root následujícím příkazem: sh InstallDependencyAgent-Linux64.bin
 3. Pokud se závislého agenta nepodaří spustit, najdete podrobné informace o chybě v protokolech. U agentů pro Linux se adresář protokolu nachází zde: /var/opt/microsoft/dependency-agent/log.
 

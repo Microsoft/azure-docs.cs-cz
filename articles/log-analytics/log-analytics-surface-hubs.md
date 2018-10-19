@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: b38ce59a80d3fa78449892c8a76ed70b4dc698d3
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: f7fe7cee39468558ce503c050d5574e4be15ebf5
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041473"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49407159"
 ---
 # <a name="monitor-surface-hubs-with-log-analytics-to-track-their-health"></a>Monitorování pomocí Log Analytics ke sledování jejich stavu Surface Huby
 
@@ -51,7 +51,7 @@ Intune je produkt Microsoftu, která umožňuje centrálně spravovat nastavení
 1. Přihlášení k Intune.
 2. Přejděte do **nastavení** > **připojené zdroje**.
 3. Vytvořte nebo upravte zásady na základě šablony Surface Hub.
-4. Přejděte do části OMS (Azure Operational Insights) zásad a přidejte Log Analytics *ID pracovního prostoru* a *klíč pracovního prostoru* k zásadám.
+4. Přejděte do části Azure Operational Insights zásad a přidejte Log Analytics *ID pracovního prostoru* a *klíč pracovního prostoru* k zásadám.
 5. Uložte zásadu.
 6. Přidružení zásad příslušné skupiny zařízení.
 
@@ -66,9 +66,9 @@ Pokud nepoužíváte Intune ke správě prostředí, abyste mohli registrovat za
 
 1. Na Surface Hubu, otevřete **nastavení**.
 2. Zadejte pověření správce zařízení po zobrazení výzvy.
-3. Klikněte na tlačítko **toto zařízení**a v části **monitorování**, klikněte na tlačítko **konfigurovat nastavení OMS**.
+3. Klikněte na tlačítko **toto zařízení**a v části **monitorování**, klikněte na tlačítko **nakonfigurovat nastavení analýzy protokolů**.
 4. Vyberte **povolit monitorování**.
-5. V dialogovém okně Nastavení OMS zadejte Log Analytics **ID pracovního prostoru** a zadejte **klíč pracovního prostoru**.  
+5. V dialogovém okně Nastavení Log Analytics, zadejte Log Analytics **ID pracovního prostoru** a zadejte **klíč pracovního prostoru**.  
    ![Nastavení](./media/log-analytics-surface-hubs/settings.png)
 6. Klikněte na tlačítko **OK** a dokončete tak konfiguraci.
 

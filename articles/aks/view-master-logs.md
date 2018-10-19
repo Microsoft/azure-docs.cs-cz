@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 07/26/2018
 ms.author: iainfou
-ms.openlocfilehash: 011654dcbad21c3e8cea51d6ab98eeca461e4685
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 7caa98b65b35d1eb1a000f1e9099fbf8eb3f8861
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49068821"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49406037"
 ---
 # <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>Povolit a zkontrolovat Kubernetes hlavní uzel protokolů ve službě Azure Kubernetes Service (AKS)
 
@@ -37,9 +37,12 @@ Log Analytics je povolit a spravovat na webu Azure Portal. Pokud chcete povolit 
 1. V seznamu dostupných protokolů, vyberte protokoly, které chcete povolit, jako například *kube apiserver*, *správce kontroléru kube*, a *kube Plánovač*. Můžete vrátit a změnit shromažďovat protokoly, jakmile budou povolené Log Analytics.
 1. Až to budete mít, vyberte **Uložit** povolení kolekce vybraných protokolů.
 
-Následující příklad ukazuje snímek obrazovky portálu *nastavení diagnostiky* časového intervalu a poté na možnost vytvořit pracovní prostor OMS:
+Následující příklad ukazuje snímek obrazovky portálu *nastavení diagnostiky* časového intervalu a poté možnost vytvoření pracovního prostoru služby Log Analytics:
 
-![Povolit pracovní prostor OMS pro cluster Log Analytics AKS](media/view-master-logs/enable-oms-log-analytics.png)
+![Povolit pracovní prostor Log Analytics pro cluster Log Analytics AKS](media/view-master-logs/enable-oms-log-analytics.png)
+
+>[!NOTE]
+>Pracovní prostory OMS jsou dnes označovány jako pracovní prostory Log Analytics. 
 
 ## <a name="schedule-a-test-pod-on-the-aks-cluster"></a>Plánování testů pod v clusteru AKS
 
@@ -75,7 +78,7 @@ pod/nginx created
 
 ## <a name="view-collected-logs"></a>Zobrazení shromážděných protokolů
 
-Může trvat několik minut, než se diagnostické protokoly povolena a zobrazí v pracovním prostoru OMS. Na webu Azure Portal, vyberte skupinu prostředků pro váš pracovní prostor Log Analytics, jako je například *myResourceGroup*, klikněte na tlačítko prostředku Log Analytics, jako například *myAKSLogs*.
+Může trvat několik minut, než se diagnostické protokoly povolena a zobrazí v pracovním prostoru Log Analytics. Na webu Azure Portal, vyberte skupinu prostředků pro váš pracovní prostor Log Analytics, jako je například *myResourceGroup*, klikněte na tlačítko prostředku Log Analytics, jako například *myAKSLogs*.
 
 ![Vyberte pracovní prostor Log Analytics pro váš cluster AKS](media/view-master-logs/select-log-analytics-workspace.png)
 

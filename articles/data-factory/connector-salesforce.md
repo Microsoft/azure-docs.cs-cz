@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/17/2018
 ms.author: jingwang
-ms.openlocfilehash: 4da56b275c2b224d56b8296dd480e638a27a03a1
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: bc98fc2465c280c41a77823de239a5572c5d27e4
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49379090"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49409573"
 ---
 # <a name="copy-data-from-and-to-salesforce-by-using-azure-data-factory"></a>Kopírování dat z a do Salesforce pomocí služby Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -186,7 +186,7 @@ Pro kopírování dat ze služby Salesforce, nastavte typ zdroje v aktivitě kop
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost type zdroje aktivity kopírování musí být nastavená na **SalesforceSource**. | Ano |
-| query |Použijte vlastní dotaz číst data. Můžete použít [Salesforce objektu dotazu jazyka (SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) dotaz nebo dotaz SQL 92. Zobrazit další tipy v [dotazování tipy](#query-tips) oddílu. | Ne (když je "tableName" v datové sadě zadán) |
+| query |Použijte vlastní dotaz číst data. Můžete použít [Salesforce objektu dotazu jazyka (SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) dotaz nebo dotaz SQL 92. Zobrazit další tipy v [dotazování tipy](#query-tips) oddílu. Pokud dotazu není zadán, bude možné načíst všechna data služby Salesforce objekt určený v "objectApiName" v datové sadě. | Ne (když je "objectApiName" v datové sadě zadán) |
 | readBehavior | Označuje, zda dotaz existujících záznamů nebo dotazu včetně odstranil všechny záznamy. Pokud není zadán, výchozí chování je první. <br>Povolené hodnoty: **dotazu** (výchozí), **queryAll**.  | Ne |
 
 > [!IMPORTANT]

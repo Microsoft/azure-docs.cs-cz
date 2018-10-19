@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: ba6bfe8240c758806c4ff3e46ab08fdacad83db9
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: e205fce8b718e68200face33447e37cd3317298f
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48242222"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49405480"
 ---
 # <a name="azure-blockchain-workbench-troubleshooting"></a>Řešení potíží s Azure Blockchain Workbench
 
@@ -24,7 +24,7 @@ Skript prostředí PowerShell je k dispozici pro vám pomůže s developer ladě
 * Blockchain sítě, jako je například ethereum během
 * Mikroslužby Blockchain Workbench
 * Application Insights
-* Azure Monitoring (OMS)
+* (Log Analytics) pro monitorování Azure
 
 Informace můžete určit další kroky a určení původní příčiny problémů. 
 
@@ -36,7 +36,7 @@ Informace můžete určit další kroky a určení původní příčiny problém
 git clone https://github.com/Azure-Samples/blockchain.git
 ```
 
-## <a name="run-the-script"></a>Spusťte skript
+## <a name="run-the-script"></a>Spuštění skriptu
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install.md)]
 
 Spustit `collectBlockchainWorkbenchTroubleshooting.ps1` skript pro shromažďování protokolů a vytvořit souboru ZIP, který obsahuje složku s informace o odstraňování potíží. Příklad:
@@ -52,9 +52,9 @@ Skript je možné zadat následující parametry:
 | ResourceGroupName | Název skupiny prostředků Azure, ve kterém byla nasazena Blockchain Workbench. | Ano |
 | OutputDirectory | Cesta k vytvoření výstupu. Soubor ZIP. Pokud není zadán, výchozí hodnota je do aktuálního adresáře. | Ne |
 | LookbackHours | Počet hodin pro použití při stahování telemetrická data. Výchozí hodnota je 24 hodin. Maximální hodnota je 90 hodin | Ne |
-| OmsSubscriptionId | ID předplatného, ve kterém je nasazená OMS. Tento parametr předejte pouze OMS pro síť blockchain nasazuje mimo Blockchain Workbench skupinu prostředků.| Ne |
-| OmsResourceGroup |Skupina prostředků, ve kterém je nasazená OMS. Tento parametr předejte pouze OMS pro síť blockchain nasazuje mimo Blockchain Workbench skupinu prostředků.| Ne |
-| OmsWorkspaceName | Název pracovního prostoru OMS. Tento parametr předejte pouze pokud OMS pro síť blockchain nasazuje mimo skupinu prostředků Blockchain Workbench | Ne |
+| OmsSubscriptionId | ID předplatného, ve kterém je nasazená Log Analytics. Tento parametr předejte pouze Log Analytics pro síť blockchain nasazuje mimo Blockchain Workbench skupinu prostředků.| Ne |
+| OmsResourceGroup |Skupina prostředků, ve kterém je nasazená Log Analytics. Tento parametr předejte pouze Log Analytics pro síť blockchain nasazuje mimo Blockchain Workbench skupinu prostředků.| Ne |
+| OmsWorkspaceName | Název pracovního prostoru Log Analytics. Tento parametr předejte pouze v případě Log Analytics pro síť blockchain nasazuje mimo Blockchain Workbench skupiny prostředků | Ne |
 
 ## <a name="what-is-collected"></a>Co je shromažďováno?
 

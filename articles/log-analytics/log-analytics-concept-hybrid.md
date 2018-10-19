@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 10/15/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 9decd861ff20a45939f700eef99245b6555829f8
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 03133c6d6518444f8e6fb15cfa425969dbafdedc
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49319740"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49406870"
 ---
 # <a name="collect-data-in-a-hybrid-environment-with-log-analytics-agent"></a>Shromažďování dat v hybridním prostředí pomocí agenta Log Analytics
 
@@ -38,7 +38,7 @@ Počítačích hostovaných ve vašem prostředí můžete přímo připojené k
 
 Před analýzy a funguje shromážděných dat, musíte nejprve nainstalovat a připojení agentů pro všechny počítače, které chcete odesílat data do služby Log Analytics. Můžete nainstalovat agenty na počítače v místním prostředí pomocí instalačního programu, příkazového řádku, nebo s Desired State Configuration (DSC) ve službě Azure Automation. 
 
-Agenta pro Linux a Windows komunikuje přes TCP port 443 odchozí ke službě Log Analytics a pokud se počítač připojí k serveru brány firewall nebo proxy server komunikovat přes Internet, zkontrolujte níže uvedené požadavky pro lepší pochopení konfigurace sítě povinné.  Pokud zásady zabezpečení IT neumožňují počítače v síti pro připojení k Internetu, můžete nastavit [bránu OMS](log-analytics-oms-gateway.md) a potom nakonfigurujte agenta připojit přes bránu do Log Analytics. Agenta můžete zobrazit informace o konfiguraci a odeslat data shromážděná v závislosti na tom, jaká pravidla shromažďování dat a řešeními, která jste povolili. 
+Agenta pro Linux a Windows komunikuje přes TCP port 443 odchozí ke službě Log Analytics a pokud se počítač připojí k serveru brány firewall nebo proxy server komunikovat přes Internet, zkontrolujte níže uvedené požadavky pro lepší pochopení konfigurace sítě povinné.  Pokud zásady zabezpečení IT neumožňují počítače v síti pro připojení k Internetu, můžete nastavit [Log Analytics gateway](log-analytics-oms-gateway.md) a potom nakonfigurujte agenta připojit přes bránu do Log Analytics. Agenta můžete zobrazit informace o konfiguraci a odeslat data shromážděná v závislosti na tom, jaká pravidla shromažďování dat a řešeními, která jste povolili. 
 
 Pokud monitorování počítače pomocí System Center Operations Manager 2012 R2 nebo novější, může být s více adresami pomocí služby Log Analytics pro shromažďování dat a předat službě a stále má sledovat [nástroje Operations Manager](log-analytics-om-agents.md). Počítače se systémem Linux monitorovány podle skupiny pro správu nástroje Operations Manager integrovaný s Log Analytics neobdrží konfigurace pro zdroje dat a předat dál shromážděná data prostřednictvím skupiny pro správu. Windows agent může hlásit až čtyři pracovní prostory, zatímco agenta pro Linux podporuje jenom sestavy do jednoho pracovního prostoru.  
 
@@ -92,7 +92,7 @@ Informace o pod seznamem proxy a firewallu informace o konfiguraci vyžadované 
 
 Pokud budete chtít použít Azure Automation Hybrid Runbook Worker a připojte se k registraci ve službě Automation použití sad runbook ve vašem prostředí, musí mít přístup k portu a adresy URL popisované v [konfigurace sítě pro zajištění Funkce hybrid Runbook Worker](../automation/automation-hybrid-runbook-worker.md#network-planning). 
 
-Agent Windows a Linuxu podporuje komunikaci prostřednictvím serveru proxy nebo bránou OMS ke službě Log Analytics pomocí protokolu HTTPS.  Jsou podporovány anonymní i základní ověřování (uživatelské jméno/heslo).  Pro připojení přímo ke službě Windows agenta konfiguraci proxy serveru zadané během instalace nebo [po nasazení](log-analytics-agent-manage.md#update-proxy-settings) v Ovládacích panelech nebo pomocí Powershellu.  
+Agent Windows a Linuxu podporuje komunikaci prostřednictvím serveru proxy nebo brány Log Analytics ke službě Log Analytics pomocí protokolu HTTPS.  Jsou podporovány anonymní i základní ověřování (uživatelské jméno/heslo).  Pro připojení přímo ke službě Windows agenta konfiguraci proxy serveru zadané během instalace nebo [po nasazení](log-analytics-agent-manage.md#update-proxy-settings) v Ovládacích panelech nebo pomocí Powershellu.  
 
 Pro linuxového agenta proxy serveru zadané během instalace nebo [po instalaci](log-analytics-agent-manage.md#update-proxy-settings) úpravou konfiguračního souboru proxy.conf.  Hodnota konfigurace proxy agenta systému Linux má následující syntaxi:
 
@@ -106,8 +106,8 @@ Pro linuxového agenta proxy serveru zadané během instalace nebo [po instalaci
 |Protocol (Protokol) | https |
 |uživatel | Volitelné uživatelské jméno pro ověřování proxy serveru |
 |heslo | Volitelné heslo pro ověření proxy serverem |
-|proxyhost | Adresa nebo plně kvalifikovaný název domény serveru/OMS proxy serveru brány |
-|port | Volitelné nastavení portu pro server/OMS proxy serveru brány |
+|proxyhost | Adresa nebo plně kvalifikovaný název domény proxy serveru/Log Analytics gateway |
+|port | Volitelné nastavení portu brány proxy serveru/Log Analytics |
 
 Příklad: `https://user01:password@proxy01.contoso.com:30443`
 
@@ -129,4 +129,4 @@ Připojení místních počítačů přímo k Log Analytics můžete provést po
 
 * Další informace o [prohledávání protokolů](log-analytics-log-searches.md) analyzovat data shromážděná ze zdrojů dat a jejich řešení. 
 
-* Další informace o [řešení](log-analytics-add-solutions.md) , které doplňují do Log Analytics a také shromažďovat data v úložišti OMS.
+* Další informace o [řešení](log-analytics-add-solutions.md) , které doplňují do Log Analytics a také shromažďovat data do pracovního prostoru Log Analytics.

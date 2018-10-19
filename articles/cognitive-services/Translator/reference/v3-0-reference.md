@@ -10,12 +10,12 @@ ms.component: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: 9282d8af30cbfb3346394bcd71510faf8d8c8a21
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 243ee16f8de8add8283581c8c03a37594797864b
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46129382"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49430026"
 ---
 # <a name="translator-text-api-v30"></a>Verze Translator Text API 3.0
 
@@ -95,8 +95,48 @@ Zákazník s bezplatnou zkušební verzi předplatného by například zobrazí 
 ```
 {
   "error": {
-    "code":403000,
-    "message":"The subscription has exceeded its free quota."
+    "code":403001,
+    "message":"The operation is not allowed because the subscription has exceeded its free quota."
     }
 }
 ```
+Kód chyby je, chybu zařadit 6místným číselným číslo kombinování stavový kód HTTP 3 číslice následované číslem 3 číslice na další. Běžné kódy chyb jsou:
+
+| Kód | Popis |
+|:----|:-----|
+| 400000| Jeden ze vstupů požadavku není platný.|
+| 400001| Parametr "scope" je neplatná.|
+| 400002| Parametr "kategorie" je neplatný.|
+| 400003| Specifikátor jazyk je chybějící nebo neplatný.|
+| 400004| Cílový specifikátor skriptu ("do skriptu") je chybějící nebo neplatný.|
+| 400005| Vstupní text je chybějící nebo neplatný.|
+| 400006| Kombinace jazyka a skriptu není platná.|
+| 400018| Specifikátorem zdroje skriptu ("ze skriptu") je chybějící nebo neplatný.|
+| 400019| Jeden zadaný jazyk není podporován.|
+| 400020| Jeden z prvků v poli vstupní text není platný.|
+| 400021| Parametr verze rozhraní API je chybějící nebo neplatný.|
+| 400023| Jedna z dvojice zadaný jazyk není platný.|
+| 400035| Zdrojový jazyk ("z" pole) není platný.|
+| 400036| Cílový jazyk ("do" pole) je chybějící nebo neplatný.|
+| 400042| Jednu z možností zadané ("Options" pole) není platný.|
+| 400043| ID trasování klienta (ClientTraceId pole nebo záhlaví X-ClientTranceId) je chybějící nebo neplatný.|
+| 400050| Vstupní text je příliš dlouhý.|
+| 400064| Parametr "překladu" je chybějící nebo neplatný.|
+| 400070| Počet skriptů target (ToScript parametr) neodpovídá počtu cíl jazyky (parametr).|
+| 400071| Hodnota není platná pro TextType.|
+| 400072| Vstupní textové pole má příliš mnoho prvků.|
+| 400073| Parametr skriptu není platná.|
+| 400074| Text žádosti nemá platný formát JSON.|
+| 400075| Kombinace jazyka párování a kategorii není platné.|
+| 400077| Byla překročena maximální požadavek velikost.|
+| 400079| Vlastní systém požadovaný pro překlad mezi z a do jazyka neexistuje.|
+| 401000| Požadavek není autorizovaný, protože jsou přihlašovací údaje chybí nebo je neplatný.|
+| 401015| "Zadané přihlašovací údaje jsou pro rozhraní API pro rozpoznávání řeči. Tato žádost vyžaduje přihlašovací údaje pro rozhraní Text API. Použijte prosím předplatné Translator Text API."|
+| 403000| Operace není povolena.|
+| 403001| Operace není povolena, protože předplatné překročila její kvótu.|
+| 405000| Metoda žádosti se nepodporuje pro požadovaný prostředek.|
+| 415000| Hlavička Content-Type je chybějící nebo neplatný.|
+| 429000, 429001, 429002| Server odmítl požadavek, protože klient zasílá příliš mnoho požadavků. Snižte frekvenci požadavků vyhnout omezení šířky pásma.|
+| 500000| Došlo k neočekávané chybě. Pokud chyba přetrvává, nahlaste to datum/čas chyby, požádejte o identifikátor odpovědi hlavičku X-RequestId a identifikátor klienta z hlavičky X-ClientTraceId.|
+| 503000| Služba je dočasně nedostupná. Zkuste to prosím znovu. Pokud chyba přetrvává, nahlaste to datum/čas chyby, požádejte o identifikátor odpovědi hlavičku X-RequestId a identifikátor klienta z hlavičky X-ClientTraceId.|
+

@@ -1,5 +1,5 @@
 ---
-title: Cíl aktualizace pomocí SCCM kolekcí ve službě Azure Automation - Správa aktualizací
+title: Aktualizace cílové využitím kolekcí SCCM ve službě Azure Automation – Správa aktualizací
 description: Tento článek vám objasní, jak pomocí tohoto řešení nakonfigurovat System Center Configuration Manager a spravovat aktualizace počítačů spravovaných pomocí SCCM.
 services: automation
 ms.service: automation
@@ -9,24 +9,24 @@ ms.author: gwallace
 ms.date: 03/19/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 3ea95899d48b68c78af5fdc45167b08b5e0fc1ee
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: b42ce119db2c435f05424cceb5bb90627668bece
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34195341"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49407193"
 ---
-# <a name="integrate-system-center-configuration-manager-with-update-management"></a>Správa aktualizací integrovat nástroje System Center Configuration Manager
+# <a name="integrate-system-center-configuration-manager-with-update-management"></a>Integrace System Center Configuration Manager s Update managementem
 
 Zákazníci, kteří investovali do System Center Configuration Manageru pro správu počítačů, serverů a mobilních zařízení využívají jeho odolnost a další přednosti také při správě aktualizací softwaru jako součást cyklu správy softwarových aktualizací (SUM).
 
-Sestavy a aktualizujte spravované Windows servery tak, že vytváření a předem pracovní nasazení aktualizací softwaru v nástroji Configuration Manager a získat podrobné informace o stavu nasazení dokončené aktualizací pomocí [řešení pro správu aktualizovat](automation-update-management.md). Pokud používáte nástroj Configuration Manager pro vytváření sestav dodržování předpisů aktualizací, ale není pro správu nasazení aktualizací s Windows serverech, můžete pokračovat, vytváření sestav nástroje Configuration Manager při aktualizace zabezpečení se spravují prostřednictvím řešení pro správu aktualizovat.
+Sestavy a aktualizovat spravované servery Windows tak, že vytváří a předem připravíte nasazení aktualizací softwaru v nástroji Configuration Manager a získat podrobný stav dokončených nasazení aktualizaci pomocí [řešení Update Management](automation-update-management.md). Pokud používáte nástroj Configuration Manager pro generování sestav dodržování předpisů aktualizací, ale ne pro správu nasazení aktualizací Windows serverech, můžete pokračovat, vytváření sestav nástroje Configuration Manager, zatímco aktualizace zabezpečení se spravují pomocí řešení Update Management.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Musíte mít [řešení pro správu aktualizací](automation-update-management.md) přidána k vašemu účtu Automation.
+* Musíte mít [řešení Update Management](automation-update-management.md) přidá do vašeho účtu Automation.
 * Servery Windows aktuálně spravované pomocí prostředí System Center Configuration Manageru také musí do pracovního prostoru Log Analytics nahlásit, že mají povolené řešení Update Management.
-* Tato funkce je povolena v System Center Configuration Manager aktuální větve verze 1606 a vyšší. Pokud chcete integrovat samostatný primární web nebo centrální web správy Configuration Manageru s Log Analytics, přečtěte si téma věnované [propojení Configuration Manageru k Log Analytics](../log-analytics/log-analytics-sccm.md).  
+* Tato funkce je povolená v nástroji System Center Configuration Manager aktuální verze 1606 a vyšší. Pokud chcete integrovat samostatný primární web nebo centrální web správy Configuration Manageru s Log Analytics, přečtěte si téma věnované [propojení Configuration Manageru k Log Analytics](../log-analytics/log-analytics-sccm.md).  
 * Pokud agenti Windows nedostávají aktualizace zabezpečení z Configuration Manageru, musí mít nakonfigurovanou komunikaci se serverem služeb Windows Server Update Services (WSUS) nebo musí mít přístup ke službě Microsoft Update.   
 
 To, jak spravujete klienty hostované v Azure IaaS s využitím stávajícího prostředí Configuration Manageru, závisí primárně na připojení, které máte mezi datovými centry Azure a vaší infrastrukturou. Toto připojení ovlivňuje případné změny v návrhu, které je třeba provést v infrastruktuře Configuration Manageru, a náklady související s provedením těchto nezbytných změn. Pokud chcete lépe pochopit, jaké aspekty plánování byste měli vyhodnotit, než budete pokračovat dál, přečtěte si [nejčastější dotazy ke Configuration Manageru v Azure](/sccm/core/understand/configuration-manager-on-azure#networking).
@@ -35,19 +35,19 @@ To, jak spravujete klienty hostované v Azure IaaS s využitím stávajícího p
 
 ### <a name="manage-software-updates-from-configuration-manager"></a>Správa aktualizací softwaru s využitím Configuration Manageru 
 
-Pokud budete nadále spravovat nasazení aktualizace z Configuration Manageru, proveďte následující kroky. Služby Azure Automation se připojuje ke Configuration Manageru a použití aktualizací na klientské počítače připojené k pracovní prostor analýzy protokolů. Obsah aktualizace obsah je dostupný z mezipaměti klientského počítače, stejně jako v případě, kdy nasazení spravoval Configuration Manager.
+Pokud budete nadále spravovat nasazení aktualizace z Configuration Manageru, proveďte následující kroky. Azure Automation se připojí ke Configuration Manageru a aktualizací do klientských počítačů připojených k pracovnímu prostoru Log Analytics. Obsah aktualizace obsah je dostupný z mezipaměti klientského počítače, stejně jako v případě, kdy nasazení spravoval Configuration Manager.
 
-1. Na webu nejvyšší úrovně v hierarchii Configuration Manager vytvořte nasazení aktualizace softwaru, a to pomocí postupu popsaného v [procesu nasazení softwarových aktualizací](/sccm/sum/deploy-use/deploy-software-updates). Jediným nastavením, které se musí nakonfigurovat jinak než u standardního nasazení, je možnost **Neinstalovat softwarové aktualizace**, která řídí řízení chování balíčku pro nasazení při stahování. Toto chování je spravovaný řešení pro správu aktualizovat tak, že vytvoříte nasazení naplánované aktualizace v dalším kroku.
+1. Na webu nejvyšší úrovně v hierarchii Configuration Manager vytvořte nasazení aktualizace softwaru, a to pomocí postupu popsaného v [procesu nasazení softwarových aktualizací](/sccm/sum/deploy-use/deploy-software-updates). Jediným nastavením, které se musí nakonfigurovat jinak než u standardního nasazení, je možnost **Neinstalovat softwarové aktualizace**, která řídí řízení chování balíčku pro nasazení při stahování. Toto chování spravuje řešení Update Management vytvořením plánovaného nasazení aktualizace v dalším kroku.
 
-1. Ve službě Azure Automation, vyberte **správy aktualizací**. Vytvořte nové nasazení kroků popsaných v [vytváření nasazení aktualizací](automation-tutorial-update-management.md#schedule-an-update-deployment) a vyberte **importovat skupiny** na **typ** rozevíracího seznamu vyberte odpovídající Kolekce produktu Configuration Manager. Mějte na paměti následující důležité skutečnosti:. Pokud ve vybrané kolekci zařízení nástroje Configuration Manager je definována okna údržby, členy kolekce respektovat ho místo **doba trvání** nastavení definované v naplánované nasazení.
-    b. Členové cílové kolekce musí mít připojení k internetu (přímo, přes proxy server nebo přes bránu OMS).
+1. Ve službě Azure Automation vyberte **Update Management**. Vytvořte nové nasazení kroků popsaných v [vytvoření nasazení aktualizace](automation-tutorial-update-management.md#schedule-an-update-deployment) a vyberte **importovat skupiny** na **typ** rozevíracího seznamu vyberte odpovídající Kolekce produktu Configuration Manager. Mějte na paměti následující důležité skutečnosti:. Pokud na vybrané kolekce zařízení Configuration Manageru je definované časové období údržby, členové této kolekce případném dalším sdílení dodržovat místo něj **doba trvání** nastavení definované ve plánované nasazení.
+    b. Členové cílové kolekce musí mít připojení k Internetu (buď přímo, přes proxy server nebo přes bránu Log Analytics).
 
-Po dokončení nasazení aktualizace pomocí Azure Automation, cílových počítačů, které jsou členy skupiny vybraného počítače nainstaluje aktualizace v naplánovaném čase ze své místní mezipaměti klienta. Můžete si [zobrazit stav nasazení aktualizací](automation-tutorial-update-management.md#view-results-of-an-update-deployment) a monitorovat výsledky nasazení.
+Po dokončení nasazení aktualizace prostřednictvím služby Azure Automation, bude cílových počítačů, které jsou členy vybrané skupiny počítačů z místní mezipaměti klienta instalovat aktualizace v naplánovaném čase. Můžete si [zobrazit stav nasazení aktualizací](automation-tutorial-update-management.md#view-results-of-an-update-deployment) a monitorovat výsledky nasazení.
 
-### <a name="manage-software-updates-from-azure-automation"></a>Správa aktualizací softwaru z Azure Automation.
+### <a name="manage-software-updates-from-azure-automation"></a>Správa aktualizací softwaru ze služby Azure Automation
 
 Pokud chcete spravovat aktualizace pro virtuální počítače s Windows Serverem, které jsou klienty Configuration Manageru, musíte nakonfigurovat zásady klienta tak, aby funkce správy softwarových aktualizací byla zakázaná pro všechny klienty spravované tímto řešením. Nastavení klienta standardně cílí na všechna zařízení v hierarchii. Další informace o tomto nastavení zásad a jeho konfiguraci najdete v tématu věnovaném [postupu při konfigurace nastavení klienta v System Center Configuration Manageru](/sccm/core/clients/deploy/configure-client-settings).
 
-Po provedení této změny konfigurace, můžete vytvořit nové nasazení kroků popsaných v [vytváření nasazení aktualizací](automation-tutorial-update-management.md#schedule-an-update-deployment) a vyberte **importovat skupiny** na **typ** rozevíracího seznamu vyberte odpovídající kolekci nástroje Configuration Manager.
+Po provedení této změny konfigurace, vytvořte nové nasazení kroků popsaných v [vytvoření nasazení aktualizace](automation-tutorial-update-management.md#schedule-an-update-deployment) a vyberte **importovat skupiny** na **typ** rozevíracího seznamu vyberte příslušnou kolekci Configuration Manageru.
 
 ## <a name="next-steps"></a>Další postup

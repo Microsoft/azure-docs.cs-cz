@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 10/15/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: a889307138564bd56168d9561a56fc391704a459
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 01b3fe57cd52149c5c1191345b42bd8544202652
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49318975"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49404575"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>Řešení potíží pomocí agenta Log Analytics pro Linux 
 
@@ -161,12 +161,20 @@ Následující modul plug-in výstup, zrušte komentář u následující část
 * Proxy zadaný během registrace byl nesprávný
 * Log Analytics a koncové body služby automatizace Azure nejsou na seznamu povolených ve vašem datovém centru 
 
+<<<<<<< HEAD
+### <a name="resolutions"></a>Jejich řešení
+1. Reonboard ke službě Log Analytics pomocí agenta Log Analytics pro Linux pomocí následujícího příkazu s parametrem `-v` povolena. To umožňuje podrobný výstup agenta připojeným přes proxy do Log Analytics. 
+`/opt/microsoft/omsagent/bin/omsadmin.sh -w <Log Analytics Workspace ID> -s <Log Analytics Workspace Key> -p <Proxy Conf> -v`
+
+  [!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)]
+=======
 ### <a name="resolution"></a>Řešení
 1. Reonboard do služby Log Analytics pomocí agenta Log Analytics pro Linux pomocí následujícího příkazu s parametrem `-v` povolena. To umožňuje podrobný výstup agenta připojeným přes proxy do služby Log Analytics. 
 `/opt/microsoft/omsagent/bin/omsadmin.sh -w <Workspace ID> -s <Workspace Key> -p <Proxy Conf> -v`
+>>>>>>> fa48342aa69f6626ec310992464ba935729675b3
 
 2. Projděte si část [aktualizovat nastavení proxy serveru](log-analytics-agent-manage.md#update-proxy-settings) k ověření aplikace správně nakonfigurována, aby mohli agenti komunikovat přes proxy server.    
-* Pečlivě zkontrolujte, že následující koncové body služby Log Analytics jsou povolené:
+* Pečlivě zkontrolujte, že následující koncové body Log Analytics jsou povolené:
 
     |Prostředek agenta| Porty | Směr |
     |------|---------|----------|  
@@ -185,7 +193,11 @@ Následující modul plug-in výstup, zrušte komentář u následující část
 
 1. Zkontrolujte čas na serveru Linux s datem příkazu. Pokud je doba +/-15 minut od aktuálního času, registrace se nezdaří. Pokud chcete správné to aktualizovat datum a časové pásmo serveru Linux. 
 2. Ověřte, že máte nainstalovanou nejnovější verzi agenta Log Analytics pro Linux.  Nejnovější verze nyní oznámí, že jste Pokud časového posunu je příčinou selhání připojení.
+<<<<<<< HEAD
+3. Reonboard pomocí správné ID pracovního prostoru a klíč pracovního prostoru, postupujte podle pokynů instalaci výše v tomto tématu.
+=======
 3. Reonboard pomocí správné ID pracovního prostoru a klíč pracovního prostoru, postupujte podle pokynů instalaci výše v tomto článku.
+>>>>>>> fa48342aa69f6626ec310992464ba935729675b3
 
 ## <a name="issue-you-see-a-500-and-404-error-in-the-log-file-right-after-onboarding"></a>Problém: Se zobrazí chyba 500 a 404 v souboru protokolu hned po registraci
 Jde o známý problém, ke které dojde při prvním uložení dat s Linuxem do pracovního prostoru Log Analytics. Dat odeslaných nebo že služba prostředí to neovlivní.
@@ -194,6 +206,17 @@ Jde o známý problém, ke které dojde při prvním uložení dat s Linuxem do 
 
 ### <a name="probable-causes"></a>Možných příčin
 
+<<<<<<< HEAD
+- Připojení ke službě Log Analytics se nezdařilo
+- Připojení ke službě Log Analytics je blokován.
+- Agenta log Analytics pro Linux data se zálohují.
+
+### <a name="resolutions"></a>Jejich řešení
+1. Zkontrolujte, jestli registrace Log Analytics byla úspěšná kontrolou, jestli existuje následující soubor: `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsadmin.conf`
+2. Pomocí Reonboard `omsadmin.sh` pokyny příkazového řádku
+3. Pokud používáte proxy server, podívejte se na postup řešení proxy server jste zadali dříve.
+4. V některých případech když agenta Log Analytics pro Linux nemůže komunikovat se službou, data v agentovi je ve frontě velikost úplné vyrovnávací paměti, což je 50 MB. Spuštěním následujícího příkazu byste měli restartovat agenta Log Analytics pro Linux: `/opt/microsoft/omsagent/bin/service_control restart [<workspace id>]`. 
+=======
 - Připojování ke službě Log Analytics se nezdařilo
 - Připojení ke službě Log Analytics je blokován.
 - Agenta log Analytics pro Linux data se zálohují.
@@ -203,9 +226,10 @@ Jde o známý problém, ke které dojde při prvním uložení dat s Linuxem do 
 2. Pomocí Reonboard `omsadmin.sh` pokyny příkazového řádku
 3. Pokud používáte proxy server, podívejte se na postup řešení proxy server jste zadali dříve.
 4. V některých případech když agenta Log Analytics pro Linux nemůže komunikovat se službou, data v agentovi je ve frontě velikost úplné vyrovnávací paměti, což je 50 MB. Agent by měl být restartován spuštěním následujícího příkazu: `/opt/microsoft/omsagent/bin/service_control restart [<workspace id>]`. 
+>>>>>>> fa48342aa69f6626ec310992464ba935729675b3
 
     >[!NOTE]
-    >Tento problém je vyřešen 1.1.0-28 verzi agenta a novější.
+    >This issue is fixed in agent version 1.1.0-28 and later.
 
 
 ## <a name="issue-you-are-not-seeing-forwarded-syslog-messages"></a>Problém: Se nezobrazují v předaných zprávách Syslog 

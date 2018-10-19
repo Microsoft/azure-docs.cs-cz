@@ -10,12 +10,12 @@ ms.component: translator-text
 ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: v-jansko
-ms.openlocfilehash: eaf65bef28110d73378c213ae4781a409b86e1bd
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 74fcfa0e1474d7d2a25d0bf9d0476fb1bb870334
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46128175"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49429503"
 ---
 # <a name="translator-text-api-v2-to-v3-migration"></a>Translator Text API V2 na V3 migrace
 
@@ -32,23 +32,23 @@ Konci tohoto dokumentu obsahuje užitečné odkazy pro vás další informace.
 * Transkripce – metoda transliterate byl přidán do rozhraní API. Tato metoda převede slov a vět jeden skript (například Arabské) do jiného skriptu (například Latinka).
 * Jazyky – novou metodu "v jazycích" poskytuje informace jazyk, ve formátu JSON pro použití s "přeložit", "slovník" a "transkripce" metody.
 * Nové přeložit – nové funkce byly přidány k metodě "přeložit" pro podporu některých funkcí, které byly v rozhraní API V2 jako samostatné metody. Příkladem je TranslateArray.
-* Metoda mluvit – funkce pro převod textu na řeč je již nejsou podporovány v rozhraní Microsoft Translator API. Převod textu na řeč funkce je dostupná ve službě Azure Cognitive services rozhraní API pro zpracování řeči Bingu.
+* Metoda mluvit – funkce pro převod textu na řeč je již nejsou podporovány v rozhraní Microsoft Translator API. Převod textu na řeč funkce jsou dostupné v [Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech).
 
 Následující seznam metod V2 a V3 identifikuje rozhraní API, která poskytne funkci, která byla součástí V2 a V3 metody.
 
 | V2 Metoda API   | V3 Kompatibilitu s rozhraními API |
 |:----------- |:-------------|
-| Překlad     | Překlad          |
-| TranslateArray      | Překlad          |
-| GetLanguageNames      | Jazyky          |
-| GetLanguagesForTranslate     | Jazyky        |
-| GetLanguagesForSpeak      | Rozhraní Speech API služby cognitive Services         |
-| Řeči     | Rozhraní Speech API služby cognitive Services          |
-| Zjišťování     | Zjišťování         |
-| DetectArray     | Zjišťování         |
-| AddTranslation     | Microsoft Translator API centra         |
-| AddTranslationArray    | Microsoft Translator API centra          |
-| BreakSentences      | BreakSentence         |
+| Překlad     | [Překlad](reference/v3-0-translate.md)          |
+| TranslateArray      | [Překlad](reference/v3-0-translate.md)        |
+| GetLanguageNames      | [Jazyky](reference/v3-0-languages.md)         |
+| GetLanguagesForTranslate     | [Jazyky](reference/v3-0-languages.md)       |
+| GetLanguagesForSpeak      | [Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#text-to-speech)         |
+| Řeči     | [Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech)          |
+| Zjišťování     | [Zjištění](reference/v3-0-detect.md)         |
+| DetectArray     | [Zjištění](reference/v3-0-detect.md)         |
+| AddTranslation     | [Centrum Microsoft Translator API](https://hub.microsofttranslator.com/Help/Download/Microsoft%20Translator%20Hub%20API%20Guide.pdf)         |
+| AddTranslationArray    | [Centrum Microsoft Translator API](https://hub.microsofttranslator.com/Help/Download/Microsoft%20Translator%20Hub%20API%20Guide.pdf)          |
+| BreakSentences      | [BreakSentence](reference/v3-0-break-sentence.md)       |
 | GetTranslations      | Funkce se už nepodporuje.         |
 | GetTranslationsArray      | Funkce se už nepodporuje.         |
 

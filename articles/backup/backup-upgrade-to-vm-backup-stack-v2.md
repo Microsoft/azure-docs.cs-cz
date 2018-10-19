@@ -7,14 +7,14 @@ manager: vijayts
 tags: azure-resource-manager, virtual-machine-backup
 ms.service: backup
 ms.topic: conceptual
-ms.date: 8/1/2018
+ms.date: 10/3/2018
 ms.author: trinadhk
-ms.openlocfilehash: 6f19a536861d236a82cc77a17570d8e3004a2ba1
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 9152733e189aec25a5c024de7f9a3582c29218a3
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48888267"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49406530"
 ---
 # <a name="upgrade-to-azure-vm-backup-stack-v2"></a>Upgrade na zásobník záloh virtuálních počítačů Azure V2
 
@@ -28,8 +28,8 @@ Model nasazení Resource Manageru pro upgrade na zásobník záloh virtuálních
 
 * Možnost používat nespravovaného virtuálního počítače na původní účty úložiště, při obnovování. Tato schopnost existuje i v případě, že virtuální počítač obsahuje disky, které jsou distribuovány mezi různými účty úložiště. Urychluje operace obnovení pro celou řadu konfigurací virtuálních počítačů.
     > [!NOTE]
-    > Tato možnost není stejný jako přepsání původního virtuálního počítače.
-    >
+    > Tato možnost není stejný jako nahrazení disků virtuálního počítače s daty z bodu obnovení. 
+    
 
 ## <a name="whats-changing-in-the-new-stack"></a>Co se mění v nový zásobník?
 V současné době úloha zálohování se skládá ze dvou fází:

@@ -10,12 +10,12 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: dd517c4d-1701-4247-b83c-183c4d8d8aae
 ms.date: 09/08/2016
-ms.openlocfilehash: b2e2c81914e8c0440b358d59c7f0248db46b6c50
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: d37d5cb2b89b82bd9741dee0946b3a77d456b22a
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43124288"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49405748"
 ---
 # <a name="overview-b2b-enterprise-integration-scenarios-in-azure-logic-apps-with-enterprise-integration-pack"></a>Přehled: B2B podnikové integrace scénáře v Azure Logic Apps sadou Enterprise Integration Pack
 
@@ -70,5 +70,5 @@ Podniková integrace podporuje tyto oborové standardy:
 * [Konektory Enterprise Integration](../connectors/apis-list.md "přečtěte si víc o konektory enterprise integration pack")
 * [Integrace účtu metadat](../logic-apps/logic-apps-enterprise-integration-metadata.md "přečtěte si víc o metadata účtu integrace")
 * [Monitorování zpráv B2B](logic-apps-monitor-b2b-message.md "Další informace o monitorování zpráv B2B")
-* [Sledování zpráv B2B v OMS portal](logic-apps-track-b2b-messages-omsportal.md "Další informace o sledování zpráv B2B v portálu OMS")
+* [Sledování zpráv B2B v Azure Log Analytics](logic-apps-track-b2b-messages-omsportal.md "Další informace o sledování zpráv B2B v Azure Log Analytics")
 

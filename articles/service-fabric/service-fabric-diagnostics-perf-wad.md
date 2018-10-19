@@ -14,16 +14,16 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/26/2018
 ms.author: srrengar
-ms.openlocfilehash: f99206fe673f69c78bf130026207ed58344ccea5
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: 68e0192756db539767dd808d0f0d408e77c2ae1b
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39324421"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49405646"
 ---
 # <a name="performance-monitoring-with-the-windows-azure-diagnostics-extension"></a>Monitorování výkonu pomocí rozšíření Windows Azure Diagnostics
 
-Tento dokument popisuje kroky potřebné k nastavení shromažďování čítačů výkonu prostřednictvím rozšíření Windows Azure Diagnostics (WAD) pro clustery Windows. Nastavit pro clustery s Linuxem, [agenta OMS](service-fabric-diagnostics-oms-agent.md) získat čítače výkonu pro uzly. 
+Tento dokument popisuje kroky potřebné k nastavení shromažďování čítačů výkonu prostřednictvím rozšíření Windows Azure Diagnostics (WAD) pro clustery Windows. Nastavit pro clustery s Linuxem, [agenta Log Analytics](service-fabric-diagnostics-oms-agent.md) získat čítače výkonu pro uzly. 
 
  > [!NOTE]
 > Rozšíření WAD musí být nasazené na clusteru pro tyto kroky při práci za vás. Pokud není nastavený, přejděte na [agregace událostí a kolekce pomocí Windows Azure Diagnostics](service-fabric-diagnostics-event-aggregation-wad.md).  

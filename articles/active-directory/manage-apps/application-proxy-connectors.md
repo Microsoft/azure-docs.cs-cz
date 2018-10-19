@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/28/2018
+ms.date: 10/17/2018
 ms.author: barbkess
-ms.reviewer: harshja
+ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: 23bf9d5fb26ee3a0f224f7a8acc2b0539a5c1607
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: c9c21b9beb891a685d7e264ec55817c0045455bc
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39364606"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49406273"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Principy konektorů Proxy aplikací Azure AD
 
@@ -79,7 +79,7 @@ Zatímco konektory budou automaticky Vyrovnávání zatížení v rámci skupin�
 |4|16|320|1150|
 |8|32|270|1190|
 |16|64|245|1200*|
-\* Tento počítač měl připojení limit 800. Pro jiné počítače jsme použili výchozí limit 200 připojení.
+\* Tento počítač používat vlastní nastavení pro vyvolání některé výchozí limity připojení nad rámec .net doporučené nastavení. Doporučujeme spustit test s výchozím nastavením, než se obrátíte na podporu, abyste mohli tento limit změnit pro vašeho tenanta.
  
 >[!NOTE]
 >Není k dispozici velký rozdíl v maximální TPS mezi 4, 8 a 16 jader počítače. Hlavní rozdíl mezi těmito probíhá očekávaná latence.  

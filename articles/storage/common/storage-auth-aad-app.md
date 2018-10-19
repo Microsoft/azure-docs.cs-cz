@@ -1,21 +1,21 @@
 ---
 title: Ověřování pomocí Azure Active Directory pro přístup k datům objektu blob a frontu z vašich aplikací (Preview) | Dokumentace Microsoftu
-description: Pomocí Azure Active Directory k ověřování z v rámci aplikace a pak autorizaci požadavků na prostředky služby Azure Storage (Preview).
+description: Pomocí Azure Active Directory k ověřování z v rámci aplikace a pak autorizaci požadavků na objekty BLOB a fronty (Preview).
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 09/07/2018
+ms.date: 10/15/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 6a0b7139fd8d216397090154a4324c8e4305a939
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: d249753dd954ba610a757a88060c6c0f7c58ad95
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48816374"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49427089"
 ---
-# <a name="authenticate-with-azure-active-directory-from-an-azure-storage-application-preview"></a>Ověřování pomocí Azure Active Directory z aplikace služby Azure Storage (Preview)
+# <a name="authenticate-with-azure-active-directory-from-an-application-for-access-to-blobs-and-queues-preview"></a>Ověřování pomocí Azure Active Directory z aplikace pro přístup k objektům BLOB a fronty (Preview)
 
 Hlavní výhodou služby Azure Active Directory (Azure AD) pomocí služby Azure Storage je, že vaše přihlašovací údaje už nemusí být uloženy ve vašem kódu. Místo toho můžete požádat přístupového tokenu OAuth 2.0 ze služby Azure AD. Azure AD, zpracovává ověřování objektu zabezpečení (uživatele, skupiny nebo instanční objekt služby) spuštění aplikace. Pokud je ověřování úspěšné, Azure AD vrací přístupový token k aplikaci a aplikace můžete potom použít přístupový token k autorizaci požadavků ve službě Azure Storage.
 
@@ -26,6 +26,10 @@ Před ověření objektu zabezpečení z vaší aplikace Azure Storage, nakonfig
 Přehled toku přidělení kódu OAuth 2.0, naleznete v tématu [autorizovat přístup k Azure Active Directory webovým aplikacím pomocí OAuth 2.0 kódu udělit tok](../../active-directory/develop/v1-protocols-oauth-code.md).
 
 [!INCLUDE [storage-auth-aad-note-include](../../../includes/storage-auth-aad-note-include.md)]
+
+## <a name="assign-an-rbac-role-to-an-azure-ad-security-principal"></a>Přiřaďte roli RBAC pro objekt zabezpečení Azure AD
+
+K ověření objektu zabezpečení z vaší aplikace Azure Storage, nejprve nakonfigurujte nastavení řízení přístupu na základě rolí pro tento objekt zabezpečení. Azure Storage definuje role RBAC, které zahrnuje oprávnění pro kontejnery a fronty. Pokud RBAC role je přiřazena k objektu zabezpečení, tento objekt zabezpečení se udělí přístup k prostředku. Další informace najdete v tématu [Správa přístupových práv k datům objektů Blob v Azure a fronty pomocí RBAC (Preview)](storage-auth-aad-rbac.md).
 
 ## <a name="register-your-application-with-an-azure-ad-tenant"></a>Registrace aplikace pomocí tenanta služby Azure AD
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 09/18/2018
 ms.author: anithaa
-ms.openlocfilehash: 8c750937cd45e104e754335f7da51d813b8dc7ba
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 3c28181e1d1a4fd1cdac530ed8f393c7e0c7ea92
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46999643"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49426292"
 ---
 # <a name="create-change-or-delete-service-endpoint-policy-using-the-azure-portal"></a>Vytvoření, změna nebo odstranění zásady koncového bodu služby pomocí webu Azure portal
 
@@ -64,7 +64,7 @@ Přihlaste se k webu Azure Portal na adrese http://portal.azure.com.
    
    ![Vytvoření definice zásad koncového bodu služby](./media/virtual-network-service-endpoint-policies-portal/virtual-network-endpoint-policies-create-policydefinitionspane.PNG)
    
-5. Volitelné: Zadejte nebo vyberte následující informace v **karty**
+5. Volitelné: Zadejte nebo vyberte následující informace v **značky**
    
    - Klíč: Vyberte svůj klíč pro zásady. Příklad: oddělení     
    - Hodnota: Zadejte hodnotu pár klíče. Příklad: Finance

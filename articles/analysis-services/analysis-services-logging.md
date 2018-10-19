@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 07/03/2018
+ms.date: 10/18/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: d19e45710aca3e1e18be6c4529da6474a97bc59f
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: a8d6080b573cbad1004166f28a3e6596560241be
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37449805"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49426511"
 ---
 # <a name="setup-diagnostic-logging"></a>Nastavení protokolování diagnostiky
 
@@ -46,7 +46,7 @@ Výběr **modul** všechny protokoly [xEvents](https://docs.microsoft.com/sql/an
 |Informace     |   Objevte koncové      |
 |Oznámení     |    Oznámení     |
 |Relace     |  Inicializace relace       |
-|Zámky    |  Zablokování       |
+|Zámky    |  Vzájemné zablokování       |
 |Zpracování dotazů     |   VertiPaq SE Query Begin      |
 |Zpracování dotazů     |   VertiPaq SE Query End      |
 |Zpracování dotazů     |   VertiPaq SE Query mezipaměti shody      |
@@ -70,7 +70,7 @@ Kategorie metriky protokoly stejné [metrik serveru](analysis-services-monitor.m
 
 ## <a name="setup-diagnostics-logging"></a>Nastavení protokolování diagnostiky
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>portál Azure
 
 1. V [webu Azure portal](https://portal.azure.com) > server, klikněte na tlačítko **diagnostické protokoly** v levém navigačním panelu a pak klikněte na tlačítko **zapnout diagnostiku**.
 

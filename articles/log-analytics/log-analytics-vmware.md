@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/04/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 6bd195b8be558cfcfda10a750fbfe91079c6b094
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 38537f3e2884160a99d333f1414d3f45755cd4f9
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48043545"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49404609"
 ---
 # <a name="vmware-monitoring-preview-solution-in-log-analytics"></a>Řešení VMware Monitoring (Preview) ve službě Log Analytics
 
@@ -31,7 +31,7 @@ ms.locfileid: "48043545"
 
 Řešení VMware Monitoring v Log Analytics je řešení, které vám pomůže vytvořit centralizované protokolování a monitorování přístupu pro objemné protokoly VMware. Tento článek popisuje, jak můžete řešit, zachycení a spravovat hostitele ESXi na jednom místě pomocí řešení. Pomocí tohoto řešení můžete získat podrobné informace pro všechny hostitele ESXi na jednom místě. Můžete zobrazit počty hlavních událostí, stavu a trendech virtuálních počítačů a ESXi hostitelů, které jsou k dispozici prostřednictvím protokolů hostitelů ESXi. Řešení potíží s pomocí zobrazení a hledání centralizované protokoly hostitele ESXi. A můžete vytvářet upozornění na základě dotazů vyhledávání protokolu.
 
-Toto řešení využívá nativní syslog funkce hostitele ESXi za účelem zápisu dat do cílového virtuálního počítače, který má OMS Agent. Toto řešení však není zapisovat soubory do protokolu syslog v cílovém virtuálním počítači. Agenta OMS otevře port 1514 a naslouchá na to. Jakmile přijme data, agenta OMS odešle data do Log Analytics.
+Toto řešení využívá nativní syslog funkce hostitele ESXi za účelem zápisu dat do cílového virtuálního počítače, který má agenta Log Analytics. Toto řešení však není zapisovat soubory do protokolu syslog v cílovém virtuálním počítači. Agenta Log Analytics se otevře port 1514 a naslouchá na to. Jakmile přijme data, odešle agenta Log Analytics data do Log Analytics.
 
 ## <a name="install-and-configure-the-solution"></a>Instalace a konfigurace řešení
 K instalaci a konfiguraci řešení můžete použít následující informace.
@@ -42,7 +42,9 @@ K instalaci a konfiguraci řešení můžete použít následující informace.
 vSphere hostitele ESXi 5.5, 6.0 a 6.5
 
 #### <a name="prepare-a-linux-server"></a>Příprava serveru s Linuxem
-Vytvořte operační systém Linux virtuálního počítače pro příjem všechna data syslogu z hostitele ESXi. [Agenta OMS pro Linux](log-analytics-linux-agents.md) je bod kolekce pro všechna data syslogu hostitele ESXi. Více hostitelích ESXi můžete použít k předávání protokolů na jednom serveru systému Linux, jako v následujícím příkladu.  
+Vytvořte operační systém Linux virtuálního počítače pro příjem všechna data syslogu z hostitele ESXi. [Agenta Log Analytics Linux](log-analytics-linux-agents.md) je bod kolekce pro všechna data syslogu hostitele ESXi. Více hostitelích ESXi můžete použít k předávání protokolů na jednom serveru systému Linux, jako v následujícím příkladu.
+
+[!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)]  
 
    ![tok procesu Syslog](./media/log-analytics-vmware/diagram.png)
 
@@ -56,14 +58,14 @@ Vytvořte operační systém Linux virtuálního počítače pro příjem všech
 
     ![vspherefwproperties](./media/log-analytics-vmware/vsphere3.png)  
 1. Zkontrolujte vSphere konzoly ověřte, že je správně nastavený tento syslog. Zkontrolujte na hostiteli ESXI tento port **1514** je nakonfigurované.
-1. Stáhněte a nainstalujte agenta OMS pro Linux na serveru s Linuxem. Další informace najdete v tématu [dokumentaci pro agenta OMS pro Linux](https://github.com/Microsoft/OMS-Agent-for-Linux).
-1. Po instalaci agenta OMS pro Linux, přejděte do adresáře /etc/opt/microsoft/omsagent/sysconf/omsagent.d a zkopírujte soubor vmware_esxi.conf adresáři /etc/opt/microsoft/omsagent/conf/omsagent.d a změnu vlastníka nebo skupiny a oprávnění souboru. Příklad:
+1. Stáhněte a nainstalujte agenta Log Analytics pro Linux na serveru s Linuxem. Další informace najdete v tématu [dokumentaci pro agenta Log Analytics pro Linux](https://github.com/Microsoft/OMS-Agent-for-Linux).
+1. Po agenta Log Analytics pro Linux je nainstalovaná, přejděte do adresáře /etc/opt/microsoft/omsagent/sysconf/omsagent.d a kopírování souboru vmware_esxi.conf /etc/opt/microsoft/omsagent/conf/omsagent.d adresář a změnu vlastníka/skupiny a oprávnění k souboru. Příklad:
 
     ```
     sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.d/vmware_esxi.conf /etc/opt/microsoft/omsagent/conf/omsagent.d
    sudo chown omsagent:omiusers /etc/opt/microsoft/omsagent/conf/omsagent.d/vmware_esxi.conf
     ```
-1. Restartujte agenta OMS pro Linux spuštěním `sudo /opt/microsoft/omsagent/bin/service_control restart`.
+1. Restartujte agenta Log Analytics pro Linux spuštěním `sudo /opt/microsoft/omsagent/bin/service_control restart`.
 1. Testovací připojení mezi serverem pro Linux a k hostiteli ESXi pomocí `nc` příkazu na hostiteli ESXi. Příklad:
 
     ```
@@ -78,11 +80,11 @@ Vytvořte operační systém Linux virtuálního počítače pro příjem všech
     Pokud výsledky hledání log zobrazení podobně jako na obrázku výše, nastavíte jste na řídicím panelu řešení VMware Monitoring.  
 
 ## <a name="vmware-data-collection-details"></a>Podrobné informace o shromažďování dat pro VMware
-Řešení VMware Monitoring různých metrik a protokolů shromažďuje údaje o výkonu z hostitele ESXi pomocí agentů OMS pro Linux, které jste povolili.
+Řešení VMware Monitoring různých metrik a protokolů shromažďuje údaje o výkonu z hostitele ESXi pomocí agentů Log Analytics pro Linux, který jste povolili.
 
 V následující tabulce jsou uvedeny metody shromažďování dat a další podrobnosti o tom, jak se shromažďují data.
 
-| Platforma | Agenta OMS pro Linux | Agent nástroje SCOM | Azure Storage | SCOM vyžaduje? | Data agenta nástroje SCOM odeslaná pomocí skupiny pro správu | Četnost shromažďování dat |
+| Platforma | Agenta log Analytics pro Linux | Agent nástroje SCOM | Azure Storage | SCOM vyžaduje? | Data agenta nástroje SCOM odeslaná pomocí skupiny pro správu | Četnost shromažďování dat |
 | --- | --- | --- | --- | --- | --- | --- |
 | Linux |&#8226; |  |  |  |  |každé 3 minuty |
 
@@ -190,12 +192,12 @@ Může existovat několik důvodů:
 
       Pokud neproběhne úspěšně, nastavení vSphere v pokročilé konfiguraci se pravděpodobně není to správně. Zobrazit [Konfigurovat shromažďování syslogu](#configure-syslog-collection) informace o tom, jak vytvořit hostitele ESXi pro předávání protokolu syslog.
   1. Pokud je úspěšné připojení k portu syslog, ale stále nevidíte žádná data, pak znovu načtěte syslog na hostiteli ESXi pomocí ssh a spusťte následující příkaz: ` esxcli system syslog reload`
-* Virtuální počítač s agentem OMS není nastavena správně. Abyste to mohli otestovat, proveďte následující kroky:
+* Virtuální počítač pomocí agenta Log Analytics není nastavena správně. Abyste to mohli otestovat, proveďte následující kroky:
 
   1. Log Analytics naslouchá na portu 1514. Pokud chcete ověřit, že je otevřený, spusťte následující příkaz: `netstat -a | grep 1514`
   1. Měli byste vidět port `1514/tcp` otevřete. Pokud ho nevidíte, zkontrolujte, že je správně nainstalované omsagent. Pokud se nezobrazí údaje o portech, není syslog port otevřít na virtuálním počítači.
 
-    a. Ověřte, zda je spuštěna agenta OMS s využitím `ps -ef | grep oms`. Pokud není spuštěná, proces spusťte pomocí příkazu ` sudo /opt/microsoft/omsagent/bin/service_control start`
+    a. Ověřte, že je spuštěný pomocí agenta Log Analytics `ps -ef | grep oms`. Pokud není spuštěná, proces spusťte pomocí příkazu ` sudo /opt/microsoft/omsagent/bin/service_control start`
 
     b. Otevřete soubor `/etc/opt/microsoft/omsagent/conf/omsagent.d/vmware_esxi.conf`.
 

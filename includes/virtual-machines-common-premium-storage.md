@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: ramankum
 ms.custom: include file
-ms.openlocfilehash: a05d0c623c1abdb5713c1d49b0b577298c1d6c7d
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 97e4e670d5db646cea28cb30e9ca95633cea2a8a
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49347048"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49437017"
 ---
 # <a name="high-performance-premium-storage-and-managed-disks-for-vms"></a>Vysoce výkonné úložiště úrovně Premium a spravovaným diskům pro virtuální počítače
 
@@ -151,7 +151,11 @@ Pokud používáte účty služby premium storage pro nespravované disky a vaš
 ### <a name="premium-storage-disk-limits"></a>Limity disk Storage úrovně Premium
 Když si zřídíte disk úložiště úrovně premium, velikost disku určuje maximální IOPS a propustnost (šířka pásma). Azure nabízí osm typů GA disky storage úrovně premium: P4 (spravované jen disky), P6 (spravované jen disky), P10, P15 (spravované jen disky), P20, P30, P40 nebo P50. Stejně jako tři velikosti disků ve verzi preview: P60 P70 a P80. Každý typ disku služby premium storage má omezení IOPS a propustnost. Limity pro typy disků jsou popsány v následující tabulce:
 
-| Disků typu Premium | P4 | P6 | P10 | P15 | P20 | P30 | P40 | P50 | P60 | P70 | P80 | |---|---|---|---|---|---|---|---|---|| -------|| -------|| -------| | Velikost disku | 32 giB | 64 giB | 128 GB | 256 GB | 512 GB | 1024 giB (1 TB) | 2048 giB (2 TB) | 4095 giB (4 TB) | 8192 giB (8 TB) | 16384 giB (16 TB) | 32 767 giB (32 TiB) || IOPS na disk | 120 | 240 | 500 | 1100 | 2300 | 5000 | 7500 | 7500 | 12 500 | 15 000 | 20 000 || Propustnost na disk | 25 MB za sekundu | 50 MB za sekundu | 100 MB za sekundu | 125 MB za sekundu | 150 MB za sekundu | 200 MB za sekundu | 250 MB za sekundu | 250 MB za sekundu | 480 MB za sekundu | 750 MB za sekundu | 750 MB za sekundu |
+| Typ disky Premium  | P4    | P6    | P10    | P15    | P20    | P30              | P40             | P50             | P60             | P70                | P80                |
+|---------------------|-------|-------|--------|--------|--------|------------------|-----------------|-----------------|-----------------|--------------------|--------------------|
+| Velikost disku           | 32 GiB| 64 GiB| 128 GiB| 256 GiB| 512 GiB| 1024 giB (1 TB) | 2048 giB (2 TB)| 4095 GiB (4 TiB)| 8192 giB (8 TB)| 16384 giB (16 TB)| 32 767 giB (32 TB)|
+| Vstupně-výstupní operace za sekundu / disk       | 120   | 240   | 500    | 1100   | 2300   | 5000             | 7500            | 7500            | 12 500          | 15 000             | 20,000             |
+| Propustnost / disk | 25 MB za sekundu | 50 MB za sekundu | 100 MB za sekundu | 125 MB za sekundu | 150 MB za sekundu | 200 MB za sekundu | 250 MB za sekundu | 250 MB za sekundu | 480 MB za sekundu | 750 MB za sekundu | 750 MB za sekundu |
 
 > [!NOTE]
 > Zkontrolujte, zda je k dispozici na na jednotce diskové přenosy virtuálního počítače dostatečnou šířku pásma, jak je popsáno v [virtuálních počítačů služby Premium Storage podporuje](#premium-storage-supported-vms). V opačném případě propustnost disku a vstupně-výstupních operací je omezen na nižší hodnoty. Maximální propustnost a vstupně-výstupních operací jsou založeny na omezení virtuálního počítače, ne na disku omezení jsou popsané v předchozí tabulce.  

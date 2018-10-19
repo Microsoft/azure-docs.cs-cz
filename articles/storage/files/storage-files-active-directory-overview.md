@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 09/19/2018
 ms.author: tamram
-ms.openlocfilehash: d599b54fe828b88edd3d04d6cd66a4baf36c2c1a
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: 1962a3237fb54409d17fefa314605bafa91c3e9c
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48831547"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49427633"
 ---
 # <a name="overview-of-azure-active-directory-authentication-over-smb-for-azure-files-preview"></a>Přehled ověřování pomocí Azure Active Directory přes protokol SMB pro soubory Azure (preview)
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -58,7 +58,7 @@ Když identity přidružené k aplikaci spuštěné na virtuálním počítači 
 ![Snímek obrazovky znázorňující diagram ověřování Azure AD prostřednictvím protokolu SMB](media/storage-files-active-directory-overview/azure-active-directory-over-smb-for-files-overview.png)
 
 ### <a name="enable-azure-ad-authentication-over-smb"></a>Povolení ověřování Azure AD přes SMB
-Můžete povolit ověřování Azure AD prostřednictvím protokolu SMB pro soubory Azure pro vaše účty úložiště. nové i stávající vytvořené po 29. srpna 2018. 
+Můžete povolit ověřování Azure AD prostřednictvím protokolu SMB pro soubory Azure pro vaše účty úložiště. nové i stávající vytvořené po 24. září 2018. 
 
 Než povolíte ověřování Azure AD prostřednictvím protokolu SMB, ověřte, že Azure AD Domain Services byla nasazena pro primární tenant Azure AD, ke kterému je přidružena účtu úložiště. Pokud jste ještě Azure AD Domain Services, postupujte podle podrobných pokynů v [povolit Azure Active Directory Domain Services pomocí webu Azure portal](../../active-directory-domain-services/active-directory-ds-getting-started.md).
 

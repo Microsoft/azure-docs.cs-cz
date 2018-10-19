@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/30/2018
 ms.author: yzheng
 ms.component: common
-ms.openlocfilehash: 25e6fba6ac8aa34c0c30fd61f5fe297b94720439
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 05e7a7e3c2824a9b47ff723e91103611871d7ed2
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46983663"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49429554"
 ---
 # <a name="managing-the-azure-blob-storage-lifecycle-preview"></a>Správa životního cyklu úložiště objektů Blob v Azure (Preview)
 
@@ -37,7 +37,7 @@ Zásady správy životního cyklu jsou k dispozici obě obecné účely v2 (GPv2
 Funkce správy životního cyklu je zdarma ve verzi preview. Zákazníkům se poplatky účtují náklady běžném provozu [výpis objektů blob](https://docs.microsoft.com/rest/api/storageservices/list-blobs) a [Set Blob Tier](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier) volání rozhraní API. Zobrazit [ceny za objekty Blob bloku](https://azure.microsoft.com/pricing/details/storage/blobs/) Další informace o cenách.
 
 ## <a name="register-for-preview"></a>Zaregistrujte se ve verzi preview 
-K registraci ve verzi public preview, musíte odeslat žádost o registraci této funkce do vašeho předplatného. Po schválení vaší žádosti (během pár dnů), všechny stávající i nové účty GPv2 nebo Blob Storage účet v západní části USA 2, západní USA, střed USA a západní Evropa budou mít povolenou funkci. Během období preview se podporuje jenom objekty blob bloku. Stejně jako u většiny momentálně ve verzi Preview tato funkce by neměl být používat pro produkční úlohy dokud nedosáhne obecné dostupnosti.
+K registraci ve verzi public preview, musíte odeslat žádost o registraci této funkce do vašeho předplatného. Po schválení vaší žádosti (během pár dnů), všechny stávající i nové účty GPv2 nebo Blob Storage účet v západní části USA 2, střed USA – Západ, USA – východ 2 a západní Evropa budou mít povolenou funkci. Během období preview se podporuje jenom objekty blob bloku. Stejně jako u většiny momentálně ve verzi Preview tato funkce by neměl být používat pro produkční úlohy dokud nedosáhne obecné dostupnosti.
 
 Odeslat žádost, spusťte následující příkazy prostředí PowerShell nebo rozhraní příkazového řádku.
 
@@ -69,7 +69,7 @@ Pokud tato funkce je schválena a správně registrováno, měli byste obdržet 
 
 ## <a name="add-or-remove-policies"></a>Přidání nebo odebrání zásady 
 
-Můžete přidat, upravit nebo odebrat zásadu pomocí webu Azure portal, [PowerShell](https://www.powershellgallery.com/packages/AzureRM.Storage/5.0.3-preview), [rozhraní REST API](https://docs.microsoft.com/rest/api/storagerp/storageaccounts/createorupdatemanagementpolicies), nebo klientskými nástroji v následujících jazycích: [.NET](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/8.0.0-preview), [Python](https://pypi.org/project/azure-mgmt-storage/2.0.0rc3/), [Node.js]( https://www.npmjs.com/package/azure-arm-storage/v/5.0.0), [Ruby](   https://rubygems.org/gems/azure_mgmt_storage/versions/0.16.2). 
+Můžete přidat, upravit nebo odebrat zásadu pomocí webu Azure portal, [PowerShell](https://www.powershellgallery.com/packages/AzureRM.Storage/5.0.3-preview), [rozhraní REST API](https://docs.microsoft.com/rest/api/storagerp/managementpolicies/managementpolicies_createorupdate), nebo klientskými nástroji v následujících jazycích: [.NET](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/8.0.0-preview), [Python](https://pypi.org/project/azure-mgmt-storage/2.0.0rc3/), [Node.js]( https://www.npmjs.com/package/azure-arm-storage/v/5.0.0), [Ruby](   https://rubygems.org/gems/azure_mgmt_storage/versions/0.16.2). 
 
 ### <a name="azure-portal"></a>portál Azure
 
@@ -119,7 +119,7 @@ V rámci zásady jsou vyžadovány dva parametry:
 
 | Název parametru | Typ parametru | Poznámky |
 |----------------|----------------|-------|
-| verze        | Vyjádřený jako řetězec `x.x` | Číslo verze preview je 0,5 |
+| version        | Vyjádřený jako řetězec `x.x` | Číslo verze preview je 0,5 |
 | pravidla          | Pole objektů pravidlo | V každé zásadě se vyžaduje aspoň jedno pravidlo. Ve verzi preview můžete zadat až 4 pravidla podle zásad. |
 
 V pravidle požadované parametry jsou:
@@ -316,6 +316,10 @@ Pro data, která upraví a získat přístup k pravidelně v průběhu svého ž
   ]
 }
 ```
+## <a name="faq"></a>Nejčastější dotazy
+### <a name="i-created-a-new-policy-why-are-the-actions-specified-not-executed-immediately"></a>Můžu vytvořit novou zásadu, proč se zadávají akce nebyl proveden okamžitě? 
+
+Zásady životního cyklu provádí jednou denně platformou. Po nastavení nových zásad může trvat až 24 hodin pro akce, jako je ovládání datových vrstev nebo odstranění iniciované a spustit.  
 
 ## <a name="next-steps"></a>Další postup
 

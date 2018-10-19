@@ -1,6 +1,6 @@
 ---
-title: Cluster Azure DC/OS monitorování - Operations Management
-description: Monitorování clusteru Azure Container Service DC/OS s analýzy protokolů.
+title: Monitorování clusteru Azure DC/OS – řízení provozu
+description: Monitorování clusteru služby Azure Container Service DC/OS pomocí Log Analytics.
 services: container-service
 author: keikhara
 manager: jeconnoc
@@ -9,93 +9,84 @@ ms.topic: article
 ms.date: 11/17/2016
 ms.author: keikhara
 ms.custom: mvc
-ms.openlocfilehash: b326e5b686e14cefac4e6376bd3f26787ea1d10d
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 4576d9decc6ba1e01ef39abdb8a3ef89461196e8
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32164587"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49407788"
 ---
-# <a name="monitor-an-azure-container-service-dcos-cluster-with-log-analytics"></a>Monitorování clusteru Azure Container Service DC/OS s analýzy protokolů
+# <a name="monitor-an-azure-container-service-dcos-cluster-with-log-analytics"></a>Monitorování clusteru služby Azure Container Service DC/OS pomocí Log Analytics
 
-Analýzy protokolů je společnosti Microsoft založená na cloudu IT řešení správy, které pomáhá spravovat a chránit místní a cloudové infrastruktury. Kontejner řešení je řešení v analýzy protokolů, který umožňuje zobrazit inventář kontejneru, výkonu a protokoly na jednom místě. Můžete auditovat, řešení potíží s kontejnery zobrazením protokoly v centrálním umístění a najít aktivní využívání nadbytečné kontejneru na hostiteli.
+Log Analytics je od Microsoftu cloudové řešení pro správu IT, která pomáhá spravovat a chránit místní a cloudovou infrastrukturu. Řešení kontejnerů je řešení ve službě Log Analytics, který umožňuje zobrazit inventář kontejneru, výkonu a protokolů na jednom místě. Můžete auditovat, řešení potíží s kontejnery zobrazením protokolů v centrálním umístění a najít hlučného využívání nadbytečné kontejneru na hostiteli.
 
 ![](media/container-service-monitoring-oms/image1.png)
 
-Další informace o kontejneru řešení, naleznete [analýzy protokolů řešení kontejneru](../../log-analytics/log-analytics-containers.md).
+Další informace o řešení kontejnerů najdete v článku [kontejneru řešení Log Analytics](../../log-analytics/log-analytics-containers.md).
 
-## <a name="setting-up-log-analytics-from-the-dcos-universe"></a>Nastavení analýzy protokolů z universe DC/OS
+## <a name="setting-up-log-analytics-from-the-dcos-universe"></a>Nastavení Log Analytics z DC/OS universe
 
 
-Tento článek předpokládá, že jste nastavili DC/OS a nasadili jednoduchého webového kontejneru aplikace v clusteru.
+Tento článek předpokládá, že jste nastavili DC/OS a nasazení jednoduché webové aplikace typu kontejner v clusteru.
 
 ### <a name="pre-requisite"></a>Předpoklad
-- [Předplatné služby Microsoft Azure](https://azure.microsoft.com/free/) -vám to zdarma.  
-- Nastavení pracovního prostoru analýzy protokolu – najdete v části "Krok 3" pod
-- [Rozhraní příkazového řádku DC/OS](https://dcos.io/docs/1.8/usage/cli/install/) nainstalována.
+- [Předplatné Microsoft Azure](https://azure.microsoft.com/free/) – můžete získat předplatné zdarma.  
+- Nastavení pracovního prostoru analýzy protokolu – viz "Krok 3" níže
+- [Rozhraní příkazového řádku DC/OS](https://dcos.io/docs/1.8/usage/cli/install/) nainstalované.
 
-1. Na řídicím panelu DC/OS klikněte na Universe a vyhledejte "OMS, jak je uvedeno níže.
+1. Na řídicím panelu DC/OS klikněte na světě a vyhledejte položku "OMS", jak je znázorněno níže.
 
-![](media/container-service-monitoring-oms/image2.png)
+   >[!NOTE]
+   >OMS se teď označuje jako Log Analytics.
 
-2. Klikněte na **Nainstalovat**. Uvidíte pop až s informacemi a **instalovat balíček** nebo **rozšířený instalace** tlačítko. Když kliknete na tlačítko **rozšířený instalace**, což vede k **vlastnosti konkrétní konfigurace OMS** stránky.
+ ![](media/container-service-monitoring-oms/image2.png)
 
-![](media/container-service-monitoring-oms/image3.png)
+2. Klikněte na **Nainstalovat**. Zobrazí se automaticky otevírané okno s informací o verzi a **instalovat balíček** nebo **rozšířené instalace** tlačítko. Po kliknutí na **rozšířené instalace**, což povede k **vlastnosti konkrétní konfigurace OMS** stránky.
 
-![](media/container-service-monitoring-oms/image4.png)
+ ![](media/container-service-monitoring-oms/image3.png)
 
-3. Zde, zobrazí se výzva k zadání `wsid` (ID pracovního prostoru analýzy protokolů) a `wskey` (primární klíč pro id pracovního prostoru). Chcete-li získat i `wsid` a `wskey` musíte vytvořit účet na webu <https://mms.microsoft.com>.
-Postupujte podle kroků pro vytvoření účtu. Po dokončení vytváření účtu, je nutné získat vaše `wsid` a `wskey` kliknutím **nastavení**, pak **připojené zdroje**a potom **servery se systémem Linux**, jak je uvedeno níže.
+ ![](media/container-service-monitoring-oms/image4.png)
+
+3. Tady, zobrazí se výzva k zadání `wsid` (ID pracovního prostoru Log Analytics) a `wskey` (primární klíč pro ID pracovního prostoru). Chcete-li získat i `wsid` a `wskey` budete muset vytvořit účet na webu <https://mms.microsoft.com>.
+Postupujte podle kroků k vytvoření účtu. Po dokončení vytváření účtu, je třeba získat vaše `wsid` a `wskey` kliknutím **nastavení**, pak **připojené zdroje**a potom **servery s Linuxem**, jak je znázorněno níže.
 
  ![](media/container-service-monitoring-oms/image5.png)
 
-4. Vyberte počet instancí a klikněte na tlačítko 'Zkontrolovat a nainstalovat'. Obvykle můžete získat počet instancí, které se rovná počtu Virtuálního počítače budete mít v clusteru agenta. Nainstaluje agenta OMS pro Linux jako jednotlivé kontejnery pro každý virtuální počítač, který chce shromažďovat informace o monitorování a informace o protokolování.
+4. Vyberte počet instancí a klikněte na tlačítko "Zkontrolovat a nainstalovat". Obvykle můžete mít počet instancí rovná počtu virtuálních počítačů máte ve vašem clusteru agenta. Nainstaluje agenta log Analytics pro Linux jako jednotlivých kontejnerů na každém virtuálním počítači, který je chce shromažďovat informace o monitorování a protokolování.
 
-## <a name="setting-up-a-simple-oms-dashboard"></a>Nastavení jednoduchý řídicí panel OMS
+   [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)] 
 
-Po instalaci agenta OMS pro Linux na virtuálních počítačích, dalším krokem je nastavit řídicím panelu OMS. Existují dva způsoby, jak to udělat: OMS portál nebo portál Azure.
+## <a name="setting-up-a-simple-log-analytics-dashboard"></a>Vytvoření jednoduchého řídicího panelu Log Analytics
 
-### <a name="oms-portal"></a>Portálu OMS 
+Po instalaci agenta Log Analytics pro Linux na virtuálních počítačích, dalším krokem je nastavení řídicího panelu Log Analytics. Můžete nastavit řídicí panel webu Azure portal.
 
-Přihlaste se k portálu OMS (<https://mms.microsoft.com>) a přejděte na **řešení Galerie**.
+### <a name="azure-portal"></a>portál Azure 
 
-![](media/container-service-monitoring-oms/image6.png)
-
-Jakmile jste na **řešení Galerie**, vyberte **kontejnery**.
-
-![](media/container-service-monitoring-oms/image7.png)
-
-Po dokončení výběru řešení kontejneru, zobrazí se na dlaždici na stránce Přehled OMS řídicí panel. Jakmile je indexovaný ingestovaný kontejner dat, zobrazí se dlaždici naplněný informace o řešení dlaždice zobrazení.
-
-![](media/container-service-monitoring-oms/image8.png)
-
-### <a name="azure-portal"></a>Azure Portal 
-
-Přihlášení k portálu Azure v <https://portal.microsoft.com/>. Přejděte na **Marketplace**, vyberte **monitorování + správu** a klikněte na tlačítko **najdete v článku všechny**. Pak zadejte `containers` ve vyhledávání. Zobrazí se "kontejner" ve výsledcích hledání. Vyberte **kontejnery** a klikněte na tlačítko **vytvořit**.
+Přihlaste se k webu Azure portal v <https://portal.microsoft.com/>. Přejděte na **Marketplace**vyberte **monitorování a správa** a klikněte na tlačítko **najdete v článku všechny**. Zadejte `containers` v hledání. Zobrazí se "kontejnery" ve výsledcích hledání. Vyberte **kontejnery** a klikněte na tlačítko **vytvořit**.
 
 ![](media/container-service-monitoring-oms/image9.png)
 
-Po kliknutí na tlačítko **vytvořit**, se zobrazí výzvu k pracovního prostoru. Vyberte pracovní prostor nebo pokud jeden nemáte, vytvořte nový pracovní prostor.
+Po kliknutí na **vytvořit**, budete dotázáni, můžete pro váš pracovní prostor. Vyberte pracovní prostor nebo pokud nemáte, vytvořte nový pracovní prostor.
 
 ![](media/container-service-monitoring-oms/image10.PNG)
 
-Po dokončení výběru pracovního prostoru, klikněte na tlačítko **vytvořit**.
+Po výběru pracovního prostoru, klikněte na tlačítko **vytvořit**.
 
 ![](media/container-service-monitoring-oms/image11.png)
 
-Další informace o řešení protokolu analýzy kontejneru, naleznete [analýzy protokolů řešení kontejneru](../../log-analytics/log-analytics-containers.md).
+Další informace o řešení kontejnerů Log Analytics najdete [kontejneru řešení Log Analytics](../../log-analytics/log-analytics-containers.md).
 
-### <a name="how-to-scale-oms-agent-with-acs-dcos"></a>Postup škálování agenta OMS s ACS DC/OS 
+### <a name="how-to-scale-log-analytics-agent-with-acs-dcos"></a>Jak škálovat agenta Log Analytics s ACS DC/OS 
 
-V případě, že je potřeba mít nainstalovaný agent OMS souborem uzlu skutečný počet nebo jsou vertikálním navýšení kapacity VMSS přidáním více virtuálních počítačů, můžete tak učinit pomocí příjmu `msoms` služby.
+V případě, je potřeba mít nainstalovány agenta Log Analytics nemá skutečný počet nebo jsou vertikálním navýšení kapacity škálovací sady tak, že přidáte další virtuální počítač virtuálních počítačů, můžete tak učinit díky škálování `msoms` služby.
 
-Můžete přejít na Marathon nebo na kartě služeb uživatelského rozhraní DC/OS a škálovat vaše počet uzlů.
+Můžete přejít na Marathon nebo na kartě služeb uživatelského rozhraní DC/OS a vertikálně navýšit kapacitu vašeho počet uzlů.
 
 ![](media/container-service-monitoring-oms/image12.PNG)
 
-To nasadí do dalších uzlů, které ještě nebyly nasadit agenta OMS.
+To se nasadí do dalších uzlů, které zatím nenainstalovali agenta Log Analytics.
 
-## <a name="uninstall-ms-oms"></a>Odinstalujte MS OMS
+## <a name="uninstall-ms-oms"></a>Odinstalace MS OMS
 
 Chcete-li odinstalovat MS OMS zadejte následující příkaz:
 
@@ -104,8 +95,8 @@ $ dcos package uninstall msoms
 ```
 
 ## <a name="let-us-know"></a>Dejte nám vědět!
-Co funguje? Co je chybějící? Co je potřeba pro to pro vás užitečné? Dejte nám vědět v <a href="mailto:OMSContainers@microsoft.com">OMSContainers</a>.
+Co funguje? Co chybí? Co je potřeba pro to pro vás užitečné? Dejte nám vědět v <a href="mailto:OMSContainers@microsoft.com">OMSContainers</a>.
 
 ## <a name="next-steps"></a>Další postup
 
- Teď, když jste nastavili analýzy protokolů pro monitorování kontejnerů,[najdete v části řídicího panelu kontejneru](../../log-analytics/log-analytics-containers.md).
+ Teď, když jste nastavili Log Analytics pro monitorování kontejnerů,[zobrazit řídicí panel kontejneru](../../log-analytics/log-analytics-containers.md).

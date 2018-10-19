@@ -14,12 +14,12 @@ ms.tgt_pltfrm: windows
 ms.workload: ''
 ms.date: 03/26/2018
 ms.author: robreed
-ms.openlocfilehash: b9e96473a6f66dcbc675da1553deaed4ad61b249
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 1d65238115ca57a3fcc8047a27c8161aaa144ce4
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45630921"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49407703"
 ---
 # <a name="powershell-dsc-extension"></a>Rozšíření PowerShell DSC
 
@@ -100,7 +100,7 @@ Následující kód JSON ukazuje schéma pro nastavení část rozšíření DSC
 
 | Název | Hodnota / příklad | Typ dat |
 | ---- | ---- | ---- |
-| apiVersion | 2015-06-15 | datum |
+| apiVersion | 2015-06-15 | date |
 | vydavatele | Microsoft.Powershell.DSC | řetězec |
 | type | DSC | řetězec |
 | typeHandlerVersion | 2,73 | int |
@@ -130,7 +130,7 @@ Následující kód JSON ukazuje schéma pro nastavení část rozšíření DSC
 
 ## <a name="template-deployment"></a>Nasazení šablon
 
-Rozšíření virtuálního počítače Azure je možné nasadit s využitím šablon Azure Resource Manageru. Šablony jsou ideální při nasazování jedné nebo více virtuálních počítačů, které vyžadují konfiguraci po nasazení. Ukázka šablony Resource Manageru, který obsahuje rozšíření OMS Agent virtuálního počítače můžete najít na [Galerie Azure rychlý Start](https://github.com/Azure/azure-quickstart-templates/tree/052db5feeba11f85d57f170d8202123511f72044/dsc-extension-iis-server-windows-vm). 
+Rozšíření virtuálního počítače Azure je možné nasadit s využitím šablon Azure Resource Manageru. Šablony jsou ideální při nasazování jedné nebo více virtuálních počítačů, které vyžadují konfiguraci po nasazení. Ukázka šablony Resource Manageru, který obsahuje agenta Log Analytics rozšíření virtuálního počítače můžete najít na [Galerie Azure rychlý Start](https://github.com/Azure/azure-quickstart-templates/tree/052db5feeba11f85d57f170d8202123511f72044/dsc-extension-iis-server-windows-vm). 
 
 JSON konfigurace pro rozšíření virtuálního počítače můžete vnořit do prostředku virtuálního počítače nebo objektu umístěn na kořenový server WSUS nebo nejvyšší úrovni šablony JSON Resource Manageru. Umístění konfigurace JSON má vliv na hodnotu názvu prostředku a typů. 
 
@@ -139,7 +139,7 @@ Při vnoření rozšíření prostředků, ve formátu JSON je umístěn v `"res
 
 ## <a name="azure-cli-deployment"></a>Nasazení v Azure CLI
 
-Azure CLI slouží k nasazení rozšíření OMS Agent virtuálního počítače do existujícího virtuálního počítače. Nahraďte OMS klíč a OMS ID soubory z pracovního prostoru OMS. 
+Rozhraní příkazového řádku Azure je možné nasadit agenta Log Analytics rozšíření virtuálního počítače do existujícího virtuálního počítače. Nahraďte klíč Log Analytics a Log Analytics ID soubory z pracovního prostoru Log Analytics. 
 
 ```azurecli
 az vm extension set \

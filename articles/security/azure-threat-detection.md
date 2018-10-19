@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 9b688ca6faaa7e0d84dff0ae28e2a9b8b8279490
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 33a9cc0a7b3d18004e19d73a0d9b91bf33cdb055
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37856874"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49408825"
 ---
 # <a name="azure-advanced-threat-detection"></a>Rozšířená detekce hrozeb Azure
 
-Azure nabízí integrované funkce detekci pokročilých hrozeb prostřednictvím služeb, jako je Azure Active Directory (Azure AD), Azure Operations Management Suite (OMS) a Azure Security Center. Tato skupina zabezpečení služeb a možností poskytuje rychlý a jednoduchý způsob, jak pochopit, co se děje ve vašich nasazeních Azure.
+Azure nabízí integrované funkce detekci pokročilých hrozeb prostřednictvím služeb, jako je Azure Active Directory (Azure AD), Azure Log Analytics a Azure Security Center. Tato skupina zabezpečení služeb a možností poskytuje rychlý a jednoduchý způsob, jak pochopit, co se děje ve vašich nasazeních Azure.
 
 Azure nabízí širokou škálu možnosti konfigurace a vlastního nastavení zabezpečení pro splnění požadavků nasazení aplikací. Tento článek popisuje, jak budou odpovídat vašim požadavkům.
 
@@ -75,21 +75,21 @@ PIM umožňuje:
 
 -   Dostávejte upozornění týkající se přístupu k privilegovanou roli.
 
-## <a name="operations-management-suite"></a>Operations Management Suite
+## <a name="azure-log-analytics"></a>Azure Log Analytics
 
-[Operations Management Suite (OMS)](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview) je Microsoftu založené na cloudu IT řešení pro správu, která pomáhá spravovat a chránit místní a cloudovou infrastrukturu. Vzhledem k tomu, že je OMS implementována jako cloudová služba, můžete mít ji zprovoznit rychle s minimálními investicemi do infrastrukturních služeb. Nové funkce zabezpečení jsou poskytována automaticky, uložení průběžnou údržbu a upgrade náklady.
+[Log Analytics](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview) je Microsoftu založené na cloudu IT řešení pro správu, která pomáhá spravovat a chránit místní a cloudovou infrastrukturu. Protože Log Analytics je implementovaná jako cloudová služba, můžete mít ji zprovoznit rychle s minimálními investicemi do infrastrukturních služeb. Nové funkce zabezpečení jsou poskytována automaticky, uložení průběžnou údržbu a upgrade náklady.
 
-Kromě poskytování přínosných služeb sama o sobě, OMS může integrovat s součástí produktu System Center, jako například [System Center Operations Manager](https://blogs.technet.microsoft.com/cbernier/2013/10/23/monitoring-windows-azure-with-system-center-operations-manager-2012-get-me-started/), rozšířit vaše stávající zabezpečení investice do správy do cloudu. System Center a OMS mohou díky vzájemné spolupráci poskytnout úplné hybridní prostředí pro správu.
+Kromě poskytování přínosných služeb sama o sobě, Log Analytics může integrovat s komponentami nástroje System Center, jako [System Center Operations Manager](https://blogs.technet.microsoft.com/cbernier/2013/10/23/monitoring-windows-azure-with-system-center-operations-manager-2012-get-me-started/), rozšířit vaše stávající zabezpečení investice do správy do cloudu. System Center a Log Analytics můžete společně poskytují správu úplné hybridní prostředí.
 
 ### <a name="holistic-security-and-compliance-posture"></a>Komplexní zabezpečení a dodržování předpisů, aby detekoval
 
-[Řídicí panel OMS Security and Audit](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started) poskytuje ucelený přehled o vaší organizaci stavu zabezpečení IT pomocí předdefinovaných vyhledávacích dotazů na důležité problémy, které vyžadují vaši pozornost. Řídicí panel zabezpečení a Audit je domovskou obrazovkou pro všechno, co týkajících se zabezpečení v OMS. Poskytuje celkový přehled o stavu zabezpečení vašich počítačů. Můžete také zobrazit všechny události z posledních 24 hodin, 7 dní, nebo všechny vlastní časový rámec.
+[Řídicí panel Log Analytics zabezpečení a Audit](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started) poskytuje ucelený přehled o vaší organizaci stavu zabezpečení IT pomocí předdefinovaných vyhledávacích dotazů na důležité problémy, které vyžadují vaši pozornost. Řídicí panel zabezpečení a Audit je domovskou obrazovkou pro všechno, co související se zabezpečením v Log Analytics. Poskytuje celkový přehled o stavu zabezpečení vašich počítačů. Můžete také zobrazit všechny události z posledních 24 hodin, 7 dní, nebo všechny vlastní časový rámec.
 
-Řídicí panely OMS vám pomohou rychle a snadno pochopit celkové postavení zabezpečení všech prostředí, všechny v rámci IT operace, včetně softwaru o aktualizaci, posouzení antimalwaru a standardní hodnoty konfigurace. Data protokolu zabezpečení jsou snadno přístupné pro zjednodušení procesu audit zabezpečení a dodržování předpisů.
+Log Analytics, vám pomohou rychle a snadno pochopit celkové postavení zabezpečení všech prostředí, všechny v rámci IT operace, včetně softwaru o aktualizaci, posouzení antimalwaru a standardní hodnoty konfigurace. Data protokolu zabezpečení jsou snadno přístupné pro zjednodušení procesu audit zabezpečení a dodržování předpisů.
 
-![Řídicí panel OMS Security and Audit](./media/azure-threat-detection/azure-threat-detection-fig3.jpg)
+![Řídicí panel Log Analytics zabezpečení a Audit](./media/azure-threat-detection/azure-threat-detection-fig3.jpg)
 
-Řídicí panel OMS Security and Audit je uspořádaný do čtyř hlavních kategorií:
+Řídicí panel Log Analytics zabezpečení a Audit je uspořádaný do čtyř hlavních kategorií:
 
 -   **Domény zabezpečení**: umožňuje další zkoumat záznamy zabezpečení v průběhu času, přístup k posouzení malwaru, posouzení aktualizací, zobrazení zabezpečení sítě, identitu a přístup k informacím o; zobrazit počítače s událostmi zabezpečení a rychle se dostat k Azure Řídicí panel Security Center.
 
@@ -102,25 +102,25 @@ Kromě poskytování přínosných služeb sama o sobě, OMS může integrovat s
 -   **Běžné dotazy na zabezpečení**: seznam nejběžnějších bezpečnostních dotazů, které vám umožní monitorovat vaše prostředí. Při výběru jakéhokoli dotazu v podokně hledání otevře a zobrazí výsledky pro daný dotaz.
 
 ### <a name="insight-and-analytics"></a>Službu Insight and analytics
-V centru [Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) je úložiště OMS, které je hostovaný v Azure.
+V centru [Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) je úložiště, které je hostovaný v Azure.
 
 ![Diagram službu Insight and analytics](./media/azure-threat-detection/azure-threat-detection-fig4.png)
 
 Shromažďování dat do úložiště z připojených zdrojů tak, že konfigurace zdroje dat a přidání řešení do vašeho předplatného.
 
-![Řídicí panel OMS ](./media/azure-threat-detection/azure-threat-detection-fig5.png)
+![Řídicí panel Log Analytics ](./media/azure-threat-detection/azure-threat-detection-fig5.png)
 
 Zdroje dat a řešení vytvořit samostatný záznam typy s vlastní sadu vlastností, ale stále je můžete analyzovat společně v dotazech do úložiště. Můžete stejné nástroje a metody pro práci s širokou škálu dat, která se shromažďují z různých zdrojů.
 
 
-Většina vaší práce s využitím Log Analytics je prostřednictvím portálu OMS, který běží v jakémkoli prohlížeči a poskytuje přístup k nastavení konfigurace a několika nástrojům pro analýzy a reagovat na shromážděná data. Z portálu můžete použít:
+Většina vaší práce s využitím Log Analytics je na webu Azure portal, který běží v jakémkoli prohlížeči a poskytuje přístup k nastavení konfigurace a několika nástrojům pro analýzy a reagovat na shromážděná data. Z portálu můžete použít:
 * [Prohledávání protokolů](https://docs.microsoft.com/azure/log-analytics/log-analytics-log-searches) kde je možné vytvářet dotazy pro analýzy shromážděných dat.
 * [Řídicí panely](https://docs.microsoft.com/azure/log-analytics/log-analytics-dashboards), které můžete přizpůsobit pomocí grafických zobrazení nejdůležitějších hledání.
 * [Řešení](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions), která poskytují další funkce a analytické nástroje.
 
 ![Nástroje pro analýzu](./media/azure-threat-detection/azure-threat-detection-fig6.png)
 
-Řešení do služby Log Analytics přidávají funkčnost. Jsou primárně běží v cloudu a poskytují analýzu dat, která se shromažďují v úložišti OMS. Řešení může také definovat nové typy záznamů které se mají shromáždit, které se dají analyzovat pomocí prohledávání protokolu nebo prostřednictvím dalšího uživatelského rozhraní, které toto řešení poskytuje v řídicím panelu OMS.
+Řešení do služby Log Analytics přidávají funkčnost. Jsou primárně běží v cloudu a poskytují analýzu dat, která se shromažďují v úložišti Log Analytics. Řešení může také definovat nové typy záznamů které se mají shromáždit, které se dají analyzovat pomocí prohledávání protokolu nebo prostřednictvím dalšího uživatelského rozhraní, které toto řešení poskytuje v řídicím panelu Log Analytics.
 
 Řídicí panel zabezpečení a Audit je příkladem tyto druhy řešení.
 
@@ -357,9 +357,9 @@ Cloud App Security integruje viditelnost s cloudem těmito:
 
 -   Schválení nebo zrušení zákazu aplikací ve vašem cloudu.
 
--   Pomocí snadno použitelných aplikačních konektorů, které využít rozhraní API poskytovatelů, pro viditelnost a zásady správného řízení aplikací, které se připojují k.
+-   pomocí snadno použitelných aplikačních konektorů, které využít rozhraní API poskytovatelů, pro viditelnost a zásady správného řízení aplikací, které se připojují k.
 
--   Dokážete mít nepřetržitou kontrolu díky nastavení a následnému průběžnému dolaďování, zásady.
+-   dokážete mít nepřetržitou kontrolu díky nastavení a následnému průběžnému dolaďování, zásady.
 
 Na shromažďování dat z těchto zdrojů, Cloud App Security spustí pokročilé analýzy. Ji okamžitě vás upozorní na neobvyklé aktivity a umožní vám podrobně prozkoumat cloudové prostředí. Můžete nakonfigurovat zásady v Cloud App Security a použít ji k ochraně všechno, co ve vašem cloudovém prostředí.
 

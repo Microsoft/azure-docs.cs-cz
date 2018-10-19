@@ -7,22 +7,22 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/21/2018
 ms.author: cherylmc
-ms.openlocfilehash: c33bec76fe17336221c873778c2993d75fec81e8
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: ce4bc88f6b599bb3f5f760b2ba83c81f2b6acc5f
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46962219"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49405174"
 ---
 # <a name="about-expressroute-direct-preview"></a>Informace o ExpressRoute Direct (Preview)
 
-Přímé ExpressRoute poskytuje zákazníkům možnost připojení přímo do globální síti Microsoftu na umístění partnerského vztahu strategicky distribuovaných po celém světě. Přímé ExpressRoute poskytuje připojení duální 100Gbps, která podporuje připojení k aktivní/aktivní ve velkém měřítku. 
+ExpressRoute Direct poskytuje zákazníkům možnost připojit se přímo ke globální síti Microsoftu v místech partnerských uzlů strategicky rozmístěných po celém světě. Přímé ExpressRoute poskytuje duální 100 GB/s připojením, která podporuje připojení k aktivní/aktivní ve velkém měřítku. 
 
-Klíčové funkce, které poskytuje přímé ExpressRoute patří, ale nejsou omezené na:
+Klíčové funkce, které poskytuje ExpressRoute Direct patří, ale nejsou omezené na:
 
-* Masivní Ingestování do službami jako Storage a Cosmos DB 
-* Fyzické izolace pro obory, které jsou reguluje a vyžaduje vyhrazený a izolovanou připojení jako: bankovnictví, Government a maloobchodního prodeje 
-* Přesná kontrola nad okruh distribuce podle organizační jednotky
+* Masivní příjem dat do služeb jako Storage a Cosmos DB 
+* Fyzická izolace pro odvětví, která jsou regulovaná a vyžadují vyhrazené a izolované připojení, například: bankovnictví, státní správa a maloobchodní prodej 
+* Podrobné řízení distribuce okruhů podle organizační jednotky
 
 > [!IMPORTANT]
 > Přímé ExpressRoute je aktuálně ve verzi Preview.
@@ -31,20 +31,20 @@ Klíčové funkce, které poskytuje přímé ExpressRoute patří, ale nejsou om
 
 ## <a name="enroll-in-the-preview"></a>Registrace verze Preview
 
-Před využitím ExpressRoute přímo, musí nejdřív zaregistrovat předplatné ve verzi preview. Pokud se chcete zaregistrovat, pošlete e-mail s ID předplatného na adresu <ExpressRouteDirect@microsoft.com>. Přímé ExpressRoute je funkce na podnikové úrovni. Uveďte další podrobnosti:
+Před použitím ExpressRoute přímo, musí nejdřív zaregistrovat předplatné ve verzi preview. Pokud se chcete zaregistrovat, pošlete e-mail s ID předplatného na adresu <ExpressRouteDirect@microsoft.com>. Přímé ExpressRoute je funkce na podnikové úrovni. Uveďte další podrobnosti:
 
 * Scénáře, které pokud chcete provést s **přímo ExpressRoute**
 * Naleznete v tématu předvolby umístění - [partnery a umístění partnerského vztahu](expressroute-locations-providers.md) úplný seznam všech umístění
 * Časová osa pro implementaci
-* Nějaké dotazy, které máte týkajících se služeb
+* Další otázky
 
 ## <a name="expressroute-using-a-service-provider-and-expressroute-direct"></a>ExpressRoute přes poskytovatele služeb a přímé ExpressRoute
 
 | **ExpressRoute přes poskytovatele služeb** | **Přímé ExpressRoute** | 
 | --- | --- | 
-| Využívá poskytovatele služeb a umožňuje rychlé zprovoznění a možností připojení do stávající infrastruktury | Vyžaduje infrastrukturu 100Gbps a úplnou správu všech vrstev
+| Využívá poskytovatele služeb a umožňuje rychlé zprovoznění a možností připojení do stávající infrastruktury | Vyžaduje 100 GB/s infrastrukturou a úplnou správu všech vrstev
 | Se integruje s stovky poskytovatelů, včetně Ethernet a MPLS | Přímé/Dedicated kapacitu pro regulované odvětví a masivní ingestování | 
-| SKU okruhů z 10 50 MB/s | Skladová jednotka okruhů z 1 GB/s 100Gbps
+| SKU okruhů z 50 MB/s až 10 GB/s | Skladová jednotka okruhů z 5 GB/s 100 GB/s (5 GB/s, 10 GB/s, 40 GB/s, 100 GB/s)
 | Optimalizováno pro jednoho tenanta | Optimalizováno pro jednoho tenanta/Cloud Service providers nebo více organizačních jednotek
 
 ## <a name="expressroute-direct-circuits"></a>Okruhy ExpressRoute přímo
@@ -57,7 +57,7 @@ Funkce ve většině případů je stejná jako okruhů, které využívají pos
 
 ## <a name="circuit-skus"></a>SKU okruhu
 
-Přímé ExpressRoute podporuje scénáře ingestování velké objemy dat do služby Azure storage a další velké objemy dat služby. ExpressRoute okruhy na přímé ExpressRoute teď také podporu **40G** a **100G** okruh skladové položky. 
+Přímé ExpressRoute podporuje scénáře ingestování velké objemy dat do služby Azure storage a další velké objemy dat služby. ExpressRoute okruhy na přímé ExpressRoute teď také podporu **40 GB/s** a **100 GB/s** okruh skladové položky. 
 
 ## <a name="vlan-tagging"></a>Označování příznaky VLAN
 

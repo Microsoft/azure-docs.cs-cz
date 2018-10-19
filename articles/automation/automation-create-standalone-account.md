@@ -9,18 +9,18 @@ ms.author: gwallace
 ms.date: 03/15/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 02ca9065107b999fa0182c89ae2b9d8ca0c8607a
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 581e9d052738b8e1976a766ea6e3525ecf76d741
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49362870"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49426426"
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>Vytvoření samostatného účtu Azure Automation
 
 V tomto článku se dozvíte, jak vytvořit účet Azure Automation na webu Azure Portal. Na portálu účtu Automation můžete použít k vyhodnocení a další informace o automatizaci bez použití dalších řešení pro správu nebo integrace s Azure Log Analytics. Můžete přidat tato řešení pro správu nebo integraci s Log Analytics pro pokročilé monitorování úloh runbooků v libovolném okamžiku v budoucnu.
 
-Pomocí účtu Automation můžete ověření runbooků pomocí správy prostředků v Azure Resource Manageru nebo v modelu nasazení classic.
+Pomocí účtu Automation můžete ověření runbooků pomocí správy prostředků v Azure Resource Manageru nebo v modelu nasazení classic. Jeden účet Automation můžete spravovat prostředky ve všech oblastech a předplatná pro daného tenanta.
 
 Při vytváření účtu Automation na webu Azure Portal, se automaticky vytvoří tyto účty:
 

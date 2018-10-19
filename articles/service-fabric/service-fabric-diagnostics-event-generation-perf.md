@@ -1,6 +1,6 @@
 ---
-title: Azure Service Fabric výkonu monitorování | Microsoft Docs
-description: Další informace o čítače výkonu pro monitorování a Diagnostika Azure Service Fabric clusterů.
+title: Azure Service Fabric výkonu monitorování | Dokumentace Microsoftu
+description: Další informace o čítačích výkonu pro monitorování a diagnostiku clustery Azure Service Fabric.
 services: service-fabric
 documentationcenter: .net
 author: srrengar
@@ -14,31 +14,31 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/16/2018
 ms.author: srrengar
-ms.openlocfilehash: 9e740dd3acce842f888e5994fe8f46222477adc1
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 1e6ea5d6ae321a0443631ec928912611a68346c6
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34208229"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49408009"
 ---
 # <a name="performance-metrics"></a>Metriky výkonu
 
-Metriky by měl být shromažďovány pochopit výkon vašeho clusteru, jakož i aplikace běžící v ní. U clusterů Service Fabric doporučujeme shromažďování následující čítače výkonu.
+Metriky by měl být shromažďovány porozumět výkonu váš cluster, stejně jako aplikace spuštěné v ní. Pro clustery Service Fabric doporučujeme shromažďovat následující čítače výkonu.
 
 ## <a name="nodes"></a>Uzly
 
-Pro počítače v clusteru vezměte v úvahu shromažďování následující čítače výkonu pro lepší pochopení zatížení na každém počítači a proveďte příslušné clusteru škálování rozhodnutí.
+Pro počítače v clusteru vezměte v úvahu shromažďovat následující čítače výkonu pro lepší pochopení zatížení na každém počítači a provést příslušné rozhodnutí o škálování clusteru.
 
 | Kategorie čítače | Název počítadla |
 | --- | --- |
-| Fyzický disk (na disku) | Střední Délka fronty disku pro čtení |
-| Fyzický disk (na disku) | Střední Délka fronty disku zápisu |
-| Fyzický disk (na disku) | Střední Doba disku/čtení |
-| Fyzický disk (na disku) | Střední Doba disku/zápis |
-| Fyzický disk (na disku) | Čtení disku/s |
-| Fyzický disk (na disku) | Bajty čtení z disku/s |
-| Fyzický disk (na disku) | Zápis disku/s |
-| Fyzický disk (na disku) | Bajty zapisování na disk/s |
+| Fyzický disk (na Disk) | Střední Délka fronty disku pro čtení |
+| Fyzický disk (na Disk) | Střední Délka fronty disku zápisu |
+| Fyzický disk (na Disk) | Střední Doba disku/čtení |
+| Fyzický disk (na Disk) | Střední Doby disku/zápis |
+| Fyzický disk (na Disk) | Čtení disku/s |
+| Fyzický disk (na Disk) | Bajty čtení z disku/s |
+| Fyzický disk (na Disk) | Zápis disku/s |
+| Fyzický disk (na Disk) | Bajty zapisování na disk/s |
 | Memory (Paměť) | Počet MB k dispozici |
 | Soubor stránkování | % Využití |
 | Processor(Total) | % Času procesoru |
@@ -50,38 +50,38 @@ Pro počítače v clusteru vezměte v úvahu shromažďování následující č
 | Proces (pro službu) | Pracovní sada |
 | Proces (pro službu) | Pracovní sada – privátní |
 | Interface(all-instances) sítě | Délka fronty výstupu |
-| Interface(all-instances) sítě | Odchozí zrušených paketů |
+| Interface(all-instances) sítě | Zrušených výstupních paketů |
 | Interface(all-instances) sítě | Vyřazené přijaté pakety |
-| Interface(all-instances) sítě | Chyby odchozích paketů |
+| Interface(all-instances) sítě | Odchozí chyb pakety |
 | Interface(all-instances) sítě | Chyby přijaté pakety |
 
-## <a name="net-applications-and-services"></a>Aplikace .NET a služby
+## <a name="net-applications-and-services"></a>Aplikace a služby .NET
 
-Shromážděte následující čítače, pokud nasazujete služeb .NET do clusteru. 
+Shromážděte následující čítače, pokud provádíte nasazení služeb .NET do clusteru. 
 
 | Kategorie čítače | Název počítadla |
 | --- | --- |
-| Využívání paměti rozhraním .NET CLR (pro službu) | ID procesu |
-| Využívání paměti rozhraním .NET CLR (pro službu) | # Celkový počet potvrzených bajtů |
-| Využívání paměti rozhraním .NET CLR (pro službu) | # Celkový počet vyhrazené bajtů |
-| Využívání paměti rozhraním .NET CLR (pro službu) | Počet bajtů ve všech haldách |
-| Využívání paměti rozhraním .NET CLR (pro službu) | Počet úklidů 0 |
-| Využívání paměti rozhraním .NET CLR (pro službu) | # Počet úklidů 1 |
-| Využívání paměti rozhraním .NET CLR (pro službu) | # Počet úklidů 2 |
-| Využívání paměti rozhraním .NET CLR (pro službu) | Čas |
+| Paměť .NET CLR (pro službu) | ID procesu |
+| Paměť .NET CLR (pro službu) | Celkový počet svěřených bajtů |
+| Paměť .NET CLR (pro službu) | Počet celkový vyhrazených bajtů |
+| Paměť .NET CLR (pro službu) | Počet bajtů ve všech haldách |
+| Paměť .NET CLR (pro službu) | Počet úklidů 0 |
+| Paměť .NET CLR (pro službu) | # Počet úklidů 1 |
+| Paměť .NET CLR (pro službu) | # Počet úklidů 2 |
+| Paměť .NET CLR (pro službu) | % Času v uvolňování paměti |
 
-### <a name="service-fabrics-custom-performance-counters"></a>Čítače výkonu vlastní Service Fabric
+### <a name="service-fabrics-custom-performance-counters"></a>Service Fabric vlastní čítače výkonu
 
-Service Fabric generuje vyžadovat značné množství vlastní čítače výkonu. Pokud máte sadu SDK nainstalovat, v aplikaci sledování výkonu uvidíte kompletní seznam na počítač se systémem Windows (Start > Sledování výkonu). 
+Service Fabric generuje vyžadovat značné množství vlastní čítače výkonu. Pokud máte nainstalovánu sadu SDK, zobrazí se úplný seznam na svém počítači s Windows v aplikaci sledování výkonu (Spustit > monitorování výkonu). 
 
-V aplikacích nasazujete do clusteru, pokud používáte Reliable Actors, přidejte countes z `Service Fabric Actor` a `Service Fabric Actor Method` kategorie (viz [Service Fabric spolehlivé aktéři diagnostiky](service-fabric-reliable-actors-diagnostics.md)).
+V aplikacích provádíte nasazení do clusteru, pokud používáte Reliable Actors, přidejte countes z `Service Fabric Actor` a `Service Fabric Actor Method` kategorie (viz [Service Fabric Reliable Diagnostika objektů actor](service-fabric-reliable-actors-diagnostics.md)).
 
-Pokud používáte spolehlivé služby, podobně jako máme `Service Fabric Service` a `Service Fabric Service Method` kategorie čítače, které mají shromažďovat čítače z. 
+Pokud používáte Reliable Services, podobně jako máme `Service Fabric Service` a `Service Fabric Service Method` kategorie čítačů, které se mají shromažďovat čítače z. 
 
-Pokud používáte spolehlivé kolekcí, doporučujeme přidání `Avg. Transaction ms/Commit` z `Service Fabric Transactional Replicator` ke shromažďování latenci průměrná potvrzení za metrika transakce.
+Pokud používáte Reliable Collections, doporučujeme přidat `Avg. Transaction ms/Commit` z `Service Fabric Transactional Replicator` shromažďovat latenci průměrné potvrzení na transakci metriku.
 
 
 ## <a name="next-steps"></a>Další postup
 
 * Další informace o [generování událostí na úrovni platformy](service-fabric-diagnostics-event-generation-infra.md) v Service Fabric
-* Shromažďování metrik výkonu prostřednictvím [agenta OMS](service-fabric-diagnostics-oms-agent.md)
+* Shromažďování metrik výkonu prostřednictvím [agenta Log Analytics](service-fabric-diagnostics-oms-agent.md)

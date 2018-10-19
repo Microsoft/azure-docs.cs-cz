@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 43faf1b29f602d2930a2b5764dd83ea4ce1fc9ac
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 4f9882ce94827e490b676fdf421095eae40420d5
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48043547"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49407720"
 ---
 # <a name="optimize-your-sql-environment-with-the-sql-server-health-check-solution-in-log-analytics"></a>Optimalizujete si prostředí SQL s řešením kontroly stavu SQL serveru ve službě Log Analytics
 
@@ -86,7 +86,7 @@ Chcete-li nastavit Operations Manageru účet Spustit jako pro kontroly stavu SQ
 >
 
 1. V nástroji Operations Manager, otevřete konzoli Operations console a klikněte na **správu**.
-2. V části **konfigurace spustit jako**, klikněte na tlačítko **profily**a otevřete **OMS SQL Assessment profilu spustit jako**.
+2. V části **konfigurace spustit jako**, klikněte na tlačítko **profily**a otevřete **SQL Assessment profilu spustit jako**.
 3. Na **účty spustit jako** klikněte na **přidat**.
 4. Vyberte účet Spustit jako Windows, který obsahuje přihlašovacích údajů potřebných pro SQL Server, nebo klikněte na tlačítko **nový** k jejímu vytvoření.
 
@@ -123,7 +123,7 @@ Otevřete okno Powershellu a spusťte následující skript po aktualizaci s inf
     import-module OperationsManager
     New-SCOMManagementGroupConnection "<your management group name>"
 
-    $profile = Get-SCOMRunAsProfile -DisplayName "OMS SQL Assessment Run As Profile"
+    $profile = Get-SCOMRunAsProfile -DisplayName "SQL Assessment Run As Profile"
     $account = Get-SCOMrunAsAccount | Where-Object {$_.Name -eq "<your run as account name>"}
     Set-SCOMRunAsProfile -Action "Add" -Profile $Profile -Account $Account
 ```

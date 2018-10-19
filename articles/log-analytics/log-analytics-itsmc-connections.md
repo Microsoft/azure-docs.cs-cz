@@ -1,6 +1,6 @@
 ---
 title: V Azure Log Analytics podporována připojení IT Service Management Connector | Dokumentace Microsoftu
-description: Tento článek obsahuje informace o tom, jak připojit pomocí konektoru pro správu služby IT (ITSMC) v OMS Log Analytics pro centrální monitorování a správu ITSM pracovní položky ITSM produktů a služeb.
+description: Tento článek obsahuje informace o tom, jak připojit pomocí konektoru pro správu služeb IT (ITSMC) ve službě Azure Monitor centrálně monitorovat a spravovat pracovní položky ITSM ITSM produktů a služeb.
 documentationcenter: ''
 author: jyothirmaisuri
 manager: riyazp
@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: v-jysur
 ms.component: ''
-ms.openlocfilehash: 50ab09d39fc0c224a97b6cf0c758c55026ac8ce7
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 190e173e035716431c92533e42ded97e147f21a7
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48042837"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49409199"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>Připojení ITSM produktů a služeb s IT Service Management Connector
 Tento článek obsahuje informace o tom, jak nakonfigurovat připojení mezi ITSM produkt nebo službu a na IT Service Management Connector (ITSMC) ve službě Log Analytics a centrálně spravovat pracovní položky. Další informace o ITSMC najdete v tématu [přehled](log-analytics-itsmc-overview.md).
@@ -76,7 +76,7 @@ Pomocí následujícího postupu pro připojení k ITSMC instanci aplikace Syste
 | **Tajný klíč klienta**   | Zadejte tajný kód klienta vygenerovaný pro toto ID.   |
 | **Rozsah synchronizace dat**   | Výběr pracovních položek portálu Service Manager, které chcete synchronizovat prostřednictvím ITSMC.  Tyto pracovní položky jsou importovány do Log Analytics. **Možnosti:** incidenty, žádosti o změnu.|
 | **Synchronizace dat** | Zadejte počet uplynulých dní, které chcete data z. **Maximální limit**: 120 dnů. |
-| **Vytvořit novou položku konfigurace v řešení ITSM** | Tuto možnost vyberte, pokud chcete vytvářet položky konfigurace v produktu ITSM. Pokud je vybráno, OMS vytvoří ovlivněné položky konfigurace jako položky konfigurace (v případě neexistující CIs) v podporovaném systému ITSM. **Výchozí**: zakázáno. |
+| **Vytvořit novou položku konfigurace v řešení ITSM** | Tuto možnost vyberte, pokud chcete vytvářet položky konfigurace v produktu ITSM. Pokud je vybráno, Log Analytics vytvoří ovlivněné položky konfigurace jako položky konfigurace (v případě neexistující CIs) v podporovaném systému ITSM. **Výchozí**: zakázáno. |
 
 ![Služba Správce připojení](./media/log-analytics-itsmc/service-manager-connection.png)
 
@@ -199,7 +199,7 @@ Ujistěte se, že jsou splněné následující požadavky:
     - [Nastavení OAuth pro Geneva](https://docs.servicenow.com/bundle/geneva-servicenow-platform/page/administer/security/task/t_SettingUpOAuth.html)
 
 
-- Nainstalujte si aplikaci uživatele pro integraci Microsoft OMS (ServiceNow aplikace). [Další informace](https://store.servicenow.com/sn_appstore_store.do#!/store/application/ab0265b2dbd53200d36cdc50cf961980/1.0.1 ).
+- Nainstalujte si aplikaci uživatele pro integraci Microsoft Log Analytics (ServiceNow aplikace). [Další informace](https://store.servicenow.com/sn_appstore_store.do#!/store/application/ab0265b2dbd53200d36cdc50cf961980/1.0.1 ).
 - Umožňuje vytvořte roli uživatele integrace pro nainstalovanou aplikaci uživatele. Informace o tom, jak vytvořit roli uživatele integrace [tady](#create-integration-user-role-in-servicenow-app).
 
 ### <a name="connection-procedure"></a>**Postup připojení**
@@ -221,7 +221,7 @@ Pomocí následujícího postupu vytvořte připojení ServiceNow:
 
 | **Pole** | **Popis** |
 | --- | --- |
-| **Název připojení**   | Zadejte název instance ServiceNow, kterou chcete připojit pomocí ITSMC.  Tento název použijete později v OMS při konfigurování pracovních položek v tomto ITSM / zobrazit podrobné log analytics. |
+| **Název připojení**   | Zadejte název instance ServiceNow, kterou chcete připojit pomocí ITSMC.  Tento název použijete později v Log Analytics při konfigurování pracovních položek v tomto ITSM / zobrazit podrobné log analytics. |
 | **Typ partnera**   | Vyberte **ServiceNow**. |
 | **Uživatelské jméno**   | Integrace uživatelské jméno, které jste vytvořili v aplikaci ServiceNow a podporují připojení k ITSMC typ. Další informace: [role uživatele vytvořit ServiceNow aplikace](#create-integration-user-role-in-servicenow-app).|
 | **Heslo**   | Zadejte heslo přidružené k tomuto uživatelskému jménu. **Poznámka:**: uživatelské jméno a heslo slouží ke generování tokenů ověřování jenom a nejsou nikde uložené ve službě ITSMC.  |
@@ -247,6 +247,9 @@ Další informace: [pracovní položky ITSM vytvořit z výstrah Azure](log-anal
 Uživatel takto:
 
 1.  Přejděte [ServiceNow úložiště](https://store.servicenow.com/sn_appstore_store.do#!/store/application/ab0265b2dbd53200d36cdc50cf961980/1.0.1) a nainstalujte **uživatele aplikace pro ServiceNow a integraci Microsoft OMS** do vaší Instance ServiceNow.
+   
+   >[!NOTE]
+   >Jako součást probíhající přechod z Microsoft Operations Management Suite (OMS) do Azure monitoru OMS se teď označuje jako Log Analytics.     
 2.  Po instalaci, přejděte v levém navigačním panelu ServiceNow instance, hledání a vybrat integrátor Microsoft OMS.  
 3.  Klikněte na tlačítko **kontrolní seznam pro instalaci**.
 

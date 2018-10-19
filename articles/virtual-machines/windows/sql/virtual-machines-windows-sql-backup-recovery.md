@@ -15,16 +15,16 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/04/2018
 ms.author: mikeray
-ms.openlocfilehash: d46c55f809d24529ea5deeb4d84de44dae876a4b
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: e0a47da168ae9371979290b3febc9d767e8755d7
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38968982"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49428007"
 ---
 # <a name="backup-and-restore-for-sql-server-in-azure-virtual-machines"></a>Zálohování a obnovení pro SQL Server v Azure Virtual Machines
 
-Tento článek obsahuje pokyny týkající možnosti zálohování a obnovení k dispozici pro SQL Server spuštěná ve službě Windows Azure Virtual Machines. Azure Storage uchovává tři kopie všechny disky virtuálního počítače Azure k zajištění ochrany proti ztrátě dat nebo poškození dat fyzické. Na rozdíl od on-premises nepotřebujete tedy zaměřit na selhání hardwaru. Byste však stále zálohovat databáze SQL serveru k ochraně proti chybám aplikaci nebo uživatele, jako je například zvyšuje ochranu před nechtěnými data vložení nebo odstranění. V takovém případě je důležité mít možnost obnovení k určitému bodu v čase.
+Tento článek obsahuje pokyny týkající možnosti zálohování a obnovení k dispozici pro SQL Server běžící na virtuálním počítači Windows v Azure. Azure Storage uchovává tři kopie všechny disky virtuálního počítače Azure k zajištění ochrany proti ztrátě dat nebo poškození dat fyzické. Na rozdíl od on-premises nepotřebujete tedy zaměřit na selhání hardwaru. Byste však stále zálohovat databáze SQL serveru k ochraně proti chybám aplikaci nebo uživatele, jako je například zvyšuje ochranu před nechtěnými data vložení nebo odstranění. V takovém případě je důležité mít možnost obnovení k určitému bodu v čase.
 
 První část tohoto článku poskytuje přehled o dostupné zálohy a možnosti obnovení. Následuje oddíly, které poskytují další informace o jednotlivých strategií.
 
@@ -42,7 +42,7 @@ Následující části popisují jednotlivé možnosti podrobněji. Koncová č�
 
 ## <a id="autoamted"></a> Automatizované zálohování
 
-Automatizované zálohování poskytuje automatické zálohování služby pro edice SQL Server Standard a Enterprise spuštěná ve virtuálním počítači Windows Azure. Tato služba je poskytovaná [rozšíření agenta SQL Server IaaS](virtual-machines-windows-sql-server-agent-extension.md), které se automaticky instaluje do Image virtuálních počítačů Windows serveru SQL na webu Azure Portal.
+Automatizované zálohování poskytuje automatické zálohování služby pro edice SQL Server Standard a Enterprise spuštěná ve virtuálním počítači s Windows v Azure. Tato služba je poskytovaná [rozšíření agenta SQL Server IaaS](virtual-machines-windows-sql-server-agent-extension.md), které se automaticky instaluje do Image virtuálních počítačů Windows serveru SQL na webu Azure Portal.
 
 Všechny databáze se zálohují do účtu služby Azure storage, který nakonfigurujete. Zálohování můžete šifrované a uchovávají po dobu až 30 dnů.
 
@@ -70,9 +70,9 @@ Další informace o tom, jak nakonfigurovat automatizované zálohování pro vi
 - **Zásady zálohování a uchovávání řízené**: vytvořit standardní zásady zálohování pravidelného zálohování. Vytvořte zásady uchovávání informací, které chcete zachovat zálohy po dobu let.
 - **Podpora pro SQL Always On**: zjišťování a ochranu konfigurace AlwaysOn SQL serveru a bude respektovat zálohování předvolbu zálohování skupiny dostupnosti.
 - **Cíl bodu obnovení 15 minut (RPO)**: zálohy transakčního protokolu konfigurace SQL až každých 15 minut.
-- **Pokud plánujete nasazení systému SQL Server na Virtuálním počítači Azure, najdete pokyny k zřizování v následujícím průvodci: **přidělení virtuálního počítače s Windows SQL serverem na webu Azure Portal**.
-- **Přestože zálohování a obnovení lze použít k migraci dat, jsou potenciálně jednodušší cesty k datům migrace na SQL Server na Virtuálním počítači Azure.
-- **Úplnou diskusi o možnostech migrace a doporučení, najdete v části **migrace databáze do služby SQL Server na Virtuálním počítači Azure**.
+- **Bod v čase**: použití portálu k obnovení databáze k určitému bodu v čase, aniž byste museli ručně obnovit více úplná, rozdílové, zálohu a zálohu protokolu.
+- **Konsolidované e-mailové výstrahy pro selhání**: nakonfigurovat konsolidované e-mailová oznámení pro všechny chyby.
+- **Řízení přístupu na základě rolí**: určit, kdo může Správa zálohování a obnovení prostřednictvím portálu.
 
 Rychlý přehled toho, jak to funguje, spolu s ukázkovou verzi z následujícího videa:
 
@@ -144,7 +144,7 @@ V následující tabulce najdete souhrn možností jednotlivých možností zál
 | Záloha na připojené disky na virtuálním počítači |   |   | ![Ano](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |
 | Centrální přizpůsobitelných sestav zálohování |   | ![Ano](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
 | Konsolidované e-mailové výstrahy při selhání |   | ![Ano](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
-| Přizpůsobit monitorování podle OMS |   | ![Ano](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
+| Přizpůsobení monitorování založené na Log Analytics |   | ![Ano](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
 | Monitorování úlohy zálohování pomocí aplikace SSMS nebo příkazů jazyka Transact-SQL skriptů | ![Ano](./media/virtual-machines-windows-sql-backup-recovery/yes.png) | ![Ano](./media/virtual-machines-windows-sql-backup-recovery/yes.png) | ![Ano](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |
 | Obnovení databáze pomocí SSMS nebo příkazů jazyka Transact-SQL skriptů | ![Ano](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   | ![Ano](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |
 

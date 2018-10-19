@@ -10,12 +10,12 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: bb7d9432-b697-44db-aa88-bd16ddfad23f
 ms.date: 07/21/2017
-ms.openlocfilehash: fd48dfaf7b863ab026da1758751509d9911ae01e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 63aa455851633d1e49fd1b26861aaac8a670ef15
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46948005"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49404780"
 ---
 # <a name="monitor-b2b-messages-and-set-up-logging-for-integration-accounts-in-azure-logic-apps"></a>Monitorování zpráv B2B a nastavení protokolování pro účty pro integraci v Azure Logic Apps
 
@@ -58,7 +58,9 @@ Můžete zapnout protokolování buď přímo z účtu pro integraci nebo [prost
 
    1. Vyberte **odesílat do Log Analytics**. 
    2. V části **Log Analytics**, zvolte **konfigurovat**. 
-   3. V části **pracovních prostorů OMS**, vyberte pracovní prostor Log Analytics pro účely protokolování.
+   3. V části **pracovních prostorů OMS**, vyberte pracovní prostor Log Analytics pro účely protokolování. 
+   > [!NOTE]
+   > Pracovní prostory OMS jsou dnes označovány jako pracovní prostory Log Analytics. 
    4. V části **protokolu**, vyberte **IntegrationAccountTrackingEvents** kategorie.
    5. Zvolte **Uložit**.
 
@@ -93,6 +95,8 @@ Můžete zapnout protokolování buď přímo z účtu pro integraci nebo [prost
    1. Vyberte **odesílat do Log Analytics**. 
    2. V části **Log Analytics**, zvolte **konfigurovat**. 
    3. V části **pracovních prostorů OMS**, vyberte pracovní prostor Log Analytics pro účely protokolování.
+   > [!NOTE]
+   > Pracovní prostory OMS jsou dnes označovány jako pracovní prostory Log Analytics.
    4. V části **protokolu**, vyberte **IntegrationAccountTrackingEvents** kategorie.
    5. Jakmile budete hotoví, vyberte **Uložit**.
 
@@ -129,6 +133,6 @@ Azure podporuje tyto typy schémat, které mají pevná schémata kromě vlastn�
 
 ## <a name="next-steps"></a>Další postup
 
-* [Sledování zpráv B2B v Log Analytics](../logic-apps/logic-apps-track-b2b-messages-omsportal.md "zpráv sledování B2B v OMS")
+* [Sledování zpráv B2B v Azure Log Analytics](../logic-apps/logic-apps-track-b2b-messages-omsportal.md "zprávy sledování B2B ve službě Azure Log Analytics")
 * [Další informace o Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md "přečtěte si víc o Enterprise Integration Pack")
 

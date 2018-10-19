@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: b287e7f3846de4391de02cce2cedd6a5df3cbc4a
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: ac7cc404998fed6897de1bed4b6bd31fca43e820
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167643"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49405816"
 ---
 # <a name="date-claims-transformations"></a>Datum deklarace identity transformace
 
@@ -25,12 +25,12 @@ Tento článek obsahuje příklady použití transformace deklarací identity da
 
 ## <a name="assertdatetimeisgreaterthan"></a>AssertDateTimeIsGreaterThan 
 
-Kontroluje, že jeden datum a čas deklarace identity (datový typ string) je větší než druhý datum a čas deklarací (datový typ string) a vyvolá výjimku.
+Kontroluje, že jeden datum a čas deklarace identity (datový typ string) je pozdější než druhý datum a čas deklarací (datový typ string) a vyvolá výjimku.
 
 | Položka | TransformationClaimType | Typ dat | Poznámky |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | leftOperand | řetězec | Typ první deklaraci identity, která by měla být větší než druhý deklarace identity. |
-| InputClaim | rightOperand | řetězec | Typ druhého deklarace identity, který by měl být menší než první deklaraci identity. |
+| InputClaim | leftOperand | řetězec | Typ první deklaraci identity, které by měly být pozdější než druhý deklarace identity. |
+| InputClaim | rightOperand | řetězec | Druhý typ deklarace identity, který by měl být dřívější než první deklaraci identity. |
 | InputParameter | AssertIfEqualTo | Boolean | Určuje, zda by měla předat Tento kontrolní výraz, pokud levý operand je rovna pravého operandu. |
 | InputParameter | AssertIfRightOperandIsNotPresent | Boolean | Určuje, zda by měla předat Tento kontrolní výraz, pokud chybí pravého operandu. |
 | InputParameter | TreatAsEqualIfWithinMillseconds | int | Určuje počet milisekund, aby mezi těmito dvěma data a času vzít v úvahu dobu je rovno (například účet pro posun hodin). |
@@ -39,7 +39,7 @@ Kontroluje, že jeden datum a čas deklarace identity (datový typ string) je v�
 
 ![Spuštění AssertStringClaimsAreEqual](./media/date-transformations/assert-execution.png)
 
-Následující příklad porovnává `currentDateTime` deklarace identity s `approvedDateTime` deklarací identity. Pokud je vyvolána chyba `currentDateTime` je větší než `approvedDateTime`. Transformace považuje za hodnoty rovny, pokud jsou v rámci rozdíl (30000 milisekund) 5 minut.
+Následující příklad porovnává `currentDateTime` deklarace identity s `approvedDateTime` deklarací identity. Pokud je vyvolána chyba `currentDateTime` je pozdější než `approvedDateTime`. Transformace považuje za hodnoty rovny, pokud jsou v rámci rozdíl (30000 milisekund) 5 minut.
 
 ```XML
 <ClaimsTransformation Id="AssertApprovedDateTimeLaterThanCurrentDateTime" TransformationMethod="AssertDateTimeIsGreaterThan">
@@ -138,17 +138,17 @@ Získejte aktuální datum a čas UTC a přidá hodnotu typu deklarace identity.
 
 ## <a name="datetimecomparison"></a>DateTimeComparison
 
-Určení, zda jeden datum a čas je větší, menší nebo roven jinému. Výsledkem je nová logická hodnota boolean typu deklarace identity s hodnotou true nebo false.
+Zjistit, zda jeden data a času je později, dřívější nebo roven jinému. Výsledkem je nová logická hodnota boolean typu deklarace identity s hodnotou `true` nebo `false`.
 
 | Položka | TransformationClaimType | Typ dat | Poznámky |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | firstDateTime | Datum a čas | První datum a čas pro porovnání. Hodnota Null, dojde k výjimce. |
-| InputClaim | secondDateTime | Datum a čas | Druhý datum a čas na dokončení. Hodnota Null se považuje za aktuální datetTime. |
+| InputClaim | firstDateTime | Datum a čas | První datum a čas pro porovnání, ať už jde o dřívější nebo pozdější než druhý data a času. Hodnota Null, dojde k výjimce. |
+| InputClaim | secondDateTime | Datum a čas | Druhý datum a čas pro porovnání, ať už jde o dřívější nebo pozdější než první datum a čas. Aktuální datetTime je považován za hodnotu Null. |
 | InputParameter | – Operátor | řetězec | Jeden z následujících hodnot: stejné, novější než nebo dřívější. |
 | InputParameter | timeSpanInSeconds | int | Přidáte časový interval pro první datum a čas. |
 | outputClaim | výsledek | Boolean | Typ ClaimType, který je vytvořen po zavolání této ClaimsTransformation. |
 
-Použijte tato deklarace identity transformace, která určí, zda jsou dva ClaimTypes rovno, větší nebo menší od sebe navzájem. Například může ukládat posledního uživatel přijal vaše podmínky služby (TOS). Po 3 měsících můžete požádat uživatele o přístup TOS znovu.
+Použijte tato deklarace identity transformace, která určí, zda dva ClaimTypes jsou stejné, novější nebo starší než mezi sebou. Například může ukládat posledního uživatel přijal vaše podmínky služby (TOS). Po 3 měsících můžete požádat uživatele o přístup TOS znovu.
 Ke spuštění transformace deklarací identity, musíte nejprve získat aktuální datum a čas a také poslední čas uživatel přijme podmínky telekomunikací.
 
 ```XML

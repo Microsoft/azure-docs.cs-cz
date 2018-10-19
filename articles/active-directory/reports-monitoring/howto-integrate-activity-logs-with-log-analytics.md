@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 10/01/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 95dac6804f3226cac23bce95a1b09b2907d084b0
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: bc918d0ee3b3b435905546507287dc655f68e8c9
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49395614"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49429775"
 ---
 # <a name="integrate-azure-ad-logs-with-log-analytics-using-azure-monitor-preview"></a>Integrace protokolů Azure AD pomocí služby Log Analytics pomocí Azure monitoru (preview)
 
@@ -30,7 +30,11 @@ Log Analytics vám umožní k dotazování dat. Chcete-li najít konkrétní ud�
  * Porovnání služby Azure AD přihlášení protokolů proti protokolů zabezpečení, publikování pomocí služby Azure Security Center
 
  * Řešení potíží s problémových míst výkonu na přihlašovací stránku vaší aplikace pomocí korelace dat o výkonu aplikace ze služby Azure Application Insights.  
- 
+
+Toto video z relace Ignite ukazuje výhody použití Log Analytics pro Azure AD protokoly v praktické uživatelských scénářů.
+
+> [!VIDEO https://www.youtube.com/embed/MP5IaCTwkQg?start=1894]
+
 V tomto článku se dozvíte, jak integrovat protokoly služby Azure Active Directory (Azure AD) pomocí Log Analytics pomocí Azure monitoru.
 
 ## <a name="supported-reports"></a>Podporované sestavy

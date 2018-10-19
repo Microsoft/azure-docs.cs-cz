@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/03/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 7e4889148a752b552f8bd65702ea5dda450ded31
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 81eacf464c90d56c4ebeae1d1cefbd6f2f0fdab8
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48044293"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49408536"
 ---
 # <a name="computer-groups-in-log-analytics-log-searches"></a>Prohledávání protokolů skupiny počítačů v Log Analytics
 
@@ -62,7 +62,7 @@ Pomocí následujícího postupu můžete vytvořit skupinu počítačů z prohl
 
 
 ### <a name="active-directory"></a>Active Directory
-Při konfiguraci Log Analytics pro import členství skupin Active Directory, analyzuje členství ve skupině všechny počítače připojené k doméně pomocí agenta OMS.  Skupina počítačů se vytvoří v Log Analytics pro každou skupinu zabezpečení ve službě Active Directory a každý počítač přidán do skupiny počítačů, které jsou členy skupiny zabezpečení odpovídající.  Toto členství se průběžně aktualizuje každé 4 hodiny.  
+Při konfiguraci Log Analytics pro import členství skupin Active Directory, analyzuje členství ve skupině všechny počítače připojené k doméně pomocí agenta Log Analytics.  Skupina počítačů se vytvoří v Log Analytics pro každou skupinu zabezpečení ve službě Active Directory a každý počítač přidán do skupiny počítačů, které jsou členy skupiny zabezpečení odpovídající.  Toto členství se průběžně aktualizuje každé 4 hodiny.  
 
 Konfigurace Log Analytics k importu skupin zabezpečení služby Active Directory ze služby Log Analytics **upřesňující nastavení** na webu Azure Portal.  Vyberte **skupiny počítačů**, **služby Active Directory**a potom **členství ve skupině služby Active Directory Import z počítačů**.  Není nutná žádná další konfigurace.
 
@@ -71,7 +71,7 @@ Konfigurace Log Analytics k importu skupin zabezpečení služby Active Director
 Importu skupin v nabídce uvádí počet počítačů s členstvím skupiny zjistila a číslem skupiny importovat.  Kliknutím na některý z těchto odkazů se vraťte **ComputerGroup** záznamy s těmito informacemi.
 
 ### <a name="windows-server-update-service"></a>Windows Server Update Service
-Při konfiguraci Log Analytics pro import členství ve skupině WSUS analyzuje cílení členství ve skupině všechny počítače s agentem OMS.  Pokud používáte na straně klienta cílí na skupiny cílí na jakýkoli počítač, který je připojený ke službě Log Analytics a je součástí libovolné služby WSUS se jeho členství ve skupině naimportovány do služby Log Analytics. Pokud používáte server-side cílení OMS by měl být agent nainstalovaný na serveru WSUS, aby se informace o členství ve skupinách pro import do Log Analytics.  Toto členství se průběžně aktualizuje každé 4 hodiny. 
+Při konfiguraci Log Analytics pro import členství ve skupině WSUS analyzuje cílení členství ve skupině všechny počítače pomocí agenta Log Analytics.  Pokud používáte na straně klienta cílí na skupiny cílí na jakýkoli počítač, který je připojený ke službě Log Analytics a je součástí libovolné služby WSUS se jeho členství ve skupině naimportovány do služby Log Analytics. Pokud používáte server-side cílení, Log Analytics by měl být agent nainstalovaný na serveru WSUS, aby se informace o členství ve skupinách pro import do Log Analytics.  Toto členství se průběžně aktualizuje každé 4 hodiny. 
 
 Konfigurace Log Analytics k importu skupin WSUS ze služby Log Analytics **upřesňující nastavení** na webu Azure Portal.  Vyberte **skupiny počítačů**, **WSUS**a potom **služby WSUS pro Import členství ve skupinách**.  Není nutná žádná další konfigurace.
 

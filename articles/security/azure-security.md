@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 81eb23a0955bbc6a5f9dcd95c6874f0c5a8c286c
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: ce2b4304ea53be7e9a7be42b8a7fb30f713d85f8
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434026"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49405204"
 ---
 # <a name="introduction-to-azure-security"></a>Úvod do zabezpečení Azure
 ## <a name="overview"></a>Přehled
@@ -74,10 +74,10 @@ Integrované funkce jsou uspořádány do funkčních oblastí šest (6): operac
 ## <a name="operations"></a>Operace
 Tato část obsahuje další informace o klíčových funkcí v oddělení zabezpečení a souhrnné informace o těchto funkcích.
 
-### <a name="operations-management-suite-security-and-audit-dashboard"></a>Operations Management Suite Security and Audit řídicí panel
-[Řešení OMS Security and Audit](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started) poskytuje komplexní pohled na vaše organizace IT stavu zabezpečení s využitím [předdefinovaných vyhledávacích dotazů](https://blogs.technet.microsoft.com/msoms/2016/01/21/easy-microsoft-operations-management-suite-search-queries/) na důležité problémy, které vyžadují vaši pozornost. Řídicí panel [Zabezpečení a audit](https://technet.microsoft.com/library/mt484091.aspx) je domovskou obrazovkou pro všechno, co v OMS souvisí se zabezpečením. Poskytuje celkový přehled o stavu zabezpečení vašich počítačů. Umožňuje také zobrazit všechny události za posledních 24 hodin, 7 dní nebo za jakýkoli zadaný interval.
+### <a name="security-and-audit-dashboard"></a>Zabezpečení a Audit řídicí panel
+[Řešení zabezpečení a Audit](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started) poskytuje komplexní pohled na vaše organizace IT stavu zabezpečení s využitím [předdefinovaných vyhledávacích dotazů](https://blogs.technet.microsoft.com/msoms/2016/01/21/easy-microsoft-operations-management-suite-search-queries/) na důležité problémy, které vyžadují vaši pozornost. [Zabezpečení a Audit](https://technet.microsoft.com/library/mt484091.aspx) řídicí panel je domovskou obrazovkou pro všechno, co související se zabezpečením v Log Analytics. Poskytuje celkový přehled o stavu zabezpečení vašich počítačů. Umožňuje také zobrazit všechny události za posledních 24 hodin, 7 dní nebo za jakýkoli zadaný interval.
 
-Kromě toho můžete nakonfigurovat řešení OMS Security and Compliance k [automaticky provádět konkrétní akce](https://blogs.technet.microsoft.com/robdavies/2016/04/20/simple-look-at-oms-alert-remediation-with-runbooks-part-1/) při zjištění určité události.
+Kromě toho můžete nakonfigurovat zabezpečení a dodržování předpisů pro [automaticky provádět konkrétní akce](https://blogs.technet.microsoft.com/robdavies/2016/04/20/simple-look-at-oms-alert-remediation-with-runbooks-part-1/) při zjištění určité události.
 
 ### <a name="azure-resource-manager"></a>Azure Resource Manager
 [Azure Resource Manageru ](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model) umožňuje pracovat s prostředky ve vašem řešení jako se skupinou. Všechny prostředky pro vaše řešení můžete nasadit, aktualizovat nebo odstranit v rámci jediné koordinované operace. Můžete použít [šablony Azure Resource Manageru](https://blogs.technet.microsoft.com/canitpro/2015/06/29/devops-basics-infrastructure-as-code-arm-templates/) pro nasazení a tato šablona může fungovat v různých prostředích, jako je například testovacím, přípravném nebo produkčním prostředí. Resource Manager poskytuje funkce zabezpečení, auditování a označování, které vám po nasazení pomohou prostředky spravovat.
@@ -95,7 +95,7 @@ Pokud existují, chyb, chyby nebo problémy s výkonem, můžete prohledat data 
 [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) nabízí vizualizace, dotazování, směrování, výstrahy, automatické škálování a automatizace na obou data z infrastruktury Azure ([protokolu aktivit](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)) a jednotlivé prostředky Azure ([diagnostiky Protokoly](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)). Azure Monitor můžete výstrahy na události související se zabezpečením, které jsou generovány v protokolů Azure.
 
 ### <a name="log-analytics"></a>Log Analytics
-[Log Analytics](https://azure.microsoft.com/documentation/services/log-analytics/) součástí [Operations Management Suite](https://www.microsoft.com/cloud-platform/operations-management-suite) – poskytuje řešení pro správu IT pro místní a třetích stran cloudové infrastruktury (třeba AWS) kromě prostředků Azure. Data ze služby Azure Monitor je možné směrovat přímo ke službě Log Analytics, abyste si mohli zobrazit metriky a protokoly pro celé prostředí na jednom místě.
+[Log Analytics](https://azure.microsoft.com/documentation/services/log-analytics/) – poskytuje řešení pro správu IT pro místní a třetích stran cloudové infrastruktury (třeba AWS) kromě prostředků Azure. Data ze služby Azure Monitor je možné směrovat přímo ke službě Log Analytics, abyste si mohli zobrazit metriky a protokoly pro celé prostředí na jednom místě.
 
 Log Analytics může být užitečný nástroj v analýze forenzní a další bezpečnostní nástroj umožňuje rychle prohledávat velké množství souvisejících se zabezpečením položky s přístupem, flexibilní dotazování. Kromě toho místní [protokoly brány firewall a proxy serveru můžete exportovat do Azure a k dispozici pro analýzu pomocí Log Analytics.](https://docs.microsoft.com/azure/log-analytics/log-analytics-proxy-firewall)
 

@@ -8,12 +8,12 @@ ms.date: 09/18/2018
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: e3770fe29d6f1073a0ca6507fdf57059cbd3727e
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: f5906a93e92691cb6046fb04a9fd83f3484e17b8
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49067530"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49427395"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definic Azure Policy
 
@@ -200,7 +200,7 @@ Podmínka vyhodnotí, zda **pole** splňuje určitá kritéria. Jsou podporovan�
 Při použití **jako** a **notLike** podmínky, můžete zadat zástupný znak `*` v hodnotě.
 Hodnota nesmí obsahovat více než jeden zástupný znak `*`.
 
-Při použití **odpovídat** a **notMatch** podmínky, poskytují `#` představující číslici, `?` pro písmeno a jakýkoli jiný znak k reprezentaci tohoto znaku skutečný. Příklady najdete v tématu [povolit více vzory názvů](../samples/allow-multiple-name-patterns.md).
+Při použití **odpovídat** a **notMatch** podmínky, poskytují `#` představující číslici, `?` pro písmeno, `.` tak, aby odpovídaly všechny znaky a jakýkoli jiný znak na představují skutečné znaku. Příklady najdete v tématu [povolit více vzory názvů](../samples/allow-multiple-name-patterns.md).
 
 ### <a name="fields"></a>Fields (Pole)
 

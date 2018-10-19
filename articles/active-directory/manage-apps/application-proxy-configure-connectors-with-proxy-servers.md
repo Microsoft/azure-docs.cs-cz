@@ -15,12 +15,12 @@ ms.date: 09/12/2018
 ms.author: barbkess
 ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: e67428116c66c05d83efbb217d7ec81f75124051
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: 06df705aabce06c37f04de3fb5046d822f9f981e
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45540834"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49404949"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>Práce s existující místní proxy servery
 
@@ -120,7 +120,7 @@ Pro první registraci povolte přístup k následující koncové body:
 Pokud nemůžete povolit připojení pomocí plně kvalifikovaného názvu domény a je nutné místo toho zadat rozsahy IP adres, použijte tyto možnosti:
 
 * Povolte konektor odchozí přístup k všechny cíle.
-* Povolit konektor odchozí přístup ke všem [rozsahy IP adres datacentra Azure](https://www.microsoft.com/en-gb/download/details.aspx?id=41653). Před obrovskou výzvou – s použitím seznamu rozsahů IP adres datacentra Azure je, že se každý týden aktualizuje. Je potřeba umístit proces určitým postupem zajistit, že jsou vaše pravidla přístupu k příslušným způsobem aktualizuje. Pouze pomocí některé podsady z IP adres může způsobit vaše konfigurace pro přerušení.
+* Povolit konektor odchozí přístup ke všem [rozsahy IP adres datacentra Azure](https://www.microsoft.com//download/details.aspx?id=41653). Před obrovskou výzvou – s použitím seznamu rozsahů IP adres datacentra Azure je, že se každý týden aktualizuje. Je potřeba umístit proces určitým postupem zajistit, že jsou vaše pravidla přístupu k příslušným způsobem aktualizuje. Pouze pomocí některé podsady z IP adres může způsobit vaše konfigurace pro přerušení.
 
 #### <a name="proxy-authentication"></a>Ověřování proxy serveru
 

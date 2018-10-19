@@ -10,12 +10,12 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: bb7d9432-b697-44db-aa88-bd16ddfad23f
 ms.date: 06/19/2018
-ms.openlocfilehash: 5bf5385824eb9b711a2fee547c29d24d7ef5a01d
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 666c998a781f13ea2a26ccfc0b94aeead0308f5b
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43125764"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49405680"
 ---
 # <a name="track-b2b-communication-with-azure-log-analytics"></a>Sledování B2B komunikace s Azure Log Analytics
 
@@ -40,9 +40,9 @@ Po nastavení komunikace B2B mezi dvěma obchodních procesů nebo aplikací pro
 >  
 > Pokud nemáte pracovní prostor Log Analytics, přečtěte si [jak vytvořit pracovní prostor Log Analytics](../log-analytics/log-analytics-quick-create-workspace.md).
 
-## <a name="add-the-logic-apps-b2b-solution-to-log-analytics"></a>Přidejte řešení pro Logic Apps B2B do Log Analytics
+## <a name="add-the-logic-apps-b2b-solution-to-azure"></a>Přidejte řešení pro Logic Apps B2B do Azure
 
-Pokud chcete, aby sledování zpráv B2B pro vaši aplikaci logiky Log Analytics, je nutné přidat **Logic Apps B2B** řešení na portálu OMS. Další informace o [přidání řešení do Log Analytics](../log-analytics/log-analytics-quick-create-workspace.md).
+Pokud chcete, aby sledování zpráv B2B pro vaši aplikaci logiky Log Analytics, je nutné přidat **Logic Apps B2B** řešení do služby Log Analytics. Další informace o [přidání řešení do Log Analytics](../log-analytics/log-analytics-quick-create-workspace.md).
 
 1. V [webu Azure portal](https://portal.azure.com), zvolte **všechny služby**. Vyhledejte "log analytics" a klikněte na tlačítko **Log Analytics** jak je znázorněno zde:
 
@@ -52,7 +52,7 @@ Pokud chcete, aby sledování zpráv B2B pro vaši aplikaci logiky Log Analytics
 
    ![Vyberte pracovní prostor Log Analytics](media/logic-apps-track-b2b-messages-omsportal/selectla.png)
 
-3. V části **správu**, zvolte **přehled**.
+3. V části **správu**, zvolte **shrnutí pracovního prostoru**.
 
    ![Zvolte portálu služby Log Analytics](media/logic-apps-track-b2b-messages-omsportal/omsportalpage.png)
 

@@ -14,23 +14,23 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: 706e946e61f7d5f48ce5071e90d724af717449d9
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 724603fdb80e6fce7d5b8756655d23a6c32d5558
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45575214"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49405459"
 ---
 # <a name="azure-operational-security-overview"></a>Přehled provozního zabezpečení Azure
 [Azure operational security](https://docs.microsoft.com/azure/security/azure-operational-security) odkazuje na služby, ovládací prvky a funkce, které jsou dostupné pro uživatele k ochraně svých dat, aplikací a dalších prostředků ve službě Microsoft Azure. Je architektura, která zahrnuje poznatky získané prostřednictvím různých možností, které jsou jedinečné pro Microsoft. Mezi tyto možnosti patří Microsoft Security Development Lifecycle (SDL), programu Microsoft Security Response Center a hloubkové povědomí o zabezpečení.
 
-## <a name="operations-management-suite"></a>Operations Management Suite
+##  <a name="azure-management-services"></a>Služeb Azure pro správu
 Operace má IT tým zodpovídá za správu infrastruktury datového centra, aplikace a data, včetně stabilitu a zabezpečení těchto systémů. Získávání informací o zabezpečení napříč často zvýšení komplexní IT prostředí však vyžaduje organizacím cobble dohromady data z několika systémů zabezpečení a správu.
 
-[Microsoft Operations Management Suite](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview) je cloudové řešení pro správu IT, která pomáhá spravovat a chránit místní a cloudovou infrastrukturu. Jejích klíčových funkcí poskytuje tyto služby, které běží v Azure. Každá služba poskytuje specifickou funkci správy. Můžete kombinovat služby dosahovat různých scénářů správy. 
+[Microsoft Log Analytics](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview) je cloudové řešení pro správu IT, která pomáhá spravovat a chránit místní a cloudovou infrastrukturu. Jejích klíčových funkcí poskytuje tyto služby, které běží v Azure. Azure obsahuje několik služeb, které vám pomůžou spravovat a chránit svoje místní a cloudovou infrastrukturu. Každá služba poskytuje specifickou funkci správy. Můžete kombinovat služby dosahovat různých scénářů správy. 
 
-### <a name="log-analytics"></a>Log Analytics
-[Azure Log Analytics](http://azure.microsoft.com/documentation/services/log-analytics) zajišťuje služby monitorování pro Operations Management Suite získáváním dat ze spravovaných prostředků do centrálního úložiště. Tato data můžou obsahovat události, údaje o výkonu nebo vlastní data poskytovaná prostřednictvím rozhraní API. Po shromáždění dat je k dispozici pro výstrahy, analýzu a export. 
+### <a name="azure-monitor"></a>Azure Monitor
+[Azure Monitor](https://docs.microsoft.com/en-us/azure/azure-monitor/overview) shromažďuje data ze spravovaných sourcesa do centrální datových úložišť. Tato data můžou obsahovat události, údaje o výkonu nebo vlastní data poskytovaná prostřednictvím rozhraní API. Po shromáždění dat je k dispozici pro výstrahy, analýzu a export. 
 
 Můžete sloučit data z různých zdrojů a kombinovat data ze služby Azure s existujícím místním prostředím. Log Analytics také jasně odděluje získávání dat od akcí provedených na těchto datech, tak, aby všechny akce jsou k dispozici pro všemi druhy dat.
 
@@ -85,7 +85,7 @@ Security Center posuzuje konfiguraci vašich prostředků identifikovat problém
 >[!Note]
 >Další informace o rolích a povolené akce ve službě Security Center, najdete v článku [oprávnění ve službě Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-permissions).
 
-Security Center používá agenta Microsoft Monitoring Agent. Toto je stejný agent, který pomocí Operations Management Suite a služba Log Analytics. Data shromážděná z tohoto agenta se ukládají do obou Log Analytics existující [pracovní prostor](https://docs.microsoft.com/azure/log-analytics/log-analytics-manage-access) přidružený k vašemu předplatnému Azure nebo vytvořte nový zohledněním polohu virtuálního počítače.
+Security Center používá agenta Microsoft Monitoring Agent. To je stejný agent, který používá služba Log Analytics. Data shromážděná z tohoto agenta se ukládají do obou Log Analytics existující [pracovní prostor](https://docs.microsoft.com/azure/log-analytics/log-analytics-manage-access) přidružený k vašemu předplatnému Azure nebo vytvořte nový zohledněním polohu virtuálního počítače.
 
 ## <a name="azure-monitor"></a>Azure Monitor
 Problémy s výkonem v cloudové aplikaci může ovlivnit vaše podnikání. S několika propojených součástí a časté vydané verze může dojít, snížení výkonnosti v každém okamžiku. A pokud vyvíjíte aplikaci, vaši uživatelé obvykle zjišťovat problémy, které jste nenašli při testování. Měli byste vědět o tyto problémy okamžitě a měli byste mít nástroje pro diagnostiku a řešení problémů.
@@ -155,8 +155,8 @@ Osvojte si profesionálové DevOps používají některé z následujících pos
 -   [Mikroslužby](https://www.visualstudio.com/learn/what-are-microservices/) architektura se používá k izolaci obchodních případů použití do malých, opakovaně použitelných služeb.  Tato architektura umožňuje škálování a efektivitu.
 
 ## <a name="next-steps"></a>Další postup
-Další informace o řešení Operations Management Suite Security and Audit, naleznete v následujících článcích:
+Další informace o řešení zabezpečení a Audit, naleznete v následujících článcích:
 
 - [Zabezpečení a dodržování předpisů](https://www.microsoft.com/cloud-platform/security-and-compliance)
-- [Monitorování a reagování na výstrahy zabezpečení v řešení Operations Management Suite Security and Audit](https://docs.microsoft.com/azure/operations-management-suite/oms-security-responding-alerts)
-- [Monitorování prostředků v řešení Operations Management Suite Security and Audit](https://docs.microsoft.com/azure/operations-management-suite/oms-security-monitoring-resources)
+- [Azure Security Center](https://docs.microsoft.com/en-us/azure/security-center/security-center-intro)
+- [Azure Monitor](https://docs.microsoft.com/en-us/azure/azure-monitor/overview)
