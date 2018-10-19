@@ -5,16 +5,16 @@ description: Naučte se rozpoznávat řeč v Javě na Androidu s využitím sady
 services: cognitive-services
 author: fmegen
 ms.service: cognitive-services
-ms.technology: Speech
+ms.component: Speech
 ms.topic: quickstart
 ms.date: 09/24/2018
 ms.author: fmegen
-ms.openlocfilehash: 0a52889ef879aeb8a5a1ed59b74619dc3337e1e9
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 6428dbaabfe176e8d741818ee338bbc2a6bc70bb
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47432781"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48883869"
 ---
 # <a name="quickstart-recognize-speech-in-java-on-android-by-using-the-speech-sdk"></a>Rychlý start: Rozpoznávání řeči v Javě na Androidu s využitím sady Speech SDK
 
@@ -112,7 +112,7 @@ Textová a grafická podoba uživatelského rozhraní by teď měla vypadat něj
 
 ## <a name="add-sample-code"></a>Přidání ukázkového kódu
 
-1. Otevřete zdrojový soubor `MainActivity.java`. Nahraďte všechen kód za příkazem `package` následujícím kódem.
+1. Otevřete zdrojový soubor `MainActivity.java`. Veškerý kód v tomto souboru nahraďte následujícím kódem.
 
    [!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java-android/app/src/main/java/com/microsoft/cognitiveservices/speech/samples/quickstart/MainActivity.java#code)]
 

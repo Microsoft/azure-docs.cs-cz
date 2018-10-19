@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 88bc55bfcf1fef825ab7475f6008d49ed274d534
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 474cae69353555064f4e866e9f3fc756a127a64f
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49393214"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49403283"
 documentType: LandingData
 title: Uživatelská dokumentace k Azure Stacku
 metadata:
@@ -73,6 +73,7 @@ sections:
     - html: <a href="/azure/azure-stack/user/azure-stack-solution-staged-data-analytics">Vytvořit řešení analýzy pracovních dat s využitím Azure a Azure Stack </a>
     - html: <a href="/azure/azure-stack/user/azure-stack-solution-cloud-burst">Vytvoření řešení škálování cloudu s Azure</a>
     - html: <a href="/azure/azure-stack/user/azure-stack-solution-geo-distributed">Vytvoření řešení geograficky distribuované aplikace s využitím Azure a Azure Stack</a>
+    - html: <a href="/azure/azure-stack/userazure-stack-solution-hybrid-cloud">Nasazení řešení s hybridní cloud s Azure a Azure Stack</a>
 - title: Referenční informace
   items:
   - type: list

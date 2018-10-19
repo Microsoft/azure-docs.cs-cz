@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 09/21/2018
 ms.author: snehaa
-ms.openlocfilehash: 2b704edee55f7d15da1b59d8f8b357b9ba7ca8f3
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: e39cf260cc4931fc0dddc4922479522cb521d08e
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48239213"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49407057"
 ---
 # <a name="azure-migrate---frequently-asked-questions-faq"></a>Azure Migrate – nejčastější dotazy (FAQ)
 
@@ -62,7 +62,7 @@ Další součásti (například antivirový program) mohou být přidány do. Š
 
 ### <a name="what-data-is-collected-by-azure-migrate"></a>Jaká data se shromažďují službou Azure Migrate?
 
-Azure Migrate podporuje dva druhy zjišťování, zjišťování na základě zařízení a zjišťování na základě agenta.
+Azure Migrate podporuje dva druhy zjišťování: zjišťování na základě zařízení a zjišťování na základě agenta.
 Zjišťování na základě zařízení shromažďuje metadata o místních virtuálních počítačů, úplný seznam metadat shromážděných zařízení je uveden níže:
 
 **Data konfigurace virtuálního počítače**
@@ -86,7 +86,7 @@ Zjišťování na základě zařízení shromažďuje metadata o místních virt
   - Sítě v
   - Síťové výstupy
 
-Zjišťování na základě agenta možnost je k dispozici nad rámec zjišťování na základě zařízení a pomáhá zákazníkům [vizualizace závislostí](how-to-create-group-machine-dependencies.md) virtuálních počítačů v místním prostředí. Agenti závislosti shromažďování podrobností jako plně kvalifikovaný název domény, operačního systému, IP adresa, adresa MAC, spuštěné procesy v rámci virtuálního počítače a příchozí/odchozí připojení TCP z virtuálního počítače. Zjišťování na základě agenta je volitelné a můžete zvolit není nainstalovat agenty, pokud nechcete vizualizovat závislosti virtuálních počítačů.
+Zjišťování na základě agenta je druhá možnost dostupná vedle zjišťování na základě zařízení a pomáhá zákazníkům [vizualizovat závislosti](how-to-create-group-machine-dependencies.md) virtuálních počítačů v místním prostředí. Agenti závislostí shromažďují podrobnosti, jako je plně kvalifikovaný název domény, operační systém, IP adresa, adresa MAC, procesy spuštěné ve virtuálním počítači a příchozí/odchozí připojení TCP virtuálního počítače. Zjišťování na základě agenta je volitelné a můžete zvolit není nainstalovat agenty, pokud nechcete vizualizovat závislosti virtuálních počítačů.
 
 ### <a name="would-there-be-any-performance-impact-on-the-analyzed-esxi-host-environment"></a>By existovat ovlivnit výkon prostředí analyzované hostitele ESXi?
 
@@ -98,7 +98,7 @@ Zavedli jsme průběžné profilace údaje o výkonu (což je ve verzi preview).
 
 Data shromažďovaná společností zařízení kolektoru je uložen v umístění Azure, který zadáte při vytváření projektu migrace. Data je bezpečně uložen v rámci předplatného Microsoft a se odstraní při odstranění projektu Azure Migrate.
 
-Pro vizualizaci závislostí, při instalaci agentů na virtuálních počítačích, data shromážděná agenty závislostí se ukládají v USA v pracovním prostoru OMS vytvoří v předplatném uživatele. Tato data jsou odstraněna při odstranění pracovního prostoru OMS ve vašem předplatném. [Další informace](https://docs.microsoft.com/azure/migrate/concepts-dependency-visualization).
+Pro vizualizaci závislostí Pokud nenainstalujete agenty na virtuální počítače, data shromážděná agenty závislostí uložená v USA v pracovním prostoru Log Analytics vytvořené v rámci předplatného uživatele. Tato data jsou odstraněna při odstranění pracovního prostoru Log Analytics v rámci vašeho předplatného. [Další informace](https://docs.microsoft.com/azure/migrate/concepts-dependency-visualization).
 
 ### <a name="is-the-data-encrypted-at-rest-and-while-in-transit"></a>Má tato data šifrovat v klidovém stavu a v průběhu přenosu?
 
@@ -151,7 +151,7 @@ Ano, Azure Migrate teď umožňuje připojení existujícího pracovního prosto
 
 ### <a name="can-i-export-the-dependency-visualization-report"></a>Můžete exportovat sestavu vizualizace závislostí?
 
-Ne, není možné exportovat vizualizace závislostí. Ale protože Azure Migrate využívá mapu služeb pro vizualizaci závislostí, můžete použít [rozhraní REST API služby mapy](https://docs.microsoft.com/rest/api/servicemap/machines/listconnections) získat závislosti ve formátu json.
+Ne, vizualizace závislostí se nedá exportovat. Ale protože Azure Migrate využívá mapu služeb pro vizualizaci závislostí, můžete použít [rozhraní REST API služby mapy](https://docs.microsoft.com/rest/api/servicemap/machines/listconnections) získat závislosti ve formátu json.
 
 ### <a name="how-can-i-automate-the-installation-of-microsoft-monitoring-agent-mma-and-dependency-agent"></a>Jak automatizovat instalaci Microsoft Monitoring Agent (MMA) a agenta závislostí
 
