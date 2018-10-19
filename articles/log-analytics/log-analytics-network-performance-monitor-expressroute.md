@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
 ms.component: ''
-ms.openlocfilehash: f08b9e60a632428a120f9cfa50d29f1454e0b1d5
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 73978609d018eb43ab8031dc6e8261861e1ee3bf
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041155"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49402526"
 ---
 # <a name="expressroute-monitor"></a>ExpressRoute Monitor
 
@@ -36,7 +36,7 @@ Můžete použít funkce monitorování Azure ExpressRoute v [Network Performanc
 Chcete-li spustit nástroj konfigurace pro sledování výkonu sítě, otevřete [řešení Network Performance Monitor](log-analytics-network-performance-monitor.md) a vyberte **konfigurovat**.
 
 ### <a name="configure-network-security-group-rules"></a>Konfigurace pravidla skupiny zabezpečení sítě 
-Pro servery v Azure, které se používají pro monitorování prostřednictvím služby Network Performance Monitor nakonfigurujte skupiny (NSG) pravidla zabezpečení sítě umožňující provoz TCP na portu, používaný Network Performance Monitor pro syntetické transakce. Výchozí port je 8084. Tato konfigurace umožňuje Operations Management Suite agent nainstalovaný na virtuálních počítačích Azure ke komunikaci s místní agent monitorování. 
+Pro servery v Azure, které se používají pro monitorování prostřednictvím služby Network Performance Monitor nakonfigurujte skupiny (NSG) pravidla zabezpečení sítě umožňující provoz TCP na portu, používaný Network Performance Monitor pro syntetické transakce. Výchozí port je 8084. Tato konfigurace umožňuje agenta Log Analytics, který je nainstalován na virtuálních počítačích Azure ke komunikaci s místní agent monitorování. 
 
 Další informace o skupinách Nsg najdete v tématu [skupiny zabezpečení sítě](../virtual-network/manage-network-security-group.md). 
 

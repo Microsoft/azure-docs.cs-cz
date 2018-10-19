@@ -1,6 +1,6 @@
 ---
-title: Připojení k virtuálním sítím Azure z Azure Logic Apps
-description: Pro přístup k virtuálním sítím Azure z Azure Logic Apps, prostředí můžete vytvořit privátních, vyhrazených a izolované integrační služby, které udržují logic apps a dalších prostředků nezávislá na veřejných nebo "globální" Azure
+title: Připojení k virtuálním sítím Azure z Azure Logic Apps prostřednictvím integrace služby prostředí (ISE)
+description: Vytvořit prostředí integrační služby (ISE) aby logic apps a účty pro integraci měli přístup k virtuálním sítím Azure, při zachování soukromých a izolované od veřejné nebo "globální" Azure
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -9,23 +9,21 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 09/25/2018
-ms.openlocfilehash: 354c31014448b914b33d2bef5483efc78092f726
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: b4e4e801c3c54b635f2f13b319257018ea544c03
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47391917"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49404116"
 ---
-# <a name="create-isolated-environments-to-access-azure-virtual-networks-from-azure-logic-apps"></a>Vytvoření izolované prostředí pro přístup k virtuálním sítím Azure z Azure Logic Apps
+# <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-through-an-integration-service-environment-ise"></a>Připojení k virtuálním sítím Azure z Azure Logic Apps prostřednictvím integrace služby prostředí (ISE)
 
 > [!NOTE]
 > Tato funkce je v *ve verzi private preview*. Chcete-li požádat o přístup, [vytváření žádosti o připojení tady](https://aka.ms/iseprivatepreview).
 
-Pro scénáře integrace, kde se vaše aplikace logiky a účty pro integraci potřebují přístup k [virtuální síť Azure](../virtual-network/virtual-networks-overview.md), můžete vytvořit [ *prostředí integrační služby* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) , který odkazuje na vaše virtuální síť a nasadí služba Logic Apps do vaší sítě. Při vytváření aplikací logiky a účty pro integraci, vyberte tento ISE jako jejich umístění. Logic apps a účty pro integraci můžete pak přímý přístup k prostředkům, jako jsou virtuální počítače (VM), servery, systémy a služby ve vaší virtuální síti. 
+Pro scénáře integrace, kde se vaše aplikace logiky a účty pro integraci potřebují přístup k [virtuální síť Azure](../virtual-network/virtual-networks-overview.md), vytvořte [ *prostředí integrační služby* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), což je privátní a izolované prostředí, které používá vyhrazeného úložiště a dalším prostředkům udržovány odděleně od veřejně nebo *globální* služba Logic Apps. Toto oddělení také snižuje předejde jiných tenantů Azure může mít na výkon vaší aplikace. Tento ISE můžete propojit vaši virtuální síť Azure, které služba Logic Apps pak nasadí do vaší virtuální sítě. Při vytváření logiku aplikace nebo integračního účtu, vyberte tento ISE jako jejich umístění. Váš účet integrace nebo aplikace logiky můžete pak přímý přístup k prostředkům, jako jsou virtuální počítače (VM), servery, systémy a služby ve vaší virtuální síti. 
 
 ![Vyberte prostředí integrační služby](./media/connect-virtual-network-vnet-isolated-environment/select-logic-app-integration-service-environment.png)
-
-Vaše ISE je privátní a izolované prostředí, která používá vyhrazeného úložiště a další prostředky, které existují samostatně z veřejného nebo *globální* služba Logic Apps. Tato separace pomáhá také omezit dopady, které jiných tenantů Azure může mít na výkon vaší aplikace. 
 
 Tento článek popisuje, jak k provádění těchto úkolů:
 
@@ -150,7 +148,7 @@ V seznamu výsledků vyberte **prostředí integrační služby (preview)** a kl
    | Vlastnost | Požaduje se | Hodnota | Popis |
    |----------|----------|-------|-------------|
    | **Název** | Ano | <*Název prostředí*> | Název prostředí | 
-   | **Předplatné** | Ano | <*Název předplatného Azure*> | Předplatné Azure, které můžete použít pro vaše prostředí | 
+   | **Předplatné** | Ano | <*název_předplatného_Azure*> | Předplatné Azure, které můžete použít pro vaše prostředí | 
    | **Skupina prostředků** | Ano | <*Azure-resource-group-name*> | Skupina prostředků Azure, ve kterém chcete vytvořit prostředí |
    | **Umístění** | Ano | <*Oblast datového centra Azure*> | Datacentru Azure v oblasti kam se mají ukládat informace o vašem prostředí |
    | **Partnerská virtuální síť** | Ne | <*Název virtuální sítě Azure*> | Virtuální síť Azure pro přidružení k prostředí jako *peer* tak logiku aplikace v daném prostředí mají přístup k vaší virtuální sítě. Než budete moct vytvořit tuto relaci, ujistěte se, že jste již [nastavit řízení přístupu na základě role ve službě virtual network pro Azure Logic Apps](#vnet-access). <p>**Důležité**: i když se virtuální síť se nevyžaduje, můžete vybrat virtuální síť *pouze* při vytváření vašeho prostředí. | 

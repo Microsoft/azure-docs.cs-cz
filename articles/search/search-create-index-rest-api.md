@@ -1,21 +1,21 @@
 ---
 title: Vytvoření indexu (REST API – Azure Search) | Dokumentace Microsoftu
 description: Vytvořte index v kódu pomocí rozhraní HTTP REST API Azure Search.
-author: chaosrealm
-manager: jlembicz
-ms.author: eugenesh
+ms.date: 10/17/2018
+author: mgottein
+manager: cgronlun
+ms.author: magottei
 tags: azure-portal
 services: search
 ms.service: search
 ms.devlang: rest-api
-ms.topic: quickstart
-ms.date: 04/20/2018
-ms.openlocfilehash: 86260e1929e8bd5c31682ef7f59cacae19a66020
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: HT
+ms.topic: conceptual
+ms.openlocfilehash: ff534bc287e3872ee87ed808be249a6e68c68ab3
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32182027"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49403539"
 ---
 # <a name="create-an-azure-search-index-using-the-rest-api"></a>Vytvoření indexu Azure Search pomocí rozhraní REST API
 > [!div class="op_single_selector"]
@@ -102,5 +102,5 @@ Pokud jste s indexem hotovi a chcete ho odstranit, stačí vydat žádost HTTP D
     api-key: [api-key]
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Po vytvoření indexu Azure Search budete připravení [nahrát do indexu obsah](search-what-is-data-import.md), abyste mohli začít prohledávat data.

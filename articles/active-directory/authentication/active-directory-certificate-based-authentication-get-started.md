@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: annaba
-ms.openlocfilehash: ea65dcca3e5de06d1bc966b3e7cb6b608260a053
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 27febb01b04bd8ac82b8cd428afce78dc57f8b8d
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48803954"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49403558"
 ---
 # <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>Začínáme s ověřováním na základě certifikátů v Azure Active Directory
 
@@ -37,7 +37,7 @@ Konfigurace ověřování pomocí certifikátů, musí platit následující př
 
 - Ověřování pomocí certifikátu (certifikátů) je podporována pouze pro federativní prostředí pro aplikace prohlížeče nebo nativní klienty používající moderní ověřování (ADAL). Jedinou výjimkou je Exchange Active Sync (EAS) pro Exchange Online (EXO), který lze použít u federovaných a spravovaných účtů.
 - Kořenová certifikační autorita a všechny zprostředkující certifikační autority musí být nakonfigurovány v Azure Active Directory.
-- Každou certifikační autority musí mít seznam odvolaných certifikátů (CRL), který může být odkazováno prostřednictvím internetového adresy URL.
+- Každou certifikační autority musí mít seznam odvolaných certifikátů (CRL), který může být odkazováno prostřednictvím adresy URL přístupem k Internetu.
 - Musí mít alespoň jeden certifikační autorita nakonfigurovaná ve službě Azure Active Directory. Související postup v najdete [konfigurace certifikační autority](#step-2-configure-the-certificate-authorities) oddílu.
 - U klientů Exchange ActiveSync klientský certifikát musí mít směrovatelné e-mailovou adresu uživatele v systému Exchange online v hlavní název nebo název RFC822 hodnota pole alternativní název subjektu. Azure Active Directory mapuje RFC822 hodnotu atributu adresa proxy serveru v adresáři.
 - Klientské zařízení musí mít přístup k alespoň jeden certifikační autority, která vydává certifikáty klienta.
@@ -60,7 +60,7 @@ Související informace existuje pro zařízení s následujícími platformami:
 Konfigurace certifikačních autorit ve službě Azure Active Directory, pro každou certifikační autority, odešlete následující:
 
 * Veřejnou část certifikátu v *.cer* formátu
-* Internetové adresy URL ve kterém se nacházejí seznamy odvolaných certifikátů (CRL)
+* Internetové adresy URL, kde se nacházejí seznamy odvolaných certifikátů (CRL)
 
 Schéma pro certifikační autority by měl vypadat takto:
 
@@ -178,7 +178,7 @@ Pokud vaše přihlášení úspěšné, pak víte, že:
 
 1. Na testovacím zařízení instalace mobilní aplikace Office (třeba Onedrivu).
 3. Spusťte aplikaci.
-4. Zadejte své uživatelské jméno a pak vyberte certifikát uživatele, který chcete použít.
+4. Zadejte svoje uživatelské jméno a pak vyberte certifikát uživatele, který chcete použít.
 
 By měl být úspěšném přihlášení.
 

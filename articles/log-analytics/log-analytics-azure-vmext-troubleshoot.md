@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/08/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 9fd06a8680a52ac0002f20da88d563ad1cbdb79a
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 845bc46ec56bfd6681c4fb318a57de19f66c0edf
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041335"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49403863"
 ---
 # <a name="troubleshooting-the-log-analytics-vm-extension"></a>Řešení potíží s rozšíření virtuálního počítače Log Analytics
 Tento článek poskytuje nápovědu řešení potíží s chybami setkat s rozšířením Log Analytics VM pro virtuální počítače Windows a Linuxu spuštěné na Microsoft Azure a navrhne řešení k jejich řešení.
@@ -61,16 +61,17 @@ Pokud *agenta Microsoft Monitoring Agent* není instalace rozšíření virtuál
 Další informace najdete v tématu [řešení potíží s rozšířeními Windows](../virtual-machines/windows/extensions-oms.md).
 
 ## <a name="troubleshooting-linux-vm-extension"></a>Řešení potíží s rozšíření virtuálního počítače s Linuxem
-Pokud *agenta OMS pro Linux* není instalace rozšíření virtuálního počítače nebo vytváření sestav, můžete provést následující kroky k odstranění tohoto problému.
+[!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)] 
+Pokud *agenta Log Analytics pro Linux* není instalace rozšíření virtuálního počítače nebo vytváření sestav, můžete provést následující kroky k odstranění tohoto problému.
 
 1. Pokud je stav rozšíření *neznámý* zkontrolujte, jestli je nainstalovaný agent virtuálního počítače Azure a správně funguje, zobrazením souboru protokolu agenta virtuálního počítače `/var/log/waagent.log`
    * Pokud v protokolu neexistuje, není nainstalován agent virtuálního počítače.
    * [Nainstalujte agenta virtuálního počítače Azure na virtuálních počítačích s Linuxem](log-analytics-quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)
-2. Ostatní stavy není v pořádku, najdete v tématu agenta OMS pro rozšíření virtuálního počítače s Linuxem soubory protokolů `/var/log/azure/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux/*/extension.log` a `/var/log/azure/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux/*/CommandExecution.log`
-3. Pokud se stav extension byl v pořádku, ale není v průběhu nahrávání dat zkontrolujte agenta OMS pro Linux soubory protokolu v `/var/opt/microsoft/omsagent/log/omsagent.log`
+2. Ostatní stavy není v pořádku, najdete v tématu agenta Log Analytics pro rozšíření virtuálního počítače s Linuxem soubory protokolů `/var/log/azure/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux/*/extension.log` a `/var/log/azure/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux/*/CommandExecution.log`
+3. Pokud se stav extension byl v pořádku, ale není v průběhu nahrávání dat zkontrolujte agenta pro Linux soubory protokolu v Log Analytics `/var/opt/microsoft/omsagent/log/omsagent.log`
 
 Další informace najdete v tématu [řešení potíží s rozšířeními Linux](../virtual-machines/linux/extensions-oms.md).
 
 ## <a name="next-steps"></a>Další postup
 
-Další pokyny k odstraňování související s agentem OMS pro Linux hostované na počítače mimo Azure, najdete v části [řešení potíží s agentem Azure Log Analytics Linux](log-analytics-agent-linux-support.md).  
+Další pokyny k odstraňování souvisejících agenta Log Analytics pro Linux hostované na počítače mimo Azure, najdete v části [řešení potíží s agentem Azure Log Analytics Linux](log-analytics-agent-linux-support.md).  

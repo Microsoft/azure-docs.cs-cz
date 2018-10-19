@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: jasonh
-ms.openlocfilehash: 87d1593327ab45f064c6f6b19dfbe3882baaa446
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 1a526bfdd951e4dc2897ec52c03bfbe96ee14d4c
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43109512"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49403674"
 ---
 # <a name="use-azure-log-analytics-to-monitor-hdinsight-clusters"></a>Monitorování clusterů HDInsight pomocí Azure Log Analytics
 
@@ -84,16 +84,16 @@ HDInsight nabízí řešení pro správu specifických pro cluster, které můž
 
 Toto jsou k dispozici řešení HDInsight:
 
-* HDInsight Hadoop Monitoring
+* Sledování pro HDInsight Hadoop
 * Monitorování HDInsight HBase
 * HDInsight Interactive Query monitorování
-* Monitoring pro Kafka HDInsight
-* Monitoring pro HDInsight Spark
-* HDInsight Storm Monitoring
+* Sledování pro HDInsight Kafka
+* Sledování pro HDInsight Spark
+* Sledování pro HDInsight Storm
 
 Pokyny k instalaci řešení pro správu najdete v tématu [řešení pro správu v Azure](../monitoring/monitoring-solutions.md#install-a-management-solution). Můžete experimentovat, nainstalujte řešení HDInsight Hadoop Monotiring. Po dokončení, uvidíte **HDInsightHadoop** dlaždici v části **Souhrn**. Vyberte **HDInsightHadoop** dlaždici. Řešení HDInsightHadoop vypadá takto:
 
-![HDInsight Hadoop OMS řešení zobrazení monitorování](media/hdinsight-hadoop-oms-log-analytics-tutorial/hdinsight-oms-hdinsight-hadoop-monitoring-solution.png)
+![Zobrazení monitorování řešení HDInsight](media/hdinsight-hadoop-oms-log-analytics-tutorial/hdinsight-oms-hdinsight-hadoop-monitoring-solution.png)
 
 Protože clusteru je to úplně nový cluster, nebude se v sestavě zobrazovat žádné aktivity.
 

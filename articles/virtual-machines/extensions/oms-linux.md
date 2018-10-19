@@ -15,18 +15,21 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: roiyz
-ms.openlocfilehash: bab579b540dbeed8ecbff8925547509edb1d78c9
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: dc0d7857dbbbdc862878201ba9d47632d2b5affd
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49352372"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49404847"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-linux"></a>Log Analytics rozšíření virtuálního počítače pro Linux
 
 ## <a name="overview"></a>Přehled
 
 Log Analytics poskytuje možnosti nápravy monitorování, výstrahy a oznámení napříč cloudovou a místní prostředky. Rozšíření virtuálního počítače agenta Log Analytics pro Linux je publikována a podporované společností Microsoft. Rozšíření nainstaluje agenta Log Analytics ve službě Azure virtual machines a zaregistruje virtuální počítače do existujícího pracovního prostoru Log Analytics. Tento dokument podrobně popisuje podporované platformy, konfigurace a možnosti nasazení pro virtuální počítač rozšíření Log Analytics pro Linux.
+
+>[!NOTE]
+>Jako součást probíhající přechod z Microsoft Operations Management Suite (OMS) do Azure monitoru Agent OMS pro Windows nebo Linux bude odkazovat jako agenta Log Analytics pro Windows a Log Analytics agenta pro Linux.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -49,7 +52,7 @@ Rozšíření agenta Log Analytics je možné spouštět proti těmto Linuxovýc
 >
 
 ### <a name="agent-and-vm-extension-version"></a>Verze agenta a rozšíření virtuálního počítače
-Následující tabulka obsahuje mapování verzi rozšíření virtuálního počítače Log Analytics a agenta Log Analytics sady pro každou vydanou verzí. Odkaz na poznámky k verzi sady agenta Log Analytics je součástí. Poznámky k verzi obsahují informace o opravy a nové funkce, které jsou k dispozici pro daného agenta verze.  
+Následující tabulka obsahuje mapování verzi rozšíření virtuálního počítače Log Analytics a sady agenta Log Analytics pro každou vydanou verzí. Odkaz na poznámky k verzi sady agenta Log Analytics je součástí. Poznámky k verzi obsahují informace o opravy a nové funkce, které jsou k dispozici pro daného agenta verze.  
 
 | Verze rozšíření log Analytics virtuálního počítače s Linuxem | Verze sady prostředků log Analytics agenta | 
 |--------------------------------|--------------------------|
@@ -210,13 +213,13 @@ Rozšíření provádění výstup je zaznamenán do následujícího souboru:
 | 9 | Povolit volá předčasně ukončen. | [Aktualizace agenta Azure Linux](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent) nejnovější dostupnou verzi. |
 | 10 | Virtuální počítač je už připojený k pracovnímu prostoru Log Analytics | Připojení virtuálního počítače do pracovního prostoru, určená ve schématu rozšíření, stopOnMultipleConnections nastavena na hodnotu false v nastavení veřejné nebo odeberte tuto vlastnost. Tento virtuální počítač se fakturují za každý pracovní prostor po připojení. |
 | 11 | Neplatná konfigurace rozšíření k dispozici | Postupujte podle předchozích ukázkách nastavit všechny hodnoty vlastností nezbytné pro nasazení. |
-| 17 | Selhání instalace balíčku OMS | 
+| 17 | Selhání instalace balíčku analýzy protokolů | 
 | 19 | Selhání instalace balíčku (OMI) | 
 | 20 | Selhání instalace balíčku SCX |
 | 51 | Toto rozšíření nepodporuje operační systém Virtuálního počítače | |
-| 55 | Nejde se připojit ke službě OMS nebo chybějící požadované balíčky nebo dpkg balíček správce uzamčeno| Zkontrolujte, že systém má přístup k Internetu nebo že byl poskytnut správný proxy server HTTP. Kromě toho zkontrolujte správnost ID pracovního prostoru a ověřte, zda jsou nainstalované nástroje curl a cíl. |
+| 55 | Nejde se připojit ke službě Log Analytics nebo požadované balíčky je uzamčen chybí nebo je dpkg Správce balíčků| Zkontrolujte, že systém má přístup k Internetu nebo že byl poskytnut správný proxy server HTTP. Kromě toho zkontrolujte správnost ID pracovního prostoru a ověřte, zda jsou nainstalované nástroje curl a cíl. |
 
-Další informace o odstraňování potíží najdete na [Průvodce odstraňováním potíží OMS Agent pro Linux](../../log-analytics/log-analytics-azure-vmext-troubleshoot.md).
+Další informace o odstraňování potíží najdete na [Průvodce odstraňováním potíží se Log Analytics agenta pro Linux](../../log-analytics/log-analytics-azure-vmext-troubleshoot.md).
 
 ### <a name="support"></a>Podpora
 

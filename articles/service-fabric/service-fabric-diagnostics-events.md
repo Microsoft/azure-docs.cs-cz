@@ -1,6 +1,6 @@
 ---
-title: Azure Service Fabric události | Microsoft Docs
-description: Další informace o události Service Fabric poskytuje předinstalované vám pomohou monitorovat cluster Azure Service Fabric.
+title: Události Azure Service Fabric | Dokumentace Microsoftu
+description: Další informace o události Service Fabric poskytuje mimo pole, které vám pomohou monitorovat vašeho clusteru Azure Service Fabric.
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/25/2018
 ms.author: dekapur
-ms.openlocfilehash: b9372c806eab1b0ca69ba078d972b076c8a7d6f6
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: ca63d67f6d7c19b4ca6928c4cc0f9ccb06eace2b
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34212707"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49402977"
 ---
 # <a name="service-fabric-events"></a>Události služby Service Fabric 
 
-Platforma Service Fabric zapíše několik strukturovaných událostí pro klíče provozní aktivity děje ve vašem clusteru. Tyto v rozsahu od clusteru upgrady rozhodování umístění repliky. Každá událost, Service Fabric zpřístupní mapy na jednu z následujících entit v clusteru:
+Platforma Service Fabric zapisuje několik strukturovaných události pro klíče provozní činnosti děje ve vašem clusteru. Tyto sahají od upgrady clusteru rozhodnutí o umístění repliky. Každá událost, Service Fabric poskytuje mapuje na jednu z následujících entit v clusteru:
 * Cluster
 * Aplikace
 * Služba
@@ -31,23 +31,23 @@ Platforma Service Fabric zapíše několik strukturovaných událostí pro klí�
 * Replika 
 * Kontejner
 
-Pokud chcete zobrazit úplný seznam událostí, které jsou vystavené platforma - [seznamu Service Fabric události](service-fabric-diagnostics-event-generation-operational.md).
+Pokud chcete zobrazit úplný seznam událostí, které jsou vystavené platformy – [události seznamu Service Fabric](service-fabric-diagnostics-event-generation-operational.md).
 
-Zde jsou některé příklady scénářů důležité, aby měli byste vidět událostí v clusteru. 
-1. Události životního cyklu uzlu: jako uzly se spustit, přejděte, jsou aktivace nebo deaktivace nebo restartovat, události se zveřejní zobrazuje, co se stalo a vám pomůže určit, pokud vyskytl se problém s počítačem sám sebe nebo pokud se rozhraní API, která byla volána prostřednictvím SF na Změňte stav uzlu.
-1. Upgrade clusteru: během upgradu clusteru (SF verze nebo konfigurace změnit), zobrazí se upgrade zahájení, vrácení prostřednictvím všechny vaše UDs a dokončete (nebo vrácení změn). 
-1. Upgrady aplikací: podobně clusteru provede upgrade, po upgradu prostřednictvím je komplexní sadu událostí. Tyto události může být užitečné pochopit naplánovaného upgrade, aktuální stav upgradu a celkové posloupnost událostí. To je užitečné pro vyhledávání zpět zobrazíte co upgrady byly vráceny úspěšně.
-1. Nasazení aplikace nebo služby nebo odstranění: nejsou k dispozici události pro jednotlivé aplikace, služby a kontejneru, vytváření nebo odstraňování.
-1. Oddíl přesune (Rekonfigurace): při každém stavová oddíl prochází Rekonfigurace (změnit sady replik), se zaprotokoluje událost. To je užitečné, pokud chcete pochopit, jak často se mění vaší sady replik oddílu, nebo sledovat, který uzel byl spuštěn primární repliky v libovolném bodě v čase.
-1. Události Chaos: při použití Service Fabric [Chaos](service-fabric-controlled-chaos.md) služby, události se zobrazí pokaždé, když je služba spuštěna nebo zastavená, nebo když se vloží chybu v systému.
-1. Stav události: Service Fabric zpřístupní události stavu pokaždé, když se vytvoří upozornění nebo stavu zprávu o chybách, nebo entity přejde zpět do stavu OK stavu nebo vypršení platnosti sestavy stavu. Tyto události jsou velmi užitečný pro sledování stavu historických statistiky pro entitu. 
+Tady je několik příkladů důležitých scénářů, zobrazí se události ve vašem clusteru. 
+1. Události životního cyklu uzlu: jako uzly objevují, přejděte, se aktivace nebo deaktivace nebo restartování, události se zveřejní zobrazí, co se stalo a mohli snadno identifikovat, pokud se něco stalo s celý počítač nebo pokud se rozhraní API, která byla volána prostřednictvím SF do Změňte stav uzlu.
+1. Upgradovat cluster: během upgradu clusteru (SF verze nebo konfigurace změnit), zobrazí se upgrade zahájit, vrátit prostřednictvím všech vašich aktualizačními doménami a dokončit (nebo vrácení zpět). 
+1. Upgrady aplikací: podobně clusteru upgraduje, se vám komplexní sadu událostí, které prochází upgradem. Tyto události může být užitečné k pochopení, kdy bylo naplánováno upgradu, aktuální stav upgradu a celkový posloupnost událostí. To je užitečné pro vyhledávání zpět na zobrazení, co upgrady byly vráceny úspěšně.
+1. Nasazení aplikace/služby / odstranění: nejsou akce pro každou aplikaci, službě a kontejner, vytváření nebo odstraňování.
+1. Oddíl přesune (konfigurace): pokaždé, když se stavové oddílu prochází Rekonfigurace (Změna sady replik), zaprotokoluje událost, která. To je užitečné, pokud chcete pochopit, jak často se mění sady replik oddílu, nebo sledování, který uzel byl spuštěn primární repliky v libovolném bodě v čase.
+1. Chaos události: při použití Service Fabric [Chaos](service-fabric-controlled-chaos.md) service, zobrazí se události pokaždé, když služba spuštěna nebo zastavena, nebo když ho vkládá chybu v systému.
+1. Události stavu: Service Fabric zpřístupňuje události týkající se stavu pokaždé, když se vytvoří upozornění nebo stavu zprávu o chybách, nebo entity se vrátí do stavu OK stavu nebo sestava stavu vypršení platnosti. Tyto události jsou velmi užitečné ke sledování stavu historické statistiky pro entitu. 
 
-## <a name="how-to-access-events"></a>Jak přistupovat k událostem
+## <a name="how-to-access-events"></a>Jak získat přístup k události
 
-Existuje několik různých způsobů, pomocí kterých je přístupná Service Fabric události:
-* prostřednictvím provozní kanálu. Tyto můžete shromážděné prostřednictvím rozšíření diagnostiky Azure a odeslaných do tabulky úložiště pro spotřebu nebo přijímání do některého nástroje, například analýzy protokolů OMS. Pokud "Diagnostika" je povolena pro cluster, agent Azure Diagnostics je nasazený na clusteru a je ve výchozím nastavení nakonfigurován tak, aby si přečíst protokoly z provozní kanál. Další informace o konfiguraci [agenta Azure Diagnostics](service-fabric-diagnostics-event-aggregation-wad.md) ke změně konfigurace diagnostiky clusteru a vyberte další protokoly nebo čítače výkonu. 
-* prostřednictvím služby EventStore Rest API, která vám umožní dotazu clusteru přímo nebo prostřednictvím knihovny klienta služby prostředků infrastruktury. V tématu [dotazu EventStore rozhraní API pro události clusteru](service-fabric-diagnostics-eventstore-query.md).
+Existuje několik různých způsobů, pomocí kterých můžete získat přístup události Service Fabric:
+* prostřednictvím provozní kanál. Ty můžete shromážděné prostřednictvím rozšíření Azure Diagnostics a odesílána do tabulky úložiště k využití nebo příjem do nástroje, jako je Azure Log Analytics. Když "Diagnostika" je povolená pro cluster, agenta diagnostiky Azure je nasazený na clusteru a je ve výchozím nastavení nakonfigurovaný tak, aby si přečíst protokoly z provozní kanál. Další informace o konfiguraci [agenta diagnostiky Azure](service-fabric-diagnostics-event-aggregation-wad.md) upravit konfiguraci diagnostiky vašeho clusteru, aby se získaly další protokoly a čítače výkonu. 
+* prostřednictvím rozhraní Rest API Eventstoru služby, které umožňují dotazování clusteru přímo nebo prostřednictvím klientské knihovny Service Fabric. Zobrazit [rozhraní API Eventstoru dotazu pro události clusteru](service-fabric-diagnostics-eventstore-query.md).
 
 ## <a name="next-steps"></a>Další postup
-* Další informace na monitorování cluster - [monitorování clusteru a platforma](service-fabric-diagnostics-event-generation-infra.md).
-* Další informace o službě EventStore - [EventStore služba – Přehled](service-fabric-diagnostics-eventstore.md)
+* Další informace na monitorování vašeho clusteru – [monitorování clusteru a platforma](service-fabric-diagnostics-event-generation-infra.md).
+* Další informace o službě Eventstoru - [služby přehled Eventstoru](service-fabric-diagnostics-eventstore.md)

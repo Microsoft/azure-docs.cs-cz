@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: 7682a733c5630c16d9684ec3cb9e7757b03a8b1b
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: f6e8ed1725b7ba2a0cba8523ae03c0306337aba0
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48855931"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49402503"
 ---
 # <a name="azure-database-security-checklist"></a>Kontrolní seznam zabezpečení Azure databáze
 
@@ -46,7 +46,7 @@ Doporučujeme, abyste si přečetli [osvědčené postupy zabezpečení Azure Da
 |Kontrolní seznam kategorií| Popis|
 | ------------ | -------- |
 |**Ochrana dat**||
-| <br> Šifrování během pohybu/přenosu| <ul><li>[Transport Layer Security](https://docs.microsoft.com/windows-server/security/tls/transport-layer-security-protocol), k šifrování dat, když se data přenášejí do sítí.</li><li>Databáze vyžaduje zabezpečené komunikace z klientů na základě [TDS (tabulkových dat Stream)](https://msdn.microsoft.com/en-in/library/dd357628.aspx) protokol přes protokol TLS (Transport Layer Security).</li></ul> |
+| <br> Šifrování během pohybu/přenosu| <ul><li>[Transport Layer Security](https://docs.microsoft.com/windows-server/security/tls/transport-layer-security-protocol), k šifrování dat, když se data přenášejí do sítí.</li><li>Databáze vyžaduje zabezpečené komunikace z klientů na základě [TDS (tabulkových dat Stream)](https://msdn.microsoft.com/library/dd357628.aspx) protokol přes protokol TLS (Transport Layer Security).</li></ul> |
 |<br>Šifrování v klidovém stavu| <ul><li>[Transparentní šifrování dat](http://go.microsoft.com/fwlink/?LinkId=526242), pokud jsou neaktivní data fyzicky uložená v libovolné formě digitální.</li></ul>|
 |**Řízení přístupu**||  
 |<br> Přístup k databázi | <ul><li>[Ověřování](https://docs.microsoft.com/azure/sql-database/sql-database-control-access) ověřování (ověřování Azure Active Directory) AD používá identity spravované v Azure Active Directory.</li><li>[Autorizace](https://docs.microsoft.com/azure/sql-database/sql-database-control-access) uživatelům udělit nejmenší možná oprávnění.</li></ul> |

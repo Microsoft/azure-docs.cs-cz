@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: dab2dd2b1d020a7619b18f330640b7f555a1f8c1
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: dd404bf8766082148a2c5a1ae55189f5f82f9021
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48044378"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49404065"
 ---
 # <a name="collect-and-analyze-azure-activity-logs-in-log-analytics"></a>Shromažďování a analýza protokolů aktivit Azure do Log Analytics
 
@@ -75,8 +75,7 @@ Proveďte následující postup pro konfiguraci řešení Activity Log Analytics
     3. V *SubscriptionName* okna, klikněte na tlačítko **připojit**.  
         ![Připojit předplatné](./media/log-analytics-activity/subscription-connect.png)
 
-Pokud přidáte řešení na portálu OMS, zobrazí následující dlaždice. Přihlaste se k webu Azure portal pro připojení předplatného Azure do vašeho pracovního prostoru.  
-![Probíhá posouzení](./media/log-analytics-activity/tile-performing-assessment.png)
+Přihlaste se k webu Azure portal pro připojení předplatného Azure do vašeho pracovního prostoru.  
 
 ## <a name="using-the-solution"></a>Použití řešení
 

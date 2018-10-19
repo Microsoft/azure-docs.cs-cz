@@ -1,6 +1,6 @@
 ---
-title: Shromažďovat výstrahy Nagios a Zabbix ve službě OMS Log Analytics | Dokumentace Microsoftu
-description: Nagios a Zabbix jsou open source nástroje pro monitorování. Můžete shromažďovat výstrahy z těchto nástrojů do Log Analytics, aby bylo možné analyzovat taky výstrahy z jiných zdrojů.  Tento článek popisuje, jak nakonfigurovat agenta OMS pro Linux ke shromažďování výstrah z těchto systémů.
+title: Shromažďovat výstrahy Nagios a Zabbix v Log Analytics | Dokumentace Microsoftu
+description: Nagios a Zabbix jsou open source nástroje pro monitorování. Můžete shromažďovat výstrahy z těchto nástrojů do Log Analytics, aby bylo možné analyzovat taky výstrahy z jiných zdrojů.  Tento článek popisuje, jak nakonfigurovat agenta Log Analytics pro Linux ke shromažďování výstrah z těchto systémů.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -15,18 +15,19 @@ ms.workload: infrastructure-services
 ms.date: 04/13/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: e668b2e989571d911c967d08d8012b11adaebd4d
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: eb129ebe6d63396934cbcda509d711cc63a5ee1b
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041029"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49402936"
 ---
-# <a name="collect-alerts-from-nagios-and-zabbix-in-log-analytics-from-oms-agent-for-linux"></a>Shromažďovat výstrahy z řešení Nagios a Zabbix v Log Analytics z agenta OMS pro Linux 
-[Nagios](https://www.nagios.org/) a [Zabbix](http://www.zabbix.com/) jsou open source nástroje pro monitorování. Výstrahy můžete shromažďovat z těchto nástrojů do Log Analytics, aby mohl analyzovat spolu s [výstrahy z jiných zdrojů](log-analytics-alerts.md).  Tento článek popisuje, jak nakonfigurovat agenta OMS pro Linux ke shromažďování výstrah z těchto systémů.
+# <a name="collect-alerts-from-nagios-and-zabbix-in-log-analytics-from-log-analytics-agent-for-linux"></a>Shromažďovat výstrahy z řešení Nagios a Zabbix v Log Analytics z agenta Log Analytics pro Linux 
+[!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)]
+[Nagios](https://www.nagios.org/) a [Zabbix](http://www.zabbix.com/) jsou open source nástroje pro monitorování. Výstrahy můžete shromažďovat z těchto nástrojů do Log Analytics, aby mohl analyzovat spolu s [výstrahy z jiných zdrojů](log-analytics-alerts.md).  Tento článek popisuje, jak nakonfigurovat agenta Log Analytics pro Linux ke shromažďování výstrah z těchto systémů.
  
 ## <a name="prerequisites"></a>Požadavky
-Agenta OMS pro Linux podporuje shromažďování údajů o výstrahy Nagios verzi 4.2.x a Zabbix verzi 2.x.
+Agenta Log Analytics pro Linux podporuje shromažďování údajů o výstrahy Nagios verzi 4.2.x a Zabbix verzi 2.x.
 
 ## <a name="configure-alert-collection"></a>Konfigurace shromažďování dat výstrah
 

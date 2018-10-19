@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: jdial
-ms.openlocfilehash: debefb329304235818b7b441122b90ae9a2834a9
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 69d2d80e40400cc7fa40aeb5a163dce5036905ab
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45578306"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49402756"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Analýza provozu – nejčastější dotazy
 
@@ -77,9 +77,9 @@ Ano.
 
 Ano. Pokud vyberete existující pracovní prostor, ujistěte se, že byla migrována na nový dotazovací jazyk. Pokud nechcete upgradovat pracovní prostor, musíte vytvořit nový. Další informace o nový dotazovací jazyk, v tématu [Azure Log Analytics upgradovat na nové prohledávání protokolů](../log-analytics/log-analytics-log-search-upgrade.md).
 
-## <a name="can-my-azure-storage-account-be-in-one-subscription-and-my-operations-management-suite-workspace-be-in-a-different-subscription"></a>Můžete svůj účet úložiště Azure se v jednom předplatném a pracovní prostor Operations Management Suite se v jiném předplatném?
+## <a name="can-my-azure-storage-account-be-in-one-subscription-and-my-log-analytics-workspace-be-in-a-different-subscription"></a>Můžete svůj účet úložiště Azure se v jednom předplatném a pracovní prostor Log Analytics se v jiném předplatném?
 
-Ano, váš účet úložiště Azure může být v jednom předplatném, a váš pracovní prostor Operations Management Suite může být v jiném předplatném.
+Ano, váš účet úložiště Azure může být v jednom předplatném, a pracovního prostoru Log Analytics může být v jiném předplatném.
 
 ## <a name="can-i-store-raw-logs-in-a-different-subscription"></a>V jiném předplatném, ukládání nezpracovaných protokolů?
 
@@ -115,7 +115,7 @@ Pokud potíže potrvají, vyvolat připomínky můžete vystavit ve [fóru User 
 
 Vzhledem k tomu, může se zobrazit tato zpráva:
 - Analýza provozu nedávno povolilo řešení a nemusí mít ještě agregovat dostatek dat, aby se odvodit smysluplné přehledy.
-- Používáte bezplatnou verzi pracovního prostoru Operations Management Suite a překročení limitů kvóty. Můžete potřebovat použít pracovní prostor s větší kapacitou.
+- Používáte bezplatnou verzi pracovního prostoru Log Analytics a překročení limitů kvóty. Můžete potřebovat použít pracovní prostor s větší kapacitou.
     
 Pokud potíže potrvají, vyvolat připomínky můžete vystavit ve [fóru User voice](https://feedback.azure.com/forums/217313-networking?category_id=195844).
     

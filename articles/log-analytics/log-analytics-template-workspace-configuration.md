@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 06/11/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: f1cf38dd5687e14b0183de03b8eda41fe39808e3
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: a715c300cc5490eef9dbe7971dabe1733fd47f49
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041370"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49402212"
 ---
 # <a name="manage-log-analytics-using-azure-resource-manager-templates"></a>Správa služby Log Analytics pomocí šablon Azure Resource Manageru
 Můžete použít [šablon Azure Resource Manageru](../azure-resource-manager/resource-group-authoring-templates.md) vytvořit a nakonfigurovat pracovní prostory Log Analytics. Mezi příklady úloh, které můžete provádět pomocí šablony patří:
@@ -178,7 +178,7 @@ Následující šablony ukázka ilustruje způsob:
       "minValue": 7,
       "maxValue": 730,
       "metadata": {
-        "description": "Number of days of retention. Free plans can only have 7 days, Standalone and OMS plans include 30 days for free"
+        "description": "Number of days of retention. Free plans can only have 7 days, Standalone and Log Analytics plans include 30 days for free"
       }
     },
     "location": {
@@ -518,7 +518,7 @@ Galerie šablon rychlý start Azure obsahuje několik šablon pro Log Analytics,
 * [Nasazení virtuálního počítače s Linuxem pomocí rozšíření virtuálního počítače Log Analytics](https://azure.microsoft.com/documentation/templates/201-oms-extension-ubuntu-vm/)
 * [Monitorování Azure Site Recovery pomocí existujícího pracovního prostoru Log Analytics](https://azure.microsoft.com/documentation/templates/asr-oms-monitoring/)
 * [Monitorování webových aplikací Azure pomocí existujícího pracovního prostoru Log Analytics](https://azure.microsoft.com/documentation/templates/101-webappazure-oms-monitoring/)
-* [Přidat existující účet úložiště do služby OMS](https://azure.microsoft.com/resources/templates/oms-existing-storage-account/)
+* [Přidat existující účet úložiště do služby Log Analytics](https://azure.microsoft.com/resources/templates/oms-existing-storage-account/)
 
 ## <a name="next-steps"></a>Další postup
 * [Nasazení agenta Windows na virtuální počítače Azure pomocí šablony Resource Manageru](../virtual-machines/windows/extensions-oms.md).

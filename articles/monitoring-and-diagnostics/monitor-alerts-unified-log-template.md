@@ -8,21 +8,21 @@ ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 6096833381db7ef0d2f011d517aaad4ae63ce4d6
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 6ec07d02e61d50aa588d75ba7337eb9237e11207
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45576863"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49402893"
 ---
 # <a name="create-a-log-alert-with-a-resource-manager-template"></a>Vytvoření upozornění na protokol pomocí šablony Resource Manageru
 Tento článek popisuje, jak můžete spravovat [upozornění protokolů](monitor-alerts-unified-log.md) prostřednictvím kódu programu ve velkém měřítku v Azure s využitím [šablony Azure Resource Manageru](..//azure-resource-manager/resource-group-authoring-templates.md) prostřednictvím [prostředí Azure Powershell](../azure-resource-manager/resource-group-template-deploy.md) a [Rozhraní příkazového řádku azure](../azure-resource-manager/resource-group-template-deploy-cli.md). Aktuálně Azure Alerts, podporuje upozornění protokolů na dotazy z [Azure Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) a [Azure Application Insights](../application-insights/app-insights-analytics-tour.md).
 
 ## <a name="managing-log-alert-on-log-analytics"></a>Správa upozornění protokolu v Log Analytics
-Upozornění protokolu pro [Azure Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) je integrovaná do [vyzkoušet nové výstrahy Azure](monitoring-overview-unified-alerts.md); zatímco stále přesahuje protokol rozhraními API pro analýzu a zůstane kompatibility se schématem předtím použili ke správě [výstrah v portálu OMS](..//log-analytics/log-analytics-alerts-creating.md).
+Upozornění protokolu pro [Azure Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) je integrovaná do [vyzkoušet nové výstrahy Azure](monitoring-overview-unified-alerts.md); zatímco stále přesahuje protokol rozhraními API pro analýzu a zůstane s aktualizací schématu použili dříve.
 
 > [!NOTE]
-> Od 14. května 2018, všechny výstrahy v pracovním prostoru automaticky začne rozšířit do Azure. Uživatel můžete odpojit zahájit rozšiřování upozornění do Azure před 14. května 2018. Další informace najdete v tématu [upozornění rozšířit do Azure od OMS](monitoring-alerts-extend.md). 
+> Od 14. května 2018, všechny výstrahy v pracovním prostoru začalo automaticky rozšíří do Azure. Další informace najdete v tématu [upozornění rozšířit do Azure](monitoring-alerts-extend.md). 
 
 ### <a name="using-azure-resource-manager-template"></a>Pomocí šablony Azure Resource Manageru
 Upozornění protokolů pro Log Analytics jsou vytvořené pravidly upozornění, na kterých běží uložené výsledky hledání v pravidelných intervalech. Pokud výsledky dotazu porovnávání zadaným kritériím, vytvoří záznam o upozornění a spuštění jednu nebo více akcí. 

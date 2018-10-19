@@ -1,6 +1,6 @@
 ---
-title: Monitorování kontejnerů v Azure Service Fabric s Log Analytics | Microsoft Docs
-description: Pomocí analýzy protokolů pro monitorování kontejnery systémem Azure Service Fabric clustery.
+title: Monitorování kontejnerů v Azure Service Fabric pomocí Log Analytics | Dokumentace Microsoftu
+description: Použití Log Analytics pro monitorování kontejnerů, které běží na clustery Azure Service Fabric.
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
@@ -14,44 +14,46 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/1/2017
 ms.author: dekapur
-ms.openlocfilehash: 79d30a47b017379107b63b0006a35534f68c43b9
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: aabdae370c28f8fa633372be4505c00c25254408
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34210772"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49403246"
 ---
-# <a name="monitor-containers-with-log-analytics"></a>Monitorování kontejnery s analýzy protokolů
+# <a name="monitor-containers-with-log-analytics"></a>Monitorování kontejnerů pomocí Log Analytics
  
-Tento článek popisuje kroky potřebné k nastavení analýzy protokolů OMS kontejneru řešení monitorování, chcete-li zobrazit události kontejneru. Cluster pro shromažďování událostí v kontejneru, naleznete v tématu to [podrobný kurz](service-fabric-tutorial-monitoring-wincontainers.md).
+Tento článek popisuje kroky potřebné k nastavení řešení pro monitorování kontejnerů Azure Log Analytics, chcete-li zobrazit události kontejneru. K nastavení clusteru pro shromažďování událostí v kontejneru, najdete v tomto [podrobný kurz](service-fabric-tutorial-monitoring-wincontainers.md). 
 
-## <a name="set-up-the-container-monitoring-solution"></a>Nastavení monitorování řešení kontejneru
+[!INCLUDE [log-analytics-agent-note.md](../../includes/log-analytics-agent-note.md)]
+
+## <a name="set-up-the-container-monitoring-solution"></a>Nastavit řešení pro monitorování kontejnerů
 
 > [!NOTE]
-> Je nutné mít nastavenu analýzy protokolů pro svůj cluster a také s agentem OMS nasazené na uzly. Pokud ne, postupujte podle kroků v [nastavení analýzy protokolů](service-fabric-diagnostics-oms-setup.md) a [přidat agenta OMS do clusteru s podporou](service-fabric-diagnostics-oms-agent.md) první.
+> Je nutné mít nastavený Log Analytics pro váš cluster, stejně jako máte nasazené na uzly agenta Log Analytics. Pokud ne, postupujte podle kroků v [nastavení Log Analytics](service-fabric-diagnostics-oms-setup.md) a [přidat agenta Log Analytics pro cluster](service-fabric-diagnostics-oms-agent.md) první.
 
-1. Až nastavíte cluster s analýzy protokolů a OMS Agent, nasazení kontejnerů. Počkejte, než budete pokračovat k dalšímu kroku nasazení kontejnerů.
+1. Jakmile je váš cluster nastavený pomocí Log Analytics a agenta Log Analytics, nasaďte kontejnery. Počkejte, kontejnerů mají být nasazeny před přechodem k dalšímu kroku.
 
-2. V Azure Marketplace vyhledejte *řešení monitorování kontejneru* a klikněte na **řešení monitorování kontejneru** prostředku, který se zobrazí v oddíle monitorování a správu kategorie.
+2. Na webu Azure Marketplace vyhledejte *řešení pro monitorování kontejnerů* a klikněte na **řešení pro monitorování kontejnerů** prostředek, který se zobrazí v části monitorování a správa kategorie.
 
     ![Přidání řešení kontejnerů](./media/service-fabric-diagnostics-event-analysis-oms/containers-solution.png)
 
-3. Vytvořte řešení uvnitř ve stejném pracovním prostoru, který již byl vytvořen pro cluster. Tato změna se automaticky aktivuje agenta spustit shromažďování dat docker na kontejnery. V asi 15 minut nebo tak měli byste vidět řešení světla až s příchozí protokoly a statistiky. jak je znázorněno na obrázku níže.
+3. Vytvoření řešení uvnitř stejného pracovního prostoru, který již byl vytvořen pro cluster. Tato změna automaticky aktivuje agenta spustit shromažďování dat docker na kontejnery. Přibližně 15 minut nebo tak měli byste vidět řešení osvětlí s příchozí protokoly a statistiky, jak je znázorněno na následujícím obrázku.
 
-    ![Řídicí panel základní OMS](./media/service-fabric-diagnostics-event-analysis-oms/oms-containers-dashboard.png)
+    ![Řídicí panel základní Log Analytics](./media/service-fabric-diagnostics-event-analysis-oms/oms-containers-dashboard.png)
 
-Agenta umožňuje kolekce několik specifické pro kontejner protokoly, které mohou být dotazována v OMS, nebo použít k ukazatele vizualizovaných výkonu. Typy protokolu, které byly shromážděny jsou:
+Agenta umožňuje výběr několika protokoly týkající se kontejnerů, které můžete dotazovat v Log Analytics, nebo použít k vizualizaci ukazatele výkonu. Typy protokolů, které byly shromážděny jsou:
 
-* ContainerInventory: obsahuje informace o umístění kontejneru, název a obrázků
-* ContainerImageInventory: informace o nasazené bitové kopie, včetně ID nebo velikosti
-* ContainerLog: specifické chybové protokoly, protokoly docker (stdout atd.) a ostatní položky
-* ContainerServiceLog: docker démon příkazy, které byly spuštěny
-* Výkonu: čítače včetně kontejneru vstupně-výstupních operací a vlastní metriky z hostitelských počítačích disku procesoru, paměti, síťového provozu,
+* ContainerInventory: obsahuje informace o umístění kontejneru, název a imagí
+* ContainerImageInventory: informace o nasazené bitové kopie, včetně ID nebo velikostí
+* ContainerLog: konkrétní chybové protokoly, protokoly dockeru (stdout atd.) a další položky
+* ContainerServiceLog: příkazy démona dockeru, které byly spuštěny
+* Výkonu: čítače výkonu včetně kontejneru procesoru, paměti, síťového provozu, diskové vstupně-výstupní operace a vlastní metriky z hostitelských počítačů
 
 
 
 ## <a name="next-steps"></a>Další postup
-* Další informace o [řešení kontejnery na OMS](../log-analytics/log-analytics-containers.md).
-* Další informace o kontejneru orchestration v Service Fabric - [Service Fabric a kontejnery](service-fabric-containers-overview.md)
-* Získat familiarized s [vyhledávání a dotazování protokolu](../log-analytics/log-analytics-log-searches.md) funkcím poskytovaným jako součást analýzy protokolů
-* Konfigurace analýzy protokolů nastavit [automatizované výstrahy](../log-analytics/log-analytics-alerts.md) pravidla, která pomáhají při zjišťování a Diagnostika
+* Další informace o [řešení Log Analytics kontejnerů](../log-analytics/log-analytics-containers.md).
+* Další informace o orchestraci kontejnerů v Service Fabric – [Service Fabric a kontejnery](service-fabric-containers-overview.md)
+* Seznamte se s [prohledávání protokolů a dotazování](../log-analytics/log-analytics-log-searches.md) funkce nabízená v rámci služby Log Analytics
+* Nakonfigurujte Log Analytics a nastavit [automatické upozorňování](../log-analytics/log-analytics-alerts.md) pravidla, která vám pomůže se zjišťováním a diagnostikou
