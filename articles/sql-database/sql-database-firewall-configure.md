@@ -11,13 +11,13 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/15/2018
-ms.openlocfilehash: 4f6c98533a2ab1289ca5f1da25c44fe1a77a983c
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.date: 10/19/2018
+ms.openlocfilehash: 18cd0ea4b6804edc11fc4f57c4327ef9d9a6f51e
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353661"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49466729"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-firewall-rules"></a>Azure SQL Database a SQL Data Warehouse pravidla brány firewall
 
@@ -80,7 +80,7 @@ Pokud chcete umožnit aplikacím z Azure připojení k vašemu serveru SQL Azure
 
 ## <a name="creating-and-managing-firewall-rules"></a>Vytváření a Správa pravidel brány firewall
 
-První nastavení brány firewall na úrovni serveru můžete vytvořit pomocí [webu Azure portal](https://portal.azure.com/) nebo programově pomocí [prostředí Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql), [rozhraní příkazového řádku Azure](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create), nebo [ Rozhraní REST API](https://docs.microsoft.com/rest/api/sql/firewallrules/firewallrules_createorupdate). Další pravidla brány firewall na úrovni serveru můžete vytvářet a spravovat těmito způsoby nebo prostřednictvím jazyka Transact-SQL.
+První nastavení brány firewall na úrovni serveru můžete vytvořit pomocí [webu Azure portal](https://portal.azure.com/) nebo programově pomocí [prostředí Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql), [rozhraní příkazového řádku Azure](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create), nebo [ Rozhraní REST API](https://docs.microsoft.com/rest/api/sql/firewallrules/createorupdate). Další pravidla brány firewall na úrovni serveru můžete vytvářet a spravovat těmito způsoby nebo prostřednictvím jazyka Transact-SQL.
 
 > [!IMPORTANT]
 > Pravidla brány firewall na úrovni databáze lze vytvořit pouze a spravují s použitím příkazů jazyka Transact-SQL.
@@ -189,10 +189,10 @@ az sql server firewall-rule create --resource-group myResourceGroup --server $se
 
 | Rozhraní API | Úroveň | Popis |
 | --- | --- | --- |
-| [Výpis pravidel brány firewall](https://docs.microsoft.com/rest/api/sql/firewallrules/firewallrules_listbyserver) |Server |Zobrazí aktuální pravidla brány firewall na úrovni serveru. |
-| [Vytvoření nebo aktualizace pravidla brány firewall](https://docs.microsoft.com/rest/api/sql/firewallrules/firewallrules_createorupdate) |Server |Vytvoří nebo aktualizuje pravidla brány firewall na úrovni serveru. |
-| [Odstranění pravidla brány firewall](https://docs.microsoft.com/rest/api/sql/firewallrules/firewallrules_delete) |Server |Odebere pravidla brány firewall na úrovni serveru. |
-| [Získání pravidla brány Firewall](https://docs.microsoft.com/rest/api/sql/firewallrules/firewallrules_get) | Server | Získá pravidla brány firewall na úrovni serveru |
+| [Výpis pravidel brány firewall](https://docs.microsoft.com/rest/api/sql/firewallrules/listbyserver) |Server |Zobrazí aktuální pravidla brány firewall na úrovni serveru. |
+| [Vytvoření nebo aktualizace pravidla brány firewall](https://docs.microsoft.com/rest/api/sql/firewallrules/createorupdate) |Server |Vytvoří nebo aktualizuje pravidla brány firewall na úrovni serveru. |
+| [Odstranění pravidla brány firewall](https://docs.microsoft.com/rest/api/sql/firewallrules/delete) |Server |Odebere pravidla brány firewall na úrovni serveru. |
+| [Získání pravidla brány Firewall](https://docs.microsoft.com/rest/api/sql/firewallrules/get) | Server | Získá pravidla brány firewall na úrovni serveru |
 
 ## <a name="server-level-firewall-rule-versus-a-database-level-firewall-rule"></a>Pravidlo brány firewall na úrovni serveru a pravidla brány firewall na úrovni databáze
 

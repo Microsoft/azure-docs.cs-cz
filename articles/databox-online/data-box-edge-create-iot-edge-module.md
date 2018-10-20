@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 10/16/2018
 ms.author: alkohli
-ms.openlocfilehash: caef76059219826da94d4cdafc98f1887ea5a185
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 8d4a99ab9d8107f1b3fbe70f59299f427bc88bd5
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/19/2018
-ms.locfileid: "49430929"
+ms.locfileid: "49465880"
 ---
 # <a name="develop-a-c-iot-edge-module-to-move-files-on-data-box-edge-preview"></a>Vývoj modulu jazyka C# IoT Edge pro přesun souborů na okraji pole dat (Preview)
 
@@ -144,6 +144,9 @@ Vytvořte šablonu řešení v jazyce C#, kterou můžete přizpůsobit pomocí 
             private const string InputFolderPath = "/home/LocalShare";
             private const string OutputFolderPath = "/home/CloudShare";
     ````
+
+    > [!IMPORTANT]
+    > Poznamenejte si, `InputFolderPath` a `OutputFolderPath`. Je potřeba zadat tyto cesty při nasazení tohoto modulu.
 
 4. Přidat **MessageBody** třídy do třídy Program. Tyto třídy definují očekávané schéma textu příchozích zpráv.
 

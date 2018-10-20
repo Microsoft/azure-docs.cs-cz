@@ -1,0 +1,333 @@
+---
+title: Jak do konfigurace Azure ExpressRoute s přímým přístupem pomocí rozhraní příkazového řádku | Dokumentace Microsoftu
+description: Tato stránka vám pomůže s konfigurací ExpressRoute přímo pomocí rozhraní příkazového řádku (Preview)
+services: expressroute
+author: cherylmc
+ms.service: expressroute
+ms.topic: conceptual
+ms.date: 10/18/2018
+ms.author: cherylmc
+ms.openlocfilehash: 6356154bf30fcb2557e288305fa032989e5ddc9d
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49471835"
+---
+# <a name="how-to-configure-expressroute-direct-using-cli-preview"></a>Konfigurace ExpressRoute přímo pomocí rozhraní příkazového řádku (Preview)
+
+Přímé ExpressRoute poskytuje možnost připojení přímo do globální síti Microsoftu na umístění partnerského vztahu strategicky distribuovaných po celém světě. Další informace najdete v tématu [informace o ExpressRoute přímé připojení](expressroute-erdirect-about.md).
+
+> [!IMPORTANT]
+> ExpressRoute s přímým přístupem je aktuálně ve verzi Preview.
+>
+> Tato verze Public Preview se poskytuje bez smlouvy o úrovni služeb a neměla by se používat pro úlohy v produkčním prostředí. Některé funkce nemusí být podporované, můžou mít omezené možnosti nebo nemusí být dostupné ve všech umístěních Azure. Podrobnosti najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+## <a name="resources"></a>Vytvoření prostředku
+
+1. Přihlaste se k Azure a vyberte předplatné. Prostředek přímo ExpressRoute a okruhy ExpressRoute musí být ve stejném předplatném.
+
+  ```azurecli
+  az login
+  ```
+
+  Zkontrolujte předplatná pro příslušný účet. 
+
+  ```azurecli
+  az account list 
+  ```
+
+  Vyberte předplatné, pro kterou chcete vytvořit okruh ExpressRoute.
+  ```azurecli
+  az account set --subscription "<subscription ID>"
+  ```
+2. Výpis všech umístění, kde se podporuje přímý ExpressRoute.
+    
+  ```azurecli
+  az network express-route port location list
+  ```
+
+  **Příklad výstupu**
+  
+  ```azurecli
+  [
+   {
+    "address": "21715 Filigree Court, DC2, Building F, Ashburn, VA 20147",
+    "availableBandwidths": [],
+    "contact": "support@equinix.com",
+    "id": "/subscriptions/<subscriptionID>/providers/Microsoft.Network/expressRoutePortsLocations/Equinix-Ashburn-DC2",
+    "location": null,
+    "name": "Equinix-Ashburn-DC2",
+    "provisioningState": "Succeeded",
+    "tags": null,
+    "type": "Microsoft.Network/expressRoutePortsLocations"
+   },
+   {
+    "address": "1950 N. Stemmons Freeway, Suite 1039A, DA3, Dallas, TX 75207",
+    "availableBandwidths": [],
+    "contact": "support@equinix.com",
+    "id": "/subscriptions/<subscriptionID>/providers/Microsoft.Network/expressRoutePortsLocations/Equinix-Dallas-DA3",
+    "location": null,
+    "name": "Equinix-Dallas-DA3",
+    "provisioningState": "Succeeded",
+    "tags": null,
+    "type": "Microsoft.Network/expressRoutePortsLocations"
+   },
+   {
+    "address": "111 8th Avenue, New York, NY 10011",
+    "availableBandwidths": [],
+    "contact": "support@equinix.com",
+    "id": "/subscriptions/<subscriptionID>/providers/Microsoft.Network/expressRoutePortsLocations/Equinix-New-York-NY5",
+    "location": null,
+    "name": "Equinix-New-York-NY5",
+    "provisioningState": "Succeeded",
+    "tags": null,
+    "type": "Microsoft.Network/expressRoutePortsLocations"
+   },
+   {
+    "address": "11 Great Oaks Blvd, SV1, San Jose, CA 95119",
+    "availableBandwidths": [],
+    "contact": "support@equinix.com",
+    "id": "/subscriptions/<subscriptionID>/providers/Microsoft.Network/expressRoutePortsLocations/Equinix-San-Jose-SV1",
+    "location": null,
+    "name": "Equinix-San-Jose-SV1",
+    "provisioningState": "Succeeded",
+    "tags": null,
+    "type": "Microsoft.Network/expressRoutePortsLocations"
+   },
+   {
+    "address": "2001 Sixth Ave., Suite 350, SE2, Seattle, WA 98121",
+    "availableBandwidths": [],
+    "contact": "support@equinix.com",
+    "id": "/subscriptions/<subscriptionID>/providers/Microsoft.Network/expressRoutePortsLocations/Equinix-Seattle-SE2",
+    "location": null,
+    "name": "Equinix-Seattle-SE2",
+    "provisioningState": "Succeeded",
+    "tags": null,
+    "type": "Microsoft.Network/expressRoutePortsLocations"
+   }
+  ]
+  ```
+3. Pokud výše uvedené umístění určila dostupnou šířku pásma
+
+  ```azurecli
+  az network express-route port location show -l "Equinix-Ashburn-DC2"
+  ```
+
+  **Příklad výstupu**
+
+  ```azurecli
+  {
+  "address": "21715 Filigree Court, DC2, Building F, Ashburn, VA 20147",
+  "availableBandwidths": [
+    {
+      "offerName": "100 Gbps",
+      "valueInGbps": 100
+    }
+  ],
+  "contact": "support@equinix.com",
+  "id": "/subscriptions/<subscriptionID>/providers/Microsoft.Network/expressRoutePortsLocations/Equinix-Ashburn-DC2",
+  "location": null,
+  "name": "Equinix-Ashburn-DC2",
+  "provisioningState": "Succeeded",
+  "tags": null,
+  "type": "Microsoft.Network/expressRoutePortsLocations"
+  }
+  ```
+4. Vytvoření prostředku ExpressRoute přímo na základě umístění zvoleno výše
+
+  Přímé ExpressRoute podporuje QinQ a Dot1Q zapouzdření. Vybrali QinQ každý okruh ExpressRoute se dynamicky přiřadí značku S a bude jedinečný v rámci prostředku ExpressRoute přímo. Každá značka C na okruh musí být jedinečný v okruhu, ale ne přes ExpressRoute přímo.  
+
+  Vybrali Dot1Q zapouzdření musíte spravovat jedinečnost C – značka (VLAN) přes celý zdroj přímo ExpressRoute.  
+
+  > [!IMPORTANT]
+  > Přímé ExpressRoute může být pouze jeden typ zapouzdření. Zapouzdření nelze změnit po vytvoření přímé ExpressRoute.
+  > 
+ 
+  ```azurecli
+  az network express-route port create -n $name -g $RGName --bandwidth 100 gbps  --encapsulation QinQ | Dot1Q --peering-location $PeeringLocationName -l $AzureRegion 
+  ```
+
+  > [!NOTE]
+  > Atribut zapouzdření může být také nastaven na Dot1Q. 
+  >
+
+  **Příklad výstupu:**
+
+  ```azurecli
+  {
+  "allocationDate": "Wednesday, October 17, 2018",
+  "bandwidthInGbps": 100,
+  "circuits": null,
+  "encapsulation": "Dot1Q",
+  "etag": "W/\"<etagnumber>\"",
+  "etherType": "0x8100",
+  "id": "/subscriptions/<subscriptionID>/resourceGroups/Contoso-Direct-rg/providers/Microsoft.Network/expressRoutePorts/Contoso-Direct",
+  "links": [
+    {
+      "adminState": "Disabled",
+      "connectorType": "LC",
+      "etag": "W/\"<etagnumber>\"",
+      "id": "/subscriptions/<subscriptionID>/resourceGroups/Contoso-Direct-rg/providers/Microsoft.Network/expressRoutePorts/Contoso-Direct/links/link1",
+      "interfaceName": "HundredGigE2/2/2",
+      "name": "link1",
+      "patchPanelId": "PPID",
+      "provisioningState": "Succeeded",
+      "rackId": "RackID",
+      "resourceGroup": "Contoso-Direct-rg",
+      "routerName": "tst-09xgmr-cis-1",
+      "type": "Microsoft.Network/expressRoutePorts/links"
+    },
+    {
+      "adminState": "Disabled",
+      "connectorType": "LC",
+      "etag": "W/\"<etagnumber>\"",
+      "id": "/subscriptions/<subscriptionID>/resourceGroups/Contoso-Direct-rg/providers/Microsoft.Network/expressRoutePorts/Contoso-Direct/links/link2",
+      "interfaceName": "HundredGigE2/2/2",
+      "name": "link2",
+      "patchPanelId": "PPID",
+      "provisioningState": "Succeeded",
+      "rackId": "RackID",
+      "resourceGroup": "Contoso-Direct-rg",
+      "routerName": "tst-09xgmr-cis-2",
+      "type": "Microsoft.Network/expressRoutePorts/links"
+    }
+  ],
+  "location": "westus",
+  "mtu": "1500",
+  "name": "Contoso-Direct",
+  "peeringLocation": "Equinix-Ashburn-DC2",
+  "provisionedBandwidthInGbps": 0.0,
+  "provisioningState": "Succeeded",
+  "resourceGroup": "Contoso-Direct-rg",
+  "resourceGuid": "02ee21fe-4223-4942-a6bc-8d81daabc94f",
+  "tags": null,
+  "type": "Microsoft.Network/expressRoutePorts"
+  }  
+  ```
+
+## <a name="state"></a>Změnit stav správce odkazů
+
+Tento proces by měla sloužit k provedení testu vrstvy 1, zajistit, aby každý křížové připojení správně opravený do směrovače pro primární a sekundární.
+
+1. Nastavit odkaz na povoleno. Opakujte tento krok nastavit každý odkaz na povoleno.
+
+  Odkazy [0] je primární port a odkazy [1] je sekundární port.
+
+  ```azurecli
+  az network express-route port update -n Contoso-Direct -g Contoso-Direct-rg --set links[0].adminState="Enabled"
+  ```
+  ```azurecli
+  az network express-route port update -n Contoso-Direct -g Contoso-Direct-rg --set links[1].adminState="Enabled"
+  ```
+  **Příklad výstupu:**
+
+  ```azurecli
+  {
+  "allocationDate": "Wednesday, October 17, 2018",
+  "bandwidthInGbps": 100,
+  "circuits": null,
+  "encapsulation": "Dot1Q",
+  "etag": "W/\"<etagnumber>\"",
+  "etherType": "0x8100",
+  "id": "/subscriptions/<subscriptionID>/resourceGroups/Contoso-Direct-rg/providers/Microsoft.Network/expressRoutePorts/Contoso-Direct",
+  "links": [
+    {
+      "adminState": "Enabled",
+      "connectorType": "LC",
+      "etag": "W/\"<etagnumber>\"",
+      "id": "/subscriptions/<subscriptionID>/resourceGroups/Contoso-Direct-rg/providers/Microsoft.Network/expressRoutePorts/Contoso-Direct/links/link1",
+      "interfaceName": "HundredGigE2/2/2",
+      "name": "link1",
+      "patchPanelId": "PPID",
+      "provisioningState": "Succeeded",
+      "rackId": "RackID",
+      "resourceGroup": "Contoso-Direct-rg",
+      "routerName": "tst-09xgmr-cis-1",
+      "type": "Microsoft.Network/expressRoutePorts/links"
+    },
+    {
+      "adminState": "Enabled",
+      "connectorType": "LC",
+      "etag": "W/\"<etagnumber>\"",
+      "id": "/subscriptions/<subscriptionID>/resourceGroups/Contoso-Direct-rg/providers/Microsoft.Network/expressRoutePorts/Contoso-Direct/links/link2",
+      "interfaceName": "HundredGigE2/2/2",
+      "name": "link2",
+      "patchPanelId": "PPID",
+      "provisioningState": "Succeeded",
+      "rackId": "RackID",
+      "resourceGroup": "Contoso-Direct-rg",
+      "routerName": "tst-09xgmr-cis-2",
+      "type": "Microsoft.Network/expressRoutePorts/links"
+    }
+  ],
+  "location": "westus",
+  "mtu": "1500",
+  "name": "Contoso-Direct",
+  "peeringLocation": "Equinix-Ashburn-DC2",
+  "provisionedBandwidthInGbps": 0.0,
+  "provisioningState": "Succeeded",
+  "resourceGroup": "Contoso-Direct-rg",
+  "resourceGuid": "<resourceGUID>",
+  "tags": null,
+  "type": "Microsoft.Network/expressRoutePorts"
+  }
+  ```
+
+  Použijte stejný postup s `AdminState = “Disabled”` Chcete-li snížit porty.
+
+## <a name="circuit"></a>Vytvoření okruhu
+
+Ve výchozím nastavení můžete vytvořit v rámci předplatného, ve kterém je prostředek přímo ExpressRoute 10 okruhy. To jde navýšit o podporu. Které nesou odpovědnost za sledování zřízená a využité šířky pásma. Přenosového pásma je součet šířky pásma všechny okruhy ExpressRoute přímo prostředku a využívaných šířky pásma fyzického využití základní fyzické rozhraní.
+
+Existují další okruh šířky pásma, které můžete využít na ExpressRoute přímo pouze do podpory scénářů uvedených výše. Jedná se o: 40Gbps a 100Gbps.
+
+Je možné vytvářet okruhy úrovně Standard nebo premium. Standardní okruhy jsou zahrnutá v ceně, zatímco okruhy premium mají svou cenu na základě šířky pásma vybrané. Okruhy lze vytvořit pouze jako měřená, jako neomezená nepodporuje přímé ExpressRoute.
+
+Vytvoření okruhu ExpressRoute přímo prostředku.
+
+  ```azurecli
+  az network express-route create --express-route-port "/subscriptions/<subscriptionID>/resourceGroups/Contoso-Direct-rg/providers/Microsoft.Network/expressRoutePorts/Contoso-Direct" -n "Contoso-Direct-ckt" -g "Contoso-Direct-rg" --sku-family MeteredData --sku-tier Standard --bandwidth 100 Gbps
+  ```
+
+  Zahrnout další šířek pásma: 1.0, 2.0, 5.0, 10.0 a 40.0
+
+  **Příklad výstupu:**
+
+  ```azurecli
+  {
+  "allowClassicOperations": false,
+  "allowGlobalReach": false,
+  "authorizations": [],
+  "bandwidthInGbps": 100.0,
+  "circuitProvisioningState": "Enabled",
+  "etag": "W/\"<etagnumber>\"",
+  "expressRoutePort": {
+    "id": "/subscriptions/<subscriptionID>/resourceGroups/Contoso-Direct-rg/providers/Microsoft.Network/expressRoutePorts/Contoso-Direct",
+    "resourceGroup": "Contoso-Direct-rg"
+  },
+  "gatewayManagerEtag": "",
+  "id": "/subscriptions/<subscriptionID>/resourceGroups/Contoso-Direct-rg/providers/Microsoft.Network/expressRouteCircuits/ERDirect-ckt-cli",
+  "location": "westus",
+  "name": "ERDirect-ckt-cli",
+  "peerings": [],
+  "provisioningState": "Succeeded",
+  "resourceGroup": "Contoso-Direct-rg",
+  "serviceKey": "<serviceKey>",
+  "serviceProviderNotes": null,
+  "serviceProviderProperties": null,
+  "serviceProviderProvisioningState": "Provisioned",
+  "sku": {
+    "family": "MeteredData",
+    "name": "Standard_MeteredData",
+    "tier": "Standard"
+  },
+  "stag": null,
+  "tags": null,
+  "type": "Microsoft.Network/expressRouteCircuits"
+  }  
+  ```
+
+## <a name="next-steps"></a>Další postup
+
+Další informace o ExpressRoute Direct, najdete v článku [přehled](expressroute-erdirect-about.md).

@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/15/2017
 ms.author: glenga
-ms.openlocfilehash: 66d04ca93a79f4d9cdd9f162c6cd3210ae35f4d2
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: e317a9c3cea800e05fbf3d2df73c124d2e7ffd23
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902701"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49457659"
 ---
 # <a name="monitor-azure-functions"></a>Monitorování Azure Functions
 
@@ -211,6 +211,7 @@ Zahrnuje také protokolovacího nástroje Azure functions *úrovně protokolová
 
 *Host.json* soubor nastaví jaká míra protokolování aplikace function app se odešle do služby Application Insights. Pro každou kategorii určujete minimální úroveň protokolování k odeslání. Tady je příklad:
 
+#### <a name="functions-version-1"></a>Funkce verze 1 
 ```json
 {
   "logger": {
@@ -226,6 +227,22 @@ Zahrnuje také protokolovacího nástroje Azure functions *úrovně protokolová
 }
 ```
 
+#### <a name="functions-version-2"></a>Funkce verze 2 
+Funkce v2 teď používá [hierarchie filtru protokolování .NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering). 
+```json
+{
+  "logging": {
+    "fileLoggingMode": "always",
+    "logLevel": {
+      "default": "Information",
+      "Host.Results": "Error",
+      "Function": "Error",
+      "Host.Aggregator": "Trace"
+    }
+  }
+}
+```
+
 V tomto příkladu nastaví následující pravidla:
 
 1. Pro protokoly s kategorií "Host.Results" nebo "Funkce" odeslat pouze `Error` úroveň a vyšší do Application Insights. Protokoly pro `Warning` úrovně a níže jsou ignorovány.
@@ -236,6 +253,7 @@ Hodnota kategorie v *host.json* řídí protokolování všech kategorií, kter�
 
 Pokud *host.json* zahrnuje více kategorií, které začínají stejný řetězec delší ty budou odpovídat nejprve. Předpokládejme například, že chcete, aby všechno z modulu runtime s výjimkou "Host.Aggregator" protokolu `Error` úroveň, ale chcete "Host.Aggregator" protokolu `Information` úroveň:
 
+#### <a name="functions-version-1"></a>Funkce verze 1 
 ```json
 {
   "logger": {
@@ -246,6 +264,21 @@ Pokud *host.json* zahrnuje více kategorií, které začínají stejný řetěze
         "Function": "Error",
         "Host.Aggregator": "Information"
       }
+    }
+  }
+}
+```
+
+#### <a name="functions-version-2"></a>Funkce verze 2 
+```json
+{
+  "logging": {
+    "fileLoggingMode": "always",
+    "logLevel": {
+      "default": "Information",
+      "Host": "Error",
+      "Function": "Error",
+      "Host.Aggregator": "Information"
     }
   }
 }

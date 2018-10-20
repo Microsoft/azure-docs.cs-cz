@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/15/2018
-ms.openlocfilehash: 6c43e5bf311d94ff2e5b5c31217c5071ea26746c
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.date: 10/19/2018
+ms.openlocfilehash: 0c939956a8f3336b5071748a8c2bdf8840b749ad
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49351858"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49466065"
 ---
 # <a name="create-and-manage-elastic-pools-in-azure-sql-database"></a>Vytvoření a správa elastických fondů Azure SQL Database
 
@@ -106,11 +106,11 @@ Můžete vytvářet a spravovat databázi SQL elastické fondy a databáze ve fo
 |[Elastické fondy – aktualizace](https://docs.microsoft.com/rest/api/sql/elasticpools/elasticpools_listbyserver)|Aktualizace existujícího elastického fondu.|
 |[Elastický fond aktivity](https://docs.microsoft.com/rest/api/sql/elasticpoolactivities)|Vrátí aktivity elastického fondu.|
 |[Elastický fond v činnosti databáze](https://docs.microsoft.com/rest/api/sql/elasticpooldatabaseactivities)|Vrátí aktivity u databází v elastickém fondu.|
-|[Databáze – vytvořit nebo aktualizovat](https://docs.microsoft.com/rest/api/sql/databases/databases_createorupdate)|Vytvoří novou databázi nebo aktualizuje existující databázi.|
-|[Databáze - Get](https://docs.microsoft.com/rest/api/sql/databases/databases_get)|Získá databázi.|
-|[Databáze – seznam podle elastického fondu](https://docs.microsoft.com/rest/api/sql/databases/databases_listbyelasticpool)|Vrátí seznam databází v elastickém fondu.|
-|[Databáze – seznam serverem](https://docs.microsoft.com/rest/api/sql/databases/databases_listbyserver)|Vrátí seznam databází na serveru.|
-|[Databáze – aktualizace](https://docs.microsoft.com/rest/api/sql/databases/databases_update)|Aktualizuje existující databázi.|
+|[Databáze – vytvořit nebo aktualizovat](https://docs.microsoft.com/rest/api/sql/databases/createorupdate)|Vytvoří novou databázi nebo aktualizuje existující databázi.|
+|[Databáze - Get](https://docs.microsoft.com/rest/api/sql/databases/get)|Získá databázi.|
+|[Databáze – seznam podle elastického fondu](https://docs.microsoft.com/rest/api/sql/databases/listbyelasticpool)|Vrátí seznam databází v elastickém fondu.|
+|[Databáze – seznam serverem](https://docs.microsoft.com/rest/api/sql/databases/listbyserver)|Vrátí seznam databází na serveru.|
+|[Databáze – aktualizace](https://docs.microsoft.com/rest/api/sql/databases/update)|Aktualizuje existující databázi.|
 
 ## <a name="next-steps"></a>Další postup
 

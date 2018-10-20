@@ -5,16 +5,16 @@ services: cognitive-services
 author: chliang
 manager: bix
 ms.service: cognitive-services
-ms.technology: anomaly-detection
+ms.component: anomaly-detection
 ms.topic: article
 ms.date: 05/01/2018
 ms.author: chliang
-ms.openlocfilehash: c9fd96bf4a9bdc9dfe5baf52aa742e19d5436708
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: eb64bb4daece44d33775dca7417c51b216e04614
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48247347"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49455432"
 ---
 # <a name="use-the-anomaly-finder-api-with-python"></a>Vyhledávač anomálií rozhraní API pomocí Pythonu
 

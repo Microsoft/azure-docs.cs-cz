@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/11/2018
+ms.date: 10/20/2018
 ms.author: celested
-ms.reviewer: jeedes
+ms.reviewer: luleon, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 5633dfbf59396e79226b196c2b699981409092ab
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 4e80f5cb85a53281da9ec50a02d089f46e97dfde
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902021"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49466712"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Postupy: přizpůsobení deklarací identity vystavených v tokenu SAML pro podnikové aplikace
 
@@ -49,21 +49,38 @@ Můžete také odebrat deklarace (jiné než NameIdentifier) pomocí místní na
 ![Upravit atribut uživatele][3]
 
 ## <a name="editing-the-nameidentifier-claim"></a>Úprava deklarace identity NameIdentifier
-K vyřešení problému, kde byla aplikace nasazené pomocí jiné uživatelské jméno, klikněte na **identifikátor uživatele** rozevírací seznam **atributy uživatele** části. Tato akce obsahuje dialogové okno s několik možností:
+
+K vyřešení problému, kde byla aplikace nasazené pomocí jiné uživatelské jméno, vyberte na **identifikátor uživatele** rozevírací seznam **atributy uživatele** části. Tato akce obsahuje dialogové okno s několik možností:
 
 ![Upravit atribut uživatele][4]
 
-V rozevíracím seznamu vyberte **user.mail** nastavit deklarace identity NameIdentifier bude e-mailovou adresu uživatele v adresáři. Nebo vyberte **user.onpremisessamaccountname** nastavení pro uživatele na název účtu SAM, která je synchronizovaná z místní služby Azure AD.
+### <a name="attributes"></a>Atributy
 
-Můžete také použít speciální **ExtractMailPrefix()** funkce odebrat přípony domény od e-mailovou adresu, název účtu SAM nebo hlavní název uživatele. To vyextrahuje jenom první část uživatelské jméno se předává (například "joe_smith" namísto joe_smith@contoso.com).
+Vyberte požadovaný zdroj `NameIdentifier` (nebo NameID) deklarace identity. Můžete vybrat jednu z následujících možností.
 
-![Upravit atribut uživatele][5]
+| Název | Popis |
+|------|-------------|
+| Email | E-mailovou adresu uživatele |
+| userprincipalName | Hlavní název uživatele (UPN) uživatele |
+| onpremisessamaccount | Název účtu SAM, která je synchronizovaná z místní služby Azure AD |
+| ID objektu | ID objektu uživatele ve službě Azure AD |
+| EmployeeID | EmployeeID uživatele |
+| Rozšíření adresáře | Rozšíření adresáře [synchronizované z místní služby Active Directory pomocí Azure AD Connect Sync](../hybrid/how-to-connect-sync-feature-directory-extensions.md) |
+| Atributů rozšíření 1 – 15 | Místní atributy rozšíření používané k rozšíření schématu služby Azure AD |
 
-Přidali jsme nyní také **join()** funkce ověřené doméně s hodnotu identifikátoru uživatele. Když vyberete join() funkci **identifikátor uživatele** nejprve vyberte identifikátor uživatele jako třeba e-mailovou adresu uživatelské jméno nebo hlavní název a v druhé rozevírací nabídky vyberte ověřenou doménu. Pokud vyberete e-mailovou adresu s ověřenou doménu, pak Azure AD extrahuje uživatelské jméno z první joe_smith hodnotu z joe_smith@contoso.com a připojí ji s contoso.onmicrosoft.com. Prohlédněte si následující příklad:
+### <a name="transformations"></a>Transformace
 
-![Upravit atribut uživatele][6]
+Můžete také použít funkce speciální deklarace identity transformace.
+
+| Funkce | Popis |
+|----------|-------------|
+| **ExtractMailPrefix()** | Odebere příponu domény od e-mailovou adresu, název účtu SAM nebo hlavní název uživatele. To vyextrahuje jenom první část uživatelské jméno se předává (například "joe_smith" namísto joe_smith@contoso.com). |
+| **Join()** | Připojí se atribut s ověřenou doménu. Pokud je hodnota identifikátoru vybraného uživatele domény, bude extrahovat uživatelské jméno pro připojení vybrané ověřenou doménu. Například, pokud vyberete e-mailu (joe_smith@contoso.com) jako hodnotu identifikátoru uživatele a vyberte contoso.onmicrosoft.com jako ověřenou doménu, výsledkem bude joe_smith@contoso.onmicrosoft.com. |
+| **ToLower() byly** | Znaky v datech vybraného atributu převede na malá písmena. |
+| **ToUpper()** | Znaky v datech vybraného atributu převede na velká písmena. |
 
 ## <a name="adding-claims"></a>Přidání deklarace identity
+
 Při přidání deklarace identity, můžete zadat název (který se nemusí nezbytně se řídí vzorem identifikátoru URI podle specifikace SAML). Nastavte hodnotu na jakýkoli atribut uživatele, který je uložen v adresáři.
 
 ![Přidat atribut uživatele][7]
@@ -132,7 +149,7 @@ Existují některé deklarace identity s omezeným přístupem v SAML. Pokud chc
 ## <a name="next-steps"></a>Další postup
 
 * [Správa aplikací v Azure AD](../manage-apps/what-is-application-management.md)
-* [Konfigurace jednotného přihlašování k aplikacím, které nejsou v galerii aplikací Azure AD](../manage-apps/configure-federated-single-sign-on-non-gallery-applications.md)
+* [Konfigurace jednotného přihlašování pro aplikace, které nejsou v galerii aplikací Azure AD](../manage-apps/configure-federated-single-sign-on-non-gallery-applications.md)
 * [Řešení potíží s založené na SAML jednotného přihlašování](howto-v1-debug-saml-sso-issues.md)
 
 <!--Image references-->

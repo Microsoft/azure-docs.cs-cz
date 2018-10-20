@@ -1,23 +1,25 @@
 ---
 title: Oblasti služby řeči
-description: Referenční informace pro oblasti Speech service.
+titlesuffix: Azure Cognitive Services
+description: Referenční informace pro oblasti Speech Service.
 services: cognitive-services
 author: mahilleb-msft
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: speech
-ms.topic: article
+ms.component: speech-service
+ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: mahilleb
-ms.openlocfilehash: 01c76d80d6b2fd64165b126df01c391d7e18292f
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: a5fce6f9547a96da3ce482ce388e5ba2093f2af4
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48887543"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49468122"
 ---
-# <a name="regions-of-the-speech-service"></a>Oblasti Speech service
+# <a name="regions-of-the-speech-service"></a>Oblasti Speech Service
 
-Speech service je k dispozici v různých oblastech.
+Speech Service je k dispozici v různých oblastech.
 Když vytvoříte odběr, můžete vybrat dostupnou oblast na základě vašich potřeb.
 
 Při použití předplatného máte účet pro oblast, kterou jste vybrali.
@@ -29,7 +31,7 @@ Zobrazit [rozhraní REST API](rest-apis.md) podrobnosti.
 
 ## <a name="speech-sdk"></a>Speech SDK
 
-V [sadou SDK pro řeč](speech-sdk.md), oblastí jsou určené jako řetězec (například jako parametr `SpeechConfig.FromSubscription` v sadou SDK pro řeč pro jazyk C#).
+V [sadou SDK pro řeč služby](speech-sdk.md), oblastí jsou určené jako řetězec (například jako parametr `SpeechConfig.FromSubscription` v sadou SDK pro řeč pro jazyk C#).
 
 ### <a name="regions-for-speech-recognition-and-translation"></a>Oblasti pro rozpoznávání řeči a překladu
 

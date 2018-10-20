@@ -1,19 +1,20 @@
 ---
 title: Azure Batch určené k transkripci rozhraní API
-description: Ukázky
+titlesuffix: Azure Cognitive Services
+description: Ukázky pro přepisování velké objemy zvukový obsah.
 services: cognitive-services
 author: PanosPeriorellis
 ms.service: cognitive-services
-ms.component: Speech
-ms.topic: article
+ms.component: speech-service
+ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: panosper
-ms.openlocfilehash: c6912b45bc62ce9492e8e33bd1ffd8e7147b9d17
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 14dca44e5b0fd5062ac2bffa44980049bad974ba
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/19/2018
-ms.locfileid: "49427783"
+ms.locfileid: "49471369"
 ---
 # <a name="batch-transcription"></a>Dávkový přepis
 

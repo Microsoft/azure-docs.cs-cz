@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: ''
 ms.topic: include
-ms.date: 10/15/2018
+ms.date: 10/20/2018
 ms.author: victorh
 ms.custom: include file
-ms.openlocfilehash: 1d52c9b3b9b91873bd6f34443f162c74d724a65c
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: e4d698b8b9c3f9e304780ee49bd4243a76e69138
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49367132"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49471526"
 ---
 ### <a name="what-is-azure-firewall"></a>Co je brána Azure Firewall?
 
@@ -30,13 +30,6 @@ Azure Firewall je spravovaná cloudová služba síťového zabezpečení, kter�
 * Podpora DNAT u příchozích přenosů
 * Centrálně vytvoření, vynucení a protokolovat zásady aplikace a síťové připojení mezi virtuálními sítěmi a předplatných Azure
 * Plná integrace se službou Azure Monitor zajišťující protokolování a analýzy
-
-### <a name="what-is-the-pricing-for-azure-firewall"></a>Jaké jsou ceny za Firewall služby Azure?
-
-Azure Brána Firewall nemá hradit fixní částku + náklady na proměnnou:
-
-* Fixní poplatek: $1.25/firewall/hour
-* Proměnlivá částka: $0.03/ GB zpracovaných brány firewall (příchozí nebo odchozí)
 
 ### <a name="what-is-the-typical-deployment-model-for-azure-firewall"></a>Co je typické nasazení modelu pro Brána Firewall služby Azure?
 
@@ -78,6 +71,17 @@ Brána Firewall služby Azure service doplňuje funkci skupiny zabezpečení sí
 ### <a name="how-do-i-set-up-azure-firewall-with-my-service-endpoints"></a>Jak nastavit Brána Firewall služby Azure se Moje koncové body služby?
 
 Zabezpečený přístup ke službám PaaS doporučujeme koncových bodů služby. Můžete povolit koncové body služby v podsíti brány Firewall na Azure a zakázat ve virtuálních sítích propojených paprsku. Tímto způsobem, můžete využívat funkce – zabezpečení koncového bodu služby a centrálního protokolování pro veškerý provoz.
+
+### <a name="what-is-the-pricing-for-azure-firewall"></a>Jaké jsou ceny za Firewall služby Azure?
+
+Azure Brána Firewall nemá hradit fixní částku + náklady na proměnnou:
+
+* Fixní poplatek: $1.25/firewall/hour
+* Proměnlivá částka: $0.03/ GB zpracovaných brány firewall (příchozí nebo odchozí)
+
+Nejsou spojené žádné náklady pro uvolnění brány firewall.
+
+Další informace najdete v tématu [ceny brány Firewall služby Azure](https://azure.microsoft.com/pricing/details/azure-firewall/).
 
 ### <a name="how-can-i-stop-and-start-azure-firewall"></a>Jak můžete zastavit a spustit Brána Firewall služby Azure?
 

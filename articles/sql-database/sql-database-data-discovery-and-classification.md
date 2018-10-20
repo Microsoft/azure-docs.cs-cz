@@ -12,12 +12,12 @@ ms.author: ronitr
 ms.reviewer: vanto
 manager: craigg
 ms.date: 10/15/2018
-ms.openlocfilehash: 36269392db785e7d2d203f032a84cccc8a6c62e0
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 32b60a53581a0f372a7d994cfa260ebd7bcb27b2
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49352964"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49467037"
 ---
 # <a name="azure-sql-database-data-discovery-and-classification"></a>Azure SQL Database Data zjišťování a klasifikace
 
@@ -140,10 +140,10 @@ T-SQL můžete použít k přidání nebo odebrání klasifikace sloupců, jako�
 
 Můžete také použít rozhraní REST API můžete programově spravovat klasifikace. Publikovaná rozhraní REST API podporují tyto operace:
 
-- [Vytvoření nebo aktualizace](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/sensitivitylabels_createorupdate) – vytvoří nebo aktualizuje označení citlivosti daného sloupce
-- [Odstranit](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/sensitivitylabels_delete) -odstraní označení citlivosti daného sloupce
-- [Získat](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/sensitivitylabels_get) -získá označení citlivosti daného sloupce
-- [Seznam podle databáze](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/sensitivitylabels_listbydatabase) -získá označení citlivosti na danou databázi
+- [Vytvoření nebo aktualizace](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/createorupdate) – vytvoří nebo aktualizuje označení citlivosti daného sloupce
+- [Odstranit](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/delete) -odstraní označení citlivosti daného sloupce
+- [Získat](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/get) -získá označení citlivosti daného sloupce
+- [Seznam podle databáze](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listbydatabase) -získá označení citlivosti na danou databázi
 
 ## <a id="subheading-5"></a>Další kroky
 

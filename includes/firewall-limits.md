@@ -8,17 +8,17 @@ ms.topic: include
 ms.date: 7/30/2018
 ms.author: victorh
 ms.custom: include file
-ms.openlocfilehash: 0a4a66543b323b1dbe56158851dafcb1dfe695f0
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: f1fd32fc02bee47d229093680166e6a13a5ba721
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47185112"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "49458831"
 ---
 | Prostředek | Výchozí omezení |
 | --- | --- |
 | Zpracovaná data |1000 TB/brána firewall/měsíc <sup>1</sup> |
-|Pravidla|10 tisíc aplikace, pravidla 10 tisíc sítě|
+|Pravidla|10 tisíc – všechna pravidla kombinovat typy|
 |Partnerské vztahy virtuálních sítí|Hvězdicové implementace maximálního počtu z 50 virtuálních sítí paprsků.|
 |Globální partnerský vztah|Nepodporuje se. Měli byste mít minimálně jedno nasazení brány firewall v jedné oblasti.|
 |Maximální počet portů v jedné síti pravidlo|15<br>Rozsah portů (například: 2 10) se počítá jako dvě.

@@ -7,34 +7,33 @@ manager: femila
 ms.service: event-hubs
 ms.workload: core
 ms.topic: article
-ms.date: 07/26/2018
+ms.date: 10/16/2018
 ms.author: sethm
-ms.openlocfilehash: 762e21cfc7d16b614eb637c569f8bfc5b6115db1
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: bb77ed69ae8f2229cbd62afa545cac9f048689e8
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43703619"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49457999"
 ---
 # <a name="send-events-to-event-hubs-using-python"></a>Odesílání událostí do služby Event Hubs pomocí Pythonu
 
-Azure Event Hubs je vysoce škálovatelné událostí systém správy, který dokáže zpracovat miliony událostí za sekundu, které umožňuje aplikacím zpracovávat a analyzovat masivní objemy dat vytvářených připojenými zařízeními a dalšími systémy. Jakmile jsou shromážděna do centra událostí, může přijímat a zpracovávat události pomocí obslužných rutin v procesu nebo předáváním k jiným systémům pro analýzu.
+Azure Event Hubs je platforma pro streamování velkých objemů dat a služba pro ingestování událostí, která je schopná přijmout a zpracovat miliony událostí za sekundu. Služba Event Hubs dokáže zpracovávat a ukládat události, data nebo telemetrické údaje produkované distribuovaným softwarem a zařízeními. Data odeslaná do centra událostí je možné transformovat a uložit pomocí libovolného poskytovatele analýz v reálném čase nebo adaptérů pro dávkové zpracování a ukládání. Podrobnější přehled služby Event Hubs naleznete v tématu [Přehled služby Event Hubs](event-hubs-about.md) a [funkcích služby Event Hubs](event-hubs-features.md).
 
-Další informace o službě Event Hubs, najdete v článku [Přehled služby Event Hubs][Event Hubs overview].
+Tento kurz popisuje, jak odesílat události do centra událostí z aplikace napsané v Pythonu. 
 
-Tento kurz popisuje, jak odesílat události do centra událostí z aplikace napsané v Pythonu. Pokud chcete přijímat události, najdete v článku [odpovídající článku Receive](event-hubs-python-get-started-receive.md).
-
-Kód v tomto kurzu je převzatý z [ukázek Githubu](https://github.com/Azure/azure-event-hubs-python/tree/master/examples), které můžete zkontrolovat zobrazíte kompletní funkční aplikaci, včetně příkazy pro import a deklarace proměnné. Další příklady jsou k dispozici ve stejné složce Githubu.
+> [!NOTE]
+> V tomto rychlém startu si můžete stáhnout jako ukázku z [Githubu](https://github.com/Azure/azure-event-hubs-python/tree/master/examples), nahraďte `EventHubConnectionString` a `EventHubName` řetězce hodnotami vašeho event hub, a potom ho spusťte. Alternativně můžete provedením kroků v tomto kurzu vytvoříte vlastní.
 
 ## <a name="prerequisites"></a>Požadavky
 
 Pro absolvování tohoto kurzu musí být splněné následující požadavky:
 
 - Python 3.4 nebo novější.
-- Stávající služby Event Hubs oboru názvů a Centrum událostí. Tyto entity můžete vytvořit podle pokynů v [v tomto článku](event-hubs-create.md). 
 
-[!INCLUDE [create-account-note](../../includes/create-account-note.md)]
 
+## <a name="create-an-event-hubs-namespace-and-an-event-hub"></a>Vytvoření oboru názvů Event Hubs a centra událostí
+Prvním krokem je použití webu [Azure Portal](https://portal.azure.com) k vytvoření oboru názvů typu Event Hubs a získání přihlašovacích údajů pro správu, které vaše aplikace potřebuje ke komunikaci s centrem událostí. Pokud chcete vytvořit obor názvů a centra událostí, postupujte podle pokynů v [v tomto článku](event-hubs-create.md), potom proveďte následující kroky v tomto kurzu.
 
 ## <a name="install-python-package"></a>Instalovat balíček Pythonu
 
@@ -98,23 +97,18 @@ except KeyboardInterrupt:
     pass
 ```
 
-## <a name="send-events"></a>Odesílání událostí
+## <a name="run-application-to-send-events"></a>Spuštění aplikace pro odesílání událostí
 
 Pro spuštění skriptu, otevřete příkazový řádek, který má Python v cestě a pak spusťte tento příkaz:
 
 ```bash
 start python send.py
 ```
+
+Blahopřejeme! Nyní jste odeslali zprávy do centra událostí.
  
 ## <a name="next-steps"></a>Další postup
-
-Teď, když jste odeslali události do centra událostí pomocí Pythonu, přijímat události naleznete v tématu [odpovídající článku Receive](event-hubs-python-get-started-receive.md).
-
-Získáte další informace o službě Event Hubs na následujících stránkách:
-
-* [Přehled služby Event Hubs][Event Hubs overview]
-* [Vytvoření centra událostí](event-hubs-create.md)
-* [Nejčastější dotazy k Event Hubs](event-hubs-faq.md)
+V tomto rychlém startu jste odeslali zprávy do centra událostí pomocí Pythonu. Další způsob příjmu událostí z centra událostí pomocí Pythonu najdete v tématu [přijímat události z centra událostí - Python](event-hubs-python-get-started-receive.md).
 
 <!-- Links -->
 [Event Hubs overview]: event-hubs-about.md

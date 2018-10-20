@@ -1,16 +1,16 @@
-V [portál Azure](https://portal.azure.com), klikněte na tlačítko **skupiny prostředků** > **cloudu-prostředí-úložiště -\<your_region >**  >   **\<storage_account_name >**.
+V [webu Azure portal](https://portal.azure.com), klikněte na tlačítko **skupiny prostředků** > **cloud-shell-úložiště –\<your_region >**  >   **\<název_účtu_úložiště >**.
 
-![Najít účet úložiště pro cloudové prostředí](../articles/app-service/media/app-service-deploy-zip/upload-choose-storage-account.png)
+![Najít účet úložiště Cloud Shell](../articles/app-service/media/app-service-deploy-zip/upload-choose-storage-account.png)
 
-V **přehled** stránky účtu úložiště, vyberte **soubory**.
+V **přehled** stránce účtu úložiště vyberte **soubory**.
 
-Vyberte automaticky generované sdílené složky a vyberte **nahrát**. Tuto sdílenou složku připojené v prostředí cloudu jako `clouddrive`.
+Vyberte sdílenou složku automaticky vygenerovaný soubor a vyberte **nahrát**. V Cloud Shellu, jako je připojený tuto sdílenou složku souborového `clouddrive`.
 
-![Najít tlačítko odeslání](../articles/app-service/media/app-service-deploy-zip/upload-select-button.png)
+![Najít tlačítko Nahrát](../articles/app-service/media/app-service-deploy-zip/upload-select-button.png)
 
-Klikněte na tlačítko modulu pro výběr souborů a souboru ZIP a potom klikněte na tlačítko **nahrát**. 
+Klepněte na volič soubor a vyberte soubor ZIP a potom klikněte na tlačítko **nahrát**. 
 
-V prostředí cloudu, použijte `ls` ověřit, zda se zobrazí nahrávaný soubor ZIP ve výchozí `clouddrive` sdílet.
+Ve službě Cloud Shell pomocí `ls` k ověření, že vidíte ve výchozích nahraný soubor ZIP `clouddrive` sdílet.
 
 ```azurecli-interactive
 ls clouddrive

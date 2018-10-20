@@ -8,14 +8,14 @@ tags: billing
 ms.assetid: 60d848f9-ff26-496e-a5ec-ccf92ad7d125
 ms.service: billing
 ms.topic: article
-ms.date: 09/11/2018
+ms.date: 10/19/2018
 ms.author: byvinyal
-ms.openlocfilehash: 0b78c7c94f5dc6d7c427188ac4ffd807a06a867e
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: c22f3dbc06dd43a31bf43634437c7f377dac8813
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47585488"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49457302"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Limity, kvóty a omezení předplatného a služeb Azure
 Tento dokument uvádí některé nejčastějšími omezeními Microsoft Azure, které se taky říká se jim kvóty. Tento dokument nepopisuje aktuálně všech služeb Azure. V průběhu času v seznamu rozbalit a doplněn o popis další platformy.
@@ -93,7 +93,7 @@ V následující omezení se přidala nová tabulka tak, aby odrážel případn
 * [Site Recovery](#site-recovery-limits)
 * [SQL Database](#sql-database-limits)
 * [SQL Data Warehouse](#sql-data-warehouse-limits)
-* [Úložiště](#storage-limits)
+* [Storage](#storage-limits)
 * [StorSimple systému](#storsimple-system-limits)
 * [Stream Analytics](#stream-analytics-limits)
 * [Předplatné](#subscription-limits)
@@ -108,7 +108,7 @@ V následující omezení se přidala nová tabulka tak, aby odrážel případn
 #### <a name="subscription-limits---azure-resource-manager"></a>Limity předplatného – Azure Resource Manageru
 Následující omezení platí při používání Azure Resource Manageru a skupiny prostředků Azure. Limity, které nebyly změněny s Azure Resource Manageru nejsou uvedené níže. Najdete v předchozí tabulce tyto limity.
 
-Informace o zpracování omezení požadavků Resource Manageru najdete v tématu [požadavky omezení využití sítě Správce prostředků](resource-manager-request-limits.md).
+Informace o rozhraní API Resource Manageru čtení a zápis omezení, najdete v článku [požadavky omezení využití sítě Správce prostředků](resource-manager-request-limits.md).
 
 [!INCLUDE [azure-subscription-limits-azure-resource-manager](../includes/azure-subscription-limits-azure-resource-manager.md)]
 

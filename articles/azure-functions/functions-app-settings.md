@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/22/2018
 ms.author: glenga
-ms.openlocfilehash: ec309bc5484c0ac96d1323c56670c147737e7c64
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 2eb736891b12c07441bc8828ca07dd0b9fa13d98
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49377859"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49458118"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Reference k nastavení aplikací pro službu Azure Functions
 
@@ -82,11 +82,11 @@ Cesta ke kořenovému adresáři kde *host.json* složky souboru a funkce jsou u
 
 ## <a name="azurewebjobssecretstoragetype"></a>AzureWebJobsSecretStorageType
 
-Určuje úložiště nebo zprostředkovatele má být použit pro úložiště klíčů. V současné době jsou podporované úložiště objektů blob ("Blob") a systém souborů ("zakázáno"). Výchozí hodnota je systém souborů ("zakázáno").
+Určuje úložiště nebo zprostředkovatele má být použit pro úložiště klíčů. V současné době jsou podporované úložiště úložiště objektů blob ("Blob") a místního systému souborů ("Files"). Výchozí hodnota je objekt blob ve verzi 1 a systém souborů ve verzi 2. Všimněte si, že ve verzi 1 souboru systému bude fungovat jenom pro funkce běžící v plánu služby app service.
 
 |Klíč|Ukázková hodnota|
 |---|------------|
-|AzureWebJobsSecretStorageType|zakázáno|
+|AzureWebJobsSecretStorageType|Soubory|
 
 ## <a name="azurewebjobsstorage"></a>AzureWebJobsStorage
 

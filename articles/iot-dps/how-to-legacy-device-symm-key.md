@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 51fea4fa1973fbe92242f1995d892cd5b038a29b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 9553d1dd5dd8d8ff11ea480618b471b9898985e3
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46991636"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49456554"
 ---
 # <a name="how-to-provision-legacy-devices-using-symmetric-keys"></a>Jak zřídit starší zařízení pomocí symetrických klíčů
 
@@ -26,7 +26,7 @@ Tento článek předpokládá, že modulu hardwarového zabezpečení ani certif
 
 Tento článek také předpokládá, že aktualizace zařízení probíhá v zabezpečeném prostředí k zabránění neoprávněnému přístupu k skupiny hlavní klíč nebo klíč odvozené zařízení.
 
-Tento článek je orientované na pracovní stanici se systémem Windows. Můžete však provést postupy v Linuxu. Příklad pro Linux, najdete v části [jak zřídit pro víceklientskou architekturu](how-to-provision-multitenant.md).
+Tento článek je orientovaný na pracovní stanici s Windows. Stejným postupem se však můžete řídit i na Linuxu. Příklad pro Linux najdete v článku o [zřizování architektury s více tenanty](how-to-provision-multitenant.md).
 
 
 ## <a name="overview"></a>Přehled
@@ -49,11 +49,11 @@ Zařízení kódu demonstruje tento článek bude postup podobný jako [rychlý 
 
 ## <a name="prepare-an-azure-iot-c-sdk-development-environment"></a>Příprava vývojového prostředí Azure IoT C SDK
 
-V této části se připravíte prostředí pro vývoj sloužící k sestavení [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c). 
+V této části připravíte vývojové prostředí použité k sestavení [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c). 
 
-Sada SDK zahrnuje ukázkový kód pro simulované zařízení. Toto simulované zařízení se pokusí zřizování během pořadí spouštěcích zařízení.
+Sada SDK zahrnuje ukázkový kód pro simulované zařízení. Toto simulované zařízení se pokusí zřídit během spouštěcí sekvence zařízení.
 
-1. Stáhněte si verzi 3.11.4 [sestavovací systém CMake](https://cmake.org/download/). Stažený binární soubor ověřte pomocí odpovídající kryptografické hodnoty hash. Následující příklad používá Windows PowerShell k ověření kryptografické hodnoty hash pro verzi 3.11.4 distribuce x64 MSI:
+1. Stáhněte si verzi 3.11.4 [sestavovacího systému CMake](https://cmake.org/download/). Stažený binární soubor ověřte pomocí odpovídající kryptografické hodnoty hash. Následující příklad používá Windows PowerShell k ověření kryptografické hodnoty hash pro verzi 3.11.4 distribuce x64 MSI:
 
     ```PowerShell
     PS C:\Downloads> $hash = get-filehash .\cmake-3.11.4-win64-x64.msi
@@ -61,7 +61,7 @@ Sada SDK zahrnuje ukázkový kód pro simulované zařízení. Toto simulované 
     True
     ```
     
-    Následující hodnoty hash pro verzi 3.11.4 byly uvedeny na webu CMake v době psaní tohoto textu:
+    V době psaní tohoto textu byly na webu CMake uvedené tyto hodnoty hash pro verzi 3.11.4:
 
     ```
     6dab016a6b82082b8bcd0f4d1e53418d6372015dd983d29367b9153f1a376435  cmake-3.11.4-Linux-x86_64.tar.gz
@@ -71,7 +71,7 @@ Sada SDK zahrnuje ukázkový kód pro simulované zařízení. Toto simulované 
 
     Je důležité, aby požadavky na sadu Visual Studio (Visual Studio a sada funkcí Vývoj desktopových aplikací pomocí C++) byly na vašem počítači nainstalované ještě **před** zahájením instalace `CMake`. Jakmile jsou požadované součásti k dispozici a stažený soubor je ověřený, nainstalujte sestavovací systém CMake.
 
-2. Otevřete prostředí příkazového řádku nebo Git Bash. Spusťte následující příkaz a naklonujte úložiště Azure IoT C SDK na Githubu:
+2. Otevřete prostředí příkazového řádku nebo Git Bash. Spusťte následující příkaz pro naklonování úložiště GitHub sady Azure IoT C SDK:
     
     ```cmd/sh
     git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive
@@ -87,10 +87,10 @@ Sada SDK zahrnuje ukázkový kód pro simulované zařízení. Toto simulované 
     cd cmake
     ```
 
-4. Spusťte následující příkaz, který je založen na verzi sady SDK, které jsou specifické pro vaše klientská platforma pro vývoj. V adresáři `cmake` se vygeneruje řešení Visual Studia pro simulované zařízení. 
+4. Spuštěním následujícího příkazu sestavte verzi sady SDK určenou pro platformu vašeho vývojového klienta. V adresáři `cmake` se vygeneruje řešení Visual Studia pro simulované zařízení. 
 
     ```cmd
-    cmake -Duse_prov_client:BOOL=ON ..
+    cmake -Dhsm_type_symm_key:BOOL=ON ..
     ```
     
     Pokud `cmake` nenajde váš kompilátor C++, můžou se při spuštění výše uvedeného příkazu zobrazit chyby sestavení. Pokud k tomu dojde, zkuste tento příkaz spustit v [příkazovém řádku sady Visual Studio](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs). 
@@ -98,7 +98,7 @@ Sada SDK zahrnuje ukázkový kód pro simulované zařízení. Toto simulované 
     Po úspěšném sestavení by posledních pár řádků výstupu mělo vypadat přibližně takto:
 
     ```cmd/sh
-    $ cmake -Duse_prov_client:BOOL=ON ..
+    $ cmake -Dhsm_type_symm_key:BOOL=ON ..
     -- Building for: Visual Studio 15 2017
     -- Selecting Windows SDK version 10.0.16299.0 to target Windows 10.0.17134.
     -- The C compiler identification is MSVC 19.12.25835.0
@@ -124,7 +124,7 @@ Sada SDK zahrnuje ukázkový kód pro simulované zařízení. Toto simulované 
 
     - **Typ ověření**: vyberte **symetrický klíč**.
 
-    - **Automaticky generovat klíče**: Zaškrtněte toto políčko.
+    - **Automaticky vygenerovat klíče**: Toto políčko zaškrtněte.
 
     - **Vyberte, jak chcete přiřadit zařízení k centrům**: vyberte **statickou konfiguraci** tak můžete přiřadit konkrétní rozbočovače.
 
@@ -132,9 +132,9 @@ Sada SDK zahrnuje ukázkový kód pro simulované zařízení. Toto simulované 
 
     ![Přidat skupinu registrací pro ověření identity symetrického klíče](./media/how-to-legacy-device-symm-key/symm-key-enrollment-group.png)
 
-4. Po uložení vaší registrace **primární klíč** a **sekundární klíč** se generují a přidávají do položky registrace. Zobrazí vaše skupina symetrického klíče registrace jako **mylegacydevices** pod *název skupiny* sloupec v *skupiny registrací* kartu. 
+4. Po uložení registrace se vygeneruje **Primární klíč** a **Sekundární klíč** a tyto klíče se přidají do položky registrace. Zobrazí vaše skupina symetrického klíče registrace jako **mylegacydevices** pod *název skupiny* sloupec v *skupiny registrací* kartu. 
 
-    Otevřete registraci a zkopírujte hodnotu vaše generované **primární klíč**. Tento klíč je klíč hlavní skupiny.
+    Otevřete registraci a zkopírujte hodnotu vygenerovaného **primárního klíče**. Tento klíč je klíč hlavní skupiny.
 
 
 ## <a name="choose-a-unique-registration-id-for-the-device"></a>Zvolte jedinečným registračním ID zařízení
@@ -216,7 +216,7 @@ Tento ukázkový kód simuluje posloupnost spouštěcí zařízení, která ode�
 
     ![Extrahování informací o koncovém bodu služby Device Provisioning z okna portálu](./media/quick-create-simulated-device-x509/extract-dps-endpoints.png) 
 
-2. V sadě Visual Studio, otevřete **azure_iot_sdks.sln** soubor řešení, který byl vytvořen starší CMake. Soubor řešení musí být v následujícím umístění:
+2. V sadě Visual Studio, otevřete **azure_iot_sdks.sln** soubor řešení, který byl vytvořen starší CMake. Soubor řešení by se měl nacházet v následujícím umístění:
 
     ```
     \azure-iot-sdk-c\cmake\azure_iot_sdks.sln
@@ -230,7 +230,7 @@ Tento ukázkový kód simuluje posloupnost spouštěcí zařízení, která ode�
     static const char* id_scope = "0ne00002193";
     ```
 
-5. Ve stejném souboru vyhledejte definici funkce `main()`. Ujistěte se, `hsm_type` proměnná je nastavená na `SECURE_DEVICE_TYPE_SYMMETRIC_KEY` jak je znázorněno níže:
+5. Ve stejném souboru vyhledejte definici funkce `main()`. Zkontrolujte, jestli je proměnná `hsm_type` nastavená na hodnotu `SECURE_DEVICE_TYPE_SYMMETRIC_KEY`, jak je vidět dole:
 
     ```c
     SECURE_DEVICE_TYPE hsm_type;
@@ -241,9 +241,9 @@ Tento ukázkový kód simuluje posloupnost spouštěcí zařízení, která ode�
 
 6. Klikněte pravým tlačítkem na projekt **prov\_dev\_client\_sample** a vyberte **Nastavit jako spouštěný projekt**. 
 
-7. V sadě Visual Studio *Průzkumníku řešení* okno, přejděte **hsm\_zabezpečení\_klienta** projektu a rozbalte ho. Rozbalte **zdrojové soubory**a otevřete **hsm\_klienta\_key.c**. 
+7. V okně *Průzkumník řešení* sady Visual Studio přejděte na projekt **hsm\_security\_client** a rozbalte ho. Rozbalte **zdrojové soubory** a otevřete soubor **hsm\_client\_key.c**. 
 
-    Najít deklaraci `REGISTRATION_NAME` a `SYMMETRIC_KEY_VALUE` konstanty. Proveďte následující změny do souboru a soubor uložte.
+    Vyhledejte deklaraci konstant `REGISTRATION_NAME` a `SYMMETRIC_KEY_VALUE`. Proveďte následující změny a soubor uložte.
 
     Aktualizujte hodnotu `REGISTRATION_NAME` konstanty s **jedinečným registračním ID pro vaše zařízení**.
     
@@ -256,7 +256,7 @@ Tento ukázkový kód simuluje posloupnost spouštěcí zařízení, která ode�
 
 7. V nabídce sady Visual Studio vyberte **Ladit** > **Spustit bez ladění** a spusťte řešení. Po zobrazení výzvy k opětovnému sestavení projektu klikněte na **Ano** a před spuštěním projekt znovu sestavte.
 
-    Následující výstup je příkladem simulovaného zařízení úspěšně spouští a připojením k instanci služby zřizování pro přiřazení do služby IoT hub:
+    Následující výstup je příkladem úspěšného spuštění simulovaného zařízení a připojení k instanci služby zřizování pro přiřazení k IoT Hubu:
 
     ```cmd
     Provisioning API Version: 1.2.8
@@ -273,7 +273,7 @@ Tento ukázkový kód simuluje posloupnost spouštěcí zařízení, která ode�
     Press enter key to exit:
     ```
 
-8. Na portálu přejděte do služby IoT hub se přiřadila vaše simulované zařízení a klikněte na tlačítko **zařízení IoT** kartu. Úspěšném zřízení simulovaného k rozbočovači, jeho ID zařízení zobrazí v **zařízení IoT** okně s *stav* jako **povolené**. Možná budete muset klikněte na tlačítko **aktualizovat** tlačítko v horní části. 
+8. Na webu Azure Portal přejděte do IoT Hubu, kam se simulované zařízení přiřadilo, a klikněte na kartu **Zařízení IoT**. Po úspěšném zřízení simulovaného zařízení v IoT Hubu se ID tohoto zařízení zobrazí v okně **Zařízení IoT** a jeho *STAV* se zobrazí jako **povoleno**. Možná budete muset nahoře kliknout na tlačítko **Aktualizovat**. 
 
     ![Zařízení je zaregistrované u centra IoT](./media/how-to-legacy-device-symm-key/hub-registration.png) 
 

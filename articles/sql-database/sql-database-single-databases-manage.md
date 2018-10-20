@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 10/15/2018
-ms.openlocfilehash: f74577a5f8042a7b373d1ff1944088036a0c94f5
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.date: 10/19/2018
+ms.openlocfilehash: ac3ce8a417a63ce0a91339c38c2a5ae8b3013228
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49354202"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49466779"
 ---
 # <a name="create-and-manage-logical-servers-and-single-databases-in-azure-sql-database"></a>Vytvoření a správa izolovaných databází ve službě Azure SQL Database a logické servery
 
@@ -142,22 +142,22 @@ K vytváření a správě serveru Azure SQL, databází a bran firewall, použij
 
 | Příkaz | Popis |
 | --- | --- |
-|[Servery – vytvořit nebo aktualizovat](https://docs.microsoft.com/rest/api/sql/servers/servers_createorupdate/rest/api)|Vytvoří nebo aktualizuje nový server.|
-|[Servery – odstranit](https://docs.microsoft.com/rest/api/sql/servers/servers_delete)|Odstraní systému SQL server.|
-|[Servery – Get](https://docs.microsoft.com/rest/api/sql/servers/servers_get)|Získá serveru.|
-|[Servery – seznam](https://docs.microsoft.com/rest/api/sql/servers/servers_list)|Vrátí seznam serverů.|
-|[Servery – seznam podle skupin prostředků](https://docs.microsoft.com/rest/api/sql/servers/servers_listbyresourcegroup)|Vrátí seznam serverů ve skupině prostředků.|
-|[Servery – aktualizace](https://docs.microsoft.com/rest/api/sql/servers/servers_update)|Aktualizuje existující server.|
-|[Databáze – vytvořit nebo aktualizovat](https://docs.microsoft.com/rest/api/sql/databases/databases_createorupdate)|Vytvoří novou databázi nebo aktualizuje existující databázi.|
-|[Databáze – odstranit](https://docs.microsoft.com/rest/api/sql/databases/databases_delete)|Odstraní databázi.|
-|[Databáze - Get](https://docs.microsoft.com/rest/api/sql/databases/databases_get)|Získá databázi.|
-|[Databáze – seznam podle elastického fondu](https://docs.microsoft.com/rest/api/sql/databases/databases_listbyelasticpool)|Vrátí seznam databází v elastickém fondu.|
-|[Databáze – seznam serverem](https://docs.microsoft.com/rest/api/sql/databases/databases_listbyserver)|Vrátí seznam databází na serveru.|
-|[Databáze – aktualizace](https://docs.microsoft.com/rest/api/sql/databases/databases_update)|Aktualizuje existující databázi.|
-|[Pravidla – brány firewall vytvořit nebo aktualizovat](https://docs.microsoft.com/rest/api/sql/firewallrules/firewallrules_createorupdate)|Vytvoří nebo aktualizuje pravidla brány firewall.|
-|[Pravidla brány firewall – odstranit](https://docs.microsoft.com/rest/api/sql/firewallrules/firewallrules_delete)|Odstraní pravidlo brány firewall.|
-|[Pravidla brány firewall – Get](https://docs.microsoft.com/rest/api/sql/firewallrules/firewallrules_get)|Získá pravidla brány firewall.|
-|[Pravidla brány firewall – seznam serverem](https://docs.microsoft.com/rest/api/sql/firewallrules/firewallrules_listbyserver)|Vrátí seznam pravidel brány firewall.|
+|[Servery – vytvořit nebo aktualizovat](https://docs.microsoft.com/rest/api/sql/servers/createorupdate)|Vytvoří nebo aktualizuje nový server.|
+|[Servery – odstranit](https://docs.microsoft.com/rest/api/sql/servers/delete)|Odstraní systému SQL server.|
+|[Servery – Get](https://docs.microsoft.com/rest/api/sql/servers/get)|Získá serveru.|
+|[Servery – seznam](https://docs.microsoft.com/rest/api/sql/servers/list)|Vrátí seznam serverů.|
+|[Servery – seznam podle skupin prostředků](https://docs.microsoft.com/rest/api/sql/servers/listbyresourcegroup)|Vrátí seznam serverů ve skupině prostředků.|
+|[Servery – aktualizace](https://docs.microsoft.com/rest/api/sql/servers/update)|Aktualizuje existující server.|
+|[Databáze – vytvořit nebo aktualizovat](https://docs.microsoft.com/rest/api/sql/databases/createorupdate)|Vytvoří novou databázi nebo aktualizuje existující databázi.|
+|[Databáze – odstranit](https://docs.microsoft.com/rest/api/sql/databases/delete)|Odstraní databázi.|
+|[Databáze - Get](https://docs.microsoft.com/rest/api/sql/databases/get)|Získá databázi.|
+|[Databáze – seznam podle elastického fondu](https://docs.microsoft.com/rest/api/sql/databases/listbyelasticpool)|Vrátí seznam databází v elastickém fondu.|
+|[Databáze – seznam serverem](https://docs.microsoft.com/rest/api/sql/databases/listbyserver)|Vrátí seznam databází na serveru.|
+|[Databáze – aktualizace](https://docs.microsoft.com/rest/api/sql/databases/update)|Aktualizuje existující databázi.|
+|[Pravidla – brány firewall vytvořit nebo aktualizovat](https://docs.microsoft.com/rest/api/sql/firewallrules/createorupdate)|Vytvoří nebo aktualizuje pravidla brány firewall.|
+|[Pravidla brány firewall – odstranit](https://docs.microsoft.com/rest/api/sql/firewallrules/delete)|Odstraní pravidlo brány firewall.|
+|[Pravidla brány firewall – Get](https://docs.microsoft.com/rest/api/sql/firewallrules/get)|Získá pravidla brány firewall.|
+|[Pravidla brány firewall – seznam serverem](https://docs.microsoft.com/rest/api/sql/firewallrules/listbyserver)|Vrátí seznam pravidel brány firewall.|
 
 ## <a name="next-steps"></a>Další postup
 

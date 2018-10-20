@@ -2,25 +2,17 @@
 title: 'Připojení klasických virtuálních sítí k virtuálním sítím Azure Resource Manageru: PowerShell | Dokumentace Microsoftu'
 description: Vytvoření připojení VPN mezi klasické virtuální sítě a virtuální sítě Resource Manageru pomocí VPN Gateway a Powershellu.
 services: vpn-gateway
-documentationcenter: na
 author: cherylmc
-manager: jpconnock
-editor: ''
-tags: azure-service-management,azure-resource-manager
-ms.assetid: f17c3bf0-5cc9-4629-9928-1b72d0c9340b
 ms.service: vpn-gateway
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 02/13/2018
+ms.topic: conceptual
+ms.date: 10/17/2018
 ms.author: cherylmc
-ms.openlocfilehash: 65faf1a4f78244d9fdd03b6415bf2cadac923504
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 588692ad4c7c95a06d33b67b76bb8feff6b4ed53
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38706012"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49457166"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-powershell"></a>Připojení virtuálních sítí z různých modelů nasazení pomocí PowerShellu
 
@@ -42,7 +34,7 @@ Následující kroky vás provedou nastavením nezbytným pro konfiguraci dynami
 
 ### <a name="pre"></a>Požadavky
 
-* Již byly vytvořeny obou virtuálních sítích.
+* Již byly vytvořeny obou virtuálních sítích. Pokud potřebujete vytvořit virtuální síť resource Manageru, přečtěte si téma [vytvoření virtuální sítě](../virtual-network/quick-create-powershell.md#create-a-virtual-network). Chcete-li vytvořit klasickou virtuální síť, přečtěte si téma [vytvořit klasickou virtuální síť](https://docs.microsoft.com/en-us/azure/virtual-network/create-virtual-network-classic).
 * Rozsahy adres pro virtuální sítě se mezi sebou, ani překrývat s žádným z rozsahů pro další připojení, které brány může být připojen k.
 * Nainstalovali jste nejnovější rutiny prostředí PowerShell. Zobrazit [instalace a konfigurace Azure Powershellu](/powershell/azure/overview) Další informace. Ujistěte se, že instalace služby správy (lu) a rutiny správce prostředků (SV). 
 
@@ -77,24 +69,24 @@ Konfigurace adresování IP brány = gwipconfig
 ### <a name="1-download-your-network-configuration-file"></a>1. Stáhněte si soubor konfigurace sítě
 1. Přihlaste se ke svému účtu Azure v konzole Powershellu se zvýšenými oprávněními. Následující rutina vás vyzve k zadání přihlašovacích údajů pro váš účet Azure. Po přihlášení se stáhne nastavení účtu, aby bylo dostupné v prostředí Azure PowerShell. Klasické rutiny služby správy Azure Powershellu se používají v této části.
 
-  ```powershell
+  ```azurepowershell
   Add-AzureAccount
   ```
 
   Získání předplatného Azure.
 
-  ```powershell
+  ```azurepowershell
   Get-AzureSubscription
   ```
 
   Máte-li více předplatných, vyberte předplatné, které chcete použít.
 
-  ```powershell
+  ```azurepowershell
   Select-AzureSubscription -SubscriptionName "Name of subscription"
   ```
 2. Spuštěním následujícího příkazu exportujte konfigurační soubor sítě Azure. Můžete změnit umístění souboru pro export do jiného umístění v případě potřeby.
 
-  ```powershell
+  ```azurepowershell
   Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
   ```
 3. Otevřete soubor .xml, který jste stáhli a upravte ji. Příklad konfiguračního souboru sítě, najdete v článku [schéma konfigurace sítě](https://msdn.microsoft.com/library/jj157100.aspx).
@@ -148,7 +140,7 @@ V této části určíme na místní síťovou lokalitu, kterou chcete připojit
 ### <a name="5-save-the-file-and-upload"></a>5. Uložte soubor a nahrát
 Soubor uložte a importujte jej do Azure, spuštěním následujícího příkazu. Ujistěte se, že změníte cestu k souboru jako nezbytné pro vaše prostředí.
 
-```powershell
+```azurepowershell
 Set-AzureVNetConfig -ConfigurationPath C:\AzureNet\NetworkConfig.xml
 ```
 
@@ -160,44 +152,46 @@ Zobrazí se podobně jako výsledek znázorňující, import proběhl úspěšn�
 
 ### <a name="6-create-the-gateway"></a>6. Vytvoření brány
 
-Před spuštěním tohoto příkladu, odkazovat na soubor konfigurace sítě, který jste stáhli pro přesné názvy, které Azure očekává, že chcete zobrazit. Soubor konfigurace sítě obsahuje hodnoty pro klasické virtuální sítě. Někdy názvy pro klasické virtuální sítě jsou změněny v konfiguračním souboru sítě, při vytváření nastavení klasické virtuální sítě na webu Azure Portal vzhledem k rozdílům v modelech nasazení. Při zadávání názvu virtuální sítě, která obsahuje mezery, pomocí jednoduchých uvozovek kolem hodnoty. V následujícím příkladu - VNetName je název klasickou virtuální síť a - LocalNetworkSiteName je název zadaný pro místní síťovou lokalitu.
+Před spuštěním tohoto příkladu, odkazovat na soubor konfigurace sítě, který jste stáhli pro přesné názvy, které Azure očekává, že chcete zobrazit. Soubor konfigurace sítě obsahuje hodnoty pro klasické virtuální sítě. Někdy názvy pro klasické virtuální sítě jsou změněny v konfiguračním souboru sítě, při vytváření nastavení klasické virtuální sítě na webu Azure Portal vzhledem k rozdílům v modelech nasazení. Například pokud jste použili na webu Azure portal k vytvoření klasická virtuální síť s názvem klasickou virtuální síť a vytvoří ve skupině prostředků s názvem "ClassicRG", název, který je obsažen v konfiguračním souboru sítě je převedena na "Skupina ClassicRG klasické virtuální sítě". Při zadávání názvu virtuální sítě, která obsahuje mezery, použijte uvozovky kolem hodnoty.
 
 
-- SharedKey je hodnota, kterou generujete a zadáváte.
+Použijte následující příklad k vytvoření brány dynamického směrování:
 
-```powershell
+```azurepowershell
 New-AzureVNetGateway -VNetName ClassicVNet -GatewayType DynamicRouting
 ```
 
-V tomto příkladu jsme použili "abc123", ale můžete vygenerovat a používat něco složitějšího.
+Můžete zkontrolovat stav brány pomocí **Get-AzureVNetGateway** rutiny.
 
-## <a name="creatermgw"></a>Důležité je, že hodnota, kterou zde zadáte, musí být stejnou hodnotu, kterou zadáte v dalším kroku při vytváření připojení.
-Vrácení by se měla zobrazit stav: úspěšné. Vytvoření připojení k síti VPN spuštěním následujících příkazů: 
+## <a name="creatermgw"></a>Oddíl 2 – konfigurace brány virtuální sítě Správce prostředků
 
-1. Všimněte si, že - ConnectionType je protokol IPsec, ne Vnet2Vnet. Následující rutina vás vyzve k zadání přihlašovacích údajů pro váš účet Azure. Část 5 – ověření připojení
+Požadavky se předpokládá, že jste již vytvořili virtuální síti správce prostředků. V tomto kroku vytvoříte bránu sítě VPN pro virtuální síti správce prostředků. Nespouštět tyto kroky až po načtení veřejnou IP adresu brány, klasické virtuální sítě. 
 
-  ```powershell
+1. Přihlaste se ke svému účtu Azure v konzole prostředí PowerShell. Následující rutina vás vyzve k zadání přihlašovacích údajů pro váš účet Azure. Po přihlášení se stáhnou nastavení svého účtu tak, aby byly k dispozici pro prostředí Azure PowerShell. Volitelně můžete použít funkci "Vyzkoušet" Pokud chcete spustit Azure Cloud Shell v prohlížeči.
+
+  Pokud používáte Azure Cloud Shell, přeskočte následující rutinu:
+
+  ```azurepowershell
   Connect-AzureRmAccount
   ``` 
-   
-  Načtěte seznam předplatných Azure.
+  Pokud chcete ověřit, že používáte správné předplatné, spusťte následující rutinu:  
 
-  ```powershell
+  ```azurepowershell-interactive
   Get-AzureRmSubscription
   ```
    
-  Chcete-li ověřit připojení z klasické virtuální sítě k virtuální síti správce prostředků
+  Pokud máte více než jedno předplatné, zadejte předplatné, pro kterou chcete použít.
 
-  ```powershell
+  ```azurepowershell-interactive
   Select-AzureRmSubscription -SubscriptionName "Name of subscription"
   ```
-2. Vytvořte bránu místní sítě. Ve virtuální síti brána místní sítě obvykle odkazuje na vaše místní umístění. Chcete-li ověřit připojení z vaší virtuální sítě Resource Manageru pro klasické virtuální sítě Zadejte název, podle kterého Azure na ni odkazuje a také zadáte předponu adresního prostoru. Azure pomocí zadané předpony IP adresy rozpozná, jaký provoz má zasílat na vaše místní umístění. Pokud je potřeba upravit tyto informace tady později, než vytvoříte bránu, můžete upravit hodnoty a spusťte ukázku znovu.
+2. Vytvořte bránu místní sítě. Ve virtuální síti brána místní sítě obvykle odkazuje na vaše místní umístění. V takovém případě bránu místní sítě odkazuje na klasické virtuální sítě. Zadejte název, podle kterého Azure na ni odkazuje a také zadáte předponu adresního prostoru. Azure pomocí zadané předpony IP adresy rozpozná, jaký provoz má zasílat na vaše místní umístění. Pokud je potřeba upravit tyto informace tady později, než vytvoříte bránu, můžete upravit hodnoty a spusťte ukázku znovu.
    
    **-Název** je název, kterou chcete přiřadit k odkazování na bránu místní sítě.<br>
    **-AddressPrefix** je adresní prostor pro klasické virtuální sítě.<br>
-   **-GatewayIpAddress** je veřejnou IP adresu brány klasické virtuální sítě. Nezapomeňte změnit následující ukázce tak, aby odrážely správnou IP adresu.<br>
+   **-GatewayIpAddress** je veřejnou IP adresu brány klasické virtuální sítě. Nezapomeňte změnit následující ukázkový text "n.n.n.n" tak, aby odrážely správnou IP adresu.<br>
 
-  ```powershell
+  ```azurepowershell-interactive
   New-AzureRmLocalNetworkGateway -Name ClassicVNetLocal `
   -Location "West US" -AddressPrefix "10.0.0.0/24" `
   -GatewayIpAddress "n.n.n.n" -ResourceGroupName RG1
@@ -206,7 +200,7 @@ Vrácení by se měla zobrazit stav: úspěšné. Vytvoření připojení k sít
 
   V tomto kroku jsme také nastavit proměnnou, která se používá v pozdější fázi.
 
-  ```powershell
+  ```azurepowershell-interactive
   $ipaddress = New-AzureRmPublicIpAddress -Name gwpip `
   -ResourceGroupName RG1 -Location 'EastUS' `
   -AllocationMethod Dynamic
@@ -218,7 +212,7 @@ Vrácení by se měla zobrazit stav: úspěšné. Vytvoření připojení k sít
    **-Název** je název vaší virtuální sítě Resource Manageru.<br>
    **-ResourceGroupName** je skupina prostředků, které je přidružené k virtuální síti. Podsíť brány musí již existovat pro tuto virtuální síť a musí mít název *GatewaySubnet* fungovala správně.<br>
 
-  ```powershell
+  ```azurepowershell-interactive
   $subnet = Get-AzureRmVirtualNetworkSubnetConfig -Name GatewaySubnet `
   -VirtualNetwork (Get-AzureRmVirtualNetwork -Name RMVNet -ResourceGroupName RG1)
   ``` 
@@ -227,14 +221,14 @@ Vrácení by se měla zobrazit stav: úspěšné. Vytvoření připojení k sít
 
   V tomto kroku **- SubnetId** a **- PublicIpAddressId** parametry musí předávat vlastnost id podsítě a IP adresu objektů, v uvedeném pořadí. Nelze použít jednoduchým řetězcem. Tyto proměnné se nastavují v kroku k vyžádání veřejné IP adresy a krok se načíst podsítě.
 
-  ```powershell
+  ```azurepowershell-interactive
   $gwipconfig = New-AzureRmVirtualNetworkGatewayIpConfig `
   -Name gwipconfig -SubnetId $subnet.id `
   -PublicIpAddressId $ipaddress.id
   ```
 7. Spuštěním následujícího příkazu vytvořte bránu virtuální sítě Resource Manageru. `-VpnType` Musí být *RouteBased*. Může trvat 45 minut nebo déle, vytvoření brány.
 
-  ```powershell
+  ```azurepowershell-interactive
   New-AzureRmVirtualNetworkGateway -Name RMGateway -ResourceGroupName RG1 `
   -Location "EastUS" -GatewaySKU Standard -GatewayType Vpn `
   -IpConfigurations $gwipconfig `
@@ -242,17 +236,17 @@ Vrácení by se měla zobrazit stav: úspěšné. Vytvoření připojení k sít
   ```
 8. Zkopírujte veřejnou IP adresu, po vytvoření brány sítě VPN. Můžete ji použít při konfiguraci nastavení místní sítě pro klasické virtuální sítě. Načíst veřejnou IP adresu můžete použít následující rutinu. Veřejná IP adresa je uvedena v vrátit jako *IpAddress*.
 
-  ```powershell
+  ```azurepowershell-interactive
   Get-AzureRmPublicIpAddress -Name gwpip -ResourceGroupName RG1
   ```
 
 ## <a name="localsite"></a>Oddíl 3 – upravte nastavení místní lokality klasické virtuální sítě
 
-V této části pracujete s klasickou virtuální síť. Můžete nahradit zástupnou IP adresu, která jste použili při nastavení místní sítě, které se použijí pro připojení k bráně virtuální sítě Resource Manageru. 
+V této části pracujete s klasickou virtuální síť. Můžete nahradit zástupnou IP adresu, která jste použili při nastavení místní sítě, které se použijí pro připojení k bráně virtuální sítě Resource Manageru. Vzhledem k tomu, že pracujete s klasickou virtuální síť pomocí prostředí PowerShell nainstalovaný místně do počítače, nikoli TryIt prostředí Azure cloudu.
 
 1. Exportujte soubor konfigurace sítě.
 
-  ```powershell
+  ```azurepowershell
   Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
   ```
 2. Pomocí textového editoru, upravte hodnotu pro VPNGatewayAddress. Zástupnou IP adresu nahraďte veřejnou IP adresu brány Resource Manageru a následně změny uložte.
@@ -262,7 +256,7 @@ V této části pracujete s klasickou virtuální síť. Můžete nahradit zást
   ```
 3. Importujte soubor konfigurace upravené sítě do Azure.
 
-  ```powershell
+  ```azurepowershell
   Set-AzureVNetConfig -ConfigurationPath C:\AzureNet\NetworkConfig.xml
   ```
 
@@ -271,7 +265,7 @@ Vytváří se připojení mezi bránami vyžaduje PowerShell. Budete muset přid
 
 1. V konzole prostředí PowerShell nastavte sdílený klíč. Před spuštěním rutin, odkazovat na soubor konfigurace sítě, který jste stáhli pro přesné názvy, které Azure očekává, že chcete zobrazit. Při zadávání názvu virtuální sítě, která obsahuje mezery, pomocí jednoduchých uvozovek kolem hodnoty.<br><br>V následujícím příkladu **- VNetName** je název klasickou virtuální síť a **- LocalNetworkSiteName** je název zadaný pro místní síťovou lokalitu. **- SharedKey** je hodnota, kterou generujete a zadáváte. V tomto příkladu jsme použili "abc123", ale můžete vygenerovat a používat něco složitějšího. Důležité je, že hodnota, kterou zde zadáte, musí být stejnou hodnotu, kterou zadáte v dalším kroku při vytváření připojení. Vrácení by se měla zobrazit **stav: úspěšné**.
 
-  ```powershell
+  ```azurepowershell
   Set-AzureVNetGatewayKey -VNetName ClassicVNet `
   -LocalNetworkSiteName RMVNetLocal -SharedKey abc123
   ```
@@ -279,14 +273,14 @@ Vytváří se připojení mezi bránami vyžaduje PowerShell. Budete muset přid
    
   Nastavte proměnné.
 
-  ```powershell
-  $vnet01gateway = Get-AzureRMLocalNetworkGateway -Name ClassicVNetLocal -ResourceGroupName RG1
+  ```azurepowershell-interactive
+  $vnet01gateway = Get-AzureRmLocalNetworkGateway -Name ClassicVNetLocal -ResourceGroupName RG1
   $vnet02gateway = Get-AzureRmVirtualNetworkGateway -Name RMGateway -ResourceGroupName RG1
   ```
    
   Vytvořte připojení. Všimněte si, že **- ConnectionType** je protokol IPsec, ne Vnet2Vnet.
 
-  ```powershell
+  ```azurepowershell-interactive
   New-AzureRmVirtualNetworkGatewayConnection -Name RM-Classic -ResourceGroupName RG1 `
   -Location "East US" -VirtualNetworkGateway1 `
   $vnet02gateway -LocalNetworkGateway2 `
@@ -301,7 +295,7 @@ Vytváří se připojení mezi bránami vyžaduje PowerShell. Budete muset přid
 
 [!INCLUDE [vpn-gateway-verify-connection-ps-classic](../../includes/vpn-gateway-verify-connection-ps-classic-include.md)]
 
-#### <a name="azure-portal"></a>Azure Portal
+#### <a name="azure-portal"></a>portál Azure
 
 [!INCLUDE [vpn-gateway-verify-connection-azureportal-classic](../../includes/vpn-gateway-verify-connection-azureportal-classic-include.md)]
 
@@ -312,7 +306,7 @@ Vytváří se připojení mezi bránami vyžaduje PowerShell. Budete muset přid
 
 [!INCLUDE [vpn-gateway-verify-ps-rm](../../includes/vpn-gateway-verify-connection-ps-rm-include.md)]
 
-#### <a name="azure-portal"></a>Azure Portal
+#### <a name="azure-portal"></a>portál Azure
 
 [!INCLUDE [vpn-gateway-verify-connection-portal-rm](../../includes/vpn-gateway-verify-connection-portal-rm-include.md)]
 

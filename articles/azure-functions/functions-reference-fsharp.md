@@ -1,6 +1,6 @@
 ---
 title: 'Azure Functions F # – reference pro vývojáře | Dokumentace Microsoftu'
-description: 'Naučte se vyvíjet funkce Azure použitím jazyka F #.'
+description: 'Naučte se vyvíjet funkce Azure pomocí skriptu F #.'
 services: functions
 documentationcenter: fsharp
 author: sylvanc
@@ -10,18 +10,21 @@ ms.assetid: e60226e5-2630-41d7-9e5b-9f9e5acc8e50
 ms.service: azure-functions
 ms.devlang: fsharp
 ms.topic: reference
-ms.date: 09/09/2016
+ms.date: 10/09/2018
 ms.author: syclebsc
-ms.openlocfilehash: 5593f76511f43106d6743a158b051e118ef2a4a6
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 772b2dae016e093f2c3833374378c0e884dbe835
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46125251"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49456942"
 ---
 # <a name="azure-functions-f-developer-reference"></a>F # pro vývojáře Azure Functions – Reference
 
-F # pro službu Azure Functions je řešení umožňující snadno spouštět malé části kódu, nebo "funkce" v cloudu. Data budou téci do vaší funkce jazyka F # prostřednictvím argumentů funkce. Argument názvy jsou určené v `function.json`, a jsou předdefinované názvy pro přístup k věci, jako je funkce protokolovací nástroj a zrušení tokenů.
+F # pro službu Azure Functions je řešení umožňující snadno spouštět malé části kódu, nebo "funkce" v cloudu. Data budou téci do vaší funkce jazyka F # prostřednictvím argumentů funkce. Argument názvy jsou určené v `function.json`, a jsou předdefinované názvy pro přístup k věci, jako je funkce protokolovací nástroj a zrušení tokenů. 
+
+>[!IMPORTANT]
+>Skript F # (.fsx) je podporovaná jenom rozhraním [verzi 1.x](functions-versions.md#creating-1x-apps) modulu runtime Azure Functions. Pokud chcete použít F # s modulem runtime verze 2.x, musíte použít předkompilovanou F # projekt knihovny tříd (.fs). Vytvoření, správě a publikování F # projekt knihovny tříd pomocí sady Visual Studio, stejně jako [projekt knihovny tříd jazyka C#](functions-dotnet-class-library.md). Další informace o verzích funkce, najdete v části [přehled verze modulu runtime Azure Functions](functions-versions.md).
 
 Tento článek předpokládá, že jste už čtete [referenční informace pro vývojáře Azure Functions](functions-reference.md).
 

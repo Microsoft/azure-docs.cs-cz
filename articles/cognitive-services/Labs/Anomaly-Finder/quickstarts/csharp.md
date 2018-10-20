@@ -5,16 +5,16 @@ services: cognitive-services
 author: chliang
 manager: bix
 ms.service: cognitive-services
-ms.technology: anomaly-detection
+ms.component: anomaly-detection
 ms.topic: article
 ms.date: 05/01/2018
 ms.author: chliang
-ms.openlocfilehash: 3ae3d85e8e37fbf896405948f9bc7042bcdaca7b
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 26653d03b8d96cca0674685d2b20ac1d1a35ea85
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48246444"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49457863"
 ---
 # <a name="use-the-anomaly-finder-api-with-c"></a>Použít vyhledávač anomálií rozhraní API pomocí jazyka C#
 
@@ -39,7 +39,7 @@ Následuje příklad času datových bodů řady.
 
 Kroky v příkladu jsou následující.
 
-1. Vytvořte nové konzoly řešení v sadě Visual Studio.
+1. Vytvořte nové konzolové řešení v sadě Visual Studio.
 2. Soubor Program.cs nahraďte následujícím kódem a přidejte odkaz na System.Net.Http.
 3. Nahraďte `[YOUR_SUBSCRIPTION_KEY]` hodnotu klíčem platné předplatné.
 4. Nahraďte `[REPLACE_WITH_THE_EXAMPLE_OR_YOUR_OWN_DATA_POINTS]` s datovými body.

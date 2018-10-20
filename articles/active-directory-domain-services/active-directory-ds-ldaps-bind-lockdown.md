@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/01/2018
 ms.author: maheshu
-ms.openlocfilehash: 9728d42710ce44226363ea4954d83fcc3efbfb75
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: d3fbefd002f0b2774578d24cf2e3145a21a5e1f3
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39502948"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49456401"
 ---
 # <a name="bind-to-an-azure-ad-domain-services-managed-domain-using-secure-ldap-ldaps"></a>Vytvořit vazbu k spravované doméně služby Azure AD Domain Services pomocí zabezpečeného protokolu LDAP (LDAPS)
 
@@ -38,8 +38,8 @@ V dalším kroku vytvoření vazby ke spravované doméně. Klikněte na tlačí
 Vyberte **zobrazení**a pak vyberte **stromu** v nabídce. Základní rozlišující název pole ponechte prázdné a klikněte na tlačítko OK. Přejděte do kontejneru, který chcete vyhledat, klikněte pravým tlačítkem na kontejner a vyberte Hledat.
 
 > [!TIP]
-> - Uživatelé a skupiny synchronizované se službou Azure AD jsou uložené v **uživatelé AADDC** kontejneru. Vyhledávací cesta pro tento kontejner bude vypadat jako ```CN=AADDC\ Users,DC=CONTOSO100,DC=COM```.
-> - Účty počítačů k počítačům připojeným k spravované doméně jsou uloženy v **kontejnery počítače AADDC** kontejneru. Vyhledávací cesta pro tento kontejner bude vypadat jako ```CN=AADDC\ Computers,DC=CONTOSO100,DC=COM```.
+> - Uživatelé a skupiny synchronizované se službou Azure AD jsou uložené v **uživatelé AADDC** organizační jednotky. Cesty pro hledání této organizační jednotky vypadá jako ```OU=AADDC Users,DC=CONTOSO100,DC=COM```.
+> - Účty počítačů k počítačům připojeným k spravované doméně jsou uloženy v **kontejnery počítače AADDC** organizační jednotky. Cesty pro hledání této organizační jednotky vypadá jako ```OU=AADDC Computers,DC=CONTOSO100,DC=COM```.
 >
 >
 

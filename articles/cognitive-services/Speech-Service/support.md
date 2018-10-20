@@ -1,19 +1,21 @@
 ---
 title: Možnosti podpory a Nápověda
-description: Už víte, jak získat pomoc a podpora pro dotazy a problémy při vytváření aplikací, které se integrují s Azure Cognitive Services řeči
+titlesuffix: Azure Cognitive Services
+description: Jak získat pomoc a podpora dotazů a problémů při vytváření aplikací, které se integrují se službou Speech
 services: cognitive-services
 author: wolfma61
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: custom-speech
-ms.topic: article
+ms.component: speech-service
+ms.topic: conceptual
 ms.date: 07/26/2018
 ms.author: wolfma
-ms.openlocfilehash: b5d981f06219bd2b5d7325476725ff7a4eccf3b6
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 58fb5d4be2137eed7d62e702f08bdd66c80be347
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/19/2018
-ms.locfileid: "49430098"
+ms.locfileid: "49468054"
 ---
 # <a name="support-and-help-options"></a>Možnosti podpory a Nápověda
 

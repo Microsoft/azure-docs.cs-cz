@@ -1,20 +1,21 @@
 ---
 title: Značkovací jazyk syntézu řeči
-description: K řízení výslovnost a prosody v převodu textu na řeč pomocí Markup Language syntézu řeči.
 titleSuffix: Azure Cognitive Services
+description: K řízení výslovnost a prosody v převodu textu na řeč pomocí Markup Language syntézu řeči.
 services: cognitive-services
 author: erhopf
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/08/2018
 ms.author: erhopf
-ms.openlocfilehash: bdcb206e092467703f0bd4404da47b334ea8ccaf
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: b32be520adeee2de50c8f49c2884dc9dc92c0ddd
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49165483"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49469278"
 ---
 # <a name="speech-synthesis-markup-language"></a>Značkovací jazyk syntézu řeči
 

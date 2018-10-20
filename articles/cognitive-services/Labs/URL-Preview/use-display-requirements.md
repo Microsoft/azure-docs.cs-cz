@@ -6,16 +6,16 @@ services: cognitive-services
 author: mikedodaro
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: project-url-preview
+ms.component: url-preview
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: rosh
-ms.openlocfilehash: a1aaf5f4c273e2eb42110d11cd3c28f8cf322750
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: e2c6eeb1b5f13ffea49c21c70a478ab42488b443
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48868338"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49468105"
 ---
 # <a name="project-url-preview-use-and-display-requirements"></a>Náhled adresy URL projektu použít a zobrazit požadavky
 

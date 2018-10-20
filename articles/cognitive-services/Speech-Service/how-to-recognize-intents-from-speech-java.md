@@ -1,21 +1,21 @@
 ---
 title: Rozpoznat záměry z řeči pomocí sadou SDK pro řeč pro Javu
-titleSuffix: Microsoft Cognitive Services
-description: >
-  Naučily se rozpoznávat záměry z řeči ze souboru nebo mikrofon pomocí sadou SDK pro řeč pro Javu.
+titleSuffix: Azure Cognitive Services
+description: Naučily se rozpoznávat záměry z řeči ze souboru nebo mikrofon pomocí sadou SDK pro řeč pro Javu.
 services: cognitive-services
 author: wolfma61
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: Speech
-ms.topic: article
+ms.component: speech-service
+ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: wolfma
-ms.openlocfilehash: cc83c05f4e4183fd7c945cec831d905781b92e6f
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: cb7e7095278eed51c7616dc1c19dcf5c9d84b856
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46991823"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49469890"
 ---
 # <a name="recognize-intents-from-speech-by-using-the-speech-sdk-for-java"></a>Rozpoznat záměry z řeči pomocí sadou SDK pro řeč pro Javu
 
@@ -44,5 +44,5 @@ Vyhledejte kód, který se používá v tomto článku ve složce samples/java/j
 
 ## <a name="next-steps"></a>Další postup
 
-- [Jak rozpoznávání řeči](how-to-recognize-speech-java.md)
+- [Rozpoznávání řeči](how-to-recognize-speech-java.md)
 - [Způsob převodu řeči](how-to-translate-speech-java.md)

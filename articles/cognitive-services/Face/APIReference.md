@@ -1,5 +1,3 @@
-<!-- Linguist question: Please confirm that the following are API names and should be left as is: "Person Management, LargePersonGroup/PersonGroup Management, LargeFaceList/FaceList Management, and Face Algorithms" -->
----
 Title: Reference k rozhraní API – rozhraní API pro rozpoznávání tváře titleSuffix: popis služeb Azure Cognitive Services: reference k rozhraní API poskytuje informace o správu osoby, LargePersonGroup/jeden objekt PersonGroup správy, LargeFaceList/FaceList Management a rozhraní API pro rozpoznávání tváře algoritmy.
 Services: vytváření služeb cognitive services: Správce SteveMSFT: cgronlun
 
@@ -18,3 +16,5 @@ Rozhraní API pro rozpoznávání tváře pokrytí následujících kategorií:
 - [Rozhraní API pro správu LargeFaceList](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a157b68d2de3616c086f2cc): použít ke správě LargeFaceList pro [Najít podobné](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237).
 - [Rozhraní API pro správu jeden objekt PersonGroup osoba](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523c): použít ke správě jeden objekt PersonGroup tváří pro [identifikace](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239).
 - [Rozhraní API pro správu jeden objekt PersonGroup](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244): použít ke správě datové sady pro jeden objekt PersonGroup [identifikace](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239).
+
+<!-- Linguist question: Please confirm that the following are API names and should be left as is: "Person Management, LargePersonGroup/PersonGroup Management, LargeFaceList/FaceList Management, and Face Algorithms" -->

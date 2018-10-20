@@ -12,31 +12,29 @@ ms.workload: na
 ms.tgt_pltfrm: c
 ms.devlang: csharp
 ms.topic: article
-ms.date: 08/16/2018
+ms.date: 10/16/2018
 ms.author: shvija
-ms.openlocfilehash: 262f274541f486f5457ef8eae6fd4f60fb34824e
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 32345b0f064aa78dbf1cbb84cb2309138e7bf4f7
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42054640"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49455381"
 ---
 # <a name="send-events-to-azure-event-hubs-using-c"></a>Odesílání událostí do služby Azure Event Hubs pomocí jazyka C
 
 ## <a name="introduction"></a>Úvod
-Event Hubs je vysoce škálovatelná služba systému, která dokáže ingestovat miliony událostí za sekundu a umožňuje aplikaci zpracovávat a analyzovat velké objemy dat vytvářené vašimi připojenými zařízeními a aplikacemi. Jakmile jsou shromážděna do centra událostí, dají se transformovat a ukládat data pomocí libovolného poskytovatele analýz v reálném čase nebo úložného clusteru.
+Azure Event Hubs je platforma pro streamování velkých objemů dat a služba pro ingestování událostí, která je schopná přijmout a zpracovat miliony událostí za sekundu. Služba Event Hubs dokáže zpracovávat a ukládat události, data nebo telemetrické údaje produkované distribuovaným softwarem a zařízeními. Data odeslaná do centra událostí je možné transformovat a uložit pomocí libovolného poskytovatele analýz v reálném čase nebo adaptérů pro dávkové zpracování a ukládání. Podrobnější přehled služby Event Hubs naleznete v tématu [Přehled služby Event Hubs](event-hubs-about.md) a [funkcích služby Event Hubs](event-hubs-features.md).
 
-Další informace najdete v tématu [Přehled služby Event Hubs](https://docs.microsoft.com/azure/event-hubs/event-hubs-overview).
+Tento kurz popisuje, jak odesílat události do centra událostí pomocí konzolové aplikace v jazyce C. 
 
-Tento kurz popisuje, jak odesílat události do centra událostí pomocí konzolové aplikace v jazyce C. Další informace o přijímání událostí, klikněte na příslušný přijímající jazyk v obsahu vlevo.
-
+## <a name="prerequisites"></a>Požadavky
 Pro absolvování tohoto kurzu potřebujete:
 
 * Vývojové prostředí jazyka C. Tento kurz předpokládá gcc zásobníku na virtuálním počítači Azure s Linuxem s Ubuntu 14.04.
 * [Microsoft Visual Studio](https://www.visualstudio.com/).
-* Aktivní účet Azure. Pokud účet nemáte, můžete si během několika minut vytvořit bezplatný zkušební účet. Podrobnosti najdete v tématu [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 
-## <a name="send-messages-to-event-hubs"></a>Zasílání zpráv do služby Event Hubs
+## <a name="write-code-to-send-messages-to-event-hubs"></a>Napsání kódu pro odesílání zpráv do služby Event Hubs
 V této části ukazuje, jak psát aplikace v jazyce C k odesílání událostí do vašeho centra událostí. Kód používá knihovnu kanálem AMQP od [projektu Apache Qpid](http://qpid.apache.org/). To je obdobou pomocí front a témat Service Bus pomocí protokolu AMQP from C, jak je znázorněno [v této ukázce](https://code.msdn.microsoft.com/Using-Apache-Qpid-Proton-C-afd76504). Další informace najdete v tématu [Qpid kanálem dokumentaci](http://qpid.apache.org/proton/index.html).
 
 1. Z [stránky Qpid AMQP Messenger](https://qpid.apache.org/proton/messenger.html), postupujte podle pokynů k instalaci Qpid kanálem v závislosti na vašem prostředí.
@@ -150,12 +148,13 @@ V této části ukazuje, jak psát aplikace v jazyce C k odesílání událostí
     > [!NOTE]
     > Tento kód používá odchozí okna 1 přinutit zpráv si co nejdříve. Doporučuje se, že vaše aplikace pokusí zprávy dávkových chcete zvýšit propustnost. Najdete v článku [stránky Qpid AMQP Messenger](https://qpid.apache.org/proton/messenger.html) informace o tom, jak použít knihovnu Qpid kanálem v tomto a dalších prostředích a z platforem, pro které jsou k dispozici vazby (aktuálně Perl, PHP, Python a Ruby).
 
+Spuštění aplikace pro odesílání zpráv do centra událostí. 
+
+Blahopřejeme! Nyní jste odeslali zprávy do centra událostí.
 
 ## <a name="next-steps"></a>Další postup
-Další informace o službě Event Hubs najdete na následujících odkazech:
+Další informace o přijímání událostí z centra událostí, klikněte na příslušný přijímající jazyk v rámci **přijímat události z centra událostí** uzel v obsahu.
 
-* [Přehled služby Event Hubs](event-hubs-what-is-event-hubs.md)
-* [Nejčastější dotazy k Event Hubs](event-hubs-faq.md)
 
 <!-- Images. -->
 [21]: ./media/event-hubs-c-ephcs-getstarted/run-csharp-ephcs1.png

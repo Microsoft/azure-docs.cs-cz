@@ -1,26 +1,18 @@
 ---
 title: 'Vytvoření brány VPN založené na trasách: Azure portal | Dokumentace Microsoftu'
-description: Rychle vytvořte založené na směrování VPN Gateway pomocí webu Azure portal
+description: Vytvoření trasové brány VPN pomocí webu Azure portal
 services: vpn-gateway
-documentationcenter: na
 author: cherylmc
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 04/04/2018
+ms.date: 10/18/2018
 ms.author: cherylmc
-ms.openlocfilehash: fe05ab36f971105cf72342b8df5e2a82de7fc2b8
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: 7139b2de79b4e092ca761a4e51061c233e6031b5
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391789"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49470298"
 ---
 # <a name="create-a-route-based-vpn-gateway-using-the-azure-portal"></a>Vytvoření trasové brány VPN pomocí webu Azure portal
 
@@ -74,33 +66,19 @@ Podsíť brány obsahuje vyhrazené IP adresy, které používají služby brán
   - **SKU**: VpnGw1
   - **Umístění**: USA – východ
   - **Virtuální síť**: klikněte na tlačítko **virtuální sítě nebo zvolte virtuální síť** otevřít **zvolit virtuální síť** stránky. Vyberte **ze sítě VNet1**.
+  - **Veřejná IP adresa**: Toto nastavení určuje objekt veřejné IP adresy, který se přidruží k bráně VPN. Veřejná IP adresa se dynamicky přiřadí k tomuto objektu při vytvoření brány VPN. Služba VPN Gateway aktuálně podporuje pouze *dynamické* přidělení veřejné IP adresy. To ale neznamená, že se IP adresa po přiřazení k vaší bráně VPN bude měnit. Veřejná IP adresa se změní pouze v případě odstranění a nového vytvoření brány. V případě změny velikosti, resetování nebo jiné operace údržby/upgradu vaší brány VPN se nezmění.
 
-  ![Konfigurace nastavení brány](./media/create-routebased-vpn-gateway-portal/configure-gateway.png "nakonfigurovat nastavení brány")
+    - Možnost **Vytvořit novou** nechte vybranou.
+    - Do textového pole zadejte **název** veřejné IP adresy. Pro toto cvičení použít **VNet1GWIP**.<br>
 
-## <a name="pip"></a>Vytvoření veřejné IP adresy
-
-Brána VPN musí mít dynamicky přidělené veřejné IP adresy. Při vytváření připojení k bráně VPN, toto je IP adresa vašeho místního zařízení připojeného k.
-
-1. Vyberte **konfigurace první IP adresa, vytvořit konfiguraci IP adresy brány** k vyžádání veřejné IP adresy.
-
-  ![První konfigurace IP adresy](./media/create-routebased-vpn-gateway-portal/add-public-ip-address.png "konfigurace první IP adresy")
-2. Na **stránku zvolit veřejnou IP**, klikněte na tlačítko **+ vytvořit novou** otevřít **vytvoření veřejné IP adresy** stránky.
-3. Nakonfigurujte nastavení s použitím následujících hodnot:
-
-  - **Název**: **VNet1GWIP**
-  - **Skladová položka**: **základní**
-
-  ![Vytvoření veřejné IP adresy](./media/create-routebased-vpn-gateway-portal/public-ip-address-name.png "Vytvořit PIP")
-4. Klikněte na tlačítko **OK** v dolní části této stránky uložte provedené změny.
+    ![Konfigurace nastavení brány](./media/create-routebased-vpn-gateway-portal/gw.png "nakonfigurovat nastavení brány")
 
 ## <a name="creategw"></a>Vytvoření brány VPN
 
 1. Ověřte nastavení na **vytvořit bránu virtuální sítě** stránky. V případě potřeby upravte hodnoty.
-
-  ![Vytvořit bránu VPN](./media/create-routebased-vpn-gateway-portal/create-vpn-gateway.png "vytvořit VPN gateway")
 2. Klikněte na tlačítko **vytvořit** v dolní části stránky.
 
-Po kliknutí na **vytvořit**, nastavení se ověří a **nasazení brány virtuální sítě** zobrazí dlaždice na řídicím panelu. Brány VPN může trvat až 45 minut. K zobrazení stavu dokončení může být nutné obnovit stránku portálu.
+  Po kliknutí na **vytvořit**, nastavení se ověří a **nasazení brány virtuální sítě** zobrazí dlaždice na řídicím panelu. Brány VPN může trvat až 45 minut. K zobrazení stavu dokončení může být nutné obnovit stránku portálu.
 
 ## <a name="viewgw"></a>Zobrazení brány sítě VPN
 

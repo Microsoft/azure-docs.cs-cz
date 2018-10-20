@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/06/2017
+ms.date: 10/19/2018
 ms.author: barbkess
-ms.reviewer: harshja
+ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: fcd02e264d5e85b1bef7e75d2a6375d6bf5e18c0
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: ad0ab8790c9d66dbba87d466e9661ef8cf33eef3
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39363945"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49456894"
 ---
 # <a name="enable-remote-access-to-sharepoint-with-azure-ad-application-proxy"></a>Povolit vzdálený přístup k Sharepointu pomocí Azure AD Application Proxy
 
@@ -194,7 +194,7 @@ V posledním kroku je zajistit, že služby SharePoint můžete najít web zalo�
 
 3. V rozevíracím seznamu vedle **kolekce mapování alternativních adres**vyberte **změnit alternativní přístup mapování kolekci**.
 4. Vyberte svou lokalitu – například **SharePoint - 80**.
-5. Můžete přidat adresu URL publikované jako interní adresa URL nebo veřejnou adresu URL. Tento příklad používá veřejnou adresu URL jako extranetu.
+5. Můžete přidat adresu URL publikované jako interní adresa URL nebo veřejnou adresu URL. Tento příklad používá veřejnou adresu URL jako extranetu. Pokud používáte vlastní port nezapomeňte zadat vlastní port v adrese URL.
 6. Klikněte na tlačítko **Upravit veřejné adresy URL** v **Extranet** cestu a pak zadejte externí adresu URL, který byl vytvořen při publikování aplikace. Zadejte například **https://sharepoint-iddemo.msappproxy.net**.
 
   ![Vstupující do cesty](./media/application-proxy-integrate-with-sharepoint-server/alternate-access3.png)

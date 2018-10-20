@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 89cb44366d4752052d990a1506482c9108cde103
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: f2c9194b07774443a70eef8e879d895efeb338e9
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47161695"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49458186"
 ---
 # <a name="how-to-use-custom-allocation-policies"></a>Použití vlastní přidělení zásad
 
@@ -347,13 +347,13 @@ Simulovaná zařízení bude používat klíče odvozené zařízení s každou 
 
 ## <a name="prepare-an-azure-iot-c-sdk-development-environment"></a>Příprava vývojového prostředí Azure IoT C SDK
 
-V této části se připravíte prostředí pro vývoj sloužící k sestavení [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c). Sada SDK zahrnuje ukázkový kód pro simulované zařízení. Toto simulované zařízení se pokusí zřizování během pořadí spouštěcích zařízení.
+V této části připravíte vývojové prostředí použité k sestavení [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c). Sada SDK zahrnuje ukázkový kód pro simulované zařízení. Toto simulované zařízení se pokusí zřídit během spouštěcí sekvence zařízení.
 
 Tato část se orientované na pracovní stanici se systémem Windows. Příklad pro Linux, najdete v části Nastavení virtuálních počítačů ve skupině [jak zřídit pro víceklientskou architekturu](how-to-provision-multitenant.md).
 
 
 
-1. Stáhněte si verzi 3.11.4 [sestavovací systém CMake](https://cmake.org/download/). Stažený binární soubor ověřte pomocí odpovídající kryptografické hodnoty hash. Následující příklad používá Windows PowerShell k ověření kryptografické hodnoty hash pro verzi 3.11.4 distribuce x64 MSI:
+1. Stáhněte si verzi 3.11.4 [sestavovacího systému CMake](https://cmake.org/download/). Stažený binární soubor ověřte pomocí odpovídající kryptografické hodnoty hash. Následující příklad používá Windows PowerShell k ověření kryptografické hodnoty hash pro verzi 3.11.4 distribuce x64 MSI:
 
     ```PowerShell
     PS C:\Downloads> $hash = get-filehash .\cmake-3.11.4-win64-x64.msi
@@ -361,7 +361,7 @@ Tato část se orientované na pracovní stanici se systémem Windows. Příklad
     True
     ```
     
-    Následující hodnoty hash pro verzi 3.11.4 byly uvedeny na webu CMake v době psaní tohoto textu:
+    V době psaní tohoto textu byly na webu CMake uvedené tyto hodnoty hash pro verzi 3.11.4:
 
     ```
     6dab016a6b82082b8bcd0f4d1e53418d6372015dd983d29367b9153f1a376435  cmake-3.11.4-Linux-x86_64.tar.gz
@@ -371,7 +371,7 @@ Tato část se orientované na pracovní stanici se systémem Windows. Příklad
 
     Je důležité, aby požadavky na sadu Visual Studio (Visual Studio a sada funkcí Vývoj desktopových aplikací pomocí C++) byly na vašem počítači nainstalované ještě **před** zahájením instalace `CMake`. Jakmile jsou požadované součásti k dispozici a stažený soubor je ověřený, nainstalujte sestavovací systém CMake.
 
-2. Otevřete prostředí příkazového řádku nebo Git Bash. Spusťte následující příkaz a naklonujte úložiště Azure IoT C SDK na Githubu:
+2. Otevřete prostředí příkazového řádku nebo Git Bash. Spusťte následující příkaz pro naklonování úložiště GitHub sady Azure IoT C SDK:
     
     ```cmd/sh
     git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive
@@ -387,10 +387,10 @@ Tato část se orientované na pracovní stanici se systémem Windows. Příklad
     cd cmake
     ```
 
-4. Spusťte následující příkaz, který je založen na verzi sady SDK, které jsou specifické pro vaše klientská platforma pro vývoj. V adresáři `cmake` se vygeneruje řešení Visual Studia pro simulované zařízení. 
+4. Spuštěním následujícího příkazu sestavte verzi sady SDK určenou pro platformu vašeho vývojového klienta. V adresáři `cmake` se vygeneruje řešení Visual Studia pro simulované zařízení. 
 
     ```cmd
-    cmake -Duse_prov_client:BOOL=ON ..
+    cmake -Dhsm_type_symm_key:BOOL=ON ..
     ```
     
     Pokud `cmake` nenajde váš kompilátor C++, můžou se při spuštění výše uvedeného příkazu zobrazit chyby sestavení. Pokud k tomu dojde, zkuste tento příkaz spustit v [příkazovém řádku sady Visual Studio](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs). 
@@ -398,7 +398,7 @@ Tato část se orientované na pracovní stanici se systémem Windows. Příklad
     Po úspěšném sestavení by posledních pár řádků výstupu mělo vypadat přibližně takto:
 
     ```cmd/sh
-    $ cmake -Duse_prov_client:BOOL=ON ..
+    $ cmake -Dhsm_type_symm_key:BOOL=ON ..
     -- Building for: Visual Studio 15 2017
     -- Selecting Windows SDK version 10.0.16299.0 to target Windows 10.0.17134.
     -- The C compiler identification is MSVC 19.12.25835.0
@@ -424,7 +424,7 @@ Tento ukázkový kód simuluje posloupnost spouštěcí zařízení, která ode�
 
     ![Extrahování informací o koncovém bodu služby Device Provisioning z okna portálu](./media/quick-create-simulated-device-x509/extract-dps-endpoints.png) 
 
-2. V sadě Visual Studio, otevřete **azure_iot_sdks.sln** soubor řešení, který byl vytvořen starší CMake. Soubor řešení musí být v následujícím umístění:
+2. V sadě Visual Studio, otevřete **azure_iot_sdks.sln** soubor řešení, který byl vytvořen starší CMake. Soubor řešení by se měl nacházet v následujícím umístění:
 
     ```
     \azure-iot-sdk-c\cmake\azure_iot_sdks.sln
@@ -438,7 +438,7 @@ Tento ukázkový kód simuluje posloupnost spouštěcí zařízení, která ode�
     static const char* id_scope = "0ne00002193";
     ```
 
-5. Ve stejném souboru vyhledejte definici funkce `main()`. Ujistěte se, `hsm_type` proměnná je nastavená na `SECURE_DEVICE_TYPE_SYMMETRIC_KEY` jak je znázorněno níže:
+5. Ve stejném souboru vyhledejte definici funkce `main()`. Zkontrolujte, jestli je proměnná `hsm_type` nastavená na hodnotu `SECURE_DEVICE_TYPE_SYMMETRIC_KEY`, jak je vidět dole:
 
     ```c
     SECURE_DEVICE_TYPE hsm_type;
@@ -451,9 +451,9 @@ Tento ukázkový kód simuluje posloupnost spouštěcí zařízení, která ode�
 
 #### <a name="simulate-the-contoso-toaster-device"></a>Simulace zařízení toaster Contoso
 
-1. V sadě Visual Studio *Průzkumníku řešení* okno, přejděte **hsm\_zabezpečení\_klienta** projektu a rozbalte ho. Rozbalte **zdrojové soubory**a otevřete **hsm\_klienta\_key.c**. 
+1. V okně *Průzkumník řešení* sady Visual Studio přejděte na projekt **hsm\_security\_client** a rozbalte ho. Rozbalte **zdrojové soubory** a otevřete soubor **hsm\_client\_key.c**. 
 
-    Najít deklaraci `REGISTRATION_NAME` a `SYMMETRIC_KEY_VALUE` konstanty. Proveďte následující změny do souboru a soubor uložte.
+    Vyhledejte deklaraci konstant `REGISTRATION_NAME` a `SYMMETRIC_KEY_VALUE`. Proveďte následující změny a soubor uložte.
 
     Aktualizujte hodnotu `REGISTRATION_NAME` konstanta s ID registrace pro zařízení toaster **breakroom499 contoso tstrsd 007**.
     
@@ -485,9 +485,9 @@ Tento ukázkový kód simuluje posloupnost spouštěcí zařízení, která ode�
 
 #### <a name="simulate-the-contoso-heat-pump-device"></a>Simulace zařízení heat čerpadlo Contoso
 
-1. Zpět v sadě Visual Studio *Průzkumníku řešení* okno, přejděte **hsm\_zabezpečení\_klienta** projektu a rozbalte ho. Rozbalte **zdrojové soubory**a otevřete **hsm\_klienta\_key.c**. 
+1. Zpět v sadě Visual Studio *Průzkumníku řešení* okno, přejděte **hsm\_zabezpečení\_klienta** projektu a rozbalte ho. Rozbalte **zdrojové soubory** a otevřete soubor **hsm\_client\_key.c**. 
 
-    Najít deklaraci `REGISTRATION_NAME` a `SYMMETRIC_KEY_VALUE` konstanty. Proveďte následující změny do souboru a soubor uložte.
+    Vyhledejte deklaraci konstant `REGISTRATION_NAME` a `SYMMETRIC_KEY_VALUE`. Proveďte následující změny a soubor uložte.
 
     Aktualizujte hodnotu `REGISTRATION_NAME` konstanta s ID registrace pro zařízení heat čerpadlo **mainbuilding167 contoso hpsd 088**.
     

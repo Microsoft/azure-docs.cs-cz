@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 54804867cfaf38965b3dbf5ceb51e08a731d4dd8
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 73ff58148ac68b7aeb782b77385f9f971e02edb5
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46966535"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49457387"
 ---
 # <a name="how-to-provision-for-multitenancy"></a>Jak zřídit pro víceklientskou architekturu 
 
@@ -220,7 +220,7 @@ V této části se klonovat sady Azure IoT C SDK na každém virtuálním počí
 1. Pro oba virtuální počítače spusťte následující příkaz, který je založen na verzi sady SDK, které jsou specifické pro vaše klientská platforma pro vývoj. 
 
     ```bash
-    cmake -Duse_prov_client:BOOL=ON ..
+    cmake -Dhsm_type_symm_key:BOOL=ON ..
     ```
 
     Po úspěšném sestavení by posledních pár řádků výstupu mělo vypadat přibližně takto:
@@ -334,7 +334,7 @@ Vzorový kód simuluje posloupnost spouštěcí zařízení, která odešle žá
      vi ~/azure-iot-sdk-c/provisioning_client/adapters/hsm_client_key.c
     ```
 
-1. Najít deklaraci `REGISTRATION_NAME` a `SYMMETRIC_KEY_VALUE` konstanty. Proveďte následující změny k souborům na oba místní virtuální počítače a uložte soubory.
+1. Vyhledejte deklaraci konstant `REGISTRATION_NAME` a `SYMMETRIC_KEY_VALUE`. Proveďte následující změny k souborům na oba místní virtuální počítače a uložte soubory.
 
     Aktualizujte hodnotu `REGISTRATION_NAME` konstanty s **jedinečným registračním ID pro vaše zařízení**.
     

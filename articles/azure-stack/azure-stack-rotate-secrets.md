@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 09/06/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: cc7b1b9e96e32b090c0ec9ec9ab029588e5ec4ce
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 418b23f0783341ff7e5aaf7e2bbb2e869eb7dc45
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49166963"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49466150"
 ---
 # <a name="rotate-secrets-in-azure-stack"></a>Otočit tajné kódy ve službě Azure Stack
 
@@ -81,15 +81,18 @@ Spuštění tajných kódů otočení pomocí následujícího postupu se opravi
 
    > [!IMPORTANT]  
    > Zajistěte, aby tajných kódů rotace nebyla provedena úspěšně ve vašem prostředí. Pokud již byla provedena tajných kódů otočení aktualizaci na verzi 1807 nebo novější, ještě před spuštěním otočení tajných kódů služby Azure Stack. 
+
 1.  Operátory všimnout výstrahy otevírají a zavírají automaticky během otáčení tajných kódů služby Azure Stack.  Toto chování je očekávané a upozornění můžete ignorovat.  Operátory můžete spuštěním testu AzureStack ověřit platnost těchto upozornění.  Pro operátory pomocí nástroje SCOM k monitorování systémy Azure Stack, uvedení v režimu údržby systému zabrání dosažení jejich systémům ITSM tato upozornění ale bude nadále výstrahu, pokud je systém Azure Stack se nestane nedostupnou. 
 2. Upozorněte uživatele na jakékoli operace údržby. Naplánujte běžné časová období údržby, co je to možné, během pracovní doby. Operace údržby může ovlivnit uživatelské úlohy a operací na portálu.
     > [!note]  
     > Další kroky se projeví pouze v případě otáčení externích tajných klíčů Azure Stack.
-3. Přidejte novou sadu nahrazení externí certifikáty. Nová sada odpovídá certifikát požadavky uvedené v [požadavky na certifikát Azure Stack PKI](https://docs.microsoft.com/azure/azure-stack/azure-stack-pki-certs).
-4.  Store zálohováním do certifikátů používaných pro rotaci do zabezpečeného umístění. Pokud vaše otočení spustí a pak se nezdaří, nahraďte certifikáty ve sdílené složce záložní kopie předtím, než znovu spustíte otočení. Mějte na paměti, uchovávání záložních kopií v zabezpečené umístění zálohy.
-5.  Vytvoření sdílené složky, ke kterým přistupujete z ERCS virtuálních počítačů. Sdílené složky musí být čtení a zápisu pro **CloudAdmin** identity.
-6.  Otevřete konzoly ISE Powershellu na počítači, kde máte přístup ke sdílení souborů. Přejděte na vaši sdílenou složku. 
-7.  Spustit **[CertDirectoryMaker.ps1](http://www.aka.ms/azssecretrotationhelper)** k vytvoření požadované adresáře pro externí certifikáty.
+
+3. Spustit **[testovací AzureStack](https://docs.microsoft.com/azure/azure-stack/azure-stack-diagnostic-test)** a potvrďte všechny výstupy testů jsou v dobrém stavu před otáčení tajných kódů.
+4. Přidejte novou sadu nahrazení externí certifikáty. Nová sada odpovídá certifikát požadavky uvedené v [požadavky na certifikát Azure Stack PKI](https://docs.microsoft.com/azure/azure-stack/azure-stack-pki-certs).
+5.  Store zálohováním do certifikátů používaných pro rotaci do zabezpečeného umístění. Pokud vaše otočení spustí a pak se nezdaří, nahraďte certifikáty ve sdílené složce záložní kopie předtím, než znovu spustíte otočení. Mějte na paměti, uchovávání záložních kopií v zabezpečené umístění zálohy.
+6.  Vytvoření sdílené složky, ke kterým přistupujete z ERCS virtuálních počítačů. Sdílené složky musí být čtení a zápisu pro **CloudAdmin** identity.
+7.  Otevřete konzoly ISE Powershellu na počítači, kde máte přístup ke sdílení souborů. Přejděte na vaši sdílenou složku. 
+8.  Spustit **[CertDirectoryMaker.ps1](http://www.aka.ms/azssecretrotationhelper)** k vytvoření požadované adresáře pro externí certifikáty.
 
 ## <a name="rotating-external-and-internal-secrets"></a>Otáčení externí a interní tajných kódů
 

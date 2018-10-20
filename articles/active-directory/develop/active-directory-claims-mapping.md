@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/05/2018
 ms.author: celested
-ms.reviewer: hirsin, jeedes
-ms.openlocfilehash: 43b17c54014d2f1beedd02f9ec627dd087e65d5a
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.reviewer: paulgarn, hirsin, jeedes
+ms.openlocfilehash: dbe903f502cbd1b96b34b47aed09c52104995b54
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49069263"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49466201"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Postupy: přizpůsobení deklarací identity v tokenech pro konkrétní aplikaci v tenantovi (Preview), protože ho
 

@@ -1,26 +1,27 @@
 ---
 title: O překladu řeči
+titlesuffix: Azure Cognitive Services
 description: Přehled možností pro překlad řeči
-titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
 author: erhopf
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/28/2018
 ms.author: erhopf
-ms.openlocfilehash: f3c22589270ccee2c60ca5ea5b15047d9c81fabe
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: af363a45ab113d89c7aad7a38c6e10d335bc6035
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49165433"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49469131"
 ---
 # <a name="about-the-speech-translation-api"></a>O rozhraní API pro překlad řeči
 
-Rozhraní Speech API Microsoft můžete přidat začátku do konce, v reálném čase, vícejazykového překlad řeči do aplikací, nástroje a zařízení. Stejného rozhraní API můžete použít pro překlad řeči řeči a rozpoznávání řeči na text.
+Rozhraní Speech API služby můžete přidat začátku do konce, v reálném čase, vícejazykového překlad řeči do aplikací, nástroje a zařízení. Stejného rozhraní API můžete použít pro překlad řeči řeči a rozpoznávání řeči na text.
 
-Pomocí rozhraní Microsoft Translator Speech API klientské aplikace zvuk řeči do služby stream a získávejte zpět výsledků. Tyto výsledky zahrnout textové rozpoznaných Zdrojový jazyk a překladu v cílovém jazyce. Dočasné překlady je možné poskytnout než utterance se dokončí, po kterém konečný překlad je k dispozici.
+S rozhraním Translator Speech API klientské aplikace zvuk řeči do služby stream a získávejte zpět výsledků. Tyto výsledky zahrnout textové rozpoznaných Zdrojový jazyk a překladu v cílovém jazyce. Dočasné překlady je možné poskytnout než utterance se dokončí, po kterém konečný překlad je k dispozici.
 
 Volitelně můžete syntetizovaný zvukovou verzi konečný překlad mohly být připraveny, povolení true překlad řeči speech.
 
