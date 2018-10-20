@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/15/2018
-ms.openlocfilehash: 169ebe45287721305800e511174784417569d7b4
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.date: 10/19/2018
+ms.openlocfilehash: deadbc8186d80b050fdb40879ecf29fd229c8709
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49352706"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49465439"
 ---
 # <a name="use-read-only-replicas-to-load-balance-read-only-query-workloads-preview"></a>Použít repliky jen pro čtení k načtení vyrovnávat zatížení dotazu jen pro čtení (preview)
 
@@ -31,7 +31,7 @@ Každá databáze na úrovni Premium ([nákupní model založený na DTU](sql-da
 
 Tyto repliky se zřizují se stejnou velikostí výpočetních jako repliky pro čtení a zápis používají standardní databázi připojení. **Horizontální navýšení kapacity pro čtení** funkce vám umožní načíst zůstatek SQL jen pro čtení na zatížení databáze využití kapacity o jednu z replik jen pro čtení místo sdílení repliky pro čtení i zápis. Tímto způsobem úlohy jen pro čtení budou z hlavní úlohy čtení a zápis izolovaných a nebude mít vliv na jeho výkon. Tato funkce je určená pro aplikace, které zahrnují logicky oddělené úlohy jen pro čtení, jako jsou třeba analýzy a proto by mohl získat zvýšit efektivitu tuto dodatečnou kapacitu bez dalších poplatků.
 
-Použít funkci škálování pro čtení s danou databází, musíte výslovně povolit ho při vytváření databáze nebo později změnou jeho konfigurace přes PowerShell voláním [Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase) nebo [ Nový-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase) rutiny nebo přes rozhraní REST API Azure Resource Manageru pomocí [databází – vytvořit nebo aktualizovat](https://docs.microsoft.com/rest/api/sql/databases/databases_createorupdate) metoda.
+Použít funkci škálování pro čtení s danou databází, musíte výslovně povolit ho při vytváření databáze nebo později změnou jeho konfigurace přes PowerShell voláním [Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase) nebo [ Nový-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase) rutiny nebo přes rozhraní REST API Azure Resource Manageru pomocí [databází – vytvořit nebo aktualizovat](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) metoda.
 
 Po povolení horizontální navýšení kapacity pro čtení pro databázi aplikace propojíte databázi budete přesměrováni do repliky pro čtení a zápis nebo jen pro čtení replik databáze podle `ApplicationIntent` vlastnost nakonfigurovaný ve vaší aplikace připojovací řetězec. Informace o tom, `ApplicationIntent` vlastnost, naleznete v tématu [zadání záměru aplikace](https://docs.microsoft.com/sql/relational-databases/native-client/features/sql-server-native-client-support-for-high-availability-disaster-recovery#specifying-application-intent).
 
@@ -118,7 +118,7 @@ Body:
 }
 ```
 
-Další informace najdete v tématu [databází – vytvořit nebo aktualizovat](https://docs.microsoft.com/rest/api/sql/databases/databases_createorupdate).
+Další informace najdete v tématu [databází – vytvořit nebo aktualizovat](https://docs.microsoft.com/rest/api/sql/databases/createorupdate).
 
 ## <a name="using-read-scale-out-with-geo-replicated-databases"></a>Horizontální navýšení kapacity pro čtení pomocí geograficky replikované databáze
 
@@ -130,4 +130,4 @@ Pokud používáte další horizontální navýšení kapacity pro načtení vyr
 ## <a name="next-steps"></a>Další postup
 
 - Informace o použití prostředí PowerShell k nastavení čtení horizontální navýšení kapacity najdete v tématu [Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase) nebo [New-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase) rutiny.
-- Informace o nastavení čtení horizontální navýšení kapacity pomocí rozhraní REST API najdete v tématu [databází – vytvořit nebo aktualizovat](https://docs.microsoft.com/rest/api/sql/databases/databases_createorupdate).
+- Informace o nastavení čtení horizontální navýšení kapacity pomocí rozhraní REST API najdete v tématu [databází – vytvořit nebo aktualizovat](https://docs.microsoft.com/rest/api/sql/databases/createorupdate).

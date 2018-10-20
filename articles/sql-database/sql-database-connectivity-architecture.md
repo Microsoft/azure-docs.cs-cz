@@ -1,34 +1,33 @@
 ---
 title: Architektura připojení k Azure SQL Database | Dokumentace Microsoftu
-description: Tento dokument popisuje architekturu připojení k Azure SQLDB z v rámci Azure nebo z mimo Azure.
+description: Tento dokument popisuje architekturu připojení k Azure SQL Database z v rámci Azure nebo z mimo Azure.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: DhruvMsft
-ms.author: dhruv
+author: oslake
+ms.author: moslake
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 01/24/2018
-ms.openlocfilehash: 66f558db713ab951864fe694f27f2e60d52e875a
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 82bc76b47f8073e07163e7f827b900a59cf3ad7f
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47064126"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49470571"
 ---
-# <a name="azure-sql-database-connectivity-architecture"></a>Architektura připojení k Azure SQL Database 
+# <a name="azure-sql-database-connectivity-architecture"></a>Architektura připojení k Azure SQL Database
 
-Tento článek popisuje architekturu připojení k Azure SQL Database a vysvětluje, jak funkce různých komponent pro směrování provozu do vaší instance služby Azure SQL Database. Tyto Azure SQL Database připojení komponenty funkce ke směrování síťového provozu směřujícího do databáze Azure s klientů připojujících se z v rámci Azure a klientů připojujících se z mimo Azure. Tento článek také obsahuje ukázkové skripty, chcete-li změnit, jak dojde k připojení a důležité informace související s Změna výchozího nastavení připojení. 
+Tento článek popisuje architekturu připojení k Azure SQL Database a vysvětluje, jak funkce různých komponent pro směrování provozu do vaší instance služby Azure SQL Database. Tyto Azure SQL Database připojení komponenty funkce ke směrování síťového provozu směřujícího do databáze Azure s klientů připojujících se z v rámci Azure a klientů připojujících se z mimo Azure. Tento článek také obsahuje ukázkové skripty, chcete-li změnit, jak dojde k připojení a důležité informace související s Změna výchozího nastavení připojení.
 
 ## <a name="connectivity-architecture"></a>Architektura připojení
 
 Následující diagram představuje podrobný přehled architektury připojení k Azure SQL Database.
 
 ![Přehled architektury](./media/sql-database-connectivity-architecture/architecture-overview.png)
-
 
 Následující kroky popisují, jak navázat připojení ke službě Azure SQL database prostřednictvím Azure SQL Database – pro vyrovnávání zatížení softwaru (SLB) a brány Azure SQL Database.
 
@@ -39,7 +38,6 @@ Následující kroky popisují, jak navázat připojení ke službě Azure SQL d
 
 > [!IMPORTANT]
 > Každá z těchto komponent distribuoval s cílem odepření služeb (DDoS) ochrany integrované v síti a vrstvu aplikace.
->
 
 ## <a name="connectivity-from-within-azure"></a>Připojení z v rámci Azure
 
@@ -54,7 +52,9 @@ Pokud se chcete připojit z mimo Azure, vaše připojení mají zásady připoje
 ![Přehled architektury](./media/sql-database-connectivity-architecture/connectivity-from-outside-azure.png)
 
 > [!IMPORTANT]
-> Při používání koncových bodů služby s Azure SQL Database je vaše zásady **Proxy** ve výchozím nastavení. Pokud chcete povolit připojení z uvnitř virtuální sítě, musíte také povolit odchozí připojení k Azure SQL Database brány IP adresy určené v níže uvedeném seznamu. Při použití koncové body služby, důrazně doporučujeme změna zásad připojení k **přesměrování** umožňuje lepší příjem. Pokud změníte připojení zásadu **přesměrování** nebude stačit povolit odchozí na vaše skupiny zabezpečení sítě k bráně Azure SQLDB níže uvedených IP adres, musíte povolit odchozí ke všem IP adresám SQLDB Azure. To lze provést pomocí značky služeb skupiny zabezpečení sítě (skupiny zabezpečení sítě). Další informace najdete v tématu [značky služeb](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags).
+> Při používání koncových bodů služby s Azure SQL Database je vaše zásady **Proxy** ve výchozím nastavení. Pokud chcete povolit připojení z uvnitř virtuální sítě, musíte také povolit odchozí připojení k Azure SQL Database brány IP adresy určené v níže uvedeném seznamu.
+
+Při použití koncové body služby, důrazně doporučujeme změna zásad připojení k **přesměrování** umožňuje lepší příjem. Pokud změníte připojení zásadu **přesměrování** nebude stačit povolit odchozí na vaše skupiny zabezpečení sítě k bráně Azure SQL Database níže uvedených IP adres, musíte povolit odchozí všechny Azure SQL Database IP adresy. To lze provést pomocí značky služeb skupiny zabezpečení sítě (skupiny zabezpečení sítě). Další informace najdete v tématu [značky služeb](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags).
 
 ## <a name="azure-sql-database-gateway-ip-addresses"></a>IP adresy brány Azure SQL Database
 
@@ -76,8 +76,8 @@ V následující tabulce jsou uvedeny primárních a sekundárních IP adresy br
 | Východní Asie | 191.234.2.139 | 52.175.33.150 |
 | USA – východ 1 | 191.238.6.43 | 40.121.158.30 |
 | Východní USA 2 | 191.239.224.107 | 40.79.84.180 * |
-| Indie – střed | 104.211.96.159  | |
-| Indie – jih | 104.211.224.146  | |
+| Indie – střed | 104.211.96.159 | |
+| Indie – jih | 104.211.224.146 | |
 | Indie – západ | 104.211.160.80 | |
 | Japonsko – východ | 191.237.240.43 | 13.78.61.196 |
 | Japonsko – západ | 191.238.68.11 | 104.214.148.156 |
@@ -90,11 +90,11 @@ V následující tabulce jsou uvedeny primárních a sekundárních IP adresy br
 | Velká Británie – sever | 13.87.97.210 | |
 | Velká Británie – jih 1 | 51.140.184.11 | |
 | Velká Británie – jih 2 | 13.87.34.7 | |
-| Spojené království – západ | 51.141.8.11  | |
+| Spojené království – západ | 51.141.8.11 | |
 | Západní střed USA | 13.78.145.25 | |
 | Západní Evropa | 191.237.232.75 | 40.68.37.158 |
 | USA – západ 1 | 23.99.34.75 | 104.42.238.205 |
-| USA – západ 2 | 13.66.226.202  | |
+| USA – západ 2 | 13.66.226.202 | |
 ||||
 
 \* **Poznámka:** *USA – východ 2* má také terciární IP adresu z `52.167.104.0`.
@@ -170,10 +170,10 @@ Invoke-RestMethod -Uri "https://management.azure.com/subscriptions/$subscription
 
 > [!IMPORTANT]
 > Tento skript vyžaduje [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
->
 
 Následující skript rozhraní příkazového řádku ukazuje, jak změnit zásady připojení.
 
+```azurecli-interactive
 <pre>
 # Get SQL Server ID
 sqlserverid=$(az sql server show -n <b>sql-server-name</b> -g <b>sql-server-group</b> --query 'id' -o tsv)
@@ -181,13 +181,14 @@ sqlserverid=$(az sql server show -n <b>sql-server-name</b> -g <b>sql-server-grou
 # Set URI
 id="$sqlserverid/connectionPolicies/Default"
 
-# Get current connection policy 
+# Get current connection policy
 az resource show --ids $id
 
-# Update connection policy 
+# Update connection policy
 az resource update --ids $id --set properties.connectionType=Proxy
 
 </pre>
+```
 
 ## <a name="next-steps"></a>Další postup
 

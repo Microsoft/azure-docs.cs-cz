@@ -1,9 +1,9 @@
 ---
-title: Vytvářet a spravovat virtuální počítač Azure pomocí jazyka C# | Microsoft Docs
-description: Použití jazyka C# a Azure Resource Manager k nasazení virtuálního počítače a všechny její Podpůrné prostředky.
+title: Vytvoření a Správa virtuálního počítače Azure pomocí jazyka C# | Dokumentace Microsoftu
+description: Použití jazyka C# a Azure Resource Manageru k nasazení virtuálního počítače a všechny její Podpůrné prostředky.
 services: virtual-machines-windows
 documentationcenter: ''
-author: cynthn
+author: zr-msft
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
@@ -14,53 +14,53 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
-ms.author: cynthn
-ms.openlocfilehash: 99c8e71e0a31f6ef2f4fb2087fb8678c68a052a7
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.author: zarhoads
+ms.openlocfilehash: 7281b2bfc8137e4f60c3309c9a57ccabf0fdb4cb
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31525926"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49471420"
 ---
-# <a name="create-and-manage-windows-vms-in-azure-using-c"></a>Vytvářet a spravovat virtuální počítače Windows v Azure pomocí jazyka C# #
+# <a name="create-and-manage-windows-vms-in-azure-using-c"></a>Vytvoření a správa virtuálních počítačů s Windows v Azure pomocí jazyka C# #
 
-[Virtuální počítač Azure](overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (VM) vyžaduje několik podpůrných prostředků Azure. Tento článek popisuje vytváření, správu a odstraňování prostředky virtuálních počítačů pomocí jazyka C#. Získáte informace o těchto tématech:
+[Virtuálního počítače Azure](overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (VM) potřebuje několik Podpůrné prostředky Azure. Tento článek popisuje vytváření, správě a odstraňování prostředků virtuálního počítače pomocí C#. Získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 > * Vytvoření projektu ve Visual Studiu
-> * Instalovat balíček
-> * Vytvořit přihlašovací údaje
+> * Instalace balíčku
+> * Vytvořte přihlašovací údaje
 > * Vytvoření prostředků
 > * Provádění úloh správy
 > * Odstranění prostředků
 > * Spuštění aplikace
 
-Proveďte tyto kroky trvá asi 20 minut.
+Proveďte tyto kroky trvá přibližně 20 minut.
 
 ## <a name="create-a-visual-studio-project"></a>Vytvoření projektu ve Visual Studiu
 
-1. Pokud jste to ještě neudělali, nainstalujte [Visual Studio](https://docs.microsoft.com/visualstudio/install/install-visual-studio). Vyberte **vývoj aplikací .NET** na stránce úlohy a pak klikněte na tlačítko **nainstalovat**. V souhrnu, můžete uvidíte, že **nástrojů pro vývoj řešení pro rozhraní .NET Framework 4 4.6** je automaticky vybrána pro vás. Pokud jste již nainstalovali Visual Studio, můžete přidat pomocí Spouštěče sady Visual Studio .NET zatížení.
-2. V sadě Visual Studio, klikněte na tlačítko **soubor** > **nový** > **projektu**.
-3. V **šablony** > **Visual C#**, vyberte **konzolovou aplikaci (rozhraní .NET Framework)**, zadejte *myDotnetProject* pro název projektu a vyberte umístění projektu a pak klikněte na tlačítko **OK**.
+1. Pokud jste tak dosud neučinili, nainstalujte [sady Visual Studio](https://docs.microsoft.com/visualstudio/install/install-visual-studio). Vyberte **vývoj desktopových aplikací .NET** na stránku úlohy a pak klikněte na tlačítko **nainstalovat**. Stručně řečeno, vidíte, že **vývojové nástroje .NET Framework 4 – 4.6** se vybere automaticky za vás. Pokud jste již nainstalovali aplikaci Visual Studio, můžete přidat úlohy .NET pomocí Visual Studio Spouštěče.
+2. V sadě Visual Studio klikněte na **Soubor** > **Nový** > **Projekt**.
+3. V **šablony** > **Visual C#** vyberte **Konzolová aplikace (.NET Framework)**, zadejte *myDotnetProject* název projekt, vyberte umístění projektu a pak klikněte na tlačítko **OK**.
 
-## <a name="install-the-package"></a>Instalovat balíček
+## <a name="install-the-package"></a>Instalace balíčku
 
-Balíčky NuGet jsou nejjednodušší způsob, jak nainstalovat knihovny, které potřebujete k dokončení těchto kroků. Chcete-li získat knihovny, které je nutné v sadě Visual Studio, proveďte tyto kroky:
+Nejjednodušší způsob, jak nainstalovat knihoven, které je potřeba dokončit tyto kroky jsou balíčky NuGet. Chcete-li získat knihoven, které je nutné v sadě Visual Studio, proveďte tyto kroky:
 
-1. Klikněte na tlačítko **nástroje** > **Správce balíčků Nuget**a potom klikněte na **Konzola správce balíčků**.
+1. Klikněte na tlačítko **nástroje** > **Správce balíčků Nuget**a potom klikněte na tlačítko **Konzola správce balíčků**.
 2. V konzole zadejte tento příkaz:
 
     ```
     Install-Package Microsoft.Azure.Management.Fluent
     ```
 
-## <a name="create-credentials"></a>Vytvořit přihlašovací údaje
+## <a name="create-credentials"></a>Vytvořte přihlašovací údaje
 
-Než začnete tento krok, ujistěte se, zda máte přístup k [objektu služby Active Directory](../../azure-resource-manager/resource-group-create-service-principal-portal.md). Také byste měli zaznamenat ID aplikace, ověřovací klíč a ID klienta, který budete potřebovat později.
+Předtím, než se pustíte do tohoto kroku, ujistěte se, že máte přístup do [instanční objekt služby Active Directory](../../azure-resource-manager/resource-group-create-service-principal-portal.md). Také byste měli zaznamenávat ID aplikace, ověřovací klíč a ID tenanta, který budete potřebovat v pozdějším kroku.
 
 ### <a name="create-the-authorization-file"></a>Vytvoření souboru autorizace
 
-1. V Průzkumníku řešení klikněte pravým tlačítkem na *myDotnetProject* > **přidat** > **nová položka**a potom vyberte **textový soubor** v *Visual C# položky*. Název souboru *azureauth.properties*a potom klikněte na **přidat**.
+1. V Průzkumníku řešení klikněte pravým tlačítkem na *myDotnetProject* > **přidat** > **nová položka**a pak vyberte **textovýsoubor** v *položky Visual C#*. Název souboru *azureauth.properties*a potom klikněte na tlačítko **přidat**.
 2. Přidejte tyto vlastnosti autorizace:
 
     ```
@@ -74,18 +74,18 @@ Než začnete tento krok, ujistěte se, zda máte přístup k [objektu služby A
     graphURL=https://graph.windows.net/
     ```
 
-    Nahraďte **&lt;id předplatného&gt;** s ID vašeho předplatného **&lt;id aplikace&gt;** s identifikátor aplikace služby Active Directory **&lt;ověřovací klíč&gt;** s klíč aplikace a **&lt;id klienta&gt;** s identifikátorem klienta.
+    Nahraďte **&lt;id předplatného&gt;** identifikátorem předplatné **&lt;id aplikace&gt;** aplikaci služby Active Directory identifikátor, **&lt;ověřovací klíč&gt;** s klíčem aplikace a **&lt;id tenanta&gt;** s identifikátor tenanta.
 
 3. Uložte soubor azureauth.properties. 
-4. Nastavte proměnnou prostředí v systému Windows s názvem AZURE_AUTH_LOCATION s úplnou cestu k souboru autorizace, který jste vytvořili. Například můžete použít následující příkaz prostředí PowerShell:
+4. Nastavení proměnné prostředí ve Windows s názvem AZURE_AUTH_LOCATION s úplnou cestou k souboru autorizace, který jste vytvořili. Například můžete použít následující příkaz Powershellu:
 
     ```
     [Environment]::SetEnvironmentVariable("AZURE_AUTH_LOCATION", "C:\Visual Studio 2017\Projects\myDotnetProject\myDotnetProject\azureauth.properties", "User")
     ```
 
-### <a name="create-the-management-client"></a>Vytvoření klienta správy
+### <a name="create-the-management-client"></a>Vytvoření klienta služby správy
 
-1. Otevřete soubor Program.cs pro projekt, který jste vytvořili a poté přidejte tyto příkazy using do existující příkazy v horní části souboru:
+1. Otevřete soubor Program.cs pro projekt, který jste vytvořili a pak přidejte tyto pomocí příkazů do stávajících příkazů v horní části souboru:
 
     ```
     using Microsoft.Azure.Management.Compute.Fluent;
@@ -95,7 +95,7 @@ Než začnete tento krok, ujistěte se, zda máte přístup k [objektu služby A
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     ```
 
-2. Pro vytvoření klienta správy, přidejte do metody Main tento kód:
+2. K vytvoření klienta služby správy, přidejte tento kód do metody Main:
 
     ```
     var credentials = SdkContext.AzureCredentialsFactory
@@ -112,9 +112,9 @@ Než začnete tento krok, ujistěte se, zda máte přístup k [objektu služby A
 
 ### <a name="create-the-resource-group"></a>Vytvoření skupiny prostředků
 
-Musí být všechny prostředky obsažené v [skupiny prostředků](../../azure-resource-manager/resource-group-overview.md).
+Všechny prostředky musí být součástí [skupiny prostředků](../../azure-resource-manager/resource-group-overview.md).
 
-Zadejte hodnoty pro aplikaci a vytvořte skupinu prostředků, přidejte tento kód do metody Main:
+Zadejte hodnoty pro aplikace a vytvořte skupinu prostředků, do metody Main přidejte tento kód:
 
 ```
 var groupName = "myResourceGroup";
@@ -127,11 +127,11 @@ var resourceGroup = azure.ResourceGroups.Define(groupName)
     .Create();
 ```
 
-### <a name="create-the-availability-set"></a>Vytvořit sadu dostupnosti
+### <a name="create-the-availability-set"></a>Vytvořit skupinu dostupnosti
 
-[Skupiny dostupnosti](tutorial-availability-sets.md) umožňují snadnější zachování virtuálních počítačů, které používá vaše aplikace.
+[Skupiny dostupnosti](tutorial-availability-sets.md) usnadňují údržbu virtuálních počítačů, které používá vaše aplikace.
 
-Vytvořit skupinu dostupnosti, přidejte tento kód do metody Main:
+Pokud chcete vytvořit skupinu dostupnosti, do metody Main přidejte tento kód:
 
 ```
 Console.WriteLine("Creating availability set...");
@@ -146,7 +146,7 @@ var availabilitySet = azure.AvailabilitySets.Define("myAVSet")
 
 A [veřejnou IP adresu](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) je potřeba ke komunikaci s virtuálním počítačem.
 
-Pokud chcete vytvořit veřejnou IP adresu pro virtuální počítač, přidejte do metodu Main tento kód:
+Chcete-li vytvořit veřejnou IP adresu pro virtuální počítač, do metody Main přidejte tento kód:
    
 ```
 Console.WriteLine("Creating public IP address...");
@@ -161,7 +161,7 @@ var publicIPAddress = azure.PublicIPAddresses.Define("myPublicIP")
 
 Virtuální počítač musí být v podsíti [virtuální síť](../../virtual-network/virtual-networks-overview.md).
 
-Pokud chcete vytvořit podsíť a virtuální síť, tento kód vložte do hlavní metoda:
+Pokud chcete vytvořit podsítě a virtuální síť, do metody Main přidejte tento kód:
 
 ```
 Console.WriteLine("Creating virtual network...");
@@ -173,11 +173,11 @@ var network = azure.Networks.Define("myVNet")
     .Create();
 ```
 
-### <a name="create-the-network-interface"></a>Vytvořit rozhraní sítě
+### <a name="create-the-network-interface"></a>Vytvořte síťové rozhraní
 
-Virtuální počítač vyžaduje síťové rozhraní pro komunikaci ve virtuální síti.
+Virtuální počítač potřebuje síťové rozhraní ve virtuální síti komunikovat.
 
-Pokud chcete vytvořit síťové rozhraní, tento kód vložte do hlavní metoda:
+Vytvořte síťové rozhraní do metody Main přidejte tento kód:
 
 ```
 Console.WriteLine("Creating network interface...");
@@ -193,9 +193,9 @@ var networkInterface = azure.NetworkInterfaces.Define("myNIC")
 
 ### <a name="create-the-virtual-machine"></a>Vytvoření virtuálního počítače
 
-Teď, když jste vytvořili doprovodné materiály, můžete vytvořit virtuální počítač.
+Teď, když jste vytvořili všechny podpůrné prostředky, můžete vytvořit virtuální počítač.
 
-Pokud chcete vytvořit virtuální počítač, přidejte do metodu Main tento kód:
+K vytvoření virtuálního počítače, do metody Main přidejte tento kód:
 
 ```
 Console.WriteLine("Creating virtual machine...");
@@ -213,11 +213,11 @@ azure.VirtualMachines.Define(vmName)
 ```
 
 > [!NOTE]
-> V tomto kurzu vytvoří virtuální počítač s verzí operačního systému Windows Server. Další informace o výběru ostatní Image, najdete v tématu [vyhledání a výběr imagí virtuálních počítačů Azure pomocí prostředí Windows PowerShell a rozhraní příkazového řádku Azure](../linux/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+> V tomto kurzu se vytvoří virtuální počítač s verzí operačního systému Windows Server. Další informace o výběru další Image najdete v tématu [vyhledání a výběr imagí virtuálních počítačů Azure pomocí prostředí Windows PowerShell a Azure CLI](../linux/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 > 
 >
 
-Pokud chcete použít stávající disk, místo image pořízenou prostřednictvím marketplace, použijte tento kód:
+Pokud chcete použít stávající disk místo marketplace image, použijte tento kód:
 
 ```
 var managedDisk = azure.Disks.Define("myosdisk")
@@ -240,17 +240,17 @@ azure.VirtualMachines.Define("myVM")
 
 ## <a name="perform-management-tasks"></a>Provádění úloh správy
 
-Během životního cyklu virtuálního počítače možná budete potřebovat provádět úlohy správy, jako jsou spuštění, zastavení nebo odstranění virtuálního počítače. Kromě toho můžete vytvořit kód pro automatizaci úloh opakovaných nebo komplexní.
+Během životního cyklu virtuálního počítače možná budete potřebovat provádět úlohy správy, jako jsou spuštění, zastavení nebo odstranění virtuálního počítače. Kromě toho můžete vytvořit kód pro automatizaci opakovaných nebo složitých úloh.
 
-Když potřebujete udělat nic s virtuálním Počítačem, budete muset získat instanci ho:
+Když budete potřebovat k ničemu s virtuálním Počítačem, budete muset získat instanci:
 
 ```
 var vm = azure.VirtualMachines.GetByResourceGroup(groupName, vmName);
 ```
 
-### <a name="get-information-about-the-vm"></a>Získat informace o virtuálním počítači
+### <a name="get-information-about-the-vm"></a>Získání informací o virtuálním počítači
 
-Chcete-li získat informace o virtuálním počítači, přidejte do metodu Main tento kód:
+Pokud chcete získat informace o virtuálním počítači, do metody Main přidejte tento kód:
 
 ```
 Console.WriteLine("Getting information about the virtual machine...");
@@ -320,9 +320,9 @@ Console.ReadLine();
 
 ### <a name="stop-the-vm"></a>Zastavení virtuálního počítače
 
-Můžete zastavit virtuální počítač a ponechat jeho nastavení, ale nadále účtovat poplatek za ho nebo můžete zastavit virtuální počítač a jeho navrácení. Při zrušení jeho přidělení virtuálního počítače jsou končí deallocated a fakturace pro ni také všechny prostředky, které jsou s ním spojená.
+Zastavit virtuální počítač a ponechat jeho nastavení ale dál bude účtovat, nebo můžete zastavit virtuální počítač a uvolnit ji. Při zrušení přidělení virtuálního počítače jsou všechny prostředky s ním spojená také končí uvolnění a účtování pro něj.
 
-Zastavte virtuální počítač bez rušení přidělení ho, přidejte tento kód do metody Main:
+Pokud chcete zastavit virtuální počítač bez rušení přidělení ho, přidejte tento kód do metody Main:
 
 ```
 Console.WriteLine("Stopping vm...");
@@ -331,15 +331,15 @@ Console.WriteLine("Press enter to continue...");
 Console.ReadLine();
 ```
 
-Pokud chcete zrušit přidělení virtuálního počítače, změna volání PowerOff tento kód:
+Pokud chcete zrušit přidělení virtuálního počítače, změna stavu PowerOff volání tento kód:
 
 ```
 vm.Deallocate();
 ```
 
-### <a name="start-the-vm"></a>Spusťte virtuální počítač
+### <a name="start-the-vm"></a>Spuštění virtuálního počítače
 
-Spuštění virtuálního počítače, přidejte tento kód do metody Main:
+Chcete-li spustit virtuální počítač, do metody Main přidejte tento kód:
 
 ```
 Console.WriteLine("Starting vm...");
@@ -348,11 +348,11 @@ Console.WriteLine("Press enter to continue...");
 Console.ReadLine();
 ```
 
-### <a name="resize-the-vm"></a>Změnit velikost virtuálního počítače
+### <a name="resize-the-vm"></a>Změna velikosti virtuálního počítače
 
-Mnoho aspektů nasazení měli zvážit při rozhodování o velikosti pro virtuální počítač. Další informace najdete v tématu [velikosti virtuálních počítačů](sizes.md).  
+Mnoho aspektů nasazení má brát při rozhodování o velikosti pro virtuální počítač. Další informace najdete v tématu [velikosti virtuálních počítačů](sizes.md).  
 
-Chcete-li změnit velikost virtuálního počítače, přidejte do metody Main tento kód:
+Chcete-li změnit velikost virtuálního počítače, do metody Main přidejte tento kód:
 
 ```
 Console.WriteLine("Resizing vm...");
@@ -363,9 +363,9 @@ Console.WriteLine("Press enter to continue...");
 Console.ReadLine();
 ```
 
-### <a name="add-a-data-disk-to-the-vm"></a>Přidat datový disk k virtuálnímu počítači
+### <a name="add-a-data-disk-to-the-vm"></a>Přidání datového disku k virtuálnímu počítači
 
-Chcete-li přidat datový disk k virtuálnímu počítači, přidejte do metody Main přidat datový disk, který je 2 GB velikostí Hanu logické jednotce LUN 0 a typu ukládání do mezipaměti v režimu ReadWrite tento kód:
+Chcete-li přidat datový disk k virtuálnímu počítači, přidejte tento kód do metody Main přidat datový disk, který je 2 GB. velikost han logické jednotce LUN 0 a ukládání do mezipaměti typu ReadWrite:
 
 ```
 Console.WriteLine("Adding data disk to vm...");
@@ -378,9 +378,9 @@ Console.ReadLine();
 
 ## <a name="delete-resources"></a>Odstranění prostředků
 
-Vzhledem k tomu, že se vám účtovat prostředky využívané v Azure, vždycky je dobrým zvykem odstranit prostředky, které už nejsou potřeba. Pokud chcete odstranit virtuální počítače a všechny podpůrné prostředky, je vše, co musíte udělat, odstraňte skupinu prostředků.
+Vzhledem k tomu, že se vám účtovat prostředky používané v Azure, je vždy vhodné odstranit prostředky, které už nejsou potřeba. Pokud chcete odstranit virtuální počítače a všechny podpůrné prostředky, je vše, co musíte udělat, odstraňte skupinu prostředků.
 
-Pokud chcete odstranit skupinu prostředků, přidejte do metody Main tento kód:
+Pokud chcete odstranit skupinu prostředků, do metody Main přidejte tento kód:
 
 ```
 azure.ResourceGroups.DeleteByName(groupName);
@@ -388,13 +388,13 @@ azure.ResourceGroups.DeleteByName(groupName);
 
 ## <a name="run-the-application"></a>Spuštění aplikace
 
-Dokončit má trvat přibližně pět minut, než tato Konzolová aplikace spustit úplně od začátku. 
+To by měla trvat asi pět minut, než tuto konzolovou aplikaci pro spuštění úplně od začátku. 
 
-1. Chcete-li spustit aplikaci konzoly, klikněte na tlačítko **spustit**.
+1. Chcete-li spustit konzolovou aplikaci, klikněte na tlačítko **Start**.
 
-2. Před stisknutím klávesy **Enter** zahájíte odstranění prostředků, může trvat několik minut na ověření vytváření prostředků na portálu Azure. Klikněte na tlačítko Stav nasazení zobrazíte informace o tomto nasazení.
+2. Než stisknete klávesu **Enter** spuštění odstranění prostředků, může trvat několik minut na ověření vytváření prostředků na webu Azure Portal. Klikněte na stav nasazení můžete zobrazit informace o nasazení.
 
 ## <a name="next-steps"></a>Další postup
-* Využít výhod pomocí šablony pro vytvoření virtuálního počítače pomocí informací v [nasadit virtuální počítač Azure pomocí jazyka C# a šablony Resource Manageru](csharp-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+* Využijte výhod pomocí šablony k vytvoření virtuálního počítače s využitím informací v [nasazení virtuálního počítače Azure pomocí jazyka C# a šablony Resource Manageru](csharp-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 * Další informace o používání [knihovny Azure pro .NET](https://docs.microsoft.com/dotnet/azure/?view=azure-dotnet).
 

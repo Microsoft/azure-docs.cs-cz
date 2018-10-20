@@ -5,14 +5,14 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: article
-ms.date: 09/11/2018
+ms.date: 10/19/2018
 ms.author: raynew
-ms.openlocfilehash: 4036ab6e62f4738f4b2906eb7571dc5d0e972988
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: 1a818d37efd370ce0b3e27bff73a153544763ebb
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391143"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49456622"
 ---
 # <a name="fail-over-and-fail-back-physical-servers-replicated-to-azure"></a>Převzetí služeb při selhání a navrácení služeb po obnovení fyzických serverů replikovaných do Azure
 
@@ -44,7 +44,7 @@ Zkontrolujte vlastnosti serveru a ujistěte se, že je v souladu s [požadavky s
 
 1. V části **Nastavení** > **Replikované položky** klikněte na počítač a pak na **Převzetí služeb při selhání**.
 2. V části **Převzetí služeb při selhání** vyberte **Bod obnovení**, ke kterému se mají převzít služby při selhání. Můžete použít jednu z následujících možností:
-   - **Nejnovější**: Tato možnost nejprve zpracuje veškerá data odeslaná do Site Recovery. Poskytuje nejnižší cíl bodu obnovení (RPO), protože se virtuální počítač Azure vytvoří teprve tehdy, až převzetí služeb při selhání bude mít veškerá data, která se do Site Recovery replikovala při aktivaci převzetí služeb při selhání.
+   - **Nejnovější:** Tato možnost nejprve zpracuje veškerá data odeslaná do Site Recovery. Poskytuje nejnižší cíl bodu obnovení (RPO), protože se virtuální počítač Azure vytvoří teprve tehdy, až převzetí služeb při selhání bude mít veškerá data, která se do Site Recovery replikovala při aktivaci převzetí služeb při selhání.
    - **Nejnovější zpracovaný**: Tato možnost převezme služby při selhání počítače k nejnovějšímu bodu obnovení zpracovanému službou Site Recovery. Tato možnost poskytuje nízkou plánovanou dobu obnovení (RTO), protože se neztrácí žádný čas zpracováním nezpracovaných dat.
    - **Nejnovější konzistentní vzhledem k**: Tato možnost převezme služby při selhání počítače do bodu nejnovější konzistentní vzhledem k obnovení zpracovanému službou Site Recovery.
    - **Vlastní:** Zadáte vlastní bod obnovení.
@@ -59,9 +59,9 @@ Zkontrolujte vlastnosti serveru a ujistěte se, že je v souladu s [požadavky s
 
 ## <a name="prepare-to-connect-to-azure-vms-after-failover"></a>Příprava připojení k virtuálním počítačům Azure po převzetí služeb při selhání
 
-Pokud chcete připojit k virtuálním počítačům Azure po převzetí služeb při selhání pomocí protokolu RDP nebo SSH, postupujte podle požadavků shrnutých v tabulce [tady](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover).
+Pokud se chcete připojit k virtuálním počítačům Azure pomocí protokolů RDP/SSH po převzetí služeb při selhání, musíte dodržet požadavky shrnuté v této [tabulce](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover).
 
-Postupujte podle kroků popsaných [tady](site-recovery-failover-to-azure-troubleshoot.md) problémy řešit jakékoli připojení zveřejnit převzetí služeb při selhání.
+Při řešení problémů s připojením po převzetí služeb při selhání použijte [zde](site-recovery-failover-to-azure-troubleshoot.md) popsaný postup.
 
 ## <a name="create-a-process-server-in-azure"></a>Vytvoření procesového serveru v Azure
 

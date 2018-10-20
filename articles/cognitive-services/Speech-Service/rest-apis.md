@@ -1,21 +1,22 @@
 ---
-title: Speech service rozhraní REST API
+title: Speech Service REST API
 description: Referenční informace pro rozhraní REST API pro službu rozpoznávání řeči.
 services: cognitive-services
 author: erhopf
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: speech
-ms.topic: article
+ms.component: speech-service
+ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: erhopf
-ms.openlocfilehash: f8b27277cbf3ea6d53a8f02e550beae67fc50741
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 0cc278cdb59bfbb53578eae0f51c9b54204d7d12
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167617"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49466269"
 ---
-# <a name="speech-service-rest-apis"></a>Speech service rozhraní REST API
+# <a name="speech-service-rest-apis"></a>Speech Service REST API
 
 Rozhraní REST API služby Azure Cognitive Services řeči se podobají rozhraní API poskytovaných [rozhraní API pro zpracování řeči Bingu](https://docs.microsoft.com/azure/cognitive-services/Speech). Koncové body se liší od koncových bodů použitých ve službě pro zpracování řeči Bingu. Místní koncové body jsou k dispozici a je nutné použít klíč předplatného, který odpovídá ke koncovému bodu, které používáte.
 

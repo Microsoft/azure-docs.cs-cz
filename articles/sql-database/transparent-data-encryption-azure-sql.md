@@ -12,12 +12,12 @@ ms.author: aliceku
 ms.reviewer: vanto
 manager: craigg
 ms.date: 10/15/2018
-ms.openlocfilehash: 94a3a502d5756d57cfebdf6698a4435dc1e19948
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 0d5b7e484024294eb5c95b632dbef85c377b717e
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353018"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49469023"
 ---
 # <a name="transparent-data-encryption-for-sql-database-and-data-warehouse"></a>Transparentní šifrování dat pro SQL Database a Data Warehouse
 
@@ -113,17 +113,17 @@ Pokud chcete nakonfigurovat transparentní šifrování dat přes rozhraní REST
 
 | Příkaz | Popis |
 | --- | --- |
-|[Vytvořit nebo aktualizovat Server](https://docs.microsoft.com/rest/api/sql/servers/servers_createorupdate)|Přidá do instance systému SQL Server (používá k udělení přístupu ke Key Vault) identity Azure Active Directory|
-|[Vytvořit nebo aktualizovat klíč serveru](https://docs.microsoft.com/rest/api/sql/serverkeys/serverkeys_createorupdate)|Přidá klíč služby Key Vault k instanci systému SQL Server|
-|[Odstranit klíč serveru](https://docs.microsoft.com/rest/api/sql/serverkeys/serverkeys_delete)|Odebere klíč služby Key Vault z instance systému SQL Server|
-|[Získat klíče serveru](https://docs.microsoft.com/rest/api/sql/serverkeys/serverkeys_get)|Získá konkrétní klíč služby Key Vault z instance systému SQL Server|
-|[Vypsat klíče Server serverem](https://docs.microsoft.com/rest/api/sql/serverkeys/serverkeys_listbyserver)|Získá klíče služby Key Vault pro instanci systému SQL Server |
-|[Vytvořit nebo aktualizovat ochrana šifrování](https://docs.microsoft.com/rest/api/sql/encryptionprotectors/encryptionprotectors_createorupdate)|Nastaví ochrana dat transparentní šifrování pro instanci systému SQL Server|
-|[Získat ochrana šifrování](https://docs.microsoft.com/rest/api/sql/encryptionprotectors/encryptionprotectors_get)|Získá data transparentní ochrana šifrování pro instanci systému SQL Server|
-|[Seznam ochrany pomocí šifrování serveru](https://docs.microsoft.com/rest/api/sql/encryptionprotectors/encryptionprotectors_listbyserver)|Získá ochrany dat transparentní šifrování pro instanci systému SQL Server |
-|[Vytvořit nebo aktualizovat konfiguraci Transparent Data Encryption](https://docs.microsoft.com/rest/api/sql/transparentdataencryptions/transparentdataencryptions_createorupdate)|Povolí nebo zakáže transparentní šifrování dat pro databázi|
-|[Získat konfiguraci Transparent Data Encryption](https://docs.microsoft.com/rest/api/sql/transparentdataencryptions/transparentdataencryptions_get)|Získá konfiguraci šifrování transparentní dat pro databázi|
-|[Seznam Transparent Data Encryption konfigurace výsledků](https://docs.microsoft.com/rest/api/sql/transparentdataencryptionactivities/transparentdataencryptionactivities_listbyconfiguration)|Získá výsledek šifrování pro databázi|
+|[Vytvořit nebo aktualizovat Server](https://docs.microsoft.com/rest/api/sql/servers/createorupdate)|Přidá do instance systému SQL Server (používá k udělení přístupu ke Key Vault) identity Azure Active Directory|
+|[Vytvořit nebo aktualizovat klíč serveru](https://docs.microsoft.com/rest/api/sql/serverkeys/createorupdate)|Přidá klíč služby Key Vault k instanci systému SQL Server|
+|[Odstranit klíč serveru](https://docs.microsoft.com/rest/api/sql/serverkeys/delete)|Odebere klíč služby Key Vault z instance systému SQL Server|
+|[Získat klíče serveru](https://docs.microsoft.com/rest/api/sql/serverkeys/get)|Získá konkrétní klíč služby Key Vault z instance systému SQL Server|
+|[Vypsat klíče Server serverem](https://docs.microsoft.com/rest/api/sql/serverkeys/listbyserver)|Získá klíče služby Key Vault pro instanci systému SQL Server |
+|[Vytvořit nebo aktualizovat ochrana šifrování](https://docs.microsoft.com/rest/api/sql/encryptionprotectors/createorupdate)|Nastaví ochrana dat transparentní šifrování pro instanci systému SQL Server|
+|[Získat ochrana šifrování](https://docs.microsoft.com/rest/api/sql/encryptionprotectors/get)|Získá data transparentní ochrana šifrování pro instanci systému SQL Server|
+|[Seznam ochrany pomocí šifrování serveru](https://docs.microsoft.com/rest/api/sql/encryptionprotectors/listbyserver)|Získá ochrany dat transparentní šifrování pro instanci systému SQL Server |
+|[Vytvořit nebo aktualizovat konfiguraci Transparent Data Encryption](https://docs.microsoft.com/rest/api/sql/transparentdataencryptions/createorupdate)|Povolí nebo zakáže transparentní šifrování dat pro databázi|
+|[Získat konfiguraci Transparent Data Encryption](https://docs.microsoft.com/rest/api/sql/transparentdataencryptions/get)|Získá konfiguraci šifrování transparentní dat pro databázi|
+|[Seznam Transparent Data Encryption konfigurace výsledků](https://docs.microsoft.com/rest/api/sql/transparentdataencryptionactivities/listbyconfiguration)|Získá výsledek šifrování pro databázi|
 
 ## <a name="next-steps"></a>Další postup
 

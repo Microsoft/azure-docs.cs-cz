@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
 ms.component: common
-ms.openlocfilehash: eb72d92496addacd82e4d30df625b4f9c0c823e5
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: ffb355b4471bd8455f67e657d9557c3f372c3f4e
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39521026"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49470316"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Průvodce odstraňováním potíží Azure Storage Exploreru
 
@@ -74,7 +74,7 @@ MacOS řetězce klíčů můžete získat někdy do stavu, která způsobuje pro
 7. Zkuste se přihlásit.
 
 ### <a name="general-sign-in-troubleshooting-steps"></a>Obecné přihlášení kroky řešení potíží
-* Pokud jsou v systému macOS a v dialogovém okně "Čeká na ověření..." se nikdy objeví okno přihlášení, zkuste [tyto kroky](#Mac-Keychain-Errors)
+* Pokud jsou v systému macOS a v dialogovém okně "Čeká na ověření..." se nikdy objeví okno přihlášení, zkuste [tyto kroky](#mac-keychain-errors)
 * Restartování Storage Exploreru
 * Pokud je prázdné okno ověřování, počkejte aspoň jednu minutu před jeho zavřením dialogu ověřování.
 * Ujistěte se, že nastavení proxy serveru a certifikátů pro počítače a Průzkumníka služby Storage jsou správně nakonfigurované nastavení.

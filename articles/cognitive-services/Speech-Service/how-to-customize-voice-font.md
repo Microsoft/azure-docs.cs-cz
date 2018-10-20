@@ -1,22 +1,25 @@
 ---
-title: Co je vlastní hlasové? – Cognitive Services azure
-description: Tento článek je základní informace o přizpůsobení hlasové Microsoft textu na řeč, které vám umožní vytvořit hlas rozpoznatelných, jeden z druhu značky.
+title: Jak vytvořit vlastní hlasové písmo
+titlesuffix: Azure Cognitive Services
+description: Tento článek je základní informace o přizpůsobení hlasové převod textu na řeč, které vám umožní vytvořit hlas rozpoznatelných, jeden z druhu značky.
 services: cognitive-services
-author: noellelacharite
+author: PanosPeriorellis
+manager: cgronlun
 ms.service: cognitive-services
-ms.topic: article
+ms.component: speech-service
+ms.topic: conceptual
 ms.date: 05/07/2018
-ms.author: nolach
-ms.openlocfilehash: 21b37d2b61af81e6481de4c5e7537a3382d895b6
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.author: panosper
+ms.openlocfilehash: bf06042d3b820e61d1f5b316a8b7b26d1a366388
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49113916"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49467714"
 ---
 # <a name="creating-custom-voice-fonts"></a>Vytvoření vlastního hlasového písma
 
-Přizpůsobení hlasové převod textu na řeč Microsoft ŘEČ umožňuje vytvářet rozpoznat, jeden z druhu hlas pro hodnotu značky: *hlasového písma.* 
+Přizpůsobení hlasové převod textu na ŘEČ umožňuje vytvářet rozpoznat, jeden z druhu hlas pro hodnotu značky: *hlasového písma.* 
 
 K vytvoření hlasového písma, provedete studio nahrávání a nahrát přidružené skripty jako trénovací data. Služba potom vytvoří jedinečný hlas modelu, která je vyladěná pro nahrávání. Můžete použít tento hlasového písma tak, aby odpovídaly řeči. 
 

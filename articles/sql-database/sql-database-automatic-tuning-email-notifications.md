@@ -12,18 +12,18 @@ ms.author: v-daljep
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 10/15/2018
-ms.openlocfilehash: 1177703dc67e81e537d7682dcf9bbeb475748315
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: eaeb0d7f77b6d8ab6a3e12febba33c995a10ec3f
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353930"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49466539"
 ---
 # <a name="email-notifications-for-automatic-tuning"></a>E-mailová oznámení pro automatické ladění
 
 SQL Database, Azure SQL Database jsou generovány doporučení pro vyladění [automatické ladění](sql-database-automatic-tuning.md). Toto řešení nepřetržitě monitoruje a analyzuje úloh SQL Database poskytuje přizpůsobená doporučení pro každé jednotlivé databáze týkající se vytváření indexů, odstranění indexu a optimalizace plánů spouštění dotazu pro optimalizaci.
 
-SQL Database doporučení automatického ladění můžete zobrazit v [webu Azure portal](sql-database-advisor-portal.md), načtený pomocí [rozhraní REST API](https://docs.microsoft.com/rest/api/sql/databaserecommendedactions/databaserecommendedactions_listbydatabaseadvisor) volá, nebo pomocí [T-SQL](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management/) a [ Prostředí PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqldatabaserecommendedaction) příkazy. Tento článek je založen na pomocí Powershellového skriptu se načíst doporučení automatického ladění.
+SQL Database doporučení automatického ladění můžete zobrazit v [webu Azure portal](sql-database-advisor-portal.md), načtený pomocí [rozhraní REST API](https://docs.microsoft.com/rest/api/sql/databaserecommendedactions/listbydatabaseadvisor) volá, nebo pomocí [T-SQL](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management/) a [ Prostředí PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqldatabaserecommendedaction) příkazy. Tento článek je založen na pomocí Powershellového skriptu se načíst doporučení automatického ladění.
 
 ## <a name="automate-email-notifications-for-automatic-tuning-recommendations"></a>Automatizace e-mailová oznámení pro doporučení automatického ladění
 

@@ -3,7 +3,7 @@ title: Vytvoření virtuálního počítače s Linuxem v Azure s několika síť
 description: Zjistěte, jak vytvořit virtuální počítač s Linuxem s více síťovými kartami připojenými k němu pomocí šablon Resource Manageru nebo rozhraní příkazového řádku Azure.
 services: virtual-machines-linux
 documentationcenter: ''
-author: iainfoulds
+author: zr-msft
 manager: jeconnoc
 editor: ''
 ms.assetid: 5d2d04d0-fc62-45fa-88b1-61808a2bc691
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/07/2018
-ms.author: iainfou
-ms.openlocfilehash: 4982de352af2ce33f4dbf6dba00ff9296cc9b873
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.author: zarhoads
+ms.openlocfilehash: 5510c46a134ccec1fdc76a6bcea46de21750e969
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46999747"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49467187"
 ---
 # <a name="how-to-create-a-linux-virtual-machine-in-azure-with-multiple-network-interface-cards"></a>Jak vytvořit virtuální počítač s Linuxem v Azure s několika síťových karet
 

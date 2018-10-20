@@ -1,20 +1,21 @@
 ---
 title: O převod textu na řeč – Speech Service
 titleSuffix: Azure Cognitive Services
-description: Služba Microsoft Text-to-Speech nabízí více než 75 hlasy ve více než 45 jazyků a národních prostředí. Použít standardní hlasová písma, stačí zadat název hlasové s několika dalších parametrů při volání služby řeči.
+description: Rozhraní API pro převod textu na řeč poskytuje více než 75 hlasy ve více než 45 jazyků a národních prostředí. Použít standardní hlasová písma, stačí zadat název hlasové s několika dalších parametrů při volání služby řeči.
 services: cognitive-services
 author: erhopf
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: erhopf
-ms.openlocfilehash: 2f79ecbb42ba6453c7fb615114c0b7e56402ada3
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 7f01fe5c71cdd6f4c70527fcf2553374aae9a5d8
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49363059"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49469913"
 ---
 # <a name="about-the-text-to-speech-api"></a>O převod textu na řeč rozhraní API
 

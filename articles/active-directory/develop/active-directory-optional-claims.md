@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/05/2018
 ms.author: celested
-ms.reviewer: hirsin
+ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
-ms.openlocfilehash: c42e8978a94730669f3c3f879d1d26c4426bd9da
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 784213531c061912dded8e7776e79bea5adb217b
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49079125"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49466048"
 ---
 # <a name="how-to-provide-optional-claims-to-your-azure-ad-app-public-preview"></a>Postupy: Zadejte nepovinných deklarací identity do aplikace Azure AD (Public Preview)
 
@@ -215,7 +215,7 @@ Nejsou k dispozici pro aktualizaci vlastností konfigurace identity aplikace pov
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Po ověření, vyberete v pravém horním rohu stránky zvolte tenanta Azure AD.
-1. Vyberte **rozšíření Azure AD** v levém navigačním panelu a klikněte na kartu **registrace aplikací**.
+1. Vyberte **registrace aplikací** z levé straně.
 1. Vyhledejte aplikaci, kterou chcete nakonfigurovat volitelné deklarací identity v seznamu a klikněte na něj.
 1. Na stránce aplikace klikněte na tlačítko **Manifest** otevřete editor manifestu vložené. 
 1. Můžete přímo upravit pomocí editoru manifestu. Následuje schéma pro manifest [aplikace entity](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#application-entity)a automatické formáty – manifest jednou uložili. Přibude nové prvky `OptionalClaims` vlastnost.

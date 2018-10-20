@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/03/2018
+ms.date: 10/19/2018
 ms.author: shlo
-ms.openlocfilehash: c24bec7366ea62b3dd8f7a301c9d2d62c6dd6c7d
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: f61399a3a6cb5c67343e28e4364d8d796ffbc066
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37859274"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49457040"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Získání metadat aktivity v Azure Data Factory
 Aktivita GetMetadata slouží k načtení **metadat** jakýchkoli dat ve službě Azure Data Factory. Tato aktivita se dá použít v následujících scénářích:
@@ -43,7 +43,7 @@ Aktivita GetMetadata přijímá datovou sadu jako požadovaný vstup a výstup i
 
 **Úložiště souborů:**
 
-| Connector/metadat | Název položky<br>(soubor/složka) | itemType<br>(soubor/složka) | velikost<br>(soubor) | vytvořené<br>(soubor/složka) | lastModified<br>(soubor/složka) |childItems<br>(složka) |contentMD5<br>(soubor) | Struktura<br/>(soubor) | počet sloupců<br>(soubor) | existuje<br>(soubor/složka) |
+| Connector/metadat | Název položky<br>(soubor/složka) | itemType<br>(soubor/složka) | velikost<br>(soubor) | vytvořené<br>(soubor/složka) | lastModified<br>(soubor/složka) |childItems<br>(složka) |contentMD5<br>(soubor) | Struktura<br/>(soubor) | počet sloupců<br>(soubor) | Existuje<br>(soubor/složka) |
 |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |
 | Amazon S3 | √/√ | √/√ | √ | x/x | √ / √ * | √ | x | √ | √ | √ / √ * |
 | Azure Blob | √/√ | √/√ | √ | x/x | √ / √ * | √ | √ | √ | √ | √/√ |
@@ -58,9 +58,10 @@ Aktivita GetMetadata přijímá datovou sadu jako požadovaný vstup a výstup i
 
 **Relační databáze:**
 
-| Connector/metadat | Struktura | počet sloupců | existuje |
+| Connector/metadat | Struktura | počet sloupců | Existuje |
 |:--- |:--- |:--- |:--- |
 | Azure SQL Database | √ | √ | √ |
+| Azure SQL Database Managed Instance | √ | √ | √ |
 | Azure SQL Data Warehouse | √ | √ | √ |
 | SQL Server | √ | √ | √ |
 
@@ -79,7 +80,7 @@ Dá se zadat následující typy metadat v seznamu polí aktivita GetMetadata na
 | contentMD5 | MD5 souboru. Použít pouze soubor. |
 | Struktura | Struktura dat v souboru nebo relační databázové tabulky. Výstupní hodnota je seznam sloupec název a typ sloupce. |
 | počet sloupců | Počet sloupců v souboru nebo relační tabulky. |
-| existuje| Určuje, zda existuje soubor/složka/tabulky nebo ne. Mějte na paměti, že pokud "existuje" v seznamu polí GetaMetadata zadána, aktivita selhání i v případě, že neexistuje položka (soubor/složka/tabulky); Místo toho vrátí `exists: false` ve výstupu. |
+| Existuje| Určuje, zda existuje soubor/složka/tabulky nebo ne. Mějte na paměti, že pokud "existuje" v seznamu polí GetaMetadata zadána, aktivita selhání i v případě, že neexistuje položka (soubor/složka/tabulky); Místo toho vrátí `exists: false` ve výstupu. |
 
 >[!TIP]
 >Pokud chcete ověřit, jestli existuje soubor/složka/tabulky nebo Ne, zadejte `exists` v seznamu polí aktivita GetMetadata, pak můžete zkontrolovat `exists: true/false` výsledkem výstup aktivity. Pokud `exists` není nakonfigurované v seznamu polí, GetMetadata aktivita selže, pokud objekt nebyl nalezen.
@@ -131,7 +132,7 @@ Aktivita GetMetadata aktuálně můžete načíst následující typy informací
 Vlastnost | Popis | Požaduje se
 -------- | ----------- | --------
 fieldList | Seznam typů informací metadat. Podrobnosti najdete v [metadat možnosti](#metadata-options) části podporované metadat. | Ano 
-datové sady | Referenční datová sada má být načtena aktivita GetMetadata jehož metadat aktivity. Zobrazit [podporované schopnosti](#supported-capabilities) části na podporovaných konektorů a najdete v tématu konektor na podrobnosti o syntaxi datové sady. | Ano
+Datové sady | Referenční datová sada má být načtena aktivita GetMetadata jehož metadat aktivity. Zobrazit [podporované schopnosti](#supported-capabilities) části na podporovaných konektorů a najdete v tématu konektor na podrobnosti o syntaxi datové sady. | Ano
 
 ## <a name="sample-output"></a>Ukázkový výstup
 

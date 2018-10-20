@@ -9,12 +9,12 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 09/24/2018
-ms.openlocfilehash: 99c31293168fd5ff3e6b95a70dc481e01e4ac8b4
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 0b95441fd2805308c601509f1afc477f72bde321
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49400195"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49476387"
 ---
 Přihlaste se k [webu Azure portal](https://portal.azure.com/) pomocí přihlašovacích údajů pro předplatné Azure, které používáte. Pokud ještě nemáte předplatné Azure, vytvořte si teď [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -39,7 +39,7 @@ V **pracovní prostor služby ML** podokně pracovní prostor.
    Pole|Popis
    ---|---
    Název pracovního prostoru |Zadejte jedinečný název, který identifikuje váš pracovní prostor. Tady používáme ws dokumentace. Názvy musí být ve skupině prostředků jedinečné. Použijte název, který je snadné odvolání a odlišují jej od z pracovní prostory vytvořené jinými uživateli.  
-   Předplatné |Vyberte předplatné Azure, které chcete použít. Pokud máte více předplatných, vyberte předplatné, které se používá pro účely fakturace.
+   Předplatné |Vyberte předplatné Azure, které chcete použít.
    Skupina prostředků | Použít existující skupinu prostředků ve vašem předplatném nebo zadejte název pro vytvoření nové skupiny prostředků. Skupina prostředků je kontejner, který obsahuje související prostředky pro řešení Azure. Tady používáme aml dokumentace. 
    Umístění | Vyberte umístění co nejblíže vašim uživatelům a datovým prostředkům. Toto umístění je, kde se vytvoří pracovní prostor.
 

@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/25/2018
+ms.date: 10/18/2018
 ms.author: srrengar
-ms.openlocfilehash: a607f560b5e74071f5ee15d03e615138f25a3aef
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 5fc2674a145be99fb8867c5cf1b1f65ba860db80
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406802"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49457829"
 ---
 # <a name="monitoring-and-diagnostics-for-azure-service-fabric"></a>Monitorování a diagnostiky pro Azure Service Fabric
 
@@ -71,7 +71,7 @@ Kromě toho nejnovější sestavy stavu v SFX, každá sestava dostupný také j
 
 ## <a name="other-logging-solutions"></a>Jiná řešení protokolování
 
-I když obě řešení je vhodné, [Azure Log Analytics](service-fabric-diagnostics-event-analysis-oms.md) a [Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md) vytvořili mnoho událostí jsou zapsané pomocí zprostředkovatelů trasování událostí pro Windows a jsou v integraci s platformou Service Fabric Rozšiřitelné s jinými řešeními pro protokolování. Také byste se podívat do [řešení Elastic Stack](https://www.elastic.co/products) (zejména pokud uvažujete o spuštění clusteru v prostředí offline), [Splunk](https://www.splunk.com/), [Dynatrace](https://www.dynatrace.com/), nebo jakékoli jiné Platforma dáváte přednost. 
+I když obě řešení je vhodné, [Azure Log Analytics](service-fabric-diagnostics-event-analysis-oms.md) a [Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md) vytvořili mnoho událostí jsou zapsané pomocí zprostředkovatelů trasování událostí pro Windows a jsou v integraci s platformou Service Fabric Rozšiřitelné s jinými řešeními pro protokolování. Také byste se podívat do [řešení Elastic Stack](https://www.elastic.co/products) (zejména pokud uvažujete o spuštění clusteru v prostředí offline), [Dynatrace](https://www.dynatrace.com/), nebo jakékoli jiné platformě dáváte přednost. Máme seznam integrovaných partnerů, které jsou k dispozici [tady](service-fabric-diagnostics-partners.md).
 
 Klíčové body pro jakoukoli platformu, že kterou si zvolíte by měl obsahovat jak pohodlné se pomocí uživatelského rozhraní a dotazování na ně možnosti, umožňuje vizualizovat data a vytvářet snadno čitelný řídicí panely a další nástroje poskytují k vylepšení monitorování, například automatické upozorňování.
 
@@ -80,5 +80,7 @@ Klíčové body pro jakoukoli platformu, že kterou si zvolíte by měl obsahova
 * Začínáme s instrumentace aplikací, najdete v části [aplikace úrovně událostí a protokolu generování](service-fabric-diagnostics-event-generation-app.md).
 * Další informace o monitorování na platformu a události Service Fabric nabízí za vás na [generování úrovně událostí a protokolu platformy](service-fabric-diagnostics-event-generation-infra.md).
 * Projděte si postup pro nastavení AI pro vaši aplikaci s [monitorování a Diagnostika aplikace ASP.NET Core v Service Fabric](service-fabric-tutorial-monitoring-aspnet.md).
-* Zjistěte, jak nastavit službu Azure Log Analytics pro monitorování kontejnerů- [monitorování a Diagnostika pro Windows kontejnery v Azure Service Fabric](service-fabric-tutorial-monitoring-wincontainers.md).
+* Zjistěte, jak nastavit službu OMS Log Analytics pro monitorování kontejnerů- [monitorování a Diagnostika pro Windows kontejnery v Azure Service Fabric](service-fabric-tutorial-monitoring-wincontainers.md).
+* Viz příklad diagnostiky problémů a řešení s využitím Service Fabric v [Diagnostika běžné scénáře](service-fabric-diagnostics-common-scenarios.md)
+* Podívejte se na další diagnostiky produkty, které se integrují s využitím Service Fabric v [diagnostických partneři Service Fabric](service-fabric-diagnostics-partners.md)
 * Další informace o obecných doporučení pro monitorování pro prostředky Azure – [osvědčené postupy – monitorování a Diagnostika](https://docs.microsoft.com/azure/architecture/best-practices/monitoring). 

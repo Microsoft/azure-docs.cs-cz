@@ -6,16 +6,16 @@ services: cognitive-services
 author: mikedodaro
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: project-answer-search
+ms.component: answer-search
 ms.topic: reference
 ms.date: 04/13/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: 1149f4d5ec0a3ef55c435d0555f944329cf5b890
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 6548e0bb05b117cf79405b9516da815a7e81b6a3
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48869586"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49471216"
 ---
 # <a name="project-answer-search-v7-reference"></a>Odkaz na projekt hledání odpovědí v7
 
@@ -106,7 +106,7 @@ Schéma odpovědi je buď [webové stránky] nebo ErrorResponse, stejně jako v 
 ### <a name="error"></a>Chyba  
 Definuje chyby, ke které došlo k chybě.  
   
-|Prvek|Popis|Typ|  
+|Element|Popis|Typ|  
 |-------------|-----------------|----------|  
 |<a name="error-code" />kód|Kód chyby, který určuje kategorii chyby. Seznam možných kódů najdete v tématu [kódy chyb](#error-codes).|Řetězec|  
 |<a name="error-message" />Zpráva|Popis chyby.|Řetězec|  
@@ -208,7 +208,7 @@ Definuje informace o webové stránce ve verzi preview.
 ### <a name="querycontext"></a>QueryContext  
 Definuje kontext dotazu, který používá Bing pro daný požadavek.  
   
-|Prvek|Popis|Typ|  
+|Element|Popis|Typ|  
 |-------------|-----------------|----------|  
 |adultIntent|Logická hodnota, která určuje, zda má zadaný dotaz dospělé. Hodnota je **true** Pokud dotaz obsahuje dospělé; v opačném případě **false**.|Logická hodnota|  
 |alterationOverrideQuery|Řetězec dotazu, který se má použít k vynucení Bingu použít původní řetězec. Například, pokud je řetězec dotazu *saling po směru větru*, bude přepsání řetězce dotazu *+ saling po směru větru*. Nezapomeňte zakódujte řetězec dotazu, což vede k *% 2Bsaling + po směru větru*.<br /><br /> Toto pole je zahrnuta pouze v případě, že původní řetězec dotazu obsahuje pravopisné chyby.|Řetězec|  
@@ -319,8 +319,8 @@ Jsou následující hodnoty možnou chybu kódu a dílčí chyba kódu.
 |InsufficientAuthorization|AuthorizationDisabled<br/>AuthorizationExpired|Bing vrátí InsufficientAuthorization volající nemá oprávnění k přístupu k prostředku. Tato situace může nastat, pokud klíč předplatného se zakázalo, nebo vypršela platnost. <br/><br/>Pokud je chyba InsufficientAuthorization, je stavový kód HTTP 403.
 
 ## <a name="next-steps"></a>Další postup
-- [Rychlý start C#](c-sharp-quickstart.md)
+- [Rychlý start pro jazyk C#](c-sharp-quickstart.md)
 - [Rychlý start pro Javu](java-quickstart.md)
-- [Rychlý start uzlu](node-quickstart.md)
-- [Rychlý start Pythonu](python-quickstart.md)
+- [Rychlý start pro Node](node-quickstart.md)
+- [Rychlý start pro Python](python-quickstart.md)
 

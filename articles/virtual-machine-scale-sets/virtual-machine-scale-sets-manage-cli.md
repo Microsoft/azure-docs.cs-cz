@@ -3,7 +3,7 @@ title: Správa Škálovací sady virtuálních počítačů pomocí Azure CLI | 
 description: Běžné příkazy Azure CLI ke správě Škálovací sady virtuálních počítačů, jako je spuštění a zastavení instance nebo změna nastavení kapacity.
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: cynthn
+author: zr-msft
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2018
-ms.author: cynthn
-ms.openlocfilehash: 014e6ff2bc769675e47743cfdd4fbf7fc6234974
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.author: zarhoads
+ms.openlocfilehash: bbed197eb78e34c6e53802dfcfdcc192f780df33
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46999830"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49465655"
 ---
 # <a name="manage-a-virtual-machine-scale-set-with-the-azure-cli"></a>Správa virtuálního počítače škálovací sady pomocí Azure CLI
 V průběhu životního cyklu škálovací sady virtuálních počítačů možná budete potřebovat spustit jednu nebo více úloh správy. Kromě toho možná budete chtít vytvořit skripty pro automatizaci různých úloh souvisejících s životním cyklem. Tento článek podrobně popisuje některé běžné příkazy rozhraní příkazového řádku Azure, které umožňují provádět tyto úlohy.

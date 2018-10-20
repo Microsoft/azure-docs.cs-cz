@@ -4,17 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Poznejte rozdíly mezi pro zpracování řeči Bingu a Speech Service z pohledu vývojáře a migrujte své aplikace používat službu rozpoznávání řeči.
 services: cognitive-services
 author: wsturman
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: Speech
-ms.topic: article
+ms.component: speech-service
+ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: gracez
-ms.openlocfilehash: e72cf547ac911b22a03cae6032351c8c0f22de8e
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: baf9b9cd9b3f57c1d708dd404d59c036df6c169f
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48884845"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49466643"
 ---
 # <a name="migrate-from-bing-speech-to-the-speech-service"></a>Migrace z pro zpracování řeči Bingu ve službě řeči
 
@@ -22,13 +23,13 @@ V tomto článku použijte k migraci aplikace z rozhraní API Bingu pro rozpozn�
 
 Tento článek popisuje rozdíly mezi rozhraní API pro zpracování řeči Bingu a Speech Service a navrhne strategie pro migraci aplikací. Váš klíč rozhraní API pro zpracování řeči Bingu předplatného nebude změna přijata službou Speech; nové předplatné Speech Service budete potřebovat.
 
-Jeden klíč předplatného Speech Service uděluje přístup k těmto funkcím. Každý se měří zvlášť, takže platíte jenom za funkce, které používáte.
+Jediný klíč předplatného služby Speech poskytuje přístup k následujícím funkcím. Každá z nich se měří zvlášť, takže se vám účtují pouze funkce, které využíváte.
 
 * [Převod řeči na text](speech-to-text.md)
 * [Vlastní převod řeči na text](https://cris.ai)
 * [Převod textu na řeč](text-to-speech.md)
-* [Vlastní převod textu na řeč hlasů](how-to-customize-voice-font.md)
-* [Překlad řeči](speech-translation.md) (nezahrnuje [překlady textů](../translator/translator-info-overview.md))
+* [Vlastní hlasy pro převod textu na řeč](how-to-customize-voice-font.md)
+* [Překlad řeči](speech-translation.md) (nezahrnuje [Překlad textu](../translator/translator-info-overview.md))
 
 [Sadou SDK pro řeč](speech-sdk.md) funkční nahrazuje klientské knihovny pro zpracování řeči Bingu, ale používá jiné rozhraní API.
 
@@ -56,7 +57,7 @@ Protokoly Websocket | : heavy_check_mark: | : heavy_check_mark: | Speech Service
 Volání rozhraní API Service to service | : heavy_check_mark: | : heavy_minus_sign: | Součástí pro zpracování řeči Bingu prostřednictvím knihovny služby jazyka C#. 
 Open source sadu SDK | : heavy_check_mark: | : heavy_minus_sign: |
 
-Speech Service používá cenového modelu založeného na čase (a ne jako model založený na transakce). Zobrazit [Speech Service – ceny](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/) podrobnosti.
+Speech Service používá cenového modelu založeného na čase (a ne jako model založený na transakce). Podrobnosti najdete na stránce s [cenami za službu Speech](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/).
 
 ## <a name="migration-strategies"></a>Strategie migrace
 

@@ -5,15 +5,15 @@ services: data-factory
 author: linda33wj
 ms.service: data-factory
 ms.topic: include
-ms.date: 09/07/2018
+ms.date: 10/19/2018
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: e344e018aaa6179d2f7cb9fbc503dc808e9607b9
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 3862570426c6cf2ca7e5b54e001a7dacd02a67d9
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44168360"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49476239"
 ---
 | Kategorie | Úložiště dat |
 |:--- |:--- |
@@ -24,6 +24,7 @@ ms.locfileid: "44168360"
 | &nbsp; |[Azure Database for PostgreSQL](../articles/data-factory/connector-azure-database-for-postgresql.md) |
 | &nbsp; |[Služba soubory Azure](../articles/data-factory/connector-azure-file-storage.md) |
 | &nbsp; |[Azure SQL Database](../articles/data-factory/connector-azure-sql-database.md) |
+| &nbsp; |[Spravovaná Instance Azure SQL Database](../articles/data-factory/connector-azure-sql-database-managed-insance.md) |
 | &nbsp; |[Azure SQL Data Warehouse](../articles/data-factory/connector-azure-sql-data-warehouse.md) |
 | &nbsp; |[Azure Table storage](../articles/data-factory/connector-azure-table-storage.md) |
 | **Database** |[Amazon Redshift](../articles/data-factory/connector-amazon-redshift.md) |

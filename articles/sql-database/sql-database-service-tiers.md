@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 10/17/2018
-ms.openlocfilehash: 3b2359564020eeeb209a7eb78d81782a675f125d
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.date: 10/19/2018
+ms.openlocfilehash: 9dc993b6ba9b90dfa61660df004ef7dae8b93fa7
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49379283"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49470946"
 ---
 # <a name="azure-sql-database-purchasing-models"></a>Azure SQL Database zakoupení modelů
 
@@ -33,21 +33,21 @@ Následující tabulku a graf porovnání a kontrast tyto dva modely nákupu.
 
 |**Nákupní model**|**Popis**|**Nejlepší pro**|
 |---|---|---|
-|Model na základě DTU|Tento model je založen na připojené míře výpočetní prostředky, úložiště a vstupně-VÝSTUPNÍCH prostředků. Výpočetní velikosti se vyjadřují v jednotky transakcí databáze (Dtu) pro izolované databáze a elastické databáze jednotky transakce (Edtu) pro elastické fondy. Další informace o jednotkách Dtu a Edtu najdete v tématu [co jsou jednotky Dtu a Edtu](sql-database-service-tiers.md#dtu-based-purchasing-model)?|Nejvhodnější pro zákazníky, kteří chtějí jednoduché, předem nakonfigurované možnosti prostředku.| 
+|Model na základě DTU|Tento model je založen na připojené míře výpočetní prostředky, úložiště a vstupně-VÝSTUPNÍCH prostředků. Výpočetní velikosti se vyjadřují v jednotky transakcí databáze (Dtu) pro izolované databáze a elastické databáze jednotky transakce (Edtu) pro elastické fondy. Další informace o jednotkách Dtu a Edtu najdete v tématu [co jsou jednotky Dtu a Edtu](sql-database-service-tiers.md#dtu-based-purchasing-model)?|Nejvhodnější pro zákazníky, kteří chtějí jednoduché, předem nakonfigurované možnosti prostředku.|
 |Model na základě virtuálních jader|Tento model umožňuje zvolit nezávisle na sobě výpočetní a úložnou kapacitu. Také umožňuje používat zvýhodněné hybridní využití Azure pro SQL Server k získání úspory nákladů.|Nejvhodnější pro zákazníky, kteří hodnota flexibilitu, řízení a transparentnost.|
 ||||  
 
 ![cenový model](./media/sql-database-service-tiers/pricing-model.png)
 
-## <a name="vcore-based-purchasing-model"></a>Model nákupu na základě virtuálních jader 
+## <a name="vcore-based-purchasing-model"></a>Model nákupu na základě virtuálních jader
 
 Virtuální jádro reprezentuje logický procesor nabízený s možností volby mezi generacemi hardwaru a fyzické charakteristiky hardwaru (například počet jader, paměti a velikost úložiště). Nákupní model založený na virtuálních jádrech poskytuje flexibilitu, kontrolu, transparentnost spotřeby jednotlivých prostředků a jednoduchý způsob převodu místních požadavků na zatížení do cloudu. Tento model umožňuje zvolit výpočetních, paměťových a úložiště na základě jejich potřebám provádění úloh. V nákupní model založený na virtuálních jádrech můžete vybrat mezi [Obecné](sql-database-high-availability.md#basic-standard-and-general-purpose-service-tier-availability) a [pro důležité obchodní informace](sql-database-high-availability.md#premium-and-business-critical-service-tier-availability) úrovně služeb pro obě [izolované databáze](sql-database-single-database-scale.md), [ spravované instance](sql-database-managed-instance.md), a [elastické fondy](sql-database-elastic-pool.md). Pro izolované databáze, můžete také [Hyperškálovatelného (preview)](sql-database-service-tier-hyperscale.md) úroveň služby.
 
 Nákupní model založený na virtuálních jádrech umožňuje nezávisle na sobě vybrat úložnou a výpočetní prostředky, odpovídají zajištění místního výkonu a optimalizovat cena. V nákupní model založený na virtuálních jádrech zákazníci platí za:
 
 - COMPUTE (úrovni služby a počet virtuálních jader a množství paměti a generaci)
-- Typ a velikost úložiště dat a protokolů 
-- Záložní úložiště (pro čtení RA-GRS) 
+- Typ a velikost úložiště dat a protokolů
+- Záložní úložiště (pro čtení RA-GRS)
 
 > [!IMPORTANT]
 > Výpočetní prostředky, IOs, data a úložiště protokolů se bude fakturovat za databázi nebo elastický fond. Úložiště záloh se účtuje za každou databázi. Podrobné informace o Managed Instance poplatky, najdete v tématu [Azure SQL Database Managed Instance](sql-database-managed-instance.md).
@@ -75,9 +75,7 @@ Chcete-li získat podrobnější přehled o spotřebě prostředků (DTU) vašic
 
 ### <a name="elastic-database-transaction-units-edtus"></a>Elastické jednotky databázové transakce (Edtu)
 
-Spíše než poskytuje vyhrazenou sadu prostředků (Dtu), které nemusí být vždy nezbytné pro SQL Database, která je vždy k dispozici, můžete umístit do databáze [elastického fondu](sql-database-elastic-pool.md) na server služby SQL Database, která sdílí fond prostředků mezi Tyto databáze. Sdílené prostředky v elastickém fondu jsou měřeny pomocí elastic Database Transaction Units nebo Edtu. Elastické fondy poskytují jednoduché nákladově efektivní řešení správy výkonnostních cílů pro více databází s značně liší a nepředvídatelným způsobem. Elastický fond zaručuje, že prostředky nemůže být zpracován jedna databáze ve fondu, zatímco vždy zajištění všem databázím ve fondu má minimální množství potřebné prostředky, které jsou k dispozici. 
-
-![Úvod do služby SQL Database: eDTU podle vrstvy a úrovně](./media/sql-database-what-is-a-dtu/sqldb_elastic_pools.png)
+Spíše než poskytuje vyhrazenou sadu prostředků (Dtu), které nemusí být vždy nezbytné pro SQL Database, která je vždy k dispozici, můžete umístit do databáze [elastického fondu](sql-database-elastic-pool.md) na server služby SQL Database, která sdílí fond prostředků mezi Tyto databáze. Sdílené prostředky v elastickém fondu jsou měřeny pomocí elastic Database Transaction Units nebo Edtu. Elastické fondy poskytují jednoduché nákladově efektivní řešení správy výkonnostních cílů pro více databází s značně liší a nepředvídatelným způsobem. Elastický fond zaručuje, že prostředky nemůže být zpracován jedna databáze ve fondu, zatímco vždy zajištění všem databázím ve fondu má minimální množství potřebné prostředky, které jsou k dispozici.
 
 Fond je uveden stanovený počet jednotek Edtu za stanovenou cenu. V rámci elastického fondu disponují jednotlivé databáze flexibilní možností automatického škálování v rámci nakonfigurovaných mezí. Databáze při větším zatížení bude spotřebovávat více Edtu, které mají pokrýt poptávku. Databáze pod označením zatížení se spotřebovávají méně Edtu. Databáze s žádné zatížení bude nespotřebovávají žádné Edtu. Zřizování prostředků pro celý fond, spíše než jednotlivé databáze, jsou úlohy správy zjednodušené, poskytuje předvídatelný rozpočet pro fond.
 

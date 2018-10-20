@@ -3,24 +3,17 @@ title: 'Konfigurace protokolu BGP ve službě Azure VPN gateway: Resource Manage
 description: Tento článek vás provede konfigurací protokolu BGP se službou Azure VPN gateway pomocí Azure Resource Manageru a rozhraní příkazového řádku.
 services: vpn-gateway
 documentationcenter: na
-author: cherylmc
-manager: timlt
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
+author: yushwang
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 09/25/2017
-ms.author: cherylmc
-ms.openlocfilehash: 657cad69fff66aaaeba9819569442981d229f644
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.date: 09/25/2018
+ms.author: yushwang
+ms.openlocfilehash: f0367a360de97d3935c7fa8de9f3dafa6555811e
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46971123"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49471352"
 ---
 # <a name="how-to-configure-bgp-on-an-azure-vpn-gateway-by-using-cli"></a>Konfigurace protokolu BGP ve službě Azure VPN gateway pomocí rozhraní příkazového řádku
 
@@ -55,7 +48,7 @@ Tato část se vyžaduje před provedením kroků v další dvě konfigurační 
 
 ### <a name="before-you-begin"></a>Než začnete
 
-Nainstalujte nejnovější verzi příkazů rozhraní příkazového řádku (2.0 nebo novější). Informace o instalaci příkazů rozhraní příkazového řádku najdete v tématu [instalace rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli) a [Začínáme s Azure CLI](/cli/azure/get-started-with-azure-cli).
+Nainstalujte nejnovější verzi příkazů rozhraní příkazového řádku (2.0 nebo novější). Informace o instalaci příkazů rozhraní příkazového řádku najdete v tématech [Instalace Azure CLI](/cli/azure/install-azure-cli) a [Začínáme s Azure CLI](/cli/azure/get-started-with-azure-cli).
 
 ### <a name="step-1-create-and-configure-testvnet1"></a>Krok 1: Vytvoření a konfigurace virtuální sítě TestVNet1
 

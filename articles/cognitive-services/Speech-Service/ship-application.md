@@ -1,20 +1,21 @@
 ---
-title: Azure Cognitive Services, reference k rozhraní API dokumentace k – kurzy, sada SDK API služeb Cognitive Services řeči
-description: Další informace o vytváření a vývoj aplikací s využitím Cognitive Services SDK řeči
-titleSuffix: Microsoft Cognitive Services
+title: Reference k rozhraní API dokumentace k – kurzy, rozhraní API sady SDK služby řeči
+titleSuffix: Azure Cognitive Services
+description: Zjistěte, jak vytvářet a vyvíjet aplikace pomocí sady SDK služby řeči
 services: cognitive-services
 author: wolfma61
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: wolfma
-ms.openlocfilehash: 4bfede8df88c64e795e33620650efb579f43ebba
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 7510b1501051b79f6bdaf33ec57647a7982fafda
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47404304"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49469414"
 ---
 # <a name="ship-an-application"></a>Dodávejte aplikace
 

@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 10/15/2018
-ms.openlocfilehash: e00f043f99b9a57fad420c380a55789d73047e77
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.date: 10/19/2018
+ms.openlocfilehash: 258f8fbe8d99923240db8d6d10c4cf812c939510
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49352896"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49466882"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>Škálování izolované databáze prostředků ve službě Azure SQL Database
 
@@ -26,7 +26,7 @@ Tento článek popisuje, jak škálovat výpočetní a úložné prostředky dos
 ## <a name="vcore-based-purchasing-model-change-storage-size"></a>nákupní model založený na virtuálních jádrech: Změna velikosti úložiště
 
 - Úložiště lze zřídit až po limit maximální velikosti 1 GB přírůstcích pomocí. Minimální konfigurovatelné datové úložiště je 5 GB
-- Zvýšením nebo snížením jeho maximální velikost pomocí je možné zřídit úložiště pro izolovanou databázi [webu Azure portal](https://portal.azure.com), [příkazů jazyka Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#examples-1), [Powershellu](/powershell/module/azurerm.sql/set-azurermsqldatabase), [Rozhraní příkazového řádku azure](/cli/azure/sql/db#az-sql-db-update), nebo [rozhraní REST API](https://docs.microsoft.com/rest/api/sql/databases/databases_update).
+- Zvýšením nebo snížením jeho maximální velikost pomocí je možné zřídit úložiště pro izolovanou databázi [webu Azure portal](https://portal.azure.com), [příkazů jazyka Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#examples-1), [Powershellu](/powershell/module/azurerm.sql/set-azurermsqldatabase), [Rozhraní příkazového řádku azure](/cli/azure/sql/db#az-sql-db-update), nebo [rozhraní REST API](https://docs.microsoft.com/rest/api/sql/databases/update).
 - SQL Database automaticky přiděluje 30 % další úložiště pro soubory protokolů a 32GB za – vCore pro databázi TempDB, ale která nepřekročí 384GB. Databáze TempDB je umístěná na připojené SSD ve všech úrovních služby.
 - Ceny úložišť pro izolované databáze je součet množství dat úložiště a protokol úložiště vynásobí jednotkovou cenu úložiště na úrovni služby. Cena databáze tempdb je zahrnutá v ceně – vCore. Podrobnosti o cenách dodatečného úložiště najdete v tématu [SQL Database – ceny](https://azure.microsoft.com/pricing/details/sql-database/).
 
@@ -35,14 +35,14 @@ Tento článek popisuje, jak škálovat výpočetní a úložné prostředky dos
 
 ## <a name="vcore-based-purchasing-model-change-compute-resources"></a>nákupní model založený na virtuálních jádrech: Změna výpočetních prostředků
 
-Po počátečním výběru počet virtuálních jader, můžete vertikálně izolovanou databázi směrem nahoru nebo dolů dynamicky na základě aktuálních zkušeností pomocí [webu Azure portal](sql-database-single-databases-manage.md#manage-an-existing-sql-server), [příkazů jazyka Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#examples-1), [Powershellu](/powershell/module/azurerm.sql/set-azurermsqldatabase), [rozhraní příkazového řádku Azure](/cli/azure/sql/db#az-sql-db-update), nebo [rozhraní REST API](https://docs.microsoft.com/rest/api/sql/databases/databases_update).
+Po počátečním výběru počet virtuálních jader, můžete vertikálně izolovanou databázi směrem nahoru nebo dolů dynamicky na základě aktuálních zkušeností pomocí [webu Azure portal](sql-database-single-databases-manage.md#manage-an-existing-sql-server), [příkazů jazyka Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#examples-1), [Powershellu](/powershell/module/azurerm.sql/set-azurermsqldatabase), [rozhraní příkazového řádku Azure](/cli/azure/sql/db#az-sql-db-update), nebo [rozhraní REST API](https://docs.microsoft.com/rest/api/sql/databases/update).
 
 Změna služby vrstvy a/nebo vypočítat velikost databáze vytvoří replika původní databáze na novou velikost výpočetních a následně se přepnou připojení na repliku. Během tohoto procesu se neztratí žádná data, ale během krátké chvíle, kdy se přepíná na repliku, jsou zakázána připojení k databázi, takže může dojít k vrácení některých probíhajících transakcí zpět. Doba pro přechod se liší, ale je obecně nepřekračuje 4 sekundy je menší než 30 sekund 99 % času. Pokud existují velké množství transakcí za pochodu okamžiku zákazu připojení probíhá jsou zakázané, může být delší dobu pro přechod.
 
 Délka trvání celého procesu vertikálního navyšování kapacity závisí na velikosti a úrovni služeb databáze před změnou a po ní. Například databázi 250 GB, která se mění na, z nebo v rámci úrovně služeb obecné účely, by se měla dokončit během šesti hodin. Pro databázi stejnou velikost, která se mění velikosti výpočty v rámci pro důležité obchodní informace úrovně služeb vertikálně navýšit by se měla dokončit během tří hodin.
 
 > [!TIP]
-> Monitorování operací v průběhu najdete v tématu: [správě operací pomocí rozhraní SQL API REST](https://docs.microsoft.com/rest/api/sql/operations/operations_list), [správě operací pomocí rozhraní příkazového řádku](/cli/azure/sql/db/op), [sledování operací s použitím jazyka T-SQL](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) a tyto dvě Příkazy prostředí PowerShell: [Get-AzureRmSqlDatabaseActivity](/powershell/module/azurerm.sql/get-azurermsqldatabaseactivity) a [Stop-AzureRmSqlDatabaseActivity](/powershell/module/azurerm.sql/stop-azurermsqldatabaseactivity).
+> Monitorování operací v průběhu najdete v tématu: [správě operací pomocí rozhraní SQL API REST](https://docs.microsoft.com/rest/api/sql/operations/list), [správě operací pomocí rozhraní příkazového řádku](/cli/azure/sql/db/op), [sledování operací s použitím jazyka T-SQL](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) a tyto dvě Příkazy prostředí PowerShell: [Get-AzureRmSqlDatabaseActivity](/powershell/module/azurerm.sql/get-azurermsqldatabaseactivity) a [Stop-AzureRmSqlDatabaseActivity](/powershell/module/azurerm.sql/stop-azurermsqldatabaseactivity).
 
 - Pokud provádíte upgrade na vyšší úroveň služby nebo vypočítat velikost, maximální velikost databáze se nezvyšuje, pokud explicitně neurčíte větší velikost (maxsize).
 - Na starší verzi databáze, databáze používá prostor musí být menší než maximální povolená velikost cílové úrovni služeb a výpočetního prostředí.
@@ -53,7 +53,7 @@ Délka trvání celého procesu vertikálního navyšování kapacity závisí n
 ## <a name="dtu-based-purchasing-model-change-storage-size"></a>Nákupní model založený na DTU: Změna velikosti úložiště
 
 - Cena za DTU pro izolovanou databázi zahrnuje objem úložiště bez dalších poplatků. Dodatečné úložiště nad rámec objemu zahrnutého v ceně je možné zřídit za poplatek až po limit maximální velikosti, v přírůstcích po 250 GB až 1 TB a potom dokupuje se násobek 256 GB nad rámec 1 TB. Částky zahrnutého úložiště a omezení maximální velikosti najdete v tématu [izolované databáze: velikosti úložiště a výpočty velikostí](sql-database-dtu-resource-limits-single-databases.md#single-database-storage-sizes-and-compute-sizes).
-- Dodatečné úložiště pro izolovanou databázi je možné zřídit zvýšením jeho maximální velikost pomocí webu Azure portal, [příkazů jazyka Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#examples-1), [PowerShell](/powershell/module/azurerm.sql/set-azurermsqldatabase), [rozhraní příkazového řádku Azure](/cli/azure/sql/db#az-sql-db-update), nebo [ Rozhraní REST API](https://docs.microsoft.com/rest/api/sql/databases/databases_update).
+- Dodatečné úložiště pro izolovanou databázi je možné zřídit zvýšením jeho maximální velikost pomocí webu Azure portal, [příkazů jazyka Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#examples-1), [PowerShell](/powershell/module/azurerm.sql/set-azurermsqldatabase), [rozhraní příkazového řádku Azure](/cli/azure/sql/db#az-sql-db-update), nebo [ Rozhraní REST API](https://docs.microsoft.com/rest/api/sql/databases/update).
 - Cena dodatečného úložiště pro izolovanou databázi se velikost dodatečného úložiště vynásobí jednotkovou cenu dodatečné úložiště na úrovni služby. Podrobnosti o cenách dodatečného úložiště najdete v tématu [SQL Database – ceny](https://azure.microsoft.com/pricing/details/sql-database/).
 
 > [!IMPORTANT]
@@ -61,7 +61,7 @@ Délka trvání celého procesu vertikálního navyšování kapacity závisí n
 
 ## <a name="dtu-based-purchasing-model-change-compute-resources-dtus"></a>Nákupní model založený na DTU: Změna výpočetních prostředků (Dtu)
 
-Po počátečním výběru úrovně služeb, výpočetního prostředí a velikost úložiště, můžete vertikálně izolovanou databázi směrem nahoru nebo dolů dynamicky na základě aktuálních zkušeností pomocí webu Azure portal, [příkazů jazyka Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#examples-1), [Powershellu](/powershell/module/azurerm.sql/set-azurermsqldatabase), [rozhraní příkazového řádku Azure](/cli/azure/sql/db#az-sql-db-update), nebo [rozhraní REST API](https://docs.microsoft.com/rest/api/sql/databases/databases_update).
+Po počátečním výběru úrovně služeb, výpočetního prostředí a velikost úložiště, můžete vertikálně izolovanou databázi směrem nahoru nebo dolů dynamicky na základě aktuálních zkušeností pomocí webu Azure portal, [příkazů jazyka Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#examples-1), [Powershellu](/powershell/module/azurerm.sql/set-azurermsqldatabase), [rozhraní příkazového řádku Azure](/cli/azure/sql/db#az-sql-db-update), nebo [rozhraní REST API](https://docs.microsoft.com/rest/api/sql/databases/update).
 
 Následující video ukazuje dynamické změny služby vrstvy a vypočítat velikost zvýšit dostupné Dtu pro izolovanou databázi.
 
@@ -73,7 +73,7 @@ Změna služby vrstvy a/nebo vypočítat velikost databáze vytvoří replika p�
 Délka trvání celého procesu vertikálního navyšování kapacity závisí na velikosti a úrovni služeb databáze před změnou a po ní. Například databázi 250 GB, která se mění na, z nebo v rámci úrovně služeb Standard, by se měla dokončit během šesti hodin. Pro databázi stejnou velikost, která se mění velikosti výpočty v rámci úrovně služeb Premium vertikálně navýšit by se měla dokončit během tří hodin.
 
 > [!TIP]
-> Monitorování operací v průběhu najdete v tématu: [správě operací pomocí rozhraní SQL API REST](https://docs.microsoft.com/rest/api/sql/operations/operations_list), [správě operací pomocí rozhraní příkazového řádku](/cli/azure/sql/db/op), [sledování operací s použitím jazyka T-SQL](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) a tyto dvě Příkazy prostředí PowerShell: [Get-AzureRmSqlDatabaseActivity](/powershell/module/azurerm.sql/get-azurermsqldatabaseactivity) a [Stop-AzureRmSqlDatabaseActivity](/powershell/module/azurerm.sql/stop-azurermsqldatabaseactivity).
+> Monitorování operací v průběhu najdete v tématu: [správě operací pomocí rozhraní SQL API REST](https://docs.microsoft.com/rest/api/sql/operations/list), [správě operací pomocí rozhraní příkazového řádku](/cli/azure/sql/db/op), [sledování operací s použitím jazyka T-SQL](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) a tyto dvě Příkazy prostředí PowerShell: [Get-AzureRmSqlDatabaseActivity](/powershell/module/azurerm.sql/get-azurermsqldatabaseactivity) a [Stop-AzureRmSqlDatabaseActivity](/powershell/module/azurerm.sql/stop-azurermsqldatabaseactivity).
 
 - Pokud provádíte upgrade na vyšší úroveň služby nebo vypočítat velikost, maximální velikost databáze se nezvyšuje, pokud explicitně neurčíte větší velikost (maxsize).
 - Na starší verzi databáze, databáze používá prostor musí být menší než maximální povolená velikost cílové úrovni služeb a výpočetního prostředí.

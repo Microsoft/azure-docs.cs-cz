@@ -6,16 +6,16 @@ author: jeffgilb
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 10/02/2018
+ms.date: 10/19/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
 keywords: ''
-ms.openlocfilehash: 4ba890f4763fc77981917d9311cf2bf6c97ec80f
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 6548693b91283665704be8fc83a483a9d20dc41b
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902439"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49470542"
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Integrace datových center Azure Stack – Identity
 Azure Stack pomocí Azure Active Directory (Azure AD) nebo Active Directory Federation Services (AD FS) můžete nasadit jako zprostředkovatele identity. Volba je třeba provést před nasazením služby Azure Stack. Nasazení pomocí služby AD FS se také označuje jako při nasazování služby Azure Stack v odpojeném režimu.
@@ -70,6 +70,17 @@ Tyto informace se vyžaduje jako vstup pro automatizaci parametry:
 |---------|---------|---------|
 |CustomADGlobalCatalog|Plně kvalifikovaný název domény cílové doménové struktuře služby Active Directory<br>Chcete integrovat s|contoso.com|
 |CustomADAdminCredentials|Uživatel s oprávněním ke čtení protokolu LDAP|YOURDOMAIN\graphservice|
+
+### <a name="configure-active-directory-sites"></a>Konfigurace lokalit služby Active Directory
+
+Pro nasazení služby Active Directory s více lokalitami nakonfigurujte nejbližší lokalitu služby Active Directory k nasazení Azure Stack. Konfigurace se vyhnete, že ve službě Azure Stack Graph vyřešit dotazy, které používají Server globálního katalogu od vzdáleného webu.
+
+Přidání služby Azure Stack [síť veřejných virtuálních IP adres](azure-stack-network.md#public-vip-network) podsítě k webu Azure AD co nejblíže ke službě Azure Stack. Například pokud Active Directory obsahuje dvě lokality Seattle a Redmond, s využitím Azure stacku nasadit v lokalitě Seattle, by přidat podsíť sítě Azure stacku veřejnou virtuální IP adresy k webu Azure AD pro Seattle.
+
+Další informace o serverů služby Active Directory najdete v části [navrhování topologie lokalit](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/designing-the-site-topology).
+
+> [!Note]  
+> Pokud se skládají z jedné lokality služby Active Directory můžete tento krok přeskočit. V případě, že máte podsíť pokrývající vše nakonfigurované, ověřte, že podsíť sítě Azure stacku veřejnou virtuální IP Adresou není jeho součástí.
 
 ### <a name="create-user-account-in-the-existing-active-directory-optional"></a>Vytvoření uživatelského účtu ve stávající službě Active Directory (volitelné)
 

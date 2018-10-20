@@ -12,12 +12,12 @@ ms.author: ronitr
 ms.reviewer: vanto
 manager: craigg
 ms.date: 10/15/2018
-ms.openlocfilehash: b18f7efa09b33def2851967b5fc78bb1ddbc61e6
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 2a0bacaf0405a5223afedcd3897e2a1514f7128b
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49404915"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49466677"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Začínáme s auditem databáze SQL
 
@@ -222,17 +222,17 @@ Ukázkový skript, naleznete v tématu [konfigurace auditování a detekce hroze
 
 **Rozhraní REST API – auditování objektů Blob**:
 
-- [Vytvořit nebo aktualizovat objekt Blob databázi zásady auditu](https://docs.microsoft.com/rest/api/sql/database%20auditing%20settings/databaseblobauditingpolicies_createorupdate)
-- [Vytvořit nebo aktualizovat objekt Blob Server zásady auditu](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/serverblobauditingpolicies_createorupdate)
-- [Získat zásady auditování objektů Blob v databázi](https://docs.microsoft.com/rest/api/sql/database%20auditing%20settings/databaseblobauditingpolicies_get)
-- [Získat zásady auditování objektů Blob v serveru](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/serverblobauditingpolicies_get)
+- [Vytvořit nebo aktualizovat objekt Blob databázi zásady auditu](https://docs.microsoft.com/rest/api/sql/database%20auditing%20settings/createorupdate)
+- [Vytvořit nebo aktualizovat objekt Blob Server zásady auditu](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/createorupdate)
+- [Získat zásady auditování objektů Blob v databázi](https://docs.microsoft.com/rest/api/sql/database%20auditing%20settings/get)
+- [Získat zásady auditování objektů Blob v serveru](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/get)
 
 Rozšířené zásady pomocí kde klauzule podpory pro další filtrování:
 
-- [Vytvořit nebo aktualizovat databázi *rozšířené* zásady auditování objektů Blob](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/extendeddatabaseblobauditingpolicies_createorupdate)
-- [Vytvořit nebo aktualizovat Server *rozšířené* zásady auditování objektů Blob](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/serverblobauditingpolicies_createorupdate)
-- [Získat databázi *rozšířené* zásady auditování objektů Blob](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/extendeddatabaseblobauditingpolicies_get)
-- [Získat Server *rozšířené* zásady auditování objektů Blob](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/serverblobauditingpolicies_get)
+- [Vytvořit nebo aktualizovat databázi *rozšířené* zásady auditování objektů Blob](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/createorupdate)
+- [Vytvořit nebo aktualizovat Server *rozšířené* zásady auditování objektů Blob](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/createorupdate)
+- [Získat databázi *rozšířené* zásady auditování objektů Blob](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/get)
+- [Získat Server *rozšířené* zásady auditování objektů Blob](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/get)
 
 <!--Anchors-->
 [Azure SQL Database Auditing overview]: #subheading-1

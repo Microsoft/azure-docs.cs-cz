@@ -1,24 +1,25 @@
 ---
-title: Informace o službách Cognitive Services řeči SDK
-description: Přehled sady SDK k dispozici pro službu rozpoznávání řeči.
+title: O sady SDK služby pro zpracování řeči
 titleSuffix: Azure Cognitive Services
+description: Přehled sady SDK k dispozici pro službu rozpoznávání řeči.
 services: cognitive-services
 author: erhopf
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: wolfma
-ms.openlocfilehash: 4be6b1e8373b6e7a7db8d97f2c99137cb6aca9bf
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: f071c15ea586f7b146b82a6201adf16dadc65add
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49364638"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49464804"
 ---
-# <a name="about-the-cognitive-services-speech-sdk"></a>Informace o službách Cognitive Services řeči SDK
+# <a name="about-the-speech-service-sdk"></a>O sady SDK služby pro zpracování řeči
 
-Cognitive Services řeči Software Development Kit (SDK) poskytuje vaše aplikace nativní přístup k funkce Speech service, což usnadňuje vývoj softwaru. V současné době sada SDK poskytuje přístup k **převod řeči na Text**, **překlad řeči**, a **rozpoznávání záměru**.
+Speech Service Software Development Kit (SDK) poskytuje vaše aplikace nativní přístup k funkce Speech service, což usnadňuje vývoj softwaru. V současné době sada SDK poskytuje přístup k **převod řeči na Text**, **překlad řeči**, a **rozpoznávání záměru**.
 
 [!INCLUDE [Speech SDK Platforms](../../../includes/cognitive-services-speech-service-speech-sdk-platforms.md)]
 

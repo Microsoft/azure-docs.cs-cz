@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/18/2016
+ms.date: 10/20/2018
 ms.author: celested
-ms.reviewer: hirsin, dastrock
+ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 69dc56191667e65922d7d81116f4daf7a6e4b97a
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 3b41436ffae2f5761b1917af3048327b90952b78
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39576932"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49470950"
 ---
 # <a name="signing-key-rollover-in-azure-active-directory"></a>Výměna podpisových klíčů ve službě Azure Active Directory
 Tento článek popisuje, co potřebujete vědět o veřejných klíčů, které se používají ve službě Azure Active Directory (Azure AD) k podepisování tokenů zabezpečení. Je důležité si uvědomit, že tyto výměny klíčů a v pravidelných intervalech a ve stavu nouze, může být převracet okamžitě. Všechny aplikace, které používají službu Azure AD by možné programově zpracovávat procesu výměny klíčů nebo vytvořit proces periodické ruční výměna. Pokračujte ve čtení pochopit, jak fungují klíče, jak posoudit dopad efekt přechodu do vaší aplikace a jak aktualizovat vaše aplikace nebo vytvoření procesu periodické ruční výměna zpracování výměny klíčů, v případě potřeby.

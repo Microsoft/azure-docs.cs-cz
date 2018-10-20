@@ -1,24 +1,25 @@
 ---
-title: Řešení potíží s rozhraním Speech služeb Cognitive Services SDK
-description: Řešení potíží s rozhraním Speech služeb Cognitive Services SDK.
+title: Řešení potíží se službou Speech SDK
 titleSuffix: Azure Cognitive Services
+description: Řešení potíží s Speech Service SDK.
 services: cognitive-services
 author: wolfma61
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: wolfma
-ms.openlocfilehash: 02564021257c97f6c865fcbebf30c73babee859a
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 9f0cea263262d83d9a95012f6cd09fa9acdc0141
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48816194"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49464567"
 ---
-# <a name="troubleshoot-the-speech-sdk"></a>Řešení potíží s rozhraním Speech SDK
+# <a name="troubleshoot-the-speech-service-sdk"></a>Řešení potíží se službou Speech SDK
 
-Tento článek obsahuje informace, které vám pomůžou při řešení problémů, že se můžete setkat při použití sady SDK řeči.
+Tento článek obsahuje informace, které vám pomůžou při řešení problémů, že se můžete setkat, když použijete služby SDK řeči.
 
 ## <a name="error-websocket-upgrade-failed-with-an-authentication-error-403"></a>Chyba: Upgrade objektu websocket na straně se nezdařilo s chybou ověřování (403)
 

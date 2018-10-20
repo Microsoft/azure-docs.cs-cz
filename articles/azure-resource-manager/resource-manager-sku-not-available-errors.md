@@ -1,6 +1,6 @@
 ---
-title: Azure SKU není k dispozici chyby | Microsoft Docs
-description: Popisuje postupy řešení verze SKU není k dispozici došlo k chybě během nasazení.
+title: Azure SKU není k dispozici chyby | Dokumentace Microsoftu
+description: Popisuje postup řešení potíží s SKU není k dispozici při nasazení.
 services: azure-resource-manager
 documentationcenter: ''
 author: tfitzmac
@@ -11,22 +11,23 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 03/09/2018
+ms.date: 10/19/2018
 ms.author: tomfitz
-ms.openlocfilehash: 490c912a6abd6570c9bc74de8b86a516a8e6f807
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: d1279b5319ddd52ff2f3f6b4e696b73e8fe67607
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34358757"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49468683"
 ---
-# <a name="resolve-errors-for-sku-not-available"></a>Vyřešte chyby pro SKU není k dispozici
+# <a name="resolve-errors-for-sku-not-available"></a>Řešení chyb pro SKU není k dispozici
 
-Tento článek popisuje, jak vyřešit **SkuNotAvailable** chyba.
+Tento článek popisuje, jak vyřešit **zprávy typu SkuNotAvailable** chyby. Pokud nemůžete najít vhodné SKU v dané oblasti nebo alternativní oblast, která splňuje vaše obchodní potřeby, odešlete [SKU požadavek](https://aka.ms/skurestriction) podpory Azure.
 
-## <a name="symptom"></a>Příznaky
 
-Při nasazení prostředků (obvykle virtuální počítač), se zobrazí následující kód chyby a chybová zpráva:
+## <a name="symptom"></a>Příznak
+
+Při nasazování prostředků (obvykle virtuálního počítače), se zobrazí následující kód chyby a chybová zpráva:
 
 ```
 Code: SkuNotAvailable
@@ -36,62 +37,63 @@ for subscription '<subscriptionID>'. Please try another tier or deploy to a diff
 
 ## <a name="cause"></a>Příčina
 
-Tato chyba se zobrazí, když prostředek SKU, které jste vybrali (například velikost virtuálního počítače) není k dispozici pro umístění, které jste vybrali.
+Tato chyba se zobrazí, když není k dispozici pro umístění, které jste vybrali prostředek SKU, které jste vybrali (jako je například velikost virtuálního počítače).
 
-## <a name="solution-1---powershell"></a>Řešení 1 – prostředí PowerShell
+## <a name="solution-1---powershell"></a>Řešení 1 – PowerShell
 
-Chcete-li zjistit, které SKU jsou k dispozici v oblasti, použijte [Get-AzureRmComputeResourceSku](/powershell/module/azurerm.compute/get-azurermcomputeresourcesku) příkaz. Filtrovat výsledky podle umístění. Musíte mít nejnovější verzi prostředí PowerShell pro tento příkaz.
+Chcete-li zjistit, které skladové položky jsou k dispozici v oblasti, použijte [Get-AzureRmComputeResourceSku](/powershell/module/azurerm.compute/get-azurermcomputeresourcesku) příkazu. Filtrovat výsledky podle umístění. Musíte mít nejnovější verzi prostředí PowerShell pro tento příkaz.
 
-```powershell
-Get-AzureRmComputeResourceSku | where {$_.Locations -icontains "southcentralus"}
+```azurepowershell-interactive
+Get-AzureRmComputeResourceSku | where {$_.Locations -icontains "centralus"}
 ```
 
-Výsledky budou zahrnovat seznam SKU pro umístění a nějaká omezení pro tento SKU.
+Výsledky obsahovat seznam skladových položek pro umístění a všechna omezení pro dané skladové jednotce. Všimněte si, že se skladová položka může být uvedena jako `NotAvailableForSubscription`.
 
 ```powershell
-ResourceType                Name      Locations Restriction                      Capability Value
-------------                ----      --------- -----------                      ---------- -----
-availabilitySets         Classic southcentralus             MaximumPlatformFaultDomainCount     3
-availabilitySets         Aligned southcentralus             MaximumPlatformFaultDomainCount     3
-virtualMachines      Standard_A0 southcentralus
-virtualMachines      Standard_A1 southcentralus
-virtualMachines      Standard_A2 southcentralus
+ResourceType          Name        Locations   Restriction                      Capability           Value
+------------          ----        ---------   -----------                      ----------           -----
+virtualMachines       Standard_A0 centralus   NotAvailableForSubscription      MaxResourceVolumeMB   20480
+virtualMachines       Standard_A1 centralus   NotAvailableForSubscription      MaxResourceVolumeMB   71680
+virtualMachines       Standard_A2 centralus   NotAvailableForSubscription      MaxResourceVolumeMB  138240
 ```
 
 ## <a name="solution-2---azure-cli"></a>Řešení 2 – rozhraní příkazového řádku Azure
 
-Chcete-li zjistit, které SKU jsou k dispozici v oblasti, použijte `az vm list-skus` příkaz. Pak můžete použít `grep` nebo podobného nástroje pro filtrování výstupu.
+Chcete-li zjistit, které skladové položky jsou k dispozici v oblasti, použijte `az vm list-skus` příkazu. Použití `--location` parametr filtrovat výstup do umístění, které používáte. Použití `--size` parametru hledání podle názvu částečné velikost.
 
-```bash
-$ az vm list-skus --output table
-ResourceType      Locations           Name                    Capabilities                       Tier      Size           Restrictions
-----------------  ------------------  ----------------------  ---------------------------------  --------  -------------  ---------------------------
-availabilitySets  eastus              Classic                 MaximumPlatformFaultDomainCount=3
-avilabilitySets   eastus              Aligned                 MaximumPlatformFaultDomainCount=3
-availabilitySets  eastus2             Classic                 MaximumPlatformFaultDomainCount=3
-availabilitySets  eastus2             Aligned                 MaximumPlatformFaultDomainCount=3
-availabilitySets  westus              Classic                 MaximumPlatformFaultDomainCount=3
-availabilitySets  westus              Aligned                 MaximumPlatformFaultDomainCount=3
-availabilitySets  centralus           Classic                 MaximumPlatformFaultDomainCount=3
-availabilitySets  centralus           Aligned                 MaximumPlatformFaultDomainCount=3
+```azurecli-interactive
+az vm list-skus --location southcentralus --size Standard_F --output table
 ```
 
-## <a name="solution-3---azure-portal"></a>Řešení 3 – portál Azure
+Příkaz vrátí výsledky, jako jsou:
 
-Chcete-li zjistit, které SKU jsou k dispozici v oblasti, použijte [portál](https://portal.azure.com). Přihlaste se k portálu a přidat prostředek přes rozhraní. Při nastavování hodnoty, uvidíte dostupné edice pro tento prostředek. Není nutné k dokončení nasazení.
-
-![dostupné edice](./media/resource-manager-sku-not-available-errors/view-sku.png)
-
-## <a name="solution-4---rest"></a>Řešení 4 - REST
-
-Pokud chcete zjistit, které SKU jsou k dispozici v oblasti, použijte rozhraní REST API pro virtuální počítače. Odešlete následující požadavek:
-
-```HTTP 
-GET
-https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.Compute/skus?api-version=2016-03-30
+```azurecli
+ResourceType     Locations       Name              Zones    Capabilities    Restrictions
+---------------  --------------  ----------------  -------  --------------  --------------
+virtualMachines  southcentralus  Standard_F1                ...             None
+virtualMachines  southcentralus  Standard_F2                ...             None
+virtualMachines  southcentralus  Standard_F4                ...             None
+...
 ```
 
-Vrátí k dispozici SKU a oblastí, v následujícím formátu:
+
+## <a name="solution-3---azure-portal"></a>Řešení 3 – Azure portal
+
+Chcete-li zjistit, které skladové položky jsou k dispozici v oblasti, použijte [portál](https://portal.azure.com). Přihlaste se k portálu a přidat prostředek prostřednictvím rozhraní. Při nastavování hodnoty, zobrazí se dostupné skladové položky pro daný prostředek. Není nutné k dokončení nasazení.
+
+Například spusťte proces vytváření virtuálního počítače. Pokud chcete zobrazit další dostupné velikosti, vyberte **změnit velikost**.
+
+![Vytvoření virtuálního počítače](./media/resource-manager-sku-not-available-errors/create-vm.png)
+
+Můžete filtrovat a posuňte se až si dostupné velikosti.
+
+![Dostupné skladové položky](./media/resource-manager-sku-not-available-errors/available-sizes.png)
+
+## <a name="solution-4---rest"></a>Řešení 4 – REST
+
+Chcete-li zjistit, které skladové položky jsou k dispozici v oblasti, použijte [skladové položky prostředků – seznam](/rest/api/compute/resourceskus/list) operace.
+
+Vrátí dostupné skladové položky a oblastmi v následujícím formátu:
 
 ```json
 {
@@ -121,4 +123,3 @@ Vrátí k dispozici SKU a oblastí, v následujícím formátu:
 }
 ```
 
-Pokud jste se nepodařilo najít vhodnou SKU v této oblasti nebo alternativní oblast, která splňuje vaše obchodní potřebuje, odeslání [SKU požadavek](https://aka.ms/skurestriction) pro podporu Azure.

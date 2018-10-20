@@ -12,14 +12,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: AzurePortal
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/26/2018
+ms.date: 10/19/2018
 ms.author: tomfitz
-ms.openlocfilehash: 82a48c902b72b5aca546c45032a13e831533f9ee
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: b6386f4a23a0ca6d0134f8c4e298a3f7100cc1d6
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393464"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49466949"
 ---
 # <a name="use-tags-to-organize-your-azure-resources"></a>Používání značek k uspořádání prostředků Azure
 
@@ -264,13 +264,11 @@ Webu Azure portal a PowerShell používají [REST API Resource Manageru](https:/
 
 ## <a name="tags-and-billing"></a>Značky a fakturace
 
-Značky můžete použít k seskupení fakturačních údajů. Například pokud se spuštění několika virtuálních počítačů pro jiné organizace, použijte nákladové středisko značek k použití skupiny. Značky lze použít také ke kategorizaci náklady podle prostředí modulu runtime, jako je například fakturovaného využití pro virtuální počítače spuštěné v provozním prostředí.
+Značky můžete použít k seskupení fakturačních údajů. Například pokud používáte více virtuálních počítačů pro jiné organizace, použití značek na použití skupiny podle nákladových středisek. Značky lze použít také ke kategorizaci náklady podle prostředí modulu runtime, jako je například fakturovaného využití pro virtuální počítače spuštěné v provozním prostředí.
 
-Můžete načíst informace o značkách prostřednictvím [využití prostředků Azure a RateCard API](../billing/billing-usage-rate-card-overview.md) nebo použití souboru hodnot oddělených čárkami (CSV). Stáhněte si soubor využití z [portál účtů Azure](https://account.windowsazure.com/) nebo [portál EA](https://ea.azure.com). Další informace o programový přístup k fakturačním údajům najdete v tématu [získání přehledů o spotřebě prostředků Microsoft Azure](../billing/billing-usage-rate-card-overview.md). Operace rozhraní REST API najdete v části [Azure Billing Reference k REST API](https://msdn.microsoft.com/library/azure/1ea5b323-54bb-423d-916f-190de96c6a3c).
+Můžete načíst informace o značkách prostřednictvím [využití prostředků Azure a RateCard API](../billing/billing-usage-rate-card-overview.md) nebo použití souboru hodnot oddělených čárkami (CSV). Stáhněte si soubor využití z [centra účtů Azure](https://account.azure.com/Subscriptions) nebo webu Azure portal. Další informace najdete v tématu [stažení nebo zobrazení Azure billing invoice a denní data o využití](../billing/billing-download-azure-invoice-daily-usage-date.md). Při stahování souboru využití z centra účtů Azure, vyberte **verze 2**. U služeb, které podporují značky s využitím fakturace joinkind značky **značky** sloupce.
 
-Když si stáhnete použití sdíleného svazku clusteru pro služby, které podporují značky s využitím fakturace, značky se zobrazí v **značky** sloupce. Další informace najdete v tématu [vysvětlení vašeho vyúčtování služeb Microsoft Azure](../billing/billing-understand-your-bill.md).
-
-![Zobrazit značky ve fakturaci](./media/resource-group-using-tags/billing_csv.png)
+Operace rozhraní REST API najdete v části [Azure Billing Reference k REST API](/rest/api/billing/).
 
 ## <a name="next-steps"></a>Další postup
 

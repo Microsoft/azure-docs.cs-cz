@@ -2,18 +2,18 @@
 title: zahrnout soubor
 description: zahrnout soubor
 services: virtual-machines
-author: iainfoulds
+author: zr-msft
 ms.service: virtual-machines
 ms.topic: include
 ms.date: 03/27/2018
-ms.author: iainfou
+ms.author: zarhoads
 ms.custom: include file
-ms.openlocfilehash: 7ab67e878e7cf08fe983ab172731209328b1a474
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 231dcee1a9b330b2f8721283c39c71002a75fcac
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47454351"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49476302"
 ---
 # <a name="regions-and-availability-for-virtual-machines-in-azure"></a>Oblasti a dostupnost pro virtuální počítače v Azure
 Azure funguje v několika datových centrech po celém světě. Tato datová centra jsou seskupená do v geografických oblastí. To vám poskytuje flexibilitu při výběru místa pro sestavení vaší aplikace. Je důležité pochopit, jak a kde se virtuální počítače (VM) v Azure provozují, a také vědět, jaké máte možnosti pro zajištění maximálního výkonu, dostupnosti a redundance. Tento článek poskytuje přehled funkcí redundance a dostupnosti Azure.

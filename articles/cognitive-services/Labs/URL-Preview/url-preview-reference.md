@@ -6,16 +6,16 @@ services: cognitive-services
 author: mikedodaro
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: project-url-preview
+ms.component: url-preview
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: rosh
-ms.openlocfilehash: 3416fd9bc63c48e976d0b00f42ec9f8119a40eb8
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 2e4c5e6337c7fb222d18efada6ea9167e58aa024
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48870804"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49471403"
 ---
 # <a name="project-url-preview-v7-reference"></a>Odkaz na projekt ve verzi Preview se adresy URL v7
 
@@ -94,7 +94,7 @@ Schéma odpovědi je buď [webové stránky] nebo ErrorResponse, stejně jako v 
 ### <a name="error"></a>Chyba  
 Definuje chyby, ke které došlo k chybě.  
   
-|Prvek|Popis|Typ|  
+|Element|Popis|Typ|  
 |-------------|-----------------|----------|  
 |<a name="error-code" />kód|Kód chyby, který určuje kategorii chyby. Seznam možných kódů najdete v tématu [kódy chyb](#error-codes).|Řetězec|  
 |<a name="error-message" />Zpráva|Popis chyby.|Řetězec|  
@@ -187,9 +187,9 @@ Jsou následující hodnoty možnou chybu kódu a dílčí chyba kódu.
 |InsufficientAuthorization|AuthorizationDisabled<br/>AuthorizationExpired|Bing vrátí InsufficientAuthorization volající nemá oprávnění k přístupu k prostředku. Tato situace může nastat, pokud klíč předplatného se zakázalo, nebo vypršela platnost. <br/><br/>Pokud je chyba InsufficientAuthorization, je stavový kód HTTP 403.
 
 ## <a name="next-steps"></a>Další postup
-- [Rychlý start C#](csharp.md)
+- [Rychlý start pro jazyk C#](csharp.md)
 - [Rychlý start pro Javu](java-quickstart.md)
-- [Rychlý start jazyka JavaScript](javascript.md)
-- [Rychlý start uzlu](node-quickstart.md)
-- [Rychlý start Pythonu](python-quickstart.md)
+- [Rychlý start pro JavaScript](javascript.md)
+- [Rychlý start pro Node](node-quickstart.md)
+- [Rychlý start pro Python](python-quickstart.md)
 

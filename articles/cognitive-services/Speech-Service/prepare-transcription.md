@@ -1,20 +1,21 @@
 ---
 title: Pokyny pro přepis pro vzdělávání Speech Service
+titleSuffix: Azure Cognitive Services
 description: Zjistěte, jak připravit text pro přizpůsobení akustických a jazykových modelů a hlasová písma pro službu rozpoznávání řeči.
-titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
 author: PanosPeriorellis
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/01/2018
 ms.author: panosper
-ms.openlocfilehash: f9cb205b5111e981ee70adca715139402c9e31a4
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 07b90942c8d231418888491fd47a9be3caff77ea
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44721808"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49467731"
 ---
 # <a name="transcription-guidelines-for-using-the-speech-service"></a>Přepis pokyny k používání Speech Service
 
@@ -169,5 +170,5 @@ Zde je několik příkladů:
 
 ## <a name="next-steps"></a>Další postup
 
-- [Získejte zkušební verzi předplatného Speech Service](https://azure.microsoft.com/try/cognitive-services/)
+- [Získání zkušebního předplatného služby Speech](https://azure.microsoft.com/try/cognitive-services/)
 - [Rozpoznávání řeči v jazyce C#](quickstart-csharp-dotnet-windows.md)

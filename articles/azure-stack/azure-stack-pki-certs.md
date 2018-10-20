@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 86e2f328968cb5e45b9aec71aac8e8ac9e6d656b
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 112940dbacf0bfdaff735eb0abd79e177cf5c9c5
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49403896"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49456998"
 ---
 # <a name="azure-stack-public-key-infrastructure-certificate-requirements"></a>Požadavky na certifikáty infrastruktury veřejných klíčů Azure Stack
 
@@ -40,8 +40,9 @@ Následující seznam popisuje požadavky na certifikáty, které jsou nutné k 
 - Při obměně certifikátů, certifikáty musí být že buď vydávány stejné interní certifikační autorita používaná k podepisování certifikátů, které jsou k dispozici v nasazení nebo jakékoli veřejné certifikační autority výše
 - Použití certifikátů podepsaných svým držitelem nejsou podporovány.
 - Pro nasazení a otočení můžete buď použít jeden certifikát pokrývající všechny obory názvů v pole název subjektu a alternativní název předmětu (SAN) certifikátu, nebo můžete použít jednotlivé certifikáty pro každý obor názvů níže, která službě Azure Stack služby, které máte v plánu využít vyžadují. Oba přístupy vyžadují pomocí zástupných znaků pro koncové body, ve kterém jsou povinné, například **KeyVault** a **KeyVaultInternal**. 
-- Algoritmus podpisu certifikátu musí být 3DES. Algoritmus nemůže být SHA1, jako je třeba silnější. 
+- Algoritmus podpisu nemůže být SHA1, jako je třeba silnější. 
 - Certifikát musí být ve formátu PFX, veřejné a soukromé klíče jsou požadována pro instalaci služby Azure Stack. 
+- PFX šifrování musí být algoritmus 3DES (Toto je výchozí, při exportu z klienta Windows 10 nebo úložiště certifikátů systému Windows Server 2016).
 - Soubory certifikátů pfx musí mít hodnotu "Digitální podpis" a "KeyEncipherment" v poli "Použití klíče".
 - Soubory certifikátů pfx musí mít hodnotu "Ověření serveru (1.3.6.1.5.5.7.3.1)" a "Ověření klienta (1.3.6.1.5.5.7.3.2)" v poli "Použití rozšířeného klíče".
 - Certifikátu "vystaveno pro:" pole nesmí být stejný jako jeho "Vystavitel:" pole.
@@ -63,7 +64,7 @@ Jsou vyžadovány certifikáty s příslušnými názvy DNS pro každý koncový
 Pro vaše nasazení [Oblast] a [externalfqdn] hodnoty musí odpovídat oblasti a názvy externích domén, které jste zvolili pro váš systém Azure Stack. Jako příklad, pokud byl název oblasti *Redmond* a názvem externí domény *contoso.com*, názvy DNS by mít formát *&lt;předpony >. redmond.contoso.com*. *&lt;Předpony >* hodnoty jsou předem definovanou společností Microsoft k popisu koncový bod zabezpečené pomocí certifikátu. Kromě toho  *&lt;předpony >* hodnoty infrastruktury externí koncové body, závisí na služby Azure Stack, který používá určitého koncového bodu. 
 
 > [!note]  
-> Certifikáty je možné poskytnout jako jeden zástupný certifikát pokrývající všechny obory názvů v subjektu a alternativní název předmětu (SAN) polí zkopírována do všechny adresáře nebo jako jednotlivé certifikáty pro každý koncový bod zkopírována do odpovídající adresář. Nezapomeňte, že obě možnosti vyžadují, abyste pomocí certifikátů se zástupnými znaky pro koncové body, jako **acs** a kde se vyžadují služby Key Vault. 
+> Pro produkční prostředí doporučujeme jednotlivé certifikáty jsou generovány pro každý koncový bod a zkopírován do příslušné adresáře. Pro vývojové prostředí certifikáty lze zadat jako jeden zástupný certifikát pokrývající všechny obory názvů v subjektu a alternativní název předmětu (SAN) polí zkopírována do všech adresářů. Jeden certifikát, které pokrývají všechny koncové body a služby je nezabezpečené stav, proto jenom pro vývojové prostředí. Nezapomeňte, že obě možnosti vyžadují, abyste pomocí certifikátů se zástupnými znaky pro koncové body, jako **acs** a kde se vyžadují služby Key Vault. 
 
 | Složka pro nasazení | Požadovaný certifikát subjektu a alternativní názvy subjektu (SAN) | Obor (podle oblasti) | SubDomain namespace |
 |-------------------------------|------------------------------------------------------------------|----------------------------------|-----------------------------|

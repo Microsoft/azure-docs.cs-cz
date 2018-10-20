@@ -1,23 +1,23 @@
 ---
-title: Migrace ze služby Custom Speech Service na Speech service
+title: Migrace ze služby Custom Speech Service na Speech Service
 titlesuffix: Azure Cognitive Services
 description: Zjistěte, jak migrace z Custom Speech service ke službě řeči.
 services: cognitive-services
 author: PanosPeriorellis
-manager: onano
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: panosper
-ms.openlocfilehash: db09a85daff553dc911d039d37c826343e93d240
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 656a5df21d1f7dd2e7662dc3a0415581eae02b00
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49338518"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49471233"
 ---
-# <a name="migrate-from-the-custom-speech-service-to-the-speech-service"></a>Migrace ze služby Custom Speech service na Speech service
+# <a name="migrate-from-the-custom-speech-service-to-the-speech-service"></a>Migrace ze služby Custom Speech service na Speech Service
 
 V tomto článku použijte k migraci aplikace z Custom Speech service ve službě řeči.
 

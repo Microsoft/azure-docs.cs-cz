@@ -6,14 +6,14 @@ author: rajani-janaki-ram
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 10/19/2018
 ms.author: rajanaki
-ms.openlocfilehash: 9f0a299fb8221554a3b0c9a19a616d5ba7613a67
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 06a7e23eb16cf6296a8997273ea8d554851600c3
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45574398"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49456486"
 ---
 # <a name="automatic-update-of-the-mobility-service-in-azure-to-azure-replication"></a>Automatická aktualizace služby Mobility v replikaci z Azure do Azure
 
@@ -61,6 +61,19 @@ Když povolíte replikaci pro virtuální počítač buď počáteční [ze zobr
 
 > [!Note] 
 > Obě možnosti vás upozorní na účtu automation, který se používá pro správu aktualizací. Chcete-li povolit tuto funkci poprvé za trezor, vytvoří se nový účet automation. Všechny následné povolení replikace ve stejném trezoru použije dříve vytvořený.
+
+### <a name="manage-manually"></a>Spravovat ručně
+
+1. Pokud pro službou Mobility nainstalovanou na virtuální počítače Azure k dispozici jsou nové aktualizace, zobrazí se oznámení, který čte "je k dispozici nová aktualizace agenta replikace Site recovery. Klikněte na tlačítko nainstalovat."
+
+     ![Okno replikované položky](.\media\vmware-azure-install-mobility-service\replicated-item-notif.png)
+3. Vyberte oznámení a otevřete stránku výběru virtuálního počítače.
+4. Vyberte virtuální počítače, kterou chcete upgradovat službu mobility na a vyberte **OK**.
+
+     ![Replikované položky seznamu virtuálních počítačů](.\media\vmware-azure-install-mobility-service\update-okpng.png)
+
+Úloha aktualizace služby Mobility se spustí pro každou z vybraných virtuálních počítačů.
+
 
 ## <a name="common-issues--troubleshooting"></a>Běžné problémy a řešení potíží
 
