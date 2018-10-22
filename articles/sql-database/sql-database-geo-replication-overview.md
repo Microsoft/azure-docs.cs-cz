@@ -1,6 +1,6 @@
 ---
 title: Převzetí služeb při selhání skupiny a aktivní geografická replikace – Azure SQL Database | Dokumentace Microsoftu
-description: Použití skupin – automatické převzetí služeb při selhání pomocí aktivní geografické replikace a povolení autoomatic převzetí služeb při selhání v případě výpadku.
+description: Použití skupin – automatické převzetí služeb při selhání pomocí aktivní geografické replikace a povolení automatického převzetí služeb při selhání v případě výpadku.
 services: sql-database
 ms.service: sql-database
 ms.subservice: operations
@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/15/2018
-ms.openlocfilehash: 6e77d24c31401051d82501ca8064d02201bf218e
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.date: 10/19/2018
+ms.openlocfilehash: 9332bcb5849deacde13d67e4a18ea19af8af2977
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49354270"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49471471"
 ---
 # <a name="overview-active-geo-replication-and-auto-failover-groups"></a>Přehled: Aktivní geografickou replikaci a automatické převzetí služeb při selhání skupiny
 
@@ -279,8 +279,8 @@ Jak je popsáno výše, skupiny automatické převzetí služeb při selhání a
 
 | Rozhraní API | Popis |
 | --- | --- |
-| [Vytvořit nebo aktualizovat databázi (createMode = obnovení)](https://docs.microsoft.com/rest/api/sql/databases/databases_createorupdate) |Vytvoří, aktualizuje nebo obnoví primární nebo sekundární databáze. |
-| [Získat vytvořit nebo aktualizovat stav databáze](https://docs.microsoft.com/rest/api/sql/databases/databases_createorupdate) |Vrátí stav během operace vytvoření. |
+| [Vytvořit nebo aktualizovat databázi (createMode = obnovení)](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) |Vytvoří, aktualizuje nebo obnoví primární nebo sekundární databáze. |
+| [Získat vytvořit nebo aktualizovat stav databáze](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) |Vrátí stav během operace vytvoření. |
 | [Nastavit jako primární (plánované převzetí služeb při selhání) sekundární databáze](https://docs.microsoft.com/rest/api/sql/replicationlinks/replicationlinks_failover) |Nastaví, které replika databáze je primární podle přebírání služeb při selhání z aktuální primární repliku databáze. |
 | [Nastavit jako primární (neplánované převzetí služeb při selhání) sekundární databáze](https://docs.microsoft.com/rest/api/sql/replicationlinks/replicationlinks_failoverallowdataloss) |Nastaví, které replika databáze je primární podle přebírání služeb při selhání z aktuální primární repliku databáze. Tato operace může dojít ke ztrátě. |
 | [Získání odkazu replikace](https://docs.microsoft.com/rest/api/sql/replicationlinks/replicationlinks_get) |Získá konkrétní replikační připojení pro danou databázi SQL ve spolupráci geografickou replikaci. Načte informace v zobrazení katalogu sys.geo_replication_links viditelné. |

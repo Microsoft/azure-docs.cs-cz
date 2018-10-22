@@ -11,6 +11,21 @@ items:
     href: kubernetes-walkthrough.md
   - name: Vytvoření clusteru AKS – portál
     href: kubernetes-walkthrough-portal.md
+  - name: Vývoj aplikací
+    items:
+    - name: Použití jazyka Java (VS Code a CLI)
+      href: ../dev-spaces/quickstart-java.md
+      maintainContext: true
+    - name: Použití .NET Core (VS Code a CLI)
+      href: ../dev-spaces/quickstart-netcore.md
+      maintainContext: true
+    - name: Použití .NET Core (Visual Studio 2017)
+      href: ../dev-spaces/quickstart-netcore-visualstudio.md
+      maintainContext: true
+    - name: Použití Node.js (VS Code a CLI)
+      href: ../dev-spaces/quickstart-nodejs.md
+      maintainContext: true
+    expanded: true
   expanded: true
 - name: Kurzy
   items:
@@ -121,20 +136,53 @@ items:
       href: kubelet-logs.md
   - name: Vývoj a spouštění aplikací
     items:
-    - name: Spouštění aplikací pomocí Helm
-      href: kubernetes-helm.md
     - name: Vývoj s využitím Dev Spaces
       href: ../dev-spaces/azure-dev-spaces.md
+      items:
+      - name: Java (VS Code a CLI)
+        items:
+        - name: 1. Začínáme
+          href: ../dev-spaces/get-started-java.md
+          maintainContext: true
+        - name: 2. Týmový vývoj
+          href: ../dev-spaces/team-development-java.md
+          maintainContext: true
+      - name: .NET Core (VS Code a CLI)
+        items:
+        - name: 1. Začínáme
+          href: ../dev-spaces/get-started-netcore.md
+          maintainContext: true
+        - name: 2. Týmový vývoj
+          href: ../dev-spaces/team-development-netcore.md
+          maintainContext: true
+      - name: .NET Core (Visual Studio 2017)
+        items:
+        - name: 1. Začínáme
+          href: ../dev-spaces/get-started-netcore-visualstudio.md
+          maintainContext: true
+        - name: 2. Týmový vývoj
+          href: ../dev-spaces/team-development-netcore-visualstudio.md
+          maintainContext: true
+      - name: Node.js (VS Code a CLI)
+        items:
+        - name: 1. Začínáme
+          href: ../dev-spaces/get-started-nodejs.md
+          maintainContext: true
+        - name: 2. Týmový vývoj
+          href: ../dev-spaces/team-development-nodejs.md
+          maintainContext: true
       maintainContext: true
+    - name: Spouštění aplikací pomocí Helm
+      href: kubernetes-helm.md
     - name: Vývoj aplikací pomocí Draft
       href: kubernetes-draft.md
-    - name: Technologie Open Service Broker for Azure
+    - name: Použití technologie Open Service Broker for Azure
       href: integrate-azure.md
     - name: Použití OpenFaaS
       href: openfaas.md
     - name: Spouštění sparkových úloh
       href: spark-job.md
-    - name: Použití grafických procesorů
+    - name: Použití GPU
       href: gpu-cluster.md
   - name: DevOps
     items:
@@ -194,9 +242,9 @@ items:
     href: https://azure.microsoft.com/resources/videos/index/?services=container-service&sort=newest
   - name: Nejčastější dotazy
     href: faq.md
-ms.openlocfilehash: 5bce64990b8fbf9ad6bd5af01631544189f35a93
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: e2535df133722082f609b2229820fce673bddecc
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49376290"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49457003"

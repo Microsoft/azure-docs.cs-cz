@@ -9,11 +9,11 @@ ms.date: 04/24/2018
 ms.author: daveba
 ms.custom: include file
 ms.openlocfilehash: 4ae995e69d1241d94584529572df3ffd3fe59144
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47423983"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49634637"
 ---
 |  |
 |--|

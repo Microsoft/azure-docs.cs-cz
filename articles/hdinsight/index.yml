@@ -1,23 +1,23 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 77707525533079630807f472e2106dc3fbadbc75
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: dd8976bc9c78045830ab499f48775bcb051f6c71
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49386480"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49455738"
 documentType: LandingData
 title: Dokumentace ke službě HDInsight
 metadata:
   title: Dokumentace ke službě Azure HDInsight – kurzy, reference k rozhraní API | Dokumentace Microsoftu
-  description: Naučte se používat Hadoop v HDInsightu. Z dokumentace se dozvíte, jak pomocí Hadoopu, Sparku, Kafka, HBase a dalších technologií zpracovávat, analyzovat a zkoumat velké objemy dat.
+  description: Naučte se používat Apache Hadoop v HDInsightu. Z dokumentace se dozvíte, jak pomocí Apache Hadoop, Apache Spark, Apache Kafka, Apache HBase a dalších technologií zpracovávat, analyzovat a zkoumat velké objemy dat.
   services: hdinsight
-  author: jasonwhowell
-  ms.author: jasonh
+  author: hrasheed-msft
+  ms.author: hrasheed
   ms.service: hdinsight
   ms.topic: landing-page
-  ms.date: 05/07/2018
+  ms.date: 10/18/2018
 abstract:
-  description: Naučte se používat Azure HDInsight pro analýzu streamování nebo historických dat. V kurzech a další dokumentaci se dozvíte, jak vytvářet clustery, zpracovávat a analyzovat velké objemy dat a vyvíjet řešení s použitím oblíbených opensourcových architektur, jako jsou Hadoop, Spark, Hive, LLAP, Kafka, Storm a Microsoft Machine Learning Server.<p>Azure HDInsight je plně spravovaná opensourcová analytická služba určená pro podniky. HDInsight je cloudová služba, která umožňuje snadné, rychlé a nákladově efektivní zpracování obrovského množství dat. HDInsight také podporuje širokou škálu scénářů, jako jsou ETL (extrakce, transformace a načítání), datové sklady, strojové učení a IoT.</p>
+  description: Naučte se používat Azure HDInsight pro analýzu streamování nebo historických dat. V kurzech a další dokumentaci se dozvíte, jak vytvářet clustery, zpracovávat a analyzovat velké objemy dat a vyvíjet řešení s použitím oblíbených opensourcových architektur, jako jsou Apache Hadoop, Apache Spark, Apache Hive, Apache LLAP, Apache Kafka, Apache Storm a Microsoft Machine Learning Server.<p>Azure HDInsight je plně spravovaná opensourcová analytická služba určená pro podniky. HDInsight je cloudová služba, která umožňuje snadné, rychlé a nákladově efektivní zpracování obrovského množství dat. HDInsight také podporuje širokou škálu scénářů, jako jsou ETL (extrakce, transformace a načítání), datové sklady, strojové učení a IoT.</p>
   aside:
     image:
       alt: 
@@ -37,19 +37,19 @@ sections:
     items:
     - image:
         src: media/index/hadoop_r.svg
-      text: Hadoop
+      text: Apache Hadoop
       href: /azure/hdinsight/hadoop/apache-hadoop-linux-create-cluster-get-started-portal
     - image:
         src: media/index/spark_r.svg
-      text: Spark
+      text: Apache Spark
       href: /azure/hdinsight/spark/apache-spark-jupyter-spark-sql-use-portal
     - image:
         src: media/index/kafka_r.svg
-      text: Kafka
+      text: Apache Kafka
       href: /azure/hdinsight/kafka/apache-kafka-get-started
     - image:
         src: media/index/hbase_r.svg
-      text: HBase
+      text: Apache HBase
       href: /azure/hdinsight/hbase/apache-hbase-tutorial-get-started-linux
     - image:
         src: media/index/hive_r.svg
@@ -57,7 +57,7 @@ sections:
       href: /azure/hdinsight/interactive-query/apache-interactive-query-get-started
     - image:
         src: media/index/storm_r.svg
-      text: Storm
+      text: Apache Storm
       href: /azure/hdinsight/storm/apache-storm-tutorial-get-started-linux
     - image:
         src: media/index/ml-server_r.svg

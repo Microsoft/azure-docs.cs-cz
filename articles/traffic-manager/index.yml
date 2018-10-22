@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: d7f1c1d523bc9c9d717accf7667c8bd7402bbc72
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: ecfb8cff995d471a480226bc44164107b50eda84
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49388367"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49458016"
 documentType: LandingData
 title: Traffic Manager
 metadata:
@@ -19,7 +19,7 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 04/26/2018
+  ms.date: 10/15/2018
   ms.author: kumud
 abstract:
   description: Naučte se používat Azure Traffic Manager. Rychlá zprovoznění, kurzy, ukázky a další materiály vám ukážou, jak spravovat příchozí provoz pro zajištění optimálního výkonu aplikací a jak distribuovat provoz do Azure nebo externích koncových bodů služby.
@@ -43,10 +43,11 @@ sections:
     style: unordered
     items:
     - html: <a href="/azure/traffic-manager/traffic-manager-configure-geographic-routing-method">Směrování provozu na základě geografického umístění koncového bodu</a>
-    - html: <a href="/azure/traffic-manager/traffic-manager-configure-performance-routing-method">Směrování provozu pro zajištění nízké latence</a>
+    - html: <a href="/azure/traffic-manager/tutorial-traffic-manager-improve-website-response">Směrování provozu pro zajištění nízké latence</a>
     - html: <a href="/azure/traffic-manager/traffic-manager-configure-weighted-routing-method">Distribuce provozu do sady koncových bodů</a>
     - html: <a href="/azure/traffic-manager/traffic-manager-configure-priority-routing-method">Směrování provozu do prioritního koncového bodu</a>
-    - html: <a href="/azure/traffic-manager/traffic-manager-configure-priority-routing-method">Směrování provozu na základě podsítě uživatele</a>
+    - html: <a href="/azure/traffic-manager/tutorial-traffic-manager-weighted-endpoint-routing">Řízení provozu s váženými koncovými body</a>
+    - html: <a href="/azure/traffic-manager/tutorial-traffic-manager-subnet-routing">Směrování provozu na základě podsítě uživatele</a>
 - title: Bezplatné školicí video od Pluralsightu
   items:
   - type: list

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 09/20/2018
 ms.author: mtillman
-ms.openlocfilehash: 3be7c42b52f6af36451a79ea8592e983cc98f42b
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 864240e45a616aa8c2e7f2d6b65f5c7550f0e50e
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49354355"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49466405"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -106,14 +106,14 @@ ms.locfileid: "49354355"
                                                             <a href="authentication/concept-registration-mfa-sspr-converged.md">Konvergovaná registrace pro MFA a SSPR</a>
                                                         </p>
                                                         <br><br>
-                                                        <h3><a href="b2b/index.yml">B2B (Business to business)</a></h3>
+                                                        <h3><a href="b2b/index.yml">B2B (Business-to-Business)</a></h3>
                                                         <p>
                                                             <a href="b2b/b2b-quickstart-add-guest-users-portal.md">Přidání uživatelů typu host na portálu</a><br>
                                                             <a href="b2b/b2b-tutorial-bulk-invite.md">Hromadné pozvání uživatelů typu host</a><br>
                                                             <a href="b2b/b2b-tutorial-require-mfa.md">Vyžadování MFA pro uživatele typu host</a>
                                                         </p>
                                                         <br><br>
-                                                        <h3><a href="/azure/active-directory-b2c/index">B2C (Business to Consumer)</a></h3>
+                                                        <h3><a href="/azure/active-directory-b2c/index">B2C (Business-to-Customer)</a></h3>
                                                         <p>
                                                             <a href="/azure/active-directory-b2c/tutorial-create-tenant">Vytvoření tenanta Azure AD B2C</a><br>
                                                             <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-web-app">Povolení ověřování pro webovou aplikaci</a><br>
