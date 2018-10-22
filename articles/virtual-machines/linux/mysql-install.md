@@ -3,7 +3,7 @@ title: Nastavení MySQL na virtuální počítač s Linuxem v Azure | Dokumentac
 description: Zjistěte, jak nainstalovat MySQL stack na virtuální počítač s Linuxem (Ubuntu a Red Hat řada operačního systému) v Azure
 services: virtual-machines-linux
 documentationcenter: ''
-author: cynthn
+author: zr-msft
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager,azure-service-management
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
 ms.date: 02/01/2016
-ms.author: cynthn
-ms.openlocfilehash: c8043064ac1df40eaa31ae56e9ec31c0152e0130
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.author: zarhoads
+ms.openlocfilehash: f7120decd4a5d43f88b55e7d7e20992af34cadc4
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37934259"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49469564"
 ---
 # <a name="how-to-install-mysql-on-azure"></a>Jak nainstalovat MySQL v Azure
 V tomto článku se dozvíte, jak nainstalovat a nakonfigurovat MySQL na virtuálním počítači Azure s Linuxem.

@@ -15,8 +15,9 @@
 | Maximální časový limit požadavku |24 hodin | |
 | Počet webů |20 |1 na naslouchací proces HTTP |
 | Map URL na naslouchací proces |1 | |
+| Připojení pomocí protokolu WebSocket souběžných |5000| |
 |Maximální délka adresy URL|8000|
 | Maximální velikost pro odeslání Standard |2 GB | |
-| Maximální nahrávání velikost WAF |100 MB| |
+| Maximální nahrávání velikost WAF |Střední WAF brány – 100 MB<br>Brány WAF velké – 500 MB| |
 |Maximální velikost textu WAF (bez souborů)|128 KB|
 

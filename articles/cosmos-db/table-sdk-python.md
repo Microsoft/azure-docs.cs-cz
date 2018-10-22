@@ -12,16 +12,17 @@ ms.topic: reference
 ms.date: 11/20/2017
 ms.author: sngun
 ms.custom: ''
-ms.openlocfilehash: 2e22bfb30cdf4decdc8a6fba612b75233c9c0971
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 9d11e40ab21f1bb7fe15cb1e00ef12dfc47edec7
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48901188"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49464059"
 ---
 # <a name="azure-cosmos-db-table-api-sdk-for-python-release-notes-and-resources"></a>Azure Cosmos DB Table API SDK pro Python: poznámky k verzi a prostředky
 > [!div class="op_single_selector"]
 > * [.NET](table-sdk-dotnet.md)
+> * [.NET Standard](table-sdk-dotnet-standard.md)
 > * [Java](table-sdk-java.md)
 > * [Node.js](table-sdk-nodejs.md)
 > * [Python](table-sdk-python.md)
