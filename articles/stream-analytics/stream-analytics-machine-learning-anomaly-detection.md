@@ -31,7 +31,7 @@ Operátor anomalydetection, který rozpoznává tři typy anomálií:
 
 * **Zpomalit negativní Trend**: pomalé pokles trend v čase.  
 
-Při použití operátor anomalydetection, který je nutné zadat **Limit Duration** klauzuli. Tato klauzule určuje že časový interval (jak daleko zpět v historii z aktuální události) by měl být při detekci anomálií. Tento operátor volitelně může být omezen na pouze události, které odpovídají určité vlastnosti nebo podmínku s použitím **při** klauzuli. Tento operátor může také v případě potřeby zpracovat zvýrazňující skupiny událostí samostatně na základě klíče zadaný v **rozdělit podle** klauzuli. Trénování a predikcí dojít nezávisle pro každý oddíl. 
+Při použití operátor anomalydetection, který je nutné zadat **Limit Duration** klauzuli. Tato klauzule určuje že časový interval (jak daleko zpět v historii z aktuální události) by měl být při detekci anomálií. Tento operátor volitelně může být omezen na pouze události, které odpovídají určité vlastnosti nebo podmínku s použitím  **při**  klauzuli. Tento operátor může také v případě potřeby zpracovat zvýrazňující skupiny událostí samostatně na základě klíče zadaný v **rozdělit podle** klauzuli. Trénování a predikcí dojít nezávisle pro každý oddíl. 
 
 ## <a name="syntax-for-anomalydetection-operator"></a>Syntaxe pro operátor anomalydetection, který
 
