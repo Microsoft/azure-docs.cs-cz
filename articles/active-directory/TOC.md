@@ -244,7 +244,6 @@
 
 #### Podmíněný přístup
 ##### [Zákazník nesplnil předběžné požadavky registrace zařízení](active-directory-conditional-access.md)
-##### [Tenant je blokovaný kvůli nesprávnému nastavení zásad podmíněného přístupu](active-directory-conditional-access-device-remediation.md)
 ##### [Jak a kdy se uplatní vypnutá pravidla corpnet?](https://aka.ms/calocation)
 ##### [Jak zvýšit počet zařízení, které může uživatel zaregistrovat ve službě Azure AD?](active-directory-azureadjoin-setup.md)
 ##### [Jak nastavit podmíněný přístup pro Exchange Online?](https://aka.ms/csforexchange)
