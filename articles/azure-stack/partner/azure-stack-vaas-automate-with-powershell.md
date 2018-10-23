@@ -1,6 +1,6 @@
 ---
 title: Automatizace ověření služby Azure Stack pomocí Powershellu | Dokumentace Microsoftu
-description: Ověření služby Azure Stack pomocí Powershellu, můžete automatizovat.
+description: Ověření Azure Stack pomocí Powershellu, můžete automatizovat.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -10,74 +10,87 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 07/24/2018
+ms.date: 10/19/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: 1cb4b1a7cfd72ea302676244a53af58e77215aa9
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 82a1d86f31bfb49ff97ec9928dd7ee946144a359
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "40235252"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49650039"
 ---
-# <a name="automate-azure-stack-validation-with-powershell"></a>Automatizace ověření služby Azure Stack pomocí Powershellu 
+# <a name="automate-azure-stack-validation-with-powershell"></a>Automatizace ověření služby Azure Stack pomocí Powershellu
 
 Ověření jako služba (VaaS) poskytuje možnost automatizovat spouštění testů pomocí **LaunchVaaSTests.ps1** skriptu.
 
 Pro následující pracovní postup můžete použít PowerShell:
 
-- Průchod testu pracovního postupu
+- Průchod testu
 
-Tento skript zahrnuje čtyři prvky z pracovního postupu:
+V tomto kurzu se dozvíte, jak k vytvoření skriptu, který:
 
-- Nainstaluje požadavky.
-- Instalace a spouštění místního agenta.
-- Spustí kategorie testů, jako je integrace, funkční, spolehlivost.
-- Sestavy, každý test předat výsledek pro monitorování a sestavy souboru generace.
+Tento skript provede následující akce:
 
-## <a name="launch-the-test-pass-workflow"></a>Spuštění pracovního postupu testování průchodu
+> [!div class="checklist"]
+> * Nainstaluje požadavky
+> * Nainstaluje a spustí místní agent
+> * Spustí kategorie testů, jako jsou integrace, funkční, spolehlivosti
+> * Sestavy výsledků testů
+
+## <a name="launch-the-test-pass-workflow"></a>Spuštění pracovního postupu průchodu testu
 
 1. Otevřete řádku Powershellu se zvýšenými oprávněními.
 
 2. Spusťte následující skript ke stažení skriptu pro automatizaci:
 
-    ````PowerShell  
+    ```PowerShell
     New-Item -ItemType Directory -Path <VaaSLaunchDirectory>
     Set-Location <VaaSLaunchDirectory>
-    Invoke-WebRequest -Uri https://vaastestpacksprodeastus.blob.core.windows.net/packages/Microsoft.VaaS.Scripts.3.0.0.nupkg -OutFile "LaunchVaaS.zip"
+    Invoke-WebRequest -Uri https://storage.azurestackvalidation.com/packages/Microsoft.VaaS.Scripts.latest.nupkg -OutFile "LaunchVaaS.zip"
     Expand-Archive -Path ".\LaunchVaaS.zip" -DestinationPath .\ -Force
-    ````
+    ```
 
-3. S hodnotami, spusťte následující skript:
+3. S hodnotami parametrů odpovídající, spusťte následující skript:
 
-    ````PowerShell  
-    $VaaSAccountCreds = New-Object System.Management.Automation.PSCredential "<VaaSUserId>", (ConvertTo-SecureString "<VaaSUserPassword>"  -AsPlainText -Force)
-    $ServiceAdminCreds = New-Object System.Management.Automation.PSCredential "<ServiceAdminUser>", (ConvertTo-SecureString "<ServiceAdminPassword>" -AsPlainText -Force)
-    $TenantAdminCreds = New-Object System.Management.Automation.PSCredential "<TenantAdminUser>", (ConvertTo-SecureString "<TenantAdminPassword>" -AsPlainText -Force)
+    ```PowerShell
+    $VaaSAccountCreds = New-Object System.Management.Automation.PSCredential "<VaaSUserId>", (ConvertTo-SecureString "<VaaSUserPassword>" -AsPlainText -Force)
     .\LaunchVaaSTests.ps1 -VaaSAccountCreds $VaaSAccountCreds `
-        -VaaSAccountTenantId <VaaSAccountTenantId> `
-        -VaaSSolutionName <VaaSSolutionName> `
-        -VaaSTestPassName <VaaSTestPassName> `
-        -VaaSTestCategories Integration,Functional `
-        -MaxScriptWaitTimeInHours 12 `
-        -ServiceAdminCreds $ServiceAdminCreds `
-    ````
+                          -VaaSAccountTenantId <VaaSAccountTenantId> `
+                          -VaaSSolutionName <VaaSSolutionName> `
+                          -VaaSTestPassName <VaaSTestPassName> `
+                          -VaaSTestCategories Integration,Functional `
+                          -MaxScriptWaitTimeInHours 12 `
+                          -ServiceAdminUserName <AzSServiceAdminUser> `
+                          -ServiceAdminUserPassword <AzSServiceAdminPassword> `
+                          -TenantAdminUserName <AzSTenantAdminUser> `
+                          -TenantAdminUserPassword <AzSTenantAdminPassword> `
+                          -CloudAdminUserName <AzSCloudAdminUser> `
+                          -CloudAdminUserPassword <AzSCloudAdminPassword>
+    ```
 
     **Parametry**
 
     | Parametr | Popis |
     | --- | --- |
-    | VaaSUserld | Vaše ID uživatele VaaS. | 
+    | VaaSUserld | Vaše ID uživatele VaaS. |
     | VaaSUserPassword | VaaS heslo. |
-    | ServiceAdminUser | Účet správce služby Azure Stack.  |
+    | VaaSAccountTenantId | Tenanta VaaS identifikátor GUID. |
+    | VaaSSolutionName | Název VaaS řešení, ve kterém je test úspěšný, poběží. |
+    | VaaSTestPassName | Název testu VaaS předat pracovní postup k vytvoření. |
+    | VaaSTestCategories | `Integration`, `Functional`, nebo. `Reliability`. Pokud používáte více hodnot, jednotlivé hodnoty oddělte je čárkami.  |
+    | ServiceAdminUserName | Účet správce služby Azure Stack.  |
     | ServiceAdminPassword | Heslo služby Azure Stack.  |
-    | TenantAdminUser | Správce pro primární tenant.  |
+    | TenantAdminUserName | Správce pro primární tenant.  |
     | TenantAdminPassword | Heslo pro primární tenant.  |
-    | FunctionalCategory| Integrace, funkční, nebo. Spolehlivost. Pokud používáte více hodnot, jednotlivé hodnoty oddělte je čárkami.  |
+    | CloudAdminUserName | Uživatelské jméno správce cloudu.  |
+    | CloudAdminPassword | Heslo pro správce cloudu.  |
 
-4. Zkontrolujte výsledky testu. Informace o čtení výsledků testu naleznete v tématu [monitorování testů](azure-stack-vaas-monitor-test.md).
+4. Zkontrolujte výsledky testu. Další možnosti najdete v tématu [monitorování a správa testů na portálu VaaS](azure-stack-vaas-monitor-test.md).
 
 ## <a name="next-steps"></a>Další postup
 
- - Další informace o [ověřování služby Azure Stack jako služba](https://docs.microsoft.com/azure/azure-stack/partner).
- - Další informace o prostředí PowerShell ve službě Azure Stack, najdete v článku [modulem pro službu Azure Stack](https://docs.microsoft.com/powershell/azure/azure-stack/overview?view=azurestackps-1.3.0) odkaz.
+Další informace o prostředí PowerShell ve službě Azure Stack, přečtěte si nejnovější moduly.
+
+> [!div class="nextstepaction"]
+> [Modul služby Azure Stack](https://docs.microsoft.com/powershell/azure/azure-stack/overview?view=azurestackps-1.5.0)

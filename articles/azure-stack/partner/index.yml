@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 749dc6c2d329ae7055ee0a6adc429c378de51871
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 26c0353bddb9455b1bda8961f3c05e0f6c7cc176
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "40235262"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49647710"
 documentType: LandingData
 title: Dokumentace ke službě partnera Azure Stack
 metadata:
@@ -22,19 +22,19 @@ metadata:
   ms.author: mabrigg
   ms.reviewer: John.Haskin
 abstract:
-  description: Ověření můžete použít jako službu k ověření hardwaru pro použití se službou Azure Stack. Služba je nativní Azure služba určená pro použití řešení partnerů, kteří jsou společně technické nabídek Azure Stack s Microsoftem.
+  description: Ověření slouží jako službu k zkontrolujte, jestli váš hardware pro použití se službou Azure Stack. Služba je nativní Azure služba určená pro použití řešení partnerů, kteří jsou společně technické nabídek Azure Stack s Microsoftem.
 sections:
-- title: 5minutového rychlého startu
+- title: Zprovoznění během 5 minut
   items:
   - type: paragraph
-    text: Naučíte se zapojit vaše počítače a virtuální počítače do služby Security Center a připojit řešení zabezpečení.
+    text: Zjistěte, jak pomocí ověření jako portál služby můžete naplánovat testy na hardwaru.
   - type: list
     style: icon48
     items:
     - image:
         src: media/i_account-management.svg
       text: Použít ověření jako portál služby k naplánování prvního testu
-      href: /azure/azure-stack/partner/azure-stack-vaas-schedule-your-first-test
+      href: /azure/azure-stack/partner/azure-stack-vaas-schedule-test-pass
 - title: Podrobné kurzy
   items:
   - type: paragraph
@@ -42,16 +42,6 @@ sections:
   - type: list
     style: unordered
     items:
-    - html: <a href="/azure/azure-stack/partner/azure-stack-vaas-test-vm">Nasaďte místní agent a testovací virtuální počítače</a>
-    - html: <a href="/azure/azure-stack/partner/azure-stack-vaas-automate-with-powershell">Automatizace ověření služby Azure Stack pomocí Powershellu</a>
     - html: <a href="/azure/azure-stack/partner/azure-stack-vaas-validate-solution-new">Ověření nové řešení Azure Stack</a>
     - html: <a href="/azure/azure-stack/partner/azure-stack-vaas-validate-oem-package">Ověření balíčky výrobce OEM</a>
     - html: <a href="/azure/azure-stack/partner/azure-stack-vaas-validate-microsoft-updates">Ověření aktualizace softwaru od Microsoftu</a>
-- title: Referenční informace
-  items:
-  - type: list
-    style: cards
-    className: cardsD
-    items:
-    - title: Ověření jako služba
-      html: <a href="/azure/azure-stack/partner/azure-stack-vaas-parameters">Ověření konfiguračního souboru</a>

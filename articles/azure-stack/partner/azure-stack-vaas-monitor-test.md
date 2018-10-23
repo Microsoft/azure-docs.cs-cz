@@ -1,6 +1,6 @@
 ---
-title: Monitorování testu s ověřováním služby Azure Stack jako služba | Dokumentace Microsoftu
-description: Monitorování testu s ověřováním služby Azure Stack jako služba.
+title: Monitorování a správa testů na portálu Azure Stack VaaS | Dokumentace Microsoftu
+description: Monitorování a správa testů na portálu Azure Stack VaaS.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -10,124 +10,140 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 07/24/2018
+ms.date: 10/19/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: 2dc4d3f2855864ff80648b5b9635ff28c0dacbb7
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: b9500176cd3779c46886e6ed8bc8c989bea20a8c
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44163322"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49647507"
 ---
-# <a name="monitor-a-test-with-azure-stack-validation-as-a-service"></a>Monitor testu s ověřováním služby Azure Stack jako služba
+# <a name="monitor-and-manage-tests-in-the-vaas-portal"></a>Monitorování a správa testů na portálu VaaS
 
 [!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
-Spuštění testu je možné monitorovat zobrazením **operace** stránka sady testů, které jsou v průběhu nebo byla dokončena. Tato stránka obsahuje podrobnosti o stavu testu a jeho operace.
+Po naplánování testů proti vašeho řešení Azure Stack, se začne ověření jako služba (VaaS) hlásí stav spuštění testu. Tyto informace jsou k dispozici na portálu VaaS spolu s akce, jako je změna plánu a ruší se testy.
 
-## <a name="monitor-a-test"></a>Monitor testu
+## <a name="navigate-to-the-workflow-tests-summary-page"></a>Přejděte na stránku Souhrn testů pracovního postupu
 
-1. Vyberte řešení.
+1. Na řídicím panelu řešení vyberte existující řešení, která má na alespoň jeden pracovní postup.
 
-2. Vyberte **spravovat** na kteroukoli dlaždici pracovního postupu.
+    ![Dlaždice pracovního postupu](media/tile_all-workflows.png)
 
-3. Klikněte na pracovním postupu, otevřete její stránku Souhrn testu.
+1. Vyberte **spravovat** na dlaždici pracovního postupu. Na další stránce uvedeny vytvořených pro vybrané řešení pracovních postupů.
 
-4. Rozbalte položku místní nabídky **[...]**  pro všechny testovací sady instance.
+1. Vyberte název pracovního postupu a otevřete její souhrn testu.
 
-5. Vyberte **zobrazit operace**
+## <a name="change-workflow-parameters"></a>Změna parametrů pracovního postupu
 
-![Alternativní text](media\image4.png)
+Každý typ pracovního postupu umožňuje upravit [parametry testu](azure-stack-vaas-parameters.md#test-parameters) zadali při vytvoření pracovního postupu.
 
-Pro testy, které jsou spuštěny, protokoly je kliknutím na stáhnout na stránce souhrnu testovací **stažení protokolů** v kontextové nabídce testu **[...]** . Partneři služby Azure Stack můžete použít tyto protokoly pro ladění problémů pro neúspěšné testy.
+1. Na stránce Souhrn testů, vyberte **upravit** tlačítko.
 
-## <a name="open-the-test-pass-summary"></a>Otevřít souhrn průchodu testu
+1. Zadejte nové hodnoty podle [společných parametrů pracovních postupů pro Azure Stack ověření jako služba](azure-stack-vaas-parameters.md).
 
-1. Otevřete portál. 
-2. Vyberte název existujícího řešení, která obsahuje dříve běhu ani do plánovaných testů.
+1. Vyberte **odeslat** uložit hodnoty.
 
-    ![Správa úspěšných testů](media/managetestpasses.png)
+> [!NOTE]
+> V **průchodu testů** pracovního postupu, je potřeba dokončit výběr testů a přejděte na stránku revize až pak můžete uložit nové hodnoty parametrů.
 
-3. Vyberte **spravovat** v **úspěšných testů** panelu.
-4. Vyberte průchodu testu otevřete souhrn průchodu testu. Název testu, můžete zkontrolovat datum vytvoření, spuštění, jak dlouho trvalo testu a výsledek (úspěšných nebo neúspěšných).
-5. Vyberte [ **...  .** ].
+### <a name="add-tests-test-pass-only"></a>Přidat testy (pouze průchodu testů)
 
-### <a name="test-pass-summary"></a>Souhrn průchodu testu
+V **průchodu testů** pracovní postupy, jak **přidat testy** a **upravit** tlačítka umožňují naplánovat nové testy v pracovním postupu.
+
+> [!TIP]
+> Vyberte **přidat testy** pouze chcete naplánovat nové testy a není potřeba upravit parametry pro **průchodu testů** pracovního postupu.
+
+## <a name="managing-test-instances"></a>Správa testu instancí
+
+Pro spuštění neoficiální (například **průchodu testů** pracovního postupu), na stránce souhrnu testy uvádí testy naplánované proti řešení Azure Stack.
+
+Pro spuštění oficiální (například **ověření** pracovních postupů), na stránce souhrnu testy seznamy testů, které jsou potřebné k dokončení ověření řešení Azure Stack. Testy pro ověření jsou naplánovány na této stránce.
+
+Každá instance plánovaný test se zobrazí následující informace:
 
 | Sloupec | Popis |
 | --- | --- |
-| Název testu | Název testu. Odkazuje na počet ověření. |
-| Vytvořeno | Čas, kdy byla vytvořena průchodu testu. |
-| Spuštěno | Čas, kdy se poslední test běžel. |
-| Doba trvání | Čas dobu, jakou trvalo průchodu testů ke spuštění. |
-| Status | Výsledek (Succeeded nebo Failed) pro průchod rest. |
-| Název agenta | Plně kvalifikovaný název domény agenta. |
-| Celkový počet operací | Celkový počet operací se pokusil při průchodu testu. |
-| Úspěšné operace | Počet operací, které předávají při průchodu testu. |
-|  Neúspěšné operace | Počet operací, které se nezdařilo. |
+| Název testu | Název a verzi testu. |
+| Kategorie | Účel testu. |
+| Vytvořeno | Čas naplánovala testu. |
+| Spuštěno | Čas, ve kterém test spustil provádění pořadí. |
+| Doba trvání | Délka času, který spustil test. |
+| Status | Stát nebo výsledek testu. Předběžné spuštění nebo probíhá stavy jsou: `Pending`, `Running`. Terminálu stavy jsou: `Cancelled`, `Failed`, `Aborted`, `Succeeded`. |
+| Název agenta | Název agenta, který spustil test. |
+| Celkový počet operací | Celkový počet operací se pokusil během testu. |
+| Úspěšné operace | Počet operací, které byly úspěšné během testu. |
+|  Neúspěšné operace | Počet operací, které selhaly během testu. |
 
-### <a name="group-columns-in-the-test-pass-summary"></a>Skupiny sloupců v testu předat souhrnu
+### <a name="actions"></a>Akce
 
-Můžete vybrat a přetáhněte sloupec do hlavičky k vytvoření skupiny na základě hodnoty sloupce.
+Každá instance testu obsahuje seznam dostupných akcí, které můžete provést po kliknutí na její kontextovou nabídku **[...]**  v tabulce testovací instance.
 
-## <a name="reschedule-a-test"></a>Plánovanou zkoušku přeplánovat testu
+#### <a name="view-information-about-the-test-definition"></a>Zobrazit informace o definici testu
 
-1. [Otevřít souhrn průchodu testu](#open-the-test-pass-summary).
-2. Vyberte **plánovanou zkoušku přeplánovat** přeplánovat průchodu testu.
-3. Zadejte heslo správce cloudu pro vaši instanci služby Azure Stack.
-4. Zadejte řetězec připojení úložiště diagnostiky, které jste definovali při nastavování účtu.
-5. Plánovanou zkoušku přeplánujte testu.
+Vyberte **zobrazení informací o** v místní nabídce, chcete-li zobrazit obecné informace o definici testu. To je sdílen každý testovací instance se stejným názvem a verzí.
 
-## <a name="cancel-a-test"></a>Zrušení testu
-
-1. [Otevřít souhrn průchodu testu](#open-the-test-pass-summary).
-2. Vyberte **zrušit**.
-
-## <a name="get-test-information"></a>Získání informací o testu
-
-1. [Otevřít souhrn průchodu testu](#open-the-test-pass-summary).
-2. Vyberte **zobrazení informací o** přeplánovat průchodu testu.
-
-**Informace o testu**
-
-| Název | Popis |
+| Vlastnost testu | Popis |
 | -- | -- |
-| Název testu | Název testu, například výrobce OEM aktualizaci na RC ověření Azure Stack 1806. |
-| Testovací verze | Verze testu, například 5.1.4.0. |
-| Vydavatel | Test vydavatele, jako je Microsoft. |
-| Kategorie | Kategorie testů, jako například **funkční** nebo **spolehlivost**. |
-| Cíl služby | Služby, testování, jako je například virtuálních počítačů |
+| Název testu | Název testu. |
+| Testovací verze | Verzi testu. |
+| Vydavatel | Vydavatel testu. |
+| Kategorie |  Účel testu. |
+| Cíl služby | Azure Stack služby testování. |
 | Popis | Popis testu. |
-| Odhadovaná doba trvání (minuty) | Dlouhá doba v minutách, po kterou trvalo spuštění testu. |
-| Odkazy | Odkaz na sledování problémů Githubu. |
+| Odhadovaná doba trvání (minuty) | Očekávanou dobu běhu testu. |
+| Odkazy | Příslušné informace o testu nebo body kontaktu. |
 
-## <a name="get-test-parameters"></a>Získat testovací parametry
+#### <a name="view-test-instance-parameters"></a>Zobrazit testovací instance parametry
 
-1. [Otevřít souhrn průchodu testu](#open-the-test-pass-summary).
-2. Vyberte **zobrazit parametry** přeplánovat průchodu testu.
+Vyberte **zobrazit parametry** v místní nabídce zobrazíte parametry zadané pro testovací instance v naplánovaný čas. Citlivé řetězce, jako jsou hesla, nejsou zobrazeny. Tato akce je dostupná pouze pro testy, které jste naplánovali.
 
-**Parametry**
+Toto okno obsahuje následující metadata pro všechny instance testu:
 
-| Název | Popis |
+| Vlastnost instance testu | Popis |
 | -- | -- |
-| Název testu | Název testu, například oemupdate1806test. |
-| Testovací verze | Verze rest, například 5.1.4.0. |
-| ID instance testu | Identifikátor GUID identifikující konkrétní instanci testu, například 20b20645 b400-4f0d-bf6f-1264d866ada9. |
-| cloudAdminUser | Název účtu používat jako správce cloudu, například **cloudadmin**. |
-| DiagnosticsContainerName | ID kontejneru diagnostiky, například 04dd3815 5f35-4158-92ea-698027693080. |
+| Název testu | Název testu. |
+| Testovací verze | Verzi testu. |
+| ID instance testu | Identifikátor GUID identifikující konkrétní instanci testu. |
 
-## <a name="get-test-operations"></a>Získání operací testování s
+#### <a name="view-test-instance-operations"></a>Zobrazit testovací instance operace
 
-1. [Otevřít souhrn průchodu testu](#open-the-test-pass-summary).
-2. Vyberte **zobrazit operace** přeplánovat průchodu testu. Otevře se podokno Souhrn operací.
+Vyberte **zobrazit operace** z kontextu nabídku, chcete-li zobrazit podrobný stav operace provádí během testu. Tato akce je dostupná pouze pro testy, které jste naplánovali.
 
-## <a name="get-test-logs"></a>Získání protokolů testu
+![zobrazení operací](media/manage-test_context-menu-operations.png)
 
-1. [Otevřít souhrn průchodu testu](#open-the-test-pass-summary).
-2. Vyberte **stažení protokolů** přeplánovat průchodu testu.  
-    Soubor zip s názvem ReleaseYYYY-MM-DD.zip obsahující protokoly, soubory ke stažení.
+#### <a name="download-logs-for-a-completed-test-instance"></a>Stažení protokolů pro instanci test byl dokončen
+
+Vyberte **stažení protokolů** v místní nabídce ke stažení `.zip` souboru výstupu protokolů během byly spuštění testu. Tato akce je dostupná pouze pro testy, které dokončily, to znamená, test se stavem buď `Cancelled`, `Failed`, `Aborted`, nebo `Succeeded`.
+
+#### <a name="reschedule-a-test-instance-or-schedule-a-test"></a>Testovací instance plánovanou zkoušku přeplánovat nebo naplánovat v testu
+
+Plánování testů ze stránky správy závisí na typu pracovního postupu v části spuštění testu.
+
+##### <a name="test-pass-workflow"></a>Pracovní postup průchodu testu
+
+V pracovním postupu průchodu testů **přeplánování** testovací instance opakovaně používá stejnou sadu parametrů jako původní testovací instance a *nahradí* původní výsledek, včetně jeho protokolů. Je potřeba znovu zadat citlivé řetězce, jako jsou hesla, když jste plánovanou zkoušku přeplánovat.
+
+1. Vyberte **plánovanou zkoušku přeplánovat** z místní nabídky otevřete příkazový řádek pro přeplánování testovací instance.
+
+1. Zadejte všechny příslušné parametry.
+
+1. Vyberte **odeslat** plánovanou zkoušku přeplánovat testovací instance a nahraďte existující instanci.
+
+##### <a name="validation-workflows"></a>Ověřovací pracovní postupy
+
+[!INCLUDE [azure-stack-vaas-workflow-validation-section_schedule](includes/azure-stack-vaas-workflow-validation-section_schedule.md)]
+
+#### <a name="cancel-a-test-instance"></a>Zrušit testovací instance
+
+Naplánovaný test může zrušit, pokud je jeho stav `Pending` nebo `Running`.  
+
+1. Vyberte **zrušit** v místní nabídce otevřete výzvu pro zrušení instance testu.
+
+1. Vyberte **odeslat** zrušíte testovací instance.
 
 ## <a name="next-steps"></a>Další postup
 
-- Další informace o [ověřování služby Azure Stack jako služba](https://docs.microsoft.com/azure/azure-stack/partner).
+- [Řešení potíží s ověření jako služba](azure-stack-vaas-troubleshoot.md)
