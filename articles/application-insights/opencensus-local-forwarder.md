@@ -35,7 +35,7 @@ Místní služba předávání je [projekt open source na Githubu](https://githu
 Po instalaci se jako služba Windows je nejjednodušší způsob spouštění místní server pro předávání v části Windows. Spustitelný soubor Windows služby je součástí vydání (*WindowsServiceHost/Microsoft.LocalForwarder.WindowsServiceHost.exe*) která lze snadno dokument zaregistrovat u operačního systému.
 
 > [!NOTE]
-> Služba předávání místní vyžaduje minimálně rozhraní .NET Framework 4.7. Pokud nemáte rozhraní .NET Framework 4.7 služby bude instalace, ale nespustí. Pro přístup k nejnovější verzi rozhraní .NET Framework ** [najdete na stránce pro stažení rozhraní .NET Framework](
+> Služba předávání místní vyžaduje minimálně rozhraní .NET Framework 4.7. Pokud nemáte rozhraní .NET Framework 4.7 služby bude instalace, ale nespustí. Pro přístup k nejnovější verzi rozhraní .NET Framework **[najdete na stránce pro stažení rozhraní .NET Framework](
 https://www.microsoft.com/net/download/dotnet-framework-runtime/net472?utm_source=getdotnet&utm_medium=referral)**.
 
 1. Stáhněte si LF. Soubor WindowsServiceHost.zip z [stránce verzí místní předávání](https://github.com/Microsoft/ApplicationInsights-LocalForwarder/releases) na Githubu.

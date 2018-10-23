@@ -1548,7 +1548,7 @@ Chcete-li přidat port testu:
   }
   ```
 
-  Po přepnutí **SAP <*SID* >**  Clusterové role online, ověřte, že **ProbePort** je nastavena na novou hodnotu.
+  Po přepnutí **SAP <*SID*>** Clusterové role online, ověřte, že **ProbePort** je nastavena na novou hodnotu.
 
   ```PowerShell
   $SAPSID = "PR1"     # SAP <SID>

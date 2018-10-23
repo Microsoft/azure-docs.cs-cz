@@ -58,7 +58,7 @@ Předpokladem dokončení tohoto kurzu je splnění následujících požadavků
 ### <a name="plan-the-names"></a>Plánování názvy
 
 V krocích v této části zadáte *uživatele* hodnotu, která se používá k zajištění jsou globálně jedinečné názvy prostředků a název *skupiny prostředků* obsahující všechny prostředky vytvořené v rámci nasazení aplikace. Pro osoby s názvem *Ann Finley*, doporučujeme:
-- *Uživatel:* **af1***(její iniciály, a navíc číslici. Použít jinou hodnotu (například af2) Pokud nasadíte aplikaci podruhé.)*
+- *Uživatel:* **af1**  *(její iniciály, a navíc číslici. Použít jinou hodnotu (například af2) Pokud nasadíte aplikaci podruhé.)*
 - *Skupina prostředků:* **wingtip-mt – af1** *(wingtip-mt označuje to horizontálně dělené aplikace s více tenanty. Přidávání af1 uživatelské jméno koreluje název skupiny prostředků s názvy prostředků, které obsahuje.)*
 
 Teď zvolte názvy a zapište si. 

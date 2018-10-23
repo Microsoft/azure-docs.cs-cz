@@ -47,7 +47,7 @@ Pokud chcete vytvořit nový virtuální počítač s Linuxem:
 
      ![Velikost virtuálního počítače telegrafní přehled agenta](./media/metrics-store-custom-linux-telegraf/vm-size.png)
 
-1. Na **stránka nastavení**v **sítě** > **skupinu zabezpečení sítě**   >  ** Vyberte veřejné příchozí porty**vyberte *HTTP* a *SSH (22)*. Ponechejte zbývající výchozí hodnoty a vyberte **OK**. 
+1. Na **stránka nastavení**v **sítě** > **skupinu zabezpečení sítě** > **Vyberte veřejné příchozí porty**vyberte *HTTP* a *SSH (22)*. Ponechejte zbývající výchozí hodnoty a vyberte **OK**. 
 
 1. Na stránce Souhrn vyberte možnost vytvořit a spusťte nasazování virtuálního počítače. 
 

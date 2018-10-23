@@ -92,8 +92,8 @@ Později v samostatných vrácení kroku, převzetí služeb při selhání data
 Před zahájením procesu obnovení, zkontrolujte stav v pořádku normální aplikace.
 1. Ve webovém prohlížeči otevřete Centrum akcí aplikace Wingtip Tickets (http://events.wingtip-dpt.&lt; uživatel&gt;. trafficmanager.net - nahradit &lt;uživatele&gt; s hodnotou uživatele vašeho nasazení).
     * Přejděte do dolní části stránky a Všimněte si, že název serveru katalogu a umístění v zápatí. Umístění je oblast, ve které jste nasadili aplikaci.
-    *TIP: Najeďte myší umístění zvětšíte zobrazení. * 
-     ![Události v pořádku stav rozbočovače v původní oblast](media/saas-dbpertenant-dr-geo-replication/events-hub-original-region.png)
+    *TIP: Najeďte myší umístění zvětšíte zobrazení.*
+    ![Události v pořádku stav rozbočovače v původní oblast](media/saas-dbpertenant-dr-geo-replication/events-hub-original-region.png)
 
 2. Klikněte na tlačítko v tenantovi Contoso koncertní Hall a otevřete její stránku událostí.
     * V zápatí Všimněte si, že název serveru tenanta. Umístění bude stejné jako umístění pro server katalogu.

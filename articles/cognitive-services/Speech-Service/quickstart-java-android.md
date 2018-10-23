@@ -7,21 +7,21 @@ author: fmegen
 ms.service: cognitive-services
 ms.component: Speech
 ms.topic: quickstart
-ms.date: 09/24/2018
-ms.author: fmegen
-ms.openlocfilehash: 6428dbaabfe176e8d741818ee338bbc2a6bc70bb
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.date: 10/12/2018
+ms.author: wolfma
+ms.openlocfilehash: f2d5ca467777b8b351b2cf51abe71a003374bcf7
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48883869"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49344214"
 ---
 # <a name="quickstart-recognize-speech-in-java-on-android-by-using-the-speech-sdk"></a>Rychlý start: Rozpoznávání řeči v Javě na Androidu s využitím sady Speech SDK
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 V tomto článku se dozvíte, jak v Javě vytvořit aplikaci pro Android pro přepis řeči na text pomocí sady Cognitive Services Speech SDK.
-Tato aplikace je založená na balíčku Maven sady Microsoft Cognitive Services Speech SDK verze 1.0.0 a Android Studiu 3.1.
+Tato aplikace je založená na balíčku Maven sady Microsoft Cognitive Services Speech SDK verze 1.0.1 a Android Studiu 3.1.
 Sada Speech SDK je aktuálně kompatibilní se zařízeními s Androidem, která používají 32bitové nebo 64bitové procesory ARM.
 
 > [!NOTE]
@@ -57,7 +57,7 @@ Android Studiu chvíli trvá, než nový projekt pro Android připraví. V dalš
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-Aktuální verze sady Cognitive Services Speech SDK je `1.0.0`.
+Aktuální verze sady Cognitive Services Speech SDK je `1.0.1`.
 
 Sada Speech SDK pro Android je zabalená jako [AAR (knihovna pro Android)](https://developer.android.com/studio/projects/android-library) a obsahuje potřebné knihovny, stejně jako požadovaná oprávnění Androidu k jejímu používání.
 Je hostovaná v úložišti Maven na adrese https://csspeechstorage.blob.core.windows.net/maven/.
@@ -72,7 +72,7 @@ Nastavte projekt tak, aby používal sadu Speech SDK. Výběrem příkazu **File
 
    ![Snímek obrazovky okna se strukturou projektu](media/sdk/qs-java-android-07-add-module-dependency.png)
 
-1. V okně, které se zobrazí, zadejte název a verzi naší sady Speech SDK pro Android – `com.microsoft.cognitiveservices.speech:client-sdk:1.0.0`. Pak vyberte **OK**.
+1. V okně, které se zobrazí, zadejte název a verzi naší sady Speech SDK pro Android – `com.microsoft.cognitiveservices.speech:client-sdk:1.0.1`. Pak vyberte **OK**.
    Sada Speech SDK by teď měla být přidaná do seznamu závislostí, jak je znázorněno níže:
 
    ![Snímek obrazovky okna se strukturou projektu](media/sdk/qs-java-android-08-dependency-added-1.0.0.png)
