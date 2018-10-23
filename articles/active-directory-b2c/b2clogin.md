@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/04/2018
+ms.date: 10/22/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 8e06cf1a443d4fd158e29ef4b53206a83800dfe9
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 36025bf8460d690aab3b3617ad3341dfe7005e9e
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48803048"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49649263"
 ---
 # <a name="set-redirect-urls-to-b2clogincom-for-azure-active-directory-b2c"></a>Sada přesměrovaly na b2clogin.com pro Azure Active Directory B2C
 
@@ -26,7 +26,12 @@ Použití b2clogin.com poskytuje další výhody, jako například:
 - Soubory cookie jsou již sdíleny s jinými službami Microsoftu.
 - Vaší adresy URL už nebude obsahovat odkaz na Microsoft. Například, `https://your-tenant-name.b2clogin.com/tfp/your-tenant-ID/policyname/v2.0/.well-known/openid-configuration`.
 
-Chcete-li použít b2clogin.com, nastavte přesměrování adresy URL ve vašich aplikacích zprostředkovatele identity použití b2clogin.com. Můžete také nastavit aplikace Azure AD B2C použití b2clogin.com pro token koncových bodů a odkazy na zásady. Pokud používáte MSAL, je nutné nastavit **ValidateAuthority** vlastnost `false`.
+Vezměte v úvahu tato nastavení, které může být nutné změnit při použití b2clogin.com:
+
+- Nastavení přesměrování adresy URL ve vašich aplikacích zprostředkovatele identity použití b2clogin.com. 
+- Nastavte aplikaci Azure AD B2C k použití b2clogin.com pro token koncových bodů a odkazy na zásady. 
+- Pokud používáte MSAL, je nutné nastavit **ValidateAuthority** vlastnost `false`.
+- Ujistěte se, že změníte některá **povolené zdroje** , který jste definovali v nastavení CORS pro [přizpůsobení uživatelského rozhraní](active-directory-b2c-ui-customization-custom-dynamic.md).  
 
 ## <a name="change-redirect-urls"></a>Změna adresy URL pro přesměrování
 

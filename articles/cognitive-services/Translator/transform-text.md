@@ -10,19 +10,19 @@ ms.component: translator-text
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: v-jansko
-ms.openlocfilehash: e5061e322b4f0edb416f321cefef73776b9165ff
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: ccef55d56286cde47d23dbf2703c15fcf375e266
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46123942"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49646945"
 ---
 # <a name="how-to-use-the-transformtext-method"></a>Jak používat TransformText – metoda
 
 > [!NOTE]
 > Tato metoda je zastaralá. Není k dispozici v V3.0 Translator Text API.
 
-Metoda TransformText je funkce normalizace text pro sociální média, které vrací normalizovaná forma vstupu. Metoda může sloužit jako předzpracování krok strojového překladu nebo k jiným aplikacím, které očekávají čisté vstupní text, který není obvykle nachází v sociálních sítích nebo na uživatelem generovaný obsah. Funkce v současné době používá pouze anglické vstup. 
+Metoda TransformText je funkce normalizace text pro sociální média, které vrací normalizovaná forma vstupu. Metoda může sloužit jako předzpracování krok strojového překladu nebo k jiným aplikacím, které očekávají čisté vstupní text, který není obvykle nachází v sociálních sítích nebo na uživatelem generovaný obsah. Funkce v současné době používá pouze anglické vstup.
 
 Metoda je služba RESTful pomocí protokolu HTTP GET. Podporuje jednoduchý serializace XML a JSON.
 
@@ -31,7 +31,7 @@ Metoda je služba RESTful pomocí protokolu HTTP GET. Podporuje jednoduchý seri
 | Parametr | Popis |
 |:---|:---|
 | Autorizační hlavička | **Vyžaduje** hlavičky protokolu HTTP slouží k identifikaci aplikace. Použít klíč: "Autorizace" a hodnota: "Nosiče" + "" + přístupový token. Podrobnosti najdete tady.|
-| jazyk | **Vyžaduje** řetězec představující kód jazyka. Tento parametr podporuje jenom v angličtině s **en** jako název jazyka.|
+| language | **Vyžaduje** řetězec představující kód jazyka. Tento parametr podporuje jenom v angličtině s **en** jako název jazyka.|
 | category | **Volitelné** řetězec obsahující kategorie nebo domény překladu. Tento parametr podporuje pouze výchozí možnost **Obecné**.|
 | větu | **Vyžaduje** věty, kterou chcete opravit. |
 
@@ -44,12 +44,12 @@ Návratová hodnota obsahuje transformovaný věty.
 GetTranslationsResponse Microsoft.Translator.GetTranslations(appId, text, from, to, maxTranslations, options); TransformTextResponse
 {
 int ec;            // A positive number representing an error condition
-string em;         // A descriptive error message 
+string em;         // A descriptive error message
 string sentence;   // transformed text
 }
 ```
 
-## <a name="example"></a>Příklad: 
+## <a name="example"></a>Příklad:
 
 ```csharp
 using System;
@@ -72,9 +72,9 @@ namespace MicrosoftTranslatorSdk.HttpSamples
             AdmAccessToken admToken;
             string headerValue;
             //Get Client Id and Client Secret from https://datamarket.azure.com/developer/applications/
-            //Refer obtaining AccessToken (http://msdn.microsoft.com/library/hh454950.aspx) 
+            //Refer obtaining AccessToken (http://msdn.microsoft.com/library/hh454950.aspx)
             AdmAuthentication admAuth = new AdmAuthentication("clientID", "client secret");
-            
+
             try
             {
                 admToken = admAuth.GetAccessToken();
@@ -216,7 +216,7 @@ namespace MicrosoftTranslatorSdk.HttpSamples
         }
         private AdmAccessToken HttpPost(string DatamarketAccessUri, string requestDetails)
         {
-            //Prepare OAuth request 
+            //Prepare OAuth request
             WebRequest webRequest = WebRequest.Create(DatamarketAccessUri);
             webRequest.ContentType = "application/x-www-form-urlencoded";
             webRequest.Method = "POST";
@@ -235,6 +235,6 @@ namespace MicrosoftTranslatorSdk.HttpSamples
             }
         }
     }
-} 
+}
 
 ```

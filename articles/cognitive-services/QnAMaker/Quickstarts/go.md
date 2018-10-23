@@ -1,23 +1,23 @@
 ---
-title: 'Rychlý start: Go pro rozhraní API služby QnA Maker (v4)'
+title: REST API (V4) - Go - QnA Maker
 titleSuffix: Azure Cognitive Services
-description: Získejte informace a vzorové kódy, které vám usnadní začátky práce se službou Microsoft Translator Text API ve službách Microsoft Cognitive Services v Azure.
+description: Získání informací o založené na protokolu REST a ukázky kódu, které vám pomohou rychle začít používat Microsoft Translator Text API ve službě Microsoft Cognitive Services v Azure.
 services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
-ms.topic: quickstart
-ms.date: 09/12/2018
+ms.topic: article
+ms.date: 10/19/2018
 ms.author: diberry
-ms.openlocfilehash: 1628daa0ffef4c1fd9d8717abbdbdf7d0bbb65fd
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
-ms.translationtype: HT
+ms.openlocfilehash: 1b4f4c50c8c3fbdc2cc556705bdd446cb360ef2c
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49390121"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49650226"
 ---
-# <a name="quickstart-for-microsoft-qna-maker-api-with-go"></a>Rychlý start pro rozhraní API služby Microsoft QnA Maker s využitím Go 
+# <a name="qna-maker-rest-api-with-go"></a>Rozhraní REST API služby QnA Maker s využitím Go 
 <a name="HOLTop"></a>
 
 V tomto článku se dozvíte, jak pomocí [rozhraní API služby Microsoft QnA Maker](../Overview/overview.md) a Go provést následující postupy.
@@ -28,9 +28,9 @@ V tomto článku se dozvíte, jak pomocí [rozhraní API služby Microsoft QnA M
 - [Publikování existující znalostní báze](#Publish)
 - [Nahrazení obsahu existující znalostní báze](#Replace)
 - [Stažení obsahu znalostní báze](#GetQnA)
-- [Získání odpovědí na otázku pomocí znalostní báze](#GetAnswers)
+- [Získání odpovědí na otázku s využitím znalostní báze](#GetAnswers)
 - [Získání informací o znalostní bázi](#GetKB)
-- [Získání informací o všech znalostních bázích patřících určitému uživateli](#GetKBsByUser)
+- [Získání informací o všech znalostních bázích patřících zadanému uživateli](#GetKBsByUser)
 - [Odstranění znalostní báze](#Delete)
 - [Získání klíčů aktuálního koncového bodu](#GetKeys)
 - [Opětovné vygenerování klíčů aktuálního koncového bodu](#PutKeys)
@@ -188,7 +188,7 @@ func main() {
 }
 ```
 
-**Vytvoření odpovědi znalostní báze**
+**Odpověď na vytvoření znalostní báze**
 
 Úspěšná odpověď se vrátí ve formátu JSON, jak je znázorněno v následujícím příkladu: 
 
@@ -716,13 +716,13 @@ func main() {
 
 ## <a name="get-answers-to-a-question-by-using-a-knowledge-base"></a>Získání odpovědí na otázku s využitím znalostní báze
 
-Následující kód získá odpovědi na otázku pomocí zadané znalostní báze a pomocí metody **Generate answers**.
+Následující kód získá odpovědi na dotazy pomocí zadané znalostní báze a pomocí metody **Generate answers**.
 
 1. Ve svém oblíbeném prostředí IDE vytvořte nový projekt Go.
 1. Přidejte níže uvedený kód.
 1. Hodnotu `host` nahraďte názvem webu pro vaše předplatné služby QnA Maker. Další informace najdete v tématu [Vytvoření služby QnA Maker](../How-To/set-up-qnamaker-service-azure.md).
 1. Hodnotu `endpoint_key` nahraďte platným klíčem koncového bodu pro vaše předplatné. Všimněte si, že tento klíč není stejný jako klíč vašeho předplatného. Klíče koncového bodu můžete získat pomocí metody [Get endpoint keys](#GetKeys).
-1. Hodnotu `kb` nahraďte pomocí ID znalostní báze, ve které se chcete dotazovat na odpovědi. Upozorňujeme, že tato znalostní báze už musí být publikovaná pomocí metody [Publish](#Publish).
+1. Hodnotu `kb` nahraďte ID znalostní báze, ve které se chcete dotazovat na odpovědi. Mějte na paměti, že tato znalostní báze už musí být publikovaná pomocí metody [Publish](#Publish).
 1. Spusťte program.
 
 ```go
@@ -1441,11 +1441,11 @@ func main() {
 
 [Zpět na začátek](#HOLTop)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Reference k rozhraní REST API služby QnA Maker (V4)](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)
 
-## <a name="see-also"></a>Viz také 
+## <a name="see-also"></a>Další informace najdete v tématech 
 
 [Přehled služby QnA Maker](../Overview/overview.md)

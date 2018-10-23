@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 6c41890922e2235190d8844a573522846b42c779
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 92328ffd8b6dbbb2be82bc70352e19f3097eb2a7
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434496"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49637727"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
@@ -50,7 +50,7 @@ ms.locfileid: "47434496"
 
 | Element | Výskyty | Popis |
 | ------- | ----------- | ----------- |
-| Zobrazovaný název | 0:1 | Název, který se zobrazí uživatelům na různých obrazovkách. Hodnota může být [lokalizované](localization.md). |
+| displayName | 0:1 | Název, který se zobrazí uživatelům na různých obrazovkách. Hodnota může být [lokalizované](localization.md). |
 | DataType | 0:1 | Typ deklarace identity. Datové typy logická hodnota, date, dateTime, int, long, string, třída stringCollection, je možné alternativeSecurityIdCollection. |
 | DefaultPartnerClaimTypes | 0:1 | Výchozí partnerské deklarace typů, který chcete použít pro zadaný protokol. Hodnota se dají přepsat v **PartnerClaimType** zadané v poli **InputClaim** nebo **OutputClaim** elementy. Tento element slouží k určení výchozí název pro určitý protokol.  |
 | Maska | 0:1 | Volitelný řetězec maskování znaků, které mohou být použity při zobrazení deklarace identity. Například můžete jako XXX XXX-4343 maskována 324-232-4343 číslo telefonu. |
@@ -88,7 +88,7 @@ V následujícím příkladu, při architekturu rozhraní identit interakci s zp
 </ClaimType>
 ```
 
-V důsledku toho tokenu JWT vydaného službou Azure AD B2C, vynechává `family_name` namísto názvu typu deklarace identity **příjmení**.
+V důsledku toho tokenu JWT vydaného službou Azure AD B2C, generuje `family_name` namísto názvu typu deklarace identity **příjmení**.
  
 ```JSON
 {

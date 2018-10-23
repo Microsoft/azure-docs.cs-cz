@@ -1,21 +1,21 @@
 ---
-title: Registrace rozhraní Translator Text API
+title: Jak registrace Translator Text – Translator Text API
 titleSuffix: Azure Cognitive Services
-description: Jak se přihlásit k rozhraní Translator Text API.
+description: Zjistěte, jak se zaregistrovat pro rozhraní Translator Text API a získat klíč předplatného.
 services: cognitive-services
-author: noellelacharite
+author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: conceptual
 ms.date: 06/15/2018
-ms.author: nolachar
-ms.openlocfilehash: 18d2926be9d358b90e5b34754e689604aef85522
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.author: erhopf
+ms.openlocfilehash: a08a3a5f2c4e17406863ab203c5af1781b4223d3
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46128308"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49648324"
 ---
 # <a name="how-to-sign-up-for-the-translator-text-api"></a>Jak se zaregistrovat pro rozhraní Translator Text API
 

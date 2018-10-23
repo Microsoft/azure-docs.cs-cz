@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/22/2018
 ms.author: pullabhk
-ms.openlocfilehash: 1f3b81c31dc566e5e3011167eee00145f6791cb1
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: d38da87bae07dadb10894593dd41ded22f5f162d
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42616905"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49638303"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Obnovení souborů ze záloh virtuálních počítačů Azure
 
@@ -45,7 +45,7 @@ Obnovit soubory a složky z bodu obnovení, přejděte na virtuální počítač
 
 4. Z **vyberte bod obnovení** rozevírací nabídky vyberte bod obnovení, který obsahuje soubory, které chcete. Ve výchozím nastavení je již vybrán poslední bod obnovení.
 
-5. Chcete-li stáhnout software použije ke zkopírování souborů z bodu obnovení, klikněte na tlačítko **stáhnout spustitelný soubor** (pro virtuální počítač Windows Azure) nebo **stáhnout skript** (pro virtuální počítač Azure s Linuxem).
+5. Chcete-li stáhnout software použije ke zkopírování souborů z bodu obnovení, klikněte na tlačítko **stáhnout spustitelný soubor** (pro virtuální počítač Windows Azure) nebo **stáhnout skript** (pro Linuxové virtuální počítače Azure, je vygenerována skript v jazyce python).
 
     ![Vygenerované heslo](./media/backup-azure-restore-files-from-vm/download-executable.png)
 

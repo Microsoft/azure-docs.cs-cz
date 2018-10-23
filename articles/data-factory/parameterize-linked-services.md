@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/09/2018
+ms.date: 10/22/2018
 ms.author: douglasl
-ms.openlocfilehash: 287dcdedede5cab575aa0b9a73ec3e122556dc93
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 99efd29165f381b9038758c3384774a65da91501
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48900719"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49649410"
 ---
 # <a name="parameterize-linked-services-in-azure-data-factory"></a>Parametrizovat propojené služby v Azure Data Factory
 
@@ -27,6 +27,10 @@ Uživatelské rozhraní Data Factory na webu Azure Portal nebo programovací roz
 
 > [!TIP]
 > Doporučujeme, abyste se parametrizovat hesla nebo tajné kódy. Místo toho Store všechny připojovací řetězce ve službě Azure Key Vault a parametrizovat *název tajného kódu*.
+
+Pro zavedení sedm po minutách a ukázku této funkce z následujícího videa:
+
+> [!VIDEO https://channel9.msdn.com/shows/azure-friday/Parameterize-connections-to-your-data-stores-in-Azure-Data-Factory/player]
 
 ## <a name="supported-data-stores"></a>Úložiště dat podporovaných
 

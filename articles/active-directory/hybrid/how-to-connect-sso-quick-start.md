@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/05/2018
+ms.date: 10/21/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: d7906323da8e9ee1571efe908084ae1433884e61
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 8cfe8c309c11eb24bc6e7af9fc3ba3eef0422c35
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47405984"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49638196"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Azure Active Directory bezproblémové jednotné přihlašování: rychlý start
 
@@ -57,6 +57,9 @@ Ujistěte se, že jsou splněné následující požadavky:
 ## <a name="step-2-enable-the-feature"></a>Krok 2: Povolení funkce
 
 Povolte bezproblémové jednotné přihlašování prostřednictvím [služby Azure AD Connect](whatis-hybrid-identity.md).
+
+>[!NOTE]
+> Můžete také [povolte bezproblémové jednotné přihlašování pomocí Powershellu](tshoot-connect-sso.md#manual-reset-of-the-feature) Pokud Azure AD Connect podobě nevyhovuje vašim požadavkům. Tuto možnost použijte, pokud máte více než jedné domény pro každou doménovou strukturu služby Active Directory a chcete další informace o doméně, které chcete povolit bezproblémového jednotného přihlašování pro cílit.
 
 Pokud provádíte novou instalaci služby Azure AD Connect, zvolte [vlastní instalační cesta](how-to-connect-install-custom.md). Na **přihlášení uživatele** stránky, vyberte **povolit jednotné přihlašování** možnost.
 

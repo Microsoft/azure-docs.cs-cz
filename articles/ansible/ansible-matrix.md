@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.date: 09/22/2018
 ms.topic: article
-ms.openlocfilehash: f574203f31a21f945115296693f04cff649614c6
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: a71f28413028efe3547df7c464ec852fe2161f63
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47165632"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49649937"
 ---
 # <a name="ansible-module-and-version-matrix"></a>Modul a verzi matice Ansible
 
@@ -62,7 +62,7 @@ Tento článek uvádí Ansible moduly pro Azure, která můžete zřizovat prost
 | azure_rm_route                              | -            | -                           | -            | Ano          | Ano                                 | 
 | azure_rm_routetable                         | -            | -                           | -            | Ano          | Ano                                 | 
 | azure_rm_routetable_facts                   | -            | -                           | -            | Ano          | Ano                                 | 
-| **Úložiště**                    |           |                          |                          |                             |                               | 
+| **Storage**                    |           |                          |                          |                             |                               | 
 | azure_rm_storageaccount                     | Ano          | Ano                         | Ano          | Ano          | Ano                                 | 
 | azure_rm_storageaccount_facts               | Ano          | Ano                         | Ano          | Ano          | Ano                                 | 
 | azure_rm_storageblob                        | Ano          | Ano                         | Ano          | Ano          | Ano                                 | 
@@ -128,7 +128,7 @@ Tento článek uvádí Ansible moduly pro Azure, která můžete zřizovat prost
 | azure_rm_autoscale_facts            | -            | -                         | -          | Ano          | Ano                                 | 
 
 ## <a name="introduction-to-playbook-role-for-azure"></a>Úvod do playbook role pro Azure
-[Role playbooku azure_preview_module](https://galaxy.ansible.com/Azure/azure_preview_modules/) je role, nejúplnější a zahrnuje všechny nejnovější moduly Azure. Aktualizace a opravy chyb dokončení včas více než oficiálním vydáním Ansible. Pokud pro účely zřizování prostředků Azure pomocí Ansible, jste ukončena. doporučujeme nainstalovat roli azure_preview_module.
+[Role playbooku azure_preview_module](https://galaxy.ansible.com/Azure/azure_preview_modules/) je role, nejúplnější a zahrnuje všechny nejnovější moduly Azure. Aktualizace a opravy chyb dokončení včas více než oficiálním vydáním Ansible. Pokud pro účely zřizování prostředků Azure pomocí Ansible, jste ukončena. doporučujeme nainstalovat roli azure_preview_module playbook.
 
 Role playbooku azure_preview_module vydání každé tři týdny.
 

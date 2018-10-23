@@ -1,23 +1,23 @@
 ---
-title: 'Rychlý start: Python pro rozhraní API služby QnA Maker (v4)'
+title: Rozhraní REST API (V4) - Python - QnA Maker
 titleSuffix: Azure Cognitive Services
-description: Získejte informace a vzorky kódy, které vám usnadní začátky práce s rozhraním Microsoft Translator Text API ve službě Microsoft Cognitive Services v Azure.
+description: Získejte informace a ukázky kódu, které vám usnadní začátky práce se službou Microsoft Translator Text API ve službě Microsoft Cognitive Services v Azure.
 services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
-ms.topic: quickstart
-ms.date: 09/12/2018
+ms.topic: article
+ms.date: 10/19/2018
 ms.author: diberry
-ms.openlocfilehash: ac871aebd1b78750a5a3712d40486d4f7d3c3de7
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
-ms.translationtype: HT
+ms.openlocfilehash: 595eee6a10192d877aa77f4849bac494dff05808
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49388071"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49650005"
 ---
-# <a name="quickstart-for-microsoft-qna-maker-api-with-python"></a>Rychlý start pro rozhraní Microsoft QnA Maker API v Pythonu 
+# <a name="qna-maker-rest-api-with-python"></a>Nástroj QnA Maker REST API s využitím Pythonu
 <a name="HOLTop"></a>
 
 V tomto článku se dozvíte, jak pomocí [rozhraní Microsoft QnA Maker API](../Overview/overview.md) a jazyka Python provést následující postupy.
@@ -28,9 +28,9 @@ V tomto článku se dozvíte, jak pomocí [rozhraní Microsoft QnA Maker API](..
 - [Publikování existující znalostní báze](#Publish)
 - [Nahrazení obsahu existující znalostní báze](#Replace)
 - [Stažení obsahu znalostní báze](#GetQnA)
-- [Získání odpovědí na otázku pomocí znalostní báze](#GetAnswers)
+- [Získání odpovědí na otázku s využitím znalostní báze](#GetAnswers)
 - [Získání informací o znalostní bázi](#GetKB)
-- [Získání informací o všech znalostních bázích patřících určitému uživateli](#GetKBsByUser)
+- [Získání informací o všech znalostních bázích patřících zadanému uživateli](#GetKBsByUser)
 - [Odstranění znalostní báze](#Delete)
 - [Získání klíčů aktuálního koncového bodu](#GetKeys)
 - [Opětovné vygenerování klíčů aktuálního koncového bodu](#PutKeys)
@@ -147,7 +147,7 @@ while False == done:
         done = True
 ```
 
-**Vytvoření odpovědi znalostní báze**
+**Odpověď na vytvoření znalostní báze**
 
 Úspěšná odpověď se vrátí ve formátu JSON, jak je znázorněno v následujícím příkladu: 
 
@@ -567,15 +567,15 @@ print (pretty_print(result))
 
 <a name="GetAnswers"></a>
 
-## <a name="get-answers-to-a-question-using-a-knowledge-base"></a>Načtení odpovědí na otázku pomocí znalostní báze
+## <a name="get-answers-to-a-question-using-a-knowledge-base"></a>Získání odpovědí na otázku pomocí znalostní báze
 
-Následující kód získá odpovědi na otázku pomocí zadané znalostní báze a pomocí metody **Generate answers**.
+Následující kód získá odpovědi na dotazy pomocí zadané znalostní báze a pomocí metody **Generate answers**.
 
 1. V oblíbeném integrovaném vývojovém prostředí (IDE) vytvořte nový projekt Pythonu.
 1. Přidejte níže uvedený kód.
 1. Hodnotu `host` nahraďte názvem webu pro vaše předplatné služby QnA Maker. Další informace najdete v tématu [Vytvoření služby QnA Maker](../How-To/set-up-qnamaker-service-azure.md).
 1. Hodnotu `endpoint_key` nahraďte platným klíčem koncového bodu pro vaše předplatné. Všimněte si, že tento klíč není stejný jako klíč vašeho předplatného. Klíče koncového bodu můžete získat pomocí metody [Get endpoint keys](#GetKeys).
-1. Hodnotu `kb` nahraďte pomocí ID znalostní báze, ve které se chcete dotazovat na odpovědi. Upozorňujeme, že tato znalostní báze už musí být publikovaná pomocí metody [Publish](#Publish).
+1. Hodnotu `kb` nahraďte ID znalostní báze, ve které se chcete dotazovat na odpovědi. Mějte na paměti, že tato znalostní báze už musí být publikovaná pomocí metody [Publish](#Publish).
 1. Spusťte program.
 
 ```python
@@ -1148,11 +1148,11 @@ print (pretty_print(result))
 
 [Zpět na začátek](#HOLTop)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Reference k rozhraní REST API služby QnA Maker (V4)](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)
 
-## <a name="see-also"></a>Viz také 
+## <a name="see-also"></a>Další informace najdete v tématech 
 
 [Přehled služby QnA Maker](../Overview/overview.md)

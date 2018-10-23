@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 4b13d2d277721d37a6b96f6640377c875f0b5c0f
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: b22d18408d040d564d6220e74e8b8a893fe41ae9
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44161573"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49646241"
 ---
 # <a name="disaster-recovery-in-azure-service-fabric"></a>Zotavení po havárii v Azure Service Fabric
 Důležitou součástí zajištění vysoké dostupnosti zajišťuje, že služby přežijí všechny různé druhy chyb. To je obzvláště důležité pro chyby, které neplánované a mimo vaši kontrolu. Tento článek popisuje některé běžné režimy selhání, které může být jiného problému ovlivňujícího není-li modelovat a spravovány správně. Je také zaměří na omezení rizik a akcí Pokud přesto došlo k havárii. Cílem je omezit nebo eliminovat riziko výpadkům nebo ztrátě, které se objeví chyby, plánované nebo jinak, mohlo dojít.
@@ -133,7 +133,7 @@ Není k dispozici dva různé strategie pro přežití trvalé nebo trvalé selh
 ### <a name="random-failures-leading-to-cluster-failures"></a>Náhodné chyby, což vede k selhání clusteru
 Service Fabric obsahuje koncepci počáteční uzly. Jedná se o uzly, které zajišťují dostupnost základního clusteru. Tyto uzly pomáhají zajistit, že cluster zůstane až vytvořením zapůjčení s ostatními uzly a slouží jako tiebreakers během určité druhy chyb v síti. Pokud nejsou přepne zpět do režimu náhodným chybám odebrání většinou počáteční uzly v clusteru, cluster automaticky ukončí. V Azure, jsou automaticky spravovány počáteční uzly: jsou rozloženy dostupné chybových nebo upgradovacích doménách, a pokud jednu počáteční uzel je odebrán z clusteru bude vytvořen jinou na příslušné místo. 
 
-"Primární uzel typu" v samostatných clusterů Service Fabric a Azure, je ten, který běží rychlosti. Při definování typu primárního uzlu Service Fabric se automaticky výhod počet uzlů zajištěna vytvořením až 9 počáteční uzly a 9 repliky všech systémových služeb. Sada náhodná selhání trvá současně si většina těchto replik služby systému, systémové služby přejde ztráty kvora, jak jsme je popsáno výše. Pokud se většina počáteční uzly jsou ztraceny, cluster se vypne krátce po.
+"Primární uzel typu" v samostatných clusterů Service Fabric a Azure, je ten, který běží rychlosti. Při definování typu primárního uzlu Service Fabric se automaticky výhod počet uzlů zajištěna vytvořením až 9 počáteční uzly a 7 repliky všech systémových služeb. Sada náhodná selhání trvá současně si většina těchto replik služby systému, systémové služby přejde ztráty kvora, jak jsme je popsáno výše. Pokud se většina počáteční uzly jsou ztraceny, cluster se vypne krátce po.
 
 ## <a name="next-steps"></a>Další postup
 - Zjistěte, jak simulace různých chyb pomocí [framework testovatelnosti](service-fabric-testability-overview.md)

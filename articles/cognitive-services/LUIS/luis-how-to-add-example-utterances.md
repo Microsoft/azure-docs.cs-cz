@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 09/06/2018
+ms.date: 10/10/2018
 ms.author: diberry
-ms.openlocfilehash: adb44dcc8c41b1a7846ff346d141dc0c4b028e96
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 6a3edfd426fcdce83bd60332ba2b1ff6224dae1a
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48888284"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49645555"
 ---
 # <a name="add-example-utterances-and-label-with-entities"></a>Přidejte příklad projevy a popisek s entitami
 
@@ -159,6 +159,36 @@ V utterance `Book 2 tickets from Seattle to Cairo`, Seattle, je původní umíst
     >Podřízené entity názvy musí být jedinečný ve všech entit v jediné aplikaci. Dva různé hierarchické entity nemůže obsahovat podřízené entity se stejným názvem. 
 
     Zobrazit [extrakce dat](luis-concept-data-extraction.md#hierarchical-entity-data) Další informace o extrahování hierarchické entity z koncového bodu odpověď na dotaz JSON. Zkuste hierarchické entity [rychlý Start](luis-quickstart-intent-and-hier-entity.md) získat další informace o tom, jak používat hierarchické entity.
+
+## <a name="entity-status-predictions"></a>Predikce stavu entity
+
+Při zadání nového utterance na portálu služby LUIS, pravděpodobně utterance entity předpovědi chyb. Chyba předpovědi je rozdíl mezi jak entita s názvem ve srovnání s jak LUIS upozornilo na entitu. 
+
+Tento rozdíl je vizuálně reprezentována na portálu služby LUIS s červenou vlnovkou v utterance. Červené podtržení může objevit v závorkách pro entitu nebo mimo hranaté závorky. 
+
+![Snímek obrazovky Entity stav predikcí nesrovnalosti](./media/luis-how-to-add-example-utterances/entity-prediction-error.png)
+
+Vyberte slova, která jsou podtrženy červeně utterance. 
+
+Zobrazí pole entity **stav Entity** se červený vykřičník Pokud dojde k neshodě předpovědi. Chcete-li zobrazit stav Entity s informacemi o rozdílech mezi s popiskem a prediktivní entity, vyberte **stav Entity** vyberte položku na pravé straně.
+
+![Snímek obrazovky Entity stav predikcí nesrovnalosti](./media/luis-how-to-add-example-utterances/entity-status.png)
+
+Může se zobrazit řádku červeně na některý z následujících časech:
+
+    * Při zadání utterance, ale před je označené jako entity
+    * Když entitu popisek
+    * Při odebrání popisku entity
+    * Pokud více než jeden popisek entity očekává se, že pro tento text 
+
+Následující řešení vyřešit nesrovnalosti předpovědi entity:
+
+|Entita|Vizuální označení|Předpověď|Řešení|
+|--|--|--|--|
+|Utterance zadali, nemá ještě Popisek entity.|červené podtržení|Predikce je správná.|Popisek entita s předpovězené hodnoty.|
+|Text bez popisku|červené podtržení|Nesprávný predikcí|Aktuální projevy, které používají tuto entitu nesprávné třeba, aby ve všech záměry. Aktuální projevy mají mistaught LUIS, tento text je prediktivní entity.
+|Správně označené text|entity modré zvýraznění, červené podtržení|Nesprávný predikcí|Zadejte další projevy s entitou správně označené v různých místech a použití. Aktuální projevy jsou je dostatečná představuje LUIS, že jde o entitu nebo podobné entity se zobrazí ve stejném kontextu. Podobně jako entity by měl sloučené do jedné entity, LUIS se zaměňovat. Jiným řešením je přidat seznam frázi a zvýšit tak význam slova. |
+|Nesprávně označené text|entity modré zvýraznění, červené podtržení|Správné predikcí| Zadejte další projevy s entitou správně označené v různých místech a použití. 
 
 
 ## <a name="remove-entity-labels-from-utterances"></a>Odebrání popisků entity z projevy

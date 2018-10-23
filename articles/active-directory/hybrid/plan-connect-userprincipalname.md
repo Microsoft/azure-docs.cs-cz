@@ -9,12 +9,12 @@ ms.topic: article
 ms.workload: identity
 ms.service: active-Directory
 manager: mtillman
-ms.openlocfilehash: 4ce7b3a6b455384180184aa3b9be34fb88da266b
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 35f1ed2fbeeea7ff3beffeae91f775c829deedec
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46314038"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49637710"
 ---
 # <a name="azure-ad-userprincipalname-population"></a>Azure AD UserPrincipalName naplnění
 
@@ -112,14 +112,14 @@ Místní objekt uživatele:
 - mailNickName: us4
 - proxyAddresses: {SMTP:us1@contoso.com}
 - e-mailu: us2@contoso.com
-- userPrincipalName: us3@contoso.com
+- UserPrincipalName: us3@contoso.com
 
 Synchronizovat aktualizace u atributu mailNickName v místním do Tenanta služby Azure AD
 - Pomocí atributu mailNickName v místním aktualizace atributu Azure AD MailNickName.
 - Protože neexistuje žádná aktualizace místní atribut userPrincipalName, není žádná změna do atributu Azure AD UserPrincipalName.
 
 Objekt uživatele Azure AD Tenanta:
-- MailNickName: us4
+- mailNickName: us4
 - UserPrincipalName: us1@contoso.onmicrosoft.com
 
 ### <a name="scenario-3-non-verified-upn-suffix--update-on-premises-userprincipalname-attribute"></a>Scénář 3: Přípona UPN neověřených – aktualizovat místní atribut userPrincipalName
@@ -130,7 +130,7 @@ Místní objekt uživatele:
 - mailNickName: us4
 - proxyAddresses: {SMTP:us1@contoso.com}
 - e-mailu: us2@contoso.com
-- userPrincipalName: us5@contoso.com
+- UserPrincipalName: us5@contoso.com
 
 Synchronizovat aktualizace v místní atribut userPrincipalName do Tenanta služby Azure AD
 - Aktualizace na místní atribut userPrincipalName aktivuje přepočet atributu MOERA a Azure AD UserPrincipalName.
@@ -138,7 +138,7 @@ Synchronizovat aktualizace v místní atribut userPrincipalName do Tenanta služ
 - Nastavte atribut Azure AD UserPrincipalName MOERA.
 
 Objekt uživatele Azure AD Tenanta:
-- MailNickName: us4
+- mailNickName: us4
 - UserPrincipalName: us4@contoso.onmicrosoft.com
 
 ### <a name="scenario-4-non-verified-upn-suffix--update-primary-smtp-address-and-on-premises-mail-attribute"></a>Scénář 4: Přípona UPN neověřených – aktualizace primární adresu SMTP a místních e-mailů atribut
@@ -149,13 +149,13 @@ Místní objekt uživatele:
 - mailNickName: us4
 - proxyAddresses: {SMTP:us6@contoso.com}
 - e-mailu: us7@contoso.com
-- userPrincipalName: us5@contoso.com
+- UserPrincipalName: us5@contoso.com
 
 Synchronizovat aktualizace v místní atribut e-mailu a primární adresu SMTP do Tenanta služby Azure AD
 - Po dokončení počáteční synchronizace objektu uživatele aktualizace na místní atribut e-mailů a primární adresu SMTP nebude mít vliv na Azure AD MailNickName nebo atribut UserPrincipalName.
 
 Objekt uživatele Azure AD Tenanta:
-- MailNickName: us4
+- mailNickName: us4
 - UserPrincipalName: us4@contoso.onmicrosoft.com
 
 ### <a name="scenario-5-verified-upn-suffix--update-on-premises-userprincipalname-attribute-suffix"></a>Scénář 5: Přípona UPN ověřené – aktualizovat místní přípona atribut userPrincipalName
@@ -166,14 +166,14 @@ Místní objekt uživatele:
 - mailNickName: us4
 - proxyAddresses: {SMTP:us6@contoso.com}
 - e-mailu: us7@contoso.com
-- serPrincipalName: us5@verified.contoso.com
+- UserPrincipalName: us5@verified.contoso.com
 
 Synchronizovat aktualizace v místní atribut userPrincipalName do Tenanta Azure AD
 - Aktualizace místních userPrincipalName atribut triggery přepočet atributu Azure AD UserPrincipalName.
 - Nastavení atributu Azure AD UserPrincipalName pro místní atribut userPrincipalName jako přípona UPN je ověřený s Tenantem Azure AD.
 
 Objekt uživatele Azure AD Tenanta:
-- MailNickName: us4     
+- mailNickName: us4     
 - UserPrincipalName: us5@verified.contoso.com
 
 ## <a name="next-steps"></a>Další kroky

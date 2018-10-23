@@ -1,5 +1,5 @@
 ---
-title: Přizpůsobení překladu Translator Text API
+title: Přizpůsobení překladu – Translator Text API
 titlesuffix: Azure Cognitive Services
 description: Pomocí Microsoft Translatoru Hub můžete vytvářet strojový překlad systému pomocí upřednostňované terminologie a stylu.
 services: cognitive-services
@@ -10,28 +10,28 @@ ms.component: translator-text
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: v-jansko
-ms.openlocfilehash: d71158bc74ffe15f133cc637371ddc840ef9df9e
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: d01a5a8a9a60bef315327721b9f55345bc3d1361
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46124322"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49645024"
 ---
 # <a name="customize-your-text-translations"></a>Upravte svoje textové překlady
 
-Microsoft Translatoru Custom ve verzi preview je funkce služby Microsoft Translator, který umožňuje uživatelům přizpůsobit Microsoft Translatoru pokročilé Neurální strojový překlad, při překladu textu s použitím rozhraní Translator Text API (pouze verze 3). 
+Microsoft Translatoru Custom ve verzi preview je funkce služby Microsoft Translator, který umožňuje uživatelům přizpůsobit Microsoft Translatoru pokročilé Neurální strojový překlad, při překladu textu s použitím rozhraní Translator Text API (pouze verze 3).
 
 Funkci lze použít také k přizpůsobení překladu řeči při použití s [řeči Cognitive Services ve verzi preview](https://docs.microsoft.com/azure/cognitive-services/speech-service/).
 
 ## <a name="custom-translator"></a>Vlastní Translator
 
-S vlastní překlady můžete vytvořit Neurální překladové systémy, které rozuměli technologiím použitým v obchodních a oboru. Systém přizpůsobených překladových pak integrovat do stávajících aplikací, pracovní postupy a websites. 
+S vlastní překlady můžete vytvořit Neurální překladové systémy, které rozuměli technologiím použitým v obchodních a oboru. Systém přizpůsobených překladových pak integrovat do stávajících aplikací, pracovní postupy a websites.
 
 ### <a name="how-does-it-work"></a>Jak to funguje?
 
 Použijte dříve přeložené dokumentů (letáků, webové stránky, dokumentaci, atd.) na sestavovací systém překladu, který odráží specifického pro doménu terminologie a stylu, lepší výsledky než obecné překladový systém. Uživatelé můžou nahrávat dokumenty, TMX XLIFF, TXT, DOCX a XLSX.  
 
-Systém přijímá také data, která je paralelní na úrovni dokumentu, ale zatím není zarovnána na úrovni vět. Pokud mají uživatelé přístup k verzím stejný obsah ve více jazycích, ale v samostatných dokumentech vlastní Translator budou moci automaticky odpovídat věty v dokumentech.  Systém můžete také jeden jazyk data v těchto jazycích k doplnění paralelní trénovacích dat do vylepšovat překlady. 
+Systém přijímá také data, která je paralelní na úrovni dokumentu, ale zatím není zarovnána na úrovni vět. Pokud mají uživatelé přístup k verzím stejný obsah ve více jazycích, ale v samostatných dokumentech vlastní Translator budou moci automaticky odpovídat věty v dokumentech.  Systém můžete také jeden jazyk data v těchto jazycích k doplnění paralelní trénovacích dat do vylepšovat překlady.
 
 Přizpůsobený systém je pak k dispozici prostřednictvím pravidelné volání parametr kategorie pomocí rozhraní Microsoft Translator Text API.
 
@@ -42,7 +42,7 @@ Další podrobnosti o různých úrovních přizpůsobení na základě dostupn�
 
 ## <a name="microsoft-translator-hub"></a>Centrum Microsoft Translatoru
 
-Starší verze centra Microsoft Translator umožňuje překládat statistické strojového překladu. [Další informace](https://www.microsoft.com/en-us/translator/hub.aspx) 
+Starší verze centra Microsoft Translator umožňuje překládat statistické strojového překladu. [Další informace](https://www.microsoft.com/en-us/translator/hub.aspx)
 
 ## <a name="custom-translator-versus-hub"></a>Vlastní Translator oproti centra
 
@@ -50,17 +50,17 @@ Starší verze centra Microsoft Translator umožňuje překládat statistické s
 |:-----|:----:|:----:|
 |Stav funkce vlastního nastavení   | Všeobecná dostupnost  | Preview |
 | Verze text API  | Pouze v2   | Pouze v3 |
-| Přizpůsobení SMT | Ano   | Ne | 
+| Přizpůsobení SMT | Ano   | Ne |
 | Přizpůsobení NMT | Ne    | Ano |
-| Nové sjednocené přizpůsobení služby řeči | Ne    | Ano | 
-| [Bez trasování](http://www.aka.ms/notrace) | Ano   | Ano | 
+| Nové sjednocené přizpůsobení služby řeči | Ne    | Ano |
+| [Bez trasování](http://www.aka.ms/notrace) | Ano   | Ano |
 
 ## <a name="collaborative-translations-framework"></a>Framework spolupráci překlady
 
 > [!NOTE]
 > Od 1. února 2018 je AddTranslation() a AddTranslationArray() již nejsou k dispozici pro použití s Translator Text API V2.0. Tyto metody se nezdaří a nic budou zapsány. Verze Translator Text API 3.0 nepodporuje tyto metody.
 
->Podobně jako funkce jsou dostupné v rozhraní Translator API rozbočovače. Zobrazit [ https://hub.microsofttranslator.com/swagger ](https://hub.microsofttranslator.com/swagger). 
+>Podobně jako funkce jsou dostupné v rozhraní Translator API rozbočovače. Zobrazit [ https://hub.microsofttranslator.com/swagger ](https://hub.microsofttranslator.com/swagger).
 
 ## <a name="next-steps"></a>Další postup
 

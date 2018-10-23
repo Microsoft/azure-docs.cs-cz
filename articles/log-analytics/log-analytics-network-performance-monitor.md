@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
 ms.component: ''
-ms.openlocfilehash: bf10226b1d3b2153e0e17d4126c35402d096a857
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: fc5ab802b39597d72f01f756c9bdb16597862e3c
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49409233"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49638191"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Network Performance Monitor řešení v Azure
 
@@ -144,7 +144,7 @@ Všechny podsítě s nainstalovaným agentem alespoň jeden jsou uvedeny na **
 
 K povolení nebo zakázání monitorování konkrétní podsítě:
 
-1. Zaškrtněte nebo zrušte zaškrtnutí políčka vedle položky **ID podsítě**. Ujistěte se, že **použijte pro monitorování** je vybrané nebo nezaškrtnuté, podle potřeby. Můžete vybrat nebo zrušte více podsítí. Zakázán, nejsou monitorovány podsítě a agenti se aktualizují se zastavit příkazy ping jiní agenti. 
+1. Zaškrtněte nebo zrušte zaškrtnutí políčka vedle položky **ID podsítě**. Ujistěte se, že **použijte pro monitorování** je vybrané nebo nezaškrtnuté, podle potřeby. Můžete vybrat nebo zrušte více podsítí. Zakázán, nejsou monitorovány podsítě a agenti se aktualizují se zastavit příkazy ping jiní agenti. 
 2. Vyberte uzly, které chcete monitorovat v konkrétní podsíti. Vyberte ze seznamu podsítě a požadované uzly přesouvat mezi seznamy, které obsahují zůstávají nemonitorovaná a monitorované uzly. Přidáte vlastní popis do podsítě.
 3. Vyberte **Uložit** uložte konfiguraci. 
 

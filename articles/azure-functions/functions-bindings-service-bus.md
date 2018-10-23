@@ -12,12 +12,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 04/01/2017
 ms.author: glenga
-ms.openlocfilehash: baf08f18fae7f82fff57616e2d86d3426e32a237
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 8728533171ec8c8754aabf1a3e32c5ab7630db77
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49387731"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49637962"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure Service Bus vazby pro službu Azure Functions
 
@@ -326,7 +326,7 @@ Aktivační události služby Service Bus nabízí několik [vlastnosti metadat]
 |`To`|`string`|Odeslání na adresu.|
 |`Label`|`string`|Popisek konkrétní aplikace.|
 |`CorrelationId`|`string`|ID korelace.|
-|`Properties`|`IDictionary<String,Object>`|Vlastnosti konkrétní zprávy aplikace.|
+|`UserProperties`|`IDictionary<String,Object>`|Vlastnosti konkrétní zprávy aplikace.|
 
 Zobrazit [příklady kódu](#trigger---example) , které používají tyto vlastnosti dříve v tomto článku.
 

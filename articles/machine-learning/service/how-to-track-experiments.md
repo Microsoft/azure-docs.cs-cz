@@ -9,12 +9,12 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/24/2018
-ms.openlocfilehash: 4d8b913c9e77254eb4d232e6bf5add136204b842
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 054cd54827dc11e57f249a270542ff81ff670912
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49427752"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49649988"
 ---
 # <a name="track-experiments-and-training-metrics-in-azure-machine-learning"></a>Sledujte experimenty a vzdělávání metriky ve službě Azure Machine Learning
 
@@ -25,7 +25,7 @@ Ve službě Azure Machine Learning může sledovat vaše experimenty a monitorov
 
 ## <a name="list-of-training-metrics"></a>Seznam metrik školení 
 
-Pro spuštění při školení experiment lze přidat následující metriky. Chcete-li zobrazit podrobnější seznam co lze sledovat na běh, najdete v článku [referenční dokumentaci k sadě SDK](https://docs.microsoft.com/python/api/overview/azure/azure-ml-sdk-overview?view=azure-ml-py).
+Pro spuštění při školení experiment lze přidat následující metriky. Chcete-li zobrazit podrobnější seznam co lze sledovat na běh, najdete v článku [referenční dokumentaci k sadě SDK](https://aka.ms/aml-sdk).
 
 |Typ| Funkce jazyka Python | Příklad: | Poznámky|
 |----|:----|:----|:----|

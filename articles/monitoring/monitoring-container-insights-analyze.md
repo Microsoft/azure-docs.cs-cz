@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/14/2018
+ms.date: 10/19/2018
 ms.author: magoedte
-ms.openlocfilehash: 6df7d42bc291713a815cac9f719f53136ed35b19
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 430145119721ac947162d3b661377290a0ae2c11
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46956651"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49637978"
 ---
-## <a name="understand-aks-cluster-performance-with-azure-monitor-for-containers"></a>Porozumět výkonu cluster AKS pomocí Azure monitoru pro kontejnery
+# <a name="understand-aks-cluster-performance-with-azure-monitor-for-containers"></a>Porozumět výkonu cluster AKS pomocí Azure monitoru pro kontejnery
 Zobrazení výkonu z vaší Azure Kubernetes Service (AKS) clustery mohou být dodržen za dvou hledisek službou Azure Monitor pro kontejnery, přímo z clusteru AKS nebo zobrazení všech clusterech AKS v rámci předplatného Azure monitor. 
 
 Tento článek vám pomůže pochopit prostředí mezi dvěma perspektivy a tom, jak rychle posoudit, prozkoumat a vyřešit problémy zjištěné.
@@ -109,6 +109,10 @@ Přepněte **uzly** kartu a hierarchii řádek následuje objektový model Kuber
 
 ![Příklad Kubernetes uzlu hierarchie v zobrazení výkonu](./media/monitoring-container-insights-analyze/containers-nodes-view.png)
 
+Z rozbalený uzel je můžete přejít z pod nebo kontejnerů běží na uzlu kontroleru zobrazení dat výkonu filtrování pro tento kontroler. Klikněte na hodnoty v rámci **řadič** sloupec pro konkrétní uzel.   
+
+![Příklad procházení z uzlu do kontroleru v zobrazení výkonu](./media/monitoring-container-insights-analyze/drill-down-node-controller.png)
+
 Můžete vybrat, řadiče nebo kontejnery v horní části stránky a zkontrolujte stav a využití prostředků týkajících se těchto objektů.  Pokud místo toho chcete zkontrolovat využití paměti v **metrika** rozevíracího seznamu vyberte **paměti RSS** nebo **pracovní sada paměti**. **Paměť RSS** se podporuje jenom pro Kubernetes verze 1.8 a novější. V opačném případě zobrazení hodnot pro **Min&nbsp; %**  jako *NaN&nbsp;%*, má hodnotu číselný datový typ, který představuje Nedefinovaná nebo přičtení hodnotu. 
 
 ![Zobrazení výkonu uzly kontejneru](./media/monitoring-container-insights-analyze/containers-node-metric-dropdown.png)
@@ -144,7 +148,9 @@ Zde můžete zobrazit stav výkonu řadiče.
 
 ![zobrazení výkonu řadiče < název >](./media/monitoring-container-insights-analyze/containers-controllers-view.png)
 
-Hierarchie řádek začíná kontroleru a rozbalí kontroleru. Můžete zobrazit jeden nebo více kontejnerů. Rozbalte pod a poslední řádek zobrazuje seskupené pod celému kontejneru.  
+Hierarchie řádek začíná s řadičem a když rozšiřujete kontroleru, zobrazení podů jeden nebo více.  Rozbalte pod a poslední řádek zobrazuje seskupené pod celému kontejneru. Z rozšířené kontroleru je můžete přejít k uzlu, který je spuštěn na zobrazení dat výkonu filtrování pro tento uzel. Klikněte na hodnoty v rámci **uzel** sloupec pro konkrétní ovladač.   
+
+![Příklad procházení z uzlu do kontroleru v zobrazení výkonu](./media/monitoring-container-insights-analyze/drill-down-controller-node.png)
 
 Informace, které se zobrazí, když zobrazujete řadiče je popsaný v následující tabulce:
 
@@ -178,6 +184,10 @@ V modulu pro výběr, vyberte **kontejnery**.
 Zde můžete zobrazit stav výkonu kontejnerů Kubernetes v Azure.  
 
 ![zobrazení výkonu řadiče < název >](./media/monitoring-container-insights-analyze/containers-containers-view.png)
+
+Z kontejneru které můžete přejít pod nebo uzel k zobrazení dat výkonu filtrování pro daný objekt. Klikněte na hodnoty v rámci **Pod** nebo **uzel** sloupec pro konkrétní kontejner.   
+
+![Příklad procházení z uzlu do kontroleru v zobrazení výkonu](./media/monitoring-container-insights-analyze/drill-down-controller-node.png)
 
 Informace, které se zobrazí, když zobrazujete kontejnery je popsaný v následující tabulce:
 

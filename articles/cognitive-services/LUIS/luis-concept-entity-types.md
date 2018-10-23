@@ -7,15 +7,15 @@ author: diberry
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
-ms.topic: article
-ms.date: 09/10/2018
+ms.topic: conceptual
+ms.date: 10/19/2018
 ms.author: diberry
-ms.openlocfilehash: e6bb0735de94d0baaac3a8504ec1811cfbfff27f
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 92b4864f8991380740e6edb498328ce2eea98250
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353913"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49650107"
 ---
 # <a name="entities-in-luis"></a>Entity v LUIS
 
@@ -60,6 +60,10 @@ V utterance "rezervovat mě lístek do Paříže", "Paříž" je entita typu um�
 
 ## <a name="assign-entities-in-none-intent"></a>Přiřadit entity v žádné záměru
 Všechny příkazy, včetně **žádný** záměr, by měly mít entity s popiskem. To pomáhá LUIS Další informace o kde entity, které jsou v projevy a slova jsou kolem entity. 
+
+## <a name="entity-status-for-predictions"></a>Stav entity pro předpovědi
+
+Zobrazit [stav Entity predikcí](luis-how-to-add-example-utterances.md#entity-status-predictions) Další informace. 
 
 ## <a name="types-of-entities"></a>Typy entit
 Služba LUIS nabízí mnoho typů entit; předem připravených entit, vlastního počítače se naučili a seznam entit.

@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/14/2018
+ms.date: 10/19/2018
 ms.author: cwatson
-ms.openlocfilehash: 821d263856f21897915ba7954487b4d029cc4ed0
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: d6e99c2d57baa5fc62f3894abc9d04635f81f5aa
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47395241"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49638048"
 ---
 # <a name="add-or-change-azure-subscription-administrators"></a>Přidat nebo změnit správce předplatného Azure
 
@@ -41,9 +41,9 @@ Pokud chcete do předplatného Azure někoho přidat jako správce, přiřaďte 
 
 1. Navštivte [ **předplatná** na webu Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
 2. Vyberte předplatné, ke kterému chcete udělit přístup.
-3. Vyberte **Přidat**.
+3. V seznamu vyberte **Řízení přístupu (IAM)**.
+4. Vyberte **Přidat**.
    (Pokud tlačítko Přidat chybí, nemáte oprávnění k přidání oprávnění.)
-4. V seznamu vyberte **Řízení přístupu (IAM)**.
 5. V poli **Role** vyberte **Vlastník**. 
 6. V poli **Přiřadit přístup k** vyberte **Uživatel, skupina nebo aplikace Azure AD**. 
 7. Do pole **Vybrat** zadejte e-mailovou adresu uživatele, kterého chcete přidat jako vlastníka. Vyberte uživatele a pak vyberte **Uložit**.
@@ -67,6 +67,19 @@ Jako spolusprávce je možné přidat pouze [vlastníka](../role-based-access-co
     Chcete-li odebrat oprávnění spolusprávce **klikněte pravým tlačítkem na** uživatele spolupracující správce a pak vyberte **odebrat spolusprávce**.
 
     ![Snímek obrazovky, který odebere spolusprávce](./media/billing-add-change-azure-subscription-administrator/remove-coadmin.png)
+
+### <a name="adding-a-guest-user-as-a-co-administrator"></a>Přidání uživatele typu Host jako spolusprávce
+
+Uživatelé typu Host, které byla přiřazena role spolusprávce může se zobrazit některé rozdíly ve srovnání s různými členské uživatele k roli spolusprávce. Vezměte v úvahu následující scénář:
+
+- Uživatel A pomocí Azure AD pracovního nebo školního účtu je Správce služeb pro předplatné Azure.
+- Uživatel B se účtem Microsoft.
+- Uživatel A přiřadí roli spolusprávce uživateli služby serveru B.
+- Uživatel B téměř vše, co můžete dělat, ale nemůže k registraci aplikací nebo vyhledání uživatele v adresáři Azure AD.
+
+Očekáváte, že tento uživatel B může spravovat všechno. Důvod pro tento rozdíl je, že účet Microsoft je přidán do předplatného jako uživatele typu Host místo uživatel členem. Uživatelé typu Host mají různá výchozí oprávnění ve službě Azure AD porovnání s členské uživatele. Například člen uživatelé mohou číst jiných uživatelů ve službě Azure AD a uživatele typu Host nemůže. Člen uživatelé můžou registrovat nový instanční objekty ve službě Azure AD a uživatele typu Host nemůže. Pokud uživatel typu Host musí mít možnost provádět tyto úkoly, je možné řešení přiřadit konkrétní role správce Azure AD potřebuje uživatel typu Host. Například v předchozím scénáři, můžete přiřadit [uživatelé Čtoucí z adresáře](../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers) role ke čtení jiných uživatelů a přiřazení [vývojář aplikace](../active-directory/users-groups-roles/directory-assign-admin-roles.md#application-developer) role, která bude moct vytvořit instanční objekty. Další informace o členských uživatelů typu Host a jejich oprávnění najdete v tématu [co jsou výchozí oprávnění uživatelů ve službě Azure Active Directory?](../active-directory/fundamentals/users-default-permissions.md).
+
+Všimněte si, že [předdefinované role pro prostředky Azure](../role-based-access-control/built-in-roles.md) se liší od [role správce Azure AD](../active-directory/users-groups-roles/directory-assign-admin-roles.md). Předdefinované role není udělit přístup ke službě Azure AD. Další informace najdete v tématu [pochopit různé role](../role-based-access-control/rbac-and-directory-admin-roles.md).
 
 <a name="change-service-administrator-for-a-subscription"></a>
 

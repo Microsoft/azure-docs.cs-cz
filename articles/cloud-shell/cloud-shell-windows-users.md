@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/03/2018
 ms.author: damaerte
-ms.openlocfilehash: aad474195060c01a3f9d85e6f9037b568b0c16ad
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 4fc4f6523eb19294cabdf6b5b910dd346a877502
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39630382"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49645010"
 ---
 # <a name="powershell-in-azure-cloud-shell-for-windows-users"></a>Prostředí PowerShell ve službě Azure Cloud Shell pro Windows uživatelům
 
@@ -54,7 +54,7 @@ Níže jsou uvedeny běžné aliasy, které byly odebrány, jakož i jejich ekvi
 ## <a name="persisting-home"></a>Zachování $HOME
 
 Starší uživatelů může zachovat jenom skripty a další soubory v Cloudovou jednotku.
-Nyní adresářem $HOME uživatele je nyní také jako trvalý napříč relacemi.
+Nyní adresářem $HOME uživatele je také zachována napříč relacemi.
 
 ## <a name="powershell-profile"></a>Profil prostředí PowerShell
 

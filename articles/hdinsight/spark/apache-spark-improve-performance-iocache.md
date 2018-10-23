@@ -7,16 +7,16 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.topic: conceptual
 ms.date: 10/15/2018
-ms.openlocfilehash: cbb19ab831e242a48532bedef37157455c9fb583
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 8cfa6493a565a8ed3b059e1da752da5115d0731d
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49430739"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49649852"
 ---
 # <a name="improve-performance-of-apache-spark-workloads-using-azure-hdinsight-io-cache-preview"></a>Zlepšení výkonu úlohy Apache Sparku s využitím Azure HDInsight vstupně-výstupních operací Cache (Ukázková verze)
 
-Mezipaměti vstupně-výstupních operací je služba pro ukládání do mezipaměti dat pro Azure HDInsight, který zlepšuje výkon úloh Apache Spark. V/v mezipaměti používá open sourcové mezipaměti komponenta s názvem RubiX. RubiX je místní disk mezipaměti pro použití s moduly analýzy velkých objemů dat, které přístup k datům z cloudových úložných systémech. RubiX je jedinečný mezi systémy, ukládání do mezipaměti, protože používá Solid-State disky (SSD) namísto provozní rezerva paměti pro účely ukládání do mezipaměti. Služba mezipaměti vstupně-výstupních operací spouští a spravuje RubiX metadat servery na každý pracovní uzel clusteru. Nakonfiguruje taky všechny služby clusteru pro transparentní použití RubiX mezipaměti.
+Mezipaměti vstupně-výstupních operací je služba pro ukládání do mezipaměti dat pro Azure HDInsight, který zlepšuje výkon úloh Apache Spark. V/v mezipaměti funguje také s úlohy Tez a Hive, které můžou běžet v clusterech Spark. V/v mezipaměti používá open sourcové mezipaměti komponenta s názvem RubiX. RubiX je místní disk mezipaměti pro použití s moduly analýzy velkých objemů dat, které přístup k datům z cloudových úložných systémech. RubiX je jedinečný mezi systémy, ukládání do mezipaměti, protože používá Solid-State disky (SSD) namísto provozní rezerva paměti pro účely ukládání do mezipaměti. Služba mezipaměti vstupně-výstupních operací spouští a spravuje RubiX metadat servery na každý pracovní uzel clusteru. Nakonfiguruje taky všechny služby clusteru pro transparentní použití RubiX mezipaměti.
 
 Většina disky SSD poskytují více než 1 GByte za sekundu šířky pásma. Tuto šířku pásma, doplněných mezipaměť v paměti souborů operačního systému, poskytuje dostatečnou šířku pásma pro načtení velkého objemu dat výpočetní moduly pro zpracování, jako je Apache Spark. Provozní paměť zůstane k dispozici pro Apache Spark pro zpracování úloh silně závislé na paměti, jako je například podle okolí posouvá. Výhradní použití operační paměti umožňuje Apache Spark, abyste dosáhli optimální využití.  
 
@@ -25,7 +25,7 @@ Většina disky SSD poskytují více než 1 GByte za sekundu šířky pásma. Tu
 
 ## <a name="benefits-of-azure-hdinsight-io-cache"></a>Výhody služby Azure HDInsight vstupně-výstupní mezipaměti
 
-Ukládání do mezipaměti poskytuje zvýšení výkonu pro úlohy, které načítají data z vzdálené cloudového úložiště.
+Použití mezipaměti vstupně-výstupní operace poskytuje zvýšení výkonu pro úlohy, které načítají data z úložiště objektů Blob v Azure.
 
 Nemusíte dělat žádné změny vaší Sparkových úloh zobrazíte zvýšení výkonu při používání řešení mezipaměť Microsoft vstupně-výstupních operací. Při vstupně-výstupní mezipaměť je zakázaná, tento kód Spark bude číst data vzdáleně z Azure Blob Storage: `spark.read.load('wasbs:///myfolder/data.parquet').count()`. Při aktivaci mezipaměti vstupně-výstupních operací na stejný řádek kódu způsobí, že v mezipaměti pro čtení do mezipaměti vstupně-výstupních operací. Na následující čtení data načítají místně z SSD. Pracovní uzly v clusteru HDInsight jsou vybaveny místně připojených, vyhrazené jednotky SSD. Mezipaměť vstupně-výstupních operací HDInsight používá tyto místní jednotky SSD pro ukládání do mezipaměti, který představuje nejnižší úroveň latence a maximalizuje šířky pásma.
 
@@ -46,7 +46,7 @@ Azure HDInsight v/v mezipaměti je deaktivováno ve výchozím nastavení ve ver
 1. Potvrďte restart všechny ovlivněné služby v clusteru.
 
 >[!NOTE] 
-> I když indikátor průběhu vám ukáže aktivovaná, není ve skutečnosti povolená mezipaměti vstupně-výstupních operací, až po restartování služby.
+> I v případě indikátor průběhu vám ukáže aktivovaná, nebude ve skutečnosti povolená mezipaměti vstupně-výstupních operací, dokud nerestartujete ovlivněné služby.
 
 ## <a name="troubleshooting"></a>Řešení potíží
   
@@ -75,3 +75,7 @@ Může docházet k chybám místa na disku, spouštění úloh Spark po povolen�
 1. Vyberte **potvrďte restartování všech**.
 
 Pokud to nepomůže, zakažte mezipaměti vstupně-výstupních operací.
+
+## <a name="next-steps"></a>Další kroky
+
+- Další informace o v/v mezipaměti, včetně srovnávacího testu výkonu v tomto blogovém příspěvku: [úlohy Apache Spark získáte až 9 x zrychlit s HDInsight v/v mezipaměti](https://azure.microsoft.com/en-us/blog/apache-spark-speedup-with-hdinsight-io-cache/)

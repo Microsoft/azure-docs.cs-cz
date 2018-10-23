@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/26/2018
+ms.date: 10/22/2018
 ms.author: shlo
-ms.openlocfilehash: 8132f89423883422d70981edd3ddaf86147830e2
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 71ed5988b4a529d38a47f6cf04afcaa937121135
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47394414"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49645986"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Vizuální vytváření obsahu v Azure Data Factory
 Azure Data Factory uživatelské rozhraní rozhraní (UX) umožňuje vizuálně vytvoříte a nasadíte prostředky pro službu data factory bez nutnosti psát jakýkoli kód. Můžete přetáhnout aktivity na plátno kanálu, provádějte testovací běhy, využívejte iterativní ladění a nasadit a monitorovat spuštění kanálů. Existují dvě metody pro provádění vizuálního vytváření pomocí uživatelského rozhraní:
@@ -80,6 +80,22 @@ Otevře se podokno konfigurace. Podrobnosti o nastavení konfigurace najdete v p
 ## <a name="use-a-different-azure-active-directory-tenant"></a>Použít na jiného tenanta Azure Active Directory
 
 Úložišti Git v úložišti Azure můžete vytvořit v jiném tenantovi Azure Active Directory. Pokud chcete zadat jinou tenanta Azure AD, musíte mít oprávnění správce pro předplatné Azure, které používáte.
+
+## <a name="use-your-personal-microsoft-account"></a>Použití osobního účtu Microsoft
+
+Použití osobního účtu Microsoft k integraci Gitu, můžete propojit s osobním úložišti Azure Active Directory vaší organizace.
+
+1. Přidejte svůj osobní účet Microsoft do služby Active Directory vaší organizace v roli hosta. Další informace najdete v následujících článcích:
+
+    - [Připojení k Azure Active Directory vaší organizaci Azure DevOps](/azure/devops/organizations/accounts/connect-organization-to-azure-ad)
+
+    - [Přidat uživatele spolupráce Azure Active Directory B2B na webu Azure Portal](../active-directory/b2b/add-users-administrator.md)
+
+2. Přihlaste se k webu Azure Portal pomocí svého osobního účtu Microsoft. Přepněte se do služby Active Directory vaší organizace.
+
+3. Přejděte do části Azure DevOps, kde uvidíte vaše osobní úložiště. Vyberte úložiště a připojte se službou Active Directory.
+
+Po provedení těchto kroků konfigurace při nastavování integrace Gitu v Uživatelském rozhraní služby Data Factory je dostupná osobní úložiště.
 
 ## <a name="switch-to-a-different-git-repo"></a>Přepnout na jiné úložiště Git
 

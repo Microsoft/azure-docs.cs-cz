@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 09/26/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 8c89c49c1ea88937ba2494a4d9ee7adfa38ea1c1
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: cdd5114b78776a776985b0525789cdabf2e65900
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49408958"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49649258"
 ---
 # <a name="validate-azure-stack-pki-certificates"></a>Ověření certifikátů infrastruktury veřejných KLÍČŮ Azure Stack
 
@@ -94,45 +94,54 @@ K přípravě a k ověřování certifikátů Azure Stack infrastruktury veřejn
     ```PowerShell  
     $pfxPassword = Read-Host -Prompt "Enter PFX Password" -AsSecureString 
 
-    Start-AzsReadinessChecker  -extensionhostfeature -CertificatePath c:\certificates -pfxPassword $pfxPassword -RegionName east -FQDN azurestack.contoso.com -IdentitySystem AAD 
+    Invoke-AzsCertificateValidation -CertificatePath c:\certificates -pfxPassword $pfxPassword -RegionName east -FQDN azurestack.contoso.com -IdentitySystem AAD -extensionhostfeature 
     ```
 
 4. Zkontrolujte výstup a všechny jejich certifikáty projít všemi testy. Příklad:
 
-    ```PowerShell  
-    AzsReadinessChecker v1.1803.405.3 started
-    Starting Certificate Validation
+````PowerShell
+Invoke-AzsCertificateValidation v1.1809.1005.1 started.
+Testing: ARM Public\ssl.pfx
+Thumbprint: 7F6B27****************************E9C35A
+    PFX Encryption: OK
+    Signature Algorithm: OK
+    DNS Names: OK
+    Key Usage: OK
+    Key Size: OK
+    Parse PFX: OK
+    Private Key: OK
+    Cert Chain: OK
+    Chain Order: OK
+    Other Certificates: OK
+Testing: Admin Extension Host\ssl.pfx
+Thumbprint: A631A5****************************35390A
+    PFX Encryption: OK
+    Signature Algorithm: OK
+    DNS Names: OK
+    Key Usage: OK
+    Key Size: OK
+    Parse PFX: OK
+    Private Key: OK
+    Cert Chain: OK
+    Chain Order: OK
+    Other Certificates: OK
+Testing: Public Extension Host\ssl.pfx
+Thumbprint: 4DBEB2****************************C5E7E6
+    PFX Encryption: OK
+    Signature Algorithm: OK
+    DNS Names: OK
+    Key Usage: OK
+    Key Size: OK
+    Parse PFX: OK
+    Private Key: OK
+    Cert Chain: OK
+    Chain Order: OK
+    Other Certificates: OK
 
-    Starting Azure Stack Certificate Validation 1.1803.405.3
-    Testing: ARM Public\ssl.pfx
-        Read PFX: OK
-        Signature Algorithm: OK
-        Private Key: OK
-        Cert Chain: OK
-        DNS Names: OK
-        Key Usage: OK
-        Key Size: OK
-        Chain Order: OK
-        Other Certificates: OK
-    Testing: ACSBlob\ssl.pfx
-        Read PFX: OK
-        Signature Algorithm: OK
-        Private Key: OK
-        Cert Chain: OK
-        DNS Names: OK
-        Key Usage: OK
-        Key Size: OK
-        Chain Order: OK
-        Other Certificates: OK
-    Detailed log can be found C:\AzsReadinessChecker\CertificateValidation\CertChecker.log
-
-    Finished Certificate Validation
-
-    AzsReadinessChecker Log location: C:\AzsReadinessChecker\AzsReadinessChecker.log
-    AzsReadinessChecker Report location: 
-    C:\AzsReadinessChecker\AzsReadinessReport.json
-    AzsReadinessChecker Completed
-    ```
+Log location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessChecker.log
+Report location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessCheckerReport.json
+Invoke-AzsCertificateValidation Completed
+````
 
 ### <a name="known-issues"></a>Známé problémy
 
@@ -158,11 +167,9 @@ K přípravě a k ověřování certifikátů Azure Stack infrastruktury veřejn
     The Other Certificates check was skipped because Cert Chain and/or DNS Names failed. Follow the guidance to remediate those issues and recheck. 
     Detailed log can be found C:\AzsReadinessChecker\CertificateValidation\CertChecker.log
 
-    Finished Certificate Validation
-
-    AzsReadinessChecker Log location: C:\AzsReadinessChecker\AzsReadinessChecker.log
-    AzsReadinessChecker Report location (for OEM): C:\AzsReadinessChecker\AzsReadinessChecker.log
-    AzsReadinessChecker Completed
+    Log location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessChecker.log
+    Report location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessCheckerReport.json
+    Invoke-AzsCertificateValidation Completed
     ```
 
 **Rozlišení**: postupujte podle pokynů nástroje v části Podrobnosti každého sadu testů pro každý certifikát.
@@ -192,18 +199,15 @@ Pomocí těchto kroků můžete připravit a ověřit certifikáty infrastruktur
 3.  Změna hodnot **RegionName** a **plně kvalifikovaný název domény** tak, aby odpovídaly vaším prostředím Azure Stack spusťte ověření. Potom následujícím příkazem:
 
     ```PowerShell  
-    Start-AzsReadinessChecker -PaaSCertificates $PaaSCertificates -RegionName east -FQDN azurestack.contoso.com 
+    Invoke-AzsCertificateValidation -PaaSCertificates $PaaSCertificates -RegionName east -FQDN azurestack.contoso.com 
     ```
 4.  Zkontrolujte výstup a že všechny certifikáty projít všemi testy.
 
     ```PowerShell
-    AzsReadinessChecker v1.1805.425.2 started
-    Starting PaaS Certificate Validation
-    
-    Starting Azure Stack Certificate Validation 1.0 
-    Testing: PaaSCerts\wildcard.appservice.pfx
-        Read PFX: OK
+    Invoke-AzsCertificateValidation v1.0 started.
+    Thumbprint: 95A50B****************************FA6DDA
         Signature Algorithm: OK
+        Parse PFX: OK
         Private Key: OK
         Cert Chain: OK
         DNS Names: OK
@@ -211,9 +215,9 @@ Pomocí těchto kroků můžete připravit a ověřit certifikáty infrastruktur
         Key Size: OK
         Chain Order: OK
         Other Certificates: OK
-    Testing: PaaSCerts\api.appservice.pfx
-        Read PFX: OK
+    Thumbprint: EBB011****************************59BE9A
         Signature Algorithm: OK
+        Parse PFX: OK
         Private Key: OK
         Cert Chain: OK
         DNS Names: OK
@@ -221,9 +225,9 @@ Pomocí těchto kroků můžete připravit a ověřit certifikáty infrastruktur
         Key Size: OK
         Chain Order: OK
         Other Certificates: OK
-    Testing: PaaSCerts\wildcard.dbadapter.pfx
-        Read PFX: OK
+    Thumbprint: 76AEBA****************************C1265E
         Signature Algorithm: OK
+        Parse PFX: OK
         Private Key: OK
         Cert Chain: OK
         DNS Names: OK
@@ -231,9 +235,9 @@ Pomocí těchto kroků můžete připravit a ověřit certifikáty infrastruktur
         Key Size: OK
         Chain Order: OK
         Other Certificates: OK
-    Testing: PaaSCerts\sso.appservice.pfx
-        Read PFX: OK
+    Thumbprint: 8D6CCD****************************DB6AE9
         Signature Algorithm: OK
+        Parse PFX: OK
         Private Key: OK
         Cert Chain: OK
         DNS Names: OK

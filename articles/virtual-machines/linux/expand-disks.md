@@ -12,39 +12,39 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 12/13/2017
+ms.date: 10/15/2018
 ms.author: rogarana
-ms.openlocfilehash: 0c2d4d1413b6cfd0b5e457e720b59c6c7b575092
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 62057d3041aa83e0097b688b48386b80f5c4f87e
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46974540"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49637285"
 ---
-# <a name="how-to-expand-virtual-hard-disks-on-a-linux-vm-with-the-azure-cli"></a>Způsob, jak rozbalit virtuální pevné disky na virtuální počítač s Linuxem pomocí Azure CLI
+# <a name="expand-virtual-hard-disks-on-a-linux-vm-with-the-azure-cli"></a>Rozbalte virtuální pevné disky na virtuální počítač s Linuxem pomocí Azure CLI
 
-Výchozí velikost virtuálního pevného disku pro operační systém (OS) je obvykle 30 GB na virtuální počítač s Linuxem (VM) v Azure. Je možné [datových disků](add-disk.md) zajistit další úložný prostor, ale můžete také chtít rozšířit stávající datový disk. Tento článek podrobně popisuje, jak rozšířit spravované disky pro virtuální počítač s Linuxem pomocí Azure CLI. 
+Tento článek popisuje, jak rozšířit spravované disky pro virtuální počítač s Linuxem (VM) pomocí Azure CLI. Je možné [datových disků](add-disk.md) poskytnout další úložiště místa kde můžete také rozšířit stávající datový disk. Výchozí velikost virtuálního pevného disku pro operační systém (OS) je obvykle 30 GB na virtuální počítač s Linuxem v Azure. 
 
 > [!WARNING]
 > Vždy ujistěte se, že můžete zálohovat data před provedením disku měnit velikost operace. Další informace najdete v tématu [zálohování virtuálních počítačů s Linuxem v Azure](tutorial-backup-vms.md).
 
-## <a name="expand-azure-managed-disk"></a>Rozšíření Azure spravovaného disku
-Ujistěte se, že máte nejnovější [rozhraní příkazového řádku Azure](/cli/azure/install-az-cli2) nainstalovaný a přihlášení k účtu Azure pomocí [az login](/cli/azure/reference-index#az_login).
+## <a name="expand-an-azure-managed-disk"></a>Rozbalte Azure spravovaného disku
+Ujistěte se, že máte nejnovější [rozhraní příkazového řádku Azure](/cli/azure/install-az-cli2) nainstalovaný a jsou přihlášení k účtu Azure pomocí [az login](/cli/azure/reference-index#az-login).
 
 Tento článek vyžaduje existující virtuální počítač v Azure s aspoň jedním datovým diskem připojený a připravený. Pokud ještě nemáte virtuální počítač, který můžete použít, přečtěte si téma [vytváření a příprava virtuálního počítače s datovými disky](tutorial-manage-disks.md#create-and-attach-disks).
 
-V následující ukázky nahraďte ukázkové názvy parametrů s vlastními hodnotami. Zahrnout názvy parametrů příklad *myResourceGroup* a *myVM*.
+V následujících ukázkách, nahraďte názvy parametrů příklad *myResourceGroup* a *myVM* vlastními hodnotami.
 
-1. Operace na virtuálních pevných discích nelze provést s s virtuálním Počítačem. Zrušit přidělení virtuálního počítače s [az vm deallocate](/cli/azure/vm#az_vm_deallocate). V následujícím příkladu se uvolní virtuální počítač s názvem *myVM* ve skupině prostředků s názvem *myResourceGroup*:
+1. Operace na virtuálních pevných discích nelze provést s s virtuálním Počítačem. Zrušit přidělení virtuálního počítače s [az vm deallocate](/cli/azure/vm#az-vm-deallocate). V následujícím příkladu se uvolní virtuální počítač s názvem *myVM* ve skupině prostředků s názvem *myResourceGroup*:
 
     ```azurecli
     az vm deallocate --resource-group myResourceGroup --name myVM
     ```
 
     > [!NOTE]
-    > Virtuální počítač musí být uvolněný rozbalte virtuální pevný disk. `az vm stop` neuvolní výpočetní prostředky. Chcete-li uvolnit výpočetní prostředky, použít `az vm deallocate`.
+    > Virtuální počítač musí být uvolněný rozbalte virtuální pevný disk. Zastavuje se virtuální počítač pomocí `az vm stop` neuvolní výpočetní prostředky. Chcete-li uvolnit výpočetní prostředky, použít `az vm deallocate`.
 
-1. Zobrazit seznam spravovaných disků ve skupině prostředků s [az disk list](/cli/azure/disk#az_disk_list). Následující příklad zobrazí seznam spravovaných disků ve skupině prostředků s názvem *myResourceGroup*:
+1. Zobrazit seznam spravovaných disků ve skupině prostředků s [az disk list](/cli/azure/disk#az-disk-list). Následující příklad zobrazí seznam spravovaných disků ve skupině prostředků s názvem *myResourceGroup*:
 
     ```azurecli
     az disk list \
@@ -53,7 +53,7 @@ V následující ukázky nahraďte ukázkové názvy parametrů s vlastními hod
         --output table
     ```
 
-    Rozbalte vyžaduje disk s [az disk update](/cli/azure/disk#az_disk_update). Následující příklad rozšiřuje spravovaného disku s názvem *myDataDisk* bude *200*velikost Gb:
+    Rozbalte vyžaduje disk s [az disk update](/cli/azure/disk#az-disk-update). Následující příklad rozšiřuje spravovaného disku s názvem *myDataDisk* k *200* GB:
 
     ```azurecli
     az disk update \
@@ -63,27 +63,27 @@ V následující ukázky nahraďte ukázkové názvy parametrů s vlastními hod
     ```
 
     > [!NOTE]
-    > Při rozšiřování spravovaného disku aktualizované velikosti je mapován na nejbližší velikost spravovaného disku. Tabulka obsahující úrovně a dostupné spravované disky, najdete v části [Azure Přehled služby Managed Disks – ceny a fakturace](../windows/managed-disks-overview.md#pricing-and-billing).
+    > Když rozšiřujete spravovaného disku, aktualizované velikosti se zaokrouhluje na nejbližší velikost spravovaného disku. Tabulka obsahující úrovně a dostupné spravované disky, najdete v části [Azure Přehled služby Managed Disks – ceny a fakturace](../windows/managed-disks-overview.md#pricing-and-billing).
 
-1. Spuštění virtuálního počítače s [az vm start](/cli/azure/vm#az_vm_start). Následující příklad spustí virtuální počítač s názvem *myVM* ve skupině prostředků s názvem *myResourceGroup*:
+1. Spuštění virtuálního počítače s [az vm start](/cli/azure/vm#az-vm-start). Následující příklad spustí virtuální počítač s názvem *myVM* ve skupině prostředků s názvem *myResourceGroup*:
 
     ```azurecli
     az vm start --resource-group myResourceGroup --name myVM
     ```
 
 
-## <a name="expand-disk-partition-and-filesystem"></a>Rozbalte oddíl disku a systému souborů
-Pokud chcete použít rozšířené disku, potřebujete zvětšit základní oddíl a systém souborů.
+## <a name="expand-a-disk-partition-and-filesystem"></a>Rozbalte oddíl disku a systému souborů
+Pokud chcete použít rozšířené disk, rozbalte základní oddíl a systém souborů.
 
-1. Připojte přes SSH k virtuálnímu počítači s příslušnými přihlašovacími údaji. Můžete získat veřejnou IP adresu vašeho virtuálního počítače s [az vm show](/cli/azure/vm#az_vm_show):
+1. Připojte přes SSH k virtuálnímu počítači s příslušnými přihlašovacími údaji. Zobrazí se veřejnou IP adresu vašeho virtuálního počítače s [az vm show](/cli/azure/vm#az-vm-show):
 
     ```azurecli
     az vm show --resource-group myResourceGroup --name myVM -d --query [publicIps] --o tsv
     ```
 
-1. Pokud chcete použít rozšířené disku, potřebujete zvětšit základní oddíl a systém souborů.
+1. Rozbalte základní oddíl a systém souborů.
 
-    a. Pokud již připojen, odpojte disk:
+    a. Pokud je disk připojený, odpojte ho:
 
     ```bash
     sudo umount /dev/sdc1
@@ -95,7 +95,7 @@ Pokud chcete použít rozšířené disku, potřebujete zvětšit základní odd
     sudo parted /dev/sdc
     ```
 
-    Zobrazit informace o existujících rozložení oddílů s `print`. Výstup je podobný následujícím příkladu, který ukazuje, že je základní disk 215 Gb velikost:
+    Zobrazit informace o existujících rozložení oddílů s `print`. Výstup je podobný následujícím příkladu, který ukazuje, že je základní disk 215 GB:
 
     ```bash
     GNU Parted 3.2
@@ -120,7 +120,7 @@ Pokud chcete použít rozšířené disku, potřebujete zvětšit základní odd
     End?  [107GB]? 215GB
     ```
 
-    d. Chcete-li ukončit, zadejte `quit`
+    d. Chcete-li ukončit, zadejte `quit`.
 
 1. S oddílem se změněnou velikostí, ověření konzistence oddílu s `e2fsck`:
 
@@ -128,7 +128,7 @@ Pokud chcete použít rozšířené disku, potřebujete zvětšit základní odd
     sudo e2fsck -f /dev/sdc1
     ```
 
-1. Teď změňte velikost systému souborů s `resize2fs`:
+1. Změna velikosti systému souborů s `resize2fs`:
 
     ```bash
     sudo resize2fs /dev/sdc1
@@ -140,7 +140,7 @@ Pokud chcete použít rozšířené disku, potřebujete zvětšit základní odd
     sudo mount /dev/sdc1 /datadrive
     ```
 
-1. Chcete-li ověřit, změně velikosti disku s operačním systémem, použijte `df -h`. Následující příklad výstupu ukazuje datovou jednotku */dev/sdc1*, je teď 200 GB:
+1. Chcete-li ověřit, změně velikosti disku s operačním systémem, použijte `df -h`. Následující příklad výstupu ukazuje datovou jednotku */dev/sdc1* je nyní 200 GB:
 
     ```bash
     Filesystem      Size   Used  Avail Use% Mounted on
@@ -148,4 +148,5 @@ Pokud chcete použít rozšířené disku, potřebujete zvětšit základní odd
     ```
 
 ## <a name="next-steps"></a>Další postup
-Pokud potřebujete další úložiště, můžete také [přidat datové disky virtuálního počítače s Linuxem](add-disk.md). Další informace o šifrování disku najdete v tématu [šifrování disků na virtuální počítač s Linuxem pomocí Azure CLI](encrypt-disks.md).
+* Pokud potřebujete další úložiště, můžete si také [přidat datové disky virtuálního počítače s Linuxem](add-disk.md). 
+* Další informace o šifrování disku najdete v tématu [šifrování disků na virtuální počítač s Linuxem pomocí Azure CLI](encrypt-disks.md).

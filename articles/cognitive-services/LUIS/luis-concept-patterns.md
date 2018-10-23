@@ -7,15 +7,15 @@ author: diberry
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 5ade15b3f80d725af4ece31a36ea0b670f5f5147
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: fbd11eb23b10800e115a63549f233e0239763420
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47031539"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49638138"
 ---
 # <a name="patterns-improve-prediction-accuracy"></a>Vzory zvyšte přesnost předpovědi
 Vzory jsou navržené pro zlepšení přesnosti, když několik projevy jsou velmi podobné.  Vzor umožňuje získat vyšší přesnost pro záměru bez zadání projevy mnoho více. 
@@ -98,7 +98,7 @@ Zvažte vzor "[najít] e-mailu o {subject} [od {osoby}]". V následující proje
 |Promluva|Entita|Správné extrakce|
 |--|--|:--:|
 |e-mailu o PSI ze Chris|předmět = PSI<br>osoba = Jan|✔|
-|e-mailu o man z La Mancha|předmět = mužem<br>osoba = La Mancha|×|
+|e-mailu o man z La Mancha|předmět = mužem<br>osoba = La Mancha|X|
 
 V předchozí tabulce, utterance `email about the man from La Mancha`, předmět by měl být `the man from La Mancha` (název knihy), ale vzhledem k tomu subjekt zahrnuje volitelné slovo `from`, nesprávně očekává název. 
 

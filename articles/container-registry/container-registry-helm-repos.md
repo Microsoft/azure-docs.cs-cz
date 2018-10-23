@@ -7,12 +7,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: iainfou
-ms.openlocfilehash: f04b4015e201d272fa624b1de265792564ac14cd
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 140d663524696f19844fea8906b181f468b7d157
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47047444"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49646998"
 ---
 # <a name="use-azure-container-registry-as-a-helm-repository-for-your-application-charts"></a>Použití Azure Container Registry jako úložiště helmu pro vaše aplikace grafy
 
@@ -30,7 +30,7 @@ V tomto článku se dozvíte, jak používat úložiště grafu helmu uložené 
 K dokončení kroků v tomto článku, musí být splněny následující požadavky:
 
 - **Služba Azure Container Registry** – vytvoření registru kontejnerů ve vašem předplatném Azure. Například použít [webu Azure portal](container-registry-get-started-portal.md) nebo [rozhraní příkazového řádku Azure](container-registry-get-started-azure-cli.md).
-- **Příkaz Helm klienta** k vyhledání a instalace grafy. Budete také potřebovat server helmu (Tiller) inicializovat v rámci clusteru Kubernetes. V případě potřeby můžete [vytvořit cluster Azure Kubernetes Service][aks-quickstart]. Další informace o tom, jak nainstalovat a používat Helm, naleznete v tématu [instalace Helm][helm-install].
+- **Verze klienta Helm 2.11.0 (ne verzi RC) nebo novější** – spuštění `helm version` k vyhledání aktuální verze. Budete také potřebovat server helmu (Tiller) inicializovat v rámci clusteru Kubernetes. V případě potřeby můžete [vytvořit cluster Azure Kubernetes Service][aks-quickstart]. Další informace o tom, jak nainstalovat a upgradovat Helm, naleznete v tématu [instalace Helm][helm-install].
 - **Azure CLI verze 2.0.46 nebo novější** – spuštění `az --version` k vyhledání verze. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli-install].
 
 ## <a name="add-a-repository-to-helm-client"></a>Přidat do úložiště helmu klienta

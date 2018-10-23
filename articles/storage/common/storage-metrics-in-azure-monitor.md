@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/05/2017
 ms.author: fryu
 ms.component: common
-ms.openlocfilehash: fea6ece6e40d869aea7e52718fbf07bede34e1a5
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: b9b6c67930e251302f397e199c65f949997a25cf
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406700"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49637953"
 ---
 # <a name="azure-storage-metrics-in-azure-monitor"></a>Metriky Azure Storage na platformě Azure Monitor
 
@@ -29,7 +29,7 @@ Ve výchozím nastavení jsou povolené metriky a můžou k poslední data 93 dn
 
 ### <a name="access-metrics-in-the-azure-portal"></a>Přístup metrik na webu Azure Portal
 
-Metriky můžete sledovat v čase na webu Azure Portal. Následující příklad ukazuje, jak zobrazit **UsedCapacity** na úrovni účtu.
+Metriky můžete sledovat v čase na webu Azure Portal. Následující příklad ukazuje, jak zobrazit **transakce** na úrovni účtu.
 
 ![snímek obrazovky s přístupem k metrik na webu Azure Portal](./media/storage-metrics-in-azure-monitor/access-metrics-in-portal.png)
 

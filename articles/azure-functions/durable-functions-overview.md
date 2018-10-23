@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/06/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 79ffa541d16212b21d20a238465a846fad5e4902
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 925a4bb8edc49a4f3fee460ebd5af2ead6aeebdb
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48237921"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49649716"
 ---
 # <a name="durable-functions-overview"></a>Trvalý přehled funkcí
 
@@ -233,7 +233,7 @@ public static async Task Run(DurableOrchestrationContext ctx)
 
 ```js
 const df = require("durable-functions");
-const df = require("moment");
+const moment = require("moment");
 
 module.exports = df.orchestrator(function*(ctx) {
     const jobId = ctx.df.getInput();
@@ -298,7 +298,7 @@ public static async Task Run(DurableOrchestrationContext ctx)
 
 ```js
 const df = require("durable-functions");
-const df = require('moment');
+const moment = require('moment');
 
 module.exports = df.orchestrator(function*(ctx) {
     yield ctx.df.callActivityAsync("RequestApproval");

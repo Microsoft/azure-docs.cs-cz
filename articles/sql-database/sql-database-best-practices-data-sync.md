@@ -11,13 +11,13 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: ''
 manager: craigg
-ms.date: 08/20/2018
-ms.openlocfilehash: 1d292007b06e12b6be28e053bc6def3b12c7befe
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.date: 10/22/2018
+ms.openlocfilehash: 4bc655f1e9da00a42c60e1ab763c5503b393d4a1
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47063644"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49646294"
 ---
 # <a name="best-practices-for-sql-data-sync"></a>Osvědčené postupy pro synchronizaci dat SQL 
 
@@ -70,6 +70,10 @@ Není nutné zahrnout všechny tabulky, které jsou v databázi ve skupině sync
 Každá tabulka ve skupině synchronizace musí mít primární klíč. Synchronizace dat SQL service nemůže synchronizovat tabulku, která nemá primární klíč.
 
 Než začnete používat synchronizaci dat SQL v produkčním prostředí, testování výkonu počáteční a průběžné synchronizace.
+
+#### <a name="empty-tables-provide-the-best-performance"></a>Prázdné tabulky poskytují nejlepší výkon
+
+Prázdné tabulky poskytují nejlepší výkon během inicializace. Pokud cílová tabulka je prázdná, synchronizaci dat používá příkaz bulk insert a načíst data. V opačném případě synchronizace dat provádí porovnání řádek po řádku a vložení ke kontrole konfliktů. Pokud výkon není žádný problém, ale je můžete nastavit synchronizaci mezi tabulkami, které již obsahují data.
 
 ### <a name="provisioning-destination-databases"></a> Zřizování cílové databáze
 

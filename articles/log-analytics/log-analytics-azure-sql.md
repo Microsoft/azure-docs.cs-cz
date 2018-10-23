@@ -15,18 +15,18 @@ ms.topic: conceptual
 ms.date: 05/03/2018
 ms.author: v-daljep
 ms.component: ''
-ms.openlocfilehash: d16f9add2cd31eb5a8db650798c241c3dcf2610f
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: ea289abff7a40b0528f4cb88402594879ba6c437
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49379300"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49649648"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Monitorování Azure SQL Database pomocí Azure SQL Analytics (Preview)
 
 ![Azure SQL Analytics symbol](./media/log-analytics-azure-sql/azure-sql-symbol.png)
 
-Azure SQL Analytics je Cloudová řešení pro monitorování výkonu Azure SQL Database, elastických fondů a spravovaných instancí ve velkém měřítku a napříč několika předplatnými monitorování. Shromažďuje a vizualizuje důležité metriky výkonu databáze SQL Azure s integrovanými inteligentními funkcemi pro řešení potíží s výkonem.
+Azure SQL Analytics je Cloudová řešení pro monitorování výkonu databáze, elastické fondy a spravovaných instancí Azure SQL ve velkém měřítku a napříč několika předplatnými prostřednictvím podokně ze skla. Díky monitorování. Shromažďuje a vizualizuje důležité metriky výkonu databáze SQL Azure s integrovanými inteligentními funkcemi pro řešení potíží s výkonem.
 
 Pomocí metrik, která shromáždíte pomocí řešení můžete vytvořit vlastní pravidla monitorování a výstrah. Toto řešení vám umožní identifikovat problémy v každé vrstvě vaším zásobníkem aplikace. Prezentovat data o všech Azure SQL databáze, elastické fondy a databáze spravované instance v jeden pracovní prostor Log Analytics pomocí Azure diagnostických metrik společně se zobrazeními Log Analytics. Log Analytics umožňuje shromažďovat, korelovat a vizualizovat strukturovanými i nestrukturovanými daty.
 
@@ -66,23 +66,11 @@ Provedení následujících kroků přidejte řešení pro Azure SQL Analytics n
 
 ### <a name="configure-azure-sql-databases-elastic-pools-and-managed-instances-to-stream-diagnostics-telemetry"></a>Konfigurace databází Azure SQL Database, elastických fondů a spravovaných instancí pro datový proud diagnostickou telemetrii
 
-Po vytvoření řešení Azure SQL Analytics ve vašem pracovním prostoru, aby bylo možné sledovat výkon Azure SQL Database, spravované instanci databáze a elastických fondů, budete muset **nakonfigurujte každý** těchto prostředků, kterou chcete monitorování a Streamovat jeho telemetrická data diagnostiky do řešení.
+Po vytvoření řešení Azure SQL Analytics ve vašem pracovním prostoru, aby bylo možné sledovat výkon Azure SQL Database, databáze ve spravované instanci databáze a elastických fondů, budete muset **nakonfigurujte každý** z nich prostředky, které chcete monitorovat Streamovat jeho telemetrická data diagnostiky do řešení. Postupujte podle podrobných pokynů na této stránce:
 
 - Povolení diagnostiky Azure pro Azure SQL Database, spravované Instance databáze a elastické fondy na [Streamovat telemetrická data diagnostiky do Azure SQL Analytics](../sql-database/sql-database-metrics-diag-logging.md).
 
-### <a name="to-configure-multiple-azure-subscriptions"></a>Chcete-li nakonfigurovat více předplatných Azure
- 
-Pro podporu více předplatných, pomocí skriptu prostředí PowerShell z [protokolování metrik prostředku povolit Azure pomocí Powershellu](https://blogs.technet.microsoft.com/msoms/2017/01/17/enable-azure-resource-metrics-logging-using-powershell/). Zadejte ID prostředku pracovního prostoru jako parametr při spuštění skriptu k odesílání diagnostických dat z prostředků v rámci jednoho předplatného Azure do pracovního prostoru do jiného předplatného Azure.
-
-**Příklad**
-
-```
-PS C:\> $WSID = "/subscriptions/<subID>/resourcegroups/oms/providers/microsoft.operationalinsights/workspaces/omsws"
-```
-
-```
-PS C:\> .\Enable-AzureRMDiagnostics.ps1 -WSID $WSID
-```
+Výše uvedená stránka také obsahuje pokyny k povolení monitorování více předplatných Azure z jednoho pracovního prostoru Azure SQL Analytics jako podokně ze skla.
 
 ## <a name="using-the-solution"></a>Použití řešení
 

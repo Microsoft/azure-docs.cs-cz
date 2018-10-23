@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/25/2018
-ms.openlocfilehash: 4a84e8f7460d3a339be783be6a12353770ced1b8
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 219fe9e8f91f9b02e64b3b44ab4301f77820561f
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43665819"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49648951"
 ---
 # <a name="understand-inputs-for-azure-stream-analytics"></a>Vysvětlení vstupy pro Azure Stream Analytics
 
@@ -38,7 +38,7 @@ Datový proud je bez vazby posloupnost událostí v čase. Úlohy Stream Analyti
 Další informace o streamování datových výstupů, naleznete v tématu [Stream data jako vstup do Stream Analytics](stream-analytics-define-inputs.md)
 
 ### <a name="reference-data-input"></a>Referenčního datového vstupu
-Stream Analytics podporuje také označuje jako vstup *odkazují na data*. Referenční data jsou buď zcela statická nebo pomalu se změní. Používá se obvykle provádět korelaci a vyhledávání. Například můžete spojit data vstup datového streamu k datům v referenčních dat, podobně jako můžete provést připojení SQL k vyhledání statickými hodnotami. Azure Blob storage je momentálně podporovaná jenom vstupní zdroj pro referenční data. Objekty BLOB referenčních dat zdroje jsou omezené na 100 MB. velikost.
+Stream Analytics podporuje také označuje jako vstup *odkazují na data*. Referenční data jsou buď zcela statická nebo pomalu se změní. Používá se obvykle provádět korelaci a vyhledávání. Například můžete spojit data vstup datového streamu k datům v referenčních dat, podobně jako můžete provést připojení SQL k vyhledání statickými hodnotami. Azure Blob storage je momentálně podporovaná jenom vstupní zdroj pro referenční data. Objekty BLOB referenčních dat zdroje mají omezení 300 MB velikosti, v závislosti na složitosti dotazu a přidělovat jednotek streamování.
 
 Další informace o referenční datové výstupy, naleznete v tématu [pomocí referenčních dat pro vyhledávání ve službě Stream Analytics](stream-analytics-use-reference-data.md)
 

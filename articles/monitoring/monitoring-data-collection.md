@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/27/2018
 ms.author: bwren
-ms.openlocfilehash: 19a611ca88310f06503bea2b8606699fe3e1c709
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 8d3e0874637bc3f13905c6038349b34c18b5fe56
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47406036"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49637793"
 ---
 # <a name="monitoring-data-collected-by-azure-monitor"></a>Sledování dat shromážděných službou Azure Monitor
 [Azure Monitor](../azure-monitor/overview.md) je služba, která vám pomůže sledovat vaše aplikace a prostředky, které spoléhají na to. Centrální pro tuto funkci je úložiště dat a další data z monitorovaných prostředků. Tento článek poskytuje úplný popis toho, jak tato data se ukládají a používat Azure Monitor.
@@ -108,7 +108,7 @@ Existují tři základní zdroje z metrik shromážděných službou Azure Monit
 
 
 ### <a name="viewing-metrics"></a>Zobrazení metrik
-Metriky Azure jsou shromážděny v úložišti metrik Azure monitoru. Toto je časové řady databáze optimalizovaný pro rychlé načítání a ukládá hodnoty metrik 93 dní. Kopírování metrik do Log Analytics pro dlouhodobé analýzy a sledování trendů.
+Metriky Azure jsou shromážděny v databázi metrik Azure monitoru. Toto je časové řady databáze optimalizovaný pro rychlé načítání a ukládá hodnoty metrik 93 dní. Kopírování metrik do Log Analytics pro dlouhodobé analýzy a sledování trendů.
 
 Data metriky se používá v mnoha různými způsoby, jak je popsáno výše. Použití [Průzkumníka metrik](../monitoring-and-diagnostics/monitoring-metric-charts.md) přímo analyzovat data v úložišti metriky a graf hodnoty několika metrik v čase. Můžete zobrazit grafy interaktivně nebo je připnout na řídicí panel k zobrazení se ostatní vizualizace. Můžete také načíst metriky pomocí [Azure, rozhraní REST API pro monitorování](../monitoring-and-diagnostics/monitoring-rest-api-walkthrough.md).
 
@@ -173,7 +173,7 @@ Metriky můžete zkopírovat do provádět komplexní analýzy s jinými datový
 Pokyny pro shromažďování metrik z prostředků v Azure můžete získat [metriky pro použití v Log Analytics a Azure shromažďovat protokoly služby](../log-analytics/log-analytics-azure-storage.md). Získejte pokyny pro shromažďování metrik prostředků z prostředků Azure PaaS za [konfigurace shromažďování metrik prostředků Azure PaaS s využitím Log Analytics](../log-analytics/log-analytics-collect-azurepass-posh.md).
 
 ### <a name="logs-to-metrics"></a>Protokoly a metriky
-Jak je popsáno výše, jsou responzivní více než tento počet protokolů, metrik, takže můžete vytvářet upozornění s nižší latencí a s nižšími náklady. Log Analytics shromažďuje značné množství číselná data, která je vhodná pro metriky, ale není uložený v úložišti Azure metriky.  Běžným příkladem jsou data o výkonu shromážděná z agentů a řešení pro správu. Některé z těchto hodnot je možné zkopírovat do úložiště metrik, kde jsou k dispozici pro výstrahy a analýzy s Průzkumníkem metrik.
+Jak je popsáno výše, jsou responzivní více než tento počet protokolů, metrik, takže můžete vytvářet upozornění s nižší latencí a s nižšími náklady. Log Analytics shromažďuje značné množství číselná data, která je vhodná pro metriky, ale není uložený v databázi Azure metriky.  Běžným příkladem jsou data o výkonu shromážděná z agentů a řešení pro správu. Některé z těchto hodnot je možné zkopírovat do databáze metrik, kde jsou k dispozici pro výstrahy a analýzy s Průzkumníkem metrik.
 
 Vysvětlení této funkce je k dispozici na [vytvořit upozornění metriky pro protokoly ve službě Azure Monitor](../monitoring-and-diagnostics/monitoring-metric-alerts-logs.md). Seznam hodnot podpora je k dispozici na [podporované metriky ve službě Azure Monitor](../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftoperationalinsightsworkspaces).
 

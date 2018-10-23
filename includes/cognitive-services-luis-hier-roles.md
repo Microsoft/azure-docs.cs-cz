@@ -10,12 +10,12 @@ ms.topic: include
 ms.custom: include file
 ms.date: 08/02/2018
 ms.author: diberry
-ms.openlocfilehash: dd99218765c873120c4117a3ec1712fe0a605e66
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 1d7723f356274bbd18b1ea08e34046da82a1057c
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45637587"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49646342"
 ---
 **Dotaz**: byste měli použít hierarchická entity nebo vzor s jednoduchou entitu s rolemi? 
 
@@ -27,4 +27,4 @@ Pokud projevy nemají vymazat vzor, používejte hierarchické entity.
 |--|--|
 |musí mít projevy příklad s podřízené entity označené v záměry|Příklad projevy, musí mít **role nemohou být označeny v záměrů**|
 |můžete použít ve vzorcích|**musíte** použít ve vzorcích|
-|Možná bude nutné **Další** projevy příklad v záměr|Možná bude nutné ** méně projevy příklad v záměr|
+|Možná bude nutné **Další** projevy příklad v záměr|Možná bude nutné **méně** projevy příklad v záměr|

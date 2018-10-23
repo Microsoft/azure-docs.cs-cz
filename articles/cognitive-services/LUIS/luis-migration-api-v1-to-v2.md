@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/06/2018
 ms.author: diberry
-ms.openlocfilehash: b936b42671c15a77a901f321ed3c51f1ba3639cd
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 57742d72c8be0dcd999bc8b73f6d598263429c12
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47036588"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49646571"
 ---
 # <a name="api-v2-migration-guide"></a>Pokyny k migraci v2 rozhraní API
 Verze 1 [koncový bod](https://aka.ms/v1-endpoint-api-docs) a [vytváření](https://aka.ms/v1-authoring-api-docs) rozhraní API se přestanou používat. Tento průvodce vám pochopit, jak migrovat na verzi 2 [koncový bod](https://aka.ms/luis-endpoint-apis) a [vytváření](https://aka.ms/luis-authoring-apis) rozhraní API. 
@@ -27,7 +27,7 @@ Služba LUIS je nový [oblastech](https://aka.ms/LUIS-regions) k rozhraním API 
 Vytváření rozhraní API route změnit pomocí **GID** trasy k použití **api** trasy.
 
 
-| verze | trasa |
+| version | trasa |
 |--|--|
 |1|/luis/V1.0/**GID**/apps|
 |2|/luis/**api**/v2.0/apps|
@@ -36,7 +36,7 @@ Vytváření rozhraní API route změnit pomocí **GID** trasy k použití **api
 ## <a name="endpoint-route-changes"></a>Koncový bod trasy změny
 Koncový bod rozhraní API má nové parametry řetězce dotazu, stejně jako jiné odpověď. Pokud příznak podrobné hodnotu true, všechny příkazy, bez ohledu na to skóre, které jsou vráceny v poli s názvem záměrů, kromě topScoringIntent.
 
-| verze | ZÍSKAT trasu |
+| version | ZÍSKAT trasu |
 |--|--|
 |1|/luis/V1/Application? ID = {appId} & q = {q}|
 |2|/ luis/v2.0/apps/{appId}?q={q} [& timezoneOffset] [& podrobné] [& Kontrola pravopisu] [& pracovní] [& Bingu – pravopisu – kontrola subscription-key] [& protokolu]|
@@ -106,7 +106,7 @@ Koncový bod rozhraní API má nové parametry řetězce dotazu, stejně jako ji
 ## <a name="key-management-no-longer-in-api"></a>Správa klíčů už v rozhraní API
 Klíč předplatného koncový bod rozhraní API jsou zastaralé, vrací 410 GONE.
 
-| verze | trasa |
+| version | trasa |
 |--|--|
 |1|/luis/V1.0/Prog/subscriptions|
 |1|/ luis/v1.0/prog/subscriptions/{subscriptionKey}|
@@ -116,7 +116,7 @@ Azure [klíče koncového bodu](luis-how-to-azure-subscription.md) se generují 
 ## <a name="new-versioning-route"></a>Novou trasu správy verzí
 V2 model je teď součástí [verze](luis-how-to-manage-versions.md). Název verze byla 10 znaků v této trase. Výchozí verze je "0.1".
 
-| verze | trasa |
+| version | trasa |
 |--|--|
 |1|/luis/V1.0/**GID**/apps/ {appId} / entity|
 |2|/luis/**api**/v2.0/apps/{appId}/**verze**/ {versionId} / entity|
@@ -135,7 +135,7 @@ Několik rozhraní API, které vracejí LUIS metadata mají nové názvy.
 ## <a name="sample-renamed-to-suggest"></a>"Ukázkový" přejmenovat "navrhnout"
 LUIS navrhuje projevy ze stávajících [koncový bod projevy](luis-how-to-review-endoint-utt.md) modelu, který může vylepšit. V předchozí verzi, to nazýval **ukázka**. V nové verzi, se změní název ze vzorku **navrhnout**. Tento postup se nazývá **[zkontrolujte koncový bod projevy](luis-how-to-review-endoint-utt.md)** LUIS webu.
 
-| verze | trasa |
+| version | trasa |
 |--|--|
 |1|/luis/V1.0/**GID**/entities/ /apps/ {appId} {entityId} /**vzorku**|
 |1|/luis/V1.0/**GID**/intents/ /apps/ {appId} {intentId} /**vzorku**|
@@ -155,7 +155,7 @@ LUIS navrhuje projevy ze stávajících [koncový bod projevy](luis-how-to-revie
 Exportované 1.x aplikace JSON má některé oblasti, které je třeba změnit před importem do [LUIS] [ LUIS] 2.0. 
 
 ### <a name="prebuilt-entities"></a>Předem připravených entit 
-[Předem připravených entit](luis-prebuilt-entities.md) změnily. Ujistěte se, že používáte V2 předem připravených entit. Jedná se o pomocí [datetimeV2](luis-prebuilt-entities.md#use-a-prebuilt-datetimev2-entity), namísto data a času. 
+[Předem připravených entit](luis-prebuilt-entities.md) změnily. Ujistěte se, že používáte V2 předem připravených entit. Jedná se o pomocí [datetimeV2](luis-reference-prebuilt-datetimev2.md), namísto data a času. 
 
 ### <a name="actions"></a>Akce
 Vlastnost akcí již není platný. To by měla být prázdná. 

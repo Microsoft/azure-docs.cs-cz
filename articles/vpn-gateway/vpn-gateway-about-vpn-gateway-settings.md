@@ -2,25 +2,17 @@
 title: Nastavení služby VPN gateway pro více míst připojení Azure | Dokumentace Microsoftu
 description: Další informace o nastavení služby VPN Gateway pro brány virtuální sítě Azure.
 services: vpn-gateway
-documentationcenter: na
 author: cherylmc
-manager: jpconnock
-editor: ''
-tags: azure-resource-manager,azure-service-management
-ms.assetid: ae665bc5-0089-45d0-a0d5-bc0ab4e79899
 ms.service: vpn-gateway
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 03/20/2018
+ms.topic: conceptual
+ms.date: 10/22/2018
 ms.author: cherylmc
-ms.openlocfilehash: 60cdc7bbe08df7816560e9720f96edc51769c342
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 30edc7308ad2d01d5245f8cd1073a7def674b74d
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38618217"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49649835"
 ---
 # <a name="about-vpn-gateway-configuration-settings"></a>Informace o nastavení konfigurace služby VPN Gateway
 
@@ -29,10 +21,11 @@ Brána VPN je typem brány virtuální sítě, která odesílá šifrovaný sí�
 Připojení brány VPN se spoléhá na konfiguraci více zdrojů, z nichž každý obsahuje konfigurovatelné nastavení. Části v tomto článku popisují prostředky a nastavení, které se týkají brány sítě VPN pro virtuální sítě vytvořené v modelu nasazení Resource Manageru. Můžete najít popisy a diagramy topologie pro každé připojení řešení [informace o službě VPN Gateway](vpn-gateway-about-vpngateways.md) článku.
 
 >[!NOTE]
-> Hodnoty v tomto článku platí pro brány virtuální sítě, které používají parametr-GatewayType "Vpn". To je důvod, proč těchto bran konkrétnímu virtuálnímu síťovému jsou označovány jako brány sítě VPN. Hodnoty pro brány ExpressRoute nejsou stejné hodnoty, které používáte pro brány VPN Gateway.
+> Hodnoty v tomto článku platí brány VPN (brány virtuální sítě, které používají parametr-GatewayType Vpn). Tento článek nepopisuje všechny typy brány a zónově redundantní brány.
 >
->Hodnoty, které platí pro parametr-GatewayType "ExpressRoute", naleznete v tématu [brány virtuální sítě pro ExpressRoute](../expressroute/expressroute-about-virtual-network-gateways.md).
->
+>* Hodnoty, které platí pro parametr-GatewayType "ExpressRoute", naleznete v tématu [brány virtuální sítě pro ExpressRoute](../expressroute/expressroute-about-virtual-network-gateways.md).
+>* Zónově redundantní brány najdete v části [o zónově redundantní brány](about-zone-redundant-vnet-gateways.md).
+>* Virtuální sítě WAN, naleznete v tématu [o virtuální sítě WAN](../virtual-wan/virtual-wan-about.md). 
 >
 
 ## <a name="gwtype"></a>Typy bran
@@ -60,7 +53,7 @@ New-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
 
 ### <a name="configure-a-gateway-sku"></a>Konfigurace skladové položky brány
 
-#### <a name="azure-portal"></a>Azure Portal
+#### <a name="azure-portal"></a>portál Azure
 
 Je-li vytvořit bránu virtuální sítě Resource Manageru pomocí webu Azure portal, můžete pomocí rozevíracího seznamu vyberte SKU brány. Možnosti, které budou vám nabídnuty odpovídají typ brány a typ sítě VPN, kterou jste vybrali.
 

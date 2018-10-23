@@ -1,23 +1,23 @@
 ---
-title: 'Rychlý start: Jazyk Java pro rozhraní API služby QnA Maker (v4)'
+title: Rozhraní REST API (V4) - Java - QnA Maker
 titleSuffix: Azure Cognitive Services
-description: Získejte informace a ukázky kódu, které vám usnadní začátky práce se službou Microsoft Translator Text API ve službě Microsoft Cognitive Services v Azure.
+description: Získání informací o založené na protokolu REST a ukázky kódu, které vám pomohou rychle začít používat Microsoft Translator Text API ve službě Microsoft Cognitive Services v Azure.
 services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
-ms.topic: quickstart
-ms.date: 09/12/2018
+ms.topic: article
+ms.date: 10/19/2018
 ms.author: diberry
-ms.openlocfilehash: 464860b94d0524cded48934e7684f5c78e595a7c
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
-ms.translationtype: HT
+ms.openlocfilehash: c92addcbb6a4071022474c5c157c498364ebf0f6
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389339"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49647931"
 ---
-# <a name="quickstart-for-microsoft-qna-maker-api-with-java"></a>Rychlý start rozhraní API služby QnA Maker pomocí jazyka Java 
+# <a name="qna-maker-rest-api-with-java"></a>Nástroj QnA Maker REST API s využitím Javy 
 <a name="HOLTop"></a>
 
 V tomto článku se dozvíte, jak pomocí [rozhraní API služby Microsoft QnA Maker](../Overview/overview.md) a jazyka Java provést následující postupy.
@@ -2127,11 +2127,11 @@ public class PutAlterations {
 
 [Zpět na začátek](#HOLTop)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Reference k rozhraní REST API služby QnA Maker (V4)](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)
 
-## <a name="see-also"></a>Viz také 
+## <a name="see-also"></a>Další informace najdete v tématech 
 
 [Přehled služby QnA Maker](../Overview/overview.md)

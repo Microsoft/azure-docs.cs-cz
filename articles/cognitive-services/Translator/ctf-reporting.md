@@ -1,5 +1,5 @@
 ---
-title: Collaborative Translation Framework (CTF) generování sestav – Translator Text
+title: Collaborative Translation Framework (CTF) generování sestav – Translator Text API
 titlesuffix: Azure Cognitive Services
 description: Jak použít vytváření sestav Collaborative Translation Framework (CTF).
 services: cognitive-services
@@ -10,19 +10,19 @@ ms.component: translator-text
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: v-jansko
-ms.openlocfilehash: 9b3ac6e6d10fb0e70549cadfd7bf65220deb8f33
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: aa59ce89bf8c2c4b31d85c572dcdfb3645f06884
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46126917"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49646004"
 ---
 # <a name="how-to-use-collaborative-translation-framework-ctf-reporting"></a>Jak použít vytváření sestav CTF (Collaborative Translation Framework)
 
 > [!NOTE]
 > Tato metoda je zastaralá. Není k dispozici v V3.0 Translator Text API.
 
-> Od 1. února 2018 se přestala nabízet spolupráci překlady Framework (CTF), dříve k dispozici pro V2.0 Translator Text API. Funkce AddTranslation a AddTranslationArray umožňují uživatelům povolit opravy prostřednictvím spolupráce Translation Framework. Po 31. ledna 2018 tyto dvě funkce nepřijímá nové příspěvky věty a uživatelé zobrazí chybová zpráva. Tyto funkce se vyřazuje a nebudou nahrazeny. 
+> Od 1. února 2018 se přestala nabízet spolupráci překlady Framework (CTF), dříve k dispozici pro V2.0 Translator Text API. Funkce AddTranslation a AddTranslationArray umožňují uživatelům povolit opravy prostřednictvím spolupráce Translation Framework. Po 31. ledna 2018 tyto dvě funkce nepřijímá nové příspěvky věty a uživatelé zobrazí chybová zpráva. Tyto funkce se vyřazuje a nebudou nahrazeny.
 
 >Podobně jako funkce jsou dostupné v rozhraní Translator API centra, vám umožní vytvářet vlastní překladový systém s terminologie a stylu, a lze vyvolat pomocí ID kategorie v rozhraní Translator Text API. Překladač rozbočovače: [ https://hub.microsofttranslator.com ](https://hub.microsofttranslator.com). Centrum Translator API: [ https://hub.microsofttranslator.com/swagger ](https://hub.microsofttranslator.com/swagger).
 
@@ -33,7 +33,7 @@ API pro generování sestav Collaborative Translation Framework (CTF) vrátí st
 
 ## <a name="endpoint"></a>Koncový bod
 Koncový bod rozhraní API CTF generování sestav http://api.microsofttranslator.com/v2/beta/ctfreporting.svc
-                        
+
 
 ## <a name="methods"></a>Metody
 | Název |    Popis|
@@ -64,7 +64,7 @@ UserTranslationCount[]GetUserTranslationCounts(
            string to,
            int? minRating,
            int? maxRating,
-           string user, 
+           string user,
            string category
            DateTime? minDateUtc,
            DateTime? maxDateUtc,
@@ -76,7 +76,7 @@ UserTranslationCount[]GetUserTranslationCounts(
 
 | Parametr | Popis |
 |:---|:---|
-| ID aplikace | **Vyžaduje** Pokud hlavička autorizace se používá, ponechejte tuto položku appid pole prázdné jinak zadat řetězec obsahující "Nosiče" + "" + přístupový token.|
+| appId | **Vyžaduje** Pokud hlavička autorizace se používá, ponechejte tuto položku appid pole prázdné jinak zadat řetězec obsahující "Nosiče" + "" + přístupový token.|
 | uriPrefix | **Volitelné** řetězec obsahující předponu identifikátoru URI překladu.|
 | od | **Volitelné** řetězec představující kód jazyka textu překlad. |
 | na | **Volitelné** řetězec představující kód jazyka můžete přeložit text do.|
@@ -135,27 +135,27 @@ UserTranslation[] GetUserTranslations (
             string to,
             int? minRating,
             int? maxRating,
-            string user, 
+            string user,
             string category
             DateTime? minDateUtc,
             DateTime? maxDateUtc,
             int? skip,
-            int? take); 
+            int? take);
 ```
 
 **Parametry**
 
 | Parametr | Popis |
 |:---|:---|
-| ID aplikace | **Vyžaduje** Pokud hlavička autorizace se používá, ponechejte tuto položku appid pole prázdné jinak zadat řetězec obsahující "Nosiče" + "" + přístupový token.|
+| appId | **Vyžaduje** Pokud hlavička autorizace se používá, ponechejte tuto položku appid pole prázdné jinak zadat řetězec obsahující "Nosiče" + "" + přístupový token.|
 | uriPrefix| **Volitelné** řetězec obsahující předponu identifikátoru URI překladu.|
 | od| **Volitelné** řetězec představující kód jazyka textu překlad.|
 | na| **Volitelné** řetězec představující kód jazyka můžete přeložit text do.|
 | minRating| **Volitelné** celočíselnou hodnotu představující hodnocení minimální kvalitu přeloženého textu. Platná hodnota je od -10 do 10. Výchozí hodnota je 1.|
 | maxRating| **Volitelné** celočíselnou hodnotu představující hodnocení maximální kvalitu přeloženého textu. Platná hodnota je od -10 do 10. Výchozí hodnota je 1.|
 | uživatel| **Volitelné. Řetězec, který se používá k filtrování výsledků podle odesílatel požadavku dostane informaci odesílání**|
-| category| **Volitelné** řetězec obsahující kategorie nebo domény překladu. Tento parametr podporuje pouze výchozí možnost Obecné.| 
-| minDateUtc| **Volitelné** datum, od kdy budete chtít načíst překlady. Datum musí být ve formátu UTC.| 
+| category| **Volitelné** řetězec obsahující kategorie nebo domény překladu. Tento parametr podporuje pouze výchozí možnost Obecné.|
+| minDateUtc| **Volitelné** datum, od kdy budete chtít načíst překlady. Datum musí být ve formátu UTC.|
 | maxDateUtc| **Volitelné** datum, do kdy budete chtít načíst překlady. Datum musí být ve formátu UTC.|
 | Přeskočit| **Volitelné** počet výsledků, které chcete nechat přeskočit na stránce. Například pokud chcete přeskočit prvních 20 řádků výsledků a zobrazení z 21. záznamu výsledku, zadejte 20 pro tento parametr. Výchozí hodnota tohoto parametru je 0.|
 | Take| **Volitelné** počet výsledků, které chcete načíst. Maximální počet každý požadavek je 100. Výchozí hodnota je 50.|
@@ -192,21 +192,3 @@ Sada výsledků obsahuje pole **UserTranslation**. Každý UserTranslation obsah
 **Příklady kódu zobrazení GitHib**
 * [C#](https://github.com/MicrosoftTranslator/Documentation-Code-TextAPI/blob/master/ctf/ctf-getusertranslations-example-csharp.md)
 * [PHP](https://github.com/MicrosoftTranslator/Documentation-Code-TextAPI/blob/master/ctf/ctf-getusertranslations-example-php.md)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

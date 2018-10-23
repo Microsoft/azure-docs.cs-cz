@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/30/2018
 ms.author: fryu
 ms.component: common
-ms.openlocfilehash: fc11e29b03df617c4b5bb6f4fbb43cd478001d42
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 3f2ebb82f5affa3c41f237edcc039eb6214c7a4c
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39521417"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49649291"
 ---
 # <a name="azure-storage-metrics-migration"></a>Migrace do Azure Storage metrics
 
@@ -25,7 +25,7 @@ V tomto článku se dozvíte, jak provést migraci ze staré metrik na novou met
 
 Úložiště Azure shromáždí staré hodnoty metrik a shromáždí a uloží je v tabulkách $Metric v rámci stejného účtu úložiště. Na webu Azure portal můžete použít k nastavení monitorování grafu. Se sadami SDK služby Azure Storage můžete použít také k načtení dat z $Metric tabulek, které jsou založené na schématu. Další informace najdete v tématu [Storage Analytics](./storage-analytics.md).
 
-Staré metriky poskytují metriky kapacity pouze v úložišti objektů Blob v Azure. Staré metriky poskytují metriky transakcí v úložišti objektů Blob, Table storage, Azure Files a Queue storage. 
+Staré metriky poskytují metriky kapacity pouze v úložišti objektů Blob v Azure. Staré metriky poskytují metriky transakcí v úložišti objektů Blob, Table storage, Azure Files a Queue storage.
 
 Staré metriky jsou navržené tak, že v ploché schématu. Návrh výsledkem nula metriky hodnotu, pokud nemáte vzory provozu metriku aktivuje. Například **ServerTimeoutError** hodnota nastavená na 0 v tabulkách $Metric i v případě, že jste neobdrželi žádné chyby časového limitu serveru z živého provozu do účtu úložiště.
 
@@ -65,14 +65,14 @@ Nové nabídky, která nepodporují staré metriky jsou následující metriky:
 
 | Staré metrika | Novou metriku |
 | ------------------- | ----------------- |
-| **AnonymousAuthorizationError** | Transakce s dimenzí **hodnotu ResponseType** rovna **AuthorizationError** |
-| **AnonymousClientOtherError** | Transakce s dimenzí **hodnotu ResponseType** rovna **ClientOtherError** |
-| **AnonymousClientTimeoutError** | Transakce s dimenzí **hodnotu ResponseType** rovna **ClientTimeoutError** |
-| **AnonymousNetworkError** | Transakce s dimenzí **hodnotu ResponseType** rovna **NetworkError** |
-| **AnonymousServerOtherError** | Transakce s dimenzí **hodnotu ResponseType** rovna **ServerOtherError** |
-| **AnonymousServerTimeoutError** | Transakce s dimenzí **hodnotu ResponseType** rovna **ServerTimeoutError** |
-| **AnonymousSuccess** | Transakce s dimenzí **hodnotu ResponseType** rovna **úspěch** |
-| **AnonymousThrottlingError** | Transakce s dimenzí **hodnotu ResponseType** rovna **ClientThrottlingError** nebo **ServerBusyError** |
+| **AnonymousAuthorizationError** | Transakce s dimenzí **hodnotu ResponseType** rovna **AuthorizationError** a dimenze **ověřování** rovna **anonymní** |
+| **AnonymousClientOtherError** | Transakce s dimenzí **hodnotu ResponseType** rovna **ClientOtherError** a dimenze **ověřování** rovna **anonymní** |
+| **AnonymousClientTimeoutError** | Transakce s dimenzí **hodnotu ResponseType** rovna **ClientTimeoutError** a dimenze **ověřování** rovna **anonymní** |
+| **AnonymousNetworkError** | Transakce s dimenzí **hodnotu ResponseType** rovna **NetworkError** a dimenze **ověřování** rovna **anonymní** |
+| **AnonymousServerOtherError** | Transakce s dimenzí **hodnotu ResponseType** rovna **ServerOtherError** a dimenze **ověřování** rovna **anonymní** |
+| **AnonymousServerTimeoutError** | Transakce s dimenzí **hodnotu ResponseType** rovna **ServerTimeoutError** a dimenze **ověřování** rovna **anonymní** |
+| **AnonymousSuccess** | Transakce s dimenzí **hodnotu ResponseType** rovna **úspěch** a dimenze **ověřování** rovna **anonymní** |
+| **AnonymousThrottlingError** | Transakce s dimenzí **hodnotu ResponseType** rovna **ClientThrottlingError** nebo **ServerBusyError** a dimenze **ověřování** rovna **anonymní** |
 | **AuthorizationError** | Transakce s dimenzí **hodnotu ResponseType** rovna **AuthorizationError** |
 | **Dostupnost** | **Dostupnost** |
 | **Hodnotu AverageE2ELatency** | **SuccessE2ELatency** |
@@ -87,14 +87,14 @@ Nové nabídky, která nepodporují staré metriky jsou následující metriky:
 | **PercentSuccess** | Transakce s dimenzí **hodnotu ResponseType** rovna **úspěch** |
 | **PercentThrottlingError** | Transakce s dimenzí **hodnotu ResponseType** rovna **ClientThrottlingError** nebo **ServerBusyError** |
 | **PercentTimeoutError** | Transakce s dimenzí **hodnotu ResponseType** rovna **ServerTimeoutError** nebo **hodnotu ResponseType** rovna **ClientTimeoutError** |
-| **SASAuthorizationError** | Transakce s dimenzí **hodnotu ResponseType** rovna **AuthorizationError** |
-| **SASClientOtherError** | Transakce s dimenzí **hodnotu ResponseType** rovna **ClientOtherError** |
-| **SASClientTimeoutError** | Transakce s dimenzí **hodnotu ResponseType** rovna **ClientTimeoutError** |
-| **SASNetworkError** | Transakce s dimenzí **hodnotu ResponseType** rovna **NetworkError** |
-| **SASServerOtherError** | Transakce s dimenzí **hodnotu ResponseType** rovna **ServerOtherError** |
-| **SASServerTimeoutError** | Transakce s dimenzí **hodnotu ResponseType** rovna **ServerTimeoutError** |
-| **SASSuccess** | Transakce s dimenzí **hodnotu ResponseType** rovna **úspěch** |
-| **SASThrottlingError** | Transakce s dimenzí **hodnotu ResponseType** rovna **ClientThrottlingError** nebo **ServerBusyError** |
+| **SASAuthorizationError** | Transakce s dimenzí **hodnotu ResponseType** rovna **AuthorizationError** a dimenze **ověřování** rovna **SAS** |
+| **SASClientOtherError** | Transakce s dimenzí **hodnotu ResponseType** rovna **ClientOtherError** a dimenze **ověřování** rovna **SAS** |
+| **SASClientTimeoutError** | Transakce s dimenzí **hodnotu ResponseType** rovna **ClientTimeoutError** a dimenze **ověřování** rovna **SAS** |
+| **SASNetworkError** | Transakce s dimenzí **hodnotu ResponseType** rovna **NetworkError** a dimenze **ověřování** rovna **SAS** |
+| **SASServerOtherError** | Transakce s dimenzí **hodnotu ResponseType** rovna **ServerOtherError** a dimenze **ověřování** rovna **SAS** |
+| **SASServerTimeoutError** | Transakce s dimenzí **hodnotu ResponseType** rovna **ServerTimeoutError** a dimenze **ověřování** rovna **SAS** |
+| **SASSuccess** | Transakce s dimenzí **hodnotu ResponseType** rovna **úspěch** a dimenze **ověřování** rovna **SAS** |
+| **SASThrottlingError** | Transakce s dimenzí **hodnotu ResponseType** rovna **ClientThrottlingError** nebo **ServerBusyError** a dimenze **ověřování** rovna **SAS** |
 | **ServerOtherError** | Transakce s dimenzí **hodnotu ResponseType** rovna **ServerOtherError** |
 | **ServerTimeoutError** | Transakce s dimenzí **hodnotu ResponseType** rovna **ServerTimeoutError** |
 | **Úspěch** | Transakce s dimenzí **hodnotu ResponseType** rovna **úspěch** |

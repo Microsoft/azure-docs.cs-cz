@@ -8,14 +8,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 10/10/2018
+ms.date: 10/19/2018
 ms.author: diberry
-ms.openlocfilehash: b5433ea0a92635b5bf9c2a4887451f1e64ec62e6
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: db8fc0b6926930521f11285dc56c886c10c42fc2
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49067756"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49649308"
 ---
 # <a name="language-understanding-faq"></a>Language Understanding – nejčastější dotazy
 
@@ -157,11 +157,9 @@ Pokud používáte protokol pro předpověď analýzy, nezachytí projevy testu 
 * Projevy můžete odstranit ze seznamu uživatelů projevy, které navrhuje LUIS v **zkontrolujte koncový bod projevy** stránky. Odstraňuje se z tohoto seznamu projevy brání jejich navržena, ale nedojde k jejich odstranění z protokolů.
 * Pokud odstraníte účet, se odstraní všechny aplikace, spolu s jejich příklad projevy a protokoly. Data se uchovávají na serverech za 60 dní, než je odstraníme trvale.
 
-### <a name="does-microsoft-access-my-luis-app-data-for-its-own-purposes-for-example-to-enhance-luis-or-microsoft-in-general"></a>Microsoft přistupuje k Moje data aplikace LUIS pro vlastní účely, například k vylepšení LUIS nebo Microsoft obecně?
+### <a name="how-does-microsoft-manage-data-i-send-to-luis"></a>Jak Microsoft spravuje data zasílané na LUIS?
 
-Ne. Datový model aplikace LUIS není používán LUIS k vylepšení LUIS jako platformu nebo používá společnost Microsoft žádným způsobem. Každá aplikace data jsou samostatné a vlastnictví pouze podle uživatele a spolupracovníky.
-
-Další informace o [ochrana osobních údajů uživatelů](luis-user-privacy.md), [dodržování předpisů další bezpečnostní](luis-concept-security.md#security-compliance), a [úložiště dat](luis-concept-data-storage.md).
+[Centrum](https://www.microsoft.com/trustcenter) vysvětluje závazcích a možnosti pro správu dat a přístup ve službách Azure.
 
 ## <a name="language-and-translation-support"></a>Podpora jazyka a překladu
 

@@ -8,12 +8,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 10/02/2018
 ms.author: lyrana
-ms.openlocfilehash: ef7838c41bb479da273123c2eb3def8e12802390
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: dc5570b188bfdc0e1be78aa2bd5c5d92e884f377
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49351298"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49638014"
 ---
 # <a name="connect-and-authenticate-to-apis"></a>Připojit a provést ověření rozhraní API
 
@@ -46,6 +46,7 @@ Pokud chcete začít pracovat s rozhraními API sady digitální dvojče slouž�
 1. Přejděte na https://www.getpostman.com/ stažení aplikace
 1. Postupujte podle kroků [tady](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad) k vytvoření aplikace Azure Active Directory (nebo můžete využít existující registrací). 
 1. V části Požadovaná oprávnění Přidat "Digitální dvojče Azure" a vyberte delegovaná oprávnění. Nezapomeňte kliknout na udělit oprávnění k dokončení.
+1. Otevření manifestu aplikace a oauth2AllowImplicitFlow nastavena na hodnotu true
 1. Postup konfigurace adresy url odpovědi na [ https://www.getpostman.com/oauth2/callback ](https://www.getpostman.com/oauth2/callback).
 1. Vyberte **kartu autorizace**, klikněte na **OAuth 2.0**a vyberte **získat nový přístupový Token**.
 

@@ -11,12 +11,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/11/2018
-ms.openlocfilehash: ad9ef7aa56cde9dd2ae644b97570b3bcfb727516
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 49ef31996cb9c55ed244202a85e123faf52fbd2a
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49355418"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49649762"
 ---
 # <a name="accelerated-database-recovery-preview"></a>Zrychlené obnovení databáze (preview)
 
@@ -108,7 +108,7 @@ Proces automatického obnovení má stejné tři fáze jako aktuální proces ob
   sLog je datový proud protokolu sekundární v paměti, že úložiště protokolování záznamů pro operace bez správy verzí (jako je například zneplatnění mezipaměti metadat, zámků a tak dále). SLog je:
 
   - Malé množství a v paměti
-  - Trvale uloženého na disku podle byl serializován během procesu kontrolního bodu
+  - Trvale uloženého na disku podle serializována během procesu kontrolního bodu
   - Pravidelně zkrácen jako potvrzení transakce
   - Díky svému a zpracováním pouze bez správy verzí operace vrátit zpět  
   - Zachování pouze záznamy protokolu požadované umožňuje zkrácení protokolu agresivní transakce
@@ -127,4 +127,4 @@ Následující typy zákazníci měli zvážit povolení pravidla automatického
 
 ## <a name="to-enable-adr-during-this-preview-period"></a>Povolit pravidla automatického nasazení během tohoto období preview
 
-Během období preview pro tuto funkci, odešlete e-mail na [ mailto:adr@microsoft.com ](mailto:adr@microsoft.com) chcete dozvědět víc a zkuste si Accelerated obnovení databáze (ADR). V tomto e-mailu zahrnout název logického serveru (pro izolované databáze, elastické fondy a Azure Data Warehouse). Protože se jedná o funkci preview, váš testovací server by měl být mimo provozní server.
+Během období preview pro tuto funkci, odešlete e-mail na [ adr@microsoft.com ](mailto:adr@microsoft.com) chcete dozvědět víc a zkuste si Accelerated obnovení databáze (ADR). V tomto e-mailu zahrnout název logického serveru (pro izolované databáze, elastické fondy a Azure Data Warehouse). Protože se jedná o funkci preview, váš testovací server by měl být mimo provozní server.
