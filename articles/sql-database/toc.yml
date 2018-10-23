@@ -323,8 +323,10 @@ items:
         href: sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md
   - name: Porovnání funkcí SQL
     href: sql-database-features.md
-  - name: Výkon a sledování
+  - name: Sledování a ladění výkonu
     items:
+    - name: Přehled sledování a ladění
+      href: sql-database-monitor-tune-overview.md
     - name: Inteligentní výkon
       items:
       - name: Dotazování
@@ -335,8 +337,6 @@ items:
           href: https://docs.microsoft.com/sql/relational-databases/performance/adaptive-query-processing?toc=/azure/sql-database/toc.json
       - name: Sledování a ladění
         items:
-        - name: Přehled sledování a ladění
-          href: sql-database-monitor-tune-overview.md
         - name: Doporučení ohledně výkonu pro nástroj Database Advisor
           href: sql-database-advisor.md
         - name: Doporučení a akce ladění
@@ -351,11 +351,11 @@ items:
           href: sql-database-metrics-diag-logging.md
         - name: Použití diagnostického protokolu
           href: sql-database-intelligent-insights-use-diagnostics-log.md
+        - name: Query Performance Insight
+          href: sql-database-query-performance.md
         - name: Řešení potíží s výkonem
           href: sql-database-intelligent-insights-troubleshoot-performance.md
-      - name: Query Performance Insight
-        href: sql-database-query-performance.md
-      - name: Automatická optimalizace výkonu
+      - name: Automatické ladění
         items:
         - name: Přehled automatického ladění
           href: sql-database-automatic-tuning.md
@@ -634,9 +634,9 @@ items:
     href: /azure/architecture/
   - name: Příběhy zákazníků
     href: http://customers.microsoft.com/en-us/search?sq=%22Azure%20SQL%20Database%22&ff=&p=0&so=story_publish_date%20desc
-ms.openlocfilehash: 38a8ec13b8a5e50d60ed46d1bd4d71af933d61f0
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 416f74c395f331de6af749f3de1d3a3e966b8b35
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49470367"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49650056"

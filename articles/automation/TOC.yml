@@ -26,7 +26,7 @@ items:
     href: automation-tutorial-installed-software.md
   - name: Řešení potíží se změnami na virtuálním počítači
     href: automation-tutorial-troubleshoot-changes.md
-- name: Postup
+- name: Návody
   items:
   - name: Onboarding
     items:
@@ -192,18 +192,20 @@ items:
     items:
     - name: Migrace z Orchestratoru
       href: automation-orchestrator-migration.md
-  - name: Řešení potíží
-    items:
-    - name: Onboarding
-      href: troubleshoot/onboarding.md
-    - name: Runbooky
-      href: troubleshoot/runbooks.md
-    - name: Konfigurace požadovaného stavu (DSC)
-      href: troubleshoot/desired-state-configuration.md
-    - name: Hybrid Runbook Worker
-      href: troubleshoot/hybrid-runbook-worker.md
-    - name: Update Management
-      href: troubleshoot/update-management.md
+- name: Řešení potíží
+  items:
+  - name: Onboarding
+    href: troubleshoot/onboarding.md
+  - name: Runbooky
+    href: troubleshoot/runbooks.md
+  - name: Konfigurace stavu (DSC)
+    href: troubleshoot/desired-state-configuration.md
+  - name: Hybrid Runbook Worker
+    href: troubleshoot/hybrid-runbook-worker.md
+  - name: Update Management
+    href: troubleshoot/update-management.md
+  - name: Řešení potíží s aplikací Update Agent
+    href: troubleshoot/update-agent-issues.md
 - name: Referenční informace
   items:
   - name: Azure PowerShell
@@ -236,9 +238,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-automation
   - name: Videa
     href: https://azure.microsoft.com/documentation/videos/index/?services=automation
-ms.openlocfilehash: 102f70d3c0ea4c87b47e2a0967da967b7eef73f6
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 37f9efb0c82a9ccefab1b492d45b9060a1a9312e
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47040308"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49645418"

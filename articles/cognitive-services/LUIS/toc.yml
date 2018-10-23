@@ -104,6 +104,8 @@ items:
       href: luis-concept-utterance.md
     - name: Role
       href: luis-concept-roles.md
+    - name: Předem připravené modely
+      href: luis-concept-prebuilt-model.md
   - name: Zvýšení výkonu aplikací
     items:
     - name: Skóre předpovědi
@@ -152,6 +154,14 @@ items:
       href: luis-how-to-add-example-utterances.md
     - name: Přidání entit
       href: luis-how-to-add-entities.md
+    - name: Použití předem připravených modelů
+      items:
+      - name: Použití domén
+        href: luis-prebuilt-domains.md
+      - name: Záměry použití
+        href: luis-prebuilt-intent.md
+      - name: Použití entit
+        href: luis-prebuilt-entities.md
     - name: S využitím REST API
       items:
       - name: Programové sestavení aplikace s využitím Node.js
@@ -196,12 +206,6 @@ items:
       href: luis-how-to-batch-test.md
   - name: Publikování
     href: luis-how-to-publish-app.md
-  - name: Použití předem připravených modelů
-    items:
-    - name: Použití entit
-      href: luis-prebuilt-entities.md
-    - name: Použití domén
-      href: luis-how-to-use-prebuilt-domains.md
   - name: Správa aplikace
     items:
     - name: S využitím řídicího panelu
@@ -364,9 +368,9 @@ items:
     href: https://blog.botframework.com/category/luis/
   - name: Znalostní báze
     href: https://cognitive.uservoice.com/knowledgebase/topics/127872-luis-language-understanding-intelligent-service
-ms.openlocfilehash: fda370f0abc292c1bcd0549e8761e342f3c6b815
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: f946ab4262d078b8f645800cee9a8e98ee0e104c
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49458203"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49647047"
