@@ -12,12 +12,12 @@ ms.date: 09/07/2017
 ms.author: lizross
 ms.reviewer: piotrci
 ms.custom: it-pro
-ms.openlocfilehash: bce7a060908e8043390fdce729161cad48a644be
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: a0a992e62e7b1e375ff2591aa82bdc7733e9d26f
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45731066"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49394693"
 ---
 # <a name="how-to-sign-up-for-azure-active-directory-premium"></a>Jak na to: Registrace do služby Azure Active Directory Premium
 Službu Azure Active Directory (Azure AD) Premium si můžete koupit a přidružit ji ke svému předplatnému Azure. Pokud potřebujete vytvořit nové předplatné Azure, budete také muset aktivovat svůj licenční plán a přístup ke službě Azure AD.
@@ -27,11 +27,11 @@ Službu Azure Active Directory (Azure AD) Premium si můžete koupit a přidruž
 
 Než si zaregistrujete edice Active Directory Premium 1 nebo Premium 2, musíte napřed určit, jaké stávající předplatné nebo plán chcete použít:
 
-    - Stávajíc předplatné Azure nebo Office 365
+- Stávajíc předplatné Azure nebo Office 365
 
-    - Licenční plán Enterprise Mobility + Security
+- Licenční plán Enterprise Mobility + Security
 
-    - Plán multilicenčního programu společnosti Microsoft
+- Plán multilicenčního programu společnosti Microsoft
 
 Pokud k registraci použijete předplatné Azure s dříve zakoupenými a aktivovanými licencemi Azure AD, aktivují se licence automaticky ve stejném adresáři. V ostatních případech musíte aktivovat licenční plán i přístup k Azure AD. Další informace o aktivaci licenčního plánu najdete v části [Aktivace nového licenčního plánu](#activate-your-new-license-plan). Další informace o aktivaci přístupu k Azure AD najdete v části [Aktivace přístupu k Azure AD](#activate-your-azure-ad-access). 
 
@@ -43,20 +43,20 @@ Enterprise Mobility + Security je sada, která se skládá z Azure AD Premium, A
 
 Další informace o EMS najdete na [webu Enterprise Mobility + Security](https://www.microsoft.com/cloud-platform/enterprise-mobility-security).
 
-    - Vyzkoušení EMS pomocí bezplatné [zkušební verze předplatného Enterprise Mobility + Security E5](https://signup.microsoft.com/Signup?OfferId=87dd2714-d452-48a0-a809-d2f58c4f68b7&ali=1)
+- Vyzkoušení EMS pomocí bezplatné [zkušební verze předplatného Enterprise Mobility + Security E5](https://signup.microsoft.com/Signup?OfferId=87dd2714-d452-48a0-a809-d2f58c4f68b7&ali=1)
 
-    - Nákup [licencí Enterprise Mobility + Security E5](https://signup.microsoft.com/Signup?OfferId=e6de2192-536a-4dc3-afdc-9e2602b6c790&ali=1)
+- Nákup [licencí Enterprise Mobility + Security E5](https://signup.microsoft.com/Signup?OfferId=e6de2192-536a-4dc3-afdc-9e2602b6c790&ali=1)
 
-    - Nákup [licencí Enterprise Mobility + Security E3](https://signup.microsoft.com/Signup?OfferId=4BBA281F-95E8-4136-8B0F-037D6062F54C&ali=1)
+- Nákup [licencí Enterprise Mobility + Security E3](https://signup.microsoft.com/Signup?OfferId=4BBA281F-95E8-4136-8B0F-037D6062F54C&ali=1)
 
 ## <a name="sign-up-using-your-microsoft-volume-licensing-plan"></a>Registrace s použitím plánu multilicenčního programu společnosti Microsoft
 V plánu multilicenčního programu společnosti Microsoft můžete k registraci edice Azure AD Premium použít jeden ze dvou programů (podle toho, kolik licencí chcete získat):
 
-    - **250 a více licencí:** [Smlouva Microsoft Enterprise (EA)](https://www.microsoft.com/en-us/licensing/licensing-programs/enterprise.aspx)
+- **250 a více licencí:** [Smlouva Microsoft Enterprise (EA)](https://www.microsoft.com/en-us/licensing/licensing-programs/enterprise.aspx)
 
-    - **5 až 250 licencí:** [Multilicence Open** Volume License](https://www.microsoft.com/en-us/licensing/licensing-programs/open-license.aspx)
+- **5 až 250 licencí:** [Open Volume License](https://www.microsoft.com/en-us/licensing/licensing-programs/open-license.aspx)
 
-    Další informace o možnostech nákupu s využitím multilicence najdete v tématu o [nákupu prostřednictvím multilicenčního programu](https://www.microsoft.com/en-us/licensing/how-to-buy/how-to-buy.aspx).
+Další informace o možnostech nákupu s využitím multilicence najdete v tématu o [nákupu prostřednictvím multilicenčního programu](https://www.microsoft.com/en-us/licensing/how-to-buy/how-to-buy.aspx).
 
 ## <a name="activate-your-new-license-plan"></a>Aktivace nového licenčního plánu
 Pokud jste si zaregistrovali nový licenční plán Azure AD, musíte ho pro svou organizaci aktivovat. Použijte k tomu potvrzovací e-mail, který vám přijde po nákupu.

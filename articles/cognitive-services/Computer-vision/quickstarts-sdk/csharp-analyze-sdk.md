@@ -3,25 +3,23 @@ title: 'Rychlý start: Analýza obrázku – SDK, C# – Počítačové zpracov�
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu analyzujete obrázek pomocí klientské knihovny C# systému Windows počítačového zpracování obrazu.
 services: cognitive-services
-author: noellelacharite
+author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 09/14/2018
-ms.author: nolachar
-ms.openlocfilehash: 0315b1c90eeae27d30a237aea76e66465818fba4
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.author: pafarley
+ms.openlocfilehash: 81a7b32ef2970efc7f53ec8d25350efb217d7b36
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47056070"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49343637"
 ---
 # <a name="quickstart-analyze-an-image-using-the-computer-vision-sdk-and-c"></a>Rychlý start: Analýza obrázku s použitím sady SDK pro počítačové zpracování obrazu a C#
 
 V tomto rychlém startu analyzujete místní a vzdálený obrázek za účelem extrakce vizuálních prvků pomocí klientské knihovny Windows počítačového zpracování obrazu.
-
-Zdrojový kód k této ukázce je dostupný na [Githubu](https://github.com/Azure-Samples/cognitive-services-vision-csharp-sdk-quickstarts/tree/master/ComputerVision).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -30,6 +28,9 @@ Zdrojový kód k této ukázce je dostupný na [Githubu](https://github.com/Azur
 * Balíček NuGet klientské knihovny [Microsoft.Azure.CognitiveServices.Vision.ComputerVision](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.ComputerVision). Stažení tohoto balíčku není nutné. Pokyny k instalaci jsou uvedené dál.
 
 ## <a name="analyzeimageasync-method"></a>Metoda AnalyzeImageAsync
+
+> [!TIP]
+> Získejte z [GitHubu](https://github.com/Azure-Samples/cognitive-services-vision-csharp-sdk-quickstarts/tree/master/ComputerVision) nejnovější verzi kódu jako řešení sady Visual Studio.
 
 Metody `AnalyzeImageAsync` a `AnalyzeImageInStreamAsync` využívají [rozhraní API pro analýzu obrázků](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) pro vzdálené a místní obrázky, v uvedeném pořadí. Tyto metody můžete použít k extrakci vizuálních funkcí na základě obsahu obrázku a rozhodnutí, které funkce se mají vrátit, včetně:
 
@@ -50,7 +51,7 @@ Pokud chcete spustit ukázku, postupujte takto:
     1. Jakmile se zobrazí, vyberte **Microsoft.Azure.CognitiveServices.Vision.ComputerVision**, potom klikněte na zaškrtávací políčko vedle názvu vašeho projektu a na **Nainstalovat**.
 1. `Program.cs` nahraďte následujícím kódem.
 1. Místo `<Subscription Key>` použijte platný klíč předplatného.
-1. V případě potřeby změňte `computerVision.Endpoint` na oblast Azure spojenou s vašimi klíči předplatného.
+1. V případě potřeby změňte `computerVision.Endpoint` na oblast Azure spojenou s klíči vašeho předplatného.
 1. `<LocalImage>` nahraďte cestou a názvem souboru místního obrázku.
 1. Volitelně můžete `remoteImageUrl` nastavit na jiný obrázek.
 1. Spusťte program.

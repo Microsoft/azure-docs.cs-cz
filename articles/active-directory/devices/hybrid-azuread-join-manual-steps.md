@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/25/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 4155ea7c24746f9d3381f2d1e4a1e08a7a56206a
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 4e3b7aff97cbcebe34e6af4755900e8888c5e57d
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43049933"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49352794"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>Kurz: Ruční konfigurace hybridních zařízení připojených k Azure Active Directory 
 
@@ -92,6 +92,8 @@ Pokud vaše organizace plánuje využívat bezproblémové jednotné přihlašov
 Pokud vaše organizace využívá spravovanou (jinou než federovanou) instalaci s místní službou AD a neprovádí federaci s Azure AD pomocí AD FS, pak se hybridní připojení k Azure AD ve Windows 10 bude spoléhat synchronizaci počítačových objektů ve službě AD do Azure AD. Ujistěte se, že je v konfiguraci synchronizace nástroje Azure AD Connect povolená synchronizace všech organizačních jednotek obsahujících počítačové objekty, které je potřeba hybridně připojit k Azure AD.
 
 V případě zařízení s Windows 10 verze 1703 nebo starší platí, že pokud vaše organizace potřebuje přístup k internetu přes odchozí proxy server, je potřeba implementovat Automatické zjišťování webových proxy serverů (WPAD), kterým umožníte registraci počítačů s Windows 10 v Azure AD. 
+
+Počínaje Windows 10 verze 1803 platí, že i když dojde k selhání pokusu o hybridní připojení zařízení ve federované doméně k Azure AD pomocí AD FS a za předpokladu, že je nástroj Azure AD Connect nakonfigurovaný k synchronizaci objektů počítačů a zařízení s Azure AD, pokusí se zařízení dokončit hybridní připojení k Azure AD pomocí synchronizovaného počítače nebo zařízení.
 
 ## <a name="configuration-steps"></a>Postup konfigurace
 

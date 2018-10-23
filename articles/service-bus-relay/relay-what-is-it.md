@@ -13,12 +13,12 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.date: 10/08/2018
 ms.author: spelluru
-ms.openlocfilehash: 46a9045cdf422ed4f14e5588b3342e8bfde2e4c8
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 3cc87c0acbed317cccaccec687f27c23a1d32cf0
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48888078"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49319332"
 ---
 # <a name="what-is-azure-relay"></a>Co je Azure Relay?
 Služba Azure Relay umožňuje bezpečně zpřístupnit služby spuštěné v podnikové síti pro veřejný cloud. Můžete to provést bez nutnosti otevírat připojení brány firewall nebo provádět výraznější změny infrastruktury podnikové sítě. 
@@ -81,10 +81,9 @@ Následující diagram ukazuje, jak služba Azure Relay zpracovává příchozí
 4. Brána, která tento požadavek přijme, vyhledá předání v úložišti brány. 
 5. Brána přesměruje požadavek na připojení do správné brány uvedené v úložišti brány. 
 6. Brána odešle do čekajícího klienta požadavek na vytvoření dočasného kanálu k uzlu brány, která je nejblíže odesílajícímu klientovi. 
-7. Čekající klient teď vytvoří dočasný kanál a odešle zprávu s odpovědí do brány, která je nejblíže odesílajícímu klientovi.
-8. Brána přesměruje zprávu s odpovědí do odesílajícího klienta. 
-
-Když se vytvoří předávací spojení, klienti si můžou vyměňovat zprávy přes uzel brány, který se používá pro setkání.
+7. Čekající klient vytvoří dočasný kanál k bráně, která je nejblíže odesílajícímu klientovi. Když je teď navázané připojení mezi klienty prostřednictvím brány firewall, můžou si klienti mezi sebou vyměňovat zprávy. 
+8. Brána přesměruje všechny zprávy z čekajícího klienta do odesílajícího klienta. 
+9. Brána přesměruje všechny zprávy z odesílajícího klienta do čekajícího klienta.  
 
 ## <a name="next-steps"></a>Další kroky
 * [Začínáme s WebSockety v .NET](relay-hybrid-connections-dotnet-get-started.md)

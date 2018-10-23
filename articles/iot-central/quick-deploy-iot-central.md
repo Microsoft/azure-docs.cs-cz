@@ -9,28 +9,16 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: af06766d89804b2f3d0aaf061494fb836f6ec262
-ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
+ms.openlocfilehash: 0199efbc1456206c67efb846b4381cae333e3749
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46465601"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49309038"
 ---
 # <a name="create-an-azure-iot-central-application"></a>Vytvoření aplikace Azure IoT Central
 
-Jako _tvůrce_ můžete pomocí uživatelského rozhraní Azure IoT Central definovat vaši aplikaci Azure IoT Central. V tomto rychlém startu se naučíte:
-
-- Vytvořit aplikaci Azure IoT Central, který obsahuje ukázkovou _šablonu zařízení_ a simulovaná _zařízení_
-- Zobrazit funkce šablony zařízení **Refrigerated Vending Machine** (Chladící prodejní automat) ve vaší aplikaci
-- Zobrazit telemetrická data a analýzy ze simulovaných zařízení **Refrigerator** (Chladící box).
-
-V tomto rychlém startu zobrazíte simulované zařízení **Refrigerator** (Chladící box) ze šablony zařízení. Simulované zařízení:
-
-* Odesílá do vaší aplikace telemetrická data, jako je například teploty a tlak.
-* Hlásí vaší aplikaci hodnoty vlastností zařízení, jako je upozornění na pohyb.
-* Má nastavení zařízení, jako je třeba rychlost ventilátoru, která můžete nastavit v aplikaci.
-
-Aby bylo možné otestovat aplikaci před připojením skutečného zařízení, aplikace Azure IoT Central umožňuje vygenerovat simulované zařízení ze šablony zařízení.
+Jako _tvůrce_ můžete pomocí uživatelského rozhraní Azure IoT Central definovat vaši aplikaci Azure IoT Central. V tomto rychlém startu se dozvíte, jak vytvořit aplikaci Azure IoT Central, která obsahuje ukázkovou _šablonu zařízení_ a simulovaná _zařízení_.
 
 ## <a name="create-the-application"></a>Vytvoření aplikace
 

@@ -10,19 +10,19 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 09/07/2018
+ms.date: 10/17/2018
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: a2b4c4824960c21011876a7c0adf029fc56d93d2
-ms.sourcegitcommit: 3150596c9d4a53d3650cc9254c107871ae0aab88
+ms.openlocfilehash: 69a24dba752e4aa374e03e57ce197ae882647373
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47419113"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49378682"
 ---
 # <a name="quickstart-create-azure-resource-manager-templates-by-using-visual-studio-code"></a>Rychlé zprovoznění: Vytvoření šablon Azure Resource Manageru pomocí nástroje Visual Studio Code
 
-Naučte se vytvářet šablony pomocí nástroje Visual Studio Code a rozšíření Nástroje Azure Resource Manageru. Šablony Resource Manageru můžete v nástroji Visual Studio Code vytvářet i bez tohoto rozšíření, poskytuje však možnosti automatického dokončování, které vývoj šablon zjednodušují. Abyste porozuměli konceptům spojeným s nasazením a správou řešení Azure, podívejte se na téma [Přehled Azure Resource Manageru](resource-group-overview.md).
+Zjistěte, jak pomocí Visual Studio Code a rozšíření Nástroje Azure Resource Manageru vytvářet a upravovat šablony Azure Resource Manageru. Šablony Resource Manageru můžete v nástroji Visual Studio Code vytvářet i bez tohoto rozšíření, poskytuje však možnosti automatického dokončování, které vývoj šablon zjednodušují. Abyste porozuměli konceptům spojeným s nasazením a správou řešení Azure, podívejte se na téma [Přehled Azure Resource Manageru](resource-group-overview.md).
 
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
@@ -55,9 +55,14 @@ K dokončení tohoto článku potřebujete:
 
 ## <a name="edit-the-template"></a>Úprava šablony
 
-Abyste se naučili upravit šablonu v nástroji Visual Studio Code, přidáte další element do části výstupů.
+Abyste se naučili upravit šablonu pomocí Visual Studio Code, přidáte další element do části `outputs`.
 
-1. V nástroji Visual Studio Code přidejte jeden další výstup do exportované šablony:
+1. Ve Visual Studio Code zkontrolujte hodnotu parametru **kind** (Druh). Pokud je tato hodnota **Storage**, aktualizujte ji na **StorageV2**.
+
+    ```json
+    "kind": "StorageV2",
+    ```
+2. Přidejte do exportované šablony jeden další výstup:
 
     ```json
     "storageUri": {
@@ -85,25 +90,17 @@ Abyste se naučili upravit šablonu v nástroji Visual Studio Code, přidáte da
 
     ![IntelliSense v nástroji Visual Studio Code v šabloně Resource Manageru](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/resource-manager-templates-visual-studio-code-intellisense.png)
 
-2. Soubor uložte tak, že vyberete **File** (Soubor) >**Save** (Uložit).
+3. Soubor uložte tak, že vyberete **File** (Soubor) >**Save** (Uložit).
 
 ## <a name="deploy-the-template"></a>Nasazení šablony
 
-Šablony můžete nasadit mnoha způsoby.  V tomto rychlém startu použijete Azure Cloud Shell na webu Azure Portal. Cloud Shell podporuje jak Azure CLI, tak i Azure PowerShell. 
+Šablony můžete nasadit mnoha způsoby.  V tomto rychlém startu použijete Azure Cloud Shell. Cloud Shell podporuje jak Azure CLI, tak i Azure PowerShell. 
 
-1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com).
-2. V pravém horním rohu vyberte **Cloud Shell**, jak je znázorněno na tomto obrázku:
-
-    ![Cloud Shell na portálu Azure Portal](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell.png)
-
-    V dolní části okna se otevře Cloud Shell.
-
-3. V levém horním rohu služby Cloud Shell se zobrazí buď **PowerShell**, nebo **Bash**. Pokud chcete použít rozhraní příkazového řádku, musíte otevřít relaci Bash. Pokud chcete spustit PowerShell, musíte otevřít relaci PowerShellu. Chcete-li přepnout mezi Bash a PowerShell, vyberte šipku dolů. Následující obrázek ukazuje přepnutí z PowerShellu na Bash.
+1. Přihlaste se do služby [Azure Cloud Shell](https://shell.azure.com).
 
     ![CLI v Cloud Shellu na portálu Azure Portal](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-choose-cli.png)
-
-    Po přepnutí se vyžaduje restartování prostředí.
-4. Vyberte **Nahrát nebo stáhnout soubory** a potom vyberte **Nahrát**.
+2. V levém horním rohu služby Cloud Shell se zobrazí buď **PowerShell**, nebo **Bash**. Pokud chcete použít rozhraní příkazového řádku, musíte otevřít relaci Bash. Pokud chcete spustit PowerShell, musíte otevřít relaci PowerShellu. Chcete-li přepnout mezi Bash a PowerShell, vyberte šipku dolů. Viz předchozí snímek obrazovky. Po přepnutí se vyžaduje restartování prostředí.
+3. Vyberte **Nahrát nebo stáhnout soubory** a potom vyberte **Nahrát**.
 
     # <a name="clitabcli"></a>[Rozhraní příkazového řádku](#tab/CLI)
 
@@ -116,7 +113,7 @@ Abyste se naučili upravit šablonu v nástroji Visual Studio Code, přidáte da
     ---
 
     Soubor šablony musíte nejprve nahrát, a až pak ho můžete nasadit z prostředí.
-5. Vyberte soubor, který jste si uložili dříve v tomto rychlém startu. Výchozí název je **azuredeploy.json**.
+5. Vyberte soubor, který jste uložili v předchozí části. Výchozí název je **azuredeploy.json**.
 6. V Cloud Shellu spusťte příkaz **ls** a ověřte, že se soubor nahrál úspěšně. Obsah šablony můžete ověřit také pomocí příkazu **cat**. Následující obrázek ukazuje spuštění příkazu v prostředí Bash.  Stejné příkazy se používají i v relaci PowerShellu.
 
     # <a name="clitabcli"></a>[Rozhraní příkazového řádku](#tab/CLI)
@@ -132,20 +129,30 @@ Abyste se naučili upravit šablonu v nástroji Visual Studio Code, přidáte da
 
     # <a name="clitabcli"></a>[Rozhraní příkazového řádku](#tab/CLI)
     ```cli
-    az group create --name <ResourceGroupName> --location <AzureLocation>
-
-    az group deployment create --name <DeploymentName> --resource-group <ResourceGroupName> --template-file <TemplateFileName>
+    echo "Enter the Resource Group name:" &&
+    read resourceGroupName &&
+    echo "Enter the name for this deployment:" &&
+    read deploymentName &&
+    echo "Enter the location (i.e. centralus):" &&
+    read location &&
+    az group create --name $resourceGroupName --location $location &&
+    az group deployment create --name $deploymentName --resource-group $resourceGroupName --template-file "azuredeploy.json"
     ```
    
     # <a name="powershelltabpowershell"></a>[PowerShell](#tab/PowerShell)
     
     ```powershell
-    New-AzureRmResourceGroup -Name <ResourceGroupName> -Location <AzureLocation>
-
-    New-AzureRmResourceGroupDeployment -ResourceGroupName <ResourceGroupName> -TemplateFile <TemplateFileName>
+    $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
+    $deploymentName = Read-Host -Prompt "Enter the name for this deployment"
+    $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
+    
+    New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
+    New-AzureRmResourceGroupDeployment -Name $deploymentName -ResourceGroupName $resourceGroupName -TemplateFile "azuredeploy.json"
     ```
     
     ---
+
+    Pokud jste soubor uložili s jiným názvem než **azuredeploy.json**, aktualizujte název souboru šablony.
 
     Následující snímek obrazovky ukazuje ukázkové nasazení:
 
@@ -159,26 +166,25 @@ Abyste se naučili upravit šablonu v nástroji Visual Studio Code, přidáte da
     
     ---
 
-    Na snímku obrazovky jsou použity tyto hodnoty:
-
-    - **&lt;ResourceGroupName>**: myresourcegroup0709. Tento parametr je použit na dvou místech.  Nezapomeňte použít stejnou hodnotu.
-    - **&lt;AzureLocation>**: eastus2
-    - **&lt;DeployName>**: mydeployment0709
-    - **&lt;TemplateFile>**: azuredeploy.json
-
-    Ve výstupu na snímku obrazovky má účet úložiště název *3tqebj3slyfyestandardsa*. 
+    Na snímku obrazovky je zvýrazněný název účtu úložiště a adresa URL úložiště v části outputs (Výstupy). Název účtu úložiště budete potřebovat v dalším kroku.
 
 7. Spuštěním následujícího příkazu rozhraní příkazového řádku nebo PowerShellu zobrazíte nově vytvořený účet úložiště:
 
     # <a name="clitabcli"></a>[Rozhraní příkazového řádku](#tab/CLI)
     ```cli
-    az storage account show --resource-group <ResourceGroupName> --name <StorageAccountName>
+    echo "Enter the Resource Group name:" &&
+    read resourceGroupName &&
+    echo "Enter the Storage Account name:" &&
+    read storageAccountName &&
+    az storage account show --resource-group $resourceGroupName --name $storageAccountName
     ```
    
     # <a name="powershelltabpowershell"></a>[PowerShell](#tab/PowerShell)
     
     ```powershell
-    Get-AzureRmStorageAccount -ResourceGroupName <ResourceGroupName> -Name <StorageAccountName>
+    $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
+    $storageAccountName = Read-Host -Prompt "Enter the Storage Account name"
+    Get-AzureRmStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName
     ```
     
     ---

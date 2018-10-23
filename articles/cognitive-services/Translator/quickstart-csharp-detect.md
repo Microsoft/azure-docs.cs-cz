@@ -10,18 +10,16 @@ ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/15/2018
 ms.author: nolachar
-ms.openlocfilehash: b10072e01391da3845567c16fa7cc312ed23ceb2
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: b9a5dbdc1e7950400597c76359b8eee4268af6d0
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46368048"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49320369"
 ---
 # <a name="quickstart-identify-language-from-text-with-c35"></a>Rychlý start: Identifikace jazyka z textu s C&#35;
 
 V tomto rychlém startu identifikujete jazyk zdrojového textu pomocí služby Translator Text API.
-
-Zdrojový kód k této ukázce je dostupný na [Githubu](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-C-Sharp).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -30,6 +28,9 @@ Ke spuštění tohoto kódu ve Windows budete potřebovat [Visual Studio 2017](h
 Abyste mohli použít službu Translator Text API, budete potřebovat klíč předplatného. Přečtěte si, [jak se zaregistrovat ve službě Translator Text API](translator-text-how-to-signup.md).
 
 ## <a name="detect-request"></a>Žádost Detect
+
+> [!TIP]
+> Získejte z [GitHubu](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-C-Sharp) nejnovější verzi kódu.
 
 Následující kód určí jazyk zdrojového textu pomocí metody [Detect](./reference/v3-0-detect.md).
 

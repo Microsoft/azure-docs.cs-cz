@@ -1,6 +1,6 @@
 ---
 title: 'Rychlý start: Vytvoření pracovního prostoru služby Machine Learning na webu Azure Portal – Azure Machine Learning'
-description: Použijte Azure Portal k vytvoření pracovního prostoru služby Azure Machine Learning. Tento pracovní prostor je základním blokem v cloudu pro experimentování, trénování a nasazení modelů strojového učení pomocí služby Azure Machine Learning.
+description: Použijte portál Azure Portal k vytvoření pracovního prostoru Azure Machine Learning. Tento pracovní prostor je základním blokem v cloudu, který můžete využít k experimentování, trénování a nasazování modelů strojového učení pomocí služby Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -9,26 +9,31 @@ ms.reviewer: sgilley
 author: rastala
 ms.author: roastala
 ms.date: 09/24/2018
-ms.openlocfilehash: b6f0201a36a676e7647b9f5e60bc2df3415b9594
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: 14bd85a23e2630a1cf2a8b5621d669c4c6748168
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48831326"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49376614"
 ---
-# <a name="quickstart-use-the-azure-portal-to-get-started-with-azure-machine-learning-service"></a>Rychlý start: Začínáme se službou Azure Machine Learning s využitím webu Azure Portal
+# <a name="quickstart-use-the-azure-portal-to-get-started-with-azure-machine-learning"></a>Rychlý start: Začínáme se službou Azure Machine Learning s využitím webu Azure Portal
 
-V tomto rychlém startu pomocí webu Azure Portal vytvoříte pracovní prostor služby Azure Machine Learning. Tento pracovní prostor je základním blokem v cloudu pro experimentování, trénování a nasazení modelů strojového učení pomocí služby Azure Machine Learning. 
+V tomto rychlém startu pomocí webu Azure Portal vytvoříte pracovní prostor služby Azure Machine Learning. Tento pracovní prostor je základním blokem v cloudu, který můžete využít k experimentování, trénování a nasazování modelů strojového učení pomocí služby Machine Learning. 
 
-V tomto kurzu provedete následující:
+V tomto kurzu se naučíte:
 
-* Vytvoření pracovního prostoru ve vašem předplatném Azure
-* Jeho vyzkoušení ho pomocí Pythonu v Azure Notebooku a protokolování hodnot napříč více iteracemi
-* Zobrazení protokolovaných hodnot ve vašem pracovním prostoru
+* Vytvořit pracovní prostor ve vašem předplatném Azure.
+* Vyzkoušíte ho pomocí Pythonu v poznámkovém bloku Azure a budete protokolovat hodnoty napříč několika iteracemi.
+* Zobrazíte zaprotokolované hodnoty ve vašem pracovním prostoru.
 
-Abychom vám usnadnili práci, jsou do pracovního prostoru automaticky přidané tyto prostředky Azure, pokud jsou regionálně dostupné: [registr kontejneru](https://azure.microsoft.com/services/container-registry/), [úložiště](https://azure.microsoft.com/services/storage/), [Application Insights](https://azure.microsoft.com/services/application-insights/) a [trezor klíčů](https://azure.microsoft.com/services/key-vault/).
+Do vašeho pracovního prostoru se automaticky přidají následující prostředky Azure, pokud jsou regionálně dostupné:
 
-Prostředky, které vytvoříte, je možné použít i ke splnění požadavků v dalších kurzech a článcích s návody pro službu Azure Machine Learning. Stejně jako u ostatních služeb Azure platí omezení určitých prostředků (např. velikost clusteru BatchAI) přidružených ke službě Azure Machine Learning. Přečtěte si tento [článek](how-to-manage-quotas.md) o výchozích omezeních a způsobu, jak požádat o navýšení kvóty.
+  - [Azure Container Registry](https://azure.microsoft.com/services/container-registry/)
+  - [Azure Storage](https://azure.microsoft.com/services/storage/)
+  - [Azure Application Insights](https://azure.microsoft.com/services/application-insights/) 
+  - [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)
+
+Prostředky, které vytvoříte, je možné použít i ke splnění požadavků v dalších kurzech a článcích s návody pro službu Machine Learning. Stejně jako u ostatních služeb Azure platí pro službu Machine Learning omezení určitých prostředků. Příkladem je velikost clusteru Azure Batch AI. Informace o výchozích omezeních a postup navýšení kvóty najdete v [tomto článku](how-to-manage-quotas.md).
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
@@ -37,56 +42,58 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 [!INCLUDE [aml-create-portal](../../../includes/aml-create-in-portal.md)]
 
-Na stránce pracovního prostoru klikněte na `Explore your Azure Machine Learning service workspace`
+Na stránce pracovního prostoru vyberte `Explore your Azure Machine Learning service workspace`.
 
- ![prozkoumání pracovního prostoru](./media/quickstart-get-started/explore_aml.png)
+ ![Prozkoumání pracovního prostoru](./media/quickstart-get-started/explore_aml.png)
 
 
 ## <a name="use-the-workspace"></a>Použití pracovního prostoru
 
-Teď zjistíte, jak vám pracovní prostor pomůže spravovat vaše skripty strojového učení. V této části provedete:
+Teď zjistíte, jak vám pracovní prostor pomůže spravovat vaše skripty strojového učení. V této části:
 
-* Otevření poznámkového bloku v Azure Notebooks
-* Spuštění kódu, který vytvoří zaznamenané hodnoty
-* Zobrazení protokolovaných hodnot ve vašem pracovním prostoru
+* Otevřete poznámkový blok ve službě Azure Notebooks.
+* Spustíte kód, který vytvoří zaprotokolované hodnoty.
+* Zobrazíte zaprotokolované hodnoty ve vašem pracovním prostoru.
 
-Toto je jeden příklad, jak vám pracovní prostor může pomoct udržovat si přehled o informacích generovaných ve skriptu. 
+Tento příklad ukazuje, jak vám pracovní prostor může pomoct udržovat si přehled o informacích generovaných ve skriptu. 
 
 ### <a name="open-a-notebook"></a>Otevření poznámkového bloku 
 
-Azure Notebooks nabízí bezplatnou cloudovou platformu pro poznámkové bloky Jupyter, které jsou předem nakonfigurované vším, co potřebujete ke spuštění služby Azure Machine Learning.  
+Azure Notebooks nabízí bezplatnou cloudovou platformu pro poznámkové bloky Jupyter, které jsou předem nakonfigurované vším, co potřebujete ke spuštění služby Machine Learning.  
 
-Kliknutím na tlačítko `Open Azure Notebooks` můžete vyzkoušet svůj první experiment.
+Vyberte `Open Azure Notebooks` a vyzkoušejte první experiment.
 
- ![Spuštění poznámkového bloku Azure](./media/quickstart-get-started/explore_ws.png)
+ ![Otevření služby Azure Notebooks](./media/quickstart-get-started/explore_ws.png)
 
-Po přihlášení se otevře nová karta a zobrazí se výzva `Clone Library`.  Klikněte na `Clone`
+Vaše organizace může před přihlášením vyžadovat [souhlas správce](https://notebooks.azure.com/help/signing-up/work-or-school-account/admin-consent).
+
+Po přihlášení se otevře nová karta a zobrazí se výzva `Clone Library`. Vyberte `Clone`
 
 
 ### <a name="run-the-notebook"></a>Spuštění poznámkového bloku
 
-Spolu se dvěma poznámkovými bloky uvidíte soubor `config.json`.  Tento konfigurační soubor obsahuje informace o pracovním prostoru, který jste právě vytvořili.  
+Spolu se dvěma poznámkovými bloky uvidíte soubor `config.json`. Tento konfigurační soubor obsahuje informace o vytvořeném pracovním prostoru.  
 
-Kliknutím na `01.run-experiment.ipynb` otevřete poznámkový blok.
+Výběrem souboru `01.run-experiment.ipynb` otevřete poznámkový blok.
 
-Jednotlivé buňky můžete spustit pomocí `Shift`+`Enter`.  Nebo pomocí nabídky `Cells` > `Run All` spusťte celý poznámkový blok.  Pokud se vedle buňky zobrazí [*], znamená to, že je spuštěná.  Jakmile se kód buňky dokončí, zobrazí se číslo.
+Jednotlivé buňky můžete spustit pomocí `Shift`+`Enter`. Nebo vyberte `Cells` > `Run All` a spusťte celý poznámkový blok. Když se vedle buňky zobrazí hvězdička [*], znamená to, že je spuštěná. Po dokončení kódu v této buňce se zobrazí číslo.
 
-Může se zobrazit výzva k přihlášení.  Zkopírujte kód ve zprávě, pak klikněte na odkaz a vložte kód do nového okna.  Dávejte pozor, abyste nezkopírovali mezeru před nebo za kódem.  Přihlaste se pomocí stejného účtu, který jste použili na webu Azure Portal.
+Může se zobrazit výzva k přihlášení. Zkopírujte kód ve zprávě. Potom vyberte odkaz a vložte kód do nového okna. Dávejte pozor, abyste nezkopírovali mezeru před nebo za kódem. Přihlaste se pomocí stejného účtu, který jste použili na webu Azure Portal.
 
- ![přihlášení](./media/quickstart-get-started/login.png)
+ ![Přihlásit se](./media/quickstart-get-started/login.png)
 
 Druhá buňka v poznámkovém bloku čte z `config.json` pro připojení k vašemu pracovnímu prostoru.
 ```
 ws = Workspace.from_config()
 ```
 
-Třetí buňka kódu spustí experiment s názvem „my-first-experiment“.  Tento název použijete k vyhledání informací o spuštění zpět ve vašem pracovním prostoru.
+Třetí buňka kódu spustí experiment s názvem „my-first-experiment“. Tento název použijte k vyhledání informací o spuštění zpět ve vašem pracovním prostoru.
 
 ```
 experiment = Experiment(workspace_object=ws, name = "my-first-experiment")
 ```
 
-Všimněte si v poslední buňce poznámkového bloku hodnot, které se zapisují do souboru protokolu.
+V poslední buňce poznámkového bloku si všimněte hodnot, které se zapisují do souboru protokolu.
 
 ```
 # Log final results
@@ -98,35 +105,37 @@ Tyto hodnoty můžete zobrazit ve svém pracovním prostoru po spuštění kódu
 
 ## <a name="view-logged-values"></a>Zobrazení zaprotokolovaných hodnot
 
-Po dokončení všech buněk v poznámkovém bloku přejděte zpět na stránku portálu.  
+Po spuštění všech buněk v poznámkovém bloku se vraťte na stránku portálu.  
 
-Klikněte na `View Experiments`.
+Vyberte `View Experiments`.
 
-![zobrazení experimentů](./media/quickstart-get-started/view_exp.png)
+![Zobrazení experimentů](./media/quickstart-get-started/view_exp.png)
 
 Zavře automaticky otevírané okno `Reports`.
 
-Klikněte na `my-first-experiment`.
+Vyberte `my-first-experiment`.
 
-Prohlédněte si informace o spuštění, které jste právě provedli.  Posuňte se dolů na stránce a najděte tabulku spuštění a klikněte na odkaz s číslem spuštění.
+Prohlédněte si informace o spuštění, které jste právě provedli. Posuňte se dolů na stránce a najděte tabulku spuštění. Vyberte odkaz s číslem spuštění.
 
- ![odkaz historie spuštění](./media/quickstart-get-started/report.png)
+ ![Odkaz na historii spuštění](./media/quickstart-get-started/report.png)
 
-Zobrazí se diagramy, které se automaticky vytvořily z protokolovaných hodnot:
+Zobrazí se diagramy, které se automaticky vytvořily ze zaprotokolovaných hodnot.  
 
-   ![zobrazení historie](./media/quickstart-get-started/plots.png)
+   ![Zobrazení historie](./media/quickstart-get-started/plots.png)
+
+Vzhledem k tomu, že kód pro odhad čísla pí používá náhodné hodnoty, ve vašich diagramech se zobrazí jiné hodnoty.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků 
 
 [!INCLUDE [aml-delete-resource-group](../../../includes/aml-delete-resource-group.md)]
 
-Můžete také zachovat skupinu prostředků, ale odstranit jeden pracovní prostor tak, že zobrazíte vlastnosti pracovního prostoru a vyberete tlačítko Odstranit.
+Můžete také zachovat skupinu prostředků, ale odstranit jeden pracovní prostor. Zobrazte vlastnosti pracovního prostoru a vyberte **Odstranit**.
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď máte vytvořené prostředky potřebné k tomu, abyste mohli začít experimentovat a nasazovat modely. Také jste spustili kód v poznámkovém bloku a prozkoumali historii spuštění z tohoto kódu ve vašem pracovním prostoru v cloudu.
+Vytvořili jste prostředky potřebné k experimentování s modely a jejich nasazení. Také jste spustili kód v poznámkovém bloku. Kromě toho jste prozkoumali historii spuštění z tohoto kódu ve vašem pracovním prostoru v cloudu.
 
-Podrobný pracovní postup najdete v kurzech pro Azure Machine Learning, kde můžete trénovat a nasadit model.  
+Podrobný pracovní postup najdete v kurzech pro Machine Learning věnovaných trénování a nasazení modelu.  
 
 > [!div class="nextstepaction"]
-> [Kurz: Trénování modelu klasifikace obrázků](tutorial-train-models-with-aml.md)
+> [Kurz: Školení modelu klasifikace obrázků](tutorial-train-models-with-aml.md)

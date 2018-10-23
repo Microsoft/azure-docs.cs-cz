@@ -4,23 +4,21 @@ description: Ukázkové šablony Azure Resource Manageru pro funkci Web Apps slu
 services: app-service
 documentationcenter: app-service
 author: tfitzmac
-manager: timlt
-editor: ggailey777
 tags: azure-service-management
 ms.service: app-service
 ms.devlang: na
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: app-service
-ms.date: 02/26/2018
+ms.date: 10/15/2018
 ms.author: tomfitz
 ms.custom: mvc
-ms.openlocfilehash: 155b47fc4c664701ec0f21bdc5ae34f3d7f666ff
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 627480fab7a28794a215642fda8e57280f19f19b
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
-ms.locfileid: "29933064"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49345063"
 ---
 # <a name="azure-resource-manager-templates-for-web-apps"></a>Šablony Azure Resource Manageru pro Web Apps
 
@@ -29,15 +27,17 @@ Následující tabulka obsahuje odkazy na šablony Azure Resource Manageru pro f
 | | |
 |-|-|
 |**Nasazení webové aplikace**||
+| [Plán služby App Service a základní webová aplikace pro Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-basic-linux) | Nasadí webovou aplikaci Azure nakonfigurovanou pro Linux. |
+| [Plán služby App Service a základní webová aplikace pro Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-basic-windows) | Nasadí webovou aplikaci Azure nakonfigurovanou pro Windows. |
 | [Webová aplikace propojená s úložištěm GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-github-deploy)| Nasadí webovou aplikaci Azure, která si přetáhne kód z GitHubu. |
 | [Webová aplikace s vlastními sloty nasazení](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-custom-deployment-slots)| Nasadí webovou aplikaci Azure s vlastními sloty nebo prostředími nasazení. |
 |**Konfigurace webové aplikace**||
 | [Certifikát webové aplikace z trezoru klíčů](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-certificate-from-key-vault)| Nasadí certifikát webové aplikace Azure z tajného kódu služby Azure Key Vault a použije ho k vytvoření vazby SSL. |
 | [Webová aplikace s vlastní doménou](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-custom-domain)| Nasadí webovou aplikaci Azure s vlastním názvem hostitele. |
 | [Webová aplikace s vlastní doménou a SSL](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-custom-domain-and-ssl)| Nasadí webovou aplikaci Azure s vlastním názvem hostitele a ze služby Key Vault získá certifikát webové aplikace pro vytvoření vazby SSL. |
-| [Webová aplikace s rozšířením jazyka Go](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-with-golang)| Nasadí webovou aplikaci Azure s rozšířením webu pro jazyk Go. Pak můžete v Azure spouštět webové aplikace vyvinuté v jazyce Go. |
+| [Webová aplikace s rozšířením jazyka Go](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-with-golang)| Nasadí webovou aplikaci Azure s rozšířením webu Golang. Pak můžete v Azure spouštět webové aplikace vyvinuté v jazyce Golang. |
 | [Webová aplikace s Javou 8 a Tomcat 8](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-java-tomcat)| Nasadí webovou aplikaci Azure s povolenou Javou 8 a Tomcat 8. Pak můžete v Azure spouštět aplikace v Javě. |
-|**Webová aplikace v Linuxu**||
+|**Webová aplikace pro Linux s připojenými prostředky**||
 | [Webová aplikace v Linuxu s MySQL](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-linux-managed-mysql) | Nasadí webovou aplikaci Azure v Linuxu se službou Azure Database for MySQL. |
 | [Webová aplikace v Linuxu s PostgreSQL](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-linux-managed-postgresql) | Nasadí webovou aplikaci Azure v Linuxu se službou Azure Database for PostgreSQL. |
 |**Webová aplikace s připojenými prostředky**||

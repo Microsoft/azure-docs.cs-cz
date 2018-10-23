@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 06/12/2018
 ms.author: kgremban
 ms.custom: mvc
-ms.openlocfilehash: 6e3571fb54f12ef3bb5519f572b8af5bf9247e7d
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 107852bd2c4ec0b932008b498dde4ea77f8071a3
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37032692"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49116332"
 ---
 # <a name="what-is-azure-iot-edge"></a>Co je Azure IoT Edge
 
@@ -55,7 +55,7 @@ Modul runtime Azure IoT Edge umožňuje používat na hraničních zařízeních
 * Usnadňuje komunikaci mezi moduly v příslušném hraničním zařízení IoT.
 * Usnadňuje komunikaci mezi příslušným hraničním zařízením IoT a cloudem.
 
-![Modul runtime IoT Edge odesílá přehledy a sestavy do služby IoT Hub.][1]
+![Modul runtime IoT Edge odesílá přehledy a sestavy do služby IoT Hub.](./media/about-iot-edge/runtime.png)
 
 Jak budete používat hraniční zařízení Azure IoT je zcela na vás. Modul runtime se často používá k nasazování AI do bran, které agregují a zpracovávají data z několika místních zařízení, to je však pouze jedna z možností. Zařízení typu list také můžou být hraničními zařízeními Azure IoT bez ohledu na to, jestli jsou připojená k bráně nebo přímo ke cloudu.
 
@@ -71,15 +71,10 @@ Azure IoT Edge se bezproblémově integruje s akcelerátory řešení Azure IoT 
 * Odeslat úlohu do sady zařízení.
 * Monitorovat úlohy spuštěné na zařízeních v poli.
 
-![Telemetrie, přehledy a akce zařízení se koordinují s cloudem][2]
+![Telemetrie, přehledy a akce zařízení se koordinují s cloudem](./media/about-iot-edge/cloud-interface.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-Vyzkoušejte si tyto koncepty při [nasazení IoT Edge na simulovaném zařízení][lnk-quickstart].
+Vyzkoušejte si tyto koncepty při [nasazení IoT Edge na simulovaném zařízení](quickstart.md).
 
-<!-- Images -->
-[1]: ./media/about-iot-edge/runtime.png
-[2]: ./media/about-iot-edge/cloud-interface.png
-
-<!-- Links -->
-[lnk-quickstart]: quickstart.md
+ 

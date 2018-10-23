@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: e68050e4902183b899bf3fee31bef088b1a0faf2
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 4db494de87993a6434eaf5dbf441094578d72ea4
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45576064"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49165960"
 ---
 # <a name="what-is-azure-maps"></a>Co je služba Azure Maps?
 
@@ -23,6 +23,14 @@ Azure Maps je kolekce geoprostorových služeb založená na čerstvých mapový
 Následující video vysvětluje Azure Maps do hloubky:
 
 <iframe src="https://channel9.msdn.com/Shows/Azure-Friday/Azure-Location-Based-Services/player" width="960" height="540" allowFullScreen frameBorder="0"></iframe>
+
+## <a name="map-controls"></a>Mapové ovládací prvky
+
+### <a name="web-control"></a>Webový ovládací prvek
+
+Webový ovládací prvek Azure Maps umožňuje přizpůsobit interaktivní mapy s využitím vlastního obsahu a obrázků, které chcete zobrazit ve svých webových nebo mobilních aplikacích. Tento ovládací prvek využívá WebGL a umožňuje vykreslovat rozsáhlé datové sady s vysokým výkonem. Ovládací prvky můžete vyvíjet pomocí JavaScriptu nebo TypeScriptu.
+
+![Webový ovládací prvek Azure Maps](media/about-azure-maps/Introduction_WebMapControl.png)
 
 ## <a name="services-in-azure-maps"></a>Služby v rámci Azure Maps
 

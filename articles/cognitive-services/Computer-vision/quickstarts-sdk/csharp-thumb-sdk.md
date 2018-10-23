@@ -3,25 +3,23 @@ title: 'Rychlý start: Vygenerování miniatury – SDK, C# – Počítačové z
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu vygenerujete miniaturu z obrázku pomocí klientské knihovny C# systému Windows počítačového zpracování obrazu.
 services: cognitive-services
-author: noellelacharite
+author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 09/14/2018
-ms.author: nolachar
-ms.openlocfilehash: 8fdbcf5bfe4d4fe60a2858b34b38c01d66e75d99
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.author: pafarley
+ms.openlocfilehash: 758021a9428672789923d1774f51fd319fe9885f
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47054808"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49343108"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-sdk-and-c"></a>Rychlý start: Vygenerování miniatury pomocí sady SDK počítačového zpracování obrazu a C#
 
 V tomto rychlém startu vygenerujete miniaturu z obrázku pomocí klientské knihovny systému Windows počítačového zpracování obrazu.
-
-Zdrojový kód k této ukázce je dostupný na [Githubu](https://github.com/Azure-Samples/cognitive-services-vision-csharp-sdk-quickstarts/tree/master/ComputerVision).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -30,6 +28,9 @@ Zdrojový kód k této ukázce je dostupný na [Githubu](https://github.com/Azur
 * Balíček NuGet klientské knihovny [Microsoft.Azure.CognitiveServices.Vision.ComputerVision](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.ComputerVision). Stažení tohoto balíčku není nutné. Pokyny k instalaci jsou uvedené dál.
 
 ## <a name="generatethumbnailasync-method"></a>Metoda GenerateThumbnailAsync
+
+> [!TIP]
+> Získejte z [GitHubu](https://github.com/Azure-Samples/cognitive-services-vision-csharp-sdk-quickstarts/tree/master/ComputerVision) nejnovější verzi kódu jako řešení sady Visual Studio.
 
 Metody `GenerateThumbnailAsync` a `GenerateThumbnailInStreamAsync` využívají [rozhraní API pro získání miniatur](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb) pro vzdálené a místní obrázky, v uvedeném pořadí.  Tyto metody můžete použít k vygenerování miniatury obrázku. Zadáte výšku a šířku, které se mohou od poměru stran vstupního obrázku lišit. Počítačové zpracování obrazu použije chytré oříznutí, které inteligentně identifikuje oblast zájmu a na základě této oblasti vygeneruje souřadnice oříznutí.
 
@@ -42,7 +43,7 @@ Pokud chcete spustit ukázku, postupujte takto:
     1. Jakmile se zobrazí, vyberte **Microsoft.Azure.CognitiveServices.Vision.ComputerVision**, potom klikněte na zaškrtávací políčko vedle názvu vašeho projektu a na **Nainstalovat**.
 1. `Program.cs` nahraďte následujícím kódem.
 1. Místo `<Subscription Key>` použijte platný klíč předplatného.
-1. V případě potřeby změňte `computerVision.Endpoint` na oblast Azure spojenou s vašimi klíči předplatného.
+1. V případě potřeby změňte `computerVision.Endpoint` na oblast Azure spojenou s klíči vašeho předplatného.
 1. Volitelně můžete nahradit `<LocalImage>` cestou a názvem místního obrázku (pokud není nastaveno, bude se ignorovat).
 1. Volitelně můžete `remoteImageUrl` nastavit na jiný obrázek.
 1. Volitelně můžete nastavit `writeThumbnailToDisk` na `true` a uložit tak miniaturu na disk.

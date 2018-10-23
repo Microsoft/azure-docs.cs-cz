@@ -7,12 +7,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: tutorial
 ms.date: 09/24/2018
-ms.openlocfilehash: 2e4d625cd123583baa30fde8e9826f5b57da49fe
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: ef8809afa2da36f44384d784e32532b7b121e3a9
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393583"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49379140"
 ---
 # <a name="tutorial-monitor-and-tune-azure-database-for-postgresql"></a>Kurz: Sledování a ladění ve službě Azure Database for PostgreSQL
 
@@ -28,7 +28,7 @@ Azure Database for PostgreSQL obsahuje funkce, které vám pomohou pochopit a zl
 Musíte mít server Azure Database for PostgreSQL s PostgreSQL verze 9.6 nebo 10. Chcete-li vytvořit server, můžete sledovat postup v části [Vytvořit kurz](tutorial-design-database-using-azure-portal.md).
 
 > [!IMPORTANT]
-> **Query Store**, **Query Performance Insight** a **doporučení o výkonu** jsou ve verzi Public Preview v omezeném počtu oblastí.
+> **Query Store**, **Query Performance Insight** a **doporučení k výkonu** jsou ve verzi Public Preview.
 
 ## <a name="enabling-data-collection"></a>Povolení shromažďování dat
 [Query Store](concepts-query-store.md) na váš server zaznamenává historii dotazů a statistické údaje čekání a ukládá je do databáze na serveru **azure_sys**. Je to funkce vyžadující váš souhlas. Chcete-li ji aktivovat:

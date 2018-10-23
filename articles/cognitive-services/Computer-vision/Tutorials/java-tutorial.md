@@ -10,12 +10,12 @@ ms.component: computer-vision
 ms.topic: tutorial
 ms.author: kefre
 ms.date: 09/21/2017
-ms.openlocfilehash: cca35d031e860e014c8fd84b0daf6b4d60d18046
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 36a8a49ee49636d186ca217ae223b1eebf9bb54b
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45985843"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49340252"
 ---
 # <a name="tutorial-computer-vision-api-java"></a>Kurz: Rozhraní API pro počítačové zpracování obrazu v Javě
 
@@ -26,7 +26,7 @@ Prozkoumejte aplikaci v Java Swingu, která používá rozhraní REST API pro po
 V tomto kurzu se naučíte používat Počítačové zpracování obrazu k:
 
 > [!div class="checklist"]
-> * Analýze obrázku
+> * Analýza obrázku
 > * Identifikaci přirozené nebo umělé památky na obrázku
 > * Identifikaci celebrity na obrázku
 > * Vytvoření kvalitní miniatury obrázku
@@ -45,7 +45,9 @@ Tento kurz jsme vyvinuli v integrovaném vývojovém prostředí (IDE) NetBeans.
 
 Před vytvořením příkladu musíte získat předplatné rozhraní API pro počítačové zpracování obrazu, které je součástí Azure Cognitive Services. Podrobnosti o správě předplatného a klíče najdete v [předplatných](https://azure.microsoft.com/try/cognitive-services/). V tomto kurzu můžete použít jak primární, tak i sekundární klíče. 
 
-## <a name="download-the-tutorial-project"></a>Stáhněte si výukový projekt
+## <a name="acquire-the-incomplete-tutorial-project"></a>Získání neúplného výukového projektu
+
+### <a name="download-the-tutorial-project"></a>Stáhněte si výukový projekt
 
 1. Přejděte do úložiště [Cognitive Services Java Computer Vision Tutorial](https://github.com/Azure-Samples/cognitive-services-java-computer-vision-tutorial).
 1. Klikněte na tlačítko **Naklonovat nebo stáhnout**.
@@ -53,7 +55,7 @@ Před vytvořením příkladu musíte získat předplatné rozhraní API pro po�
 
 Obsah souboru ZIP není nutné extrahovat, protože NetBeans projekt importuje přímo z něj.
 
-## <a name="import-the-tutorial-project"></a>Import výukového projektu
+### <a name="import-the-tutorial-project"></a>Import výukového projektu
 
 Soubor **cognitive-services-java-computer-vision-tutorial-master.zip** importujte do NetBeans.
 
@@ -65,29 +67,27 @@ Soubor **cognitive-services-java-computer-vision-tutorial-master.zip** importujt
 1. Dvakrát klikněte na **Mainframe.java**, aby se soubor načetl do editoru NetBeans. Zobrazí se karta **Design** (Návrh) souboru **MainFrame.java**.
 1. Klikněte na kartu **Source** (Zdroj), abyste si zobrazili zdrojový kód v Javě.
 
-## <a name="build-and-run-the-tutorial-project"></a>Sestavení a spuštění výukového projektu
+### <a name="build-and-run-the-tutorial-project"></a>Sestavení a spuštění výukového projektu
 
 1. Stisknutím klávesy **F6** sestavte a spusťte výukovou aplikaci.
 
     Ve výukové aplikaci klikněte na kartu, aby se zobrazilo podokno dané funkce. Tlačítka nic neprovádí, protože mají prázdné metody.
 
-    V dolní části okna se nachází pole **Subscription Key** (Klíč předplatného) a **Subscription Region** (Oblast předplatného). Tato pole se musí vyplnit platným klíčem předplatného a správnou oblastí daného klíče. Pokud potřebujete získat klíč předplatného, přejděte na [předplatná](https://azure.microsoft.com/try/cognitive-services/). Pokud jste z tohoto odkazu získali klíč předplatného zkušební verze, pak je výchozí oblast **westcentralus** správnou oblastí vašich klíčů předplatného.
+    V dolní části okna se nachází pole **Subscription Key** (Klíč předplatného) a **Subscription Region** (Oblast předplatného). Tato pole se musí vyplnit platným klíčem předplatného a správnou oblastí daného klíče. Pokud potřebujete získat klíč předplatného, přejděte na [předplatná](https://azure.microsoft.com/try/cognitive-services/). Pokud jste z tohoto odkazu získali klíč předplatného bezplatné zkušební verze, pak je výchozí oblast **westcentralus** správnou oblastí vašich klíčů předplatného.
 
 1. Výukovou aplikaci ukončete.
 
-## <a name="add-the-tutorial-code"></a>Přidání výukového kódu
+## <a name="add-the-tutorial-code-to-the-project"></a>Přidání výukového kódu do projektu
 
-Aplikace v Java Swingu má nastavených šest karet. Každá karta představuje jinou funkci počítačového zpracování obrazu (analýza, OCR atd.). Následujících šest částí kurzu na sobě nezávisí, takže jich můžete přidat kolik chcete – jednu, několik nebo všech šest. A můžete je přidávat v libovolném pořadí.
+Aplikace v Java Swingu má nastavených šest karet. Každá karta představuje jinou funkci rozhraní API pro počítačové zpracování obrazu (analýza, OCR atd.). Následujících šest částí kurzu na sobě nezávisí, takže jich můžete přidat kolik chcete – jednu, několik nebo všech šest. Můžete je přidávat v libovolném pořadí.
 
-Pusťme se do toho.
+### <a name="analyze-an-image"></a>Analýza obrázku
 
-## <a name="analyze-an-image"></a>Analýza obrázku
-
-Funkce Analyze počítačového zpracování obrazu během analýzy obrázku prohledá více než 2 000 rozpoznatelných objektů, živých bytostí, krajin a akcí. Po dokončení analýzy se vrátí objekt JSON, který popisuje obrázek popisnými značkami, analýzou barev, titulky a dalšími položkami.
+Funkce Analyze v rozhraní API pro počítačové zpracování obrazu prohledává v obrázcích více než 2 000 rozpoznatelných objektů, živých bytostí, krajin a akcí. Po dokončení analýzy se vrátí objekt JSON, který popisuje obrázek popisnými značkami, analýzou barev, titulky a dalšími položkami.
 
 K dokončení funkce Analyze výukové aplikace musíte provést následující kroky:
 
-### <a name="analyze-step-1-add-the-event-handler-code-for-the-form-button"></a>Funkce Analyze krok 1: Přidání kódu obslužné rutiny události k tlačítku formuláře
+#### <a name="add-the-event-handler-code-for-the-form-button"></a>Přidání kódu obslužné rutiny události k tlačítku formuláře
 
 Metoda obslužné rutiny události **analyzeImageButtonActionPerformed** vymaže formulář, zobrazí obrázek zadaný adresou URL a potom zavolá metodu **AnalyzeImage**, která obrázek analyzuje. Když se metoda **AnalyzeImage** vrátí, zobrazí v textové oblasti **Response** (Odpověď) formátovanou odpověď JSON, z objektu **JSONObject** extrahuje první titulek a zobrazí ho spolu s úrovní spolehlivosti, že je titulek správný.
 
@@ -140,7 +140,7 @@ Do metody **analyzeImageButtonActionPerformed** zkopírujte a vložte následuj�
     }
 ```
 
-### <a name="analyze-step-2-add-the-wrapper-for-the-rest-api-call"></a>Funkce Analyze krok 2: Přidání obálky ke zbytku volání rozhraní REST API
+#### <a name="add-the-wrapper-for-the-rest-api-call"></a>Přidání obálky k volání rozhraní REST API
 
 Metoda **AnalyzeImage** zabalí volání rozhraní REST API k analýze obrázku. Tato metoda vrátí objekt **JSONObject** popisující obrázek, nebo pokud došlo k chybě, vrátí **null**.
 
@@ -201,17 +201,17 @@ Metodu **AnalyzeImage** zkopírujte a vložte těsně pod metodu **analyzeImageB
     }
  ```
 
-### <a name="analyze-step-3-run-the-application"></a>Funkce Analyze krok 3: Spuštění aplikace
+#### <a name="run-the-application"></a>Spuštění aplikace
 
 Stisknutím klávesy **F6** spusťte aplikaci. Do pole **Subscription Key** (Klíč předplatného) vložte svůj klíč předplatného a zkontrolujte, že v poli **Subscription Region** (Oblast předplatného) používáte správnou oblast. Zadejte adresu URL obrázku, který chcete analyzovat, potom klikněte na tlačítko **Analyze Image** (Analyzovat obrázek) a podívejte se na výsledek.
 
-## <a name="recognize-a-landmark"></a>Rozpoznání památky
+### <a name="recognize-a-landmark"></a>Rozpoznání památky
 
 Funkce Landmark počítačového zpracování obrazu vyhledá v obrázku přirozené nebo umělé památky, jako jsou hory nebo známé budovy. Po dokončení analýzy vrátí funkce Landmark objekt JSON, který památky nalezené v obrázku identifikuje.
 
 K dokončení funkce Landmark výukové aplikace musíte provést následující kroky:
 
-### <a name="landmark-step-1-add-the-event-handler-code-for-the-form-button"></a>Funkce Landmark krok 1: Přidání kódu obslužné rutiny události k tlačítku formuláře
+#### <a name="add-the-event-handler-code-for-the-form-button"></a>Přidání kódu obslužné rutiny události k tlačítku formuláře
 
 Metoda obslužné rutiny události **landmarkImageButtonActionPerformed** vymaže formulář, zobrazí obrázek zadaný adresou URL a potom zavolá metodu **LandmarkImage**, která obrázek analyzuje. Když se metoda **LandmarkImage** vrátí, zobrazí v textové oblasti **Response** (Odpověď) formátovanou odpověď JSON, z objektu **JSONObject** extrahuje první název památky a zobrazí ho v okně spolu s úrovní spolehlivosti, že je památka identifikovaná správně.
 
@@ -264,7 +264,7 @@ Do metody **landmarkImageButtonActionPerformed** zkopírujte a vložte následuj
     }
 ```
 
-### <a name="landmark-step-2-add-the-wrapper-for-the-rest-api-call"></a>Funkce Landmark krok 2: Přidání obálky ke zbytku volání rozhraní REST API
+#### <a name="add-the-wrapper-for-the-rest-api-call"></a>Přidání obálky k volání rozhraní REST API
 
 Metoda **LandmarkImage** zabalí volání rozhraní REST API k analýze obrázku. Tato metoda vrátí objekt **JSONObject** popisující památky nalezené na obrázku, nebo pokud došlo k chybě, vrátí **null**.
 
@@ -325,17 +325,17 @@ Metodu **LandmarkImage** zkopírujte a vložte těsně pod metodu **landmarkImag
     }
 ```
 
-### <a name="landmark-step-3-run-the-application"></a>Funkce Landmark krok 3: Spuštění aplikace
+#### <a name="run-the-application"></a>Spuštění aplikace
 
 Stisknutím klávesy **F6** spusťte aplikaci. Do pole **Subscription Key** (Klíč předplatného) vložte svůj klíč předplatného a zkontrolujte, že v poli **Subscription Region** (Oblast předplatného) používáte správnou oblast. Klikněte na kartu **Landmark** (Památka), zadejte adresu URL obrázku s památkou, potom klikněte na tlačítko **Analyze Image** (Analyzovat obrázek) a podívejte se na výsledek.
 
-## <a name="recognize-celebrities"></a>Rozpoznání celebrit
+### <a name="recognize-celebrities"></a>Rozpoznání celebrit
 
 Funkce Celebrities počítačového zpracování obrazu vyhledá na obrázku známé osobnosti. Po dokončení analýzy vrátí funkce Celebrities objekt JSON, který celebrity nalezené v obrázku identifikuje.
 
 K dokončení funkce Celebrities výukové aplikace musíte provést následující kroky:
 
-### <a name="celebrities-step-1-add-the-event-handler-code-for-the-form-button"></a>Funkce Celebrities krok 1: Přidání kódu obslužné rutiny události k tlačítku formuláře
+#### <a name="add-the-event-handler-code-for-the-form-button"></a>Přidání kódu obslužné rutiny události k tlačítku formuláře
 
 Metoda obslužné rutiny události **celebritiesImageButtonActionPerformed** vymaže formulář, zobrazí obrázek zadaný adresou URL a potom zavolá metodu **CelebritiesImage**, která obrázek analyzuje. Když se metoda **CelebritiesImage** vrátí, zobrazí v textové oblasti **Response** (Odpověď) formátovanou odpověď JSON, z objektu **JSONObject** extrahuje první jméno celebrity a zobrazí ho v okně spolu s úrovní spolehlivosti, že je celebrita identifikovaná správně.
 
@@ -388,7 +388,7 @@ Do metody **celebritiesImageButtonActionPerformed** zkopírujte a vložte násle
     }
 ```
 
-### <a name="celebrities-step-2-add-the-wrapper-for-the-rest-api-call"></a>Funkce Celebrities krok 2: Přidání obálky ke zbytku volání rozhraní REST API
+#### <a name="add-the-wrapper-for-the-rest-api-call"></a>Přidání obálky k volání rozhraní REST API
 
 Metoda **CelebritiesImage** zabalí volání rozhraní REST API k analýze obrázku. Tato metoda vrátí objekt **JSONObject** popisující celebrity nalezené na obrázku, nebo pokud došlo k chybě, vrátí **null**.
 
@@ -449,17 +449,17 @@ Metodu **CelebritiesImage** zkopírujte a vložte těsně pod metodu **celebriti
     }
 ```
 
-### <a name="celebrities-step-3-run-the-application"></a>Funkce Celebrities krok 3: Spuštění aplikace
+#### <a name="run-the-application"></a>Spuštění aplikace
 
 Stisknutím klávesy **F6** spusťte aplikaci. Do pole **Subscription Key** (Klíč předplatného) vložte svůj klíč předplatného a zkontrolujte, že v poli **Subscription Region** (Oblast předplatného) používáte správnou oblast. Klikněte na kartu **Celebrities** (Celebrity), zadejte adresu URL obrázku s celebritou, potom klikněte na tlačítko **Analyze Image** (Analyzovat obrázek) a podívejte se na výsledek.
 
-## <a name="intelligently-generate-a-thumbnail"></a>Inteligentní vygenerování miniatury
+### <a name="intelligently-generate-a-thumbnail"></a>Inteligentní vygenerování miniatury
 
 Funkce Thumbnail počítačového zpracování obrazu vygeneruje z obrázku miniaturu. Pomocí funkce **Smart Crop** (Inteligentní oříznutí) identifikuje funkce Thumbnail na obrázku oblast zájmu a kolem této oblasti vycentruje miniaturu, aby se vygenerovaly co nejhezčí miniatury obrázku.
 
 K dokončení funkce Thumbnail výukové aplikace musíte provést následující kroky:
 
-### <a name="thumbnail-step-1-add-the-event-handler-code-for-the-form-button"></a>Funkce Thumbnail krok 1: Přidání kódu obslužné rutiny události k tlačítku formuláře
+#### <a name="add-the-event-handler-code-for-the-form-button"></a>Přidání kódu obslužné rutiny události k tlačítku formuláře
 
 Metoda obslužné rutiny události **thumbnailImageButtonActionPerformed** vymaže formulář, zobrazí obrázek zadaný adresou URL a potom zavolá metodu **getThumbnailImage**, která vytvoří miniaturu. Když se metoda **getThumbnailImage** vrátí, zobrazí vygenerovanou miniaturu.
 
@@ -505,7 +505,7 @@ Do metody **thumbnailImageButtonActionPerformed** zkopírujte a vložte následu
     }
 ```
 
-### <a name="thumbnail-step-2-add-the-wrapper-for-the-rest-api-call"></a>Funkce Thumbnail krok 2: Přidání obálky ke zbytku volání rozhraní REST API
+#### <a name="add-the-wrapper-for-the-rest-api-call"></a>Přidání obálky k volání rozhraní REST API
 
 Metoda **getThumbnailImage** zabalí volání rozhraní REST API k analýze obrázku. Tato metoda vrátí objekt **BufferedImage** obsahující miniaturu, nebo pokud došlo k chybě, vrátí **null**. Chybová zpráva se vrátí v prvním elementu pole řetězců **jsonError**.
 
@@ -572,17 +572,17 @@ Metodu **getThumbnailImage** zkopírujte a vložte těsně pod metodu **thumbnai
     }
 ```
 
-### <a name="thumbnail-step-3-run-the-application"></a>Funkce Thumbnail krok 3: Spuštění aplikace
+#### <a name="run-the-application"></a>Spuštění aplikace
 
 Stisknutím klávesy **F6** spusťte aplikaci. Do pole **Subscription Key** (Klíč předplatného) vložte svůj klíč předplatného a zkontrolujte, že v poli **Subscription Region** (Oblast předplatného) používáte správnou oblast. Klikněte na kartu **Thumbnail** (Miniatura), zadejte adresu URL obrázku, potom klikněte na tlačítko **Generate Thumbnail** (Vygenerovat miniaturu) a podívejte se na výsledek.
 
-## <a name="read-printed-text-ocr"></a>Přečtení tištěného textu (OCR)
+### <a name="read-printed-text-ocr"></a>Přečtení tištěného textu (OCR)
 
 Funkce optického rozpoznávání znaků (OCR) počítačového zpracování obrazu analyzuje obrázky s tištěným textem. Po dokončení analýzy vrátí funkce OCR objekt JSON, který obsahuje text a umístění textu na obrázku.
 
 K dokončení funkce OCR výukové aplikace musíte provést následující kroky:
 
-### <a name="ocr-step-1-add-the-event-handler-code-for-the-form-button"></a>Funkce OCR krok 1: Přidání kódu obslužné rutiny události k tlačítku formuláře
+#### <a name="add-the-event-handler-code-for-the-form-button"></a>Přidání kódu obslužné rutiny události k tlačítku formuláře
 
 Metoda obslužné rutiny události **ocrImageButtonActionPerformed** vymaže formulář, zobrazí obrázek zadaný adresou URL a potom zavolá metodu **OcrImage**, která obrázek analyzuje. Když se metoda **OcrImage** vrátí, zobrazí v textové oblasti **Response** (Odpověď) rozpoznaný text jako formátovanou odpověď JSON.
 
@@ -622,7 +622,7 @@ Do metody **ocrImageButtonActionPerformed** zkopírujte a vložte následující
     }
 ```
 
-### <a name="ocr-step-2-add-the-wrapper-for-the-rest-api-call"></a>Funkce OCR krok 2: Přidání obálky ke zbytku volání rozhraní REST API
+#### <a name="add-the-wrapper-for-the-rest-api-call"></a>Přidání obálky k volání rozhraní REST API
 
 Metoda **OcrImage** zabalí volání rozhraní REST API k analýze obrázku. Tato metoda vrátí objekt **JSONObject** z dat JSON vrácených z volání, nebo pokud došlo k chybě, vrátí **null**.
 
@@ -683,17 +683,17 @@ Metodu **OcrImage** zkopírujte a vložte těsně pod metodu **ocrImageButtonAct
     }
 ```
 
-### <a name="ocr-step-3-run-the-application"></a>Funkce OCR krok 3: Spuštění aplikace
+#### <a name="run-the-application"></a>Spuštění aplikace
 
 Stisknutím klávesy **F6** spusťte aplikaci. Do pole **Subscription Key** (Klíč předplatného) vložte svůj klíč předplatného a zkontrolujte, že v poli **Subscription Region** (Oblast předplatného) používáte správnou oblast. Klikněte na kartu **OCR**, zadejte adresu URL obrázku s tištěným textem, potom klikněte na tlačítko **Read Image** (Přečíst obrázek) a podívejte se na výsledek.
 
-## <a name="read-handwritten-text-handwriting-recognition"></a>Přečtení rukou psaného textu (rozpoznávání rukopisu)
+### <a name="read-handwritten-text-handwriting-recognition"></a>Přečtení rukou psaného textu (rozpoznávání rukopisu)
 
 Funkce Handwriting Recognition počítačového zpracování obrazu analyzuje obrázek s ručně psaným textem. Po dokončení analýzy vrátí funkce Handwriting Recognition objekt JSON, který obsahuje text a umístění textu na obrázku.
 
 K dokončení funkce Handwriting Recognition výukové aplikace musíte provést následující kroky:
 
-### <a name="handwriting-recognition-step-1-add-the-event-handler-code-for-the-form-button"></a>Funkce Handwriting Recognition krok 1: Přidání kódu obslužné rutiny události k tlačítku formuláře
+#### <a name="add-the-event-handler-code-for-the-form-button"></a>Přidání kódu obslužné rutiny události k tlačítku formuláře
 
 Metoda obslužné rutiny události **handwritingImageButtonActionPerformed** vymaže formulář, zobrazí obrázek zadaný adresou URL a potom zavolá metodu **HandwritingImage**, která obrázek analyzuje. Když se metoda **HandwritingImage** vrátí, zobrazí v textové oblasti **Response** (Odpověď) rozpoznaný text jako formátovanou odpověď JSON.
 
@@ -733,7 +733,7 @@ Do metody **handwritingImageButtonActionPerformed** zkopírujte a vložte násle
     }
 ```
 
-### <a name="handwriting-recognition-step-2-add-the-wrapper-for-the-rest-api-call"></a>Funkce Handwriting Recognition krok 2: Přidání obálky ke zbytku volání rozhraní REST API
+#### <a name="add-the-wrapper-for-the-rest-api-call"></a>Přidání obálky k volání rozhraní REST API
 
 Metoda **HandwritingImage** zabalí dvě volání rozhraní REST API potřebné k analýze obrázku. Rozpoznávání rukopisu je časově náročný proces, takže se provádí ve dvou krocích. První volání odešle obrázek ke zpracování a jakmile se zpracování dokončí, druhé volání načte rozpoznaný text.
 
@@ -841,7 +841,7 @@ Metodu **HandwritingImage** zkopírujte a vložte těsně pod metodu **handwriti
     }
 ```
 
-### <a name="handwriting-recognition-step-3-run-the-application"></a>Funkce Handwriting Recognition krok 3: Spuštění aplikace
+#### <a name="run-the-application"></a>Spuštění aplikace
 
 Stisknutím klávesy **F6** spusťte aplikaci. Do pole **Subscription Key** (Klíč předplatného) vložte svůj klíč předplatného a zkontrolujte, že v poli **Subscription Region** (Oblast předplatného) používáte správnou oblast. Klikněte na kartu **Read Handwritten Text** (Přečíst rukou psaný text), zadejte adresu URL obrázku s rukou psaným textem, potom klikněte na tlačítko **Read Image** (Přečíst obrázek) a podívejte se na výsledek.
 

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.topic: overview
 ms.date: 09/13/2018
 ms.custom: it-pro
-ms.openlocfilehash: 755c301651e7c49faa8b05b2b443c5cce1a03c90
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 08d32a99e2f1a77bcc7a5900b47e6771c33ec356
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46364039"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49393317"
 ---
 # <a name="what-is-azure-active-directory"></a>Představení služby Azure Active Directory
 Azure Active Directory (Azure AD) je cloudová adresářová služba určená pro více tenantů a služba pro správu identit od Microsoftu. Azure AD v jediném řešení kombinuje základní adresářové služby, správu přístupu k aplikacím a ochranu identity a nabízí tak platformu založenou na standardech, čímž pomáhá vývojářům integrovat do jejich aplikací řízení přístupu na základě centralizovaných zásad a pravidel.

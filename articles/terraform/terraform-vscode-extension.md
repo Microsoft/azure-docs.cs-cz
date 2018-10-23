@@ -9,12 +9,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 08/31/2018
-ms.openlocfilehash: ad042525ead23959be57a5dd2d5735bcedfedb1b
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: be0140606302335884d62ba60c875a049949b495
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43668321"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49353046"
 ---
 # <a name="install-and-use-the-azure-terraform-visual-studio-code-extension"></a>Instalace a použití rozšíření Azure Terraform editoru Visual Studio Code
 
@@ -50,7 +50,7 @@ Postupujte podle pokynů na webové stránce společnosti HashiCorp pro [instala
 >[!Tip]
 >Je potřeba, abyste postupovali podle pokynů ohledně nastavení systémové proměnné PATH.
 
-### <a name="install-nodejs"></a>Instalace Node.js
+### <a name="install-nodejs"></a>Instalovat Node.js
 
 Abyste mohli Terraform používat ve službě Cloud Shell, musíte si [nainstalovat Node.js](https://nodejs.org/) ve verzi 6.0 nebo novější.
 
@@ -103,7 +103,9 @@ V tomto cvičení vytvoříte a spustíte základní konfigurační soubor Terra
 
 1. Z řádku nabídek v editoru Visual Studio Code vyberte **File > New File** (Soubor > Nový soubor).
 
-1. Přejděte na [azurerm_resource_group](https://www.terraform.io/docs/providers/azurerm/r/resource_group.html#) a zkopírujte tento kód do bloku kódu **Example Usage** (Příklady použití):
+1. V prohlížeči přejděte na [stránku Terraformu pro azurerm_resource_group](https://www.terraform.io/docs/providers/azurerm/r/resource_group.html#) a zkopírujte kód v bloku kódu **Example Usage** (Příklady použití):
+
+    ![Příklady použití](media/terraform-vscode-extension/tf-azurerm-resource-group-example-usage.png)
 
 1. Vložte zkopírovaný kód do nového souboru, který jste v editoru Visual Studio Code vytvořili.
 

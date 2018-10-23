@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/18/2018
 ms.author: zachal
 ms.custom: mvc
-ms.openlocfilehash: 4d504e0488d35c5c606468faa35bece1318503b4
-ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
+ms.openlocfilehash: bc1b52b97897cb1c635fb16e6ef9692de1ca8a44
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46498517"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49167252"
 ---
 # <a name="manage-windows-updates-by-using-azure-automation"></a>Správa aktualizací pro Windows pomocí služby Azure Automation
 
@@ -116,7 +116,8 @@ V části **Logika upozornění** jako **Prahová hodnota** zadejte **1**. Jakmi
 
 #### <a name="runbook-alert"></a>Upozornění runbooku
 
-V případě neúspěšných nasazení musíte upozorňovat na selhání hlavního spuštění. Na webu Azure Portal přejděte do části **Monitorování** a vyberte **Vytvořit upozornění**.
+V případě nasazení, která selžou, je potřeba upozornit na selhání hlavního runbooku.
+Na webu Azure Portal přejděte do části **Monitorování** a pak vyberte **Vytvořit upozornění**.
 
 V části **1. Definujte podmínku upozornění** klikněte na **Vybrat cíl**. V části **Filtrovat podle typu prostředku** vyberte **Účty Automation**. Vyberte svůj účet Automation a pak vyberte **Hotovo**.
 

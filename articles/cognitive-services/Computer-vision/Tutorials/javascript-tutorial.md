@@ -10,12 +10,12 @@ ms.component: computer-vision
 ms.topic: tutorial
 ms.date: 09/19/2017
 ms.author: kefre
-ms.openlocfilehash: 6dc6eec729fc1be3f0a859834597bf2d5785d9bc
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: c024e517eb59c7d3b61408e477c94004ccb01a54
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45984920"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49341306"
 ---
 # <a name="tutorial-computer-vision-api-javascript"></a>Kurz: Rozhraní API pro počítačové zpracování obrazu v JavaScriptu
 
@@ -35,25 +35,27 @@ Tento kurz jsme vyvinuli pomocí jednoduchého textového editoru.
 
 Před vytvořením příkladu musíte získat předplatné rozhraní API pro počítačové zpracování obrazu, které je součástí Azure Cognitive Services. Podrobnosti o správě předplatného a klíče najdete v [předplatných](https://azure.microsoft.com/try/cognitive-services/). V tomto kurzu můžete použít jak primární, tak i sekundární klíče. 
 
-## <a name="download-the-tutorial-project"></a>Stáhněte si výukový projekt
+## <a name="acquire-the-incomplete-tutorial-project"></a>Získání neúplného výukového projektu
+
+### <a name="download-the-tutorial-project"></a>Stáhněte si výukový projekt
 
 Naklonujte úložiště [Cognitive Services JavaScript Computer Vision Tutorial](https://github.com/Azure-Samples/cognitive-services-javascript-computer-vision-tutorial) nebo stáhněte soubor ZIP a extrahujte ho do prázdného adresáře.
 
 Pokud byste chtěli raději použít dokončený kurz s veškerým výukovým kódem, můžete použít soubory ve složce **Completed** (Dokončeno).
 
-## <a name="add-the-tutorial-code"></a>Přidání výukového kódu
+## <a name="add-the-tutorial-code-to-the-project"></a>Přidání výukového kódu do projektu
 
 Javascriptová aplikace používá šest souborů HTML – jeden pro každou funkci. Každý soubor představuje jinou funkci počítačového zpracování obrazu (analýza, OCR atd.). Následujících šest částí kurzu na sobě nezávisí, takže výukový kód můžete přidat do kolika souborů chcete – do jednoho, několika nebo všech šesti. A můžete ho přidávat v libovolném pořadí.
 
 Pusťme se do toho.
 
-## <a name="analyze-an-image"></a>Analýza obrázku
+### <a name="analyze-an-image"></a>Analýza obrázku
 
-Funkce Analyze počítačového zpracování obrazu během analýzy obrázku prohledá více než 2 000 rozpoznatelných objektů, živých bytostí, krajin a akcí. Po dokončení analýzy se vrátí objekt JSON, který popisuje obrázek popisnými značkami, analýzou barev, titulky a dalšími položkami.
+Funkce Analyze v rozhraní API pro počítačové zpracování obrazu během prohledávání obrázků analyzuje více než 2 000 rozpoznatelných objektů, živých bytostí, krajin a akcí. Po dokončení analýzy se vrátí objekt JSON, který popisuje obrázek popisnými značkami, analýzou barev, titulky a dalšími položkami.
 
 K dokončení funkce Analyze výukové aplikace musíte provést následující kroky:
 
-### <a name="analyze-step-1-add-the-event-handler-code-for-the-form-button"></a>Funkce Analyze krok 1: Přidání kódu obslužné rutiny události k tlačítku formuláře
+#### <a name="add-the-event-handler-code-for-the-form-button"></a>Přidání kódu obslužné rutiny události k tlačítku formuláře
 
 V textovém editoru otevřete soubor **analyze.html** a na konci souboru najděte funkci **analyzeButtonClick**.
 
@@ -77,7 +79,7 @@ function analyzeButtonClick() {
 }
 ```
 
-### <a name="analyze-step-2-add-the-wrapper-for-the-rest-api-call"></a>Funkce Analyze krok 2: Přidání obálky ke zbytku volání rozhraní REST API
+#### <a name="add-the-wrapper-for-the-rest-api-call"></a>Přidání obálky k volání rozhraní REST API
 
 Funkce **AnalyzeImage** zabalí volání rozhraní REST API k analýze obrázku. Po úspěšně provedeném vrácení se v zadané textové oblasti zobrazí analýza formátovaného objektu JSON a v zadaném elementu span se zobrazí titulek.
 
@@ -151,17 +153,17 @@ function AnalyzeImage(sourceImageUrl, responseTextArea, captionSpan) {
 }
 ```
 
-### <a name="analyze-step-3-run-the-application"></a>Funkce Analyze krok 3: Spuštění aplikace
+#### <a name="run-the-application"></a>Spuštění aplikace
 
 Soubor **analyze.html** uložte a otevřete ho ve webovém prohlížeči. Do pole **Subscription Key** (Klíč předplatného) vložte svůj klíč předplatného a zkontrolujte, že v poli **Subscription Region** (Oblast předplatného) používáte správnou oblast. Zadejte adresu URL obrázku, který chcete analyzovat, potom klikněte na tlačítko **Analyze Image** (Analyzovat obrázek) a podívejte se na výsledek.
 
-## <a name="recognize-a-landmark"></a>Rozpoznání památky
+### <a name="recognize-a-landmark"></a>Rozpoznání památky
 
 Funkce Landmark počítačového zpracování obrazu vyhledá v obrázku přirozené nebo umělé památky, jako jsou hory nebo známé budovy. Po dokončení analýzy vrátí funkce Landmark objekt JSON, který památky nalezené v obrázku identifikuje.
 
 K dokončení funkce Landmark výukové aplikace musíte provést následující kroky:
 
-### <a name="landmark-step-1-add-the-event-handler-code-for-the-form-button"></a>Funkce Landmark krok 1: Přidání kódu obslužné rutiny události k tlačítku formuláře
+#### <a name="add-the-event-handler-code-for-the-form-button"></a>Přidání kódu obslužné rutiny události k tlačítku formuláře
 
 V textovém editoru otevřete soubor **landmark.html** a na konci souboru najděte funkci **landmarkButtonClick**.
 
@@ -185,7 +187,7 @@ function landmarkButtonClick() {
 }
 ```
 
-### <a name="landmark-step-2-add-the-wrapper-for-the-rest-api-call"></a>Funkce Landmark krok 2: Přidání obálky ke zbytku volání rozhraní REST API
+#### <a name="add-the-wrapper-for-the-rest-api-call"></a>Přidání obálky k volání rozhraní REST API
 
 Funkce **IdentifyLandmarks** zabalí volání rozhraní REST API k analýze obrázku. Po úspěšně provedeném vrácení se v zadané textové oblasti zobrazí analýza formátovaného objektu JSON a v zadaném elementu span se zobrazí titulek.
 
@@ -258,17 +260,17 @@ function IdentifyLandmarks(sourceImageUrl, responseTextArea, captionSpan) {
 }
 ```
 
-### <a name="landmark-step-3-run-the-application"></a>Funkce Landmark krok 3: Spuštění aplikace
+#### <a name="run-the-application"></a>Spuštění aplikace
 
 Soubor **landmark.html** uložte a otevřete ho ve webovém prohlížeči. Do pole **Subscription Key** (Klíč předplatného) vložte svůj klíč předplatného a zkontrolujte, že v poli **Subscription Region** (Oblast předplatného) používáte správnou oblast. Zadejte adresu URL obrázku, který chcete analyzovat, potom klikněte na tlačítko **Analyze Image** (Analyzovat obrázek) a podívejte se na výsledek.
 
-## <a name="recognize-celebrities"></a>Rozpoznání celebrit
+### <a name="recognize-celebrities"></a>Rozpoznání celebrit
 
 Funkce Celebrities počítačového zpracování obrazu vyhledá na obrázku známé osobnosti. Po dokončení analýzy vrátí funkce Celebrities objekt JSON, který celebrity nalezené v obrázku identifikuje.
 
 K dokončení funkce Celebrities výukové aplikace musíte provést následující kroky:
 
-### <a name="celebrities-step-1-add-the-event-handler-code-for-the-form-button"></a>Funkce Celebrities krok 1: Přidání kódu obslužné rutiny události k tlačítku formuláře
+#### <a name="add-the-event-handler-code-for-the-form-button"></a>Přidání kódu obslužné rutiny události k tlačítku formuláře
 
 V textovém editoru otevřete soubor **celebrities.html** a na konci souboru najděte funkci **celebritiesButtonClick**.
 
@@ -292,7 +294,7 @@ function celebritiesButtonClick() {
 }
 ```
 
-### <a name="celebrities-step-2-add-the-wrapper-for-the-rest-api-call"></a>Funkce Celebrities krok 2: Přidání obálky ke zbytku volání rozhraní REST API
+#### <a name="add-the-wrapper-for-the-rest-api-call"></a>Přidání obálky k volání rozhraní REST API
 
 ```javascript
 /* Identify celebrities in the image at the specified URL by using Microsoft Cognitive Services 
@@ -361,17 +363,17 @@ function IdentifyCelebrities(sourceImageUrl, responseTextArea, captionSpan) {
 }
 ```
 
-### <a name="celebrities-step-3-run-the-application"></a>Funkce Celebrities krok 3: Spuštění aplikace
+#### <a name="run-the-application"></a>Spuštění aplikace
 
 Soubor **celebrities.html** uložte a otevřete ho ve webovém prohlížeči. Do pole **Subscription Key** (Klíč předplatného) vložte svůj klíč předplatného a zkontrolujte, že v poli **Subscription Region** (Oblast předplatného) používáte správnou oblast. Zadejte adresu URL obrázku, který chcete analyzovat, potom klikněte na tlačítko **Analyze Image** (Analyzovat obrázek) a podívejte se na výsledek.
 
-## <a name="intelligently-generate-a-thumbnail"></a>Inteligentní vygenerování miniatury
+### <a name="intelligently-generate-a-thumbnail"></a>Inteligentní vygenerování miniatury
 
 Funkce Thumbnail počítačového zpracování obrazu vygeneruje z obrázku miniaturu. Pomocí funkce **Smart Crop** (Inteligentní oříznutí) identifikuje funkce Thumbnail na obrázku oblast zájmu a kolem této oblasti vycentruje miniaturu, aby se vygenerovaly co nejhezčí miniatury obrázku.
 
 K dokončení funkce Thumbnail výukové aplikace musíte provést následující kroky:
 
-### <a name="thumbnail-step-1-add-the-event-handler-code-for-the-form-button"></a>Funkce Thumbnail krok 1: Přidání kódu obslužné rutiny události k tlačítku formuláře
+#### <a name="add-the-event-handler-code-for-the-form-button"></a>Přidání kódu obslužné rutiny události k tlačítku formuláře
 
 V textovém editoru otevřete soubor **thumbnail.html** a na konci souboru najděte funkci **thumbnailButtonClick**.
 
@@ -403,7 +405,7 @@ function thumbnailButtonClick() {
 }
 ```
 
-### <a name="thumbnail-step-2-add-the-wrapper-for-the-rest-api-call"></a>Funkce Thumbnail krok 2: Přidání obálky ke zbytku volání rozhraní REST API
+#### <a name="add-the-wrapper-for-the-rest-api-call"></a>Přidání obálky k volání rozhraní REST API
 
 Funkce **getThumbnail** zabalí volání rozhraní REST API k analýze obrázku. Po úspěšně provedeném vrácení se miniatura zobrazí v zadaném elementu img.
 
@@ -482,11 +484,11 @@ function getThumbnail (sourceImageUrl, smartCropping, imageElement, responseText
 }
 ```
 
-### <a name="thumbnail-step-3-run-the-application"></a>Funkce Thumbnail krok 3: Spuštění aplikace
+#### <a name="run-the-application"></a>Spuštění aplikace
 
 Soubor **thumbnail.html** uložte a otevřete ho ve webovém prohlížeči. Do pole **Subscription Key** (Klíč předplatného) vložte svůj klíč předplatného a zkontrolujte, že v poli **Subscription Region** (Oblast předplatného) používáte správnou oblast. Zadejte adresu URL obrázku, který chcete analyzovat, potom klikněte na tlačítko **Generate Thumbnails** (Vygenerovat miniatury) a podívejte se na výsledek.
 
-## <a name="read-printed-text-ocr"></a>Přečtení tištěného textu (OCR)
+### <a name="read-printed-text-ocr"></a>Přečtení tištěného textu (OCR)
 
 Funkce optického rozpoznávání znaků (OCR) počítačového zpracování obrazu analyzuje obrázky s tištěným textem. Po dokončení analýzy vrátí funkce OCR objekt JSON, který obsahuje text a umístění textu na obrázku.
 
@@ -516,7 +518,7 @@ function ocrButtonClick() {
 }
 ```
 
-### <a name="ocr-step-2-add-the-wrapper-for-the-rest-api-call"></a>Funkce OCR krok 2: Přidání obálky ke zbytku volání rozhraní REST API
+#### <a name="add-the-wrapper-for-the-rest-api-call"></a>Přidání obálky k volání rozhraní REST API
 
 Funkce **ReadOcrImage** zabalí volání rozhraní REST API k analýze obrázku. Po úspěšně provedeném vrácení se v zadané textové oblasti zobrazí formátovaný objekt JSON popisující text a jeho umístění.
 
@@ -577,17 +579,17 @@ function ReadOcrImage(sourceImageUrl, responseTextArea) {
 }
 ```
 
-### <a name="ocr-step-3-run-the-application"></a>Funkce OCR krok 3: Spuštění aplikace
+#### <a name="run-the-application"></a>Spuštění aplikace
 
 Soubor **ocr.html** uložte a otevřete ho ve webovém prohlížeči. Do pole **Subscription Key** (Klíč předplatného) vložte svůj klíč předplatného a zkontrolujte, že v poli **Subscription Region** (Oblast předplatného) používáte správnou oblast. Zadejte adresu URL obrázku s textem, který se má přečíst, potom klikněte na tlačítko **Read Image** (Přečíst obrázek) a podívejte se na výsledek.
 
-## <a name="read-handwritten-text-handwriting-recognition"></a>Přečtení rukou psaného textu (rozpoznávání rukopisu)
+### <a name="read-handwritten-text-handwriting-recognition"></a>Přečtení rukou psaného textu (rozpoznávání rukopisu)
 
 Funkce Handwriting Recognition počítačového zpracování obrazu analyzuje obrázek s ručně psaným textem. Po dokončení analýzy vrátí funkce Handwriting Recognition objekt JSON, který obsahuje text a umístění textu na obrázku.
 
 K dokončení funkce Handwriting Recognition výukové aplikace musíte provést následující kroky:
 
-### <a name="handwriting-recognition-step-1-add-the-event-handler-code-for-the-form-button"></a>Funkce Handwriting Recognition krok 1: Přidání kódu obslužné rutiny události k tlačítku formuláře
+#### <a name="add-the-event-handler-code-for-the-form-button"></a>Přidání kódu obslužné rutiny události k tlačítku formuláře
 
 V textovém editoru otevřete soubor **handwriting.html** a na konci souboru najděte funkci **handwritingButtonClick**.
 
@@ -610,7 +612,7 @@ function handwritingButtonClick() {
 }
 ```
 
-### <a name="handwriting-recognition-step-2-add-the-wrapper-for-the-rest-api-call"></a>Funkce Handwriting Recognition krok 2: Přidání obálky ke zbytku volání rozhraní REST API
+#### <a name="add-the-wrapper-for-the-rest-api-call"></a>Přidání obálky k volání rozhraní REST API
 
 Funkce **ReadHandwrittenImage** zabalí dvě volání rozhraní REST API potřebné k analýze obrázku. Rozpoznávání rukopisu je časově náročný proces, takže se provádí ve dvou krocích. První volání odešle obrázek ke zpracování a jakmile se zpracování dokončí, druhé volání načte rozpoznaný text.
 
@@ -736,7 +738,7 @@ function ReadHandwrittenImage(sourceImageUrl, responseTextArea) {
 }
 ```
 
-### <a name="handwriting-recognition-step-3-run-the-application"></a>Funkce Handwriting Recognition krok 3: Spuštění aplikace
+#### <a name="run-the-application"></a>Spuštění aplikace
 
 Soubor **handwriting.html** uložte a otevřete ho ve webovém prohlížeči. Do pole **Subscription Key** (Klíč předplatného) vložte svůj klíč předplatného a zkontrolujte, že v poli **Subscription Region** (Oblast předplatného) používáte správnou oblast. Zadejte adresu URL obrázku s textem, který se má přečíst, potom klikněte na tlačítko **Read Image** (Přečíst obrázek) a podívejte se na výsledek.
 

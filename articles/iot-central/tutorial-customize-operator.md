@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: d99b76faf618439e51735d5f1096fd4f1cfd2364
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 9b8293196114f55f633e67cf19cd0c9e60f6398e
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47038285"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49309456"
 ---
 # <a name="tutorial-customize-the-azure-iot-central-operators-view"></a>Kurz: Přizpůsobení zobrazení Azure IoT Central pro operátora
 
@@ -56,7 +56,7 @@ Jako tvůrce můžete definovat, které informace se zobrazí na řídicím pane
 
     ![Stránka řídicího panelu šablony zařízení](media/tutorial-customize-operator/dashboard.png)
 
-4. Pokud chcete na řídicí panel přidat klíčový ukazatel výkonu, zvolte **KPI**:
+4. Pokud chcete na řídící panel přidat dlaždici Klíčový ukazatel výkonu, zvolte **KPI** (Klíčový ukazatel výkonu):
 
     ![Přidání KPI](media/tutorial-customize-operator/addkpi.png)
 
@@ -81,7 +81,7 @@ Jako tvůrce můžete definovat, které informace se zobrazí na řídicím pane
 
 ## <a name="configure-your-settings-layout"></a>Konfigurace rozložení nastavení
 
-Jako tvůrce můžete také nakonfigurovat zobrazení nastavení zařízení pro operátora. Operátor používá stránku nastavení zařízení ke konfiguraci zařízení. Operátor použije stránku nastavení například k nastavení cílové teploty pro ledničku.
+Jako tvůrce můžete také nakonfigurovat zobrazení nastavení zařízení pro operátora. Operátor používá stránku nastavení zařízení ke konfiguraci zařízení. Operátor použije stránku nastavení například k nastavení cílové teploty pro připojenou klimatizaci.
 
 1. Pokud chcete upravit rozložení nastavení pro připojenou klimatizaci, zvolte **Nastavení** a vyberte možnost **Upravit šablonu**:
 
@@ -117,7 +117,7 @@ Kromě řídicího panelu a nastavení můžete zobrazení operátora nakonfigur
 
 V režimu **Upravit šablonu** můžete přizpůsobit řídicí panel, stránku vlastností a stránku nastavení pro operátora. Pokud nejste v režimu **Upravit šablonu**, můžete aplikaci zobrazit jako operátor.
 
-1. Pokud chcete zobrazit připojené klimatizační zařízení jako operátor a chcete odejít z úprav šablony, musíte kliknout na **Hotovo**. Tím se vrátíte do zobrazení operátora zařízení.
+1. Pokud chcete zobrazit připojené klimatizační zařízení jako operátor, kliknutím na **Done** (Hotovo) ukončete úpravu šablony a vraťte se do zobrazení zařízení pro operátora.
 
 2. Pokud chcete aktualizovat umístění tohoto zařízení, upravte hodnotu na dlaždici s umístěním a potom zvolte **Uložit**:
 

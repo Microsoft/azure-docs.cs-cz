@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: ce1586e472e1d1ea5ddd9ca5a426b1bea2b5b931
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 5533dacc4a782cbdb6026c4a4d5c5bed9e39147a
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42022458"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49320148"
 ---
 # <a name="set-up-the-iot-hub-device-provisioning-service-with-the-azure-portal"></a>Nastavení služby Azure IoT Hub Device Provisioning pomocí webu Azure Portal
 
@@ -40,12 +40,12 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
     * **Předplatné:** Vyberte předplatné, které chcete použít při vytváření této instance služby Device Provisioning.
     * **Skupina prostředků:** Toto pole umožňuje vytvořit novou skupinu prostředků nebo zvolit existující, která má obsahovat novou instanci. Zvolte stejnou skupinu prostředků, kterou jste vytvořili výše a obsahuje IoT Hub, například **TestResources**. Když umístíte všechny související prostředky do jedné skupiny, můžete je spravovat společně. Například odstraněním skupiny prostředků se odstraní všechny prostředky, které tato skupina obsahuje. Další informace najdete v tématu [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/resource-group-portal.md).
     * **Umístění:** Vyberte pro zařízení nejbližší umístění.
-    * **Připnout na řídicí panel:** Tuto možnost vyberete, abyste měli instanci připnutou na řídicí panel, což usnadňuje hledání.
 
     ![Zadání základních informací o instanci služby Device Provisioning v okně portálu](./media/quick-setup-auto-provision/create-iot-dps-portal.png)  
 
-4. Po úspěšném nasazení služby se automaticky otevře okno s jejím přehledem.
+4. Pokud chcete monitorovat vytváření instance prostředku, klikněte na tlačítko oznámení. Po úspěšném nasazení služby klikněte na **Připnout na řídicí panel** a pak na **Přejít k prostředku**.
 
+    ![Monitorování oznámení nasazení](./media/quick-setup-auto-provision/pin-to-dashboard.png)
 
 ## <a name="link-the-iot-hub-and-your-device-provisioning-service"></a>Propojení centra IoT a služby Device Provisioning
 

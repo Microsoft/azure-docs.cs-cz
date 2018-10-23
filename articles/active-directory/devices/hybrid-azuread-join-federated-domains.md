@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/25/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 2f020bdf79811c959e07d753231fc133fe597861
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: c7396d7322958442fab51417eb350f26f7ada78e
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48855170"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49352656"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-federated-domains"></a>Kurz: Konfigurace hybridního připojení k Azure Active Directory pro federované domény
 
@@ -124,7 +124,7 @@ Ke konfiguraci hybridního připojení k Azure AD pomocí Azure AD Connect potř
 
     a. Vyberte doménovou strukturu.
 
-    b. Vyberte ověřovací službu. Pokud vaše organizace nepoužívá výhradně klienty s Windows 10, musíte vybrat server služby AD FS.
+    b. Vyberte ověřovací službu. Pokud vaše organizace nepoužívá výhradně klienty s Windows 10 a nenakonfigurovali jste synchronizaci počítačů a zařízení nebo vaše organizace nepoužívá bezproblémové jednotné přihlašování, musíte vybrat server služby AD FS.
 
     c. Klikněte na **Přidat** a zadejte přihlašovací údaje podnikového správce.
 
@@ -194,7 +194,7 @@ Když použijete rutinu **Get-MSolDevice** ke kontrole podrobností služby:
 
 - Musí existovat objekt s **ID zařízení**, které odpovídá ID v klientovi Windows.
 - Hodnota **DeviceTrustType** (Stav důvěryhodnosti zařízení) musí být nastavená na **Domain Joined** (Připojeno k doméně). Jedná se o ekvivalent stavu **Hybridně připojeno k Azure AD** na stránce Zařízení na portálu Azure AD.
-- U zařízení, která se používají k podmíněnému přístupu, musí být hodnota **Enabled** (Povoleno) nastavená na **True** (Pravda). 
+- U zařízení, která se používají k podmíněnému přístupu, musí být hodnota **Enabled** (Povoleno) nastavená na **True** (Pravda) a hodnota **DeviceTrustLevel** (Úroveň důvěryhodnosti zařízení) musí být nastavená na **Managed** (Spravované). 
 
 
 **Kontrola podrobností služby:**

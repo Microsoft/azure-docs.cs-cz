@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 188e3c0e8b9a9d421b40e142e534aca2741fee56
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 0af63c7beef0f5268ba078d517556fc64ac7bf87
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48248875"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49116349"
 ---
 # <a name="tutorial-deploy-azure-machine-learning-as-an-iot-edge-module-preview"></a>Kurz: Nasazení Azure Machine Learning jako modulu IoT Edge (Preview)
 
@@ -45,7 +45,7 @@ Zařízení Azure IoT Edge:
 
 Cloudové prostředky:
 
-* [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) úrovně Free v Azure. 
+* [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) úrovně Free nebo Standard v Azure. 
 * Pracovní prostor služby Azure Machine Learning. Můžete ho vytvořit podle pokynů v tématu [Příprava na nasazení modelů v IoT Edge](../machine-learning/service/how-to-deploy-to-iot.md).
 
 

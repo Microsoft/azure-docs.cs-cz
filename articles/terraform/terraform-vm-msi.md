@@ -1,6 +1,6 @@
 ---
-title: Použití image z Azure Marketplace k vytvoření virtuálního počítače Terraform s Linuxem pomocí identity spravované služby
-description: Použijte image z webu Marketplace k vytvoření virtuálního počítače Terraform s Linuxem pomocí identity spravované služby a vzdálené správy stavu ke snadnému nasazení prostředků do Azure.
+title: Použití image z Azure Marketplace k vytvoření virtuálního počítače Terraform s Linuxem pomocí spravované identity
+description: Použijte image z webu Marketplace k vytvoření virtuálního počítače Terraform s Linuxem pomocí spravované identity a vzdálené správy stavu ke snadnému nasazení prostředků do Azure.
 services: terraform
 ms.service: terraform
 keywords: terraform, devops, MSI, virtuální počítač, vzdálený stav, azure
@@ -9,16 +9,16 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 3/12/2018
-ms.openlocfilehash: 0136966576e3fbb22855d74cc1866e48b4ac24c9
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 1ec6228993c516ce2974c64bfa5b6dcdf63e7f91
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43669383"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49343822"
 ---
-# <a name="use-an-azure-marketplace-image-to-create-a-terraform-linux-virtual-machine-with-managed-service-identity"></a>Použití image z Azure Marketplace k vytvoření virtuálního počítače Terraform s Linuxem pomocí identity spravované služby
+# <a name="use-an-azure-marketplace-image-to-create-a-terraform-linux-virtual-machine-with-managed-identities-for-azure-resources"></a>Použití image z Azure Marketplace k vytvoření virtuálního počítače Terraform s Linuxem pomocí spravovaných identit pro prostředky Azure
 
-V tomto článku se dozvíte, jak pomocí nejnovější verze [Terraformu](https://www.terraform.io/intro/index.html) nakonfigurované pomocí [Identity spravované služby (MSI)](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview) použít [image Terraformu z webu Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/azure-oss.terraform?tab=Overview) k vytvoření virtuálního počítače s Ubuntu Linuxem (16.04 LTS). Tato image nakonfiguruje i vzdálený back-end, aby prostřednictvím Terraformu umožnil správu [vzdáleného stavu](https://www.terraform.io/docs/state/remote.html). 
+V tomto článku se dozvíte, jak pomocí [image Terraformu z webu Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/azure-oss.terraform?tab=Overview) vytvořit virtuální počítač s Ubuntu Linuxem (16.04 LTS) a nainstalovanou nejnovější verzí [Terraformu](https://www.terraform.io/intro/index.html) nakonfigurovanou s využitím [spravovaných identit pro prostředky Azure](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview). Tato image nakonfiguruje i vzdálený back-end, aby prostřednictvím Terraformu umožnil správu [vzdáleného stavu](https://www.terraform.io/docs/state/remote.html). 
 
 Image Terraformu z webu Marketplace usnadňuje začátky používání Terraformu v Azure bez nutnosti manuální instalace a konfigurace Terraformu. 
 
@@ -79,13 +79,13 @@ Image virtuálního počítače Terraform provede následující kroky:
 
 Po vytvoření virtuálního počítače se k němu můžete pomocí SSH přihlásit. V rozhraní textového prostředí použijte přihlašovací údaje, které jste vytvořili v kroku 3 v části „Základy“. Ve Windows můžete stáhnout klientský nástroj SSH, jako je [Putty](http://www.putty.org/).
 
-Až se pomocí SSH k virtuálnímu počítači připojíte, budete muset identitě spravované služby na virtuálním počítači dát oprávnění přispěvatele pro celé předplatné. 
+Až se pomocí SSH k virtuálnímu počítači připojíte, budete muset spravovaným identitám pro prostředky Azure na virtuálním počítači udělit oprávnění přispěvatele pro celé předplatné. 
 
 Oprávnění přispěvatele pomůže identitě spravované služby na virtuálním počítači používat Terraform k vytváření prostředků mimo skupinu prostředků virtuálního počítače. Stačí k tomu jednou spustit skript. Použijte následující příkaz:
 
 `. ~/tfEnv.sh`
 
-Předchozí skript používá k ověření pomocí Azure a přiřazení oprávnění přispěvatele pro celé předplatné identitě spravované služby na virtuálním počítači mechanismus [interaktivního přihlášení AZ CLI v 2.0](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest#interactive-log-in). 
+Předchozí skript používá k ověření v Azure a přiřazení oprávnění přispěvatele pro celé předplatné spravované identitě na virtuálním počítači mechanismus [interaktivního přihlášení v Azure CLI 2.0](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest#interactive-log-in). 
 
  Virtuální počítač má back-end vzdáleného stavu Terraformu. Pokud ho chcete povolit při nasazení Terraformu, zkopírujte soubor remoteState.tf z adresáře tfTemplate do kořenového adresáře skriptů Terraformu.  
 

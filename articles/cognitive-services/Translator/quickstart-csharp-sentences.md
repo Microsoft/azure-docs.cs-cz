@@ -10,18 +10,16 @@ ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/15/2018
 ms.author: nolachar
-ms.openlocfilehash: 4569a580dfdad3a71201e607ae5b7895d0d01099
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 699c4b775f2c5745a5b52593d44a0af408c5e73a
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46364342"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49319594"
 ---
 # <a name="quickstart-get-sentence-lengths-with-c35"></a>Rychlý start: Získání délky vět s C&#35;
 
 V tomto rychlém startu zjistíte délky vět v textu pomocí služby Translator Text API.
-
-Zdrojový kód k této ukázce je dostupný na [Githubu](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-C-Sharp).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -30,6 +28,9 @@ Ke spuštění tohoto kódu ve Windows budete potřebovat [Visual Studio 2017](h
 Abyste mohli použít službu Translator Text API, budete potřebovat klíč předplatného. Přečtěte si, [jak se zaregistrovat ve službě Translator Text API](translator-text-how-to-signup.md).
 
 ## <a name="breaksentence-request"></a>Žádost BreakSentence
+
+> [!TIP]
+> Získejte z [GitHubu](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-C-Sharp) nejnovější verzi kódu.
 
 Následující kód rozdělí zdrojový text do vět pomocí metody [BreakSentence](./reference/v3-0-break-sentence.md).
 

@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/18/2018
+ms.date: 10/17/2018
 ms.topic: tutorial
 ms.service: cost-management
 ms.custom: ''
 manager: dougeby
-ms.openlocfilehash: c50259f0df955c3a22edc979dfebc8bfb2059e16
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e705a0f57b598eb60932ca1056131cedc1416ffc
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46987750"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49394442"
 ---
 <!-- Intent: As a cloud-consuming administrator, I need to ensure that my reserved instances are optimized for cost and usage
 -->
@@ -125,7 +125,7 @@ Při nákupu rezervace provedete jednorázovou platbu. V Cloudyn můžete tuto p
 
 Sestavy analýzy skutečných nákladů a dlouhodobé analýzy ukazují celou částku, kterou jste za rezervaci zaplatili od měsíce nákupu. Pomáhají získat přehled o skutečné útratě za určité období.
 
-Na portálu Cloudyn přejděte do části **Cost** (Náklady) > **Cost Analysis** (Analýza nákladů) a pak vyberte **Actual Cost Analysis** (Analýza skutečných nákladů) nebo **Actual Cost Over Time** (Dlouhodobá analýza skutečných nákladů). Dále nastavte filtry. Můžete například vyfiltrovat pouze službu Azure/VM a provést seskupení podle typu prostředku (Resource Type) a cenového modelu (Price Model). Viz následující obrázek:
+Na portálu Cloudyn přejděte do části **Costs** (Náklady) > **Cost Analysis** (Analýza nákladů) a pak vyberte **Actual Cost Analysis** (Analýza skutečných nákladů) nebo **Actual Cost Over Time** (Dlouhodobá analýza skutečných nákladů). Dále nastavte filtry. Můžete například vyfiltrovat pouze službu Azure/VM a provést seskupení podle typu prostředku (Resource Type) a cenového modelu (Price Model). Viz následující obrázek:
 
 ![Skutečné náklady na rezervovanou instanci](./media/tutorial-optimize-reserved-instances/azure05.png)
 
@@ -143,7 +143,7 @@ Amortizované náklady na rezervovanou instanci se počítají postupným odepis
 
 V sestavě skutečných nákladů jste viděli špičku způsobenou nákupem rezervované instance 16. listopadu za 747 USD. Sestava amortizovaných nákladů (viz následující obrázek) obsahuje pro den 16. listopadu částečný náklad. Od 17. listopadu vidíte amortizované náklady na rezervovanou instanci ve výši 747 USD / 365 = 2,05 USD. Mimochodem si všimněte, že je zakoupená rezervace nevyužitá, takže ji můžete optimalizovat přepnutím na jinou velikost virtuálního počítače.
 
-Pokud chcete sestavu zobrazit, přejděte do části **Cost** (Náklady) > **Cost Analysis** (Analýza nákladů) a vyberte **Amortized Cost Analysis** (Analýza amortizovaných nákladů) nebo **Amortized Cost Over Time** (Dlouhodobá analýza amortizovaných nákladů).
+Pokud chcete sestavu zobrazit, přejděte do části **Costs** (Náklady) > **Cost Analysis** (Analýza nákladů) a vyberte **Amortized Cost Analysis** (Analýza amortizovaných nákladů) nebo **Amortized Cost Over Time** (Dlouhodobá analýza amortizovaných nákladů).
 
 ![Amortizované náklady na rezervovanou instanci](./media/tutorial-optimize-reserved-instances/azure07.png)
 

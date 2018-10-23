@@ -2,24 +2,18 @@
 title: Nastavení Azure Data Boxu | Microsoft Docs
 description: Postup zapojení kabeláže a připojení k Azure Data Boxu
 services: databox
-documentationcenter: NA
 author: alkohli
-manager: twooley
-editor: ''
-ms.assetid: ''
 ms.service: databox
-ms.devlang: NA
+ms.subservice: pod
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.date: 10/03/2018
+ms.date: 10/17/2018
 ms.author: alkohli
-ms.openlocfilehash: f9671e3acdb71affe2187258582254561785780e
-ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
+ms.openlocfilehash: c3766713c87dd721f7e4c9a90624192cdb402be9
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48785628"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49393826"
 ---
 # <a name="tutorial-cable-and-connect-to-your-azure-data-box"></a>Kurz: Zapojení kabeláže a připojení k Azure Data Boxu
 
@@ -91,6 +85,8 @@ Pomocí následujícího postupu nastavte své zařízení s využitím místní
     - Pokud protokol DHCP není povolený, přejděte na **Nastavení síťových rozhraní** a v případě potřeby přiřaďte statické IP adresy.
 
     ![Řídicí panel zařízení](media/data-box-deploy-set-up/data-box-dashboard-1.png)
+
+Jakmile budou nakonfigurovaná datová síťová rozhraní, můžete k získání přístupu k místnímu webovému uživatelskému rozhraní na adrese `https://<IP address of a data network interface>` použít také IP adresu libovolného rozhraní DATA 1 až DATA 3. 
 
 Po dokončení nastavení zařízení se můžete připojit ke sdíleným složkám zařízení a zkopírovat do zařízení data z vašeho počítače. 
 

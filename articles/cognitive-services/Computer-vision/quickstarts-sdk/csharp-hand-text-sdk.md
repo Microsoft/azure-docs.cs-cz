@@ -3,25 +3,23 @@ title: 'Rychlý start: Extrakce textu – SDK, C# – počítačové zpracován�
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu extrahujete text z obrázku pomocí klientské knihovny počítačového zpracování obrazu systému Windows.
 services: cognitive-services
-author: noellelacharite
+author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 09/27/2018
-ms.author: nolachar
-ms.openlocfilehash: 86808756721b2dc983df6eaf8a9e643a12d73969
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.author: pafarley
+ms.openlocfilehash: d819aee7c42759e2427e27e0f640d79536069ccb
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47409007"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49343601"
 ---
 # <a name="quickstart-extract-text-using-the-computer-vision-sdk-and-c"></a>Rychlý start: Extrakce textu s použitím sady SDK pro počítačové zpracování obrazu a jazyka C#
 
 V tomto rychlém startu extrahujete rukou psaný nebo tištěný text z obrázku pomocí klientské knihovny počítačového zpracování obrazu systému Windows.
-
-Zdrojový kód k této ukázce je dostupný na [Githubu](https://github.com/Azure-Samples/cognitive-services-vision-csharp-sdk-quickstarts/tree/master/ComputerVision).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -30,6 +28,9 @@ Zdrojový kód k této ukázce je dostupný na [Githubu](https://github.com/Azur
 * Balíček NuGet klientské knihovny [Microsoft.Azure.CognitiveServices.Vision.ComputerVision](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.ComputerVision). Stažení tohoto balíčku není nutné. Pokyny k instalaci jsou uvedené dál.
 
 ## <a name="recognizetextasync-method"></a>Metoda RecognizeTextAsync
+
+> [!TIP]
+> Získejte z [GitHubu](https://github.com/Azure-Samples/cognitive-services-vision-csharp-sdk-quickstarts/tree/master/ComputerVision) nejnovější verzi kódu jako řešení sady Visual Studio.
 
 Metody `RecognizeTextAsync` a `RecognizeTextInStreamAsync` využívají [rozhraní API pro rozpoznávání textu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200) pro vzdálené a místní obrázky, v uvedeném pořadí. Metoda `GetTextOperationResultAsync` používá [rozhraní API pro získání výsledků operace rozpoznávání textu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2cf1154055056008f201).  Pomocí těchto metod můžete rozpoznat text v obrázku a extrahovat rozpoznané znaky do datového proudu se strojově využitelnými znaky.
 

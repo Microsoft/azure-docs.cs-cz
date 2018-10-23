@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 06/20/2018
 ms.author: dobett
-ms.openlocfilehash: 0bb27c23850384501afec733d24f824346b8416b
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 475fda79d3f5d844b494f1b0ae5eab8eba5ed8bc
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38635372"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49363559"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-net"></a>Rychlý start: Řízení zařízení připojeného k centru IoT (.NET)
 
@@ -56,52 +56,64 @@ Pokud jste dokončili předchozí [Rychlý start: Odesílání telemetrických d
 
 Pokud jste dokončili předchozí [Rychlý start: Odesílání telemetrických dat ze zařízení do centra IoT](quickstart-send-telemetry-dotnet.md), můžete tento krok přeskočit.
 
-Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připojit. V tomto rychlém startu pomocí Azure CLI zaregistrujete simulované zařízení.
+Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připojit. V tomto rychlém startu zaregistrujete simulované zařízení pomocí služby Azure Cloud Shell.
 
-1. Přidejte rozšíření rozhraní příkazového řádku IoT Hub a vytvořte identitu zařízení. `{YourIoTHubName}` nahraďte názvem, který jste vybrali pro centrum IoT:
+1. Ve službě Azure Cloud Shell spusťte následující příkazy pro přidání rozšíření rozhraní příkazového řádku IoT Hub a vytvoření identity zařízení. 
+
+   **YourIoTHubName:** Tento zástupný text nahraďte názvem, který si zvolíte pro své centrum IoT.
+
+   **MyDotnetDevice:** Toto je název přidělený zaregistrovanému zařízení. Použijte uvedený název MyDotnetDevice. Pokud si zvolíte jiný název zařízení, budete ho muset používat v průběhu celého článku a aktualizovat název zařízení v ukázkových aplikacích, než je spustíte.
 
     ```azurecli-interactive
     az extension add --name azure-cli-iot-ext
-    az iot hub device-identity create --hub-name {YourIoTHubName} --device-id MyDotnetDevice
+    az iot hub device-identity create --hub-name YourIoTHubName --device-id MyDotnetDevice
     ```
 
-    Pokud si zvolíte jiný název zařízení, změňte ho také v ukázkových aplikacích, než je spustíte.
+2. Spuštěním následujícího příkazu ve službě Azure Cloud Shell získejte _připojovací řetězec zařízení_ pro zařízení, které jste právě zaregistrovali:
 
-2. Spuštěním následujícího příkazu získejte _připojovací řetězec zařízení_ pro zařízení, které jste právě zaregistrovali:
+   **YourIoTHubName:** Tento zástupný text nahraďte názvem, který si zvolíte pro své centrum IoT.
 
     ```azurecli-interactive
-    az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyDotnetDevice --output table
+    az iot hub device-identity show-connection-string --hub-name YourIoTHubName --device-id MyDotnetDevice --output table
     ```
 
-    Poznamenejte si připojovací řetězec zařízení, který vypadá nějak takto: `Hostname=...=`. Tuto hodnotu použijete později v tomto rychlém startu.
+    Poznamenejte si připojovací řetězec zařízení, který vypadá nějak takto:
+
+   `HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyNodeDevice;SharedAccessKey={YourSharedAccessKey}`
+
+    Tuto hodnotu použijete později v tomto rychlém startu.
 
 ## <a name="retrieve-the-service-connection-string"></a>Načtení připojovacího řetězce služby
 
 Potřebujete také _připojovací řetězec služby_ IoT Hub, který back-endové aplikaci umožní připojení k vašemu centru a načtení zpráv. Následující příkaz načte připojovací řetězec služby pro vaše centrum IoT:
 
 ```azurecli-interactive
-az iot hub show-connection-string --hub-name {YourIoTHubName} --output table
+az iot hub show-connection-string --hub-name YourIoTHubName --output table
 ```
 
-Poznamenejte si připojovací řetězec služby, který vypadá nějak takto: `Hostname=...=`. Tuto hodnotu použijete později v tomto rychlém startu.
+Poznamenejte si připojovací řetězec služby, který vypadá nějak takto:
+
+   `HostName={YourIoTHubName}.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey={YourSharedAccessKey}`
+
+Tuto hodnotu použijete později v tomto rychlém startu. Připojovací řetězec služby se liší od připojovacího řetězce zařízení.  
 
 ## <a name="listen-for-direct-method-calls"></a>Naslouchání voláním přímé metody
 
 Aplikace simulovaného zařízení se připojí ke koncovému bodu v centru IoT pro konkrétní zařízení, odešle simulovaná telemetrická data a z vašeho centra naslouchá voláním přímé metody. Volání přímé metody z centra v tomto rychlém startu nařídí zařízení, aby změnilo interval, ve kterém se odesílají telemetrická data. Simulované zařízení odešle po spuštění přímé metody zpět do centra potvrzení.
 
-1. V okně terminálu přejděte do kořenové složky ukázkového projektu C#. Potom přejděte do složky **iot-hub\Quickstarts\simulated-device-2**.
+1. V okně místního terminálu přejděte do kořenové složky ukázkového projektu jazyka C#. Potom přejděte do složky **iot-hub\Quickstarts\simulated-device-2**.
 
 2. V libovolném textovém editoru otevřete soubor **SimulatedDevice.cs**.
 
     Hodnotu proměnné `s_connectionString` nahraďte připojovacím řetězcem zařízení, který jste si předtím poznamenali. Změny pak uložte do souboru **SimulatedDevice.cs**.
 
-3. V okně terminálu spusťte následující příkazy pro instalaci požadovaných balíčků pro aplikaci simulovaného zařízení:
+3. V okně místního terminálu pomocí následujících příkazů nainstalujte požadované balíčky pro aplikaci simulovaného zařízení:
 
     ```cmd/sh
     dotnet restore
     ```
 
-4. V okně terminálu spusťte následující příkazy pro sestavení a spuštění aplikace simulovaného zařízení:
+4. Spuštěním následujícího příkazu v okně místního terminálu sestavte a spusťte aplikaci simulovaného zařízení:
 
     ```cmd/sh
     dotnet run
@@ -115,19 +127,19 @@ Aplikace simulovaného zařízení se připojí ke koncovému bodu v centru IoT 
 
 Back-endová aplikace se připojí ke koncovému bodu vašeho centra IoT na straně služby. Aplikace provádí volání přímé metody na zařízení prostřednictvím centra IoT a čeká na potvrzení. Back-endová aplikace služby IoT Hub se obvykle spouští v cloudu.
 
-1. V jiném okně terminálu přejděte do kořenové složky ukázkového projektu C#. Potom přejděte do složky **iot-hub\Quickstarts\back-end-application**.
+1. V jiném okně místního terminálu přejděte do kořenové složky ukázkového projektu jazyka C#. Potom přejděte do složky **iot-hub\Quickstarts\back-end-application**.
 
 2. V libovolném textovém editoru otevřete soubor **BackEndApplication.cs**.
 
     Hodnotu proměnné `s_connectionString` nahraďte připojovacím řetězcem služby, který jste si předtím poznamenali. Změny pak uložte do souboru **BackEndApplication.cs**.
 
-3. V okně terminálu spusťte následující příkazy pro instalaci požadovaných knihoven pro back-endovou aplikaci:
+3. V okně místního terminálu pomocí následujících příkazů nainstalujte požadované knihovny pro back-endovou aplikaci:
 
     ```cmd/sh
     dotnet restore
     ```
 
-4. V okně terminálu spusťte následující příkazy pro sestavení a spuštění back-endové aplikace:
+4. Spuštěním následujících příkazů v okně místního terminálu sestavte a spusťte back-endovou aplikaci:
 
     ```cmd/sh
     dotnet run

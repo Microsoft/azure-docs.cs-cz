@@ -10,18 +10,18 @@ ms.component: computer-vision
 ms.topic: tutorial
 ms.date: 02/25/2017
 ms.author: kefre
-ms.openlocfilehash: 59e88ecb253bc6da803ddf34a4a02229b99e259d
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 046250d3d2142badaac35490eff27bcac220fea9
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45981707"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49344893"
 ---
 # <a name="tutorial-computer-vision-api-python"></a>Kurz: Rozhraní API pro počítačové zpracování obrazu v Pythonu
 
 V tomto kurzu se dozvíte, jak používat rozhraní API pro počítačové zpracování obrazu v Pythonu a jak používat k vizualizaci výsledků některé oblíbené knihovny. Ke spuštění tohoto kurzu použijte Jupyter. Informace o tom, jak začít používat interaktivní poznámkové bloky Jupyter, najdete v [dokumentaci k Jupyteru](http://jupyter.readthedocs.io/en/latest/index.html). 
 
-### <a name="opening-the-tutorial-notebook-in-jupyter"></a>Otevření poznámkového bloku s kurzem v Jupyteru 
+## <a name="open-the-tutorial-notebook-in-jupyter"></a>Otevření poznámkového bloku s kurzem v Jupyteru 
 
 1. Přejděte k [poznámkovému bloku s kurzem v GitHubu](https://github.com/Microsoft/Cognitive-Vision-Python). 
 2. Po kliknutí na zelené tlačítko můžete kurz klonovat nebo stáhnout. 
@@ -29,7 +29,7 @@ V tomto kurzu se dozvíte, jak používat rozhraní API pro počítačové zprac
 4. Na příkazovém řádku spusťte příkaz **jupyter notebook**. Tím spustíte Jupyter.
 5. V okně Jupyteru klikněte na _Computer Vision API Example.ipynb_. Otevře se poznámkový blok s kurzem. 
 
-### <a name="running-the-tutorial"></a>Spuštění kurzu
+## <a name="run-the-tutorial"></a>Spuštění kurzu
 
 K použití poznámkového bloku potřebujete klíč předplatného k rozhraní API pro počítačové zpracování obrazu. Navštivte [stránku předplatného](https://azure.microsoft.com/try/cognitive-services/) a zaregistrujte se. Na přihlašovací stránce použijte svůj účet Microsoft, abyste se mohli přihlásit k odběru a získat bezplatné klíče. Jakmile dokončíte registraci, zkopírujte a vložte klíč do oddílu proměnných v poznámkovém bloku (viz níže). Funguje primární i sekundární klíč. Nezapomeňte dát klíč do uvozovek jako řetězec.
 

@@ -1,24 +1,24 @@
 ---
-title: 'Kurz: Vytvoření akustického modelu – Custom Speech Service'
-titlesuffix: Azure Cognitive Services
-description: V tomto kurzu se dozvíte, jak vytvořit akustický model pomocí služby Custom Speech Service.
+title: Kurz vytvoření akustického modelu s využitím služby Custom Speech Service – Microsoft Cognitive Services | Microsoft Docs
+description: V tomto kurzu zjistíte, jak vytvořit akustický model s využitím služby Custom Speech Service ve službách Microsoft Cognitive Services.
 services: cognitive-services
 author: PanosPeriorellis
-manager: cgronlun
+manager: onano
 ms.service: cognitive-services
 ms.component: custom-speech
 ms.topic: tutorial
 ms.date: 05/03/2017
 ms.author: panosper
-ROBOTS: NOINDEX
-ms.openlocfilehash: 72c5a0dfb8f33f273ba850378c1fefeef82b4d7a
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 53e93a08782ba66e69b903c32c4c3c7417e5a801
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47220210"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49344570"
 ---
 # <a name="tutorial-create-a-custom-acoustic-model"></a>Kurz: Vytvoření vlastního akustického modelu
+
+[!INCLUDE [Deprecation note](../../../../includes/cognitive-services-custom-speech-deprecation-note.md)]
 
 V tomto kurzu vytvoříte vlastní akustický model pro hlasová data, které má vaše aplikace rozpoznávat. Vytvoření vlastního akustického modelu je užitečné, pokud je vaše aplikace určená pro použití v konkrétním prostředí, například v hlučné továrně, nebo pro určité uživatele.
 
@@ -140,4 +140,4 @@ V tabulce akustických modelů se teď zobrazí nová položka, která odpovíd�
 V tomto kurzu jste vytvořili vlastní akustický model pro použití se zvukovými soubory a přepisy. Pokud chcete vytvořit vlastní jazykový soubor pro použití s textovými soubory, pokračujte kurzem vytvoření vlastního jazykového modelu.
 
 > [!div class="nextstepaction"]
-> [Vytvoření vlastního akustického modelu](cognitive-services-custom-speech-create-language-model.md)
+> [Vytvoření vlastního jazykového modelu](cognitive-services-custom-speech-create-language-model.md)

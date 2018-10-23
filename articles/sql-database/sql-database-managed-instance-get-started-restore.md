@@ -12,12 +12,12 @@ ms.author: srbozovi
 ms.reviewer: carlrab, bonova
 manager: craigg
 ms.date: 09/20/2018
-ms.openlocfilehash: 6cad73c8b8fa6a2fa95a6ea0c1fdb5d4114ffd41
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: fa9686e7f9ca7f14a51ea2b9c313dd69a2e40cec
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47180095"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49362250"
 ---
 # <a name="restore-a-database-backup-to-an-azure-sql-database-managed-instance"></a>Obnovení zálohy databáze do Azure SQL Database Managed Instance
 
@@ -38,7 +38,7 @@ Tento rychlý start:
 - Používá předkonfigurovaný účet Azure Blob Storage obsahující záložní soubor Wide World Importers – Standard (stažený z https://github.com/Microsoft/sql-server-samples/releases/download/wide-world-importers-v1.0/WideWorldImporters-Standard.bak).
 
 > [!NOTE]
-> Další informace o zálohování a obnovení databáze SQL Serveru pomocí Azure Blob Storage a sdíleného přístupového podpisu (SAS) najdete v článku o [zálohování SQL Serveru na adresu URL](sql-database-managed-instance-get-started-restore.md).
+> Další informace o zálohování a obnovení databáze SQL Serveru pomocí služby Azure Blob Storage a sdíleného přístupového podpisu (SAS) najdete v článku o [zálohování SQL Serveru na adresu URL](sql-database-managed-instance-get-started-restore.md).
 
 ## <a name="restore-the-wide-world-importers-database-from-a-backup-file"></a>Obnovení databáze Wide World Importers ze zálohy
 

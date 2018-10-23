@@ -1,5 +1,5 @@
 ---
-title: 'Příklad: Nahrání videa na server a jeho indexování pomocí Video Indexeru'
+title: Nahrání videa na server a jeho indexování pomocí Video Indexeru
 titlesuffix: Azure Cognitive Services
 description: Toto téma ukazuje, jak nahrát video na server a indexovat ho pomocí Video Indexeru s využitím rozhraní API.
 services: cognitive services
@@ -10,14 +10,14 @@ ms.component: video-indexer
 ms.topic: sample
 ms.date: 09/15/2018
 ms.author: juliako
-ms.openlocfilehash: f3889d1cddce92cbdd3049d4421bfdffc69da41e
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 53dc65c3d2c56308dd298f33bb78047904810ae5
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48884302"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49377826"
 ---
-# <a name="example-upload-and-index-your-videos"></a>Příklad: Nahrání videí na server a jejich indexování  
+# <a name="upload-and-index-your-videos"></a>Nahrání videí na server a jejich indexování  
 
 Tento článek ukazuje, jak nahrát video na server pomocí Azure Video Indexeru. Rozhraní API Video Indexeru umožňuje dva způsoby nahrání na server: 
 

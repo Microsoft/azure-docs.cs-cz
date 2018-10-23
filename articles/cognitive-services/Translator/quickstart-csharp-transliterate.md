@@ -10,18 +10,16 @@ ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/15/2018
 ms.author: nolachar
-ms.openlocfilehash: 53ac3f4aa85e889c86d09927ece7df012427e4a9
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 7fa8c5dc76e59ec236d6b9662bd2ba41db0add0f
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46367589"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49320403"
 ---
 # <a name="quickstart-transliterate-text-with-c35"></a>Rychlý start: Transkripce textu s C&#35;
 
 V tomto rychlém startu převedete text v jednom jazyce z jednoho skriptu do druhého pomocí služby Translator Text API.
-
-Zdrojový kód k této ukázce je dostupný na [GitHubu](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-C-Sharp).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -30,6 +28,9 @@ Ke spuštění tohoto kódu ve Windows budete potřebovat [Visual Studio 2017](h
 Abyste mohli použít službu Translator Text API, budete potřebovat klíč předplatného. Přečtěte si, [jak se zaregistrovat ve službě Translator Text API](translator-text-how-to-signup.md).
 
 ## <a name="transliterate-request"></a>Žádost Transliterate
+
+> [!TIP]
+> Získejte z [GitHubu](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-C-Sharp) nejnovější verzi kódu.
 
 Následující kód převede text v jednom jazyce z jednoho skriptu do druhého pomocí metody [Transliterate](./reference/v3-0-transliterate.md).
 

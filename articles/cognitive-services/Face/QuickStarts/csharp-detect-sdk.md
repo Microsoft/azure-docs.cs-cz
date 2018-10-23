@@ -3,25 +3,23 @@ title: 'Rychlý start: Rozpoznávání tváří na obrázku – SDK, C#'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu budete pomocí klientské knihovny služby Rozpoznávání tváře systému Windows s C# rozpoznávat tváře z obrázku ve službě Cognitive Services.
 services: cognitive-services
-author: noellelacharite
+author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: face-api
 ms.topic: quickstart
 ms.date: 09/14/2018
-ms.author: nolachar
-ms.openlocfilehash: a9a7efd89f8e7462812064615d07acf12acbc3a3
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.author: pafarley
+ms.openlocfilehash: b5fd10aaab28303079d3eef9c4c5c25207bb672e
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46364093"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49344978"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-c35---face"></a>Rychlý start: Rozpoznávání tváří na obrázku pomocí C&#35; - Face
 
 V tomto rychlém startu budete pomocí klientské knihovny služby Rozpoznávání tváře systému Windows rozpoznávat lidské tváře na obrázku.
-
-Zdrojový kód k této ukázce je dostupný na [Githubu](https://github.com/Azure-Samples/cognitive-services-vision-csharp-sdk-quickstarts/tree/master/Face).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -30,6 +28,9 @@ Zdrojový kód k této ukázce je dostupný na [Githubu](https://github.com/Azur
 * Balíček NuGet klientské knihovny [Microsoft.Azure.CognitiveServices.Vision.Face 2.2.0-preview](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.2.0-preview). Stažení tohoto balíčku není nutné. Pokyny k instalaci jsou uvedené dál.
 
 ## <a name="detectwithurlasync-method"></a>Metoda DetectWithUrlAsync
+
+> [!TIP]
+> Získejte z [GitHubu](https://github.com/Azure-Samples/cognitive-services-vision-csharp-sdk-quickstarts/tree/master/Face) nejnovější verzi kódu jako řešení sady Visual Studio.
 
 Metody `DetectWithUrlAsync` a `DetectWithStreamAsync` využívají [Face - Detect API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) pro vzdálené a místní obrázky (v uvedeném pořadí). Pomocí těchto metod rozpoznejte tváře na obrázku a vraťte atributy tváře, včetně:
 

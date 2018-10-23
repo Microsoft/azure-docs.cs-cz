@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/16/2018
 ms.author: shvija
-ms.openlocfilehash: 03acd63ff00f0a3017297d1998289c8e68f0f290
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: 5abb2447fa90ea5900afb86746cc17eff62c2d2e
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "41924765"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49166272"
 ---
 # <a name="get-started-receiving-messages-with-the-event-processor-host-in-net-standard"></a>Začínáme s příjmem zpráv pomocí třídy Event Processor Host v .NET Standard
 
@@ -43,13 +43,18 @@ Prvním krokem je použití webu [Azure Portal](https://portal.azure.com) k vytv
 ## <a name="create-an-azure-storage-account"></a>Vytvoření účtu služby Azure Storage  
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).  
-2. V levém navigačním podokně portálu klikněte na **Vytvořit prostředek**, pak klikněte na **Úložiště** a pak na **Účet úložiště**.  
-3. Vyplňte pole v okně účtu úložiště a pak klikněte na **Vytvořit**.
+2. V levém navigačním podokně portálu vyberte **Vytvořit prostředek**, vyberte kategorii **Úložiště** a pak vyberte **Účet úložiště – objekt blob, soubor, tabulka, fronta**.  
+3. Vyplňte pole v okně **Vytvořit účet úložiště** a pak vyberte **Zkontrolovat a vytvořit**. 
 
     ![Vytvoření účtu úložiště][1]
 
-4. Po zobrazení zprávy **Nasazení proběhla úspěšně** klikněte na název nového účtu úložiště. V okně **Základy** klikněte na **Objekty blob**. Po otevření dialogového okna **Blob service** klikněte v horní části na **+ Kontejner**. Zadejte název kontejneru a pak okno **Blob service** zavřete.  
-5. V levém okně klikněte na **Přístupové klíče** a zkopírujte název kontejneru úložiště, název účtu úložiště a hodnotu položky **klíč1**. Uložte tyto hodnoty do Poznámkového bloku nebo jiného dočasného umístění.  
+4. Na stránce **Zkontrolovat a vytvořit** zkontrolujte hodnoty polí a pak vyberte **Vytvořit**. 
+5. Po zobrazení zprávy **Nasazení proběhla úspěšně** vyberte název nového účtu úložiště. 
+6. V okně **Základy** vyberte **Objekty blob**. 
+7. V horní části vyberte **+ Kontejner**. Zadejte název kontejneru.  
+8. V levém okně vyberte **Přístupové klíče** a zkopírujte název kontejneru úložiště, název účtu úložiště a hodnotu položky **klíč1**. 
+
+    Uložte tyto hodnoty do Poznámkového bloku nebo jiného dočasného umístění.
 
 ## <a name="create-a-console-application"></a>Vytvoření konzolové aplikace
 

@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 09/22/2018
 ms.custom: mvc
 ms.author: spelluru
-ms.openlocfilehash: 08295ceeb2ebe94a96eaade0a6443f0f59212d60
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 870cfcf8712cc5bee2674b82d5292e4241433386
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47394025"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49342203"
 ---
 # <a name="what-is-azure-service-bus"></a>Co je Azure Service Bus?
 
@@ -95,9 +95,9 @@ Odběratelé mohou definovat zprávy, které chtějí z tématu přijímat. Tyto
 
 Pokud dojde k chybě, která způsobí, že klient pochybuje o výsledku operace odeslání, [vyhledávání duplicit](duplicate-detection.md) odstraní nejistotu v těchto situacích tak, že odesílateli umožní odeslat stejnou zprávu a frontě nebo tématu umožní zahodit jakékoli duplicitní kopie.
 
-### <a name="sas-rbac-and-msi"></a>SAS, RBAC a MSI
+### <a name="sas-rbac-and-managed-identities-for-azure-resources"></a>SAS, RBAC a spravované identity pro prostředky Azure
 
-Service Bus podporuje protokoly zabezpečení, jako jsou [podpisy sdíleného přístupu](service-bus-sas.md) (SAS), [řízení přístupu na základě role](service-bus-role-based-access-control.md) (RBAC) a [identita spravované služby](service-bus-managed-service-identity.md) (MSI).
+Service Bus podporuje protokoly zabezpečení, jako jsou [sdílené přístupové podpisy](service-bus-sas.md) (SAS), [řízení přístupu na základě role](service-bus-role-based-access-control.md) (RBAC) a [spravované identity pro prostředky Azure](service-bus-managed-service-identity.md).
 
 ### <a name="geo-disaster-recovery"></a>Geografické zotavení po havárii
 

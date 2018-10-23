@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 09/05/2018
 ms.author: barclayn
 ms.custom: mvc
-ms.openlocfilehash: d1776fc2347eb1a1f03a834b6a5f847ef5c551e4
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 521b6423550bf3e2d0bc90212b7e3fe0cbeddfc4
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46948879"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49167065"
 ---
 # <a name="tutorial-configure-an-azure-web-application-to-read-a-secret-from-key-vault"></a>Kurz: Konfigurace webové aplikace Azure pro čtení tajného kódu ze služby Key Vault
 
@@ -126,10 +126,11 @@ Vaše webová aplikace musí mít nainstalované dva balíčky NuGet. Při jejic
 1. V průzkumníku řešení klikněte pravým tlačítkem na název vašeho webu.
 2. Vyberte **Spravovat balíčky NuGet pro řešení**.
 3. Zaškrtněte políčko vedle vyhledávacího pole. **Zahrnout předběžné verze**
-4. Vyhledejte dva balíčky NuGet uvedené níž a potvrďte jejich přidání do vašeho řešení:
+4. Vyhledejte tři balíčky NuGet uvedené níže a potvrďte jejich přidání do vašeho řešení:
 
     * [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) – usnadňuje načítání přístupových tokenů u scénářů ověřování služeb pro služby Azure. 
     * [Microsoft.Azure.KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) – obsahuje metody pro interakci se službou Key Vault.
+    * [Microsoft.Extensions.Configuration.AzureKeyVault](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.AzureKeyVault/) – obsahuje rozšíření `IConfiguration` pro službu Azure Key Vault.
 
 5. Pomocí Průzkumníka řešení otevřete `Program.cs` a obsah souboru Program.cs nahraďte následujícím kódem. Nahraďte ```<YourKeyVaultName>``` názvem vašeho trezoru klíčů:
 

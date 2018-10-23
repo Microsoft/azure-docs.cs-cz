@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 09/07/2018
+ms.date: 10/09/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: fe6313c059a1dd1050240ead5f7ca8e3e1512aa6
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: 50f1c81f08787181de2fe3a9f6fb97a96a2bd882
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47584509"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49114308"
 ---
 # <a name="tutorial-create-azure-resource-manager-templates-with-dependent-resources"></a>Kurz: Vytváření šablon Azure Resource Manageru se závislými prostředky
 
@@ -29,8 +29,10 @@ V tomto kurzu vytvoříte účet úložiště, virtuální počítač, virtuáln
 Tento kurz se zabývá následujícími úkony:
 
 > [!div class="checklist"]
+> * Příprava služby Key Vault
 > * Otevření šablony rychlého startu
 > * Prozkoumání šablony
+> * Úprava souboru parametrů
 > * Nasazení šablony
 
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
@@ -39,8 +41,78 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
 
 K dokončení tohoto článku potřebujete:
 
-* [Visual Studio Code](https://code.visualstudio.com/).
-* Rozšíření Nástroje Resource Manageru.  Přečtěte si, [jak toto rozšíření nainstalovat](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#prerequisites).
+* [Visual Studio Code](https://code.visualstudio.com/) s rozšířením Nástroje Resource Manageru  Přečtěte si, [jak toto rozšíření nainstalovat](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#prerequisites).
+
+## <a name="prepare-key-vault"></a>Příprava služby Key Vault
+
+Aby se zabránilo útokům password spray, doporučuje se pro účet správce virtuálního počítače použít automaticky vygenerované heslo a uložit ho ve službě Key Vault. Následujícím postupem se vytvoří služba Key Vault a tajný klíč pro uložení hesla. Také se nakonfigurují potřebná oprávnění, která povolí nasazení šablony přístup k tajnému klíči uloženému ve službě Key Vault. Pokud se služba Key Vault nachází v jiném předplatném Azure, jsou potřeba další zásady přístupu. Podrobnosti najdete v tématu [Použití služby Azure Key Vault k předávání hodnot zabezpečených parametrů během nasazení](./resource-manager-keyvault-parameter.md).
+
+1. Přihlaste se do služby [Azure Cloud Shell](https://shell.azure.com).
+2. Výběrem **PowerShellu** nebo **Bash** v levém horním rohu přepněte do oblíbeného prostředí.
+3. Spusťte následující příkaz Azure PowerShellu nebo Azure CLI.  
+
+    ```azurecli-interactive
+    keyVaultName='<your-unique-vault-name>'
+    resourceGroupName='<your-resource-group-name>'
+    location='Central US'
+    userPrincipalName='<your-email-address-associated-with-your-subscription>'
+    
+    # Create a resource group
+    az group create --name $resourceGroupName --location $location
+    
+    # Create a Key Vault
+    keyVault=$(az keyvault create \
+      --name $keyVaultName \
+      --resource-group $resourceGroupName \
+      --location $location \
+      --enabled-for-template-deployment true)
+    keyVaultId=$(echo $keyVault | jq -r '.id')
+    az keyvault set-policy --upn $userPrincipalName --name $keyVaultName --secret-permissions set delete get list
+
+    # Create a secret
+    password=$(openssl rand -base64 32)
+    az keyvault secret set --vault-name $keyVaultName --name 'vmAdminPassword' --value $password
+    
+    # Print the useful property values
+    echo "You need the following values for the virtual machine deployment:"
+    echo "Resource group name is: $resourceGroupName."
+    echo "The admin password is: $password."
+    echo "The Key Vault resource ID is: $keyVaultId."
+    ```
+
+    ```azurepowershell-interactive
+    $keyVaultName = "<your-unique-vault-name>"
+    $resourceGroupName="<your-resource-group-name>"
+    $location='Central US'
+    $userPrincipalName="<your-email-address-associated-with-your-subscription>"
+    
+    # Create a resource group
+    New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
+        
+    # Create a Key Vault
+    $keyVault = New-AzureRmKeyVault `
+      -VaultName $keyVaultName `
+      -resourceGroupName $resourceGroupName `
+      -Location $location `
+      -EnabledForTemplateDeployment
+    Set-AzureRmKeyVaultAccessPolicy -VaultName $keyVaultName -UserPrincipalName $userPrincipalName -PermissionsToSecrets set,delete,get,list
+      
+    # Create a secret
+    $password = openssl rand -base64 32
+    
+    $secretValue = ConvertTo-SecureString $password -AsPlainText -Force
+    Set-AzureKeyVaultSecret -VaultName $keyVaultName -Name "vmAdminPassword" -SecretValue $secretValue
+    
+    # Print the useful property values
+    echo "You need the following values for the virtual machine deployment:"
+    echo "Resource group name is: $resourceGroupName."
+    echo "The admin password is: $password."
+    echo "The Key Vault resource ID is: " $keyVault.ResourceID
+    ```
+4. Poznamenejte si výstupní hodnoty. Budete je potřebovat v pozdější části kurzu.
+
+> [!NOTE]
+> Každá služba Azure má specifické požadavky na hesla. Například požadavky virtuálních počítačů Azure najdete v tématu Jaké jsou požadavky na heslo při vytváření virtuálního počítače?
 
 ## <a name="open-a-quickstart-template"></a>Otevření šablony pro rychlý start
 
@@ -54,6 +126,7 @@ K dokončení tohoto článku potřebujete:
     ```
 3. Výběrem **Open** (Otevřít) soubor otevřete.
 4. Vyberte **File** (Soubor) >**Save As** (Uložit jako) a soubor uložte na místní počítač pod názvem **azuredeploy.json**.
+5. Zopakováním kroků 1 až 4 otevřete soubor **https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.parameters.json** a pak soubor uložte jako **azuredeploy.parameters.json**.
 
 ## <a name="explore-the-template"></a>Prozkoumání šablony
 
@@ -97,23 +170,47 @@ Následující diagram znázorňuje prostředky a informace o závislostech pro 
 
 Určení závislostí umožňuje Resource Manageru účinně nasadit řešení. Paralelně nasadí účet úložiště, veřejnou IP adresu a virtuální síť, protože tyto prostředky nemají žádné závislosti. Po nasazení veřejné IP adresy a virtuální sítě se vytvoří síťové rozhraní. Po nasazení všech ostatních prostředků Resource Manager nasadí virtuální počítač.
 
+## <a name="edit-the-parameters-file"></a>Úprava souboru parametrů
+
+V souboru šablony není nutné provádět žádné změny. Je však potřeba upravit soubor parametrů, aby heslo správce načítal ze služby Key Vault.
+
+1. Ve Visual Studio Code otevřete soubor **azuredeploy.parameters.json**, pokud ještě není otevřený.
+2. Aktualizujte parametr **adminPassword**:
+
+    ```json
+    "adminPassword": {
+        "reference": {
+            "keyVault": {
+            "id": "/subscriptions/<SubscriptionID>/resourceGroups/mykeyvaultdeploymentrg/providers/Microsoft.KeyVault/vaults/<KeyVaultName>"
+            },
+            "secretName": "vmAdminPassword"
+        }
+    },
+    ```
+    Nahraďte **id** za ID prostředku vaší služby Key Vault vytvořené předchozím postupem. Je jedním z výstupů. 
+
+    ![Integrace služby Key Vault a nasazení virtuálního počítače šablony Resource Manageru – soubor parametrů](./media/resource-manager-tutorial-use-key-vault/resource-manager-tutorial-create-vm-parameters-file.png)
+3. Zadejte hodnoty následujících parametrů:
+
+    - **adminUsername:** název účtu správce virtuálního počítače
+    - **dnsLabelPrefix:** název předpony názvu DNS
+4. Uložte změny.
+
 ## <a name="deploy-the-template"></a>Nasazení šablony
 
 Šablony můžete nasadit mnoha způsoby.  V tomto kurzu použijete Cloud Shell z webu Azure Portal.
 
-1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com).
-2. V pravém horním rohu vyberte **Cloud Shell**, jak je znázorněno na tomto obrázku:
+1. Přihlaste se do služby [Cloud Shell](https://shell.azure.com). Můžete se také přihlásit k webu [Azure Portal](https://portal.azure.com) a pak v pravém horním rohu vybrat **Cloud Shell**, jak je znázorněno na tomto obrázku:
 
     ![Cloud Shell na portálu Azure Portal](./media/resource-manager-tutorial-create-templates-with-dependent-resources/azure-portal-cloud-shell.png)
-3. V levém horním rohu Cloud Shellu vyberte **PowerShell**.  V tomto kurzu použijete prostředí PowerShell.
-4. Vyberte **Restartovat**.
-5. V Cloud Shellu vyberte **Nahrát soubor**:
+2. V levém horním rohu služby Cloud Shell vyberte **PowerShell** a pak **Potvrdit**.  V tomto kurzu použijete prostředí PowerShell.
+3. V Cloud Shellu vyberte **Nahrát soubor**:
 
     ![Nahrání souboru v Cloud Shellu na portálu Azure Portal](./media/resource-manager-tutorial-create-templates-with-dependent-resources/azure-portal-cloud-shell-upload-file.png)
-6. Vyberte soubor, který jste si v rámci tohoto kurzu uložili. Výchozí název je **azuredeploy.json**.  Pokud máte soubor se stejným názvem, starý soubor se bez upozornění přepíše.
-7. V Cloud Shellu spusťte následující příkaz, který ověří úspěšné nahrání souboru. 
+4. Vyberte soubory, které jste si v rámci tohoto kurzu uložili. Výchozí názvy jsou **azuredeploy.json** a **azuredeploy.paraemters.json**.  Pokud máte soubory se stejnými názvy, staré soubory se bez upozornění přepíší.
+5. V Cloud Shellu spusťte následující příkaz, který ověří úspěšné nahrání souboru. 
 
-    ```shell
+    ```bash
     ls
     ```
 
@@ -121,49 +218,32 @@ Určení závislostí umožňuje Resource Manageru účinně nasadit řešení. 
 
     Název souboru na snímku obrazovky je azuredeploy.json.
 
-8. V Cloud Shellu spusťte následující příkaz, který ověří obsah souboru JSON:
+6. V Cloud Shellu spusťte následující příkaz, který ověří obsah souboru JSON:
 
-    ```shell
+    ```bash
     cat azuredeploy.json
+    cat azuredeploy.parameters.json
     ```
-9. V Cloud Shellu spusťte následující příkazy PowerShellu:
+7. Ve službě Cloud Shell spusťte následující příkazy PowerShellu. Ukázkový skript používá stejnou skupinu prostředků, který se vytvořila pro službu Key Vault. Použití stejné skupiny prostředků usnadňuje vyčištění prostředků.
 
     ```powershell
     $resourceGroupName = "<Enter the resource group name>"
-    $location = "<Enter the Azure location>"
-    $vmAdmin = "<Enter the admin username>"
-    $vmPassword = "<Enter the password>"
-    $dnsLabelPrefix = "<Enter the prefix>"
+    $deploymentName = "<Enter a deployment name>"
 
-    New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
-    $vmPW = ConvertTo-SecureString -String $vmPassword -AsPlainText -Force
-    New-AzureRmResourceGroupDeployment -Name mydeployment0710 -ResourceGroupName $resourceGroupName `
-        -TemplateFile azuredeploy.json -adminUsername $vmAdmin -adminPassword $vmPW `
-        -dnsLabelPrefix $dnsLabelPrefix
+    New-AzureRmResourceGroupDeployment -Name $deploymentName `
+        -ResourceGroupName $resourceGroupName `
+        -TemplateFile azuredeploy.json `
+        -TemplateparameterFile azuredeploy.parameters.json
     ```
-    Tady je snímek obrazovky při ukázkovém nasazení:
-
-    ![Šablona nasazení v Cloud Shellu na portálu Azure Portal](./media/resource-manager-tutorial-create-templates-with-dependent-resources/azure-portal-cloud-shell-deploy-template.png)
-
-    Na snímku obrazovky jsou použity tyto hodnoty:
-
-    * **$resourceGroupName**: myresourcegroup0710. 
-    * **$location**: eastus2
-    * **&lt;DeployName>**: mydeployment0710
-    * **&lt;TemplateFile>**: azuredeploy.json
-    * **Parametry šablony**:
-
-        * **adminUsername**: JohnDole
-        * **adminPassword**: Pass@word123
-        * **dnsLabelPrefix**: myvm0710
-
-10. Spuštěním následujícího příkazu PowerShellu zobrazíte nově vytvořený virtuální počítač:
+8. Spuštěním následujícího příkazu PowerShellu zobrazíte nově vytvořený virtuální počítač:
 
     ```powershell
-    Get-AzureRmVM -Name SimpleWinVM -ResourceGroupName <ResourceGroupName>
+    Get-AzureRmVM -Name SimpleWinVM -ResourceGroupName $resourceGroupName
     ```
 
     V šabloně je pevně zakódovaný název virtuálního počítače **SimpleWinVM**.
+
+9. Přihlaste se k virtuálnímu počítači, abyste otestovali přihlašovací údaje správce. 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
