@@ -84,7 +84,7 @@ Celý postup zopakujte a nainstalujte službu IIS na virtuální počítač **We
 
 ## <a name="create-a-traffic-manager-profile"></a>Vytvoření profilu Traffic Manageru
 
-Doplnit*** 
+Doplnit 
 
 1. Otevřete skupinu prostředků **RG-DNS-Alias-TM** a klikněte na veřejnou IP adresu **Web-01-ip**. Poznamenejte si IP adresu pro pozdější použití. Celý postup zopakujte pro veřejnou IP adresu **Web-02-ip**.
 1. Klikněte na **Vytvořit prostředek**, pak na **Sítě** a nakonec na **Profil služby Traffic Manager**.

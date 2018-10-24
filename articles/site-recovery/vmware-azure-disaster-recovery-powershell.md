@@ -336,7 +336,7 @@ Budete potřebovat následující podrobnosti, které chcete chránit zjištěn�
 
 * Chránitelnou položku se musí replikovat.
 * Účet úložiště pro replikaci virtuálního počítače. Kromě toho je potřeba úložiště protokolů k ochraně virtuálních počítačů na účet úložiště úrovně premium.
-* Procesový Server má být použit pro replikaci. Načíst a uloží do seznamu k dispozici procesových serverů ***$ProcessServers [0]****(škálování aplikace server)* a ***$ProcessServers [1]*** *(ConfigurationServer)* proměnné.  
+* Procesový Server má být použit pro replikaci. Načíst a uloží do seznamu k dispozici procesových serverů ***$ProcessServers [0]***  *(škálování aplikace server)* a ***$ProcessServers [1]*** *(ConfigurationServer)* proměnné.  
 * Účet, který se má použít pro vynucené instalace software služby Mobility na počítače. Byla načten a uložené v seznamu dostupných účtů ***$AccountHandles*** proměnné.
 * Mapování kontejnerů ochrany pro zásady replikace pro replikaci.
 * Skupina prostředků, ve kterém musí být vytvořen virtuální počítače na převzetí služeb při selhání.
