@@ -3,22 +3,22 @@ title: Ověřování pomocí služby Azure AD pro přístup k rozhraní API slu�
 description: Zjistěte, jak získat přístup k rozhraní API služby Azure Media Services pomocí ověřování Azure Active Directory pomocí REST.
 services: media-services
 documentationcenter: ''
-author: willzhan
-manager: cfowler
+author: juliako
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/26/2017
+ms.date: 10/22/2018
 ms.author: willzhan;juliako;johndeu
-ms.openlocfilehash: b44c5b29f41f08ac5c1d5e6aa3c37f8c15ae7c54
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: d9d1fa7d8cf25057339e560c371deb939997b578
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45984653"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945073"
 ---
 # <a name="use-azure-ad-authentication-to-access-the-azure-media-services-api-with-rest"></a>Ověřování pomocí služby Azure AD pro přístup k rozhraní API Azure Media Services pomocí REST
 
@@ -47,7 +47,7 @@ V tomto kurzu se naučíte:
 
 - Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) před tím, než začnete.
 - [Vytvoření účtu služby Azure Media Services pomocí webu Azure portal](media-services-portal-create-account.md).
-- Zkontrolujte [přístup k API služby Azure Media pomocí ověřování AAD, přehled](media-services-use-aad-auth-to-access-ams-api.md) článku.
+- Zkontrolujte [přístup k API služby Azure Media pomocí ověřování Azure AD – přehled](media-services-use-aad-auth-to-access-ams-api.md) článku.
 - Nainstalujte [Postman](https://www.getpostman.com/) klienta REST k provedení rozhraní REST API služby uvedené v tomto článku. 
 
     V tomto kurzu jsme naplánovaném **Postman** ale bude vhodné libovolný nástroj REST. Další možnosti jsou: **Visual Studio Code** s pluginem REST nebo **Telerik Fiddler**. 
@@ -60,7 +60,7 @@ Pro přístup k rozhraní API služby Media Services, budete muset shromažďov�
 
 |Nastavení|Příklad:|Popis|
 |---|-------|-----|
-|Doména tenanta služby Azure Active Directory|microsoft.onmicrosoft.com|Azure AD jako koncový bod zabezpečit službu tokenů (STS) se vytvoří v následujícím formátu: https://login.microsoftonline.com/{your-aad-tenant-name.onmicrosoft.com}/oauth2/token. Aby bylo možné přistupovat k prostředkům (přístupový token), Azure AD vydá token JWT.|
+|Doména tenanta služby Azure Active Directory|microsoft.onmicrosoft.com|Azure AD jako koncový bod zabezpečit službu tokenů (STS) se vytvoří v následujícím formátu: https://login.microsoftonline.com/{your-ad-tenant-name.onmicrosoft.com}/oauth2/token. Aby bylo možné přistupovat k prostředkům (přístupový token), Azure AD vydá token JWT.|
 |Koncový bod rozhraní REST API|https://amshelloworld.restv2.westus.media.azure.net/api/|Toto je koncový bod, oproti které všechny REST API služby Media Services ve vaší aplikaci volání.|
 |ID klienta (ID aplikace)|f7fbbb29-a02d-4d91-bbc6-59a2579259d2|Azure AD ID aplikace (klient). ID klienta je požadováno pro získání přístupového tokenu. |
 |Tajný kód klienta|+mUERiNzVMoJGggD6aV1etzFGa1n6KeSlLjIq+Dbim0=|Azure AD klíče aplikace (tajný klíč klienta). Chcete-li získat přístupový token se vyžaduje tajný klíč klienta.|
@@ -144,8 +144,8 @@ Tato část ukazuje způsob použití **Postman** ke spuštění rozhraní REST 
     Alternativně klepněte na tlačítko **hromadných úprav** na pravé straně okna nástroje Postman a vložte následující text (nahraďte ID klienta a hodnoty tajných kódů):
 
         grant_type:client_credentials
-        client_id:{Your Client ID that you got from your AAD Application}
-        client_secret:{Your client secret that you got from your AAD Application's Keys}
+        client_id:{Your Client ID that you got from your Azure AD Application}
+        client_secret:{Your client secret that you got from your Azure AD Application's Keys}
         resource:https://rest.media.azure.net
 
 8. Stiskněte **Odeslat**.

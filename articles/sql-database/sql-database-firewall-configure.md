@@ -12,19 +12,22 @@ ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 10/19/2018
-ms.openlocfilehash: 18cd0ea4b6804edc11fc4f57c4327ef9d9a6f51e
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 6de91e28ebced1d41e128cec1180839e4b353020
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49466729"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945463"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-firewall-rules"></a>Azure SQL Database a SQL Data Warehouse pravidla brány firewall
 
 Microsoft Azure [SQL Database](sql-database-technical-overview.md) a [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) poskytuje relační databázová služba pro Azure a další internetové aplikace. Brána firewall pomáhá chránit vaše data tím, že brání veškerému přístupu k vašemu databázovému serveru, dokud neurčíte, které počítače k tomu mají oprávnění. Brána firewall uděluje přístup k databázím v závislosti na zdrojové IP adrese každého požadavku.
 
 > [!NOTE]
-> Toto téma se týká k Azure SQL serveru a databází SQL Database a SQL Data Warehouse, které jsou vytvořené na serveru Azure SQL. Pro zjednodušení se SQL Database používá k označení SQL Database i SQL Data Warehouse.
+> Tento článek se týká k Azure SQL serveru a databází SQL Database a SQL Data Warehouse, které jsou vytvořeny na serveru Azure SQL. Pro zjednodušení se SQL Database používá k označení SQL Database i SQL Data Warehouse. 
+
+> [!IMPORTANT]
+> Tento článek provádí *není* platí pro **Azure SQL Database Managed Instance**. Podrobnosti najdete v následujícím článku na [připojení k Managed Instance](sql-database-managed-instance-connect-app.md) Další informace o konfiguraci sítě potřeba.
 
 ## <a name="virtual-network-rules-as-alternatives-to-ip-rules"></a>Pravidla virtuální sítě jako alternativy k pravidla protokolu IP
 

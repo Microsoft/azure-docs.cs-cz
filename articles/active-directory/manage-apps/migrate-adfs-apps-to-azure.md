@@ -1,6 +1,6 @@
 ---
-title: Migrace místních aplikací AD FS do Azure | Dokumenty Microsoft
-description: Účelem tohoto článku je pomoct organizacím porozumět postupu při migraci místních aplikací do služby Azure AD se zaměřením na federované aplikace SaaS.
+title: Přesun aplikací ze služby AD FS do Azure AD. | Dokumenty Microsoft
+description: Tento článek je určený pomoct organizacím porozumět postupu přesunutí aplikací do služby Azure AD se zaměřením na federované aplikace SaaS.
 services: active-directory
 author: barbkess
 manager: mtillman
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 03/02/2018
 ms.author: barbkess
-ms.openlocfilehash: fa19c932a18102107068303e1474abd992df3161
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: b799a3947770b44752b599dbb2c47cbf1cfbcda2
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48903024"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49959056"
 ---
-# <a name="migrate-ad-fs-on-premises-apps-to-azure"></a>Migrace místních aplikací AD FS do Azure 
+# <a name="move-applications-from-ad-fs-to-azure-ad"></a>Přesunout aplikace ze služby AD FS do Azure AD 
 
-Tento článek vám pomůže porozumět postupu při migraci místních aplikací do služby Azure Active Directory (Azure AD). Zaměřuje se na federované aplikace SaaS. 
+Tento článek vám pomůže pochopit postup přesunutí aplikací ze služby AD FS do Azure Active Directory (Azure AD). Zaměřuje se na federované aplikace SaaS. 
 
 Tento článek neobsahuje podrobné pokyny. Poskytuje koncepční pokyny, které vám pomůžou dosáhnout migrace díky tomu, že porozumíte způsobu převodu místních konfigurací do služby Azure AD. Věnuje se také běžným scénářům.
 
@@ -31,7 +31,7 @@ Pokud máte místní adresář, který obsahuje uživatelské účty, pravděpod
 
 Pokud jste jako většina organizací, pravděpodobně jste v nějaké fázi zavádění cloudových aplikací a identit. Možná jste zprovoznili Office 365 a službu Azure AD Connect. Možná jste nastavili cloudové aplikace SaaS pro některé klíčové úlohy, ale ne pro všechny.  
 
-Řada organizací má kromě Office 365 a aplikací založených na službě Azure AD i aplikace SaaS nebo vlastní obchodní aplikace federované přímo do místní služby pro přihlašování, jako je Azure Active Directory Federation Services (AD FS). Tento průvodce migrací popisuje, proč a jak migrovat místní aplikace do služby Azure AD.
+Řada organizací má kromě Office 365 a aplikací založených na službě Azure AD i aplikace SaaS nebo vlastní obchodní aplikace federované přímo do místní služby pro přihlašování, jako je Azure Active Directory Federation Services (AD FS). Tato příručka popisuje, proč a jak přesunout vaše aplikace do služby Azure AD.
 
 >[!NOTE]
 >Tento průvodce obsahuje podrobné informace o konfiguraci a migraci aplikací SaaS a základní informace o vlastních obchodních aplikacích. Do budoucna plánujeme přidat podrobnější pokyny pro obchodní aplikace.
@@ -40,9 +40,9 @@ Pokud jste jako většina organizací, pravděpodobně jste v nějaké fázi zav
 
 ![Aplikace federované přes službu Azure AD](media/migrate-adfs-apps-to-azure/migrate2.png)
 
-## <a name="reasons-for-migrating-apps-to-azure-ad"></a>Důvody pro migraci aplikací do služby Azure AD
+## <a name="reasons-for-moving-apps-to-azure-ad"></a>Důvody pro přesun aplikací do služby Azure AD
 
-Organizaci, která již používá AD FS, Ping nebo jiného místního zprostředkovatele ověřování, přinese migrace aplikací do služby Azure AD následující výhody:
+Pro organizace, která již používá službu AD FS, Ping nebo jiného místního zprostředkovatele ověřování umožňuje přesouvají aplikace do Azure AD následující výhody:
 
 **Lepší zabezpečení přístupu**
 - [Podmíněný přístup služby Azure AD](../active-directory-conditional-access-azure-portal.md) umožňuje konfigurovat podrobné řízení přístupu k jednotlivým aplikacím, včetně vícefaktorového ověřování Azure. Zásady je možné použít pro aplikace SaaS i vlastní aplikace stejným způsobem, jako to pravděpodobně již děláte v Office 365.
@@ -61,7 +61,7 @@ Organizaci, která již používá AD FS, Ping nebo jiného místního zprostře
 - Přestože získáte výhody služby Azure AD, můžete k ověřování nadále používat své místní řešení. Díky tomu si zachováte výhody, jako jsou místní řešení vícefaktorového ověřování, protokolování a auditování. 
 
 **Pomoc s vyřazením místního zprostředkovatele identity**
-- Pro organizace, které chtějí ukončit provoz produktu místního ověřování, migrace aplikací do služby Azure AD usnadňuje přechod díky tomu, že určitou část práce eliminuje. 
+- Pro organizace, které chcete vyřadit z provozu místní ověřování produkt umožňuje přesouvají aplikace do Azure AD usnadňuje přechod díky tomu že určitou část práce eliminuje. 
 
 ## <a name="mapping-types-of-apps-on-premises-to-types-of-apps-in-azure-ad"></a>Mapování typů místních aplikací na typy aplikací ve službě Azure AD
 Většina aplikací spadá do jedné z několika kategorií v závislosti na typu přihlašování, které používají. Tyto kategorie určují, jak je aplikace reprezentovaná ve službě Azure AD.
@@ -126,8 +126,8 @@ Následující tabulka obsahuje popis klíčových elementů konfigurace zprost�
 |Identifikátor /</br>vystavitel|Identifikátor zprostředkovatele identity z pohledu aplikace (někdy se označuje jako ID vystavitele).</br></br>V tokenu SAML se hodnota zobrazí jako element **Issuer**.|Identifikátor pro službu AD FS je obvykle Identifikátor federační služby ve správě služby AD FS v části **Služba** > **Upravit vlastnosti služby FS (Federation Service)**. Příklad: http&#58;//fs.contoso.com/adfs/services/trust|Odpovídající hodnota pro službu Azure AD má následující formát, kde se hodnota {ID_tenanta} nahradí za ID tenanta. Nachází se na webu Azure Portal v části **Azure Active Directory** > **Vlastnosti** jako **ID adresáře**: https&#58;//sts.windows.net/{ID_tenanta}/|
 |Federační </br>metadata </br>zprostředkovatele identity|Umístění veřejně dostupných federačních metadat zprostředkovatele identity. (Některé aplikace používají federační metadata jako alternativu ke konfiguraci adres URL, identifikátoru a podpisového certifikátu tokenu správcem.)|Adresu URL federačních metadat služby AD FS najdete ve správě služby AD FS v části **Služba** > **Koncové body** > **Metadata** > **Typ: Federační metadata**. Například: https&#58;//fs.contoso.com/FederationMetadata/2007-06/FederationMetadata.xml|Odpovídající hodnota pro službu Azure AD má následující formát: https&#58;//login.microsoftonline.com/{název_domény_tenanta}/FederationMetadata/2007-06/FederationMetadata.xml. Hodnota {název_domény_tenanta} se nahradí názvem vašeho tenanta ve formátu contoso.onmicrosoft.com. </br></br>Další informace najdete v tématu [Federační metadata](../develop/azure-ad-federation-metadata.md).
 
-## <a name="migrating-saas-apps"></a>Migrace aplikací SaaS
-V současné době se migrace aplikací SaaS ze služby AD FS nebo jiného zprostředkovatele identity do služby Azure AD provádí ručně. Pokyny pro konkrétní aplikaci najdete v [seznamu kurzů integrace aplikací SaaS z Marketplace](../saas-apps/tutorial-list.md).
+## <a name="moving-saas-apps"></a>Přesunutí aplikace SaaS
+Přesunutí aplikací SaaS ze služby AD FS nebo jiného zprostředkovatele identity do služby Azure AD provádí ručně ještě dnes. Pokyny pro konkrétní aplikaci najdete v [seznamu kurzů integrace aplikací SaaS z Marketplace](../saas-apps/tutorial-list.md).
 
 Kurz integrace předpokládá, že provádíte integraci tzv. na zelené louce. Během plánování, vyhodnocování, konfigurace a přímé migrace aplikací byste měli znát několik klíčových konceptů specifických pro migraci:  
 - Migrace některých aplikací je snadná. Aplikace se složitějšími požadavky, jako jsou vlastní deklarace identity, můžou vyžadovat další konfiguraci ve službě Azure AD nebo Azure AD Connect.
@@ -135,7 +135,7 @@ Kurz integrace předpokládá, že provádíte integraci tzv. na zelené louce. 
 - Pokud zjistíte, že se vyžadují další deklarace identity, ujistěte se, že jsou k dispozici ve službě Azure AD. Zkontrolujte konfiguraci synchronizace Azure AD Connect a ujistěte se, že se požadovaný atribut, například **samAccountName**, synchronizuje do služby Azure AD.
 - Po zpřístupnění atributů ve službě Azure AD můžete do služby Azure AD přidat pravidla vystavování deklarací identity, aby se tyto atributy zahrnuly jako deklarace identity do vydávaných tokenů. Tato pravidla přidáte ve vlastnostech **jednotného přihlašování** aplikace ve službě Azure AD.
 
-### <a name="assess-what-can-be-migrated"></a>Vyhodnocení položek, které je možné migrovat
+### <a name="assess-what-can-be-moved"></a>Vyhodnotit, co je možné přesunout
 Aplikace SAML 2.0 je možné integrovat se službou Azure AD buď prostřednictvím galerie aplikací Azure AD na Marketplace, nebo jako aplikace mimo Marketplace.  
 
 Některé konfigurace ve službě Azure AD vyžadují další kroky a některé konfigurace se v současné době nepodporují. Pokud chcete zjistit, co je možné přesunout, prohlédněte si aktuální konfiguraci jednotlivých aplikací. Hledejte především následující položky:
@@ -144,8 +144,8 @@ Některé konfigurace ve službě Azure AD vyžadují další kroky a některé 
 - Vydané verze tokenu SAML.
 - Další konfigurace, jako jsou pravidla autorizace vystavení nebo zásady řízení přístupu a pravidla vícefaktorového ověřování (další ověřování).
 
-#### <a name="what-can-be-migrated-today"></a>Co je aktuálně možné migrovat
-Mezi aplikace, které je aktuálně možné snadno migrovat, patří aplikace SAML 2.0 používající standardní sadu elementů konfigurace a deklarací identity. Tyto aplikace můžou zahrnovat:
+#### <a name="what-can-be-moved-today"></a>Co je možné přesunout ještě dnes
+Aplikace, které můžete snadno dnes přesunout patří aplikace SAML 2.0 používající standardní sadu elementů konfigurace a deklarací identity. Tyto aplikace můžou zahrnovat:
 - Hlavní název uživatele (UPN)
 - E-mailovou adresu
 - Jméno

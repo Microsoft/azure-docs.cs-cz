@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2016
 ms.author: victorh
-ms.openlocfilehash: 7acc0fa4c3654c96ac0f8f1baed7ea5b7b306376
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: a814c543b9f4bfe6717e639342d82ed13dac35b0
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48829765"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49954602"
 ---
 # <a name="create-dns-zones-and-record-sets-using-the-net-sdk"></a>Vytvoření zóny DNS a sad záznamů pomocí sady .NET SDK
 
@@ -28,7 +28,7 @@ Můžete automatizovat operací vytvořit, odstranit nebo aktualizovat záznamy,
 
 Programový přístup k prostředkům Azure, obvykle je poskytnuto prostřednictvím vyhrazený účet, nikoli pověření uživatele. Tyto vyhrazené účty se označují jako objekt zabezpečení účtů. Pokud chcete použít sadu SDK Azure DNS ukázkového projektu, musíte nejprve vytvořit instanční objekt a přiřaďte ho správná oprávnění.
 
-1. Postupujte podle [tyto pokyny](../azure-resource-manager/resource-group-authenticate-service-principal.md) k vytvoření instančního objektu účtu služby (sada SDK pro Azure DNS ukázkového projektu předpokládá ověřování pomocí hesla.)
+1. Postupujte podle [tyto pokyny](../active-directory/develop/howto-authenticate-service-principal-powershell.md) k vytvoření instančního objektu účtu služby (sada SDK pro Azure DNS ukázkového projektu předpokládá ověřování pomocí hesla.)
 2. Vytvořte skupinu prostředků ([tady je způsob](../azure-resource-manager/resource-group-template-deploy-portal.md)).
 3. Použít pro udělení hlavní účet služby oprávnění "Přispěvatel zóny DNS" do skupiny prostředků Azure ([tady je způsob](../role-based-access-control/role-assignments-portal.md).)
 4. Pokud používáte sadu SDK Azure DNS ukázkového projektu, upravte soubor "program.cs" následujícím způsobem:

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: shlo
-ms.openlocfilehash: 4eed11b312bce27dc0cd98daa3e2599a28fcabbd
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: aed816dadcced36946d6e173ca259a6c0f373727
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39524426"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49957459"
 ---
 # <a name="update-azure-machine-learning-models-by-using-update-resource-activity"></a>Aktualizace modelů Azure Machine Learning s využitím aktivity aktualizace prostředku
 Tento článek doplňuje hlavní Azure Data Factory – článek integrace Azure Machine Learning: [vytváření prediktivních kanálů pomocí Azure Machine Learning a Azure Data Factory](transform-data-using-machine-learning.md). Pokud jste tak již neučinili, přečtěte si v hlavním článku před přečtení tohoto článku. 
@@ -98,7 +98,7 @@ https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{reso
 
 Můžete získat hodnoty místo zástupné znaky v adrese URL při dotazování na webovou službu [Azure Machine Learning Web Services portálu](https://services.azureml.net/). 
 
-Nový typ koncový bod aktualizace prostředku vyžaduje ověřování instančních objektů. Použít ověřování instančních objektů, zaregistrujte aplikaci entity ve službě Azure Active Directory (Azure AD) a jí udělit **Přispěvatel** nebo **vlastníka** pro dané předplatné nebo prostředek skupiny where Webová služba patří. Viz [vytvoření instančního objektu a přiřazení oprávnění ke správě prostředků Azure](../azure-resource-manager/resource-group-create-service-principal-portal.md). Poznamenejte si následující hodnoty, které slouží k definování propojené služby:
+Nový typ koncový bod aktualizace prostředku vyžaduje ověřování instančních objektů. Použít ověřování instančních objektů, zaregistrujte aplikaci entity ve službě Azure Active Directory (Azure AD) a jí udělit **Přispěvatel** nebo **vlastníka** pro dané předplatné nebo prostředek skupiny where Webová služba patří. Viz [vytvoření instančního objektu a přiřazení oprávnění ke správě prostředků Azure](../active-directory/develop/howto-create-service-principal-portal.md). Poznamenejte si následující hodnoty, které slouží k definování propojené služby:
 
 - ID aplikace
 - Klíč aplikace 

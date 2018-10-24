@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: sashan, moslake
 manager: craigg
-ms.date: 10/17/2018
-ms.openlocfilehash: ddb9e36775a815c07d40cecd61360c3e5b9c2611
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.date: 10/22/2018
+ms.openlocfilehash: c74d71f0ca8faec587cb36a789ed0328f9b24711
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49378767"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49954689"
 ---
 # <a name="vcore-service-tiers-azure-hybrid-benefit-and-migration"></a>vCore úrovně služeb, zvýhodněné hybridní využití Azure a migrace
 
@@ -48,6 +48,9 @@ Následující tabulka vám pomůže pochopit rozdíly mezi těmito dvěma vrstv
 |Zálohování|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7 – 35 dní (7 dní ve výchozím nastavení)|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7 – 35 dní (7 dní ve výchozím nastavení)|zálohování na snímku do vzdáleného úložiště Azure a obnovení použijte tyto snímky pro rychlé obnovení. Zálohy jsou okamžité a nemají vliv vstupně-výstupním výkonem výpočetního výkonu. Obnovení jsou velmi rychlé a nejsou velikost operace dat (s ohledem minut, nikoli hodin nebo dnů).|
 |V paměti|Nepodporuje se|Podporováno|Nepodporuje se|
 |||
+
+> [!NOTE]
+> Můžete získat bezplatné databázi Azure SQL na úrovni služby Basic ve spojení s bezplatným účtem Azure prozkoumat Azure. Informace najdete v tématu [vytvořte si spravovanou cloudovou databázi s bezplatným účtem Azure](https://azure.microsoft.com/free/services/sql-database/).
 
 - Další informace najdete v tématu [vCore omezení prostředků v jedné databázi](sql-database-vcore-resource-limits-single-databases.md) a [vCore omezení prostředků ve spravované instanci](sql-database-managed-instance.md#vcore-based-purchasing-model).
 - Další informace o úrovních služeb pro obecné účely a pro důležité obchodní informace najdete v tématu [úrovně služeb pro obecné účely a pro důležité obchodní informace](sql-database-service-tiers-general-purpose-business-critical.md).

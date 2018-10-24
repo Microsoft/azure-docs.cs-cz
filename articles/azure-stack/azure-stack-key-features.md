@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 10/23/2018
 ms.author: jeffgilb
 ms.reviewer: ''
-ms.openlocfilehash: 16c908dabd313cd9d64ce5be9b7d0299423a7675
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 38120b2be2ab7789946a4ad2fe688954e6212189
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49344681"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49959022"
 ---
 # <a name="key-features-and-concepts-in-azure-stack"></a>Klíčových funkcích a konceptech v Azure stacku
 Pokud se službou Microsoft Azure Stack teprve začínáte, může být užitečné tyto podmínky a popis funkcí.
@@ -154,14 +154,6 @@ Má tři základní role, které se vztahují ke všem typům prostředků Azure
 
 ## <a name="usage-data"></a>Údaje o využití
 Microsoft Azure Stack shromažďuje a agreguje data o využití přes všechny poskytovatele prostředků a je odesílá do Azure pro zpracování službou Azure commerce. Využití dat shromážděných ve službě Azure Stack lze zobrazit pomocí rozhraní REST API. Je konzistentních s Azure rozhraní API pro klienty i poskytovatele a delegované poskytovatele rozhraní API k získání dat o používání napříč všemi předplatnými tenanta. Tato data je možné integrovat pomocí externího nástroje nebo služby pro účely fakturace nebo vrácení peněz. Jakmile se využití se zpracovalo Azure průmyslu, lze zobrazit ve fakturačním portálu Azure.
-
-## <a name="in-development-build-of-azure-stack-development-kit"></a>Sestavení v vývoj pro Azure Stack Development Kit
-Sestavení v development umožňují – inovátoři vyhodnotit nejnovější verzi sady Azure Stack Development Kit. Jsou to přírůstková sestavení založené na nejnovější hlavní verzi. Zatímco hlavní verze budou vydané každých několik měsíců, sestavení v vývoj se přerušovaně vydání mezi hlavními verzemi.
-
-Vývoj v sestavení bude poskytovat následující výhody:
-- Opravy chyb
-- Nové funkce
-- Další vylepšení
 
 ## <a name="next-steps"></a>Další postup
 [Základy správy](azure-stack-manage-basics.md)

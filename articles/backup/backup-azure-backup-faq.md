@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/2/2018
 ms.author: markgal
-ms.openlocfilehash: 2151733a5d91fb17c69fa1f4f6aac64a70928824
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: dd0059f8d4714603568577d0a3c977ce7b27d44c
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49364298"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945837"
 ---
 # <a name="questions-about-the-azure-backup-service"></a>Dotazy týkající se služby Azure Backup
 Tento článek obsahuje odpovědi na běžné dotazy týkající se komponenty Azure Backup. Některé odpovědi zahrnují odkazy na články obsahující komplexní informace. Můžete klást otázky týkající se Azure Backup kliknutím na **Komentáře** (napravo). Komentáře se zobrazují v dolní části tohoto článku. Otázky týkající se služby Azure Backup můžete také publikovat na [diskusním fóru](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
@@ -82,6 +82,9 @@ Ano. Použití Azure Backup pomocí System Center Data Protection Manager (DPM),
 
 ### <a name="can-i-use-dpm-to-back-up-apps-in-azure-stack"></a>Můžete použít aplikace DPM k zálohování aplikace ve službě Azure Stack?
 Ne. I když Azure Backup můžete použít k ochraně služby Azure Stack, Azure Backup nepodporuje aktuálně použití DPM k zálohování aplikace ve službě Azure Stack.
+
+### <a name="can-i-do-an-ilr-item-level-restore-for-vms-backed-up-to-the-online-vault-azure"></a>Můžu dělat ILR (položky obnovení na úrovni) pro virtuální počítače zálohovány v Online úložišti (Azure)?
+Ne, není k dispozici pro virtuální počítače zálohovat do trezoru služby Recovery Services lokality obnovit úrovni položek (ILR).
 
 ## <a name="how-azure-backup-works"></a>Jak funguje Azure Backup
 ### <a name="if-i-cancel-a-backup-job-once-it-has-started-is-the-transferred-backup-data-deleted-br"></a>Pokud zruším úlohu zálohování poté, co již byla spuštěná, dojde k odstranění přenášených dat? <br/>

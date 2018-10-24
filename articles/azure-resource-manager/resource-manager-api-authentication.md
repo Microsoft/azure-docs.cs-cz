@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/12/2018
 ms.author: dugill
-ms.openlocfilehash: b841a1104a0cc1e74d9ab1f16ef39d3892ba7d55
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 69127702a7d8e7027e78a8e04a4e8e1bc3e36b65
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46996685"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49956336"
 ---
 # <a name="use-resource-manager-authentication-api-to-access-subscriptions"></a>Ověřování pomocí Správce prostředků rozhraní API pro přístup k předplatným
 ## <a name="introduction"></a>Úvod
@@ -94,7 +94,7 @@ Výsledky budou zahrnovat AppId, který budete potřebovat při ověřování ja
 ### <a name="optional-configuration---certificate-credential"></a>Volitelné konfigurace – certifikát přihlašovacích údajů
 Certifikát přihlašovacích údajů Azure AD podporuje také pro aplikace: vytvoření certifikátu podepsaného svým držitelem, zachovat privátní klíč a přidejte veřejný klíč, registrace aplikace Azure AD. Pro ověřování vaše aplikace odešle do služby Azure AD podepsán pomocí privátního klíče malé datové části a Azure AD ověří podpis pomocí veřejného klíče, které jste zaregistrovali.
 
-Informace o vytvoření aplikace AD s certifikátem, naleznete v tématu [pomocí prostředí Azure PowerShell k vytvoření instančního objektu pro přístup k prostředkům](resource-group-authenticate-service-principal.md#create-service-principal-with-certificate-from-certificate-authority) nebo [pomocí Azure CLI k vytvoření instančního objektu pro přístup k prostředkům](resource-group-authenticate-service-principal-cli.md) .
+Informace o vytvoření aplikace AD s certifikátem, naleznete v tématu [pomocí prostředí Azure PowerShell k vytvoření instančního objektu pro přístup k prostředkům](../active-directory/develop/howto-authenticate-service-principal-powershell.md#create-service-principal-with-certificate-from-certificate-authority) nebo [pomocí Azure CLI k vytvoření instančního objektu pro přístup k prostředkům](resource-group-authenticate-service-principal-cli.md) .
 
 ## <a name="get-tenant-id-from-subscription-id"></a>Získání ID tenanta z ID předplatného
 Chcete-li požádat o token, který slouží k volání Resource Manageru, vaše aplikace potřebuje znát ID tenanta Azure AD tenanta, který je hostitelem předplatné Azure. Pravděpodobně uživatelé budou vědět, ID předplatného, ale nemusí ví jejich tenant ID pro Azure Active Directory. Pokud chcete získat ID tenanta daného uživatele, požádejte uživatele, pro ID předplatného. Zadejte toto předplatné ID při odesílání žádosti o předplatném:
@@ -106,7 +106,7 @@ Požadavek selže, protože uživatel není přihlášen ještě, ale můžete z
 ## <a name="get-user--app-access-token"></a>Získání uživatele a token přístupu aplikace
 Vaše aplikace přesměruje uživatele do služby Azure AD pomocí OAuth 2.0 povolit požadavek – k ověření přihlašovacích údajů uživatele a získat zpět autorizační kód. Vaše aplikace používá autorizační kód k získání přístupového tokenu pro Resource Manager. [ConnectSubscription](https://github.com/dushyantgill/VipSwapper/blob/master/CloudSense/CloudSense/Controllers/HomeController.cs#L42) metoda vytvoří žádost o autorizaci.
 
-Tento článek popisuje požadavky rozhraní REST API pro ověření uživatele. Pomocné rutiny knihovny používat taky k provedení ověřování ve vašem kódu. Další informace o těchto knihoven, naleznete v tématu [knihovny Azure Active Directory Authentication](../active-directory/active-directory-authentication-libraries.md). Pokyny k integraci správy identit do aplikace najdete v tématu [Příručka pro vývojáře Azure Active Directory](../active-directory/develop/azure-ad-developers-guide.md).
+Tento článek popisuje požadavky rozhraní REST API pro ověření uživatele. Pomocné rutiny knihovny používat taky k provedení ověřování ve vašem kódu. Další informace o těchto knihoven, naleznete v tématu [knihovny Azure Active Directory Authentication](../active-directory/active-directory-authentication-libraries.md). Pokyny k integraci správy identit do aplikace najdete v tématu [Příručka pro vývojáře Azure Active Directory](../active-directory/develop/v1-overview.md).
 
 ### <a name="auth-request-oauth-20"></a>Žádost o ověření (OAuth 2.0)
 Vydejte Open ID Connect a OAuth 2.0 autorizaci požadavků na koncový bod ověření Azure AD:

@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/24/2018
+ms.date: 10/22/2018
 ms.author: mabrigg
 ms.reviewer: alfredop
-ms.openlocfilehash: aedaa729ec51d7b60b2c242239935f7b3e41794f
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.openlocfilehash: c6f17fd4cc225b7d4ce60d38bf2abcabf12a40c5
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42918183"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945582"
 ---
 # <a name="provider-resource-usage-api"></a>Rozhraní API využití prostředků poskytovatele
 Termín *poskytovatele* platí pro správce služeb a žádné delegované poskytovatele. Operátoři Azure stacku a delegované poskytovatele. můžete použít rozhraní API využití zprostředkovatele zobrazíte využití svým klientům s přímým přístupem. Například jak je znázorněno v diagramu, P0 může volat zprostředkovatele rozhraní API využití informace o společnosti P1 a P2 pro použití s přímým přístupem a P1 může volat pro informace o využití na P3 a P4.
@@ -32,7 +32,7 @@ Požadavek získá podrobnosti o využití pro požadované předplatné a pro p
 
 Použití těchto rozhraní API je poskytovatel rozhraní API, aby volající musí být přiřazenou roli vlastník, Přispěvatel nebo Čtenář v předplatném poskytovatele.
 
-| **– Metoda** | **Identifikátor URI žádosti** |
+| **Metoda** | **Identifikátor URI žádosti** |
 | --- | --- |
 | GET |https://{armendpoint}/subscriptions/{subId}/providers/Microsoft.Commerce.Admin/subscriberUsageAggregates?reportedStartTime={reportedStartTime}&reportedEndTime={reportedEndTime}&aggregationGranularity={granularity} & subscriberId = {sub1.1} & verzi api-version = 2015-06-01-preview & continuationToken = {hodnota tokenu} |
 
@@ -109,13 +109,13 @@ Volání služby Microsoft.Commerce.Admin můžete shromažďovat informace o vy
 
 **Veškeré využití tenanta pro vrácení odstraněných pro aktivní uživatelé:**
 
-| **– Metoda** | **Identifikátor URI žádosti** |
+| **Metoda** | **Identifikátor URI žádosti** |
 | --- | --- |
 | GET | https://{armendpoint}/subscriptions/{subId}/providersMicrosoft.Commerce.Admin/subscriberUsageAggregates?reportedStartTime={start-time}&reportedEndTime={end-endtime}&aggregationGranularity=Hourly&api-version= 2015-06-01-preview |
 
 **Vrátit využití pro odstraněné nebo aktivní tenanta:**
 
-| **– Metoda** | **Identifikátor URI žádosti** |
+| **Metoda** | **Identifikátor URI žádosti** |
 | --- | --- |
 | GET |https://{armendpoint}/subscriptions/{subId}/providersMicrosoft.Commerce.Admin/subscriberUsageAggregates?reportedStartTime={start-time}&reportedEndTime={end-endtime}&aggregationGranularity=Hourly&subscriberId={ id předplatitele} & verzi api-version = 2015-06-01-preview |
 

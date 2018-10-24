@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: jasonh
-ms.openlocfilehash: d036922d68116689d1c54c2c3e89be5accedb533
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: adf5bbaee6669ac232c7d28a8c46cd2dd89c3d48
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46983478"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49955196"
 ---
 # <a name="migrating-to-azure-resource-manager-based-development-tools-for-hdinsight-clusters"></a>Migrace do nástroje pro vývoj založených na Azure Resource Manageru pro clustery HDInsight
 
@@ -90,7 +90,7 @@ Rutiny Azure PowerShell – Resource Manager je možné nainstalovat souběžně
 
 Před použitím rutin HDInsight, musíte připojit ke svému účtu Azure a vytvořte novou skupinu prostředků:
 
-* Connect-AzureRmAccount nebo [rutina Select-AzureRmProfile](https://docs.microsoft.com/powershell/module/servicemanagement/azurerm.profile/select-azurermprofile?view=azuresmps-4.0.0). Zobrazit [ověřování instančního objektu pomocí Azure Resource Manageru](../azure-resource-manager/resource-group-authenticate-service-principal.md)
+* Connect-AzureRmAccount nebo [rutina Select-AzureRmProfile](https://docs.microsoft.com/powershell/module/servicemanagement/azurerm.profile/select-azurermprofile?view=azuresmps-4.0.0). Zobrazit [ověřování instančního objektu pomocí Azure Resource Manageru](../active-directory/develop/howto-authenticate-service-principal-powershell.md)
 * [New-AzureRmResourceGroup](https://msdn.microsoft.com/library/mt603739.aspx)
 
 ### <a name="renamed-cmdlets"></a>Přejmenované rutiny

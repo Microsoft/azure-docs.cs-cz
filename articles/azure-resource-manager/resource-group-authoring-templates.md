@@ -12,21 +12,21 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/30/2018
+ms.date: 10/22/2018
 ms.author: tomfitz
-ms.openlocfilehash: 1b982bddc951e710ba3bfa5fe8621d6595b95a52
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 28ef94113c76cd70e12a9682e1c523afc3f0a233
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49405340"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945871"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Princip struktury a syntaxe šablon Azure Resource Manageru
 Tento článek popisuje strukturu šablony Azure Resource Manageru. Představuje různé části šablony a vlastnosti, které jsou k dispozici v těchto oddílech. Šablona se skládá z JSON a z výrazů, které můžete použít k vytvoření hodnot pro vaše nasazení. Podrobný kurz k vytvoření šablony najdete v tématu [vytvoření první šablony Azure Resource Manageru](resource-manager-create-first-template.md).
 
 ## <a name="quickstarts-and-tutorials"></a>Rychlé starty a kurzy
 
-Použijte následující rychlých startů a kurzů se naučíte vyvíjet šablon resource Manageru:
+Použijte následující rychlých startů a kurzů se naučíte vyvíjet šablony Resource Manageru:
 
 - Šablony Rychlý start
 
@@ -304,7 +304,7 @@ V části prostředky definovat prostředky, které jsou nasazené a aktualizova
 ],
 ```
 
-Další informace najdete v tématu [oddíl prostředků šablon Azure Resource Manageru](resource-manager-templates-resources.md).
+Chcete-li podmíněně zahrnout nebo vyloučit prostředku během nasazení, použijte [podmínky](resource-manager-templates-resources.md#condition). Další informace o oddílu prostředků najdete v tématu [oddíl prostředků šablon Azure Resource Manageru](resource-manager-templates-resources.md).
 
 ## <a name="outputs"></a>Výstupy
 V části výstupů zadáte hodnoty, které se vracejí z nasazení. Například může vrátit identifikátor URI pro přístup k nasazených prostředků.

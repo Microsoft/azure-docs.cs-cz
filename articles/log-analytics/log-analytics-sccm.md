@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 9a2193d78d564ad4a8c175a5116fa7dc9ebda256
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 28ddfea0f4127f402b82388a10ee150b30a65736
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49408740"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49954228"
 ---
 # <a name="connect-configuration-manager-to-log-analytics"></a>Propojení Configuration Manageru k Log Analytics
 Můžete svoje prostředí System Center Configuration Manager připojit ke službě Azure Log Analytics k synchronizaci zařízení shromažďování dat a odkazují na tyto kolekce v Log Analytics a Azure Automation.  
@@ -32,7 +32,7 @@ Log Analytics podporuje aktuální větve System Center Configuration Manageru v
 ## <a name="configuration-overview"></a>Přehled konfigurace
 Následující kroky shrnují postup konfigurace integrace nástroje Configuration Manager pomocí služby Log Analytics.  
 
-1. Na webu Azure Portal zaregistrujte se jako webovou aplikaci nebo webové rozhraní API aplikace nástroje Configuration Manager a ujistěte se, že máte ID klienta a tajný klíč klienta z registrace ze služby Azure Active Directory. Zobrazit [použití portálu k vytvoření služby Active Directory a instančního objektu, který má přístup k prostředkům](../azure-resource-manager/resource-group-create-service-principal-portal.md) podrobné informace o tom, k provedení tohoto kroku.
+1. Na webu Azure Portal zaregistrujte se jako webovou aplikaci nebo webové rozhraní API aplikace nástroje Configuration Manager a ujistěte se, že máte ID klienta a tajný klíč klienta z registrace ze služby Azure Active Directory. Zobrazit [použití portálu k vytvoření služby Active Directory a instančního objektu, který má přístup k prostředkům](../active-directory/develop/howto-create-service-principal-portal.md) podrobné informace o tom, k provedení tohoto kroku.
 2. Na webu Azure Portal [udělit Configuration Manageru (zaregistrovanou webovou aplikaci) pomocí oprávnění pro přístup k Log Analytics](#grant-configuration-manager-with-permissions-to-log-analytics).
 3. V nástroji Configuration Manager [přidat připojení pomocí Průvodce přidáním připojení OMS](#add-an-oms-connection-to-configuration-manager).
 4. V nástroji Configuration Manager [aktualizovat vlastnosti připojení](#update-oms-connection-properties) Pokud tajný klíč klienta nebo hesla nikdy vyprší platnost nebo dojde ke ztrátě.

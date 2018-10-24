@@ -10,24 +10,25 @@ author: cforbe
 manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 09/24/2018
-ms.openlocfilehash: 388957fc5dac5cdab5bee34a4431eaa524e76a48
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 06e7d227511a9b651a905df3172f59a191acce01
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46999898"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945667"
 ---
 # <a name="transform-data-with-the-azure-machine-learning-data-prep-sdk"></a>Transformace dat pomocí sady SDK pro Azure Machine Learning Data Prep
 
 [Sady SDK služby Azure Machine Learning Data Prep](https://docs.microsoft.com/python/api/overview/azure/dataprep?view=azure-dataprep-py) nabízí různé transformace metody můžete vyčistit svá data. Tyto metody usnadňují přidání sloupce, odfiltrovat nežádoucí řádků nebo sloupců a dává chybějící hodnoty.
 
 Aktuálně jsou dostupné metody pro následující úlohy:
-- [Přidání sloupce pomocí výrazu](#add-column-using-expression)
+- [Přidání sloupce pomocí výrazu](#column)
 - [Dává chybějící hodnoty](#impute-missing-values)
 - [Odvození sloupce podle příkladu](#derive-column-by-example)
 - [Filtrování](#filtering)
 - [Vlastních transformací Pythonu](#custom-python-transforms)
 
+<a name=column>
 ## <a name="add-column-using-an-expression"></a>Přidání sloupce pomocí výrazu
 
 Obsahuje sadu SDK pro Azure Machine Learning Data Prep `substring` výrazy můžete použít k výpočtu hodnoty z existujících sloupců a vložte tuto hodnotu v novém sloupci. V tomto příkladu jsme budete načtení dat a znovu zkusíte přidat sloupce pro vstupní data.

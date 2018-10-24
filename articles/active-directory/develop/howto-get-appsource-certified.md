@@ -17,12 +17,12 @@ ms.date: 08/21/2018
 ms.author: celested
 ms.reviewer: andret
 ms.custom: aaddev
-ms.openlocfilehash: a2876ccdfe073a3c642304a1381faf77ae4a7d90
-ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
+ms.openlocfilehash: 603da0add9efba4e68088bf0eb6ab919ec9988e2
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42054879"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49955483"
 ---
 # <a name="how-to-get-appsource-certified-for-azure-active-directory"></a>Získání certifikace AppSource pro Azure Active Directory
 
@@ -32,7 +32,7 @@ Pro zobrazení seznamu samostatné aplikaci SaaS na AppSource, vaše aplikace mu
 
 ## <a name="guides-and-code-samples"></a>Průvodce a ukázky kódu
 
-Pokud chcete další informace o tom, jak integrovat aplikace s Azure AD pomocí služby Open ID připojení, použijte naše průvodce a ukázky v kódu [Příručka pro vývojáře Azure Active Directory](azure-ad-developers-guide.md#get-started "Začínáme s Azure AD pro Vývojáři").
+Pokud chcete další informace o tom, jak integrovat aplikace s Azure AD pomocí služby Open ID připojení, použijte naše průvodce a ukázky v kódu [Příručka pro vývojáře Azure Active Directory](v1-overview.md#get-started "Začínáme s Azure AD pro Vývojáři").
 
 ## <a name="multi-tenant-applications"></a>Aplikace s více tenanty
 
@@ -127,9 +127,9 @@ Pomocí následujícího oddílu pro komentáře na svůj názor a Pomozte nám 
 <!--Reference style links -->
 [AAD-Auth-Scenarios]:authentication-scenarios.md
 [AAD-Auth-Scenarios-Browser-To-WebApp]:authentication-scenarios.md#web-browser-to-web-application
-[AAD-Dev-Guide]: azure-ad-developers-guide.md
+[AAD-Dev-Guide]: v1-overview.md
 [AAD-Howto-Multitenant-Overview]: howto-convert-app-to-be-multi-tenant.md
-[AAD-QuickStart-Web-Apps]: azure-ad-developers-guide.md#get-started
+[AAD-QuickStart-Web-Apps]: v1-overview.md#get-started
 
 
 <!--Image references-->

@@ -12,19 +12,29 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.component: compliance
-ms.date: 09/04/2018
+ms.date: 10/19/2018
 ms.author: rolyon
-ms.openlocfilehash: b6cc81a49875739a61aa397a65eb70c6b4f082ef
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: be00f6fb41572c0a9599f7005f2cdd1d6587f15a
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49393979"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49944137"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Funkce Azure Active Directory Terms of Use
-Azure AD Terms of Use poskytuje organizacím jednoduchý způsob předkládání informací koncovým uživatelům. Toto předkládání zajistí, že se uživatelům zobrazí příslušná právní omezení pro zákonné požadavky nebo požadavky dodržování předpisů. Tento článek popisuje, jak začít s funkcí Azure AD Terms of Use.
+Azure AD Terms of Use poskytuje organizacím jednoduchý způsob předkládání informací koncovým uživatelům. Toto předkládání zajistí, že se uživatelům zobrazí příslušná právní omezení pro zákonné požadavky nebo požadavky dodržování předpisů. Tento článek popisuje, jak začít pracovat s podmínkami použití.
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
+
+## <a name="overview-videos"></a>Videa s přehledem
+
+Následující video poskytuje rychlý přehled toho, podmínky použití.
+
+>[!VIDEO https://www.youtube.com/embed/tj-LK0abNao]
+
+Další videa naleznete v tématu:
+- [Jak nasadit podmínky použití ve službě Azure Active Directory](https://www.youtube.com/embed/N4vgqHO2tgY)
+- [Postup zavádění podmínky použití ve službě Azure Active Directory](https://www.youtube.com/embed/t_hA4y9luCY)
 
 ## <a name="what-can-i-do-with-terms-of-use"></a>Co můžu dělat s podmínkami použití?
 Funkce Azure AD Terms of Use umožňuje následující:
@@ -33,8 +43,9 @@ Funkce Azure AD Terms of Use umožňuje následující:
 - Předkládat konkrétní podmínky použití založené na atributech uživatelů (např. doktoři vs. sestry nebo místní vs. zahraniční pracovníci, a to pomocí [dynamických skupin](../users-groups-roles/groups-dynamic-membership.md)).
 - Předkládat konkrétní podmínky použití při přístupu k aplikacím s velkým vlivem na chod firmy, jako je například Salesforce.
 - Předkládat podmínky použití v různých jazycích.
+- Pomoc při plnění nařízení o ochraně osobních údajů.
 - Zobrazit seznam těch, kdo odsouhlasili nebo neodsouhlasili vaše podmínky použití.
-- Zobrazit protokol auditu aktivit podmínek použití.
+- Zobrazte protokol podmínky použití aktivity pro audit a dodržování předpisů.
 
 ## <a name="prerequisites"></a>Požadavky
 K používání a konfiguraci funkce Azure AD Terms of Use potřebujete:

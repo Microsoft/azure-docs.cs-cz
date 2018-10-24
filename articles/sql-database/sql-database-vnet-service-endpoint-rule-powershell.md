@@ -12,19 +12,19 @@ ms.author: moslake
 ms.reviewer: genemi, vanto
 manager: craigg
 ms.date: 10/05/2018
-ms.openlocfilehash: 4540e5a0381bfbae65e4679878ec549f3169caf5
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: b841f985c758cb1e354d3c3537c532a253e81d92
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49467238"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945922"
 ---
 # <a name="powershell--create-a-virtual-service-endpoint-and-vnet-rule-for-sql"></a>PowerShell: Vytvoření koncového bodu služby virtuální a pravidlo virtuální sítě pro SQL
 
 Azure [SQL Database](sql-database-technical-overview.md) a [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) podporu koncových bodů služby virtuální.
 
 > [!NOTE]
-> Toto téma se týká k Azure SQL serveru a databází SQL Database a SQL Data Warehouse, které jsou vytvořené na serveru Azure SQL. Pro zjednodušení se SQL Database používá k označení SQL Database i SQL Data Warehouse.
+> Tento článek se týká k Azure SQL serveru a databází SQL Database a SQL Data Warehouse, které jsou vytvořeny na serveru Azure SQL. Pro zjednodušení se SQL Database používá k označení SQL Database i SQL Data Warehouse. Tento článek provádí *není* platí pro **Azure SQL Database Managed Instance** nemají koncový bod služby přidružené k podsíti Managed Instance.
 
 Tento článek obsahuje a vysvětluje Powershellový skript, který provede následující akce:
 

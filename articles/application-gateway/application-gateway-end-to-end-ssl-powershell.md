@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/23/2018
 ms.author: victorh
-ms.openlocfilehash: f5b63c7448a502d681bbafb0ac80237a8e2c63c6
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 5ea022d38970122b88ae35c592af3e4a9351190b
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/23/2018
-ms.locfileid: "49650090"
+ms.locfileid: "49945327"
 ---
-# <a name="configure-end-to-end-ssl-by-using-application-gateway-with-powershell"></a>Konfigurace-kompletního protokolu SSL pomocí Application Gateway pomocí Powershellu
+# <a name="configure-end-to-end-ssl-by-using-application-gateway-with-powershell"></a>Konfigurace kompletního protokolu SSL pomocí Application Gateway pomocí Powershellu
 
 ## <a name="overview"></a>Přehled
 

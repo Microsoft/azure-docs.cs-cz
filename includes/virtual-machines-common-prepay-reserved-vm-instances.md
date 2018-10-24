@@ -4,12 +4,12 @@ ms.author: yashar
 ms.service: virtual-machines-windows
 ms.topic: include
 ms.date: 09-05-2018
-ms.openlocfilehash: 065ac0855fc47b23b434287f9f4406bd641f01ae
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 4b51631e8b7d3f53edd1afdba76de3031b112254
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47454574"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49805015"
 ---
 # <a name="prepay-for-virtual-machines-with-azure-reserved-vm-instances"></a>Předplatit si virtuální počítače se službou Azure Reserved VM Instances
 
@@ -35,7 +35,7 @@ Rezervované instance virtuálních počítačů jsou dostupné pro většinu ve
   - Virtuální procesory s omezením velikosti
   - Řadu virtuálních počítačů: Řady A-series Av2-series a G-series
   - Virtuální počítače ve verzi Preview: všechny řady virtuálních počítačů nebo velikost, která je ve verzi preview
-- Cloudy: Rezervace nejsou dostupné ke koupi v oblastech Azure US Government, Německo nebo Čína.
+- Cloudy: Rezervace nejsou dostupné ke koupi v oblastí Německo a Čína.
 - Nedostatečná kvóta: rezervace, který je v oboru pro jedno předplatné musí mít kvóty virtuálních procesorů dostupných v předplatném pro nové rezervovaných Instancí. Například pokud cílové předplatné má kvótu virtuálních procesorů 10 pro řady D-Series, pak nelze koupíte rezervace pro 11 Standard_D1 instancí. Kontrola kvóty pro rezervace zahrnují virtuální počítače už nasazená v předplatném. Například pokud předplatné má kvótu virtuálních procesorů 10 pro řady D-Series a má dvě instance standard_D1 nasazený, pak můžete koupit rezervaci pro 10 standard_D1 instancí v tomto předplatném. 
 - Omezení kapacity: ve výjimečných případech, omezeních nákup rezervace nový dílčí velikostí virtuálních počítačů z důvodu nízká kapacita v oblasti Azure.
 
@@ -67,9 +67,9 @@ Rezervované instance virtuálních počítačů jsou dostupné pro většinu ve
 
 ## <a name="cancellations-and-exchanges"></a>Zrušení a výměny
 
-Pokud je potřeba zrušit vaší rezervace, může být 12 % poplatek za předčasné ukončení. Náhrady jsou založeny na nejnižší cenu ceny nákupu nebo aktuální cena rezervace. Náhrady jsou omezené na 50 000 dolarů za rok. Náhrady, který jste dostali se zbývající poměrný zůstatek minus poplatek za předčasné ukončení 12 %. Pokud chcete požádat o zrušení, přejděte na rezervaci v Azure portal a vyberte **náhrada** vytvořit žádost o podporu.
+Pokud potřebujete zrušit svou rezervaci, může se vám účtovat poplatek za předčasné ukončení ve výši 12 %. Výše vrácených peněz vychází z vaší kupní ceny nebo aktuální ceny rezervace podle toho, která hodnota je nižší. Výše vrácených peněz je omezená na 50 000 USD za rok. Výše vrácených peněz, které obdržíte, je zbývající poměrný zůstatek minus poplatek za předčasné ukončení ve výši 12 %. Pokud chcete požádat o zrušení, přejděte na rezervaci v Azure portal a vyberte **náhrada** vytvořit žádost o podporu.
 
-Pokud potřebujete změnit vaší rezervace rezervovaných instancí virtuálních počítačů do jiné oblasti, skupiny velikost virtuálních počítačů nebo termín, můžete ji exchange pro jiné rezervace, který je roven nebo větší hodnotu. Počáteční datum termín pro novou rezervaci nepřenáší z výměně rezervace. Začíná při vytváření nového rezervace 1 nebo 3 roky. Žádost o exchange, přejděte na rezervaci na webu Azure Portal a vyberte **Exchange** vytvořit žádost o podporu.
+Pokud potřebujete u své rezervace rezervovaných instancí virtuálních počítačů změnit oblast, skupinu velikostí virtuálních počítačů nebo období, můžete ji vyměnit za jinou rezervaci stejné nebo vyšší hodnoty. Počáteční datum období nové rezervace se z vyměněné rezervace nepřenáší. 1 nebo 3leté období začne okamžikem vytvoření nové rezervace. Žádost o exchange, přejděte na rezervaci na webu Azure Portal a vyberte **Exchange** vytvořit žádost o podporu.
 
 ## <a name="next-steps"></a>Další postup
 

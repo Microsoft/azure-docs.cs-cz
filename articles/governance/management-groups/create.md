@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/10/2018
 ms.author: rithorn
-ms.openlocfilehash: 6273f265ebb5f9a2336040aacc01d1428fd0db11
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 6a45ffa13ead40b72fd1a0a3c2696a6e6829a4d5
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49077744"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49956404"
 ---
 # <a name="create-management-groups-for-resource-organization-and-management"></a>Vytvoření skupin pro správu pro organizaci poskytující prostředky a správu
 
@@ -48,7 +48,7 @@ Skupina pro správu můžete vytvořit pomocí portálu, Powershellu nebo rozhra
 
 ### <a name="create-in-powershell"></a>Vytvořit v prostředí PowerShell
 
-V rámci prostředí PowerShell použijte rutiny New-AzureRmManagementGroups:
+V rámci prostředí PowerShell použijte rutinu New-AzureRmManagementGroup:
 
 ```azurepowershell-interactive
 New-AzureRmManagementGroup -GroupName 'Contoso'
@@ -74,10 +74,10 @@ az account management-group create --name 'Contoso'
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o skupinách správy, naleznete v tématu:
+Další informace o řešeních pro správu najdete v následujících tématech:
 
 - [Uspořádání prostředků se skupinami pro správu Azure](overview.md)
 - [Jak měnit, odstraňovat nebo spravovat skupiny pro správu](manage.md)
-- [Instalace modulu Azure Powershell](https://www.powershellgallery.com/packages/AzureRM.ManagementGroups)
+- [Instalace modulu Azure PowerShellu](https://www.powershellgallery.com/packages/AzureRM.ManagementGroups)
 - [Specifikace rozhraní REST API](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/managementgroups/resource-manager/Microsoft.Management/preview)
 - [Nainstalujte rozšíření Azure CLI](/cli/azure/extension?view=azure-cli-latest#az-extension-list-available)

@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 09/12/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d2023d30cdb86a218d27024c8ccf0f397a7a5d09
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 569efa7fbbd111937f00ba3b1e28219c163e2221
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48816599"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49958155"
 ---
 # <a name="manage-azure-automation-run-as-accounts"></a>Správa účtů služby Automation spustit jako pro Azure
 
@@ -50,7 +50,7 @@ Vytvořit nebo aktualizovat účet Spustit jako, musí mít specifické oprávn�
 |Vytvoření nebo odebrání připojení služby Automation|[New-AzureRmAutomationConnection](/powershell/module/AzureRM.Automation/New-AzureRmAutomationConnection)</br>[Remove-AzureRmAutomationConnection](/powershell/module/AzureRM.Automation/Remove-AzureRmAutomationConnection)|Přispěvatelem skupiny prostředků |
 
 * Uživatelský účet AD s oprávněními role přispěvatele pro prostředky Microsoft.Automation, jak je uvedeno v článku [řízení přístupu na základě rolí ve službě Azure Automation](automation-role-based-access-control.md#contributor).  
-* Uživatelé ve vašem tenantovi Azure AD, kteří nejsou správci, můžou [registrovat aplikace AD](../azure-resource-manager/resource-group-create-service-principal-portal.md#check-azure-subscription-permissions), pokud je možnost **Uživatelé můžou registrovat aplikace** na stránce **Uživatelská nastavení** pro vašeho tenanta Azure AD nastavená na **Ano**. Pokud je nastavení Registrace aplikací nastaveno na **Ne**, uživatel provádějící tuto akci musí být globálním správcem služby Azure AD.
+* Uživatelé ve vašem tenantovi Azure AD, kteří nejsou správci, můžou [registrovat aplikace AD](../active-directory/develop/howto-create-service-principal-portal.md#check-azure-subscription-permissions), pokud je možnost **Uživatelé můžou registrovat aplikace** na stránce **Uživatelská nastavení** pro vašeho tenanta Azure AD nastavená na **Ano**. Pokud je nastavení Registrace aplikací nastaveno na **Ne**, uživatel provádějící tuto akci musí být globálním správcem služby Azure AD.
 
 Pokud nejste členem instance Active Directory předplatného před přidané do globální správce nebo spolusprávce role pro předplatné, se přidá jako Host. V takovém případě se zobrazí `You do not have permissions to create…` upozornění na **přidat účet Automation** stránky. Uživatele, kteří byli nejdřív přidaní do role globálního správce nebo spolusprávce, je možné z instance Active Directory předplatného odebrat a potom je znovu přidat – tak se z nich ve službě Active Directory stanou úplní uživatelé. Takovou situaci můžete ověřit v podokně **Azure Active Directory** na webu Azure Portal. Vyberte **Uživatelé a skupiny**, potom **Všichni uživatelé** a po výběru konkrétního uživatele vyberte **Profil**. Hodnota atributu **Typ uživatele** v profilu uživatele by neměla být **Host**.
 

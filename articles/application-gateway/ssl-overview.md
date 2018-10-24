@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 10/23/2018
 ms.author: amsriva
-ms.openlocfilehash: 626db07a81c6482a689329b8cddc9f40b464bb7e
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: e7020ef5c1f7411c7226e7a2db489112ee6bf0a4
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/23/2018
-ms.locfileid: "49649070"
+ms.locfileid: "49945497"
 ---
 # <a name="overview-of-end-to-end-ssl-with-application-gateway"></a>Přehled koncového šifrování protokolu SSL pomocí služby Application Gateway
 
@@ -47,7 +47,7 @@ Ověřovací certifikáty byly zastaralé a nahrazují důvěryhodných kořenov
 
 ## <a name="next-steps"></a>Další postup
 
-Po získání informací o koncovém šifrování protokolu SSL přejděte k tématu [Konfigurace aplikační brány s ukončením protokolu SSL pomocí webu Azure Portal](create-ssl-portal.md) a vytvořte aplikační bránu s koncovým šifrováním protokolu SSL.
+Po získání informací o kompletního protokolu SSL, přejděte na [konfigurace kompletního protokolu SSL pomocí Application Gateway pomocí Powershellu](application-gateway-end-to-end-ssl-powershell.md) k vytvoření služby application gateway používající kompletního protokolu SSL.
 
 <!--Image references-->
 

@@ -17,12 +17,12 @@ ms.date: 04/27/2017
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: hirsin
-ms.openlocfilehash: 04cdba261d67e20762fd4bb4835568f763124fef
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 312b1f7accee47c07c5fb0507061253fda5044f6
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39578469"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49958036"
 ---
 # <a name="azure-active-directory-authentication-protocols"></a>Protokoly ověřování pro Azure Active Directory
 Azure Active Directory (Azure AD) podporuje některé z nejčastěji používaných ověřovací a autorizační protokoly. Témata v této části popisují podporované protokoly a jejich provádění ve službě Azure AD. V tématech zahrnuté kontrolu podporované typy deklarací identity, úvod do používání federačních metadat, podrobné OAuth 2.0. a referenční dokumentaci protokol SAML 2.0 a část s řešením potíží.
@@ -38,6 +38,6 @@ Azure Active Directory (Azure AD) podporuje některé z nejčastěji používan�
 * [Referenční informace o protokolu SAML](active-directory-saml-protocol-reference.md) – Další informace o profilech, jednotné přihlašování a jednotné odhlašování SAML služby Azure AD.
 
 ## <a name="see-also"></a>Viz také
-[Příručka pro vývojáře Azure Active Directory](azure-ad-developers-guide.md)
+[Příručka pro vývojáře Azure Active Directory](v1-overview.md)
 
 [Ukázky kódu služby Active Directory](sample-v1-code.md)

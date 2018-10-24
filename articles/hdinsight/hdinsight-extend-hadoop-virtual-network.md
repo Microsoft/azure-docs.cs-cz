@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/08/2018
-ms.openlocfilehash: 6455322a1a1cf392c16aba708ce8445f8c80c3df
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 5ee249aee5d95f22f2e1f52d6356f09ea41ccd68
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49363839"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945752"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Rozšíření Azure HDInsight pomocí Azure Virtual Network
 
@@ -173,7 +173,7 @@ Další informace najdete v tématu [překlad názvů pro virtuální počítač
 
 ## <a name="directly-connect-to-hadoop-services"></a>Připojit přímo k služby Hadoop
 
-Můžete připojit ke clusteru v https://CLUSTERNAME.azurehdinsight.net. Tato adresa se používá veřejnou IP adresu, která možná nejsou dostupná, pokud jste použili skupiny zabezpečení sítě nebo udr omezit příchozí provoz z Internetu. Kromě toho při nasazování clusteru ve virtuální síti k němu máte přístup pomocí privátního koncového bodu https://CLUSTERNAME-internal.azurehdinsight.net. Tento koncový bod se přeloží na privátní IP adresu ve virtuální síti pro přístup ke clusteru.
+Můžete připojit ke clusteru v https://CLUSTERNAME.azurehdinsight.net. Tato adresa se používá veřejnou IP adresu, která možná nejsou dostupná, pokud jste použili skupiny zabezpečení sítě nebo udr omezit příchozí provoz z Internetu. Kromě toho při nasazování clusteru ve virtuální síti k němu máte přístup pomocí privátního koncového bodu https://CLUSTERNAME-int.azurehdinsight.net. Tento koncový bod se přeloží na privátní IP adresu ve virtuální síti pro přístup ke clusteru.
 
 Pro připojení k Ambari a další webové stránky prostřednictvím virtuální sítě, postupujte následovně:
 

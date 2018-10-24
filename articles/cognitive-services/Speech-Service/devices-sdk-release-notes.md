@@ -10,16 +10,27 @@ ms.component: speech-service
 ms.topic: conceptual
 ms.date: 08/07/2018
 ms.author: gracez
-ms.openlocfilehash: 3ba726098d10266601f94d0c174872d736255f8f
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 2040c80687b8961c2db6b1b954a317807ebbbb13
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/23/2018
-ms.locfileid: "49647643"
+ms.locfileid: "49946024"
 ---
 # <a name="release-notes-of-cognitive-services-speech-devices-sdk"></a>Poznámky k verzi sady Cognitive Services zařízení sadou SDK pro řeč
 
 Následující změny části seznamu v nejnovější vydané verze.
+
+## <a name="cognitive-services-speech-devices-sdk-101-2018-oct-release"></a>Cognitive Services zařízení sadou SDK pro řeč 1.0.1: verze října 2018 
+
+* Aktualizuje [sadou SDK pro řeč](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) součásti na verzi 1.0.1. Další informace najdete v tématu jeho [poznámky k verzi](https://aka.ms/csspeech/whatsnew). 
+* Pomocí našeho algoritmu vylepšené zpracování zvuku se vylepší přesnost rozpoznávání řeči  
+* Jeden průběžné rozpoznávání zvuku relace opravy chyby.
+
+**Rozbíjející změny v** 
+
+* V této verzi představeny počet nejnovější změny. Zkontrolujte prosím [na této stránce](https://aka.ms/csspeech/breakingchanges_1_0_0) podrobnosti týkající se rozhraní API. 
+* Soubory modelu KWS nejsou kompatibilní se sadou SDK pro řeč zařízení 1.0.1. Až nové probuzení slovo soubory jsou zapsány do zařízení se odstraní existující soubory probuzení aplikace Word. 
 
 ## <a name="cognitive-services-speech-devices-sdk-050-2018-aug-release"></a>Services cognitive řeči zařízení vydání sady SDK si verzi 0.5.0: srpna 2018
 

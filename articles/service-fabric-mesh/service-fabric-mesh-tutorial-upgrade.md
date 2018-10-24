@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 09/18/2018
 ms.author: twhitney
 ms.custom: mvc, devcenter
-ms.openlocfilehash: c23646bca6109d27e57b2f928363e65c83c634eb
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 7985c8e9e26126040d842ded998a953281daa2ae
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47031148"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49953548"
 ---
 # <a name="tutorial-learn-how-to-upgrade-a-service-fabric-application-using-visual-studio"></a>Kurz: Přečtěte si pokyny k upgradu aplikace Service Fabric pomocí sady Visual Studio
 
@@ -32,11 +32,11 @@ V tomto kurzu se naučíte:
 
 V této sérii kurzů se naučíte:
 > [!div class="checklist"]
-> * [Vytvoření prostředků infrastruktury sítě služby app v sadě Visual Studio](service-fabric-mesh-tutorial-create-dotnetcore.md)
-> * [Ladění aplikace Service Fabric sítě ve vašem místním vývojovém clusteru spuštěná](service-fabric-mesh-tutorial-debug-service-fabric-mesh-app.md)
-> * [Nasazení prostředků infrastruktury sítě služby app](service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md)
+> * [Vytvořit aplikaci Service Fabric Mesh v sadě Visual Studio](service-fabric-mesh-tutorial-create-dotnetcore.md)
+> * [Ladit aplikaci Service Fabric Mesh běžící v místním clusteru pro vývoj](service-fabric-mesh-tutorial-debug-service-fabric-mesh-app.md)
+> * [Nasadit aplikaci Service Fabric Mesh](service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md)
 > * Upgradu prostředků infrastruktury sítě služby app
-> * [Vyčištění prostředků sítě pro Service Fabric](service-fabric-mesh-tutorial-cleanup-resources.md)
+> * [Vyčištění prostředků Service Fabric Mesh](service-fabric-mesh-tutorial-cleanup-resources.md)
 
 [!INCLUDE [preview note](./includes/include-preview-note.md)]
 
@@ -44,7 +44,7 @@ V této sérii kurzů se naučíte:
 
 Než začnete s tímto kurzem:
 
-* Pokud jste nenasadili aplikace to-do, postupujte podle pokynů v [publikovat webovou aplikaci Service Fabric mřížky](service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md).
+* Pokud jste nenasadili aplikaci seznamu úkolů, postupujte podle pokynů v článku o [publikování webové aplikace Service Fabric Mesh](service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md).
 
 ## <a name="upgrade-a-service-fabric-mesh-service-by-using-visual-studio"></a>Upgrade služby sítě pro Service Fabric pomocí sady Visual Studio
 
@@ -156,8 +156,8 @@ Spusťte webový prohlížeč a přejděte na tuto adresu URL, abyste se mohli p
 
 V této části kurzu jste se naučili:
 > [!div class="checklist"]
-> * Postup upgradu aplikace Service Fabric MES pomocí sady Visual Studio
+> * Postup upgradu na aplikaci Service Fabric sítě s použitím sady Visual Studio
 
 Přejděte k dalšímu kurzu:
 > [!div class="nextstepaction"]
-> [Vyčištění prostředků sítě pro Service Fabric](service-fabric-mesh-tutorial-cleanup-resources.md)
+> [Vyčištění prostředků Service Fabric Mesh](service-fabric-mesh-tutorial-cleanup-resources.md)

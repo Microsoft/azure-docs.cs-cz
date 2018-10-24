@@ -7,12 +7,12 @@ ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
 ms.date: 10/12/2018
-ms.openlocfilehash: 8b0f682e481ef73019d3371af2b84f6270e021ee
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 54aef992e95454387ee2fda1d1b34d6dcae3e21e
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49341884"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49959107"
 ---
 # <a name="azure-disk-encryption-prerequisites-previous-release"></a>Požadavky Azure Disk Encryption (předchozí verze)
 
@@ -242,12 +242,12 @@ Můžete spravovat vaše instančních objektů s použitím rozhraní příkazo
 3.  AppId vrátila ID klienta Azure AD se používá v dalších příkazů. Je také hlavní název služby, kterou budete používat pro az keyvault set-policy. Heslo je tajný kód klienta, který jste měli použít později, aby Azure Disk Encryption. Tajný klíč klienta Azure AD chrání odpovídajícím způsobem.
  
 ### <a name="bkmk_ADappRM"></a> Nastavení aplikace Azure AD a služby objektu zabezpečení i když na webu Azure portal
-Pomocí postupu z [použití portálu k vytvoření aplikace Azure Active Directory a instančního objektu, který má přístup k prostředkům](../azure-resource-manager/resource-group-create-service-principal-portal.md) článku vytvořte aplikaci Azure AD. Jednotlivé kroky uvedené níže přejdete přímo do oddílu článku dokončete. 
+Pomocí postupu z [použití portálu k vytvoření aplikace Azure Active Directory a instančního objektu, který má přístup k prostředkům](../active-directory/develop/howto-create-service-principal-portal.md) článku vytvořte aplikaci Azure AD. Jednotlivé kroky uvedené níže přejdete přímo do oddílu článku dokončete. 
 
-1. [Ověření požadovaných oprávnění](../azure-resource-manager/resource-group-create-service-principal-portal.md#required-permissions)
-2. [Vytvoření aplikace Azure Active Directory](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-azure-active-directory-application) 
+1. [Ověření požadovaných oprávnění](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)
+2. [Vytvoření aplikace Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application) 
      - Můžete použít libovolný název a adresu URL, které chcete při vytváření aplikace přihlašování.
-3. [Získání ID aplikace a ověřovací klíč](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-application-id-and-authentication-key). 
+3. [Získání ID aplikace a ověřovací klíč](../active-directory/develop/howto-create-service-principal-portal.md#get-application-id-and-authentication-key). 
      - Ověřovací klíč je tajný kód klienta a slouží jako AadClientSecret pro Set-AzureRmVMDiskEncryptionExtension. 
         - Ověřovací klíč se používá aplikace jako přihlašovací údaje pro přihlášení k Azure AD. Na webu Azure Portal tento tajný kód se nazývá klíče, ale nemá žádný vztah k trezorům klíčů. Zabezpečte tento tajný kód správně. 
      - ID aplikace se později použije jako AadClientId pro Set-AzureRmVMDiskEncryptionExtension a atribut ServicePrincipalName pro Set-AzureRmKeyVaultAccessPolicy. 

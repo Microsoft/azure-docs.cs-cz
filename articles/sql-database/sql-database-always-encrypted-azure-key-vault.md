@@ -13,12 +13,12 @@ ms.author: vanto
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/05/2018
-ms.openlocfilehash: 44fc04d4788c4381a4922f1335c393e03045900e
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: e0971b6b9b8460447d383d238843d4bdddc912f7
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49352389"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49958971"
 ---
 # <a name="always-encrypted-protect-sensitive-data-and-store-encryption-keys-in-azure-key-vault"></a>Funkce Always Encrypted: Ochrana citlivých dat a ukládání šifrovacích klíčů ve službě Azure Key Vault
 
@@ -48,7 +48,7 @@ Pro účely tohoto kurzu budete potřebovat:
 ## <a name="enable-your-client-application-to-access-the-sql-database-service"></a>Povolit klientské aplikaci přístup ke službě SQL Database
 Je nutné povolit klientské aplikace pro přístup ke službě SQL Database nastavením aplikace Azure Active Directory (AAD) a kopírování *ID aplikace* a *klíč* , budete muset ověřování vaší aplikace.
 
-Chcete-li získat *ID aplikace* a *klíč*, postupujte podle kroků v [vytvoření službu Azure Active Directory a instančního objektu, který má přístup k prostředkům](../azure-resource-manager/resource-group-create-service-principal-portal.md).
+Chcete-li získat *ID aplikace* a *klíč*, postupujte podle kroků v [vytvoření službu Azure Active Directory a instančního objektu, který má přístup k prostředkům](../active-directory/develop/howto-create-service-principal-portal.md).
 
 ## <a name="create-a-key-vault-to-store-your-keys"></a>Vytvoření trezoru klíčů pro ukládání klíčů
 Teď, když vaše klientské aplikace je nakonfigurovaná a máte ID vaší aplikace, je čas vytvořit trezor klíčů a nakonfigurujte jeho zásad přístupu tak, aby vám nebo vaší aplikace můžete přístup k tajným klíčům v trezoru (s funkcí Always Encrypted klíče). *Vytvořit*, *získat*, *seznamu*, *přihlašování*, *ověřte*, *wrapKey*, a *unwrapKey* oprávnění se vyžadují pro vytvoření nové hlavního klíče sloupce a pro nastavení šifrování v systému SQL Server Management Studio.

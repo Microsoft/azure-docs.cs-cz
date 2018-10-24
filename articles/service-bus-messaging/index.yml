@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: e0b533272baadb329989b18bcc8179c77c2cafaf
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: f5392e27a68b5a5bebe855cbc559c7653f6ad9be
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49390155"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49944242"
 documentType: LandingData
 title: Dokumentace k zasílání zpráv služby Azure Service Bus
 metadata:
@@ -21,7 +21,7 @@ metadata:
   ms.date: 05/16/2018
   ms.author: spelluru
 abstract:
-  description: Azure Service Bus je víceklientská cloudová služba pro zasílání zpráv, která odesílá informace mezi aplikacemi a službami. Asynchronní operace umožňují flexibilní zprostředkované zasílání zpráv a také strukturované zasílání zpráv typu FIFO (first-in-first-out) a funkce pro publikování a přihlášení k odběru.<p>Naučte se používat zasílání zpráv služby Azure Service Bus k odesílání a příjmu zpráv ve frontách a k publikování a odběru zpráv s využitím témat a předplatných.</p>
+  description: Azure Service Bus je víceklientská cloudová služba pro zasílání zpráv, kterou můžete využít k odesílání informací mezi aplikacemi a službami. Asynchronní operace umožňují flexibilní zprostředkované zasílání zpráv a také strukturované zasílání zpráv typu FIFO (first-in-first-out) a funkce pro publikování a přihlášení k odběru.<p>Naučte se používat zasílání zpráv služby Azure Service Bus k odesílání a příjmu zpráv ve frontách a k publikování a odběru zpráv s využitím témat a předplatných.</p>
   aside:
     image:
       alt: 

@@ -13,6 +13,11 @@
 ### [Virtuální sítě](../virtual-network/virtual-network-vnet-plan-design-arm.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### [Připojení mezi místními sítěmi – síť VPN](../vpn-gateway/vpn-gateway-plan-design.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### [Připojení mezi místními sítěmi – vyhrazené privátní](../expressroute/expressroute-workflows.md?toc=%2fazure%2fnetworking%2ftoc.json)
+### Interoperabilita možností připojení back-endu
+#### [Úvod a nastavení testu](connectivty-interoperability-preface.md?toc=%2fazure%2fnetworking%2ftoc.json)
+#### [Konfigurace nastavení testu](connectivty-interoperability-configuration.md?toc=%2fazure%2fnetworking%2ftoc.json)
+#### [Analýza roviny řízení](connectivty-interoperability-control-plane.md?toc=%2fazure%2fnetworking%2ftoc.json)
+#### [Analýza roviny dat](connectivty-interoperability-data-plane.md?toc=%2fazure%2fnetworking%2ftoc.json)
 
 ##  Koncepty
 ### [Virtuální sítě](../virtual-network/virtual-networks-overview.md?toc=%2fazure%2fnetworking%2ftoc.json)

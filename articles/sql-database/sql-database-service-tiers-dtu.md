@@ -11,13 +11,13 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/04/2018
-ms.openlocfilehash: a9e274cea7543fc3361b1f2d0a60fc18176b6248
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.date: 10/22/2018
+ms.openlocfilehash: 00e5a77bdf8554d473194b2e84947d7adb10df90
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48831309"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49955249"
 ---
 # <a name="dtu-based-service-tiers"></a>Úrovně služeb na základě DTU
 
@@ -25,7 +25,6 @@ Na základě jednotek DTU úrovně jsou rozlišené pomocí celou řadu velikost
 
 > [!IMPORTANT]
 > SQL Database Managed Instance aktuálně ve verzi public preview nepodporuje nákupní model založený na DTU. Další informace najdete v tématu [Azure SQL Database Managed Instance](sql-database-managed-instance.md).
-
 > [!NOTE]
 > Informace o úrovních služeb založený na virtuálních jádrech najdete v tématu [úrovně služeb založený na virtuálních jádrech](sql-database-service-tiers-vcore.md). Informace o odlišení těchto služeb na základě jednotek DTU úrovně a úrovní služeb založený na virtuálních jádrech najdete v tématu [modely nákupu Azure SQL Database](sql-database-service-tiers.md).
 
@@ -33,7 +32,7 @@ Na základě jednotek DTU úrovně jsou rozlišené pomocí celou řadu velikost
 
 Výběr úrovně služeb závisí primárně na obchodní kontinuity podnikových procesů, úložiště a požadavky na výkon.
 ||Basic|Standard|Premium|
-| :-- | --: |--:| --:| --:| 
+| :-- | --: |--:| --:| --:|
 |Cílové úlohy|Vývoj a provoz|Vývoj a provoz|Vývoj a provoz||
 |Smlouva SLA o provozuschopnosti|99,99 %|99,99 %|99,99 %|Není k dispozici ve verzi preview|
 |Uchování záloh|7 dní|po dobu 35 dní|po dobu 35 dní|
@@ -44,13 +43,16 @@ Výběr úrovně služeb závisí primárně na obchodní kontinuity podnikovýc
 |OLTP v paměti|neuvedeno|neuvedeno|Podporováno|
 |||||
 
+> [!NOTE]
+> Můžete získat bezplatné databázi Azure SQL na úrovni služby Basic ve spojení s bezplatným účtem Azure prozkoumat Azure. Informace najdete v tématu [vytvořte si spravovanou cloudovou databázi s bezplatným účtem Azure](https://azure.microsoft.com/free/services/sql-database/).
+
 ## <a name="single-database-dtu-and-storage-limits"></a>Omezení úložiště a jednotek DTU izolované databáze
 
 Výpočetní velikosti se vyjadřují v jednotky transakcí databáze (Dtu) pro izolované databáze a elastické databáze jednotky transakce (Edtu) pro elastické fondy. Další informace o jednotkách Dtu a Edtu najdete v tématu [nákupní model založený na DTU](sql-database-service-tiers.md#dtu-based-purchasing-model)?
 
 ||Basic|Standard|Premium|
 | :-- | --: | --: | --: | --: |
-| Maximální velikost úložiště | 2 GB | 1 TB | 4 TB  | 
+| Maximální velikost úložiště | 2 GB | 1 TB | 4 TB  |
 | Maximální počet jednotek Dtu | 5 | 3000 | 4000 | |
 ||||||
 
@@ -59,18 +61,17 @@ Výpočetní velikosti se vyjadřují v jednotky transakcí databáze (Dtu) pro 
 
 ## <a name="elastic-pool-edtu-storage-and-pooled-database-limits"></a>Omezení databázi ve fondu, úložiště a eDTU pro elastický fond
 
-| | **Basic** | **Standard** | **Premium** | 
+| | **Basic** | **Standard** | **Premium** |
 | :-- | --: | --: | --: | --: |
-| Maximální velikost úložiště na databázi  | 2 GB | 1 TB | 1 TB | 
-| Maximální velikost úložiště na fond | 156 GB | 4 TB | 4 TB | 
-| Maximální počet Edtu na databázi | 5 | 3000 | 4000 | 
-| Maximální počet Edtu na fond | 1600 | 3000 | 4000 | 
-| Maximální počet databází na fond | 500  | 500 | 100 | 
+| Maximální velikost úložiště na databázi  | 2 GB | 1 TB | 1 TB |
+| Maximální velikost úložiště na fond | 156 GB | 4 TB | 4 TB |
+| Maximální počet Edtu na databázi | 5 | 3000 | 4000 |
+| Maximální počet Edtu na fond | 1600 | 3000 | 4000 |
+| Maximální počet databází na fond | 500  | 500 | 100 |
 ||||||
 
 > [!IMPORTANT]
 > Více než 1 TB úložiště na úrovni Premium je aktuálně k dispozici ve všech oblastech kromě následujících: západní USA – střed, Čína – východ, USDoDCentral, Německo – střed, USDoDEast, USA (gov) – jihozápad, USGov Iowa, Německo-severovýchod, Čína – sever. V ostatních oblastech je úložiště na úrovni Premium omezeno na 1 TB. Viz [Aktuální omezení pro P11–P15](sql-database-dtu-resource-limits-single-databases.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
-
 > [!IMPORTANT]
 > Za určitých okolností budete muset zmenšit databázi uvolnění nevyužívaného místa. Další informace najdete v tématu [spravovat místo souborů ve službě Azure SQL Database](sql-database-file-space-management.md).
 

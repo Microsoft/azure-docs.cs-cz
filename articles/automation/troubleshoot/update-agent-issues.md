@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: automation
 ms.component: update-management
 manager: carmonm
-ms.openlocfilehash: 2a70893c3e879b2cecb4d39d538b0df44b1ced15
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 1b258d115e7d9962ecab4b93dbcd98d13f5977c7
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49651403"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49956676"
 ---
 # <a name="understand-the-agent-check-results-in-update-management"></a>Vysvětlení výsledky kontroly agenta v Update Management
 
@@ -70,7 +70,7 @@ Tato kontrola Určuje, pokud používáte TLS 1.2 pro šifrování komunikace. P
 
 Tato kontrola Určuje, pokud agent můžete správně komunikovat se službou agenta.
 
-Konfigurace proxy serveru a brány firewall musí umožňovat Hybrid Runbook Worker agenta pro komunikaci se koncový bod registrace. Seznam adres a portech najdete v tématu [sítě plánování pro hybridní pracovní procesy](../automation-hybrid-runbook-worker.md#network-planning)
+Konfigurace proxy serveru a brány firewall musí umožňovat Hybrid Runbook Worker agenta pro komunikaci s koncovým bodem registrace. Seznam adres a portech najdete v tématu [sítě plánování pro hybridní pracovní procesy](../automation-hybrid-runbook-worker.md#network-planning)
 
 ### <a name="operations-endpoint"></a>Operace koncového bodu
 

@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/09/2018
 ms.author: sujayt
-ms.openlocfilehash: 86d6c77dab817cf755c34bdd699ee1158e852f37
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: 040ace1eab4062c011ed82a59e7f5bfb789c256b
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42057467"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945735"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-issues"></a>Řešení potíží s replikací virtuálních počítačů Azure do Azure
 
@@ -158,8 +158,8 @@ U replikace Site Recovery pro práci, odchozí připojení ke konkrétní adresy
 
 - **Řešení**
    - Pokud k řízení odchozího síťového připojení u virtuálního počítače používáte proxy server brány firewall, ujistěte se, že požadované adresy URL nebo rozsahy IP adres datacentra jsou povolené. Informace najdete v tématu [proxy pokyny s branou firewall](https://aka.ms/a2a-firewall-proxy-guidance).
-   - Pokud k řízení odchozího síťového připojení u virtuálního počítače používáte pravidla skupiny zabezpečení sítě, ujistěte se, že rozsahy IP adres požadavků datacentra jsou povolené. Informace najdete v tématu [pokyny pro skupiny zabezpečení sítě](https://aka.ms/a2a-nsg-guidance).
-   - Na seznam povolených [požadované adresy URL](azure-to-azure-about-networking.md#outbound-connectivity-for-urls) nebo [požadované rozsahy IP adres](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges), postupujte podle kroků v [sítě dokument s pokyny](site-recovery-azure-to-azure-networking-guidance.md).
+   - Pokud k řízení odchozího síťového připojení u virtuálního počítače používáte pravidla skupiny zabezpečení sítě, ujistěte se, že rozsahy IP adres požadavků datacentra jsou povolené. Informace najdete v tématu [pokyny pro skupiny zabezpečení sítě](azure-to-azure-about-networking.md).
+   - Na seznam povolených [požadované adresy URL](azure-to-azure-about-networking.md#outbound-connectivity-for-urls) nebo [požadované rozsahy IP adres](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges), postupujte podle kroků v [sítě dokument s pokyny](azure-to-azure-about-networking.md).
 
 ### <a name="issue-2-site-recovery-configuration-failed-151072"></a>Úkol 2: (151072) se nepovedlo nakonfigurovat službu Site Recovery
 - **Možná příčina** </br>

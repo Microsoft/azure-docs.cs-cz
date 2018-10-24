@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 4e27c21b3b8d84b658b4cad10e05f8fa0b057268
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: b9a91b478ea9012a1d041fc102765890954c2fbb
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49427298"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49956183"
 ---
 # <a name="automation-with-service-principals"></a>Automatizace pomocí instančních objektů
 
@@ -24,8 +24,8 @@ Ve službě Analysis Services instanční objekty se používají s Azure Automa
  
 Instanční objekty lze vytvořit na webu Azure Portal nebo pomocí prostředí PowerShell. Další informace naleznete v tématu:
 
-[Vytvoření instančního objektu – Azure portal](../azure-resource-manager/resource-group-create-service-principal-portal.md)   
-[Vytvoření instančního objektu – PowerShell](../azure-resource-manager/resource-group-authenticate-service-principal.md)
+[Vytvoření instančního objektu – Azure portal](../active-directory/develop/howto-create-service-principal-portal.md)   
+[Vytvoření instančního objektu – PowerShell](../active-directory/develop/howto-authenticate-service-principal-powershell.md)
 
 ## <a name="store-credential-and-certificate-assets-in-azure-automation"></a>Store assety přihlašovacích údajů a certifikátu ve službě Azure Automation
 

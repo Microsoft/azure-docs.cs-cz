@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 10/17/2018
-ms.openlocfilehash: 61950a1afda1fefdfab95f6d63420387dc2e2ac7
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.date: 10/22/2018
+ms.openlocfilehash: 88bea87c752563e1c19332121eb568b0bd329d03
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49378631"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49954139"
 ---
 # <a name="sql-database-frequently-asked-questions-faq"></a>SQL Database – nejčastější dotazy (FAQ)
 
@@ -35,7 +35,7 @@ Ne. Dopad opravy není obecně souborům Pokud jste [použít logiku opakování
 
 ## <a name="what-is-the-new-vcore-based-purchasing-model-for-azure-sql-database"></a>Co je nového založený na virtuálních jádrech nákupní model pro službu Azure SQL Database
 
-Nový nákupní model doplňuje stávající model založený na DTU. Model založený na virtuálních jádrech je účelem je poskytnout zákazníkům flexibilitu, kontrolu, transparentnost a jednoduchý způsob převodu místních požadavků na zatížení do cloudu. Také umožňuje zákazníkům škálovat své výpočetní prostředky a úložiště prostředků na základě jejich potřebám provádění úloh. Izolovaná databáze a elastický fond možnosti použití modelu virt. jader jsou také nárok až na 30 procent spoření s [zvýhodněné hybridní využití Azure pro SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md). Zobrazit [nákupní model založený na DTU](sql-database-service-tiers-dtu.md) a [nákupní model založený na virtuálních jádrech](sql-database-service-tiers-vcore.md) Další informace.
+Nový nákupní model doplňuje stávající model založený na DTU. Model založený na virtuálních jádrech je účelem je poskytnout zákazníkům flexibilitu, kontrolu, transparentnost a jednoduchý způsob převodu místních požadavků na zatížení do cloudu. Také umožňuje zákazníkům škálovat své výpočetní prostředky a úložiště prostředků na základě jejich potřebám provádění úloh. Izolovaná databáze a elastický fond možnosti použití modelu virt. jader jsou také nárok až na 30 procent spoření s [zvýhodněné hybridní využití Azure pro SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/#services). Zobrazit [nákupní model založený na DTU](sql-database-service-tiers-dtu.md) a [nákupní model založený na virtuálních jádrech](sql-database-service-tiers-vcore.md) Další informace.
 
 ## <a name="what-is-a-vcore"></a>Co je virtuální jádro
 

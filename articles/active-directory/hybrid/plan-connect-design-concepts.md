@@ -16,12 +16,12 @@ ms.workload: Identity
 ms.date: 08/10/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: f85726f7058c783b6e369126532e40ceecc3c846
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: bf5384333504df023e98650934c77192f23f9f71
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46313555"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945990"
 ---
 # <a name="azure-ad-connect-design-concepts"></a>Azure AD Connect: Koncepty návrhu
 Účelem tohoto dokumentu je popisují oblasti, které musí být si mysleli, že během návrhu implementace služby Azure AD Connect. Tento dokument je podrobný pohled na určité oblasti a tyto koncepty stručně jsou popsány v i další dokumenty.
@@ -91,7 +91,7 @@ Tato funkce fungovala musí účet služby AD DS, které jsou použity k synchro
 Použití ConsistencyGuid jako parametru sourceAnchor můžete povolit při nové instalaci. Tato část zahrnuje Express a vlastní instalace najdete v podrobnostech.
 
   >[!NOTE]
-  > Pouze novější verze služby Azure AD Connect (1.1.524.0 a po provedení) podporuje použití ConsistencyGuid jako parametru sourceAnchor při nové instalaci.
+  > Pouze novější verze služby Azure AD Connect (1.1.524.0 a po provedení) podporují využívání ConsistencyGuid jako parametru sourceAnchor při nové instalaci.
 
 ### <a name="how-to-enable-the-consistencyguid-feature"></a>Jak povolit funkci ConsistencyGuid
 V současné době můžete tuto funkci povolit pouze během pouze nové instalace Azure AD Connect.
@@ -102,7 +102,7 @@ Při instalaci Azure AD Connect s režimem Express, Průvodce Azure AD Connect a
 * Průvodce Azure AD Connect poprvé, dotazuje svého tenanta Azure AD pro načtení atributu AD použít jako atribut sourceAnchor v předchozí instalaci Azure AD Connect (pokud existuje). Pokud tyto informace jsou k dispozici, Azure AD Connect používá stejný atribut AD.
 
   >[!NOTE]
-  > Pouze novější verze služby Azure AD Connect (1.1.524.0 a po provedení) jsou uloženy informace o atribut sourceAnchor ve vašem tenantovi Azure AD použít během instalace. Starší verze služby Azure AD Connect to nejde.
+  > Pouze novější verze služby Azure AD Connect (1.1.524.0 a po provedení) ukládání informací o atribut sourceAnchor ve vašem tenantovi Azure AD použít během instalace. Starší verze služby Azure AD Connect to nejde.
 
 * Pokud není k dispozici informace o atributu sourceAnchor používá, Průvodce zkontroluje stav atribut ms-DS-ConsistencyGuid ve vašem místním Active Directory. Pokud atribut není nakonfigurovaná na libovolný objekt v adresáři, používá Průvodce ms-DS-ConsistencyGuid jako atribut sourceAnchor. Jestliže je atribut nastaven na jeden nebo více objektů v adresáři, dojde k závěru průvodce, atribut se používá jinými aplikacemi a není vhodný jako atribut sourceAnchor...
 
@@ -128,7 +128,7 @@ Při instalaci Azure AD Connect s režimem vlastní, Průvodce Azure AD Connect 
 Pokud máte existující nasazení služby Azure AD Connect, který používá objectGUID jako atribut zdrojového ukotvení, můžete ho přejít na ConsistencyGuid místo.
 
 >[!NOTE]
-> Pouze novější verze služby Azure AD Connect (1.1.552.0 a po provedení) podporuje přechod z ObjectGuid ConsistencyGuid jako atribut zdrojového ukotvení.
+> Pouze novější verze služby Azure AD Connect (1.1.552.0 a po provedení) podporovat přechod z ObjectGuid ConsistencyGuid jako atribut zdrojového ukotvení.
 
 Přepnutí z objectGUID do ConsistencyGuid jako atribut zdrojového ukotvení:
 

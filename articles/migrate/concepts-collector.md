@@ -4,15 +4,15 @@ description: Poskytuje informace o zařízení Kolektoru ve službě Azure Migra
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 09/28/2018
+ms.date: 10/23/2018
 ms.author: snehaa
 services: azure-migrate
-ms.openlocfilehash: b79045e54b9c2ee4846f2216704a419e0ff85501
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 3c40fd97540d8529c95c7d18d2c3155dd37717e9
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434428"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945412"
 ---
 # <a name="about-the-collector-appliance"></a>Informace o zařízení Kolektoru
 
@@ -170,7 +170,7 @@ Kolekce můžete upgradovat na nejnovější verzi bez stáhnout soubor OVA znov
 Existují dvě metody, které zařízení Kolektoru lze použít pro zjišťování, jednorázově nebo průběžná zjišťování.
 
 
-### <a name="one-time-discovery"></a>Jednorázově
+### <a name="one-time-discovery"></a>Jednorázové zjišťování
 
 Komunikuje se jednorázově do systému vCenter Server ke shromažďování metadat virtuální počítače kolektor. Pomocí této metody:
 
@@ -179,17 +179,23 @@ Komunikuje se jednorázově do systému vCenter Server ke shromažďování meta
 - Tato metoda zjišťování budete muset nastavení statistiky v systému vCenter Server na úrovni 3.
 - Po nastavení úrovně na tři, to trvá až jeden den generovat čítače výkonu. Proto doporučujeme, abyste spustili zjišťování po jeden den.
 - Při shromažďování dat výkonu pro virtuální počítač, na zařízení se spoléhá na výkon historických dat uložených v systému vCenter Server. Shromažďuje historie výkonu za poslední měsíc.
-- Azure Migrate shromažďuje průměrnou čítače (spíše než čítače ve špičce) pro jednotlivé metriky.
+- Azure Migrate shromažďuje průměrnou čítače (spíše než čítače ve špičce) pro jednotlivé metriky, což může vést ke snížení velikosti.
 
-### <a name="continuous-discovery"></a>Průběžná zjišťování
+### <a name="continuous-discovery"></a>Průběžné zjišťování
 
-Zařízení Kolektoru je trvalým připojením k projektu Azure Migrate.
+Zařízení Kolektoru je trvalým připojením k projektu Azure Migrate a průběžně shromažďuje údaje o výkonu virtuálních počítačů.
 
 - Kolektor průběžně profily v místním prostředí pro shromažďování dat o využití v reálném čase každých 20 sekund.
 - Tento model nejsou závislé na nastavení statistiky vCenter Server ke shromažďování dat výkonu.
 - Zařízení shrnuje ukázky 20 sekund a vytvoří jeden datový bod každých 15 minut.
 - Tato data vytváří bod zařízení vybere nejvyšší hodnotu z 20 sekund vzorků a odešle ji do Azure.
 - Můžete zastavit průběžné profilování v kdykoli z kolekce.
+
+Mějte na paměti, že zařízení průběžně pouze shromažďuje údaje o výkonu, nezjistí změny konfigurace v místním prostředí (tj. Přidání virtuálního počítače, odstranění, přidání disku atd.). Pokud dojde ke změně konfigurace v místním prostředí, můžete provést následující tak, aby odrážely změny v portálu:
+
+1. Přidání položek (virtuálních počítačů, disků, jader atd.): pro provedení těchto změn na webu Azure Portal, můžete zastavit zjišťování ze zařízení a znovu spustit. Tím se zajistí, že změny jsou aktualizovány v projektu Azure Migrate.
+
+2. Odstranění virtuálních počítačů: z důvodu způsob je navržena na zařízení, odstranění virtuální počítače se projeví i v případě zastavení a spuštění zjišťování. Je to proto, že data z dalších zjišťování se připojí k starší zjišťování a nebyly přepsány. V takovém případě můžete jednoduše ignorovat virtuálního počítače na portálu ho odebrat ze skupiny a přepočítání posouzení.
 
 > [!NOTE]
 > Průběžná zjišťování funkce je ve verzi preview. Nastavení statistiky vCenter Server není nastaven na úroveň 3, doporučujeme použít tuto metodu.
@@ -241,8 +247,8 @@ virtualDisk.read.average | 2 | 2 | Vypočítá velikost disku, náklady na úlo�
 virtualDisk.write.average | 2 | 2  | Vypočítá velikost disku, náklady na úložiště, velikost virtuálního počítače
 virtualDisk.numberReadAveraged.average | 1 | 3 |  Vypočítá velikost disku, náklady na úložiště, velikost virtuálního počítače
 virtualDisk.numberWriteAveraged.average | 1 | 3 |   Vypočítá velikost disku, náklady na úložiště, velikost virtuálního počítače
-net.received.average | 2 | 3 |  Vypočítá náklady na velikost a sítě virtuálních počítačů                        |
-net.transmitted.average | 2 | 3 | Vypočítá náklady na velikost a sítě virtuálních počítačů    
+net.received.average | 2 | 3 |  Vypočítá velikost virtuálního počítače                          |
+net.transmitted.average | 2 | 3 | Vypočítá velikost virtuálního počítače     
 
 ## <a name="next-steps"></a>Další postup
 

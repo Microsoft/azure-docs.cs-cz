@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: zarhoads
-ms.openlocfilehash: 4495b6813a3936967ceb81beb216850538b04af5
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 00c242ae75e8a581e2b403bac8e75f6b0bb421ad
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465589"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49955504"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-java"></a>Vytvoření a správa virtuálních počítačů s Windows v Azure pomocí Javy
 
@@ -117,7 +117,7 @@ Proveďte tyto kroky trvá přibližně 20 minut.
 
 ## <a name="create-credentials"></a>Vytvořte přihlašovací údaje
 
-Předtím, než se pustíte do tohoto kroku, ujistěte se, že máte přístup do [instanční objekt služby Active Directory](../../azure-resource-manager/resource-group-create-service-principal-portal.md). Také byste měli zaznamenávat ID aplikace, ověřovací klíč a ID tenanta, který budete potřebovat v pozdějším kroku.
+Předtím, než se pustíte do tohoto kroku, ujistěte se, že máte přístup do [instanční objekt služby Active Directory](../../active-directory/develop/howto-create-service-principal-portal.md). Také byste měli zaznamenávat ID aplikace, ověřovací klíč a ID tenanta, který budete potřebovat v pozdějším kroku.
 
 ### <a name="create-the-authorization-file"></a>Vytvoření souboru autorizace
 

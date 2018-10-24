@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: ae1fdb6239b7d04dc366d023a26d1307cbae68f3
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 2ec5d469ba0708288881be3d905b492aa8aa4da6
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46123721"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49956606"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>Ověřování služba služba pomocí Azure Data Lake Storage Gen1 pomocí Azure Active Directory
 > [!div class="op_single_selector"]
@@ -39,7 +39,7 @@ Tento článek pojednává o tom, jak vytvořit **webovou aplikaci Azure AD pro 
 
 ## <a name="step-1-create-an-active-directory-web-application"></a>Krok 1: Vytvoření webové aplikace služby Active Directory
 
-Vytvoření a konfigurace webové aplikace Azure AD pro ověřování služba služba s Azure Data Lake Storage Gen1 pomocí Azure Active Directory. Pokyny najdete v tématu [vytvořit aplikaci Azure AD](../azure-resource-manager/resource-group-create-service-principal-portal.md).
+Vytvoření a konfigurace webové aplikace Azure AD pro ověřování služba služba s Azure Data Lake Storage Gen1 pomocí Azure Active Directory. Pokyny najdete v tématu [vytvořit aplikaci Azure AD](../active-directory/develop/howto-create-service-principal-portal.md).
 
 Při pokynů uvedených v předchozí odkaz, ujistěte se, že vyberete **webovou aplikaci nebo API** pro typ aplikace, jak je znázorněno na následujícím snímku obrazovky:
 
@@ -48,9 +48,9 @@ Při pokynů uvedených v předchozí odkaz, ujistěte se, že vyberete **webovo
 ## <a name="step-2-get-application-id-authentication-key-and-tenant-id"></a>Krok 2: Získání ID aplikace, ověřovací klíč a ID tenanta
 Při programovém přihlášení potřebujete ID pro vaši aplikaci. Pokud aplikace běží pod svoje vlastní přihlašovací údaje, potřebujete také ověřovací klíč.
 
-* Pokyny o tom, jak načíst ID a ověřovací klíč aplikace (také nazývané tajný klíč klienta) pro vaši aplikaci najdete v tématu [Get aplikace ID a ověřovacího klíče](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-application-id-and-authentication-key).
+* Pokyny o tom, jak načíst ID a ověřovací klíč aplikace (také nazývané tajný klíč klienta) pro vaši aplikaci najdete v tématu [Get aplikace ID a ověřovacího klíče](../active-directory/develop/howto-create-service-principal-portal.md#get-application-id-and-authentication-key).
 
-* Pokyny o tom, jak získat ID tenanta najdete v tématu [získání ID tenanta](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-tenant-id).
+* Pokyny o tom, jak získat ID tenanta najdete v tématu [získání ID tenanta](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-id).
 
 ## <a name="step-3-assign-the-azure-ad-application-to-the-azure-data-lake-storage-gen1-account-file-or-folder"></a>Krok 3: Přiřaďte aplikaci Azure AD do Azure Data Lake Storage Gen1 účet souboru nebo složky
 

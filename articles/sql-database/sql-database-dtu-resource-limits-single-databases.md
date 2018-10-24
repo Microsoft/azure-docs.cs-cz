@@ -11,13 +11,13 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/19/2018
-ms.openlocfilehash: d3de6afff1c417b28be04ef8b04024756c378e20
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.date: 10/22/2018
+ms.openlocfilehash: 8c5274db69831aaaeaaed2b81627bbb4aeb8cd75
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465759"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49954929"
 ---
 # <a name="resource-limits-for-single-databases-using-the-dtu-based-purchasing-model"></a>Omezení prostředků pro izolované databáze pomocí nákupní model založený na DTU
 
@@ -80,8 +80,8 @@ Pro izolované databáze následující tabulky ukazují prostředky dostupné p
 | Maximální počet souběžných relací | 30000 | 30000 | 30000 | 30000 | 30000 | 30000 |
 |||||||
 
-> [!IMPORTANT]
-> Více než 1 TB úložiště na úrovni Premium je aktuálně k dispozici ve všech oblastech kromě následujících: západní USA – střed, Čína – východ, USDoDCentral, Německo – střed, USDoDEast, USA (gov) – jihozápad, Německo – severovýchod, USGovIowa, Čína – sever. V ostatních oblastech je úložiště na úrovni Premium omezeno na 1 TB. Viz [Aktuální omezení pro P11–P15](#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
+> [!IMPORTANT] 
+> Více než 1 TB úložiště na úrovni Premium je aktuálně k dispozici ve všech následujících oblastech s výjimkou následující Čína – východ, Čína – sever, Německo – střed, Německo – severovýchod, Velká Británie – sever, Velká Británie – Jih, USA ministerstva obrany USA – střed, US DOD – východ, USA Goverment – střed a střed USA – západ: V Tyto oblasti max. úložiště na úrovni Premium je omezena na 1 TB. Viz [Aktuální omezení pro P11–P15](#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
 
 ## <a name="single-database-change-storage-size"></a>Izolované databáze: Změna velikosti úložiště
 
@@ -116,7 +116,7 @@ Délka trvání celého procesu vertikálního navyšování kapacity závisí n
 
 ## <a name="single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb"></a>Izolované databáze: omezení pro P11 a P15 při maximální velikosti větší než 1 TB
 
-Maximální velikost větší než 1 TB pro databáze P11 a P15 je podporovaná v následujících oblastech: Austrálie – východ, Austrálie – jihovýchod, Brazílie – Jih, Kanada – střed, Kanada – východ, střed USA, Francie – střed, Německo – střed, Japonsko – východ, Japonsko – Západ, Korea centrální USA (střed) – sever, Severní Evropa, střed USA – Jih, jihovýchodní Asie, Velká Británie – Jih, Velká Británie – Západ, USA – východ 2, USA – Západ, USA (gov) Virginia a západní Evropa. Následující požadavky a omezení platí pro databáze P11 a P15 s maximální velikostí větší než 1 TB:
+Následující požadavky a omezení platí pro databáze P11 a P15 s maximální velikostí větší než 1 TB:
 
 - Pokud vyberete možnost maximální velikosti větší než 1 TB, při vytváření databáze (s použitím hodnotu 4 TB nebo 4096 GB), příkazu pro vytvoření selže s chybou, pokud je databáze zřízena v nepodporované oblasti.
 - U existující databáze P11 a P15 žijí v podporované oblasti, můžete zvýšit maximální úložiště přesáhne 1 TB dokupuje se násobek 256 GB až 4 TB. Chcete-li zjistit, jestli podporuje větší velikost ve vaší oblasti, použijte [DATABASEPROPERTYEX](/sql/t-sql/functions/databasepropertyex-transact-sql) funkce nebo zkontrolujte velikost databáze na webu Azure Portal. Upgrade existující P11 nebo P15 databáze lze provést pouze pomocí hlavního přihlášení na úrovni serveru nebo členové databázové role dbmanager.

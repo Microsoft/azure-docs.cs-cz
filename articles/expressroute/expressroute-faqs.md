@@ -5,14 +5,14 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 08/29/2018
+ms.date: 10/23/2018
 ms.author: cherylmc
-ms.openlocfilehash: 101dec93713983e5f2082a59103288fcda346740
-ms.sourcegitcommit: 3150596c9d4a53d3650cc9254c107871ae0aab88
+ms.openlocfilehash: 6b4cce641556a290111db530c0089e4da0a351c8
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47419300"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49958416"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute – nejčastější dotazy
 
@@ -246,7 +246,7 @@ Můžete aktualizovat šířky pásma okruhu ExpressRoute pomocí rozhraní REST
 ExpressRoute premium je kolekce následující funkce:
 
 * Zvýšená směrovací tabulky limit ze 4000 na 10 000 tras pro soukromý partnerský vztah.
-* Zvýšit počet virtuálních sítí, který jde připojit k okruhu ExpressRoute (výchozí hodnota je 10). Další informace najdete v tématu [limity pro ExpressRoute](#limits) tabulky.
+* Zvýšit počet virtuálních sítí a globální dosah ExpressRoute připojení, která se dá nastavit pro okruh ExpressRoute (výchozí hodnota je 10). Další informace najdete v tématu [limity pro ExpressRoute](#limits) tabulky.
 * Připojení k Office 365 a Dynamics 365.
 * Globální konektivita v základní síti Microsoft. Teď můžete propojit virtuální síť, která v geopolitické oblasti jeden okruh ExpressRoute v jiné oblasti.<br>
     **Příklady:**
@@ -255,9 +255,9 @@ ExpressRoute premium je kolekce následující funkce:
     *  Na partnerského vztahu Microsoftu byly inzerované předpony z jiných geopolitických oblastí, můžete z připojíte k, například SQL Azure v oblasti Evropa – západ okruh v Silicon Valley.
 
 
-### <a name="limits"></a>Kolik virtuálních sítí můžete propojit s okruhem ExpressRoute pokud mám povolené ExpressRoute premium?
+### <a name="limits"></a>Kolik připojení virtuální sítě a globální dosah ExpressRoute můžete povolit na okruh ExpressRoute pokud mám povolené ExpressRoute premium?
 
-Následující tabulky popisují limity pro ExpressRoute a počet virtuálních sítí jeden okruh ExpressRoute:
+Následující tabulky popisují limity pro ExpressRoute a počet připojení virtuální sítě a ExpressRoute globální dosah jeden okruh ExpressRoute:
 
 [!INCLUDE [ExpressRoute limits](../../includes/expressroute-limits.md)]
 

@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/22/2018
-ms.openlocfilehash: 1b96cb0531778b03ddf6adf15988755359e19562
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: c19e5dbcba334a100198708237cc814258a20053
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49649756"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49957690"
 ---
 # <a name="monitoring-azure-sql-database-using-dynamic-management-views"></a>Monitorování databáze Azure SQL Database pomocí zobrazení dynamické správy
 
@@ -50,7 +50,7 @@ Pokud využití CPU je vyšší než 80 % dlouhou dobu, zvažte následující k
 
 Pokud se teď k problému dochází, existují dva možné scénáře:
 
-#### <a name="there-are-many-queries-that-individually-run-quickly-but-cumulatively-consume-high-cpu"></a>Existuje mnoho dotazů, které jednotlivě provádět rychle, ale kumulativně využívat vysoké využití procesoru
+#### <a name="many-individual-queries-that-cumulatively-consume-high-cpu"></a>Mnoho jednotlivých dotazů, které využívají kumulativně vysoké využití procesoru
 
 Použijte tento dotaz k identifikaci hodnoty hash dotazu top:
 
@@ -65,7 +65,7 @@ FROM(SELECT query_stats.query_hash, SUM(query_stats.cpu_time) 'Total_Request_Cpu
 ORDER BY Total_Request_Cpu_Time_Ms DESC;
 ```
 
-#### <a name="some-long-running-queries-that-consume-cpu-are-still-running"></a>Jsou pořád spuštěné některá dlouho běžící dotazy, které využívají procesor
+#### <a name="long-running-queries-that-consume-cpu-are-still-running"></a>Stále běží dlouho běžící dotazy, které využívají procesor
 
 Použijte tento dotaz k identifikaci tyto dotazy:
 
@@ -117,7 +117,9 @@ Při identifikaci problémů s výkonem vstupně-výstupních operací, začáte
 
 ### <a name="if-the-io-issue-is-occurring-right-now"></a>Pokud se vstupně-výstupní operace k problému dochází hned teď
 
-Použití [sys.dm_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) nebo [sys.dm_os_waiting_tasks](https://docs.microsoft.com/en-us/sql/relational-databases/system-dynamic-management-views/sys-dm-os-waiting-tasks-transact-sql) zobrazíte `wait_type` a `wait_time`.
+Použití [sys.dm_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) nebo [sys.dm_os_waiting_tasks](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-waiting-tasks-transact-sql) zobrazíte `wait_type` a `wait_time`.
+
+#### <a name="identify-data-and-log-io-usage"></a>Identifikaci dat a protokolování využití vstupně-výstupních operací
 
 Použijte tento dotaz k identifikaci dat a protokolování využití vstupně-výstupních operací. Pokud vstupně-výstupní operace dat či protokolu je vyšší než 80 %, znamená to, že uživatelé použili k dispozici vstupně-výstupních operací pro danou vrstvu služeb SQL Database.
 
@@ -132,9 +134,11 @@ Pokud byl dosažen limit vstupně-výstupních operací, máte dvě možnosti:
 - Možnost 1: Upgrade výpočetního prostředí nebo úroveň služby
 - Možnost 2: Identifikace a vyladění dotazů využívání většina vstupně-výstupních operací.
 
-Možnost 2 můžete použít následující dotaz proti Query Store pro související vyrovnávací paměti vstupně-výstupní operace (za poslední dvě hodiny sledované aktivit vypadá):
+#### <a name="view-buffer-related-io-using-the-query-store"></a>Zobrazit související vyrovnávací paměti vstupně-výstupních operací pomocí Query Store
 
-```SQL
+Možnost 2 můžete použít následující dotaz proti Query Store pro vstupně-výstupní operace související s vyrovnávací paměti k zobrazení poslední dvě hodiny sledované aktivity:
+
+```sql
 -- top queries that waited on buffer
 -- note these are finished queries
 WITH Aggregated AS (SELECT q.query_hash, SUM(total_query_wait_time_ms) total_wait_time_ms, SUM(total_query_wait_time_ms / avg_query_wait_time_ms) AS total_executions, MIN(qt.query_sql_text) AS sampled_query_text, MIN(wait_category_desc) AS wait_category_desc
@@ -153,6 +157,85 @@ ORDER BY total_wait_time_ms DESC;
 GO
 ```
 
+#### <a name="view-total-log-io-for-writelog-waits"></a>Zobrazit protokol celkový počet vstupně-výstupních operací pro WRITELOG čeká
+
+Pokud je typ čekání `WRITELOG`, použijte tento dotaz na Zobrazit celkový počet protokolovacích v/v – příkaz:
+
+```sql
+-- Top transaction log consumers
+-- Adjust the time window by changing
+-- rsi.start_time >= DATEADD(hour, -2, GETUTCDATE())
+WITH AggregatedLogUsed
+AS (SELECT q.query_hash,
+           SUM(count_executions * avg_cpu_time / 1000.0) AS total_cpu_millisec,
+           SUM(count_executions * avg_cpu_time / 1000.0) / SUM(count_executions) AS avg_cpu_millisec,
+           SUM(count_executions * avg_log_bytes_used) AS total_log_bytes_used,
+           MAX(rs.max_cpu_time / 1000.00) AS max_cpu_millisec,
+           MAX(max_logical_io_reads) max_logical_reads,
+           COUNT(DISTINCT p.plan_id) AS number_of_distinct_plans,
+           COUNT(DISTINCT p.query_id) AS number_of_distinct_query_ids,
+           SUM(   CASE
+                      WHEN rs.execution_type_desc = 'Aborted' THEN
+                          count_executions
+                      ELSE
+                          0
+                  END
+              ) AS Aborted_Execution_Count,
+           SUM(   CASE
+                      WHEN rs.execution_type_desc = 'Regular' THEN
+                          count_executions
+                      ELSE
+                          0
+                  END
+              ) AS Regular_Execution_Count,
+           SUM(   CASE
+                      WHEN rs.execution_type_desc = 'Exception' THEN
+                          count_executions
+                      ELSE
+                          0
+                  END
+              ) AS Exception_Execution_Count,
+           SUM(count_executions) AS total_executions,
+           MIN(qt.query_sql_text) AS sampled_query_text
+    FROM sys.query_store_query_text AS qt
+        JOIN sys.query_store_query AS q
+            ON qt.query_text_id = q.query_text_id
+        JOIN sys.query_store_plan AS p
+            ON q.query_id = p.query_id
+        JOIN sys.query_store_runtime_stats AS rs
+            ON rs.plan_id = p.plan_id
+        JOIN sys.query_store_runtime_stats_interval AS rsi
+            ON rsi.runtime_stats_interval_id = rs.runtime_stats_interval_id
+    WHERE rs.execution_type_desc IN ( 'Regular', 'Aborted', 'Exception' )
+          AND rsi.start_time >= DATEADD(HOUR, -2, GETUTCDATE())
+    GROUP BY q.query_hash),
+     OrderedLogUsed
+AS (SELECT query_hash,
+           total_log_bytes_used,
+           number_of_distinct_plans,
+           number_of_distinct_query_ids,
+           total_executions,
+           Aborted_Execution_Count,
+           Regular_Execution_Count,
+           Exception_Execution_Count,
+           sampled_query_text,
+           ROW_NUMBER() OVER (ORDER BY total_log_bytes_used DESC, query_hash ASC) AS RN
+    FROM AggregatedLogUsed)
+SELECT OD.total_log_bytes_used,
+       OD.number_of_distinct_plans,
+       OD.number_of_distinct_query_ids,
+       OD.total_executions,
+       OD.Aborted_Execution_Count,
+       OD.Regular_Execution_Count,
+       OD.Exception_Execution_Count,
+       OD.sampled_query_text,
+       OD.RN
+FROM OrderedLogUsed AS OD
+WHERE OD.RN <= 15
+ORDER BY total_log_bytes_used DESC;
+GO
+```
+
 ## <a name="identify-tempdb-performance-issues"></a>Identifikujte `tempdb` problémy s výkonem
 
 Při identifikaci problémů s výkonem vstupně-výstupních operací, horní počkejte typy přidružené ke `tempdb` problémů `PAGELATCH_*` (ne `PAGEIOLATCH_*`). Ale `PAGELATCH_*` čeká vždy neznamená, že máte `tempdb` kolize.  Tato čekací může také znamenat, že máte kolize stránky dat objektu uživatele z důvodu souběžných žádostí, které cílí na stejné stránce data. Pro další potvrzení `tempdb` kolize, použijte [sys.dm_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) potvrďte, že hodnota wait_resource začíná `2:x:y` kde 2 je `tempdb` je id databáze `x` je id souboru a `y` je id stránky.  
@@ -164,6 +247,8 @@ Pro databázi tempdb spor běžnou metodou je ke snížení nebo znovu napsat k�
 - Parametry vracející tabulku
 - Využití úložiště verze (konkrétně přidružené dlouho trvající transakcí)
 - Dotazy, které mají plány dotazů, které používají řazení, hodnota hash spojení a zařazování
+
+### <a name="top-queries-that-use-table-variables-and-temporary-tables"></a>Nejčastější dotazy, které používají proměnné tabulky a dočasné tabulky
 
 Nejčastější dotazy, které používají proměnné tabulky a dočasné tabulky pomocí následujícího dotazu:
 
@@ -187,6 +272,8 @@ FROM(SELECT DISTINCT plan_handle, [Database], [Schema], [table]
      WHERE [table] LIKE '%@%' OR [table] LIKE '%#%') AS t
     JOIN #tmpPlan AS t2 ON t.plan_handle=t2.plan_handle;
 ```
+
+### <a name="identify-long-running-transactions"></a>Identifikujte dlouhotrvající transakce
 
 Pomocí následujícího dotazu k identifikaci dlouho spuštěný transakce. Dlouhotrvající transakce zabránit čištění úložiště verzí.
 
@@ -454,7 +541,7 @@ FROM sys.dm_exec_requests AS r
 ORDER BY mg.granted_memory_kb DESC;
 ```
 
-## <a name="calculating-database-size"></a>Výpočet velikosti databáze
+## <a name="calculating-database-and-objects-sizes"></a>Výpočet velikosti databáze a objekty
 
 Následující dotaz vrátí velikost databáze (v megabajtech):
 

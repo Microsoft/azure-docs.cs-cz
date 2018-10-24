@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: raynew
-ms.openlocfilehash: 5e0e4646b14a5bff5c40d0817ab8ecccf1046ea9
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 641f671f23dde0bcc32ad1ef8343a5a84227c67f
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49077761"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49955371"
 ---
 # <a name="set-up-additional-process-servers-for-scalability"></a>Nastavení dalších procesových serverů pro zajištění škálovatelnosti
 
@@ -81,7 +81,7 @@ Kde parametry příkazového řádku jsou následující:
 Příklad:
 
 ```
-MicrosoftAzureSiteRecoveryUnifiedSetup.exe /q /xC:\Temp\Extracted
+MicrosoftAzureSiteRecoveryUnifiedSetup.exe /q /x:C:\Temp\Extracted
 cd C:\Temp\Extracted
 UNIFIEDSETUP.EXE /AcceptThirdpartyEULA /servermode "PS" /InstallLocation "D:\" /EnvType "VMWare" /CSIP "10.150.24.119" /PassphraseFilePath "C:\Users\Administrator\Desktop\Passphrase.txt" /DataTransferSecurePort 443
 ```

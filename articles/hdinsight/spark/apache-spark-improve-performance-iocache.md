@@ -7,12 +7,12 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.topic: conceptual
 ms.date: 10/15/2018
-ms.openlocfilehash: 8cfa6493a565a8ed3b059e1da752da5115d0731d
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 3616183b5ea34b8a14712d2c449de87950443111
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49649852"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49954500"
 ---
 # <a name="improve-performance-of-apache-spark-workloads-using-azure-hdinsight-io-cache-preview"></a>Zlepšení výkonu úlohy Apache Sparku s využitím Azure HDInsight vstupně-výstupních operací Cache (Ukázková verze)
 
@@ -46,7 +46,7 @@ Azure HDInsight v/v mezipaměti je deaktivováno ve výchozím nastavení ve ver
 1. Potvrďte restart všechny ovlivněné služby v clusteru.
 
 >[!NOTE] 
-> I v případě indikátor průběhu vám ukáže aktivovaná, nebude ve skutečnosti povolená mezipaměti vstupně-výstupních operací, dokud nerestartujete ovlivněné služby.
+> I když indikátor průběhu vám ukáže aktivovaná, nebude ve skutečnosti povolená mezipaměti vstupně-výstupních operací, až po restartování ovlivněné služby.
 
 ## <a name="troubleshooting"></a>Řešení potíží
   

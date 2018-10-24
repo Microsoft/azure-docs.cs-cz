@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/19/2018
 ms.author: mcollier
 ms.component: ''
-ms.openlocfilehash: 9524d471388e69166191b6197fb295532b068092
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: 59e7ac5e2da733724c047f6842561ce87fb495bb
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39390550"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49955299"
 ---
 # <a name="azure-monitoring-rest-api-walkthrough"></a>Azure návod monitorování rozhraní REST API
 Tento článek popisuje, jak provádět ověřování, takže váš kód může použít [Reference k REST API Microsoft Azure Monitor](https://msdn.microsoft.com/library/azure/dn931943.aspx).         
@@ -25,7 +25,7 @@ Kromě práce s různými metriky datové body, monitorování rozhraní API tak
 ## <a name="authenticating-azure-monitor-requests"></a>Požadavky na ověřování Azure Monitor
 Prvním krokem je ověřit žádost.
 
-Všechny úkoly pro rozhraní API služby Azure Monitor použít model ověřování Azure Resource Manageru. Proto všechny požadavky musí být ověřené na Azure Active Directory (Azure AD). Jedním z přístupů k ověřování klientskou aplikaci je k vytvoření instančního objektu služby Azure AD a získat token ověřování (JWT). Následující ukázkový skript ukazuje vytvoření služby Azure AD instančního objektu pomocí Powershellu. Podrobnější návod, jak, naleznete v dokumentaci na [pomocí prostředí Azure PowerShell k vytvoření instančního objektu pro přístup k prostředkům](https://docs.microsoft.com/powershell/azure/create-azure-service-principal-azureps). Je také možné [vytvoření instančního objektu pomocí webu Azure portal](../azure-resource-manager/resource-group-create-service-principal-portal.md).
+Všechny úkoly pro rozhraní API služby Azure Monitor použít model ověřování Azure Resource Manageru. Proto všechny požadavky musí být ověřené na Azure Active Directory (Azure AD). Jedním z přístupů k ověřování klientskou aplikaci je k vytvoření instančního objektu služby Azure AD a získat token ověřování (JWT). Následující ukázkový skript ukazuje vytvoření služby Azure AD instančního objektu pomocí Powershellu. Podrobnější návod, jak, naleznete v dokumentaci na [pomocí prostředí Azure PowerShell k vytvoření instančního objektu pro přístup k prostředkům](https://docs.microsoft.com/powershell/azure/create-azure-service-principal-azureps). Je také možné [vytvoření instančního objektu pomocí webu Azure portal](../active-directory/develop/howto-create-service-principal-portal.md).
 
 ```PowerShell
 $subscriptionId = "{azure-subscription-id}"

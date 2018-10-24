@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/11/2018
+ms.date: 10/22/2018
 ms.author: tomfitz
-ms.openlocfilehash: 6723cf8cc18637c157b295361425357e1c47ec2e
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: eea12a0a31d11065ebdc2cbef556b84df1ace750
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39007157"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945191"
 ---
 # <a name="resources-section-of-azure-resource-manager-templates"></a>Oddíl prostředků šablon Azure Resource Manageru
 
@@ -83,24 +83,26 @@ Můžete definovat prostředky s následující strukturou:
 
 | Název elementu | Požaduje se | Popis |
 |:--- |:--- |:--- |
-| podmínka | Ne | Logická hodnota, která určuje, zda prostředek se zřídí během tohoto nasazení. Když `true`, je prostředek vytvořený během nasazení. Když `false`, prostředek se přeskočí pro toto nasazení. |
+| condition | Ne | Logická hodnota, která určuje, zda prostředek se zřídí během tohoto nasazení. Když `true`, je prostředek vytvořený během nasazení. Když `false`, prostředek se přeskočí pro toto nasazení. |
 | apiVersion |Ano |Verze rozhraní REST API pro použití při vytváření prostředku. |
 | type |Ano |Typ prostředku. Tato hodnota je kombinací obor názvů zprostředkovatele prostředků a typ prostředku (například **Microsoft.Storage/storageAccounts**). |
 | jméno |Ano |Název prostředku. Název musí následovat identifikátor URI součásti omezení RFC3986. Kromě toho služby Azure, které zpřístupňují název prostředku se třetími stranami ověřit název, který má ujistit, že není pokus zfalšovat jiné identity. |
-| location |Se liší |Podporované geografické umístění zadaného prostředku. Můžete vybrat některý z dostupných umístění, ale obvykle je vhodné vybrat ten, který je blízko vašim uživatelům. Obvykle je také vhodné umístit prostředky, které spolu interagují ve stejné oblasti. Většina typů prostředků vyžaduje umístění, ale některé typy (jako je například přiřazení role) nevyžadují umístění. |
+| location |Různé |Podporované geografické umístění zadaného prostředku. Můžete vybrat některý z dostupných umístění, ale obvykle je vhodné vybrat ten, který je blízko vašim uživatelům. Obvykle je také vhodné umístit prostředky, které spolu interagují ve stejné oblasti. Většina typů prostředků vyžaduje umístění, ale některé typy (jako je například přiřazení role) nevyžadují umístění. |
 | tags |Ne |Značky, které jsou spojeny s prostředkem. Použití značek logicky tak uspořádat prostředky napříč vašeho předplatného. |
-| Komentáře |Ne |Poznámky pro dokumentaci prostředků v šabloně |
+| komentáře |Ne |Poznámky pro dokumentaci prostředků v šabloně |
 | Kopírovat |Ne |V případě potřeby je více než jednu instanci, kolik prostředků k vytvoření. Paralelní je výchozí režim. Zadejte sériové režim, když nechcete, aby všechny nebo prostředky k nasazení ve stejnou dobu. Další informace najdete v tématu [vytvořit více instancí prostředku v Azure Resource Manageru](resource-group-create-multiple.md). |
 | dependsOn |Ne |Prostředky, které musí být nasazený před nasazením tento prostředek. Resource Manager vyhodnotí závislosti mezi prostředky a nasadí ve správném pořadí. Pokud nejsou na sobě navzájem závislé prostředky, kde jsou nasazeny současně. Hodnota může být čárkou oddělený seznam prostředek názvy nebo jedinečné identifikátory prostředků. Pouze výpis prostředků, které jsou nasazené v této šabloně. Prostředky, které nejsou definovány v této šabloně už musí existovat. Vyhněte se přidává zbytečné závislostí může zpomalit vaše nasazení a vytvoření cyklické závislosti. Pokyny k nastavení závislostí v tématu [definování závislostí v šablonách Azure Resource Manageru](resource-group-define-dependencies.md). |
 | properties |Ne |Nastavení konfigurace specifických pro prostředky. Hodnoty pro tyto vlastnosti jsou stejné jako hodnoty, které zadáte v textu požadavku pro operaci rozhraní REST API (metodu PUT) a vytvoří prostředek. Můžete také zadat pole kopie vytvořit několik instancí vlastnosti. |
 | Skladová položka | Ne | Některé prostředky povolit hodnoty, které definují skladová položka pro nasazení. Můžete například zadat typ redundance účtu úložiště. |
 | Typ | Ne | Některé prostředky povolit hodnotu, která definuje typ prostředku, který nasadíte. Můžete například zadat typ služby Cosmos DB k vytvoření. |
 | plán | Ne | Některé prostředky povolit hodnoty, které definují plán pro nasazení. Můžete například zadat image marketplace pro virtuální počítač. | 
-| zdroje |Ne |Podřízené prostředky, které jsou závislé na prostředku definuje. Zadejte pouze typy prostředků, které jsou povoleny ve schématu nadřazený prostředek. Plně kvalifikovaný typ podřízený prostředek obsahuje nadřazený typ prostředku, jako například **Microsoft.Web/sites/extensions**. Závislost na nadřazený prostředek není zahrnuta. Je nutné explicitně definovat dané závislosti. |
+| prostředků |Ne |Podřízené prostředky, které jsou závislé na prostředku definuje. Zadejte pouze typy prostředků, které jsou povoleny ve schématu nadřazený prostředek. Plně kvalifikovaný typ podřízený prostředek obsahuje nadřazený typ prostředku, jako například **Microsoft.Web/sites/extensions**. Závislost na nadřazený prostředek není zahrnuta. Je nutné explicitně definovat dané závislosti. |
 
 ## <a name="condition"></a>Podmínka
 
-Pokud během nasazení musíte rozhodnout, jestli se mají vytvořit prostředek, použijte `condition` elementu. Hodnota pro tento element se přeloží na hodnotu true nebo false. Pokud je hodnota true, vytvoří se prostředek. Pokud je hodnota false, nevytvoří se prostředek. Obvykle tuto hodnotu použijete, pokud chcete vytvořit nový prostředek, nebo použijte již existující. Například, chcete-li určit, jestli je nasazená nový účet úložiště nebo existující účet úložiště se používá, použijte:
+Pokud během nasazení musíte rozhodnout, jestli se mají vytvořit prostředek, použijte `condition` elementu. Hodnota pro tento element se přeloží na hodnotu true nebo false. Pokud je hodnota true, je prostředek vytvořený. Pokud je hodnota false, nevytvoří se prostředek. Hodnota dá používat jedině pro celý prostředek.
+
+Obvykle tuto hodnotu použijete, pokud chcete vytvořit nový prostředek, nebo použijte již existující. Například, chcete-li určit, jestli je nasazená nový účet úložiště nebo existující účet úložiště se používá, použijte:
 
 ```json
 {

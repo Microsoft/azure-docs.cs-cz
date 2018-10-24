@@ -7,103 +7,101 @@ items:
     href: translator-info-overview.md
 - name: Šablony Rychlý start
   items:
-  - name: C#
+  - name: Přeložení textu
     items:
-    - name: Přeložení textu
+    - name: C#, REST
       href: quickstart-csharp-translate.md
-    - name: Převod textového skriptu
-      href: quickstart-csharp-transliterate.md
-    - name: Identifikace jazyka z textu
-      href: quickstart-csharp-detect.md
-    - name: Získání alternativních překladů
-      href: quickstart-csharp-dictionary.md
-    - name: Zjištění podporovaných jazyků
-      href: quickstart-csharp-languages.md
-    - name: Zjištění délky vět v textu
-      href: quickstart-csharp-sentences.md
-  - name: Přejít
-    items:
-    - name: Přeložení textu
+    - name: Go, REST
       href: quickstart-go-translate.md
-    - name: Převod textového skriptu
-      href: quickstart-go-transliterate.md
-    - name: Identifikace jazyka z textu
-      href: quickstart-go-detect.md
-    - name: Získání alternativních překladů
-      href: quickstart-go-dictionary.md
-    - name: Zjištění podporovaných jazyků
-      href: quickstart-go-languages.md
-    - name: Zjištění délky vět v textu
-      href: quickstart-go-sentences.md
-  - name: Java
-    items:
-    - name: Přeložení textu
+    - name: Java, REST
       href: quickstart-java-translate.md
-    - name: Převod textového skriptu
-      href: quickstart-java-transliterate.md
-    - name: Identifikace jazyka z textu
-      href: quickstart-java-detect.md
-    - name: Získání alternativních překladů
-      href: quickstart-java-dictionary.md
-    - name: Zjištění podporovaných jazyků
-      href: quickstart-java-languages.md
-    - name: Zjištění délky vět v textu
-      href: quickstart-java-sentences.md
-  - name: Node.js
-    items:
-    - name: Přeložení textu
+    - name: Node.js, REST
       href: quickstart-nodejs-translate.md
-    - name: Převod textového skriptu
-      href: quickstart-nodejs-transliterate.md
-    - name: Identifikace jazyka z textu
-      href: quickstart-nodejs-detect.md
-    - name: Získání alternativních překladů
-      href: quickstart-nodejs-dictionary.md
-    - name: Zjištění podporovaných jazyků
-      href: quickstart-nodejs-languages.md
-    - name: Zjištění délky vět v textu
-      href: quickstart-nodejs-sentences.md
-  - name: PHP
-    items:
-    - name: Přeložení textu
+    - name: PHP, REST
       href: quickstart-php-translate.md
-    - name: Převod textového skriptu
-      href: quickstart-php-transliterate.md
-    - name: Identifikace jazyka z textu
-      href: quickstart-php-detect.md
-    - name: Získání alternativních překladů
-      href: quickstart-php-dictionary.md
-    - name: Zjištění podporovaných jazyků
-      href: quickstart-php-languages.md
-    - name: Zjištění délky vět v textu
-      href: quickstart-php-sentences.md
-  - name: Python
-    items:
-    - name: Přeložení textu
+    - name: Python, REST
       href: quickstart-python-translate.md
-    - name: Převod textového skriptu
-      href: quickstart-python-transliterate.md
-    - name: Identifikace jazyka z textu
-      href: quickstart-python-detect.md
-    - name: Získání alternativních překladů
-      href: quickstart-python-dictionary.md
-    - name: Zjištění podporovaných jazyků
-      href: quickstart-python-languages.md
-    - name: Zjištění délky vět v textu
-      href: quickstart-python-sentences.md
-  - name: Ruby
-    items:
-    - name: Přeložení textu
+    - name: Ruby, REST
       href: quickstart-ruby-translate.md
-    - name: Převod textového skriptu
+  - name: Transliterace textu
+    items:
+    - name: C#, REST
+      href: quickstart-csharp-transliterate.md
+    - name: Go, REST
+      href: quickstart-go-transliterate.md
+    - name: Java, REST
+      href: quickstart-java-transliterate.md
+    - name: Node.js, REST
+      href: quickstart-nodejs-transliterate.md
+    - name: PHP, REST
+      href: quickstart-php-transliterate.md
+    - name: Python, REST
+      href: quickstart-python-transliterate.md
+    - name: Ruby, REST
       href: quickstart-ruby-transliterate.md
-    - name: Identifikace jazyka z textu
+  - name: Identifikace jazyka
+    items:
+    - name: C#, REST
+      href: quickstart-csharp-detect.md
+    - name: Go, REST
+      href: quickstart-go-detect.md
+    - name: Java, REST
+      href: quickstart-java-detect.md
+    - name: Node.js, REST
+      href: quickstart-nodejs-detect.md
+    - name: PHP, REST
+      href: quickstart-php-detect.md
+    - name: Python, REST
+      href: quickstart-python-detect.md
+    - name: Ruby, REST
       href: quickstart-ruby-detect.md
-    - name: Získání alternativních překladů
+  - name: Získání alternativních překladů
+    items:
+    - name: C#, REST
+      href: quickstart-csharp-dictionary.md
+    - name: Go, REST
+      href: quickstart-go-dictionary.md
+    - name: Java, REST
+      href: quickstart-java-dictionary.md
+    - name: Node.js, REST
+      href: quickstart-nodejs-dictionary.md
+    - name: PHP, REST
+      href: quickstart-php-dictionary.md
+    - name: Python, REST
+      href: quickstart-python-dictionary.md
+    - name: Ruby, REST
       href: quickstart-ruby-dictionary.md
-    - name: Zjištění podporovaných jazyků
+  - name: Zjištění podporovaných jazyků
+    items:
+    - name: C#, REST
+      href: quickstart-csharp-languages.md
+    - name: Go, REST
+      href: quickstart-go-languages.md
+    - name: Java, REST
+      href: quickstart-java-languages.md
+    - name: Node.js, REST
+      href: quickstart-nodejs-languages.md
+    - name: PHP, REST
+      href: quickstart-php-languages.md
+    - name: Python, REST
+      href: quickstart-python-languages.md
+    - name: Ruby, REST
       href: quickstart-ruby-languages.md
-    - name: Zjištění délky vět v textu
+  - name: Určení délky věty
+    items:
+    - name: C#, REST
+      href: quickstart-csharp-sentences.md
+    - name: Go, REST
+      href: quickstart-go-sentences.md
+    - name: Java, REST
+      href: quickstart-java-sentences.md
+    - name: Node.js, REST
+      href: quickstart-nodejs-sentences.md
+    - name: PHP, REST
+      href: quickstart-php-sentences.md
+    - name: Python, REST
+      href: quickstart-python-sentences.md
+    - name: Ruby, REST
       href: quickstart-ruby-sentences.md
   expanded: true
 - name: Kurzy
@@ -174,9 +172,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/microsoft-translator
   - name: UserVoice
     href: https://cognitive.uservoice.com/forums/558796-translator
-ms.openlocfilehash: cd559b41832e83b4251531bc6af6a7fe4f7d80ea
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: acc5019177bf75a0bb34eb739cc8e2400552832e
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406479"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945259"

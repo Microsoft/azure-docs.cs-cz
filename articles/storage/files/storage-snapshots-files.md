@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/17/2018
 ms.author: renash
 ms.component: files
-ms.openlocfilehash: 03280f87b4b49b3e42091c6b1572a7f050afb336
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 7f03af0fc338299da9b989d46e7bbfb83f3babeb
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45983138"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945701"
 ---
 # <a name="overview-of-share-snapshots-for-azure-files"></a>Přehled snímků sdílených složek pro soubory Azure 
 Služba soubory Azure umožňuje využít snímky sdílené složky nebo sdílené složky. Sdílejte zachytávání snímků sdílené složky stavu v daném okamžiku v čase. V tomto článku popisujeme, jaké možnosti poskytuje snímky sdílené složky a jak můžete využít z nich ve vašem případě vlastní použití.
@@ -85,8 +85,7 @@ Snímky sdílené složky zadejte pouze ochrany na úrovni souboru. Snímky sdí
 
 ## <a name="next-steps"></a>Další postup
 - Práce s snímků sdílené složky v:
-    - [Azure Portal](storage-how-to-use-files-portal.md#create-and-modify-share-snapshots)
-    - [PowerShell](storage-how-to-use-files-powershell.md#create-and-modify-share-snapshots)
-    - [Rozhraní příkazového řádku](storage-how-to-use-files-cli.md#create-and-modify-share-snapshots)
+    - [PowerShell](storage-how-to-use-files-powershell.md)
+    - [Rozhraní příkazového řádku](storage-how-to-use-files-cli.md)
     - [Windows](storage-how-to-use-files-windows.md#accessing-share-snapshots-from-windows)
 - [Nejčastější dotazy k snímku složek](storage-files-faq.md#share-snapshots)

@@ -4,14 +4,14 @@ description: Popisuje, jak posoudit velký počet místních počítačů pomoc�
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 09/10/2018
+ms.date: 10/23/2018
 ms.author: raynew
-ms.openlocfilehash: 5f02393e6c8d5e094443e418b3fe7439d73ff837
-ms.sourcegitcommit: 465ae78cc22eeafb5dfafe4da4b8b2138daf5082
+ms.openlocfilehash: 6809c0e56fe55c7962ae273db0b5ac4335089df1
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44325018"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945854"
 ---
 # <a name="discover-and-assess-a-large-vmware-environment"></a>Zkoumání a vyhodnocení rozsáhlých prostředí VMware
 
@@ -31,7 +31,7 @@ Azure Migrate k automatickému zjišťování virtuálních počítačů pro ú�
 - Typ uživatele: Alespoň uživatel jen pro čtení
 - Oprávnění: Objekt datového centra –> Rozšířit na podřízený objekt, role=Read-only
 - Podrobnosti: Uživatel přiřazený na úrovni datacentra s přístupem ke všem objektům v tomto datacentru.
-- Pokud chcete omezit přístup, přiřaďte roli žádný přístup s rozšířit na podřízený objekt podřízeným objektům (hostitelé vSphere, úložiště, virtuální počítače a sítě).
+- Pokud chcete omezit přístup, přiřaďte podřízeným objektům (hostitelé vSphere, úložiště dat, virtuální počítače a sítě) roli Žádný přístup s objektem Rozšířit na podřízený objekt.
 
 Pokud nasazujete v prostředí s tenanty, tady je jeden způsob, jak nastavit tuto možnost:
 
@@ -120,14 +120,14 @@ Azure Migrate vytvoří místní virtuální počítač, kterému se říká za�
 Pokud máte více projektů, budete muset stažení zařízení kolektoru pouze jednou k vCenter serveru. Po stažení a nastavení na zařízení, spusťte pro každý projekt a zadáte jedinečné ID a klíč projektu.
 
 1. V projektu služby Azure Migrate klikněte na **Začínáme** > **Zjistit a posoudit** > **Zjistit počítače**.
-2. V **zjistit počítače**, existují dvě možnosti k dispozici pro zařízení, klikněte na tlačítko **Stáhnout** ke stažení odpovídající zařízení založené na dáváte přednost.
+2. V části **Zjistit počítače**, existují dvě možnosti k dispozici pro zařízení, kliknutím na tlačítko **Stáhnout** stáhnete odpovídající zařízení založené na dáváte přednost.
 
-    a. **Jednorázově:** zařízení pro tohoto modelu komunikuje s vCenter Server ke shromažďování metadat virtuální počítače. Pro shromažďování dat o výkonu virtuálních počítačů závisí na výkonu historických datech uložených v systému vCenter Server a shromažďuje historie výkonu za poslední měsíc. V tomto modelu Azure Migrate shromažďuje čítač Průměrná (oproti čítače ve špičce) pro jednotlivé metriky, [Další informace] (https://docs.microsoft.com/azure/migrate/concepts-collector#what-data-is-collected). Protože jde o jednorázovou zjišťování, změny v místním prostředí se neprojeví, po dokončení zjišťování. Pokud chcete změny tak, aby odrážely, budete muset provést opakované zjišťování stejného prostředí do stejného projektu.
+    a. **Jednorázové zjišťování:** Zařízení pro tento model komunikuje s vCenter Server, aby shromažďovalo metadata o virtuálních počítačích. Pro shromažďování dat o výkonu virtuálních počítačů závisí na historických datech o výkonu uložených ve vCenter Server a shromažďuje historii výkonu za poslední měsíc. V tomto modelu Azure Migrate shromažďuje průměrný čítač (oproti čítači ve špičce) pro jednotlivé metriky, [více informací] (https://docs.microsoft.com/azure/migrate/concepts-collector#what-data-is-collected). Protože jde o jednorázovou zjišťování, změny v místním prostředí se neprojeví, po dokončení zjišťování. Pokud chcete, aby se změny projevily, budete muset provést opakované zjišťování stejného prostředí stejného projektu.
 
-    b. **Průběžná zjišťování:** zařízení pro tento model průběžně profily v místním prostředí pro shromažďování dat o využití v reálném čase pro každý virtuální počítač. V tomto modelu se shromažďují ve špičce čítače pro každou metriku (využití procesoru, využití paměti atd.). Tento model není závislý na nastavení statistiky systému vCenter Server pro shromažďování dat o výkonu. Můžete zastavit průběžné kdykoli profilace ze zařízení.
+    b. **Průběžné zjišťování:** Zařízení pro tento model průběžně profiluje místní prostředí pro shromažďování dat o využití v reálném čase pro každý virtuální počítač. V tomto modelu se shromažďují čítače ve špičce pro každou metriku (využití procesoru, využití paměti atd.). Tento model není závislý na nastavení statistiky vCenter Server pro shromažďování dat o výkonu. Kdykoli ze zařízení můžete zastavit průběžnou profilaci.
 
     > [!NOTE]
-    > Průběžná zjišťování funkce je ve verzi preview.
+    > Průběžné zjišťování funkce je ve verzi Preview.
 
 3. V **kopírování přihlašovacích údajů projektu**, zkopírujte ID a klíč projektu. Budete je potřebovat při konfiguraci kolektoru.
 
@@ -146,9 +146,19 @@ Zkontrolujte, zda soubor OVA zabezpečené před jejím nasazením:
 
 3. Ujistěte se, že generované hodnoty hash shoduje s následujícím nastavením.
 
-#### <a name="one-time-discovery"></a>Jednorázově
+#### <a name="one-time-discovery"></a>Jednorázové zjišťování
 
-Pro soubory OVA verze 1.0.9.14
+<<<<<<< HEAD pro soubory OVA verze 1.0.9.15 (vydaná 10/23/2018)
+
+ <a name="algorithm--hash-value"></a>**Algoritmus** | **hodnoty Hash**
+=======
+Pro soubory OVA verze 1.0.9.15
+
+**Algoritmus** | **hodnoty Hash**
+>>>>>>> 20dc93529e7c0a4d17f2f4524752b5e2bead4e37---| ---MD5 | e9ef16b0c837638c506b5fc0ef75ebfa SHA1 | 37b4b1e92b3c6ac2782ff5258450df6686c89864 SHA256 | 8a86fc17f69b69968eb20a5c4c288c194cdcffb4ee6568d85ae5ba96835559ba
+
+<<<<<<< HEAD pro soubory OVA verze 1.0.9.14 (vydaná 8/24/2018) === pro soubory OVA verze 1.0.9.14
+>>>>>>> 20dc93529e7c0a4d17f2f4524752b5e2bead4e37
 
 **Algoritmus** | **Hodnota hash**
 --- | ---
@@ -180,7 +190,7 @@ MD5 | d5b6a03701203ff556fa78694d6d7c35
 SHA1 | f039feaa10dccd811c3d22d9a59fb83d0b01151e
 SHA256 | e5e997c003e29036f62bf3fdce96acd4a271799211a84b34b35dfd290e9bea9c
 
-#### <a name="continuous-discovery"></a>Průběžná zjišťování
+#### <a name="continuous-discovery"></a>Průběžné zjišťování
 
 Pro soubory OVA verze 1.0.10.4
 
@@ -275,11 +285,11 @@ Pro každého zjišťování, které je třeba provést spuštění kolektoru pr
 
 #### <a name="verify-vms-in-the-portal"></a>Kontrola virtuálních počítačů na portálu
 
-Jednorázové zjišťování, doba zjišťování závisí na tom, kolik virtuálních zjišťujete. Obvykle pro 100 virtuálních počítačů po kolektor spustí trvá přibližně hodinu konfigurace a výkonu shromažďování dat pro dokončení. Můžete vytvořit posouzení (na základě výkonu a jako místní posouzení) okamžitě po dokončení zjišťování.
+Pro jednorázové zjišťování doba zjišťování závisí na tom, kolik virtuálních počítačů vyhledáváte. Obvykle pro 100 virtuálních počítačů po kolektor spustí trvá přibližně hodinu konfigurace a výkonu shromažďování dat pro dokončení. Okamžitě po dokončení zjišťování můžete vytvořit interní hodnocení (na základě výkonu a nebo na základě místa).
 
-Kolektor průběžná zjišťování (ve verzi preview), bude průběžně profilu v místním prostředí a bude posílat data o výkonu v intervalu hodiny. Za hodinu od zahájením zjišťování můžete zkontrolovat počítače na portálu. Důrazně doporučujeme počkat aspoň jeden den před vytvořením posouzení všechny založené na výkonu pro virtuální počítače.
+Z důvodu průběžného zjišťování (ve verzi preview), bude kolektor průběžně profilovat místní prostředí a bude posílat data o výkonu v hodinovém intervalu. Za hodinu po zahájení zjišťování můžete zkontrolovat počítače na portálu. Před vytvořením interního hodnocení založeného na výkonu virtuálních počítačů důrazně doporučujeme počkat aspoň jeden den.
 
-1. V projektu migrace, klikněte na tlačítko **spravovat** > **počítače**.
+1. V projektu migrace klikněte na **Spravovat** > **počítače**.
 2. Zkontrolujte, jestli se virtuální počítače, které jste chtěli vyhledat, zobrazí na portálu.
 
 

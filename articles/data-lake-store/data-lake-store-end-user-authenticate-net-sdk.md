@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 65672d5dc42ae1e584a36bcc72c16911f6c1f6e2
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 206dddd70ae9063782b7dc8dfaf1214f53d5fac8
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46122821"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49955689"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-net-sdk"></a>Ověřování koncového uživatele pomocí Azure Data Lake Storage Gen1 pomocí sady .NET SDK
 > [!div class="op_single_selector"]
@@ -82,7 +82,7 @@ V tomto článku najdete informace o tom, jak pomocí sady .NET SDK provádět o
 ## <a name="end-user-authentication"></a>Ověřování koncových uživatelů
 Přidejte tento fragment kódu do klientské aplikace .NET. Nahraďte zástupné hodnoty hodnotami, které je načten z nativní aplikaci Azure AD (uvedené jako předpoklad). Tento fragment kódu umožňuje ověřování vaší aplikace **interaktivně** s Data Lake Storage Gen1, což znamená, že budete vyzváni k zadání přihlašovacích údajů Azure.
 
-Následující fragment kódu pro snadnější použití používá výchozí hodnoty pro ID klienta a jsou platné pro jakékoli předplatné identifikátor URI pro přesměrování. V následujícím fragmentu kódu stačí zadat hodnotu vašeho ID tenanta. Můžete získat ID klienta pomocí pokynů uvedených v [získání ID tenanta](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-tenant-id).
+Následující fragment kódu pro snadnější použití používá výchozí hodnoty pro ID klienta a jsou platné pro jakékoli předplatné identifikátor URI pro přesměrování. V následujícím fragmentu kódu stačí zadat hodnotu vašeho ID tenanta. Můžete získat ID klienta pomocí pokynů uvedených v [získání ID tenanta](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-id).
     
 - Funkce Main() nahraďte následujícím kódem:
 

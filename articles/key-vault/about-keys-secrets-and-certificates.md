@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: bryanla
-ms.openlocfilehash: 1d6f84612dd2bac34c238ad7eaf323dc7fa00ba3
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: d93ad4185be3d4875c5747fd10359baab69af95d
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49311350"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49958648"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>Informace o klíčích, tajných kódů a certifikátů
 
@@ -101,7 +101,7 @@ Key Vault podporuje jenom klíče RSA a eliptické křivky.
 -   **RSA**: klíč RSA "text Soft".
 -   **RSA HSM**: klíč RSA "Pevné".
 
-Key Vault podporuje klíče RSA 2048, 3072 do 4096 velikostí. Key Vault podporuje eliptické křivky klíč typy p-256, p-384, p-521 a P - 256 kB.
+Key Vault podporuje klíče RSA 2048, 3072 do 4096 velikostí. Key Vault podporuje eliptické křivky klíč typy p-256, p-384, p-521 a P-256_K (SECP256K1).
 
 ### <a name="cryptographic-protection"></a>Ochrana kryptografických
 
@@ -110,12 +110,19 @@ Kryptografických modulů, které používá služby Key Vault, zda HSM nebo sof
 ###  <a name="ec-algorithms"></a>Algoritmy ES
  Podporují se následující identifikátory algoritmus s klíči ES a ES HSM ve službě Key Vault. 
 
+#### <a name="curve-types"></a>Typy křivky
+
+-   **P-256** – The NIST křivky p-256, definované v [DSS FIPS PUB 186 4](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf).
+-   **P-256_K** – The s křivky SECP256K1 definované na [s 2: doporučené parametry domény eliptické křivky](http://www.secg.org/sec2-v2.pdf).
+-   **P-384** – The NIST křivky p-384 definované na [DSS FIPS PUB 186 4](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf).
+-   **P-521** – The NIST křivky p-521 definované na [DSS FIPS PUB 186 4](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf).
+
 #### <a name="signverify"></a>/ OVĚŘENÍ
 
--   **ES256** – hodnoty Digest ECDSA algoritmu SHA-256 a klíče vytvořené pomocí křivky p-256. Tento algoritmus je popsán v [RFC7518].
+-   **ES256** – hodnoty Digest ECDSA algoritmu SHA-256 a klíče vytvořené pomocí křivky p-256. Tento algoritmus je popsán v [RFC7518](https://tools.ietf.org/html/rfc7518).
 -   **ES256K** – hodnoty Digest ECDSA algoritmu SHA-256 a klíče vytvořené pomocí křivky P-256_K. Čeká na tento algoritmus normalizace.
--   **ES384** – hodnoty Digest ECDSA pro SHA-384 a klíče vytvořené pomocí křivky p-384. Tento algoritmus je popsán v [RFC7518].
--   **ES512** – hodnoty Digest pro algoritmus SHA-512 ECDSA a klíče vytvořené pomocí křivky p-521. Tento algoritmus je popsán v [RFC7518].
+-   **ES384** – hodnoty Digest ECDSA pro SHA-384 a klíče vytvořené pomocí křivky p-384. Tento algoritmus je popsán v [RFC7518](https://tools.ietf.org/html/rfc7518).
+-   **ES512** – hodnoty Digest pro algoritmus SHA-512 ECDSA a klíče vytvořené pomocí křivky p-521. Tento algoritmus je popsán v [RFC7518](https://tools.ietf.org/html/rfc7518).
 
 ###  <a name="rsa-algorithms"></a>Algoritmy RSA  
  Podporují se následující identifikátory algoritmus s klíči RSA a RSA HSM ve službě Key Vault.  

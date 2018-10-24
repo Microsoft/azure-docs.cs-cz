@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: zarhoads
-ms.openlocfilehash: c1fc12bfe57edf34701d8f1f93ca18298be29160
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: b15b3b07768d531b748944529cc7e8e6df6d9808
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49470264"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49958869"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-python"></a>Vytvoření a správa virtuálních počítačů s Windows v Azure pomocí Pythonu
 
@@ -53,7 +53,7 @@ Měli byste vidět v oknech výstupu balíčky azure byly úspěšně nainstalov
 
 ## <a name="create-credentials"></a>Vytvořte přihlašovací údaje
 
-Předtím, než se pustíte do tohoto kroku, ujistěte se, že máte [instanční objekt služby Active Directory](../../azure-resource-manager/resource-group-create-service-principal-portal.md). Také byste měli zaznamenávat ID aplikace, ověřovací klíč a ID tenanta, který budete potřebovat v pozdějším kroku.
+Předtím, než se pustíte do tohoto kroku, ujistěte se, že máte [instanční objekt služby Active Directory](../../active-directory/develop/howto-create-service-principal-portal.md). Také byste měli zaznamenávat ID aplikace, ověřovací klíč a ID tenanta, který budete potřebovat v pozdějším kroku.
 
 1. Otevřít *myPythonProject.py* soubor, který byl vytvořen a následně přidejte následující kód k aktivaci aplikace ke spuštění:
 

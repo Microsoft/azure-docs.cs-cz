@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 07/23/2018
-ms.openlocfilehash: e1c76f65df13811a3dc3028e627b7c19c1437fb5
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: d205a46c672523e029816b573742d991de79b2ae
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47585539"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49956727"
 ---
 # <a name="use-data-lake-store-with-azure-hdinsight-clusters"></a>Použití služby Data Lake Store s clustery Azure HDInsight
 
@@ -93,7 +93,7 @@ Přidání účtu Data Lake Store jako dalšího úložiště a přidání více
 
 ## <a name="configure-data-lake-store-access"></a>Konfigurace přístupu ke službě Data Lake Store
 
-Pokud chcete nakonfigurovat přístup ke službě Data Lake Store z clusteru HDInsight, musíte mít instanční objekt Azure Active Directory (Azure AD). Instanční objekt může vytvořit pouze správce Azure AD. Instanční objekt musí být vytvořený s certifikátem. Další informace najdete v tématu s [rychlým startem pro nastavení clusterů ve službě HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md) a v části tématu věnované [vytváření instančních objektů s certifikátem podepsaným jeho držitelem](../azure-resource-manager/resource-group-authenticate-service-principal.md#create-service-principal-with-self-signed-certificate).
+Pokud chcete nakonfigurovat přístup ke službě Data Lake Store z clusteru HDInsight, musíte mít instanční objekt Azure Active Directory (Azure AD). Instanční objekt může vytvořit pouze správce Azure AD. Instanční objekt musí být vytvořený s certifikátem. Další informace najdete v tématu s [rychlým startem pro nastavení clusterů ve službě HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md) a v části tématu věnované [vytváření instančních objektů s certifikátem podepsaným jeho držitelem](../active-directory/develop/howto-authenticate-service-principal-powershell.md#create-service-principal-with-self-signed-certificate).
 
 > [!NOTE]
 > Pokud plánujete službu Azure Data Lake Store používat jako další úložiště pro cluster HDInsight, důrazně doporučujeme to provést během vytváření clusteru, jak je popsáno v tomto článku. Přidání služby Azure Data Lake Store jako dalšího úložiště do existujícího clusteru HDInsight se nepodporuje.

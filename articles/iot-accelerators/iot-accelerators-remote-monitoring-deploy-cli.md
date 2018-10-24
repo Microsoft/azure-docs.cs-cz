@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 09/12/2018
 ms.topic: conceptual
-ms.openlocfilehash: 56f233afed8c403d19c9b668e98ecfec45470b64
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: ddb0b5b1a0847200caa7d8d04ecdc9dab4c41d14
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44721615"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49956693"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-using-the-cli"></a>Nasazení akcelerátoru řešení vzdáleného monitorování, který se pomocí rozhraní příkazového řádku
 
@@ -81,14 +81,14 @@ Vytvoření základní řešení bude znamenat, že v následujících služeb A
 
 
 ### <a name="standard"></a>Standard
-Standardní nasazení je nasazení připravené pro produkční prostředí vývojář může přizpůsobit a rozšířit podle svých potřeb. Spolehlivost a škálování, mikroslužby aplikací jsou vytvořené jako kontejnery Dockeru a nasazují pomocí orchestrátoru ([Kubernetes](https://kubernetes.io/) ve výchozím nastavení). Orchestrátor zodpovídá za nasazení, škálování a Správa aplikace.
+Standardní nasazení je nasazení připravené pro produkční prostředí vývojář může přizpůsobit a rozšířit podle svých potřeb. Možnost standardní nasazení by měl použít, až budete připraveni k přizpůsobení připravené pro produkční prostředí architektury, navržená pro škálování a rozšiřitelnost. Aplikace mikroslužeb jsou vytvořené jako kontejnery Dockeru a nasazují pomocí služby Azure Kubernetes Service (AKS). Orchestrátor zodpovídá za nasazení, škálování a Správa aplikace.
+
 
 Vytvoření standardní řešení bude znamenat, že v následujících služeb Azure, zřídí do vašeho předplatného Azure, poplatků:
 
 | Počet | Prostředek                                     | SKU nebo velikosti      | Používá pro |
 |-------|----------------------------------------------|-----------------|----------|
-| 4     | [Virtuální počítače s Linuxem](https://azure.microsoft.com/services/virtual-machines/)   | Standard D2 V2  | hlavním uzlem 1 a 3 agenty pro hostování mikroslužeb s redundancí |
-| 1     | [Azure Container Service](https://azure.microsoft.com/services/container-service/) |                 | [Kubernetes](https://kubernetes.io) nástroje orchestrator |
+| 1     | [Azure Kubernetes Service](https://azure.microsoft.com/services/kubernetes-service)| Použití plně spravovanou službu Orchestrace kontejnerů Kubernetes, výchozí hodnota je 3 agentů|
 | 1     | [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/)                     | S2 – úroveň Standard | Správa zařízení, příkazy a ovládání |
 | 1     | [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)                 | Standard        | Ukládání konfiguračních dat a telemetrii zařízení jako jsou pravidla, varování a zprávy |
 | 5     | [Účty služby Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-introduction#types-of-storage-accounts)    | Standard        | 4 pro úložiště virtuálního počítače a 1 pro streamování kontrolní body |

@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/11/2017
+ms.date: 10/23/2018
 ms.author: cherylmc
-ms.openlocfilehash: cd7a6c43cb791ed607a763f10e781794ef513500
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 7ffe51077c7152c52b9becd2318fa33eea055c20
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46950399"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49956852"
 ---
 # <a name="create-and-modify-routing-for-an-expressroute-circuit-using-cli"></a>Vytvoření a úprava směrování pro okruh ExpressRoute pomocí rozhraní příkazového řádku
 
@@ -38,7 +38,7 @@ Tento článek pomůže při vytváření a správě konfigurace směrování pr
 
 ## <a name="configuration-prerequisites"></a>Předpoklady konfigurace
 
-* Než začnete, nainstalujte si nejnovější verzi příkazů rozhraní příkazového řádku (2.0 nebo novější). Informace o instalaci příkazů rozhraní příkazového řádku najdete v tématu [instalace rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli).
+* Než začnete, nainstalujte si nejnovější verzi příkazů rozhraní příkazového řádku (2.0 nebo novější). Informace o instalaci příkazů rozhraní příkazového řádku najdete v tématu [Instalace Azure CLI](/cli/azure/install-azure-cli).
 * Ujistěte se, že jste si prohlédli [požadavky](expressroute-prerequisites.md), [požadavky směrování](expressroute-routing.md), a [pracovního postupu](expressroute-workflows.md) stránky před zahájením konfigurace.
 * Musí mít aktivní okruh ExpressRoute. Než budete pokračovat, podle pokynů [vytvořte okruh ExpressRoute](howto-circuit-cli.md) a mějte ho povolený vaším poskytovatelem připojení. Okruh ExpressRoute musí být ve stavu zřízený a povolený pro vás bude moct spouštět příkazy v tomto článku.
 
@@ -318,7 +318,7 @@ az network express-route peering update --vlan-id 500 -g ExpressRouteResourceGro
 Konfiguraci partnerského vztahu můžete odebrat spuštěním následující příklad:
 
 > [!WARNING]
-> Ujistěte se, že všechny virtuální sítě jsou od okruhu ExpressRoute odpojené před spuštěním tohoto příkladu. 
+> Ujistěte se, že před spuštěním tohoto příkladu se odeberou všechny virtuální sítě a připojení ExpressRoute globální dosah. 
 > 
 > 
 

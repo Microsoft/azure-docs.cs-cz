@@ -9,12 +9,12 @@
 ## [Vytvoření a nastavení vývojového prostředí](media-services-set-up-computer.md)
 ### [.NET](media-services-dotnet-how-to-use.md)
 ### [REST](media-services-rest-how-to-use.md)  
-## [Přístup k rozhraní API pomocí ověřování AAD](media-services-use-aad-auth-to-access-ams-api.md)
-### [Správa ověřování AAD pomocí portálu](media-services-portal-get-started-with-aad.md)
+## [Přístup k rozhraní API pomocí ověřování Azure AD](media-services-use-aad-auth-to-access-ams-api.md)
+### [Správa ověřování Azure AD pomocí portálu](media-services-portal-get-started-with-aad.md)
 ### [Přístup k rozhraní API pomocí .NET](media-services-dotnet-get-started-with-aad.md)
 ### [Přístup k rozhraní API pomocí REST](media-services-rest-connect-with-aad.md)
-### [Vytvoření a konfigurace aplikace AAD pomocí rozhraní příkazového řádku Azure](media-services-cli-create-and-configure-aad-app.md)
-### [Vytvoření a konfigurace aplikace AAD pomocí Azure PowerShellu](media-services-powershell-create-and-configure-aad-app.md)
+### [Vytvoření a konfigurace aplikace Azure AD pomocí rozhraní příkazového řádku Azure](media-services-cli-create-and-configure-aad-app.md)
+### [Vytvoření a konfigurace aplikace Azure AD pomocí Azure PowerShellu](media-services-powershell-create-and-configure-aad-app.md)
 
 ## Doručování videa na vyžádání
 ### [Azure Portal](media-services-portal-vod-get-started.md)

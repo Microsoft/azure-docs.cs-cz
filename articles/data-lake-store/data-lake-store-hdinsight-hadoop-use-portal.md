@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 28bed3578c653c8081868b3d950ab6332879784a
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: b81916de0940aa56eda97df94527fa6adc208285
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46124317"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49955826"
 ---
 # <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-by-using-the-azure-portal"></a>Vytvoření clusterů HDInsight s Azure Data Lake Storage Gen1 pomocí webu Azure portal
 > [!div class="op_single_selector"]
@@ -38,7 +38,7 @@ Než začnete tento kurz, ujistěte se, že splnění následujících požadavk
 * **Instanční objekt Azure Active Directory**. Tento kurz obsahuje pokyny o tom, jak vytvořit instanční objekt v Azure Active Directory (Azure AD). K vytvoření instančního objektu, ale musí být správce Azure AD. Pokud jste správce, můžete tuto požadovanou součást přeskočit a pokračovat v tomto kurzu.
 
     >[!NOTE]
-    >Služby můžete vytvořit instanční objekt, pouze v případě, že jste správce Azure AD. Správce Azure AD musíte vytvořit instanční objekt před vytvořením clusteru služby HDInsight s Data Lake Storage Gen1. Navíc musí být instanční objekt vytvořený s certifikátem, jak je popsáno v [vytvoření instančního objektu s certifikátem](../azure-resource-manager/resource-group-authenticate-service-principal.md#create-service-principal-with-self-signed-certificate).
+    >Služby můžete vytvořit instanční objekt, pouze v případě, že jste správce Azure AD. Správce Azure AD musíte vytvořit instanční objekt před vytvořením clusteru služby HDInsight s Data Lake Storage Gen1. Navíc musí být instanční objekt vytvořený s certifikátem, jak je popsáno v [vytvoření instančního objektu s certifikátem](../active-directory/develop/howto-authenticate-service-principal-powershell.md#create-service-principal-with-self-signed-certificate).
     >
 
 ## <a name="create-an-hdinsight-cluster"></a>Vytvoření clusteru HDInsight
@@ -55,7 +55,7 @@ V této části vytvoříte HDInsight cluster s účty Data Lake Storage Gen1 ja
 
     ![Přidání instančního objektu pro HDInsight cluster](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.1.adls.storage.png "přidat instančního objektu pro HDInsight cluster")
 
-    - **Vyberte Data Lake Store účtu**: Vyberte existující účet Data Lake Storage Gen1. Existující účet Data Lake Storage Gen1 je povinný.  Zobrazit [požadavky](#prerequisites).
+    - **Vyberte Data Lake Store účtu**: Vyberte existující účet Data Lake Storage Gen1. Existující účet Data Lake Storage Gen1 je povinný.  Viz [Požadavky](#prerequisites).
     - **Kořenová cesta**: Zadejte cestu, kam se mají ukládat soubory specifických pro cluster. Na snímku obrazovky, je __/clusterů/myhdiadlcluster/__, ve kterém __/clusterů__ složka musí existovat a portál vytvoří *myhdicluster* složky.  *Myhdicluster* je název clusteru.
     - **Přístup k data Lake Store**: nakonfigurovat přístup mezi účtem Data Lake Storage Gen1 a HDInsight cluster. Pokyny najdete v tématu [přístup konfigurovat Data Lake Storage Gen1](#configure-data-lake-store-access).
     - **Další účty úložiště**: účty úložiště Azure přidat jako další účty úložiště pro cluster. Chcete-li přidat další účty Data Lake Storage Gen1 se provádí tak, že udělíte oprávnění clusteru na datech z další účty Data Lake Storage Gen1 při konfiguraci účtu Data Lake Storage Gen1 jako typ primárního úložiště. Zobrazit [přístup konfigurovat Data Lake Storage Gen1](#configure-data-lake-store-access).

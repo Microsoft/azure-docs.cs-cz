@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/12/2018
 ms.author: jingwang
-ms.openlocfilehash: e50d1696fdc22916f5ac4699bd17ddc21a82a148
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: a4de054926339985b77f110bd00f77c5c8f7d705
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48815864"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49957985"
 ---
 # <a name="copy-data-to-or-from-azure-sql-database-by-using-azure-data-factory"></a>Kopírování dat do nebo ze služby Azure SQL Database s použitím služby Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you use:"]
@@ -96,7 +96,7 @@ Různými typy ověřování najdete v následujících částech na požadavky 
 
 Pokud chcete používat ověřování tokenu aplikací služeb na základě instanční objekt Azure AD, postupujte takto:
 
-1. **[Vytvoření aplikace Azure Active Directory](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-azure-active-directory-application)**  z portálu Azure portal. Poznamenejte si název aplikace a následující hodnoty, které definují propojené služby:
+1. **[Vytvoření aplikace Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)**  z portálu Azure portal. Poznamenejte si název aplikace a následující hodnoty, které definují propojené služby:
 
     - ID aplikace
     - Klíč aplikace
@@ -582,13 +582,13 @@ Při kopírování dat z nebo do služby Azure SQL Database, se používají ná
 | Binární |Byte] |
 | Bit |Logická hodnota |
 | Char |Řetězec, Char] |
-| datum |DateTime |
+| date |DateTime |
 | Datum a čas |DateTime |
 | datetime2 |DateTime |
 | DateTimeOffset |DateTimeOffset |
 | Decimal |Decimal |
 | Atribut FILESTREAM (varbinary(max)) |Byte] |
-| Float |Double |
+| plovoucí desetinnou čárkou |Double |
 | image |Byte] |
 | int |Datový typ Int32 |
 | peníze |Decimal |

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2018
 ms.author: apimpm
-ms.openlocfilehash: ce4ff33a8af9cf864ad4902599a0ab18b2b27182
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: d359ad0e619e4d7784d763e70599ce784aa852cd
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49387221"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945805"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>Uložit a konfigurace konfigurace služby API Management pomocí Gitu
 
@@ -84,7 +84,7 @@ Následující příklady používají nástroje Git Bash [Git pro Windows](http
 Otevřete nástroj Gitu do požadované složky a spusťte následující příkaz a naklonujte úložiště git do svého místního počítače pomocí příkazu poskytované na webu Azure portal.
 
 ```
-git clone https://bugbashdev4.scm.azure-api.net/
+git clone https://{name}.scm.azure-api.net/
 ```
 
 Zadejte uživatelské jméno a heslo po zobrazení výzvy.
@@ -92,7 +92,7 @@ Zadejte uživatelské jméno a heslo po zobrazení výzvy.
 Pokud se zobrazí nějaké chyby, zkuste upravit vaše `git clone` příkazu zahrnovat uživatelské jméno a heslo, jak je znázorněno v následujícím příkladu.
 
 ```
-git clone https://username:password@bugbashdev4.scm.azure-api.net/
+git clone https://username:password@{name}.scm.azure-api.net/
 ```
 
 Pokud to poskytuje k chybě, zkuste použít kódování heslo část příkazu. Jeden rychlý způsob, jak to udělat je spuštění sady Visual Studio a vydejte následující příkaz v **podokna**. Chcete-li otevřít **podokna**otevřete libovolné řešení nebo projektu v sadě Visual Studio (nebo vytvořte novou prázdnou aplikaci) a zvolte možnost **Windows**, **okamžité** z **Ladění** nabídky.
@@ -104,7 +104,7 @@ Pokud to poskytuje k chybě, zkuste použít kódování heslo část příkazu.
 Použijte zakódované heslo spolu s uživatelské jméno a úložiště umístění k vytvoření příkazu git.
 
 ```
-git clone https://username:url encoded password@bugbashdev4.scm.azure-api.net/
+git clone https://username:url encoded password@{name}.scm.azure-api.net/
 ```
 
 Po naklonování úložiště můžete zobrazit a pracovat v místním systému souborů. Další informace najdete v tématu [souborům a složkám struktury odkaz na místní úložiště Git](#file-and-folder-structure-reference-of-local-git-repository).
@@ -120,7 +120,7 @@ git pull
 Před spuštěním `git pull` Ujistěte se, že jste ve složce pro vaše místní úložiště. Pokud právě jste dokončili `git clone` příkaz, pak musí změňte adresář na úložišti můžete přecházet pomocí příkazu následujícím postupem.
 
 ```
-cd bugbashdev4.scm.azure-api.net/
+cd {name}.scm.azure-api.net/
 ```
 
 ## <a name="to-push-changes-from-your-local-repo-to-the-server-repo"></a>K replikaci změn z místního úložiště na server úložiště

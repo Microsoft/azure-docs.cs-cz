@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/12/2018
+ms.date: 10/23/2018
 ms.author: cherylmc
-ms.openlocfilehash: 9b96417140bea581aeb106e45c3c93a19858dfe7
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: 7acfb71dd3edd798095472b8f863a658dccaa51b
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49310877"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49955180"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit"></a>Vytvoření a úprava partnerského vztahu pro okruh ExpressRoute
 
@@ -156,6 +156,11 @@ Můžete vybrat řádek pro partnerský vztah a upravit vlastnosti partnerského
 ### <a name="deleteprivate"></a>Odstranění soukromého partnerského vztahu Azure
 
 Konfiguraci partnerského vztahu můžete odebrat tak, že vyberete ikonu odstranit, jak je znázorněno na následujícím obrázku:
+
+> [!WARNING]
+> Ujistěte se, že před spuštěním tohoto příkladu se odeberou všechny virtuální sítě a připojení ExpressRoute globální dosah. 
+> 
+> 
 
 ![Odstranění soukromého partnerského vztahu](./media/expressroute-howto-routing-portal-resource-manager/rprivate4.png)
 

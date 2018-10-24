@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 670a2ce205ba5e64418eccc41add36cbecc28212
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: dfa512a26334567301812ecefd8c5673b0ea4094
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49430734"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49955894"
 ---
 # <a name="publish-iot-edge-module-offer"></a>Publikovat nabídku modul IoT Edge
 
@@ -38,7 +38,7 @@ Následující tabulka popisuje každý krok pro publikování, čas odhad (maxi
 |  **Publikování kroku**           | **čas**    | **Popis**                                                            |
 |  -------------------           | --------    | ---------------                                                            |
 | Ověřit požadované součásti         | 15 min   | Poskytuje informace a nabídku, nastavení se ověří.                        |
-| Certifikace                  | 1 týden | Nabídka se analyzuje tým certifikace Azure. Tento krok provede kontroly viry, malware, dodržování předpisů zabezpečení a problémy se zabezpečením. Bude také ověřit, jestli tato nabídka modul IoT Edge splňuje všechna kritéria způsobilosti (naleznete v tématu [požadavky](./cpp-prerequisites.md) a [Příprava technických prostředků](./cpp-create-technical-assets.md)). Pokud je nalezen problém poskytnutí zpětné vazby. |
+| Certifikace                  | 2 týdny | Nabídka se analyzuje tým certifikace Azure. Tento krok provede kontroly viry, malware, dodržování předpisů zabezpečení a problémy se zabezpečením. Bude také ověřit, jestli tato nabídka modul IoT Edge splňuje všechna kritéria způsobilosti (naleznete v tématu [požadavky](./cpp-prerequisites.md) a [Příprava technických prostředků](./cpp-create-technical-assets.md)). Pokud je nalezen problém poskytnutí zpětné vazby. |
 | Balení | 1 hodina  | Technické prostředky nabídky jsou zabaleny pro používání zákazníka a systémy potenciálních zákazníků jsou nakonfigurovány a nastavení. |
 |  Vydavatel přihlašování vypnuto             |  -        | Zkontrolujte poslední vydavatele a potvrzení před uvedete nabídky. Ověřit, zda splňuje všechny požadavky, můžete nasadit vaši nabídku ve vybraných předplatných (v krocích informace nabídky).  Vyberte **aktivace** tak vaši nabídku můžete přesunout k dalšímu kroku. |
 | Balení                 | 1 hodina | Dokončené nabídky jsou replikovány v marketplace produkční systémy a oblastech. | 

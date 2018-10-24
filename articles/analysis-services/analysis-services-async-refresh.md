@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: e30f02fb7f250b32cb3c7bb5205f58ca658a8f2a
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: e797f1faf249a1ad1eebbd46984829de5f087936
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49426738"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49958665"
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>Asynchronní aktualizace s využitím rozhraní REST API
 S použitím programovací jazyk, který podporuje volání REST, můžete provádět operace asynchronní aktualizace dat na vašich tabulkových modelů služby Azure Analysis Services. To zahrnuje synchronizaci repliky jen pro čtení pro horizontální navýšení kapacity dotazu. 
@@ -236,7 +236,7 @@ Tato forma ověřování vyžaduje, vytvořit aplikaci Azure s potřebnými opr�
 
 #### <a name="service-principal"></a>Instanční objekt
 
-Zobrazit [vytvoření instančního objektu – Azure portal](../azure-resource-manager/resource-group-create-service-principal-portal.md) a [přidání hlavního názvu služby k roli správce serveru](analysis-services-addservprinc-admins.md) pro další informace o tom, jak nastavení hlavního názvu služby a přidělení potřebných oprávnění v Azure jako . Po dokončení kroků, proveďte následující kroky:
+Zobrazit [vytvoření instančního objektu – Azure portal](../active-directory/develop/howto-create-service-principal-portal.md) a [přidání hlavního názvu služby k roli správce serveru](analysis-services-addservprinc-admins.md) pro další informace o tom, jak nastavení hlavního názvu služby a přidělení potřebných oprávnění v Azure jako . Po dokončení kroků, proveďte následující kroky:
 
 1.  Ve vzorovém kódu najít **řetězec autority =...** , nahraďte **běžné** ve vaší organizaci tenanta ID.
 2.  Okomentovat/Odkomentujte tak clientcredential systému třída se používá k vytvoření instance objektu – stáhnout přihlašovací údaje. Zkontrolujte \<ID aplikace > a \<klíče aplikace > hodnoty jsou přístupné z bezpečný nebo použít ověřování pomocí certifikátů pro instanční objekty.

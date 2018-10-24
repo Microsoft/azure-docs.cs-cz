@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/06/2018
 ms.author: sethm
-ms.openlocfilehash: 65fa9593b35af45ee9b8568bac5e4886909314e1
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 96137b95f46f24bca6a4ee6a39d93a490a03c431
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44092539"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49958444"
 ---
 # <a name="provide-applications-access-to-azure-stack"></a>Poskytnutí přístupu aplikací do Azure Stack
 
@@ -40,7 +40,7 @@ V závislosti na tom, jak nasadíte Azure Stack začnete tím, že vytváření 
 
 ## <a name="create-service-principal-for-azure-ad"></a>Vytvoření instančního objektu pro službu Azure AD
 
-Pokud jste nasadili Azure Stack jako úložiště identit pomocí Azure AD, můžete vytvořit instanční objekty stejně jako pro Azure. Tato část ukazuje, jak k provedení kroků na portálu. Zkontrolujte, jestli máte [požadovaná oprávnění Azure AD](../azure-resource-manager/resource-group-create-service-principal-portal.md#required-permissions) před zahájením.
+Pokud jste nasadili Azure Stack jako úložiště identit pomocí Azure AD, můžete vytvořit instanční objekty stejně jako pro Azure. Tato část ukazuje, jak k provedení kroků na portálu. Zkontrolujte, jestli máte [požadovaná oprávnění Azure AD](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions) před zahájením.
 
 ### <a name="create-service-principal"></a>Vytvoření instančního objektu
 V této části vytvoříte aplikaci (instanční objekt) ve službě Azure AD, která reprezentuje vaši aplikaci.

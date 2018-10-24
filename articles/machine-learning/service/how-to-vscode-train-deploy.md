@@ -9,12 +9,12 @@ ms.author: jmartens
 author: j-martens
 ms.reviewer: jmartens
 ms.date: 10/1/2018
-ms.openlocfilehash: 3a5ee8795dabcbf9e35e16a8ba0f9c0eb5490ead
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 6372aada8c3d380f8d3cefb0479e45bbd7c63898
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48242290"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945242"
 ---
 # <a name="vs-code-tools-for-ai-train-and-deploy-ml-models-from-vs-code"></a>Nástroje VS Code pro AI: trénování a nasazovat modely ML z VS Code
 V tomto článku se dozvíte, jak používat **nástroje VS Code pro AI** rozšíření trénovat a nasazovat strojového učení a hloubkového učení modely se službou Azure Machine Learning v nástroji VS Code.
@@ -196,4 +196,4 @@ Tady je příklad pro Instance kontejneru Azure: [ ![Instance kontejneru Azure z
 
 Návod, jak školení s Machine learningem mimo VS Code, přečtěte si [kurz: trénování modelů Azure Machine Learning](tutorial-train-models-with-aml.md).
 
-Návod, jak úprav, spouštění a ladění kódu místně, najdete v článku [kurz Pythonu Hello World](https://code.visualstudio.com/docs/languages/python/docs/python/python-tutorial)
+Návod, jak úprav, spouštění a ladění kódu místně, najdete v článku [kurz Pythonu Hello World](https://code.visualstudio.com/docs/python/python-tutorial)

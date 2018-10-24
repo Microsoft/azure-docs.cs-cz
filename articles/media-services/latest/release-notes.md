@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 10/22/2018
 ms.author: juliako
-ms.openlocfilehash: 10bd2101839e1b6d1dbdc1e53c31693ab0be98fd
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: db68f979239a5783338d99360209ae231a75c936
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/23/2018
-ms.locfileid: "49647761"
+ms.locfileid: "49945031"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure Media Services v3 poznámky k verzi 
 
@@ -35,10 +35,6 @@ Tato část popisuje aktualizace Azure Media Services (AMS) dne.
 ### <a name="rest-v3-ga-release"></a>Verze GA v3 REST
 
 [Verze GA v3 REST](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01) zahrnuje další rozhraní API pro Live, manifestu filtry na úrovni účtu/Asset a podpora DRM.
-
-#### <a name="azure-cli-20"></a>Azure CLI 2.0
- 
-Modul Azure CLI 2.0 aktuálně zahrnuje operace u zásad Streaming Live, obsahu zásady klíčů. Další informace najdete v tématu [plány pro změny](#plans-for-changes).
 
 #### <a name="azure-resource-management"></a>Správa prostředků Azure 
 
@@ -95,7 +91,9 @@ Video verzi Indexer GA byl jsme oznámili v srpnu. Nové informace o aktuálně 
 
 ### <a name="plans-for-changes"></a>Plány pro změny
 
-Verze rozhraní příkazového řádku Azure se chystá 11/06/2018.
+#### <a name="azure-cli-20"></a>Azure CLI 2.0
+ 
+Modul Azure CLI 2.0, který obsahuje operace s funkcí (včetně Live, obsahu zásady klíčů, účtu nebo Asset filtry, streamování zásady) je již brzy. 
 
 ### <a name="known-issues"></a>Známé problémy
 

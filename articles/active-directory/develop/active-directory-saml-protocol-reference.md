@@ -17,14 +17,14 @@ ms.date: 10/05/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: hirsin
-ms.openlocfilehash: b9ae7cf9d6fd383c7cdfa3957b5d9b94c7207d50
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 5c560218bebd5399c85b9cebe11c7342e8d15a59
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48900651"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945684"
 ---
-# <a name="how-azure-ad-uses-the-saml-protocol"></a>Jak Azure AD používá protokol SAML
+# <a name="how-azure-ad-uses-the-saml-protocol"></a>Jak Azure AD využívá protokol SAML
 
 Azure Active Directory (Azure AD) pomocí SAML 2.0 protokol umožňují aplikacím poskytovat jednotné přihlašování svým uživatelům. [Single Sign-On](single-sign-on-saml-protocol.md) a [jedním odhlašování](single-sign-out-saml-protocol.md) SAML profilů služby Azure AD vysvětlují, jak používat kontrolní výrazy SAML, protokoly a vazby ve službě zprostředkovatele identity.
 
@@ -32,7 +32,7 @@ Protokol SAML vyžaduje zprostředkovatele identity (Azure AD) a poskytovatelem 
 
 Když aplikace je zaregistrován ve službě Azure AD, vývojář aplikace registruje informací souvisejících s federační službou Azure AD. Tyto informace zahrnují **identifikátor URI pro přesměrování** a **metadat URI** aplikace.
 
-Azure AD používá cloudovou službu **metadat URI** a získejte podpisový klíč a identifikátor URI odhlášení. Pokud aplikace nepodporuje metadata identifikátor URI, vývojář musí kontaktovat podporu společnosti Microsoft kvůli odhlášení identifikátor URI a podpisový klíč.
+Azure AD používá cloudovou službu **metadat URI** a získejte podpisový klíč a identifikátor URI odhlášení. Odběratele můžete otevřít aplikaci v **Azure AD -> Registrace aplikace** a potom v **Nastavení -> vlastnosti**, mohou aktualizovat odhlašovací adresa URL. Azure AD díky tomu můžete odeslat odpověď na správnou adresu URL. 
 
 Azure Active Directory zpřístupňuje specifickým pro tenanta a běžné (nezávislé na tenanta) jednotné přihlašování a jednotné odhlašování koncové body. Tyto adresy URL představují adresovatelný umístění – nejsou jenom identifikátory – takže můžete přejít ke koncovému bodu ke čtení metadat.
 

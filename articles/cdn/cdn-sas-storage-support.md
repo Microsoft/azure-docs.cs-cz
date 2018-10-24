@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/21/2018
 ms.author: magattus
-ms.openlocfilehash: 7180e51a6ac1392e4a3f072097b1aeef3648c605
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 57891bcce289c30d7dce1cd00c301064aa9b97cc
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093285"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49955231"
 ---
 # <a name="using-azure-cdn-with-sas"></a>Používání Azure CDN pomocí SAS
 
@@ -71,28 +71,28 @@ Tato možnost je nejjednodušší a používá jeden token SAS, který je před�
  
 Tato možnost je dostupná jenom pro **Azure CDN Premium od Verizonu** profily. Pomocí této možnosti můžete svázat s blob storage na původním serveru. Chcete tuto možnost použijte, pokud nepotřebujete omezení specifický přístup k souboru, ale chcete zabránit uživatelům v přístupu k původu úložiště přímo umožňují zrychlit snižování zátěže Azure CDN. Token SAS, který neznámý pro uživatele, se vyžaduje pro každého, kdo přistupuje k souborům v zadaném kontejneru původním serveru. Z důvodu pravidel přepisu adres URL však SAS token není vyžadován na koncový bod CDN.
  
-1. Použití [stroj pravidel](cdn-rules-engine.md) k vytvoření pravidla přepisování adres URL. Nová pravidla trvat asi 10 minut na dokončení propagace.
+1. Použití [stroj pravidel](cdn-rules-engine.md) k vytvoření pravidla přepisování adres URL. Nová pravidla trvat až 4 hodinách.
 
    ![Tlačítko Spravovat CDN](./media/cdn-sas-storage-support/cdn-manage-btn.png)
 
    ![Tlačítko ke stroji pravidel CDN](./media/cdn-sas-storage-support/cdn-rules-engine-btn.png)
 
-   Následující ukázka přepisu adresy URL pravidla používá vzor regulárního výrazu s zachytávající skupinu a koncový bod s názvem *storagedemo*:
+   Následující ukázka přepisu adresy URL pravidla používá vzor regulárního výrazu s zachytávající skupinu a koncový bod s názvem *sasstoragedemo*:
    
    Zdroj:   
-   `(\/container1\/.*)`
+   `(container1\/.*)`
    
    Cíl:   
    ```
    $1?sv=2017-07-29&ss=b&srt=c&sp=r&se=2027-12-19T17:35:58Z&st=2017-12-19T09:35:58Z&spr=https&sig=kquaXsAuCLXomN7R00b8CYM13UpDbAHcsRfGOW3Du1M%3D
    ```
    ![Přepisování adres URL CDN pravidlo – vlevo](./media/cdn-sas-storage-support/cdn-url-rewrite-rule.png)
-   ![pravidlo přepisování adres URL CDN – vpravo](./media/cdn-sas-storage-support/cdn-url-rewrite-rule-option-2.png)
+   ![pravidlo přepisování adres URL CDN – vpravo](./media/cdn-sas-storage-support/cdn-url-rewrite-rule-option-4.png)
 
 2. Po aktivaci nové pravidlo, všem uživatelům přístup k souborům v zadaném kontejneru na koncový bod CDN bez ohledu na to, jestli používá SAS token v adrese URL. Tady má tento formát: `https://<endpoint hostname>.azureedge.net/<container>/<file>`
  
    Příklad:   
-   `https://demoendpoint.azureedge.net/container1/demo.jpg`
+   `https://sasstoragedemo.azureedge.net/container1/demo.jpg`
        
 
 3. Vyladění dobu uložení do mezipaměti s využitím pravidel ukládání do mezipaměti nebo přidáním `Cache-Control` záhlaví na původním serveru. Protože Azure CDN zpracovává SAS token jako řetězec prostého dotazu, jako osvědčený postup byste měli nastavit nahoru ukládání do mezipaměti Doba trvání, jejíž platnost vyprší při nebo před časem vypršení platnosti SAS. V opačném případě souboru je v mezipaměti uložené delší dobu, než je aktivní SAS, soubor může být přístupný ze serveru původu Azure CDN po uplynutí doby vypršení platnosti SAS. Pokud k této situaci dochází, a mají být váš soubor v mezipaměti nepřístupný, je třeba provést operaci vyprázdnění souboru vymazat z mezipaměti. Informace o nastavení dobu uložení do mezipaměti ve službě Azure CDN najdete v tématu [řízení Azure CDN s ukládáním do mezipaměti pravidla chování ukládání do mezipaměti](cdn-caching-rules.md).
@@ -108,24 +108,24 @@ Pokud chcete použít ověřování pomocí tokenu zabezpečení Azure CDN, mus�
  
    Příklad:   
    ```
-   https://demoendpoint.azureedge.net/container1/demo.jpg?a4fbc3710fd3449a7c99986bkquaXsAuCLXomN7R00b8CYM13UpDbAHcsRfGOW3Du1M%3D
+   https://sasstoragedemo.azureedge.net/container1/demo.jpg?a4fbc3710fd3449a7c99986bkquaXsAuCLXomN7R00b8CYM13UpDbAHcsRfGOW3Du1M%3D
    ```
        
    Parametr možnosti pro ověření tokenu zabezpečení se liší od možností parametr pro SAS token. Pokud se rozhodnete použít čas vypršení platnosti při vytváření tokenu zabezpečení, byste měli nastavit na stejnou hodnotu jako čas vypršení platnosti tokenu SAS. Tím se zajistí, že doba vypršení platnosti je předvídatelné. 
  
-2. Použití [stroj pravidel](cdn-rules-engine.md) k vytvoření pravidla přepisování adres URL umožňuje přístup pomocí tokenu SAS pro všechny objekty BLOB v kontejneru. Nová pravidla trvat asi 10 minut na dokončení propagace.
+2. Použití [stroj pravidel](cdn-rules-engine.md) k vytvoření pravidla přepisování adres URL umožňuje přístup pomocí tokenu SAS pro všechny objekty BLOB v kontejneru. Nová pravidla trvat až 4 hodinách.
 
-   Následující ukázka přepisu adresy URL pravidla používá vzor regulárního výrazu s zachytávající skupinu a koncový bod s názvem *storagedemo*:
+   Následující ukázka přepisu adresy URL pravidla používá vzor regulárního výrazu s zachytávající skupinu a koncový bod s názvem *sasstoragedemo*:
    
    Zdroj:   
-   `(\/container1\/.*)`
+   `(container1\/.*)`
    
    Cíl:   
    ```
    $1&sv=2017-07-29&ss=b&srt=c&sp=r&se=2027-12-19T17:35:58Z&st=2017-12-19T09:35:58Z&spr=https&sig=kquaXsAuCLXomN7R00b8CYM13UpDbAHcsRfGOW3Du1M%3D
    ```
    ![Přepisování adres URL CDN pravidlo – vlevo](./media/cdn-sas-storage-support/cdn-url-rewrite-rule.png)
-   ![pravidlo přepisování adres URL CDN – vpravo](./media/cdn-sas-storage-support/cdn-url-rewrite-rule-option-3.png)
+   ![pravidlo přepisování adres URL CDN – vpravo](./media/cdn-sas-storage-support/cdn-url-rewrite-rule-option-4.png)
 
 3. Pokud obnovíte SAS, ujistěte se aktualizovat pravidlo přepisování adres Url pomocí nového tokenu SAS. 
 

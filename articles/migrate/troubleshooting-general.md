@@ -4,14 +4,14 @@ description: Poskytuje základní informace o známých problémech ve službě 
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 09/28/2018
+ms.date: 10/23/2018
 ms.author: raynew
-ms.openlocfilehash: 906c6e56b670dfc26b5905a453fd43a3c72086c3
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: a41a27f2a87a67ea51bcbe110ac77f7908c44e7a
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47433493"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945514"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Řešení problémů s Azure Migrate
 
@@ -40,6 +40,14 @@ Pokud chcete povolit shromažďování dat o výkonu disku a sítě, změňte ú
 Můžete přejít na **Essentials** tématu **přehled** stránce projektu k identifikaci přesné umístění, kde je uložena metadata. Umístění je zvolena náhodně na území službou Azure Migrate a nelze jej upravovat. Pokud chcete vytvořit projekt v konkrétní oblasti, můžete vytvořit projekt migrace a předat požadované oblasti rozhraní REST API.
 
    ![Umístění projektu](./media/troubleshooting-general/geography-location.png)
+
+### <a name="i-am-using-the-continuous-discovery-ova-but-vms-that-are-deleted-in-my-on-premises-environment-are-still-being-shown-in-the-portal"></a>Používám průběžná zjišťování, které vajíčka, ale virtuální počítače, které v mé v místním prostředí se odstraní i nadále se zobrazují na portálu.
+
+Zařízení pro zařízení průběžná zjišťování průběžně pouze shromažďuje údaje o výkonu, nezjistí změny konfigurace v místním prostředí (tj. Přidání virtuálního počítače, odstranění, přidání disku atd.). Pokud dojde ke změně konfigurace v místním prostředí, můžete provést následující tak, aby odrážely změny v portálu:
+
+1. Přidání položek (virtuálních počítačů, disků, jader atd.): pro provedení těchto změn na webu Azure Portal, můžete zastavit zjišťování ze zařízení a znovu spustit. Tím se zajistí, že změny jsou aktualizovány v projektu Azure Migrate.
+
+2. Odstranění virtuálních počítačů: z důvodu způsob je navržena na zařízení, odstranění virtuální počítače se projeví i v případě zastavení a spuštění zjišťování. Je to proto, že data z dalších zjišťování se připojí k starší zjišťování a nebyly přepsány. V takovém případě můžete jednoduše ignorovat virtuálního počítače na portálu ho odebrat ze skupiny a přepočítání posouzení.
 
 ## <a name="collector-errors"></a>Chyby kolektoru
 
@@ -100,7 +108,7 @@ Tomuto problému může dojít kvůli problému s instalací VMware PowerCLI. Po
 
 ### <a name="error-unabletoconnecttoserver"></a>Chyba UnableToConnectToServer
 
-Nelze se připojit k vCenter serveru "Servername.com:9443" kvůli chybě: existuje neposlouchal žádný koncový bod v https://Servername.com:9443/sdk , který by mohl přijmout zprávu.
+Nejde se připojit k vCenter Serveru Servername.com:9443, protože došlo k chybě: Na https://Servername.com:9443/sdk neposlouchal žádný koncový bod, který by mohl tuto zprávu přijmout.
 
 Zaškrtněte, pokud budete používat nejnovější verzi zařízení kolektoru a pokud ne, upgradovat zařízení, abyste [nejnovější verzi](https://docs.microsoft.com/azure/migrate/concepts-collector#how-to-upgrade-collector).
 
@@ -214,8 +222,8 @@ Shromažďovat události trasování pro Windows, postupujte takto:
 | 754       | NoPerfDataAvaialable           | Nejsou k dispozici žádné údaje o výkonu.                                               | Zkontrolujte úroveň statistiky na vCenter serveru. By měla být nastavená na 3 údaje o výkonu k dispozici. | Změňte úroveň statistiky na 3 (pro intervaly o délkách 5 minut, 30 minut a 2 hodiny), počkejte aspoň jeden den a zkuste to znovu.                   |
 | 756       | NullInstanceUUID               | Vyskytl se počítač s InstanceUUID o hodnotě null.                                  | Na vCenter Serveru je asi nesprávný objekt.                                                      | Vyřešte potíže a zkuste to znovu.                                                                                                           |
 | 757       | VMNotFound                     | Virtuální počítač se nenašel.                                                  | Virtuální počítač je možná odstraněný: %VMID;                                                                | Zajistěte, aby virtuální počítače vybrané při určování oboru inventáře vCenter existovaly během zjišťování.                                      |
-| 758       | GetPerfDataTimeout             | Vypršel časový limit požadavku VCenter. Zpráva % Message;                                  | Přihlašovací údaje k vCenter Serveru nejsou správné.                                                              | Zkontrolujte přihlašovací údaje k vCenter serveru a ujistěte se, že jestli je vCenter Server je dostupný. Zkuste operaci zopakovat. Pokud se problém nevyřeší, obraťte se na podporu. |
-| 759       | VmwareDllNotFound              | Nenašla se knihovna DLL VMWare.Vim.                                                     | PowerCLI není správně nainstalovaný.                                                                   | Zkontrolujte prosím, jestli je správně nainstalovaný PowerCLI. Zkuste operaci zopakovat. Pokud se problém nevyřeší, obraťte se na podporu.                               |
+| 758       | GetPerfDataTimeout             | Vypršel časový limit požadavku VCenter. Zpráva % Message;                                  | Přihlašovací údaje k vCenter Serveru nejsou správné.                                                              | Zkontrolujte přihlašovací údaje k vCenter serveru a ujistěte se, že jestli je vCenter Server je dostupný. Zkuste operaci zopakovat. Pokud problém přetrvává, obraťte se na podporu. |
+| 759       | VmwareDllNotFound              | Nenašla se knihovna DLL VMWare.Vim.                                                     | PowerCLI není správně nainstalovaný.                                                                   | Zkontrolujte prosím, jestli je správně nainstalovaný PowerCLI. Zkuste operaci zopakovat. Pokud problém přetrvává, obraťte se na podporu.                               |
 | 800       | ServiceError                   | Služba Azure Migrate Collector není spuštěná.                               | Služba Azure Migrate Collector není spuštěná.                                                       | Spusťte službu pomocí modulu services.msc a zkuste operaci zopakovat.                                                                             |
 | 801       | PowerCLIError                  | Nepovedlo se nainstalovat VMware PowerCLI.                                          | Nepovedlo se nainstalovat VMware PowerCLI.                                                                  | Zkuste operaci zopakovat. Pokud se problém nevyřeší, nainstalujte ho ručně a zkuste operaci zopakovat.                                                   |
 | 802       | TimeSyncError                  | Čas není synchronizovaný s internetovým časovým serverem.                            | Čas není synchronizovaný s internetovým časovým serverem.                                                    | Ujistěte se, jestli je čas tohoto počítače přesně nastavený pro časové pásmo počítače, a zkuste operaci zopakovat.                                 |

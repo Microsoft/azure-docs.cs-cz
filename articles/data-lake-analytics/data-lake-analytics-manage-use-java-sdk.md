@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: 07830b36-2fe3-4809-a846-129cf67b6a9e
 ms.topic: conceptual
 ms.date: 06/18/2017
-ms.openlocfilehash: 938b3776f320b7556394fff9aa070eee0c44ee88
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 6a5d01ed1b3d60ce138fe5c4c5a60812961d9dfd
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43047082"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49953725"
 ---
 # <a name="manage-azure-data-lake-analytics-using-a-java-app"></a>Správa Azure Data Lake Analytics pomocí aplikace v Javě
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -24,7 +24,7 @@ Tento článek popisuje, jak spravovat účty Azure Data Lake Analytics, zdroje 
 ## <a name="prerequisites"></a>Požadavky
 * **Java Development Kit (JDK) 8** (využívající jazyk Java verze 1.8).
 * **IntelliJ** nebo jiné vhodné vývojové prostředí Java. Pokyny v tomto dokumentu používají IntelliJ.
-* Vytvoření aplikace Azure Active Directory (AAD) a načtení **ID klienta**, **ID tenanta**, a **Klíče**. Další informace o aplikacích AAD a pokyny k získání ID klienta naleznete v tématu [Vytvoření aplikace Active Directory a objektu služby pomocí portálu](../azure-resource-manager/resource-group-create-service-principal-portal.md). Identifikátor URI odpovědi a klíč je k dispozici z portálu, jakmile budete mít aplikaci vytvořili a generování klíče.
+* Vytvoření aplikace Azure Active Directory (AAD) a načtení **ID klienta**, **ID tenanta**, a **Klíče**. Další informace o aplikacích AAD a pokyny k získání ID klienta naleznete v tématu [Vytvoření aplikace Active Directory a objektu služby pomocí portálu](../active-directory/develop/howto-create-service-principal-portal.md). Identifikátor URI odpovědi a klíč je k dispozici z portálu, jakmile budete mít aplikaci vytvořili a generování klíče.
 
 ## <a name="authenticating-using-azure-active-directory"></a>Ověřování pomocí Azure Active Directory
 

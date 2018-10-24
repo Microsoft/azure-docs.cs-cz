@@ -11,12 +11,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 04/15/2018
 ms.author: ghogen
-ms.openlocfilehash: 9cf49ae97da3bf67300bdc222c86bb712aeaed37
-ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
+ms.openlocfilehash: c90ef26c0170db67b1d422701b6969ca3f9c9e38
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46465788"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49958508"
 ---
 # <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>Přidání služby Key Vault do vaší webové aplikace pomocí připojených služeb sady Visual Studio
 
@@ -27,19 +27,19 @@ Podrobnosti o změnách, připojené služby umožňuje ve vašem projektu povol
 ## <a name="prerequisites"></a>Požadavky
 
 - **Předplatné Azure**. Pokud žádné nemáte, můžete si zaregistrovat [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/)
-- **Visual Studio 2017 verze 15.7** s **vývoj pro Web** nainstalovaná úloha. [Stáhnout nyní](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
+- **Visual Studio 2017 verze 15.7** s nainstalovanou sadou funkcí **Vývoj pro web**. [Stáhnout](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs)
 - Pro technologii ASP.NET (ne jádro) potřebujete vývojářské nástroje .NET Framework 4.7.1, která ve výchozím nastavení nenainstalují. K instalaci, spusťte instalační program sady Visual Studio, zvolte **změnit**a klikněte na tlačítko **jednotlivé komponenty**, potom na pravé straně, rozbalte **vývoj pro ASP.NET a web**a zvolte **vývojové nástroje .NET Framework 4.7.1**.
 - 4.7.1 technologie ASP.NET nebo ASP.NET Core 2.0 webový projekt otevřít.
 
 ## <a name="add-key-vault-support-to-your-project"></a>Přidání podpory služby Key Vault do projektu
 
-1. V **Průzkumníka řešení**, zvolte **přidat** > **připojenou službu**.
-   Se službami, které můžete přidat do projektu se zobrazí na stránce připojené služby.
+1. V **Průzkumníku řešení** zvolte **Přidat**  > **Připojená služba**.
+   Zobrazí se stránka Připojená služba se službami, které můžete přidat do projektu.
 1. V nabídce dostupné služby, zvolte **zabezpečit tajné kódy s Azure Key Vault**.
 
    ![Zvolte možnost "Zabezpečené tajné klíče pomocí služby Azure Key Vault"](media/vs-key-vault-add-connected-service/KeyVaultConnectedService1.PNG)
 
-   Pokud jste se přihlašovali do sady Visual Studio a mít předplatné Azure spojené s vaším účtem, se zobrazí stránka s rozevíracím seznamu k vašemu předplatnému. Ujistěte se, že jste přihlášení do sady Visual Studio a že účet, jste zaregistrovaní v s se o stejný účet, který používáte pro vaše předplatné Azure.
+   Pokud jste přihlášení k sadě Visual Studio a máte ke svému účtu přidružené předplatné Azure, zobrazí se stránka s rozevíracím seznamem vašich předplatných. Ujistěte se, že jste přihlášení do sady Visual Studio a že účet, jste zaregistrovaní v s se o stejný účet, který používáte pro vaše předplatné Azure.
 
 1. Vyberte předplatné, které chcete použít a pak zvolte nový nebo existující Key Vault, nebo zvolte odkaz pro úpravy k úpravě automaticky vygenerovaným názvem.
 
@@ -138,11 +138,33 @@ Pro přístup k vaší tajných kódů:
       <h3>@ViewBag.Secret2</h3>
    ```
 
-Blahopřejeme, nyní se ujistíte, že webové aplikace můžete použít služby Key Vault pro přístup k tajným klíčům bezpečně uložené.
+1. Spusťte aplikaci místně tak, aby ověřte, že si můžete přečíst tajná hodnota, kterou jste zadali v portálu Azure, ne fiktivní hodnoty z konfiguračního souboru.
+
+V dalším kroku publikujte aplikaci do Azure.
+
+## <a name="publish-to-azure-app-service"></a>Publikování do služby Azure App Service
+
+1. Klikněte pravým tlačítkem na uzel projektu a zvolte **publikovat**. Na obrazovce se zobrazí s textem **vyberte cíl publikování**. Na levé straně, zvolte **služby App Service**a potom **vytvořit nový**.
+
+   ![Publikování do App Service](media/vs-key-vault-add-connected-service/AppServicePublish1.PNG)
+
+1. Na **vytvořit službu App Service** obrazovky, ujistěte se, že jsou stejné jako ty, které jste vytvořili trezor klíčů v předplatném a skupině prostředků a zvolte **vytvořit**.
+
+   ![Vytvoření služby App Service](media/vs-key-vault-add-connected-service/AppServicePublish2.PNG)
+
+1. Po vytvoření webové aplikace **publikovat** obrazovky. Poznačte si adresu URL publikované webové aplikace hostované v Azure. Pokud se zobrazí **žádný** vedle **služby Key Vault**, budete nejdřív muset zjistit, jaké služby Key Vault pro připojení k služby App Service. Zvolte **přidat služby Key Vault** propojit a vyberte trezor klíčů, který jste vytvořili.
+
+   ![Přidat službu Key Vault](media/vs-key-vault-add-connected-service/AppServicePublish3.PNG)
+
+   Pokud se zobrazí **Správa služby Key Vault**, můžete kliknout, chcete-li zobrazit aktuální nastavení oprávnění upravovat nebo změny svých tajných kódů na webu Azure Portal.
+
+1. Nyní klikněte na odkaz Adresa URL webu na web webové aplikace v prohlížeči. Ověřte, jestli správnou hodnotu ze služby Key Vault.
+
+Blahopřejeme, jste potvrdili, že vaše webová aplikace můžete použít služby Key Vault pro přístup k tajným klíčům bezpečně uloženým při spuštění v Azure.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už je nepotřebujete, odstraňte skupinu prostředků. Tím se odstraní služby Key Vault a související prostředky. Odstranění skupiny prostředků přes portál:
+Pokud už ji nepotřebujete, odstraňte skupinu prostředků. Tím se odstraní služby Key Vault a související prostředky. Odstranění skupiny prostředků přes portál:
 
 1. Do pole Hledat v horní části portálu zadejte název vaší skupiny prostředků. Až se ve výsledcích hledání zobrazí skupina prostředků použitá v tomto rychlém startu, vyberte ji.
 2. Vyberte **Odstranit skupinu prostředků**.

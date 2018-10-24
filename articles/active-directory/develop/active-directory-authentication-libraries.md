@@ -17,12 +17,12 @@ ms.date: 10/04/2018
 ms.author: celested
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 8c25e07d9844b077de80ae39b81a4e5823b0d344
-ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
+ms.openlocfilehash: 8c1edd33432480932573bce43ae6335bc334194c
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48785052"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49958920"
 ---
 # <a name="azure-active-directory-authentication-libraries"></a>Knihovny ověřování služby Azure Active Directory
 
@@ -83,6 +83,6 @@ V tomto scénáři má vývojář webové aplikaci spuštěné na serveru, kter�
 
 ## <a name="see-also"></a>Viz také
 
-- [Příručka pro vývojáře Azure Active Directory](azure-ad-developers-guide.md)
+- [Příručka pro vývojáře Azure Active Directory](v1-overview.md)
 - [Scénáře ověřování pro Azure Active directory](authentication-scenarios.md)
 - [Ukázky kódu pro Azure Active Directory](sample-v1-code.md)

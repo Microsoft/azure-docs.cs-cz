@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 2f0638b2449bfd582cb68e26d2043b7bc85342b6
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 6f7b812f32eda0c671b1ad1101b13a1290df0482
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46125948"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49954768"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>Ověřování koncového uživatele pomocí Azure Data Lake Storage Gen1 pomocí Azure Active Directory
 > [!div class="op_single_selector"]
@@ -45,7 +45,7 @@ Tento článek pojednává o tom, jak vytvořit **nativní aplikaci Azure AD pro
   
     ![Získejte doménu AAD](./media/data-lake-store-end-user-authenticate-using-active-directory/get-aad-domain.png)
 
-* ID vašeho tenanta Azure. Pokyny o tom, jak získat ID tenanta najdete v tématu [získání ID tenanta](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-tenant-id).
+* ID vašeho tenanta Azure. Pokyny o tom, jak získat ID tenanta najdete v tématu [získání ID tenanta](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-id).
 
 ## <a name="end-user-authentication"></a>Ověřování koncových uživatelů
 Tento mechanismus ověřování je doporučený postup, pokud chcete, aby koncový uživatel pro přihlášení do aplikace přes Azure AD. Vaše aplikace bude mít přístup k prostředkům Azure se stejnou úrovní přístupu jako koncový uživatel, který přihlášení. Koncový uživatel musí zadat přihlašovací údaje pravidelně v pořadí pro vaši aplikaci k Udržovat přístup.
@@ -74,7 +74,7 @@ Vaše aplikace může zadat přihlašovací údaje uživatele přímo do služby
 
 ## <a name="step-1-create-an-active-directory-native-application"></a>Krok 1: Vytvořte nativní aplikaci služby Active Directory
 
-Vytvoření a konfigurace nativní aplikaci Azure AD pro ověřování koncového uživatele s Data Lake Storage Gen1 pomocí Azure Active Directory. Pokyny najdete v tématu [vytvořit aplikaci Azure AD](../azure-resource-manager/resource-group-create-service-principal-portal.md).
+Vytvoření a konfigurace nativní aplikaci Azure AD pro ověřování koncového uživatele s Data Lake Storage Gen1 pomocí Azure Active Directory. Pokyny najdete v tématu [vytvořit aplikaci Azure AD](../active-directory/develop/howto-create-service-principal-portal.md).
 
 Při postupujte podle pokynů v odkazu, ujistěte se, že vyberete **nativní** pro typ aplikace, jak je znázorněno na následujícím snímku obrazovky:
 
@@ -82,7 +82,7 @@ Při postupujte podle pokynů v odkazu, ujistěte se, že vyberete **nativní** 
 
 ## <a name="step-2-get-application-id-and-redirect-uri"></a>Krok 2: Získání ID aplikace a identifikátor URI pro přesměrování
 
-Zobrazit [získání ID aplikace](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-application-id-and-authentication-key) načíst ID aplikace.
+Zobrazit [získání ID aplikace](../active-directory/develop/howto-create-service-principal-portal.md#get-application-id-and-authentication-key) načíst ID aplikace.
 
 Pokud chcete načíst identifikátor URI pro přesměrování, proveďte následující kroky.
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/15/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 88a9348ea7d6282b7410d5a323fd482dc82416c6
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 06e6e491fa1e9a047527efb78149855b125771ef
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45979663"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49960302"
 ---
 # <a name="back-up-azure-unmanaged-vm-disks-with-incremental-snapshots"></a>Zálohování Azure nespravovaných disků virtuálních počítačů s přírůstkovými snímky
 ## <a name="overview"></a>Přehled
@@ -66,7 +66,7 @@ Až budete mít vlastní strategii zálohování pomocí snímků, kopírování
 Přírůstkový snímek kopírování můžete implementovat pomocí tohoto postupu,
 
 * Pořízení snímku základní objekt blob pomocí [pořízení snímku objektu Blob](https://docs.microsoft.com/rest/api/storageservices/Snapshot-Blob).
-* Zkopírování snímku do účtu úložiště pro zálohování cílové pomocí [objekt Blob kopírování](https://docs.microsoft.com/rest/api/storageservices/Copy-Blob). Toto je objekty blob stránky zálohování. Pořízení snímku objektu blob záložní stránky a uložte ho do účtu zálohování.
+* Zkopírování snímku do cílového účtu úložiště záloh ve stejné nebo jakékoli jiné oblasti Azure pomocí [objekt Blob kopírování](https://docs.microsoft.com/rest/api/storageservices/Copy-Blob). Toto je objekty blob stránky zálohování. Pořízení snímku objektu blob záložní stránky a uložte ho do účtu zálohování.
 * Vytvořte nový snímek objektu blob základní pomocí vytvoření snímku objektu Blob.
 * Získat rozdíl mezi první a druhý snímek základní objekt blob pomocí [GetPageRanges](https://docs.microsoft.com/rest/api/storageservices/Get-Page-Ranges). Nový parametr **prevsnapshot**, určete hodnotu Datum a čas snímku chcete zobrazit rozdíl oproti. Pokud tento parametr je k dispozici, odpověď REST obsahuje pouze stránky, které byly změněny mezi cílové snímek a předchozí snímek včetně vymazat stránek.
 * Použití [PutPage](https://docs.microsoft.com/rest/api/storageservices/Put-Page) tyto změny projeví na objekty blob stránky zálohování.

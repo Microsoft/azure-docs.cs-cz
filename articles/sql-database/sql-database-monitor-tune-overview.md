@@ -11,15 +11,15 @@ author: danimir
 ms.author: v-daljep
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/22/2018
-ms.openlocfilehash: 60f60b9ef055ea38a2036c4f9c5b6aa2c1f6526d
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.date: 10/23/2018
+ms.openlocfilehash: 0d728d81a29c5520938c8553c026727c0f94cc43
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49648050"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49956999"
 ---
-# <a name="monitoring-and-performance-tuning"></a>Monitorování a optimalizace výkonu
+# <a name="monitoring-and-performance-tuning"></a>Sledování a ladění výkonu
 
 Azure SQL Database automaticky spravuje, a flexibilní datová služba, kde můžete snadno monitorovat využití, přidání nebo odebrání prostředků (procesoru, paměti, vstupně-výstupní operace), najít doporučení, která může zlepšit výkon vaší databáze, nebo nechat databáze přizpůsobit vaší úloze a automaticky optimalizace výkonu.
 
@@ -34,7 +34,7 @@ Máte následující možnosti pro monitorování a řešení potíží s výkon
 - Použití [služby SQL Database Advisor](sql-database-advisor-portal.md) Chcete-li zobrazit doporučení pro vytváření a vyřazení indexů, parametrické dotazy a řešení problémů schématu.
 - Použití [Azure SQL Intelligent Insights](sql-database-intelligent-insights.md) pro automatické monitorování výkonu vaší databáze. Po zjištění problému s výkonem se vygeneruje protokol diagnostiky s podrobnostmi a kořenové příčiny analýzy RCA () problému. Pokud je to možné, poskytuje doporučení pro zlepšení výkonu.
 - [Povolení automatického ladění](sql-database-automatic-tuning-enable.md) a nechat Azure SQL database automaticky opravě zjištěných problémů s výkonem.
-- Použití [zobrazení dynamické správy (DMV)](sql-database-monitoring-with-dmvs.md), [rozšířených událostí](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-xevent-db-diff-from-svr)a [Query Store](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store) podrobný Poradce při potížích s problémy s výkonem.
+- Použití [zobrazení dynamické správy (DMV)](sql-database-monitoring-with-dmvs.md), [rozšířených událostí](https://docs.microsoft.com/azure/sql-database/sql-database-xevent-db-diff-from-svr)a [Query Store](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store) podrobný Poradce při potížích s problémy s výkonem.
 
 > [!TIP]
 > Zobrazit [Průvodce výkonem](sql-database-performance-guidance.md) najít techniky, které můžete použít ke zlepšení výkonu služby Azure SQL Database po identifikaci problému výkonu pomocí jednoho nebo více z výše uvedených metod.

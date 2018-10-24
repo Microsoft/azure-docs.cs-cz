@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/04/2017
+ms.date: 10/23/2018
 ms.author: dstefan
-ms.openlocfilehash: c8517114f51b5aed8f8e31a19b672721b109775e
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: db6778bdea2e3e133535bf28b3c2297cdb65599d
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46298298"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49958903"
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Azure Active Directory doklad o playbook koncept: stavební bloky
 
@@ -150,7 +150,7 @@ Přibližný čas dokončení: 60 minut
 | Sdílet kurzu pro všechny objekty actor z Documentation Microsoftu  | [Kurz: Integrace Azure Active Directory s použitím ServiceNow](saas-apps/servicenow-tutorial.md) |
 | Nastavit pracovní schůzku a postupujte podle kroků kurzu se každý objekt actor. | [Kurz: Integrace Azure Active Directory s použitím ServiceNow](saas-apps/servicenow-tutorial.md) |
 | Aplikaci můžete přiřadíte ke skupině identifikované v rámci požadavků. Pokud testování Konceptu podmíněného přístupu v oboru, můžete opakování, který později a přidat vícefaktorové ověřování a podobně. <br/>Všimněte si, že to bude spouštět v procesu zřízení (je-li konfigurováno) |  [Přiřadit uživatele nebo skupiny k podnikové aplikace v Azure Active Directory](manage-apps/assign-user-or-group-access-portal.md) <br/>[Vytvoření skupiny a přidání členů v Azure Active Directory](fundamentals/active-directory-groups-create-azure-portal.md) |
-| Správa služby Azure AD Portal slouží k přidání ServiceNow aplikaci z Galerie| [Správa služby Azure AD Portal: podnikových aplikací](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/Overview) <br/>[Co je nového ve správě podnikových aplikací v Azure Active Directory](active-directory-enterprise-apps-whats-new-azure-portal.md) |
+| Správa služby Azure AD Portal slouží k přidání ServiceNow aplikaci z Galerie| [Správa služby Azure AD Portal: podnikových aplikací](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/Overview) <br/>[Kurz: Integrace Azure Active Directory s použitím ServiceNow](saas-apps/servicenow-tutorial.md) |
 | V okně aplikace ServiceNow "Jednotné přihlašování" zapnout "založené na SAML Sign-on" |  |
 | Vyplňte pole "Přihlášení na URL" a "Identifikátor" s adresou URL vašeho ServiceNow<br/>Zaškrtnutím políčka "Nastavit nový certifikát jako aktivní"<br/>a uložte nastavení |  |
 | Otevře se okno "Konfigurovat ServiceNow" v dolní části panelu zobrazíte přizpůsobené pokyny, jak je možné nakonfigurovat ServiceNow |  |
@@ -163,8 +163,7 @@ Přibližný čas dokončení: 60 minut
 
 ### <a name="considerations"></a>Požadavky
 
-1. Nad [kurzu](saas-apps/servicenow-tutorial.md) odkazuje na starý Azure prostředí pro správu AD. Ale PoC je založen na [rychlý Start](active-directory-enterprise-apps-whats-new-azure-portal.md#quickstart-get-going-with-your-new-application-right-away) prostředí.
-2. Pokud je cílová aplikace není k dispozici v galerii, můžete použít, "Přineste si vlastní aplikaci". Další informace: [co je nového ve správě podnikových aplikací v Azure Active Directory: Přidání vlastních aplikacích na jednom místě](active-directory-enterprise-apps-whats-new-azure-portal.md#add-custom-applications-from-one-place)
+1. Pokud je cílová aplikace není k dispozici v galerii, můžete použít, "Přineste si vlastní aplikaci". Další informace: [konfiguraci aplikací, které nejsou v galerii aplikací Azure AD](manage-apps/configure-single-sign-on-non-gallery-applications.md).
 
 ## <a name="saas-password-sso-configuration"></a>Konfigurace jednotného přihlašování hesla SaaS
 
@@ -184,7 +183,7 @@ Přibližný čas dokončení: 15 minut
 | Krok | Zdroje a prostředky |
 | --- | --- |
 | Instalace rozšíření prohlížeče | [Rozšíření přístupového panelu pro aplikaci Internet Explorer](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)<br/>[Rozšíření přístupového panelu pro Chrome](https://go.microsoft.com/fwLink/?LinkID=311859&clcid=0x409)<br/>[Rozšíření přístupového panelu pro Firefox](https://go.microsoft.com/fwLink/?LinkID=626998&clcid=0x409) |
-| Nakonfigurovat aplikaci z Galerie | [Co je nového ve správě podnikových aplikací v Azure Active Directory: nové a vylepšené aplikace Galerie](active-directory-enterprise-apps-whats-new-azure-portal.md#improvements-to-the-azure-active-directory-application-gallery) |
+| Nakonfigurovat aplikaci z Galerie | [Kurz: Konfigurace založené na SAML jednotného přihlašování](manage-apps/configure-single-sign-on-portal.md) |
 | Konfigurace heslem jednotného přihlašování | [Správa jednotného přihlašování pro podnikové aplikace na novém portálu Azure Portal: přihlašování založené na heslech](manage-apps/what-is-single-sign-on.md#how-does-single-sign-on-with-azure-active-directory-work).|
 | Přiřadit skupinu určené v požadavcích aplikace | [Přiřadit uživatele nebo skupiny k podnikové aplikace v Azure Active Directory](manage-apps/assign-user-or-group-access-portal.md) |
 | Přihlaste se k https://myapps.microsoft.com/ jako testovací uživatel, který má přístup |  |
@@ -195,10 +194,10 @@ Přibližný čas dokončení: 15 minut
 
 ### <a name="considerations"></a>Požadavky
 
-Pokud je cílová aplikace není k dispozici v galerii, můžete použít, "Přineste si vlastní aplikaci". Další informace: [co je nového ve správě podnikových aplikací v Azure Active Directory: Přidání vlastních aplikacích na jednom místě](active-directory-enterprise-apps-whats-new-azure-portal.md#add-custom-applications-from-one-place)
+Pokud je cílová aplikace není k dispozici v galerii, můžete použít, "Přineste si vlastní aplikaci". Další informace: [konfiguraci aplikací, které nejsou v galerii aplikací Azure AD](manage-apps/configure-single-sign-on-non-gallery-applications.md)
 
  Mějte na paměti následující požadavky:
-   * Aplikace by měla mít známé přihlašovací adresa URL
+   * Aplikace by měla mít známé přihlašovací adresa URL.
    * Přihlašovací stránka by měla obsahovat s jeden další textová pole, které rozšíření prohlížeče mohou automaticky vyplnit pole formuláře HTML. Minimálně musí obsahovat uživatelské jméno a heslo.
 
 ## <a name="saas-shared-accounts-configuration"></a>Konfigurace sdílené účty SaaS
@@ -219,7 +218,7 @@ Přibližný čas dokončení: 30 minut
 | Krok | Zdroje a prostředky |
 | --- | --- |
 | Instalace rozšíření prohlížeče | [Rozšíření přístupového panelu pro aplikaci Internet Explorer](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)<br/>[Rozšíření přístupového panelu pro Chrome](https://go.microsoft.com/fwLink/?LinkID=311859&clcid=0x409)<br/>[Rozšíření přístupového panelu pro Firefox](https://go.microsoft.com/fwLink/?LinkID=626998&clcid=0x409) |
-| Nakonfigurovat aplikaci z Galerie | [Co je nového ve správě podnikových aplikací v Azure Active Directory: nové a vylepšené aplikace Galerie](active-directory-enterprise-apps-whats-new-azure-portal.md#improvements-to-the-azure-active-directory-application-gallery) |
+| Nakonfigurovat aplikaci z Galerie | [Kurz: Konfigurace založené na SAML jednotného přihlašování pro aplikaci](manage-apps/configure-single-sign-on-portal.md) |
 | Konfigurace heslem jednotného přihlašování | [Správa jednotného přihlašování pro podnikové aplikace na novém portálu Azure Portal: přihlašování založené na heslech](manage-apps/what-is-single-sign-on.md#how-does-single-sign-on-with-azure-active-directory-work).|
 | Přiřadit aplikace do skupiny podle požadavků při přiřazování jejich přihlašovacích údajů | [Přiřadit uživatele nebo skupiny k podnikové aplikace v Azure Active Directory](manage-apps/assign-user-or-group-access-portal.md) |
 | Přihlaste se jako různí uživatelé tuto aplikaci přístup, jako **sdílí stejný účet.**  |  |
@@ -228,7 +227,7 @@ Přibližný čas dokončení: 30 minut
 
 ### <a name="considerations"></a>Požadavky
 
-Pokud je cílová aplikace není k dispozici v galerii, můžete použít, "Přineste si vlastní aplikaci". Další informace: [co je nového ve správě podnikových aplikací v Azure Active Directory: Přidání vlastních aplikacích na jednom místě](active-directory-enterprise-apps-whats-new-azure-portal.md#add-custom-applications-from-one-place)
+Pokud je cílová aplikace není k dispozici v galerii, můžete použít, "Přineste si vlastní aplikaci". Další informace: [nakonfigurovat jednotné přihlašování k aplikacím, které nejsou v galerii aplikací Azure AD](manage-apps/configure-single-sign-on-non-gallery-applications.md)
 
  Mějte na paměti následující požadavky:
    * Aplikace by měla mít známé přihlašovací adresa URL
@@ -364,7 +363,7 @@ Přibližný čas dokončení: 10 minut
 | Krok | Zdroje a prostředky |
 | --- | --- |
 | Přejděte do okna podnikové aplikace v portálu pro správu Azure AD | [Portálu pro správu Azure AD: Podnikové aplikace](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) |
-| Nakonfigurovat samoobslužné aplikace v požadavcích | [Co je nového ve správě podnikových aplikací v Azure Active Directory: Konfigurace samoobslužného přístupu k aplikacím](active-directory-enterprise-apps-whats-new-azure-portal.md#configure-self-service-application-access) |
+| Nakonfigurovat samoobslužné aplikace v požadavcích | [Konfigurace samoobslužného přístupu k aplikacím](manage-apps/manage-self-service-access.md) |
 | Přihlaste se jako informační pracovník na portálu Moje aplikace | http://myapps.microsoft.com |
 | Všimněte si, že "+ Přidat aplikaci" tlačítko na op stránky. Použijte ho k získání přístupu k aplikaci |  |
 
@@ -480,7 +479,7 @@ Přibližný čas dokončení: 15 minut
 | Přihlaste se k https://portal.azure.com jako globální správce (GA) a bootstrap okno PIM. Globální správce, který provádí tento krok je nasazený jako správce zabezpečení.  Pojmenujme tuto GA1 objektu actor | [Pomocí Průvodce zabezpečení v Azure AD Privileged Identity Management](privileged-identity-management/pim-security-wizard.md) |
 | Identifikujte globální správce a přesunout z trvalé na oprávněné. To by měl být samostatný správce, než jaký se používá v kroku 1 pro přehlednost. Pojmenujme tuto GA2 objektu actor | [Azure AD Privileged Identity Management: Jak přidat nebo odebrat roli uživatele](privileged-identity-management/pim-how-to-add-role-to-user.md)<br/>[Co je Azure AD Privileged Identity Management?: Konfigurace nastavení aktivace rolí](privileged-identity-management/pim-configure.md#configure-the-role-activation-settings)  |
 | Nyní, přihlaste se jako GA2 k https://portal.azure.com a zkuste změnit "Nastavení". Všimněte si, některé možnosti jsou zobrazena šedě. | |
-| Na nové kartě a ve stejné relaci v kroku 3 vyhledejte nyní https://portal.azure.com a přidání PIM okno na řídicí panel. | [Začněte používat PIM](privileged-identity-management/pim-getting-started.md) |
+| Na nové kartě a ve stejné relaci v kroku 3 vyhledejte nyní https://portal.azure.com a přidání PIM okno na řídicí panel. | [Zahájení práce s PIM](privileged-identity-management/pim-getting-started.md) |
 | Žádost o aktivaci role Globální správce | [Postup aktivace nebo deaktivace role v Azure AD Privileged Identity Management: aktivaci role](privileged-identity-management/pim-how-to-activate-role.md#activate-a-role) |
 | Všimněte si, že pokud GA2 se nikdy zaregistrovali pro vícefaktorové ověřování, registrace pro vícefaktorové ověřování Azure bude nutné |  |
 | Přejděte zpět na původní kartu v kroku 3 a klikněte na tlačítko Aktualizovat v prohlížeči. Všimněte si, že máte teď přístup k nastavení "uživatel" | |

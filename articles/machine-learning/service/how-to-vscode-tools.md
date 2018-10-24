@@ -9,12 +9,12 @@ ms.author: jmartens
 author: j-martens
 ms.reviewer: jmartens
 ms.date: 10/1/2018
-ms.openlocfilehash: f573dba2e7580d58c295d204fc75e2403c0d033c
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: a2f37cffb37ce7008c3e372763784240e0d4250b
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48242356"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945548"
 ---
 # <a name="vs-code-tools-for-ai-get-started-with-azure-machine-learning-from-visual-studio-code"></a>Nástroje VS Code pro AI: Začínáme s Azure Machine Learning z Visual Studio Code
 
@@ -34,7 +34,7 @@ Tools for AI rozšíření Visual Studio Code pomocí služby Azure Machine Lear
 
 Při instalaci **Tools pro AI** rozšíření, dvě další rozšíření jsou automaticky nainstalovány (Pokud máte přístup k Internetu). Jsou [účet Azure](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account) rozšíření a [Python pro Microsoft](https://marketplace.visualstudio.com/items?itemName=ms-python.python) rozšíření
 
-Pro práci s Azure Machine Learning, musíme proměnit Python IDE VS Code. Práce s [Pythonu ve Visual Studio Code](https://code.visualstudio.com/docs/languages/python), vyžaduje rozšíření Python pro Microsoft, který získá instaluje s nástroji Tools pro AI automaticky. Rozšíření je vynikající integrované vývojové prostředí VS Code a funguje pro všechny operační systémy s širokou škálu interpretů Pythonu. Využívá všechny VS Code výkon k poskytování automatické dokončování a technologie IntelliSense, linting, ladění a testování, spolu se schopností snadno přepínat mezi prostředími Pythonu, včetně virtuální a prostředí conda. Přečtěte si tento návod, jak úpravy, spuštění a ladění kódu v Pythonu, najdete v článku [kurz Pythonu Hello World](https://code.visualstudio.com/docs/languages/python/docs/python/python-tutorial)
+Pro práci s Azure Machine Learning, musíme proměnit Python IDE VS Code. Práce s [Pythonu ve Visual Studio Code](https://code.visualstudio.com/docs/languages/python), vyžaduje rozšíření Python pro Microsoft, který získá instaluje s nástroji Tools pro AI automaticky. Rozšíření je vynikající integrované vývojové prostředí VS Code a funguje pro všechny operační systémy s širokou škálu interpretů Pythonu. Využívá všechny VS Code výkon k poskytování automatické dokončování a technologie IntelliSense, linting, ladění a testování, spolu se schopností snadno přepínat mezi prostředími Pythonu, včetně virtuální a prostředí conda. Přečtěte si tento návod, jak úpravy, spuštění a ladění kódu v Pythonu, najdete v článku [kurz Pythonu Hello World](https://code.visualstudio.com/docs/python/python-tutorial)
 
 **Instalace nástrojů pro rozšíření AI:**
 

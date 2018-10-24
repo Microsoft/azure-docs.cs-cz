@@ -9,21 +9,21 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: jasonh
-ms.openlocfilehash: 4537c0308ee587d921dc795054966f6a3dbb69c4
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 01ff5faa130bf1d6d5b89ac42d5664b13306c203
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43093216"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49956149"
 ---
 # <a name="create-a-non-interactive-authentication-net-hdinsight-application"></a>Vytvoření aplikace .NET HDInsight pro neinteraktivní ověřování
 Můžete spustit aplikaci Microsoft .NET Azure HDInsight s identitou aplikace vlastní (neinteraktivní) nebo v části identita přihlášeného uživatele (interaktivní) aplikace. V tomto článku se dozvíte, jak vytvořit aplikaci .NET pro připojení k Azure a spravovat HDInsight pro neinteraktivní ověřování. Ukázku interaktivní aplikace najdete v tématu [připojení k Azure HDInsight](hdinsight-administer-use-dotnet-sdk.md#connect-to-azure-hdinsight). 
 
 Jako neinteraktivní aplikace .NET budete potřebovat:
 
-* Vaše ID tenanta předplatného Azure (tzv. *ID adresáře*). Zobrazit [získání ID tenanta](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-tenant-id).
-* ID klienta aplikace Azure Active Directory (Azure AD). Zobrazit [vytvoření aplikace Azure Active Directory](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-azure-active-directory-application) a [získání ID aplikace](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-application-id-and-authentication-key).
-* Azure AD tajný klíč aplikace. Zobrazit [Get aplikace ověřovací klíč](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-application-id-and-authentication-key).
+* Vaše ID tenanta předplatného Azure (tzv. *ID adresáře*). Zobrazit [získání ID tenanta](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-id).
+* ID klienta aplikace Azure Active Directory (Azure AD). Zobrazit [vytvoření aplikace Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application) a [získání ID aplikace](../active-directory/develop/howto-create-service-principal-portal.md#get-application-id-and-authentication-key).
+* Azure AD tajný klíč aplikace. Zobrazit [Get aplikace ověřovací klíč](../active-directory/develop/howto-create-service-principal-portal.md#get-application-id-and-authentication-key).
 
 ## <a name="prerequisites"></a>Požadavky
 * HDInsight cluster. Zobrazit [úvodní kurz](hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster).
@@ -119,6 +119,6 @@ Přiřaďte aplikaci Azure AD [role](../role-based-access-control/built-in-roles
 
 
 ## <a name="next-steps"></a>Další postup
-* [Vytvoření aplikace Azure Active Directory a instančního objektu na webu Azure Portal](../azure-resource-manager/resource-group-create-service-principal-portal.md).
-* Zjistěte, jak [ověřování instančního objektu pomocí Azure Resource Manageru](../azure-resource-manager/resource-group-authenticate-service-principal.md).
+* [Vytvoření aplikace Azure Active Directory a instančního objektu na webu Azure Portal](../active-directory/develop/howto-create-service-principal-portal.md).
+* Zjistěte, jak [ověřování instančního objektu pomocí Azure Resource Manageru](../active-directory/develop/howto-authenticate-service-principal-powershell.md).
 * Další informace o [řízení přístupu Azure na základě rolí (RBAC)](../role-based-access-control/role-assignments-portal.md).

@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/03/2018
 ms.author: sngun
-ms.openlocfilehash: dfd66c1ac2e627b72d24a520fc37c6ebfb361556
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 90f5caa13bf95fb5298a06bda5a03e9bc17bcb1a
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48869990"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945174"
 ---
 # <a name="visualize-azure-cosmos-db-data-by-using-the-power-bi-connector"></a>Vizualizace dat služby Azure Cosmos DB pomocí konektoru služby Power BI
 

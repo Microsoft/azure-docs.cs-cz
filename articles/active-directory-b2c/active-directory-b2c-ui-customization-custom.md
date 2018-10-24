@@ -1,23 +1,23 @@
 ---
-title: Přizpůsobení uživatelského rozhraní pomocí vlastních zásad v Azure Active Directory B2C | Dokumentace Microsoftu
-description: Další informace o přizpůsobení uživatelského rozhraní (UI), zatímco použití vlastních zásad v Azure AD B2C.
+title: Přizpůsobení uživatelského rozhraní aplikace pomocí vlastních zásad v Azure Active Directory B2C | Dokumentace Microsoftu
+description: Další informace o přizpůsobení uživatelského rozhraní pomocí vlastních zásad v Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/04/2017
+ms.date: 10/23/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 9908a7cf96c56e414e0a8d7faea0352b60214ea4
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: f36d08a397836f17ec25a61e77cb1db5ce10b9d4
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37446159"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945056"
 ---
-# <a name="azure-active-directory-b2c-configure-ui-customization-in-a-custom-policy"></a>Azure Active Directory B2C: Konfigurace ve vlastních zásadách pro přizpůsobení uživatelského rozhraní
+# <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Přizpůsobení uživatelského rozhraní aplikace pomocí vlastních zásad v Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
@@ -25,13 +25,13 @@ Po dokončení tohoto článku, budete mít vlastní zásady registrace a přihl
 
 ## <a name="prerequisites"></a>Požadavky
 
-Než začnete, dokončete [Začínáme s vlastními zásadami](active-directory-b2c-get-started-custom.md). Měli byste mít funkční vlastní zásady pro registraci a přihlaste se pomocí místních účtů.
+Proveďte kroky v [začít pracovat s vlastními zásadami](active-directory-b2c-get-started-custom.md). Měli byste mít funkční vlastní zásady pro registraci a přihlaste se pomocí místních účtů.
 
 ## <a name="page-ui-customization"></a>Přizpůsobení uživatelského rozhraní stránky
 
-Pomocí stránky funkce přizpůsobení uživatelského rozhraní můžete přizpůsobit vzhled a chování všech vlastních zásad. Můžete také spravovat značky a vizuální konzistenci mezi vaší aplikací a službou Azure AD B2C.
+Pomocí stránky funkce přizpůsobení uživatelského rozhraní můžete přizpůsobit vzhled a chování všech vlastních zásad. Můžete také udržovat konzistenci značky a vizuální konzistenci mezi vaší aplikací a službou Azure AD B2C.
 
-Zde je, jak to funguje: Azure AD B2C kód v prohlížeči vašeho zákazníka a využívá moderní přístup a volá [sdílení prostředků mezi zdroji (CORS)](http://www.w3.org/TR/cors/). Nejprve zadejte adresu URL ve vlastních zásadách přizpůsobený obsah ve formátu HTML. Azure AD B2C sloučí elementy uživatelského rozhraní pomocí obsahu HTML, který je načten z vaší adresy URL a pak zobrazí na stránce zákazníkovi.
+Zde je, jak to funguje: Azure AD B2C kód v prohlížeči vašeho zákazníka a využívá moderní přístup a volá [sdílení prostředků mezi zdroji (CORS)](http://www.w3.org/TR/cors/). Nejprve zadejte adresu URL ve vlastních zásadách přizpůsobený obsah ve formátu HTML. Azure AD B2C sloučí elementy uživatelského rozhraní s obsahem HTML, který je načtený z vaší adresy URL, a pak zobrazí stránku zákazníkovi.
 
 ## <a name="create-your-html5-content"></a>Vytvoření obsahu vaší HTML5
 
@@ -119,27 +119,44 @@ Ověřte, že budete připraveni, následujícím způsobem:
 2. Klikněte na tlačítko **poslat žádost o**.  
     Pokud se zobrazí chybová zpráva, ujistěte se, že vaše [nastavení CORS](#configure-cors) jsou správné. Může také muset vymazat mezipaměť prohlížeče nebo otevřete relaci procházení v privátní stisknutím kombinace kláves Ctrl + Shift + P.
 
-## <a name="modify-your-sign-up-or-sign-in-custom-policy"></a>Upravit vlastní zásady registrace / přihlášení
+## <a name="modify-the-extensions-file"></a>Upravte soubor rozšíření
 
-V části na nejvyšší úrovni *\<TrustFrameworkPolicy\>* označit, měli byste najít *\<BuildingBlocks\>* značky. V rámci *\<BuildingBlocks\>* značky, přidejte *\<ContentDefinitions\>* značky tak, že zkopírujete následující příklad. Nahraďte *your_storage_account* s názvem účtu úložiště.
+Konfigurace přizpůsobení uživatelského rozhraní, je zkopírovat **ContentDefinition** a jeho podřízené prvky ze základního souboru do souboru rozšíření.
 
-  ```xml
-  <BuildingBlocks>
-    <ContentDefinitions>
-      <ContentDefinition Id="api.idpselections">
-        <LoadUri>https://{your_storage_account}.blob.core.windows.net/customize-ui.html</LoadUri>
-        <DataUri>urn:com:microsoft:aad:b2c:elements:idpselection:1.0.0</DataUri>
-      </ContentDefinition>
-    </ContentDefinitions>
-  </BuildingBlocks>
-  ```
+1. Otevřete soubor základní zásady. Například *TrustFrameworkBase.xml*.
+2. Vyhledejte a zkopírujte celý obsah **ContentDefinitions** elementu.
+3. Otevřete soubor rozšíření. Například *TrustFrameworkExtensions.xml*. Hledat **BuildingBlocks** elementu. Pokud element neexistuje, přidejte ji.
+4. Vložte celý obsah **ContentDefinitions** element, který jste zkopírovali jako podřízený objekt **BuildingBlocks** elementu. 
+5. Hledat **ContentDefinition** element, který obsahuje `Id="api.signuporsignin"` ve formátu XML, který jste zkopírovali.
+6. Změňte hodnotu vlastnosti **LoadUri** na adresu URL souboru HTML, který jste nahráli do úložiště. Například "https://mystore1.azurewebsites.net/b2c/customize-ui.html.
+    
+    Vlastní zásady by měl vypadat nějak takto:
+
+    ```xml
+    <BuildingBlocks>
+      <ContentDefinitions>
+        <ContentDefinition Id="api.signuporsignin">
+          <LoadUri>https://your-storage-account.blob.core.windows.net/your-container/customize-ui.html</LoadUri>
+          <RecoveryUri>~/common/default_page_error.html</RecoveryUri>
+          <DataUri>urn:com:microsoft:aad:b2c:elements:unifiedssp:1.0.0</DataUri>
+          <Metadata>
+            <Item Key="DisplayName">Signin and Signup</Item>
+          </Metadata>
+        </ContentDefinition>
+      </ContentDefinitions>
+    </BuildingBlocks>
+    ```
+
+7. Uložte soubor rozšíření.
 
 ## <a name="upload-your-updated-custom-policy"></a>Nahrání aktualizované vlastní zásady
 
-1. V [webu Azure portal](https://portal.azure.com), [přepnutí do kontextu tenanta Azure AD B2C](active-directory-b2c-navigate-to-b2c-context.md)a pak otevřete **Azure AD B2C** okno.
+1. Ujistěte se, že používáte adresáře, který obsahuje vašeho tenanta Azure AD B2C kliknutím **filtr adresářů a předplatných** v horní nabídce a výběrem adresáře, který obsahuje váš tenant.
+3. Zvolte **všechny služby** v horním levém horním rohu webu Azure portal a poté vyhledejte a vyberte **Azure AD B2C**.
+4. Vyberte **architekturu rozhraní identit**.
 2. Klikněte na tlačítko **všechny zásady**.
 3. Klikněte na tlačítko **nahrát zásady**.
-4. Nahrát `SignUpOrSignin.xml` s *\<ContentDefinitions\>* značku, kterou jste přidali dříve.
+4. Nahrajte soubor rozšíření, které jste dříve změnili.
 
 ## <a name="test-the-custom-policy-by-using-run-now"></a>Testování s použitím vlastní zásady **spustit nyní**
 

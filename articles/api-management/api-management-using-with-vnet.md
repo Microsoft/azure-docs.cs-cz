@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2017
 ms.author: apimpm
-ms.openlocfilehash: c94d4d4beea22e68a581cd208a25f915e4217614
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 843b03ce33d1897e2e985ac832f883e1fae12960
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48870872"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49959039"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Jak používat Azure API Management s virtuálními sítěmi
 Virtuální sítě Azure (Vnet) umožňuje umístit některé z vašich prostředků Azure, které řídí přístup k síti možnosti směrování Internetu jiných. Potom se dá propojit tyto sítí k místním sítím pomocí různých technologií VPN. Další informace o Azure Virtual Networks začínat tyto informace tady: [Přehled služby Azure Virtual Network](../virtual-network/virtual-networks-overview.md).
@@ -106,16 +106,17 @@ Tady je seznam častých problémech, které mohou nastat při nasazení služby
 
 Když jsou instance služby API Management je hostované ve virtuální síti, se používají porty v následující tabulce.
 
-| Zdrojové a cílové porty | Směr          | Přenosový protokol | Zdroj a cíl                  | Účel (*)                                                 | Typ virtuální sítě |
+| Zdrojové a cílové porty | Směr          | Přenosový protokol |   [Značky služeb](../virtual-network/security-overview.md#service-tags) <br> Zdroj a cíl   | Účel (*)                                                 | Typ virtuální sítě |
 |------------------------------|--------------------|--------------------|---------------------------------------|-------------------------------------------------------------|----------------------|
 | * / 80, 443                  | Příchozí            | TCP                | INTERNET / VIRTUAL_NETWORK            | Komunikace klienta do API managementu                      | Externí             |
-| * / 3443                     | Příchozí            | TCP                | APIMANAGEMENT / VIRTUAL_NETWORK       | Koncový bod správy pro Azure portal a Powershellu         | Externí a interní  |
+| * / 3443                     | Příchozí            | TCP                | ApiManagement / VIRTUAL_NETWORK       | Koncový bod správy pro Azure portal a Powershellu         | Externí a interní  |
 | * / 80, 443                  | Odchozí           | TCP                | VIRTUAL_NETWORK / úložiště             | **Závislost na Azure Storage**                             | Externí a interní  |
-| * / 80, 443                  | Odchozí           | TCP                | VIRTUAL_NETWORK / INTERNET            | Azure Active Directory (v případě potřeby)                   | Externí a interní  |
+| * / 80, 443                  | Odchozí           | TCP                | VIRTUAL_NETWORK / AzureActiveDirectory | Azure Active Directory (v případě potřeby)                   | Externí a interní  |
 | * / 1433                     | Odchozí           | TCP                | VIRTUAL_NETWORK / SQL                 | **Přístup ke koncovým bodům Azure SQL**                           | Externí a interní  |
 | * / 5672                     | Odchozí           | TCP                | VIRTUAL_NETWORK / centra událostí            | Závislost pro protokol do zásady centra událostí a agenta monitorování | Externí a interní  |
 | * / 445                      | Odchozí           | TCP                | VIRTUAL_NETWORK / úložiště             | Závislost na sdílenou složku Azure pro GIT                      | Externí a interní  |
 | * / 1886                     | Odchozí           | TCP                | VIRTUAL_NETWORK / INTERNET            | Potřebné k publikování stav Resource Health          | Externí a interní  |
+| * / 443                     | Odchozí           | TCP                | VIRTUAL_NETWORK / AzureMonitor         | Publikování diagnostické protokoly a metriky                        | Externí a interní  |
 | * / 25                       | Odchozí           | TCP                | VIRTUAL_NETWORK / INTERNET            | Připojení k serveru SMTP pro odeslání e-mailů                    | Externí a interní  |
 | * / 587                      | Odchozí           | TCP                | VIRTUAL_NETWORK / INTERNET            | Připojení k serveru SMTP pro odeslání e-mailů                    | Externí a interní  |
 | * / 25028                    | Odchozí           | TCP                | VIRTUAL_NETWORK / INTERNET            | Připojení k serveru SMTP pro odeslání e-mailů                    | Externí a interní  |

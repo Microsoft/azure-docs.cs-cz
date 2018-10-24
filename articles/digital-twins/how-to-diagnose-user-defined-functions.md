@@ -6,14 +6,14 @@ manager: deshner
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/15/2018
+ms.date: 10/22/2018
 ms.author: stefanmsft
-ms.openlocfilehash: faf4df8085c4a4f014caf1c6e276800dcf480ebf
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 852b2d35ae605f5529d162d52655fd258ca07c5a
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/23/2018
-ms.locfileid: "49651364"
+ms.locfileid: "49946092"
 ---
 # <a name="how-to-debug-issues-with-user-defined-functions-in-azure-digital-twins"></a>Jak ladit problémy s uživatelsky definovaných funkcí v Azure digitální dvojče
 
@@ -198,3 +198,7 @@ Pokud povolíte nastavení diagnostiky, můžete se setkat tyto běžné výjimk
 1. **Data nebyla nalezena**: Pokud vaše uživatelská funkce se pokusí získat přístup k metadatům, která neexistuje, operace se nezdaří.
 
 1. **Nemáte autorizaci**: Pokud už vaše uživatelem definovanou funkci přiřazení rolí, nastavení nebo nemá dostatečná oprávnění pro přístup k určitým metadat od topologie, operace se nezdaří.
+
+## <a name="next-steps"></a>Další postup
+
+Zjistěte, jak povolit [sledování a protokolů](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) v digitální dvojče Azure.

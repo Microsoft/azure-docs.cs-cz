@@ -8,15 +8,15 @@ ms.topic: article
 ms.date: 10/19/18
 ms.author: tamram
 ms.component: blobs
-ms.openlocfilehash: 7dff6f7438c3bb9fc09803bbaa58895f89f88d71
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: ddc85cb7c9bd4488295b22e687d199a73d23922c
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49649818"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49955622"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Hostování statického webu ve službě Azure Storage
-Účty Azure Storage umožňují poskytovat statický obsah (HTML, CSS, JavaScript a soubory obrázků) přímo z kontejneru úložiště s názvem *$web*. Využití výhod hostování ve službě Azure Storage umožňuje používat architektur bez serveru, včetně [Azure Functions](/azure/azure-functions/functions-overview) a další služby PaaS.
+Účty úložiště GPv2 Azure umožňují poskytovat statický obsah (HTML, CSS, JavaScript a soubory obrázků) přímo z kontejneru úložiště s názvem *$web*. Využití výhod hostování ve službě Azure Storage umožňuje používat architektur bez serveru, včetně [Azure Functions](/azure/azure-functions/functions-overview) a další služby PaaS.
 
 Na rozdíl od hostoval statický web, jsou dynamické weby, které závisí na kódu na straně serveru nejlépe hostované pomocí [Azure Web Apps](/azure/app-service/app-service-web-overview).
 
@@ -62,7 +62,7 @@ Hostoval statický web je k dispozici bez dalších poplatků. Další podrobnos
 ## <a name="quickstart"></a>Rychlý start
 
 ### <a name="azure-portal"></a>portál Azure
-Začněte tím, že otevřete Azure portal na adrese https://portal.azure.com a pomocí následujících kroků:
+Začněte tím, že otevřete Azure portal na adrese https://portal.azure.com a spustit na vašem účtu úložiště GPv2 pomocí následujících kroků:
 
 1. Klikněte na **nastavení**
 2. Klikněte na **statického webu**
@@ -71,7 +71,7 @@ Začněte tím, že otevřete Azure portal na adrese https://portal.azure.com a 
 
 ![](media/storage-blob-static-website/storage-blob-static-website-portal-config.PNG)
 
-V dalším kroku nahrajte vaše prostředky k *$web* kontejneru na webu Azure Portal nebo pomocí [Průzkumníka služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/) nahrát celou adresáře. Nezapomeňte zahrnout soubor, který odpovídá *název dokumentu indexu* jste vybrali při povolení funkce.
+V dalším kroku nahrajte vaše prostředky k *$web* kontejnerů pomocí webu Azure portal nebo pomocí [Průzkumníka služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/) nahrát celou adresáře. Nezapomeňte zahrnout soubor, který odpovídá *název dokumentu indexu* jste vybrali při povolení funkce.
 
 A konečně přejděte na koncový bod webové můžete otestovat váš web.
 
@@ -80,6 +80,11 @@ Nainstalujte rozšíření ve verzi preview úložiště:
 
 ```azurecli-interactive
 az extension add --name storage-preview
+```
+V případě více předplatných nastavte předplatné účtu úložiště GPv2, které chcete povolit svém rozhraní příkazového řádku:
+
+```azurecli-interactive
+az account set --subscription <SUBSCRIPTION_ID>
 ```
 Povolení této funkce. Nezapomeňte nahradit všechny zástupné hodnoty, včetně závorkách a s vlastními hodnotami:
 
@@ -92,10 +97,10 @@ Dotaz adresy URL koncového bodu webu:
 az storage account show -n <ACCOUNT_NAME> -g <RESOURCE_GROUP> --query "primaryEndpoints.web" --output tsv
 ```
 
-Nahrání objektů *$web* kontejneru:
+Nahrání objektů *$web* kontejneru ze zdrojového adresáře:
 
 ```azurecli-interactive
-az storage blob upload-batch -s <SOURCE> -d $web --account-name <ACCOUNT_NAME>
+az storage blob upload-batch -s <SOURCE_PATH> -d $web --account-name <ACCOUNT_NAME>
 ```
 
 ## <a name="deployment"></a>Nasazení
@@ -115,7 +120,7 @@ K zapnutí metrik na stránkách statický web, klikněte na **nastavení** > **
 
 Můžete například měřená data jsou generovány zapojení do různých metrik rozhraní API. Na portálu se zobrazí pouze členové rozhraní API použít v daném časovém rámci, abychom se mohli zaměřit jenom na členy, které nevracejí data. Aby se zajistilo, že budete moct vybrat nezbytné člena rozhraní API, prvním krokem je rozšířit časový rámec.
 
-Klikněte na tlačítko časový rámec a vyberte **posledních 24 hodin** a potom klikněte na tlačítko **použít** k Ujistěte se, že uživatelské rozhraní vám umožní přístup k požadované rozhraní API.
+Klikněte na tlačítko časový rámec a vyberte **posledních 24 hodin** a potom klikněte na tlačítko **použít** 
 
 ![Metriky Azure Storage statických webů časový rozsah](./media/storage-blob-static-website/storage-blob-static-website-metrics-time-range.png)
 

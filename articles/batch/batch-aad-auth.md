@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/18/2018
 ms.author: danlep
-ms.openlocfilehash: 1347d3aac01c62040c164eee22c7a905b07e8236
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 67f8b49cd2205403dec8843beebb92c9f41f6e37
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48816954"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49955792"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Ověřování řešení služby Batch pomocí Active Directory
 
@@ -374,7 +374,7 @@ Pomocí přihlašovacích údajů instančního objektu služby otevřete **Batc
 
 * Další informace o službě Azure AD, najdete v článku [Azure Active Directory, dokumentace ke službě](https://docs.microsoft.com/azure/active-directory/). Podrobné příklady ukazující, jak pomocí knihovny ADAL najdete v [vzorových kódů Azure](https://azure.microsoft.com/resources/samples/?service=active-directory) knihovny.
 
-* Další informace o instančních objektech najdete v tématu [aplikace a instanční objekty v Azure Active Directory](../active-directory/develop/app-objects-and-service-principals.md). Vytvoření instančního objektu pomocí webu Azure portal, najdete v článku [použití portálu k vytvoření služby Active Directory a instančního objektu, který má přístup k prostředkům](../resource-group-create-service-principal-portal.md). Můžete také vytvořit instanční objekt služby pomocí Powershellu nebo rozhraní příkazového řádku Azure.
+* Další informace o instančních objektech najdete v tématu [aplikace a instanční objekty v Azure Active Directory](../active-directory/develop/app-objects-and-service-principals.md). Vytvoření instančního objektu pomocí webu Azure portal, najdete v článku [použití portálu k vytvoření služby Active Directory a instančního objektu, který má přístup k prostředkům](../active-directory/develop/howto-create-service-principal-portal.md). Můžete také vytvořit instanční objekt služby pomocí Powershellu nebo rozhraní příkazového řádku Azure.
 
 * K ověření aplikace pro správu služby Batch pomocí Azure AD, najdete v článku [řešení pro správu ověřování služby Batch pomocí Active Directory](batch-aad-auth-management.md).
 

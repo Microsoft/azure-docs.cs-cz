@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 10/17/2018
 ms.author: cherylmc
-ms.openlocfilehash: 588692ad4c7c95a06d33b67b76bb8feff6b4ed53
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 5f133af5ec077821607bf3e942c8a931808d34fc
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49457166"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49953583"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-powershell"></a>Připojení virtuálních sítí z různých modelů nasazení pomocí PowerShellu
 
@@ -34,7 +34,7 @@ Následující kroky vás provedou nastavením nezbytným pro konfiguraci dynami
 
 ### <a name="pre"></a>Požadavky
 
-* Již byly vytvořeny obou virtuálních sítích. Pokud potřebujete vytvořit virtuální síť resource Manageru, přečtěte si téma [vytvoření virtuální sítě](../virtual-network/quick-create-powershell.md#create-a-virtual-network). Chcete-li vytvořit klasickou virtuální síť, přečtěte si téma [vytvořit klasickou virtuální síť](https://docs.microsoft.com/en-us/azure/virtual-network/create-virtual-network-classic).
+* Již byly vytvořeny obou virtuálních sítích. Pokud potřebujete vytvořit virtuální síť resource Manageru, přečtěte si téma [vytvoření virtuální sítě](../virtual-network/quick-create-powershell.md#create-a-virtual-network). Chcete-li vytvořit klasickou virtuální síť, přečtěte si téma [vytvořit klasickou virtuální síť](https://docs.microsoft.com/azure/virtual-network/create-virtual-network-classic).
 * Rozsahy adres pro virtuální sítě se mezi sebou, ani překrývat s žádným z rozsahů pro další připojení, které brány může být připojen k.
 * Nainstalovali jste nejnovější rutiny prostředí PowerShell. Zobrazit [instalace a konfigurace Azure Powershellu](/powershell/azure/overview) Další informace. Ujistěte se, že instalace služby správy (lu) a rutiny správce prostředků (SV). 
 

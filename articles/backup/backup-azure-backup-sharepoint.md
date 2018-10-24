@@ -6,14 +6,14 @@ author: adigan
 manager: Nkolli1
 ms.service: backup
 ms.topic: conceptual
-ms.date: 09/29/2016
+ms.date: 10/18/2018
 ms.author: adigan
-ms.openlocfilehash: 7331b1c99425500b58d186cedab1e83dd20e3684
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: b3b4d42d9a48d02639019f815cbf4fca15060771
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389815"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49946041"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure"></a>Zálohování sharepointové farmy do Azure
 Zálohujete Sharepointové farmy do Microsoft Azure mnohem stejným způsobem, který je zálohovat zdrojů dat pomocí System Center Data Protection Manager (DPM). Azure Backup poskytuje flexibilitu při plán zálohování a vytvořit každý den, týdenní, měsíční nebo roční zálohu odkazuje a poskytuje možnosti zásad uchovávání informací pro různé body záloh. DPM poskytuje možnost ukládat kopie místního disku pro rychlé cíle plánované doby obnovení (RTO) a k uložení kopie do Azure pro hospodárná a dlouhodobé uchovávání.
@@ -29,7 +29,7 @@ Azure Backup pro DPM podporuje následující scénáře:
 Existuje několik věcí, které je potřeba potvrdit před zálohování Sharepointové farmy do Azure.
 
 ### <a name="prerequisites"></a>Požadavky
-Než budete pokračovat, ujistěte se, že jste splnili veškeré [požadavků na používání Microsoft Azure Backup](backup-azure-dpm-introduction.md#prerequisites) k ochraně úloh. Některé úlohy pro požadované součásti patří: Vytvořte trezor záloh, stáhnout přihlašovací údaje trezoru, nainstalovat agenta Azure Backup a zaregistrujete pomocí úložiště DPM nebo Azure Backup Server.
+Než budete pokračovat, ujistěte se, že jste splnili veškeré [požadavků na používání Microsoft Azure Backup](backup-azure-dpm-introduction.md#prerequisites-and-limitations) k ochraně úloh. Některé úlohy pro požadované součásti patří: Vytvořte trezor záloh, stáhnout přihlašovací údaje trezoru, nainstalovat agenta Azure Backup a zaregistrujete pomocí úložiště DPM nebo Azure Backup Server.
 
 ### <a name="dpm-agent"></a>Agent aplikace DPM
 Na serveru, na kterém běží SharePoint, servery, na kterých běží SQL Server a všechny ostatní servery, které jsou součástí farmy služby SharePoint musí být nainstalován DPM agent. Další informace o tom, jak nastavit agenta ochrany najdete v tématu [instalace agenta ochrany](https://technet.microsoft.com/library/hh758034\(v=sc.12\).aspx).  Jedinou výjimkou je, že nainstalujete agenta jenom na jednom webovém serveru front-end (WFE). DPM potřebuje agenta na jeden server WFE pouze, která bude sloužit jako vstupní bod pro ochranu.

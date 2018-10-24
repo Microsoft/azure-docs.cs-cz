@@ -17,12 +17,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: a8d1c94ac4357c7833f6db7cb9b4eaffa00c0396
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 46b66a6e718f18b76db6332487c350c2c199c342
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46963794"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49957770"
 ---
 # <a name="azure-active-directory-code-samples-v10-endpoint"></a>Ukázky kódu Azure Active Directory (koncový bod verze 1.0)
 
@@ -125,7 +125,7 @@ Ukázky a návody, které ilustrují odlišnými vzory použití pro Microsoft G
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 
-[Příručka pro vývojáře Azure Active Directory](azure-ad-developers-guide.md)
+[Příručka pro vývojáře Azure Active Directory](v1-overview.md)
 
 [Knihovny Azure Active Directory Authentication](active-directory-authentication-libraries.md)
 

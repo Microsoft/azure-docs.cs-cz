@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/16/2018
 ms.author: shvija
-ms.openlocfilehash: a2b6fbae4a7b49c5596d5f2a6f9305181a0717d3
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 02336d9f4d041d4c8d5ba973cf8802692ddad914
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46979960"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49946007"
 ---
 # <a name="azure-event-hubs-metrics-in-azure-monitor-preview"></a>Metriky Azure Event Hubs ve službě Azure Monitor (preview)
 
@@ -66,7 +66,6 @@ Spočítá počet dat a správu požadavků operace.
 | Úspěšné požadavky (preview)   | Počet úspěšných požadavků provedených na službu Azure Event Hubs v zadaném období. <br/><br/> Jednotky: počet <br/> Typ agregace: Celkový počet <br/> Dimenze: EntityName |
 | Chyby serveru (preview) | Počet požadavků není zpracována z důvodu chyby ve službě Azure Event Hubs v zadaném období. <br/><br/>Jednotky: počet <br/> Typ agregace: Celkový počet <br/> Dimenze: EntityName |
 |Chyby uživatele (preview)|Počet požadavků není zpracována z důvodu chyby uživatele v zadaném období.<br/><br/> Jednotky: počet <br/> Typ agregace: Celkový počet <br/> Dimenze: EntityName|
-|Omezené požadavky (preview)|Počet požadavků, které byly omezené, protože byl překročen využití jednotek propustnosti.<br/><br/> Jednotky: počet <br/> Typ agregace: Celkový počet <br/> Dimenze: EntityName|
 |Chyby překročení kvóty (preview)|Počet žádostí překročil dostupnou kvótu. Zobrazit [v tomto článku](event-hubs-quotas.md) Další informace o kvótách služby Event Hubs.<br/><br/> Jednotky: počet <br/> Typ agregace: Celkový počet <br/> Dimenze: EntityName|
 
 ## <a name="throughput-metrics"></a>Metriky propustnosti

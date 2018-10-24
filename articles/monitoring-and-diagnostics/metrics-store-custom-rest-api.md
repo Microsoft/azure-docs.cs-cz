@@ -8,12 +8,12 @@ ms.topic: howto
 ms.date: 09/24/2018
 ms.author: ancav
 ms.component: metrics
-ms.openlocfilehash: c01440437eae3cb076627ab9f2221e33b833f472
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d36697e6b5765ecf35ed9b3add45cff6c33823a5
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46977227"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49958213"
 ---
 # <a name="send-custom-metrics-for-an-azure-resource-to-the-azure-monitor-metric-store-using-a-rest-api"></a>Odeslat vlastní metriky pro prostředek Azure do Azure monitoru metriky ukládat pomocí rozhraní REST API
 
@@ -25,7 +25,7 @@ Tento článek ukazuje, jak odeslat vlastní metriky pro prostředky Azure k úl
 
 ## <a name="create-and-authorize-a-service-principal-to-emit-metrics"></a>Vytvoření a autorizaci instančního objektu pro generování metriky 
 
-Vytvořit instanční objekt ve vašem tenantovi Azure Active Directory pomocí pokynů uvedených v [vytvoření instančního objektu](../azure-resource-manager/resource-group-create-service-principal-portal.md). 
+Vytvořit instanční objekt ve vašem tenantovi Azure Active Directory pomocí pokynů uvedených v [vytvoření instančního objektu](../active-directory/develop/howto-create-service-principal-portal.md). 
 
 Mějte na paměti následující při procházení tohoto procesu: 
 

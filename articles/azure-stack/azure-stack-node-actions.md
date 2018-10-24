@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/14/2018
+ms.date: 10/22/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 1f59f2ce6e3bf8d34ce225aa93da76ad523775e0
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: f299cca57e3eaddd2a9d4868f3bae822392e45a0
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42056598"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49944932"
 ---
 # <a name="scale-unit-node-actions-in-azure-stack"></a>Uzel akcí jednotky škálování ve službě Azure Stack
 
@@ -31,7 +31,7 @@ Tento článek popisuje, jak zobrazit stav jednotky škálování a jeho přidru
 > Všechny akce uzlu je popsáno v tomto článku se má pouze jeden uzel cílové najednou.
 
 
-## <a name="view-the-status-of-a-scale-unit-and-its-nodes"></a>Zobrazit stav jednotky škálování a jeho uzly
+## <a name="view-the-node-status"></a>Zobrazení stavu uzlu
 
 Na portálu správce můžete snadno zobrazit stav jednotky škálování a jeho přidružené uzly.
 
@@ -47,11 +47,11 @@ Tady se zobrazí následující informace:
 - Typ systému
 - Celkový počet logických jader
 - Celková paměť
-- seznam jednotlivých uzlů a jejich stav; buď **systémem** nebo **zastavena**.
+- Seznam jednotlivých uzlů a jejich stav; buď **systémem** nebo **zastavena**
 
 ![Škálovací jednotku dlaždici s údaji o stavu spuštění pro každý uzel](media/azure-stack-node-actions/ScaleUnitStatus.PNG)
 
-## <a name="view-information-about-a-scale-unit-node"></a>Zobrazit informace o škálování jednotek uzlu
+## <a name="view-node-information"></a>Zobrazit informace na uzlu
 
 Pokud vyberete jednotlivých uzlů, může zobrazit následující informace:
 

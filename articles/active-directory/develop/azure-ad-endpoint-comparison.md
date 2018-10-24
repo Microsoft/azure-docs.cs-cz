@@ -17,12 +17,12 @@ ms.date: 09/27/2018
 ms.author: andret
 ms.reviewer: hirsin, andret
 ms.custom: aaddev
-ms.openlocfilehash: b75b31ddfc77be5ed651e7b8484e41a4ae73d8d8
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: e393851535c36eb604d57cc4d7c7561a3ebb201b
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47406528"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49955416"
 ---
 # <a name="comparing-the-azure-ad-v20-endpoint-with-the-v10-endpoint"></a>Porovnání koncového bodu Azure AD v2.0 s koncovým bodem v1.0
 
@@ -133,7 +133,7 @@ Tady je zjednodušené doporučení pro vývojáře v daném okamžiku:
 
 * Pokud vaše aplikace musí podporovat osobní účty Microsoft, použití verze 2.0. Ale předtím, než provedete, ujistěte se, že rozumíte omezení popsané v tomto článku.
 
-* Pokud vaše aplikace potřebuje pouze pro podporu pracovní a školní účty, nepoužívejte verze 2.0. Místo toho odkazovat [v1.0 průvodce](azure-ad-developers-guide.md).
+* Pokud vaše aplikace potřebuje pouze pro podporu pracovní a školní účty, nepoužívejte verze 2.0. Místo toho odkazovat [v1.0 průvodce](v1-overview.md).
 
 Chcete-li odstranit omezení zde uvedeny, tak, aby vždy jen musíte použít koncový bod verze 2.0 bude vyvíjet koncový bod verze 2.0. Do té doby použijte tento článek k určení, zda je koncový bod verze 2.0 pro vás nejvhodnější. Budeme nadále aktualizovat tak, aby odrážela aktuální stav koncového bodu v2.0 tohoto článku. Vraťte se zpět na opětovné vyhodnocení požadavků pro funkce verze 2.0.
 

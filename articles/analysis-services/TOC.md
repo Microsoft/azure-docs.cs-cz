@@ -38,8 +38,8 @@
 ### [Správa serveru](analysis-services-manage.md)
 ### [Monitorování metrik serveru](analysis-services-monitor.md)
 ### [Nastavení protokolování diagnostiky](analysis-services-logging.md)
-### [Vytvoření instančního objektu – Azure Portal](../azure-resource-manager/resource-group-create-service-principal-portal.md)
-### [Vytvoření instančního objektu – PowerShell](../azure-resource-manager/resource-group-authenticate-service-principal.md)
+### [Vytvoření instančního objektu – Azure Portal](../active-directory/develop/howto-create-service-principal-portal.md)
+### [Vytvoření instančního objektu – PowerShell](../active-directory/develop/howto-authenticate-service-principal-powershell.md)
 ### [Přidání instančního objektu k roli správce serveru](analysis-services-addservprinc-admins.md)
 
 ## Model

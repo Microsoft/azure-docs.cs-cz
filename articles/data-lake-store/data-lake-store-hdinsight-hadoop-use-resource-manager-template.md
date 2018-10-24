@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 65b02ddc8fbd27d5081400032222a904b27e1a25
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 0f6f485bb251bfae942c258b9be879c0aff5f5b9
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46126135"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49955675"
 ---
 # <a name="create-an-hdinsight-cluster-with-azure-data-lake-storage-gen1-using-azure-resource-manager-template"></a>Vytvoření clusteru HDInsight s Azure Data Lake Storage Gen1 pomocí šablony Azure Resource Manageru
 > [!div class="op_single_selector"]
@@ -49,7 +49,7 @@ Je nutné, abyste před zahájením tohoto kurzu měli tyto položky:
 * **Azure PowerShell 1.0 nebo vyšší**. Viz téma [Instalace a konfigurace prostředí Azure PowerShell](/powershell/azure/overview).
 * **Azure Active Directory Service Principal**. Kroky v tomto kurzu poskytují pokyny o tom, jak vytvořit instanční objekt ve službě Azure AD. Však musí být správce Azure AD mohli vytvořit instanční objekt. Pokud jste správce Azure AD, můžete tuto požadovanou součást přeskočit a pokračovat v tomto kurzu.
 
-    **Pokud si nejste správce Azure AD**, nebudete moci provádět kroky potřebné k vytvoření instančního objektu. V takovém případě musí správce Azure AD nejprve vytvořit instanční objekt služby, než vytvoříte HDInsight cluster s Data Lake Storage Gen1. Navíc instanční objekt musí být vytvořen pomocí certifikátu, jak je popsáno v [vytvoření instančního objektu s certifikátem](../azure-resource-manager/resource-group-authenticate-service-principal.md#create-service-principal-with-certificate-from-certificate-authority).
+    **Pokud si nejste správce Azure AD**, nebudete moci provádět kroky potřebné k vytvoření instančního objektu. V takovém případě musí správce Azure AD nejprve vytvořit instanční objekt služby, než vytvoříte HDInsight cluster s Data Lake Storage Gen1. Navíc instanční objekt musí být vytvořen pomocí certifikátu, jak je popsáno v [vytvoření instančního objektu s certifikátem](../active-directory/develop/howto-authenticate-service-principal-powershell.md#create-service-principal-with-certificate-from-certificate-authority).
 
 ## <a name="create-an-hdinsight-cluster-with-data-lake-storage-gen1"></a>Vytvoření clusteru HDInsight s Data Lake Storage Gen1
 Šablony Resource Manageru a předpoklady pro použití šablony, jsou k dispozici na Githubu v [nasazení clusteru HDInsight s Linuxem pomocí nového Gen1 úložiště Data Lake](https://github.com/Azure/azure-quickstart-templates/tree/master/201-hdinsight-datalake-store-azure-storage). Postupujte podle pokynů uvedených v tomto odkazu pro vytvoření clusteru HDInsight s Data Lake Storage Gen1 jako další úložiště.

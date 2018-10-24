@@ -12,15 +12,15 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/17/2018
+ms.date: 10/18/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: e9d9f5b053537b3d6881763bcb39d7894ba78869
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 79b8cfa061bafb43cbcf2ec8a43638fd14c2fcd0
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46969496"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49954027"
 ---
 # <a name="allowed-certificate-authorities-for-enabling-custom-https-on-azure-cdn"></a>Pro povolení vlastní protokol HTTPS ve službě Azure CDN povolená certifikační autority
 
@@ -70,27 +70,6 @@ Následující certifikační autority jsou povoleny v případě, že vytvoří
 - GlobalSign kořenové certifikační Autority
 - Go Daddy kořenová certifikační autorita – G2
 - Go Daddy zabezpečení certifikační autority - G2
-- Microsoft Authenticode(tm) kořenová autorita
-- Služby Microsoft Exchange 2015 certifikační Autority
-- Interní kořenovou společnosti Microsoft
-- Microsoft IT ITO SSL CA 1
-- Microsoft IT SHA1 SSL
-- Microsoft IT SSL SHA2
-- Microsoft IT TLS CA 1
-- Microsoft IT TLS CA 2
-- Microsoft IT TLS CA 4
-- Microsoft IT TLS CA 5
-- Microsoft kořenová autorita
-- Microsoft kořenové certifikační autority
-- Microsoft kořenové certifikační autority 2010
-- Microsoft kořenové certifikační autority 2011
-- Microsoft zabezpečeného serveru certifikační Autority 2011
-- Kořenové partnerské služby společnosti Microsoft
-- Čas Microsoft razítek kořenový adresář
-- Kompatibilita hardwaru Microsoft Windows
-- MSIT Z2 CERTIFIKAČNÍ AUTORITY
-- MSIT certifikační autority organizace 1
-- MSIT certifikační autority organizace 3
 - RSA RapidSSL 2018 certifikační Autority
 - Agentura kořenové
 - Třída Symantec 3 EV SSL CA - G3
@@ -102,12 +81,11 @@ Následující certifikační autority jsou povoleny v případě, že vytvoří
 - RSA Thawte 2018 certifikační Autority
 - Vytvoření časového razítka Thawte certifikační Autority
 - TrustAsia TLS RSA certifikační Autority
-- UTN-USERFirst – objekt
 - Třída VeriSign 3 rozšíření ověřování SSL CA
 - Třída VeriSign 3 rozšíření ověřování SSL potřebujete certifikační Autority
 - Třídy VeriSign 3 veřejný primárního certifikační autorita – G5
 - Mezinárodní serveru VeriSign CA – třída 3
 - Čas VeriSign razítek kořenový adresář
 - Univerzální VeriSign kořenové certifikační autority
-- WMSvc. SHA2 DALEDGE1008
+
 

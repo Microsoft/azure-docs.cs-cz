@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/01/2016
 ms.author: mlearned
-ms.openlocfilehash: f44bb7bd95ef405c65bb259a6d104475c2e283bd
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: a3dfca48b52af39e7a536b3012a3f4cdac4e9a94
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44297838"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49955163"
 ---
 # <a name="continuous-integration-in-azure-devops-services-using-azure-resource-group-deployment-projects"></a>Průběžná integrace služby Azure DevOps pomocí projekty nasazení skupiny prostředků Azure
 K nasazení šablony Azure, můžete provádět úlohy v různých fázích: sestavení, testování, kopírovat do Azure (tzv. "Přípravného") a nasaďte šablonu. Existují dva různé způsoby nasazování šablon ke službám Azure DevOps. Obě metody poskytují stejné výsledky, proto zvolte ten, který nejlépe vyhovuje požadavkům vašeho pracovního postupu.
@@ -92,7 +92,7 @@ Následující postup vás provede kroky potřebnými ke konfiguraci průběžn�
       Pokud používáte Azure CLI, použijte:
       
       `azure account show`
-   8. Chcete-li získat ID instančního objektu služby, klíč instančního objektu a ID Tenanta, postupujte podle postupu [vytvoření aplikace Active Directory a instančního objektu pomocí portálu](resource-group-create-service-principal-portal.md) nebo [ověřování instančního objektu pomocí Azure Resource Manager](resource-group-authenticate-service-principal.md).
+   8. Chcete-li získat ID instančního objektu služby, klíč instančního objektu a ID Tenanta, postupujte podle postupu [vytvoření aplikace Active Directory a instančního objektu pomocí portálu](active-directory/develop/howto-create-service-principal-portal.md) nebo [ověřování instančního objektu pomocí Azure Resource Manager](active-directory/develop/howto-authenticate-service-principal-powershell.md).
    9. Přidejte ID instančního objektu služby, klíč instančního objektu a ID Tenanta hodnoty, které mají **přidat předplatné Azure** dialogové okno a potom vyberte **OK** tlačítko.
       
       Teď máte platný hlavní název služby se použije ke spuštění skriptu Azure Powershellu.

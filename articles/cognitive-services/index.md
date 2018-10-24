@@ -7,14 +7,14 @@ author: nitinme
 manager: cgronlun
 ms.service: cognitive-services
 ms.author: nitinme
-ms.date: 09/24/2018
+ms.date: 10/23/2018
 ms.topic: hub-page
-ms.openlocfilehash: 87c10bbcec2467808220c3d2351976fb4676e92b
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 0564cd1b2c7acf09ee59b858eafb49a4217afe35
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49318992"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49954822"
 ---
 <h1>Dokumentace ke službě Azure Cognitive Services</h1>
         <p style="font-size: 1.12rem;margin-bottom: 1rem;">Naučte se, jak do vašich aplikací, webů a robotů integrovat inteligentní algoritmy, které umožní vidět a slyšet vaše zákazníky, mluvit s nimi a porozumět jejich požadavkům prostřednictvím přirozených způsobů komunikace. Kurzy, rychlá zprovoznění, reference k rozhraní API a příklady vám ukážou, jak na to.</p>
@@ -260,9 +260,9 @@ ms.locfileid: "49318992"
                         <p><a href="/azure/cognitive-services/computer-vision/">Počítačové zpracování obrazu</a></p>
                         <p><a href="/azure/cognitive-services/content-moderator/overview">Content Moderator</a></p>
                         <p><a href="/azure/cognitive-services/Custom-Vision-Service/home"><span>Custom Vision Service&nbsp;<sup style="font-size:70%">PREVIEW</sup></span></a></p>
-                        <p><a href="/azure/cognitive-services/emotion/home"><span>Rozhraní API pro rozpoznávání emocí&nbsp;<sup style="font-size:70%">PREVIEW</sup></span></a></p>
                         <p><a href="/azure/cognitive-services/face/">Rozhraní API pro rozpoznávání tváře</a></p>
                         <p><a href="/azure/cognitive-services/video-indexer/video-indexer-overview">Video Indexer</a></p>
+                        <p><a href="/azure/cognitive-services/emotion/home"><span>Rozhraní API pro rozpoznávání emocí&nbsp;<sup style="font-size:70%">– VYŘAZENÍ Z PROVOZU</sup></span></a></p>
                     </div>
                 </div>
             </div>
@@ -275,10 +275,10 @@ ms.locfileid: "49318992"
                     <div class="cardText">
                         <h3>Rozhraní Speech API</h3>
                         <p><a href="/azure/cognitive-services/speech-service">Rozhraní API služby Speech</a></p>
-                        <p><a href="/azure/cognitive-services/speech/home">Rozhraní API pro zpracování řeči Bingu</a></p>
-                        <p><a href="/azure/cognitive-services/custom-speech-service/cognitive-services-custom-speech-home"><span>Custom Speech Service&nbsp;<sup style="font-size:70%">PREVIEW</sup></span></a></p>
                         <p><a href="/azure/cognitive-services/speaker-recognition/home"><span>Rozpoznávání mluvčího&nbsp;<sup style="font-size:70%">PREVIEW</sup></span></a></p>
-                        <p><a href="/azure/cognitive-services/translator-speech/">Translator Speech</a></p>
+                        <p><a href="/azure/cognitive-services/speech/home"><span>Rozhraní API pro zpracování řeči Bingu&nbsp;<sup style="font-size:70%">– VYŘAZENÍ Z PROVOZU</sup></span></a></p>
+                        <p><a href="/azure/cognitive-services/custom-speech-service/cognitive-services-custom-speech-home"><span>Custom Speech Service&nbsp;<sup style="font-size:70%">– VYŘAZENÍ Z PROVOZU</sup></span></a></p>
+                        <p><a href="/azure/cognitive-services/translator-speech/"><span>Translator Speech&nbsp;<sup style="font-size:70%">– VYŘAZENÍ Z PROVOZU</sup></span></a></p>
                      </div>
                 </div>
             </div>
@@ -292,10 +292,8 @@ ms.locfileid: "49318992"
                         <h3>Rozhraní API pro jazyk</h3>
                         <p><a href="/azure/cognitive-services/bing-spell-check/">Kontrola pravopisu Bingu</a></p>
                         <p><a href="/azure/cognitive-services/luis/">Language Understanding (LUIS)</a></p>
-                        <p><a href="/azure/cognitive-services/linguisticanalysisapi/home"><span>Jazyková analýza&nbsp;<sup style="font-size:70%">PREVIEW</sup></span></a></p>
                         <p><a href="/azure/cognitive-services/text-analytics/">Analýza textu</a></p>
                         <p><a href="/azure/cognitive-services/translator/">Translator Text</a></p>
-                        <p><a href="/azure/cognitive-services/web-language-model/home"><span>Web Language Model&nbsp;<sup style="font-size:70%">PREVIEW</sup></span></a></p>
                     </div>
                 </div>
             </div>
@@ -307,7 +305,6 @@ ms.locfileid: "49318992"
                 <div class="card">
                     <div class="cardText">
                         <h3>Rozhraní API pro znalosti</h3>
-                            <p><a href="/azure/cognitive-services/custom-decision-service/"><span>Custom Decision Service&nbsp;<sup style="font-size:70%">PREVIEW</sup></span></a></p>
                             <p><a href="/azure/cognitive-services/qnamaker/index">QnA Maker</a></p>
                     </div>
                 </div>
@@ -351,6 +348,7 @@ ms.locfileid: "49318992"
                         <p><a href="/azure/cognitive-services/labs/anomaly-finder/overview">Project Anomaly Finder</a></p>
                         <p><a href="/azure/cognitive-services/labs/conversation-learner/overview">Project Conversation Learner</a></p>
                         <p><a href="/azure/cognitive-services/acoustics/what-is-acoustics">Project Acoustics</a></p>
+                        <p><a href="/azure/cognitive-services/custom-decision-service/"><span>Custom Decision Service&nbsp;<sup style="font-size:70%">PREVIEW</sup></span></a></p>
                     </div>
                 </div>
             </div>

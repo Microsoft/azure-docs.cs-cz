@@ -4,7 +4,6 @@ description: Tento článek vám pomůže pochopit metody směrování provozu r
 services: traffic-manager
 documentationcenter: ''
 author: KumudD
-manager: jpconnock
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
@@ -12,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: kumud
-ms.openlocfilehash: be429e7d3ae847eec6dc4fd5ad6b9c3e5d76d5b5
-ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
+ms.openlocfilehash: eb43b59a26bc9c1b514921a7b6dfa4b920a8fe5f
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48785405"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49955214"
 ---
 # <a name="traffic-manager-routing-methods"></a>Metody směrování Traffic Manageru
 
@@ -129,8 +128,11 @@ Jak je vysvětleno v [jak funguje Traffic Manager](traffic-manager-how-it-works.
 **Hodnot** metody směrování provozu umožňuje získat více koncových bodů v dobrém stavu v odpovědi na jeden dotaz DNS. To umožňuje volajícímu provedete opakování na straně klienta pomocí dalších koncových bodů v případě koncový bod vrácené nereagovaly. Tento model může zvýšit dostupnost služby a snižuje latenci přidružené nový dotaz DNS získat funkční koncový bod. Metody směrování s více hodnotami funguje pouze v případě, že všechny koncové body typu "Externí" a jsou zadané jako IPv4 nebo IPv6 adresy. Po přijetí dotaz pro tento profil se vrátí všechny koncové body v pořádku a podléhají konfigurovatelné maximální počet vrácení.
 
 ## <a name = "subnet"></a>Metody směrování provozu podsítě
-**Podsítě** metody směrování provozu umožňuje mapování sadu rozsahů IP adres koncového uživatele ke konkrétním koncovým bodům v profilu. Poté, pokud obdrží dotaz DNS pro tento profil Traffic Manageru ho bude kontrolovat zdroj IP adresa této žádosti (ve většině případů to bude odchozí IP adresa DNS překladač volajícího), určení koncového bodu je namapovaná na a vrátí t koncový bod Hat odpovědi na dotaz. IP adresu, která namapovat na koncový bod se dá nastavit jako rozsahy CIDR (např. 1.2.3.0/24) nebo jako rozsah adres (třeba 1.2.3.4-5.6.7.8). Rozsahy IP adres spojeném s koncovým bodem musí být jedinečný v rámci tohoto profilu a nemůže mít k překrytí sadu IP adres jiný koncový bod v jednom profilu.
-Pokud neexistují žádné koncové body, na které je možné mapovat tuto IP adresu, Traffic Manager odešle odpověď NODATA. Proto důrazně doporučujeme zajistit všechny možné rozsahy IP adres jsou určené ve vašich koncových bodů.
+**Podsítě** metody směrování provozu umožňuje mapování sadu rozsahů IP adres koncového uživatele ke konkrétním koncovým bodům v profilu. Poté, pokud obdrží dotaz DNS pro tento profil Traffic Manageru ho bude kontrolovat zdroj IP adresa této žádosti (ve většině případů to bude odchozí IP adresa DNS překladač volajícího), určení koncového bodu je namapovaná na a vrátí t koncový bod Hat odpovědi na dotaz. 
+
+IP adresu, která namapovat na koncový bod se dá nastavit jako rozsahy CIDR (např. 1.2.3.0/24) nebo jako rozsah adres (třeba 1.2.3.4-5.6.7.8). Rozsahy IP adres spojeném s koncovým bodem musí být jedinečný v rámci tohoto profilu a nemůže mít k překrytí sadu IP adres jiný koncový bod v jednom profilu.
+Pokud definujete koncový bod s žádný rozsah adres, který funguje jako záložní a využijte provoz z podsítě zbývající. Pokud žádný záložní koncový bod je součástí, odešle Traffic Manager NODATA odpovědi pro všechny rozsahy nedefinovaný. Proto důrazně doporučujeme, můžete buď definovat koncový bod záložního, jinak zkontrolujte, zda jsou všechny možné rozsahy IP adres zadán ve vašich koncových bodů.
+
 Směrování podsítě je možné k zajištění jiné prostředí pro připojení z konkrétní IP prostoru uživatele. Například používající směrování na podsíť, zákazník provést všechny žádosti od jejich podnikové směrovat na jiný koncový bod kde, může být testování interní pouze verzi své aplikace. Další možností je, pokud chcete jiné poskytovat uživatelé, kteří se připojují konkrétní poskytovatele internetových služeb (například blokovat uživatele z daného poskytovatele internetových služeb).
 
 ## <a name="next-steps"></a>Další postup

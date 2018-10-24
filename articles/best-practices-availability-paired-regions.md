@@ -6,12 +6,12 @@ ms.service: multiple
 ms.topic: article
 ms.date: 07/03/2018
 ms.author: raynew
-ms.openlocfilehash: 5678b8408eac303d9036d21612f60fafc325425d
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 983a551da26e08797b2a65f609cff17954a52828
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48801909"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49954806"
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>Obchodní kontinuity podnikových procesů a zotavení po havárii (BCDR): spárované oblasti Azure
 
@@ -33,6 +33,7 @@ Obrázek 1 – Azure oblastních párech
 | Brazílie |Brazílie – jih 2 |Střed USA – jih |
 | Kanada |Kanada – střed |Kanada – východ |
 | Čína |Čína – sever |Čína – východ|
+| Čína |Čína – sever 2 |Čína – východ 2|
 | Evropa |Severní Evropa |Západní Evropa |
 | Francie |Francie – střed|Francie – jih|
 | Německo |Německo – střed |Německo – severovýchod |

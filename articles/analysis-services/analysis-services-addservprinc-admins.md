@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: d6d276895534b3fcfb7f58f8fa51620c65c600a3
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: d89e79548d62634e4b2b47fb310c4f8d7279f17f
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49427650"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49957254"
 ---
 # <a name="add-a-service-principal-to-the-server-administrator-role"></a>Přidání instančního objektu k roli správce serveru 
 
@@ -22,8 +22,8 @@ ms.locfileid: "49427650"
 ## <a name="before-you-begin"></a>Než začnete
 Před dokončením tohoto úkolu, musí mít instanční objekt služby v Azure Active Directory.
 
-[Vytvoření instančního objektu – Azure portal](../azure-resource-manager/resource-group-create-service-principal-portal.md)   
-[Vytvoření instančního objektu – PowerShell](../azure-resource-manager/resource-group-authenticate-service-principal.md)
+[Vytvoření instančního objektu – Azure portal](../active-directory/develop/howto-create-service-principal-portal.md)   
+[Vytvoření instančního objektu – PowerShell](../active-directory/develop/howto-authenticate-service-principal-powershell.md)
 
 ## <a name="required-permissions"></a>Požadovaná oprávnění
 Tento úkol provést, musíte mít [správce serveru](analysis-services-server-admins.md) oprávnění na serveru jako Azure. 

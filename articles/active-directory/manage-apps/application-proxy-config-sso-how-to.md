@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/21/2018
+ms.date: 10/22/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 9c353c9b34c3d4a2b21093cc0ae82e638f5ddd01
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 91bbbf6cced8dc3ade4906961d68a99f810d9fd9
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44356372"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49956982"
 ---
 # <a name="how-to-configure-single-sign-on-to-an-application-proxy-application"></a>Jak nakonfigurovat jednotné přihlašování k aplikaci Proxy aplikací
 
@@ -36,7 +36,7 @@ Další informace o metodách předběžné ověření, najdete v kroku 4 [publi
 ## <a name="configuring-single-sign-on-modes-for-application-proxy-applications"></a>Konfigurace režimů jednotné přihlašování pro aplikaci Proxy aplikací
 Nakonfigurujte konkrétní typ jednotného přihlašování. Metody přihlašování mají klasifikaci založené na jaký typ ověřování back-endu aplikace používá. Aplikace Proxy aplikací podporují tři typy přihlašování:
 
--   **Přihlašování na základě heslo**: přihlašování na základě hesla je možné pro každou aplikaci, která používá pole uživatelské jméno a heslo k přihlášení. Postup konfigurace je v [dokumentaci konfigurační heslem jednotného přihlašování](../active-directory-enterprise-apps-whats-new-azure-portal.md#bring-your-own-password-sso-applications).
+-   **Přihlašování na základě heslo**: přihlašování na základě hesla je možné pro každou aplikaci, která používá pole uživatelské jméno a heslo k přihlášení. Postup konfigurace je v [konfigurace hesla jednotného přihlašování pro aplikaci Galerie Azure AD](configure-password-single-sign-on-gallery-applications.md).
 
 -   **Integrované ověřování Windows**: pro aplikace používající integrované ověřování Windows (IWA), jednotné přihlašování je povolená prostřednictvím protokolu Kerberos omezené delegování (KCD). Tato metoda poskytuje oprávnění konektory Proxy aplikací služby Active Directory zosobňovalo a odesílat a přijímat tokeny jejich jménem. Podrobnosti o tom, jak nakonfigurovat KCD najdete v [jednotné přihlašování s KCD dokumentaci](application-proxy-configure-single-sign-on-with-kcd.md).
 

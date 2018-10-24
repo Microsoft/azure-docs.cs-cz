@@ -17,12 +17,12 @@ ms.date: 10/17/2018
 ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 73edb518a7e0c89b3ef510c6e528b6fa76f8dca5
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 7323f532787fa767d875e13262cce9f1ceaa79d8
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49393417"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49955509"
 ---
 # <a name="azure-active-directory-code-samples-v2-endpoint"></a>Ukázky kódu Azure Active Directory (koncového bodu V2)
 
@@ -108,7 +108,7 @@ Další informace o [ukázky](https://github.com/microsoftgraph/msgraph-communit
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 
-[Příručka pro vývojáře pro službu Azure Active Directory](azure-ad-developers-guide.md)
+[Příručka pro vývojáře pro službu Azure Active Directory](v1-overview.md)
 
 [Azure AD Graph API konceptuální a referenční dokumentace](https://msdn.microsoft.com/library/azure/hh974476.aspx)
 

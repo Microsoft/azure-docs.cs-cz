@@ -1,6 +1,6 @@
 ---
-title: Vytvoření aplikace Azure AD pro přístup k rozhraní API služby Azure Media Services pomocí prostředí PowerShell | Microsoft Docs
-description: Zjistěte, jak pomocí prostředí PowerShell k vytvoření aplikace Azure Active Directory (Azure AD) a nastavte jej tak přístup k rozhraní API služby Azure Media Services.
+title: Použití Powershellu k vytvoření aplikace Azure AD pro přístup k rozhraní API služby Azure Media Services | Dokumentace Microsoftu
+description: Další informace o použití Powershellu k vytvoření aplikace Azure Active Directory (Azure AD) a nastavte ho až přístup k rozhraní API služby Azure Media Services.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,23 +13,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/17/2017
 ms.author: juliako
-ms.openlocfilehash: 36f00c2b794730ae8191238c516cfedf871851bd
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 2aa777cf0c2068a5ee2382a9e75fc65db8a27207
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33790318"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49957297"
 ---
-# <a name="use-powershell-to-create-an-azure-ad-app-to-use-with-the-azure-media-services-api"></a>Vytvoření aplikace Azure AD pro použití s rozhraní API služby Azure Media Services pomocí prostředí PowerShell
+# <a name="use-powershell-to-create-an-azure-ad-app-to-use-with-the-azure-media-services-api"></a>Použití Powershellu k vytvoření aplikace Azure AD pomocí rozhraní API služby Azure Media Services
 
-Další informace o použití skriptu prostředí PowerShell k vytvoření objektu služby a aplikace Azure Active Directory (Azure AD) pro přístup k prostředkům Azure Media Services.  
+Zjistěte, jak pomocí skriptu prostředí PowerShell pro vytvoření aplikace Azure Active Directory (Azure AD) a instanční objekt služby pro přístup k prostředkům Azure Media Services.  
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Účet Azure. Pokud nemáte účet, začínat [bezplatné zkušební verzi Azure](https://azure.microsoft.com/pricing/free-trial/). 
-- Účet Media Services. Další informace najdete v tématu [vytvoření účtu Azure Media Services na webu Azure portal](media-services-portal-create-account.md).
+- Účet Azure. Pokud účet nemáte, začněte tématem [bezplatnou zkušební verzi Azure](https://azure.microsoft.com/pricing/free-trial/). 
+- Účet Media Services. Další informace najdete v tématu [vytvoření účtu Azure Media Services na webu Azure Portal](media-services-portal-create-account.md).
 - Azure PowerShell verze 0.8.8 nebo vyšší verze. Další informace najdete v tématu [jak pomocí prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview).
-- Rutiny Azure Resource Manager.  
+- Rutiny Azure Resource Manageru.  
 
 ## <a name="create-an-azure-ad-app-by-using-powershell"></a>Vytvoření aplikace Azure AD pomocí prostředí PowerShell  
 
@@ -55,9 +55,9 @@ $Retries = 0;While ($NewRole -eq $null -and $Retries -le 6)
 
 Další informace najdete v následujících článcích:
 
-- [Vytvoření instančního objektu pro přístup k prostředkům pomocí Azure PowerShellu](../../azure-resource-manager/resource-group-authenticate-service-principal.md)
-- [Správa řízení přístupu na základě Role pomocí prostředí Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md)
-- [Jak ručně nakonfigurovat démon aplikace pomocí certifikátů](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential/blob/master/Manual-Configuration-Steps.md#add-the-certificate-as-a-key-for-the-todolistdaemonwithcert-application-in-azure-ad)
+- [Vytvoření instančního objektu pro přístup k prostředkům pomocí Azure PowerShellu](../../active-directory/develop/howto-authenticate-service-principal-powershell.md)
+- [Správa řízení přístupu na základě Role pomocí Azure Powershellu](../../role-based-access-control/role-assignments-powershell.md)
+- [Postup při ruční konfiguraci aplikace démonů pomocí certifikátů](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential/blob/master/Manual-Configuration-Steps.md#add-the-certificate-as-a-key-for-the-todolistdaemonwithcert-application-in-azure-ad)
 
 ## <a name="next-steps"></a>Další postup
 

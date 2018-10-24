@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/15/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 581e9d052738b8e1976a766ea6e3525ecf76d741
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: dc369f5bc3d80a476e45d46cfe25541216484b1c
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49426426"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49958801"
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>Vytvoření samostatného účtu Azure Automation
 
@@ -37,7 +37,7 @@ Tyto účty vytvořené pro vás rychle začít vytvářet a nasazovat runbooky 
 Vytvořit nebo aktualizovat účet Automation a splnit úkoly popsané v tomto článku, musí mít následující oprávnění a oprávnění:
 
 * Chcete-li vytvořit účet Automation, musí váš uživatelský účet Azure AD přidají do role s oprávněním role vlastníka pro **Microsoft. Automatizace** prostředky. Další informace najdete v tématu [řízení přístupu na základě rolí ve službě Azure Automation](automation-role-based-access-control.md).
-* Na webu Azure Portal v části **Azure Active Directory** > **SPRAVOVAT** > **registrace aplikací**, pokud **registrace aplikací**  je nastavena na **Ano**, můžou uživatelé bez oprávnění správce ve vašem tenantovi Azure AD [registrovat aplikace služby Active Directory](../azure-resource-manager/resource-group-create-service-principal-portal.md#check-azure-subscription-permissions). Pokud **registrace aplikací** je nastavena na **ne**, uživatel, který provádí tuto akci musíte být globálním správcem ve službě Azure AD.
+* Na webu Azure Portal v části **Azure Active Directory** > **SPRAVOVAT** > **registrace aplikací**, pokud **registrace aplikací**  je nastavena na **Ano**, můžou uživatelé bez oprávnění správce ve vašem tenantovi Azure AD [registrovat aplikace služby Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#check-azure-subscription-permissions). Pokud **registrace aplikací** je nastavena na **ne**, uživatel, který provádí tuto akci musíte být globálním správcem ve službě Azure AD.
 
 Pokud nejste členem instance Active Directory předplatného před přidáním k roli globálního správce nebo spolusprávce předplatného, jsou přidány do služby Active Directory jako Host. V tomto scénáři se zobrazí tato zpráva na **přidat účet Automation** stránky: "Nemáte oprávnění k vytvoření."
 

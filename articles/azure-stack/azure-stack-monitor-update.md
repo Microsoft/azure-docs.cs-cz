@@ -5,27 +5,26 @@ services: azure-stack
 documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: ''
-ms.assetid: 449ae53e-b951-401a-b2c9-17fee2f491f1
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/17/2018
+ms.date: 10/22/2019
 ms.author: mabrigg
-ms.openlocfilehash: 8f384a79811c9a9b104acb98c8f6b6e162946ab8
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.reviewer: fiseraci
+ms.openlocfilehash: 76f3db3631e1d66413bdce8d3f2379c2735a2eaf
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42054257"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945599"
 ---
 # <a name="monitor-updates-in-azure-stack-using-the-privileged-endpoint"></a>Monitorování aktualizací ve službě Azure Stack pomocí privilegovaných koncového bodu
 
 *Platí pro: integrované systémy Azure Stack*
 
-Privileged koncového bodu můžete sledovat průběh spuštění aktualizace Azure Stack, a chcete obnovit aktualizace se nezdařila z poslední úspěšné kroku spuštění by měl Azure Stack portálu k dispozici.  Pomocí portálu Azure Stack je doporučená metoda ke správě aktualizací ve službě Azure Stack.
+Můžete použít [privilegovaných koncový bod](azure-stack-privileged-endpoint.md) můžete sledovat průběh služby Azure Stack Hromadná postupná aktualizace, a pokud chcete obnovit aktualizace se nezdařila z poslední úspěšné kroku spuštění by měl na portálu Azure Stack přestanou být dostupné.  Pomocí portálu Azure Stack je doporučená metoda ke správě aktualizací ve službě Azure Stack.
 
 Následující nové rutiny Powershellu pro správu aktualizací jsou součástí aktualizace 1710 pro integrované systémy Azure Stack.
 
@@ -168,7 +167,7 @@ Invoke-Command -Session $pepSession -ScriptBlock { Resume-AzureStackUpdate }
 
 ## <a name="troubleshoot"></a>Řešení potíží
 
-Privilegované koncový bod je k dispozici na všech ERCS virtuálních počítačů v prostředí Azure Stack. Vzhledem k tomu, že nebude připojení na koncový bod s vysokou dostupností, může dojít k občasnému přerušení, upozornění nebo chybové zprávy. Tyto zprávy může znamenat, že relace byla odpojená, nebo že došlo k chybě při komunikaci se službou OSN. Toto chování je očekávané. Můžete zkuste operaci zopakovat za několik minut nebo vytvořit novou relaci privileged koncový bod v jednom z jiné virtuální počítače ERCS. 
+Privilegované koncový bod je k dispozici na všech ERCS virtuálních počítačů v prostředí Azure Stack. Vzhledem k tomu, že nebude připojení na koncový bod s vysokou dostupností, může dojít k občasnému přerušení, upozornění nebo chybové zprávy. Tyto zprávy může znamenat, že relace byla odpojená, nebo že došlo k chybě při komunikaci se službou OSN. Jde o očekávané chování. Můžete zkuste operaci zopakovat za několik minut nebo vytvořit novou relaci privileged koncový bod v jednom z jiné virtuální počítače ERCS. 
 
 ## <a name="next-steps"></a>Další postup
 

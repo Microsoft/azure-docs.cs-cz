@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/21/2018
+ms.date: 10/22/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 5f51fbff11412324ad167d49202f7215cefb5ac2
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: beb2d618d93f4c599f946194bd483326471065f4
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49076914"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49944799"
 ---
 # <a name="set-up-sign-in-azure-active-directory-accounts-a-built-in-policy-in-azure-active-directory-b2c"></a>Nastavení přihlášení účtů Azure Active Directory předdefinovaných zásad v Azure Active Directory B2C
 
@@ -26,21 +26,18 @@ V tomto článku se dozvíte, jak povolit přihlášení pro uživatele z konkr�
 
 ## <a name="create-an-azure-ad-app"></a>Vytvoření aplikace Azure AD
 
-Povolit přihlášení pro uživatele z konkrétní organizace služby Azure AD, budete muset zaregistrovat aplikaci v rámci organizační tenanta Azure AD.
-
->[!NOTE]
->`Contoso.com` slouží k organizační tenanta Azure AD a `fabrikamb2c.onmicrosoft.com` slouží jako tenant Azure AD B2C v následujících pokynech.
+Povolit přihlášení pro uživatele z konkrétní organizace služby Azure AD, budete muset zaregistrovat aplikaci v rámci organizační tenanta Azure AD, který není stejný jako vám tenanta Azure AD B2C.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Ujistěte se, že používáte klikněte na filtr adresářů a předplatných v horní nabídce vyberte adresář, který obsahuje váš tenant Azure AD a adresáře, který obsahuje vašeho tenanta Azure AD (contoso.com).
+2. Ujistěte se, že používáte adresáře, který obsahuje klikněte na filtr adresářů a předplatných v horní nabídce vyberte adresář, který obsahuje váš tenant Azure AD a vašeho tenanta Azure AD.
 3. Zvolte **všechny služby** v horním levém horním rohu webu Azure portal a poté vyhledejte a vyberte **registrace aplikací**.
 4. Vyberte **Registrace nové aplikace**.
 5. Zadejte název své aplikace. Například, `Azure AD B2C App`.
 6. Pro **typ aplikace**vyberte `Web app / API`.
-7. Pro **přihlašovací adresa URL**, zadejte následující adresu URL malými písmeny, kde `your-tenant` se nahradí názvem vašeho tenanta Azure AD B2C (fabrikamb2c.onmicrosoft.com):
+7. Pro **přihlašovací adresa URL**, zadejte následující adresu URL malými písmeny, kde `your-B2C-tenant-name` se nahradí názvem vašeho tenanta Azure AD B2C. Například `https://fabrikam.b2clogin.com/fabrikam.b2clogin.com/oauth2/authresp`:
 
     ```
-    https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/oauth2/authresp
+    https://your-tenant-name.b2clogin.com/your-B2C-tenant-name.b2clogin.com/oauth2/authresp
     ```
 
     Všechny adresy URL by měla nyní být pomocí [b2clogin.com](b2clogin.md).
@@ -49,21 +46,22 @@ Povolit přihlášení pro uživatele z konkrétní organizace služby Azure AD,
 9. Vyberte aplikaci a pak vyberte **nastavení**.
 10. Vyberte **klíče**, zadejte popis klíče, vyberte dobu trvání a potom klikněte na tlačítko **Uložit**. Zkopírujte hodnotu klíče, který se zobrazí pro pozdější použití.
 
-## <a name="configure-azure-ad-as-an-identity-provider-in-your-tenant"></a>Konfigurace služby Azure AD jako zprostředkovatele identity ve vašem tenantovi
+## <a name="configure-azure-ad-as-an-identity-provider"></a>Konfigurace služby Azure AD jako zprostředkovatele identity
 
-1. Ujistěte se, že používáte adresáře tenanta Azure AD B2C (fabrikamb2c.onmicrosoft.com) kliknutím **filtr adresářů a předplatných** v horní nabídce a výběrem adresáře, který obsahuje vaše Azure AD B2C tenanta.
+1. Ujistěte se, že používáte adresáře tenanta Azure AD B2C kliknutím **filtr adresářů a předplatných** v horní nabídce a výběrem adresáře, který obsahuje vašeho tenanta Azure AD B2C.
 2. Zvolte **všechny služby** v horním levém horním rohu webu Azure portal a poté vyhledejte a vyberte **Azure AD B2C**.
 3. Vyberte **zprostředkovatelé Identity**a pak vyberte **přidat**.
 4. Zadejte **název**. Zadejte například "Contoso Azure AD".
 5. Vyberte **typ zprostředkovatele identit**vyberte **Open ID Connect (verze Preview)** a potom klikněte na tlačítko **OK**.
 6. Klikněte na tlačítko **nastavit tohoto zprostředkovatele identity**
-7. Pro **adresa url metadat**, zadejte následující adresu URL nahrazení `your-tenant` s názvem vašeho tenanta Azure AD:
+7. Pro **adresa url metadat**, zadejte následující adresu URL nahrazení `your-AD-tenant-domain` s názvem domény vašeho tenanta Azure AD. Například `https://login.microsoftonline.com/contoso.onmicrosoft.com/.well-known/openid-configuration`:
 
     ```
-    https://login.microsoftonline.com/your-tenant/.well-known/openid-configuration
+    https://login.microsoftonline.com/your-AD-tenant-domain/.well-known/openid-configuration
     ```
+
 8. Pro **id klienta**, zadejte ID aplikace, které jste si dříve poznamenali a **tajný kód klienta**, zadejte hodnotu klíče, který jste si předtím poznamenali.
-9. Volitelně můžete zadat hodnotu pro **Domain_hint** (třeba `ContosoAD`). Jedná se o hodnotu použít k odkazování na tento zprostředkovatelů identity pomocí *domain_hint* v požadavku. 
+9. Volitelně můžete zadat hodnotu pro **Domain_hint**. Například, `ContosoAD`. Jedná se o hodnotu použít k odkazování na tento zprostředkovatelů identity pomocí *domain_hint* v požadavku. 
 10. Klikněte na **OK**.
 11. Vyberte **mapování deklarací od zprostředkovatele identity** a nastavte následující deklarace:
     

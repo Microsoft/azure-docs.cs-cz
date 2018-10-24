@@ -11,24 +11,20 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/15/2018
+ms.date: 10/22/2018
 ms.author: jingwang
-ms.openlocfilehash: c9252380581e77049e9464316ca77cc135f784b6
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 82fb2241b5988bae9587807c03e7bec50e7c1677
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49377584"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49955370"
 ---
 # <a name="copy-data-from-office-365-into-azure-using-azure-data-factory-preview"></a>Zkopírovat data z Office 365 do Azure pomocí Azure Data Factory (Preview) 
 
 Azure Data Factory umožňuje vložit bohaté datům organizace v Office 365 tenanta do Azure v škálovatelným způsobem a vytvářet analytické aplikace a extrahování přehledů, které jsou založené na těchto prostředcích cenná data. Integrace s Privileged Access Management zajišťující řízení zabezpečeného přístupu cenné zpracovaná data v Office 365.  Další informace o datech Microsoft Graphu připojení, najdete [tento odkaz](https://github.com/OfficeDev/ManagedAccessMSGraph/wiki).
 
 Tento článek ukazuje, jak použít aktivitu kopírování ke zkopírování dat z Office 365 ve službě Azure Data Factory. Je nástavbou [přehled aktivit kopírování](copy-activity-overview.md) článek, který nabízí obecný přehled o aktivitě kopírování.
-
-Pro zavedení devět po minutách a ukázku o připojení služby Data Factory k datům Office 365 z následujícího videa:
-
-> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Get-cloud-scale-analytics-of-Office-365-data-with-Azure-Data-Factory/player]
 
 ## <a name="supported-capabilities"></a>Podporované funkce
 
@@ -45,10 +41,10 @@ Prozatím se v rámci jednoho kopírování můžete pouze **kopírování dat z
 Chcete-li kopírovat data z Office 365 do Azure, proveďte následující nutné kroky:
 
 - Váš správce tenanta Office 365 musíte provést akce v rámci zprovozňování, jak je popsáno [tady](https://github.com/OfficeDev/ManagedAccessMSGraph/wiki/On-boarding).
-- Vytvoření a konfigurace webové aplikace Azure AD ve službě Azure Active Directory.  Pokyny najdete v tématu [vytvořit aplikaci Azure AD](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-azure-active-directory-application).
+- Vytvoření a konfigurace webové aplikace Azure AD ve službě Azure Active Directory.  Pokyny najdete v tématu [vytvořit aplikaci Azure AD](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application).
 - Poznamenejte si následující hodnoty, které se používají k definování propojené služby pro Office 365:
-    - ID tenanta.  Pokyny najdete v tématu [získání ID tenanta](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-tenant-id).
-    - Klíč ID aplikace a aplikace.  Pokyny najdete v tématu [Get aplikace ID a ověřovacího klíče](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-application-id-and-authentication-key).
+    - ID tenanta.  Pokyny najdete v tématu [získání ID tenanta](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-id).
+    - Klíč ID aplikace a aplikace.  Pokyny najdete v tématu [Get aplikace ID a ověřovacího klíče](../active-directory/develop/howto-create-service-principal-portal.md#get-application-id-and-authentication-key).
 - Přidejte identitu uživatele, kteří budou využívat žádost o přístup dat jako vlastník webovou aplikaci Azure AD (ze služby Azure AD webová aplikace > Nastavení > vlastníky > Přidat vlastníka).
 
 ## <a name="approving-new-data-access-requests"></a>Schvalování nové žádosti o data access

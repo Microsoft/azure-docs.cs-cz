@@ -1,6 +1,6 @@
 ---
-title: Správa .NET v1.x SDK pro Azure Stream Analytics
-description: Začínáme s .NET SDK služby Stream Analytics správy. Zjistěte, jak nastavit a spustit úlohy analytics. Vytvoření projektu, vstupy, výstupy a transformace.
+title: Správa .NET v1.x sady SDK pro Azure Stream Analytics
+description: Začínáme se Stream Analytics Management .NET SDK. Zjistěte, jak nastavit a spustit úlohy analýzy. Vytvoří projekt, vstupy, výstupy a transformace.
 services: stream-analytics
 author: jseb225
 ms.author: jeanb
@@ -9,29 +9,29 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/06/2017
-ms.openlocfilehash: a8f272403a0c6903521acc7cc45935c4e5bc419c
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: c4fa101d6864030b2b247a302d0048ba2123a05b
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31528099"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49958597"
 ---
-# <a name="management-net-sdk-v1x-set-up-and-run-analytics-jobs-using-the-azure-stream-analytics-api-for-net"></a>Správa .NET SDK v1.x: nastavit až a spouštění úloh analytics pomocí rozhraní API služby Azure Stream Analytics pro .NET
-Zjistěte, jak nastavit a spustit úlohy analytics pomocí rozhraní API služby Stream Analytics pro .NET pomocí .NET SDK služby správy. Nastavení projektu, vytvořte vstupní a výstupní zdrojů, transformace a spuštění a zastavení úloh. Pro úlohy analýzy může Streamovat data z úložiště objektů Blob nebo z centra událostí.
+# <a name="management-net-sdk-v1x-set-up-and-run-analytics-jobs-using-the-azure-stream-analytics-api-for-net"></a>Správa sady .NET SDK v1.x: nastavte nahoru a spouštění úloh analytics pomocí rozhraní API služby Azure Stream Analytics pro .NET
+Zjistěte, jak nastavit a spustit úlohy analytics pomocí rozhraní API pro Stream Analytics pro .NET pomocí sady .NET SDK správy. Nastavení projektu, vytvoření vstupní a výstupní zdroje, transformace a spuštění a zastavení úloh. Pro úlohy analýzy můžete Streamovat data z úložiště objektů Blob nebo z centra událostí.
 
-Najdete v článku [správu referenční dokumentaci rozhraní API služby Stream Analytics pro .NET](https://msdn.microsoft.com/library/azure/dn889315.aspx).
+Zobrazit [správu referenční dokumentace pro rozhraní API pro Stream Analytics pro .NET](https://msdn.microsoft.com/library/azure/dn889315.aspx).
 
-Azure Stream Analytics je plně spravovaná služba poskytuje zpracování událostí s nízkou latencí, vysoce dostupná, škálovatelná, komplexní přes streamování dat v cloudu. Stream Analytics umožňuje zákazníkům nastavit úloh streamování k analýze datové proudy a umožňuje, aby jednotka téměř analýzu v reálném čase.  
+Azure Stream Analytics je plně spravovaná služba poskytující zpracování událostí s nízkou latencí, vysoce dostupné, škálovatelné a komplexní přes streamovaných dat v cloudu. Stream Analytics umožňuje zákazníkům nastavit streamovacích úloh pro analýzu datových proudů a umožňuje jejich jednotka analýzy téměř reálném čase.  
 
 > [!NOTE]
-> Ukázkový kód v tomto článku se pořád používají starší verze (1.x) verzi .NET SDK služby Azure Stream Analytics správy. Ukázku kódu pomocí aktuální verze sady SDK, najdete v tématu [používat sadu .NET SDK správy pro Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-dotnet-management-sdk).
+> Ukázkový kód v tomto článku stále používá starší verze (1.x) verzi Management .NET SDK služby Azure Stream Analytics. Ukázkový kód pomocí aktuální verze sady SDK, najdete v tématu [použití sady .NET SDK pro správu pro Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-dotnet-management-sdk).
 
 ## <a name="prerequisites"></a>Požadavky
 Je nutné, abyste před zahájením tohoto článku měli tyto položky:
 
-* Nainstalujte Visual Studio 2017 nebo 2015.
-* Stáhněte a nainstalujte [Azure .NET SDK](https://azure.microsoft.com/downloads/).
-* Vytvořte skupinu prostředků Azure v rámci vašeho předplatného. Toto je ukázkový skript prostředí Azure PowerShell. Prostředí Azure PowerShell informace najdete v tématu [nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/overview);  
+* Instalace sady Visual Studio 2017 nebo 2015.
+* Stáhněte a nainstalujte [sady Azure .NET SDK](https://azure.microsoft.com/downloads/).
+* Vytvořte skupinu prostředků Azure v rámci vašeho předplatného. Následuje ukázkový skript Azure Powershellu. Informace o Azure Powershellu najdete v tématu [nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/overview);  
 
         # Log in to your Azure account
         Add-AzureAccount
@@ -46,13 +46,13 @@ Je nutné, abyste před zahájením tohoto článku měli tyto položky:
         New-AzureResourceGroup -Name <YOUR RESOURCE GROUP NAME> -Location <LOCATION>
 
 
-* Nastavení služby vstupní zdroj a cíl výstupu úlohy se připojit k.
+* Nastavení vstupní zdroj a cíl výstupu úlohy pro připojení k.
 
 ## <a name="set-up-a-project"></a>Nastavení projektu
-Chcete-li vytvořit úlohu analytics použít rozhraní API analýzy datového proudu pro platformu .NET, nejprve nastavte projekt.
+Vytvoření úlohy služby analytics pomocí rozhraní API pro Stream Analytics pro platformu .NET, nejprve nastavte svůj projekt.
 
 1. Vytvořte konzolovou aplikaci Visual Studio C# .NET.
-2. V konzole Správce balíčků spusťte následující příkazy instalace balíčků NuGet. První z nich je Azure Stream Analytics správu .NET SDK. Druhá je klient Azure Active Directory, který se použije pro ověřování.
+2. V konzole Správce balíčků pomocí následujících příkazů nainstalujte balíčky NuGet. První z nich je Azure Stream Analytics Management .NET SDK. Druhá je klient služby Azure Active Directory, který se použije pro ověřování.
    
         Install-Package Microsoft.Azure.Management.StreamAnalytics -Version 1.8.3
         Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 2.28.4
@@ -69,11 +69,11 @@ Chcete-li vytvořit úlohu analytics použít rozhraní API analýzy datového p
           <add key="ActiveDirectoryTenantId" value="YOU TENANT ID" />
         </appSettings>
 
-    Nahraďte hodnoty pro **SubscriptionId** a **ActiveDirectoryTenantId** s Azure ID předplatného a klienta. Tyto hodnoty můžete získat spuštěním následující rutiny prostředí Azure PowerShell:
+    Nahraďte hodnoty **SubscriptionId** a **ActiveDirectoryTenantId** s Azure ID předplatného a tenanta. Tyto hodnoty můžete získat spuštěním následující rutiny Azure Powershellu:
 
         Get-AzureAccount
 
-4. Do souboru .csproj přidejte následující odkaz:
+4. V souboru .csproj přidejte následující odkaz:
 
         <Reference Include="System.Configuration" />
 
@@ -87,7 +87,7 @@ Chcete-li vytvořit úlohu analytics použít rozhraní API analýzy datového p
         using Microsoft.Azure.Management.StreamAnalytics;
         using Microsoft.Azure.Management.StreamAnalytics.Models;
         using Microsoft.IdentityModel.Clients.ActiveDirectory;
-2. Přidejte Pomocná metoda ověřování:
+2. Přidejte metodu helper ověřování:
 
    ```   
    private static async Task<string> GetAuthorizationHeader()
@@ -110,9 +110,9 @@ Chcete-li vytvořit úlohu analytics použít rozhraní API analýzy datového p
    ```  
 
 ## <a name="create-a-stream-analytics-management-client"></a>Vytvoření klienta správy Stream Analytics
-A **StreamAnalyticsManagementClient** objekt umožňuje spravovat úlohy a úlohy součástí, např. vstupní, výstupní a transformace.
+A **StreamAnalyticsManagementClient** objekt vám umožní spravovat úlohy a úlohy komponenty, například vstup, výstup a transformace.
 
-Přidejte následující kód do začátku **hlavní** metoda:
+Přidejte následující kód do začátku **hlavní** metody:
 
     string resourceGroupName = "<YOUR AZURE RESOURCE GROUP NAME>";
     string streamAnalyticsJobName = "<YOUR STREAM ANALYTICS JOB NAME>";
@@ -128,14 +128,14 @@ Přidejte následující kód do začátku **hlavní** metoda:
     // Create Stream Analytics management client
     StreamAnalyticsManagementClient client = new StreamAnalyticsManagementClient(aadTokenCredentials);
 
-**ResourceGroupName** hodnota proměnné by měl být stejný jako název skupiny prostředků vytvořené nebo zachyceny v požadovaných předchozích kroků.
+**ResourceGroupName** hodnota proměnné by měl být stejný jako název skupiny prostředků vytvořené nebo vydat v požadované kroky.
 
-Automatizovat aspekt úlohy vytvoření přihlašovacích údajů prezentace, najdete v tématu [ověřování hlavní název služby pomocí Azure Resource Manageru](../azure-resource-manager/resource-group-authenticate-service-principal.md).
+Automatizace prezentaci aspekty přihlašovacích údajů od vytvoření úlohy, najdete v tématu [ověřování instančního objektu pomocí Azure Resource Manageru](../active-directory/develop/howto-authenticate-service-principal-powershell.md).
 
-Zbývající části tohoto článku předpokládá, že tento kód je na začátku **hlavní** metoda.
+Zbývající části tohoto článku se předpokládá, že tento kód je na začátku **hlavní** metody.
 
 ## <a name="create-a-stream-analytics-job"></a>Vytvoření úlohy Stream Analytics
-Následující kód vytvoří úlohu služby Stream Analytics v rámci skupiny prostředků, který jste definovali. Do úlohy budou později přidat vstupní, výstupní a transformace.
+Následující kód vytvoří úlohu Stream Analytics ve skupině prostředků, které jste definovali. Do úlohy budou později přidat vstup, výstup a transformace.
 
     // Create a Stream Analytics job
     JobCreateOrUpdateParameters jobCreateParameters = new JobCreateOrUpdateParameters()
@@ -159,7 +159,7 @@ Následující kód vytvoří úlohu služby Stream Analytics v rámci skupiny p
 
 
 ## <a name="create-a-stream-analytics-input-source"></a>Vytvoření vstupní zdroj Stream Analytics
-Následující kód vytvoří Stream Analytics vstupní zdroj s typ vstupního zdroje blob a serializace sdíleného svazku clusteru. Chcete-li vytvořit vstupní zdroje centra událostí, použijte **EventHubStreamInputDataSource** místo **BlobStreamInputDataSource**. Podobně můžete přizpůsobit serializace typ vstupního zdroje.
+Následující kód vytvoří Stream Analytics vstupní zdroj s typem vstupní zdroj blob a serializace sdíleného svazku clusteru. Chcete-li vytvořit vstupní zdroj centra událostí, použijte **EventHubStreamInputDataSource** místo **BlobStreamInputDataSource**. Podobně můžete přizpůsobit typ serializace vstupních zdrojů.
 
     // Create a Stream Analytics input source
     InputCreateOrUpdateParameters jobInputCreateParameters = new InputCreateOrUpdateParameters()
@@ -200,19 +200,19 @@ Následující kód vytvoří Stream Analytics vstupní zdroj s typ vstupního z
     InputCreateOrUpdateResponse inputCreateResponse =
         client.Inputs.CreateOrUpdate(resourceGroupName, streamAnalyticsJobName, jobInputCreateParameters);
 
-Vstupní zdroje, ať už z úložiště objektů Blob nebo centra událostí, jsou svázané s určité úlohy. Pokud chcete použít stejný vstupní zdroj pro různé úlohy, musí volat metodu znovu a zadejte jiný název úlohy.
+Vstupní zdroje z úložiště objektů Blob nebo centra událostí jsou vázané na konkrétní úlohy. Použití stejného vstupního zdroje pro různé úlohy, musí volat metodu znovu a zadejte jiný název úlohy.
 
-## <a name="test-a-stream-analytics-input-source"></a>Testování vstupního zdroje Stream Analytics
-**TestConnection** Metoda testuje, jestli úloha Stream Analytics se může připojit ke zdroji vstupní stejně jako další aspekty, které jsou specifické pro daný typ vstupního zdroje. Například v objektu blob vstupního zdroje, které jste vytvořili v předchozím kroku, metoda zkontroluje, že název účtu úložiště a pár klíčů slouží k připojení k účtu úložiště a také zkontrolujte, jestli zadaný kontejner existuje.
+## <a name="test-a-stream-analytics-input-source"></a>Testovat vstupní zdroj Stream Analytics
+**TestConnection** Metoda testuje, jestli úloha Stream Analytics se bude moct připojit ke zdroji vstupních také další aspekty, které jsou specifické pro daný typ vstupního zdroje. Například v objektu blob vstupní zdroj, který jste vytvořili v předchozím kroku, metoda zkontroluje, že název účtu úložiště a pár klíčů slouží k připojení k účtu úložiště také zkontrolujte, jestli existuje zadaný kontejner.
 
     // Test input source connection
     DataSourceTestConnectionResponse inputTestResponse =
         client.Inputs.TestConnection(resourceGroupName, streamAnalyticsJobName, streamAnalyticsInputName);
 
 ## <a name="create-a-stream-analytics-output-target"></a>Vytvořit cíl výstupu Stream Analytics
-Vytvoření cíl výstupu je velmi podobné vytváření vstupní zdroj Stream Analytics. Jako vstupní zdrojů jsou svázané cíle výstup do konkrétní úlohy. Pokud chcete použít stejný cíl výstupu pro různé úlohy, musí volat metodu znovu a zadejte jiný název úlohy.
+Vytvoření cíl výstupu je velmi podobné jako vytvoření vstupní zdroj Stream Analytics. Jako vstupní zdroje jsou výstup cíle vázané na konkrétní úlohy. Použití stejného cíle výstup pro různé úlohy, musí volat metodu znovu a zadejte jiný název úlohy.
 
-Následující kód vytvoří cíl výstupu (Azure SQL database). Můžete upravit cíl výstupní datový typ nebo typ serializace.
+Následující kód vytvoří cíl výstupu (Azure SQL database). Můžete upravit cíl výstupu datový typ nebo typ serializace.
 
     // Create a Stream Analytics output target
     OutputCreateOrUpdateParameters jobOutputCreateParameters = new OutputCreateOrUpdateParameters()
@@ -247,8 +247,8 @@ Cíl výstupu Stream Analytics má také **TestConnection** metoda pro testován
     DataSourceTestConnectionResponse outputTestResponse =
         client.Outputs.TestConnection(resourceGroupName, streamAnalyticsJobName, streamAnalyticsOutputName);
 
-## <a name="create-a-stream-analytics-transformation"></a>Vytvořte transformaci Stream Analytics
-Následující kód vytvoří transformaci Stream Analytics s dotaz "vybrat * z vstup" a určuje přidělit jednu jednotku streamování pro úlohu služby Stream Analytics. Další informace o úpravě jednotek streamování, najdete v části [úlohy škálování Azure Stream Analytics](stream-analytics-scale-jobs.md).
+## <a name="create-a-stream-analytics-transformation"></a>Vytvoření transformace Stream Analytics
+Následující kód vytvoří transformaci Stream Analytics s dotazem "vybrat * z zadání" a určuje se přidělit jednu jednotku streamování pro úlohy Stream Analytics. Další informace o úpravě jednotek streamování najdete v tématu [úlohy škálování Azure Stream Analytics](stream-analytics-scale-jobs.md).
 
     // Create a Stream Analytics transformation
     TransformationCreateOrUpdateParameters transformationCreateParameters = new TransformationCreateOrUpdateParameters()
@@ -267,12 +267,12 @@ Následující kód vytvoří transformaci Stream Analytics s dotaz "vybrat * z 
     var transformationCreateResp =
         client.Transformations.CreateOrUpdate(resourceGroupName, streamAnalyticsJobName, transformationCreateParameters);
 
-Jako vstup a výstup je vázaný na konkrétní úlohy Stream Analytics, který byl vytvořen v rámci také transformace.
+Jako vstup a výstup se váže na konkrétní úlohy Stream Analytics, který byl vytvořený v rámci také transformace.
 
-## <a name="start-a-stream-analytics-job"></a>Spustit úlohu služby Stream Analytics
-Po vytvoření úlohy služby Stream Analytics a jeho input(s), výstupem a transformace, můžete spustit úlohu voláním **spustit** metoda.
+## <a name="start-a-stream-analytics-job"></a>Spustit úlohu Stream Analytics
+Po vytvoření úlohy Stream Analytics a jeho nahráním, výstupy a transformace, můžete spustit úlohy voláním **Start** metody.
 
-Následující ukázkový kód spustí úlohu služby Stream Analytics s časem zahájení vlastní výstup nastavena na 12 prosinec 2012, 12:12:12 UTC:
+Následující ukázkový kód spustí úlohu Stream Analytics s časem zahájení vlastního výstupu nastavena na 12. prosince 2012, 12:12:12 UTC:
 
     // Start a Stream Analytics job
     JobStartParameters jobStartParameters = new JobStartParameters
@@ -284,27 +284,27 @@ Následující ukázkový kód spustí úlohu služby Stream Analytics s časem 
     LongRunningOperationResponse jobStartResponse = client.StreamingJobs.Start(resourceGroupName, streamAnalyticsJobName, jobStartParameters);
 
 ## <a name="stop-a-stream-analytics-job"></a>Zastavení úlohy Stream Analytics
-Spuštěná úloha Stream Analytics můžete zastavit voláním **Zastavit** metoda.
+Spuštěná úloha Stream Analytics můžete zastavit pomocí volání **Zastavit** metody.
 
     // Stop a Stream Analytics job
     LongRunningOperationResponse jobStopResponse = client.StreamingJobs.Stop(resourceGroupName, streamAnalyticsJobName);
 
-## <a name="delete-a-stream-analytics-job"></a>Odstranit úlohu služby Stream Analytics
-**Odstranit** metoda odstraní úlohu, jakož i základní dílčí prostředků, včetně input(s), výstupem a transformaci úlohy.
+## <a name="delete-a-stream-analytics-job"></a>Odstranění úlohy Stream Analytics
+**Odstranit** metoda dojde k odstranění úlohy, jakož i základní dílčí prostředky, včetně nahráním, výstupy a transformace úlohy.
 
     // Delete a Stream Analytics job
     LongRunningOperationResponse jobDeleteResponse = client.StreamingJobs.Delete(resourceGroupName, streamAnalyticsJobName);
 
 ## <a name="get-support"></a>Získat podporu
-Pro další pomoc, vyzkoušejte naše [fórum Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
+Potřebujete další pomoc, vyzkoušejte naše [fóru Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
 ## <a name="next-steps"></a>Další postup
-Když jste se naučili základy používání služby pomocí sady .NET SDK k vytváření a spouštění úloh analytics. Další informace najdete v těchto článcích:
+Když jste se naučili základy používání sady .NET SDK k vytváření a spouštění úloh analytics. Další informace najdete v těchto článcích:
 
 * [Úvod do služby Azure Stream Analytics](stream-analytics-introduction.md)
 * [Začínáme používat službu Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Škálování služby Stream Analytics](stream-analytics-scale-jobs.md)
-* [Správa Azure Stream Analytics sady .NET SDK](https://msdn.microsoft.com/library/azure/dn889315.aspx).
+* [Sady .NET SDK pro správu Azure Stream Analytics](https://msdn.microsoft.com/library/azure/dn889315.aspx).
 * [Referenční příručka k jazyku Azure Stream Analytics Query Language](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 * [Referenční příručka k rozhraní REST API pro správu služby Azure Stream Analytics](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 

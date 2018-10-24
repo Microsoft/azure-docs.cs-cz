@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/04/2018
 ms.author: cherylmc
 Customer intent: As a Virtual WAN software-defined connectivity provider, I want to set up a provisioning environment.
-ms.openlocfilehash: 0ea1b69b788255b1d8d24e17fcc1409d35a4fd36
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: a4664e628af5824b7b197cbdb5c5af602a3a4476
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48814317"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49958682"
 ---
 # <a name="virtual-wan-partners"></a>Virtuální sítě WAN partnerů
 
@@ -46,7 +46,7 @@ Větev zařízení (zařízení VPN zákazníka v místním nebo SDWAN CPE) obvy
 
 ###  <a name="access"></a>Řízení přístupu
 
-Zákazníci musí mít možnost nastavit řízení přístupu na příslušné virtuální sítě WAN do uživatelského zařízení. Tato možnost se doporučuje pomocí instančního objektu služby Azure. Přístup na základě instanční objekt služby poskytuje příslušný ověřovací řadiče zařízení k odeslání informací o pobočkách. Další informace najdete v tématu [vytvořit instanční objekt](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-azure-active-directory-application). Tato funkce je mimo Azure virtuální sítě WAN nabídky, uvádíme níže Typická opatření k nastavení přístupu v Azure, po jejímž uplynutí je detekován relevantní podrobnosti na řídicí panel pro správu zařízení
+Zákazníci musí mít možnost nastavit řízení přístupu na příslušné virtuální sítě WAN do uživatelského zařízení. Tato možnost se doporučuje pomocí instančního objektu služby Azure. Přístup na základě instanční objekt služby poskytuje příslušný ověřovací řadiče zařízení k odeslání informací o pobočkách. Další informace najdete v tématu [vytvořit instanční objekt](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application). Tato funkce je mimo Azure virtuální sítě WAN nabídky, uvádíme níže Typická opatření k nastavení přístupu v Azure, po jejímž uplynutí je detekován relevantní podrobnosti na řídicí panel pro správu zařízení
 
 * Vytvoření aplikace Azure Active Directory pro vaše místní zařízení kontroler.
 * Získejte ID a ověřovacího klíče aplikace

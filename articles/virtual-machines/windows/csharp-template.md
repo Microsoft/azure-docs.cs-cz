@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/14/2017
 ms.author: zarhoads
-ms.openlocfilehash: a91d8452d7b85d3e7ff21dc523429be42d34336b
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: f3d83fa8ba5a78c7aacc7014e9ec50fb447bb1c6
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49468887"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49953684"
 ---
 # <a name="deploy-an-azure-virtual-machine-using-c-and-a-resource-manager-template"></a>Nasazení virtuálního počítače Azure pomocí jazyka C# a šablony Resource Manageru
 V tomto článku se dozvíte, jak nasadit šablonu Azure Resource Manageru pomocí jazyka C#. Šablona, kterou vytvoříte nasadí jeden virtuální počítač s Windows serverem v nové virtuální sítě s jedinou podsítí.
@@ -185,7 +185,7 @@ Zadání hodnot pro parametry prostředků, které jsou definovány v šabloně,
 
 ### <a name="create-the-authorization-file"></a>Vytvoření souboru autorizace
 
-Než bude možné nasadit šablonu, ujistěte se, že máte přístup k [instanční objekt služby Active Directory](../../resource-group-authenticate-service-principal.md). Z instančního objektu získání tokenu pro ověřování požadavků na Azure Resource Manager. Také byste měli zaznamenávat ID aplikace, ověřovací klíč a ID tenanta, které potřebujete v souboru autorizace.
+Než bude možné nasadit šablonu, ujistěte se, že máte přístup k [instanční objekt služby Active Directory](../../active-directory/develop/howto-authenticate-service-principal-powershell.md). Z instančního objektu získání tokenu pro ověřování požadavků na Azure Resource Manager. Také byste měli zaznamenávat ID aplikace, ověřovací klíč a ID tenanta, které potřebujete v souboru autorizace.
 
 1. V Průzkumníku řešení klikněte pravým tlačítkem na *myDotnetProject* > **přidat** > **nová položka**a pak vyberte **textovýsoubor** v *položky Visual C#*. Název souboru *azureauth.properties*a potom klikněte na tlačítko **přidat**.
 2. Přidejte tyto vlastnosti autorizace:

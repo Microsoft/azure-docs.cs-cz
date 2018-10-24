@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/13/2018
 ms.author: shvija
-ms.openlocfilehash: 79cddcac4d469753bc39107e6db2d8ce901111d1
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: d9685d5c5a673b0ec27e973bbbfd327547c63652
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42746412"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49955350"
 ---
 # <a name="event-hubs-management-libraries"></a>Knihovny pro správu Event Hubs
 
@@ -30,8 +30,8 @@ Knihovny správy služby Azure Event Hubs můžete dynamicky zřizovat obory ná
 
 Abyste mohli začít používat knihovny správy služby Event Hubs, musí ověřit pomocí Azure Active Directory (AAD). AAD vyžaduje ověřování jako instanční objekt, který poskytuje přístup k prostředkům Azure. Informace o vytvoření instančního objektu služby najdete v některém z těchto článků:  
 
-* [Pomocí webu Azure portal k vytvoření aplikace Active Directory a instančního objektu, který má přístup k prostředkům](../azure-resource-manager/resource-group-create-service-principal-portal.md)
-* [Vytvoření instančního objektu pro přístup k prostředkům pomocí Azure PowerShellu](../azure-resource-manager/resource-group-authenticate-service-principal.md)
+* [Pomocí webu Azure portal k vytvoření aplikace Active Directory a instančního objektu, který má přístup k prostředkům](../active-directory/develop/howto-create-service-principal-portal.md)
+* [Vytvoření instančního objektu pro přístup k prostředkům pomocí Azure PowerShellu](../active-directory/develop/howto-authenticate-service-principal-powershell.md)
 * [Vytvoření instančního objektu pro přístup k prostředkům pomocí rozhraní příkazového řádku Azure](../azure-resource-manager/resource-group-authenticate-service-principal-cli.md)
 
 Tyto kurzy vám poskytují `AppId` (ID klienta), `TenantId`, a `ClientSecret` (ověřovací klíč), které se používají pro ověřování pomocí knihovny pro správu. Musíte mít **vlastníka** oprávnění pro skupinu prostředků, na kterém chcete spustit.
