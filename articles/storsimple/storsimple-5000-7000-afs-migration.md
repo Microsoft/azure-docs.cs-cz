@@ -87,7 +87,7 @@ Proveďte následující kroky pro migraci Windows sdílené nakonfigurované na
     Tento krok přeskočit a přejít k dalšímu kroku, pokud používáte jiného hostitele Windows serveru. Pokud používáte stejný souborový Server Windows pro AFS, nastane nyní pár minut prostojů. 
     - **Výpadek nastane** – odstranit koncový bod serveru, který jste vytvořili v *krok 1F*. 
     - Vytvořte nový koncový bod serveru se cesta kde chcete data uložená směrem vpřed.
-    - Jakmile se koncový bod serveru se zobrazí jako v pořádku (to může trvat několik minut), zobrazí se data v tomto novém umístění. Teď můžete nakonfigurovat hostitele Windows serveru k poskytování souborů z tohoto nového umístění. - **Výpadek skončí**.
+    - Jakmile se koncový bod serveru se zobrazí jako v pořádku (to může trvat několik minut), zobrazí se data v tomto novém umístění. Teď můžete nakonfigurovat hostitele Windows serveru k poskytování souborů z tohoto nového umístění. -  **Výpadek skončí**.
 5.  Pokud používáte jiný souborový Server Windows pro Azure File Sync, nebude docházet žádné výpadky. 
     - Přidáte jiný koncový bod serveru se cesta k místní úložiště, které jsou připravené k použití jako mezipaměť namísto zařízení StorSimple. 
     - Budete moci zobrazit soubory do nového serveru během několika minut. Můžete libovolně udělovat ulehčili přechod z vašeho zařízení StorSimple do tohoto nového umístění v hostiteli v každém okamžiku.
