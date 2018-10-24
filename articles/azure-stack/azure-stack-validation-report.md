@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 05/08/2018
 ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: 156b84e4941363716721b5cee6c19333ffe7594c
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: a3285c5f6f2d50d3188f8e103c68ae702e8804e7
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49079442"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49952998"
 ---
 # <a name="azure-stack-validation-report"></a>Sestava ověření služby Azure Stack
 Použijte nástroj prerequisite Checker připravenosti Azure Stack spustit ověření, které podporují nasazení a údržby prostředí Azure Stack. Nástroj zapisuje výsledky do sestavy soubor .json. Sestava zobrazí podrobné a souhrnné údaje o stavu všech požadovaných součástí pro nasazení služby Azure Stack. Sestava také zobrazí informace o otočení tajné kódy pro existující nasazení Azure Stack.  
@@ -40,19 +40,81 @@ Ve výchozím nastavení, oba soubory jsou zapsány do *C:\Users\<uživatelské 
 Chcete-li zobrazit sestavy v prostředí PowerShell, zadejte cestu k sestavě jako hodnotu **– možnost ReportPath**. Tento příkaz zobrazí obsah sestavy a identifikuje ověření, která ještě nemají výsledky.
 
 Například chcete-li zobrazit sestavu z příkazového řádku Powershellu, která je otevřená do umístění, kde se sestava nachází, spusťte tento příkaz: 
-   > `Start-AzsReadinessChecker -ReportPath .\AzsReadinessReport.json` 
+   > `Read-AzsReadinessReport -ReportPath .\AzsReadinessReport.json` 
 
-Výstup vypadá podobně jako na následujícím obrázku:
+Výstup vypadá přibližně takto:
 
-![Zobrazit sestavu](./media/azure-stack-validation-report/view-report.png)
+````PowerShell
+Reading All Validation(s) from Report C:\Contoso-AzsReadinessCheckerReport.json
+
+############### Certificate Validation Summary ###############
+
+Certificate Validation results not available.
+
+############### Registration Validation Summary ###############
+
+Azure Registration Validation results not available.
+
+############### Azure Identity Results ###############
+
+Test                          : ServiceAdministrator
+Result                        : OK
+AAD Service Admin             : admin@contoso.onmicrosoft.com
+Azure Environment             : AzureCloud
+Azure Active Directory Tenant : contoso.onmicrosoft.com
+Error Details                 : 
+
+############### Azure Identity Validation Summary ###############
+
+    Azure Identity Validation found no errors or warnings.
+
+############### Azure Stack Graph Validation Summary ###############
+
+Azure Stack Graph Validation results not available.
+
+############### Azure Stack ADFS Validation Summary ###############
+
+Azure Stack ADFS Validation results not available.
+
+############### AzsReadiness Job Summary ###############
+
+Index             : 0
+Operations        : 
+StartTime         : 2018/10/22 14:24:16
+EndTime           : 2018/10/22 14:24:19
+Duration          : 3
+PSBoundParameters : 
+````
 
 ## <a name="view-the-report-summary"></a>Zobrazit souhrnnou sestavu
 Chcete-li zobrazit souhrn sestavy, můžete přidat **-Summary** přepnout na konec příkazového řádku Powershellu. Příklad: 
- > `Start-AzsReadinessChecker -ReportPath .\AzsReadinessReport.json -summary`  
+ > `Read-AzsReadinessReport -ReportPath .\Contoso-AzsReadinessReport.json -summary`  
 
-Souhrn zobrazuje ověření, která nemají výsledky a indikuje úspěch nebo selhání pro ověření, která se dokončí. Výstup vypadá podobně jako na následujícím obrázku:
+Souhrn zobrazuje ověření, která nemají výsledky a indikuje úspěch nebo selhání pro ověření, která se dokončí. Výstup vypadá přibližně takto:
 
-![Souhrnná sestava](./media/azure-stack-validation-report/report-summary.png)
+````PowerShell
+Reading All Validation(s) from Report C:\Contoso-AzsReadinessCheckerReport.json
+
+############### Certificate Validation Summary ###############
+
+    Certificate Validation found no errors or warnings.
+    
+############### Registration Validation Summary ###############
+
+    Registration Validation found no errors or warnings.
+
+############### Azure Identity Validation Summary ###############
+
+    Azure Identity Validation found no errors or warnings.
+
+############### Azure Stack Graph Validation Summary ###############
+
+Azure Stack Graph Validation results not available.
+
+############### Azure Stack ADFS Validation Summary ###############
+
+Azure Stack ADFS Validation results not available.
+````
 
 
 ## <a name="view-a-filtered-report"></a>Zobrazení filtrované sestavy
@@ -60,12 +122,13 @@ Chcete-li zobrazit sestavu s filtrem na jeden typ ověřování, použijte **- R
 - Certifikát
 - AzureRegistration
 - AzureIdentity
+- Graph
+- ADFS
 - Úlohy   
 - Vše  
 
 Například chcete-li zobrazit sestavu shrnutí pro certifikáty, použít pouze následující příkazový řádek Powershellu: 
- > `Start-AzsReadinessChecker -ReportPath .\AzsReadinessReport.json -ReportSections Certificate – Summary`
+ > `Read-AzsReadinessReport -ReportPath .\Contoso-AzsReadinessReport.json -ReportSections Certificate – Summary`
 
 
 ## <a name="see-also"></a>Další informace najdete v tématech
-[Reference k rutinám Start AzsReadinessChecker](azure-stack-azsreadiness-cmdlet.md)

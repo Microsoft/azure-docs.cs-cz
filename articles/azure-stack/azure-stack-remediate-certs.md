@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 05/08/2018
 ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: 5e96c731496d79ca081091e2059a35545f963bd6
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 0ebf69dd3436a6b1010d4184b2063317d14547dd
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078628"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49957629"
 ---
 # <a name="remediate-common-issues-for-azure-stack-pki-certificates"></a>Řešení běžných potíží s certifikáty infrastruktury veřejných KLÍČŮ Azure Stack
 Informace v tomto článku můžete pochopit a řešit obvyklé problémy pro certifikáty Azure Stack PKI. Problémy můžete zjistit, když použijete nástroj prerequisite Checker připravenosti Azure Stack [ověřování certifikátů Azure Stack infrastruktury veřejných KLÍČŮ](azure-stack-validate-pki-certs.md). Nástroj zkontroluje zajistíte, že certifikáty infrastruktury veřejných KLÍČŮ požadavkům nasazení Azure Stack a Azure Stack tajný klíč otočení a zaznamená výsledky [report.json souboru](azure-stack-validation-report.md).  
@@ -69,12 +69,13 @@ Informace v tomto článku můžete pochopit a řešit obvyklé problémy pro ce
 **Náprava** -znovu exportovat certifikát pomocí kroků v [připravit Azure Stack infrastruktury veřejných KLÍČŮ certifikátů pro nasazení](azure-stack-prepare-pki-certs.md)a vyberte možnost **zahrnout všechny certifikáty cestě k certifikátu, pokud je to možné.** Ujistěte se, že je vybrána pouze listový certifikát pro export.
 
 ## <a name="fix-common-packaging-issues"></a>Řešení běžných problémů balení
-AzsReadinessChecker můžete importovat a exportovat soubor PFX pro řešení běžných problémů balení, včetně: 
+AzsReadinessChecker obsahuje pomocné rutiny opravit AzsPfxCertificate, který můžete importovat a exportovat soubor PFX pro řešení běžných problémů balení, včetně: 
  - *Šifrování PFX* není TripleDES SHA1
  - *Privátní klíč* chybí atribut místní počítač.
  - *Řetěz certifikátů* je neúplný nebo má nesprávné. (V místním počítači se musí obsahovat řetěz certifikátů, pokud balíček PFX.) 
  - *Další certifikáty*.
-AzsReadinessChecker nemůže však pomoct, pokud je potřeba vygenerovat nový soubor CSR a opakujte certifikát. 
+ 
+Oprava AzsPfxCertificate nelze pomoci, pokud je potřeba vygenerovat nový soubor CSR a opakujte certifikát. 
 
 ### <a name="prerequisites"></a>Požadavky
 Na místě v počítači, kde je nástroj spuštěn musí být splněné následující požadavky: 
@@ -96,9 +97,20 @@ Na místě v počítači, kde je nástroj spuštěn musí být splněné násled
    - Pro *- PfxPath*, zadejte cestu k souboru PFX pracujete.  V následujícím příkladu je tato cesta *.\certificates\ssl.pfx*.
    - Pro *- ExportPFXPath*, zadejte umístění a název souboru PFX pro export.  V následujícím příkladu je tato cesta *.\certificates\ssl_new.pfx*
 
-   > `Start-AzsReadinessChecker -PfxPassword $password -PfxPath .\certificates\ssl.pfx -ExportPFXPath .\certificates\ssl_new.pfx`  
+   > `Repair-AzsPfxCertificate -PfxPassword $password -PfxPath .\certificates\ssl.pfx -ExportPFXPath .\certificates\ssl_new.pfx`  
 
-4. Jakmile nástroj dokončí, prohlédněte si výstup pro úspěch: ![výsledky](./media/azure-stack-remediate-certs/remediate-results.png)
+4. Jakmile nástroj dokončí, prohlédněte si výstup pro úspěch: 
+````PowerShell
+Repair-AzsPfxCertificate v1.1809.1005.1 started.
+Starting Azure Stack Certificate Import/Export
+Importing PFX .\certificates\ssl.pfx into Local Machine Store
+Exporting certificate to .\certificates\ssl_new.pfx
+Export complete. Removing certificate from the local machine store.
+Removal complete.
+
+Log location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessChecker.log
+Repair-AzsPfxCertificate Completed
+````
 
 ## <a name="next-steps"></a>Další postup
 [Další informace o zabezpečení Azure stacku](azure-stack-rotate-secrets.md)

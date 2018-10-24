@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/12/2018
-ms.author: mattbriggs
+ms.date: 10/22/2018
+ms.author: mabrigg
 ms.reviewer: shnatara
-ms.openlocfilehash: d402b2bcd5187cbb6ece78d7e981068c279c1f75
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 0b5f7442604dd31f730b0105d19231407e2b6f1a
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48804425"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49946109"
 ---
 # <a name="deploy-a-service-fabric-cluster-in-azure-stack"></a>Nasazení clusteru Service Fabric v Azure stacku
 
@@ -48,7 +48,7 @@ Následující jsou nutné k nasazení clusteru Service Fabric:
 
 
 ## <a name="add-a-secret-to-key-vault"></a>Přidání tajného klíče do služby Key Vault
-Pokud chcete nasadit cluster Service Fabric, je nutné zadat správný trezor klíčů *identifikátor tajného kódu* nebo adresu URL pro cluster Service Fabric. Šablony Azure Resource Manageru trvá KeyVault jako vstup a potom načte příslušný certifikát clusteru během instalace clusteru Service Fabric. 
+Pokud chcete nasadit cluster Service Fabric, je nutné zadat správný trezor klíčů *identifikátor tajného kódu* nebo adresu URL pro cluster Service Fabric. Šablony Azure Resource Manageru vezme jako vstupní údaje trezoru klíčů. Šablonu pak načte příslušný certifikát clusteru při instalaci clusteru Service Fabric.
 
 > [!IMPORTANT]  
 > Přidání tajného klíče do trezoru klíčů pro použití se službou Service Fabric, musíte použít PowerShell. Nepoužívejte na portálu.  
@@ -139,7 +139,7 @@ Další informace najdete v tématu [Spravovat trezor klíčů ve službě Azure
    - Key Vault zdroj: Zadejte celý *id trezoru klíčů* řetězec ve výsledcích skriptu. 
    - Adresa URL certifikátu clusteru: Zadejte celou adresu URL z *tajný klíč Id* ve výsledcích skriptu. 
    - Kryptografický otisk certifikátu clusteru: Zadejte *kryptografický otisk certifikátu clusteru* ve výsledcích skriptu.
-   - Správce klienta kryptografické otisky certifikátu: Zadejte *kryptografický otisk klientského certifikátu správce* jste vytvořili v rámci požadavků. 
+   - Správce klienta kryptografické otisky certifikátu: Zadejte *kryptografický otisk klientského certifikátu správce* vytvořené v rámci požadavků. 
 
    ![Výstup skriptu](media/azure-stack-solution-template-service-fabric-cluster/image5.png)
 
@@ -182,9 +182,9 @@ Cluster Service Fabric můžete přistupovat pomocí rozhraní Service Fabric Ex
 1. Chcete-li vyhledat adresu URL pro Service Fabric Explorer a koncový bod připojení klienta, zkontrolujte výsledky nasazení šablony.
 
 1. V prohlížeči přejděte na https://*plně kvalifikovaný název domény*: 19080. Nahraďte *plně kvalifikovaný název domény* s plně kvalifikovaný název vašeho clusteru Service Fabric z kroku 2.   
-   Pokud jste použili vlastnoručně podepsaný certifikát, zobrazí se vám upozornění, že připojení není zabezpečený. Přejděte na webovou stránku, vyberte **. Další informace**a potom **přejděte na webovou stránku**. 
+   Pokud jste použili certifikát podepsaný svým držitelem, zobrazí se vám upozornění, že připojení není zabezpečený. Přejděte na webovou stránku, vyberte **. Další informace**a potom **přejděte na webovou stránku**. 
 
-1. K ověření na webu musíte vybrat certifikát pro použití. Vyberte **víc možností**, vyberte příslušný certifikát a potom klikněte na tlačítko **OK** pro připojení k Service Fabric Explorer. 
+1. K ověření serveru, musíte vybrat certifikát pro použití. Vyberte **víc možností**, vyberte příslušný certifikát a potom klikněte na tlačítko **OK** pro připojení k Service Fabric Explorer. 
 
    ![Ověření](media/azure-stack-solution-template-service-fabric-cluster/image14.png)
 

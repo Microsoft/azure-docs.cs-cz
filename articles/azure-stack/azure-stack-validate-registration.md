@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 06/08/2018
 ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: d6835f05666d66cc4f6aa937c4b85047ce3c2e93
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 51753a5324bbbcbf4e951628a42dd3bf425354af
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49077065"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49957578"
 ---
 # <a name="validate-azure-registration"></a>Ověření registrace služby Azure 
 Použijte nástroj Kontrola připravenosti Azure Stack (AzsReadinessChecker) k ověření, že vaše předplatné Azure je připravený k použití s Azure Stack. Ověření registrace před zahájením nasazení služby Azure Stack. Kontrola připravenosti ověří:
@@ -62,10 +62,17 @@ Následující požadavky musí být splněné.
    - Zadejte hodnotu pro AzureEnvironment jako *AzureCloud*, *AzureGermanCloud*, nebo *AzureChinaCloud*.  
    - Zadejte správce Azure Active Directory a název vašeho Tenanta Azure Active Directory. 
 
-   > `Start-AzsReadinessChecker -RegistrationAccount $registrationCredential -AzureEnvironment AzureCloud -RegistrationSubscriptionID $subscriptionID`
+   > `Invoke-AzsRegistrationValidation -RegistrationAccount $registrationCredential -AzureEnvironment AzureCloud -RegistrationSubscriptionID $subscriptionID`
 
-5. Po spuštění nástroje, prohlédněte si výstup. Potvrďte, že stav je v pořádku pro přihlášení a požadavky na registraci. Úspěšné ověření se zobrazí jako na následujícím obrázku:  
-![spustit ověření](./media/azure-stack-validate-registration/registration-validation.png)
+5. Po spuštění nástroje, prohlédněte si výstup. Potvrďte, že stav je v pořádku pro přihlášení a požadavky na registraci. Úspěšné ověření se zobrazí takto:  
+````PowerShell
+Invoke-AzsRegistrationValidation v1.1809.1005.1 started.
+Checking Registration Requirements: OK
+
+Log location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessChecker.log
+Report location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessCheckerReport.json
+Invoke-AzsRegistrationValidation Completed
+````
 
 
 ## <a name="report-and-log-file"></a>Sestavy a soubor protokolu
@@ -83,14 +90,37 @@ Pokud se ověření nezdaří, v okně Powershellu zobrazovat podrobnosti o chyb
 Následující příklady poskytují pokyny o běžných chyb při ověřování.
 
 ### <a name="user-must-be-an-owner-of-the-subscription"></a>Uživatel musí být vlastníkem předplatného   
-![Vlastník předplatného](./media/azure-stack-validate-registration/subscription-owner.png)
+````PowerShell
+Invoke-AzsRegistrationValidation v1.1809.1005.1 started.
+Checking Registration Requirements: Fail 
+Error Details for registration account admin@contoso.onmicrosoft.com:
+The user admin@contoso.onmicrosoft.com is role(s) Reader for subscription 3f961d1c-d1fb-40c3-99ba-44524b56df2d. User must be an owner of the subscription to be used for registration.
+Additional help URL https://aka.ms/AzsRemediateRegistration
+
+Log location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessChecker.log
+Report location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessCheckerReport.json
+Invoke-AzsRegistrationValidation Completed
+````
 **Příčina** – účet není správcem předplatného Azure.   
 
 **Rozlišení** -použít účet, který je správcem předplatného Azure, který se bude účtovat za použití z nasazení služby Azure Stack.
 
 
 ### <a name="expired-or-temporary-password"></a>Vypršela platnost, nebo dočasné heslo 
-![vypršela platnost hesla](./media/azure-stack-validate-registration/expired-password.png)
+````PowerShell
+Invoke-AzsRegistrationValidation v1.1809.1005.1 started.
+Checking Registration Requirements: Fail 
+Error Details for registration account admin@contoso.onmicrosoft.com:
+Checking Registration failed with: Retrieving TenantId for subscription 3f961d1c-d1fb-40c3-99ba-44524b56df2d using account admin@contoso.onmicrosoft.com failed with AADSTS50055: Force Change P
+assword.
+Trace ID: 48fe06f5-a5b4-4961-ad45-a86964689900
+Correlation ID: 3dd1c9b2-72fb-46a0-819d-058f7562cb1f
+Timestamp: 2018-10-22 11:16:56Z: The remote server returned an error: (401) Unauthorized.
+
+Log location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessChecker.log
+Report location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessCheckerReport.json
+Invoke-AzsRegistrationValidation Completed
+````
 **Příčina** – účet nemůže přihlásit, protože heslo je buď vypršela platnost, nebo je pouze dočasné.     
 
 **Rozlišení** – v prostředí PowerShell spustit a postupujte podle pokynů k resetování hesla. 
@@ -99,15 +129,18 @@ Následující příklady poskytují pokyny o běžných chyb při ověřování
 Případně, přihlaste se k https://portal.azure.com jako účet a uživatel bude muset změnit heslo.
 
 
-### <a name="microsoft-accounts-are-not-supported-for-registration"></a>Účty Microsoft se nepodporují pro registraci.  
-![Nepodporovaný účet](./media/azure-stack-validate-registration/unsupported-account.png)
-**Příčina** – byl zadán účet A Microsoft (jako je Hotmail.com nebo Outlook.com).  Tyto účty nejsou podporovány.
-
-**Rozlišení** -použít účet a předplatné z cloudové služby Provider (CSP) nebo smlouvu Enterprise (EA). 
-
-
 ### <a name="unknown-user-type"></a>Typ Neznámý uživatel  
-![Neznámý uživatel](./media/azure-stack-validate-registration/unknown-user.png)
+````PowerShell
+Invoke-AzsRegistrationValidation v1.1809.1005.1 started.
+Checking Registration Requirements: Fail 
+Error Details for registration account admin@contoso.onmicrosoft.com:
+Checking Registration failed with: Retrieving TenantId for subscription 3f961d1c-d1fb-40c3-99ba-44524b56df2d using account admin@contoso.onmicrosoft.com failed with unknown_user_type: Unknown Us
+er Type
+
+Log location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessChecker.log
+Report location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessCheckerReport.json
+Invoke-AzsRegistrationValidation Completed
+````
 **Příčina** – účet se nemůže připojit k zadané prostředí Azure Active Directory. V tomto příkladu *AzureChinaCloud* je stanoveno, *AzureEnvironment*.  
 
 **Rozlišení** – ověřte, že účet je platný pro zadaný prostředí Azure. V prostředí PowerShell spusťte následující příkaz k ověření, že účet je platný pro konkrétní prostředí.     

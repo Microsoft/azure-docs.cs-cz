@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/16/2018
+ms.date: 10/23/2018
 ms.author: jeffgilb
 ms.reviewer: quying
-ms.openlocfilehash: 17f06a08388720c4483ef1c187edf20ec8359121
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 50f5662fa574b512ab607e17dbdfcf1861e2f5c6
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49386379"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49954891"
 ---
 # <a name="tutorial-offer-highly-available-sql-databases"></a>Kurz: Nabízí vysoce dostupné databáze SQL
 
@@ -63,30 +63,28 @@ Postupujte podle kroků v této části nasadíte skupiny dostupnosti AlwaysOn s
 - Jeden virtuální počítač (Windows Server 2016) nakonfigurovaný jako určující sdílené složky souborů pro cluster
 - Jedna skupina dostupnosti obsahující SQL a soubor sdílené složky s kopií clusteru virtuálních počítačů  
 
-1. Přihlaste se k portálu pro správu:
-    - Nasazení integrovaného systému adresy portálu budou lišit v závislosti na oblasti vašeho řešení a název externí domény. Bude ve formátu https://adminportal.&lt; *oblast*&gt;.&lt; *Plně kvalifikovaný název domény*&gt;.
-    - Pokud používáte Azure Stack Development Kit (ASDK), je uživatelského portálu adresy [ https://adminportal.local.azurestack.external ](https://portal.local.azurestack.external).
+1. 
+[!INCLUDE [azs-admin-portal](../../includes/azs-admin-portal.md)]
 
 2. Vyberte **\+** **vytvořit prostředek** > **vlastní**a potom **nasazení šablony**.
 
-   ![Nasazení vlastní šablony](media/azure-stack-tutorial-sqlrp/custom-deployment.png)
+   ![Nasazení vlastní šablony](media/azure-stack-tutorial-sqlrp/1.png)
 
 
 3. Na **vlastní nasazení** okně vyberte **úpravy šablony** > **šablonu pro rychlý Start** a pak použijte rozevírací seznam dostupných vlastních šablon pro Vyberte **AlwaysOn serveru sql 2016** šablony, klikněte na tlačítko **OK**a potom **Uložit**.
 
-   ![Vyberte šablonu pro rychlý start](./media/azure-stack-tutorial-sqlrp/quickstart-template.png)
-
+   [![](media/azure-stack-tutorial-sqlrp/2-sm.PNG "Vyberte šablonu pro rychlý start")](media/azure-stack-tutorial-sqlrp/2-lg.PNG#lightbox)
 
 4. Na **vlastní nasazení** okně vyberte **upravit parametry** a zkontrolujte výchozí hodnoty. Upravte hodnoty podle potřeby poskytují všechny informace o povinný parametr a potom klikněte na **OK**.<br><br> Minimálně:
 
     - Zadejte parametry ADMINPASSWORD SQLSERVERSERVICEACCOUNTPASSWORD a SQLAUTHPASSWORD složitá hesla.
     - Zadejte příponu DNS pro zpětného vyhledávání v jenom malá písmena. pro parametr příponu DNS (**azurestack.external** pro instalace ASDK).
     
-    ![Nasazení vlastní parametry](./media/azure-stack-tutorial-sqlrp/edit-parameters.png)
+   [![](media/azure-stack-tutorial-sqlrp/3-sm.PNG "Upravit parametry vlastní nasazení")](media/azure-stack-tutorial-sqlrp/3-lg.PNG#lightbox)
 
 5. Na **vlastní nasazení** okna, vyberte předplatné, které chcete používat a vytvořte novou skupinu prostředků nebo vyberte existující skupinu prostředků pro vlastní nasazení.<br><br> Potom vyberte umístění skupiny prostředků (**místní** pro instalace ASDK) a potom klikněte na tlačítko **vytvořit**. Nasazení vlastního nastavení budou ověřena a poté se nasazení spustí.
 
-    ![Nasazení vlastní parametry](./media/azure-stack-tutorial-sqlrp/create-deployment.png)
+    [![](media/azure-stack-tutorial-sqlrp/4-sm.PNG "Vytvoření vlastního nasazení")](media/azure-stack-tutorial-sqlrp/4-lg.PNG#lightbox)
 
 
 6. V portálu pro správu, vyberte **skupiny prostředků** a klikněte na název skupiny prostředků vytvořené pro vlastní nasazení (**; resource-group** v tomto příkladu). Zobrazte stav nasazení tak, aby Ujistěte se, že všechna nasazení byly úspěšně dokončeny.<br><br>Dále zkontrolujte položky skupiny prostředků a vyberte **SQLPIPsql\<název skupiny prostředků\>**  položky veřejné IP adresy. Zaznamenejte veřejné IP adresy a úplný plně kvalifikovaný název domény veřejné IP nástroje pro vyrovnávání zatížení. Je potřeba zadat operátor Azure stacku, aby mohli vytvářet hostitelského serveru SQL využití této skupiny dostupnosti SQL AlwaysOn.
@@ -94,16 +92,16 @@ Postupujte podle kroků v této části nasadíte skupiny dostupnosti AlwaysOn s
    > [!NOTE]
    > Nasazení šablony bude trvat několik hodin.
 
-   ![Nasazení vlastní parametry](./media/azure-stack-tutorial-sqlrp/deployment-complete.png)
+   ![Vlastní nasazení dokončeno](./media/azure-stack-tutorial-sqlrp/5.png)
 
 ### <a name="enable-automatic-seeding"></a>Povolit automatické synchronizace replik indexů
 Poté, co šablona se úspěšně nasazení a konfiguraci skupiny dostupnosti SQL AlwaysON, je nutné povolit [Automatická synchronizace replik indexů](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/automatically-initialize-always-on-availability-group) pro každou instanci serveru SQL Server ve skupině dostupnosti. 
 
 Když vytvoříte skupinu dostupnosti s Automatická synchronizace replik indexů, SQL Server automaticky vytvoří sekundární repliky pro každou databázi ve skupině bez dalších zásahů nezbytné k zajištění vysoké dostupnosti databází AlwaysOn.
 
-Pomocí těchto příkazů SQL nakonfigurovat Automatická synchronizace replik indexů pro skupinu dostupnosti AlwaysOn.
+Pomocí těchto příkazů SQL nakonfigurovat Automatická synchronizace replik indexů pro skupinu dostupnosti AlwaysOn. Nahraďte \<InstanceName\> s primární instance název SQL serveru a < availability_group_name > s názvem skupiny dostupnosti AlwaysOn podle potřeby. 
 
-Na primární instance SQL (Nahraďte <InstanceName> názvem primární instance SQL serveru):
+Na primární instance SQL:
 
   ```sql
   ALTER AVAILABILITY GROUP [<availability_group_name>]
@@ -114,7 +112,7 @@ Na primární instance SQL (Nahraďte <InstanceName> názvem primární instance
 
 >  ![Primární instance skript SQL](./media/azure-stack-tutorial-sqlrp/sql1.png)
 
-Na sekundární instance SQL (nahraďte < availability_group_name > je název skupiny dostupnosti AlwaysOn):
+Na sekundární instance SQL:
 
   ```sql
   ALTER AVAILABILITY GROUP [<availability_group_name>] GRANT CREATE ANY DATABASE
@@ -156,9 +154,8 @@ Po SQL AlwaysOn, skupiny dostupnosti byla vytvořena, nakonfigurovat a přidat j
 > [!NOTE]
 > Projít tyto kroky na portálu user portal Azure Stack jako uživatel tenanta s předplatným nabízí funkce SQL serveru (Microsoft.SQLAdapter služby).
 
-1. Přihlaste se k portálu user portal:
-    - Nasazení integrovaného systému adresy portálu budou lišit v závislosti na oblasti vašeho řešení a název externí domény. Bude ve formátu https://portal.&lt; *oblast*&gt;.&lt; *Plně kvalifikovaný název domény*&gt;.
-    - Pokud používáte Azure Stack Development Kit (ASDK), je uživatelského portálu adresy [ https://portal.local.azurestack.external ](https://portal.local.azurestack.external).
+1. 
+[!INCLUDE [azs-user-portal](../../includes/azs-user-portal.md)]
 
 2. Vyberte **\+** **vytvořit prostředek** > **Data \+ úložiště**a potom **SQL Database**.<br><br>Zadejte informace o vlastnosti databáze, včetně názvu, kolace, maximální velikost a předplatné, skupinu prostředků a umístění pro nasazení. 
 

@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 05/08/2018
 ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: 9c7ac89d1f12e8ec033b201f2c2dd845c11486e2
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: a9600d37f76ff56cff26ec7b740a6970e44e7018
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49077813"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49954551"
 ---
 # <a name="validate-azure-identity"></a>Ověření identit Azure 
 Použijte nástroj Kontrola připravenosti Azure Stack (AzsReadinessChecker) Chcete-li ověřit, že Azure Active Directory (Azure AD) připravený k použití s Azure Stack. Ověřte vaše řešení Azure identity před zahájením nasazení služby Azure Stack.  
@@ -62,10 +62,21 @@ Následující požadavky musí být splněné.
    - Zadejte hodnotu pro AzureEnvironment jako *AzureCloud*, *AzureGermanCloud*, nebo *AzureChinaCloud*.  
    - Zadejte Azure Active Directory název Tenanta k nahrazení *contoso.onmicrosoft.com*. 
 
-   > `Start-AzsReadinessChecker -AADServiceAdministrator $serviceAdminCredential -AzureEnvironment AzureCloud -AADDirectoryTenantName contoso.onmicrosoft.com`
-4. Po spuštění nástroje, prohlédněte si výstup. Potvrďte, že stav je **OK** pro přihlášení a požadavky na instalaci. Úspěšné ověření se zobrazí jako na následujícím obrázku: 
+   > `Invoke-AzsAzureIdentityValidation -AADServiceAdministrator $serviceAdminCredential -AzureEnvironment AzureCloud -AADDirectoryTenantName contoso.onmicrosoft.com`
+4. Po spuštění nástroje, prohlédněte si výstup. Potvrďte, že stav je **OK** pro požadavky na instalaci. Úspěšné ověření se zobrazí jako na následujícím obrázku: 
  
-![spustit ověření](./media/azure-stack-validate-identity/validation.png)
+````PowerShell
+Invoke-AzsAzureIdentityValidation v1.1809.1005.1 started.
+Starting Azure Identity Validation
+
+Checking Installation Requirements: OK
+
+Finished Azure Identity Validation
+
+Log location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessChecker.log
+Report location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessCheckerReport.json
+Invoke-AzsAzureIdentityValidation Completed
+````
 
 
 ## <a name="report-and-log-file"></a>Sestavy a soubor protokolu
@@ -86,7 +97,21 @@ Následující příklady poskytují pokyny o běžných chyb při ověřování
 
 ### <a name="expired-or-temporary-password"></a>Vypršela platnost, nebo dočasné heslo 
  
-![prošlé heslo](./media/azure-stack-validate-identity/expired-password.png)
+````PowerShell
+Invoke-AzsAzureIdentityValidation v1.1809.1005.1 started.
+Starting Azure Identity Validation
+
+Checking Installation Requirements: Fail 
+Error Details for Service Administrator Account admin@contoso.onmicrosoft.com
+The password for account  has expired or is a temporary password that needs to be reset before continuing. Run Login-AzureRMAccount, login with  credentials and follow the prompts to reset.
+Additional help URL https://aka.ms/AzsRemediateAzureIdentity
+
+Finished Azure Identity Validation
+
+Log location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessChecker.log
+Report location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessCheckerReport.json
+Invoke-AzsAzureIdentityValidation Completed
+````
 **Příčina** – účet nemůže přihlásit, protože heslo je buď vypršela platnost, nebo je pouze dočasné.     
 
 **Rozlišení** – v prostředí PowerShell spusťte následující příkaz a postupujte podle pokynů k resetování hesla.  
@@ -95,13 +120,41 @@ Následující příklady poskytují pokyny o běžných chyb při ověřování
 Případně, přihlaste se k https://portal.azure.com jako účet a uživatel bude muset změnit heslo.
 ### <a name="unknown-user-type"></a>Typ Neznámý uživatel 
  
-![Neznámý uživatel](./media/azure-stack-validate-identity/unknown-user.png)
+````PowerShell
+Invoke-AzsAzureIdentityValidation v1.1809.1005.1 started.
+Starting Azure Identity Validation
+
+Checking Installation Requirements: Fail 
+Error Details for Service Administrator Account admin@contoso.onmicrosoft.com
+Unknown user type detected. Check the account  is valid for AzureChinaCloud
+Additional help URL https://aka.ms/AzsRemediateAzureIdentity
+
+Finished Azure Identity Validation
+
+Log location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessChecker.log
+Report location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessCheckerReport.json
+Invoke-AzsAzureIdentityValidation Completed
+````
 **Příčina** – účet nemůže přihlásit do zadaného Azure Active Directory (AADDirectoryTenantName). V tomto příkladu *AzureChinaCloud* je stanoveno, *AzureEnvironment*.
 
 **Rozlišení** – ověřte, že účet je platný pro zadaný prostředí Azure. V prostředí PowerShell, spusťte následující příkaz k ověření účtu je platný pro konkrétní prostředí: Login-AzureRmAccount-EnvironmentName AzureChinaCloud 
 ### <a name="account-is-not-an-administrator"></a>Účet nemá oprávnění správce 
  
-![Ne správce](./media/azure-stack-validate-identity/not-admin.png)
+````PowerShell
+Invoke-AzsAzureIdentityValidation v1.1809.1005.1 started.
+Starting Azure Identity Validation
+
+Checking Installation Requirements: Fail 
+Error Details for Service Administrator Account admin@contoso.onmicrosoft.com
+The Service Admin account you entered 'admin@contoso.onmicrosoft.com' is not an administrator of the Azure Active Directory tenant 'contoso.onmicrosoft.com'.
+Additional help URL https://aka.ms/AzsRemediateAzureIdentity
+
+Finished Azure Identity Validation
+
+Log location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessChecker.log
+Report location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessCheckerReport.json
+Invoke-AzsAzureIdentityValidation Completed
+````
 
 **Příčina** – i když tento účet můžete úspěšně přihlásit, že účet není správce služby Azure Active Directory (AADDirectoryTenantName).  
 
