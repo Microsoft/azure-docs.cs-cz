@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/02/2018
+ms.date: 10/23/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: f184c18e97144f7efb30d61ebd024344510f3f5c
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 3a3768e796284895b25eb62d00a58b20ca811540
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078762"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49958937"
 ---
 # <a name="azure-active-directory-access-tokens"></a>Azure Active Directory přístupové tokeny
 
@@ -136,7 +136,7 @@ Microsoft identity můžete ověřit v celou řadu způsobů, který může být
 | Hodnota | Popis |
 |-----|-------------|
 | `pwd` | Ověřování pomocí hesla uživatele Microsoft heslo nebo tajný klíč klienta aplikace. |
-| `rsa` | Ověřování bylo založeno na důkaz klíč RSA, například s [Microsoft Authenticator pp](https://aka.ms/AA2kvvu). Patří sem, pokud bylo ověřování službou vlastněných X509 prováděné token JWT podepsaný svým držitelem certifikátu. |
+| `rsa` | Ověřování bylo založeno na důkaz klíč RSA, například s [aplikaci Microsoft Authenticator](https://aka.ms/AA2kvvu). Patří sem, pokud bylo ověřování službou vlastněných X509 prováděné token JWT podepsaný svým držitelem certifikátu. |
 | `otp` | Jednorázové heslo pomocí e-mailem nebo textovou zprávu. |
 | `fed` | Kontrolní výraz federovaného ověřování (například token JWT nebo SAML) byla použita. |
 | `wia` | Integrované ověřování Windows |
@@ -179,7 +179,7 @@ https://login.microsoftonline.com/common/.well-known/openid-configuration
 ```
 
 > [!TIP]
-> Vyzkoušejte tuto adresu URL v prohlížeči.
+> Vyzkoušejte to [URL](https://login.microsoftonline.com/common/.well-known/openid-configuration) v prohlížeči.
 
 Tento dokument metadat:
 
@@ -187,7 +187,7 @@ Tento dokument metadat:
 * Zahrnuje `jwks_uri`, což dává umístění sady veřejného klíče používané k podepisování tokenů. Umístění dokumentu JSON `jwks_uri` obsahuje všechny údaje o veřejném klíči použité v této konkrétní okamžik v čase. Vaše aplikace může používat `kid` deklarací identity v hlavičce JWT k výběru, který veřejný klíč v tomto dokumentu se použil k podepsání konkrétní token. Pak můžete provádět ověření podpisu pomocí správný veřejný klíč a označený algoritmus.
 
 > [!NOTE]
-> Koncový bod verze 1.0 vrací i `x5t` a `kid` deklarací identity. `x5t` Chybí deklarace identity z verze 2.0 tokenů. Koncový bod v2.0 odpoví `kid` deklarací identity. Od této chvíle, vám doporučujeme používat `kid` deklarace identity k ověření tokenu.
+> Koncový bod verze 1.0 vrací i `x5t` a `kid` deklarací identity, zatímco koncový bod v2.0 odpoví pouze `kid` deklarací identity. Od této chvíle, vám doporučujeme používat `kid` deklarace identity k ověření tokenu.
 
 Provádí se ověření podpisu je mimo rámec tohoto dokumentu – k dispozici řada open source knihoven pomáhá vám tak v případě potřeby.
 
@@ -202,7 +202,7 @@ Obchodní logiky vaší aplikace bude určovat tento krok, některé běžné me
 * Zkontrolujte, že `tid` odpovídá tenanta, která může volat rozhraní API.
 * Použití `acr` deklarace identity, chcete-li ověřit, uživatel provedl vícefaktorové ověřování. Všimněte si, že to by se měly vynucovat použití [podmíněného přístupu](https://docs.microsoft.com/azure/active-directory/conditional-access/overview).
 * Pokud jste požadovali `roles` nebo `groups` deklarací identity v tokenu přístupu, ověřte, že uživatel je ve skupině oprávnění k provedení této akce.
-  * Pro tokeny pomocí implicitního toku načíst, bude pravděpodobně nutné k dotazování [grafu](https://developer.microsoft.com/graph/) pro tato data, protože je často token příliš velká. 
+  * Pro tokeny pomocí implicitního toku načíst, bude pravděpodobně nutné k dotazování [Microsoft Graphu](https://developer.microsoft.com/graph/) pro tato data, protože je často token příliš velká. 
 
 ## <a name="user-and-application-tokens"></a>Tokeny uživatelů a aplikací
 
