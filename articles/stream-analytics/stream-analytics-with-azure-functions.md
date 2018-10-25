@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.date: 04/09/2018
 ms.author: jasonh
 ms.reviewer: jasonh
-ms.openlocfilehash: 0408ea6ead1ddf482ce0a07c21859af80ab6ca43
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 50ea4dafe7edfdeb851ad6d9cc42a7bca262e970
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43697811"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49985807"
 ---
 # <a name="run-azure-functions-from-azure-stream-analytics-jobs"></a>Spouštění Azure Functions z úloh Azure Stream Analytics 
 
@@ -40,11 +40,11 @@ Tato část ukazuje, jak nakonfigurovat úlohu Stream Analytics tak, aby spoušt
 ![Diagram znázorňující vztahy mezi službami Azure](./media/stream-analytics-with-azure-functions/image1.png)
 
 K provedení této úlohy jsou nezbytné následující kroky:
-* [Vytvoření úlohy Stream Analytics, ve které jako vstup bude Event Hubs](#create-stream-analytics-job-with-event-hub-as-input)  
-* [Vytvoření instance Azure Redis Cache](#create-an-azure-redis-cache)  
-* [Vytvoření funkce v Azure Functions, která umožňuje zápis dat do Azure Redis Cache](#create-an-azure-function-that-can-write-data-to-the-redis-cache)    
-* [Aktualizace úlohy Stream Analytics, ve které jako výstup bude daná funkce](#update-the-stream-analytic-job-with-azure-function-as-output)  
-* [Kontrola výsledků v Azure Redis Cache](#check-redis-cache-for-results)  
+* [Vytvoření úlohy Stream Analytics, ve které jako vstup bude Event Hubs](#create-a-stream-analytics-job-with-event-hubs-as-input)  
+* [Vytvoření instance Azure Redis Cache](#create-an-azure-redis-cache-instance)  
+* [Vytvoření funkce v Azure Functions, která umožňuje zápis dat do Azure Redis Cache](#create-a-function-in-azure-functions-that-can-write-data-to-azure-redis-cache)    
+* [Aktualizace úlohy Stream Analytics, ve které jako výstup bude daná funkce](#update-the-stream-analytics-job-with-the-function-as-output)  
+* [Kontrola výsledků v Azure Redis Cache](#check-azure-redis-cache-for-results)  
 
 ## <a name="create-a-stream-analytics-job-with-event-hubs-as-input"></a>Vytvoření úlohy Stream Analytics, ve které jako vstup bude Event Hubs
 

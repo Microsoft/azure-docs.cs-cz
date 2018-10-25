@@ -7,15 +7,15 @@ ms.component: process-automation
 author: eamonoreilly
 ms.author: eamono
 keywords: azure automation, DSC, powershell, desired state configuration, update management, change tracking, inventory, runbooks, python, graphical
-ms.date: 03/15/2018
+ms.date: 10/18/2018
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: e09a1b1c1a849e9957c2969da2b8e4c1d00347ff
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 8f6473603bb6e6ae734bde722742c58514d777c8
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44297686"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49428092"
 ---
 # <a name="an-introduction-to-azure-automation"></a>Seznámení s Azure Automation
 

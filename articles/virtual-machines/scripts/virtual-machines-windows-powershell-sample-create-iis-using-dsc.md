@@ -3,7 +3,7 @@ title: Ukázkový skript Azure PowerShellu – Služba IIS s DSC | Microsoft Doc
 description: Ukázkový skript Azure PowerShellu – Služba IIS s DSC
 services: virtual-machines-windows
 documentationcenter: virtual-machines
-author: cynthn
+author: zr-msft
 manager: jeconnoc
 editor: tysonn
 tags: azure-service-management
@@ -14,13 +14,13 @@ ms.topic: sample
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 12/12/2017
-ms.author: cynthn
-ms.openlocfilehash: 7269165da046a688dd27aa9f5b325896ad3f65e7
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.author: zarhoads
+ms.openlocfilehash: 0916ebee4295acf0b8cb4b04767fde958479ba83
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "41962287"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49468785"
 ---
 # <a name="create-an-iis-vm-with-powershell"></a>Vytvoření virtuálního počítače se službou IIS pomocí PowerShellu
 

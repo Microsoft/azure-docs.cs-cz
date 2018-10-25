@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 11/22/2017
 ms.author: apimpm
-ms.openlocfilehash: f5132215b1fda93c62c1fbea46c3266fcc44ec46
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: edef88694cc335a63ce279e96a204ed4b8fe7376
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38307275"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49469499"
 ---
 # <a name="import-an-openapi-specification"></a>Import specifikace OpenAPI
 
@@ -65,11 +65,11 @@ Projděte si následující rychlý start: [Vytvoření instance služby Azure A
 
 Operaci můžete volat přímo z portálu Azure Portal, který nabízí pohodlný způsob pro zobrazení a testování operací v rozhraní API.
 
+![Test rozhraní API](./media/api-management-get-started/01-import-first-api-01.png)
+
 1. Vyberte rozhraní API, které jste vytvořili v předchozím kroku.
 2. Klikněte na kartu **Test**.
-
-    ![Test rozhraní API](./media/api-management-get-started/test-api.png)
-1. Klikněte na možnost **GetSpeakers**.
+3. Klikněte na možnost **GetSpeakers**.
 
     Stránka zobrazí pole pro parametry dotazu. V tomto případě ale žádné neexistují. Stránka také zobrazí pole pro hlavičky. Jednou z hlaviček je klíč „Ocp-Apim-Subscription-Key“. Je to klíč pro přihlášení k odběru produktu, který je k tomuto rozhraní API přidružený. Pokud jste vytvořili instanci služby APIM, jste už správcem a klíč se tedy vyplní automaticky.
 4. Stiskněte **Odeslat**.

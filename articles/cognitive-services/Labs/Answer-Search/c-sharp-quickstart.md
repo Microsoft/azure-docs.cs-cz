@@ -6,16 +6,16 @@ services: cognitive-services
 author: mikedodaro
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: project-answer-search
+ms.component: answer-search
 ms.topic: quickstart
 ms.date: 04/13/2018
 ms.author: rosh
-ms.openlocfilehash: bea98ac4c4f7da42d0b41a279508253b987ad9a6
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 6d00c420ba84ea78235e138977cc4b5fde4fae64
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48867217"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49464841"
 ---
 # <a name="quickstart-project-answer-search-query-in-c"></a>Rychlý start: Dotaz Project Answer Search v C#
 

@@ -364,7 +364,7 @@ V této části můžete nakonfigurovat uživatele tok dat z Workday do Active D
 | **WorkerID**  |  EmployeeID | **Ano** | Zapisovat pouze při vytváření |
 | **UserId**    |  CN    |   |   Zapisovat pouze při vytváření |
 | **Připojte se k ("@", [ID], "contoso.com")**   | userPrincipalName (Hlavní název uživatele)     |     | Zapisovat pouze při vytváření 
-| **Nahraďte (Mid (Nahraďte (\[UserID\],, "(\[ \\ \\ / \\ \\ \\ \\ \\ \\ \[ \\\\\]\\\\:\\\\;\\ \\|\\\\=\\\\,\\\\+\\\\\*\\ \\? \\ \\ &lt; \\ \\ &gt; \]) "," ",), 1, 20)," ([\\\\.) \* \$] (file:///\\.) *$)", , "", , )**      |    SAMAccountName            |     |         Zapisovat pouze při vytváření |
+| **Nahraďte(Mid(Nahraďte(\[UserID\], , "(\[\\\\/\\\\\\\\\\\\\[\\\\\]\\\\:\\\\;\\\\|\\\\=\\\\,\\\\+\\\\\*\\\\?\\\\&lt;\\\\&gt;\])", , "", , ), 1, 20), , "([\\\\.)\*\$](file:///\\.)*$)", , "", , )**      |    SAMAccountName            |     |         Zapisovat pouze při vytváření |
 | **Přepínač (\[aktivní\],, "0", "True", "1")** |  accountDisabled      |     | Vytváření a aktualizace |
 | **Jméno**   | givenName       |     |    Vytváření a aktualizace |
 | **LastName**   |   sériové číslo   |     |  Vytváření a aktualizace |

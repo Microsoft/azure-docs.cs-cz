@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 03/28/2018
 ms.author: jingwang
-ms.openlocfilehash: a7916a434552cbcb999f1e69c7a5bc2419f517fb
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: a4f9e1111516d439f018e965883eb8268c83289c
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43094338"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49954775"
 ---
 # <a name="create-a-data-factory-and-pipeline-using-net-sdk"></a>Vytvoření datové továrny a kanálu s využitím .NET SDK
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -41,7 +41,7 @@ Názorný postup v tomto článku využívá Visual Studio 2017. Můžete také 
 Stáhněte sadu [Azure .NET SDK](http://azure.microsoft.com/downloads/) a nainstalujte ji do svého počítače.
 
 ## <a name="create-an-application-in-azure-active-directory"></a>Vytvoření aplikace v Azure Active Directory
-Postupujte podle pokynů v jednotlivých částech v [tomto článku](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-azure-active-directory-application) a proveďte následující úlohy: 
+Postupujte podle pokynů v jednotlivých částech v [tomto článku](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application) a proveďte následující úlohy: 
 
 1. **Vytvořte aplikaci Azure Active Directory**. V Azure Active Directory vytvořte aplikaci reprezentující aplikaci .NET, kterou vytváříte v tomto kurzu. Jako přihlašovací adresu URL můžete poskytnout fiktivní URL, jak ukazuje článek (`https://contoso.org/exampleapp`).
 2. Získejte **ID aplikace** a **ověřovací klíč** a poznamenejte si tyto hodnoty, které použijete později v tomto kurzu. 

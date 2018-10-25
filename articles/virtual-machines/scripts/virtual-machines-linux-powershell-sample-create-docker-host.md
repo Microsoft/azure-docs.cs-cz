@@ -3,7 +3,7 @@ title: Ukázkový skript Azure PowerShellu – Docker | Microsoft Docs
 description: Ukázkový skript Azure PowerShellu – Docker
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: cynthn
+author: zr-msft
 manager: jeconnoc
 editor: tysonn
 tags: azure-service-management
@@ -14,14 +14,14 @@ ms.topic: sample
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/02/2017
-ms.author: cynthn
+ms.author: zarhoads
 ms.custom: mvc
-ms.openlocfilehash: f2c66385f66bf9aa75601da1a6ab03bf00210fa2
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: ba58c2ddabc59bd0432bdc1740071bdb1795f322
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43246137"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49465844"
 ---
 # <a name="create-a-docker-host-with-powershell"></a>Vytvoření hostitele Dockeru pomocí PowerShellu
 

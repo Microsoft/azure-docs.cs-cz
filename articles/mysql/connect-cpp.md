@@ -11,12 +11,12 @@ ms.custom: mvc
 ms.devlang: C++
 ms.topic: quickstart
 ms.date: 04/12/2018
-ms.openlocfilehash: 0c017907378376c01e4a4a98190f73a9452b9a3d
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 6d9deba8c7e6317ab349f86d5a1730f05288ea35
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35264948"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49987660"
 ---
 # <a name="azure-database-for-mysql-use-connectorc-to-connect-and-query-data"></a>Azure Database for MySQL: Připojení a dotazování dat pomocí konektoru Connector/C++
 Tento rychlý start ukazuje, jak se připojit ke službě Azure Database for MySQL s použitím aplikace v C++. Ukazuje, jak pomocí příkazů jazyka SQL dotazovat, vkládat, aktualizovat a odstraňovat data v databázi. Toto téma předpokládá, že máte zkušenosti s vývojem pomocí C++ a teprve začínáte pracovat se službou Azure Database for MySQL.
@@ -30,7 +30,7 @@ Budete také muset:
 - Nainstalovat [.NET Framework](https://www.microsoft.com/net/download)
 - Nainstalovat [Visual Studio](https://www.visualstudio.com/downloads/)
 - Nainstalovat [MySQL Connector/C++](https://dev.mysql.com/downloads/connector/cpp/) 
-- Nainstalovat [Boost](http://www.boost.org/)
+- Nainstalovat [Boost](https://www.boost.org/)
 
 ## <a name="install-visual-studio-and-net"></a>Instalace sady Visual Studio a .NET
 Kroky v této části předpokládají, že máte zkušenosti s vývojem pomocí rozhraní .NET.
@@ -51,7 +51,7 @@ Kroky v této části předpokládají, že máte zkušenosti s vývojem pomocí
 ## <a name="get-connection-information"></a>Získání informací o připojení
 Získejte informace o připojení potřebné pro připojení ke službě Azure Database for MySQL. Potřebujete plně kvalifikovaný název serveru a přihlašovací údaje.
 
-1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 2. V nabídce vlevo na webu Azure Portal klikněte na **Všechny prostředky** a vyhledejte vytvořený server (například **mydemoserver**).
 3. Klikněte na název serveru.
 4. Na panelu **Přehled** serveru si poznamenejte **Název serveru** a **Přihlašovací jméno správce serveru**. Pokud zapomenete své heslo, můžete ho na tomto panelu také resetovat.

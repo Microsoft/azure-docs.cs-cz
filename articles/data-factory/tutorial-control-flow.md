@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: shlo
-ms.openlocfilehash: b492635da55ae08f92b18dcf9c030cb23d4fa48c
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 422aa116b2d93dc2fffe16e6b0f1f36433d143df
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43665062"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49958954"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Větvení a řetězení aktivit v kanálech Data Factory
 V tomto kurzu vytvoříte kanál služby Data Factory, který prezentuje některé funkce řízení toku. Tento kanál provádí jednoduché kopírování z kontejneru ve službě Azure Blob Storage do jiného kontejneru ve stejném účtu úložiště. Pokud aktivita kopírování proběhne úspěšně, chcete podrobnosti o úspěšném kopírování (jako je například množství zapsaných dat) poslat v e-mailu informujícím o úspěchu. Pokud aktivita kopírování selže, chcete podrobnosti o neúspěšném kopírování (jako je například chybová zpráva) poslat v e-mailu informujícím o selhání. V rámci tohoto kurzu se dozvíte, jak předávat parametry.
@@ -47,7 +47,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 * **Azure SQL Database**. Tuto databázi použijete jako úložiště dat **jímky**. Pokud Azure SQL Database nemáte, přečtěte si článek věnovaný [vytvoření databáze Azure SQL](../sql-database/sql-database-get-started-portal.md), kde najdete kroky pro její vytvoření.
 * **Visual Studio** 2013, 2015 nebo 2017. Názorný postup v tomto článku využívá Visual Studio 2017.
 * **Stáhněte a nainstalujte sadu [Azure .NET SDK](http://azure.microsoft.com/downloads/)**.
-* **V Azure Active Directory** vytvořte aplikaci s využitím [těchto pokynů](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-azure-active-directory-application). Poznamenejte následující hodnoty, které použijete v dalších krocích: **ID aplikace**, **ověřovací klíč** a **ID tenanta**. Podle pokynů ve stejném článku přiřaďte aplikaci roli **Přispěvatel**.
+* **V Azure Active Directory** vytvořte aplikaci s využitím [těchto pokynů](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application). Poznamenejte následující hodnoty, které použijete v dalších krocích: **ID aplikace**, **ověřovací klíč** a **ID tenanta**. Podle pokynů ve stejném článku přiřaďte aplikaci roli **Přispěvatel**.
 
 ### <a name="create-blob-table"></a>Vytvoření tabulky objektů blob
 

@@ -9,12 +9,12 @@ author: nacharya1
 ms.author: nilesha
 ms.reviewer: sgilley
 ms.date: 09/24/2018
-ms.openlocfilehash: df1c19c0e16b9862b09dcc652ef2831e0c5bf3a5
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 29d673f48671ec917e45b7ff76feeebf0b868c4b
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48802351"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49426885"
 ---
 # <a name="tutorial-train-a-classification-model-with-automated-machine-learning-in-azure-machine-learning-service"></a>Kurz: Trénování klasifikačního modelu pomocí automatizovaného strojového učení ve službě Azure Machine Learning
 
@@ -543,5 +543,5 @@ V tomto kurzu ke službě Azure Machine Learning jste pomocí Pythonu provedli n
 > * Revize výsledků trénování
 > * Registrace nejlepšího modelu
 
-Zde najdete další informace o tom, [jak nakonfigurovat nastavení pro automatické učení]() nebo [jak používat automatické učení na vzdáleném prostředku](how-to-auto-train-remote.md).  
+Zde najdete další informace o tom, [jak nakonfigurovat nastavení pro automatické učení](how-to-configure-auto-train.md) nebo [jak používat automatické učení na vzdáleném prostředku](how-to-auto-train-remote.md).  
 

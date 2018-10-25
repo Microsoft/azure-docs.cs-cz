@@ -3,7 +3,7 @@ title: Ukázkový skript Azure CLI – Vytvoření virtuálního počítače s L
 description: Ukázkový skript Azure CLI – Vytvoření virtuálního počítače s Linuxem a serverem NGINX
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: cynthn
+author: zr-msft
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
@@ -14,14 +14,14 @@ ms.topic: sample
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/27/2017
-ms.author: cynthn
+ms.author: zarhoads
 ms.custom: mvc
-ms.openlocfilehash: 642dd46ee44fd1c69f2c66549dbb5806bb4ee5d7
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 50a6bc40dbc79242e7c64bbc2082baeac224ba2e
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37927566"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49467915"
 ---
 # <a name="create-a-vm-with-nginx"></a>Vytvoření virtuálního počítače se serverem NGINX
 

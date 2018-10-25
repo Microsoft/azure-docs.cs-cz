@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/04/2018
-ms.openlocfilehash: 1955fc033e0351be9da89bbee11dc41d6281a63a
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: c29131720de8d6016d134fe7c0118fc3db9e22be
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47433986"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49985637"
 ---
 # <a name="create-a-stream-analytics-job-to-analyze-phone-call-data-and-visualize-results-in-a-power-bi-dashboard"></a>Vytvoření úlohy Stream Analytics k analýze dat telefonních hovorů a vizualizaci výsledků v řídicím panelu Power BI
  
@@ -37,7 +37,7 @@ Než začnete, ujistěte se, že jste provedli následující akce:
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/).  
 * Přihlaste se k webu [Azure Portal](https://portal.azure.com/).  
-* Stáhněte si aplikaci pro generování událostí telefonního hovoru [TelcoGenerator.zip](http://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip) z webu Microsoft Download Center. Případně můžete získat zdrojový kód z [GitHubu](https://aka.ms/azure-stream-analytics-telcogenerator).  
+* Stáhněte si aplikaci pro generování událostí telefonního hovoru [TelcoGenerator.zip](https://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip) z webu Microsoft Download Center. Případně můžete získat zdrojový kód z [GitHubu](https://aka.ms/azure-stream-analytics-telcogenerator).  
 
 ## <a name="create-an-azure-event-hub"></a>Vytvoření centra událostí Azure 
 
@@ -89,7 +89,7 @@ Předtím než aplikace může odesílat data do služby Azure Event Hubs, musí
 
 Před spuštěním aplikace TelcoGenerator byste ji měli nakonfigurovat tak, aby odesílala data do služby Azure Event Hubs, kterou jste vytvořili dříve.
 
-1. Extrahujte obsah souboru [TelcoGenerator.zip](http://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip).  
+1. Extrahujte obsah souboru [TelcoGenerator.zip](https://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip).  
 2. Otevřete soubor `TelcoGenerator\TelcoGenerator\telcodatagen.exe.config` v textovém editoru podle vašeho výběru (existuje více než jeden soubor .config, proto se ujistěte, že otevíráte správný soubor).  
 
 3. Aktualizujte element <appSettings> v konfiguračním souboru následujícím způsobem:
@@ -260,7 +260,7 @@ Dotaz z editoru dotazů můžete otestovat, k tomu potřebujete ukázková data.
 
 ## <a name="embedding-your-powerbi-dashboard-in-a-web-application"></a>Vložení řídicího panelu PowerBI do webové aplikace
 
-Pro tuto část kurzu budete pro vložení řídicího panelu používat ukázkovou webovou aplikaci [ASP.NET](http://asp.net/) vytvořenou týmem PowerBI. Další informace o vkládání řídicích panelů najdete v tématu [Vkládání pomocí Power BI](https://docs.microsoft.com/power-bi/developer/embedding).
+Pro tuto část kurzu budete pro vložení řídicího panelu používat ukázkovou webovou aplikaci [ASP.NET](https://asp.net/) vytvořenou týmem PowerBI. Další informace o vkládání řídicích panelů najdete v tématu [Vkládání pomocí Power BI](https://docs.microsoft.com/power-bi/developer/embedding).
 
 V tomto kurzu budeme postupovat podle kroků pro uživatele, který vlastní datovou aplikaci. Chcete-li nastavit aplikaci, přejděte do úložiště Githubu [PowerBI-Developer-Samples](https://github.com/Microsoft/PowerBI-Developer-Samples) a postupujte podle pokynů v části **User Owns Data** (použijte URL pro přesměrování a URL domovské stránky, které jsou uvedené v části **integrate-dashboard-web-app**). Vzhledem k tomu, že používáme příklad pro řídicí panel, použijte ukázkový kód integrate-dashboard-web-app, který je umístěný v [úložišti GitHubu](https://github.com/Microsoft/PowerBI-Developer-Samples/tree/master/User%20Owns%20Data/integrate-dashboard-web-app).
 Jakmile aplikace běží v prohlížeči, postupujte podle těchto kroků a vložte do webové stránky řídicí panel, který jste vytvořili dříve:

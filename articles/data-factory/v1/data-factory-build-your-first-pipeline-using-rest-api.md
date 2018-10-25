@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 11/01/2017
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 91a85505eda34e11f0db9c5f3c46e33aad992ffe
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: caea4296bc0573141865aca27b04f9d9ee049e94
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45736695"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49955582"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-data-factory-rest-api"></a>Kurz: Sestavení prvního objektu pro vytváření dat Azure pomocí rozhraní REST API služby Data Factory
 > [!div class="op_single_selector"]
@@ -49,7 +49,7 @@ Kanál v tomto kurzu má jednu aktivitu: **aktivitu HDInsight Hive**. Tato aktiv
 ## <a name="prerequisites"></a>Požadavky
 * Přečtěte si článek [Přehled kurzu](data-factory-build-your-first-pipeline.md) a proveďte **nutné** kroky.
 * Nainstalujte na svůj počítač nástroj [Curl](https://curl.haxx.se/dlwiz/). Pomocí nástroje CURL a příkazů REST vytvoříte objekt pro vytváření dat.
-* Postupujte podle pokynů v [tomto článku](../../azure-resource-manager/resource-group-create-service-principal-portal.md) a proveďte následující:
+* Postupujte podle pokynů v [tomto článku](../../active-directory/develop/howto-create-service-principal-portal.md) a proveďte následující:
   1. V Azure Active Directory vytvořte webovou aplikaci s názvem **ADFGetStartedApp**.
   2. Získejte **ID klienta** a **tajný klíč**.
   3. Získejte **ID tenanta**.

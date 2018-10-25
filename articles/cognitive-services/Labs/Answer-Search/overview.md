@@ -6,16 +6,16 @@ services: cognitive-services
 author: mikedodaro
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: project-answer-search
+ms.component: answer-search
 ms.topic: overview
 ms.date: 04/13/2018
 ms.author: rosh
-ms.openlocfilehash: 5658054b3cc77db20edd64f6c560ee5d4a58eb46
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: b211ede7ef90fb1aef3a6d6e9a82e0d52397afd3
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48883716"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49465905"
 ---
 # <a name="what-is-project-answer-search"></a>Co je Project Answer Search?
 Rozhraní API služby Project Answer Search používá k získání odpovědi na zvídavé dotazy koncový bod Bingu v7. Například na otázku „Jaký je obvod Země?“ vrátí odpověď s faktickými informacemi.  Na dotaz týkající se osoby, místa nebo věci, vrátí informace o entitě identifikované dotazem. Tyto scénáře můžou být užitečné v aplikacích, jako jsou například konverzační roboti,aplikace zasílání zpráv, čtenáři, atd.  
@@ -248,13 +248,13 @@ Vy nebo třetí strana jednající vaším jménem nesmí používat, uchovávat
 [!INCLUDE [cognitive-services-bing-throttling-requests](../../../../includes/cognitive-services-bing-throttling-requests.md)]
 
 
-## <a name="data-attribution"></a>Určení zdroje dat  
+## <a name="data-attribution"></a>Atribuce dat  
 
 Odpovědi Project Answer Search obsahují informace vlastněné třetími stranami. Je vaší zodpovědností zajistit odpovídající použití, například tím, že dodržováním podmínek licencí Creative Commons, na kterých vaše uživatelské prostředí bude stát.  
   
-Pokud odpověď nebo výsledek obsahuje pole `contractualRules`, `attributions` nebo `provider`, musíte provést atribuci dat. Pokud odpověď neobsahuje žádné z těchto polí, není atribuce potřeba. Pokud odpověď obsahuje pole `contractualRules` a pole `attributions` nebo `provider`, musíte použít smluvní pravidla pro atribuci dat.  
+Pokud odpověď nebo výsledek obsahuje pole `contractualRules`, `attributions`, nebo `provider`, musíte provést atribuci dat. Pokud odpověď neobsahuje žádné z těchto polí, není atribuce potřeba. Pokud odpověď obsahuje pole `contractualRules` a pole `attributions` nebo `provider`, musíte použít smluvní pravidla pro atribuci dat.  
   
-Následující příklad ukazuje entitu, která obsahuje smluvní pravidlo MediaAttribution a Image zahrnující pole`provider`. Pravidlo MediaAttribution označuje image jako cíl pravidla, takže v takovém případě ignorujte pole `provider` image a místo toho použijte k určení zdroje pravidlo MediaAttribution.  
+Následující příklad ukazuje entitu, která obsahuje smluvní pravidlo MediaAttribution a Image zahrnující pole`provider`. Pravidlo MediaAttribution označuje image jako cíl pravidla, takže v takovém případě ignorujte pole `provider` image a místo toho použijte k atribuci pravidlo MediaAttribution.  
   
 ```  
         "value" : [{
@@ -334,7 +334,7 @@ Tady je příklad, který obsahuje pole `provider` pro image a smluvní pravidla
 ![Atribuce médií](./media/mediaattribution.png)  
 
 ## <a name="next-steps"></a>Další kroky
-- [Rychlý start C#](c-sharp-quickstart.md)
-- [Rychlý start Javy](java-quickstart.md)
-- [Rychlý start Nodu](node-quickstart.md)
-- [Rychlý start Pythonu](python-quickstart.md)
+- [Rychlý start pro jazyk C#](c-sharp-quickstart.md)
+- [Rychlý start pro Javu](java-quickstart.md)
+- [Rychlý start pro Node](node-quickstart.md)
+- [Rychlý start pro Python](python-quickstart.md)

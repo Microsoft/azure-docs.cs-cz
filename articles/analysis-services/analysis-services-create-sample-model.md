@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: tutorial
-ms.date: 07/03/2018
+ms.date: 10/18/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: c63995a461cee6bc39603a43604b8080942bd88b
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: def7ee54390a716027fcacb433b99826d3650f6f
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37442803"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49428688"
 ---
 # <a name="tutorial-add-a-sample-model-from-the-portal"></a>Kurz: Přidání ukázkového modelu z portálu
 
@@ -59,13 +59,13 @@ Ukázkový model využívá paměťové prostředky mezipaměti. Pokud ukázkov�
 
 Tento postup popisuje odstranění modelu ze serveru pomocí SQL Server Management Studia. Model můžete odstranit také pomocí ukázkové funkce Webového návrháře.
 
-1. V **Průzkumníkovi objektů** SQL Server Management Studia klikněte na **Připojit** > **Analysis Services**.
+1. V **Průzkumníku objektů** SQL Server Management Studia klikněte na **Připojit** > **Analysis Services**.
 
 2. Do pole **Připojit k serveru** vložte název serveru, v poli **Ověření** zvolte **Active Directory – univerzální s podporou vícefaktorového ověřování**, zadejte své uživatelské jméno a klikněte na **Připojit**.
 
     ![Přihlášení](./media/analysis-services-create-sample-model/aas-create-sample-cleanup-signin.png)
 
-3. V **Průzkumníkovi objektů** klikněte pravým tlačítkem na ukázkovou databázi `adventureworks` a pak klikněte na **Odstranit**.
+3. V **Průzkumníku objektů** klikněte pravým tlačítkem na ukázkovou databázi `adventureworks` a pak klikněte na **Odstranit**.
 
     ![Odstranění ukázkové databáze](./media/analysis-services-create-sample-model/aas-create-sample-cleanup-delete.png)
 

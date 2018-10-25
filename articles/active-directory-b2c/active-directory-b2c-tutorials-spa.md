@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.component: B2C
-ms.openlocfilehash: 47589b8cb8aa6e8d1cacaa028948242431f02c44
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: 0f2fa2bb8e20ce4cc187fe6f061d2d8c251c4673
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45604786"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945208"
 ---
 # <a name="tutorial-enable-single-page-app-authentication-with-accounts-using-azure-active-directory-b2c"></a>Kurz: Povolení ověřování účtů pomocí Azure Active Directory B2C pro jednostránkovou aplikaci
 
@@ -201,4 +201,4 @@ Svůj adresář Azure AD B2C můžete použít i k vyzkoušení dalších kurzů
 V tomto kurzu jste zjistili, jak vytvořit adresář Azure AD B2C, vytvořit zásady a aktualizovat ukázkovou jednostránkovou aplikaci tak, aby používala váš adresář Azure AD B2C. V dalším kurzu zjistíte, jak zaregistrovat, nakonfigurovat a volat chráněné webové rozhraní API z desktopové aplikace.
 
 > [!div class="nextstepaction"]
-> 
+> [Ukázky kódu pro Azure AD B2C](https://azure.microsoft.com/resources/samples/?service=active-directory-b2c&sort=0)
