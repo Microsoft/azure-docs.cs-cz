@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 10/17/2018
+ms.date: 10/18/2018
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: 69a24dba752e4aa374e03e57ce197ae882647373
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: e8ca232f3c5664f69db800648b46abaf0822d6f1
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49378682"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49458135"
 ---
 # <a name="quickstart-create-azure-resource-manager-templates-by-using-visual-studio-code"></a>Rychlé zprovoznění: Vytvoření šablon Azure Resource Manageru pomocí nástroje Visual Studio Code
 
@@ -57,12 +57,7 @@ K dokončení tohoto článku potřebujete:
 
 Abyste se naučili upravit šablonu pomocí Visual Studio Code, přidáte další element do části `outputs`.
 
-1. Ve Visual Studio Code zkontrolujte hodnotu parametru **kind** (Druh). Pokud je tato hodnota **Storage**, aktualizujte ji na **StorageV2**.
-
-    ```json
-    "kind": "StorageV2",
-    ```
-2. Přidejte do exportované šablony jeden další výstup:
+1. Přidejte do exportované šablony jeden další výstup:
 
     ```json
     "storageUri": {
@@ -90,7 +85,7 @@ Abyste se naučili upravit šablonu pomocí Visual Studio Code, přidáte dalš�
 
     ![IntelliSense v nástroji Visual Studio Code v šabloně Resource Manageru](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/resource-manager-templates-visual-studio-code-intellisense.png)
 
-3. Soubor uložte tak, že vyberete **File** (Soubor) >**Save** (Uložit).
+2. Soubor uložte tak, že vyberete **File** (Soubor) >**Save** (Uložit).
 
 ## <a name="deploy-the-template"></a>Nasazení šablony
 
@@ -128,7 +123,7 @@ Abyste se naučili upravit šablonu pomocí Visual Studio Code, přidáte dalš�
 7. Ve službě Cloud Shell spusťte následující příkazy. Výběrem odpovídající karty zobrazíte kód PowerShellu nebo kód rozhraní příkazového řádku.
 
     # <a name="clitabcli"></a>[Rozhraní příkazového řádku](#tab/CLI)
-    ```cli
+    ```azurecli
     echo "Enter the Resource Group name:" &&
     read resourceGroupName &&
     echo "Enter the name for this deployment:" &&
@@ -141,7 +136,7 @@ Abyste se naučili upravit šablonu pomocí Visual Studio Code, přidáte dalš�
    
     # <a name="powershelltabpowershell"></a>[PowerShell](#tab/PowerShell)
     
-    ```powershell
+    ```azurepowershell
     $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
     $deploymentName = Read-Host -Prompt "Enter the name for this deployment"
     $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
@@ -171,7 +166,7 @@ Abyste se naučili upravit šablonu pomocí Visual Studio Code, přidáte dalš�
 7. Spuštěním následujícího příkazu rozhraní příkazového řádku nebo PowerShellu zobrazíte nově vytvořený účet úložiště:
 
     # <a name="clitabcli"></a>[Rozhraní příkazového řádku](#tab/CLI)
-    ```cli
+    ```azurecli
     echo "Enter the Resource Group name:" &&
     read resourceGroupName &&
     echo "Enter the Storage Account name:" &&
@@ -181,7 +176,7 @@ Abyste se naučili upravit šablonu pomocí Visual Studio Code, přidáte dalš�
    
     # <a name="powershelltabpowershell"></a>[PowerShell](#tab/PowerShell)
     
-    ```powershell
+    ```azurepowershell
     $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
     $storageAccountName = Read-Host -Prompt "Enter the Storage Account name"
     Get-AzureRmStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName

@@ -9,12 +9,12 @@ author: hning86
 ms.author: haining
 ms.reviewer: sgilley
 ms.date: 09/24/2018
-ms.openlocfilehash: b1ae3fb5de3e28f44ef39731f49a33e2086255a1
-ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
+ms.openlocfilehash: ad6b296543cffedb215c87b1fc893a22b29a3052
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48785337"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49427344"
 ---
 # <a name="tutorial-2--deploy-an-image-classification-model-in-azure-container-instance-aci"></a>Kurz 2: Nasazení modelu klasifikace obrázků v Azure Container Instance (ACI)
 
@@ -383,4 +383,4 @@ V tomto kurzu ke službě Azure Machine Learning jste pomocí Pythonu provedli n
 > * Nasazení modelu do služby ACI
 > * Testování nasazeného modelu
  
-Můžete taky vyzkoušet kurz [Automatický výběr algoritmu](), abyste viděli, jak může služba Azure Machine Learning automaticky vybrat a vyladit nejlepší algoritmus pro daný model a tento model vám sestavit.
+Můžete taky vyzkoušet kurz [Automatický výběr algoritmu](tutorial-auto-train-models.md), abyste viděli, jak může služba Azure Machine Learning automaticky vybrat a vyladit nejlepší algoritmus pro daný model a tento model vám sestavit.

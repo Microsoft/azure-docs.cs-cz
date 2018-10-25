@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: douglasl
-ms.openlocfilehash: c01da1b667f5a57e9597b77e21dcd9cc95340cb1
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 21c2c9ab0300ed5eac9ceebbd88627ea091b3389
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43088222"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49954466"
 ---
 # <a name="transform-data-in-the-cloud-by-using-spark-activity-in-azure-data-factory"></a>Transformace dat v cloudu pomocí aktivity Sparku ve službě Azure Data Factory
 V tomto kurzu použijete Azure PowerShell k vytvoření kanálu Data Factory, který transformuje data pomocí aktivity Sparku a propojené služby HDInsight na vyžádání. V tomto kurzu provedete následující kroky:
@@ -135,7 +135,7 @@ V definici propojené služby aktualizujte hodnoty následujících vlastností:
 
 - **hostSubscriptionId**. Místo &lt;subscriptionID&gt; použijte ID vašeho předplatného Azure. Cluster HDInsight na vyžádání se vytvoří v tomto předplatném. 
 - **tenant**. Místo &lt;tenantID&gt; použijte ID vašeho tenanta Azure. 
-- **servicePrincipalId**, **servicePrincipalKey**. Místo &lt;servicePrincipalID&gt; a &lt;servicePrincipalKey&gt; použijte ID a klíč instančního objektu vaší služby v Azure Active Directory. Tento instanční objekt musí být členem role přispěvatele předplatného nebo skupiny prostředků, ve které se cluster vytvoří. Podrobnosti najdete v tématu [Vytvoření aplikace Azure Active Directory a instančního objektu](../azure-resource-manager/resource-group-create-service-principal-portal.md). 
+- **servicePrincipalId**, **servicePrincipalKey**. Místo &lt;servicePrincipalID&gt; a &lt;servicePrincipalKey&gt; použijte ID a klíč instančního objektu vaší služby v Azure Active Directory. Tento instanční objekt musí být členem role přispěvatele předplatného nebo skupiny prostředků, ve které se cluster vytvoří. Podrobnosti najdete v tématu [Vytvoření aplikace Azure Active Directory a instančního objektu](../active-directory/develop/howto-create-service-principal-portal.md). 
 - **clusterResourceGroup**. Nahraďte &lt;resourceGroupOfHDICluster&gt; názvem skupiny prostředků, ve které se má cluster HDInsight vytvořit. 
 
 > [!NOTE]

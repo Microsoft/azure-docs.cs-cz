@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: tutorial
 ms.date: 11/30/2017
-ms.openlocfilehash: 29b28b0d81314d062c1b334092979cc9bccbeb31
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: a6adf97a11821ff58c01d2450f06d07e7327fdfb
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43127655"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49957918"
 ---
 # <a name="monitor-virtual-machine-changes-with-azure-event-grid-and-logic-apps"></a>Monitorování změn virtuálních počítačů pomocí Azure Event Gridu a Logic Apps
 
@@ -90,7 +90,7 @@ Napřed vytvořte aplikaci logiky a přidejte trigger služby Event Grid, který
    ![Přihlášení pod přihlašovacími údaji Azure](./media/monitor-virtual-machine-changes-event-grid-logic-app/sign-in-event-grid.png)
 
    > [!NOTE]
-   > Pokud jste se přihlásili pod osobním účtem Microsoft, třeba @outlook.com nebo @hotmail.com, nemusí se trigger služby Event Grid zobrazit správně. Jako alternativní řešení zvolte [Připojit pomocí instančního objektu](../azure-resource-manager/resource-group-create-service-principal-portal.md) nebo se přihlaste jako člen služby Azure Active Directory přidružené k vašemu předplatnému Azure, například *uživatelské-jméno*@emailoutlook.onmicrosoft.com.
+   > Pokud jste se přihlásili pod osobním účtem Microsoft, třeba @outlook.com nebo @hotmail.com, nemusí se trigger služby Event Grid zobrazit správně. Jako alternativní řešení zvolte [Připojit pomocí instančního objektu](../active-directory/develop/howto-create-service-principal-portal.md) nebo se přihlaste jako člen služby Azure Active Directory přidružené k vašemu předplatnému Azure, například *uživatelské-jméno*@emailoutlook.onmicrosoft.com.
 
 8. Teď přihlaste aplikaci logiky k odběru událostí vydavatele. Zadejte podrobnosti o odběru události podle následující tabulky:
 

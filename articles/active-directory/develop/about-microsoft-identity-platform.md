@@ -16,12 +16,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 5e18a27579c577f914709e25cab1549387a965f3
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 7b96ee362f6169d386a58ee48878e40a42fc9ede
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46966397"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49987592"
 ---
 # <a name="about-microsoft-identity-platform"></a>O platformě Microsoft Identity Platform
 
@@ -37,7 +37,7 @@ Aplikace používající nejnovější knihovnu ADAL a nejnovější knihovnu MS
 
 Na následujícím schématu vidíte používání identit Microsoftu na vysoké úrovni včetně použití registrace aplikací, sad SDK, koncových bodů a podporovaných identit.
 
-![Platforma Microsoft Identity Platform dnes](./media/about-microsoft-identity-platform/microsoft-identity-platform-today.png)
+![Platforma Microsoft Identity Platform dnes](./media/about-microsoft-identity-platform/microsoft-identity-platform-preview.png)
 
 Platforma Microsoft Identity Platform má dva koncové body (v1.0 a v2.0) a dvě sady klientských knihoven pro zpracování těchto koncových bodů. Při vývoji nových aplikací zvažte výhody a aktuální stav koncových bodů a knihoven ověřování. Zvažte také následující body:
 
@@ -61,5 +61,5 @@ Platforma Microsoft Identity Platform má dva koncové body (v1.0 a v2.0) a dvě
 
 Přečtěte si další informace o verzích v1.0 a v2.0.
 
-* [Informace o verzi v1.0](azure-ad-developers-guide.md)
-* [Informace o verzi v2.0](azure-ad-developers-guide.md)
+* [Informace o verzi v1.0](v1-overview.md)
+* [Informace o verzi v2.0](v2-overview.md)

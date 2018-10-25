@@ -4,30 +4,30 @@ description: Přehled služby Soubory Azure, která umožňuje vytvářet a pou�
 services: storage
 author: RenaShahMSFT
 ms.service: storage
-ms.topic: get-started-article
+ms.topic: overview
 ms.date: 07/19/2018
 ms.author: renash
 ms.component: files
-ms.openlocfilehash: 7501d28d75f180f289f4e3e130e0a5f7219835b9
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: d42c3e665b4ed3057d340dce33145f8c08e69888
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39526017"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945769"
 ---
-# <a name="introduction-to-azure-files"></a>Seznámení se Soubory Azure
-Azure Files nabízí plně spravované sdílené složky v cloudu, které jsou přístupné přes standardní [protokol Server Message Block (SMB)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Sdílené složky Azure je možné připojit současně do cloudových i místních nasazení systémů Windows, Linux a macOS. Sdílené složky Azure je navíc možné ukládat do mezipaměti ve Windows Serveru pomocí služby Azure File Sync, aby byly rychle přístupné poblíž místa, kde se data používají.
+# <a name="what-is-azure-files"></a>Co je služba Soubory Azure?
+Azure Files nabízí plně spravované sdílené složky v cloudu, které jsou přístupné přes standardní [protokol Server Message Block (SMB)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Sdílené složky Azure je možné připojit současně do cloudových i místních nasazení systémů Windows, Linux a macOS. Sdílené složky Azure je navíc možné ukládat do mezipaměti ve Windows Serveru pomocí Synchronizace souborů Azure, aby byly rychle přístupné poblíž místa, kde se data používají.
 
 ## <a name="videos"></a>Videa
-| Představujeme službu Azure File Sync (2 min) | Soubory Azure se synchronizací (Ignite 2017) (85 min)  |
+| Představujeme Synchronizaci souborů Azure (2 min) | Soubory Azure se synchronizací (Ignite 2017) (85 min)  |
 |-|-|
-| [![Záznam dění na monitoru videa Představujeme službu Azure File Sync – kliknutím zahájíte přehrávání](./media/storage-files-introduction/azure-file-sync-video-snapshot.png)](https://www.youtube.com/watch?v=Zm2w8-TRn-o) | [![Záznam dění na monitoru prezentace Soubory Azure se synchronizací – kliknutím zahájíte přehrávání](./media/storage-files-introduction/azure-files-ignite-2017-video.png)](https://www.youtube.com/watch?v=r26jWDGF_rg) |
+| [![Záznam dění na monitoru videa Představujeme Synchronizaci souborů Azure – kliknutím zahájíte přehrávání](./media/storage-files-introduction/azure-file-sync-video-snapshot.png)](https://www.youtube.com/watch?v=Zm2w8-TRn-o) | [![Záznam dění na monitoru prezentace Soubory Azure se synchronizací – kliknutím zahájíte přehrávání](./media/storage-files-introduction/azure-files-ignite-2017-video.png)](https://www.youtube.com/watch?v=r26jWDGF_rg) |
 
 ## <a name="why-azure-files-is-useful"></a>Proč je služba Soubory Azure užitečná
 Sdílené složky Azure lze použít k těmto činnostem:
 
 * **Nahrazení nebo doplnění místních souborových serverů:**  
-    Službu Soubory Azure je možné použít k úplnému nahrazení nebo doplnění tradičních místních souborových serverů nebo zařízení NAS. Oblíbené operační systémy jako Windows, macOS a Linux můžou sdílené složky Azure přímo připojit, bez ohledu na to, kde na světě se nacházejí. Sdílené složky Azure lze také pomocí služby Azure File Sync replikovat na místní nebo cloudové servery Windows Server. Tím se zajistí výkonné a distribuované ukládání dat do mezipaměti v místě, kde se tato data používají.
+    Službu Soubory Azure je možné použít k úplnému nahrazení nebo doplnění tradičních místních souborových serverů nebo zařízení NAS. Oblíbené operační systémy jako Windows, macOS a Linux můžou sdílené složky Azure přímo připojit, bez ohledu na to, kde na světě se nacházejí. Sdílené složky Azure lze také pomocí Synchronizace souborů Azure replikovat na místní nebo cloudové servery Windows Server. Tím se zajistí výkonné a distribuované ukládání dat do mezipaměti v místě, kde se tato data používají.
 
 * **Migrace aplikací metodou „lift and shift“:**  
     Služba Soubory Azure usnadňuje migraci aplikací, které očekávají uchovávání souborové aplikace nebo uživatelských dat ve sdílené složce, do cloudu metodou „lift and shift“. Služba Soubory Azure podporuje klasický scénář migrace metodou „lift and shift“, při které se do Azure přesouvá aplikace i její data, i hybridní scénář migrace metodou „lift and shift“, při které se data aplikace přesouvají do služby Soubory Azure a aplikace se nadále spouští místně. 

@@ -11,12 +11,12 @@ ms.custom: mvc, devcenter
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 02/28/2018
-ms.openlocfilehash: 926b35f49169c5a87e82996ba714aad40ba5244c
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 557d4217819449cd0513d4a21e331e660e37037b
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2018
-ms.locfileid: "29687315"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49987677"
 ---
 # <a name="azure-database-for-postgresql-use-python-to-connect-and-query-data"></a>Azure Database for PostgreSQL: Použití Pythonu k připojení a dotazování dat
 Tento rychlý start ukazuje, jak se připojit ke službě Azure Database for PostgreSQL pomocí [Pythonu](https://python.org). Předvádí také použití příkazů jazyka SQL k dotazování, vkládání, aktualizaci a odstraňování dat v databázi z platforem macOS, Ubuntu Linux a Windows. Kroky v tomto článku předpokládají, že máte zkušenosti s vývojem pomocí Pythonu a teprve začínáte pracovat se službou Azure Database for PostgreSQL.
@@ -31,7 +31,7 @@ Budete také muset:
 - Nainstalovat balíček [pip](https://pip.pypa.io/en/stable/installing/) (pokud pracujete s binárními soubory Pythonu 2 >= 2.7.9 nebo Pythonu 3 >= 3.4 stažené z webu [python.org](https://python.org), balíček pip už máte nainstalovaný).
 
 ## <a name="install-the-python-connection-libraries-for-postgresql"></a>Instalace knihoven připojení Pythonu pro PostgreSQL
-Nainstalujte balíček [psycopg2](http://initd.org/psycopg/docs/install.html) umožňující připojení a dotazování databáze. Balíček psycopg2 je [dostupný na webu PyPI](https://pypi.python.org/pypi/psycopg2/) ve formě balíčků [wheel](http://pythonwheels.com/) pro většinu běžných platforem (Linux, OSX, Windows). Pomocí příkazu pip install získejte binární verzi modulu včetně všech závislostí.
+Nainstalujte balíček [psycopg2](http://initd.org/psycopg/docs/install.html) umožňující připojení a dotazování databáze. Balíček psycopg2 je [dostupný na webu PyPI](https://pypi.python.org/pypi/psycopg2/) ve formě balíčků [wheel](https://pythonwheels.com/) pro většinu běžných platforem (Linux, OSX, Windows). Pomocí příkazu pip install získejte binární verzi modulu včetně všech závislostí.
 
 1. Na vlastním počítači spusťte rozhraní příkazového řádku:
     - V Linuxu spusťte prostředí Bash.
@@ -50,7 +50,7 @@ Nainstalujte balíček [psycopg2](http://initd.org/psycopg/docs/install.html) um
 ## <a name="get-connection-information"></a>Získání informací o připojení
 Získejte informace o připojení potřebné pro připojení ke službě Azure Database for PostgreSQL. Potřebujete plně kvalifikovaný název serveru a přihlašovací údaje.
 
-1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 2. V nabídce vlevo na webu Azure Portal klikněte na **Všechny prostředky** a vyhledejte vytvořený server (například **mydemoserver**).
 3. Klikněte na název serveru.
 4. Na panelu **Přehled** serveru si poznamenejte **Název serveru** a **Přihlašovací jméno správce serveru**. Pokud zapomenete své heslo, můžete ho na tomto panelu také resetovat.

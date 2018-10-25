@@ -11,12 +11,12 @@ ms.custom: mvc
 ms.devlang: ruby
 ms.topic: quickstart
 ms.date: 02/28/2018
-ms.openlocfilehash: 911dcd49273edb202c64d046424418b7db048291
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 2d132ba1b901c45df79507a974ee8d4786c6311d
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2018
-ms.locfileid: "29692415"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49985025"
 ---
 # <a name="azure-database-for-postgresql-use-ruby-to-connect-and-query-data"></a>Azure Database for PostgreSQL: Použití Ruby k připojení a dotazování dat
 Tento rychlý start ukazuje, jak se připojit ke službě Azure Database for PostgreSQL pomocí aplikace v [Ruby](https://www.ruby-lang.org). Ukazuje, jak pomocí příkazů jazyka SQL dotazovat, vkládat, aktualizovat a odstraňovat data v databázi. Kroky v tomto článku předpokládají, že máte zkušenosti s vývojem pomocí Ruby a teprve začínáte pracovat se službou Azure Database for PostgreSQL.
@@ -30,7 +30,7 @@ Tento rychlý start využívá jako výchozí bod prostředky vytvořené v něk
 Nainstalujte Ruby na vlastní počítač. 
 
 ### <a name="windows"></a>Windows
-- Stáhněte a nainstalujte nejnovější verzi [Ruby](http://rubyinstaller.org/downloads/).
+- Stáhněte a nainstalujte nejnovější verzi [Ruby](https://rubyinstaller.org/downloads/).
 - Na poslední obrazovce instalačního programu MSI zaškrtněte políčko s textem „Run 'ridk install' to install MSYS2 and development toolchain“ (Spustit ridk install pro instalaci MSYS2 a vývojářské sady nástrojů). Potom kliknutím na **Finish** (Dokončit) spusťte další instalační program.
 - Spustí se instalační program RubyInstaller2 pro Windows. Zadejte 2 pro instalaci aktualizace úložiště MSYS2. Po dokončení a navrácení na příkazový řádek instalace zavřete příkazové okno.
 - Z nabídky Start spusťte nový příkazový řádek (cmd).
@@ -60,7 +60,7 @@ Nainstalujte Ruby na vlastní počítač.
 ## <a name="get-connection-information"></a>Získání informací o připojení
 Získejte informace o připojení potřebné pro připojení ke službě Azure Database for PostgreSQL. Potřebujete plně kvalifikovaný název serveru a přihlašovací údaje.
 
-1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 2. V nabídce vlevo na webu Azure Portal klikněte na **Všechny prostředky** a vyhledejte vytvořený server (například **mydemoserver**).
 3. Klikněte na název serveru.
 4. Na panelu **Přehled** serveru si poznamenejte **Název serveru** a **Přihlašovací jméno správce serveru**. Pokud zapomenete své heslo, můžete ho na tomto panelu také resetovat.
@@ -69,7 +69,7 @@ Získejte informace o připojení potřebné pro připojení ke službě Azure D
 ## <a name="connect-and-create-a-table"></a>Připojení a vytvoření tabulky
 Pomocí následujícího kódu se připojte a vytvořte tabulku s využitím příkazu **CREATE TABLE** jazyka SQL, po kterém následují příkazy **INSERT INTO** jazyka SQL, které do tabulky přidají řádky.
 
-Kód pro připojení ke službě Azure Database for PostgreSQL používá objekt [PG::Connection](http://www.rubydoc.info/gems/pg/PG/Connection) s konstruktorem [new()](http://www.rubydoc.info/gems/pg/PG%2FConnection:initialize). Potom volá metodu [exec()](http://www.rubydoc.info/gems/pg/PG/Connection#exec-instance_method) pro spuštění příkazů DROP, CREATE TABLE a INSERT INTO. Kód kontroluje chyby pomocí třídy [PG::Error](http://www.rubydoc.info/gems/pg/PG/Error). Před ukončením potom volá metodu [close()](http://www.rubydoc.info/gems/pg/PG/Connection#lo_close-instance_method) pro ukončení připojení.
+Kód pro připojení ke službě Azure Database for PostgreSQL používá objekt [PG::Connection](https://www.rubydoc.info/gems/pg/PG/Connection) s konstruktorem [new()](https://www.rubydoc.info/gems/pg/PG%2FConnection:initialize). Potom volá metodu [exec()](https://www.rubydoc.info/gems/pg/PG/Connection#exec-instance_method) pro spuštění příkazů DROP, CREATE TABLE a INSERT INTO. Kód kontroluje chyby pomocí třídy [PG::Error](https://www.rubydoc.info/gems/pg/PG/Error). Před ukončením potom volá metodu [close()](https://www.rubydoc.info/gems/pg/PG/Connection#lo_close-instance_method) pro ukončení připojení.
 
 Nahraďte řetězce `host`, `database`, `user` a `password` vlastními hodnotami. 
 ```ruby
@@ -111,7 +111,7 @@ end
 ## <a name="read-data"></a>Čtení dat
 Pomocí následujícího kódu se připojte a načtěte data s využitím příkazu **SELECT** jazyka SQL. 
 
-Kód pro připojení ke službě Azure Database for PostgreSQL používá objekt [PG::Connection](http://www.rubydoc.info/gems/pg/PG/Connection) s konstruktorem [new()](http://www.rubydoc.info/gems/pg/PG%2FConnection:initialize). Potom volá metodu [exec()](http://www.rubydoc.info/gems/pg/PG/Connection#exec-instance_method) pro spuštění příkazu SELECT a výsledky uloží do sady výsledků dotazu. Nad kolekcí sady výsledků dotazu se iteruje pomocí smyčky `resultSet.each do` a hodnoty aktuálního řádku se ukládají do proměnné `row`. Kód kontroluje chyby pomocí třídy [PG::Error](http://www.rubydoc.info/gems/pg/PG/Error). Před ukončením potom volá metodu [close()](http://www.rubydoc.info/gems/pg/PG/Connection#lo_close-instance_method) pro ukončení připojení.
+Kód pro připojení ke službě Azure Database for PostgreSQL používá objekt [PG::Connection](https://www.rubydoc.info/gems/pg/PG/Connection) s konstruktorem [new()](https://www.rubydoc.info/gems/pg/PG%2FConnection:initialize). Potom volá metodu [exec()](https://www.rubydoc.info/gems/pg/PG/Connection#exec-instance_method) pro spuštění příkazu SELECT a výsledky uloží do sady výsledků dotazu. Nad kolekcí sady výsledků dotazu se iteruje pomocí smyčky `resultSet.each do` a hodnoty aktuálního řádku se ukládají do proměnné `row`. Kód kontroluje chyby pomocí třídy [PG::Error](https://www.rubydoc.info/gems/pg/PG/Error). Před ukončením potom volá metodu [close()](https://www.rubydoc.info/gems/pg/PG/Connection#lo_close-instance_method) pro ukončení připojení.
 
 Nahraďte řetězce `host`, `database`, `user` a `password` vlastními hodnotami. 
 
@@ -145,7 +145,7 @@ end
 ## <a name="update-data"></a>Aktualizace dat
 Pomocí následujícího kódu se připojte a aktualizujte data s využitím příkazu **UPDATE** jazyka SQL.
 
-Kód pro připojení ke službě Azure Database for PostgreSQL používá objekt [PG::Connection](http://www.rubydoc.info/gems/pg/PG/Connection) s konstruktorem [new()](http://www.rubydoc.info/gems/pg/PG%2FConnection:initialize). Potom volá metodu [exec()](http://www.rubydoc.info/gems/pg/PG/Connection#exec-instance_method) pro spuštění příkazu UPDATE. Kód kontroluje chyby pomocí třídy [PG::Error](http://www.rubydoc.info/gems/pg/PG/Error). Před ukončením potom volá metodu [close()](http://www.rubydoc.info/gems/pg/PG/Connection#lo_close-instance_method) pro ukončení připojení.
+Kód pro připojení ke službě Azure Database for PostgreSQL používá objekt [PG::Connection](https://www.rubydoc.info/gems/pg/PG/Connection) s konstruktorem [new()](https://www.rubydoc.info/gems/pg/PG%2FConnection:initialize). Potom volá metodu [exec()](https://www.rubydoc.info/gems/pg/PG/Connection#exec-instance_method) pro spuštění příkazu UPDATE. Kód kontroluje chyby pomocí třídy [PG::Error](https://www.rubydoc.info/gems/pg/PG/Error). Před ukončením potom volá metodu [close()](https://www.rubydoc.info/gems/pg/PG/Connection#lo_close-instance_method) pro ukončení připojení.
 
 Nahraďte řetězce `host`, `database`, `user` a `password` vlastními hodnotami. 
 
@@ -179,7 +179,7 @@ end
 ## <a name="delete-data"></a>Odstranění dat
 Pomocí následujícího kódu se připojte a načtěte data s využitím příkazu **DELETE** jazyka SQL. 
 
-Kód pro připojení ke službě Azure Database for PostgreSQL používá objekt [PG::Connection](http://www.rubydoc.info/gems/pg/PG/Connection) s konstruktorem [new()](http://www.rubydoc.info/gems/pg/PG%2FConnection:initialize). Potom volá metodu [exec()](http://www.rubydoc.info/gems/pg/PG/Connection#exec-instance_method) pro spuštění příkazu UPDATE. Kód kontroluje chyby pomocí třídy [PG::Error](http://www.rubydoc.info/gems/pg/PG/Error). Před ukončením potom volá metodu [close()](http://www.rubydoc.info/gems/pg/PG/Connection#lo_close-instance_method) pro ukončení připojení.
+Kód pro připojení ke službě Azure Database for PostgreSQL používá objekt [PG::Connection](https://www.rubydoc.info/gems/pg/PG/Connection) s konstruktorem [new()](https://www.rubydoc.info/gems/pg/PG%2FConnection:initialize). Potom volá metodu [exec()](https://www.rubydoc.info/gems/pg/PG/Connection#exec-instance_method) pro spuštění příkazu UPDATE. Kód kontroluje chyby pomocí třídy [PG::Error](https://www.rubydoc.info/gems/pg/PG/Error). Před ukončením potom volá metodu [close()](https://www.rubydoc.info/gems/pg/PG/Connection#lo_close-instance_method) pro ukončení připojení.
 
 Nahraďte řetězce `host`, `database`, `user` a `password` vlastními hodnotami. 
 

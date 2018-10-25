@@ -9,12 +9,12 @@ ms.topic: get-started-article
 ms.date: 02/26/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: e3e3a981daf1273b8b2387cb1c665317f860b1d2
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: c370d25ed5d70887c8beecae8fea3528a259a0ea
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46974863"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49954568"
 ---
 # <a name="set-up-an-azure-ad-service-principal-for-a-kubernetes-cluster-in-container-service"></a>Nastavení instančního objektu služby Azure AD pro cluster Kubernetes ve službě Container Service
 
@@ -37,14 +37,14 @@ Můžete vytvořit existující instanční objekt služby Azure AD splňující
 * **Tajný klíč klienta:** Musí to být heslo. V současné době nemůžete použít instanční objekt nastavený pro ověření certifikátu.
 
 > [!IMPORTANT]
-> Abyste mohli vytvořit instanční objekt, musíte mít oprávnění k registraci aplikace v tenantu Azure AD a přiřazení aplikace k roli v předplatném. Pokud chcete zjistit, jestli máte požadovaná oprávnění, [podívejte se na portál](../../azure-resource-manager/resource-group-create-service-principal-portal.md#required-permissions).
+> Abyste mohli vytvořit instanční objekt, musíte mít oprávnění k registraci aplikace v tenantu Azure AD a přiřazení aplikace k roli v předplatném. Pokud chcete zjistit, jestli máte požadovaná oprávnění, [podívejte se na portál](../../active-directory/develop/howto-create-service-principal-portal.md#required-permissions).
 >
 
 ## <a name="option-1-create-a-service-principal-in-azure-ad"></a>Možnost 1: Vytvoření instančního objektu v Azure AD
 
 Pokud chcete instanční objekt služby Azure AD vytvořit před nasazením clusteru Kubernetes, Azure k tomu nabízí několik metod.
 
-Příkazy v následujícím příkladu vám ukážou, jak to můžete udělat pomocí [Azure CLI](../../azure-resource-manager/resource-group-authenticate-service-principal-cli.md). Instanční objekt můžete případně vytvořit pomocí [Azure PowerShellu](../../azure-resource-manager/resource-group-authenticate-service-principal.md), [portálu](../../azure-resource-manager/resource-group-create-service-principal-portal.md) nebo jinou metodou.
+Příkazy v následujícím příkladu vám ukážou, jak to můžete udělat pomocí [Azure CLI](../../azure-resource-manager/resource-group-authenticate-service-principal-cli.md). Instanční objekt můžete případně vytvořit pomocí [Azure PowerShellu](../../active-directory/develop/howto-authenticate-service-principal-powershell.md), [portálu](../../active-directory/develop/howto-create-service-principal-portal.md) nebo jinou metodou.
 
 ```azurecli
 az login

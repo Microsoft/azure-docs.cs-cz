@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 3bff6f00c67a2fa523113171855dce4e7b807f0b
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 4ce344292577dd286abcd7fbf9e067800da0e0b3
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45734450"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49958985"
 ---
 # <a name="tutorial-use-rest-api-to-create-an-azure-data-factory-pipeline-to-copy-data"></a>Kurz: Použití rozhraní REST API k vytvoření kanálu Azure Data Factory pro kopírování dat 
 > [!div class="op_single_selector"]
@@ -52,7 +52,7 @@ Kanál může obsahovat víc než jednu aktivitu. A dvě aktivity můžete zře
 ## <a name="prerequisites"></a>Požadavky
 * Projděte si [Přehled kurzu](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) a proveďte **nutné** kroky.
 * Nainstalujte na svůj počítač nástroj [Curl](https://curl.haxx.se/dlwiz/). Pomocí nástroje Curl a příkazů REST vytvoříte objekt pro vytváření dat. 
-* Postupujte podle pokynů v [tomto článku](../../azure-resource-manager/resource-group-create-service-principal-portal.md) a proveďte následující: 
+* Postupujte podle pokynů v [tomto článku](../../active-directory/develop/howto-create-service-principal-portal.md) a proveďte následující: 
   1. V Azure Active Directory vytvořte webovou aplikaci s názvem **ADFCopyTutorialApp**.
   2. Získejte **ID klienta** a **tajný klíč**. 
   3. Získejte **ID tenanta**. 

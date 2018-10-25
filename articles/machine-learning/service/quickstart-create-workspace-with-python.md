@@ -9,16 +9,18 @@ ms.reviewer: sgilley
 author: hning86
 ms.author: haining
 ms.date: 09/24/2018
-ms.openlocfilehash: cc348ca50b942b6b8b1474ed4dac4067d107a4af
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: e4624b115143f9f2e6dd77aa8ee79597c86ba31c
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49377995"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49456168"
 ---
 # <a name="quickstart-use-python-to-get-started-with-azure-machine-learning"></a>Rychlé zprovoznění: Použití Pythonu při začátcích se službou Azure Machine Learning
 
 V tomto rychlém startu použijete sadu SDK služby Azure Machine Learning pro Python, abyste vytvořili a potom používali [pracovní prostor](concept-azure-machine-learning-architecture.md) služby Machine Learning. Tento pracovní prostor je základním blokem v cloudu, který můžete využít k experimentování, trénování a nasazování modelů strojového učení pomocí služby Machine Learning.
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2G9N6]
 
 V tomto kurzu nainstalujete sadu Python SDK a naučíte se následující:
 

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.topic: overview
 ms.date: 09/13/2018
 ms.custom: it-pro
-ms.openlocfilehash: 08d32a99e2f1a77bcc7a5900b47e6771c33ec356
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 406baeac60c7c0cdf5f74876e5fc29ea23d3d6f6
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49393317"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49957543"
 ---
 # <a name="what-is-azure-active-directory"></a>Představení služby Azure Active Directory
 Azure Active Directory (Azure AD) je cloudová adresářová služba určená pro více tenantů a služba pro správu identit od Microsoftu. Azure AD v jediném řešení kombinuje základní adresářové služby, správu přístupu k aplikacím a ochranu identity a nabízí tak platformu založenou na standardech, čímž pomáhá vývojářům integrovat do jejich aplikací řízení přístupu na základě centralizovaných zásad a pravidel.
@@ -74,7 +74,7 @@ Pokud chcete zvýšit úroveň implementace Azure AD, můžete také přidat pla
 Zaregistrujte si bezplatnou 30denní zkušební verzi a nasaďte svoje první cloudové řešení. Více informací najdete v tématu věnovaném [zkušební verzi Azure Active Directory Premium](https://azure.microsoft.com/trial/get-started-active-directory/).
 
 ## <a name="as-a-developer-how-do-i-get-started"></a>Jak mám začít jako vývojář?
-Zaregistrujte si bezplatnou 30denní zkušební verzi ještě dnes a začněte integrovat své aplikace se službou Azure AD. Více informací najdete v tématu věnovaném [zkušební verzi Azure Active Directory Premium](https://azure.microsoft.com/trial/get-started-active-directory/). Další informace najdete také v [příručce pro vývojáře](../develop/azure-ad-developers-guide.md) pro Azure Active Directory.
+Zaregistrujte si bezplatnou 30denní zkušební verzi ještě dnes a začněte integrovat své aplikace se službou Azure AD. Více informací najdete v tématu věnovaném [zkušební verzi Azure Active Directory Premium](https://azure.microsoft.com/trial/get-started-active-directory/). Další informace najdete také v [příručce pro vývojáře](../develop/v1-overview.md) pro Azure Active Directory.
 
 ## <a name="next-steps"></a>Další kroky
 - [Další informace o základech správy identit a přístupu v Azure](identity-fundamentals.md).

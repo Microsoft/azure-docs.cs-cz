@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 08/26/2018
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: f0bcb2e7f99689d31be610f1523d2c57e332deb7
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: f3fa6c75fdaf30d13231bc3072bd671614c9a668
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43049748"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49650655"
 ---
 1. V **Průzkumníku řešení** klikněte pravým tlačítkem na požadovaný projekt a vyberte **Publikovat**.
 
 2. Vyberte **Aplikace Azure Function**, zvolte **Vytvořit novou** a potom vyberte **Publikovat**.
 
-    ![Výběr cíle publikování](./media/functions-vstools-publish/functions-vstools-create-new-function-app.png)
+    ![Výběr cíle publikování](./media/functions-vstools-publish/functions-visual-studio-publish-profile.png)
 
     Když povolíte **Spustit ze souboru Zip**, vaše aplikace funkcí se spouští přímo z balíčku pro nasazení. Další informace najdete v tématu věnovaném [spouštění Azure Functions ze souboru balíčku](../articles/azure-functions/run-functions-from-deployment-package.md).
 
@@ -27,7 +27,7 @@ ms.locfileid: "43049748"
 
 4. V dialogovém okně **Vytvořit App Service** použijte nastavení **Hostování** podle tabulky pod obrázkem:
 
-    ![Dialogové okno Vytvořit službu App Service](./media/functions-vstools-publish/functions-vstools-publish.png)
+    ![Dialogové okno Vytvořit službu App Service](./media/functions-vstools-publish/functions-visual-studio-publish.png)
 
     | Nastavení      | Navrhovaná hodnota  | Popis                                |
     | ------------ |  ------- | -------------------------------------------------- |
@@ -41,4 +41,4 @@ ms.locfileid: "43049748"
 
 6. Jakmile se nasazení dokončí, poznamenejte si hodnotu **Adresa URL webu**. Je to adresa vaší aplikace funkcí v Azure.
 
-    ![Zpráva o úspěšném publikování](./media/functions-vstools-publish/functions-vstools-publish-profile.png)
+    ![Zpráva o úspěšném publikování](./media/functions-vstools-publish/functions-visual-studio-publish-complete.png)

@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: overview
 ms.date: 10/06/2018
 ms.author: diberry
-ms.openlocfilehash: 0520c00ab20ca7210b3bb13567f9998e7231be43
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 28580a29c2ffaadfa3b3ea26cb28f103d883d576
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48867649"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49637268"
 ---
 # <a name="what-is-language-understanding-luis"></a>Co je Language Understanding (LUIS)?
 
@@ -192,16 +192,7 @@ Další služby Cognitive Services používané se službou LUIS:
 * [Služba Speech](../Speech-Service/overview.md) převádí mluvené požadavky na text. 
 * [Conversation learner](https://docs.microsoft.com/azure/cognitive-services/labs/conversation-learner/overview) umožňuje ve službě LUIS rychleji vytvářet konverzace chatbota.
 * [Project personality chat](https://docs.microsoft.com/azure/cognitive-services/project-personality-chat/overview) zpracovává nezávaznou konverzaci chatbota.
-<!--
-## Other ways of implementing LUIS
 
-A client application for LUIS is:
-* [Windows Mixed Reality](https://docs.microsoft.com/windows/mixed-reality/) - learn more with this [Mixed reality course](https://docs.microsoft.com/windows/mixed-reality/mr-azure-303) with LUIS. 
-
-
-Labs: 
-
--->
 ## <a name="next-steps"></a>Další kroky
 
 Vytvořte novou aplikaci LUIS s využitím [předem připravené](luis-get-started-create-app.md) nebo [vlastní](luis-quickstart-intents-only.md) domény. [Odešlete dotaz na koncový bod předpovědi](luis-get-started-cs-get-intent.md) veřejné aplikace IoT.
