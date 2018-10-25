@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/16/2018
+ms.date: 10/23/2018
 ms.author: jeffgilb
 ms.reviewer: quying
-ms.openlocfilehash: ea3e6c2e616f2618200c1e3904786abd72bbd75d
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 84aaa5534c629554074544b4bb56ae8da8825397
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49376801"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49986443"
 ---
 # <a name="tutorial-offer-highly-available-mysql-databases"></a>Kurz: Nabízí vysoce dostupné databáze MySQL
 
@@ -65,16 +65,15 @@ Použijte postup v této části MySQL serveru k nasazení clusteru s použitím
 - Veřejnou IP adresu (pro primární cluster MySQL virtuálního počítače)
 - Tři virtuální počítače s Linuxem k hostování MySQL cluster
 
-1. Přihlaste se k portálu pro správu:
-    - Nasazení integrovaného systému adresy portálu budou lišit v závislosti na oblasti vašeho řešení a název externí domény. Bude ve formátu https://adminportal.&lt; *oblast*&gt;.&lt; *Plně kvalifikovaný název domény*&gt;.
-    - Pokud používáte Azure Stack Development Kit (ASDK), adresu portálu je [ https://adminportal.local.azurestack.external ](https://adminportal.local.azurestack.external).
+1. 
+[!INCLUDE [azs-admin-portal](../../includes/azs-admin-portal.md)]
 
 2. Vyberte **\+** **vytvořit prostředek** > **Compute**a potom **MySQL s replikací**.
 
-   ![Nasazení vlastní šablony](media/azure-stack-tutorial-mysqlrp/createcluster1.png)
+   ![Nasazení vlastní šablony](media/azure-stack-tutorial-mysqlrp/1.png)
 
 3. Zadejte informace o základní nasazení na **Základy** stránky. Zkontrolujte výchozí hodnoty a podle potřeby a klikněte na **OK**.<br><br>Minimálně poskytnout následující:
-   - Název nasazení (výchozí hodnota je mysql)
+   - Název nasazení (výchozí hodnota je mymysql)
    - Kořenové heslo aplikace. Zadejte alfanumerické heslo 12 znaků s **žádné speciální znaky**
    - Název databáze aplikace (výchozí hodnota je bitnami)
    - Počet replik databáze MySQL virtuálních počítačů určených k vytvoření (výchozí hodnota je 2)
@@ -82,22 +81,22 @@ Použijte postup v této části MySQL serveru k nasazení clusteru s použitím
    - Vyberte skupinu prostředků nebo vytvořte novou
    - Vyberte umístění (výchozí hodnota je místní pro ASDK)
 
-   ![Základní informace o nasazení](media/azure-stack-tutorial-mysqlrp/createcluster2.png)
+   [![](media/azure-stack-tutorial-mysqlrp/2-sm.PNG "Základní informace o nasazení")](media/azure-stack-tutorial-mysqlrp/2-lg.PNG#lightbox)
 
 4. Na **konfiguraci prostředí** stránky, zadejte následující informace a klikněte na **OK**: 
    - Heslo nebo SSH veřejný klíč pro ověřování (SSH secure shell). Pokud použijete heslo, musí obsahovat písmena, číslice a **můžete** obsahovat speciální znaky
    - Velikost virtuálního počítače (výchozí hodnota je virtuální počítače Standard D1 v2)
    - Velikost v GB, klikněte na tlačítko datového disku **OK**
 
-   ![Konfigurace prostředí](media/azure-stack-tutorial-mysqlrp/createcluster3.png)
+   [![](media/azure-stack-tutorial-mysqlrp/3-sm.PNG "Konfigurace prostředí")](media/azure-stack-tutorial-mysqlrp/3-lg.PNG#lightbox)
 
 5. Zkontrolujte nasazení **Souhrn**. Volitelně můžete stáhnout přizpůsobenou šablonu a parametry a potom klikněte na **OK**.
 
-   ![Souhrn](media/azure-stack-tutorial-mysqlrp/createcluster4.png)
+   [![](media/azure-stack-tutorial-mysqlrp/4-sm.PNG "Souhrn")](media/azure-stack-tutorial-mysqlrp/4-lg.PNG#lightbox)
 
 6. Klikněte na tlačítko **vytvořit** na **koupit** stránku ke spuštění nasazení.
 
-   ![Koupit](media/azure-stack-tutorial-mysqlrp/createcluster4.png)
+   ![Koupit](media/azure-stack-tutorial-mysqlrp/5.png)
 
     > [!NOTE]
     > Nasazení bude trvat přibližně hodinu. Ujistěte se, že nasazení bylo dokončeno a MySQL cluster zcela nakonfigurované než budete pokračovat. 
@@ -110,11 +109,11 @@ Ve výchozím nastavení je nakonfigurován žádný veřejný přístup pro MyS
 
 1. Na portálu správce, přejděte do skupiny prostředků vytvořené při nasazování clusteru MySQL a vybrat skupinu zabezpečení sítě (**výchozí podsíť sg**):
 
-   ![open (otevírá)](media/azure-stack-tutorial-mysqlrp/nsg1.png)
+   ![open (otevírá)](media/azure-stack-tutorial-mysqlrp/6.png)
 
 2. Vyberte **příchozí pravidla zabezpečení** a potom klikněte na tlačítko **přidat**.<br><br>Zadejte **3306** v **rozsah cílových portů** a volitelně také popis v **název** a **popis** pole. Klikněte na Přidat a zavřete dialogové okno pravidla zabezpečení příchozích dat.
 
-   ![open (otevírá)](media/azure-stack-tutorial-mysqlrp/nsg2.png)
+   ![open (otevírá)](media/azure-stack-tutorial-mysqlrp/7.png)
 
 ### <a name="configure-external-access-to-the-mysql-cluster"></a>Konfigurace externího přístupu k MySQL cluster
 Předtím, než je MySQL cluster se dá přidat jako hostitele služby Azure Stack MySQL serveru, musí být povolená externí přístup.
@@ -167,9 +166,8 @@ Po MySQL cluster byla vytvořena, konfiguraci a přidat jako Server služby Azur
 > [!NOTE]
 > Projít tyto kroky na portálu user portal Azure Stack jako uživatel tenanta s předplatným zajišťuje serveru MySQL (Microsoft.MySQLAdapter služby).
 
-1. Přihlaste se k portálu user portal:
-    - Nasazení integrovaného systému adresy portálu budou lišit v závislosti na oblasti vašeho řešení a název externí domény. Bude ve formátu https://portal.&lt; *oblast*&gt;.&lt; *Plně kvalifikovaný název domény*&gt;.
-    - Pokud používáte Azure Stack Development Kit (ASDK), je uživatelského portálu adresy [ https://portal.local.azurestack.external ](https://portal.local.azurestack.external).
+1. 
+[!INCLUDE [azs-user-portal](../../includes/azs-user-portal.md)]
 
 2. Vyberte **\+** **vytvořit prostředek** > **Data \+ úložiště**a potom **databázi MySQL** .<br><br>Zadejte informace o vlastnosti databáze, včetně názvu, řazení, předplatné se má použít a umístění pro nasazení. 
 

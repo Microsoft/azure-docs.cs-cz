@@ -128,8 +128,6 @@ items:
       href: azure-stack-region-management.md
     - name: Použití portálu správce
       href: azure-stack-manage-portals.md
-    - name: Připojení ke službě Azure Stack
-      href: azure-stack-connect-azure-stack.md
     - name: Připojení k Azure
       items:
       - name: Připojení pomocí VPN
@@ -388,9 +386,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-stack
   - name: Školení a certifikace
     href: https://docs.microsoft.com/azure/azure-stack/azure-stack-train-and-cert
-ms.openlocfilehash: 07db25425bf9ef753c1561803dd1cdf838ef3457
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 7034026f1a78c34cfd57750dcfdc4a65491ce75b
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49944951"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50023980"
