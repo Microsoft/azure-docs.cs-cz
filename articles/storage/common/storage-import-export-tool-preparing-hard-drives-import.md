@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/29/2017
 ms.author: muralikk
 ms.component: common
-ms.openlocfilehash: 7fc3e68e9d714ca95a28a28b470b1e1fdbff2c47
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 0be0d6c9613b4160a6c4c5cc3b63336fcf67d5c2
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48870889"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025614"
 ---
 # <a name="preparing-hard-drives-for-an-import-job"></a>Příprava pevných disků pro úlohu importu
 
@@ -309,7 +309,7 @@ Pokud velikost dat je větší než velikost disku, nástroj WAImportExport dist
 
 #### <a name="where-can-i-find-previous-version-of-waimportexport-tool"></a>Kde můžu najít předchozí verzi nástroje WAImportExport?
 
-Nástroj WAImportExport má všechny funkce, do kterých se nástroj WAImportExport V1. Nástroj WAImportExport umožňuje uživatelům zadat více zdrojů a zápis do několika jednotkách. Kromě toho jeden moct snadno spravovat více zdrojová umístění, ze kterých se data, musí zkopírovat do jednoho souboru CSV. V případě však podpora SAS nebo chcete zkopírovat jeden zdroj na jeden disk, je [nástroj můžete stáhnout WAImportExport V1] (http://go.microsoft.com/fwlink/?LinkID=301900&amp; clcid = 0x409) a odkazovat na [WAImportExport V1 odkaz](storage-import-export-tool-how-to-v1.md) nápovědu k WAImportExport V1 využití.
+Nástroj WAImportExport má všechny funkce, do kterých se nástroj WAImportExport V1. Nástroj WAImportExport umožňuje uživatelům zadat více zdrojů a zápis do několika jednotkách. Kromě toho jeden moct snadno spravovat více zdrojová umístění, ze kterých se data, musí zkopírovat do jednoho souboru CSV. V případě, že budete potřebovat podporu SAS nebo chcete zkopírovat jeden zdroj na jeden disk, můžete si ale [stáhněte si nástroj V1 WAImportExport](http://go.microsoft.com/fwlink/?LinkID=301900&amp;clcid=0x409) věnované [WAImportExport V1 odkaz](storage-import-export-tool-how-to-v1.md) nápovědu k používání WAImportExport V1 .
 
 #### <a name="what-is-a-session-id"></a>Co je ID relace?
 
@@ -407,7 +407,7 @@ Nástroj WAImportExport čte a zapisuje soubory služby batch pomocí služby ba
 * [Nastavení nástroje Azure Import/Export](storage-import-export-tool-setup.md)
 * [Nastavení vlastností a metadat během procesu importu](storage-import-export-tool-setting-properties-metadata-import.md)
 * [Ukázkový pracovní postup pro přípravu pevných disků pro úlohu importu](storage-import-export-tool-sample-preparing-hard-drives-import-job-workflow.md)
-* [Stručná referenční příručka pro často používané příkazy](storage-import-export-tool-quick-reference.md) 
+* [Stručná referenční příručka pro často používané příkazy](storage-import-export-tool-quick-reference.md) 
 * [Kontrola stavu úlohy s použitím kopií souborů protokolu](storage-import-export-tool-reviewing-job-status-v1.md)
 * [Oprava úlohy importu](storage-import-export-tool-repairing-an-import-job-v1.md)
 * [Oprava úlohy exportu](storage-import-export-tool-repairing-an-export-job-v1.md)

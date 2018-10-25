@@ -7,19 +7,19 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 08/13/2018
 ms.author: saudas
-ms.openlocfilehash: 9f082c5f198ebd7123058bd250d3fef55494d553
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 1fd8f7c8499b7f9223939b8d426f274e79fd190e
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43287535"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025331"
 ---
 # <a name="aks-troubleshooting"></a>Řešení potíží s AKS
 Pokud vytvoříte nebo clustery správce AKS, někdy můžete setkat s problémy. Tento článek podrobně popisuje některé běžné problémy a postup řešení potíží.
 
 ### <a name="in-general-where-do-i-find-information-about-debugging-kubernetes-issues"></a>Obecně platí, kde najdu informace o ladění problémů s Kubernetes?
 
-[Tady] (https://kubernetes.io/docs/tasks/debug-application-cluster/troubleshooting/) je oficiální odkaz pro řešení potíží s clustery kubernetes.
+[Tady](https://kubernetes.io/docs/tasks/debug-application-cluster/troubleshooting/) je oficiální odkaz pro řešení potíží s clustery kubernetes.
 [Tady](https://github.com/feiskyer/kubernetes-handbook/blob/master/en/troubleshooting/index.md) je odkaz na Průvodce odstraňováním potíží publikoval(a) technický pracovník Microsoftu týkající se řešení potíží s podů, uzly, clustery, atd.
 
 ### <a name="i-am-getting-a-quota-exceeded-error-during-create-or-upgrade-what-should-i-do"></a>Chyby překročení kvóty dochází při vytvoření nebo aktualizace. Co bych měl/a dělat? 
@@ -59,7 +59,7 @@ Pokud se nezobrazí řídicí panel kubernetes, zkontrolujte, zda pod kube proxy
 
 Ujistěte se, že je otevřen pro připojení k rozhraní API serveru výchozí skupiny zabezpečení sítě se nezmění a port 22. Kontrola, zda je spuštěná tunnelfront pod v oboru názvů kube-system. Pokud není, platnost ho odstranit a bude restartován.
 
-### <a name="i-am-trying-to-upgrade-or-scale-and-am-getting-message-changing-property-imagereference-is-not-allowed-error--how-do-i-fix-this-issue"></a>Mohu provést upgrade nebo změna velikosti a Power BI Desktop zobrazuje "zpráva": "Změny vlastnosti"imageReference"nejsou povolené." Chyba  Jak opravit tento problém?
+### <a name="i-am-trying-to-upgrade-or-scale-and-am-getting-message-changing-property-imagereference-is-not-allowed-error--how-do-i-fix-this-issue"></a>Mohu provést upgrade nebo změna velikosti a Power BI Desktop zobrazuje "zpráva": "Změny vlastnosti"imageReference"nejsou povolené." Došlo k chybě.  Jak opravit tento problém?
 
 Je možné, že se tato chyba zobrazuje, protože jste upravili značky v agentské uzly v clusteru AKS. Úprava a odstranění značek a dalších vlastností prostředků ve skupině prostředků MC_ * může vést k neočekávaným výsledkům. Úprava prostředků v rámci MC_ * v clusteru AKS dělí cíle na úrovni služby.
 

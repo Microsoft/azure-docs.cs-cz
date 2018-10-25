@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: 3f49065d4f66f55ed728626764d9cac2aa5c3c69
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 14515aefe9635160cf99a630b0742d23352532cf
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42057162"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49985960"
 ---
 # <a name="connection-libraries-for-azure-database-for-mysql"></a>Připojení knihoven pro službu Azure Database for MySQL
 Tento článek uvádí každou knihovnu nebo ovladač, klientských programů můžete použít při připojování ke službě Azure Database for MySQL.
@@ -24,7 +24,7 @@ MySQL nabízí připojení k ovladači standardní databázi pro MySQL pomocí a
 
 | **Jazyk** | **Platforma** | **Další zdroje** | **Stáhnout** |
 | :----------- | :------------| :-----------------------| :------------|
-| PHP | Windows, Linux | [Nativní ovladače MySQL pro jazyk PHP - mysqlnd](https://dev.mysql.com/downloads/connector/php-mysqlnd/) | [Stáhnout](http://php.net/downloads.php) |
+| PHP | Windows, Linux | [Nativní ovladače MySQL pro jazyk PHP - mysqlnd](https://dev.mysql.com/downloads/connector/php-mysqlnd/) | [Stáhnout](https://secure.php.net/downloads.php) |
 | ODBC | Platformy Windows, Linux, Mac OS X a Unix | [Příručka pro vývojáře MySQL Connector/ODBC](https://dev.mysql.com/doc/connector-odbc/en/) | [Stáhnout](https://dev.mysql.com/downloads/connector/odbc/) |
 | ADO.NET | Windows | [Příručka pro vývojáře MySQL Connector/Net](https://dev.mysql.com/doc/connector-net/en/) | [Stáhnout](https://dev.mysql.com/downloads/connector/net/) |
 | JDBC | Nezávislé na platformě | [Příručka pro vývojáře MySQL Connector/J 5.1](https://dev.mysql.com/doc/connector-j/5.1/en/) | [Stáhnout](https://dev.mysql.com/downloads/connector/j/) |

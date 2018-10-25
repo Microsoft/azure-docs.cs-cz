@@ -3,8 +3,7 @@ title: Konfigurace metody směrování s více hodnotami provozu ve službě Azu
 description: Tento článek vysvětluje postup konfigurace Traffic Manageru směrovat provoz do koncových bodů A/AAAA.
 services: traffic-manager
 documentationcenter: ''
-author: kumudd
-manager: jeconnoc
+author: KumudD
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
@@ -12,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: kumud
-ms.openlocfilehash: 1fae1147c941ed28d23a478a0e809b2dffba7a35
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: d9a0342332c2483b859e916b50fd05c9cb1e3395
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46131361"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49986759"
 ---
 # <a name="configure-multivalue-routing-method-in-traffic-manager"></a>Konfigurace metody směrování s více hodnotami v Traffic Manageru
 
@@ -42,7 +41,7 @@ Vytvořte profil služby Traffic Manager, která přesměruje uživatelský prov
 2. V **vytvořit profil Traffic Manageru**, zadejte nebo vyberte následující informace, přijměte výchozí hodnoty pro zbývající nastavení a pak vyberte **vytvořit**:
     | Nastavení                 | Hodnota                                              |
     | ---                     | ---                                                |
-    | Název                   | Tento název musí být jedinečný v rámci zóny trafficmanager.net a výsledky v názvu DNS, trafficmanager.net, který se používá pro přístup k vašeho profilu Traffic Manageru.                                   |
+    | Název                   | Tento název musí být jedinečný v rámci zóny trafficmanager.net a ve výsledcích názvu DNS trafficmanager.net, který slouží k přístupu k vašemu profilu služby Traffic Manager.                                   |
     | Metoda směrování          | Vyberte **hodnot** metodu směrování.                                       |
     | Předplatné            | Vyberte své předplatné.                          |
     | Skupina prostředků          | Vyberte *myResourceGroupTM1*. |
@@ -73,9 +72,9 @@ Přidejte dvě IP adresy jako externí koncové body do profilu služby Traffic 
  
 ## <a name="next-steps"></a>Další postup
 
-- Další informace o [váha metodu směrování provozu](traffic-manager-configure-weighted-routing-method.md).
-- Další informace o [metody prioritního směrování](traffic-manager-configure-priority-routing-method.md).
+- Přečtěte si o [metodě váženého směrování provozu](traffic-manager-configure-weighted-routing-method.md).
+- Přečtěte si o [metodě prioritního směrování](traffic-manager-configure-priority-routing-method.md).
 - Další informace o [metody směrování podle výkonu](traffic-manager-configure-performance-routing-method.md)
-- Další informace o [metody geografického směrování](traffic-manager-configure-geographic-routing-method.md).
+- Přečtěte si o [metodě geografického směrování](traffic-manager-configure-geographic-routing-method.md).
 
 

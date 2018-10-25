@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.reviewer: hrasheed
 ms.topic: conceptual
 ms.date: 10/9/2018
-ms.openlocfilehash: da64c626c121062960fa7724faaa64cdc620d64a
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 6218a96b3939b2a07832dd3d6d19327cfb039b68
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49466338"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49986929"
 ---
 # <a name="configure-a-hdinsight-cluster-with-enterprise-security-package-by-using-azure-active-directory-domain-services"></a>Konfigurace clusteru HDInsight s balíčkem Enterprise Security Package pomocí Azure Active Directory Domain Services
 
@@ -69,7 +69,9 @@ Změna konfigurace serverů DNS ve virtuální síti Azure AD DS použití těch
 
 Je jednodušší umístit instance služby Azure AD – DS a HDInsight cluster ve stejné virtuální síti Azure. Pokud budete chtít použít jiné virtuální sítě, musíte vytvořit partnerský vztah těchto virtuálních sítí, tak, aby řadič domény je viditelná pro virtuální počítače HDI. Další informace najdete v tématu [partnerský vztah virtuálních sítí](../../virtual-network/virtual-network-peering-overview.md). 
 
-Po vytvoření partnerského vztahu virtuálních sítí, konfigurovat virtuální síť HDInsight použít vlastní server DNS a zadejte privátní IP adresy služby Azure AD – DS jako adresy serverů DNS. Když obou virtuálních sítích používat stejné servery DNS, vlastní název domény se přeloží správné IP a bude dostupný v HDInsight. Například pokud je název domény "contoso.com" pak po provedení tohoto kroku příkaz ping "contoso.com" musí se překládat na pravé straně IP adres Azure AD DS. ED ![konfigurace vlastního DNS serverů pro partnerský vztah virtuální sítě](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-peered-vnet-configuration.png)
+Po vytvoření partnerského vztahu virtuálních sítí, konfigurovat virtuální síť HDInsight použít vlastní server DNS a zadejte privátní IP adresy služby Azure AD – DS jako adresy serverů DNS. Když obou virtuálních sítích používat stejné servery DNS, vlastní název domény se přeloží správné IP a bude dostupný v HDInsight. Například pokud je název domény "contoso.com" pak po provedení tohoto kroku příkaz ping "contoso.com" musí se překládat na pravé straně IP adres Azure AD DS. 
+
+![Konfigurace vlastního DNS serverů pro partnerské virtuální síti](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-peered-vnet-configuration.png)
 
 **K otestování** Pokud sítě je správně nastavené, připojení k HDInsight virtuálních sítí/podsítí virtuálního počítače s windows a pomocí příkazu ping název domény (ho musí se překládat na IP adresy) a potom spusťte **ldp.exe** pro přístup k doméně Azure AD – DS. Potom **připojení tohoto virtuálního počítače s windows do domény potvrďte** úspěšný všechny požadované volání RPC mezi klientem a serverem. Můžete také použít **nslookup** potvrďte připojení k účtu úložiště nebo všechny externí databáze, můžete použít (například externí Hive metastore nebo Ranger DB).
 Ujistěte se, že všechny [požadované porty](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772723(v=ws.10)#communication-to-domain-controllers) jsou povolené v podsíti služby AAD DS pravidla skupiny zabezpečení sítě, pokud AAD DS je zabezpečena pomocí skupiny zabezpečení sítě. 

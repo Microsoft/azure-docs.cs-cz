@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 10/11/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 2bd1d52db88ca280b811898c173f66b2deee1649
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 6d2076a91bc7e7c0e2ca9d2fe6899cddec2f8d0b
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49638137"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024490"
 ---
 # <a name="update-management-solution-in-azure"></a>Řešení Update Management v Azure
 
@@ -39,7 +39,7 @@ Správa aktualizací umožňuje nativně připojit počítače v několika před
 
 Až CVE vydání, trvá 2 – 3 hodiny pro opravu se zobrazí pro počítače s Linuxem pro posouzení.  Pro počítače s Windows trvá 12 až 15 hodin pro opravu zobrazení pro posouzení po byla uvolněna.
 
-Po dokončení kontroly dodržování předpisů pro aktualizace do počítače agenta předává informace hromadné ke službě Azure Log Analytics. Na počítači s Windows je spuštěný kontroly dodržování předpisů každých 12 hodin ve výchozím nastavení.
+Po dokončení kontroly dodržování předpisů pro aktualizace do počítače agenta předává informace hromadné ke službě Azure Log Analytics. Na počítači s Windows se kontrola dodržování předpisů ve výchozím nastavení spouští každých 12 hodin.
 
 Mimo plán kontrol dodržování předpisů pro aktualizace, zahájí se kontrola v rámci 15 minut v případě restartování agenta MMA, před instalací aktualizací a po instalaci aktualizace.
 
@@ -56,7 +56,7 @@ Plánované nasazení definuje, které cílové počítače obdrží použiteln�
 
 Aktualizace se instalují podle runbooků ve službě Azure Automation. Nelze zobrazit tyto sady runbook a runbook nevyžadují žádnou konfiguraci. Při vytvoření nasazení aktualizace nasazení aktualizace vytvoří plán, který se spustí hlavní runbook aktualizace v zadanou dobu pro zahrnuté počítače. Hlavní runbook spouští podřízený runbook na každém agentovi k instalaci požadovaných aktualizací.
 
-Datum a čas zadaný v nasazení aktualizací cílové počítače paralelně spustit nasazení. Před instalací je spuštěné ověřte, že se aktualizace stále vyžadují kontrolu. U klientských počítačů služby WSUS Pokud nejsou aktualizace schválené ve službě WSUS, nasazení aktualizace se nezdaří.
+Datum a čas zadaný v nasazení aktualizací cílové počítače paralelně spustit nasazení. Před instalací Chcete-li ověřit, že se aktualizace stále vyžadují spuštění kontroly. U klientských počítačů služby WSUS Pokud nejsou aktualizace schválené ve službě WSUS, nasazení aktualizace se nezdaří.
 
 Máte na počítači registrován pro správu aktualizací ve více než jeden pracovní prostory Log Analytics (vícenásobné navádění) se nepodporuje.
 
@@ -264,7 +264,34 @@ sudo yum -q --security check-update
 
 Aktuálně neexistuje žádná metoda podporovaná metoda Povolit nativní klasifikace dat dostupnost na CentOS. V tuto chvíli je podporované jenom best effort pro zákazníky, kteří mohou povolili to sami.
 
-##<a name="ports"></a>Plánování sítě
+## <a name="firstparty-predownload"></a>První strany, použití dílčích oprav a předem stáhnout
+
+Správa aktualizací spoléhá na webu Windows Update ke stažení a instalaci aktualizací Windows. V důsledku toho respektujeme řadu nastavení aktualizace Windows. Pokud nastavení použijete, aby povolovala aktualizace mimo Windows, správu aktualizací, spravovat a tyto aktualizace. Pokud chcete povolit stahování aktualizace, než dojde k nasazení aktualizací, nasazení aktualizací můžete začít pracovat rychleji a méně pravděpodobné překročení časového období údržby.
+
+### <a name="pre-download-updates"></a>Náhled stahování aktualizací
+
+Konfigurace automaticky stahování aktualizací v zásadách skupiny, můžete nastavit [nastavení konfigurace automatických aktualizací](/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates#BKMK_comp5) k **3**. Stáhne aktualizace potřeba na pozadí, ale není možné nainstalovat je. To zajišťuje Správa aktualizací v ovládacím prvku plánů, ale povolit aktualizace stáhnout mimo časové období údržby Update Management. To může zabránit **překročilo se časové období údržby** chyby v Update Management.
+
+Můžete to také nastavit pomocí prostředí PowerShell, spusťte následující příkaz Powershellu v systému, které chcete automaticky – stahování aktualizací.
+
+```powershell
+$WUSettings = (New-Object -com "Microsoft.Update.AutoUpdate").Settings
+$WUSettings.NotificationLevel = 3
+$WUSettings.Save()
+```
+
+### <a name="enable-updates-for-other-microsoft-products"></a>Povolit aktualizace pro ostatní produkty Microsoftu
+
+Ve výchozím nastavení aktualizace Windows pouze poskytuje aktualizace pro Windows. Pokud povolíte **nabízet aktualizace pro ostatní produkty Microsoftu při aktualizaci Windows**, jsou součástí aktualizace ostatních produktů, jako jsou třeba opravy zabezpečení věcí je SQL serverem nebo jiným softwarem první strany. Tuto možnost nelze konfigurovat pomocí zásad skupiny. Spusťte následující příkaz Powershellu v systémech, které chcete povolit jiné první strany opravy na a Update Management se případném dalším sdílení dodržovat tato nastavení.
+
+```powershell
+$ServiceManager = (New-Object -com "Microsoft.Update.ServiceManager")
+$ServiceManager.Services
+$ServiceID = "7971f918-a847-4430-9279-4a52d1efe18d"
+$ServiceManager.AddService2($ServiceId,7,"")
+```
+
+## <a name="ports"></a>Plánování sítě
 
 Tyto adresy jsou požadovány speciálně pro správu aktualizací. Probíhá komunikace na tyto adresy přes port 443.
 

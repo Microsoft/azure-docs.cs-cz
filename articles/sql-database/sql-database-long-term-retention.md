@@ -11,25 +11,26 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 07/16/2018
-ms.openlocfilehash: 6110773ecaba0ad333e4cfc9f9cc6014bd29a7a6
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.date: 10/24/2018
+ms.openlocfilehash: 7fe34423e706054daf84eaa8baf45fe201a661c9
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48249515"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50026173"
 ---
 # <a name="store-azure-sql-database-backups-for-up-to-10-years"></a>Store Azure SQL Database zálohy až 10 let
 
 Máte spoustu aplikací na dodržování legislativních, dodržování předpisů nebo jiné obchodní účely, které vyžadují, abyste pro uchovávání záloh databáze se po uplynutí 7 – 35 dnů poskytuje Azure SQL Database [automatické zálohování](sql-database-automated-backups.md). Když použijete funkci dlouhodobé uchovávání dat (LTR), můžete uložit zadaný SQL database úplné zálohy v [RA-GRS](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) úložiště objektů blob až 10 let. Pak můžete obnovit jakékoli zálohy jako novou databázi.
 
 > [!NOTE]
-> Zleva doprava, je možné povolit v databázích, které jsou hostované v logické servery Azure SQL Database. Je stále nejsou k dispozici ve spravovaných instancí.
+> Zleva doprava, je možné povolit v databázích, které jsou hostované v logické servery Azure SQL Database. Zatím není k dispozici pro databáze, které jsou hostované v Managed instance.
 > 
 
 ## <a name="how-sql-database-long-term-retention-works"></a>Jak funguje dlouhodobé uchovávání databáze SQL
 
-Dlouhodobé uchovávání záloh využívá [automatického zálohování SQL Database](sql-database-automated-backups.md) vytvořili zabere čas bodu obnovení (PITR). Můžete nakonfigurovat zásadu dlouhodobého uchovávání pro každou databázi SQL a určit, jak často je potřeba zkopírovat do dlouhodobého úložiště záloh. Povolit flexibilita můžete definovat zásady pomocí kombinace čtyři parametry: týdenní uchovávání záloh (W) měsíční uchovávání záloh (M), roční uchovávání záloh (Y) a týden v roce (WeekOfYear). Pokud zadáte W, jediná záloha každý týden bude zkopírován do dlouhodobého úložiště. Pokud chcete zadat M, jediná záloha během první týden každého měsíce se zkopírují do dlouhodobého úložiště. Pokud chcete zadat Y, jediná záloha v týdnu určeném WeekOfYear budou zkopírovány do dlouhodobého úložiště. Každá záloha se zachová do dlouhodobého úložiště pro tyto parametry zadané období. 
+Dlouhodobé uchovávání záloh (LTR) využívá zálohování úplné databáze, které jsou [automaticky vytvořené](sql-database-automated-backups.md) umožňující čas bodu obnovení (PITR). Tyto zálohy jsou zkopírovány do jiného úložiště objektů BLOB, pokud jsou nakonfigurované zásady LTR.
+Můžete nakonfigurovat zásady LTR pro každou databázi SQL a určit, jak často je potřeba zkopírovat zálohování do dlouhodobého úložiště objektů BLOB. Povolit flexibilita můžete definovat zásady pomocí kombinace čtyři parametry: týdenní uchovávání záloh (W) měsíční uchovávání záloh (M), roční uchovávání záloh (Y) a týden v roce (WeekOfYear). Pokud zadáte W, jediná záloha každý týden bude zkopírován do dlouhodobého úložiště. Pokud chcete zadat M, jediná záloha během první týden každého měsíce se zkopírují do dlouhodobého úložiště. Pokud chcete zadat Y, jediná záloha v týdnu určeném WeekOfYear budou zkopírovány do dlouhodobého úložiště. Každá záloha se zachová do dlouhodobého úložiště pro tyto parametry zadané období. 
 
 Příklady:
 

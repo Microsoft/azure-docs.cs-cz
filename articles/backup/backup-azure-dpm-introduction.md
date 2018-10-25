@@ -1,5 +1,5 @@
 ---
-title: Prepeare serveru aplikace DPM k zálohování úloh do Azure
+title: Příprava serveru aplikace DPM k zálohování úloh do Azure
 description: Úvod k zálohování dat DPM do trezoru služby Azure Recovery Services.
 services: backup
 author: adigan
@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: adigan
-ms.openlocfilehash: 3efe2f02666c69ff648eaab39fbc1dfe9dc5e3e7
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: ac89f0f2e2f86fa34fc754ee23e9b67329560fa4
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945429"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024473"
 ---
 # <a name="prepare-to-back-up-workloads-to-azure-with-system-center-dpm"></a>Příprava zálohování úloh do Azure pomocí nástroje System Center DPM
 
@@ -39,7 +39,7 @@ Tento článek poskytuje:
 Zálohování serverů aplikace DPM do Azure obchodní výhody patří:
 
 * Pro místní aplikace DPM Azure Backup poskytuje alternativu k nasazení dlouhodobé na pásku.
-* Aplikace DPM běžící na Virtuálním počítači Azure Azure Backup vám umožní přenést úložiště z disku Azure. Uložením starších data v trezoru služby Backup vault umožňuje byznysu tak škálování uložením nových dat na disk.
+* Aplikace DPM běžící na Virtuálním počítači Azure Azure Backup vám umožní přenést úložiště z disku Azure. Uložením starších data v trezoru služby Backup můžete byznysu tak škálování uložením nových dat na disk.
 
 ## <a name="prerequisites-and-limitations"></a>Požadavky a omezení
 
@@ -54,7 +54,7 @@ Podporované aplikace | [Přečtěte si](https://docs.microsoft.com/system-cente
 Podporované typy souborů | Tyto typy souborů lze zálohovat pomocí služby Azure Backup: šifrované (pouze úplné zálohy); Komprimované (je podporováno přírůstkové zálohování); Zhuštěné (je podporováno přírůstkové zálohování); Komprimované a zhuštěné (zpracovány jako zhuštěné).
 Nepodporované typy souborů | Servery v systémech souborů s rozlišením velkých; pevné odkazy (vynecháno); spojovací body (vynecháno); zašifrované a komprimované (vynecháno); šifrované a zhuštěné (vynecháno); Komprimovaný datový proud; analýzy datového proudu.
 Místní úložiště | Každý počítač, který chcete zálohovat, musí mít místní volné úložiště, který je minimálně 5 % velikost dat, která je právě zálohován.  Například zálohování 100 GB dat vyžaduje minimálně 5 GB volného místa v pomocné umístění.
-Trezoru úložiště | Neexistuje žádné omezení množství dat, která vám může zálohovat do Azure Backup vault, ale velikost zdroje dat (třeba virtuální počítač nebo databázi) nepřekročí 54400 GB.
+Trezoru úložiště | Neexistuje žádné omezení množství dat, která můžete zálohovat do trezoru služby Azure Backup, ale velikost zdroje dat (třeba virtuální počítač nebo databázi) nepřekročí 54400 GB.
 Agent Azure Backup | Pokud DPM běží na System Center 2012 SP1, nainstalujte kumulativní 2 nebo novější pro DPM SP1. Toto je požadována pro instalaci agenta.<br/><br/> Tento článek popisuje, jak nasadit nejnovější verzi agenta Azure Backup, také označovaný jako agent Microsoft Azure Recovery Service (MARS). Pokud máte starší verzi nasadit, aktualizujte na nejnovější verzi zajistěte, že zálohování funguje podle očekávání. 
 
 
@@ -160,7 +160,7 @@ Všechny počítače, které je zálohovat službou Azure Backup musí být nain
 
     - Azure Backup používá toto umístění jako dočasné retenční oblast pro obnovená data.
     - Po dokončení obnovení dat Azure Backup se vyčistit data v této oblasti.
-    - Umístění musí mít dostatek místa pro uložení položky, které paralle obnovování předpokládáte.
+    - Umístění musí mít dostatek místa pro uložení položky, které očekáváte, že obnovování.
 
     ![Nastavení složky pro obnovení](../../includes/media/backup-install-agent/DPM_SetupOnlineBackup_RecoveryFolder.png)
 

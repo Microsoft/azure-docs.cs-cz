@@ -4,15 +4,15 @@ description: Poskytuje informace o zařízení Kolektoru ve službě Azure Migra
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 10/23/2018
+ms.date: 10/24/2018
 ms.author: snehaa
 services: azure-migrate
-ms.openlocfilehash: 3c40fd97540d8529c95c7d18d2c3155dd37717e9
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 006a246323e9f82ea9c9a6a2940ed624d7e44e13
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945412"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49986774"
 ---
 # <a name="about-the-collector-appliance"></a>Informace o zařízení Kolektoru
 
@@ -198,7 +198,7 @@ Mějte na paměti, že zařízení průběžně pouze shromažďuje údaje o vý
 2. Odstranění virtuálních počítačů: z důvodu způsob je navržena na zařízení, odstranění virtuální počítače se projeví i v případě zastavení a spuštění zjišťování. Je to proto, že data z dalších zjišťování se připojí k starší zjišťování a nebyly přepsány. V takovém případě můžete jednoduše ignorovat virtuálního počítače na portálu ho odebrat ze skupiny a přepočítání posouzení.
 
 > [!NOTE]
-> Průběžná zjišťování funkce je ve verzi preview. Nastavení statistiky vCenter Server není nastaven na úroveň 3, doporučujeme použít tuto metodu.
+> Průběžná zjišťování funkce je ve verzi preview. Doporučujeme, aby používali tuto metodu, jak tato metoda shromažďuje údaje o výkonu detailní a výsledkem přesné určení správné velikosti.
 
 
 ## <a name="discovery-process"></a>Proces zjišťování

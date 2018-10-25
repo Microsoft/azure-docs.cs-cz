@@ -4,17 +4,17 @@ description: Seznam služeb, které podporují spravované identity pro prostře
 services: active-directory
 author: daveba
 ms.author: daveba
-ms.date: 06/27/2018
+ms.date: 10/23/2018
 ms.topic: conceptual
 ms.service: active-directory
 ms.component: msi
 manager: mtillman
-ms.openlocfilehash: 1e598fd010088ad3e5ca3b1da0b7c9a3fe8ec89f
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 25da856d8bd72f4e74718cf32f62bbb0a3eb5b88
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49648135"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49984685"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Služby, které podporují spravované identity pro prostředky Azure
 
@@ -35,7 +35,8 @@ Následující služby Azure podporují spravované identity pro prostředky Azu
 | Azure Functions | K dispozici. | Není k dispozici. | [Azure Portal](/azure/app-service/app-service-managed-service-identity#using-the-azure-portal)<br>[Azure CLI](/azure/app-service/app-service-managed-service-identity#using-the-azure-cli)<br>[Azure PowerShell](/azure/app-service/app-service-managed-service-identity#using-azure-powershell)<br>[Šablona Azure Resource Manageru](/azure/app-service/app-service-managed-service-identity#using-an-azure-resource-manager-template) | [REST](/azure/app-service/app-service-managed-service-identity#using-the-rest-protocol)<br>[.NET](/azure/app-service/app-service-managed-service-identity#asal)<br>[JavaScript](/azure/app-service/app-service-managed-service-identity#token-js)<br>[PowerShell](/azure/app-service/app-service-managed-service-identity#token-powershell) |
 | Azure Logic Apps | K dispozici. | Není k dispozici. | [Azure Portal](/azure/logic-apps/create-managed-service-identity#azure-portal)<br>[Šablona Azure Resource Manageru](/azure/app-service/app-service-managed-service-identity#deployment-template) |  |
 | Azure Data Factory V2 | K dispozici. | Není k dispozici. | [Azure Portal](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity)<br>[PowerShell](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity-using-powershell)<br>[REST](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity-using-rest-api)<br>[Sada SDK](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity-using-sdk) |
-| Azure API Management | K dispozici. | Není k dispozici. | [Šablona Azure Resource Manageru](/azure/api-management/api-management-howto-use-managed-service-identity) | 
+| Azure API Management | K dispozici. | Není k dispozici. | [Šablona Azure Resource Manageru](/azure/api-management/api-management-howto-use-managed-service-identity) |
+| Azure Container Instances | Linux: verze Preview<br>Windows: Není k dispozici | Linux: verze Preview<br>Windows: Není k dispozici | [Azure CLI](~/articles/container-instances/container-instances-managed-identity.md)<br>[Šablona Azure Resource Manageru](~/articles/container-instances/container-instances-managed-identity.md#enable-managed-identity-using-resource-manager-template)<br>[YAML](~/articles/container-instances/container-instances-managed-identity.md#enable-managed-identity-using-yaml-file) |  |
 
 
 ## <a name="azure-services-that-support-azure-ad-authentication"></a>Podpora služby Azure AD ověření služby Azure

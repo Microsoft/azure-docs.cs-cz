@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/25/2018
-ms.openlocfilehash: 2a6172a4e163d937f5a0a2140831b730bca23c3f
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: fd912885335b41e3d7ca8ee717b6bb1b9c88e729
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43696519"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49984141"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>Pomocí referenčních dat pro vyhledávání ve službě Stream Analytics
 Referenční data (označované také jako vyhledávací tabulky) je konečná datová sada, které jsou statické nebo s pomalou změnou ze své podstaty, používá k vyhledávání a korelaci s datovým proudem. Azure Stream Analytics načítá referenčních dat v paměti, zpracování streamů s nízkou latencí. Chcete-li pomocí referenčních dat v úloze Azure Stream Analytics, budete obvykle používat [referenční Data připojení](https://msdn.microsoft.com/library/azure/dn949258.aspx) v dotazu. Stream Analytics využívá úložiště objektů Blob v Azure jako vrstvu úložiště pro referenční Data, a s Azure Data Factory – referenční informace může transformovat data nebo zkopírovat do úložiště objektů Blob v Azure, pro použití jako referenční Data z [libovolný počet založené na cloudu a v místním úložišti dat](../data-factory/copy-activity-overview.md). Referenční data je modelovaná jako řadu objektů BLOB (definovaný ve vstupní konfiguraci) ve vzestupném pořadí datum a čas zadaný v názvu objektu blob. To **pouze** podporuje přidávání na konci sekvence s použitím datum/čas **větší** než je uvedeno v pořadí poslední objekt blob.
@@ -85,5 +85,5 @@ Azure Stream Analytics automaticky kontroluje pro objekty BLOB aktualizace refer
 [stream.analytics.scale.jobs]: stream-analytics-scale-jobs.md
 [stream.analytics.introduction]: stream-analytics-real-time-fraud-detection.md
 [stream.analytics.get.started]: stream-analytics-get-started.md
-[stream.analytics.query.language.reference]: http://go.microsoft.com/fwlink/?LinkID=513299
-[stream.analytics.rest.api.reference]: http://go.microsoft.com/fwlink/?LinkId=517301
+[stream.analytics.query.language.reference]: https://go.microsoft.com/fwlink/?LinkID=513299
+[stream.analytics.rest.api.reference]: https://go.microsoft.com/fwlink/?LinkId=517301

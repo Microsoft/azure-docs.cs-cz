@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/23/2018
 ms.author: dstefan
-ms.openlocfilehash: db6778bdea2e3e133535bf28b3c2297cdb65599d
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 7aa0f80b8a0b53d4c53cf633938765e820c641cf
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49958903"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025319"
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Azure Active Directory doklad o playbook koncept: stavební bloky
 
@@ -209,7 +209,7 @@ Přibližný čas dokončení: 30 minut
 | Předpoklad | Zdroje a prostředky |
 | --- | --- |
 | Seznam cílové aplikace a přesně přihlašovací adresy URL předem. Například můžete použít Twitter. | [Na webu Microsoft Azure Marketplace na twitteru](https://azuremarketplace.microsoft.com/marketplace/apps/aad.twitter)<br/>[Zaregistrujte si Twitter](https://twitter.com/signup?lang=en) |
-| Sdílené přihlašovací údaje pro tuto aplikaci SaaS. | [Sdílení účtů pomocí Azure AD](active-directory-sharing-accounts.md)<br/>[Azure AD automatizované heslo převrácení pro Facebook, Twitter a LinkedIn teď ve verzi preview! – Enterprise Mobility and Security Blog] (https://blogs.technet.microsoft.com/enterprisemobility/2015/02/20/azure-ad-automated-password-roll-over-for-facebook-twitter-and-linkedin-now-in-preview/ ) |
+| Sdílené přihlašovací údaje pro tuto aplikaci SaaS. | [Sdílení účtů pomocí Azure AD](active-directory-sharing-accounts.md)<br/>[Azure AD automatizované heslo převrácení pro Facebook, Twitter a LinkedIn teď ve verzi preview! – Enterprise Mobility and Security Blog](https://blogs.technet.microsoft.com/enterprisemobility/2015/02/20/azure-ad-automated-password-roll-over-for-facebook-twitter-and-linkedin-now-in-preview/ ) |
 | Přihlašovací údaje pro alespoň dva členy týmu, kteří budou přistupovat k stejný účet. Musí být součástí skupiny zabezpečení. | [Přiřadit uživatele nebo skupiny k podnikové aplikace v Azure Active Directory](manage-apps/assign-user-or-group-access-portal.md) |
 | Oprávnění místního správce přístup k počítači a nasazení pro aplikaci Internet Explorer, Chrome nebo Firefox rozšíření přístupového panelu | [Rozšíření přístupového panelu pro aplikaci Internet Explorer](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)<br/>[Rozšíření přístupového panelu pro Chrome](https://go.microsoft.com/fwLink/?LinkID=311859&clcid=0x409)<br/>[Rozšíření přístupového panelu pro Firefox](https://go.microsoft.com/fwLink/?LinkID=626998&clcid=0x409) |
 

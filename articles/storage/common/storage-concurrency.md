@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 05/11/2017
 ms.author: jasontang501
 ms.component: common
-ms.openlocfilehash: 9c36347db2d1678e79e5ad80cda491f77850c4a6
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 91eb9c12a8913c0a96ee7c3133dc5f982c42cad7
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39525235"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025292"
 ---
 # <a name="managing-concurrency-in-microsoft-azure-storage"></a>Správa souběžnosti v Microsoft Azure Storage
 ## <a name="overview"></a>Přehled
@@ -50,29 +50,29 @@ Následující (s využitím klientské knihovny pro úložiště 4.2.0) fragmen
 ```csharp
 // Retrieve the ETag from the newly created blob
 // Etag is already populated as UploadText should cause a PUT Blob call
-// to storage blob service which returns the etag in response.
-string orignalETag = blockBlob.Properties.ETag;
+// to storage blob service which returns the ETag in response.
+string originalETag = blockBlob.Properties.ETag;
 
 // This code simulates an update by a third party.
 string helloText = "Blob updated by a third party.";
 
-// No etag, provided so orignal blob is overwritten (thus generating a new etag)
+// No ETag provided so original blob is overwritten (thus generating a new ETag)
 blockBlob.UploadText(helloText);
 Console.WriteLine("Blob updated. Updated ETag = {0}",
 blockBlob.Properties.ETag);
 
-// Now try to update the blob using the orignal ETag provided when the blob was created
+// Now try to update the blob using the original ETag provided when the blob was created
 try
 {
-    Console.WriteLine("Trying to update blob using orignal etag to generate if-match access condition");
+    Console.WriteLine("Trying to update blob using original ETag to generate if-match access condition");
     blockBlob.UploadText(helloText,accessCondition:
-    AccessCondition.GenerateIfMatchCondition(orignalETag));
+    AccessCondition.GenerateIfMatchCondition(originalETag));
 }
 catch (StorageException ex)
 {
     if (ex.RequestInformation.HttpStatusCode == (int)HttpStatusCode.PreconditionFailed)
     {
-        Console.WriteLine("Precondition failure as expected. Blob's orignal etag no longer matches");
+        Console.WriteLine("Precondition failure as expected. Blob's original ETag no longer matches");
         // TODO: client can decide on how it wants to handle the 3rd party updated content.
     }
     else
@@ -106,7 +106,7 @@ Následující tabulka shrnuje operace objektů blob, které podmíněné hlavi�
 | Získání objektu Blob |Ano |Ano |
 | Získání vlastností objektu Blob |Ano |Ano |
 | Nastavit vlastnosti objektu Blob |Ano |Ano |
-| Získat metadata objektu blob |Ano |Ano |
+| Získat Metadata objektu Blob |Ano |Ano |
 | Nastavte Metadata objektu Blob |Ano |Ano |
 | Zapůjčení objektu Blob (*) |Ano |Ano |
 | Vytvoření snímku objektu Blob |Ano |Ano |
@@ -163,7 +163,7 @@ Následující operace objektů blob můžete použít ke správě Pesimistická
 * Získání objektu Blob
 * Získání vlastností objektu Blob
 * Nastavit vlastnosti objektu Blob
-* Získat metadata objektu blob
+* Získat Metadata objektu Blob
 * Nastavte Metadata objektu Blob
 * Odstranit objekt Blob
 * Vložit blok
@@ -238,12 +238,12 @@ Následující tabulka shrnuje použití značky ETag hodnoty operace entitu tab
 | Operace | Vrátí hodnotu značky ETag | Vyžaduje hlavičky žádosti If-Match |
 |:--- |:--- |:--- |
 | Dotazování entit |Ano |Ne |
-| Vloží entitu |Ano |Ne |
+| Vložte Entity |Ano |Ne |
 | Aktualizace Entity |Ano |Ano |
-| Sloučí entitu |Ano |Ano |
-| Odstraní entitu |Ne |Ano |
-| Vloží nebo nahradí entitu |Ano |Ne |
-| Vloží nebo sloučí entitu |Ano |Ne |
+| Sloučit Entity |Ano |Ano |
+| Odstranit entitu |Ne |Ano |
+| Vložení nebo nahrazení Entity |Ano |Ne |
+| Vložit nebo sloučit Entity |Ano |Ne |
 
 Všimněte si, že **vložení nebo nahrazení Entity** a **vložení nebo sloučit Entity** provést operace *není* provést jakékoli souběžnosti, protože se neodesílají na hodnotu značky ETag do tabulky Služba.  
 

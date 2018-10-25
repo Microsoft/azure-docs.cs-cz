@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/28/2017
-ms.openlocfilehash: e0d430ced1dbddbfca79806591c83c33e732eefd
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 43202e88482933aed7952f6cc97dcaf1e0dcb5e7
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37901710"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49986028"
 ---
 # <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Začněte používat Azure Stream Analytics: zjišťování možných podvodů v reálném čase
 
@@ -39,7 +39,7 @@ V tomto kurzu budete simulovat dat telefonních hovorů pomocí klientskou aplik
 Než začnete, ujistěte se, že jste provedli následující akce:
 
 * Účet Azure.
-* Aplikace generátoru událostí volání, [TelcoGenerator.zip](http://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip), který si můžete stáhnout z webu Microsoft Download Center. Rozbalte tento balíček do složky v počítači. Pokud chcete zobrazit zdrojový kód a spusťte aplikaci v ladicí program, můžete získat zdrojový kód aplikace z [Githubu](https://aka.ms/azure-stream-analytics-telcogenerator). 
+* Aplikace generátoru událostí volání, [TelcoGenerator.zip](https://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip), který si můžete stáhnout z webu Microsoft Download Center. Rozbalte tento balíček do složky v počítači. Pokud chcete zobrazit zdrojový kód a spusťte aplikaci v ladicí program, můžete získat zdrojový kód aplikace z [Githubu](https://aka.ms/azure-stream-analytics-telcogenerator). 
 
     >[!NOTE]
     >Windows může blokovat ZIP staženého souboru. Pokud nelze rozbalit ho, klikněte pravým tlačítkem na soubor a vyberte **vlastnosti**. Pokud se zobrazí zpráva "Tento soubor pochází z jiného počítače a může být blokovaný k ochraně tohoto počítače", vyberte **Odblokovat** možnost a potom klikněte na tlačítko **použít**.
@@ -138,7 +138,7 @@ Před spuštěním aplikace TelcoGenerator, musíte ji nakonfigurovat tak, aby z
     Parametry jsou: 
 
     * Počet disky CDR za hodinu. 
-    * Pravděpodobnosti podvodů SIM karty: Jak často jako procento všech volání, aby měla aplikace simulovat podvodné volání. Hodnota 0.2 znamená, že přibližně 20 % záznamů volání bude vypadat podvodně.
+    * Pravděpodobnosti podvodů SIM karty: Jak často jako procento všech volání, aby měla aplikace simulovat podvodné volání. Hodnota 0,2 znamená, že přibližně 20 % záznamů volání bude falešných.
     * Doba trvání v hodinách. Počet hodin, které by měla spustit aplikace. Můžete také zastavit aplikaci kdykoli stisknutím kombinace kláves Ctrl + C v příkazovém řádku.
 
     Po několika sekundách aplikace začne zobrazovat záznamy telefonních hovorů na obrazovce, když je odešle do centra událostí.

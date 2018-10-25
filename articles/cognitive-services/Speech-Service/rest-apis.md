@@ -9,12 +9,12 @@ ms.component: speech-service
 ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: erhopf
-ms.openlocfilehash: 0cc278cdb59bfbb53578eae0f51c9b54204d7d12
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 7f3daf71f4d94371af5f7d98c4e03761d7217a2a
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49466269"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025833"
 ---
 # <a name="speech-service-rest-apis"></a>Speech Service REST API
 
@@ -22,7 +22,7 @@ Rozhraní REST API služby Azure Cognitive Services řeči se podobají rozhran�
 
 ## <a name="speech-to-text"></a>Převod řeči na text
 
-V následující tabulce jsou uvedeny koncové body pro převod řeči na Text REST API. Použijte ten, který odpovídá oblasti vašeho předplatného. 
+V následující tabulce jsou uvedeny koncové body pro převod řeči na Text REST API. Použijte ten, který odpovídá oblasti vašeho předplatného.
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-speech-to-text.md)]
 
@@ -42,7 +42,7 @@ Následující parametry mohou být zahrnuty v řetězci dotazu požadavku REST.
 |`format`|Nepovinné<br>Výchozí hodnota: `simple`|Výsledný formát `simple` nebo `detailed`. Jednoduché výsledky obsahují `RecognitionStatus`, `DisplayText`, `Offset`a doby trvání. Podrobné výsledky obsahují více kandidátů s jistotou hodnotami a čtyři různé reprezentace.|
 |`profanity`|Nepovinné<br>Výchozí hodnota: `masked`|Způsob zpracování vulgárních výrazů v výsledky rozpoznávání. Může být `masked` (nahradí vulgárních výrazů hvězdičky z obou stran), `removed` (odebere všechny vulgárních výrazů), nebo `raw` (včetně vulgárních výrazů).
 
-### <a name="request-headers"></a>Hlavičky požadavku
+### <a name="request-headers"></a>Hlavičky žádosti
 
 Následující pole se odesílají v hlavičce požadavku protokolu HTTP.
 
@@ -57,13 +57,13 @@ Následující pole se odesílají v hlavičce požadavku protokolu HTTP.
 
 ### <a name="audio-format"></a>Formát zvuku
 
-Zvuk se poslala v těle HTTP `PUT` požadavku. Musí být ve formátu WAV 16 bitů s PCM jeden kanál (mono) na 16 KHz následující formáty/kódování.
+Zvuk se poslala v těle HTTP `POST` požadavku. Musí být ve formátu WAV 16 bitů s PCM jeden kanál (mono) na 16 KHz následující formáty/kódování.
 
 * Formátu WAV PCM kodek
 * Formát Ogg kodekem DÍLE
 
 >[!NOTE]
->Výše uvedené formáty jsou podporované prostřednictvím rozhraní REST API a objektu websocket na straně služby řeči. [Sadou SDK pro řeč](/index.yml) aktuálně podporuje jenom WAV naformátuje PCM kodek. 
+>Výše uvedené formáty jsou podporované prostřednictvím rozhraní REST API a objektu websocket na straně služby řeči. [Sadou SDK pro řeč](/index.yml) aktuálně podporuje jenom WAV naformátuje PCM kodek.
 
 ### <a name="chunked-transfer"></a>Bloku
 
@@ -145,7 +145,7 @@ Výsledky jsou vráceny ve formátu JSON. `simple` Formátu obsahuje pouze násl
 | `Error` | Rozpoznávání služby došlo k interní chybě a nemohl pokračovat. Zkuste to znovu Pokud je to možné. |
 
 > [!NOTE]
-> Pokud se zvuk skládá pouze z vulgárních výrazů a `profanity` parametr dotazu je nastaven na `remove`, služba nevrací výsledek řeči. 
+> Pokud se zvuk skládá pouze z vulgárních výrazů a `profanity` parametr dotazu je nastaven na `remove`, služba nevrací výsledek řeči.
 
 
 `detailed` Formátu obsahuje stejné pole, jako `simple` formátovat, spolu s `NBest` pole. `NBest` Seznam alternativních interpretace stejné řeči řazeny od nejpodezřelejších po nejpravděpodobněji nejméně pravděpodobně je pole. První položka je stejný jako výsledek hlavní rozpoznání. Každá položka obsahuje následující pole:
@@ -207,12 +207,12 @@ Speech service podporuje výstupní zvuková 24 KHz kromě výstup 16 Khz podpor
 
 Národní prostředí | Jazyk   | Pohlaví | Název mapování služby
 -------|------------|--------|------------
-cs-CZ  | Jazykovou verzi US English | Žena | "Microsoft serveru řeči Text na řeč hlas (en US, Jessa24kRUS)" 
+cs-CZ  | Jazykovou verzi US English | Žena | "Microsoft serveru řeči Text na řeč hlas (en US, Jessa24kRUS)"
 cs-CZ  | Jazykovou verzi US English | Muž   | "Microsoft serveru řeči Text na řeč hlas (en US, Guy24kRUS)"
 
 Úplný seznam dostupných hlasů je k dispozici v [podporované jazyky](language-support.md#text-to-speech).
 
-### <a name="request-headers"></a>Hlavičky požadavku
+### <a name="request-headers"></a>Hlavičky žádosti
 
 Následující pole se odesílají v hlavičce požadavku protokolu HTTP.
 
@@ -235,9 +235,9 @@ K dispozici zvukové formáty výstupu (`X-Microsoft-OutputFormat`) začlenit p�
 `audio-24khz-96kbitrate-mono-mp3`  | `audio-24khz-48kbitrate-mono-mp3`
 
 > [!NOTE]
-> Pokud vybraný hlasový a výstupní formát různé přenosové rychlosti, zvuku poklesu podle potřeby. Ale 24khz hlasy nepodporují `audio-16khz-16kbps-mono-siren` a `riff-16khz-16kbps-mono-siren` formáty výstupu. 
+> Pokud vybraný hlasový a výstupní formát různé přenosové rychlosti, zvuku poklesu podle potřeby. Ale 24khz hlasy nepodporují `audio-16khz-16kbps-mono-siren` a `riff-16khz-16kbps-mono-siren` formáty výstupu.
 
-### <a name="request-body"></a>Tělo požadavku
+### <a name="request-body"></a>Text požadavku
 
 Text, který má být převeden do mluvené řeči se odešle jako těla protokolu HTTP `POST` vyžádat buď jako prostý text (ASCII nebo UTF-8) nebo [Markup Language syntézu řeči](speech-synthesis-markup.md) (SSML) formát (UTF-8). Požadavky na prostý text použijte výchozí hlasové služby a jazyka. Odešlete SSML použít jiný hlas.
 
@@ -254,23 +254,23 @@ Host: westus.tts.speech.microsoft.com
 Content-Length: 225
 Authorization: Bearer [Base64 access_token]
 
-<speak version='1.0' xml:lang='en-US'><voice xml:lang='en-US' xml:gender='Female' 
+<speak version='1.0' xml:lang='en-US'><voice xml:lang='en-US' xml:gender='Female'
     name='Microsoft Server Speech Text to Speech Voice (en-US, ZiraRUS)'>
         Microsoft Speech Service Text-to-Speech API
 </voice></speak>
 ```
 
-### <a name="http-response"></a>Odpověď protokolu HTTP
+### <a name="http-response"></a>Odpověď HTTP
 
 Stav protokolu HTTP odpovědi označuje úspěch nebo běžné chybové stavy.
 
 Kód HTTP|Význam|Možný důvod
 -|-|-|
 200|OK|Žádost byla úspěšná. text odpovědi je zvukový soubor.
-400 |Chybný požadavek |Povinný parametr nebyl nalezen, prázdný nebo null. Nebo hodnota předaná buď povinný nebo volitelný parametr není platný. Běžné potíže se hlavičku, která je příliš dlouhý.
+400 |Chybná žádost |Povinný parametr nebyl nalezen, prázdný nebo null. Nebo hodnota předaná buď povinný nebo volitelný parametr není platný. Běžné potíže se hlavičku, která je příliš dlouhý.
 401|Neautorizováno |Požadavek není autorizovaný. Ověřte váš klíč předplatného nebo token je platný a v oblasti správné.
 413|Příliš velká entita požadavku|Vstup SSML je delší než 1024 znaků.
-429|Příliš mnoho žádostí|Překročili jste kvótu nebo počet požadavků pro vaše předplatné povolená.
+429|Příliš mnoho požadavků|Překročili jste kvótu nebo počet požadavků pro vaše předplatné povolená.
 502|Chybná brána | Problém sítě nebo na straně serveru. Může také znamenat neplatné záhlaví.
 
 Pokud je stav protokolu HTTP `200 OK`, tělo odpovědi obsahuje zvukový soubor v požadovanému formátu. Tento soubor můžete přehrát, jako má přenesených nebo uložit do vyrovnávací paměti nebo později přehrát či jiné použití souboru.
@@ -328,10 +328,10 @@ cURL je nástroj příkazového řádku jsou k dispozici v systému Linux (a v s
 > Příkaz se zobrazí na více řádků pro lepší čitelnost, ale zadejte ho na jednom řádku v příkazovém řádku shell.
 
 ```
-curl -v -X POST 
- "https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken" 
- -H "Content-type: application/x-www-form-urlencoded" 
- -H "Content-Length: 0" 
+curl -v -X POST
+ "https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken"
+ -H "Content-type: application/x-www-form-urlencoded"
+ -H "Content-Length: 0"
  -H "Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY"
 ```
 
@@ -411,7 +411,7 @@ Stejně jako předtím, ujistěte se, že `FetchTokenUri` hodnota se shoduje s o
     */
 public class Authentication
 {
-    public static readonly string FetchTokenUri = 
+    public static readonly string FetchTokenUri =
         "https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken";
     private string subscriptionKey;
     private string token;
@@ -486,4 +486,3 @@ public class Authentication
 - [Získání zkušebního předplatného služby Speech](https://azure.microsoft.com/try/cognitive-services/)
 - [Přizpůsobení akustických modelů](how-to-customize-acoustic-models.md)
 - [Přizpůsobení jazykových modelů](how-to-customize-language-model.md)
-

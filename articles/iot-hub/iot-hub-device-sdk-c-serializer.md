@@ -8,12 +8,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 09/06/2016
 ms.author: yizhon
-ms.openlocfilehash: 410ef936da7cf464dbef1698cf7019643cc1fb42
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 0a7e30be374ae5095e206ce0e519e51bb58f1f00
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48249311"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024854"
 ---
 # <a name="azure-iot-device-sdk-for-c--more-about-serializer"></a>Pro zařízení Azure IoT SDK pro jazyk C – Další informace pro serializátor
 
@@ -27,7 +27,7 @@ Nakonec článku znovu navštíví některá témata popsané v předchozí čl�
 
 Všechno, co je popsáno v tomto článku je založen na **serializátor** ukázky SDK. Pokud chcete postup sledovat, najdete v článku **simplesample\_amqp** a **simplesample\_http** aplikací, které jsou součástí sady SDK pro zařízení Azure IoT pro C.
 
-Můžete najít [ **zařízení Azure IoT SDK pro jazyk C** ](https://github.com/Azure/azure-iot-sdk-c) Githubu úložišti a zobrazit podrobnosti o rozhraní API ve službě [reference k rozhraní API jazyka C](https://azure.github.io/azure-iot-sdk-c/index.html).
+Můžete najít [ **zařízení Azure IoT SDK pro jazyk C** ](https://github.com/Azure/azure-iot-sdk-c) Githubu úložišti a zobrazit podrobnosti o rozhraní API ve službě [reference k rozhraní API jazyka C](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/).
 
 ## <a name="the-modeling-language"></a>Modelovací jazyk
 

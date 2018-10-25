@@ -9,14 +9,14 @@ tags: azure-resource-manager
 ms.service: application-gateway
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 01/26/2018
+ms.date: 10/25/2018
 ms.author: victorh
-ms.openlocfilehash: 7e8f06e2d1b489b79218514d8b115c389f057d56
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 0c59405cc6d46bcaffbab0e2a746467eec26de69
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39056121"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024116"
 ---
 # <a name="create-an-application-gateway-with-path-based-routing-rules-using-the-azure-portal"></a>Vytvoření služby application gateway s na základě cest pravidla směrování pomocí webu Azure portal
 
@@ -32,6 +32,8 @@ V tomto článku získáte informace o těchto tématech:
 > * Vytvořte pravidlo směrování na základě cest
 
 ![Příklad směrování na základě adresy URL](./media/create-url-route-portal/scenario.png)
+
+Pokud dáváte přednost, můžete dokončit tento kurz pomocí [rozhraní příkazového řádku Azure](tutorial-url-route-cli.md) nebo [prostředí Azure PowerShell](tutorial-url-route-powershell.md).
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 

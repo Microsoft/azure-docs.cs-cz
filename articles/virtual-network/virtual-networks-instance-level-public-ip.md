@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/03/2018
 ms.author: genli
-ms.openlocfilehash: 7d8325ce04a9fa7853fb622062022a6938375f96
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 2f6db23e02c836dea6d640757d12275b654ad468
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47430977"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024615"
 ---
 # <a name="instance-level-public-ip-classic-overview"></a>Instance přehled úrovně veřejných IP adres (Classic)
 Instance úrovně veřejné IP (ILPIP) je veřejnou IP adresu můžete přiřadit přímo k instanci role virtuálního počítače nebo cloudové služby, nikoli do cloudové služby, který váš virtuální počítač nebo instanci role jsou umístěny v. ILPIP nepřijímá místo z virtuální IP (VIP), který je přiřazen ke cloudové službě. Místo toho je další IP adresu, můžete použít pro připojení přímo k vaší instanci virtuálního počítače nebo role.
@@ -47,7 +47,7 @@ Při vytváření cloudové služby v Azure odpovídající záznamy DNS automat
 ## <a name="why-would-i-request-an-ilpip"></a>Proč byste požádat ILPIP?
 Pokud chcete být schopni připojit k vaší instanci role virtuálního počítače nebo IP adresa přiřazená k němu, místo použití cloudu služby virtuálních IP adres:&lt;číslo portu&gt;, žádosti ILPIP pro váš virtuální počítač nebo role instance.
 
-* **Aktivní FTP** -přiřazením ILPIP k virtuálnímu počítači, může přijímat přenosy přes libovolný port. Koncové body nejsou nutné pro virtuální počítač přijímat přenosy.  Najdete v článku [přehled protokolu FTP] (https://en.wikipedia.org/wiki/File_Transfer_Protocol#Protocol_overview) podrobné informace o protokolu FTP.
+* **Aktivní FTP** -přiřazením ILPIP k virtuálnímu počítači, může přijímat přenosy přes libovolný port. Koncové body nejsou nutné pro virtuální počítač přijímat přenosy.  Zobrazit [přehled protokolu FTP](https://en.wikipedia.org/wiki/File_Transfer_Protocol#Protocol_overview) podrobné informace o protokolu FTP.
 * **Odchozí IP** – odchozí přenos dat pocházejících z virtuálního počítače je namapovaná na ILPIP jako zdroj a ILPIP jednoznačně identifikuje virtuální počítač na externí entity.
 
 > [!NOTE]

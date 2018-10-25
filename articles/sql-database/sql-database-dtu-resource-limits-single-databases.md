@@ -11,13 +11,13 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/22/2018
-ms.openlocfilehash: 8c5274db69831aaaeaaed2b81627bbb4aeb8cd75
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.date: 10/23/2018
+ms.openlocfilehash: 0a514cced50a2a05008c03dfb438cceefb332d17
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/24/2018
-ms.locfileid: "49954929"
+ms.locfileid: "49987320"
 ---
 # <a name="resource-limits-for-single-databases-using-the-dtu-based-purchasing-model"></a>Omezení prostředků pro izolované databáze pomocí nákupní model založený na DTU
 
@@ -80,8 +80,8 @@ Pro izolované databáze následující tabulky ukazují prostředky dostupné p
 | Maximální počet souběžných relací | 30000 | 30000 | 30000 | 30000 | 30000 | 30000 |
 |||||||
 
-> [!IMPORTANT] 
-> Více než 1 TB úložiště na úrovni Premium je aktuálně k dispozici ve všech následujících oblastech s výjimkou následující Čína – východ, Čína – sever, Německo – střed, Německo – severovýchod, Velká Británie – sever, Velká Británie – Jih, USA ministerstva obrany USA – střed, US DOD – východ, USA Goverment – střed a střed USA – západ: V Tyto oblasti max. úložiště na úrovni Premium je omezena na 1 TB. Viz [Aktuální omezení pro P11–P15](#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
+> [!IMPORTANT]
+> Více než 1 TB úložiště na úrovni Premium je aktuálně k dispozici ve všech oblastech s výjimkou následujících: Čína – východ, Čína – sever, Německo – střed, Německo – severovýchod, Velká Británie – sever, Velká Británie – Jih, USA ministerstva obrany USA – střed, US DOD – východ, USA Goverment – střed a střed USA – západ.  V těchto oblastech je úložiště na úrovni Premium omezeno na 1 TB. Viz [Aktuální omezení pro P11–P15](#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
 
 ## <a name="single-database-change-storage-size"></a>Izolované databáze: Změna velikosti úložiště
 

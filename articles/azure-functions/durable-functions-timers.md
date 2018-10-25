@@ -2,20 +2,20 @@
 title: Časovače v Durable Functions – Azure
 description: Zjistěte, jak implementovat trvalý časovače v rozšíření Durable Functions pro službu Azure Functions.
 services: functions
-author: cgillum
+author: kashimiz
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 04/30/2018
+ms.date: 10/23/2018
 ms.author: azfuncdf
-ms.openlocfilehash: e45a8b1d99ef7ccd89f38ec9402cda1a4d49c817
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: c0976df340440fa8715e62199fa7339f51093aac
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48238547"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49984175"
 ---
 # <a name="timers-in-durable-functions-azure-functions"></a>Časovače v Durable Functions (Azure Functions)
 
@@ -62,7 +62,7 @@ module.exports = df.orchestrator(function*(context) {
         const dayOfMonth = context.df.currentUtcDateTime.getDate();
         const deadline = moment.utc(context.df.currentUtcDateTime).add(1, 'd');
         yield context.df.createTimer(deadline.toDate());
-        yield context.df.callActivityAsync("SendBillingEvent");
+        yield context.df.callActivity("SendBillingEvent");
     }
 });
 ```
@@ -112,9 +112,9 @@ const df = require("durable-functions");
 const moment = require("moment-js");
 
 module.exports = df.orchestrator(function*(context) {
-    const deadline = moment.utc(context.df.currentUtcDateTime).add(30, 's');
+    const deadline = moment.utc(context.df.currentUtcDateTime).add(30, "s");
 
-    const activityTask = context.df.callActivityAsync("GetQuote");
+    const activityTask = context.df.callActivity("GetQuote");
     const timeoutTask = context.df.createTimer(deadline);
 
     const winner = yield context.df.Task.any([activityTask, timeoutTask]);

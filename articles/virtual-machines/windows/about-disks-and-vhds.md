@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 11/15/2017
 ms.author: rogarana
 ms.component: disks
-ms.openlocfilehash: 8f5c33a63fd932bedd7f1de3d3ae47306b3ea3e4
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: de5322709b5d7f7bcfe6c512bab94b025d9a56a7
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46954479"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50023544"
 ---
 # <a name="about-disks-storage-for-azure-windows-vms"></a>O diskové úložiště pro virtuální počítače Azure s Windows
 
@@ -34,7 +34,7 @@ Každý virtuální počítač má jeden disk připojený operačního systému.
 
 ### <a name="temporary-disk"></a>Dočasný disk
 
-Každý virtuální počítač obsahuje dočasný disk. Dočasný disk obsahuje krátkodobé úložiště pro aplikace a procesy a je určené k ukládání pouze data, jako jsou stránkovací nebo odkládací soubory. Data na dočasném disku mohou být ztracena během [události údržby](manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime) nebo když jste [opětovné nasazení virtuálního počítače](redeploy-to-new-node.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Při úspěšném standardní restartování virtuálního počítače bude uchovávat data na dočasné jednotce. 
+Každý virtuální počítač obsahuje dočasný disk. Dočasný disk obsahuje krátkodobé úložiště pro aplikace a procesy a je určené k ukládání pouze data, jako jsou stránkovací nebo odkládací soubory. Data na dočasném disku mohou být ztracena během [události údržby](manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime) nebo když jste [opětovné nasazení virtuálního počítače](redeploy-to-new-node.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Při úspěšném standardní restartování virtuálního počítače byste neměli zachovat data na dočasné jednotce. Existují však případy, kde nemusí uchovávat data, jako je například přesun do nového hostitele. Odpovídajícím způsobem všechna data na dočasné jednotky by neměl být data, která jsou zásadní pro systém.
 
 Dočasný disk je označena jako jednotku D: ve výchozím nastavení a to se používá k ukládání pagefile.sys. Pokud chcete přemapovat tento disk na jiné písmeno jednotky, přečtěte si téma [změnit písmeno jednotky dočasného disku Windows](change-drive-letter.md). Velikost dočasného disku se liší, na základě velikosti virtuálního počítače. Další informace najdete v tématu [Windows pro velikosti virtuálních počítačů](sizes.md).
 

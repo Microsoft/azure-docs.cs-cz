@@ -1,72 +1,64 @@
 ---
-title: 'Odstranit bránu virtuální sítě: portál Azure: Resource Manager | Microsoft Docs'
-description: Odstraňte bránu virtuální sítě pomocí portálu Azure v modelu nasazení Resource Manager.
+title: 'Odstranit bránu virtuální sítě: Azure portal: Resource Manager | Dokumentace Microsoftu'
+description: Odstraňte bránu virtuální sítě pomocí webu Azure portal v modelu nasazení Resource Manager.
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
-manager: timlt
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: vpn-gateway
-ms.devlang: na
-ms.topic: ''
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 06/20/2017
+ms.date: 10/23/2018
 ms.author: cherylmc
-ms.openlocfilehash: b014d43ab25124d3e08e19ca190b320fc8456593
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: 78af43510e5fc2bed38e109a546944d4a649241c
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2018
-ms.locfileid: "27593452"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49984107"
 ---
 # <a name="delete-a-virtual-network-gateway-using-the-portal"></a>Odstranit bránu virtuální sítě pomocí portálu
 
 > [!div class="op_single_selector"]
-> * [portál Azure Portal](vpn-gateway-delete-vnet-gateway-portal.md)
+> * [Azure Portal](vpn-gateway-delete-vnet-gateway-portal.md)
 > * [PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
 > * [PowerShell (Classic)](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
 
-Tento článek obsahuje pokyny k odstraňování Azure VPN Gateway nasazení pomocí modelu nasazení Resource Manager. Existuje několik způsobů, které můžete provést, pokud chcete odstranit bránu virtuální sítě pro konfiguraci brány VPN.
+Tento článek obsahuje pokyny k odstraňování bran Azure VPN Gateway nasazené pomocí modelu nasazení Resource Manageru. Existuje několik různých přístupů, které můžete provést, pokud chcete odstranit bránu virtuální sítě pro konfiguraci brány VPN.
 
-- Pokud chcete odstranit vše a začít od začátku, jako v případě testovacím prostředí, můžete odstranit skupinu prostředků. Pokud odstraníte skupinu prostředků, odstraní všechny prostředky ve skupině. Tato metoda se doporučuje jenom, pokud chcete zachovat prostředky ve skupině prostředků. Nelze odstranit selektivně pouze několik prostředků pomocí tohoto přístupu.
+- Pokud chcete vymazat úplně všechno a začít znovu, jde například o testovacím prostředí, můžete odstranit skupinu prostředků. Při odstranění skupiny prostředků odstraní všechny prostředky v rámci skupiny. Tato metoda se doporučuje jenom Pokud už nechcete zachovat prostředky ve skupině prostředků. Nelze odstranit selektivně pouze několik prostředků, pomocí tohoto přístupu.
 
-- Pokud chcete zachovat některé prostředky ve vaší skupině prostředků, odstraňuje se Brána virtuální sítě je něco víc složité. Než budete moct odstranit bránu virtuální sítě, musíte nejprve odstranit všechny prostředky, které jsou závislé na bráně. Kroky, které budete postupovat podle závisí na typu připojení, které jste vytvořili a závislé prostředky pro každé připojení.
+- Pokud chcete zachovat některé z prostředků ve vaší skupině prostředků, odstraňuje se Brána virtuální sítě se stane něco složitější. Než budete moct odstranit bránu virtuální sítě, musíte nejprve odstranit všechny prostředky, které jsou závislé na bráně. Kroky, které sledujete závisí na typu připojení, které jste vytvořili a všechny závislé prostředky pro každé připojení.
 
 > [!IMPORTANT]
-> Následující pokyny popisují postup odstranění brány Azure VPN se nasazuje pomocí modelu nasazení Resource Manager. Pokud chcete odstranit bránu VPN se nasazuje pomocí modelu nasazení classic, použijte prostředí Azure PowerShell popsaný [zde](vpn-gateway-delete-vnet-gateway-classic-powershell.md).
+> Následující pokyny popisují, jak odstranit bran Azure VPN Gateway nasazené pomocí modelu nasazení Resource Manageru. Odstranění brány VPN nasazené pomocí modelu nasazení classic, použijte prosím prostředí Azure PowerShell podle popisu [tady](vpn-gateway-delete-vnet-gateway-classic-powershell.md).
 
 
 ## <a name="delete-a-vpn-gateway"></a>Odstranění brány VPN
 
-Pokud chcete odstranit bránu virtuální sítě, musíte nejprve odstranit všechny prostředky, které se vztahují na bránu virtuální sítě. V určitém pořadí závislé položky musí dojít k odstranění prostředků.
+Pokud chcete odstranit bránu virtuální sítě, musíte nejprve odstranit jednotlivé prostředky, které se vztahují k bráně virtuální sítě. Musí se odstranit prostředky v určitém pořadí z důvodu závislosti.
 
 [!INCLUDE [delete gateway](../../includes/vpn-gateway-delete-vnet-gateway-portal-include.md)]
 
-V tomto okamžiku je odstranit bránu virtuální sítě. Další kroky můžete odstranit všechny prostředky, které se již nepoužívají.
+V tomto okamžiku odstranění brány virtuální sítě. Další kroky můžete odstranit všechny prostředky, které jsou již nejsou déle používány.
 
 ### <a name="to-delete-the-local-network-gateway"></a>Chcete-li odstranit bránu místní sítě
 
-1. V **všechny prostředky**, vyhledejte brány místní sítě, které byly přidruženy každé připojení.
-2. Na **přehled** pro bránu místní sítě, klikněte na **odstranit**.
+1. V **všechny prostředky**, vyhledejte brány místní sítě, které byly přidruženy k každé připojení.
+2. Na **přehled** okno pro bránu místní sítě, klikněte na tlačítko **odstranit**.
 
-### <a name="to-delete-the-public-ip-address-resource-for-the-gateway"></a>Odstranit prostředek veřejné IP adresy pro bránu
+### <a name="to-delete-the-public-ip-address-resource-for-the-gateway"></a>Chcete-li odstranit prostředek veřejné IP adresy pro bránu
 
-1. V **všechny prostředky**, vyhledejte prostředek veřejné IP adresy, který byl přidružený k bráně. Pokud brána virtuální sítě byla aktivní aktivní, zobrazí se dvě veřejné IP adresy. 
-2. Na **přehled** stránky pro veřejnou IP adresu, klikněte na tlačítko **odstranit**, pak **Ano** k potvrzení.
+1. V **všechny prostředky**, vyhledejte prostředek veřejné IP adresy, která je přidružená k bráně. Pokud bránu virtuální sítě byla aktivní aktivní, zobrazí se dvě veřejné IP adresy. 
+2. Na **přehled** stránky pro veřejnou IP adresu, klikněte na tlačítko **odstranit**, pak **Ano** potvrďte.
 
 ### <a name="to-delete-the-gateway-subnet"></a>Chcete-li odstranit podsíť brány
 
-1. V **všechny prostředky**, najít virtuální síť. 
-2. Na **podsítě** okně klikněte na tlačítko **GatewaySubnet**, pak klikněte na tlačítko **odstranit**. 
+1. V **všechny prostředky**, vyhledejte virtuální sítě. 
+2. Na **podsítě** okna, klikněte na tlačítko **GatewaySubnet**, pak klikněte na tlačítko **odstranit**. 
 3. Klikněte na tlačítko **Ano** potvrďte, že chcete odstranit podsíť brány.
 
-## <a name="deleterg"></a>Odstraňte bránu VPN odstraníte skupinu prostředků
+## <a name="deleterg"></a>Odstranění brány VPN tak, že odstraníte skupinu prostředků
 
-Pokud si nejste zajímá zachování některé z vašich prostředků ve skupině prostředků a chcete začít znovu, můžete odstranit celé skupiny prostředků. To je rychlý způsob, jak odebrat vše. Následující postup se vztahuje pouze na modelu nasazení Resource Manager.
+Pokud nejste obavy o zachování všech vašich prostředků ve skupině prostředků a chcete začít, můžete odstranit celou skupinu prostředků. Toto je rychlý způsob, jak odebrat všechno, co. Následující postup se vztahuje pouze na modelu nasazení Resource Manager.
 
-1. V **všechny prostředky**, vyhledejte skupinu prostředků a klikněte na tlačítko otevřete okno.
-2. Klikněte na **Odstranit**. V okně Odstranit zobrazení ovlivněných prostředků. Ujistěte se, že chcete odstranit všechny tyto prostředky. Pokud ne, postupujte podle kroků v [odstranit bránu VPN](#deletegw) v horní části tohoto článku.
-3. Chcete-li pokračovat, zadejte název skupiny prostředků, který chcete odstranit a pak klikněte na **odstranit**.
+1. V **všechny prostředky**, vyhledejte skupinu prostředků a kliknutím otevřete okno.
+2. Klikněte na **Odstranit**. V okně Odstranit zobrazení ovlivněných prostředků. Ujistěte se, že chcete odstranit všechny tyto prostředky. Pokud ne, postupujte podle kroků v [odstranění brány VPN](#deletegw) v horní části tohoto článku.
+3. Chcete-li pokračovat, zadejte název skupiny prostředků, kterou chcete odstranit a potom klikněte na **odstranit**.

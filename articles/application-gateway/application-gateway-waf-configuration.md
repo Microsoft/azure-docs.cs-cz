@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.workload: infrastructure-services
-ms.date: 10/11/2018
+ms.date: 10/25/2018
 ms.author: victorh
-ms.openlocfilehash: 9306280d00ec901633585aba2f23ed06b25b4e1e
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 12115770959c3869184f0af78c4feba2fd6f2be4
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49115450"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49984889"
 ---
 # <a name="web-application-firewall-request-size-limits-and-exclusion-lists-public-preview"></a>Omezení velikosti pro požadavek webové aplikace brány firewall a vyloučení uvádí (Public Preview)
 
@@ -22,6 +22,9 @@ Firewall webových aplikací (WAF) Azure Application Gateway chrání webové ap
 > Konfigurace omezení velikosti požadavek WAF a seznamy vyloučení je aktuálně ve verzi public preview. V této verzi preview je k dispozici bez smlouvy o úrovni služeb a nedoporučuje se používat pro produkční úlohy. Některé funkce nemusí být podporované nebo můžou mít omezené možnosti. Podrobnosti najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="waf-request-size-limits"></a>Omezení velikosti žádostí o WAF
+
+![Požádat o omezení velikosti](media/application-gateway-waf-configuration/waf-requestsizelimit.png)
+
 Firewall webových aplikací umožňuje uživatelům konfigurovat omezení velikosti požadavku v rámci dolní a horní hranice. K dispozici jsou následující dvě velikost omezení konfigurace:
 
 - Pole velikost textu maximální požadavek určen ve znalostní báze a ovládací prvky, které celkový limit velikosti žádosti o vyloučení všechny soubory nahraje. Toto pole musí být v rozsahu 1 KB minimální do maximální hodnota 128 KB. Výchozí hodnota pro velikost textu požadavku je 128 KB.
@@ -30,6 +33,8 @@ Firewall webových aplikací umožňuje uživatelům konfigurovat omezení velik
 WAF také nabízí Konfigurovatelný ovladače k zapnutí nebo vypnutí kontroly těla požadavku. Ve výchozím nastavení povolení kontroly těla požadavku. Pokud kontrola tělo žádosti je vypnutý, WAF nevyhodnocuje obsah zprávy HTTP. V takových případech WAF nadále vynucovat pravidla firewallu webových aplikací na záhlaví, soubory cookie a identifikátor URI. Pokud kontrola tělo žádosti je vypnutý, maximální žádost subjektu velikost pole nelze použít a nelze nastavit. Vypnutím kontroly tělo požadavku umožňuje zprávy větší než 128 KB k odeslání do WAF. Tělo zprávy není však zkontroloval ohrožení zabezpečení.
 
 ## <a name="waf-exclusion-lists"></a>Seznamy vyloučení WAF
+
+![waf exclusion.png](media/application-gateway-waf-configuration/waf-exclusion.png)
 
 Seznamy vyloučení WAF povolit uživatelům vynechání určité atributy žádosti ze zkušební verze WAF. Běžným příkladem je že vložen tokeny, které se používají pro ověřování nebo pole s heslem služby Active Directory. Tyto atributy jsou náchylné k obsahovat speciální znaky, které můžou aktivovat falešně pozitivní z pravidla firewallu webových aplikací. Po přidání atributu do seznamu vyloučení WAF se nepořídí v úvahu žádným pravidlem nakonfigurovaná a aktivní WAF. V oboru jsou globální seznamy vyloučení.
 Můžete přidat hlavičky žádosti, text požadavku, souborů cookie požadavku nebo argumenty řetězce dotazu požadavku na seznamy vyloučení WAF. Pokud tělo má data formuláře nebo XML nebo JSON (páry klíč-hodnota) lze použít typ atributu vyloučení požadavku.

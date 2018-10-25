@@ -2,20 +2,20 @@
 title: Vazby pro Durable Functions – Azure
 description: Jak používat triggery a vazby pro trvalý Functons rozšíření pro službu Azure Functions.
 services: functions
-author: cgillum
+author: kashimiz
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 09/29/2017
+ms.date: 10/23/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 29cc7982dbe9991e6b0e3363cd636ac88881fc7b
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: f9bf42e5e20a7d9e861d0c3354040e981bf3ef21
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48237277"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49987745"
 ---
 # <a name="bindings-for-durable-functions-azure-functions"></a>Vazby pro Durable Functions (Azure Functions)
 
@@ -112,7 +112,7 @@ const df = require("durable-functions");
 
 module.exports = df.orchestrator(function*(context) {
     const name = context.df.getInput();
-    const result = yield context.df.callActivityAsync("SayHello", name);
+    const result = yield context.df.callActivity("SayHello", name);
     return result;
 });
 ```
@@ -123,7 +123,7 @@ Aktivační událost aktivity umožňuje vytvářet funkce, které jsou volány 
 
 Pokud používáte Visual Studio, aktivační událost pro aktivitu je nakonfigurovaný nástrojem [ActivityTriggerAttribute](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.ActivityTriggerAttribute.html) atribut rozhraní .NET. 
 
-Pokud používáte pro vývoj na webu Azure portal, aktivační událost pro aktivitu je definován následujícím objektu JSON v `bindings` pole *function.json*:
+Pokud používáte VS Code nebo na webu Azure portal pro vývoj, aktivační událost pro aktivitu je definován následující objekt JSON v `bindings` pole *function.json*:
 
 ```json
 {
@@ -249,7 +249,7 @@ Klient Orchestrace vazba umožňuje psát funkce, které interagují s funkcemi 
 
 Pokud používáte Visual Studio, můžete svázat do klienta Orchestrace pomocí [OrchestrationClientAttribute](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.OrchestrationClientAttribute.html) atribut rozhraní .NET.
 
-Pokud používáte skriptovací jazyky (například *.csx* soubory) pro vývoj, Orchestrace aktivační události definované následující objekt JSON v `bindings` pole *function.json*:
+Pokud používáte skriptovací jazyky (například *.csx* nebo *js* soubory) pro vývoj, Orchestrace aktivační události definované následující objekt JSON v `bindings` pole  *Function.JSON*:
 
 ```json
 {

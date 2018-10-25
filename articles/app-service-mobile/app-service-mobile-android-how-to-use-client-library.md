@@ -13,19 +13,19 @@ ms.devlang: java
 ms.topic: article
 ms.date: 11/16/2017
 ms.author: crdun
-ms.openlocfilehash: 1ab7aa9ecdd51809f6e1d82958f21b78b16e7e63
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: a39ae42ba2344cb39318809e2f120e01a75344d7
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37859553"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025782"
 ---
 # <a name="how-to-use-the-azure-mobile-apps-sdk-for-android"></a>Jak používat Azure Mobile Apps SDK pro Android
 
 Tato příručka ukazuje, jak používat s Androidem klientskou sadou SDK pro Mobile Apps k implementaci běžných scénářů, jako například:
 
 * Dotazování na data (vložení, aktualizace nebo odstranění).
-* Ověřování.
+* ověřování.
 * Zpracování chyb.
 * Vlastní nastavení klienta.
 
@@ -154,7 +154,7 @@ Pro přístup k datům z tabulek SQL Azure, definujte klienta datových tříd, 
 
 * id
 * text
-* dokončení
+* Dokončení
 
 Odpovídající zadaný objekt na straně klienta se nachází v souboru s názvem **MyDataTable.java**:
 
@@ -1220,7 +1220,7 @@ private class ProgressFilter implements ServiceFilter {
             public void onSuccess(ServiceFilterResponse response) {
                 runOnUiThread(new Runnable() {
                     @Override
-                    pubic void run() {
+                    public void run() {
                         if (mProgressBar != null)
                             mProgressBar.setVisibility(ProgressBar.GONE);
                     }

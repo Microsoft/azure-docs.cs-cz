@@ -14,17 +14,17 @@ ms.workload: identity
 ms.date: 09/13/2018
 ms.author: andret
 ms.custom: include file
-ms.openlocfilehash: 9d512af7fdd68ec3356b427429144ec9195fd95b
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: cf536879393622744da0a6dd5b4e38c8c52de39b
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48843458"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49988328"
 ---
-## <a name="use-msal-to-get-a-token"></a>Použití MSAL k získání tokenu 
+## <a name="use-msal-to-get-a-token"></a>Použití MSAL k získání tokenu
 
-1.  V části **aplikace** > **java** > **{domain}. { AppName}**, otevřete `MainActivity`. 
-2.  Přidejte následující importy:
+1. V části **aplikace** > **java** > **{domain}. { AppName}**, otevřete `MainActivity`. 
+2. Přidejte následující importy:
 
     ```java
     import android.app.Activity;
@@ -241,10 +241,13 @@ ms.locfileid: "48843458"
 
 <!--start-collapse-->
 ### <a name="more-information"></a>Další informace
+
 #### <a name="get-a-user-token-interactively"></a>Interaktivní získání tokenu uživatele
+
 Volání `AcquireTokenAsync` metoda spustí se okno, které vyzve uživatele k přihlášení nebo zvolit svůj účet. Obvykle bude potřeba aplikace požádali uživatele o počáteční interakci, ale může pracovat bezobslužně od tohoto okamžiku s. 
 
 #### <a name="get-a-user-token-silently"></a>Získání tokenu uživatele bez upozornění
+
 `AcquireTokenSilentAsync` Metoda získá token bez nutnosti zásahu uživatele.  `AcquireTokenSilentAsync` lze považovat za žádost Snažíme se záložní `AcquireTokenAsync` když uživatel musí znovu přihlásit nebo udělat některé dodatečné autorizace, jako jsou tyto služby Multi-Factor Authentication 
 
 Když `AcquireTokenSilentAsync` nezdaří, vygeneruje se `MsalUiRequiredException`. Vaše aplikace dokáže zpracovat tuto výjimku dvěma způsoby:
@@ -254,7 +257,8 @@ Když `AcquireTokenSilentAsync` nezdaří, vygeneruje se `MsalUiRequiredExceptio
 * Zkuste `AcquireTokenSilentAsync` později. Tento model se často používá, uživatelé mohou budou používat další funkce aplikace bez výpadků – například při offline obsah je k dispozici v aplikaci. Aplikace se můžete rozhodnout používat opakovat `AcquireTokenSilentAsync` obnovení po síti poté, co bylo dočasně nedostupný. 
 <!--end-collapse-->
 
-## <a name="call-the-microsoft-graph-api"></a>Volání rozhraní Microsoft Graph API 
+## <a name="call-the-microsoft-graph-api"></a>Volání rozhraní Microsoft Graph API
+
 Přidejte následující metody do `MainActivity` třídy:
 
 ```java
@@ -311,6 +315,7 @@ private void updateGraphUI(JSONObject graphResponse) {
     graphText.setText(graphResponse.toString());
 }
 ```
+
 <!--start-collapse-->
 ### <a name="more-information-about-making-a-rest-call-against-a-protected-api"></a>Další informace o tom, že volání REST chráněné rozhraní API
 
@@ -376,5 +381,6 @@ private void updateSignedOutUI() {
 `onSignOutClicked()` Metoda odstraní uživatele z mezipaměti MSAL. Knihovna MSAL už nebude mít některému ze stavů pro přihlášeného uživatele a kterému budete přihlášeni mimo aplikaci. 
 
 ### <a name="more-information-on-multi-account-scenarios"></a>Další informace o scénářích s více účtů
+
 Knihovna MSAL také podporuje scénáře při přihlášení více účtů ve stejnou dobu. Například mnoho e-mailových aplikací povolit více účtů přihlášeni ve stejnou dobu. 
 <!--end-collapse-->

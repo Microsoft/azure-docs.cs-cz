@@ -14,12 +14,12 @@ ms.date: 09/25/2018
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 755b94b71fdaefb261741f4d4e756b90d8148280
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: cae0b6a316839f10636ff3d81b9e18729d03298e
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49116891"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49987864"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Oprávnění role správce v Azure Active Directory
 
@@ -65,7 +65,7 @@ K dispozici jsou následující role správce:
 
 * **[Správce služby Dynamics 365 nebo správce služby CRM](#dynamics-365-service-administrator)**: uživatelé s touto rolí mají globální oprávnění ve službě Microsoft Dynamics 365 Online, když služba používá, a možnost spravovat lístky podpory a monitorování stavu služby. Další informace na [použít roli Správce služby ke správě svého tenanta](https://docs.microsoft.com/dynamics365/customer-engagement/admin/use-service-admin-role-manage-tenant).
 
-* **[Správce služby Exchange](#exchange-service-administrator)**: uživatelé s touto rolí mají globální oprávnění ve službě Microsoft Exchange Online, pokud služba není k dispozici. Další informace na [role správců Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
+* **[Správce služby Exchange](#exchange-service-administrator)**: uživatelé s touto rolí mají globální oprávnění ve službě Microsoft Exchange Online, pokud služba není k dispozici. a také možnost vytvářet a spravovat všechny skupiny Office 365 spravovat lístky podpory a monitorovat stav služby. Další informace na [role správců Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
 
 * **[Globální správce / správce společnosti](#company-administrator)**: uživatelé s touto rolí mají přístup ke všem funkcím pro správu v Azure Active Directory, jakož i služeb, které používají identity Azure Active Directory, jako je Exchange Online SharePoint Online a Online Skype pro firmy. Osoba, která se zaregistruje k tenantovi Azure Active Directory se stane globálním správcem. Další role správců můžou přiřazovat jenom globální správci. Ve vaší společnosti může být více než jednoho globálního správce. Globální správci můžou resetovat heslo kteréhokoliv uživatele a všech ostatních správců.
 
@@ -95,6 +95,14 @@ K dispozici jsou následující role správce:
   * Čtenář Centra zpráv
   * Čtenář sestav
   
+  <b>Důležité</b>: uživatelé s touto rolí můžou měnit hesla pro uživatele, kteří můžou mít přístup k citlivým nebo soukromých informací nebo kritické konfigurace uvnitř i mimo Azure Active Directory. Změna hesla pro uživatele, může to znamenat schopnost předpokládat identit a oprávnění daného uživatele. Příklad:
+  * Registrace aplikace a podniková aplikace vlastníky, kteří můžou spravovat aplikace, které vlastní přihlašovací údaje. Tyto aplikace mohou mít Privilegovaná oprávnění ve službě Azure AD a jinam nikoli udělit správců technické podpory. Pomocí této cesty, správce technické podpory může být schopen převzít identitu vlastníka aplikace a pak dále převzít identitu aplikace privileged stačí aktualizovat přihlašovací údaje pro aplikaci.
+  * Vlastníci předplatného Azure, kteří můžou mít přístup k citlivým nebo soukromých informací nebo kritické konfigurace v Azure.
+  * Vlastníci skupiny zabezpečení a skupiny Office 365, kteří můžou spravovat členství ve skupině. Těmto skupinám udělit přístup k citlivým nebo soukromých informací nebo kritické konfigurace ve službě Azure AD a jinde.
+  * Správci v dalších službách mimo Azure AD, jako jsou systémy Exchange Online, Office zabezpečení a dodržování předpisů System Center a lidské zdroje.
+  * Všichni uživatelé, jako jsou vedoucí pracovníci, právním poradcem a lidské zdroje zaměstnanců, kteří můžou mít přístup k citlivým nebo soukromých informací.
+
+  
   > [!NOTE]
   > V rozhraní Microsoft Graph API, Azure AD Graph API a Azure AD PowerShell tato role nazývá "Správce technické podpory". Je "Heslo správce" v [webu Azure portal](https://portal.azure.com/).
   >
@@ -111,7 +119,7 @@ K dispozici jsou následující role správce:
   
   | V | Můžete provést |
   | --- | --- |
-  | Centrum Identity Protection |<ul><li>Všechna oprávnění role čtenáře zabezpečení.<li>Kromě toho možnost provádět všechny operace IPC s výjimkou resetování hesla. |
+  | Centrum identity Protection |<ul><li>Všechna oprávnění role čtenáře zabezpečení.<li>Kromě toho možnost provádět všechny operace IPC s výjimkou resetování hesla. |
   | Privileged Identity Management |<ul><li>Všechna oprávnění role čtenáře zabezpečení.<li>**Nelze** spravovat členství v rolích Azure AD nebo nastavení. |
   | <p>Monitorování stavu služby Office 365</p><p>Centrum zabezpečení a dodržování předpisů Office 365 |<ul><li>Všechna oprávnění role čtenáře zabezpečení.<li>Můžete nakonfigurovat všechna nastavení ve funkci rozšířené ochrany před internetovými útoky (ochrany proti malwaru a virů, škodlivý konfigurace adresy URL, adresa URL trasování atd.). |
   
@@ -119,13 +127,13 @@ K dispozici jsou následující role správce:
 
   | V | Můžete provést |
   | --- | --- |
-  | Centrum Identity Protection |Číst všechny zprávy o zabezpečení a informace o nastavení zabezpečení funkcí<ul><li>Antispamových<li>Šifrování<li>Prevence ztráty dat<li>Anti-malware<li>Pokročilou ochranu před hrozbami<li>Anti phisingová<li>Mailflow pravidla |
+  | Centrum identity Protection |Číst všechny zprávy o zabezpečení a informace o nastavení zabezpečení funkcí<ul><li>Antispamových<li>Šifrování<li>Prevence ztráty dat<li>Anti-malware<li>Pokročilou ochranu před hrozbami<li>Anti phisingová<li>Mailflow pravidla |
   | Privileged Identity Management |<p>Má přístup jen pro čtení ke všem informacím prezentované v Azure AD PIM: zásady a sestav pro přiřazení role Azure AD, bezpečnostní kontroly a v budoucnu přístup pro čtení k zásad dat a sestav pro scénáře kromě přiřazení role Azure AD.<p>**Nelze** registrace pro Azure AD PIM nebo dělat žádné změny. PIM na portálu nebo pomocí Powershellu někdo v této roli můžete aktivovat další role (například globální správce nebo správce privilegovaných rolí), pokud uživatel je kandidátem pro ně. |
   | <p>Monitorování stavu služby Office 365</p><p>Centrum zabezpečení a dodržování předpisů Office 365</p> |<ul><li>Čtení a Správa výstrah<li>Zásady zabezpečení pro čtení<li>Přečtěte si analýzy hrozeb, zjišťování cloudových aplikací a karantény v hledání a prošetřit<li>Čtení všech sestav |
 
 * **[Správce podpory služeb](#service-support-administrator)**: uživatelé s touto rolí můžete otevřít žádosti o podporu u Microsoftu pro služby Azure a Office 365 a zobrazení řídicího panelu služby a message center webu Azure portal a portálu pro správu Office 365. Další informace na [role správců Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
 
-* **[Správce služeb Sharepointu](#sharepoint-service-administrator)**: uživatelé s touto rolí mají globální oprávnění v Microsoft SharePoint Online, pokud služba používá, a možnost spravovat lístky podpory a monitorovat stav služby. Další informace na [role správců Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
+* **[Správce služeb Sharepointu](#sharepoint-service-administrator)**: uživatelé s touto rolí mají globální oprávnění v Microsoft SharePoint Online, pokud služba používá, a možnost vytvářet a spravovat všechny skupiny Office 365 nebo spravovat podpory lístků a monitorování stavu služby. Další informace na [role správců Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
 
 * **[Skype pro firmy nebo správce služeb Lyncu](#lync-service-administrator)**: uživatelé s touto rolí mají globální oprávnění v rámci Microsoft Skype pro firmy, pokud služba používá, stejně jako správu Skype konkrétní atributy uživatele v Azure Active Adresář. Kromě toho tato role uděluje možnost spravovat lístky podpory a monitorovat stav služby a k přístupu do týmů a Skype pro firmy centra pro správu. Účet musí mít také licenci pro týmy, nebo se nedal spustit rutiny prostředí PowerShell týmy. Další informace na [o Skype pro firmy roli správce](https://support.office.com/article/about-the-skype-for-business-admin-role-aeb35bda-93fc-49b1-ac2c-c74fbeb737b5) a týmy, které informace o licencích na [Skype pro firmy a Microsoft Teams doplněk licencování](https://docs.microsoft.com/skypeforbusiness/skype-for-business-and-microsoft-teams-add-on-licensing/skype-for-business-and-microsoft-teams-add-on-licensing)
 
@@ -140,7 +148,7 @@ K dispozici jsou následující role správce:
 
 * **[Týmy, které odborné komunikace](#teams-communications-support-specialist)**: uživatelé v této roli můžete řešit problémy s komunikací v Microsoft Teams a Skype pro volání nástroje pro odstraňování potíží v Microsoft Teams a Skype pro firmy pomocí uživatele Centrum pro správu firmy. Uživatelé v této roli můžete zobrazit podrobnosti o uživateli pouze ve volání pro konkrétního uživatele, že se že mají vyhledávat.
 
-* **[Týmy, které správce služeb](#teams-service-administrator)**: uživatelé s touto rolí může spravovat všechny aspekty sady funkcí Microsoft Teams přes Microsoft Teams a Skype pro firmy centra pro správu a odpovídajících modulů prostředí PowerShell. To zahrnuje mimo jiné oblasti, všem nástrojům pro správu související s telefonního subsystému, zasílání zpráv, setkání a samotné týmy. Tato role také uděluje možnost Spravovat skupiny Office 365.
+* **[Týmy, které správce služeb](#teams-service-administrator)**: uživatelé s touto rolí může spravovat všechny aspekty sady funkcí Microsoft Teams přes Microsoft Teams a Skype pro firmy centra pro správu a odpovídajících modulů prostředí PowerShell. To zahrnuje mimo jiné oblasti, všem nástrojům pro správu související s telefonního subsystému, zasílání zpráv, setkání a samotné týmy. Tato role navíc uděluje možnost vytvářet a spravovat všechny skupiny Office 365, spravovat lístky podpory a monitorovat stav služby.
 
 * **[Správce uživatelských účtů](#user-account-administrator)**: uživatelé s touto rolí můžou vytvářet uživatele a spravovat všechny aspekty uživatelů s určitými omezeními (viz níže). Uživatelé s touto rolí kromě toho můžete vytvořit a spravovat všechny skupiny. Tato role zahrnuje také možnost vytvářet a spravovat zobrazení uživatelů, spravovat lístky podpory a monitorovat stav služby.
 
@@ -149,11 +157,18 @@ K dispozici jsou následující role správce:
   |Obecné oprávnění|<p>Vytvoření uživatelů a skupin</p><p>Vytvořit a spravovat zobrazení uživatelů</p><p>Spravovat lístky podpory Office|
   |<p>Pro všechny uživatele včetně všechny správce</p>|<p>Správa licencí</p><p>Spravovat všechny vlastnosti uživatele s výjimkou hlavní název uživatele</p>
   |Pouze na uživatele, kteří bez oprávnění správce, nebo v některém z následujících omezené role správce:<ul><li>Uživatelé s oprávněním ke čtení adresářů<li>Odesílatel pozvánky hostů<li>Správce technické podpory<li>Čtenář Centra zpráv<li>Čtenář sestav<li>Správce uživatelských účtů|<p>Odstranění a obnovení</p><p>Zakázání a povolení</p><p>Zneplatnit obnovovacích tokenů</p><p>Spravovat všechny vlastnosti uživatele včetně hlavní název uživatele</p><p>Resetování hesla</p><p>Aktualizovat klíče zařízení (FIDO)</p>
+  
+  <b>Důležité</b>: uživatelé s touto rolí můžou měnit hesla pro uživatele, kteří můžou mít přístup k citlivým nebo soukromých informací nebo kritické konfigurace uvnitř i mimo Azure Active Directory. Změna hesla pro uživatele, může to znamenat schopnost předpokládat identit a oprávnění daného uživatele. Příklad:
+  * Registrace aplikace a podniková aplikace vlastníky, kteří můžou spravovat aplikace, které vlastní přihlašovací údaje. Tyto aplikace mohou mít Privilegovaná oprávnění ve službě Azure AD a jinde nebyla udělena pro uživatele správce. Pomocí této cesty, Správce uživatelů může být schopen převzít identitu vlastníka aplikace a pak dále převzít identitu privilegovaného aplikace stačí aktualizovat přihlašovací údaje pro aplikaci.
+  * Vlastníci předplatného Azure, kteří můžou mít přístup k citlivým nebo soukromých informací nebo kritické konfigurace v Azure.
+  * Vlastníci skupiny zabezpečení a skupiny Office 365, kteří můžou spravovat členství ve skupině. Těmto skupinám udělit přístup k citlivým nebo soukromých informací nebo kritické konfigurace ve službě Azure AD a jinde.
+  * Správci v dalších službách mimo Azure AD, jako jsou systémy Exchange Online, Office zabezpečení a dodržování předpisů System Center a lidské zdroje.
+  * Všichni uživatelé, jako jsou vedoucí pracovníci, právním poradcem a lidské zdroje zaměstnanců, kteří můžou mít přístup k citlivým nebo soukromých informací.
 
 Následující tabulky popisují konkrétní oprávnění v Azure Active Directory na každou roli. Některé role může mít další oprávnění ve službě Microsoft mimo službu Azure Active Directory.
 
 ### <a name="application-administrator"></a>Správce aplikace
-Může vytvářet a spravovat všechny aspekty registrací aplikací a podnikových aplikací.
+Můžete vytvořit a spravovat všechny aspekty registrací aplikací a podnikových aplikací.
 
   > [!NOTE]
   > Tato role dědí z role ke čtení adresáře další oprávnění.
@@ -194,7 +209,7 @@ Může vytvářet a spravovat všechny aspekty registrací aplikací a podnikov�
 | microsoft.azure.serviceHealth/allEntities/allTasks | Umožňuje číst a konfigurovat služby Azure Service Health. |
 | microsoft.azure.supportTickets/allEntities/allTasks | Vytvořit a spravovat lístky podpory Azure. |
 | Microsoft.Office365.serviceHealth/allEntities/allTasks | Umožňuje číst a konfigurovat stav služby Office 365. |
-| Microsoft.Office365.supportTickets/allEntities/allTasks | Umožňuje vytvářet a spravovat lístky podpory Office 365. |
+| Microsoft.Office365.supportTickets/allEntities/allTasks | Vytvořit a spravovat lístky podpory Office 365. |
 
 ### <a name="application-developer"></a>Vývojář aplikace
 Může vytvářet registrace aplikací nezávisle "uživatelé můžou registrovat aplikace' nastavení.
@@ -212,7 +227,7 @@ Může vytvářet registrace aplikací nezávisle "uživatelé můžou registrov
 | microsoft.aad.directory/servicePrincipals/createAsOwner | Umožňuje vytvořte servicePrincipals v Azure Active Directory. Autor se přidá jako první vlastník a vytvořený objekt počítat do kvóty 250 vytvořených objektů autora. |
 
 ### <a name="billing-administrator"></a>Správce fakturace
-Může provádět běžné úkoly související s fakturací, třeba aktualizovat platební údaje.
+Můžete provádět běžné úkoly související s fakturací třeba aktualizovat platební údaje.
 
   > [!NOTE]
   > Tato role dědí z role ke čtení adresáře další oprávnění.
@@ -220,7 +235,7 @@ Může provádět běžné úkoly související s fakturací, třeba aktualizova
   >
 
   > [!NOTE]
-  > Tato role má dodatečná oprávnění mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
+  > Tato role má oprávnění další mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
   >
   >
 
@@ -231,12 +246,34 @@ Může provádět běžné úkoly související s fakturací, třeba aktualizova
 | microsoft.azure.accessService/allEntities/allTasks | Spravujte všechny aspekty služby Azure Access. |
 | microsoft.azure.serviceHealth/allEntities/allTasks | Umožňuje číst a konfigurovat služby Azure Service Health. |
 | microsoft.azure.supportTickets/allEntities/allTasks | Vytvořit a spravovat lístky podpory Azure. |
-| microsoft.commerce.billing/allEntities/allTasks | Umožňuje spravovat všechny aspekty fakturace Office 365. |
+| microsoft.commerce.billing/allEntities/allTasks | Spravujte všechny aspekty fakturaci Office 365. |
 | Microsoft.Office365.serviceHealth/allEntities/allTasks | Umožňuje číst a konfigurovat stav služby Office 365. |
-| Microsoft.Office365.supportTickets/allEntities/allTasks | Umožňuje vytvářet a spravovat lístky podpory Office 365. |
+| Microsoft.Office365.supportTickets/allEntities/allTasks | Vytvořit a spravovat lístky podpory Office 365. |
+
+### <a name="desktop-analytics-administrator"></a>Desktop Analytics správce
+Můžete získat přístup a správa desktopovým nástrojům pro správu a službám, včetně Intune.
+
+  > [!NOTE]
+  > Tato role dědí z role ke čtení adresáře další oprávnění.
+  >
+  >
+
+  > [!NOTE]
+  > Tato role má oprávnění další mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
+  >
+  >
+
+| **Akce** | **Popis** |
+| --- | --- |
+| microsoft.azure.accessService/allEntities/allTasks | Spravujte všechny aspekty služby Azure Access. |
+| microsoft.azure.serviceHealth/allEntities/allTasks | Umožňuje číst a konfigurovat služby Azure Service Health. |
+| microsoft.azure.supportTickets/allEntities/allTasks | Vytvořit a spravovat lístky podpory Azure. |
+| Microsoft.Office365.desktopAnalytics/allEntities/allTasks | Spravujte všechny aspekty Desktopu Analytics. |
+| Microsoft.Office365.serviceHealth/allEntities/allTasks | Umožňuje číst a konfigurovat stav služby Office 365. |
+| Microsoft.Office365.supportTickets/allEntities/allTasks | Vytvořit a spravovat lístky podpory Office 365. |
 
 ### <a name="cloud-application-administrator"></a>Správce cloudové aplikace
-Může vytvářet a spravovat všechny aspekty registrací aplikací a podnikových aplikací, kromě Proxy aplikací.
+Můžete vytvořit a spravovat všechny aspekty registrací aplikací a podnikových aplikací, kromě Proxy aplikací.
 
   > [!NOTE]
   > Tato role dědí z role ke čtení adresáře další oprávnění.
@@ -276,10 +313,10 @@ Může vytvářet a spravovat všechny aspekty registrací aplikací a podnikov�
 | microsoft.azure.serviceHealth/allEntities/allTasks | Umožňuje číst a konfigurovat služby Azure Service Health. |
 | microsoft.azure.supportTickets/allEntities/allTasks | Vytvořit a spravovat lístky podpory Azure. |
 | Microsoft.Office365.serviceHealth/allEntities/allTasks | Umožňuje číst a konfigurovat stav služby Office 365. |
-| Microsoft.Office365.supportTickets/allEntities/allTasks | Umožňuje vytvářet a spravovat lístky podpory Office 365. |
+| Microsoft.Office365.supportTickets/allEntities/allTasks | Vytvořit a spravovat lístky podpory Office 365. |
 
 ### <a name="cloud-device-administrator"></a>Správce cloudových zařízení
-Úplný přístup ke správě zařízení v Azure AD
+Úplný přístup ke správě zařízení ve službě Azure AD.
 
   > [!NOTE]
   > Tato role dědí z role ke čtení adresáře další oprávnění.
@@ -296,7 +333,7 @@ Může vytvářet a spravovat všechny aspekty registrací aplikací a podnikov�
 | Microsoft.Office365.serviceHealth/allEntities/allTasks | Umožňuje číst a konfigurovat stav služby Office 365. |
 
 ### <a name="company-administrator"></a>Správce společnosti
-Může spravovat všechny aspekty služeb Azure AD a Microsoft, které používají identity Azure AD.
+Může spravovat všechny aspekty služby Azure AD a služby Microsoftu, že používají identity Azure AD.
 
   > [!NOTE]
   > Tato role dědí další oprávnění z role.
@@ -304,7 +341,7 @@ Může spravovat všechny aspekty služeb Azure AD a Microsoft, které používa
   >
 
   > [!NOTE]
-  > Tato role má dodatečná oprávnění mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
+  > Tato role má oprávnění další mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
   >
   >
 
@@ -336,7 +373,7 @@ Může spravovat všechny aspekty služeb Azure AD a Microsoft, které používa
 | microsoft.aad.directory/servicePrincipals/allProperties/allTasks | Vytvářet a odstraňovat servicePrincipals a číst a aktualizovat všechny vlastnosti v Azure Active Directory. |
 | microsoft.aad.directory/subscribedSkus/allProperties/allTasks | Vytvářet a odstraňovat subscribedSkus a číst a aktualizovat všechny vlastnosti v Azure Active Directory. |
 | microsoft.aad.directory/users/allProperties/allTasks | Vytvoření a odstraňovat users a číst a aktualizovat všechny vlastnosti v Azure Active Directory. |
-| microsoft.aad.directorySync/allEntities/allTasks | Umožňuje provádět všechny akce ve službě Azure AD Connect. |
+| microsoft.aad.directorySync/allEntities/allTasks | Proveďte všechny akce ve službě Azure AD Connect. |
 | microsoft.aad.identityProtection/allEntities/allTasks | Vytvářet a odstraňovat všechny prostředky a číst a aktualizovat standardní vlastnosti v microsoft.aad.identityProtection. |
 | microsoft.aad.privilegedIdentityManagement/allEntities/read | Číst všechny prostředky v microsoft.aad.privilegedIdentityManagement. |
 | microsoft.aad.reports/allEntities/allTasks | Umožňuje číst a konfigurovat sestavy Azure AD. |
@@ -344,11 +381,13 @@ Může spravovat všechny aspekty služeb Azure AD a Microsoft, které používa
 | microsoft.azure.informationProtection/allEntities/allTasks | Spravujte všechny aspekty služby Azure Information Protection. |
 | microsoft.azure.serviceHealth/allEntities/allTasks | Umožňuje číst a konfigurovat služby Azure Service Health. |
 | microsoft.azure.supportTickets/allEntities/allTasks | Vytvořit a spravovat lístky podpory Azure. |
-| microsoft.commerce.billing/allEntities/allTasks | Umožňuje spravovat všechny aspekty fakturace Office 365. |
-| microsoft.intune/allEntities/allTasks | Umožňuje spravovat všechny aspekty Intune. |
+| microsoft.commerce.billing/allEntities/allTasks | Spravujte všechny aspekty fakturaci Office 365. |
+| microsoft.intune/allEntities/allTasks | Spravujte všechny aspekty služby Intune. |
 | Microsoft.Office365.complianceManager/allEntities/allTasks | Spravovat všechny aspekty správce dodržování předpisů Office 365 |
 | Microsoft.Office365.Exchange/allEntities/allTasks | Umožňuje spravovat všechny aspekty Exchange Online. |
 | Microsoft.Office365.lockbox/allEntities/allTasks | Spravovat všechny aspekty Lockboxu zákazníků Office 365 |
+| Microsoft.Office365.messageCenter/Messages/Read | Čtení zpráv v microsoft.office365.messageCenter. |
+| Microsoft.Office365.messageCenter/securityMessages/Read | Přečtěte si securityMessages v microsoft.office365.messageCenter. |
 | microsoft.powerApps.powerBI/allEntities/allTasks | Umožňuje spravovat všechny aspekty Power BI. |
 | Microsoft.Office365.protectionCenter/allEntities/allTasks | Spravujte všechny aspekty Centra ochrany Office 365. |
 | Microsoft.Office365.serviceHealth/allEntities/allTasks | Umožňuje číst a konfigurovat stav služby Office 365. |
@@ -366,7 +405,7 @@ Může číst a spravovat konfiguraci dodržování předpisů a sestav v Azure 
   >
 
   > [!NOTE]
-  > Tato role má dodatečná oprávnění mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
+  > Tato role má oprávnění další mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
   >
   >
 
@@ -409,7 +448,7 @@ Může spravovat všechny aspekty produktu Dynamics 365.
   >
 
   > [!NOTE]
-  > Tato role má dodatečná oprávnění mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
+  > Tato role má oprávnění další mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
   >
   >
 
@@ -431,7 +470,7 @@ Může schvalovat žádosti podpory Microsoftu o přístup k datům organizace z
   >
 
   > [!NOTE]
-  > Tato role má dodatečná oprávnění mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
+  > Tato role má oprávnění další mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
   >
   >
 
@@ -587,7 +626,7 @@ Může spravovat všechny aspekty produktu Exchange.
   >
 
   > [!NOTE]
-  > Tato role má dodatečná oprávnění mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
+  > Tato role má oprávnění další mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
   >
   >
 
@@ -596,6 +635,11 @@ Může spravovat všechny aspekty produktu Exchange.
 | microsoft.azure.accessService/allEntities/allTasks | Spravujte všechny aspekty služby Azure Access. |
 | microsoft.azure.serviceHealth/allEntities/allTasks | Umožňuje číst a konfigurovat služby Azure Service Health. |
 | microsoft.azure.supportTickets/allEntities/allTasks | Vytvořit a spravovat lístky podpory Azure. |
+| Microsoft.aad.Directory/groups/Unified/Create | Vytvořte skupiny Office 365. |
+| Microsoft.aad.Directory/groups/Unified/DELETE | Odstranění skupiny Office 365. |
+| Microsoft.aad.Directory/groups/Unified/Basic/Update | Aktualizace základní vlastnosti skupin Office 365. |
+| Microsoft.aad.Directory/groups/Unified/Members/Update | Aktualizujte členství skupin Office 365. |
+| Microsoft.aad.Directory/groups/Unified/Owners/Update | Aktualizujte vlastnictví skupin Office 365. |
 | Microsoft.Office365.Exchange/allEntities/allTasks | Umožňuje spravovat všechny aspekty Exchange Online. |
 | Microsoft.Office365.serviceHealth/allEntities/allTasks | Umožňuje číst a konfigurovat stav služby Office 365. |
 | Microsoft.Office365.supportTickets/allEntities/allTasks | Umožňuje vytvářet a spravovat lístky podpory Office 365. |
@@ -650,7 +694,7 @@ Může spravovat všechny aspekty produktu Azure Information Protection.
   >
 
   > [!NOTE]
-  > Tato role má dodatečná oprávnění mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
+  > Tato role má oprávnění další mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
   >
   >
 
@@ -671,7 +715,7 @@ Může spravovat všechny aspekty produktu Intune.
   >
 
   > [!NOTE]
-  > Tato role má dodatečná oprávnění mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
+  > Tato role má oprávnění další mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
   >
   >
 
@@ -727,7 +771,7 @@ Může spravovat všechny aspekty produktu Skype pro firmy.
   >
 
   > [!NOTE]
-  > Tato role má dodatečná oprávnění mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
+  > Tato role má oprávnění další mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
   >
   >
 
@@ -749,14 +793,14 @@ Může číst zprávy a aktualizace pro svou organizaci jen v Centru zpráv Offi
   >
 
   > [!NOTE]
-  > Tato role má dodatečná oprávnění mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
+  > Tato role má oprávnění další mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
   >
   >
 
 | **Akce** | **Popis** |
 | --- | --- |
-| microsoft.aad.accessmessagecenter/allEntities/allTasks | Umožňuje vytvářet a odstraňovat všechny prostředky a číst a aktualizovat standardní vlastnosti v Centru zpráv. |
 | microsoft.azure.accessService/allEntities/allTasks | Spravujte všechny aspekty služby Azure Access. |
+| Microsoft.Office365.messageCenter/Messages/Read | Čtení zpráv v microsoft.office365.messageCenter. |
 
 ### <a name="partner-tier1-support"></a>Podpora partnerů úrovně 1
 Nepoužívejte – nejsou určené pro obecné použití.
@@ -767,7 +811,7 @@ Nepoužívejte – nejsou určené pro obecné použití.
   >
 
   > [!NOTE]
-  > Tato role má dodatečná oprávnění mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
+  > Tato role má oprávnění další mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
   >
   >
 
@@ -804,7 +848,7 @@ Nepoužívejte – nejsou určené pro obecné použití.
   >
 
   > [!NOTE]
-  > Tato role má dodatečná oprávnění mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
+  > Tato role má oprávnění další mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
   >
   >
 
@@ -844,7 +888,7 @@ Může spravovat všechny aspekty produktu Power BI.
   >
 
   > [!NOTE]
-  > Tato role má dodatečná oprávnění mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
+  > Tato role má oprávnění další mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
   >
   >
 
@@ -866,7 +910,7 @@ Můžou Spravovat přiřazení rolí ve službě Azure AD a všechny aspekty slu
   >
 
   > [!NOTE]
-  > Tato role má dodatečná oprávnění mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
+  > Tato role má oprávnění další mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
   >
   >
 
@@ -884,7 +928,7 @@ Může číst sestavy o přihlašování a auditech.
   >
 
   > [!NOTE]
-  > Tato role má dodatečná oprávnění mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
+  > Tato role má oprávnění další mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
   >
   >
 
@@ -893,7 +937,7 @@ Může číst sestavy o přihlašování a auditech.
 | microsoft.aad.reports/allEntities/read | Umožňuje číst sestavy Azure AD. |
 | microsoft.azure.serviceHealth/allEntities/allTasks | Umožňuje číst a konfigurovat služby Azure Service Health. |
 | Microsoft.Office365.serviceHealth/allEntities/allTasks | Umožňuje číst a konfigurovat stav služby Office 365. |
-| Microsoft.Office365.usageReports/allEntities/Read | Umožňuje číst sestavy využití Office 365. |
+| Microsoft.Office365.usageReports/allEntities/Read | Sestavy využití Office 365 pro čtení. |
 
 ### <a name="security-administrator"></a>Správce zabezpečení
 Může číst informace o zabezpečení a sestavy a spravovat konfigurace ve službě Azure AD a Office 365.
@@ -904,7 +948,7 @@ Může číst informace o zabezpečení a sestavy a spravovat konfigurace ve slu
   >
 
   > [!NOTE]
-  > Tato role má dodatečná oprávnění mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
+  > Tato role má oprávnění další mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
   >
   >
 
@@ -934,7 +978,7 @@ Může číst bezpečnostní údaje a sestavy v Azure AD a Office 365.
   >
 
   > [!NOTE]
-  > Tato role má dodatečná oprávnění mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
+  > Tato role má oprávnění další mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
   >
   >
 
@@ -956,7 +1000,7 @@ Může číst informace o stavu služby a spravovat lístky podpory.
   >
 
   > [!NOTE]
-  > Tato role má dodatečná oprávnění mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
+  > Tato role má oprávnění další mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
   >
   >
 
@@ -977,7 +1021,7 @@ Může spravovat všechny aspekty služby SharePoint.
   >
 
   > [!NOTE]
-  > Tato role má dodatečná oprávnění mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
+  > Tato role má oprávnění další mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
   >
   >
 
@@ -986,6 +1030,10 @@ Může spravovat všechny aspekty služby SharePoint.
 | microsoft.azure.accessService/allEntities/allTasks | Spravujte všechny aspekty služby Azure Access. |
 | microsoft.azure.serviceHealth/allEntities/allTasks | Umožňuje číst a konfigurovat služby Azure Service Health. |
 | microsoft.azure.supportTickets/allEntities/allTasks | Vytvořit a spravovat lístky podpory Azure. |
+| Microsoft.aad.Directory/groups/Unified/DELETE | Odstranění skupiny Office 365. |
+| Microsoft.aad.Directory/groups/Unified/Basic/Update | Aktualizace základní vlastnosti skupin Office 365. |
+| Microsoft.aad.Directory/groups/Unified/Members/Update | Aktualizujte členství skupin Office 365. |
+| Microsoft.aad.Directory/groups/Unified/Owners/Update | Aktualizujte vlastnictví skupin Office 365. |
 | Microsoft.Office365.serviceHealth/allEntities/allTasks | Umožňuje číst a konfigurovat stav služby Office 365. |
 | Microsoft.Office365.SharePoint/allEntities/allTasks | Vytvářet a odstraňovat všechny prostředky a číst a aktualizovat standardní vlastnosti v microsoft.office365.sharepoint. |
 | Microsoft.Office365.supportTickets/allEntities/allTasks | Umožňuje vytvářet a spravovat lístky podpory Office 365. |
@@ -999,7 +1047,7 @@ Můžete spravovat volání a schůzky funkcí ve službě Microsoft Teams.
   >
 
   > [!NOTE]
-  > Tato role má dodatečná oprávnění mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
+  > Tato role má oprávnění další mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
   >
   >
 
@@ -1011,7 +1059,7 @@ Můžete spravovat volání a schůzky funkcí ve službě Microsoft Teams.
 | microsoft.azure.supportTickets/allEntities/allTasks | Vytvořit a spravovat lístky podpory Azure. |
 | Microsoft.Office365.serviceHealth/allEntities/allTasks | Umožňuje číst a konfigurovat stav služby Office 365. |
 | Microsoft.Office365.supportTickets/allEntities/allTasks | Umožňuje vytvářet a spravovat lístky podpory Office 365. |
-| Microsoft.Office365.usageReports/allEntities/Read | Umožňuje číst sestavy využití Office 365. |
+| Microsoft.Office365.usageReports/allEntities/Read | Sestavy využití Office 365 pro čtení. |
 
 ### <a name="teams-communications-support-engineer"></a>Pracovník podpory komunikaci týmů
 Můžete řešit problémy komunikace v rámci týmů pomocí pokročilé nástroje.
@@ -1022,7 +1070,7 @@ Můžete řešit problémy komunikace v rámci týmů pomocí pokročilé nástr
   >
 
   > [!NOTE]
-  > Tato role má dodatečná oprávnění mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
+  > Tato role má oprávnění další mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
   >
   >
 
@@ -1042,7 +1090,7 @@ Můžete řešit problémy komunikace v rámci týmy, které používají zákla
   >
 
   > [!NOTE]
-  > Tato role má dodatečná oprávnění mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
+  > Tato role má oprávnění další mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
   >
   >
 
@@ -1062,7 +1110,7 @@ Může spravovat službu Microsoft Teams.
   >
 
   > [!NOTE]
-  > Tato role má dodatečná oprávnění mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
+  > Tato role má oprávnění další mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
   >
   >
 
@@ -1070,12 +1118,16 @@ Může spravovat službu Microsoft Teams.
 | --- | --- |
 | microsoft.aad.directory/groups/hiddenMembers/read | Umožňuje číst vlastnost groups.hiddenMembers v Azure Active Directory. |
 | Microsoft.aad.Directory/Policies/Basic/Read | Přečtěte si základní vlastnosti v policies v Azure Active Directory. |
+| Microsoft.aad.Directory/groups/Unified/DELETE | Odstranění skupiny Office 365. |
+| Microsoft.aad.Directory/groups/Unified/Basic/Update | Aktualizace základní vlastnosti skupin Office 365. |
+| Microsoft.aad.Directory/groups/Unified/Members/Update | Aktualizujte členství skupin Office 365. |
+| Microsoft.aad.Directory/groups/Unified/Owners/Update | Aktualizujte vlastnictví skupin Office 365. |
 | microsoft.azure.accessService/allEntities/allTasks | Spravujte všechny aspekty služby Azure Access. |
 | microsoft.azure.serviceHealth/allEntities/allTasks | Umožňuje číst a konfigurovat služby Azure Service Health. |
 | microsoft.azure.supportTickets/allEntities/allTasks | Vytvořit a spravovat lístky podpory Azure. |
 | Microsoft.Office365.serviceHealth/allEntities/allTasks | Umožňuje číst a konfigurovat stav služby Office 365. |
 | Microsoft.Office365.supportTickets/allEntities/allTasks | Umožňuje vytvářet a spravovat lístky podpory Office 365. |
-| Microsoft.Office365.usageReports/allEntities/Read | Umožňuje číst sestavy využití Office 365. |
+| Microsoft.Office365.usageReports/allEntities/Read | Sestavy využití Office 365 pro čtení. |
 
 ### <a name="user-account-administrator"></a>Správce uživatelských účtů
 Může spravovat všechny aspekty uživatelů a skupin, včetně resetování hesel omezených správců.

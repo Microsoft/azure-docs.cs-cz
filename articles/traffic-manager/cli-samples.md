@@ -1,34 +1,31 @@
 ---
-title: Ukázky rozhraní příkazového řádku Azure Traffic Manageru | Microsoft Docs
-description: Ukázky rozhraní příkazového řádku Azure
+title: Ukázky Azure CLI pro službu Traffic Manager | Dokumentace Microsoftu
+description: Ukázky Azure CLI
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
-manager: jeconnoc
-editor: tysonn
-tags: ''
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
-ms.date: 04/25/2018
+ms.date: 10/23/2018
 ms.author: kumud
-ms.openlocfilehash: 3fcb28d7dbf01f02c8385007c6b4b0ba32d123be
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: 9656ebf831a39a94a06681798e981a6ba748ba3c
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2018
-ms.locfileid: "32313059"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49985280"
 ---
-# <a name="azure-cli-samples-for-traffic-manager"></a>Ukázek Azure CLI pro správce provozu
+# <a name="azure-cli-samples-for-traffic-manager"></a>Ukázky v Azure CLI pro Traffic Manager
 
-Následující tabulka obsahuje odkazy na bash skripty pro správce provozu sestaven pomocí rozhraní příkazového řádku Azure.
+Následující tabulka obsahuje odkazy na skripty bash pro Traffic Manager vytvořené pomocí Azure CLI.
 
-|Nadpis  |Popis |
+|Titul  |Popis |
 |---------|---------|
-|[Přímé provoz v několika oblastech aplikace vysokou dostupnost](./scripts/traffic-manager-cli-websites-high-availability.md)   |    Vytvoří dvě plány služby app, dva webové aplikace, profil správce provozu a dva koncové body správce provozu.     |
+|[Směrovat přenos dat v několika oblastech pro aplikace s vysokou dostupností](./scripts/traffic-manager-cli-websites-high-availability.md)   |    Vytvoří dva plány služby app service, dvě webové aplikace, profil služby traffic manager a dva koncové body traffic Manageru.     |
 |    |         |
 
 

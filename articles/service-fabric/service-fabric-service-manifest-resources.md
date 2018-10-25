@@ -1,6 +1,6 @@
 ---
-title: Určení koncové body služby Service Fabric | Microsoft Docs
-description: Postupy popisují koncový bod prostředků v service manifest, včetně toho, jak nastavit koncové body HTTPS
+title: Určení koncových bodů služeb Service Fabric | Dokumentace Microsoftu
+description: Tom, jak popisují koncový bod prostředků v manifestu služby, jak nastavit koncové body HTTPS
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
@@ -14,19 +14,19 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: f486ce5c058286289873d87767f02bf92f91459e
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: b5c07c7d142e231c945906d6e75ce16a5bb1d252
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34701438"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49985977"
 ---
 # <a name="specify-resources-in-a-service-manifest"></a>Zadání prostředků v manifestu služby
 ## <a name="overview"></a>Přehled
-Manifest služby umožňuje prostředky, které používají službu být deklarován či změnit beze změny zkompilovaný kód. Azure Service Fabric podporuje konfiguraci prostředků koncový bod pro službu. Přístup k prostředkům, které jsou určené v service manifest lze řídit prostřednictvím objektu SecurityGroup v manifestu aplikace. Prohlášení o prostředky umožňuje tyto prostředky se musí změnit v době nasazení, což znamená, že služba nepotřebuje zavést nové mechanismus konfigurace. Definice schématu pro soubor ServiceManifest.xml je nainstalován pomocí Service Fabric SDK a nástroje k *C:\Program Files\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.xsd*.
+Manifest služby umožňuje prostředky, které používají službu být deklarován nebo upravené beze změny zkompilovaný kód. Azure Service Fabric podporuje konfiguraci koncového bodu prostředků pro službu. Přes skupiny SecurityGroup v manifestu aplikace se dá řídit přístup k prostředkům, které jsou určené v manifestu služby. Deklarace prostředků umožňuje změnit v době nasazení, což znamená, že službu nemusí zavést nový mechanismus konfigurace těchto prostředků. Definice schématu pro soubor ServiceManifest.xml se instaluje se sadou Service Fabric SDK a nástrojů k *C:\Program Files\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.xsd*.
 
 ## <a name="endpoints"></a>Koncové body
-Pokud prostředek koncového bodu je definován v service manifest, Service Fabric přiřazuje porty z rozsahu portů vyhrazené aplikace, pokud není port určen explicitně. Například, podívejte se na koncový bod *ServiceEndpoint1* zadané v manifestu fragmentu kódu zadaný po tomto odstavci. Služby mohou také požadovat specifického portu v prostředku. Repliky služby spuštěné v různých uzly lze přiřadit různá čísla portů, zatímco repliky služby spuštěné na stejném uzlu sdílet port. Repliky služby pak můžete použít tyto porty podle potřeby pro replikaci a naslouchá pro požadavky klientů.
+Když prostředek koncového bodu je definovaný v manifestu služby, Service Fabric přiřazuje porty z rozsahu portů aplikace vyhrazené, pokud není explicitně zadán port. Například, podívejte se na koncový bod *ServiceEndpoint1* zadaný v manifestu fragmentu kódu, které jsou uvedené za tímto odstavcem. Služby mohou také požadovat konkrétní port v prostředku. Služba replik spuštěných v různých uzlech je možné přiřadit různá čísla portů, zatímco repliky služby spuštěné na stejném uzlu sdílet port. Repliky služby potom můžete pomocí těchto portů podle potřeby pro replikaci a naslouchá požadavkům klientů.
 
 ```xml
 <Resources>
@@ -38,7 +38,7 @@ Pokud prostředek koncového bodu je definován v service manifest, Service Fabr
 </Resources>
 ```
 
-Pokud existuje víc balíčků kódu v balíčku služby jednotného, pak balíček kódu se taky musí odkazovat ve **koncové body** části.  Například pokud **ServiceEndpoint2a** a **ServiceEndpoint2b** jsou koncové body ze stejného balíčku služby odkazující na jiný kód balíčky balíček kódu odpovídající každý koncový bod je vyjasněno, následujícím způsobem:
+Pokud existuje víc balíčků kódu v jedné službě balíčku, pak balíček kódu se také musí odkazovat **koncové body** oddílu.  Například pokud **ServiceEndpoint2a** a **ServiceEndpoint2b** jsou koncové body služby balíčkem stejné odkazující na různý kód balíčky balíček kódu odpovídající každý koncový bod je obsahuje upřesnění následujícím způsobem:
 
 ```xml
 <Resources>
@@ -49,12 +49,12 @@ Pokud existuje víc balíčků kódu v balíčku služby jednotného, pak balí�
 </Resources>
 ```
 
-Odkazovat na [konfigurace stavová spolehlivé služby](service-fabric-reliable-services-configuration.md) číst informace o odkazování na koncové body z nastavení souboru config balíčku souboru (souborech settings.xml).
+Odkazovat na [konfigurace stavovém modelu Reliable Services](service-fabric-reliable-services-configuration.md) přečíst další informace o odkazování na koncové body z nastavení souboru config balíček soubor (settings.xml).
 
-## <a name="example-specifying-an-http-endpoint-for-your-service"></a>Příklad: určení HTTP koncový bod služby
-Následující service manifest definuje jeden prostředek koncový bod TCP a dva prostředky koncový bod HTTP v &lt;prostředky&gt; elementu.
+## <a name="example-specifying-an-http-endpoint-for-your-service"></a>Příklad: zadání koncového bodu HTTP pro vaši službu
+Následující manifest služby definuje jeden prostředek koncového bodu TCP a dva prostředky koncový bod protokolu HTTP v &lt;prostředky&gt; elementu.
 
-Koncové body protokolu HTTP jsou automaticky že seznamu ACL by pomocí Service Fabric.
+Koncové body HTTP jsou automaticky že ACL by Service Fabric.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -100,18 +100,18 @@ Koncové body protokolu HTTP jsou automaticky že seznamu ACL by pomocí Service
 </ServiceManifest>
 ```
 
-## <a name="example-specifying-an-https-endpoint-for-your-service"></a>Příklad: určení koncový bod HTTPS pro služby
-Protokol HTTPS zajišťuje ověřování na serveru a slouží pro komunikaci klienta se serverem šifrování. Pokud chcete povolit protokol HTTPS na služby Service Fabric, zadat protokol v *prostředků -> Koncové body -> koncový bod* oddílu manifest služby, jak je uvedeno výše pro koncový bod *ServiceEndpoint3*.
+## <a name="example-specifying-an-https-endpoint-for-your-service"></a>Příklad: určení koncový bod HTTPS pro vaši službu
+Protokol HTTPS zajišťuje ověřování na server a slouží také k šifrování komunikace klient server. Pokud chcete povolit HTTPS pro vaši službu Service Fabric, zadejte v protokolu *prostředků -> Koncové body -> koncový bod* manifestu služby, jak je uvedeno výše pro koncový bod *ServiceEndpoint3*.
 
 > [!NOTE]
-> Protokol služby nelze změnit během upgradu aplikace. Pokud se změní při upgradu, je narušující změně.
+> Protokol služby nelze změnit během upgradu aplikace. Pokud se změní při upgradu, je zásadní změnu.
 > 
 
 > [!WARNING] 
-> Při použití protokolu HTTPS, nepoužívejte stejný port a certifikát pro instance různé služby (nezávisle na aplikaci), které jsou nasazené na stejném uzlu. Upgrade dvě různé služby pomocí stejný port na jinou aplikaci instancí povede selhání při upgradu. Další informace najdete v tématu [upgrade více aplikací s koncovými body HTTPS ](service-fabric-application-upgrade.md#upgrading-multiple-applications-with-https-endpoints).
+> Při použití protokolu HTTPS, nepoužívejte stejný port a certifikát pro instance různé služby (nezávisle na aplikaci) nasadí do stejného uzlu. Upgrade dvou různých služeb pomocí stejný port v různé instance aplikace povede k selhání upgradu. Další informace najdete v tématu [upgrade více aplikací pomocí koncových bodů HTTPS ](service-fabric-application-upgrade.md#upgrading-multiple-applications-with-https-endpoints).
 >
 
-Tady je příklad ApplicationManifest, který je nutné nastavit pro protokol HTTPS. Kryptografický otisk certifikátu musí být zadán. EndpointRef je odkaz na EndpointResource v ServiceManifest, u kterého jste nastavili protokol HTTPS. Můžete přidat více než jeden EndpointCertificate.  
+Tady je příklad ApplicationManifest, který je potřeba nastavit pro protokol HTTPS. Musí být zadaný kryptografický otisk certifikátu. EndpointRef je odkaz na EndpointResource v souboru ServiceManifest, u kterého jste nastavili protokol HTTPS. Můžete přidat více než jeden EndpointCertificate.  
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -153,16 +153,16 @@ Tady je příklad ApplicationManifest, který je nutné nastavit pro protokol HT
 </ApplicationManifest>
 ```
 
-Pro Linux clusterů **MY** uložení výchozích hodnot do složky **/var/lib/sfcerts**.
+Pro clustery s Linuxem **MY** uložení výchozích hodnot do složky **/var/lib/sfcerts**.
 
 
-## <a name="overriding-endpoints-in-servicemanifestxml"></a>Přepsání koncových bodů v ServiceManifest.xml
+## <a name="overriding-endpoints-in-servicemanifestxml"></a>Koncové body v souboru ServiceManifest.xml přepsání
 
-ApplicationManifest přidejte ResourceOverrides oddíl, který bude na stejné úrovni ConfigOverrides sekci. V této části můžete zadat přepsání pro oddíl koncové body v části prostředky zadané v Service manifest. Přepsání koncových bodů je podporována v modulu runtime 5.7.217/SDK 2.7.217 a vyšší.
+V manifestu aplikace přidáte ResourceOverrides oddílu, který může mít na stejné úrovni ConfigOverrides části. V této části můžete zadat přepsání pro části koncové body v části prostředky určená v manifestu služby. Přepsání koncové body se podporuje v modulu runtime 5.7.217/SDK 2.7.217 a vyšší.
 
-Chcete-li přepsat koncového bodu v ServiceManifest pomocí ApplicationParameters změn ApplicationManifest jako následující:
+Za účelem přepsání koncového bodu v souboru ServiceManifest pomocí ApplicationParameters změnit ApplicationManifest následujícím způsobem:
 
-V části ServiceManifestImport přidejte novou část "ResourceOverrides".
+V části ServiceManifestImport přidejte nový oddíl "ResourceOverrides".
 
 ```xml
 <ServiceManifestImport>
@@ -180,7 +180,7 @@ V části ServiceManifestImport přidejte novou část "ResourceOverrides".
   </ServiceManifestImport>
 ```
 
-V parametrech přidat níže:
+V parametrech přidejte níže:
 
 ```xml
   <Parameters>
@@ -192,17 +192,17 @@ V parametrech přidat níže:
   </Parameters>
 ```
 
-Při nasazení aplikace lze předat v tyto hodnoty jako ApplicationParameters.  Příklad:
+Při nasazení aplikace můžete předat tyto hodnoty jako ApplicationParameters.  Příklad:
 
 ```powershell
 PS C:\> New-ServiceFabricApplication -ApplicationName fabric:/myapp -ApplicationTypeName "AppType" -ApplicationTypeVersion "1.0.0" -ApplicationParameter @{Port='1001'; Protocol='https'; Type='Input'; Port1='2001'; Protocol='http'}
 ```
 
-Poznámka: Pokud hodnoty ApplicationParameters je prázdný, jsme přejděte zpět na výchozí hodnotu dostupné ServiceManifest pro odpovídající EndPointName.
+Poznámka: Pokud hodnoty ApplicationParameters je prázdný, vrátíme výchozí hodnotu pro odpovídající Název_koncového_bodu k dispozici v souboru ServiceManifest.
 
 Příklad:
 
-Pokud se v ServiceManifest jste zadali
+Pokud se v souboru ServiceManifest jste zadali
 
 ```xml
   <Resources>
@@ -212,6 +212,6 @@ Pokud se v ServiceManifest jste zadali
   </Resources>
 ```
 
-A Port1 a Protocol1 hodnotu pro parametry aplikace je null nebo prázdná. Port je stále rozhodnuto pomocí ServiceFabric. A bude protokol tcp.
+A jejich Port1 a Protocol1 hodnoty pro parametry aplikace je null nebo prázdný. Port, který je stále rozhodnuto pomocí ServiceFabric. A bude protokol tcp.
 
-Předpokládejme, že zadáte chybnou hodnotu. Například pro Port jste zadali hodnotu řetězce "Foo" namísto typ int.  Nové ServiceFabricApplication příkaz se nezdaří s chybou: Parametr přepisu s názvem 'ServiceEndpoint1' atributu "Port1" v části 'ResourceOverrides' je neplatný. Zadaná hodnota je "Foo" a vyžaduje je 'int'.
+Předpokládejme, že zadáte chybnou hodnotu. Například pro Port jste zadali hodnotu řetězce "Foo" místo celé číslo  Nové ServiceFabricApplication příkaz se nezdaří s chybou: Parametr přepsání s atributem "ServiceEndpoint1" název "Port1" v části 'ResourceOverrides' je neplatný. Zadaná hodnota je "Foo" a "int" vyžaduje se.

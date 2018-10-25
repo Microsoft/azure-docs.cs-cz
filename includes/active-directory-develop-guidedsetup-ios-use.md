@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/19/2018
 ms.author: andret
 ms.custom: include file
-ms.openlocfilehash: 248f2575e284ae456578b071013e1a5501329116
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 06da33b91ef9846204b33ba2cb3dea40c75d425d
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48843441"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49988244"
 ---
 ## <a name="use-the-microsoft-authentication-library-msal-to-get-a-token-for-the-microsoft-graph-api"></a>Pomocí knihovny Microsoft Authentication Library (MSAL) k získání tokenu pro rozhraní Microsoft Graph API
 
@@ -29,17 +29,17 @@ Otevřít `ViewController.swift` a nahraďte kód:
 import UIKit
 import MSAL
 
-/// 😃 A View Controller that will respond to the events of the Storyboard.
+// A View Controller that will respond to the events of the Storyboard.
 class ViewController: UIViewController, UITextFieldDelegate, URLSessionDelegate {
-    
-    // Update the below to your client ID you received in the portal. The below is for running the demo only
+
+    // Replace Your_Application_Id_Here with the client ID you received in the portal. The below is for running the demo only.
     let kClientID = "Your_Application_Id_Here"
-    
+
     // These settings you don't need to edit unless you wish to attempt deeper scenarios with the app.
     let kGraphURI = "https://graph.microsoft.com/v1.0/me/"
     let kScopes: [String] = ["https://graph.microsoft.com/user.read"]
     let kAuthority = "https://login.microsoftonline.com/common"
-    
+
     var accessToken = String()
     var applicationContext : MSALPublicClientApplication?
 
@@ -87,7 +87,7 @@ class ViewController: UIViewController, UITextFieldDelegate, URLSessionDelegate 
         super.viewWillAppear(animated)
         signoutButton.isEnabled = !self.accessToken.isEmpty
     }
-    
+
     /**
      This button will invoke the authorization flow.
     */
@@ -204,17 +204,20 @@ class ViewController: UIViewController, UITextFieldDelegate, URLSessionDelegate 
 
 <!--start-collapse-->
 ### <a name="more-information"></a>Další informace
+
 #### <a name="getting-a-user-token-interactively"></a>Interaktivní získání tokenu uživatele
+
 Volání `acquireToken` metoda výsledky v okně prohlížeče výzvy k přihlášení. Aplikace obvykle vyžadují uživateli umožní přihlásit interaktivně poprvé, které potřebují přístup k chráněnému prostředku, nebo při bezobslužném operaci získat token selže (třeba heslo uživatele s prošlou platností).
 
 #### <a name="getting-a-user-token-silently"></a>Získání tokenu uživatele bez upozornění
+
 `acquireTokenSilent` Obsluhovala token pořízení a obnovení bez nutnosti zásahu uživatele. Po `acquireToken` provádí poprvé, `acquireTokenSilent` je metoda běžně používá k získání tokenů použít pro přístup k chráněným prostředkům pro pozdější volání – jako volání na vyžádání nebo tokeny obnovení probíhají bezobslužně.
 
 Nakonec `acquireTokenSilent` selže – například uživatel odhlásil nebo došlo ke změně hesla na jiném zařízení. Knihovna MSAL zjistí, že problém lze vyřešit tak, že vyžaduje interaktivní akci, vyvolá-li `MSALErrorCode.interactionRequired` výjimky. Vaše aplikace dokáže zpracovat tuto výjimku dvěma způsoby:
 
-1.  Volání proti `acquireToken` okamžitě, jehož výsledkem výzvy k přihlášení. Tento model se obvykle používá v online aplikace tam, kde není žádný offline obsah v aplikaci k dispozici pro uživatele. Tento instalační program s průvodcem vygenerovaná ukázková aplikace používá tento vzor: můžete pozorování v akci první čas spuštění aplikace. Vzhledem k tomu, že žádný uživatel nikdy nepoužil aplikace, `applicationContext.allAccounts().first` bude obsahovat hodnotu null a ` MSALErrorCode.interactionRequired ` , bude vyvolána výjimka. Kód v ukázce pak zpracovává výjimku při volání `acquireToken` výsledkem výzvy k přihlášení.
+1. Volání proti `acquireToken` okamžitě, jehož výsledkem výzvy k přihlášení. Tento model se obvykle používá v online aplikace tam, kde není žádný offline obsah v aplikaci k dispozici pro uživatele. Tento instalační program s průvodcem vygenerovaná ukázková aplikace používá tento vzor: můžete pozorování v akci první čas spuštění aplikace. Vzhledem k tomu, že žádný uživatel nikdy nepoužil aplikace, `applicationContext.allAccounts().first` bude obsahovat hodnotu null a ` MSALErrorCode.interactionRequired ` , bude vyvolána výjimka. Kód v ukázce pak zpracovává výjimku při volání `acquireToken` výsledkem výzvy k přihlášení.
 
-2.  Aplikace lze také nastavit vizuální označení pro uživatele, který interaktivnímu přihlášení je nutné, takže uživatel může vybrat správný čas pro přihlášení, nebo aplikace může pokus zopakovat, `acquireTokenSilent` později. To se obvykle používá, když uživatel může používat další funkce aplikace bez narušení – například je offline obsah k dispozici v aplikaci. V takovém případě se uživatel může rozhodnout při chtějí přihlášení pro přístup k chráněnému prostředku nebo aktualizujte zastaralé informace, nebo aplikace se můžete rozhodnout používat opakovat `acquireTokenSilent` obnovení po síti po se dočasně není k dispozici.
+2. Aplikace lze také nastavit vizuální označení pro uživatele, který interaktivnímu přihlášení je nutné, takže uživatel může vybrat správný čas pro přihlášení, nebo aplikace může pokus zopakovat, `acquireTokenSilent` později. To se obvykle používá, když uživatel může používat další funkce aplikace bez narušení – například je offline obsah k dispozici v aplikaci. V takovém případě se uživatel může rozhodnout při chtějí přihlášení pro přístup k chráněnému prostředku nebo aktualizujte zastaralé informace, nebo aplikace se můžete rozhodnout používat opakovat `acquireTokenSilent` obnovení po síti po se dočasně není k dispozici.
 
 <!--end-collapse-->
 
@@ -287,6 +290,7 @@ Přidejte následující metodu do `ViewController.swift` odhlášení uživatel
 
 }
 ```
+
 <!--start-collapse-->
 ### <a name="more-info-on-sign-out"></a>Další informace o odhlášení
 
@@ -299,11 +303,12 @@ I když aplikace v této ukázce se podporuje jenom jednoho konkrétního uživa
 
 Jakmile se uživatel ověřuje, prohlížeč přesměruje uživatele zpět do aplikace. Postupujte podle pokynů dole zaregistrujte toto zpětné volání:
 
-1.  Otevřít `AppDelegate.swift` a importovat MSAL:
+1. Otevřít `AppDelegate.swift` a importovat MSAL:
 
 ```swift
 import MSAL
 ```
+
 <!-- Workaround for Docs conversion bug -->
 <ol start="2">
 <li>

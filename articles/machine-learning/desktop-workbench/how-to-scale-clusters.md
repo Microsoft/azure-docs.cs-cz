@@ -13,12 +13,12 @@ ms.custom: mvc
 ms.topic: article
 ms.date: 10/04/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: 718f351ad4ce325f3585ebcbe7adfc4b5905e734
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 9688b9ba305a2eb59b80b02c0b41a7f4855dd051
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46998606"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024558"
 ---
 # <a name="scaling-the-cluster-to-manage-web-service-throughput"></a>Škálování clusteru pro správu propustnost webové služby
 
@@ -65,7 +65,7 @@ Dokončení tohoto procesu může několik minut trvat. Další informace o vert
 
 ### <a name="scaling-the-number-of-kubernetes-pod-replicas-in-a-cluster"></a>Měřítko počet replik podů Kubernetes v clusteru
  
-Můžete škálovat počet replik podů, které jsou přiřazeny ke clusteru pomocí rozhraní příkazového řádku Azure Machine Learning nebo [řídicí panel Kubernetes] (https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/).
+Můžete škálovat počet replik podů, které jsou přiřazeny ke clusteru pomocí rozhraní příkazového řádku Azure Machine Learning nebo [řídicí panel Kubernetes](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/).
 
 Další informace o replik podů Kubernetes najdete v článku [Podů Kubernetes](https://kubernetes.io/docs/concepts/workloads/pods/pod/) dokumentaci.
 

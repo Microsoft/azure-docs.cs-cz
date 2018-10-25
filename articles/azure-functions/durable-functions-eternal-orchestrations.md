@@ -2,20 +2,20 @@
 title: Externí Orchestrace v Durable Functions – Azure
 description: Zjistěte, jak implementovat externí Orchestrace pomocí rozšíření Durable Functions pro službu Azure Functions.
 services: functions
-author: cgillum
+author: kashimiz
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 09/29/2017
+ms.date: 10/23/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 98504534332b6faa7a7019aea9ab7b534d4c3faa
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 0e3a3476c3fca6329634c87f933f895ec582f364
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44094435"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49987513"
 ---
 # <a name="eternal-orchestrations-in-durable-functions-azure-functions"></a>Externí Orchestrace v Durable Functions (Azure Functions)
 
@@ -34,12 +34,11 @@ Když `ContinueAsNew` nazývá instance zařadí zprávu na sebe sama předtím,
 > [!NOTE]
 > Trvalý Framework úkolů udržuje stejné ID instance, ale interně vytvoří novou *ID spuštění* pro funkce orchestrátoru, který získá resetováno `ContinueAsNew`. Toto ID spuštění není obecně dostupná externě, ale může být užitečné při ladění provádění Orchestrace vědět o.
 
-> [!NOTE]
-> `ContinueAsNew` Metoda ještě není k dispozici v jazyce JavaScript.
-
 ## <a name="periodic-work-example"></a>Příklad pravidelné práce
 
 Jeden případ použití pro externí Orchestrace je kód, který je potřeba pravidelně práci po neomezenou dobu.
+
+#### <a name="c"></a>C#
 
 ```csharp
 [FunctionName("Periodic_Cleanup_Loop")]
@@ -54,6 +53,23 @@ public static async Task Run(
 
     context.ContinueAsNew(null);
 }
+```
+
+#### <a name="javascript-functions-v2-only"></a>JavaScript (jenom funkce v2)
+
+```javascript
+const df = require("durable-functions");
+const moment = require("moment");
+
+module.exports = df.orchestrator(function*(context) {
+    yield context.df.callActivity("DoCleanup");
+
+    // sleep for one hour between cleanups
+    const nextCleanup = moment.utc(context.df.currentUtcDateTime).add(1, "h");
+    yield context.df.createTimer(nextCleanup);
+
+    context.df.continueAsNew(undefined);
+});
 ```
 
 Rozdíl mezi v tomto příkladu a funkce aktivované pomocí časovače je, že vyčištění aktivační událost časy zde nejsou na základě plánu. Můžete třeba plán CRON, který se spustí funkci každou hodinu se spustit ho v 1:00, 2:00, 3:00 atd. a může potenciálně narazíte na problémy překrývají. V tomto příkladu, ale pokud čištění trvá 30 minut, pak ho bude naplánována v 1:00, 2:30, 4:00 atd. a neexistuje možnost překrytí.

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: reference
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 3429917fcee520ae932253f1fdfead4ffb6535e6
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: cf6e2fa296d3d9f152edf22685b930586b4de524
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48809184"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024802"
 ---
 <a name="retrieve-offers"></a>Nabízí načtení
 ===============
@@ -39,7 +39,7 @@ Načte souhrnný seznam nabídky v rámci oboru názvů vydavatele.
 |  |  |
 
 
-<a name="header"></a>Záhlaví
+<a name="header"></a>Hlavička
 ------
 
 |  **Název**        |         **Hodnota**       |
@@ -80,7 +80,7 @@ Načte souhrnný seznam nabídky v rámci oboru názvů vydavatele.
 |  status         | Stav nabídky. Seznam možných hodnot najdete v tématu [stav nabídky](#offer-status) níže.                         |
 |  id             | Identifikátor GUID, který jednoznačně identifikuje nabídky v oboru názvů vydavatele.                                                    |
 |  version        | Aktuální verze nabídky. Klient nemůže upravit vlastnost version. Se zvýší po jednotlivých publikování. |
-|  Definice     | Obsahuje souhrnné zobrazení skutečné definice úlohy. Pokud chcete získat podrobné definice, použijte [načtení konkrétní nabídky] (. / cloud-partner-portal-api-retrieve-specific-offer.md) rozhraní API. |
+|  Definice     | Obsahuje souhrnné zobrazení skutečné definice úlohy. Chcete-li získat podrobné definici, použijte [načtení konkrétní nabídky](./cloud-partner-portal-api-retrieve-specific-offer.md) rozhraní API. |
 |  changedTime    | Čas UTC poslední úpravy nabídky                                                                              |
 |  |  |
 

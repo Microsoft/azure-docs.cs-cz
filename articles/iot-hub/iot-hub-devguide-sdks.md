@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: dobett
-ms.openlocfilehash: 1eeb0afdd5ffcbe00357914d6a98c8d0b3d452ec
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: d58c86c17cdab360f37a09b28bdf705cb781a620
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48017955"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50023814"
 ---
 # <a name="understand-and-use-azure-iot-hub-sdks"></a>Pochopit a používat sady SDK služby Azure IoT Hub
 
@@ -44,7 +44,7 @@ Azure IoT Hub device sady SDK pro jazyk C, zapsán ve standardu ANSI C (C99) pro
 
 * Nainstalujte z [apt-get, MBED, rozhraním Arduino IDE nebo Nuget](https://github.com/Azure/azure-iot-sdk-c/blob/master/readme.md)
 * [Zdrojový kód](https://github.com/Azure/azure-iot-sdk-c)
-* [Referenční materiály k rozhraní API](https://azure.github.io/azure-iot-sdk-c/index.html)
+* [Referenční materiály k rozhraní API](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/)
 * [Odkaz na modul](https://github.com/Azure/azure-iot-sdk-c/blob/master/iothub_client/inc/iothub_module_client.h)
 
 Azure IoT Hub device sady SDK pro Javu: 
@@ -65,13 +65,13 @@ Azure IoT Hub device sady SDK pro Python:
 
 * Nainstalujte z [pip](https://pypi.python.org/pypi/azure-iothub-device-client/)
 * [Zdrojový kód](https://github.com/Azure/azure-iot-sdk-python)
-* Reference k rozhraní API: viz [reference k rozhraní API jazyka C](https://azure.github.io/azure-iot-sdk-c/index.html)
+* Reference k rozhraní API: viz [reference k rozhraní API jazyka C](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/)
 
 Azure IoT Hub device sady SDK pro iOS: 
 
 * Nainstalujte z [CocoaPod](https://cocoapods.org/pods/AzureIoTHubClient)
 * [Ukázky](https://github.com/Azure-Samples/azure-iot-samples-ios)
-* Reference k rozhraní API: viz [reference k rozhraní API jazyka C](https://azure.github.io/azure-iot-sdk-c/index.html)
+* Reference k rozhraní API: viz [reference k rozhraní API jazyka C](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/)
 
 > [!NOTE]
 > Prohlédněte si soubory readme v úložištích GitHub. informace o používání jazyka a správců balíčků specifických pro platformu nainstalovat binární soubory a závislosti na vývojovém počítači.

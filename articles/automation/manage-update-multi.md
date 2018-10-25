@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 09/18/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 23f86581b5ecc5257ccb246c7199eef4246efb08
-ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
+ms.openlocfilehash: e51c0178691279d803e9a1afcd4147f1d6ed767e
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46498228"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49985246"
 ---
 # <a name="manage-updates-for-multiple-machines"></a>Správa aktualizací pro několik počítačů
 
@@ -127,7 +127,7 @@ V **nové nasazení aktualizací** podokně zadejte následující informace:
 
 - **Název**: Zadejte jedinečný název pro identifikaci nasazení aktualizace.
 - **Operační systém**: vyberte **Windows** nebo **Linux**.
-- **Skupiny, které se aktualizace (preview)**: definování dotazu na základě kombinace předplatného, skupiny prostředků, míst a značky vytvářet dynamické skupiny virtuálních počítačů Azure má zahrnout do vašeho nasazení. Další informace najdete tady [dynamické skupiny](automation-update-management.md#using-dynamic-groups)
+- **Skupiny, které se mají aktualizovat (Preview)**: Definujte dotaz založený na kombinaci předplatného, skupin prostředků, umístění a značek a vytvořte dynamickou skupinu virtuálních počítačů Azure, která se má zahrnout do vašeho nasazení. Další informace najdete v tématu věnovaném [dynamickým skupinám](automation-update-management.md#using-dynamic-groups).
 - **Počítače k aktualizaci**: Zvolte Uložit hledání, importované skupiny, nebo vybrat počítače, které chcete vybrat počítače, které chcete aktualizovat. Pokud zvolíte možnost **Počítače**, ve sloupci **PŘIPRAVENOST AGENTA AKTUALIZACE** se zobrazí připravenost počítačů. Zobrazí se stav počítače a před naplánovat nasazení aktualizace. Další informace o různých způsobech vytváření skupin počítačů v Log Analytics najdete v tématu [Skupiny počítačů v Log Analytics](../log-analytics/log-analytics-computer-groups.md).
 
   ![Podokno nasazení nové aktualizace](./media/manage-update-multi/update-select-computers.png)
@@ -142,7 +142,7 @@ V **nové nasazení aktualizací** podokně zadejte následující informace:
   - Nástroje
   - Aktualizace
 
-- **Aktualizace pro zahrnutí a vyloučení** – tím se otevře **zahrnout/vyloučit** stránky. Aktualizace zahrnuty nebo vyloučeny jsou v samostatných kartách. Další informace o zpracování zařazení, naleznete v tématu [zahrnutí chování](automation-update-management.md#inclusion-behavior)
+- **Aktualizace, které se mají zahrnout nebo vyloučit** – Otevře stránku **Zahrnout nebo vyloučit**. Aktualizace, které se mají zahrnout nebo vyloučit jsou na samostatných kartách. Další informace o tom, jak se zahrnutí provádí, najdete v tématu o [chování zahrnutí](automation-update-management.md#inclusion-behavior).
 
 - **Nastavení plánu:** Můžete přijmout výchozí datum a čas, což je 30 minut od aktuálního času. Můžete také zadat jiný čas.
 
@@ -150,7 +150,7 @@ V **nové nasazení aktualizací** podokně zadejte následující informace:
 
    ![Dialogové okno Nastavení plánu](./media/manage-update-multi/update-set-schedule.png)
 
-- **Skripty před a po skripty**: Vyberte skripty spouštěné před a po nasazení. Další informace najdete v tématu [spravovat před a po skripty](pre-post-scripts.md).
+- **Předzálohovací a pozálohovací skripty**: Vyberte skripty, které se mají spustit před vaším nasazením a po něm. Další informace najdete v tématu týkajícím se [správy předzálohovacích a pozálohovacích skriptů](pre-post-scripts.md).
 - **Časové období údržby (minuty)**: Zadejte dobu, po které má dojít k nasazení aktualizací. Toto nastavení pomůže zajistit, že se změny provedou v rámci definovaných časových intervalů pro správu a údržbu.
 
 - **Restartovat ovládací prvek** – toto nastavení určuje, jak se zpracovává restartování počítače pro nasazení aktualizace.
@@ -163,6 +163,9 @@ V **nové nasazení aktualizací** podokně zadejte následující informace:
    |Pouze restartovat – nenainstalují se aktualizace|Tato možnost bude ignorovat instalaci aktualizací a pouze zahájí restartovat počítač.|
 
 Jakmile dokončíte konfiguraci plánu, vyberte **vytvořit** se vrátit na řídicí panel stavu. **Naplánované** tabulky zobrazí plán nasazení, který jste vytvořili.
+
+> [!NOTE]
+> Správa aktualizací podporuje nasazení první strany aktualizací a oprav předem stahování. To vyžaduje změny v systémech se opravit, naleznete v tématu [první strany a předem stáhnout podporu](automation-update-management.md#firstparty-predownload) Další informace o konfiguraci těchto nastavení ve vašich systémech.
 
 ## <a name="view-results-of-an-update-deployment"></a>Zobrazení výsledků nasazení aktualizací
 

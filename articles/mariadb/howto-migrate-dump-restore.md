@@ -8,12 +8,12 @@ services: mariadb
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 551fe303994f6c72f8a4bf39e76f12c62f58026b
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: 5ac80ef36241b58812832c66511c0a09d49b365f
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49309531"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49986980"
 ---
 # <a name="migrate-your-mariadb-database-to-azure-database-for-mariadb-using-dump-and-restore"></a>Migrace databáze MariaDB do služby Azure Database pro MariaDB pomocí výpisu a obnovení
 Tento článek vysvětluje dva běžné způsoby, jak zálohovat a obnovit databáze ve službě Azure Database pro MariaDB
@@ -129,5 +129,5 @@ Import databáze je podobný export. Proveďte následující akce:
 - [Připojení aplikace ke službě Azure Database pro MariaDB](./howto-connection-string.md).
  
 <!--
-- For more information about migrating databases to Azure Database for MariaDB, see the [Database Migration Guide](http://aka.ms/datamigration).
+- For more information about migrating databases to Azure Database for MariaDB, see the [Database Migration Guide](https://aka.ms/datamigration).
 -->

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/12/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 03f096bf160c44f7a35f54a73cff6ea701b87d22
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 66585c495dfb46e51120ae3eef2685d634fd9606
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49352913"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024964"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: Účty a oprávnění
 
@@ -82,11 +82,11 @@ Tyto přihlašovací údaje se používají jenom při instalaci a nepoužívaj�
 
 ![Expresní instalace](./media/reference-connect-accounts-permissions/express.png)
 
-Následuje souhrn express installlation stránkách průvodce, přihlašovací údaje shromáždí, a jejich použití.
+Následuje souhrn stránkách průvodce Expresní instalace, přihlašovací údaje shromáždí, a jejich použití.
 
 | Stránka Průvodce | Přihlašovací údaje shromážděné | Oprávnění vyžadovaná | Používá pro |
 | --- | --- | --- | --- |
-| neuvedeno |Uživatel, který spouští Průvodce instalací |Správce místního serveru |<li>Vytvoří [účtu službu ADSync](#azure-ad-connect-sync-service-account) účet, který se používá ke spuštění synchronizační služby. |
+| neuvedeno |Uživatel, který spouští Průvodce instalací |Správce místního serveru |<li>Vytvoří [účet služby ADSync](#azure-ad-connect-sync-service-account) účet, který se používá ke spuštění synchronizační služby. |
 | Připojení k Azure AD |Přihlašovací údaje Azure AD directory |Roli globálního správce ve službě Azure AD |<li>Povoluje se synchronizace v adresáři Azure AD.</li>  <li>Vytváření [účtu Azure AD Connector](#azure-ad-service-account) , který se používá pro operace probíhající synchronizace ve službě Azure AD.</li> |
 | Připojení ke službě AD DS |Místní přihlašovací údaje služby Active Directory |Člen skupiny Enterprise Admins (EA) ve službě Active Directory |<li>Vytvoří [účet AD DS konektoru](#active-directory-account) v Active Directory a udělí oprávnění k němu. Vytvoření účtu slouží ke čtení a zápisu informací adresáře během synchronizace.</li> |
 
@@ -97,7 +97,7 @@ Vlastní nastavení instalace Průvodce nabízí další možnosti a možnosti.
 
 ### <a name="custom-installation-wizard-summary"></a>Souhrn Průvodce vlastní instalace
 
-Následuje souhrn vlastní installlation stránkách průvodce, přihlašovací údaje shromáždí, a jejich použití.
+Následuje souhrn stránkách Průvodce vlastní instalaci, přihlašovací údaje shromáždí, a jejich použití.
 
 ![Expresní instalace](./media/reference-connect-accounts-permissions/customize.png)
 

@@ -2,20 +2,20 @@
 title: Odolná služba Functions přehled – Azure
 description: Úvod do rozšíření Durable Functions pro službu Azure Functions.
 services: functions
-author: cgillum
+author: kashimiz
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 09/06/2018
+ms.date: 10/23/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 925a4bb8edc49a4f3fee460ebd5af2ead6aeebdb
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 3dd0b99275dc3b6de1da6e433e44ae5ba01cdd33
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49649716"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49985926"
 ---
 # <a name="durable-functions-overview"></a>Trvalý přehled funkcí
 
@@ -67,10 +67,10 @@ public static async Task<object> Run(DurableOrchestrationContext ctx)
 const df = require("durable-functions");
 
 module.exports = df.orchestrator(function*(ctx) {
-    const x = yield ctx.df.callActivityAsync("F1");
-    const y = yield ctx.df.callActivityAsync("F2", x);
-    const z = yield ctx.df.callActivityAsync("F3", y);
-    return yield ctx.df.callActivityAsync("F4", z);
+    const x = yield ctx.df.callActivity("F1");
+    const y = yield ctx.df.callActivity("F2", x);
+    const z = yield ctx.df.callActivity("F3", y);
+    return yield ctx.df.callActivity("F4", z);
 });
 ```
 
@@ -118,16 +118,16 @@ module.exports = df.orchestrator(function*(ctx) {
     const parallelTasks = [];
 
     // get a list of N work items to process in parallel
-    const workBatch = yield ctx.df.callActivityAsync("F1");
+    const workBatch = yield ctx.df.callActivity("F1");
     for (let i = 0; i < workBatch.length; i++) {
-        parallelTasks.push(ctx.df.callActivityAsync("F2", workBatch[i]));
+        parallelTasks.push(ctx.df.callActivity("F2", workBatch[i]));
     }
 
     yield ctx.df.task.all(parallelTasks);
 
     // aggregate all N outputs and send result to F3
     const sum = parallelTasks.reduce((prev, curr) => prev + curr, 0);
-    yield ctx.df.callActivityAsync("F3", sum);
+    yield ctx.df.callActivity("F3", sum);
 });
 ```
 
@@ -241,10 +241,10 @@ module.exports = df.orchestrator(function*(ctx) {
     const expiryTime = getExpiryTime();
 
     while (moment.utc(ctx.df.currentUtcDateTime).isBefore(expiryTime)) {
-        const jobStatus = yield ctx.df.callActivityAsync("GetJobStatus", jobId);
+        const jobStatus = yield ctx.df.callActivity("GetJobStatus", jobId);
         if (jobStatus === "Completed") {
             // Perform action when condition met
-            yield ctx.df.callActivityAsync("SendAlert", machineId);
+            yield ctx.df.callActivity("SendAlert", machineId);
             break;
         }
 
@@ -301,7 +301,7 @@ const df = require("durable-functions");
 const moment = require('moment');
 
 module.exports = df.orchestrator(function*(ctx) {
-    yield ctx.df.callActivityAsync("RequestApproval");
+    yield ctx.df.callActivity("RequestApproval");
 
     const dueTime = moment.utc(ctx.df.currentUtcDateTime).add(72, 'h');
     const durableTimeout = ctx.df.createTimer(dueTime.toDate());
@@ -309,9 +309,9 @@ module.exports = df.orchestrator(function*(ctx) {
     const approvalEvent = ctx.df.waitForExternalEvent("ApprovalEvent");
     if (approvalEvent === yield ctx.df.Task.any([approvalEvent, durableTimeout])) {
         durableTimeout.cancel();
-        yield ctx.df.callActivityAsync("ProcessApproval", approvalEvent.result);
+        yield ctx.df.callActivity("ProcessApproval", approvalEvent.result);
     } else {
-        yield ctx.df.callActivityAsync("Escalate");
+        yield ctx.df.callActivity("Escalate");
     }
 });
 ```

@@ -17,14 +17,17 @@ ms.date: 06/06/2017
 ms.author: celested
 ms.reviewer: hirsin, nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: f795b58be760bae0743b05d2827c0e9f8bdb10c6
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: a231b79bebd9684281edea48dfe7cf5f57ccdacb
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49430081"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49986011"
 ---
 # <a name="service-to-service-calls-using-delegated-user-identity-in-the-on-behalf-of-flow"></a>Služby volání mezi službami pomocí delegovaná identita uživatele v tok On-Behalf-Of
+
+[!INCLUDE [active-directory-develop-applies-v1](../../../includes/active-directory-develop-applies-v1.md)]
+
 OAuth 2.0 On-Behalf-Of (OBO) tok slouží případ použití, kde aplikace vyvolá služby/webové rozhraní API, které pak je potřeba volat jiné služby nebo webové rozhraní API. Cílem je rozšíření delegovaný uživatel identit a oprávnění pomocí řetězce požadavku. Pro služby střední vrstvy, aby ověřených požadavků pro příjem dat služby je potřeba zabezpečit přístupového tokenu z Azure Active Directory (Azure AD) jménem uživatele.
 
 > [!IMPORTANT]

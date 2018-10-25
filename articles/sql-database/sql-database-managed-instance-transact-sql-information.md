@@ -11,13 +11,13 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlrab, bonova
 manager: craigg
-ms.date: 08/13/2018
-ms.openlocfilehash: 2f512c666555ca8bee58305b76573459f6e631e2
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 10/24/2018
+ms.openlocfilehash: fd63d0ce9ef335efdebf9759d52cf93312986d16
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47166499"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025374"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Rozdíly ve službě Azure SQL Database Managed Instance T-SQL z SQL serveru 
 
@@ -103,7 +103,7 @@ Zobrazit [vytvořit certifikát](https://docs.microsoft.com/sql/t-sql/statements
 > ``` 
 CREATE CERTIFICATE  
  FROM BINARY = asn_encoded_certificate    
-WITH PRIVATE KEY ( <private_key_options> ) 
+WITH PRIVATE KEY (<private_key_options>) 
 >```   
  
 ### <a name="clr"></a>CLR 
@@ -333,21 +333,22 @@ Informace o příkazech obnovení najdete v tématu [obnovit příkazy](https://
  - `remote proc trans` 
 - `sp_execute_external_scripts` není podporováno. Zobrazit [sp_execute_external_scripts](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql#examples).
 - `xp_cmdshell` není podporováno. Zobrazit [xp_cmdshell](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/xp-cmdshell-transact-sql).
-- `Extended stored procedures` nejsou podporované. zahrnuje `sp_addextendedproc` a `sp_dropextendedproc`. Zobrazit [rozšířené uložené procedury](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/general-extended-stored-procedures-transact-sql)
+- `Extended stored procedures` nejsou podporované. zahrnuje `sp_addextendedproc`  a `sp_dropextendedproc`. Zobrazit [rozšířené uložené procedury](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/general-extended-stored-procedures-transact-sql)
 - `sp_attach_db`, `sp_attach_single_file_db`, a `sp_detach_db` nejsou podporovány. Zobrazit [sp_attach_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-attach-db-transact-sql), [sp_attach_single_file_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-attach-single-file-db-transact-sql), a [sp_detach_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-detach-db-transact-sql).
 - `sp_renamedb` není podporováno. Zobrazit [sp_renamedb](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-renamedb-transact-sql).
 
 ### <a name="sql-server-agent"></a>Agent SQL Server
 
 - Nastavení agenta SQL jsou jen pro čtení. Postup `sp_set_agent_properties` není ve spravované instanci podporováno.  
-- V současnosti jsou podporované úlohy - kroky úlohy T-SQL
-- Jiné typy úloh kroky nejsou aktuálně podporované (typy bude přidána během období public preview další krok).
-  - Úlohy replikace není podporována včetně:
+- Úlohy
+ - Podporují se kroky úlohy T-SQL.
+ - Podporují se následující úlohy replikace:
     - Čtečky protokolů transakcí.  
     - Pořízení snímku.
-    - Distributor.  
-    - Sloučení.  
-  - Služby SSIS se ještě nepodporuje. 
+    - Distributor.
+ - Služby SSIS je podporována. 
+- Jiné druhy kroky úlohy se aktuálně nepodporují, včetně:
+  - Krok úlohy slučovací replikace nepodporuje.  
   - Čtečky fronty se nepodporuje.  
   - Příkazové okno se ještě nepodporuje. 
   - Spravovaná Instance nelze přístup k externím prostředkům (například sdílené síťové složky prostřednictvím nástroje robocopy).  
@@ -362,7 +363,7 @@ Informace o příkazech obnovení najdete v tématu [obnovit příkazy](https://
 - Protokol událostí se nepodporuje. 
  
 Následující funkce nejsou aktuálně podporovány, ale bude v budoucnu povoleno:  
-- Proxy
+- Proxy servery
 - Plánování úloh na nečinnosti procesoru 
 - Povolení nebo zakázání agenta
 - Výstrahy
@@ -411,7 +412,7 @@ V tomto příkladu budou nadále fungovat stávající databáze a můžou růst
 ### <a name="incorrect-configuration-of-sas-key-during-database-restore"></a>Nesprávná konfigurace SAS klíč při databáze obnovení
 
 `RESTORE DATABASE` který čte soubor .bak může být neustále opakování pokusu o číst soubor .bak a vrátí chybové po dlouhou dobu, pokud sdíleného přístupového podpisu v `CREDENTIAL` je nesprávný. Před obnovením databáze, ujistěte se, že se klíč SAS pro správné spuštění RESTORE HEADERONLY.
-Ujistěte se, že odeberete úvodní `?` z klíč SAS vygenerovaný pomocí webu Azure portal.
+Ujistěte se, že odeberete úvodního `?` z klíče SAS, který je generován pomocí webu Azure portal.
 
 ### <a name="tooling"></a>Nástroje
 

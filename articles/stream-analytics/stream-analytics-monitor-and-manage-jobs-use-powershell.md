@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/28/2017
-ms.openlocfilehash: 6812298bc90446a7b7e136ec81a67641c2a9e18f
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: f88c16c6f98e5860b0ee200edd18a86ab2a76883
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43701604"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49985739"
 ---
 # <a name="monitor-and-manage-stream-analytics-jobs-with-azure-powershell-cmdlets"></a>Monitorování a správa úlohy Stream Analytics s rutinami Azure Powershellu
 Zjistěte, jak monitorovat a Stream Analytics prostředky spravovat pomocí rutin prostředí Azure PowerShell a skriptů prostředí powershell, které jsou spouštěny základní úlohy Stream Analytics.
@@ -454,8 +454,8 @@ Potřebujete další pomoc, vyzkoušejte naše [fóru Azure Stream Analytics](ht
 * [Referenční příručka k jazyku Azure Stream Analytics Query Language](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 * [Referenční příručka k rozhraní REST API pro správu služby Azure Stream Analytics](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
-[msdn-switch-azuremode]: http://msdn.microsoft.com/library/dn722470.aspx
-[powershell-install]: http://azure.microsoft.com/documentation/articles/powershell-install-configure/
+[msdn-switch-azuremode]: https://msdn.microsoft.com/library/dn722470.aspx
+[powershell-install]: https://azure.microsoft.com/documentation/articles/powershell-install-configure/
 [msdn-rest-api-create-stream-analytics-job]: https://msdn.microsoft.com/library/dn834994.aspx
 [msdn-rest-api-create-stream-analytics-input]: https://msdn.microsoft.com/library/dn835010.aspx
 [msdn-rest-api-create-stream-analytics-output]: https://msdn.microsoft.com/library/dn835015.aspx
@@ -465,6 +465,6 @@ Potřebujete další pomoc, vyzkoušejte naše [fóru Azure Stream Analytics](ht
 [stream.analytics.get.started]: stream-analytics-real-time-fraud-detection.md
 [stream.analytics.developer.guide]: ../stream-analytics-developer-guide.md
 [stream.analytics.scale.jobs]: stream-analytics-scale-jobs.md
-[stream.analytics.query.language.reference]: http://go.microsoft.com/fwlink/?LinkID=513299
-[stream.analytics.rest.api.reference]: http://go.microsoft.com/fwlink/?LinkId=517301
+[stream.analytics.query.language.reference]: https://go.microsoft.com/fwlink/?LinkID=513299
+[stream.analytics.rest.api.reference]: https://go.microsoft.com/fwlink/?LinkId=517301
 

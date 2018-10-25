@@ -17,14 +17,17 @@ ms.date: 02/08/2017
 ms.author: celested
 ms.reviewer: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: eb43589b04be8b2b9c3be45d33c94592e97d308e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d894dd85bda63c724e391193615e91fc5ca51a3f
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46948260"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49986147"
 ---
 # <a name="service-to-service-calls-using-client-credentials-shared-secret-or-certificate"></a>Služby volání mezi službami pomocí přihlašovacích údajů klienta (sdílený tajný klíč nebo certifikát)
+
+[!INCLUDE [active-directory-develop-applies-v1](../../../includes/active-directory-develop-applies-v1.md)]
+
 OAuth 2.0 klienta tok udělování přihlašovacích údajů umožňuje webové službě (*důvěrnému klientovi*) používat svoje vlastní přihlašovací údaje místo zosobňování uživatele, k ověření při volání jiné webové služby. V tomto scénáři klient je obvykle střední vrstvy webové služby, služba démona nebo webu. Pro vyšší úroveň záruky umožňuje Azure AD také volání služby k používání certifikátu (ne sdílený tajný klíč) jako pověření.
 
 ## <a name="client-credentials-grant-flow-diagram"></a>Vývojový diagram udělení přihlašovacích údajů klienta
@@ -55,10 +58,10 @@ Pokud používáte sdílený tajný klíč, žádosti o token přístupu service
 
 | Parametr |  | Popis |
 | --- | --- | --- |
-| Parametr grant_type |povinné |Určuje typ udělení požadovaná oprávnění. V toku udělení přihlašovacích údajů klienta, musí být hodnota **client_credentials**. |
-| client_id |povinné |Určuje id klienta Azure AD volání webové služby. K vyhledání ID klienta volající aplikace, v [webu Azure portal](https://portal.azure.com), klikněte na tlačítko **Azure Active Directory**, klikněte na tlačítko **registrace aplikací**, klikněte na aplikaci. Je client_id *ID aplikace* |
-| Hodnota client_secret |povinné |Zadejte klíč zaregistrovaný pro volání webové služby nebo démona aplikace ve službě Azure AD. Chcete-li vytvořit klíč, na webu Azure Portal, klikněte na tlačítko **Azure Active Directory**, klikněte na tlačítko **registrace aplikací**, klikněte na aplikaci, klikněte na tlačítko **nastavení**, klikněte na tlačítko **klíče** , a přidejte klíč.  Adresa URL – kódování tomto tajných kódů při jeho zadávání. |
-| prostředek |povinné |Zadejte identifikátor URI ID aplikace přijímající webové služby. Chcete-li najít identifikátor ID URI aplikace na webu Azure Portal, klikněte na tlačítko **Azure Active Directory**, klikněte na tlačítko **registrace aplikací**, klikněte na aplikaci služby a potom klikněte na tlačítko **nastavení** a  **Vlastnosti**. |
+| Parametr grant_type |Vyžaduje |Určuje typ udělení požadovaná oprávnění. V toku udělení přihlašovacích údajů klienta, musí být hodnota **client_credentials**. |
+| client_id |Vyžaduje |Určuje id klienta Azure AD volání webové služby. K vyhledání ID klienta volající aplikace, v [webu Azure portal](https://portal.azure.com), klikněte na tlačítko **Azure Active Directory**, klikněte na tlačítko **registrace aplikací**, klikněte na aplikaci. Je client_id *ID aplikace* |
+| Hodnota client_secret |Vyžaduje |Zadejte klíč zaregistrovaný pro volání webové služby nebo démona aplikace ve službě Azure AD. Chcete-li vytvořit klíč, na webu Azure Portal, klikněte na tlačítko **Azure Active Directory**, klikněte na tlačítko **registrace aplikací**, klikněte na aplikaci, klikněte na tlačítko **nastavení**, klikněte na tlačítko **klíče** , a přidejte klíč.  Adresa URL – kódování tomto tajných kódů při jeho zadávání. |
+| prostředek |Vyžaduje |Zadejte identifikátor URI ID aplikace přijímající webové služby. Chcete-li najít identifikátor ID URI aplikace na webu Azure Portal, klikněte na tlačítko **Azure Active Directory**, klikněte na tlačítko **registrace aplikací**, klikněte na aplikaci služby a potom klikněte na tlačítko **nastavení** a  **Vlastnosti**. |
 
 #### <a name="example"></a>Příklad:
 Následující požadavky HTTP POST [přístupový token](access-tokens.md) pro https://service.contoso.com/ webové služby. `client_id` Identifikuje webová služba, která požaduje přístupový token.
@@ -76,11 +79,11 @@ grant_type=client_credentials&client_id=625bc9f6-3bf6-4b6d-94ba-e97cf07a22de&cli
 
 | Parametr |  | Popis |
 | --- | --- | --- |
-| Parametr grant_type |povinné |Určuje požadovaný typ odpovědi. V toku udělení přihlašovacích údajů klienta, musí být hodnota **client_credentials**. |
-| client_id |povinné |Určuje id klienta Azure AD volání webové služby. K vyhledání ID klienta volající aplikace, v [webu Azure portal](https://portal.azure.com), klikněte na tlačítko **Azure Active Directory**, klikněte na tlačítko **registrace aplikací**, klikněte na aplikaci. Je client_id *ID aplikace* |
-| client_assertion_type |povinné |Hodnota musí být `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` |
-| client_assertion |povinné | (JSON Web Token) kontrolního výrazu, které potřebujete k vytvoření a podepsání certifikátem zaregistrujete jako přihlašovací údaje pro vaši aplikaci. Přečtěte si informace o [certifikát přihlašovacích údajů](active-directory-certificate-credentials.md) informace o registraci vašeho certifikátu a formát kontrolního výrazu.|
-| prostředek | povinné |Zadejte identifikátor URI ID aplikace přijímající webové služby. Chcete-li najít identifikátor ID URI aplikace na webu Azure Portal, klikněte na tlačítko **Azure Active Directory**, klikněte na tlačítko **registrace aplikací**, klikněte na aplikaci služby a potom klikněte na tlačítko **nastavení** a  **Vlastnosti**. |
+| Parametr grant_type |Vyžaduje |Určuje požadovaný typ odpovědi. V toku udělení přihlašovacích údajů klienta, musí být hodnota **client_credentials**. |
+| client_id |Vyžaduje |Určuje id klienta Azure AD volání webové služby. K vyhledání ID klienta volající aplikace, v [webu Azure portal](https://portal.azure.com), klikněte na tlačítko **Azure Active Directory**, klikněte na tlačítko **registrace aplikací**, klikněte na aplikaci. Je client_id *ID aplikace* |
+| client_assertion_type |Vyžaduje |Hodnota musí být `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` |
+| client_assertion |Vyžaduje | (JSON Web Token) kontrolního výrazu, které potřebujete k vytvoření a podepsání certifikátem zaregistrujete jako přihlašovací údaje pro vaši aplikaci. Přečtěte si informace o [certifikát přihlašovacích údajů](active-directory-certificate-credentials.md) informace o registraci vašeho certifikátu a formát kontrolního výrazu.|
+| prostředek | Vyžaduje |Zadejte identifikátor URI ID aplikace přijímající webové služby. Chcete-li najít identifikátor ID URI aplikace na webu Azure Portal, klikněte na tlačítko **Azure Active Directory**, klikněte na tlačítko **registrace aplikací**, klikněte na aplikaci služby a potom klikněte na tlačítko **nastavení** a  **Vlastnosti**. |
 
 Všimněte si, že parametry jsou téměř stejné jako v případě žádosti sdílený tajný klíč, s tím rozdílem, že parametr hodnota client_secret nahrazuje dva parametry: client_assertion_type a client_assertion.
 

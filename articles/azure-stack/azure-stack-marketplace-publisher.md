@@ -12,15 +12,15 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 9/26/2018
+ms.date: 10/24/2018
 ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: 518384776f777c3ea7cbd636dd2a48d919952f28
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: fabc72e6dc31bb7f244cda9634af3b2556ba23a9
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47409112"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50023789"
 ---
 #  <a name="add-marketplace-items-using-publishing-tool"></a>Přidat pomocí nástroje pro publikování položky marketplace
 
@@ -28,7 +28,7 @@ Přidání obsahu [Azure Stack Marketplace](azure-stack-marketplace.md) zpříst
 
 ## <a name="prerequisites"></a>Požadavky
 
- - Musíte spustit sadu nástrojů na hostiteli služby Azure Stack nebo mít [VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn) připojení z počítače, na kterém jste nástroj spustili.
+ - Musíte spustit sadu nástrojů na hostiteli služby Azure Stack nebo mít [VPN](.\asdk\asdk-connect.md#connect-to-azure-stack-with-vpn) připojení k hostiteli ASDK z počítače, na kterém jste nástroj spustili.
 
  - Stáhněte si [šabloně QuickStart pro Azure Stack](https://github.com/Azure/AzureStack-QuickStart-Templates/archive/master.zip) a extrahovat.
 

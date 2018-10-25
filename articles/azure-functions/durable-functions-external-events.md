@@ -2,20 +2,20 @@
 title: Zpracování externího událostí v Durable Functions – Azure
 description: Zjistěte, jak zpracovat externí akce, které v rozšíření Durable Functions pro službu Azure Functions.
 services: functions
-author: cgillum
+author: kashimiz
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 09/29/2017
+ms.date: 10/23/2018
 ms.author: azfuncdf
-ms.openlocfilehash: b1d47c495d24a40f254279db0e9db12a659c861c
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 98380cc5b9daff314283ac4e45e5edf7b5601e1b
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48237717"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49983942"
 ---
 # <a name="handling-external-events-in-durable-functions-azure-functions"></a>Zpracování externího událostí v Durable Functions (Azure Functions)
 
@@ -136,7 +136,7 @@ public static async Task Run(
 #### <a name="javascript-functions-v2-only"></a>JavaScript (jenom funkce v2)
 
 ```javascript
-const df = require.orchestrator("durable-functions");
+const df = require("durable-functions");
 
 module.exports = df.orchestrator(function*(context) {
     const applicationId = context.df.getInput();
@@ -148,7 +148,7 @@ module.exports = df.orchestrator(function*(context) {
     // all three departments must grant approval before a permit can be issued
     yield context.df.Task.all([gate1, gate2, gate3]);
 
-    yield context.df.callActivityAsync("IssueBuildingPermit", applicationId);
+    yield context.df.callActivity("IssueBuildingPermit", applicationId);
 });
 ```
 

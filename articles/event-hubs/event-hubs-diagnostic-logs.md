@@ -15,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 07/02/2018
 ms.author: shvija
-ms.openlocfilehash: d4ed53cf1f0d21e488631434b60309602169b59a
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: bee6219bca21c3bc2bf4f97aa061fce0b30d55ff
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40004646"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49985162"
 ---
-# <a name="event-hubs-diagnostic-logs"></a>Diagnostické protokoly služby Event Hubs
+# <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>Nastavení diagnostické protokoly pro centra událostí Azure
 
 Dva typy protokolů můžete zobrazit pro Azure Event Hubs:
 

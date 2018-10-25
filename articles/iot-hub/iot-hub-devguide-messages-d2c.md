@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: asrastog
-ms.openlocfilehash: abc32b726eea55f08a052f29a12f1eb237d4f5d6
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: 8424fa721d87467de70b4365578d196b3145b4b0
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49311316"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024266"
 ---
 # <a name="use-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>Odesílání zpráv typu zařízení cloud do různých koncových bodů pomocí směrování zpráv
 
@@ -27,7 +27,7 @@ Směrování zpráv umožňuje odesílání zpráv z vašich zařízení ke clou
 
 IoT Hub potřebuje oprávnění k zápisu do těchto koncových bodů služby pro směrování zpráv do práce. Při konfiguraci vašich koncových bodů na webu Azure portal, potřebná oprávnění jsou přidány automaticky. Ujistěte se, že konfigurace služeb pro podporu očekávané propustnosti. Při první konfiguraci řešení IoT, budete muset monitorovat další koncové body a proveďte všechny nezbytné úpravy podle skutečné zátěže.
 
-Definuje služby IoT Hub [běžný formát](iot-hub-devguide-messages-construct.md) pro všechna zařízení cloud zasílání zpráv pro interoperatbility přes protokoly. Pokud zpráva odpovídá několik tras, které odkazují na stejný koncový bod, IoT Hub doručí zprávu do tohoto koncového bodu pouze jednou. Proto není nutné konfigurace odstranění duplicitních dat na frontu služby Service Bus nebo téma. V dělené fronty oddílu spřažení záruky pořadí zpráv. Pomocí tohoto kurzu se naučíte [Konfigurace směrování zpráv] (kurz routing.md).
+Definuje služby IoT Hub [běžný formát](iot-hub-devguide-messages-construct.md) pro všechna zařízení cloud zasílání zpráv pro interoperatbility přes protokoly. Pokud zpráva odpovídá několik tras, které odkazují na stejný koncový bod, IoT Hub doručí zprávu do tohoto koncového bodu pouze jednou. Proto není nutné konfigurace odstranění duplicitních dat na frontu služby Service Bus nebo téma. V dělené fronty oddílu spřažení záruky pořadí zpráv. Pomocí tohoto kurzu se dozvíte, jak [konfigurace směrování zpráv](tutorial-routing.md).
 
 ## <a name="routing-endpoints"></a>Směrování koncových bodů
 

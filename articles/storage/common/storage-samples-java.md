@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 01/12/2017
 ms.author: seguler
 ms.component: common
-ms.openlocfilehash: bdc25a7aeff88d058eaf3fddf6cec023edff3b9e
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 83080d1e73ddb06de9b454f106517ef230c4b25a
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39530748"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49984260"
 ---
 # <a name="azure-storage-samples-using-java"></a>Ukázky pro Azure Storage pomocí Javy
 
@@ -22,7 +22,7 @@ ms.locfileid: "39530748"
 
 Následující tabulka obsahuje přehled o našem úložišti ukázek a scénáře popsané v každém vzorku. Kliknutím na odkazy k zobrazení odpovídající vzorový kód na Githubu.
 
-<table style="font-size:90%"><thead><tr><th style="font-size:110%">Koncový bod</th><th style="font-size:110%">Scénář</th><th style="font-size:110%">Vzorový kód</th></tr></thead><tbody> 
+<table style="font-size:90%"><thead><tr><th style="font-size:110%">Koncový bod</th><th style="font-size:110%">Scénář</th><th style="font-size:110%">Ukázkový kód</th></tr></thead><tbody> 
 <tr> 
 <td rowspan="16"><b>Objekt blob</b></td>
 <td>Doplňovací objekt Blob</td> 
@@ -161,31 +161,31 @@ Následující tabulka obsahuje přehled o našem úložišti ukázek a scéná�
 <tr> 
 <td rowspan="7"><b>Tabulka</b></td>
 <td>Vytvořit tabulku</td> 
-<td><a href="https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/TableBasics.java">Začínáme se službou Azure Table Storage v Javě</a></td> 
+<td><a href="https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java">Začínáme se službou Azure Table Storage v Javě</a></td> 
 </tr> 
 <tr> 
 <td>Odstranit entitu nebo tabulku</td> 
-<td><a href="https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/TableBasics.java">Začínáme se službou Azure Table Storage v Javě</a></td> 
+<td><a href="https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java">Začínáme se službou Azure Table Storage v Javě</a></td> 
 </tr> 
 <tr> 
 <td>Vložit/sloučení/nahrazení Entity</td> 
-<td><a href="https://github.com/Azure/azure-storage-java/blob/master/microsoft-azure-storage-samples/src/com/microsoft/azure/storage/table/gettingtstarted/TableBasics.java">Ukázky knihovny klienta úložiště Java</a></td> 
+<td><a href="https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java">Začínáme se službou Azure Table Storage v Javě</a></td> 
 </tr> 
 <tr> 
 <td>Dotazování entit</td> 
-<td><a href="https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/TableBasics.java">Začínáme se službou Azure Table Storage v Javě</a></td> 
+<td><a href="https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java">Začínáme se službou Azure Table Storage v Javě</a></td> 
 </tr> 
 <tr> 
 <td>Tabulky dotazů</td> 
-<td><a href="https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/TableBasics.java">Začínáme se službou Azure Table Storage v Javě</a></td> 
+<td><a href="https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java">Začínáme se službou Azure Table Storage v Javě</a></td> 
 </tr> 
 <tr> 
 <td>Seznam ACL/vlastnosti tabulky</td> 
-<td><a href="https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/TableAdvanced.java">Začínáme se službou Azure Table Storage v Javě</a></td> 
+<td><a href="https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableAdvanced.java">Začínáme se službou Azure Table Storage v Javě</a></td> 
 </tr> 
 <tr> 
 <td>Aktualizace Entity</td> 
-<td><a href="https://github.com/Azure/azure-storage-java/blob/master/microsoft-azure-storage-samples/src/com/microsoft/azure/storage/table/gettingtstarted/TableBasics.java">Ukázky knihovny klienta úložiště Java</a></td> 
+<td><a href="https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java">Začínáme se službou Azure Table Storage v Javě</a></td> 
 </tr> 
 </tbody> 
 </table>

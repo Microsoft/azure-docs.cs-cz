@@ -17,14 +17,17 @@ ms.date: 01/07/2017
 ms.author: celested
 ms.reviewer: hirsin, dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 02d5bf9ef293731ce707596a90cd7e9aa0b96450
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 2dc1be6b861515cf34f8dd799fa732da530e82a1
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39581254"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49985388"
 ---
 # <a name="azure-active-directory-v20-and-the-oauth-20-client-credentials-flow"></a>Azure Active Directory v2.0 a tok přihlašovacích údajů klienta OAuth 2.0
+
+[!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
+
 Můžete použít [udělení přihlašovacích údajů klienta OAuth 2.0](http://tools.ietf.org/html/rfc6749#section-4.4) podle RFC 6749, říká se jim *OAuth s rameny dvě*, přístup k prostředkům hostované webové pomocí identity aplikace. Tento typ udělení běžně se používá pro interakce – servery, které musí běžet na pozadí bez okamžité interakce s uživatelem. Tyto typy aplikací často označují jako *procesy démon* nebo *účtů služeb*.
 
 > [!NOTE]
@@ -54,8 +57,8 @@ Namísto použití seznamů ACL, můžete použít rozhraní API k vystavení sa
 
 * Čtení pošty ve všech poštovních schránkách
 * Čtení a zápis pošty ve všech poštovních schránkách
-* Odesílání pošty jménem libovolného uživatele
-* Umožňuje získat oprávnění ke čtení dat adresáře.
+* Odesílání pošty jako jakýkoli uživatel
+* Čtení dat adresáře
 
 Další informace o oprávněních aplikace, přejděte na [Microsoft Graphu](https://graph.microsoft.io).
 
@@ -174,8 +177,8 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 | tenant |Požaduje se | Tenantu Active directory aplikace v plánu fungovat proti ve formátu název domény nebo identifikátor GUID. |
 | client_id |Požaduje se |ID aplikace, které [portál pro registraci aplikací](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) přiřazené vaší aplikaci. |
 | scope |Požaduje se |Hodnota předaná `scope` parametr v této žádosti by měl být identifikátor prostředku (identifikátor URI ID aplikace) požadovaný prostředek, označeny `.default` příponu. Například Microsoft Graphu, je hodnota `https://graph.microsoft.com/.default`. Tato hodnota informuje koncového bodu v2.0, že všechny aplikace s přímým přístupem oprávnění, které jste nakonfigurovali pro vaše aplikace, ji by měl vystavit token pro ty, které jsou přidružené k prostředku, který chcete použít. |
-| client_assertion_type |povinné |Hodnota musí být `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` |
-| client_assertion |povinné | (JSON Web Token) kontrolního výrazu, které potřebujete k vytvoření a podepsání certifikátem zaregistrujete jako přihlašovací údaje pro vaši aplikaci. Přečtěte si informace o [certifikát přihlašovacích údajů](active-directory-certificate-credentials.md) informace o registraci vašeho certifikátu a formát kontrolního výrazu.|
+| client_assertion_type |Vyžaduje |Hodnota musí být `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` |
+| client_assertion |Vyžaduje | (JSON Web Token) kontrolního výrazu, které potřebujete k vytvoření a podepsání certifikátem zaregistrujete jako přihlašovací údaje pro vaši aplikaci. Přečtěte si informace o [certifikát přihlašovacích údajů](active-directory-certificate-credentials.md) informace o registraci vašeho certifikátu a formát kontrolního výrazu.|
 | Parametr grant_type |Požaduje se |Musí být `client_credentials`. |
 
 Všimněte si, že parametry jsou téměř stejné jako v případě žádosti sdílený tajný klíč, s tím rozdílem, že parametr hodnota client_secret nahrazuje dva parametry: client_assertion_type a client_assertion.

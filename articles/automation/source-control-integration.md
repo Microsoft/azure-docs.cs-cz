@@ -9,26 +9,26 @@ ms.author: gwallace
 ms.date: 09/26/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 9bbf3582da2664b6e6429677d47aad4d69a7c1bb
-ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
+ms.openlocfilehash: 5778c38d5a0c44e42b83fd139078be1f0bb45f7f
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48785320"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50023742"
 ---
 # <a name="source-control-integration-in-azure-automation"></a>Integrace správy zdrojového kódu ve službě Azure Automation
 
-Správy zdrojového kódu umožňuje udržovat vaše sady runbook ve vaší službě Automation jsou účet aktuální pomocí skriptů v úložišti Githubu nebo Azure Dev Ops zdrojového ovládacího prvku. Správy zdrojového kódu můžete snadno spolupracovat se svým týmem, sledovat změny a vrátit zpět na starší verze vašich sadách runbook. Například správy zdrojového kódu můžete synchronizovat různými větvemi ve správě zdrojového kódu pro účty služby Automation vývojové, testovací nebo produkční prostředí. To usnadňuje podporu kód, který byl testován ve vašem vývojovém prostředí účtu Automation v produkčním prostředí.
+Správy zdrojového kódu umožňuje udržovat vaše sady runbook ve vaší službě Automation jsou účet aktuální pomocí skriptů v úložišti Githubu nebo Azure DevOps zdrojového ovládacího prvku. Správy zdrojového kódu můžete snadno spolupracovat se svým týmem, sledovat změny a vrátit zpět na starší verze vašich sadách runbook. Například správy zdrojového kódu můžete synchronizovat různými větvemi ve správě zdrojového kódu pro účty služby Automation vývojové, testovací nebo produkční prostředí. To usnadňuje podporu kód, který byl testován ve vašem vývojovém prostředí účtu Automation v produkčním prostředí.
 
 Azure Automation podporuje 3 typy správy zdrojového kódu:
 
 * GitHubu
-* Visual Studio Team Services (Git)
-* Visual Studio Team Services (TFVC)
+* Azure DevOps (Git)
+* Azure DevOps (TFVC)
 
 ## <a name="pre-requisites"></a>Požadavky
 
-* Úložiště správy zdrojového kódu (GitHub nebo Visual Studio Team Services)
+* Úložiště správy zdrojového kódu (GitHub nebo Azure DevOps)
 * Správné [oprávnění](#personal-access-token-permissions) do úložiště správy zdrojového kódu
 * A [Run-As účet a připojení](manage-runas-account.md)
 
@@ -50,7 +50,7 @@ Na **souhrnný ovládací prvek zdroje** stránce, potřebné informace a klikn�
 |Vlastnost  |Popis  |
 |---------|---------|
 |Název správy zdrojového kódu     | Popisný název pro správu zdrojového kódu        |
-|Typ správy zdrojového kódu     | Typ zdrojového ovládacího prvku zdroje. Dostupné možnosti jsou:</br> GitHub</br>Visual Studio Team Services (Git)</br> Visual Studio Team Services (TFVC)        |
+|Typ správy zdrojového kódu     | Typ zdrojového ovládacího prvku zdroje. Dostupné možnosti jsou:</br> GitHub</br>Azure DevOps (Git)</br> Azure DevOps (TFVC)        |
 |Úložiště     | Název úložiště nebo projektu. Tato hodnota se načítají z úložiště správy zdrojového kódu. Příklad: $/ ContosoFinanceTFVCExample         |
 |Větev     | Větev o přijetí změn zdrojových souborů ze. Cílení na větev není k dispozici pro typ ovládacího prvku zdroje TFVC.          |
 |Cesta ke složce     | Tato složka obsahuje sady runbook k synchronizaci. Příklad: /Runbooks         |

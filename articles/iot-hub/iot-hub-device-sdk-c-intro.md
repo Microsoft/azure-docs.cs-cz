@@ -8,12 +8,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 08/25/2017
 ms.author: yizhon
-ms.openlocfilehash: 5e29dcde80da75fa70fe6dcbf35d7f319a5ca3cb
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: 97f1c9e16ae6be9e6bece69d0923f6290a8cd072
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49311147"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024711"
 ---
 # <a name="azure-iot-device-sdk-for-c"></a>Pro zařízení Azure IoT SDK pro jazyk C
 
@@ -33,7 +33,7 @@ Tento článek vás seznámí s architekturou sady SDK pro zařízení Azure IoT
 
 ## <a name="sdk-architecture"></a>Architektura sady SDK
 
-Můžete najít [ **zařízení Azure IoT SDK pro jazyk C** ](https://github.com/Azure/azure-iot-sdk-c) Githubu úložišti a zobrazit podrobnosti o rozhraní API ve službě [reference k rozhraní API jazyka C](https://azure.github.io/azure-iot-sdk-c/index.html).
+Můžete najít [ **zařízení Azure IoT SDK pro jazyk C** ](https://github.com/Azure/azure-iot-sdk-c) Githubu úložišti a zobrazit podrobnosti o rozhraní API ve službě [reference k rozhraní API jazyka C](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/).
 
 Nejnovější verzi knihovny najdete v **hlavní** větev úložiště:
 

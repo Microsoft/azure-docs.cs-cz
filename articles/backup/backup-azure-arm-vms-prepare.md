@@ -2,26 +2,25 @@
 title: 'Azure Backup: Příprava na zálohování virtuálních počítačů'
 description: Ujistěte se, že je vaše prostředí připravené pro zálohování virtuálních počítačů v Azure.
 services: backup
-author: markgalioto
+author: rayne-wiselman
 manager: carmonm
 keywords: zálohy. zálohování;
 ms.service: backup
 ms.topic: conceptual
-ms.date: 9/10/2018
-ms.author: markgal
-ms.openlocfilehash: 7ab88ce3565ccf79f20847a3a5e744c495d5fcb1
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.date: 10/23/2018
+ms.author: raynew
+ms.openlocfilehash: 30b35d38c30d3ee9410a85824c53001ca95cf30b
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48884929"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025935"
 ---
-# <a name="prepare-your-environment-to-back-up-resource-manager-deployed-virtual-machines"></a>Příprava prostředí pro zálohování virtuálních počítačů s nasazením Resource Manageru
+# <a name="prepare-to-back-up-azure-vms"></a>Příprava na zálohování virtuálních počítačů Azure
 
-Tento článek popisuje kroky pro přípravu prostředí pro zálohování nasazení Azure Resource Manageru virtuálních počítačů (VM). Kroky uvedené v postupech pomocí webu Azure portal. Při zálohování virtuálního počítače, body obnovení, nebo data záloh jsou uložené v trezoru služby Recovery Services. Trezory služby Recovery Services ukládat data záloh pro virtuální počítače classic a nasazených pomocí Resource Manageru.
+Tento článek popisuje kroky pro přípravu prostředí pro zálohování nasazení Azure Resource Manageru virtuálních počítačů (VM). Kroky uvedené v postupech pomocí webu Azure portal. Při zálohování virtuálního počítače se ukládají body obnovení, nebo data záloh v trezoru služby Recovery Services Backup. 
 
-> [!NOTE]
-> Azure nabízí dva modely nasazení pro vytváření a práci s prostředky: [Resource Manager a classic](../azure-resource-manager/resource-manager-deployment-model.md).
+
 
 Předtím, než ochrana (a zpět) virtuálního počítače nasazených pomocí Resource Manageru, ujistěte se, že být splněny tyto požadavky:
 
@@ -47,7 +46,6 @@ Pokud tyto podmínky se již existují ve vašem prostředí, pokračujte [zálo
 Předtím, než je připravit vaše prostředí, nezapomeňte seznámit s těmito omezeními:
 
 * Zálohování virtuálních počítačů s více než 32 datových disků se nepodporuje.
-* Zálohování virtuálních počítačů s vyhrazenou IP adresu a není definovaný koncový bod se nepodporuje.
 * Zálohování virtuálních počítačů s Linuxem zašifrovaná pomocí šifrování na Linuxu Unified klíč instalační program (LUKS) se nepodporuje.
 * Nedoporučujeme zálohování virtuálních počítačů, které obsahují konfiguraci sdílené svazky clusteru (CSV) nebo souborového serveru se Škálováním. Pokud budete hotovi, očekává se selhání zapisovačů sdíleného svazku clusteru. Vyžadují zahrnující všechny virtuální počítače, které jsou součástí konfigurace clusteru během úlohu snímku. Azure Backup nepodporuje konzistence více virtuálních počítačů.
 * Zálohovaná data neobsahuje síti připojené jednotky připojené k virtuálnímu počítači.

@@ -14,16 +14,16 @@ ms.workload: identity
 ms.date: 09/17/2018
 ms.author: andret
 ms.custom: include file
-ms.openlocfilehash: 99eabd8f9c9b3ab86c348350e8924cea0eb668ba
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: ac8e678d8ca006fc5b0ab52f007590ac4e334bf7
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48842957"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49988515"
 ---
 ## <a name="set-up-your-project"></a>Nastavení projektu
 
-Tato část popisuje postup instalace a konfigurace ověřovacího kanálu prostřednictvím middlewaru OWIN v projektu aplikace ASP.NET pomocí OpenID Connect. 
+Tato část popisuje postup instalace a konfigurace ověřovacího kanálu prostřednictvím middlewaru OWIN v projektu aplikace ASP.NET pomocí OpenID Connect.
 
 > Stáhněte si tento ukázkový projekt sady Visual Studio místo toho raději? [Stáhnete projekt](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-DotNet/archive/master.zip) a pokračujte [potřeba provádět krok konfigurace](#register-your-application) konfigurace ukázkového kódu před spuštěním.
 
@@ -47,7 +47,7 @@ Tato část popisuje postup instalace a konfigurace ověřovacího kanálu prost
 
 <!--start-collapse-->
 > ### <a name="about-these-libraries"></a>Informace o těchto knihoven
->Knihovny uvedené výše umožňují jednotné přihlašování pomocí OpenID Connect přes ověřování na základě souborů cookie. Po dokončení ověřování a odeslání tokenu, který reprezentuje uživatele, do aplikace, vytvoří middleware OWIN soubor cookie relace. Tento soubor cookie v prohlížeči pak používá na následné žádosti, takže uživatel nebude muset znovu zadejte heslo a je potřeba žádné další ověření.
+> Knihovny uvedené výše umožňují jednotné přihlašování pomocí OpenID Connect přes ověřování na základě souborů cookie. Po dokončení ověřování a odeslání tokenu, který reprezentuje uživatele, do aplikace, vytvoří middleware OWIN soubor cookie relace. Tento soubor cookie v prohlížeči pak používá na následné žádosti, takže uživatel nebude muset znovu zadejte heslo a je potřeba žádné další ověření.
 <!--end-collapse-->
 
 ## <a name="configure-the-authentication-pipeline"></a>Konfigurace ověřovacího kanálu
@@ -87,7 +87,7 @@ Následující postup slouží k vytvoření middleware OWIN při spuštění t�
         // Tenant is the tenant ID (e.g. contoso.onmicrosoft.com, or 'common' for multi-tenant)
         static string tenant = System.Configuration.ConfigurationManager.AppSettings["Tenant"];
 
-        // Authority is the URL for authority, composed by Azure Active Directory v2 endpoint and the tenant name (e.g. https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0)
+        // Authority is the URL for authority, composed by Azure Active Directory v2.0 endpoint and the tenant name (e.g. https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0)
         string authority = String.Format(System.Globalization.CultureInfo.InvariantCulture, System.Configuration.ConfigurationManager.AppSettings["Authority"], tenant);
 
         /// <summary>
@@ -145,4 +145,3 @@ Následující postup slouží k vytvoření middleware OWIN při spuštění t�
 > ### <a name="more-information"></a>Další informace
 > Parametry, které zadáte v *OpenIDConnectAuthenticationOptions*, slouží jako souřadnice pro komunikaci aplikace s Azure AD. Vzhledem k tomu middleware OpenID Connect používá soubory cookie na pozadí, budete také muset nastavit ověřování souborů cookie jako kódu nad ukazuje. Hodnota *ValidateIssuer* dává middlewaru OpenIDConnect pokyn, aby neomezoval přístup na jednu konkrétní organizaci.
 <!--end-collapse-->
-

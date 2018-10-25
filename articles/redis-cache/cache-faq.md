@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: wesmc
-ms.openlocfilehash: c0d88f0eaacaadbb508519f2e6804b9b311408c2
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: c5a18a2e8d58553e49797da418f76fc3f251e003
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39259326"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50026037"
 ---
 # <a name="azure-redis-cache-faq"></a>Nejčastější dotazy k Azure Redis Cache
 Přečtěte si odpovědi na běžné dotazy, vzory a osvědčené postupy pro Azure Redis Cache.
@@ -136,7 +136,7 @@ Z této tabulky jsme lze nakreslit následující závěry:
 | Cenová úroveň | Velikost | Procesorová jádra | Dostupná šířka pásma | Velikost hodnoty 1 KB | Velikost hodnoty 1 KB |
 | --- | --- | --- | --- | --- | --- |
 | **Velikosti Standard mezipaměti** | | |**Megabity za sekundu (Mb/s) nebo megabajtů za sekundu (MB/s)** |**Požadavky na druhý bez SSL (předávajících stran)** |**Požadavky na druhý protokol SSL (předávajících stran)** |
-| C0 |250 MB |Shared |100 / 12.5 |15,000 |7 500 |
+| C0 |250 MB |Shared |100 / 12.5 |15 000 |7 500 |
 | C1 |1 GB |1 |500 / 62.5 |38,000 |20,720 |
 | C2 |2,5 GB |2 |500 / 62.5 |41,000 |37 000 |
 | C3 |6 GB |4 |1 000 / 125 |100 000 |90,000 |
@@ -392,7 +392,7 @@ Jak nakonfigurovat toto nastavení:
   > Hodnota zadaná v tento prvek konfigurace je *na jádro* nastavení. Například pokud máte 4jádrový počítač a chcete nastavení minIOThreads být 200 za běhu, použijete `<processModel minIoThreads="50"/>`.
   >
 
-* Mimo technologii ASP.NET a Azure WebSites global.asax, použijte [ThreadPool.SetMinThreads (...)] (https://msdn.microsoft.com/library/system.threading.threadpool.setminthreads.aspx) Rozhraní API.
+* Mimo technologii ASP.NET a Azure WebSites global.asax, použijte [ThreadPool.SetMinThreads (...)](https://msdn.microsoft.com/library/system.threading.threadpool.setminthreads.aspx) ROZHRANÍ API.
 
   > [!NOTE]
   > Hodnotu zadanou pomocí tohoto rozhraní API je globální nastavení, by to ovlivnilo celé doméně AppDomain. Pokud máte 4jádrový počítač a chcete nastavit minWorkerThreads a minIOThreads až 50 jeden procesor a jsou za běhu, můžete využít ThreadPool.SetMinThreads (200, 200).

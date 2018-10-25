@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: sanpil
 author: sanpil
 ms.date: 09/24/2018
-ms.openlocfilehash: b450d2ca2af0c0f7598d74e2f07c0acc81b811f3
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 45aa954d2f85267b2c7c9aa2a7ba04e436765433
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49116449"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50023919"
 ---
 # <a name="pipelines-and-azure-machine-learning"></a>Kanály a Azure Machine Learning
 
@@ -63,7 +63,7 @@ Použití závislostí deklarativní data, můžete optimalizovat vaše úkoly. 
 
 Kanály můžou být uložena jako šablony a mohou být nasazeny na koncový bod REST, můžete plánovat úlohy dávkové bodování nebo přeučení.
 
-Podívejte se [Python SDK referenční dokumenty pro kanály](http://aka.ms/aml-sdk) a Poznámkový blok v další části se dozvíte, jak vytvářet vlastní.
+Podívejte se [Python SDK referenční dokumenty pro kanály](https://docs.microsoft.com/python/api/azureml-pipeline-core/?view=azure-ml-py) a Poznámkový blok v další části se dozvíte, jak vytvářet vlastní.
 
 ## <a name="example-notebooks"></a>Příklad poznámkové bloky
  

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: e9d0ad0398dfc238d48060247cdb6f29b0f34a60
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 433c6b7d70cea9406b67d65e23cc357939cb5aa0
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46123330"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024286"
 ---
 # <a name="performance-tuning-guidance-for-hive-on-hdinsight-and-azure-data-lake-storage-gen1"></a>Průvodce laděním výkonu pro Hive v HDInsight a Azure Data Lake Storage Gen1
 
@@ -28,7 +28,7 @@ Výchozí nastavení jsou nastavené pro zajištění dobrého výkonu mezi mnoh
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 * **Účet Data Lake Storage Gen1**. Pokyny k jeho vytvoření najdete v tématu [Začínáme s Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md)
 * **Azure HDInsight cluster** s přístupem k účtu Data Lake Storage Gen1. Zobrazit [vytvoření clusteru HDInsight s Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-portal.md). Ujistěte se, že se že povolení vzdálené plochy pro cluster.
-* **Spuštění Hive v HDInsight**.  Další informace o spouštění úloh Hive v HDInsight, najdete v článku [používání Hive s HDInsight])https://docs.microsoft.com/azure/hdinsight/hdinsight-use-hive)
+* **Spuštění Hive v HDInsight**.  Další informace o spouštění úloh Hive v HDInsight, naleznete v tématu [používání Hive s HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-use-hive)
 * **Pokyny pro Data Lake Storage Gen1 pro optimalizaci výkonu**.  Obecné informace o výkonu koncepty, najdete v části [Data Lake Storage Gen1 ladění Průvodce výkonem](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-performance-tuning-guidance)
 
 ## <a name="parameters"></a>Parametry

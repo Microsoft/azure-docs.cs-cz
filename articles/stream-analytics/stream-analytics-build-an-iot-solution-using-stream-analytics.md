@@ -9,12 +9,12 @@ ms.reviewer: jasonh, sngun
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/21/2018
-ms.openlocfilehash: 1610e8173d90be3c0b50f05e64d0e84e1c21ad0e
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 88c58175f4886d4796ed4e32b41d030c9ee441fc
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43698039"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49986880"
 ---
 # <a name="build-an-iot-solution-by-using-stream-analytics"></a>Sestavení řešení IoT s použitím Stream Analytics
 
@@ -109,7 +109,7 @@ Tady je stručný popis sloupce:
 | Vypršela |Stav registrace vozidla: 0, pokud vozidla registrace je aktivní, 1, pokud vypršela platnost registrace |
 
 ## <a name="set-up-the-environment-for-azure-stream-analytics"></a>Nastavení prostředí pro Azure Stream Analytics
-K dokončení tohoto řešení, budete potřebovat předplatné Microsoft Azure. Pokud nemáte účet Azure, můžete si [požádat o bezplatnou zkušební verzi](http://azure.microsoft.com/pricing/free-trial/).
+K dokončení tohoto řešení, budete potřebovat předplatné Microsoft Azure. Pokud nemáte účet Azure, můžete si [požádat o bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
 
 Je potřeba, aby co nejlíp využít svůj kredit Azure lze provést, postupujte podle kroků v části "Vyčistit účtu Azure" na konci tohoto článku.
 

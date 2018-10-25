@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 05f77665352ee306f5684d5c7a09b27d4fe17650
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 4c9f92481af1e69a111869cb6fc1305923bb0484
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49426802"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50026003"
 ---
 # <a name="load-balancing-with-azures-application-delivery-suite"></a>Vyrovnávání zatížení s využitím sady pro doručování aplikací Azure
 
@@ -60,7 +60,7 @@ Při výběru nástroj pro vyrovnávání zatížení globálního mezi Traffic 
 | --------------- | ------------------------ |
 |**Libovolný protokol:** protože Traffic Manager funguje ve vrstvě DNS, můžete směrovat jakýkoli typ síťového provozu; HTTP, TCP, UDP, atd. | **Akcelerace HTTP:** přenosy s branou jsou směrovány přes proxy server v hraniční z Microsoftu pro sítě.  Z tohoto důvodu žádosti protokolu HTTP (S), najdete v článku latenci a propustnost vylepšení snížení latence pro vyjednávání protokolu SSL a používání aktivní připojení z AFD do vaší aplikace.|
 |**Směrování na místní:** se směrováním ve vrstvě DNS, provoz směrován vždy bodu z bodu.  Směrování od firemní pobočka do vašeho datového centra v místním prostředí může trvat přímé cestu. dokonce i ve vaší síti pomocí Traffic Manageru. | **Nezávislého škálování:** protože branou funguje s žádostí HTTP, je možné směrovat požadavky do jiné cesty adresy URL na různé back-end / regionálních služeb fondů (mikroslužeb) na základě pravidel a stavu jednotlivých aplikací mikroslužeb.|
-|**Formát fakturace:** škáluje s uživateli a služby s více uživateli, plateaus ke snížení nákladů většího využití fakturaci na základě DNS. |**Vložené zabezpečení:** branou povoluje pravidla, jako je například omezení rychlosti a seznamu ACL IP-ing vám neumožňuje chránit váš back-end před přenosy přicházejí vaší aplikace. 
+|**Formát fakturace:** škáluje s uživateli a služby s více uživateli, plateaus ke snížení nákladů na vyšší využití fakturaci na základě DNS. |**Vložené zabezpečení:** branou povoluje pravidla, jako je například omezení rychlosti a seznamu ACL IP-ing vám neumožňuje chránit váš back-end před přenosy přicházejí vaší aplikace. 
 
 </br>Z důvodu výkonu, požadavky na provoz a výhody zabezpečení pro úlohy HTTP s branou doporučujeme, abyste zákazníci využívat branou pro své úlohy HTTP.    Traffic Manager a branou umožňuje paralelní sloužit veškerý provoz pro vaši aplikaci. 
 

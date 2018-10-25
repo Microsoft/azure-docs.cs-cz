@@ -14,18 +14,18 @@ ms.workload: identity
 ms.date: 09/17/2018
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: 538b0c969d8c039079c09232e06f55e24aabf393
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 87ac7364a2c409af410fcb5cd09aed4377b28d8e
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48843490"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49988174"
 ---
 ## <a name="use-msal-to-get-a-token-for-the-microsoft-graph-api"></a>Použití MSAL k získání tokenu pro rozhraní Microsoft Graph API
 
 V této části Použití MSAL k získání tokenu pro rozhraní Microsoft Graph API.
 
-1.  V *MainWindow.xaml.cs* přidejte odkaz pro MSAL do třídy:
+1. V *MainWindow.xaml.cs* přidejte odkaz pro MSAL do třídy:
 
     ```csharp
     using Microsoft.Identity.Client;
@@ -215,4 +215,3 @@ private void DisplayBasicTokenInfo(AuthenticationResult authResult)
 
 Kromě přístupový token, který se používá k volání rozhraní Microsoft Graph API po uživatel přihlásí získá MSAL také ID token. Tento token obsahovat malou část informace, které jsou relevantní pro uživatele. `DisplayBasicTokenInfo` Metoda zobrazuje základní informace, které se nachází v tokenu. Například zobrazí jeho zobrazované jméno a ID, jakož i datum vypršení platnosti tokenu a řetězec představující přístupový token, samotného. Můžete vybrat *volat Microsoft Graph API* tlačítko více než jednou a podívejte se, že stejný token byl znovu použít pro následné požadavky. Zobrazí se také datum vypršení platnosti, které se rozšíří, pokud se rozhodne MSAL je čas k obnovení tokenu.
 <!--end-collapse-->
-

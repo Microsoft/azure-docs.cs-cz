@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: d3fb6557571042be7db1380010738bacd72e50f5
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: cc7bcefe43eed524f50fcad09d7fb31a80d22b83
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48869496"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025799"
 ---
 # <a name="perform-cross-resource-log-searches-in-log-analytics"></a>Provedení prohledávání protokolů napříč prostředky ve službě Log Analytics  
 
@@ -29,7 +29,7 @@ Dříve pomocí Azure Log Analytics, jste mohli analyzovat data pouze z v rámci
 Nyní se můžete dotazovat nejen napříč několika pracovních prostorů Log Analytics, ale také data z konkrétní aplikace Application Insights ve stejné skupině prostředků, jiné skupiny prostředků nebo jiného předplatného. To vám poskytne systémová přehled o datech.  Lze provést pouze tyto typy dotazů v [Log Analytics](log-analytics-log-search-portals.md#log-analytics-page). Počet prostředků (pracovních prostorů Log Analytics a Application Insights aplikaci), které mohou obsahovat v jediném dotazu je omezený na 100. 
 
 ## <a name="querying-across-log-analytics-workspaces-and-from-application-insights"></a>Dotazování napříč pracovních prostorů Log Analytics a ze služby Application Insights
-Chcete-li odkazovat na jiný pracovní prostor v dotazu, použijte [ *pracovní prostor* ](https://docs.loganalytics.io/docs/Language-Reference/Scope-functions/workspace()) identifikátor a pro aplikace ze služby Application Insights, použijte [ *aplikace* ](https://docs.loganalytics.io/docs/Language-Reference/Scope-functions/app())identifikátor.  
+Chcete-li odkazovat na jiný pracovní prostor v dotazu, použijte [ *pracovní prostor* ](https://docs.microsoft.com/azure/log-analytics/query-language/workspace-expression) identifikátor a pro aplikace ze služby Application Insights, použijte [ *aplikace* ](https://docs.microsoft.com/azure/log-analytics/query-language/app-expression)identifikátor.  
 
 ### <a name="identifying-workspace-resources"></a>Identifikační prostředky pracovního prostoru
 Následující příklady ukazují dotazy napříč pracovními prostory Log Analytics k vrácení souhrnný počet protokolů z tabulky aktualizace v pracovním prostoru s názvem *contosoretail it*. 
@@ -104,4 +104,4 @@ union Update, workspace("contosoretail-it").Update, workspace("b459b4u5-912x-46d
 
 ## <a name="next-steps"></a>Další postup
 
-Zkontrolujte [protokolu v log Analytics search odkaz](https://docs.loganalytics.io/docs/Language-Reference) zobrazíte všechny možnosti syntaxi dotazů k dispozici ve službě Log Analytics.    
+Zkontrolujte [protokolu v log Analytics search odkaz](https://docs.microsoft.com/azure/log-analytics/query-language/kusto) zobrazíte všechny možnosti syntaxi dotazů k dispozici ve službě Log Analytics.    

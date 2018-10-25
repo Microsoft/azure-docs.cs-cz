@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2018
 ms.author: cwatson
-ms.openlocfilehash: 460cd3a5b05680563661e2f6519eaa3506eee03b
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: e43188459bf495748a054b0f24936c9141bd218c
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47392073"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025700"
 ---
 # <a name="understand-how-the-azure-reservation-discount-is-applied-to-virtual-machines"></a>Vysvětlení použití slevy na rezervaci Azure pro virtuální počítače
 
@@ -51,15 +51,15 @@ K pochopení a zobrazení aplikace vaše rezervace Azure na fakturaci využití 
 
 ## <a name="application-of-reservation-discount-to-windows-vms"></a>Aplikace sleva za rezervaci k virtuálním počítačům s Windows
 
-Pokud máte spuštěnou instancí virtuálních počítačů Windows, se má rezervace použít na zahrnují náklady na infrastrukturu. Aplikace rezervace náklady na infrastrukturu virtuálních počítačů pro virtuální počítače s Windows je stejný jako u Windows VMs. Vám budeme účtovat samostatně softwaru Windows na základě na virtuální procesor. Zobrazit [náklady na software Windows s rezervace](https://go.microsoft.com/fwlink/?linkid=862756). Může zahrnovat vaše Windows licenční náklady na s [Azure Hybrid Benefit pro Windows Server] (https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing).
+Pokud máte spuštěnou instancí virtuálních počítačů Windows, se má rezervace použít na zahrnují náklady na infrastrukturu. Aplikace rezervace náklady na infrastrukturu virtuálních počítačů pro virtuální počítače s Windows je stejný jako u Windows VMs. Vám budeme účtovat samostatně softwaru Windows na základě na virtuální procesor. Zobrazit [náklady na software Windows s rezervace](https://go.microsoft.com/fwlink/?linkid=862756). Může zahrnovat vaše Windows licenční náklady na s [programu Azure Hybrid Benefit pro Windows Server](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing).
 
 ## <a name="next-steps"></a>Další postup
 
 Další informace o rezervacích Azure, najdete v následujících článcích:
 
 - [Co jsou Azure rezervace?](billing-save-compute-costs-reservations.md)
-- [Předplatit si virtuální počítače se službou Azure Reserved VM Instances](../virtual-machines/windows/prepay-reserved-vm-instances.md)
-- [Předem za výpočetní prostředky, SQL Database s Azure SQL Database vyhrazené kapacity](../sql-database/sql-database-reserved-capacity.md)
+- [Předplacení virtuálních počítačů se službou Azure Reserved VM Instances](../virtual-machines/windows/prepay-reserved-vm-instances.md)
+- [Předplacení výpočetních prostředků SQL Database se záložní kapacitou služby Azure SQL Database](../sql-database/sql-database-reserved-capacity.md)
 - [Správa rezervací Azure](billing-manage-reserved-vm-instance.md)
 - [Vysvětlení využití rezervace pro vaše předplatné s průběžnými platbami](billing-understand-reserved-instance-usage.md)
 - [Vysvětlení využití rezervaci u prováděcí smlouvy Enterprise](billing-understand-reserved-instance-usage-ea.md)

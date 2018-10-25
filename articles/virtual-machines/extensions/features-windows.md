@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: roiyz
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d7b183a5b87d5777609deac02e4424d9451e9643
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: e3b9de282b95b27a04ac6d182b1045e18e65c5f6
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452492"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025901"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Rozšíření virtuálních počítačů a funkce pro Windows
 
@@ -57,7 +57,8 @@ K zajištění nejlepšího možného prostředí, jsou minimální verze agenta
 
 #### <a name="supported-oses"></a>Podporované operační systémy
 
-Agent hosta Windows běží na více operačních systémů, ale rozhraní rozšíření má limit pro operačních systémech tohoto rozšíření. Další informace najdete v tématu [tohoto článku] (https://support.microsoft.com/en-us/help/4078134/azure-extension-supported-operating-systems ).
+Agent hosta Windows běží na více operačních systémů, ale rozhraní rozšíření má limit pro operačních systémech tohoto rozšíření. Další informace najdete v [tomto článku](https://support.microsoft.com/en-us/help/4078134/azure-extension-supported-operating-systems
+).
 
 Některá rozšíření nejsou podporovány ve všech operačních systémů a může vysílat *51 kód chyby, nepodporovaný operační systém*. Možnosti podpory v dokumentaci jednotlivých rozšíření.
 

@@ -1,6 +1,6 @@
 ---
-title: Migraci databáze MySQL pomocí výpis nebo obnovení v databázi Azure pro databázi MySQL
-description: Tento článek vysvětluje dvě běžné způsoby zálohování a obnovení databází v Azure Database pro databázi MySQL, pomocí nástrojů, jako je mysqldump, MySQL Workbench a PHPMyAdmin.
+title: Migrace databáze MySQL pomocí výpisu a obnovení ve službě Azure Database for MySQL
+description: Tento článek vysvětluje dvě běžné způsoby, jak zálohovat a obnovit databáze ve službě Azure Database for MySQL pomocí nástroje, jako je mysqldump aplikace MySQL Workbench a phpmyadmin zobrazuje.
 services: mysql
 author: ajlam
 ms.author: andrela
@@ -9,122 +9,122 @@ editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
 ms.date: 06/02/2018
-ms.openlocfilehash: c801426ad354a165ac749333ddd4671c13536edb
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: f3e38bb3e7e4f2c58f1ae955878747ebc7d386f1
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35265839"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49984482"
 ---
-# <a name="migrate-your-mysql-database-to-azure-database-for-mysql-using-dump-and-restore"></a>Migraci databáze MySQL do Azure Database pro databázi MySQL pomocí výpisu a obnovení
-Tento článek vysvětluje dvě běžné způsoby zálohování a obnovení databází v Azure Database pro databázi MySQL
+# <a name="migrate-your-mysql-database-to-azure-database-for-mysql-using-dump-and-restore"></a>Migrace databáze MySQL do služby Azure Database for MySQL pomocí výpisu a obnovení.
+Tento článek vysvětluje dvě běžné způsoby, jak zálohovat a obnovit databáze ve službě Azure Database for MySQL
 - Výpis a obnovení z příkazového řádku (pomocí mysqldump) 
-- Výpis stavu a obnovení pomocí PHPMyAdmin 
+- Výpisu a obnovení pomocí phpmyadmin zobrazuje 
 
 ## <a name="before-you-begin"></a>Než začnete
-Na krok tímto průvodcem postupy, musíte mít:
-- [Vytvoření Azure databáze MySQL serveru – portál Azure](quickstart-create-mysql-server-database-using-azure-portal.md)
+Pro jednotlivé kroky v této příručce s postupy, musíte mít:
+- [Vytvoření Azure Database for MySQL server - webu Azure portal](quickstart-create-mysql-server-database-using-azure-portal.md)
 - [mysqldump](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html) na počítači nainstalovaný nástroj příkazového řádku.
-- MySQL Workbench [MySQL Workbench Stáhnout](https://dev.mysql.com/downloads/workbench/), Toad, Navicat nebo jiný nástroj třetí strany, MySQL, výpisů a obnovení příkazy.
+- Aplikace MySQL Workbench [stažení aplikace MySQL Workbench](https://dev.mysql.com/downloads/workbench/), Toad, Navicat nebo jiný nástroj třetí strany MySQL, výpisu a obnovení příkazů.
 
-## <a name="use-common-tools"></a>Běžné nástroje pro použití
-Použijte běžné nástroje a nástroje, například MySQL Workbench, mysqldump, Toad nebo Navicat vzdáleně připojit a obnovení dat do Azure databáze pro databázi MySQL. Pomocí těchto nástrojů na klientský počítač s připojením k Internetu pro připojení k databázi Azure pro databázi MySQL. Používat připojení šifrovaná protokolem SSL pro osvědčené postupy zabezpečení, viz také [připojení konfigurace protokolu SSL ve službě Azure Database pro databázi MySQL](concepts-ssl-connection-security.md). Není nutné k přesunutí souborů výpisu do libovolného umístění, speciální cloudu při migraci na Azure Database pro databázi MySQL. 
+## <a name="use-common-tools"></a>Použít běžné nástroje
+Pomocí běžných nástrojů a nástrojů, jako jsou aplikace MySQL Workbench, mysqldump, Toad nebo Navicat se vzdáleně připojte a obnovení dat do služby Azure Database for MySQL. Připojení ke službě Azure Database for MySQL pomocí těchto nástrojů v klientském počítači s připojením k Internetu. Osvědčené postupy zabezpečení připojení šifrováno SSL, najdete v tématu taky [konfigurace připojení SSL ve službě Azure Database for MySQL](concepts-ssl-connection-security.md). Není potřeba přesunout soubory s výpisem paměti do libovolného umístění speciální cloudových při migraci do služby Azure Database for MySQL. 
 
-## <a name="common-uses-for-dump-and-restore"></a>Běžná použití pro výpis a obnovení
-MySQL nástroje například mysqldump a mysqlpump k výpisu a zatížení databáze do databáze MySQL Azure můžete používat v několika běžné scénáře. V dalších scénářích, můžete použít [Import a Export](concepts-migrate-import-export.md) přístupu místo.
+## <a name="common-uses-for-dump-and-restore"></a>Běžné použití výpisu a obnovení.
+Můžete použít nástroje MySQL jako je například mysqldump a mysqlpump příkazy dump a load databází do Azure Database for MySQL v několika běžných scénářů. V jiných scénářích může použít [Import a Export](concepts-migrate-import-export.md) místo toho dosáhnout.
 
-- Použít databázi vypíše při migraci celé databáze. Toto doporučení obsahuje při přesunu velké množství dat MySQL, nebo pokud chcete minimalizovat přerušení poskytování služeb pro fungujícími weby nebo aplikace. 
--  Ujistěte se, že všechny tabulky v databázi použít modul InnoDB úložiště při načítání dat do Azure databáze pro databázi MySQL. Azure databáze pro databázi MySQL podporuje pouze stroj InnoDB úložiště a proto nepodporuje moduly alternativní úložiště. Pokud vaše tabulky jsou nakonfigurované další moduly úložiště, je převeďte do formátu modul InnoDB před migrací do Azure Database pro databázi MySQL.
-   Například pokud máte WordPress nebo WebApp pomocí tabulky MyISAM, nejprve převeďte těchto tabulek a migrujte do formátu InnoDB před obnovením do Azure Database pro databázi MySQL. Použijte klauzuli `ENGINE=InnoDB` nastavit modul použít při vytváření nové tabulky, potom přenést data do tabulky kompatibilní ještě před obnovením. 
+- Použít databázi výpisy při migraci celé databáze. Toto doporučení obsahuje při přesunu velké množství dat MySQL, nebo když chcete minimalizovat přerušení služeb pro weby nebo aplikace. 
+-  Ujistěte se, že všechny tabulky v databázi použít modul InnoDB úložiště při načítání dat do služby Azure Database for MySQL. Azure Database for MySQL podporuje jenom modul InnoDB úložiště a proto nepodporuje moduly alternativní úložiště. Pokud vaše tabulky jsou nakonfigurované s ostatních vyhledávacích strojů úložiště, převeďte na formát modul InnoDB před migrací do služby Azure Database for MySQL.
+   Například pokud máte WordPress nebo webové aplikace pomocí tabulky MyISAM, nejprve převeďte tyto tabulky jejich migrací do formátu InnoDB před obnovením do služby Azure Database for MySQL. Použití klauzule `ENGINE=InnoDB` nastavit modul používá při vytváření nové tabulky, pak přenést data do tabulky kompatibilní ještě před obnovením. 
 
    ```sql
    INSERT INTO innodb_table SELECT * FROM myisam_table ORDER BY primary_key_columns
    ```
-- Abyste předešli problémům s kompatibilitou, zkontrolujte, zda že stejnou verzi databáze MySQL se používá na zdrojovém a cílovém systému při vypsání databáze. Například pokud je existující server MySQL verzi 5.7, pak měli byste migrovat na Azure Database pro databázi MySQL, které jsou nakonfigurovány na spuštění verzi 5.7. `mysql_upgrade` Příkaz nefunguje v databázi Azure pro server databáze MySQL a není podporována. Pokud potřebujete k upgradu mezi verzemi MySQL, nejprve dump nebo exportovat nižší verze databáze na vyšší verzi MySQL ve svém vlastním prostředí. Spusťte `mysql_upgrade`, před migrací do Azure Database pro databázi MySQL.
+- Aby se zabránilo žádné problémy s kompatibilitou, zajistěte, aby že stejnou verzi nástroje MySQL se používá na zdrojovém a cílovém systému při výpisu databází. Například pokud váš stávající server MySQL verzi 5.7, pak by měl migraci do služby Azure Database for MySQL nakonfigurováno pro běh verzi 5.7. `mysql_upgrade` Příkaz nefunguje v serveru Azure Database for MySQL a není podporována. Pokud potřebujete k upgradu mezi verzemi MySQL, nejprve výpisu paměti nebo ji exportujte nižší verzi databáze na vyšší verzi MySQL ve vašem prostředí. Potom spusťte `mysql_upgrade`, před provedením migrace do Azure Database for MySQL.
 
 ## <a name="performance-considerations"></a>Otázky výkonu
-Za účelem optimalizace výkonu, vzít v úvahu tyto aspekty při vypsání velké databáze:
--   Použití `exclude-triggers` možnost v mysqldump při vypsání databáze. Vyloučení ze souborů výpisu paměti, aby se zabránilo příkazy aktivační událost aktivuje během obnovení dat aktivační události. 
--   Použití `single-transaction` možnost nastavit režimu izolace transakce na REPEATABLE READ a odešle příkazu START transakce SQL serveru před vypsání data. Vypsání mnoho tabulek v rámci jedné transakce způsobí, že některé dodatečné úložiště, který se má používat při obnovení. `single-transaction` Možnost a `lock-tables` možnost se vzájemně vylučují, protože ZÁMEK tabulky způsobí, že všechny čekající transakcí, které budou potvrzeny implicitně. Výpis stavu velké tabulky kombinovat `single-transaction` možnost s `quick` možnost. 
--   Použití `extended-insert` více řádků syntaxi, která obsahuje několik seznamů hodnot. To má za následek menší soubor výpisu a urychluje vložení, když je znovu načíst soubor.
--  Použití `order-by-primary` možnost v mysqldump při vypsání databáze, tak, aby data je vytvořena v primární klíče pořadí.
--   Použití `disable-keys` možnost v mysqldump při vypsání data, zakázat omezení cizích klíčů před zatížení. Zakázání cizího klíče kontroly poskytuje větší zvýšení výkonu. Povolte omezení a ověřit data po zatížení zajistit referenční integrity.
--   Dělené tabulky v případě nutnosti použijte.
--   Načtení dat paralelně. Vyhněte se příliš mnoho paralelismus, který by vést k dosáhl limitu prostředků a sledování prostředků pomocí metriky, které jsou k dispozici na portálu Azure. 
--   Použití `defer-table-indexes` možnost v mysqlpump při vypsání databáze, takže vytvoření indexu se stane po načtení dat tabulky.
--   Zkopírujte záložní soubory do Azure blob nebo úložiště a provést obnovení z tohoto umístění, které by měly být mnohem rychlejší než provedením obnovení přes Internet.
+Za účelem optimalizace výkonu vzít v úvahu tyto aspekty při výpisu velkých databází:
+-   Použití `exclude-triggers` možnost v mysqldump při výpisu databází. Vyloučíte ze souborů s výpisem paměti, aby aktivační událost příkazy ohlásí při obnovování dat aktivační události. 
+-   Použití `single-transaction` možnost nastavit režim izolace transakce na REPEATABLE READ a odešle příkaz Spustit TRANSAKCI SQL serveru před vypsání data. Vypsání mnoho tabulek v rámci jedné transakce způsobí, že některé dodatečné úložiště, který se má používat při obnovení. `single-transaction` Možnost a `lock-tables` možnost se vzájemně vylučují, protože ZÁMEK tabulky způsobí, že všechny čekající transakce pro potvrzení implicitně. Pro výpis velké tabulky, kombinovat `single-transaction` spolu s možností `quick` možnost. 
+-   Použití `extended-insert` syntaxi více řádků, která obsahuje několik seznamů hodnot. To má za následek menší soubor s výpisem paměti a urychluje operace vložení při opětovném načtení nástroje souboru.
+-  Použití `order-by-primary` možnost v mysqldump při výpisu databáze, tak, aby data je vytvořena v pořadí podle primárních klíčů.
+-   Použití `disable-keys` možnost mysqldump při výpisu data, zákaz omezení cizího klíče před zatížení. Zakázání cizího klíče kontroly poskytuje zvýšení výkonu. Povolte omezení a ověřit data po načtení k zajištění referenční integrity.
+-   Dělené tabulky v případě potřeby použijte.
+-   Načtení dat paralelně. Vyhněte se příliš mnoho paralelismu, který by vést k dosažení limitu prostředků a sledujte prostředky prostřednictvím metriky, které jsou k dispozici na webu Azure Portal. 
+-   Použití `defer-table-indexes` možnost v mysqlpump při výpisu databáze, takže vytvoření indexu se stane po načtení dat tabulky.
+-   Zkopírujte záložní soubory do Azure blob a úložiště a provést obnovení z něj, které by měly být mnohem rychlejší než provádění obnovení na Internetu.
 
-## <a name="create-a-backup-file-from-the-command-line-using-mysqldump"></a>Vytvoření záložního souboru z příkazového řádku pomocí mysqldump
-Pokud chcete zálohovat existující databázi MySQL na serveru místní, nebo ve virtuálním počítači, spusťte následující příkaz: 
+## <a name="create-a-backup-file-from-the-command-line-using-mysqldump"></a>Vytvořit záložní soubor z příkazového řádku pomocí mysqldump
+Chcete-li zálohovat stávající databázi MySQL na serveru místní, nebo na virtuálním počítači, spusťte následující příkaz: 
 ```bash
 $ mysqldump --opt -u [uname] -p[pass] [dbname] > [backupfile.sql]
 ```
 
 Zadejte parametry jsou:
-- [uname] Vaše uživatelské jméno databáze 
-- [předat] Heslo pro vaši databázi (Všimněte si, není mezera mezi -p a heslo) 
-- [dbname] Název databáze 
+- [uname] Vaše uživatelské jméno pro databázi 
+- [heslo] Heslo pro vaši databázi (Všimněte si, neexistuje žádná mezera mezi -p a heslo) 
+- [název_databáze] Název databáze 
 - [backupfile.sql] název souboru pro zálohování databáze 
-- [--opt] Možnost mysqldump 
+- [– optimalizované] Možnost mysqldump 
 
-Například pokud chcete zálohovat databáze s názvem 'testdb' na serveru databáze MySQL s uživatelským jménem 'testuser' a bez hesla do souboru testdb_backup.sql, použijte následující příkaz. Příkaz zálohuje `testdb` databáze do souboru s názvem `testdb_backup.sql`, která obsahuje všechny příkazy potřebné k vytvoření nové databáze SQL. 
+Například pokud chcete zálohovat databázi s názvem "testdb" na serveru MySQL s uživatelským jménem "testuser" a bez hesla do souboru testdb_backup.sql, použijte následující příkaz. Příkaz zálohuje `testdb` databáze do souboru s názvem `testdb_backup.sql`, která obsahuje všechny příkazy SQL potřebné k vytvoření nové databáze. 
 
 ```bash
 $ mysqldump -u root -p testdb > testdb_backup.sql
 ```
-Pokud chcete vybrat konkrétní tabulky v databázi zálohovat, seznam názvy tabulek, oddělené mezerami. Například pokud chcete zálohovat pouze tabulky1 a tabulky2 tabulky z 'testdb', postupujte v tomto příkladu: 
+Pokud chcete vybrat konkrétní tabulky v databázi zálohovat, seznam názvů tabulek, oddělené mezerami. Například pokud chcete zálohovat pouze Tabulka1 a Tabulka2 tabulky z "testdb", postupujte podle tohoto příkladu: 
 ```bash
 $ mysqldump -u root -p testdb table1 table2 > testdb_tables_backup.sql
 ```
-Chcete-li více než jednu databázi zálohovat najednou, použijte--databáze přepínače a seznamu názvy databází, oddělené mezerami. 
+Chcete-li více než jednu databázi zálohovat najednou, použijte--databáze přepnutí a seznamu názvů databáze oddělených mezerami. 
 ```bash
 $ mysqldump -u root -p --databases testdb1 testdb3 testdb5 > testdb135_backup.sql 
 ```
-Chcete-li v jednom okamžiku zálohovat všechny databáze na serveru, měli byste použít možnost – všechny databáze.
+Chcete-li v jednom okamžiku zálohovat všechny databáze na serveru, měli byste použít možnost--all databází.
 ```bash
 $ mysqldump -u root -p --all-databases > alldb_backup.sql 
 ```
 
-## <a name="create-a-database-on-the-target-azure-database-for-mysql-server"></a>Vytvoření databáze v cílové databázi Azure pro server databáze MySQL
-Vytvořte prázdnou databázi v cílové databázi Azure pro server databáze MySQL, ve které chcete migrovat data. Pomocí nástroje, jako je MySQL Workbench, Toad nebo Navicat k vytvoření databáze. Databáze může mít stejný název jako databáze, která je obsažená dumpingových dat nebo můžete vytvořit databázi s jiným názvem.
+## <a name="create-a-database-on-the-target-azure-database-for-mysql-server"></a>Vytvoření databáze na cílovou službu Azure Database for MySQL serveru
+Vytvoření prázdné databáze na cílovou službu Azure Database pro server MySQL, ve které chcete migrovat data. Pomocí nástroje, jako je aplikace MySQL Workbench, Toad nebo Navicat k vytvoření databáze. Databáze může mít stejný název jako databáze, která je obsažená vypsaná bitová kopie řidicího dat nebo můžete vytvořit databázi s jiným názvem.
 
-Se připojí, vyhledejte informace o připojení v **přehled** Azure databáze pro databázi MySQL.
+Se připojí, vyhledejte informace o připojení v **přehled** z Azure Database for MySQL.
 
-![Vyhledat informace o připojení na portálu Azure](./media/concepts-migrate-dump-restore/1_server-overview-name-login.png)
+![Najít informace o připojení webu Azure Portal](./media/concepts-migrate-dump-restore/1_server-overview-name-login.png)
 
-Přidáte informace o připojení do vaší databáze MySQL Workbench.
+Přidejte informace o připojení do vaší aplikace MySQL Workbench.
 
-![MySQL Workbench připojovací řetězec](./media/concepts-migrate-dump-restore/2_setup-new-connection.png)
+![Aplikace MySQL Workbench připojovací řetězec](./media/concepts-migrate-dump-restore/2_setup-new-connection.png)
 
 
 ## <a name="restore-your-mysql-database-using-command-line-or-mysql-workbench"></a>Obnovení databáze MySQL pomocí příkazového řádku nebo MySQL Workbench
-Po vytvoření cílové databázi, můžete použít příkaz mysql nebo MySQL Workbench k obnovení dat do nově vytvořené databáze ze souboru s výpisem konkrétní.
+Po vytvoření cílové databáze můžete použít příkaz mysql nebo MySQL Workbench k obnovení dat do určeného nově vytvořenou databázi ze souboru s výpisem paměti.
 ```bash
 mysql -h [hostname] -u [uname] -p[pass] [db_to_restore] < [backupfile.sql]
 ```
-V tomto příkladu obnovte data do nově vytvořené databáze v cílové databázi Azure pro server databáze MySQL.
+V tomto příkladu obnovte data do nově vytvořenou databázi na cílovou službu Azure Database for MySQL server.
 ```bash
 $ mysql -h mydemoserver.mysql.database.azure.com -u myadmin@mydemoserver -p testdb < testdb_backup.sql
 ```
 
-## <a name="export-using-phpmyadmin"></a>Exportovat pomocí PHPMyAdmin
-Pokud chcete exportovat, můžete použít běžný phpMyAdmin nástroj, který může již byl nainstalován místně ve vašem prostředí. Export databáze MySQL pomocí PHPMyAdmin:
-1. Otevřete phpMyAdmin.
-2. Vyberte svou databázi. Klikněte na název databáze v seznamu na levé straně. 
-3. Klikněte **exportovat** odkaz. Chcete-li zobrazit výpis databáze, zobrazí se nová stránka.
-4. V oblasti exportu, klikněte na **Vybrat vše** odkaz vybrat tabulky v databázi. 
-5. V oblasti možnosti SQL klikněte na požadované možnosti. 
-6. Klikněte na tlačítko **uložit jako soubor** možnost a odpovídající komprese a potom klikněte na **přejděte** tlačítko. Dialogové okno by se zobrazit požadavkem, abyste uložte soubor místně.
+## <a name="export-using-phpmyadmin"></a>Export prostřednictvím phpmyadmin zobrazuje
+Pokud chcete exportovat, můžete použít běžné phpmyadmin zobrazuje nástroj, který může už nainstalované místně ve vašem prostředí. Export databáze MySQL pomocí phpmyadmin zobrazuje:
+1. Otevřete phpmyadmin zobrazuje.
+2. Vyberte vaši databázi. Klikněte na název databáze v seznamu na levé straně. 
+3. Klikněte na tlačítko **exportovat** odkaz. Chcete-li zobrazit výpis databáze se zobrazí nová stránka.
+4. V oblasti exportu klikněte na tlačítko **Vybrat vše** odkaz vybrat tabulky v databázi. 
+5. V oblasti možnosti SQL klepněte na příslušné možnosti. 
+6. Klikněte na tlačítko **uložit jako soubor** možnost a odpovídající komprese možnost a potom klikněte na tlačítko **Přejít** tlačítko. By měl zobrazit dialogové okno s výzvou k uložení si soubor .CSR místně.
 
-## <a name="import-using-phpmyadmin"></a>Import pomocí PHPMyAdmin
-Import vaše databáze je podobná export. Proveďte následující akce:
-1. Otevřete phpMyAdmin. 
-2. Na stránce instalace phpMyAdmin klikněte na tlačítko **přidat** přidat databáze Azure pro server databáze MySQL. Zadejte podrobnosti připojení a přihlašovací údaje.
-3. Vytvoření příslušně pojmenovaných databáze a vyberte jej na levé straně obrazovky. Přepsání existující databázi, klikněte na název databáze, vyberte všechny zaškrtnutí políček vedle názvů tabulek a vyberte **vyřadit** odstranit existující tabulky. 
-4. Klikněte **SQL** odkaz na zobrazení stránky, kde můžete zadat v příkazech SQL nebo nahrát soubor SQL. 
-5. Použití **Procházet** tlačítko Najít databázový soubor. 
-6. Klikněte **přejděte** tlačítko Exportovat zálohování, spuštěním příkazů SQL a znovu vytvořit databázi.
+## <a name="import-using-phpmyadmin"></a>Import prostřednictvím phpmyadmin zobrazuje
+Import databáze je podobný export. Proveďte následující akce:
+1. Otevřete phpmyadmin zobrazuje. 
+2. Na stránce nastavení phpmyadmin zobrazuje, klikněte na **přidat** přidání vašeho serveru Azure Database for MySQL. Zadejte podrobnosti připojení a přihlašovací údaje.
+3. Vytvořit databázi příslušně pojmenovaných a vyberte na levé straně obrazovky. Přepsat stávající databázi, klikněte na název databáze, vyberte všechna zaškrtávací políčka vedle názvů tabulek a vyberte **vyřadit** odstranit existující tabulky. 
+4. Klikněte na tlačítko **SQL** odkaz na zobrazení stránky, kde můžete zadat v příkazech SQL nebo odeslání souboru SQL. 
+5. Použití **Procházet** tlačítko k vyhledání souboru databáze. 
+6. Klikněte na tlačítko **Přejít** tlačítko Exportovat zálohování, spuštění příkazů SQL a znovu vytvořit databázi.
 
 ## <a name="next-steps"></a>Další postup
-- [Připojení aplikace k databázi Azure pro databázi MySQL](./howto-connection-string.md).
-- Další informace o migraci databáze pro databázi MySQL, Azure najdete [příručka k migraci databáze](http://aka.ms/datamigration).
+- [Připojení aplikace ke službě Azure Database for MySQL](./howto-connection-string.md).
+- Další informace o migraci databází do služby Azure Database for MySQL, najdete v článku [Průvodce migrací databází](https://aka.ms/datamigration).

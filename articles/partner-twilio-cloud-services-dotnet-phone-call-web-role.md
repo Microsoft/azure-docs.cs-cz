@@ -1,6 +1,6 @@
 ---
-title: Postup telefonní hovor z Twilio (.NET) | Microsoft Docs
-description: Naučte se telefonní hovor a odeslání zprávy SMS službou Twilio rozhraní API v Azure. Ukázky kódu jsou vytvořené v rozhraní .NET.
+title: Jak volat z Twilia (.NET) | Dokumentace Microsoftu
+description: Zjistěte, jak volat a odeslat zprávu SMS s služba Twilio API v Azure. Ukázky kódu napsané v rozhraní .NET.
 services: ''
 documentationcenter: .net
 author: devinrader
@@ -13,38 +13,38 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 05/04/2016
-ms.author: microsofthelp@twilio.com
-ms.openlocfilehash: cd9792881182fbe90d9c210130ae8a34b12da363
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.author: jeconnoc
+ms.openlocfilehash: 9433cbaba774237bc739106af410dd8d3dd7308f
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2017
-ms.locfileid: "26366000"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025701"
 ---
-# <a name="how-to-make-a-phone-call-using-twilio-in-a-web-role-on-azure"></a>Postup telefonní hovor pomocí Twilio ve webové roli v Azure
-Tato příručka ukazuje, jak používat Twilio k volání z webové stránky hostované v Azure. Výsledná aplikace vyzve uživatele, aby volání s danou číslo a zprávy, jak je znázorněno na následujícím snímku obrazovky.
+# <a name="how-to-make-a-phone-call-using-twilio-in-a-web-role-on-azure"></a>Jak telefonování pomocí Twilio ve webové roli v Azure
+Tato příručka ukazuje, jak se k volání z webové stránky hostované v Azure použít Twilio. Výsledné aplikace vyzve uživatele k volání daného čísla, zpráva, ujistěte se, jak je znázorněno na následujícím snímku obrazovky.
 
-![Azure volání formulář s využitím Twilio a ASP.NET][twilio_dotnet_basic_form]
+![Azure volání formulář s využitím platformy Twilio a ASP.NET][twilio_dotnet_basic_form]
 
 ## <a name="twilio-prereqs"></a>Požadavky
 Budete muset následujícím postupem použít kód v tomto tématu:
 
-1. Získání účtu Twilio a ověřování z tokenu [Twilio konzoly][twilio_console]. Začínáme s Twilio zaregistrovat na [https://www.twilio.com/try-twilio][try_twilio]. Je možné vyhodnotit ceny v [http://www.twilio.com/pricing][twilio_pricing]. Informace o rozhraní API poskytované Twilio najdete v tématu [http://www.twilio.com/voice/api][twilio_api].
-2. Přidat *knihovny Twilio .NET* pro vaši webovou roli. V tématu **pro přidání do projektu webové role knihovny Twilio**dál v tomto tématu.
+1. Získání účtu Twilio a ověřování tokenů z [Twilio konzoly][twilio_console]. Abyste mohli začít s platformou Twilio, zaregistrujte se na [ https://www.twilio.com/try-twilio ] [ try_twilio]. Můžete si vyzkoušet ceny na [ http://www.twilio.com/pricing ] [ twilio_pricing]. Informace o rozhraní API poskytovaných Twilio, naleznete v tématu [ http://www.twilio.com/voice/api ] [ twilio_api].
+2. Přidat *knihovny Twilio .NET* pro vaši webovou roli. Zobrazit **Twilio knihovny přidat do projektu webové role**dále v tomto tématu.
 
-Měli byste se seznámit s vytvářením základní [webové Role v Azure][azure_webroles_get_started].
+Měli byste se seznámit s vytvářením základní [webová Role na Azure][azure_webroles_get_started].
 
 ## <a name="howtocreateform"></a>Postupy: vytvoření webového formuláře pro volání
-<a id="use_nuget"></a>Přidání knihovny Twilio do projektu webové role:
+<a id="use_nuget"></a>Chcete-li přidat Twilio knihovny do projektu webové role:
 
 1. Otevřete řešení v sadě Visual Studio.
 2. Klikněte pravým tlačítkem na **odkazy**.
-3. Klikněte na tlačítko **Správa balíčků NuGet**.
+3. Klikněte na tlačítko **spravovat balíčky NuGet**.
 4. Klikněte na tlačítko **Online**.
-5. Zadejte do vyhledávacího pole online *twilio*.
-6. Klikněte na tlačítko **nainstalovat** na balíček Twilio.
+5. Zadejte do pole Hledat online *twilio*.
+6. Klikněte na tlačítko **nainstalovat** na balíček platformy Twilio.
 
-Následující kód ukazuje, jak vytvořit webového formuláře pro načtení dat uživatele pro volání. V tomto příkladu webovou roli ASP.NET s názvem **TwilioCloud** je vytvořena.
+Následující kód ukazuje, jak vytvořit webový formulář data uživatele pro volání. V tomto příkladu webovou roli ASP.NET s názvem **TwilioCloud** se vytvoří.
 
 ```aspx
 <%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.master"
@@ -71,7 +71,7 @@ Následující kód ukazuje, jak vytvořit webového formuláře pro načtení d
 ```
 
 ## <a id="howtocreatecode"></a>Postupy: vytvoření kódu pro volání
-Následující kód, který je volána, když uživatel dokončí formuláře, vytvoří zprávu volání a generuje volání. V tomto příkladu je kód spuštěn v obslužné rutině události onclick tlačítko ve formuláři. (Použití vašeho účtu Twilio a ověřování tokenu místo zástupné hodnoty přiřazené `accountSID` a `authToken` v následujícím kódu.)
+Následující kód, který se volá, když uživatel vykoná formulář, vytvoří zprávu volání a vygeneruje volání. V tomto příkladu je kód spuštěn v obslužné rutině události onclick tlačítka na formuláři. (Použití vašeho účtu Twilio a ověřování tokenem místo zástupné hodnoty přiřazené `accountSID` a `authToken` v následujícím kódu.)
 
 ```csharp
 using System;
@@ -144,22 +144,22 @@ namespace WebRole1
 }
 ```
 
-Při volání a jsou zobrazeny Twilio koncový bod, verze rozhraní API a stav volání. Následující snímek obrazovky ukazuje výstup z ukázkové spuštění.
+Při volání a koncový bod Twilio, verze rozhraní API a stav volání se zobrazí. Následující snímek obrazovky ukazuje výstup z ukázkové spuštění.
 
-![Azure volání odpovědi pomocí Twilio a ASP.NET][twilio_dotnet_basic_form_output]
+![Azure volání odpovědi HTTP pomocí platformy Twilio a ASP.NET][twilio_dotnet_basic_form_output]
 
-Další informace o TwiML lze najít na [http://www.twilio.com/docs/api/twiml][twiml]. Další informace o &lt;indikované&gt; a ostatní operace Twilio naleznete na adrese [http://www.twilio.com/docs/api/twiml/say][twilio_say].
+Další informace o TwiML najdete [ http://www.twilio.com/docs/api/twiml ] [ twiml]. Další informace o &lt;Say&gt; a ostatní operace Twilio lze nalézt v [ http://www.twilio.com/docs/api/twiml/say ] [ twilio_say].
 
 ## <a id="nextsteps"></a>Další kroky
-Tento kód byl poskytnut tak, aby zobrazovalo základních funkcí pomocí Twilio webovou roli ASP.NET v Azure. Před nasazením do Azure v produkčním prostředí, můžete přidat další zpracování chyb a další funkce. Například:
+Tento kód byl poskytnut zobrazit základní funkce s použitím Twilio webovou roli ASP.NET v Azure. Před nasazením v produkčním prostředí do Azure, můžete přidat další zpracování chyb nebo jiné funkce. Příklad:
 
-* Místo použití webového formuláře, můžete použít úložiště objektů Blob v Azure nebo Azure SQL Database instance k ukládání telefonních čísel a volání text. Informace o použití objektů BLOB v Azure najdete v tématu [jak používat službu úložiště objektů Blob v Azure v rozhraní .NET][howto_blob_storage_dotnet]. Informace o používání databáze SQL najdete v tématu [jak používat Azure SQL Database v aplikacích .NET][howto_sql_azure_dotnet].
-* Můžete použít `RoleEnvironment.getConfigurationSettings` načíst Twilio ID účtu a ověřování tokenu z nastavení konfigurace vašeho nasazení, místo pevně kódováno hodnoty do formuláře. Informace o `RoleEnvironment` třídy najdete v tématu [Microsoft.WindowsAzure.ServiceRuntime Namespace][azure_runtime_ref_dotnet].
-* Přečtěte si pokyny zabezpečení Twilio v [https://www.twilio.com/docs/security][twilio_docs_security].
-* Další informace o Twilio v [https://www.twilio.com/docs][twilio_docs].
+* Místo použití webového formuláře, můžete použít úložiště objektů Blob v Azure nebo instance Azure SQL Database k ukládání telefonní čísla a volání text. Informace o používání objektů BLOB v Azure najdete v tématu [použití služby Azure Blob storage v rozhraní .NET][howto_blob_storage_dotnet]. Informace o použití SQL Database najdete v tématu [jak používat Azure SQL Database v aplikacích .NET][howto_sql_azure_dotnet].
+* Můžete použít `RoleEnvironment.getConfigurationSettings` načíst Twilio ID účtu a ověřovací token z nastavení konfigurace vašeho nasazení, namísto pevně kódováno pomocí hodnoty ve formuláři. Informace o tom, `RoleEnvironment` najdete v tématu [Microsoft.WindowsAzure.ServiceRuntime Namespace][azure_runtime_ref_dotnet].
+* Přečtěte si pokyny pro zabezpečení platformy Twilio na [ https://www.twilio.com/docs/security ] [ twilio_docs_security].
+* Další informace o Twilio na [ https://www.twilio.com/docs ] [ twilio_docs].
 
 ## <a name="seealso"></a>Viz také
-* [Jak používat Twilio pro hlasový a SMS možnosti z Azure](twilio-dotnet-how-to-use-for-voice-sms.md)
+* [Postup použití Twilia pro hlasové hovory a SMS možnosti z Azure](twilio-dotnet-how-to-use-for-voice-sms.md)
 
 [twilio_console]: https://www.twilio.com/console
 [twilio_pricing]: http://www.twilio.com/pricing

@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/17/2018
 ms.author: nacanuma
 ms.custom: include file
-ms.openlocfilehash: 77400453e455ff2ebf20f59f888a3e3d641bcf07
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: e42c678f3c6d030be13e40197a06e73b62581902
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48843481"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49988395"
 ---
 ## <a name="use-the-microsoft-authentication-library-msal-to-sign-in-the-user"></a>Přihlásit uživatele pomocí knihovny Microsoft Authentication Library (MSAL)
 
@@ -127,24 +127,26 @@ else {
 <!--start-collapse-->
 ### <a name="more-information"></a>Další informace
 
-Po kliknutí *"Sign In"* tlačítko poprvé, `signIn` volání metody `loginPopup` k přihlášení uživatele. Tato metoda má za následek otevřete okno automaticky otevírané okno s *koncového bodu Microsoft Azure Active Directory v2* výzvu a ověření přihlašovacích údajů uživatele. V důsledku u úspěšné přihlášení, bude uživatel přesměrován zpět na původní *index.html* stránky a token pro přijetí zpracovány `msal.js` a informací obsažených v tokenu se uloží do mezipaměti. Tento token se označuje jako *ID token* a obsahuje základní informace o uživateli, jako je zobrazované jméno uživatele. Pokud máte v plánu používat data poskytuje tento token pro účely, musíte zajistit, aby že tento token je potvrzen v back-end serveru k zajištění, že byl token vydán platnému uživateli služby pro vaši aplikaci.
+Po kliknutí **Sign In** tlačítko poprvé, `signIn` volání metody `loginPopup` k přihlášení uživatele. Tato metoda má za následek otevřete okno automaticky otevírané okno s *koncového bodu Microsoft Azure Active Directory v2.0* výzvu a ověření přihlašovacích údajů uživatele. V důsledku u úspěšné přihlášení, bude uživatel přesměrován zpět na původní *index.html* stránky a token pro přijetí zpracovány `msal.js` a informací obsažených v tokenu se uloží do mezipaměti. Tento token se označuje jako *ID token* a obsahuje základní informace o uživateli, jako je zobrazované jméno uživatele. Pokud máte v plánu používat data poskytuje tento token pro účely, musíte zajistit, aby že tento token je potvrzen v back-end serveru k zajištění, že byl token vydán platnému uživateli služby pro vaši aplikaci.
 
 Jednostránková aplikace vygenerované to provede volání `acquireTokenSilent` a/nebo `acquireTokenPopup` získat *přístupový token* používá k dotazování na rozhraní Microsoft Graph API pro informace o profilu uživatele. Pokud potřebujete vzorku, který ověří ID token, podívejte se na [to](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2 "active-directory-javascript-singlepageapp-dotnet-webapi-v2 ukázky Githubu") ukázková aplikace v Githubu – Ukázka používá ASP .NET webového rozhraní API pro ověřování tokenů.
 
 #### <a name="getting-a-user-token-interactively"></a>Interaktivní získání tokenu uživatele
 
-Po počátečním přihlášení, nechcete žádat uživatele nutnost opakovaného ověření příslušných pokaždé, když potřebují k vyžádání tokenu pro přístup k prostředku – tedy *acquireTokenSilent* by ve většině případů použít k získání tokenů. Existují však situace, že je potřeba vynutit uživatelům, aby komunikovali s koncovým bodem služby Azure Active Directory v2 – mezi příklady patří:
+Po počátečním přihlášení, nechcete žádat uživatele nutnost opakovaného ověření příslušných pokaždé, když potřebují k vyžádání tokenu pro přístup k prostředku – tedy *acquireTokenSilent* by ve většině případů použít k získání tokenů. Existují však situace, že je potřeba vynutit uživatelům, aby komunikovali s koncovým bodem v2.0 Azure Active Directory – mezi příklady patří:
+
 - Může být potřeba, aby uživatelé znovu zadali svoje přihlašovací údaje, protože vypršela platnost hesla
 - Vaše aplikace žádá o přístup k prostředku, ke kterému musí dát uživatel souhlas
 - Je nutné dvoufaktorové ověřování
 
-Volání *acquireTokenPopup(scope)* výsledky v automaticky otevíraném okně (nebo *acquireTokenRedirect(scope)* výsledkem přesměrování uživatelů na koncový bod Azure Active Directory verze 2) Pokud uživatelé potřebují k interakce potvrzení přihlašovacích údajů, udělení souhlasu pro požadovaný prostředek, nebo dokončení dvoufaktorového ověřování.
+Volání *acquireTokenPopup(scope)* výsledky v automaticky otevíraném okně (nebo *acquireTokenRedirect(scope)* výsledkem přesměrování uživatelů na koncový bod Azure Active Directory v2.0) Pokud uživatelé potřebují k interakce potvrzení přihlašovacích údajů, udělení souhlasu pro požadovaný prostředek, nebo dokončení dvoufaktorového ověřování.
 
 #### <a name="getting-a-user-token-silently"></a>Získání tokenu uživatele bez upozornění
+
 ` acquireTokenSilent` Obsluhovala token pořízení a obnovení bez nutnosti zásahu uživatele. Po `loginPopup` (nebo `loginRedirect`) provádí poprvé, `acquireTokenSilent` je metoda běžně používá k získání tokenů použít pro přístup k chráněným prostředkům pro pozdější volání – jako volání na vyžádání nebo tokeny obnovení probíhají bezobslužně.
 `acquireTokenSilent` nemusí v některých případech – třeba hesla vypršela. Vaše aplikace dokáže zpracovat tuto výjimku dvěma způsoby:
 
-1.  Volání `acquireTokenPopup` okamžitě, jehož výsledkem výzvy k přihlášení. Tento model se běžně používá v online aplikace tam, kde není žádná neověřená obsah v aplikaci k dispozici pro uživatele. Ukázka vygeneroval tento instalační program s asistencí používá tento model.
+1. Volání `acquireTokenPopup` okamžitě, jehož výsledkem výzvy k přihlášení. Tento model se běžně používá v online aplikace tam, kde není žádná neověřená obsah v aplikaci k dispozici pro uživatele. Ukázka vygeneroval tento instalační program s asistencí používá tento model.
 
 2. Aplikace lze také nastavit vizuální označení pro uživatele, který interaktivnímu přihlášení je nutné, takže uživatel může vybrat správný čas pro přihlášení, nebo aplikace může pokus zopakovat, `acquireTokenSilent` později. To se běžně používá, když uživatel může používat další funkce aplikace bez narušení – například je neověřené obsah k dispozici v aplikaci. V takovém případě se uživatel může rozhodnout, pokud chtějí přihlášení pro přístup k chráněnému prostředku nebo aktualizujte zastaralé informace.
 

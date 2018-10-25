@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: ca596b2d33a6248dac94ddd7eef9a9c44daac3c8
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: af7a0d01fcf9df42da79a6529c8d4b0e31d73aa1
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49343735"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49985484"
 ---
 # <a name="introduction-to-ml-services-and-open-source-r-capabilities-on-hdinsight"></a>Úvod do služby ML a možnosti open-source jazyka R v HDInsight
 
@@ -102,7 +102,7 @@ Pokud zvolíte tuto možnost, je nutné převést všechny objekty modelu ScaleR
 
 ### <a name="score-on-premises"></a>Skóre v místním
 
-Ke stanovení skóre v místním po vytvoření modelu, serializuje model v jazyce R, stáhněte ho, deserializovat ho a následně použít pro vyhodnocování nová data. Můžete stanovení skóre nových dat pomocí postupu popsaného v [vyhodnocování v HDInsight](#scoring-in-hdinsight) nebo s použitím [webových služeb](https://docs.microsoft.com/machine-learning-server/operationalize/concept-what-are-web-services).
+Ke stanovení skóre v místním po vytvoření modelu, serializuje model v jazyce R, stáhněte ho, deserializovat ho a následně použít pro vyhodnocování nová data. Můžete stanovení skóre nových dat pomocí postupu popsaného v [skóre v HDInsight](#score-in-hdinsight) nebo s použitím [webových služeb](https://docs.microsoft.com/machine-learning-server/operationalize/concept-what-are-web-services).
 
 ## <a name="maintain-the-cluster"></a>Udržovat clusteru
 

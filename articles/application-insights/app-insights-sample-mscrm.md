@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 03/16/2018
 ms.reviewer: mazhar
 ms.author: mbullwin
-ms.openlocfilehash: c9629611544efe248b1b343ac1ba26740b9ce7e0
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 2fa4242de6a953e82e3f81831c491125e9a7c3f3
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47091685"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50026224"
 ---
 # <a name="walkthrough-enabling-telemetry-for-microsoft-dynamics-crm-online-using-application-insights"></a>Názorný postup: Zapnutí Telemetrie pro Microsoft Dynamics CRM Online pomocí Application Insights
 V tomto článku se dozvíte, jak získat telemetrická data z [Microsoft Dynamics CRM Online](https://www.dynamics.com/) pomocí [Azure Application Insights](https://azure.microsoft.com/services/application-insights/). Provedeme procesem kompletní proces přidávání skript Application Insights do vaší aplikace, zachycení dat a vizualizace dat.
@@ -39,11 +39,7 @@ Pro monitorování vaší aplikace, přidejte sadu Application Insights SDK do v
     ![Klikněte na +, služby pro vývojáře, Application Insights.](./media/app-insights-sample-mscrm/01.png)
 
     Vyberte jako typ aplikace ASP.NET.
-3. Otevřete stránku Začínáme a otevřete "sledování a diagnostiku na straně klienta".
-
-    ![Fragment kódu pro vložení do webové stránky](./media/app-insights-sample-mscrm/03.png)
-
-**Ponechat otevřené znakovou stránku** při dalším krokem v jiném okně prohlížeče. Brzy budete potřebovat kód. 
+3. Postupujte podle pokynů a [získat skript jazyka JavaScript SDK pro vaši aplikaci](app-insights-javascript.md#set-up-application-insights-for-your-web-page), zkopírujte fragment kódu jazyka JavaScript a ujistěte se, že Instrumentační klíč nahraďte správné hodnoty pro váš prostředek Application Insights.
 
 ### <a name="create-a-javascript-web-resource-in-microsoft-dynamics-crm"></a>Vytvoření webovém prostředku jazyka JavaScript v aplikaci Microsoft Dynamics CRM
 1. Otevřete instanci CRM Online a přihlášení s oprávněními správce.
@@ -60,7 +56,7 @@ Pro monitorování vaší aplikace, přidejte sadu Application Insights SDK do v
     Přiřaďte jí název, vyberte **skript (JScript)** a otevřete textový editor.
 
     ![Otevřete textový editor](./media/app-insights-sample-mscrm/00004.png)
-2. Zkopírujte kód ze služby Application Insights. Při kopírování, ujistěte se, že chcete ignorovat značky skriptu. Přečtěte si následující snímek obrazovky:
+2. Zkopírujte kód z Application Insights JavaScript SDK, ve kterém nakonfigurujete svůj Instrumentační klíč před. Při kopírování, ujistěte se, že chcete ignorovat značky skriptu. Podívejte se na snímku obrazovky:
 
     ![Nastavte klíč instrumentace](./media/app-insights-sample-mscrm/000005.png)
 

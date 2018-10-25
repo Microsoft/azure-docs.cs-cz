@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/19/2018
 ms.author: andret
 ms.custom: include file
-ms.openlocfilehash: cf064be5f723651d571b2db619782f50225e5ade
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 4f820a95759d16a9b6ac1eb1e442ae0bc8d681a3
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48843182"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49988232"
 ---
 ## <a name="setting-up-your-ios-application"></a>Nastavení aplikace iOS
 
@@ -27,25 +27,25 @@ Tato část obsahuje podrobné pokyny pro vytvoření nového projektu k předve
 
 > Stáhněte si tento ukázkový projekt XCode místo toho raději? [Stáhnete projekt](https://github.com/Azure-Samples/active-directory-ios-swift-native-v2/archive/master.zip) a pokračujte [potřeba provádět krok konfigurace](#register-your-application) konfigurace ukázkového kódu před spuštěním.
 
-
 ## <a name="install-carthage-to-download-and-build-msal"></a>Nainstalujte Carthage ke stažení a sestavení MSAL
+
 Správce balíčků Carthage se používá během období preview MSAL – integruje se s XCode a přitom možnost Microsoft provádět změny do knihovny.
 
-- Stáhněte a nainstalujte nejnovější verzi Carthage [tady](https://github.com/Carthage/Carthage/releases "Carthage adresu URL pro stažení")
+- Stáhněte a nainstalujte nejnovější verzi Carthage [tady](https://github.com/Carthage/Carthage/releases "adresu URL pro stažení Carthage").
 
 ## <a name="creating-your-application"></a>Vytvoření vaší aplikace
 
-1.  Xcode otevřete a vyberte `Create a new Xcode project`
-2.  Vyberte `iOS`  >  `Single view Application` a klikněte na tlačítko *další*
-3.  Zadejte název produktu a klikněte na *další*
-4.  Vyberte složku pro vytvoření aplikace a klikněte na tlačítko *Create*
+1. Xcode otevřete a vyberte **vytvořte nový projekt Xcode**.
+2. Vyberte **iOS > jediné zobrazení aplikace** a vyberte **Další**.
+3. Zadejte název produktu a vybrat **Další**.
+4. Vyberte složku pro vytvoření aplikace a klikněte na tlačítko *Create*
 
 ## <a name="build-the-msal-framework"></a>Sestavení rozhraní MSAL
 
 Postupujte podle pokynů k vyžádání a začnete vytvářet nejnovější verzi knihovny MSAL díky Carthage:
 
-1.  Otevřete prostředí bash terminál a přejděte do kořenové složky aplikace
-2.  Kopírování níže a vložte do terminálu bash pro vytvoření souboru "Cartfile":
+1. Otevřete prostředí bash terminál a přejděte do kořenové složky aplikace.
+2. Kopírování níže a vložte do terminálu bash pro vytvoření souboru "Cartfile":
 
 ```bash
 echo "github \"AzureAD/microsoft-authentication-library-for-objc\" \"master\"" > Cartfile
@@ -61,15 +61,16 @@ Zkopírujte a vložte níže. Tento příkaz načte závislosti do složky Carth
 carthage update
 ```
 
-> Výše uvedený postup slouží k stáhněte si a sestavte Microsoft Authentication Library (MSAL). Knihovna MSAL zpracovává načítání, ukládání do mezipaměti a aktualizaci tokeny uživatele pro přístup k rozhraní API chráněné službou Azure Active Directory v2.
+> Výše uvedený postup slouží k stáhněte si a sestavte Microsoft Authentication Library (MSAL). Knihovna MSAL zpracovává načítání, ukládání do mezipaměti a aktualizaci tokeny uživatele pro přístup k rozhraní API chráněné službou Azure Active Directory v2.0.
 
 ## <a name="add-the-msal-framework-to-your-application"></a>Přidání rozhraní MSAL do aplikace
-1.  V Xcode otevřete `General` kartu
-2.  Přejděte `Linked Frameworks and Libraries` části a klikněte na tlačítko `+`
-3.  Vyberte `Add other…`
-4.  Vyberte: `Carthage`  >  `Build`  >  `iOS`  >  `MSAL.framework` a klikněte na tlačítko *otevřít*. Měli byste vidět `MSAL.framework` přidán do seznamu.
-5.  Přejděte na `Build Phases` kartu a klikněte na tlačítko `+` ikonu, zvolte `New Run Script Phase`
-6.  Přidejte následující obsah *skriptu oblasti*:
+
+1. V Xcode otevřete **Obecné** kartu.
+2. Přejděte **propojené architektury a knihovny** a vyberte **+**.
+3. Vyberte **přidat další...** .
+4. Vyberte **Carthage > sestavení > iOS > MSAL.framework** a pak vyberte **otevřít**. Měli byste vidět `MSAL.framework` přidán do seznamu.
+5. Přejděte **fáze buildu** kartu, vyberte možnost **+** ikonu a pak vyberte **nová fáze spustit skript**.
+6. Přidejte následující obsah *skriptu oblasti*:
 
 ```text
 /usr/local/bin/carthage copy-frameworks
@@ -87,6 +88,7 @@ $(SRCROOT)/Carthage/Build/iOS/MSAL.framework
 ```
 
 ## <a name="creating-your-applications-ui"></a>Vytvoření uživatelského rozhraní aplikace
+
 Jako součást šablony projektu by měl automaticky vytvoří soubor Main.storyboard. Postupujte podle níže uvedených pokynů k vytvoření aplikace uživatelského rozhraní:
 
 1.  CTRL + klikněte na tlačítko `Main.storyboard` vyvolali místní nabídku, a potom klikněte na: `Open As` > `Source Code`

@@ -17,20 +17,22 @@ ms.date: 06/06/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 8ff46246d46a6028bc83b8fdf9c984e87f5578a5
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: ad7bb3c3a7bd50521b968b7c1a4e21027fbe18f2
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49320301"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49986047"
 ---
 # <a name="azure-active-directory-v20-and-oauth-20-on-behalf-of-flow"></a>Azure Active Directory v2.0 a tok OAuth 2.0 On-Behalf-Of
+
+[!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
+
 On-Behalf-Of OAuth 2.0, kterou flow slouží případ použití, kde aplikace vyvolá služby/webové rozhraní API, které pak je potřeba volat jiné služby nebo webové rozhraní API. Cílem je rozšíření delegovaný uživatel identit a oprávnění pomocí řetězce požadavku. Pro služby střední vrstvy, aby ověřených požadavků pro příjem dat služby je potřeba zabezpečit přístupového tokenu z Azure Active Directory (Azure AD) jménem uživatele.
 
 > [!NOTE]
 > Koncový bod v2.0 nepodporuje všechny scénáře Azure Active Directory a funkce. Pokud chcete zjistit, zda by měl použít koncový bod verze 2.0, přečtěte si informace o [v2.0 omezení](active-directory-v2-limitations.md).
 >
-
 
 > [!IMPORTANT]
 > Od května 2018 je `id_token` nelze použít pro tok On-Behalf-Of - musí projít SPA **přístup** token do střední vrstvy důvěrnému klientovi provádět OBO toky. Zobrazit [omezení](#client-limitations) podrobné informace, na kterých mohou klienti provádí volání On-Behalf-Of.

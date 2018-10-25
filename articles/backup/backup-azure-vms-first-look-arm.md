@@ -11,12 +11,12 @@ ms.date: 08/01/2018
 ms.author: markgal
 ms.custom: H1Hack27Feb2017
 keywords: zálohy. zálohování virtuálních počítačů
-ms.openlocfilehash: fee0e20e232621764ba10d714b7ddfe9c759dafc
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: a30b4081bf01a76c6d89e7557fbb1b40baa86fbc
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44717909"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49985877"
 ---
 # <a name="back-up-azure-virtual-machines-to-recovery-services-vault"></a>Zálohování virtuálních počítačů Azure do trezoru služby Recovery Services
 
@@ -96,11 +96,11 @@ Konfigurace úlohy zálohování z nabídky operace virtuálního počítače po
 
   Než se dokončí prvotní zálohování, bude **Stav poslední zálohy** ukazovat **Upozornění (nedokončené prvotní zálohování)**. Pokud chcete zobrazit další plánovaná úloha zálohování dojde, v části **Souhrn** klikněte na název zásady. V nabídce zásady zálohování se otevře a zobrazí čas plánovaného zálohování.
 
-10. K ochraně virtuálního počítače, klikněte na tlačítko **zálohovat nyní**. 
+10. K ochraně virtuálního počítače, klikněte na tlačítko **zálohovat nyní**.
 
   ![klikněte na Zálohovat nyní a spusťte prvotní zálohování](./media/backup-azure-vms-first-look-arm/backup-now-update.png)
 
-  Otevře se nabídka Zálohovat nyní. 
+  Otevře se nabídka Zálohovat nyní.
 
   ![ukazuje okno Zálohovat nyní](./media/backup-azure-vms-first-look-arm/backup-now-blade-short.png)
 
@@ -185,7 +185,7 @@ Chcete-li upravit nastavení replikace úložiště:
   ![Zobrazení konfigurace úložiště pro nový trezor](./media/backup-try-azure-backup-in-10-mins/set-storage-configuration-update.png)
 
 2. V nabídce Správa nového trezoru pomocí vertikálního a posuňte se dolů do části Správa, klikněte na tlačítko **infrastruktura zálohování** otevřete nabídku zálohování infrastruktury.
- 
+
    ![Nastavení konfigurace úložiště pro nový trezor](./media/backup-try-azure-backup-in-10-mins/set-storage-config-bkup-infra.png)
 
 3. V nabídce infrastruktura zálohování klikněte na tlačítko **konfigurace zálohování** otevřít **konfigurace zálohování** nabídky.
@@ -291,6 +291,11 @@ Spuštění úlohy prvotního zálohování:
   ![nastavte poslední den uchování bodu obnovení vytvořeného pomocí možnosti Zálohovat nyní](./media/backup-azure-vms-first-look-arm/backup-now-blade-calendar.png)
 
   Oznámení nasazení vás budou informovat o aktivaci úlohy zálohování a možnosti sledovat průběh úlohy na stránce Úlohy zálohování. V závislosti na velikosti virtuálního počítače může vytváření prvotní zálohy chvíli trvat.
+
+  > [!NOTE]
+  > Všechna data zálohovaných službou Azure Backup se šifrují při nečinnosti pomocí [šifrování služby Storage (SSE)](../storage/common/storage-service-encryption.md).
+  >
+  >
 
 6. Pokud chcete zobrazit nebo sledovat stav prvotní zálohy, na řídicím panelu trezoru na dlaždici **Úlohy zálohování** klikněte na **Probíhající**.
 

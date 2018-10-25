@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 09/25/2018
-ms.openlocfilehash: e01f48ebee9ade35b44242eba3b03e6e0a4faf46
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 36099a49cc9e6c810727606bb73d2669f1e0df79
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48802028"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49985688"
 ---
 # <a name="learn-about-automatic-sql-database-backups"></a>Další informace o automatických zálohách databáze SQL
 
@@ -25,24 +25,23 @@ SQL Database automaticky vytvoří zálohy databáze a používá Azure geografi
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
-## <a name="what-is-a-sql-database-backup"></a>Co je SQL Database zálohy?
+## <a name="what-is-a-sql-database-backup"></a>Co je SQL Database zálohy
 
-SQL Database využívá technologii SQL Server k vytvoření [úplné](https://msdn.microsoft.com/library/ms186289.aspx), [rozdílové](https://docs.microsoft.com/sql/relational-databases/backup-restore/differential-backups-sql-server), a [transakční protokol](https://msdn.microsoft.com/library/ms191429.aspx) obnovení zálohy pro účely bodu v čase (PITR). Zálohy protokolu transakce obvykle k dojde každých 5 až 10 minut a rozdílové zálohování obvykle každých 12 hodin, s frekvencí podle výpočetního prostředí a objem databázové aktivity. Zálohy transakčního protokolu, s úplné a rozdílové zálohy, bylo možné obnovit databázi konkrétního bodu za běhu na stejný server, který je hostitelem databáze. Zálohy jsou uložené v objektech BLOB úložiště RA-GRS, které se replikují do [spárovaném datovém centru](../best-practices-availability-paired-regions.md) pro ochranu před výpadku datového centra. Při obnovování databáze služby přijde na to, které úplného, rozdílového a transakce protokolu zálohy je nutné obnovit.
-
+SQL Database využívá technologii SQL Server k vytvoření [úplné](https://docs.microsoft.com/sql/relational-databases/backup-restore/full-database-backups-sql-server), [rozdílové](https://docs.microsoft.com/sql/relational-databases/backup-restore/differential-backups-sql-server), a [transakční protokol](https://docs.microsoft.com/sql/relational-databases/backup-restore/transaction-log-backups-sql-server) obnovení zálohy pro účely bodu v čase (PITR). Zálohy protokolu transakce obvykle k dojde každých 5 až 10 minut a rozdílové zálohování obvykle každých 12 hodin, s frekvencí podle výpočetního prostředí a objem databázové aktivity. Úplné a rozdílové zálohování a transakce zálohy protokolů umožňují obnovit databázi konkrétního bodu za běhu na stejný server, který je hostitelem databáze. Zálohy jsou uložené v objektech BLOB úložiště RA-GRS, které se replikují do [spárovaném datovém centru](../best-practices-availability-paired-regions.md) pro ochranu před výpadku datového centra. Při obnovování databáze služby přijde na to, které úplného, rozdílového a transakce protokolu zálohy je nutné obnovit.
 
 Můžete použít tyto zálohy na:
 
-* Obnovte databázi do doby uchování v daném okamžiku. Tato operace vytvoří novou databázi na stejném serveru jako je původní databáze.
-* Obnovení odstraněné databáze na čas, kdy byla odstraněna nebo libovolný čas v rámci doby uchování. Odstraněnou databázi můžete obnovit jen na stejném serveru, kde původní databáze byla vytvořena.
-* Obnovení databáze do jiné geografické oblasti. Umožňuje provést obnovení po havárii zeměpisné, když nelze přistupovat k serveru a databáze. Vytvoří novou databázi v jakékoli existující server kdekoli v celém světě. 
-* Obnovení databáze z konkrétní dlouhodobé zálohování v případě databáze má nakonfigurované zásady dlouhodobého uchovávání informací (LTR). To umožňuje obnovit starší verzi databáze, které by vyhovovaly žádosti o dodržování předpisů nebo spuštění starší verze aplikace. Zobrazit [dlouhodobé uchovávání](sql-database-long-term-retention.md).
-* Pokud chcete provést obnovení, najdete v článku [obnovit databázi ze zálohy](sql-database-recovery-using-backups.md).
+- Obnovte databázi do doby uchování v daném okamžiku. Tato operace vytvoří novou databázi na stejném serveru jako je původní databáze.
+- Obnovení odstraněné databáze na čas, kdy byla odstraněna nebo libovolný čas v rámci doby uchování. Odstraněnou databázi můžete obnovit jen na stejném serveru, kde původní databáze byla vytvořena.
+- Obnovení databáze do jiné geografické oblasti. Umožňuje provést obnovení po havárii zeměpisné, když nelze přistupovat k serveru a databáze. Vytvoří novou databázi v jakékoli existující server kdekoli v celém světě.
+- Obnovení databáze z konkrétní dlouhodobé zálohování v případě databáze má nakonfigurované zásady dlouhodobého uchovávání informací (LTR). To umožňuje obnovit starší verzi databáze, které by vyhovovaly žádosti o dodržování předpisů nebo spuštění starší verze aplikace. Zobrazit [dlouhodobé uchovávání](sql-database-long-term-retention.md).
+- Pokud chcete provést obnovení, najdete v článku [obnovit databázi ze zálohy](sql-database-recovery-using-backups.md).
 
 > [!NOTE]
-> Ve službě Azure storage termín *replikace* odkazuje na kopírování souborů z jednoho umístění do druhého. SQL *replikace databáze* odkazuje na udržování více sekundární databází, které jsou synchronizovány s primární databáze. 
-> 
+> Ve službě Azure storage termín *replikace* odkazuje na kopírování souborů z jednoho umístění do druhého. SQL *replikace databáze* odkazuje na udržování více sekundární databází, které jsou synchronizovány s primární databáze.
 
-## <a name="how-long-are-backups-kept"></a>Jak dlouho se zálohy uchovávat?
+## <a name="how-long-are-backups-kept"></a>Jak dlouho se zálohy uchovávat
+
 Každá záloha databáze SQL má výchozí dobu uchování, která je založená na úrovni služeb databáze a liší [nákupní model založený na DTU](sql-database-service-tiers-dtu.md) a [nákupní model založený na virtuálních jádrech](sql-database-service-tiers-vcore.md). Můžete aktualizovat období uchování zálohy pro databázi. Zobrazit [období uchování zálohy změnu](#how-to-change-backup-retention-period) další podrobnosti.
 
 Když odstraníte databáze, databáze SQL zachovají zálohy stejným způsobem, který by tomu bylo online databáze. Například pokud odstraníte databázi Basic, který má dobu uchování o délce sedm dní, zálohy, která je starší čtyř dní uložená pro další tři dny.
@@ -53,21 +52,28 @@ Pokud chcete zachovat zálohy po dobu delší než maximální doba uchováván�
 > Při odstranění serveru Azure SQL server, který je hostitelem databází SQL, odstraní se také všechny elastických fondů a databází, které patří k serveru a nelze ji obnovit. Nelze obnovit server odstranil. Ale pokud jste nakonfigurovali dlouhodobé uchovávání, zálohování databází s LTR nebudou odstraněny, a dají se obnovit tyto databáze.
 
 ### <a name="pitr-retention-period"></a>Doba uchování PITR
+
+#### <a name="dtu-based-purchasing-model"></a>Nákupní model založený na DTU
+
 Výchozí době uchování databáze vytvořené využitím nákupní model založený na DTU, závisí na úrovni služby:
 
-* Úroveň služeb Basic je 1 týden.
-* Úrovně služeb Standard je 5 týdnů.
-* Úroveň Premium služby je 5 týdnů.
+- Úroveň služeb Basic je 1 týden.
+- Úrovně služeb Standard je 5 týdnů.
+- Úroveň Premium služby je 5 týdnů.
+
+#### <a name="vcore-based-purchasing-model"></a>Model nákupu na základě virtuálních jader
 
 Pokud používáte [nákupní model založený na virtuálních jádrech](sql-database-service-tiers-vcore.md), období uchování zálohy výchozí nastavení je 7 dnů (i na Managed instance a logické servery).
-Na logickém serveru můžete [změnit období uchování zálohy 35 dnů](#how-to-change-backup-retention-period). Změna období uchování zálohy není k dispozici ve spravované instanci. 
 
-Pokud aktuální dobu uchovávání PITR snížíte, všechny existující zálohy, které jsou starší než novým obdobím uchovávání nadále již nebudou dostupné. 
+- Pro databáze ve fondu a jeden, můžete [změnit období uchování zálohy 35 dnů](#how-to-change-backup-retention-period).
+- Změna období uchování zálohy není k dispozici ve spravované instanci.
 
-Pokud zvýšíte aktuální dobu uchovávání PITR, SQL Database budete mít existující zálohy, dokud nebude dosaženo delší doba uchovávání dat.
+Pokud aktuální dobu uchovávání snížíte, všechny existující zálohy, které jsou starší než novou míru uchování období se již nebude k dispozici. Když aktuální dobu uchovávání prodloužit, SQL Database zachovají existující zálohy, dokud nebude dosaženo delší doba uchovávání dat.
 
-## <a name="how-often-do-backups-happen"></a>Jak často k dochází zálohy?
+## <a name="how-often-do-backups-happen"></a>Jak často k dochází zálohy
+
 ### <a name="backups-for-point-in-time-restore"></a>Zálohy pro obnovení k určitému bodu v čase
+
 SQL Database podporuje samoobslužné funkce pro obnovení k určitému bodu v čase (PITR) automaticky vytváří úplné zálohy, rozdílové zálohování a zálohování protokolů transakcí. Úplné zálohy databáze se vytvoří každý týden, rozdílovými zálohami prováděnými obecně vytvářejí každých 12 hodin a zálohy protokolu transakce obvykle vytvářejí každých 5 až 10 minut, s frekvencí podle výpočetního prostředí a objem databázové aktivity. Bude první úplná záloha je naplánováno ihned po vytvoření databáze. Obvykle hotové během 30 minut, ale může trvat déle, když je databáze významnou velikostí. Například prvotní zálohování může trvat déle v obnovené databáze nebo kopie databáze. Po dokončení první úplné zálohování všechny další zálohy jsou automaticky naplánované a spravované tiše na pozadí. Služba SQL Database určuje přesné načasování všechny zálohy databáze jako vyrovnává celkové zatížení systému.
 
 Zálohy PITR jsou geograficky redundantní a chráněný [mezi zónami replikace Azure Storage](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage)
@@ -75,7 +81,8 @@ Zálohy PITR jsou geograficky redundantní a chráněný [mezi zónami replikace
 Další informace najdete v tématu [v daném okamžiku obnovení](sql-database-recovery-using-backups.md#point-in-time-restore)
 
 ### <a name="backups-for-long-term-retention"></a>Pro dlouhodobé uchovávání záloh
-Hostované v logický Server SQL Database nabízí možnost konfigurace dlouhodobého uchovávání dat (LTR) úplných záloh po dobu až 10 let ve službě Azure blob storage. Pokud je povolené zásady LTR, týdenními úplnými zálohami se automaticky zkopírují do jiného kontejneru úložiště RA-GRS. Aby splnila požadavek na dodržení jiný, můžete vybrat různých období uchovávání záloh týdenní, měsíční nebo roční. Spotřeba úložiště závisí na vybrané četnosti zálohování a období uchovávání. Můžete použít [LTR pomocí cenové kalkulačky](https://azure.microsoft.com/pricing/calculator/?service=sql-database) odhadnout náklady na úložiště zleva doprava. 
+
+Hostované v logický Server SQL Database nabízí možnost konfigurace dlouhodobého uchovávání dat (LTR) úplných záloh po dobu až 10 let ve službě Azure blob storage. Pokud je povolené zásady LTR, týdenními úplnými zálohami se automaticky zkopírují do jiného kontejneru úložiště RA-GRS. Aby splnila požadavek na dodržení jiný, můžete vybrat různých období uchovávání záloh týdenní, měsíční nebo roční. Spotřeba úložiště závisí na vybrané četnosti zálohování a období uchovávání. Můžete použít [LTR pomocí cenové kalkulačky](https://azure.microsoft.com/pricing/calculator/?service=sql-database) odhadnout náklady na úložiště zleva doprava.
 
 Podobně jako PITR, zálohy zleva doprava jsou geograficky redundantní a chráněný [replikace Azure Storage mezi zónami](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage).
 
@@ -98,26 +105,32 @@ Při migraci databáze z úrovně služeb na základě DTU se výchozí PITR uch
 ## <a name="how-to-change-backup-retention-period"></a>Změna doby uchovávání záloh
 
 > [!Note]
-> Výchozí období uchovávání záloh (7 dní) nelze změnit na Managed Instance. 
+> Výchozí období uchovávání záloh (7 dní) nelze změnit na Managed Instance.
 
-Můžete změnit výchozí uchování pomocí rozhraní REST API nebo Powershellu. Podporované hodnoty jsou: 7, 14, 21, 28 nebo 35 dnů. Následující příklady ukazují, jak změnit PITR uchovávání informací na 28 dnů. 
+Můžete změnit výchozí uchování pomocí rozhraní REST API nebo Powershellu. Podporované hodnoty jsou: 7, 14, 21, 28 nebo 35 dnů. Následující příklady ukazují, jak změnit PITR uchovávání informací na 28 dnů.
 
 > [!NOTE]
 > Rozhraní API tez ovlivní pouze PITR dobu uchování. Pokud jste nakonfigurovali zleva doprava pro vaši databázi, nebude mít vliv. Zobrazit [dlouhodobého uchovávání záloh](sql-database-long-term-retention.md) podrobnosti o tom, jak změnit období uchování zleva doprava.
 
 ### <a name="change-pitr-backup-retention-period-using-powershell"></a>Změnit PITR období uchování zálohy pomocí Powershellu
+
 ```powershell
 Set-AzureRmSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroupName resourceGroup -ServerName testserver -DatabaseName testDatabase -RetentionDays 28
 ```
+
 > [!IMPORTANT]
-> Toto rozhraní API je součástí modulu Powershellu AzureRM.Sql od verze [4.7.0-preview](https://www.powershellgallery.com/packages/AzureRM.Sql/4.7.0-preview). 
+> Toto rozhraní API je součástí modulu Powershellu AzureRM.Sql od verze [4.7.0-preview](https://www.powershellgallery.com/packages/AzureRM.Sql/4.7.0-preview).
 
 ### <a name="change-pitr-retention-period-using-rest-api"></a>Změnit dobu uchování PITR pomocí rozhraní REST API
-**Ukázková žádost**
+
+#### <a name="sample-request"></a>Ukázkový požadavek
+
 ```http
 PUT https://management.azure.com/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/resourceGroup/providers/Microsoft.Sql/servers/testserver/databases/testDatabase/backupShortTermRetentionPolicies/default?api-version=2017-10-01-preview
 ```
-**Text žádosti**
+
+#### <a name="request-body"></a>Text žádosti
+
 ```json
 {
   "properties":{  
@@ -125,9 +138,11 @@ PUT https://management.azure.com/subscriptions/00000000-1111-2222-3333-444444444
    }
 }
 ```
-**Ukázková odpověď**
+
+#### <a name="sample-response"></a>Ukázková odezva
 
 Stavový kód: 200
+
 ```json
 {
   "id": "/subscriptions/00000000-1111-2222-3333-444444444444/providers/Microsoft.Sql/resourceGroups/resourceGroup/servers/testserver/databases/testDatabase/backupShortTermRetentionPolicies/default",
@@ -138,6 +153,7 @@ Stavový kód: 200
   }
 }
 ```
+
 Zobrazit [rozhraní REST API pro uchování zálohy](https://docs.microsoft.com/rest/api/sql/backupshorttermretentionpolicies) další podrobnosti.
 
 ## <a name="next-steps"></a>Další postup

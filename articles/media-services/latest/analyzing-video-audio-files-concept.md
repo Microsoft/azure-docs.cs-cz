@@ -9,20 +9,23 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 10/23/2018
 ms.author: juliako
-ms.openlocfilehash: 36c30e11e8b7bd8b3e8ae3e424649998dcfff5bb
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 90aa3551bb9e2d903fb0f66e3a9b464b0f4be928
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49380947"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49987609"
 ---
 # <a name="analyzing-video-and-audio-files"></a>Analýza videosouborů a zvukových souborů
 
-Azure Media Services v3 umožňuje extrakce poznatků z videí a zvukových souborů s modulem Video Indexer prostřednictvím přednastavení analyzátor v3 AMS (popsané v tomto článku). Pokud chcete podrobnější přehledy, použijte přímo Video Indexer. Chcete-li pochopit, kdy chcete využívat funkce Video Indexer a kdy. Media Services analyzer přednastavení, podívejte se [porovnání dokumentu](../video-indexer/compare-video-indexer-with-media-services-presets.md).
+Azure Media Services v3 umožňuje extrakce poznatků z videí a zvukových souborů s modulem Video Indexer prostřednictvím přednastavení analyzátor v3 AMS (popsané v tomto článku). Pokud chcete získat podrobnější přehledy, použijte přímo Video Indexer. Informace o tom, kdy je vhodnější použít Video Indexer a kdy předvolby analyzátoru Media Services, najdete v [dokumentu, který je porovnává](../video-indexer/compare-video-indexer-with-media-services-presets.md).
 
 Analyzovat obsah pomocí služby Media Services v3 přednastavení, vytvoříte **transformace** a odeslat **úlohy** , který používá jednu z těchto předvolby: **AudioAnalyzerPreset** nebo **VideoAnalyzerPreset**. V následujícím článku ukazuje, jak používat **VideoAnalyzerPreset**: [kurz: Analýza videa pomocí služby Azure Media Services](analyze-videos-tutorial-with-api.md).
+
+> [!NOTE]
+> Při použití Video nebo zvuk analyzátor přednastavení, pomocí webu Azure portal můžete nastavit váš účet mít 10 rezervované jednotky médií S3. Další informace najdete v tématu [škálování zpracování médií](../previous/media-services-scale-media-processing-overview.md).
 
 ## <a name="audioanalyzerpreset"></a>AudioAnalyzerPreset
 

@@ -17,14 +17,16 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: acdc3417643484fa98b16c4be1b83a44a8b73fc6
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: ccc5aa116d2f01b601e6b6b9aad456110b764856
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46962995"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49985722"
 ---
 # <a name="understanding-the-oauth2-implicit-grant-flow-in-azure-active-directory-ad"></a>Pochopení toku implicitní grant OAuth2 v Azure Active Directory (AD)
+
+[!INCLUDE [active-directory-develop-applies-v1](../../../includes/active-directory-develop-applies-v1.md)]
 
 Implicitní grant OAuth2 je notorious za poskytnutí s nejdelší seznam zabezpečením ve specifikaci OAuth2. A ještě, je přístup pomocí knihovny ADAL JS a ten, který doporučujeme při psaní aplikace SPA implementovat. Co nabízí? Je všechny na vás kompromisy: a jak ukázalo se, implicitního udělení, je nejlepším přístupem může zneužít pro aplikace, které využívají webové rozhraní API prostřednictvím JavaScriptu v prohlížeči.
 

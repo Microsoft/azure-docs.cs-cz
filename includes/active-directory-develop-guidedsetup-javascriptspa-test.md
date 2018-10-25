@@ -14,17 +14,19 @@ ms.workload: identity
 ms.date: 09/17/2018
 ms.author: nacanuma
 ms.custom: include file
-ms.openlocfilehash: 3cbcae9c02abaf11ded31304f97abdd74f905c6e
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 0c4908315bd7c0e4d83c7aba735cc4d102216a28
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48843267"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49988413"
 ---
 ## <a name="test-your-code"></a>Testování kódu
 
 ### <a name="test-with-node"></a>Test uzlu
+
 Pokud nepoužíváte Visual Studio, ujistěte se, že váš webový server je spuštěna.
+
 1. Konfigurace serveru tak, aby naslouchala na portu TCP, který je založen na umístění vašeho **index.html** souboru. U uzlu spusťte webový server tak, aby naslouchala na port spuštěním následujících příkazů na příkazovém řádku ve složce aplikace:
 
     ```bash
@@ -36,15 +38,14 @@ Pokud nepoužíváte Visual Studio, ujistěte se, že váš webový server je sp
 <p/><!-- -->
 
 ### <a name="test-with-visual-studio"></a>Testování pomocí sady Visual Studio
-Pokud používáte Visual Studio, je nutné vybrat projekt řešení a stiskněte klávesu **F5** ke spuštění projektu. V prohlížeči se otevře http://<span></span>localhost: {port} umístění a **Sign In** tlačítko.
 
+Pokud používáte Visual Studio, je nutné vybrat projekt řešení a stiskněte klávesu **F5** ke spuštění projektu. V prohlížeči se otevře http://<span></span>localhost: {port} umístění a **Sign In** tlačítko.
 
 ## <a name="test-your-application"></a>Testování aplikace
 
 Po načtení souboru index.html prohlížeče klikněte na tlačítko **Sign In**. Vám zobrazí výzva k přihlášení pomocí koncového bodu v2.0 Microsoft Azure Active Directory (Azure AD):
 
 ![Přihlaste se ke svému účtu JavaScript SPA](media/active-directory-develop-guidedsetup-javascriptspa-test/javascriptspascreenshot1.png)
-
 
 ### <a name="provide-consent-for-application-access"></a>Zadejte svůj souhlas pro přístup k aplikaci
 
@@ -53,6 +54,7 @@ Při prvním přihlášení do aplikace, budete vyzváni k souhlasíte s tím, a
 ![Zadejte svůj souhlas pro přístup k aplikaci](media/active-directory-develop-guidedsetup-javascriptspa-test/javascriptspaconsent.png)
 
 ### <a name="view-application-results"></a>Zobrazení výsledků aplikace
+
 Po přihlášení, které by měl zobrazit údajům vašeho uživatelského profilu vrátila v odpovědi rozhraní Microsoft Graph API, které jsou zobrazené na stránce.
 
 ![Očekávané výsledky z volání rozhraní Microsoft Graph API](media/active-directory-develop-guidedsetup-javascriptspa-test/javascriptsparesults.png)

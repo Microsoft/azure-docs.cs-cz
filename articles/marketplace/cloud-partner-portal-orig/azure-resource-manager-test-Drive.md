@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 19e3141bf7d28c7f781be21aedf14222e35bfd6c
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 90c434a37d3209e0c11a04425c337ec6930cfd00
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48809363"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025255"
 ---
 <a name="azure-resource-manager-test-drive"></a>Vyzkoušejte Azure Resource Manageru
 =================================
@@ -190,7 +190,7 @@ Ujistěte se, že zřetězí vašeho parametru nebo proměnnou řetězce (\'cont
 
 Například většina názvy prostředků nemůže začínat číslicí, ale jedinečnou funkci řetězce může vrátit řetězec, který začíná znakem číslici. Takže pokud používáte výstupní nezpracovaná jedinečný řetězec, nasazení se nezdaří. 
 
-Další informace o pravidlech pojmenování prostředků a omezení najdete v [tohoto článku] (https://docs.microsoft.com/azure/guidance/guidance-naming-conventions).
+Můžete najít další informace o pravidlech pojmenování prostředků a omezení v [v tomto článku](https://docs.microsoft.com/azure/guidance/guidance-naming-conventions).
 
 ### <a name="deployment-location"></a>Umístění nasazení
 
@@ -306,7 +306,7 @@ Další části a vyplňte je že nabízejí podrobné informace o vaše testova
 
 ![Testovací verze podrobné informace](./media/azure-resource-manager-test-drive/howtopub2.png)
 
-**Popis –** *vyžaduje* Toto je místo, kde píšete hlavní popis o tom, co je na vaše testovací verze. Zákazník Sem přijde na jaké scénáře vaše testovací verze se zahrnující informace o tomto produktu. 
+**Popis –** *vyžaduje* Toto je místo, kde píšete hlavní popis o tom, co je na vaše testovací verze. Zákazník Sem přijde na jaké scénáře vaše testovací verze se zahrnující informace o tomto produktu. 
 
 **Uživatelská příručka -** *vyžaduje* Toto je podrobný návod prostředí Test Drive. Zákazník se otevře toto a můžete projít přesně co chcete udělat v rámci jejich testovací verze. Je důležité, že tento obsah je snadno srozumitelný a postupujte podle! (Musí být soubor PDF)
 

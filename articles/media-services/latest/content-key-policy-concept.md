@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 10/22/2018
 ms.author: juliako
-ms.openlocfilehash: 355e5576dca72cbcabb30e9f8f09f69509dae92a
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 9a5ef8df9b1ca87430fb5e8d1da94f1899c4a856
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49380996"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49985858"
 ---
 # <a name="content-key-policies"></a>Zásady symetrických klíčů
 
@@ -97,7 +97,7 @@ while (currentPage.NextPageLink != null)
 }
 ```
 
-ZBÝVAJÍCÍ příklady naleznete v tématu [obsahu klíč zásady – seznam](https://docs.microsoft.com/rest/api/media/contentkeypolicies/contentkeypolicies_list)
+ZBÝVAJÍCÍ příklady naleznete v tématu [obsahu klíč zásady – seznam](https://docs.microsoft.com/rest/api/media/contentkeypolicies/list)
 
 ## <a name="next-steps"></a>Další postup
 

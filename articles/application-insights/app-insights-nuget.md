@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 10/16/2018
 ms.author: mbullwin
-ms.openlocfilehash: 96c9628807d2aae257e27432ea8d27a7d9325de0
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: b6188bbf89d9aee842d7f8e232a820b59c4d9e31
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49380948"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50023249"
 ---
 # <a name="application-insights-nuget-packages"></a>Balíčky Insights NuGet aplikací
 
@@ -30,7 +30,7 @@ Níže je uvedený aktuální seznam stabilní verzi balíčků NuGet pro Applic
 |Microsoft.ApplicationInsights.Agent.Intercept | 2.4.0 | Povolí zachycení volání metod | [Stáhněte si balíček](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Agent.Intercept/) |
 | Microsoft.ApplicationInsights.DependencyCollector | 2.8.0 | Application Insights závislost Collector pro aplikace .NET. Toto je závislý balíček Application Insights balíčků specifických pro platformu a poskytuje Automatický sběr telemetrických závislostí. | [Stáhněte si balíček](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector/) |
 | Microsoft.ApplicationInsights.PerfCounterCollector | 2.8.0 | Application Insights výkon čítače Collector umožňuje odesílání dat shromažďovaných čítačů výkonu do Application Insights. | [Stáhněte si balíček](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector/) |
-| Microsoft.ApplicationInsights.Web | 2.8.0 | Webové aplikace Application Insights pro .NET | [Stáhněte si balíček] (https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) |
+| Microsoft.ApplicationInsights.Web | 2.8.0 | Webové aplikace Application Insights pro .NET | [Stáhněte si balíček](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) |
 | Microsoft.ApplicationInsights.WindowsServer | 2.8.0 | Balíček aplikace NuGet Insights systému Windows Server poskytuje Automatický sběr hodnot telemetrie application insights pro aplikace .NET. Tento balíček je možné jako závislý balíček Application Insights balíčků specifických pro platformu, nebo jako samostatného balíčku pro aplikace .NET, které nejsou pokryty všemi balíčků specifických pro platformy (jako u rolí pracovního procesu .NET). | [Stáhněte si balíček](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer/)  
 | Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel | 2.8.0 | Poskytuje kanál telemetrická data do systému Windows Server sadu SDK Application Insights, který se zachová telemetrických dat v případě offline scénářů. | [Stáhněte si balíček](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel/) |
 

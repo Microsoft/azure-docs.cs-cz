@@ -6,16 +6,16 @@ author: jeffgilb
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 10/19/2018
+ms.date: 10/22/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
 keywords: ''
-ms.openlocfilehash: 6548693b91283665704be8fc83a483a9d20dc41b
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 8a33d4edb4107b936c36a744bb082c02b7830868
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49470542"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024439"
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Integrace datových center Azure Stack – Identity
 Azure Stack pomocí Azure Active Directory (Azure AD) nebo Active Directory Federation Services (AD FS) můžete nasadit jako zprostředkovatele identity. Volba je třeba provést před nasazením služby Azure Stack. Nasazení pomocí služby AD FS se také označuje jako při nasazování služby Azure Stack v odpojeném režimu.
@@ -53,7 +53,6 @@ Poslední krok je nakonfigurován nového vlastníka pro výchozí předplatné 
 
 Požadavky:
 
-
 |Komponenta|Požadavek|
 |---------|---------|
 |Graph|Microsoft Active Directory 2012/2012 R2/2016|
@@ -64,7 +63,6 @@ Požadavky:
 Graf podporuje pouze integraci s jednou doménovou strukturou Active Directory. Pokud existuje více doménových struktur, pouze struktuře zadaný v konfiguraci se použije k načtení uživatelů a skupin.
 
 Tyto informace se vyžaduje jako vstup pro automatizaci parametry:
-
 
 |Parametr|Popis|Příklad:|
 |---------|---------|---------|
@@ -96,14 +94,14 @@ Volitelně můžete vytvořit účet služby Graph v existující služby Active
 
 Pro tento postup použijte počítač v síti datového centra, který může komunikovat s koncovým bodem privilegovaných ve službě Azure Stack.
 
-2. Otevřete relaci Windows Powershellu se zvýšenými oprávněními (Spustit jako správce) a připojit k IP adrese privileged koncového bodu. Použijte přihlašovací údaje pro **CloudAdmin** k ověření.
+1. Otevřete relaci Windows Powershellu se zvýšenými oprávněními (Spustit jako správce) a připojit k IP adrese privileged koncového bodu. Použijte přihlašovací údaje pro **CloudAdmin** k ověření.
 
    ```PowerShell  
    $creds = Get-Credential
    Enter-PSSession -ComputerName <IP Address of ERCS> -ConfigurationName PrivilegedEndpoint -Credential $creds
    ```
 
-3. Teď, když jste připojeni k privilegovaným koncový bod, spusťte následující příkaz: 
+2. Teď, když jste připojeni k privilegovaným koncový bod, spusťte následující příkaz: 
 
    ```PowerShell  
    Register-DirectoryService -CustomADGlobalCatalog contoso.com
@@ -210,6 +208,9 @@ Tento postup použijte počítač, který může komunikovat s privileged koncov
    Set-ServiceAdminOwner -ServiceAdminOwnerUpn "administrator@contoso.com"
    ```
 
+   > [!Note]  
+   > Při otočení certifikát na existující služby AD FS (účet služby tokenů zabezpečení) musí nastavení integrace služby AD FS znovu. Integrace musíte nastavit i v případě, že je dostupný koncový bod metadat nebo byl nakonfigurován tím, že poskytuje soubor metadat.
+
 ## <a name="configure-relying-party-on-existing-ad-fs-deployment-account-sts"></a>Nakonfigurovat předávající stranu na existující nasazení služby AD FS (účet služby tokenů zabezpečení)
 
 Společnost Microsoft poskytuje skript, který nakonfiguruje vztah důvěryhodnosti předávající strany, včetně pravidel transformace deklarací identity. Použití skriptu není povinné, jako příkazy můžete spustit ručně.
@@ -274,7 +275,7 @@ Pokud se rozhodnete ručně spuštěním příkazů, postupujte podle těchto kr
    Add-ADFSRelyingPartyTrust -Name AzureStack -MetadataUrl "https://YourAzureStackADFSEndpoint/FederationMetadata/2007-06/FederationMetadata.xml" -IssuanceTransformRulesFile "C:\ClaimIssuanceRules.txt" -AutoUpdateEnabled:$true -MonitoringEnabled:$true -enabled:$true -TokenLifeTime 1440
    ```
 
-   > [!IMPORTANT]
+   > [!IMPORTANT]  
    > Konfigurace autorizačních pravidel vystavování, při použití systému Windows Server 2012 nebo 2012 R2 AD FS musíte použít modul snap-in konzoly MMC AD FS.
 
 4. Pokud používáte Internet Explorer nebo Microsoft Edge prohlížeč pro přístup k Azure zásobníku, musí ignorovat token vazby. V opačném případě se nezdaří pokusy o přihlášení. Na vaše instance služby AD FS nebo členem farmy spusťte následující příkaz:

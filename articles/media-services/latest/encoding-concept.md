@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 10/15/2018
 ms.author: juliako
-ms.openlocfilehash: 452502d5d6a0a35f642de7e14b2a7ee7fc573bfa
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: bee74f0399def142915aa26d15ecfa671925f405
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49378665"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025578"
 ---
 # <a name="encoding-with-azure-media-services"></a>Kódování pomocí Azure Media Services
 
@@ -26,7 +26,7 @@ Kódování pomocí Media Services v3, budete muset vytvořit transformace a úl
 
 Kódování pomocí Azure Media Services, použijete přednastavení kodér zjistit, jak by se měly zpracovat vstupními multimediálními soubory. Můžete například zadat rozlišení a/nebo počet zvukové kanály, které chcete v kódovaném obsahu. 
 
-Můžete začít rychle s jedním z doporučených předdefinované předvolby založená na osvědčených postupech oboru nebo můžete vytvářet vlastní přednastavení cílit na konkrétní scénář nebo zařízení požadavky. Další informace najdete v tématu [kódování pomocí Azure Media Services](encoding-concept.md). 
+Můžete začít rychle s jedním z doporučených předdefinované předvolby založená na osvědčených postupech oboru nebo můžete vytvářet vlastní přednastavení cílit na konkrétní scénář nebo zařízení požadavky. Další informace najdete v tématu [kódovat s vlastní transformace](customize-encoder-presets-how-to.md). 
 
 ## <a name="built-in-presets"></a>Předdefinované předvolby
 

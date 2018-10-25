@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 09/19/2018
 ms.reviewer: mbullwin
 ms.author: daviste
-ms.openlocfilehash: 7e0a68efc93d0f907edfb38dbc548ac95a35b3e1
-ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
+ms.openlocfilehash: 4b24ab406cc9cdbc3ce03ee203ec034843d5630a
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46465805"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49986419"
 ---
 # <a name="monitor-resource-groups-with-azure-monitor-preview"></a>Sledování skupiny prostředků pomocí Azure monitoru (preview)
 
@@ -100,7 +100,7 @@ Zobrazí se dotaz Log Analytics, která řídí vizualizaci s tabulkou.
 
 Můžete upravit dotaz přímo. Nebo můžete použít jako referenci a vypůjčit z něj při návrhu vlastní parametry sešitu.
 
-### <a name="investigate-performance"></a>Prověřit výkon
+### <a name="investigate-performance"></a>Vyšetřování výkonu
 
 Výkon nabízí svůj vlastní galerie sešity. Pro službu App Service nabízí předem připravených sešitu výkonu aplikace následujícím způsobem:
 
@@ -113,7 +113,12 @@ V takovém případě Pokud zvolíte možnost úpravy uvidíte, že tuto sadu vi
 ## <a name="troubleshooting"></a>Řešení potíží
 
 ### <a name="enabling-access-to-alerts"></a>Povolení přístupu k upozornění
-Azure Monitor pro skupiny prostředků musí určitá oprávnění pro přístup k upozornění stavu prostředků ve vaší skupině prostředků. Pokud se zobrazí chybová zpráva při načítání výstrahy, nemáte dostatečná oprávnění. Požádejte správce, aby vám udělil **vlastníka** nebo **Přispěvatel** role pro předplatné obsahující skupiny prostředků.
+
+Výstrahy zobrazíte ve službě Azure Monitor pro skupiny prostředků, někdo s roli vlastníka nebo přispěvatele pro tento odběr musí otevřete Azure Monitor pro skupiny prostředků pro libovolnou skupinu prostředků v předplatném. Tato možnost umožní všem uživatelům s oprávněním ke čtení, aby se zobrazovaly výstrahy ve službě Azure Monitor pro skupiny prostředků pro všechny skupiny prostředků v předplatném. Pokud budete mít roli vlastníka nebo přispěvatele, aktualizujte tuto stránku za pár minut.
+
+Azure Monitor pro skupiny prostředků závisí na systému pro správu výstrah monitorování Azure načíst stav výstrahy. Pro každou skupinu prostředků a předplatném není ve výchozím nastavení nakonfigurovaná Správa výstrah a lze povolit pouze uživatelem s rolí přispěvatele nebo vlastníka. Může to být buď povoleno:
+* Otevřete Azure Monitor pro skupiny prostředků pro libovolnou skupinu prostředků v předplatném.
+* Nebo tak, že přejdete do předplatného, kliknutím na **poskytovatelů prostředků**, pak levým na **zaregistrujte Alerts.Management**.
 
 ## <a name="next-steps"></a>Další postup
 

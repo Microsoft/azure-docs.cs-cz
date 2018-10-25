@@ -2,20 +2,20 @@
 title: Instalace rozšíření Durable Functions a ukázky – Azure
 description: Zjistěte, jak nainstalovat rozšíření Durable Functions pro službu Azure Functions pro vývoj portálu nebo vývoj sady Visual Studio.
 services: functions
-author: cgillum
+author: kashimiz
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 08/31/2018
+ms.date: 10/23/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 2eb838bcb9d3f64d0bbf4657c516adb50d103223
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: 6bbf232fc17b9acfd4e8cd84a0cb1346ab8ea9b5
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47585301"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49986809"
 ---
 # <a name="install-the-durable-functions-extension-and-samples-azure-functions"></a>Instalace rozšíření Durable Functions a ukázky (Azure Functions)
 
@@ -45,7 +45,7 @@ Visual Studio nyní poskytuje nejlepší prostředí pro vývoj aplikací, kter�
 Použijte stejné pokyny jako pro spouštění s ukázkou, ale proveďte následující kroky, nemusíte ho stahovat *ZIP* souboru:
 
 1. Vytvořte projekt aplikace Function App.
-2. Hledání následující NuGet package odkaz s využitím *spravovat balíčky NuGet* a přidejte ho do projektu: Microsoft.Azure.WebJobs.Extensions.DurableTask v1.6.0
+2. Hledání následující NuGet package odkaz s využitím *spravovat balíčky NuGet* a přidejte ho do projektu: Microsoft.Azure.WebJobs.Extensions.DurableTask v1.6.2
    
 ## <a name="visual-studio-code"></a>Visual Studio Code
 
@@ -75,12 +75,12 @@ Visual Studio Code poskytuje místní vývojové prostředí pro všechny hlavn�
 3. Spuštěním následujícího příkazu nainstalujte trvalý rozšíření Azure Functions okno Příkazový řádek nebo terminálu:
 
     ```bash
-    func extensions install -p Microsoft.Azure.WebJobs.Extensions.DurableTask -v 1.6.0
+    func extensions install -p Microsoft.Azure.WebJobs.Extensions.DurableTask -v 1.6.2
     ```
 4. Spuštěním následujícího příkazu nainstalujte rozšíření Azure Functions Twilio okno Příkazový řádek nebo terminálu:
 
     ```bash
-    func extensions install -p Microsoft.Azure.WebJobs.Extensions.Twilio -v 3.0.0-beta8
+    func extensions install -p Microsoft.Azure.WebJobs.Extensions.Twilio -v 3.0.0
     ```
 5. Spustit emulátor úložiště Azure nebo aktualizace *local.settings.json* soubor s skutečné připojovacího řetězce služby Azure Storage.
 6. Otevřete projekt ve Visual Studio Code. 
@@ -96,14 +96,14 @@ Visual Studio Code poskytuje místní vývojové prostředí pro všechny hlavn�
 2. Přejděte na počítači se [složce samples JavaScript](https://github.com/Azure/azure-functions-durable-extension/tree/master/samples/javascript). 
 3. Spuštěním následujícího příkazu nainstalujte trvalý rozšíření Azure Functions okno Příkazový řádek nebo terminálu
 
-    ```
+    ```bash
     func extensions install
     ```
     > [!NOTE] 
     > To vyžaduje, aby [.NET Core SDK](https://www.microsoft.com/net/download) být nainstalovaný na počítači
 4. Obnovení balíčků npm spuštěním následujícího příkazu okno Příkazový řádek nebo terminálu:
     
-    ```
+    ```bash
     npm install
     ``` 
 5. Aktualizace *local.settings.json* soubor s připojovacím řetězcem z účtu služby Azure storage pro `AzureWebJobsStorage`.  Tento účet úložiště se použije pro funkce trvalý stav.
@@ -119,13 +119,13 @@ Visual Studio Code poskytuje místní vývojové prostředí pro všechny hlavn�
 1. V příkazu výzvy / terminálu přejděte do složky, který bude hostovat vaši aplikaci function app.
 3. Vytvoření projektu aplikace Function App spuštěním následujícího příkazu:
 
-    ```
+    ```bash
     func init
     ``` 
 4. Spustit emulátor úložiště Azure (jenom Windows) nebo aktualizovat *local.settings.json* soubor s skutečné připojovacího řetězce služby Azure Storage pro `AzureWebJobsStorage`.
 5. Potom spuštěním následujícího příkazu vytvořte novou funkci a postupujte podle pokynů průvodce:
 
-    ```
+    ```bash
     func new
     ```
     >[!IMPORTANT]

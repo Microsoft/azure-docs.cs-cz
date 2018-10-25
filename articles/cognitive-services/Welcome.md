@@ -9,12 +9,12 @@ ms.component: ''
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: nitinme
-ms.openlocfilehash: 5fcd625edf913e6629bfedb7ce7a6b5fe204af28
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: f7a68aab4959c3793c7688504d73d2b539a26f83
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48901426"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025391"
 ---
 # <a name="what-are-azure-cognitive-services"></a>Co jsou Azure Cognitive Services?
 
@@ -74,11 +74,11 @@ Azure Cognitive Services jsou rozhraní API sady SDK a služby, které jsou k di
 
 ## <a name="use-free-trials"></a>Pomocí bezplatných zkušebních verzí
 
-[Registrace bezplatné zkušební verze] (https://azure.microsoft.com/try/cognitive-services/ "Poskytovateli Nápověda") zabere jenom e-mailu a pomocí několika jednoduchých kroků. Budete potřebovat Account Microsoft, pokud ho ještě nemáte. Pro každé rozhraní API požadovaná obdržíte jedinečný pár klíčů. Druhá je jenom za chodu. S nikým Nesdílejte tajné kódy. Zkušební verze mají obě míry omezit, transakcí za sekundu nebo minutu a měsíční limit využití. Transakce je jednoduše volání rozhraní API. Můžete upgradovat na placené úrovně k odemknutí omezení.
+[Registrace bezplatné zkušební verze](https://azure.microsoft.com/try/cognitive-services/ "poskytovateli pomáhají") zabere jenom e-mailu a pomocí několika jednoduchých kroků. Budete potřebovat Account Microsoft, pokud ho ještě nemáte. Pro každé rozhraní API požadovaná obdržíte jedinečný pár klíčů. Druhá je jenom za chodu. S nikým Nesdílejte tajné kódy. Zkušební verze mají obě míry omezit, transakcí za sekundu nebo minutu a měsíční limit využití. Transakce je jednoduše volání rozhraní API. Můžete upgradovat na placené úrovně k odemknutí omezení.
 
 ## <a name="subscription-management"></a>Správa předplatného
 
-Jakmile se přihlásíte pomocí svého Account Microsoft, můžete přístup k [předplatná] (https://www.microsoft.com/cognitive-services/en-us/subscriptions "Předplatné") Chcete-li zobrazit tyto produkty používáte kvóty zbývající a možnost přidávat další produkty k vašemu předplatnému.
+Jakmile se přihlásíte pomocí svého Account Microsoft, dostanete [mé odběry](https://www.microsoft.com/cognitive-services/en-us/subscriptions "Moje předplatné") zobrazit produkty používáte kvóty zbývající a možnost přidávat další produkty ke svému předplatnému.
 
 ## <a name="upgrade-to-unlock-limits"></a>Upgrade na odemknout omezení
 

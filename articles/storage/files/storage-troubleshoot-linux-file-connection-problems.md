@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: 87190a7f46a209ae66ca47d9346ed4b5929ac8fd
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 2ae116649de02c5602aa50d706f6a88ac5872960
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394197"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025850"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>Řešení potíží s Azure Files v Linuxu
 
@@ -180,7 +180,7 @@ ln -s linked -n t
 ln: failed to create symbolic link 't': Operation not supported
 ```
 ### <a name="solution"></a>Řešení
-Klient Linux CIFS nepodporuje vytváření symbolické odkazy z referencí Windows prostřednictvím protokolu SMB2/3. Klient Linux v současné době podporuje jiný styl symbolické odkazy volá [Mishall + francouzština symbolických odkazů] (https://wiki.samba.org/index.php/UNIX_Extensions#Minshall.2BFrench_symlinks) pro obě vytvořit a sledovat operace. Zákazníci, kteří potřebují symbolické odkazy můžete použít možnost "mfsymlinks" připojení. "mfsymlinks" se doporučuje obvykle, protože to je také formát používaný čtečkou Mac.
+Klient Linux CIFS nepodporuje vytváření symbolické odkazy z referencí Windows prostřednictvím protokolu SMB2/3. Klient Linux v současné době podporuje jiný styl symbolické odkazy volá [Mishall + francouzština symbolických odkazů](https://wiki.samba.org/index.php/UNIX_Extensions#Minshall.2BFrench_symlinks) pro obě vytvořit a sledovat operace. Zákazníci, kteří potřebují symbolické odkazy můžete použít možnost "mfsymlinks" připojení. "mfsymlinks" se doporučuje obvykle, protože to je také formát používaný čtečkou Mac.
 
 Aby bylo možné používat symbolických odkazů, přidejte následující na konec příkazu CIFS připojení:
 

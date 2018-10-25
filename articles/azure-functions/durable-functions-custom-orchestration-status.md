@@ -2,24 +2,27 @@
 title: Stav vlastní Orchestrace v Durable Functions – Azure
 description: Zjistěte, jak nakonfigurovat a používat stav vlastní Orchestrace pro Durable Functions.
 services: functions
-author: kadimitr
+author: kashimiz
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 04/24/2018
+ms.date: 10/23/2018
 ms.author: azfuncdf
-ms.openlocfilehash: c8eb2be6836e11ddbaed81970024ea7200ea819d
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: b8017288adb75c990113b0f2ff5ba29a1f1e0a18
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44093087"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49986657"
 ---
 # <a name="custom-orchestration-status-in-durable-functions-azure-functions"></a>Stav vlastní Orchestrace v Durable Functions (Azure Functions)
 
 Stav vlastní Orchestrace umožňuje nastavit vlastní stav hodnotu funkce nástroje orchestrator. Tento stav se poskytuje prostřednictvím rozhraní API HTTP GetStatus nebo `DurableOrchestrationClient.GetStatusAsync` rozhraní API.
+
+> [!NOTE]
+> Stav vlastní Orchestrace pro jazyk JavaScript, bude k dispozici v nadcházející verzi.
 
 ## <a name="sample-use-cases"></a>Ukázka případy použití 
 
