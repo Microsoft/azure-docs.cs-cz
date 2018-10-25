@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/31/2017
 ms.author: mikeray
-ms.openlocfilehash: 58ec400faee04f8624822bbcb5325fca7006c578
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 10b4fec92752e44048454e8b63e90fd9b7fecba0
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38698630"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50023181"
 ---
 # <a name="configure-an-external-listener-for-always-on-availability-groups-in-azure"></a>Konfigurace externího naslouchacího procesu pro skupiny dostupnosti Always On v Azure
 > [!div class="op_single_selector"]
@@ -37,7 +37,7 @@ Toto téma ukazuje, jak konfigurace naslouchacího procesu pro skupiny dostupnos
 Skupiny dostupnosti mohou obsahovat replik, které jsou v místním, Azure, nebo span lokálně i Azure pro hybridní konfigurace. Azure repliky mohou být uloženy ve stejné oblasti nebo v několika oblastech pomocí více virtuálních sítí (VNets). Následující postup předpokládá, že jste již [nakonfigurovat skupinu dostupnosti](../classic/portal-sql-alwayson-availability-groups.md) ale neprovedli konfiguraci naslouchacího procesu.
 
 ## <a name="guidelines-and-limitations-for-external-listeners"></a>Pokyny a omezení pro externí naslouchací procesy
-Při nasazování pomocí cloudové služby stydké virtuální IP adresy, mějte na paměti následující pokyny o naslouchacího procesu skupiny dostupnosti v Azure:
+Při nasazování pomocí adresy veřejných virtuálních IP adres cloudové služby, mějte na paměti následující pokyny o naslouchacího procesu skupiny dostupnosti v Azure:
 
 * Naslouchací proces skupiny dostupnosti je podporován v systému Windows Server 2008 R2, Windows Server 2012 a Windows Server 2012 R2.
 * Klientská aplikace se musí nacházet na jinou cloudovou službu než ten, který obsahuje skupiny dostupnosti virtuálních počítačů. Azure nepodporuje vrácení přímá odpověď ze serveru s klientem a serverem v rámci stejné cloudové služby.

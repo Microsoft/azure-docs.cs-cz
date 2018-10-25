@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/10/2017
 ms.author: harijayms
-ms.openlocfilehash: 9cd388bf231bce547f4d9aca474e93bf6753d134
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 77b19b708b32003edc4555745a233a01d6f60b71
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49386701"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50026275"
 ---
 # <a name="azure-instance-metadata-service"></a>Služby Azure Instance Metadata
 
@@ -76,8 +76,8 @@ V následující tabulce je odkaz jiné formáty dat, které můžou podporovat 
 
 Rozhraní API | Výchozí formát dat | Další formáty
 --------|---------------------|--------------
-/instance | json | text
-/scheduledevents | json | žádný
+/instance | JSON | text
+/scheduledevents | JSON | žádný
 
 Pro přístup k odpovědi jiné než výchozí formát, zadejte jako parametr řetězce dotazu v žádosti o požadovanému formátu. Příklad:
 
@@ -299,9 +299,9 @@ subscriptionId | Předplatné Azure pro virtuální počítač | 2017-08-01
 tags | [Značky](../../azure-resource-manager/resource-group-using-tags.md) pro váš virtuální počítač  | 2017-08-01
 resourceGroupName | [Skupina prostředků](../../azure-resource-manager/resource-group-overview.md) pro váš virtuální počítač | 2017-08-01
 placementGroupId | [Skupiny umístění](../../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) sady škálování vašeho virtuálního počítače | 2017-08-01
-plán | [Plán] (https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) pro virtuální počítač v něm je Imagí Azure Marketplace, obsahuje název, produktu a vydavatel | 2017-04-02
+plán | [Plánování](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) pro virtuální počítač v něm je Imagí Azure Marketplace, obsahuje název, produktu a vydavatel | 2017-04-02
 publicKeys | Kolekce veřejného klíče [https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#sshpublickey] přiřazená k virtuálnímu počítači a cesty | 2017-04-02
-vmScaleSetName | [Název škálovací sady virtuálního počítače] (.. /.. / virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) sady škálování vašeho virtuálního počítače | 2017-12-01
+vmScaleSetName | [Název škálovací sady virtuálního počítače](../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) sady škálování vašeho virtuálního počítače | 2017-12-01
 zóna | [Zóna dostupnosti](../../availability-zones/az-overview.md) vašeho virtuálního počítače | 2017-12-01 
 IPv4/privateIpAddress | Místní adresa IPv4 z virtuálního počítače | 2017-04-02
 IPv4/publicIpAddress | Veřejnou IPv4 adresu virtuálního počítače | 2017-04-02

@@ -3,17 +3,17 @@ title: Řešení problémů se zálohováním sdílených složek Azure
 description: Tento článek obsahuje informace o řešení potíží, ke kterým dochází při ochraně sdílených složek Azure.
 services: backup
 ms.service: backup
-author: markgalioto
-ms.author: markgal
-ms.date: 2/21/2018
+author: rayne-wiselman
+ms.author: raynew
+ms.date: 10/23/2018
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: 334cea710d185a6774e28ea3459b3ca1ad9f846f
-ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
+ms.openlocfilehash: faf229d67a5b4a7a15774d6e01af1c5706d18058
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36959793"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50023147"
 ---
 # <a name="troubleshoot-problems-backing-up-azure-file-shares"></a>Řešení problémů se zálohováním sdílených složek Azure
 K řešení problémů a chyb, ke kterým dochází při používání zálohování sdílených složek Azure, můžete využít informace uvedené v následujících tabulkách.
@@ -61,7 +61,7 @@ Následující tabulka se týká konfigurace zálohování:
 | Obnovení selhalo, protože některý ze souborů ve zdroji neexistuje. | <ul><li> Data bodu obnovení neobsahují vybrané položky. Pokud chcete obnovit soubory, zadejte správný seznam souborů. <li> Snímek sdílené složky odpovídající bodu obnovení se ručně odstranil. Vyberte jiný bod obnovení zkuste operaci obnovení zopakovat. |
 | Probíhá jiná úloha obnovení do stejného cíle. | <ul><li>Zálohování sdílených složek nepodporuje paralelní obnovení do stejné cílové sdílené složky. <li>Počkejte na dokončení stávajícího obnovení a zkuste to znovu. Pokud v trezoru služby Recovery Services úlohu zálohování nenajdete, zkontrolujte další trezory služby Recovery Services ve stejném předplatném. |
 | Operace obnovení selhala, protože cílová sdílená složka je plná. | Navyšte kvótu velikosti cílové sdílené složky, aby byla dostatečná pro data obnovení, a zkuste operaci zopakovat. |
-| Operace obnovení selhala, protože došlo k chybě při provádění operací před obnovením s prostředky služby File Sync přidruženými k cílové sdílené složce. | Zkuste operaci zopakovat později, a pokud se problém nevyřeší, kontaktujte podporu Azure. |
+| Operace obnovení selhala, protože došlo k chybě při provádění operací před obnovením s prostředky Synchronizace souborů přidruženými k cílové sdílené složce. | Zkuste operaci zopakovat později, a pokud se problém nevyřeší, kontaktujte podporu Azure. |
 | Jeden nebo více souborů nebylo možné úspěšně obnovit. Další informace najdete v seznamu souborů, u kterých došlo k chybě, v cestě uvedené výše. | <ul> <li> Důvody selhání obnovení jsou uvedené v souboru (cestu najdete v podrobnostech o úloze). Vyřešte tyto důvody a zopakujte operaci obnovení pouze pro soubory, u kterých došlo k chybě. <li> Běžné důvody selhání obnovení souborů: <br/> – Ujistěte se, že se soubory, u kterých došlo k chybě, aktuálně nepoužívají. <br/> – V nadřazeném adresáři existuje adresář se stejným názvem jako soubor, u kterého došlo k chybě. |
 
 ## <a name="see-also"></a>Viz také

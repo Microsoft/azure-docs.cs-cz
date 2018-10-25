@@ -8,14 +8,14 @@ ms.service: cosmos-db
 ms.component: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: reference
-ms.date: 05/21/2018
+ms.date: 10/24/2018
 ms.author: maquaran
-ms.openlocfilehash: 553917a29b3564fff71d6ab994ec199891cbaae7
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: f09430aeb38e6762729167494a23096c7bc5ca85
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49409097"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50023947"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>Stáhněte si informačního kanálu procesor změnu .NET SDK: A poznámky k verzi
 > [!div class="op_single_selector"]
@@ -43,11 +43,13 @@ ms.locfileid: "49409097"
 
 ### <a name="v2-builds"></a>sestavení v2
 
+### <a name="a-name221221"></a><a name="2.2.1"/>2.2.1
+* Opravili jsme Estimator výpočtu pro hlavní server s více účty a nový formát tokenu relace.
+
 ### <a name="a-name220220"></a><a name="2.2.0"/>2.2.0
 * Přidání podpory pro zapůjčení dělené kolekce. Klíč oddílu musí být definován jako /id.
 * Vedlejší narušující změna: metody rozhraní IChangeFeedDocumentClient a třída ChangeFeedDocumentClient byly změněny na zahrnout RequestOptions a CancellationToken parametry. IChangeFeedDocumentClient je pokročilá rozšíření bod, který umožní, abychom vám poskytli vlastní implementaci klientem dokumentu pomocí Change Feed Processor, třeba vyplnění DocumentClient a zachytit všechna volání do něj udělat dodatečné trasování, zpracování chyb , atd. S touto aktualizací se kód, který implementovat IChangeFeedDocumentClient muset být změněna, aby zahrnovala nové parametry v implementaci.
 * Vylepšení diagnostiky podverze.
-
 
 ### <a name="a-name210210"></a><a name="2.1.0"/>2.1.0
 * Přidání nového rozhraní API, úloha&lt;IReadOnlyList&lt;RemainingPartitionWork&gt; &gt; IRemainingWorkEstimator.GetEstimatedRemainingWorkPerPartitionAsync(). To je možné získat odhad práce pro každý oddíl.
@@ -140,6 +142,7 @@ Jakoukoli žádost do služby Cosmos DB pomocí vyřazeno sady SDK budou odmítn
 
 | Verze | Datum vydání | Datum vyřazení z provozu |
 | --- | --- | --- |
+| [2.2.1](#2.2.1) |24. října 2018 |--- |
 | [1.3.3](#1.3.3) |08. května 2018 |--- |
 | [1.3.2](#1.3.2) |18. dubna 2018 |--- |
 | [1.3.1](#1.3.1) |13. března 2018 |--- |

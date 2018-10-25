@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 5931958d17ea119e58c066a78a44169be2b9f451
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 7d7de02c96b9a17144b446b9ed86ebcbacd51162
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39627521"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025001"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Možnosti zasílání zpráv o správě hesel Azure AD
 
@@ -23,7 +23,7 @@ Po nasazení, řada organizací chtít vědět, jak nebo pokud samoobslužné re
 
 ![Vytváření sestav][Reporting]
 
-Sestavy, které existují v [portálu Azure portal] (https://portal.azure.com/):
+Sestavy, které existují v můžete odpovědět na následující otázky [webu Azure portal](https://portal.azure.com/):
 
 > [!NOTE]
 > Musí být [globálního správce](../users-groups-roles/directory-assign-admin-roles.md), a je nutné vyjádřit výslovný souhlas pro tato data shromáždit jménem svojí organizace. Chcete-li vyjádřit výslovný souhlas, musíte přejít **generování sestav** kartu nebo auditování protokoluje aspoň jednou. Dokud to neuděláte data nejsou shromažďována pro vaši organizaci.
@@ -46,7 +46,7 @@ Pokud jste uživatel Power BI, je balíček obsahu Azure AD, která zahrnuje sna
 
 V Azure portal ještě neznáte vylepšili jsme způsobu, jakým se zobrazí resetování hesla a činnost registrace pro resetování hesla. Použijte následující, které kroky k nalezení heslo resetovat a událostí registrace pro resetování hesla:
 
-1. Přejděte [webu Azure portal](https://portal.azure.com).
+1. Přejděte na web [Azure Portal](https://portal.azure.com).
 2. Vyberte **všechny služby** v levém podokně.
 3. Vyhledejte **Azure Active Directory** v seznamu služeb a vyberte ji.
 4. Vyberte **Uživatelé a skupiny**.

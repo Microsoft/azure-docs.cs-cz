@@ -6,14 +6,14 @@ author: cherylmc
 tags: azure-resource-manager
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 09/06/2018
+ms.date: 10/24/2018
 ms.author: cherylmc
-ms.openlocfilehash: d524555330653a90f52505c22f50f4d677ab6632
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 3254f0c26e21bc7ba71fc23362f263cb126ea3b0
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49387255"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50026360"
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-native-azure-certificate-authentication-azure-portal"></a>Konfigurace připojení typu Point-to-Site k virtuální síti s použitím nativního ověřování certifikátů Azure: Azure Portal
 
@@ -73,7 +73,7 @@ Po vytvoření virtuální sítě můžete přidat IP adresu serveru DNS, aby by
 [!INCLUDE [create-gateway](../../includes/vpn-gateway-add-gw-p2s-rm-portal-include.md)]
 
 >[!NOTE]
->Skladová položka Basic nepodporuje ověřování IKEv2 ani RADIUS.
+>Skladová položka Basic nepodporuje ověřování IKEv2 ani RADIUS. Pokud plánujete s Mac klienti připojovat k virtuální síti, nepoužívejte základní SKU.
 >
 
 ## <a name="generatecert"></a>5. Generování certifikátů
@@ -172,7 +172,7 @@ Konfigurační soubory klienta VPN obsahují nastavení pro konfiguraci zaříze
 
 V dialogovém okně Síť vyhledejte klientský profil, který chcete použít, zadejte nastavení ze souboru [VpnSettings.xml](point-to-site-vpn-client-configuration-azure-cert.md#installmac) a pak klikněte na **Připojit**.
 
-Podrobné pokyny najdete v části [Instalace – Mac (OS X)](https://docs.microsoft.com/azure/vpn-gateway/point-to-site-vpn-client-configuration-azure-cert#installmac).
+Zkontrolujte [nainstalovat – Mac (OS X)](https://docs.microsoft.com/azure/vpn-gateway/point-to-site-vpn-client-configuration-azure-cert#installmac) podrobné pokyny. Pokud máte potíže s připojením, ověřte, že bránu virtuální sítě není využívající základní SKU. Základní SKU není podporována pro klienty systému Mac.
 
   ![Připojení v systému Mac](./media/vpn-gateway-howto-point-to-site-rm-ps/applyconnect.png)
 

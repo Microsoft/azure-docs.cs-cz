@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/22/2017
 ms.author: bbenz
 ms.custom: mvc
-ms.openlocfilehash: 0baab86c0cb76bfeecb30cdb62c968a476e402b9
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: db1005bbce25b0fa3fec76e6f9428a4cdd6fa4aa
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44296767"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024359"
 ---
 # <a name="tutorial-build-a-java-and-mysql-web-app-in-azure"></a>Kurz: Vytvoření webové aplikace Java využívající databázi MySQL v Azure
 
@@ -28,7 +28,7 @@ ms.locfileid: "44296767"
 > Tento článek nasadí aplikaci do služby App Service ve Windows. Pokud chcete nasadit službu App Service v _Linuxu_, přečtěte si téma [Nasazení kontejnerizované aplikace Spring Boot do Azure](/java/azure/spring-framework/deploy-containerized-spring-boot-java-app-with-maven-plugin).
 >
 
-Tento kurz předvádí postup při vytváření webové aplikace Java v Azure a jejím připojení k databázi MySQL. Až budete hotovi, budete mít aplikaci [Spring Boot](https://projects.spring.io/spring-boot/) ukládající data ve službě [Azure Database for MySQL](https://docs.microsoft.com/azure/mysql/overview) spuštěné v [Azure App Service Web Apps](app-service-web-overview.md).
+Tento kurz předvádí postup při vytváření webové aplikace Java v Azure a jejím připojení k databázi MySQL. Až budete hotovi, budete mít aplikaci [Spring Boot](https://projects.spring.io/spring-boot/) ukládající data ve službě [Azure Database for MySQL](../mysql/overview.md) spuštěné v [Azure App Service Web Apps](app-service-web-overview.md).
 
 ![Aplikace Java spuštěná ve službě Azure App Service](./media/app-service-web-tutorial-java-mysql/appservice-web-app.png)
 
@@ -122,7 +122,7 @@ Zastavte aplikaci stisknutím `Ctrl`+`C` v terminálu.
 
 ## <a name="create-an-azure-mysql-database"></a>Vytvoření databáze MySQL Azure
 
-V tomto kroku pomocí [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) vytvoříte instanci služby [Azure Database for MySQL](../mysql/quickstart-create-mysql-server-database-using-azure-cli.md). V pozdější části tohoto kurzu nakonfigurujete ukázkovou aplikaci tak, aby používala tuto databázi.
+V tomto kroku pomocí [Azure CLI](/cli/azure/install-azure-cli) vytvoříte instanci služby [Azure Database for MySQL](../mysql/quickstart-create-mysql-server-database-using-azure-cli.md). V pozdější části tohoto kurzu nakonfigurujete ukázkovou aplikaci tak, aby používala tuto databázi.
 
 ### <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
@@ -282,7 +282,7 @@ az webapp config set --name <app_name> --resource-group myResourceGroup --java-v
 
 Před spuštěním ukázkové aplikace nastavte v nastavení webové aplikace používání databáze MySQL Azure, kterou jste vytvořili v Azure. Tyto vlastnosti se zpřístupňují webové aplikaci jako proměnné prostředí a přepisují hodnoty nastavené v souboru application.properties uvnitř zabalené webové aplikace. 
 
-Ve službě Cloud Shell nastavte pomocí příkazu [`az webapp config appsettings`](https://docs.microsoft.com/cli/azure/webapp/config/appsettings) v CLI nastavení aplikace:
+Ve službě Cloud Shell nastavte pomocí příkazu [`az webapp config appsettings`](/cli/azure/webapp/config/appsettings) v CLI nastavení aplikace:
 
 ```azurecli-interactive
 az webapp config appsettings set --settings SPRING_DATASOURCE_URL="jdbc:mysql://<mysql_server_name>.mysql.database.azure.com:3306/tododb?verifyServerCertificate=true&useSSL=true&requireSSL=false" --resource-group myResourceGroup --name <app_name>
@@ -299,7 +299,7 @@ az webapp config appsettings set --settings SPRING_DATASOURCE_PASSWORD=Javaapp_p
 ### <a name="get-ftp-deployment-credentials"></a>Získání přihlašovacích údajů pro nasazení přes protokol FTP 
 K nasazení aplikace do služby Azure App Service můžete použít různé způsoby včetně protokolu FTP, místního Gitu, GitHubu, Azure DevOps nebo BitBucketu. Pro účely tohoto příkladu pomocí protokolu FTP nasaďte do služby Azure App Service soubor .WAR, který jste sestavili dříve na svém místním počítači.
 
-Pokud chcete určit, jaké přihlašovací údaje máte předat do webové aplikace v příkazu FTP, použijte ve službě Cloud Shell příkaz [`az appservice web deployment list-publishing-profiles`](https://docs.microsoft.com/cli/azure/webapp/deployment#az-appservice-web-deployment-list-publishing-profiles): 
+Pokud chcete určit, jaké přihlašovací údaje máte předat do webové aplikace v příkazu FTP, použijte ve službě Cloud Shell příkaz [`az webapp deployment list-publishing-profiles`](/cli/azure/webapp/deployment#az-webapp-deployment-list-publishing-profiles): 
 
 ```azurecli-interactive
 az webapp deployment list-publishing-profiles --name <app_name> --resource-group myResourceGroup --query "[?publishMethod=='FTP'].{URL:publishUrl, Username:userName,Password:userPWD}" --output json
@@ -440,25 +440,25 @@ Tyto karty na stránce zobrazují mnoho skvělých funkcí, které můžete do s
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud tyto prostředky nepotřebujete pro další kurz (viz [Další kroky](#next)), můžete je odstranit spuštěním následujícího příkazu ve službě Cloud Shell: 
-  
+Pokud tyto prostředky nepotřebujete pro další kurz (viz [Další kroky](#next)), můžete je odstranit spuštěním následujícího příkazu ve službě Cloud Shell: 
+  
 ```azurecli-interactive
-az group delete --name myResourceGroup 
-``` 
+az group delete --name myResourceGroup 
+``` 
 
 <a name="next"></a>
 
-## <a name="next-steps"></a>Další kroky
+## Next steps
 
 > [!div class="checklist"]
-> * Vytvořit databázi MySQL v Azure
-> * Připojit k MySQL ukázkovou aplikaci Java
-> * Nasadit aplikaci do Azure
-> * Aktualizace a opětovné nasazení aplikace
-> * Streamovat diagnostické protokoly z Azure
-> * Spravovat aplikaci na webu Azure Portal
+> * Create a MySQL database in Azure
+> * Connect a sample Java app to the MySQL
+> * Deploy the app to Azure
+> * Update and redeploy the app
+> * Stream diagnostic logs from Azure
+> * Manage the app in the Azure portal
 
-V dalším kurzu se dozvíte, jak namapovat na aplikaci vlastní název DNS.
+Advance to the next tutorial to learn how to map a custom DNS name to the app.
 
 > [!div class="nextstepaction"] 
-> [Mapování existujícího vlastního názvu DNS na Azure Web Apps](app-service-web-tutorial-custom-domain.md)
+> [Map an existing custom DNS name to Azure Web Apps](app-service-web-tutorial-custom-domain.md)

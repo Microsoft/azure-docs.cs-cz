@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/03/2018
 ms.author: v-daljep
 ms.component: ''
-ms.openlocfilehash: ea289abff7a40b0528f4cb88402594879ba6c437
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 3c80007a8188fb239a13aaa0ccc9ef2237a2d8d1
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49649648"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025663"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Monitorování Azure SQL Database pomocí Azure SQL Analytics (Preview)
 
@@ -147,11 +147,48 @@ Doba trvání dotazu a dotaz čeká perspektivy mohli porovnat výkon jakýkoli 
 
 ![Azure SQL Analytics dotazů](./media/log-analytics-azure-sql/azure-sql-sol-queries.png)
 
-### <a name="pricing"></a>Ceny
+## <a name="permissions"></a>Oprávnění
 
-Při řešení používat, platí spotřeby telemetrická data diagnostiky nad volných jednotek ingestování přidělené každý měsíc, přečtěte si téma [přehledu cen Log Analytics](https://azure.microsoft.com/en-us/pricing/details/monitor). Volných jednotek příjem dat, které jsou k dispozici povolit bezplatné sledování několik databází každý měsíc. Všimněte si, že aktivní databáze s větším zatížení bude ingestovat další data a nečinné databáze. Vyberte pracovní prostor OMS v navigační nabídce Azure SQL Analytics, a následným výběrem využití a odhadované náklady můžou snadno monitorovat spotřebu příjem dat v řešení.
+Použití Azure SQL Analytics budou uživatelé na minimální nutnost být udělena role čtenáře v Azure. Tato role se však není povolit uživatelům zobrazit text dotazu nebo provádět jakékoli automatického ladění akce. Volnější role v Azure, která vám umožní pomocí řešení v nejširším rozsahu jsou vlastník, Přispěvatel, Přispěvatel databází SQL nebo Přispěvatel SQL serveru. Můžete také chtít zvažte možnost vytvořit vlastní roli na portálu s konkrétní oprávnění požadovaná pouze pro použití služby Azure SQL Analytics a bez přístupu ke správě jiných zdrojů.
 
-### <a name="analyze-data-and-create-alerts"></a>Analýza dat a vytvářet výstrahy
+### <a name="creating-a-custom-role-in-portal"></a>Vytvořením vlastní role na portálu
+
+Rozpozná, že některé organizace přinutit striktní oprávnění ovládací prvky v Azure, najdete následující skript prostředí PowerShell umožňuje vytvoření vlastní role "SQL Analytics monitorování operátor" na webu Azure portal s minimální oprávnění čtení a zápisu vyžaduje použití Azure SQL Analytics k jeho nejširším rozsahu.
+
+Nahraďte v "{SubscriptionId}" níže uvedený skript s ID vašeho předplatného Azure a spusťte tento skript přihlášení jako roli vlastníka nebo přispěvatele v Azure.
+
+   ```powershell
+    Connect-AzureRmAccount
+    Select-AzureRmSubscription {SubscriptionId}
+    $role = Get-AzureRmRoleDefinition -Name Reader
+    $role.Name = "SQL Analytics Monitoring Operator"
+    $role.Description = "Lets you monitor database performance with Azure SQL Analytics as a reader. Does not allow change of resources."
+    $role.IsCustom = $true
+    $role.Actions.Add("Microsoft.SQL/servers/databases/read");
+    $role.Actions.Add("Microsoft.SQL/servers/databases/topQueries/queryText/*");
+    $role.Actions.Add("Microsoft.Sql/servers/databases/advisors/read");
+    $role.Actions.Add("Microsoft.Sql/servers/databases/advisors/write");
+    $role.Actions.Add("Microsoft.Sql/servers/databases/advisors/recommendedActions/read");
+    $role.Actions.Add("Microsoft.Sql/servers/databases/advisors/recommendedActions/write");
+    $role.Actions.Add("Microsoft.Sql/servers/databases/automaticTuning/read");
+    $role.Actions.Add("Microsoft.Sql/servers/databases/automaticTuning/write");
+    $role.Actions.Add("Microsoft.Sql/servers/databases/*");
+    $role.Actions.Add("Microsoft.Sql/servers/advisors/read");
+    $role.Actions.Add("Microsoft.Sql/servers/advisors/write");
+    $role.Actions.Add("Microsoft.Sql/servers/advisors/recommendedActions/read");
+    $role.Actions.Add("Microsoft.Sql/servers/advisors/recommendedActions/write");
+    $role.Actions.Add("Microsoft.Resources/deployments/write");
+    $role.AssignableScopes = "/subscriptions/{SubscriptionId}"
+    New-AzureRmRoleDefinition $role
+   ```
+
+Po vytvoření nové role tuto roli přiřaďte každý uživatel, který je potřeba udělit vlastní oprávnění k používání Azure SQL Analytics.
+
+## <a name="analyze-data-and-create-alerts"></a>Analýza dat a vytvářet výstrahy
+
+Analýza dat ve službě Azure SQL Analytics vychází [jazyk Log Analytics](./query-language/get-started-queries.md) pro vaše vlastní dotazování a generování sestav. Najdete popis dostupných dat shromážděných z databáze prostředků pro vlastní dotazování v [metrik a protokolů, které jsou k dispozici](../sql-database/sql-database-metrics-diag-logging.md#metrics-and-logs-available).
+
+Automatické výstrahy v řešení je založena na psaní dotazu Log Analytics, která aktivuje upozornění na podmínky splněny. Podrobnosti najdete níže několik příkladů na dotazy Log Analytics, při které výstrahy může být také nastaven v řešení.
 
 ### <a name="creating-alerts-for-azure-sql-database"></a>Vytvoření výstrah pro službu Azure SQL Database
 
@@ -245,6 +282,10 @@ AzureDiagnostics
 > [!NOTE]
 > - Předběžné požadavky nastavení toto upozornění je, že monitorovaná Managed Instance má streamování ResourceUsageStats protokol povolen do řešení.
 > - Tento dotaz vyžaduje pravidlo upozornění pro nastavit tak, aby aktivovat výstrahu, když existují výsledky (> 0 výsledků) z dotazu, které označuje, že na Managed Instance existuje podmínka. Výstup je procento využití úložiště na Managed Instance.
+
+### <a name="pricing"></a>Ceny
+
+Při řešení používat, platí spotřeby telemetrická data diagnostiky nad volných jednotek ingestování přidělené každý měsíc, přečtěte si téma [přehledu cen Log Analytics](https://azure.microsoft.com/en-us/pricing/details/monitor). Volných jednotek příjem dat, které jsou k dispozici povolit bezplatné sledování několik databází každý měsíc. Všimněte si, že aktivní databáze s větším zatížení bude ingestovat další data a nečinné databáze. Vyberte pracovní prostor OMS v navigační nabídce Azure SQL Analytics, a následným výběrem využití a odhadované náklady můžou snadno monitorovat spotřebu příjem dat v řešení.
 
 ## <a name="next-steps"></a>Další postup
 

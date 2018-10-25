@@ -6,14 +6,14 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 10/09/2018
+ms.date: 10/24/2018
 ms.author: cherylmc
-ms.openlocfilehash: c96841274f73be766b0157f036746599cc836dd3
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 324225600ed52c523228f54c540c810a15ffd5d7
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49068039"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50023232"
 ---
 # <a name="expressroute-global-reach-preview"></a>Zajištění globálního dosahu ExpressRoute (Preview)
 ExpressRoute je privátní a odolná proti selháním způsob, jak připojit místní sítě k Microsoft Cloud. Mnoho cloudových služeb Microsoftu, jako je například Azure, Office 365 a Dynamics 365 můžete přistupovat z vašeho privátního datového centra nebo vaší podnikové síti. Například může mít firemní pobočky v kalifornském San Franciscu okruh ExpressRoute v Silicon Valley a jinou firemní pobočku v Londýně se okruh ExpressRoute ve stejném městě. Obou poboček může mít vysokorychlostní připojení k prostředkům Azure v oblasti USA – západ a Velká Británie – jih. Firemní pobočky však nelze vyměňovat data navzájem přímo. Jinými slovy 10.0.1.0/24 může odesílat data do 10.0.3.0/24 a 10.0.4.0/24, ale ne k 10.0.2.0/24.
@@ -32,17 +32,18 @@ Globální dosah ExpressRoute slouží k doplnění WAN implementace poskytovate
 ## <a name="availability"></a>Dostupnost 
 Globální dosah ExpressRoute současné době se podporuje v následujících umístěních.
 
-* Spojené státy
-* Spojené království 
-* Irsko
-* Nizozemsko
 * Austrálie
-* Hongkong 
+* Francie
+* Hongkong
+* Irsko
 * Japonsko
+* Nizozemsko
+* Spojené Kindom
+* Spojené státy
 
 Okruhů ExpressRoute, musí být vytvořeny na [umístění partnerského vztahu ExpressRoute](expressroute-locations.md) ve výše uvedené země či oblasti. Povolit globální dosah ExpressRoute mezi [různých geopolitických oblastí](expressroute-locations.md), vaší obvody musí být SKU úrovně Premium.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 1. [Další informace o ExpressRoute globální dosah](expressroute-faqs.md)
 2. [Jak povolit ExpressRoute globální dosah](expressroute-howto-set-global-reach.md)
 3. [Propojení okruhu ExpressRoute k virtuální síti Azure](expressroute-howto-linkvnet-arm.md)
