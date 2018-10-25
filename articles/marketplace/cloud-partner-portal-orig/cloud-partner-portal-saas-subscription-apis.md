@@ -89,7 +89,7 @@ Metoda HTTP
 
 *URL požadavku*
 
-**https://login.microsoftonline.com/*{ID Tenanta}*  /oauth2/token**
+**https://login.microsoftonline.com/*{ID Tenanta}*/oauth2/token**
 
 *Parametr URI*
 
@@ -225,7 +225,7 @@ Koncový bod přihlásit k odběru umožňuje uživatelům spustit předplatné 
 
 **PUT**
 
-**https://marketplaceapi.microsoft.com/api/saas/subscriptions/*{subscriptionId}* ? api-version = 2017-04-15**
+**https://marketplaceapi.microsoft.com/api/saas/subscriptions/*{subscriptionId}*?api-version=2017-04-15**
 
 | **Název parametru**  | **Popis**                                       |
 |---------------------|-------------------------------------------------------|
@@ -290,7 +290,7 @@ Změna koncového bodu mu umožní převést jejich aktuálně předplacenému p
 
 **OPRAVA**
 
-**https://marketplaceapi.microsoft.com/api/saas/subscriptions/*{subscriptionId}* ? api-version = 2017-04-15**
+**https://marketplaceapi.microsoft.com/api/saas/subscriptions/*{subscriptionId}*?api-version=2017-04-15**
 
 | **Název parametru**  | **Popis**                                       |
 |---------------------|-------------------------------------------------------|
@@ -356,7 +356,7 @@ Akce odstranění na koncovém bodu přihlásit k odběru umožňuje uživateli 
 
 **DELETE**
 
-**https://marketplaceapi.microsoft.com/api/saas/subscriptions/*{subscriptionId}* ? api-version = 2017-04-15**
+**https://marketplaceapi.microsoft.com/api/saas/subscriptions/*{subscriptionId}*?api-version=2017-04-15**
 
 | **Název parametru**  | **Popis**                                       |
 |---------------------|-------------------------------------------------------|
@@ -407,7 +407,7 @@ Tento koncový bod umožňuje uživateli sledovat stav aktivovaných asynchronn�
 
 **GET**
 
-**https://marketplaceapi.microsoft.com/api/saas/operations/*{ID} operace* ? api-version = 2017-04-15**
+**https://marketplaceapi.microsoft.com/api/saas/operations/*{IDoperace}*?api-version=2017-04-15**
 
 | **Název parametru**  | **Popis**                                       |
 |---------------------|-------------------------------------------------------|
@@ -477,7 +477,7 @@ Přihlášení k odběru akce Get na koncový bod umožňuje uživateli získat 
 
 **GET**
 
-**https://marketplaceapi.microsoft.com/api/saas/subscriptions/*{subscriptionId}* ? api-version = 2017-04-15**
+**https://marketplaceapi.microsoft.com/api/saas/subscriptions/*{subscriptionId}*?api-version=2017-04-15**
 
 | **Název parametru**  | **Popis**                                       |
 |---------------------|-------------------------------------------------------|
