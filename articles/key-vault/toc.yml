@@ -88,12 +88,15 @@ items:
     href: /python/api/overview/azure/key-vault?view=azure-python
   - name: REST
     href: /rest/api/keyvault
+    items:
+    - name: Ověřování, požadavky a odpovědi
+      href: authentication-requests-and-responses.md
+    - name: Běžné parametry a záhlaví
+      href: common-parameters-and-headers.md
   - name: Vývoj
     items:
-    - name: Průvodce pro vývojáře pro Key Vault
+    - name: Průvodce vývojáře
       href: key-vault-developers-guide.md
-    - name: Omezení služby
-      href: key-vault-service-limits.md
     - name: Klíče chráněné pomocí HSM
       href: key-vault-hsm-protected-keys.md
     - name: Migrace na .NET 2.0
@@ -118,25 +121,31 @@ items:
   items:
   - name: Získávání dovedností pomocí Microsoft Learn
     href: /learn/browse/?products=azure-key-vault
-  - name: Přehled služby
-    href: https://azure.microsoft.com/services/key-vault/
-  - name: Ověřování, požadavky a odpovědi
-    href: authentication-requests-and-responses.md
-  - name: Běžné parametry a záhlaví
-    href: common-parameters-and-headers.md
   - name: Zákaznická data
     href: key-vault-customer-data.md
-  - name: Blog
+  - name: Služba
+    items:
+    - name: Ceny
+      href: https://azure.microsoft.com/pricing/details/key-vault/
+    - name: Dostupnost v oblastech
+      href: https://azure.microsoft.com/global-infrastructure/services/?products=key-vault
+    - name: Poznámky k verzi
+      href: key-vault-versions.md
+    - name: Smlouvy o úrovni služeb (SLA)
+      href: https://azure.microsoft.com/support/legal/sla/key-vault/
+    - name: Omezení služby
+      href: key-vault-service-limits.md
+    - name: Stav služby
+      href: https://azure.microsoft.com/status/
+    - name: Aktualizace služeb
+      href: https://azure.microsoft.com/updates/?product=key-vault
+  - name: Týmový blog
     href: http://blogs.technet.com/b/kv/
-  - name: Ceny
-    href: https://azure.microsoft.com/pricing/details/key-vault/
-- name: Poznámky k verzi
-  href: key-vault-versions.md
 - name: Zpětná vazba k produktu
   href: https://feedback.azure.com/forums/906355-azure-key-vault
-ms.openlocfilehash: 542c3ce29d4d663e4569829e4f551ab6f751db3b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 727a44d903d481974a95635f092468754085db1b
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46953187"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50084964"

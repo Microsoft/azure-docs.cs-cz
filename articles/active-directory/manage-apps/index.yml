@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: ee1e311644052bb7c09b44fb55973bfa7c0a0c11
-ms.sourcegitcommit: 3150596c9d4a53d3650cc9254c107871ae0aab88
+ms.openlocfilehash: 534548185da45b750ac48c74a9ecf9e122a7042d
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47419130"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50084802"
 documentType: LandingData
 title: Dokumentace ke správě aplikací
 metadata:
@@ -20,7 +20,16 @@ metadata:
   ms.date: 09/14/2018
   ms.author: barbkess
 abstract:
-  description: Zjistěte, jak spravovat a nasazovat aplikace s využitím Azure Active Directory.
+  description: Azure Active Directory poskytuje zabezpečený a hladký přístup ke cloudovým a místním aplikacím. Navíc není potřeba spravovat hesla. Vaši koncoví uživatelé se mohou jednou přihlásit a získat přístup k Office 365 a tisícům dalších aplikací. Další informace o správě a nasazení aplikací najdete v našich průvodcích, šablonách a rychlých zprovozněních.
+  aside:
+    image:
+      alt: 
+      height: 110
+      src: media/index/video.png
+      width: 250
+    title: Zabezpečení přístupu pro vaše aplikace s využitím Azure AD (1:47)
+    href: https://youtu.be/BSUuXXcJKCk/
+    width: 250
 sections:
 - title: Zprovoznění během 5 minut
   items:

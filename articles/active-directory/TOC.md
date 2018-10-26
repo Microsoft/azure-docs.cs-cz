@@ -266,7 +266,6 @@
 
 #### Oprávnění
 ##### [Volba oprávnění pro rozhraní API](develop/perms-for-given-api.md)
-##### [Udělení oprávnění pro mou aplikaci](develop/registration-config-grant-permissions-how-to.md)
 ##### [Delegovaná oprávnění versus oprávnění aplikace](develop/delegated-and-app-perms.md)
 ##### [Souhlas pro aplikaci](develop/consent-framework.md)
 
@@ -313,14 +312,6 @@
 ### Vlastní názvy domén
 #### [Rychlý start](fundamentals/add-custom-domain.md)
 ### [Správa adresáře](fundamentals/active-directory-administer.md)
-### [Enterprise State Roaming](active-directory-windows-enterprise-state-roaming-overview.md)
-#### [Povolení](active-directory-windows-enterprise-state-roaming-enable.md)
-#### [Nastavení zásad skupiny](active-directory-windows-enterprise-state-roaming-group-policy-settings.md)
-#### [Nastavení Windows 10](active-directory-windows-enterprise-state-roaming-windows-settings-reference.md)
-#### [Nejčastější dotazy](active-directory-windows-enterprise-state-roaming-faqs.md)
-#### [Řešení problémů](active-directory-windows-enterprise-state-roaming-troubleshooting.md)
-
-
 ### [Integrace místních identit pomocí Azure AD Connect](hybrid/whatis-hybrid-identity.md)
 
 ### [Konfigurace životnosti tokenů](develop/active-directory-configurable-token-lifetimes.md)
