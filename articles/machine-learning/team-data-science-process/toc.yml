@@ -55,12 +55,6 @@ items:
       href: predict-twitter-sentiment.md
     - name: Klasifikace mínění s využitím balíčku AML pro analýzu textů
       href: predict-twitter-sentiment-amltextpackage.md
-    - name: Klasifikace příjmů v USA
-      href: ../desktop-workbench/scenario-tdsp-classifying-us-incomes.md
-      maintainContext: true
-    - name: Rozpoznávání biomedicínských entit
-      href: ../desktop-workbench/scenario-tdsp-biomedical-recognition.md
-      maintainContext: true
     - name: Klasifikace obrázků rakoviny kůže s využitím balíčku AML pro zpracování obrazu
       href: isic-image-classification.md
       maintainContext: true
@@ -214,13 +208,10 @@ items:
         maintainContext: true
   - name: Nasazení modelů v produkčním prostředí
     href: deploy-models-in-production.md
-  - name: Použití TDSP v Azure ML
-    href: ../desktop-workbench/how-to-use-tdsp-in-azure-ml.md
-    maintainContext: true
 - name: Související
   items:
-  - name: Azure Machine Learning – AML
-    href: https://docs.microsoft.com/azure/machine-learning/service/
+  - name: Azure Machine Learning
+    href: ../service/
   - name: Sada Microsoft Cognitive Toolkit – CNTK
     href: https://docs.microsoft.com/cognitive-toolkit/
     maintainContext: true
@@ -278,9 +269,9 @@ items:
       href: http://stackoverflow.com/questions/tagged/azure-machine-learning
     - name: Videa
       href: https://azure.microsoft.com/resources/videos/index/?services=machine-learning
-ms.openlocfilehash: 44e7c5626158c0ead56f4e36853fce85813b905c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 7a0e7527b62fec7e3c0d65ad59f53709a13039eb
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46989698"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50092470"

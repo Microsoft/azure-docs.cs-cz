@@ -9,12 +9,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/20/2017
 ms.author: mahender
-ms.openlocfilehash: 3d6d4f2e3d89e1d8abf647b21e35fcdfec020b1d
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 04786ce69b880abcd5508b9653d9ff30efcc187c
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44722261"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50087215"
 ---
 # <a name="microsoft-graph-bindings-for-azure-functions"></a>Vazeb Microsoft Graphu, Azure functions
 
@@ -82,7 +82,7 @@ Tato část obsahuje následující témata:
 * [Příklad](#auth-token---example)
 * [Atributy](#auth-token---attributes)
 * [Konfigurace](#auth-token---configuration)
-* [Využití](#auth-token---usage)
+* [Použití](#auth-token---usage)
 
 ### <a name="auth-token---example"></a>Ověřovací token – příklad
 
@@ -127,9 +127,10 @@ Kód skriptu jazyka C# na základě tokenu pro volání HTTP pro Microsoft Graph
 ```csharp
 using System.Net; 
 using System.Net.Http; 
-using System.Net.Http.Headers; 
+using System.Net.Http.Headers;
+using Microsoft.Extensions.Logging; 
 
-public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, string graphToken, TraceWriter log)
+public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, string graphToken, ILogger log)
 {
     HttpClient client = new HttpClient();
     client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", graphToken);
@@ -171,7 +172,7 @@ Následující příklad získá informace o uživatelském profilu.
 Kód jazyka JavaScript na základě tokenu pro volání HTTP pro Microsoft Graph a vrátí výsledek.
 
 ```js
-const rp = require('request-promise');
+const rp = require('request-promise');
 
 module.exports = function (context, req) {
     let token = "Bearer " + context.bindings.graphToken;
@@ -238,7 +239,7 @@ Tato část obsahuje následující témata:
 * [Příklad](#excel-input---example)
 * [Atributy](#excel-input---attributes)
 * [Konfigurace](#excel-input---configuration)
-* [Využití](#excel-input---usage)
+* [Použití](#excel-input---usage)
 
 ### <a name="excel-input---example"></a>Aplikace Excel (vstup) – příklad
 
@@ -283,9 +284,10 @@ Následující kód skriptu jazyka C# načte obsah zadané tabulky a vrátí už
 ```csharp
 using System.Net;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Primitives; 
+using Microsoft.Extensions.Primitives;
+using Microsoft.Extensions.Logging;
 
-public static IActionResult Run(HttpRequest req, string[][] excelTableData, TraceWriter log)
+public static IActionResult Run(HttpRequest req, string[][] excelTableData, ILogger log)
 {
     return new OkObjectResult(excelTableData);
 }
@@ -359,7 +361,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 Tato vazba vyžaduje následující oprávnění Azure AD:
 |Prostředek|Oprávnění|
 |--------|--------|
-|Microsoft Graph|Umožňuje získat oprávnění ke čtení souborů uživatelů.|
+|Microsoft Graph|Čtení souborů uživatele|
 
 Vazba zveřejňuje následující typy funkcí .NET:
 - [String []]
@@ -385,7 +387,7 @@ Tato část obsahuje následující témata:
 * [Příklad](#excel-output---example)
 * [Atributy](#excel-output---attributes)
 * [Konfigurace](#excel-output---configuration)
-* [Využití](#excel-output---usage)
+* [Použití](#excel-output---usage)
 
 ### <a name="excel-output---example"></a>Aplikace Excel výstup – příklad
 
@@ -433,8 +435,9 @@ Kód skriptu jazyka C# přidá nový řádek do tabulky (předpokládá se, že 
 ```csharp
 using System.Net;
 using System.Text;
+using Microsoft.Extensions.Logging;
 
-public static async Task Run(HttpRequest req, IAsyncCollector<object> newExcelRow, TraceWriter log)
+public static async Task Run(HttpRequest req, IAsyncCollector<object> newExcelRow, ILogger log)
 {
     string input = req.Query
         .FirstOrDefault(q => string.Compare(q.Key, "text", true) == 0)
@@ -520,7 +523,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 Tato vazba vyžaduje následující oprávnění Azure AD:
 |Prostředek|Oprávnění|
 |--------|--------|
-|Microsoft Graph|Úplný přístup k souborům uživatele|
+|Microsoft Graph|Mít úplný přístup k souborům uživatele|
 
 Vazba zveřejňuje následující typy funkcí .NET:
 - [String []]
@@ -542,7 +545,7 @@ Tato část obsahuje následující témata:
 * [Příklad](#file-input---example)
 * [Atributy](#file-input---attributes)
 * [Konfigurace](#file-input---configuration)
-* [Využití](#file-input---usage)
+* [Použití](#file-input---usage)
 
 ### <a name="file-input---example"></a>Soubor (vstup) – příklad
 
@@ -587,10 +590,11 @@ Kód skriptu jazyka C# přečte soubor zadaný v řetězci dotazu a protokoly je
 
 ```csharp
 using System.Net;
+using Microsoft.Extensions.Logging;
 
-public static void Run(HttpRequestMessage req, Stream myOneDriveFile, TraceWriter log)
+public static void Run(HttpRequestMessage req, Stream myOneDriveFile, ILogger log)
 {
-    log.Info(myOneDriveFile.Length.ToString());
+    log.LogInformation(myOneDriveFile.Length.ToString());
 }
 ```
 
@@ -661,11 +665,11 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 Tato vazba vyžaduje následující oprávnění Azure AD:
 |Prostředek|Oprávnění|
 |--------|--------|
-|Microsoft Graph|Umožňuje získat oprávnění ke čtení souborů uživatelů.|
+|Microsoft Graph|Čtení souborů uživatele|
 
 Vazba zveřejňuje následující typy funkcí .NET:
 - Byte
-- Stream
+- Datový proud
 - řetězec
 - Microsoft.Graph.DriveItem
 
@@ -684,7 +688,7 @@ Tato část obsahuje následující témata:
 * [Příklad](#file-output---example)
 * [Atributy](#file-output---attributes)
 * [Konfigurace](#file-output---configuration)
-* [Využití](#file-output---usage)
+* [Použití](#file-output---usage)
 
 ### <a name="file-output---example"></a>Soubor výstup – příklad
 
@@ -730,8 +734,9 @@ Kód skriptu jazyka C# získá text z řetězce dotazu a zapíše jej do textov�
 ```csharp
 using System.Net;
 using System.Text;
+using Microsoft.Extensions.Logging;
 
-public static async Task Run(HttpRequest req, TraceWriter log, Stream myOneDriveFile)
+public static async Task Run(HttpRequest req, ILogger log, Stream myOneDriveFile)
 {
     string data = req.Query
         .FirstOrDefault(q => string.Compare(q.Key, "text", true) == 0)
@@ -807,11 +812,11 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 Tato vazba vyžaduje následující oprávnění Azure AD:
 |Prostředek|Oprávnění|
 |--------|--------|
-|Microsoft Graph|Úplný přístup k souborům uživatele|
+|Microsoft Graph|Mít úplný přístup k souborům uživatele|
 
 Vazba zveřejňuje následující typy funkcí .NET:
 - Byte
-- Stream
+- Datový proud
 - řetězec
 - Microsoft.Graph.DriveItem
 
@@ -829,7 +834,7 @@ Tato část obsahuje následující témata:
 * [Příklad](#outlook-output---example)
 * [Atributy](#outlook-output---attributes)
 * [Konfigurace](#outlook-output---configuration)
-* [Využití](#outlook-outnput---usage)
+* [Použití](#outlook-outnput---usage)
 
 ### <a name="outlook-output---example"></a>Výstup aplikace Outlook – příklad
 
@@ -867,8 +872,9 @@ Kód skriptu jazyka C# odešle e-mailu od volajícího příjemci zadaná v řet
 
 ```csharp
 using System.Net;
+using Microsoft.Extensions.Logging;
 
-public static void Run(HttpRequest req, out Message message, TraceWriter log)
+public static void Run(HttpRequest req, out Message message, ILogger log)
 { 
     string emailAddress = req.Query["to"];
     message = new Message(){
@@ -992,7 +998,7 @@ Tato část obsahuje následující témata:
 * [Příklad](#webhook-trigger---example)
 * [Atributy](#webhook-trigger---attributes)
 * [Konfigurace](#webhook-trigger---configuration)
-* [Využití](#webhook-trigger---usage)
+* [Použití](#webhook-trigger---usage)
 
 ### <a name="webhook-trigger---example"></a>Trigger Webhooku – příklad
 
@@ -1027,14 +1033,15 @@ Kód skriptu jazyka C# reaguje na příchozí e-mailové zprávy a protokoly ode
 #r "Microsoft.Graph"
 using Microsoft.Graph;
 using System.Net;
+using Microsoft.Extensions.Logging;
 
-public static async Task Run(Message msg, TraceWriter log)  
+public static async Task Run(Message msg, ILogger log)  
 {
-    log.Info("Microsoft Graph webhook trigger function processed a request.");
+    log.LogInformation("Microsoft Graph webhook trigger function processed a request.");
 
     // Testable by sending oneself an email with the subject "Azure Functions" and some text body
     if (msg.Subject.Contains("Azure Functions") && msg.From.Equals(msg.Sender)) {
-        log.Info($"Processed email: {msg.BodyPreview}");
+        log.LogInformation($"Processed email: {msg.BodyPreview}");
     }
 }
 ```
@@ -1110,7 +1117,7 @@ Tato část obsahuje následující témata:
 * [Příklad](#webhook-input---example)
 * [Atributy](#webhook-input---attributes)
 * [Konfigurace](#webhook-input---configuration)
-* [Využití](#webhook-input---usage)
+* [Použití](#webhook-input---usage)
 
 ### <a name="webhook-input---example"></a>Vstup Webhook – příklad
 
@@ -1160,13 +1167,14 @@ Kód skriptu jazyka C# získá předplatná a jejich odstraní:
 
 ```csharp
 using System.Net;
+using Microsoft.Extensions.Logging;
 
-public static async Task Run(HttpRequest req, string[] existingSubscriptions, IAsyncCollector<string> subscriptionsToDelete, TraceWriter log)
+public static async Task Run(HttpRequest req, string[] existingSubscriptions, IAsyncCollector<string> subscriptionsToDelete, ILogger log)
 {
-    log.Info("C# HTTP trigger function processed a request.");
+    log.LogInformation("C# HTTP trigger function processed a request.");
     foreach (var subscription in existingSubscriptions)
     {
-        log.Info($"Deleting subscription {subscription}");
+        log.LogInformation($"Deleting subscription {subscription}");
         await subscriptionsToDelete.AddAsync(subscription);
     }
 }
@@ -1260,7 +1268,7 @@ Tato část obsahuje následující témata:
 * [Příklad](#webhook-output---example)
 * [Atributy](#webhook-output---attributes)
 * [Konfigurace](#webhook-output---configuration)
-* [Využití](#webhook-output---usage)
+* [Použití](#webhook-output---usage)
 
 ### <a name="webhook-output---example"></a>Výstup Webhook – příklad
 
@@ -1309,10 +1317,11 @@ Kód skriptu jazyka C# registruje webhook, který tuto aplikaci function app vá
 ```csharp
 using System;
 using System.Net;
+using Microsoft.Extensions.Logging;
 
-public static HttpResponseMessage run(HttpRequestMessage req, out string clientState, TraceWriter log)
+public static HttpResponseMessage run(HttpRequestMessage req, out string clientState, ILogger log)
 {
-  log.Info("C# HTTP trigger function processed a request.");
+  log.LogInformation("C# HTTP trigger function processed a request.");
     clientState = Guid.NewGuid().ToString();
     return new HttpResponseMessage(HttpStatusCode.OK);
 }
@@ -1356,7 +1365,7 @@ Následující příklad vytvoří odběr. Je možné [aktualizovat předplatné
 Kód jazyka JavaScript registruje webhook, který tuto aplikaci function app vás upozorní, když obdrží zprávy Outlooku volajícího uživatele:
 
 ```js
-const uuidv4 = require('uuid/v4');
+const uuidv4 = require('uuid/v4');
 
 module.exports = function (context, req) {
     context.bindings.clientState = uuidv4();
@@ -1449,15 +1458,16 @@ Kód skriptu jazyka C# aktualizuje předplatná:
 
 ```csharp
 using System;
+using Microsoft.Extensions.Logging;
 
-public static void Run(TimerInfo myTimer, string[] existingSubscriptions, ICollector<string> subscriptionsToRefresh, TraceWriter log)
+public static void Run(TimerInfo myTimer, string[] existingSubscriptions, ICollector<string> subscriptionsToRefresh, ILogger log)
 {
     // This template uses application permissions and requires consent from an Azure Active Directory admin.
     // See https://go.microsoft.com/fwlink/?linkid=858780
-    log.Info($"C# Timer trigger function executed at: {DateTime.Now}");
+    log.LogInformation($"C# Timer trigger function executed at: {DateTime.Now}");
     foreach (var subscription in existingSubscriptions)
     {
-      log.Info($"Refreshing subscription {subscription}");
+      log.LogInformation($"Refreshing subscription {subscription}");
       subscriptionsToRefresh.Add(subscription);
     }
 }
@@ -1542,10 +1552,11 @@ Kód skriptu jazyka C# aktualizuje předplatná a vytvoří výstupní vazby v k
 
 ```csharp
 using System;
+using Microsoft.Extensions.Logging;
 
-public static async Task Run(TimerInfo myTimer, UserSubscription[] existingSubscriptions, IBinder binder, TraceWriter log)
+public static async Task Run(TimerInfo myTimer, UserSubscription[] existingSubscriptions, IBinder binder, ILogger log)
 {
-  log.Info($"C# Timer trigger function executed at: {DateTime.Now}");
+  log.LogInformation($"C# Timer trigger function executed at: {DateTime.Now}");
     foreach (var subscription in existingSubscriptions)
     {
         // binding in code to allow dynamic identity
@@ -1557,7 +1568,7 @@ public static async Task Run(TimerInfo myTimer, UserSubscription[] existingSubsc
             }
         ))
         {
-            log.Info($"Refreshing subscription {subscription}");
+            log.LogInformation($"Refreshing subscription {subscription}");
             await subscriptionsToRefresh.AddAsync(subscription);
         }
 

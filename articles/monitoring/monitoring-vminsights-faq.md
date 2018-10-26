@@ -1,6 +1,6 @@
 ---
-title: Azure Monitor pro virtuální počítače – nejčastější dotazy | Dokumentace Microsoftu
-description: Azure Monitor pro virtuální počítače je řešení v Azure, která kombinuje stavu a výkonu monitorování operačního systému virtuálního počítače Azure, stejně jako automatické zjišťování mezi součástmi aplikace a závislosti s jiným prostředkům a mapuje komunikace mezi je. Tento článek obsahuje odpovědi na běžné dotazy.
+title: Nejčastější dotazy k Azure Monitor pro virtuální počítače (Preview) | Dokumentace Microsoftu
+description: Azure Monitor pro virtuální počítače (Preview) je řešení v Azure, která kombinuje stavu a výkonu monitorování operačního systému virtuálního počítače Azure, stejně jako automatické zjišťování mezi součástmi aplikace a závislosti s jiným prostředkům a mapuje komunikace mezi nimi. Tento článek obsahuje odpovědi na běžné dotazy.
 services: azure-monitor
 documentationcenter: ''
 author: mgoedtel
@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/19/2018
+ms.date: 10/25/2018
 ms.author: magoedte
-ms.openlocfilehash: 282620342d2348868ceab5257de7415a9cb2147c
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: ff870f948acaae14ba772e14d48b27683f0bf07e
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49388353"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50091687"
 ---
-# <a name="azure-monitor-for-vms-frequently-asked-questions"></a>Nejčastější dotazy k Azure Monitor pro virtuální počítače
-Tato FAQ Microsoft je uveden seznam nejčastější dotazy týkající se Azure Monitor pro virtuální počítače v Microsoft Azure. Pokud máte nějaké další dotazy ohledně řešení, přejděte [diskusní fórum](https://feedback.azure.com/forums/34192--general-feedback) a zveřejněte své dotazy. Pokud je dotaz pokládán často, přidáme ji k tomuto článku tak, aby jej lze rychle a snadno najít.
+# <a name="azure-monitor-for-vms-preview-frequently-asked-questions"></a>Nejčastější dotazy k Azure Monitor pro virtuální počítače (Preview)
+Tato FAQ Microsoft je uveden seznam nejčastější dotazy týkající se Azure Monitor pro virtuální počítače. Pokud máte nějaké další dotazy ohledně řešení, přejděte [diskusní fórum](https://feedback.azure.com/forums/34192--general-feedback) a zveřejněte své dotazy. Pokud je dotaz pokládán často, přidáme ji k tomuto článku tak, aby jej lze rychle a snadno najít.
 
 ## <a name="can-i-onboard-to-an-existing-workspace"></a>Můžu připojit k existujícímu pracovnímu prostoru?
 Pokud vaše virtuální počítače jsou již připojeni k pracovnímu prostoru Log Analytics, můžete dál používat tento pracovní prostor při připojení ke službě Azure Monitor pro virtuální počítače, za předpokladu, že je v jednom z podporovaných oblastech uvedených [tady](monitoring-vminsights-onboard.md#prerequisites).

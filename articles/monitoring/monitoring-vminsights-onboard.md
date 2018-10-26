@@ -1,5 +1,5 @@
 ---
-title: Připojení Azure Monitor pro virtuální počítače | Dokumentace Microsoftu
+title: Připojení Azure Monitor pro virtuální počítače (Preview) | Dokumentace Microsoftu
 description: Tento článek popisuje, jak můžete připojit a nakonfigurovat monitorování Azure pro virtuální počítače, abyste je mohli začít, pochopení, jaký je výkon distribuované aplikace a jaké problémy se stavem se zjistily.
 services: azure-monitor
 documentationcenter: ''
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/16/2018
+ms.date: 10/25/2018
 ms.author: magoedte
-ms.openlocfilehash: 33d16e211667edc6c082ab8c101e69ee5875efb8
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: f55f81d1e28a7626dfe00f6bea349bf74e3a1d24
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49390240"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50092770"
 ---
-# <a name="how-to-onboard-the-azure-monitor-for-vms"></a>Jak připojit Azure monitorovat pro virtuální počítače 
+# <a name="how-to-onboard-the-azure-monitor-for-vms-preview"></a>Jak připojit Azure monitorovat pro virtuální počítače (Preview)
 Tento článek popisuje, jak nastavit monitorování Azure pro virtuální počítače, které monitoroval stav operačního systému vašich virtuálních počítačů Azure a zjišťuje a mapuje závislosti aplikací, které mohou být hostovány na ně.  
 
 Povolení monitorování Azure pro virtuální počítače se provádí pomocí jedné z následujících metod a podrobnosti o použití každé metody jsou k dispozici později v tomto článku.  
@@ -31,7 +31,7 @@ Povolení monitorování Azure pro virtuální počítače se provádí pomocí 
 * Více virtuálních počítačů Azure nebo virtuálního počítače škálovací sady v zadané předplatné nebo skupinu prostředků pomocí Powershellu.
 
 ## <a name="prerequisites"></a>Požadavky
-Než začnete, ujistěte se, že máte k dispozici následující, jak je popsáno v následující podčásti.
+Než začnete, ujistěte se, že chápete, jak je popsáno v následující podčásti následující.
 
 ### <a name="log-analytics"></a>Log Analytics 
 

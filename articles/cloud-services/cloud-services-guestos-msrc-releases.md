@@ -11,17 +11,59 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 10/16/2018
+ms.date: 10/24/2018
 ms.author: raiye
-ms.openlocfilehash: 7540f12f888108ed7091cece575b6d25131ef47b
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 989627388e9ad1c99daa31bd9c8af884ab16b421
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49377510"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50087776"
 ---
 # <a name="azure-guest-os"></a>Azure hostovaného operačního systému
 Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hostovaného operačního systému Azure v následujících tabulkách. Hledání Tento článek k určení, pokud platí konkrétní aktualizace do hostovaného operačního systému, kterou používáte. Aktualizace vždy převést do dalšího období pro konkrétní [řady] [ family-explain] byly zavedeny v.
+
+## <a name="october-2018-guest-os"></a>Hostovaný operační systém. října 2018
+>[!NOTE]
+>Říjen hostovaného operačního systému je aktuálně nasazuje pro služby virtuálního počítače v cloudu, které jsou nakonfigurované pro automatické aktualizace. Po dokončení tohoto uvedení se tato verze bude k dispozici ruční aktualizace přes Azure portal a konfigurační soubory. Následující opravy jsou součástí hostovaného operačního systému. října. Tento seznam se může změnit.
+
+| Kategorie produktů | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
+| --- | --- | --- | --- | --- |
+| Rel 18 až 10 | [4462917] | Zabezpečení systému Windows 10 | 5,24 | 9. října 2018 |
+| Rel 18 až 10 | [4464330] | Zabezpečení systému Windows 10 | 6.01 | 9. října 2018 |
+| Rel 18 až 10 | [4462915] | Zabezpečení Windows | 2.79 | 9. října 2018 |
+| Rel 18 až 10 | [4462931] | Zabezpečení Windows | 3,66 | 9. října 2018 |
+| Rel 18 až 10 | [4462941] | Zabezpečení Windows | 4.59 | 9. října 2018 |
+| Rel 18 až 10 | [4462930] | Animace Flash | 3,66, 4.59, 5,24, 6.01 | 9. října 2018 |
+| Rel 18 až 10 | [4462949] | Internet Explorer | 2.79, 3,66, 4.59 | 9. října 2018 |
+| neuvedeno | [4339284] | Aktualizace časového pásma | 2.79, 3,66, 4.59 | 24. července 2018 |
+| neuvedeno | [4457144] | Souhrn září Non-zabezpečení | 2.79 | 11. září 2018 |
+| neuvedeno | [4457044] | Souhrn září zabezpečením .NET 3.5 | 2.79 | 11. září 2018 |
+| neuvedeno | [4457038] | Souhrn září zabezpečením .NET 4.5.2 | 2.79 | 11. září 2018 |
+| neuvedeno | [4457135] | Souhrn září Non-zabezpečení | 3,66 | 11. září 2018 |
+| neuvedeno | [4457042] | Souhrn září zabezpečením .NET 3.5 | 3,66 | 11. září 2018 |
+| neuvedeno | [4457037] | Souhrn září zabezpečením .NET 4.5.2 | 3,66 | 11. září 2018 |
+| neuvedeno | [4457129] | Souhrn září Non-zabezpečení | 4.59 | 11. září 2018 |
+| neuvedeno | [4457045] | Souhrn září zabezpečením .NET 3.5 | 4.59 | 11. září 2018 |
+| neuvedeno | [4457036] | Souhrn září zabezpečením .NET 4.5.2 | 4.59 | 11. září 2018 |
+
+[4462917]: http://support.microsoft.com/kb/4462917
+[4464330]: http://support.microsoft.com/kb/4464330
+[4462915]: http://support.microsoft.com/kb/4462915
+[4462931]: http://support.microsoft.com/kb/4462931
+[4462941]: http://support.microsoft.com/kb/4462941
+[4462930]: http://support.microsoft.com/kb/4462930
+[4462949]: http://support.microsoft.com/kb/4462949
+[4339284]: http://support.microsoft.com/kb/4339284
+[4457144]: http://support.microsoft.com/kb/4457144
+[4457044]: http://support.microsoft.com/kb/4457044
+[4457038]: http://support.microsoft.com/kb/4457038
+[4457135]: http://support.microsoft.com/kb/4457135
+[4457042]: http://support.microsoft.com/kb/4457042
+[4457037]: http://support.microsoft.com/kb/4457037
+[4457129]: http://support.microsoft.com/kb/4457129
+[4457045]: http://support.microsoft.com/kb/4457045
+[4457036]: http://support.microsoft.com/kb/4457036
 
 ## <a name="september-2018-guest-os"></a>Hostovaný operační systém. září 2018
 | Kategorie produktů | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
