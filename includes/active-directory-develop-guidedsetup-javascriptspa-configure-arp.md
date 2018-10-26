@@ -14,27 +14,26 @@ ms.workload: identity
 ms.date: 09/17/2018
 ms.author: nacanuma
 ms.custom: include file
-ms.openlocfilehash: c2b86e79f0364ee84e01fee5e9837db5a6b618a2
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 66021fa8140da2faae4ecab07c98b0df4ea5297a
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48842940"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50097836"
 ---
 ## <a name="add-the-applications-registration-information-to-your-app"></a>Informace o registraci vaší aplikace přidejte do své aplikace
 
-V tomto kroku budete muset nakonfigurovat adresy URL přesměrování registračních informací vaší aplikace a pak ID aplikace přidejte do aplikace SPA v JavaScriptu.
+V tomto kroku budete muset nakonfigurovat adresy URL pro přesměrování z informace o registraci vaší aplikace a pak ID aplikace přidejte do aplikace SPA v JavaScriptu.
 
 ### <a name="configure-redirect-url"></a>Nakonfigurujte adresu URL pro přesměrování
 
 Konfigurace `Redirect URL` polí s adresou URL pro stránku index.html založené na vašem webovém serveru a potom klikněte na *aktualizace*.
 
-
 > #### <a name="visual-studio-instructions-for-obtaining-the-redirect-url"></a>Visual Studio pokyny pro získání adresy URL pro přesměrování
 > Postupujte podle těchto kroků k získání adresy URL pro přesměrování:
-> 1.    V **Průzkumníka řešení**, vyberte projekt a podívejte se na **vlastnosti** okna. Pokud se nezobrazí **vlastnosti** okna, stisknutím klávesy **F4**.
-> 2.    Zkopírujte hodnotu z **URL** do schránky:<br/> ![Vlastnosti projektu](media/active-directory-develop-guidedsetup-javascriptspa-configure/vs-project-properties-screenshot.png)<br />
-> 3.    Vložte tuto hodnotu jako **adresy URL pro přesměrování** horní části této stránky, klikněte na **aktualizace**
+> 1. V **Průzkumníka řešení**, vyberte projekt a podívejte se na **vlastnosti** okna. Pokud se nezobrazí **vlastnosti** okna, stisknutím klávesy **F4**.
+> 2. Zkopírujte hodnotu z **URL** do schránky:<br/> ![Vlastnosti projektu](media/active-directory-develop-guidedsetup-javascriptspa-configure/vs-project-properties-screenshot.png)<br />
+> 3. Vložte tuto hodnotu jako **adresy URL pro přesměrování** horní části to stránce a pak vyberte **aktualizace**.
 
 <p/>
 
@@ -44,7 +43,7 @@ Konfigurace `Redirect URL` polí s adresou URL pro stránku index.html založen�
 
 ### <a name="configure-your-javascript-spa-application"></a>Konfigurace aplikace SPA v JavaScriptu
 
-1.  V `index.html` soubor vytvořen během instalace projektu, přidejte informace o registraci aplikace. Přidejte následující kód v horní části v rámci `<script></script>` značky v těle vaše `index.html` souboru:
+1. V `index.html` soubor vytvořen během instalace projektu, přidejte informace o registraci aplikace. Přidejte následující kód v horní části v rámci `<script></script>` značky v těle vaše `index.html` souboru:
 
 ```javascript
 var applicationConfig = {

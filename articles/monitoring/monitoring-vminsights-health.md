@@ -1,5 +1,5 @@
 ---
-title: Monitorování stavu virtuálních počítačů pomocí Azure monitoru pro virtuální počítače | Dokumentace Microsoftu
+title: Monitorování stavu virtuálních počítačů pomocí Azure monitoru pro virtuální počítače (Preview) | Dokumentace Microsoftu
 description: Tento článek popisuje, jak porozumět stavu virtuálního počítače a službou Azure Monitor základního operačního systému pro virtuální počítače.
 services: azure-monitor
 documentationcenter: ''
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/15/2018
+ms.date: 10/25/2018
 ms.author: magoedte
-ms.openlocfilehash: 84314f64d8a96e65f63cb5c6051f7f5e902cd682
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 059667787c905f47f6629afdb249a2273ceed585
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49387817"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50094223"
 ---
-# <a name="understand-the-health-of-your-azure-virtual-machines-with-azure-monitor-for-vms"></a>Vysvětlení stavu virtuálních počítačů Azure pomocí Azure monitoru pro virtuální počítače
+# <a name="understand-the-health-of-your-azure-virtual-machines-with-azure-monitor-for-vms-preview"></a>Vysvětlení stavu virtuálních počítačů Azure pomocí Azure monitoru pro virtuální počítače (Preview)
 Azure obsahuje několik služeb, které jednotlivě provádět konkrétní role nebo úkolu v prostoru pro monitorování, ale poskytuje perspektivy podrobný stav operačního systému hostované na Azure virtual machines nebyl k dispozici.  V průběhu monitorování může pro různé podmínky použití Log Analytics nebo Azure Monitor, nejsou určeny pro modelování a představují stavu základní součásti nebo celkového stavu virtuálního počítače.  Prostřednictvím služby Azure Monitor pro funkci stav virtuálních počítačů aktivně Monitoruje dostupnost a výkon Windows nebo Linuxem hostovaného operačního systému s modelem, které představují klíčových komponent a jejich vztahů kritéria, která určuje, jak měřit kvalitu ty komponenty, a upozorní vás při zjištění není v pořádku podmínky.  
 
 Zobrazení celkového stavu virtuálního počítače Azure a základního operačního systému může být dodržen za dvou hledisek službou Azure Monitor stavu virtuálních počítačů, přímo z virtuálního počítače nebo ve všech virtuálních počítačích ve skupině prostředků ze služby Azure Monitor.
@@ -35,7 +35,7 @@ Tato část popisuje výchozí stav kritéria definovat za účelem monitorován
 
 ### <a name="windows-vms"></a>Virtuální počítače s Windows
 
-- Dostupný počet megabajtů paměti 
+- Dostupný počet megabajtů paměti 
 - Průměrná sekund na zápis (logický Disk)
 - Průměrná sekund na zápis (Disk)
 - Průměrná logického disku sekund na čtení

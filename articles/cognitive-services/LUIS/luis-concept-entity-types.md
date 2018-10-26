@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: diberry
-ms.openlocfilehash: 92b4864f8991380740e6edb498328ce2eea98250
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: fdf81943a7bdbae80f4474915a72bb61f1123a30
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49650107"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50085822"
 ---
 # <a name="entities-in-luis"></a>Entity v LUIS
 
@@ -96,8 +96,9 @@ Služba LUIS nabízí mnoho typů entit; předem připravených entit, vlastníh
 ## <a name="entity-limits"></a>Omezení entity
 Kontrola [omezení](luis-boundaries.md#model-boundaries) porozumět, kolik jednotlivých typů entit můžete přidat do modelu.
 
-## <a name="entity-roles"></a>Entita role
-Entity [role](luis-concept-roles.md) platí pro vlastní a předem připravených entit a používají se ve vzorech pouze. 
+## <a name="roles-versus-hierarchical-entities"></a>Role a hierarchické entity
+
+Další informace najdete v tématu [role a hierarchické entity](luis-concept-roles.md#roles-versus-hierarchical-entities).
 
 ## <a name="composite-vs-hierarchical-entities"></a>Složený vs hierarchické entity
 Složené a hierarchické entit jak mají vztahů nadřazenosti a podřízenosti a jsou počítače se naučili. Machine learning umožňuje LUIS vysvětlení konceptu entit podle různých kontextech (uspořádání slov). Složený entity jsou flexibilnější, protože umožňují typy různých entit jako podřízené objekty. Hierarchické entity podřízené objekty jsou pouze jednoduché entity. 

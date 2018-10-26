@@ -4,20 +4,22 @@ description: Zjistěte, jak řešit problémy s Update managementem
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 10/17/2018
+ms.date: 10/25/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 41883fd677d276f8f26721fdccc3ded020c3278b
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: f52767058ef69d29465f1274109b6d3ffe58296c
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49405221"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50092623"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Řešení potíží s Update managementem
 
 Tento článek popisuje řešení Chcete-li vyřešit problémy, které můžete spouštět napříč při použití správy aktualizací.
+
+Není k dispozici Poradce při potížích agenta pro agenta Hybrid Worker, chcete-li zjistit příčinu problému. Další informace o Poradce při potížích s, najdete v článku [Poradce při potížích aktualizace agenta](update-agent-issues.md). U všech ostatních typů problémů najdete v podrobné informace o možných problémech níže.
 
 ## <a name="general"></a>Obecné
 
@@ -110,6 +112,20 @@ Funkce Hybrid Runbook Worker nebyl schopen generovat certifikát podepsaný svý
 #### <a name="resolution"></a>Řešení
 
 Ověřte systémový účet má oprávnění ke čtení do složky **C:\ProgramData\Microsoft\Crypto\RSA** a zkuste to znovu.
+
+### <a name="nologs"></a>Scénář: Správa aktualizací dat se nezobrazuje v Log Analytics pro počítač
+
+#### <a name="issue"></a>Problém
+
+Máte počítače, které se zobrazují jako **nevyhodnoceno** pod **dodržování předpisů**, ale uvidíte prezenčního signálu dat v Log Analytics pro Hybrid Runbook Worker, ale ne Update Management.
+
+#### <a name="cause"></a>Příčina
+
+Funkce Hybrid Runbook Worker možná muset znovu zaregistrovat a opětovném nainstalování.
+
+#### <a name="resolution"></a>Řešení
+
+Postupujte podle kroků uvedených v [nasadit Windows Hybrid Runbook Worker](../automation-windows-hrw-install.md) přeinstalovat Hybrid Worker.
 
 ### <a name="hresult"></a>Scénář: Počítač zobrazuje jako nevyhodnoceno a ukazuje výjimku HResult
 

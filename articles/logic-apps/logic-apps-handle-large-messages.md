@@ -14,18 +14,18 @@ ms.tgt_pltfrm: ''
 ms.topic: article
 ms.date: 4/27/2018
 ms.author: shhurst
-ms.openlocfilehash: e6ac6a4aa46feb768df437ff9d5969b2b41092c3
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 5aa5ea2a39a0fb9f969e965fed14063522197cda
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041641"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50085774"
 ---
 # <a name="handle-large-messages-with-chunking-in-azure-logic-apps"></a>Zpracování velkých zpráv s dělením dat do bloků v Azure Logic Apps
 
 Při zpracování zpráv, Logic Apps omezuje obsah zprávy do maximální velikosti. Toto omezení pomáhá snížit režii vytvořené ukládání a zpracování velkých zpráv. Zpracování zprávy větší než tento limit, Logic Apps můžete *bloků* objemné zprávy do menších zpráv. Tímto způsobem můžete stále přenos velkých souborů pomocí Logic Apps za určitých podmínek. Při komunikaci s dalšími službami prostřednictvím konektory nebo HTTP, Logic Apps může spotřebovat velké zprávy, ale *pouze* v blocích. Tento stav znamená, že konektory musí také podporovat bloků nebo základní výměny zpráv protokolu HTTP mezi Logic Apps a tyto služby musíte použít dělením dat do bloků.
 
-Tento článek popisuje, jak můžete nastavit podporu pro zprávy, které jsou větší než omezení dělením dat do bloků.
+Tento článek popisuje, jak můžete nastavit bloků pro zpracování zpráv, které jsou větší než limit akce. Triggery aplikace logiky nepodporují dat z důvodu zvýšený starat se o výměně více zpráv. 
 
 ## <a name="what-makes-messages-large"></a>Čím se zprávy "velké (large)?
 

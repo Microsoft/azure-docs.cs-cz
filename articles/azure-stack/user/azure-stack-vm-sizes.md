@@ -10,15 +10,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/22/2018
+ms.date: 10/23/2018
 ms.author: mabrigg
 ms.reviewer: kivenkat
-ms.openlocfilehash: dc9e1b3fb59aca8fba0c84fbfa674931c24c12c9
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 1af7a1d595b39878f3ed30591e8ad78e767e8cf7
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945888"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50087487"
 ---
 # <a name="virtual-machine-sizes-supported-in-azure-stack"></a>Velikosti virtuálních počítačů, které jsou podporované ve službě Azure Stack
 
@@ -31,6 +31,10 @@ Tento článek obsahuje seznam velikostí virtuálních počítačů (VM), kter�
 Pro obecné účely velikosti virtuálních počítačů nabízejí vyvážený poměr procesorů k paměti. Používají se pro testování a vývoj, malé až střední databáze a s nízkým a středním provozem webových serverů.
 
 ### <a name="basic-a"></a>Basic A
+
+> [!NOTE]
+> *Základní A* velikostí virtuálních počítačů byly ukončeny pro [vytvoření škálovací sady virtuálních počítačů](../azure-stack-compute-add-scalesets.md) (VMSS) prostřednictvím portálu. Pokud chcete vytvořit VMSS se tato velikost, pomocí Powershellu nebo šablony.
+
 |Velikost – velikost\název |Virtuální procesory     |Memory (Paměť) | Max. velikost dočasného disku | Operační systém maximální propustnost disku: (IOPS) | Maximální propustnost dočasného úložiště (IOPS) | Maximální propustnost datového disku (IOPS) | Maximální počet síťových karet |    
 |-----------------|-----|---------|---------|-----|------|-----------|----|
 |**A0\Basic_A0**  |1    |768 MB   | 20 GB   |300  | 300  |1 / 1 × 300  |1   |

@@ -14,144 +14,164 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 10/16/2018
 ms.author: shvija
-ms.openlocfilehash: 48d41ef4df986f959dfabe04e07552e287fdfcd0
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 584696303bfbaed07f416fb0b3febbcf59d05b35
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49457049"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50085732"
 ---
-# <a name="create-an-event-hubs-namespace-with-event-hub-and-consumer-group-using-an-azure-resource-manager-template"></a>Vytvořte obor názvů služby Event Hubs s centrem a příjemce skupiny událostí pomocí šablony Azure Resource Manageru
+# <a name="quickstart-create-an-event-hub-using-azure-resource-manager-template"></a>Rychlý start: Vytvoření centra událostí pomocí šablony Azure Resource Manageru
 Azure Event Hubs je platforma pro streamování velkých objemů dat a služba pro ingestování událostí, která je schopná přijmout a zpracovat miliony událostí za sekundu. Služba Event Hubs dokáže zpracovávat a ukládat události, data nebo telemetrické údaje produkované distribuovaným softwarem a zařízeními. Data odeslaná do centra událostí je možné transformovat a uložit pomocí libovolného poskytovatele analýz v reálném čase nebo adaptérů pro dávkové zpracování a ukládání. Podrobnější přehled služby Event Hubs naleznete v tématu [Přehled služby Event Hubs](event-hubs-about.md) a [funkcích služby Event Hubs](event-hubs-features.md).
 
 V tomto rychlém startu vytvoříte Centrum událostí pomocí šablony Azure Resource Manageru. Použijete šablony Azure Resource Manageru k vytvoření oboru názvů typu [Event Hubs](event-hubs-what-is-event-hubs.md)s jedním centrem událostí a jedné skupiny uživatelů. Tento článek ukazuje, jak definovat prostředků, které jsou nasazené a tom, jak definovat parametry, které jsou zadané při spuštění nasazení. Tuto šablonu můžete použít pro vlastní nasazení nebo ji upravit, aby splňovala vaše požadavky. Informace o vytváření šablon najdete v tématu [šablon pro vytváření Azure Resource Manageru][Authoring Azure Resource Manager templates].
 
-Úplnou šablonu najdete v článku [šablony skupiny centra a příjemce události] [ Event Hub and consumer group template] na Githubu.
 
 > [!NOTE]
-> Nejnovější šablony můžete zkontrolovat tak, že přejdete do galerie [Šablony Azure pro rychlý start][Azure Quickstart Templates] a vyhledáte Event Hubs.
+> Úplnou šablonu najdete v článku [šablony skupiny centra a příjemce události] [ Event Hub and consumer group template] na Githubu. Tato šablona vytvořena skupina uživatelů kromě obor názvů služby event hub a centra událostí. Nejnovější šablony můžete zkontrolovat tak, že přejdete do galerie [Šablony Azure pro rychlý start][Azure Quickstart Templates] a vyhledáte Event Hubs.
 
 ## <a name="prerequisites"></a>Požadavky
-K dokončení tohoto rychlého startu potřebujete předplatné Azure. Pokud ho nemáte, [vytvořte si bezplatný účet] []. než začnete.
+K dokončení tohoto rychlého startu potřebujete předplatné Azure. Pokud ho nemáte, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+Pokud chcete použít **prostředí Azure PowerShell** k nasazení šablony Resource Manageru [instalace Azure Powershellu](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-5.7.0).
 
-Pokud používáte **prostředí Azure PowerShell** k nasazení šablony Resource Manageru místně, musíte spustit nejnovější verzi prostředí PowerShell k dokončení tohoto rychlého startu. Pokud PowerShell potřebujete nainstalovat nebo upgradovat, přečtěte si téma [Instalace a konfigurace Azure PowerShellu](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-5.7.0).
+Pokud chcete použít **rozhraní příkazového řádku Azure** k nasazení šablony Resource Manageru [instalace Azure CLI]( /cli/azure/install-azure-cli).
 
-Pokud se rozhodnete nainstalovat a používat **rozhraní příkazového řádku Azure** k nasazení šablony Resource Manageru místně, tento kurz vyžaduje použití Azure CLI verze 2.0.4 nebo novější. Spuštěním příkazu `az --version` zkontrolujte svou verzi. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli).
-
-## <a name="what-will-you-deploy"></a>Co budete nasazovat?
-
-Pomocí této šablony nasadíte obor názvů služby Event Hubs pomocí centra událostí a skupiny příjemců.
-
-Automaticky spustit nasazení, vyberte na následující tlačítko:
-
-[![Nasazení do Azure](./media/event-hubs-resource-manager-namespace-event-hub/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-event-hubs-create-event-hub-and-consumer-group%2Fazuredeploy.json)
-
-## <a name="define-parameters"></a>Definovat parametry
-Pomocí Azure Resource Manageru definujete parametry pro hodnoty, které chcete zadat při nasazení šablony. Šablona obsahuje část `Parameters`, která obsahuje všechny hodnoty parametrů. Byste měli definovat parametr pro hodnoty, které se budou lišit podle projektu, které nasazujete nebo podle prostředí, do kterého nasazujete. Nedefinujte parametry pro hodnoty, které jsou vždy stejné. Každá hodnota parametru v šabloně definuje prostředky, které jsou nasazené.
-
-Šablona definuje následující parametry:
-
-### <a name="eventhubnamespacename"></a>eventHubNamespaceName
-
-Název oboru názvů Event Hubs, který se má vytvořit.
+## <a name="create-the-resource-manager-template-json"></a>Vytvořit kód JSON šablony Resource Manageru
+Vytvořte soubor JSON s názvem MyEventHub.json s následujícím obsahem a uložte ho do složky (například: C:\EventHubsQuickstarts\ResourceManagerTemplate).
 
 ```json
-"eventHubNamespaceName": {
-"type": "string"
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "eventhub-namespace-name": {
+            "type": "String"
+        },
+        "eventhub_name": {
+            "type": "String"
+        }
+    },
+    "resources": [
+        {
+            "type": "Microsoft.EventHub/namespaces",
+            "sku": {
+                "name": "Standard",
+                "tier": "Standard",
+                "capacity": 1
+            },
+            "name": "[parameters('eventhub-namespace-name')]",
+            "apiVersion": "2017-04-01",
+            "location": "East US",
+            "tags": {},
+            "scale": null,
+            "properties": {
+                "isAutoInflateEnabled": false,
+                "maximumThroughputUnits": 0
+            },
+            "dependsOn": []
+        },
+        {
+            "type": "Microsoft.EventHub/namespaces/eventhubs",
+            "name": "[concat(parameters('eventhub-namespace-name'), '/', parameters('eventhub_name'))]",
+            "apiVersion": "2017-04-01",
+            "location": "East US",
+            "scale": null,
+            "properties": {
+                "messageRetentionInDays": 7,
+                "partitionCount": 1,
+                "status": "Active"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces', parameters('eventhub-namespace-name'))]"
+            ]
+        }
+    ]
 }
 ```
 
-### <a name="eventhubname"></a>eventHubName
-
-Název centra událostí vytvořeného v oboru názvů Event Hubs.
+## <a name="create-the-parameters-json"></a>Vytvoření parametry JSON
+Vytvořte soubor JSON s názvem MyEventHub-Parameters.json, který obsahuje parametry pro šablonu Azure Resource Manageru. 
 
 ```json
-"eventHubName": {
-"type": "string"
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+        "eventhub-namespace-name": {
+            "value": "<specify a name for the event hub namespace>"
+        },
+        "eventhub_name": {
+            "value": "<Specify a name for the event hub in the namespace>"
+        }
+  }
 }
 ```
 
-### <a name="eventhubconsumergroupname"></a>eventHubConsumerGroupName
 
-Název skupiny uživatelů vytvořené pro Centrum událostí.
 
-```json
-"eventHubConsumerGroupName": {
-"type": "string"
-}
-```
+## <a name="use-azure-powershell-to-deploy-the-template"></a>Pokud chcete nasadit šablonu pomocí Azure Powershellu
 
-### <a name="apiversion"></a>apiVersion
+### <a name="sign-in-to-azure"></a>Přihlášení k Azure
+1. Spuštění prostředí Azure PowerShell
 
-Verze rozhraní API šablony.
+2. Spuštěním následujícího příkazu se přihlaste k Azure:
 
-```json
-"apiVersion": {
-"type": "string"
-}
-```
+   ```azurepowershell
+   Login-AzureRmAccount
+   ```
+3. Pokud máte nastavení aktuálního kontextu předplatného tyto příkazy:
 
-## <a name="define-resources-to-deploy"></a>Definujte prostředky k nasazení
+   ```azurepowershell
+   Select-AzureRmSubscription -SubscriptionName "<YourSubscriptionName>" 
+   ```
 
-Vytvoří obor názvů tohoto typu **EventHubs**s centra událostí a skupiny příjemců:
+### <a name="provision-resources"></a>Zřízení prostředků
+Nasazení/zřizovat prostředky pomocí Azure Powershellu, přejděte do složky C:\EventHubsQuickStart\ARM\, spusťte následující příkazy:
 
-```json
-"resources":[  
-      {  
-         "apiVersion":"[variables('ehVersion')]",
-         "name":"[parameters('namespaceName')]",
-         "type":"Microsoft.EventHub/namespaces",
-         "location":"[variables('location')]",
-         "sku":{  
-            "name":"Standard",
-            "tier":"Standard"
-         },
-         "resources":[  
-            {  
-               "apiVersion":"[variables('ehVersion')]",
-               "name":"[parameters('eventHubName')]",
-               "type":"EventHubs",
-               "dependsOn":[  
-                  "[concat('Microsoft.EventHub/namespaces/', parameters('namespaceName'))]"
-               ],
-               "properties":{  
-                  "path":"[parameters('eventHubName')]"
-               },
-               "resources":[  
-                  {  
-                     "apiVersion":"[variables('ehVersion')]",
-                     "name":"[parameters('consumerGroupName')]",
-                     "type":"ConsumerGroups",
-                     "dependsOn":[  
-                        "[parameters('eventHubName')]"
-                     ],
-                     "properties":{  
-
-                     }
-                  }
-               ]
-            }
-         ]
-      }
-   ],
-```
-
-## <a name="azure-powershell"></a>Azure PowerShell
-K nasazení prostředků pomocí Azure Powershellu, spusťte následující příkaz:
+> [!IMPORTANT]
+> Zadejte název skupiny prostředků Azure jako hodnotu pro $resourceGroupName před spuštěním příkazů. 
 
 ```azurepowershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName \<resource-group-name\> -TemplateFile https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-event-hubs-create-event-hub-and-consumer-group/azuredeploy.json
+$resourceGroupName = "<Specify a name for the Azure resource group>"
+
+# Create an Azure resource group
+New-AzureRmResourceGroup $resourceGroupName -location 'East US'
+
+# Deploy the Resource Manager template. Specify the names of deployment itself, resource group, JSON file for the template, JSON file for parameters
+New-AzureRmResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName $resourceGroupName -TemplateFile MyEventHub.json -TemplateParameterFile MyEventHub-Parameters.json
 ```
 
-## <a name="azure-cli"></a>Azure CLI
-K nasazení prostředků pomocí Azure Powershellu, spusťte následující příkaz:
+## <a name="use-azure-cli-to-deploy-the-template"></a>Použití Azure CLI k nasazení šablony
+
+## <a name="sign-in-to-azure"></a>Přihlášení k Azure
+
+Pokud spouštíte příkazy ve službě Cloud Shell, následující kroky nemusíte provádět. Pokud používáte rozhraní příkazového řádku místně, proveďte následující kroky pro přihlášení k Azure a nastavit aktuální předplatné:
+
+Spuštěním následujícího příkazu se přihlaste k Azure:
 
 ```azurecli
-azure config mode arm
+az login
+```
 
-azure group deployment create \<my-resource-group\> \<my-deployment-name\> --template-uri [https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-event-hubs-create-event-hub-and-consumer-group/azuredeploy.json][]
+Nastavte kontext na aktuální předplatné. Nahraďte `MyAzureSub` názvem předplatného Azure, které chcete použít:
+
+```azurecli
+az account set --subscription <Name of your Azure subscription>
+``` 
+
+### <a name="provision-resources"></a>Zřízení prostředků
+Nasazení prostředků pomocí rozhraní příkazového řádku Azure, přejděte do složky, C:\EventHubsQuickStart\ARM\ a spusťte následující příkazy:
+
+> [!IMPORTANT]
+> Zadejte název pro skupinu prostředků Azure ve skupině az vytvořit příkaz. .
+
+```azurecli
+# Create an Azure resource group
+az group create --name <YourResourceGroupName> --location eastus
+
+# # Deploy the Resource Manager template. Specify the names of resource group, deployment, JSON file for the template, JSON file for parameters
+az group deployment create --name <Specify a name for the deployment> --resource-group <YourResourceGroupName> --template-file MyEventHub.json --parameters @MyEventHub-Parameters.json
 ```
 
 Blahopřejeme! Použijete šablony Azure Resource Manageru k vytvoření oboru názvů Event Hubs a centra událostí v daném oboru názvů.

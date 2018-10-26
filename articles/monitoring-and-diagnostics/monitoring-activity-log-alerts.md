@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 5ddf510d50f38ed9aaf742bd06c330e53ffe1391
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 6f007ca3aacb338c14bf481ee58407596c8290ad
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46992792"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50091619"
 ---
 # <a name="alerts-on-activity-log"></a>Upozornění v protokolu aktivit 
 
@@ -50,7 +50,7 @@ Upozornění protokolu aktivit mít několik běžných možností:
 - **Zahájit událost**: označované také jako "volající." E-mailovou adresu nebo Azure Active Directory identifikátor uživatele, který provedl operaci.
 
 > [!NOTE]
-> V rámci předplatného až 100 pravidla upozornění pro aktivitu rozsahu na buď: jeden prostředek, všechny prostředky v prostředku skupiny (nebo) úroveň pro celé předplatné.
+> V rámci předplatného až 100 pravidla upozornění lze vytvořit pro aktivity z rozsahu na buď: jeden prostředek, všechny prostředky v prostředku skupiny (nebo) úroveň pro celé předplatné.
 
 Když se aktivuje upozornění protokolu aktivit, používá skupiny akcí k vygenerování akce nebo oznámení. Skupiny akcí je opakovaně použitelné sadu příjemců oznámení, jako jsou e-mailové adresy, adresy URL webhooku, nebo SMS telefonních čísel. Příjemci můžou odkazovat z více výstrah centralizovat a členství kanálů oznámení. Při definování upozornění protokolu aktivit, máte dvě možnosti. Můžete:
 

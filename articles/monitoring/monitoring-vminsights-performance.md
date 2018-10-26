@@ -1,5 +1,5 @@
 ---
-title: Jak graf výkonu pomocí Azure monitoru pro virtuální počítače | Dokumentace Microsoftu
+title: Jak graf výkonu pomocí Azure monitoru pro virtuální počítače (Preview) | Dokumentace Microsoftu
 description: Výkon je funkce služby Azure Monitor pro virtuální počítače, který automaticky zjišťuje komponenty aplikací v systémech Windows a Linux a mapuje komunikace mezi službami. Tento článek obsahuje podrobnosti o tom, jak použít v nejrůznějších scénářích.
 services: azure-monitor
 documentationcenter: ''
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/18/2018
+ms.date: 10/25/2018
 ms.author: magoedte
-ms.openlocfilehash: a63a9d22638231aa076cc4ced9030a378d0c36e4
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 776a8901696bd69eeee6fd4b3622c8992bfc25a3
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49429483"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50094308"
 ---
-# <a name="how-to-chart-performance-with-azure-monitor-for-vms"></a>Jak graf výkonu pomocí Azure monitoru pro virtuální počítače
+# <a name="how-to-chart-performance-with-azure-monitor-for-vms-preview"></a>Jak graf výkonu pomocí Azure monitoru pro virtuální počítače (Preview)
 Azure Monitor pro virtuální počítače obsahuje sadu grafy výkonu, které se zaměřují provádění několika klíčových ukazatelů výkonu (KPI), které vám pomohou určit, jak dobře virtuálního počítače. Grafy zobrazit využití prostředků za časové období, abyste mohli identifikovat kritické body, anomálie, nebo přepněte do pohledu výpis každý počítač, chcete-li zobrazit využití prostředků na základě metriky vybrané. I když existují mnoho prvků vzít v úvahu při práci s výkonem, monitorování Azure pro virtuální počítače se zaměřuje na operačním systému tak, jak se prostřednictvím procesor, paměť, síťové adaptéry a disky. Výkon doplňuje funkci monitorování stavu a pomáhá vystavit problémy, které označují selhání součásti systému je to možné, podpora ladění a optimalizace pro dosažení efektivity nebo podporují plánování kapacity.  
 
 ## <a name="multi-vm-perspective-from-azure-monitor"></a>Perspektiva více virtuálních počítačů ze služby Azure Monitor

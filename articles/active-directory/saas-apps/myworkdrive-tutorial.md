@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2018
+ms.date: 10/25/2018
 ms.author: jeedes
-ms.openlocfilehash: 2103c5c8c08a6aebfc1168c8fbdb4181dbe3a997
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 7310d300c68399c31d9580f070602aa3adbc75e3
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47047263"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50094052"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-myworkdrive"></a>Kurz: Integrace Azure Active Directory se službou MyWorkDrive
 
@@ -61,19 +61,19 @@ Konfigurace integrace MyWorkDrive do služby Azure AD, budete muset přidat MyWo
 
 1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
-    ![Tlačítko Azure Active Directory][1]
+    ![image](./media/myworkdrive-tutorial/selectazuread.png)
 
 2. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
 
-    ![V okně podnikové aplikace][2]
+    ![image](./media/myworkdrive-tutorial/a_select_app.png)
     
 3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
-    ![Tlačítko nové aplikace][3]
+    ![image](./media/myworkdrive-tutorial/a_new_app.png)
 
 4. Do vyhledávacího pole zadejte **MyWorkDrive**vyberte **MyWorkDrive** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
 
-    ![MyWorkDrive v seznamu výsledků](./media/myworkdrive-tutorial/tutorial_myworkdrive_addfromgallery.png)
+     ![image](./media/myworkdrive-tutorial/tutorial_myworkdrive_addfromgallery.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
@@ -95,108 +95,110 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
 **Ke konfiguraci Azure AD jednotné přihlašování s MyWorkDrive, proveďte následující kroky:**
 
-1. Na webu Azure Portal na **MyWorkDrive** integrace stránka aplikace, klikněte na tlačítko **jednotného přihlašování**.
+1. V [webu Azure portal](https://portal.azure.com/)na **MyWorkDrive** integrace stránce aplikace vyberte **jednotného přihlašování**.
 
-    ![Nakonfigurovat jednotné přihlašování – odkaz][4]
+    ![image](./media/myworkdrive-tutorial/B1_B2_Select_SSO.png)
 
-2. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
- 
-    ![Jednotné přihlašování – dialogové okno](./media/myworkdrive-tutorial/tutorial_myworkdrive_samlbase.png)
+2. Na **vybrat jedinou metodu přihlašování** dialogového okna, vyberte **SAML** chcete povolit jednotné přihlašování.
 
-3. Na **MyWorkDrive domény a adresy URL** části, proveďte následující kroky, pokud chcete nakonfigurovat aplikace v **IDP** iniciované režimu:
+    ![image](./media/myworkdrive-tutorial/b1_b2_saml_sso.png)
 
-    ![MyWorkDrive domény a adresy URL jednotného přihlašování – informace](./media/myworkdrive-tutorial/tutorial_myworkdrive_url.png)
+3. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** tlačítko Otevřít **základní konfiguraci SAML** dialogového okna.
+
+    ![image](./media/myworkdrive-tutorial/b1-domains_and_urlsedit.png)
+
+4. Na **základní konfiguraci SAML** části, proveďte následující kroky, pokud chcete nakonfigurovat aplikace v **IDP** iniciované režimu:
+
+    ![image](./media/myworkdrive-tutorial/tutorial_myworkdrive_url.png)
 
     V **adresy URL odpovědi** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<SERVER.DOMAIN.COM>/SAML/AssertionConsumerService.aspx`
 
-4. Zkontrolujte **zobrazit pokročilé nastavení URL** a provést následující krok, pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu:
+5. Klikněte na **nastavit další adresy URL** a provést následující krok, pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu:
 
-    ![MyWorkDrive domény a adresy URL jednotného přihlašování – informace](./media/myworkdrive-tutorial/tutorial_myworkdrive_url1.png)
+    ![image](./media/myworkdrive-tutorial/tutorial_myworkdrive_url1.png)
 
-    V **přihlašovací adresa URL** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<SERVER.DOMAIN.COM>/Account/Login-saml`
-     
-    > [!NOTE] 
-    > Tyto hodnoty nejsou skutečný. Aktualizujte tyto hodnoty se skutečná adresa URL odpovědi a přihlašovací adresa URL. Kontakt [tým podpory MyWorkDrive klienta](mailto:support@myworkdrive.com) k získání těchto hodnot. 
+    V **přihlašovací adresa URL** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<SERVER.DOMAIN.COM>/Account/Login-saml` 
 
-5. Na **podpisový certifikát SAML** klikněte na tlačítko **certifikát (Base64)** a uložte soubor certifikátu v počítači.
+    > [!NOTE]
+    > Tyto hodnoty nejsou skutečný. Aktualizujte tyto hodnoty se skutečná adresa URL odpovědi a přihlašovací adresa URL.  Zadejte name:e.g hostitele MyWorkDrive serveru vaší společnosti.
+    > 
+    > Adresa URL odpovědi: `https://yourserver.yourdomain.com/SAML/AssertionConsumerService.aspx`
+    > 
+    > Přihlašovací adresa URL:`https://yourserver.yourdomain.com/Account/Login-saml`
+    > 
+    > Pokud si nejste jistí, jak nastavit vlastní název hostitele a certifikát SSL pro tyto hodnoty, obraťte se na tým podpory MyWorkDrive klienta.
 
-    ![Odkaz ke stažení certifikátu](./media/myworkdrive-tutorial/tutorial_myworkdrive_certificate.png) 
+6. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko kopírování **ikonu** kopírování **adresa Url metadat federace aplikace** a klikněte na tlačítko **Stáhnout** ke stažení **certifikát (Base64)** uložit ve vašem počítači.
 
-6. Klikněte na tlačítko **Uložit** tlačítko.
+    ![image](./media/myworkdrive-tutorial/tutorial_myworkdrive_certficate.png) 
 
-    ![Nakonfigurovat jednotné přihlašování uložit tlačítko](./media/myworkdrive-tutorial/tutorial_general_400.png)
+7. Na **nastavení MyWorkDrive** tématu, zkopírujte adresu URL odpovídající podle vašich požadavků.
+
+    Všimněte si, že adresa URL může třeba následující:
+
+    a. Přihlašovací adresa URL
+
+    b. Identifikátor služby Azure Ad
+
+    c. Adresa URL – odhlášení
+
+    ![image](./media/myworkdrive-tutorial/d1_samlsonfigure.png) 
+
+8. Pokud chcete nakonfigurovat jednotné přihlašování na straně MyWorkDrive, stáhněte si **certifikát (Base64), URL odhlašování, SAML Entity ID a SAML jednotné přihlašování – adresa URL služby** a ruční konfigurace na serveru MyWorkDrive nebo zkopírujte a vložte Azure  **Adresa URL federačních metadat aplikace** do Azure SAML Panel správce serveru MyWorkDrive obrazovku pro konfiguraci AD. Další informace získáte [tým podpory MyWorkDrive](mailto:support@myworkdrive.com).
+
     
-7. Na **MyWorkDrive konfigurace** klikněte na tlačítko **nakonfigurovat MyWorkDrive** otevřete **nakonfigurovat přihlašování** okna. Kopírovat **URL odhlašování SAML Entity ID a SAML jednotné přihlašování – adresa URL služby** z **Stručná referenční příručka oddílu.**
-
-    ![Konfigurace MyWorkDrive](./media/myworkdrive-tutorial/tutorial_myworkdrive_configure.png) 
-
-8. Ke konfiguraci jednotného přihlašování na **MyWorkDrive** straně, je nutné odeslat na stažený **certifikát (Base64)**, **URL odhlašování SAML Entity ID a SAML jednotné přihlašování – adresa URL služby**k [tým podpory MyWorkDrive](mailto:support@myworkdrive.com). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
-
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
 Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
 
-   ![Vytvořit testovacího uživatele Azure AD][100]
+1. Na webu Azure Portal, v levém podokně vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte **všichni uživatelé**.
 
-**Chcete-li vytvořit testovacího uživatele ve službě Azure AD, postupujte následovně:**
+    ![image](./media/myworkdrive-tutorial/d_users_and_groups.png)
 
-1. Na webu Azure Portal, v levém podokně klikněte na tlačítko **Azure Active Directory** tlačítko.
+2. Vyberte **nového uživatele** v horní části obrazovky.
 
-    ![Tlačítko Azure Active Directory](./media/myworkdrive-tutorial/create_aaduser_01.png)
+    ![image](./media/myworkdrive-tutorial/d_adduser.png)
 
-2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin**a potom klikněte na tlačítko **všichni uživatelé**.
+3. Ve vlastnosti uživatele proveďte následující kroky.
 
-    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](./media/myworkdrive-tutorial/create_aaduser_02.png)
+    ![image](./media/myworkdrive-tutorial/d_userproperties.png)
 
-3. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** v horní části **všichni uživatelé** dialogové okno.
+    a. V **název** zadat **BrittaSimon**.
+  
+    b. V **uživatelské jméno** typ pole **brittasimon@yourcompanydomain.extension**  
+    Například BrittaSimon@contoso.com.
 
-    ![Tlačítko Přidat](./media/myworkdrive-tutorial/create_aaduser_03.png)
+    c. Vyberte **vlastnosti**, vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
 
-4. V **uživatele** dialogové okno pole, proveďte následující kroky:
-
-    ![Dialogové okno uživatele](./media/myworkdrive-tutorial/create_aaduser_04.png)
-
-    a. V **název** zadejte **BrittaSimon**.
-
-    b. V **uživatelské jméno** zadejte e-mailovou adresu uživatele Britta Simon.
-
-    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí **heslo** pole.
-
-    d. Klikněte na možnost **Vytvořit**.
+    d. Vyberte **Vytvořit**.
  
 ### <a name="create-a-myworkdrive-test-user"></a>Vytvoření zkušebního uživatele MyWorkDrive
 
-V této části vytvoříte uživatele v MyWorkDrive jako Britta Simon. Práce s [tým podpory MyWorkDrive](mailto:support@myworkdrive.com) přidat uživatele na platformě MyWorkDrive. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
+V této části vytvoříte uživatele v MyWorkDrive jako Britta Simon. Práce s [tým podpory MyWorkDrive](mailto:support@myworkdrive.com) přidat uživatele na platformě MyWorkDrive. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
 V této části je povolit Britta Simon k udělení přístupu k MyWorkDrive použití Azure jednotného přihlašování.
 
-![Přiřazení role uživatele][200] 
+1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**.
 
-**Přiřadit MyWorkDrive Britta Simon, proveďte následující kroky:**
-
-1. Na webu Azure Portal, otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace** klikněte **všechny aplikace**.
-
-    ![Přiřadit uživatele][201] 
+    ![image](./media/myworkdrive-tutorial/d_all_applications.png)
 
 2. V seznamu aplikací vyberte **MyWorkDrive**.
 
-    ![Odkaz MyWorkDrive v seznamu aplikací](./media/myworkdrive-tutorial/tutorial_myworkdrive_app.png)  
+    ![image](./media/myworkdrive-tutorial/tutorial_myworkdrive_app.png)
 
-3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
+3. V nabídce na levé straně vyberte **uživatelů a skupin**.
 
-    ![Odkaz "Uživatele a skupiny"][202]
+    ![image](./media/myworkdrive-tutorial/d_leftpaneusers.png)
 
-4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
+4. Vyberte **přidat** tlačítko a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogového okna.
 
-    ![Podokno Přidat přiřazení][203]
+    ![image](./media/myworkdrive-tutorial/d_assign_user.png)
 
-5. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
+4. V **uživatelů a skupin** dialogové okno Vybrat **Britta Simon** v seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
 
-6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
-
-7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
+5. V **přidat přiřazení** dialogové okno Vybrat **přiřadit** tlačítko.
     
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
@@ -209,20 +211,3 @@ Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístu
 
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
-
-
-
-<!--Image references-->
-
-[1]: ./media/myworkdrive-tutorial/tutorial_general_01.png
-[2]: ./media/myworkdrive-tutorial/tutorial_general_02.png
-[3]: ./media/myworkdrive-tutorial/tutorial_general_03.png
-[4]: ./media/myworkdrive-tutorial/tutorial_general_04.png
-
-[100]: ./media/myworkdrive-tutorial/tutorial_general_100.png
-
-[200]: ./media/myworkdrive-tutorial/tutorial_general_200.png
-[201]: ./media/myworkdrive-tutorial/tutorial_general_201.png
-[202]: ./media/myworkdrive-tutorial/tutorial_general_202.png
-[203]: ./media/myworkdrive-tutorial/tutorial_general_203.png
-

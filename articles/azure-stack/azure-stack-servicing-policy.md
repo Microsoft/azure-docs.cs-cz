@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/05/2018
+ms.date: 10/23/2018
 ms.author: sethm
 ms.reviewer: harik
-ms.openlocfilehash: 523be365e8b66c157546470a70ddec73d3e1e5d1
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: f00b175fed36fbe2b28f1d11843bb17c54ac3873
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45630677"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50086960"
 ---
 # <a name="azure-stack-servicing-policy"></a>Údržba zásad služby Azure Stack
 Tento článek popisuje údržby zásady pro integrované systémy Azure Stack, a co musíte udělat, aby byl váš systém v podporovaném stavu. 
@@ -37,11 +37,12 @@ Existují dva typy balíčků aktualizací pro integrované systémy:
 ## <a name="update-package-release-cadence"></a>Aktualizace balíčku vydávání verzí
 Microsoft se očekává, že verze balíčků aktualizací softwaru v měsíčním tempo. Je však možné mít více nebo žádná verze aktualizace v daném měsíci. Výrobce OEM výrobci hardwaru vydávat jejich aktualizace na základě podle potřeby. 
 
-Vyhledejte si dokumentaci na tom, jak naplánovat a spravovat aktualizace a jak určit vaší aktuální verzí v [spravovat aktualizace přehled](azure-stack-updates.md). Informace o konkrétní aktualizaci včetně si ho stáhnout, naleznete v tématu poznámky k verzi pro, které aktualizace: 
+Vyhledejte si dokumentaci na tom, jak naplánovat a spravovat aktualizace a jak určit vaší aktuální verzí v [spravovat aktualizace přehled](azure-stack-updates.md). 
+
+Informace o konkrétní aktualizaci včetně si ho stáhnout, naleznete v tématu poznámky k verzi pro, které aktualizace: 
+- [Aktualizace služby Azure Stack 1809](azure-stack-update-1809.md)
 - [Aktualizace služby Azure Stack. 1808](azure-stack-update-1808.md)
 - [Aktualizace služby Azure Stack 1807](azure-stack-update-1807.md)
-- [Aktualizace služby Azure Stack 1805](azure-stack-update-1805.md)
-
 
 ## <a name="hotfixes"></a>Opravy hotfix
 V některých případech společnost Microsoft poskytuje opravy hotfix pro Azure Stack, které řeší konkrétní problém, který je často preventivní nebo časovým počitadlem.  Každý opravy hotfix jsou vydány s odpovídající článek znalostní báze Microsoft s podrobnostmi o problému, příčině a řešení. 

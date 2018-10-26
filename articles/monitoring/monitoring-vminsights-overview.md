@@ -1,5 +1,5 @@
 ---
-title: Co je Azure Monitor pro virtuální počítače? | Dokumenty Microsoft
+title: Co je Azure Monitor pro virtuální počítače (Preview)? | Dokumenty Microsoft
 description: Azure Monitor pro virtuální počítače je funkce služby Azure Monitor, který kombinuje stavu a výkonu monitorování operačního systému virtuálního počítače Azure, stejně jako automatické zjišťování mezi součástmi aplikace a závislosti s jiným prostředkům a mapuje komunikace mezi nimi. Tento článek obsahuje přehled.
 services: azure-monitor
 documentationcenter: ''
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/24/2018
+ms.date: 10/25/2018
 ms.author: magoedte
-ms.openlocfilehash: 26fcc3eb78af53360cca57382b4c06b017f36c0e
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: e39954f9155419e0dea019203efa22ba0d654f92
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47063264"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50093679"
 ---
-# <a name="what-is-azure-monitor-for-vms"></a>Co je Azure Monitor pro virtuální počítače?
+# <a name="what-is-azure-monitor-for-vms-preview"></a>Co je Azure Monitor pro virtuální počítače (Preview)?
 
 Azure Monitor pro virtuální počítače monitoruje virtuální počítače Azure (VM) ve velkém měřítku prostřednictvím analýzy výkonu a stavu Windows a virtuální počítače s Linuxem, včetně jejich různé procesy a propojených záviset na jiných prostředcích a externí proces. Toto řešení zahrnuje podporu monitorování výkonu a závislostí aplikací pro virtuální počítače hostované v místním nebo jiného zprostředkovatele cloudu.  Zahrnuje tři hlavní funkce poskytovat tento podrobný přehled Díky uloženým:
 

@@ -1,3 +1,16 @@
+---
+author: ecfan
+ms.service: logic-apps
+ms.topic: include
+ms.date: 11/03/2016
+ms.author: estfan
+ms.openlocfilehash: 70ca28fbcd6feea75788cd58677ca44080e47ae5
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50095538"
+---
 ### <a name="prerequisites"></a>Požadavky
 * A [Salesforce](https://salesforce.com) účtu  
 

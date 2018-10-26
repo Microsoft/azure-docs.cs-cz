@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/18/2018
+ms.date: 10/25/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 065eee57b78ea10d5e8079de3a938dc00dd60ee2
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: a40774faadc4393a1ebbb6e26673ba7dff22560c
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406768"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50092300"
 ---
 # <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>Co jsou řízení přístupu v Azure Active Directory podmíněného přístupu? 
 
@@ -166,8 +166,14 @@ Ovládací prvky relací umožňují používat v cloudové aplikaci omezené mo
 
 ### <a name="use-app-enforced-restrictions"></a>Používat omezení vynucená aplikací
 
-Tento ovládací prvek můžete použít tak, aby vyžadovala Azure AD k předání informací o zařízení ke cloudové aplikaci. To pomáhá cloudovou aplikaci vědět, pokud uživatel pochází ze zařízení připojených k doméně a vyhovující zařízení. Tento ovládací prvek je momentálně podporovaná jenom s SharePoint jako cloudové aplikace. SharePoint používá informace o zařízení můžete poskytnout uživatelům omezené nebo úplné možnosti v závislosti na stavu zařízení.
-Další informace o tom, jak vyžadovat omezený přístup se Sharepointem najdete v tématu [řízení přístupu z nespravovaných zařízení](https://aka.ms/spolimitedaccessdocs).
+Tento ovládací prvek můžete použít tak, aby vyžadovala Azure AD k předání informací o zařízení do vybraných cloudových aplikací. Informace o zařízení umožňuje cloudové aplikace vědět, jestli je zahájeno připojení ze zařízení vyhovující nebo připojená k doméně. Tento ovládací prvek podporuje jenom SharePoint Online a Exchange Online jako vybrané cloudové aplikace. Pokud je vybráno, cloudové aplikace používá informace o zařízení poskytnout uživatelům, v závislosti na stavu zařízení s omezenou nebo úplné prostředí.
+
+Další informace naleznete v tématu:
+
+- [Povolení omezený přístup se Sharepointem Online](https://aka.ms/spolimitedaccessdocs) 
+
+- [Povolení omezený přístup s Exchangem Online](https://aka.ms/owalimitedaccess)
+
 
 
 

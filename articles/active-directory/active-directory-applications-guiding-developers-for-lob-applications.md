@@ -3,24 +3,22 @@ title: Registrace aplikace pomocí Azure Active Directory | Dokumentace Microsof
 description: Napsané pro IT specialisty, tento článek obsahuje pokyny pro integraci aplikací Azure Active Directory.
 services: active-directory
 documentationcenter: ''
-author: kgremban
+author: barbkess
 manager: mtillman
 editor: ''
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 09/11/2018
-ms.author: kgremban
+ms.author: barbkess
 ms.custom: seohack1
-ms.openlocfilehash: 57f4fa0179668bccc39098a1eb9816403d00db57
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 4d1ef99426ab5b44b69ba4abc5dc7398d43cfc24
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44716566"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50087334"
 ---
 # <a name="develop-line-of-business-apps-for-azure-active-directory"></a>Vývoj-obchodních aplikací pro Azure Active Directory
 Tato příručka obsahuje základní informace o vývoji – obchodní aplikace (LoB) pro Azure Active Directory (AD). Jeho zamýšlenou cílovou skupinou je globální správce Active Directory nebo Office 365.

@@ -10,14 +10,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/17/2018
+ms.date: 10/25/2018
 ms.author: tomfitz
-ms.openlocfilehash: c32c4f97a963485e87e36afc44e9cea2ebcebd90
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: e99d5d36fa46e9972e706d580e4dfb1d5f9e8bbc
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394405"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50093817"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Přesunutí prostředků do nové skupiny prostředků nebo předplatného
 
@@ -28,8 +28,10 @@ Při přesouvání prostředků, zdrojová skupina a cílová skupina jsou zamč
 Nelze změnit umístění prostředku. Přesunutí prostředku pouze přesune do nové skupiny prostředků. Nová skupina prostředků může mít jiné umístění, ale to se nemění umístění prostředku.
 
 > [!NOTE]
-> Tento článek popisuje, jak přesunout prostředky v rámci Azure existující účet nabídky. Pokud skutečně chcete změnit svého účtu Azure (například upgrade z modelu průběžné platby předem zaplatit) nabízí přitom dál fungují se stávajícími prostředky, najdete v článku [přepnout vašeho předplatného Azure na jinou nabídku](../billing/billing-how-to-switch-azure-offer.md).
->
+> Tento článek popisuje, jak přesunout prostředky v rámci Azure existující účet nabídky. Pokud chcete skutečně změnit svého účtu Azure nabízí (například upgrade z bezplatné na průběžné platby) budete muset převést vaše předplatné. 
+> * Upgrade bezplatné zkušební verze, najdete v článku [upgradujte vaše předplatné Microsoft Imagine Azure nebo bezplatná zkušební verze na průběžné platby](..//billing/billing-upgrade-azure-subscription.md).
+> * Chcete-li změnit účet s průběžnými platbami, [změnit předplatné Azure s průběžnými platbami na jinou nabídku](../billing/billing-how-to-switch-azure-offer.md).
+> * Pokud nelze převést předplatné [vytvoření žádosti o podporu Azure](../azure-supportability/how-to-create-azure-support-request.md). Vyberte **správy předplatných** typ problému.
 >
 
 ## <a name="checklist-before-moving-resources"></a>Kontrolní seznam před přesunutím prostředků
@@ -269,7 +271,7 @@ Následující seznam obsahuje obecný přehled služby Azure, které nelze pře
 
 Spravované disky se podporují pro přesunutí od 24. září 2018. 
 
-1. Budete muset zaregistrovat tuto funkci povolil.
+1. Ve zdrojovém předplatném zaregistrujte tuto funkci.
 
   ```azurepowershell-interactive
   Register-AzureRmProviderFeature -FeatureName ManagedResourcesMove -ProviderNamespace Microsoft.Compute

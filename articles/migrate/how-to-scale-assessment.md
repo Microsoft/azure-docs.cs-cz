@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: raynew
-ms.openlocfilehash: 32bed3a60c40b93471b75b9d54dccd822ccc3be8
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: f289e9745eb220e735cc5c58ce8006c9fea7e61e
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/25/2018
-ms.locfileid: "50025869"
+ms.locfileid: "50086654"
 ---
 # <a name="discover-and-assess-a-large-vmware-environment"></a>Zkoumání a vyhodnocení rozsáhlých prostředí VMware
 
@@ -148,17 +148,12 @@ Zkontrolujte, zda soubor OVA zabezpečené před jejím nasazením:
 
 #### <a name="one-time-discovery"></a>Jednorázové zjišťování
 
-<<<<<<< HEAD pro soubory OVA verze 1.0.9.15 (vydaná 10/23/2018)
-
- <a name="algorithm--hash-value"></a>**Algoritmus** | **hodnoty Hash**
-=======
-Pro soubory OVA verze 1.0.9.15
+Pro soubory OVA verze 1.0.9.15 (vydaná 10/23/2018)
 
 **Algoritmus** | **hodnoty Hash**
 >>>>>>> 20dc93529e7c0a4d17f2f4524752b5e2bead4e37---| ---MD5 | e9ef16b0c837638c506b5fc0ef75ebfa SHA1 | 37b4b1e92b3c6ac2782ff5258450df6686c89864 SHA256 | 8a86fc17f69b69968eb20a5c4c288c194cdcffb4ee6568d85ae5ba96835559ba
 
-<<<<<<< HEAD pro soubory OVA verze 1.0.9.14 (vydaná 8/24/2018) === pro soubory OVA verze 1.0.9.14
->>>>>>> 20dc93529e7c0a4d17f2f4524752b5e2bead4e37
+Pro soubory OVA verze 1.0.9.14 (vydaná 8/24/2018)
 
 **Algoritmus** | **Hodnota hash**
 --- | ---

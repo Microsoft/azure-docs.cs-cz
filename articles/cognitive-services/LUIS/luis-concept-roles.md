@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 9bbbb797cd7e7d1cea52f1d5b1b491998b595db7
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 94a02a06335b35a36c35d4b69776b1eb630b402d
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49638071"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50086018"
 ---
 # <a name="entity-roles-in-patterns-are-contextual-subtypes"></a>Entita role ve vzorech jsou kontextové subtypes
 Role jsou pojmenované, kontextové podtypy entity používá pouze v [vzory](luis-concept-patterns.md).
@@ -42,13 +42,8 @@ Role v utterance vzor šablony, se používají v rámci utterance:
 ## <a name="role-syntax-in-patterns"></a>Syntaxe role ve vzorcích
 Entity a role jsou uzavřeny v závorkách, `{}`. Entity a role jsou odděleny dvojtečkou. 
 
-## <a name="roles-versus-hierarchical-entities"></a>Role a hierarchické entity
-Hierarchické entity poskytují stejné kontextové informace jako role, ale pouze projevy v **záměry**. Podobně, v těchto rolích zajišťují stejné kontextové informace jako hierarchické entity, ale pouze v **vzory**.
 
-|Kontextové učení|Použít v|
-|--|--|
-|hierarchické entity|Záměrů|
-|role|Vzory|
+[!include[H2 Roles versus hierarchical entities](../../../includes/cognitive-services-luis-hier-roles.md)] 
 
 ## <a name="roles-with-prebuilt-entities"></a>Role s předem vytvořenými entitami
 

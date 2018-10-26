@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/30/2018
 ms.author: iainfou
-ms.openlocfilehash: 4679b800126f75596dcb78b46c65c6ac2b616729
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 7a7acb7da2e5999fc844fe6c6c2e191783df9190
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49364621"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50093953"
 ---
 # <a name="create-an-https-ingress-controller-on-azure-kubernetes-service-aks"></a>Vytvoření řadiče HTTPS příchozího přenosu dat ve službě Azure Kubernetes Service (AKS)
 
@@ -25,7 +25,8 @@ Můžete také:
 - [Vytvoření základního příchozího přenosu dat řadiče s externí síťové připojení.][aks-ingress-basic]
 - [Povolit doplněk směrování aplikace HTTP][aks-http-app-routing]
 - [Vytvoření řadiče příchozího přenosu dat, který se používá soukromé, interní sítě a IP adresy][aks-ingress-internal]
-- [Vytvoření řadiče příchozího přenosu dat se statickou veřejnou IP adresu a nakonfigurovat šifrování teď automaticky generovat certifikáty TLS][aks-ingress-static-tls]
+- [Vytvoření řadiče příchozího přenosu dat, která používá vlastní certifikáty TLS][aks-ingress-own-tls]
+- [Vytvoření řadiče příchozího přenosu dat, která používá umožňuje šifrovat automaticky vygenerovat certifikáty protokolu TLS se statickou veřejnou IP adresu][aks-ingress-static-tls]
 
 ## <a name="before-you-begin"></a>Než začnete
 
@@ -314,7 +315,8 @@ Můžete také:
 - [Vytvoření základního příchozího přenosu dat řadiče s externí síťové připojení.][aks-ingress-basic]
 - [Povolit doplněk směrování aplikace HTTP][aks-http-app-routing]
 - [Vytvoření řadiče příchozího přenosu dat, který se používá soukromé, interní sítě a IP adresy][aks-ingress-internal]
-- [Vytvoření řadiče příchozího přenosu dat se statickou veřejnou IP adresu a nakonfigurovat šifrování teď automaticky generovat certifikáty TLS][aks-ingress-static-tls]
+- [Vytvoření řadiče příchozího přenosu dat, která používá vlastní certifikáty TLS][aks-ingress-own-tls]
+- [Vytvoření řadiče příchozího přenosu dat, která používá umožňuje šifrovat automaticky vygenerovat certifikáty protokolu TLS se statickou veřejnou IP adresu][aks-ingress-static-tls]
 
 <!-- LINKS - external -->
 [helm-cli]: https://docs.microsoft.com/azure/aks/kubernetes-helm#install-helm-cli
@@ -335,3 +337,4 @@ Můžete také:
 [aks-ingress-static-tls]: ingress-static-ip.md
 [aks-ingress-basic]: ingress-basic.md
 [aks-http-app-routing]: http-application-routing.md
+[aks-ingress-own-tls]: ingress-own-tls.md

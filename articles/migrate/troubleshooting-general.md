@@ -4,14 +4,14 @@ description: Poskytuje základní informace o známých problémech ve službě 
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 10/23/2018
+ms.date: 10/24/2018
 ms.author: raynew
-ms.openlocfilehash: a41a27f2a87a67ea51bcbe110ac77f7908c44e7a
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: a32b1b73a12242a6c6b1c29fbf116aff73515b46
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945514"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50086739"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Řešení problémů s Azure Migrate
 
@@ -51,9 +51,16 @@ Zařízení pro zařízení průběžná zjišťování průběžně pouze shrom
 
 ## <a name="collector-errors"></a>Chyby kolektoru
 
-### <a name="deployment-of-collector-ova-failed"></a>Nasazení kolektoru vajíčka se nezdařilo
+### <a name="deployment-of-azure-migrate-collector-failed-with-the-error-the-provided-manifest-file-is-invalid-invalid-ovf-manifest-entry"></a>Nasazení služby Azure Migrate Collector se nezdařilo s chybou: Zadaný soubor manifestu je neplatný: Neplatný OVF manifestu položka.
 
-To může dojít, pokud je částečně stáhnout soubor OVA nebo z důvodu prohlížeči Pokud používáte k nasazení soubor OVA webovém klientovi vSphere. Ujistěte se, že po dokončení stahování a vyzkoušejte si nasazení vajíčka se jiný prohlížeč.
+1. Ověření, pokud je soubor Azure Migrate Collector OVA správně stáhnout tak, že zkontrolujete jeho hodnotu hash. Odkazovat [článku](https://docs.microsoft.com/azure/migrate/tutorial-assessment-vmware#verify-the-collector-appliance) ověření hodnoty hash. Pokud hodnota hash neodpovídá, znovu stáhnout soubor OVA a pokusem o nasazení.
+2. Pokud se nepodaří ani a konzole VMware vSphere Client používáte k nasazení OVF, zkuste nasazení prostřednictvím webovém klientovi vSphere. Pokud stále nedaří, zkuste použít jiný webový prohlížeč.
+3. Pokud používáte webovém klientovi vSphere a chcete nasadit virtuální počítač na serveru vCenter Server verze 6.5, zkuste nasazení OVA přímo na hostiteli ESXi pomocí následujících následujících kroků:
+  - Připojení k hostiteli ESXi přímo (namísto serveru vCenter) pomocí webového klienta (https:// <*hostitele IP adresy*> /ui)
+  - Přejděte na domovskou stránku > inventáře
+  - Klikněte na soubor > šablony OVF nasazení > přejděte na soubor OVA a dokončit nasazení
+4. Pokud se nasazení stále nedaří, obraťte se na podporu Azure Migrate.
+
 
 ### <a name="collector-is-not-able-to-connect-to-the-internet"></a>Kolekce není možné se připojit k Internetu
 

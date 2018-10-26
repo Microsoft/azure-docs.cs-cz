@@ -13,12 +13,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: b2e0b65f210774f760ce2d0898c601115ab3a94d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: cda439973c584a57cadc30de7fb931732682de00
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46960154"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50092453"
 ---
 # <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory"></a>Spouštění balíčků služby SSIS se spuštění aktivity balíčku SSIS v Azure Data Factory
 Tento článek popisuje způsob spouštění balíčku služby SSIS v kanálu Azure Data Factory pomocí aktivity spustit balíčků služby SSIS. 
@@ -91,9 +91,11 @@ V tomto kroku použijete uživatelské rozhraní služby Data Factory vytvořít
 
 ### <a name="optionally-parameterize-the-activity"></a>Volitelně můžete parametrizovat aktivity
 
-Volitelně můžete přiřadit hodnoty, výrazy nebo funkce, které mohou odkazovat na objekt pro vytváření dat systémové proměnné, do vašeho projektu nebo balíček parametrů ve formátu JSON pomocí **zobrazit zdrojový kód** tlačítko v dolní části SSIS spuštění Balíček činnost, nebo **kód** tlačítko v pravém horním rohu oblasti kanálu. Můžete například přiřadit parametry kanálu služby Data Factory do projektu služby SSIS nebo balíček parametrů, jak je znázorněno na následujících snímcích obrazovky:
+Volitelně můžete přiřadíte hodnoty, výrazy nebo funkce, které mohou odkazovat na objekt pro vytváření dat systémové proměnné, do vašeho projektu nebo balíček parametrů ve formátu JSON pomocí tlačítko "Zobrazit zdrojový kód" v dolní části činnost vaše spuštění balíčku služby SSIS nebo "Kód" tlačítko v pravém horním rohu oblasti vašeho kanálu. Můžete například přiřadit parametry kanálu služby Data Factory do projektu služby SSIS nebo balíček parametrů, jak je znázorněno na následujících snímcích obrazovky:
 
 ![Upravit skript JSON pro aktivity spuštění balíčku služby SSIS](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-parameters.png)
+
+![Přidání parametrů do aktivity spuštění balíčku služby SSIS](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-parameters2.png)
 
 ![Přidání parametrů do aktivity spuštění balíčku služby SSIS](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-parameters2.png)
 
@@ -204,9 +206,9 @@ V tomto kroku vytvoříte kanál s aktivitou spuštění balíčku služby SSIS.
                     "runtime": "x64",
                     "loggingLevel": "Basic",
                     "packageLocation": {
-                        "packagePath": "FolderName/ProjectName/PackageName.dtsx"            
+                        "packagePath": "FolderName/ProjectName/PackageName.dtsx"            
                     },
-                    "environmentPath":   "FolderName/EnvironmentName",
+                    "environmentPath":   "FolderName/EnvironmentName",
                     "projectParameters": {
                         "project_param_1": {
                             "value": "123"
@@ -244,7 +246,7 @@ V tomto kroku vytvoříte kanál s aktivitou spuštění balíčku služby SSIS.
                         }
                     },
                     "propertyOverrides": {
-                        "\\PackageName.dtsx\\MaxConcurrentExecutables ": {
+                        "\\PackageName.dtsx\\MaxConcurrentExecutables ": {
                             "value": 8,
                             "isSensitive": false
                         }

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 112940dbacf0bfdaff735eb0abd79e177cf5c9c5
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: d181835c6baf5a2a40bca04feaa4c115178ba086
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49456998"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50093957"
 ---
 # <a name="azure-stack-public-key-infrastructure-certificate-requirements"></a>Požadavky na certifikáty infrastruktury veřejných klíčů Azure Stack
 
@@ -40,7 +40,8 @@ Následující seznam popisuje požadavky na certifikáty, které jsou nutné k 
 - Při obměně certifikátů, certifikáty musí být že buď vydávány stejné interní certifikační autorita používaná k podepisování certifikátů, které jsou k dispozici v nasazení nebo jakékoli veřejné certifikační autority výše
 - Použití certifikátů podepsaných svým držitelem nejsou podporovány.
 - Pro nasazení a otočení můžete buď použít jeden certifikát pokrývající všechny obory názvů v pole název subjektu a alternativní název předmětu (SAN) certifikátu, nebo můžete použít jednotlivé certifikáty pro každý obor názvů níže, která službě Azure Stack služby, které máte v plánu využít vyžadují. Oba přístupy vyžadují pomocí zástupných znaků pro koncové body, ve kterém jsou povinné, například **KeyVault** a **KeyVaultInternal**. 
-- Algoritmus podpisu nemůže být SHA1, jako je třeba silnější. 
+- Tento certifikát PFX šifrování by měl být 3DES. 
+- Algoritmus podpisu certifikátu by neměly být SHA1. 
 - Certifikát musí být ve formátu PFX, veřejné a soukromé klíče jsou požadována pro instalaci služby Azure Stack. 
 - PFX šifrování musí být algoritmus 3DES (Toto je výchozí, při exportu z klienta Windows 10 nebo úložiště certifikátů systému Windows Server 2016).
 - Soubory certifikátů pfx musí mít hodnotu "Digitální podpis" a "KeyEncipherment" v poli "Použití klíče".

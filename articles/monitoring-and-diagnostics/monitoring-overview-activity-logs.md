@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: johnkem
 ms.component: activitylog
-ms.openlocfilehash: 5288dc508c35c72f3c1996ce665ccf83a84a4ea3
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 7538951b1ac8290b574180779b83c6b8e79fcf1f
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46948953"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50094359"
 ---
 # <a name="monitor-subscription-activity-with-the-azure-activity-log"></a>Monitorování aktivit předplatného s protokolem aktivit Azure
 
@@ -104,7 +104,7 @@ A **profilu protokolu** řídí, jak exportovat protokol aktivit. Pomocí profil
 Můžete použít úložiště účtu nebo událostí centra oboru názvů, který není ve stejném předplatném jako jeden vysílá protokoly. Uživatel, který konfiguruje nastavení, musí mít správný přístup RBAC k oběma předplatným.
 
 > [!NOTE]
->  Momentálně nelze archivovat data do úložiště účtu, který za zabezpečené virtuální síti.
+>  Nelze aktuálně archivace dat do účtu úložiště, který je za zabezpečené virtuální síti.
 
 > [!WARNING]
 > 1. listopadu 2018 se formát dat protokolů v účtu úložiště změní na řádky JSON. [Informace o dopadu a postup pro aktualizaci nástrojů, aby si s novým formátem poradily, najdete v tomto článku](./monitor-diagnostic-logs-append-blobs.md). 

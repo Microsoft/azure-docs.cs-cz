@@ -14,17 +14,18 @@ ms.workload: identity
 ms.date: 09/17/2018
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: e7b97d0d4489544275436b8048ca033480d53c59
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: dd74736734caddfcfb32a74a073e649c144abeb3
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48843593"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50097812"
 ---
 ## <a name="add-the-applications-registration-information-to-your-app"></a>Informace o registraci vaší aplikace přidejte do své aplikace
+
 V tomto kroku budete muset přidat Id aplikace do projektu.
 
-1.  Otevřít `App.xaml.cs` a nahraďte řádek obsahující `ClientId` pomocí:
+1. Otevřít `App.xaml.cs` a nahraďte řádek obsahující `ClientId` pomocí:
 
 ```csharp
 private static string ClientId = "[Enter the application Id here]";

@@ -4,7 +4,7 @@ description: Obsahuje seznam různých velikostí virtuálních počítačů (a 
 services: cloud-services
 documentationcenter: ''
 author: jpconnock
-manager: timlt
+manager: jpconnock
 editor: ''
 ms.assetid: 1127c23e-106a-47c1-a2e9-40e6dda640f6
 ms.service: cloud-services
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 07/18/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 60ee7c2be29791db91db78472cc002e15390d36b
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 78a073ec7ee8432ba7804daef150afcbbca23ef6
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39004784"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50095565"
 ---
 # <a name="sizes-for-cloud-services"></a>Velikosti pro Cloud Services
 Toto téma popisuje dostupné velikosti a možnosti pro instance rolí cloudové služby (webové role a role pracovního procesu). Také poskytuje důležité informace o nasazení je potřeba vědět při plánování použití těchto prostředků. Jednotlivé velikosti má ID, kam si ukládáte váš [definiční soubor služby](cloud-services-model-and-package.md#csdef). Ceny platné pro jednotlivé velikosti jsou k dispozici na [ceny Cloud Services](https://azure.microsoft.com/pricing/details/cloud-services/) stránky.
@@ -213,7 +213,7 @@ Jako povaze změny úloh nebo nové velikosti virtuálních počítačů, které
 >
 
 ## <a name="get-a-list-of-sizes"></a>Získat seznam velikostí
-Chcete-li získat seznam velikostí můžete použít PowerShell nebo rozhraní REST API. Rozhraní REST API je zdokumentován [tady](https://msdn.microsoft.com/library/azure/dn469422.aspx). Následující kód je příkaz prostředí PowerShell, který vypíše všechny dostupné velikosti pro Cloud Services. 
+Chcete-li získat seznam velikostí můžete použít PowerShell nebo rozhraní REST API. Rozhraní REST API je zdokumentován [tady](https://msdn.microsoft.com/library/azure/dn469422.aspx). Následující kód je příkaz prostředí PowerShell, který zobrazí seznam všech dostupných velikostí pro cloudové služby. 
 
 ```powershell
 Get-AzureRoleSize | where SupportedByWebWorkerRoles -eq $true | select InstanceSize, RoleSizeLabel

@@ -11,21 +11,26 @@ author: ronitr
 ms.author: ronitr
 ms.reviewer: vanto
 manager: craigg
-ms.date: 10/15/2018
-ms.openlocfilehash: 2a0bacaf0405a5223afedcd3897e2a1514f7128b
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.date: 10/25/2018
+ms.openlocfilehash: fc82fa592a513d735d4adc602bedaf8e492af13b
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49466677"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50092947"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Začínáme s auditem databáze SQL
 
-Auditování Azure SQL database sleduje události databáze a zapisuje je do auditu protokolu ve vašem účtu úložiště Azure. Také auditování:
+Auditování pro Azure [SQL Database](sql-database-technical-overview.md) a [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) sleduje události databáze a zapisuje je do auditu protokolu v účtu úložiště Azure, pracovní prostor OMS nebo Event Hubs. Také auditování:
 
 - Pomáhá zajistit dodržování předpisů, porozumět databázové aktivitě a proniknout do nesrovnalostí a anomálií, které můžou značit problémy obchodního charakteru nebo vzbuzovat podezření na narušení zabezpečení.
 
 - Povolí a umožňuje dodržování standardů dodržování předpisů, ale nezaručuje dodržování předpisů. Další informace o Azure programy dodržování standardů tuto podporu, najdete v článku [Centrum zabezpečení Azure](https://azure.microsoft.com/support/trust-center/compliance/).
+
+
+> [!NOTE] 
+> Toto téma se týká k Azure SQL serveru a databází SQL Database a SQL Data Warehouse, které jsou vytvořené na serveru Azure SQL. Pro zjednodušení se SQL Database používá k označení SQL Database i SQL Data Warehouse.
+
 
 ## <a id="subheading-1"></a>Přehled auditování Azure SQL database
 
@@ -51,7 +56,7 @@ Zásady auditu mohou být definovány pro konkrétní databázi nebo jako výcho
 
 - Pokud *je povolené auditování objektů blob serveru*, ho *vždy platí pro databáze*. Databáze se dají auditovat, bez ohledu na nastavení auditování databáze.
 
-- Když povolíte auditování objektů blob v databázi, kromě povolení na serveru, nemá *není* přepsat nebo změnit nastavení auditování objektů blob serveru. Obě audity budou existovat vedle sebe. Jinými slovy databáze se Audituje dvakrát paralelně; jednou tak, že server zásad a jednou sadou zásad databáze.
+- Když povolíte auditování objektů blob v databázi ani na datový sklad, kromě povolení na serveru, nemá *není* přepsat nebo změnit nastavení auditování objektů blob serveru. Obě audity budou existovat vedle sebe. Jinými slovy databáze se Audituje dvakrát paralelně; jednou tak, že server zásad a jednou sadou zásad databáze.
 
    > [!NOTE]
    > Měli byste se vyhnout, povolení auditování objektů blob serveru i auditování databáze objektů blob společně, pokud:
@@ -79,7 +84,7 @@ Následující část popisuje konfigurace auditování pomocí webu Azure porta
 
     ![Navigační podokno][3]
 
-5. **Nové** – Teď máte několik možností pro konfiguraci kam se budou zapisovat protokoly auditu. Protokoly můžete napsat do účtu služby Azure storage, do pracovního prostoru Log Analytics k využití v Log Analytics nebo do centra událostí pro využití v Centru událostí. Můžete nakonfigurovat libovolnou kombinaci těchto možností a protokoly auditu se zapíšou do každého.
+5. **Nové** – Teď máte několik možností pro konfiguraci kam se budou zapisovat protokoly auditu. Protokoly můžete napsat do účtu služby Azure storage, pracovní prostor Log Analytics k využití v Log Analytics nebo centra událostí pro využití v Centru událostí. Můžete nakonfigurovat libovolnou kombinaci těchto možností a protokoly auditu se zapíšou do každého.
 
     ![možnosti úložiště](./media/sql-database-auditing-get-started/auditing-select-destination.png)
 
@@ -87,7 +92,7 @@ Následující část popisuje konfigurace auditování pomocí webu Azure porta
 
     ![účet úložiště](./media/sql-database-auditing-get-started/auditing_select_storage.png)
 
-7. Konfigurace auditování pro zápis protokolů s pracovním prostorem Log Analytics, vyberte **Log Analytics (Náhled)** a otevřete **Log Analytics podrobnosti**. Vyberte nebo vytvořte pracovní prostor Log Analytics, ve kterém budou zapsány protokoly a potom klikněte na **OK**.
+7. Konfigurace auditování pro zápis protokolů k pracovnímu prostoru Log Analytics, vyberte **Log Analytics (Náhled)** a otevřete **Log Analytics podrobnosti**. Vyberte nebo vytvořte pracovní prostor Log Analytics, ve kterém budou zapsány protokoly a potom klikněte na **OK**.
 
     ![Log Analytics](./media/sql-database-auditing-get-started/auditing_select_oms.png)
 
@@ -98,6 +103,11 @@ Následující část popisuje konfigurace auditování pomocí webu Azure porta
 9. Klikněte na **Uložit**.
 10. Pokud chcete přizpůsobit auditované události, můžete udělat prostřednictvím [rutin prostředí PowerShell](#subheading-7) nebo [rozhraní REST API](#subheading-9).
 11. Po dokončení konfigurace nastavení auditu, můžete zapnout nové funkce detekce hrozeb a konfigurovat také e-maily přijímat výstrahy zabezpečení. Při použití detekce hrozeb dostávat proaktivní výstrahy na neobvyklé databázové aktivity, které můžete značí potenciální bezpečnostní hrozby. Další informace najdete v tématu [Začínáme s detekcí hrozeb](sql-database-threat-detection-get-started.md).
+
+
+> [!IMPORTANT]
+>Povolení auditování služby Azure SQL Data Warehouse, nebo na serveru, který má službu Azure SQL Data Warehouse, **povede k datovému skladu obnovuje**, i v případě, kde bylo dříve pozastaveno. **Zkontrolujte prosím, že se pozastavit datový sklad znovu po povolení auditování**. "
+
 
 ## <a id="subheading-3"></a>Analýza protokolů auditu a sestavy
 
@@ -206,6 +216,9 @@ V produkčním prostředí budete pravděpodobně pravidelně aktualizují vaše
     FAILED_DATABASE_AUTHENTICATION_GROUP
 
     Můžete nakonfigurovat auditování pro různé typy akcí a skupiny akcí pomocí Powershellu, jak je popsáno v [spravovat auditování služby SQL database pomocí prostředí Azure PowerShell](#subheading-7) oddílu.
+
+- Pokud používáte ověřování AAD, se nezdařilo přihlášení záznamy budou *není* objeví v protokolu auditování SQL. Chcete-li zobrazit záznamy auditu neúspěšných přihlášení, budete muset najdete [portálu Azure Active Directory]( ../active-directory/reports-monitoring/reference-sign-ins-error-codes.md), který zaznamenává podrobnosti o těchto událostech.
+
 
 ## <a id="subheading-7"></a>Spravovat auditování služby SQL database pomocí prostředí Azure PowerShell
 

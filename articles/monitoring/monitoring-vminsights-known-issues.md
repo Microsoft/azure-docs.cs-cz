@@ -1,5 +1,5 @@
 ---
-title: Azure Monitor známých problémů virtuálních počítačů | Dokumentace Microsoftu
+title: Azure Monitor pro virtuální počítače (Preview) – známé problémy | Dokumentace Microsoftu
 description: Azure Monitor pro virtuální počítače je řešení v Azure, která kombinuje stavu a výkonu monitorování operačního systému virtuálního počítače Azure, stejně jako automatické zjišťování mezi součástmi aplikace a závislosti s jiným prostředkům a mapuje komunikace mezi je. Tento článek popisuje známé problémy.
 services: azure-monitor
 documentationcenter: ''
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/15/2018
+ms.date: 10/25/2018
 ms.author: magoedte
-ms.openlocfilehash: 6d1f1d1ae07ec32262f655fd6ed7205a70e252f4
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: eba9e26f12fd9e1862727adec4f8c8f594e8f659
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49385080"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50091670"
 ---
-# <a name="known-issues-with-azure-monitor-for-vms"></a>Známé problémy s monitorováním Azure pro virtuální počítače
+# <a name="known-issues-with-azure-monitor-for-vms-preview"></a>Známé problémy s monitorováním Azure pro virtuální počítače (Preview)
 
 Následující seznam uvádí známé problémy s funkcí stavu služby Azure Monitor pro virtuální počítače:
 

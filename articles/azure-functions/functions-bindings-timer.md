@@ -13,12 +13,12 @@ ms.topic: reference
 ms.date: 09/08/2018
 ms.author: glenga
 ms.custom: ''
-ms.openlocfilehash: d1e73af69d3220c0719bd05e3f160e20f8c02858
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: d81794f3fe91d1c0e922b1c0e930e308ee566a44
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44715597"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50087453"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Trigger časovače pro službu Azure Functions 
 
@@ -54,13 +54,13 @@ Následující příklad ukazuje [funkce jazyka C#](functions-dotnet-class-libra
 
 ```cs
 [FunctionName("TimerTriggerCSharp")]
-public static void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, TraceWriter log)
+public static void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, ILogger log)
 {
     if(myTimer.IsPastDue)
     {
-        log.Info("Timer is running late!");
+        log.LogInformation("Timer is running late!");
     }
-    log.Info($"C# Timer trigger function executed at: {DateTime.Now}");
+    log.LogInformation($"C# Timer trigger function executed at: {DateTime.Now}");
 }
 ```
 
@@ -82,13 +82,13 @@ Zde je vazba dat v *function.json* souboru:
 Tady je kód skriptu jazyka C#:
 
 ```csharp
-public static void Run(TimerInfo myTimer, TraceWriter log)
+public static void Run(TimerInfo myTimer, ILogger log)
 {
     if(myTimer.IsPastDue)
     {
-        log.Info("Timer is running late!");
+        log.LogInformation("Timer is running late!");
     }
-    log.Info($"C# Timer trigger function executed at: {DateTime.Now}" );  
+    log.LogInformation($"C# Timer trigger function executed at: {DateTime.Now}" );  
 }
 ```
 
@@ -110,11 +110,11 @@ Zde je vazba dat v *function.json* souboru:
 Tady je kód skriptu F #:
 
 ```fsharp
-let Run(myTimer: TimerInfo, log: TraceWriter ) =
+let Run(myTimer: TimerInfo, log: ILogger ) =
     if (myTimer.IsPastDue) then
-        log.Info("F# function is running late.")
+        log.LogInformation("F# function is running late.")
     let now = DateTime.Now.ToLongTimeString()
-    log.Info(sprintf "F# function executed at %s!" now)
+    log.LogInformation(sprintf "F# function executed at %s!" now)
 ```
 
 ### <a name="javascript-example"></a>Příklad v jazyce JavaScript
@@ -171,13 +171,13 @@ Konstruktor atributu má výraz CRONU nebo `TimeSpan`. Můžete použít `TimeSp
 
 ```csharp
 [FunctionName("TimerTriggerCSharp")]
-public static void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, TraceWriter log)
+public static void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, ILogger log)
 {
     if (myTimer.IsPastDue)
     {
-        log.Info("Timer is running late!");
+        log.LogInformation("Timer is running late!");
     }
-    log.Info($"C# Timer trigger function executed at: {DateTime.Now}");
+    log.LogInformation($"C# Timer trigger function executed at: {DateTime.Now}");
 }
  ```
 
@@ -191,7 +191,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 |**direction** | neuvedeno | Musí být nastavena na "in". Tato vlastnost je nastavena automaticky, když vytvoříte aktivační událost na webu Azure Portal. |
 |**Jméno** | neuvedeno | Název proměnné, který představuje objekt časovače v kódu funkce. | 
 |**schedule**|**ScheduleExpression**|A [výraz CRON](#cron-expressions) nebo [TimeSpan](#timespan) hodnotu. A `TimeSpan` lze použít pouze pro aplikaci function app, který běží na plán služby App Service. Můžete vložit výraz plán v nastavení aplikace a nastavte tuto vlastnost na název, který je obalen nastavení aplikace **%** znaky, jako v následujícím příkladu: "ScheduleAppSetting %". |
-|**RunOnStartup**|**runOnStartup**|Pokud `true`, funkce se vyvolala při spuštění modulu runtime. Například modul runtime spustí, když aplikace function app se obnoví po přepnutí do režimu nečinnosti z důvodu nečinnosti. aplikace function app při restartování z důvodu změn funkce a horizontálně navyšuje jeho kapacita aplikace function app. Takže **runOnStartup** je zřídka Pokud někdy třeba nastavit na `true`, zejména v produkčním prostředí. |
+|**runOnStartup**|**runOnStartup**|Pokud `true`, funkce se vyvolala při spuštění modulu runtime. Například modul runtime spustí, když aplikace function app se obnoví po přepnutí do režimu nečinnosti z důvodu nečinnosti. aplikace function app při restartování z důvodu změn funkce a horizontálně navyšuje jeho kapacita aplikace function app. Takže **runOnStartup** je zřídka Pokud někdy třeba nastavit na `true`, zejména v produkčním prostředí. |
 |**useMonitor**|**UseMonitor**|Nastavte na `true` nebo `false` označující, jestli plán by se měly monitorovat. Plán monitorování nevyřeší výskytů plán vám pomůže zajistit, že plán zachovaný správně, i v případě restartování instance aplikace funkce. Pokud není nastavený explicitně, výchozí hodnota je `true` pro plány, které mají interval opakování větší než 1 minuta. Pro plány, které aktivují více než jednou za minutu, výchozí hodnota je `false`.
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]

@@ -8,12 +8,12 @@ ms.date: 10/17/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 33c2bd48084c3d0e73fe2f4a1ce922e7a66b944f
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 532d3d73c939a44678091734f2bbff22267ab6b7
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49955411"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50094860"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Řešení potíží s runbooky
 
@@ -93,8 +93,9 @@ K této chybě dochází v případě, že název předplatného není platný n
 
 K určení, zda jste správně ověření do Azure a přístup k předplatnému, které se snažíte vyberte, proveďte následující kroky:  
 
-1. Ujistěte se, že spouštíte **Add-AzureAccount** dřív, než spustíte rutiny **Select-AzureSubscription** rutiny.  
-2. Pokud se stále zobrazí tato chybová zpráva, upravte kód tak, že přidáte **- AzureRmContext** následující parametr **Add-AzureAccount** rutiny a pak spusťte kód.
+1. Skript mimo Azure Automation. abyste měli jistotu, že funguje samostatná otestujte.
+2. Ujistěte se, že spouštíte **Add-AzureAccount** dřív, než spustíte rutiny **Select-AzureSubscription** rutiny.  
+3. Pokud se stále zobrazí tato chybová zpráva, upravte kód tak, že přidáte **- AzureRmContext** následující parametr **Add-AzureAccount** rutiny a pak spusťte kód.
 
    ```powershell
    $Conn = Get-AutomationConnection -Name AzureRunAsConnection
@@ -104,7 +105,7 @@ K určení, zda jste správně ověření do Azure a přístup k předplatnému,
    $context = Get-AzureRmContext
 
    Get-AzureRmVM -ResourceGroupName myResourceGroup -AzureRmContext $context
-   ```
+    ```
 
 ### <a name="auth-failed-mfa"></a>Scénář: Ověřování do Azure se nezdařila, protože je povolené ověřování službou Multi-Factor Authentication
 
@@ -305,7 +306,7 @@ Některé z následujících řešení tento problém vyřešit:
 * Zkontrolujte, zda jste zadali název rutiny správně.  
 * Ujistěte se, že rutina existuje ve vašem účtu Automation a že nebyly zjištěny žádné konflikty. Chcete-li ověřit, zda je k dispozici rutiny, otevřete sadu runbook v režimu úprav a vyhledání rutiny, které chcete najít v knihovně nebo spuštění `Get-Command <CommandName>`. Jakmile ověříte, které rutina je k dispozici na účet a že nejsou žádné název je v konfliktu s jinými rutinami nebo sady runbook, přidejte ho na plátno a ujistěte se, že používáte platný parametr nastavení v sadě runbook.  
 * Pokud máte ke konfliktu názvů a rutina je k dispozici ve dvou různých modulech, můžete vyřešit pomocí plně kvalifikovaného názvu pro rutinu. Například můžete použít **ModuleName\CmdletName**.  
-* Pokud se spuštění sady runbook v místním ve skupině hybrid worker, ujistěte se, že modul nebo rutina je nainstalován na počítači, který je hostitelem procesu hybrid worker.
+* Pokud se spuštění sady runbook v místním ve skupině hybrid worker, ujistěte se, že je nainstalován modul a rutiny na počítači, který je hostitelem procesu hybrid worker.
 
 ### <a name="long-running-runbook"></a>Scénář: Dlouho spuštěná sada runbook nepodaří dokončit
 

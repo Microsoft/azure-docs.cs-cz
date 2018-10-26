@@ -6,14 +6,14 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/10/2018
+ms.date: 10/25/2018
 ms.author: adgera
-ms.openlocfilehash: 28eb8b5dc0f75b5e031070803d35c8a1ceb1f000
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: a17fe8ed47384ed248b339643be11269b8b9cdc0
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49364333"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50092181"
 ---
 # <a name="security-best-practices"></a>Osvědčené postupy zabezpečení
 
@@ -33,8 +33,9 @@ Některé klíče postupy bezpečně zabezpečit zařízení IoT zahrnují:
 > [!div class="checklist"]
 > * Zabezpečení všech zařízení, která je připojen k IoT prostoru způsobem odolný proti manipulaci.
 > * Omezte role jednotlivých zařízení, senzorů a osoby v rámci adresního prostoru vaše IoT. Pokud dojde k narušení, je minimalizovat dopad.
-> * Potenciální použití filtrování adresu IP zařízení.
+> * Potenciální využívání zařízení IP adres omezení filtrování a port.
 > * Omezit šířku pásma vstupně-výstupní operace a zařízení pro zlepšení výkonu. Omezení četnosti můžete zlepšit zabezpečení zabráněním útoky s cílem odepření služeb.
+> * Informujte firmwaru zařízení.
 
 Některé klíče postupy k zabezpečení bezpečně prostorem IoT patří:
 

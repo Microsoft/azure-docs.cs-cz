@@ -5,15 +5,15 @@ services: virtual-machines-windows, virtual-machines-linux
 author: dlepow
 ms.service: multiple
 ms.topic: include
-ms.date: 09/10/2018
+ms.date: 10/23/2018
 ms.author: danlep;azcspmt;jonbeck
 ms.custom: include file
-ms.openlocfilehash: e9f88a018ba0f40d41bf7ad17a74850a9edf8ae6
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 4fde34338d5606a1f431ff4b7f7074d9cd472e90
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47043845"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "50035257"
 ---
 GPU optimalizované virtuálních počítačů velikosti jsou specializované virtuální počítače s jedním nebo několika grafickými procesory NVIDIA. Tyto velikosti jsou navržené pro úlohy náročné na výpočetní prostředky, náročné na grafiku a vizualizace. Tento článek obsahuje informace o počtu a typu GPU, virtuálních procesorů, datové disky a síťové adaptéry. Úložiště propustnost a šířku pásma sítě jsou také zahrnuté pro jednotlivé velikosti v této skupině. 
 
@@ -30,12 +30,12 @@ Premium Storage ukládání do mezipaměti: Není podporováno
 Virtuální počítače řady NC-series využívají [NVIDIA Tesla K80](http://images.nvidia.com/content/pdf/kepler/Tesla-K80-BoardSpec-07317-001-v05.pdf) karty. Uživatel může zpracovávejte prostřednictvím dat rychleji s využitím CUDA pro zkoumání aplikace energie, simulace selhání, ray trasovaných vykreslování, obsáhlý learning a další. Konfiguraci NC24r poskytuje nízkou latenci a vysokou propustnost síťového rozhraní optimalizovaná pro paralelní výpočetní úlohy s provázaností.
 
 
-| Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | GPU | Max. datových disků | Maximální počet síťových karet |
-| --- | --- | --- | --- | --- | --- | --- |
-| Standard_NC6 |6 |56 | 340 | 1 | 24 | 1 |
-| Standard_NC12 |12 |112 | 680 | 2 | 48 | 2 |
-| Standard_NC24 |24 |224 | 1440 | 4 | 64 | 4 |
-| Standard_NC24r* |24 |224 | 1440 | 4 | 64 | 4 |
+| Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | GPU | Paměť GPU: GiB | Max. datových disků | Maximální počet síťových karet |
+| --- | --- | --- | --- | --- | --- | --- | ---- |
+| Standard_NC6 |6 |56 | 340 | 1 | 8 | 24 | 1 |
+| Standard_NC12 |12 |112 | 680 | 2 | 16 | 48 | 2 |
+| Standard_NC24 |24 |224 | 1440 | 4 | 32 | 64 | 4 |
+| Standard_NC24r* |24 |224 | 1440 | 4 | 32 | 64 | 4 |
 
 1 GPU = polovina karty K80.
 
@@ -53,12 +53,12 @@ Virtuální počítače řady NCv2-series využívají [NVIDIA Tesla P100](http:
 > Pro tuto řadu velikostí kvóty virtuálních procesorů (jader) v rámci vašeho předplatného je zpočátku nastaven 0 v jednotlivých oblastech. [Požádat o zvýšení kvóty virtuálních procesorů](../articles/azure-supportability/resource-manager-core-quotas-request.md) pro tuto řadu v [dostupné oblasti](https://azure.microsoft.com/regions/services/).
 >
 
-| Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | GPU | Max. datových disků | Maximální počet síťových karet |
-| --- | --- | --- | --- | --- | --- | ---  |
-| Standard_NC6s_v2 |6 |112 | 736 | 1 | 12 | 4 |
-| Standard_NC12s_v2 |12 |224 | 1474 | 2 | 24 | 8 |
-| Standard_NC24s_v2 |24 |448 | 2948 | 4 | 32 | 8 |
-| Standard_NC24rs_v2* |24 |448 | 2948 | 4 | 32 | 8 |
+| Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | GPU | Paměť GPU: GiB | Max. datových disků | Maximální počet síťových karet |
+| --- | --- | --- | --- | --- | --- | ---  | --- |
+| Standard_NC6s_v2 |6 |112 | 736 | 1 | 16 | 12 | 4 |
+| Standard_NC12s_v2 |12 |224 | 1474 | 2 | 32 | 24 | 8 |
+| Standard_NC24s_v2 |24 |448 | 2948 | 4 | 64 | 32 | 8 |
+| Standard_NC24rs_v2* |24 |448 | 2948 | 4 | 64 | 32 | 8 |
 
 1 GPU = jedna karta P100.
 
@@ -76,12 +76,12 @@ Virtuální počítače řady NCv3-series využívají [NVIDIA Tesla V100](http:
 > Pro tuto řadu velikostí kvóty virtuálních procesorů (jader) v rámci vašeho předplatného je zpočátku nastaven 0 v jednotlivých oblastech. [Požádat o zvýšení kvóty virtuálních procesorů](../articles/azure-supportability/resource-manager-core-quotas-request.md) pro tuto řadu v [dostupné oblasti](https://azure.microsoft.com/regions/services/).
 >
 
-| Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | GPU | Max. datových disků | Maximální počet síťových karet |
-| --- | --- | --- | --- | --- | --- | --- |
-| Standard_NC6s_v3 |6 |112 | 736 | 1 | 12 | 4 |
-| Standard_NC12s_v3 |12 |224 | 1474 | 2 | 24 | 8 |
-| Standard_NC24s_v3 |24 |448 | 2948 | 4 | 32 | 8 | 
-| Standard_NC24rs_v3 * |24 |448 | 2948 | 4 | 32 | 8 |
+| Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | GPU | Paměť GPU: GiB | Max. datových disků | Maximální počet síťových karet |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Standard_NC6s_v3 |6 |112 | 736 | 1 | 16 | 12 | 4 |
+| Standard_NC12s_v3 |12 |224 | 1474 | 2 | 32 | 24 | 8 |
+| Standard_NC24s_v3 |24 |448 | 2948 | 4 | 64 | 32 | 8 | 
+| Standard_NC24rs_v3 * |24 |448 | 2948 | 4 | 64 | 32 | 8 |
 
 1 GPU = jedna karta V100.
 
@@ -99,12 +99,12 @@ Virtuální počítače ND-series jsou novým rozšířením řady GPU pro úloh
 > Pro tuto řadu velikostí je 0 zpočátku nastaven kvóty virtuálních procesorů (jader) na oblast v rámci vašeho předplatného. [Požádat o zvýšení kvóty virtuálních procesorů](../articles/azure-supportability/resource-manager-core-quotas-request.md) pro tuto řadu v [dostupné oblasti](https://azure.microsoft.com/regions/services/).
 >
 
-| Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | GPU | Max. datových disků | Maximální počet síťových karet |
-| --- | --- | --- | --- | --- | --- | --- |
-| Standard_ND6s |6 |112 | 736 | 1 | 12 | 4 |
-| Standard_ND12s |12 |224 | 1474 | 2 | 24 | 8 | 
-| Standard_ND24s |24 |448 | 2948 | 4 | 32 | 8 |
-| Standard_ND24rs * |24 |448 | 2948 | 4 | 32 | 8 |
+| Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | GPU | Paměť GPU: GiB | Max. datových disků | Maximální počet síťových karet |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Standard_ND6s |6 |112 | 736 | 1 | 24 | 12 | 4 |
+| Standard_ND12s |12 |224 | 1474 | 2 | 48 | 24 | 8 | 
+| Standard_ND24s |24 |448 | 2948 | 4 | 96 | 32 | 8 |
+| Standard_ND24rs * |24 |448 | 2948 | 4 | 96 | 32 | 8 |
 
 1 GPU = jedna karta P40.
 
@@ -120,11 +120,11 @@ Virtuální počítače řad NV využívají [NVIDIA Tesla M60](http://images.nv
 
 Každý GPU v instancích NV obsahuje licenci mřížky. Tuto licenci získáte flexibilitu používat NV instance jako virtuální pracovní stanice pro jednoho uživatele nebo 25 souběžných uživatelů můžete připojit k virtuálnímu počítači pro scénář virtuální aplikace.
 
-| Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | GPU | Max. datových disků | Maximální počet síťových karet | Virtuálních pracovních stanic | Virtuální aplikace | 
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_NV6 |6 |56 |340 | 1 | 24 | 1 | 1 | 25 |
-| Standard_NV12 |12 |112 |680 | 2 | 48 | 2 | 2 | 50 |
-| Standard_NV24 |24 |224 |1440 | 4 | 64 | 4 | 4 | 100 |
+| Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | GPU | Paměť GPU: GiB | Max. datových disků | Maximální počet síťových karet | Virtuálních pracovních stanic | Virtuální aplikace | 
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | 
+| Standard_NV6 |6 |56 |340 | 1 | 8 | 24 | 1 | 1 | 25 |
+| Standard_NV12 |12 |112 |680 | 2 | 16 | 48 | 2 | 2 | 50 |
+| Standard_NV24 |24 |224 |1440 | 4 | 32 | 64 | 4 | 4 | 100 |
 
 1 GPU = polovina karty M60.
 
@@ -134,15 +134,15 @@ Storage úrovně Premium: podporováno
 
 Ukládání do mezipaměti služby Premium Storage: podporováno
 
-Virtuální počítače řady NVv2 využívají [NVIDIA Tesla M60](http://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) GPU a NVIDIA GRID technologii procesorů Intel Broadwell. Tyto virtuální počítače je určená pro urychlení GPU grafických aplikací a virtuálních ploch, kde chcete zákazníkům vizualizovat svoje data, simulovat výsledky k zobrazení, pracovat na CAD nebo vykreslování a datového proudu obsahu. Tyto virtuální počítače navíc mohou spouštět úlohy s jednoduchou přesností, jako je kódování a vykreslování. NVv2 virtuálních počítačů podporují službu Premium Storage a dodávají s dvakrát systémové paměti (RAM) ve srovnání s jeho předchůdce NV-series.  
+Virtuální počítače řady NVv2 využívají [NVIDIA Tesla M60](http://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) GPU a NVIDIA GRID technologii procesorů Intel Broadwell. Tyto virtuální počítače je určená pro urychlení GPU grafických aplikací a virtuálních ploch, kde chcete zákazníkům vizualizovat svoje data, simulovat výsledky k zobrazení, pracovat na CAD nebo vykreslování a datového proudu obsahu. Tyto virtuální počítače navíc mohou spouštět úlohy v jednoduché přesnosti, jako je kódování a vykreslování. NVv2 virtuálních počítačů podporují službu Premium Storage a dodávají s dvakrát systémové paměti (RAM) ve srovnání s jeho předchůdce NV-series.  
 
 Každý GPU v instancích NVv2 obsahuje licenci mřížky. Tuto licenci získáte flexibilitu používat NV instance jako virtuální pracovní stanice pro jednoho uživatele nebo 25 souběžných uživatelů můžete připojit k virtuálnímu počítači pro scénář virtuální aplikace.
 
-| Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | GPU | Max. datových disků | Maximální počet síťových karet | Virtuálních pracovních stanic | Virtuální aplikace | 
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_NV6s_v2 |6 |112 |320 | 1 | 12 | 4 | 1 | 25 |
-| Standard_NV12s_v2 |12 |224 |640 | 2 | 24 | 8 | 2 | 50 |
-| Standard_NV24s_v2 |24 |448 |1280 | 4 | 32 | 8 | 4 | 100 |
+| Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | GPU | Paměť GPU: GiB | Max. datových disků | Maximální počet síťových karet | Virtuálních pracovních stanic | Virtuální aplikace | 
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Standard_NV6s_v2 |6 |112 |320 | 1 | 8 | 12 | 4 | 1 | 25 |
+| Standard_NV12s_v2 |12 |224 |640 | 2 | 16 | 24 | 8 | 2 | 50 |
+| Standard_NV24s_v2 |24 |448 |1280 | 4 | 32 | 32 | 8 | 4 | 100 |
 
 1 GPU = polovina karty M60.
 

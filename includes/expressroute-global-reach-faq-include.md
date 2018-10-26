@@ -5,15 +5,15 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: include
-ms.date: 09/24/2018
+ms.date: 10/23/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: b9c4cf6c90ef5507b318b4f13afb982aab151c79
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 4a3581b3d61c5ad17352c2865fc059704c1eece1
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48874079"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "50035230"
 ---
 ### <a name="what-is-expressroute-global-reach"></a>Co je globální dosah ExpressRoute?
 
@@ -21,7 +21,7 @@ Globální dosah ExpressRoute je služba Azure, která se připojuje vaše míst
 
 ### <a name="how-do-i-enable-or-disable-expressroute-global-reach"></a>Jak povolit nebo zakázat globální dosah ExpressRoute?
 
-Můžete povolit globální dosah ExpressRoute propojováním okruhů ExpressRoute. Když se odpojíte od obvody zakážete funkci. Podívejte se konfiguraci.
+Můžete povolit globální dosah ExpressRoute propojováním okruhů ExpressRoute. Když se odpojíte od obvody zakážete funkci. Zobrazit [konfigurace](../articles/expressroute/expressroute-howto-set-global-reach.md).
 
 ### <a name="do-i-need-expressroute-premium-for-expressroute-global-reach"></a>Potřebuji pro ExpressRoute globální dosah ExpressRoute Premium?
 
@@ -36,6 +36,7 @@ ExpressRoute umožňuje připojení z vaší místní sítě ke cloudovým služ
 Globální dosah ExpressRoute se podporuje v těchto zemích. Okruhy ExpressRoute musíte vytvořit v umístění partnerského vztahu v těchto zemích.
 
 * Austrálie
+* Francie
 * Hongkong
 * Irsko
 * Japonsko
@@ -58,3 +59,11 @@ Ne. Pokud chcete povolit připojení mezi dvěma místními sítěmi, je explici
 ### <a name="what-is-the-network-throughput-i-can-expect-between-my-on-premises-networks-after-i-enable-expressroute-global-reach"></a>Co je propustnost sítě, očekávané mezi Moje sítích na pracovišti po povolit globální dosah ExpressRoute?
 
 Propustnost sítě mezi vaší místní sítě, zajišťuje ExpressRoute globální dosah je uzavřeny menší ze dvou okruhů ExpressRoute.
+
+### <a name="with-expressroute-global-reach-what-are-the-limits-on-the-number-of-routes-i-can-advertise-and-the-number-of-routes-i-will-receive"></a>S ExpressRoute globální dosah jaká jsou omezení na počet tras, které můžu můžete inzerovat a počtu tras, které budu dostávat?
+
+Počet tras, které můžete inzerovat Microsoftu na soukromý partnerský vztah Azure zůstává na 4000 na standardní okruh nebo 10000 v okruhu Premium. Počet tras, které jste dostali z Microsoftu na soukromý partnerský vztah Azure bude součtem trasy virtuálním sítím Azure a trasy z vašich místních sítí připojenou přes ExpressRoute globální dosah. Ujistěte se prosím, že můžete nastavit limit odpovídající maximální předpony místní směrovač. 
+
+### <a name="what-is-the-sla-for-expressroute-global-reach"></a>Co je smlouva SLA pro globální dosah ExpressRoute?
+
+Globální dosah ExpressRoute bude poskytovat stejné [smlouva SLA o dostupnosti](https://azure.microsoft.com/support/legal/sla/expressroute/v1_3/) jako regulární služby ExpressRoute.

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/20/2018
 ms.author: akjosh; cynthn
 ms.custom: include file
-ms.openlocfilehash: 56f48f6676b3c878effe788316024e642c17ff5a
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 6ad38d2dc1c5c41dc10685d680f70c59e7983cd2
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49400301"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50035388"
 ---
 Sdílené Galerie Imagí je služba, která vám pomůže sestavit strukturu a organizace vlastních imagí virtuálních počítačů. Sdílené Galerie obrázků poskytuje tři hlavní prvky
 - Jednoduchá správa
@@ -146,7 +146,7 @@ Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Compute
 
 **Otázka:** Můžete vytvořit image verze ze specializovaného disku?
 
- A. Ne, nepodporujeme aktuálně specializované disky jako Image. Pokud budete mít speciální disk, budete muset [vytvoření virtuálního počítače z virtuálního pevného disku](https://docs.microsoft.com/azure/virtual-machines/windows/create-vm-specialized-portal#create-a-vm-from-a-disk) připojením specializeddisk k novému virtuálnímu počítači. Jakmile budete mít spuštěný virtuální počítač, budete muset postupovat podle pokynů a vytvořte spravovanou image z [virtuálního počítače Windows] (https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-custom-images) nebo [virtuálního počítače s Linuxem](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-custom-images). Až budete mít generalizované image spravovaného, můžete zahájit proces vytvořit popis sdílené bitové kopie a verze image.
+ A. Ne, nepodporujeme aktuálně specializované disky jako Image. Pokud budete mít speciální disk, budete muset [vytvoření virtuálního počítače z virtuálního pevného disku](https://docs.microsoft.com/azure/virtual-machines/windows/create-vm-specialized-portal#create-a-vm-from-a-disk) připojením specializeddisk k novému virtuálnímu počítači. Jakmile budete mít spuštěný virtuální počítač, budete muset postupovat podle pokynů a vytvořte spravovanou image z [virtuálního počítače Windows](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-custom-images) nebo [virtuálního počítače s Linuxem](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-custom-images). Až budete mít generalizované image spravovaného, můžete zahájit proces vytvořit popis sdílené bitové kopie a verze image.
 
 
 **Otázka:** Můžete vytvořit sdílené bitové kopie galerie, definici image a verze image na webu Azure portal?

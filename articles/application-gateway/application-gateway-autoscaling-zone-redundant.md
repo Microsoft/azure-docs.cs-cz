@@ -13,28 +13,28 @@ ms.custom: ''
 ms.workload: infrastructure-services
 ms.date: 09/26/2018
 ms.author: victorh
-ms.openlocfilehash: ab1c9405042de02183b8742fa940a3a5a482923a
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 8fb3dce108b59b8df0d330ec642365d2487eae35
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47165225"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50085457"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-public-preview"></a>Automatické škálování a zónově redundantní služba Application Gateway (Public Preview)
 
-Služba Application Gateway a Firewall webových aplikací (WAF) jsou teď dostupné ve veřejné verzi Preview za novou skladovou Položku, která nabízí vylepšení výkonu a přidává podporu pro důležité nové funkce jako podporu pro virtuální IP adresy statické, automatické škálování a redundanci zón. Existující funkce v rámci všeobecně dostupné skladové položky i nadále podporovat novou skladovou Položku s několika výjimkami, které jsou uvedené v části známé omezení. Nové SKU zahrnují následující vylepšení:
+Služba Application Gateway a Firewall webových aplikací (WAF) jsou teď dostupné ve verzi Public Preview v nové skladové jednotce v2, která nabízí vylepšení výkonu a přidává podporu pro důležité nové funkce jako podporu pro virtuální IP adresy statické, automatické škálování a redundanci zón. Existující funkce v rámci všeobecně dostupné skladové položky i dál podporovaná v nové SKU v2 s několika výjimkami, které jsou uvedené v části známé omezení. Nové SKU v2 zahrnují následující vylepšení:
 
-- **Automatické škálování**: Služba Application Gateway nebo WAF nasazení na základě automatického škálování SKU můžete vertikálně navyšovat nebo snižovat podle změna provoz vzory zátěže. Automatické škálování také eliminuje nutnost zvolit počet nasazení velikost nebo instance během zřizování. Proto skladová jednotka nabízí true elasticitu. V nové skladové položky můžete provozovat Application Gateway v pevnou kapacitu (automatické škálování, zakázáno) i v režimu s povoleným automatickým Škálováním. Režim pevné kapacity je užitečné pro scénáře s konzistentní a předvídatelné zatížení. Režim automatického škálování je výhodné v aplikacích, které se objeví velké odchylky v provozu aplikací.
+- **Automatické škálování**: Služba Application Gateway nebo WAF nasazení na základě automatického škálování SKU můžete vertikálně navyšovat nebo snižovat podle změna provoz vzory zátěže. Automatické škálování také eliminuje nutnost zvolit během zřizování velikost nasazení nebo počet instancí. Proto skladová jednotka nabízí true elasticitu. V nové skladové položky můžete provozovat Application Gateway v pevnou kapacitu (automatické škálování, zakázáno) i v režimu s povoleným automatickým Škálováním. Režim pevné kapacity je užitečné pro scénáře s konzistentní a předvídatelné zatížení. Režim automatického škálování je výhodné v aplikacích, které se zobrazují velké odchylky v provozu aplikací.
    
    > [!NOTE]
    > Automatické škálování není aktuálně k dispozici pro WAF SKU. Konfigurace WAF s režimem pevnou kapacitu, namísto režim automatického škálování.
 - **Zóna redundance**: nasazení služba Application Gateway nebo WAF může zahrnovat více zón dostupnosti, není potřeba zřizovat a pracovat s samostatných instancí Application Gateway v každé zóně pomocí Traffic Manageru. Můžete v jedné oblasti nebo více zónách ve které jsou nasazené instance aplikační brány, tedy zajistit, že zóna selhání odolnost proti chybám. Fond back-endu pro aplikace můžete podobně distribuované napříč zónami dostupnosti.
 - **Vylepšení výkonu**: nabízí automatické škálování SKU až 5 X lepší výkon přesměrování zpracování SSL ve srovnání se obecně dostupné skladové položky.
 - **Rychlejší nasazení a aktualizace** automatické škálování SKU poskytuje rychlejší nasazení a aktualizace čas obecně dostupné skladové položky.
-- **Virtuální IP adresy statické**: Služba application gateway virtuální IP adresy výhradně nyní podporuje statického typu virtuálních IP adres. Tím se zajistí, že virtuální IP adresy přidružené k službě application gateway nemění ani po restartování počítače.
+- **Virtuální IP adresy statické**: Služba application gateway virtuální IP adresy výhradně nyní podporuje statického typu virtuálních IP adres. Tím se zajistí, že se virtuální IP adresy přidružené k službě Application Gateway nezmění ani po restartování počítače.
 
 > [!IMPORTANT]
-> Automatické škálování a zónově redundantní služba application gateway SKU je aktuálně ve verzi public preview. V této verzi preview je k dispozici bez smlouvy o úrovni služeb a nedoporučuje se používat pro produkční úlohy. Některé funkce nemusí být podporované, nebo můžou mít omezené možnosti. Podrobnosti najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Skladová položka automaticky škálované a zónově redundantní Application Gateway je aktuálně ve verzi Public Preview. Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje pro úlohy v produkčním prostředí. Některé funkce nemusí být podporované nebo můžou mít omezené možnosti. Podrobnosti najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ![](./media/application-gateway-autoscaling-zone-redundant/application-gateway-autoscaling-zone-redundant.png)
 
@@ -48,6 +48,11 @@ Ve verzi preview se neúčtuje. Budou se účtovat prostředků než aplikační
 
 |Problém|Podrobnosti|
 |--|--|
+|Certifikát pro ověřování|Nepodporuje se.<br>Další informace najdete v tématu [přehled koncového šifrování protokolu SSL pomocí Application Gateway](ssl-overview.md#end-to-end-ssl-with-the-v2-sku).|
+|Kombinování Standard_v2 a standardní Application Gateway ve stejné podsíti|Nepodporuje se.<br>Kromě toho pokud je povolené automatické škálování, jednu podsíť může mít pouze jednu bránu aplikace.|
+|Uživatelem definovanou trasou (UDR) na podsítě Application Gateway.|Nepodporuje se|
+|Skupina NSG pro rozsah portu pro příchozí spojení| -65200 až 65535. pro Standard_v2 SKU<br>-65503 až 65534 pro standardní SKU.<br>Další informace najdete v tématu [nejčastější dotazy k](application-gateway-faq.md#are-network-security-groups-supported-on-the-application-gateway-subnet).|
+|Protokoly výkonu v diagnostice Azure|Nepodporuje se.<br>Metriky Azure je třeba použít.|
 |Fakturace|Neexistuje žádné fakturace aktuálně.|
 |Režim FIPS, protokol WebSocket|Ty nejsou aktuálně podporovány.|
 |Režim pouze ILB|To není aktuálně podporováno. Veřejné a režim ILB společně se nepodporuje.|

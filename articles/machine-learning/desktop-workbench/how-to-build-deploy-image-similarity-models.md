@@ -10,12 +10,12 @@ ms.author: netahw
 author: nhaiby
 ms.date: 05/20/2018
 ROBOTS: NOINDEX
-ms.openlocfilehash: 371903e1ee080d2b98fd46ac4d6d9838416e1335
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: b1b4e3e19adb38a69e16aaa98300972df3bb71a8
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46973418"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50093645"
 ---
 # <a name="build-and-deploy-image-similarity-models-with-azure-machine-learning"></a>Vytváření a nasazování modelů podobnosti image pomocí služby Azure Machine Learning
 
@@ -38,7 +38,7 @@ Při vytváření a nasazování tento model s AMLPCV, můžete přejít pomocí
 7. Nasazení webové služby
 8. Webové služby zátěžové testování
 
-[CNTK](https://www.microsoft.com/cognitive-toolkit/) slouží jako rozhraní hloubkového učení školení se provádí místně na počítači s využitím GPU, jako ([hloubkového učení virtuální počítač pro datové vědy](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.dsvm-deep-learning?tab=Overview)), a nasazení pomocí rozhraní příkazového řádku Azure ML Operacionalizace.
+[CNTK](https://www.microsoft.com/en-us/cognitive-toolkit/) slouží jako rozhraní hloubkového učení školení se provádí místně na počítači s využitím GPU, jako ([hloubkového učení virtuální počítač pro datové vědy](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.dsvm-deep-learning?tab=Overview)), a nasazení pomocí rozhraní příkazového řádku Azure ML Operacionalizace.
 
 ## <a name="prerequisites"></a>Požadavky
 

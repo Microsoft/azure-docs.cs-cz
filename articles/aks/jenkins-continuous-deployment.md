@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/27/2018
 ms.author: iainfou
-ms.openlocfilehash: cdf8c64f20e15074a1f055d2ab7abf4304d62505
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 5417e59f15ffcf48cc2af27044355d2bb5c9edaf
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48017903"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50087691"
 ---
 # <a name="create-a-continuous-deployment-pipeline-with-jenkins-and-azure-kubernetes-service-aks"></a>Vytvoření kanálu průběžného nasazování pomocí Jenkinse a Azure Kubernetes Service (AKS)
 
@@ -34,9 +34,11 @@ Abyste mohli dokončit kroky v tomto článku budete potřebovat následující 
 - [Clusteru AKS] [ aks-quickstart] a `kubectl` nakonfigurovanou [přihlašovacích údajů clusteru AKS][aks-credentials].
 - [Registr Azure Container Registry (ACR)][acr-quickstart], název přihlašovacího serveru ACR a cluster AKS, který je nakonfigurovaný tak, aby [ověření pomocí registru ACR] [ acr-authentication].
 
-- Použití Azure CLI verze 2.0.46 nebo novější nainstalován a nakonfigurován. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][install-azure-cli].
+- Použití Azure CLI verze 2.0.46 nebo novější nainstalován a nakonfigurován. Spustit `az --version` k vyhledání verze. Pokud potřebujete instalaci nebo upgrade, naleznete v tématu [instalace Azure CLI][install-azure-cli].
 - [Nainstalovaný docker] [ docker-install] ve vývojovém systému.
 - Účet GitHub [osobní přístupový token Githubu][git-access-token]a klient Git ve vývojovém systému nainstalovaná.
+
+- Pokud zadáte vlastní Jenkins instanci spíše než toto ukázkové skripty způsob, jak nasadit Jenkinse, váš Jenkins instance potřebám [Docker nainstalovaný a nakonfigurovaný] [ docker-install] a [kubectl][kubectl-install].
 
 ## <a name="prepare-the-application"></a>Příprava aplikace
 
@@ -317,6 +319,7 @@ V tomto článku jste zjistili, jak používat jako součást řešení CI/CD Je
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [docker-install]: https://docs.docker.com/install/
+[kubectl-install]: https://kubernetes.io/docs/tasks/tools/install-kubectl/
 
 <!-- LINKS - internal -->
 [az-acr-list]: /cli/azure/acr#az-acr-list

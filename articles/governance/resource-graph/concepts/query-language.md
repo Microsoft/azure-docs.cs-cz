@@ -4,28 +4,28 @@ description: Popisuje, jak funguje dotazovací jazyk pro Azure Resource Graph.
 services: resource-graph
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/18/2018
+ms.date: 10/22/2018
 ms.topic: conceptual
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: 6fcf3087feb7f208ea46d0e08824e965160a61d4
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 09bcedc5250755f06ba23b84a0ae90b4d43a23db
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48236446"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50086159"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>Principy Azure Graph prostředků dotazovací jazyk
 
 Dotazovací jazyk pro graf prostředků Azure podporuje řadu operátorů a funkcí. Každá práci a pracují na základě [Průzkumník dat Azure](../../../data-explorer/data-explorer-overview.md).
 
-Nejlepší způsob, jak Seznamte se s jazykem dotazů grafem prostředků je začít s dokumentací pro Průzkumník dat Azure [dotazovací jazyk](/azure/kusto/query/index). Získáte představu o strukturování jazyk a jak různých podporovány operátory a funkce pracují společně.
+Nejlepší způsob, jak Seznamte se s jazykem dotazů grafem prostředků je začít s dokumentací pro Průzkumník dat Azure [dotazovací jazyk](/azure/kusto/query/index). Poskytuje představu o strukturování jazyk a jak různých podporovány operátory a funkce pracují společně.
 
 ## <a name="supported-tabular-operators"></a>Nepodporuje tabulkové operátory
 
 Tady je seznam podporovaných tabulkové operátorů v grafu prostředků:
 
-- [Počet](/azure/kusto/query/countoperator)
+- [count](/azure/kusto/query/countoperator)
 - [DISTINCT](/azure/kusto/query/distinctoperator)
 - [Rozšíření](/azure/kusto/query/extendoperator)
 - [Limit](/azure/kusto/query/limitoperator)
@@ -56,4 +56,4 @@ Tady je seznam podporovaných funkcí v grafu prostředků:
 
 - Zobrazit jazyk v aplikaci [Starter dotazy](../samples/starter.md)
 - Viz advanced používá v [upřesňujících dotazů](../samples/advanced.md)
-- Zjistěte, jak [materiály](explore-resources.md)
+- Naučte se [prozkoumat zdroje](explore-resources.md)

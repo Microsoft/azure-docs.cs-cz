@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 10/11/2018
+ms.date: 10/25/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6d2076a91bc7e7c0e2ca9d2fe6899cddec2f8d0b
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 90a5be07b6939df1850bb1574c71254bb896f004
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024490"
+ms.locfileid: "50093820"
 ---
 # <a name="update-management-solution-in-azure"></a>Řešení Update Management v Azure
 
@@ -73,7 +73,7 @@ Následující tabulka uvádí seznam podporovaných operačních systémů:
 |CentOS 6 (x86/x64) a 7 (x64)      | Agenty Linux musí mít přístup k úložišti aktualizací. Podle klasifikace opravy vyžaduje "yumu" vrátit data zabezpečení, které CentOS nemá úprav.         |
 |Red Hat Enterprise 6 (x86/x64) a 7 (x64)     | Agenty Linux musí mít přístup k úložišti aktualizací.        |
 |SUSE Linux Enterprise Server 11 (x86/x64) a 12 (x64)     | Agenty Linux musí mít přístup k úložišti aktualizací.        |
-|Ubuntu 14.04 LTS a 16.04 LTS (x86/x64)      |Agenty Linux musí mít přístup k úložišti aktualizací.         |
+|Ubuntu 14.04 LTS, 16.04 LTS a 18.04 (x86/x64)      |Agenty Linux musí mít přístup k úložišti aktualizací.         |
 
 ### <a name="unsupported-client-types"></a>Nepodporované klientské typy
 
@@ -174,7 +174,7 @@ Následující tabulka popisuje připojené zdroje, které podporují toto řeš
 
 ### <a name="collection-frequency"></a>Četnost shromažďování dat
 
-Kontrola provádí dvakrát za den pro každý spravovaný počítač s Windows. Každých 15 minut se volá rozhraní Windows API dotazu na čas poslední aktualizace k určení, jestli se změnil stav. Pokud došlo ke změně stavu, zahájí se kontrola kompatibility. 
+Kontrola provádí dvakrát za den pro každý spravovaný počítač s Windows. Každých 15 minut se volá rozhraní Windows API dotazu na čas poslední aktualizace k určení, jestli se změnil stav. Pokud došlo ke změně stavu, zahájí se kontrola kompatibility.
 
 Kontrola provádí každé tři hodiny pro každý spravovaný počítač s Linuxem.
 

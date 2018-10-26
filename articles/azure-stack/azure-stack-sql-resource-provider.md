@@ -1,6 +1,6 @@
 ---
-title: Používání databáze SQL v Azure zásobníku | Microsoft Docs
-description: Zjistěte, jak můžete nasadit databází SQL jako služba na Azure zásobníku a rychlé kroky k nasazení adaptér zprostředkovatele prostředků systému SQL Server.
+title: Použití databází SQL v Azure stacku | Dokumentace Microsoftu
+description: Zjistěte, jak nasadit SQL databáze jako služba v Azure stacku a rychlé kroky pro nasazení adaptéru poskytovatele prostředků SQL serveru.
 services: azure-stack
 documentationCenter: ''
 author: jeffgilb
@@ -11,41 +11,38 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/21/2018
+ms.date: 10/25/2018
 ms.author: jeffgilb
-ms.reviewer: jeffgo
-ms.openlocfilehash: 55d0e51606e8768a01c0b5a7766dbafe24d97a0d
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.reviewer: quying
+ms.openlocfilehash: 3d608843ef31a1ed665fcb1fd90b822f34f77fdd
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36307821"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50086348"
 ---
-# <a name="use-sql-databases-on-microsoft-azure-stack"></a>Databáze SQL pro použití v zásobníku Microsoft Azure
+# <a name="use-sql-databases-on-microsoft-azure-stack"></a>Použití databází SQL v Microsoft Azure Stack
 
-Použití systému SQL Server prostředků zprostředkovatele adaptéru rozhraní API ke zveřejnění databází SQL jako službu [zásobník Azure](azure-stack-poc.md). Po instalaci poskytovatele prostředků a připojte ho k jedné nebo více instancí systému SQL Server, můžete vytvořit vás a uživatele:
+Nabídka databází SQL jako služba pomocí adaptéru poskytovatele prostředků SQL serveru [Azure Stack](azure-stack-poc.md). Po instalaci poskytovatele prostředků a připojte ho k jedné nebo více instancí systému SQL Server, můžete vytvořit vy a vaši uživatelé:
 
-- Databáze pro nativní cloudové aplikace.
+- Databáze pro aplikace nativní pro cloud.
 - Weby, které používají SQL.
 - Úlohy, které používají SQL.
 
-Zprostředkovatel prostředků neposkytuje všechny databáze schopnosti správy [Azure SQL Database](https://azure.microsoft.com/services/sql-database/). Například elastické fondy, které automaticky přidělit prostředky nejsou podporovány. Ale podporuje zprostředkovatele prostředků, podobně jako vytvářet, číst, aktualizovat a odstranit operace v databázi systému SQL Server. Další informace o poskytovateli prostředků rozhraní API najdete v tématu [Windows Azure Pack SQL serveru prostředků zprostředkovatele REST referenční dokumentace rozhraní API](https://msdn.microsoft.com/library/dn528529.aspx).
+Poskytovatel prostředků neobsahuje všechny databáze schopnosti správy [Azure SQL Database](https://azure.microsoft.com/services/sql-database/). Například elastických fondů, které automaticky přidělit prostředky nejsou podporovány. Ale podporuje zprostředkovatel prostředků, podobně jako vytvoření, čtení, aktualizace a odstranění (CRUD) operací v databázi serveru SQL Server. 
 
->[!NOTE]
-Zprostředkovatel prostředků systému SQL Server rozhraní API není kompatibilní s Azure SQL Database.
+## <a name="sql-resource-provider-adapter-architecture"></a>Architektura adaptéru poskytovatele prostředků SQL
 
-## <a name="sql-resource-provider-adapter-architecture"></a>Architektura adaptér zprostředkovatele prostředků SQL
+Poskytovatel prostředků se skládá z následujících součástí:
 
-Zprostředkovatel prostředků se skládá z následujících součástí:
+- **SQL prostředků poskytovatele adaptér virtuálního počítače (VM)**, což je virtuální počítač Windows Server, na kterém běží služby poskytovatele.
+- **Poskytovatel prostředků**, která zpracovává požadavky a prostředky databáze přístupy.
+- **Servery, které hostují SQL Server**, které poskytují kapacity pro databáze názvem hostitelskými servery.
 
-- **SQL prostředků zprostředkovatele adaptér virtuálního počítače (VM)**, což je virtuální počítač Windows serveru, který spouští služby poskytovatele.
-- **Zprostředkovatel prostředků**, který zpracovává žádosti a databázi prostředkům přistupuje.
-- **Servery, které jsou hostiteli systému SQL Server**, které poskytují kapacitu pro databáze názvem hostitelskými servery.
-
-Musíte vytvořit aspoň jednu instanci systému SQL Server nebo poskytovat přístup k externí instance systému SQL Server.
+Musíte vytvořit alespoň jednu instanci systému SQL Server nebo poskytovat přístup k externí instance systému SQL Server.
 
 > [!NOTE]
-> Hostitelské servery, které jsou nainstalovány v Azure zásobníku integrované systémy musí být vytvořeny z předplatného klienta. Nemohou být vytvářeny z předplatného výchozího zprostředkovatele. Musí se vytvořit z klienta portálu nebo pomocí prostředí PowerShell s odpovídající přihlášení. Všechny hostitelské servery jsou fakturovatelné virtuální počítače a musí mít licenci. Správce služby můžete být vlastníkem předplatného klienta.
+> Hostitelské servery, které jsou nainstalované ve službě Azure Stack integrované systémy musí být vytvořené z tenanta předplatného. Nelze vytvořit z výchozí předplatné poskytovatele. Musí se vytvořit portál pro klienty nebo pomocí prostředí PowerShell s odpovídající přihlášení. Všechny hostitelské servery jsou fakturovatelná virtuální počítače a musí mít licence. Správce služby může být vlastníkem předplatného tenanta.
 
 ## <a name="next-steps"></a>Další postup
 

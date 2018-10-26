@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/12/2018
+ms.date: 10/25/2018
 ms.author: jeedes
-ms.openlocfilehash: 0ef8fc2ea8b006d49dd54d638183a58bf78a5797
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: b148967af0882993d8ab113bdf0fd3ad3835296f
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49312661"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50092606"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-three"></a>Kurz: Integrace Azure Active Directory s tři Zscaler
 
@@ -119,10 +119,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     ![Konfigurace jednotného přihlašování](./media/zscaler-three-tutorial/tutorial_zscalerthree_url.png)
 
-    Do textového pole Adresa URL odpovědi zadejte adresu URL: `https://login.zscalerthree.net/sfc_sso`
-
-    > [!NOTE]
-    > Budete muset aktualizovat tuto hodnotu skutečné přihlašovací adresa URL. Kontakt [tým podpory tři klientské Zscalerem](https://www.zscaler.com/company/contact) k získání těchto hodnot.
+    V přihlašování textového pole URL zadejte adresu URL: `https://login.zscalerthree.net/sfc_sso`
 
 6. Na **podpisový certifikát SAML** části, klikněte na **Stáhnout** Stáhnout **Certificate(Base64)** a uložte soubor certifikátu v počítači.
 

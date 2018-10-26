@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: anavin
-ms.openlocfilehash: 71dee9f36a3e8e11cc23f966c9157f6409a3b5e0
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 32ad02583f84a84c494dc8300834cd9ff2f0d771
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47405729"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50094969"
 ---
 # <a name="create-change-or-delete-a-public-ip-address-prefix"></a>Vytvoření, změna nebo odstranění předponu veřejné IP adresy
 
@@ -62,8 +62,8 @@ Předpony veřejných IP adres mají poplatek. Podrobnosti najdete v tématu [ce
 
 |Nástroj|Příkaz|
 |---|---|
-|Rozhraní příkazového řádku|[Vytvoření az network public-ip předpona](/cli/azure/network/public-ip/prefix/az-network-public-ip-prefix-create)|
-|PowerShell|[Nové AzureRmPublicIpAddressPrefix](/powershell/module/azurerm.network/new-azurermpublicipaddressprefix)|
+|Rozhraní příkazového řádku|[Vytvoření az network public-ip předpona](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-create)|
+|PowerShell|[Nové AzureRmPublicIpPrefix](/powershell/module/azurerm.network/new-azurermpublicipprefix)|
 
 ## <a name="create-a-static-public-ip-address-from-a-prefix"></a>Vytvoření statické veřejné IP adresy z předpony
 Jakmile vytvoříte předponu, je nutné vytvořit statické IP adresy z předpony. Pokud to chcete udělat, postupujte podle následujících kroků.
@@ -71,7 +71,7 @@ Jakmile vytvoříte předponu, je nutné vytvořit statické IP adresy z předpo
 1. Do pole, které obsahuje text *vyhledat prostředky* v horní části stránky na webu Azure portal, zadejte *předpona veřejné ip adresy*. Když **předpony veřejných IP adres** nezobrazí ve výsledcích hledání, vyberte ji.
 2. Vyberte prefx, kterou chcete vytvořit veřejné IP adresy z.
 3. Když se objeví v seznamu výsledků hledání, vyberte ho a klikněte na **+ přidat IP adresu** v oddílu Přehled. V případě, že se to nezobrazí, ujistěte se, že používáte správné odkaz pro verzi preview: https://aka.ms/publicipprefixportal
-4. Zadejte nebo vyberte hodnoty pro následující nastavení v části **vytvoření veřejné IP adresy**. Protože předponu pro standardní SKU, protokoly IPv4 a statické, stačí zadat následující soupis:
+4. Zadejte nebo vyberte hodnoty pro následující nastavení v části **vytvoření veřejné IP adresy**. Protože předponu pro standardní SKU, protokoly IPv4 a statické, potřebujete jenom zadejte následující informace:
 
    |Nastavení|Povinné?|Podrobnosti|
     |---|---|---|
@@ -91,8 +91,8 @@ Jakmile vytvoříte předponu, je nutné vytvořit statické IP adresy z předpo
 
 |Nástroj|Příkaz|
 |---|---|
-|Rozhraní příkazového řádku|[AZ network public-ip předponu seznamu](/cli/azure/network/public-ip/prefix/az-network-public-ip-prefix-list) na seznamu veřejné IP adresy [az network public-ip předponu zobrazit](/cli/azure/network/public-ip/prefix/az-network-public-ip-prefix-show) zobrazíte nastavení. [az network public-ip předponu aktualizace](/cli/azure/network/public-ip-prefix#az-network-public-ip-prefix-update) aktualizovat; [az network public-ip předponu odstranit](/cli/azure/network/public-ip/prefix/az-network-public-ip-prefix-delete) odstranit|
-|PowerShell|[Get-AzureRmPublicIpAddressPrefix](/powershell/module/azurerm.network/get-azurermpublicipaddressprefix) načíst objekt veřejné IP adresy a zobrazte její nastavení [Set-AzureRmPublicIpAddressPrefix](/powershell/module/azurerm.network/set-azurermpublicipaddressprefix) aktualizovat nastavení. [Odebrat AzureRmPublicIpAddressPrefix](/powershell/module/azurerm.network/remove-azurermpublicipaddressprefix) odstranit|
+|Rozhraní příkazového řádku|[AZ network public-ip předponu seznamu](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-list) na seznamu veřejné IP adresy [az network public-ip předponu zobrazit](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-show) zobrazíte nastavení. [az network public-ip předponu aktualizace](/cli/azure/network/public-ip-prefix#az-network-public-ip-prefix-update) aktualizovat; [az network public-ip předponu odstranit](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-delete) odstranit|
+|PowerShell|[Get-AzureRmPublicIpPrefix](/powershell/module/azurerm.network/get-azurermpublicipprefix) načíst objekt veřejné IP adresy a zobrazte její nastavení [Set-AzureRmPublicIpPrefix](/powershell/module/azurerm.network/set-azurermpublicipprefix) aktualizovat nastavení. [Odebrat AzureRmPublicIpPrefix](/powershell/module/azurerm.network/remove-azurermpublicipprefix) odstranit|
 
 ## <a name="permissions"></a>Oprávnění
 

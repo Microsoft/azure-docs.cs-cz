@@ -1,5 +1,5 @@
 ---
-title: Jak provádět dotazy protokolů ze služby Azure Monitor pro virtuální počítače | Dokumentace Microsoftu
+title: Jak provádět dotazy protokolů ze služby Azure Monitor pro virtuální počítače (Preview) | Dokumentace Microsoftu
 description: Azure Monitor pro řešení virtuálních počítačů předává metriky a data protokolů do Log Analytics a tento článek popisuje záznamy a obsahuje ukázkové dotazy.
 services: azure-monitor
 documentationcenter: ''
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/20/2018
+ms.date: 10/25/2018
 ms.author: magoedte
-ms.openlocfilehash: 4a5f3178ad4d4152bb29e6c313b3fd332124c154
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: 90816061766a423f7dbc7d277433a95c5bcf6115
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48269390"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50095418"
 ---
-# <a name="how-to-query-logs-from-azure-monitor-for-vms"></a>Jak provádět dotazy protokolů ze služby Azure Monitor pro virtuální počítače
+# <a name="how-to-query-logs-from-azure-monitor-for-vms-preview"></a>Jak provádět dotazy protokolů ze služby Azure Monitor pro virtuální počítače (Preview)
 Azure Monitor pro virtuální počítače shromažďuje metriky výkonu a připojení, počítače a zpracování dat inventáře a informace o stavu a předá jej do úložiště dat Log Analytics ve službě Azure Monitor.  Tato data jsou k dispozici pro [hledání](../log-analytics/log-analytics-log-searches.md) v Log Analytics. Tato data můžete použít scénáře, které zahrnují plánování migrace, kapacitu analýza, zjišťování a řešení potíží s výkonem na vyžádání.
 
 ## <a name="map-records"></a>Záznamy mapy

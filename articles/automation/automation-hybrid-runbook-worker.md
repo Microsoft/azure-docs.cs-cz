@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 10/11/2018
+ms.date: 10/25/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 95c49ccc11a12c2e9174ba2d186a302f500e8bf2
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: bb7e422e0eb4a71e0f88a911083f8f5d6fb0ef2f
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49650141"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50092164"
 ---
 # <a name="automate-resources-in-your-datacenter-or-cloud-by-using-hybrid-runbook-worker"></a>Automatizace prostředky v datovém centru nebo v cloudu s využitím procesu Hybrid Runbook Worker
 
@@ -26,7 +26,7 @@ Následující obrázek ukazuje tuto funkci:
 
 Každá funkce Hybrid Runbook Worker je členem skupiny Hybrid Runbook Worker, který zadáváte při instalaci agenta. Skupina může obsahovat jeden agent, ale můžete nainstalovat více agentů ve skupině pro zajištění vysoké dostupnosti.
 
-Při spuštění sady runbook v procesu Hybrid Runbook Worker, určete skupinu, která se spouští. Každému pracovnímu procesu ve skupině se dotazuje služby Azure Automation, jestli jsou k dispozici žádné úlohy. Pokud úloha je k dispozici, má první pracovního procesu k dosažení ho. Nelze zadat konkrétní pracovního procesu. Procesy hybrid Runbook Worker Nesdílejte mnoho omezení, které mají Azure karantény. Nemají stejné omezení místa na disku, paměti nebo síťové sokety. Procesy hybrid Runbook Worker jsou omezené jenom k prostředkům v procesu Hybrid Runbook Worker, samotného. Kromě toho Hybrid Runbook Worker nesdílejí 180 minutu [spravedlivé sdílení](automation-runbook-execution.md#fair-share) časový limit, kterou Azure sandboxy provádět. Další informace o omezení služby Azure karantény a procesy Hybrid Runbook Worker, najdete v úloze [omezení](../azure-subscription-service-limits.md#automation-limits) stránky.
+Při spuštění sady runbook v procesu Hybrid Runbook Worker, určete skupinu, která se spouští. Každému pracovnímu procesu ve skupině se dotazuje služby Azure Automation, jestli jsou k dispozici žádné úlohy. Pokud úloha je k dispozici, má první pracovního procesu k dosažení ho. Doba zpracování do fronty úloh závisí na Hybrid worker hardwarový profil a zatížení. Nelze zadat konkrétní pracovního procesu. Procesy hybrid Runbook Worker Nesdílejte mnoho omezení, které mají Azure karantény. Nemají stejné omezení místa na disku, paměti nebo síťové sokety. Procesy hybrid Runbook Worker jsou omezené jenom k prostředkům v procesu Hybrid Runbook Worker, samotného. Kromě toho Hybrid Runbook Worker nesdílejí 180 minutu [spravedlivé sdílení](automation-runbook-execution.md#fair-share) časový limit, kterou Azure sandboxy provádět. Další informace o omezení služby Azure karantény a procesy Hybrid Runbook Worker, najdete v úloze [omezení](../azure-subscription-service-limits.md#automation-limits) stránky.
 
 ## <a name="install-a-hybrid-runbook-worker"></a>Instalace procesu Hybrid Runbook Worker
 

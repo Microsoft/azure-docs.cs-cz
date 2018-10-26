@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.author: haining
 author: hning86
 ms.reviewer: larryfr
-ms.date: 09/24/2018
-ms.openlocfilehash: 64104fc70c7be1589c9332905f243a2e1e692eee
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.date: 10/24/2018
+ms.openlocfilehash: b00f72c987b6ce8c44796bd036af670ec39fa7a6
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48237972"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50093628"
 ---
-# <a name="architecture-and-concepts-how-does-azure-machine-learning-service-work"></a>Architektura a koncepty: Jak funguje služba Azure Machine Learning? 
+# <a name="how-the-azure-machine-learning-service-works-architecture-and-concepts"></a>Fungování služby Azure Machine Learning: architektura a koncepty
 
 Tento dokument popisuje architekturu a koncepty pro službu Azure Machine Learning. Následující diagram znázorňuje hlavní součásti služby a ilustruje obecný pracovní postup, při použití služby: 
 
@@ -156,6 +156,13 @@ Experiment je seskupení mnoho spuštění z daného skriptu. Vždy patří do p
 
 Příklad použití experiment, najdete v článku [rychlý start: Začínáme se službou Azure Machine Learning](quickstart-get-started.md) dokumentu.
 
+
+## <a name="pipelines"></a>Kanály
+
+Kanály se používají k vytváření a správě pracovních postupů této fáze spojit dohromady machine learning (ML) například přípravy dat, trénování modelu, model nasazení a odvozování. Jednotlivé fáze může zahrnovat několik kroků, z nichž každý lze spustit bezobslužně v různých cílových výpočetních prostředí.
+
+Další informace o machine learning kanály pomocí této služby najdete v článku [kanály a Azure Machine Learning](concept-ml-pipelines.md).
+
 ## <a name="compute-target"></a>Cílové výpočetní prostředí
 
 Cílové výpočetní prostředí je výpočetní prostředek, který používá ke spuštění trénovací skript nebo hostovat vaše nasazení webové služby. Cílových podporovaných výpočetních prostředí jsou: 
@@ -210,6 +217,6 @@ Aktivity může poskytovat oznámení prostřednictvím sady SDK nebo webového 
 
 Abyste mohli začít používat Azure Machine Learning pomocí následujících odkazů:
 
-* [Co je služba Azure Machine Learning](overview-what-is-azure-ml.md)
-* [Rychlý start: Vytvoření pracovního prostoru s využitím Pythonu](quickstart-get-started.md)
+* [Co je služba Azure Machine Learning?](overview-what-is-azure-ml.md)
+* [Rychlý start: Vytvoření pracovního prostoru v Pythonu](quickstart-get-started.md)
 * [Kurz: Trénování modelu](tutorial-train-models-with-aml.md)

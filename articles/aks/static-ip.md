@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/26/2018
 ms.author: iainfou
-ms.openlocfilehash: b51da8c5e5e113cdb7e449206f7137386b278be4
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: b64727f6a77bb1151a4f9016b6179a7ee22e3a5c
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/25/2018
-ms.locfileid: "50025918"
+ms.locfileid: "50085474"
 ---
 # <a name="use-a-static-public-ip-address-with-the-azure-kubernetes-service-aks-load-balancer"></a>Statické veřejné IP adresy pomocí nástroje pro vyrovnávání zatížení Azure Kubernetes Service (AKS)
 
@@ -55,9 +55,9 @@ IP adresa se zobrazí, jak je znázorněno v následujícím výstupu zhuštěn�
     "id": "/subscriptions/<SubscriptionID>/resourceGroups/MC_myResourceGroup_myAKSCluster_eastus/providers/Microsoft.Network/publicIPAddresses/myAKSPublicIP",
     "idleTimeoutInMinutes": 4,
     "ipAddress": "40.121.183.52",
-    [..]
+    [...]
   }
-````
+```
 
 Později můžete získat na veřejných IP adres pomocí [az network public-ip list] [ az-network-public-ip-list] příkazu. Zadejte název uzlu skupiny prostředků a veřejné IP adresy, které jste vytvořili a dotaz *ipAddress* jak je znázorněno v následujícím příkladu:
 
@@ -89,6 +89,28 @@ Vytvoření služby a nasazení se `kubectl apply` příkazu.
 
 ```console
 kubectl apply -f load-balancer-service.yaml
+```
+
+## <a name="use-a-static-ip-address-outside-of-the-node-resource-group"></a>Použijte statickou IP adresu mimo uzel skupiny prostředků
+
+S Kubernetes 1.10 nebo novější je možné používat statickou IP adresu, která je vytvořená mimo uzel skupiny prostředků. Instanční objekt používané clusterem AKS musí mít delegovaná oprávnění k jiné skupině prostředků.
+
+Pokud chcete použít IP adresu mimo uzel skupiny prostředků, přidáte poznámku k její definici. Následující příklad nastaví anotaci do skupiny prostředků s názvem *myResourceGroup*. Zadejte vlastní název skupiny prostředků:
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    service.beta.kubernetes.io/azure-load-balancer-resource-group: myResourceGroup
+  name: azure-load-balancer
+spec:
+  loadBalancerIP: 40.121.183.52
+  type: LoadBalancer
+  ports:
+  - port: 80
+  selector:
+    app: azure-load-balancer
 ```
 
 ## <a name="troubleshoot"></a>Řešení potíží

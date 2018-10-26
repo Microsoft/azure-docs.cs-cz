@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/28/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: f0791173450d5db3b33762ec9d5ed5c1adf96788
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 4dd3253b1d7ee159914f2d1fd6a8644bbc69c1f0
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49321627"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50092787"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Požadavky pro Azure AD Connect
 Toto téma popisuje požadavky a požadavky na hardware pro Azure AD Connect.
@@ -63,7 +63,7 @@ Před instalací Azure AD Connect, existuje několik věcí, které potřebujete
 ### <a name="sql-server-used-by-azure-ad-connect"></a>SQL Server používá Azure AD Connect
 * Azure AD Connect vyžaduje k ukládání dat identity databázi SQL Serveru. Ve výchozím nastavení je nainstalovaný SQL Server 2012 Express LocalDB (světle verze systému SQL Server Express). SQL Server Express má omezení velikosti 10GB, která umožňuje spravovat přibližně 100 000 objektů. Pokud je potřeba spravovat větší objem adresářových objektů, je potřeba nasměrovat Průvodce instalací na jinou instalaci systému SQL Server.
 * Pokud budete používat samostatný SQL Server, pak platí tyto požadavky:
-  * Azure AD Connect podporuje všechny verze systému Microsoft SQL Server ze systému SQL Server 2008 (s nejnovější aktualizací Service Pack) do systému SQL Server 2016 SP1. Microsoft Azure SQL Database je **nepodporuje** jako databáze.
+  * Azure AD Connect podporuje všechny verze systému Microsoft SQL Server ze systému SQL Server 2008 (s nejnovější aktualizací Service Pack) na SQL Server 2017. Microsoft Azure SQL Database je **nepodporuje** jako databáze.
   * Je nutné použít malá a velká písmena kolace SQL. Tyto kolace jsou označeny ikonou \_CI_ v názvu. Je **nepodporuje** pro používání malá a velká písmena kolace, identifikovaný \_cs_ – v názvu.
   * Můžete mít jenom jeden synchronizační modul za instanci SQL. Je **nepodporuje** sdílení SQL instance s FIM nebo MIM Sync nebo DirSync, Azure AD Sync.
 

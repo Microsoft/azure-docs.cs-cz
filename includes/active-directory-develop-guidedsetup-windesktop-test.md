@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/17/2018
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: d333f8ecd7e1044575f570d893227f9dcb394974
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: ac4f826ed1d27ee39d8e35605a3baa7f94b33e64
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48842879"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "50035515"
 ---
 ## <a name="test-your-code"></a>Testování kódu
 
@@ -29,14 +29,16 @@ Chcete-li spustit váš projekt v sadě Visual Studio, vyberte **F5**. Vaše apl
 
 Při prvním spuštění aplikace a vyberte **volat Microsoft Graph API** tlačítko, budete vyzváni k přihlášení. Použijte účet s Azure Active Directory (pracovní nebo školní účet) nebo účet Microsoft (live.com, outlook.com) a otestovat ho.
 
-![Přihlaste se k aplikaci](./media/active-directory-develop-guidedsetup-windesktop-test/signinscreenshot.png)
+![Přihlášení k aplikaci](./media/active-directory-develop-guidedsetup-windesktop-test/signinscreenshot.png)
 
 ### <a name="provide-consent-for-application-access"></a>Zadejte svůj souhlas pro přístup k aplikaci
-Při prvním přihlášení do aplikace, budete také vyzváni k poskytování souhlasit s povolením aplikace pro přístup k profilu a přihlášení v, jak je znázorněno zde: 
+
+Při prvním přihlášení do aplikace, budete také vyzváni k poskytování souhlasit s povolením aplikace pro přístup k profilu a přihlášení v, jak je znázorněno zde:
 
 ![Zadejte svůj souhlas pro přístup k aplikaci](./media/active-directory-develop-guidedsetup-windesktop-test/consentscreen.png)
 
 ### <a name="view-application-results"></a>Zobrazení výsledků aplikace
+
 Po přihlášení, měli byste vidět informace profilu uživatele, který je vrácen voláním rozhraní Microsoft Graph API. Výsledky se zobrazí v **výsledků volání rozhraní API** pole. Základní informace o tokenu, který byl získán prostřednictvím volání `AcquireTokenAsync` nebo `AcquireTokenSilentAsync` by se zobrazovat v **informace o tokenu** pole. Výsledky obsahují následující vlastnosti:
 
 |Vlastnost  |Formát  |Popis |
@@ -51,7 +53,7 @@ Po přihlášení, měli byste vidět informace profilu uživatele, který je vr
 
 Vyžaduje rozhraní Microsoft Graph API *user.read* obory a čtení profilu uživatele. Tento obor se automaticky přidá ve výchozím nastavení každá aplikace, které je registrované v portálu pro registraci aplikace. Další rozhraní API pro Microsoft Graph, stejně jako vlastní rozhraní API pro back endového serveru může vyžadovat další obory. Vyžaduje rozhraní Microsoft Graph API *Calendars.Read* oboru seznam kalendářů uživatele.
 
-Chcete-li přístup ke kalendářům uživatele v rámci aplikace, přidejte *Calendars.Read* delegovaná oprávnění aplikace informace o registraci. Pak přidejte *Calendars.Read* rozsah `acquireTokenSilent` volání. 
+Chcete-li přístup ke kalendářům uživatele v rámci aplikace, přidejte *Calendars.Read* delegovaná oprávnění aplikace informace o registraci. Pak přidejte *Calendars.Read* rozsah `acquireTokenSilent` volání.
 
 >[!NOTE]
 >Uživatel může zobrazit výzva pro další souhlasy zvýšit počet oborů.

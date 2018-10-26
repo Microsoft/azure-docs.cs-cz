@@ -3,8 +3,8 @@ title: OpenShift v Azure požadavků | Dokumentace Microsoftu
 description: Požadavky na nasazení OpenShift v Azure.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: haroldw
-manager: najoshi
+author: haroldwongms
+manager: joraio
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -15,32 +15,32 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: ''
 ms.author: haroldw
-ms.openlocfilehash: 36271116d697e5ee6c6ed08d5fdc6063a511e820
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: fd20fe880ae77992e5eadb5f2b581d3f5b53f86e
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46984328"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50085852"
 ---
 # <a name="common-prerequisites-for-deploying-openshift-in-azure"></a>Běžné požadavky pro nasazení OpenShift v Azure
 
-Tento článek popisuje běžné požadavky pro nasazení OpenShift Origin nebo OpenShift Container Platform v Azure.
+Tento článek popisuje běžné požadavky pro nasazení OpenShift Container Platform nebo OKD v Azure.
 
 Instalace OpenShift používá runbooků Ansible. Ansible používá Secure Shell (SSH) pro připojení na všechny hostitele clusterů, dokončete kroky instalace.
 
-Při zahájení připojení SSH ke vzdáleným hostitelům, nelze zadat heslo. Z tohoto důvodu se privátní klíč nemůže mít heslo s ním spojená nebo nasazení se nezdaří.
+Když ansible zahájí připojení SSH ke vzdáleným hostitelům, nelze zadat heslo. Z tohoto důvodu se privátní klíč nemůže mít heslo (heslo), s ním spojená nebo nasazení se nezdaří.
 
 Protože virtuální počítače (VM) nasazovat pomocí šablon Azure Resource Manageru, stejný veřejný klíč se používá pro přístup ke všem virtuálním počítačům. Potřebujete připojení k virtuálnímu počítači, který se spustí i všechny playbooky vkládat odpovídající privátní klíč. K tomuto účelu bezpečně použít trezor klíčů Azure k předávání privátní klíč k virtuálnímu počítači.
 
-Pokud je potřeba jako trvalé úložiště pro kontejnery, trvalé svazky jsou povinné. OpenShift podporuje Azure virtuálních pevných disků (VHD) pro tuto funkci, ale Azure je nutné nejprve konfigurovat jako poskytovatele cloudu. 
+Pokud je potřeba jako trvalé úložiště pro kontejnery, trvalé svazky jsou povinné. OpenShift podporuje Azure virtuálních pevných disků (VHD) pro tuto funkci, ale Azure je nutné nejprve konfigurovat jako poskytovatele cloudu.
 
 V tomto modelu OpenShift:
 
-- Vytvoří objekt VHD v účtu služby Azure Storage.
-- Připojí VHD k virtuálnímu počítači a formát svazku.
+- Vytvoří objekt VHD v účtu služby Azure Storage nebo spravovaný disk.
+- Připojí VHD k virtuálnímu počítači a naformátuje svazek.
 - Připojí svazek pod.
 
-Pro tuto konfiguraci pro práci OpenShift potřebuje oprávnění k provedení předchozí úlohy v Azure. Můžete toho dosáhnout pomocí instančního objektu. Instanční objekt je účet zabezpečení v Azure Active Directory, která jsou udělena oprávnění k prostředkům.
+Pro tuto konfiguraci pro práci OpenShift potřebuje oprávnění k provedení těchto úloh v Azure. Můžete toho dosáhnout pomocí instančního objektu. Instanční objekt je účet zabezpečení v Azure Active Directory, která jsou udělena oprávnění k prostředkům.
 
 Instanční objekt musí mít přístup k účtům úložiště a virtuální počítače, které tvoří cluster. Pokud všechny prostředky clusteru OpenShift nasadit do jedné skupiny prostředků, instanční objekt můžete udělit oprávnění této skupiny prostředků.
 
@@ -48,7 +48,7 @@ Tato příručka popisuje, jak vytvořit artefakty spojené s požadavky.
 
 > [!div class="checklist"]
 > * Vytvoření trezoru klíčů pro správu klíčů SSH pro OpenShift cluster.
-> * Vytvoření instančního objektu pro použití Azure Cloud Solution Provider.
+> * Vytvoření instančního objektu pro použití poskytovatelem cloudu Azure.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
@@ -60,7 +60,7 @@ az login
 ```
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az_group_create). Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. Pomocí skupiny vyhrazených prostředků pro hostování služby key vault. Tato skupina je oddělené od skupiny prostředků, do které prostředky clusteru Openshiftu nasazovat. 
+Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az_group_create). Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. Doporučujeme použít skupiny vyhrazených prostředků pro hostování služby key vault. Tato skupina je oddělené od skupiny prostředků, do které prostředky clusteru Openshiftu nasazovat.
 
 Následující příklad vytvoří skupinu prostředků s názvem *keyvaultrg* v *eastus* umístění:
 
@@ -80,16 +80,16 @@ az keyvault create --resource-group keyvaultrg --name keyvault \
 ```
 
 ## <a name="create-an-ssh-key"></a>Vytvoření klíče SSH 
-Klíč SSH je potřeba k zabezpečení přístupu ke clusteru OpenShift Origin. Vytvoření páru klíčů SSH s použitím `ssh-keygen` příkaz (v systému Linux nebo macOS):
+Klíč SSH je potřeba k zabezpečení přístupu ke clusteru OpenShift. Vytvoření páru klíčů SSH s použitím `ssh-keygen` příkaz (v systému Linux nebo macOS):
  
  ```bash
 ssh-keygen -f ~/.ssh/openshift_rsa -t rsa -N ''
 ```
 
 > [!NOTE]
-> Heslo nemůže obsahovat páru klíčů SSH.
+> Páru klíčů SSH nemůže mít heslo nebo přístupové heslo.
 
-Další informace o klíče SSH ve Windows najdete v tématu [vytvoření SSH klíčů ve Windows](/azure/virtual-machines/linux/ssh-from-windows).
+Další informace o klíče SSH ve Windows najdete v tématu [vytvoření SSH klíčů ve Windows](/azure/virtual-machines/linux/ssh-from-windows). Je nutné exportovat privátní klíč ve formátu.
 
 ## <a name="store-the-ssh-private-key-in-azure-key-vault"></a>Store privátní klíč SSH ve službě Azure Key Vault
 Nasazení Openshiftu používá klíč SSH, které jste vytvořili pro zabezpečený přístup k hlavnímu serveru OpenShift. Pokud chcete povolit nasazení bezpečně načítat klíč SSH, uložení klíče ve službě Key Vault pomocí následujícího příkazu:
@@ -103,18 +103,29 @@ OpenShift komunikuje s Azure pomocí uživatelského jména a hesla nebo instan�
 
 Vytvořit instanční objekt s [az ad sp create-for-rbac](/cli/azure/ad/sp#az_ad_sp_create_for_rbac) tak za výstupní přihlašovací údaje, které potřebuje OpenShift.
 
-Následující příklad vytvoří službu objektu zabezpečení a přiřadí ji oprávnění přispěvatele pro skupinu prostředků myResourceGroup. Pokud používáte Windows, spusťte ```az group show --name myResourceGroup --query id``` samostatně a kanálu pomocí výstupu možnost--obory.
+Následující příklad vytvoří službu objektu zabezpečení a přiřadí ji do skupiny prostředků s názvem openshiftrg oprávnění přispěvatele.
+samostatně a kanálu pomocí výstupu možnost--obory.
+
+Nejprve vytvořte skupinu prostředků s názvem openshiftrg:
 
 ```azurecli
-az ad sp create-for-rbac --name openshiftsp \
-          --role Contributor --password {Strong Password} \
-          --scopes $(az group show --name myResourceGroup --query id)
+az group create -l eastus -n openshiftrg
 ```
+
+Vytvoření instančního objektu:
+
+```azurecli
+scope=`az group show --name openshiftrg --query id`
+az ad sp create-for-rbac --name openshiftsp \
+      --role Contributor --password {Strong Password} \
+      --scopes $scope
+```
+Pokud používáte Windows, spusťte ```az group show --name openshiftrg --query id``` a použít výstup místo $scope.
 
 Poznamenejte si vlastnost appId vrácenou příkazem:
 ```json
 {
-  "appId": "11111111-abcd-1234-efgh-111111111111",            
+  "appId": "11111111-abcd-1234-efgh-111111111111",
   "displayName": "openshiftsp",
   "name": "http://openshiftsp",
   "password": {Strong Password},
@@ -135,6 +146,5 @@ Tento článek popisuje v následujících tématech:
 
 V dalším kroku nasaďte OpenShift cluster:
 
-- [Nasazení Openshiftu Origin](./openshift-origin.md)
 - [Nasazení OpenShift Container Platform](./openshift-container-platform.md)
-
+- [Nasazení OKD](./openshift-okd.md)

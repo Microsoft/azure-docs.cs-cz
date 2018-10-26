@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/05/2018
+ms.date: 10/25/2018
 ms.author: jeedes
-ms.openlocfilehash: 16252f690bfd34e596b2b8db26ab3a2ede0dfdee
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: 654af4a3512f1e2acab5b0edf9e1aa4620ea70b4
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48832215"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50093067"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-borrowbox"></a>Kurz: Integrace Azure Active Directory se službou BorrowBox
 
@@ -61,15 +61,15 @@ Konfigurace integrace BorrowBox do služby Azure AD, budete muset přidat Borrow
 
 1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
-    ![image](./media/borrowbox-tutorial/selectazuread.png)
+    ![image](./common/selectazuread.png)
 
 2. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
 
-    ![image](./media/borrowbox-tutorial/a_select_app.png)
+    ![image](./common/a_select_app.png)
     
 3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
-    ![image](./media/borrowbox-tutorial/a_new_app.png)
+    ![image](./common/a_new_app.png)
 
 4. Do vyhledávacího pole zadejte **BorrowBox**vyberte **BorrowBox** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
 
@@ -97,21 +97,17 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
 1. V [webu Azure portal](https://portal.azure.com/)na **BorrowBox** integrace stránce aplikace vyberte **jednotného přihlašování**.
 
-    ![image](./media/borrowbox-tutorial/B1_B2_Select_SSO.png)
+    ![image](./common/B1_B2_Select_SSO.png)
 
-2. Klikněte na tlačítko **změnit jednotné přihlašování režim** nad obrazovky, vyberte **SAML** režimu.
+2. Na **vybrat jedinou metodu přihlašování** dialogového okna, vyberte **SAML** chcete povolit jednotné přihlašování.
 
-      ![image](./media/borrowbox-tutorial/b1_b2_saml_ssso.png)
+    ![image](./common/b1_b2_saml_sso.png)
 
-3. Na **vybrat jedinou metodu přihlašování** dialogového okna, vyberte **SAML** chcete povolit jednotné přihlašování.
+3. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** tlačítko Otevřít **základní konfiguraci SAML** dialogového okna.
 
-    ![image](./media/borrowbox-tutorial/b1_b2_saml_sso.png)
+    ![image](./common/b1-domains_and_urlsedit.png)
 
-4. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** tlačítko Otevřít **základní konfiguraci SAML** dialogového okna.
-
-    ![image](./media/borrowbox-tutorial/b1-domains_and_urlsedit.png)
-
-5. Na **základní konfiguraci SAML** oddílu, uživatel nebude muset provést libovolný krok, protože aplikace je už předem integrováno s Azure.
+4. Na **základní konfiguraci SAML** oddílu, uživatel nebude muset provést libovolný krok, protože aplikace je už předem integrováno s Azure.
 
     ![image](./media/borrowbox-tutorial/tutorial_borrowbox_url.png)
 
@@ -122,13 +118,29 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     ![image](./media/borrowbox-tutorial/tutorial_borrowbox_url1.png)
 
     > [!NOTE]
-    > Hodnota přihlašovací adresa URL není skutečný. Aktualizujte příslušnou hodnotu skutečné přihlašovací adresa URL. Kontakt [tým podpory BorrowBox klienta](mailto:borrowbox@bolinda.com) má být získána hodnota. 
+    > Hodnota přihlašovací adresa URL není skutečný. Aktualizujte příslušnou hodnotu skutečné přihlašovací adresa URL. Kontakt [tým podpory BorrowBox klienta](mailto:borrowbox@bolinda.com) má být získána hodnota.
 
-6. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** stáhnout příslušný certifikát, jak je uvedeno vaše požadavek a uložte ho do počítače.
+5. BorrowBox aplikace očekává, že kontrolní výrazy SAML v určitém formátu. Nakonfigurujte následující deklarace identity pro tuto aplikaci. Můžete spravovat hodnotami těchto atributů z **atributy uživatele a deklarace identity** části na stránce aplikací pro integraci. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** tlačítko Otevřít **atributy uživatele a deklarace identity** dialogového okna.
+
+    ![image](./media/borrowbox-tutorial/i4-attribute.png)
+
+6. V **deklarace identity uživatelů** části na **atributy uživatele a deklarace identity** dialogového okna, nakonfigurovat atribut tokenu SAML, jak je znázorněno na obrázku výše a proveďte následující kroky:
+    
+    a. Klikněte na **ikonu pro úpravu** otevřít **spravovat deklarace identity uživatelů** dialogového okna.
+
+    ![image](./media/borrowbox-tutorial/i2-attribute.png)
+
+    ![image](./media/borrowbox-tutorial/i3-attribute.png)
+
+    b. Z **zdrojový atribut** seznamu vyberte **user.mail**.
+
+    c. Klikněte na **Uložit**. 
+
+7. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** stáhnout příslušný certifikát, jak je uvedeno vaše požadavek a uložte ho do počítače.
 
     ![image](./media/borrowbox-tutorial/tutorial_borrowbox_certificate.png) 
 
-7. Ke konfiguraci jednotného přihlašování na **BorrowBox** straně, budete muset odeslat certifikát nebo metadata, který jste si stáhli z webu Azure portal [tým podpory BorrowBox](mailto:borrowbox@bolinda.com). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
+8. Ke konfiguraci jednotného přihlašování na **BorrowBox** straně, budete muset odeslat certifikát nebo metadata, který jste si stáhli z webu Azure portal [tým podpory BorrowBox](mailto:borrowbox@bolinda.com). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
@@ -136,15 +148,15 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
 1. Na webu Azure Portal, v levém podokně vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte **všichni uživatelé**.
 
-    ![image](./media/borrowbox-tutorial/d_users_and_groups.png)
+    ![image](./common/d_users_and_groups.png)
 
 2. Vyberte **nového uživatele** v horní části obrazovky.
 
-    ![image](./media/borrowbox-tutorial/d_adduser.png)
+    ![image](./common/d_adduser.png)
 
 3. Ve vlastnosti uživatele proveďte následující kroky.
 
-    ![image](./media/borrowbox-tutorial/d_userproperties.png)
+    ![image](./common/d_userproperties.png)
 
     a. V **název** zadat **BrittaSimon**.
   
@@ -159,7 +171,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
 Cílem této části je vytvořte uživatele Britta Simon v BorrowBox. BorrowBox podporuje just-in-time zřizování, který je ve výchozím nastavení povolená. Neexistuje žádná položka akce pro vás v této části. Nový uživatel se vytvoří během pokusu o přístup k BorrowBox, pokud ještě neexistuje.
 >[!Note]
->Pokud je potřeba ručně vytvořit uživatele, obraťte se na [tým podpory BorrowBox](mailto:borrowbox@bolinda.com).
+>Pokud je potřeba ručně vytvořit uživatele, obraťte se na [tým podpory BorrowBox](mailto:borrowbox@bolinda.com).
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
@@ -167,7 +179,7 @@ V této části je povolit Britta Simon k udělení přístupu k BorrowBox použ
 
 1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**.
 
-    ![image](./media/borrowbox-tutorial/d_all_applications.png)
+    ![image](./common/d_all_applications.png)
 
 2. V seznamu aplikací vyberte **BorrowBox**.
 
@@ -175,11 +187,11 @@ V této části je povolit Britta Simon k udělení přístupu k BorrowBox použ
 
 3. V nabídce na levé straně vyberte **uživatelů a skupin**.
 
-    ![image](./media/borrowbox-tutorial/d_leftpaneusers.png)
+    ![image](./common/d_leftpaneusers.png)
 
 4. Vyberte **přidat** tlačítko a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogového okna.
 
-    ![image](./media/borrowbox-tutorial/d_assign_user.png)
+    ![image](./common/d_assign_user.png)
 
 4. V **uživatelů a skupin** dialogové okno Vybrat **Britta Simon** v seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
 

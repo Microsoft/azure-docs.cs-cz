@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 10/24/2018
 ms.author: jeffgilb
 ms.reviewer: adshar
-ms.openlocfilehash: 4f95fb5f2199e8c276b78a83391f3814303a9470
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 671818ca8f8fa07b506252d5d4d0c7a768577b19
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024611"
+ms.locfileid: "50087470"
 ---
 # <a name="run-a-validation-test-for-azure-stack"></a>Spustit test pro ověření pro službu Azure Stack
 
@@ -39,7 +39,7 @@ Pokud máte potíže, obraťte se na zákaznickou podporu služeb Microsoft a pa
     3. Spusťte PowerShell jako správce.
     4. Spusťte: `Enter-PSSession -ComputerName <ERCS-VM-name> -ConfigurationName PrivilegedEndpoint`
     5. Spusťte: `Test-AzureStack`
-4. Pokud všechny testy hlásí selhání, spusťte: `Get-AzureStackLog -FilterByRole SeedRing -OutputPath <Log output path>` rutina shromažďuje protokoly z AzureStack testu. Další informace o diagnostických protokolech najdete v tématu [diagnostické nástroje služby Azure Stack](azure-stack-diagnostics.md). By neměl shromažďování protokolů nebo pokud testy sestavy UPOZORNIT obraťte se na zákaznické služby podpory Microsoftu (CSS).
+4. Pokud některé testy sestavy **selhání**, spusťte: `Get-AzureStackLog -FilterByRole SeedRing -OutputPath <Log output path>` rutina shromažďuje protokoly z AzureStack testu. Další informace o diagnostických protokolech najdete v tématu [diagnostické nástroje služby Azure Stack](azure-stack-diagnostics.md). Neměli shromažďování protokolů nebo pokud obraťte se na zákaznické služby podpory Microsoftu (CSS) testy sestavy **UPOZORNIT**.
 5. Odeslat **SeedRing** protokoly do služby zákaznické podpory Microsoftu. Zákaznická podpora Microsoftu vás služby spolupracuje při řešení problému.
 
 ## <a name="reference-for-test-azurestack"></a>Referenční informace pro Test AzureStack

@@ -1,3 +1,16 @@
+---
+author: ecfan
+ms.service: logic-apps
+ms.topic: include
+ms.date: 11/03/2016
+ms.author: estfan
+ms.openlocfilehash: 845b27b8efd66de87ec08e0b5b81bcc332dffdfb
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50094765"
+---
 ### <a name="prerequisites"></a>Požadavky
 * Účtu Twilio
 * Ověřené telefonní číslo Twilio, které můžou přijímat zprávy SMS

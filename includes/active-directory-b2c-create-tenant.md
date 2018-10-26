@@ -1,3 +1,16 @@
+---
+author: PatAltimore
+ms.service: active-directory-b2c
+ms.topic: include
+ms.date: 11/03/2016
+ms.author: patricka
+ms.openlocfilehash: 623f95eac029e808746d5d08fa088eba134592dd
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50133283"
+---
 Klikněte na tlačítko **vytvořit prostředek** tlačítko. Do pole **Hledat na Marketplace** zadejte `Azure Active Directory B2C`.
 
 ![Zvýrazněné tlačítko Přidat a text Azure Active Directory B2C v poli Hledat na Marketplace](./media/active-directory-b2c-create-tenant/find-azure-ad-b2c.png)

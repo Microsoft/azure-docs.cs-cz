@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 9d628f48f4958e4e763ed0064462a5fb2ed398bf
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 9cd8e21ede794fcb46683ea7cedd2bf9ed833204
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44094328"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50086977"
 ---
 # <a name="versioning-in-durable-functions-azure-functions"></a>Správa verzí v Durable Functions (Azure Functions)
 
@@ -123,11 +123,23 @@ Centra úloh se dá nakonfigurovat v *host.json* to následujícím způsobem:
 
 ```json
 {
-    "durableTask": {
-        "HubName": "MyTaskHubV2"
+    "extensions": {
+        "durableTask": {
+            "HubName": "MyTaskHubV2"
+        }
     }
 }
 ```
+
+> [!NOTE]
+> Pro funkce V1 *host.json* by měl být nakonfigurovaný jako toto místo
+>```json
+>{
+>    "durableTask": {
+>        "HubName": "MyTaskHubV2"
+>    }
+>}
+>```
 
 Výchozí hodnota je `DurableFunctionsHub`.
 

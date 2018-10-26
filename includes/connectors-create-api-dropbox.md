@@ -1,18 +1,31 @@
+---
+author: ecfan
+ms.service: logic-apps
+ms.topic: include
+ms.date: 11/03/2016
+ms.author: estfan
+ms.openlocfilehash: 3f4430631a664f81f53f9df1f46ebc27c635de36
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50132876"
+---
 ### <a name="prerequisites"></a>Požadavky
-* A [Dropbox](https://www.Dropbox.com/) účtu 
+* A [Dropboxu](https://www.Dropbox.com/) účtu 
 
-Než v aplikaci logiky můžete použít váš účet Dropbox, musíte je nejdříve autorizovat aplikaci logiky se připojit ke svému účtu Dropbox. Naštěstí můžete k tomu snadno z v rámci aplikace logiky na portálu Azure. 
+Před použitím účtu Dropbox v aplikaci logiky, musí autorizovat aplikaci logiky pro připojení k účtu Dropbox. Naštěstí vám pomůžou snadno z v rámci aplikace logiky na webu Azure Portal. 
 
-Tady jsou kroky k autorizaci aplikace logiky pro připojení k účtu Dropboxu:
+Tady jsou kroky k autorizaci aplikace logiky pro připojení k účtu Dropbox:
 
-1. Chcete-li vytvořit připojení k Dropboxu, v návrháři aplikace logiky, vyberte **zobrazit Microsoft spravované rozhraní API** v rozevíracím seznamu zadejte *Dropbox* do vyhledávacího pole. Vyberte aktivační události nebo akci, kterou budete chtít použít:  
+1. Chcete-li vytvořit připojení k Dropboxu, v návrháři aplikace logiky, vyberte **rozhraní API spravovaná Microsoftem zobrazit** v rozevíracím seznamu zadejte *Dropboxu* do vyhledávacího pole. Výběr triggeru nebo akce, které budete chtít použít:  
    ![Dropbox krok 1](./media/connectors-create-api-dropbox/dropbox-1.png)
-2. Pokud jste nevytvořili žádné připojení k Dropboxu před, budete získat zobrazí výzva k zadání přihlašovacích údajů vaší Dropbox. Tyto přihlašovací údaje se použije k autorizaci aplikace logiky pro připojení k a přístup k datům účtu Dropboxu:  
+2. Pokud jste ještě nevytvořili žádná připojení k Dropboxu před, bude výzva k zadání přihlašovacích údajů vašeho Dropboxu. Tyto přihlašovací údaje se použijí k autorizaci aplikace logiky se připojit k a přístup k datům v účtu Dropbox:  
    ![Dropbox krok 2](./media/connectors-create-api-dropbox/dropbox-2.png)
-3. Zadejte Dropbox uživatelské jméno a heslo k autorizaci aplikace logiky:  
+3. Zadejte své Dropboxu uživatelské jméno a heslo k autorizaci aplikace logiky:  
    ![Dropbox krok 3](./media/connectors-create-api-dropbox/dropbox-3.png)   
-4. Autorizovat aplikaci logiky, aby používala účtu Dropboxu:  
-   ![Dropbox krok 4](./media/connectors-create-api-dropbox/dropbox-4.png)
-5. Všimněte si vytvořil připojení a je nyní můžete pokračovat v dalších krocích v aplikaci logiky:  
+4. Autorizujte aplikaci logiky, aby používala vašeho účtu Dropbox:  
+   ![Dropbox kroku 4](./media/connectors-create-api-dropbox/dropbox-4.png)
+5. Všimněte si, připojení bylo vytvořeno a teď jste zdarma postupujte podle dalších kroků ve vaší aplikaci logiky:  
    ![Dropbox krok 5](./media/connectors-create-api-dropbox/dropbox-5.png)   
 

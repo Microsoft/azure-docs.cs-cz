@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/09/2018
 ms.author: vashan, cynthn, rajsqr
 ms.custom: include file
-ms.openlocfilehash: 603e7c3a0c30eb42cb75d6a6ff87a96d847b7c9f
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: e1dc637d2f629b5002c2e8796fbd29a95478c392
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "40100207"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50035227"
 ---
 Azure Virtual Machines (VM), projděte si různé stavy, které lze zařadit do *zřizování* a *power* stavy. Cílem tohoto článku je popisují tyto stavy a konkrétně zvýraznit, když se zákazníkům účtuje pro instanci využití. 
 
@@ -175,7 +175,7 @@ Tady jsou stavy přechodné operaci po platformu přijal akce zahájená uživat
 <tbody>
 <tr>
 <td width="162">
-<p><b>stavy</b></p>
+<p><b>Stavy</b></p>
 </td>
 <td width="366">
 <p>Popis</p>
@@ -287,7 +287,7 @@ Po dokončení operace virtuálního počítače přejde do jedné z následují
 
 Zobrazení instance rozhraní API poskytuje informace o stavu spuštění virtuálních počítačů. Další informace najdete v tématu [Virtual Machines – zobrazení Instance](https://docs.microsoft.com/rest/api/compute/virtualmachines/instanceview) dokumentace k rozhraní API.
 
-Průzkumník prostředků Azure poskytuje jednoduché uživatelské rozhraní pro zobrazení stavu spuštění virtuálního počítače: [Průzkumníka prostředků] (https://resources.azure.com/).
+Průzkumník prostředků Azure poskytuje jednoduché uživatelské rozhraní pro zobrazení stavu spuštění virtuálního počítače: [Průzkumníka prostředků](https://resources.azure.com/).
 
 Stavy zřizování jsou viditelná ve vlastnostech virtuálního počítače a instance zobrazení. Stavy napájení jsou k dispozici v zobrazení instance virtuálního počítače. 
 

@@ -1,3 +1,16 @@
+---
+author: ggailey777
+ms.service: azure-functions
+ms.topic: include
+ms.date: 09/04/2018
+ms.author: glenga
+ms.openlocfilehash: 9fb462b83eccde3d2b486d491517973fe6bac4f1
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50132971"
+---
 Služba Azure Functions [aktivačními událostmi a vazbami](..\articles\azure-functions\functions-triggers-bindings.md) komunikovat s různými službami Azure. Při integraci s těmito službami, pravděpodobně vyvolá chyby, které pocházejí z rozhraní API podpůrné služby Azure. Může také dojít k chybám při pokusu o komunikaci s dalšími službami v kódu funkce pomocí REST nebo klientských knihoven. Pokud chcete nedošlo ke ztrátě dat a zajistit správné chování funkcí, je důležité pro zpracování chyb, buď z zdroje.
 
 Následující aktivační události mají podporu předdefinován opakovaný pokus:

@@ -13,12 +13,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 633717a9f5f74648f7418970dd8047079efe18b9
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 38839379f584b40cdbefad3e4cbb3bc47881c9a7
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49649087"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50094591"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Připojte se k prostředí Azure-SSIS integration runtime k virtuální síti
 Připojte se k prostředí Azure-SSIS integration runtime (IR) ke službě Azure virtual network v následujících scénářích: 
@@ -28,6 +28,9 @@ Připojte se k prostředí Azure-SSIS integration runtime (IR) ke službě Azure
 - Jsou hostiteli databáze katalogu SQL Server Integration Services (SSIS) ve službě Azure SQL Database s virtuální sítě služby koncové body nebo spravované Instance. 
 
  Azure Data Factory umožňuje připojit k virtuální síti vytvořené prostřednictvím modelu nasazení classic nebo model nasazení Azure Resource Manageru prostředí Azure-SSIS integration runtime. 
+
+> [!IMPORTANT]
+> Klasické virtuální sítě je nyní zastaralé, proto prosím použijte místo toho síť Azure Resource Manageru, který je virtuální.  Pokud už používáte klasickou virtuální síť, přepněte na co nejdříve použít virtuální síť Azure Resource Manageru.
 
 ## <a name="access-to-on-premises-data-stores"></a>Přístup k místním úložišti dat.
 Pokud balíčků služby SSIS přistupovat k úložištím dat jediný veřejný cloud, není nutné připojení Azure-SSIS IR k virtuální síti. Pokud balíčků služby SSIS přistupovat k úložištím dat místní, musíte připojit Azure-SSIS IR k virtuální síti, který je připojený k místní síti. 
@@ -46,11 +49,13 @@ Tady je několik důležitých bodů, mějte na paměti:
 Pokud katalog služby SSIS je hostovaný ve službě Azure SQL Database s koncové body služeb virtuální sítě nebo Managed Instance, můžete připojit k prostředí Azure-SSIS IR do: 
 
 - Stejné virtuální síti 
-- Jiné virtuální sítě, který má připojení k síťovým názvem, který se používá pro službu Azure SQL Database s virtuální sítě služby koncové body nebo spravované Instance 
+- Jiné virtuální sítě, který má připojení k síťovým názvem, který se používá pro Managed Instance 
+
+Pokud hostujete katalogu služby SSIS v Azure SQL Database s koncovými body služby virtuální sítě, ujistěte se, že připojení Azure-SSIS IR pro stejnou virtuální síť a podsíť.
 
 Když se do programu Azure-SSIS IR do stejné virtuální síti jako Managed Instance, ujistěte se, že Azure-SSIS IR je v jiné podsíti, než Managed Instance. Když se do programu Azure-SSIS IR k jiné virtuální sítě, než Managed Instance, doporučujeme, abyste partnerský vztah virtuální sítě (což je omezený na stejné oblasti) nebo virtuální sítě pro připojení k virtuální síti. Zobrazit [vaši aplikaci do Azure SQL Database Managed Instance připojit](../sql-database/sql-database-managed-instance-connect-app.md).
 
-Virtuální sítě můžou být nasazené prostřednictvím modelu nasazení classic nebo model nasazení Azure Resource Manageru.
+Ve všech případech je možné virtuální sítě nasadit pouze prostřednictvím modelu nasazení Azure Resource Manageru.
 
 Následující oddíly poskytují další podrobnosti. 
 
@@ -73,13 +78,13 @@ Následující oddíly poskytují další podrobnosti.
 
 Uživatel, který vytvoří prostředí Azure-SSIS Integration Runtime musí mít následující oprávnění:
 
-- Pokud jste se zapojili SSIS IR k virtuální síti Azure v aktuální verzi, máte dvě možnosti:
+- Pokud jste se zapojili SSIS IR k virtuální síti Azure Resource Manageru, máte dvě možnosti:
 
-  - Použijte předdefinovanou roli *Přispěvatel sítě*. Vyžaduje tato role *Microsoft.Network/\**  oprávnění, ale který má mnohem větší rozsah.
+  - Použít integrovaný *Přispěvatel sítě* role. Součástí této role *Microsoft.Network/\**  oprávnění, která má mnohem větší rozsah než je nutné.
 
-  - Vytvořit vlastní roli, která zahrnuje oprávnění *Microsoft.Network/virtualNetworks/\*/join nebo akce*. 
+  - Vytvořit vlastní roli, která obsahuje pouze nezbytné *Microsoft.Network/virtualNetworks/\*/join nebo akce* oprávnění. 
 
-- Pokud jste se zapojili IR služby SSIS pro klasickou virtuální síť Azure, doporučujeme použít předdefinovanou roli *Přispěvatel virtuálních počítačů modelu Classic*. Jinak budete muset definovat vlastní roli, která zahrnuje oprávnění k připojení k virtuální síti.
+- Pokud jste se zapojili SSIS IR k virtuální síti classic, doporučujeme použít předdefinované *Přispěvatel virtuálních počítačů modelu Classic* role. Jinak budete muset definovat vlastní roli, která zahrnuje oprávnění k připojení k virtuální síti.
 
 ### <a name="subnet"></a> Vyberte podsíť
 -   Nesmí být zvolen GatewaySubnet pro nasazení prostředí Azure-SSIS Integration Runtime, protože je vyhrazený pro brány virtuální sítě. 

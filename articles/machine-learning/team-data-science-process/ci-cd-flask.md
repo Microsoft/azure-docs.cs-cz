@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/22/2018
 ms.author: jainr
-ms.openlocfilehash: b0368e742c990feed626a1c4982bfedc35785b49
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: fb162c45b8bd53fd4d994e0eb83a38438873d627
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44304284"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50094382"
 ---
 # <a name="devops-for-artificial-intelligence-ai-applications-creating-continuous-integration-pipeline-on-azure-using-docker-and-kubernetes"></a>DevOps pro aplikace s umělou inteligencí (AI): vytvoření kanálu průběžné integrace v Azure pomocí Dockeru a Kubernetes
 Aplikace AI jsou často dvěma datovými proudy práce, datovým vědcům sestavování modelů strojového učení a vývojáře aplikací, vytváření aplikace, která bude vystavená koncovým uživatelům využívat. V tomto článku jsme ukazují, jak implementovat průběžné integrace (CI) / průběžné doručování (CD) kanálů pro aplikaci AI. Aplikace AI je kombinací kódu aplikace, které jsou vložené s modelem které je předem vytrénované machine learning (ML). Pro účely tohoto článku jsme pretrained modelu načítají z účtu úložiště objektů blob v Azure privátní, může to být účet AWS S3. Pro článek budeme používat webovou aplikaci flask python jednoduché.
@@ -38,12 +38,12 @@ Následují předpoklady pro postup dle kanálu CI/CD je popsáno níže:
 * [Organizace Azure DevOps](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization-msa-or-work-student)
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
 * [Cluster Azure Container Service (AKS) s Kubernetes](https://docs.microsoft.com/azure/container-service/kubernetes/container-service-tutorial-kubernetes-deploy-cluster)
-* [Účet Azure registru kontejneru (ACR)](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-portal)
+* [Účet služby Azure Container Registry (ACR)](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-portal)
 * [Instalace Kubectl pro spuštění příkazů pro cluster Kubernetes.](https://kubernetes.io/docs/tasks/tools/install-kubectl/) Můžeme to budete potřebovat k načtení konfigurace z clusteru ACS. 
 * Vytvořte fork úložiště do účtu Githubu.
 
 ## <a name="description-of-the-cicd-pipeline"></a>Popis kanálu CI/CD
-Zejména kopance kanálu vypnutí pro každé nové potvrzení, spustit testovací sadu, pokud úspěšných testů trvá nejnovější sestavení se balíčky v kontejneru Dockeru. Kontejner se pak nasadí pomocí služby Azure container service (ACS) a image jsou bezpečně uložené ve službě Azure container registry (ACR). ACS je s Kubernetes pro správu clusteru služby container, ale můžete použít Docker Swarm nebo Mesos.
+Zejména kopance kanálu vypnutí pro každé nové potvrzení, spustit testovací sadu, pokud úspěšných testů trvá nejnovější sestavení se balíčky v kontejneru Dockeru. Kontejner se pak nasadí pomocí Azure Container Service (ACS) a image jsou bezpečně uložené v Azure Container Registry (ACR). ACS je s Kubernetes pro správu clusteru služby container, ale můžete použít Docker Swarm nebo Mesos.
 
 Aplikace bezpečně si vyžádá nejnovější model z účtu služby Azure Storage a balíčky, které jako součást aplikace. Nasazené aplikace má kód aplikace a modelu ML lze zabalit jako jeden kontejner. Odděluje obě části v aplikaci vývojáře a odborníky přes data, abyste měli jistotu, že jejich produkční aplikace běží vždy nejnovější kód s nejnovější modelu ML.
 
@@ -70,5 +70,5 @@ Architektura kanálu je uvedena níže.
 ## <a name="references"></a>Odkazy
 * [Vědecké zpracování týmových dat (TDSP)](https://aka.ms/tdsp)
 * [Azure Machine Learning (AML)](https://docs.microsoft.com/azure/machine-learning/service/)
-* [Visual Studio Team Services (VSTS)](https://www.visualstudio.com/vso/)
+* [Azure DevOps](https://www.visualstudio.com/vso/)
 * [Služby Azure Kubernetes (AKS)](https://docs.microsoft.com/azure/aks/intro-kubernetes)

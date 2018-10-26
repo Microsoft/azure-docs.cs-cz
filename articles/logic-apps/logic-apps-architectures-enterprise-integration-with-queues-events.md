@@ -9,12 +9,12 @@ ms.author: mattfarm
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 06/15/2018
-ms.openlocfilehash: 8fbc84b4016659b6d0d6ce9ec47c05a0b241c3d9
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 5b58f4b71d8d9f3ca91d8cefc6215073fd836765
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48855370"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50093662"
 ---
 # <a name="enterprise-integration-architecture-with-queues-and-events"></a>Architektura integrace Enterprise s frontami a události
 
@@ -26,7 +26,7 @@ Tato série popisuje opakovaně použitelné součásti, které může použít 
 
 ## <a name="architecture-components"></a>Komponenty architektury
 
-Tato architektura vychází architekturu popsanou v článku [referenční architektura: jednoduché podniková integrace](../logic-apps/logic-apps-architectures-simple-enterprise-integration.md). Tuto architekturu [doporučení](../logic-apps/logic-apps-architectures-simple-enterprise-integration.md#recommendations) budou použita i zde, ale pro zkrácení, tento článek vynechá z těchto doporučení [doporučení](#recommendations) oddílu. Tato architektura integrace enterprise zahrnuje tyto komponenty:
+Tato architektura vychází architekturu popsanou v článku [referenční architektura: jednoduché podniková integrace](/azure/architecture/reference-architectures/enterprise-integration/simple-enterprise-integration). Tuto architekturu [doporučení](/azure/architecture/reference-architectures/enterprise-integration/simple-enterprise-integration#recommendations) budou použita i zde, ale pro zkrácení, tento článek vynechá z těchto doporučení [doporučení](#recommendations) oddílu. Tato architektura integrace enterprise zahrnuje tyto komponenty:
 
 - **Skupina prostředků**: A [skupiny prostředků](../azure-resource-manager/resource-group-overview.md) je logický kontejner prostředků Azure.
 
@@ -143,4 +143,4 @@ Služba Event Grid zabezpečuje doručování událostí prostřednictvím ově�
 
 ## <a name="next-steps"></a>Další postup
 
-* Další informace o [jednoduché podniková integrace](logic-apps-architectures-simple-enterprise-integration.md)
+* Další informace o [jednoduché podniková integrace](/azure/architecture/reference-architectures/enterprise-integration/simple-enterprise-integration)

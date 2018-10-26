@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 10/24/2018
 ms.author: juliako
-ms.openlocfilehash: 62cc4634a0f76b0562d5b3c1355a7442fc5cf989
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: e7abdb568b11870fb467ee6d3759881ca337d3cc
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49985229"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50085784"
 ---
 # <a name="assets"></a>Prostředky
 
@@ -34,19 +34,19 @@ Také, přečtěte si informace o [účty úložiště ve službě Media Service
 
 Následující tabulka uvádí vlastnosti prostředku a umožňuje jejich definice.
 
-|Název|Typ|Popis|
-|---|---|---|
-|id|řetězec|Plně kvalifikované ID prostředku pro prostředek.|
-|jméno|řetězec|Název prostředku.|
-|properties.alternateId |řetězec|Alternativní ID prostředku.|
-|properties.assetId |řetězec|ID prostředku.|
-|Properties.Container |řetězec|Název kontejneru objektů blob asset.|
-|Properties.Created |řetězec|Datum vytvoření prostředku.|
-|Properties.Description |řetězec|Popis prostředku.|
-|properties.lastModified |řetězec|Datum majetku poslední změny.|
-|properties.storageAccountName |řetězec|Název účtu úložiště.|
-|properties.storageEncryptionFormat |AssetStorageEncryptionFormat |Formát šifrování Asset. Jeden z žádné nebo MediaStorageEncryption.|
-|type|řetězec|Typ prostředku.|
+|Název|Popis|
+|---|---|
+|id|Plně kvalifikované ID prostředku pro prostředek.|
+|jméno|Název prostředku.|
+|properties.alternateId |Alternativní ID prostředku.|
+|properties.assetId |ID prostředku.|
+|Properties.Container |Název kontejneru objektů blob asset.|
+|Properties.Created |Datum vytvoření prostředku.|
+|Properties.Description|Popis prostředku.|
+|properties.lastModified |Datum majetku poslední změny.|
+|properties.storageAccountName |Název účtu úložiště.|
+|properties.storageEncryptionFormat |Formát šifrování Asset. Jeden z žádné nebo MediaStorageEncryption.|
+|type|Typ prostředku.|
 
 Kompletní definici, naleznete v tématu [prostředky](https://docs.microsoft.com/rest/api/media/assets).
 

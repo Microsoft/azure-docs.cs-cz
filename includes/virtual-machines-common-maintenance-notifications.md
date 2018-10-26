@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/02/2018
 ms.author: shants
 ms.custom: include file
-ms.openlocfilehash: efedb2f48748264fb936fe82a1dbb3cf4403cc5e
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: b3f71c4710bd9711a3209dd55f8e680f63627c1b
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "40165851"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50035434"
 ---
 ## <a name="view-vms-scheduled-for-maintenance-in-the-portal"></a>Zobrazovat virtuální počítače s naplánovanou údržbou na portálu
 
@@ -49,7 +49,7 @@ Můžete použít na webu Azure portal a vyhledejte virtuální počítače s na
 
 ## <a name="notification-and-alerts-in-the-portal"></a>Oznámení a výstrahy na portálu
 
-Azure komunikuje plánu kvůli plánované údržbě e-mailem do skupiny vlastník a spoluvlastníci předplatného. Můžete přidat další příjemce a kanály pro tuto komunikaci tak, že vytvoříte upozornění protokolu aktivit Azure. Další informace najdete v tématu [monitorování aktivit předplatného se protokol aktivit Azure] (.. / articles/monitoring-and-diagnostics/monitoring-overview-activity-logs.md).
+Azure komunikuje plánu kvůli plánované údržbě e-mailem do skupiny vlastník a spoluvlastníci předplatného. Můžete přidat další příjemce a kanály pro tuto komunikaci tak, že vytvoříte upozornění protokolu aktivit Azure. Další informace najdete v tématu [monitorovat aktivitu předplatného se protokol aktivit Azure](../articles/monitoring-and-diagnostics/monitoring-overview-activity-logs.md).
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. V nabídce na levé straně vyberte **monitorování**. 

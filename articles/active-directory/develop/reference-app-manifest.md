@@ -13,20 +13,34 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/24/2018
+ms.date: 10/24/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.openlocfilehash: bc7999d56da8398b4f54b0144a595ee7c2e2ea35
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 372bff911c0925e05297872da66279e727149010
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49115106"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50086773"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Manifest aplikace Azure Active Directory
 
-Aplikace, které se integrují s Azure Active Directory (Azure AD) musí být zaregistrovaný s tenantem Azure AD. Můžete nakonfigurovat aplikace v [webu Azure portal](https://portal.azure.com) tak, že vyberete **registrace aplikací** pod **Azure Active Directory**, vyberete aplikaci, kterou chcete konfigurovat a pak Výběr **Manifest**.
+Manifest aplikace obsahuje definici všech atributů objektu aplikace na platformě Microsoft identity. Slouží také jako mechanismus pro aktualizaci objektu aplikace. Další informace o aplikační entitě a jejím schéma najdete v [dokumentaci aplikační entity rozhraní Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#application-entity).
+
+Můžete nastavit atributy vaší aplikace prostřednictvím webu Azure portal nebo prostřednictvím kódu programu pomocí Microsoft Graphu. Existují však některé scénáře, ve kterém bude nutné upravit manifest aplikace konfigurovat atribut vaší aplikace. Mezi tyto scénáře patří:
+
+* Pokud jste zaregistrovali aplikaci jako Azure AD více tenantů a osobní účty Microsoft, nelze změnit podporovaných účtů Microsoft v uživatelském rozhraní. Místo toho je nutné použít editor manifestu aplikace ke změně typu účtu podporované.
+* Pokud potřebujete definovat oprávnění a rolí, které vaše aplikace podporuje, je nutné upravit manifest aplikace.
+
+## <a name="configure-the-app-manifest"></a>Konfigurace manifestu aplikace
+
+Konfigurace manifestu aplikace:
+
+1. Přihlaste se [webu Azure portal](https://portal.azure.com).
+1. Vyberte **Azure Active Directory** služby a pak vyberte **registrace aplikací** nebo **registrace aplikací (Preview)**.
+1. Vyberte aplikaci, kterou chcete konfigurovat.
+1. Z aplikace **přehled** stránky, vyberte **Manifest** oddílu. Otevře se editor manifestu založeného na webu umožňuje upravit manifest v rámci portálu. Volitelně můžete vybrat **Stáhnout** upravit manifest místně, a potom pomocí **nahrát** znovu do vaší aplikace.
 
 ## <a name="manifest-reference"></a>Odkaz na manifest
 
@@ -63,7 +77,7 @@ Aplikace, které se integrují s Azure Active Directory (Azure AD) musí být za
 | `requiredResourceAccess` | Typ pole | S dynamické souhlasu `requiredResourceAccess` pohání prostředí pro vyjádření souhlasu správce a prostředí pro vyjádření souhlasu uživatele pro uživatele, kteří používají statické souhlas. To však není jednotka uživatelské prostředí pro vyjádření souhlasu pro případ, Obecné.<br>`resourceAppId` je jedinečný identifikátor pro prostředek, který vyžaduje přístup k aplikaci. Tato hodnota by měla být rovna appId deklarované u aplikace cílového prostředku.<br>`resourceAccess` je pole, které obsahuje obory oprávnění OAuth 2.0 a role aplikace, které aplikace vyžaduje ze zadaného prostředku. Obsahuje `id` a `type` hodnoty zadané prostředky. | <code>[<br>&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;"resourceAppId":"00000002-0000-0000-c000-000000000000",<br>&nbsp;&nbsp;&nbsp;&nbsp;"resourceAccess":[<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"id":"311a71cc-e848-46a1-bdf8-97ff7156d8e6",<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"type":"Scope"<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;]<br>&nbsp;&nbsp;}<br>] </code> |
 | `samlMetadataUrl` | řetězec | Adresa URL metadat SAML pro aplikaci. | `https://MyRegisteredAppSAMLMetadata` |
 | `signInUrl` | řetězec | Určuje adresu URL na domovskou stránku aplikace. | `https://MyRegisteredApp` |
-| `signInAudience` | řetězec | Určuje účty microsoft, které jsou podporovány pro aktuální aplikaci. Podporované hodnoty jsou:<ul><li>**AzureADMyOrg** -uživatelé s Microsoft pracovní nebo školní účet v tenantovi Azure AD své organizace (tj. jeden tenant)</li><li>**AzureADMultipleOrgs** -uživatelé s Microsoft pracovní nebo školní účet v libovolné organizaci tenanta Azure AD (například s více tenanty)</li> <li>**AzureADandPersonalMicrosoftAccount** -uživatelů pomocí osobního účtu Microsoft nebo pracovní nebo školní účet v libovolné organizaci tenanta Azure AD</li></ul> | `AzureADandPersonalMicrosoftAccount` |
+| `signInAudience` | řetězec | Určuje účty Microsoft, které jsou podporovány pro aktuální aplikaci. Podporované hodnoty jsou:<ul><li>**AzureADMyOrg** -uživatelé s Microsoft pracovní nebo školní účet v tenantovi Azure AD své organizace (tj. jeden tenant)</li><li>**AzureADMultipleOrgs** -uživatelé s Microsoft pracovní nebo školní účet v libovolné organizaci tenanta Azure AD (například s více tenanty)</li> <li>**AzureADandPersonalMicrosoftAccount** -uživatelů pomocí osobního účtu Microsoft nebo pracovní nebo školní účet v libovolné organizaci tenanta Azure AD</li></ul> | `AzureADandPersonalMicrosoftAccount` |
 | `tags` | Pole řetězců | Vlastní řetězce, které slouží ke kategorizaci a identifikaci aplikace. | <code>[<br>&nbsp;&nbsp;"ProductionApp"<br>]</code> |
 
 ## <a name="next-steps"></a>Další postup

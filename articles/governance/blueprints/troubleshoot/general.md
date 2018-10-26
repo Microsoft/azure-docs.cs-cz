@@ -4,34 +4,34 @@ description: Informace o řešení problémů vytvářet a přiřazovat podrobn�
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/18/2018
+ms.date: 10/25/2018
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: dd1163ece225c2e9a9b082f5e8364f34b06a10ae
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: b910f90e70af4ce6d4243c06bfe5bd03d25d74d6
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46982286"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50092930"
 ---
 # <a name="troubleshoot-errors-using-azure-blueprints"></a>Řešení potíží s chybami pomocí Azure podrobné plány
 
-Může dojít k chybám při vytváření nebo přiřazení podrobné plány. Tento článek popisuje různé chyby, které mohou nastat a způsob jejich řešení.
+Pravděpodobně dojde k chybám při vytváření nebo přiřazení podrobné plány. Tento článek popisuje různé chyby, které mohou nastat a způsob jejich řešení.
 
 ## <a name="finding-error-details"></a>Jak najít podrobnosti o chybě
 
-Mnoho chyb bude výsledek přiřazení podrobný plán oboru. Při selhání přiřazení podrobného plánu obsahuje podrobné informace o selhání nasazení. Tyto informace budou indikovat problém tak, aby ho mohli opravit a následné nasazení proběhne úspěšně.
+Mnoho chyb bude výsledek přiřazení podrobný plán oboru. Při přiřazení selže, podrobný plán poskytuje podrobnosti o selhání nasazení. Tato informace indikuje problém tak, aby ho mohli opravit a úspěšném další nasazení.
 
-1. Spusťte službu Azure plány na webu Azure Portal kliknutím na **všechny služby** a vyhledáte a vyberete **zásady** v levém podokně. Na **zásady** stránky, klikněte na **plány**.
+1. Klikněte na **všechny služby** a vyhledáte a vyberete **zásady** v levém podokně. Na stránce **Zásady** klikněte na **plány**.
 
 1. Vyberte **přiřazené podrobné plány** ze stránky na levé straně a použijte pole hledání k filtrování přiřazení podrobného plánu se najít přiřazení se nezdařilo. Můžete také řadit tabulce přiřazení podle **Stav zřizování** sloupec zobrazíte všechny neúspěšné přiřazení seskupené dohromady.
 
 1. Klepněte na položku na podrobného plánu se _neúspěšné_ stavu nebo kliknutím pravým tlačítkem a vyberte **zobrazit podrobnosti o přiřazení**.
 
-1. V horní části podrobný plán přiřazení stránka je červený nápis upozornění, že má přiřazování neproběhlo úspěšně. Klikněte na libovolné místo na banner, abyste získali více podrobností.
+1. Červený nápis upozornění, že byla neúspěšná přiřazení je v horní části stránky přiřazení podrobného plánu. Klikněte na libovolné místo na banner, abyste získali více podrobností.
 
-Je běžné, že chybu způsobuje artefakt součástí podrobný plán a není podrobný plán jako celek. Například pokud podrobný plán obsahuje artefakt k vytvoření služby Key Vault, ale vytváření služby Key Vault je zabráněno Azure Policy, selže celý přiřazení.
+Je běžné, že chybu způsobuje artefakt a není podrobný plán jako celek. Pokud Key Vault vytvoří artefakt a Azure Policy brání vytváření služby Key Vault, celý přiřazení selže.
 
 ## <a name="general-errors"></a>Obecné chyby
 
@@ -50,11 +50,11 @@ Zásady dojít ke konfliktu se nasazení pro z několika důvodů:
 
 #### <a name="resolution"></a>Řešení
 
-Upravte podrobný plán nebude v konfliktu s zásady uvedené v informacích o chybě. Pokud to není možné, je alternativní možnosti oboru přiřazení zásady změněna tak podrobný plán je již nejsou v konfliktu s zásady.
+Podrobný plán měnit, takže není v konfliktu se zásadami v podrobnostech o chybě. Pokud tuto změnu není možné, je alternativní možnost oboru přiřazení zásady změněna tak podrobný plán je již nejsou v konfliktu s zásady.
 
 ## <a name="next-steps"></a>Další postup
 
-Pokud nenalezli váš problém nebo nepovedlo se vyřešit vaše potíže, navštíví některý z následujících kanálů pro další podporu:
+Pokud nezobrazila váš problém nebo nelze vyřešit vaše potíže, navštíví některý z následujících kanálů pro další podporu:
 
 - Získejte odpovědi od odborníků na Azure prostřednictvím [fór Azure](https://azure.microsoft.com/support/forums/).
 - Spojte se s [@AzureSupport](https://twitter.com/azuresupport). Tento oficiální účet Microsoft Azure pomáhá vylepšovat uživatelské prostředí tím, že propojuje komunitu Azure s vhodnými zdroji: odpověďmi, podporou a odborníky.

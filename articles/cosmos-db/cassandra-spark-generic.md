@@ -10,12 +10,12 @@ ms.devlang: spark-scala
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ankhanol
-ms.openlocfilehash: 38a972d39b845dca39bcc4dcf921c603301af582
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 165919fa3d456786e926f754dba378be38c12588
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48869648"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50094240"
 ---
 # <a name="connect-to-azure-cosmos-db-cassandra-api-from-spark"></a>Připojení ke službě Azure Cosmos DB Cassandra API z aplikace Spark
 
@@ -29,7 +29,7 @@ Tento článek je jedním z řady článků o integraci Azure Cosmos DB Cassandr
 ## <a name="dependencies-for-connectivity"></a>Závislosti pro připojení
 * **Konektor Spark pro Cassandra:** konektor Spark se používá pro připojení k rozhraní Cassandra API služby Azure Cosmos DB.  Identifikovat a používat verzi konektoru v [Maven centrální]( https://mvnrepository.com/artifact/com.datastax.spark/spark-cassandra-connector) , který je kompatibilní s verzemi Spark a Scala prostředí Spark.
 
-* **Azure Cosmos DB pomocné knihovny pro Apache Cassandra API:** kromě konektor Spark, budete potřebovat další knihovnu s názvem [azure-cosmos-cassandra-spark – pomocné rutiny]( https://search.maven.org/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper/1.0.0/jar) ze služby Azure Cosmos DB. Tato knihovna obsahuje objekt pro vytváření připojení a třídy zásad vlastní opakování.
+* **Azure Cosmos DB pomocné knihovny pro Apache Cassandra API:** kromě konektor Spark, budete potřebovat další knihovnu s názvem [azure-cosmos-cassandra-spark – pomocné rutiny]( https://search.maven.org/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper/1.0.0/jar) ze služby Azure Cosmos DB. Tato knihovna obsahuje třídy zásad vlastní připojení objekt pro vytváření a zkuste to znovu.
 
   Zásady opakování ve službě Azure Cosmos DB je nakonfigurovaný pro zpracování protokolu HTTP stavový kód 429 ("požadavek velké míry") výjimky. Azure Cosmos DB Cassandra API přeloží tyto výjimky na přetížené chyby na nativní protokolu Cassandra a můžete opakovat s back konfigurace. Vzhledem k tomu Azure Cosmos DB používá model zřízená propustnost, žádost o rychlost limitující dojít k výjimkám zvýšení tarifů příchozí a odchozí transakce. Zásady opakování chrání úlohy spark proti provozní špičky data, která momentálně překročí propustnost přidělené vaší kolekce.
 

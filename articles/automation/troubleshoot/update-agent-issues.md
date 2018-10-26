@@ -4,17 +4,17 @@ description: Informace o řešení potíží s agentem Update Management.
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 10/10/2018
+ms.date: 10/25/2018
 ms.topic: conceptual
 ms.service: automation
 ms.component: update-management
 manager: carmonm
-ms.openlocfilehash: 1b258d115e7d9962ecab4b93dbcd98d13f5977c7
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 20323afe79ad3de1e3dfccd4752c4f7e28d22266
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49956676"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50095367"
 ---
 # <a name="understand-the-agent-check-results-in-update-management"></a>Vysvětlení výsledky kontroly agenta v Update Management
 
@@ -46,15 +46,15 @@ Kontrola operačního systému, ověří, pokud funkce Hybrid Runbook Worker s n
 |Operační systém  |Poznámky  |
 |---------|---------|
 |Windows Server 2008, Windows Server 2008 R2 RTM    | Podporuje pouze aktualizovat posouzení.         |
-|Windows Server 2008 R2 SP1 a novější     |Rozhraní .NET framework 4.5 nebo novější je povinný. ([Stáhnout rozhraní .NET Framework](/dotnet/framework/install/guide-for-developers))<br/> Vyžaduje se Windows PowerShell 4.0 nebo novější. ([Stáhnout WMF 4.0](https://www.microsoft.com/download/details.aspx?id=40855))<br/> Windows PowerShell 5.1 se doporučuje pro zvýšení spolehlivosti.  ([Stáhnout WMF 5.1](https://www.microsoft.com/download/details.aspx?id=54616))        |
+|Windows Server 2008 R2 SP1 a novější     |Rozhraní .NET framework 4.5.1 nebo novější je povinný. ([Stáhnout rozhraní .NET Framework](/dotnet/framework/install/guide-for-developers))<br/> Vyžaduje se Windows PowerShell 4.0 nebo novější. ([Stáhnout WMF 4.0](https://www.microsoft.com/download/details.aspx?id=40855))<br/> Windows PowerShell 5.1 se doporučuje pro zvýšení spolehlivosti.  ([Stáhnout WMF 5.1](https://www.microsoft.com/download/details.aspx?id=54616))        |
 |CentOS 6 (x86/x64) a 7 (x64)      | Agenty Linux musí mít přístup k úložišti aktualizací. Podle klasifikace opravy vyžaduje "yumu" vrátit data zabezpečení, která CentOS nemá úprav.         |
 |Red Hat Enterprise 6 (x86/x64) a 7 (x64)     | Agenty Linux musí mít přístup k úložišti aktualizací.        |
 |SUSE Linux Enterprise Server 11 (x86/x64) a 12 (x64)     | Agenty Linux musí mít přístup k úložišti aktualizací.        |
-|Ubuntu 14.04 LTS a 16.04 LTS (x86/x64)      |Agenty Linux musí mít přístup k úložišti aktualizací.         |
+|Ubuntu 14.04 LTS, 16.04 LTS a 18.04 LTS (x86/x64)      |Agenty Linux musí mít přístup k úložišti aktualizací.         |
 
-### <a name="net-45"></a>ROZHRANÍ .NET 4.5
+### <a name="net-451"></a>.NET 4.5.1
 
-Kontrola rozhraní .NET, ověří, zda má systém minimálně [rozhraní .NET Framework 4.5](https://www.microsoft.com/download/details.aspx?id=30653) k dispozici.
+Kontrola rozhraní .NET, ověří, zda má systém minimálně [rozhraní .NET Framework 4.5.1](https://www.microsoft.com/download/details.aspx?id=30653) k dispozici.
 
 ### <a name="wmf-51"></a>WMF 5.1
 

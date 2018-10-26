@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: iainfou
-ms.openlocfilehash: 9d953cdb82412c07fe0ed4bef75dece4a929cad9
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: eb5d1ee88fc95f7d02842ea089f65c6d17a6d69d
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49067580"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50091737"
 ---
 # <a name="access-the-kubernetes-web-dashboard-in-azure-kubernetes-service-aks"></a>Přístup k řídicímu panelu Kubernetes web ve službě Azure Kubernetes Service (AKS)
 
@@ -24,7 +24,7 @@ Další informace na řídicí panel Kubernetes najdete v tématu [řídicí pan
 
 Kroky popsané v tomto dokumentu předpokládají, že jste vytvořili AKS cluster a navázali `kubectl` připojení ke clusteru. Pokud potřebujete k vytvoření clusteru AKS, přečtěte si [AKS quickstart][aks-quickstart].
 
-Také nutné mít Azure CLI verze 2.0.46 nebo později nainstalované a nakonfigurované. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][install-azure-cli].
+Také musíte mít nainstalované a nakonfigurované rozhraní Azure CLI verze 2.0.46 nebo novější. Verzi zjistíte spuštěním příkazu  `az --version` . Pokud potřebujete instalaci nebo upgrade, naleznete v tématu [instalace Azure CLI][install-azure-cli].
 
 ## <a name="start-the-kubernetes-dashboard"></a>Spustit řídicí panel Kubernetes
 
@@ -33,6 +33,9 @@ Chcete-li spustit řídicí panel Kubernetes, použijte [az aks Procházet] [ az
 ```azurecli
 az aks browse --resource-group myResourceGroup --name myAKSCluster
 ```
+
+> [!NOTE]
+> Pokud spustíte tento příkaz z Azure Cloud Shell, musíte přidat `--enable-cloud-console-aks-browse` parametr nebudou moct otevřít řídicí panel.
 
 Tento příkaz vytvoří proxy mezi váš vývojový systém a rozhraní API Kubernetes a otevře se webový prohlížeč na řídicí panel Kubernetes. Pokud se webový prohlížeč se neotevře na řídicí panel Kubernetes, zkopírujte a vložte adresu URL, které jste si poznamenali v rozhraní příkazového řádku Azure, obvykle *http://127.0.0.1:8001*.
 

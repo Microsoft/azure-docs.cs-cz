@@ -4,24 +4,28 @@ description: Další informace o životním cyklu, který prochází podrobný p
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/18/2018
+ms.date: 10/25/2018
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: c09fb26d8375e08281241aaed3f6f6e30acc755b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4adf427727e7244bbde64a673e7353c1f8270c8a
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46955448"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50094574"
 ---
 # <a name="understand-the-deployment-sequence-in-azure-blueprints"></a>Vysvětlení pořadí nasazení v Azure podrobné plány
 
-Azure používá plány **pořadí řazení** k určení pořadí vytváření prostředků při zpracování přiřazení podrobný plán. Tento článek vysvětluje, výchozí pořadí řazení, který se používá, jak přizpůsobit pořadí a jak se zpracovávají přizpůsobené pořadí.
+Azure používá plány **pořadí řazení** k určení pořadí vytváření prostředků při zpracování přiřazení podrobný plán. Tento článek popisuje následující pojmy:
+
+- Výchozí pořadí řazení, který se používá
+- Přizpůsobení pořadí
+- Jak se zpracovávají přizpůsobené pořadí
 
 Jsou v příkladech JSON, které budete muset nahraďte vlastními hodnotami:
 
-- `{YourMG}` -Nahraďte název skupiny pro správu
+- Proměnnou `{YourMG}` nahraďte názvem skupiny pro správu.
 
 ## <a name="default-sequencing-order"></a>Výchozí pořadí řazení
 
@@ -32,7 +36,7 @@ Pokud žádná směrnice pro pořadí je možné nasazovat artefakty obsahuje po
 - Úroveň předplatného **šablony Azure Resource Manageru** artefakty seřazené podle názvu artefaktu
 - **Skupina prostředků** artefakty (včetně podřízených artefakty) seřazené podle názvu zástupného symbolu
 
-V každé **skupiny prostředků** artefakt, který je zpracován následovně pořadí mají být vytvořeny v rámci této skupiny prostředků slouží pro artefakty:
+V každé **skupiny prostředků** artefaktu, následovně pořadí slouží pro artefakty mají být vytvořeny v rámci této skupiny prostředků:
 
 - Podřízené skupiny prostředků **přiřazení role** artefakty seřazené podle názvu artefaktu
 - Podřízené skupiny prostředků **přiřazení zásady** artefakty seřazené podle názvu artefaktu
@@ -40,14 +44,13 @@ V každé **skupiny prostředků** artefakt, který je zpracován následovně p
 
 ## <a name="customizing-the-sequencing-order"></a>Přizpůsobení pořadí řazení
 
-Při vytváření velké plány, může být nezbytné pro prostředek má být vytvořen v určitém pořadí ve vztahu k jiným prostředkem. Nejběžnější vzor používání tohoto objektu je při podrobný plán obsahuje několik šablon Azure Resource Manageru. Plány zpracovává to tím, že pořadí řazení, aby byla definována.
+Při vytváření velké plány, může být nezbytné pro prostředky vytvořené v určitém pořadí. Nejběžnější vzor používání tohoto scénáře je při podrobný plán obsahuje několik šablon Azure Resource Manageru. Plány zpracovává tohoto modelu tím, že pořadí řazení, aby byla definována.
 
-To lze provést definováním `dependsOn` vlastností v kódu JSON. Podrobný plán (pro skupiny prostředků) a objekty artefaktů podporují tuto vlastnost. `dependsOn` je pole řetězců názvů artefaktů, které konkrétní artefaktů je potřeba vytvořit předtím, než je vytvořen.
+Řazení se provádí tak, že definujete `dependsOn` vlastností v kódu JSON. Podrobný plán (pro skupiny prostředků) a objekty artefaktů podporují tuto vlastnost. `dependsOn` je pole řetězců názvů artefaktů, které konkrétní artefaktů je potřeba vytvořit předtím, než je vytvořen.
 
 ### <a name="example---blueprint-with-ordered-resource-group"></a>Příklad: podrobného plánu se skupinou prostředků seřazený
 
-Jedná se příklad podrobného plánu se skupinou prostředků, který byl definován vlastní sekvencování pořadí deklarací hodnotu pro `dependsOn`, spolu s skupiny standardních prostředků. V tomto případě s názvem artefakt **assignPolicyTags** se zpracuje před **seřazené rg** skupinu prostředků.
-**Standard-rg** budou zpracovány za výchozí pořadí řazení.
+Tento příklad podrobný plán má skupinu prostředků, která má definované vlastní sekvencování pořadí deklarací hodnotu `dependsOn`, spolu s skupiny standardních prostředků. V tomto případě s názvem artefakt **assignPolicyTags** se zpracuje před **seřazené rg** skupinu prostředků. **Standard-rg** budou zpracovány za výchozí pořadí řazení.
 
 ```json
 {
@@ -78,7 +81,7 @@ Jedná se příklad podrobného plánu se skupinou prostředků, který byl defi
 
 ### <a name="example---artifact-with-custom-order"></a>Příklad: artefakt se vlastní pořadí
 
-Toto je příklad zásad artefakt, který závisí na šablony Azure Resource Manageru. Ve výchozím nastavení řazení, by se vytvořily artefakt zásad před šablony Azure Resource Manageru. To umožňuje artefakt zásad čekání na šablony Azure Resource Manageru, který se má vytvořit.
+V tomto příkladu je artefakt zásad, který závisí na šablony Azure Resource Manageru. Ve výchozím nastavení řazení, by se vytvořily artefakt zásad před šablony Azure Resource Manageru. Toto uspořádání umožňuje artefakt zásad čekání na šablony Azure Resource Manageru, který se má vytvořit.
 
 ```json
 {
@@ -99,14 +102,14 @@ Toto je příklad zásad artefakt, který závisí na šablony Azure Resource Ma
 
 ## <a name="processing-the-customized-sequence"></a>Vlastní pořadí zpracování
 
-Během procesu vytváření topologické řazení slouží k vytvoření grafu závislostí podrobný plán a jeho artefaktů. Tím se zajistí, že může podporovat více úrovní závislosti mezi skupinami prostředků a artefakty.
+Během procesu vytváření topologické řazení slouží k vytvoření grafu závislostí artefaktů podrobné plány. Kontrola je zajištěno, že se podporuje každý stupeň závislosti mezi skupinami prostředků a artefakty.
 
-Pokud se na podrobný plán nebo artefakt, který by změnit výchozí pořadí je deklarován závislost, se neprovedly žádné změny pořadí řazení. Příklady jsou skupinu prostředků, která závisí na přiřazení zásady podřízené úrovni zásad nebo prostředku skupiny "standard-rg" předplatného, který závisí na přiřazení role podřízené skupině prostředků "standard-rg". V obou případech `dependsOn` by jste změnili výchozí pořadí řazení a žádné změny byste provedli.
+Který by změnit výchozí pořadí je deklarované jako závislost artefakt, se neprovedly žádné změny. Příkladem je skupinu prostředků, která závisí na zásadou na úrovni předplatného. Dalším příkladem je prostředku skupiny "standard-rg" podřízené přiřazení zásady, které závisí na přiřazení role podřízené skupině prostředků "standard-rg". V obou případech `dependsOn` by jste změnili výchozí pořadí řazení a žádné změny byste provedli.
 
 ## <a name="next-steps"></a>Další postup
 
-- Další informace o [podrobný plán životního cyklu](lifecycle.md)
-- Vysvětlení použití [statické a dynamické parametry](parameters.md)
-- Zjistěte, jak se využívání [podrobný plán uzamčení prostředků](resource-locking.md)
-- Zjistěte, jak [aktualizovat existující přiřazení](../how-to/update-existing-assignments.md)
-- Řešení problémů při přiřazení podrobného plánu se [obecný postup řešení potíží](../troubleshoot/general.md)
+- Další informace o [životním cyklu podrobného plánu](lifecycle.md)
+- Principy použití [statických a dynamických parametrů](parameters.md)
+- Zjistěte, jak používat [zamykání prostředků podrobného plánu](resource-locking.md)
+- Další informace o [aktualizaci existujících přiřazení](../how-to/update-existing-assignments.md)
+- Řešení potíží při přiřazení podrobného plánu – [obecné řešení potíží](../troubleshoot/general.md)

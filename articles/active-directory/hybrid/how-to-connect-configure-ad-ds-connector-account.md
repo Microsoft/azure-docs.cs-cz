@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 10/12/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: a12549a52171afc1c95588f9a2b259829e170fcc
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: b6fef23b3624703305a13b205b588c83dd135764
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389951"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50094734"
 ---
 # <a name="azure-ad-connectconfigure-ad-ds-connector-account-permissions"></a>Azure AD Connect: Konfigurace oprávnění účtu AD DS konektoru 
 
@@ -269,10 +269,10 @@ Tento skript Powershellu se zvýšit oprávnění pro účet AD Connector zadat 
 - Zakázat dědičnosti na zadaný objekt 
 - Odeberte všechny položky řízení přístupu pro daný objekt, s výjimkou ACE konkrétní na sebe sama tak, aby zachovat beze změny výchozích oprávnění, pokud jde o sama na sebe. 
  
- Parametr - Rozlišující_název_objektu je účet AD, jehož oprávnění musí být zvýšit. Toto je obvykle MSOL_nnnnnnnnnnnn účtu domény, který je nakonfigurovaný v konektoru služby AD DS (určení účtu AD DS konektoru najdete v článku). -Credential parametr je nutné zadat účet správce, který má dostatečná oprávnění k omezení oprávnění služby Active Directory AD cílového objektu. To je obvykle Enterprise nebo správce domény.  
+ Parametr - ADConnectorAccountDN je účet AD, jehož oprávnění musí být zvýšit. Toto je obvykle MSOL_nnnnnnnnnnnn účtu domény, který je nakonfigurovaný v konektoru služby AD DS (určení účtu AD DS konektoru najdete v článku). -Credential parametr je nutné zadat účet správce, který má dostatečná oprávnění k omezení oprávnění služby Active Directory AD cílového objektu. To je obvykle Enterprise nebo správce domény.  
 
 ``` powershell
-Set-ADSyncRestrictedPermissions [-ObjectDN] <String> [-Credential] <PSCredential> [-DisableCredentialValidation] [-WhatIf] [-Confirm] [<CommonParameters>] 
+Set-ADSyncRestrictedPermissions [-ADConnectorAccountDN] <String> [-Credential] <PSCredential> [-DisableCredentialValidation] [-WhatIf] [-Confirm] [<CommonParameters>] 
 ```
  
 Příklad: 

@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 57446f068945d74351a77f21e16874d9e24ddcab
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: e8a09a9fc87bff692b5d5b4c54f87839f2591b63
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48801926"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50086943"
 ---
 # <a name="how-to-configure-password-writeback"></a>Postupy: Konfigurace zpětného zápisu hesla
 
@@ -72,13 +72,14 @@ Pokud chcete nastavit příslušná oprávnění pro zpětný zápis hesla na v�
 3. V levém panelu klikněte pravým tlačítkem na objekt, který reprezentuje kořen domény, a vyberte **vlastnosti** > **zabezpečení** > **Upřesnit**.
 4. Z **oprávnění** kartu, vyberte možnost **přidat**.
 5. Vyberte účet, který oprávnění se používají pro (z instalace služby Azure AD Connect).
-6. V **se vztahuje na** rozevíracího seznamu vyberte **podřízené uživatelské** objekty.
+6. V **se vztahuje na** rozevíracího seznamu vyberte **potomkem uživatelské objekty**.
 7. V části **oprávnění**, zaškrtněte políčka u následujících možností:
-    * **Resetování hesla**
     * **Změnit heslo**
+    * **Resetování hesla**
+8. V části **vlastnosti**, zaškrtněte políčka u následujících možností:
     * **Zápis lockoutTime**
     * **Zápis pwdLastSet**
-8. Vyberte **použít/OK** použít změny a zavřete všechna otevřená dialogová.
+9. Vyberte **použít/OK** použít změny a zavřete všechna otevřená dialogová.
 
 ## <a name="next-steps"></a>Další postup
 

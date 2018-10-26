@@ -1,6 +1,6 @@
 ---
-title: Odeslat hostovaného operačního systému metriky do úložiště dat monitorování Azure pro Windows virtuální počítač (classic)
-description: Odeslat hostovaného operačního systému metriky do úložiště dat monitorování Azure pro Windows virtuální počítač (classic)
+title: Odeslání metrik hostovaného operačního systému k úložišti dat monitorování Azure pro Windows virtuální počítač (klasický)
+description: Odeslání metrik hostovaného operačního systému k úložišti dat monitorování Azure pro Windows virtuální počítač (klasický)
 author: anirudhcavale
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,51 +8,55 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.component: ''
-ms.openlocfilehash: 235eda231dfb0f936bf55c7c8d93a8f709fdf9bc
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 06b3d97f4b2b7867f09a8c4e5fe974615e9b0c70
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49954834"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50093416"
 ---
-# <a name="send-guest-os-metrics-to-the-azure-monitor-data-store-for-a-windows-virtual-machine-classic"></a>Odeslat hostovaného operačního systému metriky do úložiště dat monitorování Azure pro Windows virtuální počítač (classic)
+# <a name="send-guest-os-metrics-to-the-azure-monitor-data-store-for-a-windows-virtual-machine-classic"></a>Odeslání metrik hostovaného operačního systému k úložišti dat monitorování Azure pro Windows virtuální počítač (klasický)
 
-Azure Monitor [rozšíření Windows Azure Diagnostics](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) (WAD) umožňuje shromažďovat metriky a protokoly spuštění hostovaný operační systém (guest OS) jako součást clusteru virtuální počítač, Cloudovou službu nebo Service Fabric. Rozšíření mohla odesílat telemetrii do mnoha různých umístěních uvedených v dříve odkazovaném článku.
+Azure Monitor [diagnostické rozšíření](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) (označují se termínem "WAD" nebo "Diagnostika") umožňuje shromažďovat metriky a protokoly z hostovaný operační systém (Guest OS) spuštěná jako virtuální počítač, cloudovou službu nebo Service Fabric cluster. Rozšíření mohla odesílat telemetrii na [různými umístěními.](https://docs.microsoft.com/azure/monitoring/monitoring-data-collection?toc=/azure/azure-monitor/toc.json)
 
-Tento článek popisuje postup na metriky výkonu operačního systému hosta odeslání pro Windows virtuální počítač (klasický) do úložiště metrik Azure monitoru. Spouští se s využitím WAD verze 1.11, můžete napsat metriky přímo k úložišti Azure Monitor metrik, kde již shromažďuje metriky na standard platformy. Ukládání v tomto umístění umožňuje přístup ke stejné akce k dispozici pro platformy metriky.  Akce zahrnují téměř v reálném čase výstrahy, grafů, směrování, přístup k rozhraní REST API a další.  V minulosti rozšíření WAD zapsáno do služby Azure Storage, ale ne úložiště dat Azure Monitor. 
+Tento článek popisuje postup pro odesílání metriky výkonu hostovaného operačního systému pro virtuální počítače s Windows (classic) do úložiště metrik Azure monitoru. Spouští se s diagnostikou verze 1.11, můžete napsat metriky přímo do Azure monitoru ukládat metriky, kde již shromažďuje metriky na standard platformy. 
 
-Proces popsaný v tomto článku funguje jenom klasické virtuální počítače s operačním systémem Windows.
+Ukládání v tomto umístění umožňuje přístup ke stejné akce jako u platformy metriky. Akce zahrnují téměř v reálném čase výstrahy, grafů, směrování, přístup z rozhraní REST API a další. Diagnostické rozšíření v minulosti zapsala do služby Azure Storage, ale ne k úložišti dat monitorování Azure. 
 
-## <a name="pre-requisites"></a>Požadavky
+Proces, který je popsaný v tomto článku funguje pouze v klasických virtuálních počítačů, na kterých běží operační systém Windows.
 
-- Musí být [Správce služeb nebo spolupracující správce](https://docs.microsoft.com/azure/billing/billing-add-change-azure-subscription-administrator.md) v rámci předplatného Azure 
+## <a name="prerequisites"></a>Požadavky
 
-- Předplatné musí být zaregistrovaná s [Microsoft.Insights](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-6.8.1) 
+- Musí být [Správce služeb nebo spolupracující správce](https://docs.microsoft.com/azure/billing/billing-add-change-azure-subscription-administrator.md) v rámci předplatného Azure. 
 
-- Musíte mít buď [prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-6.8.1) nainstalovaná, nebo můžete použít [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview.md) 
+- Předplatné musí být zaregistrovaná s [Microsoft.Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services#portal). 
+
+- Musíte mít buď [prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-6.8.1) nebo [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) nainstalované.
 
 ## <a name="create-a-classic-virtual-machine-and-storage-account"></a>Vytvoření klasického virtuálního počítače a účtu úložiště
 
-1. Vytvoření klasického virtuálního počítače pomocí webu Azure portal ![vytvořit virtuální počítač nesprávně](./media/metrics-store-custom-guestos-classic-vm/create-classic-vm.png)
+1. Vytvoření klasického virtuálního počítače pomocí webu Azure portal.
+   ![Vytvoření virtuálního počítače s nesprávně](./media/metrics-store-custom-guestos-classic-vm/create-classic-vm.png)
 
-1. Při vytváření tohoto virtuálního počítače, můžete vytvořit nový účet klasického úložiště. V dalších krocích používáme tento účet úložiště.
+1. Při vytváření tohoto virtuálního počítače, zvolte možnost pro vytvoření nového účtu klasického úložiště. V dalších krocích používáme tento účet úložiště.
 
-1. Na webu Azure Portal, přejděte do okna účet úložiště prostředků a zvolte **klíče** a poznamenejte si název účtu úložiště a klíč účtu úložiště. Je třeba tyto klíče v dalších krocích ![přístupových klíčů k úložišti](./media/metrics-store-custom-guestos-classic-vm/storage-access-keys.png)
+1. Na webu Azure Portal, přejděte **účty úložiště** okno prostředků. Vyberte **klíče**a poznamenejte si název účtu úložiště a klíč účtu úložiště. Tyto informace v následujících krocích budete potřebovat.
+   ![Přístupové klíče k úložišti](./media/metrics-store-custom-guestos-classic-vm/storage-access-keys.png)
 
 ## <a name="create-a-service-principal"></a>Vytvoření instančního objektu
 
-Vytvořit instanční objekt ve vašem tenantovi Azure Active Directory pomocí pokynů uvedených v [vytvoření instančního objektu](../active-directory/develop/howto-create-service-principal-portal.md). Mějte na paměti následující při procházení tohoto procesu: 
-- Vytvořit nový tajný kód klienta pro tuto aplikaci  
-- Uložte klíč a id klienta pro použití v dalších krocích.
+Vytvořit instanční objekt ve vašem tenantovi Azure Active Directory pomocí pokynů na adrese [vytvoření instančního objektu](../azure-resource-manager/resource-group-create-service-principal-portal.md). Mějte na paměti následující při procházení tohoto procesu: 
+- Vytvořte nový tajný kód klienta pro tuto aplikaci.
+- Uložte klíč a ID klienta pro použití v dalších krocích.
 
 Udělte oprávnění ke "Monitorování metrik vydavatele" k prostředku, kterou chcete vygenerovat metrik pro tuto aplikaci. Můžete použít skupinu prostředků nebo celé předplatné.  
 
 > [!NOTE]
-> Rozšíření diagnostiky pomocí instančního objektu ověřování na základě Azure Monitor a generovat metriky pro klasický virtuální počítač.
+> Diagnostické rozšíření používá instanční objekt k ověřování na základě Azure Monitor a generovat metriky pro klasický virtuální počítač.
 
 ## <a name="author-diagnostics-extension-configuration"></a>Konfigurace diagnostického rozšíření autora
 
-1. Příprava WAD diagnostického rozšíření konfiguračního souboru. Tento soubor Určuje, které protokoly a čítače výkonu pro klasický virtuální počítač mají shromažďovat diagnostické rozšíření. Zde je příklad.
+1. Příprava vašich diagnostického rozšíření konfiguračního souboru. Tento soubor Určuje, které protokoly a čítače výkonu diagnostické rozšíření mají shromažďovat pro klasický virtuální počítač. Tady je příklad:
 
     ```xml
     <?xml version="1.0" encoding="utf-8"?>
@@ -98,20 +102,20 @@ Udělte oprávnění ke "Monitorování metrik vydavatele" k prostředku, kterou
     <IsEnabled>true</IsEnabled>
     </DiagnosticsConfiguration>
     ```
-1. V části "SinksConfig" souboru diagnostiky definujte nové jímka Azure monitoru:
+1. V části "SinksConfig" souboru diagnostiky definujte nové jímka Azure monitoru, následujícím způsobem:
 
     ```xml
     <SinksConfig>
         <Sink name="AzMonSink">
             <AzureMonitor>
-                <ResourceId>Provide your Classic VM’s Resource ID </ResourceId>
-                <Region>Region your VM is deployed in</Region>
+                <ResourceId>Provide the resource ID of your classic VM </ResourceId>
+                <Region>The region your VM is deployed in</Region>
             </AzureMonitor>
         </Sink>
     </SinksConfig>
     ```
 
-1. V oddílu konfiguračního souboru, kde je uveden seznam čítačů výkonu, které se mají shromažďovat směrujte čítačů výkonu Azure Monitor jímky "AzMonSink".
+1. V oddílu konfiguračního souboru, kde je uveden seznam čítačů výkonu, které se mají shromažďovat směrujte jímka Azure monitoru "AzMonSink" čítače výkonu.
 
     ```xml
     <PerformanceCounters scheduledTransferPeriod="PT1M" sinks="AzMonSink">
@@ -120,7 +124,7 @@ Udělte oprávnění ke "Monitorování metrik vydavatele" k prostředku, kterou
     </PerformanceCounters>
     ```
 
-1. V privátní konfigurace definování účtu Azure Monitor a přidání informací o instančním objektu služby používat k emitování metriky.
+1. V privátní konfigurace definujte účtu Azure Monitor. Pak přidejte informací o instančním objektu služby používat k emitování metriky.
 
     ```xml
     <PrivateConfig xmlns="http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration">
@@ -136,15 +140,15 @@ Udělte oprávnění ke "Monitorování metrik vydavatele" k prostředku, kterou
 
 1. Uložte soubor místně.
 
-## <a name="deploy-diagnostics-extension-to-your-cloud-service"></a>Nasazení rozšíření diagnostiky ke cloudové službě
+## <a name="deploy-the-diagnostics-extension-to-your-cloud-service"></a>Nasazení rozšíření diagnostiky ke cloudové službě
 
-1. Spusťte PowerShell a přihlaste se
+1. Spusťte PowerShell a přihlaste se.
 
     ```powershell
     Login-AzureRmAccount
     ```
 
-1. Začněte tím, že nastavení kontextu na klasickém virtuálním počítači
+1. Začněte tím, že nastavíte kontext pro klasický virtuální počítač.
 
     ```powershell
     $VM = Get-AzureVM -ServiceName <VM’s Service_Name> -Name <VM Name>
@@ -156,42 +160,43 @@ Udělte oprávnění ke "Monitorování metrik vydavatele" k prostředku, kterou
     $StorageContext = New-AzureStorageContext -StorageAccountName <name of your storage account from earlier steps> -storageaccountkey "<storage account key from earlier steps>"
     ```
 
-1.  Nastavit cestu k souboru diagnostiky do proměnných pomocí následující příkaz.
+1.  Nastavte cestu k souboru diagnostiky na proměnnou pomocí následujícího příkazu:
 
     ```powershell
     $diagconfig = “<path of the diagnostics configuration file with the Azure Monitor sink configured>”
     ```
 
-1.  Připravit aktualizace klasického virtuálního počítače pomocí souboru diagnostiky s nakonfigurované jímka Azure monitoru
+1.  Příprava aktualizace pro klasický virtuální počítač se souborem diagnostiku, která má nakonfigurované jímka Azure monitoru.
 
     ```powershell
     $VM_Update = Set-AzureVMDiagnosticsExtension -DiagnosticsConfigurationPath $diagconfig -VM $VM -StorageContext $Storage_Context
     ```
 
-1.  Spuštěním následujícího příkazu Nasaďte aktualizaci k vašemu virtuálnímu počítači
+1.  Aktualizace nasaďte do svého virtuálního počítače spuštěním následujícího příkazu:
 
     ```powershell
     Update-AzureVM -ServiceName "ClassicVMWAD7216" -Name "ClassicVMWAD" -VM $VM_Update.VM
     ```
 
 > [!NOTE]
-> Je stále povinné a použijte účet úložiště jako součást instalace diagnostického rozšíření. Protokoly a/nebo čítače výkonu zadaný v konfigurační soubor diagnostiky se zapíšou do zadaný účet úložiště.
+> Je stále povinné a použijte účet úložiště jako součást instalace diagnostického rozšíření. Všechny protokoly nebo čítače výkonu, které jsou uvedeny v souboru konfigurace diagnostiky se zapíšou do zadaný účet úložiště.
 
 ## <a name="plot-the-metrics-in-the-azure-portal"></a>Vykreslení metrik na webu Azure Portal
 
-1.  Přejděte na web Azure Portal
+1.  Přejděte na web Azure Portal. 
 
-1.  V nabídce vlevo klikněte na monitorování
+1.  V nabídce vlevo vyberte **monitorování.**
 
-1.  V okně monitorování klikněte na **metriky**
-   ![přejděte metriky](./media/metrics-store-custom-guestos-classic-vm/navigate-metrics.png)
+1.  Na **monitorování** okně vyberte **metriky**.
 
-1. V rozevíracím seznamu prostředků vyberte Klasický virtuální počítač
+    ![Přejděte metriky](./media/metrics-store-custom-guestos-classic-vm/navigate-metrics.png)
 
-1. V oborech názvů rozevíracího seznamu vyberte **azure.vm.windows.guest**
+1. V rozevírací nabídce prostředků vyberte Klasický virtuální počítač.
 
-1. Metriky rozevírací seznam, zaškrtněte **mezi hodnotami paměť\svěřené bajty**
-   ![vykreslení metrik](./media/metrics-store-custom-guestos-classic-vm/plot-metrics.png)
+1. V rozevírací nabídce obory názvů, vyberte **azure.vm.windows.guest**.
+
+1. V rozevírací nabídce metrik vyberte **mezi hodnotami paměť\svěřené bajty**.
+   ![Zobrazit metriky](./media/metrics-store-custom-guestos-classic-vm/plot-metrics.png)
 
 
 ## <a name="next-steps"></a>Další postup

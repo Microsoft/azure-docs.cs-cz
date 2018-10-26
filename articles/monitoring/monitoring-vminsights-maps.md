@@ -1,5 +1,5 @@
 ---
-title: Jak zobrazit závislosti aplikace pomocí Azure monitoru pro virtuální počítače | Dokumentace Microsoftu
+title: Jak zobrazit závislosti aplikace pomocí Azure monitoru pro virtuální počítače (Preview) | Dokumentace Microsoftu
 description: Mapování je funkce služby Azure Monitor pro virtuální počítače, který automaticky zjišťuje komponenty aplikací v systémech Windows a Linux a mapuje komunikace mezi službami. Tento článek obsahuje podrobnosti o tom, jak použít v nejrůznějších scénářích.
 services: azure-monitor
 documentationcenter: ''
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/17/2018
+ms.date: 10/25/2018
 ms.author: magoedte
-ms.openlocfilehash: 8641b6cfb14bceb248cc587095a9d3469ce2c9e0
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: af3d2b997a4d58f2d32705c55151c4cf13bdcc7c
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49402145"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50095474"
 ---
-# <a name="using-azure-monitor-for-vms-map-to-understand-application-components"></a>Pomocí Azure monitoru pro virtuální počítače mapu pochopit součásti aplikace
+# <a name="using-azure-monitor-for-vms-preview-map-to-understand-application-components"></a>Pomocí Azure monitoru pro virtuální počítače (Preview) mapu pochopit součásti aplikace
 Zobrazení komponenty zjištěnou aplikaci virtuálních počítačích s Windows a Linuxem v Azure, prostředí můžete pozorovat dvě možnosti, jak pomocí Azure monitoru pro virtuální počítače z virtuálního počítače přímo nebo přes skupiny virtuálních počítačů ze služby Azure Monitor. 
 
 Tento článek vám pomůže pochopit prostředí mezi dvěma perspektivy a jak používat funkci Mapa. Informace o konfiguraci monitorování Azure pro virtuální počítače najdete v tématu [povolit monitorování Azure pro virtuální počítače](monitoring-vminsights-onboard.md).

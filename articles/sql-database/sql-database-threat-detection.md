@@ -11,19 +11,24 @@ author: rmatchoro
 ms.author: ronmat
 ms.reviewer: vanto, carlrab
 manager: craigg
-ms.date: 09/19/2018
-ms.openlocfilehash: ed7a117d4422b3b3feddd7d2fafa5eabea43f9e5
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 10/25/2018
+ms.openlocfilehash: 2882bd782359697cf714214e68166c9f997f52e4
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47164933"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50093543"
 ---
 # <a name="azure-sql-database-threat-detection"></a>Detekce hrozeb Azure SQL Database
 
-Detekce hrozeb Azure SQL Database detekuje neobvyklé aktivity a potenciálně nebezpečné pokusy o přístup k databázím nebo jejich zneužití.
+Detekce hrozeb Azure SQL pro [SQL Database](sql-database-technical-overview.md) a [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) detekuje neobvyklé aktivity a potenciálně nebezpečné pokusy o přístup k databázím nebo jejich zneužití.
 
 Detekce hrozeb je součástí [rozšířené ochrany před internetovými útoky SQL](sql-advanced-threat-protection.md) nabídky (ATP), která je jednotný balíček pro pokročilé funkce zabezpečení SQL. Detekce hrozeb je možné získat přístup a spravovat prostřednictvím portálu pro centrální ochrany ATP v programu SQL.
+
+
+> [!NOTE] 
+> Toto téma se týká k Azure SQL serveru a databází SQL Database a SQL Data Warehouse, které jsou vytvořené na serveru Azure SQL. Pro zjednodušení se SQL Database používá k označení SQL Database i SQL Data Warehouse.
+
 
 ## <a name="what-is-threat-detection"></a>Co je detekce hrozeb?
 
@@ -65,7 +70,7 @@ Obdržíte e-mailové oznámení po detekci neobvyklých databázových aktivit.
 
 Detekce hrozeb služby SQL Database integruje výstrahy se jeho službou [Azure Security Center](https://azure.microsoft.com/services/security-center/). Živé dlaždice detekce hrozeb SQL v databázi a oken ochrany ATP v programu SQL na webu Azure Portal sleduje stav aktivní hrozby.
 
-Klikněte na tlačítko **výstrahu o detekci hrozeb** spustit Azure Security Center oznámení stránce a získejte přehled o aktivní hrozby SQL v databázi nalezen.
+Klikněte na tlačítko **výstrahu o detekci hrozeb** spustit Azure Security Center oznámení stránce a získejte přehled o aktivní hrozby SQL na databázi ani na datový sklad zjistí.
 
    ![Výstrahy detekce hrozeb](./media/sql-database-threat-detection/threat_detection_alert.png)
    

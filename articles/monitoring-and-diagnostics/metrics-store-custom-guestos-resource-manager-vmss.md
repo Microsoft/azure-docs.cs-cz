@@ -1,6 +1,6 @@
 ---
-title: Odeslání metrik hosta operačního systému do Azure monitoru metriky úložiště pro škálovací sadu virtuálních počítačů s Windows pomocí šablony Resource Manageru
-description: Odeslání metrik hosta operačního systému do Azure monitoru metriky úložiště pro škálovací sadu virtuálních počítačů s Windows pomocí šablony Resource Manageru
+title: Odeslání metrik hostovaného operačního systému k úložišti Azure Monitor metriky s použitím šablony Azure Resource Manageru pro škálovací sadu virtuálních počítačů s Windows
+description: Odeslání metrik hostovaného operačního systému k úložišti Azure Monitor metriku pomocí šablony Resource Manageru pro škálovací sadu virtuálních počítačů s Windows
 author: anirudhcavale
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,65 +8,65 @@ ms.topic: howto
 ms.date: 09/24/2018
 ms.author: ancav
 ms.component: metrics
-ms.openlocfilehash: 7b600bd699ce7f9e4a6c7cba1a41b6bdece16bf0
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 0e6580bfea181d28d884356d6c51ff5f9336c3db
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49343720"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50093867"
 ---
-# <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-using-a-resource-manager-template-for-a-windows-virtual-machine-scale-set"></a>Odeslání metrik hosta operačního systému do Azure monitoru metriky úložiště pro škálovací sadu virtuálních počítačů s Windows pomocí šablony Resource Manageru
+# <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine-scale-set"></a>Odeslání metrik hostovaného operačního systému k úložišti Azure Monitor metriky s použitím šablony Azure Resource Manageru pro škálovací sadu virtuálních počítačů s Windows
 
-Azure Monitor [rozšíření Windows Azure Diagnostics](azure-diagnostics.md) (WAD) umožňuje shromažďovat metriky a protokoly spuštění hostovaný operační systém (guest OS) jako součást clusteru virtuální počítač, Cloudovou službu nebo Service Fabric.  Rozšíření mohla odesílat telemetrii do mnoha různých umístěních uvedených v dříve odkazovaném článku.  
+Pomocí Azure monitoru [rozšíření Windows Azure Diagnostics (WAD)](azure-diagnostics.md), můžete shromažďovat metriky a protokoly z hostovaný operační systém (guest OS), které se spouští jako součást virtuální počítač, cloudovou službu nebo clusteru Azure Service Fabric. Rozšíření mohla odesílat telemetrii do mnoha různých umístěních uvedených v dříve odkazovaném článku.  
 
-Tento článek popisuje postup odesílání hostovaného operačního systému metriky výkonu pro Windows škálovací sady virtuálních počítačů k úložišti Azure Monitor. Spouští se s využitím WAD verze 1.11, můžete napsat metriky přímo k úložišti Azure Monitor metrik, kde již shromažďuje metriky na standard platformy. Ukládání v tomto umístění umožňuje přístup ke stejné akce k dispozici pro platformy metriky.  Akce zahrnují téměř v reálném čase výstrahy, grafů, směrování, přístup k rozhraní REST API a další.  V minulosti rozšíření WAD zapsáno do služby Azure Storage, ale ne úložiště dat Azure Monitor.  
+Tento článek popisuje postup odesílání hostovaného operačního systému metriky výkonu pro Windows škálovací sady virtuálních počítačů k úložišti Azure Monitor. Od verze Windows Azure Diagnostics verze 1.11, můžete psát, že se metriky přímo k metrikám monitorování Azure storu, kde již shromažďuje metriky na standard platformy. Podle jejich ukládáním do tohoto umístění, můžete přístup ke stejné akce, které jsou k dispozici pro platformy metriky. Akce zahrnují téměř v reálném čase výstrahy, grafů, směrování, přístup k rozhraní REST API a další. V minulosti rozšíření Windows Azure Diagnostics zapsáno do služby Azure Storage, ale ne úložiště dat Azure Monitor.  
 
-Pokud jste ještě na šablony Resource Manageru, přečtěte si o [nasazení šablon](../azure-resource-manager/resource-group-overview.md)a jejich struktury a syntaxe.  
+Pokud jste začínáte se šablonami Resource Manageru, přečtěte si o [nasazení šablon](../azure-resource-manager/resource-group-overview.md) a jejich struktury a syntaxe.  
 
-## <a name="pre-requisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadavky
 
-- Předplatné musí být zaregistrovaná s [Microsoft.Insights](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-6.8.1) 
+- Předplatné musí být zaregistrovaná s [Microsoft.Insights](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-supported-services#portal). 
 
-- Musíte mít buď [prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-6.8.1) nainstalovaná, nebo můžete použít [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview.md) 
+- Musíte mít [prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-6.8.1) nainstalovaná, nebo můžete použít [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview). 
 
 
 ## <a name="set-up-azure-monitor-as-a-data-sink"></a>Nastavení jako datová jímka Azure monitoru 
-Rozšíření Azure Diagnostics používá funkci s názvem "dat jímky" trasy metriky a protokoly do různých umístění.  Následující kroky ukazují, jak pomocí šablony Resource Manageru a Powershellu k nasazení virtuálního počítače pomocí nového datová jímka "Azure Monitor". 
+Rozšíření Azure Diagnostics používá funkci s názvem **datových jímek** trasy metriky a protokoly do různých umístění. Následující kroky ukazují, jak pomocí šablony Resource Manageru a Powershellu k nasazení virtuálního počítače s použitím nového datová jímka Azure monitoru. 
 
-## <a name="author-resource-manager-template"></a>Šablony Resource Manageru autora 
-V tomto příkladu můžete použít veřejně dostupné Ukázková šablona. Výchozí šablony jsou v https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-windows-autoscale  
+## <a name="author-a-resource-manager-template"></a>Autor šablony Resource Manageru 
+V tomto příkladu můžete použít veřejně dostupné [Ukázková šablona](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-windows-autoscale):  
 
-- **Azuredeploy.JSON** je předem nakonfigurované šablony Resource Manageru pro nasazení škálovací sady virtuálních počítačů
+- **Azuredeploy.JSON** je předem nakonfigurované šablony Resource Manageru pro nasazení škálovací sady virtuálních počítačů.
 
-- **Azuredeploy.Parameters.JSON** je soubor parametrů, která ukládá informace, například jaké uživatelské jméno a heslo, které byste rádi nastavení pro váš virtuální počítač. Během nasazování šablony Resource Manageru používá parametry v tomto souboru. 
+- **Azuredeploy.Parameters.JSON** je soubor parametrů, která ukládá informace, například jaké uživatelské jméno a heslo, kterou chcete nastavit pro váš virtuální počítač. Během nasazování šablony Resource Manageru používá parametry v tomto souboru. 
 
 Stáhněte a uložte místně oba soubory. 
 
 ###  <a name="modify-azuredeployparametersjson"></a>Upravit azuredeploy.parameters.json
-Otevřít *azuredeploy.parameters.json* souboru 
-
-- Zadejte **vmSKU** byste chtěli nasadit (doporučujeme Standard_D2_v3) 
-- Zadejte **windowsOSVersion** byste chtěli pro svou škálovací sadu virtuálních počítačů (doporučujeme 2016-Datacenter) 
-- Název virtuálního počítače škálovací sady prostředků k nasazení pomocí **vmssName** vlastnost. Například *VMSS-WAD-TEST*.    
-- Zadejte počet virtuálních počítačů, které byste rádi běžet na škálovací sady virtuálních počítačů **instanceCount** vlastnost
-- Zadejte hodnoty pro **adminUsername** a **adminPassword** škálování virtuálního počítače nastavte. Tyto parametry se používají pro vzdálený přístup k virtuálním počítačům ve škálovací sadě. Tyto parametry se používají pro vzdálený přístup k virtuálnímu počítači. Abyste se vyhnuli nutnosti váš virtuální počítač zachycena nepoužívejte v této šabloně. Roboti prohledávání Internetu uživatelských jmen a hesel ve veřejných úložištích Github. Jsou pravděpodobně testovat virtuální počítače s tyto výchozí hodnoty. 
+Otevřít **azuredeploy.parameters.json** souboru:  
+ 
+- Zadejte **vmSKU** chcete nasadit. Doporučujeme, abyste Standard_D2_v3. 
+- Zadejte **windowsOSVersion** chcete použít pro škálovací sadu virtuálních počítačů. Doporučujeme, abyste 2016 Datacenter. 
+- Název virtuálního počítače škálovací sady prostředek, který se dá nasadit pomocí **vmssName** vlastnost. Příkladem je **VMSS-WAD-TEST**.    
+- Zadejte počet virtuálních počítačů, které chcete spustit na škálovací sadu s použitím virtuálních počítačů **instanceCount** vlastnost.
+- Zadejte hodnoty pro **adminUsername** a **adminPassword** škálování virtuálního počítače nastavte. Tyto parametry se používají pro vzdálený přístup k virtuálním počítačům ve škálovací sadě. Abyste se vyhnuli nutnosti váš virtuální počítač zachycena, **nejsou** použít dotazy v této šabloně. Roboti prohledávání Internetu uživatelských jmen a hesel ve veřejných úložištích GitHub. Jsou to pravděpodobně testovat virtuální počítače s tyto výchozí hodnoty. 
 
 
 ###  <a name="modify-azuredeployjson"></a>Upravit azuredeploy.json
-Otevřít *azuredeploy.json* souboru 
+Otevřít **azuredeploy.json** souboru. 
 
-Přidejte proměnnou pro uchování informací o účtu úložiště v šabloně Resource Manageru. Stále musíte zadat účet úložiště jako součást instalace diagnostického rozšíření. Protokoly a/nebo čítače výkonu zadaný v konfigurační soubor diagnostiky se zapisují do zadaný účet úložiště kromě odeslání do úložiště metrik Azure monitoru. 
+Přidejte proměnnou pro uchování informací o účtu úložiště v šabloně Resource Manageru. Všechny protokoly a čítače výkonu zadaný v konfigurační soubor diagnostiky se zapisují do úložiště metrik Azure monitoru a účet úložiště, kterou zde zadáte: 
 
 ```json
 "variables": { 
 //add this line       
 "storageAccountName": "[concat('storage', uniqueString(resourceGroup().id))]", 
- ```
+```
  
-Definice Škálovací sady virtuálních počítačů najdete v části prostředky a přidejte v části "identity" ke konfiguraci. Tím se zajistí, že Azure ho přiřadí systému identit. Tento krok zajistí, že virtuální počítače ve škálovací sadě můžete vygenerovat metrik hosta o samotné do Azure monitoru.  
+Najděte definici virtuálního počítače škálovací sady v části prostředky a přidejte **identity** části ke konfiguraci. Toto přidání zajistí, že Azure přiřadí identitu systému. Tento krok také zajistí, že virtuální počítače ve škálovací sadě můžete generovat metrik hosta o samotné do Azure monitoru:  
 
 ```json
-  { 
+    { 
       "type": "Microsoft.Compute/virtualMachineScaleSets", 
       "name": "[variables('namingInfix')]", 
       "location": "[resourceGroup().location]", 
@@ -76,14 +76,14 @@ Definice Škálovací sady virtuálních počítačů najdete v části prostře
            "type": "systemAssigned" 
        }, 
        //end of lines to add
- ```
+```
 
 Ve virtuálním počítači škálovací sady prostředků, vyhledejte **virtualMachineProfile** oddílu. Přidat nový profil, který volá **extensionsProfile** pro správu rozšíření.  
 
 
-V **extensionProfile**, přidat nové rozšíření do šablony, jak je uvedeno **příponu VMSS WAD části**.  Tato část se spravovaným identitám pro rozšíření prostředků Azure, které zajistí, že probíhá emitovány metriky jsou přijaty Azure Monitor. **Název** pole může obsahovat libovolný název. 
+V **extensionProfile**, přidat nové rozšíření do šablony, jak je znázorněno **příponu VMSS WAD** oddílu.  Tato část se spravovaným identitám pro rozšíření prostředků Azure, které zajistí, že probíhá emitovány metriky jsou přijaty Azure Monitor. **Název** pole může obsahovat libovolný název. 
 
-Níže uvedený kód z rozšíření MSI také přidá rozšíření diagnostiky a konfiguraci jako prostředek rozšíření do prostředku virtuálního počítače škálovací sady. Můžete přidat nebo odebrat čítače výkonu podle potřeby. 
+Následující kód z rozšíření MSI také přidává se diagnostické rozšíření a konfigurací jako prostředek rozšíření k prostředku virtuálního počítače škálovací sady. Můžete bez obav s přidáváním a odebíráním čítače výkonu, podle potřeby: 
 
 ```json
           "extensionProfile": { 
@@ -195,30 +195,32 @@ Níže uvedený kód z rozšíření MSI také přidá rozšíření diagnostiky
 ```
 
 
-Přidáte dependsOn pro účet úložiště k zajištění, že se vytvoří ve správném pořadí. 
+Přidat **dependsOn** pro účet úložiště, aby se vytvoří ve správném pořadí: 
+
 ```json
 "dependsOn": [ 
 "[concat('Microsoft.Network/loadBalancers/', variables('loadBalancerName'))]", 
 "[concat('Microsoft.Network/virtualNetworks/', variables('virtualNetworkName'))]" 
 //add this line below
 "[concat('Microsoft.Storage/storageAccounts/', variables('storageAccountName'))]" 
- ```
+```
 
-Vytvoření účtu úložiště, pokud jeden není už v šabloně.  
+Vytvoření účtu úložiště, pokud jeden není už v šabloně: 
+
 ```json
 "resources": [
-  // add this code    
-  {
-     "type": "Microsoft.Storage/storageAccounts",
-     "name": "[variables('storageAccountName')]",
-     "apiVersion": "2015-05-01-preview",
-     "location": "[resourceGroup().location]",
-     "properties": {
-       "accountType": "Standard_LRS"
-      }
-  },
-  // end added code
-  { 
+// add this code    
+{
+    "type": "Microsoft.Storage/storageAccounts",
+    "name": "[variables('storageAccountName')]",
+    "apiVersion": "2015-05-01-preview",
+    "location": "[resourceGroup().location]",
+    "properties": {
+    "accountType": "Standard_LRS"
+    }
+},
+// end added code
+{ 
     "type": "Microsoft.Network/virtualNetworks",
     "name": "[variables('virtualNetworkName')]",
 ```
@@ -227,62 +229,63 @@ Uložte a zavřete oba soubory.
 
 ## <a name="deploy-the-resource-manager-template"></a>Nasazení šablony Resource Manageru 
 
-> [!NOTE]
-> Musíte používat Azure Diagnostics rozšíření verze 1.5 nebo novější a mají "verzi autoUpgradeMinorVersion": vlastnost nastavena na hodnotu *true* v šabloně Resource Manageru.  Azure pak načte správné rozšíření při spuštění virtuálního počítače. Pokud nemáte tato nastavení v šabloně, je změnit a znovu nasaďte šablonu. 
+> [!NOTE]  
+> Musíte používat verzi rozšíření diagnostiky Azure 1.5 nebo vyšší **a** mít **autoUpgradeMinorVersion:** vlastnost nastavena na hodnotu **true** ve vaší službě Správce prostředků Šablona. Azure pak načte správné rozšíření při spuštění virtuálního počítače. Pokud nemáte k dispozici tato nastavení v šabloně, je změnit a znovu nasaďte šablonu. 
 
 
-Pokud chcete nasadit šablonu Resource Manageru, jsme bude využívat Azure Powershellu.  
+Pokud chcete nasadit šablonu Resource Manageru, pomocí Azure Powershellu:  
 
-1. Spuštění PowerShellu 
-1. Přihlaste se k Azure s využitím `Login-AzureRmAccount`
-1. Získat seznam vašich předplatných pomocí `Get-AzureRmSubscription`
-1. Nastavte předplatné, které vám bude možné vytváření nebo aktualizaci virtuálního počítače 
+1. Spusťte PowerShell. 
+1. Přihlaste se k Azure s využitím `Login-AzureRmAccount`.
+1. Získat seznam vašich předplatných s použitím `Get-AzureRmSubscription`.
+1. Nastavení předplatného budete vytvořit nebo aktualizovat virtuální počítač: 
 
    ```PowerShell
    Select-AzureRmSubscription -SubscriptionName "<Name of the subscription>" 
    ```
-1. Vytvořte novou skupinu prostředků pro virtuální počítač, nasazení, spouštění následující příkaz 
+1. Vytvořte novou skupinu prostředků pro virtuální počítač se nasazuje. Spusťte následující příkaz: 
 
    ```PowerShell
     New-AzureRmResourceGroup -Name "VMSSWADtestGrp" -Location "<Azure Region>" 
    ```
 
    > [!NOTE]  
-   > Nezapomeňte použít oblast Azure, který je povolený pro vlastní metriky. Přečtěte si: 
+   > Nezapomeňte použít oblast Azure, který je povolený pro vlastní metriky. Nezapomeňte použít [oblast Azure, která je povolená pro vlastní metriky](https://github.com/MicrosoftDocs/azure-docs-pr/pull/metrics-custom-overview.md#supported-regions).
  
-1. Spuštěním následujících příkazů nasaďte virtuální počítač se  
-   > [!NOTE] 
-   > Pokud chcete aktualizovat existující škálovací sadě, jednoduše přidejte *-režim přírůstkového* na konec příkazu. 
+1. Spusťte následující příkazy, které je virtuální počítač nasadit:  
+
+   > [!NOTE]  
+   > Pokud chcete aktualizovat existující škálovací sadě, přidejte **-režim přírůstkového** na konec příkazu. 
  
    ```PowerShell
    New-AzureRmResourceGroupDeployment -Name "VMSSWADTest" -ResourceGroupName "VMSSWADtestGrp" -TemplateFile "<File path of your azuredeploy.JSON file>" -TemplateParameterFile "<File path of your azuredeploy.parameters.JSON file>"  
    ```
 
-1. Po úspěšném nasazení byste měli najít virtuálního počítače škálovací sady na webu Azure Portal a by měl být generování metrik do Azure monitoru. 
+1. Po úspěšném nasazení, měli byste najít virtuálního počítače škálovací sady na webu Azure Portal. To by měly vydávat metrik do Azure monitoru. 
 
-   > [!NOTE] 
-   > Pravděpodobně dojde k chybám kolem vybrané vmSkuSize. Pokud k tomu dojde, vraťte se do souboru azuredeploy.json a aktualizujte výchozí hodnotu parametru vmSkuSize. V takovém případě doporučujeme vyzkoušet "Standard_DS1_v2"). 
+   > [!NOTE]  
+   > Můžete narazit na chyby kolem vybrané **vmSkuSize**. V takovém případě přejděte zpět do vaší **azuredeploy.json** souboru a aktualizujte výchozí hodnota **vmSkuSize** parametr. Doporučujeme vám vyzkoušet **Standard_DS1_v2**. 
 
 
 ## <a name="chart-your-metrics"></a>Graf metrik 
 
-1. Přihlášení k webu Azure Portal 
+1. Přihlaste se k portálu Azure. 
 
-1. V nabídce vlevo klikněte na tlačítko **monitorování** 
+1. V nabídce vlevo vyberte **monitorování**. 
 
-1. Klikněte na stránce monitorování **metriky**. 
+1. Na **monitorování** stránce **metriky**. 
 
-   ![Stránka metriky](./media/metrics-store-custom-rest-api/metrics.png) 
+   ![Monitorování – metrika stránky](./media/metrics-store-custom-rest-api/metrics.png) 
 
 1. Na období agregace změnit **posledních 30 minut**.  
 
-1. V prostředku rozevíracího seznamu vyberte škálovací sadu virtuálních počítačů, které jste právě vytvořili.  
+1. V rozevírací nabídce prostředků vyberte škálovací sadu virtuálních počítačů, které jste vytvořili.  
 
-1. V oborech názvů rozevíracího seznamu vyberte **azure.vm.windows.guest** 
+1. V rozevírací nabídce obory názvů, vyberte **azure.vm.windows.guest**. 
 
-1. Metriky rozevírací seznam, zaškrtněte **paměti\%používané svěřené bajty použití**.  
+1. V rozevírací nabídce metrik vyberte **paměti\%používané svěřené bajty použití**.  
 
-Potom můžete také pomocí dimenzí na tuto metriku do grafu tuto metriku pro konkrétní virtuální počítač ve škálovací sadě, nebo k vykreslení každého virtuálního počítače ve škálovací sadě. 
+Potom můžete také pomocí dimenzí na tuto metriku na graf pro konkrétního virtuálního počítače nebo k vykreslení každého virtuálního počítače ve škálovací sadě. 
 
 
 

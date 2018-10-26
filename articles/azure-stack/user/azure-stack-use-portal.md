@@ -10,15 +10,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 10/23/2018
 ms.author: mabrigg
 ms.reviewer: efemmano
-ms.openlocfilehash: 7ccf746cfd9645b63c2810bff83cfb0c4fa55d65
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 4ec9affa78d1f244208a24bcf8a6603e867d4c08
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44713729"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50086501"
 ---
 # <a name="use-the-azure-stack-portal"></a>Použití portálu Azure Stack
 
@@ -32,12 +32,13 @@ Vaše služby Azure Stack – operátor (poskytovatel služeb nebo správce ve v
 
 - Integrovaný systém, adresa URL se liší v závislosti na oblasti vaší operátor a název domény externího a bude mít tento formát https://portal.&lt; *oblast*&gt;.&lt; *Plně kvalifikovaný název domény*&gt;.
 - Pokud používáte Azure Stack Development Kit, adresy portálu je https://portal.local.azurestack.external.
-
-![Snímek obrazovky portálu user Portal Azure Stack](media/azure-stack-use-portal/UserPortal.png)
+- Výchozí časové pásmo pro všechna nasazení Azure Stack nastavený na koordinovaný univerzální čas (UTC). Časové pásmo můžete vybrat při instalaci Azure Stack, ale automaticky přejde na čas UTC jako výchozí během instalace.
 
 ## <a name="customize-the-dashboard"></a>Přizpůsobení řídicího panelu
 
 Řídicí panel obsahuje sadu výchozích dlaždic. Můžete vybrat **upravit řídicí panel** změnit výchozí řídicí panel, nebo vyberte **nový řídicí panel** k vytvoření vlastního řídicího panelu. Řídicí panel můžete snadno přizpůsobit přidáním nebo odebráním dlaždice. Například pokud chcete přidat dlaždici výpočetní prostředky, vyberte **+ vytvořit prostředek**. Klikněte pravým tlačítkem na **Compute**a pak vyberte **připnout na řídicí panel**.
+
+![Snímek obrazovky portálu user Portal Azure Stack](media/azure-stack-use-portal/userportal.png)
 
 ## <a name="create-subscription-and-browse-available-resources"></a>Vytvoření odběru a procházet dostupné prostředky.
 

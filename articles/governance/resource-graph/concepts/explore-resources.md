@@ -4,16 +4,16 @@ description: Zjistěte, jak pomocí dotazovacího jazyka prostředků grafu mů�
 services: resource-graph
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/18/2018
+ms.date: 10/22/2018
 ms.topic: conceptual
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: f488dfad8a38bbfab3b5b74e5b504463af09c089
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: bcd25b95d1369ef98662384945123126ebbbd70f
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49645928"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50086892"
 ---
 # <a name="explore-your-azure-resources-with-resource-graph"></a>Zkoumání prostředků Azure pomocí služby Resource Graph
 
@@ -214,9 +214,9 @@ az graph query -q "where type =~ 'Microsoft.Compute/virtualMachines' and propert
 Search-AzureRmGraph -Query "where type =~ 'Microsoft.Compute/virtualMachines' and properties.hardwareProfile.vmSize == 'Standard_B2s' | project name, resourceGroup"
 ```
 
-### <a name="virtual-machines-connected-to-premium-managed-disks"></a>Virtuální počítače připojené k spravovaných disků úrovně premium
+### <a name="virtual-machines-connected-to-premium-managed-disks"></a>Virtuální počítače připojené na premium managed disks
 
-Pokud chtěli jsme se získat podrobnosti o spravovaných discích úrovně premium, které jsou připojené k těmto **Standard_B2s** virtuální počítače, můžeme rozšířit dotazu a poskytli nám id prostředku tyto spravované disky.
+Pokud jsme chtěli přimět podrobnosti premium managed disks, které jsou připojené k těmto **Standard_B2s** virtuální počítače, můžeme rozšířit dotazu a poskytli nám ID prostředku tyto spravované disky.
 
 ```Query
 where type =~ 'Microsoft.Compute/virtualmachines' and properties.hardwareProfile.vmSize == 'Standard_B2s'
@@ -236,11 +236,11 @@ az graph query -q "where type =~ 'Microsoft.Compute/virtualmachines' and propert
 Search-AzureRmGraph -Query "where type =~ 'Microsoft.Compute/virtualmachines' and properties.hardwareProfile.vmSize == 'Standard_B2s' | extend disk = properties.storageProfile.osDisk.managedDisk | where disk.storageAccountType == 'Premium_LRS' | project disk.id"
 ```
 
-Výsledkem je seznam disku ID
+Výsledkem je seznam ID disků.
 
 ### <a name="managed-disk-discovery"></a>Zjišťování spravovaného disku
 
-S ohledem na první záznam z předchozí dotaz, ukážeme si některé vlastnosti, které existují na spravovaný disk, který se připojuje k první virtuální počítač. Aktualizované dotaz používá id disku a změna typu.
+První záznam z předchozího dotazu, se podíváme vlastnosti, které existují na spravovaný disk, který se připojuje k první virtuální počítač. Aktualizované dotaz používá ID disku a změní typ.
 
 Příklad výstupu z předchozího dotazu, například:
 
@@ -314,7 +314,7 @@ Výsledky JSON jsou strukturovaná podobně jako v následujícím příkladu:
 
 ## <a name="explore-virtual-machines-to-find-public-ip-addresses"></a>Prozkoumejte virtual machines k vyhledání veřejné IP adresy
 
-Tato sada vícekrokového rozhraní příkazového řádku Azure dotazů nejprve vyhledá a ukládá všechny sítě rozhraní (NIC) prostředkům připojeným k virtuálním počítačům, používá seznam síťových karet můžete najít každý prostředek IP adresy, které je veřejné IP adresy a tyto hodnoty a nakonec obsahuje seznam skutečné veřejné IP adresy.
+Tato sada rozhraní příkazového řádku Azure dotazů, nejprve vyhledá a ukládá všechna síťová rozhraní (NIC) prostředkům připojeným k virtuálním počítačům. Poté používá k nalezení každý prostředek IP adresy, která je veřejná IP adresa seznam síťových adaptérů a tyto hodnoty. Navíc poskytuje seznam veřejných IP adres.
 
 ```azurecli-interactive
 # Use Resource Graph to get all NICs and store in the 'nic' variable
@@ -324,7 +324,7 @@ az graph query -q "where type =~ 'Microsoft.Compute/virtualMachines' | project n
 cat nics.txt
 ```
 
-Jakmile budeme mít `nics.txt` souboru, použijeme ho v dalším dotazu zobrazíte souvisejících síťových rozhraní prostředky podrobnosti níž se nachází veřejné IP adresy připojit k síťové kartě
+Použití `nics.txt` soubor v dalším dotazu se získat podrobnosti zdroje související síťové rozhraní ve kterých je veřejné IP adresy připojit k síťové kartě
 
 ```azurecli-interactive
 # Use Resource Graph with the 'nics.txt' file to get all related public IP addresses and store in 'publicIp.txt' file

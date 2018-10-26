@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 10/22/2018
 ms.author: juliako
-ms.openlocfilehash: 9a5ef8df9b1ca87430fb5e8d1da94f1899c4a856
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 24597c36ab6569abb53c7be331631556e2abfe66
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49985858"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50085950"
 ---
 # <a name="content-key-policies"></a>Zásady symetrických klíčů
 
@@ -28,16 +28,16 @@ V Azure Media Services v3 obsah klíč zásady umožňují určit, jak je doruč
 
 Následující tabulka uvádí vlastnosti ContentKeyPolicy a umožňuje jejich definice.
 
-|Název|Typ|Popis|
-|---|---|---|
-|id|řetězec|Plně kvalifikované ID prostředku pro prostředek.|
-|jméno|řetězec|Název prostředku.|
-|Properties.Created |řetězec|Datum vytvoření zásad|
-|Properties.Description |řetězec|Popis zásady.|
-|properties.lastModified    |řetězec|Datum poslední změny zásad|
-|Properties.Options |[] ContentKeyPolicyOption|Možnosti zásad klíče.|
-|properties.policyId    |řetězec|Starší verze ID zásad.|
-|type   |řetězec|Typ prostředku.|
+|Název|Popis|
+|---|---|
+|id|Plně kvalifikované ID prostředku pro prostředek.|
+|jméno|Název prostředku.|
+|Properties.Created |Datum vytvoření zásad|
+|Properties.Description |Popis zásady.|
+|properties.lastModified|Datum poslední změny zásad|
+|Properties.Options |Možnosti zásad klíče.|
+|properties.policyId    |Starší verze ID zásad.|
+|type   |Typ prostředku.|
 
 Kompletní definici, naleznete v tématu [obsahu zásady klíčů](https://docs.microsoft.com/rest/api/media/contentkeypolicies).
 

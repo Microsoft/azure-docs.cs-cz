@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 10/22/2018
 ms.author: juliako
-ms.openlocfilehash: 118660e8947663328554ac0116b5519267197336
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: c5f441fef95989e5c82586d96fc6c10e00a9627c
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49984294"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50085491"
 ---
 # <a name="streaming-policies"></a>Zásady streamování
 
@@ -29,17 +29,17 @@ V Azure Media Services v3 streamování zásady umožňují definovat protokolů
 
 Následující tabulka uvádí vlastnosti StreamingPolicy a umožňuje jejich definice.
 
-|Název|Typ|Popis|
-|---|---|---|
-|id|řetězec|Plně kvalifikované ID prostředku pro prostředek.|
-|jméno|řetězec|Název prostředku.|
-|properties.commonEncryptionCbcs|CommonEncryptionCbcs|Konfigurace CommonEncryptionCbcs|
-|properties.commonEncryptionCenc|CommonEncryptionCenc|Konfigurace CommonEncryptionCenc|
-|Properties.Created |řetězec|Čas vytvoření datových proudů zásad|
-|properties.defaultContentKeyPolicyName |řetězec|Výchozí ContentKey používá aktuální zásady streamování|
-|properties.envelopeEncryption  |EnvelopeEncryption|Konfigurace EnvelopeEncryption|
-|properties.noEncryption|NoEncryption|Konfigurace NoEncryption|
-|type|řetězec|Typ prostředku.|
+|Název|Popis|
+|---|---|
+|id|Plně kvalifikované ID prostředku pro prostředek.|
+|jméno|Název prostředku.|
+|properties.commonEncryptionCbcs|Konfigurace CommonEncryptionCbcs|
+|properties.commonEncryptionCenc|Konfigurace CommonEncryptionCenc|
+|Properties.Created |Čas vytvoření datových proudů zásad|
+|properties.defaultContentKeyPolicyName |Výchozí ContentKey používá aktuální zásady streamování|
+|properties.envelopeEncryption  |Konfigurace EnvelopeEncryption|
+|properties.noEncryption|Konfigurace NoEncryption|
+|type|Typ prostředku.|
 
 Kompletní definici, naleznete v tématu [streamování zásady](https://docs.microsoft.com/rest/api/media/streamingpolicies).
 

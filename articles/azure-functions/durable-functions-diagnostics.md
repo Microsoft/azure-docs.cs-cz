@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 1c111031af4163dcc915ab6c705edbd613cfcefd
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: ce76f36b93d6dabd83fbaa93357c2dc96209a1c0
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49984821"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50087605"
 ---
 # <a name="diagnostics-in-durable-functions-azure-functions"></a>Diagnostika v Durable Functions (Azure Functions)
 
@@ -136,15 +136,15 @@ Je důležité udržovat orchestrátoru chování opakování v úvahu při záp
 ```cs
 public static async Task Run(
     DurableOrchestrationContext ctx,
-    TraceWriter log)
+    ILogger log)
 {
-    log.Info("Calling F1.");
+    log.LogInformation("Calling F1.");
     await ctx.CallActivityAsync("F1");
-    log.Info("Calling F2.");
+    log.LogInformation("Calling F2.");
     await ctx.CallActivityAsync("F2");
-    log.Info("Calling F3");
+    log.LogInformation("Calling F3");
     await ctx.CallActivityAsync("F3");
-    log.Info("Done!");
+    log.LogInformation("Done!");
 }
 ```
 
@@ -189,15 +189,15 @@ Pokud budete chtít přihlásit pouze provádění bez opětovného přehrání,
 ```cs
 public static async Task Run(
     DurableOrchestrationContext ctx,
-    TraceWriter log)
+    ILogger log)
 {
-    if (!ctx.IsReplaying) log.Info("Calling F1.");
+    if (!ctx.IsReplaying) log.LogInformation("Calling F1.");
     await ctx.CallActivityAsync("F1");
-    if (!ctx.IsReplaying) log.Info("Calling F2.");
+    if (!ctx.IsReplaying) log.LogInformation("Calling F2.");
     await ctx.CallActivityAsync("F2");
-    if (!ctx.IsReplaying) log.Info("Calling F3");
+    if (!ctx.IsReplaying) log.LogInformation("Calling F3");
     await ctx.CallActivityAsync("F3");
-    log.Info("Done!");
+    log.LogInformation("Done!");
 }
 ```
 

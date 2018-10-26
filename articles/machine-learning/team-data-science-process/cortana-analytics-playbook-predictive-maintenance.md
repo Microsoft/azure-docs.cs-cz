@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2018
 ms.author: fboylu
-ms.openlocfilehash: 2a5d8540dba491dec8b2da227b0e84c10ff09c77
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 8f42ee996dae476de3744239d4cc5f053722d52b
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394989"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50093207"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>Průvodce Azure AI pro řešení prediktivní údržby
 
@@ -414,7 +414,6 @@ Poslední části této příručky obsahuje seznam šablon řešení PdM, kurzy
 
 | # | Titul | Popis |
 |--:|:------|-------------|
-| 1 | [Ukázka prediktivní údržby Azure Machine Learning](https://github.com/Azure/MachineLearningSamples-PredictiveMaintenance) |Ukázka PdM předpovídat selhání za další časové jednotky N. Tato ukázka je zapsán jako projekt aplikace Azure ML Workbench a je ideální pro začátečníky k PdM. [Další dokumentaci](https://docs.microsoft.com/azure/machine-learning/desktop-workbench/scenario-predictive-maintenance) týkající se této ukázce.|
 | 2 | [Šablona řešení prediktivní údržby Azure](https://github.com/Azure/AI-PredictiveMaintenance) | Šablonu řešení open source, která ukazuje ML modelování a kompletní infrastrukturou Azure dokáže v souvislosti s vzdáleného sledování IoT podporuje scénáře prediktivní údržby. |
 | 3 | [Hloubkové učení pro prediktivní údržbu](https://github.com/Azure/MachineLearningSamples-DeepLearningforPredictiveMaintenance) | Azure Poznámkový blok s řešením ukázku použití sítí LSTM (Long krátkodobé paměti) (třída Rekurentní Neuronové sítě) pro prediktivní údržbu se [blogovém příspěvku s tímto příkladem](https://azure.microsoft.com/blog/deep-learning-for-predictive-maintenance).|
 | 4 | [Průvodce modelováním prediktivní údržby v jazyce R](https://gallery.azure.ai/Notebook/Predictive-Maintenance-Modelling-Guide-R-Notebook-1) | Průvodce modelováním PdM pomocí skriptů v jazyce R.|

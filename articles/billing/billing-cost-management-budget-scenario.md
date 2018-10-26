@@ -15,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 7/25/2018
 ms.author: erikre
-ms.openlocfilehash: 19d8fbf82410136fd6a50a2088dd9b774dd6cb27
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: 08cdce23fe298bdac932d1ca8abb8166f4d7bbbd
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39259207"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50094809"
 ---
-# <a name="manage-costs-with-azure-budgets"></a>Správa nákladů s rozpočty Azure
+# <a name="manage-costs-with-azure-budgets"></a>Správa nákladů s využitím služby Azure Budgets
 
 Řízení nákladů je zásadní součástí pro maximalizaci hodnoty vašich investic v cloudu. Existuje několik scénářů, kde je nejdůležitější pro pokračování obchodní operace viditelnost náklady, vytváření sestav a náklady na základě Orchestrace. [Azure API Management náklady](https://docs.microsoft.com/rest/api/consumption/) obsahují sadu rozhraní API podporovat každé z těchto scénářů. Rozhraní API poskytují podrobnosti o použití, umožňuje zobrazit náklady na detailní instance.
 
@@ -125,7 +125,7 @@ Následující kroky jsou potřeba k vytvoření aplikace logiky, která bude pr
 
 Jakmile Azure nasadí vaši aplikaci logiky **návrhář pro Logic Apps** otevře a zobrazí okno s úvodním videa a běžně používané aktivační události. 
 
-### <a name="add-a-trigger"></a>Přidat trigger
+### <a name="add-a-trigger"></a>Přidání triggeru
 
 Každá aplikace logiky se musí spouštět triggerem, který se aktivuje při určité události nebo splnění určité podmínky. Pokaždé, když se trigger aktivuje, vytvoří modul Logic Apps instanci aplikace logiky pro spuštění vašeho pracovního postupu. Akce jsou všechny kroky, ke kterým dochází po aktivaci triggeru. 
 
@@ -139,7 +139,7 @@ Každá aplikace logiky se musí spouštět triggerem, který se aktivuje při u
 4.  Vyhledejte "parsování formátu JSON" v **návrhář pro Logic Apps** vyhledávacího pole najděte a vyberte **operace s daty – Parsovat JSON** [akce](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview#logic-app-concepts). 
     
     ![Přidat Azure – aplikace logiky – parsovat JSON akce](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-06.png) 
-5.  Zadejte "Datovou část" jako **obsahu** název pro datovou část Parsovat JSON.
+5.  Zadejte "Datovou část" jako **obsah** názvu pro datovou část Parsovat JSON nebo pomocí značky "Body" z dynamického obsahu.
 6.  Vyberte **k vygenerování schématu použít ukázkovou datovou část** možnost **Parsovat JSON** pole.
     
     ![Azure – aplikace logiky – použití ukázkových dat JSON k vygenerování schématu](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-07.png) 

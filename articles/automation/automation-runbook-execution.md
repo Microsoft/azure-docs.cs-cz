@@ -9,16 +9,16 @@ ms.author: gwallace
 ms.date: 10/17/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 2b1a6e2921fdaf9ede1184cfc02c3f61f63c60ac
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 85ff0013b469c006d1922c3994ec58a0595d1dd2
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49393758"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50091981"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Spuštění Runbooku ve službě Azure Automation
 
-Při spuštění runbooku ve službě Azure Automation, se vytvoří úloha. Úloha je instance jednoho spuštění sady runbook. Pracovník s Azure Automation se přiřadí ke spuštění každé úlohy. Když zaměstnanci sdílí mnoho účtů Azure, úlohy z různých účtů Automation jsou od sebe. Nemáte máte kontrolu, nad kterou pracovního procesu služby žádost pro vaši úlohu. Jeden runbook může mít mnoho úloh spuštěných současně. Spouštěcí prostředí pro úlohy ve stejném účtu Automation může znovu použít. Při zobrazení seznamu sad runbook na portálu Azure portal, zobrazí stav všech úloh, které byly spuštěny pro každou sadu runbook. Zobrazí se seznam úloh pro každou sadu runbook, chcete-li sledovat stav každého. Popis stavy různé úlohy [stavy úlohy](#job-statuses).
+Při spuštění runbooku ve službě Azure Automation, se vytvoří úloha. Úloha je instance jednoho spuštění sady runbook. Pracovník s Azure Automation se přiřadí ke spuštění každé úlohy. Když zaměstnanci sdílí mnoho účtů Azure, úlohy z různých účtů Automation jsou od sebe. Nemáte máte kontrolu, nad kterou pracovního procesu služby žádost pro vaši úlohu. Jeden runbook může mít mnoho úloh spuštěných současně. Spouštěcí prostředí pro úlohy ve stejném účtu Automation může znovu použít. Při zobrazení seznamu sad runbook na portálu Azure portal, zobrazí stav všech úloh, které byly spuštěny pro každou sadu runbook. Zobrazí se seznam úloh pro každou sadu runbook, chcete-li sledovat stav každého. Protokoly úlohy jsou uloženy maximálně 30 dnů. Popis stavy různé úlohy [stavy úlohy](#job-statuses).
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-dsr-and-stp-note.md)]
 
@@ -43,7 +43,7 @@ Následující tabulka popisuje různé stavy, které jsou u úlohy nastat. Pros
 | Se nezdařilo, čekání na prostředky |Úloha se nezdařila, protože bylo dosaženo [spravedlivé sdílení](#fair-share) omezit třikrát a spustit pokaždé, když ze stejného kontrolního bodu nebo od začátku runbooku. |
 | Ve frontě |Úloha čeká pro prostředky služby Automation zpřístupnění pracovního procesu tak, aby jeho spuštění. |
 | Spouštění |Úloha byla přiřazena k pracovnímu procesu a spouštění systému. |
-| Obnovení |Systém obnovuje úlohy poté, co bylo pozastaveno. |
+| Obnovování |Systém obnovuje úlohy poté, co bylo pozastaveno. |
 | Spuštěno |Úloha je spuštěna. |
 | Spuštění, čekání na prostředky |Úloha byla uvolněna, protože bylo dosaženo [spravedlivé sdílení](#fair-share) limit. Bude pokračovat i za chvíli od svého posledního kontrolního bodu. |
 | Zastaveno |Úloha se zastavila tímto uživatelem, než se provedl. |
