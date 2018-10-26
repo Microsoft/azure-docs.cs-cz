@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 02/02/2018
 ms.author: cephalin
 ms.custom: include file
-ms.openlocfilehash: 463e8b0122339831d5d6a65b6e41d4f697a82013
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: b5512ed5810ebd05596dc3ca7a29957b4c595c59
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38731895"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50035384"
 ---
-Ve službě Cloud Shell vytvořte přihlašovací údaje nasazení pomocí příkazu [`az webapp deployment user set`](/cli/azure/webapp/deployment/user?view=azure-cli-latest#az_webapp_deployment_user_set). Tento uživatel nasazení je vyžadován pro nasazení pomocí FTP a místního Gitu do webové aplikace. Uživatelské jméno a heslo jsou na úrovni účtu. _To znamená, že se liší od přihlašovacích údajů předplatného Azure._
+Ve službě Cloud Shell vytvořte přihlašovací údaje nasazení pomocí příkazu [`az webapp deployment user set`](/cli/azure/webapp/deployment/user?view=azure-cli-latest#az-webapp-deployment-user-set). Tento uživatel nasazení je vyžadován pro nasazení pomocí FTP a místního Gitu do webové aplikace. Uživatelské jméno a heslo jsou na úrovni účtu. _To znamená, že se liší od přihlašovacích údajů předplatného Azure._
 
 V následujícím příkladu nahraďte hodnoty *\<username>* and *\<password>* (včetně závorek) novým uživatelským jménem a heslem. Uživatelské jméno musí být jedinečné v rámci Azure. Heslo musí obsahovat alespoň osm znaků a musí v něm být použity minimálně dva z následujících typů znaků: písmena, číslice a symboly. 
 
