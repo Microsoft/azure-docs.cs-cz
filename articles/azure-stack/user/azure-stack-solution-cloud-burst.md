@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 1f3dcc7da3e91d3805cae805422778978d0187c5
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 68021d25e3deab1c6551d29b0febd9f07e144b57
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46971327"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50095334"
 ---
 # <a name="tutorial-create-cross-cloud-scaling-solutions-with-azure"></a>Kurz: Vytvoření řešení škálování cloudu s Azure
 
@@ -101,7 +101,7 @@ Nasazení webové aplikace do Azure a Azure Stackem nastavit hybridní průběž
 
 ### <a name="add-code-to-visual-studio-team-services-project"></a>Přidání kódu do sady Visual Studio Team Services projektu
 
-1. Přihlášení k Visual Studio Team Services (VSTS) pomocí účtu, který má práva k vytvoření projektu ve službě VSTS~~.~~
+1. Přihlaste se k Visual Studio Team Services (VSTS) pomocí účtu, který má práva k vytvoření projektu ve službě VSTS.
 
     Hybridní CI/CD můžete použít kód aplikace a kódu infrastruktury. Použití [šablon Azure Resource Manageru](https://azure.microsoft.com/resources/templates/) i privátní a prostředí pro vývoj pro cloud.
 
