@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: sngun
-ms.openlocfilehash: c183bbe2c20bdc1772160cbbd8260dece0b6eb54
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: 7348f76ab0d5a1057e9fd929e8a55dd0a9e99eb6
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49309497"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50140972"
 ---
 # <a name="serverless-database-computing-using-azure-cosmos-db-and-azure-functions"></a>Výpočetní prostředí bez serveru databázi s využitím služby Azure Cosmos DB a Azure Functions
 
@@ -31,7 +31,8 @@ Azure Cosmos DB a Azure Functions umožňuje integrovat vaše databáze a aplika
 * Vytvořit vazbu funkce do kontejneru Azure Cosmos DB pomocí **výstupní vazby**. Po dokončení funkce výstupních vazeb zapisovat data do kontejneru.
 
 > [!NOTE]
-> Aktivační událost Azure Cosmos DB, vstupní vazby a výstupní vazby pracovat v tuto chvíli pouze rozhraní SQL API a rozhraní Gremlin API účty.
+> V současné době aktivační událost Azure Cosmos DB, vstupní vazby a výstupních vazeb jsou podporovány pro použití s rozhraním SQL API. Pro všechny ostatní Azure Cosmos DB API by měl přístup k databázi z funkce s použitím statické klienta pro vaše rozhraní API, včetně rozhraní MongoDB API, rozhraní Cassandra API, Gremlin API a rozhraní Table API.
+
 
 Následující diagram znázorňuje jednotlivé vlastnosti produktu tyto tři integrace: 
 

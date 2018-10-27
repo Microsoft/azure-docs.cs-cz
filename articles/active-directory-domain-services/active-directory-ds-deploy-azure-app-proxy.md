@@ -3,7 +3,7 @@ title: 'Azure Active Directory Domain Services: Nasazení služby Proxy aplikac�
 description: Použít Proxy aplikace služby Azure AD na spravovaných domén Azure Active Directory Domain Services
 services: active-directory-ds
 documentationcenter: ''
-author: mahesh-unnikrishnan
+author: eringreenlee
 manager: mtillman
 editor: curtand
 ms.assetid: 938a5fbc-2dd1-4759-bcce-628a6e19ab9d
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
-ms.author: maheshu
-ms.openlocfilehash: 11967e850e9d626edf757526b8ae7d320bad1a4e
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.author: ergreenl
+ms.openlocfilehash: 96ef005f095e5ab774a88ec766080f647414a7ce
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39504341"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50155537"
 ---
 # <a name="deploy-azure-ad-application-proxy-on-an-azure-ad-domain-services-managed-domain"></a>Nasazení Proxy aplikací Azure AD ve spravované doméně Azure AD Domain Services
 Proxy aplikací služby Azure Active Directory (AD) umožňuje podporu vzdálených pracovních procesů publikováním místních aplikací, aby byly přístupné přes internet. S Azure AD Domain Services můžete nyní lift and shift starší aplikace spuštěné v místním se službami infrastruktury Azure. Pak můžete publikovat tyto aplikace pomocí Azure AD Application Proxy, k zajištění bezpečného vzdáleného přístupu pro uživatele ve vaší organizaci.

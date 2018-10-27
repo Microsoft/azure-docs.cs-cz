@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/03/2018
 ms.author: jeedes
-ms.openlocfilehash: c9134ceebca696ed2b3376a69e26c2ea06f4f0f6
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: c33edf13a8bcafd4a6c3d4885553fc856ec941d8
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39506203"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50158121"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-4me"></a>Kurz: Integrace Azure Active Directory se službou 4me
 
@@ -37,7 +37,7 @@ Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, 
 
 Konfigurace integrace Azure AD s 4me, potřebujete následující položky:
 
-- S předplatným služby Azure AD
+- Předplatné Azure AD
 - 4me jednotného přihlašování povolená předplatného
 
 > [!NOTE]
@@ -59,7 +59,7 @@ Konfigurace integrace 4me do služby Azure AD, budete muset přidat 4me z Galeri
 
 **Chcete-li přidat 4me z galerie, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Tlačítko Azure Active Directory][1]
 
@@ -218,7 +218,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 Cílem této části je vytvořte uživatele Britta Simon v 4me. 4me podporuje just-in-time zřizování, který je ve výchozím nastavení povolená. Neexistuje žádná položka akce pro vás v této části. Nový uživatel se vytvoří během pokusu o přístup k 4me, pokud ještě neexistuje.
 
 >[!Note]
->Pokud je potřeba ručně vytvořit uživatele, obraťte se na [tým podpory 4me](mailto:support@4me.com).
+>Pokud je potřeba ručně vytvořit uživatele, obraťte se na [tým podpory 4me](mailto:support@4me.com).
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
@@ -250,7 +250,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
 7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

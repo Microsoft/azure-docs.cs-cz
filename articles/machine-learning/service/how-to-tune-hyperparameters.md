@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.component: core
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 13820dd511d31217b79385e893edbb55a3a57693
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: e66dcac1d83c71174ad5d7c3fdcd2310143f8e01
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49430013"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50140802"
 ---
 # <a name="tune-hyperparameters-for-your-model"></a>Optimalizovat pro váš model hyperparameters
 
@@ -238,16 +238,18 @@ V tomto příkladu předčasné ukončení zásad se použije na každý interva
 
 ### <a name="no-termination-policy"></a>Žádné zásady ukončení
 
-Pokud chcete, aby všechny tréninkových spuštění dokončen, použijte NoTerminationPolicy. To nebude mít vliv není použití předčasné ukončení zásad.
+Pokud chcete, aby všechny tréninkových spuštění dokončen, nastavení zásad na hodnotu None. To nebude mít vliv není použití předčasné ukončení zásad.
 
 ```Python
-from azureml.train.hyperdrive import NoTerminationPolicy
-early_termination_policy = NoTerminationPolicy()
+policy=None
 ```
 
 ### <a name="default-policy"></a>Výchozí zásady
 
-Pokud není zadána žádná zásada, hyperparameter ladění služby bude používat střední zastavení zásad s `evaluation_interval` 1 a `delay_evaluation` 5 ve výchozím nastavení. Toto jsou konzervativní nastavení, které můžou zajisti přibližně 25 % – 35 % levnější bez ztráty na primární metriku (podle našich data pro vyhodnocení).
+Pokud není zadána žádná zásada, umožní hyperparameter ladění služby všechny tréninkových spuštění dokončen.
+
+>[!NOTE] 
+>Pokud hledáte konzervativní zásady, které nabízí úspory, bez ukončení slibně úlohy, můžete použít zásady zastavení Medián s `evaluation_interval` 1 a `delay_evaluation` 5. Toto jsou konzervativní nastavení, které můžou zajisti přibližně 25 % – 35 % levnější bez ztráty na primární metriku (podle našich data pro vyhodnocení).
 
 ## <a name="allocate-resources"></a>Přidělit prostředky
 

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/02/2018
 ms.author: sutalasi
-ms.openlocfilehash: 1d0240b8635230c0fc6a7e577914ccaace36407b
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 1e0c8069d5eff4ba6d26afb9f2edcd1507c9b8aa
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49457240"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50156387"
 ---
 # <a name="set-up-disaster-recovery-for-azure-virtual-machines-using-azure-powershell"></a>Nastavení zotavení po havárii pro virtuální počítače Azure pomocí Azure Powershellu
 
@@ -475,7 +475,7 @@ AzureDemoVM  Protected       Normal
 Po dosažení chráněném stavu replikace pro virtuální počítač operaci převzetí služeb při selhání testu lze provést na virtuálním počítači (na chráněné položce replikace virtuálního počítače.)
 
 ```azurepowershell
-#Create a seperate network for test failover (not connected to my DR network)
+#Create a separate network for test failover (not connected to my DR network)
 $TFOVnet = New-AzureRmVirtualNetwork -Name "a2aTFOvnet" -ResourceGroupName "a2ademorecoveryrg" -Location 'West US 2' -AddressPrefix "10.3.0.0/16"
 
 Add-AzureRmVirtualNetworkSubnetConfig -Name "default" -VirtualNetwork $TFOVnet -AddressPrefix "10.3.0.0/20" | Set-AzureRmVirtualNetwork

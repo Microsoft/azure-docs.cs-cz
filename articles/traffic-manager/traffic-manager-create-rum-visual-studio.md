@@ -1,13 +1,9 @@
 ---
-title: Reálný uživatel měření do Azure Traffic Manageru s Visual Studio Mobile Center | Microsoft Docs
-description: Nastavení mobilní aplikace vyvinuté pomocí Visual Studio Mobile Center odeslat reálného měření uživatele do Traffic Manageru
+title: Měření reálných uživatelů pro Azure Traffic Manager se službou Visual Studio Mobile Center | Dokumentace Microsoftu
+description: Nastavení mobilní aplikace vyvinuté pomocí sady Visual Studio Mobile Center posílat měření Real User Measurements do Traffic Manageru
 services: traffic-manager
 documentationcenter: traffic-manager
 author: KumudD
-manager: timlt
-editor: ''
-tags: ''
-ms.assetid: ''
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
@@ -16,55 +12,55 @@ ms.workload: infrastructure
 ms.date: 03/16/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: 893e84b07b365fb0b534e0ddc021b2249c4174cf
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: eec13db8bdbe1f40a51df14077adb8740e977f5d
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30181006"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50138408"
 ---
-# <a name="how-to-send-real-user-measurements-to-traffic-manager-with-visual-studio-mobile-center"></a>Postup odesílání reálného měření uživatele do Traffic Manageru s Visual Studio Mobile Center
+# <a name="how-to-send-real-user-measurements-to-traffic-manager-with-visual-studio-mobile-center"></a>Jak odeslat měření Real User Measurements do Traffic Manager se službou Visual Studio Mobile Center
 
-Můžete nastavit mobilní aplikace vyvinuté pomocí Visual Studio Mobile Center k odeslání do Traffic Manageru reálného měření uživatele pomocí následujících kroků:
+Můžete nastavit mobilní aplikace vyvinuté pomocí sady Visual Studio Mobile Center posílat měření Real User Measurements do Traffic Manageru pomocí následujících kroků:
 
 >[!NOTE]
-> V současné době odesílání reálného měření uživatele do Traffic manager je podporována pouze pro Android.
+> V současné době odesílání měření Real User Measurements do Traffic manager je podporována pouze pro Android.
 
-Ke konfiguraci reálného měření uživatele, musíte a získat klíč instrumentace vaší aplikace pomocí RUMU balíčku.
+Pokud chcete nakonfigurovat měření Real User Measurements, potřebujete a získat klíč instrumentace vaší aplikace v rámci spuštění balíčku.
 
 ## <a name="step-1-obtain-a-key"></a>Krok 1: Získání klíče
     
-Měření trvat a odeslaných do Traffic Manageru z klientské aplikace jsou určeny pomocí jedinečného řetězce, nazývá klíč měření skutečné uživatele (RUM). Můžete získat RUMU klíče pomocí portálu Azure, rozhraní REST API nebo pomocí prostředí PowerShell / rozhraní CLI.
+Měření trvat a odeslané do Traffic Manageru z klientské aplikace jsou označeny pomocí jedinečného řetězce, volá se klíč měření reálných skutečných uživatelů (REÁLNÝCH). Můžete získat spuštění klíče pomocí webu Azure portal, rozhraní REST API nebo pomocí Powershellu nebo rozhraní příkazového řádku.
 
-Získat klíč RUM pomocí portálu Azure, následujícím postupem:
-   1. V prohlížeči Přihlaste se k portálu Azure. Pokud účet nemáte, můžete zaregistrovat k bezplatné zkušební verzi jeden měsíc.
-   2. V panelu vyhledávání na portálu, vyhledejte název profilu Traffic Manager, který chcete upravit a pak klikněte na profil služby Traffic Manager ve výsledcích, zobrazené.
-   3. Na stránce profil Traffic Manager, klikněte na tlačítko **reálného měření uživatele** pod **nastavení**.
-   4. Klikněte na tlačítko **vygenerovat klíč** se vytvořit nový klíč RUM.
+Získání klíče REÁLNÝCH pomocí webu Azure portal následujícím postupem:
+   1. Z prohlížeče Přihlaste se k webu Azure portal. Pokud ještě nemáte účet, můžete se zaregistrovat k bezplatné zkušební verzi na jeden měsíc.
+   2. Na panelu hledání na portálu vyhledejte název profilu Traffic Manageru, který chcete upravit a poté klikněte na profil Traffic Manageru ve výsledcích, který je zobrazeno.
+   3. Na stránce profil Traffic Manageru, klikněte na tlačítko **měření Real User Measurements** pod **nastavení**.
+   4. Klikněte na tlačítko **vygenerovat klíč** a vytvořte nový klíč REÁLNÝCH.
         
-   ![Vygenerování klíče reálného měření uživatele](./media/traffic-manager-create-rum-visual-studio/generate-rum-key.png)
+   ![Vygenerovat klíč měření Real User Measurements](./media/traffic-manager-create-rum-visual-studio/generate-rum-key.png)
 
-   **Obrázek 1: Generování klíče reálného měření uživatele**
+   **Obrázek 1: Vygenerovat klíč měření Real User Measurements**
 
-   5.   Na stránce zobrazuje RUM klíč, který se generuje a fragment kódu jazyka JavaScript, který potřebuje má být vložen do stránku HTML.
+   5.   Na stránce zobrazí REÁLNÝCH klíč, který je generován a fragment kódu jazyka JavaScript, které je potřeba vložit do HTML stránky.
  
-   ![Kód jazyka JavaScript pro klíč reálného měření uživatele](./media/traffic-manager-create-rum-visual-studio/rum-key.png)
+   ![Kód jazyka JavaScript pro měření Real User Measurements klíč](./media/traffic-manager-create-rum-visual-studio/rum-key.png)
 
-   **Obrázek 2: Klíč měření reálný uživatel a měření JavaScript**
+   **Obrázek 2: Klíč měření reálných uživatelů a JavaScript měření**
  
-   6. Klikněte **kopie** tlačítko zkopírujte klíč RUM. 
+   6. Klikněte na tlačítko **kopírování** tlačítko REÁLNÝCH klíč si zkopírujte. 
 
-## <a name="step-2-instrument-your-app-with-the-rum-package-of-mobile-center-sdk"></a>Krok 2: Instrumentace vaší aplikace pomocí RUMU balíčku sady Mobile Center SDK
+## <a name="step-2-instrument-your-app-with-the-rum-package-of-mobile-center-sdk"></a>Krok 2: Instrumentace vaší aplikace v rámci spuštění balíčku sady Mobile Center SDK
 
-Pokud jste pro Visual Studio Mobile Center nové, navštivte jeho [webu](https://mobile.azure.com). Podrobné pokyny k integraci sady SDK najdete v části [Začínáme se službou SDK pro Android](https://docs.microsoft.com/mobile-center/sdk/getting-started/Android).
+Pokud jste ještě Visual Studio Mobile Center, najdete jeho [webu](https://mobile.azure.com). Podrobné pokyny k integraci sady SDK najdete v části [Začínáme se službou SDK pro Android](https://docs.microsoft.com/mobile-center/sdk/getting-started/Android).
 
-Pokud chcete používat reálného měření uživatele, proveďte následující postup:
+Pokud chcete použít měření Real User Measurements, proveďte následující postup:
 
 1.  Přidejte sadu SDK do projektu
 
-    Ve verzi Preview sady ATM RUM SDK je třeba explicitně odkazovat úložiště balíčků.
+    Ve verzi preview SDK REÁLNÝCH ATM je potřeba explicitně odkazovat na úložiště balíčků.
 
-    Ve vašem **app/build.gradle** souboru přidejte následující řádky:
+    Ve vaší **app/build.gradle** souboru přidejte následující řádky:
 
     ```groovy
     repositories {
@@ -73,7 +69,7 @@ Pokud chcete používat reálného měření uživatele, proveďte následujíc�
         }
     }
     ```
-    Ve vašem **app/build.gradle** souboru přidejte následující řádky:
+    Ve vaší **app/build.gradle** souboru přidejte následující řádky:
 
     ```groovy
     dependencies {   
@@ -83,16 +79,16 @@ Pokud chcete používat reálného měření uživatele, proveďte následujíc�
     }
     ```
 
-2. Spusťte sadu SDK
+2. Spuštění sady SDK
 
-    Otevřete vaší aplikace hlavní třída aktivit a přidejte následující příkazy pro import:
+    Otevřete třídu hlavní aktivity vaší aplikace a přidejte následující příkazy pro import:
 
     ```java
     import com.microsoft.azure.mobile.MobileCenter;
     import com.microsoft.azure.mobile.rum.RealUserMeasurements;
     ```
 
-    Vyhledejte `onCreate` zpětného volání ve stejném souboru a přidejte následující kód:
+    Hledat `onCreate` zpětného volání ve stejném souboru a přidejte následující kód:
 
     ```java
     RealUserMeasurements.setRumKey("<Your RUM Key>");
@@ -100,10 +96,10 @@ Pokud chcete používat reálného měření uživatele, proveďte následujíc�
     ```
 
 ## <a name="next-steps"></a>Další postup
-- Další informace o [reálného měření uživatele](traffic-manager-rum-overview.md)
-- Další informace [fungování Traffic Manager](traffic-manager-overview.md)
+- Další informace o [měření Real User Measurements](traffic-manager-rum-overview.md)
+- Přečtěte si [jak funguje Traffic Manager](traffic-manager-overview.md)
 - Další informace o [Mobile Center](https://docs.microsoft.com/mobile-center/)
-- [Zaregistrujte si](https://mobile.azure.com) pro Mobile Center
+- [Zaregistrujte](https://mobile.azure.com) pro Mobile Center
 - Další informace o [metody směrování provozu](traffic-manager-routing-methods.md) podporované nástrojem Traffic Manager
-- Zjistěte, jak [vytvořit profil správce provozu](traffic-manager-create-profile.md)
+- Zjistěte, jak [vytvořit profil služby Traffic Manager](traffic-manager-create-profile.md)
 

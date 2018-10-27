@@ -8,14 +8,14 @@ ms.service: batch
 ms.devlang: multiple
 ms.topic: article
 ms.workload: na
-ms.date: 06/04/2018
+ms.date: 10/24/2018
 ms.author: danlep
-ms.openlocfilehash: a85db0315a2ee8aa9fd34b8c18893f4cb1068528
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 458b0f7bbf581c7f2490a8122f351dac612b4ff0
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39090958"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50155600"
 ---
 # <a name="run-container-applications-on-azure-batch"></a>Spouštění aplikací typu kontejner v Azure Batch
 
@@ -157,7 +157,7 @@ new_pool = batch.models.PoolAddParameter(
 ```
 
 
-Následující příklad jazyka C# příklad předpokládá, že chcete předběžné načtení TensorFlow image z [Docker Hubu](https://hub.docker.com). Tento příklad obsahuje spouštěcí úkol, který běží na hostiteli virtuálního počítače na uzly fondu. Můžete spustit spouštěcí úkol na hostiteli, například připojte souborový server, který je přístupný z kontejnerů.
+Následující C# příklad předpokládá, že chcete předběžné načtení TensorFlow image z [Docker Hubu](https://hub.docker.com). Tento příklad obsahuje spouštěcí úkol, který běží na hostiteli virtuálního počítače na uzly fondu. Můžete spustit spouštěcí úkol na hostiteli, například připojte souborový server, který je přístupný z kontejnerů.
 
 ```csharp
 
@@ -225,11 +225,15 @@ CloudPool pool = batchClient.PoolOperations.CreatePool(
 
 ## <a name="container-settings-for-the-task"></a>Nastavení kontejneru pro úlohu
 
-Spuštění kontejneru úkoly na výpočetních uzlech, musíte zadat nastavení pro konkrétní kontejner například úlohy možnosti Image na použití a registru.
+Spuštění kontejneru úkoly na výpočetních uzlech, musíte zadat nastavení pro konkrétní kontejner, jako je spouštění kontejneru možnosti, Image na použití a registru.
 
 Použití `ContainerSettings` vlastnost úlohy třídy ke konfiguraci nastavení pro konkrétní kontejner. Tato nastavení jsou definovány [TaskContainerSettings](/dotnet/api/microsoft.azure.batch.taskcontainersettings) třídy.
 
 Při spuštění úlohy na Image kontejneru [cloudových úloh](/dotnet/api/microsoft.azure.batch.cloudtask) a [úkol Správce úloh](/dotnet/api/microsoft.azure.batch.cloudjob.jobmanagertask) vyžadují nastavení kontejneru. Ale [spouštěcí úkol](/dotnet/api/microsoft.azure.batch.starttask), [úkol přípravy úlohy](/dotnet/api/microsoft.azure.batch.cloudjob.jobpreparationtask), a [úkol uvolnění úlohy](/dotnet/api/microsoft.azure.batch.cloudjob.jobreleasetask) nevyžadují, aby nastavení kontejneru (to znamená, že můžete spustit v rámci kontextu kontejneru nebo přímo v uzlu).
+
+Volitelný [ContainerRunOptions](/dotnet/api/microsoft.azure.batch.taskcontainersettings.containerrunoptions) další argumenty jsou `docker create` příkazu, že bude spuštěna úloha k vytvoření kontejneru.
+
+### <a name="container-task-working-directory"></a>Kontejner úloh pracovní adresář
 
 Příkazový řádek pro úlohu kontejneru služby Azure Batch spouští v pracovním adresáři v kontejneru, který je velmi podobné prostředí, ve kterém Batch nastaví pro běžné úlohy (není kontejner):
 
@@ -237,9 +241,13 @@ Příkazový řádek pro úlohu kontejneru služby Azure Batch spouští v praco
 * Všechny proměnné prostředí úkolu se mapují do kontejneru
 * Pracovní adresář aplikace nastavena, je stejný jako u běžné úlohy, abyste mohli používat funkce, jako jsou balíčky aplikací a souborů prostředků
 
-Protože Batch se mění výchozí pracovní adresář v kontejnerech, bude spuštěna úloha do jiného umístění než typické kontejner vstupního bodu (například `c:\` ve výchozím nastavení v kontejneru Windows, nebo `/` v Linuxu). Ujistěte se, že vaše úloha příkazového řádku nebo kontejneru vstupní bod určuje absolutní cesta, pokud již není nakonfigurovaný tak.
+Protože Batch se mění výchozí pracovní adresář v kontejneru, bude spuštěna úloha do jiného umístění než typické kontejneru pracovní adresář (třeba `c:\` ve výchozím nastavení v kontejneru Windows, nebo `/` v Linuxu nebo jiné adresáře, pokud nakonfigurované v imagi kontejneru). Aby se zajistilo správné spouštění vašich kontejnerových aplikací v rámci služby Batch, proveďte jednu z následujících akcí: 
 
-Následující fragment kódu Python ukazuje základní příkazového řádku spuštěné v kontejneru Ubuntu získaných z Docker Hubu. Další argumenty jsou možnosti spuštění kontejneru `docker create` příkaz, který je úloha spuštěna. Tady `--rm` odebere kontejneru po dokončení úlohy.
+* Ujistěte se, že příkazový řádek úkolu (nebo kontejneru pracovní adresář) určuje absolutní cesta, pokud již není nakonfigurovaný tak.
+
+* V úkolu nastavenou konfiguraci Containerconfiguration nastavte v možnosti spuštění kontejneru do pracovního adresáře. Například, `--workdir /app`.
+
+Následující fragment kódu Python ukazuje základní příkazového řádku spuštěné v kontejneru Ubuntu získaných z Docker Hubu. Tady `--rm` možnosti spuštění kontejneru odebere kontejneru po dokončení úlohy.
 
 ```python
 task_id = 'sampletask'

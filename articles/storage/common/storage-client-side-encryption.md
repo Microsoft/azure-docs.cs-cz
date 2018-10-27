@@ -2,18 +2,18 @@
 title: Šifrování na straně klienta s .NET pro úložiště Microsoft Azure | Dokumentace Microsoftu
 description: Klientská knihovna Azure Storage pro .NET podporuje šifrování na straně klienta a integraci s Azure Key Vault z důvodu maximálního zabezpečení pro vaše aplikace Azure Storage.
 services: storage
-author: craigshoemaker
+author: tamram
 ms.service: storage
 ms.topic: article
 ms.date: 10/20/2017
-ms.author: cshoe
+ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 4d94096c82f56254c1cd40a2192b4309ce0c9f30
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 857ab3ad9870407b91b0fdc9c552a89fd1f4ccd4
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39521726"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50140515"
 ---
 # <a name="client-side-encryption-and-azure-key-vault-for-microsoft-azure-storage"></a>Šifrování na straně klienta a Azure Key Vault pro Microsoft Azure Storage
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]

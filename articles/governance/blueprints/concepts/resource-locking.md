@@ -8,12 +8,12 @@ ms.date: 10/25/2018
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: c071c8f422e0cb3a4e0d5e528989dd2987a6796f
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 4e71797837927fe5f5233bcf88d35fef98f504e9
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50094843"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50139438"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Vysvětlení resource zamykání v Azure plány
 
@@ -42,7 +42,7 @@ Pokud bude nutné odstraňte prostředky vytvořené podle přiřazení, je způ
 Roli RBAC `denyAssignments` platí pro zdroje artefaktů během přiřazování podrobný plán vybrali přiřazení **Zámek** možnost. Role se přidal spravovanou identitu přiřazení podrobného plánu a lze odebrat pouze ze zdroje artefaktů ve stejné spravovaná identita. Tato bezpečnostní opatření vynucuje mechanismus zamykání a zabraňuje odebrání zámku podrobného plánu mimo podrobné plány. Odebrání role a zámek je možné jenom tak, že odeberete přiřazení podrobného plánu, který může provádět jenom uživatelé, kteří mají příslušná oprávnění.
 
 > [!IMPORTANT]
-> Azure Active Directory ukládá do mezipaměti podrobnosti o přiřazení role po dobu až 30 minut. V důsledku toho `denyAssignments` na podrobný plán prostředky nemusí být okamžitě v plný vliv. Během tohoto časového období je možné odstranit prostředek má být chráněn zámky podrobného plánu.
+> Azure Resource Manager ukládá do mezipaměti podrobnosti o přiřazení role po dobu až 30 minut. V důsledku toho `denyAssignments` na podrobný plán prostředky nemusí být okamžitě v plný vliv. Během tohoto časového období je možné odstranit prostředek má být chráněn zámky podrobného plánu.
 
 ## <a name="next-steps"></a>Další postup
 

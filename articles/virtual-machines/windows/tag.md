@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/05/2016
 ms.author: memccror
-ms.openlocfilehash: 6c461fe06e1a869d0495551ab014452c03dc60b2
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 75a6466578808cb5c0dd8d2e32d9445a6e5a5bf8
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42057471"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50140532"
 ---
 # <a name="how-to-tag-a-windows-virtual-machine-in-azure"></a>Jak označit virtuální počítač s Windows v Azure
 Tento článek popisuje různé způsoby, jak označit virtuální počítač s Windows v Azure prostřednictvím modelu nasazení Resource Manager. Značky jsou páry klíč/hodnota definovaná uživatelem, které je možné použít přímo na prostředek nebo skupinu prostředků. Azure v současné době podporuje až 15 značek na prostředek a skupinu prostředků. Značky může být umístěné na zdroje v době vytvoření nebo přidat do existujícího prostředku. Všimněte si, že značky jsou podporovány pro prostředky vytvořené prostřednictvím modelu nasazení Resource Manager pouze. Pokud chcete označit virtuální počítač s Linuxem, přečtěte si téma [jak označit virtuální počítač s Linuxem v Azure](../linux/tag.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
@@ -51,22 +51,20 @@ Tato rutina první nastaví všechny uvedené značky, umístí na *MyTestVM* k 
 
 Druhý příkaz zobrazí značky pro danou proměnnou.
 
-        PS C:\> $tags
-
-        Name        Value
-        ----                           -----
-        Value        MyDepartment
-        Name        Department
-        Value        MyApp1
-        Name        Application
-        Value        MyName
-        Name        Created By
-        Value        Production
-        Name        Environment
+```
+    PS C:\> $tags
+    
+    Key           Value
+    ----          -----
+    Department    MyDepartment
+    Application   MyApp1
+    Created By    MyName
+    Environment   Production
+```
 
 V třetím příkazu přidá další značka, které *$tags* proměnné. Všimněte si použití **+=** připojit nový pár klíč/hodnota do *$tags* seznamu.
 
-        PS C:\> $tags += @{Name="Location";Value="MyLocation"}
+        PS C:\> $tags += @{Location="MyLocation"}
 
 Čtvrtý příkaz nastaví všechny značky, které jsou definovány v *$tags* proměnné pro daný prostředek. V takovém případě je MyTestVM.
 
@@ -74,20 +72,17 @@ V třetím příkazu přidá další značka, které *$tags* proměnné. Všimn�
 
 Pátý příkaz zobrazí všechny značky na prostředek. Jak je vidět, *umístění* je teď definovaný jako značku s *MyLocation* jako hodnotu.
 
-        PS C:\> (Get-AzureRmResource -ResourceGroupName MyResourceGroup -Name MyTestVM).Tags
+```
+    PS C:\> (Get-AzureRmResource -ResourceGroupName MyResourceGroup -Name MyTestVM).Tags
 
-        Name        Value
-        ----                           -----
-        Value        MyDepartment
-        Name        Department
-        Value        MyApp1
-        Name        Application
-        Value        MyName
-        Name        Created By
-        Value        Production
-        Name        Environment
-        Value        MyLocation
-        Name        Location
+    Key           Value
+    ----          -----
+    Department    MyDepartment
+    Application   MyApp1
+    Created By    MyName
+    Environment   Production
+    Location      MyLocation
+```
 
 Další informace o označování pomocí prostředí PowerShell, podívejte se [rutiny Azure Resource][Azure Resource Cmdlets].
 

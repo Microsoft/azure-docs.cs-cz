@@ -2,19 +2,18 @@
 title: Začínáme s dvojčaty zařízení Azure IoT Hub (Java) | Dokumentace Microsoftu
 description: Jak používat dvojče zařízení Azure IoT Hub pro přidání značek a následné použití k dotazu služby IoT Hub. Implementace aplikace pro zařízení a služby Azure IoT SDK pro Javu k implementaci app service, které přidá značky a spustí dotaz služby IoT Hub pomocí zařízení Azure IoT SDK pro Javu.
 author: dominicbetts
-manager: timlt
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 07/04/2017
 ms.author: dobett
-ms.openlocfilehash: b8884cafbf250b9d7a88219b5647addafee9904a
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: a19eb99f6400e57f93c3a8d18c472ba6324383db
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39186896"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50155520"
 ---
 # <a name="get-started-with-device-twins-java"></a>Začínáme s dvojčaty zařízení (Java)
 
@@ -31,7 +30,9 @@ V tomto kurzu vytvoříte dvě konzolové aplikace Java:
 Pro absolvování tohoto kurzu potřebujete:
 
 * Nejnovější [Java SE Development Kit 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+
 * [Maven 3](https://maven.apache.org/install.html)
+
 * Aktivní účet Azure. (Pokud účet nemáte, můžete vytvořit [bezplatný účet](http://azure.microsoft.com/pricing/free-trial/) během několika minut.)
 
 [!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
@@ -44,13 +45,15 @@ V této části vytvoříte aplikaci v Javě, která přidá umístění metadat
 
 1. Na svém vývojovém počítači vytvořit prázdnou složku s názvem `iot-java-twin-getstarted`.
 
-1. V `iot-java-twin-getstarted` složku, vytvořte projekt Maven s názvem **přidat dotaz značky** pomocí následujícího příkazu na příkazovém řádku. Všimněte si, že se jedná o jeden dlouhý příkaz:
+2. V `iot-java-twin-getstarted` složku, vytvořte projekt Maven s názvem **přidat dotaz značky** pomocí následujícího příkazu na příkazovém řádku. Všimněte si, že se jedná o jeden dlouhý příkaz:
 
-    `mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=add-tags-query -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false`
+    ```
+    mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=add-tags-query -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+    ```
 
-1. Na příkazovém řádku, přejděte `add-tags-query` složky.
+3. Na příkazovém řádku, přejděte `add-tags-query` složky.
 
-1. Pomocí textového editoru otevřete `pom.xml` soubor `add-tags-query` složky a přidejte následující závislost **závislosti** uzlu. Tato závislost vám umožní použít **iot-service-client** balíčku v aplikaci tak, aby komunikovat se službou IoT hub:
+4. Pomocí textového editoru otevřete `pom.xml` soubor `add-tags-query` složky a přidejte následující závislost **závislosti** uzlu. Tato závislost vám umožní použít **iot-service-client** balíčku v aplikaci tak, aby komunikovat se službou IoT hub:
 
     ```xml
     <dependency>
@@ -64,7 +67,7 @@ V této části vytvoříte aplikaci v Javě, která přidá umístění metadat
     > [!NOTE]
     > Můžete vyhledat nejnovější verzi **iot-service-client** pomocí [vyhledávání Maven](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-service-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22).
 
-1. Přidejte následující **sestavení** uzlu po **závislosti** uzlu. Tuto konfiguraci nastaví Maven k sestavení aplikace pomocí Javy 1.8:
+5. Přidejte následující **sestavení** uzlu po **závislosti** uzlu. Tuto konfiguraci nastaví Maven k sestavení aplikace pomocí Javy 1.8:
 
     ```xml
     <build>
@@ -82,11 +85,11 @@ V této části vytvoříte aplikaci v Javě, která přidá umístění metadat
     </build>
     ```
 
-1. Uložte a zavřete `pom.xml` souboru.
+6. Uložte a zavřete `pom.xml` souboru.
 
-1. Pomocí textového editoru, otevřete `add-tags-query\src\main\java\com\mycompany\app\App.java` souboru.
+7. Pomocí textového editoru, otevřete `add-tags-query\src\main\java\com\mycompany\app\App.java` souboru.
 
-1. Do souboru přidejte následující příkazy pro **import**:
+8. Do souboru přidejte následující příkazy pro **import**:
 
     ```java
     import com.microsoft.azure.sdk.iot.service.devicetwin.*;
@@ -97,7 +100,7 @@ V této části vytvoříte aplikaci v Javě, která přidá umístění metadat
     import java.util.Set;
     ```
 
-1. Do třídy **App** přidejte následující proměnné na úrovni třídy. Nahraďte `{youriothubconnectionstring}` jste si poznamenali v IoT hubu připojovacím řetězcem *vytvoření služby IoT Hub* části:
+9. Do třídy **App** přidejte následující proměnné na úrovni třídy. Nahraďte `{youriothubconnectionstring}` jste si poznamenali v IoT hubu připojovacím řetězcem *vytvoření služby IoT Hub* části:
 
     ```java
     public static final String iotHubConnectionString = "{youriothubconnectionstring}";
@@ -107,13 +110,13 @@ V této části vytvoříte aplikaci v Javě, která přidá umístění metadat
     public static final String plant = "Redmond43";
     ```
 
-1. Aktualizace **hlavní** podpis metody pro patří `throws` klauzule:
+10. Aktualizace **hlavní** podpis metody pro patří `throws` klauzule:
 
     ```java
     public static void main( String[] args ) throws IOException
     ```
 
-1. Přidejte následující kód, který **hlavní** metodu pro vytvoření **DeviceTwin** a **DeviceTwinDevice** objekty. **DeviceTwin** objekt zpracovává komunikaci s centrem IoT. **DeviceTwinDevice** objekt představuje dvojče zařízení pomocí její vlastnosti a značky:
+11. Přidejte následující kód, který **hlavní** metodu pro vytvoření **DeviceTwin** a **DeviceTwinDevice** objekty. **DeviceTwin** objekt zpracovává komunikaci s centrem IoT. **DeviceTwinDevice** objekt představuje dvojče zařízení pomocí její vlastnosti a značky:
 
     ```java
     // Get the DeviceTwin and DeviceTwinDevice objects
@@ -121,7 +124,7 @@ V této části vytvoříte aplikaci v Javě, která přidá umístění metadat
     DeviceTwinDevice device = new DeviceTwinDevice(deviceId);
     ```
 
-1. Přidejte následující `try/catch` bloku **hlavní** metody:
+12. Přidejte následující `try/catch` bloku **hlavní** metody:
 
     ```java
     try {
@@ -133,7 +136,7 @@ V této části vytvoříte aplikaci v Javě, která přidá umístění metadat
     }
     ```
 
-1. Aktualizovat **oblasti** a **zařízení** značky dvojčat zařízení v dvojče zařízení, přidejte následující kód `try` blok:
+13. Aktualizovat **oblasti** a **zařízení** značky dvojčat zařízení v dvojče zařízení, přidejte následující kód `try` blok:
 
     ```java
     // Get the device twin from IoT Hub
@@ -162,7 +165,7 @@ V této části vytvoříte aplikaci v Javě, která přidá umístění metadat
     System.out.println(device);
     ```
 
-1. K dotazování dvojčat zařízení ve službě IoT hub, přidejte následující kód, který `try` blok po kódu přidaném v předchozím kroku. Kód spustí dva dotazy. Každý dotaz vrací maximálně 100 zařízení:
+14. K dotazování dvojčat zařízení ve službě IoT hub, přidejte následující kód, který `try` blok po kódu přidaném v předchozím kroku. Kód spustí dva dotazy. Každý dotaz vrací maximálně 100 zařízení:
 
     ```java
     // Query the device twins in IoT Hub
@@ -191,11 +194,13 @@ V této části vytvoříte aplikaci v Javě, která přidá umístění metadat
     }
     ```
 
-1. Uložte a zavřete `add-tags-query\src\main\java\com\mycompany\app\App.java` souboru
+15. Uložte a zavřete `add-tags-query\src\main\java\com\mycompany\app\App.java` souboru
 
-1. Sestavení **přidat dotaz značky** aplikace a opravíte jakékoli chyby. Na příkazovém řádku, přejděte `add-tags-query` složky a spusťte následující příkaz:
+16. Sestavení **přidat dotaz značky** aplikace a opravíte jakékoli chyby. Na příkazovém řádku, přejděte `add-tags-query` složky a spusťte následující příkaz:
 
-    `mvn clean package -DskipTests`
+    ```
+    mvn clean package -DskipTests
+    ```
 
 ## <a name="create-a-device-app"></a>Vytvoření aplikace pro zařízení
 
@@ -203,11 +208,13 @@ V této části vytvoříte konzolovou aplikaci Java, která nastaví hodnotu oh
 
 1. V `iot-java-twin-getstarted` složku, vytvořte projekt Maven s názvem **simulated-device** pomocí následujícího příkazu na příkazovém řádku. Všimněte si, že se jedná o jeden dlouhý příkaz:
 
-    `mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=simulated-device -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false`
+    ```
+    mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=simulated-device -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+    ```
 
-1. Na příkazovém řádku, přejděte `simulated-device` složky.
+2. Na příkazovém řádku, přejděte `simulated-device` složky.
 
-1. Pomocí textového editoru otevřete `pom.xml` soubor `simulated-device` složky a přidat následující závislosti, které **závislosti** uzlu. Tato závislost vám umožní použít **iot-device-client** balíčku v aplikaci tak, aby komunikovat se službou IoT hub:
+3. Pomocí textového editoru otevřete `pom.xml` soubor `simulated-device` složky a přidat následující závislosti, které **závislosti** uzlu. Tato závislost vám umožní použít **iot-device-client** balíčku v aplikaci tak, aby komunikovat se službou IoT hub:
 
     ```xml
     <dependency>
@@ -220,7 +227,7 @@ V této části vytvoříte konzolovou aplikaci Java, která nastaví hodnotu oh
     > [!NOTE]
     > Můžete vyhledat nejnovější verzi **iot-device-client** pomocí [vyhledávání Maven](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-device-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22).
 
-1. Přidejte následující **sestavení** uzlu po **závislosti** uzlu. Tuto konfiguraci nastaví Maven k sestavení aplikace pomocí Javy 1.8:
+4. Přidejte následující **sestavení** uzlu po **závislosti** uzlu. Tuto konfiguraci nastaví Maven k sestavení aplikace pomocí Javy 1.8:
 
     ```xml
     <build>
@@ -238,11 +245,11 @@ V této části vytvoříte konzolovou aplikaci Java, která nastaví hodnotu oh
     </build>
     ```
 
-1. Uložte a zavřete `pom.xml` souboru.
+5. Uložte a zavřete `pom.xml` souboru.
 
-1. Pomocí textového editoru, otevřete `simulated-device\src\main\java\com\mycompany\app\App.java` souboru.
+6. Pomocí textového editoru, otevřete `simulated-device\src\main\java\com\mycompany\app\App.java` souboru.
 
-1. Do souboru přidejte následující příkazy pro **import**:
+7. Do souboru přidejte následující příkazy pro **import**:
 
     ```java
     import com.microsoft.azure.sdk.iot.device.*;
@@ -253,7 +260,7 @@ V této části vytvoříte konzolovou aplikaci Java, která nastaví hodnotu oh
     import java.util.Scanner;
     ```
 
-1. Do třídy **App** přidejte následující proměnné na úrovni třídy. Nahrazení `{youriothubname}` názvem služby IoT hub, a `{yourdevicekey}` klíčem zařízení hodnotou, kterou jste vygenerovali v *vytvoření identity zařízení* části:
+8. Do třídy **App** přidejte následující proměnné na úrovni třídy. Nahrazení `{youriothubname}` názvem služby IoT hub, a `{yourdevicekey}` klíčem zařízení hodnotou, kterou jste vygenerovali v *vytvoření identity zařízení* části:
 
     ```java
     private static String connString = "HostName={youriothubname}.azure-devices.net;DeviceId=myDeviceID;SharedAccessKey={yourdevicekey}";
@@ -263,7 +270,7 @@ V této části vytvoříte konzolovou aplikaci Java, která nastaví hodnotu oh
 
     Tato ukázková aplikace používá při vytváření instance objektu **DeviceClient** proměnnou **protocol**. 
 
-1. Přidejte následující kód, který **hlavní** metodu:
+9. Přidejte následující kód, který **hlavní** metodu:
     * Vytvoření klienta zařízení ke komunikaci s centrem IoT.
     * Vytvoření **zařízení** objekt pro uložení vlastnosti dvojčete zařízení.
 
@@ -280,7 +287,7 @@ V této části vytvoříte konzolovou aplikaci Java, která nastaví hodnotu oh
     };
     ```
 
-1. Přidejte následující kód, který **hlavní** metodu pro vytvoření **connectivityType** hlášené vlastnost a jeho odeslání do služby IoT Hub:
+10. Přidejte následující kód, který **hlavní** metodu pro vytvoření **connectivityType** hlášené vlastnost a jeho odeslání do služby IoT Hub:
 
     ```java
     try {
@@ -300,7 +307,7 @@ V této části vytvoříte konzolovou aplikaci Java, která nastaví hodnotu oh
     }
     ```
 
-1. Přidejte následující kód do konce **hlavní** metody. Čeká se **Enter** klíč umožňuje aplikaci čas pro službu IoT Hub informuje o stavu operace dvojčete zařízení:
+11. Přidejte následující kód do konce **hlavní** metody. Čeká se **Enter** klíč umožňuje aplikaci čas pro službu IoT Hub informuje o stavu operace dvojčete zařízení:
 
     ```java
     System.out.println("Press any key to exit...");
@@ -312,11 +319,13 @@ V této části vytvoříte konzolovou aplikaci Java, která nastaví hodnotu oh
     client.close();
     ```
 
-1. Uložte a zavřete `simulated-device\src\main\java\com\mycompany\app\App.java` souboru.
+12. Uložte a zavřete `simulated-device\src\main\java\com\mycompany\app\App.java` souboru.
 
-1. Sestavení **simulated-device** aplikace a opravíte jakékoli chyby. Na příkazovém řádku, přejděte `simulated-device` složky a spusťte následující příkaz:
+13. Sestavení **simulated-device** aplikace a opravíte jakékoli chyby. Na příkazovém řádku, přejděte `simulated-device` složky a spusťte následující příkaz:
 
-    `mvn clean package -DskipTests`
+    ```
+    mvn clean package -DskipTests
+    ```
 
 ## <a name="run-the-apps"></a>Spouštění aplikací
 
@@ -324,23 +333,29 @@ Nyní jste připraveni ke spuštění aplikace konzoly.
 
 1. Na příkazovém řádku v `add-tags-query` složky, spusťte následující příkaz pro spuštění **přidat dotaz značky** služby App Service:
 
-    `mvn exec:java -Dexec.mainClass="com.mycompany.app.App"`
+    ```
+    mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
+    ```
 
-    ![Aplikace služby Java IoT Hub pro aktualizaci hodnoty značek a spouštět dotazy na zařízení](media/iot-hub-java-java-twin-getstarted/service-app-1.png)
+    ![Aplikace služby Java IoT Hub pro aktualizaci hodnoty značek a spouštět dotazy na zařízení](./media/iot-hub-java-java-twin-getstarted/service-app-1.png)
 
     Zobrazí se **zařízení** a **oblasti** značky přidané do dvojčete zařízení. První dotaz vrátí zařízení, ale nikoli druhý.
 
-1. Na příkazovém řádku v `simulated-device` složky, spusťte následující příkaz pro přidání **connectivityType** ohlášených vlastností pro dvojče zařízení:
+2. Na příkazovém řádku v `simulated-device` složky, spusťte následující příkaz pro přidání **connectivityType** ohlášených vlastností pro dvojče zařízení:
 
-    `mvn exec:java -Dexec.mainClass="com.mycompany.app.App"`
+    ```
+    mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
+    ```
 
-    ![Přidá klienta zařízení ** connectivityType ** hlášené vlastnost](media/iot-hub-java-java-twin-getstarted/device-app-1.png)
+    ![Přidá klienta zařízení ** connectivityType ** hlášené vlastnost](./media/iot-hub-java-java-twin-getstarted/device-app-1.png)
 
-1. Na příkazovém řádku v `add-tags-query` složky, spusťte následující příkaz pro spuštění **přidat dotaz značky** služby app Service ještě jednou:
+3. Na příkazovém řádku v `add-tags-query` složky, spusťte následující příkaz pro spuštění **přidat dotaz značky** služby app Service ještě jednou:
 
-    `mvn exec:java -Dexec.mainClass="com.mycompany.app.App"`
+    ```
+    mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
+    ```
 
-    ![Aplikace služby Java IoT Hub pro aktualizaci hodnoty značek a spouštět dotazy na zařízení](media/iot-hub-java-java-twin-getstarted/service-app-2.png)
+    ![Aplikace služby Java IoT Hub pro aktualizaci hodnoty značek a spouštět dotazy na zařízení](./media/iot-hub-java-java-twin-getstarted/service-app-2.png)
 
     Teď zařízení odeslala **connectivityType** vlastnost do služby IoT Hub, druhý dotaz vrací zařízení.
 
@@ -351,12 +366,5 @@ V tomto kurzu jste nakonfigurovali novou službu IoT Hub na webu Azure Portal a 
 Pomocí následujících zdrojích se dozvíte jak:
 
 * Odesílání telemetrie ze zařízení s [Začínáme se službou IoT Hub](quickstart-send-telemetry-java.md) kurzu.
+
 * Ovládací prvek zařízení interaktivně (například zapnutí ventilátor z aplikace řízené uživatelem) [použití přímých metod](quickstart-control-device-java.md) kurzu.
-
-<!-- Images. -->
-[7]: ./media/iot-hub-java-java-twin-getstarted/invoke-method.png
-[8]: ./media/iot-hub-java-java-twin-getstarted/device-listen.png
-[9]: ./media/iot-hub-java-java-twin-getstarted/device-respond.png
-
-<!-- Links -->
-[lnk-hub-sdks]: iot-hub-devguide-sdks.md

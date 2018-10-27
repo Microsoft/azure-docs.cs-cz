@@ -3,7 +3,7 @@ title: Konfigurace DNS pro přístup k spravované doméně pomocí protokolu LD
 description: Konfigurace DNS pro přístup k spravované doméně služby Azure AD Domain Services pomocí protokolu LDAPS přes internet
 services: active-directory-ds
 documentationcenter: ''
-author: mahesh-unnikrishnan
+author: eringreenlee
 manager: mtillman
 editor: curtand
 ms.assetid: a47f0f3e-2578-422a-a421-034f66de38f5
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/01/2018
-ms.author: maheshu
-ms.openlocfilehash: 669e0392cb77434c372c9af3c4d467d19cff8abd
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.author: ergreenl
+ms.openlocfilehash: f15e2e7d3a9374d29608651fff6b46f7d047c5f9
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39501730"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50158359"
 ---
 # <a name="configure-dns-to-access-an-azure-ad-domain-services-managed-domain-using-secure-ldap-ldaps"></a>Konfigurace DNS pro přístup k spravované doméně služby Azure AD Domain Services pomocí zabezpečeného protokolu LDAP (LDAPS)
 

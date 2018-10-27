@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: d2ed07be829e48cc4fc0538c08fd498dea99e71e
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: ad77f1f0a99fbdb355163e1bc83461c8c4eb75fa
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45985171"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50157696"
 ---
 # <a name="device-connectivity-in-azure-iot-central"></a>Připojení zařízení v Azure IoT Central
 
@@ -102,7 +102,7 @@ Chcete-li hromadně exportovat zařízení z vaší aplikace:
 1.  Vyberte zařízení, která chcete exportovat a pak klikněte na tlačítko **exportovat** akce.
 1.  Po dokončení exportu zprávu o úspěšném dokončení se zobrazí spolu s odkazem na stažení generovaného souboru.
 1.  Klikněte na zprávy o úspěchu a stáhněte soubor do místní složky na disku.
-1.  Vyexportovaný soubor CSV bude mít informace následující sloupce: **thumbrpints Id zařízení, název zařízení, zařízení Priamary/edlejší klíče a primárního a sekundárního certifikátu**
+1.  Vyexportovaný soubor CSV bude mít informace následující sloupce: **Id zařízení, název zařízení, zařízení primárního/sekundárního klíče a primárního a sekundárního kryptografické otisky certifikátů**
     *   IOTC_DEVICEID
     *   IOTC_DEVICENAME
     *   IOTC_SASKEY_PRIMARY
@@ -200,7 +200,7 @@ Postupujte podle pokynů na základě vaší volby schéma ověřování zaříz
         npm i -g dps-keygen
         ```
     
-        **Využití**
+        **Použití**
                         
         ```
         dps-keygen <Primary_Key(GroupSAS)> <device_id>
@@ -240,7 +240,7 @@ Můžete získat připojovací řetězec zařízení Iot hub pro službu Azure I
     ```cmd/sh
     npm i -g dps-keygen
     ```
-    **Využití**
+    **Použití**
 
     Chcete-li vytvořit připojovací řetězec, najít v části bin binárního souboru nebo složky
     ```cmd/sh

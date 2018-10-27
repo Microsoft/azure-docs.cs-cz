@@ -13,12 +13,12 @@ ms.date: 06/13/2018
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: b1d3439412e324c71687c43aa9e47c520cb72262
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: ab752799c9e64e47abe0200a26215f9e01c489f6
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42055656"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50139682"
 ---
 # <a name="delete-an-azure-active-directory-tenant"></a>Odstranit tenanta služby Azure Active Directory
 Při odstranění tenanta se také odstraní všechny prostředky, které jsou obsaženy v tenantovi. Je třeba připravit klienta minimalizací její přidružené prostředky před odstraněním. Jenom globální správce Azure Active Directory (Azure AD) můžete odstranit tenanta služby Azure AD z portálu.
@@ -73,7 +73,7 @@ Můžete vložit do předplatného **Deprovisoned** stavu odstraníme za 3 dny. 
   
   ![podmínky a ujednání](./media/directory-delete-howto/delete-terms.png)
 
-4. Nyní došlo ke změně stavu odběru, předplatné je označená k odstranění. Eneters předplatné **zajištění zrušeno** stavu 72 hodin.
+4. Nyní došlo ke změně stavu odběru, předplatné je označená k odstranění. Zadá předplatné **zajištění zrušeno** stavu 72 hodin.
 
 5. Po smazali jste předplatné ve vašem tenantovi a po uplynutí 72 hodin, se můžete přihlásit zpátky do centra pro správu Azure AD znovu a že by mělo být požadované nic a žádná předplatná, která blokují odstranění vašeho tenanta. Je třeba mít tenanta Azure AD se úspěšně odstranila.
   

@@ -10,12 +10,12 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: tulasim
-ms.openlocfilehash: 76024266a8ae3eb03e910e140184a07ae363e881
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 53fadc0e3ea21b94ca656774baf077192c0394b4
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49384938"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50137289"
 ---
 # <a name="qna-maker-limits"></a>Omezení nástroje QnA Maker
 Úplný seznam omezení napříč QnA Maker.
@@ -26,7 +26,7 @@ ms.locfileid: "49384938"
 
 |**Vrstva Azure Search** | **Free** | **Basic** |**S1** | **S2**| **S3** |**S3 HD, HIGH DENSITY**|
 |---|---|---|---|---|---|----|
-|(Max. počet indexů – 1 (vyhrazené pro test) povolený maximální počet publikovaných znalostních bází|2|14|49|199|199|2999|
+|(Max. počet indexů – 1 (vyhrazené pro test) povolený maximální počet publikovaných znalostních bází|2|14|49|199|199|2,999|
 
 ## <a name="extraction-limits"></a>Extrakce omezení
 * Maximální počet souborů, které může být extrahována a maximální velikost souboru: viz [ceny QnA maker](https://azure.microsoft.com/pricing/details/cognitive-services/qna-maker/)
@@ -37,12 +37,12 @@ ms.locfileid: "49384938"
 
 |**Vrstva Azure Search** | **Free** | **Basic** |**S1** | **S2**| **S3** |**S3 HD, HIGH DENSITY**|
 |---|---|---|---|---|---|----|
-|Pole maximální metadat na službu QnA Maker (v rámci všech znalostní báze)|1000|100 *|1000|1000|1000|1000|
+|Pole maximální metadat na službu QnA Maker (v rámci všech znalostní báze)|1 000|100 *|1 000|1 000|1 000|1 000|
 
 ## <a name="knowledge-base-content-limits"></a>Omezení obsahu znalostní báze
 Celkové limitů na obsah znalostní báze knowledge base:
-* Délka textu odpovědi: částku 250 000 jedné
-* Délka textu otázku: 1000
+* Délka textu odpovědi: 25 000
+* Délka textu otázku: 1 000
 * Délka textu klíč/hodnota metadat: 100
 * Podporované znaky pro název metadat: písmena, číslice a _  
 * Podporované znaky pro hodnota metadat: všechny s výjimkou: a | 

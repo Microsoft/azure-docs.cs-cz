@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/15/2018
 ms.author: yijenj
-ms.openlocfilehash: a0b3c220a1cd857bc8bea0eb5ab41625845fcc5d
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 604eb528ef33a95993aa5b6d3ff6eebb77936aa2
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49365613"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50157934"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Attribution využití zákazníka partnerů Azure
 
@@ -44,7 +44,7 @@ Mnoho partnerská řešení jsou nasazené na předplatné zákazníka pomocí �
 
 Chcete-li přidat globálně jedinečný identifikátor (GUID), provedete jeden úpravy souboru hlavní šablony:
 
-1. [Vytvořit GUID](#create-guids) (například eb7927c8 dd66-43e1-b0cf-c346a422063) a [zaregistrovat GUID](#register-guids-and-offers).
+1. [Vytvořit GUID](#create-guids) pomocí navrhované metody a [zaregistrovat GUID](#register-guids-and-offers).
 
 1. Otevřete šablonu Resource Manageru.
 
@@ -58,9 +58,26 @@ Chcete-li přidat globálně jedinečný identifikátor (GUID), provedete jeden 
 
 1. [Ověření úspěšné identifikátor GUID v nasazení šablony](#verify-the-guid-deployment).
 
-### <a name="sample-template-code"></a>Vzorový kód šablony
+### <a name="sample-resource-manager-template-code"></a>Kód šablony Resource Manageru ukázkový
+Zkontrolujte, zda chcete-li změnit následující vzorový kód s vlastním vstupů při přidání do souboru hlavní šablony.
+Prostředek musí být přidán do **mainTemplate.json** nebo **azuredeploy.json** soubor pouze a ne v žádné vnořené nebo propojené šablony.
+```
+// Make sure to modify this sample code with your own inputs where applicable
 
-![Vzorový kód šablony](media/marketplace-publishers-guide/tracking-sample-code-for-lu-1.PNG)
+{ // add this resource to the mainTemplate.json (do not add the entire file)
+    "apiVersion": "2018-02-01",
+    "name": "pid-XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX" // use your generated GUID here
+    "type": "Microsoft.Resources/deployments",
+    "properties": {
+        "mode": "Incremental",
+        "template": {
+            "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+            "contentVersion": "1.0.0.0",
+            "resources": []
+        }
+    }
+} // remove all comments from the file when complete
+```
 
 ## <a name="use-the-resource-manager-apis"></a>Použití rozhraní API Resource Manageru
 
@@ -77,7 +94,7 @@ Pro tento přístup sledování zahrnout při návrhu volání rozhraní API, id
 > [!Note]
 > Formát řetězce je důležité. Pokud **pid -** předpona není zahrnut, není možné zadávat dotazy na data. Různé sady SDK sledovat odlišně. Tuto metodu implementovat, najdete v tématu podporu a sledování přístupu pro vaše preferované Azure SDK. 
 
-### <a name="example-the-python-sdk"></a>Příklad: Python SDK
+#### <a name="example-the-python-sdk"></a>Příklad: Python SDK
 
 Pro Python, použijte **config** atribut. Atribut lze přidat pouze do UserAgent. Tady je příklad:
 
@@ -104,7 +121,7 @@ export AZURE_HTTP_USER_AGENT='pid-eb7927c8-dd66-43e1-b0cf-c346a422063'
 
 ## <a name="create-guids"></a>Vytvořit GUID
 
-Identifikátor GUID je jedinečný referenční číslo, které má 32 šestnáctkových číslic. Vytvořit GUID pro sledování, měli by používat GUID generator. Doporučuje se, že využijete [služby Azure Storage GUID generátor formuláře](https://aka.ms/StoragePartners). Ale pokud nechcete používat Azure Storage GUID generator, jsou více [online GUID generátorů](https://www.bing.com/search?q=guid%20generator) , který vám pomůže.
+Identifikátor GUID je jedinečný referenční číslo, které má 32 šestnáctkových číslic. Vytvořit GUID pro sledování, měli by používat GUID generator. Vytvořil tým Azure Storage [formátu identifikátoru GUID generátor](https://aka.ms/StoragePartners) , který bude e-mailem GUID ve správném formátu a lze opětovně použít napříč systémy různých sledování. 
 
 > [!Note]
 > Je důrazně doporučujeme použít [služby Azure Storage GUID generátor formuláře](https://aka.ms/StoragePartners) vytvořit váš identifikátor GUID. Další informace najdete v tématu naše [nejčastější dotazy k](#faq).

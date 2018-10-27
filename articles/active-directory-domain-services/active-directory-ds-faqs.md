@@ -3,7 +3,7 @@ title: Nejčastější dotazy – Azure Active Directory Domain Services | Dokum
 description: Nejčastější dotazy k Azure Active Directory Domain Services
 services: active-directory-ds
 documentationcenter: ''
-author: mahesh-unnikrishnan
+author: eringreenlee
 manager: mtillman
 editor: curtand
 ms.assetid: 48731820-9e8c-4ec2-95e8-83dba1e58775
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/30/2018
-ms.author: maheshu
-ms.openlocfilehash: 8747e597883d96756e676061bde04b920b13cadd
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.author: ergreenl
+ms.openlocfilehash: c2f10b1bf3b61577a2b0616be6fa50f7639559ba
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44023201"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50158907"
 ---
 # <a name="azure-active-directory-domain-services-frequently-asked-questions-faqs"></a>Azure Active Directory Domain Services: Nejčastější dotazy (FAQ)
 Tato stránka odpovědi na nejčastější dotazy týkající se Azure Active Directory Domain Services. Kontrolovat novinky.
@@ -51,7 +51,7 @@ Samotné služby přímo nepodporuje tento scénář. Vaše spravovaná doména 
 Ano. Zobrazit [jak povolit Azure AD Domain Services pomocí prostředí PowerShell](active-directory-ds-enable-using-powershell.md).
 
 ### <a name="can-i-enable-azure-ad-domain-services-using-a-resource-manager-template"></a>Můžete povolit Azure AD Domain Services pomocí šablony Resource Manageru?
-Ano. Zobrazit [jak povolit Azure AD Domain Services pomocí prostředí PowerShell](active-directory-ds-enable-using-powershell.md).
+Ne, není v tuto chvíli možné si povolit Azure AD Domain Services pomocí šablony. Místo toho prostředí PowerShell, najdete v tématu [jak povolit Azure AD Domain Services pomocí prostředí PowerShell](active-directory-ds-enable-using-powershell.md).
 
 ### <a name="can-i-add-domain-controllers-to-an-azure-ad-domain-services-managed-domain"></a>Můžete přidat řadiče domény k spravované doméně služby Azure AD Domain Services?
 Ne. Doména poskytovaných službou Azure AD Domain Services je spravované domény. Není potřeba zřizovat, konfigurovat nebo jinak spravovat řadiče domény pro tuto doménu – tyto aktivity správy jsou k dispozici jako služba od Microsoftu. Proto nelze přidat další řadiče domény (čtení a zápis nebo jen pro čtení) pro spravovanou doménu.

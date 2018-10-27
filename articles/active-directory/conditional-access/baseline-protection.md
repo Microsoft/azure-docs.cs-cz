@@ -17,12 +17,12 @@ ms.workload: identity
 ms.date: 08/08/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: e7e92c2f3564591133816baaaf758d72b083330b
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 585a4968672c8bcab0efb988d556e447983dfc5a
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49958546"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50158699"
 ---
 # <a name="what-is-baseline-protection-preview"></a>Co je základní ochranu (preview)?  
 
@@ -51,7 +51,7 @@ Uživatelé s přístupem k privilegovaným účtům mají neomezený přístup 
 
 ![Azure Active Directory](./media/baseline-protection/01.png)
 
-Tyto zásady na směrný plán vám poskytuje možnost vyloučit skupiny a uživatele. Můžete chtít vyloučit jeden *[nouzovou přístup pro správu účtu](../users-groups-roles/directory-emergency-access.md)* zajistit zablokován přístup tenanta.
+Tyto zásady na směrný plán vám poskytuje možnost vyloučit uživatele. Můžete chtít vyloučit jeden *[nouzovou přístup pro správu účtu](../users-groups-roles/directory-emergency-access.md)* zajistit zablokován přístup tenanta.
 
 
 ## <a name="enable-a-baseline-policy"></a>Povolit zásady směrný plán 

@@ -3,7 +3,7 @@ title: 'Azure Active Directory Domain Services: Průvodce odstraňováním potí
 description: Průvodce odstraňováním potíží pro Azure AD Domain Services
 services: active-directory-ds
 documentationcenter: ''
-author: mahesh-unnikrishnan
+author: eringreenlee
 manager: mtillman
 editor: curtand
 ms.assetid: 4bc8c604-f57c-4f28-9dac-8b9164a0cf0b
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/08/2018
-ms.author: maheshu
-ms.openlocfilehash: fa4d40786fdc61183c119a17b6e36bd853a6fd64
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.author: ergreenl
+ms.openlocfilehash: e2b7eb4f5be5e73e70f883f9510e7fc6a13d6bea
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42060755"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50156082"
 ---
 # <a name="azure-ad-domain-services---troubleshooting-guide"></a>Azure AD Domain Services – Průvodce odstraňováním potíží
 Tento článek obsahuje pokyny k odstranění potíží pro problémy, na které můžete narazit při nastavení a Správa služby Azure Active Directory (AD) Domain Services.

@@ -1,3 +1,16 @@
+---
+author: alkohli
+ms.service: storsimple
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: alkohli
+ms.openlocfilehash: cce78fb6a5472a625e973bb8ca4afdfd6290a26c
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50165093"
+---
 <!--author=alkohli last changed: 07/19/2017-->
 
 #### <a name="to-create-a-volume"></a>Vytvoření svazku

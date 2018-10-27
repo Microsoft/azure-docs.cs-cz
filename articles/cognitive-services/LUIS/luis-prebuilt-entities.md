@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 10/18/2018
 ms.author: diberry
-ms.openlocfilehash: 2f7c724b14efd569a5993f9a9319c9004874bc43
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 0fe9dbed302fd2d61305167a3bda25b1b403b761
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49647591"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50139970"
 ---
 # <a name="prebuilt-entities-to-recognize-common-data-types"></a>Předem připravených entit rozpoznat běžné typy dat
 
@@ -25,7 +25,7 @@ Služba LUIS zahrnuje sadu předem připravených entit pro rozpoznávání bě�
 
 1. Otevřete aplikaci klepnutím na jeho název na **Moje aplikace** stránce a potom klikněte na tlačítko **entity** na levé straně. 
 
-1. Na **entity** klikněte na **spravovat předem připravených entit**.
+1. Na **entity** klikněte na **přidat předem připravených entit**.
 
 1. V **přidání předem připravených entit** dialogového okna, vyberte datetimeV2 předem připravených entit. 
 

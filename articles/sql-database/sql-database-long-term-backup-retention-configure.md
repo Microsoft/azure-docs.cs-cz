@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/04/2018
-ms.openlocfilehash: 1775e1810a164bfbdd1cddea9360674592cf446c
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.date: 10/24/2018
+ms.openlocfilehash: b4736f47d066d1e2b8e5c7115cb14abeb1cc566a
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857529"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50137221"
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>Správa dlouhodobého uchovávání záloh Azure SQL Database
 
@@ -172,6 +172,9 @@ Tento příklad ukazuje odstranění LTR zálohování z seznam záloh.
 $ltrBackup = $ltrBackups[0]
 Remove-AzureRmSqlDatabaseLongTermRetentionBackup -ResourceId $ltrBackup.ResourceId
 ```
+> [!IMPORTANT]
+> Odstranění LTR zálohování je nevratná. Je můžete nastavit oznámení o každé odstranění ve službě Azure Monitor pomocí filtrování pro operaci "Odstraní dlouhodobého uchování zálohy". Protokol aktivit obsahuje informace o identitě a při provedení žádosti. Zobrazit [vytvoření upozornění protokolu aktivit](../monitoring-and-diagnostics/monitoring-create-activity-log-alerts-with-resource-manager-template.md) podrobné pokyny.
+>
 
 ### <a name="restore-from-ltr-backups"></a>Obnovení ze zálohy zleva doprava.
 Tento příklad ukazuje, jak obnovit ze zálohy zleva doprava. Poznámka: Toto rozhraní nezměnil, ale parametr id prostředku vyžaduje id prostředku zálohování LTR. 

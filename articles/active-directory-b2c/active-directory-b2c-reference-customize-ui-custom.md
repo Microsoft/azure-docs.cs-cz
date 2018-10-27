@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/25/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: c6882dd56ee96e1fcab5926b77f11ce928bf950b
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: c363056fc013cc8b8fd67fb9d656d3550d3bf5a2
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37442351"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50139505"
 ---
 # <a name="customize-the-ui-of-a-user-journey-with-custom-policies"></a>Přizpůsobení uživatelského rozhraní cesty uživatele pomocí vlastních zásad
 
@@ -41,7 +41,7 @@ Porovnání s tradičním způsobem staré, kde stránky šablon jsou vlastněny
 Můžete zadat libovolný počet stránky obsahu, jako například tím, že vytvoří soubory HTML5/CSS podle potřeby.
 
 > [!NOTE]
-> Z bezpečnostních důvodů použití jazyka JavaScript a aktuálně je blokováno pro přizpůsobení. Odblokování jazyka JavaScript, je potřeba použít vlastní název domény pro vašeho tenanta Azure AD B2C.
+> Z bezpečnostních důvodů použití jazyka JavaScript a aktuálně je blokováno pro přizpůsobení. 
 
 V každém ze šablony HTML5 a CSS, poskytnete *ukotvení* element, který odpovídá požadovaným `<div id=”api”>` prvek jazyka HTML nebo stránky obsahu, tak, jak ukazuje níže. Azure AD B2C vyžaduje, aby měly všechny stránky obsahu této konkrétní div.
 

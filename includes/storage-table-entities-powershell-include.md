@@ -1,3 +1,16 @@
+---
+author: tamram
+ms.service: storage
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: tamram
+ms.openlocfilehash: e8c5bf8e3c4cd63b7eec278c480527e95455140d
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50166210"
+---
 <!--created by Robin Shahan to go in the articles for table storage w/powershell.
     There is one for Azure Table Storage and one for Azure Cosmos DB Table API -->
 
@@ -90,7 +103,7 @@ Get-AzureStorageTableRowByColumnName -table $storageTable `
 
 Tento dotaz načte jeden záznam.
 
-|pole|hodnota|
+|Pole|hodnota|
 |----|----|
 | ID uživatele | 1 |
 | uživatelské jméno | Chris |
@@ -109,7 +122,7 @@ Get-AzureStorageTableRowByCustomFilter `
 
 Tento dotaz načte jeden záznam.
 
-|pole|hodnota|
+|Pole|hodnota|
 |----|----|
 | ID uživatele | 1 |
 | uživatelské jméno | Chris |
@@ -144,7 +157,7 @@ Get-AzureStorageTableRowByCustomFilter -table $storageTable `
 
 Ve výsledcích zobrazí Jessie2 záznamu.
 
-|pole|hodnota|
+|Pole|hodnota|
 |----|----|
 | ID uživatele | 2 |
 | uživatelské jméno | Jessie2 |

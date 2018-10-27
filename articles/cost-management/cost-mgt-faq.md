@@ -5,41 +5,41 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/18/2018
+ms.date: 10/26/2018
 ms.topic: troubleshooting
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 4984332e1a149ae838bc76a24abec90364f5699e
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: ba6d8250d70320b33822d73c9213e9005128633f
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47221974"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50157203"
 ---
 # <a name="frequently-asked-questions-for-cloudyn"></a>Nejčastější dotazy pro Cloudyn
 
-Tento článek se zabývá některými běžnými dotazy o Cloudyn. Pokud máte dotazy týkající se Cloudyn, můžete požádat je na [nejčastější dotazy pro Cloudyn](https://social.msdn.microsoft.com/Forums/231bf072-2c71-4121-8339-ac9d868137b9/faqs-for-azure-cost-management-by-cloudyn?forum=Cloudyn).
+Tento článek se zabývá některými běžnými dotazy o Cloudyn. Pokud máte dotazy týkající se Cloudyn, můžete požádat je na [nejčastější dotazy pro Cloudyn](https://social.msdn.microsoft.com/Forums/home?forum=faqs-for-azure-cost-management-by-cloudyn).
 
 ## <a name="how-can-i-resolve-common-indirect-enterprise-setup-problems"></a>Jak můžu řešit běžných problémů s instalací nepřímé enterprise?
 
-Při prvním použití portálu Cloudyn, může zobrazit následující zprávy, pokud jste uživatelem smlouvu Enterprise nebo Cloud Solution Provider (CSP):
+Pokud jste uživatel se smlouvou Enterprise nebo Cloud Solution Provider (CSP), můžou se vám při prvním použití portálu Cloudyn zobrazit následující zprávy:
 
 - "Zadaný klíč rozhraní API není klíč nejvyšší úrovně zápisu" zobrazí v **nastavit Cloudyn** průvodce.
 - "Přímá registrace – ne" zobrazí na portálu Enterprise Agreement.
 - "Za posledních 30 dní se nenašla žádná data o využití. Obraťte se prosím na vaše distributora, abyste měli jistotu, že kód byl povolen pro váš účet Azure"zobrazí na portálu Cloudyn.
 
-Z předchozích zpráv vyplývá, že jste si smlouvu Azure Enterprise zakoupili přes prodejce nebo poskytovatele CSP. Prodejce nebo poskytovatel CSP je potřeba povolit _značek_ pro účet Azure, mohli zobrazit vaše data ve službě Cloudyn.
+Z předchozích zpráv vyplývá, že jste si smlouvu Azure Enterprise zakoupili přes prodejce nebo poskytovatele CSP. Abyste mohli zobrazovat data ve službě Cloudyn, musí váš prodejce nebo poskytovatel CSP pro váš účet Azure povolit _revize_.
 
 Tady je postup řešení těchto potíží:
 
 1. Váš prodejce musí pro váš účet povolit _revize_. Postup najdete v [pokynech k nepřímé registraci zákazníka](https://ea.azure.com/api/v3Help/v2IndirectCustomerOnboardingGuide).
 
-2. Vygenerujete klíč smlouvy Azure Enterprise pro použití s Cloudyn. Pokyny najdete v tématu [přidání Azure EA](https://support.cloudyn.com/hc/articles/210429585-Adding-Your-AZURE-EA) nebo [jak najít svůj EA registrace ID a klíč rozhraní API](https://youtu.be/u_phLs_udig).
+2. Vygenerujte klíč smlouvy Azure Enterprise pro použití se službou Cloudyn. Pokyny najdete v tématu [přidání Azure EA](quick-register-ea.md#register-with-cloudyn) nebo [jak najít svůj EA registrace ID a klíč rozhraní API](https://youtu.be/u_phLs_udig).
 
-Pouze správce služby Azure můžete povolit Cloudyn. Oprávnění spolusprávce k tomu nestačí.
+Službu Cloudyn může povolit jenom správce služeb Azure. Oprávnění spolusprávce k tomu nestačí.
 
-Než můžete vygenerovat klíč rozhraní API smlouvy Azure Enterprise k nastavení Cloudyn, musíte povolit API pro fakturaci Azure podle pokynů na adrese:
+Než budete moct vygenerovat klíč rozhraní API smlouvy Azure Enterprise k nastavení služby Cloudyn, musíte podle následujících pokynů povolit rozhraní API pro fakturaci Azure:
 
 - [Přehled rozhraní API pro vytváření sestav pro podnikové zákazníky](../billing/billing-enterprise-api.md)
 - [Rozhraní API pro vytváření sestav na podnikovém portálu Microsoft Azure](https://ea.azure.com/helpdocs/reportingAPI) v části o **povolení přístupu k datům pro rozhraní API**
@@ -100,7 +100,7 @@ Vyhněte se pomocí přímé adresy URL Cloudyn https://app.cloudyn.com.
 
 ## <a name="how-do-i-activate-unactivated-accounts-with-azure-credentials"></a>Jak si můžu aktivovat neaktivovaných účty pomocí přihlašovacích údajů Azure?
 
-Poté, co zjistí účtů Azure Cloudyn, datům služby cost okamžitě součástí sestavy založené na náklady. Ale pro Cloudyn poskytují data o využití a výkonu, budete muset zaregistrovat přihlašovací údaje pro účty Azure. Pokyny najdete v tématu [přidat Azure Resource Manageru](https://support.cloudyn.com/hc/articles/212784085-Adding-Azure-Resource-Manager).
+Poté, co zjistí účtů Azure Cloudyn, datům služby cost okamžitě součástí sestavy založené na náklady. Ale pro Cloudyn poskytují data o využití a výkonu, budete muset zaregistrovat přihlašovací údaje pro účty Azure. Pokyny najdete v tématu [přidat účet nebo aktualizovat odběr](activate-subs-accounts.md#add-an-account-or-update-a-subscription).
 
 Přidat Azure přihlašovací údaje k účtu na portálu Cloudyn, vyberte symbol úpravy napravo od názvu účtu, ne předplatného.
 
@@ -108,10 +108,7 @@ Dokud přihlašovací údaje Azure jsou přidány do Cloudyn, účet se zobrazí
 
 ## <a name="how-do-i-add-multiple-accounts-and-entities-to-an-existing-subscription"></a>Jak přidat více účtů a entity k existujícímu předplatnému?
 
-Další entity se používají k přidání dalších smlouvy Enterprise s předplatným Cloudyn. Následující odkazy popisují, jak přidat další entity:
-
-- [Přidání Entity](https://support.cloudyn.com/hc/articles/212016145-Adding-an-Entity) článku
-- [Definování hierarchii s Cost Entities](https://support.cloudyn.com/hc/articles/115005142529-Video-Defining-your-hierarchy-with-Cost-Entities) videa
+Další entity se používají k přidání dalších smlouvy Enterprise s předplatným Cloudyn. Další informace najdete v tématu [vytvořit a spravovat entity](tutorial-user-access.md#create-and-manage-entities).
 
 Pro CSP:
 

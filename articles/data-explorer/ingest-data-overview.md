@@ -8,12 +8,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 94f96d949f2a05f71e9565fdcbc7b48ed2c2a5c5
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f1df22c505bffdfaf60bf9c6eec3ad4e698fff02
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46972654"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50139522"
 ---
 # <a name="azure-data-explorer-data-ingestion"></a>Příjem dat Azure Průzkumník dat
 
@@ -60,9 +60,15 @@ Kusto nabízí klientské sady SDK, který slouží k ingestování a dotazován
 
 * [Java SDK](https://docs.microsoft.com/azure/kusto/api/java/kusto-java-client-library)
 
+* [Node SDK]
+
 * [REST API](https://docs.microsoft.com/azure/kusto/api/netfx/kusto-ingest-client-rest)
 
 **Programové ingestování techniky**:
+
+* Příjem dat prostřednictvím služby správy dat Průzkumník dat Azure (vysokou propustnost a spolehlivé ingestování)
+
+  * [**Batch ingestování** ](https://docs.microsoft.com/azure/kusto/api/netfx/kusto-ingest-queued-ingest-sample) (k dispozici prostřednictvím sady SDK): klient odešle data do úložiště objektů Blob v Azure (určené služba pro správu dat Průzkumník dat Azure) a odešle oznámení do fronty služby Azure. Toto je doporučený postup pro vysoké objemy, spolehlivé a levné ingestování.
 
 * Příjem dat přímo do modulu Průzkumník dat Azure (nejvhodnější pro zkoumání a vytváření prototypů):
 
@@ -71,10 +77,6 @@ Kusto nabízí klientské sady SDK, který slouží k ingestování a dotazován
   * **Ingestování z dotazu**: příkaz ovládacího prvku (.set, set nebo připojit, set nebo nahradit), který odkazuje na výsledky dotazu se používá pro generování sestav nebo malé dočasné tabulky.
 
   * **Ingestování ze služby storage**: umožňuje efektivní hromadné ingestování dat příkazu ovládacího prvku (.ingest do) se data uložených externě (například Azure Blob Storage).
-
-* Příjem dat prostřednictvím služby správy dat Průzkumník dat Azure (vysokou propustnost a spolehlivé ingestování)
-
-  * [**Batch ingestování** ](https://docs.microsoft.com/azure/kusto/api/netfx/kusto-ingest-queued-ingest-sample) (k dispozici prostřednictvím sady SDK): klient odešle data do úložiště objektů Blob v Azure (určené služba pro správu dat Průzkumník dat Azure) a odešle oznámení do fronty služby Azure. Toto je doporučený postup pro velké objemy spolehlivé a levné ingestování.
 
 **Latence různých metod**:
 
@@ -125,7 +127,7 @@ Mapování schématu pomáhá nedeterministicky vytvořit vazbu pole zdroje dat 
 
 ## <a name="next-steps"></a>Další postup
 
-[Rychlý start: Ingestovat data z centra událostí do Průzkumníku dat Azure](ingest-data-event-hub.md)
+[Rychlý start: Ingestování dat z centra událostí do Azure Data Exploreru](ingest-data-event-hub.md)
 
-[Rychlý start: Ingestování dat pomocí knihovny Python Průzkumník dat Azure](python-ingest-data.md)
+[Rychlý start: Ingestování dat pomocí knihovny Python Azure Data Exploreru](python-ingest-data.md)
 

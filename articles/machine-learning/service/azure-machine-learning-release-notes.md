@@ -8,13 +8,13 @@ ms.topic: reference
 author: hning86
 ms.author: haining
 ms.reviewer: j-martens
-ms.date: 03/28/2018
-ms.openlocfilehash: 58d0d028c920faa7e86884c85f8fb677ce67c390
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.date: 10/24/2018
+ms.openlocfilehash: 0927ae14d232ec2ce3a46bb66ed535deabbe0138
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389917"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50158682"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Zpráva k vydání verze služby Azure Machine Learning
 
@@ -24,19 +24,19 @@ V tomto článku najdete další informace o vydaných verzích služby Azure Ma
 
 ### <a name="azure-machine-learning-sdk-for-python-v0168"></a>Azure Machine Learning sady SDK pro Python v0.1.68
 
-#### <a name="new-features"></a>Nové funkce
- * Více tenantů podporu při vytváření nového pracovního prostoru.
++ **Nové funkce**
+  * Více tenantů podporu při vytváření nového pracovního prostoru.
 
-#### <a name="breaking-changes"></a>Změny způsobující chyby
- * **V další vydané verzi nadcházející** *Workspace.compute_targets, úložišť, experimenty, obrázky, modely* a *webservices* se stanou vlastnosti namísto metod. Nahraďte třeba *Workspace.compute_targets()* s *Workspace.compute_targets*.
++ **Rozbíjející změny v**
+  * **V další vydané verzi nadcházející** *Workspace.compute_targets, úložišť, experimenty, obrázky, modely* a *webservices* se stanou vlastnosti namísto metod. Nahraďte třeba *Workspace.compute_targets()* s *Workspace.compute_targets*.
 
-#### <a name="bugs-fixed"></a>Opravy chyb
- * Verze knihovny pynacl už musí být odkazována při nasazování webové front-end služby.
++ **Opravy chyb**
+  * Verze knihovny pynacl už musí být odkazována při nasazování webové front-end služby.
 
 ### <a name="azure-machine-learning-data-prep-sdk-v030"></a>Sada SDK v0.3.0 pro přípravu dat Azure Machine Learning
 
-#### <a name="new-features"></a>Nové funkce:
-* Přidat metodu transform_partition_with_file(script_path), což umožňuje uživatelům a zajistěte tak předání cestu k souboru Pythonu ke spuštění
++ **Nové funkce**
+  * Přidat metodu transform_partition_with_file(script_path), což umožňuje uživatelům a zajistěte tak předání cestu k souboru Pythonu ke spuštění
 
 ## <a name="2018-10-01"></a>2018-10-01
 
@@ -45,56 +45,55 @@ V tomto článku najdete další informace o vydaných verzích služby Azure Ma
 
 Zobrazit [seznam známých problémů](resource-known-issues.md) Další informace o známých chyb a jejich řešení.
 
-#### <a name="breaking-changes"></a>Změny způsobující chyby
- * Workspace.experiments Workspace.models, Workspace.compute_targets, Workspace.images Workspace.web_services návratový slovníku. Tím se předtím vrátila seznam. Zobrazit [azureml.core.Workspace](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py) dokumentace k rozhraní API.
++ **Rozbíjející změny v**
+  * Workspace.experiments Workspace.models, Workspace.compute_targets, Workspace.images Workspace.web_services návratový slovníku. Tím se předtím vrátila seznam. Zobrazit [azureml.core.Workspace](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py) dokumentace k rozhraní API.
 
- * Automatizované Machine Learning odebrán směrodatná normalizované chyba primární metriky.
+  * Automatizované Machine Learning odebrán směrodatná normalizované chyba primární metriky.
 
++ **HyperDrive**
+  * Různé opravy chyb HyperDrive Bayesova, vylepšení výkonu pro získání metriky volání. 
+  * Tensorflow 1.10 upgrade z 1.9 
+  * Optimalizovat image dockeru pro úplné spuštění. 
+  * Úloha je teď správný stav sestavy i v případě, že ukončit s chybou kódu jiné než 0. 
+  * RunConfig atributu validation v sadě SDK. 
+  * HyperDrive spustit objekt podporuje Storno podobný regulární spuštění: nemusíte předávat žádné parametry. 
+  * Widget vylepšení pro udržování stavu rozevírací seznam hodnot pro distribuované spuštění a HyperDrive spuštění. 
+  * TensorBoard a dalších protokolů, které podporují soubory vyřešili serveru parametr. 
+  * Podpora MPI Intel(R) na straně služby. 
+  * Opravu parametr ladění pro distribuované spuštění oprava během ověřování v BatchAI. 
+  * Správce kontextu nyní identifikuje primární instance. 
 
-#### <a name="hyperdrive"></a>HyperDrive
- * Různé opravy chyb HyperDrive Bayesova, vylepšení výkonu pro získání metriky volání. 
- * Tensorflow 1.10 upgrade z 1.9 
- * Optimalizovat image dockeru pro úplné spuštění. 
- * Úloha je teď správný stav sestavy i v případě, že ukončit s chybou kódu jiné než 0. 
- * RunConfig atributu validation v sadě SDK. 
- * HyperDrive spustit objekt podporuje Storno podobný regulární spuštění: nemusíte předávat žádné parametry. 
- * Widget vylepšení pro udržování stavu rozevírací seznam hodnot pro distribuované spuštění a HyperDrive spuštění. 
- * TensorBoard a dalších protokolů, které podporují soubory vyřešili serveru parametr. 
- * Podpora MPI Intel(R) na straně služby. 
- * Opravu parametr ladění pro distribuované spuštění oprava během ověřování v BatchAI. 
- * Správce kontextu nyní identifikuje primární instance. 
++ **Azure portal ještě neznáte**
+  * log_table() a log_row() jsou podporovány v podrobnostech o spuštění. 
+  * Automaticky vytvořte grafy pro tabulky a řádky s 1,2 nebo 3 číselné sloupce a volitelný sloupec zařazené do kategorií.
 
-#### <a name="azure-portal-experience"></a>Azure portal ještě neznáte
- * log_table() a log_row() jsou podporovány v podrobnostech o spuštění. 
- * Automaticky vytvořte grafy pro tabulky a řádky s 1,2 nebo 3 číselné sloupce a volitelný sloupec zařazené do kategorií.
++ **Automatizované Machine Learning**
+  * Vylepšené zpracování chyb a dokumentace 
+  * Načtení vlastnosti spuštění opravili problémy s výkonem. 
+  * Oprava pokračovat v běhu problém. 
+  * Opravili jsme ensembling iterace problémů.
+  * Oprava školení Změ chyb v systému MAC OS.
+  * Převzorkování – makro průměrné žádosti o přijetí změn a křivka ROC ve scénáři vlastní ověřování.
+  * Odebrat další index logiku.
+  * Odebrali jsme filtr, z get_output rozhraní API.
 
-#### <a name="automated-machine-learning"></a>Automatizované Machine Learning
- * Vylepšené zpracování chyb a dokumentace 
- * Načtení vlastnosti spuštění opravili problémy s výkonem. 
- * Oprava pokračovat v běhu problém. 
- * Opravili jsme ensembling iterace problémů.
- * Oprava školení Změ chyb v systému MAC OS.
- * Převzorkování – makro průměrné žádosti o přijetí změn a křivka ROC ve scénáři vlastní ověřování.
- * Odebrat další index logiku.
- * Odebrali jsme filtr, z get_output rozhraní API.
++ **Kanály**
+  * Přidat metodu Pipeline.publish() do kanálu publikovat přímo, bez nutnosti spuštění se spouští jako první.   
+  * Přidat spuštěním metody PipelineRun.get_pipeline_runs() načíst kanálu, které byly vytvořeny z publikovaných kanálu.
 
-#### <a name="pipelines"></a>Kanály
- * Přidat metodu Pipeline.publish() do kanálu publikovat přímo, bez nutnosti spuštění se spouští jako první.   
- * Přidat spuštěním metody PipelineRun.get_pipeline_runs() načíst kanálu, které byly vytvořeny z publikovaných kanálu.
-
-#### <a name="project-brainwave"></a>Project Brainwave
- * Aktualizovanou podporu nových modelů AI k dispozici na FPGA.
++ **Project Brainwave**
+  * Aktualizovanou podporu nových modelů AI k dispozici na FPGA.
 
 ### <a name="azure-machine-learning-data-prep-sdk-v020"></a>Sada SDK v0.2.0 pro přípravu dat Azure Machine Learning
 [Verze 0.2.0](https://pypi.org/project/azureml-dataprep/0.2.0/) zahrnuje následující funkce a opravy chyb:
 
-**Nové funkce:** 
- * Podpora pro jeden horkou kódování
- * Podpora pro transformaci quantile
++ **Nové funkce**
+  * Podpora pro jeden horkou kódování
+  * Podpora pro transformaci quantile
    
-**Chyba opravená:**
- * Funguje s jinou verzí tornádu není nutné přejít na nižší verzi tornádu verzi
- * Četnost hodnot pro všechny hodnoty, ne jenom první tři
++ **Chyba opravená:**
+  * Funguje s jinou verzí tornádu není nutné přejít na nižší verzi tornádu verzi
+  * Četnost hodnot pro všechny hodnoty, ne jenom první tři
 
 ## <a name="2018-09-public-preview-refresh"></a>2018-09 (aktualizace verze public preview)
 

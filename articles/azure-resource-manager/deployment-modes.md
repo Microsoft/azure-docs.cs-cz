@@ -9,18 +9,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/07/2018
+ms.date: 10/26/2018
 ms.author: tomfitz
-ms.openlocfilehash: c8c6c5499e1cea04bc5bdffbb5c07b53b96182e2
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: 4d1b27c9b1694f987ea7461c16899f3e5ecb84d2
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "42055027"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50140989"
 ---
 # <a name="azure-resource-manager-deployment-modes"></a>Režimy nasazení Azure Resource Manageru
-Při nasazování prostředků, určíte, že je nasazení přírůstkové aktualizace nebo kompletní aktualizace.  Hlavní rozdíl mezi těchto dvou režimech je způsob, jakým zpracovává existujících prostředků ve skupině prostředků, které nejsou v šabloně Resource Manageru.
-Výchozí režim je přírůstkový.
+Při nasazování prostředků, určíte, že je nasazení přírůstkové aktualizace nebo kompletní aktualizace.  Hlavní rozdíl mezi těchto dvou režimech je způsob, jakým zpracovává existujících prostředků ve skupině prostředků, které nejsou v šabloně Resource Manageru. Výchozí režim je přírůstkový.
 
 ## <a name="incremental-and-complete-deployments"></a>Přírůstkové a úplné nasazení
 Při nasazování prostředků:
@@ -28,19 +27,21 @@ Při nasazování prostředků:
 * V dokončení režimu Resource Manageru **odstraní** prostředky, které existují ve skupině prostředků, ale nejsou v šabloně zadané. 
 * V přírůstkovém režimu Resource Manageru **ponechá beze změny** prostředky, které existují ve skupině prostředků, ale nejsou v šabloně zadané.
 
-Pro oba režimy pokusí Resource Manageru zřiďte všechny prostředky v této šabloně specifikovaný. Pokud prostředek ve skupině prostředků už existuje a jsou beze změny jeho nastavení, výsledkem operace je beze změny. Pokud změníte nastavení prostředku, prostředek zřizován s těmito novými nastaveními. Pokud budete chtít aktualizovat umístění nebo zadejte existující prostředek, nasazení se nezdaří s chybou. Místo toho nasadit nový prostředek s umístěním nebo zadejte, že potřebujete.
+Pro oba režimy se pokusí vytvořit všechny prostředky zadané v šabloně Resource Manageru. Pokud prostředek ve skupině prostředků už existuje a jsou beze změny jeho nastavení, výsledkem operace je beze změny. Při změně hodnoty vlastnosti pro určitý prostředek, prostředek se aktualizuje s těmito novými hodnotami. Pokud se pokusíte aktualizovat umístění nebo zadejte existující prostředek, nasazení se nezdaří s chybou. Místo toho nasadit nový prostředek s umístěním nebo zadejte, že potřebujete.
+
+Pokud opětovného nasazení prostředků v přírůstkovém režimu, zadejte všechny hodnoty vlastností pro prostředek, nejen ty, které chcete aktualizovat. Pokud nezadáte určité vlastnosti, interpretuje Resource Manageru aktualizace jako přepsání těchto hodnot.
 
 ## <a name="example-result"></a>Příklad výsledku
 
 Pro znázornění rozdílu mezi režimy přírůstkové a úplné, vezměte v úvahu následující scénář.
 
-**Existující skupinu prostředků** obsahuje:
+**Skupina prostředků** obsahuje:
 
 * Prostředku A
 * Prostředek B
 * Prostředek jazyka C
 
-**Šablona** definuje:
+**Šablona** obsahuje:
 
 * Prostředku A
 * Prostředek B

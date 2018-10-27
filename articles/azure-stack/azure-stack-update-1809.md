@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/24/2018
+ms.date: 10/26/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 7061438e5d5aa60ab09af2b516fc918bc84f06ec
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 161b54620bd8a3c9994228a30bd7495717064168
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50095265"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50158462"
 ---
 # <a name="azure-stack-1809-update"></a>Aktualizace služby Azure Stack 1809
 
@@ -205,7 +205,7 @@ Toto jsou známé problémy této verze sestavení po instalaci.
    - *Instance role infrastruktury není k dispozici*
    - *Uzel jednotka škálování je offline*
    
-  Spusťte prosím [testovací AzureStack](azure-stack-diagnostic-test.md) rutina pro ověření stavu instance rolí infrastruktury a škálování jednotek uzlů. Pokud nejsou zjištěny žádné problémy podle [testovací AzureStack](azure-stack-diagnostic-test.md), tato upozornění můžete ignorovat. Pokud se zjistí problém, pokuste se spustit instanci role infrastruktury nebo uzlu pomocí portálu pro správu nebo prostředí PowerShell.
+  Spustit [testovací AzureStack](azure-stack-diagnostic-test.md) rutina pro ověření stavu instance rolí infrastruktury a škálování jednotek uzlů. Pokud nejsou zjištěny žádné problémy podle [testovací AzureStack](azure-stack-diagnostic-test.md), tato upozornění můžete ignorovat. Pokud se zjistí problém, pokuste se spustit instanci role infrastruktury nebo uzlu pomocí portálu pro správu nebo prostředí PowerShell.
 
 <!-- 1264761 - IS ASDK -->  
 - Může se zobrazit upozornění **stavu řadiče** komponenta, která mají následující podrobnosti:  

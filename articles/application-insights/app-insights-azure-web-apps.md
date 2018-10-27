@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/05/2017
+ms.date: 10/25/2018
 ms.author: mbullwin
-ms.openlocfilehash: 5743408b000dd7497a10f27db2a4ea9d87082b8d
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 91b050c4e1ca37c0af208d6df1ce4f8272235294
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47091791"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50139767"
 ---
 # <a name="monitor-azure-web-app-performance"></a>Monitorování výkonu webových aplikací Azure
 Na webu [Azure Portal](https://portal.azure.com) můžete pro své [webové aplikace Azure](../app-service/app-service-web-overview.md) nastavit monitorování výkonu. [Azure Application Insights](app-insights-overview.md) využívá vaši aplikaci k odesílání telemetrických dat o jejích aktivitách do služby Application Insights, kde se ukládají a analyzují. Tam lze grafy metrik a vyhledávací nástroje použít při řešení problémů s diagnostikou, při zvyšování výkonu a při vyhodnocování využití.
@@ -33,24 +33,32 @@ Monitorování s použitím aplikace můžete konfigurovat dvěma způsoby:
 Pokud už webovou aplikaci v Azure spouštíte, máte již monitorování do jisté míry k dispozici: můžete monitorovat požadavky a chybovost. Přidejte Application Insights a získejte další možnosti, například zaznamenávání doby odezvy, monitorování volání závislostí, inteligentní detekci a výkonný dotazovací jazyk Log Analytics. 
 
 1. **Vyberte Application Insights** pro svou webovou aplikaci na ovládacím panelu Azure.
-   
-    ![V části Monitorování zvolte Application Insights.](./media/app-insights-azure-web-apps/05-extend.png)
-   
-   * Zvolte možnost vytvoření nového prostředku, pokud jste ještě prostředek Application Insights pro tuto aplikaci nenastavili jiným způsobem.
-2. Po instalaci Application Insights **webovou aplikaci používejte**. 
-   
-    ![Používejte webovou aplikaci.](./media/app-insights-azure-web-apps/restart-web-app-for-insights.png)
+
+    ![V části Nastavení zvolte Application Insights](./media/app-insights-azure-web-apps/settings-app-insights.png)
+
+   * Můžete vytvořit nový prostředek, pokud jste už nastavili prostředek Application Insights pro tuto aplikaci. 
+
+    > [!NOTE]
+    > Po kliknutí na **OK** k vytvoření nového prostředku, zobrazí se výzva k **použít nastavení monitorování**. Výběr **pokračovat** propojí nový prostředek Application Insights do své webové aplikace, to může také **aktivujte restartování vaší webové aplikace**. 
+
+    ![Používejte webovou aplikaci.](./media/app-insights-azure-web-apps/create-resource.png)
+
+2. Po vytvoření vyberte váš prostředek **kontrola a aktualizace rozšíření Application Insights pro webovou aplikaci** potvrďte, že rozšíření je aktuální.
+
+     ![Zkontrolujte a aktualizujte rozšíření webu](./media/app-insights-azure-web-apps/check-and-update.png)
+
+3. Po instalaci Application Insights **webovou aplikaci používejte**.
 
    **Povolte monitorování na straně klienta** pro zobrazení stránek a telemetrii uživatelů.
 
    * Klikněte na Nastavení > Nastavení aplikace.
-   * V části Nastavení aplikace přidejte novou dvojici klíče a hodnoty: 
-   
-    Klíč: `APPINSIGHTS_JAVASCRIPT_ENABLED` 
-    
+   * V části Nastavení aplikace přidejte novou dvojici klíče a hodnoty:
+
+    Klíč: `APPINSIGHTS_JAVASCRIPT_ENABLED`
+
     Hodnota: `true`
    * Kliknutím na **Uložit** uložte nastavení a kliknutím na **Restartovat** restartujte aplikaci.
-3. **Monitorujte aplikaci**.  [Prozkoumejte data](#explore-the-data).
+4. Prozkoumejte data monitorování vaší aplikace tak, že vyberete **nastavení** > **Application Insights** > **zobrazit více v Application Insights**.
 
 Později můžete pomocí Application Insights aplikaci sestavit, pokud budete chtít.
 
@@ -63,14 +71,14 @@ Application Insights může poskytovat podrobnější telemetrie po nainstalová
 
 1. **V sadě Visual Studio** (2013 s aktualizací 2 nebo novější) nakonfigurujte Application Insights pro svůj projekt.
 
-    Klikněte pravým tlačítkem myši na webový projekt a vyberte **Přidat > Application Insights** nebo **Nakonfigurovat Application Insights**.
-   
+    Klikněte pravým tlačítkem na webový projekt a vyberte **Přidat > Application Insights** nebo **projektu** > **Application Insights**  >  **Nakonfigurovat Application Insights**.
+
     ![Klikněte pravým tlačítkem myši na webový projekt a zvolte Přidat nebo Nakonfigurovat Application Insights.](./media/app-insights-azure-web-apps/03-add.png)
-   
+
     Pokud budete vyzváni k přihlášení, použijte přihlašovací údaje ke svému účtu Azure.
-   
+
     Operace má dva důsledky:
-   
+
    1. Vytvoří prostředek Application Insights v Azure, kde se ukládají, analyzují a zobrazují telemetrická data.
    2. Přidá do kódu balíček NuGet Application Insights (pokud tam ještě není) a nakonfiguruje ho tak, aby odesílal telemetrická data do příslušného prostředku Azure.
 2. **Otestujte telemetrická data** spuštěním aplikace v počítači pro vývoj (F5).
@@ -79,29 +87,6 @@ Application Insights může poskytovat podrobnější telemetrie po nainstalová
 *Jak lze přepnout na odesílání do jiného prostředku Application Insights?*
 
 * V sadě Visual Studio klikněte pravým tlačítkem na projekt, zvolte **Nakonfigurovat Application Insights** a zvolte požadovaný prostředek. Budete mít možnost vytvořit nový prostředek. Proveďte opětné sestavení a nasazení.
-
-## <a name="explore-the-data"></a>Zkoumání dat
-1. V okně Application Insights na ovládacím panelu webové aplikace se zobrazuje část Live Metrics, která obsahuje požadavky a selhání během sekundy či dvou od jejich výskytu. Toto zobrazení je velmi užitečné, pokud aplikaci znovu publikujete – okamžitě uvidíte veškeré případné problémy.
-2. Proklikejte se k úplnému prostředku Application Insights.
-
-    ![Proklikejte se.](./media/app-insights-azure-web-apps/view-in-application-insights.png)
-
-    Můžete tam přejít i přímo z navigace pro prostředky Azure.
-
-1. Proklikáním se kterýmkoli grafem přejdete k zobrazení podrobnějších údajů:
-   
-    ![V okně s přehledem Application Insights klikněte na graf.](./media/app-insights-azure-web-apps/07-dependency.png)
-   
-    Můžete [přizpůsobit okna metrik](app-insights-metrics-explorer.md).
-2. Další proklikáním se můžete zobrazit jednotlivé události a jejich vlastnosti:
-   
-    ![Kliknutím na typ události otevřete vyhledávání filtrované podle příslušného typu.](./media/app-insights-azure-web-apps/08-requests.png)
-   
-    Všimněte si, že odkaz „...“ otevře všechny vlastnosti.
-   
-    Můžete [přizpůsobovat hledání](app-insights-diagnostic-search.md).
-
-Pokud chcete v telemetrických datech provádět výkonnější hledání, použijte [dotazovací jazyk Log Analytics](app-insights-analytics-tour.md).
 
 ## <a name="more-telemetry"></a>Další telemetrická data
 

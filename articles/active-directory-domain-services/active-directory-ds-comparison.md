@@ -3,7 +3,7 @@ title: 'Azure AD Domain Services: Porovnání Azure AD Domain Services k řadič
 description: Porovnání služeb Azure Active Directory Domain Services k řadičům domény SVÉPOMOCÍ
 services: active-directory-ds
 documentationcenter: ''
-author: mahesh-unnikrishnan
+author: eringreenlee
 manager: mtillman
 editor: curtand
 ms.assetid: 165249d5-e0e7-4ed1-aa26-91a05a87bdc9
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/07/2017
-ms.author: maheshu
-ms.openlocfilehash: acb125ef807193e79e45bca7e217efe3ffb31698
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.author: ergreenl
+ms.openlocfilehash: f7455076d59e447ade9c15203593d260cf676894
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39505946"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50155793"
 ---
 # <a name="how-to-decide-if-azure-ad-domain-services-is-right-for-your-use-case"></a>Jak určit, pokud Azure AD Domain Services bude vyhovovat vašemu případu použití
 S Azure AD Domain Services můžete nasadit úlohy ve službách infrastruktury Azure, aniž byste museli starat o údržbu infrastruktury identity v Azure. Této spravované služby se liší od typické nasazení systému Windows Server Active Directory, která můžete nasadit a spravovat sami. Služba je snadné nasazení a poskytuje automatizované stavu sledování a náprava. Neustále vyvíjíme službu s přidanou podporou pro běžné scénáře nasazení.

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: iainfou
-ms.openlocfilehash: eb5d1ee88fc95f7d02842ea089f65c6d17a6d69d
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 127f6a5cd8f46b72a4cddcef09cb31b60edd0582
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50091737"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50157186"
 ---
 # <a name="access-the-kubernetes-web-dashboard-in-azure-kubernetes-service-aks"></a>Přístup k řídicímu panelu Kubernetes web ve službě Azure Kubernetes Service (AKS)
 
@@ -34,8 +34,8 @@ Chcete-li spustit řídicí panel Kubernetes, použijte [az aks Procházet] [ az
 az aks browse --resource-group myResourceGroup --name myAKSCluster
 ```
 
-> [!NOTE]
-> Pokud spustíte tento příkaz z Azure Cloud Shell, musíte přidat `--enable-cloud-console-aks-browse` parametr nebudou moct otevřít řídicí panel.
+> [!TIP]
+> Pokud spustíte tento příkaz z Azure Cloud Shell, přidejte `--enable-cloud-console-aks-browse` parametr správně otevřete řídicí panel.
 
 Tento příkaz vytvoří proxy mezi váš vývojový systém a rozhraní API Kubernetes a otevře se webový prohlížeč na řídicí panel Kubernetes. Pokud se webový prohlížeč se neotevře na řídicí panel Kubernetes, zkopírujte a vložte adresu URL, které jste si poznamenali v rozhraní příkazového řádku Azure, obvykle *http://127.0.0.1:8001*.
 

@@ -6,14 +6,14 @@ manager: timlt
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: conceptual
-ms.date: 12/12/2017
+ms.date: 10/26/2018
 ms.author: dobett
-ms.openlocfilehash: ae5218bae12b9489d67b0264f0e5fdb6d833cb9e
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 23b36fb647c2949dca1c5efe7f8194ec5a397965
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39187763"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50140396"
 ---
 # <a name="connected-factory-solution-accelerator-walkthrough"></a>Seznámení s akcelerátorem řešení propojené továrny
 
@@ -53,23 +53,27 @@ Toto řešení k odesílání telemetrických dat OPC UA do služby IoT Hub ve f
 
 Simulované stanice a systémy řízení výroby tvoří výrobní linku továrny. Simulovaná zařízení a modul vydavatele OPC jsou založeny na [standardu OPC UA .NET][lnk-OPC-UA-NET-Standard] vydaném nadací OPC Foundation.
 
-Proxy server OPC a vydavatel OPC jsou implementovány jako moduly založené na [Azure IoT Edge][lnk-Azure-IoT-Gateway]. Každá simulovaná výrobní linka má připojenu vyhrazenou bránu.
+Proxy server OPC a vydavatel OPC jsou implementovány jako moduly založené na [Azure IoT Edge][lnk-Azure-IoT-Gateway]. Každá Simulovaná výrobní linka má bránu připojit.
 
 Všechny simulované komponenty jsou spuštěné v kontejnerech Dockeru hostovaných na virtuálních počítačích Azure s Linuxem. Simulace je ve výchozím nastavení nakonfigurovaná tak, aby bylo spuštěno 8 simulovaných výrobních linek.
 
 ## <a name="simulated-production-line"></a>Simulovaná výrobní linka
 
-Výrobní linka vyrábí součásti. Skládá se z různých stanic: montážní stanice, testovací stanice a balicí stanice.
+Výrobní linka vyrábí součásti. Se skládá z různých stanic: montážní stanice, testovací stanice a balicí stanice.
 
-Simulace zpracovává a aktualizuje data vystavená prostřednictvím uzlů OPC UA. Všechny stanice simulované výrobní linky jsou orchestrované systémem řízení výroby (MES) prostřednictvím OPC UA.
+Simulace zpracovává a aktualizuje data, která je k dispozici prostřednictvím uzlů OPC UA. Všechny stanice simulované výrobní linky jsou orchestrované systémem řízení výroby (MES) prostřednictvím OPC UA.
 
 ## <a name="simulated-manufacturing-execution-system"></a>Simulovaný systém řízení výroby
 
-Systém řízení výroby monitoruje všechny stanice na výrobní lince prostřednictvím OPC UA a zjišťuje tak změny stavu stanic. Voláním metod OPC UA řídí stanice a předává produkt z jedné stanice do další, dokud se proces nedokončí.
+Systém řízení výroby monitoruje všechny stanice na výrobní lince prostřednictvím OPC UA a zjišťuje tak změny stavu stanic. OPC UA volá metody, které řídí stanice a předává produkt z jedné stanice na další, dokud se nedokončí.
 
 ## <a name="gateway-opc-publisher-module"></a>Modul vydavatele brány OPC
 
-Modul vydavatele OPC se připojuje ke staničním serverům OPC UA a přihlašuje se k odběru uzlů OPC, které se zřídí. Modul převádí data z uzlu do formátu JSON, šifruje je a odesílá je do služby IoT Hub jako zprávy publikování a odběru OPC UA.
+Modul vydavatele OPC se připojuje ke staničním serverům OPC UA a přihlašuje se k odběru uzlů OPC, které se zřídí. Modul:
+
+1. Převádí data z uzlu do formátu JSON.
+1. Šifruje ve formátu JSON.
+1. Odešle ve formátu JSON do služby IoT Hub jako zprávy OPC UA Pub/Sub.
 
 Modul vydavatele OPC vyžaduje pouze výchozí port HTTPS (443) a může fungovat se stávající podnikovou infrastrukturou.
 
@@ -77,7 +81,7 @@ Modul vydavatele OPC vyžaduje pouze výchozí port HTTPS (443) a může fungova
 
 Modul proxy serveru brány OPC UA tuneluje binární příkazy OPC UA a řídicí zprávy a vyžaduje pouze výchozí port HTTPS (443). Může fungovat s existující podnikovou infrastrukturou, včetně webových proxy serverů.
 
-Pomocí metod zařízení ve službě IoT Hub přenáší do balíčků zabalená data protokolu TCP/IP na úrovni aplikace a tak zajišťuje zabezpečení koncových bodů, šifrování dat a integritu pomocí protokolu SSL/TLS.
+Metody IoT Hub Device používá k přenosu balíčků zabalená data protokolu TCP/IP v aplikační vrstvě pro zajištění zabezpečení koncových bodů, šifrování dat a integritu pomocí protokolu SSL/TLS.
 
 Samotný binární protokol OPC UA předávaný přes proxy server používá ověřování a šifrování pomocí UA.
 
@@ -93,13 +97,13 @@ Služba IoT Hub poskytuje zdroj událostí pro službu Azure TSI. TSI data uklá
 * Časové razítko zdroje
 * Název OPC UA DisplayName
 
-TSI aktuálně neumožňuje změnu doby, po kterou se data mají uchovat.
+V současné době neumožňuje TSI zákazníkům přizpůsobit, jak dlouho budou chtít zachovat data.
 
-Dotazy služby TSI na data uzlů se provádí pomocí **SearchSpan** (**Time.From** a **Time.To**) a agregace podle identifikátoru **OPC UA ApplicationUri** nebo **OPC UA NodeId** nebo názvu **OPC UA DisplayName**.
+Dotazy služby TSI na data uzlu pomocí podle času **SearchSpan** a agregace podle **OPC UA ApplicationUri** nebo **OPC UA NodeId** nebo **OPC UA DisplayName**.
 
-Při načítání dat pro měřidla celkové efektivity zařízení, klíčových ukazatelů výkonu a grafů časových řad se data agregují podle počtu událostí, celkového součtu, průměrného součtu, minima a maxima.
+Pokud chcete načíst data pro měřidla celkové efektivity zařízení a klíčových ukazatelů výkonu a grafů časových řad, řešení agreguje data o daný počet událostí, **součet**, **Avg**, **Min**, a  **Maximální počet**.
 
-Časové řady se sestavují jiným způsobem. Celková efektivita zařízení a klíčové ukazatele výkonu se počítají ze základních dat stanic a pronikají do topologie (výrobní linky, továrny, podnik) aplikace.
+Časové řady se sestavují jiným způsobem. Toto řešení vypočítá hodnoty celkové efektivity zařízení a klíčových ukazatelů výkonu ze základních dat stanic a bubliny hodnoty pro výrobní linky, továrny a enterprise.
 
 Kromě toho se časové řady pro celkovou efektivitu zařízení a klíčové ukazatele výkonu počítají v aplikaci kdykoli, kdy je připravený zobrazený časový rozsah. Například zobrazení dne se aktualizuje každou celou hodinu.
 
@@ -116,7 +120,7 @@ Služba IoT Hub v tomto řešení také:
 Řešení používá jako diskové úložiště pro virtuální počítač a k ukládání dat nasazení službu Azure Blob Storage.
 
 ## <a name="web-app"></a>Webová aplikace
-Webová aplikace nasazená jako součást akcelerátoru řešení se skládá z integrovaného klienta OPC UA, zpracování upozornění a vizualizace telemetrie.
+Webová aplikace nasazená jako součást akcelerátor řešení zahrnuje integrovaného klienta OPC UA, zpracování upozornění a vizualizace telemetrie.
 
 ## <a name="telemetry-data-flow"></a>Tok telemetrických dat
 
@@ -161,7 +165,7 @@ Webová aplikace nasazená jako součást akcelerátoru řešení se skládá z 
     - Tento krok se provádí interně v datovém centru.
 
 11. Webový prohlížeč se připojí k webové aplikaci propojené továrny.
-    - Vykreslí řídicí panel propojené továrny.
+    - Zobrazí řídicí panel připojené továrny.
     - Připojí se přes protokol HTTPS.
     - Přístup k aplikaci propojené továrny vyžaduje ověření uživatele přes službu Azure Active Directory.
     - Všechna volání aplikace propojené továrny z webového rozhraní API jsou zabezpečená pomocí tokenů proti padělání.
@@ -184,7 +188,7 @@ Webová aplikace nasazená jako součást akcelerátoru řešení se skládá z 
     - Načte ze služby IoT Hub všechna známá zařízení.
     - Použije protokol MQTT přes protokol TLS přes soket nebo zabezpečený WebSocket.
 
-3. Webový prohlížeč se připojí k webové aplikaci propojené továrny a vykreslí řídicí panel propojené továrny.
+3. Webový prohlížeč se připojí k webové aplikace připojené továrny a zobrazí řídicí panel připojené továrny.
     - Použije protokol HTTPS.
     - Uživatel vybere server OPC UA, ke kterému se má připojit.
 
@@ -212,7 +216,7 @@ Webová aplikace nasazená jako součást akcelerátoru řešení se skládá z 
     - Tato data se doručí do sady OPC UA v aplikaci propojené továrny.
 
 11. Webová aplikace propojené továrny vrátí do webového prohlížeče k vykreslení uživatelské rozhraní OPC v prohlížeči obohacené o informace specifické pro OPC UA, které získala ze serveru OPC UA.
-    - Při procházení adresního prostoru OPC a používání funkcí na uzly v adresním prostoru OPC používá klientská část uživatelského rozhraní OPC v prohlížeči k získání dat z webové aplikace propojené továrny volání AJAX přes protokol HTTPS zabezpečená pomocí tokenů proti padělání.
+    - Zatímco uživatel prochází adresního prostoru OPC a funkce se vztahuje na uzly v adresním prostoru OPC, klient UX prohlížeče OPC používá volání AJAX přes protokol HTTPS zabezpečená pomocí tokenů proti padělání k získání dat z webové aplikace připojené továrny.
     - V případě potřeby klient použije k výměně informací se serverem OPC UA komunikaci popsanou v krocích 4–10.
 
 > [!NOTE]

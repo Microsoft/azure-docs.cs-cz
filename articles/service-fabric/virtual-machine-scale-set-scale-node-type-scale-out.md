@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/21/2018
 ms.author: ryanwi
-ms.openlocfilehash: fb7ec0a6e96a9665782f85cf8a7fc496e20a9a5e
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 8f460b41cd2ce62b7a3e0138caa25f68e2fd22ad
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45576024"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50156489"
 ---
 # <a name="scale-a-service-fabric-cluster-out-by-adding-a-virtual-machine-scale-set"></a>Horizontální navýšení kapacity clusteru Service Fabric tak, že přidáte Škálovací sady virtuálních počítačů
 Tento článek popisuje, jak škálování clusteru Azure Service Fabric přidáním nového virtuálního počítače škálovací sady do existujícího clusteru. Cluster Service Fabric je síťově propojená sada virtuálních nebo fyzických počítačů, do které se nasazují a spravují mikroslužby. Počítač nebo virtuální počítač, který je součástí clusteru, se nazývá uzel. Škálovací sady virtuálních počítačů jsou výpočetním prostředkem Azure, který použijete k nasazení a správě kolekce virtuálních počítačů jako sady. Každý typ uzlu, který je definován v clusteru Azure je [nastavit jako samostatné škálovací sada](service-fabric-cluster-nodetypes.md). Každý typ uzlu je pak spravovat samostatně. Po vytvoření clusteru Service Fabric, je možné škálovat typ uzlu clusteru svisle (změnit prostředky uzly), upgradujte operační systém typu uzlu virtuální počítače, nebo přidejte novou škálovací sadu virtuálních počítačů do existujícího clusteru.  Je možné škálovat cluster v okamžiku, i když spouštění úloh v clusteru.  Škálování clusteru, vaše aplikace automaticky škálovat směrem také.
@@ -34,7 +34,7 @@ Tento článek popisuje, jak škálování clusteru Azure Service Fabric přidá
 Tady je proces pro aktualizaci velikosti virtuálního počítače a operačního systému primárního uzlu typu virtuálních počítačů.  Po upgradu primární typ uzlu virtuální počítače jsou velikosti Standard D4_V2 a spuštěný Windows Server 2016 Datacenter s kontejnery.
 
 > [!WARNING]
-> Před provedením tohoto postupu na clusteru pro produkční prostředí, doporučujeme, abyste studovat ukázkových šablon a kontrola procesu proti clusteru testu. Cluster je také k dispozici po dobu. Můžete není provedete změny více VMSS deklarován jako stejný typ uzlu, který v parrallel; je potřeba provést operace nasazení oddělených provést změny každý NodeType VMSS jednotlivě.
+> Před provedením tohoto postupu na clusteru pro produkční prostředí, doporučujeme, abyste studovat ukázkových šablon a kontrola procesu proti clusteru testu. Cluster je také k dispozici po dobu. Můžete není provedete změny více VMSS deklarován jako stejný typ uzlu, který v parrallel; je potřeba provést operace oddělených nasazení provést změny každý NodeType VMSS jednotlivě.
 
 1. Nasadit počáteční clusteru se dvěma typy uzlů a dvě škálovací sady (jednu škálovací sadu podle typu uzlu) pomocí tyto ukázky [šablony](https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/templates/nodetype-upgrade/Deploy-2NodeTypes-2ScaleSets.json) a [parametry](https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/templates/nodetype-upgrade/Deploy-2NodeTypes-2ScaleSets.parameters.json) soubory.  Obě škálovací sady jsou velikost standardní D2_V2 a spuštěný Windows Server 2012 R2 Datacenter.  Počkejte, clusteru a dokončit upgrade směrného plánu.   
 2. Nepovinné. nasazení ukázku stavové do clusteru.
@@ -200,5 +200,5 @@ Kromě toho budete muset přidat tento nový typ uzlu prostředku clusteru Servi
 * Další informace o [aplikace škálovatelnost](service-fabric-concepts-scalability.md).
 * [Škálování clusteru Azure snížení nebo navýšení kapacity](service-fabric-tutorial-scale-cluster.md).
 * [Škálování clusteru Azure prostřednictvím kódu programu](service-fabric-cluster-programmatic-scaling.md) pomocí fluent Azure compute SDK.
-* [Horizontální snížení nebo navýšení kapacity clusteru samostatná](service-fabric-cluster-windows-server-add-remove-nodes.md).
+* [Horizontální snížení nebo navýšení kapacity samostatného clusteru](service-fabric-cluster-windows-server-add-remove-nodes.md).
 

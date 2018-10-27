@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/17/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 838717aa8f426ea54f4736453aac8c6fcf9a0099
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 1db805efe7eaec77fcafeb169b3d99098b57f582
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43344493"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50155759"
 ---
 # <a name="create-an-aspnet-web-app-with-azure-active-directory-b2c-sign-up-sign-in-profile-edit-and-password-reset"></a>Vytvoření webové aplikace ASP.NET pomocí Azure Active Directory B2C profil registrace, přihlašování, úpravy a resetování hesla
 
@@ -153,7 +153,7 @@ public partial class Startup
 
 #### <a name="configure-the-authentication-middleware"></a>Nakonfigurujte middleware ověřování.
 
-Otevřete soubor `App_Start\Startup.Auth.cs` a implementovat `ConfigureAuth(...)` metody. Parametry, které poskytnete v `OpenIdConnectAuthenticationOptions` sloužit jako souřadnice pro vaši aplikaci ke komunikaci s Azure AD B2C. Pokud nezadáte určité parametry, použije se výchozí hodnota. Například jsme nezadávejte `ResponseType` ve vzorku, tak na výchozí hodnotu `code id_token` se použije v každý odchozí požadavek na Azure AD B2C.
+Otevřete soubor `App_Start\Startup.Auth.cs` a implementujte metodu `ConfigureAuth(...)`. Parametry, které poskytnete v `OpenIdConnectAuthenticationOptions` sloužit jako souřadnice pro vaši aplikaci ke komunikaci s Azure AD B2C. Pokud nezadáte určité parametry, použije se výchozí hodnota. Například jsme nezadávejte `ResponseType` ve vzorku, tak na výchozí hodnotu `code id_token` se použije v každý odchozí požadavek na Azure AD B2C.
 
 Také je nutné nastavit ověřování souborů cookie. Middleware OpenID Connect používá soubory cookie k Udržovat uživatelské relace, mimo jiné.
 
@@ -195,7 +195,7 @@ public partial class Startup
                     NameClaimType = "name"
                 },
 
-                // Specify the scope by appending all of the scopes requested into one string (seperated by a blank space)
+                // Specify the scope by appending all of the scopes requested into one string (separated by a blank space)
                 Scope = $"openid profile offline_access {ReadTasksScope} {WriteTasksScope}"
             }
         );
@@ -369,7 +369,7 @@ public ActionResult Claims()
   ...
 ```
 
-### <a name="display-user-information"></a>Zobrazit informace o uživateli
+### <a name="display-user-information"></a>Zobrazení informací o uživateli
 
 Při ověřování uživatelů pomocí OpenID Connect, Azure AD B2C vrátí ID token pro aplikaci, která obsahuje **deklarace identity**. Jedná se o kontrolní výrazy informace o uživateli. Deklarace identity můžete použít k přizpůsobení aplikace.
 

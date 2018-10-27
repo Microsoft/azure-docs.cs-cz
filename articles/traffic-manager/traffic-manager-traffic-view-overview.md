@@ -1,13 +1,10 @@
 ---
-title: Přenosy dat zobrazení v Azure Traffic Manageru | Microsoft Docs
+title: Zobrazení v Azure Traffic Manageru přenosů | Dokumentace Microsoftu
 description: Úvod do zobrazení provozu Traffic Manageru
 services: traffic-manager
 documentationcenter: traffic-manager
 author: KumudD
 manager: jeconnoc
-editor: ''
-tags: ''
-ms.assetid: ''
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
@@ -16,64 +13,64 @@ ms.workload: infrastructure
 ms.date: 03/16/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: 7ce51017fdee92e5589c06b398c9650930d5436d
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: d1800fea2212628e7647b5250efa33ebb97957f9
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30179833"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50138068"
 ---
-# <a name="traffic-manager-traffic-view"></a>Zobrazení provozu Traffic Manageru
+# <a name="traffic-manager-traffic-view"></a>Zobrazení přenosů Traffic Manageru
 
-Traffic Manager poskytuje že s DNS úrovni směrování, aby vaši koncoví uživatelé jsou směrované na v pořádku koncové body založené na metodě směrování zadali při vytváření profilu. Zobrazení provozu Traffic Manager k dispozici zobrazení vaší uživatelské základny (na úrovni členitosti Překladač DNS) a jejich provoz vzor. Když povolíte provoz zobrazení, tyto informace zpracování poskytnout prakticky využitelné informace. 
+Traffic Manager poskytuje, kterým se směrováním na úrovni DNS tak, aby vaši koncoví uživatelé jsou směrované na založené na metodě směrování v dobrém stavu koncových bodů při vytváření profilu. Zobrazení přenosů poskytne přehled vaší uživatelské základny (na úrovni členitosti překladače DNS) a způsobu jejich provoz Traffic Manageru. Když povolíte Traffic View, tyto informace jsou zpracovávána poskytnout užitečné přehledy. 
 
-Pomocí zobrazení provoz, můžete:
-- pochopení, kde se nachází (až místní DNS překladač úrovně rozlišením) uživatelské základny.
-- Zobrazit objem provozu (zjištěnými jako dotazy DNS zpracovává Azure Traffic Managerem) pocházející z těchto oblastí.
-- získáte přehled o co je reprezentativní latence, které tyto uživatele.
-- Podrobné informace do vzory konkrétní přenosy ze všech těchto uživatelské základny k oblastem Azure, kde máte koncové body. 
+Pomocí zobrazení přenosů, můžete:
+- Zjistěte, kde se nachází (až místní úrovni překladače DNS) uživatelské základny.
+- Zobrazit objem přenosů (zjištěnými jako dotazy DNS Azure Traffic Manager zpracovává) pocházející z těchto oblastí.
+- Získejte přehled o novinkách reprezentativní latenci tito uživatelé.
+- Podrobné informace o vzorcích konkrétních přenosů z každé z těchto uživatelských základen do oblastí Azure, kde jsou koncové body. 
 
-Například můžete zobrazit provoz zjistit, které oblasti máte velký počet přenosů dat, ale trpí vyšší latence. Dále můžete tyto informace k plánování rozšíření vaší nároky na nové oblastí Azure tak, aby tito uživatelé může mít nižší latenci prostředí.
+Například můžete použít Traffic View pochopit, jaké oblasti mají velký počet přenosů, ale mají vyšší latencí. V dalším kroku můžete použít tyto informace k plánování vaše nároky na místo rozšiřující do nových oblastí Azure tak, aby tito uživatelé mají nižší latenci prostředí.
 
-## <a name="how-traffic-view-works"></a>Jak funguje provoz zobrazení
+## <a name="how-traffic-view-works"></a>Jak funguje Traffic View
 
-Zobrazení provoz funguje tak, že Traffic Manager. podívejte se na příchozí dotazů přijatých za posledních sedmi dnech proti profil, který má povolení této funkce. Příchozí informace dotazy extrahuje zobrazení provozu zdrojovou IP Překladač DNS, který slouží jako reprezentace umístění uživatele. Tyto jsou pak seskupeny dohromady na úrovni rozlišením Překladač DNS vytvořit základní oblasti uživatele pomocí zeměpisné údaje udržované Traffic Managerem IP adres. Správce provozu se poté hledat v oblastech Azure, ke kterým dotaz byl směrován a vytvoří mapu tok provozu pro uživatele z těchto oblastí.  
-V dalším kroku Traffic Manager korelaci oblasti základní pro mapování oblast Azure s tabulkami intelligence latence sítě, které udržuje pro koncového uživatele různé sítě zjistit, které uživatelé z těchto oblastí Průměrná latence při připojování k oblastem Azure. Tyto výpočty se pak zkombinují v úrovni místní DNS překladač IP předtím, než se zobrazí na vás. Můžete využívat informace různými způsoby.
+Zobrazení přenosů funguje tak, že Traffic Manageru, podívejte se na příchozí dotazy přijaté za posledních sedm dnů vůči profilu, který má tato funkce povolena. Zobrazení přenosů z příchozí informace dotazy extrahuje zdrojovou IP adresu Překladač DNS, který slouží jako reprezentace umístění uživatele. Tyto jsou potom seskupeny na do úrovně překladače DNS k vytvoření základních oblastech uživatele pomocí zeměpisné údaje udržované Traffic Managerem IP adresy. Traffic Manager poté hledá v oblasti Azure, ke kterým se dotaz, byla směrována a vytvoří mapování toku provozu pro uživatele z těchto oblastí.  
+V dalším kroku, Traffic Manager koreluje oblasti základní mapování oblast Azure s tabulkami intelligence latence sítě, které udržuje pro různé koncové uživatele sítě pochopit průměrnou latenci uživatelé z těchto oblastí po Probíhá připojování k oblasti Azure. Všechny tyto výpočty se následně se spojí dohromady v na místní DNS překládání IP úrovni předtím, než se budou zobrazovat uživateli. Informace v různých způsobů, jak můžete využívat.
 
 >[!NOTE]
->Latence popsané v zobrazení provoz je reprezentativní latenci mezi koncové uživatele a oblastech Azure, ke kterým byl připojený k a není latence vyhledávání DNS. Díky zobrazení provoz vrátil nejlepší odhad úsilí latenci mezi místní překladač DNS a oblast Azure, které dotaz byl směrován, pokud je k dispozici dostatek dat pak latence, bude mít hodnotu null. 
+>Latence je popsáno v zobrazení přenosů reprezentativní latence mezi koncový uživatel a oblastí Azure, ke kterým má připojené k a není latence vyhledávání DNS. Díky zobrazení přenosů vrátí nejlepší odhad úsilí latence mezi místního překladače DNS a oblasti Azure, které dotaz, byla směrována do, pokud není k dispozici dostatek dat a pak latence bude mít hodnotu null. 
 
-## <a name="visual-overview"></a>Přehled Visual
+## <a name="visual-overview"></a>Vizuální přehled
 
-Když přejdete **provoz zobrazení** části na stránce Traffic Manager se zobrazí s zeměpisné mapě s překrytí Statistika provozu zobrazení. Mapy poskytuje informace o základní uživatele a koncové body pro váš profil Traffic Manageru.
+Když přejdete **Traffic View** části na stránce Traffic Manageru, se zobrazí zeměpisné mapě s překrytí insights Traffic View. Mapa obsahuje informace o uživatelské základně a koncové body pro váš profil Traffic Manageru.
 
 ### <a name="user-base-information"></a>Základní informace o uživateli
 
-Pro tyto místní překladače služby DNS pro umístění, které informace jsou k dispozici jsou uvedené v mapě. Barva Překladač DNS označuje Průměrná latence zkušeného koncoví uživatelé, kteří používají tento překladač služby DNS pro jejich dotazy Traffic Manager.
+Pro tyto místní DNS jsou překladače pro umístění, které informace jsou k dispozici zobrazí se v objektu map. Barva přeložených označuje průměrnou dobu vyřízení zkušení koncoví uživatelé, kteří používají tento překladač služby DNS pro jejich dotazů Traffic Manageru.
 
-Pokud je ukazatel myši nad umístění Překladač DNS v mapě, se zobrazí:
-- Překladač DNS na IP adresu
-- objem provozu dotazu DNS z jeho pohledu Traffic Managerem
-- koncových bodů, do které provoz z DNS byla překladač směrovaných, jako řádek mezi koncový bod a překladač služby DNS 
-- Průměrná latence z tohoto umístění ke koncovému bodu, vyjádřené barvu čáry jejich připojením
+Pokud najedete myší umístění Překladač DNS na mapě, zobrazí:
+- IP adresa Překladač DNS
+- Jaký objem přenosů dotazu DNS nějakého Traffic Managerem
+- Koncové body, jaký provoz DNS byla směrována překladač jako čáry mezi koncový bod a překladač služby DNS 
+- Průměrná latence z tohoto umístění ke koncovému bodu reprezentovaná jako barva čáry jejich propojení
 
-### <a name="endpoint-information"></a>Informace o koncovém
+### <a name="endpoint-information"></a>Informace o koncovém bodu
 
-Oblastí Azure, ve kterých jsou umístěny koncové body se zobrazí jako modré tečky v mapě. Pokud váš koncový bod je externí a nemá k němu mapována oblasti Azure, se zobrazí v horní části mapy. Klikněte na libovolný koncový bod zobrazíte různých umístěních (podle Překladač DNS používá) z kde byl přenášená do tohoto koncového bodu. Připojení se zobrazují jako řádek mezi koncový bod a umístění Překladač DNS a podle reprezentativní latenci mezi tuto dvojici, se zobrazí. Kromě toho můžete zobrazit název koncového bodu, oblasti Azure, ve kterém je spuštěná a celkový objem požadavků, které byly směrované na ni tímto profilem Traffic Manager.
+Oblasti Azure, ve kterých jsou umístěny koncové body se zobrazí jako modré tečky v objektu map. Pokud váš koncový bod je externí a nemá určitá oblast Azure k němu mapována, zobrazí se v horní části mapy. Klepněte na žádný koncový bod chcete zobrazit jiné umístění (podle Překladač DNS použít) z směrován provoz do tohoto koncového bodu. Připojení se zobrazí jako čáry mezi koncový bod a umístění Překladač DNS a jsou barvy podle reprezentativní latence mezi tohoto páru. Kromě toho můžete zobrazit název koncového bodu, oblast Azure, ve kterém běží a celkový objem požadavků, které byli přesměrováni do něj tento profil Traffic Manageru.
 
 
-## <a name="tabular-listing-and-raw-data-download"></a>Tabulkový výčet a stahování nezpracovaná data
+## <a name="tabular-listing-and-raw-data-download"></a>Tabulkovém výpisu a stáhnout nezpracovaná data
 
-Data zobrazení provozu můžete zobrazit v tabulkovém formátu na portálu Azure. Existuje položka pro každou IP adresu Překladač DNS / spárujte koncový bod, který ukazuje na IP adresu Překladač DNS, názvu a zeměpisné umístění oblast Azure z které koncový bod se nachází (Pokud je k dispozici), objem požadavků, které jsou přidružené k této překladač služby DNS k tohoto koncového bodu a reprezentativní zpoždění spojené s koncovým uživatelům pomocí této služby DNS (je-li k dispozici). Data zobrazení provozu můžete také stáhnout jako soubor CSV, který slouží jako součást pracovního postupu analytics podle svého výběru.
+Zobrazí se zobrazení přenosů dat v tabelárním formátu na webu Azure portal. Existuje položka pro každou IP adresu Překladač DNS / spárovat koncový bod, který zobrazuje IP adresu Překladač DNS, název a zeměpisnou polohu oblasti Azure v rámci které koncový bod se nachází (Pokud je k dispozici), objem požadavků, které jsou přidružené k tento překladač služby DNS pro Tento koncový bod a reprezentativní zpoždění spojené s koncovými uživateli pomocí této služby DNS (Pokud je k dispozici). Zobrazení přenosů dat můžete také stáhnout jako soubor CSV, který slouží jako součást pracovního postupu analytics podle vašeho výběru.
 
 ## <a name="billing"></a>Fakturace
 
-Pokud používáte zobrazení provoz, vám fakturují, na základě počtu datových bodů použít k vytvoření statistiky uvedené. V současné době je bod pouze datový typ používaný dotazů přijatých pro svůj profil Traffic Manageru. Další podrobnosti o cenách najdete na webu [Traffic Manager stránce s cenami](https://azure.microsoft.com/pricing/details/traffic-manager/).
+Při použití zobrazení přenosů se účtují, na základě počtu datových bodů použitých k vytvoření insights zobrazí. Typ bodu jenom data použít v současné době je dotazů přijatých pro váš profil Traffic Manageru. Podrobné informace o cenách najdete [Traffic Manageru stránce s cenami](https://azure.microsoft.com/pricing/details/traffic-manager/).
 
 
 ## <a name="next-steps"></a>Další postup
 
-- Další informace [fungování Traffic Manager](traffic-manager-overview.md)
+- Přečtěte si [jak funguje Traffic Manager](traffic-manager-overview.md)
 - Další informace o [metody směrování provozu](traffic-manager-routing-methods.md) podporované nástrojem Traffic Manager
-- Zjistěte, jak [vytvořit profil správce provozu](traffic-manager-create-profile.md)
+- Zjistěte, jak [vytvořit profil služby Traffic Manager](traffic-manager-create-profile.md)
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: lizross
 ms.custom: it-pro
-ms.openlocfilehash: f546ea5b5f9288849334d27cd1721f0c22fb8806
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: fae68bccbeaa54ca1bab9d77510fe6baecd11fcc
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46297771"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50139716"
 ---
 # <a name="how-to-add-or-remove-group-owners-in-azure-active-directory"></a>Postupy: Přidání nebo odebrání vlastníků skupin v Azure Active Directory
 Skupiny Azure Active Directory (Azure AD) je vlastněna a řízena vlastníky skupiny. Vlastníci skupiny jsou přiřazeny ke správě skupiny a její členy podle vlastníka prostředku (správce). Vlastníci skupiny nemusejí být členy skupiny. Po přiřazení vlastníka skupiny jenom vlastník prostředku můžete přidat nebo odebrat vlastníky.
@@ -27,9 +27,9 @@ V některých případech se jako správce může rozhodnete přiřadit jako vla
 Přidáte vlastníky skupiny. Další skupiny pomocí služby Azure AD.
 
 ### <a name="to-add-a-group-owner"></a>Chcete-li přidat vlastníka skupiny.
-1. Přihlaste se k [webu Azure portal](https://portal.azure.com) pomocí účtu globálního správce adresáře.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí účtu globálního správce daného adresáře.
 
-2. Vyberte **Azure Active Directory**vyberte **skupiny**a pak vyberte skupinu, pro který chcete přidat jako vlastníka (v tomto příkladu _zásady MDM - západní_).
+2. Vyberte **Azure Active Directory**vyberte **skupiny**a pak vyberte skupinu, pro který chcete přidat jako vlastníka (v tomto příkladu *zásady MDM - západní*).
 
 3. Na **zásady MDM – přehled – západ** stránce **vlastníky**.
 
@@ -45,9 +45,9 @@ Přidáte vlastníky skupiny. Další skupiny pomocí služby Azure AD.
 Odebrání vlastníka ze skupiny pomocí služby Azure AD.
 
 ### <a name="to-remove-an-owner"></a>Chcete-li odebrat jako vlastníka
-1. Přihlaste se k [webu Azure portal](https://portal.azure.com) pomocí účtu globálního správce adresáře.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí účtu globálního správce daného adresáře.
 
-2. Vyberte **Azure Active Directory**vyberte **skupiny**a pak vyberte skupinu, pro který chcete přidat jako vlastníka (v tomto příkladu _zásady MDM - západní_).
+2. Vyberte **Azure Active Directory**vyberte **skupiny**a pak vyberte skupinu, pro kterou chcete odebrat vlastníka (v tomto příkladu *zásady MDM - západní*).
 
 3. Na **zásady MDM – přehled – západ** stránce **vlastníky**.
 

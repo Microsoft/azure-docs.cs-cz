@@ -3,7 +3,7 @@ title: 'Azure Active Directory Domain Services: Správa spravované domény | Do
 description: Správa spravované domény Azure Active Directory Domain Services
 services: active-directory-ds
 documentationcenter: ''
-author: mahesh-unnikrishnan
+author: eringreenlee
 manager: mtillman
 editor: curtand
 ms.assetid: d4fdbc75-3e6b-4e20-8494-5dcc3bf2220a
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
-ms.author: maheshu
-ms.openlocfilehash: c2258b9d26a62fd7c8e50c1ed7b3583c06e1c353
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.author: ergreenl
+ms.openlocfilehash: 031c609ee5dcd04fc461af74b7f49973fbd290c3
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39503430"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50157615"
 ---
 # <a name="administer-an-azure-active-directory-domain-services-managed-domain"></a>Správa spravované domény služby Azure Active Directory Domain Services
 Tento článek ukazuje, jak Správa spravované domény služby Azure Active Directory (AD) Domain Services.

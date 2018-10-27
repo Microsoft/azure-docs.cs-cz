@@ -10,12 +10,12 @@ ms.component: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/31/2017
 ms.author: alch
-ms.openlocfilehash: c1f97896a8c3264fca0e76a0800731b8c6c85267
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: ae238a3c3af091b764147fcde8aa2a98986da92e
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48901597"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50158886"
 ---
 # <a name="paper-entity"></a>Entity dokumentu
 
@@ -26,7 +26,7 @@ Název    |Popis                                        |Typ       | Operace
 ------- | ------------------------------------------------- | --------- | ----------------------------
 ID      |ID entity                                          |Int64      |Rovná se
 Čas      |Název dokumentu                                        |Řetězec     |Je rovno<br/>StartsWith
-L       |Dokument jazyka kódu odděleny pomocí "\@@@\"            |Řetězec     |Rovná se
+L       |Kód jazyka papíru oddělené "\@@@"            |Řetězec     |Rovná se
 Ano       |Rok papíru                                         |Datový typ Int32      |Je rovno<br/>IsBetween
 D       |Datum papíru                                         |Datum       |Je rovno<br/>IsBetween
 Kopie      |Počet citace                                     |Datový typ Int32      |žádný  

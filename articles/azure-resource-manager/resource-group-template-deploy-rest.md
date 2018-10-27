@@ -4,22 +4,20 @@ description: Nasazení prostředků do Azure pomocí Azure Resource Manageru a r
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
-manager: timlt
-editor: tysonn
 ms.assetid: 1d8fbd4c-78b0-425b-ba76-f2b7fd260b45
 ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/01/2018
+ms.date: 10/26/2018
 ms.author: tomfitz
-ms.openlocfilehash: ae2393d16d2c9c1000b00f5514e63c988303a83c
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 058d6d398f6bb54e8569e727f118a325c338049d
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39628507"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50154738"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-resource-manager-rest-api"></a>Nasazení prostředků pomocí šablon Resource Manageru a jeho rozhraní REST API
 
@@ -33,15 +31,19 @@ Tento článek vysvětluje, jak nasadit prostředky do Azure pomocí rozhraní R
 > 
 > 
 
-Šablony může být buď místní soubor, nebo externí soubor, který je k dispozici prostřednictvím identifikátoru URI. Pokud vaše šablona se nachází v účtu úložiště, můžete omezit přístup k šabloně a během nasazení zadat token sdíleného přístupového podpisu (SAS).
+Šablony můžete zahrnout buď v textu žádosti nebo odkaz na soubor. Při použití souboru, může to být z místního souboru nebo externí soubor, který je k dispozici prostřednictvím identifikátoru URI. Když je šablona v účtu úložiště, můžete omezit přístup k šabloně a během nasazení zadat token sdíleného přístupového podpisu (SAS).
 
 ## <a name="deploy-with-the-rest-api"></a>Nasazení pomocí rozhraní REST API
 1. Nastavte [společných parametrů a záhlaví](/rest/api/azure/), včetně ověřování tokenů.
 
-2. Pokud nemáte existující skupinu prostředků, vytvořte skupinu prostředků. Zadejte ID svého předplatného, název nové skupiny prostředků a umístění, které potřebujete pro vaše řešení. Další informace najdete v tématu [vytvořte skupinu prostředků](/rest/api/resources/resourcegroups/createorupdate).
+1. Pokud nemáte existující skupinu prostředků, vytvořte skupinu prostředků. Zadejte ID svého předplatného, název nové skupiny prostředků a umístění, které potřebujete pro vaše řešení. Další informace najdete v tématu [vytvořte skupinu prostředků](/rest/api/resources/resourcegroups/createorupdate).
 
   ```HTTP
-  PUT https://management.azure.com/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>?api-version=2015-01-01
+  PUT https://management.azure.com/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>?api-version=2018-05-01
+  ```
+
+  Pomocí textu žádosti podobně jako:
+  ```json
   {
     "location": "West US",
     "tags": {
@@ -50,12 +52,17 @@ Tento článek vysvětluje, jak nasadit prostředky do Azure pomocí rozhraní R
   }
   ```
 
-3. Ověření nasazení před spuštěním spuštěním [ověření šablony nasazení](/rest/api/resources/deployments/validate) operace. Při testování nasazení, zadejte parametry stejným způsobem jako při provádění nasazení (viz dál).
+1. Ověření nasazení před spuštěním spuštěním [ověření šablony nasazení](/rest/api/resources/deployments/validate) operace. Při testování nasazení, zadejte parametry stejným způsobem jako při provádění nasazení (viz dál).
 
-4. Vytvoření nasazení. Zadejte ID svého předplatného, název skupiny prostředků, název nasazení a odkaz na šablonu. Informace o souboru šablony najdete v tématu [soubor parametrů](#parameter-file). Další informace o rozhraní REST API k vytvoření skupiny prostředků najdete v tématu [vytvoření šablony nasazení](https://docs.microsoft.com/rest/api/resources/deployments#Deployments_CreateOrUpdate). Všimněte si, že **režimu** je nastavena na **přírůstkové**. Spustit úplné nasazení, nastavte **režimu** k **Complete**. Buďte opatrní při použití úplný režim jako nechtěně odstraníte prostředky, které nejsou v šabloně.
+1. Vytvoření nasazení. Zadejte ID svého předplatného, název skupiny prostředků, název nasazení a odkaz na šablonu. Informace o souboru šablony najdete v tématu [soubor parametrů](#parameter-file). Další informace o rozhraní REST API k vytvoření skupiny prostředků najdete v tématu [vytvoření šablony nasazení](/rest/api/resources/deployments/createorupdate). Všimněte si, že **režimu** je nastavena na **přírůstkové**. Spustit úplné nasazení, nastavte **režimu** k **Complete**. Buďte opatrní při použití úplný režim jako nechtěně odstraníte prostředky, které nejsou v šabloně.
 
   ```HTTP
-  PUT https://management.azure.com/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>/providers/Microsoft.Resources/deployments/<YourDeploymentName>?api-version=2015-01-01
+  PUT https://management.azure.com/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>/providers/Microsoft.Resources/deployments/<YourDeploymentName>?api-version=2018-05-01
+  ```
+
+  Pomocí textu žádosti podobně jako:
+
+   ```json
   {
     "properties": {
       "templateLink": {
@@ -73,7 +80,7 @@ Tento článek vysvětluje, jak nasadit prostředky do Azure pomocí rozhraní R
 
     Pokud chcete protokolovat obsah odpovědi nebo obsah požadavku, zahrňte **debugSetting** v požadavku.
 
-  ```HTTP
+  ```json
   "debugSetting": {
     "detailLevel": "requestContent, responseContent"
   }
@@ -81,10 +88,73 @@ Tento článek vysvětluje, jak nasadit prostředky do Azure pomocí rozhraní R
 
     Použít token sdíleného přístupového podpisu (SAS) můžete nastavit při vytváření svého účtu úložiště. Další informace najdete v tématu [delegování přístupu pomocí sdíleného přístupového podpisu](https://docs.microsoft.com/rest/api/storageservices/delegating-access-with-a-shared-access-signature).
 
+1. Namísto odkazování na soubory pro šablonu a parametry, můžete zahrnout v textu požadavku.
+
+  ```json
+  {
+      "properties": {
+      "mode": "Incremental",
+      "template": {
+        "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+        "contentVersion": "1.0.0.0",
+        "parameters": {
+          "storageAccountType": {
+            "type": "string",
+            "defaultValue": "Standard_LRS",
+            "allowedValues": [
+              "Standard_LRS",
+              "Standard_GRS",
+              "Standard_ZRS",
+              "Premium_LRS"
+            ],
+            "metadata": {
+              "description": "Storage Account type"
+            }
+          },
+          "location": {
+            "type": "string",
+            "defaultValue": "[resourceGroup().location]",
+            "metadata": {
+              "description": "Location for all resources."
+            }
+          }
+        },
+        "variables": {
+          "storageAccountName": "[concat(uniquestring(resourceGroup().id), 'standardsa')]"
+        },
+        "resources": [
+          {
+            "type": "Microsoft.Storage/storageAccounts",
+            "name": "[variables('storageAccountName')]",
+            "apiVersion": "2018-02-01",
+            "location": "[parameters('location')]",
+            "sku": {
+              "name": "[parameters('storageAccountType')]"
+            },
+            "kind": "StorageV2",
+            "properties": {}
+          }
+        ],
+        "outputs": {
+          "storageAccountName": {
+            "type": "string",
+            "value": "[variables('storageAccountName')]"
+          }
+        }
+      },
+      "parameters": {
+        "location": {
+          "value": "eastus2"
+        }
+      }
+    }
+  }
+  ```
+
 5. Získání stavu nasazení šablony. Další informace najdete v tématu [získat informace o nasazování šablon](/rest/api/resources/deployments/get).
 
   ```HTTP
-  GET https://management.azure.com/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>/providers/Microsoft.Resources/deployments/<YourDeploymentName>?api-version=2015-01-01
+  GET https://management.azure.com/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>/providers/Microsoft.Resources/deployments/<YourDeploymentName>?api-version=2018-05-01
   ```
 
 ## <a name="redeploy-when-deployment-fails"></a>Opětovné nasazení při nasazení se nezdaří
@@ -93,7 +163,7 @@ Pro nasazení, které selžou můžete určit, předchozí nasazení z historie 
 
 K opětovnému nasazení poslední úspěšné nasazení, pokud se aktuální nasazení nezdaří, použijte:
 
-```HTTP
+```json
 "onErrorDeployment": {
   "type": "LastSuccessful",
 },
@@ -101,7 +171,7 @@ K opětovnému nasazení poslední úspěšné nasazení, pokud se aktuální na
 
 Pokud chcete znovu nasadit konkrétní nasazení, pokud se aktuální nasazení nezdaří, použijte:
 
-```HTTP
+```json
 "onErrorDeployment": {
   "type": "SpecificDeployment",
   "deploymentName": "<deploymentname>"
@@ -145,7 +215,7 @@ Velikost souboru parametrů nemůže být delší než 64 KB.
 Pokud je potřeba zadat hodnotu citlivé parametru (například hesla), přidejte tuto hodnotu do trezoru klíčů. Načtení služby key vault během nasazení, jak je znázorněno v předchozím příkladu. Další informace najdete v tématu [předání zabezpečených hodnot během nasazení](resource-manager-keyvault-parameter.md). 
 
 ## <a name="next-steps"></a>Další postup
-* Chcete-li určit způsob zpracování prostředek, který existuje ve skupině prostředků, ale nejsou definovány v šabloně, přečtěte si téma [režimy nasazení Azure Resource Manageru](deployment-modes.md).
+* Chcete-li určit způsob zpracování prostředky, které existují ve skupině prostředků, ale nejsou definovány v šabloně, přečtěte si téma [režimy nasazení Azure Resource Manageru](deployment-modes.md).
 * Další informace o zpracování asynchronních operací REST, naleznete v tématu [sledování asynchronních operací Azure](resource-manager-async-operations.md).
 * Příklad nasazení prostředků pomocí klientské knihovny .NET najdete v tématu [nasazení prostředků pomocí šablony a knihoven .NET](../virtual-machines/windows/csharp-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 * Chcete-li definovat parametry v šabloně, přečtěte si téma [vytváření šablon](resource-group-authoring-templates.md#parameters).

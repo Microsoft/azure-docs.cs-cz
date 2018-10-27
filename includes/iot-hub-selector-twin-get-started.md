@@ -1,45 +1,54 @@
+---
+author: dominicbetts
+ms.service: iot-hub
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: dobett
+ms.openlocfilehash: 304637422c0b8fd4dfa99e2e434e13d12f1fb342
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50165244"
+---
 > [!div class="op_single_selector"]
 > * [Node.js](../articles/iot-hub/iot-hub-node-node-twin-getstarted.md)
 > * [C#](../articles/iot-hub/iot-hub-csharp-csharp-twin-getstarted.md)
 > * [Java](../articles/iot-hub/iot-hub-java-java-twin-getstarted.md)
 > * [Python](../articles/iot-hub/iot-hub-python-twin-getstarted.md)
 
-Dvojčata zařízení jsou dokumenty JSON, které obsahují informace o stavu zařízení (metadata, konfigurace a podmínky). IoT Hub trvá dvojče zařízení pro každé zařízení, která se k němu připojuje.
+Dvojčata zařízení jsou dokumenty JSON, které obsahují informace o stavu zařízení (metadata, konfigurace a podmínky). IoT Hub udržuje takové dvojče pro každé zařízení, která se k němu připojuje.
 
 [!INCLUDE [iot-hub-basic](iot-hub-basic-whole.md)]
 
-Použijte dvojčata zařízení na:
+Použití dvojčat zařízení:
 
-* Ukládání metadat ze zařízení z back end vašeho řešení.
-* Sestava aktuální informace o stavu, jako jsou k dispozici funkce a podmínky (třeba připojení metoda se používá) z vaší aplikací.
-* Synchronizujte stav pracovních dlouho běžící (například aktualizací firmwaru a konfigurace) mezi aplikací zařízení a back-end aplikace.
-* Dotaz na vaše zařízení metadata, konfigurace nebo stavu.
+* Store metadat zařízení z back-endem řešení.
 
-Dvojčata zařízení jsou navrženy pro synchronizaci a pro dotazování konfigurací zařízení a podmínky. Další informace o použití dvojčata zařízení naleznete v [pochopit dvojčata zařízení][lnk-twins].
+* Aktuální informace o stavu, jako jsou k dispozici možnosti a podmínky (třeba připojení metoda se používá) sestavy z aplikace pro zařízení.
 
-Dvojčata zařízení se ukládají do služby IoT hub a obsahovat:
+* Synchronizace stavu dlouhotrvající pracovní postupy (například aktualizace firmwaru a konfigurace) mezi aplikace pro zařízení a back endové aplikace.
 
-* *značky*, metadat zařízení přístupná jenom pro back-end řešení;
-* *požadovaného vlastnosti*, objekty JSON upravitelnými řešení back end a lze zobrazit aplikace zařízení; a
-* *hlášené vlastnosti*, objekty JSON upravitelnými aplikace zařízení a přečíst back-end řešení. Značky a vlastností nesmí obsahovat pole, ale mohou být vnořené objekty.
+* Dotazování metadat zařízení, konfigurace nebo stavu.
 
-![][img-twin]
+Dvojčata zařízení jsou navržené pro synchronizaci a dotazování na konfigurace zařízení a podmínky. Další informace o použití dvojčat zařízení najdete v [Principy dvojčat zařízení](../articles/iot-hub/iot-hub-devguide-device-twins.md).
 
-Kromě toho se můžete dotazovat dvojčata zařízení na základě výše uvedené dat back-end řešení.
-Odkazovat na [pochopit dvojčata zařízení] [ lnk-twins] Další informace o dvojčata zařízení a [IoT Hub dotazovací jazyk] [ lnk-query] odkaz pro dotazování.
+Dvojčata zařízení jsou uložené ve službě IoT hub a obsahovat:
+
+* *značky*, přístupná jenom pro back-end řešení; metadat zařízení
+
+* *požadované vlastnosti*, objekty JSON upravitelná řešení zpět end a pozorovat aplikací zařízení; a
+
+* *ohlášené vlastnosti*, objekty JSON upravitelnými aplikací zařízení a přečíst back-endu řešení. Značky a vlastnosti nemohou obsahovat pole, ale mohou být vnořené objekty.
+
+![Funkci zobrazení obrázků dvojčete zařízení](./media/iot-hub-selector-twin-get-started/twin.png)
+
+Kromě toho se můžete dotazovat dvojčata zařízení podle výše uvedená data back-endu řešení.
+Odkazovat na [Principy dvojčat zařízení](../articles/iot-hub/iot-hub-devguide-device-twins.md) pro další informace o dvojčata zařízení a [dotazovací jazyk služby IoT Hub](../articles/iot-hub/iot-hub-devguide-query-language.md) referenční informace pro dotazování.
 
 
 V tomto kurzu získáte informace o následujících postupech:
 
-* Vytvoření aplikace back-end, který přidává *značky* dvojče zařízení a aplikaci simulovaného zařízení, která generuje sestavy jeho připojení kanálu jako *hlášené vlastnost* na dvojče zařízení.
-* Dotaz na zařízení z back-end aplikace pomocí filtrů o vlastnostech dříve vytvořili a značky.
+* Vytvoření back endové aplikace, která přidá *značky* dvojče zařízení a aplikace simulovaného zařízení, která generuje sestavy jeho připojení kanálu jako *hlášené vlastnost* ve dvojčeti zařízení.
 
-<!-- images -->
-[img-twin]: media/iot-hub-selector-twin-get-started/twin.png
-
-<!-- links -->
-[lnk-query]: ../articles/iot-hub/iot-hub-devguide-query-language.md
-[lnk-twins]: ../articles/iot-hub/iot-hub-devguide-device-twins.md
-[lnk-d2c]: ../articles/iot-hub/iot-hub-devguide-messaging.md#device-to-cloud-messages
-[lnk-methods]: ../articles/iot-hub/iot-hub-devguide-direct-methods.md
-[lnk-devguide-mqtt]: ../articles/iot-hub/iot-hub-mqtt-support.md
+* Dotaz na zařízení z aplikace back-end pomocí filtry značek a vlastnosti předtím vytvořili.

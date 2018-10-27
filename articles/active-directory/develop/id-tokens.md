@@ -16,12 +16,12 @@ ms.date: 10/05/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: e74d2cbada1d433bdaf4ebc905e88d66444b2e2f
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 35e6cd988a0532221d88b22cdd51fc29d7f17ba9
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078201"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50158750"
 ---
 # <a name="id-tokens"></a>Tokeny ID
 
@@ -74,6 +74,7 @@ Zobrazit tento token ukázkové verze 2.0 v [jwt.ms](https://jwt.ms/#id_token=ey
 |`at_hash`| Řetězec |Přístup, který je zahrnuta hodnota hash tokenu v ID tokeny, pouze pokud ID token vydaný s přístupovým tokenem OAuth 2.0. Slouží k ověření pravosti tokenu přístupu. Podrobnosti o provedení tohoto ověření naleznete v tématu [OpenID Connect specifikace](http://openid.net/specs/openid-connect-core-1_0.html). |
 |`aio` | Neprůhledný řetězec | Vnitřní deklarace, která používá Azure AD při zaznamenávání dat pro opakované použití tokenu. Třeba ji ignorovat.|
 |`preferred_username` | Řetězec | Primární uživatelské jméno, který reprezentuje uživatele. Může to být e-mailovou adresu, telefonní číslo nebo obecný uživatelské jméno bez zadaného formátu. Jeho hodnota je měnitelné a může v průběhu času měnit. Protože je proměnlivá, tato hodnota se nesmí používat pro autorizační rozhodnutí. `profile` Oboru se vyžaduje aby bylo možné dostávat tato deklarace identity.|
+|`email` | Řetězec | `email` Deklarace identity je k dispozici ve výchozím nastavení pro účet hosta, které mají e-mailovou adresu.  Vaše aplikace můžou požádat o deklarace identity e-mailu pro spravované uživatele (ty ze stejného tenanta jako prostředek) pomocí `email` [volitelnou deklaraci](active-directory-optional-claims.md).  Na koncový bod v2.0, vaše aplikace také můžete vyžádat `email` obor OpenID Connect - není nutné požádat o volitelnou deklaraci a obor získat deklarace identity.  Deklarace identity e-mailu podporuje pouze adresovatelný e-mailu z informací v profilu uživatele. |
 |`name` | Řetězec | `name` Deklarace identity poskytuje čitelné hodnotu, která identifikuje předmětem token. Hodnota nemusí být jedinečný, je proměnlivé a je navržena tak, aby se dá použít jenom pro účely zobrazení. `profile` Oboru se vyžaduje aby bylo možné dostávat tato deklarace identity. |
 |`nonce`| Řetězec | Hodnota nonce odpovídá parametru součástí původní / authorize požadavek na zprostředkovatele identity. Pokud se neshoduje, vaše aplikace by měla odmítnout token. |
 |`oid` | Řetězec identifikátoru GUID | Neměnné identifikátor objektu v Microsoft systém identit, v tomto případě uživatelský účet. Toto ID jednoznačně identifikuje uživatele v aplikacích – dva různé aplikace přihlášení stejného uživatele se zobrazí v stejnou hodnotu `oid` deklarací identity. Vrátí toto ID jako Microsoft Graph `id` vlastnost pro daný uživatelský účet. Protože `oid` umožňuje více aplikací ke koordinaci uživatelů, `profile` oboru se vyžaduje aby bylo možné dostávat tato deklarace identity. Všimněte si, že pokud jeden uživatel existuje v několika tenantech, uživatel bude obsahovat jiný objekt ID v jednotlivých tenantů – jsou považovány za různé účty, i když se uživatel přihlašuje každý účet pomocí stejných přihlašovacích údajů. |

@@ -1,13 +1,9 @@
 ---
-title: Skutečné měření uživatele do Azure Traffic Manageru s webovými stránkami | Microsoft Docs
-description: Nastavení webové stránky k odeslání reálného měření uživatele do Traffic Manageru
+title: Měření Real User Measurements do Azure Traffic Manageru s webovými stránkami | Dokumentace Microsoftu
+description: Nastavení webové stránky k odeslání měření Real User Measurements do Traffic Manageru
 services: traffic-manager
 documentationcenter: traffic-manager
 author: KumudD
-manager: jeconnoc
-editor: ''
-tags: ''
-ms.assetid: ''
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
@@ -16,60 +12,60 @@ ms.workload: infrastructure
 ms.date: 03/16/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: 71661d8640dbe14082292cb9637964adac9fa803
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 19a641ba86333047b90c36cef242d524ccad5fe1
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30180618"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50138161"
 ---
-# <a name="how-to-send-real-user-measurements-to-azure-traffic-manager-using-web-pages"></a>Postup odesílání reálného měření uživatele k pomocí webových stránek programem Azure Traffic Manager
+# <a name="how-to-send-real-user-measurements-to-azure-traffic-manager-using-web-pages"></a>Jak odeslat měření Real User Measurements do Azure Traffic Manager pomocí webových stránek
 
-Můžete nakonfigurovat webových stránek k odeslání do Traffic Manageru reálného měření uživatel získat klíč měření skutečné uživatele (RUM) a vložení generovaný kód pro webové stránky.
+Můžete nakonfigurovat webové stránky k odeslání měření Real User Measurements do Traffic Manageru získáním klíč měření reálných skutečných uživatelů (REÁLNÝCH) a vkládání generovaný kód pro webové stránky.
 
-## <a name="obtain-a-real-user-measurements-key"></a>Získat klíč reálného měření uživatele
+## <a name="obtain-a-real-user-measurements-key"></a>Získat klíč měření Real User Measurements
 
-Měření trvat a odeslat do Traffic Manageru z klientské aplikace jsou určeny pomocí jedinečného řetězce, volá se **klíč měření skutečné uživatele (RUM)**. Můžete získat RUMU klíče pomocí portálu Azure, rozhraní REST API, nebo pomocí prostředí PowerShell nebo rozhraní příkazového řádku Azure.
+Měření trvat a odeslat do Traffic Manageru z klientské aplikace jsou označeny pomocí jedinečného řetězce, volá se, **klíč měření reálných skutečných uživatelů (REÁLNÝCH)**. Můžete získat spuštění klíče pomocí webu Azure portal, rozhraní REST API, nebo pomocí Powershellu nebo rozhraní příkazového řádku Azure.
 
-Získat klíč RUM pomocí portálu Azure:
-1. V prohlížeči Přihlaste se k portálu Azure. Pokud účet nemáte, můžete zaregistrovat k bezplatné zkušební verzi jeden měsíc.
-2. V panelu vyhledávání na portálu, vyhledejte název profilu Traffic Manager, který chcete upravit a pak klikněte na profil služby Traffic Manager ve výsledcích, zobrazené.
-3. V okně profil Traffic Manageru klikněte na tlačítko **reálného měření uživatele** pod **nastavení**.
-4. Klikněte na tlačítko **vygenerovat klíč** se vytvořit nový klíč RUM.
+Získání klíče REÁLNÝCH pomocí webu Azure portal:
+1. Z prohlížeče Přihlaste se k webu Azure portal. Pokud ještě nemáte účet, můžete se zaregistrovat k bezplatné zkušební verzi na jeden měsíc.
+2. Na panelu hledání na portálu vyhledejte název profilu Traffic Manageru, který chcete upravit a poté klikněte na profil Traffic Manageru ve výsledcích, který je zobrazeno.
+3. V okně profilu Traffic Manageru, klikněte na tlačítko **měření Real User Measurements** pod **nastavení**.
+4. Klikněte na tlačítko **vygenerovat klíč** a vytvořte nový klíč REÁLNÝCH.
  
-  ![Vygenerování klíče reálného měření uživatele](./media/traffic-manager-create-rum-visual-studio/generate-rum-key.png)
+  ![Vygenerovat klíč měření Real User Measurements](./media/traffic-manager-create-rum-visual-studio/generate-rum-key.png)
 
-   **Obrázek 1: Reálný uživatel měření generování klíče**
+   **Obrázek 1: Vygenerovat klíč měření reálných uživatelů**
 
-5. V okně teď zobrazuje generování klíče RUM a fragment kódu jazyka JavaScript, který potřebuje má být vložen do stránku HTML.
+5. V okně zobrazí teď generování klíče REÁLNÝCH a fragment kódu jazyka JavaScript, které je potřeba vložit do HTML stránky.
  
-    ![Kód jazyka JavaScript pro klíč reálného měření uživatele](./media/traffic-manager-create-rum-web-pages/rum-javascript-code.png)
+    ![Kód jazyka JavaScript pro měření Real User Measurements klíč](./media/traffic-manager-create-rum-web-pages/rum-javascript-code.png)
 
-    **Obrázek 2: Klíč měření reálný uživatel a měření JavaScript**
+    **Obrázek 2: Klíč měření reálných uživatelů a JavaScript měření**
  
-6.  Klikněte **kopie** tlačítko zkopírujete kód jazyka JavaScript. 
+6.  Klikněte na tlačítko **kopírování** tlačítka pro kopírování kódu jazyka JavaScript. 
 
 >[!IMPORTANT]
-> Použijte vygenerovaný JavaScript pro funkci měření skutečné uživatele fungovat správně. Všechny změny tohoto skriptu nebo skripty používané reálného měření uživatel může způsobit nepředvídatelné chování.
+> Pomocí generovaného jazyka JavaScript pro funkci měření Real User Measurements fungovat správně. Všechny změny tohoto skriptu nebo skripty používané měření Real User Measurements může způsobit nepředvídatelné chování.
 
 ## <a name="embed-the-code-to-an-html-web-page"></a>Vložení kódu pro webovou stránku HTML
 
-Po získání RUMU klíč, dalším krokem je pro vložení této zkopírovaný JavaScript na stránku HTML, které vaši koncoví uživatelé navštěvovat. Úpravy jazyka HTML, lze provést v mnoha směrech a pomocí různých nástrojů a pracovních postupů. Tento příklad ukazuje, jak aktualizovat stránku HTML, který chcete přidat tento skript. V tomto návodu můžete použít k přizpůsobení do pracovního postupu správy zdroje HTML.
+Dalším krokem po spuštění klíč jste obdrželi, je tento zkopírovaný jazyka JavaScript pro vložení do stránku HTML, které vaši koncoví uživatelé navštěvovat. Úpravy HTML, lze provést mnoha způsoby a pomocí různých nástrojů a pracovních postupů. Tento příklad ukazuje, jak aktualizovat stránku HTML pro přidání tohoto skriptu. Tyto pokyny můžete použít k přizpůsobení do vašeho pracovního postupu správy zdroje HTML.
 
 1.  V textovém editoru otevřete stránku HTML
-2.  Vložte kód JavaScript měl zkopírovali v předchozím kroku do části textu HTML (zkopírovaný kódu je na řádku 8 & 9, viz obrázek 3).
+2.  Vložte kód jazyka JavaScript v předchozím kroku jste měli zkopírovali do těla HTML (je tento zkopírovaný kód na řádku 8 a 9, viz obrázek 3).
  
-    ![Vložení kódu jazyka Javascript do webové stránky pro reálného měření uživatele](./media/traffic-manager-create-rum-web-pages/real-user-measurement-embed-script.png)  
+    ![Vložení kódu jazyka Javascript do webové stránky pro měření Real User Measurements](./media/traffic-manager-create-rum-web-pages/real-user-measurement-embed-script.png)  
 
-    **Obrázek 3: Jednoduchý HTML s vložený JavaScript reálného měření uživatele**
+    **Obrázek 3: Jednoduchého kódu HTML pomocí vložený skutečné JavaScript měření reálných uživatelů**
 
-3.  Uložte soubor HTML a hostitele ho na webový server připojení k Internetu. 
-4. Další čas, který je vykreslen tuto stránku ve webovém prohlížeči, je stažena JavaScript odkazuje a skript spustí měření a vytváření sestav operations.
+3.  Uložte soubor ve formátu HTML a hostitele na webového serveru připojený k Internetu. 
+4. Při příštím vykreslování této stránky ve webovém prohlížeči JavaScript odkazované se stáhne a skript se spustí měření a vytváření sestav operations.
 
 
 ## <a name="next-steps"></a>Další postup
-- Další informace o [reálného měření uživatele](traffic-manager-rum-overview.md)
-- Další informace [fungování Traffic Manager](traffic-manager-overview.md)
+- Další informace o [měření Real User Measurements](traffic-manager-rum-overview.md)
+- Přečtěte si [jak funguje Traffic Manager](traffic-manager-overview.md)
 - Další informace o [metody směrování provozu](traffic-manager-routing-methods.md) podporované nástrojem Traffic Manager
-- Zjistěte, jak [vytvořit profil správce provozu](traffic-manager-create-profile.md)
+- Zjistěte, jak [vytvořit profil služby Traffic Manager](traffic-manager-create-profile.md)
 

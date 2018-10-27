@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 1bb0bc0aa7ad6bbbad502832ba8e0a96f36de428
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: 25b4777be4257933b84d58d0f10cf12571de9590
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48268294"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50155316"
 ---
 # <a name="administer-your-iot-central-application"></a>Spravovat aplikace IOT Central
 
@@ -33,7 +33,7 @@ Po vytvoření aplikace Microsoft Azure IoT Central, můžete použít **správu
 
 V **správu** část, sekundární navigační nabídka obsahuje odkazy na různé úlohy správy.
 
-Pro přístup k a použít **správu** oddíl, musí být v **správce** role pro aplikaci Azure IoT Central. Pokud vytvoříte aplikaci Azure IoT Central, je automaticky přiřazen k **správce** role pro danou aplikaci. *Správa uživatelů* části v tomto článku obsahuje další informace o tom, jak přiřadit **správce** role jiným uživatelům.
+Pro přístup k a použít **správu** oddíl, musí být v **správce** role pro aplikaci Azure IoT Central. Pokud vytvoříte aplikaci Azure IoT Central, je automaticky přiřazen k **správce** role pro danou aplikaci. [Správa uživatelů](#manage-users) části v tomto článku obsahuje další informace o tom, jak přiřadit **správce** role jiným uživatelům.
 
 ## <a name="change-application-name"></a>Změna názvu aplikace
 

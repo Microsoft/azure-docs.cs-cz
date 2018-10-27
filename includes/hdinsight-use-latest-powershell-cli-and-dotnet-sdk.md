@@ -1,3 +1,16 @@
+---
+author: jasonwhowell
+ms.service: hdinsight
+ms.topic: include
+ms.date: 10/25/2018
+ms.author: jasonh
+ms.openlocfilehash: 4b4b1f3a52dcbaa01f9fac73bce09a75495408df
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50166058"
+---
 > [!IMPORTANT]
 > Podpora pro správu prostředků služby HDInsight pomocí Azure Service Manager (ASM) pomocí Azure Powershellu, rozhraní příkazového řádku Azure a sady HDInsight .NET SDK je **zastaralé**a jsme ji odebrali 1. ledna 2017. Kroky v tomto dokumentu používají nové rutiny Azure Powershellu, příkazů rozhraní příkazového řádku Azure a sady .NET SDK, které pracují s Azure Resource Manageru.
 > 

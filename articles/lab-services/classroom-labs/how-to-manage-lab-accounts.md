@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/17/2018
 ms.author: spelluru
-ms.openlocfilehash: fd43c62f1a291a59d5d373437a49b263d6af4cb3
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 6f9b85ec4821ff2454970136b3c8af2cb0f92154
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39345884"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50140819"
 ---
 # <a name="manage-lab-accounts-in-azure-lab-services"></a>Správa účtů testovacího prostředí ve službě Azure Lab Services 
 Ve službě Azure Lab Services účet testovacího prostředí je kontejner pro spravované testovací prostředí, jako je například testovací prostředí v učebnách. Správce nastaví účet testovacího prostředí pomocí Azure Lab Services a poskytuje přístup k vlastníků testovacího prostředí, kteří můžou vytvářet testovací prostředí v rámci účtu. Tento článek popisuje, jak vytvořit účet testovacího prostředí, zobrazit všechny účty testovacího prostředí nebo odstranění účtu služby testovacího prostředí.
@@ -55,17 +55,17 @@ Pokud chcete v účtu testovacího prostředí nastavit testovací prostředí v
     ![Přidání uživatele do role Autor testovacího prostředí](../media/tutorial-setup-lab-account/add-user-to-lab-creator-role.png)
 
 ## <a name="specify-marketplace-images-available-to-lab-owners"></a>Určení imagí v Marketplace dostupných pro vlastníky testovacích prostředí
-Jako vlastník účtu testovacího prostředí můžete zadat Image Marketplace, které tvůrci testovacího prostředí můžete použít k vytvoření testovacích prostředí v účtu testovacího prostředí. 
+Jako vlastník účtu testovacího prostředí můžete určit image z Marketplace, které můžou autoři testovacích prostředí použít k vytváření testovacích prostředí v tomto účtu testovacího prostředí. 
 
 1. V nabídce vlevo vyberte **Marketplace images** (Image z Marketplace). Ve výchozím nastavení se zobrazí úplný seznam imagí (povolených i zakázaných). Pomocí možnosti **Enabled only**/**Disabled only** (Jenom povolené / Jenom zakázané) v rozevíracím seznamu v horní části můžete seznam filtrovat, aby se v něm zobrazovaly jen povolené/zakázané image. 
     
     ![Stránka imagí v Marketplace](../media/tutorial-setup-lab-account/marketplace-images-page.png)
 
-    Image Marketplace, které jsou zobrazeny v seznamu jsou pouze ty, které splňují následující podmínky:
+    V tomto seznamu se zobrazí pouze image z Marketplace, které splňují následující podmínky:
         
-    - Vytvoří jeden virtuální počítač.
-    - Zřizování virtuálních počítačů pomocí Azure Resource Manageru
-    - Nevyžaduje, aby zakoupení dalších licenčního plánu
+    - Vytváří jeden virtuální počítač.
+    - Ke zřízení virtuálních počítačů používají Azure Resource Manager.
+    - Nevyžadují zakoupení dalšího licenčního plánu.
 2. Pokud chcete povolenou image v Marketplace **zakázat**, proveďte některý z těchto kroků: 
     1. V posledním sloupci vyberte **…** (tři tečky) a zvolte **Disable image** (Zakázat image). 
 
@@ -90,6 +90,28 @@ Postupujte podle pokynů v předchozí části, která se zobrazí v seznamu ú�
 2. Vyberte **odstranit** z panelu nástrojů. 
 3. Typ **Ano** pro potvrzení.
 4. Vyberte **Odstranit**. 
+
+## <a name="view-and-manage-labs-in-the-lab-account"></a>Zobrazení a správa testovacích prostředí v rámci účtu testovacího prostředí
+
+1. Na **účet testovacího prostředí** stránce **Labs** v nabídce vlevo.
+
+    ![Testovací prostředí v rámci účtu](../media/how-to-manage-lab-accounts/labs-in-account.png)
+1. Zobrazí **seznamu testovacích prostředí** na účet s následujícími informacemi: 
+    1. Název testovacího prostředí.
+    2. Datum vytvoření testovacího prostředí. 
+    3. E-mailová adresa uživatele, který vytvořil testovacího prostředí. 
+    4. Maximální počet uživatelů povolených v testovacím prostředí. 
+    5. Stav testovacího prostředí. 
+
+## <a name="delete-a-lab-in-the-lab-account"></a>Odstranit testovací prostředí v účtu testovacího prostředí
+Postupujte podle pokynů v předchozí části zobrazíte seznam testovacích prostředí v rámci účtu testovacího prostředí.
+
+1. Vyberte **... (tři tečky)** a vyberte **odstranit**. 
+
+    ![Odstranění testovacího prostředí – tlačítko](../media/how-to-manage-lab-accounts/delete-lab-button.png)
+2. Vyberte **Ano** na upozornění. 
+
+
 
 ## <a name="next-steps"></a>Další postup
 Začínáme s nastavením testovacího prostředí pomocí Azure Lab Services:

@@ -1,3 +1,16 @@
+---
+author: rayne-wiselman
+ms.service: site-recovery
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: raynew
+ms.openlocfilehash: ffc9b09c72ef1bf5180a0d626908d09b6fdd41ca
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50165940"
+---
 ### <a name="prepare-for-a-push-installation-on-a-windows-computer"></a>Příprava nabízené instalace na počítači Windows
 
 1. Zkontrolujte, zda je síťové připojení mezi Windows počítačem a procesovým serverem.

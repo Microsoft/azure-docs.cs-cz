@@ -11,12 +11,12 @@ ms.topic: article
 ms.workload: na
 ms.date: 04/05/2018
 ms.author: danlep
-ms.openlocfilehash: 5e0358ebf525c39c09df4268971fa71c02457821
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: fb0760f24b8f384818db8154ffe871d7fd4ce429
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47094189"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50138340"
 ---
 # <a name="monitor-and-debug-an-azure-batch-net-application-with-application-insights"></a>Monitorování a ladění aplikace Azure Batch .NET pomocí nástroje Application Insights
 
@@ -25,6 +25,10 @@ ms.locfileid: "47094189"
 Tento článek popisuje postup přidání a konfigurace knihovny služby Application Insights do vašeho řešení Azure Batch .NET a nástroje, kód vaší aplikace. Také ukazuje, jak můžete monitorovat své aplikace prostřednictvím portálu Azure portal a vytvářet vlastní řídicí panely. Application Insights podpory v jiných jazycích, podívejte se na [jazyky, platformy a integrace dokumentaci](../application-insights/app-insights-platforms.md).
 
 Ukázky C# řešení s kódem pro tento článek je k dispozici na [Githubu](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/ApplicationInsights). V tomto příkladu přidá kód instrumentace Application Insights [TopNWords](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/TopNWords) příklad. Pokud nejste obeznámeni s ukázkou, zkuste sestavováním a spouštěním TopNWords nejprve. To vám pomůže porozumět základní pracovní postup služby Batch zpracování sadu vstupní objekty BLOB paralelně na několika výpočetních uzlech. 
+
+> [!TIP]
+> Jako alternativu konfigurace vašeho řešení Batch, chcete-li zobrazit data Application Insights, jako jsou čítače výkonu virtuálních počítačů v Průzkumníkovi služby Batch. [Batch Explorer](https://github.com/Azure/BatchExplorer) je zdarma, bohatými funkcemi, samostatný klientský nástroj umožňující vytvářet, ladit a monitorovat aplikace Azure Batch. Můžete si stáhnout [instalační balíček](https://azure.github.io/BatchExplorer/) pro Mac, Linux nebo Windows. Najdete v článku [batch insights úložiště](https://github.com/Azure/batch-insights) pro rychlé kroky, aby data Application Insights v Průzkumníkovi služby Batch. 
+>
 
 ## <a name="prerequisites"></a>Požadavky
 * [Visual Studio 2017](https://www.visualstudio.com/vs)

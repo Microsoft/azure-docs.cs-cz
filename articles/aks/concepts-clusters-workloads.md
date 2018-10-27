@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: iainfou
-ms.openlocfilehash: fb428e63be54688744bcdb022ba276a957f8aee1
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 1b0b3d0db2067a492905d8f828934f0b63fb8f54
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49648764"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50155979"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Základní koncepty Kubernetes pro Azure Kubernetes Service (AKS)
 
@@ -71,6 +71,27 @@ Velikost virtuálního počítače Azure pro uzly definuje počet procesorů, ko
 Ve službě AKS image virtuálního počítače pro uzly ve vašem clusteru momentálně založené na Ubuntu Linuxu. Při vytváření clusteru AKS nebo vertikálně navýšit kapacitu počtu uzlů, Platforma Azure vytvoří požadovaný počet virtuálních počítačů a nakonfiguruje je. Neexistuje žádná ruční konfigurace do mezipaměti.
 
 Pokud je potřeba pomocí jiného hostitele operačního systému, modul runtime kontejneru, nebo použít vlastní balíčky, můžete nasadit vlastní cluster Kubernetes pomocí [acs-engine][acs-engine]. Nadřazeného `acs-engine` uvolní funkce a poskytnout informace o možnostech konfigurace předtím, než se oficiálně podporuje v clusteru AKS. Například pokud chcete používat kontejnery Windows nebo modul runtime kontejneru než Dockeru, můžete použít `acs-engine` můžete nakonfigurovat a nasadit cluster Kubernetes, který bude vyhovovat vašim aktuálním potřebám.
+
+### <a name="resource-reservations"></a>Rezervace prostředků
+
+Není nutné spravovat základní součásti Kubernetes na každém uzlu, jako *kubelet*, *kube proxy*, a *kube-dns*, ale některé z dostupných spotřebují výpočetní prostředky. Pokud chcete zachovat uzel výkon a funkčnost, jsou vyhrazené následujících výpočetních prostředků na každém uzlu:
+
+- **Procesor** – 60ms
+- **Paměť** – 20 % až 4 GB
+
+Tyto rezervace znamená, že množství dostupné procesoru a paměti pro vaše aplikace může zobrazit menší než samotný uzel obsahuje. Pokud existují omezení zdrojů vzhledem k počtu aplikací, které spouštíte, tyto rezervace zkontrolujte využití procesoru a paměť zůstane k dispozici pro součásti jádra Kubernetes. Rezervace prostředků se nedá změnit.
+
+Příklad:
+
+- **Standard DS2 v2** velikost uzlu obsahuje 2 virtuálních procesorů a 7 GB paměti
+    - 20 % 7 paměti GiB = 1,4 GB
+    - Celkem *(7 1.4) = 5.6 GiB* paměti je k dispozici pro uzel
+    
+- **Standardní v3 E4s** velikost uzlu obsahuje 4 virtuální procesory a 32 GiB paměti
+    - 20 % paměti 32 GiB = 6.4 GiB, ale AKS pouze rezervuje maximálně 4 GB
+    - Celkem *(32-4) = 28 GiB* je k dispozici pro uzel
+    
+Základní uzel operačního systému také vyžaduje určitý objem prostředků procesoru a paměti k dokončení vlastní základních funkcí.
 
 ### <a name="node-pools"></a>Fondy uzlů
 

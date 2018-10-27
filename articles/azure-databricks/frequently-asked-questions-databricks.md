@@ -1,34 +1,31 @@
 ---
-title: 'Azure Databricks: Běžné otázky a pomoc | Dokumentace Microsoftu'
+title: 'Azure Databricks: Běžné otázky a pomoc'
 description: Získejte odpovědi na běžné otázky a informace Poradce při potížích Azure Databricks.
 services: azure-databricks
-documentationcenter: ''
-author: nitinme
-manager: cgronlun
-editor: cgronlun
+author: mamccrea
+ms.author: mamccrea
+ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.workload: big-data
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 05/29/2018
-ms.author: nitinme
-ms.openlocfilehash: c3ba235c60480c38a21ee3264c54b4a4dcdea340
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.topic: conceptual
+ms.date: 10/25/2018
+ms.openlocfilehash: 3bcc511ec6ad8a246c2b1b3a33eb59043a45830e
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39434597"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50138357"
 ---
 # <a name="frequently-asked-questions-about-azure-databricks"></a>Nejčastější dotazy k Azure Databricks
 
-Tento článek obsahuje nejčastější dotazy, které může mít související s Azure Databricks. Také uvádí některé běžné problémy, může být při používání služby Databricks. Další informace najdete v tématu [co je Azure Databricks](what-is-azure-databricks.md). 
+Tento článek uvádí hlavní otázky, které může mít související s Azure Databricks. Také uvádí některé běžné problémy, může být při používání služby Databricks. Další informace najdete v tématu [co je Azure Databricks](what-is-azure-databricks.md). 
 
-## <a name="can-i-use-my-own-keys-for-local-encryption"></a>Můžete použít vlastní klíče pro místní šifrování? 
-Použití vlastní klíče ze služby Azure Key Vault se nepodporuje v aktuální verzi. 
+## <a name="can-i-use-azure-key-vault-to-store-keyssecrets-to-be-used-in-azure-databricks"></a>Můžete použít Azure Key Vault pro ukládání klíčů/tajných klíčů se používá v Azure Databricks?
+Ano. Azure Key Vault můžete použít k ukládání klíčů/tajných klíčů pro použití s Azure Databricks. Další informace najdete v tématu [zajišťuje Azure Key Vault obory](https://docs.azuredatabricks.net/user-guide/secrets/secret-scopes.html#akv-ss).
 
-## <a name="can-i-use-azure-virtual-networks-with-databricks"></a>Můžete použít virtuální sítě Azure s Databricks?
-Vytvoření nové virtuální sítě jako součást zřizování Databricks. V této verzi nelze použít vlastní virtuální sítě Azure.
+
+## <a name="can-i-use-azure-virtual-networks-with-databricks"></a>Můžete použít Azure Virtual Network s Databricks?
+Ano. S Azure Databricks můžete použít Azure Virtual Network (VNET). Další informace najdete v tématu [nasazení Azure Databricks ve službě Azure Virtual Network](https://docs.azuredatabricks.net/administration-guide/cloud-configurations/azure/vnet-inject.html).
 
 ## <a name="how-do-i-access-azure-data-lake-store-from-a-notebook"></a>Jak získám přístup k Azure Data Lake Store z poznámkového bloku? 
 
@@ -116,7 +113,7 @@ Podrobnější pokyny najdete v článku [poskytovatelé a typy prostředků](..
 
 #### <a name="background"></a>Pozadí
 
-Azure Databricks je integrovat se službou Azure AD. To umožňuje nastavit oprávnění v rámci Azure Databricks (třeba na poznámkových bloků nebo clustery) tak, že zadáte uživatele ze služby Azure AD. Pro Azure Databricks, abyste mohli zobrazit jména uživatelů ze služby Azure AD vyžaduje oprávnění ke čtení k těmto informacím. To vyžaduje souhlas. Pokud svůj souhlas již není k dispozici, se zobrazí chyba.
+Azure Databricks je integrovaná s Azure Active Directory. Oprávnění v rámci Azure Databricks (třeba na poznámkových bloků nebo clustery) můžete nastavit tak, že zadáte uživatele ze služby Azure AD. Pro Azure Databricks, aby mohli zobrazit jména uživatelů ze služby Azure AD vyžaduje oprávnění ke čtení pro tyto informace a souhlas s předávat. Pokud svůj souhlas již není k dispozici, se zobrazí chyba.
 
 #### <a name="solution"></a>Řešení
 

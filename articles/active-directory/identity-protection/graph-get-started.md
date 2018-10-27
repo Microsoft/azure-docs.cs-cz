@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/08/2017
+ms.date: 10/26/2018
 ms.author: markvi
 ms.reviewer: nigu
 ms.custom: seohack1
-ms.openlocfilehash: 3bdf44e0a1cf0ccda6d015fa3683964f3530d4af
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: eefbfcf741db3d0949910bc5da8494e087c39ec7
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40003479"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50139142"
 ---
 # <a name="get-started-with-azure-active-directory-identity-protection-and-microsoft-graph"></a>Začínáme s Azure Active Directory Identity Protection a Microsoft Graph
 Microsoft Graph je Microsoft unified koncový bod rozhraní API a Domovská [Azure Active Directory Identity Protection](../active-directory-identityprotection.md) rozhraní API. Prvního rozhraní API, **identityRiskEvents**, umožňuje dotazů Microsoft Graphu seznam [rizikových událostí](../reports-monitoring/concept-risk-events.md) a související informace. Tento článek vám pomůže začít dotazování toto rozhraní API. Důkladný úvod, úplnou dokumentaci a přístup ke Graph Exploreru, najdete v článku [webu Microsoft Graphu](https://graph.microsoft.io/).
@@ -37,8 +37,11 @@ Přístup k Identity Protection datům prostřednictvím Microsoft Graphu čtyř
 
 Než začnete, budete potřebovat:
 
-* Oprávnění správce k vytvoření aplikace ve službě Azure AD
-* Název domény vašeho tenanta (například contoso.onmicrosoft.com).
+- Klient služby Azure AD P2
+
+- Oprávnění správce k vytvoření aplikace ve službě Azure AD
+
+- Název domény vašeho tenanta (například contoso.onmicrosoft.com).
 
 
 ## <a name="retrieve-your-domain-name"></a>Načtení názvu domény 
@@ -49,12 +52,14 @@ Než začnete, budete potřebovat:
    
     ![Vytvoření aplikace](./media/graph-get-started/41.png)
 
+3. Klikněte na tlačítko **vlastní názvy domén**.
 
-3. V **spravovat** klikněte na tlačítko **vlastnosti**.
+    ![Vlastní názvy domén](./media/graph-get-started/71.png)
 
-    ![Vytvoření aplikace](./media/graph-get-started/42.png)
+4. Ze seznamu názvů domén zkopírujte je označený jako primární název domény.
 
-4. Zkopírujte název vaší domény.
+    ![Vlastní názvy domén](./media/graph-get-started/72.png)
+
 
 
 ## <a name="create-a-new-app-registration"></a>Vytvoření registrace nové aplikace
@@ -74,7 +79,7 @@ Než začnete, budete potřebovat:
 
     a. V **název** textového pole zadejte název vaší aplikace (např: AADIP rizikové události rozhraní API aplikace).
    
-    b. Jako **typ**vyberte **webové aplikace a / nebo webové rozhraní API**.
+    b. Jako **typ aplikace**vyberte **webové aplikace a / nebo webové rozhraní API**.
    
     c. V **přihlašovací adresa URL** textové pole, typ `http://localhost`.
 

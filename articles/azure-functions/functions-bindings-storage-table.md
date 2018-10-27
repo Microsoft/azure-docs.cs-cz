@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 09/03/2018
 ms.author: glenga
-ms.openlocfilehash: 0a6939ae32945c4efc22cbcaece402180a183c10
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: a16b71bf6c3f40d0595e1db136dd5631b029ed48
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50087317"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50139170"
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Vazby služby Azure storage tabulky pro službu Azure Functions
 
@@ -437,7 +437,7 @@ public int run(
  
 V [knihoven tříd C#](functions-dotnet-class-library.md), použít ke konfiguraci vazby vstupní tabulky následující atributy:
 
-* [TableAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/TableAttribute.cs)
+* [TableAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Extensions.Storage/Tables/TableAttribute.cs)
 
   Konstruktor atributu má název tabulky, klíč oddílu a klíče řádku. To je možné na výstupní parametr nebo návratovou hodnotu funkce, jak je znázorněno v následujícím příkladu:
 
@@ -723,7 +723,7 @@ module.exports = function (context) {
 
 ## <a name="output---attributes"></a>Výstup – atributy
 
-V [knihoven tříd C#](functions-dotnet-class-library.md), použijte [TableAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/TableAttribute.cs).
+V [knihoven tříd C#](functions-dotnet-class-library.md), použijte [TableAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Extensions.Storage/Tables/TableAttribute.cs).
 
 Konstruktor atributu má název tabulky. Je možné použít na `out` parametr nebo návratovou hodnotu funkce, jak je znázorněno v následujícím příkladu:
 

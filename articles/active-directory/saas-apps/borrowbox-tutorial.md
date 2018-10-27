@@ -8,18 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: dd8e4178-9a63-492a-bd48-782e94e404af
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/25/2018
+ms.date: 10/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 654af4a3512f1e2acab5b0edf9e1aa4620ea70b4
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: a8ed2f04bf3004907cdd6e33bfb30260233fb101
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50093067"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50157152"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-borrowbox"></a>Kurz: Integrace Azure Active Directory se službou BorrowBox
 

@@ -8,20 +8,20 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: bf86e769aff4a9b03d5df1b1aef702814c605fa4
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: c170f573a473d3fdfca5c916b4be594dc93d6b27
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46368082"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50156319"
 ---
 # <a name="how-to-use-analytics-to-analyze-your-device-data"></a>Jak používat analýzu k analýze dat zařízení
 
 
-*Tento článek se týká, tvůrci, správci a operátoři.*
+*Tento článek je pro operátory, tvůrce a správce.*
 
 
-Microsoft Azure IoT Central poskytuje bohaté analytické funkce dávat smysl velkých objemů dat z vašich zařízení. Abyste mohli začít, navštivte **Analytics** v levé navigační nabídce. 
+Azure IoT Central poskytuje bohaté analytické funkce dávat smysl velkých objemů dat z vašich zařízení. Abyste mohli začít, navštivte **Analytics** v levé navigační nabídce. 
 
   ![IoT Central navigaci na analytics](media\howto-create-analytics\analytics-navigation.png)
 
@@ -60,12 +60,12 @@ to-do: confirm if 10 is the max number of measurements
 
 Máte různé způsoby, ve kterých můžete dále změnit podle svých potřeb vizualizace výsledků dotazu. Můžete přepínat mezi zobrazení grafu a zobrazení mřížky, přiblížení nebo oddálení, aktualizovat datovou sadu a měnit, jak jsou zobrazeny čáry.
 
-* **Zobrazit mřížku:** vaše výsledky budou k dispozici ve formátu tabulky můžete podívat konkrétní hodnotu pro každý datový bod. Toto zobrazení také splňuje standardy usnadnění. 
+* **Zobrazit mřížku:** vaše výsledky budou k dispozici ve formátu tabulky, můžete podívat konkrétní hodnotu pro každý datový bod. Toto zobrazení také splňuje standardy usnadnění. 
 * **Zobrazit graf:** vaše výsledky se zobrazí v řádku formát, který se snadno body stoupající nebo klesající trendy a anomálie. 
 
  ![Zobrazením mřížky pro analýzu](media\howto-create-analytics\analytics-showgrid.png)
 
-Přiblížení umožňuje doladit vaše data. Pokud zjistíte časové období chcete zaměřit na v rámci sady výsledků pomocí úchytů váš kurzor oblasti, která byste chtěli přiblížit a pomocí dostupných ovládacích prvků proveďte jeden z následujících akcí:
+Přiblížení umožňuje doladit vaše data. Pokud najdete časové období, které by raději se zaměřuji na v rámci ve výsledné sadě, použijte kurzor a zkopírovat oblasti, která byste chtěli přiblížit a pomocí dostupných ovládacích prvků proveďte jeden z následujících akcí:
 * **Přiblížit:** po výběru časové období, Lupa v se povolí a umožní vám přiblížit k vašim datům.
 * **Horizonální oddálení:** tento ovládací prvek umožňuje zmenšit o jednu úroveň z poslední přiblížení. Například pokud jste přiblížení na vaše data třikrát zmenšit bude trvat zpět jeden krok po jednom.
 * **Obnovit zvětšení:** po jste provedli různé úrovně přiblížení, můžete ovládací prvek lupy resetování se vraťte k původní sadu výsledků. 

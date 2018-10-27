@@ -5,14 +5,14 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 07/26/2018
+ms.date: 10/25/2018
 ms.author: iainfou
-ms.openlocfilehash: 7caa98b65b35d1eb1a000f1e9099fbf8eb3f8861
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: c3256b2b1e8be0e883d0f7b47e66ab1fee95b042
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406037"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50138156"
 ---
 # <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>Povolit a zkontrolovat Kubernetes hlavní uzel protokolů ve službě Azure Kubernetes Service (AKS)
 
@@ -42,7 +42,7 @@ Následující příklad ukazuje snímek obrazovky portálu *nastavení diagnost
 ![Povolit pracovní prostor Log Analytics pro cluster Log Analytics AKS](media/view-master-logs/enable-oms-log-analytics.png)
 
 >[!NOTE]
->Pracovní prostory OMS jsou dnes označovány jako pracovní prostory Log Analytics. 
+>Pracovní prostory OMS jsou dnes označovány jako pracovní prostory Log Analytics.
 
 ## <a name="schedule-a-test-pod-on-the-aks-cluster"></a>Plánování testů pod v clusteru AKS
 
@@ -82,7 +82,7 @@ Může trvat několik minut, než se diagnostické protokoly povolena a zobrazí
 
 ![Vyberte pracovní prostor Log Analytics pro váš cluster AKS](media/view-master-logs/select-log-analytics-workspace.png)
 
-Na levé straně zvolte **prohledávání protokolů**. Chcete-li zobrazit *kube apiserver*, v textovém poli zadejte následující dotaz:
+Na levé straně zvolte **protokoly**. Chcete-li zobrazit *kube apiserver*, v textovém poli zadejte následující dotaz:
 
 ```
 AzureDiagnostics

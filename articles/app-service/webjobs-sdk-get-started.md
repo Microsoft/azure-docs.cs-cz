@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/27/2018
 ms.author: glenga
-ms.openlocfilehash: e2f9bee2adcebfd47ca088a1bbe76b870e285044
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: b0f4ef5079ac689827cb49884fa1c6a51529ea83
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45580428"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50140345"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Začínáme se sadou Azure WebJobs SDK pro zpracování na pozadí založený na událostech
 
@@ -182,7 +182,7 @@ V této části nastavíte konzoly protokolování, který používá novou arch
 
 Emulátor úložiště Azure, na kterém běží místně nemá všechny funkce, které vyžaduje služba WebJobs SDK. V této části tak vytvořit účet úložiště v Azure a nakonfigurujte projekt tak, aby ho použít.
 
-1. Otevřít **Průzkumníka serveru** a přihlášení do Azure. Klikněte pravým tlačítkem myši **Azure** uzlu a pak vyberte **připojit k předplatnému Microsoft Azure**.
+1. Otevřít **Průzkumníka serveru** ve Visual Studiu a přihlášení do Azure. Klikněte pravým tlačítkem myši **Azure** uzlu a pak vyberte **připojit k předplatnému Microsoft Azure**.
 
    ![Přihlášení k Azure](./media/webjobs-sdk-get-started/sign-in.png)
 
@@ -245,7 +245,7 @@ V této části sestavení a spusťte projekt lokálně a aktivovat funkci tak, 
 
 1. Zavřete okno konzoly.
 
-1. V **Průzkumníka serveru**, rozbalte uzel pro nový účet úložiště a pak klikněte pravým tlačítkem na **fronty**. 
+1. V **Průzkumníka serveru** v sadě Visual Studio, rozbalte uzel pro nový účet úložiště a pak klikněte pravým tlačítkem na **fronty**. 
 
 1. Vyberte **vytvořit frontu**. 
 
@@ -310,7 +310,7 @@ V této části provedete následující úlohy k nastavení Application Insight
 
 ### <a name="configure-app-settings"></a>Konfigurace nastavení aplikace 
 
-1. V **Průzkumníka serveru**, rozbalte **služby App Service** pod uzlem **Azure**.
+1. V **Průzkumníka serveru** v sadě Visual Studio, rozbalte **služby App Service** pod uzlem **Azure**.
 
 1. Rozbalte skupinu prostředků, které vaše aplikace služby App Service je v a pak klikněte pravým tlačítkem na aplikaci služby App Service.
 
@@ -396,7 +396,7 @@ V této části provedete následující úlohy k nastavení Application Insight
 
 V této části spustíte místně znovu ověřte, že data protokolování teď bude také Application Insights jde o konzole.
 
-1. Použití **Průzkumníka serveru** k vytvoření zprávy fronty, stejně jako jste to udělali [starší](#trigger-the-function)s výjimkou případů, zadejte *Hello App Insights!* jako text zprávy.
+1. Použití **Průzkumníka serveru** v sadě Visual Studio k vytvoření zprávy fronty, stejně jako jste to udělali [starší](#trigger-the-function)s výjimkou případů, zadejte *Hello App Insights!* jako text zprávy.
 
 1. Spusťte projekt.
 
@@ -442,7 +442,6 @@ V této části nasadíte projekt jako webová úloha. Nasazení do aplikace slu
 
 1. Ujistěte se, že nejsou spuštěné místně (Pokud je stále otevřen. Zavřete okno konzoly). V opačném případě místní instance může být první zpracovávat všechny zprávy fronty, které vytvoříte.
 
-1. Použití **Průzkumníka serveru** k vytvoření zprávy fronty, stejně jako jste to udělali [starší](#trigger-the-function)s výjimkou případů, zadejte *Hello Azure!*.
 
 1. Aktualizovat **fronty** stránky ve Visual Studiu a nová zpráva zmizela vzhledem k tomu, že ji zpracovat funkce spuštěné v Azure App Service.
 
@@ -485,7 +484,7 @@ Vstupní vazby zjednodušit kód, který čte data. V tomto příkladu zpráva f
 
 1. Vytvořte kontejner objektů blob v účtu úložiště.
 
-   a. V **Průzkumníka serveru**, rozbalte uzel pro váš účet úložiště, klikněte pravým tlačítkem na **objekty BLOB**a pak vyberte **vytvořit kontejner objektů Blob**.
+   a. V **Průzkumníka serveru** v sadě Visual Studio, rozbalte uzel pro váš účet úložiště, klikněte pravým tlačítkem na **objekty BLOB**a pak vyberte **vytvořit kontejner objektů Blob**.
 
    b. V **vytvořit kontejner objektů Blob** dialogové okno, zadejte *kontejneru* jako název kontejneru a pak klikněte na tlačítko **OK**.
 

@@ -1,12 +1,9 @@
 ---
-title: Země nebo oblast hierarchii používá Azure Traffic Manager geografické typ směrování | Microsoft Docs
-description: Tento článek obsahuje seznam země nebo oblast hierarchii používá Azure Traffic Manager geografické typ směrování
+title: Hierarchie zemí/oblastí, které používají Azure Traffic Manageru geografické směrování typu | Dokumentace Microsoftu
+description: Tento článek uvádí používá Azure Traffic Manageru geografické směrování typu hierarchie zemí/oblastí
 services: traffic-manager
 documentationcenter: ''
 author: kumudd
-manager: timlt
-editor: ''
-ms.assetid: ''
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
@@ -14,18 +11,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2017
 ms.author: kumud
-ms.openlocfilehash: 45fa209b4417ce8b65d1fa4f2f59ff6c2d50f3a4
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 1609daa4edbc3db9384941d575c141faaa799fb6
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2018
-ms.locfileid: "28201492"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50138238"
 ---
-# <a name="countryregion-hierarchy-used-by-azure-traffic-manager-for-geographic-traffic-routing-method"></a>Pomocí Azure Traffic Manager používá pro metodu směrování provozu geografické hierarchie země nebo oblast
+# <a name="countryregion-hierarchy-used-by-azure-traffic-manager-for-geographic-traffic-routing-method"></a>Hierarchie zemí/oblastí používaná pro geografickou metodu směrování provozu Azure Traffic Managerem
 
-Tento článek obsahuje seznam zemí a oblastí, které jsou používané **Geographic** metoda směrování v Azure Traffic Manageru provozu. Můžete také získat tyto informace prostřednictvím kódu programu voláním [rozhraní API REST Azure Traffic Manager](https://docs.microsoft.com/rest/api/trafficmanager/). 
+Tento článek obsahuje seznam zemí a oblastí, které jsou používané **Geographic** metodu směrování v Azure Traffic Manageru. Můžete také získat tyto informace prostřednictvím kódu programu pomocí volání [rozhraní REST API služby Azure Traffic Manager](https://docs.microsoft.com/rest/api/trafficmanager/). 
 
-- WORLD(World)
+- World(World)
 
     - GEO-EU(Europe)
 
@@ -35,9 +32,9 @@ Tento článek obsahuje seznam zemí a oblastí, které jsou používané **Geog
 
         - AT(Austria)
 
-        - AX (Ålandy)
+        - AX (Land ostrovy)
 
-        - BA (Bosny a Hercegoviny)
+        - BA (Bosna a Hercegovina)
 
         - BE(Belgium)
 
@@ -65,7 +62,7 @@ Tento článek obsahuje seznam zemí a oblastí, které jsou používané **Geog
 
         - FR(France)
 
-        - GB (Česká republika)
+        - GB (Spojené království)
 
         - GG(Guernsey)
 
@@ -101,7 +98,7 @@ Tento článek obsahuje seznam zemí a oblastí, které jsou používané **Geog
 
         - ME(Montenegro)
 
-        - MK (Makedonie, FYRO)
+        - MK (Makedonie, bývalá republika Jugoslávie)
 
         - MT(Malta)
 
@@ -123,21 +120,21 @@ Tento článek obsahuje seznam zemí a oblastí, které jsou používané **Geog
 
         - SI(Slovenia)
 
-        - SJ(Svalbard)
+        - Sj(Svalbard)
 
         - Sk(slovakia)
 
-        - SM(San Marino)
+        - SM (San Marino)
 
         - UA(Ukraine)
 
-        - VA (Vatikán)
+        - Posouzení ohrožení zabezpečení (Vatikán)
 
-        - XJ(Jan Mayen)
+        - XJ (Jan Mayen)
 
         - XK(Kosovo)
 
-    - Geograficky ME(Middle East)
+    - GEO-ME(Middle East)
 
         - AE (Spojené arabské emiráty)
 
@@ -157,7 +154,7 @@ Tento článek obsahuje seznam zemí a oblastí, které jsou používané **Geog
 
         - OM(Oman)
 
-        - PS (palestinskou)
+        - PS (Palestinská samospráva)
 
         - QA(Qatar)
 
@@ -169,9 +166,9 @@ Tento článek obsahuje seznam zemí a oblastí, které jsou používané **Geog
 
         - YE(Yemen)
 
-    - Geograficky NA(North America / Central America / Caribbean)
+    - GEO-NA(North America / Central America / Caribbean)
 
-        - AG (Antigua a Barbuda)
+        - Skupina dostupnosti (Antigua a Barbuda)
 
         - AI(Anguilla)
 
@@ -179,7 +176,7 @@ Tento článek obsahuje seznam zemí a oblastí, které jsou používané **Geog
 
         - BB(Barbados)
 
-        - Blokovaných (Svatý Bartoloměj)
+        - BL (Svatý Bartoloměj)
 
         - BM(Bermuda)
 
@@ -203,9 +200,9 @@ Tento článek obsahuje seznam zemí a oblastí, které jsou používané **Geog
 
             - NS(Nova Scotia) certifikační Autority
 
-            - CA-NT(Northwest Territories)
+            - NT(Northwest Territories) certifikační Autority
 
-            - CA-NU(Nunavut)
+            - CA-nu(Nunavut)
 
             - CA-on(Ontario)
 
@@ -217,15 +214,15 @@ Tento článek obsahuje seznam zemí a oblastí, které jsou používané **Geog
 
             - YT(Yukon Territory) certifikační Autority
 
-        - Znaky CR (Kostarika)
+        - Znak CR (Kostarika)
 
-        - CU(Cuba)
+        - Cu(Cuba)
 
-        - CW(CuraÃ§ao)
+        - CW(CuraÃ§AO)
 
         - DM(Dominica)
 
-        - Proveďte (Dominikánská republika)
+        - PROVÉST (Dominikánská republika)
 
         - GD(Grenada)
 
@@ -257,11 +254,11 @@ Tento článek obsahuje seznam zemí a oblastí, které jsou používané **Geog
 
         - NI(Nicaragua)
 
-        - PA(Panama)
+        - Pa(Panama)
 
-        - PM (Saint Pierre a Miquelon)
+        - ODP. (Saint Pierre a Miquelon)
 
-        - Kód PR (Portoriko)
+        - Žádost o přijetí změn (Portoriko)
 
         - SV (El Salvador)
 
@@ -271,21 +268,21 @@ Tento článek obsahuje seznam zemí a oblastí, které jsou používané **Geog
 
         - TT (Trinidad a Tobago)
 
-        - ÁLNÍ (USA Odlehlé ostrovy)
+        - UM (USA Menší odlehlé ostrovy)
 
         - US(United States)
 
-            - US-AK(Alaska)
+            - US-ak(Alaska)
 
-            - US-AL(Alabama)
+            - US-Al(Alabama)
 
             - US-ar(Arkansas)
 
-            - US-AZ(Arizona)
+            - US-az(Arizona)
 
             - US-CA(California)
 
-            - US-CO(Colorado)
+            - US-co(Colorado)
 
             - US-CT(Connecticut)
 
@@ -309,7 +306,7 @@ Tento článek obsahuje seznam zemí a oblastí, které jsou používané **Geog
 
             - US-KS(Kansas)
 
-            - US-KY(Kentucky)
+            - US-ky(Kentucky)
 
             - US-la(Louisiana)
 
@@ -333,9 +330,9 @@ Tento článek obsahuje seznam zemí a oblastí, které jsou používané **Geog
 
             - ND(North Dakota) USA
 
-            - US-NE(Nebraska)
+            - US-ne(Nebraska)
 
-            - US-NH(New Hampshire)
+            - NH(New Hampshire) USA
 
             - NJ(New Jersey) USA
 
@@ -379,11 +376,11 @@ Tento článek obsahuje seznam zemí a oblastí, které jsou používané **Geog
 
         - VC (Svatý Vincenc a Grenadiny)
 
-        - VG (British Panenské ostrovy)
+        - VG (Britské Panenské ostrovy)
 
-        - VI (USA Primárních ostrovy)
+        - VI (USA Panenské ostrovy)
 
-        - XE (Sint Eustach)
+        - XE (Svatý Eustach)
 
         - XS(Saba)
 
@@ -401,21 +398,21 @@ Tento článek obsahuje seznam zemí a oblastí, které jsou používané **Geog
 
         - BT(Bhutan)
 
-        - Kopie (Kokosové ostrovy)
+        - Kopie (Kokosové (Keelingovy) ostrovy)
 
         - CN(China)
 
-        - CX (Vánocemi Island)
+        - CX (Vánoční ostrov)
 
         - GE(Georgia)
 
-        - (Hong Kong) (Hongkong – zvláštní správní oblast)
+        - HK (Hongkong – zvláštní administrativní oblast)
 
         - ID(Indonesia)
 
         - IN(India)
 
-        - Vstupně-výstupní operace (britské Indickém oceánu území)
+        - Vstupně-výstupních operací (Britské území v Indickém oceánu území)
 
         - JP(Japan)
 
@@ -437,7 +434,7 @@ Tento článek obsahuje seznam zemí a oblastí, které jsou používané **Geog
 
         - Mn(Mongolia)
 
-        - PŘE (zboží oblast ČLR)
+        - Měsíc (Macao – zvláštní administrativní oblast)
 
         - MV(Maldives)
 
@@ -459,7 +456,7 @@ Tento článek obsahuje seznam zemí a oblastí, které jsou používané **Geog
 
         - TM(Turkmenistan)
 
-        - TW(Taiwan)
+        - Tw(Taiwan)
 
         - Uz(Uzbekistan)
 
@@ -469,27 +466,27 @@ Tento článek obsahuje seznam zemí a oblastí, které jsou používané **Geog
 
         - AO(Angola)
 
-        - BF(Burkina Faso)
+        - BF (Burkina Faso)
 
         - BI(Burundi)
 
         - BJ(Benin)
 
-        - BV (Bouvet Island)
+        - BV (Bouvet ostrov)
 
         - BW(Botswana)
 
         - CD (Konžská demokratická republika)
 
-        - CR (Středoafrická republika)
+        - CF (Středoafrická republika)
 
         - CG(Congo)
 
-        - CI (Pobřeží slonoviny)
+        - Průběžná integrace (Pobřeží slonoviny)
 
         - CM(Cameroon)
 
-        - CV(Cabo Verde)
+        - CV (Cabo Verde)
 
         - DJ(Djibouti)
 
@@ -509,7 +506,7 @@ Tento článek obsahuje seznam zemí a oblastí, které jsou používané **Geog
 
         - GN(Guinea)
 
-        - GQ (Rovníkové Guinejská)
+        - GQ (Rovníková Guinea)
 
         - GW(Guinea_Bissau)
 
@@ -553,19 +550,19 @@ Tento článek obsahuje seznam zemí a oblastí, které jsou používané **Geog
 
         - SH (SV. Helena, Ascensión a Tristan da Cunha)
 
-        - SL(Sierra Leone)
+        - SL (Sierra Leone)
 
         - SN(Senegal)
 
         - SO(Somalia)
 
-        - SS (Jižní Súdánu)
+        - SS (Jižní Súdán)
 
         - ST (Svatý Tomáš a Princův ostrov)
 
         - SZ(Swaziland)
 
-        - TD(Chad)
+        - TD(CHAD)
 
         - TF (Francouzská jižní území)
 
@@ -581,7 +578,7 @@ Tento článek obsahuje seznam zemí a oblastí, které jsou používané **Geog
 
         - ZA (Jižní Afrika)
 
-        - ZM(Zambia)
+        - Zm(Zambia)
 
         - ZW(Zimbabwe)
 
@@ -589,7 +586,7 @@ Tento článek obsahuje seznam zemí a oblastí, které jsou používané **Geog
 
         - AQ(Antarctica)
 
-    - Geograficky SA(South America)
+    - GEO-SA(South America)
 
         - AR(Argentina)
 
@@ -603,9 +600,9 @@ Tento článek obsahuje seznam zemí a oblastí, které jsou používané **Geog
 
         - EC(Ecuador)
 
-        - Cizího klíče (Falklandy)
+        - FK (Falklandy)
 
-        - GF (francouzštině Guyana)
+        - GF (Francouzská Guyana)
 
         - GS (Jižní Georgie a Jižní Sandwichovy ostrovy)
 
@@ -621,27 +618,27 @@ Tento článek obsahuje seznam zemí a oblastí, které jsou používané **Geog
 
         - VE(Venezuela)
 
-    - Geograficky AP(Australia / Pacific)
+    - GEO-AP(Australia / Pacific)
 
         - As(American Samoa)
 
         - AU(Australia)
 
-            - AU ACT(Australian Capital Territory)
+            - Austrálie ACT(Australian Capital Territory)
 
-            - AU NSW(New South Wales)
+            - Austrálie NSW(New South Wales)
 
-            - AU NT(Northern Territory)
+            - Austrálie NT(Northern Territory)
 
             - AU-QLD(Queensland)
 
-            - AU SA(South Australia)
+            - Austrálie SA(South Australia)
 
             - AU-TAS(Tasmania)
 
             - AU-Vic(Victoria)
 
-            - AU WA(Western Australia)
+            - Austrálie WA(Western Australia)
 
         - CK (Cookovy ostrovy)
 
@@ -655,13 +652,13 @@ Tento článek obsahuje seznam zemí a oblastí, které jsou používané **Geog
 
         - Ki(Kiribati)
 
-        - MH (zařadit ostrovy)
+        - MH (Marshallovy ostrovy)
 
-        - MP (Severní Mariany)
+        - Sady Management Pack (Severní Mariany)
 
-        - NC (Nová Kaledonie)
+        - Síťový adaptér (Nová Kaledonie)
 
-        - NF (Ostrov Norfolk)
+        - NF (ostrova Norfolk)
 
         - NR(Nauru)
 
@@ -669,9 +666,9 @@ Tento článek obsahuje seznam zemí a oblastí, které jsou používané **Geog
 
         - NZ (Nový Zéland)
 
-        - PF (francouzštině Polynésie)
+        - PF (Francouzská Polynésie)
 
-        - PG (papujsko-Guinejská)
+        - PG (Papua-Nová Guinea)
 
         - PN (Pitcairnovy ostrovy)
 
@@ -693,4 +690,4 @@ Tento článek obsahuje seznam zemí a oblastí, které jsou používané **Geog
 
 ## <a name="next-steps"></a>Další postup
 
-- Další informace o [metoda směrování v Azure Traffic Manageru provozu Geographic](traffic-manager-routing-methods.md#geographic).
+- Další informace o [Geographic provoz metodu směrování ve službě Azure Traffic Manager](traffic-manager-routing-methods.md#geographic).

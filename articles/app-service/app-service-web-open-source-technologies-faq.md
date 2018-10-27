@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: d65a33dc13d0b91a9ace04dab0be6c37bcd2188f
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: 4185cbad6358f6b2e48513c0d79c0a357eb6235a
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42623301"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50156472"
 ---
 # <a name="open-source-technologies-faqs-for-web-apps-in-azure"></a>Technologie Open source nejčastější dotazy k Web Apps v Azure
 
@@ -43,9 +43,9 @@ Zapnutí protokolování PHP:
 9. Vyberte **Uložit**.
 10. Vyberte ikonu tužky vedle **wp config.php**.
 11. Změní celý text na následující kód:
-   ```
+   ```php
    //Enable WP_DEBUG modedefine('WP_DEBUG', true);//Enable debug logging to /wp-content/debug.logdefine('WP_DEBUG_LOG', true);
-   //Supress errors and warnings to screendefine('WP_DEBUG_DISPLAY', false);//Supress PHP errors to screenini_set('display_errors', 0);
+   //Suppress errors and warnings to screendefine('WP_DEBUG_DISPLAY', false);//Supress PHP errors to screenini_set('display_errors', 0);
    ```
 12. Na webu Azure Portal, v nabídce webové aplikace restartujte webovou aplikaci.
 
@@ -70,7 +70,7 @@ Pokud chcete změnit verzi aplikace Node.js, můžete použít jednu z následuj
 *   Upravte soubor iisnode.yml poskytovaný rozhraním. Změna verze Node.js v souboru iisnode.yml poskytovaný rozhraním nastaví běhové prostředí pouze při, jemuž modul iisnode používá. Vaše Kudu cmd a dalšími lidmi dál používat verze Node.js, která je nastavena v **nastavení aplikace** na webu Azure Portal.
 
     Nastavit soubor iisnode.yml ručně, vytvořte soubor iisnode.yml v kořenové složce aplikace. V souboru přidejte následující řádek:
-   ```
+   ```yml
    nodeProcessCommandLine: "D:\Program Files (x86)\nodejs\5.9.1\node.exe"
    ```
    
@@ -80,7 +80,7 @@ Pokud chcete změnit verzi aplikace Node.js, můžete použít jednu z následuj
     2. Vytvoří výchozí skript nasazení, pokud není k dispozici (deploy.cmd, .deployment souborů) v kořenové složce webové aplikace.
     3. Spustí skript nasazení, ve kterém se vytvoří soubor iisnode.yml poskytovaný rozhraním Pokud zmíníte verze Node.js v souboru package.json > modul `"engines": {"node": "5.9.1","npm": "3.7.3"}`
     4. Soubor iisnode.yml poskytovaný rozhraním má následující řádek kódu:
-        ```
+        ```yml
         nodeProcessCommandLine: "D:\Program Files (x86)\nodejs\5.9.1\node.exe"
         ```
 
@@ -146,7 +146,7 @@ Chcete-li vyřešit chybu:
 2. Pokud používáte vlastní webový server Tomcat nebo Azure Marketplace Tomcat, zkopírujte tento soubor .jar do složky lib Tomcat.
 3. Chcete-li povolit Java z portálu Azure portal (vyberte **Java 1.8** > **serveru Tomcat**), zkopírovat soubor jar sqljdbc.* ve složce, která je paralelní do vaší aplikace. Potom přidejte následující cesta k třídě nastavení v souboru web.config:
 
-    ```
+    ```xml
     <httpPlatform>
     <environmentVariables>
     <environmentVariablename ="JAVA_OPTS" value=" -Djava.net.preferIPv4Stack=true

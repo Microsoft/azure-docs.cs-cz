@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/02/2018
+ms.date: 10/26/2018
 ms.author: genli
-ms.openlocfilehash: d16f106fa1776b0d11a97f71ffe16cf89fb9584a
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 2a0f6b75c540f319848805e8a9bda7b166d5d709
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42057527"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50138651"
 ---
 #  <a name="network-virtual-appliance-issues-in-azure"></a>Problémy se síťovým virtuálním zařízením v Azure
 
@@ -77,14 +77,14 @@ Použití prostředí PowerShell
 **Zkontrolujte, zda je možné směrovat provoz do síťového virtuálního zařízení**
 
 1. Na [webu Azure portal](https://portal.azure.com), otevřete **Network Watcher**vyberte **dalšího segmentu směrování**.
-2. Zadejte virtuální počítač, který má být další segment směrování síťového virtuálního zařízení a cílová IP adresa, na který chcete zobrazit další segment směrování. 
+2. Zadejte virtuální počítač, který je nakonfigurovaný přesměrovat provoz na síťové virtuální zařízení a cílová IP adresa, na který chcete zobrazit další segment směrování. 
 3. Pokud síťové virtuální zařízení není nastavena **dalšího segmentu směrování**, zkontrolujte a aktualizujte směrovací tabulky Azure.
 
 **Zkontrolujte, jestli provoz se může spojit síťové virtuální zařízení**
 
 1.  V [webu Azure portal](https://portal.azure.com), otevřete **Network Watcher**a pak vyberte **IP tok ověřit**. 
 2.  Zadejte virtuální počítač a IP adresu síťové virtuální zařízení a potom zkontrolujte, jestli provoz blokuje všechny skupiny zabezpečení sítě (NSG).
-3.  Pokud je pravidlo NSG, které blokuje provoz, vyhledejte NSG v **efektivní zabezpečení** pravidla a pak aktualizujte ji, aby povolit průchod přenosů. Potom spusťte **IP tok ověřit** znovu a použijte **kontroly připojení** otestovat komunikaci TCP z virtuálního počítače na interní nebo externí IP adresu.
+3.  Pokud je pravidlo NSG, které blokuje provoz, vyhledejte NSG v **efektivní zabezpečení** pravidla a pak aktualizujte ji, aby povolit průchod přenosů. Potom spusťte **IP tok ověřit** znovu a použijte **řešení potíží s připojením** otestovat komunikaci TCP z virtuálního počítače na interní nebo externí IP adresu.
 
 **Zkontrolujte, zda síťové virtuální zařízení a virtuální počítače naslouchají očekávaném provozu**
 

@@ -3,7 +3,7 @@ title: 'Azure Active Directory Domain Services: Připojení virtuálního počí
 description: Připojení virtuálního počítače s Ubuntu Linuxem do Azure AD Domain Services
 services: active-directory-ds
 documentationcenter: ''
-author: mahesh-unnikrishnan
+author: eringreenlee
 manager: mtillman
 editor: curtand
 ms.assetid: 804438c4-51a1-497d-8ccc-5be775980203
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
-ms.author: maheshu
-ms.openlocfilehash: 645e1eaedf3832b384a174d9f9ede5ea835047cd
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.author: ergreenl
+ms.openlocfilehash: 709c227c955aba6b31ce415767470fa18ff3684f
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39502963"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50155265"
 ---
 # <a name="join-an-ubuntu-virtual-machine-in-azure-to-a-managed-domain"></a>Připojení virtuálního počítače s Ubuntu v Azure k spravované doméně
 V tomto článku se dozvíte, jak propojit virtuální počítače s Ubuntu Linux k spravované doméně služby Azure AD Domain Services.

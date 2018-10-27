@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/25/2018
 ms.author: markvi
-ms.openlocfilehash: a08fbb90d1148396dbcf3960536568d61e5f04b0
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: b5f5fa74dca664d31c19055fadd9b66f84627b67
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50097841"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50157101"
 ---
 # <a name="group-policy-and-mdm-settings"></a>Nastavení zásad skupiny a MDM
 Použijte tyto zásady skupiny a nastavení správy mobilních zařízení jenom na zařízeních vlastněných společností, protože tyto zásady platí pro celé zařízení uživatele. Zásady MDM zakázání synchronizace nastavení pro osobní použití, zařízení ve vlastnictví uživatele bude mít negativní vliv na použití těchto zařízení. Kromě toho další uživatelské účty na zařízení také ovlivňuje zásady.
@@ -39,6 +39,8 @@ Nastavení zásad MDM platí pro Windows 10 a Windows 10 Mobile.  Podpora Window
 
 ## <a name="group-policy-settings"></a>Nastavení zásad skupiny
 Nastavení zásad skupiny platí pro zařízení s Windows 10, která jsou připojená k doméně služby Active Directory. V tabulce jsou zahrnuty i starší verze nastavení, která by se zobrazí ke správě nastavení synchronizace, ale nefungují pro Enterprise stav roamingu pro Windows 10, které jsou označeny pomocí "Nepoužívejte" v popisu.
+
+Tato nastavení se nacházejí ve: `Computer Configuration > Administrative Templates > Windows Components > Sync your settings` 
 
 | Název | Popis |
 | --- | --- |

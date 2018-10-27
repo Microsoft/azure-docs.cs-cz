@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: bryanla
-ms.openlocfilehash: d93ad4185be3d4875c5747fd10359baab69af95d
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 00a2c0d50a2476995dfb0d16d0cdbc5bd0ec313b
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49958648"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50138983"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>Informace o klíčích, tajných kódů a certifikátů
 
@@ -245,7 +245,7 @@ Kromě tajných dat lze zadat následující atributy:
 
 - *Exp*: IntDate, volitelné, výchozí hodnota je **navždy**. *Exp* atribut (čas vypršení platnosti) označuje čas vypršení platnosti na nebo za které tajná data by měla nelze načíst, s výjimkou [konkrétní situace](#date-time-controlled-operations). Toto pole je **informační** účely jen informuje uživatele ze služby key vault, nelze použít konkrétní tajný klíč. Hodnotou musí být číslo obsahující hodnotu IntDate.   
 - *NBF*: IntDate, volitelné, výchozí hodnota je **nyní**. *Nbf* (ne před) atribut určuje dobu, před kterým by MĚL nebyla načtena tajných dat, s výjimkou [konkrétní situace](#date-time-controlled-operations). Toto pole je **informační** pouze účely. Hodnotou musí být číslo obsahující hodnotu IntDate. 
-- *povolené*: logická hodnota, nepovinné, výchozí hodnota je **true**. Tento atribut určuje, zda lze načíst tajné údaje. Atribut enabled se používá ve spojení s a *exp* dojde operaci mezi a exp, ji bude povoleno pouze pokud je povoleno nastavena na **true**. Operace mimo *nbf* a *exp* okno se automaticky zakázaná, s výjimkou v [konkrétní situace](#date-time-controlled-operations).  
+- *povolené*: logická hodnota, nepovinné, výchozí hodnota je **true**. Tento atribut určuje, zda lze načíst tajné údaje. Atribut enabled se používá ve spojení s *nbf* a *exp* dojde operaci mezi *nbf* a *exp*, bude pouze povolené, pokud je povoleno je nastavená na **true**. Operace mimo *nbf* a *exp* okno se automaticky zakázaná, s výjimkou v [konkrétní situace](#date-time-controlled-operations).  
 
 Existují další atributy jen pro čtení, které jsou zahrnuty v odpovědi, která zahrnuje tajný atributy:  
 

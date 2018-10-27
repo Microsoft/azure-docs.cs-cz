@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/09/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: ef72829d507d6a471ec9a8972ead262da7f7b582
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 4362a6b936c52319f6f6fc625370733f3c84e361
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49068688"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50158852"
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Topologie pro Azure AD Connect
 Tento článek popisuje různé místní a topologie služby Azure Active Directory (Azure AD), ve kterých pomocí synchronizace Azure AD Connect jako klíče integrační řešení. Tento článek popisuje podporované a nepodporované konfigurace.
@@ -87,7 +87,7 @@ S více než jeden server synchronizace Azure AD Connect připojené do jednoho 
 ### <a name="multiple-forests-separate-topologies"></a>Více doménových struktur, samostatné topologie
 ![Možnost představující ve všech adresářích jenom jednou uživatelů](./media/plan-connect-topologies/MultiForestUsersOnce.png)
 
-![Znázornění více doménových struktur a samostatné topologie](./media/plan-connect-topologies/MultiForestSeperateTopologies.png)
+![Znázornění více doménových struktur a samostatné topologie](./media/plan-connect-topologies/MultiForestSeparateTopologies.png)
 
 V tomto prostředí jsou všechny místní doménové struktury považovány za samostatné entity. Žádný uživatel se nenachází v jiné doménové struktury. Každé doménové struktuře má své vlastní organizace Exchange a neexistuje žádná GALSync mezi doménovými strukturami. Tato topologie může být situace po fúze nebo akvizice, nebo v organizaci, kde jednotlivé obchodní jednotky funguje nezávisle na sobě. Těchto doménových strukturách jsou ve stejné organizaci ve službě Azure AD a objeví se jednotné GAL. Na předchozím obrázku každý objekt v každé doménové struktuře je reprezentována jednou v úložišti metaverse a agregovat v cílovém tenantovi Azure AD.
 

@@ -4,9 +4,6 @@ description: Tento článek vysvětluje, jak vyrovnávat zatížení provozu pom
 services: traffic-manager
 documentationcenter: ''
 author: kumudd
-manager: timlt
-editor: ''
-ms.assetid: 6dca6de1-18f7-4962-bd98-6055771fab22
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
@@ -14,19 +11,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/20/2017
 ms.author: kumud
-ms.openlocfilehash: 6637132481ee33d43ec2b747ba89a56983205ff2
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 132cbecdad8303414f15ff3f18caaccd6d430ded
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47432439"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50154912"
 ---
 # <a name="configure-the-weighted-traffic-routing-method-in-traffic-manager"></a>Konfigurace metody směrování provozu vážený v Traffic Manageru
 
-Běžným vzorem metodu směrování provozu je sada identické koncové body, jako je například cloud services a weby, a odesílat provoz do jednotlivých způsobem kruhové dotazování. Následující kroky popisují, jak konfigurovat metodu směrování provozu tohoto typu.
+Běžným vzorem metodu směrování provozu je sada identické koncové body, jako je například cloud services a weby, a odesílat provoz do jednotlivých stejně. Následující kroky popisují, jak konfigurovat metodu směrování provozu tohoto typu.
 
 > [!NOTE]
-> Služba Azure Web Apps již poskytuje funkce pro weby v rámci oblasti Azure (obsahuje několik datových center) pro vyrovnávání zatížení s kruhovým. Traffic Manager umožňuje určit metodu směrování provozu kruhovým dotazováním pro weby v různých datových centrech.
+> Služba Azure Web Apps již poskytuje funkce pro weby v rámci oblasti Azure (což se může skládat z několika datových centrech) pro vyrovnávání zatížení s kruhovým. Traffic Manager umožňuje distribuování síťového provozu mezi weby v různých datových centrech.
 
 ## <a name="to-configure-the-weighted-traffic-routing-method"></a>Konfigurace metody směrování provozu vážený
 
@@ -51,7 +48,7 @@ Běžným vzorem metodu směrování provozu je sada identické koncové body, j
 
 - Další informace o [metodu směrování provozu priority](traffic-manager-configure-priority-routing-method.md).
 - Další informace o [metodu směrování provozu výkonu](traffic-manager-configure-performance-routing-method.md).
-- Další informace o [metody geografického směrování](traffic-manager-configure-geographic-routing-method.md).
+- Přečtěte si o [metodě geografického směrování](traffic-manager-configure-geographic-routing-method.md).
 - Zjistěte, jak [test nastavení Traffic Manageru](traffic-manager-testing-settings.md).
 
 <!--Image references-->

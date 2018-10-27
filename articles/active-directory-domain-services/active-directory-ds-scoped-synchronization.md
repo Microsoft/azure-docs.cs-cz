@@ -3,7 +3,7 @@ title: 'Azure Active Directory Domain Services: Obor synchronizace | Dokumentace
 description: Konfigurace synchronizace s vymezeným oborem z Azure AD do spravované domény
 services: active-directory-ds
 documentationcenter: ''
-author: mahesh-unnikrishnan
+author: eringreenlee
 manager: mtillman
 editor: curtand
 ms.assetid: 9389cf0f-0036-4b17-95da-80838edd2225
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2018
-ms.author: maheshu
-ms.openlocfilehash: a6f56a9c855e296fb49b1c24d09189177175c9d6
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.author: ergreenl
+ms.openlocfilehash: cdf5403e78c8136c923c7d2ff95a337db810c7a9
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041862"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50155928"
 ---
 # <a name="configure-scoped-synchronization-from-azure-ad-to-your-managed-domain"></a>Konfigurace vymezených synchronizace z Azure AD do spravované domény
 V tomto článku se dozvíte, jak nakonfigurovat pouze konkrétní uživatelské účty, které se mají synchronizovat z adresáře služby Azure AD do spravované domény služby Azure AD Domain Services.

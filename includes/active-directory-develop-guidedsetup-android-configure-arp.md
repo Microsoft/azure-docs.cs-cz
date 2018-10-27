@@ -15,11 +15,11 @@ ms.date: 09/13/2018
 ms.author: andret
 ms.custom: include file
 ms.openlocfilehash: 0154aac14168c9d897698a15e31b3124b208db46
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50097821"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50142345"
 ---
 ## <a name="add-the-applications-registration-to-your-code"></a>Přidat registraci aplikace do kódu
 

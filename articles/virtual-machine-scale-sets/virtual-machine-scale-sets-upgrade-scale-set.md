@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/14/2018
 ms.author: negat
-ms.openlocfilehash: 49414b06010cf83c10bbc9519f2bced2126661a4
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: d065f9765ca279f14b9de45e2412b75c94ef3dd8
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49322069"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50139006"
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>Úprava škálovací sady virtuálních počítačů
 V průběhu životního cyklu aplikací můžete změnit nebo aktualizovat škálovací sadu virtuálních počítačů. Tyto aktualizace může zahrnovat jak aktualizovat konfiguraci škálovací sady nebo změnit konfiguraci aplikace. Tento článek popisuje, jak změnit existující škálovací sady pomocí rozhraní REST API, prostředí Azure PowerShell nebo rozhraní příkazového řádku Azure.
@@ -162,7 +162,7 @@ $ az vmss show --resource-group myResourceGroup --name myScaleSet
 }
 ```
 
-Tyto vlastnosti popis konfigurace instance virtuálního počítače, není konfigurace škálovací sady jako celek. Například modelu škálovací sady má `overprovision` jako vlastnost, ale nikoli model pro instance virtuálních počítačů ve škálovací sadě. Tento rozdíl je, protože předimenzování je vlastnost škálovací sady jako celá, ne u jednotlivých instancí virtuálních počítačů ve škálovací sadě (Další informace o předimenzování najdete v tématu [aspekty návrhu pro škálovací sady](virtual-machine-scale-sets-design-overview.md#overprovisioning)).
+Tyto vlastnosti popis konfigurace instance virtuálního počítače ve škálovací sadě, není konfigurace škálovací sady jako celek. Například modelu škálovací sady má `overprovision` jako vlastnost, ale nikoli model pro instance virtuálních počítačů ve škálovací sadě. Tento rozdíl je, protože předimenzování je vlastnost škálovací sady jako celá, ne u jednotlivých instancí virtuálních počítačů ve škálovací sadě (Další informace o předimenzování najdete v tématu [aspekty návrhu pro škálovací sady](virtual-machine-scale-sets-design-overview.md#overprovisioning)).
 
 
 ### <a name="the-scale-set-vm-instance-view"></a>Zobrazení instance virtuálního počítače škálovací sady
@@ -239,7 +239,7 @@ $ az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet -
 }
 ```
 
-Tyto vlastnosti popisují aktuální stav běhu instance virtuálního počítače, která zahrnuje všechna rozšíření u škálovací sady.
+Tyto vlastnosti popisují aktuální stav běhu instance virtuálního počítače ve škálovací sadě, která zahrnuje všechna rozšíření u škálovací sady.
 
 
 ## <a name="how-to-update-global-scale-set-properties"></a>Jak aktualizovat globální škálování nastavit vlastnosti

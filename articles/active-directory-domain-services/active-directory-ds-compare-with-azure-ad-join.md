@@ -3,7 +3,7 @@ title: Porovnání připojení ke službě Azure AD a Azure Active Directory Dom
 description: Rozhodování mezi připojení ke službě Azure AD a Azure AD Domain Services
 services: active-directory-ds
 documentationcenter: ''
-author: mahesh-unnikrishnan
+author: eringreenlee
 manager: mtillman
 editor: curtand
 ms.assetid: 31a71d36-58c1-4839-b958-80da0c6a77eb
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/26/2017
-ms.author: maheshu
-ms.openlocfilehash: e4357738417a202d5dd5a97907b5240cf855f395
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.author: ergreenl
+ms.openlocfilehash: 275f537511f721ea3f01c22a962462bab458129c
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39504110"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50156575"
 ---
 # <a name="choose-between-azure-active-directory-join-and-azure-active-directory-domain-services"></a>Výběr mezi připojení k Azure Active Directory a Azure Active Directory Domain Services
 Tento článek popisuje rozdíly mezi připojení ke službě Azure Active Directory (AD) a Azure AD Domain Services a pomůže vám zvolit založené na případy použití.
@@ -73,7 +73,7 @@ Na počítači připojeném k doméně dojde ověřování uživatelů pomocí o
 * [Vysvětlení, jak Azure AD Domain Services synchronizován s adresářem Azure AD](active-directory-ds-synchronization.md)
 
 ### <a name="learn-more-about-azure-ad-join"></a>Další informace o připojení ke službě Azure AD
-* [Úvod do správy zařízení ve službě Azure Active Directory](../active-directory/device-management-introduction.md)
+* [Úvod do správy zařízení v Azure Active Directory](../active-directory/device-management-introduction.md)
 
 ### <a name="get-started-with-azure-ad-domain-services"></a>Začínáme s Azure AD Domain Services
 * [Povolení služby Azure AD Domain Services pomocí webu Azure portal](active-directory-ds-getting-started.md)

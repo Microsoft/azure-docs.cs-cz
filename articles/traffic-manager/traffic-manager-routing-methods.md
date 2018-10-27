@@ -11,25 +11,25 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: kumud
-ms.openlocfilehash: eb43b59a26bc9c1b514921a7b6dfa4b920a8fe5f
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 57ae9f3a747ef3fde1a21de8a56ec4059becf392
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49955214"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50139329"
 ---
 # <a name="traffic-manager-routing-methods"></a>Metody směrování Traffic Manageru
 
 Azure Traffic Manager podporuje šest metod směrování provozu a zjistěte, jak směrovat síťový provoz do různých koncových bodů služby. Pro žádný profil Traffic Manageru platí metodu směrování provozu přidružený k každý dotaz DNS, které obdrží. Metoda směrování provozu určuje, který koncový bod je vrácená v odpovědi DNS.
 
-Nejsou k dispozici v Traffic Manageru čtyři metody směrování provozu:
+Následující metody směrování provozu jsou k dispozici v Traffic Manageru:
 
 * **[Priorita](#priority):** vyberte **Priority** když chcete použít koncový bod primární služby pro veškerý provoz a poskytují zálohování v případě primární nebo zálohování koncových bodů nejsou k dispozici.
 * **[Vážená](#weighted):** vyberte **vážená** Pokud chcete provoz distribuovat mezi sadu koncových bodů, buď rovnoměrně, nebo podle váhy, které můžete definovat.
 * **[Výkon](#performance):** vyberte **výkonu** Pokud máte koncové body v různých geografických umístěních a chcete, aby koncoví uživatelé použít "nejbližší" koncový bod z hlediska nejnižší síťovou latencí.
 * **[Geografické](#geographic):** vyberte **geografické** tak, aby uživatelé jsou přesměrováni na konkrétní koncové body (Azure, externí nebo vnořené) na základě které geografického umístění mohou být jejich dotazu DNS. To dává zákazníkům Traffic Manageru, aby se povolily scénáře, ve kterém je důležité vědět, geografické oblasti uživatele a směrování je na základě. Mezi příklady patří vyhovující pověření suverenita dat, lokalizace obsahu & uživatelské prostředí a měření přenosů z různých oblastí.
 * **[Více hodnot](#multivalue):** vyberte **hodnot** pro profily Traffic Manageru, které může mít jenom adresy IPv4/IPv6 jako koncové body. Po přijetí dotaz pro tento profil se vrátí všechny koncové body v pořádku.
-* **[Podsíť](#subnet):** vyberte **podsítě** metody směrování provozu do mapování sad rozsahy IP adres koncových uživatelů na určitý koncový bod v rámci profilu Traffic Manageru. Při přijetí požadavku koncový bod vrátil, bude je mapován tento požadavek zdrojové IP adresy. 
+* **[Podsíť](#subnet):** vyberte **podsítě** metody směrování provozu do mapování sad rozsahy IP adres koncových uživatelů na určitý koncový bod v rámci profilu Traffic Manageru. Při přijetí požadavku koncový bod vrátil, bude je mapován tento požadavek zdrojové IP adresy. 
 
 
 Všechny profily Traffic Manageru patří monitorování koncových bodů a koncový bod automatické převzetí služeb při selhání. Další informace najdete v tématu [monitorování koncových bodů Traffic Manageru](traffic-manager-monitoring.md). Jeden profil služby Traffic Manager můžete použít pouze jednu metodu směrování provozu. Kdykoli můžete vybrat metodu směrování provozu různých pro svůj profil. Změny se použijí během jedné minuty a vzniknou nedojde k žádnému výpadku. Metody směrování provozu můžete kombinovat pomocí vnořené profily Traffic Manageru. Vnoření umožňuje propracované a flexibilního směrování provozu konfigurace, které splnění požadavků větších a složité aplikace. Další informace najdete v tématu [vnořené profily Traffic Manageru](traffic-manager-nested-profiles.md).

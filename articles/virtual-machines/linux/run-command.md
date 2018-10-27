@@ -5,15 +5,15 @@ services: automation
 ms.service: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 10/02/2018
+ms.date: 10/25/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 9ba60f770c094f65ee5a4ed6dc21a5e07bac3d27
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: e865d4e9cbad2c2064d961bc6e407440ce8556fc
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48267745"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50158801"
 ---
 # <a name="run-shell-scripts-in-your-linux-vm-with-run-command"></a>Spouštění skriptů prostředí v virtuálního počítače s Linuxem pomocí příkazu Spustit
 
@@ -38,6 +38,9 @@ Následuje seznam omezení, které jsou k dispozici při použití příkazu Spu
 * Maximální doba, kterou můžete spustit skript je 90 minut, po kterém vyprší časový limit
 * Odchozí připojení z virtuálního počítače je potřeba vrátit výsledky ze skriptu.
 
+> [!NOTE]
+> Aby fungovala správně, spustit příkaz vyžaduje připojení (port 443) k veřejným IP adresám Azure. Pokud přípona nemá přístup do těchto koncových bodů, může skripty úspěšně spuštěno, ale vracet výsledky. Pokud můžete, blokují přenosy na virtuální počítač, můžete použít [značky služeb](../../virtual-network/security-overview.md#service-tags) pro povolení provozu na veřejné IP adresy Azure s použitím `AzureCloud` značky.
+
 ## <a name="azure-cli"></a>Azure CLI
 
 Následuje příklad použití [az vm-příkaz Spustit](/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke) příkaz spustit skript prostředí na virtuálním počítači Azure s Linuxem.
@@ -55,7 +58,7 @@ Přejděte k virtuálnímu počítači s [Azure](https://portal.azure.com) a vyb
 
 ![Spuštění seznamu příkazů](./media/run-command/run-command-list.png)
 
-Zvolte příkaz spustit. Některé příkazy mohou mít nepovinné nebo povinné vstupní parametry. Pro tyto příkazy jsou uvedeny parametry jako textových polí můžete zadávat vstupní hodnoty. U každého příkazu můžete zobrazit skript, který je spuštěn tak, že rozbalíte **zobrazit skript**. **RunShellScript** se liší od dalších příkazů, protože to umožňuje poskytovat vlastní skript. 
+Zvolte příkaz spustit. Některé příkazy mohou mít nepovinné nebo povinné vstupní parametry. Pro tyto příkazy jsou uvedeny parametry jako textových polí můžete zadávat vstupní hodnoty. U každého příkazu můžete zobrazit skript, který je spuštěn tak, že rozbalíte **zobrazit skript**. **RunShellScript** se liší od dalších příkazů, protože to umožňuje poskytovat vlastní skript.
 
 > [!NOTE]
 > Integrované příkazy se nedají upravovat.

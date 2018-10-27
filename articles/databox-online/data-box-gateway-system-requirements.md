@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 10/17/2018
 ms.author: alkohli
-ms.openlocfilehash: f70cd5de29cc3050142dfff905acae2008dab115
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 6978360769ba350d85a06116bfee6db9f80b0607
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49379118"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50157356"
 ---
 # <a name="azure-data-box-gateway-system-requirements-preview"></a>Azure Data Box brány požadavky na systém (Preview)
 
@@ -43,7 +43,7 @@ Tady je seznam podporovaných operačních systémů pro klienty nebo hostitele,
 
 |**Protokol** |**Verze**   |**Poznámky**  |
 |---------|---------|---------|
-|Protokol SMB    | 2.X 3.X      | Nepodporuje se SMB 1.|
+|SMB    | 2.X 3.X      | Nepodporuje se SMB 1.|
 |Systém souborů NFS     | V3 a V4        |         |
 
 ## <a name="supported-virtualization-platforms-for-device"></a>Podporovaný virtualizační platformy pro zařízení
@@ -56,7 +56,7 @@ Tady je seznam podporovaných operačních systémů pro klienty nebo hostitele,
 
 ## <a name="supported-storage-accounts"></a>Účty úložiště podporuje
 
-Tady je seznam typů úložiště podporuje pro bránu dat pole.
+Tady je seznam účtů úložiště podporuje pro bránu dat pole.
 
 | **Účet úložiště** | **Poznámky** |
 | --- | --- |
