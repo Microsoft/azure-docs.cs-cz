@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: e901ba81b92a5d7a7454fbfaca96902e1e8008a8
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: c45b86913f8c76b80da921e2813d405b61d08041
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "41927030"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50139187"
 documentType: LandingData
 title: Dokumentace k akcelerátorům řešení IoT
 metadata:
@@ -17,7 +17,7 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 07/24/2018
+  ms.date: 10/26/2018
   ms.author: dobett
 abstract:
   description: Naučte se využívat akcelerátory řešení IoT. Tyto články ukazují, jak využít akcelerátory řešení k nastartování implementace běžných scénářů IoT, jako je vzdálené monitorování, využití IoT v průmyslu, prediktivní údržba a simulace zařízení.
@@ -42,5 +42,6 @@ sections:
     items:
     - html: <a href="/azure/iot-accelerators/iot-accelerators-remote-monitoring-monitor">Monitorování zařízení IoT</a>
     - html: <a href="/azure/iot-accelerators/iot-accelerators-remote-monitoring-automate">Detekce problémů se zařízeními připojenými k vašemu monitorovacímu řešení</a>
-    - html: <a href="/azure/iot-accelerators/iot-accelerators-remote-monitoring-manage">Konfigurace a správa zařízení připojených k vašemu monitorovacímu řešení</a>
+    - html: <a href="/azure/iot-accelerators/iot-accelerators-remote-monitoring-manage">Konfigurace a správa zařízení připojených k řešení monitorování</a>
+    - html: <a href="/azure/iot-accelerators/iot-accelerators-remote-monitoring-root-cause-analysis">Analýza původní příčiny pro upozornění</a>
     - html: <a href="/azure/iot-accelerators/iot-accelerators-remote-monitoring-maintain">Použití upozornění a oprava potíží se zařízeními</a>

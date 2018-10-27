@@ -326,12 +326,6 @@
 
 ## [Řešení problémů](fundamentals/active-directory-troubleshooting-support-howto.md)
 
-## Nasazení testování konceptu (POC) Azure AD
-### [Scénáře PoC: Úvod](active-directory-playbook-intro.md)
-### [Scénáře PoC: Složky](active-directory-playbook-ingredients.md)
-### [Scénáře PoC: Implementace](active-directory-playbook-implementation.md)
-### [Scénáře PoC: Stavební bloky](active-directory-playbook-building-blocks.md)
-
 # Referenční informace
 ## [Ukázky kódu](https://azure.microsoft.com/resources/samples/?service=active-directory)
 ## [Rutiny Azure PowerShellu](/powershell/azure/overview)

@@ -12,19 +12,24 @@ items:
   - name: Vytvoření runbooku
     href: automation-quickstart-create-runbook.md
   - name: Vytvoření konfigurace DSC
+    displayName: DSC, state configuration, config, node configuration, node
     href: automation-quickstart-dsc-configuration.md
   expanded: true
 - name: Kurzy
   items:
   - name: Sledování aktualizovaných souborů pomocí úloh sledovacích procesů
+    displayName: hybrid runbook worker, hybrid worker, trigger
     href: automation-watchers-tutorial.md
   - name: Správa aktualizací pro virtuální počítač
+    displayName: alert, patch
     href: automation-tutorial-update-management.md
   - name: Začlenění aktualizace a sledování změn pomocí runbooku
     href: automation-onboard-solutions.md
   - name: Identifikace softwaru ve vašem prostředí
+    displayName: inventory
     href: automation-tutorial-installed-software.md
   - name: Řešení potíží se změnami na virtuálním počítači
+    displayName: inventory
     href: automation-tutorial-troubleshoot-changes.md
 - name: Návody
   items:
@@ -39,6 +44,7 @@ items:
   - name: Update Management
     items:
     - name: Přehled Update Managementu
+      displayName: dynamic groups, pre scripts, post scripts, reboot control, first party, pre download, inclusion
       href: automation-update-management.md
     - name: Správa aktualizací pro několik virtuálních počítačů
       href: manage-update-multi.md
@@ -47,12 +53,15 @@ items:
     - name: Migrace nasazení aktualizací OMS do Azure
       href: migrate-oms-update-deployments.md
     - name: Integrace SCCM s Update Managementem
+      displayName: Configuration Manager
       href: oms-solution-updatemgmt-sccmintegration.md
   - name: Sledování změn
     items:
     - name: Přehled Change Trackingu
+      displayName: wildcard, recursion, environment variables, registry
       href: automation-change-tracking.md
     - name: Zobrazení obsahu sledovaných souborů
+      displayName: change tracking, hash
       href: change-tracking-file-contents.md
   - name: Inventarizace
     items:
@@ -63,14 +72,17 @@ items:
     - name: Vytvoření samostatného účtu Automation
       href: automation-create-standalone-account.md
     - name: Správa účtu Spustit jako služby Automation
+      displayName: certificate renewal
       href: manage-runas-account.md
     - name: Konfigurace ověřování pomocí AWS
       href: automation-config-aws-account.md
     - name: Správa řízení přístupu na základě rolí
+      displayName: RBAC
       href: automation-role-based-access-control.md
   - name: Vytváření runbooků
     items:
     - name: Typy runbooků
+      displayName: graphical, python, powershell, powershell workflow
       href: automation-runbook-types.md
     - name: Vytváření a import runbooků
       href: automation-creating-importing-runbook.md
@@ -83,6 +95,7 @@ items:
     - name: Vytvoření runbooku v Pythonu
       href: automation-first-runbook-textual-python2.md
     - name: Úpravy textových runbooků
+      displayName: powershell
       href: automation-edit-textual-runbook.md
     - name: Úpravy grafických runbooků
       href: automation-graphical-authoring-intro.md
@@ -93,11 +106,14 @@ items:
     - name: Podřízené runbooky
       href: automation-child-runbooks.md
     - name: Výstup runbooku
+      displayName: message streams, progress records, preference
       href: automation-runbook-output-and-messages.md
     - name: Integrace správy zdrojového kódu
+      displayName: github, vsts, azure devops, personal access token
       href: source-control-integration.md
     - name: Integrace správy zdrojového kódu – stará verze
       href: automation-source-control-integration-legacy.md
+      displayname: github
     - name: Vytvoření runbooků s využitím sady Graphical runbook SDK
       href: graphical-runbook-sdk.md
   - name: Automatizace
@@ -111,8 +127,10 @@ items:
     - name: Zpracování chyb v grafických runbookách
       href: automation-runbook-graphical-error-handling.md
     - name: Sledování úlohy runbooku
+      displayName: fair share, activity log
       href: automation-runbook-execution.md
     - name: Správa dat Azure Automation
+      displayName: backup
       href: automation-managing-data.md
     - name: Předání objektu JSON do runbooku Azure Automation
       href: automation-pass-json-string.md
@@ -127,26 +145,36 @@ items:
     - name: Nasazení funkce Hybrid Runbook Worker pro Windows
       href: automation-windows-hrw-install.md
     - name: Nasazení funkce Hybrid Runbook Worker pro Linux
+      displayName: signature validation
       href: automation-linux-hrw-install.md
     - name: Spouštění runbooků ve funkci Hybrid Runbook Worker
+      displayName: signed runbooks
       href: automation-hrw-run-runbooks.md
   - name: Konfigurace stavu
+    displayName: DSC
     items:
     - name: Přehled konfigurace stavu
+      displayName: DSC
       href: automation-dsc-overview.md
     - name: Začínáme
+      displayName: DSC
       href: automation-dsc-getting-started.md
     - name: Konfigurace serverů do požadovaného stavu a správa odchylek s využitím konfigurace stavu
+      displayName: DSC, compliance
       href: tutorial-configure-servers-desired-state.md
     - name: Připojování počítačů pro správu
+      displayName: DSC, state configuration
       href: automation-dsc-onboarding.md
     - name: Kompilace konfigurací DSC
+      displayName: state configuration, composite resources, configurationData
       href: automation-dsc-compile.md
     - name: Vytváření konfigurací DSC s využitím složených prostředků
       href: compose-configurationwithcompositeresources.md
     - name: Nepřetržité nasazování pomocí Chocolatey
+      displayName: dsc, state configuration
       href: automation-dsc-cd-chocolatey.md
     - name: Předání dat sestav konfigurace stavu do Log Analytics
+      displayName: DSC
       href: automation-dsc-diagnostics.md
   - name: Správa sdílených prostředků
     items:
@@ -171,12 +199,15 @@ items:
     - name: Monitorování runbooků s upozorněními metrik
       href: automation-alert-metric.md
     - name: Spuštění runbooku z výstrah Azure
+      displayName: Monitor, Azure Monitor
       href: automation-create-alert-triggered-runbook.md
     - name: Vytvoření virtuálního počítače webové služby Amazon
       href: automation-scenario-aws-deployment.md
     - name: Integrace správy zdrojového kódu pomocí GitHub Enterprise
+      displayName: CI, runbooks
       href: automation-scenario-source-control-integration-with-github-ent.md
     - name: Integrace správy zdrojového kódu pomocí Azure DevOps
+      displayName: VSTS, CI, runbooks
       href: automation-scenario-source-control-integration-with-VSTS.md
     - name: Nasazení šablony Azure Resource Manageru v powershellovém runbooku Azure Automation
       href: automation-deploy-template-runbook.md
@@ -189,22 +220,30 @@ items:
   - name: Migrace
     items:
     - name: Migrace z Orchestratoru
+      displayName: SCORCH, runbooks
       href: automation-orchestrator-migration.md
 - name: Řešení potíží
   items:
   - name: Onboarding
+    displayName: troubleshoot
     href: troubleshoot/onboarding.md
   - name: Runbooky
+    displayName: troubleshoot
     href: troubleshoot/runbooks.md
   - name: Konfigurace stavu (DSC)
+    displayName: Desired State Configuration, troubleshoot
     href: troubleshoot/desired-state-configuration.md
   - name: Hybrid Runbook Worker
+    displayName: troubleshoot, HRW, hybrid worker
     href: troubleshoot/hybrid-runbook-worker.md
   - name: Change Tracking a Inventory
+    displayName: troubleshoot
     href: troubleshoot/change-tracking.md
   - name: Update Management
+    displayName: troubleshoot
     href: troubleshoot/update-management.md
   - name: Řešení potíží s aplikací Update Agent
+    displayName: hybrid runbook worker, hybrid worker, troubleshoot
     href: troubleshoot/update-agent-issues.md
 - name: Referenční informace
   items:
@@ -238,9 +277,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-automation
   - name: Videa
     href: https://azure.microsoft.com/documentation/videos/index/?services=automation
-ms.openlocfilehash: c0dd1231814d41761c35831b6bfabae1c5480c5c
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 9ecdfd37ac2de97342447d25c4e09c53730651bf
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50095282"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50155593"
