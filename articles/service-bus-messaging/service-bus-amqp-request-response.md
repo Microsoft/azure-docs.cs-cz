@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2018
 ms.author: spelluru
-ms.openlocfilehash: b05e23019e7b0a03965e51052bf334d0cbff041d
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: 6ba3d8e4273d0f2ce2626d8876c386a3714d5355
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48269339"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50159090"
 ---
 # <a name="amqp-10-in-microsoft-azure-service-bus-request-response-based-operations"></a>AMQP 1.0 ve službě Microsoft Azure Service Bus: operace založené na žádost odpověď
 
@@ -179,7 +179,7 @@ Tělo zprávy požadavku musí obsahovat **amqp hodnotu** část obsahující **
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
-|`from-sequence-number`|zem. šířka|Ano|Pořadové číslo, ze kterého se má spustit náhled.|  
+|`from-sequence-number`|Long|Ano|Pořadové číslo, ze kterého se má spustit náhled.|  
 |`message-count`|int|Ano|Maximální počet zpráv pro náhled.|  
   
 #### <a name="response"></a>Odpověď  
@@ -188,7 +188,7 @@ Zpráva odpovědi musí obsahovat následující vlastnosti aplikace:
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
-|statusCode|int|Ano|Kód odpovědi HTTP [RFC2616]<br /><br /> 200: OK – nemá další zprávy<br /><br /> 0xcc: obsahu – bez žádné další zprávy|  
+|statusCode|int|Ano|Kód odpovědi HTTP [RFC2616]<br /><br /> 200: OK – nemá další zprávy<br /><br /> 204: obsahu – bez žádné další zprávy|  
 |statusDescription|řetězec|Ne|Popis stavu.|  
   
 Textu odpovědi se musí skládat z **amqp hodnotu** část obsahující **mapy** s následující položky:  
@@ -308,7 +308,7 @@ Zpráva odpovědi musí obsahovat následující vlastnosti aplikace:
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
-|statusCode|int|Ano|Kód odpovědi HTTP [RFC2616]<br /><br /> 200: OK – nemá další zprávy<br /><br /> 0xcc: obsahu – bez žádné další zprávy|  
+|statusCode|int|Ano|Kód odpovědi HTTP [RFC2616]<br /><br /> 200: OK – nemá další zprávy<br /><br /> 204: obsahu – bez žádné další zprávy|  
 |statusDescription|řetězec|Ne|Popis stavu.|  
   
 Textu odpovědi se musí skládat z **amqp hodnotu** oddíl obsahující mapy s následující položky:  
@@ -334,7 +334,7 @@ Tělo zprávy požadavku musí obsahovat **amqp hodnotu** část obsahující **
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
-|číslo od pořadí|zem. šířka|Ano|Pořadové číslo, ze kterého se má spustit náhled.|  
+|číslo od pořadí|Long|Ano|Pořadové číslo, ze kterého se má spustit náhled.|  
 |počet zpráv|int|Ano|Maximální počet zpráv pro náhled.|  
 |id relace|řetězec|Ano|ID relace.|  
   
@@ -344,7 +344,7 @@ Zpráva odpovědi musí obsahovat následující vlastnosti aplikace:
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
-|statusCode|int|Ano|Kód odpovědi HTTP [RFC2616]<br /><br /> 200: OK – nemá další zprávy<br /><br /> 0xcc: obsahu – bez žádné další zprávy|  
+|statusCode|int|Ano|Kód odpovědi HTTP [RFC2616]<br /><br /> 200: OK – nemá další zprávy<br /><br /> 204: obsahu – bez žádné další zprávy|  
 |statusDescription|řetězec|Ne|Popis stavu.|  
   
 Textu odpovědi se musí skládat z **amqp hodnotu** oddíl obsahující mapy s následující položky:  
@@ -440,7 +440,7 @@ Tělo zprávy požadavku musí obsahovat **amqp hodnotu** část obsahující **
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
 |last-updated-time|časové razítko|Ano|Filtrovat, aby obsahovaly pouze relace aktualizované po daném okamžiku.|  
-|Přeskočit|int|Ano|Přeskočte počet relací.|  
+|přeskočit|int|Ano|Přeskočte počet relací.|  
 |nahoru|int|Ano|Maximální počet relací.|  
   
 #### <a name="response"></a>Odpověď  
@@ -449,14 +449,14 @@ Zpráva odpovědi musí obsahovat následující vlastnosti aplikace:
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
-|statusCode|int|Ano|Kód odpovědi HTTP [RFC2616]<br /><br /> 200: OK – nemá další zprávy<br /><br /> 0xcc: obsahu – bez žádné další zprávy|  
+|statusCode|int|Ano|Kód odpovědi HTTP [RFC2616]<br /><br /> 200: OK – nemá další zprávy<br /><br /> 204: obsahu – bez žádné další zprávy|  
 |statusDescription|řetězec|Ne|Popis stavu.|  
   
 Textu odpovědi se musí skládat z **amqp hodnotu** část obsahující **mapy** s následující položky:  
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
-|Přeskočit|int|Ano|Počet přeskočených relací, pokud stavový kód 200.|  
+|přeskočit|int|Ano|Počet přeskočených relací, pokud stavový kód 200.|  
 |ID relace|pole řetězců|Ano|Pole ID, pokud je stavový kód 200 relace.|  
   
 ## <a name="rule-operations"></a>Operace pravidla  
@@ -477,15 +477,15 @@ Tělo zprávy požadavku musí obsahovat **amqp hodnotu** část obsahující **
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
 |Název pravidla|řetězec|Ano|Název pravidla bez zahrnutí názvu předplatného a tématu.|  
-|Popis pravidla|Mapa|Ano|Popis pravidla uvedená v další části.|  
+|Popis pravidla|map|Ano|Popis pravidla uvedená v další části.|  
   
 **Popis pravidla** mapování musí zahrnovat následující položky, ve kterém **filtrem sql** a **korelační filtr** se vzájemně vylučují:  
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
-|Filtr SQL|Mapa|Ano|`sql-filter`, jak je uvedeno v následující části.|  
-|Korelační filtr|Mapa|Ano|`correlation-filter`, jak je uvedeno v následující části.|  
-|Akce pravidla SQL|Mapa|Ano|`sql-rule-action`, jak je uvedeno v následující části.|  
+|Filtr SQL|map|Ano|`sql-filter`, jak je uvedeno v následující části.|  
+|Korelační filtr|map|Ano|`correlation-filter`, jak je uvedeno v následující části.|  
+|Akce pravidla SQL|map|Ano|`sql-rule-action`, jak je uvedeno v následující části.|  
   
 Mapa filtrem sql, musí obsahovat následující položky:  
   
@@ -505,7 +505,7 @@ Mapa filtrem sql, musí obsahovat následující položky:
 |id relace|řetězec|Ne||  
 |odpověď k relaci id|řetězec|Ne||  
 |Typ obsahu|řetězec|Ne||  
-|properties|Mapa|Ne|Mapuje se na Service Bus [BrokeredMessage.Properties](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Properties).|  
+|properties|map|Ne|Mapuje se na Service Bus [BrokeredMessage.Properties](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Properties).|  
   
 **Akce pravidla sql** mapování musí zahrnovat následující položky:  
   
@@ -564,7 +564,7 @@ Tělo zprávy požadavku musí obsahovat **amqp hodnotu** část obsahující **
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
 |nahoru|int|Ano|Počet pravidel pro načtení stránky.|  
-|Přeskočit|int|Ano|Počet pravidel pro přeskočení. Definuje počáteční index (+ 1) na seznam pravidel. | 
+|přeskočit|int|Ano|Počet pravidel pro přeskočení. Definuje počáteční index (+ 1) na seznam pravidel. | 
 
 #### <a name="response"></a>Odpověď
 
@@ -668,7 +668,7 @@ Mapa představující zprávu musí obsahovat následující položky:
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
-|token uzamčení|identifikátor UUID|Ano|Pokud token uzamčení `receiver-settle-mode` 1.|  
+|token uzamčení|Uuid|Ano|Pokud token uzamčení `receiver-settle-mode` 1.|  
 |zpráva|pole bajtů|Ano|Kódování přenosu zpráv protokolu AMQP 1.0.|  
   
 ### <a name="update-disposition-status"></a>Aktualizovat stav dispozice  
@@ -692,7 +692,7 @@ Tělo zprávy požadavku musí obsahovat **amqp hodnotu** část obsahující **
 |Lock – tokeny|pole identifikátoru uuid|Ano|Tokeny uzamčení zprávy k aktualizaci stavu dispozice.|  
 |Důvod nedoručených zpráv|řetězec|Ne|Může nastavit, pokud je nastaven stav dispozice **pozastaveno**.|  
 |Popis nedoručených zpráv|řetězec|Ne|Může nastavit, pokud je nastaven stav dispozice **pozastaveno**.|  
-|vlastnosti upravit|Mapa|Ne|Seznam služby Service Bus zprostředkovaných vlastností zprávy upravit.|  
+|vlastnosti upravit|map|Ne|Seznam služby Service Bus zprostředkovaných vlastností zprávy upravit.|  
   
 #### <a name="response"></a>Odpověď  
 
