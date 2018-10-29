@@ -116,6 +116,9 @@ items:
       maintainContext: true
     - name: Používání vlastního klíče
       href: apache-kafka-byok.md
+    - name: Apache Kafka RBAC s Apache Rangerem
+      href: ../domain-joined/apache-domain-joined-run-kafka.md
+      maintainContext: true
   - name: Spravovat
     items:
     - name: Vytvoření clusterů s Linuxem
@@ -271,9 +274,9 @@ items:
   - name: Nástroje Windows pro HDInsight
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: 3ce83f6e5c77b7c38a8fb6f1f52991ffff1aaa44
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 9b172aaedcab44b4557368c5d2a5bd6dfd010903
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49361821"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50155010"

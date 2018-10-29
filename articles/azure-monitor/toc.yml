@@ -270,9 +270,23 @@ items:
         - name: Přidání průběžného monitorování
           href: ../application-insights/app-insights-vsts-continuous-monitoring.md?toc=/azure/azure-monitor/toc.json
         - name: Profiler
-          href: ../application-insights/app-insights-profiler.md?toc=/azure/azure-monitor/toc.json
-        - name: Povolení profileru
-          href: ../application-insights/enable-profiler-compute.md?toc=/azure/azure-monitor/toc.json
+          items:
+          - name: Přehled
+            href: ../application-insights/app-insights-profiler-overview.md?toc=/azure/azure-monitor/toc.json
+          - name: Povolení profileru pro App Service
+            href: ../application-insights/app-insights-profiler.md?toc=/azure/azure-monitor/toc.json
+          - name: Povolení profileru pro cloudovou službu
+            href: ../application-insights/app-insights-profiler-cloudservice.md?toc=/azure/azure-monitor/toc.json
+          - name: Povolení profileru pro aplikaci Service Fabric
+            href: ../application-insights/app-insights-profiler-servicefabric.md?toc=/azure/azure-monitor/toc.json
+          - name: Povolení profileru pro virtuální počítač Azure
+            href: ../application-insights/app-insights-profiler-vm.md?toc=/azure/azure-monitor/toc.json
+          - name: Nastavení profileru
+            href: ../application-insights/app-insights-profiler-settings.md?toc=/azure/azure-monitor/toc.json
+          - name: Sledování požadavků pro profilaci
+            href: ../application-insights/app-insights-profiler-trackrequests.md?toc=/azure/azure-monitor/toc.json
+          - name: Řešení potíží s profilerem
+            href: ../application-insights/app-insights-profiler-troubleshooting.md?toc=/azure/azure-monitor/toc.json
         - name: Diagnostika
           href: ../application-insights/app-insights-azure-diagnostics.md?toc=/azure/azure-monitor/toc.json
         - name: Náhledy
@@ -822,7 +836,7 @@ items:
       - name: Ukázky Azure PowerShellu
         href: ../monitoring-and-diagnostics/insights-powershell-samples.md?toc=/azure/azure-monitor/toc.json
       - name: Rutiny prostředí PowerShell
-        href: ../log-analytics/log-analytics-powershell-workspace-configuration.md?toc=/azure%monitoring-and-diagnostics/toc.json
+        href: ../log-analytics/log-analytics-powershell-workspace-configuration.md?toc=/azure/monitoring-and-diagnostics/toc.json
       - name: Aplikace
         items:
         - name: Vytvoření prostředků Application Insights
@@ -836,13 +850,13 @@ items:
     - name: Ukázky Azure CLI
       href: ../monitoring-and-diagnostics/insights-cli-samples.md?toc=/azure/azure-monitor/toc.json
     - name: Šablony Resource Manageru
-      href: ../log-analytics/log-analytics-template-workspace-configuration.md?toc=/azure%monitoring-and-diagnostics/toc.json
+      href: ../log-analytics/log-analytics-template-workspace-configuration.md?toc=/azure/monitoring-and-diagnostics/toc.json
     - name: Rozhraní API
       items:
       - name: Názorný postup s použitím REST API
         href: ../monitoring-and-diagnostics/monitoring-rest-api-walkthrough.md?toc=/azure/azure-monitor/toc.json
       - name: Rozhraní API pro výstrahy
-        href: ../log-analytics/log-analytics-api-alerts.md?toc=/azure%monitoring-and-diagnostics/toc.json
+        href: ../log-analytics/log-analytics-api-alerts.md?toc=/azure/monitoring-and-diagnostics/toc.json
     - name: Aplikace
       items:
       - name: Automatizace s využitím Microsoft Flow
@@ -982,9 +996,9 @@ items:
     href: https://stackoverflow.com/search?q=monitoring
   - name: Ukázky kódů
     href: https://azure.microsoft.com/resources/samples/?service=monitor
-ms.openlocfilehash: 93a8fe3db1136f94b562165fa986506677bccf57
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 3d738f4fcca9189a14f9c0e84d0a7f60d5942c1c
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49378971"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50140566"
