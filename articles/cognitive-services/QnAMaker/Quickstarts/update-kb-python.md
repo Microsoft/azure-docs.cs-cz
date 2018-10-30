@@ -1,24 +1,30 @@
 ---
-title: 'Rychlý start: Aktualizace znalostní báze v Pythonu – QnA Maker'
-description: Postup aktualizace znalostní báze pro QnA Maker v Pythonu
+title: 'Rychlý start: Aktualizace znalostní báze – REST, Python – QnA Maker'
+description: Tento rychlý start založený na REST vás provede programovou aktualizací ukázkové znalostní báze služby QnA Maker. Definice JSON, kterou použijete k aktualizaci znalostní báze, umožňuje přidávat, měnit nebo odstraňovat páry otázek a odpovědí.
 services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: quickstart
-ms.date: 09/12/2018
+ms.date: 10/19/2018
 ms.author: diberry
-ms.openlocfilehash: d58e12df30ab1b45e460cf8a4ea098d350164ec3
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 35ef0222de6093e7bae3b41377db2ea3fd3c3d75
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47031930"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49645910"
 ---
-# <a name="update-a-knowledge-base-in-python"></a>Aktualizace znalostní báze v Pythonu
+# <a name="quickstart-update-a-knowledge-base-in-qna-maker-using-python"></a>Rychlý start: Aktualizace znalostní báze ve službě QnA Maker pomocí Pythonu
 
-Následující kód aktualizuje existující znalostní bázi pomocí metody [Update](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da7600).
+Tento rychlý start vás provede programovou aktualizací stávající znalostní báze QnA Maker.  Tento soubor JSON umožňuje aktualizovat znalostní bázi přidáním nových zdrojů dat, změnou zdrojů dat nebo odstraněním zdrojů dat.
+
+Toto rozhraní API je ekvivalentní úpravě a následnému použití tlačítka **Save and train** (Uložit a natrénovat) na portálu služby QnA Maker.
+
+Tento rychlý start volá rozhraní API služby QnA Maker:
+* [Update](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da7600) – Model pro znalostní bázi je definován v kódu ve formátu JSON poslaném v těle požadavku rozhraní API. 
+* [Get Operation Details](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/operations_getoperationdetails)
 
 [!INCLUDE [Code is available in Azure-Samples Github repo](../../../../includes/cognitive-services-qnamaker-python-repo-note.md)]
 

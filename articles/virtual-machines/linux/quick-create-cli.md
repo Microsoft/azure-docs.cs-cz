@@ -16,16 +16,16 @@ ms.workload: infrastructure
 ms.date: 10/09/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: beb70b03198589808c20ab17498902367a1c6a3d
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 3c2212ba0216949d3ca7dbcedb5e086bc3e43b97
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49067483"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49406632"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-with-the-azure-cli"></a>Rychlý start: Vytvoření virtuálního počítače s Linuxem pomocí Azure CLI
 
-Azure CLI slouží k vytváření a správě prostředků Azure z příkazového řádku nebo ve skriptech. V tomto rychlém startu se dozvíte, jak pomocí Azure CLI nasadit do Azure virtuální počítač s Linuxem. V tomto kurzu nainstalujeme Ubuntu 160.04 LTS. Abyste mohli zobrazit virtuální počítač v akci, připojíte se k němu pomocí SSH a nainstalujete webový server NGINX.
+Azure CLI slouží k vytváření a správě prostředků Azure z příkazového řádku nebo ve skriptech. V tomto rychlém startu se dozvíte, jak pomocí Azure CLI nasadit do Azure virtuální počítač s Linuxem. V tomto kurzu nainstalujeme Ubuntu 16.04 LTS. Abyste mohli zobrazit virtuální počítač v akci, připojíte se k němu pomocí SSH a nainstalujete webový server NGINX.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 

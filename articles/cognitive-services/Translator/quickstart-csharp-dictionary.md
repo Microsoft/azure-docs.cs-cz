@@ -1,23 +1,23 @@
 ---
-title: 'Rychlý start: Vyhledání alternativních překladů – Translator Text API, C#'
+title: 'Rychlý start: Vyhledání alternativních překladů, C# – Translator Text API'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu vyhledáte alternativní překlady a příklady termínů v kontextu pomocí rozhraní Translator Text API s C#.
 services: cognitive-services
-author: noellelacharite
+author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/15/2018
-ms.author: nolachar
-ms.openlocfilehash: 35903b0da707e5167781c3a7595c3be938a4fc07
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.author: erhopf
+ms.openlocfilehash: e7a450838ab32d191ca8659a8e84e0104c76e3a5
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49321340"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49645452"
 ---
-# <a name="quickstart-find-alternate-translations-and-usage-with-c35"></a>Rychlý start: Vyhledání alternativních překladů a použití s C&#35;
+# <a name="quickstart-find-alternate-translations-with-the-translator-text-rest-api-c"></a>Rychlý start: Vyhledání alternativních překladů pomocí rozhraní REST API služby Translator Text (C#)
 
 V tomto rychlém startu vyhledáte podrobnosti možných alternativních překladů termínu a také příklady použití těchto alternativních překladů pomocí služby Translator Text API.
 

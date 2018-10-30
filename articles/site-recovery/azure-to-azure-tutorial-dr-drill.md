@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 10/10/2018
+ms.date: 10/19/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 90d82abb6570028308b8d516a868fa981c75eb94
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: b1893d9713f70ee7553392a320fec52fe5c88f3c
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49066985"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49458050"
 ---
 # <a name="run-a-disaster-recovery-drill-for-azure-vms-to-a-secondary-azure-region"></a>Spuštění postupu zotavení po havárii pro virtuální počítače Azure do sekundární oblasti Azure
 
@@ -26,12 +26,13 @@ V tomto kurzu se dozvíte, jak pro virtuální počítač Azure spustit postup z
 > * Kontrola požadavků
 > * Spuštění testovacího převzetí služeb při selhání pro jeden virtuální počítač
 
-
+> [!NOTE]
+> Cílem tohoto kurzu je provést uživatele postupem provedení postupu zotavení po havárii s minimálním počtem kroků. Pokud se chcete dozvědět více o různých aspektech souvisejících s provedením postupu zotavení po havárii, včetně důležitých aspektů sítí, automatizace nebo řešení potíží, prostudujte si dokumenty v části Postupy pro virtuální počítače Azure.
 
 ## <a name="prerequisites"></a>Požadavky
 
 - Před spuštěním testovacího převzetí služeb při selhání doporučujeme ověřit vlastnosti virtuálního počítače, abyste se ujistili, že je vše tak, jak má být.  Přejděte k vlastnostem virtuálního počítače v části **Replikované položky**. V okně **Základy** se zobrazí informace o nastavení a stavu počítačů.
-- Pro testovací převzetí služeb při selhání doporučujeme použít samostatnou síť virtuálních počítačů Azure, a ne výchozí síť, kterou jste nastavili při povolování replikace.
+- **Pro testovací převzetí služeb při selhání doporučujeme použít samostatnou síť virtuálních počítačů Azure**, a ne výchozí síť, kterou jste nastavili při povolování replikace.
 
 
 ## <a name="run-a-test-failover"></a>Spuštění testovacího převzetí služeb při selhání

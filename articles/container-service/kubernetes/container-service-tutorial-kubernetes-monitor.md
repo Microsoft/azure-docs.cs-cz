@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 04/05/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 6d178fe3caa121c51ef081708ca440113871938e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 249e286b16b78643c33b567f705a4c92991f5553
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46996906"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49404864"
 ---
 # <a name="monitor-a-kubernetes-cluster-with-log-analytics"></a>Monitorování clusteru Kubernetes pomocí služby Log Analytics
 
@@ -149,7 +149,7 @@ Pokud chcete řešení kontejnerů nainstalovat s použitím [portálu Log Analy
 
 Na portálu Log Analytics vyhledejte na řídicím panelu souhrnnou dlaždici **Kontejnery**. Kliknutím na dlaždici zobrazíte podrobnosti, včetně událostí kontejnerů, chyb, stavu, inventáře imagí a využití procesoru a paměti. Podrobnější informace zobrazíte kliknutím na řádek na dlaždici nebo [prohledáváním protokolu](../../log-analytics/log-analytics-log-searches.md).
 
-![Řídicí panel Kontejnery na portálu OMS](./media/container-service-tutorial-kubernetes-monitor/oms-containers-dashboard.png)
+![Řídicí panel Kontejnery na webu Azure Portal](./media/container-service-tutorial-kubernetes-monitor/oms-containers-dashboard.png)
 
 Podobně na webu Azure Portal přejděte do části **Log Analytics** a vyberte název vašeho pracovního prostoru. Dlaždici se souhrnem **Kontejnery** zobrazíte kliknutím na **Řešení** > **Kontejnery**. Podrobnosti zobrazíte kliknutím na dlaždici.
 

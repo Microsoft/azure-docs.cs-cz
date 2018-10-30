@@ -9,12 +9,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 06/27/2018
 ms.author: jamesbak
-ms.openlocfilehash: 4c3354786d7320caee0dfe2f0eca44909d77f2fe
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 2dae7938c63ee141ea6705ab4c324882f575e298
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49386847"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49426868"
 ---
 # <a name="quickstart-create-an-azure-data-lake-storage-gen2-preview-storage-account"></a>Rychlý start: Vytvoření účtu úložiště Azure Data Lake Storage Gen2 Preview
 
@@ -87,7 +87,7 @@ Při vytváření skupiny prostředků na webu Azure Portal použijte tento post
 Pokud chcete vytvořit účet úložiště pro obecné účely verze 2 na webu Azure Portal, postupujte takto:
 
 > [!NOTE]
-> Hierarchický obor názvů je povolený pouze v oblastech USA – východ, USA – východ 2, USA – západ, USA – západ 2, USA – středozápad, Evropa – sever, Evropa – západ, Jihovýchodní Asie a Austrálie – východ. Proto při vytváření účtu úložiště vyberte jedno z těchto umístění.
+> Hierarchický obor názvů je v současné době dostupný ve všech veřejných oblastech, ale v žádných soukromých oblastech. Momentálně není k dispozici v suverénních cloudech.
 
 1. Na webu Azure Portal rozbalením nabídky na levé straně otevřete nabídku služeb a zvolte **Všechny služby**. Potom přejděte dolů do části **Úložiště** a zvolte **Účty úložiště**. V okně **Účty úložiště**, které se zobrazí, zvolte **Přidat**.
 2. Zadejte název účtu úložiště.
@@ -135,7 +135,7 @@ Pak prostředí restartujte.
 Pokud chcete vytvořit novou skupinu prostředků pomocí PowerShellu, použijte příkaz [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup): 
 
 > [!NOTE]
-> Hierarchický obor názvů je povolený pouze v oblastech USA – východ, USA – východ 2, USA – západ, USA – západ 2, USA – středozápad, Evropa – sever, Evropa – západ, Jihovýchodní Asie a Austrálie – východ. Proto při vytváření účtu úložiště vyberte jedno z těchto umístění.
+> > Hierarchický obor názvů je v současné době dostupný ve všech veřejných oblastech, ale v žádných soukromých oblastech. Momentálně není k dispozici v suverénních cloudech.
 
 ```powershell
 # put resource group in a variable so you can use the same group name going forward,
@@ -196,7 +196,7 @@ az group create \
 ```
 
 > [!NOTE]
-> Hierarchický obor názvů je povolený pouze v oblastech USA – východ, USA – východ 2, USA – západ, USA – západ 2, USA – středozápad, Evropa – sever, Evropa – západ, Jihovýchodní Asie a Austrálie – východ. Proto při vytváření účtu úložiště vyberte jedno z těchto umístění.
+> > Hierarchický obor názvů je v současné době dostupný ve všech veřejných oblastech, ale v žádných soukromých oblastech. Momentálně není k dispozici v suverénních cloudech.
 
 ### <a name="create-a-general-purpose-v2-storage-account"></a>Vytvoření účtu úložiště pro obecné účely verze 2
 

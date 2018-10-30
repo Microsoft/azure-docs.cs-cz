@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 10/09/2018
 ms.author: astay;cephalin;kraigb
 ms.custom: mvc
-ms.openlocfilehash: 71cbf0bb31a72e3b257f25c159d9d9eea31dbfbb
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: a29f0f4be6286f8acf367a3ea0b4b0e6b31e7d98
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48901614"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49406462"
 ---
 # <a name="configure-your-python-app-for-the-azure-app-service-on-linux"></a>Konfigurace aplikací Pythonu pro službu Azure App Service v Linuxu
 
@@ -74,10 +74,16 @@ Pokud je hlavní modul aplikace v jiném souboru, použijte jiný název objektu
 
 ### <a name="custom-startup-command"></a>Vlastní spouštěcí příkaz
 
-Zadáním vlastního spouštěcího příkazu serveru Gunicorn můžete řídit chování spuštění kontejneru. Například pokud je hlavní modul aplikace Flask *hello.py* a objekt aplikace Flask se jmenuje `myapp`, vypadá příkaz takto:
+Zadáním vlastního spouštěcího příkazu serveru Gunicorn můžete řídit chování spuštění kontejneru. Například pokud je hlavní modul aplikace Flask *hello.py* a objekt aplikace Flask v tomto souboru se jmenuje `myapp`, vypadá příkaz takto:
 
 ```bash
 gunicorn --bind=0.0.0.0 --timeout 600 hello:myapp
+```
+
+Pokud je hlavní modul v podsložce, například `website`, zadejte tuto složku pomocí argumentu `--chdir`:
+
+```bash
+gunicorn --bind=0.0.0.0 --timeout 600 --chdir website hello:myapp
 ```
 
 Můžete také k příkazu přidat libovolné další argumenty serveru Gunicorn, jako například `--workers=4`. Další informace najdete v [Running Gunicorn (Spuštění serveru Gunicorn)](http://docs.gunicorn.org/en/stable/run.html) (docs.gunicorn.org).
@@ -105,9 +111,10 @@ Pokud služba App Service nenajde vlastní příkaz, aplikaci Django nebo aplika
 
 - **Výchozí aplikaci uvidíte po nasazení kódu vlastní aplikace.**  Výchozí aplikace se zobrazí, protože jste buď opravdu nenasadili kód aplikace na službu App Service, nebo se službě App Service nepovedlo najít kód vaší aplikace a spustila místo ní výchozí aplikaci.
   - Restartujte službu App Service, počkejte 15-20 sekund a znovu zkontrolujte aplikaci.
-  - Připojte se přímo ke službě App Service pomocí SSH nebo konzoly Kudu a ověřte, že vaše soubory v *site/wwwroot* existují. Pokud soubory neexistují, zopakujte proces nasazení a aplikaci znovu nasaďte.
+  - Ujistěte se, že používáte App Service pro Linux, a ne instanci založenou na Windows. V Azure CLI spusťte příkaz `az webapp show --resource-group <resource_group_name> --name <app_service_name> --query kind` a hodnoty `<resource_group_name>` a `<app_service_name>` nahraďte odpovídajícím způsobem. Jako výstup by se mělo zobrazit `app,linux`. Pokud ne, vytvořte službu App Service znovu a zvolte Linux.
+    - Připojte se přímo ke službě App Service pomocí SSH nebo konzoly Kudu a ověřte, že vaše soubory v *site/wwwroot* existují. Pokud soubory neexistují, zopakujte proces nasazení a aplikaci znovu nasaďte.
   - Pokud soubory existují, neidentifikovala služba App Service konkrétní spouštěcí soubor. Zkontrolujte, že má aplikace strukturu, kterou služba App Service očekává u aplikací [Django](#django-app) nebo [Flask](#flask-app), nebo použijte [vlastní spouštěcí příkaz](#custom-startup-command).
-
+  
 - **V prohlížeči se zobrazí zpráva „Služba není dostupná“.** Vypršel časový limit čekání prohlížeče na odpověď služby App Service. To naznačuje, že služba App Service sice spustila server Gunicorn, ale argumenty, které specifikuje kód aplikace, jsou nesprávné.
   - Aktualizujte okno prohlížeče, zejména v případě, že používáte nejnižší cenové úrovně v Plánu služby App Service. Aplikace se může spouštět pomaleji (když používáte například úrovně free) a po aktualizaci okna prohlížeče začne znovu odpovídat.
   - Zkontrolujte, že má aplikace strukturu, kterou služba App Service očekává u aplikací [Django](#django-app) nebo [Flask](#flask-app), nebo použijte [vlastní spouštěcí příkaz](#custom-startup-command).

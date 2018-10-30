@@ -6,21 +6,21 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 10/08/2018
+ms.date: 10/19/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Data Box Edge so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: 4729e08399132243543c6f4e1cadd537d185e9e3
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: ba77fc4596d9bb245b3cea2538804b1816e9ad14
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49166249"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49466966"
 ---
 # <a name="tutorial-transform-data-with-azure-data-box-edge-preview"></a>Kurz: Transformace dat pomocí Azure Data Boxu Edge (Preview)
 
 Tento kurz popisuje, jak nakonfigurovat výpočetní roli na Data Boxu Edge. Jakmile bude výpočetní role nakonfigurovaná, může Data Box Edge transformovat data před odesláním do Azure.
 
-Dokončení tohoto postupu může trvat přibližně 30 až 45 minut. 
+Dokončení tohoto postupu může trvat přibližně 30 až 45 minut.
 
 V tomto kurzu se naučíte:
 
@@ -31,7 +31,7 @@ V tomto kurzu se naučíte:
 > * Ověření transformace dat a jejich přenos
 
 > [!IMPORTANT]
-> Data Box Edge je ve verzi Preview. Před objednáním a nasazením tohoto řešení si přečtěte [podmínky užívání pro předběžné verze systému Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
+> Data Box Edge je ve verzi Preview. Před objednáním a nasazením tohoto řešení si přečtěte [podmínky užívání pro předběžné verze systému Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
  
 ## <a name="prerequisites"></a>Požadavky
 
@@ -48,7 +48,8 @@ Podrobné pokyny najdete v tématu [Vytvoření služby IoT Hub](https://docs.mi
 
 ![Vytvoření prostředku služby IoT Hub](./media/data-box-edge-deploy-configure-compute/create-iothub-resource-1.png)
 
-Pokud není nastavená výpočetní role Edge, mějte na paměti následující: 
+Pokud není nastavená výpočetní role Edge, mějte na paměti následující:
+
 - Prostředek služby IoT Hub neobsahuje žádná zařízení IoT ani IoT Edge.
 - Nemůžete vytvářet místní sdílené složky Edge. Při přidávání sdílené složky nebude povolená možnost vytvořit místní sdílenou složku pro výpočetní funkci Edge.
 
@@ -91,12 +92,12 @@ Pokud chcete na zařízení nastavit výpočetní roli, postupujte následovně.
 
     ![Nastavení výpočetní role](./media/data-box-edge-deploy-configure-compute/setup-compute-8.png) 
 
-Toto zařízení Edge však neobsahuje žádné vlastní moduly. Teď můžete na toto zařízení přidat vlastní modul.
+Toto zařízení Edge však neobsahuje žádné vlastní moduly. Teď můžete na toto zařízení přidat vlastní modul. Informace o vytvoření vlastního modulu najdete v tématu [Vývoj modulu jazyka C# pro Data Box Edge](data-box-edge-create-iot-edge-module.md).
 
 
 ## <a name="add-a-custom-module"></a>Přidání vlastního modulu
 
-V této části přidáte na zařízení IoT Edge vlastní modul. 
+V této části přidáte do zařízení IoT Edge vlastní modul, který jste vytvořili v tématu [Vývoj modulu jazyka C# pro Data Box Edge](data-box-edge-create-iot-edge-module.md). 
 
 V tomto postupu se používá příklad, kdy vlastní modul přesouvá soubory z místní sdílené složky na zařízení Edge do cloudové sdílené složky na zařízení. Tato cloudová sdílená složka pak tyto soubory odesílá do přidruženého účtu úložiště Azure. 
 
@@ -133,11 +134,26 @@ V tomto postupu se používá příklad, kdy vlastní modul přesouvá soubory z
 
         ![Přidání vlastního modulu](./media/data-box-edge-deploy-configure-compute/add-a-custom-module-6.png) 
  
-    2. Zadejte nastavení vlastního modulu IoT Edge. Zadejte **název** modulu a **identifikátor URI image**. 
+    2. Zadejte nastavení vlastního modulu IoT Edge. Zadejte **název** vašeho modulu a **identifikátor URI image** odpovídající image kontejneru. 
     
         ![Přidání vlastního modulu](./media/data-box-edge-deploy-configure-compute/add-a-custom-module-7.png) 
 
-    3. V části **Možnosti vytvoření kontejneru** zadejte místní přípojné body cloudové a místní sdílené složky pro moduly Edge, které jste zkopírovali v předchozích krocích (je důležité použít tyto cesty, a nevytvářet nové). Tyto sdílené složky se namapují na odpovídající přípojné body kontejneru. Sem zadejte také všechny proměnné prostředí pro váš modul.
+    3. V části **Možnosti vytvoření kontejneru** zadejte místní přípojné body cloudové a místní sdílené složky pro moduly Edge, které jste zkopírovali v předchozích krocích (je důležité použít tyto cesty, a nevytvářet nové). Místní přípojné body se mapují na odpovídající cesty **InputFolderPath** a **OutputFolderPath**, které jste zadali v modulu při [aktualizaci modulu s použitím vlastního kódu](data-box-edge-create-iot-edge-module.md#update-the-module-with-custom-code). 
+    
+        Následující ukázku můžete zkopírovat a vložit do **možností vytvoření kontejneru**: 
+        
+        ```
+        {
+         "HostConfig": {
+          "Binds": [
+           "/home/hcsshares/mysmblocalshare:/home/LocalShare",
+           "/home/hcsshares/mysmbshare1:/home/CloudShare"
+           ]
+         }
+        }
+        ```
+
+        Sem zadejte také všechny proměnné prostředí pro váš modul.
 
         ![Přidání vlastního modulu](./media/data-box-edge-deploy-configure-compute/add-a-custom-module-8.png) 
  
@@ -146,6 +162,8 @@ V tomto postupu se používá příklad, kdy vlastní modul přesouvá soubory z
         ![Přidání vlastního modulu](./media/data-box-edge-deploy-configure-compute/add-a-custom-module-9.png) 
  
 6.  V části **Zadejte trasy** nastavte trasy mezi moduly. V tomto případě zadejte název místní sdílené složky, která bude odesílat data do cloudové sdílené složky. Klikněte na **Další**.
+
+    Trasu můžete nahradit následujícím řetězcem trasy: "route": "FROM /* WHERE topic = 'mysmblocalshare' INTO BrokeredEndpoint(\"/modules/filemovemodule/inputs/input1\")"
 
     ![Přidání vlastního modulu](./media/data-box-edge-deploy-configure-compute/add-a-custom-module-10.png) 
  

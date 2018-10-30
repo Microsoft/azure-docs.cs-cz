@@ -1,9 +1,9 @@
 ---
-title: Ukázkový skript Azure PowerShellu – OMS| Microsoft Docs
-description: Ukázkový skript Azure PowerShellu – OMS
+title: Ukázkový skript Azure PowerShellu – Log Analytics | Microsoft Docs
+description: Ukázkový skript Azure PowerShellu – Log Analytics
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: cynthn
+author: zr-msft
 manager: jeconnoc
 editor: tysonn
 tags: azure-service-management
@@ -14,18 +14,18 @@ ms.topic: sample
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/01/2017
-ms.author: cynthn
+ms.author: zarhoads
 ms.custom: mvc
-ms.openlocfilehash: bde05b4e50d270a685b986ddf52e7707d545b2d9
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 2ce61feec3670674253ac697f2e373cbf40808e4
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44055331"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49471250"
 ---
-# <a name="create-an-operations-management-suite-monitored-vm-with-powershell"></a>Vytvoření virtuálního počítače monitorovaného pomocí OMS prostřednictvím PowerShellu
+# <a name="create-a-log-analytics-monitored-vm-with-powershell"></a>Vytvoření virtuálního počítače monitorovaného v Log Analytics pomocí PowerShellu
 
-Tento skript vytvoří virtuální počítač Azure, nainstaluje agenta Operations Management Suite (OMS) a zaregistruje systém v pracovním prostoru OMS. Po spuštění skriptu bude virtuální počítač viditelný v konzole OMS.
+Tento skript vytvoří virtuální počítač Azure, nainstaluje agenta Log Analytics a zaregistruje systém v pracovním prostoru Log Analytics. Po spuštění skriptu bude virtuální počítač viditelný v konzole.
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install.md)]
 
@@ -33,7 +33,7 @@ Tento skript vytvoří virtuální počítač Azure, nainstaluje agenta Operatio
 
 ## <a name="sample-script"></a>Ukázkový skript
 
-[!code-powershell[main](../../../powershell_scripts/virtual-machine/create-vm-monitor-oms/create-vm-monitor-oms.ps1 "Create VM OMS")]
+[!code-powershell[main](../../../powershell_scripts/virtual-machine/create-vm-monitor-oms/create-vm-monitor-oms.ps1 "Create VM")]
 
 ## <a name="clean-up-deployment"></a>Vyčištění nasazení
 
@@ -59,7 +59,7 @@ Tento skript pomocí následujících příkazů vytvoří nasazení. Každá po
 | [New-AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface) | Vytvoří síťové rozhraní. |
 | [New-AzureRmVMConfig](/powershell/module/azurerm.compute/new-azurermvmconfig) | Vytvoří konfiguraci virtuálního počítače. Tato konfigurace zahrnuje informace, jako je název virtuálního počítače, operační systém a přihlašovací údaje pro správu. Tato konfigurace se použije při vytváření virtuálního počítače. |
 | [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) | Vytvoří virtuální počítač. |
-| [Set-AzureRmVMExtension](/powershell/module/azurerm.compute/set-azurermvmextension) | Přidá do virtuálního počítače rozšíření virtuálního počítače. V tomto případě se k instalaci agenta OMS a registraci virtuálního počítače v pracovním prostoru OMS používá rozšíření agenta Operations Management Suite. |
+| [Set-AzureRmVMExtension](/powershell/module/azurerm.compute/set-azurermvmextension) | Přidá do virtuálního počítače rozšíření virtuálního počítače. V tomto případě se k instalaci agenta Log Analytics a registraci virtuálního počítače v pracovním prostoru Log Analytics používá rozšíření agenta Log Analytics. |
 |[Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) | Odebere skupinu prostředků a všechny prostředky, které obsahuje. |
 
 ## <a name="next-steps"></a>Další kroky

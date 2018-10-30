@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/10/2018
+ms.date: 10/19/2018
 ms.topic: quickstart
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 12b7a605350b07565660e9e4d1334b286aa5ac00
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 6b935322c9d892793f3695e0922d15f5886c7e25
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49079102"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49471284"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Rychlý start: Prozkoumání a analýza nákladů pomocí analýzy nákladů
 
@@ -34,21 +34,25 @@ V tomto rychlém startu se naučíte:
 
 Analýza nákladů je dostupná pro všechny zákazníky se [smlouvou Enterprise (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/). Abyste mohli zobrazit data nákladů, musíte mít alespoň přístup pro čtení k nejméně jednomu z následujících oborů.
 
-- Obor *fakturační účet* je definován v https://ea.azure.com a vyžaduje přístup podnikového správce. Není požadováno žádné nastavení EA. Informace o fakturaci jsou v analýze nákladů konsolidovány pro všechna předplatná ve smlouvě Enterprise. Fakturační účet se často označuje jako *smlouva Enterprise* nebo *registrace*.
 
-- Obor *oddělení* je definován v https://ea.azure.com a vyžaduje přístup správce oddělení. Je požadováno, aby na portálu EA bylo povoleno nastavení **DA view charges** (Správce oddělení může zobrazit náklady). Informace o fakturaci jsou v analýze nákladů konsolidovány pro všechna předplatná patřící do registračního účtu spojeného s oddělením.
+|**Rozsah**|**Definovaný na**|**Požadovaný přístup pro analýzu nákladů na obor**|**Požadované nastavení EA**|**Konsoliduje fakturační data pro**|
+|---                |---                  |---                   |---            |---           |
+|Fakturační účet<sup>1</sup>|[https://ea.azure.com ](https://ea.azure.com )|Podnikový správce|Žádný|Všechna předplatná ze smlouvy Enterprise|
+|Oddělení|[https://ea.azure.com ](https://ea.azure.com )|Správce oddělení|Povolené nastavení DA view charges (Správce oddělení může zobrazit náklady)|Všechna předplatná patřící do registračního účtu propojeného s oddělením|
+|Registrační účet<sup>2</sup2>|[https://ea.azure.com ](https://ea.azure.com )|Vlastník účtu|Povolené nastavení AO view charges (Vlastník účtu může zobrazit náklady)|Všechna předplatná z registračního účtu|
+|Skupina pro správu|[https://portal.azure.com ](https://portal.azure.com )|Čtenář Cost Management (nebo Čtenář)|Povolené nastavení AO view charges (Vlastník účtu může zobrazit náklady)|Všechna předplatná spadající do skupiny pro správu|
+|Předplatné|[https://portal.azure.com ](https://portal.azure.com )|Čtenář Cost Management (nebo Čtenář)|Povolené nastavení AO view charges (Vlastník účtu může zobrazit náklady)|Všechny prostředky nebo skupiny prostředků v předplatném|
+|Skupina prostředků|[https://portal.azure.com ](https://portal.azure.com )|Čtenář Cost Management (nebo Čtenář)|Povolené nastavení AO view charges (Vlastník účtu může zobrazit náklady)|Všechny prostředky ve skupině prostředků|
 
-- Rozsah *registrační účet* je definován v https://ea.azure.com a vyžaduje přístup vlastníka účtu. Je požadováno, aby na portálu EA bylo povoleno nastavení **AO view charges** (Vlastník účtu může zobrazit náklady). Informace o fakturaci jsou v analýze nákladů konsolidovány pro všechna předplatná patřící do daného registračního účtu. Registrační účet s se často označuje jako *vlastník účtu*.
+<sup>1</sup>Fakturační účet se často označuje jako smlouva Enterprise nebo registrace.
 
-- Obor *skupina pro správu* je definován v https://portal.azure.com a vyžaduje přístup ke čtení správy nákladů (nebo Čtenář). Je požadováno, aby na portálu EA bylo povoleno nastavení **AO view charges** (Vlastník účtu může zobrazit náklady). Informace o fakturaci jsou v analýze nákladů konsolidovány pro všechna předplatná pod skupinou pro správu.
-
-- Obor *předplatné* je definován v https://portal.azure.com a vyžaduje přístup ke čtení správy nákladů (nebo oprávnění Čtenář). Je požadováno, aby na portálu EA bylo povoleno nastavení **AO view charges** (Vlastník účtu může zobrazit náklady). Informace o fakturaci jsou v analýze nákladů konsolidovány pro všechny prostředky a skupiny prostředků v předplatném.
-
-- Obor *skupina prostředků* je definován v https://portal.azure.com a vyžaduje přístup ke čtení správy nákladů (nebo oprávnění Čtenář). Je požadováno, aby na portálu EA bylo povoleno nastavení **AO view charges** (Vlastník účtu může zobrazit náklady). Informace o fakturaci jsou v analýze nákladů konsolidovány pro všechny prostředky ve skupině prostředků.
-
-
+<sup>2</sup>Registrační účet s se často označuje jako vlastník účtu.
 
 Další informace o konfiguraci nastavení **DA view charges** a **AO view charges** najdete v článku [Povolení přístupu k nákladům](../billing/billing-enterprise-mgmt-grp-troubleshoot-cost-view.md#enabling-access-to-costs).
+
+
+
+
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 

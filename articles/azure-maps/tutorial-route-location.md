@@ -1,20 +1,20 @@
 ---
 title: Vyhledání trasy s využitím Azure Maps | Microsoft Docs
 description: Trasa k bodu zájmu s využitím Azure Maps
-author: dsk-2015
-ms.author: dkshir
-ms.date: 10/02/2018
+author: walsehgal
+ms.author: v-musehg
+ms.date: 10/22/2018
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 3bf1aa6d1b9bd65c28ef99ddbac71fb75daf99e7
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: fda234b882cbf4a155881895bbf8401fe3ff3aca
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48816714"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49645034"
 ---
 # <a name="route-to-a-point-of-interest-using-azure-maps"></a>Trasa k bodu zájmu s využitím Azure Maps
 
@@ -80,11 +80,10 @@ Následující kroky ukazují, jak vytvořit statickou stránku HTML s vložený
 
     ```JavaScript
     // Instantiate map to the div with id "map"
-    var MapsAccountKey = "<your account key>";
-    var map = new atlas.Map("map", {
-        "subscription-key": MapsAccountKey
-    });
+    atlas.setSubscriptionKey("<your account key>");
+    var map = new atlas.Map("map");
     ```
+
     Objekt **atlas.Map** umožňuje ovládání vizuální a interaktivní webové mapy a je součástí rozhraní API pro mapové ovládací prvky prostředí Azure.
 
 4. Uložte soubor a otevřete ho v prohlížeči. V tuto chvíli máte základní mapu, kterou můžete dále rozvíjet.
@@ -126,7 +125,7 @@ Pro účely tohoto kurzu nastavte jako počáteční bod Microsoft a jako cílov
         padding: 50
     });
 
-    map.addEventListener("load", function () { 
+    map.events.add("load", function () { 
         // Add pins to the map for the start and end point of the route
         map.addPins([startPin, destinationPin], {
             name: "route-pins",
@@ -135,7 +134,7 @@ Pro účely tohoto kurzu nastavte jako počáteční bod Microsoft a jako cílov
         });
     });
     ```
-    **map.setCameraBounds** upraví okno mapy podle souřadnic počátečního a koncového bodu. **map.addEventListener** zajišťuje načtení všech funkcí map přidaných do mapy po plném načtení mapy. Rozhraní API **map.addPins** v naslouchacím procesu událostí přidá do mapového ovládacího prvku body jako vizuální součásti.
+    **map.setCameraBounds** upraví okno mapy podle souřadnic počátečního a koncového bodu. **map.events.add** zajišťuje načtení všech funkcí map přidaných do mapy po plném načtení mapy. Rozhraní API **map.addPins** v naslouchacím procesu událostí přidá do mapového ovládacího prvku body jako vizuální součásti.
 
 3. Uložte soubor **MapRoute.html** a aktualizujte prohlížeč. Teď se ve středu mapy zobrazí Seattle a můžete si všimnou modrých špendlíků, které označují počáteční a koncový bod.
 
@@ -207,7 +206,7 @@ V tomto kurzu jste se naučili:
 > * Nastavit souřadnice pro adresu
 > * Zadat dotaz na službu Route Service ohledně trasy k bodu zájmu
 
-Přístup k ukázce kódu pro tento kurz můžete získat tady:
+Přístup k vzorovému kódu pro tento kurz můžete získat tady:
 
 > [Vyhledání trasy pomocí Azure Maps](https://github.com/Azure-Samples/azure-maps-samples/blob/master/src/route.html)
 

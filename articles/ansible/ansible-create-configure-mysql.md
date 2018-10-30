@@ -1,6 +1,6 @@
 ---
 title: Vytvoření a konfigurace serveru Azure Database for MySQL pomocí Ansible (Preview)
-description: Zjistěte, jak pomocí Ansible vytvořit a nakonfigurovat server Azure Database for MySQL
+description: Zjistěte, jak pomocí Ansible vytvořit a nakonfigurovat server Azure Database for MySQL.
 ms.service: ansible
 keywords: ansible, azure, devops, bash, playbook, mysql, database
 author: tomarcher
@@ -8,29 +8,29 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 09/23/2018
-ms.openlocfilehash: 508274d11a9693d28a9b3a01bd6ebbd7198e8711
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: b549aeaf24bd774245ee1f2ff6924ac1f6dbeee3
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47586645"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49427892"
 ---
-# <a name="create-and-configure-an-azure-database-for-mysql-server-using-ansible-preview"></a>Vytvoření a konfigurace serveru Azure Database for MySQL pomocí Ansible (Preview)
-[Azure Database for MySQL](https://docs.microsoft.com/azure/mysql/) je spravovaná služba, která slouží k provozu, správě a škálování vysoce dostupných databází MySQL v cloudu. V tomto rychlém startu se dozvíte, jak přibližně během pěti minut vytvořit server Azure Database for MySQL pomocí webu Azure Portal. 
+# <a name="create-and-configure-an-azure-database-for-mysql-server-by-using-ansible-preview"></a>Vytvoření a konfigurace serveru Azure Database for MySQL pomocí Ansible (Preview)
+[Azure Database for MySQL](https://docs.microsoft.com/azure/mysql/) je spravovaná služba, která slouží k provozu, správě a škálování vysoce dostupných databází MySQL v cloudu. Ansible umožňuje automatizovat nasazování a konfiguraci prostředků ve vašem prostředí. 
 
-Ansible umožňuje automatizovat nasazování a konfiguraci prostředků ve vašem prostředí. V tomto článku se dozvíte, jak pomocí Ansible během pěti minut vytvořit server Azure Database for MySQL a nakonfigurovat jeho pravidlo brány firewall. 
+V tomto rychlém startu se dozvíte, jak pomocí Ansible vytvořit server Azure Database for MySQL a nakonfigurovat jeho pravidlo brány firewall. Tyto úlohy můžete dokončit přibližně během pěti minut pomocí webu Azure Portal.
 
 ## <a name="prerequisites"></a>Požadavky
 - **Předplatné Azure** – Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) před tím, než začnete.
 - [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation1.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation1.md)] [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation2.md)]
 
 > [!Note]
-> Ke spuštění následujících ukázkových playbooků v tomto kurzu se vyžaduje Ansible 2.7. Spuštěním příkazu `sudo pip install ansible[azure]==2.7.0rc2` můžete nainstalovat verzi Ansible 2.7 RC. Vydání Ansible 2.7 proběhne v říjnu 2018. Potom už tady nebudete muset zadávat verzi, protože výchozí verze bude 2.7.
+> Ke spuštění následujících ukázkových playbooků v tomto kurzu se vyžaduje Ansible 2.7. Spuštěním příkazu `sudo pip install ansible[azure]==2.7.0rc2` můžete nainstalovat verzi Ansible 2.7 RC. Po vydání Ansible 2.7 už tady nebudete muset zadávat verzi, protože výchozí verze bude 2.7.
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.  
 
-Následující příklad vytvoří skupinu prostředků **myResourceGroup** v umístění **eastus**.
+Následující příklad vytvoří skupinu prostředků **myResourceGroup** v umístění **eastus**:
 
 ```yml
 - hosts: localhost
@@ -44,15 +44,15 @@ Následující příklad vytvoří skupinu prostředků **myResourceGroup** v um
         location: "{{ location }}"
 ```
 
-Uložte výše uvedený playbook jako *rg.yml*. Playbook spustíte pomocí příkazu **ansible-playbook** následujícím způsobem:
+Uložte předchozí playbook jako **rg.yml**. Playbook spustíte pomocí příkazu **ansible-playbook** následujícím způsobem:
 ```bash
 ansible-playbook rg.yml
 ```
 
-## <a name="create-mysql-server-and-database"></a>Vytvoření serveru a databáze MySQL
-Následující příklad vytvoří server MySQL **mysqlserveransible** a službu Azure Database for MySQL **mysqldbansible**. Jedná se o základní server pro obecné účely 5. generace s 1 virtuálním jádrem. Nezapomeňte, že hodnota **mysqlserver_name** musí být jedinečná a vysvětlení platných hodnot pro jednotlivé oblasti a úrovně najdete v [dokumentaci k cenovým úrovním](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers). 
+## <a name="create-a-mysql-server-and-database"></a>Vytvoření serveru a databáze MySQL
+Následující příklad vytvoří server MySQL **mysqlserveransible** a instanci Azure Database for MySQL **mysqldbansible**. Jedná se o základní server pro obecné účely 5. generace s jedním virtuálním jádrem. 
 
-Zadejte vlastní hodnotu `<server_admin_password>`:
+Hodnota **mysqlserver_name** musí být jedinečná. Vysvětlení platných hodnot pro jednotlivé oblasti a úrovně najdete v [dokumentaci k cenovým úrovním](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers). Nahraďte `<server_admin_password>` heslem.
 
 ```yml
 - hosts: localhost
@@ -84,15 +84,16 @@ Zadejte vlastní hodnotu `<server_admin_password>`:
         name: "{{ mysqldb_name }}"
 ```
 
-Uložte výše uvedený playbook jako *mysql_create.yml*. Playbook spustíte pomocí příkazu **ansible-playbook** následujícím způsobem:
+Uložte předchozí playbook jako **mysql_create.yml**. Playbook spustíte pomocí příkazu **ansible-playbook** následujícím způsobem:
 ```bash
 ansible-playbook mysql_create.yml
 ```
 
-## <a name="configure-firewall-rule"></a>Konfigurace pravidla brány firewall
-Pravidlo brány firewall na úrovni serveru umožňuje externí aplikaci, jako je například nástroj pro příkazový řádek **mysql** nebo MySQL Workbench, aby se k vašemu serveru připojila prostřednictvím brány firewall služby Azure MySQL. Následující příklad vytvoří pravidlo brány firewall **externalaccess**, které povolí připojení z jakékoli externí IP adresy. 
+## <a name="configure-a-firewall-rule"></a>Konfigurace pravidla brány firewall
+Pravidlo brány firewall na úrovni serveru umožňuje externí aplikaci, aby se k vašemu serveru připojila prostřednictvím brány firewall služby Azure MySQL. Příkladem externí aplikace je nástroj pro příkazový řádek **mysql** nebo MySQL Workbench.
+Následující příklad vytvoří pravidlo brány firewall **externalaccess**, které povolí připojení z jakékoli externí IP adresy. 
 
-Zadejte vlastní hodnoty **startIpAddress** a **endIpAddress** jako rozsah IP adres, které odpovídají umístěním, ze kterých se budete připojovat. 
+Místo **startIpAddress** a **endIpAddress** zadejte vlastní hodnoty. Použijte rozsah IP adres, který odpovídá umístění, ze kterého se budete připojovat. 
 
 ```yml
 - hosts: localhost
@@ -120,19 +121,19 @@ Zadejte vlastní hodnoty **startIpAddress** a **endIpAddress** jako rozsah IP ad
 > Připojení ke službě Azure Database for MySQL komunikují přes port 3306. Pokud se pokoušíte připojit z podnikové sítě, odchozí provoz přes port 3306 nemusí být povolený. V takovém případě se k serveru nemůžete připojit, dokud vaše IT oddělení neotevře port 3306.
 > 
 
-Tady se k provedení této úlohy používá modul **azure_rm_resource**, který povolí přímé používání rozhraní REST API.
+Tady se k provedení této úlohy používá modul **azure_rm_resource**. Ten povolí přímé používání rozhraní REST API.
 
-Uložte výše uvedený playbook jako *mysql_firewall.yml*. Playbook spustíte pomocí příkazu **ansible-playbook** následujícím způsobem:
+Uložte předchozí playbook jako **mysql_firewall.yml**. Playbook spustíte pomocí příkazu **ansible-playbook** následujícím způsobem:
 ```bash
 ansible-playbook mysql_firewall.yml
 ```
 
-## <a name="connect-to-the-server-using-command-line-tool"></a>Připojení k serveru pomocí nástroje pro příkazový řádek
-MySQL můžete stáhnout [odsud](https://dev.mysql.com/downloads/) a nainstalovat do svého počítače. Místo toho můžete také kliknout na tlačítko **Vyzkoušet** ve vzorových kódech nebo na tlačítko `>_` v pravém horním panelu nástrojů na webu Azure Portal a spustit **Azure Cloud Shell**.
+## <a name="connect-to-the-server-by-using-the-command-line-tool"></a>Připojení k serveru pomocí nástroje pro příkazový řádek
+[MySQL si můžete stáhnout](https://dev.mysql.com/downloads/) a nainstalovat do svého počítače. Místo toho můžete vybrat tlačítko **Vyzkoušet** ve vzorových kódech nebo tlačítko **>_** v pravém horním panelu nástrojů na webu Azure Portal a otevřít **Azure Cloud Shell**.
 
 Zadejte další příkazy: 
 
-1. Připojení k serveru pomocí nástroje příkazového řádku **mysql**:
+1. Připojení k serveru pomocí nástroje pro příkazový řádek **mysql**:
 ```azurecli-interactive
  mysql -h mysqlserveransible.mysql.database.azure.com -u mysqladmin@mysqlserveransible -p
 ```
@@ -185,7 +186,7 @@ Threads: 5  Questions: 559  Slow queries: 0  Opens: 96  Flush tables: 3  Open ta
 ```
 
 ## <a name="using-facts-to-query-mysql-servers"></a>Dotazování serverů MySQL s využitím faktů
-Následující příklad dotazuje server nebo servery MySQL ve skupině prostředků **myResourceGroup** a následně všechny databáze na příslušném serveru:
+Následující příklad dotazuje servery MySQL ve skupině prostředků **myResourceGroup** a následně všechny databáze na příslušných serverech:
 
 ```yml
 - hosts: localhost
@@ -213,7 +214,7 @@ Následující příklad dotazuje server nebo servery MySQL ve skupině prostře
         var: mysqldatabasefacts
 ```
 
-Uložte výše uvedený playbook jako *mysql_query*.yml. Playbook spustíte pomocí příkazu **ansible-playbook** následujícím způsobem:
+Uložte předchozí playbook jako **mysql_query.yml**. Playbook spustíte pomocí příkazu **ansible-playbook** následujícím způsobem:
 
 ```bash
 ansible-playbook mysql_query.yml
@@ -292,12 +293,12 @@ Pokud tyto prostředky nepotřebujete, můžete je odstranit spuštěním násle
         state: absent
 ```
 
-Uložte výše uvedený playbook jako *rg_delete.yml*. Playbook spustíte pomocí příkazu **ansible-playbook** následujícím způsobem:
+Uložte předchozí playbook jako **rg_delete.yml**. Playbook spustíte pomocí příkazu **ansible-playbook** následujícím způsobem:
 ```bash
 ansible-playbook rg_delete.yml
 ```
 
-Pokud chcete odstranit pouze nově vytvořený server MySQL, můžete to provést spuštěním následujícího příkladu:
+Pokud chcete odstranit pouze nově vytvořený server MySQL, spusťte následující příklad:
 
 ```yml
 - hosts: localhost
@@ -312,7 +313,7 @@ Pokud chcete odstranit pouze nově vytvořený server MySQL, můžete to provés
         state: absent
 ```
 
-Uložte výše uvedený playbook jako *mysql_delete.yml*. Playbook spustíte pomocí příkazu **ansible-playbook** následujícím způsobem:
+Uložte předchozí playbook jako **mysql_delete.yml**. Playbook spustíte pomocí příkazu **ansible-playbook** následujícím způsobem:
 ```bash
 ansible-playbook mysql_delete.yml
 ```

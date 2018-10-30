@@ -7,12 +7,12 @@ ms.service: container-instances
 ms.topic: overview
 ms.date: 07/17/2018
 ms.author: danlep
-ms.openlocfilehash: 62457fe5b0336cb6ae6ac4fc63f4884ed14cf9d3
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: dc6aab03ec3e0ec47026c7d435ea538612c7bffb
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48856033"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49405595"
 ---
 # <a name="container-instance-logging-with-azure-log-analytics"></a>Protokolování instancí kontejnerů s využitím Azure Log Analytics
 
@@ -100,7 +100,7 @@ Krátce po spuštění příkazu byste měli dostat odpověď z Azure s podrobno
 
 Po nasazení skupiny kontejnerů může trvat několik minut (až 10), než se první položky protokolu objeví na webu Azure Portal. Když budete chtít zobrazit protokoly skupiny kontejnerů, otevřete pracovní prostor služby Log Analytics a pak:
 
-1. V přehledu **Pracovní prostor OMS** vyberte **Hledání v protokolu**.
+1. V přehledu **Pracovní prostor OMS** vyberte **Prohledávání protokolu**. Pracovní prostory OMS se teď označují jako pracovní prostory Log Analytics.  
 1. V části **Další dotazy k vyzkoušení** vyberte odkaz **Všechna shromážděná data**.
 
 Mělo by se zobrazit několik výsledků dotazu `search *`. Pokud se při prvním pokusu nezobrazí žádné výsledky, počkejte několik minut a pak spusťte dotaz znovu tlačítkem **SPUSTIT**. Ve výchozím nastavení se položky protokolu zobrazí v zobrazení Seznam. Pokud chcete položky protokolu zobrazit ve zhuštěnějším formátu, vyberte možnost **Tabulka**. Pak můžete rozbalením řádku zobrazit obsah příslušné položky protokolu.

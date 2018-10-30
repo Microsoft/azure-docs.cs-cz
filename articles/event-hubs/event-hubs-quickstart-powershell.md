@@ -11,23 +11,24 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 08/16/2018
 ms.author: shvija
-ms.openlocfilehash: 305776db1d3e0bacc266e514e0a59fe6b3fbd4b4
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 25c64b3ac2d051aac5998d23f07e149a1dd57bc9
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49388523"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49456220"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-powershell"></a>Rychlý start: Vytvoření centra událostí pomocí Azure PowerShellu
 
-Azure Event Hubs je vysoce škálovatelná platforma pro streamování dat a služba pro ingestování, která je schopná přijmout a zpracovat miliony událostí za sekundu. V tomto rychlém startu se dozvíte, jak pomocí PowerShellu vytvořit centrum událostí a pak do centra událostí odesílat a přijímat z něj události pomocí sady .NET Standard SDK.
+Azure Event Hubs je platforma pro streamování velkých objemů dat a služba pro ingestování událostí, která je schopná přijmout a zpracovat miliony událostí za sekundu. Služba Event Hubs dokáže zpracovávat a ukládat události, data nebo telemetrické údaje produkované distribuovaným softwarem a zařízeními. Data odeslaná do centra událostí je možné transformovat a uložit pomocí libovolného poskytovatele analýz v reálném čase nebo adaptérů pro dávkové zpracování a ukládání. Podrobnější přehled služby Event Hubs najdete v tématech [Přehled služby Event Hubs](event-hubs-about.md) a [Funkce služby Event Hubs](event-hubs-features.md).
 
-K dokončení tohoto rychlého startu potřebujete předplatné Azure. Pokud ho nemáte, [vytvořte si bezplatný účet][] před tím, než začnete.
+V tomto rychlém startu vytvoříte centrum událostí pomocí Azure PowerShellu.
 
 ## <a name="prerequisites"></a>Požadavky
 
 Abyste mohli absolvovat tento kurz, ujistěte se, že máte následující:
 
+- Předplatné Azure. Pokud ho nemáte, [vytvořte si bezplatný účet][] před tím, než začnete.
 - [Visual Studio 2017 s aktualizací Update 3 (verze 15.3, 26730.01)](http://www.visualstudio.com/vs) nebo novější.
 - [NET Standard SDK](https://www.microsoft.com/net/download/windows) verze 2.0 nebo novější.
 
@@ -35,9 +36,7 @@ Abyste mohli absolvovat tento kurz, ujistěte se, že máte následující:
 
 Pokud používáte PowerShell místně, k dokončení tohoto rychlého startu je potřeba, abyste měli nejnovější verzi PowerShellu. Pokud PowerShell potřebujete nainstalovat nebo upgradovat, přečtěte si téma [Instalace a konfigurace Azure PowerShellu](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-5.7.0).
 
-## <a name="provision-resources"></a>Zřízení prostředků
-
-### <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
+## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
 Skupina prostředků je logická kolekce prostředků Azure, kterou potřebujete k vytvoření centra událostí. 
 
@@ -47,7 +46,7 @@ Následující příklad vytvoří skupinu prostředků v oblasti USA – výcho
 New-AzureRmResourceGroup –Name myResourceGroup –Location eastus
 ```
 
-### <a name="create-an-event-hubs-namespace"></a>Vytvoření oboru názvů služby Event Hubs
+## <a name="create-an-event-hubs-namespace"></a>Vytvoření oboru názvů služby Event Hubs
 
 Po vytvoření skupiny prostředků v ní vytvořte obor názvů služby Event Hubs. Obor názvů služby Event Hubs poskytuje jedinečný plně kvalifikovaný název domény, ve které můžete vytvořit centrum událostí. Nahraďte `namespace_name` jedinečným názvem vašeho oboru názvů:
 
@@ -55,7 +54,7 @@ Po vytvoření skupiny prostředků v ní vytvořte obor názvů služby Event H
 New-AzureRmEventHubNamespace -ResourceGroupName myResourceGroup -NamespaceName namespace_name -Location eastus
 ```
 
-### <a name="create-an-event-hub"></a>Vytvoření centra událostí
+## <a name="create-an-event-hub"></a>Vytvoření centra událostí
 
 Teď, když máte obor názvů služby Event Hubs, v něm vytvořte centrum událostí:
 
@@ -63,98 +62,14 @@ Teď, když máte obor názvů služby Event Hubs, v něm vytvořte centrum udá
 New-AzureRmEventHub -ResourceGroupName myResourceGroup -NamespaceName namespace_name -EventHubName eventhub_name
 ```
 
-### <a name="create-a-storage-account-for-event-processor-host"></a>Vytvoření účtu úložiště pro třídu Event Processor Host
-
-Event Processor Host zjednodušuje příjem událostí ze služby Event Hubs tím, že spravuje kontrolní body a paralelní přijímače. K vytváření kontrolních bodů vyžaduje Event Processor Host účet úložiště. Spuštěním následujících příkazů vytvoříte účet úložiště a získáte jeho klíče:
-
-```azurepowershell-interactive
-# Create a standard general purpose storage account 
-New-AzureRmStorageAccount -ResourceGroupName myResourceGroup -Name storage_account_name -Location eastus -SkuName Standard_LRS 
-e
-# Retrieve the storage account key for accessing it
-Get-AzureRmStorageAccountKey -ResourceGroupName myResourceGroup -Name storage_account_name
-```
-
-### <a name="get-the-connection-string"></a>Získání připojovacího řetězce
-
-Připojovací řetězec je potřeba pro připojení k centru událostí a zpracování událostí. Připojovací řetězec získáte spuštěním:
-
-```azurepowershell-interactive
-Get-AzureRmEventHubKey -ResourceGroupName myResourceGroup -NamespaceName namespace_name -Name RootManageSharedAccessKey
-```
-
-## <a name="stream-into-event-hubs"></a>Streamování do služby Event Hubs
-
-Teď můžete začít streamovat do služby Event Hubs. Ukázky si můžete stáhnout nebo naklonovat přes Git z [úložiště Event Hubs](https://github.com/Azure/azure-event-hubs).
-
-### <a name="ingest-events"></a>Ingestování událostí
-
-Pokud chcete začít streamovat události, stáhněte si z GitHubu ukázku [SampleSender](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleSender) nebo pomocí následujícího příkazu naklonujte [úložiště Event Hubs na GitHubu](https://github.com/Azure/azure-event-hubs):
-
-```bash
-git clone https://github.com/Azure/azure-event-hubs.git
-```
-
-Přejděte do složky \azure-event-hubs\samples\DotNet\Microsoft.Azure.EventHubs\SampleSender a načtěte soubor SampleSender.sln do sady Visual Studio.
-
-Dále do projektu přidejte balíček NuGet [Microsoft.Azure.EventHubs](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/).
-
-V souboru Program.cs nahraďte následující zástupné hodnoty názvem vašeho centra událostí a připojovacím řetězcem:
-
-```C#
-private const string EhConnectionString = "Event Hubs connection string";
-private const string EhEntityPath = "Event Hub name";
-
-```
-
-Teď ukázku sestavte a spusťte. Uvidíte, jak se události ingestují do vašeho centra událostí:
-
-![][3]
-
-### <a name="receive-and-process-events"></a>Příjem a zpracování událostí
-
-Teď si stáhněte ukázku přijímače Event Processor Host, který bude přijímat právě odeslané zprávy. Stáhněte si z GitHubu ukázku [SampleEphReceiver](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleEphReceiver) nebo pomocí následujícího příkazu naklonujte [úložiště Event Hubs na GitHubu](https://github.com/Azure/azure-event-hubs):
-
-```bash
-git clone https://github.com/Azure/azure-event-hubs.git
-```
-
-Přejděte do složky \azure-event-hubs\samples\DotNet\Microsoft.Azure.EventHubs\SampleEphReceiver a načtěte soubor řešení SampleEphReceiver.sln do sady Visual Studio.
-
-Dále do projektu přidejte balíčky NuGet [Microsoft.Azure.EventHubs](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/) and [Microsoft.Azure.EventHubs.Processor](https://www.nuget.org/packages/Microsoft.Azure.EventHubs.Processor/).
-
-V souboru Program.cs nahraďte následující konstanty odpovídajícími hodnotami:
-
-```C#
-private const string EventHubConnectionString = "Event Hubs connection string";
-private const string EventHubName = "Event Hub name";
-private const string StorageContainerName = "Storage account container name";
-private const string StorageAccountName = "Storage account name";
-private const string StorageAccountKey = "Storage account key";
-```
-
-Teď ukázku sestavte a spusťte. Uvidíte, jak vaše ukázková aplikace přijímá události:
-
-![][4]
-
-Na webu Azure Portal můžete pro daný obor názvů služby Event Hubs zobrazit rychlost zpracovávání událostí, jak je znázorněno níže:
-
-![][5]
-
-## <a name="clean-up-resources"></a>Vyčištění prostředků
-
-Po dokončení tohoto rychlého startu můžete odstranit skupinu prostředků a obor názvů, účet úložiště a centrum událostí, které obsahuje. Nahraďte `myResourceGroup` názvem skupiny prostředků, kterou jste vytvořili. 
-
-```azurepowershell-interactive
-Remove-AzureRmResourceGroup -Name myResourceGroup
-```
+Blahopřejeme! Pomocí Azure PowerShellu jste vytvořili obor názvů služby Event Hubs a v něm centrum událostí. 
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste vytvořil obor názvů služby Event Hubs a další prostředky potřebné k odesílání a přijímání událostí z centra událostí. Další informace najdete v následujícím kurzu:
+V tomto článku jste vytvořili obor názvů služby Event Hubs a použili jste ukázkové aplikace k odesílání a přijímání událostí z centra událostí. Podrobné pokyny k odesílání událostí do centra událostí nebo příjmu událostí z centra událostí najdete v následujících kurzech: 
 
-> [!div class="nextstepaction"]
-> [Vizualizace datových anomálií v datových streamech Event Hubs](event-hubs-tutorial-visualize-anomalies.md)
+- **Odesílání událostí do centra událostí:** [.NET Standard](event-hubs-dotnet-standard-getstarted-send.md), [.NET Framework](event-hubs-dotnet-framework-getstarted-send.md), [Java](event-hubs-java-get-started-send.md), [Python](event-hubs-python-get-started-send.md), [Node.js](event-hubs-node-get-started-send.md), [Go](event-hubs-go-get-started-send.md), [C](event-hubs-c-getstarted-send.md)
+- **Příjem událostí z centra událostí:** [.NET Standard](event-hubs-dotnet-standard-getstarted-receive-eph.md), [.NET Framework](event-hubs-dotnet-framework-getstarted-receive-eph.md), [Java](event-hubs-java-get-started-receive-eph.md), [Python](event-hubs-python-get-started-receive.md), [Node.js](event-hubs-node-get-started-receive.md), [Go](event-hubs-go-get-started-receive-eph.md), [Apache Storm](event-hubs-storm-getstarted-receive.md)
 
 [vytvořte si bezplatný účet]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
 [Install and Configure Azure PowerShell]: https://docs.microsoft.com/powershell/azure/install-azurerm-ps

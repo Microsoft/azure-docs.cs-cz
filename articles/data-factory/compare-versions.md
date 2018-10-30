@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 04/09/2018
 ms.author: makromer
-ms.openlocfilehash: ca00a414402c1cfdef55cfbde9291688f091bf77
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: aecb193d1d9a10dbb5c936401f9900c4b2be071f
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43095915"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49638236"
 ---
 # <a name="compare-azure-data-factory-with-data-factory-version-1"></a>Porovnání služby Azure Data Factory s verzí 1 služby Data Factory
 Tento článek porovnává Data Factory s verzí 1 služby Data Factory. Se službou Data Factory se můžete seznámit v článku [Úvod do Azure Data Factory](introduction.md). S verzí 1 této služby se můžete seznámit v článku [Úvod do Azure Data Factory](v1/data-factory-introduction.md). 
@@ -62,7 +62,7 @@ Výstupy aktivity včetně stavu může používat následující aktivita v kan
 Aktivita [Until](control-flow-until-activity.md) funguje stejně jako smyčka Do-Until v programovacích jazycích. Provádí ve smyčce sadu aktivit, dokud není podmínka spojená s aktivitou vyhodnocená jako `true`. Ve službě Data Factory můžete pro aktivitu Until určit hodnotu časového limitu.  
 
 ### <a name="trigger-based-flows"></a>Toky založené na aktivačních událostech
-Kanály se můžou spouštět na vyžádání nebo v nastavenou hodinu. Podrobné informace o aktivačních událostech najdete v článku [Kanály a aktivační události](concepts-pipeline-execution-triggers.md). 
+Kanály se můžou aktivovat na vyžádání (na základě události, tj. odeslání objektu blob) nebo v nastavenou hodinu. Podrobné informace o aktivačních událostech najdete v článku [Kanály a aktivační události](concepts-pipeline-execution-triggers.md). 
 
 ### <a name="invoking-a-pipeline-from-another-pipeline"></a>Volání kanálu z jiného kanálu
 [Aktivita spuštění kanálu](control-flow-execute-pipeline-activity.md) umožňuje kanálu služby Data Factory volat jiný kanál.

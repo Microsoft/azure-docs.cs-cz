@@ -14,12 +14,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 08/10/2018
 ms.author: apimpm
-ms.openlocfilehash: 4f5097f8555d0345add7de8a0f648190bd4e1e00
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: 0346cf456c53b14fd3c5b14b2e40eddd8b89fe4d
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "41919893"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49465946"
 ---
 # <a name="create-and-publish-a-product"></a>Vytvoření a publikování produktu  
 
@@ -31,7 +31,7 @@ V tomto kurzu se naučíte:
 > * Vytvoření a publikování produktu
 > * Přidání rozhraní API do produktu
 
-![přidání produktu](media/api-management-howto-add-products/added-product.png)
+![Kurz přidání produktu](media/api-management-howto-add-products/added-product.png)
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -40,10 +40,10 @@ V tomto kurzu se naučíte:
 
 ## <a name="create-and-publish-a-product"></a>Vytvoření a publikování produktu
 
+![Přidání produktu](media/api-management-howto-add-products/02-create-publish-product-01.png)
+
 1. Kliknutím na **Produkty** v nabídce na levé straně zobrazte stránku **Produkty**.
 2. Klikněte na tlačítko **+ Přidat**.
-
-    ![přidaný produkt](media/api-management-howto-add-products/add-product.png)
 
     Při přidávání produktu je potřeba zadat následující informace: 
 
@@ -77,7 +77,7 @@ Vývojáři se nejprve musí přihlásit k odběru produktu, a teprve pak získa
 
 ### <a name="add-an-api-to-an-existing-product"></a>Přidání rozhraní API do existujícího produktu
 
-![přidání rozhraní API produktu](media/api-management-howto-add-products/add-product-api.png)
+![přidání rozhraní API produktu](media/api-management-howto-add-products/02-create-publish-product-02.png)
 
 1. Na kartě **Produkty** vyberte produkt.
 2. Přejděte na kartu **Rozhraní API**.

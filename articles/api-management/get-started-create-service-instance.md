@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: 7fb4182c0b5149a9006a30ad34782ad968e16758
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: f5465040f7dc0efd90591050ed9953149aca34b0
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38595584"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49456435"
 ---
 # <a name="create-a-new-azure-api-management-service-instance"></a>Vytvoření nové instance služby Azure API Management
 
@@ -35,6 +35,8 @@ Přihlaste se k webu Azure Portal na adrese http://portal.azure.com.
 
 ## <a name="create-a-new-service"></a>Vytvoření nové služby
 
+![Nová instance Azure API Managementu](./media/get-started-create-service-instance/00-CreateResource-01.png)
+
 1. Na webu [Azure Portal](https://portal.azure.com/) vyberte **Vytvořit prostředek** > **Podniková integrace** > **API Management**.
 
     Další možností je zvolit **Nový**, do vyhledávacího pole zadat `API management` a stisknout Enter. Klikněte na možnost **Vytvořit**.
@@ -43,15 +45,16 @@ Přihlaste se k webu Azure Portal na adrese http://portal.azure.com.
 
     ![Nová instance](./media/get-started-create-service-instance/get-started-create-service-instance-create-new.png)
 
-    | Nastavení      | Navrhovaná hodnota  | Popis              |
-    | ------------ |  ------- | ---------------------------------|
-    |**Název**|Jedinečný název pro vaši službu API Management| Tento název není možné později změnit. Název služby se používá k vygenerování výchozího názvu domény ve tvaru *{název}.azure-api.net*. Pokud chcete použít vlastní název domény, přečtěte si téma [Konfigurace vlastní domény](configure-custom-domain.md). <br/> Název služby se používá k odkazování na službu a odpovídající prostředek Azure.|
-    |**Předplatné**|Vaše předplatné | Předplatné, v jehož rámci se tato nová instance služby vytvoří. Můžete si vybrat jedno z různých předplatných Azure, ke kterým máte přístup.|
-    |**Skupina prostředků**|*apimResourceGroup*|Můžete vybrat nový nebo existující prostředek. Skupina prostředků je kolekce prostředků, které sdílejí životní cyklus, oprávnění a zásady. Další informace najdete [tady](../azure-resource-manager/resource-group-overview.md#resource-groups).|
-    |**Umístění**|*USA – západ*|Vyberte geografickou oblast blízko vás. V rozevíracím seznamu se zobrazí jenom dostupné oblasti služby API Management. |
-    |**Název organizace**|Název vaší organizace|Tento název se používá na řadě míst, včetně názvu portálu pro vývojáře a odesilatele e-mailů s oznámeními.|
-    |**E-mail správce**|*admin@org.com*|Nastavte e-mailovou adresu, na kterou se budou posílat všechna oznámení z **API Managementu**.|
-    |**Cenová úroveň**|*Developer*|Pro vyhodnocení služby nastavte úroveň **Developer**. Tato úroveň není určená pro použití v produkčním prostředí. Další informace o škálování úrovní služby API Management najdete v tématu věnovaném [upgradu a škálování](upgrade-and-scale.md).|
+    | Nastavení                 | Navrhovaná hodnota                               | Popis                                                                                                                                                                                                                                                                                                                         |
+|-------------------------|-----------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Název**                | Jedinečný název pro vaši službu API Management | Tento název není možné později změnit. Název služby se používá k vygenerování výchozího názvu domény ve tvaru *{název}.azure-api.net*. Pokud chcete použít vlastní název domény, přečtěte si téma [Konfigurace vlastní domény](configure-custom-domain.md). <br/> Název služby se používá k odkazování na službu a odpovídající prostředek Azure. |
+| **Předplatné**        | Vaše předplatné                             | Předplatné, v jehož rámci se tato nová instance služby vytvoří. Můžete si vybrat jedno z různých předplatných Azure, ke kterým máte přístup.                                                                                                                                                            |
+| **Skupina prostředků**      | *apimResourceGroup*                           | Můžete vybrat nový nebo existující prostředek. Skupina prostředků je kolekce prostředků, které sdílejí životní cyklus, oprávnění a zásady. Další informace najdete [tady](../azure-resource-manager/resource-group-overview.md#resource-groups).                                                                                                  |
+| **Umístění**            | *USA – západ*                                    | Vyberte geografickou oblast blízko vás. V rozevíracím seznamu se zobrazí jenom dostupné oblasti služby API Management.                                                                                                                                                                                                          |
+| **Název organizace**   | Název vaší organizace                 | Tento název se používá na řadě míst, včetně názvu portálu pro vývojáře a odesilatele e-mailů s oznámeními.                                                                                                                                                                                                             |
+| **E-mail správce** | *admin@org.com*                               | Nastavte e-mailovou adresu, na kterou se budou posílat všechna oznámení z **API Managementu**.                                                                                                                                                                                                                                              |
+| **Cenová úroveň**        | *Developer*                                   | Pro vyhodnocení služby nastavte úroveň **Developer**. Tato úroveň není určená pro použití v produkčním prostředí. Další informace o škálování úrovní služby API Management najdete v tématu věnovaném [upgradu a škálování](upgrade-and-scale.md).                                                                                                                                    |
+
 3. Zvolte **Vytvořit**.
 
     > [!TIP]
@@ -63,13 +66,18 @@ Přihlaste se k webu Azure Portal na adrese http://portal.azure.com.
 
 Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků a všech souvisejících prostředků použít následující postup:
 
+1. Na webu Azure Portal vyberte **Všechny služby**.
+2. Do vyhledávacího pole zadejte `resource groups` a klikněte na výsledek.
 
-1. Na webu Azure Portal vyberte ![šipka](./media/get-started-create-service-instance/arrow.png).
-2. Vyberte **Skupiny prostředků**.
-3. Najděte vaši skupinu prostředků.
-4. Klikněte na . . . a odstraňte vaši skupinu.
+    ![Navigace do skupiny prostředků](./media/get-started-create-service-instance/00-DeleteResource-01.png)
 
-![Vyčištění](./media/get-started-create-service-instance/cleanup.png)
+3. Vyhledejte svou skupinu prostředků a klikněte na ni.
+4. Klikněte na **Odstranit skupinu prostředků**.
+
+    ![Navigace do skupiny prostředků](./media/get-started-create-service-instance/00-DeleteResource-02.png)
+
+5. Potvrďte odstranění zadáním názvu vaší skupiny prostředků.
+6. Klikněte na **Odstranit**.
 
 ## <a name="next-steps"></a>Další kroky
 

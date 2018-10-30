@@ -1,25 +1,28 @@
 ---
-title: 'Rychlý start: Publikování znalostní báze v Go – QnA Maker'
+title: 'Rychlý start: Publikování znalostní báze – REST, Go – QnA Maker'
 titleSuffix: Azure Cognitive Services
-description: Jak publikovat znalostní bázi pro službu QnA Maker v Go
+description: Tento rychlý start založený na REST vás provede procesem publikování vaší znalostní báze. Tento proces odešle nejnovější verzi otestované znalostní báze na vyhrazený index Azure Search, který přestavuje publikovanou znalostní bázi. Také se přitom vytvoří koncový bod, který je možné volat v aplikaci nebo chatovacím robotu.
 services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: quickstart
-ms.date: 09/12/2018
+ms.date: 10/19/2018
 ms.author: diberry
-ms.openlocfilehash: c53763ad54932137e09e39c4b95dfd29f6c79c13
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 67914cccd4b1cee2bb43f18fc00346f15d79cafa
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48883529"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49646088"
 ---
-# <a name="quickstart-publish-a-knowledge-base-in-go"></a>Rychlý start: Publikování znalostní báze v Go
+# <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-go"></a>Rychlý start: Publikování znalostní báze ve službě QnA Maker pomocí jazyka Go
 
-Následující kód publikuje existující znalostní bázi pomocí metody [Publish](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fe).
+Tento rychlý start vás provede procesem publikování znalostní báze pomocí kódu programu. Publikování odešle nejnovější verzi znalostní báze do vyhrazeného indexu Azure Search a vytvoří koncový bod, který je možné volat v aplikaci nebo chatovacím robotu.
+
+Tento rychlý start volá rozhraní API služby QnA Maker:
+* [Publikování](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fe) –toto rozhraní API nevyžaduje v těle požadavku žádné informace.
 
 1. Ve svém oblíbeném prostředí IDE vytvořte nový projekt Go.
 2. Přidejte níže uvedený kód.

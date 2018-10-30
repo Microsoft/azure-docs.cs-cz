@@ -1,20 +1,20 @@
 ---
 title: Vyhledávání s využitím Azure Maps | Microsoft Docs
 description: Vyhledání okolního bodu zájmu s využitím Azure Maps
-author: dsk-2015
-ms.author: dkshir
-ms.date: 10/02/2018
+author: walsehgal
+ms.author: v-musehg
+ms.date: 10/22/2018
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 761674c5839f0513532355116db07604f9e9d9dc
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 10fb30b77cc3cd18cbb6b3def9682349474fba71
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48816816"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49645810"
 ---
 # <a name="search-nearby-points-of-interest-using-azure-maps"></a>Hledání okolních bodů zájmu s využitím Azure Maps
 
@@ -116,11 +116,10 @@ Rozhraní API pro mapové ovládací prvky je praktická klientská knihovna, kt
 
     ```JavaScript
     // Instantiate map to the div with id "map"
-    var MapsAccountKey = "<your account key>";
-    var map = new atlas.Map("map", {
-        "subscription-key": MapsAccountKey
-    });
+    atlas.setSubscriptionKey("<your account key>");
+    var map = new atlas.Map("map");
     ```
+
     Tento segment inicializuje rozhraní API pro mapové ovládací prvky pro váš klíč účtu Azure Maps. **Atlas** je obor názvů, který obsahuje rozhraní API a související vizuální komponenty. **Atlas.Map** zajišťuje ovládací prvek pro vizuální a interaktivní webovou mapu.
 
 4. Uložte provedené změny do souboru a otevřete stránku HTML v prohlížeči. Toto je nejzákladnější mapa, kterou můžete vytvořit zavoláním **atlas.map** s použitím klíče účtu.
@@ -148,14 +147,14 @@ Tato část ukazuje, jak pomocí rozhraní API vyhledávací služby Maps vyhled
     var client = new atlas.service.Client(MapsAccountKey);
     ```
 
-3. Všechny funkce na mapě by se měly načíst až po načtení mapy. Můžete to zajistit umístěním všech funkcí mapy do bloku eventListener mapy. Přidáním následujícího řádku kódu přidáte do mapy [eventListener](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addeventlistener) a zajistíte úplné načtení mapy před přidáním funkcí.
+3. Všechny funkce na mapě by se měly načíst až po načtení mapy. Můžete to zajistit umístěním všech funkcí mapy do bloku eventListener mapy. Přidáním následujícího řádku kódu přidáte do mapy [eventListener](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) a zajistíte úplné načtení mapy před přidáním funkcí.
     
     ```JavaScript
-         map.addEventListener("load", function() {
+         map.events.add("load", function() {
          });
     ```
 
-4. Přidáním následujícího bloku skriptu **do modulu eventListener pro načtení mapy** sestavte dotaz. Používá službu Fuzzy Search, což je základní rozhraní API služby Search Service. Služba Fuzzy Search zpracovává většinu přibližných vstupů, například kombinaci  tokenů adresy a bodu zájmu (POI). Vyhledá nejbližší čerpací stanice v zadaném okruhu. Odpověď se pak parsuje do formátu GeoJSON a převede do podoby bodů, které se přidají do mapy jako špendlíky. Poslední část skriptu přidá meze fotoaparátu pro mapu pomocí vlastnosti [setCameraBounds](https://docs.microsoft.com/javascript/api/azure-maps-control/models.cameraboundsoptions?view=azure-iot-typescript-latest) mapy.
+4. Přidáním následujícího bloku skriptu **mezi události načtení mapy** sestavte dotaz. Používá službu Fuzzy Search, což je základní rozhraní API služby Search Service. Služba Fuzzy Search zpracovává většinu přibližných vstupů, například kombinaci  tokenů adresy a bodu zájmu (POI). Vyhledá nejbližší čerpací stanice v zadaném okruhu. Odpověď se pak parsuje do formátu GeoJSON a převede do podoby bodů, které se přidají do mapy jako špendlíky. Poslední část skriptu přidá meze fotoaparátu pro mapu pomocí vlastnosti [setCameraBounds](https://docs.microsoft.com/javascript/api/azure-maps-control/models.cameraboundsoptions?view=azure-iot-typescript-latest) mapy.
 
     ```JavaScript
 
@@ -190,8 +189,8 @@ Tato část ukazuje, jak pomocí rozhraní API vyhledávací služby Maps vyhled
             map.setCameraBounds({
                bounds: geojsonResponse.getGeoJsonResults().bbox,
                padding: 50
-            );
-        });
+            });
+    });
     ```
 5. Uložte soubor **MapSearch.html** a aktualizujte prohlížeč. Teď by se měla zobrazit mapa, v jejímž středu je Seattle, s modrými špendlíky, které označují umístění čerpacích stanic v příslušné oblasti.
 

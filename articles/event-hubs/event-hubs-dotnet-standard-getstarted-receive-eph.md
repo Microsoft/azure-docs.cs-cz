@@ -14,47 +14,29 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/16/2018
 ms.author: shvija
-ms.openlocfilehash: 5abb2447fa90ea5900afb86746cc17eff62c2d2e
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 03cba90874d0f42e6c404009dc4115fb4f1798ed
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49166272"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49468071"
 ---
 # <a name="get-started-receiving-messages-with-the-event-processor-host-in-net-standard"></a>Začínáme s příjmem zpráv pomocí třídy Event Processor Host v .NET Standard
+Event Hubs je služba, která zpracovává velké objemy dat událostí (telemetrie) z připojených zařízení a aplikací. Data, která shromáždíte pomocí služby Event Hubs, můžete uložit pomocí úložného clusteru nebo transformovat pomocí zprostředkovatele datové analýzy v reálném čase. Schopnost shromažďovat a zpracovávat velké množství událostí je klíčovou komponentou moderních aplikačních architektur, například internetu věcí (Internet of Things – IoT). Podrobnější přehled služby Event Hubs najdete v tématech [Přehled služby Event Hubs](event-hubs-about.md) a [Funkce služby Event Hubs](event-hubs-features.md).
+
+Tento kurz ukazuje, jak napsat konzolovou aplikaci .NET Core, která přijímá zprávy z centra událostí pomocí třídy [Event Processor Host](event-hubs-event-processor-host.md). [Event Processor Host](event-hubs-event-processor-host.md) je třída rozhraní .NET, která zjednodušuje přijímání událostí z center událostí tím, že spravuje trvalé kontrolní body a paralelní příjmy z těchto center událostí. Pomocí třídy Event Processor Host můžete události rozdělit mezi několik příjemců, i když jsou hostovaní v různých uzlech. Tento příklad ukazuje způsob použití třídy Event Processor Host pro jednoho příjemce. Ukázka [horizontálního navýšení kapacity zpracování událostí][Horizontální navýšení kapacity zpracování událostí pomocí služby Event Hubs] znázorňuje způsob použití třídy Event Processor Host v případě několika příjemců.
 
 > [!NOTE]
-> Tato ukázka je k dispozici na [GitHubu](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleEphReceiver).
-
-Tento kurz ukazuje, jak napsat konzolovou aplikaci .NET Core, která přijímá zprávy z centra událostí pomocí knihovny **Event Processor Host**. Řešení z [GitHubu](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleEphReceiver) můžete spustit tak, jak je, stačí nahradit řetězce hodnotami vašeho centra událostí a účtu úložiště. Nebo můžete vytvořit vlastní řešení podle kroků v tomto kurzu.
+> Tento rychlý start si můžete stáhnout jako ukázku z [GitHubu](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleEphReceiver), nahradit řetězce `EventHubConnectionString`, `EventHubName`, `StorageAccountName`, `StorageAccountKey` a `StorageContainerName` hodnotami pro vaše centrum událostí a spustit. Alternativně můžete vytvořit vlastní řešení podle kroků v tomto kurzu.
 
 ## <a name="prerequisites"></a>Požadavky
-
 * [Sada Microsoft Visual Studio 2015 nebo 2017](http://www.visualstudio.com). V příkladech v tomto kurzu se používá sada Visual Studio 2017, ale podporuje se i sada Visual Studio 2015.
 * [Nástroje .NET Core pro sadu Visual Studio 2015 nebo 2017](http://www.microsoft.com/net/core).
-* Předplatné Azure.
-* Obor názvů služby Azure Event Hubs a centrum událostí.
-* Účet úložiště Azure.
 
-## <a name="create-an-event-hubs-namespace-and-an-event-hub"></a>Vytvoření oboru názvů Event Hubs a centra událostí  
+## <a name="create-an-event-hubs-namespace-and-an-event-hub"></a>Vytvoření oboru názvů Event Hubs a centra událostí
+Prvním krokem je použití webu [Azure Portal](https://portal.azure.com) k vytvoření oboru názvů typu Event Hubs a získání přihlašovacích údajů pro správu, které vaše aplikace potřebuje ke komunikaci s centrem událostí. Pokud chcete vytvořit obor názvů a centrum událostí, postupujte podle pokynů v [tomto článku](event-hubs-create.md) a pak pokračujte podle následujících pokynů v tomto kurzu.
 
-Prvním krokem je použití webu [Azure Portal](https://portal.azure.com) k vytvoření oboru názvů pro příslušný typ služby Event Hubs a získání přihlašovacích údajů pro správu, které vaše aplikace potřebuje ke komunikaci s centrem událostí. Pokud chcete vytvořit obor názvů a centrum událostí, postupujte podle pokynů v [tomto článku](event-hubs-create.md) a pak pokračujte v tomto kurzu.  
-
-## <a name="create-an-azure-storage-account"></a>Vytvoření účtu služby Azure Storage  
-
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).  
-2. V levém navigačním podokně portálu vyberte **Vytvořit prostředek**, vyberte kategorii **Úložiště** a pak vyberte **Účet úložiště – objekt blob, soubor, tabulka, fronta**.  
-3. Vyplňte pole v okně **Vytvořit účet úložiště** a pak vyberte **Zkontrolovat a vytvořit**. 
-
-    ![Vytvoření účtu úložiště][1]
-
-4. Na stránce **Zkontrolovat a vytvořit** zkontrolujte hodnoty polí a pak vyberte **Vytvořit**. 
-5. Po zobrazení zprávy **Nasazení proběhla úspěšně** vyberte název nového účtu úložiště. 
-6. V okně **Základy** vyberte **Objekty blob**. 
-7. V horní části vyberte **+ Kontejner**. Zadejte název kontejneru.  
-8. V levém okně vyberte **Přístupové klíče** a zkopírujte název kontejneru úložiště, název účtu úložiště a hodnotu položky **klíč1**. 
-
-    Uložte tyto hodnoty do Poznámkového bloku nebo jiného dočasného umístění.
+[!INCLUDE [event-hubs-create-storage](../../includes/event-hubs-create-storage.md)]
 
 ## <a name="create-a-console-application"></a>Vytvoření konzolové aplikace
 
@@ -118,7 +100,7 @@ Pomocí následujícího postupu do svého projektu přidejte balíčky NuGet kn
     }
     ```
 
-## <a name="write-a-main-console-method-that-uses-the-simpleeventprocessor-class-to-receive-messages"></a>Napsání hlavní metody konzoly, která pomocí třídy SimpleEventProcessor přijímá zprávy
+## <a name="update-the-main-method-to-use-simpleeventprocessor"></a>Aktualizace metody Main pro použití třídy SimpleEventProcessor
 
 1. Do horní části souboru Program.cs přidejte následující příkazy `using`.
 
@@ -220,12 +202,11 @@ Pomocí následujícího postupu do svého projektu přidejte balíčky NuGet kn
 
 Blahopřejeme! Obdrželi jste nyní zprávy z centra událostí pomocí třídy Event Processor Host.
 
-## <a name="next-steps"></a>Další kroky
-Další informace o službě Event Hubs najdete na následujících odkazech:
+> [!NOTE]
+> Tento kurz používá jednu instanci třídy [EventProcessorHost](event-hubs-event-processor-host.md). Pokud chcete zvýšit propustnost, doporučujeme spustit několik instancí třídy [EventProcessorHost](event-hubs-event-processor-host.md), jak je znázorněno v ukázce [škálovaného zpracování událostí](https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3). V těchto případech se spolu navzájem automaticky koordinuje několik instancí, aby dokázaly vyrovnávat zatížení přijatých událostí. 
 
-* [Přehled služby Event Hubs](event-hubs-what-is-event-hubs.md)
-* [Vytvoření centra událostí](event-hubs-create.md)
-* [Nejčastější dotazy k Event Hubs](event-hubs-faq.md)
+## <a name="next-steps"></a>Další kroky
+V tomto rychlém startu jste vytvořili aplikaci .NET Standard, která přijala zprávy z centra událostí. Informace o odesílání událostí do centra událostí pomocí .NET Standard najdete v tématu [Odesílání událostí z centra událostí – .NET Standard](event-hubs-dotnet-standard-getstarted-send.md).
 
 [1]: ./media/event-hubs-dotnet-standard-getstarted-receive-eph/event-hubs-python1.png
 [2]: ./media/event-hubs-dotnet-standard-getstarted-receive-eph/netcorercv.png

@@ -4,17 +4,17 @@ description: Zjistěte, jak vytvořit účet Azure Automation a spustit runbook.
 services: automation
 author: csand-msft
 ms.author: csand
-ms.date: 08/22/2018
+ms.date: 10/18/2018
 ms.topic: quickstart
 ms.service: automation
 ms.component: process-automation
 ms.custom: mvc
-ms.openlocfilehash: 81dbcb4f77708f9f679d146b1db83ddecc30629d
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: 701d2c348e91efed17c8c7828ace920914093b5a
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42616592"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49426188"
 ---
 # <a name="create-an-azure-automation-account"></a>Vytvoření účtu Azure Automation
 
@@ -32,7 +32,7 @@ Přihlaste se k Azure na adrese https://portal.azure.com.
 
 1. Vyberte **Nástroje pro správu** a pak vyberte **Automation**.
 
-1. Zadejte informace o účtu. U možnosti **Vytvořit účet Spustit v Azure jako** zvolte **Ano**, aby se automaticky povolily artefakty, které zjednoduší ověřování do Azure. Je důležité si uvědomit, že při vytváření účtu Automation není možné změnit již zvolený název. Jakmile budete hotovi, klikněte na **Vytvořit** a spusťte nasazování účtu Automation.
+1. Zadejte informace o účtu. U možnosti **Vytvořit účet Spustit v Azure jako** zvolte **Ano**, aby se automaticky povolily artefakty, které zjednoduší ověřování do Azure. Je důležité si uvědomit, že při vytváření účtu Automation není možné změnit již zvolený název. Jeden účet Automation může spravovat prostředky napříč všemi oblastmi a předplatnými daného tenanta. Jakmile budete hotovi, klikněte na **Vytvořit** a spusťte nasazování účtu Automation.
 
     ![Zadání informací o účtu Automation na stránce](./media/automation-quickstart-create-account/create-automation-account-portal-blade.png)  
 

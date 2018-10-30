@@ -1,23 +1,23 @@
 ---
-title: 'Rychlý start: Získání podporovaných jazyků – Translator Text API, C#'
+title: 'Rychlý start: Získání podporovaných jazyků, C# – Translator Text API'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu získáte seznam jazyků podporovaných pro překlad, transkripci a vyhledávání ve slovníku a příklady s použitím služby Translator Text API s C#.
 services: cognitive-services
-author: noellelacharite
+author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/15/2018
-ms.author: nolachar
-ms.openlocfilehash: 82e051895bd5ba8542fa32aa147b050a25c43c84
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.author: erhopf
+ms.openlocfilehash: 9ac881adcf7d273c9a3bcea55d084acced59c107
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49318386"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49645398"
 ---
-# <a name="quickstart-get-supported-languages-with-c35"></a>Rychlý start: Získání podporovaných jazyků s C&#35;
+# <a name="quickstart-get-supported-languages-with-the-translator-text-rest-api-c"></a>Rychlý start: Získání podporovaných jazyků pomocí rozhraní REST API služby Translator Text (C#)
 
 V tomto rychlém startu získáte seznam jazyků podporovaných pro překlad, transkripci a vyhledávání ve slovníku a příklady s použitím služby Translator Text API.
 

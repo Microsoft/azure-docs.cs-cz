@@ -1,25 +1,31 @@
 ---
-title: 'Rychlý start: Aktualizace znalostní báze v Javě – QnA Maker'
+title: 'Rychlý start: Aktualizace znalostní báze – REST, Java – QnA Maker'
 titleSuffix: Azure Cognitive Services
-description: Postup aktualizace znalostní báze pro QnA Maker v Javě
+description: Tento rychlý start založený na REST vás provede programovou aktualizací ukázkové znalostní báze služby QnA Maker. Definice JSON, kterou použijete k aktualizaci znalostní báze, umožňuje přidávat, měnit nebo odstraňovat páry otázek a odpovědí.
 services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: quickstart
-ms.date: 09/12/2018
+ms.date: 10/19/2018
 ms.author: diberry
-ms.openlocfilehash: fc2792086d93e584535389c8c0f162fc1e592cbd
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: b7aaf57def84feec95cc6a157ac6dd33a17b2fc0
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49388241"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49645851"
 ---
-# <a name="update-a-knowledge-base-in-java"></a>Aktualizace znalostní báze v Javě
+# <a name="quickstart-update-a-knowledge-base-in-qna-maker-using-java"></a>Rychlý start: Aktualizace znalostní báze ve službě QnA Maker pomocí Javy
 
-Následující kód aktualizuje existující znalostní bázi pomocí metody [Update](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da7600).
+Tento rychlý start vás provede programovou aktualizací stávající znalostní báze QnA Maker.  Tento soubor JSON umožňuje aktualizovat znalostní bázi přidáním nových zdrojů dat, změnou zdrojů dat nebo odstraněním zdrojů dat.
+
+Toto rozhraní API je ekvivalentní úpravě a následnému použití tlačítka **Save and train** (Uložit a natrénovat) na portálu služby QnA Maker.
+
+Tento rychlý start volá rozhraní API služby QnA Maker:
+* [Update](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da7600) – Model pro znalostní bázi je definován v kódu ve formátu JSON poslaném v těle požadavku rozhraní API. 
+* [Get Operation Details](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/operations_getoperationdetails)
 
 [!INCLUDE [Code is available in Azure-Samples Github repo](../../../../includes/cognitive-services-qnamaker-java-repo-note.md)]
 

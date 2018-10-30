@@ -3,7 +3,7 @@ title: Import a publikování vašeho prvního rozhraní API ve službě Azure A
 description: Zjistěte, jak importovat a publikovat své první rozhraní API ve službě API Management.
 services: api-management
 documentationcenter: ''
-author: vladvino
+author: mikebudzynski
 manager: cfowler
 editor: ''
 ms.service: api-management
@@ -14,12 +14,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 538977b9057a5699d61d6c2cc44209367e3550e2
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: cf913c0aaf7dd9957f21452caf8e43a9e3c8b2db
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47093398"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49467391"
 ---
 # <a name="import-and-publish-your-first-api"></a>Import a publikování vašeho prvního rozhraní API 
 
@@ -73,9 +73,11 @@ Tato část ukazuje, jak importovat a publikovat back-endové rozhraní API spec
 
 ## <a name="test-the-new-apim-api-in-the-azure-portal"></a>Testování nového rozhraní API služby APIM na portálu Azure Portal
 
+![Mapa testu rozhraní API](./media/api-management-get-started/01-import-first-api-01.png)
+
 Operaci můžete volat přímo z portálu Azure Portal, který nabízí pohodlný způsob pro zobrazení a testování operací v rozhraní API.  
 1. Vyberte rozhraní API, které jste vytvořili v předchozím kroku (z karty **Rozhraní API**).
-2. Klikněte na kartu **Test**.  ![Test rozhraní API](./media/api-management-get-started/test-api.png)
+2. Klikněte na kartu **Test**.
 3. Klikněte na možnost **GetSpeakers**.
     Stránka zobrazí pole pro parametry dotazu (v tomto případě žádné neexistují) a hlavičky. Jednou z hlaviček je klíč „Ocp-Apim-Subscription-Key“. Je to klíč pro přihlášení k odběru produktu, který je k tomuto rozhraní API přidružený. Klíč se vyplní automaticky.
 4. Stiskněte **Odeslat**.
@@ -87,7 +89,8 @@ Operaci můžete volat přímo z portálu Azure Portal, který nabízí pohodln�
 Pokud chcete otestovat rozhraní API, je možné operace také vyvolat z **Portálu pro vývojáře**.
 
 1. Přejděte na **portál pro vývojáře**.
-![portálu pro vývojáře](./media/api-management-get-started/developer-portal.png)
+
+ ![Portál pro vývojáře](./media/api-management-get-started/developer-portal.png)
 
 2. Vyberte **Rozhraní API**, klikněte na **Demo Conference API** a pak na **GetSpeakers**.
     

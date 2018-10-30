@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: fc4b2f153c89d4253bc3fdd9c5a49973baa38752
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: 79a6636043499cffb7eded409cdc27c56de98e33
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49310211"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49430217"
 ---
 # <a name="tutorial-azure-ad-password-reset-from-the-login-screen"></a>Kurz: Resetování hesla Azure AD z přihlašovací obrazovky
 
@@ -118,6 +118,8 @@ Pokud zásady vyžadují stisknutí Ctrl+Alt+Del nebo jsou vypnutá oznámení p
 Protokol auditu služby Azure AD bude obsahovat informace o IP adrese a typu klienta, kde došlo k resetování hesla.
 
 ![Příklad resetování hesla na přihlašovací obrazovce v protokolu auditu služby Azure AD](media/tutorial-sspr-windows/windows-sspr-azure-ad-audit-log.png)
+
+Pokud jsou vaše počítače s Windows 10 za proxy serverem nebo bránou firewall, měl by být povolený provoz HTTPS (port 443) na adresu passwordreset.microsoftonline.com and ajax.aspnetcdn.com.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

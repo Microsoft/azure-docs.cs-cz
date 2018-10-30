@@ -12,12 +12,12 @@ ms.custom: mvc
 ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.date: 07/31/2018
-ms.openlocfilehash: b8961edebd80d5f36d844734e3c93a4bd3b1f0cf
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 6783c59b354e0eebc7fa6d8f67985b8d7b72c22a
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42162129"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49645827"
 ---
 # <a name="quickstart-create-and-automate-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>Rychlý start: Vytvoření a automatizace úloh, procesů a pracovních postupů pomocí Azure Logic Apps – Visual Studio
 
@@ -148,6 +148,10 @@ Před spuštěním aplikace logiky ji nasaďte ze sady Visual Studio do Azure, c
 
    ![Výstup stavu nasazení](./media/quickstart-create-logic-apps-with-visual-studio/logic-app-output-window.png)
 
+   Pokud od vás vybrané konektory vyžadují nějaký vstup, může se na pozadí otevřít okno PowerShellu s výzvou k zadání potřebných hesel nebo tajných klíčů. Po zadání těchto informací bude nasazení pokračovat.
+   
+   ![Okno PowerShellu pro nasazení](./media/quickstart-create-logic-apps-with-visual-studio/logic-apps-powershell-window.png)
+   
    Po dokončení nasazení bude vaše aplikace logiky spuštěná na webu Azure Portal a kontrolovat informační kanál RSS podle zadaného plánu (každou minutu). 
    Pokud informační kanál RSS obsahuje nové položky, aplikace logiky za každou novou položku odešle e-mail. 
    Jinak vaše aplikace logiky s další kontrolou počká na další interval. 

@@ -1,6 +1,6 @@
 ---
-title: Ukázkový skript Azure CLI – Vytvoření virtuálního počítače s Linuxem a monitorováním OMS | Microsoft Docs
-description: Ukázkový skript Azure CLI – Vytvoření virtuálního počítače s Linuxem a monitorováním OMS
+title: Ukázkový skript Azure CLI – Vytvoření virtuálního počítače s Linuxem a monitorováním Azure | Microsoft Docs
+description: Ukázkový skript Azure CLI – Vytvoření virtuálního počítače s Linuxem a monitorováním Azure
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
@@ -16,16 +16,16 @@ ms.workload: infrastructure
 ms.date: 02/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 92bc86a1db4aca563a089e20c3e19557517f2d9b
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: cedb8d9c2ef4acd9d7a896153bce6be790ed83a3
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37932615"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49407959"
 ---
-# <a name="monitor-a-vm-with-operations-management-suite"></a>Monitorování virtuálního počítače pomocí Operations Management Suite
+# <a name="monitor-a-vm-with-azure-monitoring"></a>Monitorování virtuálního počítače s využitím monitorování Azure
 
-Tento skript vytvoří virtuální počítač Azure, nainstaluje agenta Operations Management Suite (OMS) a zaregistruje systém v pracovním prostoru OMS. Po spuštění skriptu bude virtuální počítač viditelný v konzole OMS.
+Tento skript vytvoří virtuální počítač Azure, nainstaluje agenta Log Analytics a zaregistruje systém v pracovním prostoru Log Analytics. Po spuštění skriptu bude virtuální počítač viditelný v konzole.
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
@@ -51,7 +51,7 @@ Tento skript k vytvoření skupiny prostředků, virtuálního počítače a vš
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
 | [az vm create](https://docs.microsoft.com/cli/azure/vm#az_vm_create) | Vytvoří virtuální počítač a připojí ho k síťové kartě, virtuální síti, podsíti a skupině NSG. Tento příkaz také určuje image virtuálního počítače, která se má použít, a přihlašovací údaje pro správu.  |
-| [azure vm extension set](https://docs.microsoft.com/cli/azure/vm/extension#az_vm_extension_set) | Spustí pro virtuální počítač rozšíření virtuálního počítače. V tomto případě se k instalaci agenta OMS a registraci virtuálního počítače v pracovním prostoru OMS používá rozšíření agenta Operations Management Suite. |
+| [azure vm extension set](https://docs.microsoft.com/cli/azure/vm/extension#az_vm_extension_set) | Spustí pro virtuální počítač rozšíření virtuálního počítače. V tomto případě se k instalaci agenta Log Analytics a registraci virtuálního počítače v pracovním prostoru Log Analytics používá rozšíření agenta Log Analytics. |
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az_vm_extension_set) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 
 ## <a name="next-steps"></a>Další kroky

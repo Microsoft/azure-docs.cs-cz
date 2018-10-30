@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 10/10/2018
+ms.date: 10/19/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 0404774f1cb347ceead8b78d1a9a6506712dea5c
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: ab79201442fe9c7334525972c34eba86daf27e99
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49069093"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49457421"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-to-a-secondary-azure-region"></a>Nastavení zotavení po havárii pro virtuální počítače Azure do sekundární oblasti Azure
 
@@ -27,6 +27,9 @@ V tomto kurzu se dozvíte, jak nastavit zotavení po havárii do sekundární ob
 > * Ověření nastavení cílových prostředků
 > * Nastavení odchozího přístupu pro virtuální počítače
 > * Povolit replikaci virtuálního počítače
+
+> [!NOTE]
+> Cílem tohoto kurzu je provést uživatele postupem povolení replikace s minimálním přizpůsobením. Pokud se chcete dozvědět více o různých aspektech souvisejících se zotavením po havárii, včetně důležitých aspektů sítí, automatizace nebo řešení potíží, prostudujte si dokumenty v části Postupy pro virtuální počítače Azure.
 
 
 ## <a name="prerequisites"></a>Požadavky
@@ -193,7 +196,7 @@ Kliknutím na Upravit vedle nastavení šifrování přepište výchozí hodnoty
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste pro virtuální počítač Azure nakonfigurovali zotavení po havárii. Dalším krokem je test vaší konfigurace.
+V tomto kurzu jste pro virtuální počítač Azure nakonfigurovali zotavení po havárii. Dalším krokem je vaši konfiguraci otestovat zahájením postupu zotavení po havárii.
 
 > [!div class="nextstepaction"]
 > [Spuštění postupu zotavení po havárii](azure-to-azure-tutorial-dr-drill.md)

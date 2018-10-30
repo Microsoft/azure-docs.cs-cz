@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/18/2018
 ms.author: ryanwi
-ms.openlocfilehash: 7573746b91f057d83a299d54801785118cc1c878
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 36b9a2e710a2a7f34ee9374e89f3fb19cc591ac3
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44380127"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49429588"
 ---
 # <a name="tutorial-deploy-a-net-application-in-a-windows-container-to-azure-service-fabric"></a>Kurz: Nasazení aplikace .NET v kontejneru Windows do Azure Service Fabricu
 
@@ -61,7 +61,9 @@ Kontejner je teď připravený k sestavení a zabalení do aplikace Service Fabr
 ## <a name="create-an-azure-sql-db"></a>Vytvoření databáze SQL Azure
 Při spuštění aplikace Fabrikam Fiber CallCenter v produkčním prostředí musí být data ukládána v databázi. V současné době neexistuje způsob, jak zaručit trvalost dat v kontejneru, proto na SQL Server v kontejneru nemůžete ukládat produkční data.
 
-Doporučujeme [Azure SQL Database](/azure/sql-database/sql-database-get-started-powershell). K nastavení a spuštění spravované databáze SQL Serveru v Azure spusťte následující skript.  Podle potřeby upravte proměnné skriptu. *clientIP* je IP adresa vašeho vývojového počítače.  Pokud jste za podnikovou bránou firewall, IP adresa vašeho vývojového počítače nemusí být přístupná na internetu.  Můžete také nastavit pravidlo brány firewall serveru pro databázi SQL prostřednictvím portálu [Azure Portal](https://portal.azure.com), které vypíše IP adresy vašeho počítače.
+Doporučujeme [Azure SQL Database](/azure/sql-database/sql-database-get-started-powershell). K nastavení a spuštění spravované databáze SQL Serveru v Azure spusťte následující skript.  Podle potřeby upravte proměnné skriptu. *clientIP* je IP adresa vašeho vývojového počítače.
+
+Pokud jste za podnikovou bránou firewall, IP adresa vašeho vývojového počítače nemusí být přístupná na internetu. Pokud chcete ověřit, že má databáze správnou IP adresu pro pravidlo brány firewall, přejděte na web [Azure Portal](https://portal.azure.com) a v části Databáze SQL vyhledejte svou databázi. Klikněte na její název a pak v části Přehled klikněte na Nastavit bránu firewall serveru. IP adresa klienta je IP adresa vašeho počítače pro vývoj. Ujistěte se, že se shoduje s IP adresou v pravidle AllowClient.
 
 ```powershell
 $subscriptionID="<subscription ID>"

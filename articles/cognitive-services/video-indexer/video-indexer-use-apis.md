@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Používání rozhraní API Video Indexeru'
+title: Použití rozhraní API Video Indexeru
 titlesuffix: Azure Cognitive Services
 description: Tento článek ukazuje, jak začít používat rozhraní API Video Indexeru.
 services: cognitive services
@@ -8,16 +8,16 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: video-indexer
 ms.topic: tutorial
-ms.date: 09/09/2018
+ms.date: 10/20/2018
 ms.author: juliako
-ms.openlocfilehash: 7bd7ed1b2d2f437ef57598c42ca12ce8bfb174a1
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 401811ec8803f3ede5a829dc96edc1e7f15e5ee0
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45985561"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49637744"
 ---
-# <a name="tutorial-use-the-video-indexer-api"></a>Kurz: Používání rozhraní API Video Indexeru
+# <a name="use-the-video-indexer-api"></a>Použití rozhraní API Video Indexeru
 
 > [!Note]
 > API Video Indexeru ve verzi 1 se přestalo používat 1. srpna 2018. Teď byste měli používat rozhraní API Video Indexeru ve verzi 2. <br/>Pokyny k vývoji pomocí rozhraní API Video Indexeru ve verzi 2 najdete [tady](https://api-portal.videoindexer.ai/). 
@@ -51,6 +51,9 @@ Tento článek popisuje, jak můžou vývojáři využít výhod rozhraní [API 
     Po přihlášení k odběru budete moct zobrazit svůj odběr a primární a sekundární klíč. Klíče by měly být chráněné. Klíče by měl používat jenom kód vašeho serveru. Neměly by být k dispozici na straně klienta (.js, html apod.).
 
     ![Registrace](./media/video-indexer-use-apis/video-indexer-api03.png)
+
+> [!TIP]
+> Uživatelé Video Indexeru se můžou pomocí jednoho klíče předplatného připojit k několika účtům Video Indexeru. Tyto účty Video Indexeru můžete propojit s různými účty Media Services.
 
 ## <a name="obtain-access-token-using-the-authorization-api"></a>Získání přístupového tokenu pomocí rozhraní API Authorization
 

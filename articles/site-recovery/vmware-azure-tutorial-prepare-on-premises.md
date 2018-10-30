@@ -6,22 +6,25 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 07/06/2018
+ms.date: 10/19/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: facf8895770f890bfbbef946a32cc681f685e998
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 361a1934a1e0cdcc0647c4c4f62af98f52b8c899
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37915198"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49456866"
 ---
 # <a name="prepare-on-premises-vmware-servers-for-disaster-recovery-to-azure"></a>Příprava místních serverů VMware na zotavení po havárii do Azure
 
 [Azure Site Recovery](site-recovery-overview.md) přispívá ke strategii provozní kontinuity a zotavení po havárii (BCDR) tím, že zajišťuje provoz a dostupnost obchodních aplikací během plánovaných i neplánovaných výpadků. Site Recovery spravuje a orchestruje zotavení po havárii místních počítačů a virtuálních počítačů Azure, včetně replikace, převzetí služeb při selhání a zotavení.
 
 - Toto je druhý kurz řady, která ukazuje, jak nastavit zotavení po havárii do Azure pro místní virtuální počítače VMware. V prvním kurzu jste [nastavili komponenty Azure](tutorial-prepare-azure.md) potřebné pro zotavení po havárii VMware.
-- Tyto kurzy demonstrují ten nejjednodušší způsob nasazení určitého scénáře. V rámci možností používají jen výchozí možnosti a neuvádějí všechny varianty nastavení ani všechny cesty. 
+
+
+> [!NOTE]
+> Tyto kurzy demonstrují ten nejjednodušší způsob nasazení určitého scénáře. V rámci možností používají jen výchozí možnosti a neuvádějí všechny varianty nastavení ani všechny cesty. Podrobné pokyny najdete v části **Postupy** pro odpovídající scénář.
 
 V tomto článku si ukážeme, jak připravit místní prostředí VMware, pokud chcete replikovat virtuální počítače VMware v Azure pomocí Azure Site Recovery. Získáte informace o těchto tématech:
 
@@ -101,11 +104,13 @@ Pokud se po převzetí služeb při selhání chcete připojit k virtuálním po
 - [Přidejte veřejnou IP adresu](site-recovery-monitoring-and-troubleshooting.md) pro tento virtuální počítač.
 - Můžete zkontrolovat **diagnostiku spuštění**, kde se zobrazí snímek obrazovky virtuálního počítače.
 
+
+## <a name="failback-requirements"></a>Požadavky na navrácení služeb po obnovení
+Pokud plánujete navrácení služeb po obnovení do místního prostředí, je potřeba zajistit také [splnění určitých požadavků](vmware-azure-reprotect.md##before-you-begin). Tyto požadavky však **nejsou nutné k tomu, abyste mohli začít s povolováním zotavení po havárii** pro vaše virtuální počítače, a můžete je splnit i po převzetí služeb při selhání do Azure.
+
 ## <a name="useful-links"></a>Užitečné odkazy
 
 Pokud replikujete více virtuálních počítačů, měli byste nejdřív naplánovat kapacitu a nasazení. [Další informace](site-recovery-deployment-planner.md).
-
-
 
 ## <a name="next-steps"></a>Další kroky
 

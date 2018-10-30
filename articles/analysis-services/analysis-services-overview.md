@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 10/03/2018
+ms.date: 10/18/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: d09fcde90cf182bc8197c579718ecef7c5ce1eed
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 3cdc4a8a670b5af43e72b38d7a3b6d9aafdac348
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394520"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49429435"
 ---
 # <a name="what-is-azure-analysis-services"></a>Co je služba Azure Analysis Services?
 
@@ -81,29 +81,34 @@ Služba Azure Analysis Services je podporována ve všech zemích/oblastech po c
 |Brazílie – jih     |    B1, B2, S0, S1, S2, S4, D1     |     1    |
 |Kanada – střed    |     B1, B2, S0, S1, S2, S4, D1    |     1    |
 |USA – východ     |     B1, B2, S0, S1, S2, S4, D1    |    1     |
-|Východní USA 2     |     B1, B2, S0, S1, S2, S4, D1  <br>S8, S9   |    7<br>1    |
+|Východní USA 2     |     B1, B2, S0, S1, S2, S4, D1   |    7    |
+|Východní USA 2     |     S8, S9   |    1    |
 |Střed USA – sever     |     B1, B2, S0, S1, S2, S4, D1     |    1     |
 |USA – střed     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
 |Střed USA – jih     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
 |Západní střed USA   |     B1, B2, S0, S1, S2, S4, D1    |    3     |
-|USA – západ     |    B1, B2, S0, S1, S2, S4, D1  <br>S8, S9   |    7<br>2  |
-|Západní USA 2    |    B1, B2, S0, S1, S2, S4, D1   <br>S8, S9  |    3<br>1     |
+|USA – západ     |    B1, B2, S0, S1, S2, S4, D1    |    7   |
+|USA – západ     |    S8, S9   |    2  |
+|Západní USA 2    |    B1, B2, S0, S1, S2, S4, D1    |    3   |
+|Západní USA 2    |    S8, S9  |    1     |
 
 ### <a name="europe"></a>Evropa
 
 |Oblast  | Podporované plány | Repliky dotazů (pouze plány Standard) |
 |---------|---------|:---------:|
 |Severní Evropa     |    B1, B2, S0, S1, S2, S4, D1      |    7     |
-|Velká Británie – jih   |    B1, B2, S0, S1, S2, S4, D1      |     1    |
-|Západní Evropa     |    B1, B2, S0, S1, S2, S4, D1   <br>S8, S9    |    7<br>1     |
+|Velká Británie – jih     |    B1, B2, S0, S1, S2, S4, D1      |     1    |
+|Západní Evropa     |    B1, B2, S0, S1, S2, S4, D1   |    7    |
+|Západní Evropa    |   S8, S9  |  1  |
 
 ### <a name="asia-pacific"></a>Asie a Tichomoří 
 
 |Oblast  | Podporované plány | Repliky dotazů (pouze plány Standard) |
 |---------|---------|:---------:|
+|Austrálie – východ     |    B1, B2, S0, S1, S2, S4     |    3     |
+|Austrálie – východ     |    S8, S9    |    1     |
 |Austrálie – jihovýchod     | B1, B2, S0, S1, S2, S4, D1       |    1     |
-|Austrálie – východ     |    B1, B2, S0, S1, S2, S4    <br>S8, S9    |    3<br>1     |
-|Japonsko – východ  |   B1, B2, S0, S1, S2, S4, D1       |    1     |
+|Japonsko – východ     |   B1, B2, S0, S1, S2, S4, D1       |    1     |
 |Jihovýchodní Asie     |     B1, B2, S0, S1, S2, S4, S8, S9, D1     |   1      |
 |Indie – západ     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
 
@@ -184,9 +189,11 @@ Pokud se o službě Azure Security chcete dozvědět víc, podívejte se na [Mic
 
 ![Vývojářské nástroje BI](./media/analysis-services-overview/aas-overview-dev-tools.png)
 
-### <a name="sql-server-data-tools-ssdt-for-visual-studio"></a>SQL Server Data Tools (SSDT) pro Visual Studio
+### <a name="visual-studio"></a>Visual Studio
 
-Vyvíjejte a nasazujte modely pomocí bezplatného rozšíření [SQL Server Data Tools (SSDT) pro Visual Studio](https://msdn.microsoft.com/library/mt204009.aspx). Rozšíření SSDT zahrnuje šablony projektů Analysis Services, které vám pomůžou s rychlým zprovozněním. Rozšíření SSDT teď pro tabulkové modely 1400 zahrnuje moderní funkci Získání dat pro dotazování a mashup zdrojů dat. Pokud už znáte funkci Získání dat v aplikacích Power BI Desktop a Excel 2016, tak už víte, jak snadné je vytvářet vysoce přizpůsobené dotazy na zdroj dat. Projekty služby Microsoft Analysis Services jsou k dispozici také pro sadu Visual Studio jako instalovatelný balíček VSIX. [Můžete si je stáhnout z webu Marketplace](https://marketplace.visualstudio.com/items?itemName=ProBITools.MicrosoftAnalysisServicesModelingProjects).
+Vyvíjejte a nasazujte modely pomocí bezplatného rozšíření [SQL Server Data Tools (SSDT) pro Visual Studio](https://msdn.microsoft.com/library/mt204009.aspx). Rozšíření SSDT zahrnuje šablony projektů Analysis Services, které vám pomůžou s rychlým zprovozněním. Rozšíření SSDT teď pro tabulkové modely 1400 zahrnuje moderní funkci Získání dat pro dotazování a mashup zdrojů dat. Pokud už znáte funkci Získání dat v aplikacích Power BI Desktop a Excel 2016, tak už víte, jak snadné je vytvářet vysoce přizpůsobené dotazy na zdroj dat. 
+
+Pokud používáte sadu Visual Studio 2017, projekty služby Microsoft Analysis Services jsou k dispozici jako bezplatný instalovatelný balíček VSIX. [Můžete si je stáhnout z webu Marketplace](https://marketplace.visualstudio.com/items?itemName=ProBITools.MicrosoftAnalysisServicesModelingProjects).
 
 ### <a name="sql-server-management-studio"></a>SQL Server Management Studio
 

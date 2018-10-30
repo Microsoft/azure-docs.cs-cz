@@ -17,14 +17,14 @@ ms.date: 07/09/2018
 author: mlearned
 ms.custom: mvc
 monikerRange: vsts
-ms.openlocfilehash: 4e0e28ff9ea14e42e1df7ce35bb90e8720a0d0b6
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 02b6823a46c94edb0ba28c7a2a8b9ae0efc44ae8
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47407293"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49406088"
 ---
-# <a name="create-a-cicd-pipeline-for-your-existing-code-with-the-azure-devops-project"></a>Vytvoření kanálu CI/CD pro stávající kód pomocí služby Azure DevOps Project
+# <a name="tutorial--create-a-cicd-pipeline-for-your-existing-code-with-the-azure-devops-project"></a>Kurz: Vytvoření kanálu CI/CD pro stávající kód pomocí služby Azure DevOps Project
 
 Azure DevOps Project představuje zjednodušené prostředí, kam můžete přenést váš stávající kód a úložiště Git a kde si můžete vybrat jednu z ukázkových aplikací pro vytvoření kanálu průběžné integrace (CI) a průběžného doručování (CD) do Azure.
 
@@ -33,7 +33,7 @@ Vaším úkolem je:
 > [!div class="checklist"]
 > * Vytvoření projektu Azure DevOps
 > * Konfigurace přístupu k úložišti GitHub a výběr architektury
-> * Konfigurace Azure DevOps Services a předplatné Azure 
+> * Konfigurace služby Azure DevOps Services a předplatného Azure 
 > * Potvrzení změn na GitHubu a automatické nasazení do Azure
 > * Prozkoumejte kanály CI/CD Azure DevOps Services
 > * Konfigurace monitorování pomocí Azure Application Insights
@@ -45,7 +45,7 @@ Vaším úkolem je:
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Azure DevOps Project vytvoří kanál CI/CD v Azure DevOps Services.  Můžete vytvořit novou organizaci **Azure DevOps Services** nebo použijte **existující organizaci**.  Azure DevOps Project také vytvoří **prostředky Azure** v **předplatném Azure** podle vašeho výběru.
+Azure DevOps Project vytvoří kanál CI/CD v Azure DevOps Services.  Můžete vytvořit **novou organizaci služby Azure DevOps Services** nebo použít **existující organizaci**.  Azure DevOps Project také vytvoří **prostředky Azure** v **předplatném Azure** podle vašeho výběru.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
@@ -65,7 +65,7 @@ Azure DevOps Project vytvoří kanál CI/CD v Azure DevOps Services.  Můžete v
 
 1. Architektura aplikace, kterou jste zvolili v předchozích krocích, určuje typ cíle nasazení služby Azure, který je zde k dispozici.  Vyberte libovolnou **cílovou službu**.  Jakmile budete hotovi, zvolte **Další**.
 
-## <a name="configure-azure-devops-services-and-an-azure-subscription"></a>Konfigurace Azure DevOps Services a předplatné Azure 
+## <a name="configure-azure-devops-services-and-an-azure-subscription"></a>Konfigurace služby Azure DevOps Services a předplatného Azure 
 
 1. Vytvořte novou organizaci **Azure DevOps Services** nebo zvolte **existující** organizaci.  Zvolte **název** pro váš projekt Azure DevOps.  Vyberte vaše **předplatné Azure**, **umístění** a zvolte **název** pro vaši aplikaci.  Jakmile budete hotovi, zvolte **Hotovo**.
 
@@ -95,13 +95,13 @@ Azure DevOps Project automaticky nakonfiguruje kanál CI/CD Azure DevOps Service
 
 1. V tomto zobrazení můžete **prozkoumat různé úlohy** pro váš kanál buildu.  Sestavení provádí různé úlohy, jako je načtení zdrojů z úložiště Git, obnovení závislostí a publikování výstupů používaných pro nasazení.
 
-1. V horní části kanálu buildu, vyberte **název kanálu buildu**.
+1. V horní části kanálu buildu vyberte **název kanálu buildu**.
 
-1. Změňte **název** vašeho kanálu buildu na něco výstižnějšího.  Vyberte **Uložit a zařadit do fronty** a pak vyberte **Uložit**.
+1. Změňte **název** kanálu buildu na něco výstižnějšího.  Vyberte **Uložit a zařadit do fronty** a pak vyberte **Uložit**.
 
-1. Pod názvem vašeho kanálu buildu vyberte **Historie**.  Zobrazí se protokol auditu nedávno provedených změn sestavení.  Azure DevOps Services uchovává informace o všech změnách provedených v kanálu buildu a umožňuje porovnávat verze.
+1. Pod názvem kanálu buildu vyberte **Historie**.  Zobrazí se protokol auditu nedávno provedených změn sestavení.  Azure DevOps Services uchovává informace o všech změnách provedených v kanálu buildu a umožňuje porovnávat verze.
 
-1. Vyberte **Triggery**.  Projekt Azure DevOps automaticky vytvořil trigger CI a každé potvrzení v úložišti spustí nové sestavení.  Volitelně můžete zvolit, které větve se do procesu CI zahrnou nebo se z něj vyloučí.
+1. Vyberte **Triggery**.  Projekt Azure DevOps automaticky vytvořil trigger CI a každé potvrzení v úložišti spustí nový build.  Volitelně můžete zvolit, které větve se do procesu CI zahrnou nebo se z něj vyloučí.
 
 1. Vyberte **Uchování**.  V závislosti na vašem scénáři můžete určit zásady pro zachování nebo odebrání určitého počtu sestavení.
 
@@ -162,7 +162,7 @@ Když jste v tomto kurzu nakonfigurovali proces CI/CD, ve vašem projektu Azure 
 > [!div class="checklist"]
 > * Vytvoření projektu Azure DevOps
 > * Konfigurace přístupu k úložišti GitHub a výběr architektury
-> * Konfigurace Azure DevOps Services a předplatné Azure 
+> * Konfigurace služby Azure DevOps Services a předplatného Azure 
 > * Potvrzení změn na GitHubu a automatické nasazení do Azure
 > * Prozkoumejte kanály CI/CD Azure DevOps Services
 > * Konfigurace monitorování pomocí Azure Application Insights

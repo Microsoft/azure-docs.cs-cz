@@ -1,20 +1,21 @@
 ---
-title: 'Rychlý start: Rozpoznávání řeči v C# v rozhraní .NET Framework ve Windows s využitím sady Cognitive Services Speech SDK'
-titleSuffix: Microsoft Cognitive Services
-description: Naučte se rozpoznávat řeč v C# v rozhraní .NET Framework ve Windows s využitím sady Cognitive Services Speech SDK.
+title: 'Rychlý start: Rozpoznávání řeči v jazyce C# v rozhraní .NET Framework ve Windows s využitím sady Speech SDK'
+titleSuffix: Azure Cognitive Services
+description: Zjistěte, jak rozpoznávat řeč v jazyce C# v rozhraní .NET Framework ve Windows s využitím sady Speech SDK.
 services: cognitive-services
 author: wolfma61
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: quickstart
 ms.date: 09/24/2018
 ms.author: wolfma
-ms.openlocfilehash: 32b484451c4ee2264c25cca92b1d03d91b955a29
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 06d4a41a4a67d077f8d79eee68938dff65adf0e8
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47053992"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49468513"
 ---
 # <a name="quickstart-recognize-speech-in-c-under-net-framework-on-windows-by-using-the-speech-sdk"></a>Rychlý start: Rozpoznávání řeči v C# v rozhraní .NET Framework ve Windows s využitím sady Speech SDK
 
@@ -52,7 +53,7 @@ K dokončení tohoto rychlého startu potřebujete klíč předplatného služby
 
     ![Snímek obrazovky s aplikací sady Visual Studio se zvýrazněnou možností Spustit ladění](media/sdk/qs-csharp-dotnet-windows-09-start-debugging.png "Spuštění aplikace s laděním")
 
-1. Zobrazí se okno konzoly a vyzve vás, abyste něco řekli. Vyslovte anglickou frázi nebo větu. Vyslovená řeč se přenese do služby Speech a přepíše na text, který se zobrazí ve stejném okně.
+1. Zobrazí se okno konzoly a vyzve vás, abyste něco řekli. Vyslovte anglickou frázi nebo větu. Vaše řeč se přenese do služby Speech a přepíše na text, který se zobrazí ve stejném okně.
 
     ![Snímek obrazovky s výstupem konzoly po úspěšném rozpoznání](media/sdk/qs-csharp-dotnet-windows-10-console-output.png "Výstup konzoly po úspěšném rozpoznání")
 

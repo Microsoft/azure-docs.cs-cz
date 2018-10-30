@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Vytvoření znalostní báze – QnA Maker'
+title: Vytvoření, trénování a publikování znalostní báze – QnA Maker
 titleSuffix: Azure Cognitive Services
 description: Znalostní bázi služby QnA Maker můžete vytvořit s použitím vlastního obsahu, jako jsou nejčastější dotazy nebo příručky k produktům. Znalostní báze služby QnA Maker v tomto příkladu je vytvořená z jednoduché webové stránky s nejčastějšími dotazy a poskytuje odpovědi na otázky týkající se obnovení klíče nástroje BitLocker.
 author: diberry
@@ -7,16 +7,16 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: quickstart
-ms.date: 09/12/2018
+ms.date: 10/19/2018
 ms.author: diberry
-ms.openlocfilehash: 99f9259c9fa73a9ba4842b2684cde8a44f73145a
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: c57edd897797d4352706283072aa19444948436b
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389662"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49644781"
 ---
-# <a name="quickstart-create-train-and-publish-your-knowledge-base"></a>Rychlý start: Vytvoření, trénování a publikování znalostní báze
+# <a name="create-train-and-publish-your-qna-maker-knowledge-base"></a>Vytvoření, trénování a publikování znalostní báze služby QnA Maker
 
 Znalostní bázi služby QnA Maker můžete vytvořit s použitím vlastního obsahu, jako jsou nejčastější dotazy nebo příručky k produktům. Znalostní báze služby QnA Maker v tomto příkladu je vytvořená z jednoduché webové stránky s nejčastějšími dotazy a poskytuje odpovědi na otázky týkající se obnovení klíče nástroje BitLocker.
 
