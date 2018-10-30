@@ -1,6 +1,6 @@
 ---
-title: Spuštění aplikace logiky monitorování pomocí Log Analytics – Azure Logic Apps | Dokumentace Microsoftu
-description: Získejte přehledy a data o spuštěních aplikací logiky s využitím Log Analytics pro ladění pro řešení potíží a Diagnostika
+title: Monitorování aplikací logiky s využitím Log Analytics – Azure Logic Apps | Dokumentace Microsoftu
+description: Získejte přehledy a data pro řešení potíží a Diagnostika spuštěních aplikací logiky s využitím Azure Log Analytics pro ladění
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -8,26 +8,26 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
-ms.date: 10/11/2018
-ms.openlocfilehash: 177c361734a88acab5fc10d6b460645be82bf437
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.date: 10/19/2018
+ms.openlocfilehash: c65cc24f9b0083e9c873465008490bf00ea83852
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49457132"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50232372"
 ---
-# <a name="monitor-and-get-insights-about-logic-app-runs-with-log-analytics"></a>Monitorovat a získávat přehledy o spuštění aplikace logiky s využitím Log Analytics
+# <a name="monitor-logic-apps-with-azure-log-analytics"></a>Monitorování logic apps s využitím Azure Log Analytics
 
-Pro monitorování a bohatší informace o ladění můžete zapnout Log Analytics ve stejnou dobu, kdy vytvořit aplikaci logiky. Log Analytics poskytuje diagnostické protokolování a monitorování pro aplikaci logiky se spouští na webu Azure portal. Když přidáte řešení Správa služby Logic Apps, zobrazí se agregovaného stavu pro spuštění aplikace logiky a konkrétní podrobnosti, jako je stav, čas spuštění, opakovaným odesláním stav a ID korelace.
+Chcete-li sledovat a získat bohatší ladění podrobné informace o logic apps, zapněte [Azure Log Analytics](../log-analytics/log-analytics-overview.md) při vytváření aplikace logiky. Log Analytics poskytuje diagnostické protokolování a monitorování pro aplikace logiky při instalaci řešení Správa služby Logic Apps na webu Azure Portal. Toto řešení také poskytuje souhrnné informace pro vaši aplikaci logiky se spouští s konkrétní podrobnosti, jako je například stav, čas spuštění, opakovaným odesláním stav a ID korelace. Tento článek ukazuje, jak zapnout v Log Analytics, můžete zobrazit události modulu runtime a dat o vaší aplikace logiky spouští.
 
-Tento článek ukazuje, jak zapnout v Log Analytics, můžete zobrazit události modulu runtime a spusťte data pro vaši aplikaci logiky.
+Chcete-li na Azure Log Analytics pro existující logic apps, postupujte podle těchto kroků [zapněte protokolování diagnostiky a odesílání dat získaných za běhu aplikace logiky do Log Analytics](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics).
 
- > [!TIP]
- > K monitorování existujících logic apps, postupujte podle těchto kroků [zapněte protokolování diagnostiky a odesílání dat získaných za běhu aplikace logiky do Log Analytics](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics).
+> [!NOTE]
+> Tato stránka výše popsaný postup, jak k provádění těchto úkolů se Microsoft Operations Management Suite (OMS), což je [vyřazení z provozu v lednu 2019](../log-analytics/log-analytics-oms-portal-transition.md), nahradí tyto kroky místo toho pomocí služby Azure Log Analytics. 
 
-## <a name="requirements"></a>Požadavky
+## <a name="prerequisites"></a>Požadavky
 
-Než začnete, musíte mít pracovní prostor Log Analytics. Přečtěte si [jak vytvořit pracovní prostor Log Analytics](../log-analytics/log-analytics-quick-create-workspace.md). 
+Než začnete, musíte pracovnímu prostoru Log Analytics. Přečtěte si [jak vytvořit pracovní prostor Log Analytics](../log-analytics/log-analytics-quick-create-workspace.md). 
 
 ## <a name="turn-on-diagnostics-logging-when-creating-logic-apps"></a>Zapnutí protokolování diagnostiky vytváření aplikací logiky
 
@@ -54,11 +54,11 @@ Než začnete, musíte mít pracovní prostor Log Analytics. Přečtěte si [jak
 
 1. Chcete-li zobrazit vaše aplikace logiky spouští, [pokračovat tímto postupem](#view-logic-app-runs-oms).
 
-## <a name="install-the-logic-apps-management-solution"></a>Nainstalujte řešení Správa služby Logic Apps
+## <a name="install-logic-apps-management-solution"></a>Nainstalujte řešení Správa služby Logic Apps
 
 Pokud již zapne Log Analytics, pokud jste vytvořili aplikaci logiky, tento krok přeskočit. Již máte nainstalované řešení Správa služby Logic Apps.
 
-1. Na webu [Azure Portal](https://portal.azure.com) vyberte **Všechny služby**. Do vyhledávacího pole zadejte "log analytics" jako filtr a vyberte **Log Analytics**.
+1. Na webu [Azure Portal](https://portal.azure.com) vyberte **Všechny služby**. Do vyhledávacího pole vyhledejte "log analytics" a vyberte **Log Analytics**.
 
    ![Vyberte "Log Analytics"](./media/logic-apps-monitor-your-logic-apps-oms/find-log-analytics.png)
 
@@ -66,7 +66,7 @@ Pokud již zapne Log Analytics, pokud jste vytvořili aplikaci logiky, tento kro
 
    ![Vyberte pracovní prostor Log Analytics](./media/logic-apps-monitor-your-logic-apps-oms/select-log-analytics-workspace.png)
 
-1. V části **konfigurovat řešení monitorování**, zvolte **zobrazení řešení**.
+1. V části **Začínáme se službou Log Analytics** > **konfigurovat řešení monitorování**, zvolte **zobrazení řešení**.
 
    ![Zvolte "Zobrazit řešení"](media/logic-apps-monitor-your-logic-apps-oms/log-analytics-workspace.png)
 
@@ -76,19 +76,23 @@ Pokud již zapne Log Analytics, pokud jste vytvořili aplikaci logiky, tento kro
 
    Pokud nemůžete najít řešení, v dolní části seznamu, zvolte **načíst další** až se zobrazí řešení.
 
-1. Zvolte **vytvořit**, která nainstaluje řešení.
+1. Zvolte **vytvořit**, zkontrolujte pracovní prostor Log Analytics, ve které chcete řešení nainstalovat a klikněte na tlačítko **vytvořit** znovu.   
 
-   ![Zvolte "Přidat" pro "Správa služby Logic Apps"](./media/logic-apps-monitor-your-logic-apps-oms/create-logic-apps-management-solution.png)
+   ![Zvolte možnost "Vytvořit" pro "Správa služby Logic Apps"](./media/logic-apps-monitor-your-logic-apps-oms/create-logic-apps-management-solution.png)
+
+   Pokud už nechcete používat existujícího pracovního prostoru, můžete také vytvořit nový pracovní prostor v tuto chvíli.
+
+   Až to uděláte, se zobrazí na stránce Přehled řešení Správa služby Logic Apps. 
 
 <a name="view-logic-app-runs-oms"></a>
 
-## <a name="view-logic-app-runs-in-log-analytics-workspace"></a>Spuštění aplikace logiky zobrazení v pracovním prostoru Log Analytics
+## <a name="view-logic-app-run-information"></a>Informace o spuštění aplikace logiky zobrazení
 
-1. Pokud chcete zobrazit počet a stav pro spuštění vaší aplikace logiky, přejděte do pracovního prostoru Log Analytics a otevřete stránku přehledu. 
+Po spuštění aplikace logiky můžete zobrazit stav a počet těchto spuštění na **Správa služby Logic Apps** dlaždici. 
 
-   Zobrazí podrobnosti o spuštěních aplikací logiky na **Správa služby Logic Apps** dlaždici. Chcete-li zobrazit souhrn s dalšími podrobnostmi o spuštěních aplikací logiky, zvolte **Správa služby Logic Apps** dlaždici. 
+1. Přejděte do pracovního prostoru Log Analytics a otevřete stránku přehledu. Zvolte **Správa služby Logic Apps**. 
 
-   ![Dlaždice přehledu zobrazující stav a počet běh aplikace logiky](media/logic-apps-monitor-your-logic-apps-oms/overview.png)
+   ![Stav a počet běh aplikace logiky](media/logic-apps-monitor-your-logic-apps-oms/overview.png)
 
    Tady spuštěních aplikací logiky se seskupují podle názvu nebo podle stavu spuštění. 
    Tato stránka také zobrazuje podrobnosti o neúspěšných akcí nebo triggerů pro spuštění aplikace logiky.

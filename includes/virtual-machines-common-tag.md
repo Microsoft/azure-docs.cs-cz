@@ -1,6 +1,16 @@
-
-
-
+---
+author: cynthn
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: cynthn
+ms.openlocfilehash: ccc2b574ea054a1b0ecf32a1e59691050fb66fcf
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50226667"
+---
 ## <a name="tagging-a-virtual-machine-through-templates"></a>Označení virtuálního počítače pomocí šablony
 Nejprve Podívejme se na označování prostřednictvím šablon. [Tato šablona](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-tags) umístí na následujících odkazech: prostředky (virtuální počítač), úložiště (účet služby Storage) a sítí (veřejné IP adresy, virtuální sítě a síťové rozhraní). Tato šablona je pro virtuální počítač s Windows, ale můžete přizpůsobit pro virtuální počítače s Linuxem.
 

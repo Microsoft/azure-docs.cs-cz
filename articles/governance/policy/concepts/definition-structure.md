@@ -8,12 +8,12 @@ ms.date: 09/18/2018
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: f5906a93e92691cb6046fb04a9fd83f3484e17b8
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 0ff56b86243956d1fa6b51a6dfd14af9e00d8367
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49427395"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212773"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definic Azure Policy
 
@@ -228,8 +228,8 @@ Podporovány jsou následující pole:
 
 Zásady podporuje následující typy dopadu:
 
-- **Odepřít**: vygeneruje událost do protokolu auditu a požadavek selže
-- **Auditovat**: vygeneruje událost upozornění v protokolu auditu, ale ne nesplní žádost
+- **Odepřít**: vygeneruje událost v protokolu aktivit a požadavek selže
+- **Audit**: vygeneruje událost upozornění v protokolu aktivit, ale ne nesplní žádost
 - **Připojit**: Přidá definovanou sadu polí k této žádosti
 - **AuditIfNotExists**: povolí auditování Pokud prostředek neexistuje.
 - **DeployIfNotExists**: nasadí prostředek, pokud ještě neexistuje.

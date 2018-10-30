@@ -1,3 +1,16 @@
+---
+author: cynthn
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: cynthn
+ms.openlocfilehash: 4887dbcc89180c54b8e991e6fa152463476c5ce9
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50227385"
+---
 Je důležité k zabezpečení vašich virtuálních počítačů (VM) pro aplikace, které spustíte. Zabezpečení vašich virtuálních počítačů může obsahovat jednu nebo více služeb Azure a funkce, které se týkají zabezpečený přístup k virtuálním počítačům a zabezpečené ukládání vašich dat. Tento článek obsahuje informace, které umožňuje zabezpečit svůj virtuální počítač a aplikací.
 
 ## <a name="antimalware"></a>Antimalware
@@ -26,7 +39,7 @@ Při připojení k virtuálním počítačům používejte kryptografie využív
 
 Běžnou výzvou při vytváření cloudových aplikací je, jak v kódu spravovat přihlašovací údaje pro ověřování u cloudových služeb. Zajištění zabezpečení těchto přihlašovacích údajů je důležitý úkol. V ideálním případě by se přihlašovací údaje nikdy neměly nacházet na vývojářských pracovních stanicích ani se vracet se změnami do správy zdrojového kódu. Azure Key Vault nabízí možnost bezpečného ukládání přihlašovacích údajů, tajných kódů a dalších klíčů, ale váš kód se musí ověřit ve službě Key Vault, aby je mohl načíst. 
 
-Tento problém řeší spravované identity pro funkce Azure prostředky v Azure Active Directory (Azure AD). Tato funkce poskytuje službám Azure automaticky spravovanou identitu v Azure AD. Tuto identitu můžete použít k ověření u jakékoli služby, která podporuje ověřování Azure AD, včetně služby Key Vault, aniž byste ve vašem kódu museli mít přihlašovací údaje.  Váš kód, který běží na virtuálním počítači můžete požádat o token dva koncové body, které jsou dostupné pouze z v rámci virtuálního počítače. Podrobné informace o této službě, přečtěte si [spravovaných identit pro prostředky Azure](../articles/active-directory/managed-identities-azure-resources/overview.md) stránka s přehledem.   
+Tento problém řeší funkce spravovaných identit prostředků Azure v Azure Active Directory (Azure AD). Tato funkce poskytuje službám Azure automaticky spravovanou identitu v Azure AD. Tuto identitu můžete použít k ověření u jakékoli služby, která podporuje ověřování Azure AD, včetně služby Key Vault, aniž byste ve vašem kódu museli mít přihlašovací údaje.  Váš kód, který běží na virtuálním počítači můžete požádat o token dva koncové body, které jsou dostupné pouze z v rámci virtuálního počítače. Podrobné informace o této službě, přečtěte si [spravovaných identit pro prostředky Azure](../articles/active-directory/managed-identities-azure-resources/overview.md) stránka s přehledem.   
 
 ## <a name="policies"></a>Zásady
 

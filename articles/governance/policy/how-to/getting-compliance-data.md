@@ -4,19 +4,19 @@ description: Azure hodnocení zásad a efekty určení dodržování předpisů.
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/18/2018
+ms.date: 10/29/2018
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 3fa185e741f1b14bf3f2e7413945b70b1ea1baaa
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f88e68150aa2708557775df2719409228166520b
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46970851"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50233408"
 ---
-# <a name="getting-compliance-data"></a>Získání dat dodržování předpisů
+# <a name="getting-compliance-data"></a>Získávání dat o dodržování předpisů
 
 Jednou z největších výhod Azure Policy je insight a ovládací prvky, které nabízí v porovnání s prostředky v rámci předplatného nebo [skupiny pro správu](../../management-groups/overview.md) předplatných. Tento ovládací prvek lze uplatnit v mnoha různými způsoby, jako je například brání prostředky vytváří v nesprávném umístění vynucovat použití značky běžné a jednotné, nebo auditování stávající prostředky pro odpovídající konfigurace a nastavení. Ve všech případech se data vygeneruje zásady, aby vám pomohl pochopit stavu dodržování předpisů vašeho prostředí.
 
@@ -40,6 +40,44 @@ Hodnocení přiřazených zásad a iniciativy nastat v důsledku různých udál
 - Zásady nebo iniciativa, které jsou přiřazeny k oboru se aktualizuje. Cyklus hodnocení a časování pro tento scénář je stejná jako nové přiřazení do oboru.
 - Prostředek se nasadí do rozsahu pomocí přiřazení prostřednictvím Resource Manageru, REST, rozhraní příkazového řádku Azure nebo Azure Powershellu. V tomto scénáři efekt událostí (připojit, audit, odepření, nasazení) a informace o stav souladu s předpisy pro jednotlivé prostředky k dispozici v portálu a sady SDK přibližně 15 minut později. Tato událost nezpůsobí vyhodnocení další prostředky.
 - Cyklus hodnocení standardní dodržování předpisů. Jednou za 24 hodin, jsou automaticky znovu zhodnotí přiřazení. Velké zásady nebo iniciativa vyhodnocení proti velké oboru prostředků může trvat dobu, tak se dokončí bez předdefinovaných očekávají při cyklu hodnocení. Po jeho dokončení, jsou k dispozici v portálu a sady SDK aktualizované dodržování předpisů výsledky.
+- Prohledávání na požádání
+
+### <a name="on-demand-evaluation-scan"></a>Na vyžádání skenování hodnocení
+
+Volání rozhraní REST API můžete spustit skenování hodnocení pro předplatné nebo skupinu prostředků. Toto je asynchronní proces. V důsledku toho koncový bod REST spustit skenování nečeká kontrolu dokončení reagovat. Místo toho poskytuje dotaz na stav vyhodnocení požadovaný identifikátor URI.
+
+Každý identifikátor URI v REST API používá proměnné, které je potřeba nahradit vašimi vlastními hodnotami:
+
+- `{YourRG}` -Nahraďte názvem vaší skupiny prostředků
+- Proměnnou `{subscriptionId}` nahraďte ID předplatného.
+
+Kontrola podporuje vyhodnocení prostředků v rámci předplatného nebo skupiny prostředků. Spustit kontrolu požadovanému oboru pomocí rozhraní REST API **příspěvek** příkazu následující identifikátor URI struktury:
+
+- Předplatné
+
+  ```http
+  POST https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/triggerEvaluation?api-version=2018-07-01-preview
+  ```
+
+- Skupina prostředků
+
+  ```http
+  POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{YourRG}/providers/Microsoft.PolicyInsights/policyStates/latest/triggerEvaluation?api-version=2018-07-01-preview
+  ```
+
+Volání se vrátí **202 přijato** stav. Zahrnutý v odpovědi je záhlaví **umístění** vlastnost v následujícím formátu:
+
+```http
+https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/asyncOperationResults/{ResourceContainerGUID}?api-version=2018-07-01-preview
+```
+
+`{ResourceContainerGUID}` je generována staticky oboru požadavku. Pokud obor již provádí kontrolu službou na vyžádání, není spuštěná novou kontrolu. Místo toho novou žádost o je k dispozici stejné `{ResourceContainerGUID}` **umístění** identifikátor URI pro stav. Rozhraní REST API **získat** příkaz **umístění** vrátí identifikátor URI **202 přijato** zatímco probíhá vyhodnocení. Po dokončení skenování hodnocení vrátí **200 OK** stav. Text dokončení kontroly je odpověď ve formátu JSON se stavem:
+
+```json
+{
+    "status": "Succeeded"
+}
+```
 
 ## <a name="how-compliance-works"></a>Jak funguje dodržování předpisů
 

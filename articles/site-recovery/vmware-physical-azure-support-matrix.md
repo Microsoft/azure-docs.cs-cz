@@ -1,21 +1,20 @@
 ---
-title: Matice podpory pro replikaci virtuálních počítačů VMware a fyzických serverů do Azure pomocí Azure Site Recovery | Dokumentace Microsoftu
-description: Shrnuje podporované operační systémy a komponenty pro replikaci virtuálních počítačů VMware a fyzických serverů do Azure pomocí Azure Site Recovery.
-services: site-recovery
+title: Matice podpory pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů do Azure pomocí Azure Site Recovery | Dokumentace Microsoftu
+description: Shrnuje podporované operační systémy a komponenty pro zotavení po havárii virtuálních počítačů VMware a fyzické servery do Azure pomocí Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/10/2018
+ms.date: 10/29/2018
 ms.author: raynew
-ms.openlocfilehash: f6f1ceb4f9afaaeb0a436879802144bdebc06280
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: b472ed1c32e64b8f8ac881c09f22590c49f39c75
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49378648"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215357"
 ---
-# <a name="support-matrix-for-vmware-and-physical-server-replication-to-azure"></a>Matice podpory pro VMware a replikací fyzických serverů do Azure
+# <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Matice podpory pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů do Azure
 
 Tento článek shrnuje podporované komponenty a nastavení pro zotavení po havárii virtuálních počítačů VMware do Azure s použitím [Azure Site Recovery](site-recovery-overview.md).
 

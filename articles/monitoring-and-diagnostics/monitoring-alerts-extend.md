@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: eb3489c24bd5aa328620c5a6c14ee71882a6a6f2
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 45682caedaaaac1c9d335a45db64f16d713dfd7f
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48249566"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50233493"
 ---
 # <a name="extend-log-analytics-alerts-to-azure-alerts"></a>Rozšíření upozornění Log Analytics do Azure Alerts
 Dokud se nedávno, Azure Log Analytics zahrnuté vlastní výstrahy funkce, které by vás proaktivně upozorní podmínek založených na datech Log Analytics. Můžete spravovat pravidla výstrah ve službě portál Microsoft Operations Management Suite. Nové prostředí upozornění teď obsahuje integrované výstrahy napříč různými službami v Microsoft Azure. Tato možnost je dostupná jako **výstrahy** v části Azure Monitor na webu Azure Portal a podporuje upozornění z aktivity protokolů, metrik a protokolů v Log Analytics a Azure Application Insights. 
@@ -30,7 +30,7 @@ Existuje několik výhod, vytváření a Správa výstrah na webu Azure Portal, 
 Proces přechodu upozornění z Log Analytics do upozornění Azure nezahrnuje Změna definice upozornění, dotaz nebo konfiguraci jakýmkoli způsobem. Jediná změna, vyžaduje se, že v Azure, můžete provádět všechny akce s použitím skupiny akcí. Pokud skupiny akcí jsou už přidružené výstrahy, jsou zahrnuty, když se rozšíří do Azure.
 
 > [!NOTE]
-> Microsoft automaticky rozšíří upozornění vytvořená v instancích veřejné cloudové služby Log Analytics pro Azure Alerts, od 14. května 2018, opakovala, dokud nebude dokončena. Pokud máte potíže s vytvořením [skupiny akcí](monitoring-action-groups.md), použijte [tyto kroky nápravy](monitoring-alerts-extend-tool.md#troubleshooting) získat skupiny akcí, které jsou vytvořeny automaticky. Pomocí těchto kroků 5. července 2018. *Není k dispozici pro uživatele Soveriegn cloudové služby Log Analytics a Azure Goverment*. 
+> Microsoft automaticky rozšíří upozornění vytvořená v instancích veřejné cloudové služby Log Analytics pro Azure Alerts, od 14. května 2018, opakovala, dokud nebude dokončena. Pokud máte potíže s vytvořením [skupiny akcí](monitoring-action-groups.md), použijte [tyto kroky nápravy](monitoring-alerts-extend-tool.md#troubleshooting) získat skupiny akcí, které jsou vytvořeny automaticky. Pomocí těchto kroků 5. července 2018. *Není k dispozici pro uživatele suverénních cloudů služby Log Analytics a Azure Government*. 
 > 
 
 Při plánování výstrahy v pracovním prostoru Log Analytics na rozšířit do Azure jsou dál fungovat a nejsou v, že některé způsobem ohrožení vaší konfigurace. Při plánování, upozornění možná nebude k dispozici pro úpravy dočasně, ale můžete pokračovat k vytvoření nové výstrahy Azure během této doby. Při pokusu upravit nebo vytvořit oznámení z portálu Operations Management Suite, máte možnost pokračovat ve vytváření z pracovního prostoru Log Analytics. Můžete také na webu Azure Portal je vytvořit ve službě Azure Alerts.

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/03/2018
 ms.author: srrengar
-ms.openlocfilehash: a870c99718ecafe8af33e13be9aa46631888c8cb
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: d670b90404d441876727336fc50a848965082de5
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389679"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50232490"
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>Agregace událostí a kolekce pomocí Windows Azure Diagnostics
 > [!div class="op_single_selector"]
@@ -292,7 +292,7 @@ Pokud používáte jímky Application Insights, jak je popsáno v následující
 
 ## <a name="send-logs-to-application-insights"></a>Odeslání protokolů s Application Insights
 
-Jako součást konfigurace WAD lze provést odeslání dat monitorování a diagnostiky k Application Insights (AI). Pokud se rozhodnete využít AI k události analýzu a vizualizaci, přečtěte si [nastavení jímky AI](service-fabric-diagnostics-event-analysis-appinsights.md#add-the-ai-sink-to-the-resource-manager-template) jako součást vaší "WadCfg".
+Jako součást konfigurace WAD lze provést odeslání dat monitorování a diagnostiky k Application Insights (AI). Pokud se rozhodnete využít AI k události analýzu a vizualizaci, přečtěte si [nastavení jímky AI](service-fabric-diagnostics-event-analysis-appinsights.md#add-the-application-insights-sink-to-the-resource-manager-template) jako součást vaší "WadCfg".
 
 ## <a name="next-steps"></a>Další postup
 

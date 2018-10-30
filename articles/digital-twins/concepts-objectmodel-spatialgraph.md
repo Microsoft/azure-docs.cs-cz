@@ -6,14 +6,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/08/2018
+ms.date: 10/26/2018
 ms.author: alinast
-ms.openlocfilehash: 1c2068af510cb3733ce99a6ae7b40487a8c1a015
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: c1d66e0b58567244f8c1406ee258c9311994ff20
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49324055"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215102"
 ---
 # <a name="understanding-digital-twins-object-models-and-spatial-intelligence-graph"></a>Principy digitální dvojče objektové modely a Prostorové řady grafu
 
@@ -25,7 +25,7 @@ S _digitální dvojče objektové modely_ a _Ontology_ na místě, jeden naplnit
 
 ![Digitální dvojče prostorových vytváření grafu][1]
 
-<a id="model" />
+<a id="model"></a>
 
 Prostorový graf spojuje mezery, zařízení, senzorů a uživatelů. Každá je propojení tak, aby modely z okolního světa: 43 míst má čtyři podlažích, každý s více různých oblastech. Uživatelé jsou spojeny s jejich pracovní stanice a jsou poskytnut přístup k části grafu.  Správce by třeba práva měnit prostorový graf, zatímco návštěvník může mít jenom práva k zobrazení určitých údajů sestavování.
 
@@ -52,19 +52,19 @@ Další kategorie objekty jsou:
 - **Procesy pro hledání shody** jsou objekty, které určují, které UDF se provede pro danou telemetrické zprávy.
 - **Koncové body** jsou umístění, ve kterém zprávy telemetrie a událostí digitálním Dvojčata je možné směrovat, například `Event Hub`, `Service Bus`, `Event Grid`.
 
-<a id="graph" />
+<a id="graph"></a>
 
-## <a name="spatial-intelligence-graph"></a>Prostorové řady grafu
+## <a name="spatial-intelligence-graph"></a>Graf prostorové inteligence
 
 **Prostorový graf** je hierarchický graf mezery, zařízení, a podle lidí **digitální dvojče objektový model**. Prostorový graf podporuje _dědičnosti_, _filtrování_, _procházení_, _škálovatelnost_, a _rozšiřitelnosti_ . Uživatelé mohou spravovat a interakci s jejich prostorový graf s kolekce rozhraní API REST (viz níže).
 
-Uživatel, který nasadí digitální dvojče služby v rámci svého předplatného stane globálním správcem kořenový uzel automaticky uděluje plný přístup k celou jejich strukturu. Tento uživatel může zřídit pak prostory v grafu pomocí `Space` rozhraní API. Zařízení může být zřízené s využitím služby `Device` rozhraní API, senzory může být zřízené s využitím `Sensor` rozhraní API a další. Nabízíme také [open source nástrojů](https://github.com/Azure-Samples/digital-twins-samples-csharp) grafu hromadně zřizovat.
+Uživatel, který nasadí digitální dvojče služby v rámci svého předplatného stane globálním správcem kořenový uzel automaticky uděluje plný přístup k celou jejich strukturu. Tento uživatel může zřídit pak prostory v graphu pomocí rozhraní API místa. Zařízení může být zřízené s využitím rozhraní API zařízení, senzorů může zřídit pomocí rozhraní API snímačů atd. Nabízíme také [open source nástrojů](https://github.com/Azure-Samples/digital-twins-samples-csharp) grafu hromadně zřizovat.
 
 Graf _dědičnosti_ se vztahuje na oprávnění a vlastnosti, které sestup od nadřazeného uzlu na všechny uzly pod ním. Například když role je přiřazená uživateli v daném uzlu, uživatel bude mít tuto roli oprávnění pro daný uzel a každý uzel pod ní. Kromě toho každá klíč vlastnosti a rozšířeného typu definované pro daný uzel zdědí všechny uzly pod tento uzel.
 
-Graf _filtrování_ umožňuje zúžit výsledky požadavku podle ID, název, typy, podtypy, nadřazené místo, přidružené mezery, snímač datové typy, vlastnosti klíče a hodnoty, přechod, minLevel, maxLevel a jiných filtru OData Parametry.
+Graf _filtrování_ umožňuje zúžit výsledky požadavku ID, název, typy, podtypy, místem na nadřazený, přidružené mezery, senzor datové typy, vlastnosti klíče a hodnoty, *procházení*,  *minLevel*, *maxLevel*a další parametry filtru OData.
 
-Graf _procházení_ umožňuje uživatelům procházet prostorový graf prostřednictvím své znalosti a možnosti. Pro hloubka, může procházet graf shora dolů nebo pomocí parametrů navigace zdola nahoru `traverse`, `minLevel`, `maxLevel`. Pro kontejnerových nástrojů může získat uzlů na stejné úrovni, které jsou přímo připojené k nadřazené mezeru nebo jeden z jejich potomků pak přejde grafu. Při dotazování na objekt, můžete získat všechny související objekty, které mají relace, že při použití objektu `includes` parametr rozhraní API pro získání.
+Graf _procházení_ umožňuje uživatelům procházet prostorový graf prostřednictvím své znalosti a možnosti. Pro hloubka, může procházet graf shora dolů nebo pomocí parametrů navigace zdola nahoru *procházení*, *minLevel*, *maxLevel*. Pro kontejnerových nástrojů může získat uzlů na stejné úrovni, které jsou přímo připojené k nadřazené mezeru nebo jeden z jejich potomků pak přejde grafu. Při dotazování na objekt, můžete získat všechny související objekty, které mají relace, že při použití objektu *zahrnuje* parametr rozhraní API pro získání.
 
 Azure digitální dvojče zaručuje grafu _škálovatelnost_, takže mohou zpracovat vaše úlohy v reálném světě. Digitální Dvojčata je možné znázornit rozsáhlá portfolia nemovitosti, infrastruktury, zařízení, senzory, telemetrie a další.
 
@@ -80,8 +80,8 @@ https://yourInstanceName.yourLocation.azuresmartspaces.net/management/swagger
 
 | Název vlastního atributu | Nahraďte |
 | --- | --- |
-| `yourInstanceName` | Název instance digitální dvojče Azure |
-| `yourLocation` | Jaké oblasti serveru vaší instance je hostován aplikací |
+| *Název_vaší_instance* | Název instance digitální dvojče Azure |
+| *yourLocation* | Jaké oblasti serveru vaší instance je hostován aplikací |
 
  Můžete zobrazit úplný formát adresy URL používá v následujícím obrázku:
 

@@ -15,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2017
-ms.openlocfilehash: 15d46f16c78b8fa757d7810542b3d6bfa9a95f3c
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: fcbba3578627f53ff1de29fe6e309db9608b31c9
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465623"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50231504"
 ---
 # <a name="microsoft-cortana-intelligence-competitions-faq"></a>Nejčastější dotazy k soutěžím Microsoft Cortana Intelligence Competitions
 **Co je Cortana Intelligence soutěže?**
 
-: Soutěže Microsoft Cortana Intelligence sjednotí globální komunita nadšenci do dat pomocí některé z celého světa nejsložitější data science problémů souhrnně řešení. Soutěže zaměřené na Cortana Intelligence umožňuje nadšenci do dat z po celém světě soutěží a vytvářet modely s vysokou přesností a inteligentní datovou vědu. Tyto hostované soutěže jsou založeny na unikátní datové sady, které byly zpřístupněny veřejně poprvé. Účastníky můžete vyhrát odměny nebo získat rozpoznávání přes horní 10 žebříček veřejných. Přístupné na domovské stránce soutěže [aka.ms/CIComp](http://aka.ms/CIComp).
+: Soutěže Microsoft Cortana Intelligence sjednotí globální komunita nadšenci do dat pomocí některé z celého světa nejsložitější data science problémů souhrnně řešení. Soutěže zaměřené na Cortana Intelligence umožňuje nadšenci do dat z po celém světě soutěží a vytvářet modely s vysokou přesností a inteligentní datovou vědu. Tyto hostované soutěže jsou založeny na unikátní datové sady, které byly provedeny dostupné publicaly poprvé. Účastníky můžete vyhrát odměny nebo získat rozpoznávání přes horní 10 žebříček veřejných. Přístupné na domovské stránce soutěže [aka.ms/CIComp](http://aka.ms/CIComp).
 
 **Jak často Microsoft vydá nové soutěže?**
 

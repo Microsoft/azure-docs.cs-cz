@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 6c68d90605590ed8a17296e83276c7ef5396d6a2
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 48b4878eef7395b51d19c59443736bae5aeb7365
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49092967"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50233578"
 ---
 # <a name="contoso-migration-rebuild-an-on-premises-app-to-azure"></a>Migrace Contoso: znovu sestavte místní aplikaci do Azure
 
@@ -139,7 +139,7 @@ Tady je způsob spuštění migrace Contoso:
 > * **Krok 1: Zřízení AKS a ACR**: Contoso zřídí spravovaný cluster AKS a Azure container registry pomocí Powershellu
 > * **Krok 2: Vytvoření kontejnerů Dockeru**: nastavte průběžnou Integraci pro kontejnery Dockeru pomocí Azure DevOps a vložit je služby ACR.
 > * **Krok 3: Nasazení mikroslužeb back-end**: nasadí zbývající infrastrukturu, která bude využívat back-end mikroslužeb.
-> * **Krok 4: Nasazení front-endové infrastruktury**: nasadí infrastrukturu front-endu, prozkoumány úložiště objektů blob pro domácí mazlíčky telefony, Cosmos DB a rozhraní API pro zpracování obrazu.
+> * **Krok 4: Nasazení front-endové infrastruktury**: nasadí front-endovou infrastrukturu, včetně úložiště objektů blob pro domácí mazlíčky telefony, Cosmos DB a rozhraní API pro zpracování obrazu.
 > * **Krok 5: Migrace back-endu**: nasazování mikroslužeb a spustit v AKS k migraci back-endu.
 > * **Krok 6: Publikování aplikace front-endu**: publikování aplikace SmartHotel360 a službou Azure App service, aplikace Function App, která bude volána domácí mazlíčky službou.
 
@@ -545,7 +545,7 @@ Správce společnosti Contoso teď můžete publikovat na webu.
 
     ![Nové prostředí](./media/contoso-migration-rebuild/vsts-publishfront8.png)
 
-14. Vyberou **nasazení služby Azure App Service se slotem**a pojmenujte prostředí **Prod**.
+14. Vyberou **nasazení služby Azure App Service se slotem**a název prostředí **Prod**.
 15. Kliknutí na **úlohy 1, 2 úlohy**a vyberte předplatné, název služby app service a **pracovní** slot.
 
     ![Název prostředí](./media/contoso-migration-rebuild/vsts-publishfront10.png)

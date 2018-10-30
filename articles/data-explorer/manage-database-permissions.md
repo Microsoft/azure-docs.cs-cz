@@ -8,18 +8,18 @@ ms.service: data-explorer
 services: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: b0fb2cd79c0ee685ad2000c5444a84d53e462f24
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 287b95b59b0ec2b308d3e455c4f6ffce4baf4ff7
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48868271"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212875"
 ---
 # <a name="manage-azure-data-explorer-database-permissions"></a>Spravovat oprávnění k databázi Průzkumníka dat služby Azure
 
 Průzkumník služby Azure Data vám umožňuje řídit přístup k databází a tabulek, použití *řízení přístupu na základě rolí* modelu. V rámci tohoto modelu *objekty zabezpečení* (uživatelé, skupiny a aplikace) se mapují na *role*. Objekty zabezpečení přístup k prostředkům podle rolí, které jste přiřadili.
 
-Tento článek popisuje dostupné role a přiřazení k rolím objekty zabezpečení.
+Tento článek popisuje dostupné role a přiřazení objekty do těchto rolí pomocí webu Azure portal a příkazy pro správu Průzkumník dat Azure.
 
 ## <a name="roles-and-permissions"></a>Role a oprávnění
 

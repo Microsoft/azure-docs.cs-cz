@@ -1,23 +1,22 @@
 ---
-title: Časté otázky – replikace z VMware do Azure pomocí Azure Site Recovery | Dokumentace Microsoftu
-description: Tento článek shrnuje běžné otázky při replikaci místních virtuálních počítačů VMware do Azure pomocí Azure Site Recovery
-services: site-recovery
+title: Časté otázky – VMware na zotavení po havárii Azure pomocí Azure Site Recovery | Dokumentace Microsoftu
+description: Tento článek shrnuje běžné otázky při nastavování zotavení po havárii místních virtuálních počítačů VMware do Azure pomocí Azure Site Recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.date: 07/19/2018
+ms.date: 10/29/2018
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 487e0c763ca4b247f1818b2beaf3282734fc4e27
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 086acdd74932836627c600b5545bc4353052ad6f
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49388438"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215442"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>Časté otázky – VMware pro replikaci Azure
 
-Tento článek obsahuje odpovědi na běžné dotazy, které můžeme vidět při replikaci místních virtuálních počítačů VMware do Azure. Pokud po přečtení tohoto článku máte dotazy, zveřejněte na [fóru Azure Recovery Services](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr).
+Tento článek obsahuje odpovědi na běžné dotazy, které můžeme vidět, pokud nasazení zotavení po havárii místních virtuálních počítačů VMware do Azure. Pokud po přečtení tohoto článku máte dotazy, zveřejněte na [fóru Azure Recovery Services](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr).
 
 
 ## <a name="general"></a>Obecné

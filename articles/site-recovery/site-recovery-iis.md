@@ -1,21 +1,20 @@
 ---
-title: Vícevrstvé aplikace webové služby IIS pomocí Azure Site Recovery replikovat | Dokumentace Microsoftu
+title: Nastavení zotavení po havárii fo vícevrstvé aplikace webové služby IIS pomocí Azure Site Recovery | Dokumentace Microsoftu
 description: Zjistěte, jak replikovat IIS webové farmy virtuálních počítačů pomocí Azure Site Recovery.
-services: site-recovery
 author: nsoneji
 manager: gauravd
 ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: nisoneji
-ms.openlocfilehash: 830ced767a34302a635b9e685a2aee60c95fc81f
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: bac995829e90fea35eebf5e5e57a0ffb85bbba0c
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37920844"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50211821"
 ---
-# <a name="replicate-a-multi-tier-iis-based-web-application"></a>Replikovat vícevrstvé webové aplikace využívající službu IIS
+# <a name="set-up-disaster-recovery-for-a-multi-tier-iis-based-web-application"></a>Nastavení zotavení po havárii pro vícevrstvou aplikaci webové služby IIS
 
 Aplikační software je modul obchodní produktivity v organizaci. Různé webové aplikace může v organizaci slouží k jiným účelům. Některé aplikace, jako jsou aplikace pro zpracování mezd, finanční aplikace a weby určených pro zákazníky, může být nezbytné k organizaci. Aby se zabránilo ztrátě produktivitu, je důležité pro organizaci, aby tyto aplikace průběžně rychle zprovoznit. Důležitější je mají tyto aplikace stále k dispozici může zabránit poškození značku nebo image organizace.
 

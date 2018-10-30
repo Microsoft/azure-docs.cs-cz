@@ -1,21 +1,20 @@
 ---
 title: Nasazení konfiguračního serveru pro zotavení po havárii VMware pomocí Azure Site Recovery | Dokumentace Microsoftu
-description: Tento článek popisuje postup nasazení konfiguračního serveru pro zotavení po havárii VMware pomocí Azure Site Recovery
-services: site-recovery
+description: Tento článek popisuje postup nasazení konfiguračního serveru pro zotavení po havárii VMware do Azure pomocí Azure Site Recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 10/29/2018
 ms.author: raynew
-ms.openlocfilehash: 4222214705c42fe09d90d77faa7be63cc2a13206
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 516edd922d6ead9a71f81c3b9b777b15f1fb28ae
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44025272"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50233153"
 ---
-# <a name="deploy-a-configuration-server"></a>Nasazení konfiguračního serveru
+# <a name="deploy-a-configuration-server-for-vmware-disaster-recovery-to-azure"></a>Nasazení konfiguračního serveru pro zotavení po havárii VMware do Azure
 
 Při použití se nasadíte místní konfigurační server [Azure Site Recovery](site-recovery-overview.md) pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů do Azure. Konfigurace serveru souřadnice komunikaci mezi místní VMware a Azure. Spravuje taky data replikace. Tento článek vás provede kroky potřebné k nasazení konfiguračního serveru při replikaci virtuálních počítačů VMware do Azure. [Postupujte podle tohoto článku](physical-azure-set-up-source.md) Pokud je potřeba nastavit konfigurační server pro replikaci fyzických serverů.
 
@@ -117,6 +116,14 @@ Pokud chcete přidat další síťový adaptér ke konfiguračnímu serveru, př
 8. Vyberte **Dokončit konfiguraci** a dokončete registraci.
 9. Po dokončení registrace otevřete Azure portal, zkontrolujte, že konfigurační server a VMware server jsou uvedené na **trezor služby Recovery Services** > **spravovat**  >  **Infrastruktura site Recovery** > **konfigurační servery**.
 
+## <a name="upgrade-the-configuration-server"></a>Upgradujte konfigurační server
+
+Konfigurační server upgradovat na nejnovější verzi, postupujte podle těchto [kroky](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server).
+
+## <a name="manage-the-configuration-server"></a>Správa konfiguračního serveru
+
+Vyhnout se přerušením v probíhající replikaci, ujistěte se, že IP adresa konfiguračního serveru nezmění po registraci konfiguračního serveru k trezoru. Další informace o běžných úloh správy serveru konfigurace [tady](vmware-azure-manage-configuration-server.md).
+
 ## <a name="faq"></a>Nejčastější dotazy
 
 1. Můžete použít virtuální počítač, ve kterém je nainstalován konfigurační server pro různé účely?
@@ -140,14 +147,6 @@ Pokud chcete přidat další síťový adaptér ke konfiguračnímu serveru, př
 7. Kde lze stáhnout registrační klíče trezoru?
 
     V **trezor služby Recovery Services**, **spravovat** > **infrastruktura Site Recovery** > **konfigurační servery**. Na serverech, vyberte **stáhnout registrační klíč** ke stažení souboru s přihlašovacími údaji.
-
-## <a name="upgrade-the-configuration-server"></a>Upgradujte konfigurační server
-
-Konfigurační server upgradovat na nejnovější verzi, postupujte podle těchto [kroky](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server).
-
-## <a name="manage-the-configuration-server"></a>Správa konfiguračního serveru
-
-Vyhnout se přerušením v probíhající replikaci, ujistěte se, že IP adresa konfiguračního serveru nezmění po registraci konfiguračního serveru k trezoru. Další informace o běžných úloh správy serveru konfigurace [tady](vmware-azure-manage-configuration-server.md).
 
 ## <a name="troubleshoot-deployment-issues"></a>Řešení problémů při nasazování
 

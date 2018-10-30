@@ -1,22 +1,21 @@
 ---
-title: Nastavení přidělování IP adres pro připojení po převzetí služeb při selhání do Azure pomocí Azure Site Recovery | Dokumentace Microsoftu
-description: Popisuje, jak nastavit IP adres pro připojení k virtuálním počítačům Azure po převzetí služeb při selhání z místního pomocí Azure Site Recovery
+title: Nastavení IP adres připojit po zotavení po havárii a převzetí služeb při selhání do Azure pomocí Azure Site Recovery | Dokumentace Microsoftu
+description: Popisuje, jak nastavit IP adres pro připojení k virtuálním počítačům Azure po zotavení po havárii a převzetí služeb při selhání z místního pomocí Azure Site Recovery
 services: site-recovery
-documentationcenter: ''
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: mayg
-ms.openlocfilehash: 9b7797ba58a44e64460f4dbc58d562b4c470c043
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: ce7e5fde60503a969b88892be890173861fb15be
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353083"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215221"
 ---
-# <a name="set-up-ip-addressing-to-connect-after-failover-to-azure"></a>Nastavení IP adres pro připojení po převzetí služeb při selhání do Azure
+# <a name="set-up-ip-addressing-to-connect-to-azure-vms-after-failover"></a>Nastavení IP adres pro připojení k virtuálním počítačům Azure po převzetí služeb při selhání
 
 Tento článek vysvětluje požadavky na síť pro připojení k virtuálním počítačům Azure po použití [Azure Site Recovery](site-recovery-overview.md) service pro replikaci a převzetí služeb při selhání do Azure.
 

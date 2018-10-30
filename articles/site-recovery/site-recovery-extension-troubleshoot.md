@@ -1,22 +1,20 @@
 ---
-title: 'Řešení potíží s selhání agenta Azure Site Recovery: hosta stavu agenta není k dispozici | Dokumentace Microsoftu'
-description: Příznaky, příčiny a řešení Azure Site Recovery chyby týkající se agenta a rozšíření
-services: site-recovery
+title: Řešení potíží s agenty Azure Site Recovery | Dokumentace Microsoftu
+description: Poskytuje informace o příznaky, příčiny a řešení chyb agenta Azure Site Recovery.
 author: asgang
 manager: rochakm
 ms.service: site-recovery
-ms.devlang: na
-ms.topic: article
-ms.date: 07/06/2018
+ms.topic: troubleshooting
+ms.date: 10/29/2018
 ms.author: asgang
-ms.openlocfilehash: c0429e87f6c58ef2b9c7a268bee596d769e95910
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 3090dd9e0d9681dbf77f052e9d324f2add0a1910
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37919800"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215034"
 ---
-# <a name="troubleshoot-azure-site-recovery-extension-failures-issues-with-the-agent-or-extension"></a>Řešení potíží s chybami rozšíření Azure Site Recovery: problémy s agentů nebo rozšíření
+# <a name="troubleshoot-issues-with-the-azure-site-recovery-agent"></a>Řešení potíží s agentem Azure Site Recovery
 
 Tento článek popisuje postup řešení potíží, které vám může pomoct vyřešit Azure Site Recovery chyby související s agentem virtuálního počítače a rozšíření.
 
@@ -105,7 +103,7 @@ Chcete-li odinstalovat rozšíření:
 
 1. V [webu Azure portal](https://portal.azure.com/), přejděte k virtuálnímu počítači, na kterém dochází k selhání zálohování.
 2. Vyberte **nastavení**.
-3. Vyberte **rozšíření**.
+3. Vyberte **Extensions** (Rozšíření).
 4. Vyberte **obnovení rozšíření webu**.
 5. Vyberte **odinstalovat**.
 

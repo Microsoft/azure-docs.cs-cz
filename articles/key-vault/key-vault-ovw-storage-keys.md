@@ -9,12 +9,12 @@ author: bryanla
 ms.author: bryanla
 manager: mbaldwin
 ms.date: 10/03/2018
-ms.openlocfilehash: adc8b84f0f22e85de88c4bd80c10a2a35d7b490a
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 02fffe7c4a3acff6ce6d68046eee4286003b1766
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49114596"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50232218"
 ---
 # <a name="azure-key-vault-storage-account-keys"></a>Klíče účtu úložiště Azure Key Vault
 
@@ -36,33 +36,40 @@ ms.locfileid: "49114596"
       
 <a name="step-by-step-instructions"></a>Pokyny krok
 -------------------------
+V následujících pokynů, jsme služby Key Vault přiřazování jako službu, která mají oprávnění operátora na vašem účtu úložiště
 
-1. Získejte ID prostředku účtu úložiště Azure, kterou chcete spravovat.
-    a. Po vytvoření účtu úložiště spusťte následující příkaz k získání ID prostředku účtu úložiště, že který chcete spravovat
+1. Po vytvoření účtu úložiště, spuštěním následujícího příkazu Získejte ID prostředku účtu úložiště, kterou chcete spravovat
+
     ```
     az storage account show -n storageaccountname (Copy ID out of the result of this command)
     ```
+    
 2. Získat aplikace ID z Azure Key Vault pro službu objektu zabezpečení 
+
     ```
     az ad sp show --id cfa8b339-82a2-471a-a3c9-0fc0be7a4093
     ```
+    
 3. Přiřadit roli operátora klíč úložiště do služby Azure Key Vault Identity
+
     ```
     az role assignment create --role "Storage Account Key Operator Service Role"  --assignee-object-id hhjkh --scope idofthestorageaccount
     ```
+    
 4. Vytvoření trezoru klíčů spravovaného účtu úložiště.     <br /><br />
-   Následující příkaz se vás zeptá služby Key Vault se znovu vygenerovat přístupové klíče vašeho úložiště pravidelně, s dobou znovu generovat. Níže jsme nastavujete opětovné generování uplynutí 90 dnů. Po 90 dnech se služby Key Vault znovu vygenerovat "key1" a Prohodit aktivní klíč z "key2" k "key1".
-   ### <a name="key-regeneration"></a>Opětovném generování přístupového klíče
+   Níže jsme nastavujete opětovné generování uplynutí 90 dnů. Po 90 dnech se služby Key Vault znovu vygenerovat "key1" a Prohodit aktivní klíč z "key2" k "key1".
+   
     ```
-    az keyvault storage add --vault-name <YourVaultName> -n <StorageAccountName> --active-key-name key2 --auto-generate-key --regeneration-period P90D --resource-id <Resource-id-of-storage-account>
+    az keyvault storage add --vault-name <YourVaultName> -n <StorageAccountName> --active-key-name key2 --auto-regenerate-key --regeneration-period P90D --resource-id <Resource-id-of-storage-account>
     ```
     V případě uživatel nevytvořili účet úložiště a nemá oprávnění k účtu úložiště, následujícím způsobem nastavit oprávnění pro svůj účet a ujistěte se, že můžete spravovat všechna úložiště oprávnění ve službě Key Vault.
-    [!NOTE] V případě, že uživatel nemá oprávnění k účtu úložiště, které získáme id objektu uživatele
+ > [!NOTE] 
+    V případě, že uživatel nemá oprávnění k účtu úložiště dostaneme nejprve Id objektu uživatele
 
     ```
     az ad user show --upn-or-object-id "developer@contoso.com"
 
-    az keyvault set-policy --name <YourVaultName> --object-id <ObjectId> --storage-permissions backup delete list regeneratekey recover purge restore set setsas update
+    az keyvault set-policy --name <YourVaultName> --object-id <ObjectId> --storage-permissions backup delete list regeneratekey recover     purge restore set setsas update
     ```
 
 ### <a name="relevant-powershell-cmdlets"></a>Odpovídající rutiny prostředí Powershell

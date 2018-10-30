@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 5/21/2018
+ms.date: 10/29/2018
 ms.topic: article
 ms.service: azure-blockchain
-ms.reviewer: zeyadr
+ms.reviewer: coborn
 manager: femila
-ms.openlocfilehash: ee8057be98d18db5963a3e5f1ba1f8bd8d76fe05
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: c08557156848d4e7fcf0b1adbe6c8faa4ee00c82
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48242245"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50231368"
 ---
 # <a name="hyperledger-fabric-single-member-network"></a>Síť Hyperledger Fabric jednoho člena
 
@@ -28,7 +28,7 @@ Po přečtení tohoto článku:
 
 ## <a name="about-blockchain"></a>Informace o blockchainech
 
-Pokud začínáte blockchain komunity, je to skvělé příležitosti, další informace o technologii snadné a konfigurovat způsobem v Azure. Blockchain je základní technologie těžba; je však mnohem víc než jenom podpůrnou technologii pro virtuální měnu. Je složeného existující databázi, distribuovaného systému a kryptografické technologie, která umožňuje zabezpečenou více stran výpočet s záruky neměnnosti, ověřitelnosti, umožňuje audity a odolnost vůči útokům. Různé protokoly využívat různé mechanismy k poskytování těchto atributů. [Hyperledger Fabric](https://github.com/hyperledger/fabric) je jeden takový protokol.
+Pokud jste ještě v komunitě blockchain, tato šablona řešení je skvělé příležitosti, další informace o technologii snadné a konfigurovat způsobem v Azure. Blockchain je základní technologie těžba; je však mnohem víc než jenom podpůrnou technologii pro virtuální měnu. Je složeného existující databázi, distribuovaného systému a kryptografické technologie, která umožňuje zabezpečenou více stran výpočet s záruky neměnnosti, ověřitelnosti, umožňuje audity a odolnost vůči útokům. Různé protokoly využívat různé mechanismy k poskytování těchto atributů. [Hyperledger Fabric](https://github.com/hyperledger/fabric) je jeden takový protokol.
 
 ## <a name="consortium-architecture-on-azure"></a>Consortium architekturu v Azure
 
@@ -36,7 +36,7 @@ Tato šablona nasadí topologii pro testování a simulovat produkční prostře
 
 Síť se skládá ze tří typů uzlů:
 
-1. **Člen uzlu**: uzlu se systémem služby členství prostředků infrastruktury, která registruje a spravuje členy sítě. Tento uzel můžou být nakonec Clusterované pro zajištění škálovatelnosti a vysoké dostupnosti, ale v tomto testovacím prostředí, se použije uzlu jeden člen.
+1. **Člen uzlu**: uzlu se systémem služby členství prostředků infrastruktury, která registruje a spravuje členy sítě. Tento uzel může být Clusterované pro zajištění škálovatelnosti a vysoké dostupnosti; Ale v tomto testovacím prostředí se dá použít uzlu jeden člen.
 2. **Uzly orderer**: uzlu se systémem komunikační služby implementace záruky doručení, jako je například celkový počet pořadí všesměrového vysílání nebo atomické transakce.
 3. **Navázání partnerského vztahu mezi uzly**: uzel, který potvrdí transakce a udržuje stav a kopie distribuované účetní knihy.
 
@@ -57,13 +57,13 @@ Jakmile budete mít předplatné, přejděte [webu Azure portal](https://portal.
 
 ## <a name="deployment"></a>Nasazení
 
-Pokud chcete začít, vyberte **Hyperledger Fabric jeden člen Blockchain** a klikněte na tlačítko **vytvořit**. Tím se otevře **Základy** okno v průvodci.
+Pokud chcete začít, vyberte **Hyperledger Fabric jeden člen Blockchain** a klikněte na tlačítko **vytvořit** otevřete **Základy** okno v průvodci.
 
 Šablona nasazení vás provede procesem konfigurace sítě více uzly. Tok nasazení je rozdělené do tří kroků: Základy konfigurace sítě a konfigurace prostředků infrastruktury.
 
 ### <a name="basics"></a>Základy
 
-V části **Základy** okno, zadejte hodnoty pro standardní parametry pro každé nasazení, jako je například předplatné, skupinu prostředků a vlastnosti základního virtuálního počítače.
+V **Základy** okno, zadejte hodnoty pro standardní parametry pro každé nasazení. Předplatné, skupinu prostředků a základní virtuální počítače, jako vlastnosti.
 
 ![Základy](./media/hyperledger-fabric-single-member-blockchain/basics.png)
 
@@ -72,7 +72,7 @@ Název parametru| Popis| Povolené hodnoty|Výchozí hodnota
 **Předpona prostředků**| Řetězec použitý jako základ pro vytváření názvů nasazených prostředků.|6 znaků nebo méně|Není k dispozici
 **Uživatelské jméno virtuálního počítače**| Uživatelské jméno správce pro jednotlivé virtuální počítače nasazené pro tento člen.|1 – 64 znaků.|azureuser
 **Typ ověřování**| Metodu k ověření k virtuálnímu počítači.|Heslo nebo SSH veřejný klíč|Heslo
-**Heslo (typ ověřování = heslo)**|Heslo pro účet správce pro jednotlivé virtuální počítače nasazené. Heslo musí obsahovat 3 z těchto věcí: 1 velké písmeno, 1 malé písmeno, 1 číslici a 1 speciální znak.<br /><br />Všechny virtuální počítače mají zpočátku stejné heslo, můžete změnit heslo po zřízení.|12 – 72 znaků|Není k dispozici
+**Heslo (typ ověřování = heslo)**|Heslo pro účet správce pro jednotlivé virtuální počítače nasazené. Heslo musí obsahovat kombinaci tří z následujících typů znaků: 1 velké písmeno, 1 malé písmeno, 1 číslici a 1 speciální znak.<br /><br />Všechny virtuální počítače mají zpočátku stejné heslo, můžete změnit heslo po zřízení.|12 – 72 znaků|Není k dispozici
 **Klíč SSH (typ ověření veřejného klíče =)**|Klíč zabezpečeného prostředí použitý ke vzdálenému přihlášení.||Není k dispozici
 **Omezení přístupu pomocí IP adresy**|Nastavení k určení typu, zda je koncový bod přístupu klientů s omezeným přístupem nebo ne.|Ano/Ne| Ne
 **Povolené IP adresy nebo podsítě (omezení přístupu pomocí IP adresy = Ano)**|IP adresa nebo sadu IP adres, který je povolen přístup k koncový bod klienta při řízení přístupu je povolené.||Není k dispozici
@@ -82,7 +82,7 @@ Název parametru| Popis| Povolené hodnoty|Výchozí hodnota
 
 ### <a name="network-size-and-performance"></a>Velikost síťových a výkonu
 
-V části Další **velikost a výkon sítě** zadejte vstupy pro velikost consortium sítě, jako je počet členství, orderer a partnerské uzly. Zvolte možnosti infrastruktury a velikost virtuálního počítače.
+Dále v **velikost a výkon sítě** zadejte vstupy pro velikost sítě consortium. Například počet členství, orderer a partnerské uzly. Zvolte možnosti infrastruktury a velikost virtuálního počítače.
 
 ![Velikost síťových a výkonu](./media/hyperledger-fabric-single-member-blockchain/network-size-performance.png)
 
@@ -94,7 +94,7 @@ Název parametru| Popis| Povolené hodnoty|Výchozí hodnota
 **Výkon úložiště**|Typ úložiště, zálohování, každý z nasazených uzlů. Další informace o službě storage najdete v tématu [Úvod do Microsoft Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-introduction) a [Premium Storage](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage).|Úrovně Standard nebo Premium|Standard
 **Velikost virtuálního počítače** |Velikost virtuálního počítače použít pro všechny uzly v síti|Standardní A<br />Standardní D<br />Standardní D-v2<br />Standardní řada F<br />Standard DS<br />a Standard služby FS|Standardní D1_v2
 
-### <a name="fabric-specific-settings"></a>Konkrétní nastavení prostředků infrastruktury
+### <a name="fabric-specific-settings"></a>Nastavení prostředků infrastruktury
 
 Nakonec v části **nastavení prostředků infrastruktury**, zadejte nastavení konfigurace související s prostředky infrastruktury.
 
@@ -129,13 +129,13 @@ Výstupní parametry, nejprve klikněte na tlačítko na **nasazení** karty v o
 
 Z historie nasazení klikněte na tlačítko při prvním nasazení v seznamu a podívejte se na podrobnosti.
 
-![Podrobnosti o nasazení](./media/hyperledger-fabric-single-member-blockchain/deployment-details.png)
+![Podrobnosti nasazení](./media/hyperledger-fabric-single-member-blockchain/deployment-details.png)
 
 Shrnutí nasazení, za nímž následuje tři užitečné výstupních parametrů se zobrazí na obrazovce s podrobnostmi:
 
 - _Koncový bod rozhraní API_ je možné po nasazení aplikace v síti.
 - _PŘEDPONU_ , označované také jako _nasazení předponu_ , jednoznačně identifikuje vašich prostředků a nasazení. Použije se při použití nástroje příkazového řádku založené na.
-- _SSH k první virtuální počítač_ poskytuje vám předem sestavený příkaz "SSH" se všemi správné parametry požadované pro připojení k první virtuální počítač ve vaší síti; v případě Hyperledger Fabric, bude uzel Fabric certifikační Autority.
+- _SSH k první virtuální počítač_ poskytuje vám předem sestavený příkaz "SSH" se všemi správné parametry požadované pro připojení k první virtuální počítač v síti. Pro Hyperledger Fabric bude uzel Fabric certifikační Autority.
 
 Můžete se vzdáleně připojit k virtuálním počítačům pro každý uzel přes protokol SSH s klíč správce zadané uživatelské jméno a heslo nebo SSH. Vzhledem k tomu, že virtuální počítače uzlů nemají vlastní veřejné IP adresy, je potřeba projít nástroje pro vyrovnávání zatížení a zadejte číslo portu. Příkaz SSH pro přístup k první uzel transakce je třetí výstup šablony ** SSH k první virtuální počítač (pro ukázkové nasazení: `sh -p 3000 azureuser@hlf2racpt.northeurope.cloudapp.azure.com`). Pokud chcete vrátit do transakce další uzly, zvyšovat číslo portu jednou (například první uzel transakce je na port 3000, druhá je na 3001, třetí je na 3002, atd.).
 

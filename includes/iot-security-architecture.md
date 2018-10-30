@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 64c7525be9bd44b0d33fdcd8da717e9fe893e057
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: bbdff5a9aa74ab08dc99c41f8ab847f901e18256
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49070181"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50227111"
 ---
 # <a name="internet-of-things-security-architecture"></a>Architektura zabezpečení Internetu věcí
 
@@ -21,7 +21,7 @@ Při návrhu systému, je důležité porozumět potenciálních hrozeb na dané
 
 ## <a name="security-starts-with-a-threat-model"></a>Zabezpečení se spustí model hrozeb
 
-Microsoft dlouho použil modely hrozeb pro jeho produktů a bylo provedeno proces veřejně dostupné modelování hrozeb vaší společnosti. Prostředí společnosti ukazuje, že má modelování neočekávané výhody nad rámec okamžitý přehled o jaké hrozby jsou nejvíce týkající se. Například vytvoří také zacházíme otevřít informace s jinými uživateli mimo vývojový tým, což může vést k nové nápady a vylepšení v produktu.
+Microsoft dlouho použil modely hrozeb pro jeho produktů a bylo provedeno publicaly procesu k dispozici modelování hrozeb vaší společnosti. Prostředí společnosti ukazuje, že má modelování neočekávané výhody nad rámec okamžitý přehled o jaké hrozby jsou nejvíce týkající se. Například vytvoří také zacházíme otevřít informace s jinými uživateli mimo vývojový tým, což může vést k nové nápady a vylepšení v produktu.
 
 Cílem modelování hrozeb je zjistit, jak útočník může ohrozit zabezpečení systému a ujistěte se, že odpovídající zmírnění rizik jsou na místě. Nasazuje se vynutí modelování hrozeb tým vzít v úvahu způsoby zmírnění rizik, protože systém je navržený tak, spíše než po systému. Tato skutečnost má zásadní význam, protože zpětné přidání obrany zabezpečení do velkého počtu zařízení v terénu je nemožné, náchylné k chybám a nechá zákazníkům rizika.
 

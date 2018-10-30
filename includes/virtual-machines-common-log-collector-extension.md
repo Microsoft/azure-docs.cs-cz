@@ -1,4 +1,16 @@
-
+---
+author: cynthn
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: cynthn
+ms.openlocfilehash: 52e1a7bf3e8f8770e4ba4f931c4d7427a7362f2f
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50226955"
+---
 Diagnostika potíží s cloudovou službou Microsoft Azure vyžaduje shromažďování souborů protokolu služby na virtuálních počítačích problémy vedly. AzureLogCollector rozšíření na vyžádání můžete provádět jednorázové shromažďování protokolů z jednoho nebo více cloudové služby virtuálních počítačů (z webové role a role pracovního procesu) a jeho přenosu shromážděných souborů do účtu služby Azure storage – vše bez vzdálené přihlášení k libovolné virtuálních počítačů.
 
 > [!NOTE]
@@ -437,7 +449,7 @@ if ($AdditionDataLocationList -ne $null )
 #
 $publicConfigJSON = $publicConfig | ConvertTo-Json
 
-Write-Output "PublicConfiguration is: \r\n$publicConfigJSON"
+Write-Output "PublicConfigurtion is: \r\n$publicConfigJSON"
 
 #
 #we just provide a empty privateConfig object

@@ -4,7 +4,7 @@ description: Toto téma popisuje různé úkoly, které jsou možné díky Azure
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 0582628e-a525-4a78-90ac-9f7fc1cd909f
 ms.service: media-services
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 07/17/2017
+ms.date: 10/24/2018
 ms.author: juliako
-ms.openlocfilehash: 808f25ee2c0b72f557ec72d159318e25cb7387ab
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: a5300f3b998e22cca56001bd52f761bb0a366cbe
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "33790556"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50231453"
 ---
 # <a name="using-azure-media-packager-to-accomplish-static-packaging-tasks"></a>Použití služby Azure Media Packager k provádění úloh statické balení
 > [!NOTE]

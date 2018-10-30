@@ -1,21 +1,22 @@
 ---
-title: Architektura replikace VMware nebo fyzický server ve službě Azure Site Recovery | Dokumentace Microsoftu
-description: Tento článek obsahuje přehled komponent a architektury používané při replikaci místních virtuálních počítačů VMware nebo fyzické servery Windows/Linux do sekundární lokality VMware pomocí Azure Site Recovery
+title: Architektura pro zotavení po havárii VMware nebo fyzický server ve službě Azure Site Recovery | Dokumentace Microsoftu
+description: Tento článek obsahuje přehled komponent a architektury používané při zotavení po havárii místních virtuálních počítačů VMware nebo fyzické servery Windows/Linux do sekundární lokality VMware pomocí Azure Site Recovery
 author: rayne-wiselman
+manager: carmonm
 ms.service: site-recovery
-ms.topic: article
-ms.date: 07/06/2018
+ms.topic: conceptual
+ms.date: 10/29/2018
 ms.author: raynew
-ms.openlocfilehash: 04591c57f90e3c540963d77c2213498bf0ad2577
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 16e8a9719280b55e86d1d4622a32470b37287dd4
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37921399"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215119"
 ---
-# <a name="vmware-vmphysical-server-to-vmware-replication-architecture"></a>Server virtuálních počítačů VMware/fyzických prostředků do architektury pro replikaci VMware
+# <a name="vmware-vmphysical-server-to-vmware-disaster-recovery-architecture"></a>Server virtuálních počítačů VMware/fyzické prostředky architektury pro zotavení po havárii VMware
 
-Tento článek popisuje, architektury a procesy používané při replikaci, převzetí služeb při selhání a obnovení virtuálních počítačů (VM) v místním VMware nebo fyzické servery Windows/Linux do sekundární lokality VMware pomocí [Azure Site Recovery](site-recovery-overview.md).
+Tento článek popisuje, architektury a procesy používané při nastavení replikace pro zotavení po havárii, převzetí služeb při selhání a obnovení virtuálních počítačů (VM) v místním VMware nebo fyzické servery Windows/Linux do sekundární lokality VMware pomocí [Azure Site Recovery](site-recovery-overview.md).
 
 
 ## <a name="architectural-components"></a>Komponenty architektury

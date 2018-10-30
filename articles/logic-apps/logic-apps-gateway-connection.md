@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 07/20/2018
 ms.reviewer: yshoukry, LADocs
 ms.suite: integration
-ms.openlocfilehash: 65c7e03b349314ad61fa5f1ea8322f4d1352b8e6
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: 6b6006293d562dbc270dc77bc49da2027f171dd2
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39145685"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50233289"
 ---
 # <a name="connect-to-data-sources-on-premises-from-azure-logic-apps-with-on-premises-data-gateway"></a>Připojení ke zdrojům dat v místním prostředí v Azure Logic Apps s místní bránou dat
 
@@ -53,7 +53,7 @@ a pokud jste tak dosud neučinili, postupujte podle kroků pro [stažení a inst
 
 Po instalaci brány na místním počítači, pak vytvoříte prostředek Azure pro vaši bránu. Tento krok také přiřadí prostředku brány ve vašem předplatném Azure.
 
-1. Přihlaste se k <a href="https://portal.azure.com" target="_blank">portálu Azure</a>. Ujistěte se, že používáte stejné Azure pracovní nebo školní e-mailovou adresu použít k instalaci brány.
+1. Přihlaste se k webu <a href="https://portal.azure.com" target="_blank">Azure Portal</a>. Ujistěte se, že používáte stejné Azure pracovní nebo školní e-mailovou adresu použít k instalaci brány.
 
 2. V hlavní nabídce Azure zvolte **vytvořit prostředek** > 
 **integrace** > **On-premises data gateway**.
@@ -155,7 +155,7 @@ K vytváření prostředku různé brány, bránu přidružit k jinému prostře
 ## <a name="get-support"></a>Získat podporu
 
 * Pokud máte dotazy, navštivte [fórum Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-* Pokud chcete zanechat své nápady na funkce nebo hlasovat, navštivte [web zpětné vazby od uživatelů Logic Apps](http://aka.ms/logicapps-wish).
+* Pokud chcete zanechat své nápady na funkce nebo hlasovat, navštivte [web zpětné vazby od uživatelů Logic Apps](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Další postup
 

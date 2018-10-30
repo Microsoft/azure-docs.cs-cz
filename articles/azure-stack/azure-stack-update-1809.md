@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/26/2018
+ms.date: 10/27/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 161b54620bd8a3c9994228a30bd7495717064168
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: d80e7bc1d391d9b5bfd718ca2dc0e9dc7ecb2268
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50158462"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210869"
 ---
 # <a name="azure-stack-1809-update"></a>Aktualizace služby Azure Stack 1809
 
@@ -38,6 +38,8 @@ Tento článek popisuje obsah balíčku 1809 aktualizace. Balíček aktualizace 
 ### <a name="new-features"></a>Nové funkce
 
 Tato aktualizace zahrnuje následující vylepšení pro službu Azure Stack:
+
+- V této verzi služby Azure Stack integrované systémy podporuje konfigurace 4 až 16 uzlů.
 
 - <!--  2712869   | IS  ASDK -->  **Klient služby Azure Stack syslog (obecná dostupnost)** tento klient umožňuje předávání auditů, upozornění a protokoly zabezpečení spojených s infrastrukturou Azure Stack na syslog serveru nebo zabezpečení informací a událostí (SIEM) software pro správu externí do služby Azure Stack. Klient syslog nyní podporuje určující port, na kterém naslouchá syslog server.
 
@@ -147,6 +149,8 @@ Další informace o těchto ohrožení zabezpečení, klikněte na výše uveden
 - <!-- 2468613 - IS --> Při instalaci této aktualizace, může se zobrazit upozornění s názvem *chyba – šablona pro typ FaultType UserAccounts.New chybí.*  Tyto výstrahy můžete bezpečně ignorovat. Tyto výstrahy se automaticky zavře po dokončení instalace této aktualizace.
 
 - <!-- 2489559 - IS --> Nepokoušejte se vytvářet virtuální počítače při instalaci této aktualizace. Další informace o správě aktualizací najdete v tématu [správy aktualizací ve službě Azure Stack přehled](azure-stack-updates.md#plan-for-updates).
+
+- <!-- 3139614 | IS --> Pokud jste použili aktualizaci do služby Azure Stack od výrobce OEM **k dispozici je aktualizace** oznámení se nemusí zobrazit v portálu pro správu Azure Stack. Chcete-li nainstalovat služby Microsoft update, stáhnout a naimportovat ručně podle pokynů tady [použití aktualizací ve službě Azure Stack](azure-stack-apply-updates.md).
 
 ### <a name="post-update-steps"></a>Postup po aktualizaci
 

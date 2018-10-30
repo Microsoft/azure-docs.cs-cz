@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2018
 ms.author: damaerte
-ms.openlocfilehash: 0bce9f50bdc3ac8fb4675a7ac2a3fb300036973f
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 65531b5507f9e3af3a9666074d9dcd9b7ee20271
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49404355"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50231181"
 ---
 # <a name="quickstart-for-powershell-in-azure-cloud-shell"></a>Rychlý start pro PowerShell ve službě Azure Cloud Shell
 
@@ -316,6 +316,9 @@ Můžete vytvořit skript, Dejme tomu, že `helloworld.ps1`a uložte ho do vaše
 
 ```azurepowershell-interactive
 cd $HOME\clouddrive
+# Create a new file in clouddrive directory
+New-Item helloworld.ps1
+# Open the new file for editing
 code .\helloworld.ps1
 # Add the content, such as 'Hello World!'
 .\helloworld.ps1

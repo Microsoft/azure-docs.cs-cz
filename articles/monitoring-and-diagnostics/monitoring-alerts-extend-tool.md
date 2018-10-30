@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/04/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: d70eecb6a5d6bafbfa6507dbe8b1bcb1cad67191
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: cbe6ddc2c4680028d5a4a0491756c7a7b9897c69
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46990231"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50233238"
 ---
 # <a name="extend-alerts-from-log-analytics-into-azure-alerts"></a>Rozšíření upozornění z Log Analytics do upozornění Azure
 Funkce výstrah ve službě Azure Log Analytics teď nahrazuje Azure Alerts. Jako součást tohoto přechodu je výstrahy, které jste nakonfigurovali v Log Analytics se rozšířit do Azure. Pokud nechcete čekat na jejich automaticky přesunou na Azure, můžete zahájit proces:
@@ -22,7 +22,7 @@ Funkce výstrah ve službě Azure Log Analytics teď nahrazuje Azure Alerts. Jak
 - Programově pomocí rozhraní AlertsVersion API.  
 
 > [!NOTE]
-> Microsoft automaticky rozšíří upozornění vytvořená v instancích veřejné cloudové služby Log Analytics pro Azure Alerts, od 14. května 2018, opakovala, dokud nebude dokončena. Pokud máte potíže s vytvořením [skupiny akcí](monitoring-action-groups.md), použijte [tyto kroky nápravy](monitoring-alerts-extend-tool.md#troubleshooting) získat skupiny akcí, které jsou vytvořeny automaticky. Pomocí těchto kroků 5. července 2018. *Není k dispozici pro uživatele Soveriegn cloudové služby Log Analytics a Azure Goverment*. 
+> Microsoft automaticky rozšíří upozornění vytvořená v instancích veřejné cloudové služby Log Analytics pro Azure Alerts, od 14. května 2018, opakovala, dokud nebude dokončena. Pokud máte potíže s vytvořením [skupiny akcí](monitoring-action-groups.md), použijte [tyto kroky nápravy](monitoring-alerts-extend-tool.md#troubleshooting) získat skupiny akcí, které jsou vytvořeny automaticky. Pomocí těchto kroků 5. července 2018. *Není k dispozici pro uživatele suverénních cloudů služby Log Analytics a Azure Government*. 
 
 ## <a name="option-1-initiate-from-the-operations-management-suite-portal"></a>Možnost 1: Zahájení z portálu Operations Management Suite
 Následující kroky popisují, jak rozšířit výstrahy pro pracovní prostor z portálu Operations Management Suite.  

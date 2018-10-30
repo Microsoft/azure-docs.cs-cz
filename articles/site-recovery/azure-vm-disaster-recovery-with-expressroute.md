@@ -1,5 +1,5 @@
 ---
-title: Integrace Azure ExpressRoute se zotavení po havárii pro virtuální počítače Azure pomocí Azure Site Recovery | Dokumentace Microsoftu
+title: Integrace Azure ExpressRoute se zotavení po havárii pro virtuální počítače Azure pomocí služby Azure Site Recovery | Dokumentace Microsoftu
 description: Popisuje, jak nastavit zotavení po havárii pro virtuální počítače Azure pomocí Azure Site Recovery a Azure ExpressRoute
 services: site-recovery
 author: mayurigupta13
@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: mayg
-ms.openlocfilehash: 03fac23ea17a6baa1b43e748a4390cf142661a19
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: e7c63fba892f70ca0e18c1bffcda0782316b7ada
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353529"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50211549"
 ---
 # <a name="integrate-azure-expressroute-with-disaster-recovery-for-azure-vms"></a>Integrace Azure ExpressRoute se zotavení po havárii pro virtuální počítače Azure
 

@@ -11,15 +11,15 @@ ms.service: active-directory
 ms.topic: article
 ms.workload: identity
 ms.component: users-groups-roles
-ms.date: 06/05/2017
+ms.date: 10/29/2018
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7a235851d7172d32d62c64b163e0b7635a1a47fd
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: e08ca3453cc43fa0f35102ca5563b4b07ce45dea
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37861693"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215000"
 ---
 # <a name="assign-licenses-to-users-by-group-membership-in-azure-active-directory"></a>Přiřazení licencí pro uživatele na základě členství ve skupinách v Azure Active Directory
 
@@ -28,7 +28,7 @@ Tento článek vás provede přiřazení licence na produkty pro skupinu uživat
 V tomto příkladu tenant obsahuje skupinu zabezpečení s názvem **Personální oddělení**. Tato skupina obsahuje všechny členové oddělení lidských zdrojů (přibližně 1 000 uživatelů). Chcete přiřadit licence Office 365 Enterprise E3 celé oddělení. Služba Yammer Enterprise, která je součástí produktu musí dočasně zakázané, dokud oddělení připravený začít používat. Chcete nasadit řešení Enterprise Mobility + Security koupím na stejnou skupinu uživatelů.
 
 > [!NOTE]
-> Některé služby nejsou k dispozici ve všech umístěních. Předtím, než je možné přiřadit licence pro uživatele, Správce musí mít vlastnost Usage umístění na uživatele.
+> Některé služby Microsoft nejsou dostupné ve všech umístěních. Předtím, než je možné přiřadit licence pro uživatele, Správce musí mít vlastnost Usage umístění na uživatele.
 
 > Přiřazení licencí skupiny zdědí všechny uživatele bez zadaného místa využití umístění adresáře. Pokud máte uživatele v několika umístěních, doporučujeme, abyste jako součást vytváření toku uživatele ve službě Azure AD (např. pomocí AAD Connect konfigurace) –, který zajišťuje výsledek přiřazení licence je vždy správný a uživatelé neobdrží vždy nastavena místo využívání služby v umístění, které nejsou povoleny.
 
@@ -52,7 +52,7 @@ V tomto příkladu tenant obsahuje skupinu zabezpečení s názvem **Personáln�
 
    ![Možnosti přiřazení](./media/licensing-groups-assign/assignment-options.png)
 
-7. K dokončení přiřazení na **přiřadit licence** podokně klikněte na tlačítko **přiřadit** v dolní části podokna.
+7. Přiřazení dokončíte tak, že v dolní části podokna **Přiřadit licenci** kliknete na **Přiřadit**.
 
 8. Oznámení se zobrazí v pravém horním rohu, zobrazuje stav a výsledek procesu. Pokud přiřazení do skupiny nebylo možné dokončit (například z důvodu již dříve existující licence ve skupině), klikněte na oznámení zobrazíte podrobnosti o tomto selhání.
 
@@ -104,6 +104,8 @@ Nyní jsme zadání šablonu licence pro skupinu oddělení lidských zdrojů. Z
 Další informace o sadě pro správu licencí pomocí skupin funkcí, naleznete v následujících článcích:
 
 * [Co je skupina založená na licencování v Azure Active Directory?](../fundamentals/active-directory-licensing-whatis-azure-portal.md)
-* [Identifikace a řešení problémů pro skupinu v Azure Active Directory](licensing-groups-resolve-problems.md)
-* [Migrace jednotlivě licencovaných uživatelů na licencování na základě skupiny v Azure Active Directory](licensing-groups-migrate-users.md)
-* [Azure Active Directory na základě skupin licencí další scénáře](../active-directory-licensing-group-advanced.md)
+* [Identifikace a řešení potíží s licencemi pro skupinu v Azure Active Directory](licensing-groups-resolve-problems.md)
+* [Postup migrace jednotlivě licencovaných uživatelů na licencování na základě skupin v Azure Active Directory](licensing-groups-migrate-users.md)
+* [Migrace uživatelů mezi licencemi produktů pomocí licencování pro skupiny ve službě Azure Active Directory](licensing-groups-change-licenses.md)
+* [Další scénáře licencování na základě skupin v Azure Active Directory](../active-directory-licensing-group-advanced.md)
+* [Příklady prostředí PowerShell pro licencování na základě skupiny v Azure Active Directory](licensing-ps-examples.md)

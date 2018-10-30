@@ -11,15 +11,15 @@ ms.service: active-directory
 ms.component: users-groups-roles
 ms.topic: article
 ms.workload: identity
-ms.date: 06/05/2017
+ms.date: 10/29/2018
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5d64cf71ea3a44b7539835e3616150218e8b3635
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: ee441a8c9a0d8a70a2797f090a143189cdb6872a
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37861640"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50211532"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>Identifikovat a vyřešit problémy přiřazení licencí pro skupinu v Azure Active Directory
 
@@ -65,7 +65,7 @@ Pokud chcete zobrazit, kteří uživatelé a skupiny spotřebovávají licence, 
 
 **Problém:** obsahuje některý z produktů, které je zadaná ve skupině pro plán služby, který je v konfliktu s jinou plán služeb, který je již přiřazen uživateli prostřednictvím různých produktů. Některé nabízené plány služeb jsou nakonfigurovány tak, že nelze přiřadit jednomu uživateli jako jiné služby související plán.
 
-Podívejte se na následující příklad. Uživatel má licenci pro Office 365 Enterprise *E1* přímo, přiřazené všechny plány povolena. Uživatel přidal do skupiny, která má Office 365 Enterprise *E3* produktu přiřazené k němu. Produkt E3 obsahuje plány služby, které se nesmí překrývat s plány, které jsou součástí E1, tak skupiny přiřazení licence nezdaří s chybou "Konfliktní plány služeb". V tomto příkladu jsou konfliktní plány služeb:
+Představte si následující příklad. Uživatel má licenci pro Office 365 Enterprise *E1* přímo, přiřazené všechny plány povolena. Uživatel přidal do skupiny, která má Office 365 Enterprise *E3* produktu přiřazené k němu. Produkt E3 obsahuje plány služby, které se nesmí překrývat s plány, které jsou součástí E1, tak skupiny přiřazení licence nezdaří s chybou "Konfliktní plány služeb". V tomto příkladu jsou konfliktní plány služeb:
 
 -   SharePoint Online (plán 2) je v konfliktu se Sharepointem Online (plán 1).
 -   Exchange Online (plán 2) je v konfliktu s Exchange Online (plán 1).
@@ -96,6 +96,19 @@ Chcete-li tento problém vyřešit, odeberte uživatele z nepodporované umíst�
 
 > [!NOTE]
 > Pokud Azure AD přiřadí skupinu licencí, zdědí všechny uživatele bez použití zadaného umístění umístění adresáře. Doporučujeme správcům nastavit správné použití hodnoty umístění uživatelů před použitím skupinové licence pro dosažení souladu s místními zákony a předpisy.
+
+## <a name="duplicate-proxy-addresses"></a>Duplicitní adresy proxy serveru
+
+Pokud používáte Exchange Online, někteří uživatelé ve vašem tenantovi může být nesprávně nakonfigurování se stejnou hodnotou adresy proxy. Když licencování na základě skupiny se pokusí přiřadit licenci na tyto uživatele, se nezdaří a zobrazí "adresa proxy serveru se už používá".
+
+> [!TIP]
+> Pokud chcete zobrazit, pokud je adresa duplicitní proxy, spusťte následující rutinu prostředí PowerShell pro Exchange Online:
+```
+Run Get-Recipient | where {$_.EmailAddresses -match "user@contoso.onmicrosoft.com"} | fL Name, RecipientType,emailaddresses
+```
+> Další informace o tomto problému najdete v tématu ["adresa proxy serveru se už používá" chybová zpráva v Exchangi Online](https://support.microsoft.com/help/3042584/-proxy-address-address-is-already-being-used-error-message-in-exchange-online). Tento článek obsahuje také informace o [jak se připojit ke službě Exchange Online pomocí vzdáleného prostředí PowerShell](https://technet.microsoft.com/library/jj984289.aspx). Tento článek pro další informace naleznete v tématu [na způsob naplnění atributu proxyAddresses v Azure AD](https://support.microsoft.com/help/3190357/how-the-proxyaddresses-attribute-is-populated-in-azure-ad).
+
+Až vyřešíte všechny problémy adresu proxy serveru pro ovlivnění uživatelé, ujistěte se, že chcete vynutit zpracování licencí skupiny, abyste měli jistotu, že licence se teď může používat.
 
 ## <a name="what-happens-when-theres-more-than-one-product-license-on-a-group"></a>Co se stane, když je ve skupině více než jednu licenci na produkt?
 
@@ -134,19 +147,7 @@ Od této chvíle přidané do této skupiny uživatele používat jednu licenci 
 > [!TIP]
 > Můžete vytvořit více skupin pro jednotlivé požadované služby. Například pokud používáte Office 365 Enterprise E1 a Office 365 Enterprise E3 pro vaše uživatele, můžete vytvořit dvě skupiny, abyste získali licenci pro Microsoft Workplace Analytics: ten, který používá E1 jako předpoklad a druhý, který se používá E3. Tímto způsobem můžete distribuovat doplněk E1 a E3 uživatelům nutnosti využít další licence.
 
-## <a name="license-assignment-fails-silently-for-a-user-due-to-duplicate-proxy-addresses-in-exchange-online"></a>Přiřazení licencí selže bez upozornění uživatele z důvodu duplicitní proxy adres v systému Exchange Online
 
-Pokud používáte Exchange Online, někteří uživatelé ve vašem tenantovi může být nesprávně nakonfigurování se stejnou hodnotou adresy proxy. Když se licencování pro skupiny se pokusí přiřadit licenci na tyto uživatele, se nezdaří a nezaznamenává chybu. Nepodařilo se zaznamenat chybu v tomto případě je omezení v této funkci ve verzi preview a budeme řešit před *všeobecné dostupnosti*.
-
-> [!TIP]
-> Pokud si všimnete, že někteří uživatelé nepřijala licence a se nezobrazí žádná chyba zaznamenaná za tyto uživatele, nejprve zkontrolujte, jestli mají duplicitní proxy server s adresou.
-> Pokud chcete zobrazit, pokud je adresa duplicitní proxy, spusťte následující rutinu prostředí PowerShell pro Exchange Online:
-```
-Run Get-Recipient | where {$_.EmailAddresses -match "user@contoso.onmicrosoft.com"} | fL Name, RecipientType,emailaddresses
-```
-> Další informace o tomto problému najdete v tématu ["adresa proxy serveru se už používá" chybová zpráva v Exchangi Online](https://support.microsoft.com/help/3042584/-proxy-address-address-is-already-being-used-error-message-in-exchange-online). Tento článek obsahuje také informace o [jak se připojit ke službě Exchange Online pomocí vzdáleného prostředí PowerShell](https://technet.microsoft.com/library/jj984289.aspx).
-
-Až vyřešíte všechny problémy adresu proxy serveru pro ovlivnění uživatelé, ujistěte se, že chcete vynutit zpracování licencí skupiny, abyste měli jistotu, že licence se teď může používat.
 
 ## <a name="how-do-you-force-license-processing-in-a-group-to-resolve-errors"></a>Jak můžete vynutit zpracování licencí skupiny pro vyřešení chyb?
 
@@ -154,11 +155,19 @@ V závislosti na tom, jaké kroky jste provést k vyřešení chyby může být 
 
 Například pokud některé licence uvolnit tak, že odeberete přiřazení přímých licencí od uživatelů, budete muset aktivovat zpracování skupiny, které se dříve nepodařilo plně všechny členy uživatelské licence. Za účelem opětovného zpracování skupiny, přejděte do podokna skupinu, otevřete **licence**a pak vyberte **znovu zpracovat** tlačítko na panelu nástrojů.
 
+## <a name="how-do-you-force-license-processing-on-a-user-to-resolve-errors"></a>Jak můžete vynutit zpracování licence pro uživatele pro vyřešení chyb?
+
+V závislosti na tom, jaké kroky jste provést k vyřešení chyby může být potřeba ručně aktivujete zpracování uživateli aktualizovat stav uživatele.
+
+Například po vyřešení problému duplicitní proxy adres pro ovlivněného uživatele, budete muset aktivovat zpracování uživatele. Za účelem opětovného zpracování uživatele, přejděte do podokna uživatele, otevřete **licence**a pak vyberte **znovu zpracovat** tlačítko na panelu nástrojů.
+
 ## <a name="next-steps"></a>Další postup
 
 Další informace o další scénáře pro správu licencí pomocí skupin, naleznete v následujících tématech:
 
-* [Přiřazení licencí ke skupině ve službě Azure Active Directory](licensing-groups-assign.md)
 * [Co je skupina založená na licencování v Azure Active Directory?](../fundamentals/active-directory-licensing-whatis-azure-portal.md)
-* [Migrace jednotlivě licencovaných uživatelů na licencování na základě skupiny v Azure Active Directory](licensing-groups-migrate-users.md)
-* [Azure Active Directory na základě skupin licencí další scénáře](licensing-group-advanced.md)
+* [Přiřazení licencí ke skupině v Azure Active Directory](licensing-groups-assign.md)
+* [Postup migrace jednotlivě licencovaných uživatelů na licencování na základě skupin v Azure Active Directory](licensing-groups-migrate-users.md)
+* [Migrace uživatelů mezi licencemi produktů pomocí licencování pro skupiny ve službě Azure Active Directory](licensing-groups-change-licenses.md)
+* [Další scénáře licencování na základě skupin v Azure Active Directory](licensing-group-advanced.md)
+* [Příklady prostředí PowerShell pro licencování na základě skupiny v Azure Active Directory](licensing-ps-examples.md)

@@ -1,3 +1,16 @@
+---
+author: cynthn
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: cynthn
+ms.openlocfilehash: 5490bdd3934b438a683ce4271fbec20b3d13735d
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50226740"
+---
 Pokud na vašem virtuálním počítači v Azure dochází k chybám spouštění nebo disku, možná bude nutné provést postup při řešení potíží na samotném virtuálním pevném disku. Běžným příkladem je aktualizace aplikace, která selhala a brání úspěšnému spuštění virtuálního počítače. Tento článek popisuje, jak pomocí webu Azure Portal připojit virtuální pevný disk k jinému virtuálnímu počítači, opravit všechny chyby a potom znovu vytvořit původní virtuální počítač.
 
 
@@ -54,9 +67,9 @@ Po vyřešení všech chyb odpojte existující virtuální pevný disk od virtu
 
 ## <a name="create-a-vm-from-the-original-hard-disk"></a>Vytvoření virtuálního počítače z původního pevného disku
 
-Chcete-li vytvořit virtuální počítač z původní virtuální pevný disk, použijte [portál Azure](https://portal.azure.com).
+Vytvoření virtuálního počítače z původního virtuálního pevného disku, použijte [webu Azure portal](https://portal.azure.com).
 
 1. Přihlaste se k [portálu Azure](https://portal.azure.com).
-2. V levém horním portálu, vyberte **vytvořit prostředek** > **výpočetní** > **virtuálního počítače** > **z Galerie**.
+2. V levém horním rohu portálu, vyberte **vytvořit prostředek** > **Compute** > **virtuálního počítače** > **z Galerie**.
 3. V části **Zvolit image** vyberte **Moje disky** a potom vyberte původní virtuální pevný disk. Zkontrolujte informace o umístění. To je oblast, ve které musí být virtuální počítač nasazen. Klikněte na tlačítko Další.
 4. V části **Konfigurace virtuálního počítače** zadejte název virtuálního počítače a vyberte jeho velikost.

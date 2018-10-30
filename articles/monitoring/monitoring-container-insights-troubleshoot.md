@@ -1,5 +1,5 @@
 ---
-title: Postup řešení potíží s Azure Monitor pro kontejnery | Dokumentace Microsoftu
+title: Postup řešení potíží s Azure Monitor pro kontejnery (Preview) | Dokumentace Microsoftu
 description: Tento článek popisuje, jak můžete odstraňovat potíže a řešit problémy s monitorováním Azure pro kontejnery.
 services: azure-monitor
 documentationcenter: ''
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/19/2018
 ms.author: magoedte
-ms.openlocfilehash: 19d015947e5d2331c50cd64956e8a7650f96616d
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 69e5a61d5e66e5904df31456e9311a39058787b2
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49638320"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212348"
 ---
-# <a name="troubleshooting-azure-monitor-for-containers"></a>Řešení potíží s Azure Monitor pro kontejnery
+# <a name="troubleshooting-azure-monitor-for-containers-preview"></a>Řešení potíží s Azure Monitor pro kontejnery (Preview)
 
 Při konfiguraci monitorování clusteru Azure Kubernetes Service (AKS) pomocí Azure monitoru pro kontejnery může dojít k potížím, brání ve sběru dat nebo hlásí stav. Tento článek podrobně popisuje některé běžné problémy a postup řešení potíží.
 

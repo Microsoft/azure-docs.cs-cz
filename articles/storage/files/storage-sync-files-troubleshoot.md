@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/06/2018
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: d240bafa543633999a74ef66efcfd7130a4a7b7a
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 1a135b0e17889c544a99ad677e9fa42ad6de994c
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389271"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50231878"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Řešení problémů se Synchronizací souborů Azure
 Azure File Sync umožňuje centralizovat sdílené složky organizace ve službě soubory Azure, při zachování flexibility, výkonu a kompatibility s místními souborového serveru. Azure File Sync transformuje serveru systému Windows na rychlou mezipaměť sdílené složky Azure. Můžete použít jakýkoli protokol dostupný ve Windows serveru pro přístup k datům místně, včetně SMB, NFS a FTPS. Můžete mít libovolný počet mezipamětí po celém světě potřebujete.
@@ -74,9 +74,9 @@ K tomuto problému dochází, pokud sdílená složka Azure se už používá ji
 Pokud se zobrazí tato zpráva a sdílené složky Azure aktuálně není používán koncového bodu cloudu, proveďte následující kroky zrušte Azure File Sync metadat na sdílené složky Azure:
 
 > [!Warning]  
-> Odstranění metadat na sdílenou složku Azure, který je aktuálně používán koncového bodu cloudu způsobí selhání operací Azure File Sync. 
+> Odstranění metadat na sdílenou složku Azure, který je aktuálně používán koncového bodu cloudu způsobí selhání operací Azure File Sync. 
 
-1. Na webu Azure Portal přejděte do sdílené složky Azure.  
+1. Na webu Azure Portal přejděte do sdílené složky Azure.  
 2. Klikněte pravým tlačítkem na sdílenou složku Azure a pak vyberte **upravit metadata**.
 3. Klikněte pravým tlačítkem na **SyncService**a pak vyberte **odstranit**.
 
@@ -447,7 +447,7 @@ K této chybě může dojít, pokud vaše organizace používá SSL proxy ukonč
     Restart-Service -Name FileSyncSvc -Force
     ```
 
-Když nastavíte tuto hodnotu registru, agent služby Azure File Sync přijme při přenosu dat mezi serverem a cloudovou službou jakýkoli místně důvěryhodný certifikát protokolu SSL.
+Když nastavíte tuto hodnotu registru, agent funkce Synchronizace souborů Azure přijme při přenosu dat mezi serverem a cloudovou službou jakýkoli místně důvěryhodný certifikát protokolu SSL.
 
 <a id="-2147012894"></a>**Nelze navázat připojení ke službě.**  
 | | |
@@ -519,7 +519,7 @@ K této chybě dochází, protože došlo ke změnám na sdílené složky Azure
 | | |
 | **HODNOTA HRESULT** | 0x80c8021c |
 | **HRESULT (decimální)** | -2134375908 |
-| **Text chyby** | ECS_E_SYNC_METADATA_KNOWLEGE_LIMIT_REACHED |
+| **Text chyby** | ECS_E_SYNC_METADATA_KNOWLEDGE_LIMIT_REACHED |
 | **Požadována náprava** | Ano |
 | | |
 | **HODNOTA HRESULT** | 0x80c80253 |

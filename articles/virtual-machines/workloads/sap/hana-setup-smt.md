@@ -1,6 +1,6 @@
 ---
-title: Postup instalace serveru SMT pro SAP HANA v Azure (velké instance) | Dokumentace Microsoftu
-description: Jak nastavit SMT server pro SAP HANA v Azure (velké Instance).
+title: Jak nastavit SMT server pro SAP HANA v Azure (velké instance) | Dokumentace Microsoftu
+description: Jak nastavit SMT server pro SAP HANA v Azure (velké instance).
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermanndms
@@ -14,47 +14,49 @@ ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f387c1afe88f2bba476309b2e2e01942d2b7ae5b
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: d9fe644b7cc7d1a13cb9ed2f7016f25b3e346dfb
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45982621"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50233170"
 ---
-# <a name="setting-up-smt-server-for-suse-linux"></a>Nastavení serveru SMT operačním systémem SUSE Linux
-Velké instance SAP HANA nemají přímé připojení k Internetu. Proto není jednoduchý proces registrace jako jednotek s operačním systémem zprostředkovatele a ke stažení a použití opravy. Pokud operačním systémem SUSE Linux jedním řešením může být nastavení serveru SMT ve Virtuálním počítači Azure. Vzhledem k tomu virtuálního počítače Azure musí být hostované ve virtuální síti Azure, která je připojena k velká Instance HANA. Pomocí těchto SMT serveru může velká Instance HANA jednotku zaregistrujte a stažení oprav. 
+# <a name="set-up-smt-server-for-suse-linux"></a>Nastavení serveru SMT operačním systémem SUSE Linux
+Velké instance SAP HANA nemají přímé připojení k Internetu. Není jednoduchý proces registrace jako jednotek s poskytovateli operačního systému a ke stažení a použití aktualizací. Řešení SUSE Linux je nastavení serveru SMT ve virtuálním počítači Azure. Hostování tohoto virtuálního počítače ve službě Azure virtual network, která je připojena k velká Instance HANA. Pomocí těchto SMT serveru může jednotka velká Instance HANA zaregistrovat a stáhnout aktualizace. 
 
-SUSE poskytuje větší návod na jejich [nástroj pro správu předplatného pro SLES 12 SP2](https://www.suse.com/documentation/sles-12/pdfdoc/book_smt/book_smt.pdf). 
+Další dokumentaci k systému SUSE, najdete jejich [nástroj pro správu předplatného pro SLES 12 SP2](https://www.suse.com/documentation/sles-12/pdfdoc/book_smt/book_smt.pdf). 
 
-Jako předpoklad instalace SMT serveru, který splňuje požadavky úlohy pro velké Instance HANA potřebujete:
+Předpoklady pro instalaci serveru SMT, který splňuje požadavky úlohy pro velké instance HANA je:
 
-- Virtuální síť Azure, který je připojený k okruhu ER velké Instance HANA.
-- SUSE účet, který je spojen s organizací. Vzhledem k tomu třeba, aby měl některé platné předplatné SUSE organizace.
+- Virtuální síť Azure, která je připojena k okruhu ExpressRoute velké Instance HANA.
+- SUSE účet, který je spojen s organizací. Organizace by měly mít platné předplatné, SUSE.
 
-## <a name="installation-of-smt-server-on-azure-vm"></a>Instalace SMT serveru na virtuálním počítači Azure
+## <a name="install-smt-server-on-an-azure-virtual-machine"></a>SMT server nainstalovat na virtuální počítač Azure
 
-V tomto kroku nainstalujete server SMT ve Virtuálním počítači Azure. První z měr se pro přihlášení k [centrum zákazníků SUSE](https://scc.suse.com/).
+Nejprve se přihlaste k [centrum zákazníků SUSE](https://scc.suse.com/).
 
-Protože jste přihlášeni, přejděte na organizaci--> přihlašovacími údaji organizace. V této části byste měli najít přihlašovací údaje, které jsou potřebné k nastavení SMT serveru.
+Přejděte na **organizace** > **přihlašovacími údaji organizace**. V této části měli byste najít přihlašovací údaje, které jsou potřebné k nastavení SMT serveru.
 
-Třetím krokem je instalace virtuálního počítače s operačním systémem SUSE Linux ve virtuální síti Azure. Pokud chcete nasadit virtuální počítač, proveďte SLES 12 SP2 image z Galerie Azure (vyberte image operačního systému SUSE BYOS). V procesu nasazení nebudete definovat název DNS a nepoužívejte statické IP adresy, jak je vidět na tomto snímku obrazovky
+Nainstalujte virtuálního počítače s operačním systémem SUSE Linux ve službě Azure virtual network. Pokud chcete nasadit virtuální počítač, proveďte SLES 12 SP2 image z Galerie Azure (vyberte image operačního systému SUSE BYOS). V procesu nasazení nebudete definovat název DNS a nepoužívejte statické IP adresy.
 
-![nasazení virtuálního počítače pro SMT server](./media/hana-installation/image3_vm_deployment.png)
+![Snímek obrazovky nasazení virtuálního počítače pro SMT server](./media/hana-installation/image3_vm_deployment.png)
 
-Nasazený virtuální počítač byl menších virtuálních počítačů a máte ve virtuální síti Azure z 10.34.1.4 interní IP adresa. Název virtuálního počítače byla smtserver. Po dokončení instalace došlo k zaškrtnutí připojení k HANA velké instance jednotek. Závislé na uspořádání překlad můžete potřebovat konfigurace řešení velká Instance HANA jednotek v etc/hostitele virtuálního počítače Azure. Přidejte další disk k virtuálnímu počítači, který se použije k uložení opravy. Spouštěcí disk může být příliš malá. V tomto případě jsme vám ukázali máte disk připojený k /srv/www/htdocs, jak je znázorněno na následujícím snímku obrazovky. 100 GB disk by měl stačit.
+Nasazeného virtuálního počítače je menší a máte ve virtuální síti Azure 10.34.1.4 interní IP adresa. Název virtuálního počítače je *smtserver*. Po instalaci se kontroluje připojení k velká Instance HANA jednotku nebo jednotky. V závislosti na uspořádání překlad potřebujete nakonfigurovat překlad velká Instance HANA jednotek v atd nebo hostitele virtuálních počítačů Azure. 
 
-![nasazení virtuálního počítače pro SMT server](./media/hana-installation/image4_additional_disk_on_smtserver.PNG)
+Přidání disku do virtuálního počítače. Použít tento disk pro uchování aktualizace a spouštěcí disk může být příliš malá. Tady je teď disk připojený k /srv/www/htdocs, jak je znázorněno na následujícím snímku obrazovky. 100 GB disk by měl stačit.
 
-Přihlaste se k jednotek velká Instance HANA, Udržovat/etc/hosts a zkontrolujte, zda virtuální počítač Azure, který se má spustit SMT server přes síť mohou mít přístup.
+![Snímek obrazovky nasazení virtuálního počítače pro SMT server](./media/hana-installation/image4_additional_disk_on_smtserver.PNG)
 
-Poté, co tato kontrola se úspěšně dokončí, budete muset přihlásit k virtuálnímu počítači Azure, který by měl spustit SMT serveru. Pokud používáte klienta putty k přihlášení k virtuálnímu počítači, je nutné provést toto pořadí příkazů v okně bash:
+Přihlaste se k velká Instance HANA jednotku nebo jednotky, Udržovat/etc/hosts a zkontrolujte, zda virtuální počítač Azure, který se má spustit SMT server přes síť mohou mít přístup.
+
+Po této kontrole Přihlaste se na virtuálním počítači Azure, který by měl spustit na serveru SMT. Pokud používáte klienta putty k přihlášení k virtuálnímu počítači, spusťte tuto sekvenci příkazů v okně bash:
 
 ```
 cd ~
 echo "export NCURSES_NO_UTF8_ACS=1" >> .bashrc
 ```
 
-Po spuštění těchto příkazů, restartujte vaše prostředí bash a aktivovat nastavení. Potom spusťte YAST.
+Restartujte vaše prostředí bash a aktivovat nastavení. Potom spusťte YAST.
 
 Připojte svůj virtuální počítač (smtserver) k webu SUSE.
 
@@ -66,7 +68,7 @@ Using E-Mail: email address
 Successfully registered system.
 ```
 
-Jakmile se virtuální počítač je připojen k serveru SUSE, nainstalujte balíčky smt. Použijte následující příkaz putty smt balíčky nainstalovat.
+Jakmile je virtuální počítač je připojen k serveru SUSE, nainstalujte balíčky smt. Použijte následující příkaz putty smt balíčky nainstalovat.
 
 ```
 smtserver:~ # zypper in smt
@@ -77,28 +79,28 @@ Resolving package dependencies...
 ```
 
 
-YAST nástroj můžete použít také k instalaci balíčků smt. V YAST přejděte na údržbu softwaru a vyhledejte smt. Vyberte smt, automaticky přepnout do yast2 smt, jak je znázorněno níže
+Také vám pomůže nástroj YAST smt balíčky nainstalovat. V YAST, přejděte na **údržba softwaru**a vyhledejte smt. Vyberte **smt**, které se automaticky přepne do yast2 smt.
 
-![SMT v yast](./media/hana-installation/image5_smt_in_yast.PNG)
+![Snímek obrazovky SMT v YAST](./media/hana-installation/image5_smt_in_yast.PNG)
 
 
-Přijměte výběr pro instalaci smtserver. Po instalaci, přejděte na konfigurace serveru SMT a zadejte firemní přihlašovací údaje v Centru pro SUSE zákazníka, který jste získali dříve. Jako adresu URL serveru SMT také zadejte název hostitele vašeho virtuálního počítače Azure. V této ukázce se https://smtserver se zobrazuje další grafiky.
+Přijměte výběr pro instalaci smtserver. Po dokončení instalace, přejděte na konfigurace SMT serveru. Zadejte organizační údaje v Centru pro SUSE zákazníka, který jste získali dříve. Jako adresu URL serveru SMT také zadejte název hostitele vašeho virtuálního počítače Azure. V této ukázce má https://smtserver.
 
-![Konfigurace serveru SMT](./media/hana-installation/image6_configuration_of_smtserver1.png)
+![Snímek obrazovky SMT konfigurace serveru](./media/hana-installation/image6_configuration_of_smtserver1.png)
 
-Jako další krok je potřeba otestovat, jestli funguje připojení k centru SUSE zákazníka. Jak vidíte na následujících obrázcích v tomto případě ukázka, fungovalo.
+Teď otestujte, jestli funguje připojení k centru pro zákazníka SUSE. Jak vidíte na následujícím snímku obrazovky v tomto případě ukázka fungovalo.
 
-![Test připojení ke službě Center zákazníků operačním systémem SUSE](./media/hana-installation/image7_test_connect.png)
+![Snímek obrazovky testování připojení k Centrum zákazníků SUSE](./media/hana-installation/image7_test_connect.png)
 
-Jednou SMT instalační program spustí, musíte zadat heslo databáze. Protože se jedná o novou instalaci, budete muset definovat toto heslo, jak je znázorněno v další grafiky.
+Po spuštění instalace SMT, zadejte heslo databáze. Protože se jedná o novou instalaci, byste měli definovat toto heslo, jak je znázorněno na následujícím snímku obrazovky.
 
-![Definujte heslo pro databázi](./media/hana-installation/image8_define_db_passwd.PNG)
+![Snímek obrazovky definování heslo pro databázi](./media/hana-installation/image8_define_db_passwd.PNG)
 
-Další interakce, které máte je, když se vytvoří certifikát. Projděte si dialogového okna, jak je ukázáno dále a pokračovat v kroku.
+Dalším krokem je vytvoření certifikátu.
 
-![Vytvoření certifikátu pro SMT server](./media/hana-installation/image9_certificate_creation.PNG)
+![Snímek obrazovky vytvoření certifikátu pro SMT server](./media/hana-installation/image9_certificate_creation.PNG)
 
-Může existovat několik minut stráví v kroku "Spustit kontrola synchronizace" na konci konfigurace. Po instalaci a konfiguraci serveru SMT, měli byste najít adresář úložiště v rámci přípojný bod /srv/www/htdocs/plus některé podadresářích v úložišti. 
+Na konci konfigurace může trvat několik minut, než spustíte kontrolu synchronizace. Po instalaci a konfiguraci serveru SMT, měli byste najít adresář úložiště v rámci přípojný bod /srv/www/htdocs /. Existují také některé podadresářích v úložišti. 
 
 Restartujte SMT server a souvisejících služeb pomocí následujících příkazů.
 
@@ -108,52 +110,50 @@ systemctl restart smt.service
 systemctl restart apache2
 ```
 
-## <a name="download-of-packages-onto-smt-server"></a>Stažení balíčků na serveru SMT
+## <a name="download-packages-onto-smt-server"></a>Stáhnout balíčky do serveru SMT
 
-Po restartují se všechny služby, vyberte ve správě SMT pomocí Yast odpovídající balíčky. Výběr balíčku závisí na image operačního systému serveru velká Instance HANA a ne na SLES verze nebo verze serverem SMT virtuálního počítače. Níže je uveden příklad výběr obrazovky.
+Po restartují se všechny služby, vyberte odpovídající balíčky ve správě SMT pomocí YAST. Výběr balíčku závisí na bitovou kopii operačního systému serveru velká Instance HANA. Výběr balíčku nezávisí na SLES verzi nebo verzi virtuálního počítače spuštěného SMT serveru. Následující snímek obrazovky ukazuje příklad na obrazovku pro výběr.
 
-![Vybrat balíčky](./media/hana-installation/image10_select_packages.PNG)
+![Snímek obrazovky s výběrem balíčky](./media/hana-installation/image10_select_packages.PNG)
 
-Jakmile budete hotovi s výběrem balíčku, musíte spustit počáteční kopii výběr balíčků SMT serveru, který nastavíte. Tato kopie se aktivuje v prostředí shell pomocí příkazu smt – zrcadlení jak je znázorněno níže
+Pak můžete začněte počáteční kopii výběr balíčků SMT serveru, který nastavíte. Tato kopie se aktivuje v prostředí s použitím příkazu smt – zrcadlení.
 
+![Snímek obrazovky stahování balíčků SMT server](./media/hana-installation/image11_download_packages.PNG)
 
-![Stáhnout balíčky SMT server](./media/hana-installation/image11_download_packages.PNG)
-
-Jak vidíte výše, by se do adresáře vytvořené v rámci přípojný bod /srv/www/htdocs zkopíruje balíčky. Tento proces může trvat nějakou dobu. Závisí na počet balíčků, které vyberete, může trvat až jedné hodiny nebo i déle.
-Když tento proces dokončí, budete potřebovat přesunout SMT instalace klienta. 
+Balíčky by se zkopíruje do adresáře vytvořené v rámci přípojný bod /srv/www/htdocs. Tento proces může trvat hodinu i déle v závislosti na tom, kolik balíčky, které jste vybrali. Když tento proces dokončí, přesune SMT instalace klienta. 
 
 ## <a name="set-up-the-smt-client-on-hana-large-instance-units"></a>Nastavení klienta SMT u jednotek pro velké Instance HANA
 
-Klientů v tomto případě jsou jednotky velká Instance HANA. Nastavení serveru SMT kopírovat skript clientSetup4SMT.sh připojení k virtuálnímu počítači Azure. Kopii, která skript, který přes jednotkou velká Instance HANA jste se chcete připojit k serveru SMT. Spuštění skriptu s parametrem -h a pojmenujte ji jako parametr SMT serveru. V tomto příkladu smtserver.
+Klient nebo klienty v tomto případě jsou jednotky velká Instance HANA. Nastavení serveru SMT kopírovat skript clientSetup4SMT.sh do virtuálních počítačů Azure. Kopii, která skript, který přes jednotkou velká Instance HANA jste se chcete připojit k serveru SMT. Spuštění skriptu s parametrem -h a zadejte název serveru SMT jako parametr. V tomto příkladu je název *smtserver*.
 
-![Konfigurace klienta SMT](./media/hana-installation/image12_configure_client.PNG)
+![Snímek obrazovky konfigurace SMT klienta](./media/hana-installation/image12_configure_client.PNG)
 
-Mohou existovat scénáře, kde načíst certifikát ze serveru klientovi bylo úspěšné, ale registrace nebyla úspěšná, protože je uvedeno níže.
+Je možné, že načíst certifikát ze serveru, klient bude úspěšné, ale registrace nezdaří, jak je znázorněno na následujícím snímku obrazovky.
 
-![Neúspěšné registrace klienta](./media/hana-installation/image13_registration_failed.PNG)
+![Snímek obrazovky registrace klienta se nezdařilo](./media/hana-installation/image13_registration_failed.PNG)
 
-Pokud registrace se nezdařila, přečtěte si tento [SUSE podporují dokumentu](https://www.suse.com/de-de/support/kb/doc/?id=7006024) a proveďte kroky popsané existuje.
+Pokud registrace nepovede, přečtěte si téma [SUSE podporují dokumentu](https://www.suse.com/de-de/support/kb/doc/?id=7006024), a spusťte postupu existuje.
 
 > [!IMPORTANT] 
-> Jako název serveru budete muset zadat název virtuálního počítače v tomto případu smtserver bez plně kvalifikovaný název domény. Pouze název funguje virtuálního počítače. 
+> Název serveru, zadejte název virtuálního počítače (v tomto případě *smtserver*), aniž by plně kvalifikovaný název domény. 
 
-Po provedení těchto kroků je potřeba spuštěním následujícího příkazu na jednotce velká Instance HANA
+Po dokončení těchto kroků, spusťte následující příkaz na jednotce velká Instance HANA:
 
 ```
 SUSEConnect –cleanup
 ```
 
 > [!Note] 
-> V našich testech jsme museli vždy počkejte pár minut po provedení tohoto kroku. ClientSetup4SMT.sh hned po nápravných opatření popsané v článku SUSE skončilo s zprávy, že certifikát nebude platný ještě. Čeká se obvykle 5 až 10 minut a provádění clientSetup4SMT.sh skončila v konfiguraci úspěšné klienta.
+> Počkejte pár minut po provedení tohoto kroku. Pokud spustíte clientSetup4SMT.sh okamžitě, může se objevit chyba.
 
-Pokud jste narazili na problém, který je potřebný k opravě podle kroků v článku SUSE, budete muset restartovat clientSetup4SMT.sh na jednotce velká Instance HANA znovu. Nyní ji by měl úspěšně dokončit jak je znázorněno níže.
+Pokud narazíte na problém, který je potřeba opravit, podle kroků v článku SUSE, restartujte clientSetup4SMT.sh na jednotce velká Instance HANA. Teď by měl proběhnout úspěšně.
 
-![Úspěšná registrace klienta](./media/hana-installation/image14_finish_client_config.PNG)
+![Snímek obrazovky úspěšné registrace klienta](./media/hana-installation/image14_finish_client_config.PNG)
 
-Pro tento krok nakonfigurovat klienta SMT jednotky velká Instance HANA a připojit se SMT serverem, který jste nainstalovali ve virtuálním počítači Azure. Pro instalaci oprav operačního systému na velkých instancích HANA nebo nainstalovat další balíčky můžete využít nyní "zypperu nahoru" nebo "zypperu v". Předpokládá se, že pouze můžete získat opravy, které jste stáhli dříve na serveru SMT.
+Můžete nakonfigurovat klienta SMT velká Instance HANA jednotky pro připojení k serveru SMT, který jste nainstalovali ve virtuálním počítači Azure. Nyní můžete chtít nainstalovat aktualizace operačního systému na velkých instancích HANA "zypperu nahoru" nebo "zypperu v", nebo nainstalovat další balíčky. Můžete získat jenom aktualizace, které jste stáhli dříve na SMT serveru.
 
-**Další kroky**
-- Přečtěte si [instalace HANA na HLI](hana-example-installation.md).
+## <a name="next-steps"></a>Další postup
+- [Instalace HANA na HLI](hana-example-installation.md).
 
 
 

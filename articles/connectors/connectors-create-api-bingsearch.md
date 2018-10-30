@@ -1,6 +1,6 @@
 ---
-title: Připojení k Bingu vyhledávání - Azure Logic Apps | Microsoft Docs
-description: Hledání zpráv pomocí rozhraní API REST vyhledávání v Bingu a Azure Logic Apps
+title: Připojení k Bingu pro vyhledávání – Azure Logic Apps | Dokumentace Microsoftu
+description: Hledání zpráv pomocí REST API pro vyhledávání Bingu a Azure Logic Apps
 author: ecfan
 manager: jeconnoc
 ms.author: estfan
@@ -11,147 +11,147 @@ services: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
-ms.openlocfilehash: 8ac67f9df0e5baccc668c2aeb70f65d96e574df5
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: 9997f27f360f84ff3cd185d7c12c45519513d82b
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37021281"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50233085"
 ---
-# <a name="find-news-with-bing-search-and-azure-logic-apps"></a>Hledání zpráv s Bing vyhledávání a Azure Logic Apps 
+# <a name="find-news-with-bing-search-and-azure-logic-apps"></a>Hledání zpráv pomocí Bingu pro vyhledávání a Azure Logic Apps 
 
-Tento článek ukazuje, jak můžete najít příspěvky, videa a jiné položky prostřednictvím Bing vyhledávání z v rámci aplikace logiky s konektorem služby Bing vyhledávání. Tímto způsobem můžete vytvořit aplikace logiky, které automatizují úlohy a pracovní postupy pro zpracování výsledky hledání a ujistěte se, tyto položky k dispozici pro další akce. 
+Tento článek popisuje, jak můžete najít zprávy, videa a dalších položek prostřednictvím Bingu pro vyhledávání z uvnitř aplikace logiky s konektorem Bingu pro vyhledávání. Tímto způsobem můžete vytvořit aplikace logiky pro automatizaci úloh a pracovních postupů pro zpracování výsledky hledání a nastavte tyto položky k dispozici pro další akce. 
 
-Můžete například najít příspěvků na základě kritérií vyhledávání a mít post ty položky, jako tweetů ve vaší služby Twitter feed služby Twitter.
+Můžete například najít příspěvků na základě kritérií vyhledávání a mít Twitter publikovat tyto položky jako feed tweetů na Twitteru.
 
-Pokud nemáte předplatné Azure, <a href="https://azure.microsoft.com/free/" target="_blank">zaregistrujte si bezplatný účet Azure</a>. Pokud jste nové aplikace logiky, přečtěte si [co je Azure Logic Apps](../logic-apps/logic-apps-overview.md) a [rychlý start: vytvoření první aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
-Technické informace specifické pro konektor najdete v tématu <a href="https://docs.microsoft.com/connectors/bingsearch/" target="blank">Bing vyhledávání konektor odkaz</a>.
+Pokud nemáte předplatné Azure, <a href="https://azure.microsoft.com/free/" target="_blank">zaregistrujte si bezplatný účet Azure</a>. Pokud se službou logic Apps teprve začínáte, přečtěte si [co je Azure Logic Apps](../logic-apps/logic-apps-overview.md) a [rychlý start: vytvoření první aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+Technické informace specifické pro konektor najdete v tématu <a href="https://docs.microsoft.com/connectors/bingsearch/" target="blank">referenční informace ke konektorům vyhledávání Bingu</a>.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* A [účet kognitivní Services](../cognitive-services/cognitive-services-apis-create-account.md)
+* A [účtu služeb Cognitive Services](../cognitive-services/cognitive-services-apis-create-account.md)
 
-* A [klíč rozhraní API služby Bing Search](https://azure.microsoft.com/try/cognitive-services/?api=bing-news-search-api), který zajišťuje přístup z aplikace logiky k rozhraní API pro vyhledávání Bingu 
+* A [klíč rozhraní API Bingu pro vyhledávání](https://azure.microsoft.com/try/cognitive-services/?api=bing-news-search-api), který zajišťuje přístup z aplikace logiky k rozhraní API pro vyhledávání Bingu 
 
-* Aplikace logiky, kde chcete získat přístup vašeho centra událostí. Pokud chcete spustit aplikaci logiky s aktivační událost Bing vyhledávání, musíte [aplikace logiky prázdné](../logic-apps/quickstart-create-first-logic-app-workflow.md). 
+* Aplikace logiky, ve které chcete přístup k Centru událostí. Spuštění aplikace logiky s triggerem Bingu pro vyhledávání, je nutné [prázdné aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md). 
 
 <a name="add-trigger"></a>
 
-## <a name="add-a-bing-search-trigger"></a>Přidat aktivační událost Bing vyhledávání
+## <a name="add-a-bing-search-trigger"></a>Přidání triggeru vyhledávání Bingu
 
-V Azure Logic Apps, musí začínat každou aplikaci logiky [aktivační událost](../logic-apps/logic-apps-overview.md#logic-app-concepts), která se stane, aktivuje se při určité události, nebo když je splněna určitá podmínka. Pokaždé, když aktivační událost je aktivována, modul Logic Apps vytvoří instanci aplikace logiky a spuštění pracovního postupu vaší aplikace.
+V Azure Logic Apps, musí začínat každá aplikace logiky [aktivační událost](../logic-apps/logic-apps-overview.md#logic-app-concepts), který se aktivuje při určité události nebo když je splněna konkrétní podmínka. Pokaždé, když se trigger aktivuje, modul Logic Apps vytvoří instanci aplikace logiky a spustí pracovní postup vaší aplikace.
 
-1. V portálu Azure nebo v sadě Visual Studio vytvořte prázdnou logiku aplikace, která otevře Návrhář aplikace logiky. Tento příklad používá portál Azure.
+1. Webu Azure portal nebo Visual Studio vytvořte prázdné aplikace logiky, otevře se návrhář aplikace logiky. Tento příklad používá na webu Azure portal.
 
-2. Do vyhledávacího pole zadejte "Vyhledat Bing" jako filtr. Ze seznamu aktivační události vyberte aktivační události, které chcete. 
+2. Do vyhledávacího pole zadejte jako filtr "Vyhledávání Bingu". Ze seznamu triggerů vyberte trigger, který chcete. 
 
-   Tento příklad používá této aktivační události: **vyhledávání Bing - na nový článek zprávy**
+   Tento příklad používá tento trigger: **vyhledávání Bingu – na nový příspěvek**
 
-   ![Najít aktivační událost Bing vyhledávání](./media/connectors-create-api-bing-search/add-trigger.png)
+   ![Najděte aktivační událost pro vyhledávání Bingu](./media/connectors-create-api-bing-search/add-trigger.png)
 
-3. Pokud se zobrazí výzva k podrobnosti připojení [vytvořit připojení k vyhledávání Bing nyní](#create-connection). Nebo, pokud připojení již existuje, zadejte informace potřebné pro aktivační událost.
+3. Pokud se zobrazí výzva k připojení podrobnosti [vytvořit připojení k Bingu pro vyhledávání nyní](#create-connection). Nebo, pokud už připojení existuje, zadejte informace potřebné pro aktivační událost.
 
-   V tomto příkladu zadejte kritéria pro zobrazení odpovídající články s příspěvky Bing vyhledávání.
+   V tomto příkladu zadejte kritéria pro vrácení odpovídající články o novinkách z Bingu pro vyhledávání.
 
    | Vlastnost | Požaduje se | Hodnota | Popis | 
    |----------|----------|-------|-------------| 
-   | Vyhledávací dotaz | Ano | <*hledaná slova*> | Zadejte hledaná klíčová slova, kterou chcete použít. |
+   | Vyhledávací dotaz | Ano | <*hledaná slova*> | Zadejte hledaná klíčová slova, které chcete použít. |
    | Trh | Ano | <*Národní prostředí*> | Hledání národní prostředí. Výchozí hodnota je "en US", ale můžete vybrat jinou hodnotu. | 
-   | Bezpečné vyhledávání | Ano | <*úrovně vyhledávání*> | Úroveň filtru pro vyloučení obsah pro dospělé. Výchozí hodnota je "Střední", ale můžete vybrat jinou úroveň. | 
+   | Bezpečné vyhledávání | Ano | <*úroveň hledání*> | Úroveň filtru pro vyloučení obsah pro dospělé. Výchozí hodnota je "Střední", ale vyberte jinou úroveň. | 
    | Počet | Ne | <*počet výsledků*> | Vrátí zadaný počet výsledků. Výchozí hodnota je 20, ale můžete zadat jinou hodnotu. Skutečný počet vrácených výsledků může být nižší než zadané číslo. | 
-   | Posun | Ne | <*Skip – hodnota*> | Počet výsledků tak, aby přeskočil před vrácením výsledky | 
+   | Posun | Ne | <*Hodnota vynechání*> | Počet výsledků, chcete-li přeskočit před vrácením výsledky | 
    ||||| 
 
    Příklad:
 
-   ![Nastavit aktivační události](./media/connectors-create-api-bing-search/bing-search-trigger.png)
+   ![Nastavení aktivační události](./media/connectors-create-api-bing-search/bing-search-trigger.png)
 
-4. Vyberte interval a četnost pro požadovanou četnost aktivační událost zkontrolujte výsledky.
+4. Vyberte interval a frekvenci jak často chcete, aby aktivační událost si zkontrolujte výsledky.
 
-5. Vyberte, když jste hotovi, na panelu nástrojů návrháře **Uložit**. 
+5. Jakmile budete hotovi, na panelu nástrojů návrháře zvolte **Uložit**. 
 
-6. Teď pokračujte v přidávání jednoho nebo více akcí do aplikace logiky pro úlohy, které chcete provést ve výsledcích aktivační události.
+6. Teď pokračujte v přidávání jednu nebo více akcí do aplikace logiky pro úlohy, které chcete provést s výsledky aktivační události.
 
 <a name="add-action"></a>
 
-## <a name="add-a-bing-search-action"></a>Přidat akci Bing vyhledávání
+## <a name="add-a-bing-search-action"></a>Přidání akce vyhledávání Bingu
 
-V Azure Logic Apps [akce](../logic-apps/logic-apps-overview.md#logic-app-concepts) je krok ve svém pracovním postupu, který následuje aktivační události nebo jiné akce. V tomto příkladu aplikace logiky začíná Bing vyhledávání aktivační událost, která vrátí články s příspěvky odpovídající zadaným kritériím. 
+V Azure Logic Apps [akce](../logic-apps/logic-apps-overview.md#logic-app-concepts) je krok v pracovním postupu, který následuje aktivační události nebo jiné akce. V tomto příkladu aplikace logiky začíná triggerem Bingu pro vyhledávání, která vrací články o novinkách odpovídající zadaným kritériím. 
 
-1. V portálu Azure nebo Visual Studio otevřete aplikaci logiky v návrháři aplikace logiky. Tento příklad používá portál Azure.
+1. Webu Azure portal nebo Visual Studio otevřete aplikaci logiky v návrháři aplikace logiky. Tento příklad používá na webu Azure portal.
 
-2. V části o aktivační události nebo akce, zvolte **nový krok** > **přidat akci**.
+2. V části triggeru nebo akce, zvolte **nový krok** > **přidat akci**.
 
-   Tento příklad používá této aktivační události: **vyhledávání Bing - na nový článek zprávy**
+   Tento příklad používá tento trigger: **vyhledávání Bingu – na nový příspěvek**
 
-   ![Akce pro přidání](./media/connectors-create-api-bing-search/add-action.png)
+   ![Přidání akce](./media/connectors-create-api-bing-search/add-action.png)
 
-   A přidejte akci mezi existující kroky, přesuňte ukazatel myši nad připojování šipkou. 
-   Vyberte znaménko plus (**+**), se zobrazí a potom vyberte **přidat akci**.
+   Přidání akce mezi stávající kroky, najeďte myší na připojení šipku. 
+   Vyberte znaménko plus (**+**), který se zobrazí a klikněte na tlačítko **přidat akci**.
 
-3. Do vyhledávacího pole zadejte "Vyhledat Bing" jako filtr.
-Ze seznamu Akce vyberte akci, kterou chcete.
+3. Do vyhledávacího pole zadejte jako filtr "Vyhledávání Bingu".
+Ze seznamu akcí vyberte požadovanou akci.
 
-   Tento příklad používá tuto akci: **Bing vyhledávání - seznamu zprávy dotazu**
+   Tento příklad používá tuto akci: **vyhledávání Bingu – seznam zpráv podle dotazu**
 
-   ![Najít akce Bing vyhledávání](./media/connectors-create-api-bing-search/bing-search-select-action.png)
+   ![Najít akce vyhledávání Bingu](./media/connectors-create-api-bing-search/bing-search-select-action.png)
 
-4. Pokud se zobrazí výzva k podrobnosti připojení [vytvořit připojení k vyhledávání Bing nyní](#create-connection). Nebo, pokud připojení již existuje, zadejte informace potřebné pro akci. 
+4. Pokud se zobrazí výzva k připojení podrobnosti [vytvořit připojení k Bingu pro vyhledávání nyní](#create-connection). Nebo pokud už připojení existuje, uveďte potřebné informace pro akci. 
 
-   V tomto příkladu zadejte kritéria pro vrácení podmnožinu výsledků aktivační události.
+   V tomto příkladu zadejte kritéria pro vrácení podmnožiny výsledků aktivační události.
 
    | Vlastnost | Požaduje se | Hodnota | Popis | 
    |----------|----------|-------|-------------| 
-   | Vyhledávací dotaz | Ano | <*hledaný výraz*> | Zadejte výraz pro dotazování na výsledky aktivační události. Můžete vybrat z pole v seznamu dynamického obsahu nebo vytvořit výraz s Tvůrce. |
+   | Vyhledávací dotaz | Ano | <*hledaný výraz*> | Zadejte výraz pro dotazování na výsledky aktivační události. Můžete vybrat z polí v seznamu dynamického obsahu nebo vytvořte výraz s Tvůrce výrazů. |
    | Trh | Ano | <*Národní prostředí*> | Hledání národní prostředí. Výchozí hodnota je "en US", ale můžete vybrat jinou hodnotu. | 
-   | Bezpečné vyhledávání | Ano | <*úrovně vyhledávání*> | Úroveň filtru pro vyloučení obsah pro dospělé. Výchozí hodnota je "Střední", ale můžete vybrat jinou úroveň. | 
+   | Bezpečné vyhledávání | Ano | <*úroveň hledání*> | Úroveň filtru pro vyloučení obsah pro dospělé. Výchozí hodnota je "Střední", ale vyberte jinou úroveň. | 
    | Počet | Ne | <*počet výsledků*> | Vrátí zadaný počet výsledků. Výchozí hodnota je 20, ale můžete zadat jinou hodnotu. Skutečný počet vrácených výsledků může být nižší než zadané číslo. | 
-   | Posun | Ne | <*Skip – hodnota*> | Počet výsledků tak, aby přeskočil před vrácením výsledky | 
+   | Posun | Ne | <*Hodnota vynechání*> | Počet výsledků, chcete-li přeskočit před vrácením výsledky | 
    ||||| 
 
-   Předpokládejme například, že chcete těchto výsledků, jejichž název kategorie zahrnuje slovo "technické". 
+   Předpokládejme například, že chcete tyto výsledky, jehož název kategorie obsahuje slovo "tech". 
    
-   1. Kliknutím na tlačítko ve **vyhledávací dotaz** pole, se zobrazí v seznamu dynamického obsahu. 
-   Z tohoto seznamu vyberte **výraz** , zobrazí se Tvůrce. 
+   1. Klepněte **vyhledávací dotaz** pole, zobrazí se seznam dynamického obsahu. 
+   Z tohoto seznamu, zvolte **výraz** tak objeví Tvůrce výrazů. 
 
-      ![Aktivační událost Bing vyhledávání](./media/connectors-create-api-bing-search/bing-search-action.png)
+      ![Aktivační událost pro vyhledávání Bingu](./media/connectors-create-api-bing-search/bing-search-action.png)
 
-      Nyní můžete začít vytváření výraz.
+      Teď můžete začít vytvářet výrazu.
 
-   2. Vyberte ze seznamu funkcí **Metoda contains()** funkce, které se potom zobrazí v poli výrazu. Klikněte na tlačítko **dynamický obsah** , aby se znovu zobrazí seznam polí, ale ujistěte se, že kurzor zůstává v závorkách.
+   2. V seznamu funkcí, vyberte **Metoda contains()** funkce, která se pak objeví v poli výraz. Klikněte na tlačítko **dynamický obsah** tak, aby se znovu zobrazí v seznamu polí, ale ujistěte se, že ukazatel myši zůstane v závorkách.
 
-      ![Vyberte funkci](./media/connectors-create-api-bing-search/expression-select-function.png)
+      ![Vyberte funkce](./media/connectors-create-api-bing-search/expression-select-function.png)
 
-   3. Ze seznamu polí vyberte **kategorie**, která převede na parametr. 
-   Přidat čárkou po první parametr a za čárkou, přidat slovo: `'tech'` 
+   3. V seznamu polí vyberte **kategorie**, která převede na parametr. 
+   Přidejte čárku po první parametr a za čárkou, přidejte toto slovo: `'tech'` 
 
-      ![Vyberte pole](./media/connectors-create-api-bing-search/expression-select-field.png)
+      ![Vybrat pole](./media/connectors-create-api-bing-search/expression-select-field.png)
    
-   4. Až budete hotoví, zvolte **OK**.
+   4. Jakmile budete hotovi, zvolte **OK**.
 
-      Výraz nyní se zobrazí v **vyhledávací dotaz** pole v tomto formátu:
+      Výraz se teď zobrazí v **vyhledávací dotaz** pole v tomto formátu:
 
       ![Dokončení výrazu](./media/connectors-create-api-bing-search/resolved-expression.png)
 
-      Tento výraz zobrazí v zobrazení kódu, se v tomto formátu:
+      V zobrazení kódu zobrazí se tento výraz v následujícím formátu:
 
       `"@{contains(triggerBody()?['category'],'tech')}"`
 
-5. Vyberte, když jste hotovi, na panelu nástrojů návrháře **Uložit**.
+5. Jakmile budete hotovi, na panelu nástrojů návrháře zvolte **Uložit**.
 
 <a name="create-connection"></a>
 
-## <a name="connect-to-bing-search"></a>Připojení k Bingu vyhledávání
+## <a name="connect-to-bing-search"></a>Připojení k Bingu pro vyhledávání
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)] 
 
-1. Když se zobrazí výzva k informace o připojení, uveďte následující informace:
+1. Po zobrazení výzvy pro informace o připojení, uveďte následující údaje:
 
    | Vlastnost | Požaduje se | Hodnota | Popis | 
    |----------|----------|-------|-------------| 
-   | Název připojení | Ano | <*Název připojení*> | Název, který chcete vytvořit pro připojení k |
-   | Verze rozhraní API | Ano | <*Verze rozhraní API.*> | Verze rozhraní API služby Bing vyhledávání je standardně nastavena na aktuální verzi. V případě potřeby můžete vybrat starší verze. | 
-   | Klíč rozhraní API | Ano | <*Klíč rozhraní API*> | Klíč rozhraní API pro Bing vyhledávání, který jste získali dříve. Pokud nemáte klíč, vaše [klíč rozhraní API nyní](https://azure.microsoft.com/try/cognitive-services/?api=bing-news-search-api). |  
+   | Název připojení | Ano | <*Název připojení*> | Název pro vytvoření připojení |
+   | Verze rozhraní API | Ano | <*Verze API-version*> | Ve výchozím nastavení je nastavit verzi rozhraní API Bingu pro vyhledávání na aktuální verzi. Podle potřeby můžete vybrat ze starší verze. | 
+   | Klíč rozhraní API | Ano | <*Klíč rozhraní API*> | Klíč rozhraní API Bingu pro vyhledávání, které jste získali dříve. Pokud nemáte klíč, vaše [klíč rozhraní API teď](https://azure.microsoft.com/try/cognitive-services/?api=bing-news-search-api). |  
    |||||  
 
    Příklad:
@@ -162,12 +162,12 @@ Ze seznamu Akce vyberte akci, kterou chcete.
 
 ## <a name="connector-reference"></a>Referenční informace ke konektorům
 
-Technické podrobnosti, jako je například aktivačních událostí, akcí a omezení, jak je popsáno pomocí souboru Swagger konektoru, najdete v článku [stránka s referencemi k konektoru](/connectors/bingsearch/). 
+Technické podrobnosti, jako jsou triggery, akce a omezení, jak je popsáno v souboru Swagger konektoru, najdete v článku [konektoru referenční stránce](/connectors/bingsearch/). 
 
 ## <a name="get-support"></a>Získat podporu
 
 * Pokud máte dotazy, navštivte [fórum Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-* Pokud chcete zanechat své nápady na funkce nebo hlasovat, navštivte [web zpětné vazby od uživatelů Logic Apps](http://aka.ms/logicapps-wish).
+* Pokud chcete zanechat své nápady na funkce nebo hlasovat, navštivte [web zpětné vazby od uživatelů Logic Apps](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Další postup
 

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/19/2018
+ms.date: 10/29/2018
 ms.author: terrylan
-ms.openlocfilehash: 309dddcea1022d9f14c1d4492f5564f2a4ad3b6f
-ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
+ms.openlocfilehash: 69818fdb8124b9afa176ccd4dfd74cf0f2f4b346
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46498500"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50233799"
 ---
 # <a name="azure-network-security-overview"></a>Přehled zabezpečení sítě Azure
 
@@ -29,12 +29,15 @@ Tento článek popisuje některé z možností, které Azure nabízí v oblasti 
 
 * Sítě Azure
 * Řízení přístupu k síti
+* Brána Azure Firewall
 * Zabezpečené připojení vzdáleného přístupu a mezi různými místy
 * Dostupnost
 * Překlad adres
 * Architektura hraniční síti (DMZ)
-* Sledování a detekci hrozeb
 * Azure DDoS Protection
+* Branou Azure
+* Traffic Manager
+* Sledování a detekci hrozeb
 
 ## <a name="azure-networking"></a>Sítě Azure
 
@@ -126,6 +129,19 @@ Vaše požadavky na zabezpečení mohou například zahrnovat:
 
 Tyto funkce zabezpečení rozšířeného sítě můžete přistupovat pomocí Azure partnerského řešení. Najdete nejaktuálnější sítě partnerů Azure řešení zabezpečení přechodem [Azure Marketplace](https://azure.microsoft.com/marketplace/)a vyhledáním "zabezpečení" a "zabezpečení sítě."
 
+## <a name="azure-firewall"></a>Brána Azure Firewall
+
+Azure Firewall je spravovaná cloudová služba síťového zabezpečení, která chrání vaše prostředky ve virtuálních sítích Azure. Jde o plně stavovou bránu firewall poskytovanou jako služba s integrovanou vysokou dostupností a neomezenou cloudovou škálovatelností. Některé funkce:
+
+* Vysoká dostupnost
+* Škálovatelnosti cloudu
+* Pravidla filtrování plně kvalifikovaných názvů domén aplikací
+* Pravidla filtrování síťového provozu
+
+Další informace:
+
+* [Přehled brány Firewall služby Azure](../firewall/overview.md)
+
 ## <a name="secure-remote-access-and-cross-premises-connectivity"></a>Zabezpečené připojení vzdáleného přístupu a mezi různými místy
 
 Nastavení, konfiguraci a správu vašich prostředků Azure je nutné provést vzdáleně. Kromě toho, kterou chcete nasadit [hybridní IT](http://social.technet.microsoft.com/wiki/contents/articles/18120.hybrid-cloud-infrastructure-design-considerations.aspx) řešení, která mají komponenty místní a ve veřejném cloudu Azure. Tyto scénáře vyžadují zabezpečený vzdálený přístup.
@@ -139,9 +155,15 @@ Sítě Azure podporuje následující scénáře zabezpečený vzdálený přís
 
 ### <a name="connect-individual-workstations-to-a-virtual-network"></a>Jednotlivé pracovní stanice se připojit k virtuální síti
 
-Můžete chtít povolit samostatné vývojáře nebo pracovníci operace pro správu virtuálních počítačů a služeb v Azure. Řekněme například, že potřebujete přístup k virtuálnímu počítači ve virtuální síti. Ale zásady zabezpečení protokolu RDP nebo SSH vzdáleného přístupu k jednotlivým virtuální počítačům nepovoluje. V takovém případě můžete použít připojení VPN typu point-to-site.
+Můžete chtít povolit samostatné vývojáře nebo pracovníci operace pro správu virtuálních počítačů a služeb v Azure. Řekněme například, že potřebujete přístup k virtuálnímu počítači ve virtuální síti. Ale zásady zabezpečení protokolu RDP nebo SSH vzdáleného přístupu k jednotlivým virtuální počítačům nepovoluje. V takovém případě můžete použít [point-to-site VPN](../vpn-gateway/point-to-site-about.md) připojení.
 
-Připojení point-to-site VPN používá [SSTP VPN](https://technet.microsoft.com/library/cc731352.aspx) protokol, který se vám umožní nastavit soukromé a bezpečné připojení mezi uživatelem a virtuální sítě. Po vytvoření připojení VPN, uživatel může pomocí protokolu RDP nebo SSH přes propojení sítě VPN do libovolného virtuálního počítače ve virtuální síti. (Předpokladem je, že uživatel může ověřit a autorizaci.)
+Připojení point-to-site VPN umožňuje nastavit soukromé a bezpečné připojení mezi uživatelem a virtuální sítě. Po vytvoření připojení VPN, uživatel může pomocí protokolu RDP nebo SSH přes propojení sítě VPN do libovolného virtuálního počítače ve virtuální síti. (Předpokladem je, že uživatel může ověřit a autorizaci.) Podporuje sítě Point-to-site VPN:
+
+* Zabezpečte SSTP Socket Tunneling Protocol (), speciální protokol VPN založený na protokolu SSL. Řešení typu VPN protokolu SSL umožňuje pronikat branami firewall, protože většina bran firewall otevírá port TCP 443, který používá protokol SSL. SSTP je podporována pouze na zařízeních s Windows. Azure podporuje všechny verze Windows, které mají SSTP (Windows 7 a novější).
+
+* IKEv2 VPN, řešení IPsec VPN založené na standardech. IKEv2 VPN je možné použít k připojení ze zařízení se systémem Mac (OSX verze 10.11 a vyšší).
+
+* [OpenVPN](https://azure.microsoft.com/updates/openvpn-support-for-azure-vpn-gateways/)
 
 Další informace:
 
@@ -165,11 +187,13 @@ Připojení VPN typu Point-to-site a site-to-site jsou platné pro povolení př
 * Připojení VPN typu přesuňte data přes internet. Tato třída zveřejňuje tato připojení na potenciální problémy se zabezpečením související s přesunem dat přes veřejnou síť. Kromě toho nemůže být zaručena spolehlivosti a dostupnosti pro připojení k Internetu.
 * Připojení k síti VPN do virtuální sítě, nemusí mít šířky pásma u některých aplikací a účely, jako jsou mimo maximální na přibližně 200 MB/s.
 
-Organizace, které obvykle potřebují nejvyšší úroveň zabezpečení a dostupnosti pro jejich připojení mezi různými místy pomocí vyhrazené linky WAN pro připojení k vzdálené lokality. Azure poskytuje možnost používat vyhrazené sítě WAN odkaz, který můžete použít k připojení místní sítě k virtuální síti. Azure ExpressRoute umožňuje to.
+Organizace, které obvykle potřebují nejvyšší úroveň zabezpečení a dostupnosti pro jejich připojení mezi různými místy pomocí vyhrazené linky WAN pro připojení k vzdálené lokality. Azure poskytuje možnost používat vyhrazené sítě WAN odkaz, který můžete použít k připojení místní sítě k virtuální síti. Azure ExpressRoute, globální dosah s přímým přístupem a Express route Express route povolit.
 
 Další informace:
 
 * [Technický přehled ExpressRoute](../expressroute/expressroute-introduction.md)
+* [ExpressRoute s přímým přístupem](../expressroute/expressroute-erdirect-about.md)
+* [Express route globálním dosahem](..//expressroute/expressroute-global-reach.md)
 
 ### <a name="connect-virtual-networks-to-each-other"></a>Propojení virtuálních sítí mezi sebou
 
@@ -287,6 +311,46 @@ Další informace:
 
 * [Cloudové služby společnosti Microsoft a zabezpečení sítě](../best-practices-network-security.md)
 
+## <a name="azure-ddos-protection"></a>Azure DDoS Protection
+
+Distribuované útoky na dostupnost služeb (DDoS) jsou některé z největších obavy týkající se dostupnosti a zabezpečení zákazníci, které se pohybují své aplikace do cloudu. S útoky DDoS pokusí vyčerpání aplikační prostředky, čímž aplikaci není k dispozici pro oprávněné uživatele. Útoky DDoS můžete cílit na libovolný koncový bod, který je veřejně dostupný prostřednictvím Internetu.
+Microsoft poskytuje ochranu před útoky DDoS říká **základní** jako součást platformy Azure. Toto je zdarma a zahrnuje vždy na monitorování a v reálném čase ke zmírnění běžných útoků úrovně sítě. Kromě ochrany před útoky DDoS protection je součástí **základní** můžete povolit **standardní** možnost. DDoS Protection standardní funkce patří:
+
+* **Integrace nativní platformy:** nativně integrované do Azure. Zahrnuje konfiguraci prostřednictvím webu Azure portal. Standardní před útoky DDoS Protection rozumí vašim prostředkům a konfiguraci prostředků.
+* **Ochrana na klíč:** zjednodušená konfigurace okamžitě chrání všechny prostředky ve virtuální síti jako standardní před útoky DDoS Protection je povolená. Vyžaduje se žádná definice zásahů nebo uživatele. Standardní před útoky DDoS Protection okamžitě a automaticky zmírní útok, jakmile se detekuje.
+* **Monitorování vždy provozu:** vzory provozu vaší aplikace jsou monitorovány 24 hodin denně, 7 dní v týdnu, hledá indikátory útoky DDoS. Omezení rizik provádí při překročení zásady ochrany.
+* **Sestavy omezení rizik útoků** sestavy omezení rizik útoků pomocí agregované sítě toku dat poskytují podrobné informace o útocích určenou pro vaše prostředky.
+* **Protokoly toku omezení rizik útoků** protokoly toku omezení rizik útoků ke kontrole zhoršení provozu povolit přesměrovaný přenos a další data útoku v téměř reálném čase během aktivního útoku DDoS.
+* **Adaptivní ladění:** provoz inteligentní profilace učí o provozu vaší aplikace v průběhu času a vybere a aktualizuje profil, který je nejvhodnější pro vaši službu. Profil, který upravuje provoz mění v průběhu času. Vrstvy 3 ochrany vrstvy 7: poskytuje ochranu před útoky DDoS plnohodnotných, při použití s firewallem webových aplikací.
+* **Škálování rozsáhlé omezení rizik:** přes 60 útoku různé typy můžete minimalizovat, globální kapacitou pro ochranu před největší známé útoky DDoS.
+* **Útokům metriky:** Summarized metriky z každého útoku jsou přístupné prostřednictvím služby Azure Monitor.
+* **Upozornění útoku:** oznámení se dají konfigurovat na spouštění a zastavování útoků a na dobu trvání útok, pomocí integrované útoku metrik. Upozornění integrovat do provozní softwaru, například Microsoft Azure Log Analytics, Splunk, Azure Storage, e-mailu a na webu Azure portal.
+* **Se zárukou nákladů:** přenosu dat a aplikací horizontální navýšení kapacity kredity pro dokument útoky DDoS.
+* **Před útoky DDoS rychlou odezvou** zákazníci s edicí Standard před útoky DDoS Protection teď mají přístup k týmu Rapid Response během aktivního útoku. Obsluhy DRR může pomoct s vyšetřování útoku, vlastní zmírnění rizik během útoku a analýzy po útoku.
+
+
+Další informace:
+
+* [Přehled služby Endpoint protection před útoky DDOS](../virtual-network/ddos-protection-overview.md)
+
+## <a name="azure-front-door"></a>Branou Azure
+
+Služba Azure branou vám umožňuje definovat, spravovat a monitorovat globální směrování webových přenosů. Optimalizuje směrování vašeho provozu pro zajištění nejlepšího výkonu a vysoké dostupnosti. Azure Front Door umožňuje vytvořit vlastní pravidla firewallu webových aplikací pro řízení přístupu za účelem ochrany úloh HTTP/HTTPS před zneužitím na základě klientských IP adres, kódů zemí a parametrů HTTP. Kromě toho branou také umožňuje vytvořit pravidla, která provozem škodlivých robotů zocelenou tady, snižování zátěže protokolu SSL a požadavku na HTTP/HTTPS, zpracování aplikační vrstvu.
+
+Přední dveře platformě, jako takové je chráněn Azure DDoS Protection na úrovni Basic. Z důvodu další ochrany je možné ve virtuálních sítích povolit službu Azure DDoS Protection Standard a pomocí automatického ladění a zmírnění chránit prostředky před útoky na vrstvě sítě (TCP/UDP). Reverzní proxy server vrstvy 7 je vstupní branou, umožňuje pouze webového provozu předávání zpátky end servery a jiné typy přenosů blokovat ve výchozím nastavení.
+
+Další informace:
+
+* Další informace o celé sady Azure přední dveře možnosti můžete zkontrolovat [branou Azure – přehled](../frontdoor/front-door-overview.md)
+
+## <a name="azure-traffic-manager"></a>Azure Traffic Manageru
+
+Azure Traffic Manager je nástroj pro vyrovnávání zatížení provozu na základě DNS, který umožňuje optimálně distribuovat provoz do služeb napříč globálními oblastmi Azure při zajištění vysoké dostupnosti a rychlosti odezvy. Traffic Manager pomocí DNS směruje požadavky klientů do nejvhodnějšího koncového bodu služby v závislosti na metodě směrování provozu a stavu koncových bodů. Koncový bod je jakákoli internetová služba hostovaná v rámci nebo mimo Azure. Traffic manager monitoruje koncové body a není směrovat provoz do žádné koncové body, které jsou k dispozici.
+
+Další informace:
+
+* [Přehled Azure Traffic Manageru](../traffic-manager/traffic-manager-overview.md)
+
 ## <a name="monitoring-and-threat-detection"></a>Sledování a detekci hrozeb
 
 Azure nabízí možnosti, které vám pomůžou v této oblasti klíče s včasnou detekci, monitorování a shromažďování a kontrola síťový provoz.
@@ -318,6 +382,14 @@ Další informace:
 
 * [Úvod do Azure Security Center](../security-center/security-center-intro.md)
 
+### <a name="virtual-network-tap"></a>VTAP (Virtual Network TAP)
+
+Virtuální síť Azure TAP (terminál přístupový bod) vám umožní průběžně stream vašeho virtuálního počítače síťový provoz do síťových paketů kolekcí nebo analytics nástroj. Kolekce nebo nástroj pro analýzu poskytuje partner síťové virtuální zařízení. Můžete použít stejné virtuální síti TAP prostředku k souhrnným přenosům z několika síťovými rozhraními v jednom nebo několika předplatných.
+
+Další informace:
+
+* [Klepněte na virtuální síť](../virtual-network/virtual-network-tap-overview.md)
+
 ### <a name="logging"></a>Protokolování
 
 Protokolování na úrovni sítě je klíčová funkce pro jakýkoli scénář zabezpečení sítě. V Azure můžete protokolovat informace získané pro skupiny Nsg k síťové úroveň protokolování informací. Pomocí protokolování NSG, získat informace z:
@@ -330,21 +402,3 @@ Můžete také použít [Microsoft Power BI](https://powerbi.microsoft.com/what-
 Další informace:
 
 * [Log Analytics pro skupiny zabezpečení sítě (Nsg)](../virtual-network/virtual-network-nsg-manage-log.md)
-
-## <a name="azure-ddos-protection"></a>Azure DDoS Protection
-
-Distribuované útoky na dostupnost služeb (DDoS) jsou některé z největších obavy týkající se dostupnosti a zabezpečení zákazníci, které se pohybují své aplikace do cloudu. S útoky DDoS pokusí vyčerpání aplikační prostředky, čímž aplikaci není k dispozici pro oprávněné uživatele. Útoky DDoS můžete cílit na libovolný koncový bod, který je veřejně dostupný prostřednictvím Internetu.
-Microsoft poskytuje ochranu před útoky DDoS říká **základní** jako součást platformy Azure. Toto je zdarma a zahrnuje vždy na monitorování a v reálném čase ke zmírnění běžných útoků úrovně sítě. Kromě ochrany před útoky DDoS protection je součástí **základní** můžete povolit **standardní** možnost. DDoS Protection standardní funkce patří:
-
-* **Integrace nativní platformy:** nativně integrované do Azure. Zahrnuje konfiguraci prostřednictvím webu Azure portal. Standardní před útoky DDoS Protection rozumí vašim prostředkům a konfiguraci prostředků.
-* **Ochrana na klíč:** zjednodušená konfigurace okamžitě chrání všechny prostředky ve virtuální síti jako standardní před útoky DDoS Protection je povolená. Vyžaduje se žádná definice zásahů nebo uživatele. Standardní před útoky DDoS Protection okamžitě a automaticky zmírní útok, jakmile se detekuje.
-* **Monitorování vždy provozu:** vzory provozu vaší aplikace jsou monitorovány 24 hodin denně, 7 dní v týdnu, hledá indikátory útoky DDoS. Omezení rizik provádí při překročení zásady ochrany.
-* **Adaptivní ladění:** provoz inteligentní profilace učí o provozu vaší aplikace v průběhu času a vybere a aktualizuje profil, který je nejvhodnější pro vaši službu. Profil, který upravuje provoz mění v průběhu času. Vrstvy 3 ochrany vrstvy 7: poskytuje ochranu před útoky DDoS plnohodnotných, při použití s firewallem webových aplikací.
-* **Škálování rozsáhlé omezení rizik:** přes 60 útoku různé typy můžete minimalizovat, globální kapacitou pro ochranu před největší známé útoky DDoS.
-* **Útokům metriky:** Summarized metriky z každého útoku jsou přístupné prostřednictvím služby Azure Monitor.
-* **Upozornění útoku:** oznámení se dají konfigurovat na spouštění a zastavování útoků a na dobu trvání útok, pomocí integrované útoku metrik. Upozornění integrovat do provozní softwaru, například Microsoft Azure Log Analytics, Splunk, Azure Storage, e-mailu a na webu Azure portal.
-* **Se zárukou nákladů:** přenosu dat a aplikací horizontální navýšení kapacity kredity pro dokument útoky DDoS.
-
-Další informace:
-
-* [Přehled služby Endpoint protection před útoky DDOS](../virtual-network/ddos-protection-overview.md)

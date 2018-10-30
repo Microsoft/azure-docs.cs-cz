@@ -1,6 +1,6 @@
 ---
 title: Instalace SAP HANA na systému SAP HANA v Azure (velké instance) | Dokumentace Microsoftu
-description: Postup instalace SAP HANA na systému SAP HANA v Azure (velká Instance).
+description: Postup instalace SAP HANA na systému SAP HANA v Azure (velké instance).
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermanndms
@@ -14,29 +14,29 @@ ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: dad088138fea2dd4fadc0cc9eed71245c32a8e0b
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 160cc4fb3ccdabfd76e228c447ad179b3616d195
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44162650"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50231096"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>Instalace a konfigurace SAP HANA (velké instance) v Azure
 
 Před čtením tohoto článku, seznamte se s [velkých instancích HANA běžných termínů](hana-know-terms.md) a [SKU velké instance HANA](hana-available-skus.md).
 
-Instalace SAP HANA je vaší odpovědností, a začnete aktivity po předání nové SAP Hana v Azure (velké instance) serveru. A poté, co máte navázat spojení mezi vaší virtuální sítě Azure a jednotek velká Instance HANA. 
+Instalace SAP HANA je vaší povinností. Instalace nové SAP HANA na Azure (velké instance) serveru po navázání připojení mezi vaší virtuální sítě Azure a jednotek velká Instance HANA, můžete začít. 
 
 > [!Note]
-> Podle zásad SAP musí provést instalace SAP HANA osobou certifikaci pro provedení instalace SAP HANA. Osoba, která uplyne zkoušku Certified přidružit technologie SAP, SAP HANA instalace certifikační zkoušku, nebo certifikací SAP systémový integrátor (SI).
+> Podle zásad SAP musí provést instalace SAP HANA osobou, který prošel zkoušku Certified přidružit technologie SAP, SAP HANA instalace certifikační zkoušky nebo která je certifikovaná systémový integrátor (SI).
 
-Zkontrolovat znovu, zejména při plánování instalace HANA 2.0 [SAP Support Poznámka #2235581 – SAP HANA: podporované operační systémy](https://launchpad.support.sap.com/#/notes/2235581/E) Pokud chcete mít jistotu, že operační systém podporuje jste se rozhodli nainstalovat verzi SAP HANA. Dobré si uvědomit, že má omezenější než pro HANA 1.0 nepodporuje operační systém podporovaný operační systém pro HANA 2.0. 
+Pokud plánujete nainstalovat HANA 2.0, naleznete v tématu [Poznámka SAP support #2235581 – SAP HANA: podporované operační systémy](https://launchpad.support.sap.com/#/notes/2235581/E) abyste měli jistotu, že operační systém podporuje verzi SAP HANA, který instalujete. Podporovaný operační systém pro HANA 2.0 je více omezující než podporovaný operační systém pro HANA 1.0. 
 
 > [!IMPORTANT] 
-> Typ II jednotek pouze SLES 12 SP2 operačního systému verze se v tuto chvíli nepodporuje. 
+> Pro typ II jednotky, aktuálně je podporována pouze verze operačního systému SLES 12 SP2. 
 
 Před zahájením instalace HANA, musíte ověřit následující:
-- [Ověření HLI jednotek](#validate-the-hana-large-instance-units)
+- [HLI jednotek](#validate-the-hana-large-instance-units)
 - [Konfigurace operačního systému](#operating-system)
 - [Konfigurace sítě](#networking)
 - [Konfigurace úložiště](#storage)
@@ -44,15 +44,21 @@ Před zahájením instalace HANA, musíte ověřit následující:
 
 ## <a name="validate-the-hana-large-instance-units"></a>Ověření jednotek velká Instance HANA
 
-Po obdržení velká Instance HANA jednotek od Microsoftu ověřit následující nastavení a upravit podle potřeby.
+Po obdržení velká Instance HANA jednotek od Microsoftu, ověřte následující nastavení a upravit podle potřeby.
 
-**První krok** po obdržení velká Instance HANA a mít zavedený přístup a připojení k instancím, je k registraci instance operačního systému u svého poskytovatele operačního systému. Tento krok zahrnuje registrace vašeho operačního systému SUSE Linux do instance SUSE SMT, které potřebujete k nasazení na virtuálním počítači v Azure. Velká Instance HANA jednotku můžete připojit k této instanci SMT (viz [jak server SMT instalační program operačního systému SUSE Linux](hana-setup-smt.md)). Nebo musí být zaregistrované pomocí Red Hat předplatné správce budete potřebovat pro připojení k váš operační systém Red Hat. Viz také poznámky v tomto [dokumentu](https://docs.microsoft.com/azure/virtual-machines/linux/sap-hana-overview-architecture?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Tento krok je taky potřeba mít možnost opravy operačního systému. Úloha, která je v rámci odpovědnosti zákazníka. Pro SUSE, vyhledejte si dokumentaci k instalaci a konfiguraci SMT [tady](https://www.suse.com/documentation/sles-12/book_smt/data/smt_installation.html).
+**První krok** po zobrazí velká Instance HANA a navázání přístupu a připojení k instancím, je k registraci instance operačního systému u svého poskytovatele operačního systému. Tento krok zahrnuje registrace vašeho operačního systému SUSE Linux do instance SUSE SMT, který je nasazen ve virtuálním počítači v Azure. 
 
-**Druhý krok** se kontroluje nové opravy a oprav konkrétní verze nebo verze operačního systému. Zkontrolujte, zda úroveň opravy velké instance HANA na nejnovější stav. Podle časování aktualizací operačního systému a změny do image, kterou můžete nasadit Microsoft, můžou nastat případy, kde nemusí být součástí nejnovější opravy. Proto je povinný krok po déle než jednu jednotku velká Instance HANA, zkontrolujte, zda opravy, které jsou relevantní pro zabezpečení, funkce, dostupnosti a výkonu byly mezitím vydané konkrétní dodavatel Linuxových a je potřeba použít.
+Velká Instance HANA jednotku můžete připojit k této instanci SMT. (Další informace najdete v tématu [jak nastavit SMT server operačním systémem SUSE Linux](hana-setup-smt.md)). Alternativně musí být zaregistrované pomocí Red Hat předplatné správce, které potřebujete pro připojení k váš operační systém Red Hat. Další informace najdete v části poznámky v [co je SAP HANA v Azure (velké instance)?](https://docs.microsoft.com/azure/virtual-machines/linux/sap-hana-overview-architecture?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
 
-**Třetí krok** je zkontrolovat důležité poznámky SAP pro instalaci a konfiguraci SAP HANA na konkrétní verzi/verze operačního systému. Kvůli změně doporučení nebo změny poznámky SAP nebo konfigurace, které jsou závislé na scénáře jednotlivé instalace Microsoft vždy nebudou moct mít procesor velká Instance HANA zcela nakonfigurovaný. Proto je nutné jako zákazník, přečtěte si poznámky SAP vztahující se k SAP HANA na svou přesnou verzi systému Linux. Také zkontrolujte konfigurace OS/verze nezbytné a použijte nastavení konfigurace tam, kde dosud neučinili.
+Tento krok je také je nutné pro použití dílčích oprav operačního systému, který zodpovídá za zákazníka. SUSE, najdete v dokumentaci k instalaci a konfiguraci SMT na této stránce o [SMT instalace](https://www.suse.com/documentation/sles-12/book_smt/data/smt_installation.html).
 
-V konkrétní, zkontrolujte následující parametry a nakonec upraveny tak, aby:
+**Druhý krok** se kontroluje nové opravy a oprav konkrétní verze nebo verze operačního systému. Ověřte, že úroveň opravy velké instance HANA ve nejnovější stav. Můžou nastat případy, ve kterém nejsou zahrnuté nejnovějších oprav. Po déle než jednu jednotku velká Instance HANA, je nutné zkontrolovat, jestli je potřeba použít opravy.
+
+**Třetí krok** je zkontrolovat důležité poznámky SAP pro instalaci a konfiguraci SAP HANA na konkrétní verzi/verze operačního systému. Z důvodu mění, doporučení nebo změny SAP poznámky nebo konfigurace, které jsou závislé na scénáře jednotlivé instalace, Microsoft nebude vždy moct nakonfigurovat jednotka velká Instance HANA něco nedobrého. 
+
+Proto je povinné pro vás přečíst poznámky SAP souvisejících se zákazníky k SAP HANA pro svou přesnou verzi systému Linux. Také zkontrolujte konfigurace vydání nebo verze operačního systému a nastavení konfigurace, pokud jste tak již neučinili.
+
+Konkrétně zkontrolujte následující parametry a nakonec upravují:
 
 - net.core.rmem_max = 16777216
 - net.core.wmem_max = 16777216
@@ -64,77 +70,81 @@ V konkrétní, zkontrolujte následující parametry a nakonec upraveny tak, aby
 
 Počínaje SLES12 SP1 a RHEL 7.2, musí být nastavena v konfiguračním souboru v adresáři /etc/sysctl.d tyto parametry. Například konfigurační soubor s názvem 91 – NetApp-HANA.conf musí vytvořit. Pro starší verze SLES a RHEL musí být tyto parametry in/etc/sysctl.conf sady.
 
-Pro všechny RHEL uvolní a počínaje SLES12, 
-- sunrpc.tcp_slot_table_entries = 128
+Pro všechny verze RHEL počínaje SLES12 mějte na paměti následující: 
+- Sunrpc.tcp_slot_table_entries = 128 parametr musí být nastaven in/etc/modprobe.d/sunrpc-local.conf. Pokud soubor neexistuje, musíte nejprve vytvořit tak, že přidáte následující položky: 
+    - Možnosti sunrpc tcp_max_slot_table_entries = 128
 
-Parametr musí být nastaven in/etc/modprobe.d/sunrpc-local.conf. Pokud soubor neexistuje, musí nejprve vytvořit přidáním následující položky: 
-- Možnosti sunrpc tcp_max_slot_table_entries = 128
+**Čtvrtý krok** je kontrola systémového času testování částí velká Instance HANA. Instancí nasazených se časové pásmo systému. Toto časové pásmo představuje umístění oblast Azure, ve kterém se nachází razítko velká Instance HANA. Můžete změnit systémového času nebo časového pásma z instancí, které vlastníte. 
 
-**Čtvrtý krok** je kontrola systémového času jednotky velké Instance HANA. Instancí nasazených se časové pásmo systému, které představují umístění razítko velké Instance HANA je umístěn v oblasti Azure. Můžete libovolně změnit systémového času nebo časového pásma z instancí, které vlastníte. To a řazení více instancí do vašeho tenanta, připravené, že je potřeba upravit časové pásmo nově doručené instancí. Operace Microsoft mít žádné informace o časovém pásmu systému, že nastavíte s instancemi po předání. Nově nasazené instance proto nemusí být nastavení ve stejném časovém pásmu jako ta, kterou jste změnili na. V důsledku toho je vaší odpovědností zákazníky ke kontrole a v případě potřeby upravit časové pásmo instancí předán. 
+Pokud si objednat další instance do vašeho tenanta, budete muset upravit časové pásmo nově doručené instancí. Společnost Microsoft nemá žádné informace o časové pásmo systému, že nastavíte s instancemi po předání. Tedy nemusí ve stejném časovém pásmu jako ta, kterou jste změnili na nastavit nově nasazené instance. Má je na vás jako zákazník umožní reagovat na časové pásmo instancí, který byl předán, v případě potřeby. 
 
-**Pátý krok** je kontrola etc/hosts. Jak získat předán okna, mají různé IP adresy přiřazené pro různé účely (viz další část). Zkontrolujte soubor etc/hosts. V případech, kdy jsou jednotky přidány do existujícího tenanta Neočekáváme, že mají atd/hostitele nově nasazené systémy udržuje správně s IP adresami dříve doručené systémů. Proto je na vás jako zákazník zkontrolovat správné nastavení tak, že nově nasazené instance spolupracovat a překládat názvy jednotek dříve nasazené ve vašem tenantovi. 
+**Pátý krok** je kontrola etc/hosts. Jak získat předán okna, mají různé IP adresy, které jsou přiřazené pro různé účely. Zkontrolujte soubor etc/hosts. Když jednotky jsou přidány do existujícího tenanta, Neočekáváme, že máte etc/hostitele nově nasazené systémy udržuje správně s IP adresami systémů, které byly dodány dříve. Je vaší povinností jako zákazník zajistí, že nově nasazené instance můžete pracovat a překlad názvů jednotky, které jste nasadili dříve ve vašem tenantovi. 
 
 ## <a name="operating-system"></a>Operační systém
 
 > [!IMPORTANT] 
-> Typ II jednotek pouze SLES 12 SP2 operačního systému verze se v tuto chvíli nepodporuje. 
+> Pro typ II jednotky aktuálně podporuje pouze verzi operačního systému SLES 12 SP2. 
 
-Velikosti odkládacího souboru rámci smluv bitové kopie operačního systému nastavená na 2 GB podle [SAP Support Poznámka #1999997 – nejčastější dotazy: paměti SAP HANA](https://launchpad.support.sap.com/#/notes/1999997/E). Žádné nichž různých nastavení požadované se musí nastavit vy jako zákazník.
+Odkládacího souboru rámci smluv bitové kopie operačního systému nastavená na 2 GB podle [Poznámka podpory SAP #1999997 – nejčastější dotazy: paměti SAP HANA](https://launchpad.support.sap.com/#/notes/1999997/E). Naším zákazníkem pokud chcete jiné nastavení, ho musíte nastavit sami.
 
-[SUSE Linux Enterprise Server 12 SP1 pro aplikace SAP](https://www.suse.com/products/sles-for-sap/hana) je distribuce systému Linux pro SAP HANA v Azure (velké instance) nainstalována. Tento konkrétní poskytuje funkce specifické pro SAP &quot;předpřipravených&quot; (včetně přednastaveným parametry pro spuštění SAP na SLES efektivně).
+[SUSE Linux Enterprise Server 12 SP1 pro aplikace SAP](https://www.suse.com/products/sles-for-sap/hana) je distribuce Linuxu, která je nainstalovaná pro SAP HANA v Azure (velké instance). Tento konkrétní poskytuje funkce specifické pro SAP "mimo pole" (včetně přednastaveným parametry pro spuštění SAP na SLES efektivně).
 
-Naleznete v tématu [prostředků knihovny/specifikacích](https://www.suse.com/products/sles-for-sap/resource-library#white-papers) na webu SUSE a [SAP v SUSE](https://wiki.scn.sap.com/wiki/display/ATopics/SAP+on+SUSE) na SAP komunity sítě (oznámení změny stavu) pro několik užitečné zdroje informací související s nasazováním SAP HANA na SLES (včetně nastavení Vysoká Dostupnost, posílení zabezpečení, které jsou specifické pro operace SAP a další).
+Naleznete v tématu [prostředků knihovny/specifikacích](https://www.suse.com/products/sles-for-sap/resource-library#white-papers) na webu SUSE a [SAP v SUSE](https://wiki.scn.sap.com/wiki/display/ATopics/SAP+on+SUSE) na SAP komunity sítě (oznámení změny stavu) pro několik užitečné zdroje informací související s nasazováním SAP HANA na SLES (včetně nastavení Vysoká dostupnost, posílení zabezpečení, která je specifická pro operace SAP a další).
 
-Další a užitečné SAP SUSE související odkazy:
+Tady je další a užitečné SAP na související s operačním systémem SUSE odkazy:
 
-- [SAP HANA v SUSE Linuxu lokalitě](https://wiki.scn.sap.com/wiki/display/ATopics/SAP+on+SUSE)
-- [Osvědčený postup pro SAP: replikaci zařadit do fronty, SAP NetWeaver na SUSE Linux Enterprise 12](https://www.suse.com/docrepcontent/container.jsp?containerId=9113).
-- [ClamSAP – ochrana proti virům SLES pro SAP](http://scn.sap.com/community/linux/blog/2014/04/14/clamsap--suse-linux-enterprise-server-integrates-virus-protection-for-sap) (včetně SLES 12 pro aplikace SAP).
+- [SAP HANA na webu operačním systémem SUSE Linux](https://wiki.scn.sap.com/wiki/display/ATopics/SAP+on+SUSE)
+- [Osvědčené postupy pro SAP: replikaci zařadit do fronty, SAP NetWeaver na SUSE Linux Enterprise 12](https://www.suse.com/docrepcontent/container.jsp?containerId=9113)
+- [ClamSAP – ochrana proti virům SLES pro SAP](http://scn.sap.com/community/linux/blog/2014/04/14/clamsap--suse-linux-enterprise-server-integrates-virus-protection-for-sap) (včetně SLES 12 pro aplikace SAP)
 
-Podpora poznámky SAP pro implementaci SAP HANA na SLES 12:
+Následují poznámky SAP podpory, které se dají použít k implementaci SAP HANA na SLES 12:
 
-- [Poznámka: podpora SAP #1944799 – SAP HANA pokyny pro instalaci operačního systému SLES](http://go.sap.com/documents/2016/05/e8705aae-717c-0010-82c7-eda71af511fa.html).
-- [Poznámka: podpora SAP #2205917 – databáze SAP HANA doporučené nastavení operačního systému pro SLES 12 pro aplikace SAP](https://launchpad.support.sap.com/#/notes/2205917/E).
-- [Podpory Poznámka SAP #1984787 – SUSE Linux Enterprise Server 12: Poznámky k instalaci](https://launchpad.support.sap.com/#/notes/1984787).
-- [Poznámka: podpora SAP #171356 – softwaru SAP v Linuxu: Obecné informace](https://launchpad.support.sap.com/#/notes/1984787).
-- [Poznámka: podpora SAP 1391070 # – Linux UUID řešení](https://launchpad.support.sap.com/#/notes/1391070).
+- [Poznámka: podpora #1944799 – SAP HANA pokyny pro instalaci operačního systému SLES pro SAP](http://go.sap.com/documents/2016/05/e8705aae-717c-0010-82c7-eda71af511fa.html)
+- [Doporučené nastavení operačního systému pro SLES 12 pro aplikace SAP Poznámka SAP support #2205917 – databáze SAP HANA](https://launchpad.support.sap.com/#/notes/2205917/E)
+- [Poznámka SAP support #1984787 – operačním systémem SUSE Linux Enterprise Server 12: poznámky k instalaci](https://launchpad.support.sap.com/#/notes/1984787)
+- [Poznámka SAP support #171356 – softwaru SAP v Linuxu: Obecné informace](https://launchpad.support.sap.com/#/notes/1984787)
+- [Poznámka: podpora 1391070 # – Linux UUID řešení SAP](https://launchpad.support.sap.com/#/notes/1391070)
 
-[Red Hat Enterprise Linux for SAP HANA](https://www.redhat.com/en/resources/red-hat-enterprise-linux-sap-hana) je jinou nabídku pro spuštění SAP HANA ve velkých instancích HANA. Verze RHEL 6.7 a 7.2 jsou k dispozici. Poznámka: v opačném nativních virtuálních počítačích Azure kde se podporují jenom RHEL 7.2 a novější verze, velkých instancích HANA prosím podporují RHEL 6.7 také. Doporučujeme ale používat verzi 7.x RHEL.
+[Red Hat Enterprise Linux for SAP HANA](https://www.redhat.com/en/resources/red-hat-enterprise-linux-sap-hana) je jinou nabídku pro spuštění SAP HANA ve velkých instancích HANA. Verze RHEL 6.7 a 7.2 jsou k dispozici. Všimněte si, že na rozdíl od nativních virtuálních počítačích Azure kde se podporují jenom RHEL 7.2 a novější verze, velkých instancích HANA podporují RHEL 6.7 také. Doporučujeme však používat o verzi 7.x RHEL.
 
-Další a užitečné SAP na Red Hat souvisejících odkazů:
-- [SAP HANA v Red Hat Linux lokality](https://wiki.scn.sap.com/wiki/display/ATopics/SAP+on+Red+Hat).
+Tady jsou další užitečné SAP na Red Hat souvisejících odkazů:
+- [SAP HANA na webu Red Hat Linux](https://wiki.scn.sap.com/wiki/display/ATopics/SAP+on+Red+Hat).
 
-Podpora poznámky SAP pro implementaci SAP HANA v systému Red Hat:
+SAP podporuje poznámky, které se dají použít k implementaci SAP HANA v systému Red Hat jsou následující:
 
-- [Poznámka: podpora SAP #2009879 – pokyny pro SAP HANA pro operační systém Red Hat Enterprise Linux (RHEL)](https://launchpad.support.sap.com/#/notes/2009879/E).
-- [Poznámka: podpora SAP #2292690 – databáze SAP HANA: Nastavení doporučuje operačního systému pro RHEL 7](https://launchpad.support.sap.com/#/notes/2292690).
-- [Poznámka: podpora SAP #2247020 – databáze SAP HANA: Nastavení doporučuje operačního systému pro RHEL 6.7](https://launchpad.support.sap.com/#/notes/2247020).
-- [Poznámka: podpora SAP 1391070 # – Linux UUID řešení](https://launchpad.support.sap.com/#/notes/1391070).
-- [Poznámka: podpora SAP 2228351 # – Linux: SAP HANA Database aktualizace Service PACKU 11 revize 110 (nebo vyšší) v systému RHEL 6 nebo SLES 11](https://launchpad.support.sap.com/#/notes/2228351).
-- [Poznámka: podpora SAP #2397039 – nejčastější dotazy k: Řešení SAP v RHEL](https://launchpad.support.sap.com/#/notes/2397039).
-- [Poznámka: podpora SAP #1496410 – Red Hat Enterprise Linux 6.x: instalace a Upgrade](https://launchpad.support.sap.com/#/notes/1496410).
-- [Poznámka: podpora SAP #2002167 – Red Hat Enterprise Linux 7.x: instalace a Upgrade](https://launchpad.support.sap.com/#/notes/2002167).
+- [Poznámka: podpora #2009879 – pokyny pro SAP HANA pro operační systém Red Hat Enterprise Linux (RHEL) SAP](https://launchpad.support.sap.com/#/notes/2009879/E)
+- [Poznámka SAP support #2292690 – databáze SAP HANA: OS doporučené nastavení pro RHEL 7](https://launchpad.support.sap.com/#/notes/2292690)
+- [Poznámka: podpora SAP #2247020 – databáze SAP HANA: Doporučené nastavení operačního systému pro RHEL 6.7](https://launchpad.support.sap.com/#/notes/2247020)
+- [Poznámka: podpora 1391070 # – Linux UUID řešení SAP](https://launchpad.support.sap.com/#/notes/1391070)
+- [Poznámka SAP support 2228351 # – Linux: revize SAP HANA Database aktualizace Service PACKU 11 110 (nebo vyšší) v systému RHEL 6 nebo SLES 11](https://launchpad.support.sap.com/#/notes/2228351)
+- [Poznámka podpory SAP #2397039 – nejčastější dotazy: SAP v RHEL](https://launchpad.support.sap.com/#/notes/2397039)
+- [Poznámka SAP support #1496410 – Red Hat Enterprise Linux 6.x: instalace a upgrade](https://launchpad.support.sap.com/#/notes/1496410)
+- [Poznámka SAP support #2002167 – Red Hat Enterprise Linux 7.x: instalace a upgrade](https://launchpad.support.sap.com/#/notes/2002167)
 
 ### <a name="time-synchronization"></a>Čas synchronizace
 
-Aplikace SAP postavená na architektuře SAP NetWeaver jsou citlivé na časové rozdíly pro různé součásti, které tvoří systém SAP. Výpisy stavu systému SAP ABAP krátký s názvem chyba ZDATE\_velké\_čas\_DIFF jsou pravděpodobně známý, jak tyto krátké výpisy zobrazí, když je příliš daleko od sebe plovoucí systémového času jiné servery nebo virtuální počítače.
+Aplikace SAP, které jsou postavené na systému SAP NetWeaver architektury jsou citlivé na časové rozdíly pro různé součásti, které tvoří systém SAP. Výpisy stavu systému SAP ABAP krátký s názvem chyba ZDATE\_velké\_čas\_DIFF pravděpodobně obeznámeni. Důvodem je, tyto krátké výpisy zobrazí, když je příliš daleko od sebe plovoucí systémového času jiné servery nebo virtuální počítače.
 
-Pro SAP HANA v Azure (velké instance), čas synchronizace v Azure kódu&#39;t platí pro výpočetních jednotek v velká Instance razítka. Tato synchronizace se nedá použít pro provozování aplikací SAP na nativních virtuálních počítačích Azure, jak Azure zajišťuje systému&#39;s správně synchronizované. V důsledku toho samostatné dobu, kterou server musí být nastaven, která mohou být využívána SAP servery aplikace běžící na virtuálních počítačích Azure a SAP HANA databáze na velkých instancích HANA spuštěných instancí. Infrastrukturu úložiště ve velké Instance razítka je časově synchronizované s servery NTP.
+Pro SAP HANA v Azure (velké instance) synchronizaci času, který se má provést v Azure neplatí pro výpočetních jednotek v velká Instance razítka. Tato synchronizace není použitelný pro provozování aplikací SAP na virtuálních počítačích Azure nativní, protože Azure tak zajišťuje jistotu, že se správně synchronizují systémového času. 
+
+V důsledku toho musíte vytvořit samostatný čas serveru, který lze použít tak, že aplikační servery SAP, na kterých běží na virtuálních počítačích Azure a instance databáze SAP HANA, které jsou spuštěny na velkých instancích HANA. Infrastrukturu úložiště ve velké Instance razítka je čas synchronizovaný s servery NTP.
 
 
 ## <a name="networking"></a>Sítě
-Předpokládáme, že jste postupovali podle doporučení v návrhu vašich virtuálních sítí Azure a připojení těchto virtuálních sítí na velkých instancích HANA, jak je popsáno v těchto dokumentech:
+Předpokládáme, že jste postupovali podle doporučení v návrhu virtuálním sítím Azure a připojení těchto virtuálních sítí na velkých instancích HANA, jak je popsáno v následujících dokumentech:
 
 - [SAP HANA (velká Instance) přehled a architektura v Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)
 - [Infrastrukturu SAP HANA (velké instance) a možnosti připojení v Azure](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-Existují některé podrobnosti, které stojí za to se zmínit o možnostech sítě jedné jednotky. Každá jednotka velká Instance HANA obsahuje dvě nebo tři IP adresy, které jsou přiřazeny k portům NIC dvě nebo tři jednotky. Tři IP adresy se používají v HANA horizontální navýšení kapacity konfigurací a scénář HANA System Replication. Jednou z IP adresy přiřazené k síťovému rozhraní jednotky z fondu IP adresa serveru, která byla popsána v je [architektura v Azure a SAP HANA (velká Instance) přehled](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture).
+Existují některé podrobnosti stojí za zmínku o možnostech sítě jedné jednotky. Každá jednotka velká Instance HANA obsahuje dvě nebo tři IP adresy, které jsou přiřazeny dvě nebo tři portů síťových karet. Tři IP adresy se používají v HANA horizontální navýšení kapacity konfigurací a scénář replikace systému HANA. Jednou z IP adresy, které jsou přiřazeny k síťovému rozhraní jednotky je mimo server fond IP adres, který je popsaný v [architektura v Azure a SAP HANA (velké instance) přehled](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture).
 
-Přečtěte si [HLI Podporované scénáře](hana-supported-scenario.md) další ethernet podrobnosti o vaší architektuře.
+Další informace o Ethernet podrobnosti o architektuře, najdete v článku [HLI Podporované scénáře](hana-supported-scenario.md).
 
 ## <a name="storage"></a>Úložiště
 
-Rozložení úložiště pro SAP HANA v Azure (velké instance) je nakonfigurované v SAP HANA v Azure Service Management prostřednictvím SAP doporučuje vodicí čáry, jak je uvedeno v [požadavky na úložiště pro SAP HANA](http://go.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html) dokument white paper. Přibližnou velikostí různé svazky s jinou SKU velké instance HANA je teď uvedené v [architektura v Azure a SAP HANA (velká Instance) přehled](hana-overview-architecture.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Rozložení úložiště pro SAP HANA v Azure (velké instance) je nakonfigurována ve SAP HANA na Azure service management prostřednictvím SAP Doporučené pokyny. Tyto pokyny jsou dokumentovány v článku [požadavky na úložiště SAP HANA](http://go.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html) dokument white paper. 
+
+Přibližnou velikostí různé svazky s jinou SKU velké instance HANA je popsána v [architektura v Azure a SAP HANA (velké instance) přehled](hana-overview-architecture.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 Zásady vytváření názvů svazků úložiště jsou uvedeny v následující tabulce:
 
@@ -146,55 +156,59 @@ Zásady vytváření názvů svazků úložiště jsou uvedeny v následující 
 | HANA sdílené | /Hana/Shared/SID | Storage IP:/hana_shared_SID_mnt00001_tenant_vol/shared |
 | USR/sap | /USR/SAP/SID | Storage IP:/hana_shared_SID_mnt00001_tenant_vol/usr_sap |
 
-Kde SID = instance HANA ID systému 
+*Identifikátor SID* je instance HANA ID systému. 
 
-A tenanta = interní výčet operací při nasazování klienta.
+*Tenant* je interní výčet operací při nasazování klienta.
 
-Jak je vidět, sdílené HANA a sap s/usr sdílí stejný svazek. Klasifikace přípojné body zahrnuje ID systému instance HANA a také počet připojení. V nasazeních vertikálně navýšit kapacitu pouze neexistuje jednoho připojení, jako je mnt00001. Zatímco v nasazení scale-out uvidíte počet připojení, jako mají pracovní procesy a hlavní uzly. Záložní svazky s protokoly pro horizontální navýšení kapacity prostředí, dat, protokolu, jsou sdílené a připojené k jednotlivým uzlům v konfiguraci horizontální navýšení kapacity. Konfigurace spuštění více instancí SAP jinou sadu svazky vytvoří a připojí k jednotce HAN velkou instanci. Přečtěte si [HLI Podporované scénáře](hana-supported-scenario.md) podrobnosti rozložení úložiště pro váš scénář.
+Sdílené složky usr/sap HANA stejném svazku. Klasifikace přípojné body zahrnuje ID systému instance HANA a také počet připojení. V nasazeních vertikálně navýšit kapacitu je pouze jeden přípojný, jako je například mnt00001. V nasazeních horizontální navýšení kapacity na druhé straně se zobrazí tolik připojí jako uzly pracovního procesu a hlavním serverem. 
 
-Přečtěte si dokument a vypadat jednotka velká Instance HANA, zjistíte, že jednotky součástí spíše velkorysá diskovém svazku pro data systému HANA/a vidíme, že svazek HANA/log/zálohování. Důvod, proč jsme HANA/dat velmi velké velikosti je, snímků úložiště, které nabízíme pro vás jako odběratel používáte stejný svazek disku. To znamená větší úložiště snímků provedete, tím více místa je využívána snímky v svazky úložiště přiřazené. Svazek HANA/log/záloha není považované za umístění zálohy databáze do svazku. Je velikosti má být použit jako záložní svazek pro zálohování protokolů transakcí HANA. Podrobnosti najdete v [SAP HANA (velké instance) vysokou dostupnost a zotavení po havárii v Azure](hana-overview-high-availability-disaster-recovery.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 
+Horizontální navýšení kapacity prostředí, dat, protokolu a protokolu jsou záložní svazky sdílené a připojené k jednotlivým uzlům v konfiguraci horizontální navýšení kapacity. U konfigurací, které jsou více instancí SAP jinou sadu svazky vytvoří a připojí k jednotce velká Instance HANA. Podrobnosti rozložení úložiště pro váš scénář najdete v tématu [HLI Podporované scénáře](hana-supported-scenario.md).
 
-Kromě úložiště k dispozici můžete zakoupit další kapacitu v přírůstcích po 1 TB. Toto dodatečné úložiště lze přidat jako nové svazky na velkých instancích HANA.
+Při pohledu na jednotku velká Instance HANA, zjistíte, že jednotky součástí velkorysá diskovém svazku pro data systému HANA/a že je svazek/log/zálohování HANA. Důvod, proč jsme provedli HANA/dat velmi velké je, že snímků úložiště nabízíme, že jako odběratel používáte stejný svazek disku. Další snímky úložiště provedete, tím více místa je využívána snímky v svazky úložiště přiřazené. 
 
-Během připojování se SAP HANA v Azure Service managementu, zákazník Určuje ID uživatele (UID) a ID skupiny ID (skupiny) pro skupiny uživatelů a sapsys sidadm (ex: 1000,500) je nutné při instalaci systému SAP HANA, použijí tyto stejné hodnoty. Jak budete chtít nasadit víc instancí HANA na jednotce, získáte víc kopií svazků (jedna sada u každé instance). V důsledku toho v době nasazení je potřeba definovat:
+HANA/log/zálohování svazku by neměl být svazkem pro zálohování databáze. Je velikosti má být použit jako záložní svazek pro zálohování protokolů transakcí HANA. Další informace najdete v tématu [SAP HANA (velké instance) vysokou dostupnost a zotavení po havárii v Azure](hana-overview-high-availability-disaster-recovery.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
 
-- Identifikátor SID různé instance HANA (sidadm je odvozen z ní).
-- Velikostí paměti různých instancích HANA. Protože velikost paměti na instance definuje velikost svazků v každé sadě jednotlivých svazků.
+Kromě úložiště, která je k dispozici můžete zakoupit kapacitu další úložiště v přírůstcích po 1 TB. Toto dodatečné úložiště lze přidat jako nové svazky na velká Instance HANA.
 
-Na základě doporučení služby poskytovatele úložiště jsou následující možnosti připojení nakonfigurované pro všechny připojené svazky (nezahrnuje spouštěcí logickou jednotku):
+Během připojování se SAP HANA v Azure service management zákazníkovi Určuje ID uživatele (UID) a skupina ID (ID skupiny) pro skupiny uživatelů a sapsys sidadm (například: 1000,500) během instalace systému SAP HANA, musíte použít tyto stejné hodnoty. Vzhledem k tomu, že budete chtít nasadit víc instancí HANA na jednotce, získáte víc kopií svazků (jedna sada u každé instance). V důsledku toho v době nasazení je potřeba definovat následující:
+
+- Identifikátor SID různé instance HANA (sidadm je odvozen z něj).
+- Velikostí paměti různých instancích HANA. Velikost paměti na instanci definuje velikost svazků v každé sadě jednotlivých svazků.
+
+Podle doporučení pro zprostředkovatele úložiště, následující možnosti připojení jsou nakonfigurované pro všechny připojené svazky (nezahrnuje spouštěcí logickou jednotku):
 
 - systém souborů NFS rw vers = 4, pevný, timeo = 600, parametru rsize = 1048576 wsize = 1048576, intr noatime, uzamknout 0 0
 
-Tyto přípojné body konfigurované v/etc/fstab jako je znázorněno na následujících obrázcích:
+Tyto přípojné body konfigurované v /etc/fstab, jak je znázorněno na následujících obrázcích:
 
 ![fstab připojených svazků v jednotce velká Instance HANA](./media/hana-installation/image1_fstab.PNG)
 
-Výstup příkaz df -h na jednotce velká Instance HANA S72m může vypadat třeba:
+Výstup příkaz df -h na jednotce velká Instance HANA S72m vypadá jako:
 
 ![fstab připojených svazků v jednotce velká Instance HANA](./media/hana-installation/image2_df_output.PNG)
 
 
-Servery NTP, které jsou synchronizovány řadič úložiště a uzly velká Instance razítka. S vámi synchronizace SAP HANA v Azure (velké instance) jednotky a virtuální počítače Azure proti serveru NTP měla by existovat žádné děje odchylek spoustu času mezi infrastruktury a výpočetních jednotek v Azure nebo velká Instance razítka.
+Servery NTP, které jsou synchronizovány řadič úložiště a uzly velká Instance razítka. Při synchronizaci SAP HANA v Azure (velké instance) jednotky a virtuální počítače Azure proti serveru NTP, měla by existovat žádné odchylek spoustu času mezi infrastruktury a výpočetních jednotek v Azure nebo velká Instance razítka.
 
-K optimalizaci SAP HANA na úložiště používá pod, měli byste také nastavit následující parametry konfigurace SAP HANA:
+Pokud chcete optimalizovat SAP HANA na úložiště používá pod, nastavte následující parametry konfigurace SAP HANA:
 
 - max_parallel_io_requests 128
 - async_read_submit na
 - async_write_submit_active on
 - async_write_submit_blocks all
  
-Verze SAP HANA 1.0 až SPS12 tyto parametry můžete udělat během instalace databáze SAP HANA, jak je popsáno v [SAP Poznámka #2267798 – konfigurace databáze SAP HANA](https://launchpad.support.sap.com/#/notes/2267798)
+Verze SAP HANA 1.0 až SPS12 tyto parametry můžete udělat během instalace databáze SAP HANA, jak je popsáno v [Poznámka SAP #2267798 – konfiguraci serveru SAP HANA database](https://launchpad.support.sap.com/#/notes/2267798).
 
-Také můžete nakonfigurovat parametry po instalaci databáze SAP HANA s využitím rozhraní hdbparam. 
+Můžete také nakonfigurovat parametry po instalaci databáze SAP HANA pomocí rozhraní hdbparam. 
 
-V SAP HANA 2.0 hdbparam framework je zastaralá. V důsledku parametry musí být nastaven pomocí příkazů SQL. Podrobnosti najdete v tématu [2399079 # SAP Poznámka: odstranění hdbparam v HANA 2](https://launchpad.support.sap.com/#/notes/2399079).
+V SAP HANA 2.0 hdbparam framework je zastaralá. Parametry v důsledku toho musíte nastavit pomocí příkazů jazyka SQL. Další informace najdete v tématu [Poznámka SAP #2399079: odstranění hdbparam v HANA 2](https://launchpad.support.sap.com/#/notes/2399079).
 
-Přečtěte si [HLI Podporované scénáře](hana-supported-scenario.md) další rozložení úložiště pro architektury.
+Odkazovat na [HLI Podporované scénáře](hana-supported-scenario.md) získat další informace o rozložení úložiště pro architektury.
 
 
 **Další kroky**
 
-- Přečtěte si [instalace HANA na HLI](hana-example-installation.md)
+- Odkazovat na [instalace HANA na HLI](hana-example-installation.md)
 
 
 

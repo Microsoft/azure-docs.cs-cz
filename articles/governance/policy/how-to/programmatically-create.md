@@ -4,16 +4,16 @@ description: Tento článek vás provede programově vytváření a Správa zás
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/18/2018
+ms.date: 10/29/2018
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: dd7ec4f1d0c018a3c7eed19bea523f7c09bfea3e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4a68b60df76dcc554158d6c8db4d0dfe8dd32be7
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46985312"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50209220"
 ---
 # <a name="programmatically-create-policies-and-view-compliance-data"></a>Prostřednictvím kódu programu vytvořit zásady a zobrazit data o dodržování předpisů
 
@@ -85,6 +85,12 @@ Prvním krokem k lepší přehled o vašich prostředků je vytvoření a přiř
    ```
 
    Nahraďte _ContosoRG_ s názvem vaší skupiny prostředků určené.
+
+   **Oboru** parametru u `New-AzureRmPolicyAssignment` funguje taky s předplatných a skupin pro správu. Parametr používá cestu úplné prostředku, který **ResourceId** vlastnost `Get-AzureRmResourceGroup` vrátí. Vzor pro **oboru** pro každý kontejner je následujícím způsobem.  Nahraďte `{rgName}`, `{subId}`, a `{mgName}` s vaším prostředkem název skupiny, ID předplatného a název skupiny pro správu, v uvedeném pořadí.
+
+   - Skupina prostředků- `/subscriptions/{subId}/resourceGroups/{rgName}`
+   - Předplatné – `/subscriptions/{subId}/`
+   - Skupina pro správu- `/providers/Microsoft.Management/managementGroups/{mgName}`
 
 Další informace o správě zásad prostředků pomocí modulu Powershellu pro Azure Resource Manager, najdete v části [azurerm.resources zavedla](/powershell/module/azurerm.resources/#policies).
 

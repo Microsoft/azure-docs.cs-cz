@@ -15,12 +15,12 @@ ms.date: 05/04/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 0d139437a069406db2ae0f189480072f8063a327
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 73854cba151dfbebe53862a39fbe980502192c2d
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45982268"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50230059"
 ---
 # <a name="redirect-hardcoded-links-for-apps-published-with-azure-ad-application-proxy"></a>Přesměrovat odkazy pevně zakódované k aplikacím publikovaným pomocí Proxy aplikací Azure AD
 
@@ -97,6 +97,7 @@ Pokud chcete zlepšit výkon a zabezpečení, nepřekládá některé odkazy:
 
 - Odkazy nejsou uvnitř značky kódu. 
 - Propojení není ve formátu HTML nebo šablon stylů CSS. 
+- Odkazy ve formátu kódování URL.
 - Otevřít interní odkazy z jiných aplikací. Odkazy odesílat prostřednictvím e-mailu nebo pomocí rychlé zprávy nebo součástí jiných dokumentů, nebude možné přeložit. Uživatelé potřebovat znát přejdete na externí adresu URL.
 
 Pokud potřebujete podporovat některý z těchto dvou scénářů, místo odkazu překlad použijte stejné interní a externí adresy URL.  
@@ -114,7 +115,7 @@ Začínáme s překladu odkazu je stejně snadné jako kliknutí na tlačítko:
 
 Teď když uživatelé přistoupí k této aplikaci, proxy automaticky vyhledá interní adresy URL, které byly publikované prostřednictvím Proxy aplikace ve svém tenantovi.
 
-## <a name="send-feedback"></a>Poslat názor
+## <a name="send-feedback"></a>Odeslat názor
 
 Chceme, aby vaši pomoc, aby tuto funkci pro všechny vaše aplikace fungovat. Jsme vyhledat více než 30 značky v kódu HTML a CSS. Pokud máte příkladem generované odkazy, které se překlad vztahuje, pošlete fragment kódu pro [váš názor na aplikaci Proxy](mailto:aadapfeedback@microsoft.com). 
 

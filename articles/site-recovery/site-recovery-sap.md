@@ -1,27 +1,23 @@
 ---
-title: Ochrana nasazení vícevrstvé SAP NetWeaver aplikace pomocí Azure Site Recovery | Dokumentace Microsoftu
-description: Tento článek popisuje, jak chránit nasazení aplikací SAP NetWeaver pomocí Azure Site Recovery.
-services: site-recovery
-documentationcenter: ''
+title: Nastavení zotavení po havárii pro nasazení aplikace SAP NetWeaver úrovně pomocí Azure Site Recovery | Dokumentace Microsoftu
+description: Tento článek popisuje, jak nastavit zotavení po havárii pro nasazení aplikací SAP NetWeaver pomocí Azure Site Recovery.
 author: asgang
 manager: rochakm
-editor: ''
-ms.assetid: ''
 ms.service: site-recovery
 ms.workload: backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 07/06/2018
+ms.topic: conceptual
+ms.date: 10/29/2018
 ms.author: asgang
-ms.openlocfilehash: a498ac9f973bbcf87bec104f18b542cc7e8b5800
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: c83cf9fb319c21881f0db8bd94dc9a94a3b811bc
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49318686"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50211719"
 ---
-# <a name="protect-a-multi-tier-sap-netweaver-application-deployment-by-using-site-recovery"></a>Ochrana nasazení vícevrstvé aplikace SAP NetWeaver pomocí Site Recovery
+# <a name="set-up-disaster-recovery-for-a-multi-tier-sap-netweaver-app-deployment"></a>Nastavení zotavení po havárii pro nasazení vícevrstvé aplikace SAP NetWeaver
 
 Většina velké a střední velikosti nasazení SAP použít nějaký způsob řešení zotavení po havárii. Důležitost řešení zotavení po havárii robustní a testovatelných zvýšilo jako další klíčové obchodní procesy, které jsou přesunuty do aplikací, jako je SAP. Azure Site Recovery prošla testováním a integrovaná s aplikacemi SAP. Site Recovery překračuje možnosti většiny řešení pro zotavení po havárii místních a při snížení celkových nákladů na vlastnictví (TCO) než konkurenční řešení.
 
@@ -62,7 +58,7 @@ Doporučujeme vytvořit tuto infrastrukturu ještě před nasazením Site Recove
 
 Tato referenční architektura ukazuje spuštění SAP NetWeaver v prostředí s Windows v Azure s vysokou dostupností.  Tato architektura se nasazuje s velikostí konkrétního virtuálního počítače (VM), které můžete změnit tak, aby vyhovovaly potřebám vaší organizace.
 
-![Diagram typický vzor nasazení SAP](./media/site-recovery-sap/reference_sap.png)
+![Diagram typický vzor nasazení SAP](./media/site-recovery-sap/sap-netweaver_latest.png)
 
 ## <a name="disaster-recovery-considerations"></a>Aspekty zotavení po havárii
 

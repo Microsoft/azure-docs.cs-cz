@@ -11,12 +11,12 @@ ms.assetid: fe7a4377-5c24-4f72-ab1a-6d9d23e8d895
 ms.topic: article
 tags: connectors
 ms.date: 08/25/2018
-ms.openlocfilehash: 4ae8d3dff108f14844c31d7b9d0b0871326832a3
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 31357fa313cfa31c0f8a90c0f7722f627e4394d1
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43046145"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50229328"
 ---
 # <a name="monitor-and-manage-trello-with-azure-logic-apps"></a>Monitorování a správa Trello s Azure Logic Apps
 
@@ -70,7 +70,7 @@ Technické podrobnosti o omezení, akce a triggery, které jsou popsány pomocí
 ## <a name="get-support"></a>Získat podporu
 
 * Pokud máte dotazy, navštivte [fórum Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-* Pokud chcete zanechat své nápady na funkce nebo hlasovat, navštivte [web zpětné vazby od uživatelů Logic Apps](http://aka.ms/logicapps-wish).
+* Pokud chcete zanechat své nápady na funkce nebo hlasovat, navštivte [web zpětné vazby od uživatelů Logic Apps](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Další postup
 

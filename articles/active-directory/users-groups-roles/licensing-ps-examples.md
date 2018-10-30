@@ -1,5 +1,5 @@
 ---
-title: Příklady prostředí PowerShell pro licencování na základě skupiny ve službě Azure AD | Dokumentace Microsoftu
+title: Příklady prostředí PowerShell a Microsoft Graph pro licencování na základě skupiny ve službě Azure AD | Dokumentace Microsoftu
 description: Scénáře prostředí PowerShell pro licencování na základě skupin Azure Active Directory
 services: active-directory
 keywords: Licencování Azure AD
@@ -11,21 +11,21 @@ ms.service: active-directory
 ms.component: users-groups-roles
 ms.topic: article
 ms.workload: identity
-ms.date: 04/23/2018
+ms.date: 10/29/2018
 ms.author: curtand
-ms.openlocfilehash: 9ff51308022881dabb0bd8efaa5852d0f296474a
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: d046b8e6c054131a4154654637f12dbdc26608a6
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37871802"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210427"
 ---
 # <a name="powershell-examples-for-group-based-licensing-in-azure-ad"></a>Příklady prostředí PowerShell pro licencování na základě skupiny ve službě Azure AD
 
-Všechny funkce pro licencování na základě skupin je k dispozici prostřednictvím [webu Azure portal](https://portal.azure.com), a aktuálně je omezená podpora prostředí PowerShell. Existují však některé užitečné úlohy, které lze provést pomocí stávajícího [rutin prostředí MSOnline PowerShell](https://docs.microsoft.com/powershell/msonline/v1/azureactivedirectory). Tento dokument obsahuje příklady, jaké jsou možnosti.
+Všechny funkce pro licencování na základě skupin je k dispozici prostřednictvím [webu Azure portal](https://portal.azure.com), a aktuálně je omezená podpora prostředí PowerShell a Microsoft Graph. Existují však některé užitečné úlohy, které lze provést pomocí stávajícího [rutin prostředí MSOnline PowerShell](https://docs.microsoft.com/powershell/msonline/v1/azureactivedirectory) a Microsoft Graph. Tento dokument obsahuje příklady, jaké jsou možnosti.
 
 > [!NOTE]
-> Než začnete, spuštěním rutin, ujistěte se, že připojení k vašemu tenantovi nejprve spuštěním `Connect-MsolService` rutiny.
+> Než začnete, spuštěním rutin, ujistěte se, že připojení k vašemu tenantovi nejprve spuštěním `Connect-MsolService`  rutiny.
 
 > [!WARNING]
 > Tento kód slouží jako příklad pro demonstrační účely. Pokud máte v úmyslu používat ve vašem prostředí, zvažte nejprve testování v malém měřítku, nebo v samostatné testovacího tenanta. Bude pravděpodobně nutné upravit kód pro konkrétní potřeby vašeho prostředí.
@@ -46,6 +46,34 @@ EMSPREMIUM
 
 > [!NOTE]
 > Data jsou omezená na informace o produktu (SKU). Není možné vypsat plánech zakázaná v licenci.
+
+Použijte následující příkaz pro získat stejná data z Microsoft Graphu
+
+```
+GET https://graph.microsoft.com/beta/groups/99c4216a-56de-42c4-a4ac-e411cd8c7c41$select=assignedLicenses
+```
+Výstup:
+```
+HTTP/1.1 200 OK
+{
+  “value”: [
+{
+  “assignedLicenses”: [
+     {
+          "accountId":"f1b45b40-57df-41f7-9596-7f2313883635",
+          "skuId":"c7df2760-2c81-4ef7-b578-5b5392b571df",
+      "disabledPlans":[]
+     },
+     {
+          "accountId":"f1b45b40-57df-41f7-9596-7f2313883635",
+          "skuId":" b05e124f-c7cc-45a0-a6aa-8cf78c946968",
+      "disabledPlans":[]
+     },
+  ],
+}
+  ]
+}
+```
 
 ## <a name="get-all-groups-with-licenses"></a>Získání všech skupin s licencemi
 
@@ -141,6 +169,34 @@ ObjectId                             DisplayName             GroupType Descripti
 --------                             -----------             --------- -----------
 11151866-5419-4d93-9141-0603bbf78b42 Access to Office 365 E1 Security  Users who should have E1 licenses
 ```
+Použijte následující příkaz pro získat stejná data z Microsoft Graphu
+```
+GET https://graph.microsoft.com/beta/groups?$filter=hasMembersWithLicenseErrors+eq+true
+```
+Výstup:
+```
+HTTP/1.1 200 OK
+{
+  "value":[
+    {
+      "odata.type": "Microsoft.DirectoryServices.Group",
+      "objectType": "Group",
+      "id": "11151866-5419-4d93-9141-0603bbf78b42",
+      ... # other group properties.
+    },
+    {
+      "odata.type": "Microsoft.DirectoryServices.Group",
+      "objectType": "Group",
+      "id": "c57cdc98-0dcd-4f90-a82f-c911b288bab9",
+      ...
+    },
+    ... # other groups with license errors.
+  ]
+"odata.nextLink":"https://graph.microsoft.com/beta/ groups?$filter=hasMembersWithLicenseErrors+eq+true&$skipToken=<encodedPageToken>"
+}
+```
+
+
 ## <a name="get-all-users-with-license-errors-in-a-group"></a>Získání všech uživatelů s chybami licence ve skupině
 
 Zadaný skupinu, která obsahuje nějaké chyby související s licencí, můžete nyní zobrazit seznam všech uživatelích dotčených opravu těchto chyb. Uživatel může mít příliš chyby z jiných skupin. Ale v tomto příkladu jsme omezit výsledky pouze na chyby, které jsou relevantní pro dané skupiny tak, že zkontrolujete **ReferencedObjectId** vlastnosti každého **IndirectLicenseError** položku na uživatele.
@@ -167,6 +223,28 @@ ObjectId                             DisplayName      License Error
 --------                             -----------      ------------
 6d325baf-22b7-46fa-a2fc-a2500613ca15 Catherine Gibson MutuallyExclusiveViolation
 ```
+Použijte následující příkaz pro získat stejná data z Microsoft Graphu
+```
+GET https://graph.microsoft.com/beta/groups/11151866-5419-4d93-9141-0603bbf78b42/membersWithLicenseErrors
+```
+Výstup:
+```
+HTTP/1.1 200 OK
+{
+  "value":[
+    {
+      "odata.type": "Microsoft.DirectoryServices.User",
+      "objectType": "User",
+      "id": "6d325baf-22b7-46fa-a2fc-a2500613ca15",
+      ... # other user properties.
+    },
+    ... # other users.
+  ],
+  "odata.nextLink":"https://graph.microsoft.com/beta/groups/11151866-5419-4d93-9141-0603bbf78b42/membersWithLicenseErrors?$skipToken=<encodedPageToken>" 
+}
+
+```
+
 ## <a name="get-all-users-with-license-errors-in-the-entire-tenant"></a>Získat všichni uživatelé s licencí chyb v celém tenantovi
 
 Tento skript je možné získat všichni uživatelé, kteří mají licenci chyby z jednoho nebo více skupin. Skript vypíše jeden řádek na uživatele a Chyba licence, které umožňuje zdroje každé chyby se tak jasně identifikovat.
@@ -299,6 +377,58 @@ ObjectId                             SkuId       AssignedDirectly AssignedFromGr
 157870f6-e050-4b3c-ad5e-0f0a377c8f4d contoso:EMS             True             False
 1f3174e2-ee9d-49e9-b917-e8d84650f895 contoso:EMS            False              True
 240622ac-b9b8-4d50-94e2-dad19a3bf4b5 contoso:EMS             True              True
+```
+
+Graf nemá přímý způsob, jak zobrazit výsledek, ale lze ji zobrazit z tohoto rozhraní API
+```
+GET https://graph.microsoft.com/beta/users/e61ff361-5baf-41f0-b2fd-380a6a5e406a?$select=licenseAssignmentStates
+```
+Výstup:
+```
+HTTP/1.1 200 OK
+{
+  "value":[
+    {
+      "odata.type": "Microsoft.DirectoryServices.User",
+      "objectType": "User",
+      "id": "e61ff361-5baf-41f0-b2fd-380a6a5e406a",
+      "licenseAssignmentState":[
+        {
+          "skuId": "157870f6-e050-4b3c-ad5e-0f0a377c8f4d”,
+          "disabledPlans":[],
+          "assignedByGroup": null, # assigned directly.
+          "state": "Active",
+          "error": "None"
+        },
+        {
+          "skuId": "1f3174e2-ee9d-49e9-b917-e8d84650f895",
+          "disabledPlans":[],
+          "assignedByGroup": “e61ff361-5baf-41f0-b2fd-380a6a5e406a”, # assigned by this group.
+          "state": "Active",
+          "error": "None"
+        },
+        {
+          "skuId": "240622ac-b9b8-4d50-94e2-dad19a3bf4b5", 
+          "disabledPlans":[
+            "e61ff361-5baf-41f0-b2fd-380a6a5e406a"
+          ],
+          "assignedByGroup": "e61ff361-5baf-41f0-b2fd-380a6a5e406a",
+          "state": "Active",
+          "error": "None"
+        },
+        {
+          "skuId": "240622ac-b9b8-4d50-94e2-dad19a3bf4b5",
+          "disabledPlans":[],
+          "assignedByGroup": null, # It is the same license as the previous one. It means the license is assigned directly once and inherited from group as well.
+          "state": " Active ",
+          "error": " None"
+        }
+      ],
+      ...
+    }
+  ],
+}
+
 ```
 
 ## <a name="remove-direct-licenses-for-users-with-group-licenses"></a>Odeberte přímé licence pro uživatele s licencemi skupiny
@@ -481,7 +611,9 @@ aadbe4da-c4b5-4d84-800a-9400f31d7371 User has no direct license to remove. Skipp
 Další informace o sadě pro správu licencí pomocí skupin funkcí, naleznete v následujících článcích:
 
 * [Co je skupina založená na licencování v Azure Active Directory?](../fundamentals/active-directory-licensing-whatis-azure-portal.md)
-* [Přiřazení licencí ke skupině ve službě Azure Active Directory](licensing-groups-assign.md)
-* [Identifikace a řešení problémů pro skupinu v Azure Active Directory](licensing-groups-resolve-problems.md)
-* [Migrace jednotlivě licencovaných uživatelů na licencování na základě skupiny v Azure Active Directory](licensing-groups-migrate-users.md)
-* [Azure Active Directory na základě skupin licencí další scénáře](licensing-group-advanced.md)
+* [Přiřazení licencí ke skupině v Azure Active Directory](licensing-groups-assign.md)
+* [Identifikace a řešení potíží s licencemi pro skupinu v Azure Active Directory](licensing-groups-resolve-problems.md)
+* [Postup migrace jednotlivě licencovaných uživatelů na licencování na základě skupin v Azure Active Directory](licensing-groups-migrate-users.md)
+* [Migrace uživatelů mezi licencemi produktů pomocí licencování pro skupiny ve službě Azure Active Directory](../users-groups-roles/licensing-groups-change-licenses.md)
+* [Další scénáře licencování na základě skupin v Azure Active Directory](licensing-group-advanced.md)
+* [Příklady prostředí PowerShell pro licencování na základě skupiny v Azure Active Directory](../users-groups-roles/licensing-ps-examples.md)

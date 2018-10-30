@@ -10,12 +10,12 @@ manager: jeconnoc
 ms.reviewer: klam, LADocs
 ms.date: 10/03/2018
 ms.topic: article
-ms.openlocfilehash: ac184ce790a0700fcacc63f70c2bb321142d7224
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: aac59e087ba106bc20d94fea85cb8a3cd9273482
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49320539"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50233068"
 ---
 # <a name="run-actions-based-on-group-status-with-scopes-in-azure-logic-apps"></a>Spustit akce na základě stavu skupiny pomocí oborů v Azure Logic Apps
 
@@ -213,7 +213,7 @@ V dalším kroku přidáte obor, takže můžete seskupit konkrétní akce a vyh
 
       ![Vyberte rozsah stavů](./media/logic-apps-control-flow-run-steps-group-scopes/select-run-after-statuses.png)
 
-   1. Jakmile budete hotovi, zvolte **provádí**. 
+   1. Jakmile budete hotovi, zvolte **Done** (Hotovo). 
    Podmínka se teď zobrazuje ikona "informace o".
 
 1. V **při hodnotě true** a **případě hodnoty false** větví, přidání akce, které chcete provést na základě stavu každého rozsahu například odeslat e-mailem nebo zprávy.
@@ -389,7 +389,7 @@ Pokud pracujete v zobrazení kódu, můžete definovat strukturu oboru v definic
 ## <a name="get-support"></a>Získat podporu
 
 * Pokud máte dotazy, navštivte [fórum Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-* Odeslání návrhu nebo hlasování o funkcích a návrhy, najdete v tématu [webu zpětné vazby uživatelů Azure Logic Apps](http://aka.ms/logicapps-wish).
+* Odeslání návrhu nebo hlasování o funkcích a návrhy, najdete v tématu [webu zpětné vazby uživatelů Azure Logic Apps](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Další postup
 

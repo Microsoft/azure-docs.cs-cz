@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/24/2018
 ms.author: roiyz
-ms.openlocfilehash: 1201e7ec232a5bd45351072949dc0b9c19af434f
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 7396277c58b079dc2f0c68b7832a6f2ca57ee287
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452169"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212297"
 ---
 # <a name="custom-script-extension-for-windows"></a>Rozšíření vlastních skriptů pro Windows
 
@@ -73,7 +73,7 @@ Tyto položky by měly považovat za citlivá data a zadaný v konfiguraci chrá
 
 ```json
 {
-    "apiVersion": "2015-06-15",
+    "apiVersion": "2018-06-01",
     "type": "Microsoft.Compute/virtualMachines/extensions",
     "name": "config-app",
     "location": "[resourceGroup().location]",
@@ -108,7 +108,7 @@ Tyto položky by měly považovat za citlivá data a zadaný v konfiguraci chrá
 
 | Název | Hodnota / příklad | Typ dat |
 | ---- | ---- | ---- |
-| apiVersion | 2015-06-15 | datum |
+| apiVersion | 2015-06-15 | date |
 | vydavatele | Microsoft.Compute | řetězec |
 | type | CustomScriptExtension | řetězec |
 | typeHandlerVersion | 1.9 | int |
@@ -135,7 +135,10 @@ Nastavení veřejné odesílají ve formátu prostého textu do virtuálních po
 
 ## <a name="template-deployment"></a>Nasazení šablon
 
-Rozšíření virtuálního počítače Azure je možné nasadit s využitím šablon Azure Resource Manageru. Schéma JSON, které jsou podrobně popsané v předchozí části lze použít v šabloně Azure Resource Manageru pro spuštění pomocí rozšíření vlastních skriptů při nasazení šablony Azure Resource Manageru. Ukázková šablona, která zahrnuje rozšíření vlastních skriptů můžete najít zde, [Githubu](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-windows).
+Rozšíření virtuálního počítače Azure je možné nasadit s využitím šablon Azure Resource Manageru. Schéma JSON, které jsou podrobně popsané v předchozí části lze použít v šabloně Azure Resource Manageru pro spuštění pomocí rozšíření vlastních skriptů při nasazení šablony Azure Resource Manageru. Následující ukázky ukazují, jak použít rozšíření vlastních skriptů:
+
+* [Kurz: Nasazení rozšíření virtuálních počítačů pomocí šablon Azure Resource Manageru](../../azure-resource-manager/resource-manager-tutorial-deploy-vm-extensions.md)
+* [Nasaďte dvě vrstvy aplikace na Windows a Azure SQL DB](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-windows)
 
 ## <a name="powershell-deployment"></a>Nasazení pomocí Powershellu
 

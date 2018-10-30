@@ -1,7 +1,7 @@
 ---
 title: REST API (V4) - Go - QnA Maker
 titleSuffix: Azure Cognitive Services
-description: Získání informací o založené na protokolu REST a ukázky kódu, které vám pomohou rychle začít používat Microsoft Translator Text API ve službě Microsoft Cognitive Services v Azure.
+description: Získejte založené na protokolu REST G0 informace a ukázky kódu, které vám pomohou rychle začít používat Microsoft Translator Text API ve službě Microsoft Cognitive Services v Azure.
 services: cognitive-services
 author: diberry
 manager: cgronlun
@@ -10,17 +10,17 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 10/19/2018
 ms.author: diberry
-ms.openlocfilehash: 1b4f4c50c8c3fbdc2cc556705bdd446cb360ef2c
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: b9451d51bf0c0c684cebf89ad448b66fee59d9ea
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49650226"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210699"
 ---
 # <a name="qna-maker-rest-api-with-go"></a>Rozhraní REST API služby QnA Maker s využitím Go 
 <a name="HOLTop"></a>
 
-V tomto článku se dozvíte, jak pomocí [rozhraní API služby Microsoft QnA Maker](../Overview/overview.md) a Go provést následující postupy.
+V tomto článku se dozvíte, jak používat [API nástroje QnA Maker Microsoft](../Overview/overview.md) s využitím Go postupujte takto.
 
 - [Vytvoření nové znalostní báze](#Create)
 - [Aktualizace existující znalostní báze](#Update)

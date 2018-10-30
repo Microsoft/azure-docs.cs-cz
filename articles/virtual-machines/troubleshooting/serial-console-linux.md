@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/11/2018
 ms.author: harijay
-ms.openlocfilehash: bccf53ed5554579f4ff0a864c38562b7b7f0d3ca
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 57abb01d70929144a8457a04ebc0caf9aecaa61c
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48885285"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212399"
 ---
 # <a name="virtual-machine-serial-console"></a>Konzola sériového portu virtuálního počítače
 
@@ -217,5 +217,6 @@ A. V současné době se nepodporuje přístup ke konzole sériového portu pro 
 ## <a name="next-steps"></a>Další postup
 * Použití konzoly sériového portu k [spustí v GRUB a do režimu jednoho uživatele](serial-console-grub-single-user-mode.md)
 * Použití konzoly sériového portu pro [NMI a SysRq volání](serial-console-nmi-sysrq.md)
+* Další informace o použití konzoly sériového portu k [povolit GRUB v různých distribucích](https://blogs.msdn.microsoft.com/linuxonazure/2018/10/23/why-proactively-ensuring-you-have-access-to-grub-and-sysrq-in-your-linux-vm-could-save-you-lots-of-down-time/)
 * Je taky dostupná ke konzole sériového portu [Windows](../windows/serial-console.md) virtuálních počítačů
 * Další informace o [Diagnostika spouštění](boot-diagnostics.md)

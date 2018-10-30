@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 5/21/2018
+ms.date: 10/29/2018
 ms.topic: article
 ms.service: azure-blockchain
-ms.reviewer: zeyadr
+ms.reviewer: coborn
 manager: femila
-ms.openlocfilehash: 823bea9bac8ff270d5b5c02e3b76a2f7236c9c99
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: fa58ecf4607efc1d212e40b98d199756d4b987f8
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48242264"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50231793"
 ---
 # <a name="ethereum-proof-of-work-consortium-solution-template"></a>Šablona řešení ethereum během testování pracovní consortium
 
@@ -119,7 +119,7 @@ Pátý oblasti| Pátý oblast pro nasazení sítě konsorcia (viditelné pouze v
 
 ### <a name="network-size-and-performance"></a>Velikost síťových a výkonu
 
-V části Další **velikost a výkon sítě** zadejte vstupy pro velikost sítě konsorcia, jako je počet a velikost dolování uzly a uzly transakce.
+V části Další **velikost a výkon sítě** zadejte vstupy pro velikost sítě consortium. Například, počtu a velikosti dolování uzly a uzly transakce.
 
 ![Velikost síťových a výkonu](./media/ethereum-deployment/network-size-performance.png)
 
@@ -261,10 +261,10 @@ Dále naimportujte modul:
 
 Nakonec spusťte funkci pomocí odpovídající vstup:
 
-- **MyGatewayResourceId** : cestu prostředku brány. Toto je parametr výstupu šablony nasazení s názvem **CONSORTIUM_MEMBER_GATEWAY_ID**.
-- **OtherGatewayResourceId** : cestu prostředku brány připojující člena. To poskytuje spojovacího člena a má také parametr výstupu šablony nasazení z název **CONSORTIUM_MEMBER_GATEWAY_ID**.
-- **ConnectionName** : název k identifikaci tohoto připojení brány.
-- **Sdílený klíč** : předem zavedené tajný kód mezi dvěma členy sítě konsorcia, které jsou navazování připojení.
+- **MyGatewayResourceId:** cestu prostředku brány. Toto je parametr výstupu šablony nasazení s názvem **CONSORTIUM_MEMBER_GATEWAY_ID**.
+- **OtherGatewayResourceId:** cestu prostředku brány připojující člena. To poskytuje spojovacího člena a má také parametr výstupu šablony nasazení z název **CONSORTIUM_MEMBER_GATEWAY_ID**.
+- **ConnectionName:** název k identifikaci tohoto připojení brány.
+- **Sdílený klíč:** předem zavedené tajný kód mezi dvěma členy sítě konsorcia, které jsou navazování připojení.
 
 **CreateConnection** -MyGatewayResourceId <resource path of your Gateway> - OtherGatewayResourceId < cesta prostředku brány připojující člena > - ConnectionName Mojepripojeni - SharedKey "MySharedKeyAbc123"
 
@@ -274,11 +274,11 @@ Stáhněte si skript rozhraní příkazového řádku Azure a uložte ho místn�
 
 Spusťte skript s odpovídající vstup:
 
-- **MyGatewayResourceId** : cestu prostředku brány. Toto je parametr výstupu šablony nasazení s názvem **CONSORTIUM_MEMBER_GATEWAY_ID**.
-- **OtherGatewayResourceId** : cestu prostředku brány připojující člena. To, kterou pomocí spojovacího členu, je parametr šablony nasazení jejich nasazení také s názvem **CONSORTIUM_MEMBER_GATEWAY_ID**.
-- **ConnectionName** : název k identifikaci tohoto připojení brány.
-- **Sdílený klíč** : předem zavedené tajný kód mezi dvěma členy sítě konsorcia, které jsou navazování připojení.
-- **Umístění** : oblast Azure, které se nasadí váš prostředek brány.
+- **MyGatewayResourceId:** cestu prostředku brány. Toto je parametr výstupu šablony nasazení s názvem **CONSORTIUM_MEMBER_GATEWAY_ID**.
+- **OtherGatewayResourceId:** cestu prostředku brány připojující člena. To, kterou pomocí spojovacího členu, je parametr šablony nasazení jejich nasazení také s názvem **CONSORTIUM_MEMBER_GATEWAY_ID**.
+- **ConnectionName:** název k identifikaci tohoto připojení brány.
+- **Sdílený klíč:** předem zavedené tajný kód mezi dvěma členy sítě konsorcia, které jsou navazování připojení.
+- **Umístění:** oblasti Azure, ve které se nasadí váš prostředek brány.
 
 ``` powershell
 az network vpn-connection create --name $ConnectionName --resource-group
@@ -316,7 +316,7 @@ K instalaci rozšíření v prohlížeči Chrome, přejděte k přizpůsobení a
 
 ![MetaMask rozšíření](./media/ethereum-deployment/metamask-extension.png)
 
-Po instalaci otevřete MetaMask a vytvořte nový trezor. Ve výchozím nastavení připojí k testovací síti Morden trezoru. Je potřeba změnit pro připojení k síti nasazené privátní consortium, konkrétně pro vyrovnávání zatížení před uzly transakce. Z výstupu šablony načíst vystavené Etherea RPC koncový bod na port 8545, s názvem jako `ETHEREUM-RPC-ENDPOINT`a zadejte ho na vlastní RPC, jak je znázorněno níže.
+Po instalaci otevřete MetaMask a vytvořte nový trezor. Ve výchozím nastavení připojí k testovací síti Morden trezoru. Toto připojení k síti nasazené privátní consortium, konkrétně pro vyrovnávání zatížení před uzly transakce změňte. Z výstupu šablony načíst vystavené Etherea RPC koncový bod na port 8545, s názvem jako `ETHEREUM-RPC-ENDPOINT`a zadejte ho na vlastní RPC, jak je znázorněno níže.
 
 ![Nastavení MetaMask](./media/ethereum-deployment/metamask-settings.png)
 

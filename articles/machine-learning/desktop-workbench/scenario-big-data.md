@@ -17,12 +17,12 @@ ms.topic: article
 ms.date: 09/15/2017
 ms.author: daden
 ROBOTS: NOINDEX
-ms.openlocfilehash: 8f3bd4e62aa85c69a0bfafeacf13bc3e472136d5
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0d3c6b78944d9365d1e7e88ed33aba852b71a9c1
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46964697"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50232014"
 ---
 # <a name="server-workload-forecasting-on-terabytes-of-data"></a>Prognózování úloh serveru s terabajty dat
 
@@ -100,7 +100,7 @@ Spustit `git status` ke kontrole stavu souborů pro verzi sledování.
 
 ## <a name="data-description"></a>Popis dat
 
-Data použitá v tomto příkladu je dat syntetizovaný server úloh. Je hostován v účtu úložiště objektů Blob v Azure, který je veřejně přístupný v oblasti USA – východ. Informace o účtu konkrétní úložiště najdete v `dataFile` pole [ `Config/storageconfig.json` ](https://github.com/Azure/MachineLearningSamples-BigData/blob/master/Config/fulldata_storageconfig.json) ve formátu "wasb: / /<BlobStorageContainerName>@<StorageAccountName>.blob.core.windows.net/<path>". Můžete použít data přímo z úložiště objektů Blob. Pokud úložiště používá mnoho uživatelů současně, můžete použít [azcopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-linux) si chcete stáhnout data do vlastního úložiště pro lepší prostředí pro experimentování ve službě. 
+Data použitá v tomto příkladu je dat syntetizovaný server úloh. Je hostován v účtu úložiště objektů Blob v Azure, který je publicaly dostupné v oblasti USA – východ. Informace o účtu konkrétní úložiště najdete v `dataFile` pole [ `Config/storageconfig.json` ](https://github.com/Azure/MachineLearningSamples-BigData/blob/master/Config/fulldata_storageconfig.json) ve formátu "wasb: / /<BlobStorageContainerName>@<StorageAccountName>.blob.core.windows.net/<path>". Můžete použít data přímo z úložiště objektů Blob. Pokud úložiště používá mnoho uživatelů současně, můžete použít [azcopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-linux) si chcete stáhnout data do vlastního úložiště pro lepší prostředí pro experimentování ve službě. 
 
 Celkovou velikost dat je přibližně 1 TB. Každý soubor je přibližně 1 – 3 GB a je ve formátu souboru CSV, bez záhlaví. Každý řádek dat představuje zatížení transakce na konkrétním serveru. Podrobné informace o schématu dat je následující:
 

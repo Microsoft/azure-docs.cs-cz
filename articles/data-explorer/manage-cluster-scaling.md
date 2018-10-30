@@ -8,12 +8,12 @@ ms.service: data-explorer
 services: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 59a6a94e2906413423a4ae03a7c1c115b2ec0cc0
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: bd3be916587ab884ea5579234a6189af54b53797
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47047292"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50209203"
 ---
 # <a name="manage-cluster-scaling-to-accommodate-changing-demand"></a>Spravovat škálování clusteru tak, aby vyhovovaly měnících se požadavků
 
@@ -63,4 +63,4 @@ Následující obrázek znázorňuje tok následujících několika krocích. Da
 
 Nyní jste nakonfigurovali operace škálování pro váš cluster Průzkumník dat Azure. Přidáte další pravidlo pro operace škálování na méně instancí. To clusteru umožní škálování dynamicky na základě využití metrik, který zadáte.
 
-Pokud potřebujete pomoc s problémy škálování clusteru, otevřete prosím v žádosti o podporu [webu Azure portal](https://portal.azure.com).
+Pokud potřebujete pomoc s problémy škálování clusteru, otevřete prosím v žádosti o podporu [webu Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).

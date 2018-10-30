@@ -15,12 +15,12 @@ ms.date: 06/27/2018
 ms.author: barbkess
 ms.custom: it-pro
 ms.reviewer: harshja
-ms.openlocfilehash: 5d8af50e3007342a5cd46e4862623f2cf7145172
-ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
+ms.openlocfilehash: 388fd812185bc8bd2ef68a1dbcea6303d30dcdf3
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39480417"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50230785"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Publikování vzdálené plochy s Azure AD Application Proxy
 
@@ -97,6 +97,8 @@ Připojení k VP k nasazení jako správce a změňte název serveru služby Br�
    ```
    Set-RDSessionCollectionConfiguration -CollectionName "QuickSessionCollection" -CustomRdpProperty "pre-authentication server address:s:https://remotedesktoptest-aadapdemo.msappproxy.net/`nrequire pre-authentication:i:1"
    ```
+>[!NOTE]
+>Výše uvedený příkaz používá prvními v "" nrequire ".
 
 9. Ověření úprav vlastních vlastností RDP také zobrazit obsah souboru RDP, které budou staženy z RDWeb pro tuto kolekci, spusťte následující příkaz:
     ```

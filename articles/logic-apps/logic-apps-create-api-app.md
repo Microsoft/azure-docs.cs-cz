@@ -10,12 +10,12 @@ ms.reviewer: klam, jehollan, LADocs
 ms.topic: article
 ms.assetid: bd229179-7199-4aab-bae0-1baf072c7659
 ms.date: 05/26/2017
-ms.openlocfilehash: a761e384a356a0cbf5531eee7340ddbbd1526909
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: a3f837b41ba6ec7ecadb3e34917a8088e4d1e2d9
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43122242"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50233510"
 ---
 # <a name="create-custom-apis-you-can-call-from-azure-logic-apps"></a>Vytvoření vlastních rozhraní API můžete volat z Azure Logic Apps
 
@@ -41,7 +41,7 @@ Rozhraní API můžete hostovat na [služby Azure App Service](../app-service/ap
 > * [Python](../app-service/containers/quickstart-python.md)
 > * [Ruby](../app-service/containers/quickstart-ruby.md)
 >
-> Rozhraní API ukázky krásných aplikací s pro logic apps, najdete [úložiště Azure Logic Apps GitHub](http://github.com/logicappsio) nebo [blogu](http://aka.ms/logicappsblog).
+> Rozhraní API ukázky krásných aplikací s pro logic apps, najdete [úložiště Azure Logic Apps GitHub](http://github.com/logicappsio) nebo [blogu](https://aka.ms/logicappsblog).
 
 ## <a name="how-do-custom-apis-differ-from-custom-connectors"></a>Jak vlastní rozhraní API se liší od vlastní konektory?
 
@@ -167,7 +167,7 @@ Tady jsou konkrétní kroky cyklického dotazování aktivační události, je p
 
 | Najít nová data nebo událost?  | Odpověď rozhraní API | 
 | ------------------------- | ------------ |
-| Nalezeno | Vrátí HTTP `200 OK` stavu datové části odpovědi (vstup pro další krok). <br/>Tato odpověď vytvoří instanci aplikace logiky a spustí pracovní postup. | 
+| Najít | Vrátí HTTP `200 OK` stavu datové části odpovědi (vstup pro další krok). <br/>Tato odpověď vytvoří instanci aplikace logiky a spustí pracovní postup. | 
 | Nenalezeno | Vrátí HTTP `202 ACCEPTED` stavu `location` záhlaví a `retry-after` záhlaví. <br/>Aktivačních událostí `location` by měl také obsahovat záhlaví `triggerState` parametr dotazu, což je obvykle "timestamp." Vaše rozhraní API můžete použít tento identifikátor pro sledování posledního času, který se aktivuje aplikace logiky. | 
 ||| 
 
@@ -230,7 +230,7 @@ Zpřístupnit vaše vlastní rozhraní API pro všechny uživatele v Logic Apps,
 
 * Pokud máte dotazy, navštivte [fórum Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
 
-* Pokud chcete pomoci při vylepšování Logic Apps, hlasujte nebo zanechte své nápady na [webu zpětné vazby uživatelů Logic Apps](http://aka.ms/logicapps-wish). 
+* Pokud chcete pomoci při vylepšování Logic Apps, hlasujte nebo zanechte své nápady na [webu zpětné vazby uživatelů Logic Apps](https://aka.ms/logicapps-wish). 
 
 ## <a name="next-steps"></a>Další postup
 

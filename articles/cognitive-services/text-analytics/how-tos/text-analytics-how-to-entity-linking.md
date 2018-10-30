@@ -10,12 +10,12 @@ ms.component: text-analytics
 ms.topic: article
 ms.date: 10/01/2018
 ms.author: ashmaka
-ms.openlocfilehash: 42e1704df315c754b2b506a0470d128b7666c280
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: e81428d5bdffb65b5e61a7aba7496da275f249a5
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49645793"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50230552"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics-preview"></a>Použití s názvem rozpoznávání entit v rozhraní Text Analytics (Náhled)
 
@@ -95,7 +95,7 @@ Podrobnosti o definici žádosti najdete v článku o [volání rozhraní API pr
 
 + Vytvořte žádost **POST**. Projděte si dokumentaci k rozhraní API pro tuto žádost: [rozhraní API služby Entity Linking](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/5ac4251d5b4ccd1554da7634)
 
-+ Nastavte koncový bod HTTP pro extrakci klíčových frází. Musí obsahovat prostředek `/entities`: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1-preview/entities`
++ Nastavení koncového bodu HTTP pro extrakci entity. Musí obsahovat prostředek `/entities`: `https://[your-region].api.cognitive.microsoft.com/text/analytics/v2.1-preview/entities`.
 
 + Nastavte hlavičku žádosti tak, aby obsahovala přístupový klíč pro operace analýzy textu. Další informace najdete v článku, který se věnuje [vyhledání koncových bodů a přístupových klíčů](text-analytics-how-to-access-key.md).
 

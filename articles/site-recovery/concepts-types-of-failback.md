@@ -1,6 +1,6 @@
 ---
-title: Navrácení služeb po obnovení ve službě Azure Site Recovery | Dokumentace Microsoftu
-description: Tento článek obsahuje přehled různých typů navrácení služeb po obnovení a upozornění, aby bylo považováno za při selhání, zpět do místně pomocí služby Azure Site Recovery.
+title: Navrácení služeb po obnovení během zotavení po havárii pomocí Azure Site Recovery | Dokumentace Microsoftu
+description: Tento článek obsahuje přehled různých typů navrácení služeb po obnovení a upozornění, aby bylo považováno za při selhání zpátky do místního během zotavení po havárii pomocí služby Azure Site Recovery.
 services: site-recovery
 author: rajani-janaki-ram
 manager: guaravd
@@ -8,16 +8,16 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: rajanki
-ms.openlocfilehash: 2a9ee380fc16c4088d98875dd465509c4023d037
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: e97d736e7e117e0ccce6dc021a9de2ea15ac5484
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37920385"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210138"
 ---
 # <a name="overview-of-failback"></a>Přehled o navrácení služeb po obnovení
 
-Jakmile budete mít převzetí služeb při selhání do Azure, můžete navrátit služby zpět do místní lokality. Existují dva různé typy navrácení služeb po obnovení, které je možné pomocí Azure Site Recovery: 
+Poté, co jste převzetí služeb při selhání do Azure jako součást procesu obnovení po havárii, můžete navrátit služby zpět do místní lokality. Existují dva různé typy navrácení služeb po obnovení, které je možné pomocí Azure Site Recovery: 
 
 - Navrácení služeb po obnovení do původního umístění 
 - Navrácení služeb po obnovení alternativního umístění

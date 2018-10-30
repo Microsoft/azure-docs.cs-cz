@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 08/20/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: a63bd8e3b071ed996db8ad5aeaeb5e451b4d92e9
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: bb00ef0f76b71d0a4748a319c9f2a5d64dffa251
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42058688"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50233306"
 ---
 # <a name="add-and-run-custom-code-snippets-in-azure-logic-apps-with-azure-functions"></a>Přidání a spuštění vlastních fragmentech kódu v Azure Logic Apps s využitím Azure Functions
 
@@ -214,7 +214,7 @@ Pokud ji chcete spustit aplikaci logiky z uvnitř funkce Azure, aplikace logiky 
 ## <a name="get-support"></a>Získat podporu
 
 * Pokud máte dotazy, navštivte [fórum Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-* Pokud chcete zanechat své nápady na funkce nebo hlasovat, navštivte [web zpětné vazby od uživatelů Logic Apps](http://aka.ms/logicapps-wish).
+* Pokud chcete zanechat své nápady na funkce nebo hlasovat, navštivte [web zpětné vazby od uživatelů Logic Apps](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Další postup
 

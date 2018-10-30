@@ -1,29 +1,22 @@
 ---
-title: Replikovat vícevrstvé Citrix XenDesktop a XenApp nasazení pomocí Azure Site Recovery | Dokumentace Microsoftu
-description: Tento článek popisuje, jak chránit a obnovit Citrix XenDesktop a XenApp nasazení s využitím Azure Site Recovery.
-services: site-recovery
-documentationcenter: ''
+title: Nastavení zotavení po havárii pro vícevrstvou Citrix XenDesktop XenApp nasazení a používání služby Azure Site Recovery | Dokumentace Microsoftu
+description: Tento článek popisuje, jak nastavit zotavení po havárii fo Citrix XenDesktop a XenApp nasazení s využitím Azure Site Recovery.
 author: ponatara
 manager: abhemraj
-editor: ''
-ms.assetid: 9126f5e8-e9ed-4c31-b6b4-bf969c12c184
 ms.service: site-recovery
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: ponatara
-ms.openlocfilehash: 45d366842416ddfa7b0153a1d075ee6de58e45a1
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 0b8d9765766191533745da4c653f1a91ce635c24
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39213629"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210308"
 ---
-# <a name="replicate-a-multi-tier-citrix-xenapp-and-xendesktop-deployment-using-azure-site-recovery"></a>Replikovat vícevrstvé Citrix XenApp a XenDesktop nasazení pomocí Azure Site Recovery
+# <a name="set-up-disaster-recovery-for-a-multi-tier-citrix-xenapp-and-xendesktop-deployment"></a>nastavení zotavení po havárii pro vícevrstvou nasazení Citrix XenApp a XenDesktop
 
-## <a name="overview"></a>Přehled
+
 
 Citrix XenDesktop je virtualizace plochy u řešení, která poskytuje plochy a aplikace jako služby ondemand s žádným uživatelem, kdekoli. S technologií doručování FlexCast XenDesktop můžete rychle a bezpečně doručovat aplikacím a plochám uživatelům.
 V současné době Citrix XenApp neposkytuje každé havárie funkcím pro obnovení.
@@ -46,7 +39,7 @@ Než začnete, ujistěte se, že rozumíte následující:
 
 ## <a name="deployment-patterns"></a>Modely nasazení
 
-Citrix XenApp a XenDesktop farmy obvykle obsahuje následující vzor nasazení:
+Citrix XenApp a XenDesktop farmy mají obvykle vzor následující nasazení:
 
 **Nasazení modelu**
 
@@ -75,7 +68,7 @@ Protože XenApp 7,7 nebo vyšší je podporovaná v Azure, nasazení jenom s tě
 
 1. Ochrana a obnovení místních nasazení operačního systému serveru pomocí počítačů k zajištění XenApp publikované aplikace a XenApp publikované stolní počítače podporována.
 
-2. Ochrana a obnovení místních nasazení doručování infrastruktury virtuálních klientských počítačů Desktop pro klienta virtuálních klientů, včetně Windows 10 s využitím stolní počítače s operačním systémem se nepodporuje. Je to proto, že Azure Site Recovery nepodporuje obnovení počítačů v desktopu OS'es.  Navíc některé virtuální plochy operační systémy (např.) Windows 7) se zatím nepodporují pro licencování v Azure. [Další informace](https://azure.microsoft.com/pricing/licensing-faq/) týkající se licencování pro plochy klienta nebo serveru v Azure
+2. Ochrana a obnovení místních nasazení doručování infrastruktury virtuálních klientských počítačů Desktop pro klienta virtuálních klientů, včetně Windows 10 s využitím stolní počítače s operačním systémem se nepodporuje. Je to proto Site Recovery nepodporuje obnovení počítačů v desktopu OS'es.  Navíc některé virtuální plochy operační systémy (např.) Windows 7) se zatím nepodporují pro licencování v Azure. [Další informace](https://azure.microsoft.com/pricing/licensing-faq/) týkající se licencování pro plochy klienta nebo serveru v Azure
 
 3.  Azure Site Recovery nejde replikovat a chránit existující místní relace s více Připojeními nebo systémy současné hodnoty duplicity.
 Budete muset znovu vytvořit tyto klony pomocí Azure RM zřizování z kontroler doručování.
@@ -152,7 +145,7 @@ Plány obnovení je možné přizpůsobit a přidejte skupiny převzetí služeb
 
 ### <a name="adding-scripts-to-the-recovery-plan"></a>Přidávání skriptů do plánu obnovení
 
-Skripty můžete spustit před nebo po konkrétní skupinu v plánu obnovení. Ručně prováděné akce může být také být zahrnuté a prováděné během převzetí služeb při selhání.
+Skripty můžete spustit před nebo po konkrétní skupinu v plánu obnovení. Ručně prováděné akce můžete také zahrnout a prováděné během převzetí služeb při selhání.
 
 Plán vlastní obnovení bude vypadat jako následující:
 
@@ -163,20 +156,20 @@ Plán vlastní obnovení bude vypadat jako následující:
    >[!NOTE]     
    >Kroky 4, 6 a 7 obsahující ruční nebo skript akce se vztahují na pouze XenApp v místním > prostředí s MCS nebo systémy současné hodnoty katalogů.
 
-4. Ruční nebo skript akce skupiny 3: vypnutí hlavní VDA virtuální počítač hlavního VDA virtuálního počítače po převzetí služeb při selhání do Azure budou ve spuštěném stavu. K vytvoření nové relace s více Připojeními katalogy používající hostování Azure ARM, je hlavním virtuálním počítači VDA musí být v zastaveném (de přidělené) stavu. Vypnutí virtuálního počítače z webu Azure Portal.
+4. Ruční nebo skript akce skupiny 3: vypnutí hlavní VDA virtuální počítač hlavního VDA virtuálního počítače po převzetí služeb při selhání do Azure budou ve spuštěném stavu. K vytvoření nové relace s více Připojeními katalogy používající hostování Azure, je hlavním virtuálním počítači VDA musí být v zastaveném (de přidělené) stavu. Vypnutí virtuálního počítače z webu Azure portal.
 
 5. Skupina převzetí služeb při selhání 4: Kontroler doručování a virtuální počítače z prodejních míst serveru
 6. Skupina3 ruční nebo skript akce 1:
 
     ***Přidat připojení hostitele Azure RM***
 
-    Vytvořte připojení hostitele Azure ARM v počítači Kontroleru doručování zřídit nové relace s více Připojeními katalogy v Azure. Postupujte podle pokynů, jak je popsáno v tomto [článku](https://www.citrix.com/blogs/2016/07/21/connecting-to-azure-resource-manager-in-xenapp-xendesktop/).
+    V počítači Kontroleru doručování zřídit nové relace s více Připojeními katalogy v Azure vytvořte připojení hostitele Azure. Postupujte podle pokynů, jak je popsáno v tomto [článku](https://www.citrix.com/blogs/2016/07/21/connecting-to-azure-resource-manager-in-xenapp-xendesktop/).
 
 7. Skupina3 ruční nebo skript akce 2:
 
     ***Znovu vytvořit relace s více Připojeními katalogy v Azure***
 
-    Existující relace s více Připojeními nebo systémy současné hodnoty duplicity v primární lokalitě, nebude možné replikovat do Azure. Budete muset znovu vytvořit tyto klony pomocí replikovaná hlavní VDA a Azure ARM zřizování z kontroler doručování. Postupujte podle pokynů, jak je popsáno v tomto [článku](https://www.citrix.com/blogs/2016/09/12/using-xenapp-xendesktop-in-azure-resource-manager/) k vytvoření relace s více Připojeními katalogy v Azure.
+    Existující relace s více Připojeními nebo systémy současné hodnoty duplicity v primární lokalitě, nebude možné replikovat do Azure. Budete muset znovu vytvořit tyto klony pomocí replikovaná hlavní VDA a zřizování z kontroler doručování Azure. Postupujte podle pokynů, jak je popsáno v tomto [článku](https://www.citrix.com/blogs/2016/09/12/using-xenapp-xendesktop-in-azure-resource-manager/) k vytvoření relace s více Připojeními katalogy v Azure.
 
 ![Plán obnovení pro součásti XenApp](./media/site-recovery-citrix-xenapp-and-xendesktop/citrix-recoveryplan.png)
 

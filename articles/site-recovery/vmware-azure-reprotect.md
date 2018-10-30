@@ -1,21 +1,20 @@
 ---
-title: Znovunastavení ochrany virtuálních počítačů z Azure do místní lokality | Dokumentace Microsoftu
-description: Po převzetí služeb při selhání virtuálních počítačů do Azure můžete zahájit navrácení služeb po obnovení přenést virtuální počítače zpět do místní. Zjistěte, jak znovu nastavit ochranu před navrácení služeb po obnovení.
-services: site-recovery
+title: Znovunastavení ochrany virtuálních počítačů z Azure do místní lokality během zotavení po havárii virtuálních počítačů VMware a fyzických serverů | Dokumentace Microsoftu
+description: Po převzetí služeb při selhání do Azure během zotavení po havárii virtuálních počítačů VMware a fyzických serverů zjistěte, jak převzít služby při obnovení z Azure do místní lokality.
 author: rajani-janaki-ram
 manager: gauravd
 ms.service: site-recovery
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: rajanaki
-ms.openlocfilehash: 1b410b2832d856f80d640aab2096fef270156c81
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 3f661ab5ff2a127ba7507a64bb4520cbad740473
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39346675"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50213283"
 ---
-# <a name="reprotect-machines-from-azure-to-an-on-premises-site"></a>Znovunastavení ochrany počítačů z Azure do místní lokality
+# <a name="reprotect-and-fail-back-machines-to-an-on-premises-site-after-failover-to-azure"></a>Znovunastavení ochrany a navrácení služeb po back počítače k místní lokalitě po převzetí služeb při selhání do Azure
 
 Po [převzetí služeb při selhání](site-recovery-failover.md) místních virtuálních počítačů VMware nebo fyzických serverů do Azure, je prvním krokem při selhání, zpět do místní lokality k znovunastavení ochrany virtuálních počítačů Azure, které se vytvořily během převzetí služeb při selhání. Tento článek popisuje, jak to provést. 
 

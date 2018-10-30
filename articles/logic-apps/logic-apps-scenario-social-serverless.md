@@ -10,12 +10,12 @@ ms.reviewer: estfan, LADocs
 ms.assetid: d565873c-6b1b-4057-9250-cf81a96180ae
 ms.topic: article
 ms.date: 03/15/2018
-ms.openlocfilehash: 6ba274bb3ff3679b4a44950db168215c54f3ade6
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 1c8abc153084f0c6491cab3677b93f8c450ad908
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44299742"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50229413"
 ---
 # <a name="create-streaming-customer-insights-dashboard-with-azure-logic-apps-and-azure-functions"></a>Vytvoření datových proudů řídicí panel přehledů o zákazníků s Azure Logic Apps a Azure Functions
 
@@ -26,7 +26,7 @@ Služba Azure Logic Apps poskytuje modul pracovních postupů bez serveru v clou
 
 V tomto scénáři vytvoříte aplikaci logiky, která aktivuje na hledání zpětnou vazbu od zákazníků. Některé konektory, zahrnují pomoc reagovat na názory zákazníků služby Outlook.com, Office 365, opic průzkumu, Twitter a [požadavku HTTP z webového formuláře](https://blogs.msdn.microsoft.com/logicapps/2017/01/30/calling-a-logic-app-from-an-html-form/). Pracovní postup, který vytvoříte monitoruje hashtagu na Twitteru.
 
-Je možné [sestavte celé řešení v sadě Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md) a [řešení můžete nasadit pomocí šablony Azure Resource Manageru](../logic-apps/logic-apps-create-deploy-template.md). Video návod, který ukazuje, jak vytvořit toto řešení [v tomto videu Channel 9](http://aka.ms/logicappsdemo). 
+Je možné [sestavte celé řešení v sadě Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md) a [řešení můžete nasadit pomocí šablony Azure Resource Manageru](../logic-apps/logic-apps-create-deploy-template.md). Video návod, který ukazuje, jak vytvořit toto řešení [v tomto videu Channel 9](https://aka.ms/logicappsdemo). 
 
 ## <a name="trigger-on-customer-data"></a>Aktivovat podle zákaznická data
 

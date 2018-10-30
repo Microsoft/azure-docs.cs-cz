@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/08/2018
 ms.author: glenga
-ms.openlocfilehash: 704a41ec840e2a252a1bbb5c20688f722bd0cdfd
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 7a049a1fb57d65824fa2c44b40d3d51083459973
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48887032"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50232237"
 ---
 # <a name="hostjson-reference-for-azure-functions"></a>referenční materiály k Host.JSON pro Azure Functions
 
@@ -195,7 +195,7 @@ Volání funkce se agregují při první z nich omezuje se dosáhne.
 
 ## <a name="applicationinsights"></a>applicationInsights
 
-Ovládací prvky [vzorkování funkcí ve službě Application Insights](functions-monitoring.md#configure-sampling). Ve verzi 2.x, toto nastavení je podřízeným prvkem [protokolování](#log).
+Ovládací prvky [vzorkování funkcí ve službě Application Insights](functions-monitoring.md#configure-sampling). Ve verzi 2.x, toto nastavení je podřízeným prvkem [protokolování](#logging).
 
 ```json
 {

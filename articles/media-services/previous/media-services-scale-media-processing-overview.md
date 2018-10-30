@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/25/2018
+ms.date: 10/29/2018
 ms.author: juliako
-ms.openlocfilehash: 1d626a22802a1de19bcc5647179d76d44e826cfd
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: f15ba7606136786b49eb4d6a0da097e7abf3fab4
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50159039"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50231657"
 ---
 # <a name="scaling-media-processing-overview"></a>Přehled škálování zpracování médií
 Tato stránka poskytuje přehled toho, jak a proč ke škálování zpracování médií. 
@@ -33,7 +33,7 @@ V následující tabulce umožňuje rozhodování při výběru mezi různými r
 
 |Typ RU|Scénář|Příklad výsledků pro [7 min 1080 p videa](https://nimbuspmteam.blob.core.windows.net/asset-46f1f723-5d76-477e-a153-3fd0f9f90f73/SeattlePikePlaceMarket_7min.ts?sv=2015-07-08&sr=c&si=013ab6a6-5ebf-431e-8243-9983a6b5b01c&sig=YCgEB8DxYKK%2B8W9LnBykzm1ZRUTwQAAH9QFUGw%2BIWuc%3D&se=2118-09-21T19%3A28%3A57Z)|
 |---|---|---|
-| **S1**|Kódování s jednou přenosovou rychlostí. <br/>Soubory na SD nebo nižší rozlišení, není čas citlivé, s nízkými náklady.|Kódování s jednou přenosovou rychlostí soubor MP4, ve stejném rozlišení trvá přibližně 5 minut.|
+| **S1**|Kódování s jednou přenosovou rychlostí. <br/>Soubory na SD nebo nižší rozlišení, není čas citlivé, s nízkými náklady.|Kódování na jednoduché s přenosovou rychlostí SD řešení soubor MP4 pomocí "H264 jeden s přenosovou rychlostí SD 16 x 9" má 10 minut.|
 | **S2**|S jednou přenosovou rychlostí a více s přenosovou rychlostí s kódováním.<br/>Normální využívání SD a HD, High Density kódování.|Kódování pomocí "H264 s jednou přenosovou rychlostí 720p" přednastavení trvá přibližně 8 minut.<br/><br/>Kódování pomocí "H264 Multiple Bitrate 720p" přednastavení trvá přibližně 16.8 minut.|
 | **S3**|S jednou přenosovou rychlostí a více s přenosovou rychlostí s kódováním.<br/>Úplné HD, High Density a 4 kB videa s rozlišením. Čas, po vyřízení citlivé a rychlejší kódování.|Kódování pomocí "H264 s jednou přenosovou rychlostí 1080p" přednastavení trvá přibližně 4 minuty.<br/><br/>Kódování pomocí "H264 Multiple Bitrate 1080p" přednastavení trvá přibližně 8 minut.|
 

@@ -1,24 +1,24 @@
 ---
 title: Architektura replikace z Azure do Azure ve službě Azure Site Recovery | Dokumentace Microsoftu
-description: Tento článek obsahuje přehled komponent a architektury používané při replikaci virtuálních počítačů Azure mezi oblastmi Azure pomocí služby Azure Site Recovery.
+description: Tento článek obsahuje přehled komponent a architektury používané při nastavování zotavení po havárii mezi oblastmi Azure pro virtuální počítače Azure pomocí služby Azure Site Recovery.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/10/2018
+ms.date: 10/28/2018
 ms.author: raynew
-ms.openlocfilehash: 20387c325497934ccb2e02188b24a0125f937e00
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 0069ece5d02ad52b6fea9add7817e63fa3c412b6
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078253"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212723"
 ---
-# <a name="azure-to-azure-replication-architecture"></a>Architektura replikace z Azure do Azure
+# <a name="azure-to-azure-disaster-recovery-architecture"></a>Architektura pro zotavení po havárii Azure do Azure
 
 
-Tento článek popisuje architektury používané při replikaci, převzetí služeb při selhání a obnovovat virtuální počítače Azure (VM) mezi oblastmi Azure pomocí [Azure Site Recovery](site-recovery-overview.md) služby.
+Tento článek popisuje architektury používané při nasazení zotavení po havárii pomocí replikace, převzetí služeb při selhání a obnovení virtuálních počítačů Azure (VM) mezi oblastmi Azure pomocí [Azure Site Recovery](site-recovery-overview.md) služby.
 
 
 

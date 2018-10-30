@@ -1,20 +1,20 @@
 ---
-title: Z fyzického serveru do architektury Azure replikace ve službě Azure Site Recovery | Dokumentace Microsoftu
-description: Tento článek obsahuje přehled komponent a architektury používané při replikaci místních fyzických serverů do Azure pomocí služby Azure Site Recovery
+title: Architektura pro zotavení po havárii fyzického serveru do Azure pomocí Azure Site Recovery | Dokumentace Microsoftu
+description: Tento článek obsahuje přehled komponent a architektury používané při zotavení po havárii místních fyzických serverů do Azure pomocí služby Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/10/2018
+ms.date: 10/28/2018
 ms.author: raynew
-ms.openlocfilehash: 15e8e9ce7b12585f7ea89a0440fdb93cfb171feb
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 9dd60e31867e874ba59a6e2084714a22b661afdd
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49077035"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50213045"
 ---
-# <a name="physical-server-to-azure-replication-architecture"></a>Z fyzického serveru do Azure replikace architektury
+# <a name="physical-server-to-azure-disaster-recovery-architecture"></a>Fyzický server architektury pro zotavení po havárii Azure
 
 Tento článek popisuje, architektury a procesy používané při replikaci, převzetí služeb při selhání a obnovení fyzických serverů s Windows nebo Linuxem mezi místní lokalitou a Azure, pomocí [Azure Site Recovery](site-recovery-overview.md) služby.
 

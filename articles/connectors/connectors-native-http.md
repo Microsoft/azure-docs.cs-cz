@@ -11,12 +11,12 @@ ms.assetid: e11c6b4d-65a5-4d2d-8e13-38150db09c0b
 ms.topic: article
 tags: connectors
 ms.date: 08/25/2018
-ms.openlocfilehash: 95a039c990dc9b6c852a69518f0a71c51a4747b7
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 1c30f77c061ec25c88186caee3f60e65f3afb3de
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44302618"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50232864"
 ---
 # <a name="call-http-or-https-endpoints-with-azure-logic-apps"></a>Volání koncových bodů HTTP nebo HTTPS s Azure Logic Apps
 
@@ -84,7 +84,7 @@ Pokud chcete nastavit ověřování, zvolte **zobrazit pokročilé možnosti** u
 ## <a name="get-support"></a>Získat podporu
 
 * Pokud máte dotazy, navštivte [fórum Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-* Pokud chcete zanechat své nápady na funkce nebo hlasovat, navštivte [web zpětné vazby od uživatelů Logic Apps](http://aka.ms/logicapps-wish).
+* Pokud chcete zanechat své nápady na funkce nebo hlasovat, navštivte [web zpětné vazby od uživatelů Logic Apps](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Další postup
 

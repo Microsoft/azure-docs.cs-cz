@@ -6,22 +6,29 @@ author: adiganmsft
 manager: shivamg
 ms.service: backup
 ms.topic: conceptual
-ms.date: 07/26/2018
+ms.date: 10/29/2018
 ms.author: adigan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0c1d7a404ffd9b4da4868f56a5e17300495b57db
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: 945a91b9021ed5ff02e8c1ef7baf85e2098202ca
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48269356"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50214660"
 ---
 # <a name="configure-azure-backup-reports"></a>Konfigurace sestav Azure Backup
 Tento článek popisuje postup konfigurace sestav Azure Backup pomocí trezoru služby Recovery Services. Také ukazuje, jak získat přístup k sestavám pomocí Power BI. Po dokončení těchto kroků můžete přejít přímo do Power BI k zobrazení, přizpůsobení a vytváření sestav.
 
+> [!IMPORTANT]
+> Od 1. listopadu 2018 někteří zákazníci mohou podívejte se na problémy při načítání dat v aplikaci Azure Backup v Power BI, jak říkáte "jsme našli nějaké znaky navíc na konci vstupu JSON. Výjimku vyvolalo rozhraní IDataReader."
+Toto je z důvodu změn ve formátu, ve kterém se data načtou do účtu úložiště.
+Upgradujte prosím aplikaci na nejnovější verzi, které se chcete vyhnout tomuto problému.
+>
+>
+
 ## <a name="supported-scenarios"></a>Podporované scénáře
 - Sestavy Azure Backup podporuje pro zálohování virtuálních počítačů Azure a souborům a složkám zálohování do cloudu pomocí agenta Azure Recovery Services.
-- Sestavy pro Azure SQL Database, Data Protection Manager a Azure Backup server nejsou v tuto chvíli nepodporuje.
+- Sestavy pro Azure SQL Database, sdílených složek Azure, Data Protection Manager a Azure Backup serveru nejsou v tuto chvíli nepodporuje.
 - Sestavy můžete zobrazit napříč trezory a předplatných, je-li stejný účet úložiště je nakonfigurovaný pro všechny tyto trezory. Vybraný účet úložiště musí být ve stejné oblasti jako trezor služby Recovery Services.
 - Četnost naplánované aktualizace pro sestavy je 24 hodin v Power BI. Můžete také provést aktualizaci ad-hoc sestav v Power BI. V takovém případě nejnovější data v účtu úložiště zákazníka slouží k vykreslení sestavy.
 

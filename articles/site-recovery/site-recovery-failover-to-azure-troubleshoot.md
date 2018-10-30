@@ -1,25 +1,18 @@
 ---
-title: Řešení potíží s převzetí služeb při selhání do Azure selhání | Dokumentace Microsoftu
-description: Tento článek popisuje, jak řešit běžné chyby v přebírání služeb při selhání do Azure
-services: site-recovery
-documentationcenter: ''
+title: Řešení potíží s převzetí služeb při selhání do Azure | Dokumentace Microsoftu
+description: Tento článek popisuje, jak řešit běžné problémy během převzetí služeb při selhání do Azure pomocí Azure Site Recovery.
 author: ponatara
 manager: abhemraj
-editor: ''
-ms.assetid: ''
 ms.service: site-recovery
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
 ms.date: 09/11/2018
 ms.author: ponatara
-ms.openlocfilehash: 6be71424e30c5783a03b157171b3f5acd0160e65
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: de0b3a51ae7c7cca91366b955c5fa74963d95d27
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391006"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50211668"
 ---
 # <a name="troubleshoot-errors-when-failing-over-a-virtual-machine-to-azure"></a>Řešení chyb při selhání virtuálního počítače do Azure
 
@@ -86,7 +79,7 @@ Při spouštění virtuálním počítači Windows příspěvek převzetí služ
 To není obvykle příčinou znepokojení a obvykle se dá ignorovat pro neplánované převzetí služeb při selhání. V případě plánované převzetí služeb při selhání Ujistěte se, že virtuální počítač je správně vypnutý před převzetí služeb při selhání a poskytnout dostatek času na probíhající replikaci dat v místním k odeslání do Azure. Potom použijte **nejnovější** možnost [převzetí služeb při selhání obrazovky](site-recovery-failover.md#run-a-failover) tak, aby všechny čekající data v Azure je zpracován do bodu obnovení, který potom slouží pro převzetí služeb při selhání virtuálního počítače.
 
 ## <a name="retaining-drive-letter-after-failover"></a>Zachování písmeno jednotky po převzetí služeb při selhání
-Pokud chcete zachovat písmeno jednotky na virtuální počítače po převzetí služeb při selhání, můžete nastavit **zásada SAN** pro virtuální počítač místní k **OnlineAll**. [Přečtěte si další informace](https://support.microsoft.com/help/3031135/how-to-preserve-the-drive-letter-for-protected-virtual-machines-that-are-failed-over-or-migrated-to-azure).
+Pokud chcete zachovat písmeno jednotky na virtuální počítače po převzetí služeb při selhání, můžete nastavit **zásada SAN** pro virtuální počítač místní k **OnlineAll**. [Další informace](https://support.microsoft.com/help/3031135/how-to-preserve-the-drive-letter-for-protected-virtual-machines-that-are-failed-over-or-migrated-to-azure).
 
 ## <a name="next-steps"></a>Další postup
 - Řešení potíží s [připojení RDP k virtuálnímu počítači Windows](../virtual-machines/windows/troubleshoot-rdp-connection.md)

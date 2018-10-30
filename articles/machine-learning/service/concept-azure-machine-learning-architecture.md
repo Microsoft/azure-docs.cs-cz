@@ -9,12 +9,12 @@ ms.author: haining
 author: hning86
 ms.reviewer: larryfr
 ms.date: 10/24/2018
-ms.openlocfilehash: b00f72c987b6ce8c44796bd036af670ec39fa7a6
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 95f74b23b9d0c89966347f066041b23f64f3b82c
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50093628"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210682"
 ---
 # <a name="how-the-azure-machine-learning-service-works-architecture-and-concepts"></a>Fungování služby Azure Machine Learning: architektura a koncepty
 
@@ -143,7 +143,7 @@ Spuštění je záznam, který obsahuje následující informace:
 
 * Metadata o spuštění (časové razítko, dobu trvání atd.)
 * Metriky, které jsou zapsané podle vašeho skriptu
-* Výstupní soubory automaticky shromažďovaných experiment, nebo explicitně nahrát sami.
+* Výstupní soubory autocollected podle testu, nebo explicitně nahrát sami.
 * Snímek adresáře, který obsahuje vaše skripty před spuštění
 
 Spuštění je vytvořen, když odešlete skript pro trénování modelu. Spuštění může mít nula nebo více podřízených spuštění. Takže nejvyšší úrovně spuštění může mít dvě podřízené spuštění, z nichž každá může mít vlastní podřízená úloha poběží.
@@ -156,23 +156,28 @@ Experiment je seskupení mnoho spuštění z daného skriptu. Vždy patří do p
 
 Příklad použití experiment, najdete v článku [rychlý start: Začínáme se službou Azure Machine Learning](quickstart-get-started.md) dokumentu.
 
-
 ## <a name="pipelines"></a>Kanály
 
-Kanály se používají k vytváření a správě pracovních postupů této fáze spojit dohromady machine learning (ML) například přípravy dat, trénování modelu, model nasazení a odvozování. Jednotlivé fáze může zahrnovat několik kroků, z nichž každý lze spustit bezobslužně v různých cílových výpočetních prostředí.
+Kanály se používají k vytváření a správě pracovních postupů, které spojit dohromady služby machine learning fází. Kanál může obsahovat například přípravy dat, trénování modelu, model nasazení a odvozování fází. Jednotlivé fáze může zahrnovat několik kroků, z nichž každý lze spustit bezobslužně v různých cílových výpočetních prostředí.
 
 Další informace o machine learning kanály pomocí této služby najdete v článku [kanály a Azure Machine Learning](concept-ml-pipelines.md).
 
 ## <a name="compute-target"></a>Cílové výpočetní prostředí
 
-Cílové výpočetní prostředí je výpočetní prostředek, který používá ke spuštění trénovací skript nebo hostovat vaše nasazení webové služby. Cílových podporovaných výpočetních prostředí jsou: 
+Cílové výpočetní prostředí je výpočetní prostředek, který používá ke spuštění trénovací skript nebo hostovat vaše nasazení služby. Cílových podporovaných výpočetních prostředí jsou: 
 
-* Místního počítače
-* Virtuální počítač s Linuxem v Azure (například virtuální počítač pro datové vědy)
-* Cluster služby Azure Batch AI
-* Apache Spark pro HDInsight
-* Instance kontejneru Azure
-* Azure Kubernetes Service
+| Cílové výpočetní prostředí | Školení | Nasazení |
+| ---- |:----:|:----:|
+| Místního počítače | ✓ | &nbsp; |
+| Virtuální počítač s Linuxem v Azure</br>(například virtuální počítač pro datové vědy) | ✓ | &nbsp; |
+| Cluster služby Azure Batch AI | ✓ | &nbsp; |
+| Azure Databricks | ✓ | &nbsp; | &nbsp; |
+| Azure Data Lake Analytics | ✓ | &nbsp; |
+| Apache Spark pro HDInsight | ✓ | &nbsp; |
+| Instance kontejneru Azure | ✓ | ✓ |
+| Azure Kubernetes Service | &nbsp; | ✓ |
+| Azure IoT Edge | &nbsp; | ✓ |
+| Project Brainwave</br>(Field-programmable gate array) | &nbsp; | ✓ |
 
 Cílových výpočetních prostředí jsou připojeny k pracovnímu prostoru. Výpočetní cíle než v místním počítači sdílejí uživatelé pracovního prostoru.
 
@@ -194,7 +199,7 @@ Příklad konfigurace spuštění, najdete v článku [výběr a použití cílo
 
 Pro trénování modelu, určíte adresář, který obsahuje skript školení a přidružené soubory. Můžete také zadat název experimentu, který se používá k uložení informace shromážděné během cvičení. Při školení, celý adresář se zkopíruje do prostředí pro školení (cílové výpočetní prostředí) a spuštění skriptu. určené konfigurace spuštění. Snímek adresáře je také uložen v rámci testu v pracovním prostoru.
 
-Příklad použití skriptů k natrénování modelu, naleznete v tématu [vytvořit pracovní prostor s využitím Pythonu](quickstart-get-started.md)
+Příklad najdete v tématu [vytvořit pracovní prostor s využitím Pythonu](quickstart-get-started.md)
 
 ## <a name="logging"></a>Protokolování
 

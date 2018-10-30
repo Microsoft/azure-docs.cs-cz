@@ -15,12 +15,12 @@ ms.workload: mobile
 ms.custom: vs-azure
 ms.date: 12/16/2015
 ms.author: mlearned
-ms.openlocfilehash: 6cceb760ab62ea4f7225c9cc0cee7a6baf8ed8be
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: a1b2524b059601e1f6f999af7a9d9e063f7c0420
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42442207"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50233442"
 ---
 # <a name="adding-mobile-services-by-using-visual-studio-connected-services"></a>Přidání Mobile Services pomocí připojených služeb sady Visual Studio
 Pomocí sady Visual Studio 2015, můžete připojit pomocí Azure Mobile Services **přidat připojenou službu** dialogového okna. Můžete připojit z jakékoli klientské aplikace C#, všechny Javascriptové aplikace nebo aplikace Cordova pro různé platformy. Když se připojíte, můžete vytvořit a přístup k datům, vytvořte vlastní rozhraní API a naplánované úlohy nebo přidat podporu pro nabízená oznámení.  Operace připojené služby přidá všechny příslušné odkazy a připojovací kód. Můžete také využít výhody integrované podpory pro ověřování s řadou oblíbených schémat identity, jako je Azure AD, Facebook, Twitter a Microsoft Accounts.
@@ -68,7 +68,7 @@ Dialogové okno připojené služby můžete použít pro připojení k Azure Mo
 6. Pomocí ukázky kódu a jako vodítko, začněte psát kód pro přístup k mobilní službě.
 
 ## <a name="how-your-project-is-modified"></a>Jak se váš projekt změnil
-Jak Visual Studio změní projekt, závisí na typu projektu. C# klientských aplikací, najdete v části [co se stalo – projekty jazyka C#](http://go.microsoft.com/fwlink/p/?LinkId=513119). JavaScript klientských aplikací, najdete v části [co se stalo – projekty jazyka JavaScript](http://go.microsoft.com/fwlink/p/?LinkId=513120). Aplikace Cordova, naleznete v tématu [co se stalo – projekty Cordova](http://go.microsoft.com/fwlink/p/?LinkId=513116).
+Jak Visual Studio změní projekt, závisí na typu projektu. Pro C# klientských aplikací, najdete v článku [co se stalo – C# projekty](http://go.microsoft.com/fwlink/p/?LinkId=513119). JavaScript klientských aplikací, najdete v části [co se stalo – projekty jazyka JavaScript](http://go.microsoft.com/fwlink/p/?LinkId=513120). Aplikace Cordova, naleznete v tématu [co se stalo – projekty Cordova](http://go.microsoft.com/fwlink/p/?LinkId=513116).
 
 ## <a name="next-steps"></a>Další postup
 Klást otázky a nechat si pomoct: 

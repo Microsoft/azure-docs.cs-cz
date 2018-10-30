@@ -1,22 +1,20 @@
 ---
-title: Správa síťových rozhraní ve službě Azure Site Recovery pro místní účet replikace Azure | Dokumentace Microsoftu
-description: Popisuje, jak Správa síťových rozhraní pro místní pro replikaci Azure pomocí Azure Site Recovery
-services: site-recovery
+title: Správa síťových rozhraní ve službě Azure Site Recovery pro místní zotavení po havárii do Azure | Dokumentace Microsoftu
+description: Popisuje, jak Správa síťových rozhraní pro místní zotavení po havárii do Azure pomocí Azure Site Recovery
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: mayg
-ms.openlocfilehash: 0ca2d32910e57042d2cbc9d3b772d226d835b545
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: afa8dfc39177e3f15db0092691d910b6b2cd3764
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49352406"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212450"
 ---
-# <a name="manage-virtual-machine-network-interfaces-for-on-premises-to-azure-replication"></a>Správa síťových rozhraní virtuálního počítače pro místní pro replikaci Azure
-
+# <a name="manage-virtual-machine-network-interfaces-for-on-premises-disaster-recovery-to-azure"></a>Správa síťových rozhraní virtuálního počítače, místní zotavení po havárii do Azure
 Virtuální počítač (VM) v Azure musí mít aspoň jedno síťové rozhraní k němu připojená. Může mít jak velký počet síťových rozhraní připojených k němu jako podporuje velikost virtuálního počítače.
 
 Ve výchozím nastavení je první síťové rozhraní připojené k virtuálnímu počítači Azure definováno jako primární síťové rozhraní. Všechna další síťová rozhraní virtuálního počítače se sekundárními síťovými rozhraními. Také ve výchozím nastavení, veškerý odchozí provoz z virtuálního počítače bude odeslaná IP adresu, která je přiřazena primární konfigurace IP primárního síťového rozhraní.

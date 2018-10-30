@@ -5,15 +5,15 @@ services: site-recovery
 author: asgang
 manager: rochakm
 ms.service: site-recovery
-ms.topic: article
-ms.date: 07/06/2018
+ms.topic: conceptual
+ms.date: 10/29/2018
 ms.author: asgang
-ms.openlocfilehash: 7002e8a63ca0223a38ba099b17955a86034fa057
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 2f4721155610da3be3ff0db3608d7c1e163aa344
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46295457"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50211838"
 ---
 # <a name="replicate-azure-virtual-machines-to-another-azure-region"></a>Replikace virtuálních počítačů Azure do jiné oblasti Azure
 

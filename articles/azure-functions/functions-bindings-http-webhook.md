@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: glenga
-ms.openlocfilehash: 7fa9d097a8f000c886425d53ee000c6013f3bbb0
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: 8b245b51eb349e8c8aaa61d30ec3daec427ea2fd
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50086722"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212161"
 ---
 # <a name="azure-functions-http-triggers-and-bindings"></a>Azure Functions HTTP aktivačními událostmi a vazbami
 
@@ -44,7 +44,7 @@ Jsou součástí vazby HTTP [Microsoft.Azure.WebJobs.Extensions.Http](http://www
 
 HTTP trigger umožňuje vyvolání funkce s žádostí HTTP. Aktivační událost HTTP slouží k vytvoření rozhraní API bez serveru a reagovat na webhooky. 
 
-Ve výchozím nastavení, vrátí aktivační událost HTTP HTTP 200 OK s prázdným textem zprávy ve funkcích 1.x nebo HTTP 204 žádný obsah s prázdným textem zprávy ve funkcích 2.x. Chcete-li upravit odpověď, nakonfigurovat [HTTP výstupní vazby](#http-output-binding).
+Ve výchozím nastavení, vrátí aktivační událost HTTP HTTP 200 OK s prázdným textem zprávy ve funkcích 1.x nebo HTTP 204 žádný obsah s prázdným textem zprávy ve funkcích 2.x. Chcete-li upravit odpověď, nakonfigurovat [HTTP výstupní vazby](#output).
 
 ## <a name="trigger---example"></a>Aktivační události – příklad
 

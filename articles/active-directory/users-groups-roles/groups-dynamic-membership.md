@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 09/20/2018
+ms.date: 10/26/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: e8f0077bf5a1a2911b3aec032fadacf31ad75463
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 13d6ed9feab4654d3574a5aced72efa0345365a6
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48855268"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215323"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Pravidla dynamického členství pro skupiny ve službě Azure Active Directory
 
@@ -86,7 +86,7 @@ Toto jsou vlastnosti uživatele, které vám umožní vytvořit jeden výraz.
 | facsimileTelephoneNumber |Některé řetězcová hodnota nebo *null* |(user.facsimileTelephoneNumber - eq "value") |
 | givenName |Některé řetězcová hodnota nebo *null* |(user.givenName - eq "value") |
 | pracovní funkce |Některé řetězcová hodnota nebo *null* |(user.jobTitle - eq "value") |
-| e-mailu |Některé řetězcová hodnota nebo *null* (adresa SMTP uživatele) |(user.mail - eq "value") |
+| mail |Některé řetězcová hodnota nebo *null* (adresa SMTP uživatele) |(user.mail - eq "value") |
 | mailNickName |Libovolnou hodnotou řetězce (poštovní alias uživatele) |(user.mailNickName - eq "value") |
 | Mobilní zařízení |Některé řetězcová hodnota nebo *null* |(user.mobile - eq "value") |
 | ID objektu |Identifikátor GUID objektu uživatele |(user.objectId - eq "11111111-1111-1111-1111-111111111111") |
@@ -316,7 +316,7 @@ Pravidlo "Všechna zařízení" je vytvořen pomocí jediný výraz, ne – oper
 device.objectid -ne null
 ```
 
-### <a name="extension-properties-and-custom-extension-properties"></a>Rozšíření vlastností a vlastností vlastního rozšíření
+## <a name="extension-properties-and-custom-extension-properties"></a>Rozšíření vlastností a vlastností vlastního rozšíření
 
 Atributy rozšíření a vlastní extenson vlastnosti jsou podporovány jako řetězec vlastnosti pravidla dynamického členství. Atributy rozšíření jsou synchronizované z místní Windows Server AD a využijte formát "ExtensionAttributeX", kde X je rovno 1 – 15. Tady je příklad pravidla, která používá jako vlastnost atributu rozšíření:
 
@@ -335,7 +335,7 @@ Je například pravidlo, které používá rozšíření vlastních vlastností:
 user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber -eq "123"
 ```
 
-Název vlastní vlastnosti najdete v adresáři zadáním dotazu na vlastnosti pomocí Graph Exploreru a vyhledávání pro název vlastnosti.
+Název vlastní vlastnosti najdete v adresáři zadáním dotazu na vlastnosti pomocí Graph Exploreru a vyhledávání pro název vlastnosti. Kromě toho můžete nyní vybrat **získat vlastnosti rozšíření vlastních** odkazu v Tvůrci pravidlo skupiny dynamické uživatele k zadání ID a jedinečných aplikací a zobrazit úplný seznam vlastností vlastního rozšíření pro použití při vytváření pravidla dynamického členství. Tento seznam můžete také aktualizovat, k získání nových vlastností vlastního rozšíření pro tuto aplikaci.
 
 ## <a name="rules-for-devices"></a>Pravidla pro zařízení
 

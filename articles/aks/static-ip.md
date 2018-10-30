@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/26/2018
 ms.author: iainfou
-ms.openlocfilehash: b64727f6a77bb1151a4f9016b6179a7ee22e3a5c
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: 0e5d42dddf550d8c7d4a579afd8436343749a995
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50085474"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50233646"
 ---
 # <a name="use-a-static-public-ip-address-with-the-azure-kubernetes-service-aks-load-balancer"></a>Statické veřejné IP adresy pomocí nástroje pro vyrovnávání zatížení Azure Kubernetes Service (AKS)
 
@@ -93,7 +93,10 @@ kubectl apply -f load-balancer-service.yaml
 
 ## <a name="use-a-static-ip-address-outside-of-the-node-resource-group"></a>Použijte statickou IP adresu mimo uzel skupiny prostředků
 
-S Kubernetes 1.10 nebo novější je možné používat statickou IP adresu, která je vytvořená mimo uzel skupiny prostředků. Instanční objekt používané clusterem AKS musí mít delegovaná oprávnění k jiné skupině prostředků.
+S Kubernetes 1.10 nebo novější je možné používat statickou IP adresu, která je vytvořená mimo uzel skupiny prostředků. Instanční objekt používané clusterem AKS musí mít delegovaná oprávnění k jiné skupině prostředků, pomocí následujícího příkazu k udělení oprávnění SP:
+```
+az role assignment create --assignee <SP Client ID> --role "Network Contributor" --scope /subscriptions/<subscription id>/resourceGroups/<resource group name>
+```
 
 Pokud chcete použít IP adresu mimo uzel skupiny prostředků, přidáte poznámku k její definici. Následující příklad nastaví anotaci do skupiny prostředků s názvem *myResourceGroup*. Zadejte vlastní název skupiny prostředků:
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/16/2018
 ms.author: srrengar
-ms.openlocfilehash: cc051e1ba0bbea68bb1e888168883351bf4f730f
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: e440cca59bde1c845bc99ef137c18242e888ee06
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406207"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50230093"
 ---
 # <a name="performance-monitoring-with-log-analytics"></a>Sledování výkonu pomocí Log Analytics
 
@@ -100,4 +100,4 @@ Teď, když jste přidali agenta Log Analytics, přejděte na přes portál Log 
 
 * Shromažďovat relevantní [čítače výkonu](service-fabric-diagnostics-event-generation-perf.md). Konfigurace agenta Log Analytics ke shromažďování konkrétních čítačích výkonu najdete v tématu [konfigurace zdroje dat](../log-analytics/log-analytics-data-sources.md#configuring-data-sources).
 * Nakonfigurujte Log Analytics a nastavit [automatické upozorňování](../log-analytics/log-analytics-alerts.md) které vám pomůže se zjišťováním a diagnostikou
-* Jako alternativu můžete shromáždit čítače výkonu prostřednictvím [rozšíření Azure Diagnostics a posílat do Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md#add-the-ai-sink-to-the-resource-manager-template)
+* Jako alternativu můžete shromáždit čítače výkonu prostřednictvím [rozšíření Azure Diagnostics a posílat do Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md#add-the-application-insights-sink-to-the-resource-manager-template)

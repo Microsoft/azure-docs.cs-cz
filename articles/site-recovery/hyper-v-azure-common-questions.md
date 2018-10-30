@@ -1,21 +1,21 @@
 ---
-title: Běžné otázky, které-Hyper-V do Azure replikace pomocí služby Azure Site Recovery | Dokumentace Microsoftu
-description: Tento článek shrnuje běžné otázky o replikaci místních virtuálních počítačů Hyper-V do Azure pomocí Azure Site Recovery.
+title: Běžné otázky, které-Hyper-V k zotavení po havárii Azure pomocí Azure Site Recovery | Dokumentace Microsoftu
+description: Tento článek shrnuje běžné otázky týkající se nastavení zotavení po havárii pro místní virtuální počítače Hyper-V do Azure pomocí webu Azure Site Recovery.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.date: 10/10/2018
+ms.date: 10/28/2018
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 7c5316aea2bfdb9a96b9aeb2dd5387b2643a92b2
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 6345cf47d19f7990e776e0fe4ec2bafd005c9cf2
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49319723"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212484"
 ---
-# <a name="common-questions---hyper-v-to-azure-replication"></a>Časté otázky – Hyper-V do Azure replikace
+# <a name="common-questions---hyper-v-to-azure-disaster-recovery"></a>Časté otázky – Hyper-V do Azure zotavení po havárii
 
 Tento článek obsahuje odpovědi na běžné dotazy, které můžeme vidět při replikaci místních virtuálních počítačů Hyper-V do Azure. 
 

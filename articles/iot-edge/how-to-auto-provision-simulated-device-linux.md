@@ -8,12 +8,12 @@ ms.date: 06/27/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 9609aab6c70bc0c2755de142023bd26e7417987a
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 2416d70e3c9d0f66ff755d8049e78e0275c89258
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37346896"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50232065"
 ---
 # <a name="create-and-provision-an-edge-device-with-a-virtual-tpm-on-a-linux-virtual-machine"></a>Vytvoření a zřízení hraničního zařízení s virtuální čip TPM na virtuální počítač s Linuxem
 
@@ -125,7 +125,7 @@ Až vytvořit registraci ve službě Device Provisioning, budete mít příleži
 
 ## <a name="install-the-iot-edge-runtime"></a>Nainstalovat modul runtime IoT Edge
 
-Modul runtime IoT Edge se nasadí na všechna zařízení IoT Edge. Jeho součástí spouštění v kontejnerech a můžete nasadit další kontejnery do zařízení tak, aby kód můžete spustit na hraničních zařízeních. Nainstalujte modul runtime IoT Edge na váš vzdálený virtuální m. 
+Modul runtime IoT Edge se nasadí na všechna zařízení IoT Edge. Jeho součástí spouštění v kontejnerech a můžete nasadit další kontejnery do zařízení tak, aby kód můžete spustit na hraničních zařízeních. Nainstalujte modul runtime IoT Edge ve vašem virtuálním počítači. 
 
 Vědět, službě Device Provisioning **rozsah ID** a zařízení **ID registrace** před zahájením článek, který odpovídá typu vašeho zařízení. Pokud jste nainstalovali server se systémem Ubuntu v příkladu, použijte **x64** pokyny. Ujistěte se, že konfigurace modulu runtime IoT Edge není ruční, automatické zřizování. 
 

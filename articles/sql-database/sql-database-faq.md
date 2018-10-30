@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/22/2018
-ms.openlocfilehash: 88bea87c752563e1c19332121eb568b0bd329d03
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 7bb692735cb3541fb05b2c39dd7325fa74a00034
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49954139"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50232201"
 ---
 # <a name="sql-database-frequently-asked-questions-faq"></a>SQL Database – nejčastější dotazy (FAQ)
 
@@ -31,7 +31,7 @@ Garantujeme 99,99 % času, můžete mít k dispozici připojení mezi Microsoft 
 
 ## <a name="can-i-control-when-patching-downtime-occurs"></a>Můžete řídit při použití dílčích oprav výpadek nastane
 
-Ne. Dopad opravy není obecně souborům Pokud jste [použít logiku opakování](sql-database-develop-overview.md#resiliency) ve vaší aplikaci.
+Ne. Dopad opravy není obecně patrné Pokud jste [použít logiku opakování](sql-database-develop-overview.md#resiliency) ve vaší aplikaci.
 
 ## <a name="what-is-the-new-vcore-based-purchasing-model-for-azure-sql-database"></a>Co je nového založený na virtuálních jádrech nákupní model pro službu Azure SQL Database
 

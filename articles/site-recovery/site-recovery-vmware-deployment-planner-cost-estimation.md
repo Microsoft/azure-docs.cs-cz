@@ -1,21 +1,20 @@
 ---
-title: Azure Site Recovery Deployment Planner pro nasazení VMware do Azure | Dokumentace Microsoftu
-description: Toto je uživatelská příručka k Azure Site Recovery Deployment Planneru.
-services: site-recovery
+title: Zkontrolujte sestavu odhadu nákladů v Azure Site Recovery Deployment Planner | Dokumentace Microsoftu
+description: Tento článek popisuje, jak zkontrolovat sestavy odhadu nákladů v Azure Site Recovery Deployment Planner pro replikaci z VMware na zotavení po havárii Azure.
 author: nsoneji
 manager: garavd
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: nisoneji
-ms.openlocfilehash: 7470dab537a8ab248228b9c445e1124e7ec9c444
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 7244aa2c0b665b47d597662b98ec291d6bfeeddd
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49387799"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215017"
 ---
-# <a name="cost-estimation-report-of-azure-site-recovery-deployment-planner"></a>Sestava odhadu nákladů Plánovače nasazení služby Azure Site Recovery  
+# <a name="review-the-cost-estimation-report-in-the-site-recovery-deployment-planner-for-vmware-disaster-recovery-to-azure"></a>Zkontrolujte sestavu odhadu nákladů v Site Recovery Deployment Planner pro zotavení po havárii VMware do Azure
 
 Sestava plánovače nasazení obsahuje souhrn odhadu nákladů na listech [Recommendations](site-recovery-vmware-deployment-planner-analyze-report.md#recommendations) (Doporučení) a podrobnou analýzu nákladů na listu Cost Estimation (Odhad nákladů). Obsahuje podrobnou analýzu nákladů na virtuální počítač. 
 

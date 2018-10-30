@@ -1,5 +1,5 @@
 ---
-title: Přehled služby Azure Monitor pro kontejnery | Dokumentace Microsoftu
+title: Přehled služby Azure Monitor pro kontejnery (Preview) | Dokumentace Microsoftu
 description: Tento článek popisuje Azure Monitor pro kontejnery, které monitoruje řešení přehledy o kontejnerech AKS a hodnota, kterou nabízí monitorování stavu clusteru AKS a v Azure Container Instances.
 services: azure-monitor
 documentationcenter: ''
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/14/2018
 ms.author: magoedte
-ms.openlocfilehash: 6819cf96eb968e8faad5441cf3f3dd672653f1cd
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 13fde8a4ec4ecf43b9997d5d4d181a232505626f
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46971429"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212994"
 ---
-# <a name="azure-monitor-for-containers-overview"></a>Azure Monitor pro kontejnery – přehled
+# <a name="azure-monitor-for-containers-preview-overview"></a>Azure Monitor pro kontejnery (Preview) – přehled
 
 Azure Monitor pro kontejnery je funkce určené k monitorování výkonu kontejner úloh nasazených do spravované clustery Kubernetes hostované ve službě Azure Kubernetes Service (AKS). Monitorování kontejnerů je důležité, zejména v případě, že spouštíte produkční cluster ve velkém měřítku, s několika aplikacemi.
 

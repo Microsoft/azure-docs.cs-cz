@@ -1,19 +1,18 @@
 ---
-title: Replikace virtuálních počítačů Hyper-V pomocí Powershellu a Azure Resource Manageru | Dokumentace Microsoftu
-description: Automatizace replikace virtuálních počítačů Hyper-V do Azure pomocí Azure Site Recovery pomocí Powershellu a Azure Resource Manageru.
-services: site-recovery
+title: Nastavení zotavení po havárii do Azure pro virtuální počítače Hyper-V pomocí Powershellu a Azure Resource Manageru | Dokumentace Microsoftu
+description: Automatizace zotavení po havárii virtuálních počítačů Hyper-V do Azure pomocí služby Azure Site Recovery pomocí Powershellu a Azure Resource Manageru.
 author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
 ms.date: 10/16/2018
 ms.author: sutalasi
-ms.openlocfilehash: 1d72d56188c3b787ab335ced554eb7c1dc74e0b7
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: f8f690a4f94ee56cfaa5532fa090fada1a33bddf
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49427429"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50214779"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-hyper-v-vms-using-powershell-and-azure-resource-manager"></a>Nastavení zotavení po havárii do Azure pro virtuální počítače Hyper-V pomocí Powershellu a Azure Resource Manageru
 

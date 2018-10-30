@@ -1,6 +1,6 @@
 ---
-title: Odstranit trezor Site Recovery
-description: Zjistěte, jak odstranit trezor Azure Site Recovery na základě scénáře Site Recovery.
+title: Odstranění trezoru služby Recovery Services nastavený pro tuto službu Azure Site Recovery
+description: Zjistěte, jak odstranit trezor služby Recovery Services, který je nakonfigurovaný pro Azure Site Recovery
 author: rajani-janaki-ram
 manager: rochakm
 ms.service: site-recovery
@@ -8,14 +8,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: rajani-janaki-ram
-ms.openlocfilehash: 9c4a88d8a3d63555a57bd5553b721cfbcd77df2c
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: f351bd715baf86407c249e13aa02cf3c37e374c4
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38971184"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212416"
 ---
-# <a name="delete-a-site-recovery-vault"></a>Odstranit trezor Site Recovery
+# <a name="delete-a-site-recovery-recovery-services-vault"></a>Odstranění trezoru služby Recovery Services Site Recovery
 
 Odstranění trezoru služby Azure Site Recovery můžete zabránit závislosti. Akce, které je potřeba se liší v závislosti na scénáři Site Recovery. Chcete-li odstranit trezor použít ve službě Azure Backup, přečtěte si téma [odstranění trezoru služby Backup v Azure](../backup/backup-azure-delete-vault.md).
 

@@ -1,21 +1,21 @@
 ---
-title: Informace o mapování sítí pro replikaci virtuálních počítačů Hyper-V (s VMM) do Azure pomocí Site Recovery | Dokumentace Microsoftu
-description: Popisuje, jak nastavit mapování sítě pro replikaci virtuálních počítačů Hyper-V spravované v cloudech VMM pomocí Azure Site Recovery.
+title: Informace o mapování sítě pro zotavení po havárii virtuálních počítačů Hyper-V (s VMM) do Azure pomocí Site Recovery | Dokumentace Microsoftu
+description: Popisuje, jak nastavit mapování sítě pro zotavení po havárii virtuálních počítačů Hyper-V (spravované v cloudech VMM) do Azure pomocí Azure Site Recovery.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 10/10/2018
+ms.date: 10/28/2018
 ms.author: raynew
-ms.openlocfilehash: d683554a97a1616b0d4d7b1ae95d62b476de04eb
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: cecc1df23ebed88db315e7de14ea850ba5297697
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078507"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212977"
 ---
-# <a name="prepare-network-mapping-for-hyper-v-vm-replication-to-azure"></a>Příprava mapování sítí pro replikaci virtuálních počítačů Hyper-V do Azure
+# <a name="prepare-network-mapping-for-hyper-v-vm-disaster-recovery-to-azure"></a>Příprava mapování sítě pro zotavení po havárii virtuálních počítačů Hyper-V do Azure
 
 
 Tento článek vám pomůže pochopit a příprava na mapování sítě při replikaci virtuálních počítačů Hyper-V v cloudech System Center Virtual Machine Manager (VMM) do Azure nebo do sekundární lokality, pomocí [Azure Site Recovery](site-recovery-overview.md) služby.

@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/06/2018
+ms.date: 10/26/2018
 ms.author: sethm
-ms.openlocfilehash: 96137b95f46f24bca6a4ee6a39d93a490a03c431
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: a6d8ef698c005429c1184b5565b1a9387d05e062
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49958444"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50230110"
 ---
 # <a name="provide-applications-access-to-azure-stack"></a>Poskytnutí přístupu aplikací do Azure Stack
 
@@ -77,6 +77,13 @@ Je skript spuštěn na virtuálním počítači ERCS z privileged koncového bod
 Požadavky:
 - Certifikát je povinný.
 
+Požadavky na certifikát:
+ - Zprostředkovatele kryptografických služeb (CSP) musí být zprostředkovatel starší verze klíče.
+ - Formát certifikátu musí být v souboru PFX jako veřejné a soukromé klíče jsou požadovány. Windows servery používají soubory PFX, které obsahují soubor veřejného klíče (soubor certifikátu SSL) a přidružený soubor privátního klíče.
+ - Pro produkční prostředí musí certifikát vydat z interní certifikační autority nebo veřejné certifikační autority. Pokud používáte z veřejné certifikační autority, můžete oprávnění součástí základní image operačního systému v rámci aplikace Microsoft důvěryhodné kořenové autoritě. Můžete najít na seznam v [Microsoft Trusted Root Certificate Program: účastníci](https://gallery.technet.microsoft.com/Trusted-Root-Certificate-123665ca).
+ - Infrastruktury Azure stacku musí mít přístup k síti do publikované v certifikátu umístění seznamu odvolaných certifikátů (CRL) certifikační autority. Tento seznam odvolaných certifikátů musí být koncový bod HTTP.
+
+
 #### <a name="parameters"></a>Parametry
 
 Tyto informace se vyžaduje jako vstup pro automatizaci parametry:
@@ -93,7 +100,7 @@ Tyto informace se vyžaduje jako vstup pro automatizaci parametry:
 1. Otevřete relaci Windows Powershellu se zvýšenými oprávněními a spusťte následující příkazy:
 
    > [!NOTE]
-   > Tento příklad vytvoří certifikát podepsaný svým držitelem. Při spuštění těchto příkazů v produkčním nasazení použijte [Get-Certificate](/powershell/module/pkiclient/get-certificate) načíst objekt certifikátu pro certifikát, který chcete použít.
+   > Tento příklad vytvoří certifikát podepsaný svým držitelem. Při spuštění těchto příkazů v produkčním nasazení použijte [Get-Item](/powershell/module/Microsoft.PowerShell.Management/Get-Item) načíst objekt certifikátu pro certifikát, který chcete použít.
 
    ```PowerShell  
     # Credential for accessing the ERCS PrivilegedEndpoint, typically domain\cloudadmin
@@ -102,7 +109,7 @@ Tyto informace se vyžaduje jako vstup pro automatizaci parametry:
     # Creating a PSSession to the ERCS PrivilegedEndpoint
     $session = New-PSSession -ComputerName <ERCS IP> -ConfigurationName PrivilegedEndpoint -Credential $creds
 
-    # This produces a self signed cert for testing purposes. It is prefered to use a managed certificate for this.
+    # This produces a self signed cert for testing purposes. It is preferred to use a managed certificate for this.
     $cert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" -Subject "CN=<yourappname>" -KeySpec KeyExchange
 
     $ServicePrincipal = Invoke-Command -Session $session -ScriptBlock { New-GraphApplication -Name '<yourappname>' -ClientCertificates $using:cert}

@@ -1,6 +1,6 @@
 ---
-title: Replikace virtuálních počítačů Hyper-V v cloudech Virtual Machine Manager do sekundární lokality pomocí Powershellu (Azure Resource Manageru) | Dokumentace Microsoftu
-description: Popisuje, jak replikovat virtuální počítače Hyper-V v cloudech Virtual Machine Manager do sekundární lokality Virtual Machine Manager pomocí prostředí PowerShell (Resource Manager)
+title: Nastavení zotavení po havárii virtuálních počítačů Hyper-V v cloudech VMM do sekundární lokality pomocí Azure Site Recovery a Powershellu | Dokumentace Microsoftu
+description: Popisuje, jak nastavit zotavení po havárii virtuálních počítačů Hyper-V v cloudech VMM do sekundární lokality VMM s využitím Azure Site Recovery a prostředí PowerShell.
 services: site-recovery
 author: sujayt
 manager: rochakm
@@ -8,14 +8,14 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: sutalasi
-ms.openlocfilehash: 896b3cb3c40673dfbc7269cab1d37790f78912b0
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 6ade1d584fad05e33a72a0ff5099378a9cf7f29f
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041352"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50214575"
 ---
-# <a name="replicate-hyper-v-vms-to-a-secondary-site-by-using-powershell-resource-manager"></a>Replikace virtuálních počítačů Hyper-V do sekundární lokality pomocí prostředí PowerShell (Resource Manager)
+# <a name="set-up-disaster-recovery-of-hyper-v-vms-to-a-secondary-site-by-using-powershell-resource-manager"></a>Nastavení zotavení po havárii virtuálních počítačů Hyper-V do sekundární lokality pomocí prostředí PowerShell (Resource Manager)
 
 Tento článek popisuje, jak automatizovat kroky pro replikaci virtuálních počítačů Hyper-V v cloudech System Center Virtual Machine Manager cloud Virtual Machine Manager v sekundární místní lokality pomocí [Azure Site Recovery](site-recovery-overview.md).
 

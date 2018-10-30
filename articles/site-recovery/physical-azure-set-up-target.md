@@ -1,19 +1,18 @@
 ---
-title: Připravit cíl (fyzické prostředky do Azure) | Dokumentace Microsoftu
-description: Tento článek popisuje, jak připravit prostředí Azure ke spuštění replikace fyzických serverů s Windows nebo Linuxem do Azure.
-services: site-recovery
+title: Nastavení cílového prostředí pro zotavení po havárii místních fyzických serverů do Azure | Dokumentace Microsoftu
+description: Tento článek popisuje, jak nastavit cílové prostředí Azure pro zotavení po havárii fyzických serverů požíváním Azure Site Recovery.
 author: bsiva
 manager: abhemraj
 ms.service: site-recovery
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: bsiva
-ms.openlocfilehash: 370d245e39b848acade18d0e73f60a3246737629
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: b89d04a6e2fd11a61de8b56690664f6204c208ad
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37915516"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50209288"
 ---
 # <a name="prepare-target-vmware-to-azure"></a>Připravit cíl (z VMware do Azure)
 

@@ -1,26 +1,23 @@
 ---
-title: Matice podpory Azure Site Recovery pro replikaci z Azure do Azure | Dokumentace Microsoftu
+title: Systém podpory Azure Site Recovery pro zotavení po havárii virtuálních počítačů Azure IaaS mezi oblastmi Azure pomocí Azure Site Recovery | Dokumentace Microsoftu
 description: Shrnuje podporované operační systémy a konfigurace pro replikaci virtuálních počítačů Azure (VM) Azure Site Recovery z jedné oblasti do jiného pro potřeby zotavení po havárii.
 services: site-recovery
-author: sujayt
-manager: rochakm
+author: rayne-wiselman
+manager: carmonm
 ms.service: site-recovery
-ms.devlang: na
-ms.topic: article
-ms.date: 09/10/2018
-ms.author: sujayt
-ms.openlocfilehash: 49773e076ed8bb06ff76f9f654b914a709051fb5
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.topic: conceptual
+ms.date: 10/28/2018
+ms.author: raynew
+ms.openlocfilehash: a2668ab99ef110c89ddd69cd5e8df858552d27af
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49378614"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215051"
 ---
-# <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>Matice podpory pro které se replikují z jedné oblasti Azure do jiné
+# <a name="support-matrix-for-disaster-recovery-of-azure-vms-between-azure-regions"></a>Matice podpory pro zotavení po havárii virtuálních počítačů Azure mezi oblastmi Azure
 
-
-
-Tento článek shrnuje podporované konfigurace a komponenty při replikaci a obnovení virtuálních počítačů Azure z jedné oblasti do jiné oblasti pomocí [Azure Site Recovery](site-recovery-overview.md) služby.
+Tento článek shrnuje podporované konfigurace a komponent, pokud nasazení zotavení po havárii pomocí replikace, převzetí služeb při selhání a obnovení virtuálních počítačů Azure z jedné oblasti Azure do jiného, pomocí [Azure Site Recovery](site-recovery-overview.md) Služba.
 
 ## <a name="user-interface-options"></a>Možnosti uživatelského rozhraní
 

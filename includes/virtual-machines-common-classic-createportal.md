@@ -1,5 +1,16 @@
-
-
+---
+author: cynthn
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: cynthn
+ms.openlocfilehash: 127ade3b37380c50461c5b648265b431a2f4467e
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50226600"
+---
 *Vlastní* virtuální počítač znamená jednoduše virtuální počítač, který vytvoříte pomocí **vybrané aplikace** z **Marketplace**, protože za vás udělá velkou část práce. I tak ale můžete upravovat konfiguraci včetně následujících položek:
 
 * Připojení virtuálního počítače k virtuální síti.

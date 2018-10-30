@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 10/24/2018
+ms.date: 10/28/2018
 ms.author: raiye
-ms.openlocfilehash: 989627388e9ad1c99daa31bd9c8af884ab16b421
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: 0430eefb55893420cf7ea603998f14465fb2cc60
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50087776"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215510"
 ---
 # <a name="azure-guest-os"></a>Azure hostovaného operačního systému
 Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hostovaného operačního systému Azure v následujících tabulkách. Hledání Tento článek k určení, pokud platí konkrétní aktualizace do hostovaného operačního systému, kterou používáte. Aktualizace vždy převést do dalšího období pro konkrétní [řady] [ family-explain] byly zavedeny v.
@@ -30,11 +30,11 @@ Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hosto
 | Kategorie produktů | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
 | --- | --- | --- | --- | --- |
 | Rel 18 až 10 | [4462917] | Zabezpečení systému Windows 10 | 5,24 | 9. října 2018 |
-| Rel 18 až 10 | [4464330] | Zabezpečení systému Windows 10 | 6.01 | 9. října 2018 |
+| Rel 18 až 10 | [4464330] | Zabezpečení systému Windows 10 | 6.0 | 9. října 2018 |
 | Rel 18 až 10 | [4462915] | Zabezpečení Windows | 2.79 | 9. října 2018 |
 | Rel 18 až 10 | [4462931] | Zabezpečení Windows | 3,66 | 9. října 2018 |
 | Rel 18 až 10 | [4462941] | Zabezpečení Windows | 4.59 | 9. října 2018 |
-| Rel 18 až 10 | [4462930] | Animace Flash | 3,66, 4.59, 5,24, 6.01 | 9. října 2018 |
+| Rel 18 až 10 | [4462930] | Animace Flash | 3,66, 4.59, 5,24, 6.0 | 9. října 2018 |
 | Rel 18 až 10 | [4462949] | Internet Explorer | 2.79, 3,66, 4.59 | 9. října 2018 |
 | neuvedeno | [4339284] | Aktualizace časového pásma | 2.79, 3,66, 4.59 | 24. července 2018 |
 | neuvedeno | [4457144] | Souhrn září Non-zabezpečení | 2.79 | 11. září 2018 |

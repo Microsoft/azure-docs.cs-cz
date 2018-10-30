@@ -1,21 +1,20 @@
 ---
-title: Nastavit procesový server v Azure pro virtuální počítač VMware a fyzických serverů navrácení služeb po obnovení pomocí Azure Site Recovery | Dokumentace Microsoftu
-description: Tento článek popisuje, jak nastavit procesový server v Azure a navrátit služby po obnovení virtuálních počítačů Azure do VMware.
-services: site-recovery
+title: Nastavit procesový server v Azure k selhání zpět při zotavení po havárii virtuálních počítačů VMware a fyzických serverů s Azure Site Recovery | Dokumentace Microsoftu
+description: Tento článek popisuje, jak nastavit procesový server v Azure, k selhání obnovení z Azure do místního během zotavení po havárii virtuálních počítačů VMware a fyzických serverů.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/10/2018
+ms.date: 10/28/2018
 ms.author: raynew
-ms.openlocfilehash: 641f671f23dde0bcc32ad1ef8343a5a84227c67f
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 330f0197b8a7735043e93f00dc4baa5578f50228
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49955371"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212229"
 ---
-# <a name="set-up-additional-process-servers-for-scalability"></a>Nastavení dalších procesových serverů pro zajištění škálovatelnosti
+# <a name="scale-for-failback-with-additional-process-servers"></a>Škálování pro navrácení služeb po obnovení pomocí dalších procesových serverů
 
 Ve výchozím nastavení se při replikaci virtuálních počítačů VMware nebo fyzických serverů do Azure s využitím [Site Recovery](site-recovery-overview.md), procesový server je nainstalovaný na počítači serveru konfigurace a slouží k přenosu dat mezi Site Recovery koordinuje a v místní infrastruktuře. Ke zvýšení kapacity a horizontální navýšení kapacity nasazení replikace, přidáte další samostatné procesových serverů. Tento článek popisuje, jak to provést.
 

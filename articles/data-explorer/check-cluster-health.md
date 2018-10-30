@@ -8,18 +8,18 @@ ms.service: data-explorer
 services: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 0746247d2c912ba66e81b95f45b168e32b522130
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d07873b34a41ff20b5007a88743f6b150d4d8a3d
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46988423"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212822"
 ---
 # <a name="check-the-health-of-an-azure-data-explorer-cluster"></a>Zkontrolujte stav clusteru služby Průzkumník dat Azure
 
 Existuje několik faktorů, které mají vliv na stav clusteru služby Průzkumník dat Azure, včetně CPU, paměť a diskový subsystém. Tento článek popisuje některé základní kroky, že které můžete provést ke zjišťování stavu clusteru.
 
-1. Přihlaste se k [ https://dataexplorer.azure.com ](https://dataexplorer.azure.com).
+1. Přihlaste se k webu [https://dataexplorer.azure.com](https://dataexplorer.azure.com).
 
 1. V levém podokně vyberte svůj cluster a spusťte následující příkaz.
 
@@ -35,6 +35,8 @@ Existuje několik faktorů, které mají vliv na stav clusteru služby Průzkumn
 
     ![Zachování metriky clusteru](media/check-cluster-health/portal-metrics.png)
 
-1. Přidáte jiné metriky, jako je procesor a ukládání do mezipaměti měřidla využití prostředků pro cluster.
+1. Je možné přidat další metriky do grafu. Vyberte graf, pak **přidat metriku**. Vybrat jinou metriku – tento příklad ukazuje **procesoru**.
 
-1. Pokud potřebujete pomoci diagnostikovat problémy s stav clusteru, otevřete prosím v žádosti o podporu [webu Azure portal](https://portal.azure.com).
+    ![Přidání metriky](media/check-cluster-health/add-metric.png)
+
+1. Pokud potřebujete pomoci diagnostikovat problémy s stav clusteru, otevřete prosím v žádosti o podporu [webu Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).

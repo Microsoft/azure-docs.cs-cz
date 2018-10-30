@@ -8,12 +8,12 @@ ms.service: data-explorer
 services: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 6ec81d6154f15d1c49428b50f0e65eed8edcedad
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: ec66066fe51af97f6355b78dd7af3480a39a5a03
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46986505"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215082"
 ---
 # <a name="troubleshoot-failure-to-create-or-delete-a-database-or-table-in-azure-data-explorer"></a>Řešení potíží: Selhání vytvoření nebo odstranění databáze nebo tabulky v Průzkumníku dat Azure
 
@@ -57,7 +57,7 @@ Další informace o oprávněních najdete v tématu [spravovat oprávnění k d
 
     Pokud není stav **dobré** (zelená značka zaškrtnutí), zkuste to znovu za stav zlepší.
 
-1. Pokud stále potřebujete pomoc při řešení tohoto problému, otevřete prosím v žádosti o podporu [webu Azure portal](https://portal.azure.com).
+1. Pokud stále potřebujete pomoc při řešení tohoto problému, otevřete prosím v žádosti o podporu [webu Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
 
 ## <a name="next-steps"></a>Další postup
 

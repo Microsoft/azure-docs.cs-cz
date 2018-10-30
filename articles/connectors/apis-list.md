@@ -9,12 +9,12 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.topic: article
 ms.date: 08/23/2018
-ms.openlocfilehash: 6b31882ec3916e60ac7dc7b8117328176abef1b4
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: 3230692208d27ebac073e257266c885b5e03095c
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42818530"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50233629"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>Konektory pro Azure Logic Apps
 
@@ -158,7 +158,7 @@ Chcete-li zveřejnit vlastní aplikace API nebo konektory pro každého, kdo pro
 
 * Pokud máte dotazy, navštivte [fórum Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
 
-* Odeslání návrhu nebo hlasování o nápadech pro Azure Logic Apps a konektorů, najdete v tématu [webu zpětné vazby uživatelů Logic Apps](http://aka.ms/logicapps-wish).
+* Odeslání návrhu nebo hlasování o nápadech pro Azure Logic Apps a konektorů, najdete v tématu [webu zpětné vazby uživatelů Logic Apps](https://aka.ms/logicapps-wish).
 
 * Jsou dokumentace chybí články nebo podrobnosti, které si myslíte, že je důležité? Pokud ano, můžete pomoct přidáním do existujících článků nebo na základě zápisu vlastní. Dokumentace je typu open source a hostovaná na Githubu. Začínáme v dokumentaci Azure [úložiště GitHub](https://github.com/Microsoft/azure-docs). 
 

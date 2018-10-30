@@ -6,16 +6,16 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/08/2018
+ms.date: 10/26/2018
 ms.author: alinast
-ms.openlocfilehash: b7561848ffd0158e22e97530774112dcee2a9864
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: a45f82b142ee4f4c9c88ea755607b88323feaae5
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49324048"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210121"
 ---
-# <a name="data-processing-and-user-defined-functions"></a>Zpracování dat a uživatelem definovaných funkcí
+# <a name="data-processing-and-user-defined-functions"></a>Zpracování dat a uživatelsky definované funkce
 
 Azure digitální dvojče nabízí pokročilé kapacita výpočetních operací. Vývojáři můžou definovat a spouštějte vlastní funkce příchozí telemetrická data zprávy k odeslání události do předdefinovaných koncových bodů.
 
@@ -25,7 +25,7 @@ Jakmile zařízení odesílají telemetrická data do digitální dvojče, vývo
 
 ![Tok digitální dvojče zpracování dat][1]
 
-1. _Ověření_ fáze transformuje příchozí zpráva telemetrie pro běžně používané [ `data transfer object` ](https://en.wikipedia.org/wiki/Data_transfer_object) formátu. Tato fáze také provede ověření zařízení a senzorů.
+1. _Ověření_ fáze transformuje příchozí zpráva telemetrie pro běžně používané [ **objekt pro přenos dat** ](https://en.wikipedia.org/wiki/Data_transfer_object) formátu. Tato fáze také provede ověření zařízení a senzorů.
 1. _Odpovídat_ fáze najde odpovídající uživatelsky definovaná funkce ke spuštění. Předdefinované procesy pro hledání shody zjistí, že uživatelsky definovaná funkce na základě zařízení, senzorů a místo informace z příchozích telemetrické zprávy.
 1. _Compute_ fáze spuštění uživatelem definované funkce, shoda v předchozí fáze. Tyto funkce může číst a aktualizovat počítané hodnoty na prostorový graf uzly a může generovat vlastní oznámení.
 1. _Odeslání_ fáze směruje vlastní oznámení pro koncové body definované v grafu fáze výpočetní prostředky.
@@ -40,11 +40,11 @@ Zpracování dat v Azure digitální dvojče spočívá v definování tři obje
 
 _Procesy pro hledání shody_ definují sadu podmínek, které vyhodnotit, jaké akce bude probíhat podle příchozích telemetrických dat ze senzorů. Tyto podmínky k určení shody může obsahovat vlastnosti od senzor senzoru nadřazené zařízení a místa nadřazené senzoru. Podmínky jsou vyjádřeny jako porovnání proti [cestu JSON](http://jsonpath.com/) jak je uvedeno v následujícím příkladu:
 
-- Všechny senzory datový typ `Temperature`.
+- Všechny senzory datový typ **teploty**.
 - S `01` v jejich portu.
-- Který patří do zařízení s rozšířenou vlastnost klíče `Manufacturer` nastaven na hodnotu `GoodCorp`.
-- Které patří prostory typu `Venue`.
-- Které jsou potomky nadřazené `SpaceId` `DE8F06CA-1138-4AD7-89F4-F782CC6F69FD`.
+- Který patří do zařízení s rozšířenou vlastnost klíče **výrobce** nastaven na hodnotu `"GoodCorp"`.
+- Které patří prostory typu `"Venue"`.
+- Které jsou potomky nadřazené **SpaceId** `DE8F06CA-1138-4AD7-89F4-F782CC6F69FD`.
 
 ```JSON
 {

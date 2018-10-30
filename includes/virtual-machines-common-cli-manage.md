@@ -1,3 +1,16 @@
+---
+author: cynthn
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: cynthn
+ms.openlocfilehash: e08e6ca4f6413b475bd8a0e5ff30b74921c2f0e6
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50227238"
+---
 Rozhraní příkazového řádku Azure umožňuje vytvářet a spravovat prostředky Azure v systémech macOS, Linux a Windows. Tento článek podrobně popisuje některé z nejčastěji používané příkazy k vytvoření a správa virtuálních počítačů (VM).
 
 Tento článek vyžaduje použití Azure CLI verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete upgrade, přečtěte si téma [instalace Azure CLI](/cli/azure/install-azure-cli). Můžete také použít [Cloud Shell](/azure/cloud-shell/quickstart) z prohlížeče.

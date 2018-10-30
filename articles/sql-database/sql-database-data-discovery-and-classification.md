@@ -12,12 +12,12 @@ ms.author: ronitr
 ms.reviewer: vanto
 manager: craigg
 ms.date: 10/15/2018
-ms.openlocfilehash: 32b60a53581a0f372a7d994cfa260ebd7bcb27b2
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: ffa1c45b2d9449310a2b0dcc66a513b4d8efbc5d
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49467037"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50232983"
 ---
 # <a name="azure-sql-database-data-discovery-and-classification"></a>Azure SQL Database Data zjišťování a klasifikace
 
@@ -132,7 +132,7 @@ Důležitou součástí ochrany paradigma informace je schopnost sledovat přís
 T-SQL můžete použít k přidání nebo odebrání klasifikace sloupců, jakož i načíst všechny klasifikace pro celou databázi.
 
 > [!NOTE]
-> Při použití jazyka T-SQL ke správě popisků, neexistuje žádné ověření, která popisky přidané k sloupec existuje v zásadě ochrany informací v organizaci (sadu popisků, které se zobrazují v portálu doporučení). Je pro vás, abyste to ověřit.
+> Při použití jazyka T-SQL ke správě popisků, neexistuje žádné ověření, která popisky přidané k sloupec existuje v zásadě ochrany informací v organizaci (sadu popisků, které se zobrazují v portálu doporučení). Je proto vás, abyste to ověřit.
 
 - Přidat nebo aktualizovat klasifikaci jeden nebo více sloupců: [přidat klasifikace utajení](https://docs.microsoft.com/sql/t-sql/statements/add-sensitivity-classification-transact-sql)
 - Odebrání klasifikace z jednoho nebo více sloupců: [VYŘADIT klasifikace utajení](https://docs.microsoft.com/sql/t-sql/statements/drop-sensitivity-classification-transact-sql)

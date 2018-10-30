@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/07/2018
+ms.date: 10/29/2018
 ms.author: piotrci
-ms.openlocfilehash: bed720cf47355887f3bf981f281d82738039270f
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 643339545dac6ec35ab44f2a05fbe417dea2bb71
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37866572"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50211787"
 ---
 # <a name="how-to-safely-migrate-users-between-product-licenses-by-using-group-based-licensing"></a>Tom, jak bezpečně migrace uživatelů mezi licencemi produktů pomocí licencování na základě skupin
 
@@ -822,6 +822,8 @@ ExecuteVerificationLoop ${function:VerifySourceLicenseRemovedAndTargetLicenseAss
 
 Další informace o další scénáře pro správu licencí pomocí skupin v následujících článcích:
 
-* [Identifikace a řešení problémů pro skupinu v Azure Active Directory](licensing-groups-resolve-problems.md)
-* [Příklady prostředí PowerShell pro licencování na základě skupiny v Azure Active Directory](licensing-ps-examples.md)
-* [Azure Active Directory na základě skupin licencí další scénáře](licensing-group-advanced.md)
+* [Přiřazení licencí ke skupině v Azure Active Directory](../users-groups-roles/licensing-groups-assign.md)
+* [Identifikace a řešení potíží s licencemi pro skupinu v Azure Active Directory](../users-groups-roles/licensing-groups-resolve-problems.md)
+* [Postup migrace jednotlivě licencovaných uživatelů na licencování na základě skupin v Azure Active Directory](../users-groups-roles/licensing-groups-migrate-users.md)
+* [Další scénáře licencování na základě skupin v Azure Active Directory](../users-groups-roles/licensing-group-advanced.md)
+* [Příklady prostředí PowerShell pro licencování na základě skupiny v Azure Active Directory](../users-groups-roles/licensing-ps-examples.md)

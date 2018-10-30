@@ -1,5 +1,5 @@
 ---
-title: Sledování zpráv B2B s Azure Log Analytics – Azure Logic Apps | Dokumentace Microsoftu
+title: Sledování zpráv B2B pomocí Log Analytics – Azure Logic Apps | Dokumentace Microsoftu
 description: Sledování B2B komunikace pro účty pro integraci a Azure Logic Apps s využitím Azure Log Analytics
 services: logic-apps
 ms.service: logic-apps
@@ -8,18 +8,17 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
-ms.assetid: bb7d9432-b697-44db-aa88-bd16ddfad23f
-ms.date: 06/19/2018
-ms.openlocfilehash: 666c998a781f13ea2a26ccfc0b94aeead0308f5b
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.date: 10/19/2018
+ms.openlocfilehash: 0bfb652d9e64b9dbf61ad4032f1449fd484cc80a
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49405680"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50233548"
 ---
-# <a name="track-b2b-communication-with-azure-log-analytics"></a>Sledování B2B komunikace s Azure Log Analytics
+# <a name="track-b2b-messages-with-azure-log-analytics"></a>Sledování zpráv B2B s Azure Log Analytics
 
-Po nastavení komunikace B2B mezi dvěma obchodních procesů nebo aplikací prostřednictvím účtu pro integraci, tyto entity můžou vyměňovat zprávy mezi sebou. Chcete-li zkontrolovat, zda jsou správně zpracovat tyto zprávy, AS2, X12, můžete sledovat a zprávy EDIFACT se [Azure Log Analytics](../log-analytics/log-analytics-overview.md). Například můžete použít tyto možnosti sledování založeného na webu pro sledování zpráv:
+Po nastavení komunikace B2B mezi obchodními partnery v účtu integrace těchto partnerů si mohou vyměňovat zprávy s protokoly, například AS2, X 12 a EDIFACT. Pokud chcete zkontrolovat, že tyto zprávy jsou zpracovány správně, můžete sledovat tyto zprávy s [Azure Log Analytics](../log-analytics/log-analytics-overview.md). Například můžete použít tyto možnosti sledování založeného na webu pro sledování zpráv:
 
 * Počet zpráv a stav
 * Stav potvrzení
@@ -27,7 +26,10 @@ Po nastavení komunikace B2B mezi dvěma obchodních procesů nebo aplikací pro
 * Podrobné informace o chybě popisy chyb
 * Možnosti vyhledávání
 
-## <a name="requirements"></a>Požadavky
+> [!NOTE]
+> Tato stránka výše popsaný postup, jak k provádění těchto úkolů se Microsoft Operations Management Suite (OMS), což je [vyřazení z provozu v lednu 2019](../log-analytics/log-analytics-oms-portal-transition.md), nahradí tyto kroky místo toho pomocí služby Azure Log Analytics. 
+
+## <a name="prerequisites"></a>Požadavky
 
 * Aplikace logiky, která je nastavená pomocí diagnostického protokolování. Přečtěte si [jak vytvořit aplikaci logiky](quickstart-create-first-logic-app-workflow.md) a [jak nastavit protokolování pro tuto aplikaci logiky](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics).
 
@@ -35,51 +37,57 @@ Po nastavení komunikace B2B mezi dvěma obchodních procesů nebo aplikací pro
 
 * Pokud jste tak dosud neučinili, [publikovat diagnostická data do Log Analytics](../logic-apps/logic-apps-track-b2b-messages-omsportal.md).
 
-> [!NOTE]
-> Po splnění předchozí požadavky, měli byste mít pracovní prostor v Log Analytics. Měli byste použít stejný pracovní prostor pro sledování vaši komunikaci B2B ve službě Log Analytics. 
->  
-> Pokud nemáte pracovní prostor Log Analytics, přečtěte si [jak vytvořit pracovní prostor Log Analytics](../log-analytics/log-analytics-quick-create-workspace.md).
+* Po předchozí požadavky splňujete, budete potřebovat pracovní prostor Log Analytics, který používáte pro sledování B2B komunikace prostřednictvím Log Analytics. Pokud nemáte pracovní prostor Log Analytics, přečtěte si [jak vytvořit pracovní prostor Log Analytics](../log-analytics/log-analytics-quick-create-workspace.md).
 
-## <a name="add-the-logic-apps-b2b-solution-to-azure"></a>Přidejte řešení pro Logic Apps B2B do Azure
+## <a name="install-logic-apps-b2b-solution"></a>Nainstalujte řešení Logic Apps B2B
 
-Pokud chcete, aby sledování zpráv B2B pro vaši aplikaci logiky Log Analytics, je nutné přidat **Logic Apps B2B** řešení do služby Log Analytics. Další informace o [přidání řešení do Log Analytics](../log-analytics/log-analytics-quick-create-workspace.md).
+Předtím, než máte Log Analytics sledování zpráv B2B pro vaši aplikaci logiky, přidejte **Logic Apps B2B** řešení do služby Log Analytics. Další informace o [přidání řešení do Log Analytics](../log-analytics/log-analytics-quick-create-workspace.md).
 
-1. V [webu Azure portal](https://portal.azure.com), zvolte **všechny služby**. Vyhledejte "log analytics" a klikněte na tlačítko **Log Analytics** jak je znázorněno zde:
+1. Na webu [Azure Portal](https://portal.azure.com) vyberte **Všechny služby**. Do vyhledávacího pole vyhledejte "log analytics" a vyberte **Log Analytics**.
 
-   ![Hledání Log Analytics](media/logic-apps-track-b2b-messages-omsportal/browseloganalytics.png)
+   ![Vyberte Log Analytics](media/logic-apps-track-b2b-messages-omsportal/find-log-analytics.png)
 
-2. V části **Log Analytics**vyhledejte a vyberte pracovní prostor Log Analytics. 
+1. V části **Log Analytics**vyhledejte a vyberte pracovní prostor Log Analytics. 
 
-   ![Vyberte pracovní prostor Log Analytics](media/logic-apps-track-b2b-messages-omsportal/selectla.png)
+   ![Vyberte pracovní prostor Log Analytics](media/logic-apps-track-b2b-messages-omsportal/select-log-analytics-workspace.png)
 
-3. V části **správu**, zvolte **shrnutí pracovního prostoru**.
+1. V části **Začínáme se službou Log Analytics** > **konfigurovat řešení monitorování**, zvolte **zobrazení řešení**.
 
-   ![Zvolte portálu služby Log Analytics](media/logic-apps-track-b2b-messages-omsportal/omsportalpage.png)
+   ![Zvolte "Zobrazit řešení"](media/logic-apps-track-b2b-messages-omsportal/log-analytics-workspace.png)
 
-4. Až se otevře na domovské stránce zvolte **přidat** instalace řešení Logic Apps B2B.    
-   ![Zvolte Galerie řešení](media/logic-apps-track-b2b-messages-omsportal/add-b2b-solution.png)
+1. Na stránce s přehledem, zvolte **přidat**, které se otevře **řešení pro správu** seznamu. V tomto seznamu, vyberte **Logic Apps B2B**. 
 
-5. V části **řešení pro správu**, vyhledávat a vytvářet **Logic Apps B2B** řešení.     
-   ![Zvolte Logic Apps B2B](media/logic-apps-track-b2b-messages-omsportal/create-b2b-solution.png)
+   ![Vyberte řešení Logic Apps B2B](media/logic-apps-track-b2b-messages-omsportal/add-b2b-solution.png)
 
-   Na domovské stránce na dlaždici **zprávy B2B Logic Apps** se teď zobrazí. 
-   Tato dlaždice aktualizuje počet zpráv při zpracování zpráv B2B.
+   Pokud nemůžete najít řešení, v dolní části seznamu, zvolte **načíst další** až se zobrazí řešení.
+
+1. Zvolte **vytvořit**, zkontrolujte pracovní prostor Log Analytics, ve které chcete řešení nainstalovat a klikněte na tlačítko **vytvořit** znovu.   
+
+   ![Zvolte možnost "Vytvořit" pro Logic Apps B2B](media/logic-apps-track-b2b-messages-omsportal/create-b2b-solution.png)
+
+   Pokud už nechcete používat existujícího pracovního prostoru, můžete také vytvořit nový pracovní prostor v tuto chvíli.
+
+1. Až budete hotovi, vraťte se do pracovního prostoru **přehled** stránky. 
+
+   Řešení Logic Apps B2B se teď zobrazí na stránce Přehled. 
+   Při zpracování zpráv B2B, počet zpráv na této stránce se aktualizuje.
 
 <a name="message-status-details"></a>
 
-## <a name="track-message-status-and-details-in-log-analytics"></a>Sledovat stav zprávy a podrobnosti v Log Analytics
+## <a name="view-b2b-message-information"></a>Zobrazit informace o zpráv B2B
 
-1. Po zpracování zpráv B2B, můžete zobrazit stav a podrobnosti o těchto zpráv. Na stránce Přehled **zprávy B2B Logic Apps** dlaždici.
+Po zpracování zpráv B2B, můžete zobrazit stav a podrobnosti o těchto zpráv na **Logic Apps B2B** dlaždici.
+
+1. Přejděte do pracovního prostoru analýzy logiky a otevřete stránku přehledu. Zvolte **Logic Apps B2B**.
 
    ![Počet aktualizovaných zpráv](media/logic-apps-track-b2b-messages-omsportal/b2b-overview-tile.png)
 
    > [!NOTE]
-   > Ve výchozím nastavení **zprávy B2B Logic Apps** dlaždice zobrazuje data na základě jednoho dne. Chcete-li změnit rozsah dat na jiný interval, zvolte ovládací prvek oboru v horní části stránky:
+   > Ve výchozím nastavení **Logic Apps B2B** dlaždice zobrazuje data na základě jednoho dne. Chcete-li změnit rozsah dat na jiný interval, zvolte ovládací prvek oboru v horní části stránky:
    > 
-   > ![Změnit rozsah dat.](media/logic-apps-track-b2b-messages-omsportal/server-filter.png)
-   >
+   > ![Interval změny](media/logic-apps-track-b2b-messages-omsportal/change-interval.png)
 
-2. Po zprávu stav se zobrazí řídicí panel, můžete zobrazit další podrobnosti pro konkrétní zprávu typ, který zobrazuje data na základě jednoho dne. Zvolte dlaždici **AS2**, **X12**, nebo **EDIFACT**.
+1. Po zprávu stav se zobrazí řídicí panel, můžete zobrazit další podrobnosti pro konkrétní zprávu typ, který zobrazuje data na základě jednoho dne. Zvolte dlaždici **AS2**, **X12**, nebo **EDIFACT**.
 
    ![Zobrazení stavu zprávy](media/logic-apps-track-b2b-messages-omsportal/omshomepage5.png)
 

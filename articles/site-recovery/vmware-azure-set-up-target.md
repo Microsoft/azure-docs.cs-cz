@@ -1,21 +1,21 @@
 ---
-title: Připravit cílové prostředí (VMware/fyzických prostředků do Azure) | Dokumentace Microsoftu
-description: Tento článek popisuje, jak připravit cílové prostředí Azure pro replikaci virtuálních počítačů VMware a replikací fyzických serverů do Azure.
+title: Připravit cílové prostředí pro replikaci VMware do Azure | Dokumentace Microsoftu
+description: Tento článek popisuje, jak připravit cílové prostředí Azure pro replikaci virtuálních počítačů VMware do Azure.
 services: site-recovery
-author: bsiva
-manager: abhemraj
+author: Rajeswari-Mamilla
+manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 09/28/2018
-ms.author: bsiva
-ms.openlocfilehash: 948812f05697362978ad041566d22977efec92a1
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.date: 10/29/2018
+ms.author: ramamill
+ms.openlocfilehash: a6f983b08415659b9a989ebed824cddd210396e1
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434632"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50233425"
 ---
-# <a name="prepare-the-target-environment-vmwarephysical-to-azure"></a>Připravit cílové prostředí (VMware/fyzických prostředků do Azure)
+# <a name="prepare-the-target-environment-for-disaster-recovery-of-vmware-vms-or-physical-servers-to-azure"></a>Připravit cílové prostředí pro zotavení po havárii virtuálních počítačů VMware nebo fyzických serverů do Azure
 
 Tento článek popisuje, jak připravit cílové prostředí Azure ke spuštění replikace virtuálních počítačů VMware nebo fyzických serverů do Azure.
 

@@ -1,7 +1,7 @@
 ---
 title: Rozhraní REST API (V4) - Python - QnA Maker
 titleSuffix: Azure Cognitive Services
-description: Získejte informace a ukázky kódu, které vám usnadní začátky práce se službou Microsoft Translator Text API ve službě Microsoft Cognitive Services v Azure.
+description: Get Python informace a ukázky kódu můžete rychle začít používat Microsoft Translator Text API ve službě Microsoft Cognitive Services v Azure.
 services: cognitive-services
 author: diberry
 manager: cgronlun
@@ -10,17 +10,17 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 10/19/2018
 ms.author: diberry
-ms.openlocfilehash: 595eee6a10192d877aa77f4849bac494dff05808
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 1eff6ab146bb3a7ee053b8ac7fe3137d7c58c93a
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49650005"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212467"
 ---
 # <a name="qna-maker-rest-api-with-python"></a>Nástroj QnA Maker REST API s využitím Pythonu
 <a name="HOLTop"></a>
 
-V tomto článku se dozvíte, jak pomocí [rozhraní Microsoft QnA Maker API](../Overview/overview.md) a jazyka Python provést následující postupy.
+V tomto článku se dozvíte, jak používat [API nástroje QnA Maker Microsoft](../Overview/overview.md) s využitím Pythonu můžete provádět následující.
 
 - [Vytvoření nové znalostní báze](#Create)
 - [Aktualizace existující znalostní báze](#Update)

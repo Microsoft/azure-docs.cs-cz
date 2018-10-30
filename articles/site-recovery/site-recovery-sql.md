@@ -1,20 +1,21 @@
 ---
-title: Aplikace s využitím SQL serveru a Azure Site Recovery replikovat | Dokumentace Microsoftu
-description: Tento článek popisuje, jak replikace SQL serveru pomocí Azure Site Recovery pro možnosti SQL serveru po havárii.
+title: Nastavení zotavení po havárii pro SQL Server s SQL serverem a Azure Site Recovery | Dokumentace Microsoftu
+description: Tento článek popisuje, jak nastavit zotavení po havárii pro SQL Server pomocí SQL serveru a Azure Site Recovery.
 services: site-recovery
-author: rayne-wiselman
+author: sujayt
+manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 07/22/2018
-ms.author: raynew
-ms.openlocfilehash: a734999f0fa473b5f1ee8ed55c4b73950566490d
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.author: sutalasi
+ms.openlocfilehash: 46f5f73293875cd89036eb615e7bd81188bc4c67
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43188769"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210257"
 ---
-# <a name="protect-sql-server-using-sql-server-disaster-recovery-and-azure-site-recovery"></a>Ochrana systému SQL Server pomocí zotavení po havárii pro SQL Server a Azure Site Recovery
+# <a name="set-up-disaster-recovery-for-sql-server"></a>Nastavení zotavení po havárii pro SQL Server 
 
 Tento článek popisuje, jak chránit SQL Server back-endu aplikace pomocí kombinace kontinuity SQL serveru a technologie (BCDR) pro obnovení po havárii, a [Azure Site Recovery](site-recovery-overview.md).
 

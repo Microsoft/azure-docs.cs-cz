@@ -11,12 +11,12 @@ ms.assetid: b5ae0827-fbb3-45ec-8f45-ad1cc2e7eccc
 ms.topic: article
 tags: connectors
 ms.date: 08/25/2018
-ms.openlocfilehash: 41855d6e562ddbb78df5d1d8794127e1064cc2ca
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.openlocfilehash: ca2d28f3438fd166fa282488206662c95777bf3b
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42918291"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50233323"
 ---
 # <a name="monitor-and-manage-your-yammer-account-by-using-azure-logic-apps"></a>Monitorovat a spravovat váš účet Yammeru pomocí Azure Logic Apps
 
@@ -76,7 +76,7 @@ Technické podrobnosti o omezení, akce a triggery, které jsou popsány pomocí
 ## <a name="get-support"></a>Získat podporu
 
 * Pokud máte dotazy, navštivte [fórum Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-* Pokud chcete zanechat své nápady na funkce nebo hlasovat, navštivte [web zpětné vazby od uživatelů Logic Apps](http://aka.ms/logicapps-wish).
+* Pokud chcete zanechat své nápady na funkce nebo hlasovat, navštivte [web zpětné vazby od uživatelů Logic Apps](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Další postup
 

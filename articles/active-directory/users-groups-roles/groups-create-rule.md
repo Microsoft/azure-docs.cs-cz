@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 09/20/2018
+ms.date: 10/26/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: e418316a74ccf27ec730261957a8b6c64de5d063
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: d521406e37920dcd76c0078d2fdf54c16b7a0461
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47040597"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50209985"
 ---
 # <a name="create-a-dynamic-group-and-check-status"></a>Vytvoření dynamické skupiny a zkontrolovat stav
 
@@ -39,8 +39,9 @@ Tento článek podrobně popisuje, jak nastavit pravidlo, na webu Azure Portal p
 
    ![Přidat dynamické pravidlo členství](./media/groups-create-rule/add-dynamic-group-rule.png)
 
-5. Po vytvoření pravidla, vyberte **přidat dotaz** v dolní části okna.
-6. Vyberte **vytvořit** na **skupiny** okno pro vytvoření skupiny.
+5. Pokud chcete zobrazit úplný seznam vlastností rozšíření zákazníka, které můžete přidat do dotazu členství, vyberte **Get vlastnosti rozšíření zákazníka**, zadejte jedinečné ID a pak vyberte **aktualizovat vlastnosti**. Úplné TIS vlastnosti teď bude k dispozici k výběru.
+6. Po vytvoření pravidla, vyberte **přidat dotaz** v dolní části okna.
+7. Vyberte **vytvořit** na **skupiny** okno pro vytvoření skupiny.
 
 > [!TIP]
 > Vytvoření skupiny selže, pokud pravidlo, které jste zadali, byl nesprávně vytvořený nebo není platný. Oznámení se zobrazí v pravém dolním rohu portálu, který obsahuje vysvětlení, proč nebylo možné zpracovat pravidlo. Přečtěte si ho pečlivě, abyste pochopili, jak je potřeba upravit pravidlo, aby byl platný.

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/22/2018
 ms.author: harijay
-ms.openlocfilehash: facd9be037894932e516e8294e36b6b0e55374c8
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 2cde7d2af4dee9e2bd241f0856b8f2d29ccad6ad
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024407"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210733"
 ---
 # <a name="virtual-machine-serial-console"></a>Konzola sériového portu virtuálního počítače
 
@@ -54,20 +54,26 @@ Konzola sériového portu pro virtuální počítače je k dispozici pouze prost
   4. Posuňte se dolů části Podpora a řešení potíží s části a klikněte na možnost "Konzoly sériového portu". Otevře se nové podokno s sériové konzoly a spustit připojení.
 
 ## <a name="enable-serial-console-in-custom-or-older-images"></a>Povolit konzoly sériového portu v obrázcích vlastní nebo starší
-Novější Image Windows serveru v Azure budou mít [Speciální konzoly pro správu](https://technet.microsoft.com/library/cc787940(v=ws.10).aspx) (SAC) ve výchozím nastavení povolená. SAC je podporováno ve verzích Windows na serveru, ale není k dispozici ve verzích klienta (například Windows 10, Windows 8 nebo Windows 7). Pokud chcete povolit konzoly sériového portu pro virtuální počítače s Windows, které jsou vytvořeny před únorem 2018, použijte následující kroky: 
+Novější Image Windows serveru v Azure budou mít [Speciální konzoly pro správu](https://technet.microsoft.com/library/cc787940(v=ws.10).aspx) (SAC) ve výchozím nastavení povolená. SAC je podporováno ve verzích Windows na serveru, ale není k dispozici ve verzích klienta (například Windows 10, Windows 8 nebo Windows 7). 
+
+Pro starší Image Windows serveru (vytvořeny před únorem 2018) může automaticky povolí konzole sériového portu pomocí webu Azure portal spustit příkaz funkce. Vyhledejte příkaz Spustit s názvem "EnableEMS" na webu Azure Portal.
+
+![](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-runcommand.png)
+
+Můžete také povolit ručně konzole sériového portu pro virtuální počítače s Windows, které jsou vytvořeny před únorem 2018, použijte následující kroky: 
 
 1. Připojte se k virtuálnímu počítači přes vzdálenou plochu Windows
-2. Z příkazového řádku pro správu spusťte následující příkazy 
-* `bcdedit /ems {current} on`
-* `bcdedit /emssettings EMSPORT:1 EMSBAUDRATE:115200`
-3. Restartujte systém pro konzolu SAC povolení
+1. Z příkazového řádku pro správu spusťte následující příkazy 
+    * `bcdedit /ems {current} on`
+    * `bcdedit /emssettings EMSPORT:1 EMSBAUDRATE:115200`
+1. Restartujte systém pro konzolu SAC povolení
 
-![](/media/virtual-machines-serial-console/virtual-machine-windows-serial-console-connect.gif)
+![](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-connect.gif)
 
 V případě potřeby SAC se dá nastavit v offline režimu také:
 
 1. Připojte disk systému windows chcete SAC nakonfigurovaný jako datového disku k existujícímu virtuálnímu počítači. 
-2. Z příkazového řádku pro správu spusťte následující příkazy 
+1. Z příkazového řádku pro správu spusťte následující příkazy 
 * `bcdedit /store <mountedvolume>\boot\bcd /ems {default} on`
 * `bcdedit /store <mountedvolume>\boot\bcd /emssettings EMSPORT:1 EMSBAUDRATE:115200`
 

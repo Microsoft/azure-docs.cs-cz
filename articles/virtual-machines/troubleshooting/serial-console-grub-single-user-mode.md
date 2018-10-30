@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 411c743421af79ea066df3a5fc07f71b8b6cb993
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 43f9d7d39cfcdd7b670aca6184533def0b6966f5
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48855863"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50211379"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>Použít pro přístup k GRUB a Jednouživatelský režim konzoly sériového portu
 GRUB je součet spouštěcí zavaděč Unified. Z GRUB budete moci změnit konfiguraci spuštění pro spuštění do režimu jednoho uživatele, mimo jiné.
@@ -33,7 +33,7 @@ Do režimu jednoho uživatele, je potřeba zadat GRUB, když váš virtuální p
 ## <a name="general-grub-access"></a>Obecné GRUB přístup
 Pro přístup k GRUB, je potřeba restartování vašeho virtuálního počítače přitom otevřete okno konzoly sériového portu. Některé distribuce bude vyžadovat vstup z klávesnice zobrazíte GRUB, zatímco jiné se automaticky zobrazit GRUB na několik sekund a povolit vstup z klávesnice pro zrušení časový limit. 
 
-Můžete zajistit, že GRUB je povoleno na virtuálním počítači mohli do režimu jednoho uživatele přístup. V závislosti na vaší distribuce může být Ujistěte se, že je povoleno GRUB nějakou práci navíc instalační program. Distribuce specifické informace jsou k dispozici níže.
+Můžete zajistit, že GRUB je povoleno na virtuálním počítači mohli do režimu jednoho uživatele přístup. V závislosti na vaší distribuce může být Ujistěte se, že je povoleno GRUB nějakou práci navíc instalační program. Distribuce specifické informace jsou k dispozici níže a v [tento odkaz](https://blogs.msdn.microsoft.com/linuxonazure/2018/10/23/why-proactively-ensuring-you-have-access-to-grub-and-sysrq-in-your-linux-vm-could-save-you-lots-of-down-time/).
 
 ### <a name="reboot-your-vm-to-access-grub-in-serial-console"></a>Restartování vašeho virtuálního počítače pro přístup k GRUB v konzole sériového portu
 Restartování vašeho virtuálního počítače s otevřete okno konzoly sériového portu se provádí pomocí SysRq `'b'` příkaz Pokud [SysRq](./serial-console-nmi-sysrq.md) je povolená, nebo kliknutím na restartování tlačítko v okně Přehled (otevřít virtuální počítač na nové kartě prohlížeče restartovat bez zavření v okně konzoly sériového portu). Postupujte podle pokynů specifických distribuce níže se dozvíte, co můžete očekávat od GRUB po restartování.
@@ -186,6 +186,7 @@ Postupujte podle pokynů pro RHEL výše pro povolení režimu jednoho uživatel
 
 ## <a name="next-steps"></a>Další postup
 * Na stránce dokumentace s Linuxem hlavní konzoly sériového portu se nachází [tady](serial-console-linux.md).
+* Další informace o použití konzoly sériového portu k [povolit GRUB v různých distribucích](https://blogs.msdn.microsoft.com/linuxonazure/2018/10/23/why-proactively-ensuring-you-have-access-to-grub-and-sysrq-in-your-linux-vm-could-save-you-lots-of-down-time/)
 * Použití konzoly sériového portu pro [NMI a SysRq volání](serial-console-nmi-sysrq.md)
 * Je taky dostupná ke konzole sériového portu [Windows](serial-console-windows.md) virtuálních počítačů
 * Další informace o [Diagnostika spouštění](boot-diagnostics.md)

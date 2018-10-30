@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 10/15/2018
 ms.author: tamram
-ms.openlocfilehash: ae6f7646192b7bee8cbd836f1eff3814c26a6b46
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: ed35380e66e6d5d59058552d8e0504220c100b73
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49427305"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50231385"
 ---
 # <a name="enable-azure-active-directory-authentication-over-smb-for-azure-files-preview"></a>Povolit ověřování Azure Active Directory přes protokol SMB pro soubory Azure (preview)
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -88,7 +88,11 @@ Následující obrázek ukazuje, jak povolit ověřování Azure AD prostřednic
   
 ### <a name="powershell"></a>PowerShell  
 
-Pokud chcete povolit ověřování Azure AD prostřednictvím protokolu SMB v Azure Powershellu, nejprve nainstalujte `AzureRM.Storage 6.0.0-preview` modulu. Informace o instalaci Powershellu najdete v tématu [nainstalujte prostředí Azure PowerShell ve Windows pomocí Správce balíčků PowerShellGet](https://docs.microsoft.com/powershell/azure/install-azurerm-ps).
+Pokud chcete povolit ověřování Azure AD prostřednictvím protokolu SMB v Azure Powershellu, nejprve nainstalujte `AzureRM.Storage` modulu, verze `6.0.0-preview`, následujícím způsobem. Další informace o instalaci Powershellu najdete v tématu [nainstalujte prostředí Azure PowerShell ve Windows pomocí Správce balíčků PowerShellGet](https://docs.microsoft.com/powershell/azure/install-azurerm-ps):
+
+```powershell
+Install-Module -Name AzureRM.Storage -RequiredVersion 6.0.0-preview -AllowPrerelease
+```
 
 Dále vytvořte nové úložiště účtu a potom voláním [Set-AzureRmStorageAccount](https://docs.microsoft.com/powershell/module/azurerm.storage/set-azurermstorageaccount) a nastavit **EnableAzureFilesAadIntegrationForSMB** parametr **true**. V následujícím příkladu nezapomeňte nahradit zástupné hodnoty vlastními hodnotami.
 

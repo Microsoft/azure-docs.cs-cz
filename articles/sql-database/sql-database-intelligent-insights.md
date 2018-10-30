@@ -1,5 +1,5 @@
 ---
-title: Monitorovat využití databáze s Intelligent Insights – Azure SQL Database | Dokumentace Microsoftu
+title: Monitorování výkonu databáze s Intelligent Insights – Azure SQL Database | Dokumentace Microsoftu
 description: Azure SQL Database Intelligent Insights využívá integrované inteligentní funkce neustále monitorovat využití databáze prostřednictvím umělé inteligence a zjišťovat rušivé události, které způsobují nízký výkon.
 services: sql-database
 ms.service: sql-database
@@ -12,14 +12,14 @@ ms.author: v-daljep
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 10/05/2018
-ms.openlocfilehash: b64c8f5d30f95cccf8a029adfd5c443a81597c4d
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: e87cd3742a5dcd52c3a447bb66ea9089c18d5aee
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48870685"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50214677"
 ---
-# <a name="intelligent-insights-using-artificial-intelligence-to-monitor-database-usage"></a>Inteligentní přehledy s využitím umělé inteligence monitorovat využití databáze
+# <a name="intelligent-insights-using-ai-to-monitor-and-troubleshoot-database-performance"></a>Inteligentní přehledy s využitím AI k monitorování a ladění výkonu databáze
 
 Azure SQL Database Intelligent Insights vám umožňuje vědět, co se děje s výkonu vaší databáze SQL Database a Managed Instance.
 

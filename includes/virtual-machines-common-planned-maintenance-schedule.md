@@ -1,55 +1,66 @@
+---
+author: cynthn
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: cynthn
+ms.openlocfilehash: c7fe0d6f8e03501cca7a8b98f95286b6a21c0476
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50227073"
+---
+## <a name="multi-and-single-instance-vms"></a>Virtuální počítače jedné Instance a více
+Mnoho zákazníků a systémem Azure počet je důležité, můžete naplánovat při své virtuální počítače této oblasti podstupovali plánované údržby kvůli výpadku – přibližně 15 minut –, který nastane během údržby. Můžete použít skupiny dostupnosti, které pomáhá řídit při zřízené virtuální počítače přijímat plánované údržby.
 
+Existují dva možné konfigurace pro virtuální počítače spuštěné v Azure. Virtuální počítače jsou buď nakonfigurované jako více instancí nebo s jednou instancí. Pokud virtuální počítače jsou ve skupině dostupnosti, pak jsou nakonfigurované jako více instancemi. Mějte na paměti, dokonce i jeden virtuální počítače je možné nasadit ve skupině dostupnosti, takže jsou považovány za více instancemi. Pokud virtuální počítače nejsou ve skupině dostupnosti, pak jsou nakonfigurované jako jedinou instancí.  Podrobnosti o skupinách dostupnosti najdete v tématu [Správa dostupnosti virtuálních počítačů z Windows](../articles/virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) nebo [Správa dostupnosti z vašich virtuálních počítačů s Linuxem](../articles/virtual-machines/linux/manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-## <a name="multi-and-single-instance-vms"></a>Více a jedna Instance virtuálních počítačů
-Mnoho zákazníků systémem Azure počet je důležité, aby můžete naplánovat při jejich virtuální počítače podstoupit plánované údržby kvůli výpadku – asi 15 minut – k tomu dojde během údržby. Aby se usnadnilo řízení, když virtuální počítače zřízené obdrží plánované údržbě, můžete použít skupiny dostupnosti.
-
-Existují dvě možné konfigurace pro virtuální počítače spuštěné v Azure. Virtuální počítače jsou buď nakonfigurovány jako s více instancemi nebo s jednou instancí. Pokud jsou virtuální počítače v nastavení dostupnosti, pak jsou nakonfigurované jako s více instancemi. Všimněte si, i jeden virtuálních počítačů je možné nasadit v nastavení dostupnosti, takže jsou považovány za s více instancemi. Pokud virtuální počítače nejsou v nastavení dostupnosti, pak jsou nakonfigurované jako jedné instance.  Podrobnosti o dostupnosti sadách najdete v tématu [Správa dostupnosti virtuálních počítačů z Windows](../articles/virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) nebo [Správa dostupnosti virtuálních počítačů systému Linux](../articles/virtual-machines/linux/manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-
-Plánovaná údržba aktualizace jedné instance a s více instancemi virtuálních počítačů dojít samostatně. Změnou virtuální počítače do jedné instance (pokud jsou s více instancemi) nebo na více instancemi (pokud jde o jednoduchou) můžete řídit, pokud jejich virtuální počítače přijímat plánované údržby. V tématu [plánované údržby pro virtuální počítače s Linuxem Azure](../articles/virtual-machines/linux/planned-maintenance.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) nebo [plánované údržby pro virtuální počítače s Azure Windows](../articles/virtual-machines/windows/planned-maintenance.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) podrobnosti o plánované údržby pro virtuální počítače Azure.
+Plánovaná údržba aktualizací do jednou instancí a s více instancemi virtuálních počítačů dojít samostatně. Překonfigurováním vaše virtuální počítače jedné instance (v případě, že jsou s více instancemi) nebo víc instancí (v případě, že jsou jednou instancí) můžete řídit, kdy své virtuální počítače přijímat plánované údržby. Zobrazit [plánované údržby pro virtuální počítače Azure s Linuxem](../articles/virtual-machines/linux/planned-maintenance.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) nebo [plánované údržby pro virtuální počítače s Windows Azure](../articles/virtual-machines/windows/planned-maintenance.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) podrobnosti o plánované údržbě pro virtuální počítače Azure.
 
 ## <a name="for-multi-instance-configuration"></a>Pro konfiguraci s více instancemi
-Můžete vybrat čas plánované údržby ovlivní vaše virtuální počítače, které jsou nasazeny v konfiguraci skupiny dostupnosti odebráním těchto virtuálních počítačů ze skupiny dostupnosti.
+Můžete vybrat čas plánované údržby ovlivní vaše virtuální počítače, které jsou nasazeny v konfiguraci skupiny dostupnosti odstraněním těchto virtuálních počítačů ze skupiny dostupnosti.
 
-1. E-mail je odeslán vám sedm dní kalendáře před plánované údržby pro virtuální počítače v konfiguraci s více instancemi. ID předplatného a názvy ovlivněných virtuálních počítačů s více instancemi jsou zahrnuty v textu e-mailu.
-2. Během těchto sedm dní které můžete vybrat dobu, kterou vaše instance jsou aktualizovány odebráním virtuální počítače s více instancemi v této oblasti z jejich sady dostupnosti. Tato změna konfigurace způsobí, že k restartování, jako virtuální počítač je přechod z jednoho fyzického hostitele, určený pro údržby jiného fyzického hostitele, který není cílová pro údržbu.
-3. Virtuální počítač můžete odebrat z její dostupnosti na portálu Azure.
+1. E-mail je odeslán, sedm dní před plánovanou údržbou k vašim virtuálním počítačům v konfiguraci s více instancemi. ID předplatného a názvů příslušných virtuálních počítačích s více instancemi jsou zahrnuty v textu e-mailu.
+2. Během těchto sedm dní můžete zvolit, čas, kdy vaše instance se aktualizují tak, že odeberete více instancemi virtuálních počítačů v dané oblasti z jejich dostupnosti. Tato změna konfigurace způsobí restartování, jako virtuální počítač se přesouvá z jednoho fyzického hostitele, je určená pro údržbu, do jiného fyzického hostitele, která není určená pro údržbu.
+3. Virtuální počítač můžete odebrat z její skupiny dostupnosti na webu Azure Portal.
 
-   1. Na portálu vyberte virtuální počítač odebrat ze skupiny dostupnosti.  
+   1. Na portálu vyberte virtuální počítač odebrat ze sady dostupnosti.  
 
-   2. V části **nastavení**, klikněte na tlačítko **sadu dostupnosti**.
+   2. V části **nastavení**, klikněte na tlačítko **dostupnosti**.
 
       ![Výběr skupiny dostupnosti](./media/virtual-machines-planned-maintenance-schedule/availabilitysetselection.png)
 
-   3. V dostupnost nastavte rozevírací nabídce, vyberte "Není součástí skupiny dostupnosti."
+   3. Ve skupině dostupně rozevírací nabídku, vyberte "Není součástí nastavení dostupnosti."
 
       ![Odebrat ze sady](./media/virtual-machines-planned-maintenance-schedule/availabilitysetwarning.png)
 
-   4. V horní části, klikněte na tlačítko **Uložit**. Klikněte na tlačítko **Ano** aby vzali na vědomí, že tato akce restartuje virtuální počítač.
+   4. V horní části stránky, klikněte na tlačítko **Uložit**. Klikněte na tlačítko **Ano** potvrďte, že tato akce restartuje virtuální počítač.
 
    >[!TIP]
-   >Je možné změnit konfiguraci virtuálního počítače s více instancemi později tak, že vyberete jednu z uvedených dostupnosti sad.
+   >Je možné změnit konfiguraci virtuálního počítače s více instancemi později výběrem jedné z uvedených dostupnosti.
 
-4. Virtuální počítače odebrat ze skupiny dostupnosti přesunou do jedné Instance hostitele a neaktualizují během plánované údržby dostupnosti nastavení konfigurace.
-5. Po dokončení (podle plánu uvedených v původního e-mailu) aktualizaci, kterou chcete virtuální počítače nastavení dostupnosti, měli byste přidat virtuální počítače zpět do jejich skupiny dostupnosti. Stane součástí skupiny dostupnosti jako s více instancemi změní konfiguraci virtuálních počítačů a má za následek restart. Obvykle po dokončení všech aktualizací s více instancemi napříč celou prostředí Azure, odpovídá jedné instance údržby.
+4. Odebrat ze skupiny dostupnosti virtuálních počítačů přesunou do hostitele s jednou instancí a nejsou aktualizovány během plánované údržby pro konfiguraci nastavení dostupnosti.
+5. Po aktualizace pro virtuální počítače nastavení dostupnosti je dokončena (podle plánu uvedených v původního e-mailu), měli byste přidat virtuální počítače zpět do jejich dostupnosti. Stávají součástí nastavení dostupnosti změní konfiguraci virtuálních počítačů jako více instancemi a má za následek restartování. Obvykle po dokončení všechny aktualizace více instancí napříč celým prostředím Azure řídí údržby jednou instancí.
 
-Odebrání virtuálního počítače ze skupiny dostupnosti můžete také dosáhnout pomocí Azure PowerShell:
+Odebrání nastavení dostupnosti virtuálního počítače můžete také dosáhnout pomocí Azure Powershellu:
 
 ```
 Get-AzureVM -ServiceName "<VmCloudServiceName>" -Name "<VmName>" | Remove-AzureAvailabilitySet | Update-AzureVM
 ```
 
-## <a name="for-single-instance-configuration"></a>Pro konfiguraci s jednou instancí
-Můžete vybrat čas plánované údržby ovlivňuje můžete virtuální počítače v konfiguraci s jednou instancí přidáním těchto virtuálních počítačů do skupiny dostupnosti.
+## <a name="for-single-instance-configuration"></a>U konfigurací s jednou instancí
+Můžete vybrat čas plánované údržby se vás týká virtuálních počítačů v konfiguraci s jednou instancí tak, že přidáte tyto virtuální počítače do skupiny dostupnosti.
 
 Podrobný postup
 
-1. E-mail je odeslán vám sedm dní před plánované údržby pro virtuální počítače v konfiguraci s jednou instancí. ID předplatného a názvy virtuálních počítačů ovlivněných jedné Instance jsou zahrnuty v textu e-mailu.
-2. Během těchto sedm dní které můžete vybrat dobu, kterou instanci restartuje přidáním jedné instance virtuálních počítačů v této oblasti stejnou sadu dostupnosti. Tato změna konfigurace způsobí, že k restartování, jako virtuální počítač je přechod z jednoho fyzického hostitele, určený pro údržby jiného fyzického hostitele, který není cílová pro údržbu.
-3. Postupujte podle pokynů pro přidání existujících virtuálních počítačů do skupiny dostupnosti pomocí portálu Azure a prostředí Azure PowerShell. (Viz prostředí Azure PowerShell vzorku, který zahrnuje následující kroky.)
-4. Jakmile tyto virtuální počítače jsou překonfigurovat jako s více instancemi, jsou vyloučeny ze plánované údržby k virtuálním počítačům jedné instance.
-5. Po dokončení aktualizace jedné instance virtuálního počítače (podle plánu v původního e-mailu), může vrátit virtuální počítače do jedné instance odebráním virtuální počítače z jejich skupiny dostupnosti.
+1. E-mail je odeslán, sedm dní před plánovaná údržba pro virtuální počítače v konfiguraci s jednou instancí. ID předplatného a názvů příslušných virtuálních počítačích jednou instancí jsou zahrnuty v textu e-mailu.
+2. Během těchto sedm dní můžete zvolit, čas, kdy restartování vaší instance tak, že přidáte jednou instancí virtuálních počítačů do skupiny dostupnosti v dané stejné oblasti. Tato změna konfigurace způsobí restartování, jako virtuální počítač se přesouvá z jednoho fyzického hostitele, je určená pro údržbu, do jiného fyzického hostitele, která není určená pro údržbu.
+3. Postupujte podle pokynů pro přidání existujících virtuálních počítačů do skupiny dostupnosti pomocí webu Azure portal a Azure Powershellu. (Viz ukázky Azure Powershellu, který zahrnuje následující kroky.)
+4. Jakmile jsou tyto virtuální počítače překonfigurovat jako více instancemi, jsou vyloučeny ze plánovaná údržba pro virtuální počítače s jednou instancí.
+5. Po dokončení aktualizace jednou instancí virtuálních počítačů (podle plánu do původního e-mailu) můžete vrátit virtuální počítače s jednou instancí tak, že odeberete virtuální počítače z jejich dostupnosti.
 
-Přidání virtuálního počítače do také sadu dostupnosti můžete dosáhnout pomocí Azure PowerShell:
+Přidání virtuálního počítače do skupiny dostupnosti také lze dosáhnout pomocí Azure Powershellu:
 
     Get-AzureVM -ServiceName "<VmCloudServiceName>" -Name "<VmName>" | Set-AzureAvailabilitySet -AvailabilitySetName "<AvSetName>" | Update-AzureVM
 

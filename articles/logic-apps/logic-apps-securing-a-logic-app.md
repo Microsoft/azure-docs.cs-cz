@@ -10,12 +10,12 @@ ms.reviewer: estfan, LADocs
 ms.assetid: 9fab1050-cfbc-4a8b-b1b3-5531bee92856
 ms.topic: article
 ms.date: 11/22/2016
-ms.openlocfilehash: 1307b6df22c51af9710d44abb23178d65e3507aa
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 0fe35b67a424caedcea2c71885d1757943ace9d1
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44377390"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50232592"
 ---
 # <a name="secure-access-in-azure-logic-apps"></a>Zabezpečený přístup v Azure Logic Apps
 
@@ -168,7 +168,7 @@ Můžete chtít parametrizovat některé aspekty definice pracovního postupu pr
 
 ### <a name="using-parameters-and-secure-parameters"></a>Pomocí parametrů a zabezpečené parametry
 
-Pro přístup k hodnotě parametru prostředků v době běhu [jazyka definice pracovního postupu](http://aka.ms/logicappsdocs) poskytuje `@parameters()` operace. Můžete také [zadejte parametry v šabloně prostředku nasazení](../azure-resource-manager/resource-group-authoring-templates.md#parameters). Ale pokud zadáte typ parametru jako `securestring`, parametr se nevrátí se zbytkem definice prostředku a zobrazením prostředek po nasazení budou nepřístupná.
+Pro přístup k hodnotě parametru prostředků v době běhu [jazyka definice pracovního postupu](https://aka.ms/logicappsdocs) poskytuje `@parameters()` operace. Můžete také [zadejte parametry v šabloně prostředku nasazení](../azure-resource-manager/resource-group-authoring-templates.md#parameters). Ale pokud zadáte typ parametru jako `securestring`, parametr se nevrátí se zbytkem definice prostředku a zobrazením prostředek po nasazení budou nepřístupná.
 
 > [!NOTE]
 > Pokud váš parametr se používá v záhlaví a text žádosti, může být parametr viditelné díky přístupu do historie spouštění a odchozí požadavek HTTP. Ujistěte se, že se odpovídajícím způsobem nastavit zásady přístup k obsahu.

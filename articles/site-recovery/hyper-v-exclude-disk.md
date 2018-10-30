@@ -1,17 +1,17 @@
 ---
-title: Vyloučení disků z ochrany pomocí Azure Site Recovery | Dokumentace Microsoftu
-description: Tento článek popisuje, proč a jak vyloučit disky virtuálních počítačů z replikace pro scénáře z Hyper-V do Azure.
+title: Vyloučení disků z replikace při nastavování zotavení po havárii pomocí služby Azure Site Recovery | Dokumentace Microsoftu
+description: Popisuje, jak vyloučit disky virtuálních počítačů z replikace během zotavení po havárii do Azure.
 author: nsoneji
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: nisoneji
-ms.openlocfilehash: 38b7e965a85bf7014167f9a5c3fd66202c02e0fa
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 851da02ebd7486c0e96451a14086eb95d81968b4
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49091908"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50213198"
 ---
 # <a name="exclude-disks-from-replication"></a>Vyloučení disků z replikace
 Tento článek popisuje, jak vyloučit disky z replikace. Takové vyloučení může optimalizovat jak využití šířky pásma potřebné pro replikaci, tak i prostředků využívaných na cílové straně těmito disky.

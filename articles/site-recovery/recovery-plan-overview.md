@@ -1,29 +1,24 @@
 ---
-title: Pomocí plánů obnovení ve službě Azure Site Recovery | Dokumentace Microsoftu
-description: Další informace o plánech obnovení ve službě Azure Site Recovery.
-services: site-recovery
-documentationcenter: ''
+title: Pomocí plánů obnovení zotavení po havárii pomocí Azure Site Recovery | Dokumentace Microsoftu
+description: Další informace o použití plány obnovení pro zotavení po havárii pomocí služby Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.devlang: na
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 10/28/2018
 ms.author: raynew
-ms.openlocfilehash: 011c9acb5d34e15f65b64d59867e7501f0720a08
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 463a7fc51cac6160fbb97fc53077d0b5eda80533
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37920105"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215187"
 ---
 # <a name="about-recovery-plans"></a>Plány obnovení
 
 Tento článek popisuje plány obnovení v [Azure Site Recovery](site-recovery-overview.md).
 
 Plán obnovení shromažďuje počítače do skupin pro obnovení. Plán můžete přizpůsobit tak, že přidáte k němu pořadí, pokyny a úkoly. Po definování plánu můžete spustit převzetí služeb při selhání na něj.
-
-
 
 
 

@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: jeffgilb
 ms.reviewer: quying
-ms.openlocfilehash: 1c5a2e4102b251490bf3a1fa9b82e9dbce075242
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: dce9d4d5d1f2e3e50cabb86ee0d8d14b2fce2923
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49364417"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50230025"
 ---
 # <a name="deploy-the-mysql-resource-provider-on-azure-stack"></a>Nasazení poskytovatele prostředků MySQL ve službě Azure Stack
 
@@ -90,7 +90,7 @@ Můžete zadat tyto parametry z příkazového řádku. Pokud ne, nebo pokud lib
 | **VMLocalCredential** | Přihlašovací údaje pro účet místního správce poskytovatele prostředků MySQL virtuálního počítače. | _Vyžaduje_ |
 | **PrivilegedEndpoint** | IP adresa nebo název DNS privileged koncového bodu. |  _Vyžaduje_ |
 | **AzureEnvironment** | Prostředí Azure účet správce služby, které jste použili k nasazení Azure Stack. Vyžaduje se jenom pro nasazení služby Azure AD. Názvy prostředí podporované jsou **AzureCloud**, **AzureUSGovernment**, nebo pokud používáte Čína Azure AD, **AzureChinaCloud**. | AzureCloud |
-| **DependencyFilesLocalPath** | Pro integrované systémy pouze váš soubor PFX certifikátu musí být umístěna v tomto adresáři. Odpojené enviroments, stáhněte si [mysql-connector-net-6.10.5.msi](https://dev.mysql.com/get/Downloads/Connector-Net/mysql-connector-net-6.10.5.msi) do tohoto adresáře. Volitelně můžete zkopírovat jeden balíček Windows Update MSU tady. | _Volitelné_ (_povinné_ pro integrované systémy nebo odpojených prostředích) |
+| **DependencyFilesLocalPath** | Pro integrované systémy pouze váš soubor PFX certifikátu musí být umístěna v tomto adresáři. Pro odpojené prostředí Stáhnout [mysql-connector-net-6.10.5.msi](https://dev.mysql.com/get/Downloads/Connector-Net/mysql-connector-net-6.10.5.msi) do tohoto adresáře. Volitelně můžete zkopírovat jeden balíček Windows Update MSU tady. | _Volitelné_ (_povinné_ pro integrované systémy nebo odpojených prostředích) |
 | **DefaultSSLCertificatePassword** | Heslo pro certifikát PFX. | _Vyžaduje_ |
 | **MaxRetryCount** | Počet pokusů, které chcete opakovat každé operace, pokud dojde k selhání.| 2 |
 | **RetryDuration** | Časový interval mezi opakovanými pokusy, během několika sekund. | 120 |

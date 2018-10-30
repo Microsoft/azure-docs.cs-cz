@@ -7,20 +7,22 @@ ms.service: firewall
 ms.topic: article
 ms.date: 10/24/2018
 ms.author: victorh
-ms.openlocfilehash: cba8ee486e13f00043a6b2092ae98bd84f9f6cba
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: cff31ba73730b7cf7cb27ecb132ec70806234924
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50095172"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50233391"
 ---
 # <a name="azure-firewall-log-analytics-samples"></a>Ukázky v Azure Log Analytics brány Firewall
 
-Následující ukázky Log Analytics můžete použít k analýze protokolů vaše Brána Firewall služby Azure.
+Následující ukázky Log Analytics můžete použít k analýze protokolů vaše Brána Firewall služby Azure. Ukázkový soubor je součástí Návrhář zobrazení Log Analytics, [Návrhář zobrazení Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-view-designer) článek obsahuje další informace o návrhu zobrazení koncept.
 
 ## <a name="log-analytics-view"></a>Zobrazení v Log Analytics
 
-Tady je konfigurace vizualizace příklad log analytics. Můžete si stáhnout příklad vizualizace [tady](scripts/AzureFirewall.omsview). Proveďte následující kroky, chcete-li přidat zobrazení do pracovního prostoru log analytics:
+Tady je konfigurace vizualizace příklad log analytics. Můžete si stáhnout příklad vizualizace z [azure-docs-json-samples](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-firewall/AzureFirewall.omsview) úložiště. Nejjednodušší způsob je klikněte pravým tlačítkem na hypertextový odkaz na tuto stránku a zvolte *uložit jako* a zadejte název, například **AzureFirewall.omsview**. 
+
+Proveďte následující kroky, chcete-li přidat zobrazení do pracovního prostoru log analytics:
 
 1. Otevřete pracovní prostor log analytics na portálu Azure Portal.
 2. Otevřít **zobrazení návrháře** níže **Obecné**.

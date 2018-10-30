@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.assetid: e06311bc-29eb-49df-9273-1f05bbb2395c
 ms.date: 01/31/18
-ms.openlocfilehash: 0d5a7cb97636b9ca3aabf6c4199ce9e41bc1665d
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 6249c45a1cd3a8acbb9770fc39da881d8da9057f
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44304420"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50230129"
 ---
 # <a name="common-scenarios-examples-tutorials-and-walkthroughs-for-azure-logic-apps"></a>Běžné scénáře, příklady, kurzy a názorné postupy pro Azure Logic Apps
 
@@ -59,7 +59,7 @@ Pro systémy a služby, které nemusí být publikovány konektory můžete taky
 * [Nastavit dlouhotrvající akce spuštění pracovního postupu](../logic-apps/logic-apps-create-api-app.md)
 * [Reakce na vnější události a akce pomocí webhooků](../logic-apps/logic-apps-create-api-app.md)
 * [Volání triggeru, nebo vnořené pracovní postupy pomocí synchronní odpovědí na požadavky HTTP](../logic-apps/logic-apps-http-endpoint.md)
-* [Kurz: Sestavení s využitím AI řídicího panelu sociálních sítí díky Logic Apps a Power BI během několika minut](http://aka.ms/logicappsdemo)
+* [Kurz: Sestavení s využitím AI řídicího panelu sociálních sítí díky Logic Apps a Power BI během několika minut](https://aka.ms/logicappsdemo)
 * [Video: Reagovat na webhooky Twilio SMS a odeslání text odpovědi](https://channel9.msdn.com/Blogs/Windows-Azure/Azure-Logic-Apps-Walkthrough-Webhook-Functions-and-an-SMS-Bot)
 
 ## <a name="control-flow-error-handling-and-logging-capabilities"></a>Tok řízení, zpracování chyb a možnosti protokolování
@@ -84,11 +84,11 @@ Můžete plně vývoj a nasazení aplikací logiky s využitím sady Visual Stud
 
 ## <a name="content-types-conversions-and-transformations-within-a-run"></a>Typy obsahu, převod a transformace v rámci spuštění
 
-Přístup, převod a transformace více typů obsahu pomocí mnoho funkcí v Azure Logic Apps [jazyka definice pracovního postupu](http://aka.ms/logicappsdocs). Například můžete převod mezi řetězci, JSON a XML s `@json()` a `@xml()` výrazy pracovního postupu. Modul Logic Apps zachová typy obsahu pro podporu obsahu přenos beze ztrát způsobem mezi službami.
+Přístup, převod a transformace více typů obsahu pomocí mnoho funkcí v Azure Logic Apps [jazyka definice pracovního postupu](https://aka.ms/logicappsdocs). Například můžete převod mezi řetězci, JSON a XML s `@json()` a `@xml()` výrazy pracovního postupu. Modul Logic Apps zachová typy obsahu pro podporu obsahu přenos beze ztrát způsobem mezi službami.
 
 * [Jak fungují výrazy pracovního postupu ve službě logic apps](../logic-apps/logic-apps-author-definitions.md)
 * [Zpracování typů obsahu bez JSON](../logic-apps/logic-apps-content-type.md), třeba `application/xml`, `application/octet-stream`, a `multipart/formdata`
-* [Schéma pro jazyk pro definování pracovních postupů pro Azure Logic Apps](http://aka.ms/logicappsdocs)
+* [Schéma pro jazyk pro definování pracovních postupů pro Azure Logic Apps](https://aka.ms/logicappsdocs)
 
 ## <a name="other-integrations-and-capabilities"></a>Jiné integrace a možnosti
 

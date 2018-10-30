@@ -1,27 +1,20 @@
 ---
-title: Odhadování kapacity replikace v Azure | Dokumentace Microsoftu
-description: Pomocí tohoto článku můžete odhadnout kapacitu při replikaci s využitím Azure Site Recovery
-services: site-recovery
-documentationcenter: ''
+title: Plánování kapacity pro zotavení po havárii Hyper-V pomocí Azure Site Recovery | Dokumentace Microsoftu
+description: Pomocí tohoto článku můžete odhadnout kapacitu při nastavování zotavení po havárii pomocí služby Azure Site Recovery.
 author: rayne-wiselman
-manager: jwhit
-editor: ''
-ms.assetid: 0a1cd8eb-a8f7-4228-ab84-9449e0b2887b
+manager: carmonm
 ms.service: site-recovery
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
-ms.date: 10/11/2018
-ms.author: nisoneji
-ms.openlocfilehash: 3df7bd5ed44bdf514d48e451468329bd11fdf596
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.date: 10/28/2018
+ms.author: raynew
+ms.openlocfilehash: f600471e8a3602628a5040051f382e6e020f29d5
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49094033"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50211413"
 ---
-# <a name="plan-capacity-for-protecting-hyper-v-vms-with-site-recovery"></a>Plánování kapacity pro ochranu virtuálních počítačů Hyper-V pomocí Site Recovery
+# <a name="plan-capacity-for-hyper-v-vm-disaster-recovery"></a>Plánování kapacity pro zotavení po havárii virtuálních počítačů Hyper-V 
 
 Nová verze vylepšené [Azure Site Recovery Deployment Planner pro Hyper-V do Azure nasazení](site-recovery-hyper-v-deployment-planner.md) je nyní k dispozici. Nahradí původní nástroj. Použijte nové nástroje pro plánování nasazení.
 Tento nástroj nabízí následující pokyny:

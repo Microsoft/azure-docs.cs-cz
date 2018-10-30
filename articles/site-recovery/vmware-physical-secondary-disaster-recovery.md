@@ -1,21 +1,18 @@
 ---
 title: Nastavení zotavení po havárii virtuálních počítačů VMware nebo fyzické servery do sekundární lokality pomocí Azure Site Recovery | Dokumentace Microsoftu
 description: Zjistěte, jak nastavit zotavení po havárii virtuálních počítačů VMware, nebo Windows a Linuxem fyzických serverů do sekundární lokality pomocí Azure Site Recovery.
-services: site-recovery
-author: nsoneji
-manager: gauarvd
+author: rayne-wiselman
+manager: carmonm
 ms.service: site-recovery
-ms.workload: backup-recovery
-ms.tgt_pltfrm: na
-ms.topic: article
-ms.date: 08/01/2018
+ms.topic: conceptual
+ms.date: 10/29/2018
 ms.author: raynew
-ms.openlocfilehash: 94abdd30dc9cd279ab791541250787a111f80d30
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: fe6199aea91bbb7518ccdbfe640848a59edcee49
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39618984"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215459"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-vmware-virtual-machines-or-physical-servers-to-a-secondary-site"></a>Nastavení zotavení po havárii virtuálních počítačů VMware v místním nebo fyzické servery do sekundární lokality
 
@@ -176,7 +173,7 @@ Aktualizace Scout 5 je kumulativní aktualizace. Obsahuje všechny opravy z Upda
 > [!NOTE]
 > * Opravy clusteru P2V platí pouze pro fyzického clusteru MSCS clustery, které jsou nově chránit pomocí Site Recovery Scout Update 5. Pokud chcete nainstalovat opravy clusteru chráněného clusteru MSCS P2V clusterů s starší aktualizace, provést upgrade kroky uvedené v části 12 [zpráva k vydání verze pro Site Recovery Scout](https://aka.ms/asr-scout-release-notes).
 > * Pokud během opětovné ochrany, jsou na všech uzlech clusteru aktivní stejnou sadu disků, jako když původně chráněný, pak znovu ochranu fyzického clusteru MSCS můžete opakovaně používat pouze existující cílové disky. Pokud ne, pak použijte ruční kroky v oddílu 12 [zpráva k vydání verze pro Site Recovery Scout](https://aka.ms/asr-scout-release-notes), přesunout cílové disky na straně do správného úložiště dat cesty pro opakované použití při opětovné ochrany. Pokud znovu nastavit ochranu clusteru MSCS v režimu P2V bez upgradu kroků vytvoří nový disk na cílovém serveru ESXi. Musíte ručně odstranit staré disky z úložiště.
-> * Zdroj SLES11 nebo SLES11 (s žádné aktualizace service pack) server se restartoval řádně, pak ručně označit **kořenové** disku páry replikace na opětovnou synchronizaci. Se neobjeví žádná oznámení v rozhraní CX. Pokud není označí disk kořenové pro opětovnou synchronizaci, můžete si všimnout problémy s integritou dat.
+> * Zdroj SLES11 nebo SLES11 (s žádné aktualizace service pack) server se restartoval řádně, pak ručně označit **kořenové** disku páry replikace na opětovnou synchronizaci. Se neobjeví žádná oznámení v rozhraní CX. Pokud není označí disk kořenové pro opětovnou synchronizaci, můžete si všimnout problémy s integritou dat.
 
 
 ### <a name="azure-site-recovery-scout-801-update-4"></a>Azure Site Recovery Scout 8.0.1 Update 4

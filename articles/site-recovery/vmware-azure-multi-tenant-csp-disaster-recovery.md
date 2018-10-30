@@ -1,21 +1,20 @@
 ---
-title: Nastavení replikace VMware do Azure ve víceklientské prostředí s využitím Site Recovery a programu Cloud Solution Provider (CSP) | Dokumentace Microsoftu
-description: Popisuje, jak vytvořit a spravovat tenanta předplatná prostřednictvím zprostředkovatele kryptografických služeb a nasazení Azure Site Recovery v instalačním programu více tenanty
-services: site-recovery
+title: Nastavení zotavení po havárii VMware do Azure v prostředí více tenantů pomocí Site Recovery a programu Cloud Solution Provider (CSP) | Dokumentace Microsoftu
+description: Popisuje, jak nastavit zotavení po havárii VMware v prostředí s více tenanty pomocí Azure Site Recovery.
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: mayg
-ms.openlocfilehash: bd356a7e4285f8663b91da1f200cc2ae3c266bf3
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: c26421f848cf25e391589fa791f801e30fd14797
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49354115"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50208897"
 ---
-# <a name="set-up-vmware-replication-in-a-multi-tenancy-environment-with-the-cloud-solution-provider-csp-program"></a>Nastavení replikace VMware v prostředí více tenantů v programu Cloud Solution Provider (CSP)
+# <a name="set-up-vmware-disaster-recovery-in-a-multi-tenancy-environment-with-the-cloud-solution-provider-csp-program"></a>Nastavení zotavení po havárii VMware v prostředí více tenantů v programu Cloud Solution Provider (CSP)
 
 [Programu CSP](https://partner.microsoft.com/en-US/cloud-solution-provider) podporovalo společně lepší scénáře pro cloudové služby Microsoftu, včetně Office 365, Enterprise Mobility Suite a Microsoft Azure. S CSP partneři vlastní začátku do konce vztah se zákazníky a stát vztah primární kontaktní bod. Partneři můžete nasadit předplatná Azure pro zákazníky a kombinovat předplatných s využitím vlastní s přidanou hodnotou, přizpůsobené nabídky.
 

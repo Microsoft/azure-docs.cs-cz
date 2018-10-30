@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 05/21/2018
 tags: connectors
-ms.openlocfilehash: d8658740772ed4a11fdfd70a0c925ac1b597dd69
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 7d6845624c838ac0cf49e5963cae1ca0ea15ec15
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452016"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50230603"
 ---
 # <a name="create-and-manage-blobs-in-azure-blob-storage-with-azure-logic-apps"></a>Vytvoření a Správa objektů BLOB v Azure blob storage s využitím Azure Logic Apps
 
@@ -28,7 +28,7 @@ Předpokládejme, že máte nástroj, který se aktualizuje na web Azure. který
 >
 > * Vytvoření [prostředí integrační služby](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), který umožňuje připojení k prostředkům ve virtuální síti Azure. 
 > 
-> * Pokud už používáte API Management, můžete tuto službu pro tento scénář. Další informace najdete v tématu [jednoduché podnikové integrace architektury](http://aka.ms/aisarch).
+> * Pokud už používáte API Management, můžete tuto službu pro tento scénář. Další informace najdete v tématu [jednoduché podnikové integrace architektury](https://aka.ms/aisarch).
 
 Pokud se službou logic Apps teprve začínáte, přečtěte si [co je Azure Logic Apps](../logic-apps/logic-apps-overview.md) a [rychlý start: vytvoření první aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 Technické informace specifické pro konektor najdete v tématu <a href="https://docs.microsoft.com/connectors/azureblobconnector/" target="blank">referenční informace ke konektorům Azure Blob Storage</a>.
@@ -124,7 +124,7 @@ Technické podrobnosti, jako jsou triggery, akce a omezení, jak je popsáno v s
 ## <a name="get-support"></a>Získat podporu
 
 * Pokud máte dotazy, navštivte [fórum Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-* Pokud chcete zanechat své nápady na funkce nebo hlasovat, navštivte [web zpětné vazby od uživatelů Logic Apps](http://aka.ms/logicapps-wish).
+* Pokud chcete zanechat své nápady na funkce nebo hlasovat, navštivte [web zpětné vazby od uživatelů Logic Apps](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Další postup
 

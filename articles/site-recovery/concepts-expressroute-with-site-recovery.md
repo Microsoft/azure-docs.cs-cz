@@ -1,20 +1,19 @@
 ---
-title: Azure ExpressRoute pomocí Azure Site Recovery | Dokumentace Microsoftu
-description: Popisuje, jak pomocí Azure ExpressRoute pomocí Azure Site Recovery pro zotavení po havárii a migrace
+title: Informace o používání Azure ExpressRoute pomocí Azure Site Recovery pro zotavení po havárii a migrace | Dokumentace Microsoftu
+description: Popisuje, jak pomocí služby Azure Site Recovery pro zotavení po havárii a migraci do Azure ExpressRoute.
 services: site-recovery
-documentationcenter: ''
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: mayg
-ms.openlocfilehash: 13d07546f1d82782e211213816b53373913e80b3
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 14d74c879ee37306f541c89d2ba325109a4ff7f3
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353879"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50214864"
 ---
 # <a name="azure-expressroute-with-azure-site-recovery"></a>Azure ExpressRoute pomocí Azure Site Recovery
 

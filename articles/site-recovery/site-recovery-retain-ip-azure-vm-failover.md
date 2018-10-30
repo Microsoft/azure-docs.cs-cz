@@ -1,22 +1,19 @@
 ---
-title: Zachování IP adresy, při selhání virtuálních počítačů Azure do jiné oblasti Azure | Dokumentace Microsoftu
-description: Popisuje, jak zachovat IP adresy pro scénáře převzetí služeb při selhání Azure do Azure pomocí Azure Site Recovery
+title: Zachování IP adresy pro převzetí služeb při selhání virtuálních počítačů Azure | Dokumentace Microsoftu
+description: Popisuje, jak zachovat IP adresy po převzetí služeb při selhání virtuálních počítačů Azure pro zotavení po havárii do sekundární oblasti Azure Site Recovery
 ms.service: site-recovery
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.date: 10/16/2018
 author: mayurigupta13
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: 4260a4487480c42b518374965d8deda1e7803e62
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 86adaa21a069c168b512231ba231940bfa2ef9e8
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353318"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50213028"
 ---
-# <a name="ip-address-retention-for-azure-virtual-machine-failover"></a>Uchování IP adres pro převzetí služeb při selhání virtuálních počítačů Azure
+# <a name="ip-address-retention-for-azure-vm-failover"></a>Uchování IP adres pro převzetí služeb při selhání virtuálního počítače Azure
 
 Azure Site Recovery nabízí zotavení po havárii pro virtuální počítače Azure. Při převzetí služeb při selhání z jedné oblasti Azure do jiné, zákazníci často vyžadují uchováváním jejich konfigurace protokolu IP. Site Recovery standardně napodobuje zdrojová virtuální síť a podsíť struktury při vytváření těchto prostředků v cílové oblasti. Site Recovery pro virtuální počítače Azure nakonfigurovaný se statickou privátní IP adresy, také udržuje nezaručené pokusí zřídit stejnou privátní IP adresu na cílovém virtuálním počítači, pokud tuto IP adresu již neblokuje prostředku Azure nebo replikovaný virtuální počítač.
 

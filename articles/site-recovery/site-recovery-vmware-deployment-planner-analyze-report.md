@@ -1,21 +1,21 @@
 ---
-title: Azure Site Recovery Deployment Planner pro nasazení VMware do Azure | Dokumentace Microsoftu
-description: Tento článek popisuje analýzu vygenerované sestavy Plánovače nasazení služby Azure Site Recovery pro scénář nasazení VMware do Azure.
-services: site-recovery
+title: Analýza sestavy Azure Site Recovery Deployment Planner pro zotavení po havárii VMware do Azure | Dokumentace Microsoftu
+description: Tento článek popisuje analýzu sestavy vygenerované pomocí Azure Site Recovery Deployment Planner pro zotavení po havárii VMware do Azure.
 author: nsoneji
 manager: garavd
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: nisoneji
-ms.openlocfilehash: e6aa3a8c788fe06a528a9c363a28faffa0a9ca88
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: d709b13aaf6b6ee9a913484ed503da1e76982d17
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49094084"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50213912"
 ---
-# <a name="azure-site-recovery-deployment-planner-report"></a>Sestava Plánovače nasazení služby Azure Site Recovery
+# <a name="analyze-the-azure-site-recovery-deployment-planner-report-for-vmware-disaster-recovery-to-azure"></a>Analýza sestavy Azure Site Recovery Deployment Planner pro zotavení po havárii VMware do Azure
+
 Vygenerovaná sestava aplikace Microsoft Excel obsahuje následující listy:
 ## <a name="on-premises-summary"></a>On-premises summary (Přehled místního prostředí)
 List On-premises summary (Přehled místního prostředí) poskytuje přehled profilovaného prostředí VMware.

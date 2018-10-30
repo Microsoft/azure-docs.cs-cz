@@ -14,39 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/22/2018
 ms.author: tomfitz
-ms.openlocfilehash: 28ef94113c76cd70e12a9682e1c523afc3f0a233
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 8f1fc9eb5e7b19f25af2005cb3a99cb320cba640
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945871"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50214541"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Princip struktury a syntaxe šablon Azure Resource Manageru
 Tento článek popisuje strukturu šablony Azure Resource Manageru. Představuje různé části šablony a vlastnosti, které jsou k dispozici v těchto oddílech. Šablona se skládá z JSON a z výrazů, které můžete použít k vytvoření hodnot pro vaše nasazení. Podrobný kurz k vytvoření šablony najdete v tématu [vytvoření první šablony Azure Resource Manageru](resource-manager-create-first-template.md).
 
-## <a name="quickstarts-and-tutorials"></a>Rychlé starty a kurzy
-
-Použijte následující rychlých startů a kurzů se naučíte vyvíjet šablony Resource Manageru:
-
-- Šablony Rychlý start
-
-  	|Titul|Popis|
-  	|------|-----|
-  	|[Použití portálu Azure Portal](./resource-manager-quickstart-create-templates-use-the-portal.md)|Vygenerujte šablonu pomocí portálu a proces úpravy a nasazování šablony.|
-  	|[Použijte Visual Studio Code](./resource-manager-quickstart-create-templates-use-visual-studio-code.md)|Visual Studio Code umožňuje vytvářet a upravovat šablony a tom, jak použít Azure Cloud shell k nasazení šablony.|
-  	|[Pomocí sady Visual Studio](./vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)|K vytváření, úpravám a nasazení šablon pomocí sady Visual Studio.|
-
-- Kurzy
-
-  	|Titul|Popis|
-  	|------|-----|
-  	|[Využívat referenčními informacemi k šablonám](./resource-manager-tutorial-create-encrypted-storage-accounts.md)|Využijte k vývoji šablony referenční dokumentace šablony. V tomto kurzu najít schéma účtu úložiště a použít informace vytvořit zašifrovaném účtu úložiště.|
-  	|[Vytvoření víc instancí](./resource-manager-tutorial-create-multiple-instances.md)|Vytvoření víc instancí prostředků Azure. V tomto kurzu vytvoříte více instancí účtu úložiště.|
-  	|[Nastavení pořadí nasazení prostředků](./resource-manager-tutorial-create-templates-with-dependent-resources.md)|Definování závislosti prostředků. V tomto kurzu vytvoříte virtuální síť, virtuální počítač a všechny závislé prostředky Azure. Zjistíte, jak jsou definované závislosti.|
-  	|[Použití podmínek](./resource-manager-tutorial-use-conditions.md)|Nasazení prostředků podle chybí některé hodnoty parametrů. V tomto kurzu definujete šablonu a vytvořte nový účet úložiště nebo použijte existující účet úložiště na základě hodnoty parametru.|
-  	|[Integrace služby key vault](./resource-manager-tutorial-use-key-vault.md)|Načtěte tajné kódy a hesla z Azure Key Vault. V tomto kurzu vytvoříte virtuální počítač.  Heslo správce virtuálního počítače se načte ze služby Key Vault.|
-  	|[Vytvoření propojených šablon](./resource-manager-tutorial-create-linked-templates.md)|Modularizaci šablony a volat jiné šablony ze šablony. V tomto kurzu vytvoříte virtuální síť, virtuální počítač a všechny závislé prostředky.  Závislý účet úložiště je definována v propojenou šablonu. |
-  	|[Použijte postupy bezpečného nasazení](./deployment-manager-tutorial.md)|Pomocí Správce nasazení Azure. |
+[!INCLUDE [arm-tutorials-quickstarts](../../includes/resource-manager-tutorials-quickstarts.md)]
 
 ## <a name="template-format"></a>Formát šablon
 
@@ -71,7 +49,7 @@ Ve své nejjednodušší struktury šablony obsahuje následující prvky:
 | parameters |Ne |Hodnoty, které jsou k dispozici při spuštění nasazení přizpůsobení nasazení prostředků. |
 | Proměnné |Ne |Hodnoty, které se používají jako fragmentů JSON v šabloně pro zjednodušení výrazy jazyka šablony. |
 | functions |Ne |Uživatelem definované funkce, které jsou k dispozici v rámci šablony. |
-| prostředků |Ano |Typy prostředků, které jsou nasazené nebo aktualizují ve skupině prostředků. |
+| zdroje |Ano |Typy prostředků, které jsou nasazené nebo aktualizují ve skupině prostředků. |
 | výstupy |Ne |Hodnoty, které se vrátí po nasazení. |
 
 Každý prvek má vlastnosti, které můžete nastavit. Následující příklad ukazuje úplnou syntaxi šablony:

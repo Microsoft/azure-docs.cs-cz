@@ -1,6 +1,6 @@
 ---
-title: Podrobný odhad nákladů Plánovače nasazení služby Azure Site Recovery pro nasazení Hyper-V do Azure | Microsoft Docs
-description: Tento článek popisuje podrobný odhad nákladů v sestavě vygenerované pomocí Plánovače nasazení služby Azure Site Recovery pro scénář nasazení Hyper-V do Azure.
+title: Projděte si Azure Site Recovery Deployment Planner nákladů sestavy odhadu zotavení po havárii virtuálních počítačů Hyper-V do Azure | Dokumentace Microsoftu
+description: Tento článek popisuje, jak kontrolovat náklady na odhad sestava vygenerována Azure Site Recovery Deployment Planner pro zotavení po havárii Hyper-V do Azure.
 services: site-recovery
 author: nsoneji
 manager: garavd
@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: nisoneji
-ms.openlocfilehash: 40a8e2e6d994608d4aa26f6d9b3723c0ee27d3db
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 0233446f817436632efc4110872e84b6b3105453
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49387238"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50213181"
 ---
 # <a name="cost-estimation-report-by-azure-site-recovery-deployment-planner"></a>Sestava odhadu nákladů z Plánovače nasazení služby Azure Site Recovery 
 

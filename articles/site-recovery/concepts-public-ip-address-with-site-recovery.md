@@ -1,22 +1,21 @@
 ---
-title: Veřejnou IP adresu pomocí služby Site Recovery | Dokumentace Microsoftu
-description: Popisuje, jak nastavit veřejné IP adresy pro migraci a zotavení po havárii pomocí Azure Site Recovery a Azure Traffic Manageru
+title: Použít veřejné IP adresy po převzetí služeb při selhání pomocí Azure Site Recovery | Dokumentace Microsoftu
+description: Popisuje, jak nastavit veřejné IP adresy s Azure Site Recovery a Azure Traffic Manager pro zotavení po havárii a migrace
 services: site-recovery
-documentationcenter: ''
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
 ms.date: 09/28/2018
 ms.author: mayg
-ms.openlocfilehash: fd17c786515a6db1f8aa5c1aff7c0dcd42ed7dc6
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 80c38ecc766d60fba578e877998aeb216ea66012
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47435207"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215272"
 ---
-# <a name="public-ip-address-with-site-recovery"></a>Veřejnou IP adresu pomocí služby Site Recovery
+# <a name="set-up-public-ip-addresses-after-failover"></a>Nastavení veřejné IP adresy po převzetí služeb při selhání
 
 Veřejné IP adresy umožňují internetovým prostředkům příchozí komunikaci s prostředky Azure. Veřejné IP adresy taky umožňují prostředkům Azure odchozí komunikaci s internetovými službami a veřejně přístupnými službami Azure prostřednictvím IP adresy přiřazené prostředku.
 - Příchozí komunikace ze sítě Internet k prostředku, jako jsou Azure Virtual Machines (VM), služby Azure Application Gateway, nástroje pro vyrovnávání zatížení Azure, Azure VPN Gateway a dalších. Můžete dál komunikovat s některými prostředky, jako jsou virtuální počítače z Internetu, pokud virtuální počítač nemá veřejnou IP adresu přiřazenou jako virtuální počítač je součástí fondu back-end nástroje pro vyrovnávání zatížení a nástroje pro vyrovnávání zatížení je přiřazena veřejná IP adresa.

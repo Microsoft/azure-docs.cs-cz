@@ -1,19 +1,19 @@
 ---
-title: Příprava na místním serveru technologie Hyper-V pro zotavení po havárii virtuálních počítačů Hyper-V do Azure | Dokumentace Microsoftu
-description: Zjistěte, jak připravit místní virtuální počítače Hyper-V nejsou spravovány nástrojem System Center VMM pro zotavení po havárii do Azure pomocí služby Azure Site Recovery.
+title: Příprava místních serverů Hyper-V pro zotavení po havárii virtuálních počítačů Hyper-V do Azure | Dokumentace Microsoftu
+description: Zjistěte, jak připravit místní virtuální počítače Hyper-V pro zotavení po havárii do Azure pomocí služby Azure Site Recovery.
 services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 10/28/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: f1899817ee2d0efec4ab561a64f24e49cb173c29
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 5f46f22ab524e1d51b01fcedb4ea1420d755ecbe
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44720765"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50209883"
 ---
 # <a name="prepare-on-premises-hyper-v-servers-for-disaster-recovery-to-azure"></a>Příprava místních serverů Hyper-V pro zotavení po havárii do Azure
 

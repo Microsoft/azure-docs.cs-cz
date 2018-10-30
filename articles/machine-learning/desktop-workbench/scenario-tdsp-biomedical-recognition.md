@@ -17,12 +17,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/10/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: 775d0701f9eeaf7d26a83b814711bea630efb2a6
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: a3ae9c0926f9c2a8bb900e25b610f8c2f4e6d292
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46973758"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50231572"
 ---
 # <a name="biomedical-entity-recognition-using-team-data-science-process-tdsp-template"></a>Rozpoznávání biomedicínských entit rozpoznávání pomocí šablony vědecké zpracování týmových dat (TDSP)
 
@@ -64,7 +64,7 @@ Následující obrázek ukazuje architekturu, která se používá ke zpracován
 ## <a name="data-description"></a>Popis dat
 
 ### <a name="1-word2vec-model-training-data"></a>1. Word2Vec modelu trénovacích dat
-Nejdříve stáhli nezpracovaná data MEDLINE abstraktní z [MEDLINE](https://www.nlm.nih.gov/pubs/factsheets/medline.html). Data je veřejně dostupná v podobě souborů XML na jejich [FTP server](https://ftp.ncbi.nlm.nih.gov/pubmed/baseline). Na serveru jsou k dispozici 892 soubory XML a všech souborů XML obsahuje informace o 30 000 článků. Další informace o kroku shromažďování dat jsou uvedeny v části strukturu projektu. Jsou k dispozici v jednotlivých souborech pole 
+Nejdříve stáhli nezpracovaná data MEDLINE abstraktní z [MEDLINE](https://www.nlm.nih.gov/pubs/factsheets/medline.html). Data jsou publicaly k dispozici ve formě souborů XML na jejich [FTP server](https://ftp.ncbi.nlm.nih.gov/pubmed/baseline). Na serveru jsou k dispozici 892 soubory XML a všech souborů XML obsahuje informace o 30 000 článků. Další informace o kroku shromažďování dat jsou uvedeny v části strukturu projektu. Jsou k dispozici v jednotlivých souborech pole 
         
         abstract
         affiliation

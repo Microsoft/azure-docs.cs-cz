@@ -17,12 +17,12 @@ ms.date: 10/02/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: ceafee3ac3453590d1687f662c7f3c9a8d8b4e0c
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 29cbb96cc6dec4bac601e8795599f77c955c418a
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50156625"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50230825"
 ---
 # <a name="azure-active-directory-v20-and-the-oauth-20-device-code-flow"></a>Azure Active Directory v2.0 a tok OAuth 2.0 zařízení kódu
 
@@ -113,7 +113,7 @@ Vzhledem k tomu, že tok kódu zařízení je protokol pro dotazování, klient 
 | `expired_token`|  Alespoň `expires_in` prošly sekund a ověřování se už nedají pomocí to `device_code`. | Zastavit cyklického dotazování a vrátit se do neověřené stavu. |
 
 
-### <a name="succesful-authentication-response"></a>Odpověď ověřování úspěšné.
+### <a name="successful-authentication-response"></a>Ověření úspěšné odpovědi
 
 Úspěšné odpovědi tokenu bude vypadat takto:
 

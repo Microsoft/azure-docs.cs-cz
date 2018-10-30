@@ -1,3 +1,16 @@
+---
+author: cynthn
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: cynthn
+ms.openlocfilehash: 682288338d66f1006e9f1d7f3d6d30f822626425
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50227369"
+---
 Než budete moct použít Azure CLI s příkazy a šablonami Resource Manageru k nasazení prostředků a úloh Azure pomocí skupin prostředků, budete potřebovat účet s Azure. Pokud účet nemáte, [tady můžete získat bezplatnou zkušební verzi Azure](https://azure.microsoft.com/pricing/free-trial/).
 
 Pokud jste ještě nenainstalovali Azure CLI a nepřipojili se ke svým předplatným, přečtěte si článek [Instalace Azure CLI](../articles/cli-install-nodejs.md), pomocí příkazu `azure config mode arm` nastavte režim na `arm` a pomocí příkazu `azure login` se připojte k Azure.

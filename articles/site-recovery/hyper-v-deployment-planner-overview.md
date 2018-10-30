@@ -1,22 +1,20 @@
 ---
-title: Plánovač nasazení služby Azure Site Recovery pro nasazení Hyper-V do Azure| Dokumentace Microsoftu
-description: Toto je uživatelská příručka k Plánovači nasazení služby Azure Site Recovery pro scénář nasazení Hyper-V do Azure.
-services: site-recovery
+title: Informace o Azure Site Recovery Deployment Planner pro zotavení po havárii virtuálních počítačů Hyper-V do Azure | Dokumentace Microsoftu
+description: Přečtěte si o zotavení po havárii Azure Site Recovery nasazení Planneru Hyper-V do Azure.
 author: nsoneji
 manager: garavd
 ms.service: site-recovery
-ms.workload: storage-backup-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: nisoneji
-ms.openlocfilehash: 7a91217e35ae7a32714478171dcebc002e384fcb
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: ae93611bfe5dd11bea8bc0327868c2865b36b713
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093588"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210665"
 ---
-# <a name="site-recovery-deployment-planner-for-hyper-v-to-azure"></a>Site Recovery Deployment Planner pro Hyper-V do Azure
+# <a name="about-the-azure-site-recovery-deployment-planner-for-hyper-v-disaster-recovery-to-azure"></a>Informace o Azure Site Recovery Deployment Planner pro zotavení po havárii Hyper-V do Azure
 
 Tento článek představuje uživatelskou příručku k Plánovači nasazení služby Azure Site Recovery pro produkční nasazení Hyper-V do Azure.
 

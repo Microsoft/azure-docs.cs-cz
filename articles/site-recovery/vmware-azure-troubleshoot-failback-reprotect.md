@@ -1,22 +1,20 @@
 ---
-title: Řešení potíží se selháním během navrácení služeb po obnovení virtuálních počítačů Azure do VMware v místním prostředí pomocí Azure Site Recovery | Dokumentace Microsoftu
-description: Tento článek popisuje způsoby řešení běžných chyb navrácení služeb po obnovení a opětovného nastavování ochrany během navrácení služeb po obnovení do VMware z Azure pomocí Azure Site Recovery.
-services: site-recovery
-documentationcenter: ''
+title: Řešení potíží s navrácení služeb po obnovení do místní během zotavení po havárii virtuálních počítačů VMware do Azure pomocí Azure Site Recovery | Dokumentace Microsoftu
+description: Tento článek popisuje způsoby řešení potíží navrácení služeb po obnovení a opětovného nastavování ochrany při zotavení po havárii virtuálních počítačů VMware do Azure pomocí Azure Site Recovery.
 author: rajani-janaki-ram
 manager: gauravd
 ms.service: site-recovery
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: rajanaki
-ms.openlocfilehash: c5ba0f1d98f3e4023e767bf3eea7a0b497d47686
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 89484e14d69493c74ed1ff983cf88ec146e0313d
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37920959"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210359"
 ---
-# <a name="troubleshoot-failback-from-azure-to-vmware"></a>Řešení potíží s navrácení služeb po obnovení z Azure do VMware
+# <a name="troubleshoot-failback-to-on-premises-from-azure"></a>Řešení potíží s navrácení služeb po obnovení do místní z Azure
 
 Tento článek popisuje, jak řešit potíže se mohou vyskytnout při předání služeb při obnovení virtuálních počítačů Azure do místní infrastrukturu VMware a po převzetí služeb při selhání do Azure pomocí [Azure Site Recovery](site-recovery-overview.md).
 

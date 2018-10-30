@@ -1,23 +1,22 @@
 ---
-title: Matice podpory pro replikaci virtuálních počítačů VMware nebo fyzické servery do sekundární lokality VMware pomocí Azure Site Recovery | Dokumentace Microsoftu
-description: Shrnuje podporu pro replikaci serveru VMware/fyzických prostředků do sekundární lokality pomocí Azure Site Recovery
-services: site-recovery
+title: Matice podpory pro zotavení po havárii virtuálních počítačů VMware nebo fyzické servery do sekundární lokality VMware pomocí Azure Site Recovery | Dokumentace Microsoftu
+description: Shrnuje podporu pro zotavení po havárii virtuálních počítačů VMware a fyzické servery do sekundární lokality pomocí Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 10/29/2018
 ms.author: raynew
-ms.openlocfilehash: 4df929e8a185a04aef5cb13f30c19b0db707e765
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 8406cf2b31b87cdb4f6c9b6ba3d06559cf1d4d41
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44021989"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50209798"
 ---
-# <a name="support-matrix-for-replication-of-vmware-vms-and-physical-servers-to-a-secondary-site"></a>Matice podpory pro replikaci virtuálních počítačů VMware a fyzické servery do sekundární lokality
+# <a name="support-matrix-for-disaster-recovery-of-vmware-vms-and-physical-servers-to-a-secondary-site"></a>Matice podpory pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů do sekundární lokality
 
-Tento článek shrnuje, co je podporováno při použití [Azure Site Recovery](site-recovery-overview.md) služby pro replikaci virtuálních počítačů VMware nebo Windows/Linux fyzických serverů do sekundární lokality VMware.
+Tento článek shrnuje, co je podporováno při použití [Azure Site Recovery](site-recovery-overview.md) služby zotavení po havárii virtuálních počítačů VMware nebo Windows/Linux fyzické servery do sekundární lokality VMware.
 
 - Pokud chcete replikovat virtuální počítače VMware nebo fyzických serverů do Azure, přečtěte si [tento systém podpory replikace z](vmware-physical-azure-support-matrix.md).
 - Pokud chcete replikovat virtuální počítače Hyper-V do sekundární lokality, přečtěte si [tento systém podpory replikace z](hyper-v-azure-support-matrix.md).

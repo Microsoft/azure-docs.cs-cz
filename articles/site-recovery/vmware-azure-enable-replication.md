@@ -1,19 +1,8 @@
 ---
-title: Povolení replikace virtuálních počítačů VMware do Azure pomocí Azure Site Recovery | Dokumentace Microsoftu
-description: Tento článek popisuje, jak nastavit replikaci virtuálních počítačů VMware do Azure pomocí Azure Site Recovery.
-services: site-recovery
-author: asgang
-ms.service: site-recovery
-ms.date: 07/06/2018
-ms.topic: conceptual
-ms.author: asgang
-ms.openlocfilehash: 9a868b196a287b7a5121803136d3c0119f64d9fe
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
-ms.translationtype: MT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37917019"
----
+Title: povolení replikace virtuálních počítačů VMware pro zotavení po havárii VMware do Azure pomocí Azure Site Recovery | Microsoft Docs description: Tento článek popisuje, jak povolit replikaci virtuálních počítačů VMware pro zotavení po havárii do Azure pomocí Azure Site Recovery.
+Autor: asgang ms.service: site recovery ms.date: 07/06/2018 ms.topic: koncepční ms.author: asgang
+
+
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>Povolit replikaci do Azure pro virtuální počítače VMware
 
 
@@ -69,7 +58,7 @@ Při replikaci virtuálních počítačů VMware:
     ![Povolení replikace nakonfigurovat vlastnosti](./media/vmware-azure-enable-replication/enable-replication6.png)
 
 12. V části **Nastavení replikace** > **Konfigurace nastavení replikace** zkontrolujte, jestli je vybraná správná zásada replikace. Můžete upravit nastavení zásad replikace v **nastavení** > **zásady replikace** > (název zásady) > **upravit nastavení**. Změny použít na zásady, platí také pro replikaci a nové počítače.
-13. Po dokončení ochrany si je a počítač byl dosažen chráněném stavu, můžete se pokusit **převzetí služeb při selhání** ke kontrole, jestli vaše aplikace se zobrazí v Azure nebo ne. Pokud chcete zakázat ochranu, zjistěte, jak **vyčistit nastavení registrace a ochrany**. 
+13. Povolit **konzistenci** Pokud chcete shromažďovat počítače do replikační skupiny. Zadejte název pro skupinu a pak klikněte na tlačítko **OK**. 
 
     > [!NOTE]
 

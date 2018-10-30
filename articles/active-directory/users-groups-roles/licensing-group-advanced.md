@@ -11,15 +11,15 @@ ms.service: active-directory
 ms.topic: article
 ms.workload: identity
 ms.component: users-groups-roles
-ms.date: 06/02/2017
+ms.date: 10/29/2018
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 15b52920774a878cd386ced5966d507768a8af70
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 9b94bf4c499a5d6323e774df90304f0134bc5894
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39627385"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215408"
 ---
 # <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>Scénáře, omezeních a známých problémech použití skupin pro správu licencování v Azure Active Directory
 
@@ -211,23 +211,21 @@ Při pokusu o odstranění skupiny prostřednictvím prostředí PowerShell nebo
 
 Pokud používáte licencování na základě skupin, je vhodné se seznámit s následující seznam omezení a známé problémy.
 
-- Licencování pro skupiny aktuálně nepodporuje skupiny, které obsahují další skupiny (vnořené skupiny). Pokud použijete licenci pro vnořené skupiny, okamžité uživatele na první úrovni členové skupiny mají licence použít.
+- Licencování pro skupiny aktuálně nepodporuje skupiny, které obsahují další skupiny (vnořené skupiny). Pokud použijete licenci pro vnořenou skupinu, použije se jenom pro bezprostřední členy této skupiny na první úrovni.
 
-- Tuto funkci jde použít jenom s použitím skupin zabezpečení. Skupiny Office nejsou aktuálně podporované a není možné použít v procesu přiřazení licencí.
+- Tuto funkci jde použít jenom pomocí skupin zabezpečení a skupiny Office 365, které mají securityEnabled = TRUE.
 
 - [Portálu pro správu Office 365](https://portal.office.com ) aktuálně nepodporuje licencování na základě skupiny. Pokud uživatel licenci dědí ze skupiny, platnost této licence se zobrazí na portálu správy Office jako se vytvářejí běžné uživatelské licence. Pokud se pokusíte upravit licence nebo zkuste odebrat licenci, portálu vrátí chybovou zprávu. Licencí zděděných skupiny nelze změnit přímo na uživatele.
 
-- Když uživatele se odebere ze skupiny, ztratí licenční plány služeb z této licenci (například SharePoint Online) nastavené **pozastaveno** stavu. Plány služeb nejsou nastaveny do konečné, zakázaném stavu. Pokud správce provede chybu ve správě skupiny členství se můžete vyhnout toto opatření neúmyslným odebráním uživatelská data.
-
 - Když licence jsou přiřazeny nebo upraveny pro velkou skupinu (například 100 000 uživatelů), může ovlivnit výkon. Konkrétně objemu změn generovaných automatizace Azure AD může mít negativní vliv na výkon vaší synchronizace adresářů mezi službami Azure AD a místními systémy.
 
-- V některých situacích vysokého zatížení zpracování licence se může zpozdit a změní jako je například přidávání nebo odebírání skupinu licencí nebo přidání/odebrání uživatele ze skupiny, může trvat dlouhou dobu na zpracování. Pokud se zobrazí vaše změny trvat déle než 24 hodin a jejich zpracování, prosím [vytvořit lístek podpory](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/supportRequest) umožňuje nám prozkoumat. Předtím, než dosáhne jsme se zlepšovat výkonové charakteristiky této funkce *všeobecné dostupnosti*.
+- Pokud spravujete členství uživatelů pomocí dynamických skupin, zkontrolujte, jestli je daný uživatel součástí skupiny, což je k přiřazení licence nezbytné. V opačném případě [zkontrolujte stav zpracování pravidla členství](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-create-rule#check-processing-status-for-a-membership-rule) dané dynamické skupiny. 
+
+- V některých situacích vysokého zatížení může trvat dlouhou dobu zpracování změny licence pro skupiny nebo změny členství ve skupinách se stávající licence. Pokud se zobrazí vaše změny trvat déle než 24 hodin pro zpracování skupiny velikost 60 tisíc uživatelů nebo méně, prosím [vytvořit lístek podpory](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/supportRequest) umožňuje nám prozkoumat. 
 
 - Automatizace správy licencí nereaguje automaticky pro všechny typy změn v prostředí. Například můžete pravděpodobně vyčerpala volné licence, způsobí někteří uživatelé se v chybovém stavu. Chcete uvolnit dostupné současného počtu můžete odebrat některé přímo přiřazené licence od jiných uživatelů. Systém však automaticky reagovat na tuto změnu a opravte uživatelé v tomto stavu chyba.
 
   Jako alternativní řešení pro tyto typy omezení, můžete přejít na **skupiny** okno ve službě Azure AD a klikněte na tlačítko **znovu zpracovat**. Tento příkaz zpracovává všechny uživatele v této skupině a řeší chybové stavy, pokud je to možné.
-
-- Licencování na základě skupiny nezaznamenává chyby, pokud licenci nešlo přiřadit uživateli kvůli konfiguraci adresy proxy duplicitní v Exchangi Online; tyto uživatele jsou vynechány během přiřazení licencí. Další informace o tom, jak identifikovat a vyřešit tento problém, naleznete v tématu [v této části](licensing-groups-resolve-problems.md#license-assignment-fails-silently-for-a-user-due-to-duplicate-proxy-addresses-in-exchange-online).
 
 ## <a name="next-steps"></a>Další postup
 
@@ -237,3 +235,5 @@ Další informace o jiných scénářích pro správu licencí pomocí licencov�
 * [Přiřazení licencí ke skupině v Azure Active Directory](licensing-groups-assign.md)
 * [Identifikace a řešení potíží s licencemi pro skupinu v Azure Active Directory](licensing-groups-resolve-problems.md)
 * [Postup migrace jednotlivě licencovaných uživatelů na licencování na základě skupin v Azure Active Directory](licensing-groups-migrate-users.md)
+* [Migrace uživatelů mezi licencemi produktů pomocí licencování pro skupiny ve službě Azure Active Directory](../users-groups-roles/licensing-groups-change-licenses.md)
+* [Příklady prostředí PowerShell pro licencování na základě skupiny v Azure Active Directory](../users-groups-roles/licensing-ps-examples.md)

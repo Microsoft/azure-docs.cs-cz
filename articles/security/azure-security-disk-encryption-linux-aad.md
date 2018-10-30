@@ -7,12 +7,12 @@ ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
 ms.date: 09/19/2018
-ms.openlocfilehash: 81a9f84a925fc424fc6371fcbe02a141d4ee8ec1
-ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
+ms.openlocfilehash: b0b67121e172bb29d1f95e56d3b31f509552bf2e
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46498347"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50211226"
 ---
 # <a name="enable-azure-disk-encryption-for-linux-iaas-vms-previous-release"></a>Povolit Azure Disk Encryption pro virtuální počítače s Linuxem IaaS (předchozí verze)
 
@@ -192,8 +192,11 @@ Parametr přejde ale všechny oddíly a zašifruje tak dlouho, dokud nebudou spl
 - Není kořenový/operačního systému a spouštěcí oddíl
 - Už není šifrovaný
 - Není klíče BEK svazek
+- Není svazek RAID
+- Není svazek LVM
 - Je připojený
 
+Šifrování disků, které tvoří svazek RAID nebo LVM spíše než svazek RAID nebo LVM.
 
 ### <a name="bkmk_EFATemplate"> </a> Použijte parametr encryptformatall šifrovaně pomocí šablony
 Možnost encryptformatall šifrovaně použít všechny existující šablonu Azure Resource Manageru, který šifruje virtuálního počítače s Linuxem a změnit **EncryptionOperation** pole AzureDiskEncryption prostředku.

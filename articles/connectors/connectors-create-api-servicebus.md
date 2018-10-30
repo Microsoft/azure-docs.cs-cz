@@ -11,12 +11,12 @@ ms.assetid: d6d14f5f-2126-4e33-808e-41de08e6721f
 ms.topic: article
 tags: connectors
 ms.date: 08/25/2018
-ms.openlocfilehash: 813df5b4ef37ad1264df48863aa8f0ed5a4d4789
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 68378c87e18df874059579445352b8fd1b2b6c13
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43048770"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50232711"
 ---
 # <a name="exchange-messages-in-the-cloud-with-azure-service-bus-and-azure-logic-apps"></a>Výměna zpráv v cloudu pomocí služby Azure Service Bus a Azure Logic Apps
 
@@ -64,7 +64,7 @@ Ověřte, jestli aplikace logiky má oprávnění pro přístup k oboru názvů 
       ![Zkopírujte připojovací řetězec pro obor názvů Service Bus](./media/connectors-create-api-azure-service-bus/find-service-bus-connection-string.png)
 
    > [!TIP]
-   > Potvrďte, zda je přidružené k oboru názvů služby Service Bus nebo entity pro zasílání zpráv, jako jsou fronty, aby váš připojovací řetězec hledání připojovací řetězec pro `EntityPath` parametru. Pokud tento parametr najít, připojovací řetězec je pro konkrétní entitu a není správný řetězec, který má používat s aplikací logiky.
+   > Potvrďte, zda je přidružené k oboru názvů služby Service Bus nebo entity pro zasílání zpráv, jako jsou fronty, aby váš připojovací řetězec hledání připojovací řetězec pro `EntityPath`  parametru. Pokud tento parametr najít, připojovací řetězec je pro konkrétní entitu a není správný řetězec, který má používat s aplikací logiky.
 
 ## <a name="add-trigger-or-action"></a>Přidání triggeru nebo akce
 
@@ -140,7 +140,7 @@ Technické podrobnosti o omezení, akce a triggery, které jsou popsány pomocí
 ## <a name="get-support"></a>Získat podporu
 
 * Pokud máte dotazy, navštivte [fórum Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-* Pokud chcete zanechat své nápady na funkce nebo hlasovat, navštivte [web zpětné vazby od uživatelů Logic Apps](http://aka.ms/logicapps-wish).
+* Pokud chcete zanechat své nápady na funkce nebo hlasovat, navštivte [web zpětné vazby od uživatelů Logic Apps](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Další postup
 

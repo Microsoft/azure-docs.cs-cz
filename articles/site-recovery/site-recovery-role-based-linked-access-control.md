@@ -1,22 +1,19 @@
 ---
-title: Použití řízení přístupu na základě rolí ke správě Azure Site Recovery | Dokumentace Microsoftu
-description: Tento článek popisuje, jak použít a řízení přístupu na základě Role (RBAC) umožňuje spravovat vaše nasazení Azure Site Recovery
+title: Správa přístupu k Azure Site Recovery s řízením přístupu na základě rolí (RBAC) | Dokumentace Microsoftu
+description: Tento článek popisuje, jak použít bontrol přístupu na základě role (RBAC) ke správě přístupu k Azure Site Recovery.
 ms.service: site-recovery
-ms.workload: backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.date: 10/16/2018
 author: mayurigupta13
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: 9ec9acab4ad83af22504058c21b102df94b8692d
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 19d41d8c9b1a54cefc09190531b064d640048385
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353233"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212042"
 ---
-# <a name="use-role-based-access-control-to-manage-site-recovery-access"></a>Použití řízení přístupu na základě rolí ke správě přístupu Site Recovery
+# <a name="manage-site-recovery-access-with-role-based-access-control-rbac"></a>Správa přístupu k Site Recovery s řízením přístupu na základě rolí (RBAC)
 
 Řízení přístupu na základě role v Azure umožňuje přesnou správu přístupu. Pomocí RBAC, můžete v rámci týmu oddělit zodpovědnosti a udělit pouze konkrétní přístupová oprávnění pro uživatele podle potřeby provádět konkrétní úlohy.
 

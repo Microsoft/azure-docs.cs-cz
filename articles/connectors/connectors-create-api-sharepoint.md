@@ -11,12 +11,12 @@ ms.assetid: e0ec3149-507a-409d-8e7b-d5fbded006ce
 ms.topic: article
 tags: connectors
 ms.date: 08/25/2018
-ms.openlocfilehash: 5a3968e1aec98092767712220d8aaf676aba89cd
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: f076b2e859d334b407fe5c93fcec1bb67cb75e48
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43053521"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50233255"
 ---
 # <a name="monitor-and-manage-sharepoint-resources-with-azure-logic-apps"></a>Monitorování a Správa prostředků služby SharePoint pomocí Azure Logic Apps
 
@@ -83,7 +83,7 @@ Technické podrobnosti o omezení, akce a triggery, které jsou popsány pomocí
 ## <a name="get-support"></a>Získat podporu
 
 * Pokud máte dotazy, navštivte [fórum Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-* Pokud chcete zanechat své nápady na funkce nebo hlasovat, navštivte [web zpětné vazby od uživatelů Logic Apps](http://aka.ms/logicapps-wish).
+* Pokud chcete zanechat své nápady na funkce nebo hlasovat, navštivte [web zpětné vazby od uživatelů Logic Apps](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Další postup
 

@@ -1,6 +1,6 @@
 ---
-title: Co je nového v Azure Machine Learning | Microsoft Docs
-description: Nové funkce, které jsou k dispozici v Azure Machine Learning.
+title: Co je nového v nástroji Azure Machine Learning Studio | Dokumentace Microsoftu
+description: Nové funkce, které jsou k dispozici v nástroji Azure Machine Learning Studio.
 services: machine-learning
 documentationcenter: ''
 author: YasinMSFT
@@ -14,44 +14,49 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/28/2017
-ms.openlocfilehash: 61bea7fde96b239a50ec25a702a73ecfb62ce717
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.date: 10/28/2018
+ms.openlocfilehash: 2f990ce30b66392e8a649e4e88b21457d9fe223b
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34836068"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212654"
 ---
-# <a name="whats-new-in-azure-machine-learning"></a>Novinky ve službě Azure Machine Learning
+# <a name="whats-new-in-azure-machine-learning-studio"></a>Co je nového v nástroji Azure Machine Learning Studio
 
-### <a name="the-march-2017-release-of-microsoft-azure-machine-learning-updates-provides-the-following-feature"></a>2017 března verzi aktualizace Microsoft Azure Machine Learning poskytuje následující funkce:
+## <a name="october-2018"></a>. Října 2018
+
+Modul jazyka R v [spustit skript jazyka R](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/execute-r-script) modul přidal nové verze R modulu runtime--Microsoft R Open (MRO) 3.4.4. MRO 3.4.4 je založená na open-source systému R CRAN 3.4.4 a proto je kompatibilní s balíčky, které funguje s touto verzí jazyka R.  Další informace o podporované balíčky R v článku "[balíčky R podporované službou Azure Machine Learning Studio](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/r-packages-supported-by-azure-machine-learning#bkmk_List)".
+
+## <a name="march-2017"></a>. Března 2017 
+Tato verze aktualizace pro Microsoft Azure Machine Learning poskytuje následující funkce:
+
+* Kapacita vyhrazená pro úlohy BES Azure Machine Learning
+
+    Machine Learning fondu služby Batch používá zpracování [Azure Batch](../../batch/batch-technical-overview.md) služba k poskytování spravovaného zákazníkem škálování pro spuštění služby Azure Machine Learning služby Batch. Zpracování fondu služby batch můžete vytvořit fondy Azure Batch, ve kterých můžete odesílat úlohy služby batch a je mít znovu spustit předvídatelným způsobem.
+
+    Další informace najdete v tématu [služby Azure Batch pro úlohy strojového učení](dedicated-capacity-for-bes-jobs.md).
 
 
-
-* Vyhrazené kapacity pro Azure Machine Learning BES úlohy
-
-    Počítač fondu Batch Learning zpracování používá [Azure Batch](../../batch/batch-technical-overview.md) služba poskytnout spravované zákazníkem škálování pro službu Azure Machine Learning dávky spuštění. Zpracování fondu batch můžete vytvořit fondy Azure Batch, na kterých můžete odesílat dávkové úlohy a jejich spuštění předvídatelný způsobem.
-
-    Další informace najdete v tématu [služby Azure Batch pro Machine Learning úlohy](dedicated-capacity-for-bes-jobs.md).
-
-
-### <a name="the-august-2016-release-of-microsoft-azure-machine-learning-updates-provide-the-following-features"></a>Srpna 2016 verzi Microsoft Azure Machine Learning aktualizace poskytují následující funkce:
-* Classic webové služby teď můžete spravovat v novém [webové služby aplikace Microsoft Azure Machine Learning](https://services.azureml.net/) portál, který poskytuje jednom místě spravovat všechny aspekty webové služby.    
-  * Které poskytuje webovou službu [Statistika využití](manage-new-webservice.md).
-  * Zjednodušuje testování pomocí ukázkových dat volání Azure Machine Learning vzdáleného požadavku.
-  * Poskytuje nové zkušební stránku služby Batch spuštění ukázkových dat a úlohy odeslání historie.
+## <a name="august-2016"></a>. Srpna 2016 
+Tato verze aktualizace pro Microsoft Azure Machine Learning poskytují následující funkce:
+* Klasické webové služby se teď dají spravovat v novém [Microsoft Azure Machine Learning Web Services](https://services.azureml.net/) portál, který poskytuje jedno místo ke správě všech aspektů vaší webové služby.    
+  * Webová služba poskytující [statistiky o využití](manage-new-webservice.md).
+  * Zjednodušuje testování pomocí ukázkových dat volání Azure Machine Learning vzdálené-požadavku.
+  * Poskytuje nové stránky testů služba Batch Execution historie odesílání vzorku dat a úlohy.
   * Nabízí jednodušší správu koncový bod.
 
-### <a name="the-july-2016-release-of-microsoft-azure-machine-learning-updates-provide-the-following-features"></a>Července 2016 verzi Microsoft Azure Machine Learning aktualizace poskytují následující funkce:
-* Webové služby se nyní spravují jako prostředky Azure, které jsou spravované prostřednictvím [Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md) rozhraní, aby vám umožnil následující vylepšení:
-  * Existují nové [rozhraní REST API](https://msdn.microsoft.com/library/azure/Dn950030.aspx) k nasazení a správě Resource Manager na základě webové služby.
-  * Nová [webové služby aplikace Microsoft Azure Machine Learning](https://services.azureml.net/) portál, který poskytuje jednom místě spravovat všechny aspekty webové služby.
-* Zahrnuje nový model nasazení založené na předplatném, oblasti služby webové služby pomocí Správce prostředků na základě rozhraní API využívat poskytovatele prostředků Resource Manageru pro webové služby.
-* Zavádí nové [cenových plánů](https://azure.microsoft.com/pricing/details/machine-learning/) a naplánovat možnosti správy pomocí nového správce prostředků RP pro fakturaci.
-  * Teď můžete [nasazení webové služby do několika oblastí](how-to-deploy-to-multiple-regions.md) bez nutnosti vytvoření odběru v každé oblasti.
-* Poskytuje webovou službu [Statistika využití](manage-new-webservice.md).
-* Zjednodušuje testování pomocí ukázkových dat volání Azure Machine Learning vzdáleného požadavku.
-* Poskytuje nové zkušební stránku služby Batch spuštění ukázkových dat a úlohy odeslání historie.
+## <a name="july-2016"></a>Červenec 2016 
+Tato verze aktualizace pro Microsoft Azure Machine Learning poskytují následující funkce:
+* Webové služby se teď spravují jako prostředky Azure, které jsou spravované prostřednictvím [Azure Resource Manageru](../../azure-resource-manager/resource-group-overview.md) rozhraní umožňující následující vylepšení:
+  * Existují nové [rozhraní REST API](https://msdn.microsoft.com/library/azure/Dn950030.aspx) nasazovat a spravovat váš správce prostředků na základě webové služby.
+  * Je tu nový [Microsoft Azure Machine Learning Web Services](https://services.azureml.net/) portál, který poskytuje jedno místo ke správě všech aspektů vaší webové služby.
+* Zahrnuje nové rozhraní API využití zprostředkovatele prostředků Resource Manageru pro webové služby založené na pomocí Resource Manageru modelu pro nasazení na základě předplatného, ve více oblastech webové služby.
+* Zavádí nové [cenové plány](https://azure.microsoft.com/pricing/details/machine-learning/) a naplánovat možnosti správy pomocí nového poskytovatele prostředků Resource Manageru pro fakturaci.
+  * Teď můžete [nasazení webové služby do několika oblastí](how-to-deploy-to-multiple-regions.md) bez nutnosti vytvoření odběru v jednotlivých oblastech.
+* Poskytuje webovou službu [statistiky o využití](manage-new-webservice.md).
+* Zjednodušuje testování pomocí ukázkových dat volání Azure Machine Learning vzdálené-požadavku.
+* Poskytuje nové stránky testů služba Batch Execution historie odesílání vzorku dat a úlohy.
 
-Kromě toho Machine Learning Studio je aktualizovaná tak, aby umožňují nasadit do nového modelu webové služby nebo pokračovat v nasazování do klasického modelu webové služby. 
+Kromě toho nástroje Machine Learning Studio byl aktualizován, aby bylo možné nasadit na nový model webových služeb nebo pokračovat v nasazování do klasického modelu webové služby. 
 

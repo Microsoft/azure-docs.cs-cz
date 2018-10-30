@@ -1,19 +1,19 @@
 ---
-title: Instalace služby Mobility (VMware nebo fyzické prostředky do Azure) | Dokumentace Microsoftu
-description: Zjistěte, jak nainstalovat agenta služby Mobility na ochranu místních virtuálních počítačů VMware a fyzické servery s využitím Azure Site Recovery.
+title: Instalace služby Mobility pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů do Azure | Dokumentace Microsoftu
+description: Zjistěte, jak nainstalovat agenta služby Mobility pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů do Azure pomocí služby Azure Site Recovery.
 author: Rajeswari-Mamilla
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 10/29/2018
 ms.author: ramamill
-ms.openlocfilehash: 094c1776c0760c04d85aff6ad3d812a2ad7afa56
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 145affbcff128e0ec599ad1f97c79260b0dcae5a
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39526993"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212688"
 ---
-# <a name="install-the-mobility-service"></a>Instalace služby Mobility 
+# <a name="install-the-mobility-service-for-disaster-recovery-of-vmware-vms-and-physical-servers"></a>Instalace služby Mobility pro zotavení po havárii virtuálních počítačů VMware a fyzické servery
 
 Službu Mobility Azure Site Recovery je nainstalován na virtuálních počítačích VMware a fyzické servery, které chcete replikovat do Azure. Služba zaznamenává datové zápisy na počítači a předává je na procesní server. Nasazení služby Mobility do každého počítače (virtuální počítač VMware nebo fyzický server), který chcete replikovat do Azure. Můžete nasadit službu Mobility na serverech a virtuálních počítačů VMware, které chcete chránit pomocí následujících metod:
 

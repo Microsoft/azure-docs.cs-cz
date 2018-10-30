@@ -1,5 +1,5 @@
 ---
-title: Monitorování připojení Azure pro kontejnery | Dokumentace Microsoftu
+title: Monitorování připojení Azure pro kontejnery (Preview) | Dokumentace Microsoftu
 description: Tento článek popisuje, jak můžete připojit a konfigurace služby Azure Monitor pro kontejnery to vám umožní pochopit, jaký je výkon vašeho kontejneru a byly zjištěny problémy související s výkonem.
 services: azure-monitor
 documentationcenter: ''
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/04/2018
 ms.author: magoedte
-ms.openlocfilehash: 9fa0df0bbf363a7c751de460fd98740b4314f996
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: 505abe8f3dc19458b3f0e18f349974199ae4ba58
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48831190"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212110"
 ---
-# <a name="how-to-onboard-azure-monitor-for-containers"></a>Monitorování připojení Azure pro kontejnery
+# <a name="how-to-onboard-azure-monitor-for-containers-preview"></a>Monitorování připojení Azure pro kontejnery (Preview) 
 Tento článek popisuje, jak nastavit službu Azure Monitor k monitorování výkonu úlohy, které se nasazují do prostředí Kubernetes a hostitelem pro kontejnery [Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/).
 
 ## <a name="prerequisites"></a>Požadavky 

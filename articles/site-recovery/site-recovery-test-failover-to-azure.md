@@ -1,21 +1,20 @@
 ---
-title: Testovací převzetí služeb při selhání do Azure ve službě Azure Site Recovery | Dokumentace Microsoftu
-description: Informace o spuštění testovací převzetí služeb při selhání z místního do Azure pomocí služby Azure Site Recovery.
-services: site-recovery
+title: Spuštění postupu zotavení po havárii do Azure pomocí Azure Site Recovery | Dokumentace Microsoftu
+description: Další informace o spuštění postupu zotavení po havárii z místního do Azure pomocí služby Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.topic: article
-ms.date: 09/11/2018
+ms.topic: conceptual
+ms.date: 10/28/2018
 ms.author: raynew
-ms.openlocfilehash: 4c72a58cdc6082a40fe80b7a3cf8cf964199371e
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: 6eb1ee90b22b9e37dcae900cd80f80cb549090e9
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391772"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50213946"
 ---
-# <a name="test-failover-to-azure-in-site-recovery"></a>Testovací převzetí služeb při selhání do Azure v Site Recovery
+# <a name="run-a-disaster-recovery-drill-to-azure"></a>Spuštění postupu zotavení po havárii do Azure 
 
 
 Tento článek popisuje, jak spuštění postupu zotavení po havárii do Azure pomocí Site Recovery testovací převzetí služeb.  
@@ -79,11 +78,11 @@ Ve všech ostatních případech žádný přechodný krok není povinný a pře
 
 ## <a name="create-a-network-for-test-failover"></a>Vytvoření sítě pro testovací převzetí služeb při selhání
 
-Je vhodné pro testovací převzetí služeb při selhání, zvolit sítě, která bude izolovaná od obnovení lokality produkční v konkrétní sítě **výpočty a síť** nastavení pro každý virtuální počítač. Ve výchozím nastavení když vytvoříte virtuální síť Azure, je izolovaná od jiných sítí. Testovací síti by měl napodobovat produkční sítě:
+Pro testovací převzetí služeb při selhání doporučujeme zvolit síť, která je izolovaná od produkční sítě lokality pro obnovení zadané v nastavení **Výpočty a síť** jednotlivých virtuálních počítačů. Když vytvoříte virtuální síť Azure, ve výchozím nastavení je izolovaná od ostatních sítí. Testovací síť by měla napodobovat produkční síť:
 
-- Testovací síť by měla mít stejný počet podsítí jako produkční sítě. Podsítě by měly mít stejné názvy.
-- Testovací síti by měl používat stejný rozsah IP adres.
-- Aktualizujte IP adresa zadaná pro virtuální počítač DNS v DNS testovací síti **výpočty a síť** nastavení. Čtení [testovací převzetí služeb při selhání důležité informace týkající se služby Active Directory](site-recovery-active-directory.md#test-failover-considerations) další podrobnosti.
+- Testovací síť by měla mít stejný počet podsítí jako produkční síť. Podsítě by měly mít stejné názvy.
+- Testovací síť by měla používat stejný rozsah IP adres.
+- Aktualizujte DNS testovací sítě s použitím IP adresy zadané pro virtuální počítač DNS v nastavení **Výpočty a síť**. Další podrobnosti najdete v tématu věnovaném [aspektům, které je třeba zvážit při testování převzetí služeb při selhání pro Active Directory](site-recovery-active-directory.md#test-failover-considerations).
 
 
 ## <a name="test-failover-to-a-production-network-in-the-recovery-site"></a>Testovací převzetí služeb při selhání do produkční sítě v recovery site
@@ -111,7 +110,7 @@ Pokud chcete připojit k virtuálním počítačům Azure po převzetí služeb 
 **Virtuální počítač Azure s Linuxem** | V místním počítači před převzetí služeb při selhání | Ujistěte se, že služba Secure Shell na virtuálním počítači je nastavena na automatické spuštění při spuštění systému.<br/><br/> Zkontrolujte, jestli pravidla brány firewall umožňují službě SSH připojit se k ní.
 **Virtuální počítač Azure s Linuxem** | Virtuální počítač Azure po převzetí služeb při selhání | Pravidla skupiny zabezpečení sítě na převzetí virtuálního počítače (a v podsíti Azure, ke kterému je připojený) musí povolovat příchozí připojení k portu SSH.<br/><br/> [Přidejte veřejnou IP adresu](https://aka.ms/addpublicip) pro tento virtuální počítač.<br/><br/> Zkontrolujte **Diagnostika spouštění** pro snímek obrazovky virtuálního počítače.<br/><br/>
 
-Postupujte podle kroků popsaných [tady](site-recovery-failover-to-azure-troubleshoot.md) problémy řešit jakékoli připojení zveřejnit převzetí služeb při selhání.
+Při řešení problémů s připojením po převzetí služeb při selhání použijte [zde](site-recovery-failover-to-azure-troubleshoot.md) popsaný postup.
 
 ## <a name="next-steps"></a>Další postup
 Po dokončení postupu zotavení po havárii, další informace o dalších typech [převzetí služeb při selhání](site-recovery-failover.md).

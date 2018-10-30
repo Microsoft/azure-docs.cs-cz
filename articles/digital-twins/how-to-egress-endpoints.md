@@ -6,20 +6,20 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/08/2018
+ms.date: 10/26/2018
 ms.author: alinast
-ms.openlocfilehash: c917fab84448684cf29af162ec0781d764605f71
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: c09ee84cda5f0a9747d3ee1f8f1b37d1323f2cc2
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49324068"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212246"
 ---
 # <a name="egress-and-endpoints"></a>Koncové body a výchozí přenos dat
 
 Azure digitální dvojče podporuje koncept _koncové body_ kde představuje každý koncový bod zprostředkovatele zpráv nebo událostí v rámci předplatného Azure uživatele. Je možné odeslat události a zprávy **centra událostí**, **služby Event Grid**, a **témata služby Service Bus**.
 
-Události se posílají do koncových bodů podle předem definovaných směrování požadavků: uživatel může určit, který koncový bod by měl přijímat některý z následujících událostí:`TopologyOperation`, `UdfCustom`, `SensorChange`, `SpaceChange`, nebo `DeviceMessage`.
+Události se posílají do koncových bodů podle předem definovaných směrování požadavků: uživatel může určit, který koncový bod by měl přijímat některý z následujících událostí: **TopologyOperation**, **UdfCustom**, **SensorChange**, **SpaceChange**, nebo **DeviceMessage**.
 
 Základní znalosti o směrování události a typy událostí, najdete v tématu [směrování události a zprávy](concepts-events-routing.md).
 
@@ -27,9 +27,9 @@ Základní znalosti o směrování události a typy událostí, najdete v témat
 
 Tady jsou formáty události pro každý typ události:
 
-- `TopologyOperation`
+- **TopologyOperation**
 
-  Platí pro změn grafu. `subject` Vlastnost určuje typ objektu vliv. Typy objektů, které tato událost může aktivovat: `Device, DeviceBlobMetadata`, `DeviceExtendedProperty`, `ExtendedPropertyKey`, `ExtendedType`, `KeyStore`, `Report`, `RoleDefinition`, `Sensor`, `SensorBlobMetadata`, `SensorExtendedProperty`, `Space` ,  `SpaceBlobMetadata`, `SpaceExtendedProperty`, `SpaceResource`, `SpaceRoleAssignment`, `System`, `User`, `UserBlobMetadata`, `UserExtendedProperty`.
+  Platí pro změn grafu. *Subjektu* vlastnost určuje typ objektu vliv. Typy objektů, které tato událost může aktivovat: **zařízení**, **DeviceBlobMetadata**, **DeviceExtendedProperty**, **ExtendedPropertyKey**, **Hodnotu ExtendedType**, **úložiště klíčů**, **sestavy**, **RoleDefinition**, **senzor**, **SensorBlobMetadata**, **SensorExtendedProperty**, **místo**, **SpaceBlobMetadata**,  **SpaceExtendedProperty**, **SpaceResource**, **SpaceRoleAssignment**, **systému**, **uživatele**, **UserBlobMetadata**, **UserExtendedProperty**.
 
   Příklad:
 
@@ -55,11 +55,14 @@ Tady jsou formáty události pro každý typ události:
 
     | Název vlastního atributu | Nahraďte |
     | --- | --- |
-    | `yourTopicName` | Název vlastní téma |
+    | *yourTopicName* | Název vlastní téma |
 
-- `UdfCustom`
+- **UdfCustom**
 
-  Události odeslané uživatelem definované funkce (UDF). Všimněte si, že se tato událost je explicitně posílaly z UDF, samotného.
+  Události odeslané uživatelem definované funkce (UDF). 
+  
+  > [!IMPORTANT]
+  > Tato událost je explicitně posílaly z UDF, samotný.
 
   Příklad:
 
@@ -83,9 +86,9 @@ Tady jsou formáty události pro každý typ události:
 
     | Název vlastního atributu | Nahraďte |
     | --- | --- |
-    | `yourTopicName` | Název vlastní téma |
+    | *yourTopicName* | Název vlastní téma |
 
-- `SensorChange`
+- **SensorChange**
 
   Aktualizace na základě telemetrických dat změn stavu senzoru.
 
@@ -118,9 +121,9 @@ Tady jsou formáty události pro každý typ události:
 
     | Název vlastního atributu | Nahraďte |
     | --- | --- |
-    | `yourTopicName` | Název vlastní téma |
+    | *yourTopicName* | Název vlastní téma |
 
-- `SpaceChange`
+- **SpaceChange**
 
   Aktualizace na základě telemetrických dat změn stavu místo.
 
@@ -153,15 +156,15 @@ Tady jsou formáty události pro každý typ události:
 
     | Název vlastního atributu | Nahraďte |
     | --- | --- |
-    | `yourTopicName` | Název vlastní téma |
+    | *yourTopicName* | Název vlastní téma |
 
-- `DeviceMessage`
+- **DeviceMessage**
 
-  Můžete zadat `EventHub` připojení, ke kterému nezpracovaná telemetrická data událostí je možné směrovat i z Azure digitální dvojče.
+  Můžete zadat **EventHub** připojení, ke kterému nezpracovaná telemetrická data událostí je možné směrovat i z Azure digitální dvojče.
 
 > [!NOTE]
-> - `DeviceMessage` je kombinovatelných pouze s `EventHub`; není možné kombinovat `DeviceMessage` s některým z jiných typů událostí.
-> - Bude možné zadat pouze jeden koncový bod z kombinace typu `EventHub` / `DeviceMessage`.
+> - **DeviceMessage** je kombinovatelných pouze s **EventHub**; není možné kombinovat **DeviceMessage** s některým z jiných typů událostí.
+> - Bude možné zadat pouze jeden koncový bod z kombinace typu **EventHub** nebo **DeviceMessage**.
 
 ## <a name="configuring-endpoints"></a>Konfigurace koncových bodů
 
@@ -171,7 +174,7 @@ Koncový bod správy se provede prostřednictvím koncových bodů rozhraní API
 POST https://endpoints-demo.azuresmartspaces.net/management/api/v1.0/endpoints
 ```
 
-- Směrovat **služby Service Bus** typy událostí: `SensorChange`, `SpaceChange`, `TopologyOperation`
+- Směrovat **služby Service Bus** typy událostí: **SensorChange**, **SpaceChange**, **TopologyOperation**
 
   ```JSON
   {
@@ -189,12 +192,12 @@ POST https://endpoints-demo.azuresmartspaces.net/management/api/v1.0/endpoints
 
     | Název vlastního atributu | Nahraďte |
     | --- | --- |
-    | `yourNamespace` | Obor názvů vašeho koncového bodu |
-    | `yourPrimaryKey` | Primární připojovací řetězec použitý k ověření |
-    | `yourSecondaryKey` | Sekundární připojovací řetězec použitý k ověření |
-    | `yourTopicName` | Název vlastní téma |
+    | *yourNamespace* | Obor názvů vašeho koncového bodu |
+    | *yourPrimaryKey* | Primární připojovací řetězec použitý k ověření |
+    | *yourSecondaryKey* | Sekundární připojovací řetězec použitý k ověření |
+    | *yourTopicName* | Název vlastní téma |
 
-- Směrovat **služby Event Grid** typy událostí: `SensorChange`, `SpaceChange`, `TopologyOperation`
+- Směrovat **služby Event Grid** typy událostí: **SensorChange**, **SpaceChange**, **TopologyOperation**
 
   ```JSON
   {
@@ -212,11 +215,11 @@ POST https://endpoints-demo.azuresmartspaces.net/management/api/v1.0/endpoints
 
     | Název vlastního atributu | Nahraďte |
     | --- | --- |
-    | `yourPrimaryKey` | Primární připojovací řetězec použitý k ověření|
-    | `yourSecondaryKey` | Sekundární připojovací řetězec použitý k ověření |
-    | `yourTopicName` | Název vlastní téma |
+    | *yourPrimaryKey* | Primární připojovací řetězec použitý k ověření|
+    | *yourSecondaryKey* | Sekundární připojovací řetězec použitý k ověření |
+    | *yourTopicName* | Název vlastní téma |
 
-- Směrovat **centra událostí** typy událostí: `SensorChange`, `SpaceChange`, `TopologyOperation`
+- Směrovat **centra událostí** typy událostí: **SensorChange**, **SpaceChange**, **TopologyOperation**
 
   ```JSON
   {
@@ -234,12 +237,12 @@ POST https://endpoints-demo.azuresmartspaces.net/management/api/v1.0/endpoints
 
     | Název vlastního atributu | Nahraďte |
     | --- | --- |
-    | `yourNamespace` | Obor názvů vašeho koncového bodu |
-    | `yourPrimaryKey` | Primární připojovací řetězec použitý k ověření |
-    | `yourSecondaryKey` | Sekundární připojovací řetězec použitý k ověření |
-    | `yourEventHubName` | Název vašeho centra událostí |
+    | *yourNamespace* | Obor názvů vašeho koncového bodu |
+    | *yourPrimaryKey* | Primární připojovací řetězec použitý k ověření |
+    | *yourSecondaryKey* | Sekundární připojovací řetězec použitý k ověření |
+    | *yourEventHubName* | Název vašeho **centra událostí** |
 
-- Směrovat **centra událostí** typy událostí `DeviceMessage`. Poznámka: zahrnutí _EntityPath_ v `connectionString`, což je povinné.
+- Směrovat **centra událostí** typu události: **DeviceMessage**. Zahrnutí `EntityPath` v **connectionString** je povinné.
 
   ```JSON
   {
@@ -255,10 +258,10 @@ POST https://endpoints-demo.azuresmartspaces.net/management/api/v1.0/endpoints
 
     | Název vlastního atributu | Nahraďte |
     | --- | --- |
-    | `yourNamespace` | Obor názvů vašeho koncového bodu |
-    | `yourPrimaryKey` | Primární připojovací řetězec použitý k ověření |
-    | `yourSecondaryKey` | Sekundární připojovací řetězec použitý k ověření |
-    | `yourEventHubName` | Název vašeho centra událostí |
+    | *yourNamespace* | Obor názvů vašeho koncového bodu |
+    | *yourPrimaryKey* | Primární připojovací řetězec použitý k ověření |
+    | *yourSecondaryKey* | Sekundární připojovací řetězec použitý k ověření |
+    | *yourEventHubName* | Název vašeho **centra událostí** |
 
 > [!NOTE]
 > Při vytvoření nového koncového bodu může trvat 5 až 10 minut, než se začít přijímat události v koncovém bodě.

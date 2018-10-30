@@ -10,12 +10,12 @@ ms.reviewer: estfan, LADocs
 ms.topic: article
 ms.assetid: 3656acfb-eefd-4e75-b5d2-73da56c424c9
 ms.date: 10/15/2017
-ms.openlocfilehash: 10191a4fbab325dcd5134b082f050188c6798079
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 554171e02a369905bcf9cd4aa7bfa2e59ab46336
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43122116"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50229753"
 ---
 # <a name="create-logic-app-workflows-from-prebuilt-templates"></a>Vytvoření pracovních postupů aplikace logiky z předem připravených šablon
 
@@ -149,7 +149,7 @@ Na panelu nástrojů návrháře zvolte **Uložit**.
 ## <a name="get-support"></a>Získat podporu
 
 * Pokud máte dotazy, navštivte [fórum Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-* Pokud chcete zanechat své nápady na funkce nebo hlasovat, navštivte [web zpětné vazby od uživatelů Logic Apps](http://aka.ms/logicapps-wish).
+* Pokud chcete zanechat své nápady na funkce nebo hlasovat, navštivte [web zpětné vazby od uživatelů Logic Apps](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Další postup
 

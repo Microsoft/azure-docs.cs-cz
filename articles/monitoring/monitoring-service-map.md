@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/03/2018
+ms.date: 10/28/2018
 ms.author: magoedte
-ms.openlocfilehash: 49688b958d904450c50944725b18e0d518e27146
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: 32cd373499a1ac6dd8cc02e666b0f6ff70688157
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48269254"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215255"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Pomocí řešení Service Map v Azure
 Service Map automaticky rozpozná komponenty aplikace v systémech Windows a Linux a mapuje komunikaci mezi službami. Pomocí mapy služeb, můžete zobrazit vaše servery tak, aby přirozeným způsobem: jako propojené systémy, které doručují důležité služby. Service Map ukazuje propojení mezi servery, procesy, příchozí a odchozí připojení čekací doba a požadované porty v jakékoli architektuře propojené TCP, žádnou konfiguraci kromě instalace agenta.
@@ -72,11 +72,6 @@ Počítače lze rozšířit na mapě zobrazíte spuštění zpracování skupiny
 
 Ve výchozím nastavení řešení Service Map mapy zobrazit posledních 30 minut informací o závislostech. Pomocí ovládacích prvků času v levém horním rohu se můžete dotazovat mapování pro historické časových rozsahů až jednu hodinu, než ukazují, jak závislosti hledá v minulosti (například během incident nebo předtím, než došlo ke změně). Řešení Service Map data se ukládají po dobu 30 dnů v placených pracovních prostorů a po dobu 7 dní v bezplatné pracovní prostory.
 
-
-
-
-
-
 ## <a name="status-badges-and-border-coloring"></a>Stav oznámení a barvy ohraničení
 V dolní části každého serveru v objektu map lze seznam oznámení stavu takzvané stavové informace o serveru. Odznáčky naznačují, že některé důležité informace pro server z jednoho z řešení integrace. Kliknutím oznámení "BADGE" přejdete přímo na podrobnosti o stavu v pravém podokně. Odznáčky aktuálně k dispozici stav zahrnují výstrahy, oddělení služeb, změny, zabezpečení a aktualizace.
 
@@ -104,7 +99,7 @@ Tam si můžete zvolit **vytvořit nový** a zadejte název skupiny.
 ![Název skupiny](media/monitoring-service-map/machine-groups-name.png)
 
 >[!NOTE]
->Skupiny počítačů, které jsou aktuálně omezené na 10 serverů, ale plánujeme tento limit zvýšit brzy.
+>Skupiny počítačů jsou omezené na 10 serverů.
 
 ### <a name="viewing-a-group"></a>Zobrazení skupiny
 Po vytvoření některé skupiny, můžete je zobrazit výběrem na kartě skupiny.

@@ -14,16 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: cynthn
-ms.openlocfilehash: 87d78178c32aea3ae601983ec14e9df0732b59e2
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 0f223660f8dc99b590f8aa80a03d60fcbf3aa5d3
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49091296"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50232575"
 ---
 # <a name="create-a-snapshot"></a>Vytvoření snímku
 
-Snímek je kopie virtuálního pevného disku (VHD) úplné, jen pro čtení. Vytvoření snímku disku operačního systému nebo datového virtuálního pevného disku jako zálohu, nebo k řešení potíží virtuální počítač (VM). 
+Snímek je kopie virtuálního pevného disku (VHD) úplné, jen pro čtení. Vytvoření snímku disku operačního systému nebo datového virtuálního pevného disku jako zálohu, nebo k řešení potíží virtuální počítač (VM).
+
+Pokud se chystáte pomocí tohoto snímku rychle vytvořit nový virtuální počítač, doporučujeme, že je čistě vypnout virtuální počítač před pořízení snímku, vymažte všechny procesy, které jsou v průběhu.
 
 ## <a name="use-the-azure-portal"></a>Použití webu Azure Portal 
 

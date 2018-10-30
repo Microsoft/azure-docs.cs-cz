@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 08/02/2018
 ms.author: markgal;anuragm
 ms.custom: ''
-ms.openlocfilehash: aab0ac2dfba47741eaf5a75ef46d9ca5f8873d50
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 72d48bd1716e1b62ae92f8317f3f9611ac463453
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434241"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50211498"
 ---
 # <a name="back-up-sql-server-databases-to-azure"></a>Zálohování databází systému SQL Server do Azure
 
@@ -658,23 +658,23 @@ Azure Backup používá nativní rozhraní API SQL pro všechny operace zálohov
 V následujícím příkladu je dotaz, který načte všechny úlohy zálohování pro databázi s názvem **DB1**. Upravte dotaz pro rozšířené monitorování.
 
 ```
-select CAST (
+select CAST (
 Case type
-                when 'D' 
-                                 then 'Full'
-                when  'I'
-                               then 'Differential' 
-                ELSE 'Log'
-                END         
-                AS varchar ) AS 'BackupType',
-database_name, 
+                when 'D' 
+                                 then 'Full'
+                when  'I'
+                               then 'Differential' 
+                ELSE 'Log'
+                END         
+                AS varchar ) AS 'BackupType',
+database_name, 
 server_name,
 machine_name,
 backup_start_date,
 backup_finish_date,
-DATEDIFF(SECOND, backup_start_date, backup_finish_date) AS TimeTakenByBackupInSeconds,
-backup_size AS BackupSizeInBytes
-  from msdb.dbo.backupset where user_name = 'NT SERVICE\AzureWLBackupPluginSvc' AND database_name =  <DB1>  
+DATEDIFF(SECOND, backup_start_date, backup_finish_date) AS TimeTakenByBackupInSeconds,
+backup_size AS BackupSizeInBytes
+  from msdb.dbo.backupset where user_name = 'NT SERVICE\AzureWLBackupPluginSvc' AND database_name =  <DB1>  
  
 ```
 
@@ -703,7 +703,7 @@ Pokud zastavíte ochranu pro databázi serveru SQL Server, požádá o Azure Bac
 * Zastavit všechny budoucí úlohy zálohování a odstranit všechny body obnovení.
 * Zastavit všechny budoucí úlohy zálohování, ale ponechat body obnovení.
 
-Se účtuje poplatek ponechat body obnovení. Body obnovení pro SQL účtovat za chráněnou instanci SQL, ceny za poplatek plus využité úložiště. Další informace o cenách zálohování Azure pro SQL, najdete v článku [stránce s cenami za Azure Backup](https://azure.microsoft.com/pricing/details/backup/). 
+Pokud se rozhodnete zastavit zálohování při zachování dat, body obnovení se vyčistí podle zásady zálohování. Bude účtovat za chráněnou instanci SQL, ceny za poplatek, a navíc úložiště spotřebovaného před vyčištěním všech bodů obnovení. Další informace o cenách zálohování Azure pro SQL, najdete v článku [stránce s cenami za Azure Backup](https://azure.microsoft.com/pricing/details/backup/). 
 
 Ukončit ochranu pro databázi:
 

@@ -1,29 +1,22 @@
 ---
-title: Pomocí Azure Site Recovery replikovat vícevrstvé nasazení Dynamics AX | Dokumentace Microsoftu
-description: Tento článek popisuje, jak replikovat a ochraně Dynamics AX pomocí Azure Site Recovery
-services: site-recovery
-documentationcenter: ''
+title: Nastavení zotavení po havárii pro vícevrstvé aplikace Dynamics AX nasazení s využitím Azure Site Recovery | Dokumentace Microsoftu
+description: Tento článek popisuje, jak nastavit zotavení po havárii pro prostředí Dynamics AX díky Azure Site Recovery
 author: asgang
 manager: rochakm
-editor: ''
-ms.assetid: 9126f5e8-e9ed-4c31-b6b4-bf969c12c184
 ms.service: site-recovery
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: asgang
-ms.openlocfilehash: eb6f7d9b34e00ce1efd8c871439c2504e5f550d5
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: e2cba8cb53e73bd1fc25f1fe43fa0365247e2bd2
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43669438"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210818"
 ---
-# <a name="replicate-a-multitier-dynamics-ax-application-by-using-azure-site-recovery"></a>Pomocí Azure Site Recovery replikovat vícevrstvé aplikace Dynamics AX
+# <a name="set-up-disaster-recovery-for-a-multitier-dynamics-ax-application"></a>Nastavení zotavení po havárii pro vícevrstvé aplikace Dynamics AX 
 
-## <a name="overview"></a>Přehled
+
 
 
  Dynamics AX je jedním z nejoblíbenějších řešení ERP pro podniky standardizovat procesy v lokalitách, Správa prostředků a zjednodušit dodržování předpisů. Protože aplikace je zásadní pro organizace, v případě havárie, by aplikace měla být zprovoznění minimální včas.

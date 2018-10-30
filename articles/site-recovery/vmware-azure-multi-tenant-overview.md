@@ -1,22 +1,20 @@
 ---
-title: Přehled podpory více tenantů pro replikaci virtuálních počítačů VMware do Azure (CSP) pomocí služby Azure Site Recovery | Dokumentace Microsoftu
-description: Poskytuje přehled podpory Azure Site Recovery pro tenanta předplatná v prostředí s více tenanty, prostřednictvím programu CSP.
-services: site-recovery
+title: Přehled podpory více tenantů pro zotavení po havárii virtuálních počítačů VMware do Azure (CSP) pomocí služby Azure Site Recovery | Dokumentace Microsoftu
+description: Poskytuje přehled podpory Azure Site Recovery pro zotavení po havárii VMWare do Azure v programu prostředí více tenantů (CSP).
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: mayg
-ms.openlocfilehash: 4cd0c3baf385a864e2173de9bbce897bb5066dae
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 89e731d6c255092b087f0615bad49185c7181f1f
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49352867"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210750"
 ---
-# <a name="overview-of-multi-tenant-support-for-vmware-replication-to-azure-with-csp"></a>Přehled podpory více tenantů pro replikaci VMware do Azure s využitím CSP
+# <a name="overview-of-multi-tenant-support-for-vmware-fisaster-recovery-to-azure-with-csp"></a>Přehled podpory více tenantů pro zotavení fisaster VMware do Azure s využitím CSP
 
 [Azure Site Recovery](site-recovery-overview.md) podporuje prostředí více tenantů pro předplatná tenanta. Také podporuje více tenantů pro předplatné tenanta, které jsou vytvořeny a spravovány prostřednictvím programu Microsoft Cloud Solution Provider (CSP).
 

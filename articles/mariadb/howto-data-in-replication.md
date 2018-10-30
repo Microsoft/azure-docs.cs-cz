@@ -8,12 +8,12 @@ services: mariadb
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 13d1353b0f8b3320972973d428f4aedb0fb68ac8
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f75b3e33cbd5719211bb30b22ab8d53c344b5579
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46990681"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212756"
 ---
 # <a name="how-to-configure-azure-database-for-mariadb-data-in-replication"></a>Jak nakonfigurovat – Azure Database pro MariaDB Data replikace
 
@@ -62,7 +62,7 @@ Následující kroky připravte a nakonfigurujte MariaDB serveru místní, v vir
 
    Vytvoření uživatelského účtu na hlavním serveru, který je nakonfigurovaný s oprávněními pro replikaci. To můžete udělat pomocí příkazů SQL nebo nástroje, jako je aplikace MySQL Workbench. Zvažte, zda máte v úmyslu na replikaci s protokolem SSL, jak to bude potřeba zadat při vytváření uživatele. Naleznete v dokumentaci MariaDB pochopit, jak [přidejte uživatelské účty](https://mariadb.com/kb/en/library/create-user/) na hlavní server. 
 
-   V níže uvedených příkazů nové role replikace vytvořili má přístup k hlavnímu serveru z libovolného počítače, ne jenom počítač, který hostuje hlavní server sám. To se provádí tak, že zadáte "syncuser@'%" "v příkazu pro vytvoření uživatele. V dokumentaci MariaDB Další informace o [určující názvy účtů](https://mariadb.com/kb/en/library/create-user/#account-names).
+   V níže uvedených příkazů nové role replikace vytvořili má přístup k hlavnímu serveru z libovolného počítače, ne jenom počítač, který hostuje hlavní server sám. To se provádí tak, že zadáte "syncuser\@'%'" v příkazu pro vytvoření uživatele. V dokumentaci MariaDB Další informace o [určující názvy účtů](https://mariadb.com/kb/en/library/create-user/#account-names).
 
    **Příkaz SQL**
 

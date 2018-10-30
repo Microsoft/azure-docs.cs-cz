@@ -1,20 +1,20 @@
 ---
-title: Hyper-V do Azure replikace architektura v Azure Site Recovery | Dokumentace Microsoftu
-description: Tento článek obsahuje přehled komponent a architektury používané při replikaci místních virtuálních počítačů Hyper-V (bez nástroje VMM) do Azure s využitím služby Azure Site Recovery.
+title: Technologie Hyper-V na architekturu pro zotavení po havárii Azure ve službě Azure Site Recovery | Dokumentace Microsoftu
+description: Tento článek obsahuje přehled komponent a architektury používané při nasazení zotavení po havárii pro místní virtuální počítače Hyper-(bez VMM) do Azure pomocí služby Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/10/2018
+ms.date: 10/28/2018
 ms.author: raynew
-ms.openlocfilehash: 49059415c5f96eeb4dd871e7d2c8ae4ab9b2c12e
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 23b12f5b0423f717e96ec1f59480f0175648c75f
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078354"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210648"
 ---
-# <a name="hyper-v-to-azure-replication-architecture"></a>Hyper-V do Azure replikace architektury
+# <a name="hyper-v-to-azure-disaster-recovery-architecture"></a>Technologie Hyper-V na architekturu pro zotavení po havárii Azure
 
 
 Tento článek popisuje, architektury a procesy používané při replikaci, převzetí služeb při selhání a obnovení virtuálních počítačů Hyper-V (VM) mezi místní hostitelé Hyper-V a Azure, pomocí [Azure Site Recovery](site-recovery-overview.md) služby.

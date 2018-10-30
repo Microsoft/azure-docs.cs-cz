@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/11/2018
+ms.date: 10/29/2018
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: fbb51d8dc3b1ea4c6b34120e8fe35474ae949cf2
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 7071e22d703ab7ec3a51eff02d1694fc04cb3417
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49116908"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50231232"
 ---
 # <a name="troubleshoot-your-deployment-to-kubernetes-to-azure-stack"></a>Řešení potíží s nasazení tak, aby Kubernetes pro Azure Stack
 
@@ -28,7 +28,7 @@ ms.locfileid: "49116908"
 > [!Note]  
 > Kubernetes ve službě Azure Stack je ve verzi preview.
 
-Následující článek vypadá na odstraňování potíží u clusteru Kubernetes. Můžete zkontrolovat výstrahu pro nasazení a zkontrolovat stav nasazení podle prvků vyžadovaných pro nasazení. Můžete shromažďovat protokoly nasazení ze služby Azure Stack nebo virtuálních počítačů s Linuxem, které hostují Kubernetes. Kromě toho budete muset pracovat se správcem vaší služby Azure Stack a protokoly načíst z koncového bodu správy.
+Následující článek vypadá na odstraňování potíží u clusteru Kubernetes. Můžete zkontrolovat výstrahu pro nasazení a zkontrolovat jejich prohlížením prvků vyžadovaných pro nasazení stav nasazení. Můžete shromažďovat protokoly nasazení ze služby Azure Stack nebo virtuálních počítačů s Linuxem, které hostují Kubernetes. Kromě toho budete muset pracovat se správcem vaší služby Azure Stack a protokoly načíst z koncového bodu správy.
 
 ## <a name="overview-of-deployment"></a>Přehled nasazení
 
@@ -47,7 +47,7 @@ Následující diagram znázorňuje obecný postup nasazení clusteru.
     Zadejte hodnoty, které je potřeba nastavit v clusteru Kubernetes včetně:
     -  **Uživatelské jméno** uživatelské jméno pro virtuální počítače Linux, které jsou součástí clusteru Kubernetes a DVM.
     -  **Veřejný klíč SSH** klíč používaný k autorizaci vytvořenou jako součást clusteru Kubernetes a DVM všechny počítače s Linuxem
-    -  **Princip služby** ID použít od poskytovatele cloudu Kubernetes Azure. ID klienta, který je identifikován jako ID aplikace při vytváření instančního objektu služby. 
+    -  **Princip služby** ID použít od poskytovatele cloudu Kubernetes Azure. ID klienta byla identifikována jako ID aplikace, pokud vaše služba se vytvoření instančního objektu. 
     -  **Tajný kód klienta** jejich klíče vytvořené při vytváření instančního objektu služby.
 
 2. Vytvoří nasazení virtuálního počítače a rozšíření vlastních skriptů.

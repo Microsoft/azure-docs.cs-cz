@@ -1,6 +1,16 @@
-
-
-
+---
+author: cynthn
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: cynthn
+ms.openlocfilehash: 45a6bd349169265ef411d01a3601a27551847633
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50226451"
+---
 Tento článek se zabývá některými běžnými dotazy uživatelů k virtuálním počítačům Azure vytvořeným pomocí modelu nasazení Classic.
 
 ## <a name="can-i-migrate-my-vm-created-in-the-classic-deployment-model-to-the-new-resource-manager-model"></a>Můžu migrovat virtuální počítač vytvořený v modelu nasazení Classic na nový model Resource Manager?
@@ -48,7 +58,7 @@ Pro virtuální počítače vytvořené v modelu nasazení Classic můžete pomo
 Při vytváření virtuálního počítače budete muset určit síť, do které má patřit. Existující virtuální počítač není možné připojit k virtuální síti. Můžete to však obejít tak, že z existujícího virtuálního počítače odpojíte virtuální pevný disk (VHD) a použijete ho k vytvoření nového virtuálního počítače s požadovanou konfigurací sítě.
 
 ## <a name="how-can-i-access--my-virtual-machine"></a>Jak můžu přistupovat k virtuálnímu počítači?
-Budete muset vytvořit vzdálené připojení k přihlášení k virtuálnímu počítači pomocí připojení ke vzdálené ploše pro virtuální počítač s Windows nebo Secure Shell (SSH) pro virtuální počítač s Linuxem. Pokyny najdete tady:
+Budete muset vytvořit vzdálené připojení k přihlášení k virtuálnímu počítači pomocí připojení ke vzdálené ploše virtuálního počítače s Windows nebo Secure Shell (SSH) pro virtuální počítač s Linuxem. Pokyny najdete tady:
 
 * [Jak se přihlásit k virtuálnímu počítači s Windows Serverem](../articles/virtual-machines/windows/classic/connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json). Podporují se maximálně 2 souběžná připojení, pokud server není nakonfigurovaný jako hostitel relace vzdálené plochy.  
 * [Jak se přihlásit k virtuálnímu počítači s Linuxem](../articles/virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). SSH ve výchozím nastavení umožňuje maximálně 10 souběžných připojení. Toto číslo můžete navýšit upravením konfiguračního souboru.
@@ -57,7 +67,7 @@ Pokud máte problémy se Vzdálenou plochou nebo SSH, nainstalujte rozšíření
 
 Pro virtuální počítače s Windows další možnosti zahrnují:
 
-* Na portálu Azure najít virtuálního počítače a pak klikněte na **resetovat vzdálený přístup** z řádku nabídek.
+* Na webu Azure Portal vyhledejte virtuální počítač a potom klikněte na **resetovat vzdálený přístup** na panelu příkazů.
 * Přečtěte si článek [Řešení problémů s připojením ke vzdálené ploše na virtuálním počítači Azure s Windows](../articles/virtual-machines/windows/troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 * Připojte se k virtuálnímu počítači prostřednictvím vzdálené komunikace prostředí Windows PowerShell nebo vytvořte další koncové body, aby se k virtuálnímu počítači mohly připojit další prostředky. Podrobnosti najdete v článku [Nastavení koncových bodů pro virtuální počítač](../articles/virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 
@@ -78,13 +88,13 @@ Termín upgrade obecně znamená přesun na aktuálnější verzi operačního s
 Obecné podrobnosti o nástrojích a postupech pro migraci Windows Serveru najdete v tématu [Migrace rolí a funkcí na Windows Server](http://go.microsoft.com/fwlink/p/?LinkId=396940).
 
 ## <a name="whats-the-default-user-name-and-password-on-the-virtual-machine"></a>Jaké je výchozí uživatelské jméno a heslo na virtuálním počítači?
-Image poskytované Azure nemají předkonfigurované uživatelské jméno a heslo. Když vytvoříte virtuální počítač pomocí jedné z těchto obrázků, budete muset zadat uživatelské jméno a heslo, které budete používat k přihlášení k virtuálnímu počítači.
+Image poskytované Azure nemají předkonfigurované uživatelské jméno a heslo. Při vytváření virtuálního počítače pomocí některé z takových imagí budete muset zadat uživatelské jméno a heslo, které budete používat k přihlášení k virtuálnímu počítači.
 
 Pokud jste uživatelské jméno nebo heslo zapomněli a máte nainstalovaného agenta virtuálního počítače, můžete nainstalovat rozšíření [VMAccess](../articles/virtual-machines/windows/extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) a použít ho k opravení problému.
 
 Další podrobnosti:
 
-* Pro Linux Image Pokud používáte portál Azure, 'azureuser' je zadána jako výchozí uživatelské jméno, ale toto můžete změnit pomocí 'Galerie z' místo 'Vytvořit' jako způsob, jak vytvořit virtuální počítač. Při použití možnosti Z galerie se také můžete rozhodnout, jestli se k přihlášení má používat heslo, klíč SSH nebo obojí. Uživatelský účet je neprivilegovaný uživatel s přístupem k příkazu sudo pro spouštění privilegovaných příkazů. Účet root je zakázaný.
+* Pro Linuxové Image Pokud použijete Azure portal, "azureuser" je zadána jako výchozí uživatelské jméno, ale toto můžete změnit pomocí 'Z Galerie' místo 'Vytvořit' jako způsob, jak vytvořit virtuální počítač. Při použití možnosti Z galerie se také můžete rozhodnout, jestli se k přihlášení má používat heslo, klíč SSH nebo obojí. Uživatelský účet je neprivilegovaný uživatel s přístupem k příkazu sudo pro spouštění privilegovaných příkazů. Účet root je zakázaný.
 * V případě imagí Windows bude potřeba zadat uživatelské jméno a heslo při vytváření virtuálního počítače. Účet se přidá do skupiny Administrators.
 
 ## <a name="can-azure-run-anti-virus-on-my-virtual-machines"></a>Může Azure na mém virtuálním počítači spouštět antivirové produkty?
@@ -104,7 +114,7 @@ Azure účtuje hodinovou cenu na základě velikosti virtuálního počítače a
 
 Virtuální počítač se vám účtuje ve spuštěném nebo zastaveném stavu, ale ne ve stavu Zastaveno (přidělení zrušeno). Pokud chcete změnit stav virtuálního počítače na Zastaveno (přidělení zrušeno), proveďte jednu z následujících akcí:
 
-* Vypnutí nebo odstranění virtuálního počítače z portálu Azure.
+* Vypnutí nebo odstranění virtuálního počítače z portálu Azure portal.
 * Použijte rutinu Stop-AzureVM, která je dostupná v modulu Azure PowerShellu.
 * Použijte operaci Shutdown Role (Vypnutí role) v rozhraní REST API pro správu služeb a pro element PostShutdownAction zadejte StoppedDeallocated.
 
@@ -117,7 +127,7 @@ K neplánovaným událostem údržby může docházet, když Azure zjistí záva
 
 U každého samostatného virtuálního počítače (tj. virtuální počítače, které nejsou součástí žádné sady dostupnosti) Azure e-mailem upozorní správce služeb předplatného alespoň týden před plánovanou údržbou, protože během aktualizace může dojít k restartování virtuálních počítačů. U aplikací spouštěných na virtuálních počítačích může dojít k výpadku.
 
-Také můžete portál Azure nebo Azure PowerShell k zobrazení protokolů restartování při restartování došlo k chybě z důvodu plánované údržby. Podrobnosti najdete v tématu [Zobrazení protokolů restartování virtuálního počítače](https://azure.microsoft.com/blog/2015/04/01/viewing-vm-reboot-logs/).
+Chcete-li zobrazit protokoly restartování, pokud dojde k restartování z důvodu plánované údržby můžete použít také na webu Azure portal nebo Azure Powershellu. Podrobnosti najdete v tématu [Zobrazení protokolů restartování virtuálního počítače](https://azure.microsoft.com/blog/2015/04/01/viewing-vm-reboot-logs/).
 
 Pokud chcete zajistit redundanci, umístěte do stejné skupiny dostupnosti dva nebo více podobně nakonfigurovaných virtuálních počítačů. Tím pomůžete zajistit, že během plánované nebo neplánované údržby bude dostupný alespoň jeden virtuální počítač. Azure pro tuto konfiguraci zaručuje určité úrovně dostupnosti virtuálních počítačů. Podrobnosti najdete v článku [Správa dostupnosti virtuálních počítačů](../articles/virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 

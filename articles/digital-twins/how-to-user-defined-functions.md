@@ -6,14 +6,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/25/2018
+ms.date: 10/26/2018
 ms.author: alinast
-ms.openlocfilehash: 49566d21fa6897f5c1371bbea2bb602a393de66d
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 8094965da5fb0a5fad0313fd96e2878f86d78aa7
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50140785"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215493"
 ---
 # <a name="how-to-use-user-defined-functions-in-azure-digital-twins"></a>Použití uživatelem definovaných funkcí v Azure digitální dvojče
 
@@ -50,9 +50,9 @@ Platný předávaný podmínku cíle:
 - `SensorDevice`
 - `SensorSpace`
 
-Následující příklad předávaný vyhodnotí na hodnotu true na libovolnou událost telemetrická data ze senzorů s `Temperature` jako hodnotu datového typu. Můžete vytvořit více procesy pro hledání shody v uživatelsky definované funkce.
+Následující příklad předávaný vyhodnotí na hodnotu true na libovolnou událost telemetrická data ze senzorů s `"Temperature"` jako hodnotu datového typu. Můžete vytvořit více procesy pro hledání shody v uživatelsky definované funkce.
 
-```text
+```plaintext
 POST https://yourManagementApiUrl/api/v1.0/matchers
 {
   "Name": "Temperature Matcher",
@@ -123,9 +123,9 @@ function process(telemetry, executionContext) {
 
 ### <a name="example-functions"></a>Příklad funkce
 
-Nastavte telemetrická data ze senzorů čtení přímo pro senzoru s datovým typem `Temperature`, což je `sensor.DataType`:
+Nastavte telemetrická data ze senzorů čtení přímo pro senzoru s datovým typem **teploty**, což je `sensor.DataType`:
 
-```javascript
+```JavaScript
 function process(telemetry, executionContext) {
 
   // Get sensor metadata
@@ -139,7 +139,7 @@ function process(telemetry, executionContext) {
 }
 ```
 
-`telemetry` Zpřístupňuje parametr `SensorId` a `Message`. `executionContext` Parametr zveřejňuje následující atributy:
+*Telemetrie* zpřístupňuje parametr **SensorId** a **zpráva** atributy (odpovídající zprávu odeslanou senzor). *Kontextu executionContext* parametr zveřejňuje následující atributy:
 
 ```csharp
 var executionContext = new UdfExecutionContext
@@ -153,7 +153,7 @@ var executionContext = new UdfExecutionContext
 
 V následujícím příkladu jsme zaznamená zprávu Pokud čtení telemetrických dat ze senzorů převyšuje předem definovanou prahovou hodnotu. Pokud v instanci digitální dvojče jsou povolené diagnostické nastavení, protokoly z uživatelem definovaných funkcí se také předat dál:
 
-```javascript
+```JavaScript
 function process(telemetry, executionContext) {
 
   // Retrieve the sensor value
@@ -168,7 +168,7 @@ function process(telemetry, executionContext) {
 
 Následující kód se aktivuje oznámení, pokud úroveň teplota stoupne nad předem definované konstantě.
 
-```javascript
+```JavaScript
 function process(telemetry, executionContext) {
 
   // Retrieve the sensor value
@@ -196,7 +196,7 @@ Ukázku kódu složitější UDF najdete [zkontrolujte dostupné místo vzduchem
 
 Potřebujeme vytvořit přiřazení role pro uživatelem definované funkce spouštět pod. Pokud jsme tak neučiníte, nebude mít správná oprávnění k interakci s rozhraním API pro správu k provádění akcí v grafu objektů. Akce, které provádí uživatelem definovanou funkci nejsou vyloučené z řízení přístupu na základě rolí v rámci rozhraní API pro správu digitálních Dvojčat. Může být omezená v oboru tak, že zadáte určité role nebo určité cesty řízení přístupu. Další informace najdete v tématu [řízení přístupu na základě rolí](./security-role-based-access-control.md) dokumentaci.
 
-- Dotazování pro role a získat ID role, kterou chcete přiřadit k UDF; Předejte RoleId níže.
+1. Dotazování pro role a získat ID role, kterou chcete přiřadit k UDF; předejte ji do **RoleId** níže.
 
 ```plaintext
 GET https://yourManagementApiUrl/api/v1.0/system/roles
@@ -206,8 +206,9 @@ GET https://yourManagementApiUrl/api/v1.0/system/roles
 | --- | --- |
 | *yourManagementApiUrl* | Úplná cesta adresy URL pro vaše rozhraní API pro správu  |
 
-- ID objektu bude UDF ID, které jste vytvořili dříve
-- Najít `Path` dotazováním tyto mezery za jejich úplnou cestu a zkopírujte `spacePaths` hodnotu. Vložit v cestě pod při vytváření přiřazení role UDF
+2. **ID objektu** bude UDF ID, které jste vytvořili dříve.
+3. Vrátí hodnotu **cesta** dotazováním prostory vaší s `fullpath`.
+4. Zkopírujte vráceného `spacePaths` hodnotu. Budete používat, která níže.
 
 ```plaintext
 GET https://yourManagementApiUrl/api/v1.0/spaces?name=yourSpaceName&includes=fullpath
@@ -217,6 +218,8 @@ GET https://yourManagementApiUrl/api/v1.0/spaces?name=yourSpaceName&includes=ful
 | --- | --- |
 | *yourManagementApiUrl* | Úplná cesta adresy URL pro vaše rozhraní API pro správu  |
 | *yourSpaceName* | Název pole, které chcete použít |
+
+4. Nyní vložte vrácený `spacePaths` hodnoty do **cesta** k vytvoření přiřazení role UDF.
 
 ```plaintext
 POST https://yourManagementApiUrl/api/v1.0/roleassignments
@@ -253,7 +256,7 @@ Zadaný identifikátor místo načte místo z grafu.
 
 | Param  | Typ                | Popis  |
 | ------ | ------------------- | ------------ |
-| `id`  | `guid` | identifikátor místa |
+| *ID*  | `guid` | identifikátor místa |
 
 ### <a name="getsensormetadataid--sensor"></a>getSensorMetadata(id) ⇒ `sensor`
 
@@ -263,7 +266,7 @@ Zadaný identifikátor senzor načte senzor z grafu.
 
 | Param  | Typ                | Popis  |
 | ------ | ------------------- | ------------ |
-| `id`  | `guid` | identifikátor senzor |
+| *ID*  | `guid` | identifikátor senzor |
 
 ### <a name="getdevicemetadataid--device"></a>getDeviceMetadata(id) ⇒ `device`
 
@@ -273,7 +276,7 @@ Zadaný identifikátor zařízení načte zařízení z grafu.
 
 | Param  | Typ                | Popis  |
 | ------ | ------------------- | ------------ |
-| `id`  | `guid` | Identifikátor zařízení: |
+| *ID* | `guid` | Identifikátor zařízení: |
 
 ### <a name="getsensorvaluesensorid-datatype--value"></a>⇒ getSensorValue (sensorId, datový typ) `value`
 
@@ -283,8 +286,8 @@ Zadaný identifikátor ze senzorů a jeho datového typu, načte aktuální hodn
 
 | Param  | Typ                | Popis  |
 | ------ | ------------------- | ------------ |
-| `sensorId`  | `guid` | identifikátor senzor |
-| `dataType`  | `string` | Typ dat ze senzorů |
+| *sensorId*  | `guid` | identifikátor senzor |
+| *Datový typ*  | `string` | Typ dat ze senzorů |
 
 ### <a name="getspacevaluespaceid-valuename--value"></a>⇒ getSpaceValue (spaceId, valueName) `value`
 
@@ -294,8 +297,8 @@ Zadaný identifikátor místa a název hodnoty, načte aktuální hodnotou pro t
 
 | Param  | Typ                | Popis  |
 | ------ | ------------------- | ------------ |
-| `spaceId`  | `guid` | identifikátor místa |
-| `valueName` | `string` | Název vlastnosti místa |
+| *spaceId*  | `guid` | identifikátor místa |
+| *Název hodnoty* | `string` | Název vlastnosti místa |
 
 ### <a name="getsensorhistoryvaluessensorid-datatype--value"></a>⇒ getSensorHistoryValues (sensorId, datový typ) `value[]`
 
@@ -305,8 +308,8 @@ Zadaný identifikátor ze senzorů a jeho datového typu, načítání historick
 
 | Param  | Typ                | Popis  |
 | ------ | ------------------- | ------------ |
-| `sensorId` | `guid` | identifikátor senzor |
-| `dataType` | `string` | Typ dat ze senzorů |
+| *sensorId* | `guid` | identifikátor senzor |
+| *Datový typ* | `string` | Typ dat ze senzorů |
 
 ### <a name="getspacehistoryvaluesspaceid-datatype--value"></a>⇒ getSpaceHistoryValues (spaceId, datový typ) `value[]`
 
@@ -316,8 +319,8 @@ Zadaný identifikátor místa a název hodnoty, načtení historických hodnot p
 
 | Param  | Typ                | Popis  |
 | ------ | ------------------- | ------------ |
-| `spaceId` | `guid` | identifikátor místa |
-| `valueName` | `string` | Název vlastnosti místa |
+| *spaceId* | `guid` | identifikátor místa |
+| *Název hodnoty* | `string` | Název vlastnosti místa |
 
 ### <a name="getspacechildspacesspaceid--space"></a>getSpaceChildSpaces(spaceId) ⇒ `space[]`
 
@@ -327,7 +330,7 @@ Zadaný identifikátor místa, načte podřízené prostory pro toto nadřazené
 
 | Param  | Typ                | Popis  |
 | ------ | ------------------- | ------------ |
-| `spaceId` | `guid` | identifikátor místa |
+| *spaceId* | `guid` | identifikátor místa |
 
 ### <a name="getspacechildsensorsspaceid--sensor"></a>getSpaceChildSensors(spaceId) ⇒ `sensor[]`
 
@@ -337,7 +340,7 @@ Zadaný identifikátor místa, načte podřízené senzory pro toto nadřazené 
 
 | Param  | Typ                | Popis  |
 | ------ | ------------------- | ------------ |
-| `spaceId` | `guid` | identifikátor místa |
+| *spaceId* | `guid` | identifikátor místa |
 
 ### <a name="getspacechilddevicesspaceid--device"></a>getSpaceChildDevices(spaceId) ⇒ `device[]`
 
@@ -347,7 +350,7 @@ Zadaný identifikátor místa, načtěte podřízené zařízení pro toto nadř
 
 | Param  | Typ                | Popis  |
 | ------ | ------------------- | ------------ |
-| `spaceId` | `guid` | identifikátor místa |
+| *spaceId* | `guid` | identifikátor místa |
 
 ### <a name="getdevicechildsensorsdeviceid--sensor"></a>getDeviceChildSensors(deviceId) ⇒ `sensor[]`
 
@@ -357,7 +360,7 @@ Zadaný identifikátor zařízení, načte podřízené senzory pro funkce zař�
 
 | Param  | Typ                | Popis  |
 | ------ | ------------------- | ------------ |
-| `deviceId` | `guid` | Identifikátor zařízení: |
+| *ID zařízení* | `guid` | Identifikátor zařízení: |
 
 ### <a name="getspaceparentspacechildspaceid--space"></a>getSpaceParentSpace(childSpaceId) ⇒ `space`
 
@@ -367,7 +370,7 @@ Zadaný identifikátor místa, načtení prostor jeho nadřazené.
 
 | Param  | Typ                | Popis  |
 | ------ | ------------------- | ------------ |
-| `childSpaceId` | `guid` | identifikátor místa |
+| *childSpaceId* | `guid` | identifikátor místa |
 
 ### <a name="getsensorparentspacechildsensorid--space"></a>getSensorParentSpace(childSensorId) ⇒ `space`
 
@@ -377,7 +380,7 @@ Zadaný identifikátor senzor, načtení prostor jeho nadřazené.
 
 | Param  | Typ                | Popis  |
 | ------ | ------------------- | ------------ |
-| `childSensorId` | `guid` | identifikátor senzor |
+| *childSensorId* | `guid` | identifikátor senzor |
 
 ### <a name="getdeviceparentspacechilddeviceid--space"></a>getDeviceParentSpace(childDeviceId) ⇒ `space`
 
@@ -387,7 +390,7 @@ Zadaný identifikátor zařízení, načtěte prostor jeho nadřazené.
 
 | Param  | Typ                | Popis  |
 | ------ | ------------------- | ------------ |
-| `childDeviceId` | `guid` | Identifikátor zařízení: |
+| *childDeviceId* | `guid` | Identifikátor zařízení: |
 
 ### <a name="getsensorparentdevicechildsensorid--space"></a>getSensorParentDevice(childSensorId) ⇒ `space`
 
@@ -397,7 +400,7 @@ Zadaný identifikátor senzor, načtení nadřazeného zařízení.
 
 | Param  | Typ                | Popis  |
 | ------ | ------------------- | ------------ |
-| `childSensorId` | `guid` | identifikátor senzor |
+| *childSensorId* | `guid` | identifikátor senzor |
 
 ### <a name="getspaceextendedpropertyspaceid-propertyname--extendedproperty"></a>⇒ getSpaceExtendedProperty (spaceId, propertyName) `extendedProperty`
 
@@ -407,8 +410,8 @@ Zadaný identifikátor místa, načíst vlastnost a její hodnotu z prostoru.
 
 | Param  | Typ                | Popis  |
 | ------ | ------------------- | ------------ |
-| `spaceId` | `guid` | identifikátor místa |
-| `propertyName` | `string` | Název vlastnosti místa |
+| *spaceId* | `guid` | identifikátor místa |
+| *propertyName* | `string` | Název vlastnosti místa |
 
 ### <a name="getsensorextendedpropertysensorid-propertyname--extendedproperty"></a>⇒ getSensorExtendedProperty (sensorId, propertyName) `extendedProperty`
 
@@ -418,8 +421,8 @@ Zadaný identifikátor senzor, načíst vlastnost a její hodnotu ze senzoru.
 
 | Param  | Typ                | Popis  |
 | ------ | ------------------- | ------------ |
-| `sensorId` | `guid` | identifikátor senzor |
-| `propertyName` | `string` | Název vlastnosti senzor |
+| *sensorId* | `guid` | identifikátor senzor |
+| *propertyName* | `string` | Název vlastnosti senzor |
 
 ### <a name="getdeviceextendedpropertydeviceid-propertyname--extendedproperty"></a>⇒ getDeviceExtendedProperty (deviceId, propertyName) `extendedProperty`
 
@@ -429,8 +432,8 @@ Zadaný identifikátor zařízení, načíst vlastnost a její hodnotu ze zaří
 
 | Param  | Typ                | Popis  |
 | ------ | ------------------- | ------------ |
-| `deviceId` | `guid` | Identifikátor zařízení: |
-| `propertyName` | `string` | Název vlastnosti zařízení |
+| *ID zařízení* | `guid` | Identifikátor zařízení: |
+| *propertyName* | `string` | Název vlastnosti zařízení |
 
 ### <a name="setsensorvaluesensorid-datatype-value"></a>setSensorValue (sensorId, datový typ, hodnoty)
 
@@ -440,9 +443,9 @@ Nastaví hodnotu v objektu ze senzorů pomocí daného datového typu.
 
 | Param  | Typ                | Popis  |
 | ------ | ------------------- | ------------ |
-| `sensorId` | `guid` | identifikátor senzor |
-| `dataType`  | `string` | Typ dat ze senzorů |
-| `value`  | `string` | hodnota |
+| *sensorId* | `guid` | identifikátor senzor |
+| *Datový typ*  | `string` | Typ dat ze senzorů |
+| *value*  | `string` | hodnota |
 
 ### <a name="setspacevaluespaceid-datatype-value"></a>setSpaceValue (spaceId, datový typ, hodnoty)
 
@@ -452,9 +455,9 @@ Nastaví hodnotu na objekt prostoru s danou datovým typem.
 
 | Param  | Typ                | Popis  |
 | ------ | ------------------- | ------------ |
-| `spaceId` | `guid` | identifikátor místa |
-| `dataType` | `string` | Datový typ |
-| `value` | `string` | hodnota |
+| *spaceId* | `guid` | identifikátor místa |
+| *Datový typ* | `string` | Datový typ |
+| *value* | `string` | hodnota |
 
 ### <a name="logmessage"></a>log(Message)
 
@@ -464,7 +467,7 @@ Zaznamená následující zprávu do uživatelem definované funkce.
 
 | Param  | Typ                | Popis  |
 | ------ | ------------------- | ------------ |
-| `message` | `string` | zaznamenávané zprávy |
+| *Zpráva* | `string` | zaznamenávané zprávy |
 
 ### <a name="sendnotificationtopologyobjectid-topologyobjecttype-payload"></a>sendNotification (topologyObjectId, topologyObjectType, datová část)
 
@@ -474,9 +477,9 @@ Odešle vlastní oznámení k odeslání.
 
 | Param  | Typ                | Popis  |
 | ------ | ------------------- | ------------ |
-| `topologyObjectId`  | `guid` | Graf identifikátor objektu (např.) prostoru / ID /device senzor)|
-| `topologyObjectType`  | `string` | (např.) místo / ze senzorů a zařízení)|
-| `payload`  | `string` | datová část JSON k odeslání oznámení |
+| *topologyObjectId*  | `guid` | Graf identifikátor objektu (např.) prostoru / ID /device senzor)|
+| *topologyObjectType*  | `string` | (např.) místo / ze senzorů a zařízení)|
+| *datová část*  | `string` | datová část JSON k odeslání oznámení |
 
 ## <a name="return-types"></a>Návratové typy
 
@@ -515,7 +518,7 @@ Vrátí rozšířené vlastnosti a její hodnotu aktuálního místa.
 
 | Param  | Typ                | Popis  |
 | ------ | ------------------- | ------------ |
-| `propertyName` | `string` | Název rozšířené vlastnosti |
+| *propertyName* | `string` | Název rozšířené vlastnosti |
 
 #### <a name="valuevaluename--value"></a>Value(VALUENAME) ⇒ `value`
 
@@ -523,7 +526,7 @@ Vrátí hodnotu aktuálního místa.
 
 | Param  | Typ                | Popis  |
 | ------ | ------------------- | ------------ |
-| `valueName` | `string` | Název hodnoty |
+| *Název hodnoty* | `string` | Název hodnoty |
 
 #### <a name="historyvaluename--value"></a>History(VALUENAME) ⇒ `value[]`
 
@@ -531,7 +534,7 @@ Vrátí historickými hodnotami aktuálního místa.
 
 | Param  | Typ                | Popis  |
 | ------ | ------------------- | ------------ |
-| `valueName` | `string` | Název hodnoty |
+| *Název hodnoty* | `string` | Název hodnoty |
 
 #### <a name="notifypayload"></a>Notify(Payload)
 
@@ -539,7 +542,7 @@ Odešle oznámení se zadanou datovou část.
 
 | Param  | Typ                | Popis  |
 | ------ | ------------------- | ------------ |
-| `payload` | `string` | Datová část JSON zahrnout oznámení |
+| *datová část* | `string` | Datová část JSON zahrnout oznámení |
 
 ### <a name="device"></a>Zařízení
 
@@ -575,7 +578,7 @@ Vrátí rozšířené vlastnosti a její hodnotu pro aktuální zařízení.
 
 | Param  | Typ                | Popis  |
 | ------ | ------------------- | ------------ |
-| `propertyName` | `string` | Název rozšířené vlastnosti |
+| *propertyName* | `string` | Název rozšířené vlastnosti |
 
 #### <a name="notifypayload"></a>Notify(Payload)
 
@@ -583,7 +586,7 @@ Odešle oznámení se zadanou datovou část.
 
 | Param  | Typ                | Popis  |
 | ------ | ------------------- | ------------ |
-| `payload` | `string` | Datová část JSON zahrnout oznámení |
+| *datová část* | `string` | Datová část JSON zahrnout oznámení |
 
 ### <a name="sensor"></a>Senzor
 
@@ -623,7 +626,7 @@ Vrátí rozšířené vlastnosti a její hodnotu aktuální senzoru.
 
 | Param  | Typ                | Popis  |
 | ------ | ------------------- | ------------ |
-| `propertyName` | `string` | Název rozšířené vlastnosti |
+| *propertyName* | `string` | Název rozšířené vlastnosti |
 
 #### <a name="value--value"></a>Value() ⇒ `value`
 
@@ -639,7 +642,7 @@ Odešle oznámení se zadanou datovou část.
 
 | Param  | Typ                | Popis  |
 | ------ | ------------------- | ------------ |
-| `payload` | `string` | Datová část JSON zahrnout oznámení |
+| *datová část* | `string` | Datová část JSON zahrnout oznámení |
 
 ### <a name="value"></a>Hodnota
 

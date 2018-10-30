@@ -11,12 +11,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 04/15/2018
 ms.author: ghogen
-ms.openlocfilehash: c90ef26c0170db67b1d422701b6969ca3f9c9e38
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 9f2adfcbf2d6ca5de79cc787029f5139138b0e52
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49958508"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50230433"
 ---
 # <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>Přidání služby Key Vault do vaší webové aplikace pomocí připojených služeb sady Visual Studio
 
@@ -57,7 +57,7 @@ Podrobnosti o změnách, připojené služby umožňuje ve vašem projektu povol
 
    ![Přidává se připojená služba do projektu](media/vs-key-vault-add-connected-service/KeyVaultConnectedService4.PNG)
 
-1. Teď přidejte tajný kód v Key Vault v Azure. Chcete-li získat na správném místě na portálu, klikněte na odkaz pro spravovat tajnými kódy uloženými v této službě Key Vault. Pokud jste zavřeli, na stránce nebo projekt, můžete přejít k tomu [webu Azure portal](https://portal.azure.com) výběrem **všechny služby**v části **zabezpečení**, zvolte **služby Key Vault**, klikněte na tlačítko Key Vault, které jste právě vytvořili.
+1. Teď přidejte tajný kód v Key Vault v Azure. Chcete-li získat na správném místě na portálu, klikněte na odkaz pro spravovat tajnými kódy uloženými v této službě Key Vault. Pokud jste zavřeli, na stránce nebo projekt, můžete přejít k tomu [webu Azure portal](https://portal.azure.com) výběrem **všechny služby**v části **zabezpečení**, zvolte **služby Key Vault**, klikněte na tlačítko vytvoříte trezor klíčů.
 
    ![Přejděte na portálu](media/vs-key-vault-add-connected-service/manage-secrets-link.jpg)
 
@@ -65,7 +65,7 @@ Podrobnosti o změnách, připojené služby umožňuje ve vašem projektu povol
 
    ![Vygenerovat/importovat tajného kódu](media/vs-key-vault-add-connected-service/generate-secrets.jpg)
 
-1. Zadejte tajný kód, jako je například "MySecret" a přiřaďte jí libovolnou hodnotou řetězce jako test a pak zvolte **vytvořit** tlačítko.
+1. Zadejte tajný klíč, jako je například "MySecret" a přiřaďte jí libovolnou hodnotou řetězce jako test a pak zvolte **vytvořit** tlačítko.
 
    ![Vytvoření tajného klíče](media/vs-key-vault-add-connected-service/create-a-secret.jpg)
 
@@ -73,94 +73,62 @@ Podrobnosti o změnách, připojené služby umožňuje ve vašem projektu povol
  
 Teď můžete přistupovat tajné klíče v kódu. Další postup se liší v závislosti na tom, zda používáte ASP.NET 4.7.1 nebo ASP.NET Core.
 
-## <a name="access-your-secrets-in-code-aspnet-core-projects"></a>Přístup k vaší tajných kódů v kódu (projekty ASP.NET Core)
+## <a name="access-your-secrets-in-code"></a>Přístup k vaší tajných kódů v kódu
 
-Připojení ke službě Key Vault je nastavený při spuštění třídou, která implementuje [Microsoft.AspNetCore.Hosting.IHostingStartup](/dotnet/api/microsoft.aspnetcore.hosting.ihostingstartup?view=aspnetcore-2.1) pomocí způsob, jak rozšíření chování při spuštění, který je popsaný v [vylepšení aplikace z externího sestavení v ASP.NET Core s IHostingStartup](/aspnet/core/fundamentals/host/platform-specific-configuration). Třída při spuštění používá dvou proměnných prostředí, které obsahují informace o připojení služby Key Vault: ASPNETCORE_HOSTINGSTARTUP__KEYVAULT__CONFIGURATIONENABLED nastavena na hodnotu true a ASPNETCORE_HOSTINGSTARTUP__KEYVAULT__CONFIGURATIONVAULT, nastavte na klíč Adresa URL trezoru. Tyto jsou přidány do souboru launchsettings.json při spuštění **přidat připojenou službu** procesu.
+1. Nainstalujte tyto dva balíčky nuget [AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) a [KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) NuGet knihovny.
 
-Pro přístup k vaší tajných kódů:
+2. Otevřete soubor Program.cs a aktualizujte kód následujícím kódem: 
+```
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            BuildWebHost(args).Run();
+        }
 
-1. V sadě Visual Studio v projektu ASP.NET Core teď můžete odkazovat těchto tajných kódů pomocí těchto výrazů v kódu:
- 
-   ```csharp
-      config["MySecret"] // Access a secret without a section
-      config["Secrets:MySecret"] // Access a secret in a section
-      config.GetSection("Secrets")["MySecret"] // Get the configuration section and access a secret in it.
-   ```
+        public static IWebHost BuildWebHost(string[] args) =>
+           WebHost.CreateDefaultBuilder(args)
+               .ConfigureAppConfiguration((ctx, builder) =>
+               {
+                   var keyVaultEndpoint = GetKeyVaultEndpoint();
+                   if (!string.IsNullOrEmpty(keyVaultEndpoint))
+                   {
+                       var azureServiceTokenProvider = new AzureServiceTokenProvider();
+                       var keyVaultClient = new KeyVaultClient(
+                           new KeyVaultClient.AuthenticationCallback(
+                               azureServiceTokenProvider.KeyVaultTokenCallback));
+                       builder.AddAzureKeyVault(
+                           keyVaultEndpoint, keyVaultClient, new DefaultKeyVaultSecretManager());
+                   }
+               }
+            ).UseStartup<Startup>()
+             .Build();
 
-1. Na stránce cshtml, Řekněme, že About.cshtml, přidejte @inject direktiv v horní části souboru, který má nastavit proměnnou můžete použít pro přístup ke konfiguračním služby Key Vault.
+        private static string GetKeyVaultEndpoint() => "https://<YourKeyVaultName>.vault.azure.net";
+    }
+```
+3. Potom otevřete soubor About.cshtml.cs a napsat následující kód
+    1. Zahrnout odkaz na Microsoft.Extensions.Configuration situace using – příkaz    
+        ```
+        using Microsoft.Extensions.Configuration
+        ```
+    2. Přidejte tento konstruktor
+        ```
+        public AboutModel(IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
+        ```
+    3. Metoda OnGet aktualizace. Aktualizovat hodnotu zástupného symbolu, které jsou tady uvedené s název tajného klíče, který jste vytvořili výše uvedené příkazy
+        ```
+        public void OnGet()
+        {
+            //Message = "Your application description page.";
+            Message = "My key val = " + _configuration["<YourSecretNameThatWasCreatedAbove>"];
+        }
+        ```
 
-   ```cshtml
-      @inject Microsoft.Extensions.Configuration.IConfiguration config
-   ```
-
-1. Jako test můžete ověřit, že hodnota tajný kód je k dispozici zobrazením na jednu ze stránek. Použití @config k odkazování proměnné konfigurace.
- 
-   ```cshtml
-      <p> @config["MySecret"] </p>
-      <p> @config.GetSection("Secrets")["MySecret"] </p>
-      <p> @config["Secrets:MySecret"] </p>
-   ```
-
-1. Sestavení a spuštění webové aplikace, přejděte na stránku o a zobrazit hodnotu "tajné".
-
-## <a name="access-your-secrets-in-code-aspnet-471-projects"></a>Přístup k vaší tajných kódů v kódu (ASP.NET 4.7.1 projektů)
-
-Připojení ke službě Key Vault nastavuje třídu ConfigurationBuilder pomocí informace, které se přidal do souboru web.config, když se pustíte do **přidat připojenou službu** procesu.
-
-Pro přístup k vaší tajných kódů:
-
-1. Upravte soubor web.config následujícím způsobem. Klíče jsou zástupné symboly, které budou nahrazeny AzureKeyVault ConfigurationBuilder s hodnotami tajných klíčů ve službě Key Vault.
-
-   ```xml
-     <appSettings configBuilders="AzureKeyVault">
-       <add key="webpages:Version" value="3.0.0.0" />
-       <add key="webpages:Enabled" value="false" />
-       <add key="ClientValidationEnabled" value="true" />
-       <add key="UnobtrusiveJavaScriptEnabled" value="true" />
-       <add key="MySecret" value="dummy1"/>
-       <add key="Secrets--MySecret" value="dummy2"/>
-     </appSettings>
-   ```
-
-1. V HomeController v metodě o kontroleru přidejte následující řádky k načtení tajný klíč a uložte ho objekt ViewBag.
- 
-   ```csharp
-            var secret = ConfigurationManager.AppSettings["MySecret"];
-            var secret2 = ConfigurationManager.AppSettings["Secrets--MySecret"];
-            ViewBag.Secret = $"Secret: {secret}";
-            ViewBag.Secret2 = $"Secret2: {secret2}";
-   ```
-
-1. V zobrazení About.cshtml přidejte následující k zobrazení hodnoty tajný kód (pouze pro testování).
-
-   ```csharp
-      <h3>@ViewBag.Secret</h3>
-      <h3>@ViewBag.Secret2</h3>
-   ```
-
-1. Spusťte aplikaci místně tak, aby ověřte, že si můžete přečíst tajná hodnota, kterou jste zadali v portálu Azure, ne fiktivní hodnoty z konfiguračního souboru.
-
-V dalším kroku publikujte aplikaci do Azure.
-
-## <a name="publish-to-azure-app-service"></a>Publikování do služby Azure App Service
-
-1. Klikněte pravým tlačítkem na uzel projektu a zvolte **publikovat**. Na obrazovce se zobrazí s textem **vyberte cíl publikování**. Na levé straně, zvolte **služby App Service**a potom **vytvořit nový**.
-
-   ![Publikování do App Service](media/vs-key-vault-add-connected-service/AppServicePublish1.PNG)
-
-1. Na **vytvořit službu App Service** obrazovky, ujistěte se, že jsou stejné jako ty, které jste vytvořili trezor klíčů v předplatném a skupině prostředků a zvolte **vytvořit**.
-
-   ![Vytvoření služby App Service](media/vs-key-vault-add-connected-service/AppServicePublish2.PNG)
-
-1. Po vytvoření webové aplikace **publikovat** obrazovky. Poznačte si adresu URL publikované webové aplikace hostované v Azure. Pokud se zobrazí **žádný** vedle **služby Key Vault**, budete nejdřív muset zjistit, jaké služby Key Vault pro připojení k služby App Service. Zvolte **přidat služby Key Vault** propojit a vyberte trezor klíčů, který jste vytvořili.
-
-   ![Přidat službu Key Vault](media/vs-key-vault-add-connected-service/AppServicePublish3.PNG)
-
-   Pokud se zobrazí **Správa služby Key Vault**, můžete kliknout, chcete-li zobrazit aktuální nastavení oprávnění upravovat nebo změny svých tajných kódů na webu Azure Portal.
-
-1. Nyní klikněte na odkaz Adresa URL webu na web webové aplikace v prohlížeči. Ověřte, jestli správnou hodnotu ze služby Key Vault.
-
-Blahopřejeme, jste potvrdili, že vaše webová aplikace můžete použít služby Key Vault pro přístup k tajným klíčům bezpečně uloženým při spuštění v Azure.
+Spusťte aplikaci místně tak, že přejdete do o stránce. Měli byste vaše tajná hodnota načíst
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

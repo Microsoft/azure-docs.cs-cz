@@ -10,12 +10,12 @@ ms.component: QnAMaker
 ms.topic: article
 ms.date: 09/27/2018
 ms.author: tulasim
-ms.openlocfilehash: 9bcd2ccfc5fb8ddc71d2df178dd214be2a67160d
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 46b6b789b2bab7e647e10a61939bd16b5ea8726d
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48856849"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50209687"
 ---
 # <a name="confidence-score"></a>Skóre spolehlivosti
 Když uživatelský dotaz je hledána znalostní báze, vrátí QnA Maker příslušné odpovědi, spolu s skóre spolehlivosti. Toto skóre označuje jistotu, že odpověď je doprava odpovídá dotazu daného uživatele. 
@@ -69,6 +69,8 @@ Tady uvidíte jak [publikovat](../How-To/publish-knowledge-base.md) operace fung
 
 ## <a name="no-match-found"></a>Nebyla nalezena žádná odpovídající
 Když dobré shoda nenajde ve klasifikátor, vrátí se skóre spolehlivosti 0,0 nebo "None" a výchozí odpověď je "Dobrá nebyla nalezena žádná odpovídající v KB". Můžete přepsat toto výchozí odpověď v kódu bot nebo aplikaci volání koncového bodu. Alternativně přepsání odpovědi můžete také nastavit v Azure a tím se změní na výchozí hodnoty pro všechny znalostních bází nasazených v konkrétní služba QnA Maker.
+
+### <a name="change-default-answer"></a>Změnit výchozí odpověď
 
 1. Přejděte [webu Azure portal](https://portal.azure.com) a přejděte do skupiny prostředků, který představuje službu QnA Maker, kterou jste vytvořili.
 

@@ -1,21 +1,20 @@
 ---
-title: Azure Site Recovery Deployment Planner pro nasazení VMware do Azure | Dokumentace Microsoftu
-description: Tento článek popisuje režim spuštění Plánovače nasazení služby Azure Site Recovery pro scénář nasazení VMware do Azure.
-services: site-recovery
+title: Spusťte Azure Site Recovery Deployment Planner pro zotavení po havárii VMware do Azure | Dokumentace Microsoftu
+description: Tento článek popisuje, jak spustit Azure Site Recovery Deployment Planner pro zotavení po havárii VMware do Azure.
 author: nsoneji
 manager: garavd
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: nisoneji
-ms.openlocfilehash: f83ab78cae17859dc28349cf7c435d7101c5fa3b
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: b890dce5d94c2177c8fc8cdb5477b92df15c8095
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093149"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50211022"
 ---
-# <a name="run-azure-site-recovery-deployment-planner-for-vmware-to-azure"></a>Spuštění Plánovače nasazení služby Azure Site Recovery pro nasazení VMware do Azure
+# <a name="run-the-azure-site-recovery-deployment-planner-for-vmware-disaster-recovery-to-azure"></a>Spusťte Azure Site Recovery Deployment Planner pro zotavení po havárii VMware do Azure
 Tento článek představuje uživatelskou příručku k nástroji Azure Site Recovery Deployment Planner pro produkční nasazení VMware do Azure.
 
 

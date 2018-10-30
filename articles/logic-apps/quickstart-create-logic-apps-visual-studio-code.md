@@ -10,12 +10,12 @@ ms.topic: article
 ms.reviewer: klam, deli, LADocs
 ms.suite: integration
 ms.date: 10/05/2018
-ms.openlocfilehash: cb355d713ceadbd5cf205a378930bdd84685a913
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 0fec590523fa130af2e5670a92914c056df289d1
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48862762"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50229613"
 ---
 # <a name="quickstart-create-and-manage-automated-logic-app-workflows---visual-studio-code"></a>Rychlý start: Vytvoření a správa pracovních postupů aplikace logiky automatizované – Visual Studio Code
 
@@ -74,7 +74,7 @@ Než začnete, ujistěte se, že máte tyto položky:
 
 1. Zadejte svůj ověřovací kód. Po zobrazení výzvy zvolte **pokračovat**.
 
-   ![Zadejte kód.](./media/create-logic-apps-visual-studio-code/authentication-code.png)
+   ![Zadejte kód](./media/create-logic-apps-visual-studio-code/authentication-code.png)
 
 1. Vyberte svůj účet Azure. Po přihlášení můžete zavřete okno prohlížeče a vraťte se do Visual Studio Code.
 
@@ -110,7 +110,7 @@ Než začnete, ujistěte se, že máte tyto položky:
 
 1. Vyberte umístění datového centra, kam chcete uložit metadata aplikace logiky.
 
-   ![Vybrat umístění](./media/create-logic-apps-visual-studio-code/select-location.png)
+   ![Vyberte umístění.](./media/create-logic-apps-visual-studio-code/select-location.png)
 
 1. Zadejte název pro svou aplikaci logiky a potom stiskněte klávesu ENTER.
 
@@ -223,5 +223,5 @@ Pro práci na existující aplikaci logiky, která je již nasazené v Azure, m�
 ## <a name="get-support"></a>Získat podporu
 
 * Pokud máte dotazy, navštivte <a href="https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps" target="_blank">fórum Azure Logic Apps</a>.
-* Pokud chcete zanechat své nápady na funkce nebo hlasovat, navštivte <a href="http://aka.ms/logicapps-wish" target="_blank">web zpětné vazby od uživatelů Logic Apps</a>.
+* Pokud chcete zanechat své nápady na funkce nebo hlasovat, navštivte <a href="https://aka.ms/logicapps-wish" target="_blank">web zpětné vazby od uživatelů Logic Apps</a>.
 

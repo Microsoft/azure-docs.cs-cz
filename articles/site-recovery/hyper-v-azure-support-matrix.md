@@ -1,21 +1,21 @@
 ---
-title: Matice podpory pro replikaci Hyper-V do Azure | Dokumentace Microsoftu
-description: Shrnuje podporované součásti a požadavky pro replikaci Hyper-V do Azure pomocí Azure Site Recovery
+title: Matice podpory pro zotavení po havárii místních virtuálních počítačů Hyper-V do Azure | Dokumentace Microsoftu
+description: Shrnuje podporované součásti a požadavky pro zotavení po havárii virtuálních počítačů Hyper-V do Azure pomocí Azure Site Recovery
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/10/2018
+ms.date: 10/28/2018
 ms.author: raynew
-ms.openlocfilehash: 83d2fabbe3a1b0ab44cb97e53baf0aa40349aeed
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: e389f37448211afc35fb98572161be4fcaea7556
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49079204"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210716"
 ---
-# <a name="support-matrix-for-hyper-v-replication-to-azure"></a>Matice podpory pro replikaci Hyper-V do Azure
+# <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Matice podpory pro zotavení po havárii místních virtuálních počítačů Hyper-V do Azure
 
 
 Tento článek shrnuje podporované komponenty a nastavení pro zotavení po havárii místních virtuálních počítačů Hyper-V do Azure s použitím [Azure Site Recovery](site-recovery-overview.md).
@@ -81,7 +81,7 @@ Interní nástroj pro vyrovnávání zatížení | Ano | Ano
 ELB | Ano | Ano
 Azure Traffic Manager | Ano | Ano
 S více síťovými Kartami | Ano | Ano
-Rezervovaná IP adresa | Ano | Ano
+Vyhrazená IP adresa | Ano | Ano
 IPv4 | Ano | Ano
 Zachovat Zdrojová IP adresa | Ano | Ano
 Koncové body služby virtuální sítě Azure<br/> (bez brány firewall služby Azure Storage) | Ano | Ano
