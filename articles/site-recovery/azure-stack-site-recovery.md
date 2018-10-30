@@ -6,18 +6,18 @@ author: rayne-wiselman
 manager: carmonm
 ms.topic: conceptual
 ms.service: site-recovery
-ms.date: 10/09/2018
+ms.date: 10/28/2018
 ms.author: raynew
-ms.openlocfilehash: 802c2223a72a89dbe2a97404aab4b0fc85c391ed
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 9da64ebe675f9d481c7474a81fec294d50e49ce7
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902820"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215204"
 ---
 # <a name="replicate-azure-stack-vms-to-azure"></a>Replikace virtuálních počítačů Azure stacku pro Azure
 
-V tomto článku se dozvíte, jak nastavit zotavení po havárii do Azure pro virtuální počítače Azure Stack, pomocí [služby Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview).
+V tomto článku se dozvíte, jak nastavit zotavení po havárii virtuálních počítačů Azure stacku pro Azure, pomocí [služby Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview).
 
 Site Recovery přispívá ke strategii obchodní kontinuity podnikových procesů a po havárii (BCDR) zotavení. Služba zajišťuje, že váš virtuální počítač, byly zpracovávané úlohy k dispozici, když byl očekáván a neočekávaných výpadků.
 
@@ -189,7 +189,7 @@ Nyní nainstalujte konfigurační server:
 [!INCLUDE [site-recovery-add-configuration-server](../../includes/site-recovery-add-configuration-server.md)]
 
 > [!NOTE]
-> Konfigurační server, můžete ji také nainstalovat z příkazového řádku. [Další informace](http://aka.ms/installconfigsrv).
+> Konfigurační server, můžete ji také nainstalovat z příkazového řádku. [Další informace](physical-manage-configuration-server.md#install-from-the-command-line).
 
 > Může trvat 15 minut nebo déle, než se název účtu objeví na portálu. Pokud chcete provést aktualizaci okamžitě, vyberte **Konfigurační servery** > ***název serveru*** > **Aktualizovat server**.
 

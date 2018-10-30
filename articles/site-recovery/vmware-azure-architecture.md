@@ -1,25 +1,26 @@
 ---
-title: Z VMware do Azure replikace architektura v Azure Site Recovery | Dokumentace Microsoftu
-description: Tento článek obsahuje přehled komponent a architektury používané při replikaci místních virtuálních počítačů VMware do Azure pomocí Azure Site Recovery
+title: Z VMware do architektury pro zotavení po havárii Azure ve službě Azure Site Recovery | Dokumentace Microsoftu
+description: Tento článek obsahuje přehled komponent a architektury používané při nastavování zotavení po havárii místních virtuálních počítačů VMware do Azure pomocí Azure Site Recovery
 author: rayne-wiselman
 ms.service: site-recovery
+ms.topic: conceptual
 ms.date: 09/12/2018
 ms.author: raynew
-ms.openlocfilehash: 498c41324bfc85f6f91acc8000df4c34856cf428
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 58129ece0fb1b7f446e5f8d738b5d1135aa0256e
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44715750"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212382"
 ---
-# <a name="vmware-to-azure-replication-architecture"></a>Z VMware do Azure replikace architektury
+# <a name="vmware-to-azure-disaster-recovery-architecture"></a>Z VMware do architektury pro zotavení po havárii Azure
 
-Tento článek popisuje architekturu a procesy používané při replikaci, převzetí služeb při selhání a obnovovat virtuální počítače VMware (VM) mezi místní lokality VMware a Azure s použitím [Azure Site Recovery](site-recovery-overview.md).
+Tento článek popisuje mezi místní lokality VMware a Azure s využitím architektury a procesy používané při nasazení replikace pro zotavení po havárii, převzetí služeb při selhání a obnovení virtuálních počítačů VMware (VM) [Azure Site Recovery](site-recovery-overview.md) servuce.
 
 
 ## <a name="architectural-components"></a>Komponenty architektury
 
-Následující tabulka a obrázek poskytuje souhrnný přehled komponenty používané pro replikaci VMware do Azure.
+Následující tabulka a obrázek poskytuje souhrnný přehled komponenty použité pro zotavení po havárii VMware do Azure.
 
 **Komponenta** | **Požadavek** | **Podrobnosti**
 --- | --- | ---

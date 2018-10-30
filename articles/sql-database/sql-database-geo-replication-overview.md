@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/19/2018
-ms.openlocfilehash: 9332bcb5849deacde13d67e4a18ea19af8af2977
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.date: 10/29/2018
+ms.openlocfilehash: 3495a923683d78446e61ff0545c7d86023c14bc0
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49471471"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50233850"
 ---
 # <a name="overview-active-geo-replication-and-auto-failover-groups"></a>Přehled: Aktivní geografickou replikaci a automatické převzetí služeb při selhání skupiny
 
@@ -281,18 +281,18 @@ Jak je popsáno výše, skupiny automatické převzetí služeb při selhání a
 | --- | --- |
 | [Vytvořit nebo aktualizovat databázi (createMode = obnovení)](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) |Vytvoří, aktualizuje nebo obnoví primární nebo sekundární databáze. |
 | [Získat vytvořit nebo aktualizovat stav databáze](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) |Vrátí stav během operace vytvoření. |
-| [Nastavit jako primární (plánované převzetí služeb při selhání) sekundární databáze](https://docs.microsoft.com/rest/api/sql/replicationlinks/replicationlinks_failover) |Nastaví, které replika databáze je primární podle přebírání služeb při selhání z aktuální primární repliku databáze. |
-| [Nastavit jako primární (neplánované převzetí služeb při selhání) sekundární databáze](https://docs.microsoft.com/rest/api/sql/replicationlinks/replicationlinks_failoverallowdataloss) |Nastaví, které replika databáze je primární podle přebírání služeb při selhání z aktuální primární repliku databáze. Tato operace může dojít ke ztrátě. |
-| [Získání odkazu replikace](https://docs.microsoft.com/rest/api/sql/replicationlinks/replicationlinks_get) |Získá konkrétní replikační připojení pro danou databázi SQL ve spolupráci geografickou replikaci. Načte informace v zobrazení katalogu sys.geo_replication_links viditelné. |
-| [Propojení replikace - seznam podle databáze](https://docs.microsoft.com/rest/api/sql/replicationlinks/replicationlinks_listbydatabase) | Získá všechny odkazy replikace pro danou databázi SQL ve spolupráci geografickou replikaci. Načte informace v zobrazení katalogu sys.geo_replication_links viditelné. |
-| [Odstranit propojení replikace](https://docs.microsoft.com/rest/api/sql/replicationlinks/replicationlinks_delete) | Odstraní propojení replikace databáze. Nelze provést během převzetí služeb při selhání. |
-| [Vytvořit nebo aktualizovat skupinu převzetí služeb při selhání](https://docs.microsoft.com/rest/api/sql/failovergroups/failovergroups_createorupdate) | Vytvoří nebo aktualizuje skupinu převzetí služeb při selhání |
-| [Odstranění skupiny převzetí služeb při selhání](https://docs.microsoft.com/rest/api/sql/failovergroups/failovergroups_delete) | Odebere skupinu převzetí služeb při selhání ze serveru |
-| [Převzetí služeb při selhání (plánovaná)](https://docs.microsoft.com/rest/api/sql/failovergroups/failovergroups_failover) | Převezme služby při selhání z aktuálního primárního serveru na tomto serveru. |
-| [Povolit Vynucené převzetí služeb při selhání ztráty dat](https://docs.microsoft.com/rest/api/sql/failovergroups/failovergroups_forcefailoverallowdataloss) |přes ails z aktuálního primárního serveru na tomto serveru. Tato operace může dojít ke ztrátě. |
-| [Získat skupinu převzetí služeb při selhání](https://docs.microsoft.com/rest/api/sql/failovergroups/failovergroups_get) | Načte skupinu převzetí služeb při selhání. |
-| [Seznam skupiny převzetí služeb při selhání serverem](https://docs.microsoft.com/rest/api/sql/failovergroups/failovergroups_listbyserver) | Seznam skupin převzetí služeb při selhání na serveru. |
-| [Aktualizace skupiny převzetí služeb při selhání](https://docs.microsoft.com/rest/api/sql/failovergroups/failovergroups_update) | Aktualizace skupiny převzetí služeb při selhání. |
+| [Nastavit jako primární (plánované převzetí služeb při selhání) sekundární databáze](https://docs.microsoft.com/rest/api/sql/replicationlinks/failover) |Nastaví, které replika databáze je primární podle přebírání služeb při selhání z aktuální primární repliku databáze. |
+| [Nastavit jako primární (neplánované převzetí služeb při selhání) sekundární databáze](https://docs.microsoft.com/rest/api/sql/replicationlinks/failoverallowdataloss) |Nastaví, které replika databáze je primární podle přebírání služeb při selhání z aktuální primární repliku databáze. Tato operace může dojít ke ztrátě. |
+| [Získání odkazu replikace](https://docs.microsoft.com/rest/api/sql/replicationlinks/get) |Získá konkrétní replikační připojení pro danou databázi SQL ve spolupráci geografickou replikaci. Načte informace v zobrazení katalogu sys.geo_replication_links viditelné. |
+| [Propojení replikace - seznam podle databáze](https://docs.microsoft.com/rest/api/sql/replicationlinks/listbydatabase) | Získá všechny odkazy replikace pro danou databázi SQL ve spolupráci geografickou replikaci. Načte informace v zobrazení katalogu sys.geo_replication_links viditelné. |
+| [Odstranit propojení replikace](https://docs.microsoft.com/rest/api/sql/replicationlinks/delete) | Odstraní propojení replikace databáze. Nelze provést během převzetí služeb při selhání. |
+| [Vytvořit nebo aktualizovat skupinu převzetí služeb při selhání](https://docs.microsoft.com/rest/api/sql/failovergroups/createorupdate) | Vytvoří nebo aktualizuje skupinu převzetí služeb při selhání |
+| [Odstranění skupiny převzetí služeb při selhání](https://docs.microsoft.com/rest/api/sql/failovergroups/delete) | Odebere skupinu převzetí služeb při selhání ze serveru |
+| [Převzetí služeb při selhání (plánovaná)](https://docs.microsoft.com/rest/api/sql/failovergroups/failover) | Převezme služby při selhání z aktuálního primárního serveru na tomto serveru. |
+| [Povolit Vynucené převzetí služeb při selhání ztráty dat](https://docs.microsoft.com/rest/api/sql/failovergroups/forcefailoverallowdataloss) |přes ails z aktuálního primárního serveru na tomto serveru. Tato operace může dojít ke ztrátě. |
+| [Získat skupinu převzetí služeb při selhání](https://docs.microsoft.com/rest/api/sql/failovergroups/get) | Načte skupinu převzetí služeb při selhání. |
+| [Seznam skupiny převzetí služeb při selhání serverem](https://docs.microsoft.com/rest/api/sql/failovergroups/listbyserver) | Seznam skupin převzetí služeb při selhání na serveru. |
+| [Aktualizace skupiny převzetí služeb při selhání](https://docs.microsoft.com/rest/api/sql/failovergroups/update) | Aktualizace skupiny převzetí služeb při selhání. |
 |  | |
 
 ## <a name="next-steps"></a>Další postup

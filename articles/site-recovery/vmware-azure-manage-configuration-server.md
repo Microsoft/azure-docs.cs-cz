@@ -1,18 +1,18 @@
 ---
-title: Správa konfiguračního serveru pro zotavení po havárii VMware pomocí Azure Site Recovery | Dokumentace Microsoftu
-description: Tento článek popisuje, jak spravovat existující konfigurační server pro zotavení po havárii VMware do Azure pomocí Azure Site RecoveryS.
+title: Správa konfiguračního serveru pro VMware a fyzických serverů zotavení po havárii pomocí Azure Site Recovery | Dokumentace Microsoftu
+description: Tento článek popisuje, jak spravovat existující konfigurační server pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů do Azure pomocí Azure Site RecoveryS.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.topic: article
-ms.date: 10/15/2018
+ms.topic: conceptual
+ms.date: 10/29/2018
 ms.author: raynew
-ms.openlocfilehash: bb756a89babef96b16419104737e87405b3527ab
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 4ac3871893e7e8161dc087f285eb3d802cd4a355
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49407397"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215136"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vms"></a>Správa konfiguračního serveru pro virtuální počítače VMware
 

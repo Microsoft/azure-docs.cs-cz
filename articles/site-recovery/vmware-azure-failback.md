@@ -1,19 +1,19 @@
 ---
-title: Selhání obnovení z Azure do VMware pomocí Azure Site Recovery | Dokumentace Microsoftu
-description: Po převzetí služeb při selhání virtuálních počítačů do Azure můžete začít navrácení služeb po obnovení přenést virtuální počítače zpět do místní. Přečtěte si postup, jak navrátit služby po obnovení.
+title: Selhání obnovení z Azure při zotavení po havárii virtuálních počítačů VMware do Azure pomocí Azure Site Recovery | Dokumentace Microsoftu
+description: Naučte se vrátí zpátky v místní lokalitě po převzetí služeb při selhání do Azure během zotavení po havárii virtuálních počítačů VMware a fyzických serverů do Azure.
 author: nsoneji
 ms.service: site-recovery
 ms.date: 10/11/2018
 ms.topic: conceptual
 ms.author: nisoneji
-ms.openlocfilehash: 841e036555723051dfeaf946f31eaf9eedaee798
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: becf0b8c9f14d81b0a25fb1727b69452c3ff690c
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093506"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215170"
 ---
-# <a name="fail-back-from-azure-to-an-on-premises-site"></a>Selhání obnovení z Azure do místní lokality
+# <a name="fail-back-vmware-vms-and-physical-servers-from-azure-to-an-on-premises-site"></a>Navrácení služeb po obnovení virtuálních počítačů VMware a fyzických serverů z Azure do místní lokality
 
 Tento článek popisuje, jak převzít služby při back virtuálních počítačů ze služby Azure Virtual Machines, aby v místním prostředí VMware. Postupujte podle pokynů v tomto článku selhání zálohování vašich virtuálních počítačů VMware nebo Windows/Linux, fyzických serverů po jejich selhání z místní lokality do Azure pomocí [převzetí služeb při selhání ve službě Azure Site Recovery](site-recovery-failover.md) kurzu.
 
