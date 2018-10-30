@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: blueprints
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 7af0d4819d4044f4cccc43cde1cffe7dff7982a7
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 6b7ca276f3273faa485d08633061f882493f72f7
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47056433"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49647268"
 ---
 # <a name="define-and-assign-an-azure-blueprint-in-the-portal"></a>Definování a přiřazení Azure Blueprint v portálu
 
@@ -42,7 +42,7 @@ Jako první krok při definování standardního vzoru pro dodržování předpi
 
    ![Vytvořit podrobný plán](./media/create-blueprint-portal/create-blueprint-button.png)
 
-1. Zadejte **název podrobného plánu** jako je například "MyBlueprint" (písmena a čísla – až 48 znaků, ale žádné mezery ani speciální znaky) pro podrobný plán, ale nechejte pole **popis podrobného plánu** zatím prázdné.  V poli **definovat umístění** klikněte na tlačítko se třemi tečkami na pravé straně, vyberte [skupiny pro správu](../management-groups/overview.md) kam chcete uložit podrobný plán a klikněte na tlačítko **vyberte**.
+1. Zadejte **název podrobného plánu** jako je například "MyBlueprint" (písmena a čísla – až 48 znaků, ale žádné mezery ani speciální znaky) pro podrobný plán, ale nechejte pole **popis podrobného plánu** zatím prázdné.  V poli **Umístění definice** klikněte na tři tečky na pravé straně, vyberte [skupinu pro správu](../management-groups/overview.md), do které chcete podrobný plán uložit, a klikněte na **Vybrat**.
 
    > [!NOTE]
    > Definice podrobného plánu lze uložit pouze do skupin pro správu. Pokud chcete vytvořit vaši první skupinu pro správu, postupujte podle [těchto kroků](../management-groups/create.md).
@@ -111,7 +111,7 @@ Jako první krok při definování standardního vzoru pro dodržování předpi
 
    ![Šablona Artefakt Resource Manager](./media/create-blueprint-portal/add-resource-manager-template.png)
 
-1. Váš konečný plán by měl vypadat podobně jako v následujícím příkladu. Všimněte si, že každý artefakt má '_x_ z _y_ obsazených parametrů' ve sloupci _Parametry_. **Dynamické parametry** se nastaví během jednotlivých přiřazení podrobného plánu a jednotlivý **statický parametr** byl při přiřazení už nakonfigurován.
+1. Váš konečný plán by měl vypadat podobně jako v následujícím příkladu. Všimněte si, že každý artefakt má '_x_ z _y_ obsazených parametrů' ve sloupci _Parametry_. **Dynamické parametry** se nastaví při každém přiřazení podrobného plánu.
 
    ![Dokončený podrobný plán](./media/create-blueprint-portal/completed-blueprint.png)
 

@@ -10,12 +10,12 @@ ms.component: translator-speech
 ms.topic: overview
 ms.date: 3/5/2018
 ms.author: v-jansko
-ms.openlocfilehash: 77e60fe39f7cbb985ee0e7ed2785805e80c389ae
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 641081e4a01aa5810d569795c10e967e4b46568e
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49341136"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50023573"
 ---
 # <a name="what-is-translator-speech-api"></a>Co je rozhraní Translator Speech API?
 
@@ -34,7 +34,7 @@ U překladu řeči na řeč poskytuje tato služba možnost syntetizace řeči (
 Rozhraní Translator Speech API používá k zajištění plně duplexního komunikačního kanálu mezi klientem a serverem protokol WebSocket. 
 
 ## <a name="about-microsoft-translator"></a>Informace o službě Microsoft Translator
-Microsoft Translator je cloudová služba pro strojový překlad. Jádrem této služby jsou rozhraní [Translator Text API] (https://www.microsoft.com/en-us/translator/translatorapi.aspx) a Translator Speech API, která se využívají v různých produktech a službách Microsoftu a v aplikacích a pracovních postupech tisíců firem po celém světě, kde umožňují šíření obsahu k cílové skupině po celém světě.
+Microsoft Translator je cloudová služba pro strojový překlad. Jádrem této služby jsou služby [Translator Text API](https://www.microsoft.com/en-us/translator/translatorapi.aspx) a Translator Speech API, které se využívají v různých produktech a službách Microsoftu a v aplikacích a pracovních postupech tisíců firem po celém světě, kde umožňují šíření obsahu k cílové skupině po celém světě.
 
 Další informace o [službě Microsoft Translator](https://www.microsoft.com/en-us/translator/home.aspx)
 

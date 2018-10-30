@@ -8,16 +8,16 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: quickstart
-ms.date: 10/02/2018
+ms.date: 10/19/2018
 ms.author: diberry
-ms.openlocfilehash: 3bbc55b3bb064b2cf4b140a395e99209b71a5ce1
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 1b92589fe01f171b732c04057dc290f0f32cb31a
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48816208"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49647812"
 ---
-# <a name="quickstart-update-a-qna-maker-knowledge-base-in-nodejs"></a>Rychlý start: Aktualizace znalostní báze QnA Maker v Node.js
+# <a name="quickstart-update-a-knowledge-base-in-qna-maker-using-nodejs"></a>Rychlý start: Aktualizace znalostní báze ve službě QnA Maker pomocí Node.js
 
 Tento rychlý start vás provede programovou aktualizací stávající znalostní báze QnA Maker.  Tento soubor JSON umožňuje aktualizovat znalostní bázi přidáním nových zdrojů dat, změnou zdrojů dat nebo odstraněním zdrojů dat.
 
@@ -30,7 +30,7 @@ Tento rychlý start volá rozhraní API služby QnA Maker:
 ## <a name="prerequisites"></a>Požadavky
 
 * [Node.js 6+](https://nodejs.org/en/download/)
-* Musíte mít [službu QnA Maker](../How-To/set-up-qnamaker-service-azure.md). Pokud chcete získat klíč, vyberte na řídicím panelu **Klíče** v části **Správa prostředků**. 
+* Potřebujete [službu QnA Maker](../How-To/set-up-qnamaker-service-azure.md). Pokud chcete získat klíč, vyberte na řídicím panelu **Klíče** v části **Správa prostředků**. 
 * ID znalostní báze služby QnA Maker, které najdete v adrese URL v parametru kbid řetězce dotazu, jak vidíte níže.
 
     ![ID znalostní báze ve službě QnA Maker](../media/qnamaker-quickstart-kb/qna-maker-id.png)
@@ -39,22 +39,22 @@ Pokud znalostní bázi ještě nemáte, můžete si vytvořit ukázkovou znalost
 
 [!INCLUDE [Code is available in Azure-Samples Github repo](../../../../includes/cognitive-services-qnamaker-nodejs-repo-note.md)]
 
-## <a name="create-a-knowledge-base-nodejs-file"></a>Vytvořte soubor Node.js znalostní báze
+## <a name="create-a-knowledge-base-nodejs-file"></a>Vytvoření souboru Node.js znalostní báze
 
 Vytvořte soubor s názvem `update-knowledge-base.js`.
 
-## <a name="add-the-required-dependencies"></a>Přidejte požadované závislosti
+## <a name="add-the-required-dependencies"></a>Přidání požadovaných závislostí
 
 Na začátek souboru `update-knowledge-base.js` přidejte následující řádky k přidání potřebných závislostí do projektu:
 
 [!code-nodejs[Add the dependencies](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/update-knowledge-base/update-knowledge-base.js?range=1-4 "Add the dependencies")]
 
-## <a name="add-required-constants"></a>Přidejte požadované konstanty
+## <a name="add-required-constants"></a>Přidání požadovaných konstant
 Za předcházející požadované závislosti přidejte požadované konstanty pro přístup ke službě QnA Maker. Nahraďte hodnotu proměnné `subscriptionKey` vlastním klíčem služby QnA Maker. 
 
 [!code-nodejs[Add required constants](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/update-knowledge-base/update-knowledge-base.js?range=10-17 "Add required constants")]
 
-## <a name="add-knowledge-base-id"></a>Přidejte ID znalostní báze
+## <a name="add-knowledge-base-id"></a>Přidání ID znalostní báze
 
 Za předchozí konstanty přidejte ID znalostní báze a přidejte ho k cestě:
 
@@ -136,7 +136,7 @@ Volání opakujte, dokud neskočí úspěchem nebo neúspěchem:
 
 ## <a name="add-updatekb-method"></a>Přidejte metodu update_kb
 
-Následující metoda aktualizuje znalostní bázi a opakovaně kontroluje stav. Protože vytvoření znalostní báze může nějakou dobu trvat, je třeba volání na kontrolu stavu opakovat, dokud vrácený stav nebude úspěch nebo neúspěch.
+Následující metoda aktualizuje znalostní bázi a opakovaně kontroluje stav. Jelikož může vytvoření znalostní báze nějakou dobu trvat, je potřeba volání pro kontrolu stavu opakovat, dokud vrácený stav neoznámí úspěch nebo neúspěch.
 
 [!code-nodejs[Add update_kb method](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/update-knowledge-base/update-knowledge-base.js?range=139-169 "Add update_kb method")]
 

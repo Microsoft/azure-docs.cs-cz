@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Vytvoření projektu klasifikace obrázku – Custom Vision Service, Java'
+title: 'Kurz: Vytvoření projektu klasifikace obrázků pomocí sady Custom Vision SDK pro Javu'
 titlesuffix: Azure Cognitive Services
 description: Vytvořte projekt, přidejte značky, nahrajte obrázky, vytrénujte svůj projekt a vytvořte předpověď pomocí výchozího koncového bodu.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: custom-vision
 ms.topic: tutorial
 ms.date: 08/28/2018
 ms.author: areddish
-ms.openlocfilehash: 9a7f50e0eb33016d6a2d8f28be047b327135c51f
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: e302fc580d9c83d269f0deedd051a3ea23bd274e
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46367351"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49957205"
 ---
-# <a name="tutorial-build-an-image-classification-project-with-java"></a>Kurz: Vytvoření projektu klasifikace obrázku pomocí Javy
+# <a name="tutorial-create-an-image-classification-project-with-the-custom-vision-sdk-for-java"></a>Kurz: Vytvoření projektu klasifikace obrázků pomocí sady Custom Vision SDK pro Javu
 
 Zjistěte, jak vytvořit projekt klasifikace obrázků pomocí služby Custom Vision Service a Javy. Po jeho vytvoření můžete přidat značky, nahrát obrázky, vytrénovat projekt, získat adresu URL výchozího koncového bodu předpovědi projektu a použít jej k programovému testování obrázku. Tento opensourcový příklad použijte jako šablonu pro vytvoření vlastní aplikace pomocí rozhraní Custom Vision API.
 
@@ -35,7 +35,7 @@ Klíče používané v tomto příkladu získáte tak, že přejdete na [webovou
 ## <a name="install-the-custom-vision-service-sdk"></a>Instalace sady Custom Vision Service SDK
 
 Sadu Custom Vision SDK můžete nainstalovat z centrálního úložiště Mavenu:
-* [Sada SDK pro trénink](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-customvision-training)
+* [Sada SDK pro trénování](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-customvision-training)
 * [Sada SDK pro předpověď](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-customvision-prediction)
 
 ## <a name="understand-the-code"></a>Vysvětlení kódu

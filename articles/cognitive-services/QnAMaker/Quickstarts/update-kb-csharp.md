@@ -1,25 +1,25 @@
 ---
 title: 'Rychlý start: Aktualizace znalostní báze – REST, C# – QnA Maker'
 titleSuffix: Azure Cognitive Services
-description: Tento rychlý start vás provede programovou aktualizací ukázkové znalostní báze služby QnA Maker. Definice JSON, kterou použijete k aktualizaci znalostní báze, umožňuje přidávat, měnit nebo odstraňovat páry otázek a odpovědí.
+description: Tento rychlý start založený na REST vás provede programovou aktualizací ukázkové znalostní báze služby QnA Maker. Definice JSON, kterou použijete k aktualizaci znalostní báze, umožňuje přidávat, měnit nebo odstraňovat páry otázek a odpovědí.
 services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: quickstart
-ms.date: 10/01/2018
+ms.date: 10/19/2018
 ms.author: diberry
-ms.openlocfilehash: 9fa57a02f11461a3ea9a08b7b1b101b143924037
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 463fb4bc1cfd6ba7a7fc4df2fcde53bda7767488
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48801689"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49648221"
 ---
-# <a name="quickstart-update-a-qna-maker-knowledge-base-in-c"></a>Rychlý start: Aktualizace znalostní báze služby QnA Maker v jazyce C#
+# <a name="quickstart-update-a-knowledge-base-in-qna-maker-using-c"></a>Rychlý start: Aktualizace znalostní báze ve službě QnA Maker pomocí jazyka C#
 
-Tento rychlý start vás provede programovou aktualizací existující znalostní báze služby QnA Maker.  Tento kód JSON umožňuje aktualizovat znalostní bázi přidáním nových zdrojů dat, změnou zdrojů dat nebo jejich odstraněním.
+Tento rychlý start vás provede programovou aktualizací stávající znalostní báze QnA Maker.  Tento soubor JSON umožňuje aktualizovat znalostní bázi přidáním nových zdrojů dat, změnou zdrojů dat nebo odstraněním zdrojů dat.
 
 Toto rozhraní API je ekvivalentní úpravě a následnému použití tlačítka **Save and train** (Uložit a natrénovat) na portálu služby QnA Maker.
 
@@ -30,7 +30,7 @@ Tento rychlý start volá rozhraní API služby QnA Maker:
 ## <a name="prerequisites"></a>Požadavky
 
 * Nejnovější verze sady [**Visual Studio Community Edition**](https://www.visualstudio.com/downloads/).
-* Musíte mít [službu QnA Maker](../How-To/set-up-qnamaker-service-azure.md). Pokud chcete získat klíč, vyberte na řídicím panelu **Klíče** v části **Správa prostředků**.
+* Potřebujete [službu QnA Maker](../How-To/set-up-qnamaker-service-azure.md). Pokud chcete získat klíč, vyberte na řídicím panelu **Klíče** v části **Správa prostředků**.
 * ID znalostní báze služby QnA Maker, které najdete v adrese URL v parametru kbid řetězce dotazu, jak vidíte níže.
 
     ![ID znalostní báze ve službě QnA Maker](../media/qnamaker-quickstart-kb/qna-maker-id.png)

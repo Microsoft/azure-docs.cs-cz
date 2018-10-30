@@ -1,23 +1,23 @@
 ---
-title: 'Rychlý start: Překlad textu – Translator Text, C#'
+title: 'Rychlý start: Překlad textu, C# – Translator Text API'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu přeložíte text z jednoho jazyka do jiného pomocí služby Translator Text API pomocí jazyka C#.
 services: cognitive-services
-author: noellelacharite
+author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/15/2018
-ms.author: nolachar
-ms.openlocfilehash: 2b524591f3af32e566b0ca364626daf7aaf4ace2
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.author: erhopf
+ms.openlocfilehash: ffd46969bd7333d2422654c8683f66ff313706c2
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49318448"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49648458"
 ---
-# <a name="quickstart-translate-text-with-c35"></a>Rychlý start: Překlad textu s C&#35;
+# <a name="quickstart-translate-text-with-the-translator-text-rest-api-c"></a>Rychlý start: Překlad textu pomocí rozhraní REST API služby Translator Text (C#)
 
 V tomto rychlém startu přeložíte text z jednoho jazyka do jiného pomocí služby Translator Text API.
 

@@ -12,12 +12,12 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: azure-cli
 manager: jeconnoc
-ms.openlocfilehash: ef5459b2b31b67afe187612ffc1ab079a5045a8c
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 07a079e00963f1f5aff96369649e2e4fb248aae0
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49114906"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49985994"
 ---
 # <a name="create-your-first-function-from-the-command-line"></a>Vytvoření první funkce z příkazového řádku
 
@@ -45,7 +45,7 @@ Spuštěním následujícího příkazu z příkazového řádku vytvoříte pro
 func init MyFunctionProj
 ```
 
-Po zobrazení výzvy použijte klávesy se šipkami a vyberte modul runtime pracovního procesu z následujících možností jazyků:
+Po zobrazení výzvy vyberte modul runtime pracovního procesu z následujících možností jazyka:
 
 + `dotnet`: vytvoří projekt knihovny třídy .NET (.csproj).
 + `node`: vytvoří projekt jazyka JavaScript.
@@ -59,110 +59,17 @@ Writing local.settings.json
 Initialized empty Git repository in C:/functions/MyFunctionProj/.git/
 ```
 
-## <a name="create-a-function"></a>Vytvoření funkce
-
-Následující příkaz přejde do nového projektu a vytvoří funkci aktivovanou HTTP s názvem `MyHtpTrigger`.
+Pomocí následujícího příkazu přejděte do složky nového projektu `MyFunctionProj`.
 
 ```bash
 cd MyFunctionProj
-func new --name MyHttpTrigger --template "HttpTrigger"
 ```
 
-Při spuštění příkazu se zobrazí něco jako následující výstup, který je funkcí jazyka JavaScript:
+[!INCLUDE [functions-create-function-core-tools](../../includes/functions-create-function-core-tools.md)]
 
-```output
-Writing C:\functions\MyFunctionProj\MyHttpTrigger\index.js
-Writing C:\functions\MyFunctionProj\MyHttpTrigger\sample.dat
-Writing C:\functions\MyFunctionProj\MyHttpTrigger\function.json
-```
+[!INCLUDE [functions-update-function-code](../../includes/functions-update-function-code.md)]
 
-## <a name="edit-the-function"></a>Upravit funkci
-
-Ve výchozím nastavení šablona vytvoří funkci, která při zasílání požadavků vyžaduje klíč funkce. Aby bylo v Azure testování funkce snazší, budete muset aktualizovat funkci a povolit tak anonymní přístup. Způsob provedení této změny závisí na vašem jazyku projektu funkce.
-
-### <a name="c"></a>C\#
-
-Otevřete kódovací soubor MyHttpTrigger.cs, který je vaší novou funkcí, aktualizujte atribut **AuthorizationLevel** v definici funkce na hodnotu `anonymous` a provedené změny uložte.
-
-```csharp
-[FunctionName("MyHttpTrigger")]
-        public static IActionResult Run([HttpTrigger(AuthorizationLevel.Anonymous, 
-            "get", "post", Route = null)]HttpRequest req, ILogger log)
-```
-
-### <a name="javascript"></a>JavaScript
-
-Otevřete soubor nové funkce function.json, otevřete ho v textovém editoru, aktualizujte vlastnost **authLevel** v **bindings.httpTrigger** na `anonymous`a provedené změny uložte.
-
-```json
-  "bindings": [
-    {
-      "authLevel": "anonymous",
-      "type": "httpTrigger",
-      "direction": "in",
-      "name": "req",
-      "methods": [
-        "get",
-        "post"
-      ]
-    },
-    {
-      "type": "http",
-      "direction": "out",
-      "name": "$return"
-    }
-  ]
-```
-
-Nyní můžete funkci v Azure vyvolat, aniž byste museli zadat klíč funkce. Klíč funkce není při místním spuštění potřeba.
-
-## <a name="run-the-function-locally"></a>Místní spuštění funkce
-
-Následující příkaz spustí aplikaci funkcí. Aplikace je spuštěna pomocí stejného modulu runtime Azure Functions, který je v Azure.
-
-```bash
-func host start --build
-```
-
-Ke kompilování projektů jazyka C# je vyžadována možnost `--build`. Tuto možnost pro projekt jazyka JavaScript nepotřebujete.
-
-Při spuštění funkce hostitele se vám zobrazí něco, co se podobá následujícímu výstupu, který jsme kvůli čitelnosti zkrátili:
-
-```output
-
-                  %%%%%%
-                 %%%%%%
-            @   %%%%%%    @
-          @@   %%%%%%      @@
-       @@@    %%%%%%%%%%%    @@@
-     @@      %%%%%%%%%%        @@
-       @@         %%%%       @@
-         @@      %%%       @@
-           @@    %%      @@
-                %%
-                %
-
-...
-
-Content root path: C:\functions\MyFunctionProj
-Now listening on: http://0.0.0.0:7071
-Application started. Press Ctrl+C to shut down.
-
-...
-
-Http Functions:
-
-        HttpTrigger: http://localhost:7071/api/HttpTrigger
-
-[8/27/2018 10:38:27 PM] Host started (29486ms)
-[8/27/2018 10:38:27 PM] Job host started
-```
-
-Zkopírujte adresu URL vaší funkce `HTTPTrigger` z výstupu modulu runtime a vložte do panelu Adresa vašeho prohlížeče. K této adrese URL připojte řetězec dotazu `?name=<yourname>` a proveďte požadavek. Následuje ukázka odezvy na požadavek GET vrácené místní funkcí v prohlížeči:
-
-![Místní test v prohlížeči](./media/functions-create-first-azure-function-azure-cli/functions-test-local-browser.png)
-
-Teď, když jste spustili funkci místně, můžete vytvořit aplikaci aplikace funkcí a ostatní požadované prostředky v Azure.
+[!INCLUDE [functions-run-function-test-local](../../includes/functions-run-function-test-local.md)]
 
 [!INCLUDE [functions-create-resource-group](../../includes/functions-create-resource-group.md)]
 

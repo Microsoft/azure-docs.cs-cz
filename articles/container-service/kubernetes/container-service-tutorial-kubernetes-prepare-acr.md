@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: d22661c0d07ce446ea0ad345a1e9629f6e2f0d6c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 735aca5509373f840c56e28887088f7a696ca137
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46995886"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024082"
 ---
 # <a name="deploy-and-use-azure-container-registry"></a>Nasazení a použití služby Azure Container Registry
 
@@ -94,7 +94,7 @@ Nyní označte image `azure-vote-front` názvem loginServer registru kontejneru.
 docker tag azure-vote-front <acrLoginServer>/azure-vote-front:v1
 ```
 
-Po označení operaci ověřte spuštěním příkazu [docker images]https://docs.docker.com/engine/reference/commandline/images/).
+Po označení operaci ověřte spuštěním příkazu [docker images](https://docs.docker.com/engine/reference/commandline/images/).
 
 ```bash
 docker images

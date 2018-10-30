@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 09/07/2018
+ms.date: 10/18/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: d48374d7919be3d141ea199e8238a220dbfe0332
-ms.sourcegitcommit: 3150596c9d4a53d3650cc9254c107871ae0aab88
+ms.openlocfilehash: a3fc3e0cc30b379c84ac0ba12f733d2db4e41587
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47419521"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945786"
 ---
 # <a name="tutorial-create-an-azure-resource-manager-template-for-deploying-an-encrypted-storage-account"></a>Kurz: Vytvoření šablony Azure Resource Manageru pro nasazení šifrovaného účtu úložiště
 
@@ -40,8 +40,7 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
 
 K dokončení tohoto článku potřebujete:
 
-* [Visual Studio Code](https://code.visualstudio.com/).
-* Rozšíření Nástroje Resource Manageru. Informace o instalaci najdete v článku [Instalace rozšíření Nástroje Resource Manageru](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#prerequisites).
+* [Visual Studio Code](https://code.visualstudio.com/) s [rozšířením Nástroje Resource Manageru](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#prerequisites)
 
 ## <a name="open-a-quickstart-template"></a>Otevření šablony pro rychlý start
 
@@ -56,7 +55,7 @@ K dokončení tohoto článku potřebujete:
 3. Výběrem **Open** (Otevřít) soubor otevřete.
 4. Vyberte **File** (Soubor) >**Save As** (Uložit jako) a soubor uložte jako **azuredeploy.json** na místní počítač.
 
-## <a name="understand-the-format"></a>Vysvětlení formátu
+## <a name="understand-the-schema"></a>Vysvětlené schématu
 
 V nástroji VS Code sbalte šablony na kořenovou úroveň. Vidíte nejjednodušší strukturu s následující elementy:
 
@@ -69,7 +68,7 @@ V nástroji VS Code sbalte šablony na kořenovou úroveň. Vidíte nejjednoduš
 * **resources**: určete typy prostředků nasazovaných nebo aktualizovaných ve skupině prostředků.
 * **outputs**: uvádí hodnoty vrácené po nasazení.
 
-## <a name="use-parameters-in-template"></a>Použití parametrů v šabloně
+## <a name="use-parameters"></a>Použití parametrů
 
 Parametry umožňují přizpůsobit nasazení tím, že zadáte hodnoty vhodné pro konkrétní prostředí. Parametry definované v šabloně se používají při nastavování hodnot účtu úložiště.
 
@@ -90,7 +89,7 @@ Použití parametrů definovaných v šabloně:
 "name": "[parameters('storageAccountType')]"
 ```
 
-## <a name="use-variables-in-template"></a>Použití proměnných v šabloně
+## <a name="use-variables"></a>Použití proměnných
 
 Proměnné umožňují vytvářet hodnoty, které se dají používat v celé šabloně. Proměnné pomáhají ke zjednodušení šablon.
 
@@ -117,9 +116,7 @@ Cílem tohoto kurzu je definovat šablonu pro vytvoření šifrovaného účtu �
 
     ![Odkaz šablony Azure Resource Manageru na účet úložiště](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-resources-reference-storage-accounts.png)
 
-    resource-manager-template-resources-reference-storage-accounts
-1. Projděte si informace týkající se šifrování.  
-1. Do elementu properties v definici prostředku účtu úložiště přidejte následující kód JSON:
+4. Vyhledejte informace o definici týkající se šifrování.  
 
     ```json
     "encryption": {
@@ -131,11 +128,9 @@ Cílem tohoto kurzu je definovat šablonu pro vytvoření šifrovaného účtu �
         }
     }
     ```
-    Tato část povolí šifrovací funkci služby Blob Storage.
-
-Ve Visual Studio Code upravte šablonu tak, aby výsledný element resources vypadal následovně:
-
-![Šablona Resource Manageru – element resources šifrovaného účtu úložiště](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-encrypted-storage-resources.png)
+5. Ve Visual Studio Code upravte šablonu tak, aby výsledný element resources vypadal následovně:
+    
+    ![Šablona Resource Manageru – element resources šifrovaného účtu úložiště](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-encrypted-storage-resources.png)
 
 ## <a name="deploy-the-template"></a>Nasazení šablony
 

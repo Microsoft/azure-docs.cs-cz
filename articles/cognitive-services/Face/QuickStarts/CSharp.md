@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Rozpoznávání tváří na obrázku – rozhraní API pro rozpoznávání tváře, C#'
+title: 'Rychlý start: Rozpoznávání tváří na obrázku pomocí rozhraní REST API a jazyka C#'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu budete rozpoznávat tváře z obrázku pomocí rozhraní API pro rozpoznávání tváře a jazyka C#.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: face-api
 ms.topic: quickstart
 ms.date: 05/10/2018
 ms.author: pafarley
-ms.openlocfilehash: 080e616067bb0b8a640ded6faec184030314d79a
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 5a3b3e70a12f70874bf54e8f01a0f8baf3eec845
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49341017"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49954517"
 ---
-# <a name="quickstart-detect-faces-in-an-image-using-c"></a>Rychlý start: Rozpoznávání tváří na obrázku pomocí C#
+# <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-c"></a>Rychlý start: Rozpoznávání tváří na obrázku pomocí rozhraní REST API a jazyka C#
 
 V tomto rychlém startu budete pomocí rozhraní API pro rozpoznávání tváře rozpoznávat lidské tváře na obrázku.
 

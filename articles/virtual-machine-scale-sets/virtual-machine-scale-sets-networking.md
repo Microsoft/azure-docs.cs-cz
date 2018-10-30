@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/17/2017
 ms.author: negat
-ms.openlocfilehash: 43aa74e7250f4825702e249032db1566346ab558
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: 6ed3488218a5b813478fa18f7bb05dcfb07a319c
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48831207"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49955146"
 ---
 # <a name="networking-for-azure-virtual-machine-scale-sets"></a>Síťové služby pro škálovací sady virtuálních počítačů Azure
 
@@ -50,10 +50,26 @@ Akcelerované síťové služby Azure zlepšují výkon sítě tím, že na virt
 ## <a name="create-a-scale-set-that-references-an-existing-azure-load-balancer"></a>Vytvoření škálovací sady odkazující na existující Azure Load Balancer
 Při vytvoření škálovací sady pomocí webu Azure Portal se pro většinu možností konfigurace vytvoří nový nástroj pro vyrovnávání zatížení. Pokud vytváříte škálovací sadu, která potřebuje odkazovat na existující nástroj pro vyrovnávání zatížení, můžete to provést pomocí rozhraní příkazového řádku. Následující ukázkový skript vytvoří nástroj pro vyrovnávání zatížení a potom vytvoří škálovací sadu, která na něj odkazuje:
 ```bash
-az network lb create -g lbtest -n mylb --vnet-name myvnet --subnet mysubnet --public-ip-address-allocation Static --backend-pool-name mybackendpool
+az network lb create \
+    -g lbtest \
+    -n mylb \
+    --vnet-name myvnet \
+    --subnet mysubnet \
+    --public-ip-address-allocation Static \
+    --backend-pool-name mybackendpool
 
-az vmss create -g lbtest -n myvmss --image Canonical:UbuntuServer:16.04-LTS:latest --admin-username negat --ssh-key-value /home/myuser/.ssh/id_rsa.pub --upgrade-policy-mode Automatic --instance-count 3 --vnet-name myvnet --subnet mysubnet --lb mylb --backend-pool-name mybackendpool
-
+az vmss create \
+    -g lbtest \
+    -n myvmss \
+    --image Canonical:UbuntuServer:16.04-LTS:latest \
+    --admin-username negat \
+    --ssh-key-value /home/myuser/.ssh/id_rsa.pub \
+    --upgrade-policy-mode Automatic \
+    --instance-count 3 \
+    --vnet-name myvnet \
+    --subnet mysubnet \
+    --lb mylb \
+    --backend-pool-name mybackendpool
 ```
 
 ## <a name="create-a-scale-set-that-references-an-application-gateway"></a>Vytvoření škálovací sady, která odkazuje na aplikační bránu
@@ -91,7 +107,7 @@ Pokud chcete nakonfigurovat vlastní servery DNS v šabloně Azure, přidejte do
 ```
 
 ### <a name="creating-a-scale-set-with-configurable-virtual-machine-domain-names"></a>Vytvoření škálovací sady s konfigurovatelnými názvy domén virtuálních počítačů
-Pokud chcete vytvořit škálovací sadu s vlastním názvem DNS pro virtuální počítače pomocí rozhraní příkazového řádku, přidejte do příkazu **vmss create** argument **--vm-domain-name** následovaný řetězcem představujícím název domény.
+Pokud chcete vytvořit škálovací sadu s vlastním názvem DNS pro virtuální počítače pomocí rozhraní příkazového řádku, přidejte do příkazu **virtual machine scale set create** argument **--vm-domain-name** následovaný řetězcem představujícím název domény.
 
 Pokud chcete nastavit název domény v šabloně Azure, přidejte do části **networkInterfaceConfigurations** škálovací sady vlastnost **dnsSettings**. Příklad:
 
@@ -155,23 +171,35 @@ Pokud chcete zobrazit seznam veřejných IP adres přiřazených k virtuálním 
 
 Pokud chcete zobrazit seznam veřejných IP adres škálovací sady pomocí PowerShellu, použijte příkaz _Get-AzureRmPublicIpAddress_. Příklad:
 ```PowerShell
-PS C:\> Get-AzureRmPublicIpAddress -ResourceGroupName myrg -VirtualMachineScaleSetName myvmss
+Get-AzureRmPublicIpAddress -ResourceGroupName myrg -VirtualMachineScaleSetName myvmss
 ```
 
 Veřejné IP adresy můžete také zjistit přímo z ID prostředku nakonfigurované veřejné IP adresy. Příklad:
 ```PowerShell
-PS C:\> Get-AzureRmPublicIpAddress -ResourceGroupName myrg -Name myvmsspip
+Get-AzureRmPublicIpAddress -ResourceGroupName myrg -Name myvmsspip
 ```
 
-Dotazovat veřejné IP adresy přiřazené k virtuálním počítačům ve škálovací sadě můžete pomocí [Azure Resource Exploreru](https://resources.azure.com) nebo rozhraní Azure REST API verze **2017-03-30** nebo vyšší.
+Veřejné IP adresy přiřazené k virtuálním počítačům ve škálovací sadě můžete také zobrazit prostřednictvím dotazování [Azure Resource Exploreru](https://resources.azure.com) nebo rozhraní Azure REST API verze **2017-03-30** nebo novější.
 
-Pokud chcete zobrazit veřejné IP adresy pro škálovací sadu pomocí Resource Exploreru, podívejte se do části **publicipaddresses** v rámci vaší škálovací sady. Příklad: https://resources.azure.com/subscriptions/_vaše_sub_id_/resourceGroups/_vaše_rg_/providers/Microsoft.Compute/virtualMachineScaleSets/_vaše_vmss_/publicipaddresses
+Dotazování [Azure Resource Exploreru:](https://resources.azure.com)
 
-```
+1. Ve webovém prohlížeči otevřete [Azure Resource Explorer](https://resources.azure.com).
+1. Rozbalte *subscriptions* (Předplatná) na levé straně tím, že kliknete na *+* vedle tohoto uzlu. Pokud v uzlu *subscriptions* (Předplatná) máte pouze jednu položku, možná už bude rozbalená.
+1. Rozbalte své předplatné.
+1. Rozbalte svou skupinu prostředků.
+1. Rozbalte *providers* (Poskytovatelé).
+1. Rozbalte *Microsoft.Compute*.
+1. Rozbalte *virtualMachineScaleSets*.
+1. Rozbalte svou škálovací sadu.
+1. Klikněte na *publicipaddresses*.
+
+Dotazování rozhraní Azure REST API:
+
+```bash
 GET https://management.azure.com/subscriptions/{your sub ID}/resourceGroups/{RG name}/providers/Microsoft.Compute/virtualMachineScaleSets/{scale set name}/publicipaddresses?api-version=2017-03-30
 ```
 
-Příklad výstupu:
+Příklad výstupu z [Azure Resource Exploreru](https://resources.azure.com) a rozhraní Azure REST API:
 ```json
 {
   "value": [
@@ -289,12 +317,14 @@ V následujícím příkladu je profil sítě škálovací sady ukazující něk
 ```
 
 ## <a name="nsg--asgs-per-scale-set"></a>Skupiny zabezpečení sítě a aplikace na škálovací sadu
+[Skupiny zabezpečení sítě](../virtual-network/security-overview.md) umožňují filtrovat provoz do a z prostředků Azure ve virtuální síti Azure pomocí pravidel zabezpečení. [Skupiny zabezpečení aplikací](../virtual-network/security-overview.md#application-security-groups) umožňují správu zabezpečení sítě u prostředků Azure a jejich seskupování jako rozšíření struktury aplikace.
+
 Skupiny zabezpečení sítě se můžou použít přímo na škálovací sadu přidáním odkazu do části konfigurace síťového rozhraní ve vlastnostech virtuálního počítače ve škálovací sadě.
 
 Skupiny zabezpečení aplikace se můžou použít přímo na škálovací sadu přidáním odkazu do části konfigurace IP adresy síťového rozhraní ve vlastnostech virtuálního počítače ve škálovací sadě.
 
 Příklad: 
-```
+```json
 "networkProfile": {
     "networkInterfaceConfigurations": [
         {
@@ -334,6 +364,42 @@ Příklad:
     ]
 }
 ```
+
+Pokud chcete ověřit přidružení skupiny zabezpečení sítě se škálovací sadou, použijte příkaz `az vmss show`. Následující příklad pomocí parametru `--query` filtruje výsledky a zobrazí pouze relevantní část výstupu.
+
+```bash
+az vmss show \
+    -g myResourceGroup \
+    -n myScaleSet \
+    --query virtualMachineProfile.networkProfile.networkInterfaceConfigurations[].networkSecurityGroup
+
+[
+  {
+    "id": "/subscriptions/.../resourceGroups/myResourceGroup/providers/Microsoft.Network/networkSecurityGroups/nsgName",
+    "resourceGroup": "myResourceGroup"
+  }
+]
+```
+
+Pokud chcete ověřit přidružení skupiny zabezpečení aplikace se škálovací sadou, použijte příkaz `az vmss show`. Následující příklad pomocí parametru `--query` filtruje výsledky a zobrazí pouze relevantní část výstupu.
+
+```bash
+az vmss show \
+    -g myResourceGroup \
+    -n myScaleSet \
+    --query virtualMachineProfile.networkProfile.networkInterfaceConfigurations[].ipConfigurations[].applicationSecurityGroups
+
+[
+  [
+    {
+      "id": "/subscriptions/.../resourceGroups/myResourceGroup/providers/Microsoft.Network/applicationSecurityGroups/asgName",
+      "resourceGroup": "myResourceGroup"
+    }
+  ]
+]
+```
+
+
 
 ## <a name="next-steps"></a>Další kroky
 Další informace o virtuálních sítích Azure najdete v [přehledu virtuálních sítí Azure](../virtual-network/virtual-networks-overview.md).

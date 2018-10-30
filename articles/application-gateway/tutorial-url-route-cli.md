@@ -7,15 +7,15 @@ manager: jpconnock
 ms.service: application-gateway
 ms.topic: tutorial
 ms.workload: infrastructure-services
-ms.date: 7/14/2018
+ms.date: 10/25/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 2402dd2adb27abb784c34a2a3569e8f6e4a60f77
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f683d63683e903d947d0789a16a8efa48196d36a
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46954785"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50026190"
 ---
 # <a name="tutorial-route-web-traffic-based-on-the-url-using-the-azure-cli"></a>Kurz: Použití Azure CLI ke směrování webového provozu na základě adresy URL
 
@@ -30,10 +30,9 @@ V tomto kurzu se naučíte:
 > * Vytvořit naslouchací procesy, mapu cest adres URL a pravidla
 > * Vytvořit škálovatelné back-endové fondy
 
-
 ![Příklad směrování na základě adresy URL](./media/tutorial-url-route-cli/scenario.png)
 
-Pokud chcete, můžete k dokončení tohoto kurzu použít [Azure PowerShell](tutorial-url-route-powershell.md).
+Pokud chcete, můžete tento kurz absolvovat s použitím [Azure PowerShellu](tutorial-url-route-powershell.md) nebo webu [Azure Portal](create-url-route-portal.md).
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 

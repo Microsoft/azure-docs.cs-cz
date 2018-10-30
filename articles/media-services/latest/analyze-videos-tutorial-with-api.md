@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 10/15/2018
 ms.author: juliako
-ms.openlocfilehash: 96ed5c17501aeb195ee584ce6d41a84fc2118bac
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 5bb840be119f5eac380c44e2cf45b3f73a9d981e
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49376648"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49985705"
 ---
 # <a name="tutorial-analyze-videos-with-azure-media-services"></a>Kurz: Analýza videa pomocí služby Azure Media Services 
 
@@ -33,9 +33,6 @@ V tomto kurzu získáte informace o následujících postupech:
 > * Spuštění aplikace
 > * Prozkoumání výstupu
 > * Vyčištění prostředků
-
-> [!Note]
-> Pomocí webu Azure Portal nastavte účet Media Services na 10 rezervovaných jednotek médií úrovně S3, jak je popsáno v tématu [Škálování zpracování médií](../previous/media-services-scale-media-processing-overview.md).
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -71,6 +68,9 @@ Tato ukázka provede následující akce:
 4. Odešle úlohu.
 5. Zkontroluje stav úlohy.
 6. Stáhne soubory, které jsou výsledkem spuštění úlohy. 
+
+> [!NOTE]
+> Pokud použijete předvolby analyzátoru videa nebo zvuku, pomocí webu Azure Portal nastavte pro svůj účet 10 rezervovaných jednotek médií S3. Další informace najdete v tématu [Škálování zpracování médií](../previous/media-services-scale-media-processing-overview.md).
 
 ### <a name="start-using-media-services-apis-with-net-sdk"></a>Začínáme s rozhraním API služby Media Services se sadou .NET SDK
 

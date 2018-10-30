@@ -1,23 +1,23 @@
 ---
-title: 'Rychlý start: Identifikace jazyka z textu – Translator Text API, C#'
+title: 'Rychlý start: Identifikace jazyka z textu, C# – Translator Text API'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu identifikujete jazyk zdrojového textu pomocí služby Translator Text API a jazyka C#.
 services: cognitive-services
-author: noellelacharite
+author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/15/2018
-ms.author: nolachar
-ms.openlocfilehash: b9a5dbdc1e7950400597c76359b8eee4268af6d0
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.author: erhopf
+ms.openlocfilehash: d92b5f7815c7aeb43ef81bb7b06aa1cda64f32dc
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49320369"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49647098"
 ---
-# <a name="quickstart-identify-language-from-text-with-c35"></a>Rychlý start: Identifikace jazyka z textu s C&#35;
+# <a name="quickstart-identify-language-from-text-with-the-translator-text-rest-api-c"></a>Rychlý start: Identifikace jazyka z textu pomocí rozhraní REST API služby Translator Text (C#)
 
 V tomto rychlém startu identifikujete jazyk zdrojového textu pomocí služby Translator Text API.
 

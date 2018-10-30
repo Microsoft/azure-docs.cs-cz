@@ -1,25 +1,31 @@
 ---
-title: 'Rychlý start: Aktualizace znalostní báze v Go – QnA Maker'
+title: 'Rychlý start: Aktualizace znalostní báze – REST, Go – QnA Maker'
 titleSuffix: Azure Cognitive Services
-description: Postup aktualizace znalostní báze pro QnA Maker v Go
+description: Tento rychlý start založený na REST vás provede programovou aktualizací ukázkové znalostní báze služby QnA Maker. Definice JSON, kterou použijete k aktualizaci znalostní báze, umožňuje přidávat, měnit nebo odstraňovat páry otázek a odpovědí.
 services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: quickstart
-ms.date: 09/12/2018
+ms.date: 10/19/2018
 ms.author: diberry
-ms.openlocfilehash: b447b77eb1fdd9135f7d15a791414d166194b2dd
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 5275184994dce446a7ca572a049f3860c4782139
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389305"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49646877"
 ---
-# <a name="update-a-knowledge-base"></a>Aktualizace znalostní báze
+# <a name="quickstart-update-a-knowledge-base-in-qna-maker-using-go"></a>Rychlý start: Aktualizace znalostní báze ve službě QnA Maker pomocí jazyka Go
 
-Následující kód aktualizuje existující znalostní báze pomocí metody [Update](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da7600).
+Tento rychlý start vás provede programovou aktualizací stávající znalostní báze QnA Maker.  Tento soubor JSON umožňuje aktualizovat znalostní bázi přidáním nových zdrojů dat, změnou zdrojů dat nebo odstraněním zdrojů dat.
+
+Toto rozhraní API je ekvivalentní úpravě a následnému použití tlačítka **Save and train** (Uložit a natrénovat) na portálu služby QnA Maker.
+
+Tento rychlý start volá rozhraní API služby QnA Maker:
+* [Update](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da7600) – Model pro znalostní bázi je definován v kódu ve formátu JSON poslaném v těle požadavku rozhraní API. 
+* [Get Operation Details](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/operations_getoperationdetails)
 
 1. Ve svém oblíbeném prostředí IDE vytvořte nový projekt Go.
 2. Přidejte níže uvedený kód.
@@ -191,7 +197,7 @@ Press any key to continue.
 
 ## <a name="get-request-status"></a>Stav žádosti Get
 
-Metodu [Operation](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/operations_getoperationdetails) můžete volat za účelem kontroly stavu žádosti o vytvoření nebo aktualizaci znalostní báze. Pokud chcete zjistit, jak se tato metoda používá, podívejte se na vzorový kód pro metodu [Create](#Create) nebo [Update](#Update).
+Metodu [Operation](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/operations_getoperationdetails) můžete volat za účelem kontroly stavu žádosti o vytvoření nebo aktualizaci znalostní báze. Pokud chcete zjistit, jak se tato metoda používá, podívejte se na vzorový kód pro rychlý start týkající se [vytvoření](create-new-kb-go.md).
 
 ## <a name="next-steps"></a>Další kroky
 

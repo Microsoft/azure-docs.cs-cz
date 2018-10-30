@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Vytvoření projektu detekce objektů – rozhraní API Custom Vision, Python'
+title: 'Kurz: Vytvoření projektu detekce objektů pomocí sady Custom Vision SDK pro Python – Custom Vision Service'
 titlesuffix: Azure Cognitive Services
 description: Vytvořte projekt, přidejte značky, nahrajte obrázky, vytrénujte svůj projekt a vytvořte předpověď pomocí výchozího koncového bodu.
 services: cognitive-services
@@ -10,20 +10,20 @@ ms.component: custom-vision
 ms.topic: tutorial
 ms.date: 05/03/2018
 ms.author: areddish
-ms.openlocfilehash: f49f5ab32d834b32de54be2d96c3671ad46f79f3
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 36b283965766130e86e079c807139998cd01c8a6
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46363696"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49958529"
 ---
-# <a name="tutorial-build-an-object-detection-project-with-python"></a>Kurz: Vytvoření projektu detekce objektů pomocí Pythonu
+# <a name="tutorial-create-an-object-detection-project-with-the-custom-vision-sdk-for-python"></a>Kurz: Vytvoření projektu detekce objektů pomocí sady Custom Vision SDK pro Python
 
 Prozkoumejte základní skript Pythonu, který používá rozhraní API pro počítačové zpracování obrazu k vytvoření projektu detekce objektů. Po jeho vytvoření můžete přidat označené oblasti, nahrát obrázky, vytrénovat projekt, získat adresu URL výchozího koncového bodu předpovědi projektu a použít tento koncový bod k programovému testování obrázku. Tento opensourcový příklad použijte jako šablonu pro vytvoření vlastní aplikace pomocí rozhraní Custom Vision API.
 
 ## <a name="prerequisites"></a>Požadavky
 
-K použití tohoto kurzu potřebujete:
+Pro tento kurz budete muset:
 
 - Nainstalovat Python 2.7+ nebo Python 3.5+.
 - Nainstalovat pip.

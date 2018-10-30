@@ -12,12 +12,12 @@ ms.author: daredis
 ms.reviewer: vanto, carlrab
 manager: craigg
 ms.date: 09/07/2018
-ms.openlocfilehash: ceed69503900b38d7f6a29bbe116ab9a4d54e396
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: b81e76201f7f751ee01e903d83f316811abaf483
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857954"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49955469"
 ---
 # <a name="secure-your-azure-sql-database"></a>Zabezpečení služby Azure SQL Database
 
@@ -59,7 +59,7 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 Databáze SQL jsou chráněné bránou firewall v Azure. Ve výchozím nastavení se všechna připojení k serveru a databázím uvnitř serveru odmítají, s výjimkou připojení z dalších služeb Azure. Další informace najdete v tématu [Pravidla brány firewall na úrovni serveru a databáze služby Azure SQL Database](sql-database-firewall-configure.md).
 
-Nejbezpečnější konfigurací je nastavit možnost Povolit přístup ke službám Azure na VYPNUTO. Pokud se k databázi potřebujete připojit z cloudové služby nebo virtuálního počítače Azure, měli byste vytvořit [vyhrazenou IP adresu](../virtual-network/virtual-networks-reserved-public-ip.md) a povolit přístup přes bránu firewall pouze této vyhrazené IP adrese. 
+Nejbezpečnější konfigurací je nastavit možnost Povolit přístup ke službám Azure na VYPNUTO. Pokud se k databázi potřebujete připojit z cloudové služby nebo virtuálního počítače Azure, měli byste vytvořit [vyhrazenou IP adresu (klasické nasazení)](../virtual-network/virtual-networks-reserved-public-ip.md) a povolit přístup přes bránu firewall pouze této vyhrazené IP adrese. Pokud používáte model nasazení [Resource Manager](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm), k prostředku se přiřadí vyhrazená veřejná IP adresa a této IP adrese byste měli povolit přístup přes bránu firewall.
 
 Pomocí těchto kroků vytvořte [pravidlo brány firewall na úrovni serveru SQL Database](sql-database-firewall-configure.md), aby váš server umožňoval připojení z konkrétní IP adresy. 
 

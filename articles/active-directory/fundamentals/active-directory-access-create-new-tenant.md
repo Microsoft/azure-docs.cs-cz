@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 09/10/2018
 ms.author: lizross
 custom: it-pro
-ms.openlocfilehash: 8ef68c8afcf61a1a11c341a679443071aece9812
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: eacb2e7c52adae9de0b74c3dade59446cc8459ed
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46362999"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50023540"
 ---
 # <a name="quickstart-access-azure-active-directory-to-create-a-new-tenant"></a>Rychlý start: Přístup ke službě Azure Active Directory a vytvoření nového tenanta
 Pomocí portálu Azure Active Directory (Azure AD) můžete provádět všechny úlohy správy, včetně vytvoření nového tenanta pro vaši organizaci. 
@@ -24,13 +24,6 @@ Pomocí portálu Azure Active Directory (Azure AD) můžete provádět všechny 
 V tomto rychlém startu se dozvíte, jak se dostat na web Azure Portal a do služby Azure Active Directory a jak vytvořit základního tenanta pro vaši organizaci.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
-
-## <a name="prerequisites"></a>Požadavky
-Než začnete, budete muset:
-
-- Ověřit, že vaše organizace má platnou licenci Azure AD.
-
-- Ověřit, že jste globální správce.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 Přihlaste se k webu [Azure Portal](https://portal.azure.com/) vaší organizace pomocí účtu globálního správce.
@@ -76,3 +69,5 @@ Pokud tuto aplikaci nebudete používat, můžete tenanta odstranit provedením 
 - Přidejte skupiny a členy, viz [Vytvoření základní skupiny a přidání členů](active-directory-groups-create-azure-portal.md)
 
 - Přečtěte si informace o tom, jak vám [přístup na základě role pomocí služby Privileged Identity Management](../../role-based-access-control/pim-azure-resource.md) a [podmíněný přístup](../../role-based-access-control/conditional-access-azure-management.md) může pomoci spravovat přístup k aplikacím a prostředkům vaší organizace.
+
+- Přečtěte si o službě Azure AD, včetně [základních licenčních informací, terminologie a souvisejících funkcích](active-directory-whatis.md).

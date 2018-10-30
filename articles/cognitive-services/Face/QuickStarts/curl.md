@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Rozpoznávání tváří na obrázku – rozhraní API pro rozpoznávání tváře, cURL'
+title: 'Rychlý start: Rozpoznávání tváří na obrázku pomocí rozhraní REST API a cURL'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu budete rozpoznávat tváře z obrázku pomocí rozhraní API pro rozpoznávání tváře a jazyka cURL.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: face-api
 ms.topic: quickstart
 ms.date: 05/10/2018
 ms.author: pafarley
-ms.openlocfilehash: da18b7b3666863742f987b2ee0da297c0838d266
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: ab403ec6a9db4d1a0dc03074044eeb424e4ba875
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49343057"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49953344"
 ---
-# <a name="quickstart-detect-faces-in-an-image-using-curl"></a>Rychlý start: Rozpoznávání tváří na obrázku pomocí cURL
+# <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-curl"></a>Rychlý start: Rozpoznávání tváří na obrázku pomocí rozhraní REST API a cURL
 
 V tomto rychlém startu budete rozpoznávat tváře na obrázku pomocí rozhraní API pro rozpoznávání tváře.
 

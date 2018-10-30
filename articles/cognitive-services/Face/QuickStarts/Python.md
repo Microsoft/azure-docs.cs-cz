@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Rozpoznávání tváří na obrázku – rozhraní API pro rozpoznávání tváře, Python'
+title: 'Rychlý start: Rozpoznávání tváří na obrázku pomocí rozhraní REST API a Pythonu'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu budete rozpoznávat tváře na obrázku pomocí rozhraní API pro rozpoznávání tváře s Pythonem.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: face-api
 ms.topic: quickstart
 ms.date: 05/24/2018
 ms.author: pafarley
-ms.openlocfilehash: 581c2a7d4508833647d4dbb9861000fddd75cde8
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 76a9260d534057e3a03f8c8f1d7420329713ea80
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49339577"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49957271"
 ---
-# <a name="quickstart-detect-faces-in-an-image-using-python"></a>Rychlý start: Rozpoznávání tváří na obrázku pomocí Pythonu
+# <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-python"></a>Rychlý start: Rozpoznávání tváří na obrázku pomocí rozhraní REST API a Pythonu
 
 V tomto rychlém startu budete pomocí služby Rozpoznávání tváře rozpoznávat lidské tváře na vzdáleném obrázku. Rozpoznané tváře se ohraničí obdélníky a překryjí pohlavím a věkem každé osoby. Pokud chcete použít místní obrázek, podívejte se na syntaxi v článku [Počítačové zpracování obrazu: Analýza místního obrázku pomocí Pythonu](../../Computer-vision/QuickStarts/python-disk.md).
 

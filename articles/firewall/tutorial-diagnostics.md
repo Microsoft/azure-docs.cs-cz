@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 9/24/2018
+ms.date: 10/24/2018
 ms.author: victorh
-ms.openlocfilehash: 1940fb210481dc75fe48d110776185e90cb3e42f
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 875efddfff9b50ab05665cb8c158467dc46c8d0d
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46991041"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49987424"
 ---
 # <a name="tutorial-monitor-azure-firewall-logs-and-metrics"></a>Kurz: Monitorování protokolů a metrik brány Azure Firewall
 
@@ -51,11 +51,11 @@ Než se data v protokolech po dokončení tohoto procesu zapnutí protokolován�
 5. V tomto příkladu ukládá protokoly služba Log Analytics, takže jako název zadejte **Log Analytics brány Firewall**.
 6. Pracovní prostor nakonfigurujete kliknutím na **Poslat do Log Analytics**. Diagnostické protokoly můžete ukládat také pomocí služby center událostí a účtu úložiště.
 7. V části **Log Analytics** klikněte na **Konfigurovat**.
-8. Na stránce Pracovní prostory OMS klikněte na **Vytvořit nový pracovní prostor**.
-9. Na stránce **Pracovní prostor Log Analytics** zadejte pro **Pracovní prostor OMS** nový název **firewall-oms**.
+8. Na stránce Pracovní prostory Log Analytics klikněte na **Vytvořit nový pracovní prostor**.
+9. Na stránce **Pracovní prostor Log Analytics** zadejte pro **Pracovní prostor Log Analytics** nový název **firewall-oms**.
 10. Vyberte předplatné, použijte existující skupinu prostředků brány firewall (**Test-FW-RG**), jako umístění vyberte **USA – východ** a u cenové úrovně zvolte **Free**.
 11. Klikněte na **OK**.
-   ![Spuštění procesu konfigurace][1]
+   ![Spuštění procesu konfigurace][1] Pracovní prostory OMS se teď označují jako pracovní prostory Log Analytics.  
 12. V části **Protokol** začněte shromažďovat protokoly pravidel aplikace a sítě kliknutím na **AzureFirewallApplicationRule** a **AzureFirewallNetworkRule**.
    ![Uložení nastavení diagnostiky][2]
 13. Klikněte na **Uložit**.
@@ -95,6 +95,8 @@ Data protokolu aktivit si můžete zobrazit použitím jedné z následujících
 ## <a name="view-and-analyze-the-network-and-application-rule-logs"></a>Zobrazení a analyzování protokolů pravidel sítě a aplikace
 
 Azure [Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.md) shromažďuje soubory protokolů čítačů a událostí. Zahrnuje vizualizace a výkonné vyhledávací funkce k analýze protokolů.
+
+Ukázkové dotazy Log Analytics pro službu Azure Firewall najdete v [ukázkách Log Analytics pro Azure Firewall](log-analytics-samples.md).
 
 Můžete se také připojit k účtu úložiště a načíst položky protokolu JSON s protokoly přístupu a výkonu. Po stažení souborů JSON je můžete převést do formátu CSV a zobrazit si je v Excelu, Power BI nebo jiném nástroji s vizualizací dat.
 

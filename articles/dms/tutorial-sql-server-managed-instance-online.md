@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
 ms.date: 10/10/2018
-ms.openlocfilehash: 56bd3ab61045ff99601ed50cd27332b370204795
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 4d46a438708e2e72d625f5104293b4605f7b096d
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49068022"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49946075"
 ---
 # <a name="migrate-sql-server-to-azure-sql-database-managed-instance-online-using-dms"></a>Online migrace SQL Serveru do spravované instance Azure SQL Database pomocí DMS
 Pomocí služby Azure Database Migration Service můžete migrovat databáze z místní instance SQL Serveru do [spravované instance Azure SQL Database](../sql-database/sql-database-managed-instance.md) s minimálními výpadky. Další metody, které můžou vyžadovat určitou ruční práci, najdete v článku [Migrace instance SQL Serveru do spravované instance Azure SQL Database](../sql-database/sql-database-managed-instance-migrate.md).
@@ -32,6 +32,10 @@ V tomto kurzu se naučíte:
 > * Vytvoření projektu migrace a spuštění online migrace pomocí služby Azure Database Migration Service
 > * Monitorování migrace
 > * Spuštění přímé migrace, jakmile budete připraveni
+
+[!INCLUDE [online-offline](../../includes/database-migration-service-offline-online.md)]
+
+Tento článek popisuje online migraci z SQL Serveru do spravované instance Azure SQL Database. Informace o offline migraci najdete v tématu [Offline migrace SQL Serveru do spravované instance Azure SQL Database pomocí DMS](tutorial-sql-server-to-managed-instance.md).
 
 ## <a name="prerequisites"></a>Požadavky
 Pro absolvování tohoto kurzu je potřeba provést následující:

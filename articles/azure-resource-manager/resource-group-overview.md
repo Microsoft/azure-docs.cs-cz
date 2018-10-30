@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/26/2018
 ms.author: tomfitz
-ms.openlocfilehash: 841f82595257c97c15398347a3e1605219d1a534
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 2c5d0dc322a4a56f0de9bd3c1af7efc158131a89
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394414"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49954211"
 ---
 # <a name="azure-resource-manager-overview"></a>Přehled Azure Resource Manageru
 Infrastrukturu aplikace obvykle tvoří celá řada komponent, může to být třeba virtuální počítač, účet úložiště a virtuální síť nebo webová aplikace, databáze, databázový server a služby jiných výrobců. Tyto komponenty nevidíte jako samostatné entity, ale jako související a vzájemně provázané části jedné entity. Chcete je nasadit, spravovat a monitorovat jako skupinu. Azure Resource Manager umožňuje pracovat s prostředky ve vašem řešení jako se skupinou. Všechny prostředky pro vaše řešení můžete nasadit, aktualizovat nebo odstranit v rámci jediné koordinované operace. Pro nasazení použijete šablonu a tato šablona může fungovat v různých prostředích, jako například v testovacím, přípravném nebo produkčním prostředí. Resource Manager poskytuje funkce zabezpečení, auditování a označování, které vám po nasazení pomohou prostředky spravovat. 
@@ -64,6 +64,30 @@ Následující návrhy vám pomohou při práci s vašimi řešeními plně vyu�
 Pokyny k tomu, jak můžou podniky používat Resource Manager k efektivní správě předplatných, najdete v části [Základní kostra Azure Enterprise – zásady správného řízení pro předplatná](/azure/architecture/cloud-adoption-guide/subscription-governance?toc=%2fazure%2fazure-resource-manager%2ftoc.json).
 
 Doporučení týkající se vytváření šablon Resource Manageru, které můžete používat v globálních oblastech Azure, suverénních cloudech Azure a ve službě Azure Stack, najdete v článku o [vývoji šablon Azure Resource Manageru pro konzistenci cloudu](templates-cloud-consistency.md).
+
+## <a name="quickstarts-and-tutorials"></a>Rychlé starty a kurzy
+
+V následujících rychlých startech a kurzech se naučíte vyvíjet šablony Resource Manageru:
+
+- Šablony Rychlý start
+
+    |Název|Popis|
+    |------|-----|
+    |[Použití portálu Azure Portal](./resource-manager-quickstart-create-templates-use-the-portal.md)|Vygenerování šablony pomocí portálu a proces úprav a nasazení šablony|
+    |[Použití Visual Studio Code](./resource-manager-quickstart-create-templates-use-visual-studio-code.md)|Vytváření a úpravy šablon pomocí Visual Studio Code a postup nasazování šablon pomocí služby Azure Cloud Shell|
+    |[Použití sady Visual Studio](./vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)|Vytváření, úpravy a nasazování šablon pomocí sady Visual Studio|
+
+- Kurzy
+
+    |Název|Popis|
+    |------|-----|
+    |[Využití referenčních informací k šablonám](./resource-manager-tutorial-create-encrypted-storage-accounts.md)|Při vývoji šablon můžete využít referenční dokumentaci k šablonám. V tomto kurzu zjistíte schéma účtu úložiště a pomocí těchto informací vytvoříte šifrovaný účet úložiště.|
+    |[Vytvoření víc instancí](./resource-manager-tutorial-create-multiple-instances.md)|Můžete vytvořit více instancí prostředků Azure. V tomto kurzu vytvoříte více instancí účtu úložiště.|
+    |[Nastavení pořadí nasazování prostředků](./resource-manager-tutorial-create-templates-with-dependent-resources.md)|Můžete definovat závislosti prostředků. V tomto kurzu vytvoříte virtuální síť, virtuální počítač a závislé prostředky Azure. Zjistíte, jak se definují závislosti.|
+    |[Použití podmínek](./resource-manager-tutorial-use-conditions.md)|Na základě hodnot určitých parametrů můžete nasazovat prostředky. V tomto kurzu definujete šablonu, která v závislosti na hodnotě parametru vytvoří nový účet úložiště nebo použije existující účet úložiště.|
+    |[Integrace trezoru klíčů](./resource-manager-tutorial-use-key-vault.md)|Tajné klíče a hesla můžete načítat ze služby Azure Key Vault. V tomto kurzu vytvoříte virtuální počítač.  Heslo správce virtuálního počítače se načte ze služby Key Vault.|
+    |[Vytvoření propojených šablon](./resource-manager-tutorial-create-linked-templates.md)|Šablony můžete modularizovat a volat z nich jiné šablony. V tomto kurzu vytvoříte virtuální síť, virtuální počítač a závislé prostředky.  Závislý účet úložiště je definovaný v propojené šabloně. |
+    |[Použití postupů bezpečného nasazení](./deployment-manager-tutorial.md)|Použití Azure Deployment Manageru |
 
 ## <a name="resource-groups"></a>Skupiny prostředků
 Při definování skupin prostředků byste měli vzít v úvahu některé důležité faktory:
@@ -214,9 +238,9 @@ Azure poskytuje také několik rolí specifických pro prostředky. Mezi ty bě�
 
 V některých případech chcete spustit kód nebo skript, který bude mít přístup k prostředkům, ale ne tak, aby běžel pod přihlašovacími údaji určitého uživatele. Místo toho pro aplikaci vytvoříte identitu, která se označuje jako instanční objekt (nebo také objekt služby), a přiřadíte jí odpovídající roli. V Resource Manageru můžete pro tuto aplikaci vytvořit přihlašovací údaje a ověřit ji pomocí kódu programu. Další informace o vytváření instančních objektů najdete v následujících tématech:
 
-* [Vytvoření instančního objektu pro přístup k prostředkům pomocí Azure PowerShellu](resource-group-authenticate-service-principal.md)
+* [Vytvoření instančního objektu pro přístup k prostředkům pomocí Azure PowerShellu](../active-directory/develop/howto-authenticate-service-principal-powershell.md)
 * [Vytvoření instančního objektu pro přístup k prostředkům pomocí rozhraní příkazového řádku Azure](resource-group-authenticate-service-principal-cli.md)
-* [Vytvoření aplikace Azure Active Directory a instančního objektu s přístupem k prostředkům pomocí portálu](resource-group-create-service-principal-portal.md)
+* [Vytvoření aplikace Azure Active Directory a instančního objektu s přístupem k prostředkům pomocí portálu](../active-directory/develop/howto-create-service-principal-portal.md)
 
 Je také možné explicitně zamknout důležité prostředky a zabránit tak uživatelům v jejich změně nebo odstranění. Další informace najdete v tématu [Zamknutí prostředků pomocí Azure Resource Manageru](resource-group-lock-resources.md).
 

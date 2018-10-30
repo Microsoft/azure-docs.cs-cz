@@ -1,23 +1,23 @@
 ---
-title: 'Rychlý start: Získání podporovaných jazyků – Translator Text, Node.js'
+title: 'Rychlý start: Získání podporovaných jazyků, Node.js – Translator Text API'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu získáte seznam jazyků podporovaných pro překlad, transkripci a vyhledávání ve slovníku a příklady s použitím služby Translator Text API a Node.js.
 services: cognitive-services
-author: noellelacharite
+author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/21/2018
-ms.author: nolachar
-ms.openlocfilehash: a3b9dde8983b87a63858b3eb1381f7c74545cb1a
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.author: erhopf
+ms.openlocfilehash: ff921243df078010bdc825d28b55d07333016774
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46122854"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49646405"
 ---
-# <a name="quickstart-get-supported-languages-with-nodejs"></a>Rychlý start: Získání podporovaných jazyků s Node.js
+# <a name="quickstart-get-supported-languages-with-the-translator-text-rest-api-nodejs"></a>Rychlý start: Získání podporovaných jazyků pomocí rozhraní REST API služby Translator Text (Node.js)
 
 V tomto rychlém startu získáte seznam jazyků podporovaných pro překlad, transkripci a vyhledávání ve slovníku a příklady s použitím služby Translator Text API.
 

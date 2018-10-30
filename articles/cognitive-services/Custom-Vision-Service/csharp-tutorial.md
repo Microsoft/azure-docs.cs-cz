@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Vytvoření aplikace Windows pro službu Custom Vision Service s C#'
+title: 'Kurz: Vytvoření projektu klasifikace obrázků pomocí sady Custom Vision SDK pro jazyk C#'
 titlesuffix: Azure Cognitive Services
 description: Vytvořte projekt, přidejte značky, nahrajte obrázky, vytrénujte svůj projekt a vytvořte předpověď pomocí výchozího koncového bodu.
 services: cognitive-services
@@ -10,16 +10,16 @@ ms.component: custom-vision
 ms.topic: tutorial
 ms.date: 05/03/2018
 ms.author: anroth
-ms.openlocfilehash: 9e5ed71d4620f7ffeac8acb15f90d67964a86870
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: e046fe452a13384ae7929be805c6252d6ad2fbf9
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46366637"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49953039"
 ---
-# <a name="tutorial-use-the-custom-vision-service-from-a-c-application"></a>Kurz: Použití služby Custom Vision Service z aplikace v jazyce C#
+# <a name="tutorial-create-an-image-classification-project-with-the-custom-vision-sdk-for-c"></a>Kurz: Vytvoření projektu klasifikace obrázků pomocí sady Custom Vision SDK pro jazyk C#
 
-Naučte se používat službu Custom Vision Service z aplikace v jazyce C#. Po jeho vytvoření můžete přidat značky, nahrát obrázky, vytrénovat projekt, získat adresu URL výchozího koncového bodu předpovědi projektu a použít tento koncový bod k programovému testování obrázku. Tento opensourcový příklad použijte jako šablonu pro vytvoření vlastní aplikace pro Windows pomocí rozhraní Custom Vision Service API.
+Zjistěte, jak používat sadu Custom Vision Service SDK v aplikaci jazyka C#. Po jeho vytvoření můžete přidat značky, nahrát obrázky, vytrénovat projekt, získat adresu URL výchozího koncového bodu předpovědi projektu a použít tento koncový bod k programovému testování obrázku. Tento opensourcový příklad použijte jako šablonu pro vytvoření vlastní aplikace pro Windows pomocí rozhraní Custom Vision Service API.
 
 ## <a name="prerequisites"></a>Požadavky
 

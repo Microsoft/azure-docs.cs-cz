@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Vytvoření projektu detekce objektů – rozhraní API Custom Vision, Java'
+title: 'Kurz: Vytvoření projektu detekce objektů pomocí sady Custom Vision SDK pro Javu – Custom Vision Service'
 titlesuffix: Azure Cognitive Services
 description: Vytvořte projekt, přidejte značky, nahrajte obrázky, vytrénujte svůj projekt a vytvořte předpověď pomocí výchozího koncového bodu.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: custom-vision
 ms.topic: tutorial
 ms.date: 08/28/2018
 ms.author: areddish
-ms.openlocfilehash: 661242e4962a8218c48d7ea66d8a6f728b5154c8
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: d4af3315cfca18da594730cc402236684f81bfc8
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46365010"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49957331"
 ---
-# <a name="tutorial-build-an-object-detection-project-with-java"></a>Kurz: Sestavení projektu detekce objektů s Javou
+# <a name="tutorial-create-an-object-detection-project-with-the-custom-vision-sdk-for-java"></a>Kurz: Vytvoření projektu detekce objektů pomocí sady Custom Vision SDK pro Javu
 
 Prozkoumejte základní aplikaci v Javě, která používá rozhraní API pro počítačové zpracování obrazu k vytvoření projektu detekce objektů. Po jeho vytvoření můžete přidat označené oblasti, nahrát obrázky, vytrénovat projekt, získat adresu URL výchozího koncového bodu předpovědi projektu a použít tento koncový bod k programovému testování obrázku. Tento opensourcový příklad použijte jako šablonu pro vytvoření vlastní aplikace pomocí rozhraní Custom Vision API.
 
@@ -221,7 +221,7 @@ private static byte[] GetImage(String folder, String fileName)
 
 ## <a name="train-the-project"></a>Trénování projektu
 
-Vytvoří se tím první iterace v projektu a označí tuto iteraci jako výchozí iteraci. 
+Vytvoří se tak první iterace v projektu a označí se jako výchozí iterace. 
 
 ```java
 System.out.println("Training...");

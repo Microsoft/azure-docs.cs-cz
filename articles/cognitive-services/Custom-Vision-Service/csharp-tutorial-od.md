@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Vytvoření projektu zjišťování objektů v C# – Custom Vision Service'
+title: 'Kurz: Vytvoření projektu detekce objektů pomocí sady Custom Vision SDK pro jazyk C# – Custom Vision Service'
 titlesuffix: Azure Cognitive Services
 description: Vytvořte projekt, přidejte značky, nahrajte obrázky, vytrénujte svůj projekt a vytvořte předpověď pomocí výchozího koncového bodu.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: custom-vision
 ms.topic: tutorial
 ms.date: 05/07/2018
 ms.author: areddish
-ms.openlocfilehash: d04fb86abbc0f174e895c166d97fc5467831206f
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 222a17f1d39bc52d1e5ff34e421d0203d80dd1bd
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46366909"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49958495"
 ---
-# <a name="tutorial-use-custom-vision-api-to-build-an-object-detection-project-in-c"></a>Kurz: Použití rozhraní Custom Vision API k vytvoření projektu zjišťování objektů
+# <a name="tutorial-create-an-object-detection-project-with-the-custom-vision-sdk-for-c"></a>Kurz: Vytvoření projektu detekce objektů pomocí sady Custom Vision SDK pro jazyk C#
 
 Naučte se používat základní aplikaci Windows, která používá rozhraní API pro počítačové zpracování obrazu k vytvoření projektu zjišťování objektů. Po jeho vytvoření můžete přidat označené oblasti, nahrát obrázky, vytrénovat projekt, získat adresu URL výchozího koncového bodu předpovědi projektu a použít tento koncový bod k programovému testování obrázku. Tento opensourcový příklad použijte jako šablonu pro vytvoření vlastní aplikace pro Windows pomocí rozhraní Custom Vision API.
 

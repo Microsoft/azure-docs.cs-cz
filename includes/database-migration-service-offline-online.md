@@ -1,0 +1,2 @@
+> [!TIP]
+> Pokud do Azure migrujete databáze pomocí služby Azure Database Migration Service, můžete provést *offline* nebo *online* migraci. V případě offline migrace dojde při spuštění migrace k výpadku aplikace. V případě online migrace je doba výpadku omezená na dobu přímé migrace na konci migrace. Doporučujeme otestovat offline migraci a určit, jestli je výpadek přijatelný. Pokud není, proveďte online migraci.

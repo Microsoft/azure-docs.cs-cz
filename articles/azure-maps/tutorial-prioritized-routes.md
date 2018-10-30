@@ -1,20 +1,20 @@
 ---
 title: Více tras v případě použití Azure Maps | Microsoft Docs
 description: Vyhledání tras pro různé režimy dopravy s využitím Azure Maps
-author: dsk-2015
-ms.author: dkshir
-ms.date: 10/02/2018
+author: walsehgal
+ms.author: v-musehg
+ms.date: 10/22/2018
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 340bf83f07b9e730cc43baccc60a39f5ba1f9942
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 864f662cd6be3c5929166db92f2dad92b9c6586e
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48815303"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49648203"
 ---
 # <a name="find-routes-for-different-modes-of-travel-using-azure-maps"></a>Vyhledání tras pro různé režimy dopravy s využitím Azure Maps
 
@@ -74,15 +74,16 @@ Následující kroky ukazují, jak vytvořit statickou stránku HTML s vložený
     </html>
     ```
     V hlavičce HTML jsou vložená umístění prostředků pro soubory CSS a JavaScript pro knihovnu Azure Maps. Segment *script* v těle HTML bude obsahovat vložený kód JavaScriptu pro mapu.
+
 3. Do bloku *script* v souboru HTML přidejte následující kód JavaScriptu. Nahraďte řetězec **\<your account key\>** primárním klíčem, který jste zkopírovali ze svého účtu Maps. Pokud mapě neurčíte, kam se má zaměřit, zobrazí se na ní celý svět. Tento kód pro mapu nastaví středový bod a deklaruje úroveň přiblížení, abyste se ve výchozím nastavení mohli zaměřit na konkrétní oblast.
 
     ```JavaScript
     // Instantiate map to the div with id "map"
-    var MapsAccountKey = "<your account key>";
+    var mapCenterPosition = [-73.985708, 40.75773];
+    atlas.setSubscriptionKey("<your account key>");
     var map = new atlas.Map("map", {
-        "subscription-key": MapsAccountKey
-         center: [-118.2437, 34.0522],
-         zoom: 12
+      center: mapCenterPosition,
+      zoom: 11
     });
     ```
     Objekt **atlas.Map** umožňuje ovládání vizuální a interaktivní webové mapy a je součástí rozhraní API pro mapové ovládací prvky prostředí Azure.
@@ -93,10 +94,10 @@ Následující kroky ukazují, jak vytvořit statickou stránku HTML s vložený
 
 ## <a name="visualize-traffic-flow"></a>Vizualizace aktuálního provozu
 
-1. Přidejte do mapy zobrazení aktuálního provozu.  **map.addEventListener** zajišťuje načtení všech funkcí map přidaných do mapy po plném načtení mapy.
+1. Přidejte do mapy zobrazení aktuálního provozu.  **map.events.add** zajišťuje načtení všech funkcí map přidaných do mapy po plném načtení mapy.
 
     ```JavaScript
-    map.addEventListener("load", function() {
+    map.events.add("load", function() {
         // Add Traffic Flow to the Map
         map.setTraffic({
             flow: "relative"
@@ -146,7 +147,7 @@ Pro účely tohoto kurzu jako počáteční bod nastavte fiktivní společnost F
         padding: 100
     });
     
-    map.addEventListener("load", function() { 
+    map.events.add("load", function() { 
         // Add pins to the map for the start and end point of the route
         map.addPins([startPin, destinationPin], {
             name: "route-pins",
@@ -155,7 +156,7 @@ Pro účely tohoto kurzu jako počáteční bod nastavte fiktivní společnost F
         });
     });
     ```
-    Volání **map.setCameraBounds** upraví okno mapy podle souřadnic počátečního a koncového bodu. **map.addEventListener** zajišťuje načtení všech funkcí map přidaných do mapy po plném načtení mapy. Rozhraní API **map.addPins** přidá do mapového ovládacího prvku body jako vizuální součásti.
+    Volání **map.setCameraBounds** upraví okno mapy podle souřadnic počátečního a koncového bodu. **map.events.add** zajišťuje načtení všech funkcí map přidaných do mapy po plném načtení mapy. Rozhraní API **map.addPins** přidá do mapového ovládacího prvku body jako vizuální součásti.
 
 3. Uložte soubor a aktualizujte prohlížeč. Na mapě se zobrazí špendlíky. Přestože jste pro mapu deklarovali středový bod v Los Angeles, volání **map.setCameraBounds** mapu posunulo tak, aby se zobrazil počáteční a koncový bod.
 
@@ -165,7 +166,7 @@ Pro účely tohoto kurzu jako počáteční bod nastavte fiktivní společnost F
 
 ## <a name="render-routes-prioritized-by-mode-of-travel"></a>Vykreslovat trasy s určenou prioritou podle režimu dopravy
 
-Tato část ukazuje způsob použití rozhraní API Maps Route Service k vyhledání více tras z daného počátečního bodu do cíle v závislosti na režimu dopravy. Route Service poskytuje rozhraní API pro plánování *nejrychlejší*, *nejkratší*, *úsporné* nebo *vzrušující* trasy mezi dvěma místy s přihlédnutím k aktuální dopravní situaci. Umožňuje uživatelům také plánovat trasy v budoucnu s použitím rozsáhlé databáze Azure s historickými dopravními informacemi a předvídat dobu trvání trasy pro kterýkoli den a čas. Další informace najdete v tématu [Získání pokynů k trase](https://docs.microsoft.com/rest/api/maps/route/getroutedirections).  Všechny následující bloky kódu by se měly přidat **do modulu eventListener pro načtení mapy**, aby se zajistilo jejich načtení po úplném načtení mapy.
+Tato část ukazuje způsob použití rozhraní API Maps Route Service k vyhledání více tras z daného počátečního bodu do cíle v závislosti na režimu dopravy. Route Service poskytuje rozhraní API pro plánování *nejrychlejší*, *nejkratší*, *úsporné* nebo *vzrušující* trasy mezi dvěma místy s přihlédnutím k aktuální dopravní situaci. Umožňuje uživatelům také plánovat trasy v budoucnu s použitím rozsáhlé databáze Azure s historickými dopravními informacemi a předvídat dobu trvání trasy pro kterýkoli den a čas. Další informace najdete v tématu [Získání pokynů k trase](https://docs.microsoft.com/rest/api/maps/route/getroutedirections). Všechny následující bloky kódu by se měly přidat **do modulu eventListener pro načtení mapy**, aby se zajistilo jejich načtení po úplném načtení mapy.
 
 1. Nejprve do mapy přidejte novou vrstvu, na které se zobrazí cesta trasy neboli *LineString*. V tomto kurzu existují dvě různé trasy **car-route** a **truck-route** a obě trasy mají vlastní styl. Do bloku *script* přidejte následující kód JavaScriptu:
 
@@ -233,7 +234,7 @@ Tato část ukazuje způsob použití rozhraní API Maps Route Service k vyhled�
     // Execute the car route query then add the route to the map once a response is received  
     client.route.getRouteDirections(routeQuery).then(response => {
         // Parse the response into GeoJSON
-        var geoJsonResponse = new tlas.service.geojson
+        var geoJsonResponse = new atlas.service.geojson
             .GeoJsonRouteDiraectionsResponse(response);
 
         // Get the first in the array of routes and add it to the map 

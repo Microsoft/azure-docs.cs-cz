@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: overview
 ms.date: 09/27/2018
 ms.author: alkohli
-ms.openlocfilehash: 5a95675d5e37adec5fb1f1542daad329484a2a4c
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 1d38b563e2a272acdbaa4ea0c2a169a04e798d12
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49092606"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49649393"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: nejčastější dotazy
 
@@ -217,7 +217,7 @@ A.  Jakmile se data zkopírují do Azure, budou z disků zařízení Data Box be
 ## <a name="audit-report"></a>Sestava auditování
 
 ### <a name="how-does-azure-data-box-service-help-support-customers-chain-of-custody-procedure"></a>Jak služba Azure Data Box podporuje řetězec opatrovnictví?
-A.  Služba Azure Data Box nativně nabízí sestavy, které můžete použít k evidenci řetězce opatrovnictví. Protokol auditu a protokol kopírování jsou k dispozici v účtu úložiště Azure a historii objednávek i se svou objednávkou si po vyřízení objednávky můžete stáhnout z webu Azure Portal.
+A.  Služba Azure Data Box nativně nabízí sestavy, které můžete použít k evidenci řetězce opatrovnictví. Protokoly auditu a kopírování jsou k dispozici ve vašem účtu úložiště v Azure a po dokončení objednávky si na webu Azure Portal můžete [stáhnout historii objednávky](data-box-portal-admin.md#download-order-history).
 
 
 ### <a name="what-type-of-reporting-is-available-to-support-chain-of-custody"></a>Jaký typ sestav je k dispozici pro řetězec opatrovnictví?
@@ -230,7 +230,7 @@ A.  Řetězec opatrovnictví podporují následující sestavy:
 - Sanitarizace zařízení Data Box (podle norem NIST 800 88R1) po zkopírování dat do účtu Azure Storage.
 
 ### <a name="are-the-carrier-tracking-logs--from-upsdhl-available"></a>Jsou od dopravců (UPS/DHL) k dispozici protokoly o sledování zásilky? 
-A.  Protokoly dopravců o sledování zásilky jsou zaznamenané v sestavě s protokolem auditu zařízení Data Box. Tuto sestavu máte k dispozici po vrácení zařízení do datacentra Azure a vymazání dat z disků zařízení. Pokud potřebujete informace hned, přejděte rovnou na webové stránky dopravce a zadejte číslo sledované zásilky, abyste získali informace o sledování.
+A.  Protokoly dopravců o sledování zásilky jsou zaznamenané v historii objednávky Data Boxu. Tuto sestavu máte k dispozici po vrácení zařízení do datacentra Azure a vymazání dat z disků zařízení. Pokud potřebujete informace hned, přejděte rovnou na webové stránky dopravce a zadejte číslo sledované zásilky, abyste získali informace o sledování.
 
 ### <a name="can-i-transport-the-data-box-to-azure-datacenter"></a>Můžu dopravit Data Box do datacentra Azure? 
 A.  Ne. Datacentrum Azure v současnosti nepřijímá od zákazníků zařízení Data Box doručená jinými dopravci než UPS/DHL.

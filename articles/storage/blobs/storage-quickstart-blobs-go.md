@@ -6,14 +6,14 @@ author: seguler
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 04/09/2018
+ms.date: 10/23/2018
 ms.author: seguler
-ms.openlocfilehash: 93dc651767fc2be815fb706f71386ce72b382a37
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f0176b526bd2debae911f52d6fd364a87daabc1f
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46981711"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49986439"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-go"></a>Rychlý start: Nahrávání, stahování a výpis objektů blob pomocí Go
 
@@ -23,9 +23,9 @@ V tomto rychlém startu zjistíte, jak pomocí programovacího jazyka Go nahráv
 
 K provedení kroků v tomto kurzu Rychlý start je potřeba: 
 * Nainstalovat jazyk [Go verze 1.8 nebo vyšší](https://golang.org/dl/).
-* Stáhnout a nainstalovat [sadu Azure Storage Blob SDK pro jazyk Go](https://github.com/azure/azure-storage-blob-go/) pomocí příkazu `go get -u github.com/Azure/azure-storage-blob-go/2016-05-31/azblob`. 
+* Stáhnout a nainstalovat [sadu Azure Storage Blob SDK pro jazyk Go](https://github.com/azure/azure-storage-blob-go/) pomocí příkazu `go get -u github.com/Azure/azure-storage-blob-go/azblob`. 
 
-> [!WARNING]
+> [!NOTE]
 > Nezapomeňte pro Azure v adrese URL použít velká písmena. Pokud to neuděláte, při práci s touto sadou SDK mohou nastat problémy při importu, které souvisejí s použitím velkých a malých písmen. Velká písmena musíte použít také pro Azure v příkazech pro import.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
@@ -94,13 +94,13 @@ Když budete pokračovat stisknutím klávesy, ukázkový program odstraní kont
 Dále si projdeme vzorový kód, abyste pochopili, jak funguje.
 
 ### <a name="create-containerurl-and-bloburl-objects"></a>Vytvoření objektů ContainerURL a BlobURL
-První věc, kterou je potřeba udělat, je vytvořit odkazy na objekty ContainerURL a BlobURL sloužící k přístupu k úložišti objektů blob a jeho správě. Tyto objekty nabízejí rozhraní API nízké úrovně, jako jsou Create, PutBlob a GetBlob, pro vydávání rozhraní REST API.
+První věc, kterou je potřeba udělat, je vytvořit odkazy na objekty ContainerURL a BlobURL sloužící k přístupu k úložišti objektů blob a jeho správě. Tyto objekty nabízejí rozhraní API nízké úrovně, jako jsou Create, Upload a Download, pro vydávání rozhraní REST API.
 
-* K uložení přihlašovacích údajů použijte strukturu **SharedKeyCredential**. 
+* K uložení přihlašovacích údajů použijte strukturu [**SharedKeyCredential**](https://godoc.org/github.com/Azure/azure-storage-blob-go/azblob#SharedKeyCredential). 
 
-* Vytvořte **Kanál** s použitím těchto přihlašovacích údajů a možností. Kanál určuje například zásady opakování, protokolování, deserializaci datových částí odpovědí HTTP a další.  
+* Vytvořte [**Kanál**](https://godoc.org/github.com/Azure/azure-storage-blob-go/azblob#NewPipeline) s použitím těchto přihlašovacích údajů a možností. Kanál určuje například zásady opakování, protokolování, deserializaci datových částí odpovědí HTTP a další.  
 
-* Vytvořte nové instance objektů ContainerURL a BlobURL pro spouštění operací s kontejnery (Create) a objekty blob (PutBlob a GetBlob).
+* Vytvořte nové instance objektů [**ContainerURL**](https://godoc.org/github.com/Azure/azure-storage-blob-go/azblob#ContainerURL) a [**BlobURL**](https://godoc.org/github.com/Azure/azure-storage-blob-go/azblob#BlobURL) pro spouštění operací s kontejnery (Create) a objekty blob (Upload a Download).
 
 
 Jakmile budete mít objekt ContainerURL, můžete vytvořit instanci objektu **BlobURL** odkazující na objekt blob a provádět například operace nahrávání, stahování a kopírování.
@@ -118,7 +118,10 @@ if len(accountName) == 0 || len(accountKey) == 0 {
 }
 
 // Create a default request pipeline using your storage account name and account key.
-credential := azblob.NewSharedKeyCredential(accountName, accountKey)
+credential, err := azblob.NewSharedKeyCredential(accountName, accountKey)
+if err != nil {
+    log.Fatal("Invalid credentials with error: " + err.Error())
+}
 p := azblob.NewPipeline(credential, azblob.PipelineOptions{})
 
 // Create a random string for the quick start container
@@ -135,33 +138,41 @@ containerURL := azblob.NewContainerURL(*URL, p)
 // Create the container
 fmt.Printf("Creating a container named %s\n", containerName)
 ctx := context.Background() // This example uses a never-expiring context
-_, err := containerURL.Create(ctx, azblob.Metadata{}, azblob.PublicAccessNone)
+_, err = containerURL.Create(ctx, azblob.Metadata{}, azblob.PublicAccessNone)
 handleErrors(err)
 ```
 ### <a name="upload-blobs-to-the-container"></a>Nahrání objektů blob do kontejneru
 
 Úložiště objektů blob podporuje objekty blob bloku, doplňovací objekty blob a objekty blob stránky. Nejčastěji používané jsou objekty blob bloku, které se používají také v tomto rychlém startu.  
 
-Pokud chcete do objektu blob nahrát soubor, otevřete soubor pomocí příkazu **os.Open**. Pak můžete soubor nahrát do zadané cesty pomocí některého z rozhraní REST API: PutBlob, PutBlock nebo PutBlockList. 
+Pokud chcete do objektu blob nahrát soubor, otevřete soubor pomocí příkazu **os.Open**. Pak můžete soubor nahrát do zadané cesty pomocí některého z rozhraní REST API: Upload (PutBlob), StageBlock nebo CommitBlockList (PutBlock nebo PutBlockList). 
 
-Sada SDK případně nabízí [rozhraní API vysoké úrovně](https://github.com/Azure/azure-storage-blob-go/blob/master/2016-05-31/azblob/highlevel.go) založená na rozhraních REST API nízké úrovně. Příkladem je funkce ***UploadFileToBlockBlob***, která používá operací PutBlock k souběžnému nahrání souboru po částech za účelem optimalizace propustnosti. Pokud je soubor menší než 256 MB, použije místo toho operaci PutBlob k dokončení přenosu v rámci jediné transakce.
+Sada SDK případně nabízí [rozhraní API vysoké úrovně](https://github.com/Azure/azure-storage-blob-go/blob/master/azblob/highlevel.go) založená na rozhraních REST API nízké úrovně. Příkladem je funkce ***UploadFileToBlockBlob***, která používá operace StageBlock (PutBlock) k souběžnému nahrání souboru po částech za účelem optimalizace propustnosti. Pokud je soubor menší než 256 MB, použije místo toho operaci Upload (PutBlob) k dokončení přenosu v rámci jediné transakce.
 
 Následující příklad nahraje soubor do kontejneru **quickstartblobs-[náhodný_řetězec]**.
 
 ```go
+// Create a file to test the upload and download.
+fmt.Printf("Creating a dummy file to test the upload and download\n")
+data := []byte("hello world this is a blob\n")
+fileName := randomString()
+err = ioutil.WriteFile(fileName, data, 0700)
+handleErrors(err)
+
 // Here's how to upload a blob.
 blobURL := containerURL.NewBlockBlobURL(fileName)
 file, err := os.Open(fileName)
 handleErrors(err)
 
-// You can use the low-level PutBlob API to upload files. Low-level APIs are simple wrappers for the Azure Storage REST APIs.
-// Note that PutBlob can upload up to 256MB data in one shot. Details: https://docs.microsoft.com/rest/api/storageservices/put-blob
+// You can use the low-level Upload (PutBlob) API to upload files. Low-level APIs are simple wrappers for the Azure Storage REST APIs.
+// Note that Upload can upload up to 256MB data in one shot. Details: https://docs.microsoft.com/en-us/rest/api/storageservices/put-blob
+// To upload more than 256MB, use StageBlock (PutBlock) and CommitBlockList (PutBlockList) functions. 
 // Following is commented out intentionally because we will instead use UploadFileToBlockBlob API to upload the blob
-// _, err = blobURL.PutBlob(ctx, file, azblob.BlobHTTPHeaders{}, azblob.Metadata{}, azblob.BlobAccessConditions{})
+// _, err = blobURL.Upload(ctx, file, azblob.BlobHTTPHeaders{ContentType: "text/plain"}, azblob.Metadata{}, azblob.BlobAccessConditions{})
 // handleErrors(err)
 
 // The high-level API UploadFileToBlockBlob function uploads blocks in parallel for optimal performance, and can handle large files as well.
-// This function calls PutBlock/PutBlockList for files larger 256 MBs, and calls PutBlob for any file smaller
+// This function calls StageBlock/CommitBlockList for files larger 256 MBs, and calls Upload for any file smaller
 fmt.Printf("Uploading the file with blob name: %s\n", fileName)
 _, err = azblob.UploadFileToBlockBlob(ctx, file, blobURL, azblob.UploadToBlockBlobOptions{
     BlockSize:   4 * 1024 * 1024,
@@ -174,10 +185,11 @@ handleErrors(err)
 Seznam souborů v kontejneru získáte pomocí metody **ListBlobs** s použitím objektu **ContainerURL**. Metoda ListBlobs vrací jeden segment objektů blob (až 5 000) počínaje zadanou **značkou**. Pokud chcete začít výčet od začátku, použijte prázdnou značku. Názvy objektů blob se vrací ve slovníkovém pořadí. Po získání segmentu ho zpracujte a pak znovu zavolejte metodu ListBlobs a předejte jí dříve vrácenou značku.  
 
 ```go
-// List the blobs in the container
+// List the container that we have created above
+fmt.Println("Listing the blobs in the container:")
 for marker := (azblob.Marker{}); marker.NotDone(); {
     // Get a result segment starting with the blob indicated by the current Marker.
-    listBlob, err := containerURL.ListBlobs(ctx, marker, azblob.ListBlobsOptions{})
+    listBlob, err := containerURL.ListBlobsFlatSegment(ctx, marker, azblob.ListBlobsSegmentOptions{})
     handleErrors(err)
 
     // ListBlobs returns the start of the next segment; you MUST use this to get
@@ -185,22 +197,28 @@ for marker := (azblob.Marker{}); marker.NotDone(); {
     marker = listBlob.NextMarker
 
     // Process the blobs returned in this result segment (if the segment is empty, the loop body won't execute)
-    for _, blobInfo := range listBlob.Blobs.Blob {
-        fmt.Print("Blob name: " + blobInfo.Name + "\n")
+    for _, blobInfo := range listBlob.Segment.BlobItems {
+        fmt.Print(" Blob name: " + blobInfo.Name + "\n")
     }
 }
 ```
 
 ### <a name="download-the-blob"></a>Stažení objektu blob
 
-Objekty blob můžete stáhnout pomocí metody nízké úrovně **GetBlob** s použitím objektu BlobURL. Případně můžete vytvořit datový proud a číst z něj rozsahy pomocí rozhraní API vysoké úrovně **NewDownloadStream**, které je součástí souboru [highlevel.go](https://github.com/Azure/azure-storage-blob-go/blob/master/2016-05-31/azblob/highlevel.go). Funkce NewDownloadStream v případě selhání připojení opakuje pokus, zatímco rozhraní API Get Blob opakuje pokus pouze po přijetí stavových kódů HTTP, jako je například 503 (Zaneprázdněný server). Následující kód stáhne objekt blob pomocí funkce **NewDownloadStream**. Obsah objektu blob se zapíše do vyrovnávací paměti a zobrazí se v konzole.
+Objekty blob můžete stáhnout pomocí funkce nízké úrovně **Download** s použitím objektu BlobURL. Tato funkce vrátí strukturu **DownloadResponse**. Spuštěním funkce **Body** pro strukturu získáte datový proud **RetryReader** pro čtení dat. Pokud při čtení selže připojení, odešlou se další požadavky na opětovné navázání připojení a bude se pokračovat ve čtení. Pokud zadáte RetryReaderOptions s vlastností MaxRetryRequests nastavenou na hodnotu 0 (výchozí hodnota), vrátí se původní text odpovědi bez opakování. Alternativně můžete kód zjednodušit použitím rozhraní API vysoké úrovně **DownloadBlobToBuffer** nebo **DownloadBlobToFile**.
+
+Následující kód stáhne objekt blob pomocí funkce **Download**. Obsah objektu blob se zapíše do vyrovnávací paměti a zobrazí se v konzole.
 
 ```go
-// Here's how to download the blob. NOTE: This method automatically retries if the connection fails
-// during download (the low-level GetBlob function does NOT retry errors when reading from its stream).
-stream := azblob.NewDownloadStream(ctx, blobURL.GetBlob, azblob.DownloadStreamOptions{})
-downloadedData := &bytes.Buffer{}
-_, err = downloadedData.ReadFrom(stream)
+// Here's how to download the blob
+downloadResponse, err := blobURL.Download(ctx, 0, azblob.CountToEnd, azblob.BlobAccessConditions{}, false)
+
+// NOTE: automatically retries are performed if the connection fails
+bodyStream := downloadResponse.Body(azblob.RetryReaderOptions{MaxRetryRequests: 20})
+
+// read the body into a buffer
+downloadedData := bytes.Buffer{}
+_, err = downloadedData.ReadFrom(bodyStream)
 handleErrors(err)
 ```
 
@@ -209,7 +227,7 @@ Pokud už nepotřebujete objekty blob nahrané v rámci tohoto rychlého startu,
 
 ```go
 // Cleaning up the quick start by deleting the container and the file created locally
-fmt.Printf("Press the enter key to delete the sample files, example container, and exit the application.\n")
+fmt.Printf("Press enter key to delete the sample files, example container, and exit the application.\n")
 bufio.NewReader(os.Stdin).ReadBytes('\n')
 fmt.Printf("Cleaning up.\n")
 containerURL.Delete(ctx, azblob.ContainerAccessConditions{})
@@ -222,8 +240,8 @@ os.Remove(fileName)
 Prohlédněte si tyto další zdroje informací o vývoji v jazyce Go s využitím úložiště objektů blob:
 
 - Prohlédněte si a nainstalujte [zdrojový kód klientské knihovny pro jazyk Go](https://github.com/Azure/azure-storage-blob-go) pro službu Azure Storage na GitHubu.
-- Prozkoumejte [ukázky pro úložiště objektů blob](https://godoc.org/github.com/Azure/azure-storage-blob-go/2016-05-31/azblob#pkg-examples) napsané s využitím klientské knihovny pro jazyk Go.
+- Prozkoumejte [ukázky pro úložiště objektů blob](https://godoc.org/github.com/Azure/azure-storage-blob-go/azblob#pkg-examples) napsané s využitím klientské knihovny pro jazyk Go.
 
 ## <a name="next-steps"></a>Další kroky
  
-V tomto rychlém startu jste zjistili, jak přenášet soubory mezi místním diskem a úložištěm objektů blob v Azure pomocí jazyka Go. Další informace o sadě Azure Storage Blob SDK najdete ve [zdrojovém kódu](https://github.com/Azure/azure-storage-blob-go/) a [referenčních materiálech k rozhraní API](https://godoc.org/github.com/Azure/azure-storage-blob-go/2016-05-31/azblob).
+V tomto rychlém startu jste zjistili, jak přenášet soubory mezi místním diskem a úložištěm objektů blob v Azure pomocí jazyka Go. Další informace o sadě Azure Storage Blob SDK najdete ve [zdrojovém kódu](https://github.com/Azure/azure-storage-blob-go/) a [referenčních materiálech k rozhraní API](https://godoc.org/github.com/Azure/azure-storage-blob-go/azblob).

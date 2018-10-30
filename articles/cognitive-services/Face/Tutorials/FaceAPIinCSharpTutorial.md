@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Detekce a orámování tváří na obrázku – rozhraní API pro rozpoznávání tváře, C#'
+title: 'Kurz: Rozpoznávání a orámování tváří na obrázku pomocí sady .NET SDK a jazyka C#'
 titleSuffix: Azure Cognitive Services
 description: V tomto kurzu vytvoříte jednoduchou aplikaci pro Windows, která využívá rozhraní API pro rozpoznávání tváře k rozpoznání a orámování tváří na obrázku.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: face-api
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: pafarley
-ms.openlocfilehash: ba850c1d4f9d8018f333662eead56f8e91b3fbd7
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: df5e46270275ca08a8499607fbad4c1161382fab
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49340949"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49956490"
 ---
-# <a name="tutorial-create-a-wpf-app-to-detect-and-frame-faces-in-an-image"></a>Kurz: Vytvoření aplikace WPF k detekci a orámování tváří na obrázku
+# <a name="tutorial-create-a-wpf-app-to-detect-and-frame-faces-in-an-image-using-the-net-sdk"></a>Kurz: Vytvoření aplikace WPF k rozpoznávání a orámování tváří na obrázku pomocí sady .NET SDK
 
 V tomto kurzu vytvoříte aplikaci Windows Presentation Framework (WPF), která používá službu Rozpoznávání tváře prostřednictvím klientské knihovny pro .NET. Tato aplikace detekuje tváře v obrázku, kolem každé tváře nakreslí rámeček a zobrazí popis tváře na stavovém řádku. Kompletní kód ukázky je dostupný na GitHubu v tématu [Detekce a orámování tváří na obrázku ve Windows](https://github.com/Azure-Samples/Cognitive-Face-CSharp-sample).
 

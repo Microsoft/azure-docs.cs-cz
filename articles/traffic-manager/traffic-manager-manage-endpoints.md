@@ -3,10 +3,7 @@ title: Správa koncových bodů v Azure Traffic Manageru | Dokumentace Microsoft
 description: Tento článek vám pomůže při přidávání, odebírání, povolování a zakazování koncových bodů v Azure Traffic Manageru.
 services: traffic-manager
 documentationcenter: ''
-author: kumudd
-manager: timlt
-editor: ''
-ms.assetid: ade2bbc2-35a7-43c5-8001-4698f7254526
+author: KumudD
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: get-started-article
@@ -14,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/08/2017
 ms.author: kumud
-ms.openlocfilehash: c80d104fc456849f8bfd5169dd8ce1361d906a65
-ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
+ms.openlocfilehash: 35c3027f2b592f6b24075005829ae9376a7fca82
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2017
-ms.locfileid: "26577375"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49987030"
 ---
 # <a name="add-disable-enable-or-delete-endpoints"></a>Přidávání, zakazování, povolování nebo odstraňování koncových bodů
 

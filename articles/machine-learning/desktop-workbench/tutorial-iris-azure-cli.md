@@ -11,12 +11,12 @@ ms.custom: mvc, tutorial
 ms.topic: tutorial
 ms.date: 10/15/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: b9b515a2ccaedc40fc531d6a1cc58cbe98212b4a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: c5f7b8b98f97e020b4f6fb4b125d444df87f8d5a
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46967893"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025748"
 ---
 # <a name="tutorial-classifying-iris-using-the-command-line-interface"></a>Kurz: Klasifikace Iris pomocí rozhraní příkazového řádku
 
@@ -143,13 +143,13 @@ $ az ml project create --name <project name> --workspace <workspace name> --acco
 ```
 
 ### <a name="create-a-new-project-associated-with-a-cloud-git-repository"></a>Vytvoření nového projektu přidruženého ke cloudovému úložišti Git
-Můžete vytvořit nový projekt přidružený k úložišti Azure DevOps Git. Při každém odeslání experimentu se do vzdáleného úložiště Git uloží snímek celé složky projektu. Další podrobnosti najdete v tématu [Použití úložiště Git s projektem aplikace Azure Machine Learning Workbench](using-git-ml-project.md).
+Můžete vytvořit nový projekt přidružený k úložišti Git v Azure Repos. Při každém odeslání experimentu se do vzdáleného úložiště Git uloží snímek celé složky projektu. Další podrobnosti najdete v tématu [Použití úložiště Git s projektem aplikace Azure Machine Learning Workbench](using-git-ml-project.md).
 
 > [!NOTE]
-> Azure Machine Learning podporuje jenom prázdná úložiště Git vytvořená v Azure DevOps.
+> Azure Machine Learning podporuje jenom prázdná úložiště Git vytvořená v Azure Repos.
 
 ```azure-cli
-$ az ml project create --name <project name> --workspace <workspace name> --account <experimentation account name> --resource-group <resource group name> --path <local folder path> --repo <VSTS repo URL>
+$ az ml project create --name <project name> --workspace <workspace name> --account <experimentation account name> --resource-group <resource group name> --path <local folder path> --repo <repo URL>
 ```
 > [!TIP]
 > Pokud se zobrazuje chyba „Adresa URL úložiště je možná neplatná nebo uživatel možná nemá přístup“, můžete v Azure DevOps vytvořit token zabezpečení (v části _Zabezpečení_ v nabídce _Přidat tokeny PAT_) a při vytváření projektu použít argument `--vststoken`. 

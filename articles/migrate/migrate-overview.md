@@ -4,15 +4,15 @@ description: Obsahuje přehled služby Azure Migrate.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: overview
-ms.date: 09/25/2018
+ms.date: 10/23/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: d2a8885ffb9148d408eff0e8a7d2ef09121e5359
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 30cca10a83be09b8c9736df546958c3a1fe66f37
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47162030"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025619"
 ---
 # <a name="about-azure-migrate"></a>Informace o službě Azure Migrate
 
@@ -29,16 +29,16 @@ Azure Migrate vám pomůže s následujícími úlohami:
 
 ## <a name="current-limitations"></a>Aktuální omezení
 
-- Aktuálně můžete posuzovat vhodnost k migraci na virtuální počítače Azure pouze u místních virtuálních počítačů VMware. Virtuální počítače VMware musí být spravované přes vCenter Server (verze 5.5, 6.0 nebo 6.5).
+- Vhodnost k migraci na virtuální počítače Azure můžete posuzovat pouze u místních virtuálních počítačů VMware. Virtuální počítače VMware musí být spravované přes vCenter Server (verze 5.5, 6.0 nebo 6.5).
 - Pokud chcete posoudit fyzické servery a virtuální počítače Hyper-V, použijte [Plánovač nasazení služby Azure Site Recovery](http://aka.ms/asr-dp-hyperv-doc) pro Hyper-V a [partnerské nástroje](https://azure.microsoft.com/migration/partners/) pro fyzické počítače.
 - Je možné vyhledat až 1 500 virtuálních počítačů v rámci jednoho zjišťování a až 1 500 virtuálních počítačů v jednom projektu. Kromě toho můžete v rámci jednoho interního hodnocení vyhodnotit až 1 500 virtuálních počítačů.
 - Pokud chcete provést zjišťování u velkého prostředí, můžete zjišťování rozdělit a vytvořit několik projektů. [Další informace](how-to-scale-assessment.md). Azure Migrate podporuje až 20 projektů na jedno předplatné.
 - Azure Migrate podporuje pro posouzení migrace jenom spravované disky.
-- Projekt Azure Migrate můžete vytvořit pouze v zeměpisné oblasti USA. Toto nemá vliv na možnost plánovat migraci do jakéhokoli cílového umístění Azure. Zeměpisná oblast projektu migrace slouží pouze k uložení metadat zjištěných v místním prostředí. [Další informace](https://docs.microsoft.com/azure/migrate/resources-faq#discovery-and-assessment) o metadatech shromážděných službou Azure Migrate. Shromážděná metadata jsou uložená v jedné z oblastí ve vybrané [zeměpisné oblasti Azure](https://azure.microsoft.com/global-infrastructure/geographies/):
+-  Projekt Azure Migrate můžete vytvořit pouze v zeměpisné oblasti USA. Přesto ale můžete naplánovat migraci do libovolného cílového umístění Azure.
+    - V oblasti projektu migrace se ukládají pouze metadata zjištěná v místním prostředí.
+    - Metadata se ukládají v jedné z oblastí v příslušné zeměpisné oblasti: USA – středozápad nebo USA – východ.
+    - Pokud používáte vizualizaci závislostí s pracovním prostorem Log Analytics, vytvoří se ve stejné oblasti jako projekt. 
 
-**Zeměpisné oblasti** | **Oblasti**
---- | ---
-Spojené státy | Středozápadní USA, východní USA
 
 ## <a name="what-do-i-need-to-pay-for"></a>Za co musím platit?
 
