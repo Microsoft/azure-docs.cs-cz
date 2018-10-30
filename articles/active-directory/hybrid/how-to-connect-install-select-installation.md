@@ -43,7 +43,7 @@ Získáte:
 
 Možnosti, kde můžete dál používat Express:
 
-- Pokud nechcete synchronizovat všechny organizační jednotky, můžete stále použít Express a na poslední stránce, zrušte výběr ** spustit proces synchronizace... ***. Potom znovu spusťte Průvodce instalací a změnit organizační jednotky ve [možnosti konfigurace](how-to-connect-installation-wizard.md#customize-synchronization-options) a povolení plánované synchronizace.
+- Pokud nechcete synchronizovat všechny organizační jednotky, můžete stále použít Express a na poslední stránce, zrušte výběr **spustit proces synchronizace...**\*. Potom znovu spusťte Průvodce instalací a změnit organizační jednotky ve [možnosti konfigurace](how-to-connect-installation-wizard.md#customize-synchronization-options) a povolení plánované synchronizace.
 - Chcete povolit jednou z funkcí v Azure AD Premium, jako je například zpětný zápis hesla. Nejdřív projděte express získat počáteční instalace byla dokončena. Potom znovu spusťte Průvodce instalací a změnit [možnosti konfigurace](how-to-connect-installation-wizard.md#customize-synchronization-options).
 
 ## <a name="custom"></a>Vlastní

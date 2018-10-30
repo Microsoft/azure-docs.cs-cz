@@ -44,7 +44,7 @@ Je třeba nejprve, chcete-li změnit heslo v rámci správce řízení služeb W
 Za druhé za určitých podmínek, pokud se heslo aktualizuje, synchronizační služba už načíst šifrovací klíč pomocí rozhraní DPAPI. Bez šifrovací klíč synchronizační služba nemůže dešifrovat hesla, třeba synchronizovat z místní AD a Azure AD.
 Chyby se zobrazí jako například:
 
-- V části správce řízení služeb Windows Pokud se pokusíte spustit synchronizační službu a nemůže získat šifrovací klíč, selže s chybou "** Windows nelze spustit Microsoft Azure AD Sync na místním počítači. Další informace najdete v protokolu událostí systému. Pokud je to služba jiného subjektu než Microsoft, obraťte se na dodavatele služby a získáte kódu chyby specifické pro služby **-21451857952 ***. "
+- V části správce řízení služeb Windows Pokud se pokusíte spustit synchronizační službu a nemůže získat šifrovací klíč, selže s chybou "**Windows nelze spustit Microsoft Azure AD Sync na místním počítači. Další informace najdete v protokolu událostí systému. Pokud je to služba jiného subjektu než Microsoft, obraťte se na dodavatele služby a získáte kódu chyby specifické pro služby \*\*-21451857952**\*\*."
 - V prohlížeči událostí pro Windows, protokolu událostí aplikace obsahuje chybu s **6028 ID události** chybové zprávy a *"**šifrovacího klíče serveru nelze přistupovat.**"*
 
 Aby se tyto chyby nezobrazí, postupujte podle pokynů v [nastavuje Azure AD Connect Sync šifrovací klíč](#abandoning-the-azure-ad-connect-sync-encryption-key) při změně hesla.

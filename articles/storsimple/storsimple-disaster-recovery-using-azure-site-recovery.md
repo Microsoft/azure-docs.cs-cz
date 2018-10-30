@@ -168,16 +168,16 @@ V Azure Site Recovery k automatizaci procesu převzetí služeb při selhání s
 1. V účtu automation, klikněte na tlačítko **proměnné** &gt; **přidat proměnnou** a přidejte následující proměnné. Můžete se k šifrování tyto prostředky. Tyto proměnné jsou konkrétní plán obnovení. Pokud v plánu služby recovery, které vytvoříte v dalším kroku název je testovací plány, proměnných by měl být StorSimRegKey testovací plány, testovací plán – AzureSubscriptionName a tak dále.
 
    - **BaseUrl**: adresa url Resource Manageru pro Azure cloud. Získáte rutinou **Get-AzureRmEnvironment | Název Select-Object, ResourceManagerUrl** rutiny.
-   - * RecoveryPlanName ***- ResourceGroupName**: Skupina Resource Manageru, která má StorSimple prostředků.
-   - * RecoveryPlanName ***- ManagerNázev**: The StorSimple prostředku, který má zařízení StorSimple.
-   - * RecoveryPlanName ***- DeviceName**: zařízení StorSimple, který má být převzetí služeb při selhání.
-   - * RecoveryPlanName ***- DeviceIpAddress**: IP adresa zařízení (lze najít v **zařízení** kartu v části Správce zařízení StorSimple &gt; **nastavení** &gt; **Sítě** &gt; **nastavení DNS** skupiny).
-   - * RecoveryPlanName ***- VolumeContainers**: řetězec oddělených čárkou kontejnerů svazků, které jsou k dispozici na na zařízení, které potřebujete provést více než; například: volcon1 volcon2, volcon3.
-   - * RecoveryPlanName ***- TargetDeviceName**: na které mají být převzetí služeb při selhání kontejnerů řešení StorSimple Cloud Appliance.
-   - * RecoveryPlanName ***- TargetDeviceIpAddress**: IP adresa cílového zařízení (lze najít v **virtuálního počítače** části &gt; **nastavení** skupiny &gt; **sítě** kartu).
-   - * RecoveryPlanName ***- StorageAccountName**: název účtu úložiště, ve kterém se uloží skriptu (který se má spouštět se přes virtuální počítač). To může být libovolný účet úložiště, který má nějaké místo k uložení skriptu dočasně.
-   - * RecoveryPlanName ***- StorageAccountKey**: přístupový klíč pro výše uvedené účtu úložiště.
-   - * RecoveryPlanName ***- VMGUIDS**: při ochraně virtuálního počítače, Azure Site Recovery přiřadí každému virtuálnímu počítači jedinečné ID, které poskytuje podrobné informace o se selhání pro virtuální počítač. Chcete-li získat VMGUID, vyberte **služby Recovery Services** kartě a klikněte na tlačítko **chráněné položky** &gt; **skupin ochrany** &gt;  **Počítače** &gt; **vlastnosti**. Pokud máte několik virtuálních počítačů, přidejte identifikátory GUID jako řetězec oddělených čárkou.
+   - *RecoveryPlanName* **- ResourceGroupName**: Skupina Resource Manageru, která má StorSimple prostředků.
+   - *RecoveryPlanName* **- ManagerNázev**: The StorSimple prostředku, který má zařízení StorSimple.
+   - *RecoveryPlanName* **- DeviceName**: zařízení StorSimple, který má být převzetí služeb při selhání.
+   - *RecoveryPlanName* **- DeviceIpAddress**: IP adresa zařízení (lze najít v **zařízení** kartu v části Správce zařízení StorSimple &gt; **nastavení** &gt; **Sítě** &gt; **nastavení DNS** skupiny).
+   - *RecoveryPlanName* **- VolumeContainers**: řetězec oddělených čárkou kontejnerů svazků, které jsou k dispozici na na zařízení, které potřebujete provést více než; například: volcon1 volcon2, volcon3.
+   - *RecoveryPlanName* **- TargetDeviceName**: na které mají být převzetí služeb při selhání kontejnerů řešení StorSimple Cloud Appliance.
+   - *RecoveryPlanName* **- TargetDeviceIpAddress**: IP adresa cílového zařízení (lze najít v **virtuálního počítače** části &gt; **nastavení** skupiny &gt; **sítě** kartu).
+   - *RecoveryPlanName* **- StorageAccountName**: název účtu úložiště, ve kterém se uloží skriptu (který se má spouštět se přes virtuální počítač). To může být libovolný účet úložiště, který má nějaké místo k uložení skriptu dočasně.
+   - *RecoveryPlanName* **- StorageAccountKey**: přístupový klíč pro výše uvedené účtu úložiště.
+   - *RecoveryPlanName* **- VMGUIDS**: při ochraně virtuálního počítače, Azure Site Recovery přiřadí každému virtuálnímu počítači jedinečné ID, které poskytuje podrobné informace o se selhání pro virtuální počítač. Chcete-li získat VMGUID, vyberte **služby Recovery Services** kartě a klikněte na tlačítko **chráněné položky** &gt; **skupin ochrany** &gt;  **Počítače** &gt; **vlastnosti**. Pokud máte několik virtuálních počítačů, přidejte identifikátory GUID jako řetězec oddělených čárkou.
 
     Například, pokud se název plánu obnovení fileServerpredayRP pak vaše **proměnné**, **připojení** a **certifikáty** karta by měla vypadat následovně, po přidání všechny prostředky.
 

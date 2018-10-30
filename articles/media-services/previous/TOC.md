@@ -233,7 +233,7 @@
 ## [Azure PowerShell (Resource Manager)](/powershell/module/azurerm.media)
 ## [Azure PowerShell (správa služeb)](/powershell/module/servicemanagement/azure/?view=azuresmps-3.7.0)
 ## [.NET](/dotnet/api/microsoft.windowsazure.mediaservices.client)
-## [REST](/rest/api/media/mediaservice)
+## [REST](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference)
 ## Specifikace
 ### [Živé ingestování – specifikace živého ingestování fragmentovaného MP4](media-services-fmp4-live-ingest-overview.md)
 ### [Živé ingestování – signalizace časovaných metadat v živém streamování](media-services-specifications-live-timed-metadata.md)
