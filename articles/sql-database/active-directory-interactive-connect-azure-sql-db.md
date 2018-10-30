@@ -124,13 +124,13 @@ Program jazyka C# spoléhá na obor názvů **Microsoft.IdentityModel.Clients.Ac
 
 Je jeden obory názvů, příklad jazyka C# využívající **System.Data.SqlClient**. Výčet je speciální zájmová **SqlAuthenticationMethod**. Tento výčet má následující hodnoty:
 
-- **SqlAuthenticationMethod.ActiveDirectory * interaktivní ***:&nbsp; použijte tento fragment se uživatelské jméno Azure AD k dosažení vícefaktorové ověřování služby Multi-Factor authentication.
+- **SqlAuthenticationMethod.ActiveDirectory \*interaktivní**\*:&nbsp; použijte tento fragment se uživatelské jméno Azure AD k dosažení vícefaktorové ověřování služby Multi-Factor authentication.
     - Tato hodnota je hlavním cílem tohoto článku. Vytvoří interaktivní zobrazením dialogová okna pro heslo uživatele a pro ověřování MFA, pokud vícefaktorové ověřování se vynucují na tohoto uživatele.
     - Tato hodnota je k dispozici od verze rozhraní .NET Framework verze 4.7.2.
 
-- **SqlAuthenticationMethod.ActiveDirectory * integrované ***:&nbsp; se používá *federované* účtu. Pro federované účet, který se označuje uživatelské jméno k doméně Windows. Tato metoda nepodporuje vícefaktorové ověřování.
+- **SqlAuthenticationMethod.ActiveDirectory \*integrované**\*:&nbsp; se používá *federované* účtu. Pro federované účet, který se označuje uživatelské jméno k doméně Windows. Tato metoda nepodporuje vícefaktorové ověřování.
 
-- **SqlAuthenticationMethod.ActiveDirectory * heslo ***:&nbsp; používá se pro ověřování, které vyžaduje uživatele služby Azure AD a heslo uživatele. Azure SQL Database provádí ověřování. Tato metoda nepodporuje vícefaktorové ověřování.
+- **SqlAuthenticationMethod.ActiveDirectory \*heslo**\*:&nbsp; používá se pro ověřování, které vyžaduje uživatele služby Azure AD a heslo uživatele. Azure SQL Database provádí ověřování. Tato metoda nepodporuje vícefaktorové ověřování.
 
 
 
