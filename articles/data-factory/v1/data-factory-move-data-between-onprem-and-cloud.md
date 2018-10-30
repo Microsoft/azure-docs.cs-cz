@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: d695627efddc0ca02c3d9299f4b8a13bdc85e8fb
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 3094075607f096200ce1fb7ad499776bdcd3e093
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42056848"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50233595"
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>Přesun dat mezi místním zdrojům a cloudem pomocí brány správy dat
 > [!NOTE]
@@ -65,7 +65,7 @@ V tomto kroku použijete Azure portal k vytvoření instance služby Azure Data 
    > [!IMPORTANT]
    > Název objektu pro vytváření dat Azure musí být globálně jedinečný. Pokud se zobrazí chybová zpráva: **název objektu pro vytváření dat "ADFTutorialOnPremDF" není k dispozici**, změňte název datové továrny (například yournameADFTutorialOnPremDF) a zkuste to znovu. Tento název používejte místo ADFTutorialOnPremDF při provádění zbývající kroky v tomto kurzu.
    >
-   > Název objektu pro vytváření dat se může v budoucnu zaregistrovat jako název **DNS** a tak se stát veřejně viditelným.
+   > Název datové továrny se může zaregistrovat jako **DNS** název v budoucnu a tak se stát publicaly viditelné.
    >
    >
 4. Vyberte **předplatné Azure**, ve kterém chcete objekt pro vytváření dat vytvořit.
@@ -304,7 +304,7 @@ V tomto kroku vytvoříte vstupní a výstupní datové sady, které představuj
 ## <a name="create-pipeline"></a>Vytvoření kanálu
 V tomto kroku vytvoříte **kanálu** s jedním **aktivity kopírování** , která používá **EmpOnPremSQLTable** jako vstup a **OutputBlobTable** jako výstup.
 
-1. V editoru služby Data Factory, klikněte na tlačítko **... Další** a poté na **Nový kanál**.
+1. V editoru služby Data Factory, klikněte na tlačítko **... Další** a poté na **Nový kanál.
 2. Nahraďte kód JSON v pravém podokně následujícím textem:    
 
     ```JSON   
