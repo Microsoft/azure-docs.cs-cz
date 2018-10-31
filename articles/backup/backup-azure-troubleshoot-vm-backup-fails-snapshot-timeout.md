@@ -7,14 +7,14 @@ manager: cshepard
 keywords: Služba Azure backup; Agent virtuálního počítače; Připojení k síti;
 ms.service: backup
 ms.topic: troubleshooting
-ms.date: 06/25/2018
+ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: ce4a889cae852d333ea9862138f4d44471677c26
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: 5c37e2e3cabb81ed123146f283c7d568cc58816d
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45544009"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50242618"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Řešení potíží se selháním Azure Backup: problémy s agentů nebo rozšíření
 
@@ -181,7 +181,7 @@ Chcete-li odinstalovat rozšíření:
 
 1. V [webu Azure portal](https://portal.azure.com/), přejděte k virtuálnímu počítači, na kterém dochází k selhání zálohování.
 2. Vyberte **nastavení**.
-3. Vyberte **rozšíření**.
+3. Vyberte **Extensions** (Rozšíření).
 4. Vyberte **rozšíření Vmsnapshot**.
 5. Vyberte **odinstalovat**.
 
@@ -195,7 +195,7 @@ Tento problém je specifický pro spravované virtuální počítače, ve který
 #### <a name="solution"></a>Řešení
 
 Chcete-li problém vyřešit, odeberte zámek ze skupiny prostředků a proveďte následující kroky, chcete-li odebrat kolekci bodů obnovení: 
- 
+ 
 1. Odeberte zámek proti ve skupině prostředků, ve kterém se nachází virtuální počítač. 
 2. Instalace ARMClient pomocí Chocolatey: <br>
    https://github.com/projectkudu/ARMClient

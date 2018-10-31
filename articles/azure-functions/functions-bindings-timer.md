@@ -3,7 +3,7 @@ title: Trigger časovače pro službu Azure Functions
 description: Vysvětlení použití aktivačních časovačích ve službě Azure Functions.
 services: functions
 documentationcenter: na
-author: ggailey777
+author: craigshoemaker
 manager: jeconnoc
 keywords: Azure functions, funkce, zpracování událostí, dynamické výpočty, architektura bez serveru
 ms.assetid: d2f013d1-f458-42ae-baf8-1810138118ac
@@ -11,14 +11,14 @@ ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: reference
 ms.date: 09/08/2018
-ms.author: glenga
+ms.author: cshoe
 ms.custom: ''
-ms.openlocfilehash: d81794f3fe91d1c0e922b1c0e930e308ee566a44
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: ae2d4d3fc4f5c0961b942326b2071a0553c81e8d
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50087453"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50248971"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Trigger časovače pro službu Azure Functions 
 

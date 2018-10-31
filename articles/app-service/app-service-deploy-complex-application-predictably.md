@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 049f5211e800dace4b8968cd9e3db9ad968f8813
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: c4071da60ed1311d8dd75d6a369c48cf711778cb
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43050742"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50243210"
 ---
 # <a name="provision-and-deploy-microservices-predictably-in-azure"></a>Zřizování a nasazování mikroslužeb předvídatelně v Azure
 Tento kurz ukazuje, jak zřídit a nasadit aplikaci skládající se z [mikroslužeb](https://en.wikipedia.org/wiki/Microservices) v [služby Azure App Service](https://azure.microsoft.com/services/app-service/) jako jednu jednotku a předvídatelným způsobem použití šablony skupin prostředků JSON a Skriptování PowerShell. 
@@ -148,7 +148,7 @@ Nastavení aplikace jsou také definovány jako vnořených prostředků.
 
 ![](./media/app-service-deploy-complex-application-predictably/examinejson-6-webappsettings.png)
 
-V `properties` – element pro `config/appsettings`, máte dvě nastavení aplikace ve formátu `“<name>” : “<value>”`.
+V `properties` – element pro `config/appsettings`, máte dvě nastavení aplikace ve formátu `"<name>" : "<value>"`.
 
 * `PROJECT` je [KUDU nastavení](https://github.com/projectkudu/kudu/wiki/Customizing-deployments) , které sděluje nasazení v Azure, které projekt pro použití v řešení vícenásobného projektu sady Visual Studio. Vám ukážu později způsob konfigurace správy zdrojového kódu, ale protože ToDoApp kódu v řešení vícenásobného projektu sady Visual Studio, potřebujeme, aby toto nastavení.
 * `clientUrl` je jednoduše aplikace nastavení, která kód aplikace používá.
@@ -158,7 +158,7 @@ Připojovací řetězce jsou také definovány jako vnořených prostředků.
 
 ![](./media/app-service-deploy-complex-application-predictably/examinejson-7-webappconnstr.png)
 
-V `properties` – element pro `config/connectionstrings`, každý připojovací řetězec je také definováno jako dvojice názvu a hodnoty ve formátu konkrétní `“<name>” : {“value”: “…”, “type”: “…”}`. Pro `type` elementu, možné hodnoty jsou `MySql`, `SQLServer`, `SQLAzure`, a `Custom`.
+V `properties` – element pro `config/connectionstrings`, každý připojovací řetězec je také definováno jako dvojice názvu a hodnoty ve formátu konkrétní `"<name>" : {"value": "…", "type": "…"}`. Pro `type` elementu, možné hodnoty jsou `MySql`, `SQLServer`, `SQLAzure`, a `Custom`.
 
 > [!TIP]
 > Konečné seznam typů řetězec připojení, spuštěním následujícího příkazu v prostředí Azure PowerShell: \[Enum]::GetNames("Microsoft.WindowsAzure.Commands.Utilities.Websites.Services.WebEntities.DatabaseType")

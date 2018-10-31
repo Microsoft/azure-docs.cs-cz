@@ -8,14 +8,14 @@ author: kkampf
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 01/09/2018
+ms.date: 09/19/2018
 ms.author: kakampf
-ms.openlocfilehash: 170fd402770c091398a25784b18508ae57db6a38
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: e299eda50967bee25f76c2e6456afa1ecbd7970c
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49341850"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50243176"
 ---
 # <a name="what-are-the-hadoop-components-and-versions-available-with-hdinsight"></a>Jaké jsou komponenty a verze, které jsou k dispozici s HDInsight?
 

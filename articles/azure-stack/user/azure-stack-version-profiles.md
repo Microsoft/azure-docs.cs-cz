@@ -67,7 +67,7 @@ Spíše než výzkum každý poskytovatel prostředků a konkrétní verzi služ
 
 Profily rozhraní API můžete pracovat s nástroji, které používají Azure Resource Manageru, jako je PowerShell, rozhraní příkazového řádku Azure, k dispozici v sadě SDK a sady Microsoft Visual Studio code. Nástroje a sady SDK můžete použít profily ke čtení, kterou verzi moduly a knihovny, které chcete zahrnout při sestavování aplikace.
 
-Například, pokud použijete k vytvoření účtu úložiště pomocí prostředí PowerShell **Microsoft.Storage** poskytovatele prostředků, která podporuje verzi api-version 2016-03-30 a virtuálního počítače pomocí verze api-version zprostředkovateli prostředků Microsoft.Compute. 2015-12-01, je třeba k vyhledání která podporuje modulu PowerShell 2016-03-30 pro úložiště a které modul podporuje 2015-02-01 pro výpočetní prostředky a nainstalujte si ji. Místo toho můžete použít profil. Použijte rutinu ** instalace profilu * profilename *** a Powershellu načte správnou verzi modulů.
+Například, pokud použijete k vytvoření účtu úložiště pomocí prostředí PowerShell **Microsoft.Storage** poskytovatele prostředků, která podporuje verzi api-version 2016-03-30 a virtuálního počítače pomocí verze api-version zprostředkovateli prostředků Microsoft.Compute. 2015-12-01, je třeba k vyhledání která podporuje modulu PowerShell 2016-03-30 pro úložiště a které modul podporuje 2015-02-01 pro výpočetní prostředky a nainstalujte si ji. Místo toho můžete použít profil. Použijte rutinu **instalace profilu \*profilename**\* a Powershellu načte správnou verzi modulů.
 
 Podobně když pomocí sady Python SDK k sestavení aplikace založené na Pythonu, můžete zadat profilu. Sada SDK načte správné moduly pro poskytovatele prostředků, které jste zadali ve skriptu.
 

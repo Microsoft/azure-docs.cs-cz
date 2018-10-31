@@ -12,17 +12,17 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 10/26/2018
 ms.author: glenga
-ms.openlocfilehash: d61570cd5d56cda7737bdb2d1a8d681fc2364610
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 470128344182cc6a06a378a0f4ab75b19e9a646e
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50139386"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50249772"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Příručka pro vývojáře Azure Functions JavaScript
 Tato příručka obsahuje informace o složitými rozhraními vytváření Azure Functions s použitím jazyka JavaScript.
 
-Funkce jazyka JavaScript je exportovaná `function` , která se spustí při aktivaci ([aktivační události jsou nakonfigurované v function.json](functions-triggers-bindings.md)). Každá funkce je předána `context` objekt, který se používá pro příjem a odesílání vazby dat, protokolování a komunikaci s modulem runtime.
+Funkce jazyka JavaScript je exportovaná `function` , který se spustí při aktivaci ([aktivační události jsou nakonfigurované v function.json](functions-triggers-bindings.md)). První argument je předán každá funkce `context` objekt, který se používá pro příjem a odesílání vazby dat, protokolování a komunikaci s modulem runtime.
 
 Tento článek předpokládá, že jste si už přečetli [referenční informace pro vývojáře Azure Functions](functions-reference.md). Doporučuje se také, že jste postupovali podle kurzu v části "Šablon rychlý start" k [vytvoření první funkce](functions-create-first-function-vs-code.md).
 
@@ -48,42 +48,28 @@ FunctionsProject
  | - bin
 ```
 
-V kořenovém adresáři projektu neexistuje sdílené [host.json](functions-host-json.md) soubor, který můžete použít ke konfiguraci aplikace function app. Každá funkce má složku s vlastními souboru s kódem (.js) a vazbu konfigurační soubor (function.json).
+V kořenovém adresáři projektu neexistuje sdílené [host.json](functions-host-json.md) soubor, který můžete použít ke konfiguraci aplikace function app. Každá funkce má složku s vlastními souboru s kódem (.js) a vazbu konfigurační soubor (function.json). Název `function.json`jeho nadřazený adresář je vždy název vaší funkce.
 
 Rozšíření vazby vyžaduje [verze 2.x](functions-versions.md) funkce modulu runtime jsou definovány v `extensions.csproj` souboru se soubory knihovny v `bin` složky. Při vývoji místně, musíte [registraci rozšíření vazby](functions-triggers-bindings.md#local-development-azure-functions-core-tools). Při vytváření funkcí na webu Azure Portal, je tato registrace provede za vás.
 
 ## <a name="exporting-a-function"></a>Funkce exportu
 
-Funkce jazyka JavaScript, musí být exportován prostřednictvím [ `module.exports` ](https://nodejs.org/api/modules.html#modules_module_exports) (nebo [ `exports` ](https://nodejs.org/api/modules.html#modules_exports)). Ve výchozím nastavení, exportované funkce by měl být jediným export z jeho souboru exportu s názvem `run`, nebo exportovat pojmenované `index`. Výchozí umístění vaší funkce `index.js`, kde `index.js` sdílí stejné nadřazený adresář jako odpovídající `function.json`. Všimněte si, že název `function.json`jeho nadřazený adresář je vždy název vaší funkce. 
+Funkce jazyka JavaScript, musí být exportován prostřednictvím [ `module.exports` ](https://nodejs.org/api/modules.html#modules_module_exports) (nebo [ `exports` ](https://nodejs.org/api/modules.html#modules_exports)). Exportované funkce by měla být funkce JavaScriptu, který se spustí při spuštění.
 
-Nakonfigurujte umístění souboru a exportujte název vaší funkce, přečtěte si informace o [konfigurace vstupní bod vaše funkce](functions-reference-node.md#configure-function-entry-point) níže.
+Ve výchozím nastavení, modul runtime služby Functions hledá vaši funkci v `index.js`, kde `index.js` sdílí stejné nadřazený adresář jako odpovídající `function.json`. Ve výchozím nastavení, by měl být exportované funkce jenom export z jeho souboru nebo export s názvem `run` nebo `index`. Nakonfigurujte umístění souboru a exportujte název vaší funkce, přečtěte si informace o [konfigurace vstupní bod vaše funkce](functions-reference-node.md#configure-function-entry-point) níže.
 
-Vaším vstupním bodem exportované funkce nutné vždy provést `context` objekt jako první parametr.
+Exportované funkce je předána počet argumentů na spuštění. První argument trvá, než je vždy `context` objektu. Pokud vaše funkce je synchronní (nevrátí příslib), musíte předat `context` objektu jako volání funkce `context.done` se vyžaduje pro správné použití.
 
 ```javascript
-// You must include a context, other arguments are optional
+// You should include context, other arguments are optional
 module.exports = function(context, myTrigger, myInput, myOtherInput) {
     // function logic goes here :)
     context.done();
 };
 ```
-```javascript
-// You can also use 'arguments' to dynamically handle inputs
-module.exports = async function(context) {
-    context.log('Number of inputs: ' + arguments.length);
-    // Iterates through trigger and input binding data
-    for (i = 1; i < arguments.length; i++){
-        context.log(arguments[i]);
-    }
-};
-```
-
-Aktivační události a vstupní vazby (vazby `direction === "in"`) lze předat jako parametry funkce. Jsou předávány do funkce ve stejném pořadí, ve kterém jsou definovány v *function.json*. Můžete taky dynamicky zpracovávat vstupy pomocí jazyka JavaScript [ `arguments` ](https://msdn.microsoft.com/library/87dw3w1k.aspx) objektu. Pokud máte například `function(context, a, b)` a změňte ho na `function(context, a)`, stále můžete získat hodnotu `b` v kódu funkce rekapitulací `arguments[2]`.
-
-Všechny vazby, bez ohledu na směru, jsou také předají `context` pomocí `context.bindings` vlastnost.
 
 ### <a name="exporting-an-async-function"></a>Export asynchronní funkce
-Při použití jazyka JavaScript [ `async function` ](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/async_function) prohlášení nebo prostý JavaScript [příslibů](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise) (není k dispozici s funkcí v1.x), není potřeba explicitně volat [ `context.done` ](#contextdone-method) zpětné volání pro signalizaci, že vaše funkce byla dokončena. Vaše funkce se dokončí po dokončení asynchronní exportované funkce/Promise.
+Při použití jazyka JavaScript [ `async function` ](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/async_function) deklarace nebo v opačném případě vrací JavaScript [Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise) (není k dispozici s funkcí v1.x), není potřeba explicitně volat [ `context.done` ](#contextdone-method) zpětné volání pro signalizaci, že vaše funkce byla dokončena. Funkce skončí po dokončení asynchronní exportované funkce/Promise.
 
 Například je jednoduchou funkci, která zaznamená, že byla spuštěna a okamžitě se dokončí provádění.
 ``` javascript
@@ -92,7 +78,7 @@ module.exports = async function (context) {
 };
 ```
 
-Při exportu asynchronní funkci, můžete taky nakonfigurovat vazby výstupu se `return` hodnotu. Toto je alternativní způsob přiřazení výstupy pomocí [ `context.bindings` ](#contextbindings-property) vlastnost.
+Při exportu asynchronní funkci, můžete taky nakonfigurovat výstupní vazbu provést `return` hodnotu. To se doporučuje, pokud máte jenom jeden výstupní vazbu.
 
 K přiřazení výstupu pomocí `return`, změnit `name` vlastnost `$return` v `function.json`.
 ```json
@@ -113,10 +99,81 @@ module.exports = async function (context, req) {
 }
 ```
 
-## <a name="context-object"></a>objekt kontextu
-Modul runtime používá `context` objekt k předávání dat do a z vaší funkce a umožnit vám komunikovat s modulem runtime.
+## <a name="bindings"></a>Vazby 
+V jazyce JavaScript [vazby](functions-triggers-bindings.md) se konfigurují a definované v function.json funkce. Funkce s vazby pracovat několika způsoby.
 
-`context` Objekt je vždy první parametr funkce a musí být zahrnut, protože obsahuje metody, jako `context.done` a `context.log`, které jsou nutné k využití modulu runtime správně. Můžete pojmenovat objekt cokoli, co byste chtěli (například `ctx` nebo `c`).
+### <a name="reading-trigger-and-input-data"></a>Čtení triggeru a vstupních dat
+Aktivovat a vstupních vazeb (vazby `direction === "in"`) lze číst pomocí funkce třemi způsoby:
+ - **_[Doporučuje]_  Jako parametry předaný do funkce.** Jsou předávány do funkce ve stejném pořadí, ve kterém jsou definovány v *function.json*. Všimněte si, `name` vlastnosti definované v *function.json* nemusí odpovídat názvu parametru, přestože by měl.
+   ``` javascript
+   module.exports = async function(context, myTrigger, myInput, myOtherInput) { ... };
+   ```
+ - **Jako členy [ `context.bindings` ](#contextbindings-property) objektu.** Každý člen je pojmenován podle `name` vlastnosti definované v *function.json*.
+   ``` javascript
+   module.exports = async function(context) { 
+       context.log("This is myTrigger: " + context.bindings.myTrigger);
+       context.log("This is myInput: " + context.bindings.myInput);
+       context.log("This is myOtherInput: " + context.bindings.myOtherInput);
+   };
+   ```
+ - **Jako vstupy pomocí jazyka JavaScript [ `arguments` ](https://msdn.microsoft.com/library/87dw3w1k.aspx) objektu.** To je v podstatě stejný jako vyhovující vstupy jako parametry, ale umožňuje dynamicky zpracovávat vstupy.
+   ``` javascript
+   module.exports = async function(context) { 
+       context.log("This is myTrigger: " + arguments[1]);
+       context.log("This is myInput: " + arguments[2]);
+       context.log("This is myOtherInput: " + arguments[3]);
+   };
+   ```
+
+### <a name="writing-data"></a>Zápis dat
+Výstupy (vazby `direction === "out"`) je možné zapisovat na funkci v několika způsoby. Ve všech případech `name` vlastnost vazby, jak jsou definovány v *function.json* odpovídá názvu členem objektu napsané ve své funkci. 
+
+Data můžete přiřadit výstupních vazeb v jednom z následujících způsobů. Tyto metody by neměli kombinovat.
+- **_[Doporučuje pro několik výstupů]_  Vrácení objektu.** Pokud používáte async/Promise, vrací funkce, můžete se vrátit objekt s přiřazenou výstupní data. V následujícím příkladu výstupních vazeb se pojmenují "httpResponse" a "queueOutput" *function.json*.
+  ``` javascript
+  module.exports = async function(context) {
+      let retMsg = 'Hello, world!';
+      return {
+          httpResponse: {
+              body: retMsg
+          },
+          queueOutput: retMsg
+      };
+  };
+  ```
+  Pokud používáte synchronní funkce, můžete se vrátit objekt pomocí [ `context.done` ](#contextdone-method) (viz příklad).
+- **_[Doporučuje pro jeden výstup]_  Návratová hodnota přímo a pomocí názvu $return vazby.** Tento postup funguje pouze pro asynchronní/Promise vrácení funkce. Viz příklad v [export asynchronní funkce](#exporting-an-async-function). 
+- **Přiřazování hodnot k `context.bindings`**  přímo do context.bindings můžete přiřadit hodnoty.
+  ``` javascript
+  module.exports = async function(context) {
+      let retMsg = 'Hello, world!';
+      context.bindings.httpResponse = {
+          body: retMsg
+      };
+      context.bindings.queueOutput = retMsg;
+      return;
+  };
+  ```
+ 
+### <a name="bindings-data-type"></a>Datový typ vazby
+
+Chcete-li definovat datový typ pro vstupní vazby, použijte `dataType` vlastnost v definici vazby. Například pokud chcete číst obsah požadavku HTTP v binárním formátu, použijte typ `binary`:
+
+```json
+{
+    "type": "httpTrigger",
+    "name": "req",
+    "direction": "in",
+    "dataType": "binary"
+}
+```
+
+Možnosti pro `dataType` jsou: `binary`, `stream`, a `string`.
+
+## <a name="context-object"></a>objekt kontextu
+Modul runtime používá `context` objekt k předávání dat do a z vaší funkce a umožnit vám komunikovat s modulem runtime. Objekt kontextu je možné pro čtení a nastavení dat od vazeb, zápis protokolů a použití `context.done` zpětného volání při synchronní exportované funkce.
+
+`context` Objekt je vždy první parametr funkce. By měly být zahrnuty, protože má důležité metody, jako `context.done` a `context.log`. Můžete pojmenovat objekt cokoli, co byste chtěli (například `ctx` nebo `c`).
 
 ```javascript
 // You must include a context, but other arguments are optional
@@ -173,9 +230,9 @@ context.done([err],[propertyBag])
 
 Informuje o modulu runtime, který váš kód bylo dokončeno. Pokud funkce používá jazyk JavaScript [ `async function` ](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/async_function) deklarace (k dispozici prostřednictvím uzlu 8 + funkce verze 2.x), není potřeba použít `context.done()`. `context.done` Zpětného volání je implicitně volána.
 
-Pokud funkce není asynchronní funkci **musí volat** `context.done` informovat modul runtime dokončení vaší funkce. Provedení příkazu vyprší časový limit, pokud není nalezena.
+Pokud funkce není asynchronní funkci **musí volat** `context.done` informovat modul runtime dokončení vaší funkce. Časy spuštění, pokud není nalezena.
 
-`context.done` Metoda umožňuje předat zpět oba uživatelem definované chybové modul runtime a objekt JSON obsahující výstupní vazbu data. Předat vlastnosti `context.done` přepíše nic nastavit `context.bindings` objektu.
+`context.done` Metoda umožňuje předat zpět oba uživatelem definované chybové modul runtime a objekt JSON obsahující výstupní vazbu data. Předat vlastnosti `context.done` přepsat nic nastavit `context.bindings` objektu.
 
 ```javascript
 // Even though we set myOutput to have:
@@ -183,7 +240,7 @@ Pokud funkce není asynchronní funkci **musí volat** `context.done` informovat
 context.bindings.myOutput = { text: 'hello world', number: 123 };
 // If we pass an object to the done function...
 context.done(null, { myOutput: { text: 'hello there, world', noNumber: true }});
-// the done method will overwrite the myOutput binding to be: 
+// the done method overwrites the myOutput binding to be: 
 //  -> text: 'hello there, world', noNumber: true
 ```
 
@@ -211,24 +268,9 @@ Je možné [nakonfigurovat prahové hodnoty úroveň trasování pro protokolov�
 
 Čtení [monitorování Azure Functions](functions-monitoring.md) získat další informace o zobrazení a dotazování protokolů funkce.
 
-## <a name="binding-data-type"></a>Datový typ vazby
-
-Chcete-li definovat datový typ pro vstupní vazby, použijte `dataType` vlastnost v definici vazby. Například pokud chcete číst obsah požadavku HTTP v binárním formátu, použijte typ `binary`:
-
-```json
-{
-    "type": "httpTrigger",
-    "name": "req",
-    "direction": "in",
-    "dataType": "binary"
-}
-```
-
-Možnosti pro `dataType` jsou: `binary`, `stream`, a `string`.
-
 ## <a name="writing-trace-output-to-the-console"></a>Zápisu výstupu sledování do konzoly 
 
-Ve službě Functions použijete `context.log` metody zapsat výstup trasování do konzoly. V v2.x funkce trasování výstupy prostřednictvím `console.log` jsou zachyceny na úrovni aplikace Function App. To znamená, že výstupem z `console.log` nejsou vázané na volání určité funkce a proto nejsou zobrazeny v protokolech určité funkce. Budou se však rozšířit do Application Insights. Funkce v1.x, nemůžete použít `console.log` k zápisu do konzoly. 
+Ve službě Functions použijete `context.log` metody zapsat výstup trasování do konzoly. V v2.x funkce trasování výstupy prostřednictvím `console.log` jsou zachyceny na úrovni aplikace Function App. To znamená, že výstupem z `console.log` nejsou vázané na volání určité funkce a proto nejsou zobrazeny v protokolech určité funkce. , Však rozšířit do Application Insights. Funkce v1.x, nemůžete použít `console.log` k zápisu do konzoly. 
 
 Při volání `context.log()`, vaše zapíše se do konzoly na výchozí úrovni trasování, který je _informace_ úroveň trasování. Následující kód, zapíše do konzoly na úroveň trasování informace:
 
@@ -312,7 +354,7 @@ HTTP a triggerů webhooků a HTTP výstupní vazby pomocí žádostí a odpověd
 
 Při práci s triggerů HTTP, můžete přístup k objektům HTTP požadavků a odpovědí v několika způsoby:
 
-+ Z `req` a `res` vlastnosti `context` objektu. Tímto způsobem můžete použít konvenční vzor k datům přístup protokolu HTTP z objektu context, místo nutnosti použít úplnou `context.bindings.name` vzor. Následující příklad ukazuje, jak získat přístup k `req` a `res` objektů `context`:
++ **Z `req` a `res` vlastnosti `context` objektu.** Tímto způsobem můžete použít konvenční vzor k datům přístup protokolu HTTP z objektu context, místo nutnosti použít úplnou `context.bindings.name` vzor. Následující příklad ukazuje, jak získat přístup k `req` a `res` objektů `context`:
 
     ```javascript
     // You can access your http request off the context ...
@@ -321,7 +363,7 @@ Při práci s triggerů HTTP, můžete přístup k objektům HTTP požadavků a 
     context.res = { status: 202, body: 'You successfully ordered more coffee!' }; 
     ```
 
-+ Z pojmenované vstupní a výstupní vazby. Tímto způsobem triggeru HTTP a vazby fungují stejně jako všechny vazby. Následující příklad nastaví objektu odpovědi pomocí pojmenovaná `response` vazby: 
++ **Z pojmenované vstupní a výstupní vazby.** Tímto způsobem triggeru HTTP a vazby fungují stejně jako všechny vazby. Následující příklad nastaví objektu odpovědi pomocí pojmenovaná `response` vazby: 
 
     ```json
     {
@@ -333,9 +375,9 @@ Při práci s triggerů HTTP, můžete přístup k objektům HTTP požadavků a 
     ```javascript
     context.bindings.response = { status: 201, body: "Insert succeeded." };
     ```
-+ _[Pouze odpovědi]_  Voláním `context.res.send(body?: any)`. Je vytvořen odpověď HTTP se vstupem `body` jako text odpovědi. `context.done()` je implicitně volána.
++ **_[Pouze odpovědi]_  Voláním `context.res.send(body?: any)`.** Je vytvořen odpověď HTTP se vstupem `body` jako text odpovědi. `context.done()` je implicitně volána.
 
-+ _[Pouze odpovědi]_  Voláním `context.done()`. Zvláštní druh vazby HTTP vrátí odpověď, která je předána `context.done()` metody. Následující HTTP výstupní vazby definuje `$return` výstupní parametr:
++ **_[Pouze odpovědi]_  Voláním `context.done()`.** Zvláštní druh vazby HTTP vrátí odpověď, která je předána `context.done()` metody. Následující HTTP výstupní vazby definuje `$return` výstupní parametr:
 
     ```json
     {
@@ -500,7 +542,7 @@ Když vytvoříte aplikaci function app, který používá plán služby App Ser
 Protože přímou podporu ještě neexistuje pro automatické kompilaci TypeScript nebo CoffeeScript prostřednictvím modulu runtime, musí být zpracována mimo modul runtime v době nasazení těchto podpory. 
 
 ### <a name="cold-start"></a>Studený Start
-Při spuštění vývoj Azure Functions bez serveru hostování modelu cold jsou realitou. "Studený start" odkazuje na skutečnost, že při spuštění aplikace Function App poprvé po určité době nečinnosti, bude trvat delší dobu spouštění. Pro funkce jazyka JavaScript s stromové struktury velké závislost zejména to může způsobit zpomalení hlavní. Aby bylo možné urychlí proces, pokud je to možné, [spouštět funkce jako soubor balíčku](run-functions-from-deployment-package.md). Mnoho metod nasazení účast v tomto modelu ve výchozím nastavení, ale pokud jste dochází k souvisejícím s úplným spuštěním velké a neběží ze souboru balíčku, může to být obrovské vylepšení.
+Při spuštění vývoj Azure Functions bez serveru hostování modelu cold jsou realitou. "Studený start" odkazuje na skutečnost, že při spuštění aplikace Function App poprvé po určité době nečinnosti, trvá déle, se spustí. Pro funkce jazyka JavaScript s stromové struktury velké závislost zejména to může způsobit zpomalení hlavní. Aby bylo možné urychlí proces, pokud je to možné, [spouštět funkce jako soubor balíčku](run-functions-from-deployment-package.md). Mnoho metod nasazení účast v tomto modelu ve výchozím nastavení, ale pokud jste dochází k souvisejícím s úplným spuštěním velké a neběží ze souboru balíčku, může to být obrovské vylepšení.
 
 ## <a name="next-steps"></a>Další postup
 Další informace najdete v následujících materiálech:

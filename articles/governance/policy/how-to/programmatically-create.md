@@ -4,16 +4,16 @@ description: Tento článek vás provede programově vytváření a Správa zás
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 10/29/2018
+ms.date: 10/30/2018
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 4a68b60df76dcc554158d6c8db4d0dfe8dd32be7
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: d72c9c1747bb697f66fa53489636b1726053060c
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50209220"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50242624"
 ---
 # <a name="programmatically-create-policies-and-view-compliance-data"></a>Prostřednictvím kódu programu vytvořit zásady a zobrazit data o dodržování předpisů
 
@@ -74,7 +74,13 @@ Prvním krokem k lepší přehled o vašich prostředků je vytvoření a přiř
    New-AzureRmPolicyDefinition -Name 'AuditStorageAccounts' -DisplayName 'Audit Storage Accounts Open to Public Networks' -Policy 'AuditStorageAccounts.json'
    ```
 
-   Příkaz vytvoří definici zásady s názvem _auditu úložiště účtů otevřít k veřejným sítím_. Další informace o dalších parametrů, které můžete použít, najdete v části [New-AzureRmPolicyDefinition](/powershell/module/azurerm.resources/new-azurermpolicydefinition).
+   Příkaz vytvoří definici zásady s názvem _auditu úložiště účtů otevřít k veřejným sítím_.
+   Další informace o dalších parametrů, které můžete použít, najdete v části [New-AzureRmPolicyDefinition](/powershell/module/azurerm.resources/new-azurermpolicydefinition).
+
+   Při volání bez parametrů místo `New-AzureRmPolicyDefinition` výchozí hodnota je ukládání definice zásad ve vybraném předplatném kontextu relace. Pokud chcete uložit definici do jiného umístění, použijte následující parametry:
+
+   - **SubscriptionId** -uložit do jiného předplatného. Vyžaduje _GUID_ hodnotu.
+   - **ManagementGroupName** -uložit ve skupině pro správu. Vyžaduje _řetězec_ hodnotu.
 
 1. Po vytvoření definic zásad, můžete vytvořit přiřazení zásady spuštěním následujících příkazů:
 
@@ -86,7 +92,8 @@ Prvním krokem k lepší přehled o vašich prostředků je vytvoření a přiř
 
    Nahraďte _ContosoRG_ s názvem vaší skupiny prostředků určené.
 
-   **Oboru** parametru u `New-AzureRmPolicyAssignment` funguje taky s předplatných a skupin pro správu. Parametr používá cestu úplné prostředku, který **ResourceId** vlastnost `Get-AzureRmResourceGroup` vrátí. Vzor pro **oboru** pro každý kontejner je následujícím způsobem.  Nahraďte `{rgName}`, `{subId}`, a `{mgName}` s vaším prostředkem název skupiny, ID předplatného a název skupiny pro správu, v uvedeném pořadí.
+   **Oboru** parametru u `New-AzureRmPolicyAssignment` funguje taky s předplatných a skupin pro správu. Parametr používá cestu úplné prostředku, který **ResourceId** vlastnost `Get-AzureRmResourceGroup` vrátí. Vzor pro **oboru** pro každý kontejner je následujícím způsobem.
+   Nahraďte `{rgName}`, `{subId}`, a `{mgName}` s vaším prostředkem název skupiny, ID předplatného a název skupiny pro správu, v uvedeném pořadí.
 
    - Skupina prostředků- `/subscriptions/{subId}/resourceGroups/{rgName}`
    - Předplatné – `/subscriptions/{subId}/`

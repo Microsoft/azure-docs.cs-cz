@@ -4,7 +4,7 @@ description: Toto téma nabízí přehled a porovnání Azure na vyžádání ko
 services: media-services
 documentationcenter: ''
 author: juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: e6bfc068-fa46-4d68-b1ce-9092c8f3a3c9
 ms.service: media-services
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/10/2017
+ms.date: 10/30/2018
 ms.author: juliako
-ms.openlocfilehash: f44f5cffd105d958c7d6552a170150623a0701ea
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 6695e17ec3dd9bf9ebeeb44b34e9688d3e5a1625
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/04/2018
-ms.locfileid: "34638447"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50249743"
 ---
 # <a name="overview-and-comparison-of-azure-on-demand-media-encoders"></a>Přehled a porovnání Azure na vyžádání kodérů médií
 ## <a name="encoding-overview"></a>Kódování – přehled

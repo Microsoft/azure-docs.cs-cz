@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/18/2017
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: d170fc0a0e4113b0f58c3b78f3a61aa2b08e69ff
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: c7d2c16ef135644c1ff23d7a71c66bec27ac930d
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/30/2018
-ms.locfileid: "50231530"
+ms.locfileid: "50241041"
 ---
 # <a name="using-shared-access-signatures-sas"></a>Použití sdílených přístupových podpisů (SAS)
 
@@ -222,7 +222,7 @@ Toto riziko omezit, pomůže následující doporučení pro použití sdílený
 6. **Buďte konkrétní přístup k prostředku.** Z bezpečnostních důvodů je, zadejte uživatele s minimální požadovaná oprávnění. Když uživatel potřebuje pouze přístup pro čtení k jedné entity, potom jim udělte přístup pro čtení k této jedné entity a ne pro čtení/zápis/delete přístup ke všem entitám. Navíc pomáhají snížit poškození v případě ohrožení bezpečnosti SAS, protože sdíleného přístupového podpisu má míň energie v rukou útočník.
 7. **Vysvětlení, že váš účet se bude účtovat veškeré využití, která se provádí pomocí SAS.** Pokud poskytnete oprávnění k zápisu do objektu blob, můžete zvolit k nahrání objektu blob 200GB. Pokud jste dali je také přístup pro čtení, se může rozhodnete si ho stáhnout 10krát, bez 2 TB za výchozí přenos dat pro vás. Znovu zadejte omezenými oprávněními, aby mohlo včas reagovat na potenciální akce uživateli se zlými úmysly. Krátkodobé a jednorázové SAS můžete tuto hrozbu zmírnit (ale dávejte zkosení podél koncový čas hodiny).
 8. **Ověření dat zapsaných pomocí SAS.** Když klientská aplikace zapíše data do účtu úložiště, mějte na paměti, že může být problémy s daty. Pokud vaše aplikace vyžaduje, aby se data ověření nebo oprávnění předtím, než je připravený k použití, měli byste provést toto ověření po zapsání dat a předtím, než je použit v aplikaci. Tento postup také chrání před poškozený nebo škodlivý data je zapsána do vašeho účtu uživatele, který správně získat SAS nebo uživatelem využívajícím uniklé SAS.
-9. **Nepoužívejte vždy SAS.** Někdy rizika spojená s konkrétní operace proti účtu úložiště převážit nad výhodami SAS. Pro tyto operace vytvoření střední vrstvy služby, která zapisuje do vašeho účtu úložiště po provedení obchodní pravidla ověřování, ověřování a auditování. Někdy je také jednodušší Správa přístupu k jiným způsobem. Například pokud chcete, aby všechny objekty BLOB v kontejneru publicaly čitelný, můžete vytvořit kontejner Public, místo poskytování SAS pro přístup na všechny klienty.
+9. **Nepoužívejte vždy SAS.** Někdy rizika spojená s konkrétní operace proti účtu úložiště převážit nad výhodami SAS. Pro tyto operace vytvoření střední vrstvy služby, která zapisuje do vašeho účtu úložiště po provedení obchodní pravidla ověřování, ověřování a auditování. Někdy je také jednodušší Správa přístupu k jiným způsobem. Například pokud chcete, aby všechny objekty BLOB v kontejneru veřejně čitelné, můžete vytvořit kontejner Public, místo poskytování SAS pro přístup na všechny klienty.
 10. **Použití Storage Analytics pro monitorování vaší aplikace.** Protokolování a metriky můžete sledovat všechny nárůst selhání ověřování kvůli výpadku služby Zprostředkovatel SAS nebo nechtěnému odstranění uložených zásad přístupu. Zobrazit [Blog týmu Azure Storage](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/08/03/windows-azure-storage-logging-using-logs-to-track-storage-requests.aspx) pro další informace.
 
 ## <a name="sas-examples"></a>Příklady SAS

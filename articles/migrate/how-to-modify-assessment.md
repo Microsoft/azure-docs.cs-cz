@@ -1,46 +1,46 @@
 ---
-title: Přizpůsobit Azure migrovat nastavení assessment | Microsoft Docs
-description: Popisuje, jak nastavit a spustit posouzení pro migraci virtuálních počítačů VMware do Azure pomocí Azure Plánovač migrace
+title: Přizpůsobení nastavení posouzení Azure Migrate | Dokumentace Microsoftu
+description: Popisuje, jak nastavit a spustit posouzení pro migraci virtuálních počítačů VMware do Azure s využitím plánovače migrace Azure
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 06/20/2018
+ms.date: 10/30/2018
 ms.author: raynew
-ms.openlocfilehash: 9ddd6c32388b2e05fd97138414958b67c009f9ee
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: d0cfab51b686b5b6eb9617d4424ac3f834de8d6f
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36284909"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50241068"
 ---
 # <a name="customize-an-assessment"></a>Přizpůsobení posouzení
 
-[Azure migrací](migrate-overview.md) vytvoří posuzování s výchozí vlastnosti. Po vytvoření posouzení, můžete upravit výchozí vlastnosti pomocí pokynů v tomto článku.
+[Azure Migrate](migrate-overview.md) vytvoří s výchozí vlastnosti posouzení. Po vytvoření posouzení, můžete upravit výchozí vlastnosti, podle pokynů v tomto článku.
 
 
-## <a name="edit-assessment-properties"></a>Upravit vlastnosti hodnocení
+## <a name="edit-assessment-properties"></a>Upravit vlastnosti posouzení
 
 1. Na stránce **Posouzení** projektu migrace vyberte posouzení a klikněte na **Upravit vlastnosti**.
-2. Upravte vlastnosti podle následující tabulky:
+2. Upravit vlastnosti posouzení podle níže požadované údaje:
 
     **Nastavení** | **Podrobnosti** | **Výchozí**
     --- | --- | ---
-    **Cílové umístění** | Umístění Azure, do kterého chcete migrovat.<br/><br/> Azure Migrate v současné době podporuje 30 oblastí, včetně oblastí Austrálie – východ, Austrálie – jihovýchod, Brazílie – jih, Kanada – střed, Kanada – východ, Indie – střed, USA – střed, Čína – východ, Čína – sever, Východní Asie, USA – východ, Německo – střed, Německo – severovýchod, USA – východ 2, Japonsko – východ, Japonsko – západ, Korea – střed, Korea – jih, Střed USA – sever, Severní Evropa, Střed USA – jih, Jihovýchodní Asie, Indie – jih, Velká Británie – jih, Velká Británie – západ, US Gov – Arizona, US Gov – Texas, US Gov – Virginie, Střed USA – západ, Západní Evropa, Indie – západ, USA – západ a USA – západ 2. |  Západní USA 2 je výchozí umístění.
-    **Cenová úroveň** | Můžete zadat [cenovou úroveň (Basic nebo Standard)](../virtual-machines/windows/sizes-general.md) cílových virtuálních počítačů Azure. Pokud například plánujete migrovat produkční prostředí, měli byste zvážit úroveň Standard, která poskytuje virtuální počítače s nízkou latencí, ale může být dražší. Na druhou stranu, pokud máte prostředí pro vývoj a testování, měli byste zvážit úroveň Basic s virtuálními počítači s vyšší latencí, která je levnější. | Ve výchozím nastavení se použije úroveň [Standard](../virtual-machines/windows/sizes-general.md).
-    **Typ úložiště** | Můžete zadat typ disků, které chcete přidělit v Azure. Tuto vlastnost je možné použít, když je u kritéria nastavení velikosti vybraná možnost místní změny velikosti. Jako cílový typ disku můžete zadat Spravované disky úrovně Premium nebo Spravované disky úrovně Standard. Pro nastavení velikosti na základě výkonu se doporučení u disku vytváří automaticky na základě dat o výkonu virtuálních počítačů. Poznámka: Azure Migrate podporuje pro posouzení migrace jenom spravované disky. | Výchozí hodnota je spravovaná prémiové disky (s kritériem pro změnu velikosti jako *jako místní nastavení velikosti*).
-    **Vyhrazená instance** |  Můžete také určit, jestli máte [vyhrazená instance](https://azure.microsoft.com/pricing/reserved-vm-instances/) v Azure a Azure migrace bude odhadnout náklady na odpovídajícím způsobem. Vyhrazená instance se nejsou použitelné svrchovaných oblastí (Azure Government, Německu a Čína) a jsou platí pouze pro průběžné platby nabídka v Azure migrovat. | Výchozí hodnota pro tuto vlastnost je 3 roky, vyhrazená instance.
+    **Cílové umístění** | Umístění Azure, do kterého chcete migrovat.<br/><br/> Azure Migrate v současné době podporuje 30 oblastí, včetně oblastí Austrálie – východ, Austrálie – jihovýchod, Brazílie – jih, Kanada – střed, Kanada – východ, Indie – střed, USA – střed, Čína – východ, Čína – sever, Východní Asie, USA – východ, Německo – střed, Německo – severovýchod, USA – východ 2, Japonsko – východ, Japonsko – západ, Jižní Korea – střed, Jižní Korea – jih, Střed USA – sever, Severní Evropa, Střed USA – jih, Jihovýchodní Asie, Indie – jih, Velká Británie – jih, Velká Británie – západ, US Gov – Arizona, US Gov – Texas, US Gov – Virginie, Střed USA – západ, Západní Evropa, Indie – západ, USA – západ a USA – západ 2. |  USA – západ 2 je výchozí umístění.
+    **Cenová úroveň** | Můžete zadat [cenovou úroveň (Basic nebo Standard)](../virtual-machines/windows/sizes-general.md) cílových virtuálních počítačů Azure. Například pokud máte v úmyslu migrovat produkční prostředí, chcete zvážit úroveň Standard. Na druhou stranu, pokud máte prostředí pro vývoj a testování, měli byste zvážit úroveň Basic s virtuálními počítači s vyšší latencí, která je levnější. | Ve výchozím nastavení se použije úroveň [Standard](../virtual-machines/windows/sizes-general.md).
+    **Typ úložiště** | Tato vlastnost slouží k určení typu disky, které chcete přidělit v Azure. Pro jako – místní změny velikosti můžete zadat cílový typ disku buď jako Premium managed disks a Standard managed disks. Pro určení velikosti na základě výkonu můžete zadat cílový typ disku jako automatická, Premium managed disks nebo Standard managed disks. Při zadání typu úložiště jako automatické doporučení disku se provádí na základě dat výkonu disků (IOPS a propustnost). Například, pokud chcete dosáhnout [jednu instanci virtuálního počítače SLA 99,9 %](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/), můžete chtít zadat typ úložiště jako spravované disky úrovně Premium, které zajistí, že všechny disky v posouzení se doporučují jako spravované disky úrovně Premium. Poznámka: Azure Migrate podporuje pro posouzení migrace jenom spravované disky. | Výchozí hodnota je spravované disky úrovně Premium (s kritérium určení velikosti jako *jako v místním nastavení velikosti*).
+    **Rezervované instance** |  Můžete také zadat, jestli v Azure máte [rezervované instance](https://azure.microsoft.com/pricing/reserved-vm-instances/), a Azure Migrate odhadne náklady odpovídajícím způsobem. Rezervované instance se nevztahují na suverénních oblastech (Azure Government, Německo a Čína) a se vztahuje pouze na nabídku průběžných plateb ve službě Azure Migrate. | Výchozí hodnota této vlastnosti je 3 roky, rezervované instance.
     **Kritérium určení velikosti** | Kritérium, podle kterého Azure Migrate určí správnou velikost virtuálních počítačů pro Azure. Můžete provést určení velikosti *na základě výkonu* nebo použít velikost virtuálních počítačů *jako v místním prostředí* bez ohledu na historii výkonu. | Výchozí možnost je určení velikosti na základě výkonu.
     **Historie výkonu** | Doba, která se má zohlednit při vyhodnocování výkonu virtuálních počítačů. Tato vlastnost se dá použít pouze v případě, že kritériem určení velikosti je *určení velikosti na základě výkonu*. | Výchozí hodnota je jeden den.
     **Percentilové využití** | Hodnota percentilu sady vzorků výkonu, která se má zohlednit při určování správné velikosti. Tato vlastnost se dá použít pouze v případě, že kritériem určení velikosti je *určení velikosti na základě výkonu*.  | Výchozí hodnota je 95. percentil.
-    **Řada virtuálních počítačů** | Můžete zadat řadu virtuálních počítačů, pro kterou chcete zvážit nastavení správné velikosti. Pokud máte například produkční prostředí, které se nechystáte migrovat na virtuální počítače řady A v Azure, můžete vyloučit řadu A ze seznamu nebo řad a nastavení správné velikosti se provede jen pro vybrané řady. | Ve výchozím nastavení jsou vybrané všechny řady virtuálních počítačů.
+    **Řada virtuálních počítačů** | Můžete zadat řadu virtuálních počítačů, pro kterou chcete zvážit nastavení správné velikosti. Pokud máte například produkční prostředí, které se nechystáte migrovat na virtuální počítače řady A v Azure, můžete vyloučit řadu A ze seznamu nebo řad a nastavení správné velikosti se provede jen pro vybrané řady. | Ve výchozím nastavení jsou vybrány všechny řady virtuálních počítačů.
     **Faktor komfortu** | Azure Migrate při posuzování počítá s rezervou (faktor komfortu). Tato rezerva se použije nad rámec dat o využití počítače pro virtuální počítače (procesor, paměť, disk a síť). Důvodem použití faktoru komfortu jsou problémy, jako jsou sezónní využití, krátká historie výkonu a pravděpodobný růst budoucího využití.<br/><br/> Například z virtuálního počítače s 10 jádry a 20% využitím je normálně ve výsledku virtuální počítač se 2 jádry. S faktorem komfortu 2,0× je však výsledkem virtuální počítač se 4 jádry. | Výchozí nastavení je 1,3×.
     **Nabídka** | [Nabídka Azure](https://azure.microsoft.com/support/legal/offer-details/), kterou máte zaregistrovanou. | Výchozí hodnota je [Průběžné platby](https://azure.microsoft.com/offers/ms-azr-0003p/).
     **Měna** | Fakturační měna. | Výchozí hodnota je USD.
     **Sleva (%)** | Jakákoli sleva pro konkrétní předplatné, kterou získáte nad rámec nabídky Azure. | Výchozí nastavení je 0 %.
-    **Doba provozu virtuálního počítače** | Jestliže vaše virtuální počítače nebudou používat 24 x 7 v Azure, pro kterou se bude spuštěna můžete zadat dobu trvání (počet dní v měsíci) a počet hodin za den a odhady náklady bude provedeno odpovídajícím způsobem. | Výchozí hodnota je 31 dní za měsíc a 24 hodin denně.
+    **Doba provozu virtuálního počítače** | Pokud se vaše virtuální počítače běžet 24 x 7 v Azure, můžete určit dobu trvání (počet dnů za měsíc) a počtu hodin za den pro kterou se bude spuštěna a odhad nákladů se provede odpovídajícím způsobem. | Výchozí hodnota je 31 dnů za měsíc a 24 hodin denně.
     **Zvýhodněné hybridní využití Azure** | Zadejte, jestli máte Software Assurance a nárok na [Zvýhodněné hybridní využití Azure](https://azure.microsoft.com/pricing/hybrid-use-benefit/). Pokud je hodnota nastavená na Yes (Ano), u virtuálních počítačů s Windows se použijí ceny za Azure pro jiný systém než Windows. | Výchozí hodnota je Yes (Ano).
 
-3. Klikněte na tlačítko **Uložit** aktualizovat hodnocení.
+3. Klikněte na tlačítko **Uložit** aktualizovat posouzení.
 
 
 ## <a name="next-steps"></a>Další postup

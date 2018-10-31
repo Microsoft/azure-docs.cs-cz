@@ -15,12 +15,12 @@ ms.date: 09/08/2017
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 10bcb3c0c4842202f95cdc1fff30d12b7a8fbbc2
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: e6f4e67d09eacadbbf9d74f417357a87ece0a951
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39366019"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50238501"
 ---
 # <a name="set-a-custom-home-page-for-published-apps-by-using-azure-ad-application-proxy"></a>Nastavit vlastní domovskou stránku pro aplikace publikované pomocí Proxy aplikací Azure AD
 
@@ -62,7 +62,7 @@ Než nastavíte adresa URL domovské stránky, mějte na paměti následující 
 
 ### <a name="install-the-azure-ad-powershell-module"></a>Instalace modulu Azure AD Powershellu
 
-Před definujete adresu URL vlastní domovskou stránku pomocí prostředí PowerShell, nainstalujte modul Azure AD PowerShell. Si můžete stáhnout balíček z [Galerie prostředí PowerShell](https://www.powershellgallery.com/packages/AzureAD/2.0.0.131), který používá koncový bod rozhraní Graph API. 
+Před definujete adresu URL vlastní domovskou stránku pomocí prostředí PowerShell, nainstalujte modul Azure AD PowerShell. Si můžete stáhnout balíček z [Galerie prostředí PowerShell](https://www.powershellgallery.com/packages/AzureAD/2.0.0.131), který používá koncový bod rozhraní Graph API. 
 
 Chcete-li nainstalovat balíček, postupujte takto:
 
@@ -72,7 +72,7 @@ Chcete-li nainstalovat balíček, postupujte takto:
      Install-Module -Name AzureAD
     ```
     Pokud příkaz spouštíte jako bez oprávnění správce, použijte `-scope currentuser` možnost.
-2. Během instalace, vybrat **Y** instalace dva balíčky z Nuget.org. Oba balíčky jsou povinné. 
+2. Během instalace, vybrat **Y** instalace dva balíčky z Nuget.org. Oba balíčky jsou povinné. 
 
 ### <a name="find-the-objectid-of-the-app"></a>Najít ID objektu aplikace
 
@@ -92,14 +92,14 @@ Získání ID objektu aplikace a pak vyhledejte aplikaci podle jeho domovské st
 3. Najděte aplikaci, na základě jeho adresy URL domovské stránky. Adresa URL na portálu můžete najít tak, že přejdete do **Azure Active Directory** > **podnikové aplikace** > **všechny aplikace**. Tento příklad používá *sharepoint iddemo*.
 
     ```
-    Get-AzureADApplication | where { $_.Homepage -like “sharepoint-iddemo” } | fl DisplayName, Homepage, ObjectID
+    Get-AzureADApplication | where { $_.Homepage -like "sharepoint-iddemo" } | fl DisplayName, Homepage, ObjectID
     ```
 4. Měli byste získat výsledek, který je podobný znázorněno zde. Zkopírujte identifikátor GUID ObjectID pro použití v další části.
 
     ```
     DisplayName : SharePoint
-    Homepage    : https://sharepoint-iddemo.msappproxy.net/
-    ObjectId    : 8af89bfa-eac6-40b0-8a13-c2c4e3ee22a4
+    Homepage    : https://sharepoint-iddemo.msappproxy.net/
+    ObjectId    : 8af89bfa-eac6-40b0-8a13-c2c4e3ee22a4
     ```
 
 ### <a name="update-the-home-page-url"></a>Aktualizovat adresu URL domovské stránky
@@ -117,13 +117,13 @@ Vytvořit adresu URL domovské stránky a aktualizovat vaše aplikace s touto ho
 2. Vytvořte objekt prázdná aplikace pro uložení změn, které chcete provést. Tato proměnná obsahuje hodnoty, které chcete aktualizovat. Nic je vytvořen v tomto kroku.
 
     ```
-    $appnew = New-Object “Microsoft.Open.AzureAD.Model.Application”
+    $appnew = New-Object "Microsoft.Open.AzureAD.Model.Application"
     ```
 
-3. Adresa URL domovské stránky nastavena na hodnotu, která chcete. Hodnota musí být cesta subdoménu publikované aplikace. Například, pokud se změní adresa URL domovské stránky z *https://sharepoint-iddemo.msappproxy.net/* k *https://sharepoint-iddemo.msappproxy.net/hybrid/*, uživatelům aplikace přejít přímo na domovské stránce vlastní.
+3. Adresa URL domovské stránky nastavena na hodnotu, která chcete. Hodnota musí být cesta subdoménu publikované aplikace. Například, pokud se změní adresa URL domovské stránky z *https://sharepoint-iddemo.msappproxy.net/* k *https://sharepoint-iddemo.msappproxy.net/hybrid/*, uživatelům aplikace přejít přímo na domovské stránce vlastní.
 
     ```
-    $homepage = “https://sharepoint-iddemo.msappproxy.net/hybrid/”
+    $homepage = "https://sharepoint-iddemo.msappproxy.net/hybrid/"
     ```
 4. Provádění aktualizací pomocí identifikátoru GUID (ObjectID), který jste zkopírovali v "krok 1: vyhledání ID objektu aplikace."
 

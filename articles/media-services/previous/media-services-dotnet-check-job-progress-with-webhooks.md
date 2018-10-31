@@ -1,10 +1,10 @@
 ---
-title: Pomocí Webhooků Azure monitorovat oznámení úlohy Media Services s .NET | Microsoft Docs
-description: Naučte se používat Azure Webhooky monitorování oznámení úlohy Media Services. Ukázka kódu je napsána v jazyce C# a pomocí sady Media Services SDK pro .NET.
+title: Použití Webhooků Azure pro monitorování oznámení úloh pro Media Services s .NET | Dokumentace Microsoftu
+description: Další informace o použití Azure Webhooky pro monitorování oznámení úloh pro Media Services. Ukázka kódu je napsána v C# a využívá Media Services SDK pro .NET.
 services: media-services
 documentationcenter: ''
 author: juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: a61fe157-81b1-45c1-89f2-224b7ef55869
 ms.service: media-services
@@ -12,31 +12,31 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 12/09/2017
+ms.date: 10/29/2018
 ms.author: juliako
-ms.openlocfilehash: 564fc25699c3ae627804d49bfdc40ae9dd559269
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: b3ce3731f19565bfe950d03a2bbc980dda55a7f4
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33789408"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50238654"
 ---
-# <a name="use-azure-webhooks-to-monitor-media-services-job-notifications-with-net"></a>Použití Azure Webhooky monitorování oznámení úlohy Media Services pomocí rozhraní .NET
-Při spuštění úlohy, často vyžadují způsob, jak sledovat průběh úlohy. Oznámení úlohy Media Services můžete monitorovat pomocí Webhooků Azure nebo [Azure Queue storage](media-services-dotnet-check-job-progress-with-queues.md). Tento článek ukazuje, jak pracovat s webhooky.
+# <a name="use-azure-webhooks-to-monitor-media-services-job-notifications-with-net"></a>Použití Webhooků Azure pro monitorování oznámení úloh pro Media Services s .NET
+Při spuštění úlohy, často vyžadují způsob, jak sledovat průběh úlohy. Oznámení úlohy Media Services můžete sledovat pomocí Webhooků Azure nebo [Azure Queue storage](media-services-dotnet-check-job-progress-with-queues.md). Tento článek popisuje, jak pracovat s webhooky.
 
-Tento článek ukazuje, jak
+Tento článek popisuje, jak
 
-*  Definujte funkce Azure, který upravit tak, aby odpovídal na webhooky. 
+*  Definujte funkci Azure, který je přizpůsobený reagovat na webhooky. 
     
-    V takovém případě webhooku se aktivuje pomocí služby Media Services, když vaše úlohy kódování změní stav. Funkce přijímá volání webhooku zpět z oznámení Media Services a publikuje výstupní asset po dokončení úlohy. 
+    V takovém případě webhooku se aktivuje službou Media Services, pokud vaše úloha kódování změní stav. Funkce naslouchá pro volání webhooku zpět z oznámení služby Media Services a publikuje výstupního prostředku, až úloha dokončí. 
     
     >[!NOTE]
-    >Než budete pokračovat, musíte rozumět jak [vazby HTTP funkce Azure a webhooku](../../azure-functions/functions-bindings-http-webhook.md) fungovat.
+    >Než budete pokračovat, ujistěte se, že rozumíte jak [Azure Functions HTTP a webhookové vazby](../../azure-functions/functions-bindings-http-webhook.md) fungovat.
     >
     
-* Přidejte webhook, jehož kódování úlohu a zadejte adresu URL webhooku a tajný klíč, který tento webhook reaguje na. Najdete příklad, který přidá webhook, jehož kódování úlohu na konci tohoto článku.  
+* Přidání webhooku do kódování úloh a zadejte adresu URL webhooku a tajného klíče, který odpovídá tento webhook. Najdete příklad, který přidá webhooku pro vaši úlohu kódování na konci tohoto článku.  
 
-Můžete najít definice různých Media Services .NET Azure Functions (včetně uvedeno v tomto článku) [zde](https://github.com/Azure-Samples/media-services-dotnet-functions-integration).
+Můžete najít definice různých Media Services .NET Azure Functions (včetně znázorněné v tomto článku) [tady](https://github.com/Azure-Samples/media-services-dotnet-functions-integration).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -44,42 +44,42 @@ K dokončení kurzu potřebujete následující:
 
 * Účet Azure. Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 * Účet Media Services. Pokud chcete vytvořit účet Media Services, přečtěte si článek [Jak vytvořit účet Media Services](media-services-portal-create-account.md).
-* Pochopení [jak používat Azure Functions](../../azure-functions/functions-overview.md). Projděte si také téma [vazby HTTP funkce Azure a webhooku](../../azure-functions/functions-bindings-http-webhook.md).
+* Znalost [tom, jak pomocí služby Azure Functions](../../azure-functions/functions-overview.md). Projděte si také, [Azure Functions HTTP a webhookové vazby](../../azure-functions/functions-bindings-http-webhook.md).
 
 ## <a name="create-a-function-app"></a>Vytvoření Function App
 
 1. Přejděte na web [Azure Portal](http://portal.azure.com) a přihlaste se pomocí účtu Azure.
-2. Vytvoření aplikace pro funkce, jak je popsáno [zde](../../azure-functions/functions-create-function-app-portal.md).
+2. Vytvoření aplikace function app, jak je popsáno [tady](../../azure-functions/functions-create-function-app-portal.md).
 
-## <a name="configure-function-app-settings"></a>Konfigurovat nastavení aplikace – funkce
+## <a name="configure-function-app-settings"></a>Konfigurace nastavení aplikace function app
 
-Při vývoji funkce Media Services, je užitečný pro přidání proměnné prostředí, které se používají v rámci funkcí. Chcete-li nakonfigurovat nastavení aplikace, klikněte na odkaz nakonfigurovat nastavení aplikace. 
+Při vytváření funkcí služby Media Services, je užitečné pro přidání proměnné prostředí, které se použijí v celé vaší funkce. Ke konfiguraci nastavení aplikace, klikněte na odkaz Konfigurovat nastavení aplikace. 
 
 [Nastavení aplikace](media-services-dotnet-how-to-use-azure-functions.md#configure-function-app-settings) oddíl definuje parametry, které se používají v webhooku definované v tomto článku. Tyto parametry můžete také přidáte nastavení aplikace. 
 
 |Název|Definice|Příklad:| 
 |---|---|---|
 |SigningKey |Podpisový klíč.| j0txf1f8msjytzvpe40nxbpxdcxtqcgxy0nt|
-|WebHookEndpoint | Adresa koncového bodu webhooku. Po vytvoření webhooku funkce můžete zkopírovat adresu URL z **získat adresu URL funkce** odkaz. | https://juliakofuncapp.azurewebsites.net/api/Notification_Webhook_Function?code=iN2phdrTnCxmvaKExFWOTulfnm4C71mMLIy8tzLr7Zvf6Z22HHIK5g==.|
+|WebHookEndpoint | Adresu koncového bodu webhooku. Po vytvoření funkce webhook můžete zkopírovat adresu URL **získat adresu URL funkce** odkaz. | https://juliakofuncapp.azurewebsites.net/api/Notification_Webhook_Function?code=iN2phdrTnCxmvaKExFWOTulfnm4C71mMLIy8tzLr7Zvf6Z22HHIK5g==.|
 
 ## <a name="create-a-function"></a>Vytvoření funkce
 
-Po nasazení aplikace funkce najdete ji mezi **App Services** Azure Functions.
+Po nasazení aplikace funkcí se nachází mezi **App Services** Azure Functions.
 
-1. Vyberte svou aplikaci funkce a klikněte na tlačítko **novou funkci**.
-2. Vyberte **C#** kódu a **rozhraní API & Webhooky** scénář. 
-3. Vyberte **obecný Webhook - C#**.
+1. Vyberte vaši aplikaci function app a klikněte na tlačítko **novou funkci**.
+2. Vyberte **C#** kódu a **rozhraní API a Webhooky** scénář. 
+3. Vyberte **obecný Webhook – C#** .
 4. Název webhooku a stiskněte klávesu **vytvořit**.
 
 ### <a name="files"></a>Soubory
 
-Funkce Azure je přidružen soubory kódu a další soubory, které jsou popsané v této části. Ve výchozím nastavení, je přidružen funkci **function.json** a **run.csx** soubory (C#). Je nutné přidat **project.json** souboru. Zbývající část tohoto oddílu obsahuje definice pro tyto soubory.
+Vaše funkce Azure Functions je přidružené soubory kódu a další soubory, které jsou popsané v této části. Ve výchozím nastavení, je přidružený funkce **function.json** a **run.csx** (C#) soubory. Je třeba přidat **project.json** souboru. Zbývající část ukazuje definice pro tyto soubory.
 
 ![souborů](./media/media-services-azure-functions/media-services-azure-functions003.png)
 
 #### <a name="functionjson"></a>function.json
 
-Soubor function.json definuje vazby funkcí a dalších nastavení konfigurace. Modul runtime používá tento soubor k určení události k monitorování a jak předat data do a ze spuštění funkce vrátit data. 
+Soubor function.json definuje vazby funkcí a dalších nastavení konfigurace. Modul runtime používá k určení události, které chcete sledovat tento soubor a jak předat data do a vrátit data z provádění funkce. 
 
 ```json
 {
@@ -121,11 +121,11 @@ Soubor project.json obsahuje závislosti.
     
 #### <a name="runcsx"></a>run.csx
 
-Kód v této části ukazuje implementaci funkce Azure, který je webhook, jehož. V této ukázce funkce přijímá volání webhooku zpět z oznámení Media Services a publikuje výstupní asset po dokončení úlohy.
+Kód v této části ukazuje implementaci funkce Azure, který je webhook. V této ukázce funkce naslouchá pro volání webhooku zpět z oznámení služby Media Services a publikuje výstupního prostředku, až úloha dokončí.
 
-Webhook očekává podpisový klíč (pověření) tak, aby odpovídaly je ta, kterou předáte při konfiguraci koncového bodu oznámení. Podpisový klíč je hodnota kódováním Base64 64 bajtů, který se používá k ochraně a zabezpečení vaší Webhooky zpětná volání ze služby Azure Media Services. 
+Webhook očekává, že podpisový klíč (credential) tak, aby odpovídaly ta, kterou předáte při konfiguraci koncového bodu oznámení. Podpisový klíč je 64 bajtů hodnotou kódovanou jako Base64, který se používá k ochraně a zabezpečení vaší Webhooky zpětná volání ze služby Azure Media Services. 
 
-V kódu definice webhooku, který následuje **VerifyWebHookRequestSignature** metoda nemá ověření oznámení. Účelem tohoto ověření je zajistit, že zpráva byla odeslána službou Azure Media Services a nikdo neoprávněně nemanipuloval. Podpis je volitelné pro Azure Functions, protože má **kód** hodnotu jako parametr dotazu přes zabezpečení TLS (Transport Layer). 
+V definici kódu webhook, který následuje **VerifyWebHookRequestSignature** metoda provádí ověření zprávy oznámení. Účelem toto ověření je zajistit, že zpráva byla odeslána Azure Media Services a nebylo manipulováno. Podpis je nepovinné pro službu Azure Functions je na něm **kód** hodnotu jako parametr dotazu přes zabezpečení TLS (Transport Layer). 
 
 >[!NOTE]
 >Je stanovený limit 1 000 000 různých zásad AMS (třeba zásady lokátoru nebo ContentKeyAuthorizationPolicy). Pokud vždy používáte stejné dny / přístupová oprávnění, například zásady pro lokátory, které mají zůstat na místě po dlouhou dobu (zásady bez odeslání), měli byste použít stejné ID zásad. Další informace najdete v [tomto](media-services-dotnet-manage-entities.md#limit-access-policies) tématu.
@@ -344,11 +344,11 @@ internal sealed class NotificationMessage
 }
 ```
 
-Uložte a spusťte funkce.
+Uložte a spusťte vaši funkci.
 
 ### <a name="function-output"></a>Výstup – funkce
 
-Jakmile webhooku se aktivuje, v předchozím příkladu vytvoří následující výstup, vaše hodnoty se budou lišit.
+Po webhooku se aktivuje, vytvoří následující výstup v příkladu výše, vaše hodnoty se budou lišit.
 
     C# HTTP trigger function processed a request. RequestUri=https://juliako001-functions.azurewebsites.net/api/Notification_Webhook_Function?code=9376d69kygoy49oft81nel8frty5cme8hb9xsjslxjhalwhfrqd79awz8ic4ieku74dvkdfgvi
     Request Body = 
@@ -370,17 +370,17 @@ Jakmile webhooku se aktivuje, v předchozím příkladu vytvoří následující
     
     URL to the manifest for client streaming using HLS protocol: http://mediapkeewmg5c3peq.streaming.mediaservices.windows.net/0ac98077-2b58-4db7-a8da-789a13ac6167/BigBuckBunny.ism/manifest(format=m3u8-aapl)
 
-## <a name="add-a-webhook-to-your-encoding-task"></a>Přidání webhook, jehož do kódování úlohu
+## <a name="add-a-webhook-to-your-encoding-task"></a>Přidání webhooku do kódování úloh
 
-V této části se zobrazí kód, který přidá webhooku oznámení k úloze. Můžete také přidat úroveň oznámení úlohy, které by být užitečnější pro úlohu s zřetězené úlohy.  
+V této části se zobrazí kód, který se přidá oznámení webhooku k úkolu. Můžete také přidat úroveň oznámení úlohy, které by mohl být užitečnější pro úlohu s zřetězené úkoly.  
 
 1. Vytvořte novou konzolovou aplikaci v jazyce C# v sadě Visual Studio. Zadejte název, umístění a řešení název a potom klikněte na tlačítko OK.
 2. Použití [NuGet](https://www.nuget.org/packages/windowsazure.mediaservices) k instalaci služby Azure Media Services.
-3. Aktualizujte soubor App.config příslušné hodnoty: 
+3. Aktualizace souboru App.config příslušnými hodnotami: 
     
     * Informace o Azure Media Services připojení, 
-    * URL webhooku se nenačetla, která očekává dostávat oznámení, 
-    * podpisový klíč, který se shoduje s klíčem, který vaše webhooku očekává. Podpisový klíč je hodnota kódováním Base64 64 bajtů, který se používá k ochraně a zabezpečení vaší webhooky zpětná volání ze služby Azure Media Services. 
+    * Adresa URL webhooku, která očekává, že chcete dostávat oznámení, 
+    * podpisový klíč, který odpovídá klíč, který očekává, že vaše webhooku. Podpisový klíč je 64 bajtů hodnotou kódovanou jako Base64, který se používá k ochraně a zabezpečení vaší webhooky zpětná volání ze služby Azure Media Services. 
 
     ```xml
             <appSettings>

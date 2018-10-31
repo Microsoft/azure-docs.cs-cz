@@ -9,12 +9,12 @@ ms.workload: core
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: shvija
-ms.openlocfilehash: 6d5b52c8a5dd0306a349cac5e67eecc809005c6f
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 2f59b7f47acc8ce8e566b7f0e2bcfed379ea60d2
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49429180"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50239080"
 ---
 # <a name="receive-events-from-azure-event-hubs-using-nodejs"></a>Příjem událostí z Azure Event Hubs pomocí Node.js
 
@@ -141,12 +141,7 @@ Můžete najít další ukázky [tady](https://github.com/Azure/azure-event-hubs
 
 ## <a name="next-steps"></a>Další postup
 
-Získáte další informace o službě Event Hubs na následujících stránkách:
-
-* [Odesílání událostí pomocí Node.js](event-hubs-go-get-started-send.md)
-* [Ukázky služby Event Hubs](https://github.com/Azure/azure-event-hubs-node/tree/master/processor/examples/)
-* [Zaznamenání událostí do Azure Storage nebo Azure Data Lake Store](event-hubs-capture-overview.md)
-* [Nejčastější dotazy k Event Hubs](event-hubs-faq.md)
+V tomto rychlém startu jste vytvořili aplikaci Node.js, která se zobrazila zprávy z centra událostí. Zjistěte, jak odesílat události do centra událostí pomocí Node.js, naleznete v tématu [odesílání událostí z centra událostí - Node.js](event-hubs-node-get-started-send.md).
 
 <!-- Links -->
 [bezplatný účet]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio

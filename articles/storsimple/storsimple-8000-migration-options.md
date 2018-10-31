@@ -11,14 +11,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/20/2018
+ms.date: 10/30/2018
 ms.author: alkohli
-ms.openlocfilehash: 5da67b5141eb61823d3e376b6f0e6b0b3895ca68
-ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
+ms.openlocfilehash: 5166e154e1a67cea777933b6bf8757661a9c3ad5
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46498279"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50242955"
 ---
 # <a name="options-to-migrate-data-from-storsimple-5000-7000-series"></a>Možnosti, jak migrovat data ze StorSimple řad 5000 – 7000 
 
@@ -29,15 +29,21 @@ StorSimple řad 5000 – 7000 dosahuje [konec podpory](https://support.microsoft
 
 ## <a name="migration-options"></a>Možnosti migrace
 
-Zákazníci, kteří používají StorSimple řad 5000 – 7000 mají následující dvě klíčové možnosti:
+Zákazníci, kteří používají StorSimple 5000 – 7000 series k dispozici následující možnosti:
 
-- **Upgrade na StorSimple řady 8000** – Upgrade na StorSimple 8000 series a proto pokračovat na platformě StorSimple.  Tento způsob upgradu zvolte vyžaduje, aby zákazníci na svých zařízeních řad 5000 – 7000 nahraďte 8000 series. Pomocí nástroje pro migraci se migrují data ze zařízení řady 5000-7000. Po úspěšném dokončení migrace zařízeních StorSimple řady 8000 nadále úroveň dat do Azure Blob Storage. 
+- **Možnosti Azure**:
+
+    - **Upgrade na StorSimple řady 8000** – Upgrade na StorSimple 8000 series a proto pokračovat na platformě StorSimple.  Tento způsob upgradu zvolte vyžaduje, aby zákazníci na svých zařízeních řad 5000 – 7000 nahraďte 8000 series. Pomocí nástroje pro migraci se migrují data ze zařízení řady 5000-7000. Po úspěšném dokončení migrace zařízeních StorSimple řady 8000 nadále úroveň dat do Azure Blob Storage. 
 
     Další informace o tom, jak migrovat data pomocí řady StorSimple 8000, přejděte na [migrovat data ze StorSimple řad 5000 – 7000 zařízení řady 8000](storsimple-8000-migrate-from-5000-7000.md).
 
-- **Migrace do Azure File Sync** – tento úplně nový možnost migrace umožňuje zákazníkům umožňuje ukládat sdílené složky organizace ve složce služby soubory Azure. Pro přístup k místnímu používání Azure File Sync (AFS) jsou pak centralizované těchto sdílených složek. AFS můžete nasadit na hostitelském Windows serveru. Skutečná data migrace je pak provést, protože hostitel kopírování nebo použití nástroj pro migraci.
+    - **Migrace do Azure File Sync** – tento úplně nový možnost migrace umožňuje zákazníkům umožňuje ukládat sdílené složky organizace ve složce služby soubory Azure. Pro přístup k místnímu používání Azure File Sync (AFS) jsou pak centralizované těchto sdílených složek. AFS můžete nasadit na hostitelském Windows serveru. Skutečná data migrace je pak provést, protože hostitel kopírování nebo použití nástroj pro migraci.
 
     Další informace o tom, jak migrovat data do Azure File Sync, přejděte na [migrovat data ze StorSimple řad 5000 – 7000 do Azure File Sync](https://aka.ms/StorSimpleMigrationAFS).
+
+- **Možnosti třetích stran**:
+
+    - **Migrace na Panzura volnosti NAS** – StorSimple 5000 – 7000 Zákazníci si mohou vybrat k migraci do volného NAS Panzura chtějí uchovávat svá data v Azure. Panzura volnosti řešení poskytuje řešení NAS, která zahrnuje datová centra, pobočky, privátních a veřejných cloudech. Toto řešení umožňuje místní, hybridní a pracovní postupy dat v cloudu pro systém souborů NFS, SMB a mobilní klienty. Tato migrace podporuje Panzura a zákazníci můžou začít tím, že žádosti o podporu migrace z [Panzura webu](https://panzura.com/storsimple-migration/).
 
 ## <a name="migration---frequently-asked-questions"></a>Migrace – nejčastější dotazy
 
@@ -50,11 +56,11 @@ A. StorSimple řad 5000 – 7000 oslovit [konec služby](https://support.microso
 A. Můžete nadále používat data v Azure po migraci do služby novější. 
 
 
-### <a name="q--what-happens-to-the-data-i-have-stored-locally-on-my-storsimple-device"></a>Otázka:  Co se stane s daty, která jsem ukládají místně na svém zařízení StorSimple? 
+### <a name="q-what-happens-to-the-data-i-have-stored-locally-on-my-storsimple-device"></a>Otázka: Co se stane s daty, která jsem ukládají místně na svém zařízení StorSimple? 
 
 A. Data, která je na místním zařízení je možné zkopírovat do novější službu tak, jak je popsáno v dokumentech migrace.
 
-### <a name="what-happens-if-i-want-to-keep-my-storsimple-50007000-series-appliance"></a>Co se stane, když budu chtít zachovat Moje zařízení řady StorSimple 5000/7000? 
+### <a name="q-what-happens-if-i-want-to-keep-my-storsimple-50007000-series-appliance"></a>Otázka: Co se stane, když budu chtít zachovat Moje zařízení řady StorSimple 5000/7000? 
 
 A. Služby mohou pokračovat v práci, Microsoft si už ho může poskytovat podporu hardwaru a softwaru. Migrace je důrazně doporučujeme pro zajištění kontinuity.
 

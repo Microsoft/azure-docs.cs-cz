@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/20/2018
 ms.author: anwestg
-ms.openlocfilehash: 08fcaa44fc807f986324b8304010792af99fd838
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 786f6ca3b3a1ad26d36c751c54d3cf69ae1d2fd4
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49387991"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50240864"
 ---
 # <a name="before-you-get-started-with-app-service-on-azure-stack"></a>Před zahájením práce s App Service ve službě Azure Stack
 
@@ -170,7 +170,7 @@ Azure App Service vyžaduje použití souborového serveru. Pro nasazení v prod
 Pouze nasazení Azure Stack Development Kit, můžete použít [příklad šablony nasazení Azure Resource Manageru](https://aka.ms/appsvconmasdkfstemplate) pro nasazení nakonfigurované jedním uzlem souborového serveru. Jeden souborový server se bude v pracovní skupině.
 
 >[!IMPORTANT]
-> Pokud budete chtít nasadit službu App Service v existující virtuální sítě na souborovém serveru musí být nasazené do samostatné podsítě ze služby App Service.
+> Pokud budete chtít nasadit službu App Service v existující virtuální síť, souborový Server musí být nasazené do samostatné podsítě ze služby App Service.
 
 ### <a name="provision-groups-and-accounts-in-active-directory"></a>Zřízení skupin a účtů ve službě Active Directory
 

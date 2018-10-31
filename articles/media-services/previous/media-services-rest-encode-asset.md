@@ -1,10 +1,10 @@
 ---
-title: Postup kódování Azure assetu pomocí kodéru Media Encoder Standard | Microsoft Docs
-description: Další informace o použití Media Encoder Standard ke kódování mediální obsah v Azure Media Services. Ukázky kódu pomocí rozhraní REST API.
+title: Kódování Azure prostředku pomocí kodéru Media Encoder Standard | Dokumentace Microsoftu
+description: Naučte se kódovat mediálního obsahu Azure Media Services pomocí kodéru Media Encoder Standard. Ukázky kódu pomocí rozhraní REST API.
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 2a7273c6-8a22-4f82-9bfe-4509ff32d4a4
 ms.service: media-services
@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/07/2017
+ms.date: 10/30/2018
 ms.author: juliako
-ms.openlocfilehash: 78087bbb43d12af65bfbde93f54e2f29309ac093
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 34652400acaf2efca3648bb4c7cde795861c3101
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33790416"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50247925"
 ---
-# <a name="how-to-encode-an-asset-by-using-media-encoder-standard"></a>Postup kódování assetu pomocí kodéru Media Encoder Standard
+# <a name="how-to-encode-an-asset-by-using-media-encoder-standard"></a>Kódování prostředku pomocí kodéru Media Encoder Standard
 > [!div class="op_single_selector"]
 > * [.NET](media-services-dotnet-encode-with-media-encoder-standard.md)
 > * [REST](media-services-rest-encode-asset.md)
@@ -30,42 +30,42 @@ ms.locfileid: "33790416"
 >
 
 ## <a name="overview"></a>Přehled
-Chcete-li poskytovat digitální video přes Internet, je nutné médium komprimovat. Digitální video soubory jsou velké, může být příliš velký pro doručení přes Internet nebo pro zařízení vašich zákazníků a zobrazeny správně. Kódování je proces komprimace videa a zvuku, takže vaši zákazníci mohou zobrazit médiu.
+Pokud chcete poskytovat digitální video přes Internet, je nutné médium komprimovat. Digitální video soubory jsou velké a může být příliš velký, aby poskytování přes Internet nebo pro zařízení vašich zákazníků a zobrazeny správně. Kódování je proces komprese videa a zvuku, takže vaši zákazníci mohou zobrazit médií.
 
-Kódování úlohy jsou některé z nejběžnějších zpracování operací ve službě Azure Media Services. K převodu mediálních souborů z jednoho kódování do druhého se využívají kódovací úlohy. Při kódování, můžete použít předdefinované kodéru Media Services (Media Encoder Standard). Můžete také použít kodér poskytovanými partnerem Media Services. Třetí strany kodéry jsou k dispozici prostřednictvím Azure Marketplace. Můžete zadat podrobnosti úlohy kódování, pomocí přednastavení definované pro kodér nebo pomocí přednastavené konfigurační soubory. Typy přednastavení, které jsou k dispozici, najdete v sekci [přednastavení úloh pro Media Encoder Standard](http://msdn.microsoft.com/library/mt269960).
+Kódování úloh je jednou z nejběžnějších operací zpracování ve službě Azure Media Services. K převodu mediálních souborů z jednoho kódování do druhého se využívají kódovací úlohy. Při kódování, můžete použít předdefinované kodér Media Services (Media Encoder Standard). Můžete také použít kodér poskytovanými partnerem Media Services. Kodérů třetích stran jsou k dispozici prostřednictvím Azure Marketplace. Můžete zadat podrobnosti úlohy kódování pomocí přednastavení, které jsou definovány pro váš kodér, nebo pomocí přednastavených konfiguračních souborů. Typy předvolby, které jsou k dispozici, najdete v sekci [předvolby úloh pro Media Encoder Standard](http://msdn.microsoft.com/library/mt269960).
 
-Každá úloha může mít jeden nebo více úloh, v závislosti na typu zpracování, který chcete provést. Přes rozhraní REST API můžete vytvořit úlohy a jejich související úlohy v jedné ze dvou způsobů:
+Každá úloha může mít jednu nebo více úloh v závislosti na typu zpracování, které chcete dosáhnout. Prostřednictvím rozhraní REST API můžete vytvořit úloh a jejich související úlohy v jedné ze dvou způsobů:
 
-* Úlohy může být definována vložením prostřednictvím úlohy navigační vlastnost u entity úlohy.
-* Použijte dávkovým zpracováním OData.
+* Úkoly mohou být definována vložením prostřednictvím vlastnosti navigace úkoly u úlohy entit.
+* Použijte dávkové zpracování protokolu OData.
 
-Doporučujeme vždy zakódovat zdrojové soubory do sady souborů MP4 adaptivní přenosovou rychlostí a pak sadu převést na požadovaný formát pomocí [dynamické balení](media-services-dynamic-packaging-overview.md).
+Doporučujeme vždy zakódovat do sady MP4 adaptivní přenosové rychlosti zdrojové soubory a pak sadu převést na požadovaný formát s použitím [dynamické balení](media-services-dynamic-packaging-overview.md).
 
 Pokud výstupní asset používá šifrování úložiště, musíte nakonfigurovat zásady doručení assetu. Další informace najdete v tématu [konfigurace zásad doručení assetu](media-services-rest-configure-asset-delivery-policy.md).
 
 ## <a name="considerations"></a>Požadavky
 
-Při přístupu k entity ve službě Media Services, musíte nastavit specifická pole hlaviček a hodnoty ve své žádosti HTTP. Další informace najdete v tématu [instalační program pro Media Services REST API vývoj](media-services-rest-how-to-use.md).
+Při přístupu k entity ve službě Media Services, musíte nastavit specifická pole hlaviček a hodnoty v požadavcích HTTP. Další informace najdete v tématu [instalace pro vývoj pro Media Services REST API](media-services-rest-how-to-use.md).
 
-Než začnete, odkazující na procesory médií, ověřte, zda máte správná média ID procesoru. Další informace najdete v tématu [získat procesory médií](media-services-rest-get-media-processor.md).
+Než začnete, odkazující na procesory médií, ověřte, že máte správná média ID procesoru. Další informace najdete v tématu [získat procesory médií](media-services-rest-get-media-processor.md).
 
 ## <a name="connect-to-media-services"></a>Připojení ke službě Media Services
 
-Informace o tom, jak připojit k rozhraní API pro AMS najdete v tématu [přístup k Azure Media Services API pomocí ověřování Azure AD](media-services-use-aad-auth-to-access-ams-api.md). 
+Informace o tom, jak se připojit k rozhraní API pro AMS, naleznete v tématu [přístup k rozhraní API Azure Media Services pomocí ověřování Azure AD](media-services-use-aad-auth-to-access-ams-api.md). 
 
-## <a name="create-a-job-with-a-single-encoding-task"></a>Vytvoření úlohy pomocí jednoho úkolu kódování
+## <a name="create-a-job-with-a-single-encoding-task"></a>Vytvoření úlohy pomocí jediné úlohy kódování
 > [!NOTE]
-> Při práci s Media Services REST API, platí následující aspekty:
+> Při práci s rozhraní REST API pro Media Services, platí následující aspekty:
 >
-> Při přístupu k entity ve službě Media Services, musíte nastavit specifická pole hlaviček a hodnoty ve své žádosti HTTP. Další informace najdete v tématu [nastavení pro vývoj pro Media Services REST API](media-services-rest-how-to-use.md).
+> Při přístupu k entity ve službě Media Services, musíte nastavit specifická pole hlaviček a hodnoty v požadavcích HTTP. Další informace najdete v tématu [instalace pro vývoj rozhraní REST API pro Media Services](media-services-rest-how-to-use.md).
 >
-> Při použití formátu JSON a určení pro použití **__metadata** – klíčové slovo v požadavku (například na referenční dokumentace propojeného objektu), musíte nastavit **přijmout** hlavičky k [JSON podrobný formát](http://www.odata.org/documentation/odata-version-3-0/json-verbose-format/): Přijměte: application/json; odata = verbose.
+> Při pomocí formátu JSON a určení pro použití **__metadata** – klíčové slovo v požadavku (například k odkazu na odkazovaný objekt), je nutné nastavit **přijmout** záhlaví [JSON podrobný formát](http://www.odata.org/documentation/odata-version-3-0/json-verbose-format/): Přijměte: application/json; odata = verbose.
 >
 >
 
-Následující příklad ukazuje, jak vytvořit a odeslat úlohu s jeden úkol nastavit ke kódování videa na konkrétní řešení a kvality. Při kódování pomocí procesoru Media Encoder Standard, můžete použít přednastavení úloh konfigurace zadané [zde](http://msdn.microsoft.com/library/mt269960).
+Následující příklad ukazuje, jak vytvořit a odeslat úlohu u jedné úlohy nastavit ke kódování videa na konkrétní řešení a kvalitu. Při kódování pomocí Media Encoder Standard, můžete použít přednastavení úloh konfigurace zadaná [tady](http://msdn.microsoft.com/library/mt269960).
 
-Žádost:
+Požadavek:
 
     POST https://media.windows.net/API/Jobs HTTP/1.1
     Content-Type: application/json;odata=verbose
@@ -85,27 +85,27 @@ Odpověď:
 
     . . .
 
-### <a name="set-the-output-assets-name"></a>Nastavte název výstupního assetu
+### <a name="set-the-output-assets-name"></a>Nastavte název výstupního prostředku
 Následující příklad ukazuje, jak nastavit atribut assetName:
 
     { "TaskBody" : "<?xml version=\"1.0\" encoding=\"utf-8\"?><taskBody><inputAsset>JobInputAsset(0)</inputAsset><outputAsset assetName=\"CustomOutputAssetName\">JobOutputAsset(0)</outputAsset></taskBody>"}
 
 ## <a name="considerations"></a>Požadavky
-* Taskbody – vlastnosti používaly literál XML Definujte počet vstup nebo výstup prostředky, které jsou používány úlohu. Úloha článek obsahuje definici schématu XML pro soubor XML.
-* V definici taskbody – každý vnitřní hodnota <inputAsset> a <outputAsset> musí být nastavena jako JobInputAsset(value) nebo JobOutputAsset(value).
-* Úloha může mít více prostředků výstup. Jeden JobOutputAsset(x) lze použít jako výstup úlohy pro úlohu pouze jednou.
-* Můžete zadat JobInputAsset nebo JobOutputAsset jako vstupní datový zdroj úlohy.
+* Taskbody – vlastnosti používaly literál XML definovat počet vstupních nebo výstupních prostředky, které jsou používány úkolu. Tento článek úloh obsahuje definici schématu XML pro XML.
+* V definici taskbody – každé vnitřní hodnota <inputAsset> a <outputAsset> musí být nastavena jako JobInputAsset(value) nebo JobOutputAsset(value).
+* Úkol může mít více výstupní assety. Jeden JobOutputAsset(x) jde použít jenom jednou jako výstup úlohy v rámci úlohy.
+* Můžete zadat JobInputAsset nebo JobOutputAsset jako vstupní asset úlohy.
 * Úlohy nesmí tvoří cyklus.
-* Hodnota parametru, který můžete předat JobInputAsset nebo JobOutputAsset představuje hodnotu indexu pro určitý prostředek. Skutečné prostředky jsou definovány v navigační vlastnosti InputMediaAssets a OutputMediaAssets v definici úlohy entity.
-* Služba Media Services je integrovaná v OData v3, jsou jednotlivé prostředky v kolekcích navigační vlastnost InputMediaAssets a OutputMediaAssets odkazuje prostřednictvím "__metadata: identifikátor uri" dvojice název hodnota.
-* InputMediaAssets se mapuje na jeden nebo více prostředků, které jste vytvořili ve službě Media Services. OutputMediaAssets jsou vytvořené v systému. Nemusíte se odkazovat na existující prostředek.
-* Pomocí atributu assetName může mít název OutputMediaAssets. Pokud tento atribut není k dispozici, je název OutputMediaAsset bez ohledu na hodnotu vnitřní text z <outputAsset> element je s příponou název úlohy hodnota nebo hodnota Id úlohy (v případě, kde není definována vlastnost Name). Například pokud nastavíte hodnotu assetName "Ukázce", pak název OutputMediaAsset je nastavena na "Ukázka." Ale pokud nebylo nastavit hodnotu assetName, ale nastavena název úlohy na "NewJob", pak OutputMediaAsset název by měl být "_NewJob JobOutputAsset (hodnota)."
+* Hodnota parametru, který můžete předat JobInputAsset nebo JobOutputAsset představuje hodnotu indexu pro určitý prostředek. Skutečné prostředky jsou definovány v navigační vlastnosti InputMediaAssets a OutputMediaAssets na definici entit úlohy.
+* Protože Media Services je založená na protokolu OData v3, jednotlivé prostředky v InputMediaAssets a OutputMediaAssets navigační vlastnost kolekce odkazují "__metadata: identifikátor uri" dvojice název hodnota.
+* InputMediaAssets mapuje na jeden nebo více prostředků, které jste vytvořili ve službě Media Services. OutputMediaAssets jsou vytvořeny v systému. Jejich neodkazují na existující prostředek.
+* Pomocí atributu assetName může mít název OutputMediaAssets. Pokud tento atribut není k dispozici, pak OutputMediaAsset jmenuje bez ohledu na hodnotu vnitřní text z <outputAsset> element je s příponou hodnotu název úlohy nebo úlohu s Id hodnoty (v případě, kdy není definována vlastnost Name). Například pokud nastavíte hodnotu assetName na "Ukázkový", klikněte název OutputMediaAsset je nastavena na "Ukázkový". Nicméně, pokud jste nenastavili hodnotu assetName, ale nastaven název úlohy, který "NewJob", pak OutputMediaAsset název by měl být "_NewJob JobOutputAsset (hodnota)."
 
-## <a name="create-a-job-with-chained-tasks"></a>Vytvořit úlohu zřetězené úlohy
-V mnoha scénářích aplikace vývojáři chcete vytvořit řadu zpracování úlohy. Ve službě Media Services můžete vytvořit řadu zřetězené úlohy. Každý úkol provádí různé zpracování kroky a můžete použít různé média procesory. Zřetězené úlohy můžete předat prostředek od jednoho do jiného provádění lineární pořadí úloh na asset. Úlohy prováděné v rámci úlohy, ale nemusejí být v pořadí. Když vytvoříte úlohu zřetězené, zřetězené **ITask** objekty jsou vytvořené v jedné **IJob** objektu.
+## <a name="create-a-job-with-chained-tasks"></a>Vytvoření úlohy zřetězené úkoly
+V mnoha scénářích aplikací vývojáři chtějí vytvořit řadu úloh zpracování. Ve službě Media Services můžete vytvořit řadu zřetězené úkoly. Každý úkol provádí jiné zpracování kroky a může používat procesory architektury různá média. Zřetězené úkoly můžete předat prostředek z jednoho úkolu do druhého, provádění lineární posloupnost úloh na prostředku. Úlohy prováděné v rámci úlohy, ale nemusejí být v sekvenci. Když vytvoříte úlohu zřetězené, zřetězené **ITask** objekty vytvořené v jednom **IJob** objektu.
 
 > [!NOTE]
-> Je aktuálně omezeno na 30 úloh na úlohu. Pokud potřebujete zřetězit více než 30 úloh, vytvořte více než jednu úlohu tak, aby obsahovala úlohy.
+> Není aktuálně maximálně 30 úkoly na jednu úlohu. Pokud je nutné zřetězit více než 30 úloh, vytvořte více než jednu úlohu tak, aby obsahovala úkoly.
 >
 >
 
@@ -143,13 +143,13 @@ V mnoha scénářích aplikace vývojáři chcete vytvořit řadu zpracování �
 
 
 ### <a name="considerations"></a>Požadavky
-Chcete-li povolit řetězení úloh:
+Pokud chcete povolit řetězení úloh:
 
 * Úloha musí mít alespoň dvě úlohy.
-* Musí existovat alespoň jeden úkol, jejichž vstup je výstup jiná úloha v úloze.
+* Musí existovat alespoň jeden úkol, jejichž vstup je výstup jiný úkol v úloze.
 
 ## <a name="use-odata-batch-processing"></a>Použít dávkovým zpracováním OData
-Následující příklad ukazuje, jak používat dávkovým zpracováním OData k vytvoření úlohy a úlohy. Informace o zpracování dávky, najdete v části [Open Data Protocol (OData) dávkové zpracování](http://www.odata.org/documentation/odata-version-3-0/batch-processing/).
+Následující příklad ukazuje způsob použití dávkovým zpracováním OData k vytvoření úlohy a úkolů. Informace o zpracování služby batch najdete v tématu [Open Data Protocol (OData), dávkové zpracování](http://www.odata.org/documentation/odata-version-3-0/batch-processing/).
 
     POST https://media.windows.net/api/$batch HTTP/1.1
     DataServiceVersion: 1.0;NetFx
@@ -209,8 +209,8 @@ Následující příklad ukazuje, jak používat dávkovým zpracováním OData 
 
 
 
-## <a name="create-a-job-by-using-a-jobtemplate"></a>Vytvořit úlohu pomocí JobTemplate
-Když při zpracování více prostředků pomocí společnou sadu úloh, použijte JobTemplate zadat výchozí přednastavení úloh nebo nastavit pořadí úkolů.
+## <a name="create-a-job-by-using-a-jobtemplate"></a>Vytvoření úlohy s využitím JobTemplate
+Při zpracování více prostředků s použitím společnou sadu úkolů, použijte JobTemplate zadejte výchozí přednastavení úloh nebo nastavit pořadí úkolů.
 
 Následující příklad ukazuje, jak vytvořit JobTemplate s TaskTemplate, která je definována vložením. TaskTemplate používá Media Encoder Standard jako MediaProcessor ke kódování souboru prostředku. Další MediaProcessors však lze použít také.
 
@@ -228,7 +228,7 @@ Následující příklad ukazuje, jak vytvořit JobTemplate s TaskTemplate, kter
 
 
 > [!NOTE]
-> Na rozdíl od jinými entitami Media Services musíte definovat nový identifikátor GUID pro každou TaskTemplate a umístěte jej v taskTemplateId a vlastnost Id v textu vaší žádosti. Schéma obsahu identifikace musí následovat schéma popsaných v identifikovat Azure Media Services entity. Navíc JobTemplates nelze aktualizovat. Místo toho musíte vytvořit novou s aktualizované změny.
+> Na rozdíl od dalších subjektů Media Services, musíte definovat nový identifikátor GUID pro každou TaskTemplate a umístěte ho do taskTemplateId a vlastnost Id v textu vašeho požadavku. Schéma obsahu identifikace musí následovat schéma popsaných v identifikovat Azure Media Services entity. Navíc JobTemplates se nedá aktualizovat. Místo toho musíte vytvořit nový s aktualizované změny.
 >
 >
 
@@ -239,7 +239,7 @@ V případě úspěchu se vrátí následující odpověď:
     . . .
 
 
-Následující příklad ukazuje, jak vytvořit úlohu, která odkazuje na JobTemplate Id:
+Následující příklad ukazuje, jak vytvořit úlohu, která odkazuje na identifikátor JobTemplate:
 
     POST https://media.windows.net/API/Jobs HTTP/1.1
     Content-Type: application/json;odata=verbose
@@ -261,12 +261,12 @@ V případě úspěchu se vrátí následující odpověď:
     . . .
 
 
-## <a name="advanced-encoding-features-to-explore"></a>Pokročilé funkce chcete prozkoumat kódování
-* [Postup vytváření miniatur](media-services-dotnet-generate-thumbnail-with-mes.md)
-* [Vytváření miniatur během kódování](media-services-dotnet-generate-thumbnail-with-mes.md#example-of-generating-a-thumbnail-while-encoding)
-* [Oříznutí videa během kódování](media-services-crop-video.md)
-* [Přizpůsobení přednastavení kódování](media-services-custom-mes-presets-with-dotnet.md)
-* [Překrytí nebo vodoznaku video s bitovou kopií](media-services-advanced-encoding-with-mes.md#overlay)
+## <a name="advanced-encoding-features-to-explore"></a>Pokročilé funkce Encoding prozkoumat
+* [Postup generování miniatur](media-services-dotnet-generate-thumbnail-with-mes.md)
+* [Generování miniatur při kódování](media-services-dotnet-generate-thumbnail-with-mes.md#example-of-generating-a-thumbnail-while-encoding)
+* [Oříznutí videa při kódování](media-services-crop-video.md)
+* [Přizpůsobení kódovací předvolby](media-services-custom-mes-presets-with-dotnet.md)
+* [Překryv nebo vodoznak videa s obrázkem](media-services-advanced-encoding-with-mes.md#overlay)
 
 ## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
@@ -275,7 +275,7 @@ V případě úspěchu se vrátí následující odpověď:
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="next-steps"></a>Další postup
-Teď, když víte, jak vytvořit úlohu kódování assetu, najdete v článku [jak zkontrolovat průběh úlohy pomocí služby Media Services](media-services-rest-check-job-progress.md).
+Teď, když víte, jak vytvořit úlohu kódování prostředku, přečtěte si téma [jak zkontrolovat průběh úlohy pomocí služby Media Services](media-services-rest-check-job-progress.md).
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 [Získat procesory médií](media-services-rest-get-media-processor.md)

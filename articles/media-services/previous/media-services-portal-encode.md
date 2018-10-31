@@ -1,10 +1,10 @@
 ---
-title: Kódování assetu pomocí kodéru Media Encoder Standard na portálu Azure | Microsoft Docs
-description: Tento kurz vás provede jednotlivými kroky kódování assetu pomocí kodéru Media Encoder Standard na portálu Azure.
+title: Kódování prostředku pomocí kodéru Media Encoder Standard na webu Azure Portal | Dokumentace Microsoftu
+description: Tento kurz vás provede kroky pro kódování prostředku pomocí kodéru Media Encoder Standard na webu Azure Portal.
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 107d9e9a-71e9-43e5-b17c-6e00983aceab
 ms.service: media-services
@@ -12,31 +12,31 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/07/2017
+ms.date: 10/30/2018
 ms.author: juliako
-ms.openlocfilehash: 470eb8613416f441c1becee628acf3c898591c84
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 958c53108c024cb349922a1bd10b2cdc2dba41a3
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33790220"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50247278"
 ---
-# <a name="encode-an-asset-by-using-media-encoder-standard-in-the-azure-portal"></a>Kódování assetu pomocí kodéru Media Encoder Standard na portálu Azure
+# <a name="encode-an-asset-by-using-media-encoder-standard-in-the-azure-portal"></a>Kódování prostředku pomocí kodéru Media Encoder Standard na webu Azure Portal
 
 > [!NOTE]
 > K dokončení tohoto kurzu potřebujete mít účet Azure. Podrobnosti najdete na stránce [bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/). 
 > 
 > 
 
-Jedním nejběžnějších scénářů při práci se službou Azure Media Services je doručování adaptivní přenosové rychlosti streamování vašim klientům. Služba Media Services podporuje následující adaptivní přenosové rychlosti streamování technologie: Apple HTTP Live Streaming (HLS), technologie Smooth Streaming Microsoft a dynamické adaptivní datové proudy přes protokol HTTP (DASH, označované taky jako MPEG-DASH). Příprava pro adaptivní přenosové rychlosti streamování videa, zakódujte nejprve zdroj videa jako soubory s více přenosovými rychlostmi. Azure Media Encoder Standard můžete použít ke kódování vašich videí.  
+Jedním z nejběžnějších scénářů při práci s Azure Media Services je doručování adaptivní přenosové rychlosti streamování vašim klientům. Služba Media Services podporuje následující technologie streamování adaptivní přenosové rychlosti: Apple HTTP Live Streaming (HLS), Microsoft Smooth Streaming a dynamické adaptivní streamování přes HTTP (DASH, také nazývané MPEG-DASH). Příprava vašich videí pro streamování s adaptivní přenosovou rychlostí, nejprve zakódování zdrojového videa zdroje jako soubory s více přenosovými rychlostmi. Azure Media Encoder Standard můžete použít ke kódování vašich videí.  
 
-Služba Media Services poskytuje dynamické balení. Při dynamickém balení, abyste mohli zajistit vaše soubory MP4 více přenosovými rychlostmi HLS, technologie Smooth Streaming a MPEG-DASH, bez opětovné vytvoření balíčku v těchto formátů streamování. Při použití dynamického balení, můžete ukládat a platit pro soubory ve formátu jedním úložiště. Služba Media Services sestavení a slouží odpovídající odpověď na základě požadavku klienta.
+Služba Media Services poskytuje dynamické balení. S dynamickým vytvářením paketů, můžete dodávat vaše soubory MP4 s více přenosovými rychlostmi HLS, technologie Smooth Streaming a MPEG-DASH, bez opětovné balení do těchto formátů streamování. Při použití dynamického balení můžete ukládat a platíte za soubory ve formátu jedním úložiště. Služba Media Services sestaví a odešle odpovídající odpověď na požadavek klienta na základě.
 
 Pokud chcete využít výhod dynamického balení, musíte zdrojový soubor zakódovat do sady souborů MP4 s více přenosovými rychlostmi. Postup kódování je ukázán později v tomto článku.
 
-Další postup škálování zpracování médií najdete v tématu [škálování média zpracování pomocí portálu Azure](media-services-portal-scale-media-processing.md).
+Informace o škálování zpracování médií najdete v tématu [škálovat pomocí webu Azure portal zpracování médií](media-services-portal-scale-media-processing.md).
 
-## <a name="encode-in-the-azure-portal"></a>Kódování na portálu Azure
+## <a name="encode-in-the-azure-portal"></a>Kódování na webu Azure Portal
 
 Zakódovat svůj obsah pomocí procesoru Media Encoder Standard:
 
@@ -57,5 +57,5 @@ Zakódovat svůj obsah pomocí procesoru Media Encoder Standard:
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="next-steps"></a>Další postup
-* [Monitorování průběhu úlohy kódování](media-services-portal-check-job-progress.md) na portálu Azure.  
+* [Sledovat průběh úlohy kódování](media-services-portal-check-job-progress.md) na webu Azure Portal.  
 

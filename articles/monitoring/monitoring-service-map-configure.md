@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: daseidma;bwren
-ms.openlocfilehash: 70cf6fe1e2256ba2ed58d020111669e59d9db56b
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 9d574e7e8b0b285093aa0960243300dfe9f6d417
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49405510"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50248990"
 ---
 # <a name="configure-service-map-in-azure"></a>Konfigurace řešení Service Map v Azure
 Service Map automaticky rozpozná komponenty aplikace v systémech Windows a Linux a mapuje komunikaci mezi službami. Můžete ho zobrazit servery přirozeným způsobem – propojené systémy, které doručují důležité služby. Service Map ukazuje propojení mezi servery, procesy a porty v jakékoli architektuře propojené TCP žádnou konfiguraci kromě instalace agenta vyžaduje.
@@ -146,7 +146,7 @@ V tomto článku budeme odkazovat na všechny agenty, zda se systémem Linux neb
 
 Agent Service Map nepřenáší vlastní data a nevyžaduje žádné změny brány firewall nebo porty. Data v Service Map je vždy přenášených v rámci agenta Log Analytics ve službě Log Analytics, buď přímo nebo přes bránu Log Analytics.
 
-![Řešení Service Map agentů](media/monitoring-service-map/agents.png)
+![Řešení Service Map agentů](media/monitoring-service-map-configure/agents.png)
 
 Pokud jste zákazníkem System Center Operations Manageru se skupiny pro správu připojené ke službě Log Analytics:
 

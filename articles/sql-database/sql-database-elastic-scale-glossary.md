@@ -3,7 +3,7 @@ title: Glosář nástrojů elastické databáze | Dokumentace Microsoftu
 description: Vysvětlení termínů použitých pro nástroje pro elastické databáze
 services: sql-database
 ms.service: sql-database
-subservice: elastic-scale
+ms.subservice: elastic-scale
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 09/14/2018
-ms.openlocfilehash: 354d972e78a7fb7270b1b09f4af5aa95709fcd06
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 7af8e25fa46155d5054d494485de336c68caa7f2
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47162572"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50239062"
 ---
 # <a name="elastic-database-tools-glossary"></a>Glosář nástrojů elastické databáze
 Následující termíny jsou definovány pro [nástrojů Elastic Database](sql-database-elastic-scale-introduction.md), funkce služby Azure SQL Database. Nástroje se používají ke správě [mapy horizontálních oddílů](sql-database-elastic-scale-shard-map-management.md)a zahrnout [Klientská knihovna](sql-database-elastic-database-client-library.md), [nástroj split-merge](sql-database-elastic-scale-overview-split-and-merge.md), [elastické fondy](sql-database-elastic-pool.md)a [dotazy](sql-database-elastic-query-overview.md). 

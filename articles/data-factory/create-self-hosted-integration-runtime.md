@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/15/2018
+ms.date: 10/31/2018
 ms.author: abnarain
-ms.openlocfilehash: 251d1a187c2a6742c361349274fd1e0bb1e41525
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 2dc81a96f1e83c3a6b1ddee92f57b2f0bae4196d
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48817141"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50248911"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Vytvoření a konfigurace místní prostředí integration runtime
 Prostředí integration runtime (IR) je výpočetní infrastruktura, která Azure Data Factory používá pro poskytují funkce integrace dat v různých síťových prostředích. Podrobnosti o prostředí IR najdete v tématu [přehled modulu runtime integrace](concepts-integration-runtime.md).
@@ -146,6 +146,8 @@ Tady jsou požadavky na certifikát TLS/SSL, který se používá k zabezpečen�
 ## <a name="sharing-the-self-hosted-integration-runtime-with-multiple-data-factories"></a>Sdílení místního prostředí integration runtime s více objekty pro vytváření dat
 
 Můžete znovu použít existující infrastrukturu modulu runtime integrace v místním prostředí, které jste už nastavili ve službě data factory. To vám umožní vytvořit *propojená místní prostředí integration runtime* v různých datových pomocí odkazu na existující objekt pro vytváření v místním prostředí IR (sdílené).
+
+Sdílet místní prostředí integration runtime pomocí Powershellu, najdete v článku [vytvořit sdílené místní prostředí integration runtime ve službě Azure Data Factory pomocí Powershellu](create-shared-self-hosted-integration-runtime-powershell.md).
 
 ### <a name="terminology"></a>Terminologie
 

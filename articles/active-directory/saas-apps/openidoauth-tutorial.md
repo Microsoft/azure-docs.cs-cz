@@ -1,6 +1,6 @@
 ---
-title: Kroky pro konfiguraci aplikace OpenID/OAuth z Galerie aplikace Azure AD | Microsoft Docs
-description: Kroky pro konfiguraci aplikace OpenID/OAuth z Galerie aplikace Azure AD.
+title: Konfigurace OpenID/OAuth aplikaci v galerii aplikací Azure AD | Dokumentace Microsoftu
+description: Postup konfigurace OpenID/OAuth aplikaci v galerii aplikací Azure AD.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,95 +14,124 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/25/2018
 ms.author: jeedes
-ms.openlocfilehash: 69e9d66458409bbc744416a58ceb508349418a76
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: 420ec288b81e0bb12ae9f61a5eaf03880205cc55
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37019549"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50247976"
 ---
-# <a name="steps-to-configure-an-openidoauth-application-from-azure-ad-app-gallery"></a>Kroky pro konfiguraci aplikace OpenID/OAuth z Galerie aplikace Azure AD
+# <a name="configure-an-openidoauth-application-from-the-azure-ad-app-gallery"></a>Konfigurace OpenID/OAuth aplikaci v galerii aplikací Azure AD
 
-## <a name="process-of-open-id-application-addition-from-gallery"></a>Proces přidání Open ID aplikace z Galerie
+## <a name="process-of-adding-an-openid-application-from-the-gallery"></a>Proces přidávání OpenID aplikaci z Galerie
 
-1. V  **[portál Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu. 
+1. V [webu Azure portal](https://portal.azure.com), v levém podokně vyberte **Azure Active Directory**. 
 
     ![Tlačítko Azure Active Directory](./media/openidoauth-tutorial/tutorial_general_01.png)
 
-2. Přejděte na **podnikové aplikace, které**. Pak přejděte na **všechny aplikace**.
+2. Přejděte na **podnikové aplikace** > **všechny aplikace**.
 
-    ![V okně podnikové aplikace](./media/openidoauth-tutorial/tutorial_general_02.png)
+    ![Okno aplikace organizace](./media/openidoauth-tutorial/tutorial_general_02.png)
 
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko horní dialogové okno.
+3. Vyberte **novou aplikaci** nahoře v dialogovém okně.
 
     ![Tlačítko nové aplikace](./media/openidoauth-tutorial/tutorial_general_03.png)
 
-4. Do vyhledávacího pole zadejte **název aplikace**, vyberte **požadovaných aplikací** z výsledků panelů přihlašovací až aplikace.
+4. Do vyhledávacího pole zadejte název aplikace. Na panelu výsledků vyberte požadovanou aplikaci a zaregistrovat aplikaci.
 
     ![Přidává se aplikace](./media/openidoauth-tutorial/addfromgallery.png)
 
     > [!NOTE]
-    > Pro aplikace Open ID Connect a OAuth přidat tlačítko ve výchozím nastavení vypnutá. V tomto poli musí správce klienta klikněte na **registrace** tlačítko a zadejte souhlas k aplikaci. Aplikace s, bude se přidají do klienta zákazníka, není nutné explicitně, přidejte a proveďte konfiguraci.
+    > Pro aplikace s OpenID Connect a OAuth **přidat** ve výchozím nastavení je tlačítko neaktivní. Zde by měl vybrat správce tenanta registrace tlačítko a poskytnout souhlas pro aplikaci. Aplikace se pak přidá do tenanta zákazníka, kde můžete provést konfiguraci. Není nutné explicitně přidat aplikaci.
 
     ![Tlačítko Přidat](./media/openidoauth-tutorial/addbutton.png)
 
-5. Když kliknete na přihlašovací odkaz, budete přesměrováni na stránku služby Azure AD pro přihlašovací údaje.
+5. Když vyberete odkaz na registraci, budete přesměrováni na stránku služby Azure Active Directory (Azure AD) pro přihlašovací údaje.
 
-6. Po úspěšném ověření má uživatel tak, aby přijímal souhlasu ze stránky souhlasu a poté, se zobrazí na domovské stránce aplikace.
-
-    > [!NOTE]
-    > Zákazníci mohou přidávat pouze jednu instanci aplikace. Pokud máte již přidali a poskytují souhlasu se pokusil znovu ho nebudou přidány znovu v klientovi. Proto logicky uživatelé můžou používat jenom jednu instanci aplikace v klientovi.
-
-## <a name="authentication-flow-using-openid-connect"></a>Tok ověřování pomocí OpenID Connect
-
-Nejzákladnější toku přihlášení obsahuje následující kroky – každý z nich je podrobně popsaná níže.
-
-![Tok ověřování pomocí OpenID Connect](./media/openidoauth-tutorial/authenticationflow.png)
-
-* **Víceklientské aplikace** -víceklientské aplikace určena pro použití v mnoha organizacích není právě jedné organizace. Toto jsou obvykle softwaru jako služba (SaaS) aplikace napsané pomocí nezávislý dodavatel softwaru (ISV). Víceklientské aplikace potřebují v každý adresář, kde se bude používat, který vyžaduje souhlas uživatele nebo správce k registraci jejich zřídit. Tento proces souhlasu spustí, když aplikace je zaregistrován v adresáři a je poskytnut přístup k rozhraní Graph API nebo možná jiné webové rozhraní API. Když uživatel nebo správce z jiné organizace zaregistrovat k používání aplikace, zobrazí se dialogové okno se zobrazí oprávnění, která aplikace vyžaduje. Uživatel nebo správce může pak souhlas k aplikaci, která poskytuje přístup k aplikaci stanovené dat a nakonec zaregistruje aplikaci do svého adresáře.
+6. Po úspěšném ověření vyjadřujete souhlas s souhlas z stránka pro odsouhlasení podmínek. Potom se zobrazí na domovské stránce aplikace.
 
     > [!NOTE]
-    > Pokud bude se vaše aplikace k dispozici uživatelům v několika adresářích, je nutné mechanismus k určení klientů, které jsou ve. Jednoho klienta aplikace potřebuje pouze hledat v její vlastní adresář pro uživatele, zatímco víceklientské aplikace potřebuje k identifikaci konkrétního uživatele ze všech adresářů ve službě Azure AD. K provedení této úlohy, Azure AD poskytuje společný koncový bod ověřování kde jakékoli víceklientské aplikace můžete nastavit žádostí o přihlášení, místo konkrétního klienta endpoint. Tento koncový bod je [ https://login.microsoftonline.com/common ](https://login.microsoftonline.com/common) pro všechny adresáře ve službě Azure AD, že koncový bod konkrétního klienta může být [ https://login.microsoftonline.com/contoso.onmicrosoft.com ](https://login.microsoftonline.com/contoso.onmicrosoft.com). Běžné koncový bod je obzvláště důležité vzít v úvahu při vývoji aplikace, protože budete potřebovat pomocí potřebné logiky pro zpracování více klientů při přihlášení, odhlášení a ověření tokenu.
+    > Můžete přidat pouze jednu instanci aplikace. Pokud jste už přidali a pokusili znovu zadali svůj souhlas, nebude přidána znovu v tenantovi. Proto logicky můžete použít pouze jednu instanci aplikace v tenantovi.
 
-Tým služby Azure AD ve výchozím nastavení podporuje víceklientské aplikace, jako který lze snadno přistupovat v různých organizacích a je snadno použitelný po přijetí souhlasu.
+## <a name="authentication-flow-using-openid-connect"></a>Tok ověření pomocí OpenID Connect
 
-## <a name="what-is-consent-framework"></a>Co je souhlas Framework?
+Základní tok přihlášení obsahuje následující kroky:
 
-Rozhraní Azure AD souhlasu usnadňuje vývoj víceklientské web a nativní klientské aplikace. Tyto aplikace povolí přihlášení uživatelské účty z tenanta služby Azure AD, liší od verze, kde je registrovaná aplikace. Také budou potřebovat pro přístup k webové rozhraní API, jako je například Microsoft Graph API (pro přístup k Azure Active Directory, Intune a službám Office 365) a rozhraní API jiných služeb společnosti Microsoft, kromě vlastní webové rozhraní API. Rozhraní je založena na uživatele nebo správce udělení souhlasu k aplikaci, která požaduje být registrováno v jejich adresáři, který může zahrnovat přístup k datům adresáře. Po lze souhlasu, nebudou klientská aplikace volání rozhraní Microsoft Graph API jménem uživatele, a podle potřeby použijte informace.
+![Tok ověření pomocí OpenID Connect](./media/openidoauth-tutorial/authenticationflow.png)
 
-[Microsoft Graph API](https://graph.microsoft.io/) poskytuje přístup k datům v Office 365 (jako je například kalendáře a zprávy z Exchange, weby a seznamy ze služby SharePoint, dokumenty z Onedrivu, poznámkových bloků z aplikace OneNote, úlohy z Planner sešity z aplikace Excel, atd.), a také uživatelé a skupiny z Azure AD a jiných datových objektů z více cloudových služeb Microsoftu.
+### <a name="multitenant-application"></a>Víceklientské aplikace 
+Víceklientské aplikace určena pro použití v mnoha organizacích, ne jenom jedné organizace. Toto jsou obvykle software-as-a-service (SaaS) aplikací autorem nezávislý výrobce softwaru (ISV). 
 
-Následující kroky vám ukážou, jak souhlasu prostředí funguje pro vývojáře aplikací a uživatele.
+Víceklientské aplikace potřeba ho zřídit v každém adresáři, ve kterém budou používat. Uživatel nebo správce souhlas k registraci je vyžadují. Tento proces souhlas začne, když aplikace byl zaregistrován v adresáři a je jim přístup k rozhraní Graph API nebo možná jiného webového rozhraní API. Pokud uživatel nebo správce z jiné organizace zaregistruje k používání aplikace, zobrazí dialogové okno oprávnění, které aplikace potřebuje. 
 
-1. Předpokládejme, že máte webové aplikace klienta, které je potřeba požádat o konkrétní oprávnění pro přístup k prostředku nebo rozhraní API. Portál Azure se používá k deklaraci žádosti o oprávnění v době konfigurace. Jako další nastavení konfigurace se stávají součástí registrace aplikace Azure AD:
+Uživatel nebo správce může potom souhlas aplikace. Souhlas poskytuje přístup k aplikaci do uvedeného data a nakonec zaregistruje aplikaci v adresáři.
+
+> [!NOTE]
+> Pokud vaše aplikace se zpřístupnění uživatelům ve více adresářů, je třeba mechanismus pro určení kterého tenanta ve kterých se nacházejí. Aplikace jedním tenantem stačí podívat do vlastního adresáře pro uživatele. Víceklientské aplikace potřebuje k identifikaci konkrétního uživatele ze všech adresářů ve službě Azure AD.
+> 
+> Chcete-li provést tuto úlohu, Azure AD poskytuje společný koncový bod ověřování kde jakékoli víceklientské aplikace může směrovat požadavky na přihlášení, místo konkrétního klienta endpoint. Tento koncový bod je [ https://login.microsoftonline.com/common ](https://login.microsoftonline.com/common) pro všechny adresáře ve službě Azure AD. Koncový bod specifickým pro tenanta může být [ https://login.microsoftonline.com/contoso.onmicrosoft.com ](https://login.microsoftonline.com/contoso.onmicrosoft.com). 
+>
+> Společný koncový bod je důležité vzít v úvahu při vyvíjíte vaší aplikaci. Budete potřebovat logiku potřebnou pro zpracování více tenantů během přihlášení, odhlášení a ověření tokenu.
+
+Ve výchozím nastavení Azure AD podporuje víceklientské aplikace. Snadno přístupu napříč organizací a po přijetí souhlasu se snadno používá.
+
+## <a name="consent-framework"></a>Rámec pro udělení souhlasu
+
+Rozhraní pro udělování souhlasu Azure AD můžete použít k vývoji víceklientské webové a nativní klientské aplikace. Tyto aplikace povolit přihlášení podle uživatelské účty z tenanta služby Azure AD, jiné než ten, ve kterém aplikace bude zaregistrovaná. Také může být potřeba přístup k webovým rozhraním API, jako:
+- Rozhraní Microsoft Graph API, službám Office 365, přístup k Azure AD a Intune. 
+- Rozhraní API pro jiné služby Microsoftu.
+- Vlastní webová rozhraní API. 
+
+Rozhraní je založené na uživatele nebo správce udělení souhlasu pro aplikaci, která vyzve k registraci do svého adresáře. Registrace může zahrnovat přístup k datům adresáře. Po souhlas, klientská aplikace můžete volání rozhraní Microsoft Graph API jménem uživatele a použijte informace, podle potřeby.
+
+[Microsoft Graph API](https://graph.microsoft.io/) poskytuje přístup k datům v Office 365, jako je třeba:
+
+- Kalendáře a zprávy z Exchange.
+- Webům a seznamům ze Sharepointu.
+- Dokumenty z Onedrivu.
+- Poznámkové bloky z Onenotu.
+- Úlohy z plánovače.
+- Sešity v Excelu.
+
+Rozhraní Graph API také poskytuje přístup pro uživatele a skupiny ze služby Azure AD a dalších datových objektů z více cloudovým službám Microsoftu.
+
+Následující kroky ukazují, jak souhlasu prostředí funguje pro uživatele a vývojáře aplikací:
+
+1. Předpokládejme, že máte webovou aplikaci klienta, která potřebuje požádat o specifické oprávnění pro přístup k prostředku nebo rozhraní API. Na webu Azure portal slouží k deklaraci žádosti oprávnění v době konfigurace. Jako další nastavení konfigurace se stanou součástí registrace služby Azure AD aplikace:
 
     ![Graph API](./media/openidoauth-tutorial/graphapi.png)
 
-2. Zvažte oprávnění aplikace byly aktualizovány, je aplikace spuštěna a uživatel je použijte první. Aplikace musí nejprve získat autorizační kód z Azure AD / zajistí autorizaci koncového bodu. Autorizační kód se pak lze získat přístup k nové a aktualizovat token.
+2. Vezměte v úvahu, že byla aktualizována oprávnění vaší aplikace. Aplikace běží a uživatel je použití poprvé. První aplikace potřebuje k získání autorizačního kódu z Azure AD / zajistí autorizaci koncového bodu. Autorizační kód lze potom získat nový přístupový a obnovovací token.
 
-3. Pokud uživatel již není ověřený, Azure AD je / autorizaci koncového bodu výzvy k přihlášení.
+3. Pokud není uživatel ověřen, Azure AD / authorize koncový bod výzvy k přihlášení.
 
     ![Authentication](./media/openidoauth-tutorial/authentication.png)
 
-4. Jakmile se uživatel přihlásil, Azure AD se určují, jestli uživatel musí zobrazený na stránce souhlasu. Toto rozhodnutí je založená na tom, jestli uživatel (nebo správce jeho organizace) již udělil souhlas aplikace. Pokud již byla nebyl udělen souhlas, Azure AD zobrazí výzvu k souhlasu a zobrazí požadovaná oprávnění, musí se funkce. Sada oprávnění, která se zobrazí v dialogovém okně souhlasu odpovídat souborů vybraných v delegovaná oprávnění na webu Azure portal.
+4. Jakmile se uživatel přihlásil, Azure AD Určuje, zda uživatel potřebuje zobrazit stránka pro odsouhlasení podmínek. Toto rozhodnutí je založená na, jestli uživatel (nebo správce ve vaší organizaci) už udělené souhlasu s aplikací.
 
-    ![Stránka souhlasu](./media/openidoauth-tutorial/consentpage.png)
+   Pokud nebyl udělen souhlas, Azure AD zobrazí výzvu k souhlasu a zobrazí požadovaná oprávnění, které jsou potřebné funkce. Oprávnění, která se zobrazí v dialogovém okně souhlasu odpovídat vybraných v delegovaná oprávnění na webu Azure Portal.
 
-Některá oprávnění může být souhlas regulární uživatelem, zatímco jiné vyžadují souhlas správce klienta.
+    ![Stránka pro odsouhlasení podmínek](./media/openidoauth-tutorial/consentpage.png)
 
-## <a name="whats-the-difference-between-admin-consent-and-user-consent"></a>Jaký je rozdíl mezi souhlas správce a souhlas uživatele?
+Běžný uživatel může některá oprávnění vyjádřit souhlas. Další oprávnění vyžadují souhlas správce tenanta.
 
-Jako správce můžete také souhlas přidělená oprávnění aplikace jménem všechny uživatele ve vašem klientovi. Správce souhlas bránil zobrazení dialogu souhlasu pro každého uživatele v klientovi, můžete provádět na portálu Azure uživatelé s rolí správce. Na stránce nastavení pro vaši aplikaci klikněte na požadované oprávnění a klikněte na tlačítko udělit oprávnění.
+## <a name="difference-between-admin-consent-and-user-consent"></a>Rozdíl mezi souhlas správce a souhlasu uživatele
 
-![Udělení oprávnění](./media/openidoauth-tutorial/grantpermission.png)
+Jako správce může také souhlas delegovaná oprávnění aplikací schválit za všechny uživatele ve vašem tenantovi. Souhlas správce zabraňuje dialogové okno souhlasu zobrazilo pro každého uživatele v tenantovi. Uživatelé, kteří mají roli správce může poskytnout souhlas na webu Azure Portal. Z **nastavení** stránky pro vaši aplikaci, vyberte **požadovaná oprávnění** > **udělit oprávnění**.
+
+![Tlačítko udělit oprávnění](./media/openidoauth-tutorial/grantpermission.png)
 
 > [!NOTE]
-> Udělení výslovným souhlasem pomocí tlačítka udělit oprávnění je momentálně nevyžaduje pro jednostránkové aplikace (SPA), které používají ADAL.js. Aplikace, jinak selže, pokud se požaduje přístupový token.
+> Udělení výslovný souhlas s použitím **udělit oprávnění** je tlačítko vyžadované pro jednostránkové aplikace (SPA), které používají ADAL.js. V opačném případě aplikace selže při vyžádání tokenu přístupu.
 
-Oprávnění jen aplikace vždy vyžadovat souhlas správce klienta. Pokud vaše aplikace požaduje oprávnění jen aplikace a uživatel se pokusí přihlásit k aplikaci, se zobrazí chybová zpráva, že uživatel není možné vyjádřit souhlas.
+Oprávnění jen pro aplikace vždy vyžadují souhlas správce tenanta. Pokud vaše aplikace požaduje na oprávnění jen pro aplikace a uživatel se pokusí přihlásit k aplikaci, zobrazí se chybová zpráva. Zpráva, že uživatel není možné vyjádřit souhlas.
 
-Pokud vaše aplikace používá oprávnění, která vyžadovat souhlas správce, musíte mít gesto například tlačítko nebo odkaz, kde může správce zahájit akci. Žádost o vaše aplikace odešle pro tuto akci je obvykle OAuth2/OpenID Connect autorizace požadavek, který také obsahuje na řádku = admin_consent parametr řetězce dotazu. Dá souhlas správce a instanční objekt se vytvoří v klientovi zákazníka, následných žádostí o přihlášení není nutné řádku = admin_consent parametr. Vzhledem k tomu, že správce určil, že požadovaná oprávnění jsou přijatelné, požádejte ho o souhlas od tohoto okamžiku žádné jiných uživatelů v klientovi. Správce klienta můžete zakázat možnost pro regulární uživatele o souhlas pro aplikace. Pokud tato možnost je vypnuta, je požadován pro aplikace, který se má použít v klientovi vždycky souhlas správce. Pokud chcete k testování aplikace s souhlasu koncového uživatele zakázaná, můžete najít konfigurace přepínač na [portál Azure](https://portal.azure.com/) v [uživatelská nastavení](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/) oddílu pod **Enterprise aplikace**
+Pokud vaše aplikace používá oprávnění, která vyžadují souhlas správce, musíte mít gesta jako tlačítko nebo odkaz, kde může správce zahájit akci. Žádost, která vaše aplikace odešle pro tuto akci je obvykle požadavek ověřování OAuth2 nebo OpenID Connect. Tato žádost obsahuje *řádku = admin_consent* parametr řetězce dotazu. 
 
-Na řádku = admin_consent parametru lze také aplikace, které žádostí o oprávnění, které nevyžadují souhlas správce. Příklad, kdy to by použila je, pokud aplikace vyžaduje prostředí, kde správce tenanta "zaregistruje" jeden čas a žádné jiné uživatele požádejte ho o souhlas od tohoto okamžiku.
+Poté, co správce schválil a instanční objekt je vytvořen v tenantovi zákazníka, není třeba novější žádostí o přihlášení *řádku = admin_consent* parametru. Vzhledem k tomu, že správce rozhodl, že požadovaná oprávnění jsou přijatelné, žádní jiní uživatelé v tenantovi požádejte ho o souhlas od tohoto okamžiku.
 
-Pokud aplikace vyžaduje souhlas správce a správce přihlášení bez řádku = admin_consent parametr odesílány, pokud správce úspěšně souhlasí do aplikace se vztahuje pouze ke svému uživatelskému účtu. Stále běžní uživatelé nebudou moci přihlásit nebo souhlas k aplikaci. Tato funkce je užitečná, pokud chcete poskytnout možnost prozkoumat aplikace před povolením přístupu jiných uživatelů správce klienta.
+Správce tenanta můžete zakázat možnost pro pravidelné uživatelům udělit souhlas s aplikací. Pokud tato možnost je zakázaná, je vždy vyžadována pro aplikace pro použití v tenantovi souhlas správce. Pokud chcete otestovat aplikaci s svolení koncového uživatele zakázaná, můžete najít konfigurační přepínač v [webu Azure portal](https://portal.azure.com/). Je [uživatelská nastavení](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/) části **podnikové aplikace**.
+
+*Řádku = admin_consent* parametr je také možné aplikacemi, které požádat o oprávnění, které nevyžadují souhlas správce. Příkladem je aplikace, která vyžaduje, kde tenanta admin "uživatel zaregistruje do služby" jeden času a žádné jiné se uživatelům zobrazí výzva svolení od tohoto okamžiku v prostředí.
+
+Představte si, že aplikace vyžaduje souhlas správce a správce přihlášení bez *řádku = admin_consent* parametr odeslání. Když správce se úspěšně vyjádří souhlas aplikace, bude se vztahovat pouze ke svému uživatelskému účtu. Běžní uživatelé bude stále nemůže přihlásit nebo aplikaci vyjádřit souhlas. Tato funkce je užitečná, pokud chcete poskytnout možnost Procházet aplikace před povolením přístupu uživatelů správce klienta.

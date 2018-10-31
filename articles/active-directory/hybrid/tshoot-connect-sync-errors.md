@@ -11,22 +11,22 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/31/2018
+ms.date: 10/29/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: cb2b4bdee445587b32516c8db869170ab067b8d3
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: c94ecc223c4e2c0533c23e58823bb203064ceef6
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406853"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50250445"
 ---
 # <a name="troubleshooting-errors-during-synchronization"></a>Řešení chyb při synchronizaci
 Při synchronizaci dat identity z Windows Server Active Directory (AD DS) do Azure Active Directory (Azure AD), může dojít k chybám. Tento článek obsahuje přehled různých typů chyb synchronizace, některé z možných scénářů, které způsobují tyto chyby a potenciální způsoby, jak opravit chyby. Tento článek obsahuje běžné typy chyb a nemusí zahrnovat všechny možné chyby.
 
  Tento článek předpokládá čtecí modul je obeznámen se základní [návrh konceptech služby Azure AD a Azure AD Connect](plan-connect-design-concepts.md).
 
-S nejnovější verzí služby Azure AD Connect \(. srpna 2016 nebo novějším\), Sestava chyb synchronizace je k dispozici v [webu Azure Portal](https://aka.ms/aadconnecthealth) jako součást služby Azure AD Connect Health pro synchronizaci.
+S nejnovější verzí služby Azure AD Connect \(. srpna 2016 nebo novějším\), Sestava chyb synchronizace je k dispozici v [webu Azure portal](https://aka.ms/aadconnecthealth) jako součást služby Azure AD Connect Health pro synchronizaci.
 
 Od 1. září 2016 [Azure Active Directory duplicitní atribut odolnost proti chybám](how-to-connect-syncservice-duplicate-attribute-resiliency.md) funkce bude povolena ve výchozím nastavení pro všechny *nové* Tenantů Azure Active Directory. Tato funkce bude automaticky povolená u stávajících tenantů v nadcházejících měsících.
 
@@ -219,6 +219,29 @@ Pokud atribut překračuje maximální povolenou velikost, maximální délku ne
 
 ### <a name="how-to-fix"></a>K vyřešení
 1. Ujistěte se, že je atribut, který způsobil chybu v rámci omezení na povolené.
+
+## <a name="existing-admin-role-conflict"></a>Konflikt existujících rolí správce
+
+### <a name="description"></a>Popis
+**Existující konflikt Role správce** dojde u objektu uživatele během synchronizace po tento objekt uživatele:
+
+- oprávnění správce a
+- stejné UserPrincipalName jako existující objekt služby Azure AD
+
+Azure AD Connect není povoleno obnovitelně shoda objekt uživatele z místní AD pomocí objektu uživatele ve službě Azure AD, který má přiřazenou roli pro správu.  Další informace najdete v části [naplnění Azure AD UserPrincipalName](plan-connect-userprincipalname.md)
+
+![Stávající správce](media/tshoot-connect-sync-errors/existingadmin.png)
+
+
+### <a name="how-to-fix"></a>K vyřešení
+K vyřešení tohoto problému, proveďte jednu z následujících akcí:
+
+
+- Zadejte hodnotu, která se neshoduje s uživateli s právy ve službě Azure AD – které se vytvoří nový uživatel ve službě Azure AD s odpovídající UserPrincipalName UserPrincipalName
+- Odeberte roli správce od uživatele s rolí správce v Azure AD, která povolí měkké shody mezi místní objekt uživatele a existující objekt uživatele Azure AD.
+
+>[!NOTE]
+>Správní roli můžete znovu přiřadit na existující objekt uživatele, po dokončení obnovitelně shody mezi místní objekt uživatele a objekt uživatele Azure AD.
 
 ## <a name="related-links"></a>Související odkazy
 * [Hledání objektů Active Directory v Centru správy služby Active Directory](https://technet.microsoft.com/library/dd560661.aspx)

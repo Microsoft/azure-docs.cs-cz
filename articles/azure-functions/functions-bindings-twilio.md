@@ -3,21 +3,21 @@ title: Azure Functions Twilio vazby
 description: Vysvětlení použití Twilio vazby s využitím Azure Functions.
 services: functions
 documentationcenter: na
-author: ggailey777
+author: craigshoemaker
 manager: jeconnoc
 keywords: Azure functions, funkce, zpracování událostí, dynamické výpočty, architektura bez serveru
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: reference
 ms.date: 07/09/2018
-ms.author: glenga
+ms.author: cshoe
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0a0c9fafc9db0c4361d0b1b51b15979e8fe33e27
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: 9832281b586bf4377096ff28362b4fc180480aea
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50086001"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50246140"
 ---
 # <a name="twilio-binding-for-azure-functions"></a>Vazba Twilio pro službu Azure Functions
 
@@ -122,7 +122,7 @@ public static void Run(string myQueueItem, out SMSMessage message,  TraceWriter 
 }
 ```
 
-Výstupní parametry v asynchronním kódu nelze použít. Tady je asynchronní C# skript kódu příklad:
+Výstupní parametry v synchronního kódu nelze použít. Tady je asynchronní C# skript kódu příklad:
 
 ```cs
 #r "Newtonsoft.Json"
@@ -216,20 +216,31 @@ Podívejte se na příklad specifické pro jazyk:
 Následující příklad ukazuje [funkce jazyka C#](functions-dotnet-class-library.md) , který odešle textovou zprávu aktivovaného zprávy fronty.
 
 ```cs
-[FunctionName("QueueTwilio")]
-[return: TwilioSms(AccountSidSetting = "TwilioAccountSid", AuthTokenSetting = "TwilioAuthToken", From = "+1425XXXXXXX" )]
-public static CreateMessageOptions Run(
-    [QueueTrigger("myqueue-items", Connection = "AzureWebJobsStorage")] JObject order,
-    ILogger log)
+using Microsoft.Azure.WebJobs;
+using Microsoft.Extensions.Logging;
+using Newtonsoft.Json.Linq;
+using Twilio.Rest.Api.V2010.Account;
+using Twilio.Types;
+namespace TwilioQueueOutput
 {
-    log.LogInformation($"C# Queue trigger function processed: {order}");
-
-    var message = new CreateMessageOptions(new PhoneNumber(order["mobileNumber"].ToString()))
+    public static class QueueTwilio
     {
-        Body = $"Hello {order["name"]}, thanks for your order!"
-    };
+        [FunctionName("QueueTwilio")]
+        [return: TwilioSms(AccountSidSetting = "TwilioAccountSid", AuthTokenSetting = "TwilioAuthToken", From = "+1425XXXXXXX")]
+        public static CreateMessageOptions Run(
+        [QueueTrigger("myqueue-items", Connection = "AzureWebJobsStorage")] JObject order,
+        ILogger log)
+        {
+            log.LogInformation($"C# Queue trigger function processed: {order}");
 
-    return message;
+            var message = new CreateMessageOptions(new PhoneNumber(order["mobileNumber"].ToString()))
+            {
+                Body = $"Hello {order["name"]}, thanks for your order!"
+            };
+
+            return message;
+        }
+    }
 }
 ```
 
@@ -247,9 +258,8 @@ Příklad function.json:
 {
   "type": "twilioSms",
   "name": "message",
-  "accountSid": "TwilioAccountSid",
-  "authToken": "TwilioAuthToken",
-  "to": "+1704XXXXXXX",
+  "accountSidSetting": "TwilioAccountSid",
+  "authTokenSetting": "TwilioAuthToken",
   "from": "+1425XXXXXXX",
   "direction": "out",
   "body": "Azure Functions Testing"
@@ -260,11 +270,13 @@ Tady je kód skriptu jazyka C#:
 
 ```cs
 #r "Newtonsoft.Json"
-#r "Twilio.Api"
+#r "Twilio"
+#r "Microsoft.Azure.WebJobs.Extensions.Twilio"
 
 using System;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
+using Microsoft.Azure.WebJobs.Extensions.Twilio;
 using Twilio.Rest.Api.V2010.Account;
 using Twilio.Types;
 
@@ -277,27 +289,26 @@ public static void Run(string myQueueItem, out CreateMessageOptions message,  IL
     dynamic order = JsonConvert.DeserializeObject(myQueueItem);
     string msg = "Hello " + order.name + ", thank you for your order.";
 
-    // Even if you want to use a hard coded message and number in the binding, you must at least
-    // initialize the CreateMessageOptions variable.
+    // You must initialize the CreateMessageOptions variable with the "To" phone number.
     message = new CreateMessageOptions(new PhoneNumber("+1704XXXXXXX"));
 
     // A dynamic message can be set instead of the body in the output binding. In this example, we use
-    // the order information to personalize a text message to the mobile number provided for
-    // order status updates.
+    // the order information to personalize a text message.
     message.Body = msg;
-    message.To = order.mobileNumber;
 }
 ```
 
-Výstupní parametry v asynchronním kódu nelze použít. Tady je asynchronní C# skript kódu příklad:
+Výstupní parametry v synchronního kódu nelze použít. Tady je asynchronní C# skript kódu příklad:
 
 ```cs
 #r "Newtonsoft.Json"
-#r "Twilio.Api"
+#r "Twilio"
+#r "Microsoft.Azure.WebJobs.Extensions.Twilio"
 
 using System;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
+using Microsoft.Azure.WebJobs.Extensions.Twilio;
 using Twilio.Rest.Api.V2010.Account;
 using Twilio.Types;
 
@@ -310,15 +321,12 @@ public static async Task Run(string myQueueItem, IAsyncCollector<CreateMessageOp
     dynamic order = JsonConvert.DeserializeObject(myQueueItem);
     string msg = "Hello " + order.name + ", thank you for your order.";
 
-    // Even if you want to use a hard coded message and number in the binding, you must at least
-    // initialize the CreateMessageOptions variable.
+    // You must initialize the CreateMessageOptions variable with the "To" phone number.
     CreateMessageOptions smsText = new CreateMessageOptions(new PhoneNumber("+1704XXXXXXX"));
 
     // A dynamic message can be set instead of the body in the output binding. In this example, we use
-    // the order information to personalize a text message to the mobile number provided for
-    // order status updates.
+    // the order information to personalize a text message.
     smsText.Body = msg;
-    smsText.To = order.mobileNumber;
 
     await message.AddAsync(smsText);
 }
@@ -336,9 +344,8 @@ Příklad function.json:
 {
   "type": "twilioSms",
   "name": "message",
-  "accountSid": "TwilioAccountSid",
-  "authToken": "TwilioAuthToken",
-  "to": "+1704XXXXXXX",
+  "accountSidSetting": "TwilioAccountSid",
+  "authTokenSetting": "TwilioAuthToken",
   "from": "+1425XXXXXXX",
   "direction": "out",
   "body": "Azure Functions Testing"
@@ -355,13 +362,12 @@ module.exports = function (context, myQueueItem) {
     // customer and a mobile number to send text updates to.
     var msg = "Hello " + myQueueItem.name + ", thank you for your order.";
 
-    // Even if you want to use a hard coded message and number in the binding, you must at least
+    // Even if you want to use a hard coded message in the binding, you must at least
     // initialize the message binding.
     context.bindings.message = {};
 
-    // A dynamic message can be set instead of the body in the output binding. In this example, we use
-    // the order information to personalize a text message to the mobile number provided for
-    // order status updates.
+    // A dynamic message can be set instead of the body in the output binding. The "To" number 
+    // must be specified in code. 
     context.bindings.message = {
         body : msg,
         to : myQueueItem.mobileNumber
@@ -379,13 +385,9 @@ Informace o atribut vlastnosti, které můžete nakonfigurovat, najdete v témat
 
 ```csharp
 [FunctionName("QueueTwilio")]
-[return: TwilioSms(
-    AccountSidSetting = "TwilioAccountSid", 
-    AuthTokenSetting = "TwilioAuthToken", 
-    From = "+1425XXXXXXX" )]
-public static SMSMessage Run(
-    [QueueTrigger("myqueue-items", Connection = "AzureWebJobsStorage")] JObject order,
-    ILogger log)
+[return: TwilioSms(AccountSidSetting = "TwilioAccountSid", AuthTokenSetting = "TwilioAuthToken", From = "+1425XXXXXXX")]
+public static CreateMessageOptions Run(
+[QueueTrigger("myqueue-items", Connection = "AzureWebJobsStorage")] JObject order, ILogger log)
 {
     ...
 }
@@ -397,16 +399,16 @@ Kompletní příklad naleznete v tématu [příklad jazyka C#](#c-example).
 
 Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.json* souboru a `TwilioSms` atribut.
 
-|Vlastnost Function.JSON | Vlastnost atributu |Popis|
-|---------|---------|----------------------|
-|**type**|| Musí být nastaveno na `twilioSms`.|
-|**direction**|| Musí být nastaveno na `out`.|
-|**Jméno**|| Název proměnné používá v kódu funkce pro textovou zprávu Twilio SMS. |
-|**accountSid**|**accountSid**| Tato hodnota musí být nastavena na název nastavení aplikace, která obsahuje identifikátor Sid účtu Twilio.|
-|**ověřovacího tokenu**|**ověřovacího tokenu**| Tato hodnota musí být nastavena na název nastavení aplikace, která obsahuje váš ověřovací token pro Twilio.|
-|**k**|**Komu**| Tato hodnota nastavena na telefonní číslo, která bude zaslána textová zpráva.|
-|**z**|**z**| Tato hodnota nastavena na telefonní číslo, která je odeslána textová zpráva z.|
-|**Text**|**Text**| Tato hodnota slouží k intenzivně kód textovou zprávu SMS, když není nutné nastavit dynamicky v kódu funkce. |
+| Vlastnost function.json V1 | Vlastnost function.json v2 | Vlastnost atributu |Popis|
+|---------|---------|---------|----------------------|
+|**type**|**type**| Musí být nastaveno na `twilioSms`.|
+|**direction**|**direction**| Musí být nastaveno na `out`.|
+|**Jméno**|**Jméno**| Název proměnné používá v kódu funkce pro textovou zprávu Twilio SMS. |
+|**accountSid**|**accountSidSetting**| **AccountSidSetting**| Tato hodnota musí být nastavena na název nastavení aplikace, která obsahuje identifikátor Sid účtu Twilio, např TwilioAccountSid. Pokud není nastaven, nastavení aplikace výchozí název je "AzureWebJobsTwilioAccountSid". |
+|**ověřovacího tokenu**|**authTokenSetting**|**AuthTokenSetting**| Tato hodnota musí být nastavena název nastavení aplikace, která obsahuje váš ověřovací token pro Twilio například TwilioAccountAuthToken. Pokud není nastaven, nastavení aplikace výchozí název je "AzureWebJobsTwilioAuthToken". |
+|**k**| Není k dispozici – zadání v kódu | **Komu**| Tato hodnota nastavena na telefonní číslo, která bude zaslána textová zpráva.|
+|**z**|**z** | **z**| Tato hodnota nastavena na telefonní číslo, která je odeslána textová zpráva z.|
+|**Text**|**Text** | **Text**| Tato hodnota slouží k intenzivně kód textovou zprávu SMS, když není nutné nastavit dynamicky v kódu funkce. |  
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 

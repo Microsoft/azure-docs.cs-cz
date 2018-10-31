@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/17/2018
+ms.date: 10/29/2018
 ms.author: terrylan
-ms.openlocfilehash: 4ed4e73348db8cfffb6e79afaa9d196e242d7488
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 759de1c62cb9cb4aa642fa564378b1ed551d7dae
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42056841"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50239351"
 ---
 # <a name="azure-storage-security-overview"></a>Přehled zabezpečení služby Azure Storage
 
@@ -33,6 +33,7 @@ Azure Storage je řešení cloudového úložiště pro moderní aplikace, kter�
 * Pomocí analýzy můžete sledovat způsob ověřování, který používá uživatel při přístupu k úložišti.
 
 Podrobnější přehled zabezpečení ve službě Azure Storage, najdete v článku [Průvodci zabezpečením Azure Storage](../storage/common/storage-security-guide.md). Tato příručka obsahuje podrobné informace o funkcích zabezpečení služby Azure Storage. Tyto funkce patří klíče účtu úložiště, šifrování dat během přenosu a neaktivních uložených dat a analýza úložiště.
+
 
 Tento článek obsahuje přehled funkcí zabezpečení služby Azure, které můžete použít se službou Azure Storage. Odkazy na články poskytují podrobnosti o každé funkce tak další informace.
 
@@ -91,13 +92,35 @@ Další informace
 
 * [Azure Disk Encryption pro Windows a Linuxem v režimu IaaS Virtual Machines](https://gallery.technet.microsoft.com/Azure-Disk-Encryption-for-a0018eb0)
 
-## <a name="azure-storage-firewalls-and-virtual-networks"></a>Úložiště brány firewall a virtuální sítě Azure
+## <a name="firewalls-and-virtual-networks"></a>Brány firewall a virtuální sítě
 
 Azure storage umožňuje povolit pravidla brány firewall pro vaše účty úložiště. Jednou povoleno, zablokují se příchozí požadavky na data, včetně požadavků od ostatních služeb Azure. Můžete nakonfigurovat výjimky pro povolení provozu. Pravidla brány firewall může být povoleno na existující účty úložiště nebo při vytváření.
 
 Tato funkce by měla použít k zabezpečení vašich účtů úložiště pro konkrétní sadu povolených sítí.
 
 Další informace o Azure storage virtuální sítí a bran firewall, přečtěte si článek [konfigurace brány firewall úložiště Azure a virtuální sítě](../storage/common/storage-network-security.md)
+
+## <a name="azure-data-box"></a>Azure Data Box
+
+Zařízení Data Box, Data Box Disk a Data Box Heavy vám pomohou přenést velké objemy dat do Azure v případě, že nemůžete použít síť. Tato zařízení přenosu dat offline se dodávají mezi vaší organizací a datového centra Azure. Přenášená data pomáhají chránit s využitím šifrování AES a po nahrání provádějí proces důkladné sanitizace, který odstraní vaše data ze zařízení.
+
+Data Box Edge a Data Box Gateway jsou produkty pro online přenos dat, které fungují jako brány síťového úložiště a umožňují správu dat mezi vaší lokalitou a Azure. Data Box Edge je místní síťové zařízení, které přenáší data do a z Azure a při zpracování dat využívá hraniční výpočetní prostředky s podporou umělé inteligence (AI). Data Box Gateway je virtuální zařízení s funkcemi brány úložiště.
+
+Další informace:
+
+* [Azure Data Box](https://azure.microsoft.com/services/storage/databox/)
+* [Azure Data Box Edge](../databox-online/data-box-edge-overview.md)
+* [Azure Data Box brány](..//databox-online/data-box-gateway-overview.md)
+
+## <a name="advanced-threat-protection"></a>Rozšířená ochrana před internetovými útoky
+
+Azure Storage poskytuje rozšířené ochrany před internetovými útoky pro další úroveň inteligentního zabezpečení, která zjistí a potenciálně nebezpečné pokusy o přístup nebo zneužití účtu úložiště. Rozšířené ochrany před internetovými útoky monitorování diagnostické protokoly služby Azure Storage pro podezřelé číst, zapsat nebo odstranit požadavky na úložiště objektů Blob. 
+
+Rozšířené ochrany před internetovými útoky výstrahy můžete zobrazit v [Azure Security Center](https://azure.microsoft.com/services/security-center/). Azure Security Center poskytuje podrobnosti o podezřelé aktivity zjištěna a doporučuje akcích pro šetření a náprava potenciálních ohrožení. 
+
+Další informace:
+
+* [Advanced Threat Protection Přehled služby Azure Storage](../storage/common/storage-advanced-threat-protection.md)
 
 ## <a name="azure-key-vault"></a>Azure Key Vault
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/20/2018
 ms.author: victorh
 ms.custom: include file
-ms.openlocfilehash: e4d698b8b9c3f9e304780ee49bd4243a76e69138
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: e33871f35613fbd5cdc5bf3162855b942056807f
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49471526"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50254464"
 ---
 ### <a name="what-is-azure-firewall"></a>Co je brána Azure Firewall?
 
@@ -111,10 +111,7 @@ Set-AzureRmFirewall -AzureFirewall $azfw
 
 ### <a name="what-are-the-known-service-limits"></a>Jaká jsou omezení služeb?
 
-* Azure Brána Firewall nemá doporučeného limitu pro 1000 TB za firewall za měsíc.
-* Instance Brána Firewall služby Azure, na kterém běží v centrální virtuální síť má omezení, maximálně 50 virtuálních sítí paprsků partnerský vztah virtuální sítě.  
-* Brány Firewall Azure nefunguje s globální partnerský vztah, takže byste měli mít minimálně jedno nasazení brány firewall v jedné oblasti.
-* Azure Brána Firewall podporuje 10 tisíc pravidel aplikací a 10 tisíc pravidel sítě.
+Omezení služby Brána Firewall služby Azure najdete v tématu [předplatného Azure a limity, kvóty a omezení](../articles/azure-subscription-service-limits.md#azure-firewall-limits)
 
 ### <a name="can-azure-firewall-in-a-hub-virtual-network-forward-and-filter-network-traffic-between-two-spoke-virtual-networks"></a>Brána Firewall služby Azure můžete ve virtuální síti centra vpřed a filtrování síťového provozu mezi dvěma virtuálními sítěmi paprsků?
 

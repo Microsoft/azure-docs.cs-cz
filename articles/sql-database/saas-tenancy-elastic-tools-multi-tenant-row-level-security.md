@@ -7,24 +7,24 @@ ms.subservice: scenario
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: tmullaney
-ms.author: thmullan
+author: VanMSFT
+ms.author: vanto
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 94430d3b72bb5b8e8bde0e9e2e9fb2eb2b0c3632
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: d669e7beb2d0e41ff26408d4f71c3e1648c41e3a
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47056280"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50242564"
 ---
 # <a name="multi-tenant-applications-with-elastic-database-tools-and-row-level-security"></a>Aplikace s více tenanty s nástroji elastic database a zabezpečení na úrovní řádků
 
 [Nástroje pro elastické databáze](sql-database-elastic-scale-get-started.md) a [nízkoúrovňového zabezpečení (RLS)] [ rls] spolupracují s cílem povolit škálování datové vrstvy aplikace s více tenanty s databází Azure SQL Database. Společně tyto technologie vám pomůže vytvářet aplikace, která má vysoce škálovatelnou datovou vrstvou. Datová vrstva podporuje víceklientské horizontální oddíly a používá **Sqlclienta ADO.NET** nebo **Entity Framework**. Další informace najdete v tématu [vzory návrhu pro víceklientské aplikace SaaS využívající Azure SQL Database](saas-tenancy-app-design-patterns.md).
 
 - **Nástroje pro elastické databáze** umožňují vývojářům horizontálně navýšit kapacitu datové vrstvy se standardní běžných postupech, pomocí knihoven .NET a šablon služby Azure. Správa horizontálních oddílů pomocí [Klientská knihovna Elastic Database] [ s-d-elastic-database-client-library] pomáhá automatizovat a zefektivnit mnoho infrastruktury úloh obvykle spojené s horizontálního dělení.
-- **Zabezpečení na úrovní řádků** vývojářům umožňuje bezpečně ukládat data pro více tenantů v jedné databázi. Zásady zabezpečení RLS vyfiltrování řádků, které nepatří do klienta, spouštění dotazu. Centralizace filtr logika uvnitř databáze lze usnadnit správu a snižuje riziko vzniku chyb zabezpečení. Alternativou sady spoléhat na všechny klientským kódem, aby enfore zabezpečení je nebezpečné.
+- **Zabezpečení na úrovní řádků** vývojářům umožňuje bezpečně ukládat data pro více tenantů v jedné databázi. Zásady zabezpečení RLS vyfiltrování řádků, které nepatří do klienta, spouštění dotazu. Centralizace filtr logika uvnitř databáze lze usnadnit správu a snižuje riziko vzniku chyb zabezpečení. Alternativou sady spoléhat na všechny klientské kódu k vynucení zabezpečení je nebezpečné.
 
 Pomocí společně tyto funkce, může aplikace ukládat data pro více tenantů v jedné databázi horizontálních oddílů. To stojí méně každého tenanta když klienti sdílí databázi. Ještě stejné aplikace lze také nabízejí jeho tenanti úrovně premium možnost platit za své vlastní vyhrazený horizontálních oddílů jednoho tenanta. Jednou z výhod izolace jednoho tenanta je záruky týkající se posílení výkonu. V databázi jednoho tenanta neexistuje žádný tenanta, které soutěží o prostředky.
 
@@ -39,8 +39,8 @@ Cílem je používat Klientská knihovna elastic database [směrování závisl�
 
 ### <a name="prerequisites"></a>Požadavky
 
-- Pomocí sady Visual Studio (2012 nebo novějším) 
-- Vytvořte tři databáze Azure SQL 
+- Pomocí sady Visual Studio (2012 nebo novějším)
+- Vytvořte tři databáze Azure SQL
 - Stáhněte si ukázkový projekt: [elastické databáze nástroje pro Azure SQL – víceklientské horizontální oddíly](http://go.microsoft.com/?linkid=9888163)
   - Vyplňte informace o vašich databází na začátku **Program.cs** 
 

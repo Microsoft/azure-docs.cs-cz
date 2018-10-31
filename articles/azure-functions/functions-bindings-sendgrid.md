@@ -3,19 +3,19 @@ title: Azure vazby služby SendGrid funkce
 description: Referenční informace k vazeb Azure Functions SendGrid.
 services: functions
 documentationcenter: na
-author: ggailey777
+author: craigshoemaker
 manager: jeconnoc
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 11/29/2017
-ms.author: glenga
-ms.openlocfilehash: 79fb24e85dea5a8d8d9ca637612ea4a65339a4e3
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.author: cshoe
+ms.openlocfilehash: 23ec5cd6eee3333922b5371a0ece631ebbc20939
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50087404"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50248027"
 ---
 # <a name="azure-functions-sendgrid-bindings"></a>Azure vazby služby SendGrid funkce
 
@@ -199,6 +199,31 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 |**Text**|**Text**| obsah e-mailu. |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
+
+<a name="host-json"></a>  
+
+## <a name="hostjson-settings"></a>nastavení Host.JSON
+
+Tato část popisuje globální konfiguraci nastavení k dispozici pro tuto vazbu ve verzi 2.x. Příklad souboru host.json níže obsahuje pouze verzi 2.x nastavení pro tuto vazbu. Další informace o globální nastavení konfigurace ve verzi 2.x, naleznete v tématu [referenční materiály k host.json pro Azure Functions verze 2.x](functions-host-json.md).
+
+> [!NOTE]
+> Pro odkaz host.json ve funkcích 1.x, najdete v článku [referenční materiály k host.json pro Azure Functions 1.x](functions-host-json-v1.md).
+
+```json
+{
+    "version": "2.0",
+    "extensions": {
+        "sendGrid": {
+            "from": "Azure Functions <samples@functions.com>"
+        }
+    }
+}
+```  
+
+|Vlastnost  |Výchozí | Popis |
+|---------|---------|---------| 
+|od|neuvedeno|E-mailová adresa odesílatele přes všechny funkce.| 
+
 
 ## <a name="next-steps"></a>Další postup
 

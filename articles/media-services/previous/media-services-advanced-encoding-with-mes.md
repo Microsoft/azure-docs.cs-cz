@@ -1,10 +1,10 @@
 ---
-title: Pokročilé kódování přizpůsobením MES přednastavení | Microsoft Docs
-description: Toto téma ukazuje, jak provádět pokročilé kódování přizpůsobením Media Encoder Standard přednastavení úloh.
+title: Pokročilé kódování pomocí přizpůsobení předvoleb MES | Dokumentace Microsoftu
+description: Toto téma ukazuje, jak provádět pokročilé kódování pomocí přizpůsobení předvoleb Media Encoderu Standard úloh.
 services: media-services
 documentationcenter: ''
 author: juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 2a4ade25-e600-4bce-a66e-e29cf4a38369
 ms.service: media-services
@@ -12,30 +12,30 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/01/2017
+ms.date: 10/30/2018
 ms.author: juliako
-ms.openlocfilehash: 9480e6f3f651611e5281968d6d1651bd39dda44f
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 4601628fd0fbdbd80c2b159a4578e25cb4e3c4c5
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33788918"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50250763"
 ---
-# <a name="perform-advanced-encoding-by-customizing-mes-presets"></a>Pokročilé kódování přizpůsobením MES přednastavení 
+# <a name="perform-advanced-encoding-by-customizing-mes-presets"></a>Pokročilé kódování přizpůsobením přednastavení MES 
 
 ## <a name="overview"></a>Přehled
 
-Toto téma ukazuje, jak přizpůsobit Media Encoder Standard přednastavení. [Kódování s Media Encoder Standard pomocí vlastních předvoleb](media-services-custom-mes-presets-with-dotnet.md) téma ukazuje, jak vytvořit kódování úlohy a úlohy, která spustí tuto úlohu pomocí rozhraní .NET. Jakmile upravíte přednastavení, zadejte vlastní přednastavení kódování úlohy. 
+Toto téma ukazuje, jak přizpůsobení předvoleb Media Encoderu Standard. [Kódování pomocí Media Encoderu Standard s využitím vlastní předvolby](media-services-custom-mes-presets-with-dotnet.md) téma ukazuje, jak pomocí .NET vytvořit úlohu kódování a úlohu, která spustí tuto úlohu. Jakmile upravíte přednastavení, zadejte vlastní předvolby pro úlohu kódování. 
 
 >[!NOTE]
->Pokud používáte přednastavení XML, ujistěte se, chcete-li zachovat pořadí prvků, jak je znázorněno v následující ukázky XML (například KeyFrameInterval by měl předcházet SceneChangeDetection).
+>Pokud používáte přednastavení XML, ujistěte se, že chcete zachovat pořadí prvků, jak je znázorněno v následující ukázky XML (například KeyFrameInterval by měl předcházet SceneChangeDetection).
 >
 
-V tomto tématu je ukázán vlastních předvoleb, které provádět následující úlohy kódování.
+V tomto tématu na vlastní předvolby, které provádějí následující úkoly kódování je ukázán.
 
 ## <a name="support-for-relative-sizes"></a>Podpora pro relativní velikosti
 
-Při vytváření miniatur, není potřeba vždycky zadat výstupní šířky a výšky v pixelech. Je můžete zadat v procentech v rozsahu [1 %,..., 100 %].
+Při generování miniatur, není potřeba vždy určete výstupní šířku a výšku v pixelech. Můžete je zadat v procentech v rozsahu [1 %,..., 100 %].
 
 ### <a name="json-preset"></a>Přednastavení JSON
     "Width": "100%",
@@ -45,18 +45,18 @@ Při vytváření miniatur, není potřeba vždycky zadat výstupní šířky a 
     <Width>100%</Width>
     <Height>100%</Height>
 
-## <a id="thumbnails"></a>Vytváření miniatur
+## <a id="thumbnails"></a>Generování miniatur
 
-V této části ukazuje, jak přizpůsobit přednastavení, která generuje miniatur. Přednastavení definovaná níže obsahuje informace o tom, jak chcete zakódovat váš soubor, jakož i informace potřebné k vytváření miniatur. Můžete využít některé z přednastavení MES zdokumentovaný [to](media-services-mes-presets-overview.md) a přidejte kód, který generuje miniatur.  
+Tato část ukazuje, jak přizpůsobit přednastavení, která generuje miniatury. Přednastavení definovaná níže obsahuje informace o tom, jak chcete zakódovat váš soubor, jakož i informace potřebné ke generování miniatur. Můžete využít některý z přednastavení MES zdokumentované [to](media-services-mes-presets-overview.md) a přidejte kód, který generuje miniatury.  
 
 > [!NOTE]
-> **SceneChangeDetection** nastavení v následujících přednastavení lze nastavit pouze na hodnotu true, pokud jsou kódování s jednou přenosovou rychlostí videa. Pokud jsou kódování na video s více přenosovými rychlostmi a sadu **SceneChangeDetection** na hodnotu true, vrátí kodér k chybě.  
+> **SceneChangeDetection** nastavení do následujícího nastavení lze upravit pouze na hodnotu true, pokud se kódování s jednou přenosovou rychlostí videa. Pokud se kódování videa s více přenosovými rychlostmi a nastavte **SceneChangeDetection** na hodnotu true, vrátí kodér chybu.  
 >
 >
 
 Informace o schématu najdete v tématu [to](media-services-mes-schema.md) tématu.
 
-Projděte si [aspekty](#considerations) části.
+Přečtěte si [aspekty](#considerations) oddílu.
 
 ### <a id="json"></a>Přednastavení JSON
     {
@@ -235,23 +235,23 @@ Projděte si [aspekty](#considerations) části.
 
 Platí následující aspekty:
 
-* Použití explicitní časová razítka pro spuštění nebo krok nebo rozsah předpokládá, že se vstupní zdroj alespoň 1 minuta.
-* JPG nebo Png nebo BmpImage prvky má spustit, krok a rozsah řetězec atributy – to jde interpretovat jako:
+* Použití explicitního časová razítka pro začátek/krok/rozsahu předpokládá, že vstupní zdroj je dlouhý alespoň 1 minuta.
+* JPG nebo Png/BmpImage elementy mají počáteční krok a být v rozsahu atributy řetězce – to může být interpretován jako:
 
-  * Rámce číslo, pokud jsou nezáporná celá čísla, například "Start": "120",
-  * Vzhledem ke zdrojové doba trvání, pokud vyjádřený jako % konci, například "Start": "15 %", nebo
-  * Časové razítko, pokud vyjádřený jako hh: mm:... formátování, například "Start": "00: 01:00"
+  * Číslo snímku, pokud jsou nezáporná celá čísla, například "Start": "120",
+  * Vzhledem ke zdrojové doby trvání, pokud je vyjádřená s příponou %, například "Start": "15 %", nebo
+  * Časové razítko, pokud je vyjádřená jako hh: mm:... formátování, například "Start": "00: 01:00"
 
     Můžete kombinovat a párovat zápisy, jako je prosím.
 
-    Kromě toho spustit také podporuje speciální makra: {osvědčené}, která se pokusí určit první "zajímavé" snímek obsahu Poznámka: (krok a rozsah ignorují při spuštění je nastaven na {nejvhodnější})
-  * Výchozí nastavení: Spuštění: {nejlepší}
-* Výstupní formát je třeba explicitně zadat pro každý formát obrázku: Jpg nebo Png nebo BmpFormat. Pokud jsou k dispozici, odpovídá MES JpgVideo k JpgFormat a tak dále. OutputFormat zavádí nové makro konkrétní kodek obrázků: {Index}, které musí být k dispozici (jednou a jen jednou) pro výstupní formáty bitové kopie.
+    Kromě toho Start také podporuje speciálního makra: {osvědčené}, která se pokusí určit prvního "zajímavý" rámce obsahu Poznámka: (krok a rozsahu jsou ignorovány při spuštění nastavený na {nejlepší})
+  * Výchozí: Spustit: {nejlepší}
+* Výstupní formát musí být explicitně zadat pro každou formát obrázku: Jpg nebo Png/BmpFormat. Pokud je přítomen, odpovídá MES JpgVideo k JpgFormat a tak dále. OutputFormat zavádí nové makro konkrétní kodek obrázků: {Index}, které musí být k dispozici (jednou a jen jednou) pro formáty výstupu bitové kopie.
 
-## <a id="trim_video"></a>Trim video (výstřižek.)
-Tato část pojednává o Úprava přednastavení kodér oříznutí nebo trim vstupní video, kde je vstupní soubor mezzanine takzvané soubor nebo soubor na vyžádání. Kodér lze také v případě potřeby upraví nebo trim prostředek, která je zachytit nebo archivovat z živý datový proud – podrobnosti o to jsou k dispozici v [tomto blogu](https://azure.microsoft.com/blog/sub-clipping-and-live-archive-extraction-with-media-encoder-standard/).
+## <a id="trim_video"></a>Střih videa (výstřižek)
+Tato část pojednává o Úprava přednastavení kodér klipu nebo oříznout vstupního videa, kde je vstupní soubor mezzanine takzvané nebo soubor na vyžádání. Kodér také umožňuje oříznout nebo oříznout prostředku, která je zachycena nebo archivovat v živém datovém proudu – podrobnosti k tomu je k dispozici v [tento blog](https://azure.microsoft.com/blog/sub-clipping-and-live-archive-extraction-with-media-encoder-standard/).
 
-Oříznout videa, mohou mít libovolný přednastavení MES zdokumentovaný [to](media-services-mes-presets-overview.md) část a upravte **zdroje** – element (jak je znázorněno níže). Hodnota čas spuštění musí odpovídat absolutní časová razítka vstupní videa. Například pokud první snímek vstupní video má časovým razítkem 12:00:10.000, pak čas spuštění by měl alespoň 12:00:10.000 a větší. V následujícím příkladu předpokládáme, že vstupní video má výchozí časové razítko nula. **Zdroje** musí být umístěny na začátku přednastavení.
+Oříznout videí, můžete provést některý z přednastavení MES zdokumentované [to](media-services-mes-presets-overview.md) oddílu a upravit **zdroje** – element (jak je vidět níže). Hodnota StartTime musí odpovídat absolutní časové razítko vstupního videa. Například pokud první snímek vstupní video má časové razítko 12:00:10.000, pak StartTime by měl být alespoň 12:00:10.000 nebo novější. V následujícím příkladu předpokládáme, že vstupní video má výchozí časové razítko nula. **Zdroje** by měl být umístěny na začátku přednastavený kontext.
 
 ### <a id="json"></a>Přednastavení JSON
     {
@@ -373,7 +373,7 @@ Oříznout videa, mohou mít libovolný přednastavení MES zdokumentovaný [to]
     }
 
 ### <a name="xml-preset"></a>Přednastavení XML
-Oříznout videa, mohou mít libovolný přednastavení MES zdokumentovaný [sem](media-services-mes-presets-overview.md) a upravovat **zdroje** – element (jak je znázorněno níže).
+Oříznout videí, můžete provést některý z přednastavení MES zdokumentované [tady](media-services-mes-presets-overview.md) a upravovat **zdroje** – element (jak je vidět níže).
 
     <?xml version="1.0" encoding="utf-16"?>
     <Preset xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="http://www.windowsazure.com/media/encoding/Preset/2014/03">
@@ -490,13 +490,13 @@ Oříznout videa, mohou mít libovolný přednastavení MES zdokumentovaný [sem
       </Outputs>
     </Preset>
 
-## <a id="overlay"></a>Vytvoření překrytí
+## <a id="overlay"></a>Vytvořit překrytí
 
-Media Encoder Standard umožňuje překrytí bitovou kopii do existujícího videa. V současné době jsou podporovány následující formáty: png, jpg, gif, bmp a. Předvolba definovaná níže je základní příklad překryvné video.
+Media Encoder Standard vám umožní překryv image do existujícího videa. V současné době jsou podporovány následující formáty: png, jpg, gif a bmp. Předvolba definovaná níže je příklad základní překryvné video.
 
-Kromě definování soubor přednastavení, máte také umožní Media Services vědět, který soubor v prostředku je bitovou kopii překrytí a soubor, který je zdrojem videa na kterém chcete překrýt bitovou kopii. Video souboru musí být **primární** souboru.
+Kromě definování soubor přednastavení, máte také umožní Media Services vědět, který soubor v prostředku je obrázek překrytí a soubor, který je zdrojem videa do kterého chcete překrýt bitovou kopii. Soubor videa musí být **primární** souboru.
 
-Pokud používáte rozhraní .NET, přidejte následující dvě funkce v rozhraní .NET příkladu definované v [to](media-services-custom-mes-presets-with-dotnet.md#encoding_with_dotnet) tématu. **UploadMediaFilesFromFolder** funkce odešle soubory ze složky (například BigBuckBunny.mp4 a Image001.png) a nastaví soubor mp4 jako primární soubor v prostředku. **EncodeWithOverlay** funkce používá vlastní přednastavené soubor, který byl předán do ní (například přednastavení, která odpovídá) k vytvoření úlohy kódování.
+Pokud používáte .NET, přidejte tyto dvě funkce definované v příkladu .NET [to](media-services-custom-mes-presets-with-dotnet.md#encoding_with_dotnet) tématu. **UploadMediaFilesFromFolder** funkce nahraje soubory ze složky (například BigBuckBunny.mp4 a Image001.png) a nastaví soubor mp4 primární soubor v prostředku. **EncodeWithOverlay** funkce používá vlastní předvolby soubor, který byl předán (například přednastavený kontext, který následuje) Chcete-li vytvořit úlohu kódování.
 
 
     static public IAsset UploadMediaFilesFromFolder(string folderPath)
@@ -554,9 +554,9 @@ Pokud používáte rozhraní .NET, přidejte následující dvě funkce v rozhra
 > [!NOTE]
 > Aktuální omezení:
 >
-> Nastavení krytí překrytí není podporováno.
+> Nastavení překrytí krytí není podporováno.
 >
-> Video váš zdrojový soubor a soubor bitové kopie překrytí musí být ve stejné asset a video soubor musí být nastavena jako primární soubor v tento prostředek.
+> Zdrojový soubor videa a překrytí soubor bitové kopie musí být ve stejném prostředku a souboru videa se musí nastavit jako primární soubor do tohoto prostředku.
 >
 >
 
@@ -700,12 +700,12 @@ Pokud používáte rozhraní .NET, přidejte následující dvě funkce v rozhra
     </Preset>
 
 
-## <a id="silent_audio"></a>Vložit tichou zvuk sledovat, pokud vstup neobsahuje žádný zvuk
-Ve výchozím nastavení Pokud odesíláte vstup kodéru, který obsahuje pouze video a žádné zvuk, pak výstupní asset obsahuje soubory, které obsahují pouze video data. Některé přehrávače nemusí být schopná zpracovat takové výstupní datové proudy. Toto nastavení slouží k vynucení kodér přidat tichou zvuk sledovat ve výstupu v tomto scénáři.
+## <a id="silent_audio"></a>Vložit tiché zvuková stopa, pokud nemá žádný zvukový vstup
+Ve výchozím nastavení Pokud odesíláte vstupní hodnota pro kodér, který obsahuje pouze video a zvuk, pak výstupního prostředku obsahuje soubory, které obsahují pouze videa data. Některé přehrávače nemusí být schopna zpracovávat takové výstupní datové proudy. Toto nastavení slouží k vynucení kodéru pro přidání do výstupu v tomto scénáři tiché zvuková stopa.
 
-Chcete-li vynutit kodér k vytvoření asset, který obsahuje tichou zvuk sledovat, kdy se vstup neobsahuje žádný zvuk, zadejte hodnotu "InsertSilenceIfNoAudio".
+K vynucení kodér vytvořit asset, který obsahuje tiché zvukové stopy po žádný zvukový vstup, zadejte hodnotu "InsertSilenceIfNoAudio".
 
-Můžete využít některé z přednastavení MES zdokumentována [to](media-services-mes-presets-overview.md) části a proveďte následující změny:
+Můžete využít některý z přednastavení MES dokumentovány v článku [to](media-services-mes-presets-overview.md) části a provést následující změny:
 
 ### <a name="json-preset"></a>Přednastavení JSON
     {
@@ -723,10 +723,10 @@ Můžete využít některé z přednastavení MES zdokumentována [to](media-ser
       <Bitrate>96</Bitrate>
     </AACAudio>
 
-## <a id="deinterlacing"></a>Zakázat automatické zrušte prokládání.
-Zákazníci, nemusíte nic dělat, když se jako obsah prokládání být automaticky zrušte prokládaných. Prokládání zrušte automaticky je na (výchozí) MES nepodporuje automatické zjišťování prokládaných snímků a pouze zrušte interlaces označena jako prokládaných rámce.
+## <a id="deinterlacing"></a>Zakázat automatické zrušení prokládání.
+Zákazníci nemusí nic dělat, když chtějí prokládání obsah bude automaticky zruší prokládané. Po prokládání Zrušení automatického (výchozí) systém řízení výroby provádí automatické zjišťování prokládaných snímků a pouze zrušení interlaces rámce s označením prokládané.
 
-Můžete vypnout prokládání zrušte automaticky. Tato možnost se nedoporučuje.
+Můžete vypnout automatické zrušení prokládání. Tato možnost se nedoporučuje.
 
 ### <a name="json-preset"></a>Přednastavení JSON
     "Sources": [
@@ -751,10 +751,10 @@ Můžete vypnout prokládání zrušte automaticky. Tato možnost se nedoporuču
     </Sources>
 
 
-## <a id="audio_only"></a>Pouze přednastavení
-V této části ukážeme dvou pouze MES přednastavení: AAC zvuk a AAC dobrý kvalitu zvuku.
+## <a id="audio_only"></a>Přednastavení pouze se zvukem
+Tato část ukazuje dvě pouze se zvukem přednastavení MES: AAC zvuku a AAC vhodné kvality zvuku.
 
-### <a name="aac-audio"></a>AAC zvuk
+### <a name="aac-audio"></a>Zvuk AAC
     {
       "Version": 1.0,
       "Codecs": [
@@ -776,7 +776,7 @@ V této části ukážeme dvou pouze MES přednastavení: AAC zvuk a AAC dobrý 
       ]
     }
 
-### <a name="aac-good-quality-audio"></a>AAC kvalitních zvuk
+### <a name="aac-good-quality-audio"></a>Zvuk kvalitních AAC
     {
       "Version": 1.0,
       "Codecs": [
@@ -798,26 +798,26 @@ V této části ukážeme dvou pouze MES přednastavení: AAC zvuk a AAC dobrý 
       ]
     }
 
-## <a id="concatenate"></a>Řetězení dvou nebo více souborů video
+## <a id="concatenate"></a>Zřetězení dvou nebo více souborů videa
 
-Následující příklad ilustruje, jak můžete vygenerovat přednastavení ke zřetězení dvou nebo více souborů videa. Nejběžnější scénáře je, pokud chcete přidat hlavičku nebo vozidel hlavní video. Slouží při video soubory upravovaný společně sdílet vlastnosti (rozlišení videa, obnovovací frekvence, zvuk sledovat počet atd.). By měl třeba dbát na to kombinovat videa různý kmitočet, nebo mají jiný počet zvukových stop.
+Následující příklad ukazuje, jak můžete generovat přednastavení ke zřetězení dvou nebo více souborů videa. Nejběžnější scénář je, pokud chcete přidat záhlaví nebo koncová část do hlavního videa. Zamýšlené použití je při videosoubory upravovaný společně sdílejí vlastnosti (rozlišení, frekvence snímků, zvukové stopy počet atd.). Které byste měli věnovat pozornost nechcete kombinovat videa z různých snímkových nebo s různým počtem zvukové stopy.
 
 >[!NOTE]
->Současný návrh zřetězení funkce očekává, že jsou vstupní videosoubory konzistentní z hlediska řešení, obnovovací frekvence atd. 
+>Současný návrh zřetězení funkce očekává, že vstupní videoklipy jsou konzistentní vzhledem k aplikacím z hlediska rozlišení, frekvence snímků atd. 
 
-### <a name="requirements-and-considerations"></a>Požadavky a důležité informace
+### <a name="requirements-and-considerations"></a>Požadavky a předpoklady
 
-* Vstupní videa by měla mít pouze jeden zvuk sledovat.
-* Vstup videa, by měly mít stejnou snímků za sekundu.
-* Musíte nahrát videa do samostatné prostředky a videím nastavit jako primární soubor v každé asset.
-* Je třeba vědět trvání videa.
-* Přednastavené následující příklady předpokládá, že všechny vstupní videa spustit s časovým razítkem nula. Budete muset upravit hodnoty StartTime, pokud videím mít různé výchozí časové razítko, což je obvykle případ s archivy za provozu.
-* Přednastavení JSON umožňuje explicitní odkazy na hodnoty ID vstupní prostředků.
-* Ukázkový kód předpokládá, že přednastavených JSON byla uložena do místního souboru, jako je například "C:\supportFiles\preset.json". Předpokládá také, zda byly vytvořeny dva prostředky tím, že nahrajete dva video soubory a že znáte výsledné hodnoty ID.
-* Fragment kódu a JSON přednastavených ukazuje příklad zřetězení dva video soubory. Můžete ji rozšířit do více než dva videa pomocí:
+* Vstupního videa by měl mít jenom jedna zvuková stopa.
+* Vstupního videa by měly mít stejnou frekvenci snímků.
+* Musíte nahrání videa do samostatné prostředky a nastavit jako primární soubor v každé asset videa.
+* Je potřeba vědět trvání videa.
+* Níže přednastavených příklad vychází z předpokladu, že všechny vstupní videa spustit s časovým razítkem nula. Budete muset upravit hodnoty StartTime, pokud videa, která mají různé výchozí časové razítko, jako je tomu u živých obvykle.
+* Přednastavení JSON umožňuje explicitní odkazy na hodnoty AssetID vstupní prostředků.
+* Vzorový kód předpokládá, že přednastavení JSON se uložil do místního souboru, jako je například "C:\supportFiles\preset.json". Předpokládá také, zda byly vytvořeny dva prostředky tím, že nahrajete videa dva soubory, a znát výsledné hodnoty AssetID.
+* Fragment kódu a JSON přednastavení ukazuje příklad zřetězení dvou souborů videa. Můžete ji rozšířit na více než dvě videa podle:
 
-  1. Úloha volání. InputAssets.Add() opakovaně Chcete-li přidat další videa, v pořadí.
-  2. Provedení odpovídající upraví "Zdroje" elementu v kódu JSON, můžete přidat další položky ve stejném pořadí.
+  1. Volání úlohy. InputAssets.Add() opakovaně přidáte další videa v pořadí.
+  2. Prvek "Zdroje" ve formátu JSON, provádění odpovídající upraví tak, že přidáte další položky, ve stejném pořadí.
 
 ### <a name="net-code"></a>Kód .NET
 
@@ -854,7 +854,7 @@ Následující příklad ilustruje, jak můžete vygenerovat přednastavení ke 
 
 ### <a name="json-preset"></a>Přednastavení JSON
 
-Aktualizujte vaše vlastní předvolby s ID prostředků, které chcete zřetězit a s příslušnou dobu segmentu pro každý video.
+Aktualizujte vaše vlastní předvolbu s ID sady prostředků, které chcete zřetězit a segment správný čas pro každé video.
 
     {
       "Version": 1.0,
@@ -908,22 +908,22 @@ Aktualizujte vaše vlastní předvolby s ID prostředků, které chcete zřetěz
       ]
     }
 
-## <a id="crop"></a>Oříznutí videa pomocí procesoru Media Encoder Standard
-Najdete v článku [oříznout videa pomocí procesoru Media Encoder Standard](media-services-crop-video.md) tématu.
+## <a id="crop"></a>Oříznutí videa pomocí kodéru Media Encoder Standard
+Zobrazit [oříznutí videa pomocí kodéru Media Encoder Standard](media-services-crop-video.md) tématu.
 
-## <a id="no_video"></a>Vložit video sledovat při vstupu je žádné video
+## <a id="no_video"></a>Vložení videa sledovat při vstupu nemá žádné video
 
-Ve výchozím nastavení Pokud odesíláte vstup kodéru, který obsahuje pouze zvuk a obraz, pak výstupní asset obsahuje soubory, které obsahují pouze zvuková data. Některé přehrávače, včetně Azure Media Player (viz [to](https://feedback.azure.com/forums/169396-azure-media-services/suggestions/8082468-audio-only-scenarios)) nemusí být schopná zpracovat takové datové proudy. Toto nastavení slouží k vynucení kodér přidat černobílý video sledovat ve výstupu v tomto scénáři.
+Ve výchozím nastavení Pokud odesíláte vstupní hodnota pro kodér, který obsahuje pouze zvuku a žádná videa, pak výstupní asset obsahuje soubory, které obsahují pouze zvuková data. Některé přehrávače, včetně Azure Media Playeru (viz [to](https://feedback.azure.com/forums/169396-azure-media-services/suggestions/8082468-audio-only-scenarios)) nemusí být schopna zpracovávat takové datové proudy. Toto nastavení slouží k vynucení kodéru pro přidání monochromatický sledovat videa do výstupu v tomto scénáři.
 
 > [!NOTE]
-> Vynucení kodér vložit výstupu videa sledovat zvětšuje velikost výstupní Asset, a tím vám účtovány náklady pro úlohy kódování. Byste měli spustit testy ověření, že toto výsledné zvýšení má pouze mírné vliv na vaše měsíční poplatky.
+> Vynucení kodéru pro vložení videa sledovat výstupu zvýší velikost výstupu Asset, a tím náklady vzniklé pro úlohu kódování. Měli byste spustit testy k ověření, že toto výsledné zvýšení má pouze mírné vliv na vaše měsíční poplatky.
 >
 
-### <a name="inserting-video-at-only-the-lowest-bitrate"></a>Vložení videa na pouze nejnižší přenosovou rychlostí
+### <a name="inserting-video-at-only-the-lowest-bitrate"></a>Vložení videa v pouze nejnižší přenosové rychlosti
 
-Předpokládejme, že jsou pomocí více kódování přenosovou rychlostí, jako přednastavení ["H264 Multiple Bitrate 720p"](media-services-mes-preset-h264-multiple-bitrate-720p.md) ke kódování celý vstupní katalogu pro streamování, obsahující směs video soubory a soubory jen zvukovém souboru. V tomto scénáři při ve vstupu je žádné video, můžete vynutit kodér vložte černobílý video sledovat na nejnižší přenosovou oproti vložení videa na každou výstupní přenosovou rychlostí. Jak toho docílit, budete muset použít **InsertBlackIfNoVideoBottomLayerOnly** příznak.
+Předpokládejme, že používáte více přenosovými rychlostmi kódování přednastavení, jako ["H264 Multiple Bitrate 720p"](media-services-mes-preset-h264-multiple-bitrate-720p.md) ke kódování celý vstupní katalogu pro streamování, která obsahuje kombinaci videosoubory a zvukové soubory. V tomto scénáři při vstupu nemá žádná videa, můžete chtít vynutit kodér vložit monochromatický sledovat videa na nejnižší bitrate na rozdíl od vkládání videa na každou výstupní s přenosovou rychlostí. K dosažení tohoto cíle, budete muset použít **InsertBlackIfNoVideoBottomLayerOnly** příznak.
 
-Můžete využít některé z přednastavení MES zdokumentována [to](media-services-mes-presets-overview.md) části a proveďte následující změny:
+Můžete využít některý z přednastavení MES dokumentovány v článku [to](media-services-mes-presets-overview.md) části a provést následující změny:
 
 #### <a name="json-preset"></a>Přednastavení JSON
     {
@@ -937,7 +937,7 @@ Můžete využít některé z přednastavení MES zdokumentována [to](media-ser
 
 #### <a name="xml-preset"></a>Přednastavení XML
 
-Při použití XML, použít podmínku = "InsertBlackIfNoVideoBottomLayerOnly" jako atribut k **H264Video** elementu a podmínky = "InsertSilenceIfNoAudio" jako atribut k **AACAudio**.
+Při použití XML, použijte podmínku = "InsertBlackIfNoVideoBottomLayerOnly" jako atribut pro **H264Video** elementu a podmínka = "InsertSilenceIfNoAudio" jako atribut na **AACAudio**.
 
 ```
 . . .
@@ -963,10 +963,10 @@ Při použití XML, použít podmínku = "InsertBlackIfNoVideoBottomLayerOnly" j
 . . .
 ```
 
-### <a name="inserting-video-at-all-output-bitrates"></a>Vkládání video vůbec výstup přenosových rychlostí
-Předpokládejme, že jsou pomocí více kódování přenosovou rychlostí, jako přednastavení ["H264 Multiple Bitrate 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) ke kódování celý vstupní katalogu pro streamování, obsahující směs video soubory a soubory jen zvukovém souboru. V tomto scénáři při ve vstupu je žádné video, můžete vynutit kodér vložit černobílý video sledovat vůbec přenosových rychlostí výstup. To zajistí, že výstupu prostředky jsou všechny informace, které bylo zajištěno homogenní, s ohledem na počet sleduje videa a audia sleduje. Jak toho docílit, je třeba zadat příznak "InsertBlackIfNoVideo".
+### <a name="inserting-video-at-all-output-bitrates"></a>Vložení videa vůbec výstup přenosových rychlostí
+Předpokládejme, že používáte více přenosovými rychlostmi kódování přednastavení, jako ["H264 Multiple Bitrate 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) ke kódování celý vstupní katalogu pro streamování, která obsahuje kombinaci videosoubory a zvukové soubory. V tomto scénáři při vstupu nemá žádná videa, můžete chtít vynutit kodéru pro vložení monochromatický sledovat videa vůbec přenosových rychlostí výstup. To zajistí, že výstup prostředky jsou všechny homogenní s ohledem na počet běhů videí a zvukových stop. K dosažení tohoto cíle, budete muset zadat příznak "InsertBlackIfNoVideo".
 
-Můžete využít některé z přednastavení MES zdokumentována [to](media-services-mes-presets-overview.md) části a proveďte následující změny:
+Můžete využít některý z přednastavení MES dokumentovány v článku [to](media-services-mes-presets-overview.md) části a provést následující změny:
 
 #### <a name="json-preset"></a>Přednastavení JSON
     {
@@ -980,7 +980,7 @@ Můžete využít některé z přednastavení MES zdokumentována [to](media-ser
 
 #### <a name="xml-preset"></a>Přednastavení XML
 
-Při použití XML, použít podmínku = "InsertBlackIfNoVideo" jako atribut k **H264Video** elementu a podmínky = "InsertSilenceIfNoAudio" jako atribut k **AACAudio**.
+Při použití XML, použijte podmínku = "InsertBlackIfNoVideo" jako atribut pro **H264Video** elementu a podmínka = "InsertSilenceIfNoAudio" jako atribut na **AACAudio**.
 
 ```
 . . .
@@ -1006,8 +1006,8 @@ Při použití XML, použít podmínku = "InsertBlackIfNoVideo" jako atribut k *
 . . .  
 ```
 
-## <a id="rotate_video"></a>Otočit video
-[Media Encoder Standard](media-services-dotnet-encode-with-media-encoder-standard.md) podporuje oběh podle úhly 0/90 nebo 180 nebo 270. Výchozí chování je "Auto", kde se pokusí zjistit metadata otočení příchozí videosoubor a kompenzovat ho. Patří **zdroje** element pro jedno z přednastavení definované v [to](media-services-mes-presets-overview.md) části:
+## <a id="rotate_video"></a>Otočit videa
+[Kodéru Media Encoder Standard](media-services-dotnet-encode-with-media-encoder-standard.md) podporuje rotaci úhel 0/90/180 nebo 270. Výchozí chování je "Auto", kde se pokusí zjistit metadata otočení příchozí videosoubor a jako kompenzaci za to. Patří **zdroje** jedno z přednastavení definovaný v elementu [to](media-services-mes-presets-overview.md) části:
 
 ### <a name="json-preset"></a>Přednastavení JSON
     "Sources": [
@@ -1031,9 +1031,9 @@ Při použití XML, použít podmínku = "InsertBlackIfNoVideo" jako atribut k *
         </Source>
     </Sources>
 
-Další informace naleznete v [to](media-services-mes-schema.md#PreserveResolutionAfterRotation) téma pro další informace o interpretace kodéru: nastavení šířky a výšky v přednastavení, při aktivaci otočení honoráře.
+Viz také [to](media-services-mes-schema.md#PreserveResolutionAfterRotation) tématu pro další informace o jak kodér interpretuje nastavení šířky a výšky v nastavení, když se aktivuje otočení kompenzace.
 
-Hodnota "0" můžete použít k označení kodéru ignorovat otočení metadata, pokud je k dispozici v vstup videa.
+Hodnotu "0" slouží k označení kodér ignorovat otočení metadat, pokud jsou k dispozici ve vstupním videu.
 
 ## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
@@ -1042,4 +1042,4 @@ Hodnota "0" můžete použít k označení kodéru ignorovat otočení metadata,
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="see-also"></a>Viz také
-[Kódování Přehled služby Media Services](media-services-encode-asset.md)
+[Media Services kódování – přehled](media-services-encode-asset.md)

@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 10/05/2018
 ms.author: celested
 ms.reviewer: paulgarn, hirsin, jeedes
-ms.openlocfilehash: dbe903f502cbd1b96b34b47aed09c52104995b54
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 18cd96c87f294f1dd8e62f41dd759558c2013aa0
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49466201"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50241663"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Postupy: přizpůsobení deklarací identity v tokenech pro konkrétní aplikaci v tenantovi (Preview), protože ho
 
@@ -195,7 +195,7 @@ Existují určité sady deklarací identity, které definují, jak a kdy se pou�
 |http://schemas.microsoft.com/identity/claims/identityprovider|
 |http://schemas.microsoft.com/identity/claims/objectidentifier|
 |http://schemas.microsoft.com/identity/claims/puid|
-|http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier [MR1] |
+|http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier [MR1] |
 |http://schemas.microsoft.com/identity/claims/tenantid|
 |http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationinstant|
 |http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationmethod|
@@ -289,7 +289,7 @@ ID element identifikuje, která vlastnost na zdroj obsahuje hodnotu pro deklarac
 |Uživatel|givenName|jméno|
 |Uživatel|DisplayName|Zobrazovaný název|
 |Uživatel|ID objektu|ObjectID|
-|Uživatel|e-mailu|E-mailová adresa|
+|Uživatel|mail|E-mailová adresa|
 |Uživatel|userprincipalname|Hlavní název uživatele|
 |Uživatel|Oddělení|Oddělení|
 |Uživatel|onpremisessamaccountname|Na místní název účtu Sam|
@@ -298,10 +298,10 @@ ID element identifikuje, která vlastnost na zdroj obsahuje hodnotu pro deklarac
 |Uživatel|onpremisesecurityidentifier|on-premises identifikátor zabezpečení|
 |Uživatel|Firma|Název organizace|
 |Uživatel|streetAddress|Ulice|
-|Uživatel|PSČ|PSČ|
+|Uživatel|PSČ|Poštovní směrovací číslo|
 |Uživatel|preferredlanguange|Upřednostňovaný jazyk|
 |Uživatel|onpremisesuserprincipalname|místní hlavní název uživatele|
-|Uživatel|mailnickname|E-mailovou přezdívku|
+|Uživatel|mailnickname|Přezdívka pro poštu|
 |Uživatel|extensionattribute1|Atributů rozšíření 1|
 |Uživatel|extensionattribute2|Atribut rozšíření 2|
 |Uživatel|extensionattribute3|Atribut rozšíření 3|
@@ -360,7 +360,7 @@ Podle zvolené metodě, je očekáván sadu vstupů a výstupů. Definovat vstup
 |TransformationMethod|Očekávaný vstup|Očekávaný výstup|Popis|
 |-----|-----|-----|-----|
 |Spojit|řetězec1, řetězec2, oddělovač|outputClaim|Spojení vstupních řetězců s použitím oddělovače mezi. Příklad: řetězec1: "foo@bar.com", řetězec2: "izolovaném prostoru", oddělovač: "." výsledkem outputClaim: "foo@bar.com.sandbox"|
-|ExtractMailPrefix|e-mailu|outputClaim|Extrahuje místní části e-mailovou adresu. Příklad: e-mailu: "foo@bar.com" výsledkem outputClaim: "foo". Pokud ne \@ přihlašování je k dispozici, pak původního vstupního řetězce je vrácen, jako je.|
+|ExtractMailPrefix|mail|outputClaim|Extrahuje místní části e-mailovou adresu. Příklad: e-mailu: "foo@bar.com" výsledkem outputClaim: "foo". Pokud ne \@ přihlašování je k dispozici, pak původního vstupního řetězce je vrácen, jako je.|
 
 **InputClaims:** použít InputClaims element předat data z položky schématu deklarace identity transformace. Má dva atributy: **ClaimTypeReferenceId** a **TransformationClaimType**.
 
@@ -385,7 +385,7 @@ Podle zvolené metodě, je očekáván sadu vstupů a výstupů. Definovat vstup
 
 |Zdroj|ID|Popis|
 |-----|-----|-----|
-|Uživatel|e-mailu|E-mailová adresa|
+|Uživatel|mail|E-mailová adresa|
 |Uživatel|userprincipalname|Hlavní název uživatele|
 |Uživatel|onpremisessamaccountname|Na místní název účtu Sam|
 |Uživatel|EmployeeID|ID zaměstnance|
@@ -454,7 +454,7 @@ V tomto příkladu vytvoříte zásadu, která odebere základní sady deklarac�
     1. Chcete-li vytvořit zásadu, spusťte tento příkaz: 
     
      ``` powershell
-    New-AzureADPolicy -Definition @('{"ClaimsMappingPolicy":{"Version":1,"IncludeBasicClaimSet":"false"}}') -DisplayName "OmitBasicClaims” -Type "ClaimsMappingPolicy"
+    New-AzureADPolicy -Definition @('{"ClaimsMappingPolicy":{"Version":1,"IncludeBasicClaimSet":"false"}}') -DisplayName "OmitBasicClaims" -Type "ClaimsMappingPolicy"
     ```
     2. Chcete zobrazit nové zásady a získat zásady ObjectId, spusťte následující příkaz:
     

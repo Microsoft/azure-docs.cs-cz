@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/09/2018
 ms.author: kgremban
-ms.openlocfilehash: c400a084a78af6313e355d65bcbc07a520f55514
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: b470ca15163ef1e74ec9795ad0a2581a24c83474
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50156047"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50250403"
 ---
 # <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>Monitorování stavu služby Azure IoT Hub a rychlá Diagnostika potíží
 
@@ -24,13 +24,13 @@ Azure Monitor je jediný zdroj monitorování a protokolování všech služeb A
 > [!IMPORTANT]
 > Události generované ve službě IoT Hub pomocí diagnostické protokoly Azure monitoru nemusí být spolehlivé nebo nejsou seřazené. Některé události může být ztracené nebo odeslaná mimo pořadí. Diagnostické protokoly také nejsou určeny v reálném čase a může trvat několik minut, než pro události zaznamenávané do cílového umístění podle vašeho výběru.
 
-Azure Resource Health pomáhá při diagnostice a získání podpory v případě problémů Azure ovlivňují vaše prostředky. Přizpůsobený řídicí panel poskytuje stav aktuálním a minulém stavu pro IoT hub. Pokračujte ve čtení tohoto článku se dozvíte, jak [pomocí Azure Resource Health](#use-azure-resource-health) službou IoT hub. 
+Azure Resource Health pomáhá při diagnostice a získání podpory v případě, že problém Azure ovlivňuje vaše prostředky. Přizpůsobený řídicí panel poskytuje stav aktuálním a minulém stavu pro IoT hub. Pokračujte ve čtení tohoto článku se dozvíte, jak [pomocí Azure Resource Health](#use-azure-resource-health) službou IoT hub. 
 
-Kromě integraci s těmito dvěma službami, IoT Hub poskytuje také vlastní metriky, který vám pomůže porozumět stavu vašich prostředků IoT. Další informace najdete v tématu [Principy centra IoT metriky][lnk-metrics].
+IoT Hub poskytuje také vlastní metriky, který vám pomůže porozumět stavu vašich prostředků IoT. Další informace najdete v tématu [Principy centra IoT metriky][lnk-metrics].
 
 ## <a name="use-azure-monitor"></a>Použití Azure Monitoru
 
-Azure Monitor poskytuje informace o diagnostice na úrovni prostředků, což znamená, že můžete monitorovat operace, které se provedou v rámci služby IoT hub. 
+Platforma Azure Monitor poskytuje diagnostické informace pro prostředky Azure, což znamená, že můžete monitorovat operace, které se provedou v rámci služby IoT hub. 
 
 Nahrazuje nastavení diagnostiky Azure Monitor monitorovat operací služby IoT Hub. Pokud aktuálně používáte službu monitorování operací, měli byste migrovat vaše pracovní postupy. Další informace najdete v tématu [migrace ze služby operations nastavení monitorování pro diagnostiku][lnk-migrate].
 
@@ -42,11 +42,9 @@ Další informace o něm konkrétní metriky a události, které sleduje Azure M
 
 Azure Monitor sleduje různé operace, ke kterým dochází ve službě IoT Hub. Každá kategorie má schéma, které definuje způsob hlášení událostí do této kategorie spadají. 
 
-
-
 #### <a name="connections"></a>Připojení
 
-Připojení zařízení sleduje kategorie připojit a odpojit události ze služby IoT hub, jakož i chyby. Sledování této kategorie je užitečné pro identifikaci pokusy o neautorizovaný připojení a pro sledování při ztrátě zařízení v oblastech špatnému připojení k připojení.
+Připojení zařízení sleduje kategorie připojit a odpojit události ze služby IoT hub, jakož i chyby. Tato kategorie je užitečné pro identifikaci pokusy o neautorizovaný připojení a nebo výstrahy, pokud ztratíte připojení k zařízení.
 
 > [!NOTE]
 > Stav spolehlivé připojení zařízení zkontrolujte [prezenčního signálu zařízení][lnk-devguide-heartbeat].
@@ -65,7 +63,13 @@ Připojení zařízení sleduje kategorie připojit a odpojit události ze služ
 
 #### <a name="cloud-to-device-commands"></a>Příkazy z cloudu na zařízení
 
-Příkazy typu cloud zařízení kategorie sleduje chyby, ke kterým dochází za služby IoT hub, jež se vztahují k kanál zpracování zpráv typu cloud zařízení. Tato kategorie zahrnuje chyby, ke kterým dochází při odesílání zprávy typu cloud zařízení (například neautorizovaného odesílatele), příjem zpráv typu cloud zařízení (například překročení počtu doručených položek) a příjem zpráv typu cloud zařízení zpětnou vazbu (např. zpětnou vazbu s prošlou platností). Tato kategorie nebude zachytávat chyby ze zařízení, která zpracovává nesprávně zprávu typu cloud zařízení, pokud byl úspěšně doručit zprávu typu cloud zařízení.
+Příkazy typu cloud zařízení kategorie sleduje chyby, ke kterým dochází za služby IoT hub, jež se vztahují k kanál zpracování zpráv typu cloud zařízení. Tato kategorie zahrnuje chyby, ke kterým dochází z:
+
+* Odesílání zpráv typu cloud zařízení (jako jsou chyby neautorizovaného odesílatele)
+* Příjem zpráv typu cloud zařízení (jako jsou chyby byl překročen počet doručení), a
+* Příjem zpráv typu cloud zařízení zpětnou vazbu (například zpětnou vazbu s prošlou platností chyby). 
+
+Tato kategorie nebude zachytávat chyby při nesprávně zpracovat zařízení úspěšně doručit zprávu typu cloud zařízení.
 
 ```json
 {
@@ -111,7 +115,13 @@ Kategorie zařízení identity operace sleduje chyby, ke kterým dochází při 
 
 #### <a name="routes"></a>Trasy
 
-Kategorie směrování zpráv sleduje chyb vzniklých při hodnocení trasy zpráv a koncový bod stavu vnímanou ve službě IoT Hub. Tato kategorie zahrnuje události, jako když pravidlo vyhodnotí jako "undefined", když IoT Hub označí koncový bod jako dead a případných dalších chybách přijatých z koncového bodu. Tato kategorie neobsahuje konkrétní chyby o samotné zprávy (jako je například zařízení chybám omezování), které jsou hlášeny v kategorii "telemetrii zařízení".
+Kategorie směrování zpráv sleduje chyb vzniklých při hodnocení trasy zpráv a koncový bod stavu vnímanou ve službě IoT Hub. Tato kategorie zahrnuje události, jako například:
+
+* Pravidlo vyhodnotí na "undefined",
+* IoT Hub označí koncový bod jako nedoručenou, nebo
+* Žádné chyby přijaté z koncového bodu. 
+
+Tato kategorie neobsahuje konkrétní chyby o samotné zprávy (např. zařízení chybám omezování), které jsou hlášeny v kategorii "telemetrii zařízení".
 
 ```json
 {
@@ -365,7 +375,7 @@ class Program 
 
 Pomocí Azure Resource Health můžete sledovat, jestli služby IoT hub je zprovozněný. Můžete také zjistěte, zda je k oblastnímu výpadku vliv na stav služby IoT hub. Informace o tom konkrétní podrobnosti o stavu služby Azure IoT Hub, doporučujeme vám [použití Azure monitoru](#use-azure-monitor). 
 
-Azure IoT Hub označuje stav na místní úrovni. Pokud došlo k oblastnímu výpadku služby IoT hub vliv na stav zobrazuje jako **neznámý**. Další informace o specifických kontrolách, které provádí Azure Resource Health najdete v tématu [typy prostředků a kontroly stavu ve službě Azure resource health][lnk-ARH-checks].
+Azure IoT Hub označuje stav na místní úrovni. Pokud oblastní výpadek ovlivní služby IoT hub, stav zobrazuje jako **neznámý**. Další informace najdete v tématu [typy prostředků a kontroly stavu ve službě Azure resource health][lnk-ARH-checks].
 
 Pokud chcete zkontrolovat stav vašeho centra IoT hub, postupujte takto:
 

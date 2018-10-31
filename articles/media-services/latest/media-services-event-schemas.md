@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: reference
-ms.date: 10/16/2018
+ms.date: 10/30/2018
 ms.author: juliako
-ms.openlocfilehash: 44e195055c74babd903cf4fb830167ab92951d4a
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 8124b399b859f812ec3bf9f7ea64b6643446a1b5
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49376784"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50249291"
 ---
 # <a name="azure-event-grid-schemas-for-media-services-events"></a>Azure Event Grid schémata událostí služby Media Services
 
@@ -116,9 +116,7 @@ Datový objekt má následující vlastnosti:
 
 Stav úlohy kde může být jedna z hodnot: *ve frontě*, *naplánované*, *zpracování*, *dokončeno*, *chyba*, *Zrušena*, *zrušení*
 
-### <a name="jobscheduled"></a>JobScheduled
-### <a name="jobprocessing"></a>JobProcessing
-### <a name="jobcanceling"></a>JobCanceling
+### <a name="jobscheduled-jobprocessing-jobcanceling"></a>JobCanceling JobScheduled JobProcessing,
 
 U každé nefinální úlohy stavu změny (například JobCanceling JobScheduled JobProcessing,) vypadá podobně jako následující příklad schématu:
 
@@ -142,9 +140,7 @@ U každé nefinální úlohy stavu změny (například JobCanceling JobScheduled
 }]
 ```
 
-### <a name="jobfinished"></a>JobFinished
-### <a name="jobcanceled"></a>JobCanceled
-### <a name="joberrored"></a>JobErrored
+### <a name="jobfinished-jobcanceled-joberrored"></a>JobErrored JobFinished JobCanceled,
 
 U každé poslední úlohy stavu změny (například JobErrored JobFinished JobCanceled,) vypadá podobně jako následující příklad schématu:
 
@@ -215,12 +211,7 @@ Následující příklad ukazuje schématu **JobOutputStateChange** události:
 }]
 ```
 
-### <a name="joboutputscheduled"></a>JobOutputScheduled
-### <a name="joboutputprocessing"></a>JobOutputProcessing
-### <a name="joboutputfinished"></a>JobOutputFinished
-### <a name="joboutputcanceling"></a>JobOutputCanceling
-### <a name="joboutputcanceled"></a>JobOutputCanceled
-### <a name="joboutputerrored"></a>JobOutputErrored
+### <a name="joboutputscheduled-joboutputprocessing-joboutputfinished-joboutputcanceling-joboutputcanceled-joboutputerrored"></a>JobOutputScheduled JobOutputProcessing, JobOutputFinished, JobOutputCanceling, JobOutputCanceled, JobOutputErrored
 
 Pro každou změnu stavu JobOutput příkladu schématu vypadá nějak takto:
 
@@ -420,7 +411,7 @@ Datový objekt má následující vlastnosti:
 | TrackName | řetězec | Jeden směr určený název. |
 | S přenosovou rychlostí | integer | S přenosovou rychlostí dráhy. |
 | Časové razítko | řetězec | Časové razítko datové dávky vyřazen. |
-| Časová osa | řetězec | Časové razítko. |
+| Timescale | řetězec | Časové razítko. |
 | Kód výsledku | řetězec | Z důvodu rozevírací bloku dat data. **FragmentDrop_OverlapTimestamp** nebo **FragmentDrop_NonIncreasingTimestamp**. |
 
 ### <a name="liveeventincomingstreamreceived"></a>LiveEventIncomingStreamReceived
@@ -463,7 +454,7 @@ Datový objekt má následující vlastnosti:
 | EncoderIp | řetězec  | IP adresa z kodéru. |
 | EncoderPort | řetězec | Port kodér, ve kterém je tento datový proud zapnout. |
 | Časové razítko | řetězec | První časové razítko přijetí datové dávky. |
-| Časová osa | řetězec | Časový rámec, ve kterém je reprezentován časové razítko. |
+| Timescale | řetězec | Časový rámec, ve kterém je reprezentován časové razítko. |
 
 ### <a name="liveeventincomingstreamsoutofsync"></a>LiveEventIncomingStreamsOutOfSync
 
@@ -534,7 +525,7 @@ Datový objekt má následující vlastnosti:
 | FirstDuration | řetězec | Doba trvání bloků dat s první časové razítko. |
 | SecondTimestamp | řetězec  | Časové razítko přijetí pro některé další úroveň sledování/kvality typu videa. |
 | SecondDuration | řetězec | Doba trvání bloků dat s druhé časové razítko. |
-| Časová osa | řetězec | Časová osa časová razítka a doba trvání.|
+| Timescale | řetězec | Časová osa časová razítka a doba trvání.|
 
 ### <a name="liveeventingestheartbeat"></a>LiveEventIngestHeartbeat
 
@@ -577,7 +568,7 @@ Datový objekt má následující vlastnosti:
 | S přenosovou rychlostí | integer | S přenosovou rychlostí dráhy. |
 | IncomingBitrate | integer | Vypočtený s přenosovou rychlostí podle bloků dat z kodéru. |
 | LastTimestamp | řetězec | Poslední časové razítko přijetí pro sledování v posledních 20 sekund. |
-| Časová osa | řetězec | Časový rámec, ve kterém jsou vyjádřeny časová razítka. |
+| Timescale | řetězec | Časový rámec, ve kterém jsou vyjádřeny časová razítka. |
 | OverlapCount | integer | Počet bloků dat měli překrytých časová razítka v posledních 20 sekund. |
 | DiscontinuityCount | integer | Počet nespojitosti zjištěnými v posledních 20 sekund. |
 | NonIncreasingCount | integer | Počet bloků dat s časovými razítky v minulosti byly přijaty v posledních 20 sekund. |
@@ -622,7 +613,7 @@ Datový objekt má následující vlastnosti:
 | PreviousTimestamp | řetězec | Časové razítko předchozí fragment. |
 | NewTimestamp | řetězec | Časové razítko aktuální fragmentu. |
 | DiscontinuityGap | řetězec | Mezera mezi nad dva časová razítka. |
-| Časová osa | řetězec | Jsou reprezentovány časový rámec, ve které časovým razítkem a diskontinuitu mezera. |
+| Timescale | řetězec | Jsou reprezentovány časový rámec, ve které časovým razítkem a diskontinuitu mezera. |
 
 ### <a name="common-event-properties"></a>Společných vlastností události
 
@@ -631,14 +622,19 @@ Událost má následující dat nejvyšší úrovně:
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
 | téma | řetězec | EventGrid tématu. Tato vlastnost má ID prostředku účtu Media Services. |
-| Předmět | řetězec | Cesta prostředku pro kanál služby Media Services v rámci účtu Media Services. Zřetězení tématu a předmět uveďte jste prostředek ID pro úlohu. |
+| předmět | řetězec | Cesta prostředku pro kanál služby Media Services v rámci účtu Media Services. Zřetězení tématu a předmět uveďte jste prostředek ID pro úlohu. |
 | Typ události | řetězec | Jeden z typů registrované události pro tento zdroj událostí. Například "Microsoft.Media.JobStateChange". |
 | čas události | řetězec | Vygenerování události podle času UTC poskytovatele. |
 | id | řetězec | Jedinečný identifikátor pro událost. |
 | data | objekt | Data událostí Media Services. |
-| dataVersion | řetězec | Verze schématu datového objektu. Vydavatel Určuje verzi schématu. |
-| verze metadataVersion | řetězec | Verze schématu metadat události. Event Grid definuje schéma vlastnosti nejvyšší úrovně. Event gridu poskytuje tuto hodnotu. |
+| dataVersion | řetězec | Verze schématu datového objektu Vydavatel Určuje verzi schématu. |
+| verze metadataVersion | řetězec | Verze schématu metadat události Event Grid definuje schéma vlastnosti nejvyšší úrovně. Event gridu poskytuje tuto hodnotu. |
 
 ## <a name="next-steps"></a>Další postup
 
 [Zaregistrujte se na události změny stavu úlohy](job-state-events-cli-how-to.md)
+
+## <a name="see-also"></a>Další informace najdete v tématech
+
+- [EventGrid .NET SDK, která zahrnuje události mediálních služeb](https://www.nuget.org/packages/Microsoft.Azure.EventGrid/)
+- [Definice událostí Media Services](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/eventgrid/data-plane/Microsoft.Media/stable/2018-01-01/MediaServices.json)

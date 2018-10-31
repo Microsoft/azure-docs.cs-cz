@@ -13,16 +13,16 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/23/2018
 ms.author: genli
-ms.openlocfilehash: 39b793e2722766f3f28829b4dc48534054abd97e
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: a9967aec61aaab5bc6b4517407f36e2a6c7342c8
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49989178"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50238858"
 ---
-# <a name="remote-desktop-services-is-not-starting-on-an-azure-vm"></a>Vzdálená plocha nespouští na Virtuálním počítači Azure
+# <a name="remote-desktop-services-isnt-starting-on-an-azure-vm"></a>Vzdálená plocha nespouští na Virtuálním počítači Azure
 
-Tento článek popisuje postup řešení potíží s připojení do virtuálního počítače (virtuální počítač Azure), když není při spuštění nebo selhání spuštění služby Vzdálená plocha (inicializace).
+Tento článek popisuje postup řešení potíží při služby Vzdálená plocha (inicializace) se nepouští nebo se nepodaří spustit připojování do virtuálního počítače (virtuální počítač Azure).
 
 >[!NOTE]
 >Azure nabízí dva různé modely nasazení pro vytváření a práci s prostředky: [nástroj Resource Manager a klasický režim](../../azure-resource-manager/resource-manager-deployment-model.md). Tento článek popisuje pomocí modelu nasazení Resource Manager. Doporučujeme použít tento model pro nových nasazení namísto pomocí modelu nasazení classic.
@@ -32,28 +32,44 @@ Tento článek popisuje postup řešení potíží s připojení do virtuálníh
 Při pokusu o připojení k virtuálnímu počítači se vyskytnout následující scénáře:
 
 - Snímek obrazovky virtuálního počítače ukazuje, že je operační systém plně načtený a čeká se přihlašovací údaje.
-- Všechny aplikace na virtuálním počítači jsou dostupné a fungují podle očekávání.
-- Virtuální počítač reaguje na připojení protokolu TCP na portu Microsoft protokolu RDP (Remote Desktop) (výchozí 3389).
-- Zobrazí se výzva k zadání přihlašovacích údajů při pokusu o vytvoření připojení k protokolu RDP.
+
+    ![Snímek obrazovky se stav tohoto virtuálního počítače](./media/troubleshoot-remote-desktop-services-issues/login-page.png)
+
+- Můžete vzdáleně Zkontrolujte protokoly událostí ve virtuálním počítači s použitím prohlížeče události, uvidíte, že není od nebo selhání spuštění služby Vzdálená plocha (TermServ). Následuje ukázkový protokol:
+
+    **Název protokolu**: systému </br>
+    **Zdroj**: správce řízení služeb </br>
+    **Datum**: 12/16/2017 11:19:36 AM</br>
+    **ID události**: 7022</br>
+    **Úloha kategorie**: žádné</br>
+    **Úroveň**: Chyba</br>
+    **Klíčová slova**: Classic</br>
+    **Uživatel**: není k dispozici</br>
+    **Počítač**: vm.contoso.com</br>
+    **Popis**: služby Vzdálená plocha služby přestala během spouštění reagovat. 
+
+    Můžete také použít funkci konzoly sériového portu přístup k vyhledání těchto chyb pomocí následujícího dotazu: 
+
+        wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Service Control Manager'] and EventID=7022 and TimeCreated[timediff(@SystemTime) <= 86400000]]]" | more 
 
 ## <a name="cause"></a>Příčina
+ 
+K tomuto problému dochází, protože na virtuálním počítači není spuštěná služba Vzdálená plocha. Příčiny mohou záviset na následující scénáře: 
 
-K tomuto problému dochází, protože na virtuálním počítači není spuštěná Vzdálená plocha. Příčiny mohou záviset na následující scénáře:
-
-- Inicializace služby byl nastaven na **zakázané**.
-- Služba inicializace padá nebo přestanou reagovat.
+- Inicializace služby je nastaven na **zakázané**. 
+- Služba inicializace padá nebo přestanou reagovat. 
 
 ## <a name="solution"></a>Řešení
 
-Chcete-li tento problém vyřešit, použijte jednu z následujících řešení nebo zkuste řešení jeden po druhém:
+Chcete-li tento problém vyřešit, použijte konzole sériového portu nebo [opravte virtuální počítač v režimu offline](#repair-the-vm-offline) připojením disku s operačním systémem virtuálního počítače na virtuální počítač pro obnovení.
 
-### <a name="solution-1-using-the-serial-console"></a>Řešení 1: Pomocí konzole sériového portu
+### <a name="use-serial-console"></a>Použití konzoly sériového portu
 
-1. Přístup [konzoly sériového portu](serial-console-windows.md) tak, že vyberete **podpora a řešení potíží** > **sériová konzola (Preview)**. Pokud je povolená funkce, na virtuálním počítači, může úspěšně připojit virtuální počítač.
+1. Přístup [konzoly sériového portu](serial-console-windows.md) tak, že vyberete **podpora a řešení potíží** > **konzoly sériového portu**. Pokud je povolená funkce, na virtuálním počítači, může úspěšně připojit virtuální počítač.
 
 2. Vytvořte nový kanál pro instanci CMD. Typ **CMD** spuštění kanálu se získat název kanálu.
 
-3. Přepnout do kanálu spuštěnou instanci CMD, v tomto případě bude kanál 1.
+3. Přepněte na kanál spuštěnou instanci CMD. V tomto případě je třeba kanál 1.
 
    ```
    ch -si 1
@@ -69,58 +85,87 @@ Chcete-li tento problém vyřešit, použijte jednu z následujících řešení
 
 6. Pokud se zobrazí stav služby **Zastaveno**, pokuste se spustit službu.
 
-   ```
-   sc start TermService
-   ```
+    ```
+    sc start TermService
+     ``` 
 
 7. Dotazování na službu znovu, abyste měli jistotu, že je služba úspěšně spuštěna.
 
    ```
    sc query TermService
    ```
+    Pokud se službu nepodaří spustit, postupujte podle řešení založené na chybu, kterou jste obdrželi:
 
-### <a name="solution-2-using-a-recovery-vm-to-enable-the-service"></a>Řešení 2: Povolení služby pomocí virtuální počítač pro obnovení
+    |  Chyba |  Návrh |
+    |---|---|
+    |5 - PŘÍSTUP BYL ODEPŘEN |Zobrazit [inicializace je zastavena kvůli chybě přístup odepřen](#termService-service-is-stopped-because-of-access-denied-error) |
+    |1058 - ERROR_SERVICE_DISABLED  |Zobrazit [inicializace služba je zakázána.](#termService-service-is-disabled)  |
+    |. 1059 - ERROR_CIRCULAR_DEPENDENCY |[Obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) pro rychlé vyřešení problému|
+    |1068 - ERROR_SERVICE_DEPENDENCY_FAIL|[Obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) pro rychlé vyřešení problému|
+    |1069 - ERROR_SERVICE_LOGON_FAILED  |[Obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) pro rychlé vyřešení problému    |
+    |1070 - ERROR_SERVICE_START_HANG   | [Obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) pro rychlé vyřešení problému  |
+    |1077. - ERROR_SERVICE_NEVER_STARTED   | Zobrazit [inicializace služba je zakázána.](#termService-service-is-disabled)  |
+    |1079 - ERROR_DIFERENCE_SERVICE_ACCOUNT   |[Obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) pro rychlé vyřešení problému |
+    |1753   |[Obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) pro rychlé vyřešení problému   |
 
-[Zálohování disku s operačním systémem](../windows/snapshot-copy-managed-disk.md) a [připojení disku s operačním systémem k zachránit VM](../windows/troubleshoot-recovery-disks-portal.md). Potom spusťte instanci příkazového řádku se zvýšenými oprávněními a spustíte následující skripty na zachránit virtuálního počítače:
+#### <a name="termservice-service-is-stopped-because-of-access-denied-error"></a>Inicializace je zastavena kvůli chybě přístup odepřen
 
->[!NOTE]
->Předpokládáme, že je písmeno jednotky, která je přiřazena připojeném disku s operačním systémem F. nahradit ji odpovídající hodnotou ve virtuálním počítači. Až to uděláte, odpojit disk od virtuální počítač pro obnovení a [znovu vytvořit svůj virtuální počítač](../windows/create-vm-specialized.md). Další informace o řešení, můžete použít **řešení 1** protože konzole sériového portu byla povolena.
+1. Připojte se k [konzoly sériového portu](serial-console-windows.md#) a otevřete instance prostředí PowerShell.
+2. Stáhněte si nástroj pro monitorování procesu spuštěním následujícího skriptu:
 
-```
-reg load HKLM\BROKENSYSTEM f:\windows\system32\config\SYSTEM
+        remove-module psreadline  
+        $source = "https://download.sysinternals.com/files/ProcessMonitor.zip" 
+        $destination = "c:\temp\ProcessMonitor.zip" 
+        $wc = New-Object System.Net.WebClient 
+        $wc.DownloadFile($source,$destination) 
+3. Nyní spusťte procmon trasování:
 
-REM Enable Serial Console
-bcdedit /store <Volume Letter Where The BCD Folder Is>:\boot\bcd /set {bootmgr} displaybootmenu yes
-bcdedit /store <Volume Letter Where The BCD Folder Is>:\boot\bcd /set {bootmgr} timeout 10
-bcdedit /store <Volume Letter Where The BCD Folder Is>:\boot\bcd /set {bootmgr} bootems yes
-bcdedit /store <Volume Letter Where The BCD Folder Is>:\boot\bcd /ems {<Boot Loader Identifier>} ON
-bcdedit /store <Volume Letter Where The BCD Folder Is>:\boot\bcd /emssettings EMSPORT:1 EMSBAUDRATE:115200
+        procmon /Quiet /Minimized /BackingFile c:\temp\ProcMonTrace.PML 
+4. Reprodukci problému spuštěním služba, která poskytuje přístup k odepření: 
 
-REM Get the current ControlSet from where the OS is booting
-for /f "tokens=3" %x in ('REG QUERY HKLM\BROKENSYSTEM\Select /v Current') do set ControlSet=%x
-set ControlSet=%ControlSet:~2,1%
+        sc start TermService 
+        
+    Pokud došlo k selhání, pokračujte a ukončit monitorování procesu trasování:
 
-REM Suggested configuration to enable OS Dump
-set key=HKLM\BROKENSYSTEM\ControlSet00%ControlSet%\Control\CrashControl
-REG ADD %key% /v CrashDumpEnabled /t REG_DWORD /d 2 /f
-REG ADD %key% /v DumpFile /t REG_EXPAND_SZ /d "%SystemRoot%\MEMORY.DMP" /f
-REG ADD %key% /v NMICrashDump /t REG_DWORD /d 1 /f
+        procmon /Terminate 
+5. Shromáždit soubor **c:\temp\ProcMonTrace.PML**, otevřete ho pomocí procmon a potom vyfiltrovat **výsledkem je přístup ODEPŘEN** jako na následujícím snímku obrazovky se zobrazí:
 
-REM Set default values back on the broken service
-reg add "HKLM\BROKENSYSTEM\ControlSet001\services\<Process Name>" /v start /t REG_DWORD /d <Startup Type> /f
-reg add "HKLM\BROKENSYSTEM\ControlSet001\services\<Process Name>" /v ImagePath /t REG_EXPAND_SZ /d "<Image Path>" /f
-reg add "HKLM\BROKENSYSTEM\ControlSet001\services\<Process Name>" /v ObjectName /t REG_SZ /d "<Startup Account>" /f
-reg add "HKLM\BROKENSYSTEM\ControlSet001\services\<Process Name>" /v type /t REG_DWORD /d 16 /f
-reg add "HKLM\BROKENSYSTEM\ControlSet002\services\<Process Name>" /v start /t REG_DWORD /d <Startup Type> /f
-reg add "HKLM\BROKENSYSTEM\ControlSet002\services\<Process Name>" /v ImagePath /t REG_EXPAND_SZ /d "<Startup Account>" /f
-reg add "HKLM\BROKENSYSTEM\ControlSet002\services\<Process Name>" /v ObjectName /t REG_SZ /d "<Startup Account>" /f
-reg add "HKLM\BROKENSYSTEM\ControlSet002\services\<Process Name>" /v type /t REG_DWORD /d 16 /f
+    ![Filtrovat podle výsledku v monitorování procesu](./media/troubleshoot-remote-desktop-services-issues/process-monitor-access-denined.png)
 
-REM Enable default dependencies from the broken service
-reg add "HKLM\BROKENSYSTEM\ControlSet001\services\<Driver/Service Name>" /v start /t REG_DWORD /d <Startup Type> /f
-reg add "HKLM\BROKENSYSTEM\ControlSet002\services\<Driver/Service Name>" /v start /t REG_DWORD /d <Startup Type> /f
-reg unload HKLM\BROKENSYSTEM
-```
+ 
+6. Opravte klíče registru, složky nebo soubory, které jsou na výstupu. Tento problém je obvykle způsobeno protokolu na účet používá ve službě nemáte příslušná oprávnění seznamu ACL pro přístup k těmto objektům. Vědět správné oprávnění seznamu ACL pro přihlašovací účet, můžete zkontrolovat na virtuálním počítači v pořádku. 
+
+#### <a name="termservice-service-is-disabled"></a>Inicializace služba je zakázána.
+
+1.  Služba obnovíte jeho výchozí hodnota při spuštění:
+
+        sc config TermService start= demand 
+        
+2.  Spusťte službu:
+
+        sc start TermService 
+3.  Dotaz na její stav znovu zajistit se službou: sc dotazu inicializace 
+4.  Zkuste conntet k virtuálnímu počítači pomocí vzdálené plochy.
+
+
+### <a name="repair-the-vm-offline"></a>Opravte virtuální počítač v režimu offline
+
+#### <a name="attach-the-os-disk-to-a-recovery-vm"></a>Připojte disk s operačním systémem pro virtuální počítač pro obnovení
+
+1. [Připojte disk s operačním systémem pro virtuální počítač pro obnovení](../windows/troubleshoot-recovery-disks-portal.md).
+2. Spusťte připojení ke vzdálené ploše pro virtuální počítač pro obnovení. Ujistěte se, že je připojený disk označený jako **Online** v konzole Správa disků. Poznamenejte si písmeno jednotky, která je přiřazena připojeném disku s operačním systémem.
+3.  Otevřete příkazový řádek se zvýšenými oprávněními instance (**spustit jako správce**), a pak spusťte následující skript. Předpokládáme, že je písmeno jednotky, která je přiřazena připojeném disku s operačním systémem F. nahradit ji odpovídající hodnotou ve virtuálním počítači. 
+
+        reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv
+        
+        REM Set default values back on the broken service 
+        reg add "HKLM\BROKENSYSTEM\ControlSet001\services\TermService" /v start /t REG_DWORD /d 3 /f
+        reg add "HKLM\BROKENSYSTEM\ControlSet001\services\TermService" /v ObjectName /t REG_SZ /d "NT Authority\NetworkService“ /f
+        reg add "HKLM\BROKENSYSTEM\ControlSet001\services\TermService" /v type /t REG_DWORD /d 16 /f
+        reg add "HKLM\BROKENSYSTEM\ControlSet002\services\TermService" /v start /t REG_DWORD /d 3 /f
+        reg add "HKLM\BROKENSYSTEM\ControlSet002\services\TermService" /v ObjectName /t REG_SZ /d "NT Authority\NetworkService" /f
+        reg add "HKLM\BROKENSYSTEM\ControlSet002\services\TermService" /v type /t REG_DWORD /d 16 /f
+4. [Odpojit disk s operačním systémem a znovu vytvořte virtuální počítač](../windows/troubleshoot-recovery-disks-portal.md)a potom zkontrolujte, zda byl problém vyřešen.
 
 ## <a name="need-help-contact-support"></a>Potřebujete pomoct? Kontaktování podpory
 

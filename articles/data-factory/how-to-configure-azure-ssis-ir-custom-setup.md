@@ -8,17 +8,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/21/2018
+ms.date: 10/28/2018
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: ad3ec09f039b38290929289c7bca77664b0fb554
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 3ba3e6036821323146f00cf9c255b70606771aed
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39441781"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50241153"
 ---
 # <a name="customize-setup-for-the-azure-ssis-integration-runtime"></a>Přizpůsobení nastavení pro prostředí Azure-SSIS integration runtime
 
@@ -98,7 +98,11 @@ K přizpůsobení prostředí Azure-SSIS IR, budete potřebovat následující v
 
        ![Zkopírujte a uložte sdíleného přístupového podpisu](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image8.png)
 
-    1.  Při zřízení nebo změnit konfiguraci prostředí Azure-SSIS IR pomocí Powershellu, před zahájením prostředí Azure-SSIS IR, spusťte `Set-AzureRmDataFactoryV2IntegrationRuntime` rutiny s identifikátorem URI SAS vašeho kontejneru jako hodnotu pro nové `SetupScriptContainerSasUri` parametru. Příklad:
+    1.  Při zřízení nebo změnit konfiguraci prostředí Azure-SSIS IR s uživatelské rozhraní služby Data Factory, než začnete prostředí Azure-SSIS IR, zadejte identifikátor URI SAS kontejneru v příslušné oblasti:
+
+       ![Zadejte sdílený přístupový podpis](media/tutorial-create-azure-ssis-runtime-portal/advanced-settings.png)
+
+       Při zřízení nebo změnit konfiguraci prostředí Azure-SSIS IR pomocí Powershellu, před zahájením prostředí Azure-SSIS IR, spusťte `Set-AzureRmDataFactoryV2IntegrationRuntime` rutiny s identifikátorem URI SAS vašeho kontejneru jako hodnotu pro nové `SetupScriptContainerSasUri` parametru. Příklad:
 
        ```powershell
        Set-AzureRmDataFactoryV2IntegrationRuntime -DataFactoryName $MyDataFactoryName `
@@ -143,7 +147,7 @@ K přizpůsobení prostředí Azure-SSIS IR, budete potřebovat následující v
 
        1. `MSDTC` Složky, která obsahuje vlastní nastavení k úpravě konfigurace sítě a zabezpečení pro službu Microsoft distribuované transakce koordinátor (MSDTC) na každém uzlu z vašeho prostředí Azure-SSIS IR. Aby bylo zajištěno, že je spuštěna služba MSDTC, přidejte prosím úloha spuštění procesu na začátku tok řízení v vaše balíčky ke spuštění následujícího příkazu: `%SystemRoot%\system32\cmd.exe /c powershell -Command "Start-Service MSDTC"` 
 
-       1. `ORACLE ENTERPRISE` Složky, která obsahuje vlastní instalační skript (`main.cmd`) a konfigurační soubor bezobslužné instalace (`client.rsp`) k instalaci ovladačů rozhraní Oracle OCI na každém uzlu vašeho prostředí Azure-SSIS IR Enterprise Edition. Toto nastavení umožňuje používat Správce připojení Oracle, zdroj a cíl. Nejdřív stáhněte nejnovější verzi klienta Oracle – například `winx64_12102_client.zip` – od [Oracle](http://www.oracle.com/technetwork/database/enterprise-edition/downloads/database12c-win64-download-2297732.html) a nahrajte ji spolu s `main.cmd` a `client.rsp` do kontejneru. Pokud používáte pro připojení k Oracle TNS, budete také muset stáhnout `tnsnames.ora`, upravit jej a nahrajte ho do kontejneru, takže je možné zkopírovat do instalační složky sady Oracle během instalace.
+       1. `ORACLE ENTERPRISE` Složky, která obsahuje vlastní instalační skript (`main.cmd`) a konfigurační soubor bezobslužné instalace (`client.rsp`) instalace konektorů Oracle a OCI ovladač na každém uzlu vašeho prostředí Azure-SSIS IR Enterprise Edition. Toto nastavení umožňuje používat Správce připojení Oracle, zdroj a cíl. Nejdřív stáhněte v5.0 Connectors Microsoftu pro Oracle (`AttunitySSISOraAdaptersSetup.msi` a `AttunitySSISOraAdaptersSetup64.msi`) z [Microsoft Download Center](https://www.microsoft.com/en-us/download/details.aspx?id=55179) a nejnovější klienta Oracle – například `winx64_12102_client.zip` – od [Oracle](http://www.oracle.com/technetwork/database/enterprise-edition/downloads/database12c-win64-download-2297732.html), nahrajte je všechny spolu s `main.cmd` a `client.rsp` do kontejneru. Pokud používáte pro připojení k Oracle TNS, budete také muset stáhnout `tnsnames.ora`, upravit jej a nahrajte ho do kontejneru, takže je možné zkopírovat do instalační složky sady Oracle během instalace.
 
        1. `ORACLE STANDARD` Složky, která obsahuje vlastní instalační skript (`main.cmd`) Chcete-li nainstalovat ovladač Oracle ODP.NET na každém uzlu Azure-SSIS IR. Toto nastavení umožňuje používat Správce připojení ADO.NET, zdroj a cíl. Nejdřív stáhněte nejnovější ovladač Oracle ODP.NET – například `ODP.NET_Managed_ODAC122cR1.zip` – od [Oracle](http://www.oracle.com/technetwork/database/windows/downloads/index-090165.html)a pak nahrajte společně se službou `main.cmd` do kontejneru.
 

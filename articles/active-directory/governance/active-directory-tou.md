@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.component: compliance
-ms.date: 10/19/2018
+ms.date: 10/30/2018
 ms.author: rolyon
-ms.openlocfilehash: be00f6fb41572c0a9599f7005f2cdd1d6587f15a
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 87b08ce138cde5cc70c5a80cc414c68dd7aea743
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49944137"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50249791"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Funkce Azure Active Directory Terms of Use
 Azure AD Terms of Use poskytuje organizacím jednoduchý způsob předkládání informací koncovým uživatelům. Toto předkládání zajistí, že se uživatelům zobrazí příslušná právní omezení pro zákonné požadavky nebo požadavky dodržování předpisů. Tento článek popisuje, jak začít pracovat s podmínkami použití.
@@ -46,6 +46,7 @@ Funkce Azure AD Terms of Use umožňuje následující:
 - Pomoc při plnění nařízení o ochraně osobních údajů.
 - Zobrazit seznam těch, kdo odsouhlasili nebo neodsouhlasili vaše podmínky použití.
 - Zobrazte protokol podmínky použití aktivity pro audit a dodržování předpisů.
+- Vytváření a správě podmínek použití použití [rozhraní Microsoft Graph API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/agreement) (aktuálně ve verzi preview).
 
 ## <a name="prerequisites"></a>Požadavky
 K používání a konfiguraci funkce Azure AD Terms of Use potřebujete:

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/11/2018
+ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 72cf094dc6206fcb156a3e4dae6e89662e2085d8
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 8d1415e996f65f0791b3e449a61fb30053add523
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434853"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50240201"
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>Poradce při potížích: Problémy s připojením Azure point-to-site
 

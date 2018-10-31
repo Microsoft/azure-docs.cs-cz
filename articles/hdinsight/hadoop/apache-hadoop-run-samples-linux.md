@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: jasonh
-ms.openlocfilehash: b0a4088a4473a731f9dec2d5f1e495b2eb9e937c
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 8b6502c23221410af95e71938fbd29f5da04bc9a
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43047776"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50250848"
 ---
 # <a name="run-the-mapreduce-examples-included-in-hdinsight"></a>Spuštění příkladů MapReduce v HDInsight
 
@@ -212,8 +212,6 @@ V tomto článku jste zjistili, jak ke spuštění ukázky zahrnuté v clusterec
 * [Použití Pigu se systémem Hadoop v HDInsight](hdinsight-use-pig.md)
 * [Použití Hivu s Hadoopem v HDInsight](hdinsight-use-hive.md)
 * [Použití MapReduce se systémem Hadoop v HDInsight](hdinsight-use-mapreduce.md)
-
-[hdinsight-sdk-documentation]: https://msdn.microsoft.com/library/azure/dn479185.aspx
 
 [hdinsight-submit-jobs]:submit-apache-hadoop-jobs-programmatically.md
 [hdinsight-introduction]:apache-hadoop-introduction.md

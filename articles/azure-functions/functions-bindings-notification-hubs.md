@@ -3,20 +3,20 @@ title: Vazby centra oznámení pro službu Azure Functions
 description: Vysvětlení použití vazby centra oznámení Azure ve službě Azure Functions.
 services: functions
 documentationcenter: na
-author: ggailey777
+author: craigshoemaker
 manager: jeconnoc
 keywords: Azure functions, funkce, zpracování událostí, dynamické výpočty, architektura bez serveru
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
-ms.author: glenga
-ms.openlocfilehash: d85c281f198e928be48af950c67c9f53a9d6e547
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.author: cshoe
+ms.openlocfilehash: e51a74783f7d7f080d1caa237bb7aabab0100e72
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50086103"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50248578"
 ---
 # <a name="notification-hubs-output-binding-for-azure-functions"></a>Notification Hubs výstupní vazby pro službu Azure Functions
 

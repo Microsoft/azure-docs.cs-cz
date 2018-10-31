@@ -1,10 +1,10 @@
 ---
-title: Kódování assetu pomocí kodéru Media Encoder Standard pomocí rozhraní .NET | Microsoft Docs
-description: Tento článek ukazuje, jak pomocí rozhraní .NET kódování assetu pomocí kodéru standardní média.
+title: Kódování prostředku pomocí kodéru Media Encoder Standard pomocí rozhraní .NET | Dokumentace Microsoftu
+description: Tento článek ukazuje, jak pomocí .NET určený ke kódování prostředku pomocí Media Encoderu standardní.
 services: media-services
 documentationcenter: ''
 author: juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 03431b64-5518-478a-a1c2-1de345999274
 ms.service: media-services
@@ -12,26 +12,26 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/09/2017
+ms.date: 10/30/2018
 ms.author: juliako;anilmur
-ms.openlocfilehash: 2964be45c98350fb1f3c82f25716943493979240
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 7b0de5e149b8b64252f90a01f66642c15fb25ddc
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33788680"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50247788"
 ---
-# <a name="encode-an-asset-with-media-encoder-standard-using-net"></a>Kódování assetu pomocí kodéru Media Encoder Standard pomocí rozhraní .NET
-Kódování úloh je jednou z nejběžnějších operací zpracování ve službě Media Services. K převodu mediálních souborů z jednoho kódování do druhého se využívají kódovací úlohy. Při kódování, můžete použít předdefinované Media Encoder Media Services. Můžete také použít kodér poskytovanými partnerem Media Services; třetí strany kodéry jsou k dispozici prostřednictvím Azure Marketplace. 
+# <a name="encode-an-asset-with-media-encoder-standard-using-net"></a>Kódování prostředku pomocí kodéru Media Encoder Standard pomocí rozhraní .NET 
+Kódování úloh je jednou z nejběžnějších operací zpracování ve službě Media Services. K převodu mediálních souborů z jednoho kódování do druhého se využívají kódovací úlohy. Při kódování, můžete použít předdefinované Media Encoder Media Services. Můžete také použít kodér poskytovanými partnerem Media Services; kodérů třetích stran jsou k dispozici prostřednictvím Azure Marketplace. 
 
-Tento článek ukazuje, jak používat .NET určený ke kódování vaše prostředky s Media Encoder Standard (MES). Media Encoder Standard je konfigurován pomocí jedno z přednastavení kodéry popsané [zde](http://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409).
+Tento článek ukazuje, jak pomocí .NET určený ke kódování vašich prostředků pomocí Media Encoder Standard (MES). Media Encoder Standard je nakonfigurovaný pomocí jedné z přednastavení kodérů popsané [tady](http://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409).
 
-Doporučuje se vždycky zakódovat zdrojové soubory do sady souborů MP4 adaptivní přenosovou rychlostí a pak sadu převést na požadovaný formát pomocí [dynamické balení](media-services-dynamic-packaging-overview.md). 
+Doporučuje se vždy kódování zdrojové soubory do sady MP4 adaptivní přenosové rychlosti a převeďte sady na požadovaný formát pomocí [dynamické balení](media-services-dynamic-packaging-overview.md). 
 
 Pokud výstupní asset používá šifrování úložiště, musíte nakonfigurovat zásady doručení assetu. Další informace najdete v tématu [konfigurace zásad doručení assetu](media-services-dotnet-configure-asset-delivery-policy.md).
 
 > [!NOTE]
-> MES vytvoří výstupní soubor s názvem, který obsahuje první 32 znaků z názvu vstupní soubor. Název podle zadaných v přednastavené souboru. Například "název souboru": "{Basename} _ {Index} {rozšíření}". {Basename} je nahrazena nejprve 32 znaků z názvu vstupní soubor.
+> MES vytvoří výstupní soubor s názvem, který obsahuje prvních 32 znaků z názvu vstupního souboru. Název je podle zadaných v souboru předvolby. Například "název_souboru": "{Basename} _ {Index} {Extension}". {Basename} se nahradí prvních 32 znaků název vstupního souboru.
 > 
 > 
 
@@ -39,31 +39,31 @@ Pokud výstupní asset používá šifrování úložiště, musíte nakonfiguro
 [Formáty a kodeky](media-services-media-encoder-standard-formats.md)
 
 ### <a name="mes-presets"></a>Přednastavení MES
-Media Encoder Standard je konfigurován pomocí jedno z přednastavení kodéry popsané [zde](http://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409).
+Media Encoder Standard je nakonfigurovaný pomocí jedné z přednastavení kodérů popsané [tady](http://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409).
 
-### <a name="input-and-output-metadata"></a>Vstup a výstup metadat
-Při kódování prostředek vstupní (nebo prostředky) pomocí MES získat prostředek výstup na úspěšné dokončení této kódování úloh. Výstupní asset obsahuje video, zvuk, miniatur, manifest atd., které můžete použít přednastavení kódování.
+### <a name="input-and-output-metadata"></a>Vstupní a výstupní metadata
+Při kódování vstupní prostředek (nebo prostředky) pomocí MES získáte výstupního prostředku na úspěšné dokončení, která kódování úloh. Výstupní asset obsahuje video, zvuk, miniatury, manifest a podobně podle použitá předvolba kódování, které používáte.
 
-Výstupní asset obsahuje také soubor s metadata o vstupní asset. Název souboru XML metadat má následující formát: < asset_id > _metadata.xml (například 41114ad3-eb5e - 4c 57 8d 92-5354e2b7d4a4_metadata.xml), kde < asset_id > je hodnota ID vstupní prostředku. Schéma tato metadata vstupní XML je popsána [zde](media-services-input-metadata-schema.md).
+Výstupní asset obsahuje také soubor s metadaty o vstupní asset. Název souboru XML metadat má následující formát: < asset_id > _metadata.xml (například d 57 8 41114ad3-eb5e - 4c 92-5354e2b7d4a4_metadata.xml), kde < asset_id > je hodnotou AssetId vstupní asset. Schéma této vstupní kód XML metadat je popsán [tady](media-services-input-metadata-schema.md).
 
-Výstupní asset obsahuje také soubor s metadata o výstupní asset. Název souboru XML metadat má následující formát: < source_file_name > _manifest.xml (například BigBuckBunny_manifest.xml). Schéma tato metadata výstup XML je popsána [zde](media-services-output-metadata-schema.md).
+Výstupní asset obsahuje také soubor s metadaty o výstupního prostředku. Název souboru XML metadat má následující formát: < source_file_name > _manifest.xml (například BigBuckBunny_manifest.xml). Schéma tato metadata výstup XML je popsána [tady](media-services-output-metadata-schema.md).
 
-Pokud chcete prozkoumat buď dva soubory metadat, můžete vytvořit lokátor SAS a stáhněte soubor do místního počítače. Příklad najdete na tom, jak vytvořit lokátor SAS a stáhnout soubor pomocí rozšíření Media Services .NET SDK.
+Pokud chcete prozkoumat buď dva soubory metadat, můžete vytvořit lokátor SAS a stáhněte si soubor do místního počítače. Příklad najdete na tom, jak vytvořit lokátor SAS a stáhnout soubor přes rozšíření Media Services .NET SDK.
 
 ## <a name="download-sample"></a>Stažení ukázky
-Můžete získat a spustit ukázku, která ukazuje, jak ke kódování s MES z [zde](https://azure.microsoft.com/documentation/samples/media-services-dotnet-on-demand-encoding-with-media-encoder-standard/).
+Můžete získat a spuštění ukázky, která ukazuje, jak kódování pomocí MES z [tady](https://azure.microsoft.com/documentation/samples/media-services-dotnet-on-demand-encoding-with-media-encoder-standard/).
 
-## <a name="net-sample-code"></a>Ukázkový kód rozhraní .NET
+## <a name="net-sample-code"></a>Vzorový kód .NET
 
 Následující příklad kódu používá sadu Media Services .NET SDK k provádění následujících úloh:
 
 * Vytvořte úlohu kódování.
-* Získáte odkaz na kodéru Media Encoder Standard.
-* Použít [adaptivní datové proudy](media-services-autogen-bitrate-ladder-with-mes.md) přednastavené. 
+* Získání odkazu na kodéru Media Encoder Standard.
+* Nastavení, aby používal [adaptivní streamování](media-services-autogen-bitrate-ladder-with-mes.md) předvolby. 
 * Přidáte jednoho kódování úkolu do úlohy. 
-* Zadejte vstupní asset, který je zakódován.
-* Vytvoření výstupní asset, který obsahuje k zakódovanému assetu.
-* Přidání obslužné rutiny události zkontrolovat průběh úlohy.
+* Zadejte vstupní asset kódovaný.
+* Vytvoření výstupní asset, který obsahuje zakódovanému assetu.
+* Přidáte obslužnou rutinu události chcete zkontrolovat průběh úlohy.
 * Odeslání úlohy.
 
 #### <a name="create-and-configure-a-visual-studio-project"></a>Vytvoření a konfigurace projektu Visual Studia
@@ -194,12 +194,12 @@ namespace MediaEncoderStandardSample
 }
 ```
 
-## <a name="advanced-encoding-features-to-explore"></a>Pokročilé funkce chcete prozkoumat kódování
-* [Postup vytváření miniatur](media-services-dotnet-generate-thumbnail-with-mes.md)
-* [Vytváření miniatur během kódování](media-services-dotnet-generate-thumbnail-with-mes.md#example-of-generating-a-thumbnail-while-encoding)
-* [Oříznutí videa během kódování](media-services-crop-video.md)
-* [Přizpůsobení přednastavení kódování](media-services-custom-mes-presets-with-dotnet.md)
-* [Překrytí nebo vodoznaku video s bitovou kopií](media-services-advanced-encoding-with-mes.md#overlay)
+## <a name="advanced-encoding-features-to-explore"></a>Pokročilé funkce Encoding prozkoumat
+* [Postup generování miniatur](media-services-dotnet-generate-thumbnail-with-mes.md)
+* [Generování miniatur při kódování](media-services-dotnet-generate-thumbnail-with-mes.md#example-of-generating-a-thumbnail-while-encoding)
+* [Oříznutí videa při kódování](media-services-crop-video.md)
+* [Přizpůsobení kódovací předvolby](media-services-custom-mes-presets-with-dotnet.md)
+* [Překryv nebo vodoznak videa s obrázkem](media-services-advanced-encoding-with-mes.md#overlay)
 
 ## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
@@ -208,6 +208,6 @@ namespace MediaEncoderStandardSample
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="next-steps"></a>Další postup
-[Jak vygenerovat miniaturu pomocí kodéru Media Encoder Standard s .NET](media-services-dotnet-generate-thumbnail-with-mes.md)
+[Postup generování miniatur pomocí kodéru Media Encoder Standard s využitím .NET](media-services-dotnet-generate-thumbnail-with-mes.md)
 [kódování Přehled služby Media Services](media-services-encode-asset.md)
 

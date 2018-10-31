@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 06/22/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: 34bd958260056d7a0297c4d3545d97543a363480
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: f703a934b0eaf4bff5be3811adeed8f0287bc658
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49344788"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50237821"
 ---
 # <a name="retrieve-the-current-verizon-pop-list-for-azure-cdn"></a>Načíst aktuální seznam Verizon POP pro Azure CDN
 
 Rozhraní REST API můžete použít k načtení sady IP adres pro bod společnosti Verizon serverů přítomnost (POP). Tyto servery POP provádět požadavky původních serverů, které jsou spojeny s koncovými body Azure Content Delivery Network (CDN) v profilu Verizonu (**Azure CDN Standard od Verizonu** nebo **Azure CDN Premium od Verizonu**). Všimněte si, že tuto sadu IP adres se liší od IP adresy, které klient zobrazoval se vám při zasílání požadavků do bodů POP. 
 
-Syntaxe operaci rozhraní REST API pro načítání seznamu bodů POP, naleznete v tématu [hraničních uzlů – seznam](https://docs.microsoft.com/rest/api/cdn/edgenodes/edgenodes_list).
+Syntaxe operaci rozhraní REST API pro načítání seznamu bodů POP, naleznete v tématu [hraničních uzlů – seznam](https://docs.microsoft.com/rest/api/cdn/edgenodes/list).
 
 ## <a name="typical-use-case"></a>Typický případ použití
 

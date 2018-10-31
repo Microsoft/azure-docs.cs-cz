@@ -1,8 +1,8 @@
 ---
-title: H264 Jednotné přenosovou rychlostí nízké kvality SD pro Android | Microsoft Docs
-description: Téma nabízí přehled **H264 jeden přenosovou rychlostí nižší kvalita SD pro Android** přednastavení úloh.
+title: Předvolby H264 Jeden s přenosovou rychlostí nízká kvalita SD pro Android | Dokumentace Microsoftu
+description: Téma s přehledem **H264 jeden s přenosovou rychlostí nízká kvalita SD pro Android** přednastavení úloh.
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 services: media-services
 documentationcenter: ''
@@ -12,21 +12,21 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/20/2017
+ms.date: 10/30/2018
 ms.author: juliako
-ms.openlocfilehash: af10b703615e35c28038ef5b8e15f3e58e0eecb1
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 4c69923518a0e886bb9174750be201b05be442cd
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33788302"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50250325"
 ---
-# <a name="h264-single-bitrate-low-quality-sd-for-android"></a>H264 Jeden nízkou přenosovou rychlostí kvality SD pro Android
-`Media Encoder Standard` definuje sadu kódování přednastavení, které můžete použít při vytváření úlohy kódování. Můžete použít `preset name` zadat do formátu, který chcete zakódovat váš soubor média. Nebo můžete vytvořit vlastní JSON nebo na základě XML přednastavení (pomocí kódování UTF-8 nebo UTF-16. By pak předejte vlastní přednastavení kodéru. Seznam všech názvů přednastavené podporovaných touto `Media Encoder Standard` kodér, najdete v části [přednastavení úloh pro Media Encoder Standard](media-services-mes-presets-overview.md).  
+# <a name="h264-single-bitrate-low-quality-sd-for-android"></a>Předvolby H264 Jeden s přenosovou rychlostí s nízkou kvality SD pro Android
+`Media Encoder Standard` definuje sadu kódování přednastavení, která můžete použít při vytváření úloh kódování. Můžete použít `preset name` zadat do formátu, který chcete zakódovat váš soubor média. Nebo můžete vytvořit vlastní JSON nebo XML na základě předvoleb (pomocí kódování UTF-8 nebo UTF-16. By pak úspěšně prošel zpracováním vlastní přednastaveny tak, aby kodér. Seznam přednastavených názvy všech podporovaných touto `Media Encoder Standard` kodér, naleznete v tématu [předvolby úloh pro Media Encoder Standard](media-services-mes-presets-overview.md).  
   
- Toto téma ukazuje `H264 Single Bitrate Low Quality SD for Android` přednastavení ve formátu XML a JSON.  
+ Toto téma ukazuje, `H264 Single Bitrate Low Quality SD for Android` přednastavení ve formátu XML a JSON.  
   
- Tento soubor přednastavené vytváří jeden MP4 s přenosovou rychlostí 56 kb/s a stereo AAC zvukovém souboru. Podrobné informace o profilu přenosovou rychlostí, vzorkování rychlost atd tohoto přednastavení, zkontrolovat, XML nebo JSON definovaná níže. Vysvětlení co každý prvek v těchto přednastavení znamená a platné hodnoty pro každý element, najdete v článku [Media Encoder Standard schématu](media-services-mes-schema.md) tématu.  
+ Tento soubor přednastavených vytvoří jediné MP4 s přenosovou rychlostí 56 kb/s a stereo AAC zvuku. Podrobné informace o profilech s přenosovou rychlostí, vzorkování rychlost atd. to přednastavení, zkontrolujte XML nebo JSON, definovaná níže. Vysvětlení co každý prvek v tyto prostředky přednastavení a platné hodnoty pro každý prvek, najdete v článku [schéma Media Encoderu Standard](media-services-mes-schema.md) tématu.  
   
  XML  
   

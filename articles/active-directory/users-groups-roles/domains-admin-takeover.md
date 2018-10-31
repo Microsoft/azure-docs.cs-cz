@@ -14,12 +14,12 @@ ms.date: 04/06/2017
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: 210526e105793820a2e8a80a11b356b1d7d764da
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 857d58d31565e413a207162202f1a680d7da7c65
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42057185"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50250729"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Převzít kontrolu nad nespravovaného adresáře jako správce v Azure Active Directory
 Tento článek popisuje dva způsoby, jak převzít kontrolu nad název domény DNS nespravovaného adresáře v Azure Active Directory (Azure AD). Když se samoobslužný uživatel zaregistruje ke cloudové službě, která využívá Azure AD, přidá se do nespravovaného adresáře Azure AD na základě svojí e-mailové domény. Další informace o samoobslužné nebo "virálního" registraci služby najdete v tématu [co je Samoobslužná registrace do služby Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-signup)
@@ -124,11 +124,11 @@ Rutiny | Využití
 `confirm-msoldomain –Domainname <domainname> –ForceTakeover Force` | <li>Pokud ještě není ověřený název domény, abyste mohli pokračovat **- ForceTakeover** možnost. Ověřuje, že byl vytvořen záznam TXT a zahajuje proces převzetí.<li>**- ForceTakeover** možnost měla být přidána do rutiny jenom v případě, že vynucení převzetí externí správu, například pokud má nespravovaného tenanta blokování převzetí služeb Office 365.
 `get-msoldomain` | Seznam domén nyní zobrazuje název domény jako **ověřeno**.
 
-### <a name="powershell-example"></a>Příklad Powershellu
+### <a name="powershell-example"></a>Příklad PowerShellu
 
 1. Připojení k Azure AD pomocí přihlašovacích údajů, které byly použity na nabídku samoobslužné služby:
   ````
-    import-module MSOnline
+    Install-Module -Name MSOnline
     $msolcred = get-credential
     
     connect-msolservice -credential $msolcred

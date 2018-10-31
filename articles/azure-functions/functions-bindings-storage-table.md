@@ -3,20 +3,20 @@ title: Vazby služby Azure storage tabulky pro službu Azure Functions
 description: Vysvětlení použití vazby služby Azure Table storage ve službě Azure Functions.
 services: functions
 documentationcenter: na
-author: ggailey777
+author: craigshoemaker
 manager: jeconnoc
 keywords: Azure functions, funkce, zpracování událostí, dynamické výpočty, architektura bez serveru
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: reference
 ms.date: 09/03/2018
-ms.author: glenga
-ms.openlocfilehash: a16b71bf6c3f40d0595e1db136dd5631b029ed48
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.author: cshoe
+ms.openlocfilehash: 56616ff01ff70230a591285014ed291a2fdc7b34
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50139170"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50250984"
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Vazby služby Azure storage tabulky pro službu Azure Functions
 

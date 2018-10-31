@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/15/2017
 ms.author: rafats
-ms.openlocfilehash: d74aa6b7ef762b7971fd67654e7fc1a23a8d83cc
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: e0cbf806b7999a56ccdf2826a735238fe8130bf5
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42055637"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50240575"
 ---
 # <a name="azure-cosmos-db-database-security"></a>Zabezpečení databáze Azure Cosmos DB
 
@@ -67,7 +67,7 @@ Pojďme se podívat do každé z nich podrobněji.
 |Uživatele a oprávnění|Použití [hlavní klíč](#master-key) pro účet, můžete vytvořit uživatele a oprávnění prostředků na databázi. A [tokenu prostředku](#resource-token) souvisí s oprávnění v databázi a určuje, zda má uživatel přístup (čtení a zápis, jen pro čtení, nebo žádný přístup) na prostředek aplikace v databázi. Prostředky aplikace obsahují kontejneru, dokumenty, přílohy, uložené procedury, triggery a uživatelem definovanými funkcemi. Token prostředku se pak použije při ověřování zadat nebo odepřít přístup k prostředku.<br><br>Další informace najdete v [zabezpečení přístupu k prostředkům služby Azure Cosmos DB](secure-access-to-data.md).|
 |Integrace služby Active directory (RBAC)| Můžete také poskytnout přístup k účtu databáze pomocí řízení přístupu (IAM) na webu Azure Portal, jak je znázorněno na snímku obrazovky pod touto tabulkou. IAM poskytuje řízení přístupu na základě rolí a integruje se službou Active Directory. Integrované role nebo vlastních rolí můžete uživatelům a skupinám jak je znázorněno na následujícím obrázku.|
 |Globální replikace|Azure Cosmos DB nabízí globální distribuce na klíč, který umožňuje replikovat data do kterékoli z datových center Azure na celém světě s kliknutím na tlačítko. Globální replikace vám umožní škálovat globálně a zajistit přístup s nízkou latencí k datům po celém světě.<br><br>Globální replikace v kontextu zabezpečení, zajišťuje ochranu dat před selháním v dané oblasti.<br><br>Další informace najdete v části [Globální distribuce dat](distribute-data-globally.md).|
-|Regionální převzetí služeb při selhání|Pokud máte replikuje vaše data ve více než jedno datové centrum, Azure Cosmos DB automaticky navyšování vaše operace by měla datovým centrem přejdou do režimu offline. Můžete vytvořit seznam seřazený podle priority převzetí služeb při selhání oblasti použití oblastí, ve kterých se replikuje vaše data. <br><br>Další informace najdete v [regionální převzetí služeb při selhání ve službě Azure Cosmos DB](regional-failover.md).|
+|Regionální převzetí služeb při selhání|Pokud máte replikuje vaše data ve více než jedno datové centrum, Azure Cosmos DB automaticky navyšování vaše operace by měla datovým centrem přejdou do režimu offline. Můžete vytvořit seznam seřazený podle priority převzetí služeb při selhání oblasti použití oblastí, ve kterých se replikuje vaše data. <br><br>Další informace najdete v [regionální převzetí služeb při selhání ve službě Azure Cosmos DB](high-availability.md).|
 |Místní replikaci|Dokonce i v rámci jednoho datového centra, Azure Cosmos DB automaticky replikuje data pro zajištění vysoké dostupnosti, dává vám možnost z [úrovně konzistence](consistency-levels.md). To zaručuje 99,99 % [smlouva SLA o dostupnosti](https://azure.microsoft.com/support/legal/sla/cosmos-db) pro všechny účty v jedné oblasti a všechny účty ve více oblastech s mírnější konzistencí a 99,999 % dostupnosti pro všechny účty databáze pro více oblastí pro čtení.|
 |Automatizované zálohování online|Databáze Azure Cosmos DB se pravidelně Zálohuje a uložená v úložišti georedundant. <br><br>Další informace najdete v [automatické online zálohování a obnovení pomocí služby Azure Cosmos DB](online-backup-and-restore.md).|
 |Obnovení odstraněných dat|Automatizované zálohování online je možné obnovit data, možná jste omylem odstranili až ~ 30 dnů po skončení události. <br><br>Další informace najdete v [automatické online zálohování a obnovení pomocí služby Azure Cosmos DB](online-backup-and-restore.md)|

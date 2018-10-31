@@ -12,12 +12,12 @@ ms.devlang: java
 ms.topic: article
 ms.date: 08/29/2018
 ms.author: routlaw
-ms.openlocfilehash: e11b115d7a6421c34e7f1371ad8931b6affa0436
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 1639194741fb343391f80790d0a2cc7f392218ac
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48815167"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50238111"
 ---
 # <a name="java-developers-guide-for-app-service-on-linux"></a>Příručka pro vývojáře Java pro službu App Service v Linuxu
 
@@ -146,6 +146,8 @@ Postupujte podle pokynů [vytvoření vazby existujícího vlastního certifiká
 
 >[!NOTE]
 > Pokud vaše aplikace používá Spring Framework nebo Spring Boot, můžete nastavit informace o připojení databáze pro Spring Data JPA jako proměnné prostředí [ve vlastnosti souboru aplikace]. Pak pomocí [nastavení aplikace](/azure/app-service/web-sites-configure#app-settings) definovat tyto hodnoty pro vaši aplikaci v portálu Azure portal nebo rozhraní příkazového řádku.
+
+Příklady fragmentů konfigurace v této části použijte databázi MySQL. Další informace najdete v tématu Konfigurace dokumentace pro [MySQL](https://dev.mysql.com/doc/connector-j/8.0/en/connector-j-usagenotes-tomcat.html) , [JDBC pro SQL Server](https://docs.microsoft.com/en-us/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server?view=sql-server-2017), a [PostgreSQL](https://jdbc.postgresql.org/documentation/head/index.html).
 
 Pokud chcete nakonfigurovat Tomcat spravovaného připojení k databázím pomocí aplikace Java databáze připojení (JDBC) nebo rozhraní API trvalost Java (JPA), nejprve přizpůsobte proměnnou prostředí CATALINA_OPTS Tomcat během spouštění číst v. Nastavte tyto hodnoty pomocí nastavení aplikace v modulu plug-in App Service Maven:
 

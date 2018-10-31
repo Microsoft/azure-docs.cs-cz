@@ -4,15 +4,15 @@ description: Obsahuje informace o upgradech pro zařízení Azure Migrate Collec
 author: musa-57
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 09/28/2018
+ms.date: 10/29/2018
 ms.author: hamusa
 services: azure-migrate
-ms.openlocfilehash: 6080096194ec5b11f1d5593fcbb6732d1551667f
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: cd48b824845a0195fc78814a88dd449507c99394
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47431388"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50241459"
 ---
 # <a name="collector-update-release-history"></a>Historie verzí aktualizace kolekce
 
@@ -22,6 +22,18 @@ Azure Migrate Collector je zjednodušené zařízení, která se používá ke z
 
 
 ## <a name="one-time-discovery-upgrade-versions"></a>Jednorázově: Upgrade verze
+
+### <a name="version-10916-released-on-10292018"></a>Verze 1.0.9.16 (vydaná 10/29 nebo 2018)
+
+Obsahuje opravy nástroje PowerCLI problémy, kterým čelí při nastavování zařízení. 
+
+Hodnota hash hodnoty pro upgrade [balíček 1.0.9.16](https://aka.ms/migrate/col/upgrade_9_16)
+
+**Algoritmus** | **Hodnota hash**
+--- | ---
+MD5 | d2c53f683b0ec7aaf5ba3d532a7382e1
+SHA1 | e5f922a725d81026fa113b0c27da185911942a01
+SHA256 | a159063ff508e86b4b3b7b9a42d724262ec0f2315bdba8418bce95d973f80cfc
 
 ### <a name="version-10914"></a>Verze 1.0.9.14
 

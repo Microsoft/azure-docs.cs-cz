@@ -1,10 +1,10 @@
 ---
 title: Postup generování miniatur pomocí kodéru Media Encoder Standard a .NET
-description: Toto téma ukazuje, jak pomocí rozhraní .NET kódování assetu a vytváření miniatur současně pomocí kodéru Media Encoder Standard.
+description: Toto téma ukazuje, jak pomocí .NET kódování prostředku a generování miniatur pomocí kodéru Media Encoder Standard současně.
 services: media-services
 documentationcenter: ''
 author: juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: b8dab73a-1d91-4b6d-9741-a92ad39fc3f7
 ms.service: media-services
@@ -12,26 +12,26 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/09/2017
+ms.date: 10/30/2018
 ms.author: juliako
-ms.openlocfilehash: 08332865a60baa0dd87b16809994065ddfed3055
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 9f717f0ae70c503d3527d5df2e6556c120146f3b
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33789436"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50249305"
 ---
 # <a name="how-to-generate-thumbnails-using-media-encoder-standard-with-net"></a>Postup generování miniatur pomocí kodéru Media Encoder Standard a .NET
 
-Můžete použít Media Encoder Standard generovat jednu nebo více miniatur z váš vstup videa v [JPEG](https://en.wikipedia.org/wiki/JPEG), [PNG](https://en.wikipedia.org/wiki/Portable_Network_Graphics), nebo [BMP](https://en.wikipedia.org/wiki/BMP_file_format) bitové kopie formáty souborů. Můžete odeslat úlohy, které vytvářejí pouze obrázky, nebo můžete kombinovat miniatur generování s kódováním. Tento článek obsahuje několik ukázkových XML a JSON miniatur přednastavení pro takové scénáře. Na konci tohoto článku, je [ukázkový kód](#code_sample) který ukazuje, jak používat sadu Media Services .NET SDK k provedení úlohy kódování.
+Můžete generovat jednu nebo více miniatur z vaše vstupní video v pomocí kodéru Media Encoder Standard [JPEG](https://en.wikipedia.org/wiki/JPEG), [PNG](https://en.wikipedia.org/wiki/Portable_Network_Graphics), nebo [BMP](https://en.wikipedia.org/wiki/BMP_file_format) formátů souboru obrázku. Můžete odeslat úlohy, které vytvářejí pouze obrázky, nebo můžete kombinovat generování miniatur pomocí kódování. Tento článek obsahuje několik ukázky XML a JSON miniatur předvolby pro takové scénáře. Na konci tohoto článku je [ukázkový kód](#code_sample) , který ukazuje, jak provádět úlohu kódování pomocí Media Services .NET SDK.
 
-Další informace o prvky, které se používají v ukázkové přednastavení, měli byste prostudovat [Media Encoder Standard schématu](media-services-mes-schema.md).
+Další podrobnosti o prvky, které se používají v ukázkové přednastavení, měli byste si přečíst [schéma Media Encoderu Standard](media-services-mes-schema.md).
 
-Projděte si [aspekty](media-services-dotnet-generate-thumbnail-with-mes.md#considerations) části.
+Přečtěte si [aspekty](media-services-dotnet-generate-thumbnail-with-mes.md#considerations) oddílu.
     
 ## <a name="example-of-a-single-png-file-preset"></a>Příklad přednastavení "jeden soubor PNG"
 
-Následující přednastavení JSON a XML lze použít k vytvoření jediného výstupu PNG soubor z prvních několika sekund vstup videa, kde kodér díky best effort pokusem hledání "zajímavé" rámce. Všimněte si, že dimenze výstup image byla nastavena na 100 %, což znamená, že toto odpovídat dimenze vstupní video. Všimněte si také, jak je "Format" nastavení "Výstupy" vyžadovanou pro shodu použití "PngLayers" v části "Kodeky". 
+Následující přednastavený kontext JSON a XML slouží k vytvoření jeden výstupní soubor PNG z prvních několik sekund vstupním videu, kde kodér díky best effort pokus hledání "zajímavý" snímek. Všimněte si, že výstup rozměry obrázku jsou nastavené na 100 %, což znamená, že byly stejné rozměry vstupního videa. Všimněte si také, jak je nutné nastavit "Formát" v "Výstupy" tak, aby odpovídaly použití "PngLayers" v části "Kodeky". 
 
 ### <a name="json-preset"></a>Přednastavení JSON
 
@@ -85,9 +85,9 @@ Následující přednastavení JSON a XML lze použít k vytvoření jediného v
     </Preset>
 ```
 
-## <a name="example-of-a-series-of-jpeg-images-preset"></a>Příklad přednastavení "řadu JPEG – obrázky"
+## <a name="example-of-a-series-of-jpeg-images-preset"></a>Příklad přednastavení "řadu obrázků JPEG"
 
-Následující přednastavení JSON a XML lze vytvořit sady 10 Image v časová razítka 5 % 15 %,..., 95 % vstupní časová osa tam, kde je zadán velikost bitové kopie na jednu čtvrtletí, vstup videa.
+Následující nastavení JSON a XML slouží k vytvoření sadu 10 obrázků na časová razítka 5 čtvrtletí % 15 %,..., 95 % vstupní časové osy, kde je zadán velikost bitové kopie se u vstupního videa.
 
 ### <a name="json-preset"></a>Přednastavení JSON
 
@@ -145,9 +145,9 @@ Následující přednastavení JSON a XML lze vytvořit sady 10 Image v časová
     </Preset>
 ```
 
-## <a name="example-of-a-one-image-at-a-specific-timestamp-preset"></a>Příklad přednastavení "jednu bitovou kopii v konkrétní časové razítko"
+## <a name="example-of-a-one-image-at-a-specific-timestamp-preset"></a>Příklad přednastavení "jednu image na konkrétní časové razítko"
 
-Následující přednastavení JSON a XML lze použít k vytvoření jedné JPEG image na 30 sekund označení vstup videa. Tato předvolba očekává vstupní video být víc než 30 sekund doby trvání (jinak úloha selže).
+Následující nastavení JSON a XML slouží k vytvoření jedné image ve formátu JPEG na nulté sekundě 30 videí vstupu. Tato předvolba očekává, že na více než 30 sekund doby trvání vstupního videa (jiná úloha selže).
 
 ### <a name="json-preset"></a>Přednastavení JSON
 
@@ -206,9 +206,9 @@ Následující přednastavení JSON a XML lze použít k vytvoření jedné JPEG
 
 ## <a name="example-of-a-thumbnails-at-different-resolutions-preset"></a>Příklad přednastavení "miniatur na různá řešení"
 
-Následující přednastavení slouží k vytváření miniatur na různá řešení v jeden úkol. V příkladu v umístění % 5 15 %,..., 95 % vstupní osy kodér vytvoří dvě bitové kopie – jeden na 100 % vstupní video řešení a jiné na 50 %.
+Následující nastavení je možné vytvářet miniatury na různá řešení v jednom úkolu. V příkladu v umístění % 5 15 %,..., 95 % vstupní časové osy, kodér generuje dvě Image – jednu na 100 % vstupního rozlišení videí a jiných ve výši 50 %.
 
-Všimněte si použití {řešení} makro v názvu souboru; označuje kodéru používat šířka a výška, který jste zadali v části kódování přednastavení při generování název souboru bitové kopie výstup. To zároveň pomáhá snadno rozlišit mezi různými obrázky
+Všimněte si použití makra {rozlišení} v názvu souboru; označuje kodér používat šířku a výšku, které jste vytvořili v části kódování předvolby při generování názvu souboru výstupu imagí. To zároveň pomáhá snadno rozlišit různé obrázky
 
 ### <a name="json-preset"></a>Přednastavení JSON
 
@@ -277,9 +277,9 @@ Všimněte si použití {řešení} makro v názvu souboru; označuje kodéru po
     </Preset>
 ```
 
-## <a name="example-of-generating-a-thumbnail-while-encoding"></a>Příklad generování miniaturu při kódování
+## <a name="example-of-generating-a-thumbnail-while-encoding"></a>Příklad generování miniatury při kódování
 
-Když mají všechny výše uvedené příklady popsané, jak můžete odeslat kódování úloh, která jenom vytváří bitové kopie, můžete také kombinovat video nebo zvuk kódování se miniatur generací. Sdělte následující přednastavení JSON a XML **Media Encoder Standard** ke generování miniaturu při kódování.
+Přestože všechny výše uvedené příklady mají popsáno, jak můžete odeslat úlohu kódování, pouze vytvoří Image, můžete také kombinovat, kódování videa a zvuku s generování miniatur. Sdělte následující JSON a XML přednastavení **kodéru Media Encoder Standard** ke generování miniatury při kódování.
 
 ### <a id="json"></a>Přednastavení JSON
 Informace o schématu najdete v tématu [to](https://msdn.microsoft.com/library/mt269962.aspx) článku.
@@ -401,23 +401,23 @@ Informace o schématu najdete v tématu [to](https://msdn.microsoft.com/library/
     </Preset>   
 ```
 
-## <a id="code_sample"></a>Zakódovat video a generovat miniaturu s rozhraním .NET
+## <a id="code_sample"></a>Kódování videa a generování miniatur pomocí .NET
 
 Následující příklad kódu používá sadu Media Services .NET SDK k provádění následujících úloh:
 
 * Vytvořte úlohu kódování.
-* Získáte odkaz na kodéru Media Encoder Standard.
-* Načíst přednastavení [XML](media-services-dotnet-generate-thumbnail-with-mes.md#xml) nebo [JSON](media-services-dotnet-generate-thumbnail-with-mes.md#json) obsahující kódování přednastavení a také informace potřebné k vytváření miniatur. To můžete uložit [XML](media-services-dotnet-generate-thumbnail-with-mes.md#xml) nebo [JSON](media-services-dotnet-generate-thumbnail-with-mes.md#json) na soubor a použít následující kód načíst soubor.
+* Získání odkazu na kodéru Media Encoder Standard.
+* Načíst Předvolby [XML](media-services-dotnet-generate-thumbnail-with-mes.md#xml) nebo [JSON](media-services-dotnet-generate-thumbnail-with-mes.md#json) , které obsahují kódování přednastavení a také informace potřebné ke generování miniatur. To můžete uložit [XML](media-services-dotnet-generate-thumbnail-with-mes.md#xml) nebo [JSON](media-services-dotnet-generate-thumbnail-with-mes.md#json) na soubor a použít následující kód k načtení souboru.
   
         // Load the XML (or JSON) from the local file.
         string configuration = File.ReadAllText(fileName);  
 * Přidáte jednoho kódování úkolu do úlohy. 
-* Zadejte vstupní asset, který je zakódován.
-* Vytvoření výstupní asset, který obsahuje k zakódovanému assetu.
-* Přidání obslužné rutiny události zkontrolovat průběh úlohy.
+* Zadejte vstupní asset kódovaný.
+* Vytvoření výstupní asset, který obsahuje zakódovanému assetu.
+* Přidáte obslužnou rutinu události chcete zkontrolovat průběh úlohy.
 * Odeslání úlohy.
 
-Najdete v článku [vývoj Media Services pomocí rozhraní .NET](media-services-dotnet-how-to-use.md) článku Pokyny o tom, jak nastavit svoje prostředí vývojářů.
+Najdete v článku [vývoj pro Media Services s .NET](media-services-dotnet-how-to-use.md) článku Pokyny o tom, jak nastavit vývojové prostředí.
 
 ```csharp
 using System;
@@ -548,22 +548,22 @@ namespace EncodeAndGenerateThumbnails
 ## <a name="considerations"></a>Požadavky
 Platí následující aspekty:
 
-* Použití explicitní časová razítka pro spuštění nebo krok nebo rozsah předpokládá, že se vstupní zdroj alespoň 1 minuta.
-* JPG nebo Png nebo BmpImage prvky má spustit, krok a rozsah řetězec atributy – to jde interpretovat jako:
+* Použití explicitního časová razítka pro začátek/krok/rozsahu předpokládá, že vstupní zdroj je dlouhý alespoň 1 minuta.
+* JPG nebo Png/BmpImage elementy mají počáteční krok a být v rozsahu atributy řetězce – to může být interpretován jako:
   
-  * Rámce číslo, pokud jsou nezáporná celá čísla, například "Start": "120",
-  * Vzhledem ke zdrojové doba trvání, pokud vyjádřený jako % konci, například "Start": "15 %", nebo
-  * Časové razítko, pokud vyjádřený jako hh: mm:... formát. Například "Start": "00: 01:00"
+  * Číslo snímku, pokud jsou nezáporná celá čísla, například "Start": "120",
+  * Vzhledem ke zdrojové doby trvání, pokud je vyjádřená s příponou %, například "Start": "15 %", nebo
+  * Časové razítko, pokud je vyjádřená jako hh: mm:... formát. Například "Start": "00: 01:00"
     
     Můžete kombinovat a párovat zápisy, jako je prosím.
     
-    Kromě toho spustit také podporuje speciální makra: {osvědčené}, která se pokusí určit první "zajímavé" snímek obsahu Poznámka: (krok a rozsah ignorují při spuštění je nastaven na {nejvhodnější})
-  * Výchozí nastavení: Spuštění: {nejlepší}
-* Výstupní formát je třeba explicitně zadat pro každý formát obrázku: Jpg nebo Png nebo BmpFormat. Pokud jsou k dispozici, odpovídá MES JpgVideo k JpgFormat a tak dále. OutputFormat zavádí nové makro konkrétní kodek obrázků: {Index}, které musí být k dispozici (jednou a jen jednou) pro výstupní formáty bitové kopie.
+    Kromě toho Start také podporuje speciálního makra: {osvědčené}, která se pokusí určit prvního "zajímavý" rámce obsahu Poznámka: (krok a rozsahu jsou ignorovány při spuštění nastavený na {nejlepší})
+  * Výchozí: Spustit: {nejlepší}
+* Výstupní formát musí být explicitně zadat pro každou formát obrázku: Jpg nebo Png/BmpFormat. Pokud je přítomen, odpovídá MES JpgVideo k JpgFormat a tak dále. OutputFormat zavádí nové makro konkrétní kodek obrázků: {Index}, které musí být k dispozici (jednou a jen jednou) pro formáty výstupu bitové kopie.
 
 ## <a name="next-steps"></a>Další postup
 
-Můžete zkontrolovat [úlohy průběh](media-services-check-job-progress.md) úlohy kódování je očekávána.
+Můžete zkontrolovat [průběh úlohy](media-services-check-job-progress.md) během úlohy kódování čeká na vyřízení.
 
 ## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
@@ -572,5 +572,5 @@ Můžete zkontrolovat [úlohy průběh](media-services-check-job-progress.md) ú
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="see-also"></a>Viz také
-[Kódování Přehled služby Media Services](media-services-encode-asset.md)
+[Media Services kódování – přehled](media-services-encode-asset.md)
 

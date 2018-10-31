@@ -1,11 +1,11 @@
 ---
-title: Přehled služby Azure Media Services streamování Endpoint | Microsoft Docs
-description: Toto téma nabízí přehled Azure Media Services koncové body streamování.
+title: Přehled služby Azure Media Services koncový bod | Dokumentace Microsoftu
+description: Toto téma obsahuje přehled služby Azure Media Services koncové body streamování.
 services: media-services
 documentationcenter: ''
 author: Juliako
 writer: juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 097ab5e5-24e1-4e8e-b112-be74172c2701
 ms.service: media-services
@@ -13,56 +13,56 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/29/2017
+ms.date: 10/24/2018
 ms.author: juliako
-ms.openlocfilehash: 7b4077747d4c9ec581496786063fc8fbe0c6b247
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 06f219b9cf7d17e80699aebc1082b14e2de45c8b
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33790430"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50240218"
 ---
 # <a name="streaming-endpoints-overview"></a>Přehled koncových bodů streamování 
 
 ## <a name="overview"></a>Přehled
 
-V Microsoft Azure Media Services (AMS) **koncový bod streamování** představuje streamování služba, která může poskytnout obsah přímo k aplikaci player klienta nebo do obsah Delivery Network (CDN) pro další distribuci. Služba Media Services také poskytuje bezproblémovou integraci Azure CDN. Výstupní datový proud z StreamingEndpoint služba může být živý datový proud, video na vyžádání nebo progresivní stahování asset ve vašem účtu Media Services. Každý účet Azure Media Services obsahuje výchozí StreamingEndpoint. V rámci účtu se dají vytvořit další koncové body streamování. Existují dvě verze koncové body streamování, 1.0 a 2.0. Od ledna 2017 10, budou všechny nově vytvořené účty AMS obsahovat verze 2.0 **výchozí** StreamingEndpoint. Další streamování koncové body, které přidáte k tomuto účtu budou i verze 2.0. Tato změna nemá vliv na existující účty; stávající koncové body streamování bude verze 1.0 a lze upgradovat na verzi 2.0. V této změně bude změny chování, fakturace a funkce (Další informace najdete v tématu **streamování typy a verze** části popsané dole).
+V Microsoft Azure Media Services (AMS) **koncový bod streamování** reprezentuje službu streamování, která může doručovat obsah přímo do klientské aplikace přehrávače nebo do Content Delivery Network (CDN) k další distribuci. Služba Media Services také poskytuje bezproblémovou integraci Azure CDN. Výstupní datový proud ze služby StreamingEndpoint může být v živém datovém proudu, videa na vyžádání nebo progresivní stahování asset ve vašem účtu Media Services. Každý účet služby Azure Media Services obsahuje výchozí StreamingEndpoint. Další koncové body streamování se dají vytvořit v rámci účtu. Existují dvě verze koncové body streamování, 1.0 a 2.0. Od 10. ledna 2017, budou všechny nově vytvořené účty AMS zahrnují verze 2.0 **výchozí** StreamingEndpoint. Další koncové body streamování, které přidáte k tomuto účtu budou také verze 2.0. Tato změna neovlivní existující účty; stávající koncové body streamování se verze 1.0 a je možné upgradovat na verzi 2.0. Tato změna bude změny chování, fakturace a funkce (Další informace najdete v tématu **streamování typy a verze** části je uvedeno níže).
 
-Kromě toho počínaje 2.15 verzí (vydané v ledna 2017), Azure Media Services přidali následující vlastnosti do koncového bodu streamování entity: **CdnProvider**, **CdnProfile**, **FreeTrialEndTime**, **StreamingEndpointVersion**. Podrobný přehled o těchto vlastností najdete v části [to](https://docs.microsoft.com/rest/api/media/operations/streamingendpoint). 
+Kromě toho počínaje 2.15 verze (vydaná v lednu 2017), Azure Media Services přidat následující vlastnosti k entitě koncový bod streamování: **CdnProvider**, **CdnProfile**, **FreeTrialEndTime**, **StreamingEndpointVersion**. Podrobný přehled o těchto vlastnostech najdete v části [to](https://docs.microsoft.com/rest/api/media/operations/streamingendpoint). 
 
-Při vytváření účtu Azure Media Services výchozí se vám v vytvoří standardní koncový bod streamování **Zastaveno** stavu. Nelze odstranit výchozí koncový bod streamování. V závislosti na dostupnosti Azure CDN v cílové oblasti, ve výchozím nastavení nově vytvořen výchozí koncový bod streamování také zahrnuje "StandardVerizon" CDN integrace zprostředkovatele. 
+Při vytváření účtu Azure Media Services koncový bod streamování standard je pro vás vytvořen výchozí **Zastaveno** stavu. Nelze odstranit výchozí koncový bod streamování. V závislosti na dostupnosti Azure CDN v cílové oblasti, ve výchozím nastavení nově vytvořen výchozí koncový bod streamování také zahrnuje "StandardVerizon" CDN poskytovatele integrace. 
 
 >[!NOTE]
->Integrace se službou Azure CDN je možné zakázat před zahájením koncový bod streamování.
+>Integrace s Azure CDN je možné zakázat před zahájením koncový bod streamování.
 
-Toto téma poskytuje přehled hlavní funkce, které jsou poskytovány koncové body streamování.
+Toto téma obsahuje přehled hlavních funkcí, které jsou poskytovány koncové body streamování.
 
 ## <a name="streaming-types-and-versions"></a>Streamování typy a verze
 
 ### <a name="standardpremium-types-version-20"></a>Typy Standard nebo Premium (verze 2.0)
 
-Od ledna 2017 verze služby Media Services, máte dva typy streamování: **standardní** a **Premium**. Tyto typy jsou součástí na verzi koncový bod Streaming "2.0".
+Od verze. ledna 2017 služby Media Services, budete mít dva typy datových proudů: **standardní** a **Premium**. Tyto typy jsou součástí verze koncový bod streamování "2.0".
 
 Typ|Popis
 ---|---
-**Standard**|Toto je výchozí možnost, která bude fungovat pro většinu scénářů.<br/>Pomocí této možnosti získat nebo omezené SLA, prvních 15 dnů po spuštění koncového bodu streamování je bezplatná.<br/>Pokud vytvoříte více než jeden koncové body, streamování pouze první z nich je bezplatná prvních 15 dnů, ostatní fakturují, jakmile je spuštění. <br/>Všimněte si, že bezplatné zkušební verze se aplikuje jenom na nově vytvořený media services účty a výchozí koncový bod streamování. Stávající koncové body streamování a kromě vytvořený koncových bodů streamování není zahrnuje bezplatné zkušební období i nebudou upgradovány na verzi 2.0 nebo jsou vytvořené jako verze 2.0.
-**Premium**|Tato možnost je vhodná pro odborníky v oblasti scénáře, které vyžadují vyšší škálování nebo ovládací prvek.<br/>Proměnné SLA založený na premium streamování zakoupili kapacitu jednotky (SU), vyhrazené koncových bodů streamování za provozu v izolovaném prostředí a není pokouší pro prostředky.
+**Standard**|Toto je výchozí možnost, která bude fungovat pro většinu scénářů.<br/>Pomocí této možnosti získáte/limited SLA, prvních 15 dnů po spuštění koncový bod streamování je zdarma.<br/>Pokud vytvoříte více než jeden datový proud koncové body, pouze první z nich je zdarma pro prvních 15 dnů, ostatní se účtují, jakmile je spuštění. <br/>Všimněte si, že bezplatné zkušební verze platí jenom pro účty služby nově vytvořené médium a výchozí koncový bod streamování. Stávající koncové body streamování a kromě vytvořených koncových bodů streamování není zahrnuje bezplatné zkušební období ještě jsou upgradovány na verzi 2.0 nebo jsou vytvořené jako verze 2.0.
+**Premium**|Tato možnost je vhodná pro profesionální scénáře, které vyžadují větší měřítko nebo ovládací prvek.<br/>Proměnné SLA, která je založena na premium streamování (SU) jednotky zakoupená kapacita služby vyhrazené koncové body streamování živě v izolovaném prostředí a nesoupeřily o prostředky.
 
-Podrobnější informace najdete v článku **porovnat streamování typy** následující části.
+Podrobnější informace najdete v článku **porovnání datových proudů typy** následující části.
 
-### <a name="classic-type-version-10"></a>Klasického typu (verze 1.0)
+### <a name="classic-type-version-10"></a>Typ Classic (verze 1.0)
 
-Pro uživatele, kteří vytvořili účty AMS před vydáním verze v ledna 2017 10, máte **Classic** typ koncového bodu streamování. Tento typ je součástí streamování "1.0" verzi koncový bod.
+Pro uživatele, kteří si vytvořili účty AMS před vydáním verze 10. ledna 2017, budete mít **Classic** typu koncový bod streamování. Tento typ je součástí koncového bodu streamování verze "1.0".
 
-Pokud vaše **"1.0" verzi** koncový bod streamování má > = 1 premium streamování jednotky (SU), ji budou koncový bod streamování premium a bude poskytovat všechny funkce AMS (stejně jako **Standard nebo Premium** typu) bez žádné další kroky konfigurace.
+Pokud vaše **verze "1.0"** koncový bod streamování má > = 1 (SU), jednotky streamování premium bude koncový bod streamování premium a bude poskytovat všechny funkce AMS (stejně jako **úrovně Standard nebo Premium** typ) bez všech dalších kroků konfigurace.
 
 >[!NOTE]
->**Classic** koncové body streamování (verze "1.0" a 0 SU), poskytuje omezené funkce a neobsahuje smlouvy o úrovni služeb. Doporučuje se migrovat do **standardní** typu získat lepší a použití funkcí jako dynamické balení nebo šifrování a další funkce, které jsou součástí **standardní** typu. Migrace do **standardní** typu, přejděte na [portál Azure](https://portal.azure.com/) a vyberte **Opt-in na Standard**. Další informace o migraci najdete v tématu [migrace](#migration-between-types) části.
+>**Klasické** koncové body streamování (verze "1.0" a 0 SU), poskytuje omezené funkce a neobsahuje žádnou smlouvu SLA. Doporučuje se migrovat do **standardní** typ lepší prostředí a pomocí funkcí, jako je dynamické balení a šifrování a další funkce, které jsou součástí **standardní** typu. Migrace na **standardní** typu, přejděte na [webu Azure portal](https://portal.azure.com/) a vyberte **Opt-in na úroveň Standard**. Další informace o migraci, najdete v článku [migrace](#migration-between-types) oddílu.
 >
->Mějte na paměti, že tuto operaci nelze vrátit zpět a má cenovou vliv.
+>Mějte na paměti, že tuto operaci nelze vrátit zpět a má vliv na cenu.
 >
  
-## <a name="comparing-streaming-types"></a>Porovnávání datových proudů typy
+## <a name="comparing-streaming-types"></a>Porovnání typů datových proudů
 
 ### <a name="versions"></a>Verze
 
@@ -77,33 +77,33 @@ Pokud vaše **"1.0" verzi** koncový bod streamování má > = 1 premium streamo
 
 Funkce|Standard|Premium
 ---|---|---
-Volné prvních 15 dnů| Ano |Ne
-Propustnost |Až 600 MB/s při Azure CDN se nepoužívá. Dál škáluje s CDN.|200 MB/s na jednotku (SU) pro streaming. Dál škáluje s CDN.
-SLA | 99.9|99,9 (200 MB/s na SU).
+Zdarma prvních 15 dnů| Ano |Ne
+Propustnost |Až 600 MB/s při Azure CDN se nepoužívá. Škálování s CDN.|200 MB/s za jednotku (SU) pro streaming. Škálování s CDN.
+SLA | 99.9|99,9 (200 MB/s za SU).
 CDN|Azure CDN, třetích stran CDN nebo žádné CDN.|Azure CDN, třetích stran CDN nebo žádné CDN.
-Fakturace je účtovány poměrnou částí.| Denně|Denně
+Ceny jsou poměrně přepočítané| Denně|Denně
 Dynamické šifrování|Ano|Ano
 Dynamické balení|Ano|Ano
-Měřítko|Automatické škálování cílové propustnosti.|Další jednotky streamování
-IP filtrování nebo G20 nebo vlastního hostitele|Ano|Ano
+Měřítko|Automatické škálování až na cílové propustnosti.|Dodatečné jednotky streamování
+IP filtrování/G20/vlastního hostitele|Ano|Ano
 Progresivní stahování|Ano|Ano
-Doporučené využití |Vhodné pro velká většina streamování scénáře.|Profesionální využití.<br/>Pokud se domníváte, že můžete mít potřeby nad rámec Standard. Kontaktujte nás (amsstreaming@microsoft.com) Pokud očekáváte souběžných cílovou skupinu velikost větší než 50 000 prohlížeče.
+Doporučené použití |Doporučuje se pro většinu scénářů streamování.|Profesionální použití.<br/>Pokud se domníváte, že máte potřebám Standard. Kontaktujte nás (amsstreaming@microsoft.com) Pokud budete chtít souběžných cílovou skupinu velikost větší než 50 000 prohlížeče.
 
 
 ## <a name="migration-between-types"></a>Migrace mezi typy
 
 Od | Akce | Akce
 ---|---|---
-Classic|Standard|Potřeba opt-in
-Classic|Premium| Škálování (Další jednotky streamování)
-Standard nebo Premium|Classic|Není k dispozici (Pokud je streamování koncový bod verze 1.0. Je povolena změna na klasickém s nastavení scaleunits "0")
-Standard (s/bez CDN)|Premium pomocí stejné konfigurace|V povolena **spuštění** stavu. (prostřednictvím portálu Azure)
-Premium (s/bez CDN)|Standard s stejné konfigurace|V povolena **spuštění** stavu (prostřednictvím portálu Azure)
-Standard (s/bez CDN)|Premium s různých konfiguračním|V povolena **zastavena** stavu (prostřednictvím portálu Azure). Není povoleno v běžícím stavu.
-Premium (s/bez CDN)|Standard s různých konfiguračním|V povolena **zastavena** stavu (prostřednictvím portálu Azure). Není povoleno v běžícím stavu.
-Verze 1.0 s SU > = 1 s CDN|Standard nebo Premium s žádné CDN|V povolena **zastavena** stavu. Není povoleno v **spuštění** stavu.
-Verze 1.0 s SU > = 1 s CDN|Standard s/bez CDN|V povolena **zastavena** stavu. Není povoleno v **spuštění** stavu. Verze 1.0 CDN bude odstraněna a nové jeden vytvořit a spustit.
-Verze 1.0 s SU > = 1 s CDN|Premium/bez CDN|V povolena **zastavena** stavu. Není povoleno v **spuštění** stavu. Classic CDN bude odstraněna a nové jeden vytvořit a spustit.
+Classic|Standard|Muset vyjádřit výslovný souhlas
+Classic|Premium| Škálování (dodatečné jednotky streamování)
+Úrovně Standard nebo Premium|Classic|Není k dispozici (Pokud streamování koncový bod verze je 1.0. Je povoleno ji změňte na classic se nastavení scaleunits "0")
+Standard (s nebo bez CDN)|Premium se stejnou konfigurací|V povolena **spuštění** stavu. (prostřednictvím webu Azure portal)
+Premium (s nebo bez CDN)|Standard s stejnou konfiguraci|V povolena **spuštění** stavu (prostřednictvím webu Azure portal)
+Standard (s nebo bez CDN)|Premium s jinou config|V povolena **zastavena** stavu (prostřednictvím webu Azure portal). Není povoleno v běžícím stavu.
+Premium (s nebo bez CDN)|Standard s jinou config|V povolena **zastavena** stavu (prostřednictvím webu Azure portal). Není povoleno v běžícím stavu.
+Verze 1.0 s SU > = 1 s CDN|Úrovně Standard nebo Premium se sítěmi CDN, žádné|V povolena **zastavena** stavu. Není povoleno v **spuštění** stavu.
+Verze 1.0 s SU > = 1 s CDN|Standard s/bez CDN|V povolena **zastavena** stavu. Není povoleno v **spuštění** stavu. Verze 1.0 CDN bude jeden odstraněný a nového vytvoření a spuštění.
+Verze 1.0 s SU > = 1 s CDN|Úrovně Premium/bez CDN|V povolena **zastavena** stavu. Není povoleno v **spuštění** stavu. Klasické CDN bude jeden odstraněný a nového vytvoření a spuštění.
 
 ## <a name="next-steps"></a>Další postup
 Prohlédněte si mapy kurzů k Media Services.

@@ -9,12 +9,12 @@ ms.workload: core
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: shvija
-ms.openlocfilehash: eaea6adbaef7baf9bb1e617ba0a709cf14edf781
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 0a8cb349be0ffefecb07bc705391684dc57f1b96
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40005574"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50239487"
 ---
 # <a name="receive-events-from-event-hubs-using-go"></a>Příjem událostí ze služby Event Hubs pomocí jazyka Go
 
@@ -80,7 +80,7 @@ import (
 
 ## <a name="create-service-principal"></a>Vytvoření instančního objektu
 
-Vytvořte nový instanční objekt služby podle pokynů v [vytvoření instančního objektu Azure pomocí příkazového řádku Azure CLI 2.0](/cli/azure/create-an-azure-service-principal-azure-cli). Zadané přihlašovací údaje uložte ve vašem prostředí s následujícími názvy. Azure SDK for Go a balíček Event Hubs jsou předem nakonfigurovány pro vyhledání tyto názvy proměnných.
+Vytvořte nový instanční objekt služby podle pokynů v [vytvoření instančního objektu Azure pomocí příkazového řádku Azure CLI 2.0](/cli/azure/create-an-azure-service-principal-azure-cli). Uložte zadané přihlašovací údaje ve vašem prostředí s následujícími názvy: obě sady Azure SDK for Go a Event Hubs balíčku je předem nakonfigurované vyhledejte tyto názvy proměnných.
 
 ```bash
 export AZURE_CLIENT_ID=
@@ -197,13 +197,7 @@ if err != nil {
 Tento kurz používá jednu instanci třídy **EventProcessorHost**. Pokud chcete zvýšit propustnost a spolehlivost, měli byste spustit víc instancí **EventProcessorHost** v různých systémech. Leaser systému zajistí, že pouze jeden příjemce je přidružené a přijímá zprávy z zadaný oddíl na určitou dobu.
 
 ## <a name="next-steps"></a>Další postup
-
-Navštivte tyto stránky, další informace o službě Event Hubs:
-
-* [Odesílání událostí s využitím Go](event-hubs-go-get-started-send.md)
-* [Přehled služby Event Hubs](event-hubs-about.md)
-* [Vytvoření centra událostí](event-hubs-create.md)
-* [Nejčastější dotazy k Event Hubs](event-hubs-faq.md)
+V tomto rychlém startu jste vytvořili aplikací v jazyce Go, který se přijaté zprávy z centra událostí. Zjistěte, jak odesílat události do centra událostí pomocí jazyka Go, najdete v článku [odesílání událostí z centra událostí - Go](event-hubs-go-get-started-send.md).
 
 <!-- Links -->
 [Event Hubs overview]: event-hubs-about.md

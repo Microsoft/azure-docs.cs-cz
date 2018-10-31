@@ -1,8 +1,8 @@
 ---
-title: H264 Jednotné přenosovou rychlostí 720p zvuk 5.1 | Microsoft Docs
-description: Téma nabízí přehled **jednou přenosovou rychlostí H264 720p zvuk 5.1** přednastavení úloh.
+title: Předvolby H264 Jeden s přenosovou rychlostí 720p zvuk 5.1 | Dokumentace Microsoftu
+description: Téma s přehledem **s jednou přenosovou rychlostí H264 720p zvuk 5.1** přednastavení úloh.
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 services: media-services
 documentationcenter: ''
@@ -12,21 +12,21 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/21/2017
+ms.date: 10/30/2018
 ms.author: juliako
-ms.openlocfilehash: 629ef7690f25dc6de1773a83cf967544cdf16682
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 7f4677a7363eef106b2d96c08db8a6e15d5b1bfe
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33788519"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50246224"
 ---
-# <a name="h264-single-bitrate-720p-audio-51"></a>H264 Jednou přenosovou rychlostí 720p zvuk 5.1
-`Media Encoder Standard` definuje sadu kódování přednastavení, které můžete použít při vytváření úlohy kódování. Můžete použít `preset name` zadat do formátu, který chcete zakódovat váš soubor média. Nebo můžete vytvořit vlastní JSON nebo na základě XML přednastavení (pomocí kódování UTF-8 nebo UTF-16. By pak předejte vlastní přednastavení kodéru. Seznam všech názvů přednastavené podporovaných touto `Media Encoder Standard` kodér, najdete v části [přednastavení úloh pro Media Encoder Standard](media-services-mes-presets-overview.md).  
+# <a name="h264-single-bitrate-720p-audio-51"></a>Předvolby H264 S jednou přenosovou rychlostí 720p zvuku 5.1
+`Media Encoder Standard` definuje sadu kódování přednastavení, která můžete použít při vytváření úloh kódování. Můžete použít `preset name` zadat do formátu, který chcete zakódovat váš soubor média. Nebo můžete vytvořit vlastní JSON nebo XML na základě předvoleb (pomocí kódování UTF-8 nebo UTF-16. By pak úspěšně prošel zpracováním vlastní přednastaveny tak, aby kodér. Seznam přednastavených názvy všech podporovaných touto `Media Encoder Standard` kodér, naleznete v tématu [předvolby úloh pro Media Encoder Standard](media-services-mes-presets-overview.md).  
   
- Toto téma ukazuje `H264 Single Bitrate 720p Audio 5.1` přednastavení ve formátu XML a JSON.  
+ Toto téma ukazuje, `H264 Single Bitrate 720p Audio 5.1` přednastavení ve formátu XML a JSON.  
   
- Tato předvolba vytváří jednoho souboru MP4 s přenosovou rychlostí 4500 kb/s a zvuku AAC 5.1. Podrobné informace o profilu přenosovou rychlostí, vzorkování rychlost atd tohoto přednastavení, zkontrolovat, XML nebo JSON definovaná níže. Vysvětlení znamená, co každý prvek a platné hodnoty pro každý element, najdete v článku [Media Encoder Standard schématu](media-services-mes-schema.md).  
+ Tato předvolba vytváří jeden soubor MP4 s přenosovou rychlostí 4500 kb/s a zvuku AAC 5.1. Podrobné informace o profilech s přenosovou rychlostí, vzorkování rychlost atd. to přednastavení, zkontrolujte XML nebo JSON, definovaná níže. Vysvětlení znamená, co každý prvek a platné hodnoty pro každý prvek, najdete v článku [schéma Media Encoderu Standard](media-services-mes-schema.md).  
   
  XML  
   

@@ -1,10 +1,10 @@
 ---
-title: Přizpůsobení Media Encoder Standard přednastavení | Microsoft Docs
-description: Toto téma ukazuje, jak provádět pokročilé kódování přizpůsobením Media Encoder Standard přednastavení úloh. Téma ukazuje, jak používat sadu Media Services .NET SDK k vytvoření úlohy a úlohy kódování. Také ukazuje, jak k poskytování vlastních předvoleb pro úlohy kódování.
+title: Přizpůsobení předvoleb Media Encoderu Standard | Dokumentace Microsoftu
+description: Toto téma ukazuje, jak provádět pokročilé kódování pomocí přizpůsobení předvoleb Media Encoderu Standard úloh. Téma ukazuje, jak používat sadu Media Services .NET SDK k vytvoření úlohy a úlohy kódování. Také ukazuje, jak zadat vlastní předvolby pro úlohy kódování.
 services: media-services
 documentationcenter: ''
 author: juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: ec95392f-d34a-4c22-a6df-5274eaac445b
 ms.service: media-services
@@ -12,32 +12,32 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/09/2017
+ms.date: 10/30/2018
 ms.author: juliako
-ms.openlocfilehash: 4bdfdb5bd5362d5a8039ca31d498d122843df2a7
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 21f182051e3e92cd126b832876d57854ac126367
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33788414"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50247449"
 ---
-# <a name="customizing-media-encoder-standard-presets"></a>Přizpůsobení Media Encoder Standard nastaví aplikace
+# <a name="customizing-media-encoder-standard-presets"></a>Přednastavení přizpůsobení Media Encoder Standard
 
 ## <a name="overview"></a>Přehled
 
-Tento článek ukazuje, jak provádět pokročilé kódování s Media Encoder Standard (MES) pomocí vlastní přednastavení. Článek používá rozhraní .NET k vytvoření kódování úlohy a úlohy, která spustí tuto úlohu.  
+Tento článek ukazuje, jak provádět pokročilé kódování pomocí Media Encoder Standard (MES) pomocí vlastního nastavení. Tento článek používá k vytvoření úlohu kódování a úlohu, která spustí tuto úlohu .NET.  
 
-Tento článek ukazuje, jak přizpůsobit přednastavení provedením [H264 Multiple Bitrate 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) přednastavení a snížit počet vrstev. [Přizpůsobení kodéru Media Encoder Standard přednastavení](media-services-advanced-encoding-with-mes.md) článek ukazuje vlastních předvoleb, které umožňuje provádět pokročilé úlohy kódování.
+Tento článek ukazuje, jak přizpůsobit přednastavení provedením [H264 Multiple Bitrate 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) přednastavení, jednak snižuje počet vrstev. [Přizpůsobení kodéru Media Encoder Standard přednastavení](media-services-advanced-encoding-with-mes.md) článku ukazuje vlastní předvolby, podle kterých je možné provádět pokročilé úlohy kódování.
 
 ## <a id="customizing_presets"></a> Přizpůsobení přednastavení MES
 
-### <a name="original-preset"></a>Původní předvolbu
+### <a name="original-preset"></a>Původnímu přednastavení
 
-Uložit definované ve formátu JSON [H264 Multiple Bitrate 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) článek v některé soubor s příponou .json. Například **CustomPreset_JSON.json**.
+Uložit definované v kódu JSON [H264 Multiple Bitrate 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) článek v některých soubor s příponou .json. Například **CustomPreset_JSON.json**.
 
-### <a name="customized-preset"></a>Přizpůsobené přednastavených
+### <a name="customized-preset"></a>Vlastní předvolba
 
-Otevřete **CustomPreset_JSON.json** souboru a odeberte první tři vrstvy ze **H264Layers** tak váš soubor bude vypadat takto.
+Otevřít **CustomPreset_JSON.json** souboru a odebrat první tři vrstvy z **H264Layers** tak váš soubor bude vypadat takto.
 
 ```json 
     {  
@@ -110,21 +110,21 @@ Otevřete **CustomPreset_JSON.json** souboru a odeberte první tři vrstvy ze **
     }  
 ```
 
-## <a id="encoding_with_dotnet"></a>Kódování pomocí služby Media Services .NET SDK
+## <a id="encoding_with_dotnet"></a>Kódování pomocí Media Services .NET SDK
 
 Následující příklad kódu používá sadu Media Services .NET SDK k provádění následujících úloh:
 
 - Vytvořte úlohu kódování.
-- Získáte odkaz na kodéru Media Encoder Standard.
-- Načtěte vlastní přednastavení JSON, který jste vytvořili v předchozí části. 
+- Získání odkazu na kodéru Media Encoder Standard.
+- Načtěte vlastní předvolbu JSON, který jste vytvořili v předchozí části. 
   
         // Load the JSON from the local file.
         string configuration = File.ReadAllText(fileName);  
 
-- Přidejte kódování úkolů do úlohy. 
-- Zadejte vstupní asset, který je zakódován.
-- Vytvoření výstupní asset, který obsahuje k zakódovanému assetu.
-- Přidání obslužné rutiny události zkontrolovat průběh úlohy.
+- Přidáte úlohu kódování do úlohy. 
+- Zadejte vstupní asset kódovaný.
+- Vytvoření výstupní asset, který obsahuje zakódovanému assetu.
+- Přidáte obslužnou rutinu události chcete zkontrolovat průběh úlohy.
 - Odeslání úlohy.
    
 #### <a name="create-and-configure-a-visual-studio-project"></a>Vytvoření a konfigurace projektu Visual Studia
@@ -268,5 +268,5 @@ namespace CustomizeMESPresests
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="see-also"></a>Viz také
-[Kódování Přehled služby Media Services](media-services-encode-asset.md)
+[Media Services kódování – přehled](media-services-encode-asset.md)
 

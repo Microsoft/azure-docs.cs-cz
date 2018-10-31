@@ -1,8 +1,8 @@
 ---
-title: H264 Multiple Bitrate 4K Media Encoder Standard přednastavených - Azure | Microsoft Docs
-description: Téma nabízí přehled **H264 Multiple Bitrate 4K** přednastavení úloh.
+title: Media Encoder Standard předvolbu H264 Multiple Bitrate 4 kB – Azure | Dokumentace Microsoftu
+description: Téma s přehledem **H264 Multiple Bitrate 4 KB** přednastavení úloh.
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 services: media-services
 documentationcenter: ''
@@ -12,27 +12,27 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/20/2017
+ms.date: 10/30/2018
 ms.author: juliako
-ms.openlocfilehash: 2d150fec68378e22ac644c0b8ccfe09c7f364738
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 97c852bc2b2bc046fa6942a8d4853231ab3b14bd
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33788505"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50246582"
 ---
-# <a name="h264-multiple-bitrate-4k"></a>H264 Multiple Bitrate 4 kB
-`Media Encoder Standard` definuje sadu kódování přednastavení, které můžete použít při vytváření úlohy kódování. Můžete použít `preset name` zadat do formátu, který chcete zakódovat váš soubor média. Nebo můžete vytvořit vlastní JSON nebo na základě XML přednastavení (pomocí kódování UTF-8 nebo UTF-16. By pak předejte vlastní přednastavení kodéru. Seznam všech názvů přednastavené podporovaných touto `Media Encoder Standard` kodér, najdete v části [přednastavení úloh pro Media Encoder Standard](media-services-mes-presets-overview.md).  
+# <a name="h264-multiple-bitrate-4k"></a>Předvolby H264 Multiple Bitrate 4 kB
+`Media Encoder Standard` definuje sadu kódování přednastavení, která můžete použít při vytváření úloh kódování. Můžete použít `preset name` zadat do formátu, který chcete zakódovat váš soubor média. Nebo můžete vytvořit vlastní JSON nebo XML na základě předvoleb (pomocí kódování UTF-8 nebo UTF-16. By pak úspěšně prošel zpracováním vlastní přednastaveny tak, aby kodér. Seznam přednastavených názvy všech podporovaných touto `Media Encoder Standard` kodér, naleznete v tématu [předvolby úloh pro Media Encoder Standard](media-services-mes-presets-overview.md).  
   
- Toto téma ukazuje `H264 Multiple Bitrate 4K` přednastavení ve formátu XML a JSON.  
+ Toto téma ukazuje, `H264 Multiple Bitrate 4K` přednastavení ve formátu XML a JSON.  
   
- Tato předvolba vytvoří sadu 12 soubory MP4 zarovnaný GOP od 20000 kb/s až 1 000 kB/s a stereofonní zvuk AAC. Podrobné informace o profilu přenosovou rychlostí, vzorkování rychlost atd tohoto přednastavení, zkontrolovat, XML nebo JSON definovaná níže. Vysvětlení co každý prvek v těchto přednastavení znamená a platné hodnoty pro každý element, najdete v článku [Media Encoder Standard schématu](media-services-mes-schema.md) tématu.  
-  
-> [!NOTE]
->  Měli byste obdržet jednotku rezervovanou Premium kóduje typ s 4 kB. Další informace najdete v tématu [postup škálování kódování](https://azure.microsoft.com/documentation/articles/media-services-portal-encoding-units).  
+ Tato předvolba vytvoří sadu 12 soubory MP4 zarovnaný GOP od 20000 kb/s až 1 000 kB/s a stereo AAC zvuku. Podrobné informace o profilech s přenosovou rychlostí, vzorkování rychlost atd. to přednastavení, zkontrolujte XML nebo JSON, definovaná níže. Vysvětlení co každý prvek v tyto prostředky přednastavení a platné hodnoty pro každý prvek, najdete v článku [schéma Media Encoderu Standard](media-services-mes-schema.md) tématu.  
   
 > [!NOTE]
->  Při úpravě `Width` a `Height` hodnot v rámci vrstvy, ujistěte se, aby zůstala konzistentní poměr stran. Příklad: 1920 × 1080, 1280 × 720, 1080 x 576 640 x 360. Neměli byste používat směs poměrům stran, jako například: 1280 × 720, 720 x 480, 640 x 360.  
+>  Měli byste obdržet rezervovaných jednotek Premium kóduje typ s 4 kB. Další informace najdete v tématu [postupy škálování kódování](https://azure.microsoft.com/documentation/articles/media-services-portal-encoding-units).  
+  
+> [!NOTE]
+>  Při úpravě `Width` a `Height` hodnot v rámci vrstvy, ujistěte se, poměr stran zůstala konzistentní vzhledem k aplikacím. Příklad: 1920 × 1080, 1280 × 720, 1080 x 576, 640 x 360. Neměli byste používat kombinaci poměry stran, jako například: 1280 × 720, 720 x 480, 640 x 360.  
   
  XML  
   

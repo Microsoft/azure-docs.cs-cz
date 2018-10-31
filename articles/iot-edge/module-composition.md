@@ -8,16 +8,16 @@ ms.date: 06/06/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a65eb029dbf10b194bd28bf7ad82f5aa839338a2
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: beb7574653375024f36912c4b3a37b01d2f59bd5
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46990616"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50248390"
 ---
-# <a name="learn-how-to-use-deployment-manifests-to-deploy-modules-and-establish-routes"></a>Zjistěte, jak můžete nasadit moduly a vytvářet manifesty nasazení
+# <a name="learn-how-to-deploy-modules-and-establish-routes-in-iot-edge"></a>Zjistěte, jak nasadit moduly a vytvářet ve službě IoT Edge
 
-Každé zařízení IoT Edge běží aspoň dva moduly: $edgeAgent a $edgeHub, které tvoří modul runtime IoT Edge. Kromě těchto dvou standardní libovolného zařízení IoT Edge můžete spustit více modulů k provedení libovolného počtu procesů. Při nasazování těchto modulů do zařízení najednou, budete potřebovat způsob, jak deklarovat, které moduly jsou zahrnuty a jejich vzájemné interakce mezi sebou. 
+Každé zařízení IoT Edge běží aspoň dva moduly: $edgeAgent a $edgeHub, které tvoří modul runtime IoT Edge. Kromě toho libovolného zařízení IoT Edge můžete spustit více modulů k provedení libovolného počtu procesů. Při nasazování těchto modulů do zařízení najednou, budete potřebovat způsob, jak deklarovat, které moduly jsou zahrnuty a jejich vzájemné interakce mezi sebou. 
 
 *Manifest nasazení* je dokument JSON, který popisuje:
 
@@ -27,7 +27,7 @@ Každé zařízení IoT Edge běží aspoň dva moduly: $edgeAgent a $edgeHub, k
 
 Všechna zařízení IoT Edge je potřeba nakonfigurovat s manifestem nasazení. Nově instalovaný modul runtime IoT Edge sestavy kód chyby, dokud nebude nakonfigurován s platným manifestem. 
 
-V kurzech Azure IoT Edge sestavení manifestu nasazení prostřednictvím Průvodce na portálu Azure IoT Edge. Můžete také použít manifest nasazení prostřednictvím kódu programu pomocí REST nebo sady SDK služby IoT Hub. Další informace najdete v tématu [vysvětlení nasazení IoT Edge][lnk-deploy].
+V kurzech Azure IoT Edge sestavení manifestu nasazení prostřednictvím Průvodce na portálu Azure IoT Edge. Můžete také použít manifest nasazení prostřednictvím kódu programu pomocí REST nebo sady SDK služby IoT Hub. Další informace najdete v tématu [vysvětlení nasazení IoT Edge](module-deployment-monitoring.md).
 
 ## <a name="create-a-deployment-manifest"></a>Vytvoření manifestu nasazení
 
@@ -138,7 +138,7 @@ Zdroj Určuje, odkud pochází zprávy. Může být některý z následujících
 | `/messages/modules/{moduleId}/outputs/{output}` | Všechny zprávy typu zařízení cloud odeslané s použitím {moduleId} {výstupní} |
 
 ### <a name="condition"></a>Podmínka
-Podmínka je volitelné v deklaraci trasy. Pokud chcete předat všechny zprávy z jímka ke zdroji, nechte **kde** klauzule úplně. Nebo můžete použít [dotazovací jazyk služby IoT Hub] [ lnk-iothub-query] k filtrování pro určité zprávy nebo typy zpráv, které splňují zadanou podmínku.
+Podmínka je volitelné v deklaraci trasy. Pokud chcete předat všechny zprávy z jímka ke zdroji, nechte **kde** klauzule úplně. Nebo můžete použít [dotazovací jazyk služby IoT Hub](../iot-hub/iot-hub-devguide-routing-query-syntax.md) k filtrování pro určité zprávy nebo typy zpráv, které splňují zadanou podmínku.
 
 Zprávy, které se předají mezi moduly ve službě IoT Edge jsou formátovány stejně jako zprávy, které předávají mezi zařízeními a Azure IoT Hub. Všechny zprávy jsou formátovány jako dokumenty JSON a mít **systemProperties**, **objekt appProperties**, a **tělo** parametry. 
 
@@ -262,10 +262,4 @@ Tento příklad dokumentu JSON manifestu nasazení.
 
 * Úplný seznam vlastností, které mohou nebo musí být součástí $edgeAgent a $edgeHub, naleznete v tématu [vlastnosti agenta Edge a Centrum Edge](module-edgeagent-edgehub.md).
 
-* Teď, když víte, jak se používají moduly IoT Edge, [pochopení požadavků a nástroje pro vývoj modulů IoT Edge][lnk-module-dev].
-
-[lnk-deploy]: module-deployment-monitoring.md
-[lnk-iothub-query]: ../iot-hub/iot-hub-devguide-routing-query-syntax.md
-[lnk-docker-create-options]: https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate
-[lnk-docker-logging-options]: https://docs.docker.com/engine/admin/logging/overview/
-[lnk-module-dev]: module-development.md
+* Teď, když víte, jak se používají moduly IoT Edge, [pochopení požadavků a nástroje pro vývoj modulů IoT Edge](module-development.md).

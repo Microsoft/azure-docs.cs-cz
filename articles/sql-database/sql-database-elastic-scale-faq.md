@@ -3,7 +3,7 @@ title: Pružné škálování Azure SQL – nejčastější dotazy | Dokumentace
 description: Nejčastější dotazy ohledně pružné škálování Azure SQL Database.
 services: sql-database
 ms.service: sql-database
-subservice: elastic-scale
+ms.subservice: elastic-scale
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/05/2018
-ms.openlocfilehash: d4840c155439efb22cc5f068afb0635e72b97e91
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 31501cb0cc66c9d8db646e3cf0c75cc3d8daf7e0
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48868373"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50242530"
 ---
 # <a name="elastic-database-tools-frequently-asked-questions-faq"></a>Nejčastější dotazy (FAQ) nástrojů pro elastické databáze
 

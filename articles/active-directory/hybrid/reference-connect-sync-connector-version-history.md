@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 03/22/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 95f2ffb1a51184f1194f87a4a5e9a54e682edf80
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: cbafe7fcdf2ccd515dfec5554c93bec9c7f3537a
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46312001"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50243159"
 ---
 # <a name="connector-version-release-history"></a>Historie vydaných verzí konektoru
 Konektory pro Forefront Identity Manager (FIM) a Microsoft Identity Manageru (MIM) se často aktualizují.
@@ -98,7 +98,7 @@ Související odkazy:
 * Obecný webových služeb:
   * Nástroj Wsconfig nepřevádět správně pole Json z "ukázkové žádosti" pro metodu služby REST. Problémy s serializace důvodem toto pole Json pro požadavek REST.
   * Webové služby konektoru konfigurační nástroj nepodporuje využití místa na symboly v názvech atributů JSON 
-    * Vzoru pro nahrazení můžete ručně přidat do souboru WSConfigTool.exe.config, například ```<appSettings> <add key=”JSONSpaceNamePattern” value="__" /> </appSettings>```
+    * Vzoru pro nahrazení můžete ručně přidat do souboru WSConfigTool.exe.config, například ```<appSettings> <add key="JSONSpaceNamePattern" value="__" /> </appSettings>```
 > [!NOTE]
 > JSONSpaceNamePattern klíč je vyžadován při exportu se zobrazí následující chyba: zpráva: prázdný název není platný. 
 
@@ -143,7 +143,7 @@ Vydáno. března 2017
 ### <a name="enhancements"></a>Vylepšení
 
 * Obecný konektor SQL:</br>
-  **Scénář příznaky:** je dobře známé omezení týkajícího se konektor SQL, kde jsme pouze povolit odkaz na jeden typ objektu a vyžadují křížový odkaz se členy. </br>
+  **Scénář příznaky:**   je dobře známé omezení týkajícího se konektor SQL, kde jsme pouze povolit odkaz na jeden typ objektu a vyžadují křížový odkaz se členy. </br>
   **Popis řešení:** v kroku zpracování pro odkazy byly "*" je zvolena možnost, všechny kombinace typů objektů se vrátí zpět do modulu synchronizace.
 
 >[!Important]

@@ -10,12 +10,12 @@ ms.date: 08/31/2018
 ms.service: key-vault
 ms.workload: identity
 ms.topic: conceptual
-ms.openlocfilehash: 9b0600a7afb07600116440461037c7abcb9236de
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 6e0029e051e418bc54471284547329a0b0a2e9cd
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49404320"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50246650"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Koncové body služeb virtuální sítě pro Azure Key Vault
 
@@ -44,7 +44,7 @@ Tady jsou kroky potřebnými ke konfiguraci brány firewall a virtuální sítě
 Odkazovat na [virtuálních sítí a konfigurace Azure Key Vault firewallů](key-vault-network-security.md) podrobné pokyny.
 
 > [!IMPORTANT]
-> Jakmile se pravidla brány firewall jsou v podstatě všechny služby Key Vault [rovina dat](../key-vault/key-vault-secure-your-key-vault.md#data-plane-access-control) operace lze provádět pouze, když volající požadavky pocházejí z povolených virtuálních sítí nebo rozsahy adres IPV4. To platí i pro přístup k trezoru klíčů z webu Azure portal. Když uživatel může prohlížeče do trezoru klíčů z webu Azure portal, se nebudou moct seznam klíčů/tajných kódů a certifikátů Pokud klientském počítači se nenachází v seznamu povolených aplikací. To ovlivňuje také výběr trezoru klíč pomocí dalších služeb Azure. Uživatelé moci zobrazit seznam trezorů klíčů, ale v seznamu klíčů, je-li zabránit pravidla brány firewall na klientském počítači.
+> Jakmile se pravidla brány firewall jsou v podstatě všechny služby Key Vault [rovina dat](../key-vault/key-vault-secure-your-key-vault.md#data-plane-access-control) operace lze provádět pouze, když volající požadavky pocházejí z povolených virtuálních sítí nebo rozsahy adres IPV4. (Další informace o rovině dat vs roviny správy najdete [to](../key-vault/key-vault-secure-your-key-vault.md#management-plane-access-control) to platí i pro přístup k trezoru klíčů z webu Azure portal. Když uživatel může prohlížeče do trezoru klíčů z webu Azure portal, se nebudou moct seznam klíčů/tajných kódů a certifikátů Pokud klientském počítači se nenachází v seznamu povolených aplikací. To ovlivňuje také výběr trezoru klíč pomocí dalších služeb Azure. Uživatelé moci zobrazit seznam trezorů klíčů, ale v seznamu klíčů, je-li zabránit pravidla brány firewall na klientském počítači.
 
 
 > [!NOTE]

@@ -7,16 +7,17 @@ ms.subservice: performance
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
+author: danimir
 ms.author: v-daljep
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 10/05/2018
-ms.openlocfilehash: 02fae39325e632c087fcd2969fbaf5dd705994ba
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 23d696971d49210479c675a0f3e2a0a85d1e8b3b
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48867636"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50241119"
 ---
 # <a name="enable-automatic-tuning-to-monitor-queries-and-improve-workload-performance"></a>Povolení automatického ladění monitorování dotazů a zlepšit výkon úloh
 
@@ -65,7 +66,7 @@ Mějte prosím na paměti, že možnost DROP_INDEX v tuto chvíli není kompatib
 
 Jakmile vyberete požadovanou konfiguraci, klikněte na tlačítko **použít**.
 
-### <a name="rest-api"></a>Rest API
+### <a name="rest-api"></a>Rozhraní REST API
 
 Další informace o použití rozhraní REST API k povolení automatického ladění na jednu databázi, naleznete v tématu [automatického ladění metody UPDATE a GET HTTP SQL Database](https://docs.microsoft.com/rest/api/sql/databaseautomatictuning).
 

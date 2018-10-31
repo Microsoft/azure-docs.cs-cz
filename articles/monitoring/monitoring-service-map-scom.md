@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2017
 ms.author: bwren;dairwin
-ms.openlocfilehash: 6fc6afa9c0ccbddcfa408556dee92618fe63c8fb
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: b9146bfc284a469f12eb626c2434f4afe52335dc
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49407108"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50250432"
 ---
 # <a name="service-map-integration-with-system-center-operations-manager"></a>Řešení Service Map integrace s nástrojem System Center Operations Manager
   > [!NOTE]
@@ -53,19 +53,19 @@ Pokud chcete nakonfigurovat integraci řešení Service Map, postupujte takto:
 
 1. Chcete-li spustit Průvodce konfigurací v **Přehled služby mapy** podokně klikněte na tlačítko **přidat pracovní prostor**.  
 
-    ![Podokno přehled mapy služeb](media/monitoring-service-map/scom-configuration.png)
+    ![Podokno přehled mapy služeb](media/monitoring-service-map-scom/scom-configuration.png)
 
 2. V **konfigurace připojení** okno, zadejte název klienta nebo ID, ID aplikace (označované také jako uživatelské jméno nebo ID klienta) a heslo instančního objektu a pak klikněte na tlačítko **Další**. Další informace najdete v části [vytvoření instančního objektu](#creating-a-service-principal).
 
-    ![Okno Konfigurace připojení](media/monitoring-service-map/scom-config-spn.png)
+    ![Okno Konfigurace připojení](media/monitoring-service-map-scom/scom-config-spn.png)
 
 3. V **výběr předplatného** okna, vyberte předplatné Azure, skupinu prostředků Azure (ten, který obsahuje tento pracovní prostor Log Analytics) a pracovní prostor Log Analytics a pak klikněte na tlačítko **Další**.
 
-    ![Pracovní prostor Operations Manageru konfigurace](media/monitoring-service-map/scom-config-workspace.png)
+    ![Pracovní prostor Operations Manageru konfigurace](media/monitoring-service-map-scom/scom-config-workspace.png)
 
 4. V **výběr skupiny počítačů** okna, vyberte skupiny počítačů mapy které služby chcete synchronizovat do nástroje Operations Manager. Klikněte na tlačítko **přidat nebo odebrat skupiny počítačů**, vyberte ze seznamu skupin **dostupné skupiny počítačů**a klikněte na tlačítko **přidat**.  Když jste hotovi s výběrem skupin, klikněte na tlačítko **Ok** na dokončení.
     
-    ![Skupiny počítačů Configuration Manager Operations](media/monitoring-service-map/scom-config-machine-groups.png)
+    ![Skupiny počítačů Configuration Manager Operations](media/monitoring-service-map-scom/scom-config-machine-groups.png)
     
 5. V **výběr serveru** okně Konfigurovat skupinu serverů Service Map se servery, které chcete synchronizovat mezi nástrojem Operations Manager a Service Map. Klikněte na tlačítko **přidat nebo odebrat servery**.   
     
@@ -75,36 +75,36 @@ Pokud chcete nakonfigurovat integraci řešení Service Map, postupujte takto:
     * Spravuje řešení Service Map
     * Uveden ve skupině serverů Service Map
 
-    ![Skupina konfigurace Operations Manageru](media/monitoring-service-map/scom-config-group.png)
+    ![Skupina konfigurace Operations Manageru](media/monitoring-service-map-scom/scom-config-group.png)
 
 6. Volitelné: Vyberte fond zdrojů serveru pro správu komunikovat s Log Analytics a potom klikněte na tlačítko **přidat pracovní prostor**.
 
-    ![Fond zdrojů Configuration Manager Operations](media/monitoring-service-map/scom-config-pool.png)
+    ![Fond zdrojů Configuration Manager Operations](media/monitoring-service-map-scom/scom-config-pool.png)
 
     Může trvat minutu konfigurace a registrace v pracovním prostoru Log Analytics. Po dokončení konfigurace nástroje Operations Manager inicializuje první synchronizace Service Map.
 
-    ![Fond zdrojů Configuration Manager Operations](media/monitoring-service-map/scom-config-success.png)
+    ![Fond zdrojů Configuration Manager Operations](media/monitoring-service-map-scom/scom-config-success.png)
 
 
 ## <a name="monitor-service-map"></a>Monitor Service Map
 Po připojení pracovního prostoru Log Analytics novou složku Service Map se zobrazí v **monitorování** podokně konzole nástroje Operations Manager.
 
-![V podokně monitorování nástroje Operations Manager](media/monitoring-service-map/scom-monitoring.png)
+![V podokně monitorování nástroje Operations Manager](media/monitoring-service-map-scom/scom-monitoring.png)
 
 Složka řešení Service Map má čtyři uzly:
 * **Aktivní výstrahy**: Zobrazuje seznam všech aktivních výstrah o komunikaci mezi nástrojem Operations Manager a Service Map.  Všimněte si, že se tato upozornění Log Analytics výstrahy, synchronizuje do nástroje Operations Manager. 
 
 * **Servery**: jsou monitorované servery, které jsou nakonfigurovány k synchronizaci ze služeb Service Map.
 
-    ![V podokně monitorování servery nástroje Operations Manager](media/monitoring-service-map/scom-monitoring-servers.png)
+    ![V podokně monitorování servery nástroje Operations Manager](media/monitoring-service-map-scom/scom-monitoring-servers.png)
 
 * **Zobrazení závislostí skupin počítačů**: jsou uvedeny všechny skupiny počítačů, které jsou synchronizované z řešení Service Map. Klikněte na možnost žádné skupiny k zobrazení jeho diagramu distribuované aplikace.
 
-    ![Diagramu distribuované aplikace Operations Manageru](media/monitoring-service-map/scom-group-dad.png)
+    ![Diagramu distribuované aplikace Operations Manageru](media/monitoring-service-map-scom/scom-group-dad.png)
 
 * **Zobrazení závislostí serveru**: Vypíše všechny servery, které jsou synchronizované z řešení Service Map. Můžete kliknout na libovolný server zobrazíte jeho diagramu distribuované aplikace.
 
-    ![Diagramu distribuované aplikace Operations Manageru](media/monitoring-service-map/scom-dad.png)
+    ![Diagramu distribuované aplikace Operations Manageru](media/monitoring-service-map-scom/scom-dad.png)
 
 ## <a name="edit-or-delete-the-workspace"></a>Upravit nebo odstranit pracovní prostor
 Můžete upravit nebo odstranit nakonfigurovaný pracovní prostor prostřednictvím **Přehled služby mapy** podokně (**správu** podokně > **Operations Management Suite**  >  **Service Map**).
@@ -114,12 +114,12 @@ Můžete upravit nebo odstranit nakonfigurovaný pracovní prostor prostřednict
 
 Teď můžete nakonfigurovat pouze jeden pracovní prostor Log Analytics.
 
-![V podokně pracovní prostor Operations Manageru upravit](media/monitoring-service-map/scom-edit-workspace.png)
+![V podokně pracovní prostor Operations Manageru upravit](media/monitoring-service-map-scom/scom-edit-workspace.png)
 
 ## <a name="configure-rules-and-overrides"></a>Konfigurace pravidla a přepsání
 Pravidlo, _Microsoft.SystemCenter.ServiceMapImport.Rule_, vytvoření pravidelně načítat informace z řešení Service Map. Chcete-li změnit synchronizace časování, můžete nakonfigurovat přepsání pravidla (**Authoring** podokně > **pravidla** > **Microsoft.SystemCenter.ServiceMapImport.Rule**) .
 
-![V okně Vlastnosti přepsání Operations Manageru](media/monitoring-service-map/scom-overrides.png)
+![V okně Vlastnosti přepsání Operations Manageru](media/monitoring-service-map-scom/scom-overrides.png)
 
 * **Povolené**: Povolí nebo zakáže automatické aktualizace. 
 * **IntervalMinutes**: resetování času mezi aktualizacemi. Výchozí interval je jedna hodina. Pokud chcete synchronizovat server mapy častěji, můžete změnit hodnotu.

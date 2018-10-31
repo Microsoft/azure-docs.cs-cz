@@ -2,19 +2,19 @@
 title: Vazeb Microsoft Graphu, Azure functions
 description: Naučte se používat Microsoft Graphu triggerů a vazeb ve službě Azure Functions.
 services: functions
-author: mattchenderson
+author: craigshoemaker
 manager: jeconnoc
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/20/2017
-ms.author: mahender
-ms.openlocfilehash: 04786ce69b880abcd5508b9653d9ff30efcc187c
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.author: cshoe
+ms.openlocfilehash: fa429553caf874dd634944a5fca6cd9283194bb4
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50087215"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50251103"
 ---
 # <a name="microsoft-graph-bindings-for-azure-functions"></a>Vazeb Microsoft Graphu, Azure functions
 
@@ -352,7 +352,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 |**userId**|**ID uživatele**  |Potřebné pokud a pouze v případě _identity_ je nastavena na `userFromId`. ID objektu zabezpečení uživatele přidružené k dříve přihlášenému uživateli.|
 |**userToken**|**UserToken**|Potřebné pokud a pouze v případě _identity_ je nastavena na `userFromToken`. Token platný pro danou aplikaci funkcí. |
 |**Cesta**|**Cesta**|Požadovaná: cesta k Excelovému sešitu ve Onedrivu.|
-|**worksheetName**|**WorksheetName**|List, ve kterém se nachází tabulka.|
+|**worksheetName**|**WorksheetName**|List, ve kterém se nachází tabulka|
 |**tableName**|**TableName**|Název tabulky. Pokud není zadán, použije se obsah listu.|
 
 <a name="excel-input-code"></a>
@@ -361,7 +361,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 Tato vazba vyžaduje následující oprávnění Azure AD:
 |Prostředek|Oprávnění|
 |--------|--------|
-|Microsoft Graph|Čtení souborů uživatele|
+|Microsoft Graph|Umožňuje získat oprávnění ke čtení souborů uživatelů.|
 
 Vazba zveřejňuje následující typy funkcí .NET:
 - [String []]
@@ -513,7 +513,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 |**ID uživatele** |**userId** |Potřebné pokud a pouze v případě _identity_ je nastavena na `userFromId`. ID objektu zabezpečení uživatele přidružené k dříve přihlášenému uživateli.|
 |**userToken**|**UserToken**|Potřebné pokud a pouze v případě _identity_ je nastavena na `userFromToken`. Token platný pro danou aplikaci funkcí. |
 |**Cesta**|**Cesta**|Požadovaná: cesta k Excelovému sešitu ve Onedrivu.|
-|**worksheetName**|**WorksheetName**|List, ve kterém se nachází tabulka.|
+|**worksheetName**|**WorksheetName**|List, ve kterém se nachází tabulka|
 |**tableName**|**TableName**|Název tabulky. Pokud není zadán, použije se obsah listu.|
 |**updateType**|**UpdateType**|Požadovaná: typ změny, která se provede v tabulce. Může být jedna z následujících hodnot:<ul><li><code>update</code> -Nahradí obsah tabulky na Onedrivu.</li><li><code>append</code> -Přidá datová část na konec tabulky na Onedrivu vytvořením nových řádků.</li></ul>|
 
@@ -523,7 +523,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 Tato vazba vyžaduje následující oprávnění Azure AD:
 |Prostředek|Oprávnění|
 |--------|--------|
-|Microsoft Graph|Mít úplný přístup k souborům uživatele|
+|Microsoft Graph|Úplný přístup k souborům uživatele|
 
 Vazba zveřejňuje následující typy funkcí .NET:
 - [String []]
@@ -665,7 +665,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 Tato vazba vyžaduje následující oprávnění Azure AD:
 |Prostředek|Oprávnění|
 |--------|--------|
-|Microsoft Graph|Čtení souborů uživatele|
+|Microsoft Graph|Umožňuje získat oprávnění ke čtení souborů uživatelů.|
 
 Vazba zveřejňuje následující typy funkcí .NET:
 - Byte
@@ -812,7 +812,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 Tato vazba vyžaduje následující oprávnění Azure AD:
 |Prostředek|Oprávnění|
 |--------|--------|
-|Microsoft Graph|Mít úplný přístup k souborům uživatele|
+|Microsoft Graph|Úplný přístup k souborům uživatele|
 
 Vazba zveřejňuje následující typy funkcí .NET:
 - Byte

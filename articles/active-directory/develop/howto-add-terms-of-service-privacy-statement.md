@@ -16,12 +16,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviwer: lenalepa, sureshja
 ms.custom: aaddev
-ms.openlocfilehash: 21cd4990e2117cef2d36fa2607a601afd1a4c4e4
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 2195a43665f99e8388b13fc6dc3e528496bd3901
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46990497"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50242683"
 ---
 # <a name="terms-of-service-and-privacy-statement-for-registered-azure-active-directory-apps"></a>Podmínky služby a o ochraně osobních údajů pro registrované aplikace Azure Active Directory
 
@@ -43,7 +43,7 @@ Následující příklady ukazují uživatel souhlas prostředí, když jsou nak
 
 Předtím, než přidáte odkazy na vaší aplikace podmínky služby a o ochraně osobních údajů příkaz dokumenty, ujistěte se, že adresy URL, postupujte podle následujících pokynů.
 
-| Obecné zásady     | Popis                           |
+| Pokyn     | Popis                           |
 |---------------|---------------------------------------|
 | Formát        | Platná adresa URL.                             |
 | Platná schémata | Protokoly HTTP a HTTPS</br>Doporučujeme, abyste HTTPS |
@@ -64,7 +64,7 @@ Jakmile jsou připravené podmínkami služby a o ochraně osobních údajů, m�
 
 Pokud jste vaši aplikaci zaregistrovali na webu Azure portal, postupujte podle těchto kroků.
 
-1. Přihlaste se k [webu Azure portal](https://portal.azure.com/).
+1. Přihlaste se na  [Azure Portal](https://portal.azure.com/).
 2. Přejděte **registrace aplikací** části a vyberte svou aplikaci.
 3. Otevřít **vlastnosti** části aplikace.
 4. Vyplňte **URL podmínek služby** a **adresa URL prohlášení o ochraně osobních údajů** pole.
@@ -89,8 +89,8 @@ Pokud chcete upravit aplikaci objekt JSON přímo, vám pomůže editoru manifes
 
 ```json
     "informationalUrls": { 
-        "termsOfService": “<your_terms_of_service_url>”, 
-        "privacy": “<your_privacy_statement_url>” 
+        "termsOfService": "<your_terms_of_service_url>", 
+        "privacy": "<your_privacy_statement_url>" 
     }
 ```
 

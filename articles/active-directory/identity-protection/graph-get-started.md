@@ -17,12 +17,12 @@ ms.date: 10/26/2018
 ms.author: markvi
 ms.reviewer: nigu
 ms.custom: seohack1
-ms.openlocfilehash: eefbfcf741db3d0949910bc5da8494e087c39ec7
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 3cbded3224e7622d13e7af362cb3532a1813787e
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50139142"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50242156"
 ---
 # <a name="get-started-with-azure-active-directory-identity-protection-and-microsoft-graph"></a>Začínáme s Azure Active Directory Identity Protection a Microsoft Graph
 Microsoft Graph je Microsoft unified koncový bod rozhraní API a Domovská [Azure Active Directory Identity Protection](../active-directory-identityprotection.md) rozhraní API. Prvního rozhraní API, **identityRiskEvents**, umožňuje dotazů Microsoft Graphu seznam [rizikových událostí](../reports-monitoring/concept-risk-events.md) a související informace. Tento článek vám pomůže začít dotazování toto rozhraní API. Důkladný úvod, úplnou dokumentaci a přístup ke Graph Exploreru, najdete v článku [webu Microsoft Graphu](https://graph.microsoft.io/).
@@ -173,7 +173,7 @@ Pokud chcete ověřit, odeslat požadavek post do `https://login.microsoft.com` 
 Pokud je úspěšná, vrátí ověřovací token.  
 Pro volání rozhraní API, vytvořte hlavičku s následující parametr:
 
-    `Authorization`=”<token_type> <access_token>"
+    `Authorization`="<token_type> <access_token>"
 
 
 Při ověřování, můžete najít typ tokenu a tokenu v vráceného tokenu.

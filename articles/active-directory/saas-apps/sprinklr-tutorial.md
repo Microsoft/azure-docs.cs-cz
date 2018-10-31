@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/10/2017
 ms.author: jeedes
-ms.openlocfilehash: e2dc9b7e7cf5964c36b21418a0162c1c2ef92dc8
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: b5f240091cf5ce9331ada818c218db04f508dbc8
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39430177"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50241799"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sprinklr"></a>Kurz: Integrace Azure Active Directory se službou Sprinklr
 
@@ -37,7 +37,7 @@ Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, 
 
 Konfigurace integrace Azure AD s Sprinklr, potřebujete následující položky:
 
-- S předplatným služby Azure AD
+- Předplatné Azure AD
 - Sprinklr jednotného přihlašování povolená předplatného
 
 > [!NOTE]
@@ -59,7 +59,7 @@ Konfigurace integrace Sprinklr do služby Azure AD, budete muset přidat Sprinkl
 
 **Chcete-li přidat Sprinklr z galerie, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Active Directory][1]
 
@@ -161,7 +161,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     h. Vložit **odhlašování URL** hodnotu, která jste zkopírovali z portálu Azure Portal do **odhlašovací adresa URL zprostředkovatele Identity** textového pole.
      
-    i. Jako **typ ID uživatele SAML**vyberte **kontrolní výraz obsahuje uživatele "uživatelské jméno s sprinklr.com**.
+    i. Jako **typ ID uživatele SAML**vyberte **kontrolní výraz obsahuje uživatelské jméno sprinklr.com**.
 
     j. Jako **umístění ID uživatele SAML**vyberte **ID uživatele není v elementu identifikátor názvu subjektu příkazu**.
 

@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/27/2018
+ms.date: 10/29/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: d80e7bc1d391d9b5bfd718ca2dc0e9dc7ecb2268
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 38a8cd35d123f58d6379ade4d900e86b36b416ec
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50210869"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50240133"
 ---
 # <a name="azure-stack-1809-update"></a>Aktualizace služby Azure Stack 1809
 
@@ -39,7 +39,7 @@ Tento článek popisuje obsah balíčku 1809 aktualizace. Balíček aktualizace 
 
 Tato aktualizace zahrnuje následující vylepšení pro službu Azure Stack:
 
-- V této verzi služby Azure Stack integrované systémy podporuje konfigurace 4 až 16 uzlů.
+- V této verzi služby Azure Stack integrované systémy podporuje konfigurace 4 až 16 uzlů. Můžete použít [Azure Stack Capacity Planner](http://aka.ms/azstackcapacityplanner) vám pomůžou při plánování kapacity služby Azure Stack a konfigurace.
 
 - <!--  2712869   | IS  ASDK -->  **Klient služby Azure Stack syslog (obecná dostupnost)** tento klient umožňuje předávání auditů, upozornění a protokoly zabezpečení spojených s infrastrukturou Azure Stack na syslog serveru nebo zabezpečení informací a událostí (SIEM) software pro správu externí do služby Azure Stack. Klient syslog nyní podporuje určující port, na kterém naslouchá syslog server.
 

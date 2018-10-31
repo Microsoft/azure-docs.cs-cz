@@ -16,12 +16,12 @@ ms.date: 10/20/2018
 ms.author: celested
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 3b41436ffae2f5761b1917af3048327b90952b78
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: eaaeaf1b37c0d732d8d0009ad5a66f2118674b66
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49470950"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50240450"
 ---
 # <a name="signing-key-rollover-in-azure-active-directory"></a>Výměna podpisových klíčů ve službě Azure Active Directory
 Tento článek popisuje, co potřebujete vědět o veřejných klíčů, které se používají ve službě Azure Active Directory (Azure AD) k podepisování tokenů zabezpečení. Je důležité si uvědomit, že tyto výměny klíčů a v pravidelných intervalech a ve stavu nouze, může být převracet okamžitě. Všechny aplikace, které používají službu Azure AD by možné programově zpracovávat procesu výměny klíčů nebo vytvořit proces periodické ruční výměna. Pokračujte ve čtení pochopit, jak fungují klíče, jak posoudit dopad efekt přechodu do vaší aplikace a jak aktualizovat vaše aplikace nebo vytvoření procesu periodické ruční výměna zpracování výměny klíčů, v případě potřeby.
@@ -285,7 +285,7 @@ Postupujte podle kroků níže. Tím ověříte, že funguje logiky výměny kl�
             <add thumbprint="3A38FA984E8560F19AADC9F86FE9594BB6AD049B" />
           </keys>
    ```
-2. V **<add thumbprint=””>** změňte hodnotu kryptografického otisku nahrazením libovolný znak jiný. Uložit **Web.config** souboru.
+2. V **<add thumbprint="">** změňte hodnotu kryptografického otisku nahrazením libovolný znak jiný. Uložit **Web.config** souboru.
 3. Sestavení aplikace a pak ho spusťte. Pokud dokončíte proces přihlašování, vaše aplikace úspěšně aktualizuje klíč stažením požadované informace z vašeho adresáře dokumentu federačních metadat. Pokud máte potíže s přihlášením, zkontrolujte změny v aplikaci jsou správné načtením [přidání přihlašování do vaší webové aplikace pomocí Azure AD](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect) článku, nebo stahování a zkontrolujete následující ukázka kódu: [ Víceklientské cloudové aplikace pro službu Azure Active Directory](https://code.msdn.microsoft.com/multi-tenant-cloud-8015b84b).
 
 ### <a name="vs2010"></a>Technologie Windows Identity Foundation (WIF) verze 1.0 pro rozhraní .NET 3.5 a webových aplikací chrání prostředky a vytvořené pomocí sady Visual Studio 2008 nebo 2010

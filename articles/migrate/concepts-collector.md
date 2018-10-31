@@ -4,15 +4,15 @@ description: Poskytuje informace o zařízení Kolektoru ve službě Azure Migra
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 10/24/2018
+ms.date: 10/30/2018
 ms.author: snehaa
 services: azure-migrate
-ms.openlocfilehash: 006a246323e9f82ea9c9a6a2940ed624d7e44e13
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 81e6731068db84f02073f02c49bea9a8fb7c7c70
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49986774"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50241187"
 ---
 # <a name="about-the-collector-appliance"></a>Informace o zařízení Kolektoru
 
@@ -20,6 +20,38 @@ ms.locfileid: "49986774"
 
 Azure Migrate Collector je zjednodušené zařízení, který slouží ke zjištění serveru vCenter v místním prostředí pro účely posouzení s [Azure Migrate](migrate-overview.md) service, před migrací do Azure.  
 
+## <a name="discovery-methods"></a>Metody zjišťování
+
+Existují dvě možnosti pro zařízení Kolektoru, jednorázově nebo průběžná zjišťování.
+
+### <a name="one-time-discovery"></a>Jednorázové zjišťování
+
+Zařízení Kolektoru komunikuje jednorázově do systému vCenter Server ke shromažďování metadat virtuální počítače. Pomocí této metody:
+
+- Zařízení není nepřetržitě připojeny k projektu Azure Migrate.
+- Změny v místním prostředí se neprojeví v Azure Migrate po dokončení zjišťování. Tak, aby odrážela všechny změny, budete muset znovu zjišťovat stejné prostředí, ve stejném projektu.
+- Při shromažďování dat výkonu pro virtuální počítač, na zařízení se spoléhá na výkon historických dat uložených v systému vCenter Server. Shromažďuje historie výkonu za poslední měsíc.
+- Historická data výkonu kolekce budete muset nastavení statistiky v systému vCenter Server na úrovni 3. Po nastavení úrovně na tři, budete muset počkat aspoň jeden den pro vCenter pro shromažďování čítačů výkonu. Proto doporučujeme, abyste spustili zjišťování po aspoň jeden den. Pokud chcete posoudit prostředí na základě 1 týden nebo 1 měsíc dat výkonu, budete muset počkat odpovídajícím způsobem.
+- Tato metoda zjišťování Azure Migrate shromažďuje průměrnou čítače pro každou metriku (spíše než čítače ve špičce), které mohou způsobit snížení velikosti. Doporučujeme použít možnost průběžná zjišťování získat přesnější výsledky změny velikosti.
+
+### <a name="continuous-discovery"></a>Průběžné zjišťování
+
+Zařízení Kolektoru je trvalým připojením k projektu Azure Migrate a průběžně shromažďuje údaje o výkonu virtuálních počítačů.
+
+- Kolektor průběžně profily v místním prostředí pro shromažďování dat o využití v reálném čase každých 20 sekund.
+- Zařízení shrnuje ukázky 20 sekund a vytvoří jeden datový bod každých 15 minut.
+- Tato data vytváří bod zařízení vybere nejvyšší hodnotu z 20 sekund vzorků a odešle ji do Azure.
+- Tento model nejsou závislé na nastavení statistiky vCenter Server ke shromažďování dat výkonu.
+- Můžete zastavit průběžné profilování v kdykoli z kolekce.
+
+Mějte na paměti, že zařízení shromažďuje data o výkonu pouze průběžně a nezjistí žádné změny konfigurace v místním prostředí (tj. přidání nebo odstranění virtuálního počítače, přidání disku atd.). Pokud dojde ke změně konfigurace v místním prostředí, následujícím způsobem můžete zajistit, že se změny projeví na portálu:
+
+- Přidání položek (virtuální počítače, disky, jádra atd.): Pokud chcete, aby se tyto změny projevily na webu Azure Portal, můžete na zařízení zastavit zjišťování a pak ho spustit znovu. Tím se zajistí, že se změny aktualizují v projektu Azure Migrate.
+
+- Odstranění virtuálních počítačů: Vzhledem ke způsobu, jakým je zařízení navržené, se odstranění virtuálních počítačů neprojeví ani v případě, že zastavíte a znovu spustíte zjišťování. Důvodem je, že se data z dalších zjišťování připojují ke starším zjišťováním, a nepřepisují se. V takovém případě můžete virtuální počítač na portálu jednoduše ignorovat tak, že ho odeberete ze své skupiny a přepočítáte posouzení.
+
+> [!NOTE]
+> Průběžná zjišťování funkce je ve verzi preview. Doporučujeme používat tuto metodu, protože shromažďuje podrobná data o výkonu a ve výsledku poskytuje přesné určení správné velikosti.
 
 ## <a name="deploying-the-collector"></a>Nasazení Kolektoru
 
@@ -163,43 +195,6 @@ Kolekce můžete upgradovat na nejnovější verzi bez stáhnout soubor OVA znov
 3. Soubor zip zkopírujte do Azure migrovat virtuální počítač kolektoru (zařízení kolektoru).
 4. Klikněte pravým tlačítkem na soubor zip a vyberte Extrahovat vše.
 5. Klikněte pravým tlačítkem na Setup.ps1 a vyberte spustit s prostředím PowerShell a postupujte podle pokynů na obrazovce instalace aktualizace.
-
-
-## <a name="discovery-methods"></a>Metody zjišťování
-
-Existují dvě metody, které zařízení Kolektoru lze použít pro zjišťování, jednorázově nebo průběžná zjišťování.
-
-
-### <a name="one-time-discovery"></a>Jednorázové zjišťování
-
-Komunikuje se jednorázově do systému vCenter Server ke shromažďování metadat virtuální počítače kolektor. Pomocí této metody:
-
-- Zařízení není nepřetržitě připojeny k projektu Azure Migrate.
-- Změny v místním prostředí se neprojeví v Azure Migrate po dokončení zjišťování. Tak, aby odrážela všechny změny, budete muset znovu zjišťovat stejné prostředí, ve stejném projektu.
-- Tato metoda zjišťování budete muset nastavení statistiky v systému vCenter Server na úrovni 3.
-- Po nastavení úrovně na tři, to trvá až jeden den generovat čítače výkonu. Proto doporučujeme, abyste spustili zjišťování po jeden den.
-- Při shromažďování dat výkonu pro virtuální počítač, na zařízení se spoléhá na výkon historických dat uložených v systému vCenter Server. Shromažďuje historie výkonu za poslední měsíc.
-- Azure Migrate shromažďuje průměrnou čítače (spíše než čítače ve špičce) pro jednotlivé metriky, což může vést ke snížení velikosti.
-
-### <a name="continuous-discovery"></a>Průběžné zjišťování
-
-Zařízení Kolektoru je trvalým připojením k projektu Azure Migrate a průběžně shromažďuje údaje o výkonu virtuálních počítačů.
-
-- Kolektor průběžně profily v místním prostředí pro shromažďování dat o využití v reálném čase každých 20 sekund.
-- Tento model nejsou závislé na nastavení statistiky vCenter Server ke shromažďování dat výkonu.
-- Zařízení shrnuje ukázky 20 sekund a vytvoří jeden datový bod každých 15 minut.
-- Tato data vytváří bod zařízení vybere nejvyšší hodnotu z 20 sekund vzorků a odešle ji do Azure.
-- Můžete zastavit průběžné profilování v kdykoli z kolekce.
-
-Mějte na paměti, že zařízení průběžně pouze shromažďuje údaje o výkonu, nezjistí změny konfigurace v místním prostředí (tj. Přidání virtuálního počítače, odstranění, přidání disku atd.). Pokud dojde ke změně konfigurace v místním prostředí, můžete provést následující tak, aby odrážely změny v portálu:
-
-1. Přidání položek (virtuálních počítačů, disků, jader atd.): pro provedení těchto změn na webu Azure Portal, můžete zastavit zjišťování ze zařízení a znovu spustit. Tím se zajistí, že změny jsou aktualizovány v projektu Azure Migrate.
-
-2. Odstranění virtuálních počítačů: z důvodu způsob je navržena na zařízení, odstranění virtuální počítače se projeví i v případě zastavení a spuštění zjišťování. Je to proto, že data z dalších zjišťování se připojí k starší zjišťování a nebyly přepsány. V takovém případě můžete jednoduše ignorovat virtuálního počítače na portálu ho odebrat ze skupiny a přepočítání posouzení.
-
-> [!NOTE]
-> Průběžná zjišťování funkce je ve verzi preview. Doporučujeme, aby používali tuto metodu, jak tato metoda shromažďuje údaje o výkonu detailní a výsledkem přesné určení správné velikosti.
-
 
 ## <a name="discovery-process"></a>Proces zjišťování
 

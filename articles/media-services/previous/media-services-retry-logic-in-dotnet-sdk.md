@@ -1,8 +1,8 @@
 ---
-title: Opakujte logiky sady Media Services SDK pro .NET | Microsoft Docs
-description: Téma poskytuje přehled logika opakovaných pokusů v sady Media Services SDK pro .NET.
+title: Logika opakování v sadě Media Services SDK pro .NET | Dokumentace Microsoftu
+description: Téma s přehledem logika opakovaných pokusů v sadě Media Services SDK pro .NET.
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 services: media-services
 documentationcenter: ''
@@ -12,46 +12,46 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/21/2017
+ms.date: 10/24/2018
 ms.author: juliako
-ms.openlocfilehash: 34125712c59938b3a74e7cdc150f3f16b694b92f
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 0a4c9db8da046e901241bc383098013b2acc6bb2
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33790423"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50242258"
 ---
-# <a name="retry-logic-in-the-media-services-sdk-for-net"></a>Opakujte logiky sady Media Services SDK pro .NET
-Při práci se službou Microsoft Azure, může dojít přechodných. Pokud dojde k přechodná chyba, ve většině případů po několika pokusech operace proběhla úspěšně. Media Services SDK pro .NET implementuje logiku opakovaných pokusů pro zpracování přechodné chyby související s výjimek a chyb, které jsou způsobeny webových požadavků, provádění dotazů, ukládání změn a operace úložiště.  Ve výchozím nastavení spustí sadu Media Services SDK pro .NET do čtyř opakovaných vyhledávání před znovu způsobující výjimku do vaší aplikace. Kód ve vaší aplikaci pak musí správně zpracovat výjimku.  
+# <a name="retry-logic-in-the-media-services-sdk-for-net"></a>Logika opakování v sadě Media Services SDK pro .NET
+Při práci se službami Microsoft Azure, přechodné chyby můžou nastat. Pokud dojde k přechodných chyb, ve většině případů po několika pokusech operace proběhne úspěšně. Media Services SDK pro .NET implementuje logika opakovaných pokusů pro zpracování přechodných chyb spojených s výjimek a chyb, které jsou způsobeny webových požadavků, provádění dotazů, ukládají se změny a operace úložiště.  Ve výchozím nastavení spustí sadu Media Services SDK pro .NET do čtyř opakovaných vyhledávání před opětném vyvolávání výjimky pro vaši aplikaci. Kód ve vaší aplikaci pak musí správně zpracovat tuto výjimku.  
 
- Toto je stručný platí webovému požadavku, úložiště, dotazů a SaveChanges zásad:  
+ Tady je stručný návod webového požadavku, úložiště, dotaz a SaveChanges zásad:  
 
-* Zásada úložiště se používá pro operace úložiště objektů blob (nahrávání nebo stahování souborů asset).  
-* Zásada webovému požadavku se používá pro obecné webových požadavků (například pro získání tokenu ověřování a řešení koncový bod clusteru uživatele).  
-* Zásada dotazu se používá k dotazování entity z REST (například mediaContext.Assets.Where(...)).  
-* Zásady SaveChanges slouží k provádění všechno, co změny dat v rámci služby (například vytváření entity aktualizaci entity, volání funkce služby pro operace).  
+* Zásady úložiště se používá pro operace úložiště objektů blob (nahrávání nebo stahování souborů prostředků).  
+* Zásada webového požadavku se používá pro žádosti o obecný web (například pro získání ověřovacího tokenu a jejich řešení koncový bod clusteru uživatele).  
+* Zásada dotazu se používá k dotazování entit na základě REST (například mediaContext.Assets.Where(...)).  
+* Zásada SaveChanges se používá pro teď zrovna nic nedělá, která se mění data v rámci služby (například vytvoření entity aktualizaci entity, volání funkce služby pro operace).  
   
-  Toto téma uvádí typy výjimek a chybové kódy, které jsou zpracovávány sady Media Services SDK pro .NET logika opakovaných pokusů.  
+  Toto téma uvádí typy výjimek a logika opakování chybové kódy, které provádí služba Media Services SDK pro .NET.  
 
 ## <a name="exception-types"></a>Typy výjimek
-Následující tabulka popisuje výjimky, které zpracovává sadu Media Services SDK pro .NET nebo nezpracovává pro některé operace, které může způsobit přechodné chyby.  
+Následující tabulka popisuje výjimky, které Media Services SDK pro .NET, zpracovává nebo nezpracovává pro některé operace, které by mohly způsobit přechodné chyby.  
 
-| Výjimka | Webové žádosti | Úložiště | Dotaz | SaveChanges |
+| Výjimka | Webový požadavek | Úložiště | Dotaz | SaveChanges |
 | --- | --- | --- | --- | --- |
-| Výjimku WebException<br/>Další informace najdete v tématu [výjimku WebException stavové kódy](media-services-retry-logic-in-dotnet-sdk.md#WebExceptionStatus) části. |Ano |Ano |Ano |Ano |
+| O výjimku WebException<br/>Další informace najdete v tématu [o výjimku WebException stavové kódy](media-services-retry-logic-in-dotnet-sdk.md#WebExceptionStatus) oddílu. |Ano |Ano |Ano |Ano |
 | DataServiceClientException<br/> Další informace najdete v tématu [stavové kódy HTTP Chyba](media-services-retry-logic-in-dotnet-sdk.md#HTTPStatusCode). |Ne |Ano |Ano |Ano |
 | DataServiceQueryException<br/> Další informace najdete v tématu [stavové kódy HTTP Chyba](media-services-retry-logic-in-dotnet-sdk.md#HTTPStatusCode). |Ne |Ano |Ano |Ano |
 | DataServiceRequestException<br/> Další informace najdete v tématu [stavové kódy HTTP Chyba](media-services-retry-logic-in-dotnet-sdk.md#HTTPStatusCode). |Ne |Ano |Ano |Ano |
 | DataServiceTransportException |Ne |Ne |Ano |Ano |
 | TimeoutException |Ano |Ano |Ano |Ne |
-| SocketException |Ano |Ano |Ano |Ano |
+| Socketexception – |Ano |Ano |Ano |Ano |
 | StorageException |Ne |Ano |Ne |Ne |
-| Výjimka vstupu/výstupu |Ne |Ano |Ne |Ne |
+| IOException – |Ne |Ano |Ne |Ne |
 
-### <a name="WebExceptionStatus"></a> Výjimku WebException stavové kódy
-Následující tabulka uvádí, pro které kódy chyb výjimku WebException je implementováno logika opakovaných pokusů. [WebExceptionStatus](http://msdn.microsoft.com/library/system.net.webexceptionstatus.aspx) výčet definuje stavové kódy.  
+### <a name="WebExceptionStatus"></a> O výjimku WebException stavové kódy
+V následující tabulce jsou uvedeny pro kódy chyb o výjimku WebException logika opakovaných pokusů implementovaná. [WebExceptionStatus](http://msdn.microsoft.com/library/system.net.webexceptionstatus.aspx) výčet definuje kódy stavu.  
 
-| Status | Webové žádosti | Úložiště | Dotaz | SaveChanges |
+| Status | Webový požadavek | Úložiště | Dotaz | SaveChanges |
 | --- | --- | --- | --- | --- |
 | ConnectFailure |Ano |Ano |Ano |Ano |
 | NameResolutionFailure |Ano |Ano |Ano |Ano |
@@ -64,15 +64,15 @@ Následující tabulka uvádí, pro které kódy chyb výjimku WebException je i
 | ReceiveFailure |Ano |Ano |Ano |Ne |
 | RequestCanceled |Ano |Ano |Ano |Ne |
 | Vypršení časového limitu |Ano |Ano |Ano |Ne |
-| Požadavku <br/>Opakování v požadavku je řízena zpracování kód stavu HTTP. Další informace najdete v tématu [stavové kódy HTTP Chyba](media-services-retry-logic-in-dotnet-sdk.md#HTTPStatusCode). |Ano |Ano |Ano |Ano |
+| Požadavku <br/>Opakování v požadavku se řídí zpracování kód stavu HTTP. Další informace najdete v tématu [stavové kódy HTTP Chyba](media-services-retry-logic-in-dotnet-sdk.md#HTTPStatusCode). |Ano |Ano |Ano |Ano |
 
 ### <a name="HTTPStatusCode"></a> Stavové kódy chyb HTTP
-Když operace dotazů a SaveChanges throw DataServiceClientException, DataServiceQueryException nebo DataServiceQueryException, se ve vlastnosti StatusCode vrátí stavový kód chyby HTTP.  Následující tabulka uvádí, pro které kódy chyb je implementováno logika opakovaných pokusů.  
+Když operace dotazů a SaveChanges throw DataServiceClientException, DataServiceQueryException nebo DataServiceQueryException, se ve vlastnosti StatusCode vrátí stavový kód chyby protokolu HTTP.  V následující tabulce jsou uvedeny pro kódy chyb se implementuje logika opakovaných pokusů.  
 
-| Status | Webové žádosti | Úložiště | Dotaz | SaveChanges |
+| Status | Webový požadavek | Úložiště | Dotaz | SaveChanges |
 | --- | --- | --- | --- | --- |
 | 401 |Ne |Ano |Ne |Ne |
-| 403 |Ne |Ano<br/>Zpracování opakování s delší čeká. |Ne |Ne |
+| 403 |Ne |Ano<br/>Zpracování opakovaných pokusů s delší dobu čekání. |Ne |Ne |
 | 408 |Ano |Ano |Ano |Ano |
 | 429 |Ano |Ano |Ano |Ano |
 | 500 |Ano |Ano |Ano |Ne |
@@ -80,7 +80,7 @@ Když operace dotazů a SaveChanges throw DataServiceClientException, DataServic
 | 503 |Ano |Ano |Ano |Ano |
 | 504 |Ano |Ano |Ano |Ne |
 
-Pokud se chcete podívat na skutečném provádění sady Media Services SDK pro .NET logika opakovaných pokusů, najdete v části [azure-sdk pro media-services](https://github.com/Azure/azure-sdk-for-media-services/tree/dev/src/net/Client/TransientFaultHandling).
+Pokud chcete se podívat na aktuální implementaci Media Services SDK pro .NET logiku opakování, přečtěte si téma [azure-sdk pro media-services](https://github.com/Azure/azure-sdk-for-media-services/tree/dev/src/net/Client/TransientFaultHandling).
 
 ## <a name="next-steps"></a>Další postup
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

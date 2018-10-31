@@ -11,19 +11,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/05/2018
+ms.date: 10/18/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 0340a4d527023c050e2c776d31c02b59161a1316
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 904502e5c73127cca7920da2173edd013e55762f
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49429459"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50242241"
 ---
 # <a name="analyze-log-analytics-data-in-azure-monitor"></a>Analýza dat Log Analytics ve službě Azure Monitor
 
-Protokol data shromážděná službou Azure Monitor se ukládají ve službě Log Analytics, která shromažďuje telemetrii a další data z různých zdrojů a poskytuje dotazovací jazyk pro pokročilou analýzu.
+Protokol data shromážděná službou Azure Monitor se ukládají v pracovním prostoru Log Analytics, která je založena na [Průzkumník dat Azure](/data-explorer). Shromažďuje telemetrická data z různých zdrojů a používá [dotazovací jazyk v Průzkumníku dat](/kusto) načíst a analyzovat data.
 
 > [!NOTE]
 > Log Analytics se dřív považovány za vlastní službu v Azure. Je nyní považovaných za součást služby Azure Monitor a se zaměřuje na úložiště a analýzu dat protokolu pomocí jeho dotazovací jazyk. Funkce, které bylo považováno za součást Log Analytics, jako je například Windows a Linux agentů pro shromažďování dat, zobrazení vizualizovat existující data, výstrahy a proaktivně vás upozorňují na problémy, nedošlo ke změně, ale jsou nyní považovány za součást služby Azure Monitor.
@@ -51,7 +51,7 @@ Různé způsoby, že budete používat dotazy v Log Analytics patří následuj
 ![Prohledávání protokolů](media/log-analytics-queries/queries-overview.png)
 
 ## <a name="write-a-query"></a>Napsat dotaz
-Log Analytics obsahuje [rozsáhlé dotazovací jazyk](query-language/get-started-queries.md) , který umožňuje načtení a analýze dat protokolů v mnoha různými způsoby.  Budete obvykle začínat základní dotazy a potom pokroku používat pokročilejší funkce rostoucí vašim požadavkům.
+Protokolovat Analytics používá [verze dotazovacího jazyka Průzkumník dat](query-language/get-started-queries.md) načíst a analyzovat data protokolů v mnoha různými způsoby.  Budete obvykle začínat základní dotazy a potom pokroku používat pokročilejší funkce rostoucí vašim požadavkům.
 
 Základní struktura dotazu je zdrojová tabulka, za nímž následuje řadu operátory, které jsou oddělené znakem přesměrování `|`.  Můžete zřetězit dohromady víc operátorů Upřesnit tak data a provádět pokročilé funkce.
 

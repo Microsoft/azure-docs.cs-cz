@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 08/09/2018
 ms.author: markvi
 ms.reviewer: ravenn
-ms.openlocfilehash: cde364cb5231c1cc0b1947da35994862cf45b571
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 267e398305939048014038b7350b2a10481fdfbd
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43042157"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50238722"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>Zařízení připojená k tom, jak spravovat místní skupiny administrators na Azure AD
 
@@ -92,9 +92,9 @@ Počínaje **Windows 10 1709** vydání, můžete tuto úlohu lze provést z **N
  
 Kromě toho můžete také přidat uživatele pomocí příkazového řádku:
 
-- Pokud váš tenant uživatelé používají synchronizaci z místní služby Active Directory, použijte `net localgroup administrators /add “Contoso\username”`.
+- Pokud váš tenant uživatelé používají synchronizaci z místní služby Active Directory, použijte `net localgroup administrators /add "Contoso\username"`.
 
-- Pokud vaši uživatelé tenanta se vytvoří v Azure AD, použijte `net localgroup administrators /add “AzureAD\UserUpn”`
+- Pokud vaši uživatelé tenanta se vytvoří v Azure AD, použijte `net localgroup administrators /add "AzureAD\UserUpn"`
 
 
 ## <a name="considerations"></a>Požadavky 
@@ -109,8 +109,8 @@ Při odebrání uživatele z role Správce zařízení stále mají oprávnění
 
 ## <a name="next-steps"></a>Další postup
 
-- Pokud chcete získat přehled o tom, jak spravovat zařízení na portálu Azure portal, najdete v článku [Správa zařízení pomocí webu Azure portal](device-management-azure-portal.md)
+- Přehled správy zařízení na webu Azure Portal najdete v tématu věnovaném [správě zařízení pomocí webu Azure Portal](device-management-azure-portal.md).
 
-- Další informace o podmíněném přístupu na základě zařízení, najdete v článku [nakonfigurovat zásady podmíněného přístupu podle zařízení Azure Active Directory](../conditional-access/require-managed-devices.md).
+- Další informace o podmíněném přístupu na základě zařízení najdete v tématu věnovaném [konfiguraci zásad podmíněného přístupu na základě zařízení v Azure Active Directory](../conditional-access/require-managed-devices.md).
 
 

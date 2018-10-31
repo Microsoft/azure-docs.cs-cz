@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: annaba
-ms.openlocfilehash: 27febb01b04bd8ac82b8cd428afce78dc57f8b8d
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 3172ba12fbbd0135d1a5a3684145787c83aad040
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49403558"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50242411"
 ---
 # <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>Začínáme s ověřováním na základě certifikátů v Azure Active Directory
 
@@ -115,7 +115,7 @@ Chcete-li vytvořit důvěryhodné certifikační autority, použijte [New-Azure
     $new_ca=New-Object -TypeName Microsoft.Open.AzureAD.Model.CertificateAuthorityInformation
     $new_ca.AuthorityType=0
     $new_ca.TrustedCertificate=$cert
-    $new_ca.crlDistributionPoint=”<CRL Distribution URL>”
+    $new_ca.crlDistributionPoint="<CRL Distribution URL>"
     New-AzureADTrustedCertificateAuthority -CertificateAuthorityInformation $new_ca
 
 ### <a name="remove"></a>Odebrat

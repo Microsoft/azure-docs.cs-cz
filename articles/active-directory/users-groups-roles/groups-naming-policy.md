@@ -14,12 +14,12 @@ ms.date: 05/21/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 111be7d3ee00f2b40ace3bfe4efdacc5029ccf77
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 2857f95eff0b2d039a1a3c7bbe566a8ed3ca4fea
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39239130"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50243125"
 ---
 # <a name="enforce-a-naming-policy-for-office-365-groups-in-azure-active-directory-preview"></a>Vynucení zásad pojmenování pro skupiny Office 365 ve službě Azure Active Directory (preview)
 
@@ -49,7 +49,7 @@ Aby bylo snazší kontrolovat a odlišují jej od skupiny v seznamu globálního
 
 #### <a name="user-attributes"></a>Atributy uživatele
 
-Můžete použít atributy, které vám pomůžou a vaši uživatelé identifikovat, které oddělení, office nebo geografické oblasti, pro kterou byla skupina vytvořena. Například pokud definujete zásadami vytváření názvů jako `PrefixSuffixNamingRequirement = “GRP [GroupName] [Department]”`, a `User’s department = Engineering`, názvu vynucené skupiny může být "Skupiny Moje skupiny inženýrství." Nepodporuje Azure AD jsou \[oddělení\], \[společnosti\], \[Office\], \[StátNeboKraj\], \[CountryOrRegion \], \[Title\]. Nepodporovaná uživatelské atributy jsou považovány za pevnou řetězce; například "\[PSČ\]". Atributy rozšíření a vlastní atributy nejsou podporovány.
+Můžete použít atributy, které vám pomůžou a vaši uživatelé identifikovat, které oddělení, office nebo geografické oblasti, pro kterou byla skupina vytvořena. Například pokud definujete zásadami vytváření názvů jako `PrefixSuffixNamingRequirement = "GRP [GroupName] [Department]"`, a `User’s department = Engineering`, názvu vynucené skupiny může být "Skupiny Moje skupiny inženýrství." Nepodporuje Azure AD jsou \[oddělení\], \[společnosti\], \[Office\], \[StátNeboKraj\], \[CountryOrRegion \], \[Title\]. Nepodporovaná uživatelské atributy jsou považovány za pevnou řetězce; například "\[PSČ\]". Atributy rozšíření a vlastní atributy nejsou podporovány.
 
 Doporučujeme použít atributy, které se mají hodnoty pro všechny uživatele ve vaší organizaci a používat atributy, které mají dlouhé hodnoty.
 
@@ -75,7 +75,7 @@ Vybraný správce můžete vyloučené z těchto zásad ve všech skupin úloh a
 
 ## <a name="install-powershell-cmdlets-to-configure-a-naming-policy"></a>Instalace rutin prostředí PowerShell ke konfiguraci zásad pojmenování
 
-Je potřeba odinstalovat kteroukoli starší verzi Azure Active Directory PowerShell pro modul grafu pro prostředí Windows PowerShell a nainstalovat [Azure Active Directory PowerShell pro Graph – veřejná verze Preview 2.0.0.137](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.137) předtím, než spustíte Příkazy prostředí PowerShell. 
+Před spouštěním příkazů PowerShellu nezapomeňte odinstalovat všechny starší verze modulu Azure Active Directory PowerShell pro Graph pro Windows PowerShell a nainstalovat [Azure Active Directory PowerShell pro Graph – Verze Public Preview 2.0.0.137](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.137). 
 
 1. Otevřete aplikaci Windows PowerShell jako správce.
 2. Odinstalujte všechny předchozí verze AzureADPreview.
@@ -88,21 +88,21 @@ Je potřeba odinstalovat kteroukoli starší verzi Azure Active Directory PowerS
   ````
   Install-Module AzureADPreview
   ````
-Pokud se zobrazí výzva o přístupu k nedůvěryhodné úložiště, zadejte **Y**. Může trvat několik minut, než se nový modul pro instalaci.
+Pokud se zobrazí výzva k potvrzení přístupu k nedůvěryhodnému úložišti, zadejte **Y**. Instalace nového modulu může trvat několik minut.
 
 ## <a name="configure-the-group-naming-policy-for-a-tenant-using-azure-ad-powershell"></a>Konfigurace skupiny zásad pojmenování pro tenanta pomocí Azure AD Powershellu
 
 1. Otevřete okno Windows Powershellu ve vašem počítači. Můžete ji otevřít bez zvýšených oprávnění.
 
-2. Spusťte následující příkazy, abyste se připravili na spouštění rutin.
+2. Spuštěním následujících příkazů se připravte na spouštění rutin.
   
   ````
   Import-Module AzureADPreview
   Connect-AzureAD
   ````
-  V **přihlásit ke svému účtu** obrazovky, které se otevře, zadejte účet správce a heslo, které jste připojení ke službě a vyberte **přihlášení**.
+  Na obrazovce **Přihlášení k účtu**, která se otevře, zadejte svůj účet a heslo správce pro připojení k vaší službě a vyberte **Přihlásit se**.
 
-3. Postupujte podle kroků v [rutiny služby Azure Active Directory pro konfiguraci nastavení skupiny](groups-settings-cmdlets.md) k vytvoření nastavení skupin pro tohoto tenanta.
+3. Podle pokynů v tématu [Rutiny služby Azure Active Directory pro konfiguraci nastavení skupiny](groups-settings-cmdlets.md) vytvořte nastavení skupiny pro tohoto tenanta.
 
 ### <a name="view-the-current-settings"></a>Zobrazit aktuální nastavení
 
@@ -120,25 +120,25 @@ Pokud se zobrazí výzva o přístupu k nedůvěryhodné úložiště, zadejte *
   
 ### <a name="set-the-naming-policy-and-custom-blocked-words"></a>Nastavte zásady pojmenování a zadejte vlastní slova blokované
 
-1. Nastavte skupinu název předpony a přípony v Azure AD PowerShell.
+1. Nastavte předpony a přípony názvů skupin v Azure AD PowerShellu.
   
   ````
   $Setting["PrefixSuffixNamingRequirement"] =“GRP_[GroupName]_[Department]"
   ````
   
-2. Nastavte vlastní blokované slova, které chcete omezit. Následující příklad ukazuje, jak můžete přidat vlastní zadejte vlastní slova.
+2. Nastavte vlastní blokovaná slova, která chcete zakázat. Následující příklad ukazuje, jak můžete přidat vlastní slova.
   
   ````
   $Setting["CustomBlockedWordsList"]=“Payroll,CEO,HR"
   ````
   
-3. Uložte nastavení pro nové zásady se započítá jako v následujícím příkladu.
+3. Uložte nastavení, aby nová zásada vstoupila v platnost, jak je znázorněno v následujícím příkladu.
   
   ````
   Set-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ).id -DirectorySetting $Setting
   ````
   
-A je to. Jste nastavit pojmenování zásady a přidá blokované slova.
+A to je vše. Jste nastavit pojmenování zásady a přidá blokované slova.
 
 ## <a name="export-or-import-the-list-of-custom-blocked-words"></a>Exportovat nebo importovat seznam blokovaných zadejte vlastní slova
 

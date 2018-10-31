@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/27/2018
-ms.openlocfilehash: 556b71d8312c7661b58a3ccf56fd76f6753ef9cf
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 2bd2a90c6bac280b6f68bde378b7f7d32b7fcd38
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49987575"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50248740"
 ---
 # <a name="stream-data-as-input-into-stream-analytics"></a>Stream data jako vstup do Stream Analytics
 
@@ -115,7 +115,6 @@ Při použití streamování dat ze služby IoT Hub, máte přístup k následuj
 | **IoTHub.ConnectionDeviceId** | ID ověřování používaný k odesílání této zprávy. Tato hodnota je označený na servicebound zpráv ve službě IoT Hub. |
 | **IoTHub.ConnectionDeviceGenerationId** | Generování ID ověřeného zařízení, které jste použili k zaslání tuto zprávu. Tato hodnota je označený na servicebound zpráv ve službě IoT Hub. |
 | **IoTHub.EnqueuedTime** | Čas, kdy byla zpráva přijata službou IoT Hub. |
-| **IoTHub.StreamId** | Vlastnost vlastní událost přidal zařízení odesílatele. |
 
 
 ## <a name="stream-data-from-blob-storage"></a>Stream data z úložiště objektů Blob

@@ -9,17 +9,17 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: jasonh
 ROBOTS: NOINDEX
-ms.openlocfilehash: 59e6fd0a05374329efb20201c8d904cbbdc72b1a
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 84c28eebc2bcf1bfdfcb0995f1caa05ed19629e2
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43110995"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50250831"
 ---
 # <a name="run-hadoop-mapreduce-samples-in-windows-based-hdinsight"></a>Ukázky spouštění Hadoop MapReduce v HDInsight se systémem Windows
 [!INCLUDE [samples-selector](../../includes/hdinsight-run-samples-selector.md)]
 
-Které vám pomohou začít spuštěných úloh MapReduce v clusterech Hadoop pomocí Azure HDInsight jsou k dispozici řadu ukázek. Tyto ukázky jsou k dispozici na všech HDInsight spravované clustery, které vytvoříte. Spuštění ukázek vám seznámit se s použitím rutin prostředí Azure PowerShell můžete spouštět úlohy na clusterech Hadoop.
+Které vám pomohou začít spuštěných úloh MapReduce v clusterech Hadoop pomocí Azure HDInsight poskytuje řadu ukázek. Tyto ukázky jsou k dispozici na všech HDInsight spravované clustery, které vytvoříte. Spuštění ukázek vám seznámit se s použitím rutin prostředí Azure PowerShell můžete spouštět úlohy na clusterech Hadoop.
 
 * [**Word count**][hdinsight-sample-wordcount]: vypočítá frekvenci výskytu slov v textovém souboru.
 * [**Počet slov streamováním v C#**][hdinsight-sample-csharp-streaming]: vypočítá frekvenci výskytu slov v textovém souboru pomocí rozhraní streamování Hadoop.
@@ -167,7 +167,7 @@ Skript uvedený pro tuto ukázku odešle soubor jar úlohy Hadoopu a nastavit a�
     ```
 
 ## <a name="hdinsight-sample-10gb-graysort"></a>Graysort 10 GB
-Tato ukázka používá mírné 10GB dat, aby mohla být poměrně rychle spustit. Používá MapReduce aplikace vyvinuté tak, že Owen O'Malley a Arun Murthy získané roční kritérium řazení terabajt pro obecné účely ("daytona") v roce 2009 s mírou 0.578 TB za minutu (100 TB za 173 minut). Další informace o tomto a dalších řazení srovnávací testy, najdete v článku [Sortbenchmark](http://sortbenchmark.org/) lokality.
+Tato ukázka používá mírné 10 GB dat, aby mohla být poměrně rychle spustit. Používá MapReduce aplikace vyvinuté tak, že Owen O'Malley a Arun Murthy získané roční kritérium řazení terabajt pro obecné účely ("daytona") v roce 2009 s mírou 0.578 TB za minutu (100 TB za 173 minut). Další informace o tomto a dalších řazení srovnávací testy, najdete v článku [Sortbenchmark](http://sortbenchmark.org/) lokality.
 
 Tato ukázka používá tři páry programů MapReduce:
 
@@ -211,7 +211,6 @@ Z tohoto článku a články v každém z ukázek jste zjistili, jak ke spuště
 * [Použití Pigu se systémem Hadoop v HDInsight][hdinsight-use-pig]
 * [Použití Hivu s Hadoopem v HDInsight][hdinsight-use-hive]
 * [Odesílání úloh Hadoop v HDInsight][hdinsight-submit-jobs]
-* [Dokumentace ke službě Azure HDInsight SDK][hdinsight-sdk-documentation]
 
 ## <a name="appendix-a---the-word-count-source-code"></a>Příloha A – zdrojový kód počet slov
 
@@ -977,8 +976,6 @@ public class TeraSort extends Configured implements Tool {
     }
 }
 ```
-
-[hdinsight-sdk-documentation]: https://msdn.microsoft.com/library/azure/dn479185.aspx
 
 [hdinsight-submit-jobs]: hadoop/submit-apache-hadoop-jobs-programmatically.md
 [hdinsight-introduction]:hadoop/apache-hadoop-introduction.md

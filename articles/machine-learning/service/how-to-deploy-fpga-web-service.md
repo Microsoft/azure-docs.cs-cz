@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: tedway
 author: tedway
-ms.date: 10/01/2018
-ms.openlocfilehash: 925173f85301d6481ae3b9cf891041239b06bc8f
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.date: 10/29/2018
+ms.openlocfilehash: 3b2ff5bf4413c5d6a681aff66f0f338567f3b6a8
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49113712"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50242734"
 ---
 # <a name="deploy-a-model-as-a-web-service-on-an-fpga-with-azure-machine-learning"></a>Nasazení modelu jako webové služby na FPGA službou Azure Machine Learning
 
@@ -23,8 +23,6 @@ Nasazení modelu jako webové služby na [pole programmable gate Array (FPGA)](c
 ## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure. Pokud ho nemáte, než začnete, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-
-- Musíte požádat o a schválit FPGA kvóty. Chcete-li požádat o přístup, vyplňte formulář žádosti o kvóty: https://aka.ms/aml-real-time-ai
 
 - Pracovní prostor služby Azure Machine Learning service a Azure Machine Learning SDK for nainstalovaný Python. Další informace o získání těchto nezbytných podmínkách používání [jak nakonfigurovat prostředí pro vývoj](how-to-configure-environment.md) dokumentu.
  
@@ -132,7 +130,7 @@ except WebserviceException:
     service.wait_for_deployment(true)
 ```
 
-### <a name="test-the-service"></a>Pokud chcete službu otestovat
+### <a name="test-the-service"></a>Testování služby
 Odeslat image do rozhraní API a otestovat odpovědi, přidejte mapování z výstupu ID třídy ImageNet název třídy.
 
 ```python

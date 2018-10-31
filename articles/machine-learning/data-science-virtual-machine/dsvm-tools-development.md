@@ -1,7 +1,7 @@
 ---
-title: Nástroje pro vývoj vědecké účely virtuálního počítače dat – Azure | Microsoft Docs
-description: Datové vědy virtuální počítače nástroje pro vývoj.
-keywords: datové vědy nástroje, datové vědy virtuálního počítače, nástroje pro vědecké zpracování dat, vědecké zpracování dat linux
+title: Vývojové nástroje data Science virtuálního počítače – Azure | Dokumentace Microsoftu
+description: Data Science virtuální počítač nástroje pro vývoj.
+keywords: nástroje pro datové vědy, virtuální počítač pro datové vědy, datové vědy pro linux
 services: machine-learning
 documentationcenter: ''
 author: gopitk
@@ -15,80 +15,80 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: gokuma
-ms.openlocfilehash: b8b0b8934b51080c3583281673183c1498c26417
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 2f642a91bd656cb74cdce2a98c44372a64f23cb9
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31408305"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50237873"
 ---
-# <a name="development-tools-on-the-data-science-virtual-machine"></a>Nástroje pro vývoj na Data virtuálního počítače vědecké účely
+# <a name="development-tools-on-the-data-science-virtual-machine"></a>Nástroje pro vývoj na virtuální počítač pro datové vědy
 
-Virtuální počítač vědecké účely dat (DSVM) poskytuje produktivní prostředí pro váš vývojový tím, že sdružování několik oblíbených nástroje a rozhraní IDE. Tady jsou některé nástroje, které jsou dostupné na DSVM. 
+Na Data virtuálního počítače VĚDY poskytuje produktivní prostředí pro vývoj seskupí několik oblíbených nástrojů a rozhraní IDE. Tady je několik nástrojů, které jsou k dispozici na datové VĚDY. 
 
 ## <a name="visual-studio-2017"></a>Visual Studio 2017  
 |    |           |
 | ------------- | ------------- |
-| Co je to?   | Obecné účely IDE      |
+| Co je to?   | Integrované vývojové prostředí pro obecné účely      |
 | Podporované DSVM verze      | Windows      |
 | Typické použití      | Vývoj softwaru    |
-| Jak je ho nakonfigurovaná a nainstalovaná na DSVM?      | Data vědecké účely zatížení (Python a R tools), úloha Azure (Hadoop, Data Lake), Node.js, nástroje SQL Server, [Visual Studio Tools for AI](https://github.com/Microsoft/vs-tools-for-ai)    |
-| Jak se použít nebo ji spustit?      | Zástupce na ploše (`C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\devenv.exe`)    |
-| Na DSVM souvisejících nástrojích      |     Juno kód, Rstudia, Visual Studio  |
+| Jak ho nakonfigurovat či nainstalovaná na datové VĚDY?      | Úloha datové vědy (Python nebo R tools), úloha Azure (Hadoop, Data Lake), Node.js, nástroje SQL Server, [Visual Studio Tools pro AI](https://github.com/Microsoft/vs-tools-for-ai)    |
+| Jak používat nebo ji spustit?      | Zástupce na ploše (`C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\devenv.exe`)    |
+| Související nástroje na datové VĚDY      |     Visual Studio Code, RStudio, Juno  |
 
 ## <a name="visual-studio-code"></a>Visual Studio Code 
 |    |           |
 | ------------- | ------------- |
-| Co je to?   | Obecné účely IDE      |
+| Co je to?   | Integrované vývojové prostředí pro obecné účely      |
 | Podporované DSVM verze      | Windows, Linux     |
 | Typické použití      | Editor kódu a integrace Gitu   |
-| Jak se použít nebo ji spustit?      | Zástupce na ploše (`C:\Program Files (x86)\Microsoft VS Code\Code.exe`) v systému Windows, zástupce na ploše nebo Terminálové (`code`) v systému Linux    |
-| Na DSVM souvisejících nástrojích      |     Visual Studio 2017, RStudio, Juno  |
+| Jak používat nebo ji spustit?      | Zástupce na ploše (`C:\Program Files (x86)\Microsoft VS Code\Code.exe`) ve Windows, zástupce na ploše nebo terminálu (`code`) v systému Linux    |
+| Související nástroje na datové VĚDY      |     Visual Studio 2017, RStudio, Juno  |
 
-## <a name="rstudio--desktop"></a>Rstudia plochy 
+## <a name="rstudio--desktop"></a>RStudio Desktop 
 |    |           |
 | ------------- | ------------- |
-| Co je to?   | Klient IDE pro R    |
+| Co je to?   | Klientské rozhraní IDE pro R    |
 | Podporované DSVM verze      | Windows, Linux      |
-| Typické použití      |  Vývoj R     |
-| Jak se použít nebo ji spustit?      | Zástupce na ploše (`C:\Program Files\RStudio\bin\rstudio.exe`) v systému Windows, zástupce na ploše (`/usr/bin/rstudio`) v systému Linux      |
-| Na DSVM souvisejících nástrojích      |   Visual Studio 2017, Visual Studio Code, Juno      |
+| Typické použití      |  Vývoj v jazyce R     |
+| Jak používat nebo ji spustit?      | Zástupce na ploše (`C:\Program Files\RStudio\bin\rstudio.exe`) na Windows, zástupce na ploše (`/usr/bin/rstudio`) v Linuxu      |
+| Související nástroje na datové VĚDY      |   Visual Studio 2017, Visual Studio Code, Juno      |
 
 ## <a name="rstudio--server"></a>RStudio  Server 
 |    |           |
 | ------------- | ------------- |
 | Co je to?   | Webové rozhraní IDE pro R    |
 | Podporované DSVM verze      | Linux      |
-| Typické použití      |  Vývoj R     |
-| Jak se použít nebo ji spustit?      | Povolit službu s _systemctl povolit serveru rstudia_, spusťte službu s _systemctl spustit server rstudia_. Znovu přihlásili k serveru Rstudia http://your-vm-ip:8787.       |
-| Na DSVM souvisejících nástrojích      |   Visual Studio 2017, Visual Studio kód, Rstudia plochy      |
+| Typické použití      |  Vývoj v jazyce R     |
+| Jak používat nebo ji spustit?      | Povolit službu s _systemctl povolit rstudio serveru_, spusťte službu s _systemctl start rstudio serveru_. Potom můžete přihlásit k přihlašovací stránce RStudio serveru v http://your-vm-ip:8787.       |
+| Související nástroje na datové VĚDY      |   Visual Studio 2017, Visual Studio Code, RStudio Desktop      |
 
 ## <a name="juno"></a>Juno 
 |    |           |
 | ------------- | ------------- |
-| Co je to?   | Klient IDE pro jazyk Dita   |
+| Co je to?   | Klient IDE pro jazyk Julia   |
 | Podporované DSVM verze      | Windows, Linux      |
-| Typické použití      |  Dita vývoj     |
-| Jak se použít nebo ji spustit?      | Zástupce na ploše (`C:\JuliaPro-0.5.1.1\Juno.bat`) v systému Windows, zástupce na ploše (`/opt/JuliaPro-VERSION/Juno`) v systému Linux      |
-| Na DSVM souvisejících nástrojích      |   Visual Studio 2017, Visual Studio Code, Rstudia      |
+| Typické použití      |  Helena vývoj     |
+| Jak používat nebo ji spustit?      | Zástupce na ploše (`C:\JuliaPro-0.5.1.1\Juno.bat`) na Windows, zástupce na ploše (`/opt/JuliaPro-VERSION/Juno`) v Linuxu      |
+| Související nástroje na datové VĚDY      |   Visual Studio 2017, Visual Studio Code, RStudio      |
 
 ## <a name="pycharm"></a>Pycharm
 |    |           |
 | ------------- | ------------- |
 | Co je to?   | Klient IDE pro jazyk Python    |
 | Podporované DSVM verze      | Linux      |
-| Typické použití      |  Vývoj R     |
-| Jak se použít nebo ji spustit?      | Zástupce na ploše (`/usr/bin/pycharm`) v systému Linux      |
-| Na DSVM souvisejících nástrojích      |   Visual Studio 2017, Visual Studio Code, Rstudia      |
+| Typické použití      |  Vývoj v jazyce Python     |
+| Jak používat nebo ji spustit?      | Zástupce na ploše (`/usr/bin/pycharm`) v Linuxu      |
+| Související nástroje na datové VĚDY      |   Visual Studio 2017, Visual Studio Code, RStudio      |
 
 
 
 ## <a name="powerbi-desktop"></a>PowerBI Desktop 
 |    |           |
 | ------------- | ------------- |
-| Co je to?   | Nástroj BI a interaktivní vizualizaci dat    |
+| Co je to?   | Interaktivní vizualizace dat a nástroje BI    |
 | Podporované DSVM verze      | Windows  |
 | Typické použití      |  Vizualizace dat a vytváření řídicích panelů   |
-| Jak se použít nebo ji spustit?      | Zástupce na ploše (`C:\Program Files\Microsoft Power BI Desktop\bin\PBIDesktop.exe`)      |
-| Na DSVM souvisejících nástrojích      |   Visual Studio 2017, Visual Studio Code, Juno      |
+| Jak používat nebo ji spustit?      | Zástupce na ploše (`C:\Program Files\Microsoft Power BI Desktop\bin\PBIDesktop.exe`)      |
+| Související nástroje na datové VĚDY      |   Visual Studio 2017, Visual Studio Code, Juno      |
 

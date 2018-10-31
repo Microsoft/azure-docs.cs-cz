@@ -6,19 +6,19 @@ author: jeffpatt24
 tags: storage
 ms.service: storage
 ms.topic: article
-ms.date: 05/11/2018
+ms.date: 10/30/2018
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: 59eb0ddad72f5e54a23a97a260477f84019eb62c
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 5e730e52d55f6c8c2dd02f69e3efa67017af152b
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49386337"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50242972"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Řešení potíží s Azure Files problémy ve Windows
 
-Tento článek uvádí běžné problémy, které se vztahují k Microsoft Azure Files, když se připojíte z klientů Windows. Poskytuje také možné příčiny a řešení těchto problémů. Kromě použijte kroky v tomto článku, můžete také použít [AzFileDiagnostics](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5) a ujistěte se, že v prostředí klienta Windows mají správné požadavky. AzFileDiagnostics automatizuje zjišťování většiny příznaků uvedených v tomto článku a pomáhá nastavení prostředí, abyste získali optimální výkon. Můžete také najít tyto informace [Azure sdíleným složkám Poradce při potížích](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares) , který vysvětluje, jak vám pomoci problémy připojení/mapování nebo připojení Azure sdíleným složkám.
+Tento článek uvádí běžné problémy, které se vztahují k Microsoft Azure Files, když se připojíte z klientů Windows. Poskytuje také možné příčiny a řešení těchto problémů. Kromě použijte kroky v tomto článku, můžete také použít [AzFileDiagnostics](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5) a ujistěte se, že v prostředí klienta Windows mají správné požadavky. AzFileDiagnostics automatizuje zjišťování většiny příznaků uvedených v tomto článku a pomáhá nastavení prostředí, abyste získali optimální výkon. Můžete také najít tyto informace [Azure sdíleným složkám Poradce při potížích](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares) , který vysvětluje, jak vám pomoci problémy připojení/mapování nebo připojení Azure sdíleným složkám.
 
 
 <a id="error53-67-87"></a>
@@ -189,6 +189,24 @@ Kopírování souboru přes síť, můžete jej nejprve dešifrovat. Použijte j
   - Hodnota = 1
 
 Mějte na paměti, že nastavení klíče registru ovlivňuje všechny operace kopírování, které jsou provedeny do sdílené síťové složky.
+
+## <a name="slow-enumeration-of-files-and-folders"></a>Pomalé výčet souborů a složek
+
+### <a name="cause"></a>Příčina
+
+Tomuto problému může dojít, pokud neexistuje žádný dostatek mezipaměti na klientském počítači pro velké adresáře.
+
+### <a name="solution"></a>Řešení
+
+Chcete-li vyřešit tento problém, nastavení **DirectoryCacheEntrySizeMax** hodnotu registru na povolit ukládání do mezipaměti v klientském počítači větší výpisech adresářů:
+
+- Umístění: HKLM\System\CCS\Services\Lanmanworkstation\Parameters
+- Hodnota mane: DirectoryCacheEntrySizeMax 
+- Hodnotu type: DWORD
+ 
+ 
+Můžete například ji nastavit na 0x100000 a zjistit, zda budou lepší výkon.
+
 
 ## <a name="need-help-contact-support"></a>Potřebujete pomoct? Obraťte se na podporu.
 Pokud stále potřebujete pomoc, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) získat rychlé vyřešení problému.
