@@ -329,32 +329,30 @@ items:
       href: sql-database-monitor-tune-overview.md
     - name: Inteligentní výkon
       items:
-      - name: Dotazování
+      - name: Poradci pro ladění
         items:
-        - name: Inteligentní zpracování dotazů
-          href: https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=/azure/sql-database/toc.json
-        - name: Adaptivní zpracování dotazů
-          href: https://docs.microsoft.com/sql/relational-databases/performance/adaptive-query-processing?toc=/azure/sql-database/toc.json
-      - name: Sledování a ladění
-        items:
-        - name: Doporučení ohledně výkonu pro nástroj Database Advisor
-          href: sql-database-advisor.md
         - name: Doporučení a akce ladění
           href: sql-database-performance.md
-        - name: Použití doporučení k výkonu
-          href: sql-database-advisor-portal.md
-      - name: Užitečné přehledy
-        items:
-        - name: Intelligent Insights – přehled
-          href: sql-database-intelligent-insights.md
-        - name: Protokolování diagnostiky
-          href: sql-database-metrics-diag-logging.md
-        - name: Použití diagnostického protokolu
-          href: sql-database-intelligent-insights-use-diagnostics-log.md
         - name: Query Performance Insight
           href: sql-database-query-performance.md
-        - name: Řešení potíží s výkonem
+        - name: Doporučení ohledně výkonu pro nástroj Database Advisor
+          href: sql-database-advisor.md
+        - name: Použití doporučení k výkonu
+          href: sql-database-advisor-portal.md
+      - name: Pokročilé sledování
+        items:
+        - name: Sledování služby Azure SQL Analytics
+          href: https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-azure-sql
+        - name: Protokolování diagnostických telemetrických dat
+          href: sql-database-metrics-diag-logging.md
+      - name: Automatizované řešení potíží
+        items:
+        - name: Inteligentní přehledy o výkonu
+          href: sql-database-intelligent-insights.md
+        - name: Řešení potíží s výkonem s využitím služby Intelligent Insights
           href: sql-database-intelligent-insights-troubleshoot-performance.md
+        - name: Použití diagnostických protokolů Intelligent Insights
+          href: sql-database-intelligent-insights-use-diagnostics-log.md
       - name: Automatické ladění
         items:
         - name: Přehled automatického ladění
@@ -363,6 +361,12 @@ items:
           href: sql-database-automatic-tuning-enable.md
         - name: Povolení e-mailových oznámení
           href: sql-database-automatic-tuning-email-notifications.md
+      - name: Inteligentní zpracování dotazů
+        items:
+        - name: Inteligentní zpracování dotazů
+          href: https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=/azure/sql-database/toc.json
+        - name: Adaptivní zpracování dotazů
+          href: https://docs.microsoft.com/sql/relational-databases/performance/adaptive-query-processing?toc=/azure/sql-database/toc.json
     - name: Ruční ladění
       items:
       - name: Ruční ladění
@@ -634,9 +638,9 @@ items:
     href: /azure/architecture/
   - name: Příběhy zákazníků
     href: http://customers.microsoft.com/en-us/search?sq=%22Azure%20SQL%20Database%22&ff=&p=0&so=story_publish_date%20desc
-ms.openlocfilehash: 416f74c395f331de6af749f3de1d3a3e966b8b35
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: c5e7a5265a7667acf462085f81c4b53c8d86236b
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49650056"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50221474"

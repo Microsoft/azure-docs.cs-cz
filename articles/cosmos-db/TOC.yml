@@ -74,21 +74,27 @@ items:
     href: sql-api-resources.md
   - name: Globální distribuce
     items:
-    - name: Úvod
+    - name: Přehled
       href: distribute-data-globally.md
-    - name: Klíčové výhody
-      href: distribute-data-globally-benefits.md
-    - name: Povolení globální distribuce
-      href: distribute-data-globally-turnkey.md
-    - name: Povolení multi-masteru
-      href: enable-multi-master.md
-    - name: Multi-master s databázemi NoSQL OSS
-      href: multi-master-oss-nosql.md
-    - name: Řešení konfliktů
-      href: multi-master-conflict-resolution.md
+    - name: Úrovně konzistence
+      href: consistency-levels.md
+    - name: Volba vhodné úrovně konzistence
+      href: consistency-levels-choosing.md
+    - name: Úrovně konzistence a rozhraní API služby Cosmos DB
+      href: consistency-levels-across-apis.md
+    - name: Kompromisy mezi konzistencí, dostupností a výkonem
+      href: consistency-levels-tradeoffs.md
+    - name: Vysoká dostupnost
+      href: high-availability.md
+    - name: Globální škálování propustnosti
+      href: scaling-throughput.md
+    - name: Zásady řešení konfliktů
+      href: conflict-resolution-policies.md
+    - name: Globální distribuce – pod pokličkou
+      href: global-dist-under-the-hood.md
   - name: Propustnost
     items:
-    - name: Úvod
+    - name: Přehled
       href: request-units.md
     - name: Zjištění a nastavení propustnosti
       href: set-throughput.md
@@ -96,8 +102,6 @@ items:
     href: partition-data.md
   - name: Indexování
     href: indexing-policies.md
-  - name: Modely konzistence
-    href: consistency-levels.md
   - name: Změna kanálu
     href: change-feed.md
   - name: Hodnota TTL (Time to Live)
@@ -106,7 +110,7 @@ items:
     href: unique-keys.md
   - name: Zabezpečení
     items:
-    - name: Úvod
+    - name: Přehled
       href: database-security.md
     - name: Šifrování dat
       href: database-encryption-at-rest.md
@@ -122,8 +126,6 @@ items:
     href: cosmos-db-reserved-capacity.md
   - name: Zálohování a obnovení
     href: online-backup-and-restore.md
-  - name: Vysoká dostupnost
-    href: regional-failover.md
 - name: Rozhraní API s více modely
   items:
   - name: Dokumentace k rozhraní SQL API
@@ -190,6 +192,8 @@ items:
         href: programming.md
       - name: Dělení dat SQL
         href: sql-api-partition-data.md
+      - name: Řešení potíží se sadou Java Async SDK
+        href: troubleshoot-java-async-sdk.md
       - name: Typy dat
         items:
         - name: DateTime
@@ -417,6 +421,14 @@ items:
       href: https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb
   - name: Nastavení kanálu CI/CD VSTS
     href: tutorial-setup-ci-cd.md
+  - name: Globální distribuce
+    items:
+    - name: Správa databázového účtu
+      href: how-to-manage-database-account.md
+    - name: Správa konzistence
+      href: how-to-manage-consistency.md
+    - name: Správa konfliktů
+      href: how-to-manage-conflicts.md
   - name: Osvědčené postupy
     items:
     - name: Tipy pro zvýšení výkonu
@@ -501,9 +513,9 @@ items:
       href: use-cases.md
     - name: Aplikace sociálních médií
       href: social-media-apps.md
-ms.openlocfilehash: dfa5b34127abf569a359814b6064ec981f57796d
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 55a0bb09e56667078d463846d90cd086cb05dd4e
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49985824"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50240422"

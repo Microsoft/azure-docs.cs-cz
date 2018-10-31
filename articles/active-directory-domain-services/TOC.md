@@ -24,44 +24,45 @@
 ## [Povolení služby Azure AD Domain Services pomocí PowerShellu](active-directory-ds-enable-using-powershell.md)
 ## [Konfigurace synchronizace s vymezeným oborem z Azure AD do spravované domény](active-directory-ds-scoped-synchronization.md)
 ## [Zabezpečení spravované domény](active-directory-ds-secure-your-domain.md)
-## Připojení ke spravované doméně
-### [Virtuální počítač s Windows Serverem](active-directory-ds-admin-guide-join-windows-vm-portal.md)
-### [Virtuální počítač s Windows Serverem ze šablony](active-directory-ds-join-windows-vm-template.md)
-### [CentOS](active-directory-ds-join-centos-linux-vm.md)
-### [CoreOS](active-directory-ds-join-coreos-linux-vm.md)
-### [Red Hat Enterprise Linux](active-directory-ds-join-rhel-linux-vm.md)
-### [Ubuntu Server](active-directory-ds-join-ubuntu-linux-vm.md)
-## Správa spravované domény
-### [Správa spravované domény](active-directory-ds-admin-guide-administer-domain.md)
-### [Správa DNS ve spravované doméně](active-directory-ds-admin-guide-administer-dns.md)
-### [Aktualizace e-mailových oznámení](active-directory-ds-notifications.md)
-### Konfigurace zabezpečeného protokolu LDAP pro spravovanou doménu
-#### [Úloha 1: získání certifikátu pro protokol LDAPS](active-directory-ds-admin-guide-configure-secure-ldap.md)
-#### [Úloha 2: Export certifikátu protokolu LDAPS](active-directory-ds-admin-guide-configure-secure-ldap-export-pfx.md)
-#### [Úloha 3: Povolení protokolu LDAPS pro spravované domény pomocí webu Azure Portal](active-directory-ds-admin-guide-configure-secure-ldap-enable-ldaps.md)
-#### [Úloha 4: Konfigurace DNS pro přístup ke spravované doméně z internetu](active-directory-ds-ldaps-configure-dns.md)
-#### [Krok 5: Vytvoření vazby ke spravované doméně a uzamknutí přístupu přes Secure LDAP](active-directory-ds-ldaps-bind-lockdown.md)
-#### [Řešení potíží s protokolem Secure LDAP](active-directory-ds-ldaps-troubleshoot.md)
-
-### [Vytvoření OU ve spravované doméně](active-directory-ds-admin-guide-create-ou.md)
-### [Vytvoření skupinového účtu spravované služby ve spravované doméně](active-directory-ds-create-gmsa.md)
-### [Správa zásad skupiny ve spravované doméně](active-directory-ds-admin-guide-administer-group-policy.md)
-### [Konfigurace zásad hesel ve spravované doméně](active-directory-ds-password-policy.md)
+## [Vytvoření OU ve spravované doméně](active-directory-ds-admin-guide-create-ou.md)
+## [Vytvoření skupinového účtu spravované služby ve spravované doméně](active-directory-ds-create-gmsa.md)
+## [Správa zásad skupiny ve spravované doméně](active-directory-ds-admin-guide-administer-group-policy.md)
+## [Konfigurace zásad hesel ve spravované doméně](active-directory-ds-password-policy.md)
 ## [Výběr virtuální sítě](active-directory-ds-networking.md)
 ## Nasazení aplikací
 ### [Konfigurace podpory pro synchronizaci profilu pro SharePoint Server](active-directory-ds-enable-sharepoint-profile-sync.md)
 ### [Konfigurace omezeného delegování Kerberos](active-directory-ds-enable-kcd.md)
 ### [Nasazení proxy aplikace služby Azure AD](active-directory-ds-deploy-azure-app-proxy.md)
 ## [Odstranění spravované domény](active-directory-ds-disable-aadds.md)
-## Řešení potíží
-### [Nejčastější dotazy](active-directory-ds-faqs.md)
-### [Průvodce řešením problémů](active-directory-ds-troubleshooting.md)
-### [Řešení výstrah](active-directory-ds-troubleshoot-alerts.md)
-#### [Oprava narušené konfigurace NSG](active-directory-ds-troubleshoot-nsg.md)
-#### [Obnovení chybějících objektů služby](active-directory-ds-troubleshoot-service-principals.md)
-#### [Chyby protokolu Secure LDAP](active-directory-ds-troubleshoot-ldaps.md)
-### [Řešení chyb neshod tenantů](active-directory-ds-mismatched-tenant-error.md)
-### [Pozastavené domény](active-directory-ds-suspension.md)
+
+# Připojení ke spravované doméně
+## [Virtuální počítač s Windows Serverem](active-directory-ds-admin-guide-join-windows-vm-portal.md)
+## [Virtuální počítač s Windows Serverem ze šablony](active-directory-ds-join-windows-vm-template.md)
+## [CentOS](active-directory-ds-join-centos-linux-vm.md)
+## [CoreOS](active-directory-ds-join-coreos-linux-vm.md)
+## [Red Hat Enterprise Linux](active-directory-ds-join-rhel-linux-vm.md)
+## [Ubuntu Server](active-directory-ds-join-ubuntu-linux-vm.md)
+# Správa spravované domény
+## [Správa spravované domény](active-directory-ds-admin-guide-administer-domain.md)
+## [Správa DNS ve spravované doméně](active-directory-ds-admin-guide-administer-dns.md)
+## [Aktualizace e-mailových oznámení](active-directory-ds-notifications.md)
+# Konfigurace zabezpečeného protokolu LDAP pro spravovanou doménu
+## [Úloha 1: Získání certifikátu pro protokol LDAPS](active-directory-ds-admin-guide-configure-secure-ldap.md)
+## [Úloha 2: Export certifikátu protokolu LDAPS](active-directory-ds-admin-guide-configure-secure-ldap-export-pfx.md)
+## [Úloha 3: Povolení protokolu LDAPS pro spravované domény s využitím webu Azure Portal](active-directory-ds-admin-guide-configure-secure-ldap-enable-ldaps.md)
+## [Úloha 4: Konfigurace DNS pro přístup ke spravované doméně z internetu](active-directory-ds-ldaps-configure-dns.md)
+## [Krok 5: Vytvoření vazby ke spravované doméně a uzamknutí přístupu přes Secure LDAP](active-directory-ds-ldaps-bind-lockdown.md)
+## [Řešení potíží s protokolem Secure LDAP](active-directory-ds-ldaps-troubleshoot.md)
+
+# Řešení potíží
+## [Nejčastější dotazy](active-directory-ds-faqs.md)
+## [Průvodce řešením problémů](active-directory-ds-troubleshooting.md)
+## [Řešení výstrah](active-directory-ds-troubleshoot-alerts.md)
+### [Oprava narušené konfigurace NSG](active-directory-ds-troubleshoot-nsg.md)
+### [Obnovení chybějících objektů služby](active-directory-ds-troubleshoot-service-principals.md)
+### [Chyby protokolu Secure LDAP](active-directory-ds-troubleshoot-ldaps.md)
+## [Řešení chyb neshod tenantů](active-directory-ds-mismatched-tenant-error.md)
+## [Pozastavené domény](active-directory-ds-suspension.md)
 
 
 # Referenční informace
