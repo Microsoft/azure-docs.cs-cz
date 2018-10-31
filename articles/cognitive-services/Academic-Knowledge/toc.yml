@@ -1,54 +1,51 @@
+items:
 - name: Dokumentace ke službě Academic Knowledge
 - name: Přehled
   items:
-    - name: Další informace o rozhraní Academic Knowledge API
-      href: Home.md
+  - name: Další informace o rozhraní Academic Knowledge API
+    href: Home.md
 - name: Průvodce postupy
   items:
-    - name: Atributy entit
-      href: EntityAttributes.md
-      items:
-        - name: Práce
-          href: PaperEntityAttributes.md
-        - name: Autor
-          href: AuthorEntityAttributes.md
-        - name: Přidružení
-          href: AffiliationEntityAttributes.md
-        - name: Obor studia
-          href: FieldsOfStudyEntityAttributes.md
-        - name: Řada konferencí
-          href: ConferenceSeriesEntityAttributes.md
-        - name: Instance konference
-          href: ConferenceInstanceEntityAttributes.md
-        - name: Časopis
-          href: JournalEntityAttributes.md
-    - name: Metody
-      items:
-        - name: Výpočet histogramu
-          href: CalcHistogramMethod.md
-        - name: Vyhodnotit
-          href: EvaluateMethod.md
-        - name: Interpretace
-          href: InterpretMethod.md
-        - name: Podobnost
-          href: SimilarityMethod.md
-    - name: Syntaxe výrazů dotazu
-      href: QueryExpressionSyntax.md
-    - name: Procházení grafů
-      items:
-        - name: Syntaxe prohledávání lambda
-          href: LambdaSearchSyntax.md
-        - name: Metoda prohledávání grafů
-          href: GraphSearchMethod.md
-        - name: Syntaxe prohledávání JSON
-          href: JSONSearchSyntax.md
+  - name: Atributy entit
+    href: EntityAttributes.md
+    items:
+    - name: Práce
+      href: PaperEntityAttributes.md
+    - name: Autor
+      href: AuthorEntityAttributes.md
+    - name: Přidružení
+      href: AffiliationEntityAttributes.md
+    - name: Obor studia
+      href: FieldsOfStudyEntityAttributes.md
+    - name: Řada konferencí
+      href: ConferenceSeriesEntityAttributes.md
+    - name: Instance konference
+      href: ConferenceInstanceEntityAttributes.md
+    - name: Časopis
+      href: JournalEntityAttributes.md
+  - name: Metody
+    items:
+    - name: Výpočet histogramu
+      href: CalcHistogramMethod.md
+    - name: Vyhodnotit
+      href: EvaluateMethod.md
+    - name: Interpretace
+      href: InterpretMethod.md
+    - name: Podobnost
+      href: SimilarityMethod.md
+  - name: Syntaxe výrazů dotazu
+    href: QueryExpressionSyntax.md
 - name: Referenční informace
   items:
-    - name: Referenční materiály k rozhraní API
-      href: 'https://westus.dev.cognitive.microsoft.com/docs/services/56332331778daf02acc0a50b/operations/565d9001ca73072048922d97'
-    - name: Referenční informace k rozhraní API pro Labs
-      href: 'https://dev.labs.cognitive.microsoft.com/docs/services/56332331778daf02acc0a50b/operations/565d9001ca73072048922d97'
+  - name: Referenční informace k rozhraní API pro Labs
+    href: https://dev.labs.cognitive.microsoft.com/docs/services/56332331778daf02acc0a50b/operations/565d9001ca73072048922d97
 - name: Zdroje a prostředky
   items:
-    - name: Plány Azure do budoucna
-      href: 'https://azure.microsoft.com/roadmap/'
+  - name: Plány Azure do budoucna
+    href: https://azure.microsoft.com/roadmap/
+ms.openlocfilehash: 877d2504ff6ec044a6bdcc4e1f046dd13f87f5a6
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50238314"

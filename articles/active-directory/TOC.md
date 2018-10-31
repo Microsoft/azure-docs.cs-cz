@@ -4,7 +4,6 @@
 ## [Představení služby Azure Active Directory](fundamentals/active-directory-whatis.md)
 ## [Správa identit Azure](fundamentals/identity-fundamentals.md)
 ## [Vysvětlení řešení identit Azure](fundamentals/understand-azure-identity-solutions.md)
-## [Volba řešení s hybridní identitou](choose-hybrid-identity-solution.md)
 ## [Přidružení předplatných Azure](fundamentals/active-directory-how-subscriptions-associated-directory.md)
 ## [Požadavky na data a rezidence](fundamentals/active-directory-data-storage-eu.md)
 ## [Nejčastější dotazy](fundamentals/active-directory-faq.md)
@@ -47,7 +46,6 @@
 ### [Přidání nových uživatelů do Azure AD](fundamentals/add-users-azure-active-directory.md)
 ### [Správa uživatelských profilů](fundamentals/active-directory-users-profile-azure-portal.md)
 ### [Resetování uživatelského hesla](fundamentals/active-directory-users-reset-password-azure-portal.md)
-### [Sdílení účtů](active-directory-sharing-accounts.md)
 ### [Přiřazení uživatelů k rolím správce](fundamentals/active-directory-users-assign-role-azure-portal.md)
 ### [Přidání uživatelů typu host z jiného adresáře (B2B)](b2b/what-is-b2b.md)
 #### [Správci přidávají uživatele B2B](b2b/add-users-administrator.md)
@@ -320,11 +318,15 @@
 
 ### [Privileged Identity Management](privileged-identity-management/pim-configure.md?toc=%2fazure%2factive-directory%2ftoc.json)
 
-## [Nasazení AD FS v Azure](hybrid/how-to-connect-fed-azure-adfs.md)
-### [Vysoká dostupnost](active-directory-adfs-in-azure-with-azure-traffic-manager.md)
-### [Změna podpisového hashovacího algoritmu](active-directory-federation-sha256-guidance.md)
+
 
 ## [Řešení problémů](fundamentals/active-directory-troubleshooting-support-howto.md)
+
+## Nasazení testování konceptu (POC) Azure AD
+### [Scénáře PoC: Úvod](active-directory-playbook-intro.md)
+### [Scénáře PoC: Složky](active-directory-playbook-ingredients.md)
+### [Scénáře PoC: Implementace](active-directory-playbook-implementation.md)
+### [Scénáře PoC: Stavební bloky](active-directory-playbook-building-blocks.md)
 
 # Referenční informace
 ## [Ukázky kódu](https://azure.microsoft.com/resources/samples/?service=active-directory)

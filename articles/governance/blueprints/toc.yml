@@ -4,35 +4,46 @@ items:
 - name: Přehled
   items:
   - name: Přehled Azure Blueprints
+    displayName: templates, policy, definition, assignment, rbac
     href: overview.md
   expanded: true
 - name: Šablony Rychlý start
   items:
   - name: Vytvoření podrobného plánu – portál
+    displayName: publish, assign, track, unassign, delete
     href: create-blueprint-portal.md
   - name: Vytvoření podrobného plánu – REST API
+    displayName: publish, assign, track, unassign, delete
     href: create-blueprint-rest-api.md
   expanded: true
 - name: Koncepty
   items:
   - name: Životní cyklus podrobného plánu
+    displayName: publish, edit, delete, assignments
     href: ./concepts/lifecycle.md
   - name: Dynamické parametry v podrobném plánu
+    displayName: secureString, secureObject, static
     href: ./concepts/parameters.md
   - name: Pořadí úloh v nasazení podrobného plánu
+    displayName: customize
     href: ./concepts/sequencing-order.md
   - name: Zamykání prostředků ve službě Blueprint
+    displayName: mode, state, read only, edit, denyAssignments
     href: ./concepts/resource-locking.md
   expanded: true
 - name: Návody
   items:
   - name: Aktualizace existujících přiřazení
+    displayName: lock, errors
     href: ./how-to/update-existing-assignments.md
   expanded: true
 - name: Řešení potíží
+  displayName: errors, violation
   href: ./troubleshoot/general.md
 - name: Odkazy
   items:
+  - name: REST API
+    href: /rest/api/blueprints/
   - name: PowerShell (komunita)
     href: https://www.powershellgallery.com/packages/Manage-AzureRMBlueprint
   expanded: true
@@ -44,9 +55,9 @@ items:
     href: https://azure.microsoft.com/pricing/calculator/
   - name: UserVoice
     href: https://feedback.azure.com/forums/915958-azure-governance
-ms.openlocfilehash: bd28123bbf7c26fc8bc510936d8c3a71afc16d80
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: f836c2202822d5a13bbb0aba98c8cea0a4a96124
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49378822"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50248621"
