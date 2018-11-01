@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/11/2018
+ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: fa316ee47e6fdabacf22e1e419bfd501620dd83d
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: f50be01d067032b1143a80e56ccb5d49d899d4d6
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49429146"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50415963"
 ---
 # <a name="understand-a-system-reboot-for-azure-vm"></a>Vysvětlení restartování systému pro virtuální počítač Azure
 

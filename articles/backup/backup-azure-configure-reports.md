@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: adigan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 945a91b9021ed5ff02e8c1ef7baf85e2098202ca
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 493a8881975e6b7568a7823bfc86fc97b4389378
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50214660"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50418275"
 ---
 # <a name="configure-azure-backup-reports"></a>Konfigurace sestav Azure Backup
 Tento článek popisuje postup konfigurace sestav Azure Backup pomocí trezoru služby Recovery Services. Také ukazuje, jak získat přístup k sestavám pomocí Power BI. Po dokončení těchto kroků můžete přejít přímo do Power BI k zobrazení, přizpůsobení a vytváření sestav.
@@ -22,7 +22,7 @@ Tento článek popisuje postup konfigurace sestav Azure Backup pomocí trezoru s
 > [!IMPORTANT]
 > Od 1. listopadu 2018 někteří zákazníci mohou podívejte se na problémy při načítání dat v aplikaci Azure Backup v Power BI, jak říkáte "jsme našli nějaké znaky navíc na konci vstupu JSON. Výjimku vyvolalo rozhraní IDataReader."
 Toto je z důvodu změn ve formátu, ve kterém se data načtou do účtu úložiště.
-Upgradujte prosím aplikaci na nejnovější verzi, které se chcete vyhnout tomuto problému.
+Stáhněte si prosím nejnovější aplikace (verze 1.8) k tomuto problému vyhnout.
 >
 >
 
@@ -74,23 +74,24 @@ Postupujte podle těchto kroků a nakonfigurujte účet úložiště pro trezor 
       ![Zobrazení nastavení diagnostiky kroku 9](./media/backup-azure-configure-reports/diagnostic-setting-row.png)
 
 > [!NOTE]
-> Po dokončení konfigurace sestav pomocí ukládání účtu úložiště *počkejte po dobu 24 hodin* pro počáteční datová oznámení na dokončení. Importujte balíček obsahu Azure Backup v Power BI jenom po uplynutí této doby. Další informace najdete v tématu [oddílu Nejčastější dotazy](#frequently-asked-questions). 
+> Po dokončení konfigurace sestav pomocí ukládání účtu úložiště *počkejte po dobu 24 hodin* pro počáteční datová oznámení na dokončení. Aplikace Azure Backup v Power BI importujte pouze po uplynutí této doby. Další informace najdete v tématu [oddílu Nejčastější dotazy](#frequently-asked-questions). 
 >
 >
 
 ## <a name="view-reports-in-power-bi"></a>Zobrazení sestav v Power BI 
 Když nakonfigurujete účet úložiště pro sestavy pomocí trezoru služby Recovery Services, trvá přibližně 24 hodin pro generování sestav dat spustit tok v. Po 24 hodinách nastavení účtu úložiště použijte následující postup zobrazení sestav v Power BI.
-1. [Přihlaste se](https://powerbi.microsoft.com/landing/signin/) do Power BI.
-2. Vyberte **Načíst data**. V **knihovny obsahu balíčků**v části **služby**vyberte **získat**. Postupujte podle pokynů [dokumentaci k Power BI pro přístup k balíčku obsahu](https://powerbi.microsoft.com/documentation/powerbi-content-packs-services/).
+Pokud chcete přizpůsobit a sdílet sestavy, vytvořte pracovní prostor a proveďte následující kroky
 
-     ![Importovat balíček obsahu](./media/backup-azure-configure-reports/content-pack-import.png)
+1. [Přihlaste se](https://powerbi.microsoft.com/landing/signin/) do Power BI.
+2. Vyberte **Načíst data**. V **další způsoby, jak vytvořit vlastní obsah**vyberte **balíčky obsahu služby**. Postupujte podle pokynů [dokumentaci k Power BI připojit ke službě](https://powerbi.microsoft.com/documentation/powerbi-content-packs-services/).
+
 3. V **hledání** panelu, zadejte **Azure Backup** a vyberte **získat**.
 
       ![Získat balíček obsahu](./media/backup-azure-configure-reports/content-pack-get.png)
 4. Zadejte název účtu úložiště, který jste nakonfigurovali v předchozím kroku 5 a vyberte **Další**.
 
     ![Zadejte název účtu úložiště.](./media/backup-azure-configure-reports/content-pack-storage-account-name.png)    
-5. Zadejte klíč účtu úložiště pro tento účet úložiště. K [zobrazení a zkopírování přístupových klíčů k úložišti](../storage/common/storage-account-manage.md#access-keys), přejděte na svůj účet úložiště na webu Azure Portal. 
+5. Pomocí metody ověřování "Klíče", zadejte klíč účtu úložiště pro tento účet úložiště. K [zobrazení a zkopírování přístupových klíčů k úložišti](../storage/common/storage-account-manage.md#access-keys), přejděte na svůj účet úložiště na webu Azure Portal. 
 
      ![Zadejte účet úložiště](./media/backup-azure-configure-reports/content-pack-storage-account-key.png) <br/>
      
@@ -102,9 +103,7 @@ Když nakonfigurujete účet úložiště pro sestavy pomocí trezoru služby Re
     
     ![Importovat balíček obsahu úspěch](./media/backup-azure-configure-reports/content-pack-import-success.png) <br/>
     
-7. Jakmile úspěšně, naimportuje data **Azure Backup** balíček obsahu je zobrazená v **aplikace** v navigačním podokně. V části **řídicí panely**, **sestavy**, a **datových sad**, v seznamu se teď zobrazují Azure Backup s žluté hvězdičky označující nově importovaných sestav.
-
-     ![Balíček obsahu Azure Backup](./media/backup-azure-configure-reports/content-pack-azure-backup.png) <br/>
+7. Jakmile úspěšně, naimportuje data **Azure Backup** balíček obsahu je zobrazená v **aplikace** v navigačním podokně. V části **řídicí panely**, **sestavy**, a **datových sad**, v seznamu se teď zobrazí Azure Backup.
      
 8. V části **řídicí panely**vyberte **Azure Backup**, zobrazí sadu připnuté klíče sestavy.
 

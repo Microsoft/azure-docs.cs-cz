@@ -5,23 +5,23 @@ services: active-directory
 ms.service: active-directory
 ms.component: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 10/30/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: jsimmons
-ms.openlocfilehash: c164c2465a4e9d60159ea9596139f2e4938f792f
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 6832f6f9d09cbbfea6ccaa69160ad93209c7ac8c
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50242496"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50741174"
 ---
 # <a name="preview-azure-ad-password-protection-monitoring-reporting-and-troubleshooting"></a>Ve verzi Preview: Azure AD hesla ochrany monitorování, vytváření sestav a řešení potíží
 
 |     |
 | --- |
-| Ochrana hesel Azure AD a v seznamu vlastních zakázaných hesel jsou funkce ve verzi public preview služby Azure Active Directory. Další informace o verzích Preview najdete v tématu [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
+| Ochrana hesel Azure AD je funkce ve verzi public preview služby Azure Active Directory. Další informace o verzích Preview najdete v tématu [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
 |     |
 
 Po nasazení ochrany hesla Azure AD jsou základní úlohy monitorování a vytváření sestav. Tento článek obsahuje podrobnosti kterých víte, kde každá služba protokoluje informace a hlášení týkající se použití ochrany hesla Azure AD.
@@ -88,7 +88,7 @@ Některé klíče zprávy protokolu událostí je potřeba vědět jsou:
 
 Heslo pro zadaného uživatele se přijal, protože zásady hesel služby Azure ještě není k dispozici
 
-Uživatelské jméno: <user> jméno a příjmení: <user>
+Uživatelské jméno: SomeUser FullName: některé uživatele
 
 K tomuto stavu může být způsobeno jedním nebo více z následujících důvodů: % n
 

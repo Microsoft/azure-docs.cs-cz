@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: mbullwin
-ms.openlocfilehash: 88626c3a4bfd4a1ff3a2e9cbc8c3f2b1c5553295
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 83852333d8e66c76f2d2710b1813a4400622e624
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44303621"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50417306"
 ---
 # <a name="separating-telemetry-from-development-test-and-production"></a>Oddělení telemetrická data z vývoj, testování a produkce
 
@@ -156,7 +156,7 @@ Všimněte si však, že číslo verze sestavení je generováno pouze pomocí p
 ### <a name="release-annotations"></a>Poznámky k verzi
 Pokud používáte Azure DevOps, můžete si [získat značku poznámek](app-insights-annotations.md) přidat do svých grafů pokaždé, když vydáte novou verzi. Následující obrázek ukazuje, jak se tato značka zobrazuje.
 
-![Snímek obrazovky grafu s ukázkovou poznámkou k verzi](./media/app-insights-asp-net/release-annotation.png)
+![Snímek obrazovky grafu s ukázkovou poznámkou k verzi](media/app-insights-separate-resources/release-annotation.png)
 ## <a name="next-steps"></a>Další postup
 
 * [Sdílené prostředky pro víc rolí.](app-insights-monitor-multi-role-apps.md)

@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 49aed496d8c125da8c2269186b569693c794d290
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: fc9ed37ef24e776336124bf097def2f6a00ee83e
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49404558"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50419788"
 ---
 # <a name="common-questions-for-transition-from-oms-portal-to-azure-portal-for-log-analytics-users"></a>Běžné otázky týkající se přechodu z portálu OMS na webu Azure portal pro uživatele Log Analytics
 Vlastní portál, volá se na portálu OMS log Analytics původně použitý ke správě své konfiguraci a analýzy shromážděných dat.  Všechny funkce z tohoto portálu byl přesunut na webu Azure portal ve kterém bude pokračovat na vývoj.
@@ -32,7 +32,7 @@ Ne. Neexistují žádné změny prováděné ke službě Log Analytics, takže n
 ## <a name="where-do-i-find-log-analytics-in-azure"></a>Kde najdu Log Analytics v Azure?
 Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).  Klikněte na tlačítko **všechny služby**a v seznamu prostředků zadejte **Log Analytics**. Vyberte **Log Analytics** a pak vyberte pracovní prostor. Zobrazí se souhrn stránka pro pracovní prostor.
 
-![Pracovní prostor Log Analytics](media/log-analytics-new-portal/log-analytics.png)
+![Pracovní prostor Log Analytics](media/log-analytics-oms-portal-faq/log-analytics.png)
 
 ## <a name="how-do-i-manage-permissions"></a>Jak změním oprávnění?
 Pokud nemáte přístup k pracovnímu prostoru Log Analytics na portálu Azure portal, budete muset nakonfigurovat oprávnění pomocí [přístupu na základě rolí Azure](../active-directory/role-based-access-control-configure.md). Podrobnosti o správě oprávnění pracovního prostoru najdete v tématu [Správa pracovních prostorů](../log-analytics/log-analytics-manage-access.md#manage-accounts-and-users). Informace o správě oprávnění pro výstrahy, najdete v tématu [role, oprávnění a zabezpečení prostřednictvím služby Azure Monitor vám začít](../monitoring-and-diagnostics/monitoring-roles-permissions-security.md).
@@ -40,12 +40,12 @@ Pokud nemáte přístup k pracovnímu prostoru Log Analytics na portálu Azure p
 ## <a name="how-do-i-create-a-new-workspace"></a>Jak vytvořit nový pracovní prostor? 
 Ze seznamu pracovních prostorů na webu Azure Portal, klikněte na tlačítko **přidat** v seznamu pracovních prostorů.  Úplné podrobnosti najdete v tématu [vytvořit pracovní prostor Log Analytics na portálu Azure portal](../log-analytics/log-analytics-quick-create-workspace.md).
 
-![Stránka s přehledem](media/log-analytics-new-portal/new-workspace.png)
+![Stránka s přehledem](media/log-analytics-oms-portal-faq/new-workspace.png)
 
 ## <a name="where-is-my-overview-page"></a>Kde je Moje stránka s přehledem?
 Na hlavní obrazovce portálu OMS se zobrazí dlaždice všech řešení pro správu nainstalovat v jakékoli vlastní zobrazení, které jste vytvořili a pracovního prostoru. Toto zobrazení stejné je k dispozici na webu Azure Portal. V pracovním prostoru vyberte **shrnutí pracovního prostoru**.
 
-![Stránka s přehledem](media/log-analytics-new-portal/overview.png)
+![Stránka s přehledem](media/log-analytics-oms-portal-faq/overview.png)
 
 ## <a name="how-do-i-open-log-search-and-view-designer"></a>Jak otevřít prohledávání protokolů a zobrazení návrháře?
 Obě **prohledávání protokolů** a **Návrhář zobrazení** mají k dispozici na hlavní stránce a v levé nabídce pracovního prostoru na webu Azure Portal, vpravo vedle **přehled**.
@@ -53,7 +53,7 @@ Obě **prohledávání protokolů** a **Návrhář zobrazení** mají k dispozic
 ## <a name="where-do-i-find-settings"></a>Kde najdu nastavení?
 Mnoho nastavení v **nastavení** jsou k dispozici v části portálu OMS **upřesňující nastavení** nabídky na webu Azure Portal pro pracovní prostor.
 
-![Upřesnit nastavení](media/log-analytics-new-portal/advanced-settings.png)
+![Upřesnit nastavení](media/log-analytics-oms-portal-faq/advanced-settings.png)
 
 Následující oddíly poskytují úplný seznam přístupu k nastavení, které byly dříve k dispozici v **nastavení** části portálu OMS.
 
@@ -118,7 +118,7 @@ Pravidla upozornění na základě dotazů Log Analytics se teď spravují v [sj
 ## <a name="how-do-i-check-my-usage"></a>Jak můžu zkontrolovat využití?
 Teď můžete snadno zobrazit a spravovat vaše využití a náklady na služby Log Analytics tak, že vyberete **využití a odhadované náklady** ve vašem pracovním prostoru.
 
-![Využití a odhadované náklady](media/log-analytics-new-portal/usage.png)
+![Využití a odhadované náklady](media/log-analytics-oms-portal-faq/usage.png)
 
 
 ## <a name="can-i-still-use-the-classic-portal"></a>Použití portálu classic

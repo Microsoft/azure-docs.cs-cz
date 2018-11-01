@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 05/11/2018
+ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: e8ecdf1fffb51c0b8e9ce996307595a5444a64ee
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: eeecf37a6cc7a0f86662f002b6f0efab5ef8c35c
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47413412"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50417459"
 ---
 # <a name="troubleshoot-azure-windows-virtual-machine-activation-problems"></a>Poradce při potížích aktivace virtuálního počítače Windows Azure
 
@@ -82,7 +82,7 @@ Tento krok se nevztahují na Windows 2012 nebo Windows 2008 R2. Používá funkc
 2. Přejít na Start, Hledat v prostředí Windows PowerShell, klikněte pravým tlačítkem na prostředí Windows PowerShell a vybrat příkaz Spustit jako správce.
 
 3. Ujistěte se, že virtuální počítač je nakonfigurován na použití správný server služby správy KLÍČŮ Azure. Chcete-li to provést, spusťte následující příkaz:
-  
+  
     ```
     iex “$env:windir\system32\cscript.exe $env:windir\system32\slmgr.vbs /skms
     kms.core.windows.net:1688
@@ -90,11 +90,11 @@ Tento krok se nevztahují na Windows 2012 nebo Windows 2008 R2. Používá funkc
     Příkaz by měl vrátit: název počítače služby správy klíčů nastavený na kms.core.windows.net:1688 úspěšně.
 
 4. Ověřte pomocí Pspingu, že máte připojení k serveru služby správy KLÍČŮ. Přejděte do složky, které jste extrahovali Pstools.zip stahování a pak spusťte následující příkaz:
-  
+  
     ```
     \psping.exe kms.core.windows.net:1688
     ```
-  
+  
   V druhé poslední řádek výstupu, ujistěte se, že se zobrazuje: odeslané = 4, přijaté = 4, bylo ztraceno = 0 (ztráty 0 %).
 
   Pokud bylo ztraceno je větší než 0 (nula), virtuální počítač nemá připojení k serveru služby správy KLÍČŮ. V takovém případě pokud je virtuální počítač ve virtuální síti a má vlastní server DNS zadán, je nutné tento server DNS je schopen převést kms.core.windows.net. Nebo změnit DNS server, který kms.core.windows.net vyřešit.

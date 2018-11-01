@@ -1,6 +1,6 @@
 ---
-title: Odolnost proti chybám aktivity kopírování v Azure Data Factory | Microsoft Docs
-description: Další informace o tom, jak přidat odolnost proti chybám aktivitě kopírování v Azure Data Factory přeskočením nekompatibilní řádky.
+title: Odolnost proti chybám aktivity kopírování ve službě Azure Data Factory | Dokumentace Microsoftu
+description: Další informace o tom, jak přidat odolnost proti chybám aktivitě kopírování ve službě Azure Data Factory přeskočením nekompatibilních řádků.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -11,45 +11,47 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/27/2018
+ms.date: 10/26/2018
 ms.author: jingwang
-ms.openlocfilehash: 6c76820b39f31d92362295d54984069393fa0dec
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 3f207cdb3af3f7e328cd5843053240bbbe15980e
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37058854"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50418339"
 ---
-#  <a name="fault-tolerance-of-copy-activity-in-azure-data-factory"></a>Odolnost proti chybám aktivity kopírování v Azure Data Factory
+#  <a name="fault-tolerance-of-copy-activity-in-azure-data-factory"></a>Odolnost proti chybám aktivity kopírování ve službě Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Verze 1](v1/data-factory-copy-activity-fault-tolerance.md)
 > * [Aktuální verze](copy-activity-fault-tolerance.md)
 
-Aktivita kopírování v Azure Data Factory nabízí dva způsoby, jak zpracovat nekompatibilní řádků při kopírování dat mezi zdroj a jímka úložišti dat:
+Aktivita kopírování ve službě Azure Data Factory nabízí dva způsoby, jak řešit nekompatibilních řádků při kopírování dat mezi úložišti dat zdroje a jímky:
 
-- Můžete přerušit a selhání kopie aktivity po nekompatibilní data došlo (výchozí nastavení).
-- Kopírování všech dat přidáním odolnost proti chybám a přeskočení řádky nekompatibilní data můžete pokračovat. Kromě toho se můžete přihlásit nekompatibilní řádky úložiště objektů Blob v Azure nebo Azure Data Lake Store. Poté můžete prozkoumat do protokolu a zjistěte příčinu selhání, opravte dat ve zdroji dat a zkuste to aktivitě kopírování.
+- Můžete přerušit a předat při kopírování aktivity po nekompatibilní dat došlo k (výchozí chování).
+- Kopírování všech dat přidáním odolnost proti chybám a přeskočí řádky nekompatibilní dat můžete pokračovat. Kromě toho můžete protokolování nekompatibilních řádků v Azure Blob storage nebo Azure Data Lake Store. Poté můžete prozkoumat v protokolu zjistěte příčinu selhání, opravte data ve zdroji dat a opakujte aktivitu kopírování.
 
 ## <a name="supported-scenarios"></a>Podporované scénáře
-Aktivita kopírování podporuje tři scénáře pro zjišťování, přeskočí a protokolování nekompatibilní data:
+Aktivitu kopírování, která podporuje tři scénáře pro zjištění, přeskočí a protokolování nekompatibilní data:
 
-- **Nekompatibilita mezi zdrojového datového typu a nativní typ jímky**. 
+- **Nekompatibilita mezi typem zdroje dat a nativní typ jímky**. 
 
-    Příklad: kopírování dat ze souboru CSV v úložišti objektů Blob k databázi SQL s definici schématu, která obsahuje tři sloupce typu INT. Řádky soubor CSV, které obsahují číselná data, jako je například 123,456,789 jsou úspěšně zkopírovat do úložiště jímky. Ale řádky, které obsahují jiné než číselné hodnoty, jako je například 123,456, abc jsou rozpoznána jako nekompatibilní a se přeskočí.
+    Příklad: kopírování dat ze souboru CSV ve službě Blob storage do SQL database pomocí definice schématu, která obsahuje tři sloupce typu INT. Řádků souboru CSV, které obsahují číselná data, jako je například 123,456,789 úspěšně zkopírovány do úložiště jímky. Ale řádky, které obsahují nečíselné hodnoty, jako je například 123,456, abc, jsou rozpoznány jako nekompatibilní a jsou vynechány.
 
-- **Neshoda mezi počtem sloupců mezi zdroj a jímka**.
+- **Neshoda v počtu sloupců mezi zdroj a jímku**.
 
-    Příklad: kopírování dat ze souboru CSV v úložišti objektů Blob k databázi SQL s definici schématu, která obsahuje šest sloupce. Řádky soubor CSV, které obsahují šesti sloupce jsou úspěšně zkopírovat do úložiště jímky. Řádky soubor CSV, které obsahují více nebo méně než šest sloupce jsou rozpoznána jako nekompatibilní a se přeskočí.
+    Příklad: kopírování dat ze souboru CSV ve službě Blob storage do SQL database pomocí definice schématu, který obsahuje šest sloupců. Řádků souboru CSV, které obsahují šest sloupců se úspěšně zkopírují do úložiště jímky. Řádků souboru CSV, které obsahují více nebo méně než šest sloupců, jsou rozpoznány jako nekompatibilní a jsou vynechány.
 
-- **Porušení primárního klíče při zápisu do SQL serveru nebo Azure SQL Database nebo Azure Cosmos DB**.
+- **Primární klíče porušení, při zápisu do SQL serveru nebo Azure SQL Database nebo Azure Cosmos DB**.
 
-    Příklad: kopírování dat z SQL serveru do databáze SQL. Ve službě SQL database podřízený je definovaný primární klíč, ale na zdrojovém serveru SQL je definován žádný primární klíč. Duplicitní řádky, na které existují ve zdroji nelze zkopírovat do jímky. Aktivita kopírování zkopíruje pouze první řádek zdrojová data do jímky. Další zdroje řádky, které obsahují duplicitní hodnotu primárního klíče jsou rozpoznána jako nekompatibilní a se přeskočí.
+    Příklad: kopírování dat z SQL serveru do služby SQL database. Primární klíč je definován ve službě SQL database jímky, ale na zdrojovém serveru SQL není definován žádný takový primární klíč. Duplicitní řádky, které existují ve zdroji nelze zkopírovat do jímky. Aktivita kopírování kopíruje pouze první řádek dat zdroje do jímky. Následné zdrojové řádky, které obsahují duplicitní hodnoty primárního klíče, jsou rozpoznány jako nekompatibilní a jsou vynechány.
 
 >[!NOTE]
->Tato funkce se nevztahuje aktivity kopírování je nakonfigurovaný k vyvolání externích dat načítání, včetně mechanismus [Azure SQL Data Warehouse PolyBase](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-sql-data-warehouse) nebo [Amazon Redshift uvolnění](connector-amazon-redshift.md#use-unload-to-copy-data-from-amazon-redshift). Pro načítání dat do SQL Data Warehouse pomocí PolyBase, použijte PolyBase na nativní odolnost proti chybám podporu zadáním "[polyBaseSettings](connector-azure-sql-data-warehouse.md#azure-sql-data-warehouse-as-sink)" v aktivitě kopírování.
+>- Pro načítání dat do SQL Data Warehouse pomocí PolyBase, nakonfigurovat PolyBase pro nativní odolnost proti chybám nastavení tak, že určíte zásady na odmítnout prostřednictvím "[polyBaseSettings](connector-azure-sql-data-warehouse.md#azure-sql-data-warehouse-as-sink)" v aktivitě kopírování. Stále můžete povolit přesměrování PolyBase nekompatibilních řádků do objektu Blob nebo ADLS normálním způsobem, jak je znázorněno níže.
+>- Tato funkce se nevztahuje při aktivitě kopírování je nakonfigurován k vyvolání [uvolnění Amazon Redshift](connector-amazon-redshift.md#use-unload-to-copy-data-from-amazon-redshift).
+
 
 ## <a name="configuration"></a>Konfigurace
-Následující příklad uvádí definici JSON konfigurace přeskočení nekompatibilní řádky v aktivitě kopírování:
+Následující příklad uvádí definici JSON konfigurace přeskočení nekompatibilních řádků v aktivitě kopírování:
 
 ```json
 "typeProperties": {
@@ -72,13 +74,13 @@ Následující příklad uvádí definici JSON konfigurace přeskočení nekompa
 
 Vlastnost | Popis | Povolené hodnoty | Požaduje se
 -------- | ----------- | -------------- | -------- 
-enableSkipIncompatibleRow | Určuje, jestli chcete přeskočit nekompatibilní řádky během kopírování, nebo ne. | True<br/>NEPRAVDA (výchozí) | Ne
-redirectIncompatibleRowSettings | Skupina vlastností, které může být zadán, pokud chcete protokolovat nekompatibilní řádky. | &nbsp; | Ne
-linkedServiceName | Propojené služby [Azure Storage](connector-azure-blob-storage.md#linked-service-properties) nebo [Azure Data Lake Store](connector-azure-data-lake-store.md#linked-service-properties) k uložení protokol, který obsahuje přeskočených řádků. | Název `AzureStorage` nebo `AzureDataLakeStore` typu propojené služby, která odkazuje na instanci, kterou chcete použít k uložení souboru protokolu. | Ne
-path | Cesta souboru protokolu, který obsahuje přeskočených řádků. | Zadejte cestu, kterou chcete používat k protokolování nekompatibilní data. Pokud nezadáte cestu, služby pro vás vytvoří kontejner. | Ne
+enableSkipIncompatibleRow | Určuje, jestli se má přeskočit nekompatibilních řádků během kopírování nebo ne. | True<br/>False (výchozí) | Ne
+redirectIncompatibleRowSettings | Skupina vlastností, které může být zadaná, kdy budete chtít protokolování nekompatibilních řádků. | &nbsp; | Ne
+linkedServiceName | Propojené služby [služby Azure Storage](connector-azure-blob-storage.md#linked-service-properties) nebo [Azure Data Lake Store](connector-azure-data-lake-store.md#linked-service-properties) ukládat protokol, který obsahuje přeskočených řádků. | Název `AzureStorage` nebo `AzureDataLakeStore` typ propojené služby, který se vztahuje na instance, kterou chcete použít k uložení souboru protokolu. | Ne
+path | Cesta souboru protokolu, který obsahuje přeskočených řádků. | Zadejte cestu, kterou chcete použít k protokolování nekompatibilní datový. Pokud nezadáte cestu, služby kontejneru vytvoří za vás. | Ne
 
-## <a name="monitor-skipped-rows"></a>Monitorování přeskočených řádků
-Po dokončení kopírování aktivity při spuštění, zobrazí se počet přeskočených řádků ve výstupu aktivitě kopírování:
+## <a name="monitor-skipped-rows"></a>Monitorování bylo přeskočeno řádků
+Po spuštění aktivity kopírování dokončí, zobrazí se počet přeskočených řádků ve výstupu aktivity kopírování:
 
 ```json
 "output": {
@@ -93,11 +95,11 @@ Po dokončení kopírování aktivity při spuštění, zobrazí se počet přes
         },
 
 ```
-Pokud nakonfigurujete protokolu nekompatibilní řádky, můžete nějakého najít soubor protokolu v této cestě: `https://[your-blob-account].blob.core.windows.net/[path-if-configured]/[copy-activity-run-id]/[auto-generated-GUID].csv`. 
+Při konfiguraci protokolování nekompatibilních řádků, můžete najít soubor protokolu na tuto cestu: `https://[your-blob-account].blob.core.windows.net/[path-if-configured]/[copy-activity-run-id]/[auto-generated-GUID].csv`. 
 
-Soubory protokolu lze pouze soubory csv. Původní data přeskočen bude protokolována s čárkou jako oddělovač sloupec, podle potřeby. Přidáme další dva sloupce "ErrorCode" a "ErrorMessage" v další k původní zdrojová data v souboru protokolu, kde se můžete podívat kořenové příčinu nekompatibilita. Kód chyby a ErrorMessage budou nabízeny pomocí dvojité uvozovky. 
+Soubory protokolů lze pouze soubory sdíleného svazku clusteru. Původní data se přeskakuje, se budou protokolovat s čárkou jako oddělovač sloupců v případě potřeby. Přidáme další dva sloupce "ErrorCode" a "Chybová zpráva" navíc k původní zdrojová data v souboru protokolu, kde se můžete podívat kořenové příčiny nekompatibility. Kód chyby a chybová zpráva bude uvedený v uvozovkách dvojitých uvozovkách. 
 
-Příklad obsahu souboru protokolu je následující:
+Příklad obsahu souboru protokolu je následujícím způsobem:
 
 ```
 data1, data2, data3, "UserErrorInvalidDataValue", "Column 'Prop_2' contains an invalid value 'data3'. Cannot convert 'data3' to type 'DateTime'."
@@ -105,9 +107,9 @@ data4, data5, data6, "2627", "Violation of PRIMARY KEY constraint 'PK_tblintstrd
 ```
 
 ## <a name="next-steps"></a>Další postup
-Najdete v aktivitě kopírování článcích:
+Zobrazit další články o aktivitě kopírování:
 
-- [Kopie aktivity – přehled](copy-activity-overview.md)
-- [Výkonu kopie aktivity](copy-activity-performance.md)
+- [Přehled aktivit kopírování](copy-activity-overview.md)
+- [Výkonem aktivity kopírování](copy-activity-performance.md)
 
 

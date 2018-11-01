@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 3851bfef71aab6553e109bb8108edd7bec182f0e
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 87cfcefd91652194adc0a5ca4580a8d00ba4d234
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041948"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50412742"
 ---
 # <a name="filters-in-log-analytics-views"></a>Filtry v zobrazení Log Analytics
 A **filtr** v [zobrazení Log Analytics](log-analytics-view-designer.md) umožňuje uživatelům k filtrování dat v zobrazení podle hodnoty určité vlastnosti beze změny samotného zobrazení.  Například můžete umožnit uživatelům zobrazení filtrovat zobrazení dat jenom z určitého počítače nebo sadu počítačů.  Na jedno zobrazení umožňuje uživatelům můžete filtrovat podle několika vlastností můžete vytvořit více filtrů.  Tento článek popisuje, jak pomocí filtru a přidejte ho do vlastního zobrazení.
@@ -28,12 +28,12 @@ A **filtr** v [zobrazení Log Analytics](log-analytics-view-designer.md) umožň
 ## <a name="using-a-filter"></a>Pomocí filtru
 Klikněte na tlačítko časový rozsah dat v horní části zobrazení otevřete rozevírací nabídky, kde můžete změnit časový rozsah dat pro zobrazení.
 
-![Příklad filtru](media/log-analytics-view-designer/filters-example-time.png)
+![Příklad filtru](media/log-analytics-view-designer-filters/filters-example-time.png)
 
 Klikněte na tlačítko **+** přidejte filtr pomocí vlastní filtry, které jsou definovány pro zobrazení. Hodnota pro filtr buď vyberte z rozevíracího seznamu nebo zadejte hodnotu. Pokračujte kliknutím na Přidat filtry **+**. 
 
 
-![Příklad filtru](media/log-analytics-view-designer/filters-example-custom.png)
+![Příklad filtru](media/log-analytics-view-designer-filters/filters-example-custom.png)
 
 Pokud odeberete všechny hodnoty filtru, bude použito už tento filtr.
 
@@ -42,7 +42,7 @@ Pokud odeberete všechny hodnoty filtru, bude použito už tento filtr.
 
 Vytvořit filtr ze sloupce **filtry** kartě při [zobrazení pro úpravy](log-analytics-view-designer.md).  Tento filtr je globální zobrazení a platí pro všechny části v zobrazení.  
 
-![Nastavení filtru](media/log-analytics-view-designer/filters-settings.png)
+![Nastavení filtru](media/log-analytics-view-designer-filters/filters-settings.png)
 
 Následující tabulka popisuje nastavení pro filtr.
 

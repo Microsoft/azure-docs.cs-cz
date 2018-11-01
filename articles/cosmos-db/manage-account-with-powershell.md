@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/21/2017
 ms.author: sngun
-ms.openlocfilehash: 82ab30ebab1b69d5ae636702b3b56d3792c09010
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: b115058353d14a3bd7c774197e06de088030ffff
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47394569"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50741347"
 ---
 # <a name="create-an-azure-cosmos-db-account-using-powershell"></a>Vytvoření účtu služby Azure Cosmos DB pomocí Powershellu
 
-Následující průvodci popisuje příkazy, které automatizují správu účtů databáze Azure Cosmos DB pomocí Azure Powershellu. Zahrnuje také příkazy pro správu klíčů účtu a priority převzetí služeb při selhání v [účty databáze ve více oblastech] [distribuovat data-globally.md]. Aktualizace vašeho účtu databáze můžete upravit zásady konzistence a přidat/odebrat oblasti. Pro různé platformy správy účtu služby Azure Cosmos DB, můžete použít buď [rozhraní příkazového řádku Azure](cli-samples.md), [rozhraní REST API poskytovatele prostředků][rp-rest-api], nebo [webu Azure portal ](create-sql-api-dotnet.md#create-account).
+Následující průvodci popisuje příkazy, které automatizují správu účtů databáze Azure Cosmos DB pomocí Azure Powershellu. Zahrnuje také příkazy pro správu klíčů účtu a priority převzetí služeb při selhání v [účty databáze ve více oblastech][distribute-data-globally]. Aktualizace vašeho účtu databáze můžete upravit zásady konzistence a přidat/odebrat oblasti. Pro různé platformy správy účtu služby Azure Cosmos DB, můžete použít buď [rozhraní příkazového řádku Azure](cli-samples.md), [rozhraní REST API poskytovatele prostředků][rp-rest-api], nebo [webu Azure portal ](create-sql-api-dotnet.md#create-account).
 
 ## <a name="getting-started"></a>Začínáme
 
@@ -33,7 +33,7 @@ Postupujte podle pokynů v [instalace a konfigurace Azure Powershellu] [ powersh
 
 ## <a id="create-documentdb-account-powershell"></a> Vytvoření účtu služby Azure Cosmos DB
 
-Tento příkaz umožňuje vytvoření účtu databáze Azure Cosmos DB. Konfigurace nového účtu databáze jako jedné oblasti nebo [více oblastí] [distribuovat data-globally.md] s určitým [zásady konzistence](consistency-levels.md).
+Tento příkaz umožňuje vytvoření účtu databáze Azure Cosmos DB. Konfigurace nového účtu databáze jako buď jedné oblasti nebo [ve více oblastech] [ distribute-data-globally] s určitým [zásady konzistence](consistency-levels.md).
 
     $locations = @(@{"locationName"="<write-region-location>"; "failoverPriority"=0}, @{"locationName"="<read-region-location>"; "failoverPriority"=1})
     $iprangefilter = "<ip-range-filter>"
@@ -60,7 +60,7 @@ Příklad:
     New-AzureRmResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "rg-test" -Location "West US" -Name "docdb-test" -Properties $CosmosDBProperties
 
 ### <a name="notes"></a>Poznámky
-* V předchozím příkladu vytvoří databázový účet se dvěma oblastmi. Je také možné vytvořit účet databáze s využitím jedné oblasti (která je určena jako oblast zápisu a mít hodnotu priority převzetí služeb při selhání 0) nebo více než dvou oblastech. Další informace najdete v tématu [účty databáze ve více oblastech] [distribuovat data-globally.md].
+* V předchozím příkladu vytvoří databázový účet se dvěma oblastmi. Je také možné vytvořit účet databáze s využitím jedné oblasti (která je určena jako oblast zápisu a mít hodnotu priority převzetí služeb při selhání 0) nebo více než dvou oblastech. Další informace najdete v tématu [účty databáze ve více oblastech][distribute-data-globally].
 * Umístění musí být oblasti služby Azure Cosmos DB je obecně dostupná. Aktuální seznam oblastí je k dispozici na [oblastí Azure stránky](https://azure.microsoft.com/regions/#services).
 
 ## <a id="update-documentdb-account-powershell"></a> Aktualizace účtu databáze Azure Cosmos DB
@@ -195,6 +195,7 @@ Příklad:
 * Připojení pomocí Node.js najdete v tématu [připojení a dotazování pomocí Node.js a MongoDB aplikace](create-mongodb-nodejs.md).
 
 <!--Reference style links - using these makes the source content way more readable than using inline links-->
+
 [powershell-install-configure]: https://docs.microsoft.com/azure/powershell-install-configure
 [scaling-globally]: distribute-data-globally.md#EnableGlobalDistribution
 [distribute-data-globally]: distribute-data-globally.md

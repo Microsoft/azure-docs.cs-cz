@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2018
 ms.author: spelluru
-ms.openlocfilehash: ac30718a92d76dedcb5b0ef3bdd2f282dd117720
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 41af53dbfbb5c863007a332445a2f184fcbcbf81
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48853517"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50741058"
 ---
 # <a name="topic-filters-and-actions"></a>Akce a filtry témat
 
@@ -40,7 +40,7 @@ Komplexní filtrovací pravidla, která vyžadují kapacitu zpracování. Zejmé
 
 ## <a name="actions"></a>Akce
 
-Pomocí podmínky filtru SQL můžete definovat akce, která může opatřit poznámkami zprávy pomocí přidání, odebrání nebo výměna vlastností a jejich hodnot. Akce [používá výraz podobném SQL](service-bus-messaging-sql-filter.md) , volně leans na syntaxe příkazu SQL UPDATE. Akce se provádí na zprávu po mu odpovídala, a před zprávy do tématu. Změny vlastnosti zprávy jsou privátní pro zpráva zkopírována do předplatného.
+Pomocí podmínky filtru SQL můžete definovat akce, která může opatřit poznámkami zprávy pomocí přidání, odebrání nebo výměna vlastností a jejich hodnot. Akce [používá výraz podobném SQL](service-bus-messaging-sql-filter.md) , volně leans na syntaxe příkazu SQL UPDATE. Akce se provádí na zprávu po mu odpovídala, a před zprávy do odběru. Změny vlastnosti zprávy jsou privátní pro zpráva zkopírována do předplatného.
 
 ## <a name="usage-patterns"></a>Vzory využití
 

@@ -4,9 +4,6 @@ description: Zjistěte, jak vytvořit pomocí rozhraní REST API služby Azure L
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -14,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: load-balancer
 ms.date: 06/06/2018
 ms.author: kumud
-ms.openlocfilehash: ca952fa4fbea742121e579b28be35d834f17eade
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 2f5d3584a429ce35e6905b14bb412c3782fb0185
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44057021"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50416915"
 ---
 # <a name="create-an-azure-basic-load-balancer-using-rest-api"></a>Vytvoření Azure Load balancer úrovně Basic pomocí rozhraní REST API
 
@@ -43,7 +40,7 @@ Pomocí následující požadavek HTTP PUT můžete vytvořit nový Azure Load b
 
 
 
-### <a name="request-body"></a>Tělo požadavku
+### <a name="request-body"></a>Text požadavku
 
 Jediný požadovaný parametr `location`. Pokud nedefinujete *SKU* verze, základní nástroje pro vyrovnávání zatížení se vytvoří ve výchozím nastavení.  Použití [volitelné parametry](https://docs.microsoft.com/rest/api/load-balancer/loadbalancers/createorupdate#request-body) přizpůsobit nástroje pro vyrovnávání zatížení.
 
@@ -65,7 +62,7 @@ V tomto kroku vytvoříte základní pro vyrovnávání zatížení s názvem *l
   ```HTTP    
   PUT https://management.azure.com/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/loadBalancers/lb?api-version=2018-02-01
   ```
-#### <a name="request-body"></a>Tělo požadavku
+#### <a name="request-body"></a>Text požadavku
 
   ```JSON
    {
@@ -79,7 +76,7 @@ V tomto kroku nakonfigurujete nástroj pro vyrovnávání zatížení *lb* prost
   ```HTTP    
   PUT https://management.azure.com/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/loadBalancers/lb?api-version=2018-02-01
   ```
-#### <a name="request-body"></a>Tělo požadavku
+#### <a name="request-body"></a>Text požadavku
 
   ```JSON
 {

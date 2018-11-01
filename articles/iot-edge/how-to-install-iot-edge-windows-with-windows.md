@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 08/27/2018
 ms.author: kgremban
-ms.openlocfilehash: 2eebc96b14ee0f06b3bd88ea565dfe9372aba1ff
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: d85355b50bad9f05acc7da92d763d011e6f807b6
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47037810"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50741075"
 ---
 # <a name="install-azure-iot-edge-runtime-on-windows-to-use-with-windows-containers"></a>Nainstalovat modul runtime Azure IoT Edge ve Windows pro použití s kontejnery Windows
 
@@ -36,11 +36,11 @@ Další informace o tom, které jsou aktuálně podporované operační systémy
 ## <a name="install-the-container-runtime"></a>Nainstalovat modul runtime kontejneru 
 
 >[!NOTE]
->Kontejner modulu instalaci na Windows IoT Core, postupujte podle kroků z [zřízení zařízení IoT Core článek] [ lnk-iot-core] a potom pokračujte v níže uvedených pokynů.
+>Kontejner modulu instalaci na Windows IoT Core, postupujte podle kroků z [zřízení zařízení IoT Core článek](how-to-install-iot-core.md) a potom pokračujte v níže uvedených pokynů.
 
-Azure IoT Edge se může spolehnout [OCI kompatibilní] [ lnk-oci] runtime kontejneru (například Dockeru). Můžete použít [Docker pro Windows] [ lnk-docker-for-windows] pro vývoj a testování. 
+Azure IoT Edge se může spolehnout [OCI kompatibilní](https://www.opencontainers.org/) runtime kontejneru (například Dockeru). Můžete použít [Docker pro Windows](https://www.docker.com/docker-windows) pro vývoj a testování. 
 
-Konfigurace Dockeru pro Windows [používání kontejnerů Windows][lnk-docker-config].
+Konfigurace Dockeru pro Windows [používání kontejnerů Windows](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers).
 
 ## <a name="install-the-azure-iot-edge-security-daemon"></a>Instalace démona zabezpečení Azure IoT Edge
 
@@ -51,7 +51,7 @@ Jedno zařízení IoT Edge se dá zřídit ručně pomocí řetězce připojení
 
 ### <a name="install-and-manually-provision"></a>Instalace a ruční zřizování
 
-1. Postupujte podle kroků v [zaregistrovat nová zařízení Azure IoT Edge] [ lnk-dcs] načíst připojovací řetězec zařízení a zaregistrovat své zařízení. 
+1. Postupujte podle kroků v [zaregistrovat nová zařízení Azure IoT Edge](how-to-register-device-portal.md) načíst připojovací řetězec zařízení a zaregistrovat své zařízení. 
 
 2. Na svém zařízení IoT Edge spusťte PowerShell jako správce. 
 
@@ -66,7 +66,7 @@ Jedno zařízení IoT Edge se dá zřídit ručně pomocí řetězce připojení
 
 ### <a name="install-and-automatically-provision"></a>Instalace a automaticky zřizovat
 
-1. Postupujte podle kroků v [vytvoření a zřízení simulovaného zařízení TPM Edge ve Windows] [ lnk-dps] nastavení služby Device Provisioning a získání jeho **ID oboru**, simulovat čip TPM zařízení a jejich načtení jeho **ID registrace**, pak vytvoření jednotlivé registrace. Jakmile je vaše zařízení zaregistrované ve službě IoT Hub, pokračujte v instalaci.  
+1. Postupujte podle kroků v [vytvoření a zřízení simulovaného zařízení TPM Edge ve Windows](how-to-auto-provision-simulated-device-windows.md) nastavení služby Device Provisioning a získání jeho **ID oboru**, simulace zařízení TPM a načíst jeho  **ID registrace**, pak vytvoření jednotlivé registrace. Jakmile je vaše zařízení zaregistrované ve službě IoT Hub, pokračujte v instalaci.  
 
    >[!TIP]
    >Nechte okno, na kterém běží simulátor TPM otevřených během instalace a testování. 
@@ -116,21 +116,6 @@ Pokud má vaše síť proxy server, postupujte podle kroků v [nakonfigurujte za
 
 ## <a name="next-steps"></a>Další postup
 
-Teď, když máte zařízení IoT Edge zřízené s modulem runtime nainstalovaný, je možné [nasadit moduly IoT Edge][lnk-modules].
+Teď, když máte zařízení IoT Edge zřízené s modulem runtime nainstalovaný, je možné [nasadit moduly IoT Edge](how-to-deploy-modules-portal.md).
 
-Pokud máte problémy s modulu runtime Edge instalaci správně, podívejte se [řešení potíží s] [ lnk-trouble] stránky.
-
-
-<!-- Images -->
-[img-nat]: ./media/how-to-install-iot-edge-windows-with-windows/nat.png
-
-<!-- Links -->
-[lnk-docker-config]: https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers
-[lnk-dcs]: how-to-register-device-portal.md
-[lnk-dps]: how-to-auto-provision-simulated-device-windows.md
-[lnk-oci]: https://www.opencontainers.org/
-[lnk-moby]: https://mobyproject.org/
-[lnk-trouble]: troubleshoot.md
-[lnk-docker-for-windows]: https://www.docker.com/docker-windows
-[lnk-iot-core]: how-to-install-iot-core.md
-[lnk-modules]: how-to-deploy-modules-portal.md
+Pokud máte problémy s modulu runtime Edge instalaci správně, podívejte se [řešení potíží s](troubleshoot.md) stránky.

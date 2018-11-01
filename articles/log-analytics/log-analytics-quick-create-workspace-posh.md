@@ -15,12 +15,12 @@ ms.topic: conceptal
 ms.date: 09/18/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 4834e21b5e9f1cbdd931b59e2b693e45ddfd8876
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: b7b8734e648e79ab22a6783e7fab31e942f08eb4
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48043307"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50418416"
 ---
 # <a name="create-a-log-analytics-workspace-with-azure-powershell"></a>Vytvořit pracovní prostor Log Analytics pomocí Azure Powershellu
 
@@ -123,7 +123,7 @@ Následující parametry nastavení výchozí hodnoty:
 
 Dokončení nasazení může trvat několik minut. Po dokončení se zobrazí zpráva podobná následující, který obsahuje výsledek:
 
-![Příklad výsledků po dokončení nasazení](./media/log-analytics-template-workspace-configuration/template-output-01.png)
+![Příklad výsledků po dokončení nasazení](media/log-analytics-quick-create-workspace-posh/template-output-01.png)
 
 ## <a name="next-steps"></a>Další postup
 Teď, když máte k dispozici pracovní prostor, konfigurace shromažďování dat monitorování telemetrických dat a spustit prohledávání protokolů pro analýzu těchto dat přidat řešení správy, které poskytují další data a analytické přehledy.  
