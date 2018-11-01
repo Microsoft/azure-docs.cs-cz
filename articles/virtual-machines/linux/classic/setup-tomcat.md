@@ -1,6 +1,6 @@
 ---
-title: Nastavit Apache Tomcat na virtuální počítač s Linuxem | Microsoft Docs
-description: Zjistěte, jak nastavit Apache Tomcat7 pomocí virtuální počítače Azure s Linuxem.
+title: Nastavení Apache Tomcat na virtuálním počítači s Linuxem | Dokumentace Microsoftu
+description: Zjistěte, jak nastavit Apache Tomcat7 pomocí Azure Virtual Machines s Linuxem.
 services: virtual-machines-linux
 documentationcenter: ''
 author: NingKuang
@@ -15,197 +15,164 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2015
 ms.author: ningk
-ms.openlocfilehash: 161a56a019f8c2c8ce5e3890e73ad5c5710e7b82
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 8c04c9fffbb85bb4db7a369b0dbbad6279f5d6f6
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "30841611"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50420077"
 ---
-# <a name="set-up-tomcat7-on-a-linux-virtual-machine-with-azure"></a>Nastavit Tomcat7 na virtuální počítač s Linuxem v Azure
-Apache Tomcat (nebo jednoduše Tomcat, také dříve se označovaly jako Jakarta Tomcat) je webový server s otevřeným zdrojem a kontejner servlet vyvinuté pomocí softwaru Foundation Apache (amp). Tomcat implementuje Java Servlet a specifikace JavaServer stránky (JSP) z Sun Microsystems. Tomcat poskytuje čistý Java HTTP prostředí webového serveru ke spouštění kódu v jazyce Java. V nejjednodušší konfiguraci Tomcat běží v procesu jednoho operačního systému. Tento proces se spustí nástroje Java virtual machine (JVM). Každý požadavek HTTP z prohlížeče do Tomcat zpracovávány jako samostatné vláken v procesu Tomcat.  
+# <a name="set-up-tomcat7-on-a-linux-virtual-machine-with-azure"></a>Instalace tomcat7 na virtuální počítač s Linuxem pomocí Azure
+Apache Tomcat (nebo jednoduše Tomcat, také dříve se označovaly jako Jakarta Tomcat) je otevřít zdrojový webový server a servletový kontejner vyvinuté pomocí Apache Software Foundation (amp). Tomcat implementuje Java Servlet a JavaServer Pages (JSP) specifikace z Sun Microsystems. Tomcat poskytuje čistě Java HTTP prostředí webového serveru ke spouštění kódu v Javě. V nejjednodušší konfiguraci Tomcat běží v procesu jeden operační systém. Tento proces spouští Java virtual machine (JVM). Každý požadavek protokolu HTTP z prohlížeče na Tomcat je zpracován jako samostatného vlákna v procesu Tomcat.  
 
 > [!IMPORTANT]
-> Azure má dva různé modely nasazení pro vytváření a práci s prostředky: [Azure Resource Manager a klasický](../../../resource-manager-deployment-model.md). Tento článek popisuje postup použití modelu nasazení classic. Doporučujeme vám, že většina nových nasazení používala model Resource Manager. Použití šablony Resource Manageru k nasazení virtuálního počítače s Ubuntu s otevřete JDK a Tomcat, najdete v části [v tomto článku](https://azure.microsoft.com/documentation/templates/openjdk-tomcat-ubuntu-vm/).
+> Azure má dva různé modely nasazení pro vytváření a práci s prostředky: [Azure Resource Manageru a Klasický model](../../../resource-manager-deployment-model.md). Tento článek popisuje, jak pomocí modelu nasazení classic. Doporučujeme, aby většina nových nasazení používala model Resource Manager. Použití šablony Resource Manageru k nasazení virtuálního počítače s Ubuntu s otevřít sadu JDK a Tomcat, naleznete v tématu [v tomto článku](https://azure.microsoft.com/documentation/templates/openjdk-tomcat-ubuntu-vm/).
 > [!INCLUDE [virtual-machines-common-classic-createportal](../../../../includes/virtual-machines-classic-portal.md)]
 
-V tomto článku bude instalace Tomcat7 na bitovou kopii systému Linux a nasadit v Azure.  
+V tomto článku se bude instalace Tomcat7 na image Linuxu a nasaďte ji v Azure.  
 
 Co se dozvíte:  
 
-* Postup vytvoření virtuálního počítače v Azure.
-* Postup přípravy Tomcat7 virtuálního počítače.
+* Jak vytvořit virtuální počítač v Azure.
+* Postup přípravy Tomcat7 virtuální počítač.
 * Postup instalace Tomcat7.
 
-Předpokládá se, že už máte předplatné Azure.  Pokud není, můžete si zaregistrovat bezplatnou zkušební verzi na [webu Azure](https://azure.microsoft.com/). Pokud máte předplatné MSDN, najdete v části [Microsoft Azure speciální ceny: MSDN, MPN a výhody BizSpark](https://azure.microsoft.com/pricing/member-offers/msdn-benefits/?c=14-39). Další informace o Azure najdete v tématu [co je Azure?](https://azure.microsoft.com/overview/what-is-azure/).
+Předpokládá se, že už máte předplatné Azure.  Pokud ne, můžete zaregistrovat k bezplatné zkušební verzi na [webu Azure](https://azure.microsoft.com/). Pokud máte předplatné MSDN, přečtěte si téma [speciální ceny Microsoft Azure: MSDN, MPN a BizSpark výhody](https://azure.microsoft.com/pricing/member-offers/msdn-benefits/?c=14-39). Další informace o Azure najdete v tématu [co je Azure?](https://azure.microsoft.com/overview/what-is-azure/).
 
-Tento článek předpokládá, že máte základní znalosti práce Tomcat a Linux.  
+Tento článek předpokládá, že máte základní znalosti pracovních Tomcat a Linux.  
 
 ## <a name="phase-1-create-an-image"></a>Fáze 1: Vytvoření image
-V této fázi vytvoříte virtuální počítač pomocí bitové kopie systému Linux v Azure.  
+V této fázi vytvoříte virtuální počítač pomocí image Linuxu v Azure.  
 
 ### <a name="step-1-generate-an-ssh-authentication-key"></a>Krok 1: Generovat ověřovací klíč SSH
-SSH je důležité nástroj pro správce systému. Však není doporučeno konfigurace zabezpečení přístupu na základě určit lidské hesla. Uživatelé se zlými úmysly může rozdělit na váš systém podle uživatelského jména a vytváření silných hesel.
+SSH je důležitý nástroj pro správce systému. Však není doporučeno konfigurace zabezpečení přístupu na základě hesla se určit lidské. Uživatelé se zlými úmysly může rozdělit na váš systém podle uživatelského jména a slabé heslo.
 
-Dobrá zpráva je, že je způsob, jak nechte vzdálený přístup otevřené a nestarat se o hesla. Tato metoda se skládá z ověřování s asymetrické šifrování. Privátní klíč uživatele je ten, který uděluje ověřování. Můžete dokonce uzamčení uživatelského účtu nepovolíte ověřování hesla.
+Dobrou zprávou je, že je způsob, jak zůstat otevřeno, vzdálený přístup a bez starostí o heslech. Tato metoda se skládá z ověřování pomocí asymetrického šifrování. Privátní klíč uživatele je ten, který uděluje ověřování. Můžete dokonce uzamknout uživatelský účet není povolit ověřování pomocí hesla.
 
-Další výhodou této metody je nepotřebujete různá hesla k přihlášení na jiné servery. Můžete ověřovat pomocí osobní privátní klíče ve všech serverech, což zabraňuje si museli pamatovat více hesel.
+Další výhodou této metody je, že není nutné odlišná hesla k přihlášení na různé servery. Můžete ověřovat pomocí osobní privátní klíč ve všech serverech, které brání si museli pamatovat více hesel.
 
 
 
-Postupujte podle těchto kroků generovat ověřovací klíč SSH.
+Postupujte podle těchto kroků vygenerujete ověřovací klíč SSH.
 
-1. Stáhněte a nainstalujte PuTTYgen z následujícího umístění: [http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)
+1. Stáhněte a nainstalujte nástroje PuTTYgen z následujícího umístění: [http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)
 2. Spusťte Puttygen.exe.
-3. Klikněte na tlačítko **generování** ke generování klíče. V procesu můžete zvýšit náhodnost přesunutím myši nad prázdné místo v okně.  
-   ![PuTTY snímek obrazovky generátor klíč, který ukazuje tlačítko vygenerovat nový klíč][1]
-4. Po dokončení procesu generování Puttygen.exe zobrazí nový veřejný klíč.  
-   ![PuTTY snímek obrazovky generátor klíč, který ukazuje nový veřejný klíč a uložení privátního klíče tlačítko][2]
-5. Vyberte a zkopírujte veřejný klíč a uložit ho do souboru s názvem publicKey.pem. Nemáte klikněte na tlačítko **uložit veřejný klíč**, protože formát souboru uložené veřejný klíč se liší od chceme veřejný klíč.
+3. Klikněte na tlačítko **generovat** ke generování klíče. V procesu můžete zvýšit náhodnost přesunete ukazatel myši na prázdnou oblast v okně.  
+   ![PuTTY Key Generator – snímek obrazovky, zobrazující tlačítko vygenerovat nové klíče][1]
+4. Po dokončení procesu Generovat Puttygen.exe zobrazí nový veřejný klíč.  
+   ![PuTTY Key Generator – snímek obrazovky, zobrazuje nový veřejný klíč a uložit privátní klíč tlačítko][2]
+5. Vyberte a zkopírujte veřejný klíč a uložte ho do souboru s názvem publicKey.pem. Neklepejte **uložit veřejný klíč**, protože se liší od veřejného klíče chceme uložené veřejný klíč, formát souboru.
 6. Klikněte na tlačítko **uložit privátní klíč**a uložte ho do souboru s názvem privateKey.ppk.
 
-### <a name="step-2-create-the-image-in-the-azure-portal"></a>Krok 2: Vytvoření bitové kopie na portálu Azure
-1. V [portál](https://portal.azure.com/), klikněte na tlačítko **vytvořit prostředek** na hlavním panelu na vytvoření bitové kopie. Zvolte Linux bitovou kopii, která je založena na vašich potřebách. Následující příklad používá bitovou kopii Ubuntu 14.04.
-![Snímek obrazovky portálu, který ukazuje tlačítka Nová][3]
+### <a name="step-2-create-the-image-in-the-azure-portal"></a>Krok 2: Vytvoření image na webu Azure Portal
+1. V [portál](https://portal.azure.com/), klikněte na tlačítko **vytvořit prostředek** na hlavním panelu na vytvoření bitové kopie. Potom vyberte image Linuxu, který je podle svých potřeb. Následující příklad používá image Ubuntu 14.04.
+![Snímek obrazovky portálu, který se zobrazí nové tlačítko][3]
 
-2. Pro **název hostitele**, zadejte název pro adresu URL, kterou jste a internetové klienty se bude používat pro přístup k tomuto virtuálnímu počítači. Zadejte poslední část názvu DNS, například tomcatdemo. Azure pak vygeneruje adresu URL jako tomcatdemo.cloudapp.net.  
+2. Pro **název hostitele**, zadejte název pro adresu URL, kterou jste a internetoví klienti budou používat pro přístup k tomuto virtuálnímu počítači. Poslední část názvu DNS, třeba tomcatdemo definujte. Azure pak vygeneruje adresu URL jako tomcatdemo.cloudapp.net.  
 
-3. Pro **SSH ověřovací klíč**, zkopírujte hodnotu klíče ze souboru publicKey.pem, který obsahuje veřejný klíč generované PuTTYgen.  
+3. Pro **SSH ověřovací klíč**, zkopírujte jeho hodnotu z publicKey.pem soubor, který obsahuje veřejný klíč vygenerovaný PuTTYgen.  
 ![Pole ověřovací klíč SSH na portálu][4]
 
-4. Podle potřeby nakonfigurujte další nastavení a potom klikněte na **vytvořit**.  
+4. Podle potřeby nakonfigurujte další nastavení a potom klikněte na tlačítko **vytvořit**.  
 
 ## <a name="phase-2-prepare-your-virtual-machine-for-tomcat7"></a>Fáze 2: Příprava virtuálního počítače pro Tomcat7
-V této fázi konfigurace koncového bodu pro provoz Tomcat a potom se připojte k nového virtuálního počítače.
+V této fázi nakonfigurujte koncový bod pro provoz Tomcat a připojte se k novému virtuálnímu počítači.
 
-### <a name="step-1-open-the-http-port-to-allow-web-access"></a>Krok 1: Otevřete port HTTP pro povolení webového přístupu
-Protokol TCP nebo UDP, společně s veřejné a privátní port obsahovat koncové body v Azure. Privátní port je port, který služba naslouchá na virtuálním počítači. Veřejný port je port, který cloudovou službu systému Azure naslouchá externě pro příchozí internetového provozu.  
+### <a name="step-1-open-the-http-port-to-allow-web-access"></a>Krok 1: Otevření portu HTTP pro povolení webového přístupu
+Koncové body v Azure se skládají z protokol TCP nebo UDP, také veřejné a privátní port. Privátní port je port, na kterém služba naslouchá na virtuálním počítači. Veřejný port je port, který Cloudová služba Azure naslouchá externě pro příchozí, internetový provoz.  
 
-TCP port 8080 je výchozí číslo portu, který Tomcat používá k naslouchání. Tento port se při otevření s koncový bod Azure, můžete a dalších internetoví klienti mohou přistupovat Tomcat stránky.  
+TCP port 8080 je výchozí číslo portu, který Tomcat používá k naslouchání. Pokud je tento port otevřít s koncový bod Azure, můžete a dalších internetoví klienti měli přístup k Tomcat stránky.  
 
-1. Na portálu, klikněte na tlačítko **Procházet** > **virtuální počítače**a potom klikněte na virtuální počítač, který jste vytvořili.  
-   ![Snímek obrazovky adresáři virtuální počítače][5]
-2. Chcete-li přidat koncový bod virtuálního počítače, klikněte na tlačítko **koncové body** pole.
+1. Na portálu klikněte na tlačítko **Procházet** > **virtuálních počítačů**a potom klikněte na virtuální počítač, který jste vytvořili.  
+   ![Snímek obrazovky s adresáři virtuálních počítačů][5]
+2. K virtuálnímu počítači přidat koncový bod, klikněte na tlačítko **koncové body** pole.
    ![Snímek obrazovky zobrazující pole koncových bodů][6]
 3. Klikněte na tlačítko **Add** (Přidat).  
 
-   1. Pro koncový bod, zadejte název koncového bodu v **koncový bod**a pak zadejte 80 v **veřejný Port**.  
+   1. Pro koncový bod, zadejte název pro koncový bod **koncový bod**a pak zadejte 80 **veřejný Port**.  
 
-      Pokud je nastavena na 80, nemusíte zahrnovat číslo portu v adrese URL, který se používá pro přístup k Tomcat. Například, http://tomcatdemo.cloudapp.net.    
+      Pokud je nastavený na 80, není nutné zahrnovat číslo portu v adrese URL, který se používá pro přístup k Tomcat. Například, http://tomcatdemo.cloudapp.net.    
 
-      Pokud je nastavena na jinou hodnotu, jako je například 81, budete muset přidat číslo portu na adresu URL pro přístup k Tomcat. Například http://tomcatdemo.cloudapp.net:81/.
-   2. Zadejte 8080 v **privátní Port**. Ve výchozím nastavení Tomcat naslouchá na portu TCP 8080. Pokud jste změnili výchozí naslouchání portu Tomcat, by měl aktualizovat **privátní Port** být stejné jako Tomcat port pro naslouchání.  
-      ![Snímek obrazovky z uživatelské rozhraní, které se zobrazuje příkaz přidat, veřejný Port a privátní Port][7]
-4. Klikněte na tlačítko **OK** přidat koncový bod k virtuálnímu počítači.
+      Pokud je nastavena na jinou hodnotu, jako je například 81, budete muset přidat číslo portu k adrese URL pro přístup k Tomcat. Například http://tomcatdemo.cloudapp.net:81/.
+   2. Zadejte 8080 v **privátní Port**. Ve výchozím nastavení Tomcat naslouchá na TCP port 8080. Pokud jste změnili výchozí naslouchání portu Tomcat, měli byste aktualizovat **privátní Port** být stejné jako Tomcat port pro naslouchání.  
+      ![Snímek obrazovky z uživatelského rozhraní, který zobrazuje přidat příkaz veřejný Port a privátní Port][7]
+4. Klikněte na tlačítko **OK** ke svému virtuálnímu počítači přidat koncový bod.
 
-### <a name="step-2-connect-to-the-image-you-created"></a>Krok 2: Připojení na bitovou kopii, kterou jste vytvořili
-Můžete vybrat jakýkoli SSH nástroj pro připojení k virtuálnímu počítači. V tomto příkladu používáme PuTTY.  
+### <a name="step-2-connect-to-the-image-you-created"></a>Krok 2: Připojení k image, kterou jste vytvořili
+Můžete použít jakýkoli nástroj SSH pro připojení k virtuálnímu počítači. V tomto příkladu používáme PuTTY.  
 
-1. Získáte název DNS virtuálního počítače z portálu.
-    1. Klikněte na tlačítko **Procházet** > **virtuální počítače**.
-    2. Vyberte název virtuálního počítače a pak klikněte na tlačítko **vlastnosti**.
-    3. V **vlastnosti** dlaždici, podívejte se **název domény** pole získat název DNS.  
+1. Získejte název DNS virtuálního počítače z portálu.
+    1. Klikněte na tlačítko **Procházet** > **virtuálních počítačů**.
+    2. Vyberte název vašeho virtuálního počítače a potom klikněte na tlačítko **vlastnosti**.
+    3. V **vlastnosti** dlaždici, podívejte se **název domény** pole a získat tak název DNS.  
 
-2. Získat číslo portu pro SSH připojení z **SSH** pole.  
-![Snímek obrazovky, který se zobrazuje číslo portu SSH připojení][8]
+2. Získat číslo portu pro připojení SSH z **SSH** pole.  
+![Snímek obrazovky zobrazující číslo portu pro připojení SSH][8]
 
 3. Stáhněte si [PuTTY](http://www.putty.org/).  
 
-4. Po stažení, klikněte na spustitelný soubor Putty.exe. V konfiguraci PuTTY nakonfigurujte základní možnosti s názvem hostitele a portu číslo, které se získávají z vlastností virtuálního počítače.   
-![Snímek obrazovky, který ukazuje možnosti název a port hostitele PuTTY konfigurace][9]
+4. Po stažení, klikněte na spustitelný soubor Putty.exe. V konfigurace PuTTY základní možnosti konfigurace s názvem hostitele a portu číslo, které se získává z vlastnosti virtuálního počítače.   
+![Snímek obrazovky, který ukazuje možnosti názvu a portu hostitele konfigurace PuTTY][9]
 
-5. V levém podokně klikněte na **připojení** > **SSH** > **Auth**a potom klikněte na **Procházet** k určení umístění souboru privateKey.ppk. Soubor privateKey.ppk obsahuje privátní klíč, který je generovaný PuTTYgen dříve v "fáze 1: vytvoření image" tohoto článku.  
-![Snímek obrazovky, který se zobrazuje hierarchie adresářů připojení a tlačítko Procházet][10]
+5. V levém podokně klikněte na tlačítko **připojení** > **SSH** > **Auth**a potom klikněte na tlačítko **Procházet** zadat umístění souboru privateKey.ppk. Soubor privateKey.ppk obsahuje privátní klíč, který je generován PuTTYgen dříve v "fáze 1: vytvoření image" části tohoto článku.  
+![Snímek obrazovky zobrazující hierarchii adresářů připojení a tlačítko pro procházení][10]
 
-6. Klikněte na tlačítko **otevřete**. Může být upozorněni podle okno se zprávou. Pokud jste nakonfigurovali název DNS a číslo portu správně, klikněte na tlačítko **Ano**.
-![Snímek obrazovky, který se zobrazí oznámení.][11]
+6. Klikněte na **Otevřít**. Upozorní může být okno se zprávou. Pokud jste nakonfigurovali DNS název a číslo portu správně, klikněte na tlačítko **Ano**.
+![Snímek obrazovky zobrazující oznámení][11]
 
 7. Zobrazí se výzva k zadání vašeho uživatelského jména.  
-![Snímek obrazovky, který ukazuje, kde k zadání uživatelského jména][12]
+![Snímek obrazovky, který ukazuje, kam je třeba zadat uživatelské jméno][12]
 
 8. Zadejte uživatelské jméno, které jste použili k vytvoření virtuálního počítače "fáze 1: vytvoření image" dříve v tomto článku. Zobrazí se přibližně takto:  
 ![Snímek obrazovky zobrazující potvrzení ověřování][13]
 
 ## <a name="phase-3-install-software"></a>Fáze 3: Instalace softwaru
-V této fázi nainstalujte prostředí Java runtime, Tomcat7 a další součásti Tomcat7.  
+V této fázi instalace prostředí Java runtime, Tomcat7 a další komponenty Tomcat7.  
 
-### <a name="java-runtime-environment"></a>Prostředí Java runtime
-Tomcat je napsán v jazyce Java. Existují dva typy sad Java Development Kit (JDKs), OpenJDK a Oracle JDK. Můžete zvolit ten, který chcete.  
-
-> [!NOTE]
-> Obě JDKs mít téměř stejný kód pro třídy v rozhraní API Java, ale kód pro virtuální počítač se liší. OpenJDK obvykle používat otevřené knihovny, Oracle JDK obvykle pro použití uzavřené portů. Oracle JDK má více tříd a některé vyřešili chyb a Oracle JDK je stabilnější než OpenJDK.
-
-#### <a name="install-openjdk"></a>Nainstalujte OpenJDK  
-
-Chcete-li stáhnout OpenJDK použijte následující příkaz.   
-
-    sudo apt-get update  
-    sudo apt-get install openjdk-7-jre  
+### <a name="java-runtime-environment"></a>Běhové prostředí Java
+Tomcat je napsána v jazyce Java. Zobrazit [Azure nepodporuje JDK](https://aka.ms/azure-jdks) informace o tom, jak získat plně podporované moduly runtime Java. Můžete také přinést vlastní, ale zbývající část tohoto článku bude používat verzích podporovaných systémem Azure.
 
 
-* Chcete-li vytvořit adresář, který bude obsahovat soubory JDK:  
+#### <a name="install-azure-supported-jdk"></a>Instalace Azure nepodporuje JDK
 
-        sudo mkdir /usr/lib/jvm  
-* Extrahujte soubory JDK do adresáře/usr/lib/jvm /:  
+Postupujte podle `apt-get` popsané na pokyny pro instalaci [Azul Zulu rozlehlé sítě pro Azure](https://www.azul.com/downloads/azure-only/zulu/#apt-repo) webu.
 
-        sudo tar -zxf jdk-8u5-linux-x64.tar.gz  -C /usr/lib/jvm/
+#### <a name="confirm-that-java-installation-is-successful"></a>Potvrďte, jestli se úspěšně dokončila instalaci Javy
+Pokud chcete otestovat, jestli je správně nainstalované prostředí Java runtime můžete použít příkaz podobný tomuto:  
+    Java – verze  
 
-#### <a name="install-oracle-jdk"></a>Nainstalujte Oracle JDK
+Zobrazí se zpráva podobná této: ![zpráva OpenJDK úspěšná instalace][14]
 
-
-Použijte následující příkaz ke stažení z webu Oracle Oracle JDK.  
-
-     wget --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u5-b13/jdk-8u5-linux-x64.tar.gz  
-* Chcete-li vytvořit adresář, který bude obsahovat soubory JDK:  
-
-        sudo mkdir /usr/lib/jvm  
-* Extrahujte soubory JDK do adresáře/usr/lib/jvm /:  
-
-        sudo tar -zxf jdk-8u5-linux-x64.tar.gz  -C /usr/lib/jvm/  
-* Chcete-li nastavit Oracle JDK jako virtuální počítač Java výchozí:  
-
-        sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk1.8.0_05/bin/java 100  
-
-        sudo update-alternatives --install /usr/bin/javac javac /usr/lib/jvm/jdk1.8.0_05/bin/javac 100  
-
-#### <a name="confirm-that-java-installation-is-successful"></a>Potvrďte, že Java instalace byla úspěšně dokončena
-Příkaz takto můžete otestovat, pokud je prostředí Java runtime správně nainstalován:  
-
-    java -version  
-
-Pokud jste nainstalovali OpenJDK, zobrazí se zpráva podobná následující: ![OpenJDK úspěšné instalace zpráv][14]
-
-Pokud jste nainstalovali Oracle JDK, zobrazí se zpráva podobná následující: ![zpráva instalace úspěšná JDK Oracle][15]
 
 ### <a name="install-tomcat7"></a>Instalace Tomcat7
-Použijte následující příkaz k instalaci Tomcat7.  
+Instalace Tomcat7 použijte následující příkaz.  
 
     sudo apt-get install tomcat7  
 
-Pokud nepoužíváte Tomcat7, použijte jeho odpovídající variantu tohoto příkazu.  
+Pokud nepoužíváte Tomcat7, použijte jeho odpovídající variantu tento příkaz.  
 
-#### <a name="confirm-that-tomcat7-installation-is-successful"></a>Potvrďte, že je instalace Tomcat7 úspěšné
-Kontrola, pokud je úspěšně nainstalována Tomcat7, vyhledejte název DNS Tomcat server. V tomto článku je příklad adresy URL http://tomcatexample.cloudapp.net/. Pokud se zobrazí zpráva podobná následující, Tomcat7 je správně nainstalován.
-![Zpráva úspěšné instalace Tomcat7][16]
+#### <a name="confirm-that-tomcat7-installation-is-successful"></a>Potvrďte, že je instalace Tomcat7 úspěšná
+Zkontrolujte, zda Tomcat7 je úspěšně nainstalována, přejděte na název DNS serveru Tomcat. V tomto článku najdete příklad adresy URL je http://tomcatexample.cloudapp.net/. Pokud se zobrazí zpráva podobná následující, Tomcat7 správně nainstalován.
+![Úspěšné zprávy instalace Tomcat7][16]
 
 ### <a name="install-other-tomcat7-components"></a>Instalace součásti Tomcat7
-Existují další volitelné součásti Tomcat, které můžete nainstalovat.  
+Existují další volitelné komponenty Tomcat, které můžete nainstalovat.  
 
-Použití **sudo výstižný mezipaměti vyhledávání tomcat7** příkazu zobrazte všechny dostupné součásti. Použijte následující příkazy pro instalaci některé užitečné součásti.  
+Použití **sudo hledat apt-cache tomcat7** příkazu zobrazte všechny dostupné komponenty. Následující příkazy použijte k instalaci některých komponent užitečné.  
 
     sudo apt-get install tomcat7-admin      #admin web applications
 
     sudo apt-get install tomcat7-user         #tools to create user instances  
 
 ## <a name="phase-4-configure-tomcat7"></a>Fáze 4: Konfigurace Tomcat7
-V této fázi spravovat Tomcat.
+V této fázi budete spravovat Tomcat.
 
 ### <a name="start-and-stop-tomcat7"></a>Spuštění a zastavení Tomcat7
-Tomcat7 server se automaticky spustí, když ho nainstalujete. Můžete také spustit pomocí následujícího příkazu:   
+Tomcat7 server automaticky spustí, když ho nainstalujete. Můžete ho spustit také pomocí následujícího příkazu:   
 
     sudo /etc/init.d/tomcat7 start
 
-Chcete-li zastavit Tomcat7:
+Zastavení Tomcat7:
 
     sudo /etc/init.d/tomcat7 stop
 
@@ -213,71 +180,71 @@ Chcete-li zobrazit stav Tomcat7:
 
     sudo /etc/init.d/tomcat7 status
 
-K restartu služeb Tomcat: 
+Restartování služeb Tomcat: 
 
     sudo /etc/init.d/tomcat7 restart
 
 ### <a name="tomcat7-administration"></a>Správa Tomcat7
-Můžete upravit konfigurační soubor uživatele Tomcat k nastavení přihlašovacích údajů správce. Použijte následující příkaz:  
+Můžete upravit konfigurační soubor uživatele Tomcat nastavit přihlašovací údaje správce. Použijte následující příkaz:  
 
     sudo vi  /etc/tomcat7/tomcat-users.xml   
 
 Zde naleznete příklad:  
-![Snímek obrazovky zobrazující výstupu příkazu sudo vi][17]  
+![Snímek obrazovky zobrazující výstup příkazů sudo vi][17]  
 
 > [!NOTE]
 > Vytvořte silné heslo pro uživatelské jméno správce.  
 
-Po úpravě tohoto souboru, musíte restartovat Tomcat7 službám pomocí následujícího příkazu zkontrolujte, že tyto změny začnou platit:  
+Po úpravě tohoto souboru, musíte restartovat Tomcat7 služeb pomocí následujícího příkazu zkontrolujte, že se změny projeví:  
 
     sudo /etc/init.d/tomcat7 restart  
 
-Otevřete prohlížeč a zadejte **http://<your tomcat server DNS name>/manager/html** jako adresu URL. Například v tomto článku, adresa URL je http://tomcatexample.cloudapp.net/manager/html.  
+Otevřete prohlížeč a zadejte **http://<your tomcat server DNS name>/správce/html** jako adresu URL. Například v tomto článku, adresa URL je http://tomcatexample.cloudapp.net/manager/html.  
 
-Po připojení, měli byste vidět něco podobného jako následující:  
+Po připojení by měl vypadat nějak takto:  
 ![Snímek obrazovky Správce aplikací webové Tomcat][18]
 
 ## <a name="common-issues"></a>Běžné problémy
-### <a name="cant-access-the-virtual-machine-with-tomcat-and-moodle-from-the-internet"></a>Nelze získat přístup k virtuálnímu počítači s Tomcat a Moodle z Internetu
-#### <a name="symptom"></a>Příznaky  
-  Tomcat běží, ale nemůžete zobrazit Tomcat výchozí stránku v prohlížeči.
-#### <a name="possible-root-cause"></a>Možné příčiny   
+### <a name="cant-access-the-virtual-machine-with-tomcat-and-moodle-from-the-internet"></a>Nedaří se virtuální počítač s Tomcat a Moodle z Internetu
+#### <a name="symptom"></a>Příznak  
+  Tomcat je spuštěná, ale nemůžete zobrazit Tomcat výchozí stránku v prohlížeči.
+#### <a name="possible-root-cause"></a>Možnou hlavní příčinou   
 
-  * Port pro naslouchání Tomcat není stejný jako privátní port koncový bod virtuálního počítače pro provoz Tomcat.  
+  * Port pro naslouchání Tomcat není stejný jako privátní port koncového bodu virtuálního počítače pro provoz Tomcat.  
 
-     Zkontrolujte veřejný port a privátní port koncového bodu nastavení a ujistěte se, že privátní port je že stejný jako Tomcat port pro naslouchání. Najdete v části "fáze 1: vytvoření image" tohoto článku Pokyny ke konfiguraci koncových bodů pro virtuální počítač.  
+     Zkontrolujte veřejný port a privátní port nastavení koncového bodu a ujistěte se, že privátní port je že stejné jako Tomcat port pro naslouchání. Viz "fáze 1: vytvoření image" části tohoto článku Další pokyny ke konfiguraci koncových bodů pro virtuální počítač.  
 
-     Ke zjištění portu naslouchání Tomcat, otevřete /etc/httpd/conf/httpd.conf (Red Hat vydání) nebo /etc/tomcat7/server.xml (Debian vydání). Ve výchozím nastavení je port pro naslouchání Tomcat 8080. Zde naleznete příklad:  
+     Ke zjištění portu naslouchání Tomcat, otevřete /etc/httpd/conf/httpd.conf (verze Red Hat) nebo /etc/tomcat7/server.xml (Debian vydaná verze). Výchozí port pro naslouchání Tomcat je 8080. Zde naleznete příklad:  
 
         <Connector port="8080" protocol="HTTP/1.1"  connectionTimeout="20000"   URIEncoding="UTF-8"            redirectPort="8443" />  
 
-     Pokud používáte virtuální počítač jako Debian a Ubuntu a chcete změnit, výchozí port z Tomcat naslouchání (například 8081), měli byste taky otevřít port pro operační systém. První otevřete profil:  
+     Pokud používáte virtuální počítač jako Debian nebo Ubuntu a chcete změnit, výchozí port z Tomcat naslouchání (například 8081), měli byste taky otevřít port pro operační systém. Nejprve otevřete profil:  
 
         sudo vi /etc/default/tomcat7  
 
-     Potom Odkomentujte poslední řádek a změňte "žádný" "Ano".  
+     Pak zrušte komentář na posledním řádku a změňte "žádný" na "Ano".  
 
         AUTHBIND=yes
   2. Brána firewall zakázal naslouchání portu Tomcat.
 
-     Zobrazí se pouze výchozí stránka Tomcat z místního hostitele. Problém je velmi pravděpodobné, že je port, který je sleduje Tomcat, blokován branou firewall. Můžete použít nástroj w3m a přejděte na webovou stránku. Následující příkazy instalace w3m a přejděte na stránku výchozího Tomcat:  
+     Zobrazí se pouze na výchozí stránce Tomcat z místního hostitele. Problém je velmi pravděpodobné, že port, který je sleduje Tomcat, je blokován branou firewall. Můžete použít nástroj w3m a přejděte na webovou stránku. Následující příkazy instalace w3m a přejděte na stránku výchozího Tomcat:  
 
 
-        sudo yum instalace w3m w3m-img
+        sudo yum install w3m w3m-img
 
 
         w3m http://localhost:8080  
 #### <a name="solution"></a>Řešení
 
-  * Pokud naslouchat Tomcat port není stejný jako privátní port koncového bodu pro provoz do virtuálního počítače, je nutné změnit privátní port, který má být že stejné jako Tomcat port pro naslouchání.   
-  2. Pokud tento problém je způsoben brány firewall nebo iptables, přidejte následující řádky do /etc/sysconfig/iptables. Druhý řádek je potřeba jenom pro provoz https:  
+  * Pokud Tomcat naslouchání port není stejný jako privátní port koncového bodu pro provoz do virtuálního počítače, potřebujete změnit privátní port bude, že stejná jako Tomcatu port pro naslouchání.   
+  2. Je-li tento problém je brána firewall/iptables, přidejte následující řádky do /etc/sysconfig/iptables. Druhý řádek je potřeba jenom pro komunikaci přes protokol https:  
 
       -A -p tcp -m tcp – dport 80 -j přijmout vstup
 
       -A -p tcp -m tcp – dport 443 -j přijmout vstup  
 
      > [!IMPORTANT]
-     > Zajistěte, aby předchozí řádky jsou umístěny nad všechny řádky, které by globálně omezení přístupu, jako jsou následující: - A -j ODMÍTNĚTE – odmítněte with icmp hostitele zakázáno vstup
+     > Ujistěte se, že předchozí řádky jsou umístěny nad všechny řádky, které by globálně omezení přístupu, jako je následující:-INPUT -j ODMÍTNOUT--odmítnout – s icmp hostitele zakázáno
 
 
 
@@ -285,32 +252,32 @@ Chcete-li znovu načíst iptables, spusťte následující příkaz:
 
     service iptables restart
 
-To byl otestován v CentOS 6.3.
+To jsme otestovali na CentOS 6.3.
 
-### <a name="permission-denied-when-you-upload-project-files-to-varlibtomcat7webapps"></a>Oprávnění byla odepřena při nahrávání souborů projektu do /var/lib/tomcat7/webapps /
-#### <a name="symptom"></a>Příznaky
-  Použijete-li pro připojení k virtuálnímu počítači a přejděte do /var/lib/tomcat7/webapps/publikování webu klientem SFTP (například FileZilla), můžete získat chybová zpráva podobná této:  
+### <a name="permission-denied-when-you-upload-project-files-to-varlibtomcat7webapps"></a>Oprávnění byla odepřena. když nahrajete soubory projektu do /var/lib/tomcat7/webapps /
+#### <a name="symptom"></a>Příznak
+  Při použití klientem SFTP (například Filezilly) můžete připojit k virtuálnímu počítači a přejít na /var/lib/tomcat7/webapps/publikování webu, zobrazí chybová zpráva podobná následující:  
 
      status:    Listing directory /var/lib/tomcat7/webapps
      Command:    put "C:\Users\liang\Desktop\info.jsp" "info.jsp"
      Error:    /var/lib/tomcat7/webapps/info.jsp: open for write: permission denied
      Error:    File transfer failed
-#### <a name="possible-root-cause"></a>Možné příčiny
-  Nemáte oprávnění k přístupu ke složce /var/lib/tomcat7/webapps.  
+#### <a name="possible-root-cause"></a>Možnou hlavní příčinou
+  Nemáte oprávnění pro přístup ke složce /var/lib/tomcat7/webapps.  
 #### <a name="solution"></a>Řešení  
-  Musíte získat oprávnění z kořenového účtu. Můžete změnit vlastnictví této složky z kořenového adresáře na uživatelské jméno, které jste použili při zřizování na počítač. Tady je příklad s názvem účtu azureuser:  
+  Je nutné získat oprávnění z kořenového účtu. Vlastnictví této složky můžete změnit z kořenového adresáře na uživatelské jméno, které jste použili při zřízení počítače. Tady je příklad s názvem účtu azureuser:  
 
      sudo chown azureuser -R /var/lib/tomcat7/webapps
 
   Použijte parametr -R příliš použít oprávnění pro všechny soubory v adresáři.  
 
-  Tento příkaz lze použít také pro adresáře. -R možnost změny oprávnění pro všechny soubory a adresáře v adresáři. Zde naleznete příklad:  
+  Tento příkaz funguje taky pro adresáře. Možnost -R se změní oprávnění pro všechny soubory a adresáře v adresáři. Zde naleznete příklad:  
 
      sudo chown -R username:group directory  
 
   Tento příkaz změní vlastnictví (uživatele a skupiny) pro všechny soubory a adresáře, které jsou v adresáři.  
 
-  Tento příkaz změní jenom oprávnění adresáři složky. Soubory a složky v adresáři, nebudou změněny.  
+  Následující příkaz změní pouze oprávnění k adresáři složky. Soubory a složky do adresáře se nezmění.  
 
      sudo chown username:group directory
 

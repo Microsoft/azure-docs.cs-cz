@@ -9,12 +9,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 08/12/2018
 ms.author: sngun
-ms.openlocfilehash: d2c4c890e1a1599e68fba1a0728061ec244f382f
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 241cd2fddf31373ed9ca208efb0612dd4332131c
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42061297"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50740973"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>Použití Azure Cosmos DB změnit informační kanál k vizualizaci dat v reálném čase analýzy
 
@@ -104,7 +104,7 @@ Teď vytvoříte kolekci, podržte událostí webu elektronického obchodování
    * Pro **kapacitu úložiště**vyberte **Unlimited**.  
    * Pro **klíč oddílu** zadejte **/položky**. Toto je velká a malá písmena, proto zkontrolujte, že zadáte jeho správně.  
    * Pro **propustnost** zadejte **10000**.  
-   * Klikněte na tlačítko **OK**.  
+   * Vyberte tlačítko **OK**.  
 
 3. Dále vytvořte další kolekci s názvem **zapůjčení** změnu informačního kanálu zpracování. Souřadnice kolekci zapůjčení zpracování kanálu změn napříč několika pracovních procesů. Samostatné kolekce slouží k uložení zapůjčení s jeden zapůjčení na oddíl.  
 
@@ -114,7 +114,7 @@ Teď vytvoříte kolekci, podržte událostí webu elektronického obchodování
    * Pro **id kolekce** zadejte **zapůjčení**.  
    * Pro **kapacitu úložiště**vyberte **Fixed**.  
    * Nechte **propustnost** nastaveno na výchozí hodnotu.  
-   * Klikněte na tlačítko **OK**.
+   * Vyberte tlačítko **OK**.
 
 ## <a name="get-the-connection-string-and-keys"></a>Získejte připojovací řetězec a klíčů
 
@@ -207,7 +207,7 @@ Azure Stream Analytics je plně spravovaná Cloudová služba pro zpracování s
    * Ponechte **formát serializace události** jako **JSON**.  
    * Ponechte **pole Encoding** nastavena na **UTF-8**.  
    * Ponechte **typ komprese události** pole nastaveno **žádný**.  
-   * Klikněte na tlačítko **Uložit**.
+   * Vyberte tlačítko **Uložit**.
 
 5. Přejděte zpět na stránku úlohy stream analytics a vyberte **výstupy**.  
 
@@ -219,10 +219,10 @@ Azure Stream Analytics je plně spravovaná Cloudová služba pro zpracování s
    * Nechte **pracovního prostoru skupiny** pole nastaveno **autorizovat připojení pro načítání pracovních prostorů**.  
    * V **název datové sady** zadejte **averagePrice**.  
    * V **název tabulky** zadejte **averagePrice**.  
-   * Klikněte na tlačítko **Authorize** tlačítko a pak postupujte podle pokynů k autorizaci připojení k Power BI.  
-   * Klikněte na tlačítko **Uložit**.  
+   * Vyberte **Authorize** tlačítko a pak postupujte podle pokynů k autorizaci připojení k Power BI.  
+   * Vyberte tlačítko **Uložit**.  
 
-8. Pak přejděte zpátky do **streamjob1** a klikněte na tlačítko **upravit dotaz**.
+8. Pak přejděte zpátky do **streamjob1** a vyberte **upravit dotaz**.
 
    ![Upravit dotaz](./media/changefeed-ecommerce-solution/edit-query.png)
  
@@ -235,9 +235,9 @@ Azure Stream Analytics je plně spravovaná Cloudová služba pro zpracování s
     FROM input  
     GROUP BY Action, TumblingWindow(second,5) 
    ```
-10. Pak klikněte na tlačítko **Uložit** v levém horním rohu.  
+10. Potom vyberte **Uložit** v levém horním rohu.  
 
-11. Nyní zpět na **streamjob1** a klikněte na tlačítko **Start** tlačítko v horní části stránky. Azure Stream Analytics může trvat několik minut se spustí, ale nakonec uvidíte ho změnit na "Spuštěno" z "Výchozí".
+11. Nyní se vraťte k **streamjob1** a vyberte **Start** tlačítko v horní části stránky. Azure Stream Analytics může trvat několik minut se spustí, ale nakonec uvidíte ho změnit na "Spuštěno" z "Výchozí".
 
 ## <a name="connect-to-power-bi"></a>Připojte se k Power BI
 
@@ -249,9 +249,9 @@ Power BI je sada nástrojů pro obchodní analýzy k analýze dat a sdílet pře
 
 3. Vyberte **+ přidat dlaždici** v pravém horním rohu.  
 
-4. Vyberte **vlastní streamovaná Data**, klikněte **Další** tlačítko.  
+4. Vyberte **vlastní streamovaná Data**a pak **Další** tlačítko.  
  
-5. Vyberte **averagePrice** z **vaše datové sady**, pak klikněte na tlačítko **Další**.  
+5. Vyberte **averagePrice** z **vaše datové sady**a pak vyberte **Další**.  
 
 6. V **typ vizualizace** zvolte **skupinový pruhový graf** z rozevírací nabídky. V části **osy**, přidání akce. Přeskočit **legendy** bez přidání cokoli. Poté, v dalším oddílu volat **hodnotu**, přidejte **avg**. Vyberte **Další**, pak nadpisu grafu a vyberte **použít**. Zobrazí se nový graf na řídicí panel!  
 
@@ -261,7 +261,7 @@ Power BI je sada nástrojů pro obchodní analýzy k analýze dat a sdílet pře
    b. **Alias pro výstup:** top5Output, název datové sady: top5, název tabulky: top5  
    c. **Alias pro výstup:** uniqueVisitorCountOutput, název datové sady: uniqueVisitorCount, název tabulky: uniqueVisitorCount
 
-   Pak klikněte na tlačítko **upravit dotaz** a vložte následující dotazy **nad** ten již byl napsán.
+   Potom vyberte **upravit dotaz** a vložte následující dotazy **nad** ten již byl napsán.
 
    ```sql
     /*TOP 5*/
@@ -329,9 +329,9 @@ Nyní zjistíte, jak můžete váš nový nástroj pro analýzu dat pro připoje
 
    Přidat jiné kolekce pod **changefeedlabdatabase** s názvem **topItems** s **Unlimited** kapacitu úložiště. Zápis **/položky** jako klíč oddílu.
 
-2. Klikněte na **topItems** kolekce a v části **škálování a nastavení** nastavit **TTL** bude **30 sekund** tak, že topItems aktualizací každých 30 sekund.
+2. Vyberte **topItems** kolekce a v části **škálování a nastavení** nastavit **TTL** bude **30 sekund** tak, že topItems aktualizací každých 30 sekund.
 
-   ![Hodnota TTL](./media/changefeed-ecommerce-solution/time-to-live.png)
+   ![Hodnota TTL (Time to Live)](./media/changefeed-ecommerce-solution/time-to-live.png)
 
 3. Aby bylo možné naplnit **topItems** kolekce se nejčastěji zakoupené položky, přejděte zpět na **streamjob1** a přidat nový **výstup**. Vyberte **Cosmos DB**.
 

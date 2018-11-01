@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/04/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: cbe6ddc2c4680028d5a4a0491756c7a7b9897c69
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: ed6b2fafbb3329e20985b75f55d29b52dcc5da57
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233238"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50415697"
 ---
 # <a name="extend-alerts-from-log-analytics-into-azure-alerts"></a>Rozšíření upozornění z Log Analytics do upozornění Azure
 Funkce výstrah ve službě Azure Log Analytics teď nahrazuje Azure Alerts. Jako součást tohoto přechodu je výstrahy, které jste nakonfigurovali v Log Analytics se rozšířit do Azure. Pokud nechcete čekat na jejich automaticky přesunou na Azure, můžete zahájit proces:
@@ -27,26 +27,26 @@ Funkce výstrah ve službě Azure Log Analytics teď nahrazuje Azure Alerts. Jak
 ## <a name="option-1-initiate-from-the-operations-management-suite-portal"></a>Možnost 1: Zahájení z portálu Operations Management Suite
 Následující kroky popisují, jak rozšířit výstrahy pro pracovní prostor z portálu Operations Management Suite.  
 
-1. Na webu Azure Portal, vyberte **všechny služby**. V seznamu prostředků zadejte **Log Analytics**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **Log Analytics**.
+1. Na webu Azure Portal vyberte **Všechny služby**. V seznamu prostředků zadejte **Log Analytics**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **Log Analytics**.
 2. V podokně předplatná Log Analytics vyberte pracovní prostor a pak vyberte **portál OMS** dlaždici.
-![Snímek obrazovky služby Log Analytics předplatné podokně s zvýrazněnou dlaždicí portál OMS](./media/monitor-alerts-extend/azure-portal-01.png) 
+![Snímek obrazovky služby Log Analytics předplatné podokně s zvýrazněnou dlaždicí portál OMS](media/monitoring-alerts-extend-tool/azure-portal-01.png) 
 3. Po dokončení budete přesměrování na portál Operations Management Suite, vyberte **nastavení** ikonu.
-![Snímek obrazovky s Operations Management Suite portal se zvýrazněnou ikonou nastavení](./media/monitor-alerts-extend/oms-portal-settings-option.png) 
+![Snímek obrazovky s Operations Management Suite portal se zvýrazněnou ikonou nastavení](media/monitoring-alerts-extend-tool/oms-portal-settings-option.png) 
 4. Z **nastavení** stránce **výstrahy**.  
 5. Vyberte **rozšířit do Azure**.
-![Snímek obrazovky s Operations Management Suite nastavení výstrah stránka portálu, se rozšířit do Azure zvýrazněnou](./media/monitor-alerts-extend/ExtendInto.png)
+![Snímek obrazovky s Operations Management Suite nastavení výstrah stránka portálu, se rozšířit do Azure zvýrazněnou](media/monitoring-alerts-extend-tool/ExtendInto.png)
 6. Krok 3 průvodce se zobrazí v **výstrahy** podokně. Přečtěte si přehled a vyberte **Další**.
-![Snímek obrazovky krok 1 Průvodce](./media/monitor-alerts-extend/ExtendStep1.png)  
+![Snímek obrazovky krok 1 Průvodce](media/monitoring-alerts-extend-tool/ExtendStep1.png)  
 7. V druhém kroku, zobrazí se souhrn navrhovaných změn, výpis příslušné [skupiny akcí](monitoring-action-groups.md) pro výstrahy. Pokud jsou podobné akcí napříč více než jedna výstraha, Průvodce navrhuje přidružte skupinu jednu akci všechny z nich.  Zásady vytváření názvů je následující: *WorkspaceName_AG_ #Number*. Chcete-li pokračovat, vyberte **Další**.
-![Snímek obrazovky z kroku 2 Průvodce](./media/monitor-alerts-extend/ExtendStep2.png)  
+![Snímek obrazovky z kroku 2 Průvodce](media/monitoring-alerts-extend-tool/ExtendStep2.png)  
 8. V posledním kroku průvodce vyberte **Dokončit**a potvrďte výzvu k zahájení procesu. Volitelně můžete zadat e-mailovou adresu, tak, aby se zobrazí oznámení po dokončení procesu a všechny výstrahy byly úspěšně přesunuty do upozornění Azure.
-![Snímek obrazovky krok 3 Průvodce](./media/monitor-alerts-extend/ExtendStep3.png)
+![Snímek obrazovky krok 3 Průvodce](media/monitoring-alerts-extend-tool/ExtendStep3.png)
 
 Pokud je na dokončení průvodce **nastavení výstrah** odebrání stránky, možnost rozšíření upozornění do Azure. Na pozadí přesunou se vaše upozornění do Azure a to může nějakou dobu trvat. Během operace nemůžete provádět změny výstrah z portálu Operations Management Suite. Můžete zobrazit aktuální stav z banner v horní části portálu. Pokud jste dříve zadali e-mailovou adresu, dostanete e-mail, když se proces úspěšně dokončil.  
 
 
 Upozornění dál zobrazovat na portálu Operations Management Suite, i když jsou úspěšně přesunuta do Azure.
-![Stránka nastavení výstrah portálu snímek obrazovky s Operations Management Suite](./media/monitor-alerts-extend/PostExtendList.png)
+![Stránka nastavení výstrah portálu snímek obrazovky s Operations Management Suite](media/monitoring-alerts-extend-tool/PostExtendList.png)
 
 
 ## <a name="option-2-use-the-alertsversion-api"></a>Možnost 2: Použití rozhraní AlertsVersion API
@@ -460,7 +460,7 @@ Během procesu rozšiřování upozornění, problémů můžete zabránit v sys
 > Na základě veřejného cloudu Azure Log Analytics uživatele není proveďte následující kroky nápravy před 5. července 2018, upozornění se spustí v Azure, ale nepřidají žádné akce ani oznámení. Chcete-li získat oznámení pro výstrahy, musíte ručně upravit a přidat [skupiny akcí](monitoring-action-groups.md), nebo použít předchozí [vlastní skript prostředí PowerShell](#option-3---using-custom-powershell-script).
 
 Tady jsou kroky nápravy u každé chyby:
-- **Chyba: Zámek oboru je k dispozici na úrovni předplatného nebo prostředek skupiny pro operace zápisu**: ![snímek obrazovky s Operations Management Suite nastavení výstrah stránky portálu, se zvýrazněným obor zámku chybová zpráva](./media/monitor-alerts-extend/ErrorScopeLock.png)
+- **Chyba: Zámek oboru je k dispozici na úrovni předplatného nebo prostředek skupiny pro operace zápisu**: ![snímek obrazovky s Operations Management Suite nastavení výstrah stránky portálu, se zvýrazněným obor zámku chybová zpráva](media/monitoring-alerts-extend-tool/ErrorScopeLock.png)
 
     Pokud je povoleno uzamčení oboru, omezuje funkci žádné nové změny v předplatné nebo skupinu prostředků, který obsahuje tento pracovní prostor Log Analytics (Operations Management Suite). Systém se nemůže rozšířit upozornění do Azure a vytvořte potřebné skupiny akcí.
     
@@ -468,7 +468,7 @@ Tady jsou kroky nápravy u každé chyby:
     
     Jakmile vyřešíte chybu pomocí popsané postupy v tomto článku, Operations Management Suite rozšiřuje vaše upozornění do Azure během plánovaného spuštění dalšího dne. Není nutné provádět žádnou další akci, nebo můžete spustit cokoli.
 
-- **Chyba: Zásady nachází na úrovni předplatného nebo prostředek skupiny**: ![snímek obrazovky s Operations Management Suite nastavení výstrah stránky portálu, se zvýrazněným zásad chybová zpráva](./media/monitor-alerts-extend/ErrorPolicy.png)
+- **Chyba: Zásady nachází na úrovni předplatného nebo prostředek skupiny**: ![snímek obrazovky s Operations Management Suite nastavení výstrah stránky portálu, se zvýrazněným zásad chybová zpráva](media/monitoring-alerts-extend-tool/ErrorPolicy.png)
 
     Když [Azure Policy](../azure-policy/azure-policy-introduction.md) je použita, omezuje nový prostředek ve skupině předplatné nebo prostředek, který obsahuje tento pracovní prostor Log Analytics (Operations Management Suite). Systém se nemůže rozšířit upozornění do Azure a vytvořte potřebné skupiny akcí.
     

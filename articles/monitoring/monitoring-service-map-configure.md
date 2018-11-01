@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: daseidma;bwren
-ms.openlocfilehash: 9d574e7e8b0b285093aa0960243300dfe9f6d417
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 4461b98c56bcf99fc11aa9d89e6c6dc5961c86ac
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50248990"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50419516"
 ---
 # <a name="configure-service-map-in-azure"></a>Konfigurace řešení Service Map v Azure
 Service Map automaticky rozpozná komponenty aplikace v systémech Windows a Linux a mapuje komunikaci mezi službami. Můžete ho zobrazit servery přirozeným způsobem – propojené systémy, které doručují důležité služby. Service Map ukazuje propojení mezi servery, procesy a porty v jakékoli architektuře propojené TCP žádnou konfiguraci kromě instalace agenta vyžaduje.
@@ -172,7 +172,7 @@ Další informace o shromažďování a používání dat najdete v článku [pr
 
 ## <a name="installation"></a>Instalace
 
-## <a name="azure-vm-extension"></a>Rozšíření virtuálního počítače Azure
+### <a name="azure-vm-extension"></a>Rozšíření virtuálního počítače Azure
 Rozšíření je k dispozici pro Windows (DependencyAgentWindows) i Linux (DependencyAgentLinux) a agenta závislostí můžete snadno nasadit na virtuální počítače Azure pomocí [rozšíření Azure VM](https://docs.microsoft.com/azure/virtual-machines/windows/extensions-features).  Pomocí rozšíření virtuálního počítače Azure můžete nasadit agenta závislosti pro Windows a virtuální počítače s Linuxem pomocí skriptu prostředí PowerShell nebo přímo ve virtuálním počítači pomocí šablony Azure Resource Manageru.  Pokud provádíte nasazení agenta pomocí rozšíření virtuálního počítače Azure, agenty se automaticky aktualizují na nejnovější verzi.
 
 Pokud chcete nasadit rozšíření virtuálního počítače Azure pomocí Powershellu, můžete použít v následujícím příkladu:

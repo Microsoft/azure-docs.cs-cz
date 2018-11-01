@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: a95cdbb48371cf960211f55bf077cea9db783db5
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 3c8202f762c65d72417020b0524e415e55076eb0
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48248325"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50415258"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-using-azure-monitor"></a>Vytvoření, zobrazení a správa pomocí Azure monitoru upozornění protokolu aktivit  
 
@@ -43,11 +43,11 @@ Použijte následující postup:
 1. Z webu Azure portal, vyberte **monitorování** > **výstrahy**
 2. Klikněte na tlačítko **nové pravidlo upozornění** v horní části **výstrahy** okna.
 
-     ![Nové pravidlo upozornění](./media/monitor-alerts-unified/AlertsPreviewOption.png)
+     ![Nové pravidlo upozornění](media/alert-activity-log/AlertsPreviewOption.png)
 
      **Vytvořit pravidlo** zobrazí se okno.
 
-      ![nové možnosti pravidlo upozornění](./media/monitoring-activity-log-alerts-new-experience/create-new-alert-rule-options.png)
+      ![nové možnosti pravidlo upozornění](media/alert-activity-log/create-new-alert-rule-options.png)
 
 3. **V části definovat výstražný stav** zadejte následující informace a klikněte na tlačítko **provádí**.
 
@@ -57,7 +57,7 @@ Použijte následující postup:
 
     > můžete vybrat prostředek, skupinu prostředků nebo celé předplatné pro signálu protokolu aktivit.
 
-    **Cíl ukázkové zobrazení výstrahy** ![vyberte cíl](./media/monitoring-activity-log-alerts-new-experience/select-target.png)
+    **Cíl ukázkové zobrazení výstrahy** ![vyberte cíl](media/alert-activity-log/select-target.png)
 
     - V části **cílová kritéria**, klikněte na tlačítko **přidat kritéria** a jsou zobrazeny všechny dostupné signály pro cíl, včetně těch, které z různých kategorií **protokolu aktivit**; nebyla úspěšná Název kategorie připojí v **Monitor Service** název.
 
@@ -67,7 +67,7 @@ Použijte následující postup:
 
     **Přidání obrazovky kritéria**
 
-    ![Přidat kritéria](./media/monitoring-activity-log-alerts-new-experience/add-criteria.png)
+    ![Přidat kritéria](media/alert-activity-log/add-criteria.png)
 
     **Historie čas**: událostí, které jsou k dispozici pro vybranou operaci je mohou být vykreslena za posledních 6/12/24 hodin (nebo) za poslední týden.
 
@@ -79,7 +79,7 @@ Použijte následující postup:
 
         Ukázkový graf signál s logika upozornění použít:
 
-        ![ kritéria vybraná](./media/monitoring-activity-log-alerts-new-experience/criteria-selected.png)
+        ![ kritéria vybraná](media/alert-activity-log/criteria-selected.png)
 
 4. V části **definujte podrobnosti pravidla upozornění**, zadejte následující podrobnosti:
 
@@ -99,20 +99,20 @@ Použijte následující postup:
 
 Alternativně je jednoduchý přirovnání pro vysvětlení podmínky, na kterých se dají vytvořit pravidla upozornění na protokol aktivit, prozkoumat nebo filtrovat události prostřednictvím [protokolu aktivit na webu Azure portal](monitoring-overview-activity-logs.md#query-the-activity-log-in-the-azure-portal). Ve službě Azure Monitor – protokol aktivit, jeden můžete filtrovat nebo najít potřebné události a pak vytvořte výstrahu pomocí **přidat upozornění protokolu aktivit** tlačítko; potom postupujte podle kroků 4 a vyšší jak je uvedeno v kurzu výše.
     
- ![ Přidat upozornění protokolu aktivit](./media/monitoring-activity-log-alerts-new-experience/add-activity-log.png)
+ ![ Přidat upozornění protokolu aktivit](media/alert-activity-log/add-activity-log.png)
     
 
 ### <a name="view-and-manage-in-azure-portal"></a>Umožňuje zobrazit a spravovat na webu Azure portal
 
 1. Z webu Azure portal, klikněte na tlačítko **monitorování** > **výstrahy** a klikněte na tlačítko **spravovat pravidla** v levém horním rohu okna.
 
-    ![ Spravovat pravidla výstrah](./media/monitoring-activity-log-alerts-new-experience/manage-alert-rules.png)
+    ![ Spravovat pravidla výstrah](media/alert-activity-log/manage-alert-rules.png)
 
     Zobrazí se seznam dostupných pravidla.
 
 2. Vyhledejte pravidlo protokolu aktivit, které chcete upravit.
 
-    ![ Hledat pravidla upozornění protokolu aktivit](./media/monitoring-activity-log-alerts-new-experience/searth-activity-log-rule-to-edit.png)
+    ![ Hledat pravidla upozornění protokolu aktivit](media/alert-activity-log/searth-activity-log-rule-to-edit.png)
 
     Můžete použít k dispozici tyto filtry – _předplatné_, _skupiny prostředků_, _prostředků_, _typ signálu_, nebo _stav_  najít pravidlo aktivit, které chcete upravit.
 
@@ -122,7 +122,7 @@ Alternativně je jednoduchý přirovnání pro vysvětlení podmínky, na který
 
 3.  Vyberte pravidlo a dvakrát klikněte pro úpravu možností pravidla. Proveďte požadované změny a pak klikněte na tlačítko **Uložit**.
 
-    ![ Spravovat pravidla výstrah](./media/monitoring-activity-log-alerts-new-experience/activity-log-rule-edit-page.png)
+    ![ Spravovat pravidla výstrah](media/alert-activity-log/activity-log-rule-edit-page.png)
 
 4.  Zakázání, povolení nebo odstranění pravidla. Vyberte příslušnou možnost v horní části okna, po výběru pravidla, jak je uvedeno v kroku 2.
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/01/2017
 ms.author: mbullwin
-ms.openlocfilehash: 98081bc50696156f7b2e3da95889efb8db653807
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 42db55fbca1bcc4d0d0d1e22dd41636d1dbdaeff
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47095146"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50417697"
 ---
 # <a name="preview-upcoming-changes-to-azure-application-insights"></a>Připravované změny ve verzi Preview služby Azure Application Insights 
 
@@ -26,7 +26,7 @@ Application Insights často vydává nové funkce. Pokud chcete zobrazit náhled
 
 Následující obrázek ukazuje, jak nastavit předvolby ve verzi preview.
 
-![Okno Application Insights ve verzi Preview](./media/app-insights-preview/preview.png)
+![Okno Application Insights ve verzi Preview](media/app-insights-previews/preview.png)
 
 ## <a name="set-preferences"></a>Nastavení předvoleb
 

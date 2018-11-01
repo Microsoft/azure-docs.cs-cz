@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/12/2018
 ms.author: vinynigam
-ms.openlocfilehash: 2821f3fa07d8d9ada02da212084639c93e469d0b
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 91cfa35cd10772da0042566bdd9030f780329f93
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49408876"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50415181"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Network Performance Monitor řešení – nejčastější dotazy
 
-![Symbol sledování výkonu sítě](media/log-analytics-network-performance-monitor/npm-symbol.png)
+![Symbol sledování výkonu sítě](media/log-analytics-network-performance-monitor-faq/npm-symbol.png)
 
 Tento článek zachycuje nejčastější dotazy (FAQ) o Network Performance Monitor (NPM) v Azure
 
@@ -54,7 +54,7 @@ Pro funkce monitorování ExpressRoute, které musí být připojené uzlů Azur
 ### <a name="which-protocol-among-tcp-and-icmp-should-be-chosen-for-monitoring"></a>Protokol TCP a ICMP, který je třeba zvolit pro monitorování?
 Pokud monitorujete svoji síť pomocí služeb Windows na serveru uzly, doporučujeme že použít TCP jako protokol monitorování, protože nabízí vyšší přesnost. 
 
-Windows stolní počítače nebo klienta na základě operačního systému uzlů ICMP se doporučuje, protože tato platforma neumožňuje TCP data odesílaná nezpracovaná sockets, která je nástroj NPM potřebné ke zjišťování síťové topologie.
+ICMP se doporučuje pro Windows stolní počítače nebo klienta na základě operačního systému uzlů. Tato platforma neumožňuje TCP data odesílaná nezpracovaná sockets NPM ke zjišťování síťové topologie.
 
 Další podrobnosti získáte na relativní výhody každý protokol [tady](log-analytics-network-performance-monitor-performance-monitor.md#choose-the-protocol).
 

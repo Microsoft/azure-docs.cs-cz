@@ -1,5 +1,5 @@
 ---
-title: Monitorování služeb a aplikací Azure pomocí služby Grafana
+title: Monitorování služby Azure a aplikací pomocí služby Grafana
 description: Trasy Azure Monitor a Application Insights data, můžete je zobrazit v Grafana.
 services: azure-monitor
 keywords: ''
@@ -9,12 +9,12 @@ ms.date: 11/06/2017
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.component: ''
-ms.openlocfilehash: b4fbd1248f91e0766cca66d1c51033a8b338c324
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 75b1edf80f1dad5f0db48c11329effe080760820
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49957356"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50413141"
 ---
 # <a name="monitor-your-azure-services-in-grafana"></a>Monitorování služeb Azure v Grafana
 Teď můžete také monitorovat služby a aplikace z Azure [Grafana](https://grafana.com/) pomocí [zdroje dat monitorování Azure plugin](https://grafana.com/plugins/grafana-azure-monitor-datasource). Modul plug-in shromažďuje údaje o výkonu aplikace shromážděných službou Application Insights SDK, jakož i data infrastruktury poskytovaný Azure Monitor. Tato data pak můžete zobrazit na řídicím panelu Grafana.
@@ -37,13 +37,13 @@ Následujícím postupem nastavit server Grafany z Azure Marketplace a sestavova
 ## <a name="log-in-to-grafana"></a>Přihlaste se do Grafany
 1. Po dokončení nasazení vyberte **přejít ke skupině prostředků**. Zobrazí seznam nově vytvořené prostředky.
 
-    ![Grafana objektů skupiny prostředků](.\media\monitor-how-to-grafana\grafana1.png)
+    ![Grafana objektů skupiny prostředků](media/monitor-send-to-grafana/grafana1.png)
 
     Pokud vyberete skupinu zabezpečení sítě (*grafana-nsg* v tomto případě), uvidíte, že je pro přístup k serveru Grafana používá port 3000.
 
 2. Vraťte se do seznamu prostředků a vyberte **veřejnou IP adresu**. Použitím hodnot na této obrazovce, zadejte *http://<IP address>: 3000* nebo  *<DNSName>: 3000* v prohlížeči. Měli byste vidět přihlašovací stránku pro server Grafana, kterou jste právě vytvořili.
 
-    ![Grafana přihlašovací obrazovky](.\media\monitor-how-to-grafana\grafana2.png)
+    ![Grafana přihlašovací obrazovky](media/monitor-send-to-grafana/grafana2.png)
 
 3. Přihlaste se pomocí uživatelské jméno jako *správce* a heslo správce serveru Grafana jste vytvořili dříve.
 
@@ -51,7 +51,7 @@ Následujícím postupem nastavit server Grafany z Azure Marketplace a sestavova
 
 Po úspěšném přihlášení, měli byste vidět, že modul plug-in Azure Monitor datový zdroj je již součástí.
 
-![Grafana ukazuje modul plug-in Azure Monitor](.\media\monitor-how-to-grafana\grafana3.png)
+![Grafana ukazuje modul plug-in Azure Monitor](media/monitor-send-to-grafana/grafana3.png)
 
 1. Vyberte **přidat zdroj dat** ke konfiguraci Azure Monitor a Application Insights.
 
@@ -70,7 +70,7 @@ Grafana instanční objekt Azure Active Directory používá pro připojení k r
 
 4. Až zadáte všechny tyto informace, vyberte **Uložit** a Grafany testy rozhraní API. Zobrazí se zpráva podobná následující.  
 
-    ![Grafana ukazuje modul plug-in Azure Monitor](.\media\monitor-how-to-grafana\grafana4-1.png)
+    ![Grafana ukazuje modul plug-in Azure Monitor](media/monitor-send-to-grafana/grafana4-1.png)
 
 > [!NOTE]
 > Při konfiguraci modulu plug-in můžete určit, který Cloud Azure (veřejný, Azure US Government, Azure Germany nebo Azure China) chcete modul plug-in nakonfigurovat proti.
@@ -83,7 +83,7 @@ Grafana instanční objekt Azure Active Directory používá pro připojení k r
 
 2. Na nový řídicí panel, vyberte **grafu**. Můžete vyzkoušet další možnosti vytváření grafů, ale tento článek používá *grafu* jako příklad.
 
-    ![Nový řídicí panel služby Grafana](.\media\monitor-how-to-grafana\grafana5.png)
+    ![Nový řídicí panel služby Grafana](media/monitor-send-to-grafana/grafana5.png)
 
 3. Prázdný graf se zobrazí na řídicím panelu.
 
@@ -93,14 +93,14 @@ Grafana instanční objekt Azure Active Directory používá pro připojení k r
 
 Tady je jednoduchý řídicí panel se dva grafy. Na levé straně znázorňuje procentuální využití procesoru dva virtuální počítače. Graf na pravé straně zobrazuje transakce v účtu služby Azure Storage rozdělené podle typu transakcí API.
 
-![Příklad Grafana dva grafy](.\media\monitor-how-to-grafana\grafana6.png)
+![Příklad Grafana dva grafy](media/monitor-send-to-grafana/grafana6.png)
 
 
 ## <a name="optional-create-dashboard-playlists"></a>Volitelné: Vytvoření řídicího panelu seznamy stop
 
 Jednou z mnoho užitečných funkcí Grafana je řídicí panel seznamu testů. Můžete vytvořit více řídicích panelů a přidat je do seznamu stop Konfigurace intervalu pro každý řídicí panel k zobrazení. Vyberte **Přehrát** zobrazíte řídicí panely cyklicky procházet. Můžete zobrazit na velké wall monitorování, které poskytují "stav panelu" pro vaši skupinu.
 
-![Příklad seznamu stop Grafana](.\media\monitor-how-to-grafana\grafana7.png)
+![Příklad seznamu stop Grafana](media/monitor-send-to-grafana/grafana7.png)
 
 
 ## <a name="optional-monitor-your-custom-metrics-in-the-same-grafana-server"></a>Volitelné: Sledování vaší vlastní metriky na stejném serveru služby Grafana
@@ -117,7 +117,7 @@ Tady je dobrá reference články týkající se použití Telegraf, InfluxDB, P
  - [Řešení monitorování pro hostitele Docker, kontejnery a kontejnerizovaných služeb](https://stefanprodan.com/2016/a-monitoring-solution-for-docker-hosts-containers-and-containerized-services/)
 
 Tady je obrázek úplné řídicím panelem Grafana, který má metriky z Azure monitoru a Application Insights.
-![Příklad Grafana metriky](.\media\monitor-how-to-grafana\grafana8.png)
+![Příklad Grafana metriky](media/monitor-send-to-grafana/grafana8.png)
 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků

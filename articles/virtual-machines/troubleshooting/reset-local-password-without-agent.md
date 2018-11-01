@@ -11,14 +11,14 @@ ms.service: virtual-machines-windows
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 01/25/2018
+ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: a69692d9f50d0362a6b10d3237e1e5448c43baab
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: 31e675b101d903af5dd4a07fee3bc56fbc3353d9
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48268712"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50412784"
 ---
 # <a name="reset-local-windows-password-for-azure-vm-offline"></a>Resetování místního hesla Windows pro virtuální počítač Azure do offline režimu
 Můžete resetovat hesla Windows místního virtuálního počítače v Azure s využitím [webu Azure portal nebo Azure Powershellu](reset-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) předpokladu, že je nainstalovaný agent hosta Azure. Tato metoda je primárním způsob, jak resetování hesla pro virtuální počítač Azure. Pokud narazíte na problémy s neodpovídajícím agentem hosta Azure nebo selhání instalace po nahrání vlastní image, můžete ručně resetovat hesla Windows. Tento článek podrobně popisuje, jak resetovat heslo místního účtu připojením zdrojový OS virtuální disk k jinému virtuálnímu počítači. Podle kroků popsaných v tomto článku se nevztahují na řadiče domény Windows. 
@@ -133,7 +133,7 @@ Vždy se pokusí resetovat heslo pomocí [webu Azure portal nebo Azure Powershel
      ![Zkopírujte disk identifikátoru URI](./media/reset-local-password-without-agent/copy_source_vhd_uri.png)
 9. Vytvoření virtuálního počítače z disku s operačním systémem zdrojového Virtuálního počítače:
    
-   * Použití [tuto šablonu Azure Resource Manageru](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-specialized-vhd-new-or-existing-vnet) vytvoření virtuálního počítače ze specializovaného VHD. Klikněte na tlačítko `Deploy to Azure` tlačítko Otevřít na webu Azure portal s podrobnostmi bez vizuálního vzhledu za vás.
+   * Použití [tuto šablonu Azure Resource Manageru](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-specialized-vhd-new-or-existing-vnet) vytvoření virtuálního počítače ze specializovaného VHD. Klikněte na tlačítko `Deploy to Azure` tlačítko Otevřít na webu Azure portal s podrobnostmi bez vizuálního vzhledu za vás.
    * Pokud chcete zachovat všechny předchozí nastavení pro virtuální počítač, vyberte *úpravy šablony* poskytovat existující virtuální síť, podsíť, síťový adaptér nebo veřejnou IP adresu.
    * V `OSDISKVHDURI` parametr textového pole, vložit získat identifikátor URI zdroje virtuální pevný disk v předchozím kroku:
      

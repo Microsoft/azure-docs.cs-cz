@@ -7,13 +7,13 @@ ms.author: andrela
 editor: jasonwhowell
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: 283b529aa8c6431ea725b066c9b5cb3db19a929b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.date: 10/30/2018
+ms.openlocfilehash: b4e79723072a19f2637bea16d0534cb85588e9e3
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46969440"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50412444"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Repliky pro čtení ve službě Azure Database for MySQL
 
@@ -34,6 +34,10 @@ Běžný scénář, kdy je, aby BI a analytických úloh pomocí repliky pro čt
 ### <a name="pricing-tiers"></a>Cenové úrovně
 
 Repliky pro čtení jsou aktuálně dostupné jenom v cenové úrovně pro obecné účely a optimalizované pro paměť.
+
+### <a name="master-server-restart"></a>Hlavní server restartovat
+
+Během tohoto období preview při vytvoření repliky pro hlavní server, který nemá žádnou existující repliku, hlavní nejprve restartuje připraví pro replikaci. Vzít v úvahu a provádění těchto operací během období mimo špičku.
 
 ### <a name="stopping-replication"></a>Zastavení replikace
 

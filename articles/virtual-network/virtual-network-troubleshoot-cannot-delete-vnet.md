@@ -1,6 +1,6 @@
 ---
-title: Nelze odstranit virtuální sítě v Azure | Microsoft Docs
-description: Zjistěte, jak vyřešit problém, ve kterém nelze odstranit virtuální sítě v Azure.
+title: Nelze odstranit virtuální síť v Azure | Dokumentace Microsoftu
+description: Zjistěte, jak vyřešit problém, ve kterém nelze odstranit virtuální síť v Azure.
 services: virtual-network
 documentationcenter: na
 author: chadmath
@@ -12,81 +12,81 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/11/2018
+ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: d3ffcd9981ff0c57f6d625efcede3e930acd17b5
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 4bd143b37e4403d039108b4349b27604b6503e0e
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34072105"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50415215"
 ---
-# <a name="troubleshooting-failed-to-delete-a-virtual-network-in-azure"></a>Řešení potíží: Nepodařilo se odstranit virtuální sítě v Azure
+# <a name="troubleshooting-failed-to-delete-a-virtual-network-in-azure"></a>Řešení potíží: Nepovedlo se odstranit virtuální síť v Azure
 
-Taky může docházet k chybám při pokusu o odstranění virtuální sítě v Microsoft Azure. Tento článek obsahuje postup pro odstraňování potíží při řešení tohoto problému. 
+Při pokusu o odstranění virtuální sítě v Microsoft Azure, může dojít k chybám. Tento článek obsahuje postup řešení potíží, které vám pomohou vyřešit tento problém. 
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
 ## <a name="troubleshooting-guidance"></a>Pokyny při řešení potíží 
 
 1. [Zkontrolujte, zda bránu virtuální sítě běží ve virtuální síti](#check-whether-a-virtual-network-gateway-is-running-in-the-virtual-network).
-2. [Zkontrolujte, zda služby application gateway běží ve virtuální síti](#check-whether-an-application-gateway-is-running-in-the-virtual-network).
-3. [Zkontrolujte, zda je povolena služba Azure Active Directory Domain Services ve virtuální síti](#check-whether-azure-active-directory-domain-service-is-enabled-in-the-virtual-network).
-4. [Zkontrolujte, zda je virtuální sítě připojený k jiný prostředek](#check-whether-the-virtual-network-is-connected-to-other-resource).
-5. [Zkontrolujte, zda je virtuální počítač stále spuštěna ve virtuální síti](#check-whether-a-virtual-machine-is-still-running-in-the-virtual-network).
+2. [Zkontrolujte, zda služby application gateway je spuštěná ve virtuální síti](#check-whether-an-application-gateway-is-running-in-the-virtual-network).
+3. [Zkontrolujte, zda je povoleno služby Azure Active Directory Domain Services ve virtuální síti](#check-whether-azure-active-directory-domain-service-is-enabled-in-the-virtual-network).
+4. [Zkontrolujte, zda virtuální síť připojená k jinému prostředku](#check-whether-the-virtual-network-is-connected-to-other-resource).
+5. [Zkontrolujte, zda je stále spuštěný virtuální počítač ve virtuální síti](#check-whether-a-virtual-machine-is-still-running-in-the-virtual-network).
 6. [Zkontrolujte, zda virtuální sítě se zasekla v automatickém migrace](#check-whether-the-virtual-network-is-stuck-in-migration).
 
 ## <a name="troubleshooting-steps"></a>Postup při řešení potíží
 
 ### <a name="check-whether-a-virtual-network-gateway-is-running-in-the-virtual-network"></a>Zkontrolujte, zda bránu virtuální sítě běží ve virtuální síti
 
-Odebrat virtuální sítě, je nutné nejprve odebrat bránu virtuální sítě.
+Virtuální síť bude odebrána, musíte nejdřív odebrat bránu virtuální sítě.
 
-Klasické virtuální sítě, najdete **přehled** stránky klasické virtuální sítě na portálu Azure. V **připojení k síti VPN** část, pokud brána běží ve virtuální síti, zobrazí se na IP adresu brány. 
+U klasických virtuálních sítí, přejděte **přehled** stránky klasického virtuálního počítače na webu Azure Portal. V **připojení k síti VPN** části, pokud je brána spuštěná ve virtuální síti, zobrazí se IP adresa brány. 
 
-![Zkontrolujte, jestli je brána spuštěná.](media/virtual-network-troubleshoot-cannot-delete-vnet/classic-gateway.png)
+![Zkontrolujte, jestli je brána spuštěná](media/virtual-network-troubleshoot-cannot-delete-vnet/classic-gateway.png)
 
-Pro virtuální sítě, přejděte na **přehled** stránky ve virtuální síti. Zkontrolujte **připojená zařízení** pro bránu virtuální sítě.
+Pro virtuální sítě, přejděte **přehled** stránky ve virtuální síti. Zkontrolujte **připojená zařízení** pro bránu virtuální sítě.
 
-![Zkontrolujte připojeného zařízení](media/virtual-network-troubleshoot-cannot-delete-vnet/vnet-gateway.png)
+![Zkontrolujte připojené zařízení](media/virtual-network-troubleshoot-cannot-delete-vnet/vnet-gateway.png)
 
-Před odebráním bránu, nejprve odeberte **připojení** objekty v bráně. 
+Před odebráním brány, nejdřív všechny odebrat **připojení** objekty v bráně. 
 
-### <a name="check-whether-an-application-gateway-is-running-in-the-virtual-network"></a>Zkontrolujte, zda je ve virtuální síti spuštěn aplikační brány
+### <a name="check-whether-an-application-gateway-is-running-in-the-virtual-network"></a>Zkontrolujte, zda služby application gateway je spuštěná ve virtuální síti
 
-Přejděte na **přehled** stránky ve virtuální síti. Zkontrolujte **připojená zařízení** pro službu application gateway.
+Přejděte **přehled** stránky ve virtuální síti. Zkontrolujte, **připojená zařízení** pro službu application gateway.
 
-![Zkontrolujte připojeného zařízení](media/virtual-network-troubleshoot-cannot-delete-vnet/app-gateway.png)
+![Zkontrolujte připojené zařízení](media/virtual-network-troubleshoot-cannot-delete-vnet/app-gateway.png)
 
-Pokud je služby application gateway, musí odebrat před odstraněním virtuální sítě.
+Pokud je službu application gateway, musíte odebrat před odstraněním virtuální sítě.
 
-### <a name="check-whether-azure-active-directory-domain-service-is-enabled-in-the-virtual-network"></a>Zkontrolujte, zda je povolena služba Azure Active Directory Domain Services ve virtuální síti
+### <a name="check-whether-azure-active-directory-domain-service-is-enabled-in-the-virtual-network"></a>Zkontrolujte, zda je povoleno služby Azure Active Directory Domain Services ve virtuální síti
 
-Pokud služba Active Directory Domain Services je povolen a připojen k virtuální síti, nelze odstranit tuto virtuální síť. 
+Pokud Active Directory Domain Services je povolen a připojen k virtuální síti, tuto virtuální síť nejde odstranit. 
 
-![Zkontrolujte připojeného zařízení](media/virtual-network-troubleshoot-cannot-delete-vnet/enable-domain-services.png)
+![Zkontrolujte připojené zařízení](media/virtual-network-troubleshoot-cannot-delete-vnet/enable-domain-services.png)
 
-Chcete-li zakázat službu, přečtěte si téma [zakázat Azure Active Directory Domain Services pomocí webu Azure portal](../active-directory-domain-services/active-directory-ds-disable-aadds.md).
+Zakázat službu, najdete v článku [zakažte Azure Active Directory Domain Services pomocí webu Azure portal](../active-directory-domain-services/active-directory-ds-disable-aadds.md).
 
-### <a name="check-whether-the-virtual-network-is-connected-to-other-resource"></a>Zkontrolujte, zda virtuální síť je připojená k jiné prostředku
+### <a name="check-whether-the-virtual-network-is-connected-to-other-resource"></a>Zkontrolujte, zda virtuální síť připojená k jinému prostředku
 
-Zkontrolujte propojení okruhu, připojení a partnerských vztahů virtuální sítě. Některý z těchto může způsobit odstranění virtuální sítě k selhání. 
+Zkontrolujte propojení okruhu, připojení a partnerské vztahy virtuálních sítí. Některé z těchto může způsobit selhání odstranění virtuální sítě. 
 
 Pořadí odstranění doporučené vypadá takto:
 
-1. Připojení brány
+1. připojení brány
 2. Brány
 3. IP adresy
-4. Partnerské vztahy virtuální sítě
-5. Služba App Service Environment (App Service Environment)
+4. Partnerské vztahy virtuálních sítí
+5. App Service Environment (ASE)
 
-### <a name="check-whether-a-virtual-machine-is-still-running-in-the-virtual-network"></a>Zkontrolujte, zda je virtuální počítač stále spuštěna ve virtuální síti
+### <a name="check-whether-a-virtual-machine-is-still-running-in-the-virtual-network"></a>Zkontrolujte, zda je stále spuštěný virtuální počítač ve virtuální síti
 
 Ujistěte se, že žádný virtuální počítač je ve virtuální síti.
 
 ### <a name="check-whether-the-virtual-network-is-stuck-in-migration"></a>Zkontrolujte, zda virtuální sítě se zasekla v automatickém migrace
 
-Pokud virtuální sítě se zasekla v automatickém migrace stavu, nelze jej odstranit. Spusťte následující příkaz k přerušení migrace a pak odstraňte virtuální sítě.
+Pokud virtuální síť se zasekla v automatickém migrace stavu, nelze odstranit. Spusťte následující příkaz k migraci přerušit a pak odstranit virtuální síť.
 
     Move-AzureVirtualNetwork -VirtualNetworkName "Name" -Abort
 

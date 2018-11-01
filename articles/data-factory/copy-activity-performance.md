@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/06/2018
+ms.date: 10/31/2018
 ms.author: jingwang
-ms.openlocfilehash: 958d1ea09ce4d85afc59af412e1050efc6290a1a
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 7dc60c18e105c9be190b5bfede786f61a65feec3
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39002241"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50416932"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>Průvodce laděním a výkonem aktivity kopírování
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -56,7 +56,7 @@ Referenci naleznete níže uvedená tabulka zobrazuje počet propustnost kopíro
 Odkazuje na mějte na paměti:
 
 * Vypočítá se propustnost s použitím následujícího vzorce: [objem dat pro čtení ze zdroje] / [doba trvání běhu aktivity kopírování].
-* Výkon referenční čísla v tabulce se měří pomocí [TPC-H](http://www.tpc.org/tpch/) datovou sadu v aktivitě kopírování jednoho spuštění.
+* Výkon referenční čísla v tabulce se měří pomocí [TPC-H](http://www.tpc.org/tpch/) datovou sadu v aktivitě kopírování jednoho spuštění. Testovací soubory pro souborové úložiště se víc souborů s 10GB velikosti.
 * V úložištích dat Azure zdroj a jímka mají ve stejné oblasti Azure.
 * Pro hybridní kopírování mezi místním a cloudovým úložištěm dat a každý uzel modul Integration Runtime byl spuštěn na počítači, který byl nezávisle na úložišti dat s níže specifikace. Pokud byla spuštěna jedna aktivita, operace kopírování spotřebovány pouze malou část testovací počítač procesor, paměť nebo šířky pásma sítě.
     <table>
@@ -76,7 +76,7 @@ Odkazuje na mějte na paměti:
 
 
 > [!TIP]
-> Vyšší propustnosti můžete dosáhnout pomocí další Data integrace jednotek (DIÚ) než výchozí, povolená maximální DIUs, které jsou 32 pro spuštění aktivity kopírování cloud-to-cloud. Například s 100 DIUs, které můžete dosáhnout kopírování dat z objektů Blob v Azure do Azure Data Lake Store v **1.0GBps**. Zobrazit [jednotky integrace dat](#data-integration-units) podrobné informace o této funkci a podporované scénáře. Kontakt [podpory Azure](https://azure.microsoft.com/support/) požádat o další DIUs.
+> Vyšší propustnosti můžete dosáhnout pomocí více dat integrace jednotek (DIÚ). Například s 100 DIUs, které můžete dosáhnout kopírování dat z objektů Blob v Azure do Azure Data Lake Store v **1.0GBps**. Zobrazit [jednotky integrace dat](#data-integration-units) podrobné informace o této funkci a podporované scénáře. 
 
 ## <a name="data-integration-units"></a>Jednotky integrace dat
 
@@ -94,7 +94,7 @@ Chcete-li přepsat toto výchozí nastavení, zadejte hodnotu **dataIntegrationU
 Zobrazí se skutečně využité jednotky integrace dat pro každou kopii spustit v aktivitě kopírování výstup při spuštění aktivity monitorování. Další podrobnosti o [zkopírujte monitorování aktivit](copy-activity-overview.md#monitoring).
 
 > [!NOTE]
-> Pokud potřebujete další DIUs vyšší propustnost, obraťte se na [podpory Azure](https://azure.microsoft.com/support/). Nastavení 8 a vyšší aktuálně funguje pouze tehdy, když jste **zkopírovat soubory z objektu Blob úložiště nebo Data Lake Store nebo Amazon S3 nebo cloudem FTP nebo cloudem SFTP žádné jiným úložištím dat cloudu**.
+> Nastavení DIUs **větší než 4** aktuálně funguje pouze tehdy, když jste **zkopírovat víc souborů z objektu Blob úložiště a Data Lake Storage/Amazon S3/Cloudová FTP/Cloudová SFTP pro všechna ostatní data cloudové úložiště.**.
 >
 
 **Příklad:**
@@ -248,7 +248,7 @@ Doporučujeme vám, že je provést tyto kroky pro optimalizaci výkonu služby 
      * [Škálovatelnost v místním prostředí Integration Runtime](concepts-integration-runtime.md#self-hosted-integration-runtime)
    * [Místní prostředí Integration Runtime](#considerations-for-self-hosted-integration-runtime)
    * [Zdroj](#considerations-for-the-source)
-   * [Jímka](#considerations-for-the-sink)
+   * [jímka](#considerations-for-the-sink)
    * [Serializace a deserializace](#considerations-for-serialization-and-deserialization)
    * [Komprese](#considerations-for-compression)
    * [Mapování sloupce](#considerations-for-column-mapping)

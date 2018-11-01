@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/16/2018
 ms.author: trinadhk
-ms.openlocfilehash: 910225e74fcd4655a9eff711d3ac1316d948c2b3
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: ba77ec34e7887f676ea3df101e87c1ea80fceec5
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48886190"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50414790"
 ---
 # <a name="questions-about-the-azure-vm-backup-service"></a>Dotazy týkající se služby Azure Backup pro virtuální počítače
 Tento článek obsahuje odpovědi na běžné dotazy, které vám pomůžou rychle porozumět komponentám služby Azure Backup pro virtuální počítače. Některé odpovědi zahrnují odkazy na články obsahující komplexní informace. Otázky týkající se služby Azure Backup můžete také publikovat na [diskusním fóru](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
@@ -48,7 +48,7 @@ Ano. I v případě, že počítač je vypnutý zálohy budou fungovat a bod obn
 Ano. Úloha zálohování můžete zrušit, pokud je ve fázi "Pořízení snímku". **Úlohu nelze zrušit, pokud probíhá přenos dat ze snímku**.
 
 ### <a name="i-enabled-resource-group-lock-on-my-backed-up-managed-disk-vms-will-my-backups-continue-to-work"></a>Můžu povoleno uzamčení skupinu prostředků na spravovaný disk Moje zálohy virtuálních počítačů. Budou moje zálohy stále fungovat?
-Pokud se uživatel uzamkne skupinu prostředků, služby Backup není možné odstranit starší body obnovení. Z toho důvodu začne nový zálohování selhávat, jako je stanovený limit maximální 18 bodů obnovení uložených z back-endu. Pokud je zálohování neúspěšné kvůli vnitřní chybě po uzamčení RG, postupujte podle těchto [kolekci bodů kroky k odebrání obnovení](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#backup-service-does-not-have-permission-to-delete-the-old-restore-points-due-to-resource-group-lock).
+Pokud se uživatel uzamkne skupinu prostředků, služby Backup není možné odstranit starší body obnovení. Z toho důvodu začne nový zálohování selhávat, jako je stanovený limit maximální 18 bodů obnovení uložených z back-endu. Pokud je zálohování neúspěšné kvůli vnitřní chybě po uzamčení RG, postupujte podle těchto [kolekci bodů kroky k odebrání obnovení](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#clean-up-restore-point-collection-from-portal-created-by-backup-service).
 
 ### <a name="does-backup-policy-take-daylight-saving-timedst-into-account"></a>Zásady zálohování trvá, než Time(DST) letního času ukládá do účtu?
 Ne. Mějte na paměti, že datum a čas v místním počítači se zobrazí v místním čase a s vaší aktuální posun na letní čas. Proto může být nakonfigurovaný čas plánovaného zálohování liší od místního času z důvodu letního času.

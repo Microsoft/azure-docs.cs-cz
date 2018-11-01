@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: cshoe
-ms.openlocfilehash: d99c9732bb1bf494b87d2073ba002264c7a51634
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 3066da9a492fc12dd8b333a089b8aabbbb647414
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47221243"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50421352"
 ---
 # <a name="run-a-cassandra-cluster-on-linux-in-azure-with-nodejs"></a>Spuštění clusteru Cassandra v Linuxu v Azure pomocí Node.js
 
@@ -118,13 +118,13 @@ Během nasazení se používají následujícími verzemi softwaru:
 
 <table>
 <tr><th>Software</th><th>Zdroj</th><th>Verze</th></tr>
-<tr><td>PROSTŘEDÍ JRE    </td><td>[PROSTŘEDÍ JRE 8](http://www.oracle.com/technetwork/java/javase/downloads/server-jre8-downloads-2133154.html) </td><td>8U5</td></tr>
+<tr><td>PROSTŘEDÍ JRE    </td><td>[PROSTŘEDÍ JRE 8](https://aka.ms/azure-jdks) </td><td>8U5</td></tr>
 <tr><td>JNA    </td><td>[JNA](https://github.com/twall/jna) </td><td> 3.2.7</td></tr>
 <tr><td>Cassandra</td><td>[Apache Cassandra 2.0.8](http://www.apache.org/dist/cassandra/)</td><td> 2.0.8</td></tr>
 <tr><td>Ubuntu    </td><td>[Microsoft Azure](https://azure.microsoft.com/) </td><td>14.04 LTS</td></tr>
 </table>
 
-Musíte ručně přijmout tyto licenční Oracle, když si stáhnete prostředí JRE. Proto zjednodušuje nasazení, stáhněte veškerý požadovaný software na plochu. Nahrajte ho do image Ubuntu šablony vytvořit jako předpokladem nasazení clusteru.
+Zjednodušuje nasazení, stáhněte si potřebný software na plochu. Nahrajte ho do image Ubuntu šablony vytvořit jako předpokladem nasazení clusteru.
 
 Stáhněte si výše uvedený software do adresáře dobře známé stahování (například %TEMP%/downloads na Windows nebo ~/Downloads na většině distribucí systému Linux nebo Mac) v místním počítači.
 
@@ -149,7 +149,7 @@ Na obrazovce "Konfigurace virtuálního počítače" #1 zadejte následující i
 <tr><td> OVĚŘOVÁNÍ         </td><td> Klikněte na zaškrtávací políčko                 </td><td>Zkontrolujte, jestli chcete zabezpečit pomocí klíče SSH </td><tr>
 <tr><td> CERTIFIKÁT             </td><td> Název souboru certifikátu veřejného klíče </td><td> Použít veřejný klíč dříve generované</td><tr>
 <tr><td> Nové heslo    </td><td> silné heslo </td><td> </td><tr>
-<tr><td> Potvrďte heslo    </td><td> silné heslo </td><td></td><tr>
+<tr><td> Potvrzení hesla    </td><td> silné heslo </td><td></td><tr>
 </table>
 
 Na obrazovce "Konfigurace virtuálního počítače" #2 zadejte následující informace:

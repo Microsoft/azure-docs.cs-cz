@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: jasonh
 ROBOTS: NOINDEX
-ms.openlocfilehash: 7c37abe709559fc0628b94ba50634673c08af375
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: cda21c5b0d06335b13ba1aff0e9113544ca11c80
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43051563"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50414195"
 ---
 # <a name="process-events-from-azure-event-hubs-with-storm-on-hdinsight-c"></a>Zpracování událostí z Azure Event Hubs se Stormem v HDInsight (C#)
 
@@ -119,7 +119,7 @@ Můžete stáhnout úplnou verzi do projektu vytvořeného v tomto kurzu z [Gith
 
 * [Nástroje HDInsight pro Visual Studio](../hadoop/apache-hadoop-visual-studio-tools-get-started.md).
 
-* Java JDK 1.8 nebo novějším na vašem vývojovém prostředí. JDK soubory ke stažení jsou k dispozici z [Oracle](http://www.oracle.com/technetwork/java/javase/downloads/index.html).
+* Java JDK 1.8 nebo novějším na vašem vývojovém prostředí. JDK soubory ke stažení jsou k dispozici z [Oracle](https://aka.ms/azure-jdks).
 
   * **JAVA_HOME** proměnné prostředí musí odkazovat na adresář, který obsahuje Java.
   * **%JAVA_HOME%/bin** adresář musí být v cestě.

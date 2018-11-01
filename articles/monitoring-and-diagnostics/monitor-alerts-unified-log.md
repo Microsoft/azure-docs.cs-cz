@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: bcede1f985937058196b75a93f539cb34da73992
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 49607809d6bb8697cc6b7a4063a45d893b9e1eac
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49365058"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50421080"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Upozornění protokolů ve službě Azure Monitor
 Tento článek obsahuje podrobnosti o upozornění protokolů jsou jedním z typů výstrah, které jsou podporovány v rámci [Azure Alerts](monitoring-overview-unified-alerts.md) a umožnit uživatelům použít analytické platformy Azure jako základ pro generování výstrah.
@@ -93,7 +93,7 @@ Představte si třeba situaci, kde chcete výstrahu Pokud jakýkoli počítač p
 
 Dotaz by vytvořit průměrnou hodnotu pro každý počítač v intervalech 5 minut.  Tento dotaz se spustí každých 5 minut, než se data shromážděná za předchozí 30 minut.  Ukázková data se zobrazí pod pro tři počítače.
 
-![Ukázkové výsledky dotazu](./media/monitor-alerts-unified/metrics-measurement-sample-graph.png)
+![Ukázkové výsledky dotazu](media/monitor-alerts-unified-log/metrics-measurement-sample-graph.png)
 
 V tomto příkladu by se vytvořily samostatné výstrahy pro srv02 a srv03 vzhledem k tomu, že dojde k porušení zabezpečení 90 % prahové hodnoty třikrát za časové období.  Pokud **aktivovat upozornění na základě:** byly změněny na **za sebou** výstraha by vytvořeny pouze pro srv03, od nichž nebyla dodržena prahová hodnota pro tři po sobě jdoucích vzorků.
 

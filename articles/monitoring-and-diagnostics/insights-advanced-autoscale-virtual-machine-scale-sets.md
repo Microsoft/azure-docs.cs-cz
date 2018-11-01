@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/22/2016
 ms.author: ancav
 ms.component: autoscale
-ms.openlocfilehash: 78e3bec0d00336ce7cedc1434bf6ad7c65435969
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 995e93290e7c305e217c1f44609d383f69d83a9a
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978178"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50420553"
 ---
 # <a name="advanced-autoscale-configuration-using-resource-manager-templates-for-vm-scale-sets"></a>Rozšířená konfigurace škálování pro Škálovací sady virtuálních počítačů pomocí šablon Resource Manageru
 Můžete škálování na méně instancí a škálování Škálovací sady virtuálních počítačů na základě výkonu metriky prahových hodnot, podle opakovaného plánu nebo podle konkrétního data. Můžete také nakonfigurovat emailová a webhooková oznámení pro akce škálování. Tento návod ukazuje příklad konfigurace všechny tyto objekty pomocí šablony Resource Manageru v sadě škálování virtuálního počítače.
@@ -29,7 +29,7 @@ V tomto názorném postupu používáme [Azure Resource Exploreru](https://resou
 1. Nasazení nové škálovací sady s automatickým Škálováním základní nastavení. Tento článek používá jeden z Galerie Azure rychlý start, která má Windows škálovací sadu pomocí šablony základní automatického škálování. Stejným způsobem fungovat Linux škálovací sady.
 2. Po vytvoření škálovací sady přejděte k prostředku škálovací sady z Průzkumníku prostředků Azure. Zobrazí se následující pod uzlem Microsoft.Insights.
 
-    ![Průzkumník služby Azure](./media/insights-advanced-autoscale-vmss/azure_explorer_navigate.png)
+    ![Průzkumník služby Azure](media/insights-advanced-autoscale-virtual-machine-scale-sets/azure_explorer_navigate.png)
 
     Zpracování šablony byla vytvořena ve výchozím nastavení automatického škálování s názvem **"autoscalewad"**. Na pravé straně se zobrazí úplné definice tohoto nastavení automatického škálování. V tomto případě obsahuje výchozí nastavení automatického škálování pravidlo horizontální navýšení kapacity a škálování na méně instancí % na základě procesoru.  
 
@@ -58,11 +58,11 @@ V tomto názorném postupu používáme [Azure Resource Exploreru](https://resou
 
 5. Ujistěte se, že jste na **r/w** režimu v Průzkumníku prostředků
 
-    ![Autoscalewad, výchozí nastavení automatického škálování](./media/insights-advanced-autoscale-vmss/autoscalewad.png)
+    ![Autoscalewad, výchozí nastavení automatického škálování](media/insights-advanced-autoscale-virtual-machine-scale-sets/autoscalewad.png)
 
 6. Klikněte na Upravit. **Nahraďte** 'profily' element v zadaném nastavení automatického škálování s následující konfigurací:
 
-    ![Profily](./media/insights-advanced-autoscale-vmss/profiles.png)
+    ![Profily](media/insights-advanced-autoscale-virtual-machine-scale-sets/profiles.png)
 
     ```
     {

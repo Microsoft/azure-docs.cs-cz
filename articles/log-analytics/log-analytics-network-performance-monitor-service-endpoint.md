@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
 ms.component: ''
-ms.openlocfilehash: fb84b20630eb63cb53ccb1d13a383ed6287b802b
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 76c8421286633dc3c81a073423a7d9f9ca1e1d85
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406615"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50420842"
 ---
 # <a name="service-connectivity-monitor"></a>Monitorování připojení služby
 
@@ -35,13 +35,13 @@ Můžete provádět následující funkce se monitorování připojení služby:
 - Identifikace hotspotů v síti, které můžou způsobovat nízký výkon aplikace zobrazením latence z každého směrování na mapu.
 
 
-![Monitorování připojení služby](media/log-analytics-network-performance-monitor/service-endpoint-intro.png)
+![Monitorování připojení služby](media/log-analytics-network-performance-monitor-service-endpoint/service-endpoint-intro.png)
 
 
 ## <a name="configuration"></a>Konfigurace 
 Chcete-li spustit nástroj konfigurace pro sledování výkonu sítě, otevřete [řešení Network Performance Monitor](log-analytics-network-performance-monitor.md) a vyberte **konfigurovat**.
 
-![Konfigurace Network Performance Monitor](media/log-analytics-network-performance-monitor/npm-configure-button.png)
+![Konfigurace Network Performance Monitor](media/log-analytics-network-performance-monitor-service-endpoint/npm-configure-button.png)
 
 
 ### <a name="configure-log-analytics-agents-for-monitoring"></a>Konfigurace agentů Log Analytics pro monitorování
@@ -79,7 +79,7 @@ Začněte vytvářet testy monitorování síťové připojení ke koncovým bod
 10. Vyberte sledování podmínek. Můžete nastavit vlastní prahové hodnoty pro generování událost stavu tak, že zadáte prahové hodnoty. Pokaždé, když se hodnota podmínka překročí jeho zvolená prahová hodnota pro vybranou síť nebo pár podsítě, vygeneruje událost stavu. 
 11. Vyberte **Uložit** uložte konfiguraci. 
 
-    ![Konfigurace testů monitorování připojení služby](media/log-analytics-network-performance-monitor/service-endpoint-configuration.png)
+    ![Konfigurace testů monitorování připojení služby](media/log-analytics-network-performance-monitor-service-endpoint/service-endpoint-configuration.png)
 
 
 
@@ -87,11 +87,11 @@ Začněte vytvářet testy monitorování síťové připojení ke koncovým bod
 
 Přejděte do zobrazení řídicích panelů sledování výkonu sítě. Pokud chcete získat přehled o stavu jiné testy, které jste vytvořili, podívejte se na **monitorování připojení služby** stránky. 
 
-![Stránka monitorování připojení služby](media/log-analytics-network-performance-monitor/service-endpoint-blade.png)
+![Stránka monitorování připojení služby](media/log-analytics-network-performance-monitor-service-endpoint/service-endpoint-blade.png)
 
 Vyberte tuto dlaždici zobrazíte podrobnosti o testy na **testy** stránky. V tabulce na levé straně můžete zobrazit stav bodu v čase a hodnota služby doba odezvy, latence sítě a ztráta paketů pro všechny testy. Chcete-li zobrazit snímek sítě později, v minulosti pomocí ovládacího prvku záznam stavu sítě. Výběrem testu v tabulce, kterou chcete prozkoumat. V grafu v podokně na pravé straně se zobrazí Historický trend ztráty, latence a hodnoty času odezvy. Vyberte **Podrobnosti testu** odkaz umožňující zobrazení výkonu z každého uzlu.
 
-![Testy monitorování připojení služby](media/log-analytics-network-performance-monitor/service-endpoint-tests.png)
+![Testy monitorování připojení služby](media/log-analytics-network-performance-monitor-service-endpoint/service-endpoint-tests.png)
 
 V **testovací uzly** zobrazení, můžete sledovat připojení k síti z jednotlivých uzlů. Vyberte uzel, který má snížení výkonu. Toto je uzel, ve kterém se vyskytuje aplikace běží pomalu.
 
@@ -99,15 +99,15 @@ Zjistit, zda nízký výkon aplikace je z důvodu sítě nebo problém na stran�
 
 * **Problém s aplikací:** prudký nárůst doby odezvy, ale konzistence v sítích s latencí naznačuje, že síť správně funguje a problémem může být kvůli problému na konci aplikace. 
 
-    ![Problém s aplikací monitorování připojení služby](media/log-analytics-network-performance-monitor/service-endpoint-application-issue.png)
+    ![Problém s aplikací monitorování připojení služby](media/log-analytics-network-performance-monitor-service-endpoint/service-endpoint-application-issue.png)
 
 * **Síťové potíže:** prudký nárůst společně s odpovídající zásobníku v sítích s latencí doby odezvy naznačuje, že z důvodu zvýšení latence sítě může být zvýšení doby odezvy. 
 
-    ![Potíže se sítí monitorování připojení služby](media/log-analytics-network-performance-monitor/service-endpoint-network-issue.png)
+    ![Potíže se sítí monitorování připojení služby](media/log-analytics-network-performance-monitor-service-endpoint/service-endpoint-network-issue.png)
 
 Pokud zjistíte, že problém je z důvodu sítě, vyberte **topologie** odkaz zobrazení k identifikaci problémových směrování na mapě topologie. Příklad je uveden na následujícím obrázku. Mimo 105 ms celkovou latenci mezi uzlem a koncový bod aplikace je 96 ms kvůli směrování označeny červeně. Po identifikaci problémových směrování, můžete využít nápravné opatření. 
 
-![Testy monitorování připojení služby](media/log-analytics-network-performance-monitor/service-endpoint-topology.png)
+![Testy monitorování připojení služby](media/log-analytics-network-performance-monitor-service-endpoint/service-endpoint-topology.png)
 
 ## <a name="diagnostics"></a>Diagnostika 
 

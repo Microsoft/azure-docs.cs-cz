@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/15/2018
+ms.date: 10/31/2018
 ms.author: jingwang
-ms.openlocfilehash: efbc020f482a46621eb5c3e3cd6137d1114da6de
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 02d21db5c5fadb65ec63e41cbd9e2db8869ed2e7
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46129603"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50415827"
 ---
 # <a name="copy-data-from-marketo-using-azure-data-factory-preview"></a>Kopírování dat ze služby Marketo pomocí Azure Data Factory (Preview)
 
@@ -32,6 +32,9 @@ Tento článek popisuje, jak pomocí aktivity kopírování ve službě Azure Da
 Kopírovat data ze služby Marketo pro jakékoli podporovaného úložiště dat jímky. Seznam úložišť dat podporovaných aktivitou kopírování jako zdroje a jímky, najdete v článku [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats) tabulky.
 
 Poskytuje integrované ovladače chcete umožnit připojení k Azure Data Factory, proto není nutné ručně nainstalovat všechny ovladače používání tohoto konektoru.
+
+>[!NOTE]
+>Tento konektor služby Marketo je postavená na službě Marketo REST API. Mějte na paměti, služby Marketo má [limit souběžných žádostí](http://developers.marketo.com/rest-api/) na straně služby. Pokud dosáhnete chyby se říká "při pokusu o použití rozhraní REST API došlo k chybě: maximální rychlost překročil se limit"100"s"20"sekund (606)" nebo "při pokusu o použití rozhraní REST API došlo k chybě: (615) byl dosažen limit souběžný přístup"10"", zvažte snížit spuštění aktivit souběžných kopírovat do snížit počet požadavků ve službě.
 
 ## <a name="getting-started"></a>Začínáme
 

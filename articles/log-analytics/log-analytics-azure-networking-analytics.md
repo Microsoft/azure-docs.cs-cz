@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 06/21/2018
 ms.author: richrund
 ms.component: ''
-ms.openlocfilehash: f1db673ad750a5d9d9d6bda9f41555d5e3affe8d
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: bc2b93312ed005154aa7d2530fb5493278a15c67
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48043080"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50418598"
 ---
 # <a name="azure-networking-monitoring-solutions-in-log-analytics"></a>Sítě Azure monitoring řešení v Log Analytics
 
@@ -70,7 +70,7 @@ V následující tabulce jsou uvedeny metody shromažďování dat a další pod
 
 ## <a name="azure-application-gateway-analytics-solution-in-log-analytics"></a>Řešení analýzy Azure Application Gateway ve službě Log Analytics
 
-![Azure Application Gateway Analytics symbol](./media/log-analytics-azure-networking/azure-analytics-symbol.png)
+![Azure Application Gateway Analytics symbol](media/log-analytics-azure-networking-analytics/azure-analytics-symbol.png)
 
 Tyto protokoly jsou podporovány pro brány Application Gateway:
 
@@ -94,10 +94,10 @@ Pomocí následujících pokynů k instalaci a konfiguraci řešení analýzy Az
 1. Na webu Azure Portal přejděte k prostředku aplikační brány k monitorování
 2. Vyberte *diagnostické protokoly* otevřete následující stránku
 
-   ![Obrázek prostředku Azure Application Gateway](./media/log-analytics-azure-networking/log-analytics-appgateway-enable-diagnostics01.png)
+   ![Obrázek prostředku Azure Application Gateway](media/log-analytics-azure-networking-analytics/log-analytics-appgateway-enable-diagnostics01.png)
 3. Klikněte na tlačítko *zapnout diagnostiku* otevřete následující stránku
 
-   ![Obrázek prostředku Azure Application Gateway](./media/log-analytics-azure-networking/log-analytics-appgateway-enable-diagnostics02.png)
+   ![Obrázek prostředku Azure Application Gateway](media/log-analytics-azure-networking-analytics/log-analytics-appgateway-enable-diagnostics02.png)
 4. Chcete-li zapnout diagnostiku, klikněte na tlačítko *na* pod *stav*
 5. Klikněte na zaškrtávací políčko pro *odesílat do Log Analytics*
 6. Vyberte existující pracovní prostor Log Analytics nebo vytvořit pracovní prostor
@@ -117,7 +117,7 @@ Set-AzureRmDiagnosticSetting -ResourceId $gateway.ResourceId  -WorkspaceId $work
 ```
 
 ### <a name="use-azure-application-gateway-analytics"></a>Pomocí Azure Application Gateway analytics
-![Image z Azure Application Gateway analytics dlaždici](./media/log-analytics-azure-networking/log-analytics-appgateway-tile.png)
+![Image z Azure Application Gateway analytics dlaždici](media/log-analytics-azure-networking-analytics/log-analytics-appgateway-tile.png)
 
 Po klepnutí **Azure Application Gateway analytics** dlaždici v přehledu, můžete zobrazení souhrnných informací o protokolů a pak přejdete k podrobnostem v těchto kategoriích:
 
@@ -130,9 +130,9 @@ Po klepnutí **Azure Application Gateway analytics** dlaždici v přehledu, mů�
   * Stav hostitele pro službu Application Gateway
   * Maximální a 95. percentilu pro službu Application Gateway neúspěšné požadavky
 
-![Obrázek řídicího panelu Azure Application Gateway analytics](./media/log-analytics-azure-networking/log-analytics-appgateway01.png)
+![Obrázek řídicího panelu Azure Application Gateway analytics](media/log-analytics-azure-networking-analytics/log-analytics-appgateway01.png)
 
-![Obrázek řídicího panelu Azure Application Gateway analytics](./media/log-analytics-azure-networking/log-analytics-appgateway02.png)
+![Obrázek řídicího panelu Azure Application Gateway analytics](media/log-analytics-azure-networking-analytics/log-analytics-appgateway02.png)
 
 Na **Azure Application Gateway analytics** řídicí panel, zkontrolujte souhrnné informace u některého okna a klikněte na z nich se má zobrazit podrobné informace na stránce vyhledávání protokolu.
 
@@ -141,7 +141,7 @@ Na žádném z vyhledávací stránky protokolů můžete zobrazit výsledky pod
 
 ## <a name="azure-network-security-group-analytics-solution-in-log-analytics"></a>Skupiny zabezpečení sítě Azure řešení analýzy ve službě Log Analytics
 
-![Skupiny zabezpečení sítě Azure Analytics symbol](./media/log-analytics-azure-networking/azure-analytics-symbol.png)
+![Skupiny zabezpečení sítě Azure Analytics symbol](media/log-analytics-azure-networking-analytics/azure-analytics-symbol.png)
 
 > [!NOTE]
 > Řešení analýzy skupin zabezpečení sítě se přesouvá do podpory prostřednictvím komunity, od jeho funkce nahradila ji [analýzu provozu](../network-watcher/traffic-analytics.md).
@@ -165,10 +165,10 @@ Pomocí následujících pokynů k instalaci a konfiguraci řešení Azure Netwo
 1. Na webu Azure Portal přejděte k prostředku skupiny zabezpečení sítě k monitorování
 2. Vyberte *diagnostické protokoly* otevřete následující stránku
 
-   ![Obrázek prostředku, skupiny zabezpečení sítě Azure](./media/log-analytics-azure-networking/log-analytics-nsg-enable-diagnostics01.png)
+   ![Obrázek prostředku, skupiny zabezpečení sítě Azure](media/log-analytics-azure-networking-analytics/log-analytics-nsg-enable-diagnostics01.png)
 3. Klikněte na tlačítko *zapnout diagnostiku* otevřete následující stránku
 
-   ![Obrázek prostředku, skupiny zabezpečení sítě Azure](./media/log-analytics-azure-networking/log-analytics-nsg-enable-diagnostics02.png)
+   ![Obrázek prostředku, skupiny zabezpečení sítě Azure](media/log-analytics-azure-networking-analytics/log-analytics-nsg-enable-diagnostics02.png)
 4. Chcete-li zapnout diagnostiku, klikněte na tlačítko *na* pod *stav*
 5. Klikněte na zaškrtávací políčko pro *odesílat do Log Analytics*
 6. Vyberte existující pracovní prostor Log Analytics nebo vytvořit pracovní prostor
@@ -196,9 +196,9 @@ Po klepnutí **analýzy skupin zabezpečení sítě Azure** dlaždici v přehled
   * Pravidla skupiny zabezpečení sítě s povolenými toky
   * Adresy MAC s povolenými toky
 
-![Obrázek řídicího panelu skupiny zabezpečení sítě Azure analytics](./media/log-analytics-azure-networking/log-analytics-nsg01.png)
+![Obrázek řídicího panelu skupiny zabezpečení sítě Azure analytics](media/log-analytics-azure-networking-analytics/log-analytics-nsg01.png)
 
-![Obrázek řídicího panelu skupiny zabezpečení sítě Azure analytics](./media/log-analytics-azure-networking/log-analytics-nsg02.png)
+![Obrázek řídicího panelu skupiny zabezpečení sítě Azure analytics](media/log-analytics-azure-networking-analytics/log-analytics-nsg02.png)
 
 Na **analýzy skupin zabezpečení sítě Azure** řídicí panel, zkontrolujte souhrnné informace u některého okna a klikněte na z nich se má zobrazit podrobné informace na stránce vyhledávání protokolu.
 

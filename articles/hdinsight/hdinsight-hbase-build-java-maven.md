@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/05/2017
 ms.author: jasonh
 ROBOTS: NOINDEX
-ms.openlocfilehash: fc2bd03156d6005f1e10252583b4a13451f66dbf
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: c10fcb8e45dc163629186cfb48408e8734bc5a56
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43092623"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50418207"
 ---
 # <a name="use-maven-to-build-java-applications-that-use-hbase-with-windows-based-hdinsight-hadoop"></a>Použití Mavenu k vytváření aplikací v Javě, které používají HBase s HDInsight se systémem Windows (Hadoop)
 Zjistěte, jak vytvořit a sestavit [Apache HBase](http://hbase.apache.org/) aplikace v Javě pomocí nástroje Apache Maven. Potom s použitím aplikace s Azure HDInsight (Hadoop).
@@ -25,7 +25,7 @@ Zjistěte, jak vytvořit a sestavit [Apache HBase](http://hbase.apache.org/) apl
 > Kroky v tomto dokumentu vyžadují clusteru služby HDInsight, používající Windows. HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 ## <a name="requirements"></a>Požadavky
-* [Platforma Java JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html) 7 nebo novější
+* [Platforma Java JDK](https://aka.ms/azure-jdks) 7 nebo novější
 * [Maven](http://maven.apache.org/)
 * Cluster HDInsight se systémem Windows s HBase
 

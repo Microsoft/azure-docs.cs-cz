@@ -302,8 +302,6 @@
 ##### [Potíže s vlastní vyvinutou aplikací](manage-apps/application-sign-in-problem-custom-dev.md)
 ##### [Potíže s místní aplikací – proxy aplikací](manage-apps/application-sign-in-problem-on-premises-application-proxy.md)
 
-### [Vývoj aplikací](active-directory-applications-guiding-developers-for-lob-applications.md)
-
 
 ## Správa adresáře
 ### [Azure AD Connect](hybrid/whatis-hybrid-identity.md)

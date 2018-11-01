@@ -6,15 +6,15 @@ ms.service: logic-apps
 ms.suite: integration
 author: ecfan
 ms.author: estfan
-ms.reviewer: yshoukry, LADocs
+ms.reviewer: arthii, LADocs
 ms.topic: article
-ms.date: 07/20/2018
-ms.openlocfilehash: 5fc4ccacaaedfc3fe6c77fa9a0ad693530bdde93
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.date: 10/01/2018
+ms.openlocfilehash: 2934eadce9e3e0d5e0375dff4eec359a33bd4479
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48855421"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50420094"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Instalace místní brány dat pro Azure Logic Apps
 
@@ -60,11 +60,13 @@ Informace o tom, jak použít bránu s ostatními službami, najdete v těchto �
 * Tady jsou požadavky pro místní počítač:
 
   **Minimální požadavky**
+
   * Rozhraní .NET framework 4.5.2
   * 64bitová verze Windows 7 nebo Windows Server 2008 R2 (nebo novější)
 
   **Doporučené požadavky**
-  * Procesor s 8 jádry
+
+  * 8jádrový procesor
   * 8 GB paměti
   * 64bitová verze systému Windows Server 2012 R2 (nebo novější)
 
@@ -75,11 +77,11 @@ Informace o tom, jak použít bránu s ostatními službami, najdete v těchto �
     > [!TIP]
     > Abyste minimalizovali latenci, můžete bránu instalujete jak nejblíže ke zdroji dat nebo na stejném počítači, za předpokladu, že máte oprávnění.
 
-  * Bránu nainstalovat na počítač, který je připojený k Internetu, vždy zapnutá a *nebude* přejít do režimu spánku. Jinak brána nemůže fungovat. Kromě toho může trpět výkon bezdrátové sítě.
+  * Bránu nainstalovat na počítač, který je připojený k Internetu, vždy zapnutá a *nebude* přejít do režimu spánku. Jinak brána nemůže fungovat. 
+  Kromě toho může trpět výkon bezdrátové sítě.
 
-  * Během instalace, můžete pouze přihlásit se [pracovního nebo školního účtu](../active-directory/sign-up-organization.md) , který je spravován pomocí služby Azure Active Directory (Azure AD) a účet Microsoft. 
-  Také, ujistěte se, že tento účet není Azure B2B účtu (Host). 
-  Při registraci vaší instalace brány tak, že vytvoříte prostředek Azure pro vaši bránu, musíte použít také stejný přihlašovací účet na webu Azure Portal. 
+  * Během instalace, můžete pouze přihlásit se [pracovního nebo školního účtu](../active-directory/sign-up-organization.md) , který je spravován pomocí služby Azure Active Directory (Azure AD), například @contoso.onmicrosoft.coma ne Azure B2B (Host) účet nebo osobní Microsoft účet, jako například @hotmail.com nebo @outlook.com. 
+  Ujistěte se, že používáte stejný účet přihlášení při registraci vaší instalace brány na webu Azure Portal tak, že vytvoříte prostředek brány. 
   Když vytvoříte připojení z aplikace logiky ke zdroji dat v místním, pak můžete vybrat tento prostředek brány. 
   [Proč musí používat Azure AD pracovní nebo školní účet?](#why-azure-work-school-account)
 
@@ -96,6 +98,19 @@ Informace o tom, jak použít bránu s ostatními službami, najdete v těchto �
   * Pokud už máte bránu, která se nastavuje pomocí instalačního programu starší než verze 14.16.6317.4, nelze změnit umístění vaší brány spuštěním nejnovější verzi Instalační služby. Však nastavit novou bránu s umístěním, které chcete místo toho můžete nejnovější verzi Instalační služby.
   
     Pokud jste instalační program brány, která je starší než verze 14.16.6317.4, ale nemáte nainstalovanou bránu ještě, můžete stáhnout a místo toho použijte nejnovější verzi Instalační služby.
+
+## <a name="high-availability-support"></a>Podpora vysoké dostupnosti
+
+Místní brána dat podporuje vysokou dostupnost, když máte více než jedna instalace brány a nastavit je jako clustery. Pokud máte existující bránu, když přejdete na jinou bránu vytvořit, můžete volitelně vytvořit clustery s vysokou dostupností. Tyto clustery bran uspořádejte do skupin, které vám mohou pomoci Vyhýbejte se jediným bodů selhání. Navíc všechny místní datové brány konektory teď podporují vysokou dostupnost.
+
+Pokud chcete použít místní bránu dat, zkontrolujte tyto požadavky a důležité informace:
+
+* Již musí mít alespoň jednu bránu instalace ve stejném předplatném Azure jako primární bráně a obnovovací klíč pro instalaci. 
+
+* Primární brány musí být spuštěná aktualizace brány z listopadu 2017 nebo novější.
+
+Po splnění těchto požadavků, když vytváříte další bránu, vyberte **přidat do existujícího clusteru bran**, vyberte na primární bráně clusteru a zadat obnovovací klíč pro tuto primární bránu.
+Další informace najdete v tématu [clustery s vysokou dostupností pro místní bránu dat](https://docs.microsoft.com/power-bi/service-gateway-high-availability-clusters).
 
 <a name="install-gateway"></a>
 
@@ -160,19 +175,6 @@ Informace o tom, jak použít bránu s ostatními službami, najdete v těchto �
    ![Dokončení brány](./media/logic-apps-gateway-install/finished-gateway-default-location.png)
 
 10. Teď mohli bránu registrovat v Azure pomocí [vytvoření prostředku Azure pro vaši instalaci brány](../logic-apps/logic-apps-gateway-connection.md). 
-
-## <a name="enable-high-availability"></a>Povolit vysokou dostupnost
-
-Místní brána dat podporuje vysokou dostupnost, když máte více než jedna instalace brány a nastavit je jako clustery. Pokud máte existující bránu, když přejdete na jinou bránu vytvořit, můžete volitelně vytvořit clustery s vysokou dostupností. Tyto clustery bran uspořádejte do skupin, které vám mohou pomoci Vyhýbejte se jediným bodů selhání. Chcete-li tuto funkci použít, zkontrolujte tyto požadavky a důležité informace:
-
-* Pouze některé konektory podporují vysokou dostupnost, jako je například konektoru systému souborů a další se připravují. 
-     
-* Již musí mít alespoň jednu bránu instalace ve stejném předplatném Azure jako primární bráně a obnovovací klíč pro instalaci. 
-
-* Primární brány musí být spuštěná aktualizace brány z listopadu 2017 nebo novější.
-
-Po splnění těchto požadavků, když vytváříte další bránu, vyberte **přidat do existujícího clusteru bran**, vyberte na primární bráně clusteru a zadat obnovovací klíč pro tuto primární bránu.
-Další informace najdete v tématu [clustery s vysokou dostupností pro místní bránu dat](https://docs.microsoft.com/power-bi/service-gateway-high-availability-clusters).
 
 <a name="update-gateway-installation"></a>
 
@@ -253,7 +255,7 @@ V některých případech probíhají připojení k Azure Service Bus pomocí IP
 
 ### <a name="force-https-communication-with-azure-service-bus"></a>Vynutit komunikaci přes protokol HTTPS s Azure Service Bus
 
-Některé proxy servery povolit provoz pouze na portech 80 a 443. Ve výchozím nastavení probíhá komunikace se službou Azure Service Bus na jiné porty než 443.
+Některé proxy servery umožní provoz jenom na porty 80 a 443. Ve výchozím nastavení probíhá komunikace se službou Azure Service Bus na jiné porty než 443.
 Můžete přinutit bránu komunikovat s Azure Service Bus přes protokol HTTPS, nikoli TCP s přímým přístupem, ale to uděláte tak může výrazně snížit i výkon. Pokud chcete provést tuto úlohu, postupujte takto:
 
 1. Přejděte do umístění pro místní data brány klienta, který obvykle najdete tady: ```C:\Program Files\On-premises data gateway\Microsoft.PowerBI.EnterpriseGateway.exe```
@@ -283,7 +285,7 @@ Místní brána dat je možné spustit jako služby Windows s názvem "On-premis
 
 ## <a name="restart-gateway"></a>Restartování brány
 
-Brána dat běží jako služba okna, proto stejně jako jakoukoli jinou službu Windows můžete spustit a zastavit brána několika různými způsoby. Můžete například otevřít příkazový řádek se zvýšenými oprávněními na počítači, ve kterém je brána spuštěná a spusťte buď příkaz:
+Brána dat běží jako služba okna, tak stejně jako jakoukoli jinou službu Windows můžete spustit a zastavit brána různými způsoby. Můžete například otevřít příkazový řádek se zvýšenými oprávněními na počítači, ve kterém je brána spuštěná a spusťte buď příkaz:
 
 * Pokud chcete bránu zastavit, spusťte tento příkaz:
   
@@ -372,7 +374,7 @@ Tyto kroky popisují, co se stane, když uživatel v cloudu komunikuje s element
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
-Tento oddíl popisuje některé běžné problémy, které mohou nastat při nastavování a pomocí místní brány dat.
+Tento oddíl popisuje některé běžné problémy, ke kterým může při nastavování a pomocí místní brány dat máte.
 
 **Q**: Proč můj instalace brány nezdaří? <br/>
 **A**: Tento problém může stát, když antivirový software v cílovém počítači je zastaralá. Můžete buď aktualizovat antivirový software nebo zakažte antivirový software, ale pouze během instalace brány a potom znovu povolit softwaru.

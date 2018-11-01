@@ -10,15 +10,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: article
-ms.date: 10/24/2018
+ms.date: 10/31/2018
 ms.author: jeffgilb
 ms.reviewer: adshar
-ms.openlocfilehash: 671818ca8f8fa07b506252d5d4d0c7a768577b19
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: 0720edeab7577f41ddbaa67e4643f1dfe57ebac0
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50087470"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50740310"
 ---
 # <a name="run-a-validation-test-for-azure-stack"></a>Spustit test pro ověření pro službu Azure Stack
 
@@ -39,7 +39,7 @@ Pokud máte potíže, obraťte se na zákaznickou podporu služeb Microsoft a pa
     3. Spusťte PowerShell jako správce.
     4. Spusťte: `Enter-PSSession -ComputerName <ERCS-VM-name> -ConfigurationName PrivilegedEndpoint`
     5. Spusťte: `Test-AzureStack`
-4. Pokud některé testy sestavy **selhání**, spusťte: `Get-AzureStackLog -FilterByRole SeedRing -OutputPath <Log output path>` rutina shromažďuje protokoly z AzureStack testu. Další informace o diagnostických protokolech najdete v tématu [diagnostické nástroje služby Azure Stack](azure-stack-diagnostics.md). Neměli shromažďování protokolů nebo pokud obraťte se na zákaznické služby podpory Microsoftu (CSS) testy sestavy **UPOZORNIT**.
+4. Pokud některé testy sestavy **selhání**, spusťte: `Get-AzureStackLog -FilterByRole SeedRing -OutputSharePath “<path>” -OutputShareCredential $cred` rutina shromažďuje protokoly z AzureStack testu. Další informace o diagnostických protokolech najdete v tématu [diagnostické nástroje služby Azure Stack](azure-stack-diagnostics.md). Neměli shromažďování protokolů nebo pokud obraťte se na zákaznické služby podpory Microsoftu (CSS) testy sestavy **UPOZORNIT**.
 5. Odeslat **SeedRing** protokoly do služby zákaznické podpory Microsoftu. Zákaznická podpora Microsoftu vás služby spolupracuje při řešení problému.
 
 ## <a name="reference-for-test-azurestack"></a>Referenční informace pro Test AzureStack

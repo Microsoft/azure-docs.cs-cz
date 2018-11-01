@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: 1a1cf731678ef7678b740020a4d61725f9a2b32a
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 9489d6e8780a30c5c54ee307d6c45c4bc2eb0e5d
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50221871"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50419278"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---security-and-devops-best-practices"></a>Migrace místních Apache Hadoop clusterů Azure HDInsight – zabezpečení a osvědčené postupy DevOps
 
@@ -62,11 +62,11 @@ Další informace najdete v následujících článcích:
 
 Konec koncové podnikového zabezpečení lze dosáhnout pomocí následujících ovládacích prvků:
 
-- **Soukromým a chráněným datovým kanálem** (úrovně zabezpečení perimetru):
+- **Soukromým a chráněným datovým kanálem (úrovně zabezpečení perimetru)**
     - Hraniční úroveň zabezpečení je možné zajistit pomocí Azure Virtual Network, skupiny zabezpečení sítě a služby brány
 
 - **Ověřování a autorizaci pro přístup k datům**
-    - Vytvořte cluster Hdinsight připojený k doméně pomocí Azure Active Directory Domain Services. (Enterprise Security Package)
+    - Vytvoření clusteru HDInsight připojené k doméně pomocí Azure Active Directory Domain Services. (Enterprise Security Package)
     - Ambari použijte k poskytnutí přístupu na základě rolí k prostředkům clusteru pro uživatele AD
     - Pomocí Apache Ranger nastavil zásady řízení přístupu pro Hive na tabulce / sloupce / úrovně řádků.
     - Přístup přes SSH ke clusteru může být omezena pouze na správce.
@@ -97,14 +97,14 @@ Další informace najdete v článku:
 
 Pravidelně upgradujte na nejnovější verzi HDInsight, abyste mohli využívat nejnovější funkce. Následující postup můžete použít k upgradu clusteru na nejnovější verzi:
 
-- Vytvoření nového clusteru HDI testu pomocí nejnovější dostupné verze HDI.
-- Testování na novém clusteru, abyste měli jistotu, že úlohy a úlohy fungovat podle očekávání.
-- Upravte úlohy nebo aplikace nebo procesy podle potřeby.
-- Zazálohujte si všechna přechodné data uložená místně na uzlech clusteru.
-- Odstranění existujícího clusteru.
-- Vytvoření clusteru HDInsight nejnovějších ve stejné podsíti virtuální sítě pomocí stejného úložiště dat a meta výchozí jako předchozí clusteru.
-- Importujte všechny přechodné data, která byla zálohována.
-- Spuštění úlohy nebo pokračovat ve zpracování pomocí nového clusteru.
+1. Vytvořte nový cluster HDInsight testu pomocí nejnovější dostupné verze HDInsight.
+1. Testování na novém clusteru, abyste měli jistotu, že úlohy a úlohy fungovat podle očekávání.
+1. Upravte úlohy nebo aplikace nebo procesy podle potřeby.
+1. Zazálohujte si všechna přechodné data uložená místně na uzlech clusteru.
+1. Odstranění existujícího clusteru.
+1. Vytvoření clusteru HDInsight nejnovějších ve stejné podsíti virtuální sítě pomocí stejného úložiště dat a meta výchozí jako předchozí clusteru.
+1. Importujte všechny přechodné data, která byla zálohována.
+1. Spuštění úlohy nebo pokračovat ve zpracování pomocí nového clusteru.
 
 Další informace najdete v článku: [clusteru HDInsight Upgrade na novou verzi.](../hdinsight-upgrade-cluster.md)
 
@@ -116,133 +116,9 @@ Další informace najdete v článku: [opravy operačního systému pro HDInsigh
 
 ## <a name="post-migration"></a>Po migraci
 
-1. **Oprava aplikací** – využívejte iterativní proveďte potřebné změny pro úlohy, procesy a skripty
-2. **Testovat** – opakované spuštění funkčnosti a výkonu testy
+1. **Oprava aplikace** – opakované úlohy, procesy a skripty proveďte potřebné změny.
+2. **Testovat** – opakované spuštění funkčnosti a výkonu testy.
 3. **Optimalizace** – řešit problémy s výkonem na základě výše uvedených výsledků testu a pak testování potvrďte vylepšení výkonu.
-
-## <a name="appendix-gathering-details-to-prepare-for-a-migration"></a>Dodatek: shromáždění podrobností přípravy na migraci
-
-Tato část obsahuje šablony dotazníky umožňující získat důležité informace o:
-
-- V místním nasazení.
-- Podrobnosti o projektu.
-- Požadavky služby Azure.
-
-### <a name="on-premises-deployment-questionnaire"></a>Dotazník pro místní nasazení
-
-| **Dotaz** | **Příklad** | **Odpověď** |
-|---|---|---|
-|**Téma**: **prostředí**|||
-|Typ clusteru distribuce|Hortonworks, Cloudera, MapR| |
-|Verze clusteru distribuce|HDP 2.6.5 CDH – 5.7|
-|Komponenty ekosystému velkých objemů dat|HDFS, Yarn, Hive, LLAP, Impala, Kudu, HBase, Spark, MapReduce, Kafka, Zookeeper, Solr, Sqoop, Oozie, Ranger, střední, Falcon, Zeppelin, R|
-|Typy clusterů|Hadoop, Spark, nesrostlé Kafka, Storm, Solr|
-|Počet clusterů|4|
-|Číslo hlavní uzly|2|
-|Počet uzlů pracovního procesu|100|
-|Počet hraničních uzlů| 5|
-|Celkové místo na disku|100 TB|
-|Konfigurace hlavního uzlu|min nebo y, procesoru, disku atd.|
-|Konfigurace datové uzly|min nebo y, procesoru, disku atd.|
-|Hraniční uzly konfigurace|min nebo y, procesoru, disku atd.|
-|HDFS šifrování?|Ano|
-|Vysoká dostupnost|HA HDFS, Metastore HA|
-|Zotavení po havárii / zálohování|Zálohování clusteru?|  
-|Systémy, které jsou závislé na clusteru|SQL Server, Teradata, Power BI, MongoDB|
-|Integrace třetích stran|Tableau GridGain Qubole, Informatica, Splunk|
-|**Téma**: **zabezpečení**|||
-|Zabezpečení perimetru|Brány firewall|
-|Cluster ověřování a autorizace|Active Directory, Ambari, Cloudera správce, bez ověřování|
-|Řízení přístupu HDFS|  Ruční, ssh uživatelů|
-|Hive ověřování a autorizace|SENTRY, LDAP, Kerberos, Ranger AD|
-|Auditování|Ambari, Cloudera Navigátor Ranger|
-|Monitorování|Grafitová, shromážděná, statsd, Telegraf, InfluxDB|
-|Zobrazení výstrah|Kapacitor Prometheus, služby Datadog|
-|Doba uchování dat| 3 roky, 5 let.|
-|Správce clusteru|Jeden správce, více správců|
-
-### <a name="project-details-questionnaire"></a>Dotazník podrobností projektu
-
-|**Dotaz**|**Příklad**|**Odpověď**|
-|---|---|---|
-|**Téma**: **úloh a četnost**|||
-|Úlohy MapReduce|10 úlohy--dvakrát denně||
-|Úlohy Hive|100 úloh – každou hodinu||
-|Sparkových úloh služby batch|50 úlohy--každých 15 minut||
-|Úlohy Spark Streaming|5 úloh – každé 3 minuty||
-|Strukturované streamování úlohy|5 úlohy--každou minutu||
-|Úlohy trénování modelů ML|2 úlohy--jednou za týden||
-|Programovací jazyky|Python, Scala, Java||
-|Skriptování|Prostředí Pythonu||
-|**Téma**: **dat**|||
-|Zdroje dat|Ploché soubory Json, Kafka, relační databázový systém||
-|Orchestrace dat|Pracovní postupy Oozie, vzduchu||
-|V paměti pro vyhledávání|Apache ke konferenci Ignite, redis Cache||
-|Cíle dat|HDFS, relační databázový systém, Kafka, MPP ||
-|**Téma**: **metadat**|||
-|Typ databáze Hive|MySQL, Postgres||
-|Ne. z metaúložiště Hive|2||
-|Ne. tabulek Hive|100||
-|Ne. zásad Ranger|20||
-|Ne. Oozie pracovních postupů|100||
-|**Téma**: **škálování**|||
-|Objem dat, včetně replikace|100 TB||
-|Denní objem příjmu|50 GB||
-|Míry růstu dat|10 % za rok||
-|Míra růstu uzlů clusteru|% 5, ročně
-|**Téma**: **clusteru využití**|||
-|Průměrné využití procesoru % využití|60%||
-|Průměrná paměť % využití|75 %||
-|Využité místo na disku|75 %||
-|Průměrná sítě % využití|25 %
-|**Téma**: **zaměstnanců**|||
-|Ne. správců|2||
-|Ne. vývojářů|10||
-|Ne. koncových uživatelů|100||
-|Dovednosti|Hadoop, Spark||
-|Ne. z dostupných prostředků pro účely migrace|2||
-|**Téma**: **omezení**|||
-|Aktuální omezení|Latence je vysoká.||
-|Aktuální problémy|Problém souběžnosti||
-
-### <a name="azure-requirements-questionnaire"></a>Dotazník požadavky pro Azure
-
-|**Téma**: **infrastruktury** |||
-|---|---|---|
-|**Dotaz**|**Příklad**|**Odpověď**|
-| Preferované oblasti|USA – východ||
-|Upřednostňované sítě VNet?|Ano||
-|HA / DR potřeby?|Ano||
-|Integrace s jinými cloudovými službami?|ADF, služby cosmos DB||
-|**Téma**: **přesun dat**  |||
-|Předvolby počátečním načtení|DistCp, Data box, ADF, WANDisco||
-|Rozdílová data přenosu|DistCp, AzCopy||
-|Průběžné přírůstkové datové přenosy|DistCp, Sqoop||
-|**Téma**: **Monitoring a Alerting** |||
-|Použití Azure Monitoring a Alerting integrace Vs monitorování třetích stran|Použití Azure Monitoring a Alerting||
-|**Téma**: **předvolby pro zabezpečení** |||
-|Soukromým a chráněným datovým kanálem?|Ano||
-|Cluster připojeno k doméně (ESPP)?|     Ano||
-|On-Premises synchronizace AD do cloudu?|     Ano||
-|Ne. Synchronizace uživatelů AD?|          100||
-|OK pro synchronizaci hesel do cloudu?|    Ano||
-|Jenom cloudoví uživatelé?|                 Ano||
-|Potřeba vícefaktorové ověřování?|                       Ne|| 
-|Požadavky na ověření dat?|  Ano||
-|Řízení přístupu na základě rolí?|        Ano||
-|Auditování potřeba?|                  Ano||
-|Šifrování dat v klidovém stavu?|          Ano||
-|Šifrování dat při přenosu?|       Ano||
-|**Téma**: **předvolby Re – architektura** |||
-|Jeden cluster vs specifické typy clusterů|Specifické typy clusterů||
-|Společně umísťovat úložiště Vs vzdálené úložiště?|Vzdálené úložiště||
-|Protože data uložená vzdáleně menší velikost clusteru?|Menší velikost clusteru||
-|Použití více clusterů menší než jednoho velkého clusteru?|Použití několika menších clusterů||
-|Používat vzdálený metastore?|Ano||
-|Sdílet metaúložiště mezi různými clustery?|Ano||
-|Dekonstruovat úlohy?|Nahraďte úloh Hive Sparkových úloh||
-|Pro Orchestrace dat pomocí ADF?|Ne||
-|HDI vs HDP na IaaS?|HDI||
 
 ## <a name="next-steps"></a>Další postup
 

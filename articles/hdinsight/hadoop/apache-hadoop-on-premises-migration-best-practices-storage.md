@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: f89cf9431d3d72b74bc856093108a7bc0ab5a0b4
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 4f4aedd1d85a83e6f55d5729b82b88e2e9e8c00d
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50221870"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50415929"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---storage-best-practices"></a>Migrace s místními clustery systému Apache Hadoop do HDInsight Azure - storage osvědčené postupy
 
@@ -47,23 +47,27 @@ Azure Storage nabízí [obnovitelného odstranění pro objekty blob](../../stor
 Můžete vytvořit [snímků objektů blob](https://docs.microsoft.com/rest/api/storageservices/creating-a-snapshot-of-a-blob). Snímek je verze jen pro čtení objektu blob, která je provedena v bodě v čase a poskytuje způsob, jak zálohovat objekt blob. Po vytvoření snímku, lze je číst, zkopírovat, nebo odstranit, ale nedojde ke změně.
 
 > [!Note]
-> Pro starší verze místních místních Hadoop distribucí, který nemá certifikát "wasbs" musí být naimportovány do úložiště důvěryhodných Java. Import certifikátů do úložiště důvěryhodných Java můžete použít následující příkazy:
+> Pro starší verze místních místních Hadoop distribucí, který nemá certifikát "wasbs" musí být naimportovány do úložiště důvěryhodných Java.
 
-- Stáhněte si certifikát ssl objektů Blob v Azure do souboru
+Import certifikátů do úložiště důvěryhodných Java je možné následující metody:
+
+Stáhněte si certifikát ssl objektů Blob v Azure do souboru
 
 ```bash
 echo -n | openssl s_client -connect <storage-account>.blob.core.windows.net:443 | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' > Azure_Storage.cer
 ```
 
-- Import výše uvedeného souboru do úložiště důvěryhodných Java na všech uzlech
+Import výše uvedeného souboru do úložiště důvěryhodných Java na všech uzlech
 
 ```bash
 keytool -import -trustcacerts -keystore /path/to/jre/lib/security/cacerts -storepass changeit -noprompt -alias blobtrust -file Azure_Storage.cer
 ```
 
-- Ověřte, zda je přidání certifikátu do úložiště důvěryhodných
+Ověřte, zda je přidání certifikátu do úložiště důvěryhodných
 
-`keytool -list -v -keystore /path/to/jre/lib/security/cacerts`
+```bash
+keytool -list -v -keystore /path/to/jre/lib/security/cacerts
+```
 
 Další informace najdete v následujících článcích:
 
@@ -152,23 +156,31 @@ HDInsight ve výchozím nastavení má úplný přístup k datům v Azure Storag
     - klíč_účtu_úložiště: klíč pro účet úložiště.
     - storage_container_name: kontejneru v účtu úložiště, který chcete omezit přístup k datům.
     - example_file_path: cesta k souboru, který se nahraje do kontejneru
+
 2. Součástí souboru SASToken.py `ContainerPermissions.READ + ContainerPermissions.LIST` oprávnění a je možné upravit podle případu použití.
+
 3. Spusťte skript následujícím způsobem: `python SASToken.py`
+
 4. Po dokončení skriptu zobrazí token SAS, který je podobný následujícímu textu: `sr=c&si=policyname&sig=dOAi8CXuz5Fm15EjRUu5dHlOzYNtcK3Afp1xqxniEps%3D&sv=2014-02-14`
 
 5. K omezení přístupu ke kontejneru pomocí sdíleného přístupového podpisu, přidejte vlastní položky ke konfiguraci základního webu pro cluster pod Ambari HDFS Configs Advanced vlastní základní web přidat vlastnost.
+
 6. Použijte následující hodnoty **klíč** a **hodnotu** pole:
 
-    **Klíč**: fs.azure.sas.YOURCONTAINER.YOURACCOUNT.blob.core.windows.net **hodnotu**: The klíč SAS pro vrácený Python aplikace od kroku 4
+    **Klíč**: `fs.azure.sas.YOURCONTAINER.YOURACCOUNT.blob.core.windows.net` **hodnotu**: The klíč SAS pro vrácený Python aplikace od kroku 4 výše.
 
 7. Klikněte na tlačítko **přidat** tlačítko Uložit tento klíč a hodnotu a pak klikněte na tlačítko **Uložit** tlačítko Uložit změny konfigurace. Po zobrazení výzvy, přidejte popis změny ("Přidání přístup k úložišti SAS" příklad) a potom klikněte na **Uložit**.
+
 8. V Ambari webového uživatelského rozhraní, HDFS vyberte ze seznamu na levé straně a pak vyberte **restartujte všechny ovlivněné** z akce služby rozevírací seznam na pravé straně. Po zobrazení výzvy vyberte **potvrďte restartování všech**.
+
 9. Tento postup opakujte pro MapReduce2 a YARN.
 
 Existují tři hlavně třeba si zapamatovat týkající se použití tokenů SAS v Azure:
 
 1. Při vytváření tokenů SAS s oprávněními "ČÍST seznam +", uživatelé, kteří přístup ke kontejneru objektů Blob pomocí tohoto tokenu SAS, nebude možné "zapisovat a odstraňovat" data. Uživatelé, kteří přístup ke kontejneru objektů Blob pomocí SAS token a zkuste to zápis nebo odstranění operace, se zobrazí zpráva podobná `"This request is not authorized to perform this operation"`.
+
 2. Po vygenerování tokenů SAS s `READ + LIST + WRITE` oprávnění (omezit `DELETE` pouze), příkazy jako `hadoop fs -put` nejprve zapisovat do `\_COPYING\_` souboru a pak zkuste přejmenovat soubor. Tato operace HDFS se mapuje `copy+delete` pro WASB. Vzhledem k tomu, `DELETE` oprávnění nebyl zadán, "Vložit" selže. `\_COPYING\_` Operace je Hadoop funkcí určená poskytuje určitou kontrolu souběžnosti. Současné době neexistuje žádný způsob, jak by to ovlivnilo "" operace zápisu také omezovat jenom operaci "SMAZAT".
+
 3. Bohužel poskytovatele přihlašovacích údajů systému hadoop a dešifrovací klíče zprostředkovatele (ShellDecryptionKeyProvider) aktuálně nefungují s použitím tokenů SAS, a proto nyní nemůže být chráněn z viditelnost.
 
 Další informace najdete v tématu [použití Azure Storage sdílené přístupové podpisy pro omezení přístupu k datům v HDInsight](../hdinsight-storage-sharedaccesssignature-permissions.md)
@@ -180,7 +192,9 @@ Všechna data zapsaná do služby Azure Storage budou automaticky šifrována po
 - [Místně redundantní úložiště (LRS)](../../storage/common/storage-redundancy-lrs.md)
 - [Zónově redundantní úložiště (ZRS)](../../storage/common/storage-redundancy-zrs.md)
 - [Geograficky redundantní úložiště (GRS)](../../storage/common/storage-redundancy-grs.md)
-- [Geograficky redundantní úložiště jen pro čtení (RA-GRS)](../../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) Azure Data Lake Storage poskytuje místně redundantní úložiště (LRS), ale měli byste taky zkopírovat důležitých dat do jiného účtu Data Lake Storage v jiné oblasti s frekvencí odpovídá potřebám z plán zotavení po havárii. Existuje řada různých metod pro kopírování dat včetně [ADLCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md), DistCp, [prostředí Azure PowerShell](../../data-lake-store/data-lake-store-get-started-powershell.md), nebo [Azure Data Factory](../../data-factory/connector-azure-data-lake-store.md). Doporučuje se také k vynucování zásad přístupu pro účet Data Lake Storage, abyste zabránili nechtěnému odstranění.
+- [Geograficky redundantní úložiště s přístupem pro čtení (RA-GRS)](../../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage)
+
+Azure Data Lake Storage poskytuje místně redundantní úložiště (LRS), ale měli byste taky zkopírovat důležitých dat do jiného účtu Data Lake Storage v jiné oblasti s frekvencí odpovídá potřebám plánu zotavení po havárii. Existuje řada různých metod pro kopírování dat včetně [ADLCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md), DistCp, [prostředí Azure PowerShell](../../data-lake-store/data-lake-store-get-started-powershell.md), nebo [Azure Data Factory](../../data-factory/connector-azure-data-lake-store.md). Doporučuje se také k vynucování zásad přístupu pro účet Data Lake Storage, abyste zabránili nechtěnému odstranění.
 
 Další informace najdete v následujících článcích:
 

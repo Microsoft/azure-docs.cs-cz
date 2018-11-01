@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: 64e735a1090972a6e4cef85d1a51909e8550c536
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 02db6b4691beb4bfefa3815c87cf54f350219d81
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50221867"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50418003"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---architecture-best-practices"></a>Migrace místních Apache Hadoop clusterů Azure HDInsight – osvědčené postupy architektury
 
@@ -92,8 +92,7 @@ HDInsight používá Azure SQL Database u metaúložiště Hive a Oozie. Existuj
     - Clustery můžete vytvořit a odstranit bez ztráty metadata, včetně podrobností o úloze Hive schématu Oozie.
     - Jeden metastore db je sdílet s různými typy clusterů
     - Metastore se dá škálovat podle potřeby
-
-Další informace najdete v článku: [použití externích úložišť metadat v Azure HDInsight](../hdinsight-use-external-metadata-stores.md).
+    - Další informace najdete v tématu [použití externích úložišť metadat v Azure HDInsight](../hdinsight-use-external-metadata-stores.md).
 
 ## <a name="best-practices-for-hive-metastore"></a>Osvědčené postupy pro Hive Metastore
 
@@ -105,20 +104,20 @@ Některé osvědčené postupy metastore Hive v HDInsight jsou následující:
 - Pravidelně zálohujte vlastní úložiště metadat.
 - Udržujte metastore a HDInsight cluster ve stejné oblasti.
 - Monitorování metastore výkonu a dostupnosti s využitím Azure SQL Database monitorování nástrojů, jako je Azure portal nebo Azure Log Analytics.
-- Spustit **analyzovat tabulky** příkaz jako vyžadovaných ke generování statistik pro tabulky a sloupce. Například `ANALYZE TABLE [table_name] COMPUTE STATISTICS`.
+- Spustit **analyzovat tabulky** příkaz jako vyžadovaných ke generování statistik pro tabulky a sloupce. Například, `ANALYZE TABLE [table_name] COMPUTE STATISTICS`.
 
 ## <a name="best-practices-for-different-types-of-workloads"></a>Osvědčené postupy pro různé typy úloh
 
 - Zvažte použití clusteru LLAP pro interaktivní dotazy Hive s lepší odezvu [LLAP](https://cwiki.apache.org/confluence/display/Hive/LLAP) je nová funkce ve verzi 2.0 Hive, umožňující ukládání v mezipaměti dotazů. LLAP díky dotazů Hive mnohem rychlejší, až [26 x rychlejší než Hive 1.x v některých případech](https://hortonworks.com/blog/announcing-apache-hive-2-1-25x-faster-queries-much/).
-- Zvažte možnost použít místo úloh Hive Sparkových úloh
-- Zvažte nahrazení impala dotazy s funkcí LLAP dotazy
-- Zvažte nahrazení úlohy mapreduce je možné s Sparkových úloh
-- Zvažte nahrazení úlohy batch s nízkou latencí Spark použití strukturovaného streamování Sparku úloh
-- Orchestrace dat – zvažte použití Azure Data Factory(ADF) 2.0
-- Vezměte v úvahu Ambari za správu clusteru
-- Změna úložiště dat z místní HDFS WASB nebo ADLS nebo služby AD FS pro zpracování skriptů
-- Zvažte použití Ranger RBAC u tabulek Hive a auditování
-- Zvažte použití služby cosmos DB místo MongoDB nebo Cassandra
+- Zvažte použití Sparkových úloh místo úloh Hive.
+- Zvažte nahrazení impala dotazy s funkcí LLAP dotazy.
+- Zvažte nahrazení úlohy mapreduce je možné s Sparkových úloh.
+- Zvažte nahrazení použití strukturovaného streamování Sparku úloh s nízkou latencí Spark dávkových úloh.
+- Zvažte použití pro Orchestrace dat pomocí Azure Data Factory (ADF) 2.0.
+- Vezměte v úvahu Ambari za správu clusteru.
+- Změna úložiště dat z místní HDFS WASB nebo ADLS nebo služby AD FS pro zpracování skripty.
+- Zvažte použití Ranger RBAC u tabulek Hive a auditování.
+- Zvažte použití služby cosmos DB místo MongoDB nebo Cassandra.
 
 ## <a name="next-steps"></a>Další postup
 

@@ -15,16 +15,16 @@ ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: v-jysur
 ms.component: ''
-ms.openlocfilehash: b99c14e6022fa34d41caaa02bfc9feecb3c840ce
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 4f8261983feb8e655333f548b0b90f822eda30a6
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49407499"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50421182"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Připojení Azure k nástrojům ITSM pomocí IT Service Management Connector
 
-![IT Service Management Connector symbol](./media/log-analytics-itsmc/itsmc-symbol.png)
+![IT Service Management Connector symbol](media/log-analytics-itsmc-overview/itsmc-symbol.png)
 
 Na IT Service Management Connector (ITSMC) umožňuje připojit Azure a podporovaných produkt nebo službu správy služeb IT (ITSM).
 
@@ -56,18 +56,18 @@ Než vytvoříte připojení, budete muset přidat řešení ITSM konektor.
 
 1.  Na webu Azure portal, klikněte na tlačítko **+ nová** ikonu.
 
-    ![Nový prostředek Azure](./media/log-analytics-itsmc/azure-add-new-resource.png)
+    ![Nový prostředek Azure](media/log-analytics-itsmc-overview/azure-add-new-resource.png)
 
 2.  Vyhledejte **IT Service Management Connector** na webu Marketplace a klikněte na **vytvořit**.
 
-    ![Přidat ITSMC řešení](./media/log-analytics-itsmc/add-itsmc-solution.png)
+    ![Přidat ITSMC řešení](media/log-analytics-itsmc-overview/add-itsmc-solution.png)
 
 3.  V **pracovní prostor OMS** vyberte pracovní prostor Azure Log Analytics, ve kterém chcete nainstalovat řešení.
    >[!NOTE]
    >Jako součást probíhající přechod z Microsoft Operations Management Suite (OMS) do Azure monitoru pracovními prostory OMS jsou dnes označovány jako pracovní prostory Log Analytics.
 4.  V **nastavení pracovního prostoru OMS** vyberte skupiny prostředků, ve kterém chcete vytvořit řešení prostředků.
 
-    ![Pracovní prostor ITSMC](./media/log-analytics-itsmc/itsmc-solution-workspace.png)
+    ![Pracovní prostor ITSMC](media/log-analytics-itsmc-overview/itsmc-solution-workspace.png)
     >[!NOTE]
     >Jako součást probíhající přechod z Microsoft Operations Management Suite (OMS) do Azure monitoru pracovními prostory OMS jsou dnes označovány jako pracovní prostory Log Analytics.
 
@@ -93,12 +93,12 @@ Jakmile budete mít připravenou na to nástrojům ITSM, postupujte podle pokyn�
 
 1.  Přejděte na **všechny prostředky**, vyhledejte **ServiceDesk(YourWorkspaceName)**.
 2.  V části **zdroje dat pracovního prostoru** v levém podokně klikněte na tlačítko **připojení ITSM**.
-    ![Připojení ITSM](./media/log-analytics-itsmc/itsm-connections.png)
+    ![Připojení ITSM](media/log-analytics-itsmc-overview/itsm-connections.png)
 
     Tato stránka zobrazuje seznam připojení.
 3.  Klikněte na tlačítko **přidat připojení**.
 
-    ![Přidat připojení ITSM](./media/log-analytics-itsmc/add-new-itsm-connection.png)
+    ![Přidat připojení ITSM](media/log-analytics-itsmc-overview/add-new-itsm-connection.png)
 
 4.  Zadejte nastavení připojení, jak je popsáno v [konfiguraci připojení ITSMC vašich produktů nebo služeb Team Foundation článek ITSM](log-analytics-itsmc-connections.md).
 
@@ -106,7 +106,7 @@ Jakmile budete mít připravenou na to nástrojům ITSM, postupujte podle pokyn�
 
     > Ve výchozím nastavení aktualizuje ITSMC připojení konfigurační data jednou za každých 24 hodin. Pokud chcete aktualizovat data vašeho připojení okamžitě pro úpravy nebo šablony aktualizace, které provedete, klikněte na tlačítko **synchronizace** tlačítka v okně připojení k.
 
-    ![Aktualizace připojení](./media/log-analytics-itsmc/itsmc-connections-refresh.png)
+    ![Aktualizace připojení](media/log-analytics-itsmc-overview/itsmc-connections-refresh.png)
 
 
 ## <a name="using-the-solution"></a>Použití řešení
@@ -123,16 +123,16 @@ Použijte následující postup:
 1. Na webu Azure portal, klikněte na tlačítko **monitorování**.
 2. V levém podokně klikněte na tlačítko **skupiny akcí**. **Přidat skupinu akcí** zobrazí se okno.
 
-    ![Skupiny akcí](media/log-analytics-itsmc/action-groups.png)
+    ![Skupiny akcí](media/log-analytics-itsmc-overview/action-groups.png)
 
 3. Zadejte **název** a **ShortName** pro vaši skupinu pro akce. Vyberte **skupiny prostředků** a **předplatné** ve které chcete vytvořit vaši skupinu akcí.
 
-    ![Podrobnosti skupiny akcí](media/log-analytics-itsmc/action-groups-details.png)
+    ![Podrobnosti skupiny akcí](media/log-analytics-itsmc-overview/action-groups-details.png)
 
 4. V seznamu akcí vyberte **ITSM** z rozevírací nabídky pro **typ akce**. Zadejte **název** akce a klikněte na **upravit podrobnosti**.
 5. Vyberte **předplatné** kde se nachází váš pracovní prostor Log Analytics. Vyberte **připojení** name (název vašeho konektoru ITSM), za nímž následuje název pracovního prostoru. Například "MyITSMMConnector(MyWorkspace)."
 
-    ![Podrobnosti akce ITSM](./media/log-analytics-itsmc/itsm-action-details.png)
+    ![Podrobnosti akce ITSM](media/log-analytics-itsmc-overview/itsm-action-details.png)
 
 6. Vyberte **pracovní položku** typu z rozevírací nabídky.
    Rozhodnete použít existující šablonu nebo vyplnit pole vyžadují produktu ITSM.
@@ -151,7 +151,7 @@ Na základě vaší konfigurace při nastavování připojení ITSM konektor syn
 
 Data žádosti incidentů a změn lze vizualizovat na řídicím panelu ITSM konektor v řešení.
 
-![Log Analytics obrazovky](./media/log-analytics-itsmc/itsmc-overview-sample-log-analytics.png)
+![Log Analytics obrazovky](media/log-analytics-itsmc-overview/itsmc-overview-sample-log-analytics.png)
 
 Řídicí panel také obsahuje informace o stav konektoru, který může sloužit jako výchozí bod k analýze problémů s připojeními.
 
@@ -161,7 +161,7 @@ Můžete také vizualizovat incidenty synchronizované proti ovlivněné počít
 
 Pokud používáte řešení Service Map, můžete zobrazit položek oddělení služeb vytvořené v řešení ITSM, jak je znázorněno v následujícím příkladu:
 
-![Log Analytics obrazovky](./media/log-analytics-itsmc/itsmc-overview-integrated-solutions.png)
+![Log Analytics obrazovky](media/log-analytics-itsmc-overview/itsmc-overview-integrated-solutions.png)
 
 Další informace: [Service Map](../operations-management-suite/operations-management-suite-service-map.md)
 
@@ -254,7 +254,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | Category_s | Kategorie |
 | Title_s|  Krátký popis |
 | Description_s|  Poznámky |
-| CreatedDate_t|  Otevřít |
+| CreatedDate_t|  Otevřeno |
 | ClosedDate_t| Uzavřeno|
 | ResolvedDate_t|Vyřešené|
 | Počítač  | Položky konfigurace |

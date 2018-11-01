@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: 95b753a3be824b5815a70fee84913f1c129f2605
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 6b06b8eb8d5e18acd3107ec5cccac79fc7be7edc
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50221869"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50418173"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---data-migration-best-practices"></a>Migrace s místními clustery systému Apache Hadoop do Azure HDInsight – osvědčené postupy migrace dat
 
@@ -100,14 +100,14 @@ Hive metastore je možné migrovat pomocí skriptů nebo pomocí replikace datab
 
 #### <a name="hive-metastore-migration-using-scripts"></a>Migrace metastore Hive pomocí skriptů
 
-- Generovat Hive DDLs z metastore Hive v místním prostředí. Tento krok lze provést pomocí [obálky skriptu bash](https://github.com/hdinsight/hdinsight.github.io/blob/master/hive/hive-export-import-metastore.md)
-- Upravte vygenerovaný DDL nahraďte adresu url HDFS WASB nebo ADLS/ABFS adresy URL
-- Aktualizované DDL spouštět metastore z clusteru Hdinsight
-- Ujistěte se, že verze metastore Hive je kompatibilní mezi místním prostředím a cloudem
+1. Generovat Hive DDLs z metastore Hive v místním prostředí. Tento krok lze provést pomocí [bash skript obálky]. (https://github.com/hdinsight/hdinsight.github.io/blob/master/hive/hive-export-import-metastore.md)
+1. Upravte vygenerovaný DDL nahraďte adresu url HDFS WASB nebo ADLS/ABFS adresy URL
+1. Aktualizované DDL spouštět metastore z clusteru HDInsight
+1. Ujistěte se, že verze metastore Hive je kompatibilní mezi místním prostředím a cloudem
 
 #### <a name="hive-metastore-migration-using-db-replication"></a>Migrace metastore Hive pomocí replikace databáze
 
-- Nastavení replikace databáze mezi metastore Hive místní databáze a HDI metastore DB
+- Nastavení replikace databáze mezi metastore Hive místní databáze a HDInsight metastore DB
 - Nahraďte adresu url HDFS WASB nebo ADLS/ABFS adresy URL, třeba pomocí "Hive MetaTool":
 
 ```bash
@@ -116,9 +116,9 @@ Hive metastore je možné migrovat pomocí skriptů nebo pomocí replikace datab
 
 ### <a name="ranger"></a>Ranger
 
-- Export zásad Ranger s místními soubory xml
-- Transformace v místním prostředí konkrétní systémem HDFS cesty pomocí některého nástroje, například XSLT WASB nebo ADLS
-- Importujte zásady k Ranger spuštěná ve službě Hdinsight
+- Export místní zásady Ranger pro soubory xml.
+- Transformace v místním prostředí konkrétním systémem HDFS cesty k WASB nebo ADLS pomocí některého nástroje, například XSLT.
+- Importujte zásady k Ranger systémem HDInsight.
 
 ## <a name="next-steps"></a>Další postup
 

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/30/2017
 ms.author: jasonh
-ms.openlocfilehash: 836bdccbf3f8887a47da38b47b414722c878be04
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: ab3f4dcdc5a5ad8528080c90fa6c17f9493d19ac
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43046008"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50420298"
 ---
 # <a name="use-azure-toolkit-for-eclipse-to-create-spark-applications-for-an-hdinsight-cluster"></a>Vytvoření aplikací Spark pro cluster služby HDInsight pomocí sady Azure Toolkit pro Eclipse
 
@@ -32,7 +32,7 @@ Pomocí nástrojů HDInsight v sadě Azure Toolkit pro Eclipse pro vývoj aplika
 ## <a name="prerequisites"></a>Požadavky
 
 * Cluster Apache Spark v HDInsight. Pokyny najdete v tématu [Vytváření clusterů Apache Spark ve službě Azure HDInsight](apache-spark-jupyter-spark-sql.md).
-* Oracle Java Development Kit verze 8, který se používá pro modul runtime integrovaného vývojového prostředí Eclipse. Můžete ji stáhnout [webu Oracle](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html).
+* Oracle Java Development Kit verze 8, který se používá pro modul runtime integrovaného vývojového prostředí Eclipse. Můžete ji stáhnout [webu Oracle](https://aka.ms/azure-jdks).
 * Integrované vývojové prostředí Eclipse. Tento článek používá Eclipse Neon. Můžete ho nainstalovat [webu Eclipse](https://www.eclipse.org/downloads/).
 
 

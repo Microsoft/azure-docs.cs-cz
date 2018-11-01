@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 1c9c93c198b4d88da55ecd241e096e73e4a40d5d
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: aa9e91614152aed6a04fa748521991920a0ed569
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48042174"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50413056"
 ---
 # <a name="reference-guide-to-view-designer-tiles-in-log-analytics"></a>Referenční příručka pro dlaždice Návrhář zobrazení v Log Analytics
 Pomocí návrháře zobrazení v Azure Log Analytics můžete vytvořit vlastní zobrazení na webu Azure Portal, který k dispozici různé vizualizace dat ve vašem pracovním prostoru Log Analytics. Tento článek je referenční příručka k nastavení pro dlaždice, které jsou k dispozici do vlastních zobrazení.
@@ -47,7 +47,7 @@ Následující části popisují typy dlaždic a jejich vlastnosti podrobně.
 ## <a name="number-tile"></a>Dlaždici s číslem
 **Číslo** dlaždici se zobrazuje počet záznamů z protokolu dotazu a popisek.
 
-![Dlaždici s číslem](media/log-analytics-view-designer/tile-number.png)
+![Dlaždici s číslem](media/log-analytics-view-designer-tiles/tile-number.png)
 
 | Nastavení | Popis |
 |:--- |:--- |
@@ -65,7 +65,7 @@ Následující části popisují typy dlaždic a jejich vlastnosti podrobně.
 ## <a name="two-numbers-tile"></a>Dlaždici dvou čísel.
 Tuto dlaždici se zobrazuje počet záznamů z dotazů na dva různé protokoly a popisek pro každý.
 
-![Dlaždici dvou čísel.](media/log-analytics-view-designer/tile-two-numbers.png)
+![Dlaždici dvou čísel.](media/log-analytics-view-designer-tiles/tile-two-numbers.png)
 
 | Nastavení | Popis |
 |:--- |:--- |
@@ -86,7 +86,7 @@ Tuto dlaždici se zobrazuje počet záznamů z dotazů na dva různé protokoly 
 ## <a name="donut-tile"></a>Prstencový dlaždice
 **Prstencový** dlaždici se zobrazuje jedno číslo, které shrnuje hodnotu sloupce v dotazu protokolu. Prstencový graficky zobrazuje výsledky z prvních tří záznamů.
 
-![Prstencový dlaždice](media/log-analytics-view-designer/tile-donut.png)
+![Prstencový dlaždice](media/log-analytics-view-designer-tiles/tile-donut.png)
 
 | Nastavení | Popis |
 |:--- |:--- |
@@ -110,7 +110,7 @@ Tuto dlaždici se zobrazuje počet záznamů z dotazů na dva různé protokoly 
 ## <a name="line-chart-tile"></a>Dlaždice diagram řádku
 Tato dlaždice není spojnicový graf zobrazující více řad z dotazu protokolu v čase. 
 
-![Dlaždice graf a popisek řádku](media/log-analytics-view-designer/tile-line-chart.png)
+![Dlaždice graf a popisek řádku](media/log-analytics-view-designer-tiles/tile-line-chart.png)
 
 | Nastavení | Popis |
 |:--- |:--- |
@@ -131,7 +131,7 @@ Tato dlaždice není spojnicový graf zobrazující více řad z dotazu protokol
 ## <a name="line-chart-and-callout-tile"></a>Dlaždice graf a popisek řádku
 Tuto dlaždici má oba řádek graf této zobrazí více řad z protokolu dotaz nad čas a popisek s souhrnnou hodnotu. 
 
-![Dlaždice graf a popisek řádku](media/log-analytics-view-designer/tile-line-chart-callout.png)
+![Dlaždice graf a popisek řádku](media/log-analytics-view-designer-tiles/tile-line-chart-callout.png)
 
 | Nastavení | Popis |
 |:--- |:--- |
@@ -156,7 +156,7 @@ Tuto dlaždici má oba řádek graf této zobrazí více řad z protokolu dotaz 
 ## <a name="two-timelines-tile"></a>Dvě časové osy dlaždice
 **Dvě časové osy** dlaždici se zobrazuje v čase jako sloupcové grafy výsledků dvou dotazů na protokoly. Popisek se zobrazí u každé datové řady. 
 
-![Dvě časové osy dlaždice](media/log-analytics-view-designer/tile-two-timelines.png)
+![Dvě časové osy dlaždice](media/log-analytics-view-designer-tiles/tile-two-timelines.png)
 
 | Nastavení | Popis |
 |:--- |:--- |

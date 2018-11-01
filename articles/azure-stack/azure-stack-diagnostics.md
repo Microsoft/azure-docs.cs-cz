@@ -7,15 +7,15 @@ manager: femila
 cloud: azure-stack
 ms.service: azure-stack
 ms.topic: article
-ms.date: 09/27/2018
+ms.date: 10/31/2018
 ms.author: jeffgilb
 ms.reviewer: adshar
-ms.openlocfilehash: 5a9621ef9a8d6c545617e5bf3ef6f4197b70be88
-ms.sourcegitcommit: 3150596c9d4a53d3650cc9254c107871ae0aab88
+ms.openlocfilehash: 3dd3e3391cc2536f56a5e42610c09c85b4068234
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47419595"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50740549"
 ---
 # <a name="azure-stack-diagnostics-tools"></a>Azure Stack diagnostické nástroje
 
@@ -86,32 +86,38 @@ if($s)
   Shromážděte všechny protokoly pro všechny role:
 
   ```powershell
-  Get-AzureStackLog -OutputPath C:\AzureStackLogs
+  Get-AzureStackLog -OutputSharePath “<path>” -OutputShareCredential $cred
   ```
 
   Shromažďování protokolů z virtuálních počítačů a BareMetal rolí:
 
   ```powershell
-  Get-AzureStackLog -OutputPath C:\AzureStackLogs -FilterByRole VirtualMachines,BareMetal
+  Get-AzureStackLog -OutputSharePath “<path>” -OutputShareCredential $cred -FilterByRole VirtualMachines,BareMetal
   ```
 
   Shromažďování protokolů z role virtuálních počítačů a BareMetal s datem filtrování pro soubory protokolů za posledních 8 hodin:
     
   ```powershell
-  Get-AzureStackLog -OutputPath C:\AzureStackLogs -FilterByRole VirtualMachines,BareMetal -FromDate (Get-Date).AddHours(-8)
+  Get-AzureStackLog -OutputSharePath “<path>” -OutputShareCredential $cred -FilterByRole VirtualMachines,BareMetal -FromDate (Get-Date).AddHours(-8)
   ```
 
   Shromažďování protokolů z role virtuálních počítačů a BareMetal filtrování pro soubory protokolu pro toto časové období před 8 hodin až 2 hodiny před datem:
 
   ```powershell
-  Get-AzureStackLog -OutputPath C:\AzureStackLogs -FilterByRole VirtualMachines,BareMetal -FromDate (Get-Date).AddHours(-8) -ToDate (Get-Date).AddHours(-2)
+  Get-AzureStackLog -OutputSharePath “<path>” -OutputShareCredential $cred -FilterByRole VirtualMachines,BareMetal -FromDate (Get-Date).AddHours(-8) -ToDate (Get-Date).AddHours(-2)
   ```
 
 ### <a name="parameter-considerations-for-both-asdk-and-integrated-systems"></a>Důležité informace o parametru pro ASDK a integrované systémy
 
 - Pokud **datum FromDate** a **ToDate** nejsou zadány parametry, se shromáždí protokoly pro poslední 4 hodiny ve výchozím nastavení.
-- Použití **FilterByNode** parametr pro filtrování protokolů podle názvu počítače. Příklad: ```Get-AzureStackLog -OutputPath <path> -FilterByNode azs-xrp01```
-- Použití **FilterByLogType** parametr pro filtrování protokolů podle typu. Můžete filtrovat podle souborů, sdílené složky nebo WindowsEvent. Příklad: ```Get-AzureStackLog -OutputPath <path> -FilterByLogType File```
+- Použití **FilterByNode** parametr pro filtrování protokolů podle názvu počítače. Příklad:
+```powershell
+Get-AzureStackLog -OutputSharePath “<path>” -OutputShareCredential $cred ` -FilterByNode azs-xrp01
+```
+- Použití **FilterByLogType** parametr pro filtrování protokolů podle typu. Můžete filtrovat podle souborů, sdílené složky nebo WindowsEvent. Příklad:
+```powershell
+Get-AzureStackLog -OutputSharePath “<path>” -OutputShareCredential $cred ` -FilterByLogType File
+```
 - Můžete použít **TimeOutInMinutes** parametr nastavit časový limit pro shromažďování protokolů. Ve výchozím nastavení nastavená 150 (2,5 hodin).
 - Ve verzi 1805 a novější je ve výchozím nastavení zakázána shromažďování výpisu stavu systému souborů protokolu. Chcete-li ji povolit, použijte **IncludeDumpFile** přepnout parametru. 
 - V současné době můžete použít **FilterByRole** parametr filtru shromažďování protokolů pomocí následujících rolí:
@@ -127,7 +133,7 @@ if($s)
  |ACSMigrationService|Domain (Doména)|KeyVaultInternalDataPlane|SQL|
  |ACSMonitoringService|OSN|KeyVaultNamingService|SRP|
  |ACSSettingsService|EventAdminRP|MDM|Úložiště|
- |ACSTableMaster|EventRP|MetricsAdminRP|StorageAccounts|
+ |ACSTableMaster|EventRP|MetricsAdminRP|storageAccounts|
  |ACSTableServer|ExternalDNS|MetricsRP|Kontroler úložiště|
  |ACSWac|Fabric|MetricsServer|Tenant|
  |ADFS|FabricRing|MetricsStoreService|TraceCollector|

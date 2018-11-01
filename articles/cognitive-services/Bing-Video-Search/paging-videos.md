@@ -10,16 +10,16 @@ ms.component: bing-video-search
 ms.topic: conceptual
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: 9b030312c562d1c0a6cbacfc7f424289dee2e8de
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: cd5d6ef6a75088d02bc34558f66ed520c230e06b
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47225561"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50741883"
 ---
 # <a name="paging-videos"></a>Videa o stránkování
 
-Při volání rozhraní API pro vyhledávání videí Bingu vrátí seznam výsledků. Tento seznam je podmnožinou celkového počtu výsledků, které jsou pro dotaz relevantní. Odhadované celkový počet dostupných výsledků získáte přístup k objektu odpovědi [totalEstimatedMatches](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#videos-totalestimatedmatches) pole.  
+Když zavoláte rozhraní API pro vyhledávání videí, Bing vrátí seznam výsledků. Tento seznam je podmnožinou celkového počtu výsledků, které jsou pro dotaz relevantní. Odhadované celkový počet dostupných výsledků získáte přístup k objektu odpovědi [totalEstimatedMatches](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#videos-totalestimatedmatches) pole.  
   
 Následující příklad ukazuje `totalEstimatedMatches` pole, které obsahuje odpovědi na Video.  
   
@@ -65,3 +65,6 @@ Například pokud chcete na stránku 30 videí současně, nastavíte `count` 30
 
 > [!NOTE]
 > Stránkování platí pouze pro vyhledávání videí (/ videa/hledání) a nikoli do nové poznatky z videí (/ videa/details) nebo populární videa (/ videa /).
+
+> [!NOTE]
+> `TotalEstimatedAnswers` Pole je odhad celkový počet výsledků hledání můžete načíst aktuálního dotazu.  Pokud nastavíte `count` a `offset` parametry, `TotalEstimatedAnswers` číslo může změnit. 

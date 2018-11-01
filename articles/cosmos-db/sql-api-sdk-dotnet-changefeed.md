@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 10/24/2018
 ms.author: maquaran
-ms.openlocfilehash: f09430aeb38e6762729167494a23096c7bc5ca85
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: eb50673b4f618caadfa1abfb654d7e3f15e51713
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50023947"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50740956"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>Stáhněte si informačního kanálu procesor změnu .NET SDK: A poznámky k verzi
 > [!div class="op_single_selector"]
@@ -42,6 +42,9 @@ ms.locfileid: "50023947"
 ## <a name="release-notes"></a>Poznámky k verzi
 
 ### <a name="v2-builds"></a>sestavení v2
+
+### <a name="a-name222222"></a><a name="2.2.2"/>2.2.2
+* Opravili jsme problém, ke kterému může dojít při zpracování rozdělit když dělené kolekci zapůjčení. Tento problém může vést k zapůjčení pro pryč oddíly nebyl odstraněn z kolekci zapůjčení. V této verzi je problém vyřešen.
 
 ### <a name="a-name221221"></a><a name="2.2.1"/>2.2.1
 * Opravili jsme Estimator výpočtu pro hlavní server s více účty a nový formát tokenu relace.

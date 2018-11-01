@@ -11,12 +11,12 @@ ms.component: bing-image-search
 ms.topic: conceptual
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: 019d91f6a86bab5c4f446085e0244f9b5323f1fb
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 0db8c62bbb4da1a6fa1230b439c5074325bbe9c3
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46294403"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50739362"
 ---
 # <a name="paging-results"></a>Výsledky stránkování
 
@@ -61,3 +61,6 @@ Chcete-li odstranit duplicitní výsledky, použijte [nextOffset](https://docs.m
 
 > [!NOTE]
 > Stránkování platí pouze pro vyhledávání obrázků (/ imagí/hledání) a není pro přehledy obrázků nebo populárních obrázků (/ imagí a sledování trendů).
+
+> [!NOTE]
+> `TotalEstimatedAnswers` Pole je odhad celkový počet výsledků hledání můžete načíst aktuálního dotazu.  Pokud nastavíte `count` a `offset` parametry, `TotalEstimatedAnswers` číslo může změnit. 

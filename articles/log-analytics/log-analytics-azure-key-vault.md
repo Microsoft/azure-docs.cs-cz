@@ -15,16 +15,16 @@ ms.topic: conceptual
 ms.date: 02/09/2017
 ms.author: richrund
 ms.component: ''
-ms.openlocfilehash: 1c72421be6cfb266293c98d9ad06bd6adb35019b
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: be0a12bbb84db1e4016bd7126a38e750e6c0c3ad
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48043548"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50412818"
 ---
 # <a name="azure-key-vault-analytics-solution-in-log-analytics"></a>Řešení Azure Key Vault Analytics ve službě Log Analytics
 
-![Symbol služby Key Vault](./media/log-analytics-azure-keyvault/key-vault-analytics-symbol.png)
+![Symbol služby Key Vault](media/log-analytics-azure-key-vault/key-vault-analytics-symbol.png)
 
 Řešení Azure Key Vault v Log Analytics můžete využít ke kontrole protokolů AuditEvent služby Azure Key Vault.
 
@@ -46,10 +46,10 @@ Pomocí následujících pokynů k instalaci a konfiguraci řešení Azure Key V
 1. Na webu Azure Portal přejděte k prostředku služby Key Vault k monitorování
 2. Vyberte *diagnostické protokoly* otevřete následující stránku
 
-   ![snímek dlaždice Azure Key Vault](./media/log-analytics-azure-keyvault/log-analytics-keyvault-enable-diagnostics01.png)
+   ![snímek dlaždice Azure Key Vault](media/log-analytics-azure-key-vault/log-analytics-keyvault-enable-diagnostics01.png)
 3. Klikněte na tlačítko *zapnout diagnostiku* otevřete následující stránku
 
-   ![snímek dlaždice Azure Key Vault](./media/log-analytics-azure-keyvault/log-analytics-keyvault-enable-diagnostics02.png)
+   ![snímek dlaždice Azure Key Vault](media/log-analytics-azure-key-vault/log-analytics-keyvault-enable-diagnostics02.png)
 4. Chcete-li zapnout diagnostiku, klikněte na tlačítko *na* pod *stav*
 5. Klikněte na zaškrtávací políčko pro *odesílat do Log Analytics*
 6. Vyberte existující pracovní prostor Log Analytics nebo vytvořit pracovní prostor
@@ -81,7 +81,7 @@ V následující tabulce jsou uvedeny metody shromažďování dat a další pod
 ## <a name="use-azure-key-vault"></a>Použití Azure Key Vault
 Poté co [řešení nainstalovat](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.KeyVaultAnalyticsOMS?tab=Overview), zobrazení dat služby Key Vault kliknutím **Azure Key Vault** dlaždici z **přehled** stránka služby Log Analytics.
 
-![snímek dlaždice Azure Key Vault](./media/log-analytics-azure-keyvault/log-analytics-keyvault-tile.png)
+![snímek dlaždice Azure Key Vault](media/log-analytics-azure-key-vault/log-analytics-keyvault-tile.png)
 
 Po klepnutí **přehled** dlaždici, můžete zobrazení souhrnných informací o protokolů a pak přejdete k podrobnostem v těchto kategoriích:
 
@@ -90,9 +90,9 @@ Po klepnutí **přehled** dlaždici, můžete zobrazení souhrnných informací 
 * Průměrné operační latence operací
 * Kvalitu služby pro operace se počet operací, neměl zabrat víc než 1000 ms seznam operací, neměl zabrat víc než 1000 ms
 
-![Obrázek řídicího panelu služby Azure Key Vault](./media/log-analytics-azure-keyvault/log-analytics-keyvault01.png)
+![Obrázek řídicího panelu služby Azure Key Vault](media/log-analytics-azure-key-vault/log-analytics-keyvault01.png)
 
-![Obrázek řídicího panelu služby Azure Key Vault](./media/log-analytics-azure-keyvault/log-analytics-keyvault02.png)
+![Obrázek řídicího panelu služby Azure Key Vault](media/log-analytics-azure-key-vault/log-analytics-keyvault02.png)
 
 ### <a name="to-view-details-for-any-operation"></a>Chcete-li zobrazit podrobnosti pro všechny operace
 1. Na **přehled** stránky, klikněte na tlačítko **Azure Key Vault** dlaždici.

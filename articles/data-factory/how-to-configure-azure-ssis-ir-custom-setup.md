@@ -8,17 +8,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/28/2018
+ms.date: 10/31/2018
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 3ba3e6036821323146f00cf9c255b70606771aed
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 2edaea1cfb02b250b27c47d58b6c1d1ef6501480
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50241153"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50420264"
 ---
 # <a name="customize-setup-for-the-azure-ssis-integration-runtime"></a>Přizpůsobení nastavení pro prostředí Azure-SSIS integration runtime
 
@@ -98,7 +98,7 @@ K přizpůsobení prostředí Azure-SSIS IR, budete potřebovat následující v
 
        ![Zkopírujte a uložte sdíleného přístupového podpisu](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image8.png)
 
-    1.  Při zřízení nebo změnit konfiguraci prostředí Azure-SSIS IR s uživatelské rozhraní služby Data Factory, než začnete prostředí Azure-SSIS IR, zadejte identifikátor URI SAS kontejneru v příslušné oblasti:
+    1.  Po zřízení nebo změnit konfiguraci prostředí Azure-SSIS IR s uživatelské rozhraní služby Data Factory, než začnete prostředí Azure-SSIS IR, zadejte identifikátor URI SAS kontejneru v příslušném poli **Upřesnit nastavení** panelu:
 
        ![Zadejte sdílený přístupový podpis](media/tutorial-create-azure-ssis-runtime-portal/advanced-settings.png)
 
@@ -141,6 +141,8 @@ K přizpůsobení prostředí Azure-SSIS IR, budete potřebovat následující v
 
        1. A `.NET FRAMEWORK 3.5` složky, která obsahuje vlastní instalačního programu pro instalaci dřívější verzi rozhraní .NET Framework, může být nezbytný pro vlastní komponenty na každém uzlu Azure-SSIS IR.
 
+       1. `AAS` Složky, která obsahuje vlastní instalační program a nainstalujte klientské knihovny na každém uzlu vašeho prostředí Azure-SSIS IR, které vaše úkoly služby Analysis Services pro připojení k instanci služby Azure Analysis Services (AAS) s použitím ověřování instančních objektů. Nejdřív stáhněte nejnovější **MSOLAP (amd64)** a **AMO** klientské knihovny/Windows instalačních programů – například `x64_15.0.900.108_SQL_AS_OLEDB.msi` a `x64_15.0.900.108_SQL_AS_AMO.msi` – od [tady](https://docs.microsoft.com/en-us/azure/analysis-services/analysis-services-data-providers), pak nahrávat všechny spolu s `main.cmd` do kontejneru.  
+
        1. A `BCP` složky, která obsahuje vlastní instalační program a nainstalujte nástroje příkazového řádku systému SQL Server (`MsSqlCmdLnUtils.msi`), včetně program hromadného kopírování (`bcp`), na každém uzlu Azure-SSIS IR.
 
        1. `EXCEL` Složky, která obsahuje vlastní nastavení pro instalaci sestavení open source (`DocumentFormat.OpenXml.dll`, `ExcelDataReader.DataSet.dll`, a `ExcelDataReader.dll`) na každém uzlu Azure-SSIS IR.
@@ -155,7 +157,7 @@ K přizpůsobení prostředí Azure-SSIS IR, budete potřebovat následující v
 
        1. A `STORAGE` složky, která obsahuje vlastní instalační program a nainstalujte Azure PowerShell na každém uzlu Azure-SSIS IR. Toto nastavení umožňuje nasazení a spuštění služby SSIS balíčky, která spustí [skripty Powershellu pro manipulaci s svého účtu Azure Storage](https://docs.microsoft.com/azure/storage/blobs/storage-how-to-use-blobs-powershell). Kopírování `main.cmd`, ukázka `AzurePowerShell.msi` (nebo nainstalujte nejnovější verzi) a `storage.ps1` do kontejneru. Použití PowerShell.dtsx jako šablona pro vaše balíčky. Kombinuje balíček šablony [úloha stažení objektů Blob v Azure](https://docs.microsoft.com/sql/integration-services/control-flow/azure-blob-download-task), které soubory ke stažení `storage.ps1` jako upravitelná skript prostředí PowerShell a [úloha spuštění procesu](https://blogs.msdn.microsoft.com/ssis/2017/01/26/run-powershell-scripts-in-ssis/) skript, který se spustí na každém uzlu.
 
-       1. A `TERADATA` složky, která obsahuje vlastní instalační skript (`main.cmd)`, jeho přidruženého souboru (`install.cmd`) a instalační balíčky (`.msi`). Tyto soubory instalace konektorů, rozhraní API TPT a ovladač ODBC Teradata na každém uzlu vašeho prostředí Azure-SSIS IR Enterprise Edition. Toto nastavení umožňuje používat Správce připojení Teradata, zdroj a cíl. Nejprve stáhněte soubor zip 15.x Teradata nástrojů a pomůcek (TTU) (například `TeradataToolsAndUtilitiesBase__windows_indep.15.10.22.00.zip`) z [Teradata](http://partnerintelligence.teradata.com)a pak ho nahrajte spolu s výše `.cmd` a `.msi` soubory do kontejneru.
+       1. A `TERADATA` složky, která obsahuje vlastní instalační skript (`main.cmd`), jeho přidruženého souboru (`install.cmd`) a instalační balíčky (`.msi`). Tyto soubory instalace konektorů, rozhraní API TPT a ovladač ODBC Teradata na každém uzlu vašeho prostředí Azure-SSIS IR Enterprise Edition. Toto nastavení umožňuje používat Správce připojení Teradata, zdroj a cíl. Nejprve stáhněte soubor zip 15.x Teradata nástrojů a pomůcek (TTU) (například `TeradataToolsAndUtilitiesBase__windows_indep.15.10.22.00.zip`) z [Teradata](http://partnerintelligence.teradata.com)a pak ho nahrajte spolu s výše `.cmd` a `.msi` soubory do kontejneru.
 
     ![Složky ve složce uživatelské scénáře](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image12.png)
 

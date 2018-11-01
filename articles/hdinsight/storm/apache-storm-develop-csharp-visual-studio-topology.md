@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 11/27/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: 371f8c1d69482381e3a400da6010825bc3ac7c1a
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 2765021d80701826644f095d22c650160001e907
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43697777"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50414892"
 ---
 # <a name="develop-c-topologies-for-apache-storm-by-using-the-data-lake-tools-for-visual-studio"></a>Vývoj topologií C# pro Apache Storm pomocí nástrojů Data Lake pro Visual Studio
 
@@ -57,7 +57,7 @@ Chcete-li nainstalovat nástroje Data Lake pro Visual Studio, postupujte podle k
 
 Při odesílání topologie Storm ze sady Visual Studio SCP.NET generuje soubor zip, který obsahuje topologie a závislosti. Java se používá k vytvoření těchto souborů zip vzhledem k tomu používá formátu, který je kompatibilní více s clustery založené na Linuxu.
 
-1. Nainstalujte Java Developer Kit (JDK) 7 nebo novějším na vašem vývojovém prostředí. Získáte sadu JDK Oracle od [Oracle](http://www.oracle.com/technetwork/java/javase/downloads/index.html). Můžete také použít [jiné distribuce Java](http://openjdk.java.net/).
+1. Nainstalujte Java Developer Kit (JDK) 7 nebo novějším na vašem vývojovém prostředí. Získáte sadu JDK Oracle od [Oracle](https://aka.ms/azure-jdks). Můžete také použít [jiné distribuce Java](http://openjdk.java.net/).
 
 2. `JAVA_HOME` Proměnné prostředí musí odkazovat na adresář, který obsahuje Java.
 
@@ -70,30 +70,30 @@ using System;
 using System.IO;
 namespace ConsoleApplication2
 {
-   class Program
-   {
-       static void Main(string[] args)
-       {
-           string javaHome = Environment.GetEnvironmentVariable("JAVA_HOME");
-           if (!string.IsNullOrEmpty(javaHome))
-           {
-               string jarExe = Path.Combine(javaHome + @"\bin", "jar.exe");
-               if (File.Exists(jarExe))
-               {
-                   Console.WriteLine("JAVA Is Installed properly");
-                    return;
-               }
-               else
-               {
-                   Console.WriteLine("A valid JAVA JDK is not found. Looks like JRE is installed instead of JDK.");
-               }
-           }
-           else
-           {
-             Console.WriteLine("A valid JAVA JDK is not found. JAVA_HOME environment variable is not set.");
-           }
-       }  
-   }
+   class Program
+   {
+       static void Main(string[] args)
+       {
+           string javaHome = Environment.GetEnvironmentVariable("JAVA_HOME");
+           if (!string.IsNullOrEmpty(javaHome))
+           {
+               string jarExe = Path.Combine(javaHome + @"\bin", "jar.exe");
+               if (File.Exists(jarExe))
+               {
+                   Console.WriteLine("JAVA Is Installed properly");
+                    return;
+               }
+               else
+               {
+                   Console.WriteLine("A valid JAVA JDK is not found. Looks like JRE is installed instead of JDK.");
+               }
+           }
+           else
+           {
+             Console.WriteLine("A valid JAVA JDK is not found. JAVA_HOME environment variable is not set.");
+           }
+       }  
+   }
 }
 ```
 
@@ -451,11 +451,11 @@ Nástroje Data Lake pro Visual Studio můžete také vytvářet hybridní topolo
 
 Příklad hybridní topologie, vytvořte projekt a vyberte **Storm hybridní ukázka**. Tento typ ukázka demonstruje následující pojmy:
 
-* **Java spout** a **bolt jazyka C#**: definovaných v **HybridTopology_javaSpout_csharpBolt**.
+* **Java spout** a  **C# bolt**: definovaných v **HybridTopology_javaSpout_csharpBolt**.
 
     * Transakční verze je definována v **HybridTopologyTx_javaSpout_csharpBolt**.
 
-* **C# spout** a **bolt jazyka Java**: definovaných v **HybridTopology_csharpSpout_javaBolt**.
+* **C#součástí spout** a **bolt jazyka Java**: definovaných v **HybridTopology_csharpSpout_javaBolt**.
 
     * Transakční verze je definována v **HybridTopologyTx_csharpSpout_javaBolt**.
 

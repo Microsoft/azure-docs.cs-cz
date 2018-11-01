@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/06/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 93bd141b591cda5ec6ff1d9d042222070d3146e6
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: f0a9ac1700d635365ebea0c5966489ed3d2d797b
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49390308"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50420234"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Historie vydaných verzí
 Tým služby Azure Active Directory (Azure AD) pravidelně aktualizuje s novými funkcemi a funkce služby Azure AD Connect. Ne všechny položky se vztahují na všechny cílové skupiny.
@@ -37,6 +37,37 @@ Požadovaná oprávnění | Oprávnění potřebná k aktualizaci použít, najd
 
 Stáhnout | [Stažení služby Azure AD Connect](http://go.microsoft.com/fwlink/?LinkId=615771).
 
+## <a name="12650"></a>1.2.65.0 
+
+### <a name="release-status"></a>Stav verze 
+
+10/25/2018: všeobecně dostupné ke stažení
+
+ 
+### <a name="new-features-and-improvements"></a>Nové funkce a vylepšení 
+
+
+- Změnit funkci zpětný zápis atributů k zajištění prostředí hlasová pošta funguje podle očekávání.  V některých scénářích se Azure AD přepsání atribut msExchUcVoicemailSettings během zpětný zápis s hodnotou null.  Azure AD se teď už vymazat místní hodnota tohoto atributu Pokud není nastavena hodnota cloudu.
+- Vylepšené zpracování změny výchozích pravidel. Teď budete upozorněni Pokud byly provedeny změny výchozích pravidel a nabízí možnosti, jak opravit výchozí pravidla. 
+- Diagnostika do Průvodce Azure AD Connect k prozkoumání a identifikovat problémy s připojením ke službě Azure AD. Tyto stejné nástroje pro diagnostiku lze také spustit přímo prostřednictvím Powershellu pomocí rutiny Test - AdSyncAzureServiceConnectivity. 
+- Diagnostika do Průvodce Azure AD Connect k prozkoumání a identifikovat problémy s připojením ke službě AD. Tyto stejné nástroje pro diagnostiku lze také spustit přímo prostřednictvím prostředí Powershell pomocí funkce ConnectivityValidation spuštění v modulu ADConnectivityTools Powershell.  Další informace najdete v části [co je modul Powershellu ADConnectivityTool?](how-to-connect-adconnectivitytools.md)
+- Přidání verze schématu AD pro předběžné kontroly pro hybridní Azure Active Directory Join a zpětný zápis zařízení 
+- Změnit hledání atributů rozšíření adresáře stránky být bez tohoto rozlišování.
+-   Přidání plná podpora protokolu TLS 1.2. Tato verze podporuje všechny protokoly, protože se zakázalo a jenom TLS 1.2 na počítači, kde je nainstalovaný Azure AD Connect se povoluje.  Další informace najdete v části [vynucení protokolu TLS 1.2 pro Azure AD Connect](reference-connect-tls-enforcement.md)
+
+ 
+
+### <a name="fixed-issues"></a>Oprava potíží   
+
+- Je opravená chyba, kam Azure AD Connect Upgrade by selhat, pokud SQL Always On se používal. 
+- Je opravená chyba, správně analyzovat názvy organizační jednotky, které obsahují lomítkem. 
+- Opravili jsme problém, ve kterém by pro čistou instalaci v pracovním režimu zakázat předávací ověřování. 
+- Je opravená chyba, která bránila modulu prostředí PowerShell mají být načteny při spuštění nástroje pro odstraňování problémů 
+- Opravili jsme chybu, která by blokovaly zákazníky pomocí číselných hodnot v první znak názvu hostitele. 
+- Je opravená chyba, kam Azure AD Connect by umožnilo neplatné oddíly a výběr kontejneru 
+- Oprava chybová zpráva "Neplatné heslo", při povolené Desktop SSO. 
+- Různé opravy chyb pro správu důvěryhodnosti služby AD FS  
+- Při konfiguraci zpětného zápisu zařízení – oprava zkontrolujte schéma, vyhledejte třídu objektů msDs-DeviceContainer (dostupné na WS2012 R2)
 
  
 ## <a name="118820"></a>1.1.882.0  

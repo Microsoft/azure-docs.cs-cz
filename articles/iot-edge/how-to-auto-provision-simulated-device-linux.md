@@ -4,16 +4,16 @@ description: Použít čip TPM s Simulovaná na virtuální počítač s Linuxem
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 06/27/2018
+ms.date: 10/31/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 2416d70e3c9d0f66ff755d8049e78e0275c89258
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 6d0d2adfb4a727ec93db6d44e6a3e8f923760b91
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50232065"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50739664"
 ---
 # <a name="create-and-provision-an-edge-device-with-a-virtual-tpm-on-a-linux-virtual-machine"></a>Vytvoření a zřízení hraničního zařízení s virtuální čip TPM na virtuální počítač s Linuxem
 
@@ -63,7 +63,7 @@ Pokud se zobrazí chyby při vytváření nového virtuálního přepínače, uj
 
    1. **Zadejte generování**: vyberte **2. generace**.
    2. **Konfigurace sítí**: nastavte hodnotu **připojení** k virtuálnímu přepínači, který jste vytvořili v předchozí části. 
-   3. **Instalace Oprtions**: vyberte **nainstalovat operační systém ze souboru bitové spouštěcí kopie** a přejděte do souboru image disku, který jste uložili místně.
+   3. **Možnosti instalace**: vyberte **nainstalovat operační systém ze souboru bitové spouštěcí kopie** a přejděte do souboru image disku, který jste uložili místně.
 
 Zobrazení minut pro vytvoření nového virtuálního počítače může trvat. 
 
@@ -180,7 +180,7 @@ Následujícím postupem TPM přístup. Alternativně můžete provést totéž 
    Úspěšný výstup by měl vypadat nějak takto:
 
    ```output
-   crw------- 1 root root 10, 224 Jun 28 22:34 /dev/tpm0
+   crw------- 1 root iotedge 10, 224 Jul 20 16:27 /dev/tpm0
    ```
 
 8. Otevřete soubor přepíše modul runtime IoT Edge. 

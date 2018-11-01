@@ -8,14 +8,14 @@ editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines
 ms.topic: troubleshooting
-ms.date: 06/15/2018
+ms.date: 10/31/2018
 ms.author: delhan
-ms.openlocfilehash: 64641f8acfe7b58763756e2a0707fa799ee804b2
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 9341458336e4c95b84590eadbc86073e7dbf09a0
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47413407"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50419550"
 ---
 # <a name="how-to-use-boot-diagnostics-to-troubleshoot-virtual-machines-in-azure"></a>Jak používat diagnostiku spouštění k řešení potíží s virtuálními počítači v Azure
 
@@ -24,6 +24,10 @@ Podpora dvou funkcí ladění je nyní k dispozici v Azure: podpora výstupu kon
 Při přenosu vlastní image do Azure nebo spouštění některé z imagí platformy, může být mnoho důvodů, proč virtuální počítač dostane do nespustitelného stavu. Tyto funkce umožňují snadnou diagnostiku a obnovení virtuálních počítačů z chyb při spuštění.
 
 Pro virtuální počítače s Linuxem můžete snadno zobrazit výstup protokolu konzoly z portálu. Pro virtuální počítače Windows a Linuxem Azure také umožňuje zobrazit snímek virtuálního počítače z hypervisoru. Obě tyto funkce jsou podporovány pro virtuální počítače, které jsou ve všech oblastech Azure. Mějte na paměti, že může trvat až 10 minut, než se snímky obrazovky a výstup zobrazí v účtu úložiště.
+
+Můžete vybrat **Diagnostika spouštění** možnost zobrazit v protokolu a na snímku obrazovky.
+
+![Resource Manager](./media/virtual-machines-common-boot-diagnostics/screenshot1.png)
 
 ## <a name="common-boot-errors"></a>Běžné chyby spuštění
 
@@ -70,7 +74,7 @@ Pro virtuální počítače s Linuxem můžete snadno zobrazit výstup protokolu
             "diagnosticsProfile": {
                 "bootDiagnostics": {
                 "enabled": true,
-                "storageUri": "[concat('http://', parameters('newStorageAccountName'), '.blob.core.windows.net')]"
+                "storageUri": "[concat('https://', parameters('newStorageAccountName'), '.blob.core.windows.net')]"
                 }
             }
             }

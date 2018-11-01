@@ -11,15 +11,15 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/13/2018
+ms.date: 10/30/2018
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: cf5f85d4f7e9dbe1278e9dc4290967d781b398f3
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 3869b47c4e435443bb569ae7b90df7fba9687ba7
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45632819"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50421250"
 ---
 # <a name="monitor-availability-and-responsiveness-of-any-web-site"></a>Sledování dostupnosti a odezvy libovolných webů
 Po nasazení webové aplikace nebo webu na libovolném serveru můžete nastavit testy ke sledování dostupnosti a odezvy. [Azure Application Insights](app-insights-overview.md) odesílá do vaší aplikace webové požadavky v pravidelných intervalech z bodů po celém světě. Upozorní vás v případě, že vaše aplikace reaguje pomalu nebo nereaguje vůbec.
@@ -47,7 +47,7 @@ Kliknutím na možnost **Všechny prostředky** otevřete okno Přehled pro nov�
 ## <a name="setup"></a>Vytvoření testu adresy URL pomocí příkazu Ping
 Otevřete okno Dostupnost a přidejte test.
 
-![Vyplňte alespoň adresu URL webu](./media/app-insights-monitor-web-app-availability/13-availability.png)
+![Vyplňte alespoň adresu URL webu](./media/app-insights-monitor-web-app-availability/001-create-test.png)
 
 * **Adresa URL** může být libovolná webová stránka, kterou chcete otestovat, ale musí být viditelná z veřejného internetu. Adresa URL může obsahovat řetězec dotazu. To znamená, že můžete také trochu vyzkoušet svou databázi. Pokud se adresa URL přeloží na přesměrování, budeme ji sledovat až po 10 přesměrování.
 * **Analyzovat závislé požadavky:** Pokud zaškrtnete tuto možnost, test si vyžádá obrázky, skripty, soubory stylu a další soubory, které jsou součástí testované webové stránky. Zaznamenaná doba odezvy zahrnuje i čas potřebný k získání těchto souborů. Pokud tyto prostředky nelze úspěšně stáhnout v časovém limitu pro celý test, test se nezdaří. Pokud tato možnost není zaškrtnutá, test si vyžádá pouze soubor na zadané adrese URL.
@@ -56,10 +56,10 @@ Otevřete okno Dostupnost a přidejte test.
 
 * **Frekvence testů**: Nastaví, jak často se test spustí z umístění každého testu. S výchozí pětiminutovou frekvencí a pěti testovanými místy bude váš web testován v průměru každou minutu.
 
-* **Testovací umístění** jsou místa, ze kterých naše servery odesílají webové požadavky na adresu URL. Zvolte více než jeden, aby bylo možné rozlišit problémy ve vašem webu od problémů se sítí. Můžete vybrat až 16 umístění.
+* **Testovací umístění** jsou místa, ze kterých naše servery odesílají webové požadavky na adresu URL. Naše minimální počet umístění doporučené testu je pět aby bylo možné zajistit, že možné rozlišit problémy ve vašem webu od problémů se sítí. Můžete vybrat až 16 umístění.
 
-> [!NOTE] 
-> * Důrazně doporučujeme testování z více míst, aby se zabránilo falešných poplachů vyplývající z přechodné problémy s konkrétní umístění.
+> [!NOTE]
+> * Důrazně doporučujeme testování z více míst s minimálně pět umístění. Toto je zabránit falešných poplachů, které mohou být způsobeny přechodné problémy s konkrétní umístění. Kromě toho jsme našli, optimální konfigurace je počet umístění testu být roven mezní hodnota umístění upozornění + 2. 
 > * Povolení možnosti výsledků "Analyzovat závislé požadavky" v přísnější kontroly. Test může selhat pro případy, které nemusí být patrné při procházení webu ručně.
 
 * **Kritéria úspěchu**:
@@ -70,10 +70,12 @@ Otevřete okno Dostupnost a přidejte test.
 
     **Shoda obsahu**: řetězec, například „Vítejte!“ U každé odpovědi testujeme výskyt přesné shody (s rozlišováním velkých a malých písmen). Musí být prostý řetězec bez zástupných znaků. Nezapomeňte, že pokud se obsah vaší stránka změní, bude pravděpodobně nutné jej aktualizovat.
 
+* **Mezní hodnota umístění upozornění**: Doporučujeme minimálně 3 nebo 5 umístění. Optimální vztah mezi mezní hodnota umístění upozornění a počet umístění testu je **mezní hodnota umístění upozornění** = **počet umístění testu** - 2, s minimálně pět testování umístění.
+
 ## <a name="multi-step-web-tests"></a>Vícekrokové webové testy
 Je možné sledovat scénář, který zahrnuje posloupnost adres URL. Například pokud sledujete prodejní web, můžete otestovat, zda správně funguje přidávání položek do nákupního košíku.
 
-> [!NOTE] 
+> [!NOTE]
 > Vícekrokové webové testy jsou zpoplatněné. [Cenové schéma](http://azure.microsoft.com/pricing/details/application-insights/).
 > 
 
@@ -266,7 +268,7 @@ Pokud váš test vyžaduje přihlášení pomocí OAuth, bude obecný postup ná
 ## <a name="performance-tests"></a>Testy výkonnosti
 Na svém webu můžete spustit zátěžový test. Podobně jako v testu dostupnosti můžete z našich bodů po celém světě odeslat buď jednoduché požadavky, nebo vícekrokové požadavky. Na rozdíl od testu dostupnosti se odesílá mnoho požadavků, které simulují několik souběžných uživatelů.
 
-V okně Přehled otevřete **Nastavení**, **Testy výkonnosti**. Při vytváření testu budete vyzváni k připojení k nebo vytvořte účet Azure DevOps.
+V okně Přehled otevřete **Nastavení**, **Testy výkonnosti**. Při vytváření testu budete vyzváni k připojení k nebo si vytvořte účet Azure DevOps.
 
 Po dokončení testu se zobrazí časy odezvy a míra úspěšnosti.
 

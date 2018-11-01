@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/18/2018
+ms.date: 10/31/2018
 ms.author: jeffgilb
 ms.reviewer: prchint
-ms.openlocfilehash: 5ebddbf1fea49fbf868d15a544a18e5a8c6369fd
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: ec4d8ef43510c07e73ab18de227176d3c282b8e1
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078303"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50740837"
 ---
 # <a name="azure-stack-capacity-planner"></a>Capacity Planner služby Azure Stack
 Azure Stack Capacity Planner je tabulka pro plánování kapacity prostředků Azure Stack. Capacity planner vám poskytuje schopnost navrhovat různých přidělení výpočetní prostředky a zobrazit, jak by přizpůsobit přes výběr nabídky hardwaru. Níže jsou uvedené podrobné pokyny pro použití kalkulačky Azure Stack.
@@ -56,7 +56,7 @@ Tento nástroj nabízí dvě metody přidělování prostředků virtuálního p
 ## <a name="definebyvmfootprint-instructions"></a>DefineByVMFootprint pokyny
 Vytvořit model s použitím jedné kolekce různé velikosti a množství virtuálních počítačů, vyberte na kartě "DefineByVMFootprint" a postupujte podle tohoto pořadí kroků.
 
-1. V pravém horním rohu tohoto listu pomocí ovládací prvky zadané rozevírací seznamu vyberte počáteční počet serverů (mezi 4 a 12), které chcete nainstalovat v každém hardwaru systému (SKU). Tento počet serverů může změnit kdykoli během procesu modelování, chcete-li zjistit, jak to ovlivní celkové dostupné prostředky pro váš model přidělení prostředků.
+1. V pravém horním rohu tohoto listu pomocí ovládací prvky zadané rozevírací seznamu vyberte počáteční počet serverů (mezi 4 a 16), které chcete nainstalovat v každém hardwaru systému (SKU). Tento počet serverů může změnit kdykoli během procesu modelování, chcete-li zjistit, jak to ovlivní celkové dostupné prostředky pro váš model přidělení prostředků.
 2. Pokud chcete k modelování různých přidělení prostředků virtuálních počítačů na jeden konkrétní hardwarové konfigurace, najdete v pravém horním rohu stránky modré rozevírací seznam přímo pod popiskem "Aktuální skladová položka". Stáhněte dolů toto pole se seznamem a vyberte požadovaný hardware SKU.
 3. Nyní jste připraveni začít přidávat různé velikosti virtuálních počítačů do modelu. Zahrnout konkrétní typ virtuálního počítače, zadejte hodnotu množství do modré pole osnovy nalevo od položky tohoto virtuálního počítače.
 
@@ -73,7 +73,7 @@ Vytvořit model pomocí sady Azure Stack úlohy, vyberte na kartě "DefineByWork
 > [!TIP]
 > Chcete-li změnit velikost zadaná úložiště pro virtuální počítač Azure Stack, přečtěte si poznámku z kroku 3 v předchozí části.
 
-1. V pravém horním rohu této stránky pomocí ovládací prvky zadané rozevírací seznamu vyberte počáteční počet serverů (mezi 4 a 12), které chcete nainstalovat v každém hardwaru systému (SKU).
+1. V pravém horním rohu této stránky pomocí ovládací prvky zadané rozevírací seznamu vyberte počáteční počet serverů (mezi 4 a 16), které chcete nainstalovat v každém hardwaru systému (SKU).
 2. Pokud chcete k modelování různých přidělení prostředků virtuálních počítačů na jeden konkrétní hardwarové konfigurace, najdete v pravém horním rohu stránky modré rozevírací seznam přímo pod popiskem "Aktuální skladová položka". Stáhněte dolů toto pole se seznamem a vyberte požadovaný hardware SKU.
 3. Vyberte vhodnou velikost pro všechny vaše požadované zásobníku virtuálních počítačů Azure na stránce DefineByVMFootprint, jak je popsáno výše v kroku 3 DefineByVMFootprint pokyny. Velikost úložiště na virtuální počítač je definována v listu DefineByVMFootprint.
 4. Spouští se v levém horním rohu stránky DefineByWorkloadFootprint, vytvořte konfigurace pro až šest různých typů zatížení tak, že zadáte množství jednotlivých virtuálních počítačů typu obsažené v rámci úlohy. To se provádí tak, že číselné hodnoty do sloupce přímo pod názvem této úlohy. Názvy úloh může být upravena podle typu úlohy, které budou podporované v této konkrétní konfiguraci.

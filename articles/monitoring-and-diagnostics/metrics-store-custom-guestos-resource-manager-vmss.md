@@ -8,12 +8,12 @@ ms.topic: howto
 ms.date: 09/24/2018
 ms.author: ancav
 ms.component: metrics
-ms.openlocfilehash: 0e6580bfea181d28d884356d6c51ff5f9336c3db
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: b7ffb5487eceb83e8961af8dfddf2416ee11dd64
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50093867"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50417663"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine-scale-set"></a>Odeslání metrik hostovaného operačního systému k úložišti Azure Monitor metriky s použitím šablony Azure Resource Manageru pro škálovací sadu virtuálních počítačů s Windows
 
@@ -275,7 +275,7 @@ Pokud chcete nasadit šablonu Resource Manageru, pomocí Azure Powershellu:
 
 1. Na **monitorování** stránce **metriky**. 
 
-   ![Monitorování – metrika stránky](./media/metrics-store-custom-rest-api/metrics.png) 
+   ![Monitorování – metrika stránky](media/metrics-store-custom-guestos-resource-manager-vmss/metrics.png) 
 
 1. Na období agregace změnit **posledních 30 minut**.  
 

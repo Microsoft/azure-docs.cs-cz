@@ -13,12 +13,12 @@ ms.topic: troubleshooting
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: vashan, rajraj, changov
-ms.openlocfilehash: b951d0b8d91729340cf382e70f72511fb009053e
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 15a4ff73476ce54f0617a88e040ac64d7288e9a8
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49386548"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50741109"
 ---
 # <a name="troubleshooting-api-throttling-errors"></a>Řešení potíží s chybami omezení rozhraní API 
 
@@ -76,6 +76,18 @@ Content-Type: application/json; charset=utf-8
 Zásady se zbývající počet volání 0 je to omezení chyba je vrácena. V tomto případě je `HighCostGet30Min`. Celkový formát těla odpovědi je obecný formát Chyba rozhraní API Azure Resource Manageru (splňovala podmínky shody s protokolem OData). Kód chyby hlavní `OperationNotAllowed`, je ten poskytovatele výpočetních prostředků používá oznamuje omezování chyby (mimo jiné druhy chyby klienta). `message` Vlastnost vnitřní chyby obsahuje serializovaná strukturu JSON s podrobnostmi o porušení omezení.
 
 Jak je znázorněno výše, zahrnuje každé chybě omezení `Retry-After` hlavičky, která poskytuje minimální počet sekund, klient čekat před opakováním žádosti. 
+
+## <a name="api-call-rate-and-throttling-error-analyzer"></a>Rychlost a omezování Chyba analyzátoru volání rozhraní API
+Verze preview funkce Poradce při potížích je k dispozici pro rozhraní API poskytovatele výpočetních prostředků. Tyto rutiny prostředí PowerShell představují statistické údaje o frekvence požadavků rozhraní API za časový interval pro operace a porušení omezení na skupinu operace (zásady):
+-   [Export-AzureRmLogAnalyticRequestRateByInterval](https://docs.microsoft.com/powershell/module/azurerm.compute/export-azurermloganalyticrequestratebyinterval)
+-   [Export-AzureRmLogAnalyticThrottledRequests](https://docs.microsoft.com/powershell/module/azurerm.compute/export-azurermloganalyticthrottledrequests)
+
+Statistiky volání rozhraní API můžete poskytují skvělý přehled o chování naprogramovaná předplatného a povolte snadné identifikaci vzorů volání, které způsobují omezení šířky pásma.
+
+Omezení analyzéru prozatím se nepočítají požadavky pro typy prostředků disku a snímek (podporu spravované disky). Vzhledem k tomu, že shromažďuje data z vaší CRP telemetrických dat, je také vám nemůže pomoci při identifikaci chyb omezení z ARM. Ale ty lze identifikovat podle snadno rozlišovací hlavičky odpovědi ARM, jak je uvedeno výše.
+
+Rutiny Powershellu jsou pomocí rozhraní API REST služby, které je možné jednoduše vyvolat přímo klienty (i když s ještě žádné formální podpora). Pokud chcete zobrazit formát požadavku HTTP, spusťte rutiny s - Debug nebo sledování na jejich spuštění fiddleru.
+
 
 ## <a name="best-practices"></a>Osvědčené postupy 
 

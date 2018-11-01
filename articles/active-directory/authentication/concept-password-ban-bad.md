@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: rogoya
-ms.openlocfilehash: 1ad499e2703ff8376c063d933c0cc1f03765fc23
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: 4c5fead0a7f4634a8f5ee005114d24cae9a2590f
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "42054006"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50739817"
 ---
 # <a name="eliminate-bad-passwords-in-your-organization"></a>Eliminuje chybná hesla ve vaší organizaci
 
@@ -70,4 +70,4 @@ Vaše heslo bohužel obsahuje slovo, frázi nebo vzor, který umožňuje snadno 
 ## <a name="next-steps"></a>Další postup
 
 * [Proveďte konfiguraci seznamu vlastních zakázaných hesel](howto-password-ban-bad.md)
-* [Povolení služby Azure AD hesla ochrany agentů místní](howto-password-ban-bad-on-premises.md)
+* [Povolení služby Azure AD hesla ochrany agentů místní](howto-password-ban-bad-on-premises-deploy.md)

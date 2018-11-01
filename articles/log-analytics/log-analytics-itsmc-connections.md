@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: v-jysur
 ms.component: ''
-ms.openlocfilehash: 190e173e035716431c92533e42ded97e147f21a7
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 4faea38817a546dbab02064d22a0813362f77b3d
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49409199"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50416456"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>Připojení ITSM produktů a služeb s IT Service Management Connector
 Tento článek obsahuje informace o tom, jak nakonfigurovat připojení mezi ITSM produkt nebo službu a na IT Service Management Connector (ITSMC) ve službě Log Analytics a centrálně spravovat pracovní položky. Další informace o ITSMC najdete v tématu [přehled](log-analytics-itsmc-overview.md).
@@ -57,7 +57,7 @@ Pomocí následujícího postupu pro připojení k ITSMC instanci aplikace Syste
 
 2.  V části **zdroje dat pracovního prostoru** klikněte na tlačítko **připojení ITSM**.
 
-    ![Nové připojení](./media/log-analytics-itsmc/add-new-itsm-connection.png)
+    ![Nové připojení](media/log-analytics-itsmc-connections/add-new-itsm-connection.png)
 
 3. V horní části pravého podokna, klikněte na tlačítko **přidat**.
 
@@ -78,7 +78,7 @@ Pomocí následujícího postupu pro připojení k ITSMC instanci aplikace Syste
 | **Synchronizace dat** | Zadejte počet uplynulých dní, které chcete data z. **Maximální limit**: 120 dnů. |
 | **Vytvořit novou položku konfigurace v řešení ITSM** | Tuto možnost vyberte, pokud chcete vytvářet položky konfigurace v produktu ITSM. Pokud je vybráno, Log Analytics vytvoří ovlivněné položky konfigurace jako položky konfigurace (v případě neexistující CIs) v podporovaném systému ITSM. **Výchozí**: zakázáno. |
 
-![Služba Správce připojení](./media/log-analytics-itsmc/service-manager-connection.png)
+![Služba Správce připojení](media/log-analytics-itsmc-connections/service-manager-connection.png)
 
 **Při úspěšném připojení a synchronizované**:
 
@@ -128,14 +128,14 @@ Pomocí následujícího postupu ke konfiguraci hybridního připojení, která 
 2. Klikněte na tlačítko **nastavení** > **sítě**.
 3. V části **Hybrid Connections**, klikněte na tlačítko **konfigurovat vaše koncové body hybridního připojení**.
 
-    ![Hybridní připojení sítě](./media/log-analytics-itsmc/itsmc-hybrid-connection-networking-and-end-points.png)
+    ![Hybridní připojení sítě](media/log-analytics-itsmc-connections/itsmc-hybrid-connection-networking-and-end-points.png)
 4. V **Hybrid Connections** okna, klikněte na tlačítko **přidat hybridní připojení**.
 
-    ![Přidat hybridní připojení](./media/log-analytics-itsmc/itsmc-new-hybrid-connection-add.png)
+    ![Přidat hybridní připojení](media/log-analytics-itsmc-connections/itsmc-new-hybrid-connection-add.png)
 
 5. V **přidat hybridní připojení** okna, klikněte na tlačítko **vytvořit nové hybridní připojení**.
 
-    ![Nové hybridní připojení](./media/log-analytics-itsmc/itsmc-create-new-hybrid-connection.png)
+    ![Nové hybridní připojení](media/log-analytics-itsmc-connections/itsmc-create-new-hybrid-connection.png)
 
 6. Zadejte následující hodnoty:
 
@@ -146,14 +146,14 @@ Pomocí následujícího postupu ke konfiguraci hybridního připojení, která 
     - **Umístění**: Vyberte umístění.
     -  **Název**: Zadejte název, který služby Service Bus, pokud jeho vytváření.
 
-    ![Hodnoty hybridní připojení](./media/log-analytics-itsmc/itsmc-new-hybrid-connection-values.png)
+    ![Hodnoty hybridní připojení](media/log-analytics-itsmc-connections/itsmc-new-hybrid-connection-values.png)
 6. Klikněte na tlačítko **OK** zavřete **vytvořit hybridní připojení** blade a začít vytvářet hybridní připojení.
 
     Po vytvoření hybridního připojení se zobrazí pod oknem.
 
 7. Po vytvoření hybridního připojení, vyberte připojení a klikněte na tlačítko **přidat vybrané hybridní připojení**.
 
-    ![Nové hybridní připojení](./media/log-analytics-itsmc/itsmc-new-hybrid-connection-added.png)
+    ![Nové hybridní připojení](media/log-analytics-itsmc-connections/itsmc-new-hybrid-connection-added.png)
 
 #### <a name="configure-the-listener-setup"></a>Konfigurace nastavení naslouchacího procesu
 
@@ -171,14 +171,14 @@ Pomocí následujícího postupu ke konfiguraci nastavení naslouchacího proces
 
 Hybridní připojení se úspěšně připojil.
 
-![úspěšné hybridní připojení](./media/log-analytics-itsmc/itsmc-hybrid-connection-listener-set-up-successful.png)
+![úspěšné hybridní připojení](media/log-analytics-itsmc-connections/itsmc-hybrid-connection-listener-set-up-successful.png)
 > [!NOTE]
 
 > Po hybridního připojení vytvořit, ověřit a vyzkoušejte připojení návštěvou nasazené aplikace webového portálu Service Manager. Ujistěte se, že je připojení úspěšné, než se pokusíte připojit k ITSMC v Azure.
 
 Následující ukázkový obrázek zobrazuje podrobnosti o úspěšném připojení:
 
-![Test hybridní připojení](./media/log-analytics-itsmc/itsmc-hybrid-connection-test.png)
+![Test hybridní připojení](media/log-analytics-itsmc-connections/itsmc-hybrid-connection-test.png)
 
 ## <a name="connect-servicenow-to-it-service-management-connector-in-azure"></a>Připojení ServiceNow k IT Service Management Connector v Azure
 
@@ -209,7 +209,7 @@ Pomocí následujícího postupu vytvořte připojení ServiceNow:
 1. Na webu Azure portal, přejděte na **všechny prostředky** a hledejte **ServiceDesk(YourWorkspaceName)**
 
 2.  V části **zdroje dat pracovního prostoru** klikněte na tlačítko **připojení ITSM**.
-    ![Nové připojení](./media/log-analytics-itsmc/add-new-itsm-connection.png)
+    ![Nové připojení](media/log-analytics-itsmc-connections/add-new-itsm-connection.png)
 
 3. V horní části pravého podokna, klikněte na tlačítko **přidat**.
 
@@ -232,7 +232,7 @@ Pomocí následujícího postupu vytvořte připojení ServiceNow:
 | **Synchronizace dat** | Zadejte počet uplynulých dní, které chcete data z. **Maximální limit**: 120 dnů. |
 | **Vytvořit novou položku konfigurace v řešení ITSM** | Tuto možnost vyberte, pokud chcete vytvářet položky konfigurace v produktu ITSM. Pokud je vybráno, ITSMC vytvoří ovlivněné položky konfigurace jako položky konfigurace (v případě neexistující CIs) v podporovaném systému ITSM. **Výchozí**: zakázáno. |
 
-![Připojení ServiceNow](./media/log-analytics-itsmc/itsm-connection-servicenow-connection-latest.png)
+![Připojení ServiceNow](media/log-analytics-itsmc-connections/itsm-connection-servicenow-connection-latest.png)
 
 **Při úspěšném připojení a synchronizované**:
 
@@ -304,7 +304,7 @@ Pomocí následujícího postupu vytvořte Provance připojení:
 1. Na webu Azure portal, přejděte na **všechny prostředky** a hledejte **ServiceDesk(YourWorkspaceName)**
 
 2.  V části **zdroje dat pracovního prostoru** klikněte na tlačítko **připojení ITSM**.
-    ![Nové připojení](./media/log-analytics-itsmc/add-new-itsm-connection.png)
+    ![Nové připojení](media/log-analytics-itsmc-connections/add-new-itsm-connection.png)
 
 3. V horní části pravého podokna, klikněte na tlačítko **přidat**.
 
@@ -326,7 +326,7 @@ Pomocí následujícího postupu vytvořte Provance připojení:
 | **Synchronizace dat** | Zadejte počet uplynulých dní, které chcete data z. **Maximální limit**: 120 dnů. |
 | **Vytvořit novou položku konfigurace v řešení ITSM** | Tuto možnost vyberte, pokud chcete vytvářet položky konfigurace v produktu ITSM. Pokud je vybráno, ITSMC vytvoří ovlivněné položky konfigurace jako položky konfigurace (v případě neexistující CIs) v podporovaném systému ITSM. **Výchozí**: zakázáno.|
 
-![Provance připojení](./media/log-analytics-itsmc/itsm-connections-provance-latest.png)
+![Provance připojení](media/log-analytics-itsmc-connections/itsm-connections-provance-latest.png)
 
 **Při úspěšném připojení a synchronizované**:
 
@@ -355,7 +355,7 @@ Pomocí následujícího postupu vytvořte Provance připojení:
 1. Na webu Azure portal, přejděte na **všechny prostředky** a hledejte **ServiceDesk(YourWorkspaceName)**
 
 2.  V části **zdroje dat pracovního prostoru** klikněte na tlačítko **připojení ITSM**.
-    ![Nové připojení](./media/log-analytics-itsmc/add-new-itsm-connection.png)
+    ![Nové připojení](media/log-analytics-itsmc-connections/add-new-itsm-connection.png)
 
 3. V horní části pravého podokna, klikněte na tlačítko **přidat**.
 
@@ -378,7 +378,7 @@ Pomocí následujícího postupu vytvořte Provance připojení:
 | **Vytvořit novou položku konfigurace v řešení ITSM** | Tuto možnost vyberte, pokud chcete vytvářet položky konfigurace v produktu ITSM. Pokud je vybráno, ITSMC vytvoří ovlivněné položky konfigurace jako položky konfigurace (v případě neexistující CIs) v podporovaném systému ITSM. **Výchozí**: zakázáno. |
 
 
-![Provance připojení](./media/log-analytics-itsmc/itsm-connections-cherwell-latest.png)
+![Provance připojení](media/log-analytics-itsmc-connections/itsm-connections-cherwell-latest.png)
 
 **Při úspěšném připojení a synchronizované**:
 
@@ -396,7 +396,7 @@ Generovat klíč/ID klienta pro Cherwell, postupujte takto:
 2. Klikněte na tlačítko **zabezpečení** > **nastavení klienta REST API upravit**.
 3. Vyberte **vytvořit nového klienta** > **tajný kód klienta**.
 
-    ![Cherwell id uživatele](./media/log-analytics-itsmc/itsmc-cherwell-client-id.png)
+    ![Cherwell id uživatele](media/log-analytics-itsmc-connections/itsmc-cherwell-client-id.png)
 
 
 ## <a name="next-steps"></a>Další postup

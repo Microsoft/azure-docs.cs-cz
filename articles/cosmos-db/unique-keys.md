@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/08/2018
 ms.author: rafats
-ms.openlocfilehash: 5811cb1e08ed5d02038da2a4460ae4b63580833b
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: ff432de59e5a5fdfeaad4c3a5361554ee32e21b0
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43696135"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50740004"
 ---
 # <a name="unique-keys-in-azure-cosmos-db"></a>Jedinečné klíče ve službě Azure Cosmos DB
 
@@ -130,7 +130,7 @@ Ukázkový dokument JSON.
 Následující ukázkový příkaz ukazuje, jak vytvořit jedinečný index pro pole firstName, lastName a e-mailu kolekce uživatelů pro rozhraní API pro MongoDB. Tím se zajistí jedinečnost kombinace všech tří polí napříč všemi dokumenty v kolekci. Pro kolekce rozhraní MongoDB API se vytvoří jedinečný index po vytvoření kolekce, ale před naplnění kolekce.
 
 > [!NOTE]
-> Formát jedinečné klíče pro účty rozhraní API MongoDB se liší od s účty SQL API, kde není nutné zadat znak zpětného lomítka (/) před název pole. 
+> Formát jedinečné klíče pro účty rozhraní API MongoDB se liší od s účty SQL API, kde není nutné zadat znak lomítka (/) před název pole. 
 
 ```
 db.users.createIndex( { firstName: 1, lastName: 1, email: 1 }, { unique: true } )

@@ -10,16 +10,16 @@ ms.topic: article
 ms.date: 10/12/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: b6fef23b3624703305a13b205b588c83dd135764
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: f57a5a2413103ddcf7484f3b1fc5b4170b7bdc98
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50094734"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50412852"
 ---
 # <a name="azure-ad-connectconfigure-ad-ds-connector-account-permissions"></a>Azure AD Connect: Konfigurace oprávnění účtu AD DS konektoru 
 
-Nový modul prostředí PowerShell s názvem ADSyncConfig.psm1 byla zavedena v systémech sestavení 1.1.880.0 (vydané spolu. srpna 2018), který obsahuje sadu rutin, které vám pomohou nakonfigurovat správné oprávnění služby Active Directory pro vaše nasazení služby Azure AD Connect. 
+Nový modul prostředí PowerShell s názvem [ADSyncConfig.psm1](reference-connect-adsyncconfig.md) byla zavedena v systému sestavení 1.1.880.0 (vydané spolu. srpna 2018), který obsahuje sadu rutin, které vám pomohou nakonfigurovat správné oprávnění služby Active Directory pro vaši službu Azure AD Připojení nasazení. 
 
 ## <a name="overview"></a>Přehled 
 Následující rutiny prostředí PowerShell slouží k nastavení oprávnění služby Active Directory účtu AD DS konektor pro každé funkce, můžete předstírat, že chcete povolit ve službě Azure AD Connect. Pokud chcete zabránit případné problémy, připravte si oprávnění služby Active Directory předem pokaždé, když chcete nainstalovat Azure AD Connect s použitím vlastní doménový účet pro připojení k doménové struktuře. Tento modul ADSyncConfig lze také nakonfigurovat oprávnění po nasazení služby Azure AD Connect.
@@ -49,7 +49,8 @@ Install-WindowsFeature RSAT-AD-Tools
 ```
 ![Konfigurace](media/how-to-connect-configure-ad-ds-connector-account/configure2.png)
 
->! [POZNÁMKA] Můžete také zkopírovat soubor **C:\Program Files\Microsoft Azure Active Directory Connect\AdSyncConfig\ADSyncConfig.psm1** k řadiči domény, která už má pro vzdálenou správu serveru pro službu AD DS nainstalovaná a používat tento modul prostředí PowerShell z něj.
+>[!NOTE]
+>Můžete také zkopírovat soubor **C:\Program Files\Microsoft Azure Active Directory Connect\AdSyncConfig\ADSyncConfig.psm1** k řadiči domény, která už má pro vzdálenou správu serveru pro službu AD DS nainstalovaná a používat tento modul prostředí PowerShell z něj.
 
 Pokud chcete začít používat ADSyncConfig budete muset načíst modul v okně Windows Powershellu: 
 
@@ -118,7 +119,7 @@ Set-ADSyncBasicReadPermissions -ADConnectorAccountName <String> -ADConnectorAcco
 ```
 
 
-nebo; 
+Nebo; 
 
 ``` powershell
 Set-ADSyncBasicReadPermissions -ADConnectorAccountDN <String> [-ADobjectDN <String>] [<CommonParameters>] 
@@ -146,7 +147,7 @@ Pokud chcete nastavit oprávnění pro účet konektoru služby AD DS při použ
 Set-ADSyncMsDsConsistencyGuidPermissions -ADConnectorAccountName <String> -ADConnectorAccountDomain <String> [-SkipAdminSdHolders] [<CommonParameters>] 
 ```
 
-nebo; 
+Nebo; 
 
 ``` powershell
 Set-ADSyncMsDsConsistencyGuidPermissions -ADConnectorAccountDN <String> [-ADobjectDN <String>] [<CommonParameters>] 
@@ -166,7 +167,7 @@ Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountName <String> -ADConnec
 ```
 
 
-nebo; 
+Nebo; 
 
 ``` powershell
 Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountDN <String> [<CommonParameters>] 
@@ -187,7 +188,7 @@ Set-ADSyncPasswordWritebackPermissions -ADConnectorAccountName <String> -ADConne
 ```
 
 
-nebo;
+Nebo;
 
 ``` powershell
 Set-ADSyncPasswordWritebackPermissions -ADConnectorAccountDN <String> [-ADobjectDN <String>] [<CommonParameters>] 
@@ -206,7 +207,7 @@ Pokud chcete nastavit oprávnění pro účet konektoru služby AD DS při použ
 ``` powershell
 Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountName <String> -ADConnectorAccountDomain <String> [-SkipAdminSdHolders] [<CommonParameters>] 
 ```
-nebo; 
+Nebo; 
 
 ``` powershell
 Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountDN <String> [-ADobjectDN <String>] [<CommonParameters>]
@@ -228,7 +229,7 @@ Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountName <String> -ADC
 ```
 
 
-nebo; 
+Nebo; 
 
 ``` powershell
 Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountDN <String> [-ADobjectDN <String>] [<CommonParameters>] 
@@ -252,7 +253,7 @@ Set-ADSyncExchangeMailPublicFolderPermissions -ADConnectorAccountName <String> -
 ```
 
 
-nebo; 
+Nebo; 
 
 ``` powershell
 Set-ADSyncExchangeMailPublicFolderPermissions -ADConnectorAccountDN <String> [-ADobjectDN <String>] [<CommonParameters>] 
@@ -301,3 +302,5 @@ Tato rutina se nastavit následující oprávnění:
 - [Azure AD Connect: Účty a oprávnění](reference-connect-accounts-permissions.md)
 - [Expresní instalace](how-to-connect-install-express.md)
 - [Vlastní instalace](how-to-connect-install-custom.md)
+- [Odkaz na ADSyncConfig](reference-connect-adsyncconfig.md)
+

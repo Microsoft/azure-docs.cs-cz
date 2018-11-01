@@ -5,7 +5,7 @@ services: virtual-machine-scale-sets
 ms.custom: H1Hack27Feb2017
 ms.workload: na
 documentationcenter: ''
-author: gatneil
+author: mayanknayar
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -15,13 +15,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/13/2017
-ms.author: negat
-ms.openlocfilehash: f0bd57836d6d54fe3e3460af27ebea4cffe3ee40
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.author: manayar
+ms.openlocfilehash: 3d472aeaae7e7f02eba58aadea1df042d6c0f27b
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42443928"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50741418"
 ---
 # <a name="how-to-create-a-virtual-machine-scale-set-with-visual-studio"></a>Vytvoření Škálovací sady virtuálních počítačů pomocí sady Visual Studio
 V tomto článku se dozvíte, jak nasadit Azure Virtual Machine Scale Sets s použitím nasazení skupiny prostředků Visual Studio.

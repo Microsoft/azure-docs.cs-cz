@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/11/2018
+ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 6edcf9ae8135de8bf82d819e50d3d336b641166e
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 015d5bcdb7ab4e4e666471163bb027c74c9bb377
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "34068569"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50418020"
 ---
 # <a name="microsoft-azure-new-support-request-file-upload-utility-guidelines"></a>Pokyny pro nahrávání souborů nástroj žádosti novou podporu Microsoft Azure
 Pokud jste [vytvořit žádost o podporu](https://portal.azure.com/#create/Microsoft.Support), nástroj pro nahrávání souborů můžete snadno odeslat diagnostické soubory nebo jiné soubory, které si myslíte, že jsou relevantní pro incident.  

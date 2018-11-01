@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 44e71c8e9256bdfd3a55cdd21a6658bccfd5daad
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 4fec410db81077fd454f29d3359dc3728aad4bff
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49987519"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50739613"
 ---
 # <a name="fan-outfan-in-scenario-in-durable-functions---cloud-backup-example"></a>FAN odesílací/fan v scénář v Durable Functions – cloudové zálohování příklad
 
@@ -131,7 +131,7 @@ Content-Length: 20
 ```
 
 > [!NOTE]
-> `HttpStart` Funkce, která jsou volání funguje jenom s obsahem ve formátu JSON. Z tohoto důvodu `Content-Type: application/json` vyžaduje se hlavička a cesta k adresáři je zakódovaný jako řetězec formátu JSON.
+> `HttpStart` Funkce, která jsou volání funguje jenom s obsahem ve formátu JSON. Z tohoto důvodu `Content-Type: application/json` vyžaduje se hlavička a cesta k adresáři je zakódovaný jako řetězec formátu JSON. Kromě toho HTTP fragment kódu předpokládá, existuje položka v `host.json` souboru, který odebere výchozí `api/` předpony ze všech URL funkce triggeru HTTP. Značky můžete najít v této konfiguraci `host.json` soubor ve vzorcích.
 
 Požadavek na tomto HTTP aktivační události `E2_BackupSiteContent` orchestrator a předává řetězec `D:\home\LogFiles` jako parametr. Odpověď obsahuje odkaz na načíst stav operace zálohování:
 

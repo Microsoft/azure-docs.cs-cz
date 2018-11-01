@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 7/11/2018
 ms.author: trinadhk
-ms.openlocfilehash: 855b75652fca421df12766f7711152d1e3ca2aeb
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: f293f642db2bd526e761ff570ce97a33845808b7
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39009249"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50412801"
 ---
 # <a name="use-role-based-access-control-to-manage-azure-backup-recovery-points"></a>Použití řízení přístupu na základě rolí ke správě body obnovení Azure Backup
 Řízení přístupu na základě role v Azure umožňuje přesnou správu přístupu. Pomocí řízení přístupu na základě role můžete povinnosti v rámci týmu oddělit a udělit uživatelům jenom takový přístup, který potřebují k výkonu své práce.
@@ -34,19 +34,29 @@ Pokud potřebujete definovat vlastní role pro ještě větší kontrolu, nalezn
 ## <a name="mapping-backup-built-in-roles-to-backup-management-actions"></a>Mapování zálohování předdefinované role pro akce správy zálohování
 Následující tabulka udává akce správy zálohování a odpovídající minimální role RBAC potřebná k provedení této operace.
 
-| Operace správy | Vyžaduje minimální role RBAC |
-| --- | --- |
-| Vytvoření trezoru služby Recovery Services | Přispěvatelem skupiny prostředků trezoru |
-| Povolit zálohování virtuálních počítačů Azure | Operátor zálohování, které jsou definovány v oboru skupiny prostředků obsahující trezor, Přispěvatel virtuálních počítačů na virtuálních počítačích |
-| Zálohování virtuálního počítače na vyžádání | Operátor zálohování |
-| Obnovení virtuálního počítače | Backup Operators, Přispěvatel skupiny prostředků, ve kterém se bude virtuální počítač nasadí, přečtěte si o virtuální sítě a připojte se k vybrané podsíti |
-| Obnovit disky jednotlivých souborů ze záloh virtuálních počítačů | Backup Operators, Přispěvatel virtuálních počítačů na virtuálních počítačích |
-| Vytvoření zásady zálohování pro zálohování virtuálních počítačů Azure | Přispěvatel zálohování |
-| Upravit zásady zálohování, zálohování virtuálních počítačů Azure | Přispěvatel zálohování |
-| Odstraňování zásady zálohování, zálohování virtuálních počítačů Azure | Přispěvatel zálohování |
-| Zastavit zálohování (při zachování dat nebo odstranit data) zálohování virtuálních počítačů | Přispěvatel zálohování |
-| Registr systému Windows na místním serveru/klienta/SCDPM nebo Azure Backup serveru | Operátor zálohování |
-| Odstranit registrovaný v místním systému Windows Server/klient/SCDPM nebo serveru Azure Backup | Přispěvatel zálohování |
+| Operace správy | Vyžaduje minimální role RBAC | Rozsah, požadováno |
+| --- | --- | --- |
+| Vytvoření trezoru služby Recovery Services | Přispěvatel | Skupina prostředků obsahující trezor |
+| Povolit zálohování virtuálních počítačů Azure | Operátor zálohování | Skupina prostředků obsahující trezor |
+| | Přispěvatel virtuálních počítačů | Prostředek virtuálního počítače |
+| Zálohování virtuálního počítače na vyžádání | Operátor zálohování | Prostředek trezoru pro obnovení |
+| Obnovení virtuálního počítače | Operátor zálohování | Skupina prostředků, ve kterém bude nasazen virtuální počítač |
+| | Přispěvatel virtuálních počítačů | Skupina prostředků, ve kterém bude nasazen virtuální počítač |
+| Obnovit zálohování nespravovaných disků virtuálních počítačů | Operátor zálohování | Prostředek trezoru pro obnovení |
+| | Přispěvatel virtuálních počítačů | Prostředek virtuálního počítače |
+| | Přispěvatel účtů úložiště | Prostředek účtu úložiště |
+| Obnovení spravovaných disků ze záloh virtuálních počítačů | Operátor zálohování | Prostředek trezoru pro obnovení |
+| | Přispěvatel virtuálních počítačů | Prostředek virtuálního počítače |
+| | Přispěvatel účtů úložiště | Prostředek účtu úložiště |
+| | Přispěvatel | Skupina prostředků, do kterého se obnoví spravovaného disku |
+| Obnovení jednotlivých souborů ze záloh virtuálních počítačů | Operátor zálohování | Prostředek trezoru pro obnovení |
+| | Přispěvatel virtuálních počítačů | Prostředek virtuálního počítače |
+| Vytvoření zásady zálohování pro zálohování virtuálních počítačů Azure | Přispěvatel zálohování | Prostředek trezoru pro obnovení |
+| Upravit zásady zálohování, zálohování virtuálních počítačů Azure | Přispěvatel zálohování | Prostředek trezoru pro obnovení |
+| Odstraňování zásady zálohování, zálohování virtuálních počítačů Azure | Přispěvatel zálohování | Prostředek trezoru pro obnovení |
+| Zastavit zálohování (při zachování dat nebo odstranit data) zálohování virtuálních počítačů | Přispěvatel zálohování | Prostředek trezoru pro obnovení |
+| Registr systému Windows na místním serveru/klienta/SCDPM nebo Azure Backup serveru | Operátor zálohování | Prostředek trezoru pro obnovení |
+| Odstranit registrovaný v místním systému Windows Server/klient/SCDPM nebo serveru Azure Backup | Přispěvatel zálohování | Prostředek trezoru pro obnovení |
 
 ## <a name="next-steps"></a>Další postup
 * [Řízení přístupu na základě rolí](../role-based-access-control/role-assignments-portal.md): Začínáme s RBAC na webu Azure Portal.

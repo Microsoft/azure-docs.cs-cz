@@ -4,7 +4,7 @@ description: Další informace o aspektech návrhu pro Škálovací sady virtuá
 keywords: virtuální počítač s linuxem, škálovacích sad virtuálních počítačů
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: gatneil
+author: mayanknayar
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
@@ -15,13 +15,13 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2017
-ms.author: negat
-ms.openlocfilehash: e03016b80b0a7043a72e55b6c8b68b67b55283b1
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.author: manayar
+ms.openlocfilehash: 1c99b7a3eecdd7938b4813647afb9e48fb0173a0
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49388122"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50739273"
 ---
 # <a name="design-considerations-for-scale-sets"></a>Aspekty návrhu pro Škálovací sady
 Tento článek popisuje aspekty návrhu pro Škálovací sady virtuálních počítačů. Informace o tom, co jsou Škálovací sady virtuálních počítačů, [přehled škálovacích sad virtuálních počítačů](virtual-machine-scale-sets-overview.md).

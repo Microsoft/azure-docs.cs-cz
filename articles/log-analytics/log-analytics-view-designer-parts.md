@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 8cc654fca8e645253ffc79ef808075bdbe887530
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 31ee14369cc3f1c03d13c59e1239aa567bce3552
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48043290"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50419771"
 ---
 # <a name="reference-guide-to-view-designer-visualization-parts-in-log-analytics"></a>Referenční příručka k části vizualizace návrháře zobrazení v Log Analytics
 Pomocí návrháře zobrazení v Azure Log Analytics můžete vytvořit vlastní zobrazení na webu Azure Portal, který k dispozici různé vizualizace dat z pracovního prostoru Log Analytics. Tento článek je referenční příručka k nastavení části vizualizace, které jsou k dispozici do vlastních zobrazení.
@@ -50,7 +50,7 @@ Následující části popisují typy dlaždic a jejich vlastnosti podrobně.
 ## <a name="list-of-queries-part"></a>Seznam dotazů část
 Seznam dotazů části zobrazí seznam dotazy prohledávání protokolu. Můžete vybrat každý dotaz k zobrazení jeho výsledky. Ve výchozím nastavení obsahuje zobrazení pomocí jediného dotazu a můžete vybrat **+ dotaz** přidáte další dotazy.
 
-![Seznam dotazů zobrazení](media/log-analytics-view-designer/view-list-queries.png)
+![Seznam dotazů zobrazení](media/log-analytics-view-designer-parts/view-list-queries.png)
 
 | Nastavení | Popis |
 |:--- |:--- |
@@ -66,7 +66,7 @@ Seznam dotazů části zobrazí seznam dotazy prohledávání protokolu. Můžet
 ## <a name="number-and-list-part"></a>Část číslo a seznam
 Záhlaví zobrazí jedno číslo, který zobrazuje počet záznamů z protokolu vyhledávacího dotazu. V seznamu zobrazí nejlepších deset výsledků z dotazu, s grafem, který určuje relativní hodnotu číselný sloupec nebo jeho změn v průběhu času.
 
-![Seznam dotazů zobrazení](media/log-analytics-view-designer/view-number-list.png)
+![Seznam dotazů zobrazení](media/log-analytics-view-designer-parts/view-number-list.png)
 
 | Nastavení | Popis |
 |:--- |:--- |
@@ -95,7 +95,7 @@ Záhlaví zobrazí jedno číslo, který zobrazuje počet záznamů z protokolu 
 ## <a name="two-numbers-and-list-part"></a>Dvě čísla a další část seznamu
 Záhlaví má dvě čísla, které zobrazují počet záznamů v samostatném protokolu vyhledávací dotazy. V seznamu zobrazí nejlepších deset výsledků z dotazu, s grafem, který určuje relativní hodnotu číselný sloupec nebo jeho změn v průběhu času.
 
-![Dvě čísla a zobrazení seznamu](media/log-analytics-view-designer/view-two-numbers-list.png)
+![Dvě čísla a zobrazení seznamu](media/log-analytics-view-designer-parts/view-two-numbers-list.png)
 
 | Nastavení | Popis |
 |:--- |:--- |
@@ -126,7 +126,7 @@ Záhlaví má dvě čísla, které zobrazují počet záznamů v samostatném pr
 ## <a name="donut-and-list-part"></a>Prstenec a seznam součástí
 Záhlaví zobrazí jedno číslo, které shrnuje hodnotu sloupce v dotazu protokolu. Prstencový graficky zobrazuje výsledky z prvních tří záznamů.
 
-![Prstenec a seznam zobrazení](media/log-analytics-view-designer/view-donut-list.png)
+![Prstenec a seznam zobrazení](media/log-analytics-view-designer-parts/view-donut-list.png)
 
 | Nastavení | Popis |
 |:--- |:--- |
@@ -167,7 +167,7 @@ Záhlaví zobrazí jedno číslo, které shrnuje hodnotu sloupce v dotazu protok
 ## <a name="two-timelines-and-list-part"></a>Dvě části časové osy a seznam
 Záhlaví zobrazí výsledků dvou dotazů na protokoly časem jako sloupcové grafy s popiskem, která zobrazuje jedno číslo, které shrnuje hodnotu sloupce v dotazu protokolu. V seznamu zobrazí nejlepších deset výsledků z dotazu, s grafem, který určuje relativní hodnotu číselný sloupec nebo jeho změn v průběhu času.
 
-![Dvě časové osy a seznam zobrazení](media/log-analytics-view-designer/view-two-timelines-list.png)
+![Dvě časové osy a seznam zobrazení](media/log-analytics-view-designer-parts/view-two-timelines-list.png)
 
 | Nastavení | Popis |
 |:--- |:--- |
@@ -199,7 +199,7 @@ Záhlaví zobrazí výsledků dvou dotazů na protokoly časem jako sloupcové g
 ## <a name="information-part"></a>Část věnovaná informacím
 Záhlaví obsahuje statický text a nepovinný odkaz. V seznamu zobrazí jednu nebo více položek s statické nadpis a text.
 
-![Zobrazení informací](media/log-analytics-view-designer/view-information.png)
+![Zobrazení informací](media/log-analytics-view-designer-parts/view-information.png)
 
 | Nastavení | Popis |
 |:--- |:--- |
@@ -220,7 +220,7 @@ Záhlaví obsahuje statický text a nepovinný odkaz. V seznamu zobrazí jednu n
 ## <a name="line-chart-callout-and-list-part"></a>Spojnicový graf, popisek a seznam součástí
 Záhlaví zobrazuje spojnicový graf s několika řadami z dotazu protokolu za čas a popisek s hodnoty souhrnu. V seznamu zobrazí nejlepších deset výsledků z dotazu, s grafem, který určuje relativní hodnotu číselný sloupec nebo jeho změn v průběhu času.
 
-![Spojnicový graf, popisek a zobrazení seznamu](media/log-analytics-view-designer/view-line-chart-callout-list.png)
+![Spojnicový graf, popisek a zobrazení seznamu](media/log-analytics-view-designer-parts/view-line-chart-callout-list.png)
 
 | Nastavení | Popis |
 |:--- |:--- |
@@ -260,7 +260,7 @@ Záhlaví zobrazuje spojnicový graf s několika řadami z dotazu protokolu za �
 ## <a name="line-chart-and-list-part"></a>Část řádku graf a seznam
 Záhlaví zobrazuje spojnicový graf s několika řadami z dotazu protokolu v čase. V seznamu zobrazí nejlepších deset výsledků z dotazu, s grafem, který určuje relativní hodnotu číselný sloupec nebo jeho změn v průběhu času.
 
-![Řádky – zobrazení grafu a seznamu](media/log-analytics-view-designer/view-line-chart-callout-list.png)
+![Řádky – zobrazení grafu a seznamu](media/log-analytics-view-designer-parts/view-line-chart-callout-list.png)
 
 | Nastavení | Popis |
 |:--- |:--- |
@@ -296,7 +296,7 @@ Záhlaví zobrazuje spojnicový graf s několika řadami z dotazu protokolu v č
 ## <a name="stack-of-line-charts-part"></a>Zásobník část řádku grafy
 Zásobník spojnicový graf zobrazuje tři samostatné spojnicových grafů s více řadami z dotazu protokolu v průběhu času, jak je znázorněno zde:
 
-![Zásobník spojnicových grafů](media/log-analytics-view-designer/view-stack-line-charts.png)
+![Zásobník spojnicových grafů](media/log-analytics-view-designer-parts/view-stack-line-charts.png)
 
 | Nastavení | Popis |
 |:--- |:--- |

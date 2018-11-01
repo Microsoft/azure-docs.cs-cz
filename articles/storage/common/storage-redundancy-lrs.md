@@ -5,15 +5,15 @@ services: storage
 author: tolandmike
 ms.service: storage
 ms.topic: article
-ms.date: 03/20/2018
+ms.date: 10/24/2018
 ms.author: jeking
 ms.component: common
-ms.openlocfilehash: 743c3ea89a39e6735ca8b7cbd1c3384c67c13642
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 101c7a9bdcb5337f06bb3e2464ecefeb5564d4f3
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39521379"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50739953"
 ---
 # <a name="locally-redundant-storage-lrs-low-cost-data-redundancy-for-azure-storage"></a>Místně redundantní úložiště (LRS): redundanci dat s nízkými náklady pro službu Azure Storage
 

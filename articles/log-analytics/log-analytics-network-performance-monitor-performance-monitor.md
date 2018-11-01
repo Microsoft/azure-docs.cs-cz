@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
 ms.component: ''
-ms.openlocfilehash: 1254afc1ad1c513c18d565be8a6543a6ee0ae94b
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 17a15ca00d7343064bde84860de91b62ff136cfe
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48040587"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50414113"
 ---
 # <a name="network-performance-monitor-solution-performance-monitoring"></a>Network Performance Monitor solution: sledování výkonu
 
@@ -33,12 +33,12 @@ Funkce monitorování výkonu v [Network Performance Monitor](log-analytics-netw
 - Monitorování stavu sítě bez nutnosti využití SNMP.
 
 
-![Sledování výkonu sítě](media/log-analytics-network-performance-monitor/npm-performance-monitor.png)
+![Sledování výkonu sítě](media/log-analytics-network-performance-monitor-performance-monitor/npm-performance-monitor.png)
 
 ## <a name="configuration"></a>Konfigurace
 Chcete-li spustit nástroj konfigurace pro sledování výkonu sítě, otevřete [řešení Network Performance Monitor](log-analytics-network-performance-monitor.md)a vyberte **konfigurovat**.
 
-![Konfigurace Network Performance Monitor](media/log-analytics-network-performance-monitor/npm-configure-button.png)
+![Konfigurace Network Performance Monitor](media/log-analytics-network-performance-monitor-performance-monitor/npm-configure-button.png)
 
 ### <a name="create-new-networks"></a>Vytváření nových sítí
 
@@ -120,21 +120,21 @@ Na stránce procházení ukazuje, že **DMZ2 DMZ1** síťového propojení není
 
 Na stránce procházení podrobností se zobrazí všechna propojení podsítí ve **DMZ2 DMZ1** síťové propojení. Latence pro oba odkazy na podsítě, překročí prahovou hodnotu, takže síťového propojení není v pořádku. Také můžete zobrazit trendy latence z obou odkazy na podsítě. Použití v grafu a zaměřte se na požadovaný časový rozsah ovládacím prvku Výběr času. Zobrazí se čas při dosažení latence jeho ve špičce. Hledání protokolů později pro toto časové období k prošetření problému. Vyberte **zobrazit odkazy na uzly** k podrobnostem. 
  
- ![Stránka odkazy podsítě.](media/log-analytics-network-performance-monitor/subnetwork-links.png) 
+ ![Stránka odkazy podsítě.](media/log-analytics-network-performance-monitor-performance-monitor/subnetwork-links.png) 
 
 Podobně jako na předchozí stránku, na stránce procházení pro odkaz na konkrétní podsíť uvedeny odkazy na jeho základní uzel. Můžete provádět akce podobné tady, jako jste to udělali v předchozím kroku. Vyberte **zobrazení topologie** zobrazíte topologie mezi dvěma uzly. 
  
- ![Stránka uzel propojení](media/log-analytics-network-performance-monitor/node-links.png) 
+ ![Stránka uzel propojení](media/log-analytics-network-performance-monitor-performance-monitor/node-links.png) 
 
 Všechny cesty mezi dvěma vybrané uzly jsou zobrazeny na mapě topologie. Můžete vizualizovat hop-by-hop topologii tras mezi dvěma uzly na mapě topologie. Poskytuje přehledné informace o tom, kolik tras mezi dva uzly a jaká cesty trvat datových paketů. Kritické body výkonu sítě se zobrazí červeně. K vyhledání připojení k vadné síti nebo chybného síťového zařízení, podívejte se na červené prvků na mapě topologie. 
 
- ![Řídicí panel topologie pomocí mapy topologie](media/log-analytics-network-performance-monitor/topology-dashboard.png) 
+ ![Řídicí panel topologie pomocí mapy topologie](media/log-analytics-network-performance-monitor-performance-monitor/topology-dashboard.png) 
 
 Můžete zkontrolovat ztrátu, latenci a počet segmentů směrování v každé cesty v **akce** podokně. Chcete-li zobrazit podrobnosti cesty není v pořádku pomocí posuvníku. Pomocí filtrů vybrat cesty s není v pořádku segment směrování tak, aby se vykreslí topologie pro pouze vybrané cesty. Chcete-li zvětšit nebo zmenšit mapu, použijte kolečko myši. 
 
 Na následujícím obrázku hlavní příčinu problémových oblastí pro konkrétní části sítě zobrazí v red cesty a segmentů směrování. Vyberte uzel na mapě topologie zobrazíte vlastnosti uzlu, který obsahuje plně kvalifikovaný název domény a IP adresu. Výběr hop zobrazuje IP adresu směrování. 
  
-![Mapu s vybrané vlastnosti uzlu](media/log-analytics-network-performance-monitor/topology-dashboard-root-cause.png) 
+![Mapu s vybrané vlastnosti uzlu](media/log-analytics-network-performance-monitor-performance-monitor/topology-dashboard-root-cause.png) 
 
 ## <a name="next-steps"></a>Další postup
 [Hledání protokolů](log-analytics-log-searches.md) zobrazíte podrobné sítě výkonu datových záznamů.

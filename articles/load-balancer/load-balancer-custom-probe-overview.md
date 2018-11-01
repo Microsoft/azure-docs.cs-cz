@@ -4,10 +4,6 @@ description: Informace o používání sond stavu k monitorování instancí za 
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: timlt
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 46b152c5-6a27-4bfc-bea3-05de9ce06a57
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -15,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/04/2018
 ms.author: kumud
-ms.openlocfilehash: ecc33fc6078dac4affe3942f1be7e039ae9e9e70
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 134c7ab8156f3acb558e8b8a2da343961a6aad4e
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43695421"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50419329"
 ---
 # <a name="load-balancer-health-probes"></a>Sondy stavu nástroje pro vyrovnávání zatížení
 
@@ -95,7 +91,7 @@ Pokud používáte cloudové služby a webovými rolemi, které používají w3w
 
 HTTP / HTTPS testu není úspěšné při:
 * Koncový bod vrátí kód odpovědi HTTP než 200 (například 403, 404 nebo 500). Sonda stavu tato akce označí okamžitě. 
-* Koncový bod nereaguje vůbec během do 31. druhý časový limit. V závislosti na tom, která je nastavena hodnota časového limitu žádosti více testu je možné dát nezodpovězené před sondy označeno jako neběží. (to znamená, že před SuccessFailCount testy jsou odesílány).
+* Koncový bod během časového limitu 31 druhé nereaguje vůbec. V závislosti na tom, která je nastavena hodnota časového limitu žádosti více testu je možné dát nezodpovězené před sondy označeno jako neběží. (to znamená, že před SuccessFailCount testy jsou odesílány).
 * Koncový bod uzavře připojení prostřednictvím protokolu TCP resetování.
 
 #### <a name="resource-manager-templates"></a>Šablony Resource Manageru
@@ -126,7 +122,7 @@ HTTP / HTTPS testu není úspěšné při:
 
 ### <a name="guestagent"></a>Test agenta hosta (pouze Klasický model)
 
-Role cloudové služby (role pracovního procesu a webové role) hostovaného agenta použít pro test monitorování ve výchozím nastavení.   Měli byste zvážit to možnost poslední možnost.  Vždy byste měli definovat sondy stavu explicitně s TCP nebo aplikace sondu protokolu HTTP. Test agenta hosta není co nejúčinnější explicitně definované sondy pro většinu scénářů aplikace.  
+Role cloudové služby (role pracovního procesu a webové role) hostovaného agenta použít pro test monitorování ve výchozím nastavení.   Měli byste zvážit to možnost poslední možnost.  Vždy byste měli definovat sondy stavu explicitně s TCP nebo sondu protokolu HTTP. Test agenta hosta není co nejúčinnější explicitně definované sondy pro většinu scénářů aplikace.  
 
 Test agenta hosta je kontrolu agent hosta ve virtuálním počítači. Potom naslouchá a jako odpověď vrátí odpověď HTTP 200 OK pouze v případě, že instance je ve stavu Připraveno. (Ostatní stavy jsou zaneprázdněn recyklaci nebo ukončení).
 
@@ -163,11 +159,11 @@ Pravidla Vyrovnávání zatížení definoval sondu stavu jednoho příslušnýc
 
 ### <a name="tcp-connections"></a>Připojení TCP
 
-Nové připojení TCP se úspěšně instance back-end, který je v pořádku a má hostovaný operační systém a aplikace nemůže přijmout nový tok.
+Nové připojení TCP se úspěšně back-end instance, která je v pořádku a má hostovaný operační systém a aplikace nemůže přijmout nový tok.
 
 Pokud sonda stavu back-end instance selže, pokračovat navázané připojení TCP do této instance back-endu.
 
-Pokud selžou i všechny testy v rámci všech instancí ve fondu back-endu, žádné nové toky se odešlou do back-endový fond. Load balancer úrovně Standard vám umožní zavedené Velkoobjemové toky, abyste mohli pokračovat.  Load balancer úrovně Basic se ukončí všechny existující Velkoobjemové toky na back-endový fond.
+Pokud selžou i všechny testy v rámci všech instancí ve fondu back-endu, žádné nové toky se odešlou do back-endový fond. Load balancer úrovně Standard vám umožní zavedené Velkoobjemové toky, abyste mohli pokračovat.  Load balancer úrovně Basic se ukončí všechny stávající toky TCP na back-endový fond.
  
 Vzhledem k tomu, že tok je vždy mezi klientem a operačního systému hosta Virtuálního počítače, způsobí, že fond se všechny testy dolů front-endu, protože neexistuje žádná instance v dobrém stavu back-endu pro příjem toku nereaguje na otevřené pokusy o připojení TCP.
 

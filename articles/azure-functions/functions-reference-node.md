@@ -12,23 +12,24 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 10/26/2018
 ms.author: glenga
-ms.openlocfilehash: 470128344182cc6a06a378a0f4ab75b19e9a646e
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 1918ed664a79a46f25cfc5162a28b311bea29cd8
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50249772"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50740446"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Příručka pro vývojáře Azure Functions JavaScript
+
 Tato příručka obsahuje informace o složitými rozhraními vytváření Azure Functions s použitím jazyka JavaScript.
 
 Funkce jazyka JavaScript je exportovaná `function` , který se spustí při aktivaci ([aktivační události jsou nakonfigurované v function.json](functions-triggers-bindings.md)). První argument je předán každá funkce `context` objekt, který se používá pro příjem a odesílání vazby dat, protokolování a komunikaci s modulem runtime.
 
-Tento článek předpokládá, že jste si už přečetli [referenční informace pro vývojáře Azure Functions](functions-reference.md). Doporučuje se také, že jste postupovali podle kurzu v části "Šablon rychlý start" k [vytvoření první funkce](functions-create-first-function-vs-code.md).
+Tento článek předpokládá, že jste si už přečetli [referenční informace pro vývojáře Azure Functions](functions-reference.md). Také by se měla dokončit funkce Rychlý start k vytvoření první funkce pomocí [Visual Studio Code](functions-create-first-function-vs-code.md) nebo [na portálu](functions-create-first-azure-function.md).
 
 ## <a name="folder-structure"></a>struktura složek
 
-Struktura složek požadované pro projekt jazyka JavaScript vypadá takto. Všimněte si, že je možné změnit toto výchozí nastavení: najdete v článku [Soubor_skriptu](functions-reference-node.md#using-scriptfile) níže v části Další podrobnosti.
+Struktura složek požadované pro projekt jazyka JavaScript vypadá takto. Toto výchozí nastavení je možné změnit. Další informace najdete v tématu [Soubor_skriptu](#using-scriptfile) níže v části.
 
 ```
 FunctionsProject
@@ -71,7 +72,10 @@ module.exports = function(context, myTrigger, myInput, myOtherInput) {
 ### <a name="exporting-an-async-function"></a>Export asynchronní funkce
 Při použití jazyka JavaScript [ `async function` ](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/async_function) deklarace nebo v opačném případě vrací JavaScript [Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise) (není k dispozici s funkcí v1.x), není potřeba explicitně volat [ `context.done` ](#contextdone-method) zpětné volání pro signalizaci, že vaše funkce byla dokončena. Funkce skončí po dokončení asynchronní exportované funkce/Promise.
 
-Například je jednoduchou funkci, která zaznamená, že byla spuštěna a okamžitě se dokončí provádění.
+Při použití [ `async function` ](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/async_function) prohlášení nebo prostý JavaScript [příslibů](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise) ve verzi 2.x modul runtime služby Functions, není nutné explicitně volat [ `context.done` ](#contextdone-method) zpětné volání pro signalizaci, že vaše funkce byla dokončena. Funkce skončí po dokončení asynchronní exportované funkce/Promise. Pro funkce cílení na modul runtime verze 1.x, musí stále volat [ `context.done` ](#contextdone-method) až váš kód provádí.
+
+V následujícím příkladu je jednoduchou funkci, která zaznamená, že byla spuštěna a okamžitě se dokončí provádění.
+
 ``` javascript
 module.exports = async function (context) {
     context.log('JavaScript trigger function processed a request.');
@@ -81,6 +85,7 @@ module.exports = async function (context) {
 Při exportu asynchronní funkci, můžete taky nakonfigurovat výstupní vazbu provést `return` hodnotu. To se doporučuje, pokud máte jenom jeden výstupní vazbu.
 
 K přiřazení výstupu pomocí `return`, změnit `name` vlastnost `$return` v `function.json`.
+
 ```json
 {
   "type": "http",
@@ -88,7 +93,9 @@ K přiřazení výstupu pomocí `return`, změnit `name` vlastnost `$return` v `
   "name": "$return"
 }
 ```
-Kód vaší funkce JavaScript může vypadat takto:
+
+V takovém případě funkce by měl vypadat jako v následujícím příkladu:
+
 ```javascript
 module.exports = async function (context, req) {
     context.log('JavaScript HTTP trigger function processed a request.');
@@ -185,10 +192,11 @@ module.exports = function(ctx) {
 
 ### <a name="contextbindings-property"></a>Vlastnost Context.Bindings
 
-```
+```js
 context.bindings
 ```
-Vrátí objekt s názvem, který obsahuje všechny vstupní a výstupní data. Například následující definice vazby ve vaší *function.json* umožňuje přístup k obsahu z fronty z `context.bindings.myInput` a přiřaďte výstupy do fronty pomocí `context.bindings.myOutput`.
+
+Vrátí objekt s názvem, který obsahuje všechny vstupní a výstupní data. Například následující definice vazby ve vaší function.json umožňují přístup k obsahu z fronty z `context.bindings.myInput` a přiřaďte výstupy do fronty pomocí `context.bindings.myOutput`.
 
 ```json
 {
@@ -214,21 +222,23 @@ context.bindings.myOutput = {
         a_number: 1 };
 ```
 
-Všimněte si, že můžete také definujte výstupní vazby dat pomocí `context.done` metoda místo `context.binding` objektu (viz níže).
+Můžete také definujte výstupní vazby dat pomocí `context.done` metoda místo `context.binding` objektu (viz níže).
 
 ### <a name="contextbindingdata-property"></a>Vlastnost context.bindingData
 
-```
+```js
 context.bindingData
 ```
+
 Vrátí objekt s názvem, který obsahuje data volání triggeru metadata a funkce (`invocationId`, `sys.methodName`, `sys.utcNow`, `sys.randGuid`). Například aktivační událost metadat najdete v tomto [služby event hubs – příklad](functions-bindings-event-hubs.md#trigger---javascript-example).
 
 ### <a name="contextdone-method"></a>Context.Done – metoda
-```
+
+```js
 context.done([err],[propertyBag])
 ```
 
-Informuje o modulu runtime, který váš kód bylo dokončeno. Pokud funkce používá jazyk JavaScript [ `async function` ](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/async_function) deklarace (k dispozici prostřednictvím uzlu 8 + funkce verze 2.x), není potřeba použít `context.done()`. `context.done` Zpětného volání je implicitně volána.
+Umožňuje prostředí runtime vědět, že váš kód byla dokončena. Když vaše funkce používá [ `async function` ](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/async_function) prohlášení, není potřeba použít `context.done()`. `context.done` Zpětného volání je implicitně volána. Asynchronní funkce jsou k dispozici v Node 8 nebo novější verzi, která vyžaduje verzi 2.x modul runtime služby Functions.
 
 Pokud funkce není asynchronní funkci **musí volat** `context.done` informovat modul runtime dokončení vaší funkce. Časy spuštění, pokud není nalezena.
 
@@ -246,9 +256,10 @@ context.done(null, { myOutput: { text: 'hello there, world', noNumber: true }});
 
 ### <a name="contextlog-method"></a>Context.log – metoda  
 
-```
+```js
 context.log(message)
 ```
+
 Umožňuje zapisovat do protokolů streamování funkce na výchozí úrovni trasování. Na `context.log`, další protokolování metody jsou k dispozici, které vám umožňují zapisovat protokoly funkce na jiných úrovních trasování:
 
 
@@ -264,13 +275,14 @@ Následující příklad zapíše protokolu na úroveň trasování varování:
 ```javascript
 context.log.warn("Something has happened."); 
 ```
+
 Je možné [nakonfigurovat prahové hodnoty úroveň trasování pro protokolování](#configure-the-trace-level-for-console-logging) host.json souboru. Další informace o psaní protokolů, najdete v části [zápis trasování výstupy](#writing-trace-output-to-the-console) níže.
 
 Čtení [monitorování Azure Functions](functions-monitoring.md) získat další informace o zobrazení a dotazování protokolů funkce.
 
 ## <a name="writing-trace-output-to-the-console"></a>Zápisu výstupu sledování do konzoly 
 
-Ve službě Functions použijete `context.log` metody zapsat výstup trasování do konzoly. V v2.x funkce trasování výstupy prostřednictvím `console.log` jsou zachyceny na úrovni aplikace Function App. To znamená, že výstupem z `console.log` nejsou vázané na volání určité funkce a proto nejsou zobrazeny v protokolech určité funkce. , Však rozšířit do Application Insights. Funkce v1.x, nemůžete použít `console.log` k zápisu do konzoly. 
+Ve službě Functions použijete `context.log` metody zapsat výstup trasování do konzoly. V funkce v2.x výstup trasování pomocí `console.log` jsou zachyceny na úrovni aplikace Function App. To znamená, že výstupem z `console.log` nejsou vázané na volání určité funkce a proto nejsou zobrazeny v protokolech určité funkce. , Však rozšířit do Application Insights. Funkce v1.x, nemůžete použít `console.log` k zápisu do konzoly.
 
 Při volání `context.log()`, vaše zapíše se do konzoly na výchozí úrovni trasování, který je _informace_ úroveň trasování. Následující kód, zapíše do konzoly na úroveň trasování informace:
 
@@ -308,12 +320,12 @@ context.log('Request Headers = ', JSON.stringify(req.headers));
 
 ### <a name="configure-the-trace-level-for-console-logging"></a>Nakonfiguruje úroveň trasování pro protokolování konzoly
 
-Funkce umožňuje definovat prahové hodnoty úroveň trasování pro zápis do konzoly, která usnadňuje ovládací prvek, který způsob trasování jsou zapsány do konzoly z vašich funkcí. Chcete-li nastavení prahové hodnoty pro všechna trasování zapsána do konzoly, použijte `tracing.consoleLevel` vlastnost v souboru host.json. Toto nastavení platí pro všechny funkce v aplikaci function app. Následující příklad nastaví prahovou hodnotu trasování Zapnutí podrobného protokolování:
+Funkce umožňuje definovat prahové hodnoty úroveň trasování pro zápis do konzoly, která usnadňuje ovládací prvek, který způsob trasování jsou zapsány do konzoly z vaší funkce. Chcete-li nastavení prahové hodnoty pro všechna trasování zapsána do konzoly, použijte `tracing.consoleLevel` vlastnost v souboru host.json. Toto nastavení platí pro všechny funkce v aplikaci function app. Následující příklad nastaví prahovou hodnotu trasování Zapnutí podrobného protokolování:
 
 ```json
-{ 
-    "tracing": {      
-        "consoleLevel": "verbose"     
+{
+    "tracing": {
+        "consoleLevel": "verbose"
     }
 }  
 ```
@@ -468,13 +480,14 @@ Při místním spuštění, nastavení aplikace se načítají z [local.settings
 
 ## <a name="configure-function-entry-point"></a>Konfigurace funkce vstupního bodu
 
-`function.json` Vlastnosti `scriptFile` a `entryPoint` je možné nakonfigurovat umístění a název exportované funkce. Toto může být důležité, pokud je transpiled JavaScript.
+`function.json` Vlastnosti `scriptFile` a `entryPoint` je možné nakonfigurovat umístění a název exportované funkce. Tyto vlastnosti můžou být důležité, pokud JavaScript je transpiled.
 
 ### <a name="using-scriptfile"></a>použití `scriptFile`
 
 Ve výchozím nastavení, funkce jazyka JavaScript je spouštěna z `index.js`, soubor, který sdílí stejné nadřazený adresář jako odpovídající `function.json`.
 
-`scriptFile` je možné získat strukturu složek, který vypadá takto:
+`scriptFile` je možné získat strukturu složek, která vypadá jako v následujícím příkladu:
+
 ```
 FunctionApp
  | - host.json
@@ -488,6 +501,7 @@ FunctionApp
 ```
 
 `function.json` Pro `myNodeFunction` by měl obsahovat `scriptFile` vlastnosti odkazující na soubor s exportovanou funkci spustit.
+
 ```json
 {
   "scriptFile": "../lib/nodeFunction.js",
@@ -501,7 +515,8 @@ FunctionApp
 
 V `scriptFile` (nebo `index.js`), funkce musí být exportovány pomocí `module.exports` aby bylo možné najít a spustit. Ve výchozím nastavení, je funkce, která se spustí při aktivaci jenom export ze souboru, export s názvem `run`, nebo exportovat pojmenované `index`.
 
-To lze konfigurovat pomocí `entryPoint` v `function.json`:
+To lze konfigurovat pomocí `entryPoint` v `function.json`, jako v následujícím příkladu:
+
 ```json
 {
   "entryPoint": "logFoo",
@@ -511,13 +526,14 @@ To lze konfigurovat pomocí `entryPoint` v `function.json`:
 }
 ```
 
-V v2.x funkce, která podporuje `this` parametr uživatele funkcí, kód funkce by pak měl vypadat takto:
+V v2.x funkce, která podporuje `this` parametr uživatele funkcí, kód funkce potom možné jako v následujícím příkladu:
+
 ```javascript
 class MyObj {
     constructor() {
         this.foo = 1;
     };
-    
+
     function logFoo(context) { 
         context.log("Foo is " + this.foo); 
         context.done(); 
@@ -539,15 +555,17 @@ Při práci s funkcí jazyka JavaScript, mějte na paměti aspekty uvedené v n�
 Když vytvoříte aplikaci function app, který používá plán služby App Service, doporučujeme, že vyberete jeden virtuální procesor plán spíše než plán s více virtuálních procesorů. V současné době funkce jazyka JavaScript funkce efektivněji běží na virtuálních počítačích s jedním virtuálním procesorem a pomocí větší virtuální počítače nevytvoří vylepšení očekávaný výkon. Pokud je to nezbytné, můžete ručně škálovat přidáváním dalších instancí virtuálních počítačů na jeden virtuální procesor, nebo můžete povolit automatické škálování. Další informace najdete v tématu [ruční nebo automatické škálování počtu instancí](../monitoring-and-diagnostics/insights-how-to-scale.md?toc=%2fazure%2fapp-service-web%2ftoc.json).    
 
 ### <a name="typescript-and-coffeescript-support"></a>Podpora TypeScript a CoffeeScript
+
 Protože přímou podporu ještě neexistuje pro automatické kompilaci TypeScript nebo CoffeeScript prostřednictvím modulu runtime, musí být zpracována mimo modul runtime v době nasazení těchto podpory. 
 
 ### <a name="cold-start"></a>Studený Start
-Při spuštění vývoj Azure Functions bez serveru hostování modelu cold jsou realitou. "Studený start" odkazuje na skutečnost, že při spuštění aplikace Function App poprvé po určité době nečinnosti, trvá déle, se spustí. Pro funkce jazyka JavaScript s stromové struktury velké závislost zejména to může způsobit zpomalení hlavní. Aby bylo možné urychlí proces, pokud je to možné, [spouštět funkce jako soubor balíčku](run-functions-from-deployment-package.md). Mnoho metod nasazení účast v tomto modelu ve výchozím nastavení, ale pokud jste dochází k souvisejícím s úplným spuštěním velké a neběží ze souboru balíčku, může to být obrovské vylepšení.
+
+Při spuštění vývoj Azure Functions bez serveru hostování modelu cold jsou realitou. *Studený start* odkazuje na skutečnost, že při spuštění aplikace function app poprvé po určité době nečinnosti, trvá déle, se spustí. Pro funkce jazyka JavaScript s stromové struktury velké závislost zejména studený start můžou být významné. Ke zrychlení procesu studený start [spouštět funkce jako soubor balíčku](run-functions-from-deployment-package.md) Pokud je to možné. Mnoho metod nasazení pomocí spustit z balíčku modelu ve výchozím nastavení, ale pokud vnímají velké souvisejícím s úplným spuštěním a neběží tímto způsobem, tato změna může nabídnout výrazným vylepšením.
 
 ## <a name="next-steps"></a>Další postup
+
 Další informace najdete v následujících materiálech:
 
-* [Osvědčené postupy pro službu Azure Functions](functions-best-practices.md)
-* [Referenční informace pro vývojáře Azure Functions](functions-reference.md)
-* [Azure Functions aktivačními událostmi a vazbami](functions-triggers-bindings.md)
-
++ [Osvědčené postupy pro službu Azure Functions](functions-best-practices.md)
++ [Referenční informace pro vývojáře Azure Functions](functions-reference.md)
++ [Azure Functions aktivačními událostmi a vazbami](functions-triggers-bindings.md)

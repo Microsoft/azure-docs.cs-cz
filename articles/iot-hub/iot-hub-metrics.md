@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/25/2017
 ms.author: nberdy
-ms.openlocfilehash: f5da3759e97eaa2f89a393d55ae95eb6623fbc5d
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 34a561c5bb523b914f4b88dc8c6edc2bd00627d0
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50158313"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50741925"
 ---
 # <a name="understand-iot-hub-metrics"></a>Vysvětlení metriky služby IoT Hub
 
@@ -26,11 +26,15 @@ Ve výchozím nastavení jsou povolené metriky. Můžete zobrazit metriky služ
 
 2. Otevře se okno služby IoT hub. Odtud, klikněte na tlačítko **metriky**.
    
-    ![Do okna metrik pro službu IoT hub](./media/iot-hub-metrics/enable-metrics-1.png)
+    ![Snímek obrazovky ukazující, kde je možnost metriky v stránka s materiály pro službu IoT Hub](./media/iot-hub-metrics/enable-metrics-1.png)
 
-3. V okně metrik můžete zobrazit metriky pro službu IoT hub a vytváření vlastních zobrazení metriky. Můžete se rozhodnout poslat data metrik do účtu Azure Storage nebo koncový bod služby Event Hubs kliknutím **nastavení diagnostiky**.
+3. V okně metrik můžete zobrazit metriky pro službu IoT hub a vytváření vlastních zobrazení metriky. 
    
-    ![Nastavení diagnostiky](./media/iot-hub-metrics/enable-metrics-2.png)
+    ![Snímek obrazovky zobrazující stránku metriky pro službu IoT Hub](./media/iot-hub-metrics/enable-metrics-2.png)
+    
+4. Můžete se rozhodnout poslat data metrik do účtu Azure Storage nebo koncový bod služby Event Hubs kliknutím **nastavení diagnostiky**, pak **přidejte nastavení diagnostiky**
+
+   ![Snímek obrazovky ukazující, kde je tlačítko nastavení diagnostiky](./media/iot-hub-metrics/enable-metrics-3.png)
 
 ## <a name="iot-hub-metrics-and-how-to-use-them"></a>Metriky služby IoT Hub a způsob jejich použití
 

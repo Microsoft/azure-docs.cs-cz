@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 627c0ee5a2fab333b8a120867ab54ea76bc66823
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: fd183b5776f30b12d577a94be147eabef05d258f
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46976835"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50419363"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Vytvoření, zobrazení a Správa upozornění protokolů pomocí Azure monitoru  
 
@@ -34,26 +34,26 @@ Další podrobné je podrobný návod k použití protokolu výstrah pomocí roz
 
 ### <a name="create-a-log-alert-rule-with-the-azure-portal"></a>Vytváření pravidel upozornění protokolů pomocí webu Azure portal
 1. V [portál](https://portal.azure.com/)vyberte **monitorování** a v části monitorování – tlačítko **výstrahy**.  
-    ![Monitorování](./media/monitor-alerts-unified/AlertsPreviewMenu.png)
+    ![Monitorování](media/alert-log/AlertsPreviewMenu.png)
 
 1. Vyberte **nové pravidlo upozornění** pro vytvoření nového upozornění v Azure.
-    ![Přidat výstrahu](./media/monitor-alerts-unified/AlertsPreviewOption.png)
+    ![Přidat výstrahu](media/alert-log/AlertsPreviewOption.png)
 
 1. V části Vytvoření upozornění se zobrazí s tři části, který se skládá z: *Definujte podmínku upozornění*, *definujte podrobnosti o upozornění*, a *definujte skupinu akcí*.
 
-    ![Vytvořit pravidlo](./media/monitor-alerts-unified/AlertsPreviewAdd.png)
+    ![Vytvořit pravidlo](media/alert-log/AlertsPreviewAdd.png)
 
 1.  Definujte podmínku upozornění pomocí **vybrat prostředek** odkaz a zadáte cíl tak, že vyberete prostředku. Filtrovat podle výběru _předplatné_, _typ prostředku_a požadované _prostředků_. 
 
     >[!NOTE]
 
     > Pro vytvoření protokolu upozornění: ověření **protokolu** signálu je k dispozici pro vybraný prostředek, než budete pokračovat.
-    ![Vybrat prostředek](./media/monitor-alerts-unified/Alert-SelectResourceLog.png)
+    ![Vybrat prostředek](media/alert-log/Alert-SelectResourceLog.png)
 
  
 1. *Upozornění protokolů*: Zkontrolujte **typ prostředku** je zdrojem analytics jako *Log Analytics* nebo *Application Insights* a signalizuje, že typ jako **protokolu** , pak po příslušné **prostředků** je vybrán, klikněte na tlačítko *provádí*. Potom pomocí **přidat kritéria** tlačítko Zobrazit seznam možností signál k dispozici pro prostředek a v seznamu signál **prohledávání protokolů vlastní** možnosti zvolené protokolu monitorování službě, jako je *protokolu Analytics* nebo *Application Insights*.
 
-   ![Vyberte prostředek - hledání vlastního protokolu](./media/monitor-alerts-unified/AlertsPreviewResourceSelectionLog.png)
+   ![Vyberte prostředek - hledání vlastního protokolu](media/alert-log/AlertsPreviewResourceSelectionLog.png)
 
    > [!NOTE]
 
@@ -61,7 +61,7 @@ Další podrobné je podrobný návod k použití protokolu výstrah pomocí roz
 
 1.  *Upozornění protokolů*: Po výběru dotazu pro generování výstrah můžou zobrazovat v **vyhledávací dotaz** pole; Pokud syntaxe dotazu není správná, pole se zobrazí chyba červeně. Pokud je správná syntaxe dotazu – pro referenci historických dat stanovených dotazu se zobrazuje jako graf s možností pro upravit časový interval z posledních šest hodin na poslední týden.
 
- ![Konfigurace pravidla výstrahy](./media/monitor-alerts-unified/AlertsPreviewAlertLog.png)
+ ![Konfigurace pravidla výstrahy](media/alert-log/AlertsPreviewAlertLog.png)
 
  > [!NOTE]
 
@@ -69,7 +69,7 @@ Další podrobné je podrobný návod k použití protokolu výstrah pomocí roz
 
     >  Pro typ měření metriky upozornění protokolů pomocí Application insights, můžete zadat které určité proměnné k seskupení dat pomocí **agregační na** možnosti, jak je znázorněno níže:
 
-    ![agregace na možnost](./media/monitor-alerts-unified/aggregate-on.png)
+    ![agregace na možnost](media/alert-log/aggregate-on.png)
 
 1.  *Upozornění protokolů*: S vizualizací na místě, **Alert Logic** lze vybrat ze zobrazených možností podmínku, agregace a nakonec prahovou hodnotu. Nakonec zadejte v logice, čas pro zadanou podmínku pomocí **období** možnost. Spolu s jak často výstraha spouštět tak, že vyberete **frekvence**.
 Pro **upozornění protokolů** výstrahy může být založené na:
@@ -83,7 +83,7 @@ Pro **upozornění protokolů** výstrahy může být založené na:
 
     - **Potlačit výstrahy**: při zapnutí potlačení pro pravidla upozornění jsou zakázané akce pro pravidlo definované dobu, po vytvoření nové výstrahy. Toto pravidlo je pořád spuštěný a vytvoří záznamy upozornění, pokud je splněna kritéria. Umožňuje vám čas k opravě problému bez spuštění duplicitní akce.
 
-        ![Potlačit oznámení pro výstrahy protokolu](./media/monitor-alerts-unified/AlertsPreviewSuppress.png)
+        ![Potlačit oznámení pro výstrahy protokolu](media/alert-log/AlertsPreviewSuppress.png)
 
         > [!TIP]
         > Zadat potlačit výstrahy hodnotu větší než četnost upozornění, ujistěte se, že oznámení jsou ukončeny bez překrytí
@@ -98,19 +98,19 @@ Pro **upozornění protokolů** výstrahy může být založené na:
     - **E-mailová oznámení**: přepíše *předmět e-mailu* v e-mailu, prostřednictvím skupiny akcí; Pokud je jeden nebo více e-mailových akcí v uvedené skupiny akcí. Nelze změnit text e-mailu a toto pole je **není** e-mailových adres.
     - **Zahrnout vlastní datovou část Json**: přepíše webhooku JSON používá skupiny akcí; Pokud je jeden nebo více akcí webhooku v uvedené skupiny akcí. Uživatel může určit formát JSON, který má být použit pro všechny nakonfigurované ve skupině přidružené akce; webhooků Další informace o formátech webhooku, najdete v části [akce webhooku pro upozornění protokolu](monitor-alerts-unified-log-webhook.md). Možnost zobrazení Webhooku je k dispozici ke kontrole formátu pomocí ukázkových dat JSON.
 
-        ![Akce přepsání pro výstrahy protokolu](./media/monitor-alerts-unified/AlertsPreviewOverrideLog.png)
+        ![Akce přepsání pro výstrahy protokolu](media/alert-log/AlertsPreviewOverrideLog.png)
 
 
 1. Pokud všechna pole jsou platná a s zelené značky **vytvořit pravidlo upozornění** kliknutí na tlačítko a výstrahy se vytvoří ve službě Azure Monitor – výstrahy. Všechny výstrahy můžete zobrazit z výstrah řídicí panel.
 
-    ![Vytvoření pravidla](./media/monitor-alerts-unified/AlertsPreviewCreate.png)
+    ![Vytvoření pravidla](media/alert-log/AlertsPreviewCreate.png)
 
     Během několika minut upozornění je aktivní a aktivuje jak bylo popsáno dříve.
 
 Uživatelé můžou také finalizován jejich analytického dotazu v [protokoly analýzy stránky na webu Azure portal](../log-analytics/log-analytics-log-search-portals.md#log-analytics-page
 ) a poslat ho chcete vytvořit upozornění přes tlačítko "nastavit upozornění - pak postupujte podle pokynů v kroku 6 a vyšší v tomto kurzu výše.
 
- ![Log Analytics – nastavení upozornění](./media/monitor-alerts-unified/AlertsAnalyticsCreate.png)
+ ![Log Analytics – nastavení upozornění](media/alert-log/AlertsAnalyticsCreate.png)
 
 ### <a name="view--manage-log-alerts-in-azure-portal"></a>Zobrazení a Správa upozornění protokolů na webu Azure portal
 
@@ -122,7 +122,7 @@ Uživatelé můžou také finalizován jejich analytického dotazu v [protokoly 
 
 
 1. Vyberte **spravovat pravidla** tlačítko na horním panelu přejděte do části Správa pravidlo – kde jsou uvedeny všechny pravidla upozornění vytvořená; včetně výstrahy, které byly zakázány.
-    ![ Spravovat pravidla výstrah](./media/monitoring-activity-log-alerts-new-experience/manage-alert-rules.png)
+    ![ Spravovat pravidla výstrah](media/alert-log/manage-alert-rules.png)
 
 ## <a name="managing-log-alerts-using-azure-resource-template"></a>Správa výstrah protokolu pomocí šablony Azure Resource
 Protokol, který je možné vytvořit výstrahy aktuálně pomocí dvou různých šablon prostředků založené na jaké analytické platformy je možné na základě (to znamená) Log Analytics nebo Application Insights výstraha.

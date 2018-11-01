@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 45682caedaaaac1c9d335a45db64f16d713dfd7f
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 60ecc2bc1d700c223d4a52b05e3b9362241f3f82
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233493"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50414606"
 ---
 # <a name="extend-log-analytics-alerts-to-azure-alerts"></a>Rozšíření upozornění Log Analytics do Azure Alerts
 Dokud se nedávno, Azure Log Analytics zahrnuté vlastní výstrahy funkce, které by vás proaktivně upozorní podmínek založených na datech Log Analytics. Můžete spravovat pravidla výstrah ve službě portál Microsoft Operations Management Suite. Nové prostředí upozornění teď obsahuje integrované výstrahy napříč různými službami v Microsoft Azure. Tato možnost je dostupná jako **výstrahy** v části Azure Monitor na webu Azure Portal a podporuje upozornění z aktivity protokolů, metrik a protokolů v Log Analytics a Azure Application Insights. 
@@ -35,7 +35,7 @@ Proces přechodu upozornění z Log Analytics do upozornění Azure nezahrnuje Z
 
 Při plánování výstrahy v pracovním prostoru Log Analytics na rozšířit do Azure jsou dál fungovat a nejsou v, že některé způsobem ohrožení vaší konfigurace. Při plánování, upozornění možná nebude k dispozici pro úpravy dočasně, ale můžete pokračovat k vytvoření nové výstrahy Azure během této doby. Při pokusu upravit nebo vytvořit oznámení z portálu Operations Management Suite, máte možnost pokračovat ve vytváření z pracovního prostoru Log Analytics. Můžete také na webu Azure Portal je vytvořit ve službě Azure Alerts.
 
- ![Snímek obrazovky možnost vytvoření upozornění z Log Analytics nebo Azure Alerts](./media/monitor-alerts-extend/ScheduledDirection.png)
+ ![Snímek obrazovky možnost vytvoření upozornění z Log Analytics nebo Azure Alerts](media/monitoring-alerts-extend/ScheduledDirection.png)
 
 > [!NOTE]
 > Rozšíření upozornění z Log Analytics do Azure není účtovat poplatky za ke svému účtu. Pro dotaz na základě upozornění Log Analytics pomocí Azure Alerts neúčtuje se při použití v rámci omezení a podmínky uvedené v [ceny zásad Azure Monitor](https://azure.microsoft.com/pricing/details/monitor/).  
@@ -47,7 +47,7 @@ Můžete rozšířit svá upozornění do Azure Alerts, použijete průvodce k d
 ## <a name="experience-after-extending-your-alerts"></a>Po skončení rozšiřovat vaše upozornění
 Po upozornění jsou rozšířeny, aby Azure Alerts, nadále být k dispozici na portálu Operations Management Suite pro správu nejsou jinak než dřív.
 
-![Snímek obrazovky s Operations Management Suite portál, pomocí výstrah uvedených](./media/monitor-alerts-extend/PostExtendList.png)
+![Snímek obrazovky s Operations Management Suite portál, pomocí výstrah uvedených](media/monitoring-alerts-extend/PostExtendList.png)
 
 Při pokusu upravit existující upozornění nebo vytvořit nové oznámení na portálu Operations Management Suite, budete automaticky přesměrováni na Azure Alerts.  
 

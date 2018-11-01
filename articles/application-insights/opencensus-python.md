@@ -9,12 +9,12 @@ ms.date: 09/18/2018
 ms.service: application-insights
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c9f14664ca035b3de1af80ca3101c22751c83237
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 7507cdd7f3967dc132eecf81de347f2da791487f
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46963641"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50414977"
 ---
 # <a name="collect-distributed-traces-from-python-preview"></a>Shromažďovat distribuované trasování z Pythonu (Preview)
 
@@ -22,7 +22,7 @@ Application Insights teď podporuje distribuované trasování aplikací v Pytho
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Potřebujete předplatné Azure.
+- Mít předplatné Azure.
 - Python by měly být nainstalovány, tento článek používá [Python 3.7.0](https://www.python.org/downloads/), i když dřívějších verzích bude pravděpodobně pracovat s menší úpravu.
 - Postupujte podle pokynů k instalaci [místní předávání jako služba Windows](./opencensus-local-forwarder.md#windows-service)
 
@@ -180,7 +180,7 @@ Nejprve je nutné vytvořit prostředek Application Insights, která bude genero
 
     Protože jsme byly trasování pouze jedno volání metody, není jako zajímavé Mapa aplikace. Ale můžete škálovat mapu aplikace k vizualizaci mnohem více distribuované aplikace:
 
-   ![Mapa aplikace](./media/app-insights-nodejs-quick-start/application-map.png)
+   ![Mapa aplikace](media/opencensus-python/application-map.png)
 
 4. Vyberte **zkoumání výkonu** provádět podrobnou analýzu výkonu a určení původní příčiny snížení výkonu.
 

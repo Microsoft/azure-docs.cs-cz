@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/12/2018
 ms.author: cawa
-ms.openlocfilehash: 708b80787337d549ebc5e66bca21e734620616ac
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: dde2983c57d0f3ec9c58537809f2d2d952b4a00e
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49388287"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50741942"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>Zpráva k vydání verze Microsoft Azure Storage Explorer
 
@@ -27,13 +27,110 @@ Tento článek obsahuje poznámky k verzi Azure Storage Explorer 1.4.3, stejně 
 
 [Microsoft Azure Storage Explorer](./vs-azure-tools-storage-manage-with-storage-explorer.md) je samostatná aplikace, která umožňuje jednoduchá práci s daty Azure Storage ve Windows, macOS a Linuxu.
 
+## <a name="version-150"></a>Verze 1.5.0
+29 10. 2018
+
+### <a name="download-azure-storage-explorer-150"></a>Stáhněte si Průzkumníka služby Azure Storage 1.5.0
+- [Průzkumník služby Azure Storage 1.5.0 pro Windows](https://go.microsoft.com/fwlink/?LinkId=708343)
+- [Průzkumník služby Azure Storage 1.5.0 pro Mac](https://go.microsoft.com/fwlink/?LinkId=708342)
+- [Průzkumník služby Azure Storage 1.5.0 pro Linux](https://go.microsoft.com/fwlink/?LinkId=722418)
+
+### <a name="new"></a>Nová
+
+* Teď můžete použít [AzCopy v10 (Preview)](https://github.com/Azure/azure-storage-azcopy) pro nahrávání a stahování objektů BLOB. Chcete-li povolit tuto funkci přejděte do nabídky "Experimentální" a klikněte na "Použití AzCopy pro vylepšené objektů Blob nahrávání a stahování". Když je povoleno, AzCopy se použijí v následujících scénářích:
+   * Nahrání složky a soubory do kontejnerů objektů blob, buď pomocí panelu nástrojů nebo přetažení.
+   * Stahování složek a souborů, buď pomocí panelu nástrojů nebo místní nabídky.
+
+* Kromě toho při použití nástroje AzCopy:
+   * Můžete zkopírovat příkaz AzCopy používaný k provedení převodu do schránky. Jednoduše klikněte na tlačítko "Kopírovat AzCopy příkaz do schránky" v protokolu aktivit.
+   * Je potřeba ručně aktualizovat editor objektů blob po nahrání.
+   * Nahrávání souborů doplňovací objekty BLOB se nepodporuje, se nahraje .vhds jako objekty BLOB stránky a nahraje všechny ostatní soubory jako objekty BLOB bloku.
+   * Chyby a ke kterým mohlo dojít během nahrávání nebo stahování se zobrazí až po nahrání nebo stažení je dokončené.
+
+Podpora pro použití nástroje AzCopy s využitím sdílených složek a konečně, bude dostupná v budoucnu.
+* Průzkumník služby Storage je teď používá elektronovým verze 2.0.11.
+* Přerušení zapůjčení můžete nyní provést pouze na jeden objekt blob najednou. Kromě toho je nutné zadat název objektu blob zapůjčení, jejichž jsou zásadní. Tato změna byla provedena snížit pravděpodobnost, že omylem přerušení zapůjčení, zejména v případě .vhds pro virtuální počítače. #394
+* Pokud někdy narazíte na problémy s přihlašováním, můžete teď zkuste resetovat ověřování. Přejděte do nabídky "Nápověda" a klikněte na tlačítko "Obnovit" přístupu k této funkci. #419
+
+### <a name="fix"></a>Napravit
+
+* Po zpětné vazby uživatelů silné výchozí emulátor uzel se znovu zapnout. Můžete přesto přidat další emulátor připojení přes dialogové okno připojit, ale pokud vaše emulátor je nakonfigurován pro použití výchozí porty můžete použít také uzel "Emulátor * výchozí porty" v části "Místní a připojené a ukládání účtů". #669
+* Průzkumník služby Storage už vám umožní nastavit hodnoty metadat objektu blob, které mají počáteční ani koncové prázdné znaky. #760
+* Tlačítko "Sign In" se vždy povolena na stejné stránkách dialogového okna připojit. V případě potřeby je nyní zakázán. #761
+* Rychlý přístup už vygeneruje chybu v konzole když byly přidány žádné položky rychlý přístup.
+
+### <a name="known-issues"></a>Známé problémy
+
+* Odpojení od zdroje připojené pomocí identifikátoru URI SAS, jako je například kontejner objektů blob, může způsobit chybu, která brání jiné přílohy z zobrazovat správně. Chcete-li tento problém obejít, jednoduše obnovte uzel skupiny. Zobrazit 537 # pro další informace.
+* Pokud používáte VS pro Mac a již někdy vytvářeli vlastní konfiguraci AAD, je možná nebudete moct přihlásit. Chcete-li tento problém obejít, odstraňte její obsah ~ /. IdentityService/AadConfigurations. Pokud to tak není překážku, zadejte komentář k tomuto problému.
+* Azurite nebyla ještě implementována plně všechna rozhraní API úložiště. Z toho důvodu může být neočekávané chyby nebo chování při použití Azurite k vývojovým úložištěm.
+* Ve výjimečných případech můžou uváznout stromu fokus na rychlý přístup. Chcete-li unstick fokus, můžete aktualizovat vše.
+* Nahrává se ze složky Onedrivu nefunguje z důvodu chyby v NodeJS. Chyb bylo opraveno, ale zatím nejsou integrované do elektronovým. Chcete-li vyřešit tento problém můžete při odesílání nebo stahování z kontejneru objektů blob, můžete použít experimentální funkce AzCopy.
+* Při cílení na služby Azure Stack, odesílání určité soubory jako doplňovací objekty BLOB může selhat.
+* Po kliknutí na tlačítko "Storno" na úkol, může trvat nějakou dobu tuto úlohu zrušit. Je to proto, že se používá zde popsané řešení filtr Storno.
+* Pokud se rozhodnete nesprávný certifikát PIN kód nebo čipová karta, je potřeba restartovat, aby měla zapomenout rozhodnutí Průzkumníka služby Storage.
+* Přejmenování objektů BLOB (jednotlivě nebo uvnitř kontejneru objektů blob přejmenováno) se nezachová snímky. Všechny ostatní vlastnosti a metadat pro objekty BLOB, soubory a entity jsou zachovány při přejmenování.
+* Azure Stack nepodporuje následující funkce. Pokus o použití těchto funkcí při práci s Azure Stackem zdrojů může vést k neočekávaným chybám.
+   * Sdílené složky
+   * Úrovně přístupu
+   * Obnovitelné odstranění
+* Elektronovým prostředí používané Průzkumníka služby Storage má potíže s hardwarovou akceleraci některé GPU (grafický procesor). Pokud Průzkumník služby Storage se zobrazuje hlavní okno prázdné (prázdné), můžete zkusit spustíte Průzkumníka služby Storage z příkazového řádku a zakázání GPU akceleraci tak, že přidáte `--disable-gpu` přepínače:
+
+    ```
+    ./StorageExplorer.exe --disable-gpu
+    ```
+
+* Pro uživatele systému Linux, budete muset nainstalovat [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x).
+* Pro uživatele v Ubuntu 14.04, budete muset ověřte, že je aktuální GCC – to můžete udělat spuštěním následujících příkazů a následného restartování počítače:
+
+    ```
+    sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+    sudo apt-get update
+    sudo apt-get upgrade
+    sudo apt-get dist-upgrade
+    ```
+
+* Pro uživatele v Ubuntu č. 17.04 budete muset nainstalovat GConf – to můžete udělat spuštěním následujících příkazů a následného restartování počítače:
+
+    ```
+    sudo apt-get install libgconf-2-4
+    ```
+
+## <a name="previous-releases"></a>Předchozí verze
+
+* [Verze 1.4.4](#version-144)
+* [Verze 1.4.3](#version-143)
+* [Verze 1.4.2](#version-142)
+* [Verze 1.4.1](#version-141)
+* [Verze 1.3.0](#version-130)
+* [Verzi 1.2.0](#version-120)
+* [Verze 1.1.0](#version-110)
+* [Verze 1.0.0](#version-100)
+* [Verze 0.9.6](#version-096)
+* [Verze 0.9.5](#version-095)
+* [Verze 0.9.4 a 0.9.3](#version-094-and-093)
+* [Verze 0.9.2](#version-092)
+* [Verze 0.9.1 a 0.9.0](#version-091-and-090)
+* [Verze 0.8.16](#version-0816)
+* [Verze 0.8.14](#version-0814)
+* [Verze 0.8.13](#version-0813)
+* [Verze 0.8.12 a 0.8.11 a 0.8.10](#version-0812-and-0811-and-0810)
+* [Verze 0.8.9 a 0.8.8](#version-089-and-088)
+* [Verze 0.8.7](#version-087)
+* [Verze 0.8.6](#version-086)
+* [Verze 0.8.5](#version-085)
+* [Verze 0.8.4](#version-084)
+* [Verze 0.8.3](#version-083)
+* [Verze 0.8.2](#version-082)
+* [Verze 0.8.0](#version-080)
+* [Verze 0.7.20160509.0](#version-07201605090)
+* [Verze 0.7.20160325.0](#version-07201603250)
+* [Verze 0.7.20160129.1](#version-07201601291)
+* [Verze 0.7.20160105.0](#version-07201601050)
+* [Verze 0.7.20151116.0](#version-07201511160)
+
 ## <a name="version-144"></a>Verze 1.4.4
 10/15/2018
-
-### <a name="download-azure-storage-explorer-144"></a>Stáhněte si Průzkumníka služby Azure Storage 1.4.4
-- [Průzkumník služby Azure Storage 1.4.4 pro Windows](https://go.microsoft.com/fwlink/?LinkId=708343)
-- [Průzkumník služby Azure Storage 1.4.4 pro Mac](https://go.microsoft.com/fwlink/?LinkId=708342)
-- [Průzkumník služby Azure Storage 1.4.4 pro Linux](https://go.microsoft.com/fwlink/?LinkId=722418)
 
 ### <a name="hotfixes"></a>Opravy hotfix
 * Verze rozhraní Api Azure Resource Management byla vrácena zpět k odblokování uživatelů Azure US Government. [#696](https://github.com/Microsoft/AzureStorageExplorer/issues/696)
@@ -87,38 +184,6 @@ Tento článek obsahuje poznámky k verzi Azure Storage Explorer 1.4.3, stejně 
     ```
     sudo apt-get install libgconf-2-4
     ```
-
-## <a name="previous-releases"></a>Předchozí verze
-
-* [Verze 1.4.3](#version-143)
-* [Verze 1.4.2](#version-142)
-* [Verze 1.4.1](#version-141)
-* [Verze 1.3.0](#version-130)
-* [Verzi 1.2.0](#version-120)
-* [Verze 1.1.0](#version-110)
-* [Verze 1.0.0](#version-100)
-* [Verze 0.9.6](#version-096)
-* [Verze 0.9.5](#version-095)
-* [Verze 0.9.4 a 0.9.3](#version-094-and-093)
-* [Verze 0.9.2](#version-092)
-* [Verze 0.9.1 a 0.9.0](#version-091-and-090)
-* [Verze 0.8.16](#version-0816)
-* [Verze 0.8.14](#version-0814)
-* [Verze 0.8.13](#version-0813)
-* [Verze 0.8.12 a 0.8.11 a 0.8.10](#version-0812-and-0811-and-0810)
-* [Verze 0.8.9 a 0.8.8](#version-089-and-088)
-* [Verze 0.8.7](#version-087)
-* [Verze 0.8.6](#version-086)
-* [Verze 0.8.5](#version-085)
-* [Verze 0.8.4](#version-084)
-* [Verze 0.8.3](#version-083)
-* [Verze 0.8.2](#version-082)
-* [Verze 0.8.0](#version-080)
-* [Verze 0.7.20160509.0](#version-07201605090)
-* [Verze 0.7.20160325.0](#version-07201603250)
-* [Verze 0.7.20160129.1](#version-07201601291)
-* [Verze 0.7.20160105.0](#version-07201601050)
-* [Verze 0.7.20151116.0](#version-07201511160)
 
 ## <a name="version-143"></a>Verze 1.4.3
 10/11/2018

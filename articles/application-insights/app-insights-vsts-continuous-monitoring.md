@@ -9,12 +9,12 @@ ms.date: 11/13/2017
 ms.service: application-insights
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ecda8621640223f1c27f32834f2e4a098da4aba6
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 75401614b6892402083af5192b691f00d82c8d05
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44301616"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50413617"
 ---
 # <a name="add-continuous-monitoring-to-your-release-pipeline"></a>Přidání průběžného monitorování do kanálu pro vydávání verzí
 
@@ -28,13 +28,13 @@ Nepřetržité monitorování zajišťovaný kanály verzí můžete začlenit d
 
 2. Najeďte myší na **sestavení a vydání** > vyberte **verze** > klikněte na tlačítko **znaménko plus** > **definice vydané verze vytvořit** > Vyhledejte **monitorování** > **nasazení služby Azure App Service pomocí nepřetržité monitorování.**
 
-   ![Nový kanál pro vydávání verzí služby Azure DevOps](.\media\app-insights-continuous-monitoring\001.png)
+   ![Nový kanál pro vydávání verzí služby Azure DevOps](media/app-insights-vsts-continuous-monitoring/001.png)
 
 3. Klikněte na tlačítko **použít.**
 
 4. Vedle červeného vykřičníku vyberte text modrou barvu na **zobrazit úlohy prostředí.**
 
-   ![Úlohy v zobrazení prostředí](.\media\app-insights-continuous-monitoring\002.png)
+   ![Úlohy v zobrazení prostředí](media/app-insights-vsts-continuous-monitoring/002.png)
 
    Konfigurační pole se zobrazí, použijte následující tabulku k vyplnění vstupních polí.
 
@@ -60,7 +60,7 @@ Nepřetržité monitorování zajišťovaný kanály verzí můžete začlenit d
 
 3. Změnit dostupnost **prahová hodnota** pro splnění požadavků na úrovni služby.
 
-   ![Upravit upozornění](.\media\app-insights-continuous-monitoring\003.png)
+   ![Upravit upozornění](media/app-insights-vsts-continuous-monitoring/003.png)
 
 4. Vyberte **OK** > **Uložit** > zadejte popisný komentář > klikněte na tlačítko **OK.**
 
@@ -68,13 +68,13 @@ Nepřetržité monitorování zajišťovaný kanály verzí můžete začlenit d
 
 1. Klikněte na tlačítko **kanálu** > vyberte **Pre** nebo **po nasazení podmínek** symbolu v závislosti na fázi, která vyžaduje bránu průběžné monitorování.
 
-   ![Před nasazením podmínky](.\media\app-insights-continuous-monitoring\004.png)
+   ![Před nasazením podmínky](media/app-insights-vsts-continuous-monitoring/004.png)
 
 2. Nastavte **brány** k **povoleno** > **schválení brány**> klikněte na tlačítko **přidat.**
 
 3. Vyberte **Azure Monitor** (Tato možnost vám dává možnost na výstrahy přístup i z Azure monitoru a Application Insights)
 
-    ![Azure Monitor](.\media\app-insights-continuous-monitoring\005.png)
+    ![Azure Monitor](media/app-insights-vsts-continuous-monitoring/005.png)
 
 4. Zadejte **časový limit brány** hodnotu.
 
@@ -86,7 +86,7 @@ Po přidání brány nasazení upozornění ve službě Application Insights, p�
 
 Chcete-li sledovat toto chování, vyberte **verze** > verze klikněte pravým tlačítkem na název **otevřete** > **protokoly.**
 
-![Logs](.\media\app-insights-continuous-monitoring\006.png)
+![Logs](media/app-insights-vsts-continuous-monitoring/006.png)
 
 ## <a name="next-steps"></a>Další postup
 

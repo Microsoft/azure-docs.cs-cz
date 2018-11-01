@@ -4,20 +4,30 @@ description: Poskytuje základní informace o známých problémech ve službě 
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 10/24/2018
+ms.date: 10/31/2018
 ms.author: raynew
-ms.openlocfilehash: a32b1b73a12242a6c6b1c29fbf116aff73515b46
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: 0b2954ddfda0ab4c94ddf6176d76d8bcd937fa42
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50086739"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50413329"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Řešení problémů s Azure Migrate
 
 ## <a name="troubleshoot-common-errors"></a>Odstraňování běžných chyb
 
 [Azure Migrate](migrate-overview.md) posuzuje místní úlohy pro migraci do Azure. Pomocí tohoto článku řešení problémů při nasazování a používání Azure Migrate.
+
+### <a name="i-am-using-the-continuous-discovery-ova-but-vms-that-are-deleted-in-my-on-premises-environment-are-still-being-shown-in-the-portal"></a>Používám průběžná zjišťování, které vajíčka, ale virtuální počítače, které v mé v místním prostředí se odstraní i nadále se zobrazují na portálu.
+
+Zařízení pro zařízení průběžná zjišťování průběžně pouze shromažďuje údaje o výkonu, nezjistí změny konfigurace v místním prostředí (tj. Přidání virtuálního počítače, odstranění, přidání disku atd.). Pokud dojde ke změně konfigurace v místním prostředí, následujícím způsobem můžete zajistit, že se změny projeví na portálu:
+
+- Přidání položek (virtuální počítače, disky, jádra atd.): Pokud chcete, aby se tyto změny projevily na webu Azure Portal, můžete na zařízení zastavit zjišťování a pak ho spustit znovu. Tím se zajistí, že se změny aktualizují v projektu Azure Migrate.
+
+   ![Zastavit zjišťování](./media/troubleshooting-general/stop-discovery.png)
+
+- Odstranění virtuálních počítačů: Vzhledem ke způsobu, jakým je zařízení navržené, se odstranění virtuálních počítačů neprojeví ani v případě, že zastavíte a znovu spustíte zjišťování. Důvodem je, že se data z dalších zjišťování připojují ke starším zjišťováním, a nepřepisují se. V takovém případě můžete virtuální počítač na portálu jednoduše ignorovat tak, že ho odeberete ze své skupiny a přepočítáte posouzení.
 
 ### <a name="migration-project-creation-failed-with-error-requests-must-contain-user-identity-headers"></a>Vytvoření projektu Migrace selhala s chybou *požadavky musí obsahovat hlavičky identity uživatele*
 
@@ -40,14 +50,6 @@ Pokud chcete povolit shromažďování dat o výkonu disku a sítě, změňte ú
 Můžete přejít na **Essentials** tématu **přehled** stránce projektu k identifikaci přesné umístění, kde je uložena metadata. Umístění je zvolena náhodně na území službou Azure Migrate a nelze jej upravovat. Pokud chcete vytvořit projekt v konkrétní oblasti, můžete vytvořit projekt migrace a předat požadované oblasti rozhraní REST API.
 
    ![Umístění projektu](./media/troubleshooting-general/geography-location.png)
-
-### <a name="i-am-using-the-continuous-discovery-ova-but-vms-that-are-deleted-in-my-on-premises-environment-are-still-being-shown-in-the-portal"></a>Používám průběžná zjišťování, které vajíčka, ale virtuální počítače, které v mé v místním prostředí se odstraní i nadále se zobrazují na portálu.
-
-Zařízení pro zařízení průběžná zjišťování průběžně pouze shromažďuje údaje o výkonu, nezjistí změny konfigurace v místním prostředí (tj. Přidání virtuálního počítače, odstranění, přidání disku atd.). Pokud dojde ke změně konfigurace v místním prostředí, můžete provést následující tak, aby odrážely změny v portálu:
-
-1. Přidání položek (virtuálních počítačů, disků, jader atd.): pro provedení těchto změn na webu Azure Portal, můžete zastavit zjišťování ze zařízení a znovu spustit. Tím se zajistí, že změny jsou aktualizovány v projektu Azure Migrate.
-
-2. Odstranění virtuálních počítačů: z důvodu způsob je navržena na zařízení, odstranění virtuální počítače se projeví i v případě zastavení a spuštění zjišťování. Je to proto, že data z dalších zjišťování se připojí k starší zjišťování a nebyly přepsány. V takovém případě můžete jednoduše ignorovat virtuálního počítače na portálu ho odebrat ze skupiny a přepočítání posouzení.
 
 ## <a name="collector-errors"></a>Chyby kolektoru
 
@@ -219,9 +221,8 @@ Shromažďovat události trasování pro Windows, postupujte takto:
 
 ## <a name="collector-error-codes-and-recommended-actions"></a>Kódy chyb kolekcí a doporučené akce
 
-|           |                                |                                                                               |                                                                                                       |                                                                                                                                            |
-|-----------|--------------------------------|-------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------|
-| Kód chyby | Název chyby                      | Zpráva                                                                       | Možné příčiny                                                                                        | Doporučená akce                                                                                                                          |
+| Kód chyby | Název chyby   | Zpráva   | Možné příčiny | Doporučená akce  |
+| --- | --- | --- | --- | --- |
 | 601       | CollectorExpired               | Platnost kolektoru vypršela.                                                        | Platnost kolektoru vypršela.                                                                                    | Stáhněte si prosím novou verzi kolektoru a zkuste to znovu.                                                                                      |
 | 751       | UnableToConnectToServer        | Nepovedlo se připojit k vCenter Serveru %Name;, protože došlo k chybě: %ErrorMessage;     | Další podrobnosti najdete v chybové zprávě.                                                             | Vyřešte potíže a zkuste to znovu.                                                                                                           |
 | 752       | InvalidvCenterEndpoint         | Server %Name; není vCenter Server.                                  | Zadejte podrobnosti o vCenter Serveru.                                                                       | Opakujte operaci se správnými podrobnostmi vCenter Serveru.                                                                                   |

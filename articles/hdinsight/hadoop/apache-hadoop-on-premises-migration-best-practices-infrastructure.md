@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: 4e60425edaebf9e77b7e71f43fa3fe2f2ac3227c
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: a1dbc04a83e80281fb6cd516c546c1dddff6db37
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50221872"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50413790"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---infrastructure-best-practices"></a>Migrace místních Apache Hadoop clusterů Azure HDInsight – osvědčené postupy infrastruktury
 
@@ -45,11 +45,11 @@ Aplikace nebo komponenty, které byly k dispozici v místních clusterech, ale n
 
 |**Aplikace**|**Integrace**
 |---|---|
-|Vzduchu|IaaS nebo HDI hraničnímu uzlu
+|Vzduchu|IaaS nebo HDInsight hraničnímu uzlu
 |Alluxio|IaaS  
 |Arcadia|IaaS 
 |Atlas|Žádný (pouze HDP)
-|Datameer|HDI hraniční uzel
+|Datameer|HDInsight hraniční uzel
 |Datastax (Cassandra)|IaaS (alternativu v Azure cosmos DB)
 |DataTorrent|IaaS 
 |Drill|IaaS 
@@ -58,15 +58,15 @@ Aplikace nebo komponenty, které byly k dispozici v místních clusterech, ale n
 |Mapador|IaaS 
 |Mongo|IaaS (alternativu v Azure cosmos DB)
 |NiFi|IaaS 
-|Presto|IaaS nebo HDI hraničnímu uzlu
+|Presto|IaaS nebo HDInsight hraničnímu uzlu
 |Python 2|PaaS 
 |Python 3|PaaS 
 |R|PaaS 
 |SAS|IaaS 
 |Vertica|IaaS (SQLDW alternativu v Azure)
 |Tableau|IaaS 
-|Vodoryskou|HDI hraniční uzel
-|StreamSets|HDI Edge 
+|Vodoryskou|HDInsight hraniční uzel
+|StreamSets|HDInsight Edge 
 |Palantir|IaaS 
 |Sailpoint|Iaas 
 
@@ -213,7 +213,7 @@ HDInsight můžete připojené k místní síti pomocí virtuální sítě Azure
 - Nakonfigurujte překlad názvů DNS mezi virtuální sítí a místní sítí.
 - Konfigurace skupin zabezpečení sítě nebo uživatelem definované trasy (UDR) k řízení síťového provozu.
 
- Další informace najdete v článku [HDInsight připojit k místní síti](../connect-on-premises-network.md)
+Další informace najdete v článku [HDInsight připojit k místní síti](../connect-on-premises-network.md)
 
 ## <a name="next-steps"></a>Další postup
 

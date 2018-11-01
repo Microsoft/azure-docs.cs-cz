@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2018
 ms.author: spelluru
-ms.openlocfilehash: 2edfa84530c147e1f716aef10c967ac36eadc922
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 2d17f4471383be623cb40276ec1e51257bf3fbce
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48251005"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50740370"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---resources"></a>Zásady správného řízení infrastruktury Azure DevTest Labs – prostředky
 Tento článek se zabývá zarovnání a správu prostředků pro DevTest Labs ve vaší organizaci. 
@@ -67,7 +67,7 @@ Doporučujeme vám, že jsou přidruženy stejném testovacího prostředí obch
 
 Můžete také zvažte geografické hranice. Například ve východních oblastech severní Spojené státy (USA) mohou vývojáři použít testovací prostředí zřízené ve východní USA 2. A mohou vývojáři v Dallasu, Texas a Liberci přesměrovány na prostředek v USA střed – jih. Při spolupráci s externí třetích stran může být přiřazen do testovacího prostředí, která není používána umožňuje interním vývojářům. 
 
-Můžete také použít testovací prostředí pro konkrétní projekt v rámci týmového projektu Visual Studio Team Services. Pak můžete použít zabezpečení prostřednictvím zadané skupiny Azure Active Directory, který umožňuje přístup k oběma sadu prostředků. Virtuální síť přiřazeny k testovacím prostředí může být jiné hranice pro konsolidaci uživatelů.
+Můžete také použít testovací prostředí pro konkrétní projekt v rámci projektů Azure DevOps. Pak můžete použít zabezpečení prostřednictvím zadané skupiny Azure Active Directory, který umožňuje přístup k oběma sadu prostředků. Virtuální síť přiřazeny k testovacím prostředí může být jiné hranice pro konsolidaci uživatelů.
 
 ## <a name="deletion-of-resources"></a>Odstranění prostředků
 

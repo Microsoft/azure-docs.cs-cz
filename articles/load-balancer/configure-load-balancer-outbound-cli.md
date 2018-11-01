@@ -4,8 +4,6 @@ description: Tento článek ukazuje postup při konfiguraci pravidla odchozí a 
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: jpconnock
-tags: azure-resource-manager
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -13,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: kumud
-ms.openlocfilehash: a6d442452fe5ffc61648b3c004c03f1756f8f57e
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 0759b6a8e3deb9bc1d04e41598e4eef9304ecd83
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47160651"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50416405"
 ---
 # <a name="configure-load-balancing-and-outbound-rules-in-standard-load-balancer-using-azure-cli"></a>Konfigurace vyrovnávání zatížení i pravidla odchozího v Load balanceru úrovně Standard pomocí Azure CLI
 
@@ -63,7 +61,7 @@ Pokud chcete mít k webové aplikaci přístup přes internet, potřebujete pro 
 
 ## <a name="create-outbound-public-ip-address"></a>Vytvoření výstupní veřejné IP adresy 
 
-Vytvoření standardní IP adresy pro front-endová odchozí konfigurace pro vyrovnávání zatížení [az network public-ip vytvořit](https://docs.microsoft.com/cli/azure/network/public-ip#create) s názvem *mypublicipoutbound* v *myresourcegroupoutbound*.
+Vytvořit standardní IP adresu pro nástroje Load Balancer front-endová konfigurace odchozího pomocí [az network public-ip vytvořit](https://docs.microsoft.com/cli/azure/network/public-ip#create).
 
 ```azurecli-interactive
   az network public-ip create --resource-group myresourcegroupoutbound --name mypublicipoutbound --sku standard
@@ -81,7 +79,7 @@ Tato část podrobně popisuje vytvoření a konfiguraci následujících kompon
 
 ### <a name="create-load-balancer"></a>Vytvoření nástroje pro vyrovnávání zatížení
 
-Vytvoření Load Balanceru úrovně se na příchozí IP adresu pomocí [az network lb vytvořit](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest#create) s názvem *lb* , který obsahuje konfiguraci front-endu příchozí IP s názvem *myfrontendinbound*, back-endový fond s názvem *bepool* přidružený k veřejné IP adresy *mypublicipinbound* , kterou jste vytvořili v předchozím kroku.
+Vytvoření Load Balanceru úrovně se na příchozí IP adresu pomocí [az network lb vytvořit](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest#create) s názvem *lb* , který obsahuje konfiguraci IP příchozí front-endu a back-endový fond, který je přidružený k veřejné IP adresy *mypublicipinbound* , kterou jste vytvořili v předchozím kroku.
 
 ```azurecli-interactive
   az network lb create \

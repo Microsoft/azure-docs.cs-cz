@@ -4,9 +4,6 @@ description: Použití prostředí powershell pro nástroj pro vyrovnávání za
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: timlt
-editor: tysonn
-ms.assetid: d0394f11-ee5a-4407-9d86-79c936297265
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -14,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 43db9db3842d05fa13c3be92df14b905d2ddfc17
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: f972495fe1a5a0744cf6d7046b555349e5bc8c54
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42058324"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50416422"
 ---
 # <a name="using-azure-resource-manager-support-with-azure-load-balancer"></a>Podpora Azure Resource Manageru pomocí nástroje pro vyrovnávání zatížení Azure
 

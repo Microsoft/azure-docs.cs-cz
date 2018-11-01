@@ -6,14 +6,14 @@ author: genlin
 manager: cshepard
 ms.service: backup
 ms.topic: troubleshooting
-ms.date: 05/11/2018
+ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: e78ea2a132a75a5424c0078c2b41edb8209c781c
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: ab338964a67991c0e97bf218f8aa004e0e5dfe38
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48831530"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50418241"
 ---
 # <a name="troubleshoot-slow-backup-of-files-and-folders-in-azure-backup"></a>Řešení potíží s pomalým zálohováním souborů a složek ve službě Azure Backup
 Tento článek obsahuje pokyny k odstraňování problémů, které vám pomohou diagnostikovat příčiny pomalého výkonu zálohování souborů a složek, při použití Azure Backup. Pokud používáte agenta Azure Backup k zálohování souborů, záložní proces může trvat déle než obvykle. Toto zpoždění může být způsobena jednou nebo více z následujících akcí:

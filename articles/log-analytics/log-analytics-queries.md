@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 904502e5c73127cca7920da2173edd013e55762f
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 6e587f79f0f77446ea5a61cbb989f3f1c3655e0a
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50242241"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50741755"
 ---
 # <a name="analyze-log-analytics-data-in-azure-monitor"></a>Analýza dat Log Analytics ve službě Azure Monitor
 
@@ -97,7 +97,7 @@ union Update, workspace("contoso-workspace").Update
 ## <a name="how-log-analytics-data-is-organized"></a>Uspořádání dat Log Analytics
 Když vytvoříte dotaz, spustíte tak, že určíte, které tabulky obsahují data, která hledáte. Různé druhy dat jsou rozdělené do vyhrazené tabulek v každé [pracovní prostor Log Analytics](log-analytics-quick-create-workspace.md).  Dokumentaci k různým zdrojům dat obsahuje název datového typu, který vytvoří a popis každého z její vlastnosti.  Mnoho dotazů budete potřebovat jenom data z jedné tabulky, ale ostatní může používat širokou škálu možností zahrnout data z více tabulek.
 
-Zatímco [Application Insights](../application-insights/app-insights-overview.md) ukládá data aplikací, například požadavky, výjimky, trasování a využití v Log Analytics, tato data uložená v jiného oddílu než ostatní data protokolu. Použijte stejné dotazovací jazyk pro přístup k těmto datům, ale musí [konzoly Application Insights](../application-insights/app-insights-analytics.md) nebo [REST API pro Application Insights](https://dev.applicationinsights.io/) k němu přistupovat. Můžete použít [dotazy napříč prostředky](log-analytics-cross-workspace-search.md) kombinovat data Application Insights s ostatními daty v Log Analytics.
+Zatímco [Application Insights](../application-insights/app-insights-overview.md) ukládá data aplikací, například požadavky, výjimky, trasování a využití v Log Analytics, tato data uložená v jiného oddílu než ostatní data protokolu. Přístup k těmto datům pomocí stejné dotazovací jazyk, ale musí používat [konzoly Application Insights](../application-insights/app-insights-analytics.md) nebo [REST API pro Application Insights](https://dev.applicationinsights.io/) k němu přistupovat. Můžete použít [dotazy napříč prostředky](log-analytics-cross-workspace-search.md) kombinovat data Application Insights s ostatními daty v Log Analytics.
 
 
 ![Tabulky](media/log-analytics-queries/queries-tables.png)

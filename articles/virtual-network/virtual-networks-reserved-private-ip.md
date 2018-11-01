@@ -1,6 +1,6 @@
 ---
-title: Statické interní privátní IP - virtuální počítač Azure – Classic
-description: Princip statické interní IP adresy (vyhrazené) a způsobu jejich správy
+title: Statické interní privátní IP – virtuální počítač Azure – Classic
+description: Principy statické interní IP adresy (vyhrazené IP adresy) a jejich správě
 services: virtual-network
 documentationcenter: na
 author: genlin
@@ -12,24 +12,24 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/18/2018
+ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 661d2f789ace8da68b6d65609d4584a11967a01f
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: d5d75c25d03c02d6d49fc2fd8aeec995cea52314
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34366609"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50414263"
 ---
-# <a name="how-to-set-a-static-internal-private-ip-address-using-powershell-classic"></a>Jak nastavit statickou interní privátní IP adresu pomocí prostředí PowerShell (klasické)
-Ve většině případů nebude muset zadat statické interní IP adresu pro virtuální počítač. Virtuální počítače ve virtuální síti se automaticky zobrazí interní IP adresu z rozsahu, který určíte. Ale v některých případech, zadat statickou IP adresu pro konkrétní virtuální počítač má smysl. Například pokud virtuální počítač se blíží ke spuštění DNS nebo bude řadič domény. Statické interní IP adresu zůstává s virtuálním Počítačem i prostřednictvím stavu zastavení nebo deprovision. 
+# <a name="how-to-set-a-static-internal-private-ip-address-using-powershell-classic"></a>Postup nastavení statické interní privátní IP adresy pomocí prostředí PowerShell (Classic)
+Ve většině případů nebudete muset zadat statické interní IP adresu pro váš virtuální počítač. Virtuální počítače ve virtuální síti automaticky přijme vnitřní IP adresu z rozsahu, který zadáte. Ale v některých případech, určení statickou IP adresu pro konkrétní virtuální počítač má smysl. Pokud například váš virtuální počítač je teď spustíme DNS nebo bude řadič domény. Statické interní IP adresa zůstane s virtuálním Počítačem, klidně i prostřednictvím stavu zastavení nebo zrušení zřízení. 
 
 > [!IMPORTANT]
 > Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Resource Manager a klasický model](../azure-resource-manager/resource-manager-deployment-model.md). Tento článek se věnuje použití klasického modelu nasazení. Společnost Microsoft doporučuje, aby většina nových nasazení používala [modelu nasazení Resource Manager](virtual-networks-static-private-ip-arm-ps.md).
 > 
 > 
 
-## <a name="how-to-verify-if-a-specific-ip-address-is-available"></a>Postup ověření, pokud je k dispozici konkrétní IP adresu
+## <a name="how-to-verify-if-a-specific-ip-address-is-available"></a>Jak ověřit, zda je k dispozici konkrétní IP adresu
 Chcete-li ověřit, pokud IP adresa *10.0.0.7* je k dispozici ve virtuální síti s názvem *TestVnet*, spusťte následující příkaz prostředí PowerShell a potom ověřte hodnotu pro *IsAvailable*:
 
     Test-AzureStaticVNetIP –VNetName TestVNet –IPAddress 10.0.0.7 
@@ -41,12 +41,12 @@ Chcete-li ověřit, pokud IP adresa *10.0.0.7* je k dispozici ve virtuální sí
     OperationStatus      : Succeeded
 
 > [!NOTE]
-> Pokud chcete testovat příkaz výše v bezpečné prostředí, postupujte podle pokynů v [vytvoření virtuální sítě (klasické)](virtual-networks-create-vnet-classic-pportal.md) chcete vytvořit síť vnet s názvem *TestVnet* a ujistěte se, použije *10.0.0.0/8* adresní prostor.
+> Pokud chcete otestovat příkaz výše v bezpečné prostředí postupujte podle pokynů v [vytvořit virtuální síť (klasická)](virtual-networks-create-vnet-classic-pportal.md) chcete vytvořit síť vnet s názvem *TestVnet* a ujistěte se používá *10.0.0.0/8*  adresní prostor.
 > 
 > 
 
-## <a name="how-to-specify-a-static-internal-ip-when-creating-a-vm"></a>Určení statické interní IP při vytvoření virtuálního počítače
-Následující skript prostředí PowerShell vytvoří novou cloudovou službu s názvem *TestService*, načte bitovou kopii z Azure a pak vytvoří virtuální počítač s názvem *TestVM* v novou cloudovou službu pomocí načtené bitové kopie, nastaví virtuálního počítače v podsíti s názvem *Subnet-1*a nastaví *10.0.0.7* jako statické interní IP adresu pro virtuální počítač:
+## <a name="how-to-specify-a-static-internal-ip-when-creating-a-vm"></a>Jak zadat statické IP adresy interní při vytváření virtuálního počítače
+Následující skript Powershellu vytvoří novou cloudovou službu s názvem *TestService*, načte bitovou kopii z Azure a pak vytvoří virtuální počítač s názvem *TestVM* v nové cloudové službě pomocí načtený obrázek, nastaví služba WSUS Virtuální počítač byl v podsíti s názvem *Subnet-1*a nastaví *10.0.0.7* jako statické interní IP adresy pro virtuální počítač:
 
     New-AzureService -ServiceName TestService -Location "Central US"
     $image = Get-AzureVMImage|?{$_.ImageName -like "*RightImage-Windows-2012R2-x64*"}
@@ -56,8 +56,8 @@ Následující skript prostředí PowerShell vytvoří novou cloudovou službu s
     | Set-AzureStaticVNetIP -IPAddress 10.0.0.7 `
     | New-AzureVM -ServiceName "TestService" –VNetName TestVnet
 
-## <a name="how-to-retrieve-static-internal-ip-information-for-a-vm"></a>Jak načíst interní informace o statických IP pro virtuální počítač
-Chcete-li zobrazit informace o statické interní IP pro virtuální počítač vytvořený pomocí skriptu pro výše uvedené, spusťte následující příkaz prostředí PowerShell a sledovat hodnoty *IpAddress*:
+## <a name="how-to-retrieve-static-internal-ip-information-for-a-vm"></a>Jak načíst statické interních informací IP pro virtuální počítač
+Chcete-li zobrazit informace o statické interní IP pro virtuální počítač vytvořen pomocí výše uvedeného skriptu, spusťte následující příkaz prostředí PowerShell a sledovat hodnoty pro *IpAddress*:
 
     Get-AzureVM -Name TestVM -ServiceName TestService
 
@@ -88,15 +88,15 @@ Chcete-li zobrazit informace o statické interní IP pro virtuální počítač 
     OperationId                 : 34c1560a62f0901ab75cde4fed8e8bd1
     OperationStatus             : OK
 
-## <a name="how-to-remove-a-static-internal-ip-from-a-vm"></a>Postup odebrání statické interní IP z virtuálního počítače
-Chcete-li odebrat statické interní IP přidat do virtuálního počítače ve výše uvedené skriptu, spusťte následující příkaz prostředí PowerShell:
+## <a name="how-to-remove-a-static-internal-ip-from-a-vm"></a>Postup odebrání z virtuálního počítače statické interní IP adresa
+Pokud chcete odebrat statické interní IP adresa přidá do virtuálního počítače ve výše uvedené skriptu, spusťte následující příkaz Powershellu:
 
     Get-AzureVM -ServiceName TestService -Name TestVM `
     | Remove-AzureStaticVNetIP `
     | Update-AzureVM
 
-## <a name="how-to-add-a-static-internal-ip-to-an-existing-vm"></a>Jak přidat do stávajícího virtuálního počítače statické interní IP
-Pokud chcete přidat statické interní IP na virtuální počítač vytvořený skript výše, spusťte následující příkaz:
+## <a name="how-to-add-a-static-internal-ip-to-an-existing-vm"></a>Jak přidat do existujícího virtuálního počítače statické interní IP adresa
+Chcete-li přidat statické interní IP adresa na virtuální počítač vytvořený pomocí výše uvedeného skriptu, spusťte následující příkaz:
 
     Get-AzureVM -ServiceName TestService000 -Name TestVM `
     | Set-AzureStaticVNetIP -IPAddress 10.10.0.7 `
@@ -105,7 +105,7 @@ Pokud chcete přidat statické interní IP na virtuální počítač vytvořený
 ## <a name="next-steps"></a>Další postup
 [Vyhrazená IP adresa](virtual-networks-reserved-public-ip.md)
 
-[Úrovni instance veřejnou IP adresu (splnění)](virtual-networks-instance-level-public-ip.md)
+[Veřejné IP na úrovni instance (ILPIP)](virtual-networks-instance-level-public-ip.md)
 
-[Vyhrazená IP adresa REST API](https://msdn.microsoft.com/library/azure/dn722420.aspx)
+[Vyhrazenou IP adresu REST API](https://msdn.microsoft.com/library/azure/dn722420.aspx)
 

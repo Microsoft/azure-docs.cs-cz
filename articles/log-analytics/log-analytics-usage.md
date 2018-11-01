@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 08/11/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: d3714f7226de2a457f37e6ea4afa2b066ee460d1
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: c14013121517267445e89f43e228b03ba184f013
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49409131"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50415252"
 ---
 # <a name="analyze-data-usage-in-log-analytics"></a>Analýza využití dat v Log Analytics
 
@@ -49,12 +49,12 @@ Log Analytics obsahuje informace o objemu shromážděných dat, zdrojích odes�
     - Čas potřebný k shromáždění a indexaci dat  
 - Seznam dotazů
 
-![Řídicí panel Využití a náklady](./media/log-analytics-manage-cost-storage/usage-estimated-cost-dashboard-01.png)<br>
+![Řídicí panel Využití a náklady](media/log-analytics-usage/usage-estimated-cost-dashboard-01.png)<br>
 )
 
 ### <a name="to-work-with-usage-data"></a>Práce s daty o využití
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Na webu Azure Portal klikněte na **Všechny služby**. V seznamu prostředků zadejte **Log Analytics**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **Log Analytics**.<br><br> ![Azure Portal](./media/log-analytics-quick-collect-azurevm/azure-portal-01.png)<br><br>  
+2. Na webu Azure Portal klikněte na **Všechny služby**. V seznamu prostředků zadejte **Log Analytics**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **Log Analytics**.<br><br> ![Azure Portal](media/log-analytics-usage/azure-portal-01.png)<br><br>  
 3. V seznamu pracovních prostorů Log Analytics vyberte pracovní prostor.
 4. V seznamu v levém podokně vyberte **Využití a odhad nákladů**.
 5. Na řídicím panelu **Využití a odhad nákladů** můžete upravit časový rozsah výběrem možnosti **Čas: Posledních 24 hodin** a změnou časového intervalu.<br><br> ![časový interval](./media/log-analytics-usage/usage-time-filter-01.png)<br><br>

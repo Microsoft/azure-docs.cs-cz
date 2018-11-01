@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: mareat
-ms.openlocfilehash: aa83ba1f428e70cd78cba2af6d39989179d5b30f
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 61354803f4fced7cd8fee31f10b5f72401f267da
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42054460"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50414943"
 ---
 # <a name="visualize-azure-network-watcher-nsg-flow-logs-using-open-source-tools"></a>Vizualizace protokolů toku NSG sledovací proces sítě Azure s využitím opensourcových nástrojů
 
@@ -43,7 +43,7 @@ Propojením protokolů toku NSG řešení Elastic Stack, můžeme vytvořit ří
 
 #### <a name="install-elasticsearch"></a>Instalace Elasticsearch
 
-1. Řešení Elastic Stack z verze 5.0 a vyšším vyžaduje Java 8. Spusťte příkaz `java -version` k ověření verze. Pokud nemáte java nainstalovat, přečtěte si dokumentaci na [webu společnosti Oracle](http://docs.oracle.com/javase/8/docs/technotes/guides/install/install_overview.html).
+1. Řešení Elastic Stack z verze 5.0 a vyšším vyžaduje Java 8. Spusťte příkaz `java -version` k ověření verze. Pokud nemáte java nainstalovat, pokud nemáte nainstalované java, přečtěte si dokumentaci na [Azure trvalé JDK](https://aka.ms/azure-jdks).
 2. Stáhněte balíček správné binární pro váš systém:
 
    ```bash

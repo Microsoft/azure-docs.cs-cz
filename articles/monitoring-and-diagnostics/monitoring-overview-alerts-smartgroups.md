@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: anantr
 ms.component: alerts
-ms.openlocfilehash: 58a66cfdfaada34981ef166635b0d04e2e6e8f61
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 57ec7c13cdf5c2e44abf23dc0452e5eab3eb77ff
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46976873"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50412614"
 ---
 # <a name="smart-groups"></a>Inteligentní skupiny
 Běžné challenge čelí při práci s výstrahami je procházení šumu a zjistěte, co skutečně záleží – inteligentní skupin by měla být řešení tohoto problému.  
@@ -44,7 +44,7 @@ Jsou podporovány následující stavy inteligentní skupinu.
 
 Když vyberete inteligentní skupinu, zobrazí se stránka podrobností inteligentní skupinu. Poskytuje podrobnosti o inteligentní skupiny, včetně odůvodnění, která byla použita k vytvoření skupiny a umožňuje změnit její stav.
  
-![Inteligentní skupiny podrobností](media/monitoring-overview-unified-alerts/smart-group-detail.png)
+![Inteligentní skupiny podrobností](media/monitoring-overview-alerts-smartgroups/smart-group-detail.png)
 
 
 Stránka s podrobnostmi inteligentní skupiny obsahuje následující části.

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: snmuvva
 ms.component: alerts
-ms.openlocfilehash: ffac9511ab93367cba3f006249bd92658a520e09
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 76a87b79ccc776e0facd57a1cff50fbbcb4f0b9e
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49386925"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50414875"
 ---
 # <a name="create-view-and-manage-classic-metric-alerts-using-azure-monitor"></a>Vytvořit, zobrazit a spravovat klasické metriky upozornění pomocí Azure monitoru
 
@@ -24,11 +24,11 @@ Klasického upozornění metrik ve službě Azure Monitor poskytují způsob, ja
 
 2. V **monitorování** vyberte **upozornění (klasická)**. Text a ikona se mohou mírně lišit pro různé prostředky. Pokud nenajdete **upozornění (klasická)** tady, je možné v **výstrahy** nebo **pravidla upozornění**.
 
-    ![Monitorování](./media/alerts-metric-classic/AlertRulesButton.png)
+    ![Monitorování](media/alert-metric-classic/AlertRulesButton.png)
 
 3. Vyberte **přidat upozornění metriky (klasické)** příkaz a potom přejít k vyplnění polí.
 
-    ![Přidat výstrahu](./media/alerts-metric-classic/AddAlertOnlyParamsPage.png)
+    ![Přidat výstrahu](media/alert-metric-classic/AddAlertOnlyParamsPage.png)
 
 4. **Název** pravidlo výstrahy. Klikněte na tlačítko **popis**, která také se zobrazí v oznamovací e-maily.
 

@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: ''
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/13/2018
+ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 70c760cd0cb571cc95250ab793829b060341e0ed
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 12e2f96e66305370499fbacf9ae6a834a22eb504
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39056574"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50412495"
 ---
 # <a name="integrate-azure-vpn-gateway-radius-authentication-with-nps-server-for-multi-factor-authentication"></a>Integrace ověření služby RADIUS brány Azure VPN se serverem NPS pro ověřování službou Multi-Factor Authentication 
 

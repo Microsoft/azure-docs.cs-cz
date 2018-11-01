@@ -1,10 +1,10 @@
 ---
-title: Převést šablonu Azure Resource Manager škálování sadu používat spravovaných disků na | Microsoft Docs
-description: Převeďte na šablonu sady škálování spravovaných disků na šablonu sady škálování.
-keywords: Sady škálování virtuálního počítače
+title: Převést šablony Azure Resource Manageru škálovací sady pro použití spravovaného disku | Dokumentace Microsoftu
+description: Převod šablony škálovací sady na spravovaný disk šablony škálovací sady.
+keywords: škálovací sady virtuálních počítačů
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: gatneil
+author: mayanknayar
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
@@ -15,21 +15,21 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 5/18/2017
-ms.author: negat
-ms.openlocfilehash: 760e30f5c6f4ecaff299bae1725548a6a7c5184c
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.author: manayar
+ms.openlocfilehash: be56fd80229010090216413a7c1833d94e8bac25
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/20/2017
-ms.locfileid: "26781067"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50739562"
 ---
-# <a name="convert-a-scale-set-template-to-a-managed-disk-scale-set-template"></a>Převést na šablonu sady škálování spravovaných disků na šablonu sady škálování
+# <a name="convert-a-scale-set-template-to-a-managed-disk-scale-set-template"></a>Převod šablony škálovací sady na spravovaný disk šablony škálovací sady
 
-Zákazníci pomocí šablony Resource Manageru pro vytváření škálovací sadu nepoužíváte spravovaných disků na chtít upravit tak, aby pomocí spravovaného disku. Tento článek ukazuje, jak používat spravovaného disků pomocí jako příklad žádost o přijetí změn z [šablon Azure rychlý Start](https://github.com/Azure/azure-quickstart-templates), úložišti komunitou vytvářený pro ukázkové šablony Resource Manageru. Zde můžete zjistit úplné přijetí žádosti o: [https://github.com/Azure/azure-quickstart-templates/pull/2998](https://github.com/Azure/azure-quickstart-templates/pull/2998), a jsou v příslušných částech rozdílové níže, společně s vysvětlení:
+Zákazníci pomocí šablony Resource Manageru pro vytvoření škálovací sady bez použití spravovaného disku chtít upravit pro použití spravovaného disku. Tento článek popisuje, jak používat spravované disky jako příklad použijeme žádost o přijetí změn z [šablony pro rychlý start Azure](https://github.com/Azure/azure-quickstart-templates), komunitou vyvíjených úložiště pro ukázkové šablony Resource Manageru. Žádost o úplné o přijetí změn můžete zobrazit tady: [ https://github.com/Azure/azure-quickstart-templates/pull/2998 ](https://github.com/Azure/azure-quickstart-templates/pull/2998), a příslušné části rozdíly jsou níže, spolu s vysvětlení:
 
-## <a name="making-the-os-disks-managed"></a>Provedení spravované disky operačního systému
+## <a name="making-the-os-disks-managed"></a>Vytváření spravovaných disků operačního systému
 
-V následujících rozdílů se odeberou několika proměnných související s vlastností účtu a disk úložiště. Typ účtu úložiště už není nutné (Standard_LRS je výchozí nastavení), ale můžete ji zadat v případě potřeby. Jsou podporovány pouze Standard_LRS a Premium_LRS s spravovaného disku. Nová přípona účet úložiště, pole jedinečné řetězce a počet sa byly použity v původní šabloně vygenerovat názvy účtů úložiště. Tyto proměnné již nejsou potřebné v nové šabloně protože spravovaných disků na účty úložiště automaticky vytvoří jménem zákazníka. Podobně název kontejneru virtuálního pevného disku a název disku operačního systému již nejsou potřebné protože spravovaných disků na názvy automaticky základní kontejnery úložiště objektů blob a disků.
+V následující rozdíly odeberou se několik proměnných související s vlastností účtu a disku úložiště. Typ účtu úložiště už není nutné (Standard_LRS je výchozí hodnota), ale můžete ho zadat v případě potřeby. Při použití spravovaného disku jsou podporovány pouze Standard_LRS a Premium_LRS. Nová přípona účtu úložiště jedinečný řetězec pole a počet sa byly použity v původní šabloně vygenerovat názvy účtů úložiště. Tyto proměnné nějaké už nejsou potřebné v novou šablonu, protože spravovaného disku automaticky vytvoří účty storage jménem zákazníka. Podobně název kontejneru virtuálního pevného disku a název disku operačního systému už nejsou potřebné protože spravovaný disk automaticky pojmenuje základní kontejnery úložiště objektů blob a disků.
 
 ```diff
    "variables": {
@@ -53,7 +53,7 @@ V následujících rozdílů se odeberou několika proměnných související s 
 ```
 
 
-V následující rozdílové výpočetní, že rozhraní API se aktualizuje na verzi 2016-04-30-preview, což je nejdříve požadovaná verze spravovaných disků na podporu pro sady škálování. Můžete použít nespravované disky v nové verzi rozhraní API pomocí staré syntaxe v případě potřeby. Pokud pouze aktualizovat na verzi rozhraní API výpočetní a neměnit cokoliv jiného, šablona by měly být nadále fungovat jako předtím.
+V následující rozdíly výpočetních, že rozhraní API je aktualizována na verzi 2016-04-30-preview, což je nejbližší požadovaná verze pro podporu spravovaných disků se škálovacími sadami. Můžete použít nespravované disky v nové verzi rozhraní API pomocí staré syntaxe v případě potřeby. Pokud pouze aktualizovat na verzi rozhraní API výpočetní a neměnit cokoli jiného, šablona by měla fungovat stejně jako předtím.
 
 ```diff
 @@ -86,7 +74,7 @@
@@ -67,7 +67,7 @@ V následující rozdílové výpočetní, že rozhraní API se aktualizuje na v
    },
 ```
 
-V následujících rozdílů prostředků účtu úložiště je úplně odebrat z pole prostředky. Prostředek se už nepotřebuje jako spravovaných disků na vytvoří je automaticky.
+V následující rozdíly prostředek účtu úložiště je zcela odebrán z pole prostředky. Prostředek se už nepotřebuje jako spravovaný disk vytvoří je automaticky.
 
 ```diff
 @@ -113,19 +101,6 @@
@@ -92,7 +92,7 @@ V následujících rozdílů prostředků účtu úložiště je úplně odebrat
        "location": "[resourceGroup().location]",
 ```
 
-V následujících rozdílů, uvidíme jsme odebrání závisí na klauzule odkazující od stupnice nastavena na smyčky, která byla vytváření účtů úložiště. V původní šabloně to byla zajistit, aby byly účty úložiště vytvořené před škálovací sadu začal vytvoření, ale tuto klauzuli už není nutné u spravovaných disků na. Vlastnost kontejnery vhd se taky odeberou, spolu s vlastnost název disku operačního systému jako tyto vlastnosti jsou automaticky zpracovávány pod pokličkou spravovaných disků na. Můžete přidat `"managedDisk": { "storageAccountType": "Premium_LRS" }` v konfiguraci "osDisk", pokud byste chtěli prémiové disky operačního systému. Pouze virtuální počítače s velkým nebo na malá ' ve virtuálním počítači můžete použít sku prémiové disky.
+V následující rozdíly, vidíme, že odebíráme závisí na klauzule odkazující ze škálovací sady do smyčky, která byla vytváření účtů úložiště. V původní šabloně to byla zajistit, že účty úložiště byly vytvořeny před zahájení vytváření škálovací sady, ale tuto klauzuli již není nezbytné při použití spravovaného disku. Kontejnery vlastností virtuálního pevného disku odebrán také, společně s vlastností název disku operačního systému jako tyto vlastnosti jsou automaticky zpracovány pod pokličkou spravovaného disku. Můžete přidat `"managedDisk": { "storageAccountType": "Premium_LRS" }` v konfiguraci "osDisk", pokud byste chtěli disky OS úrovně premium. Pouze virtuální počítače s velkým nebo malá písmena od "ve virtuálním počítači, můžete použít sku disky úrovně premium.
 
 ```diff
 @@ -183,7 +158,6 @@
@@ -121,12 +121,12 @@ V následujících rozdílů, uvidíme jsme odebrání závisí na klauzule odka
 
 ```
 
-Neexistuje žádné explicitní vlastnost v konfiguraci sady škálování pro jestli se má používat disku spravované nebo nespravované. Sada škálování ví, který se použije na základě vlastností, které se nacházejí v profilu úložiště. Proto je důležité při úpravě šablonu, zajistěte, aby vlastnosti oprávnění v profilu úložiště škálovací sady.
+Neexistuje žádná explicitní vlastnost do konfigurace škálovací sady pro, jestli se má použít spravovaný nebo nespravovaný disk. Škálovací sady ví, která se použije na základě vlastností, které se nacházejí v profilu úložiště. Proto je důležité při úpravě šablony, která má správné vlastnosti musí být v profilu úložiště škálovací sady.
 
 
 ## <a name="data-disks"></a>Datové disky
 
-S výše změny škálování sady používá spravované disky pro operační systém na disku, ale co o datových disků? Chcete-li přidat datových disků, přidejte vlastnost "dataDisks" v části "storageProfile" na stejné úrovni jako "osDisk". Hodnota vlastnosti je JSON seznam objektů, z nichž každá má vlastnosti "lun" (které musí být jedinečný pro každé datový disk na virtuálním počítači), "createOption" ("prázdný" je aktuálně jedinou možností podporovaných) a "diskSizeGB" (velikost disku v gigabajtech; musí být větší než 0 a menší než 1024) jako v následujícím příkladu: 
+Výše uvedené změny škálovací sada používá spravované disky pro operační systém na disku, ale co datové disky? Pokud chcete přidat datové disky, přidejte vlastnost "dataDisks" v části "storageProfile" na stejné úrovni jako "osDisk". Hodnota vlastnosti je JSON seznam objektů, z nichž každý má vlastnosti "logické jednotky" (který musí být jedinečný na datový disk na virtuálním počítači), "createOption" ("prázdná" je aktuálně jedinou podporovanou možností) a "diskSizeGB" (velikost disku v gigabajtech; musí být větší než 0 a menší než 1024) jako v následujícím příkladu: 
 
 ```
 "dataDisks": [
@@ -138,13 +138,13 @@ S výše změny škálování sady používá spravované disky pro operační s
 ]
 ```
 
-Pokud zadáte `n` disky v toto pole, jednotlivé virtuální počítače v měřítka nastavit získá `n` datových disků. Upozorňujeme však, že jsou tyto datové disky nezpracované zařízení. Jejich nejsou formátovány. Je zákazník připojit, oddíl a naformátovat disky před jejich používání. Volitelně můžete také zadat `"managedDisk": { "storageAccountType": "Premium_LRS" }` v každý datový disk objekt k určení, že by měl být premium datový disk. Pouze virtuální počítače s velkým nebo na malá ' ve virtuálním počítači můžete použít sku prémiové disky.
+Pokud zadáte `n` disků v tomto poli, každý virtuální počítač ve škálovací nastavit získá `n` datové disky. Upozorňujeme, že tyto datové disky jsou nezpracovaných zařízeních. Nejsou ve formátu. Záleží zákazníkovi připojení, oddíl a naformátovat disky před jejich použitím. Volitelně můžete také zadat `"managedDisk": { "storageAccountType": "Premium_LRS" }` jednotlivých objektů datového disku k určení, že by měl být datový disk úrovně premium. Pouze virtuální počítače s velkým nebo malá písmena od "ve virtuálním počítači, můžete použít sku disky úrovně premium.
 
-Další informace o datových disků pomocí sady škálování najdete v tématu [v tomto článku](./virtual-machine-scale-sets-attached-disks.md).
+Další informace o použití datových disků se škálovacími sadami najdete v tématu [v tomto článku](./virtual-machine-scale-sets-attached-disks.md).
 
 
-## <a name="next-steps"></a>Další kroky
-Například šablony Resource Manageru pomocí sad škálování, vyhledejte "vmss" v [úložiště github šablon Azure rychlý Start](https://github.com/Azure/azure-quickstart-templates).
+## <a name="next-steps"></a>Další postup
+Příklad šablony Resource Manageru pomocí škálovací sady, vyhledejte "vmss" v [úložišti github šablon pro rychlý start Azure](https://github.com/Azure/azure-quickstart-templates).
 
-Obecné informace, podívejte se [hlavní cílová stránka pro sady škálování](https://azure.microsoft.com/services/virtual-machine-scale-sets/).
+Obecné informace, podívejte se [hlavní cílové stránce pro škálovací sady](https://azure.microsoft.com/services/virtual-machine-scale-sets/).
 

@@ -11,12 +11,12 @@ ms.component: bing-web-search
 ms.topic: conceptual
 ms.date: 08/20/2018
 ms.author: erhopf
-ms.openlocfilehash: 4aa3509fcdfc6fd1bccb4db95a8c916a42ce23d2
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: e98407dface348dfdbc99a1146d50c46f3bb03a7
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46125268"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50739239"
 ---
 # <a name="how-to-page-through-results-from-the-bing-web-search-api"></a>Jak stránkovat výsledky z rozhraní API webové vyhledávání Bingu
 
@@ -61,4 +61,7 @@ Host: api.cognitive.microsoft.com
 
 Webové rozhraní API hledání vrátí výsledky, které zahrnují webové stránky a může taky obsahovat obrázků, videí a zpráv. Pokud je stránkování výsledků vyhledávání, jsou stránkování [WebAnswer](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#webanswer) odpovědí a není další odpovědi, jako je Image nebo zprávy. Například pokud nastavíte `count` na 50, získáte zpět 50 webovou stránku výsledků, ale odpověď může obsahovat další odpovědi a výsledky. Odpověď může obsahovat například 15 imagí a 4 články o novinkách. Je také možné, že výsledky mohou zahrnovat zprávy na stránce první, ale ne na druhé stránce, nebo naopak.   
 
-Pokud zadáte `responseFilter` parametr dotazu a nezahrnují webové stránky v seznamu filtru, nepoužívejte `count` a `offset` parametry.  
+Pokud zadáte `responseFilter` parametr dotazu a nezahrnují webové stránky v seznamu filtru, nepoužívejte `count` a `offset` parametry. 
+
+> [!NOTE]
+> `TotalEstimatedAnswers` Pole je odhad celkový počet výsledků hledání můžete načíst aktuálního dotazu.  Pokud nastavíte `count` a `offset` parametry, `TotalEstimatedAnswers` číslo může změnit. 

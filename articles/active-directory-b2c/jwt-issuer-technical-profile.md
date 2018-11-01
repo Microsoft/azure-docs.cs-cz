@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
+ms.date: 10/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: cb004745cfbc6af185a06c4787fb34326eccc69a
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 25352d12e578c289ccb4ab8aab60dc55a444762e
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44381130"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50413498"
 ---
 # <a name="define-a-technical-profile-for-a-jwt-token-issuer-in-an-azure-active-directory-b2c-custom-policy"></a>Definování technický profil pro vystavitele tokenu JWT ve vlastních zásadách pro Azure Active Directory B2C
 
@@ -52,7 +52,7 @@ Následující příklad ukazuje technický profil pro `JwtIssuer`:
 | id_token_lifetime_secs | Ne | Životnost tokenů ID. Výchozí hodnota je 3 600 sekund (1 hodina). (Včetně) minimální hodnota je 300 sekund (5 minut). Maximální počet (včetně) je sekund 86,400 (24 hodin). | 
 | refresh_token_lifetime_secs | Ne | Aktualizujte životností tokenů. Maximální časové období, před kterým token obnovení je možné získat nový přístupový token, pokud vaše aplikace byl udělen offline_access oboru. Výchozí hodnota je 120,9600 sekund (14 dní). (Včetně) minimální hodnota je 86 400 sekund (24 hodin). Maximální počet (včetně) je 7,776,000 sekund (90 dnů). | 
 | rolling_refresh_token_lifetime_secs | Ne | Aktualizujte token doba života posuvného okna. Po tomto časovém období uplyne uživatel bude muset donutit, bez ohledu na období platnosti posledního obnovovací token získaný aplikace. Pokud nechcete, aby k vynucení doba života posuvného okna, nastavte hodnotu allow_infinite_rolling_refresh_token k `true`. Výchozí hodnota je 7,776,000 sekund (90 dnů). (Včetně) minimální hodnota je 86 400 sekund (24 hodin). Maximální počet (včetně) je 31,536,000 sekund (365 dní). | 
-| rolling_refresh_token_lifetime_secs | Ne | Pokud nastavena na `true`, obnovovací token klouzavým 5minutovým životnost nikdy nevyprší. |
+| allow_infinite_rolling_refresh_token | Ne | Pokud nastavena na `true`, obnovovací token klouzavým 5minutovým životnost nikdy nevyprší. |
 | IssuanceClaimPattern | Ano | Ovládací prvky deklarace identity vystavitele (iss). Jedna z hodnot:<ul><li>AuthorityAndTenantGuid - deklaraci identity iss zahrnuje název domény, jako například `login.microsoftonline` nebo `tenant-name.b2clogin.com`a svůj identifikátor tenanta https://login.microsoftonline.com/00000000-0000-0000-0000-000000000000/v2.0/</li><li>AuthorityWithTfp - deklaraci identity iss zahrnuje název domény, jako například `login.microsoftonline` nebo `tenant-name.b2clogin.com`, váš tenant identifikátor a název zásady předávající strany. https://login.microsoftonline.com/tfp/00000000-0000-0000-0000-000000000000/b2c_1a_tp_sign-up-or-sign-in/v2.0/</li></ul> | 
 | AuthenticationContextReferenceClaimPattern | Ne | Ovládací prvky `acr` hodnoty deklarace identity.<ul><li>Žádný - není Azure AD B2C vydávání deklarací acr</li><li>Vlastnosti PolicyId - `acr` deklarací identity obsahuje název zásady</li></ul>Možnosti pro nastavení této hodnoty jsou TFP (zásady důvěryhodnosti framework) a služby ACR (authentication kontextu odkaz). Doporučuje se tuto hodnotu nastavíte na TFP, ujistěte se, pokud chcete nastavit hodnotu, `<Item>` s `Key="AuthenticationContextReferenceClaimPattern"` existuje a má hodnotu `None`. V přijímající strany zásady, přidejte <OutputClaims> položky, přidejte tento element `<OutputClaim ClaimTypeReferenceId="trustFrameworkPolicy" Required="true" DefaultValue="{policy}" />`. Také se ujistěte, že vaše zásady obsahuje typ deklarace identity `<ClaimType Id="trustFrameworkPolicy"> <DisplayName>trustFrameworkPolicy</DisplayName>     <DataType>string</DataType> </ClaimType>` | 
 

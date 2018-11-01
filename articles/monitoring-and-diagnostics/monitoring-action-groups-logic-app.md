@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: dukek
 ms.component: alerts
-ms.openlocfilehash: 3c1bff98debf426fc02dbd4518c0bb798d7ba96d
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 74607f61482d4a96931e307e77b4a6d4c45e4c30
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45576014"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50420927"
 ---
 # <a name="how-to-trigger-complex-actions-with-azure-monitor-alerts"></a>Jak aktivovat složité akce s Azure Monitor výstrah
 
@@ -38,25 +38,25 @@ Proces je podobný, pokud chcete aplikaci logiky provádět různé akce.
 
 1.  Na webu Azure Portal, vyberte **vytvořit prostředek** v levém horním rohu.
 
-2.  Vyhledejte a vyberte **aplikace logiky**a pak vyberte **vytvořit**.
+2.  Vyhledejte a vyberte **aplikace logiky**a pak vyberte **vytvořit**.
 
 3.  Dejte aplikaci logiky **název**, zvolte **skupiny prostředků**, a tak dále.
 
-    ![Vytvoření aplikace logiky](media/monitoring-action-groups/create-logic-app-dialog.png "vytvoření aplikace logiky")
+    ![Vytvoření aplikace logiky](media/monitoring-action-groups-logic-app/create-logic-app-dialog.png "vytvoření aplikace logiky")
 
 4.  Vyberte **vytvořit** k vytvoření aplikace logiky. Místní zpráva označuje, že je vytvořená aplikace logiky. Vyberte **spuštění prostředků** otevřít **návrhář pro Logic Apps**.
 
 5.  Vyberte trigger: **přijetí požadavku HTTP když**.
 
-    ![Triggery aplikace logiky](media/monitoring-action-groups/logic-app-triggers.png "triggery aplikace logiky")
+    ![Triggery aplikace logiky](media/monitoring-action-groups-logic-app/logic-app-triggers.png "triggery aplikace logiky")
 
 6.  Vyberte **upravit** změnit aktivační událost požadavek HTTP.
 
-    ![Aktivační události HTTP požadavku](media/monitoring-action-groups/http-request-trigger-shape.png "triggerů požadavek HTTP")
+    ![Aktivační události HTTP požadavku](media/monitoring-action-groups-logic-app/http-request-trigger-shape.png "triggerů požadavek HTTP")
 
 7.  Vyberte **K vygenerování schématu použijte ukázkovou datovou část**.
 
-    ![Použít ukázkovou datovou část](media/monitoring-action-groups/use-sample-payload-button.png "použít ukázkovou datovou část")
+    ![Použít ukázkovou datovou část](media/monitoring-action-groups-logic-app/use-sample-payload-button.png "použít ukázkovou datovou část")
 
 8.  Zkopírujte a vložte následující schéma ukázka do dialogového okna:
 
@@ -99,15 +99,15 @@ Proces je podobný, pokud chcete aplikaci logiky provádět různé akce.
 
 9. **Návrhář aplikace logiky** zobrazí automaticky otevírané okno s připomínkou, že musíte nastavit požadavku odeslaného do aplikace logiky **Content-Type** záhlaví **application/json**. Automaticky otevírané okno zavřete. Azure Monitor alert nastaví záhlaví.
 
-    ![Nastavit hlavičku Content-Type](media/monitoring-action-groups/content-type-header.png "nastavit hlavičku Content-Type")
+    ![Nastavit hlavičku Content-Type](media/monitoring-action-groups-logic-app/content-type-header.png "nastavit hlavičku Content-Type")
 
 10. Vyberte **+** **nový krok** a klikněte na tlačítko **přidat akci**.
 
-    ![Přidání akce](media/monitoring-action-groups/add-action.png "přidat akci")
+    ![Přidání akce](media/monitoring-action-groups-logic-app/add-action.png "přidat akci")
 
 11. Vyhledejte a vyberte konektor Microsoft Teams. Zvolte **Microsoft Teams – publikovat zprávu** akce.
 
-    ![Akce Microsoft Teams](media/monitoring-action-groups/microsoft-teams-actions.png "akce Microsoft Teams")
+    ![Akce Microsoft Teams](media/monitoring-action-groups-logic-app/microsoft-teams-actions.png "akce Microsoft Teams")
 
 12. Nakonfigurujte akci, která Microsoft Teams. **Návrhář pro Logic Apps** vás vyzve k ověření vašeho účtu Office 365. Zvolte **ID týmu** a **ID kanálu** odeslat zprávu do.
 
@@ -125,13 +125,13 @@ Proces je podobný, pokud chcete aplikaci logiky provádět různé akce.
     > [!NOTE]
     > Existují dvě dynamické pole, které jsou pojmenovány **stav**. Přidejte oba z těchto polí do zprávy. Použijte pole, které je v **activityLog** kontejner objektů a dat a odstranění jiné pole. Ukazatele myši **stav** pole zobrazíte úplný pole odkazu, jak je znázorněno na následujícím snímku obrazovky:
 
-    ![Akce Microsoft Teams: odeslání zprávy](media/monitoring-action-groups/teams-action-post-message.png "akce Microsoft Teams: odeslání zprávy")
+    ![Akce Microsoft Teams: odeslání zprávy](media/monitoring-action-groups-logic-app/teams-action-post-message.png "akce Microsoft Teams: odeslání zprávy")
 
 14. V horní části **návrhář pro Logic Apps**vyberte **Uložit** uložte aplikaci logiky.
 
 15. Otevřete váš stávající skupiny akcí a přidejte akci, která odkazují na aplikaci logiky. Pokud nemáte stávající skupiny akcí, přečtěte si téma [vytvořit a spravovat skupiny akcí na webu Azure Portal](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups) k jejímu vytvoření. Nezapomeňte si uložit změny.
 
-    ![Aktualizovat skupinu akcí](media/monitoring-action-groups/update-action-group.png "aktualizovat skupinu akcí")
+    ![Aktualizovat skupinu akcí](media/monitoring-action-groups-logic-app/update-action-group.png "aktualizovat skupinu akcí")
 
 Při příštím výstrahu volá vaši skupinu akcí se nazývá svou aplikaci logiky.
 
@@ -192,7 +192,7 @@ Azure Service Health položky jsou součástí protokolu aktivit. Je podobný pr
        - `eventSource == ServiceHealth`
        - `version == "0.1.1"`
 
-      !["Service Health datové části podmínku"](media/monitoring-action-groups/service-health-payload-condition.png "podmínka datové části Service Health")
+      !["Service Health datové části podmínku"](media/monitoring-action-groups-logic-app/service-health-payload-condition.png "podmínka datové části Service Health")
 
    1. V **při hodnotě true** podmínky, postupujte podle pokynů v kroků 11 až 13 [vytvoření upozornění protokolu aktivit](#create-an-activity-log-alert-administrative) přidáte akci Microsoft Teams.
 
@@ -209,7 +209,7 @@ Azure Service Health položky jsou součástí protokolu aktivit. Je podobný pr
        <p>[communication]</p>
        ```
 
-       !["Service Health splněné podmínky příspěvek action"](media/monitoring-action-groups/service-health-true-condition-post-action.png "akci po splněna podmínka stavu služby")
+       !["Service Health splněné podmínky příspěvek action"](media/monitoring-action-groups-logic-app/service-health-true-condition-post-action.png "akci po splněna podmínka stavu služby")
 
    1. Pro **případě hodnoty false** podmínky, poskytují užitečné zpráva:
 
@@ -219,7 +219,7 @@ Azure Service Health položky jsou součástí protokolu aktivit. Je podobný pr
        <p><a href="https://ms.portal.azure.com/#blade/Microsoft_Azure_Health/AzureHealthBrowseBlade/serviceIssues">For details, log in to the Azure Service Health dashboard.\</a></p>
        ```
 
-       !["Service Health nepravdivé příspěvek action"](media/monitoring-action-groups/service-health-false-condition-post-action.png "akci po nepravdivé Service Health")
+       !["Service Health nepravdivé příspěvek action"](media/monitoring-action-groups-logic-app/service-health-false-condition-post-action.png "akci po nepravdivé Service Health")
 
 - Krok 15 je stejný. Postupujte podle pokynů pro svou aplikaci logiky a aktualizaci vaší skupiny akcí.
 
@@ -279,15 +279,15 @@ Je podobný procesu pro vytváření upozornění na metriku [vytvoření upozor
        - `schemaId == AzureMonitorMetricAlert`
        - `version == "2.0"`
        
-       !["Podmínka metriky upozornění datovou část"](media/monitoring-action-groups/metric-alert-payload-condition.png "podmínka metriky upozornění datové části")
+       !["Podmínka metriky upozornění datovou část"](media/monitoring-action-groups-logic-app/metric-alert-payload-condition.png "podmínka metriky upozornění datové části")
 
    1. V **při hodnotě true** podmínky, přidejte **pro každou** smyčky a akce Microsoft Teams. Definujte zprávy pomocí kombinace HTML a dynamický obsah.
 
-       !["Akci po metriky true vyskytl výstražný stav"](media/monitoring-action-groups/metric-alert-true-condition-post-action.png "akci po upozornění true podmínku metriky")
+       !["Akci po metriky true vyskytl výstražný stav"](media/monitoring-action-groups-logic-app/metric-alert-true-condition-post-action.png "akci po upozornění true podmínku metriky")
 
    1. V **případě hodnoty false** podmínky, definujte akce Microsoft Teams pro komunikaci, že upozornění metriky neodpovídá požadavkům aplikace logiky. Zahrnout datovou část JSON. Všimněte si, jak odkazovat `triggerBody` dynamický obsah `json()` výrazu.
 
-       !["Akci po metriky false vyskytl výstražný stav"](media/monitoring-action-groups/metric-alert-false-condition-post-action.png "akci po upozornění false podmínku metriky")
+       !["Akci po metriky false vyskytl výstražný stav"](media/monitoring-action-groups-logic-app/metric-alert-false-condition-post-action.png "akci po upozornění false podmínku metriky")
 
 - Krok 15 je stejný. Postupujte podle pokynů pro svou aplikaci logiky a aktualizaci vaší skupiny akcí.
 

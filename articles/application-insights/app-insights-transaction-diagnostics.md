@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/19/2018
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: df88e9025da305701dc7168f663cad2e8f5ac738
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: 5b52fd41fc3e37078bbddc721c0c54af2c430b43
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42819869"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50419227"
 ---
 # <a name="unified-cross-component-transaction-diagnostics"></a>Diagnostika jednotné transakcí mezi komponentami
 
@@ -38,7 +38,7 @@ Součásti jsou umožňují nezávislé nasazení částí aplikace distribuovat
 ## <a name="transaction-diagnostics-experience"></a>Diagnostika transakcí prostředí
 Toto zobrazení obsahuje čtyři klíčové části: výsledky seznamu, graf transakcí mezi komponentami, časový průběh seznam všechny telemetrické údaje vztahující se k této operaci a v podokně podrobností pro všechny položky vybrané telemetrie na levé straně.
 
-![Klíčové části](media/app-insights-e2eTxn-diagnostics/4partsCrossComponent.png)
+![Klíčové části](media/app-insights-transaction-diagnostics/4partsCrossComponent.png)
 
 ## <a name="cross-component-transaction-chart"></a>Graf transakcí mezi komponentami
 
@@ -57,19 +57,19 @@ Volání na jiné komponenty obsahuje dva řádky: odchozích volání (závislo
 
 Tato část uvádí seznam bez stromové struktury v čase posloupnost veškerá telemetrická data týkající se této transakce. Také ukazuje vlastní události a trasování, které nejsou zobrazeny v grafu transakce. Je tento seznam můžete filtrovat na telemetrii generovanou konkrétní součást a volání. Můžete vybrat všechny položky telemetrie v tomto seznamu chcete zobrazit odpovídající [podrobnosti na pravé straně](#details-of-the-selected-telemetry).
 
-![Čas posloupnost veškerou telemetrii](media/app-insights-e2eTxn-diagnostics/allTelemetryDrawerOpened.png)
+![Čas posloupnost veškerou telemetrii](media/app-insights-transaction-diagnostics/allTelemetryDrawerOpened.png)
 
 ## <a name="details-of-the-selected-telemetry"></a>Podrobnosti vybrané telemetrických dat
 
 Tento sbalitelné podokně se zobrazí podrobnosti vybrané položky z grafu transakce, nebo v seznamu. "Zobrazit všechny" jsou uvedeny všechny standardní atributy, které byly shromážděny. Žádné vlastní atributy jsou uvedeny samostatně standardní sady. Klikněte na "..." níže okno trasování zásobníku získat možnost kopírování trasování. "Trasování profileru otevřít" nebo "Otevřít snímek ladění" zobrazuje úrovně diagnostiky kódu v odpovídající podokna podrobností.
 
-![Podrobnosti o výjimce](media/app-insights-e2eTxn-diagnostics/exceptiondetail.png)
+![Podrobnosti o výjimce](media/app-insights-transaction-diagnostics/exceptiondetail.png)
 
 ## <a name="search-results"></a>Výsledky hledání
 
 V tomto podokně sbalitelné zobrazuje výsledky, které splňují kritéria filtru. Klikněte na libovolný výsledek aktualizace příslušné podrobnosti o 3 oddíly uvedené výše. Snažíme se najít ukázky, které bývají nejčastějším obsahují podrobné informace ze všech komponent k dispozici i v případě, že v žádném z nich je aktivní vzorkování. Tyto aspekty znázorňuje "doporučené" vzorků.
 
-![Výsledky hledání](media/app-insights-e2eTxn-diagnostics/searchResults.png)
+![Výsledky hledání](media/app-insights-transaction-diagnostics/searchResults.png)
 
 ## <a name="profiler-and-snapshot-debugger"></a>Profiler a snapshot debugger
 
@@ -79,7 +79,7 @@ Pokud Profiler práce nelze získat, obraťte se prosím **serviceprofilerhelp@m
 
 Pokud nelze získat Snapshot Debugger práce, obraťte se prosím **snapshothelp@microsoft.com**
 
-![Profiler integrace](media/app-insights-e2eTxn-diagnostics/profilerTraces.png)
+![Profiler integrace](media/app-insights-transaction-diagnostics/profilerTraces.png)
 
 ## <a name="faq"></a>Nejčastější dotazy
 

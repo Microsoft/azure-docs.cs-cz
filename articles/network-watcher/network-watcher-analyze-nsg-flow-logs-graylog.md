@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2017
 ms.author: mareat
-ms.openlocfilehash: db3b08ae8092661e6ffa0f2dd7e460f341a8d013
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 3030fdcec95d91b75974465ad30f707837263367
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43666055"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50414773"
 ---
 # <a name="manage-and-analyze-network-security-group-flow-logs-in-azure-using-network-watcher-and-graylog"></a>Správa a analyzovat protokoly toků skupin zabezpečení sítě v Azure s využitím Network Watcheru a Graylogu
 
@@ -38,7 +38,7 @@ Protokoly toků skupin zabezpečení sítě jsou povolené používat Network Wa
 
 ### <a name="enable-network-security-group-flow-logging"></a>Povolit protokolování toků skupin zabezpečení sítě
 
-V tomto scénáři musí mít síťové protokolování toků skupin zabezpečení povolené ve skupině zabezpečení u alespoň jednoho síťového ve vašem účtu. Pro pokyny k povolení síťové protokoly toků skupin zabezpečení, přečtěte si následující článek [Úvod k protokolování toků pro skupiny zabezpečení sítě](network-watcher-nsg-flow-logging-overview.md).
+V tomto scénáři musí mít síťové protokolování toků skupin zabezpečení povolené ve skupině zabezpečení u alespoň jednoho síťového ve vašem účtu. Pro pokyny k povolení síťové protokoly toků skupin zabezpečení, přečtěte si následující článek [Úvod k protokolování toků pro skupiny zabezpečení sítě](network-watcher-nsg-flow-logging-overview.md).
 
 ### <a name="setting-up-graylog"></a>Nastavení Graylogu
 
@@ -51,7 +51,7 @@ Tento příklad používá nastavení minimální Graylogu (např.) jedna instan
 
 Graylogu je možné nainstalovat mnoha způsoby v závislosti na vaší platformě a předvolby. Úplný seznam metod instalace je to možné, najdete v oficiální společnosti Graylogu [dokumentaci](http://docs.graylog.org/en/2.2/pages/installation.html). Graylogu serverová aplikace běží v Linuxových distribucích a má následující požadavky:
 
--  Oracle Java SE 8 nebo novějším – [dokumentaci k instalaci Oracle](http://docs.oracle.com/javase/8/docs/technotes/guides/install/install_overview.html)
+-  Java SE 8 nebo novějším – [Azul Azure JDK dokumentace](https://aka.ms/azure-jdks)
 -  Elastické hledání 2.x (2.1.0 nebo novější)- [dokumentaci k instalaci Elasticsearch](https://www.elastic.co/guide/en/elasticsearch/reference/2.4/_installation.html)
 -  MongoDB 2.4 nebo vyšší – [dokumentaci k instalaci MongoDB](https://docs.mongodb.com/manual/administration/install-on-linux/)
 
@@ -244,4 +244,4 @@ Díky integraci služby Network Watcher s Graylogu, máte teď pohodlný a centr
 
 ## <a name="next-steps"></a>Další postup
 
-Zjistěte, jak vizualizovat vaše síťové protokoly toků skupin zabezpečení v Power BI návštěvou [protokoly s Power BI toků skupin zabezpečení sítě vizualizovat](network-watcher-visualize-nsg-flow-logs-power-bi.md).
+Zjistěte, jak vizualizovat vaše síťové protokoly toků skupin zabezpečení v Power BI návštěvou [protokoly s Power BI toků skupin zabezpečení sítě vizualizovat](network-watcher-visualize-nsg-flow-logs-power-bi.md).

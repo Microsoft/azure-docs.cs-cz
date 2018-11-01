@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: robb
 ms.component: alerts
-ms.openlocfilehash: 7565c536b5d24c859b164a960f74bd1e2ce97b63
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f044cf7e0b614d338ec9b294dfbf02c26c4351b1
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46960630"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50413856"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Přehled výstrah v Microsoft Azure 
 
@@ -23,7 +23,7 @@ Tento článek popisuje, jaké výstrahy jsou jejich výhody a jak je začít po
 ## <a name="what-are-alerts-in-microsoft-azure"></a>Co jsou upozornění v Microsoft Azure?
 Proaktivně upozornění se zobrazí důležitých podmínky se nacházejí ve vašich dat z monitorování. Umožňují vám identifikovat a vyřešit problémy dříve, než uživatelé vašeho systému Všimněte si, že je. 
 
-Tento článek popisuje jednotné prostředí výstrah ve službě Azure Monitor, který nyní obsahuje Log Analytics a Application Insights. [Předchozí zkušenosti upozornění](monitoring-overview-alerts.md)a typy výstrah, se nazývají **klasických upozornění**. Tento starší prostředí a starší typu výstrahy můžete zobrazit kliknutím na **zobrazit upozornění classic** v horní části stránky upozornění. 
+Tento článek popisuje jednotné prostředí výstrah ve službě Azure Monitor, který nyní obsahuje Log Analytics a Application Insights. [Předchozí zkušenosti upozornění](monitoring-overview-alerts.md) a typy výstrah, se nazývají **klasických upozornění**. Tento starší prostředí a starší typu výstrahy můžete zobrazit kliknutím na **zobrazit upozornění classic** v horní části stránky upozornění.
 
 
 ## <a name="overview"></a>Přehled
@@ -57,7 +57,7 @@ Můžete upozornění na metriky a protokoly, jak je popsáno v [monitorování 
 
 
 
-## <a name="manage-alerts"></a>Správa výstrah
+## <a name="manage-alerts"></a>Správa upozornění
 Stav výstrahy k určení, kde je v procesu překladu, který můžete nastavit. Když se splní kritéria zadaná v pravidle výstrahy, vytvoření nebo aktivuje výstrahu, je ve stavu *nový*. Po potvrzení oznámení a při zavření, můžete změnit stav. Všechny změny stavu jsou uloženy v historii upozornění.
 
 Jsou podporovány následující stavy výstrah.
@@ -164,7 +164,7 @@ Na stránce podrobností výstrahy obsahuje následující části.
 | Další podrobnosti | Zobrazí další kontextové informace pro výstrahy, což je obvykle specifický pro typ zdroje, která upozornění vytvořila. |
 
 
-## <a name="classic-alerts"></a>Upozornění Classic 
+## <a name="classic-alerts"></a>Klasická upozornění 
 
 Azure Monitor metrik a aktivit protokolu výstrahy funkce před. června 2018 se nazývá "Upozornění (klasická)". 
 

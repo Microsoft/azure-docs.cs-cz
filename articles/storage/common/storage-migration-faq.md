@@ -5,15 +5,15 @@ services: storage
 author: genlin
 ms.service: storage
 ms.topic: article
-ms.date: 05/11/2018
+ms.date: 10/31/2018
 ms.author: genli
 ms.component: common
-ms.openlocfilehash: 3c671fe6dcb1af25bfb0aa09fecf8ad5e5ceb97b
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 85f93e15cfce1d44567c48c6c6f4b38c42dfb296
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45732256"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50416388"
 ---
 # <a name="frequently-asked-questions-about-azure-storage-migration"></a>Nejčastější dotazy ohledně migrace úložiště Azure
 
@@ -23,7 +23,7 @@ Tento článek obsahuje odpovědi na běžné dotazy týkající se migrace úlo
 
 **Jak vytvořit skript pro kopírování souborů z jednoho kontejneru do jiného?**
 
-Kopírování souborů mezi kontejnery, můžete pomocí nástroje AzCopy. Podívejte se na následující příklad:
+Kopírování souborů mezi kontejnery, můžete pomocí nástroje AzCopy. Prohlédněte si následující příklad:
 
     AzCopy /Source:https://xxx.blob.core.windows.net/xxx
     /Dest:https://xxx.blob.core.windows.net/xxx /SourceKey:xxx /DestKey:xxx

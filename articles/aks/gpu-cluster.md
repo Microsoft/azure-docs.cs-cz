@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 10/25/2018
 ms.author: laevenso
-ms.openlocfilehash: db9d42cca4bc327d216229f45f5fa1742f70fb9a
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 683abd9bad93bff51bea84c8081d2b8f9d300cd4
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50138805"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50419244"
 ---
 # <a name="use-gpus-for-compute-intensive-workloads-on-azure-kubernetes-service-aks"></a>Použití GPU pro úlohy náročné na výpočetní prostředky ve službě Azure Kubernetes Service (AKS)
 
@@ -121,6 +121,9 @@ Non-terminated Pods:         (9 in total)
 Zobrazíte GPU v akci Naplánujte úlohu s podporou grafického procesoru u žádosti odpovídající prostředek. V tomto příkladu, můžeme spustit [Tensorflow](https://www.tensorflow.org/versions/r1.1/get_started/mnist/beginners) úlohy proti [datovou sadu mnist ručně](http://yann.lecun.com/exdb/mnist/).
 
 Vytvořte soubor s názvem *ukázky tf mnist ručně demo.yaml* a vložte následující YAML manifestu. Následující úloha manifest obsahuje omezení prostředků `nvidia.com/gpu: 1`:
+
+> [!NOTE]
+> Pokud se zobrazí chybová zpráva o neshodě verze při volání do ovladače, například verze ovladače CUDA není dostatečná pro verzi modulu runtime CUDA, podívejte se na nVidia ovladač matice kompatibility graf- [https://docs.nvidia.com/deploy/cuda-compatibility/index.html](https://docs.nvidia.com/deploy/cuda-compatibility/index.html)
 
 ```yaml
 apiVersion: batch/v1
