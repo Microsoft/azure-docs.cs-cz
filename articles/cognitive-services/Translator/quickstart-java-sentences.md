@@ -10,12 +10,12 @@ ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/21/2018
 ms.author: erhopf
-ms.openlocfilehash: 3ea4c3a6463b831fe960bf6aec9e4c1151f8424d
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 59d3c194f08a8ede6ea2a56f95f7000eafe6c479
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49644863"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50413221"
 ---
 # <a name="quickstart-get-sentence-lengths-with-the-translator-text-rest-api-java"></a>Rychlý start: Získání délky vět pomocí rozhraní REST API služby Translator Text (Java)
 
@@ -23,7 +23,7 @@ V tomto rychlém startu zjistíte délky vět v textu pomocí služby Translator
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pro kompilaci a spuštění tohoto kódu budete potřebovat [JDK 7 nebo 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html). Můžete použít prostředí Java IDE, pokud je vaše oblíbené, ale stačit bude i textový editor.
+Pro kompilaci a spuštění tohoto kódu budete potřebovat [JDK 7 nebo 8](https://aka.ms/azure-jdks). Můžete použít prostředí Java IDE, pokud je vaše oblíbené, ale stačit bude i textový editor.
 
 Abyste mohli použít službu Translator Text API, budete potřebovat klíč předplatného. Přečtěte si, [jak se zaregistrovat ve službě Translator Text API](translator-text-how-to-signup.md).
 

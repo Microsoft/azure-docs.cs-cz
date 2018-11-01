@@ -50,7 +50,7 @@ Odkazovat na [virtuálních sítí a konfigurace Azure Key Vault firewallů](key
 > [!NOTE]
 > * Jsou povoleny maximální 127 pravidla virtuální sítě a 127 pravidla IPv4. 
 > * Rozsahy malé adres pomocí "/ 31" nebo "/ 32" předpony velikosti se nepodporují. Tyto rozsahy musí být nakonfigurovaný pomocí jednotlivých pravidel IP adres.
-> * Pravidla síťových IP jsou povoleny pouze pro veřejné IP adresy. Rozsahy IP adres vyhrazené pro privátní sítě (jak jsou definovány v dokumentu RFC 1918) nejsou povoleny v pravidlech IP. Privátní sítě zahrnují adresy začínající hodnotami * maska 10.* *, * 172.16. **, a * 192.168. **. 
+> * Pravidla síťových IP jsou povoleny pouze pro veřejné IP adresy. Rozsahy IP adres vyhrazené pro privátní sítě (jak jsou definovány v dokumentu RFC 1918) nejsou povoleny v pravidlech IP. Privátní sítě zahrnují adresy začínající hodnotami maska *10.*\*, *172.16.*\*, a *192.168.*\*. 
 > * V současnosti jsou podporované jenom adresy IPv4.
 
 ## <a name="trusted-services"></a>Důvěryhodné služby
