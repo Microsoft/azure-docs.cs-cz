@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: rafats
-ms.openlocfilehash: b6d05c5e9bc59df9df7ef8840b70ab027b6e2f74
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: 09f827e8784fe2a97c587524d70baf76ae4458ba
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48269492"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50741857"
 ---
 # <a name="working-with-the-change-feed-support-in-azure-cosmos-db"></a>Práce s změnu podpora kanálu ve službě Azure Cosmos DB
 
@@ -34,7 +34,7 @@ ms.locfileid: "48269492"
 
 ## <a name="how-does-change-feed-work"></a>Jak změnit informační kanál k práci?
 
-Podpora ve službě Azure Cosmos DB funguje kanálu změn prostřednictvím naslouchání na kolekci Azure Cosmos DB k nějakým změnám. Potom vypíše seřazený seznam dokumentů, které byly změněny v pořadí, ve kterém byly změněny. Změny jsou trvalé, může být zpracována asynchronně a postupně a výstupu mohou být distribuovány na jeden nebo více příjemců pro paralelní zpracování. 
+Podpora ve službě Azure Cosmos DB funguje kanálu změn prostřednictvím naslouchání na kolekci Azure Cosmos DB k nějakým změnám. Potom vypíše seřazený seznam dokumentů, které byly změněny v pořadí, ve kterém byly změněny. Změny jsou trvalé, dají se zpracovat asynchronně a přírůstkově a výstup se dá distribuovat jednomu nebo více příjemcům k paralelnímu zpracování. 
 
 Kanál třemi různými způsoby, změn si můžete přečíst, jak je popsáno dále v tomto článku:
 
@@ -47,7 +47,7 @@ Kanál změn je k dispozici pro každým rozsahem klíče oddílu v rámci kolek
 ![Distribuované zpracování kanálu změn služby Azure Cosmos DB](./media/change-feed/changefeedvisual.png)
 
 Další podrobnosti:
-* Kanál změn je povoleno standardně pro všechny účty.
+* Ve výchozím nastavení je kanál změn povolený pro všechny účty.
 * Můžete použít vaše [zřízená propustnost](request-units.md) v oblasti pro zápis nebo jakékoli [čtení oblasti](distribute-data-globally.md) čtení z kanálu změn, stejně jako všechny ostatní operace služby Azure Cosmos DB.
 * Kanál změn zahrnuje operace INSERT a update operace provedené na dokumenty v kolekci. Můžete zaznamenat odstraní nastavením příznaku "obnovitelného odstranění" v rámci dokumentů místo odstraní. Alternativně můžete nastavit dobu konečná platnosti pro dokumentů prostřednictvím [interval TTL, ZÍSKÁ možnost](time-to-live.md), například 24 hodin a použijte hodnotu této vlastnosti k zachycení odstraní. Pomocí tohoto řešení je nutné zpracovat změny v časovém intervalu kratší než interval TTL, ZÍSKÁ dobu vypršení platnosti.
 * Jednotlivé změny do dokumentu se zobrazí pouze jednou v kanálu změn a klienti spravovat své logiky vytváření kontrolních bodů. Knihovnou change feed processor automatické vytváření kontrolních bodů a "alespoň jednou" poskytuje sémantiku.
@@ -77,7 +77,7 @@ Následující obrázek ukazuje, jak změnit lambda kanály, které přijmout a 
 Také v rámci vaší [bez serveru](http://azure.com/serverless) webových a mobilních aplikací, můžete sledovat události, jako jsou například změny vašeho zákazníka profilu, předvolby nebo umístění pro aktivaci určité akce, jako je odesílání nabízených oznámení do zařízení pomocí [Azure Functions](#azure-functions). Pokud používáte službu Azure Cosmos DB k vytvoření hry, je možné, například použití změnit informační kanál k implementaci v reálném čase žebříčky podle skóre, které se od dokončených hry.
 
 <a id="azure-functions"></a>
-## <a name="using-azure-functions"></a>Pomocí služby Azure Functions 
+## <a name="using-azure-functions"></a>Pomocí služby Azure Functions 
 
 Pokud používáte Azure Functions, nejjednodušší způsob, jak připojit ke kanálu změn Azure Cosmos DB je přidání aktivační událost Azure Cosmos DB k aplikaci Azure Functions. Když vytvoříte aktivační událost Azure Cosmos DB v aplikaci Azure Functions, vyberete kolekci Azure Cosmos DB se připojit k a funkce se aktivuje vždy, když do kolekce dojde ke změně. 
 
@@ -114,9 +114,9 @@ Tato část vás provede pomocí sady SQL SDK pracovat a změní informačního 
     ```csharp
     FeedResponse pkRangesResponse = await client.ReadPartitionKeyRangeFeedAsync(
         collectionUri,
-        new FeedOptions
-            {RequestContinuation = pkRangesResponseContinuation });
-     
+        new FeedOptions
+            {RequestContinuation = pkRangesResponseContinuation });
+     
     partitionKeyRanges.AddRange(pkRangesResponse);
     pkRangesResponseContinuation = pkRangesResponse.ResponseContinuation;
     ```
@@ -125,29 +125,29 @@ Tato část vás provede pomocí sady SQL SDK pracovat a změní informačního 
 
     ```csharp
     foreach (PartitionKeyRange pkRange in partitionKeyRanges){
-        string continuation = null;
-        checkpoints.TryGetValue(pkRange.Id, out continuation);
-        IDocumentQuery<Document> query = client.CreateDocumentChangeFeedQuery(
-            collectionUri,
-            new ChangeFeedOptions
-            {
-                PartitionKeyRangeId = pkRange.Id,
-                StartFromBeginning = true,
-                RequestContinuation = continuation,
-                MaxItemCount = -1,
-                // Set reading time: only show change feed results modified since StartTime
-                StartTime = DateTime.Now - TimeSpan.FromSeconds(30)
-            });
-        while (query.HasMoreResults)
-            {
-                FeedResponse<dynamic> readChangesResponse = query.ExecuteNextAsync<dynamic>().Result;
+        string continuation = null;
+        checkpoints.TryGetValue(pkRange.Id, out continuation);
+        IDocumentQuery<Document> query = client.CreateDocumentChangeFeedQuery(
+            collectionUri,
+            new ChangeFeedOptions
+            {
+                PartitionKeyRangeId = pkRange.Id,
+                StartFromBeginning = true,
+                RequestContinuation = continuation,
+                MaxItemCount = -1,
+                // Set reading time: only show change feed results modified since StartTime
+                StartTime = DateTime.Now - TimeSpan.FromSeconds(30)
+            });
+        while (query.HasMoreResults)
+            {
+                FeedResponse<dynamic> readChangesResponse = query.ExecuteNextAsync<dynamic>().Result;
     
-                foreach (dynamic changedDocument in readChangesResponse)
-                    {
-                         Console.WriteLine("document: {0}", changedDocument);
-                    }
-                checkpoints[pkRange.Id] = readChangesResponse.ResponseContinuation;
-            }
+                foreach (dynamic changedDocument in readChangesResponse)
+                    {
+                         Console.WriteLine("document: {0}", changedDocument);
+                    }
+                checkpoints[pkRange.Id] = readChangesResponse.ResponseContinuation;
+            }
     }
     ```
 
@@ -165,13 +165,13 @@ V kódu v kroku 4 výše **ResponseContinuation** v poslední řádek obsahuje p
 Vaše pole kontrolního bodu tak, je pouze zachování pořadové číslo položky pro každý oddíl. Ale pokud nechcete, aby se oddíly, kontrolní body, hodnota LSN, počáteční čas, atd. možnost jednodušší, je použití kanálu knihovny procesoru změn.
 
 <a id="change-feed-processor"></a>
-## <a name="using-the-change-feed-processor-library"></a>Změny pomocí kanálu knihovny procesoru 
+## <a name="using-the-change-feed-processor-library"></a>Změny pomocí kanálu knihovny procesoru 
 
 [Kanálu změn databáze Azure Cosmos DB knihovny procesoru](https://docs.microsoft.com/azure/cosmos-db/sql-api-sdk-dotnet-changefeed) vám umožňují usnadňuje distribuci zpracování událostí mezi několik příjemců. Tato knihovna usnadňuje čtení změny napříč oddíly a fungujících paralelně několik vláken.
 
 Hlavní výhodou knihovnou change feed processor je, že není nutné spravovat každý oddíl a token pro pokračování a vy nemusíte ručně dotazovat každou kolekci.
 
-Knihovnou change feed processor usnadňuje čtení změn napříč oddíly a fungujících paralelně několik vláken.  Automaticky spravuje čtení změn napříč oddíly, použití mechanismu zapůjčení. Jak vidíte na následujícím obrázku, pokud spustíte dvě klienty, kteří používají kanálu knihovny procesoru změn, rozdělení práce mezi servery. V průběhu zvýšit klienty, zachovat jako podíl práce mezi servery.
+Knihovnou change feed processor usnadňuje čtení změn napříč oddíly a fungujících paralelně několik vláken.  Automaticky spravuje čtení změn napříč oddíly, použití mechanismu zapůjčení. Jak vidíte na následujícím obrázku, pokud spustíte dvě klienty, kteří používají kanálu knihovny procesoru změn, rozdělení práce mezi servery. V průběhu zvýšit klienty, zachovat jako podíl práce mezi servery.
 
 ![Distribuované zpracování kanálu změn služby Azure Cosmos DB](./media/change-feed/change-feed-output.png)
 
@@ -433,7 +433,7 @@ Proto pokud vytvoříte více funkcí Azure ke čtení stejné kanálu změn pak
 
 ### <a name="my-document-is-updated-every-second-and-i-am-not-getting-all-the-changes-in-azure-functions-listening-to-change-feed"></a>Dokument se aktualizuje každou sekundu a nemám k dispozici všechny změny ve službě Azure Functions naslouchání kanálu změn.
 
-Azure Functions hlasování změnit informační kanál pro každých 5 sekund, tak, aby byly ztraceny všechny změny provedené od 5 sekund. Azure Cosmos DB ukládá pouze jednu verzi pro každých 5 sekund, 5. Změna se zobrazí v dokumentu. Nicméně, pokud chcete přejít níže 5 sekund a chcete dotazovat každou sekundu kanálu změn, můžete nakonfigurovat čas dotazování "feedPollTime", naleznete v tématu [vazby Azure Cosmos DB](../azure-functions/functions-bindings-cosmosdb.md#trigger---configuration). Je definován v milisekundách, s výchozí 5000. Nižší než 1 sekundu je možné ale není žádoucí, jak začne vypalování další procesor.
+Azure Functions hlasování změnit informační kanál pro každých 5 sekund, tak, aby byly ztraceny všechny změny provedené od 5 sekund. Azure Cosmos DB ukládá pouze jednu verzi pro každých 5 sekund, 5. Změna se zobrazí v dokumentu. Nicméně, pokud chcete přejít níže 5 sekund a chcete dotazovat každou sekundu kanálu změn, můžete nakonfigurovat čas dotazování "feedPollDelay", naleznete v tématu [vazby Azure Cosmos DB](../azure-functions/functions-bindings-cosmosdb.md#trigger---configuration). Je definován v milisekundách, s výchozí 5000. Nižší než 1 sekundu je možné ale není žádoucí, jak začne vypalování další procesor.
 
 ### <a name="i-inserted-a-document-in-the-mongo-api-collection-but-when-i-get-the-document-in-change-feed-it-shows-a-different-id-value-what-is-wrong-here"></a>Vložený dokument v kolekci rozhraní Mongodb API, ale když obdržím dokumentu v kanálu změn, zobrazuje hodnotu jiné id. Co je špatně tady?
 
