@@ -10,12 +10,12 @@ ms.component: bing-image-search
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: aahi
-ms.openlocfilehash: 36f59e1c405ef9e5cf69a19e49d69a3adfdc4636
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 42fc3dfb48c041ba187e2034eed81183dba02cb4
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46298179"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50413873"
 ---
 # <a name="quickstart-search-for-images-with-the-bing-image-search-sdk-and-java"></a>Rychlý start: Hledání obrázků pomocí sady SDK Vyhledávání obrázků Bingu a Javy
 
@@ -25,7 +25,7 @@ Zdrojový kód pro tuto ukázku je k dispozici na [GitHubu](https://github.com/A
 
 ## <a name="prerequisites"></a>Požadavky
 
-Nejnovější verze sady [Java Development Kit](http://www.oracle.com/technetwork/java/javase/downloads/index.html) (JDK)
+Nejnovější verze sady [Java Development Kit](https://aka.ms/azure-jdks) (JDK)
 
 Nainstalujte si závislosti sady SDK Vyhledávání obrázků Bingu pomocí systému Maven, Gradle nebo jiného systému správy závislostí. Soubor POM Mavenu vyžaduje následující deklaraci:
 
