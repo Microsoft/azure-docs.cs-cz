@@ -3,18 +3,17 @@ title: Nasazení a konfigurace brány Azure Firewall pomocí webu Azure Portal
 description: V tomto kurzu se naučíte nasadit a konfigurovat bránu Azure Firewall pomocí webu Azure Portal.
 services: firewall
 author: vhorne
-manager: jpconnock
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 10/5/2018
+ms.date: 10/30/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 8fb459d197c15cf7760a924c7161fed59cc1caac
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 47a04df843ec307b54cc1d6597f9a3cf8668e291
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48801875"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50238824"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Kurz: Nasazení a konfigurace brány Azure Firewall pomocí webu Azure Portal
 
@@ -31,7 +30,7 @@ Síťový provoz podléhá nakonfigurovaným pravidlům brány firewall, když h
 
 Aplikace a síťová pravidla se ukládají do *kolekcí pravidel*. Kolekce pravidel je seznam pravidel, které sdílí stejnou akci a prioritu.  Kolekce pravidel sítě je seznam pravidel sítě a kolekce pravidel aplikace je seznam pravidel aplikace.
 
-Azure Firewall používá pravidla překladu adres (NAT), pravidla sítě a pravidla aplikace. Další informace najdete v článku, který pojednává o [logice zpracování pravidel služby Azure Firewall](rule-processing.md).
+Další informace najdete v článku, který pojednává o [logice zpracování pravidel služby Azure Firewall](rule-processing.md).
 
 V tomto kurzu se naučíte:
 
@@ -42,8 +41,6 @@ V tomto kurzu se naučíte:
 > * Konfigurovat pravidla aplikace
 > * Konfigurovat pravidla sítě
 > * Otestovat bránu firewall
-
-
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
@@ -56,32 +53,32 @@ Pro účely tohoto kurzu vytvořte jednu virtuální síť se třemi podsítěmi
 
 Tento kurz používá kvůli snadnému nasazení zjednodušenou konfiguraci sítě. Pro nasazení v produkčním prostředí doporučujeme [hvězdicový model](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke), u kterého je brána firewall ve vlastní virtuální síti a servery úloh jsou v partnerských virtuálních sítích ve stejné oblasti s jednou nebo více podsítěmi.
 
-
-
 ## <a name="set-up-the-network-environment"></a>Nastavení síťového prostředí
+
 Nejprve vytvořte skupinu prostředků obsahující prostředky potřebné k nasazení brány firewall. Potom vytvořte virtuální síť, podsítě a testovací servery.
 
 ### <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
-1. Přihlaste se k webu Azure Portal na adrese [http://portal.azure.com](http://portal.azure.com).
-1. Na domovské stránce webu Azure Portal klikněte na **Skupiny prostředků** a potom klikněte na **Přidat**.
-2. Jako **Název skupiny prostředků** zadejte **Test-FW-RG**.
-3. V části **Předplatné** vyberte své předplatné.
-4. V části **Umístění skupiny prostředků** vyberte umístění. Všechny další prostředky, které vytvoříte, musí být ve stejném umístění.
-5. Klikněte na možnost **Vytvořit**.
 
+1. Přihlaste se k webu Azure Portal na adrese [http://portal.azure.com](http://portal.azure.com).
+2. Na domovské stránce webu Azure Portal klikněte na **Skupiny prostředků** a potom klikněte na **Přidat**.
+3. Jako **Název skupiny prostředků** zadejte **Test-FW-RG**.
+4. V části **Předplatné** vyberte své předplatné.
+5. V části **Umístění skupiny prostředků** vyberte umístění. Všechny další prostředky, které vytvoříte, musí být ve stejném umístění.
+6. Klikněte na možnost **Vytvořit**.
 
 ### <a name="create-a-vnet"></a>Vytvoření virtuální sítě
+
 1. Na domovské stránce webu Azure Portal klikněte na **Všechny služby**.
 2. V části **Sítě** klikněte na **Virtuální sítě**.
 3. Klikněte na tlačítko **Add** (Přidat).
 4. Jako **Název** zadejte **Test-FW-VN**.
 5. V části **Adresní prostor** zadejte **10.0.0.0/16**.
-7. V části **Předplatné** vyberte své předplatné.
-8. V části **Skupina prostředků** vyberte **Použít existující** a potom vyberte **Test-FW-RG**.
-9. V části **Umístění** vyberte dříve použité umístění.
-10. V části **Podsíť** jako **Název** zadejte **AzureFirewallSubnet**. Brána firewall bude v této podsíti a název podsítě **musí** být AzureFirewallSubnet.
-11. V části **Rozsah adres** zadejte **10.0.1.0/24**.
-12. Ostatní výchozí nastavení ponechte a potom klikněte na **Vytvořit**.
+6. V části **Předplatné** vyberte své předplatné.
+7. V části **Skupina prostředků** vyberte **Použít existující** a potom vyberte **Test-FW-RG**.
+8. V části **Umístění** vyberte dříve použité umístění.
+9. V části **Podsíť** jako **Název** zadejte **AzureFirewallSubnet**. Brána firewall bude v této podsíti a název podsítě **musí** být AzureFirewallSubnet.
+10. V části **Rozsah adres** zadejte **10.0.1.0/24**.
+11. Ostatní výchozí nastavení ponechte a potom klikněte na **Vytvořit**.
 
 > [!NOTE]
 > Minimální velikost podsítě AzureFirewallSubnet je /25.
@@ -138,13 +135,11 @@ Celý postup zopakujte a vytvořte další virtuální počítač s názvem **Sr
 
 Informace z následující tabulky použijte ke konfiguraci **Nastavení** virtuálního počítače Srv-Work. Zbývající část konfigurace je stejná jako u virtuálního počítače Srv-Jump.
 
-
 |Nastavení  |Hodnota  |
 |---------|---------|
 |Podsíť|Workload-SN|
 |Veřejná IP adresa|Žádný|
 |Vyberte veřejné příchozí porty|Žádné veřejné příchozí porty|
-
 
 ## <a name="deploy-the-firewall"></a>Nasazení brány firewall
 
@@ -168,7 +163,6 @@ Informace z následující tabulky použijte ke konfiguraci **Nastavení** virtu
    Nasazení může několik minut trvat.
 4. Po dokončení nasazení přejděte do skupiny prostředků **Test-FW-RG** a klikněte na bránu firewall **Test-FW01**.
 6. Poznamenejte si privátní IP adresu. Budete ji potřebovat později při vytváření výchozí trasy.
-
 
 ## <a name="create-a-default-route"></a>Vytvořit výchozí trasu
 
@@ -200,9 +194,7 @@ U podsítě **Workload-SN** nakonfigurujete výchozí trasu v odchozím směru, 
 18. V části **Adresa dalšího směrování** zadejte dříve poznamenanou privátní IP adresu brány firewall.
 19. Klikněte na **OK**.
 
-
 ## <a name="configure-application-rules"></a>Konfigurace pravidel aplikace
-
 
 1. Otevřete skupinu prostředků **Test-FW-RG** a klikněte na bránu firewall **Test-FW01**.
 2. Na stránce **Test-FW01** v části **Nastavení** klikněte na **Pravidla**.
@@ -244,7 +236,6 @@ Pro účely testování v tomto kurzu nakonfigurujete primární a sekundární 
 6. Klikněte na **Uložit**. 
 7. Restartujte virtuální počítač **Srv-Work**.
 
-
 ## <a name="test-the-firewall"></a>Testování brány firewall
 
 1. Zkontrolujte na webu Azure Portal síťová nastavení virtuálního počítače **Srv-Work** a poznamenejte si privátní IP adresu.
@@ -267,7 +258,6 @@ Nyní jste ověřili, že pravidla brány firewall fungují:
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 Prostředky brány firewall si můžete ponechat pro další kurz, nebo můžete odstraněním skupiny prostředků **Test-FW-RG** odstranit všechny prostředky související z bránou firewall, pokud už je nepotřebujete.
-
 
 ## <a name="next-steps"></a>Další kroky
 

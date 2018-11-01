@@ -9,12 +9,12 @@ ms.date: 03/26/2018
 ms.author: tamram
 ms.custom: mvc
 ms.component: blobs
-ms.openlocfilehash: d50291a33a9456fad20382d8e646bf6a19d6179e
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: 162b30444a22ea193d93e8a6a2c7374dcd2f5fd3
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47180877"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50415980"
 ---
 # <a name="tutorial-make-your-application-data-highly-available-with-azure-storage"></a>Kurz: Zajištění vysoké dostupnosti dat aplikací pomocí úložiště Azure
 
@@ -49,7 +49,7 @@ Pro absolvování tohoto kurzu potřebujete:
 # <a name="java-tabjava"></a>[Java] (#tab/java)
 
 * Nainstalovat a nakonfigurovat [Maven](http://maven.apache.org/download.cgi) pro práci z příkazového řádku
-* Nainstalovat a nakonfigurovat sadu [JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
+* Nainstalovat a nakonfigurovat sadu [JDK](https://aka.ms/azure-jdks)
 
 ---
 

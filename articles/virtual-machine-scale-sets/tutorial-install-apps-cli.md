@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: zarhoads
 ms.custom: mvc
-ms.openlocfilehash: bfeee293dfb86db2be8e799f60b5e025477293d5
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 913d1b9125bcfa57334e70dcca44965fdb3d5ba6
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465555"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50242054"
 ---
 # <a name="tutorial-install-applications-in-virtual-machine-scale-sets-with-the-azure-cli"></a>Kurz: Instalace aplikací ve škálovacích sadách virtuálních počítačů pomocí Azure CLI
 Pokud chcete spouštět aplikace na instancích virtuálních počítačů ve škálovací sadě, musíte nejprve nainstalovat komponenty aplikace a požadované soubory. V předchozím kurzu jste zjistili, jak vytvořit a použít vlastní image virtuálního počítače k nasazení instancí virtuálních počítačů. Tato vlastní image zahrnovala ruční instalaci a konfiguraci aplikací. Můžete automatizovat také instalaci aplikací do škálovací sady po nasazení všech instancí virtuálních počítačů nebo aktualizaci aplikace, která je již ve škálovací sadě spuštěná. V tomto kurzu se naučíte:
@@ -49,7 +49,7 @@ Rozšíření vlastních skriptů v Azure CLI použijete tak, že vytvoříte so
 ## <a name="create-custom-script-extension-definition"></a>Vytvoření definice rozšíření vlastních skriptů
 Abychom se podívali na rozšíření vlastních skriptů v akci, vytvoříme škálovací sadu, která nainstaluje webový server NGINX a vypíše název hostitele instance virtuálního počítače ve škálovací sadě. Následující definice rozšíření vlastních skriptů stáhne ukázkový skript z GitHubu, nainstaluje požadované balíčky a pak vypíše název hostitele instance virtuálního počítače na základní stránce HTML.
 
-V aktuálním prostředí vytvořte soubor *customConfig.json* a vložte do něj následující konfiguraci. Soubor vytvořte například v Cloud Shellu, pokud nepracujete na místním počítači. Můžete použít libovolný editor podle svojí volby. Zadáním příkazu `sensible-editor cloudConfig.json` ve službě Cloud Shell soubor vytvořte a zobrazte seznam dostupných editorů.
+V aktuálním prostředí vytvořte soubor *customConfig.json* a vložte do něj následující konfiguraci. Soubor vytvořte například v Cloud Shellu, pokud nepracujete na místním počítači. Můžete použít libovolný editor podle svojí volby. Zadáním příkazu `sensible-editor customConfig.json` ve službě Cloud Shell soubor vytvořte a zobrazte seznam dostupných editorů.
 
 ```json
 {

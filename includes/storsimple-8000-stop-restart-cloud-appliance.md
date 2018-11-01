@@ -1,3 +1,16 @@
+---
+author: alkohli
+ms.service: storsimple
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: alkohli
+ms.openlocfilehash: c10482029e6cfce7063d205161fed54030919c48
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50165423"
+---
 #### <a name="to-stop-and-start-a-cloud-appliance"></a>Zastavení a spuštění cloudového zařízení
 
 1. Pokud chcete zastavit cloudové zařízení, přejděte do virtuálního počítače pro cloudové zařízení.

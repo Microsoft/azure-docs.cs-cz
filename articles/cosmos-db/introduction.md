@@ -1,5 +1,5 @@
 ---
-title: Úvod do služby Azure Cosmos DB | Microsoft Docs
+title: Úvod do služby Azure Cosmos DB | Dokumentace Microsoftu
 description: Přečtěte si něco o službě Azure Cosmos DB. Tato globálně distribuovaná databáze s více modely je navržená s ohledem na nízkou latenci, elastickou škálovatelnost a vysokou dostupnost a nabízí nativní podporu pro data NoSQL.
 services: cosmos-db
 author: SnehaGunda
@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 04/08/2018
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: b9c4c2595bb7d5347397bff95c90fbdc91902bcd
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 12e3cf028b4812abd43dd2b6f23190fa6b75157a
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43696444"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50242286"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Vítá vás Azure Cosmos DB
 
@@ -55,7 +55,7 @@ Azure Cosmos DB jakožto globálně distribuovaná databázová služba s více 
 * **Zajištění neustálé dostupnosti**
     * Smlouva SLA o 99,99% dostupnosti pro všechny účty databáze v jedné oblasti a 99,999% dostupnosti čtení pro všechny účty databáze ve více oblastech.
     * Nasaďte je do libovolného počtu [oblastí Azure](https://azure.microsoft.com/regions) a zajistěte vyšší dostupnost a lepší výkon.
-    * Dynamicky nastavte priority jednotlivých oblastí, [simulujte selhání](regional-failover.md) jedné nebo více oblastí se zárukou nulových ztrát dat a otestujte tak kompletní dostupnost celé aplikace (nad rámec databáze). 
+    * Dynamicky nastavte priority jednotlivých oblastí, [simulujte selhání](high-availability.md) jedné nebo více oblastí se zárukou nulových ztrát dat a otestujte tak kompletní dostupnost celé aplikace (nad rámec databáze). 
 
 * **Psaní globálně distribuovaných aplikací správným způsobem**
     * Pět dobře definovaných, praktických a intuitivních [modelů konzistence](consistency-levels.md) poskytuje celé spektrum od silné konzistence podobné SQL až po rozvolněnou konzistenci typu Případné, která je podobná NoSQL, a vše mezi tím. 

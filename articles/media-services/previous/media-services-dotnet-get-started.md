@@ -4,7 +4,7 @@ description: Tento kurz vás provede jednotlivými kroky implementace aplikace p
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 388b8928-9aa9-46b1-b60a-a918da75bd7b
 ms.service: media-services
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 12/10/2017
+ms.date: 10/29/2018
 ms.author: juliako
-ms.openlocfilehash: 12a6f731dfb1c106c28d18caa95710751736629c
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 40057f6d7ab792557f17c777276091e7c7c05c3c
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39434580"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50233612"
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-net-sdk"></a>Začínáme s doručováním obsahu na vyžádání pomocí sady SDK pro .NET
 [!INCLUDE [media-services-selector-get-started](../../../includes/media-services-selector-get-started.md)]

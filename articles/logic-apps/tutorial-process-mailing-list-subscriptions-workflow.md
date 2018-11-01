@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/12/2018
-ms.openlocfilehash: 96a151b3de5d59ad74eaf7061b1a3ff91d602759
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: b48ecce1c87c0a29996e437d621c3ce396a84856
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48044412"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50232660"
 ---
 # <a name="manage-mailing-list-requests-with-azure-logic-apps"></a>Správa požadavků na seznam adresátů pomocí Azure Logic Apps
 
@@ -317,7 +317,7 @@ Pokud už je nepotřebujete, odstraňte skupinu prostředků, která obsahuje va
 ## <a name="get-support"></a>Získat podporu
 
 * Pokud máte dotazy, navštivte [fórum Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-* Pokud chcete zanechat své nápady na funkce nebo hlasovat, navštivte [web zpětné vazby od uživatelů Logic Apps](http://aka.ms/logicapps-wish).
+* Pokud chcete zanechat své nápady na funkce nebo hlasovat, navštivte [web zpětné vazby od uživatelů Logic Apps](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Další kroky
 

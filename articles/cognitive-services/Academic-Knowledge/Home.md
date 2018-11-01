@@ -3,19 +3,19 @@ title: Co je rozhraní Academic Knowledge API?
 titlesuffix: Azure Cognitive Services
 description: Pomocí rozhraní Academic Knowledge API můžete interpretovat dotazy uživatelů a načítat velké množství dat ze služby Academic Graph.
 services: cognitive-services
-author: mvorvoreanu
+author: darrine
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: academic-knowledge
 ms.topic: overview
-ms.date: 03/27/2017
-ms.author: mivorvor
-ms.openlocfilehash: d08cd7124b232e50365e72753eba97c6309f401c
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.date: 10/30/2018
+ms.author: darrine
+ms.openlocfilehash: aa945eb8f0b79a6b0760650bd34dba55d80ef3a4
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48901206"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50240354"
 ---
 # <a name="academic-knowledge-api"></a>Rozhraní Academic Knowledge API
 
@@ -32,13 +32,10 @@ Rozhraní Academic Knowledge API se skládá ze čtyř souvisejících koncovýc
   1. **interpretace** – interpretuje řetězec dotazu v přirozeném jazyku uživatele. Vrátí anotované interpretace, které ve vyhledávacím poli zajistí bohaté možnosti automatického dokončování a předvídají, jaký text uživatel zadává.  
   2. **vyhodnocení**  –vyhodnotí výraz dotazu a vrátí výsledky entit Academic Knowledge.  
   3. **výpočet histogramu** – vypočte histogram distribuce hodnot atributů pro akademické entity, které vrátil výraz dotazu, jako je třeba distribuce citací konkrétního autora v jednotlivých letech.  
-  4. **hledání grafu** – hledá zadaný vzor grafu a vrátí odpovídající výsledky entit.
-
+  
 Při společném použití tyto metody rozhraní API umožňují vytvářet výkonné sémantické vyhledávání. S ohledem na řetězec dotazu uživatele metoda **interpretace** poskytne anotovanou verzi dotazu a strukturovaný výraz dotazu, zatímco volitelně dokončí dotaz uživatele podle sémantiky základních akademických dat. Pokud uživatel zadá například řetězec *latentní s*, může metoda **interpretace** poskytnout sadu zařazených interpretací a navrhnout, že uživatel hledá studijní obor *latentní sémantická analýza*, dokument *latentní struktura a její analýza* nebo jiné výrazy entity začínající textem *latent s*. Tyto informace můžete použít k rychlému přivedení uživatele k požadovaným výsledkům hledání.
 
 Metodu **vyhodnocení** můžete použít k načtení sady odpovídajících dokumentů entity ze znalostní báze Academic Knowledge a metodu **výpočtu histogramu** můžete použít k výpočtu distribuce hodnot atributů pro sadu dokumentů entity, které můžete použít k dalšímu filtrování výsledků hledání.        
-
-Metoda **hledání grafu** má dva režimy: *json* a *lambda*. Režim *Json* může provádět porovnávání vzoru grafu se vzory grafů určenými objektem JSON. Režim *Lambda* může během procházení grafu provádět výpočty na straně serveru podle uživatelem zadaných výrazů lambda.
 
 ## <a name="getting-started"></a>Začínáme 
 Podrobnou dokumentaci najdete v podtématech na levé straně.  Všimněte si, že ke zlepšení čitelnosti příkladů obsahuje volání rozhraní REST API znaky (například mezery), které nebyly zakódovány do adresy URL.  Váš kód bude muset použít odpovídající kódování adresy URL.

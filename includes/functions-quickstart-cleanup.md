@@ -1,3 +1,16 @@
+---
+author: ggailey777
+ms.service: azure-functions
+ms.topic: include
+ms.date: 09/04/2018
+ms.author: glenga
+ms.openlocfilehash: a1bedf97f5ae7c48e5bcb47880a25ee1219b917b
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50133142"
+---
 Další rychlé starty v této kolekci jsou postavené na tomto rychlém startu. Pokud chcete pokračovat v práci s dalšími rychlými starty, kurzy nebo libovolnými službami, které jste v tomto rychlém startu vytvořili, nečistěte prostředky.
 
 *Prostředky* v Azure odkazují na aplikace funkcí, funkce, účty úložiště atd. Jsou seskupené do *skupin prostředků*. Odstraněním skupiny odstraníte všechno, co v této skupině je. 

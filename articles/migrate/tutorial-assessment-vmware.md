@@ -4,15 +4,15 @@ description: Toto téma popisuje, jak zjistit místní virtuální počítače V
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 10/24/2018
+ms.date: 10/23/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: f468bac6f4d8c209fae51f0b84980dc8c611a29b
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 18e1ecd4896277f0dd0dfc2ceac2185cbdd09b93
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50025877"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50241102"
 ---
 # <a name="discover-and-assess-on-premises-vmware-vms-for-migration-to-azure"></a>Zjištění místních virtuálních počítačů VMware a posouzení vhodnosti jejich migrace do Azure
 

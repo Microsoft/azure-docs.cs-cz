@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 07/20/2018
 ms.reviewer: klam, LADocs
-ms.openlocfilehash: d07342bac3f76472a4783c28cac0741906049bb2
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 3d4e91465e2f9986ec1029b304e1c026e39f45b6
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "41920716"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50231964"
 ---
 # <a name="process-emails-and-attachments-with-azure-logic-apps"></a>Zpracování e-mailů a příloh pomocí Azure Logic Apps
 
@@ -144,7 +144,7 @@ Teď pomocí připraveného fragmentu kódu a následujícího postupu vytvořte
    | **Skupina prostředků** | LA-Tutorial-RG | Stejná skupina prostředků Azure, jakou jste používali dříve | 
    | **Plán hostování** | Plán Consumption | Toto nastavení určuje, jak se při běhu aplikace funkcí mají přidělovat a škálovat prostředky, například výpočetní výkon. Podívejte se na [porovnání plánů hostování](../azure-functions/functions-scale.md). | 
    | **Umístění** | USA – západ | Stejná oblast, jakou jste používali dříve | 
-   | **Úložiště** | cleantextfunctionstorageacct | Vytvořte pro svou aplikaci funkcí účet úložiště. Použijte při tom jenom malá písmena a číslice. <p>**Poznámka:** Tento účet úložiště obsahuje vaše aplikace funkcí a je jiný, než účet úložiště pro přílohy e-mailů, který jste vytvořili předtím. | 
+   | **Storage** | cleantextfunctionstorageacct | Vytvořte pro svou aplikaci funkcí účet úložiště. Použijte při tom jenom malá písmena a číslice. <p>**Poznámka:** Tento účet úložiště obsahuje vaše aplikace funkcí a je jiný, než účet úložiště pro přílohy e-mailů, který jste vytvořili předtím. | 
    | **Application Insights** | Vypnuto | Zapne monitorování aplikací pomocí [Application Insights](../application-insights/app-insights-overview.md). Pro účely tohoto kurzu ale zvolte nastavení **Vypnuto**. | 
    |||| 
 
@@ -670,7 +670,7 @@ Pokud už je nepotřebujete, odstraňte skupinu prostředků, která obsahuje va
 ## <a name="get-support"></a>Získat podporu
 
 * Pokud máte dotazy, navštivte [fórum Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-* Pokud chcete zanechat své nápady na funkce nebo hlasovat, navštivte [web zpětné vazby od uživatelů Logic Apps](http://aka.ms/logicapps-wish).
+* Pokud chcete zanechat své nápady na funkce nebo hlasovat, navštivte [web zpětné vazby od uživatelů Logic Apps](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Další kroky
 

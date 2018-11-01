@@ -14,12 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 09/07/2018
 ms.author: spelluru
-ms.openlocfilehash: 30ff970a1f6243bbba6aa42046cf6e08c808f4e5
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 0d3cbc83c5d2558d7eba3de897477814df81893c
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49068856"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50242428"
 ---
 # <a name="get-started-with-service-bus-queues"></a>Začínáme s frontami služby Service Bus
 
@@ -40,7 +40,7 @@ Tento kurz se zabývá následujícími kroky:
 
 [!INCLUDE [create-account-note](../../includes/create-account-note.md)]
 
-## <a name="1-create-a-namespace-using-the-azure-portal"></a>1. Vytvoření oboru názvů služby Service Bus pomocí webu Azure Portal
+## <a name="create-a-namespace-using-the-azure-portal"></a>Vytvoření oboru názvů služby Service Bus pomocí webu Azure Portal
 
 > [!NOTE] 
 > Obor názvů služby Service Bus a entity zasílání zpráv můžete vytvořit také pomocí [PowerShellu](/powershell/azure/get-started-azureps). Další informace najdete v tématu [Správa prostředků služby Service Bus pomocí PowerShellu](service-bus-manage-with-ps.md).
@@ -49,13 +49,13 @@ Pokud už máte vytvořený obor názvů pro zasílání zpráv služby Service 
 
 [!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
-## <a name="2-create-a-queue-using-the-azure-portal"></a>2. Vytvoření fronty pomocí webu Azure Portal
+## <a name="create-a-queue-using-the-azure-portal"></a>Vytvoření fronty pomocí webu Azure Portal
 
 Pokud už máte frontu služby Service Bus vytvořenou, přejděte k části [Zasílání zpráv do fronty](#3-send-messages-to-the-queue).
 
 [!INCLUDE [service-bus-create-queue-portal](../../includes/service-bus-create-queue-portal.md)]
 
-## <a name="3-send-messages-to-the-queue"></a>3. Zasílání zpráv do fronty
+## <a name="send-messages-to-the-queue"></a>Zasílání zpráv do fronty
 
 Abychom mohli do fronty odesílat zprávy, napíšeme v sadě Visual Studio konzolovou aplikaci v jazyce C#.
 
@@ -214,7 +214,7 @@ Spusťte sadu Visual Studio a vytvořte nový projekt **Konzolová aplikace (.NE
    
       ![Velikost zpráv][queue-message]
 
-## <a name="4-receive-messages-from-the-queue"></a>4. Přijetí zpráv z fronty
+## <a name="receive-messages-from-the-queue"></a>Přijetí zpráv z fronty
 
 Pokud chcete přijímat zprávy, které jste právě odeslali, vytvořte další konzolovou aplikaci .NET Core a nainstalujte balíček NuGet **Microsoft.Azure.ServiceBus**, podobně jako předtím u aplikace odesílatele.
 

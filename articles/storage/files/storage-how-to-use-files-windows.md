@@ -8,12 +8,12 @@ ms.topic: get-started-article
 ms.date: 06/07/2018
 ms.author: renash
 ms.component: files
-ms.openlocfilehash: 3e63a4c05fde570e598ba05c65fb99cec0427711
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: f1dd07756ca484171a3d662df35493efbe5a5ee7
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47226413"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50415608"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Použití sdílené složky Azure s Windows
 Služba [Soubory Azure](storage-files-introduction.md) je snadno použitelný cloudový systém souborů od Microsoftu. Sdílené složky Azure je možné bez problémů používat v systémech Windows a Windows Server. Tento článek popisuje důležité informace o používání sdílené složky Azure s Windows a Windows Serverem.
@@ -49,7 +49,7 @@ Sdílené složky Azure můžete používat v instalaci Windows na virtuálním 
 * **Zkontrolujte, že je otevřený port 445:** Protokol SMB vyžaduje otevřený port TCP 445. Pokud je port 445 zablokovaný, připojení selžou. Ke kontrole, jestli vaše brána firewall neblokuje port 445, můžete použít rutinu `Test-NetConnection`. Nezapomeňte nahradit `your-storage-account-name` odpovídajícím názvem pro váš účet úložiště.
 
     ```PowerShell
-    Test-NetConnection -ComputerName <your-storage-account-name>.core.windows.net -Port 445
+    Test-NetConnection -ComputerName <your-storage-account-name>.file.core.windows.net -Port 445
     
     ```
 

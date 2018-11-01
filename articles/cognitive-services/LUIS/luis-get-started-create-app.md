@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: quickstart
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 12a660b49d1a81865c34ceda38f041de9be31eb1
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: cc4a1a7f99de657a6199985dd0c963eed741ac97
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47037469"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210019"
 ---
 # <a name="quickstart-use-prebuilt-home-automation-app"></a>Rychlý start: Použití předem připravené aplikace domácí automatizace
 
@@ -23,7 +23,7 @@ V tomto rychlém startu vytvoříte aplikaci LUIS, která používá předem př
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pro účely tohoto článku potřebujete bezplatný účet LUIS, vytvořený na portálu LUIS na webu [http://www.luis.ai](http://www.luis.ai). 
+Pro účely tohoto článku potřebujete bezplatný účet LUIS, vytvořený na portálu LUIS na webu [https://www.luis.ai](https://www.luis.ai). 
 
 ## <a name="create-a-new-app"></a>Vytvoření nové aplikace
 Aplikace můžete vytvářet a spravovat na stránce **My Apps** (Moje aplikace). 

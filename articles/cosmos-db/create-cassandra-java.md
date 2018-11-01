@@ -10,12 +10,12 @@ ms.custom: quick start connect, mvc
 ms.devlang: java
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: 89271385ad7d8d1e4290ce95b977ea4e43a8c2f2
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 1683bdcdac5f34b4dd0795befe0b87d6ba1278b0
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167564"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50421369"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-java-and-azure-cosmos-db"></a>Rychlý start: Sestavení aplikace Cassandra pomocí Javy a Azure Cosmos DB
 
@@ -36,7 +36,7 @@ Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu pro
 
 Kromě toho je potřeba toto:
 
-* [Java Development Kit (JDK) 1.7+](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+* [Java Development Kit (JDK) 1.7+](https://aka.ms/azure-jdks)
     * Na Ubuntu nainstalujte sadu JDK spuštěním příkazu `apt-get install default-jdk`.
     * Nezapomeňte nastavit proměnnou prostředí JAVA_HOME tak, aby odkazovala na složku, ve které je sada JDK nainstalovaná.
 * [Stáhněte](http://maven.apache.org/download.cgi) a [nainstalujte](http://maven.apache.org/install.html) binární archiv [Maven](http://maven.apache.org/).

@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 05/04/2017
 ms.reviewer: antonfr
 ms.author: mbullwin
-ms.openlocfilehash: 8c34696f81e40b4db13e6868f6bdaa1b2a8e7a2a
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: b0256e899d47e3b6f8141218c11e1a7a62ca8e1a
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47095459"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50419720"
 ---
 # <a name="smart-detection---performance-anomalies"></a>Inteligentní zjišťování – anomálie výkonu
 
@@ -47,7 +47,7 @@ Ne, oznámení neznamená, že vaše aplikace jednoznačně došlo k problému. 
 Oznámení zahrnují diagnostické informace. Tady je příklad:
 
 
-![Tady je příklad detekce zhoršení doby odezvy serveru](./media/app-insights-proactive-diagnostics/server_response_time_degradation.png)
+![Tady je příklad detekce zhoršení doby odezvy serveru](media/app-insights-proactive-performance-diagnostics/server_response_time_degradation.png)
 
 1. **Třídění**. Oznámení se dozvíte, jak mnoho operací se vliv na jeden nebo kolik uživatelů. Můžete přiřadit prioritu problému.
 2. **Obor**. Tento problém ovlivňuje veškerý provoz, nebo jen některé stránky? Je omezen na konkrétní prohlížeče nebo umístění? Tyto informace můžete získat z oznámení.
@@ -61,7 +61,7 @@ Oznámení zahrnují diagnostické informace. Tady je příklad:
 
 Inteligentní detekce oznámení jsou ve výchozím nastavení povolené a odeslat na ty, kteří mají [vlastníci, přispěvatelé a čtenáři přístup k prostředku Application Insights](app-insights-resources-roles-access-control.md). Chcete-li toto nastavení změnit, **konfigurovat** v e-mailové oznámení, nebo otevřete nastavení inteligentního zjišťování ve službě Application Insights. 
   
-  ![Nastavení inteligentního zjišťování](./media/app-insights-proactive-diagnostics/smart_detection_configuration.png)
+  ![Nastavení inteligentního zjišťování](media/app-insights-proactive-performance-diagnostics/smart_detection_configuration.png)
   
   * Můžete použít **zrušit odběr** odkaz v e-mailu inteligentního zjišťování k ukončení přijímání oznámení e-mailu.
 
@@ -143,7 +143,7 @@ Moderní aplikace čím dál tím víc přijmout přístup návrh mikroslužby, 
 
 Příklad oznámení snížení závislost:
 
-![Tady je příklad detekce snížení doby trvání závislosti](./media/app-insights-proactive-diagnostics/dependency_duration_degradation.png)
+![Tady je příklad detekce snížení doby trvání závislosti](media/app-insights-proactive-performance-diagnostics/dependency_duration_degradation.png)
 
 Všimněte si, že musíte:
 
@@ -161,7 +161,7 @@ Všimněte si, že musíte:
 
 Application Insights vyhledá problémy s výkonem, které mohou ovlivňují jenom část z vašich uživatelů, nebo mají vliv jenom uživatelé v některých případech. Například oznámení o načítání stránek je pomalejší na jeden typ prohlížeče než u jiných typů prohlížečů, nebo pokud požadavky se obsluhují pomaleji z určitého serveru. Problémy související s kombinací vlastnosti, může také vyhledat, jako je pomalé stránka načte v jedné zeměpisné oblasti pro klienty, kteří používají konkrétní operační systém.  
 
-Anomálie obdobné jsou velmi obtížné zjistit jen, že se podíváte data, ale jsou mnohem běžnější, než si možná myslíte. Často jsou pouze docházet, pokud si vaši zákazníci začnou stěžovat. Během této doby bude příliš pozdě: ovlivnění uživatelé jsou již přepnutí na konkurencí!
+Anomálie obdobné jsou velmi obtížné zjistit jen, že se podíváte data, ale jsou mnohem běžnější, než si možná myslíte. Často jsou pouze docházet, pokud si vaši zákazníci začnou stěžovat. Během této doby je příliš pozdě s: ovlivnění uživatelé jsou již přepnutí na konkurencí!
 
 V současné době naše algoritmy podívejte se na dobu načítání stránek, dobu odezvy požadavku na serveru a doby odezvy závislostí.  
 

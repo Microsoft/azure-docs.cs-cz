@@ -2,18 +2,18 @@
 title: 'Rychlý start: Nahrávání, stahování a výpis objektů blob pomocí Node.js – Azure Storage'
 description: V tomto rychlém startu vytvoříte v úložišti objektů (blob) účet úložiště a kontejner. Pak použijete klientskou knihovnu pro úložiště pro Node.js k nahrání objektu blob do služby Azure Storage, stažení objektu blob a výpisu objektů blob v kontejneru.
 services: storage
-author: craigshoemaker
+author: tamram
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
 ms.date: 09/20/2018
-ms.author: cshoe
-ms.openlocfilehash: 1c62dbd6856ec7bf2663f0b70a47357b52528899
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.author: tamram
+ms.openlocfilehash: 267218b4b958251e6748fbae17ca1ac267cf3287
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47040808"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50140583"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-nodejs"></a>Rychlý start: Nahrávání, stahování a výpis objektů blob pomocí Node.js
 
@@ -146,7 +146,7 @@ Druhý parametr (*options*) pro metodu **createContainerIfNotExists** přijímá
 
 Použití metody **createContainerIfNotExists** umožňuje aplikaci několikrát spustit příkaz *createContainer* bez vracení chyb, pokud kontejner již existuje. V produkčním prostředí často voláte metodu **createContainerIfNotExists** pouze jednou, protože se stejný kontejner používá v rámci celé aplikace. V těchto případech můžete vytvořit kontejner předem prostřednictvím portálu nebo Azure CLI.
 
-### <a name="upload-text"></a>Nahrání textového řetězce
+### <a name="upload-text"></a>Nahrání textu
 
 Funkce *uploadString* zavolá metodu [createBlockBlobFromText](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest#createblockblobfromtext) a do kontejneru objektů blob zapíše libovolný řetězec (nebo ho přepíše).
 
@@ -336,7 +336,7 @@ console.log(`Container "${containerName}" is deleted`);
 ```
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
-Veškerá data zapsaná do účtu úložiště se automaticky odstraní na konci vzorku kódu. 
+Veškerá data zapsaná do účtu úložiště se automaticky odstraní na konci této ukázky kódu. 
 
 ## <a name="resources-for-developing-nodejs-applications-with-blobs"></a>Zdroje informací pro vývoj aplikací Node.js s využitím objektů blob
 

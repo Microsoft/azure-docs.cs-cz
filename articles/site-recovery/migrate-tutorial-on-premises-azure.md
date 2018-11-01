@@ -1,19 +1,18 @@
 ---
 title: Migrace místních počítačů do Azure pomocí Azure Site Recovery | Microsoft Docs
 description: Tento článek popisuje migraci místních počítačů do Azure pomocí Azure Site Recovery.
-services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 09/12/2018
+ms.date: 10/28/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 446d9ead47e9d9380a608933ced3793e99241622
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 0134f6c83548ae5ffb4924ecf7d652ce89910340
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50026326"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210614"
 ---
 # <a name="migrate-on-premises-machines-to-azure"></a>Migrace místních počítačů do Azure
 

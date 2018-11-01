@@ -1,5 +1,5 @@
 ---
-title: Vytvoření databáze grafu Azure Cosmos DB pomocí Javy | Microsoft Docs
+title: Vytvoření databáze grafu Azure Cosmos DB pomocí Javy | Dokumentace Microsoftu
 description: Představuje ukázku kódu Java, který můžete použít k připojení a dotazování dat grafu Azure Cosmos DB pomocí konzoly Gremlin.
 services: cosmos-db
 author: luisbosquez
@@ -11,12 +11,12 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 03/26/2018
 ms.author: lbosq
-ms.openlocfilehash: 0c174b6979e1601d992b0e19d216d1b7211e51d3
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: bd857cbef3b052e85d0b666f211d5f158b8931c2
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43701027"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50420876"
 ---
 # <a name="azure-cosmos-db-create-a-graph-database-using-java-and-the-azure-portal"></a>Azure Cosmos DB: Vytvoření databáze grafu pomocí Javy a webu Azure Portal
 
@@ -38,7 +38,7 @@ V tomto rychlém startu se vytvoří jednoduchá databáze grafů pomocí nástr
 
 Navíc platí:
 
-* [Java Development Kit (JDK) 1.7+](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+* [Java Development Kit (JDK) 1.7+](https://aka.ms/azure-jdks)
     * Na Ubuntu nainstalujte sadu JDK spuštěním příkazu `apt-get install default-jdk`.
     * Nezapomeňte nastavit proměnnou prostředí JAVA_HOME tak, aby odkazovala na složku, ve které je sada JDK nainstalovaná.
 * [Stáhněte](http://maven.apache.org/download.cgi) a [nainstalujte](http://maven.apache.org/install.html) binární archiv [Maven](http://maven.apache.org/).
@@ -107,13 +107,13 @@ Následující fragmenty kódu pocházejí ze souboru C:\git-samples\azure-cosmo
 
 ## <a name="update-your-connection-information"></a>Aktualizace informací o připojení
 
-Teď se vraťte na portál Azure Portal, kde najdete informace o připojení, a zkopírujte je do aplikace. Tato nastavení umožní aplikaci komunikovat s hostovanou databází.
+Teď se vraťte na portál Azure, kde najdete informace o připojení, a zkopírujte je do aplikace. Tato nastavení umožní aplikaci komunikovat s hostovanou databází.
 
-1. Na [portálu Azure Portal](http://portal.azure.com/) klikněte na **Klíče**. 
+1. Na [portálu Azure](http://portal.azure.com/) klikněte na **Klíče**. 
 
     Zkopírujte první část hodnoty identifikátoru URI.
 
-    ![Zobrazení a zkopírování přístupového klíče na portálu Azure Portal na stránce Klíče](./media/create-graph-java/keys.png)
+    ![Zobrazení a zkopírování přístupového klíče na portálu Azure na stránce Klíče](./media/create-graph-java/keys.png)
 2. Otevřete soubor src/remote.yaml a vložte jedinečnou hodnotu ID místo `$name$` v části `hosts: [$name$.graphs.azure.com]`.
 
     Řádek 1 souboru remote.yaml by teď měl vypadat nějak takto: 
@@ -168,7 +168,7 @@ Teď se vraťte na portál Azure Portal, kde najdete informace o připojení, a
     
     Pokud dochází k chybám časového limitu, zkontrolujte, jestli jste v části [Aktualizace informací o připojení](#update-your-connection-information) správně aktualizovali informace o připojení, a zkuste poslední příkaz spustit znovu. 
     
-    Po zastavení programu stiskněte Enter a pak v internetovém prohlížeči přejděte zpátky na portál Azure Portal. 
+    Po zastavení programu stiskněte Enter a pak v internetovém prohlížeči přejděte zpátky na portál Azure. 
 
 <a id="add-sample-data"></a>
 ## <a name="review-and-add-sample-data"></a>Kontrola a přidání ukázkových dat

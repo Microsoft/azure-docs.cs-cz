@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/24/2018
+ms.date: 10/30/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: febdb2e3ae4432c36ca839f81ba7a1d333df1a2f
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: a9e601d0bd9a4d7879ecd205488c6a901a464021
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46951997"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50419826"
 ---
 # <a name="tutorial-deploy-apps-to-azure-and-azure-stack"></a>Kurz: Nasazení aplikace do Azure a Azure Stack
 
@@ -273,21 +273,57 @@ Tím, že vytvoříte koncové body, Visual Studio Online (VSTO) build aplikace 
 10. Vyberte **uložit změny**.
 
 Teď, když existuje informace o koncovém bodu služby Azure DevOps pro připojení služby Azure Stack je připravený k použití. Agent sestavení ve službě Azure Stack získá pokyny ze služeb Azure DevOps a pak agenta přenáší informace o koncovém bodu pro komunikaci pomocí služby Azure Stack.
+
 ## <a name="create-an-azure-stack-endpoint"></a>Vytvoření koncového bodu služby Azure Stack
+
+### <a name="create-an-endpoint-for-azure-ad-deployments"></a>Vytvoření koncového bodu pro nasazení služby Azure AD
 
 Můžete podle pokynů v [vytvořte připojení služby Azure Resource Manageru existující službu objektu zabezpečení ](https://docs.microsoft.com/vsts/pipelines/library/connect-to-azure?view=vsts#create-an-azure-resource-manager-service-connection-with-an-existing-service-principal) článku o vytvoření připojení služby pomocí existující službu objektu zabezpečení a použijte následující mapování:
 
-- Prostředí: AzureStack
-- Adresa URL prostředí: Něco jako `https://management.local.azurestack.external`
-- ID předplatného: ID předplatného uživatele ze služby Azure Stack
-- Název předplatného: Název předplatného uživatele ze služby Azure Stack
-- ID klienta instančního objektu: ID objektu zabezpečení z [to](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-pipeline#create-a-service-principal) části v tomto článku.
-- Klíč objektu služby: klíč ze stejného článku (nebo heslo, pokud jste použili skriptu).
-- ID tenanta: ID tenanta můžete načíst následující instrukce na [získání ID tenanta](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-pipeline#get-the-tenant-id).
+Můžete vytvořit připojení služby pomocí následující mapování:
 
-Teď, když je vytvořen koncový bod, VSTS pro připojení služby Azure Stack je připravený k použití. Agent sestavení ve službě Azure Stack získá pokyny z VSTS, a pak agenta přenáší informace o koncovém bodu pro komunikaci s Azure Stackem.
+| Název | Příklad: | Popis |
+| --- | --- | --- |
+| Název připojení | Azure Stack, Azure AD | Název připojení. |
+| Prostředí | AzureStack | Název nového prostředí. |
+| Adresa URL prostředí | `https://management.local.azurestack.external` | Váš koncový bod správy. |
+| Úroveň oboru | Předplatné | Rozsah připojení. |
+| ID předplatného | 65710926-XXXX-4F2A-8FB2-64C63CD2FAE9 | ID předplatného uživatele ze služby Azure Stack |
+| Název předplatného | name@contoso.com | Název předplatného uživatele ze služby Azure Stack. |
+| ID klienta instančního objektu | FF74AACF-XXXX-4776-93FC-C63E6E021D59 | ID objektu zabezpečení z [to](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-pipeline#create-a-service-principal) části v tomto článku. |
+| Klíč objektu služby | THESCRETGOESHERE = | Klíč ze stejného článku (nebo heslo, pokud jste použili skriptu). |
+| ID tenanta | D073C21E-XXXX-4AD0-B77E-8364FCA78A94 | Identifikátor ID tenanta načíst následující instrukce na získání tenanta. ID tenanta načíst následující instrukce na [získání ID tenanta](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-pipeline#get-the-tenant-id).  |
+| Připojení: | Neověřeno | Ověření nastavení připojení k instančnímu objektu služby. |
 
-![Agent sestavení](media\azure-stack-solution-hybrid-pipeline\016_save_changes.png)
+Teď, když je vytvořen koncový bod, DevOps pro připojení služby Azure Stack je připravený k použití. Agent sestavení ve službě Azure Stack získá pokyny od DevOps a pak agenta přenáší informace o koncovém bodu pro komunikaci pomocí služby Azure Stack.
+
+![Sestavovacího agenta Azure AD](media\azure-stack-solution-hybrid-pipeline\016_save_changes.png)
+
+### <a name="create-an-endpoint-for-ad-fs"></a>Vytvořit koncový bod pro službu AD FS
+
+Nejnovější aktualizace pro Azure DevOps umožňuje vytvořit připojení služby pomocí certifikátu ověřování pomocí instančního objektu. To je potřeba při nasazení Azure Stack se službou AD FS jako zprostředkovatele identity. 
+
+![Agent služby AD FS sestavení](media\azure-stack-solution-hybrid-pipeline\image06.png)
+
+Můžete vytvořit připojení služby pomocí následující mapování:
+
+| Název | Příklad: | Popis |
+| --- | --- | --- |
+| Název připojení | Azure Stack služby AD FS | Název připojení. |
+| Prostředí | AzureStack | Název nového prostředí. |
+| Adresa URL prostředí | `https://management.local.azurestack.external` | Váš koncový bod správy. |
+| Úroveň oboru | Předplatné | Rozsah připojení. |
+| ID předplatného | 65710926-XXXX-4F2A-8FB2-64C63CD2FAE9 | ID předplatného uživatele ze služby Azure Stack |
+| Název předplatného | name@contoso.com | Název předplatného uživatele ze služby Azure Stack. |
+| ID klienta instančního objektu | FF74AACF-XXXX-4776-93FC-C63E6E021D59 | ID klienta objektu služby, který jste vytvořili pro službu AD FS. |
+| Certifikát | `<certificate>` |  Převeďte soubor certifikátu z formátu PFX na PEM. Vložte obsah souboru PEM certifikátu do tohoto pole. <br> Převod PFX na PEM:<br>`openssl pkcs12 -in file.pfx -out file.pem -nodes -password pass:<password_here>` |
+| ID tenanta | D073C21E-XXXX-4AD0-B77E-8364FCA78A94 | Identifikátor ID tenanta načíst následující instrukce na získání tenanta. ID tenanta načíst následující instrukce na [získání ID tenanta](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-pipeline#get-the-tenant-id). |
+| Připojení: | Neověřeno | Ověření nastavení připojení k instančnímu objektu služby. |
+
+Teď, když je vytvořen koncový bod, je připravený k použití Azure DevOps pro připojení služby Azure Stack. Agent sestavení ve službě Azure Stack získá pokyny z Azure DevOps a pak agenta přenáší informace o koncovém bodu pro komunikaci pomocí služby Azure Stack.
+
+> [!Note]
+> Pokud váš koncový bod ARM uživatele Azure stacku není přístupný z Internetu, se nezdaří ověření připojení. Toto je očekávané a připojení můžete ověřit tak, že vytvoříte kanál pro vydávání verzí prostřednictvím jednoduché úlohy. 
 
 ## <a name="develop-your-application-build"></a>Vývoj aplikace sestavení
 

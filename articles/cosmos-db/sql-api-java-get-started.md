@@ -11,12 +11,12 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 05/22/2017
 ms.author: sngun
-ms.openlocfilehash: 99accb8a822aedc387bbe137e8e80e298fe7cd1d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0cf42245981afb44415b9709be9d45c44255f295
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46991177"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50417510"
 ---
 # <a name="nosql-tutorial-build-a-sql-api-java-console-application"></a>Kurz k NoSQL: Vytvoření aplikace konzoly Java rozhraní SQL API
 
@@ -54,7 +54,7 @@ Ujistěte se, že máte následující:
   [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
 * [Git](https://git-scm.com/downloads)
-* [Java Development Kit (JDK) 7+](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
+* [Java Development Kit (JDK) 7+](https://aka.ms/azure-jdks)
 * [Maven](http://maven.apache.org/download.cgi).
 
 ## <a name="step-1-create-an-azure-cosmos-db-account"></a>Krok 1: Vytvoření účtu služby Azure Cosmos DB

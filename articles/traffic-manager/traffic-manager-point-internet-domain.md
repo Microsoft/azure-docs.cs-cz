@@ -4,9 +4,6 @@ description: Tento článek vám pomůže nasměrovat název domény společnost
 services: traffic-manager
 documentationcenter: ''
 author: kumudd
-manager: timlt
-editor: ''
-ms.assetid: 29822946-2d45-4434-ba47-fc180a445cc3
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: get-started-article
@@ -14,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/11/2016
 ms.author: kumud
-ms.openlocfilehash: 63a78332742dcefab20401575b1df0e23c06aa78
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: 45fe4fd8511cd1d725275a5a04bd4b6e13eb68f7
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39035142"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50138391"
 ---
 # <a name="point-a-company-internet-domain-to-an-azure-traffic-manager-domain"></a>Nasměrování internetové domény společnosti na doménu Azure Traffic Manageru
 

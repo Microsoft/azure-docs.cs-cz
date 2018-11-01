@@ -1,3 +1,16 @@
+---
+author: tamram
+ms.service: storage
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: tamram
+ms.openlocfilehash: c5cb1c5a005265950f8dcd02c8e7675918751dab
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50164549"
+---
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
 Vytvořte skupinu prostředků Azure pomocí příkazu [az group create](/cli/azure/group#az_group_create). Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.
