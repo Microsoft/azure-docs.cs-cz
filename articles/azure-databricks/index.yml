@@ -1,24 +1,21 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: 9c782f003903fd8eeb33067ce1d85c6a8ecef6e3
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50416082"
 documentType: LandingData
 title: Dokumentace k Azure Databricks
 metadata:
-  title: Dokumentace k Azure Databricks – Kurzy | Dokumentace Microsoftu
+  title: Dokumentace k Azure Databricks – kurzy
   description: Zjistěte, jak používat Azure Databricks, pomocí zde uvedeného Rychlého startu a dalších odkazů. Azure Databricks je analytická platforma založená na Apache Spark a optimalizovaná pro platformu cloudových služeb Microsoft Azure.
   services: azure-databricks
-  author: nitinme
-  manager: cgronlun
+  author: mamccrea
   ms.service: azure-databricks
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 03/19/2018
-  ms.author: nitinme
-  ms.openlocfilehash: 2c0bbbe6d9799258b983723c5d6980754a9908ae
-  ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
-  ms.translationtype: HT
-  ms.contentlocale: cs-CZ
-  ms.lasthandoff: 03/23/2018
-  ms.locfileid: "30162199"
+  ms.author: mamccrea
 abstract:
   description: Zjistěte, jak používat Azure Databricks, pomocí zde uvedeného Rychlého startu a dalších odkazů. Azure Databricks je analytická platforma založená na Apache Spark a optimalizovaná pro platformu cloudových služeb Microsoft Azure. Platforma Databricks je navržená ve spolupráci se zakladateli Apache Spark a díky integraci s Azure poskytuje nastavení jedním kliknutím, zjednodušené pracovní postupy a interaktivní pracovní prostor, který umožňuje spolupráci mezi datovými vědci, odborníky přes data a obchodními analytiky.
   aside:
@@ -40,7 +37,7 @@ sections:
     items:
     - image:
         src: /azure/azure-databricks/media/index/portal.svg
-      text: Azure Portal
+      text: portál Azure
       href: /azure/azure-databricks/quickstart-create-databricks-workspace-portal
     - image:
         src: /azure/azure-databricks/media/index/logo_azure_resource_manager.svg

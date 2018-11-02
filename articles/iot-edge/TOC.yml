@@ -16,28 +16,28 @@ items:
   expanded: true
 - name: Kurzy
   items:
-  - name: Zjištění přehledů na hraničních zařízeních
-    items:
-    - name: Filtrování dat s využitím Azure Functions
-      href: tutorial-deploy-function.md
-    - name: Zjištění průměrů s využitím ASA
-      href: tutorial-deploy-stream-analytics.md
-    - name: Hodnocení dat s využitím Azure ML
-      href: tutorial-deploy-machine-learning.md
-    - name: Filtrování dat pomocí vlastního kódu
-      items:
-      - name: C#
-        href: tutorial-csharp-module.md
-      - name: Python
-        href: tutorial-python-module.md
-      - name: Node.js
-        href: tutorial-node-module.md
-      - name: Java
-        href: tutorial-java-module.md
-      - name: C
-        href: tutorial-c-module.md
+  - name: Filtrování dat s využitím Azure Functions
+    href: tutorial-deploy-function.md
+  - name: Zjištění průměrů s využitím ASA
+    href: tutorial-deploy-stream-analytics.md
+  - name: Hodnocení dat s využitím Azure ML
+    href: tutorial-deploy-machine-learning.md
+  - name: Klasifikace obrázků s využitím Custom Vision
+    href: tutorial-deploy-custom-vision.md
   - name: Místní ukládání dat s využitím SQL
     href: tutorial-store-data-sql-server.md
+  - name: Vývoj modulů vlastního kódu
+    items:
+    - name: C#
+      href: tutorial-csharp-module.md
+    - name: Python
+      href: tutorial-python-module.md
+    - name: Node.js
+      href: tutorial-node-module.md
+    - name: Java
+      href: tutorial-java-module.md
+    - name: C
+      href: tutorial-c-module.md
 - name: Koncepty
   items:
   - name: Modul runtime IoT Edge
@@ -136,10 +136,10 @@ items:
       href: how-to-deploy-monitor-cli.md
   - name: Použití hraničních zařízení jako bran
     items:
-    - name: Transparentní brána (Linux)
-      href: how-to-create-transparent-gateway-linux.md
-    - name: Transparentní brána (Windows)
-      href: how-to-create-transparent-gateway-windows.md
+    - name: Konfigurace transparentní brány
+      href: how-to-create-transparent-gateway.md
+    - name: Připojení podřízeného zařízení
+      href: how-to-connect-downstream-device.md
     - name: Protokolová brána Modbus
       href: deploy-modbus-gateway.md
   - name: Konfigurace podpory proxy
@@ -220,9 +220,9 @@ items:
     href: https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured
   - name: Videa
     href: https://azure.microsoft.com/documentation/videos/index/?services=iot-hub
-ms.openlocfilehash: fa5d551c95493361cac9d661938b50fb9ad2fed6
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 625545123d9cbd4c587667bb7bf4e1eda8984a6d
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48816306"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50913478"

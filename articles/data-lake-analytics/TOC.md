@@ -64,6 +64,7 @@
 
 ## Průběžná integrace a průběžné nasazování
 ### [Přehled](data-lake-analytics-cicd-overview.md)
+### [Registrace sestavení](data-lake-analytics-cicd-manage-assemblies.md)
 ### [Nastavení testů](data-lake-analytics-cicd-test.md)
 ### [U-SQL SDK](data-lake-analytics-u-sql-sdk.md)
 

@@ -1,0 +1,48 @@
+items:
+- name: Dokumentace k rozhraní API Bingu pro místní obchodní vyhledávání
+  href: index.yml
+  expanded: true
+- name: Přehled
+  items:
+  - name: Co je rozhraní API Bingu pro místní obchodní vyhledávání?
+    href: overview.md
+  expanded: true
+- name: Šablony Rychlý start
+  items:
+  - name: REST API
+    items:
+    - name: Pomocí C#
+      href: quickstarts/local-quickstart.md
+    - name: Pomocí Javy
+      href: quickstarts/local-search-java-quickstart.md
+    - name: Pomocí Node
+      href: quickstarts/local-search-node-quickstart.md
+    - name: Pomocí Pythonu
+      href: quickstarts/local-search-python-quickstart.md
+    expanded: true
+- name: Koncepty
+  items:
+  - name: Práce s dotazy a odpověďmi
+    href: local-search-query-response.md
+  - name: Filtrování výsledků podle nastavení geografických hranic
+    href: specify-geographic-search.md
+  - name: Kategorie místního obchodního vyhledávání
+    href: local-categories.md
+- name: Referenční informace
+  items:
+  - name: Požadavky na zobrazení a použití
+    href: use-display-requirements.md
+  - name: Referenční informace k rozhraní API pro místní obchodní vyhledávání
+    href: local-search-reference.md
+- name: Zdroje a prostředky
+  items:
+  - name: Zkuste Cognitive Services
+    href: https://azure.microsoft.com/en-us/try/cognitive-services/?api=bing-web-search-api
+  - name: Informace o cenách
+    href: https://azure.microsoft.com/en-us/pricing/details/cognitive-services/search-api/
+ms.openlocfilehash: d120c19aa2b028fe54bec90c22f3e9bcf1bb4355
+ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50748776"

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 9/28/2018
 ms.author: rithorn
-ms.openlocfilehash: 6b369c8209e62ff3c98b3fdf78378b403b0a0d2d
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: b5a99ff8cfc0a915b70c6d90b8aa04d020177d54
+ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48017649"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50748166"
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>Uspořádání vašich prostředků s využitím skupin pro správu Azure
 

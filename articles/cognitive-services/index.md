@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.author: nitinme
 ms.date: 10/23/2018
 ms.topic: hub-page
-ms.openlocfilehash: 0564cd1b2c7acf09ee59b858eafb49a4217afe35
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 10f0062f27c03d8776415272766a1ec0729e1f80
+ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49954822"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50747282"
 ---
 <h1>Dokumentace ke službě Azure Cognitive Services</h1>
         <p style="font-size: 1.12rem;margin-bottom: 1rem;">Naučte se, jak do vašich aplikací, webů a robotů integrovat inteligentní algoritmy, které umožní vidět a slyšet vaše zákazníky, mluvit s nimi a porozumět jejich požadavkům prostřednictvím přirozených způsobů komunikace. Kurzy, rychlá zprovoznění, reference k rozhraní API a příklady vám ukážou, jak na to.</p>
@@ -325,6 +325,7 @@ ms.locfileid: "49954822"
                         <p><a href="/azure/cognitive-services/bing-entities-search/">Vyhledávání entit Bingu</a></p>
                         <p><a href="/azure/cognitive-services/bing-image-search">Vyhledávání obrázků Bingu</a></p>
                         <p><a href="/azure/cognitive-services/bing-visual-search">Vizuální vyhledávání Bingu</a></p>
+                        <p><a href="/azure/cognitive-services/bing-local-business-search"><span>Místní obchodní vyhledávání Bingu&nbsp;<sup style="font-size:70%">PREVIEW</sup></span></a></p>
                     </div>
                 </div>
             </div>

@@ -1,0 +1,59 @@
+items:
+- name: Dokumentace k Avere vFXT
+  href: index.yml
+- name: Přehled
+  items:
+  - name: Co je Avere vFXT pro Azure?
+    href: avere-vfxt-overview.md
+- name: Koncepty
+  items:
+  - name: Plánování systému Avere vFXT
+    href: avere-vfxt-deploy-plan.md
+  - name: Přehled nasazení Avere vFXT
+    href: avere-vfxt-deploy-overview.md
+- name: Návody
+  items:
+  - name: Příprava k vytvoření Avere vFXT
+    href: avere-vfxt-prereqs.md
+  - name: Nasazení clusteru vFXT
+    href: avere-vfxt-deploy.md
+  - name: Přístup k nástroji pro konfiguraci clusteru
+    href: avere-vfxt-cluster-gui.md
+  - name: Povolení nahrávání podpory
+    href: avere-vfxt-enable-support.md
+  - name: Konfigurace úložiště
+    href: avere-vfxt-add-storage.md
+  - name: Připojení clusteru Avere vFXT
+    href: avere-vfxt-mount-clients.md
+  - name: Přesun dat do clusteru Avere vFXT
+    href: avere-vfxt-data-ingest.md
+  - name: Správa clusteru Avere vFXT
+    href: avere-vfxt-manage-cluster.md
+  - name: Přizpůsobení vyladění clusteru
+    href: avere-vfxt-tuning.md
+- name: Zdroje a prostředky
+  items:
+  - name: Pomoc se systémem
+    href: avere-vfxt-open-ticket.md
+  - name: Ukázkové projekty
+    href: avere-vfxt-demo-links.md
+  - name: Avere vFXT pro Azure – nejčastější dotazy
+    href: avere-vfxt-faq.md
+  - name: Další dokumentace
+    items:
+    - name: Doprovodná dokumentace
+      href: avere-vfxt-additional-resources.md
+    - name: Seznam povolených portů
+      href: avere-vfxt-required-ports.md
+    - name: Vytvoření role clusteru bez kontroleru
+      href: avere-vfxt-pre-role.md
+    - name: Konfigurace DNS clusteru Avere
+      href: avere-vfxt-configure-dns.md
+    - name: Oprávnění k nasazení Avere vFXT pro jiné uživatele než vlastníky
+      href: avere-vfxt-non-owner.md
+ms.openlocfilehash: 6f99a33ffbf637e02d487a511d17bf8a365cb3ba
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50669128"
