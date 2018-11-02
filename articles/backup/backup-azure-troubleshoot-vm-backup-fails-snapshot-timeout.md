@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 55e4195e2666aed371a5a5664b331184afcf5e36
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 25c9cbcaf852aa07bcbe4f71bf69de366d4dbb87
+ms.sourcegitcommit: 3dcb1a3993e51963954194ba2a5e42260d0be258
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50420961"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50754031"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Řešení potíží se selháním Azure Backup: problémy s agentů nebo rozšíření
 
@@ -48,7 +48,6 @@ Po registraci a naplánovat virtuálního počítače pro služby Azure Backup z
 
 **Kód chyby:**: UserErrorRpCollectionLimitReached <br>
 **Chybová zpráva**: bylo dosaženo maximálního limitu kolekcí bodů obnovení. <br>
-Popis:  
 * Tento problém může dojít, pokud zámek ve skupině prostředků. bod obnovení brání automatickému čištění bod obnovení.
 * Tento problém může také dojít, pokud se aktivují více záloh za den. Aktuálně doporučujeme pouze jedna záloha za den jako rychlé RPs se uchovávají po dobu 7 dní a pouze 18 rychlé RPs můžou být spojené s virtuálním počítači v daném okamžiku. <br>
 
@@ -59,7 +58,7 @@ Pokud chcete tento problém vyřešit, odeberte zámek na skupinu prostředků a
     > Služba Backup vytvoří samostatné skupiny prostředků než skupina prostředků virtuálního počítače k uložení kolekci bodů obnovení. Zákazníkům doporučujeme není zamknout skupiny prostředků vytvořené pro použití službou Backup. Formát názvu skupiny prostředků vytvořené pomocí služby Backup je: AzureBackupRG_`<Geo>`_`<number>` například: AzureBackupRG_northeurope_1
 
 
-**Krok 1: [odebrat zámek ze skupiny pro skupiny prostředků bodu obnovení](#remove_lock_from_the_recovery_point_resource_group)** <br>
+**Krok 1: [odebrat zámek ze skupiny prostředků bodů obnovení](#remove_lock_from_the_recovery_point_resource_group)** <br>
 **Krok 2: [vyčištění kolekci bodů obnovení](#clean_up_restore_point_collection)**<br>
 
 ## <a name="ExtensionSnapshotFailedNoNetwork-snapshot-operation-failed-due-to-no-network-connectivity-on-the-virtual-machine"></a>ExtensionSnapshotFailedNoNetwork - operace snímku nebyla úspěšná kvůli bez připojení k síti na virtuálním počítači
@@ -95,6 +94,21 @@ Po registraci a naplánovat virtuálního počítače pro služby Azure Backup z
 **4. příčina: [stavu snímku nelze načíst ani nemůže být pořídí snímek](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**  
 **5 příčina: [rozšíření zálohování se nezdaří pro aktualizaci nebo načtení](#the-backup-extension-fails-to-update-or-load)**  
 **Příčina 6: [služba zálohování nemá oprávnění odstranit staré body obnovení z důvodu zámku skupiny prostředků](#backup-service-does-not-have-permission-to-delete-the-old-restore-points-due-to-resource-group-lock)**
+
+## <a name="usererrorunsupporteddisksize---currently-azure-backup-does-not-support-disk-sizes-greater-than-1023gb"></a>UserErrorUnsupportedDiskSize – aktuálně Azure Backup nepodporuje disky větší než 1023GB
+
+**Kód chyby:**: UserErrorUnsupportedDiskSize <br>
+**Chybová zpráva**: aktuálně Azure Backup nepodporuje disky větší než 1023 GB <br>
+
+Vaše operace zálohování může selhat při zálohování virtuálního počítače s velikostí disku větší než 1023GB, protože trezoru není upgradována na zásobník záloh virtuálních počítačů Azure V2. Upgrade na zálohování virtuálních počítačů Azure zásobníku poskytované V2 podporují až 4 TB. Přečtěte si tyto [výhody](backup-upgrade-to-vm-backup-stack-v2.md), [aspekty](backup-upgrade-to-vm-backup-stack-v2.md#considerations-before-upgrade)a poté proveďte upgrade pomocí těchto [pokyny](backup-upgrade-to-vm-backup-stack-v2.md#upgrade).  
+
+## <a name="usererrorstandardssdnotsupported---currently-azure-backup-does-not-support-standard-ssd-disks"></a>UserErrorStandardSSDNotSupported – aktuálně Azure Backup nepodporuje disky SSD na úrovni Standard
+
+**Kód chyby:**: UserErrorStandardSSDNotSupported <br>
+**Chybová zpráva**: aktuálně Azure Backup nepodporuje disky SSD na úrovni Standard <br>
+
+Azure Backup nyní podporuje disky SSD na úrovni Standard pouze pro trezory služby, které jsou upgradovány na zásobník záloh virtuálních počítačů Azure V2. Přečtěte si tyto [výhody](backup-upgrade-to-vm-backup-stack-v2.md), [aspekty](backup-upgrade-to-vm-backup-stack-v2.md#considerations-before-upgrade)a poté proveďte upgrade pomocí těchto [pokyny](backup-upgrade-to-vm-backup-stack-v2.md#upgrade).
+
 
 ## <a name="causes-and-solutions"></a>Příčiny a řešení
 
@@ -208,7 +222,7 @@ Dokončení tohoto postupu způsobí, že rozšíření znovu při dalším zál
 
 ### <a name="remove_lock_from_the_recovery_point_resource_group"></a>Odebrat zámek ze skupiny prostředků bodů obnovení
 1. Přihlaste se k webu [Azure Portal](http://portal.azure.com/).
-2. Přejděte na **možnost všechny prostředky**, vyberte skupinu prostředků kolekce bodů obnovení v následujícím formátu AzureBackupRG_<Geo>_<number>.
+2. Přejděte na **možnost všechny prostředky**, vyberte skupinu prostředků kolekce bodů obnovení v následujícím formátu AzureBackupRG_`<Geo>`_`<number>`.
 3. V **nastavení** vyberte **zámky** zobrazíte zámků.
 4. Odebrat zámek, vyberte tři tečky a klikněte na **odstranit**.
 
@@ -217,17 +231,17 @@ Dokončení tohoto postupu způsobí, že rozšíření znovu při dalším zál
 ### <a name="clean_up_restore_point_collection"></a> Odstranit kolekci bodů obnovení
 Po ze zařízení zámek odebral, mají body obnovení na vyčištění. Chcete-li vyčistit body obnovení, postupovat podle některého z metody:<br>
 * [Odstranit kolekci bodů obnovení ve spuštěné zálohování ad hoc](#clean-up-restore-point-collection-by-running-ad-hoc-backup)<br>
-* [Odstranit kolekci bodů obnovení z portálu vytvořené pomocí služby zálohování](#clean-up-restore-point-collection-from-portal-created-by-backup-service)<br>
+* [Vyčistit obnovení bodu kolekce z webu Azure portal](#clean-up-restore-point-collection-from-azure-portal)<br>
 
 #### <a name="clean-up-restore-point-collection-by-running-ad-hoc-backup"></a>Odstranit kolekci bodů obnovení ve spuštěné zálohování ad hoc
 Po odebrání zámku aktivace ad-hoc nebo ruční zálohování. Tím se zajistí, že se že body obnovení automaticky vyčištěna. Očekávané selhání poprvé; tato operace ad-hoc nebo ruční však zajistí automatické čištění místo ruční odstranění bodů obnovení. Po vyčištění uspěli na další naplánované zálohování.
 
 > [!NOTE]
-    > Automatické čištění se stane po několik hodin spouští se záloha ad-hoc nebo ruční. Pokud vaše naplánované zálohování se nezdaří, pak zkuste ručně odstranit kolekci bodů obnovení pomocí kroků uvedených [tady](#clean-up-restore-point-collection-from-portal-created-by-backup-service).
+    > Automatické čištění se stane po několik hodin spouští se záloha ad-hoc nebo ruční. Pokud vaše naplánované zálohování se nezdaří, pak zkuste ručně odstranit kolekci bodů obnovení pomocí kroků uvedených [tady](#clean-up-restore-point-collection-from-azure-portal).
 
-#### <a name="clean-up-restore-point-collection-from-portal-created-by-backup-service"></a>Odstranit kolekci bodů obnovení z portálu vytvořené pomocí služby zálohování<br>
+#### <a name="clean-up-restore-point-collection-from-azure-portal"></a>Vyčistit obnovení bodu kolekce z webu Azure portal <br>
 
-Ručně vymažte obnovení bodů kolekce, jehož nejsou z důvodu zámku na skupinu prostředků, následující kroky:
+Ručně vymažte obnovení bodů kolekce, které nejsou zrušeno z důvodu zámku na skupinu prostředků, vyzkoušejte následující kroky:
 1. Přihlaste se k webu [Azure Portal](http://portal.azure.com/).
 2. Na **centra** nabídky, klikněte na tlačítko **všechny prostředky**, vyberte skupinu prostředků v následujícím formátu AzureBackupRG_`<Geo>`_`<number>` kde je umístěn virtuální počítač.
 

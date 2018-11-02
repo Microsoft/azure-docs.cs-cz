@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: d5d75c25d03c02d6d49fc2fd8aeec995cea52314
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 7977dc55d101c99bf1f850a529083916367308b4
+ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50414263"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50747809"
 ---
 # <a name="how-to-set-a-static-internal-private-ip-address-using-powershell-classic"></a>Postup nastavení statické interní privátní IP adresy pomocí prostředí PowerShell (Classic)
 Ve většině případů nebudete muset zadat statické interní IP adresu pro váš virtuální počítač. Virtuální počítače ve virtuální síti automaticky přijme vnitřní IP adresu z rozsahu, který zadáte. Ale v některých případech, určení statickou IP adresu pro konkrétní virtuální počítač má smysl. Pokud například váš virtuální počítač je teď spustíme DNS nebo bude řadič domény. Statické interní IP adresa zůstane s virtuálním Počítačem, klidně i prostřednictvím stavu zastavení nebo zrušení zřízení. 
@@ -28,9 +28,14 @@ Ve většině případů nebudete muset zadat statické interní IP adresu pro v
 > Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Resource Manager a klasický model](../azure-resource-manager/resource-manager-deployment-model.md). Tento článek se věnuje použití klasického modelu nasazení. Společnost Microsoft doporučuje, aby většina nových nasazení používala [modelu nasazení Resource Manager](virtual-networks-static-private-ip-arm-ps.md).
 > 
 > 
+## <a name="install-the-azure-powershell-service-management-module"></a>Instalace modulu správy služeb prostředí Azure PowerShell
+
+Před spuštěním následujících příkazů, ujistěte se, že [modulu správy služeb prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/servicemanagement/install-azure-ps?view=azuresmps-4.0.0
+) je na počítači nainstalovaný. Historie verzí modulu správy služeb prostředí Azure PowerShell, najdete v části [modul Azure v galerii prostředí PowerShell](https://www.powershellgallery.com/packages/Azure/5.3.0).
 
 ## <a name="how-to-verify-if-a-specific-ip-address-is-available"></a>Jak ověřit, zda je k dispozici konkrétní IP adresu
-Chcete-li ověřit, pokud IP adresa *10.0.0.7* je k dispozici ve virtuální síti s názvem *TestVnet*, spusťte následující příkaz prostředí PowerShell a potom ověřte hodnotu pro *IsAvailable*:
+Chcete-li ověřit, pokud IP adresa *10.0.0.7* je k dispozici ve virtuální síti s názvem *TestVnet*, spusťte následující příkaz prostředí PowerShell a potom ověřte hodnotu pro *IsAvailable*.
+
 
     Test-AzureStaticVNetIP –VNetName TestVNet –IPAddress 10.0.0.7 
 

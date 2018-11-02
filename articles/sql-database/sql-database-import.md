@@ -11,15 +11,15 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 10/19/2018
-ms.openlocfilehash: 053dbc27908b14e70fa2c7502ec7c4e3ae652bf5
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.date: 11/01/2018
+ms.openlocfilehash: 913e374e51b968650b14d3f6563f64c217b76ad0
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49469754"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50913788"
 ---
-# <a name="import-a-bacpac-file-to-a-new-azure-sql-database"></a>Import souboru BACPAC do nové databáze SQL Azure
+# <a name="quickstart-import-a-bacpac-file-to-a-new-azure-sql-database"></a>Rychlý start: Importujte souboru BACPAC do nové databáze SQL Azure
 
 Když je potřeba importovat databázi z archivu nebo při migraci z jiné platformy, můžete importovat schéma databáze a dat z [BACPAC](https://msdn.microsoft.com/library/ee210546.aspx#Anchor_4) souboru. Soubor BACPAC je soubor ZIP s příponou souboru BACPAC, který obsahuje metadata i data z databáze SQL serveru. Soubor BACPAC je možné importovat z Azure blob storage (jenom standardní úložiště) nebo z místního úložiště do místního umístění. Maximalizovat rychlost import, doporučujeme zadat vyšší úroveň služby a vypočítat velikost, například P6 a pak škálovat dolů podle potřeby a po úspěšném importu. Navíc úroveň kompatibility databáze po dokončení importu podle zdrojové databáze úroveň kompatibility.
 

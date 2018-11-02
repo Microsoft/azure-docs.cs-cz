@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/25/2018
 ms.author: magoedte
-ms.openlocfilehash: f55f81d1e28a7626dfe00f6bea349bf74e3a1d24
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 8cca69109f07cbcffe2a5d796262e51fc9233cc5
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50092770"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50914681"
 ---
 # <a name="how-to-onboard-the-azure-monitor-for-vms-preview"></a>Jak připojit Azure monitorovat pro virtuální počítače (Preview)
 Tento článek popisuje, jak nastavit monitorování Azure pro virtuální počítače, které monitoroval stav operačního systému vašich virtuálních počítačů Azure a zjišťuje a mapuje závislosti aplikací, které mohou být hostovány na ně.  
@@ -355,12 +355,12 @@ V následující tabulce jsou uvedeny definice zásad, které jsou k dispozici.
 |Název |Popis |Typ |  
 |-----|------------|-----|  
 |[Preview]: Povolit monitorování Azure pro virtuální počítače |Povolte monitorování Azure pro virtuální počítače (VM) v zadaném oboru (skupiny pro správu, předplatné nebo skupinu prostředků). Pracovní prostor Log Analytics přijímá jako parametr. |Iniciativa |  
-|[Preview]: nasazení agenta závislostí auditu – obrázku (operačního systému virtuálního počítače) neuvedené v seznamu |Sestavy virtuálních počítačů jako nevyhovující, pokud není v seznamu definovaného Image virtuálního počítače (OS) a agent není nainstalován. |Zásada |  
-|[Preview]: nasazení agenta auditu Log Analytics – obrázku (operačního systému virtuálního počítače) neuvedené v seznamu |Sestavy virtuálních počítačů jako nevyhovující, pokud není v seznamu definovaného Image virtuálního počítače (OS) a agent není nainstalován. |Zásada |  
-|[Preview]: nasazení agenta závislosti pro virtuální počítače s Linuxem |Nasazení agenta závislostí pro virtuální počítače s Linuxem, pokud Image virtuálního počítače (OS) je v seznamu definovaného a agent není nainstalovaný. |Zásada |  
-|[Preview]: nasazení agenta závislosti pro virtuální počítače s Windows |Nasazení agenta závislosti pro Windows VMs Pokud Image virtuálního počítače (OS) je v seznamu definovaného a agent není nainstalovaný. |Zásada |  
-|[Preview]: nasadit agenta Log Analytics pro virtuální počítače s Linuxem |Nasaďte agenta Log Analytics pro virtuální počítače s Linuxem, když je Image virtuálního počítače (OS) v seznamu definovaného a agent není nainstalovaný. |Zásada |  
-|[Preview]: nasadit agenta Log Analytics pro virtuální počítače s Windows |Nasaďte agenta Log Analytics pro Windows VMs, když je Image virtuálního počítače (OS) v seznamu definovaného a agent není nainstalovaný. |Zásada |  
+|[Preview]: nasazení agenta závislostí auditu – obrázku (operačního systému virtuálního počítače) neuvedené v seznamu |Ohlásí, že virtuální počítače nedodržují předpisy, pokud image virtuálního počítače (operační systém) není uvedená na definovaném seznamu a není nainstalovaný agent. |Zásada |  
+|[Preview]: nasazení agenta auditu Log Analytics – obrázku (operačního systému virtuálního počítače) neuvedené v seznamu |Ohlásí, že virtuální počítače nedodržují předpisy, pokud image virtuálního počítače (operační systém) není uvedená na definovaném seznamu a není nainstalovaný agent. |Zásada |  
+|[Preview]: nasazení agenta závislosti pro virtuální počítače s Linuxem |Umožňuje nasadit agenta Dependency Agent pro linuxové virtuální počítače, pokud je image virtuálního počítače (operační systém) uvedená na definovaném seznamu a agent není nainstalovaný. |Zásada |  
+|[Preview]: nasazení agenta závislosti pro virtuální počítače s Windows |Umožňuje nasadit agenta Dependency Agent pro virtuální počítače s Windows, pokud je image virtuálního počítače (operační systém) uvedená na definovaném seznamu a agent není nainstalovaný. |Zásada |  
+|[Preview]: nasadit agenta Log Analytics pro virtuální počítače s Linuxem |Umožňuje nasadit agenta Log Analytics Agent pro linuxové virtuální počítače, pokud je image virtuálního počítače (operační systém) uvedená na definovaném seznamu a agent není nainstalovaný. |Zásada |  
+|[Preview]: nasadit agenta Log Analytics pro virtuální počítače s Windows |Umožňuje nasadit agenta Log Analytics Agent pro virtuální počítače s Windows, pokud je image virtuálního počítače (operační systém) uvedená na definovaném seznamu a agent není nainstalovaný. |Zásada |  
 
 Samostatné zásady (není zahrnutá v iniciativě) 
 

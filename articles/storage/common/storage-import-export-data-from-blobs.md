@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/17/2018
 ms.author: alkohli
 ms.component: common
-ms.openlocfilehash: 9ae0892d7de8a431227218ffc6db03eca20fcbdd
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: 60a92e35f1408d944e8091be4945c53abe3791d1
+ms.sourcegitcommit: 3dcb1a3993e51963954194ba2a5e42260d0be258
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47585709"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50754048"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>Export dat z úložiště objektů Blob v Azure pomocí služby Azure Import/Export
 Tento článek obsahuje podrobné pokyny o tom, jak bezpečně export velkých objemů dat z úložiště objektů Blob v Azure pomocí služby Azure Import/Export. Služba vyžaduje, abyste zasílejte prázdné disky do datacentra Azure. Službu exportuje data z vašeho účtu úložiště do jednotky a potom odešle zpět jednotky.
@@ -114,7 +114,7 @@ Pokud si nejste jisti požadovaný počet jednotek, je nutné, přejděte [zkont
 Když řídicím panelu hlásí, že úloha byla dokončena, disky se dodávají se vám a sledovací číslo pro dodávku je k dispozici na portálu.
 
 1. Po přijetí jednotky se exportovaná data, musíte získat klíče Bitlockeru k odemknutí jednotky. Přejděte na úlohu exportu na webu Azure Portal. Klikněte na tlačítko **Import/Export** kartu. 
-2. Vyberte a klikněte v seznamu úloh export. Přejděte na **klíče Bitlockeru** a zkopírování klíče.
+2. Vyberte a klikněte na vaše úloha exportu ze seznamu. Přejděte na **klíče Bitlockeru** a zkopírování klíče.
    
    ![Zobrazovat klíče Bitlockeru pro úlohu exportu](./media/storage-import-export-service/export-job-bitlocker-keys.png)
 

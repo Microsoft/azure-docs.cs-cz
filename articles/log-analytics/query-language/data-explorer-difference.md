@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/29/2018
+ms.date: 10/31/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: e6d097749dae49cf6f1d710bcf01cf99dcd98a4c
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 65f3388074ff7a84c6e0516a64665019d5883ab1
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50244119"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50913168"
 ---
 # <a name="log-analytics-query-language-differences"></a>Protokolovat rozdíly jazyk dotazu Analytics
 
@@ -63,11 +63,5 @@ Následující operátory podporoval konkrétní funkce Log Analytics a nejsou k
 
 ## <a name="next-steps"></a>Další postup
 
-<<<<<<< HEAD:articles/log-analytics/query-language/data-explorer-difference.md
-- Získání odkazů na jiné [prostředky pro psaní dotazy Log Analytics](kusto.md).
+- Získání odkazů na jiné [prostředky pro psaní dotazy Log Analytics](query-language.md).
 - Přístup ke kompletní [referenční dokumentaci pro Průzkumníka dat dotazovací jazyk](/azure/kusto/query/).
-=======
-- Přečtěte si informace o dotazech v [Log Analytics](../log-analytics-queries.md).
-- Provede lekce na zápis na [dotazu Log Analytics](/log-analytics/query-language/get-started-queries.md).
-- Přístup ke kompletní [referenční dokumentaci pro Kusto](/azure/kusto/query/).
->>>>>>> 4bccab5ecb17c887658a4d2ed1bab6b22bf29ffd:articles/log-Analytics/Query-Language/kusto.MD

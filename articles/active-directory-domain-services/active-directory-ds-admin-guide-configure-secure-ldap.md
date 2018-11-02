@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: ergreenl
-ms.openlocfilehash: de77050206c98832b274e8bdbda8026fc115610e
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 9188e7a8dc5364592772b95c302c59a16bfad2be
+ms.sourcegitcommit: 3dcb1a3993e51963954194ba2a5e42260d0be258
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50156217"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50754065"
 ---
 # <a name="configure-secure-ldap-ldaps-for-an-azure-ad-domain-services-managed-domain"></a>Konfigurace zabezpečeného protokolu LDAP (LDAPS) pro spravované domény služby Azure AD Domain Services
 Tento článek popisuje, jak můžete zajistit zabezpečení Lightweight Directory Access protokolu (LDAPS) pro spravované domény služby Azure AD Domain Services. Protokol Secure LDAP se také označuje jako "Directory přístup protokolu LDAP (Lightweight) přes vrstvy SSL (Secure Sockets) / zabezpečení TLS (Transport Layer)".
@@ -45,7 +45,7 @@ Získejte platný certifikát podle následujících pokynů, dříve než povol
 
 1. **Důvěryhodného vystavitele** – certifikát musí být vystavené autoritu důvěryhodné počítače připojující se k spravované doméně pomocí protokolu secure LDAP. Tuto autoritu může být veřejná certifikační autorita (CA) nebo certifikační autorita organizace tyto počítače důvěřují.
 2. **Doba života** – certifikát musí být platná pro další 3 až 6 měsíců. Když vyprší platnost certifikátu protokolu Secure LDAP pro spravovanou doménu narušení.
-3. **Název subjektu** – název subjektu certifikátu musí být zástupný znak pro vaši spravovanou doménu. Například pokud název domény "contoso100.com", název subjektu certifikátu musí být "*. contoso100.com". Nastavte název DNS (alternativní název subjektu) na tento zástupný název.
+3. **Název subjektu** – název subjektu certifikátu musí být název vaší spravované domény. Například pokud název domény "contoso100.com", název subjektu certifikátu musí být "contoso100.com". 
 4. **Použití klíče** – certifikát musí být nakonfigurované pro následující používá – digitální podpisy a šifrování klíče.
 5. **Účel certifikátu** – certifikát musí být platná pro ověřování serveru SSL.
 

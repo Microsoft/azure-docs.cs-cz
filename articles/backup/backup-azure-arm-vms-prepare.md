@@ -9,16 +9,16 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: raynew
-ms.openlocfilehash: 30b35d38c30d3ee9410a85824c53001ca95cf30b
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: dd11c50940dc35524b6d10c6043e906cc813498d
+ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50025935"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50748285"
 ---
 # <a name="prepare-to-back-up-azure-vms"></a>Příprava na zálohování virtuálních počítačů Azure
 
-Tento článek popisuje kroky pro přípravu prostředí pro zálohování nasazení Azure Resource Manageru virtuálních počítačů (VM). Kroky uvedené v postupech pomocí webu Azure portal. Při zálohování virtuálního počítače se ukládají body obnovení, nebo data záloh v trezoru služby Recovery Services Backup. 
+Tento článek popisuje kroky pro přípravu prostředí pro zálohování nasazení Azure Resource Manageru virtuálních počítačů (VM). Kroky uvedené v postupech pomocí webu Azure portal. Při zálohování virtuálního počítače se ukládají body obnovení, nebo data záloh v trezoru služby Recovery Services Backup.
 
 
 
@@ -45,7 +45,7 @@ Pokud tyto podmínky se již existují ve vašem prostředí, pokračujte [zálo
 ## <a name="limitations-when-backing-up-and-restoring-a-vm"></a>Omezení při zálohování a obnovení virtuálního počítače
 Předtím, než je připravit vaše prostředí, nezapomeňte seznámit s těmito omezeními:
 
-* Zálohování virtuálních počítačů s více než 32 datových disků se nepodporuje.
+* Zálohování virtuálních počítačů s více než 16 datových disků se nepodporuje.
 * Zálohování virtuálních počítačů s Linuxem zašifrovaná pomocí šifrování na Linuxu Unified klíč instalační program (LUKS) se nepodporuje.
 * Nedoporučujeme zálohování virtuálních počítačů, které obsahují konfiguraci sdílené svazky clusteru (CSV) nebo souborového serveru se Škálováním. Pokud budete hotovi, očekává se selhání zapisovačů sdíleného svazku clusteru. Vyžadují zahrnující všechny virtuální počítače, které jsou součástí konfigurace clusteru během úlohu snímku. Azure Backup nepodporuje konzistence více virtuálních počítačů.
 * Zálohovaná data neobsahuje síti připojené jednotky připojené k virtuálnímu počítači.
@@ -194,7 +194,7 @@ Služba Backup nainstaluje rozšíření zálohování, jestli je virtuální po
 ## <a name="establish-network-connectivity"></a>Vytvoření připojení k síti
 Spravovat snímky virtuálních počítačů, rozšíření zálohování vyžaduje připojení k Azure veřejné IP adresy. Bez správné připojení k Internetu vypršení časového limitu žádostí HTTP virtuálního počítače a selže celá operace zálohování. Pokud má vaše nasazení omezení přístupu na místě – pomocí skupiny zabezpečení sítě (NSG), například – zvolte jednu z těchto možností se poskytne jasný pro provoz zálohování:
 
-* [Seznam povolených adres Azure datacenter IP rozsahy](http://www.microsoft.com/en-us/download/details.aspx?id=41653).
+* [Seznam povolených adres Azure datacenter IP rozsahy](http://www.microsoft.com/download/details.aspx?id=41653).
 * Nasazení proxy server HTTP pro směrování provozu.
 
 Když jste rozhodování o tom, kterou možnost použít, kompromisy konfigurace jsou mezi možnosti správy, podrobnou kontrolu a náklady.
@@ -205,7 +205,7 @@ Když jste rozhodování o tom, kterou možnost použít, kompromisy konfigurace
 | Použít proxy server HTTP |Detailní kontrola v proxy serveru úložiště je povolené adresy URL.<br><br>Jeden bod internetový přístup k virtuálním počítačům.<br><br>Není v souladu s Azure IP adresa změní. |Další náklady pro spuštění virtuálního počítače se softwarem proxy serveru. |
 
 ### <a name="whitelist-the-azure-datacenter-ip-ranges"></a>Rozsahy IP adres seznamu povolených IP adres datacentra Azure
-Seznam povolených rozsahů IP adres datacentra Azure najdete v článku [web Azure](http://www.microsoft.com/en-us/download/details.aspx?id=41653) podrobné informace o rozsahy IP adres a pokyny.
+Seznam povolených rozsahů IP adres datacentra Azure najdete v článku [web Azure](http://www.microsoft.com/download/details.aspx?id=41653) podrobné informace o rozsahy IP adres a pokyny.
 
 Připojení ke službě storage konkrétní oblasti, můžete povolit pomocí [značky služeb](../virtual-network/security-overview.md#service-tags). Ujistěte se, že pravidlo, které umožňuje přístup k účtu úložiště má vyšší prioritu než pravidla, která blokuje přístup k Internetu.
 

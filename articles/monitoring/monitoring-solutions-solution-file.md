@@ -1,6 +1,6 @@
 ---
-title: Vytvoření souboru sady management řešení v Azure | Microsoft Docs
-description: Řešení pro správu poskytuje scénářů zabalené správy, které zákazníci mohou přidat do prostředí Azure.  Tento článek poskytuje podrobné informace o tom, jak můžete vytvořit řešení správy, který se má použít ve svém vlastním prostředí nebo k dispozici pro vaše zákazníky.
+title: Vytváření souboru řešení správy v Azure | Dokumentace Microsoftu
+description: Řešení pro správu poskytují scénáře zabalené správy, které zákazníci můžete přidat do svého prostředí Azure.  Tento článek obsahuje podrobné informace o tom, jak můžete vytvořit řešení pro správu pro použití ve vašem prostředí nebo k dispozici zákazníkům.
 services: monitoring
 documentationcenter: ''
 author: bwren
@@ -15,32 +15,32 @@ ms.workload: infrastructure-services
 ms.date: 01/09/2018
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 46e6ea791752045b0f1afbf1e83e43f498415e54
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 13da68f826f7077acec9a64d1aa0ea18c66be6ff
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33887885"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50914239"
 ---
-# <a name="creating-a-management-solution-file-in-azure-preview"></a>Vytvoření souboru sady management řešení v Azure (Preview)
+# <a name="creating-a-management-solution-file-in-azure-preview"></a>Vytváření souboru řešení správy v Azure (Preview)
 > [!NOTE]
-> Toto je předběžná dokumentace k vytvoření řešení pro správu v Azure, které jsou aktuálně ve verzi preview. Žádné schéma popsané níže se mohou změnit.  
+> Toto je předběžná dokumentace pro vytváření řešení pro správu v Azure, které jsou aktuálně ve verzi preview. Žádné schéma je popsáno níže se může změnit.  
 
-Řešení pro správu v Azure jsou implementované jako [šablony Resource Manageru](../azure-resource-manager/resource-manager-template-walkthrough.md).  Hlavní úloha naučit vytvářet řešení pro správu je učení postup [vytvořit šablonu](../azure-resource-manager/resource-group-authoring-templates.md).  Tento článek obsahuje jedinečné Podrobnosti šablony použité pro řešení a jak nakonfigurovat prostředky typické řešení.
+Řešení pro správu v Azure jsou implementovány jako [šablon Resource Manageru](../azure-resource-manager/resource-manager-template-walkthrough.md).  Učení hlavního úkolu v tom, jak vytvářet řešení pro správu jak [vytvářet šablony](../azure-resource-manager/resource-group-authoring-templates.md).  Tento článek obsahuje jedinečné podrobnosti šablon použitých pro řešení a konfigurace prostředků typické řešení.
 
 
 ## <a name="tools"></a>Nástroje
 
-Libovolného textového editoru můžete pracovat se soubory řešení, ale doporučujeme využívat funkce uvedené v sadě Visual Studio nebo Visual Studio Code, jak je popsáno v následujících článcích.
+Můžete použít libovolný textový editor pro práci se soubory řešení, ale doporučujeme využívá funkce, které jsou součástí sady Visual Studio nebo Visual Studio Code, jak je popsáno v následujících článcích.
 
 - [Vytvoření a nasazení skupin prostředků Azure pomocí sady Visual Studio](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)
-- [Práce s šablony Azure Resource Manageru v sadě Visual Studio kódu](../azure-resource-manager/resource-manager-vs-code.md)
+- [Práce s šablonami Azure Resource Manageru ve Visual Studio Code](../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md)
 
 
 
 
 ## <a name="structure"></a>Struktura
-Základní struktura soubor řešení správy je stejná jako [šablony Resource Manageru](../azure-resource-manager/resource-group-authoring-templates.md#template-format), což je následujícím způsobem.  Každý z níže uvedených částech popisuje elementy nejvyšší úrovně a jejich obsah v řešení.  
+Základní struktura souboru řešení správy je stejné jako [šablony Resource Manageru](../azure-resource-manager/resource-group-authoring-templates.md#template-format), což je následujícím způsobem.  Každé z níže uvedených částech najdete popisuje nejvyšší úrovně prvky a jejich obsah v řešení.  
 
     {
        "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -52,12 +52,12 @@ Základní struktura soubor řešení správy je stejná jako [šablony Resource
     }
 
 ## <a name="parameters"></a>Parametry
-[Parametry](../azure-resource-manager/resource-group-authoring-templates.md#parameters) jsou hodnoty, které požadujete od uživatele při instalaci řešení pro správu.  Jsou standardní parametry, které budou mít všechna řešení a podle potřeby můžete přidat další parametry pro vaše konkrétní řešení.  Jak budou uživatelé zadali hodnoty parametrů při instalaci řešení bude záviset na konkrétní parametr a jak se instaluje řešení.
+[Parametry](../azure-resource-manager/resource-group-authoring-templates.md#parameters) jsou hodnoty, které požadujete od uživatele při instalaci řešení pro správu.  Existuje standardní parametry, které budou mít všechna řešení, a podle potřeby můžete přidat další parametry pro konkrétní řešení.  Jak se uživatelé zadáním hodnot parametrů při instalaci řešení bude záviset na konkrétních parametrů a jak se instaluje řešení.
 
-Když se uživatel [nainstaluje řešení pro správu](monitoring-solutions.md#install-a-management-solution) prostřednictvím Azure Marketplace nebo Azure QuickStart šablon se výzva k výběru [pracovní prostor analýzy protokolů a účet Automation](monitoring-solutions.md#log-analytics-workspace-and-automation-account).  Ty se používají k naplnění hodnoty jednotlivých standardní parametry.  Uživatel nebude vyzván k přímo zadat hodnoty pro standardní parametry, ale bude vyzván k zadání hodnot pro žádné další parametry.
+Když se uživatel [nainstaluje řešení pro správu](monitoring-solutions.md#install-a-management-solution) prostřednictvím šablon Azure Marketplace nebo Azure pro rychlý start, zobrazí se výzva k výběru [pracovní prostor Log Analytics a účet Automation](monitoring-solutions.md#log-analytics-workspace-and-automation-account).  Ty se používají k naplnění hodnoty každého standardní parametry.  Uživatel není vyzván, aby přímo zadat hodnoty pro standardní parametry, ale zobrazí se výzva k zadání hodnoty pro žádné další parametry.
 
 
-Ukázka parametrů jsou uvedeny níže.  
+Parametr vzorku je uveden níže.  
 
     "startTime": {
         "type": "string",
@@ -67,34 +67,34 @@ Ukázka parametrů jsou uvedeny níže.
             "category": "Schedule"
         }
 
-Následující tabulka popisuje atributy parametru.
+Následující tabulka popisuje atributy parametr.
 
 | Atribut | Popis |
 |:--- |:--- |
-| type |Datový typ pro parametr. Vstupní ovládací prvek zobrazí pro uživatele, závisí na typu dat.<br><br>BOOL – rozevíracího seznamu<br>String – textové pole<br>int – textové pole<br>SecureString - pole pro heslo<br> |
-| category |Volitelné kategorie pro parametr.  Parametry ve stejné kategorii jsou seskupeny dohromady. |
-| Ovládací prvek |Další funkce pro parametry řetězce.<br><br>Zobrazí se datum a čas - datum a čas řízení.<br>identifikátor GUID – hodnota identifikátoru Guid je generován automaticky, a parametr nezobrazuje. |
-| description |Volitelný popis pro parametr.  Zobrazí v bublinách informace vedle parametru. |
+| type |Datový typ pro parametr. Vstupní ovládací prvek zobrazuje pro uživatele závisí na datovém typu.<br><br>BOOL – rozevíracího seznamu<br>String – textové pole<br>int – textové pole<br>SecureString - pole pro heslo<br> |
+| category |Volitelné kategorie pro parametr.  Parametry ve stejné kategorii jsou seskupené dohromady. |
+| Ovládací prvek |Další funkce pro parametry řetězce.<br><br>Zobrazí se datum a čas – ovládací prvek datum a čas.<br>identifikátor GUID - hodnota identifikátoru Guid je generován automaticky, a parametr nezobrazuje. |
+| description |Volitelný popis pro parametr.  Zobrazí bublinu informace vedle parametru. |
 
 ### <a name="standard-parameters"></a>Standardní parametry
-Následující tabulka uvádí standardní parametry pro všechna řešení pro správu.  Tyto hodnoty jsou naplněny pro uživatele místo dotaz na ně při řešení z Azure Marketplace nebo šablony rychlý start.  Uživatel musí poskytnout hodnoty pro ně, pokud řešení se instaluje s jinou metodu.
+Následující tabulka uvádí standardní parametry pro všechna řešení pro správu.  Tyto hodnoty se vyplní pro uživatele místo vás vyzve k zadání jejich při instalaci řešení z Azure Marketplace nebo šablon rychlého startu.  Uživatel musí zadat jejich hodnoty v případě, že je řešení nainstalováno s jinou metodu.
 
 > [!NOTE]
-> Uživatelské rozhraní v Azure Marketplace a šablony rychlý start očekává názvy parametrů v tabulce.  Pokud používáte jiný parametr názvy pak uživatele vyzváni k jejich a nebude se automaticky vyplní.
+> Uživatelské rozhraní v Azure Marketplace a šablony pro rychlý start očekává názvy parametrů v tabulce.  Pokud používáte různé názvy parametrů poté uživateli zobrazí výzva pro ně a nesmí být vyplněné automaticky.
 >
 >
 
 | Parametr | Typ | Popis |
 |:--- |:--- |:--- |
 | název účtu |řetězec |Název účtu Azure Automation. |
-| pricingTier |řetězec |Cenová úroveň pracovní prostor analýzy protokolů a účet Azure Automation. |
-| regionId |řetězec |Oblast účet Azure Automation. |
-| Název řešení SolutionName |řetězec |Název řešení.  Pokud nasazujete řešení prostřednictvím šablony rychlý start, pak byste měli definovat název řešení solutionName jako parametr, můžete definovat místo nutnosti uživateli zadat jeden řetězec. |
-| workspaceName |řetězec |Název pracovního prostoru analýzy protokolů |
-| workspaceRegionId |řetězec |Oblast pracovního prostoru analýzy protokolů. |
+| pricingTier |řetězec |Cenová úroveň pracovního prostoru Log Analytics a účet Azure Automation. |
+| regionId |řetězec |Oblast účtu Azure Automation. |
+| Název řešení |řetězec |Název řešení.  Pokud provádíte nasazení vašeho řešení prostřednictvím šablon rychlý start, pak byste měli definovat solutionName jako parametr, můžete definovat místo toho by uživatel musel zadejte jeden řetězec. |
+| workspaceName |řetězec |Název pracovního prostoru log Analytics. |
+| workspaceRegionId |řetězec |Oblasti pracovního prostoru Log Analytics. |
 
 
-Následuje strukturu standardní parametry, které můžete zkopírovat a vložit do souboru řešení.  
+Tady je struktura standardní parametry, které můžete zkopírovat a vložit do souboru řešení.  
 
     "parameters": {
         "workspaceName": {
@@ -130,12 +130,12 @@ Následuje strukturu standardní parametry, které můžete zkopírovat a vloži
     }
 
 
-Odkazujete na hodnoty parametrů v další prvky řešení se syntaxí **parametry (název parametru)**.  Například pokud chcete získat přístup k název pracovního prostoru, použijte **parameters('workspaceName')**
+Získat hodnoty parametrů v dalších prvků řešení se syntaxí **parametry (název parametru)**.  Například pro přístup k názvu pracovního prostoru, můžete využít **parameters('workspaceName')**
 
 ## <a name="variables"></a>Proměnné
-[Proměnné](../azure-resource-manager/resource-group-authoring-templates.md#variables) jsou hodnoty, které budete používat ve zbývající části řešení pro správu.  Tyto hodnoty nejsou zveřejněné má uživatel instalující řešení.  Ty jsou určené Autor poskytnout na jednom místě, kde můžete spravovat hodnoty, které se dají použít více než jednou v celé řešení. Byste měli umístit všechny hodnoty specifické pro vaše řešení v proměnné a pevné kódování v **prostředky** elementu.  To usnadňuje kód srozumitelnější a umožňuje snadno změnit tyto hodnoty v novějších verzích.
+[Proměnné](../azure-resource-manager/resource-group-authoring-templates.md#variables) jsou hodnoty, které budete používat ve zbytku řešení pro správu.  Tyto hodnoty nejsou zveřejněné uživatel, který instaluje řešení.  Jsou určeny Autor poskytnout na jednom místě, kde můžete spravovat hodnoty, které lze použít více než jednou v rámci řešení. Měli byste umístit všechny hodnoty konkrétní do svého řešení v proměnných na rozdíl od pevného kódování v **prostředky** elementu.  To usnadňuje kód lépe čitelný a vám umožní snadno změnit tyto hodnoty v pozdějších verzích.
 
-Následuje příklad **proměnné** element s typické parametry použité v řešení.
+Tady je příklad **proměnné** element s typické parametrů použitých v řešení.
 
     "variables": {
         "SolutionVersion": "1.1",
@@ -145,9 +145,9 @@ Následuje příklad **proměnné** element s typické parametry použité v ře
         "AutomationApiVersion": "2015-10-31"
     },
 
-Odkazujete na hodnoty proměnné prostřednictvím řešení se syntaxí **proměnné ('název proměnné')**.  Například pokud chcete přístup k proměnné Název řešení SolutionName, použijte **variables('SolutionName')**.
+Odkazovat na proměnné hodnoty v řešení se syntaxí **proměnných ("Proměnná")**.  Například pro přístup k proměnné SolutionName, byste použili **variables('SolutionName')**.
 
-Můžete také definovat komplexní proměnné tohoto několik sad hodnot.  Tyto jsou zvláště užitečné při řešení pro správu, které definujete více vlastností pro různé typy prostředků.  Například může změnit strukturu proměnné řešení uvedené výše takto.
+Můžete také definovat proměnné komplexní této více sad hodnot.  Tyto jsou zvláště užitečné při řešení pro správu, kde jsou definování více vlastností pro jednotlivé typy materiálů.  Například může změnit strukturu proměnné řešení uvedené výše následující.
 
     "variables": {
         "Solution": {
@@ -159,21 +159,21 @@ Můžete také definovat komplexní proměnné tohoto několik sad hodnot.  Tyto
         "AutomationApiVersion": "2015-10-31"
     },
 
-V takovém případě je odkazovat na hodnoty proměnné prostřednictvím řešení se syntaxí **variables('variable name').property**.  Například pokud chcete přístup k proměnné Název řešení, použijte **variables('Solution'). Název**.
+V tomto případě odkazujete na hodnoty proměnných v řešení se syntaxí **variables('variable name').property**.  Například pro přístup k proměnné Název řešení, můžete využít **variables('Solution'). Název**.
 
 ## <a name="resources"></a>Zdroje a prostředky
-[Prostředky](../azure-resource-manager/resource-group-authoring-templates.md#resources) definovat různé prostředky, které nainstaluje a nakonfiguruje vaše řešení pro správu.  To bude největší a těch nejsložitějších část šablony.  Můžete získat strukturu a úplný popis elementů prostředků v [šablon pro tvorbu Azure Resource Manageru](../azure-resource-manager/resource-group-authoring-templates.md#resources).  Různé prostředky, které se obvykle definují, jsou popsané v další články v této dokumentaci. 
+[Prostředky](../azure-resource-manager/resource-group-authoring-templates.md#resources) definovat různé prostředky, které budou nainstalovány a konfigurovány řešení pro správu.  Bude jím největší a nejsložitější část šablony.  Můžete získat strukturu a úplný popis prvků prostředku v [šablon pro vytváření Azure Resource Manageru](../azure-resource-manager/resource-group-authoring-templates.md#resources).  Různé prostředky, které se obvykle definují je podrobně popsaný v jiných článcích v této dokumentaci. 
 
 
 ### <a name="dependencies"></a>Závislosti
-**DependsOn** určuje element [závislostí](../azure-resource-manager/resource-group-define-dependencies.md) na jiný prostředek.  Při instalaci řešení prostředku se nevytvoří, dokud všechny jeho závislé součásti byly vytvořeny.  Například může být vaše řešení [spuštění sady runbook](monitoring-solutions-resources-automation.md#runbooks) při instalaci pomocí [úlohy prostředků](monitoring-solutions-resources-automation.md#automation-jobs).  Prostředek úlohy by být závislý na prostředku sady runbook, abyste měli jistotu, že je sada runbook vytvořena předtím, než se vytvoří úloha.
+**DependsOn** určuje element [závislost](../azure-resource-manager/resource-group-define-dependencies.md) na jiný prostředek.  Při instalaci řešení není vytvořen prostředek, dokud všechny jeho závislosti vytvořili.  Například může být vaše řešení [spuštění sady runbook](monitoring-solutions-resources-automation.md#runbooks) po instalaci pomocí [úlohy prostředků](monitoring-solutions-resources-automation.md#automation-jobs).  Zdroj úlohy by být závislý na prostředku sady runbook, abyste měli jistotu, že sada runbook je vytvořená před vytvořením úlohy.
 
-### <a name="log-analytics-workspace-and-automation-account"></a>Pracovní prostor analýzy protokolů a účet Automation.
-Vyžaduje řešení pro správu [pracovní prostor analýzy protokolů](../log-analytics/log-analytics-manage-access.md) tak, aby obsahovala zobrazení a [účet Automation](../automation/automation-security-overview.md#automation-account-overview) tak, aby obsahovala sady runbook a související prostředky.  Musí mít k dispozici před prostředky v řešení jsou vytvořeny a nesmí být definována v řešení sám sebe.  Uživatel bude [zadejte prostoru a účet](monitoring-solutions.md#log-analytics-workspace-and-automation-account) při jejich nasazování svého řešení, ale jako autor byste měli zvážit následující body.
+### <a name="log-analytics-workspace-and-automation-account"></a>Pracovní prostor log Analytics a účet služby Automation
+Vyžadovat řešení pro správu [pracovní prostor Log Analytics](../log-analytics/log-analytics-manage-access.md) tak, aby obsahovala zobrazení a [účtu Automation](../automation/automation-security-overview.md#automation-account-overview) tak, aby obsahovala sady runbook a související prostředky.  Toto musí být k dispozici prostředky v řešení jsou vytvořeny a neměl by být definován ve vlastním řešením.  Uživatel uvidí [určit pracovní prostor a účet](monitoring-solutions.md#log-analytics-workspace-and-automation-account) po jejich nasazení vašeho řešení, ale jako autor, měli byste zvážit následující body.
 
 
 ## <a name="solution-resource"></a>Řešení prostředků
-Každé řešení vyžaduje záznam prostředků v **prostředky** element, který definuje řešení sám sebe.  To bude mít typ **Microsoft.OperationsManagement/solutions** a mít následující strukturu. To zahrnuje [standardní parametry](#parameters) a [proměnné](#variables) , jsou obvykle používány k definování vlastností řešení.
+Každé řešení vyžaduje zadání prostředků v **prostředky** element, který definuje vlastním řešením.  To bude mít typ **Microsoft.OperationsManagement/solutions** a mají následující strukturu. Jedná se o [standardní parametry](#parameters) a [proměnné](#variables) , která se obvykle používají k definování vlastností řešení.
 
 
     {
@@ -207,41 +207,41 @@ Každé řešení vyžaduje záznam prostředků v **prostředky** element, kter
 
 
 ### <a name="dependencies"></a>Závislosti
-Musí mít prostředek řešení [závislostí](../azure-resource-manager/resource-group-define-dependencies.md) na každý jiný prostředek v řešení vzhledem k tomu, že potřebují existovat, aby bylo možné vytvořit řešení.  To uděláte tak, že přidáte položku pro každý zdroj v **dependsOn** elementu.
+Prostředek řešení musí mít [závislost](../azure-resource-manager/resource-group-define-dependencies.md) na každých dalších prostředků v řešení, protože musí existovat před vytvořením řešení.  Provedete to přidáním položky pro každý zdroj v **dependsOn** elementu.
 
 ### <a name="properties"></a>Vlastnosti
-Řešení prostředek má vlastnosti v následující tabulce.  To zahrnuje prostředky odkazuje a obsažený v řešení, která definuje, jak se spravuje prostředku po instalaci řešení.  Všechny prostředky v řešení by měl být uveden buď **referencedResources** nebo **containedResources** vlastnost.
+Prostředek řešení má vlastnosti v následující tabulce.  To zahrnuje prostředky odkazovat a obsažen v řešení, která definuje, jak se spravují prostředek po instalaci řešení.  Každý prostředek v řešení by měly být uvedeny v buď **referencedResources** nebo **containedResources** vlastnost.
 
 | Vlastnost | Popis |
 |:--- |:--- |
-| workspaceResourceId |ID pracovního prostoru analýzy protokolů ve formě  *<Resource Group ID>/providers/Microsoft.OperationalInsights/workspaces/\<název pracovního prostoru\>*. |
-| referencedResources |Seznam prostředků v řešení, které by se neměly odebírat, když dojde k odebrání řešení. |
-| containedResources |Seznam prostředků v řešení, které byste měli odebrat, když dojde k odebrání řešení. |
+| workspaceResourceId |ID pracovního prostoru Log Analytics ve formě  *<Resource Group ID>/providers/Microsoft.OperationalInsights/workspaces/\<název pracovního prostoru\>*. |
+| referencedResources |Seznam prostředků v řešení, které by se neměly odebírat při odebrání řešení. |
+| containedResources |Seznam prostředků v řešení, které by měly být odstraněny při odebrání řešení. |
 
-V předchozím příkladu je řešení s sady runbook, plán a zobrazení.  Plán a sady runbook jsou *odkazované* v **vlastnosti** element tak nejsou odebrány při odebrání řešení.  Zobrazení je *obsažené* proto je odebrána, když dojde k odebrání řešení.
+Výše uvedený příklad je pro řešení s sady runbook, plánu a zobrazení.  Plán a sady runbook jsou *odkazované* v **vlastnosti** element tak, že nejsou odebrány při odebrání řešení.  Zobrazení je *obsažené* , odebere se při odebrání řešení.
 
 ### <a name="plan"></a>Plánování
-**Plán** entity řešení prostředku má vlastnosti v následující tabulce.
+**Plán** entity prostředků řešení má vlastnosti v následující tabulce.
 
 | Vlastnost | Popis |
 |:--- |:--- |
 | jméno |Název řešení. |
-| verze |Verze řešení, počítáno od autora. |
+| version |Verze řešení podle autora. |
 | produkt |Jedinečný řetězec k identifikaci řešení. |
-| Vydavatele |Vydavatel řešení. |
+| vydavatele |Vydavatel řešení. |
 
 
 
 ## <a name="sample"></a>Ukázka
-Můžete zobrazit ukázky soubory řešení s prostředek řešení v následujících umístěních.
+Můžete si prohlédnout ukázky soubory řešení, s prostředkem řešení v následujících umístěních.
 
 - [Prostředky služby Automation](monitoring-solutions-resources-automation.md#sample)
-- [Hledání a výstraha prostředky](monitoring-solutions-resources-searches-alerts.md#sample)
+- [Hledání a výstrahy prostředky](monitoring-solutions-resources-searches-alerts.md#sample)
 
 
 ## <a name="next-steps"></a>Další postup
-* [Přidat uložená hledání a výstrahy](monitoring-solutions-resources-searches-alerts.md) do řešení pro správu.
+* [Přidat uložené výsledky hledání a výstrahy](monitoring-solutions-resources-searches-alerts.md) do řešení pro správu.
 * [Přidání zobrazení](monitoring-solutions-resources-views.md) do řešení pro správu.
-* [Přidat sady runbook a dalším prostředkům Automation](monitoring-solutions-resources-automation.md) do řešení pro správu.
-* Další podrobnosti o [šablon pro tvorbu Azure Resource Manageru](../azure-resource-manager/resource-group-authoring-templates.md).
-* Hledání [šablon Azure rychlý Start](https://azure.microsoft.com/documentation/templates) ukázky různých šablonách Resource Manager.
+* [Přidání runbooků a další prostředky služby Automation](monitoring-solutions-resources-automation.md) do řešení pro správu.
+* Další podrobnosti o [šablon pro vytváření Azure Resource Manageru](../azure-resource-manager/resource-group-authoring-templates.md).
+* Hledání [šablony pro rychlý start Azure](https://azure.microsoft.com/documentation/templates) ukázky různých šablon Resource Manageru.

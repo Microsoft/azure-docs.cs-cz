@@ -4,16 +4,16 @@ description: Postup konfigurace modulu runtime Azure IoT Edge a všech modulů I
 author: kgremban
 manager: ''
 ms.author: kgremban
-ms.date: 09/24/2018
+ms.date: 11/01/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 6e6a1d2f758cabca41ac405a01de1f0d8bfd0a7b
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 72855058c5e8294eece55f8dbcdc501025c9aabf
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47037452"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50913219"
 ---
 # <a name="configure-an-iot-edge-device-to-communicate-through-a-proxy-server"></a>Konfigurace zařízení IoT Edge pro komunikaci přes proxy server
 
@@ -25,6 +25,18 @@ Konfigurace zařízení IoT Edge pro práci s proxy serverem zahrnuje následuj�
 2. Konfigurace démona Dockeru a proces daemon IoT Edge na zařízení pro použití proxy serveru.
 3. Konfigurace vlastností edgeAgent v souboru config.yaml na vašem zařízení.
 4. Nastavení proměnných prostředí pro modul runtime IoT Edge a dalších IoT Edge moduly v manifestu nasazení. 
+
+## <a name="know-your-proxy-url"></a>Znát adresu URL vašeho proxy serveru
+
+Ke konfiguraci démon Dockeru i IoT Edge na zařízení, musíte znát adresu URL vašeho proxy serveru. 
+
+Adresy URL proxy serveru provést následující formát: **protokol**://**proxy_host**:**proxy_port**. 
+
+* **Protokol** HTTP nebo HTTPS. Démon Dockeru můžete nakonfigurovat pomocí obou protokolů, v závislosti na nastavení registru kontejneru, ale kontejnerů démon a modul runtime IoT Edge by měl vždycky používají protokol HTTPS.
+
+* **Proxy_host** je adresa proxy serveru. Pokud váš proxy server vyžaduje ověření, můžete zadat své přihlašovací údaje jako součást proxy_host ve formátu **uživatele**:**heslo**@**proxy_host**. 
+
+* **Proxy_port** je síťového portu, na kterém proxy serveru reaguje na síťový provoz. 
 
 ## <a name="install-the-runtime"></a>Nainstalovat modul runtime
 
@@ -47,7 +59,7 @@ Docker a IoT Edge procesy démon běžícího ve vašem zařízení IoT Edge je 
 
 ### <a name="docker-daemon"></a>Démon dockeru
 
-V dokumentaci Docker ke konfiguraci démona Dockeru s proměnnými prostředí. Většina registrů kontejnerů (včetně Dockerhubu a Azure Container Registry) podporují požadavky HTTPS, takže je proměnná, která byste měli nastavit **HTTPS_PROXY**. Pokud jste přetahování imagí z registru, který nepodporuje zabezpečení transportní vrstvy (TLS), pak může měli byste nastavit **HTTP_PROXY**. 
+V dokumentaci Docker ke konfiguraci démona Dockeru s proměnnými prostředí. Většina registrů kontejnerů (včetně Dockerhubu a Azure Container Registry) podporují požadavky HTTPS, takže je parametr, který byste měli nastavit **HTTPS_PROXY**. Pokud jste přetahování imagí z registru, který nepodporuje zabezpečení transportní vrstvy (TLS), pak byste měli nastavit **HTTP_PROXY** parametru. 
 
 Vyberte článek, který se vztahuje na vaší verzi Dockeru: 
 
@@ -113,7 +125,9 @@ Otevřete soubor config.yaml na zařízení IoT Edge. V systémech Linux, tento 
 
 V souboru config.yaml vyhledejte **agenta Edge module specifikace** oddílu. Obsahuje definice agenta Edge **env** parametr, kam můžete zadat proměnné prostředí. 
 
-![definice edgeAgent](./media/how-to-configure-proxy-support/edgeagent-unedited.png)
+<!--
+![edgeAgent definition](./media/how-to-configure-proxy-support/edgeagent-unedited.png)
+-->
 
 Odeberte složených závorek, které jsou zástupné symboly pro parametr env a přidejte novou proměnnou na nový řádek. Mějte na paměti, že odsazení v YAML byly mezery dvě. 
 
@@ -201,7 +215,7 @@ Pokud jste zahrnuli **UpstreamProtocol** proměnnou prostředí v souboru config
 ```json
 "env": {
     "https_proxy": {
-        "value": "<proxy URL"
+        "value": "<proxy URL>"
     },
     "UpstreamProtocol": {
         "value": "AmqpWs"

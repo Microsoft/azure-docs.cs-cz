@@ -6,35 +6,37 @@ manager: timlt
 ms.author: dobett
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.date: 07/06/2018
+ms.date: 10/25/2018
 ms.topic: conceptual
-ms.openlocfilehash: ee96173ca5f36dee0f08c38e4b6e29da6fee804e
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 38cde750ce07741a433baa1b8607a584f94ad9b1
+ms.sourcegitcommit: 3dcb1a3993e51963954194ba2a5e42260d0be258
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37967526"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50753912"
 ---
 # <a name="use-an-existing-iot-hub-with-the-device-simulation-solution-accelerator"></a>Akcelerátor řešení simulace zařízení pomocí stávající služby IoT hub
 
-Když si zřídíte akcelerátor řešení simulace zařízení, můžete nasadit službu IoT hub ve skupině prostředků akcelerátor řešení pro použití v simulaci.
+Při nasazení simulace zařízení můžete také nasadit služby IoT hub pro použití v simulaci. Tato možnost nasadí [IoT hub úrovně S2 jedné škálovací jednotce je přidružená](../iot-hub/iot-hub-scaling.md). Pokud provádíte nasazení této volitelné služby IoT hub, můžete stále cílit na jiné služby IoT Hub pro spuštění simulace.
 
-Pokud není možnost nasadit volitelné služby IoT Hub, musíte použít vlastní rozbočovače pro jakékoli simulace, které provozujete. Pokud se rozhodnete nasadit volitelné služby IoT Hub, můžete použít toto volitelné centrum nebo vlastní rozbočovače.
+Pokud se rozhodnete nasadit volitelné služby IoT Hub, musíte použít vlastní rozbočovače pro jakékoli simulace, které provozujete.
 
 Pokud nemáte k dispozici služby IoT hub, můžete vždy vytvořit nový štítek z [webu Azure portal](https://portal.azure.com).
 
 Pokud chcete použít existující centrum IoT, potřebujete připojovací řetězec pro **iothubowner** sdílené zásady přístupu. Tento připojovací řetězec z můžete získat [webu Azure portal](https://portal.azure.com):
 
 1. Na stránce Konfigurace centra na portálu klikněte na tlačítko **zásady sdíleného přístupu**.
+
 1. Klikněte na tlačítko **iothubowner**.
+
 1. Zkopírujte primární nebo sekundární připojovací řetězec.
 
 [![Získání připojovacího řetězce](./media/iot-accelerators-device-simulation-choose-hub/connectionstring-inline.png)](./media/iot-accelerators-device-simulation-choose-hub/connectionstring-expanded.png#lightbox)
 
 Použijte připojovací řetězec, který jste zkopírovali, když konfigurujete simulace:
 
-[![Konfigurace simulace](./media/iot-accelerators-device-simulation-choose-hub/configuresimulation-inline.png)](./media/iot-accelerators-device-simulation-choose-hub/configuresimulation-expanded.png#lightbox)
+![Konfigurace simulace](./media/iot-accelerators-device-simulation-choose-hub/configuresimulation.png)
 
-## <a name="next-steps"></a>Další postup
+### <a name="next-steps"></a>Další postup
 
-V této příručce s postupy jste zjistili, jak používat stávající služby IoT hub v simulaci. V dalším kroku můžete chtít zjistěte, jak [konfiguraci vlastního modelu](iot-accelerators-device-simulation-custom-model.md) pro simulaci.
+V této příručce s postupy jste zjistili, jak používat stávající služby IoT hub v simulaci. V dalším kroku můžete chtít zjistěte, jak [vytvoření modelu pokročilé zařízení](iot-accelerators-device-simulation-advanced-device.md) pro simulaci.

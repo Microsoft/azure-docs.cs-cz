@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2017
+ms.date: 10/31/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: b0b88622069801124aff5b44dc4b813838f41c73
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
-ms.translationtype: HT
+ms.openlocfilehash: 331c536970445dacdb9afc9d3cfa5711b82bfbf0
+ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46315165"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50747248"
 ---
 # <a name="changing-the-azure-ad-connect-sync-service-account-password"></a>Změna hesla účtu služby synchronizace Azure AD Connect
 Pokud změníte heslo účtu služby Azure AD Connect sync, synchronizační služba nebude možné start správně opuštěných šifrovacího klíče a znovu inicializovat heslo účtu služby Azure AD Connect sync. 
@@ -44,7 +44,7 @@ Je třeba nejprve, chcete-li změnit heslo v rámci správce řízení služeb W
 Za druhé za určitých podmínek, pokud se heslo aktualizuje, synchronizační služba už načíst šifrovací klíč pomocí rozhraní DPAPI. Bez šifrovací klíč synchronizační služba nemůže dešifrovat hesla, třeba synchronizovat z místní AD a Azure AD.
 Chyby se zobrazí jako například:
 
-- V části správce řízení služeb Windows Pokud se pokusíte spustit synchronizační službu a nemůže získat šifrovací klíč, selže s chybou "**Windows nelze spustit Microsoft Azure AD Sync na místním počítači.** Další informace najdete v protokolu událostí systému. **Pokud je to služba jiného subjektu než Microsoft, obraťte se na dodavatele služby a získáte kódu chyby specifické pro služby \*\*-21451857952**\*\*."
+- V části správce řízení služeb Windows Pokud se pokusíte spustit synchronizační službu a nemůže získat šifrovací klíč, selže s chybou "** Windows nelze spustit Microsoft Azure AD Sync na místním počítači. Další informace najdete v protokolu událostí systému. Pokud je to služba jiného subjektu než Microsoft, obraťte se na dodavatele služby a získáte kódu chyby specifické pro služby \*\*-21451857952**\*\*."
 - V prohlížeči událostí pro Windows, protokolu událostí aplikace obsahuje chybu s **6028 ID události** chybové zprávy a *"**šifrovacího klíče serveru nelze přistupovat.**"*
 
 Aby se tyto chyby nezobrazí, postupujte podle pokynů v [nastavuje Azure AD Connect Sync šifrovací klíč](#abandoning-the-azure-ad-connect-sync-encryption-key) při změně hesla.
@@ -59,6 +59,8 @@ Použijte následující postupy k opuštění šifrovací klíč.
 
 Pokud potřebujete spustit metodu Abandon šifrovací klíč, použijte následující postupy, jak toho dosáhnout.
 
+1. [Zastavit službu synchronizace](#stop-the-synchronization-service)
+
 1. [Opustit stávající šifrovací klíč](#abandon-the-existing-encryption-key)
 
 2. [Zadejte heslo účtu služby AD DS](#provide-the-password-of-the-ad-ds-account)
@@ -66,6 +68,13 @@ Pokud potřebujete spustit metodu Abandon šifrovací klíč, použijte následu
 3. [Proveďte novou inicializaci hesla účtu synchronizační služby Azure AD](#reinitialize-the-password-of-the-azure-ad-sync-account)
 
 4. [Spustit synchronizační službu](#start-the-synchronization-service)
+
+#### <a name="stop-the-synchronization-service"></a>Zastavit službu synchronizace
+Nejprve můžete zastavit službu ve správci řízení služeb Windows.  Ujistěte se, že služba není spuštěná při pokusu o zastavení.  Pokud se jedná, počkejte, až se dokončí a potom ji zastavit.
+
+
+1. Přejděte do Windows správce řízení služeb (spuštění → služeb).
+2. Vyberte **Microsoft Azure AD Sync** a klikněte na Zastavit.
 
 #### <a name="abandon-the-existing-encryption-key"></a>Opustit stávající šifrovací klíč
 Opustit stávající šifrovací klíč tak, že nový šifrovací klíč je vytvořit:

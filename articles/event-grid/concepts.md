@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: tomfitz
-ms.openlocfilehash: 2a288cdb96a1e1ff7e261d4782f7e02aee12868f
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 89f0f5847f157cff59a57f7958508e4f260355c3
+ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39621197"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50747554"
 ---
 # <a name="concepts-in-azure-event-grid"></a>Koncepty ve službě Azure Event Grid
 
@@ -48,7 +48,7 @@ Při návrhu aplikace, máte flexibilitu při rozhodování o tom, kolik témata
 
 ## <a name="event-subscriptions"></a>Odběry událostí
 
-Předplatné říká služby Event Grid události tématu máte zájem přijímají. Při vytváření odběru zadáte koncový bod pro zpracování událostí. Můžete filtrovat události, které se odesílají do koncového bodu. Můžete filtrovat podle typu události nebo vzor předmět. Další informace najdete v tématu [schéma předplatného služby Event Grid](subscription-creation-schema.md).
+Předplatné říká služby Event Grid, které události tématu máte zájem přijímají. Při vytváření odběru zadáte koncový bod pro zpracování událostí. Můžete filtrovat události, které se odesílají do koncového bodu. Můžete filtrovat podle typu události nebo vzor předmět. Další informace najdete v tématu [schéma předplatného služby Event Grid](subscription-creation-schema.md).
 
 Příklady vytváření předplatných najdete v tématu:
 
@@ -58,9 +58,17 @@ Příklady vytváření předplatných najdete v tématu:
 
 Informace o tom, jak aktuální event grid předplatných najdete v tématu [dotazování odběrů Event gridu](query-event-subscriptions.md).
 
+## <a name="event-subscription-expiration"></a>Události vypršení platnosti předplatného
+
+[Rozšíření služby Event Grid](/cli/azure/azure-cli-extensions-list) pro rozhraní příkazového řádku Azure vám umožní nastavit vypršení datum vytvoření odběru událostí. Pokud používáte rozhraní REST API, použijte `api-version=2018-09-15-preview`
+
+Odběr událostí je automaticky vypršela po tomto datu. Nastavit dobu platnosti pro odběry událostí, které jsou vyžadovány pouze po omezenou dobu a nechcete, aby se starat o vyčištění těchto předplatných. Při vytváření odběru událostí pro scénář testování, můžete chtít nastavit vypršení. 
+
+Příkladem vypršení nastavení, najdete v části [přihlásit k odběru s rozšířené filtry](how-to-filter-events.md#subscribe-with-advanced-filters).
+
 ## <a name="event-handlers"></a>Obslužné rutiny událostí
 
-Obslužná rutina události z hlediska služby Event Grid, je místo, kde událost je odeslána. Obslužná rutina provede některé další akci zpracovat událost. Podporuje Služba Event Grid více typy obslužných rutin. Podporované služby Azure nebo vašeho vlastního webhooku můžete použít jako obslužná rutina. V závislosti na typu obslužné rutiny se řídí různé mechanismy zaručit doručování událostí služby Event Grid. Pro obslužné rutiny události webhooku HTTP, je událost opakovat, dokud obslužná rutina vrátí stavový kód `200 – OK`. Pro fronty Azure Storage jsou události opakovat, dokud bude moct úspěšně zpracovat nabízených zpráv do fronty služby front.
+Obslužná rutina události z hlediska služby Event Grid, je místo, kde událost je odeslána. Obslužná rutina provede některé další akci zpracovat událost. Event Grid podporuje několik typů obslužné rutiny. Podporované služby Azure nebo vašeho vlastního webhooku můžete použít jako obslužná rutina. V závislosti na typu obslužné rutiny se řídí různé mechanismy zaručit doručování událostí služby Event Grid. Pro obslužné rutiny události webhooku HTTP, je událost opakovat, dokud obslužná rutina vrátí stavový kód `200 – OK`. Pro fronty Azure Storage jsou události opakovat, dokud služba front úspěšně zpracuje nabízených zpráv do fronty.
 
 Informace o implementaci některý z podporovaných obslužné rutiny služby Event Grid najdete v tématu [obslužných rutin událostí ve službě Azure Event Grid](event-handlers.md).
 
@@ -74,7 +82,7 @@ Pokud služby Event Grid nelze potvrdit, že koncový bod odběratele obdržel u
 
 ## <a name="batching"></a>Dávkování
 
-Pokud používáte vlastní téma, události musí být vždy publikovány v poli. To může být batch jednoho pro scénáře s nízkou propustností, ale pro vysoké objemy usecases, je doporučeno této služby batch můžete publikovat více událostí společně za dosáhnout vyšší efektivity. Dávky může být až 1 MB. Každá událost stále může být maximálně 64 KB.
+Pokud používáte vlastní téma, události musí být vždy publikovány v poli. Může to být batch jednoho pro scénáře s nízkou propustností, ale pro vysoké objemy případy použití, se doporučuje batch několik událostí společně za publikování na dosáhnout vyšší efektivity. Dávky může být až 1 MB. Každé události by neměly být stále víc než 64 KB.
 
 ## <a name="next-steps"></a>Další postup
 

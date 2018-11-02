@@ -12,13 +12,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 09/14/2018
-ms.openlocfilehash: d5b98f573b60115002e813ebbef59eb7983ce3c2
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.date: 10/31/2018
+ms.openlocfilehash: 233e6e9bccd8729cd61514f2855799cf3d22d72b
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47064386"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50914664"
 ---
 # <a name="sql-error-codes-for-sql-database-client-applications-database-connection-errors-and-other-issues"></a>Kódy chyb SQL pro klientské aplikace SQL Database: chyby připojení a dalších problémů databáze
 
@@ -106,35 +106,35 @@ Související témata:
 ## <a name="elastic-pool-errors"></a>Chyby elastického fondu
 Tyto chyby se vztahují k vytváření a používání elastických fondů:
 
-| ErrorNumber | ErrorSeverity | ErrorFormat | ErrorInserts | ErrorCause | ErrorCorrectiveAction |
-|:--- |:--- |:--- |:--- |:--- |:--- |
-| 1132 |EX_RESOURCE |Elastický fond dosáhl svého limitu úložiště. Využití úložiště pro elastický fond nemůže být delší než (%d) MB. |Elastický fond maximální místo v MB. |Došlo k pokusu o zápis dat do databáze, když byl dosažen limit úložiště elastického fondu. |Zvažte možnost zvýšit počet jednotek Dtu a/nebo přidání úložiště do elastického fondu pokud je to možné za účelem zvýšení limitu úložiště, snížit využití strany jednotlivých databází v elastickém fondu úložiště nebo odebrat databáze z elastického fondu. |
-| 10929 |EX_USER |Minimální záruka %s je %d, maximální limit je %d, a aktuální využití databáze je %d. Server je však aktuálně zaneprázdněna větší než %d žádosti o podporu pro tuto databázi. Zobrazit [ http://go.microsoft.com/fwlink/?LinkId=267637 ](http://go.microsoft.com/fwlink/?LinkId=267637) žádostí o pomoc. Jinak zkuste to prosím znovu později. |DTU nebo minimální počet virtuálních jader na databázi. DTU nebo na databázi maximální počet virtuálních jader |Celkový počet souběžných pracovních procesů (požadavků) napříč všemi databázemi v elastickém fondu došlo k pokusu o překročení limitu fondu. |Zvažte zvýšení počtu jednotek Dtu nebo virtuálních jader, pokud je to možné elastického fondu za účelem zvýšení limitu pracovního procesu, nebo odeberte databáze z elastického fondu. |
-| 40844 |EX_USER |Databáze: %ls"na serveru"%ls"je"%ls"edice databáze v elastickém fondu a nemůže mít vztah průběžného kopírování. |Název databáze, edice databáze, název serveru |StartDatabaseCopy příkazu je vydané pro neprémiové databáze v elastickém fondu. |Již brzy |
-| 40857 |EX_USER |Elastický fond pro server se nepodařilo najít: "%ls", název elastického fondu: "%ls". |název serveru. Název elastického fondu |Zadaný elastického fondu v zadaný server neexistuje. |Zadejte název platné elastického fondu. |
-| 40858 |EX_USER |Elastický fond "%ls" již existuje v serveru: "%ls. |Název elastického fondu, název serveru |Zadaný elastického fondu v zadané logické serveru již existuje. |Zadejte nový název elastického fondu. |
-| 40859 |EX_USER |Elastický fond nepodporuje úroveň služby "%ls". |úrovně služby elastického fondu |Zadaná služba úroveň se nepodporuje pro zřizování elastického fondu. |Zadejte správnou verzi nebo nechte prázdné, použije se výchozí úroveň služby úrovně služby. |
-| 40860 |EX_USER |Kombinace elastického fondu. %ls"a služby cíl"%ls"je neplatná. |Název elastického fondu. úrovně služeb |Elastického fondu a služba úrovně lze zadat současně pouze v případě, že je jako 'ElasticPool' zadaný typ prostředku. |Zadejte správné kombinace elastického fondu a úrovně služeb. |
-| 40861 |EX_USER |Edice databáze ' %. *ls se nemůže lišit od úrovně služby elastického fondu, což je ' %.* ls. |edice databáze úrovně služby elastického fondu |Edice databáze se liší od úrovně služby elastického fondu. |Nezadávejte edici databáze, které se liší od úrovně služby elastického fondu.  Všimněte si, že není nutné nastavit edici databáze. |
-| 40862 |EX_USER |Název elastického fondu musí být zadán, pokud je zadaný cíl služby elastického fondu. |Žádný |Cíl služby elastického fondu jednoznačně neidentifikuje elastického fondu. |Zadejte název elastického fondu, pokud používáte cíl služby elastického fondu. |
-| 40864 |EX_USER |Počet jednotek Dtu pro elastický fond musí být minimálně (%d) Dtu, pro úroveň služby "%. * ls. |Počet jednotek Dtu pro elastický fond; úrovně služby elastického fondu. |Došlo k pokusu o nastavení počet jednotek Dtu pro elastický fond nižší než minimální limit. |Opakovat nastavení počet jednotek Dtu elastického fondu alespoň minimální limit. |
-| 40865 |EX_USER |Počet jednotek Dtu pro elastický fond nemůže být delší než (%d) Dtu, pro úroveň služby "%. * ls. |Počet jednotek Dtu pro elastický fond; úrovně služby elastického fondu. |Došlo k pokusu o nastavení počet jednotek Dtu pro elastický fond přesahuje maximální limit. |Nastavení jednotky Dtu pro elastický fond na menší než maximální limit opakování. |
-| 40867 |EX_USER |Musí být na databázi maximální počet jednotek DTU na nejnižší (%d) pro úroveň služby "%. * ls. |Maximální počet jednotek DTU na databázi. úrovně služby elastického fondu |Došlo k pokusu o nastavení maximální počet jednotek DTU na databázi níže podporovaný limit. | Vezměte v úvahu při použití úrovně služby elastického fondu, který podporuje požadované nastavení. |
-| 40868 |EX_USER |Každou databázi maximální počet jednotek DTU nesmí přesáhnout (%d) pro úroveň služby "%. * ls. |Maximální počet jednotek DTU na databázi. úrovně služby elastického fondu. |Došlo k pokusu o nastavení maximální počet jednotek DTU na databázi mimo podporovaný limit. | Vezměte v úvahu při použití úrovně služby elastického fondu, který podporuje požadované nastavení. |
-| 40870 |EX_USER |Minimální počet jednotek DTU na databázi nesmí přesáhnout (%d) pro úroveň služby "%. * ls. |Minimální počet jednotek DTU na databázi. úrovně služby elastického fondu. |Došlo k pokusu o nastavení minimální počet jednotek DTU na databázi mimo podporovaný limit. | Vezměte v úvahu při použití úrovně služby elastického fondu, který podporuje požadované nastavení. |
-| 40873 |EX_USER |Počet databází (%d) a minimální počet jednotek DTU na databázi (%d) nemůže překročit počet jednotek Dtu elastického fondu (%d). |Počet databází v elastickém fondu; Minimální počet jednotek DTU na databázi. Počet jednotek Dtu elastického fondu. |Pokus zadat minimální počet jednotek DTU pro databáze v elastickém fondu, která překračuje počet jednotek Dtu elastického fondu. | Vezměte v úvahu zvýšit počet jednotek Dtu elastického fondu, nebo snižte minimální počet jednotek DTU na databázi nebo snížit počet databází v elastickém fondu. |
-| 40877 |EX_USER |Elastický fond nejde odstranit, pokud neobsahuje žádné databáze. |Žádný |Elastický fond obsahuje jednu nebo více databází a proto nejde odstranit. |Chcete-li odstranit ji odeberte databáze z elastického fondu. |
-| 40881 |EX_USER |Elastický fond "%. * ls dosáhla svého limitu počtu databází.  Omezení počtu databází pro elastický fond nesmí přesáhnout (%d) pro elastický fond s (%d) Dtu. |Název elastického fondu omezení počtu databáze z elastického fondu počet jednotek Edtu pro fond zdrojů. |Pokus o vytvoření nebo přidání databáze do elastického fondu, pokud bylo dosaženo limitu počtu databáze z elastického fondu. | Zvažte možnost zvýšit počet jednotek Dtu elastického fondu pokud je to možné za účelem zvýšení limitu jeho databáze, nebo odebrat databáze z elastického fondu. |
-| 40889 |EX_USER |Počet jednotek Dtu nebo limit úložiště elastického fondu. %. * ls není možné snížit, protože pro jeho databáze, která neposkytuje dostatečné volné místo. |Název elastického fondu. |Probíhá pokus o snížit limit úložiště elastického fondu pod jeho využití úložiště. | Zvažte snížení využití úložiště jednotlivých databází v elastickém fondu nebo odeberte databáze z fondu za účelem snížení jeho počtu jednotek Dtu nebo limit úložiště. |
-| 40891 |EX_USER |Minimální počet jednotek DTU na databázi (%d) nemůže být delší než maximální počet jednotek DTU na databázi (%d). |Minimální počet jednotek DTU na databázi. Maximální počet jednotek DTU na databázi. |Došlo k pokusu o nastavení minimální počet jednotek DTU na databázi vyšší než maximální počet jednotek DTU na databázi. |Zajistěte, aby že minimální počet jednotek DTU na databáze není delší než maximální počet jednotek DTU na databázi. |
-| Bude doplněno |EX_USER |Velikost úložiště pro jednotlivé databáze v elastickém fondu nemůže být delší než maximální velikost povolenou "%. * ls služby elastického fondu úrovně. |úrovně služby elastického fondu |Maximální velikost databáze přesahuje maximální velikost povolenou úrovně služby elastického fondu. |Nastavte maximální velikost databáze v rámci maximální velikost povolenou úrovně služby elastického fondu. |
+| Kód chyby | Severity | Popis | Nápravné opatření |
+|:--- |:--- |:--- |:--- |
+| 1132 | 17 |Elastický fond dosáhl svého limitu úložiště. Využití úložiště pro elastický fond nemůže být delší než (%d) MB. Došlo k pokusu o zápis dat do databáze, když byl dosažen limit úložiště elastického fondu. |Zvažte možnost zvýšit počet jednotek Dtu a/nebo přidání úložiště do elastického fondu pokud je to možné za účelem zvýšení limitu úložiště, snížit využití strany jednotlivých databází v elastickém fondu úložiště nebo odebrat databáze z elastického fondu. |
+| 10929 | 16 |Minimální záruka %s je %d, maximální limit je %d, a aktuální využití databáze je %d. Server je však aktuálně zaneprázdněna větší než %d žádosti o podporu pro tuto databázi. Zobrazit [ http://go.microsoft.com/fwlink/?LinkId=267637 ](http://go.microsoft.com/fwlink/?LinkId=267637) žádostí o pomoc. Jinak zkuste to prosím znovu později. DTU nebo minimální počet virtuálních jader na databázi. DTU nebo na databázi maximální počet virtuálních jader. Celkový počet souběžných pracovních procesů (požadavků) napříč všemi databázemi v elastickém fondu došlo k pokusu o překročení limitu fondu. |Zvažte zvýšení počtu jednotek Dtu nebo virtuálních jader, pokud je to možné elastického fondu za účelem zvýšení limitu pracovního procesu, nebo odeberte databáze z elastického fondu. |
+| 40844 | 16 |Databáze: %ls"na serveru"%ls"je"%ls"edice databáze v elastickém fondu a nemůže mít vztah průběžného kopírování.  |neuvedeno |
+| 40857 | 16 |Elastický fond pro server se nepodařilo najít: "%ls", název elastického fondu: "%ls". Zadaný elastického fondu v zadaný server neexistuje. | Zadejte název platné elastického fondu. |
+| 40858 | 16 |Elastický fond "%ls" již existuje v serveru: "%ls". Zadaný elastického fondu v zadané logické serveru již existuje. | Zadejte nový název elastického fondu. |
+| 40859 | 16 |Elastický fond nepodporuje úroveň služby "%ls". Zadaná služba úroveň se nepodporuje pro zřizování elastického fondu. |Zadejte správnou verzi nebo nechte prázdné, použije se výchozí úroveň služby úrovně služby. |
+| 40860 | 16 |Kombinace elastického fondu. %ls"a služby cíl"%ls"je neplatná. Elastického fondu a služba úrovně lze zadat současně pouze v případě, že je jako 'ElasticPool' zadaný typ prostředku. |Zadejte správné kombinace elastického fondu a úrovně služeb. |
+| 40861 | 16 |Edice databáze ' %. *ls se nemůže lišit od úrovně služby elastického fondu, což je ' %.* ls. Edice databáze se liší od úrovně služby elastického fondu. |Nezadávejte edici databáze, které se liší od úrovně služby elastického fondu.  Všimněte si, že není nutné nastavit edici databáze. |
+| 40862 | 16 |Název elastického fondu musí být zadán, pokud je zadaný cíl služby elastického fondu. Cíl služby elastického fondu jednoznačně neidentifikuje elastického fondu. |Zadejte název elastického fondu, pokud používáte cíl služby elastického fondu. |
+| 40864 | 16 |Počet jednotek Dtu pro elastický fond musí být minimálně (%d) Dtu, pro úroveň služby "%. * ls. Došlo k pokusu o nastavení počet jednotek Dtu pro elastický fond nižší než minimální limit. |Opakovat nastavení počet jednotek Dtu elastického fondu alespoň minimální limit. |
+| 40865 | 16 |Počet jednotek Dtu pro elastický fond nemůže být delší než (%d) Dtu, pro úroveň služby "%. * ls. Došlo k pokusu o nastavení počet jednotek Dtu pro elastický fond přesahuje maximální limit. |Nastavení jednotky Dtu pro elastický fond na menší než maximální limit opakování. |
+| 40867 | 16 |Musí být na databázi maximální počet jednotek DTU na nejnižší (%d) pro úroveň služby "%. * ls. Došlo k pokusu o nastavení maximální počet jednotek DTU na databázi níže podporovaný limit. | Vezměte v úvahu při použití úrovně služby elastického fondu, který podporuje požadované nastavení. |
+| 40868 | 16 |Každou databázi maximální počet jednotek DTU nesmí přesáhnout (%d) pro úroveň služby "%. * ls. Došlo k pokusu o nastavení maximální počet jednotek DTU na databázi mimo podporovaný limit. | Vezměte v úvahu při použití úrovně služby elastického fondu, který podporuje požadované nastavení. |
+| 40870 | 16 |Minimální počet jednotek DTU na databázi nesmí přesáhnout (%d) pro úroveň služby "%. * ls. Došlo k pokusu o nastavení minimální počet jednotek DTU na databázi mimo podporovaný limit. | Vezměte v úvahu při použití úrovně služby elastického fondu, který podporuje požadované nastavení. |
+| 40873 | 16 |Počet databází (%d) a minimální počet jednotek DTU na databázi (%d) nemůže překročit počet jednotek Dtu elastického fondu (%d). Pokus zadat minimální počet jednotek DTU pro databáze v elastickém fondu, která překračuje počet jednotek Dtu elastického fondu. | Vezměte v úvahu zvýšit počet jednotek Dtu elastického fondu, nebo snižte minimální počet jednotek DTU na databázi nebo snížit počet databází v elastickém fondu. |
+| 40877 | 16 |Elastický fond nejde odstranit, pokud neobsahuje žádné databáze. Elastický fond obsahuje jednu nebo více databází a proto nejde odstranit. |Chcete-li odstranit ji odeberte databáze z elastického fondu. |
+| 40881 | 16 |Elastický fond "%. * ls dosáhla svého limitu počtu databází.  Omezení počtu databází pro elastický fond nesmí přesáhnout (%d) pro elastický fond s (%d) Dtu. Pokus o vytvoření nebo přidání databáze do elastického fondu, pokud bylo dosaženo limitu počtu databáze z elastického fondu. | Zvažte možnost zvýšit počet jednotek Dtu elastického fondu pokud je to možné za účelem zvýšení limitu jeho databáze, nebo odebrat databáze z elastického fondu. |
+| 40889 | 16 |Počet jednotek Dtu nebo limit úložiště elastického fondu. %. * ls není možné snížit, protože pro jeho databáze, která neposkytuje dostatečné volné místo. Probíhá pokus o snížit limit úložiště elastického fondu pod jeho využití úložiště. | Zvažte snížení využití úložiště jednotlivých databází v elastickém fondu nebo odeberte databáze z fondu za účelem snížení jeho počtu jednotek Dtu nebo limit úložiště. |
+| 40891 | 16 |Minimální počet jednotek DTU na databázi (%d) nemůže být delší než maximální počet jednotek DTU na databázi (%d). Došlo k pokusu o nastavení minimální počet jednotek DTU na databázi vyšší než maximální počet jednotek DTU na databázi. |Zajistěte, aby že minimální počet jednotek DTU na databáze není delší než maximální počet jednotek DTU na databázi. |
+| Bude doplněno | 16 |Velikost úložiště pro jednotlivé databáze v elastickém fondu nemůže být delší než maximální velikost povolenou "%. * ls služby elastického fondu úrovně. Maximální velikost databáze přesahuje maximální velikost povolenou úrovně služby elastického fondu. |Nastavte maximální velikost databáze v rámci maximální velikost povolenou úrovně služby elastického fondu. |
 
 Související témata:
 
-* [Vytvoření elastického fondu (C#)](sql-database-elastic-pool-manage-csharp.md) 
-* [Správa elastického fondu (C#)](sql-database-elastic-pool-manage-csharp.md). 
-* [Vytvoření elastického fondu (PowerShell)](sql-database-elastic-pool-manage-powershell.md) 
-* [Monitorování a správa elastického fondu (PowerShell)](sql-database-elastic-pool-manage-powershell.md).
+* [Vytvoření elastického fondu (C#)](sql-database-elastic-pool-manage-csharp.md)
+* [Správa elastického fondu (C#)](sql-database-elastic-pool-manage-csharp.md)
+* [Vytvoření elastického fondu (PowerShell)](sql-database-elastic-pool-manage-powershell.md)
+* [Monitorování a správa elastického fondu (PowerShell)](sql-database-elastic-pool-manage-powershell.md)
 
 ## <a name="general-errors"></a>Obecné chyby
 Tyto chyby nespadají do všech předchozích kategorií.
@@ -143,7 +143,7 @@ Tyto chyby nespadají do všech předchozích kategorií.
 | ---:| ---:|:--- |
 | 15006 |16 |(AdministratorLogin) není platný název, protože obsahuje neplatné znaky. |
 | 18452 |14 |Přihlášení se nezdařilo. Přihlášení proběhlo z nedůvěryhodné domény a nelze použít s Windows authentication.%.&#x2a;ls (přihlášení systému Windows není podporováno v této verzi systému SQL Server). |
-| 18456 |14 |Přihlášení uživatele se nezdařilo. '%.&#x2a;ls'.%.&#x2a;ls%.&#x2a;ls(přihlášení se nezdařilo pro uživatele "%.&#x2a;ls". Změna hesla se nezdařila. Změna hesla při přihlášení se nepodporuje v této verzi systému SQL Server.) |
+| 18456 |14 |Přihlášení uživatele se nezdařilo. %. &#x2a;ls'.%. &#x2a;ls %. &#x2a;ls (selhalo přihlášení pro uživatele "%.&#x2a; ls".) |
 | 18470 |14 |Přihlášení se nezdařilo pro uživatele "%.&#x2a;ls". Důvod: Účet je disabled.%.&#x2a;ls |
 | 40014 |16 |Více databází nelze použít v rámci jedné transakce. |
 | 40054 |16 |Tabulky bez clusterovaného indexu nejsou podporovány v této verzi systému SQL Server. Vytvořit clusterovaný index a zkuste to znovu. |

@@ -8,12 +8,12 @@ ms.date: 09/20/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 30b85f15d8718e21af66634db5a4afd5623a77e6
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: d84df3e5e0b961b8a53044102f99205ee0fe9896
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49340167"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50914103"
 ---
 # <a name="understand-extended-offline-capabilities-for-iot-edge-devices-modules-and-child-devices-preview"></a>Seznamte se s rozšířenou offline funkcí pro zařízení IoT Edge, moduly a podřízená zařízení (preview)
 
@@ -142,4 +142,4 @@ Nahraďte `<HostStoragePath>` a `<ModuleStoragePath>` cesta k úložišti cestu;
 
 ## <a name="next-steps"></a>Další postup
 
-Povolit rozšířené offline operace ve vašich scénářích transparentní Brána pro [Linux](how-to-create-transparent-gateway-linux.md) nebo [Windows](how-to-create-transparent-gateway-windows.md) zařízení.
+Povolit rozšířené offline operace ve vaší [transparentní brána](how-to-create-transparent-gateway.md) scénáře.

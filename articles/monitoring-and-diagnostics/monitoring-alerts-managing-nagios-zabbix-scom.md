@@ -1,5 +1,5 @@
 ---
-title: Správa upozornění z ostatních služeb monitorování
+title: Správa výstrah z jiné služby monitorování ve službě Azure Monitor
 description: Správa výstrah Nagios a Zabbix SCOM ve službě Azure Monitor
 author: anantr
 services: monitoring
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: anantr
 ms.component: alerts
-ms.openlocfilehash: d9d0cb326fb063e0a6bbfaab6a85961ab2b35416
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: bc597d42fe89c0e03c4af1db3a935031b9043a98
+ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389368"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50748268"
 ---
 # <a name="manage-alerts-from-other-monitoring-services"></a>Správa upozornění z ostatních služeb monitorování
 
@@ -25,7 +25,7 @@ Všechny záznamy v úložišti Log Analytics s typem upozornění bude importov
 1. Pro **System Center Operations Manager** výstrahy, [připojení skupiny pro správu nástroje Operations Manager do vašeho pracovního prostoru Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-om-agents). Všechny výstrahy vytvořené v nástroji System Center Operations Manager jsou importovány do Log Analytics.
 
 ## <a name="view-your-alert-instances"></a>Zobrazení výstrah instancí
-Po nakonfigurování importu do Log Analytics můžete začít youd zobrazení instancí upozornění z těchto služeb v monitorování [sjednocené prostředí upozornění](https://aka.ms/azure-alerts-overview). Poté, co jsou k dispozici v prostředí jednotné upozornění, můžete [Spravovat výstrahy instance](https://aka.ms/managing-alert-instances), [spravovat inteligentní skupiny vytvořené v těchto výstrahách](https://aka.ms/managing-smart-groups) a [změnit stav upozornění a inteligentní skupiny](https://aka.ms/managing-alert-smart-group-states).
+Po nakonfigurování importu do Log Analytics můžete začít zobrazovat výstrahy instancí z těchto služeb v monitorování [sjednocené prostředí upozornění](https://aka.ms/azure-alerts-overview). Poté, co jsou k dispozici v prostředí jednotné upozornění, můžete [Spravovat výstrahy instance](https://aka.ms/managing-alert-instances), [spravovat inteligentní skupiny vytvořené v těchto výstrahách](https://aka.ms/managing-smart-groups) a [změnit stav upozornění a inteligentní skupiny](https://aka.ms/managing-alert-smart-group-states).
 
 > [!NOTE]
 >  Výstrahy Nagios v prostředí jednotné upozornění nejsou stavové – například [monitorování stavu](https://aka.ms/azure-alerts-overview) výstrahy nebudou přejít z "Fired" na "Vyřešeno". Místo toho "Fired" i "Vyřešeno" se zobrazí jako samostatné výstrahy instance. 

@@ -114,10 +114,10 @@ V případech, kdy nejde používat nástroje, vám při odhadování, jestli je
 1. Odhad Edtu nebo virtuálních jader potřebných pro fond následujícím způsobem:
 
    Pro nákupní model založený na DTU: MAX (<*celkový počet databází* X *průměrné využití DTU na databázi* >,<br>
-   < *počet databází se souběžnou špičkou* X *využití DTU ve špičce na databázi* >)
+   <*počet databází se souběžnou špičkou* X *využití DTU ve špičce na databázi*)
 
    Pro nákupní model založený na virtuálních jádrech: MAX (<*celkový počet databází* X *průměrné využití vCore na databázi* >,<br>
-   <*Počet špičkou databází* X *vCore využití ve špičce na databázi* >)
+   <*Počet špičkou databází* X *vCore využití ve špičce na databázi*)
 
 2. Odhadněte potřebnou velikost úložiště pro fond (sečtěte počet bajtů potřebných pro všechny databáze ve fondu). Potom určete velikost fondu v jednotkách eDTU, která toto úložiště poskytuje.
 3. Pro nákupní model založený na DTU trvat větší z odhadovaného počtu eDTU z kroku 1 a 2. Pro nákupní model založený na virtuálních jádrech trvat vCore odhad z kroku 1.

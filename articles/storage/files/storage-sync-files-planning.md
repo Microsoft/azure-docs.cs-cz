@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: e4e793ac5735f7f3b07d285dea027a8f603b7964
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 0c9c254625ccca27a3525c45da0303f5e045ef44
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48237889"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50914324"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Plánování nasazení Synchronizace souborů Azure
 Azure File Sync umožňuje centralizovat sdílené složky organizace ve službě soubory Azure, při zachování flexibility, výkonu a kompatibility s místními souborového serveru. Azure File Sync transformuje serveru systému Windows na rychlou mezipaměť sdílené složky Azure. Můžete použít jakýkoli protokol dostupný ve Windows serveru pro přístup k datům místně, včetně SMB, NFS a FTPS. Můžete mít libovolný počet mezipamětí po celém světě potřebujete.
@@ -27,13 +27,13 @@ Před získáním na podrobné informace o plánování nasazení služby Azure 
 Služba synchronizace úložiště je prostředek Azure nejvyšší úrovně pro Azure File Sync. Zdroj služby synchronizace úložiště je partnerské zařízení prostředek účtu úložiště a podobně je možné nasadit do skupin prostředků Azure. Distinct prostředku nejvyšší úrovně z prostředek účtu úložiště není nutná, protože služba synchronizace úložiště můžete vytvořit synchronizační relace s více účty úložiště pomocí více skupin synchronizace. Předplatné může mít více prostředky služby synchronizace úložiště, které jsou nasazené.
 
 ### <a name="sync-group"></a>Skupina synchronizace
-Skupina synchronizace definuje topologie synchronizace pro sadu souborů. Koncové body v rámci skupiny synchronizace se udržovat synchronizované mezi sebou. Pokud máte například dvě různé sady souborů, které chcete spravovat pomocí služby Azure File Sync, by vytvořit dvě skupiny synchronizace a přidání různých koncových bodů do všech skupin synchronizace. Služba synchronizace úložiště může být hostitelem libovolný počet skupin synchronizace podle potřeby.  
+Skupina synchronizace definuje topologii synchronizace sady souborů. Koncové body v rámci skupiny synchronizace se udržovat synchronizované mezi sebou. Pokud máte například dvě různé sady souborů, které chcete spravovat pomocí služby Azure File Sync, by vytvořit dvě skupiny synchronizace a přidání různých koncových bodů do všech skupin synchronizace. Služba synchronizace úložiště může být hostitelem libovolný počet skupin synchronizace podle potřeby.  
 
 ### <a name="registered-server"></a>Zaregistrovaný server
 Objekt registrovaný server představuje vztah důvěryhodnosti mezi serverem (nebo clusteru) a služba synchronizace úložiště. Může zaregistrovat libovolný počet serverů do instance služby synchronizace úložiště má. Ale serveru (nebo v clusteru) lze dokument zaregistrovat u pouze jedna služba synchronizace úložiště po jednom.
 
 ### <a name="azure-file-sync-agent"></a>Agenta Azure File Sync
-Agenta Azure File Sync je ke stažení balíčku, který umožňuje synchronizovat se sdílenými složkami Azure Windows serveru. Agenta Azure File Sync má tři hlavní komponenty: 
+Agent Synchronizace souborů Azure je balíček ke stažení, který umožňuje synchronizaci Windows Serveru se sdílenou složkou Azure. Agenta Azure File Sync má tři hlavní komponenty: 
 - **FileSyncSvc.exe**: na pozadí služby Windows, který je zodpovědný za monitorování změn na koncové body serveru a pro inicializaci relace synchronizace do Azure.
 - **StorageSync.sys**: filtr systému souborů Azure File Sync, který je zodpovědný za vrstvení soubory do služby soubory Azure (když cloudu ovládání datových vrstev je povolené).
 - **Rutiny Powershellu pro správu**: rutiny Powershellu, které slouží k interakci s poskytovatelem prostředků Microsoft.StorageSync Azure. Můžete je vyhledat v následujících umístěních (výchozí):
@@ -41,7 +41,7 @@ Agenta Azure File Sync je ke stažení balíčku, který umožňuje synchronizov
     - C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll
 
 ### <a name="server-endpoint"></a>Koncový bod serveru
-Koncový bod serveru představuje určitého umístění na registrovaném serveru, jako je například složka svazku serveru. Více koncových bodů serveru může existovat v jednom svazku, pokud své obory názvů nemusí být stejné (například `F:\sync1` a `F:\sync2`). Můžete nakonfigurovat zásady vrstvení cloudu jednotlivě pro každý koncový bod serveru. 
+Koncový bod serveru představuje konkrétní umístění na zaregistrovaném serveru, například složku na svazku serveru. Více koncových bodů serveru může existovat v jednom svazku, pokud své obory názvů nemusí být stejné (například `F:\sync1` a `F:\sync2`). Můžete nakonfigurovat zásady vrstvení cloudu jednotlivě pro každý koncový bod serveru. 
 
 Můžete vytvořit koncový bod serveru prostřednictvím přípojný bod. Mějte na paměti, přípojné body v rámci koncový bod serveru se přeskočí.  
 
@@ -132,11 +132,11 @@ Chcete-li zobrazit výsledky ve sdíleném svazku clusteru:
 | Funkce | Podpora stavu | Poznámky |
 |---------|----------------|-------|
 | Seznamy řízení přístupu (ACL) | Plně podporované. | Seznamy ACL Windows jsou zachovány Azure File Sync a jsou vynucována ve Windows serveru na koncové body serveru. Seznamy ACL Windows (dosud nejsou) nepodporuje soubory Azure, pokud soubory jsou přístupné přímo v cloudu. |
-| Pevné odkazy | Přeskočené | |
-| Symbolické odkazy | Přeskočené | |
+| Pevné odkazy | Přeskočeno | |
+| Symbolické odkazy | Přeskočeno | |
 | Přípojné body | Částečně podporované | Přípojné body, může být kořenový koncový bod serveru, ale jejich se přeskočí, pokud jsou obsaženy v oboru názvů koncový bod serveru. |
-| Spojení | Přeskočené | Například Distributed File System DfrsrPrivate a DFSRoots složek. |
-| Body rozboru | Přeskočené | |
+| Spojení | Přeskočeno | Například Distributed File System DfrsrPrivate a DFSRoots složek. |
+| Body rozboru | Přeskočeno | |
 | Komprese NTFS | Plně podporované. | |
 | Zhuštěné soubory | Plně podporované. | Synchronizace zhuštěných souborů (nejsou blokované), ale jejich synchronizaci do cloudu jako úplný soubor. Pokud obsah souboru změnit v cloudu (nebo na jiném serveru), soubor již není zhuštěné po stažení změny. |
 | Alternativní datové proudy (reklamy) | Zachovány, ale není synchronizovaný | Například klasifikační značky, které jsou vytvořené pomocí infrastruktury klasifikace souborů nejsou synchronizovány. Existující značky klasifikace souborů na všech koncové body serveru nedotčené. |
@@ -242,7 +242,9 @@ Azure File Sync je k dispozici pouze v těchto oblastech:
 | Východní Asie | Hongkong |
 | USA – východ | Virginie |
 | USA – východ 2 | Virginie |
+| Střed USA – sever | Illinois |
 | Severní Evropa | Irsko |
+| Střed USA – jih | Texas |
 | Indie – jih | Čennaj |
 | Jihovýchodní Asie | Singapur |
 | Velká Británie – jih | Londýn |
@@ -269,6 +271,7 @@ Pro podporu integrace převzetí služeb při selhání mezi geograficky redunda
 | USA – východ             | USA – západ            |
 | Východ USA 2           | USA – střed         |
 | Severní Evropa        | Západní Evropa        |
+| Střed USA – sever    | Střed USA – jih   |
 | Indie – jih         | Střed Indie      |
 | Jihovýchodní Asie      | Východní Asie          |
 | Velká Británie – jih            | Spojené království – západ            |

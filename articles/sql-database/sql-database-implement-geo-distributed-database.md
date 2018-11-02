@@ -11,15 +11,15 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 09/07/2018
-ms.openlocfilehash: 65cf954f5d91176715181620671f620264069bdc
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 11/01/2018
+ms.openlocfilehash: 2508d43e876a7e463d68eed1b1ca93ddf0d1e9d1
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47166244"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50913340"
 ---
-# <a name="implement-a-geo-distributed-database"></a>Implementace geograficky distribuované databáze
+# <a name="tutorial-implement-a-geo-distributed-database"></a>Kurz: Implementace geograficky distribuované databáze
 
 V tomto kurzu nakonfigurujete u databáze SQL Azure a aplikace převzetí služeb při selhání do vzdálené oblasti a pak otestujete svůj plán převzetí služeb při selhání. Získáte informace o těchto tématech: 
 

@@ -9,12 +9,12 @@ author: bryanla
 ms.author: bryanla
 manager: mbaldwin
 ms.date: 10/03/2018
-ms.openlocfilehash: 02fffe7c4a3acff6ce6d68046eee4286003b1766
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: f3f310c247aea3842b5ec7a9a1409032d5bdc0bf
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50232218"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50912913"
 ---
 # <a name="azure-key-vault-storage-account-keys"></a>Klíče účtu úložiště Azure Key Vault
 
@@ -34,9 +34,12 @@ ms.locfileid: "50232218"
     - Postupujte podle kroků v tomto [dokumentu](https://docs.microsoft.com/azure/storage/) k vytvoření účtu úložiště  
     - **Pokyny pro pojmenování:** názvy účtů úložiště musí mít délku 3 až 24 znaků a může obsahovat jenom číslice a malá písmena.        
       
-<a name="step-by-step-instructions"></a>Pokyny krok
--------------------------
+<a name="step-by-step-instructions-on-how-to-use-key-vault-to-manage-storage-account-keys"></a>Krok pokyny o tom, jak používat ke správě klíčů účtu úložiště služby Key Vault
+--------------------------------------------------------------------------------
 V následujících pokynů, jsme služby Key Vault přiřazování jako službu, která mají oprávnění operátora na vašem účtu úložiště
+
+> [!NOTE]
+> Prosím Všimněte si, že když jste nastavili Azure Key Vault spravovat účet úložiště klíčů, měli **ne** už může změnit pouze pomocí služby Key Vault. Spravované úložiště klíčů účtu znamená, že Key Vault spravovat obměně klíče účtu úložiště
 
 1. Po vytvoření účtu úložiště, spuštěním následujícího příkazu Získejte ID prostředku účtu úložiště, kterou chcete spravovat
 
@@ -71,6 +74,8 @@ V následujících pokynů, jsme služby Key Vault přiřazování jako službu,
 
     az keyvault set-policy --name <YourVaultName> --object-id <ObjectId> --storage-permissions backup delete list regeneratekey recover     purge restore set setsas update
     ```
+### <a name="relavant-azure-cli-cmdlets"></a>Rutiny Relavant Azure CLI
+- [Rutiny úložiště v Azure CLI](https://docs.microsoft.com/cli/azure/keyvault/storage?view=azure-cli-latest)
 
 ### <a name="relevant-powershell-cmdlets"></a>Odpovídající rutiny prostředí Powershell
 

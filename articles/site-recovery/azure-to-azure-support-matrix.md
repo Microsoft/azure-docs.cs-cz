@@ -5,19 +5,21 @@ services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.topic: conceptual
+ms.devlang: na
+ms.topic: article
 ms.date: 10/28/2018
 ms.author: raynew
-ms.openlocfilehash: f8f529ecc21e8d9ecf149edb8bdf45e8b20dc283
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: ad6bf2db44996684096deb2b351301e450d80249
+ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50241252"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50747962"
 ---
-# <a name="support-matrix-for-disaster-recovery-of-azure-vms-between-azure-regions"></a>Matice podpory pro zotavení po havárii virtuálních počítačů Azure mezi oblastmi Azure
+# <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>Matice podpory pro které se replikují z jedné oblasti Azure do jiné
 
 Tento článek shrnuje podporované konfigurace a komponent, pokud nasazení zotavení po havárii pomocí replikace, převzetí služeb při selhání a obnovení virtuálních počítačů Azure z jedné oblasti Azure do jiného, pomocí [Azure Site Recovery](site-recovery-overview.md) služby.
+
 
 ## <a name="deployment-method-support"></a>Podpora nasazení – metoda
 
@@ -32,10 +34,10 @@ Tento článek shrnuje podporované konfigurace a komponent, pokud nasazení zot
 ## <a name="resource-support"></a>Podpora prostředků
 
 **Akce prostředku** | **Podrobnosti**
---- | --- | --- 
+--- | --- | ---
 **Přesun trezoru mezi skupinami prostředků** | Nepodporuje se
 **Přesunout výpočetní síťi prostředků mezi skupinami prostředků** | Nepodporuje se.<br/><br/> Při přesunutí virtuálního počítače nebo přidružené komponent, jako jsou úložiště nebo sítě po replikaci virtuálního počítače, musíte zakázat a znovu povolte replikaci pro virtuální počítač.
-**Replikace virtuálních počítačů Azure z jednoho předplatného do druhého pro zotavení po havárii** | Podporováno ve stejném tenantovi Azure Active Directory. 
+**Replikace virtuálních počítačů Azure z jednoho předplatného do druhého pro zotavení po havárii** | Podporováno ve stejném tenantovi Azure Active Directory.
 **Migrace virtuálních počítačů napříč oblastmi v rámci podporovaných geografických clusterů (v rámci a napříč předplatnými)** | Podporováno ve stejném tenantovi Azure Active Directory.
 **Migrace virtuálních počítačů ve stejné oblasti** | Nepodporuje se.
 
@@ -77,8 +79,8 @@ Site Recovery podporuje replikaci virtuálních počítačů Azure s operačním
 **Operační systém** | **Podrobnosti**
 --- | ---
 Windows Server 2016  | Jádro serveru, Server s desktopovým prostředím
-Windows Server 2012 R2 | 
-Windows Server 2012 | 
+Windows Server 2012 R2 |
+Windows Server 2012 |
 Windows Server 2008 R2 | S aktualizací SP1 nebo novější
 
 #### <a name="linux"></a>Linux
@@ -131,7 +133,7 @@ SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | 9.19 | SP1 3.12.49-11-default k
 SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | 9.18 | SP1 3.12.49-11-default k 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default k 3.12.74-60.64.93-default</br></br> 4.4.21-69-default SP2 do 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default k 4.4.121-92.80-default</br></br>SP3 4.4.73-5-default k 4.4.138-94.39-default |
 SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | 9.17 | SP1 3.12.49-11-default k 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default k 3.12.74-60.64.88-default</br></br> 4.4.21-69-default SP2 do 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default</br></br>SP3 4.4.73-5-default k 4.4.126-94.22-default |
 
-## <a name="replicated-machines---linux-file-systemguest-storage"></a>Replikované počítače – Linux souboru systému/hostovaného úložiště 
+## <a name="replicated-machines---linux-file-systemguest-storage"></a>Replikované počítače – Linux souboru systému/hostovaného úložiště
 
 * Systémy souborů: ext3 ext4, ReiserFS (Suse Linux Enterprise Server pouze), XFS
 * Správce svazků: LVM2
@@ -143,7 +145,7 @@ SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | 9.17 | SP1 3.12.49-11-default k
 **Nastavení** | **Podpora** | **Podrobnosti**
 --- | --- | ---
 Velikost | Libovolná velikost virtuálních počítačů Azure s nejméně 2 jádra procesoru a 1 GB paměti RAM | Ověřte [velikosti virtuálních počítačů Azure](../virtual-machines/windows/sizes.md).
-Skupiny dostupnosti | Podporováno | Pokud povolíte replikaci pro virtuální počítač Azure s výchozími možnostmi, skupinu dostupnosti se vytvoří automaticky v závislosti na nastavení zdrojové oblasti. Tato nastavení můžete upravit. 
+Skupiny dostupnosti | Podporováno | Pokud povolíte replikaci pro virtuální počítač Azure s výchozími možnostmi, skupinu dostupnosti se vytvoří automaticky v závislosti na nastavení zdrojové oblasti. Tato nastavení můžete upravit.
 Zóny dostupnosti | Nepodporuje se | Se aktuálně nelze replikovat virtuální počítače nasazené v zónách dostupnosti.
 Program hybrid Use Benefit (HUB) | Podporováno | Pokud zdrojový virtuální počítač má licenci centra povolené, testovací převzetí služeb při selhání nebo převzetí služeb při selhání virtuálního počítače také používá licenci ROZBOČOVAČE.
 Škálovací sady virtuálních počítačů | Nepodporuje se |
@@ -164,14 +166,14 @@ Přidání disku do replikovaný virtuální počítač | Nepodporuje se.<br/><b
 Tato tabulka je automaticky shrnutý podporu pro disk operačního systému virtuálního počítače Azure, datový disk a dočasný disk.
 
 - Je důležité sledovat omezením disku virtuálního počítače a cíle pro [Linux](../virtual-machines/linux/disk-scalability-targets.md) a [Windows](../virtual-machines/windows/disk-scalability-targets.md) virtuálních počítačů, aby se zabránilo problémy s výkonem.
-- Pokud provádíte nasazení s výchozím nastavením, Site Recovery automaticky vytvoří disks a účtech úložiště na základě nastavení zdroje. 
-- Pokud upravíte, nezapomeňte že postupovat podle pokynů. 
+- Pokud provádíte nasazení s výchozím nastavením, Site Recovery automaticky vytvoří disks a účtech úložiště na základě nastavení zdroje.
+- Pokud upravíte, nezapomeňte že postupovat podle pokynů.
 
 **Komponenta** | **Podpora** | **Podrobnosti**
 --- | --- | ---
 Maximální velikost disku operačního systému | 2 048 GB | [Další informace](../virtual-machines/windows/about-disks-and-vhds.md#disks-used-by-vms) o discích virtuálních počítačů.
 Dočasný disk | Nepodporuje se | Dočasný disk je vždy z replikace vyloučit.<br/><br/> Nemáte žádná trvalá data na dočasném disku. [Další informace](../virtual-machines/windows/about-disks-and-vhds.md#temporary-disk).
-Maximální velikost datového disku | 4095 GB | 
+Maximální velikost datového disku | 4095 GB |
 Maximální číslo datového disku | Až 64, v souladu s podporou pro určité velikosti virtuálních počítačů Azure | [Další informace](../virtual-machines/windows/sizes.md) o velikostech virtuálních počítačů.
 Četnost změn dat disku | Maximálně 10 MB/s na disku pro premium storage. Maximálně 2 MB/s na disk pro úložiště úrovně Standard. | Pokud Průměrná frekvence změny dat na disku je trvale vyšší než maximální délka, nebude dohnat replikace.<br/><br/>  Pokud se překročí maximální nedojde replikace můžete zachytit, ale může se zobrazit body obnovení mírně zpožděné.
 Datový disk - účet úložiště úrovně standard | Podporováno |
@@ -182,15 +184,22 @@ Redundance | Jsou podporovány LRS a GRS.<br/><br/> ZRS se nepodporuje.
 Úložiště Cool a hot | Nepodporuje se | Disky virtuálních počítačů se nepodporují studené a horké úložiště
 Prostory úložiště | Podporováno |         
 Šifrování v klidovém stavu (SSE) | Podporováno | SSE je výchozí nastavení u účtů úložiště.   
-Azure Disk Encryption (ADE) pro Windows | Povoleno pro virtuální počítače [šifrování pomocí aplikace Azure AD](https://aka.ms/ade-aad-app) jsou podporovány. |
-Azure Disk Encryption (ADE) pro Linux | Nepodporuje se |
-Horké přidání/odebrání disku    | Nepodporuje se | Je-li přidat nebo odebrat datový disk na virtuálním počítači, musíte zakázat replikaci pro virtuální počítač a potom ji znovu povolit.
-Vyloučení disku | Nepodporuje se | Dočasný disk je ve výchozím nastavení vyloučen.
-Prostory úložiště s přímým přístupem  | Nepodporuje se 
-Souborový Server se Škálováním  | Nepodporuje se 
+Azure Disk Encryption (ADE) pro operační systém Windows | Povoleno pro virtuální počítače [šifrování pomocí aplikace Azure AD](https://aka.ms/ade-aad-app) jsou podporovány |
+Azure Disk Encryption (ADE) pro operační systém Linux | Nepodporuje se |
+Přidání nebo odebrání horké disku | Nepodporuje se | Je-li přidat nebo odebrat datový disk na virtuálním počítači, musíte zakázat replikaci a povolte replikaci pro virtuální počítač znovu.
+Vyloučení disku | Nepodporuje se|   Dočasný disk je ve výchozím nastavení vyloučen.
+Prostory úložiště s přímým přístupem  | Nepodporuje se|
+Souborový Server se Škálováním  | Nepodporuje se|
+LRS | Podporováno |
+GRS | Podporováno |
+RA-GRS | Podporováno |
+ZRS | Nepodporuje se |  
+Úložiště Cool a Hot | Nepodporuje se | Disky virtuálního počítače nejsou podporovány na studené a horké úložiště
+Pro virtuální sítě brány firewall služby Azure Storage  | Ano | Pokud pro přístup k virtuální síti se omezení pro účty úložiště, ujistěte se, že jsou povolena důvěryhodným službám Microsoftu přístup k účtu úložiště.
+Účty úložiště pro obecné účely V2 (i horká a studená úroveň) | Ne | Zvýšit náklady na transakce podstatně porovnání pro obecné účely V1 účty úložiště
 
-
-
+>[!IMPORTANT]
+> Ujistěte se, že můžete sledovat virtuální počítač disk škálovatelnost a výkonnostní cíle pro [Linux](../virtual-machines/linux/disk-scalability-targets.md) nebo [Windows](../virtual-machines/windows/disk-scalability-targets.md) virtuálních počítačů, aby se zabránilo problémy s výkonem. Pokud budete postupovat podle výchozího nastavení, Site Recovery vytvoří požadované disky a účty úložiště v závislosti na konfiguraci zdroje. Je-li přizpůsobit a vybrat vlastní nastavení, ujistěte se, abyste postupovali podle disku škálovatelnost a výkonnostní cíle pro zdrojové virtuální počítače.
 
 ## <a name="replicated-machines---networking"></a>Replikované počítače - sítě
 **Konfigurace** | **Podpora** | **Podrobnosti**
@@ -201,17 +210,18 @@ Interní nástroj pro vyrovnávání zatížení | Podporováno | Přidružte p�
 Veřejná IP adresa | Podporováno | Stávající veřejnou IP adresu přidružit k síťové kartě Vytvoření veřejné IP adresy a přidružte jej k síťovému rozhraní pomocí Azure Automation skriptu v plánu obnovení.
 NSG na síťové KARTĚ | Podporováno | Přidružení NSG k síťovému rozhraní pomocí Azure Automation skriptu v plánu obnovení.  
 NSG na podsítě | Podporováno | Přidružení skupiny zabezpečení sítě s podsítí pomocí Azure Automation skriptu v plánu obnovení.
-Vyhrazená IP adresa (statické) | Podporováno | Pokud má síťový adaptér na zdrojovém virtuálním počítači statickou IP adresu a cílová podsíť má stejnou IP adresu k dispozici, je přiřazen k převzetí virtuálního počítače.<br/><br/> Pokud cílová podsíť nemá stejnou IP adresu k dispozici, některou z dostupných IP adres v podsíti je vyhrazen pro virtuální počítač.<br/><br/> Můžete také určit pevnou IP adresu a podsítě v **replikované položky** > **nastavení** > **výpočty a síť**  >  **Síťová rozhraní**. 
-Dynamická IP adresa | Podporováno | Pokud má síťový adaptér na zdroj dynamických IP adres, NIC se selhání pro virtuální počítač je dynamický ve výchozím nastavení.<br/><br/> Tuto hodnotu můžete změnit na pevnou IP adresu v případě potřeby. 
+Vyhrazená IP adresa (statické) | Podporováno | Pokud má síťový adaptér na zdrojovém virtuálním počítači statickou IP adresu a cílová podsíť má stejnou IP adresu k dispozici, je přiřazen k převzetí virtuálního počítače.<br/><br/> Pokud cílová podsíť nemá stejnou IP adresu k dispozici, některou z dostupných IP adres v podsíti je vyhrazen pro virtuální počítač.<br/><br/> Můžete také určit pevnou IP adresu a podsítě v **replikované položky** > **nastavení** > **výpočty a síť**  >  **Síťová rozhraní**.
+Dynamická IP adresa | Podporováno | Pokud má síťový adaptér na zdroj dynamických IP adres, NIC se selhání pro virtuální počítač je dynamický ve výchozím nastavení.<br/><br/> Tuto hodnotu můžete změnit na pevnou IP adresu v případě potřeby.
 Traffic Manager     | Podporováno | Traffic Manager vám umožňují předem nakonfigurovat tak, aby provoz se směruje do koncového bodu ve zdrojové oblasti v pravidelných intervalech a ke koncovému bodu v cílové oblasti v případě převzetí služeb při selhání.
 Azure DNS | Podporováno |
 Vlastní DNS  | Podporováno |    
-Neověřené proxy | Podporováno | [Další informace](site-recovery-azure-to-azure-networking-guidance.md).   
-Ověřený proxy server | Nepodporuje se | Nelze replikovat virtuální počítač, který používá ověřený proxy server pro odchozí připojení     
-Site-to-site VPN | Podporované s nebo bez něj ExpressRoute | Ujistěte se, že trasy definované uživatelem a skupin zabezpečení sítě jsou nakonfigurovány tak, že to přenosy Site Recovery se nesměruje na místní. [Další informace](site-recovery-azure-to-azure-networking-guidance.md).
-Připojení VNET-to-VNET | Podporováno |[Další informace](site-recovery-azure-to-azure-networking-guidance.md). 
-Koncové body služby virtuální sítě | Podporováno | Všimněte si, že brány firewall služby Azure Storage pro virtuální sítě se nepodporují. Kromě toho umožňuje přístup ke konkrétním virtuálním sítím Azure v používá k ukládání replikovaných dat účtů úložiště mezipaměti není podporována.
-Urychlení sítě | Podporováno | Akcelerované síťové služby musí být povolené na zdrojovém virtuálním počítači. [Další informace](azure-vm-disaster-recovery-with-accelerated-networking.md).
+Neověřené Proxy | Podporováno | Odkazovat na [sítě dokument s pokyny.](site-recovery-azure-to-azure-networking-guidance.md)    
+Ověřený proxy server | Nepodporuje se | Pokud virtuální počítač používá ověřený proxy server pro odchozí připojení, nelze replikovat, pomocí Azure Site Recovery.    
+Site to Site VPN s místními (s nebo bez ExpressRoute)| Podporováno | Ujistěte se, že trasy definované uživatelem a skupin zabezpečení sítě jsou nakonfigurovány tak, že provoz obnovení lokality se nesměruje na místní. Odkazovat na [sítě dokument s pokyny.](site-recovery-azure-to-azure-networking-guidance.md)  
+Připojení mezi virtuálními SÍTĚMI | Podporováno | Odkazovat na [sítě dokument s pokyny.](site-recovery-azure-to-azure-networking-guidance.md)  
+Koncové body služby virtuální sítě | Podporováno | Pokud pro přístup k virtuální síti se omezení pro účty úložiště, ujistěte se, že jsou povolena důvěryhodným službám Microsoftu přístup k účtu úložiště. 
+Akcelerované síťové služby | Podporováno | Akcelerované síťové služby musí být povolené na zdrojovém virtuálním počítači. [Další informace](azure-vm-disaster-recovery-with-accelerated-networking.md).
+
 
 
 ## <a name="next-steps"></a>Další postup

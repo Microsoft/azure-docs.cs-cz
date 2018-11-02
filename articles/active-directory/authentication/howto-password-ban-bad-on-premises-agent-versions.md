@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.component: authentication
 ms.topic: article
-ms.date: 10/30/2018
+ms.date: 11/01/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: jsimmons
-ms.openlocfilehash: c52c84a1311c30c19356bb8a1287b203faf476fc
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 89d64a28d2fe43464995e434c9f3807047b29492
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50743258"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50913632"
 ---
 # <a name="preview--azure-ad-password-protection-agent-version-history"></a>Ve verzi Preview: Historie verzí agenta ochrany heslo pro Azure AD
 
@@ -23,6 +23,23 @@ ms.locfileid: "50743258"
 | --- |
 | Ochrana hesel Azure AD je funkce ve verzi public preview služby Azure Active Directory. Další informace o verzích Preview najdete v tématu [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
 |     |
+
+## <a name="12250"></a>1.2.25.0
+
+Datum vydání: 11/01/2018
+
+Opravy:
+
+* Řadič domény proxy serveru a agent služby by měl už neselže kvůli chybám certifikátu vztahu důvěryhodnosti.
+* Služba agenta a proxy řadič domény nemá další opravy pro počítače kompatibilní se standardem FIPS.
+* Služba proxy bude nyní fungovat správně v protokolu TLS 1.2 – jen síťovém prostředí.
+* Menší výkon a odolnost opravy
+* Zdokonalené funkce protokolování
+
+Změny:
+
+* Minimální požadovaná úroveň operačního systému pro službu proxy serveru je nyní systému Windows Server 2012 R2. Minimální požadovanou úroveň operačního systému pro službu agenta DC zůstal ve Windows serveru 2012.
+* Algoritmus pro ověření hesla používá tabulku normalizace rozšířené znaky. Výsledkem může být odmítnuta, hesla, která byla přijata v předchozích verzích.
 
 ## <a name="12100"></a>1.2.10.0
 
@@ -45,8 +62,8 @@ Opravy:
 > Místní upgrady softwaru agenta pro řadič domény bude vyžadovat restartování.
 
 * Řadič domény proxy serveru a agent služby teď podporují běží na serveru nakonfigurovaný tak, aby pouze používat algoritmy odpovídající standardu FIPS.
-* Zdokonalené funkce protokolování
 * Menší výkon a odolnost opravy
+* Zdokonalené funkce protokolování
 
 ## <a name="11103"></a>1.1.10.3
 

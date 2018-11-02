@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: tomsh
-ms.openlocfilehash: 0f738348dd0a000df8b1da299bb7b58ebc5a1165
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 50cfc2e8420d9f427b02c739f497d8546d880d7c
+ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47040089"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50747758"
 ---
 # <a name="azure-database-security-best-practices"></a>Osvědčené postupy zabezpečení Azure database
 Zabezpečení je velmi důležité pro správu databází a byl vždy prioritu [Azure SQL Database](https://docs.microsoft.com/azure/sql-database/). Vaše databáze je možné úzce svázat s pomáhají splňovat nejvíce zákonné nebo požadavky na zabezpečení, včetně HIPAA, ISO 27001/27002 a PCI DSS úrovně 1. Aktuální seznam certifikací dodržování předpisů zabezpečení je k dispozici na [webu Microsoft Trust Center](http://azure.microsoft.com/support/trust-center/services/). Můžete také umístit své databáze v určité síti datových center Azure na základě zákonných požadavků.
@@ -72,22 +72,18 @@ Mezi výhody patří následující:
 
 > [!NOTE]
 > Ověřování serveru SQL Server nelze použít bezpečnostní protokol Kerberos.
->
->
 
 Pokud používáte ověřování SQL serveru, musíte mít:
 
 - Správa silné přihlašovací údaje.
 - Ochrana přihlašovacích údajů v připojovacím řetězci.
-- (Potenciálně) ochranu přihlašovacích údajů předaných přes síť z webového serveru do databáze. Další informace najdete v tématu [postupy: připojení k SQL serveru pomocí ověřování SQL v technologii ASP.NET 2.0](https://msdn.microsoft.com/library/ms998300.aspx).
+- (Potenciálně) ochranu přihlašovacích údajů předaných přes síť z webového serveru do databáze. Další informace najdete v tématu [postupy: připojení k SQL serveru pomocí ověřování SQL v technologii ASP.NET 2.0](/previous-versions/msp-n-p/ff648340(v=pandp.10)).
 
 ### <a name="azure-active-directory-ad-authentication"></a>*Ověřování Azure Active Directory (AD)*
 Ověřování Azure AD je mechanismus pro připojení ke službě Azure SQL Database a [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) pomocí identit ve službě Azure AD. Pomocí ověřování Azure AD můžete spravovat identity uživatelů databáze a další služby Microsoftu v jednom centrálním místě. Centrální správa ID zajišťuje centrální místo pro správu uživatelů databáze a zjednodušuje správu oprávnění.
 
 > [!NOTE]
 > Doporučujeme vám používat ověřování Azure AD prostřednictvím použití ověřování systému SQL Server.
->
->
 
 Mezi výhody patří následující:
 
@@ -112,12 +108,12 @@ Postup konfigurace obsahuje následující kroky konfigurace a používání ov�
 
 Můžete najít podrobné informace v [ověřování pomocí Azure Active Directory pro ověřování pomocí SQL Database, mi nebo SQL Data Warehouse](../sql-database/sql-database-aad-authentication.md).
 
-## <a name="protect-your-data-by-using-encryption"></a>Ochrana dat pomocí šifrování
-[Azure SQL Database transparentní šifrování dat](https://msdn.microsoft.com/library/dn948096.aspx) pomáhá chránit data na disku a chrání před neoprávněným přístupem k hardwaru. Provede v reálném čase šifrování a dešifrování databáze, přidružené zálohy a soubory protokolů transakcí v klidovém stavu bez nutnosti změny aplikace. Transparentní šifrování dat šifruje úložiště celou databázi pomocí symetrický klíč s názvem šifrovací klíč databáze.
+## <a name="protect-your-data-by-using-encryption-and-row-level-security"></a>Ochrana dat pomocí šifrování a zabezpečení na úrovní řádků
+[Azure SQL Database transparentní šifrování dat](../sql-database/transparent-data-encryption-azure-sql.md) pomáhá chránit data na disku a chrání před neoprávněným přístupem k hardwaru. Provede v reálném čase šifrování a dešifrování databáze, přidružené zálohy a soubory protokolů transakcí v klidovém stavu bez nutnosti změny aplikace. Transparentní šifrování dat šifruje úložiště celou databázi pomocí symetrický klíč s názvem šifrovací klíč databáze.
 
 I v případě, že celé úložiště je šifrované, je potřeba taky k šifrování samotná databáze. Toto je implementace obrany v přístupu k ochraně dat. Pokud používáte Azure SQL Database a chcete chránit citlivá data (například kreditních karet nebo čísla sociálního pojištění), můžete šifrování databází s FIPS 140-2 ověřené oborového 256bitového šifrování AES. Toto šifrování splňuje požadavky na mnoho oborových standardů (například HIPAA a PCI).
 
-Soubory související s nástrojem [vyrovnávací paměti rozšíření fondu (funkce BPE)](https://docs.microsoft.com/sql/database-engine/configure-windows/buffer-pool-extension) při šifrování databáze s použitím transparentního šifrování dat nejsou šifrována. Je nutné použít šifrování na úrovni systému souborů nástrojů, jako je [BitLocker](https://technet.microsoft.com/library/cc732774) nebo [systém souborů EFS (ENCRYPTING File System)]() funkce BPE souborů.
+Soubory související s nástrojem [vyrovnávací paměti rozšíření fondu (funkce BPE)](https://docs.microsoft.com/sql/database-engine/configure-windows/buffer-pool-extension) při šifrování databáze s použitím transparentního šifrování dat nejsou šifrována. Je nutné použít šifrování na úrovni systému souborů nástrojů, jako je [BitLocker](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc732774(v=ws.11)) nebo [systém souborů EFS (ENCRYPTING File System)](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc749610(v%3dws.10)) funkce BPE souborů.
 
 Protože autorizovaným uživatelům s jako správce zabezpečení nebo správce databáze můžete přístup k datům, i když je databáze šifrovaná pomocí transparentního šifrování dat, postupujte také tato doporučení:
 
@@ -128,9 +124,9 @@ Protože autorizovaným uživatelům s jako správce zabezpečení nebo správce
 
 Existují i jiné možnosti šifrování dat:
 
-- [Šifrování na úrovni buňky](https://msdn.microsoft.com/library/ms179331.aspx) umožňuje šifrovat určité sloupce nebo buňky dat pomocí různých šifrovacích klíčů.
-- [Funkce Always Encrypted](https://msdn.microsoft.com/library/mt163865.aspx), která umožňuje klientům šifrovat citlivá data v klientských aplikacích a nikdy odhalit šifrovací klíče pro databázový stroj (SQL Database nebo SQL Server). V důsledku toho funkce Always Encrypted umožňuje oddělit mezi těmi, kdo data vlastní (a mohou je zobrazovat) a těmi, kdo spravovat data (ale nemají žádný přístup).
-- [Zabezpečení na úrovní řádků](https://msdn.microsoft.com/library/dn765131), což umožňuje řízení přístupu k řádkům v databázové tabulce na základě charakteristiky uživatele, který spouští dotaz. (Příklad vlastnosti jsou skupiny členství a spuštění kontextu.)
+- [Šifrování na úrovni buňky](/sql/relational-databases/security/encryption/encrypt-a-column-of-data) umožňuje šifrovat určité sloupce nebo buňky dat pomocí různých šifrovacích klíčů.
+- [Funkce Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine), která umožňuje klientům šifrovat citlivá data v klientských aplikacích a nikdy odhalit šifrovací klíče pro databázový stroj (SQL Database nebo SQL Server). V důsledku toho funkce Always Encrypted umožňuje oddělit mezi těmi, kdo data vlastní (a mohou je zobrazovat) a těmi, kdo spravovat data (ale nemají žádný přístup).
+- [Zabezpečení na úrovní řádků](/sql/relational-databases/security/row-level-security), což umožňuje řízení přístupu k řádkům v databázové tabulce na základě charakteristiky uživatele, který spouští dotaz. (Příklad vlastnosti jsou skupiny členství a spuštění kontextu.)
 
 Organizace, které nepoužívají šifrování na úrovni databáze může být více náchylné k útokům, které se ohrožení dat umístěných v databázích SQL.
 

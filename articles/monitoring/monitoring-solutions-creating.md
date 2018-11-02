@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/20/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a07a17105b4d84b51689e9636cfacc7a3b5428ad
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 2f7871aac0469e5fb8eaaebef9ca48404609bab7
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39528023"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50912556"
 ---
 # <a name="design-and-build-a-management-solution-in-azure-preview"></a>Návrh a vytváření řešení pro správu v Azure (Preview)
 > [!NOTE]
@@ -30,7 +30,7 @@ ms.locfileid: "39528023"
 
 ## <a name="what-is-a-management-solution"></a>Co je řešení pro správu?
 
-Řešení pro správu obsahovat prostředky Azure, které spolupracují a dosáhnout konkrétní scénáře správy.  Jsou implementované jako [šablony pro správu prostředků](../azure-resource-manager/resource-manager-template-walkthrough.md) , které obsahují podrobnosti o tom, jak nainstalovat a nakonfigurovat jejich obsažených prostředků při instalaci řešení.
+Řešení pro správu obsahovat prostředky Azure, které spolupracují a dosáhnout konkrétní scénáře správy.  Jsou implementované jako [šablony pro správu prostředků](../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md) , které obsahují podrobnosti o tom, jak nainstalovat a nakonfigurovat jejich obsažených prostředků při instalaci řešení.
 
 Základní strategií je řešení pro správu Začínáme integrováním jednotlivých komponent v prostředí Azure.  Jakmile budete mít funkce funguje správně, pak můžete začít balení do [soubor řešení správy]( monitoring-solutions-solution-file.md). 
 
@@ -49,7 +49,7 @@ Existuje mnoho způsobů, zdroje dat, které můžete shromážděných v úlož
 Pokud potřebujete data, která není dostupný pomocí některého z dostupných datových zdrojů, pak můžete použít [rozhraní API kolekce dat HTTP](../log-analytics/log-analytics-data-collector-api.md) která umožňuje zápis dat do úložiště Log Analytics z libovolného klienta, která může volat rozhraní REST API.  Nejčastěji používané prostředky kolekce vlastních dat v řešení pro správu, je vytvořit [sady runbook ve službě Azure Automation](../automation/automation-runbook-types.md) , který shromažďuje požadovaná data z Azure nebo externích prostředků a používá k zápisu do rozhraní API kolekce dat úložiště.  
 
 ### <a name="log-searches"></a>Prohledávání protokolů
-[Prohledávání protokolů](../log-analytics/log-analytics-log-searches.md) slouží k extrahování a analýzy dat v úložišti Log Analytics.  Používají se v zobrazeních a výstrahy navíc umožňuje uživateli provádět ad hoc analýzy dat v úložišti.  
+[Prohledávání protokolů](../log-analytics/log-analytics-log-search.md) slouží k extrahování a analýzy dat v úložišti Log Analytics.  Používají se v zobrazeních a výstrahy navíc umožňuje uživateli provádět ad hoc analýzy dat v úložišti.  
 
 Byste měli definovat žádné dotazy, které si myslíte, že bude pro uživatele užitečné, i v případě, že nejsou použity žádné zobrazení nebo výstrahy.  To budou k dispozici jako uložená hledání na portálu, a můžete je použít také [části vizualizace dotazy seznamu](../log-analytics/log-analytics-view-designer-parts.md#list-of-queries-part) vlastní zobrazení.
 
@@ -58,7 +58,7 @@ Byste měli definovat žádné dotazy, které si myslíte, že bude pro uživate
 
 Pokud tento problém můžete opravit potenciálně pomocí automatizovaného procesu, pak obvykle vytvoříte sady runbook ve službě Azure Automation, abyste mohli provést tento nápravu.  Většina služeb Azure je možné spravovat pomocí [rutiny](/powershell/azure/overview) kterém sada runbook by využívat k provádění těchto funkcí.
 
-Pokud vaše řešení nevyžaduje externí funkce v reakci na výstrahu a pak můžete použít [odpověď webhooku](../log-analytics/log-analytics-alerts-actions.md).  To umožňuje volání externí webové služby, odesílání informací z výstrahy.
+Pokud vaše řešení nevyžaduje externí funkce v reakci na výstrahu a pak můžete použít [odpověď webhooku](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md).  To umožňuje volání externí webové služby, odesílání informací z výstrahy.
 
 ### <a name="views"></a>Zobrazení
 Zobrazení v Log Analytics se používají k vizualizaci dat v úložišti Log Analytics.  Každé řešení bude obvykle obsahovat na jednom místě [dlaždici](../log-analytics/log-analytics-view-designer-tiles.md) , která se zobrazí v hlavním řídicím panelu uživatele.  Zobrazení může obsahovat libovolný počet [části vizualizace](../log-analytics/log-analytics-view-designer-parts.md) poskytovat různé vizualizace shromážděných dat uživatele.

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/17/2018
 ms.author: miradic
-ms.openlocfilehash: fbaf6b92a2605d284a749365d542c223e09f730d
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 1bee48225448a964da7caa2a7b284b274c52bea6
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49362598"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50914052"
 ---
 # <a name="introduction-to-auto-scaling"></a>Úvod k automatickému škálování
 Automatické škálování je další schopností Service Fabric dynamické škálování služeb na základě zatížení, které služby se hlásí, nebo na základě jejich využití prostředků. Automatické škálování poskytuje skvělé pružnost a umožňuje zřízení dalších instancí nebo oddíly služby na vyžádání. Celý automatické škálování zpracování je automatické a transparentní, a po nastavení zásad pro službu není nutné pro ruční operace škálování na úrovni služby. Automatické škálování je možné zapnout na buď při vytváření služby, nebo kdykoli při aktualizaci.
@@ -41,7 +41,7 @@ Všechny aktivační události, které jsou aktuálně podporovány pracovat s [
 Existují dva mechanismy, které jsou aktuálně podporovány pro automatické škálování. První z nich je určena pro bezstavové služby nebo pro kontejnery, kde automatické škálování se provádí přidáním nebo odebráním [instance](service-fabric-concepts-replica-lifecycle.md). Stavové a bezstavové služby, automatické škálování můžete také provést přidáním nebo odebráním s názvem [oddíly](service-fabric-concepts-partitioning.md) služby.
 
 > [!NOTE]
-> Aktuálně je podpora jen jedny zásady škálování na službu.
+> Aktuálně je podpora jen jedny zásady škálování na službu a pouze jeden trigger škálování podle zásad.
 
 ## <a name="average-partition-load-trigger-with-instance-based-scaling"></a>Aktivační událost zatížení průměrné oddílu s instancí na základě škálování
 První typ aktivační události je na základě zatížení instancí v oddílu bezstavové služby. Metrika zatížení jsou nejprve vyhlazené získat zatížení pro každou instanci oddílu, a pak jsou tyto hodnoty průměrovaný napříč všemi instancemi oddílu. Existují tři faktory, které určují, kdy se škálovat službu:

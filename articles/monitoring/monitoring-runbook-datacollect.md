@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/27/2017
 ms.author: bwren
-ms.openlocfilehash: f1a106a4f99c09134b8784e98ca547db51ce0eae
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 2efaae7794cf5f12719d3d1420d9db6903592559
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49409505"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50913185"
 ---
 # <a name="collect-data-in-log-analytics-with-an-azure-automation-runbook"></a>Shromažďování dat v Log Analytics runbooku Azure Automation
 Významné množství dat v Log Analytics může shromažďovat z nejrůznějších zdrojů, včetně [zdroje dat](../log-analytics/log-analytics-data-sources.md) na agentech a také [shromažďovat data z Azure](../log-analytics/log-analytics-azure-storage.md).  Potřebujete-li shromažďovat data, která není přístupná prostřednictvím těchto zdrojů na standardní existují scénáře.  V těchto případech můžete použít [rozhraní API kolekce dat HTTP](../log-analytics/log-analytics-data-collector-api.md) zapsat data do Log Analytics z jakéhokoli klienta REST API.  Běžnou metodou k provedení této kolekce dat používá sady runbook ve službě Azure Automation.   
@@ -30,8 +30,8 @@ Tento kurz vás provede procesem vytvoření a plánování runbooku ve službě
 ## <a name="prerequisites"></a>Požadavky
 Tento scénář vyžaduje následující prostředcích nakonfigurovaných ve vašem předplatném Azure.  Může být bezplatný účet.
 
-- [Pracovní prostor log Analytics](../log-analytics/log-analytics-get-started.md).
-- [Účet Azure automation](../automation/automation-offering-get-started.md).
+- [Pracovní prostor log Analytics](../log-analytics/log-analytics-quick-create-workspace.md).
+- [Účet Azure automation](..//automation/automation-quickstart-create-account.md).
 
 ## <a name="overview-of-scenario"></a>Přehled scénáře
 Pro účely tohoto kurzu budete psát sadu runbook, která shromažďuje informace o úloh služby Automation.  Runbooky ve službě Azure Automation jsou implementovány pomocí Powershellu, takže začnete psaní a testování skript v editoru Azure Automation.  Jakmile ověříte, že shromažďujete požadované informace, budete zapisovat data do Log Analytics a ověření vlastní datový typ.  Nakonec vytvoříte plán, který chcete spouštět sadu runbook v pravidelných intervalech.
@@ -145,7 +145,7 @@ Azure Automation obsahuje prostředí tak, aby [otestovat sadu runbook](../autom
     ![Výstup příspěvku](media/monitoring-runbook-datacollect/post-output.png)
 
 ## <a name="5-verify-records-in-log-analytics"></a>5. Zkontrolujte záznamy v Log Analytics
-Sada runbook byla dokončena v testu a ověřit, že výstup byl úspěšně přijat, můžete ověřit, že záznamy byly vytvořeny pomocí [prohledávání protokolů v Log Analytics](../log-analytics/log-analytics-log-searches.md).
+Sada runbook byla dokončena v testu a ověřit, že výstup byl úspěšně přijat, můžete ověřit, že záznamy byly vytvořeny pomocí [prohledávání protokolů v Log Analytics](../log-analytics/log-analytics-log-search.md).
 
 ![Výstup protokolu](media/monitoring-runbook-datacollect/log-output.png)
 

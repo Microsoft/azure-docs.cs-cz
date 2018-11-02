@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 05/31/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 85df34445622a13488df590f5cb53bedb7b6ea93
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: ce06c72c9974b4887cc441344fd755bfd156a1ca
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42058026"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50914715"
 ---
 # <a name="sign-in-activity-report-error-codes-in-the-azure-active-directory-portal"></a>Kódy chyb v sestavě aktivit přihlašování na portálu Azure Active Directory
 
@@ -117,10 +117,10 @@ Následující část poskytuje úplný přehled o všech možných chybách a s
 |50135|Účet je ohrožený, vyžaduje se změna hesla.|
 |50136|Přesměrování relace účtu spravované služby do aplikace – došlo k rozpoznání jediné relace účtu spravované služby. |
 |50140|K této chybě došlo kvůli přerušení operace „Zůstat přihlášeni“ během přihlašování. Více informací získáte, když [otevřete požadavek na podporu](../fundamentals/active-directory-troubleshooting-support-howto.md) a odešlete ID korelace, ID požadavku a kód chyby. |
-|50143|Neshoda relace – relace je neplatná, protože se tenant uživatele kvůli jinému prostředku neshoduje s nápovědou domény. Více informací získáte, když [otevřete požadavek na podporu](../fundamentals/active-directory-troubleshooting-support-howto.md) a odešlete ID korelace, ID požadavku a kód chyby.|
+|50143|Neshoda relace - relace je neplatný, protože uživatel tenanta se neshoduje s nápovědu domény kvůli jinému prostředku.  [Vytvořit lístek podpory](../fundamentals/active-directory-troubleshooting-support-howto.md) s ID korelace ID požadavku a chyba kódu zobrazíte další podrobnosti.|
 |50144|Vypršela platnost hesla uživatele pro Active Directory. Vygenerujte uživateli nové heslo nebo koncového uživatele požádejte, ať se přihlásí pomocí nástroje pro samoobslužné resetování hesla.|
 |50146|Tato aplikace se musí nakonfigurovat pomocí podpisového klíče, který je specifický pro danou aplikaci. Buď není pomocí tohoto klíče nakonfigurovaná nebo klíči vypršela platnost nebo ještě klíč v platnost nevstoupil. Obraťte se na vlastníka aplikace.|
-|50148|Zadaný code_verifier neodpovídá přidruženému code_challenge, který byl dodán v žádosti o autorizaci pro PKCE. Obraťte se na vývojáře aplikace. |
+|50148|Zadaný code_verifier neodpovídá přidruženému code_challenge, který byl dodán v žádosti o autorizaci pro PKCE. Obraťte se na vývojáře aplikace. |
 |50155|Ověření zařízení se u tohoto uživatele nezdařilo.|
 |50158|Externí bezpečnostní kontrola nebyla splněná.|
 |50161|Deklarace identity odeslané externím zprostředkovatelem nejsou dostatečné nebo od externího zprostředkovatele chybí vyžádaná deklarace identity.|
@@ -128,7 +128,7 @@ Následující část poskytuje úplný přehled o všech možných chybách a s
 |50169|Tato sféra není nakonfigurovanou sférou aktuálního oboru názvů.|
 |50172|Externí zprostředkovatel deklarací není schválený. Obraťte se na správce tenanta.|
 |50173|Vyžaduje se nový token zabezpečení. Požádejte uživatele, ať se znovu přihlásí pomocí nových přihlašovacích údajů.|
-|50177|Externí kontrola nepodporuje průchozí uživatele.|
+|50177|Externí challenge není podporováno pro průchozí uživatele|
 |50178|Kontrola relace nepodporuje průchozí uživatele.|
 |50180|Vyžaduje se integrované ověřování systému Windows. Povolte tenantovi bezproblémové jednotné přihlašování.|
 |51001|Nápověda domény není u místního identifikátoru zabezpečení k dispozici – Místní hlavní název uživatele (UPN).|
@@ -152,7 +152,7 @@ Následující část poskytuje úplný přehled o všech možných chybách a s
 |70007|Aplikace vrátila při žádosti o token nepodporovanou hodnotu „response_mode“. Obraťte se na vlastníka aplikace.|
 |70008|Poskytnutému autorizačnímu kódu nebo obnovovacímu tokenu vypršela platnost – odvoláno. Požádejte uživatele, aby se zkusil přihlásit znovu.|
 |70011|Rozsah požadovaný aplikací je neplatný. Obraťte se na vlastníka aplikace.|
-|70012|Při ověřování uživatele účtu spravované služby (příjemce) došlo k chybě serveru. Zkuste to prosím znovu. Pokud k chybě dochází opakovaně, [otevřete požadavek na podporu](../fundamentals/active-directory-troubleshooting-support-howto.md). |
+|70012|Při ověřování uživatele účtu spravované služby (příjemce) došlo k chybě serveru. Zkuste to prosím znovu. Pokud bude nadále selhávat, [vytvořit lístek podpory](../fundamentals/active-directory-troubleshooting-support-howto.md) |
 |70018|Neplatný ověřovací kód z důvodu zadání špatného uživatelského kódu pro tok kódu zařízení. Autorizace se neschválila.|
 |70019|Platnost ověřovacího kódu vypršela. Požádejte uživatele, aby se zkusil přihlásit znovu.|
 |70037|Odpověď na výzvu nebyla správná. Vzdálený přístup k relaci byl odepřen.|
@@ -180,6 +180,7 @@ Následující část poskytuje úplný přehled o všech možných chybách a s
 |90014| Chybí povinné pole. pro zprávy protokolu, obraťte se na vlastníka aplikace. Pokud jste vlastníkem aplikace, ujistěte se, že máte všechny potřebné parametry pro žádost o přihlášení. |
 |90072| Účet musí být nejprve přidán jako externí uživatel v tenantovi. Odhlášení a přihlaste se znovu pomocí jiné služby Azure AD účtu.|
 |90094| Udělení vyžaduje oprávnění správce. Požádejte správce tenanta k poskytnutí souhlasu pro tuto aplikaci.|
+|500133| Výraz se nenachází v jeho platný časový rozsah. Ujistěte se, že jej před použitím pro uživatele kontrolní výraz nevyprší platnost přístupového tokenu nebo požádat o nový token.|
 
 ## <a name="next-steps"></a>Další postup
 

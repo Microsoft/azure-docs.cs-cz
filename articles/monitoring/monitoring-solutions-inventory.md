@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2018
 ms.author: bwren
-ms.openlocfilehash: 82cfa9e62dcc6b3a72dcb1ccf97f1f52a88a75c4
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 6d09d12d25c2319e2dcfd8f65a8e5ac8ba86eeb9
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49404099"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50914273"
 ---
 # <a name="data-collection-details-for-management-solutions-in-azure"></a>Podrobnosti shromažďování dat pro řešení pro správu v Azure
 Tento článek obsahuje seznam [řešení pro správu](monitoring-solutions.md) od Microsoftu k dispozici s odkazy na jejich podrobnou dokumentaci.  Poskytuje také informace o jejich metoda a četnost shromažďování dat do Log Analytics.  K identifikaci různých řešení, které jsou k dispozici a lépe porozumět požadavkům datového toku a připojení pro jiné řešení, můžete použít informace v tomto článku. 
@@ -44,7 +44,7 @@ Vysvětlení sloupců jsou následující:
 | [Activity Log Analytics](../log-analytics/log-analytics-activity.md) | Azure | | | | | | v oznámení |
 | [Posouzení AD](../log-analytics/log-analytics-ad-assessment.md) |Windows |&#8226; |&#8226; | | |&#8226; |7 dní |
 | [Stav replikace AD](../log-analytics/log-analytics-ad-replication-status.md) |Windows |&#8226; |&#8226; | | |&#8226; |5 dní |
-| [Stav agenta](../operations-management-suite/oms-solution-agenthealth.md) | Windows a Linux | &#8226; | &#8226; | | | &#8226; | 1 minuta |
+| [Stav agenta](monitoring-solution-agenthealth.md) | Windows a Linux | &#8226; | &#8226; | | | &#8226; | 1 minuta |
 | [Správa výstrah](../log-analytics/log-analytics-solution-alert-management.md) (Nagios) |Linux |&#8226; | | | | |Při doručení |
 | [Správa výstrah](../log-analytics/log-analytics-solution-alert-management.md) (Zabbix) |Linux |&#8226; | | | | |1 minuta |
 | [Správa výstrah](../log-analytics/log-analytics-solution-alert-management.md) (Operations Manager) |Windows | |&#8226; | |&#8226; |&#8226; |3 minuty |
@@ -57,20 +57,20 @@ Vysvětlení sloupců jsou následující:
 | [Azure SQL Analytics (Náhled)](../log-analytics/log-analytics-azure-sql.md) | Windows | | | | | | 1 minuta |
 | [Backup](https://azure.microsoft.com/resources/templates/101-backup-oms-monitoring/) | Azure |  |  |  |  |  | v oznámení |
 | [Kapacita a výkon (Preview)](../log-analytics/log-analytics-capacity.md) |Windows |&#8226; |&#8226; | | |&#8226; |Při doručení |
-| [Sledování změn](../log-analytics/log-analytics-change-tracking.md) |Windows |&#8226; |&#8226; | | |&#8226; |každou hodinu |
-| [Sledování změn](../log-analytics/log-analytics-change-tracking.md) |Linux |&#8226; | | | | |každou hodinu |
+| [Sledování změn](../automation/automation-change-tracking.md) |Windows |&#8226; |&#8226; | | |&#8226; |každou hodinu |
+| [Sledování změn](../automation/automation-change-tracking.md) |Linux |&#8226; | | | | |každou hodinu |
 | [Containers](../log-analytics/log-analytics-containers.md) | Windows a Linux | &#8226; | &#8226; |  |  |  | 3 minuty |
 | [Analýza služby Key Vault](../log-analytics/log-analytics-azure-key-vault.md) |Windows | | | | | |v oznámení |
-| [Posouzení malwaru](../log-analytics/log-analytics-malware.md) |Windows |&#8226; |&#8226; | | |&#8226; |každou hodinu |
+| [Posouzení malwaru](../security-center/security-center-install-endpoint-protection.md) |Windows |&#8226; |&#8226; | | |&#8226; |každou hodinu |
 | [Sledování výkonu sítě](../log-analytics/log-analytics-network-performance-monitor.md) | Windows | &#8226; | &#8226; |  |  |  | Počet metod Handshake protokolu TCP každých 5 sekund dat odeslaných každé 3 minuty |
-| [Office 365 Analytics (Náhled)](../operations-management-suite/oms-solution-office-365.md) |Windows | | | | | |v oznámení |
+| [Office 365 Analytics (Náhled)](monitoring-solution-office-365.md) |Windows | | | | | |v oznámení |
 | **Řešení pro správu** | **Platforma** | **Agent sledování Microsoft** | **Agent nástroje Operations Manager** | **Úložiště Azure** | **Nástroj Operations Manager vyžaduje?** | **Dat agenta nástroje Operations Manager odeslaná pomocí skupiny pro správu** | **Četnost shromažďování dat** |
 | [Analýza služby Service Fabric](../service-fabric/service-fabric-diagnostics-oms-setup.md) |Windows | | |&#8226; | | |5 minut |
-| [Mapa služeb](../operations-management-suite/operations-management-suite-service-map.md) | Windows a Linux | &#8226; | &#8226; |  |  |  | 15 sekund |
+| [Mapa služeb](monitoring-service-map.md) | Windows a Linux | &#8226; | &#8226; |  |  |  | 15 sekund |
 | [Posouzení SQL](../log-analytics/log-analytics-sql-assessment.md) |Windows |&#8226; |&#8226; | | |&#8226; |7 dní |
 | [SurfaceHub](../log-analytics/log-analytics-surface-hubs.md) |Windows |&#8226; | | | | |Při doručení |
 | [System Center Operations Manager Assessment (Preview)](../log-analytics/log-analytics-scom-assessment.md) | Windows | &#8226; | &#8226; |  |  | &#8226; | sedm dní |
-| [Správa aktualizací](../operations-management-suite/oms-solution-update-management.md) | Windows |&#8226; |&#8226; | | |&#8226; |minimálně 2 časy za den a 15 minut po instalaci aktualizace |
+| [Správa aktualizací](../automation/automation-update-management.md) | Windows |&#8226; |&#8226; | | |&#8226; |minimálně 2 časy za den a 15 minut po instalaci aktualizace |
 | [Upgrade Readiness](https://docs.microsoft.com/windows/deployment/upgrade/upgrade-readiness-get-started) | Windows | &#8226; |  |  |  |  | 2 dny |
 | [VMware Monitoring (zastaralé)](../log-analytics/log-analytics-vmware.md) | Linux | &#8226; |  |  |  |  | 3 minuty |
 | [Wire Data 2.0 (Preview)](../log-analytics/log-analytics-wire-data.md) |Windows (2012 R2 / 8.1 a novější) |&#8226; |&#8226; | | | | 1 minuta |
@@ -79,4 +79,4 @@ Vysvětlení sloupců jsou následující:
 
 
 ## <a name="next-steps"></a>Další postup
-* Zjistěte, jak [vytvářet dotazy](../log-analytics/log-analytics-log-searches.md) k analýze dat shromažďovaných řešeními pro správu.
+* Zjistěte, jak [vytvářet dotazy](../log-analytics/log-analytics-log-search.md) k analýze dat shromažďovaných řešeními pro správu.

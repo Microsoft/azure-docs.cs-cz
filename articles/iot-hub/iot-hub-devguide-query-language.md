@@ -1,18 +1,18 @@
 ---
 title: Vysvětlení dotazovací jazyk služby Azure IoT Hub | Dokumentace Microsoftu
 description: Příručka pro vývojáře – popis služby IoT Hub podobném SQL dotazovací jazyk používá k načtení informací o zařízení a modul dvojčata a úlohy ze služby IoT hub.
-author: fsautomata
+author: rezasherafat
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 02/26/2018
-ms.author: elioda
-ms.openlocfilehash: f28a41f4a80806df14e314dae05405b7b45449b1
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.date: 10/29/2018
+ms.author: rezas
+ms.openlocfilehash: b7919a86c5f0b6b6990b465ed0c563fb42ea8bbc
+ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49318244"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50747911"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>Dotazovací jazyk služby IoT Hub pro dvojčata zařízení a modul, úlohy a směrování zpráv
 
@@ -390,6 +390,11 @@ GROUP BY <group_by_element>
 
 V klauzuli GROUP BY se v současné době podporuje jenom při dotazování dvojčat zařízení.
 
+> [!IMPORTANT]
+> Termín `group` aktuálně je považován za zvláštní – klíčové slovo v dotazech. V případě použití `group` jako název vlastnosti, vezměte v úvahu okolní infrastrukturou pomocí hranatých závorek, aby nedocházelo k chybám, například `SELECT * FROM devices WHERE tags.[[group]].name = 'some_value'`.
+>
+>
+
 ## <a name="expressions-and-conditions"></a>Výrazy a podmínky
 Na vysoké úrovni *výraz*:
 
@@ -444,7 +449,7 @@ Jsou podporovány následující operátory:
 | --- | --- |
 | Aritmetické operace |+, -, *, /, % |
 | Logické |A, NEBO NE |
-| porovnání |=, !=, <, >, <=, >=, <> |
+| Porovnání |=, !=, <, >, <=, >=, <> |
 
 ### <a name="functions"></a>Functions
 Při dotazování na dvojčata a úlohy, které jediný podporovaný je funkce:

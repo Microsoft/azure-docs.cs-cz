@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/16/2017
+ms.date: 11/01/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 6b5cc1eff5c6d080854754ec5b3b62068f1cbb9c
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: d17e7abbb3b6e4f091e19b8ab6834461dedffc71
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39264711"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50914766"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: Nejčastější dotazy (FAQ) 
 Tato stránka odpovědi na nejčastější dotazy týkající se Azure Active Directory (Azure AD) B2C. Kontrolovat novinky.
@@ -72,7 +72,7 @@ Podpis e-mailu obsahuje název tenanta Azure AD B2C, který jste zadali při prv
 1. Otevřít **Azure Active Directory** okno.
 1. Klikněte na tlačítko **vlastnosti** kartu.
 1. Změnit **název** pole.
-1. Klikněte na tlačítko **Uložit** v horní části stránky.
+1. Klikněte na **Uložit** v horní části stránky.
 
 V současné době neexistuje žádný způsob, jak změnit "z:" na e-mailu. Hlasujte [feedback.azure.com](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/15334335-fully-customizable-verification-emails) zájem o přizpůsobení textu ověřovací e-mail.
 
@@ -80,7 +80,7 @@ V současné době neexistuje žádný způsob, jak změnit "z:" na e-mailu. Hla
 Azure AD Graph API můžete použít k zápisu vašeho nástroje pro migraci. Najdete v článku [uživatelská příručka migrace](active-directory-b2c-user-migration.md) podrobnosti.
 
 ### <a name="what-password-policy-is-used-for-local-accounts-in-azure-ad-b2c"></a>Jaké zásady pro hesla se používá pro místní účty v Azure AD B2C?
-Zásady hesel Azure AD B2C pro místní účty je na základě zásad pro službu Azure AD. V Azure AD B2C registrovat a zaregistrujte se nebo přihlašovací jméno a heslo resetovat používá zásady šifrování "bezpečné" heslo a platnost pasu nevyprší všechna hesla. Přečtěte si [zásady hesel služby Azure AD](https://msdn.microsoft.com/library/azure/jj943764.aspx) další podrobnosti.
+Zásady hesel Azure AD B2C pro místní účty je na základě zásad pro službu Azure AD. V Azure AD B2C registrovat a zaregistrujte se nebo přihlašovací jméno a heslo resetovat používá zásady šifrování "bezpečné" heslo a platnost pasu nevyprší všechna hesla. Přečtěte si [zásady hesel služby Azure AD](https://msdn.microsoft.com/library/azure/jj943764.aspx) další podrobnosti. Informace o uzamčení účtu a hesla najdete v tématu [spravuje hrozby k prostředkům a datům v Azure Active Directory B2C](active-directory-b2c-reference-threat-management.md).
 
 ### <a name="can-i-use-azure-ad-connect-to-migrate-consumer-identities-that-are-stored-on-my-on-premises-active-directory-to-azure-ad-b2c"></a>Můžete použít Azure AD Connect k migraci identit zákazníků, které jsou uložené na můj místní služby Active Directory k Azure AD B2C?
 Ne, Azure AD Connect není navržena pro práci s Azure AD B2C. Zvažte použití [rozhraní Graph API](active-directory-b2c-devquickstarts-graph-dotnet.md) pro migraci uživatele.  Najdete v článku [uživatelská příručka migrace](active-directory-b2c-user-migration.md) podrobnosti.

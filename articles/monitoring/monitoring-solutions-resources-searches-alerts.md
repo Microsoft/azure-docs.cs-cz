@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 06/18/2018
 ms.author: bwren, vinagara
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8ec5f1cef3f9ca82953093d2086b615087db1a7f
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 154dedaf5e657803417e1bb113489c49f8879a26
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024754"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50914580"
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>Přidání Log Analytics uložené hledání a výstrahy do řešení pro správu (Preview)
 
@@ -27,13 +27,13 @@ ms.locfileid: "50024754"
 > Toto je předběžná dokumentace pro vytváření řešení pro správu, které jsou aktuálně ve verzi preview. Žádné schéma je popsáno níže se může změnit.   
 
 
-[Řešení pro správu](monitoring-solutions.md) by měl obvykle zahrnovat [uložená hledání](../log-analytics/log-analytics-log-searches.md) v Log Analytics k analýze data shromážděná tímto řešením.  Můžou také definovat [výstrahy](../log-analytics/log-analytics-alerts.md) upozornit uživatele, nebo automaticky provést akce v reakci na kritický problém.  Tento článek popisuje, jak definovat uložené výsledky hledání Log Analytics a upozornění [šablony Resource Manageru](../resource-manager-template-walkthrough.md) tak mohou být zahrnuty v [řešení pro správu](monitoring-solutions-creating.md).
+[Řešení pro správu](monitoring-solutions.md) by měl obvykle zahrnovat [uložená hledání](../log-analytics/log-analytics-log-search.md) v Log Analytics k analýze data shromážděná tímto řešením.  Můžou také definovat [výstrahy](../log-analytics/log-analytics-alerts.md) upozornit uživatele, nebo automaticky provést akce v reakci na kritický problém.  Tento článek popisuje, jak definovat uložené výsledky hledání Log Analytics a upozornění [šablony Resource Manageru](../resource-manager-template-walkthrough.md) tak mohou být zahrnuty v [řešení pro správu](monitoring-solutions-creating.md).
 
 > [!NOTE]
 > Ukázky v tomto článku použijte parametry a proměnné, které jsou povinné nebo společné pro řešení pro správu a jsou popsány v [návrh a sestavení řešení pro správu v Azure](monitoring-solutions-creating.md)  
 
 ## <a name="prerequisites"></a>Požadavky
-Tento článek předpokládá, že jste již obeznámeni s postupy [vytvořte řešení pro správu](monitoring-solutions-creating.md) a strukturu [šablony Resource Manageru](../resource-group-authoring-templates.md) a soubor řešení.
+Tento článek předpokládá, že jste již obeznámeni s postupy [vytvořte řešení pro správu](monitoring-solutions-creating.md) a strukturu [šablony Resource Manageru](../azure-resource-manager/resource-group-authoring-templates.md) a soubor řešení.
 
 
 ## <a name="log-analytics-workspace"></a>Pracovní prostor Log Analytics
@@ -54,9 +54,9 @@ Následující tabulka uvádí verze rozhraní API pro prostředek, který použ
 
 
 ## <a name="saved-searches"></a>Uložená hledání
-Zahrnout [uložená hledání](../log-analytics/log-analytics-log-searches.md) v řešení, které umožňují uživatelům provádět dotazy na data shromážděná z vašeho řešení.  Uložená hledání se zobrazí v rámci **uložená hledání** na webu Azure Portal.  Uložené výsledky hledání je také nutný pro každou výstrahu.   
+Zahrnout [uložená hledání](../log-analytics/log-analytics-log-search.md) v řešení, které umožňují uživatelům provádět dotazy na data shromážděná z vašeho řešení.  Uložená hledání se zobrazí v rámci **uložená hledání** na webu Azure Portal.  Uložené výsledky hledání je také nutný pro každou výstrahu.   
 
-[Uložené výsledky hledání log Analytics](../log-analytics/log-analytics-log-searches.md) prostředky mají typ `Microsoft.OperationalInsights/workspaces/savedSearches` a mají následující strukturu.  To zahrnuje společné proměnné a parametry, takže můžete zkopírovat a vložit tento fragment kódu do souboru řešení a změňte názvy parametrů. 
+[Uložené výsledky hledání log Analytics](../log-analytics/log-analytics-log-search.md) prostředky mají typ `Microsoft.OperationalInsights/workspaces/savedSearches` a mají následující strukturu.  To zahrnuje společné proměnné a parametry, takže můžete zkopírovat a vložit tento fragment kódu do souboru řešení a změňte názvy parametrů. 
 
     {
         "name": "[concat(parameters('workspaceName'), '/', variables('SavedSearch').Name)]",

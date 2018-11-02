@@ -13,14 +13,14 @@ ms.workload: web
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 05/11/2018
+ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: ab8750e5824cf9f7635d11a6b2be332b2f9a761c
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: b38291df576d1dbd180f741659dbc379ca006d8e
+ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44302584"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50748438"
 ---
 # <a name="deployment-faqs-for-web-apps-in-azure"></a>Nejčastější dotazy k nasazení pro službu Web Apps v Azure
 
@@ -79,7 +79,7 @@ Chcete-li vyřešit problémy s FTP:
 
 ## <a name="how-do-i-publish-my-code-to-app-service"></a>Jak můžu publikovat svůj kód do služby App Service?
 
-Rychlý start Azure usnadňuje nasazení vaší aplikace pomocí balíčku nasazení a metody podle vašeho výběru. Pokud chcete pomocí rychlého startu, na webu Azure Portal, přejděte na **nastavení** > **nasazení aplikace**.
+Rychlý start Azure usnadňuje nasazení vaší aplikace pomocí balíčku nasazení a metody podle vašeho výběru. Pokud chcete pomocí rychlého startu, na webu Azure Portal, přejděte na službu app service, v části **nasazení**vyberte **rychlý Start**.
 
 ## <a name="why-does-my-app-sometimes-restart-after-deployment-to-app-service"></a>Proč Moje aplikace někdy restartování po nasazení do služby App Service?
 

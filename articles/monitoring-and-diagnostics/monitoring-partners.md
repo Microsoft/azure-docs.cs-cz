@@ -5,28 +5,28 @@ author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 8/08/2018
+ms.date: 11/01/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: 3a15cfeb39cea31a24d27fd8b350d7e8a6696f31
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 8ffeac78b809ea19163360e85d1c841c55b2364a
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46955363"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50914614"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Integrace partnerů Azure Monitor
 | Partneři |  |  |
 | --- | --- | --- |
-| [**AlertLogic**<br/>![partnerské Logo][alertlogic-logo]][alertlogic-anchor] | [**AppDynamics**<br/>![partnerské Logo][appdynamics-logo]][appdynamics-anchor]  | [**Od společnosti Atlassian**<br/>![partnerské Logo][atlassian-logo]][atlassian-anchor] 
-| [**Botmetric**][botmetric-anchor] | [**Circonus**<br/>![partnerské Logo][circonus-logo]][circonus-anchor]  | [**CloudHealth**<br/>![partnerské Logo][cloudhealth-logo]][cloudhealth-anchor] 
-| [**CloudMonix** <br/> ![partnerské Logo][cloudmonix-logo]][cloudmonix-anchor] | [**Cloudyn**<br/>![partnerské Logo][cloudyn-logo]][cloudyn-anchor] | [**Služby Datadog**<br/>![partnerské Logo][datadog-logo]][datadog-anchor] 
-| [**Dynatrace** <br/> ![partnerské Logo][dynatrace-logo]][dynatrace-anchor] | [**Grafana**<br/>![partnerské Logo][grafana-logo]][grafana-anchor] | [**Influxdata**<br/>![partnerské Logo][influxdata-logo]][influxdata-anchor]
-| [**Monitorování Logic**<br/>![partnerské Logo][logicmonitor-logo]][logicmonitor-anchor] | [**Moogsoft**<br/>![partnerské Logo][moogsoft-logo]][moogsoft-anchor] | [**NewRelic**<br/>![partnerské Logo][newrelic-logo]][newrelic-anchor] | [**Použitím OpsGenie**<br/>![partnerské Logo][opsgenie-logo]][opsgenie-anchor] 
-| [**PagerDuty**<br/>![partnerské Logo][pagerduty-logo]][pagerduty-anchor] | [**QRadar**<br/>![partnerské Logo][qradar-logo]][qradar-anchor] | [**ScienceLogic**<br/>![partnerské Logo][sciencelogic-logo]][sciencelogic-anchor] 
-| [**SignalFx**<br/>![partnerské Logo][signalfx-logo]<br/>][signalfx-anchor] | [**SIGNL4**<br/>![partnerské Logo][signl4-logo]][signl4-anchor] | [**SolarWinds**][solarwinds-anchor] 
-| [**Splunk** <br/> ![partnerské Logo][splunk-logo]][splunk-anchor] | [**Logika sumo**<br/>![partnerské Logo][sumologic-logo]][sumologic-anchor] | [**Turbonomic**<br/>![partnerské Logo][turbonomic-logo]][turbonomic-anchor] 
-
+| [**AlertLogic**<br/>![partnerské Logo][alertlogic-logo]][alertlogic-anchor] | [**AppDynamics**<br/>![partnerské Logo][appdynamics-logo]][appdynamics-anchor] | [**ArcSight**][arcsight-anchor] |
+| [**Od společnosti Atlassian**<br/>![partnerské Logo][atlassian-logo]][atlassian-anchor] | [**Botmetric**][botmetric-anchor] | [**Circonus**<br/>![partnerské Logo][circonus-logo]][circonus-anchor] |
+| [**CloudHealth**<br/>![partnerské Logo][cloudhealth-logo]][cloudhealth-anchor] | [**CloudMonix** <br/> ![partnerské Logo][cloudmonix-logo]][cloudmonix-anchor] | [**Služby Datadog**<br/>![partnerské Logo][datadog-logo]][datadog-anchor] |
+| [**Dynatrace** <br/> ![partnerské Logo][dynatrace-logo]][dynatrace-anchor] | [**Elastické**<br/>![partnerské Logo][elastic-logo]][elastic-anchor] | [**Grafana**<br/>![partnerské Logo][grafana-logo]][grafana-anchor] |
+| [**Influxdata**<br/>![partnerské Logo][influxdata-logo]][influxdata-anchor] | [**Monitorování Logic**<br/>![partnerské Logo][logicmonitor-logo]][logicmonitor-anchor] | [**Moogsoft**<br/>![partnerské Logo][moogsoft-logo]][moogsoft-anchor] |
+| [**NewRelic**<br/>![partnerské Logo][newrelic-logo]][newrelic-anchor] | [**Použitím OpsGenie**<br/>![partnerské Logo][opsgenie-logo]][opsgenie-anchor] | [**PagerDuty**<br/>![partnerské Logo][pagerduty-logo]][pagerduty-anchor] |
+| [**QRadar**<br/>![partnerské Logo][qradar-logo]][qradar-anchor] | [**ScienceLogic**<br/>![partnerské Logo][sciencelogic-logo]][sciencelogic-anchor] | [**SignalFx**<br/>![partnerské Logo][signalfx-logo]<br/>][signalfx-anchor] |
+| [**SIGNL4**<br/>![partnerské Logo][signl4-logo]][signl4-anchor] | [**SolarWinds**][solarwinds-anchor] | [**Splunk** <br/> ![partnerské Logo][splunk-logo]][splunk-anchor] |
+| [**Logika sumo**<br/>![partnerské Logo][sumologic-logo]][sumologic-anchor] | [**Turbonomic**<br/>![partnerské Logo][turbonomic-logo]][turbonomic-anchor] |
 
 ## <a name="alertlogic-log-manager"></a>Služba Log Manager AlertLogic
 Alert Logic Log Manager shromažďuje protokoly platformy Azure pro analýzu zabezpečení a uchovávání dat, aplikací a virtuálních počítačů. Shromáždí se také protokoly aktivit Azure prostřednictvím rozhraní API služby Azure Monitor. Tyto informace slouží k detekci malfeasance a musí splňovat požadavky na dodržování předpisů.
@@ -37,6 +37,11 @@ Alert Logic Log Manager shromažďuje protokoly platformy Azure pro analýzu zab
 AppDynamics Application Performance Management (APM) umožňuje vlastníkům aplikace rychle řešit výkonnostní kritické body a optimalizovat výkon jejich aplikací spuštěných v prostředí Azure. Azure Cloud Services (PaaS), může monitorovat webové a pracovní role, Virtual Machines (IaaS), vzdálené služby zjišťování (Microsoft Azure Service Bus), Microsoft Azure Queue, vzdálené služby Microsoft Azure (Azure Blob), Azure Queue (Microsoft Service Bus), Data Úložiště a Microsoft Azure Blob Storage. AppDynamics APM je k dispozici na webu Azure Marketplace.
 
 [Přejděte k dokumentaci.][appdynamics-doc]
+
+## <a name="microfocus-arcsight"></a>Microfocus ArcSight
+ArcSight má inteligentní konektor pro monitorování Azure event hubs.
+
+[Víc se uč.][arcsight-doc]
 
 ## <a name="atlassian-jira"></a>Od společnosti Atlassian JIRA
 Azure Monitor výstrah můžete vytvářet lístky JIRA.
@@ -62,11 +67,6 @@ CloudMonix nabízí monitorování, automation a automatickým opravováním slu
 
 [Přejděte k dokumentaci.][cloudmonix-doc]
 
-## <a name="cloudyn"></a>Cloudyn
-Cloudyn spravuje a optimalizuje multiplatformních, hybridních cloudových nasazení, abychom pomohli podnikům plně využít jejich potenciální cloudu. Řešení SaaS poskytuje přehled o využití, výkonu a nákladů. Poskytuje užitečná doporučení pro inteligentní optimalizace a cloud zásad správného řízení a přehledy. Cloudyn umožňuje zodpovědnost přesné vrácení peněz a správě přidělení hierarchické náklady. Cloudyn je integrovaná s Azure Monitoring k poskytování přehledů a užitečná doporučení k optimalizaci nasazení vašeho řešení Azure.
-
-[Přejděte k dokumentaci.][cloudyn-doc]
-
 ## <a name="datadog"></a>Datadog
 Služby Datadog je nejlepší na světě sledování služby pro aplikace v cloudovém měřítku. To spojuje data ze serverů, databází, nástroje a služby k dispozici jednotný pohled na celý zásobník. Tyto možnosti jsou k dispozici na platformě pro analýzu dat založené na SaaS. Tato služba umožňuje Dev a Ops týmům spolupracovat, aby se zabránilo výpadkům, vyřešit problémy s výkonem a ujistěte se, že vývoj a nasazení cykly dokončit včas. Díky integraci služby Datadog a Azure, můžete shromažďovat a zobrazovat metriky z vaší infrastruktury. Je možné korelovat metriky virtuálního počítače s metriky na úrovni aplikace. Vyfiltrování a rozčlenění metriky pomocí jakékoli kombinace vlastností a vlastních značek.
 
@@ -76,6 +76,11 @@ Služby Datadog je nejlepší na světě sledování služby pro aplikace v clou
 Dynatrace OneAgent se integruje s virtuálními počítači Azure a App Services prostřednictvím mechanismu rozšíření Azure. Tímto způsobem Dynatrace OneAgent můžete shromažďovat metriky výkonu hostitele, sítě a služby. Kromě pouze zobrazení metrik, vizualizuje Dynatrace prostředí začátku do konce. Zobrazuje transakce na straně klienta na databázové vrstvě. Dynatrace poskytuje založené na umělé Inteligenci korelace problémů, včetně plné integrace analýzu původní příčiny-poskytovat metodu úroveň informací o kódu a databáze. Tento přehled Díky uloženým jednodušší řešení potíží a výkonu optimalizace.
 
 [Přejděte k dokumentaci.][dynatrace-doc]
+
+## <a name="elastic"></a>Elastická
+Elastická databáze je společnost, hledání. Jako autoři řešení Elastic Stack (Elasticsearch, Kibana, Beats a Logstash), sestaví Elastická databáze samoobslužně spravovaným a případy použití nabídky SaaS, které bylo použít data v reálném čase a ve velkém měřítku pro hledání, protokolování, zabezpečení a analýzy.
+
+[Přejděte k dokumentaci.][elastic-doc]
 
 ## <a name="grafana"></a>Grafana
 Grafana je open source aplikace, která umožňuje vizualizovat metriky dat časových řad.
@@ -167,14 +172,15 @@ Turbonomic zajišťuje automatizaci úloh pro hybridní cloudy a současně opti
 <!--Partner Anchors-->
 [alertlogic-anchor]: #alertlogic-log-manager "AlertLogic"
 [appdynamics-anchor]: #appdynamics "AppDynamics"
+[arcsight-anchor]: #microfocus-arcsight "ArcSight"
 [atlassian-anchor]: #atlassian-jira "Od společnosti Atlassian"
 [botmetric-anchor]: #botmetric "Botmetric"
 [circonus-anchor]: #circonus "Circonus"
 [cloudhealth-anchor]: #cloudhealth "CloudHealth"
 [cloudmonix-anchor]: #cloudmonix "CloudMonix"
-[cloudyn-anchor]: #cloudyn "Cloudyn"
 [datadog-anchor]: #datadog "Služby Datadog"
 [dynatrace-anchor]: #dynatrace "Dynatrace"
+[elastic-anchor]: #elastic "Elastická databáze"
 [newrelic-anchor]: #newrelic "NewRelic"
 [grafana-anchor]: #grafana "Grafana"
 [influxdata-anchor]: #Influxdata "Influxdata"
@@ -198,9 +204,9 @@ Turbonomic zajišťuje automatizaci úloh pro hybridní cloudy a současně opti
 [circonus-logo]: ./media/partner-logos/circonus.png
 [cloudhealth-logo]: ./media/partner-logos/cloudhealth.png
 [cloudmonix-logo]: ./media/partner-logos/cloudmonix.png
-[cloudyn-logo]: ./media/partner-logos/cloudyn.png
 [datadog-logo]: ./media/partner-logos/datadog.png
 [dynatrace-logo]: ./media/partner-logos/dynatrace.png
+[elastic-logo]: ./media/partner-logos/elastic.png
 [newrelic-logo]: ./media/partner-logos/newrelic.png
 [grafana-logo]: ./media/partner-logos/grafana.png
 [influxdata-logo]: ./media/partner-logos/influxdata.png
@@ -219,14 +225,15 @@ Turbonomic zajišťuje automatizaci úloh pro hybridní cloudy a současně opti
 <!--Partner Documentation-->
 [alertlogic-doc]: https://docs.alertlogic.com/userGuides/log-manager-collection-sources.htm "Dokumentace ke službě AlertLogic."
 [appdynamics-doc]: https://www.appdynamics.com/net/azure/ "AppDynamics dokumentaci."
+[arcsight-doc]: https://community.softwaregrp.com/t5/Discussions/Announcing-General-Availability-of-ArcSight-Smart-Connectors-7/m-p/1671852 "Dokumentace ke službě ArcSight."
 [atlassian-doc]: https://azure.microsoft.com/blog/automated-notifications-from-azure-monitor-for-atlassian-jira/
 [botmetric-doc]: https://www.botmetric.com/blog/announcing-botmetric-cost-governance-beta-microsoft-azure/ "Botmetric úvod."
 [circonus-doc]: https://support.circonus.com/support/solutions/articles/24000013515-azure-integration 
 [cloudhealth-doc]: https://www.cloudhealthtech.com/azure
 [cloudmonix-doc]: http://cloudmonix.com/features/azure-management/ "CloudMonix úvod."
-[cloudyn-doc]: https://www.cloudyn.com/azure-monitoring "Úvod Cloudyn."
 [datadog-doc]: http://docs.datadoghq.com/integrations/azure/ "Dokumentace služby Datadog."
 [dynatrace-doc]: https://help.dynatrace.com/infrastructure-monitoring/paas/how-do-i-monitor-microsoft-azure-web-apps/ "Dynatrace dokumentaci."
+[elastic-doc]: https://www.elastic.co/guide/en/logstash/master/azure-module.html "Elastické dokumentaci."
 [grafana-doc]: ./monitor-send-to-grafana.md "Integrace se službou Azure Monitor Grafana."
 [influxdata-doc]: ./metrics-store-custom-linux-telegraf.md "Integrace se službou Azure Monitor Influxdata Telegraf."
 [logicmonitor-doc]: https://www.logicmonitor.com/lmcloud-azure/ "Dokumentace ke službě Logic monitorování."

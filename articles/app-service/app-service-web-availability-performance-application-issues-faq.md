@@ -13,14 +13,14 @@ ms.workload: web
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 05/11/2018
+ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 06fe9f1fd65f70e41d528a513e44e61edb4a7e4f
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+ms.openlocfilehash: 00563b93a3601ba6299c479c49375fd252841f79
+ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39307904"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50748115"
 ---
 # <a name="application-performance-faqs-for-web-apps-in-azure"></a>Nejčastějších dotazech týkajících se výkonu aplikace pro Web Apps v Azure
 
@@ -34,11 +34,11 @@ Více faktorech může přispět ke zpomalení výkonu aplikace. Podrobné kroky
 
 ## <a name="how-do-i-troubleshoot-a-high-cpu-consumption-scenario"></a>Jak řešit scénáři vysoké využití procesoru
 
-V některých scénářích vysoké využití procesoru může vaše aplikace skutečně vyžadují víc výpočetních prostředků. V takovém případě zvažte možnost škálování na vyšší úroveň služby, aplikace získá všechny prostředky, které potřebuje. Jindy vysoké využití procesoru může být způsobena, chybný smyčky nebo způsobem kódování. Získání přehled o tom, co způsobuje zvýšení využití procesoru je dvě části procesu. Nejprve vytvořit výpis procesu a následně analyzujte výpis stavu procesu. Další informace najdete v tématu [zachycovat a analyzovat soubor s výpisem paměti za vysoké využití procesoru pro Web Apps](https://blogs.msdn.microsoft.com/asiatech/2016/01/20/how-to-capture-dump-when-intermittent-high-cpu-happens-on-azure-web-app/).
+V některých scénářích vysoké využití procesoru může vaše aplikace skutečně vyžadují víc výpočetních prostředků. V takovém případě zvažte možnost škálování na vyšší úroveň služby, aplikace získá všechny prostředky, které potřebuje. Jindy vysoké využití procesoru může být způsobena, chybný smyčky nebo způsobem kódování. Získání přehled o tom, co způsobuje zvýšení využití procesoru je dvě části procesu. Nejprve vytvořit výpis procesu a následně analyzujte výpis stavu procesu. Další informace najdete v tématu [zachycovat a analyzovat soubor s výpisem paměti za vysoké využití procesoru pro Web Apps](https://blogs.msdn.microsoft.com/asiatech/2016/01/20/how-to-capture-dump-when-intermittent-high-cpu-happens-on-azure-web-app/).
 
 ## <a name="how-do-i-troubleshoot-a-high-memory-consumption-scenario"></a>Jak můžu řešit scénáři vysoká spotřeba paměti?
 
-V některých scénářích vysoké využití paměti vaší aplikace skutečně může vyžadovat další výpočetní prostředky. V takovém případě zvažte možnost škálování na vyšší úroveň služby, aplikace získá všechny prostředky, které potřebuje. Jindy nevracení paměti může způsobit chybu v kódu. Způsobem kódování také může zvýšit využití paměti. Získat přehled o tom, co způsobuje vysoké paměti, že využití je dvě části procesu. Nejprve vytvořit výpis procesu a následně analyzujte výpis stavu procesu. Obě tyto kroky můžete provést efektivně služby Diagnostika chyb z Galerie rozšíření webů Azure. Další informace najdete v tématu [zachycovat a analyzovat soubor s výpisem paměti pro občasné velkého množství paměti pro službu Web Apps](https://blogs.msdn.microsoft.com/asiatech/2016/02/02/how-to-capture-and-analyze-dump-for-intermittent-high-memory-on-azure-web-app/).
+V některých scénářích vysoké využití paměti vaší aplikace skutečně může vyžadovat další výpočetní prostředky. V takovém případě zvažte možnost škálování na vyšší úroveň služby, aplikace získá všechny prostředky, které potřebuje. Jindy nevracení paměti může způsobit chybu v kódu. Způsobem kódování také může zvýšit využití paměti. Získat přehled o tom, co způsobuje vysoké paměti, že využití je dvě části procesu. Nejprve vytvořit výpis procesu a následně analyzujte výpis stavu procesu. Obě tyto kroky můžete provést efektivně služby Diagnostika chyb z Galerie rozšíření webů Azure. Další informace najdete v tématu [zachycovat a analyzovat soubor s výpisem paměti pro občasné velkého množství paměti pro službu Web Apps](https://blogs.msdn.microsoft.com/asiatech/2016/02/02/how-to-capture-and-analyze-dump-for-intermittent-high-memory-on-azure-web-app/).
 
 ## <a name="how-do-i-automate-app-service-web-apps-by-using-powershell"></a>Jak automatizovat webových aplikací služby App Service web apps pomocí Powershellu?
 

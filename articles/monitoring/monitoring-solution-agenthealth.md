@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2017
 ms.author: magoedte
-ms.openlocfilehash: e9ac4b7f7a0900f8b49f95c0db9ba5e9c962fa0e
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: c76b922d311a0e0bc5af2b4c8a95c2ef2ec09ba1
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49404031"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50914154"
 ---
 #  <a name="agent-health-solution-in-azure"></a>Řešení Agent Health v Azure
 Řešení Agent Health v Azure vám pomůže pochopit, u všech agentů odesílajících sestavy přímo do pracovního prostoru Log Analytics nebo skupinu pro správu System Center Operations Manager připojení k Log Analytics, která jsou reagovat a odešlete provozní data.  Můžete také sledovat, kolik agentů je nasazených a jak jsou geograficky distribuováni, a provádět další dotazy, abyste si udrželi přehled o distribuci agentů nasazených v Azure, dalších cloudových prostředích nebo místně.    
@@ -39,7 +39,7 @@ Pokud vaší skupině pro správu System Center Operations Manageru je připojen
 Další informace o způsobu, jakým se aktualizují sady pro správu řešení, najdete v tématu [Připojení Operations Manageru ke službě Log Analytics](../log-analytics/log-analytics-om-agents.md).
 
 ## <a name="configuration"></a>Konfigurace
-Přidejte řešení Agent Health do pracovního prostoru Log Analytics pomocí postupu popsaného v [přidat řešení](../log-analytics/log-analytics-add-solutions.md). Není nutná žádná další konfigurace.
+Přidejte řešení Agent Health do pracovního prostoru Log Analytics pomocí postupu popsaného v [přidat řešení](monitoring-solutions.md). Není nutná žádná další konfigurace.
 
 
 ## <a name="data-collection"></a>Shromažďování dat
@@ -118,4 +118,4 @@ V následující tabulce jsou uvedeny ukázky prohledávání protokolu pro záz
 
 ## <a name="next-steps"></a>Další postup
 
-* Podrobnosti o generování upozornění ze služby Log Analytics najdete v tématu [Upozornění v Log Analytics](../log-analytics/log-analytics-alerts.md).
+* Podrobnosti o generování upozornění ze služby Log Analytics najdete v tématu [Upozornění v Log Analytics](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md).

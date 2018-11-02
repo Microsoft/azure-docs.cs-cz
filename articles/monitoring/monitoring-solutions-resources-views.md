@@ -1,6 +1,6 @@
 ---
-title: Zobrazení v řešení pro správu | Microsoft Docs
-description: 'Řešení pro správu bude obvykle obsahovat jedno nebo více zobrazení, která bude vizualizovat data.  Tento článek popisuje, jak exportovat zobrazení vytvořené pomocí návrháře zobrazení a její zahrnutí do řešení pro správu. '
+title: Zobrazení v řešení pro správu | Dokumentace Microsoftu
+description: 'Řešení pro správu obvykle zahrnují jeden nebo více zobrazení k vizualizaci dat.  Tento článek popisuje, jak exportovat zobrazení vytvořené návrhářem zobrazení a zahrnout do řešení pro správu. '
 services: monitoring
 documentationcenter: ''
 author: bwren
@@ -14,44 +14,44 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/16/2018
 ms.author: bwren
-ms.openlocfilehash: b4f54358f4bc1db973d6fe7163411e3a313c3cf4
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 27bec2b7fa53e7564841e6f89be7e4d81a9b9f1a
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33887864"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50913032"
 ---
 # <a name="views-in-management-solutions-preview"></a>Zobrazení v řešení pro správu (Preview)
 > [!NOTE]
-> Toto je předběžná dokumentace pro vytváření řešení pro správu, které jsou aktuálně ve verzi preview. Žádné schéma popsané níže se mohou změnit.    
+> Toto je předběžná dokumentace pro vytváření řešení pro správu, které jsou aktuálně ve verzi preview. Žádné schéma je popsáno níže se může změnit.    
 
 
-[Řešení pro správu](monitoring-solutions.md) bude obvykle obsahovat jedno nebo více zobrazení, která bude vizualizovat data.  Tento článek popisuje, jak exportovat zobrazení vytvořené [Návrhář zobrazení](../log-analytics/log-analytics-view-designer.md) a její zahrnutí do řešení pro správu.  
+[Řešení pro správu](monitoring-solutions.md) bude obvykle obsahovat jedno nebo více zobrazení, která bude vizualizovat data.  Tento článek popisuje, jak exportovat zobrazení vytvořené [Návrhář zobrazení](../log-analytics/log-analytics-view-designer.md) a zahrnout do řešení pro správu.  
 
 > [!NOTE]
-> Ukázky v tomto článku použít parametry a proměnné, které jsou nutné nebo společné pro řešení pro správu a jsou popsány v [návrhu a sestavení řešení pro správu v Azure](monitoring-solutions-creating.md)
+> Ukázky v tomto článku použijte parametry a proměnné, které jsou povinné nebo společné pro řešení pro správu a jsou popsány v [návrh a sestavení řešení pro správu v Azure](monitoring-solutions-creating.md)
 >
 >
 
 ## <a name="prerequisites"></a>Požadavky
-Tento článek předpokládá, že jste již obeznámeni s postupy [vytvoření řešení správy](monitoring-solutions-creating.md) a struktura soubor řešení.
+Tento článek předpokládá, že jste již obeznámeni s postupy [vytvořte řešení pro správu](monitoring-solutions-creating.md) a struktura souboru řešení.
 
 ## <a name="overview"></a>Přehled
-Chcete-li zahrnout zobrazení v rámci řešení pro správu, musíte vytvořit **prostředků** pro něj v [soubor řešení](monitoring-solutions-creating.md).  Formátu JSON, který popisuje konfiguraci podrobné zobrazení je obvykle komplexní ale a není něco Autor typické řešení bude moci vytvořit ručně.  Nejběžnější metodou je vytvoření zobrazení pomocí [Návrhář zobrazení](../log-analytics/log-analytics-view-designer.md), ho exportovat a poté přidejte jeho podrobnou konfiguraci k řešení.
+V rámci řešení pro správu zahrnují zobrazení, vytvoření **prostředků** pro něj v [soubor řešení](monitoring-solutions-creating.md).  Ve formátu JSON, který popisuje podrobnou konfiguraci zobrazení je obvykle složitý ale a nemít něco, že autor typické řešení budou moct vytvořit ručně.  Nejběžnější metodou je vytvořte pomocí zobrazení [Návrhář zobrazení](../log-analytics/log-analytics-view-designer.md), exportujte ho a pak přidejte jeho podrobnou konfiguraci řešení.
 
-Základní postup se zobrazení přidat do řešení se následujícím způsobem.  Každý krok je podrobně popsán dále v následujících částech.
+Základní postup pro přidání do řešení zobrazení jsou následující.  Každý krok je podrobně popsán dále v následujících částech.
 
 1. Zobrazení exportujte do souboru.
-2. Vytvořte prostředek zobrazení v řešení.
-3. Přidáte zobrazení podrobností.
+2. Vytvořte zobrazení prostředků v řešení.
+3. Přidáním podrobností o zobrazení.
 
 ## <a name="export-the-view-to-a-file"></a>Zobrazení exportovat do souboru
-Postupujte podle pokynů v [Návrhář zobrazení Log Analytics](../log-analytics/log-analytics-view-designer.md) zobrazení exportovat do souboru.  Exportovaný soubor bude ve formátu JSON se stejným [elementy jako soubor řešení](monitoring-solutions-solution-file.md).  
+Postupujte podle pokynů na adrese [Návrhář zobrazení Log Analytics](../log-analytics/log-analytics-view-designer.md) zobrazení export do souboru.  Exportovaný soubor bude ve formátu JSON se stejným [prvky jako soubor řešení](monitoring-solutions-solution-file.md).  
 
-**Prostředky** prvek zobrazení souboru bude mít prostředek s typem **Microsoft.OperationalInsights/workspaces** představující pracovní prostor analýzy protokolů.  Tento prvek bude mít dílčí prvek s typem **zobrazení** , představuje zobrazení a obsahuje podrobné konfiguraci.  Bude kopírovat podrobnosti tohoto elementu a zkopírujte jej do řešení.
+**Prostředky** element zobrazit soubor bude mít prostředek typu **Microsoft.OperationalInsights/workspaces** , která představuje pracovní prostor Log Analytics.  Tento element bude mít dílčí element typu **zobrazení** , který představuje zobrazení a obsahuje jeho podrobnou konfiguraci.  Bude kopírovat podrobnosti tohoto elementu a zkopírujte je do vašeho řešení.
 
-## <a name="create-the-view-resource-in-the-solution"></a>Vytvořte prostředek zobrazení v řešení
-Přidejte následující zobrazení prostředek, který **prostředky** element souboru řešení.  Tato služba využívá proměnné, které jsou popsané níže, musíte taky přidat.  Všimněte si, že **řídicí panel** a **OverviewTile** vlastnosti jsou zástupné symboly, které bude přepsat odpovídající vlastnosti ze zobrazení exportovaného souboru.
+## <a name="create-the-view-resource-in-the-solution"></a>Vytvořit zobrazení prostředků v řešení
+Přidejte následující zobrazení prostředku **prostředky** prvek souboru řešení.  Tady se používá proměnné, které jsou popsané níže, musíte taky přidat.  Všimněte si, že **řídicí panel** a **OverviewTile** vlastnosti jsou zástupné symboly, které se přepíšou s odpovídající vlastností ze souboru exportovaného zobrazení.
 
     {
         "apiVersion": "[variables('LogAnalyticsApiVersion')]",
@@ -73,39 +73,39 @@ Přidejte následující zobrazení prostředek, který **prostředky** element 
         }
     }
 
-Přidejte následující proměnné na prvek proměnné soubor řešení a nahraďte hodnoty, které se pro vaše řešení.
+Přidejte následující proměnné na proměnné prvek souboru řešení a nahraďte hodnoty tak, aby pro vaše řešení.
 
     "LogAnalyticsApiVersion": "<api-version>",
     "ViewAuthor": "Your name."
     "ViewDescription": "Optional description of the view."
     "ViewName": "Provide a name for the view here."
 
-Všimněte si, že může kopírovat prostředek celého zobrazení z exportovaného zobrazení souboru, ale budete muset provést následující změny pro ho na spolupráci ve vašem řešení.  
+Všimněte si, že celé zobrazení prostředků lze zkopírovat ze souboru exportovaného zobrazení, ale je třeba provést následující změny, aby to fungovalo ve vašem řešení.  
 
-* **Typ** pro zobrazení prostředků je potřeba změnit z **zobrazení** k **Microsoft.OperationalInsights/workspaces**.
-* **Název** vlastnost pro prostředek zobrazení musí změnit tak, aby patří název pracovního prostoru.
-* Závislost na pracovním prostoru musí odebrat, protože prostředek prostoru není definován v řešení.
-* **DisplayName** vlastnost musí být přidán do zobrazení.  **Id**, **název**, a **DisplayName** musí všechny shodovat.
+* **Typ** zobrazení potřeba změnit z prostředků **zobrazení** k **Microsoft.OperationalInsights/workspaces**.
+* **Název** vlastnost pro zobrazení prostředků je potřeba změnit tak, aby obsahovaly název pracovního prostoru.
+* Závislost na pracovní prostor je potřeba odebrat, protože prostředek pracovní prostor není definovaný v řešení.
+* **DisplayName** vlastnost musí být přidán do zobrazení.  **Id**, **název**, a **DisplayName** musí všechny odpovídaly.
 * Názvy parametrů musí změnit tak, aby odpovídaly vyžaduje sadu parametrů.
 * Proměnné by měl definovaný v řešení a použít v příslušné vlastnosti.
 
-### <a name="log-analytics-api-version"></a>Verze rozhraní API analýzy protokolů
-Všechny prostředky analýzy protokolů, které jsou definované v šabloně Resource Manager mít vlastnost **apiVersion** verzi rozhraní API by měl použít na prostředek, který definuje.  Tato verze je pro zobrazení s dotazy, které používají jiné [starší verze a upgradovaný dotazovací jazyk](../log-analytics/log-analytics-log-search-upgrade.md).  
+### <a name="log-analytics-api-version"></a>Verze rozhraní API pro analýzu protokolů
+Všechny prostředky Log Analytics, které jsou definované v šabloně Resource Manageru, mít vlastnost **apiVersion** , který určuje verzi rozhraní API prostředku by měl používat.  Tato verze se liší pro zobrazení s dotazy, které používají [starší verze a upgradované dotazovací jazyk](../log-analytics/log-analytics-log-search.md).  
 
- Následující tabulka obsahuje verze rozhraní API analýzy protokolů pro zobrazení ve starší verzi a upgradovali pracovních prostorů: 
+ Následující tabulka obsahuje verze rozhraní API služby Log Analytics pro zobrazení v pracovních prostorech starších verzí a upgradovat: 
 
-| Verze pracovního prostoru | Verze API | Dotaz |
+| Verze v pracovním prostoru | Verze API | Dotaz |
 |:---|:---|:---|
-| V1 (starší)   | 2015-11-01-preview | Starší verze formátu.<br> Příklad: Zadejte = událostí EventLevelName = chyby  |
-| v2 (upgradu) | 2015-11-01-preview | Starší verze formátu.  Převedeny na formát upgradované na instalaci.<br> Příklad: Zadejte = událostí EventLevelName = chyby<br>Převést na: událost &#124; kde EventLevelName == "Error.  |
-| v2 (upgradu) | 2017-03-03-preview | Upgrade formátu. <br>Příklad: Událost &#124; kde EventLevelName == "Error.  |
+| V1 (starší verze)   | 2015-11-01-preview | Starší verze formátu.<br> Příklad: Zadejte = EventLevelName události = chyba  |
+| v2 (upgradovat) | 2015-11-01-preview | Starší verze formátu.  Převést na formát upgradovaný při instalaci.<br> Příklad: Zadejte = EventLevelName události = chyba<br>Převést na: událost &#124; kde EventLevelName == "Chyba"  |
+| v2 (upgradovat) | 2017-03-03-preview | Upgrade formátu. <br>Příklad: Event &#124; kde EventLevelName == "Chyba"  |
 
 
-## <a name="add-the-view-details"></a>Přidání zobrazení podrobností
-Zobrazení prostředků v souboru exportovaný zobrazení bude obsahovat dva elementy v **vlastnosti** element s názvem **řídicí panel** a **OverviewTile** obsahující podrobnou konfiguraci zobrazení.  Zkopírujte tyto dva prvky a jejich obsah do **vlastnosti** element zobrazení prostředku v souboru řešení.
+## <a name="add-the-view-details"></a>Přidáním podrobností o zobrazení
+Zobrazit prostředek v souboru exportované zobrazení bude obsahovat dva prvky v **vlastnosti** element s názvem **řídicí panel** a **OverviewTile** obsahující na podrobné Konfigurace zobrazení.  Zkopírujte tyto dva prvky a jejich obsah do **vlastnosti** element zobrazení prostředku v souboru řešení.
 
 ## <a name="example"></a>Příklad:
-Například následující příklad ukazuje soubor simple řešení se zobrazením.  Výpustky (...) se zobrazují pro **řídicí panel** a **OverviewTile** obsah z důvodů místa.
+Například následující příklad ukazuje soubor jednoduchého řešení pomocí zobrazení.  Symbol tří teček (...) jsou platné pro **řídicí panel** a **OverviewTile** obsah z důvodu místa.
 
     {
         "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -188,5 +188,5 @@ Například následující příklad ukazuje soubor simple řešení se zobrazen
 
 
 ## <a name="next-steps"></a>Další postup
-* Další podrobné informace o vytváření [řešení pro správu](monitoring-solutions-creating.md).
+* Přečtěte si podrobné informace o vytváření [řešení pro správu](monitoring-solutions-creating.md).
 * Zahrnout [runbooků služeb automatizace ve vašem řešení správy](monitoring-solutions-resources-automation.md).

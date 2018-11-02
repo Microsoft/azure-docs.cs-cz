@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: raynew
-ms.openlocfilehash: 42994a38aeab7f6da552f2f9073a806142511531
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 9fb955b6bce5b3d40def095180326fdc9aed33b1
+ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50095524"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50747894"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup – nejčastější dotazy
 Tento článek obsahuje odpovědi na běžné dotazy týkající se služby Azure Backup.
@@ -44,7 +44,7 @@ Ne. Data záloh uložená v trezoru nejde přesunout do jiného trezoru.
 Ne. Trezor služby Recovery Services můžete pouze změnit možnosti úložiště před všechny zálohy jsou uložené.
 
 ### <a name="can-i-do-an-item-level-restore-ilr-for-vms-backed-up-to-a-recovery-services-vault"></a>Můžete provést položku úrovně obnovení (ILR) virtuálních počítačů zálohovat do trezoru služby Recovery Services?
-Ne, není podporován ILR. 
+Ne, není podporován ILR.
 
 
 ## <a name="azure-backup-agent"></a>Agent Azure Backup
@@ -99,7 +99,7 @@ Ano. Ale doporučujeme nejprve nastavení aplikace DPM a potom nainstalovat agen
 ## <a name="general-backup"></a>Obecné zálohování
 
 ### <a name="are-there-limits-on-backup-scheduling"></a>Existují omezení pro plánování zálohování?
-Ano. 
+Ano.
 - Můžete zálohovat Windows Server nebo Windows počítače až třikrát za den. Zásady plánování můžete nastavit na denní nebo Týdenní plány.
 - Aplikace DPM můžete zálohovat až dvakrát denně. Zásady plánování můžete nastavit pro denní, týdenní, měsíční nebo roční.
 - Virtuální počítače Azure zálohujete jednou denně.
@@ -110,12 +110,12 @@ Azure Backup podporuje tyto operační systémy pro zálohování souborů a slo
 
 **OS**| **SKU** |**Podrobnosti**
 --- | --- | ---
-Pracovní stanice | | 
+Pracovní stanice | |
 Windows 10 64-bit | Enterprise, Pro, Home | Počítače by měly běžet nejnovější aktualizace Service Pack a aktualizace.
 Windows 8.1 64-bit | Enterprise, Pro | Počítače by měly běžet nejnovější aktualizace Service Pack a aktualizace.
 Windows 8 64-bit | Enterprise, Pro | Počítače by měly běžet nejnovější aktualizace Service Pack a aktualizace.
 Windows 7 64-bit | Ultimate, Enterprise, Professional, Home Premium, Home Basic, Starter | Počítače by měly běžet nejnovější aktualizace Service Pack a aktualizace.
-Server | | 
+Server | |
 Windows Server 2016 64 bitů | Standard, Datacenter, Essentials | WIT nejnovější aktualizace service Pack nebo aktualizací.
 Windows Server 2012 R2 64 bitů | Standard, Datacenter, Foundation | S nejnovější aktualizace service Pack nebo aktualizací.
 Windows Server 2012 64 bitů | Datacenter, Foundation, Standard | S nejnovější aktualizace service Pack nebo aktualizací.
@@ -133,20 +133,20 @@ Zálohování virtuálních počítačů Azure s Linuxem, Azure Backup podporuje
 Omezení velikosti jsou následující:
 
 
-/ Počítači s operačním systémem | Maximální velikost zdroje dat 
---- | --- | --- 
-Windows 8 nebo novější | 54 400 GB 
-Windows 7 |1700 GB 
-Windows Server 2012 nebo novější | 54 400 GB 
-Windows Server 2008, Windows Server 2008 R2 | 1700 GB 
-Virtuální počítač Azure | 32 datových disků<br/><br/> Datový disk až 4 095 GB
+/ Počítači s operačním systémem | Maximální velikost zdroje dat
+--- | --- | ---
+Windows 8 nebo novější | 54 400 GB
+Windows 7 |1700 GB
+Windows Server 2012 nebo novější | 54 400 GB
+Windows Server 2008, Windows Server 2008 R2 | 1700 GB
+Virtuální počítač Azure | 16 datových disků<br/><br/> Datový disk až 4 095 GB
 
 ## <a name="how-is-the-data-source-size-determined"></a>Jak se určí velikost zdroje dat?
 
 Následující tabulka vysvětluje, jak je určená velikost jednotlivých zdrojů dat.
 
 **Zdroj dat** | **Podrobnosti**
---- | --- 
+--- | ---
 Svazek |Množství dat, která zazálohovali z jednoho svazku zálohovaného virtuálního počítače.
 Databáze systému SQL Server |Velikost zálohovaných jeden velikosti databáze SQL.
 SharePoint | Součet databází obsahu a konfigurace v rámci zálohované farmy služby SharePoint.
@@ -158,7 +158,7 @@ BMR/stav systému |Každá jednotlivá kopie BMR nebo stav systému zálohované
 
 Neexistuje žádné omezení na množství dat, která můžete zálohovat pomocí trezoru služby Recovery Services.
 
-### <a name="if-i-cancel-a-backup-job-once-it-has-started-is-the-transferred-backup-data-deleted"></a>Pokud zruším úlohu zálohování poté, co již byla spuštěná, dojde k odstranění přenášených dat? 
+### <a name="if-i-cancel-a-backup-job-once-it-has-started-is-the-transferred-backup-data-deleted"></a>Pokud zruším úlohu zálohování poté, co již byla spuštěná, dojde k odstranění přenášených dat?
 Ne. Všechna data přenášená do trezoru před zrušením úlohy zálohování zůstanou v trezoru. Azure Backup používá mechanismus kontrolních bodů k příležitostnému přidávání kontrolních bodů do zálohovaných dat během zálohování. Díky kontrolním bodům v zálohovaných datech je možné při dalším procesu zálohování ověřit integritu souborů. Následující zálohování proběhne jako přírůstkové vzhledem k naposledy zálohovaným datům. Přírůstkové zálohování přenáší jen nová nebo změněná data, což znamená lepší využití přenosové kapacity.
 
 Když ve virtuálním počítači Azure zrušíte úlohu zálohování, budou dosud přenesená data ignorována. Při následujícím přírůstkovém zálohování se přenesou data, která se změnila od poslední úspěšně dokončené úlohy zálohování.
@@ -186,7 +186,7 @@ Ne. Všechna data, která bylo převedeno do trezoru před úloha zálohování 
 ### <a name="are-the-retention-policies-for-dpm-and-windows-machines-without-dpm-the-same"></a>Shodné zásady uchovávání informací pro DPM a Windows počítače bez aplikace DPM?
 Ano, obě mají zásady uchovávání informací pro denní, týdenní, měsíční nebo roční.
 
-### <a name="can-i-customize-retention-policies"></a>Můžete přizpůsobit zásady uchovávání informací? 
+### <a name="can-i-customize-retention-policies"></a>Můžete přizpůsobit zásady uchovávání informací?
 Ano, máte vlastní nastavení zásad. Můžete například nakonfigurovat každý týden a každý den uchování požadavky, ale není roční a měsíční.
 
 ### <a name="can-i-use-different-times-for-backup-scheduling-and-retention-policies"></a>Můžete použít různé časy pro plánování zálohování a zásady uchovávání informací?
@@ -208,7 +208,7 @@ Architektura úložiště Azure Backup nabízí to nejlepší z obou světů –
 
 ### <a name="is-there-a-limit-on-the-number-of-recovery-points-that-can-be-created"></a>Je nějak omezený počet bodů obnovení, které lze vytvořit?
 
-Na jednu chráněnou instanci je možné vytvořit až 9 999 bodů obnovení. Chráněná instance je počítač, server (fyzický nebo virtuální) nebo úloha, která zálohuje do Azure. 
+Na jednu chráněnou instanci je možné vytvořit až 9 999 bodů obnovení. Chráněná instance je počítač, server (fyzický nebo virtuální) nebo úloha, která zálohuje do Azure.
 
 - Další informace o [zálohování a uchovávání](./backup-introduction-to-azure-backup.md#backup-and-retention).
 - Další informace o [chráněné instance](./backup-introduction-to-azure-backup.md#what-is-a-protected-instance)?
@@ -238,7 +238,7 @@ Ano. Data v Azure je zašifrovaná at-rest.
 - Pro zálohování místních šifrování v resetování poskytuje heslem, které poskytnete při zálohování do Azure.
 - Pro virtuální počítače Azure data jsou zašifrovaná na reset pomocí šifrování služby Storage (SSE).
 
-Microsoft nikdy nedešifruje zálohovaná data. 
+Microsoft nikdy nedešifruje zálohovaná data.
 
 
 ### <a name="what-is-the-minimum-length-of-encryption-the-key-used-to-encrypt-backup-data"></a>Jaká je minimální délka šifrovací klíč používaný k šifrování zálohovaných dat?

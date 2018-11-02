@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/06/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: f0a9ac1700d635365ebea0c5966489ed3d2d797b
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 335db0130ae6dd3d11d6592208fdf37e762509e5
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50420234"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50914817"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Historie vydaných verzí
 Tým služby Azure Active Directory (Azure AD) pravidelně aktualizuje s novými funkcemi a funkce služby Azure AD Connect. Ne všechny položky se vztahují na všechny cílové skupiny.
@@ -48,7 +48,6 @@ Stáhnout | [Stažení služby Azure AD Connect](http://go.microsoft.com/fwlink/
 
 
 - Změnit funkci zpětný zápis atributů k zajištění prostředí hlasová pošta funguje podle očekávání.  V některých scénářích se Azure AD přepsání atribut msExchUcVoicemailSettings během zpětný zápis s hodnotou null.  Azure AD se teď už vymazat místní hodnota tohoto atributu Pokud není nastavena hodnota cloudu.
-- Vylepšené zpracování změny výchozích pravidel. Teď budete upozorněni Pokud byly provedeny změny výchozích pravidel a nabízí možnosti, jak opravit výchozí pravidla. 
 - Diagnostika do Průvodce Azure AD Connect k prozkoumání a identifikovat problémy s připojením ke službě Azure AD. Tyto stejné nástroje pro diagnostiku lze také spustit přímo prostřednictvím Powershellu pomocí rutiny Test - AdSyncAzureServiceConnectivity. 
 - Diagnostika do Průvodce Azure AD Connect k prozkoumání a identifikovat problémy s připojením ke službě AD. Tyto stejné nástroje pro diagnostiku lze také spustit přímo prostřednictvím prostředí Powershell pomocí funkce ConnectivityValidation spuštění v modulu ADConnectivityTools Powershell.  Další informace najdete v části [co je modul Powershellu ADConnectivityTool?](how-to-connect-adconnectivitytools.md)
 - Přidání verze schématu AD pro předběžné kontroly pro hybridní Azure Active Directory Join a zpětný zápis zařízení 

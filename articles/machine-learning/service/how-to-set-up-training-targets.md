@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.component: core
 ms.topic: article
 ms.date: 09/24/2018
-ms.openlocfilehash: 2c4255b70ae9eb3b31b6fdfce33853f0d517aa1f
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: dfa9da5102c2a47b14cbd70380b70b4561c3191d
+ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50215476"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50748455"
 ---
 # <a name="select-and-use-a-compute-target-to-train-your-model"></a>Vyberte a použijte cílové výpočetní prostředí k natrénování modelu
 
@@ -463,7 +463,7 @@ Existují dva způsoby, jak odeslat školení spuštění:
 * Odesílání `Pipeline` objektu.
 
 > [!IMPORTANT]
-> Azure Databricks, Azure Datalake Analytics a Azure HDInsight výpočetní cíle lze použít pouze v rámci kanálu.
+> Azure Databricks a Azure Datalake Analytics výpočetní cíle lze použít pouze v rámci kanálu.
 > Cílové místní výpočetní prostředí nelze použít v rámci kanálu.
 
 ### <a name="submit-using-scriptrunconfig"></a>Odeslat pomocí `ScriptRunConfig`

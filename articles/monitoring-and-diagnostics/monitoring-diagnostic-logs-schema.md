@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 10/11/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: 3b665ed0539a41ffeca87511154f3607a57cff4a
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 17efbfffde68208b76120d449f4e1d70e843fc7d
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49116189"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50914341"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-diagnostic-logs"></a>Podporované služby, schémat a kategorie pro diagnostické protokoly Azure
 
@@ -92,9 +92,11 @@ Schéma protokolů diagnostiky prostředků se liší podle kategorie prostředk
 |Microsoft.Batch/batchAccounts|ServiceLog|Protokoly služby|
 |Microsoft.Cdn/profiles/endpoints|CoreAnalytics|Získá metriky koncového bodu, třeba šířku pásma, výchozí přenos atd.|
 |Microsoft.ClassicNetwork/networksecuritygroups|Událost toku pravidel skupiny zabezpečení sítě|Událost toku pravidel skupiny zabezpečení sítě|
-|Microsoft.CognitiveServices/accounts|Auditování|Auditování|
+|Microsoft.CognitiveServices/accounts|Auditování|Protokoly auditu|
+|Microsoft.CognitiveServices/accounts|Operace RequestResponse|Protokoly požadavků a odpovědí|
 |Microsoft.ContainerService/managedClusters|kube apiserver|Kubernetes API Server|
 |Microsoft.ContainerService/managedClusters|Správce kontroléru kube|Správce Kontroléru Kubernetes|
+|Microsoft.ContainerService/managedClusters|cluster automatického škálování|Automatického škálování clusteru Kubernetes|
 |Microsoft.ContainerService/managedClusters|kube scheduleru|Plánovač Kubernetes|
 |Microsoft.ContainerService/managedClusters|Guard|Ověřování Webhooku|
 |Microsoft.CustomerInsights/hubs|Použitím objektů Auditevent|Použitím objektů Auditevent|
@@ -105,7 +107,7 @@ Schéma protokolů diagnostiky prostředků se liší podle kategorie prostředk
 |Microsoft.DataLakeAnalytics/accounts|Požadavky|Vyžádat protokoly|
 |Microsoft.DataLakeStore/accounts|Auditování|Protokoly auditu|
 |Microsoft.DataLakeStore/accounts|Požadavky|Vyžádat protokoly|
-|Microsoft.DBforMySQL/servers|MySqlSlowLogs|Protokoly pomalých dotazů MySQL|
+|Microsoft.DBforMySQL/servers|MySqlSlowLogs|Protokoly serveru MySQL|
 |Microsoft.DBforPostgreSQL/servers|PostgreSQLLogs|Protokoly serveru PostgreSQL|
 |Microsoft.Devices/IotHubs|Připojení|Připojení|
 |Microsoft.Devices/IotHubs|DeviceTelemetry|Telemetrie zařízení|
@@ -128,6 +130,14 @@ Schéma protokolů diagnostiky prostředků se liší podle kategorie prostředk
 |Microsoft.EventHub/namespaces|ArchiveLogs|Archivovat protokoly|
 |Microsoft.EventHub/namespaces|OperationalLogs|Provozní protokoly|
 |Microsoft.EventHub/namespaces|AutoScaleLogs|Automatické škálování protokoly|
+|Microsoft.Insights/AutoscaleSettings|AutoscaleEvaluations|Vyhodnocení automatického škálování|
+|Microsoft.Insights/AutoscaleSettings|AutoscaleScaleActions|Akce automatického škálování|
+|Microsoft.IoTSpaces/Graph|Trasování|Trasování|
+|Microsoft.IoTSpaces/Graph|Provozní|Provozní|
+|Microsoft.IoTSpaces/Graph|Auditování|Auditování|
+|Microsoft.IoTSpaces/Graph|UserDefinedFunction|UserDefinedFunction|
+|Microsoft.IoTSpaces/Graph|Příchozí přenos dat|Příchozí přenos dat|
+|Microsoft.IoTSpaces/Graph|Výchozí přenos|Výchozí přenos|
 |Microsoft.KeyVault/vaults|AuditEvent|Protokoly auditu|
 |Microsoft.Logic/workflows|Modul runtime|Diagnostické události modulu runtime pracovního postupu|
 |Microsoft.Logic/integrationAccounts|IntegrationAccountTrackingEvents|Sledovat události u účtu pro integraci|
@@ -136,6 +146,8 @@ Schéma protokolů diagnostiky prostředků se liší podle kategorie prostředk
 |Microsoft.Network/loadBalancers|LoadBalancerAlertEvent|Události výstrah nástroje pro vyrovnávání zatížení|
 |Microsoft.Network/loadBalancers|LoadBalancerProbeHealthStatus|Stav služby Load Balancer sondy stavu|
 |Microsoft.Network/publicIPAddresses|DDoSProtectionNotifications|Oznámení ochrany před útoky DDoS|
+|Microsoft.Network/publicIPAddresses|DDoSMitigationFlowLogs|Tok protokoly rozhodnutí o omezení rizik před útoky DDoS|
+|Microsoft.Network/publicIPAddresses|DDoSMitigationReports|Sestavy zmírnění před útoky DDoS|
 |Microsoft.Network/virtualNetworks|VMProtectionAlerts|Oznámení ochrany virtuálního počítače|
 |Microsoft.Network/applicationGateways|ApplicationGatewayAccessLog|Protokol přístupu aplikační brány|
 |Microsoft.Network/applicationGateways|ApplicationGatewayPerformanceLog|Protokol výkon aplikační brány|
@@ -151,6 +163,8 @@ Schéma protokolů diagnostiky prostředků se liší podle kategorie prostředk
 |Microsoft.Network/virtualNetworkGateways|P2SDiagnosticLog|Diagnostické protokoly P2S|
 |Microsoft.Network/trafficManagerProfiles|ProbeHealthStatusEvents|Událost výsledky testu stavu Traffic Manageru|
 |Microsoft.Network/expressRouteCircuits|PeeringRouteLog|Vytvoření partnerského vztahu protokoly tabulky směrování|
+|Microsoft.Network/frontdoors|FrontdoorAccessLog|Protokol Frontdoor přístupu|
+|Microsoft.Network/frontdoors|FrontdoorWebApplicationFirewallLog|Protokol brány Firewall Frontdoor webové aplikace|
 |Microsoft.PowerBIDedicated/capacities|Modul|Modul|
 |Microsoft.RecoveryServices/Vaults|AzureBackupReport|Data pro generování sestav Azure Backup|
 |Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryJobs|Úlohy Azure Site Recovery|
@@ -173,10 +187,21 @@ Schéma protokolů diagnostiky prostředků se liší podle kategorie prostředk
 |Microsoft.Sql/servers/databases|Zablokování|Zablokování|
 |Microsoft.Sql/servers/databases|Auditování|Protokoly auditu|
 |Microsoft.Sql/servers/databases|SQLSecurityAuditEvents|Událost auditu zabezpečení SQL|
-|Microsoft.Sql/servers/databases|SqlDw_Requests|Požadavky na SQL data Warehouse|
-|Microsoft.Sql/servers/databases|SqlDw_RequestSteps|SQL data Warehouse žádostí o kroky|
+|Microsoft.Sql/servers/databases|DmsWorkers|DMS pracovních procesů|
+|Microsoft.Sql/servers/databases|ExecRequests|Exec – požadavky|
+|Microsoft.Sql/servers/databases|RequestSteps|Žádostí o kroky|
+|Microsoft.Sql/servers/databases|SqlRequests|Požadavky na SQL|
+|Microsoft.Sql/servers/databases|Čeká|Čeká|
+|Microsoft.Sql/managedInstances|ResourceUsageStats|Statistiky o využití prostředků|
+|Microsoft.Sql/managedInstances|SQLSecurityAuditEvents|Událost auditu zabezpečení SQL|
+|Microsoft.Sql/managedInstances/databases|SQLInsights|Přehledy SQL|
+|Microsoft.Sql/managedInstances/databases|QueryStoreRuntimeStatistics|Statistické údaje o Query Store|
+|Microsoft.Sql/managedInstances/databases|QueryStoreWaitStatistics|Statistiky čekání Query Store|
+|Microsoft.Sql/managedInstances/databases|Chyby|Chyby|
 |Microsoft.StreamAnalytics/streamingjobs|Spouštěcí|Spouštěcí|
 |Microsoft.StreamAnalytics/streamingjobs|Vytváření obsahu|Vytváření obsahu|
+|Microsoft.Web/Sites|FunctionExecutionLogs|Protokoly spuštění – funkce|
+|Microsoft.Web/Sites/slots|FunctionExecutionLogs|Protokoly spuštění – funkce|
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/16/2018
 ms.author: trinadhk
-ms.openlocfilehash: ba77ec34e7887f676ea3df101e87c1ea80fceec5
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: ff97d164ee8b2059e1b46377067041d6c381052b
+ms.sourcegitcommit: 3dcb1a3993e51963954194ba2a5e42260d0be258
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50414790"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50753963"
 ---
 # <a name="questions-about-the-azure-vm-backup-service"></a>Dotazy týkající se služby Azure Backup pro virtuální počítače
 Tento článek obsahuje odpovědi na běžné dotazy, které vám pomůžou rychle porozumět komponentám služby Azure Backup pro virtuální počítače. Některé odpovědi zahrnují odkazy na články obsahující komplexní informace. Otázky týkající se služby Azure Backup můžete také publikovat na [diskusním fóru](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
@@ -48,13 +48,13 @@ Ano. I v případě, že počítač je vypnutý zálohy budou fungovat a bod obn
 Ano. Úloha zálohování můžete zrušit, pokud je ve fázi "Pořízení snímku". **Úlohu nelze zrušit, pokud probíhá přenos dat ze snímku**.
 
 ### <a name="i-enabled-resource-group-lock-on-my-backed-up-managed-disk-vms-will-my-backups-continue-to-work"></a>Můžu povoleno uzamčení skupinu prostředků na spravovaný disk Moje zálohy virtuálních počítačů. Budou moje zálohy stále fungovat?
-Pokud se uživatel uzamkne skupinu prostředků, služby Backup není možné odstranit starší body obnovení. Z toho důvodu začne nový zálohování selhávat, jako je stanovený limit maximální 18 bodů obnovení uložených z back-endu. Pokud je zálohování neúspěšné kvůli vnitřní chybě po uzamčení RG, postupujte podle těchto [kolekci bodů kroky k odebrání obnovení](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#clean-up-restore-point-collection-from-portal-created-by-backup-service).
+Pokud se uživatel uzamkne skupinu prostředků, služby Backup není možné odstranit starší body obnovení. Z toho důvodu začne nový zálohování selhávat, jako je stanovený limit maximální 18 bodů obnovení uložených z back-endu. Pokud je zálohování neúspěšné kvůli vnitřní chybě po uzamčení RG, postupujte podle těchto [kolekci bodů kroky k odebrání obnovení](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#clean-up-restore-point-collection-from-azure-portal).
 
 ### <a name="does-backup-policy-take-daylight-saving-timedst-into-account"></a>Zásady zálohování trvá, než Time(DST) letního času ukládá do účtu?
 Ne. Mějte na paměti, že datum a čas v místním počítači se zobrazí v místním čase a s vaší aktuální posun na letní čas. Proto může být nakonfigurovaný čas plánovaného zálohování liší od místního času z důvodu letního času.
 
 ### <a name="maximum-of-how-many-data-disks-can-i-attach-to-a-vm-to-be-backed-up-by-azure-backup"></a>Maximální počet datových disků můžete můžu připojit k virtuálnímu počítači zálohovat službou Azure Backup?
-Azure Backup nyní podporuje zálohování virtuálních počítačů s disky až 32. Chcete-li získat 32 podporu pro disky, [upgrade na zásobník záloh virtuálních počítačů Azure V2](backup-upgrade-to-vm-backup-stack-v2.md). Všechny virtuální počítače povolit ochranu od 24. září 2018 bude získat podporované.
+Azure Backup nyní podporuje zálohování virtuálních počítačů s až 16 disků. Chcete-li získat podporu 16 disků, [upgrade na zásobník záloh virtuálních počítačů Azure V2](backup-upgrade-to-vm-backup-stack-v2.md). Všechny virtuální počítače povolit ochranu od 24. září 2018 bude získat podporované.
 
 ### <a name="does-azure-backup-support-standard-ssd-managed-disk"></a>Azure podporuje zálohování SSD na úrovni Standard se spravovaný disk?
 Azure Backup podporuje [Standard Managed SSD Disks](https://azure.microsoft.com/blog/announcing-general-availability-of-standard-ssd-disks-for-azure-virtual-machine-workloads/), nový typ trvalého úložiště pro Microsoft Azure Virtual machines. Je podporované u spravovaných disků na [zásobníku zálohování virtuálních počítačů Azure V2](backup-upgrade-to-vm-backup-stack-v2.md).

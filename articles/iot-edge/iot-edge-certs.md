@@ -8,12 +8,12 @@ ms.date: 09/13/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a782a7341e53420dbc31fefc86007951df967a9e
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: af1a14f87eaf20a7f49a8fc6112c4f3c7595f6bd
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46313415"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50914360"
 ---
 # <a name="azure-iot-edge-certificate-usage-detail"></a>Podrobnosti o použití certifikátu Azure IoT Edge
 
@@ -78,9 +78,9 @@ Protože výrobce a operátor procesy jsou oddělené, existuje pár důsledky, 
 
 ## <a name="devtest-implications"></a>Důsledky pro vývoj/testování
 
-Pro vývoj a testování scénářů, společnost Microsoft poskytuje sadu [pohodlí skripty](https://github.com/Azure/azure-iot-sdk-c/tree/master/tools/CACertificates) pro generování-li se o neprodukční certifikátů vhodných pro IoT Edge ve scénáři transparentní brány.
+Pro vývoj a testování scénářů, společnost Microsoft poskytuje sadu [pohodlí skripty](https://github.com/Azure/azure-iot-sdk-c/tree/master/tools/CACertificates) pro generování-li se o neprodukční certifikátů vhodných pro IoT Edge ve scénáři transparentní brány. Příklady, jak tyto skripty fungují, najdete v části [nakonfigurovat nastavení zařízení IoT Edge tak, aby fungoval jako transparentní brána](how-to-create-transparent-gateway.md).
 
-Tyto skripty vygenerujete certifikáty, které vycházet ze struktury řetěz certifikátů popsaných v tomto článku. Pro [Linux](how-to-create-transparent-gateway-linux.md#certificate-creation) nebo [Windows](how-to-create-transparent-gateway-windows.md#certificate-creation). Následující příkazy Generovat "kořenový certifikát certifikační Autority" a jedné "certifikát zprostředkující certifikační Autority".
+Tyto skripty vygenerujete certifikáty, které vycházet ze struktury řetěz certifikátů popsaných v tomto článku. Následující příkazy Generovat "kořenový certifikát certifikační Autority" a jedné "certifikát zprostředkující certifikační Autority".
 
 ```bash
 ./certGen.sh create_root_and_intermediate 
@@ -124,6 +124,4 @@ Zobrazí se hierarchie certifikátů hloubky reprezentované na snímku obrazovk
 
 [Vysvětlení modulů Azure IoT Edge](iot-edge-modules.md)
 
-[Použít zařízení IoT Edge jako transparentní brána (Linux)](how-to-create-transparent-gateway-linux.md)
-
-[Použít zařízení IoT Edge jako transparentní brána (Windows)](how-to-create-transparent-gateway-windows.md)
+[Konfigurace zařízení tak, aby fungoval jako transparentní brána IoT Edge](how-to-create-transparent-gateway.md)

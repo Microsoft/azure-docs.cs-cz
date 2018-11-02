@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/28/2018
 ms.author: magoedte
-ms.openlocfilehash: 32cd373499a1ac6dd8cc02e666b0f6ff70688157
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: ad696168674e0c04c457c06a81d4e723981eee47
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50215255"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50914749"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Pomocí řešení Service Map v Azure
 Service Map automaticky rozpozná komponenty aplikace v systémech Windows a Linux a mapuje komunikaci mezi službami. Pomocí mapy služeb, můžete zobrazit vaše servery tak, aby přirozeným způsobem: jako propojené systémy, které doručují důležité služby. Service Map ukazuje propojení mezi servery, procesy, příchozí a odchozí připojení čekací doba a požadované porty v jakékoli architektuře propojené TCP, žádnou konfiguraci kromě instalace agenta.
@@ -277,7 +277,7 @@ Integrace řešení Service Map se zabezpečení a Audit je automatické, pokud 
 ![Podokno počítač řešení Change Tracking](media/monitoring-service-map/machine-updates.png)
 
 ## <a name="log-analytics-records"></a>Záznamy služby Log Analytics
-Data inventáře počítače a procesu Service Map je k dispozici pro [hledání](../log-analytics/log-analytics-log-searches.md) v Log Analytics. Tato data můžete použít scénáře, které zahrnují plánování migrace, kapacitu analýza, zjišťování a řešení potíží s výkonem na vyžádání.
+Data inventáře počítače a procesu Service Map je k dispozici pro [hledání](../log-analytics/log-analytics-log-search.md) v Log Analytics. Tato data můžete použít scénáře, které zahrnují plánování migrace, kapacitu analýza, zjišťování a řešení potíží s výkonem na vyžádání.
 
 Jeden záznam se vygeneruje za hodinu pro každý počítač jedinečné a proces, kromě záznamy, které jsou generovány, pokud proces nebo počítače spustí nebo je zprovozněný do Service Map. Tyto záznamy mají vlastnosti v následujících tabulkách. Pole a hodnoty v událostech ServiceMapComputer_CL mapují na pole počítače zdroje v rozhraní API Azure Resource Manageru ServiceMap. Pole a hodnoty v událostech ServiceMapProcess_CL mapují na pole v rozhraní API Azure Resource Manageru ServiceMap prostředku procesu. Pole ResourceName_s odpovídá poli Název odpovídající prostředku Resource Manageru. 
 
@@ -504,7 +504,7 @@ Další informace o shromažďování a používání dat najdete v článku [pr
 
 
 ## <a name="next-steps"></a>Další postup
-Další informace o [prohledávání protokolů](../log-analytics/log-analytics-log-searches.md) v Log Analytics data, která shromažďují Service Map.
+Další informace o [prohledávání protokolů](../log-analytics/log-analytics-log-search.md) v Log Analytics data, která shromažďují Service Map.
 
 
 ## <a name="troubleshooting"></a>Řešení potíží

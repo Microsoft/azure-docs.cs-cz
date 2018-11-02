@@ -11,15 +11,15 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlrab, srbozovi, bonova
 manager: craigg
-ms.date: 09/13/2018
-ms.openlocfilehash: 08b8e37493ea7bc549a2352aaa6714ef7c65bfdb
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 11/01/2018
+ms.openlocfilehash: 97362cb91c16f91d637283df7a583f685124a21b
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47159512"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50913666"
 ---
-# <a name="configure-azure-vm-to-connect-to-an-azure-sql-database-managed-instance"></a>Konfigurace virtuálního počítače Azure pro připojení k Azure SQL Database Managed Instance
+# <a name="quickstart-configure-azure-vm-to-connect-to-an-azure-sql-database-managed-instance"></a>Rychlý start: Konfigurace virtuálního počítače Azure pro připojení k Azure SQL Database Managed Instance
 
 Této šablony rychlý start ukazuje, jak nakonfigurovat virtuální počítač Azure pro připojení k Azure SQL Database Managed Instance pomocí SQL Server Management Studio (SSMS). Rychlý start ukazuje, jak připojit z místních klientských počítačů pomocí připojení point-to-site, najdete v článku [konfigurace připojení typu point-to-site](sql-database-managed-instance-configure-p2s.md) 
 
@@ -37,7 +37,7 @@ Následujícím postupem se vytvoří novou podsíť ve virtuální síti Instan
 
 1. Otevřete skupinu prostředků pro Managed Instance, které jste vytvořili [vytvoříte Managed Instance](sql-database-managed-instance-get-started.md) rychlý start a klikněte na virtuální síť pro Managed Instance a potom klikněte na tlačítko **podsítě**.
 
-   ![Prostředky spravované Instance](./media/sql-database-managed-instance-configure-vm/resources.png)
+   ![Prostředky spravované instance](./media/sql-database-managed-instance-configure-vm/resources.png)
 
 2. Klikněte na tlačítko **+** podepsat vedle **podsítě** k vytvoření nové podsítě.
 
@@ -142,5 +142,5 @@ Po připojení můžete zobrazit systémové a uživatelské databáze v uzlu Da
 ## <a name="next-steps"></a>Další postup
 
 - Rychlý start ukazuje, jak připojit z místních klientských počítačů pomocí připojení point-to-site, najdete v části [konfigurace připojení typu point-to-site](sql-database-managed-instance-configure-p2s.md).
-- Přehled možností připojení pro aplikace, najdete v části [připojení aplikací k Managed Instance](sql-database-managed-instance-connect-app.md).
-- Chcete-li obnovit existující databáze SQL serveru v místním do Managed instance, můžete použít [Azure Database Migration Service (DMS) pro migraci](../dms/tutorial-sql-server-to-managed-instance.md) obnovit ze záložní soubor databáze nebo [T-SQL RESTORE příkaz](sql-database-managed-instance-get-started-restore.md) obnovit ze záložní soubor databáze.
+- Přehled možností připojení aplikací najdete v článku o [připojení aplikací ke spravované instanci](sql-database-managed-instance-connect-app.md).
+- Pokud chcete obnovit stávající databázi SQL Serveru z místní do spravované instance, můžete k migraci použít [službu Azure Database Migration Service (DMS)](../dms/tutorial-sql-server-to-managed-instance.md) a obnovit zálohu databáze nebo můžete k obnovení zálohy databáze použít [příkaz T-SQL RESTORE](sql-database-managed-instance-get-started-restore.md).

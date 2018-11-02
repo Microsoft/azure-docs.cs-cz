@@ -12,14 +12,14 @@ ms.topic: troubleshooting
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
-ms.date: 05/11/2018
+ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 59415d792ae02bc39d218eeead25dbd409482b6f
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: c21ee4d1d69145a442ad0af05da830548cded237
+ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47413436"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50748048"
 ---
 # <a name="troubleshoot-linux-vm-device-name-changes"></a>Řešení potíží s změny názvu zařízení virtuálního počítače s Linuxem
 
@@ -64,7 +64,7 @@ Aplikace používá logické jednotky k vyhledání všech připojených discíc
         ├── lun1-part1 -> ../../../sdd1
         ├── lun1-part2 -> ../../../sdd2
         └── lun1-part3 -> ../../../sdd3                                    
-                                 
+                                 
 Informace o logických jednotkách z účtu systému Linux hosta je načíst s použitím `lsscsi` nebo něco podobného:
 
        $ sudo lsscsi

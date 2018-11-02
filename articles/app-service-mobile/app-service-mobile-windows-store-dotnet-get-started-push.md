@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/12/2016
 ms.author: crdun
-ms.openlocfilehash: bfbb72d6fd101932f00e12ad18ab079ec30a0d3a
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: c137f6cfdff9d043a656783f38ec9b894e644338
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42818816"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50913015"
 ---
 # <a name="add-push-notifications-to-your-windows-app"></a>Přidání nabízených oznámení do aplikace pro Windows
 
@@ -37,21 +37,23 @@ Pokud použijete serverový projekt stažené rychlý start, budete potřebovat 
 
 ## <a name="register-your-app-for-push-notifications"></a>Registrace aplikace pro nabízená oznámení
 
-Budete muset odeslání aplikace do Microsoft Store a potom nakonfigurujte svůj serverový projekt pro integraci s Windows Notification Services (WNS) k odesílání nabízených oznámení.
+Budete potřebovat k odeslání aplikace do Microsoft Store a potom nakonfigurujte svůj serverový projekt pro integraci s [služby oznámení Windows (WNS)](https://docs.microsoft.com/windows/uwp/design/shell/tiles-and-notifications/windows-push-notification-services--wns--overview) k odesílání nabízených oznámení.
 
 1. V Průzkumníku řešení Visual Studio, klikněte pravým tlačítkem na projekt aplikace UPW, klikněte na tlačítko **Store** > **přidružit aplikaci Store...** .
 
     ![Propojit aplikaci s Microsoft Store](./media/app-service-mobile-windows-store-dotnet-get-started-push/notification-hub-associate-uwp-app.png)
+
 2. V průvodci klikněte na tlačítko **Další**, přihlaste se pomocí účtu Microsoft, zadejte název pro vaši aplikaci v **rezervovat nový název aplikace**, pak klikněte na tlačítko **rezervy**.
 3. Po registraci aplikace je úspěšně vytvořen, zadat nový název aplikace, klikněte na tlačítko **Další**a potom klikněte na tlačítko **přidružit**. To přidá požadované informace o registraci Microsoft Store do manifestu aplikace.
-4. Přejděte [Windows Dev Center](https://dev.windows.com/en-us/overview), přihlaste se pomocí svého účtu Microsoft, klikněte na možnost registrace nové aplikace v **Moje aplikace**, potom rozbalte **služby**  >   **Nabízená oznámení**.
-5. V **nabízená oznámení** klikněte na **Web služeb Live Services** pod **Microsoft Azure Mobile Services**.
-6. Na stránce registrace, poznamenejte si hodnoty v rámci **tajných klíčů aplikací** a **SID balíčku**, které potom použijete ke konfiguraci back-endu mobilní aplikace.
+4. Přejděte [portál pro registraci aplikací](https://apps.dev.microsoft.com/) a přihlaste se pomocí svého účtu Microsoft. Klikněte na Windows Store aplikaci, kterou jste k v předchozím kroku.
+5. Na stránce registrace, poznamenejte si hodnoty v rámci **tajných klíčů aplikací** a **SID balíčku**, které potom použijete ke konfiguraci back-endu mobilní aplikace.
 
     ![Propojit aplikaci s Microsoft Store](./media/app-service-mobile-windows-store-dotnet-get-started-push/app-service-mobile-uwp-app-push-auth.png)
 
    > [!IMPORTANT]
    > Tajný klíč klienta a SID balíčku jsou důležitá pověření zabezpečení. Tyto hodnoty s nikým nesdílejte ani je nedistribuujte s vaší aplikací. **Id aplikace** je pomocí tajného klíče, použít ke konfiguraci ověřování Account Microsoft.
+
+[App Center](https://docs.microsoft.com/appcenter/sdk/push/uwp#prerequisite---register-your-app-for-windows-notification-services-wns) také obsahuje pokyny pro konfiguraci aplikací pro UPW pro nabízená oznámení.
 
 ## <a name="configure-the-backend-to-send-push-notifications"></a>Konfigurace back-endu k odesílání nabízených oznámení
 
