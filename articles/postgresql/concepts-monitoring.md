@@ -7,13 +7,13 @@ ms.author: raagyema
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 10/04/2018
-ms.openlocfilehash: 0794c1573c2eaa951b805573cf33f05923da83b4
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.date: 11/01/2018
+ms.openlocfilehash: 819c3b50c99471025e1eb2a98e47f60eee7ef518
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48867778"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50962601"
 ---
 # <a name="monitor-and-tune"></a>Monitorování a ladění
 Data o vašich serverech monitorování vám pomůže řešit a optimalizovat pro vaši úlohu. Azure Database for PostgreSQL nabízí různé možnosti monitorování k poskytování přehledů o chování vašeho serveru.
@@ -39,6 +39,7 @@ Tyto metriky jsou k dispozici pro službu Azure Database for PostgreSQL:
 |connections_failed|Neúspěšná připojení|Počet|Počet selhání připojení k serveru.|
 |network_bytes_egress|Síťové výstupy|B|Odchozí síťový provoz mezi aktivních připojení.|
 |network_bytes_ingress|Síťové vstupy|B|Sítě v rámci aktivních připojení.|
+|backup_storage_used|Využité úložiště záloh|B|Velikost úložiště záloh používá.|
 
 ## <a name="server-logs"></a>Protokoly serveru
 Můžete povolit protokolování na server. Tyto protokoly jsou také k dispozici prostřednictvím Azure diagnostické protokoly v [Log Analytics](../log-analytics/log-analytics-queries.md), Event Hubs a účet úložiště. Další informace o protokolování, najdete [protokoly serveru](concepts-server-logs.md) stránky.

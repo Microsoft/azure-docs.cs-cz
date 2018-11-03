@@ -1,6 +1,6 @@
 ---
-title: Nahrajte Image do aplikace Azure IoT centrální | Microsoft Docs
-description: Jako tvůrce zjistěte, jak připravit a odeslat do aplikace Azure IoT centrální bitové kopie.
+title: Nahrávání obrázků do aplikace Azure IoT Central | Dokumentace Microsoftu
+description: Jako tvůrce informace o přípravě a nahrávání imagí do aplikace Azure IoT Central.
 author: tbhagwat3
 ms.author: tanmayb
 ms.date: 04/16/2018
@@ -8,115 +8,115 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 7fd9c8ed5559b00bc755e3f04c768dceeb487562
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 18c44a3d91a4964d054c8e142394da7d69772ed0
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34628017"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50960697"
 ---
-# <a name="prepare-and-upload-images-to-your-azure-iot-central-application"></a>Příprava a odeslat do aplikace Azure IoT centrální bitové kopie
+# <a name="prepare-and-upload-images-to-your-azure-iot-central-application"></a>Přípravě a nahrávání imagí do aplikace Azure IoT Central
 
-Tento článek popisuje, jak, jako tvůrce, můžete přizpůsobit aplikace Microsoft Azure IoT centrální tím, že nahrajete vlastních bitových kopií. Například můžete přizpůsobit řídicí panel zařízení se obrázek zařízení.
+Tento článek popisuje, jak, jako tvůrce, můžete přizpůsobit aplikaci Microsoft Azure IoT Central tak, že nahrajete vlastní Image. Například můžete přizpůsobit řídicí panel zařízení se obrázek zařízení.
 
 ## <a name="before-you-begin"></a>Než začnete
 
 K dokončení kroků v tomto článku budete potřebovat následující:
 
-1. Azure IoT centrální aplikaci. Další informace najdete v tématu [vytvořit aplikaci Azure IoT centrální](howto-create-application.md).
-1. Nástroj pro škálování a změna velikosti souborů bitové kopie.
+1. Aplikace Azure IoT Central. Další informace najdete v tématu [vytvořit aplikaci rychlý Start](quick-deploy-iot-central.md).
+1. Nástroj pro změnu měřítka a změna velikosti soubory s obrázky.
 
-## <a name="choose-where-to-use-custom-images"></a>Vybrat místo pro použití vlastních bitových kopií
+## <a name="choose-where-to-use-custom-images"></a>Rozhodnete, jak použít vlastní Image
 
-Můžete přidat vlastní Image do následujícího umístění v Azure IoT centrální aplikaci:
+Můžete přidat vlastní Image do následujícího umístění, v aplikaci Azure IoT Central:
 
 * **Správce aplikací** stránky
 
-    ![Bitové kopie na stránku správce aplikace](media/howto-prepare-images/applicationmanager.png)
+    ![Obrázek na stránce správce aplikace](media/howto-prepare-images/applicationmanager.png)
 
-* Domovská stránka
+* Na domovské stránce
 
-    ![Bitové kopie na domovské stránce](media/howto-prepare-images/homepage.png)
+    ![Obrázek na domovské stránce](media/howto-prepare-images/homepage.png)
 
 * Šablona zařízení
 
-    ![Bitové kopie v šabloně zařízení](media/howto-prepare-images/devicetemplate.png)
+    ![Image šablony zařízení](media/howto-prepare-images/devicetemplate.png)
 
-* Na dlaždici na řídicím panelu zařízení
+* Dlaždice na řídicím panelu zařízení
 
-    ![Bitové kopie na dlaždici zařízení](media/howto-prepare-images/devicetile.png)
+    ![Na dlaždici dodržování Image](media/howto-prepare-images/devicetile.png)
 
-* Na dlaždici na řídicím panelu sadu zařízení.
+* Dlaždice na řídicím panelu nastavení zařízení
 
-    ![Bitové kopie na dlaždici sada zařízení](media/howto-prepare-images/devicesettile.png)
+    ![Obrázek na dlaždici nastavení zařízení](media/howto-prepare-images/devicesettile.png)
 
-## <a name="prepare-the-images"></a>Příprava bitové kopie
+## <a name="prepare-the-images"></a>Příprava imagí
 
-Ve všech umístěních čtyři můžete použít PNG, GIF nebo JPEG bitové kopie.
+Ve všech čtyřech umístěních můžete použít obrázky PNG, ve formátu GIF nebo JPEG.
 
 Následující tabulka shrnuje velikosti obrázků, které můžete použít:
 
 | Umístění | Velikosti |
 | -------- | ------ |
 | **Správce aplikací** | 268 x 160 px |
-| Šablona zařízení | 64 x 64 px |
-| Domovská stránka a dlaždice řídicího panelu | Nejmenší velikostí dlaždice je 200 x 200 px, větší dlaždice může být čtverce nebo obdélníku násobky malé dlaždic. Například 200 x 400 px, 400 x 200 px nebo 400 × 400 px |
+| Šablona zařízení | 64 × 64 pixelů |
+| Domovská stránka a dlaždice řídicího panelu | Nejmenší velikost dlaždice je 200 x 200 pixelů, větší dlaždice může být čtvercová nebo obdélníkový násobky malých dlaždic. Například 200 x 400 px, 400 x 200 pixelů nebo 400 x 400 px |
 
-Pro nejlepší zobrazení v aplikaci byste měli vytvořit bitové kopie, které odpovídají dimenze uvedené v předchozí tabulce.
+Nejlepšího zobrazení v aplikaci byste měli vytvořit Image, které odpovídají dimenze je znázorněno v předchozí tabulce.
 
-## <a name="upload-the-images"></a>Nahrajte Image
+## <a name="upload-the-images"></a>Nahrání Image
 
-Následující části popisují, jak odesílat obrázky, které chcete použít v různých umístěních:
+Následující části popisují, jak nahrát Image na použití v různých umístěních:
 
 ### <a name="application-manager"></a>Správce aplikací
 
-Nahrát obrázek pro použití na **Správce aplikací**, přejděte na **nastavení aplikace** stránku **správy** části. Musí být správce tuto úlohu dokončit:
+Nahrát obrázek pro použití na **Správce aplikací**, přejděte na **nastavení aplikace** stránku **správu** oddílu. Musíte být správcem a dokončete tuto úlohu:
 
-![Nahrajte image aplikace](media/howto-prepare-images/uploadapplicationmanager.png)
+![Nahrání image aplikací](media/howto-prepare-images/uploadapplicationmanager.png)
 
-Kliknutím na obrázek odesílání a potom zvolte soubor k odeslání z místního počítače.
+Kliknutím na nahrát obrázek a pak zvolte soubor k nahrání z místního počítače.
 
 ### <a name="home-page"></a>Domovská stránka
 
-Pokud chcete uložit obrázek pro použití na domovské stránce, přejděte na **domovské stránky** vaší aplikace a režimu návrhu přepínač na. Musí být Tvůrce tuto úlohu dokončit:
+Pokud chcete nahrát obrázek pro použití na domovské stránce, přejděte na **domovské stránky** vaší aplikace a přepínač režimu návrhu na. Musí být Tvůrce k dokončení této úlohy:
 
-![Nahrát obrázek domovské stránky](media/howto-prepare-images/uploadhomepage.png)
+![Nahrajte obrázek domovské stránky](media/howto-prepare-images/uploadhomepage.png)
 
-Kliknutím na obrázek odesílání a potom zvolte soubor k odeslání z místního počítače.
+Kliknutím na nahrát obrázek a pak zvolte soubor k nahrání z místního počítače.
 
-Po odešle obrázek, můžete jeho velikost při režimu návrhu je zapnutá.
+Po nahrání obrázku velikosti při přepnutí režim návrhu.
 
 ### <a name="device-template"></a>Šablona zařízení
 
-Chcete-li nahrát obrázek pro použití na šabloně pro zařízení, přejděte na **Explorer zařízení**, vyberte šablonu zařízení a klepněte na zařízení a přepnout režim návrhu. Musí být Tvůrce tuto úlohu dokončit:
+Pokud chcete nahrát obrázek, který použijete v šabloně zařízení, přejděte na **Device Explorer**, zvolte šablonu zařízení a pak zařízení a přepnout režim návrhu. Musí být Tvůrce k dokončení této úlohy:
 
-![Nahrajte image šablony zařízení](media/howto-prepare-images/uploaddevicetemplate.png)
+![Nahrání image šablony zařízení](media/howto-prepare-images/uploaddevicetemplate.png)
 
-Kliknutím na obrázek odesílání a potom zvolte soubor k odeslání z místního počítače.
+Kliknutím na nahrát obrázek a pak zvolte soubor k nahrání z místního počítače.
 
 ### <a name="device-dashboard"></a>Řídicí panel zařízení
 
-Pokud chcete uložit obrázek pro použití na řídicím panelu zařízení, přejděte na **Explorer zařízení**, zvolte šablonu zařízení a zařízení. Zvolte **řídicí panel** na stránku a přepínače režimu návrhu. Musí být Tvůrce tuto úlohu dokončit:
+K nahrání obrázku na řídicí panel zařízení používat, přejděte na **Device Explorer**, zvolte šablonu zařízení a zařízení. Klikněte na tlačítko **řídicí panel** na stránku a přepínač režimu návrhu. Musí být Tvůrce k dokončení této úlohy:
 
-![Nahrát řídicí panel obrázku zařízení](media/howto-prepare-images/uploaddevicedashboard.png)
+![Nahrajte obrázek řídicího panelu zařízení](media/howto-prepare-images/uploaddevicedashboard.png)
 
-Kliknutím na obrázek odesílání a potom zvolte soubor k odeslání z místního počítače.
+Kliknutím na nahrát obrázek a pak zvolte soubor k nahrání z místního počítače.
 
-Po odešle obrázek, můžete změnit velikost a změňte umístění při **režimu návrhu** je zapnutá.
+Po nahrání image, můžete změnit velikost a umístění při **režimu návrhu** je zapnuté.
 
 ### <a name="device-set-dashboard"></a>Zařízení nastavit řídicí panel
 
-Chcete-li nahrát obrázek pro použití na řídicím panelu sady zařízení, přejděte na **sady zařízení** a vyberte sadu zařízení a zařízení. Zvolte **řídicí panel** stránky a přepínače **režimu návrhu** na:
+Pokud chcete nahrát obrázek pro použití na zařízení nastavit řídicí panel, přejděte na **sady zařízení** a zvolte sadu zařízení a zařízení. Klikněte na tlačítko **řídicí panel** stránky a přepínač **režimu návrhu** na:
 
-![Nahrát obrázku zařízení sada řídicího panelu](media/howto-prepare-images/uploaddevicesetdashboard.png)
+![Nahrajte obrázek řídicího panelu nastavení zařízení](media/howto-prepare-images/uploaddevicesetdashboard.png)
 
-Kliknutím na obrázek odesílání a potom zvolte soubor k odeslání z místního počítače.
+Kliknutím na nahrát obrázek a pak zvolte soubor k nahrání z místního počítače.
 
-Po odešle obrázek, můžete změnit velikost a změnit umístění, zatímco je zapnutá režimu návrhu.
+Po nahrání image můžete změnit velikost a umístění, zatímco byl zapnut režim návrhu.
 
 ## <a name="next-steps"></a>Další postup
 
-Teď, když jste se naučili jak připravit a odeslat do aplikace Azure IoT centrální bitové kopie, zde je navržené další krok:
+Teď, když jste se naučili, jak připravit a nahrávání imagí do aplikace Azure IoT Central, tady je navrhované další krok:
 
 > [!div class="nextstepaction"]
-> [Spravovat zařízení v aplikaci Azure IoT centrální](howto-manage-devices.md)
+> [Správa zařízení v aplikaci Azure IoT Central](howto-manage-devices.md)

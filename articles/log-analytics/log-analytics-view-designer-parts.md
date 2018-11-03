@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 31ee14369cc3f1c03d13c59e1239aa567bce3552
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: c59df6c1d28df2ffc63f3760e4d1fa47bda37b83
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50419771"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50964039"
 ---
 # <a name="reference-guide-to-view-designer-visualization-parts-in-log-analytics"></a>Referenční příručka k části vizualizace návrháře zobrazení v Log Analytics
 Pomocí návrháře zobrazení v Azure Log Analytics můžete vytvořit vlastní zobrazení na webu Azure Portal, který k dispozici různé vizualizace dat z pracovního prostoru Log Analytics. Tento článek je referenční příručka k nastavení části vizualizace, které jsou k dispozici do vlastních zobrazení.
@@ -363,4 +363,4 @@ Následující tabulka popisuje nastavení prahových hodnot:
 | Barva |Barva, která určuje prahovou hodnotu. |
 
 ## <a name="next-steps"></a>Další postup
-* Další informace o [prohledávání protokolů](log-analytics-log-searches.md) pro podporu dotazů v části vizualizace.
+* Další informace o [prohledávání protokolů](log-analytics-log-search.md) pro podporu dotazů v části vizualizace.

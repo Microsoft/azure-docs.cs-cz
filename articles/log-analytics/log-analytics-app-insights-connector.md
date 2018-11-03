@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 06/29/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 7c6d91da0634e7f847af01d1c057607ab095cdf6
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 7f3a90bf0dad2d0e9c6d51e942d88fb933b8ed1f
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49408204"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50961326"
 ---
 # <a name="application-insights-connector-management-solution-preview"></a>Řešení správy Application Insights Connector (Preview)
 
@@ -44,8 +44,8 @@ Na rozdíl od většina jiných řešení Log Analytics data nejsou shromažďov
 
 | Připojený zdroj | Podporováno | Popis |
 | --- | --- | --- |
-| [Agenti systému Windows](log-analytics-windows-agent.md) | Ne | Řešení neshromažďuje informace z agentů Windows. |
-| [Agenti systému Linux](log-analytics-linux-agents.md) | Ne | Řešení neshromažďuje informace z agentů Linuxu. |
+| [Agenti systému Windows](log-analytics-agent-windows.md) | Ne | Řešení neshromažďuje informace z agentů Windows. |
+| [Agenti systému Linux](log-analytics-quick-collect-linux-computer.md) | Ne | Řešení neshromažďuje informace z agentů Linuxu. |
 | [Skupiny pro správu SCOM](log-analytics-om-agents.md) | Ne | Řešení neshromažďuje informace z agentů v připojené skupině pro správu nástroje SCOM. |
 | [Účet služby Azure Storage](log-analytics-azure-storage.md) | Ne | Toto řešení dělá není shromažďování informací ze služby Azure storage. |
 
@@ -57,7 +57,7 @@ Na rozdíl od většina jiných řešení Log Analytics data nejsou shromažďov
 
 ## <a name="configuration"></a>Konfigurace
 
-1. Povolení řešení Azure Web Apps Analytics z [Azure marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ApplicationInsights?tab=Overview) nebo pomocí procesu popsaného v [přidání řešení Log Analytics z Galerie řešení](log-analytics-add-solutions.md).
+1. Povolení řešení Azure Web Apps Analytics z [Azure marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ApplicationInsights?tab=Overview) nebo pomocí procesu popsaného v [přidání řešení Log Analytics z Galerie řešení](../monitoring/monitoring-solutions.md).
 2. Přejděte na web [Azure Portal](https://portal.azure.com). Vyberte **všechny služby** a otevře Application Insights. Vyhledejte Application Insights. 
 3. V části **předplatná**, vyberte předplatné, které má prostředky Application Insights a pak v části **název**, vyberte jednu nebo více aplikací.
 4. Klikněte na **Uložit**.
@@ -267,4 +267,4 @@ Toto řešení nemá sadu ukázky hledání v protokolech zobrazeny na řídicí
 
 ## <a name="next-steps"></a>Další postup
 
-- Použití [prohledávání protokolů](log-analytics-log-searches.md) k zobrazení podrobných informací pro vaše aplikace Application Insights.
+- Použití [prohledávání protokolů](log-analytics-log-search.md) k zobrazení podrobných informací pro vaše aplikace Application Insights.

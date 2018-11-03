@@ -4,20 +4,19 @@ titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
 ms.component: azds-kubernetes
-author: ghogen
-ms.author: ghogen
+author: iainfoulds
+ms.author: iainfou
 ms.date: 05/11/2018
 ms.topic: article
 ms.technology: azds-kubernetes
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, kontejnery
-manager: douge
-ms.openlocfilehash: 352e43633ea1464eb7e28fa698d1ae77d5ac52bd
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: d7c8d0e1aca03a47e55605889c9f3fa73837d85a
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42060744"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50977154"
 ---
 # <a name="how-to-manage-secrets-when-working-with-an-azure-dev-space"></a>Správa tajných kódů při práci s prostorem vývoj Azure
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/28/2018
 ms.author: cynthn
-ms.openlocfilehash: 7cd7f0f37f0d351d1d50d4c15e7132f072b5125d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: fde8892f7a32d7b5405eef6661bbf29098325178
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46982201"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50958674"
 ---
 # <a name="mount-azure-file-storage-on-linux-vms-using-smb"></a>Připojení Azure File storage s linuxem pomocí protokolu SMB
 
@@ -100,6 +100,7 @@ Připojení sdílené složky Azure do místního adresáře.
 sudo mount -t cifs //$STORAGEACCT.file.core.windows.net/myshare /mnt/MyAzureFileShare -o vers=3.0,username=$STORAGEACCT,password=$STORAGEKEY,dir_mode=0777,file_mode=0777,serverino
 ```
 
+Výše uvedený příkaz používá [připojit](https://linux.die.net/man/8/mount) příkaz pro připojení sdílené složky Azure a možnosti, které jsou specifické pro [cifs](https://linux.die.net/man/8/mount.cifs). Konkrétně, file_mode a dir_mode možnosti sadu souborů a adresářů na oprávnění `0777`. `0777` Poskytuje oprávnění čtení, zápis a oprávnění pro všechny uživatele. Tato oprávnění můžete změnit tak, že nahradíte hodnoty s jinými [chmod oprávnění](https://en.wikipedia.org/wiki/Chmod). Můžete také využít další [cifs](https://linux.die.net/man/8/mount.cifs) možnosti, jako je ID skupiny nebo uid. 
 
 
 ## <a name="persist-the-mount"></a>Zachovat připojení

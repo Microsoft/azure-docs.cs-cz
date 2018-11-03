@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 10/03/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: 61ceea60962acc2e1ec032df49683e8a28381dd7
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 7f2ced1d6e5a7368fbf136d31889a763b3306e37
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49405357"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50964037"
 ---
 # <a name="wire-data-20-preview-solution-in-log-analytics"></a>Řešení Wire Data 2.0 (Preview) ve službě Log Analytics
 
@@ -33,7 +33,7 @@ Kromě agenta Log Analytics řešení Wire Data používá Microsoft Agents záv
 >[!NOTE]
 >Pokud jste už nasadili řešení Service Map, nebo zvažuje Service Map nebo [monitorování Azure pro virtuální počítače](../monitoring/monitoring-vminsights-overview.md), je nové připojení metriky sady dat shromažďovat a ukládat ve službě Log Analytics, která poskytuje stejné informace s Wire Data.
 
-Služba Log Analytics standardně protokoluje výkonnostní data procesoru, paměti, disku a sítě z čítačů integrovaných do Windows a Linuxu, stejně jako z jiných čítačů výkonu, které určíte. Shromažďování síťových a jiných dat probíhá u každého agenta v reálném čase včetně podsítí a protokolů na úrovni aplikace, které počítač používá.  Řešení Wire Data sleduje síťová data na úrovni aplikace, nikoli v přenosové vrstvě TCP.  Toto řešení nesleduje individuální signály ACK a SYN.  Po dokončení metody handshake se připojení považuje za aktivní a označí se jako Připojeno. Toto připojení zůstává aktivní, dokud obě strany souhlasí, že je soket otevřený, a data mohou proudit tam a zpět.  Jakmile některá stana připojení zavře, označí se jako Odpojeno.  Proto se počítá jen šířka pásma úspěšně dokončených paketů a neoznamují se opětovně odeslané nebo neúspěšné pakety.
+Služba Log Analytics standardně protokoluje výkonnostní data procesoru, paměti, disku a sítě z čítačů integrovaných do Windows a Linuxu, stejně jako z jiných čítačů výkonu, které určíte. Shromažďování síťových a jiných dat probíhá u každého agenta v reálném čase včetně podsítí a protokolů na úrovni aplikace, které počítač používá.  Řešení Wire Data sleduje síťová data na úrovni aplikace, nikoli v přenosové vrstvě TCP.  Toto řešení nesleduje individuální signály ACK a SYN.  Po dokončení metody handshake se připojení považuje za aktivní a označí se jako Připojeno. Toto připojení zůstává aktivní, dokud obě strany souhlasí, že je soket otevřený, a data mohou proudit tam a zpět.  Jakmile některá stana připojení zavře, označí se jako Odpojeno.  Proto se počítá jen šířka pásma úspěšně dokončených paketů a neoznamují se opětovně odeslané nebo neúspěšné pakety.
 
 Pokud používáte [sFlow](http://www.sflow.org/) nebo jiný software s [protokolem NetFlow společnosti Cisco](http://www.cisco.com/c/en/us/products/collateral/ios-nx-os-software/ios-netflow/prod_white_paper0900aecd80406232.html), budou vám statistiky a údaje dat kabelové sítě povědomé.
 
@@ -60,7 +60,7 @@ Protože si ale prohlížíte metadata, nemusí být užitečná při řešení 
 
 | **Připojený zdroj** | **Podporuje se** | **Popis** |
 | --- | --- | --- |
-| Agenti systému Windows | Ano | Řešení Wire Data analyzuje a shromažďuje data z počítačů s agenty Windows. <br><br> Kromě [agenta Log Analytics pro Windows](log-analytics-windows-agent.md), agenti Windows vyžadují Agent služby Microsoft Dependency. Úplný seznam verzí operačních systémů najdete v [podporovaných operačních systémech](../monitoring/monitoring-service-map-configure.md#supported-windows-operating-systems). |
+| Agenti systému Windows | Ano | Řešení Wire Data analyzuje a shromažďuje data z počítačů s agenty Windows. <br><br> Kromě [agenta Log Analytics pro Windows](log-analytics-agent-windows.md), agenti Windows vyžadují Agent služby Microsoft Dependency. Úplný seznam verzí operačních systémů najdete v [podporovaných operačních systémech](../monitoring/monitoring-service-map-configure.md#supported-windows-operating-systems). |
 | Agenti systému Linux | Ano | Řešení Wire Data analyzuje a shromažďuje data z počítačů s agenty Linuxu.<br><br> Kromě [agenta Log Analytics pro Linux](log-analytics-quick-collect-linux-computer.md), agenty Linux vyžadují Agent služby Microsoft Dependency. Úplný seznam verzí operačních systémů najdete v [podporovaných operačních systémech](../monitoring/monitoring-service-map-configure.md#supported-linux-operating-systems). |
 | Skupina pro správu nástroje System Center Operations Manager | Ano | Řešení Wire Data analyzuje a shromažďuje data z agentů systému Windows a Linux v připojené [skupině pro správu nástroje System Center Operations Manager](log-analytics-om-agents.md). <br><br> Vyžaduje se přímé připojení z počítače s agentem nástroje System Center Operations Manager ke službě Log Analytics. |
 | Účet služby Azure Storage | Ne | Řešení Wire Data shromažďuje data z počítačů s agenty, takže neobsahuje žádná data shromažďovaná z Azure Storage. |
@@ -197,7 +197,7 @@ V následujících částech najdete seznam operačních systémů pro závislé
 
 Při konfiguraci řešení Wire Data pro vaše pracovní prostory použijte následující postup.
 
-1. Povolte řešení Activity Log Analytics z [Azure marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.WireData2OMS?tab=Overview) nebo pomocí postupu popsaného v článku [Přidání řešení Log Analytics z galerie řešení](log-analytics-add-solutions.md).
+1. Povolte řešení Activity Log Analytics z [Azure marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.WireData2OMS?tab=Overview) nebo pomocí postupu popsaného v článku [Přidání řešení Log Analytics z galerie řešení](../monitoring/monitoring-solutions.md).
 2. Nainstalujte závislého agenta na každý počítač, ze kterého chcete získat data. Závislý agent dokáže monitorovat připojení k bezprostředním sousedům, takže nepotřebujete mít agenta na každém počítači.
 
 > [!NOTE]
@@ -211,7 +211,7 @@ Závislý agent se instaluje do počítačů s Windows prostřednictvím souboru
 
 Následujícím postupem nainstalujte závislého agenta na jednotlivé počítače s Windows:
 
-1. Instalace agenta Log Analytics, proveďte kroky v [shromažďovat data z počítačů s Windows hostovaných ve vašem prostředí](log-analytics-windows-agent.md).
+1. Instalace agenta Log Analytics, proveďte kroky v [shromažďovat data z počítačů s Windows hostovaných ve vašem prostředí](log-analytics-agent-windows.md).
 2. Stáhněte závislého agenta pro Windows pomocí odkazu v předchozí části a pak ho spusťte následujícím příkazem: `InstallDependencyAgent-Windows.exe`
 3. Pomocí průvodce agenta nainstalujte.
 4. Pokud se závislého agenta nepodaří spustit, najdete podrobné informace o chybě v protokolech. U agentů pro Windows se adresář protokolu nachází zde: %Programfiles%\Microsoft Dependency Agent\logs.
@@ -373,7 +373,7 @@ K instalaci a konfiguraci řešení můžete použít následující informace.
 
 - Řešení Wire Data získává data z počítačů s operačními systémy Windows Server 2012 R2, Windows 8.1 a novějšími.
 - Na počítačích, ze kterých chcete data kabelové sítě získávat, se vyžaduje rozhraní Microsoft .NET 4.0 nebo novější.
-- Řešení Wire Data přidáte do pracovního prostoru Log Analytics pomocí postupu popsaného v článku [Přidání řešení Log Analytics z galerie řešení](log-analytics-add-solutions.md). Není nutná žádná další konfigurace.
+- Řešení Wire Data přidáte do pracovního prostoru Log Analytics pomocí postupu popsaného v článku [Přidání řešení Log Analytics z galerie řešení](../monitoring/monitoring-solutions.md). Není nutná žádná další konfigurace.
 - Pokud si chcete prohlédnout data kabelové sítě konkrétního řešení, musí být toto řešení už přidané do vašeho pracovního prostoru.
 
 Po instalaci agentů a tohoto řešení se ve vašem pracovním prostoru objeví dlaždice Wire Data 2.0.
@@ -451,4 +451,4 @@ Pro každý typ vstupních dat se vytvoří záznam typu _WireData_. Záznamy Wi
 
 ## <a name="next-steps"></a>Další postup
 
-- Podrobné záznamy hledání dat kabelové sítě zobrazíte [prohledáním protokolů](log-analytics-log-searches.md).
+- Podrobné záznamy hledání dat kabelové sítě zobrazíte [prohledáním protokolů](log-analytics-log-search.md).

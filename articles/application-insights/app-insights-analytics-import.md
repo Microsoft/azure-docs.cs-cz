@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/14/2018
 ms.author: mbullwin
-ms.openlocfilehash: cfcdf13f8aa4dfab9b361ccbb82ea4b2c3e2ca0d
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 5550bbb95b24e12510c69bc3952c346250786994
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42054427"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50960000"
 ---
 # <a name="import-data-into-analytics"></a>Import dat do analýzy
 
@@ -123,7 +123,7 @@ Každý sloupec je identifikován umístění a název typu.
 * Umístění – pro formátování souboru s oddělovači je pozice ze namapovanou hodnotu. Pro formát JSON je jpath z namapované klíč.
 * Název – název zobrazený ve sloupci.
 * Typ – datový typ sloupce.
- 
+
 > [!NOTE]
 > V případě se používá ukázková data a jsou odděleny formát souboru, definici schématu musí namapovat všechny sloupce a přidávat nové sloupce na konci.
 > 
@@ -137,7 +137,7 @@ K importu dat, nahrajte ho do úložiště Azure, vytvořit přístupový klíč
 
 Můžete provádět následující proces ručně nebo nastavit automatizovaného systému provádět v pravidelných intervalech. Budete muset postupovat podle těchto kroků pro každý blok dat, které chcete importovat.
 
-1. Nahrání dat do [úložiště objektů blob v Azure](../storage/blobs/storage-dotnet-how-to-use-blobs.md). 
+1. Nahrání dat do [úložiště objektů blob v Azure](../storage/blobs/storage-quickstart-blobs-dotnet.md). 
 
  * Objekty BLOB může být libovolné velikosti až 1GB nekomprimované. Velké objekty BLOB ze stovek MB jsou ideální z hlediska výkonu.
  * Můžete je komprimovat pomocí Gzip ke zlepšení doba ukládání a latencí pro data, která mají být k dispozici pro dotaz. Použití `.gz` příponu názvu souboru.
@@ -369,5 +369,5 @@ Pomocí tohoto kódu pro každý objekt blob.
 
 ## <a name="next-steps"></a>Další postup
 
-* [Prohlídka dotazovací jazyk Log Analytics](app-insights-analytics-tour.md)
+* [Prohlídka dotazovací jazyk Log Analytics](../log-analytics/query-language/get-started-analytics-portal.md)
 * Pokud používáte Logstash, použijte [modul plug-in pro Logstash pro odesílání dat do Application Insights](https://github.com/Microsoft/logstash-output-application-insights)

@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/09/2017
 ms.reviewer: yossiy
 ms.author: mbullwin
-ms.openlocfilehash: b566b204ca9cf13b412d750740836db8bf8930a5
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 8394584b2b4f8cbc47a6fdaadd754e8649c3f794
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47093981"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50960918"
 ---
 # <a name="smart-detection---failure-anomalies"></a>Inteligentní zjišťování – anomálie selhání
 [Application Insights](app-insights-overview.md) automaticky upozorní téměř v reálném čase, zda prostředích vašich webových aplikací neobvykle zvýší počet neúspěšných žádostí. Zjistí neobvyklý nárůst míry požadavků protokolu HTTP nebo volání závislostí, které se ohlásí jako neúspěšný. Pro požadavků neúspěšných požadavků jsou obvykle s kódy odpovědí 400 nebo vyšší. Umožňují posuzovat a diagnostikovat potíže, analýzu povaze chyby a související telemetrii najdete v oznámení. Existují také odkazy na portálu služby Application Insights pro další diagnostiku. Funkce potřebuje žádné instalace ani konfigurace, protože používá algoritmy strojového učení k předpovědi normální míra neúspěchů.
@@ -147,7 +147,7 @@ Tyto diagnostické nástroje umožňují kontrolovat telemetrie z vaší aplikac
 
 * [Průzkumník metrik](app-insights-metrics-explorer.md)
 * [Průzkumník služby Search](app-insights-diagnostic-search.md)
-* [Analýza – výkonný dotazovací jazyk](app-insights-analytics-tour.md)
+* [Analýza – výkonný dotazovací jazyk](../log-analytics/query-language/get-started-analytics-portal.md)
 
 Inteligentní detekce je úplně automatický. Ale možná chcete nastavit některé další oznámení?
 

@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 10/3/2018
 ms.author: trinadhk
-ms.openlocfilehash: 9152733e189aec25a5c024de7f9a3582c29218a3
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 20c1606d4d6a1ddd43426731e5498d1bee47f2e3
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406530"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50962527"
 ---
 # <a name="upgrade-to-azure-vm-backup-stack-v2"></a>Upgrade na zásobník záloh virtuálních počítačů Azure V2
 
@@ -28,8 +28,8 @@ Model nasazení Resource Manageru pro upgrade na zásobník záloh virtuálních
 
 * Možnost používat nespravovaného virtuálního počítače na původní účty úložiště, při obnovování. Tato schopnost existuje i v případě, že virtuální počítač obsahuje disky, které jsou distribuovány mezi různými účty úložiště. Urychluje operace obnovení pro celou řadu konfigurací virtuálních počítačů.
     > [!NOTE]
-    > Tato možnost není stejný jako nahrazení disků virtuálního počítače s daty z bodu obnovení. 
-    
+    > Tato možnost není stejný jako nahrazení disků virtuálního počítače s daty z bodu obnovení.
+
 
 ## <a name="whats-changing-in-the-new-stack"></a>Co se mění v nový zásobník?
 V současné době úloha zálohování se skládá ze dvou fází:
@@ -55,7 +55,7 @@ Ve výchozím nastavení snímky uchovávají po dobu sedmi dní. Tato funkce um
 * Pro účty služby premium storage snímkům pořízeným pro okamžité obnovení počet bodů vůči limit 10 TB přidělené místo.
 
 > [!NOTE]
-> Upgrade na zásobník záloh virtuálních počítačů Azure V2 na získat podporu Azure Backup pro [Standard Managed SSD Disks](https://azure.microsoft.com/blog/announcing-general-availability-of-standard-ssd-disks-for-azure-virtual-machine-workloads/) a virtuální počítače s až 32 datových disků.
+> Upgrade na zásobník záloh virtuálních počítačů Azure V2 potřebujete podporu Azure Backup pro [Standard Managed SSD Disks](https://azure.microsoft.com/blog/announcing-general-availability-of-standard-ssd-disks-for-azure-virtual-machine-workloads/).
 
 ## <a name="upgrade"></a>Upgrade
 ### <a name="the-azure-portal"></a>Azure Portal
@@ -119,4 +119,4 @@ Každý den se používá nový snímek. Existuje sedm jednotlivé snímky. Slu�
 Přírůstkových snímků se používají pro nespravované disky. Bod kolekce vytvořené pomocí Azure Backup používá snímků objektů blob a proto se přičítají obnovení v případě, že za spravované disky.
 
 ### <a name="how-to-get-standard-ssd-managed-disk-support-for-a-virtual-machine"></a>Jak získat SSD na úrovni standard managed podporu disků pro virtuální počítač?
-Upgrade na zásobník záloh virtuálních počítačů Azure V2 potřebujete podporu Azure Backup pro [Standard Managed SSD Disks](https://azure.microsoft.com/blog/announcing-general-availability-of-standard-ssd-disks-for-azure-virtual-machine-workloads/). Po upgradu můžete také zálohovat virtuální počítače s až 32 datových disků.
+Upgrade na zásobník záloh virtuálních počítačů Azure V2 potřebujete podporu Azure Backup pro [Standard Managed SSD Disks](https://azure.microsoft.com/blog/announcing-general-availability-of-standard-ssd-disks-for-azure-virtual-machine-workloads/).

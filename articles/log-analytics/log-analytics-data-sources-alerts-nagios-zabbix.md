@@ -15,16 +15,16 @@ ms.workload: infrastructure-services
 ms.date: 04/13/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: eb129ebe6d63396934cbcda509d711cc63a5ee1b
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 9c2b5db4fe35227600e7ab8d94f2cc8701cf529b
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49402936"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50963755"
 ---
 # <a name="collect-alerts-from-nagios-and-zabbix-in-log-analytics-from-log-analytics-agent-for-linux"></a>Shromažďovat výstrahy z řešení Nagios a Zabbix v Log Analytics z agenta Log Analytics pro Linux 
 [!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)]
-[Nagios](https://www.nagios.org/) a [Zabbix](http://www.zabbix.com/) jsou open source nástroje pro monitorování. Výstrahy můžete shromažďovat z těchto nástrojů do Log Analytics, aby mohl analyzovat spolu s [výstrahy z jiných zdrojů](log-analytics-alerts.md).  Tento článek popisuje, jak nakonfigurovat agenta Log Analytics pro Linux ke shromažďování výstrah z těchto systémů.
+[Nagios](https://www.nagios.org/) a [Zabbix](http://www.zabbix.com/) jsou open source nástroje pro monitorování. Výstrahy můžete shromažďovat z těchto nástrojů do Log Analytics, aby mohl analyzovat spolu s [výstrahy z jiných zdrojů](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md).  Tento článek popisuje, jak nakonfigurovat agenta Log Analytics pro Linux ke shromažďování výstrah z těchto systémů.
  
 ## <a name="prerequisites"></a>Požadavky
 Agenta Log Analytics pro Linux podporuje shromažďování údajů o výstrahy Nagios verzi 4.2.x a Zabbix verzi 2.x.
@@ -80,7 +80,7 @@ Shromažďovat výstrahy Nagios serveru, proveďte následující kroky.
 
 
 ## <a name="alert-records"></a>Záznamy upozornění
-Záznamy upozornění můžete načíst z řešení Nagios a Zabbix pomocí [prohledávání protokolů](log-analytics-log-searches.md) v Log Analytics.
+Záznamy upozornění můžete načíst z řešení Nagios a Zabbix pomocí [prohledávání protokolů](log-analytics-log-search.md) v Log Analytics.
 
 ### <a name="nagios-alert-records"></a>Výstrahy Nagios záznamů
 
@@ -118,5 +118,5 @@ Výstrahy mají záznamy shromážděné Zabbix **typ** z **výstrah** a **Sourc
 
 
 ## <a name="next-steps"></a>Další postup
-* Další informace o [výstrahy](log-analytics-alerts.md) v Log Analytics.
-* Další informace o [prohledávání protokolů](log-analytics-log-searches.md) analyzovat data shromážděná ze zdrojů dat a jejich řešení. 
+* Další informace o [výstrahy](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md) v Log Analytics.
+* Další informace o [prohledávání protokolů](log-analytics-log-search.md) analyzovat data shromážděná ze zdrojů dat a jejich řešení. 

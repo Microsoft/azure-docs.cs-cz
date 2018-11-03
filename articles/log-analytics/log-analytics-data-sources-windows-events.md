@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 12/11/2017
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 4e21c011f54382466bf614dc01fb9d51b514d998
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 0285b9208247aa84f56d127e734e8a5e87048ac6
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48044242"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50961360"
 ---
 # <a name="windows-event-log-data-sources-in-log-analytics"></a>Zdroje dat protokolu událostí Windows ve službě Log Analytics
 Protokoly událostí Windows jsou jedním z nejčastěji používaných [zdroje dat](log-analytics-data-sources.md) pro shromažďování dat pomocí agentů Windows, protože mnoho aplikací se zapisují do protokolu událostí Windows.  Kromě zadání jakékoli vlastní protokoly vytvořené pomocí aplikací, které potřebujete k monitorování může shromažďovat události z standardní protokoly jako je například systém a aplikace.
@@ -40,7 +40,7 @@ Jak budete zadávat název protokolu událostí, Log Analytics poskytuje návrhy
 Log Analytics shromažďuje každou událost, která odpovídá vybrané závažnosti z monitorovaných protokolu událostí při vytváření události.  Agenta zaznamenává každý protokol událostí, který shromažďuje z jeho umístění.  Pokud agenta přejde do režimu offline pro určitou dobu, pak Log Analytics shromažďuje události z tam, kde poslední skončila, i v případě, že tyto události byly vytvořeny v době, kdy agent offline.  Je v provozu tyto události nebudou shromažďují, pokud se zabalí do protokolu událostí s nesebraný události přepsání agenta je offline.
 
 >[!NOTE]
->Log Analytics vytvořená serverem SQL ze zdroje událostí auditu neshromažďuje *MSSQLSERVER* s ID události 18453, který obsahuje klíčová slova - *Classic* nebo *auditu úspěch* a klíčové slovo *0xa0000000000000*.
+>Log Analytics vytvořená serverem SQL ze zdroje událostí auditu neshromažďuje *MSSQLSERVER* s ID události 18453, který obsahuje klíčová slova - *Classic* nebo *auditu úspěch* a klíčové slovo *0xa0000000000000*.
 >
 
 ## <a name="windows-event-records-properties"></a>Vlastnosti záznamů událostí Windows
@@ -76,6 +76,6 @@ Následující tabulka obsahuje příklady různých prohledávání protokolů,
 
 ## <a name="next-steps"></a>Další postup
 * Konfigurace Log Analytics ke shromažďování dalších [zdroje dat](log-analytics-data-sources.md) pro analýzu.
-* Další informace o [prohledávání protokolů](log-analytics-log-searches.md) analyzovat data shromážděná ze zdrojů dat a jejich řešení.  
+* Další informace o [prohledávání protokolů](log-analytics-log-search.md) analyzovat data shromážděná ze zdrojů dat a jejich řešení.  
 * Použití [vlastní pole](log-analytics-custom-fields.md) k analýze záznamů událostí do jednotlivých polí.
 * Konfigurace [shromažďování čítačů výkonu](log-analytics-data-sources-performance-counters.md) z agentů Windows.

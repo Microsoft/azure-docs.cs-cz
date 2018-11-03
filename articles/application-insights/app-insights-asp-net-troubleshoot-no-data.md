@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/23/2018
 ms.author: mbullwin
-ms.openlocfilehash: 1a46564c324edb1999a2e1b1d482817685df2893
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: 3fa41f894e3228310bae6a9407cfcc426c27bfdc
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39205982"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50963714"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-net"></a>Řešení potíží s chybějícími daty v nástroji Application Insights pro .NET
 ## <a name="some-of-my-telemetry-is-missing"></a>Chybí některé telemetrie
@@ -158,7 +158,7 @@ Data pocházejí z skripty na webových stránkách.
 Zobrazit [telemetrických závislostí](app-insights-asp-net-dependencies.md) a [telemetrie výjimek](app-insights-asp-net-exceptions.md).
 
 ## <a name="no-performance-data"></a>Žádná data o výkonu
-Údaje o výkonu (procesor, frekvence v/v a tak dále) je k dispozici pro [webových služeb v Javě](app-insights-java-collectd.md), [aplikací klasické pracovní plochy Windows](app-insights-windows-desktop.md), [IIS webové aplikace a služby, pokud budete instalovat monitorování stavu](app-insights-monitor-performance-live-website-now.md), a [Azure Cloud Services](app-insights-azure.md). najdete ji v části nastavení serverů.
+Údaje o výkonu (procesor, frekvence v/v a tak dále) je k dispozici pro [webových služeb v Javě](app-insights-java-collectd.md), [aplikací klasické pracovní plochy Windows](app-insights-windows-desktop.md), [IIS webové aplikace a služby, pokud budete instalovat monitorování stavu](app-insights-monitor-performance-live-website-now.md), a [Azure Cloud Services](app-insights-overview.md). najdete ji v části nastavení serverů.
 
 ## <a name="no-server-data-since-i-published-the-app-to-my-server"></a>Žádná data (server), protože jsem publikoval aplikaci ke svému serveru
 * Ve skutečnosti zkopírování všech Microsoft zkontrolujte. ApplicationInsights knihovny DLL na serveru, spolu s Microsoft.Diagnostics.Instrumentation.Extensions.Intercept.dll

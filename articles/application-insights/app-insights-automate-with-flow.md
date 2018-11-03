@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/25/2017
 ms.author: mbullwin
-ms.openlocfilehash: 449a6274b67f3eb72ea6d8bd19f555fc59158d7e
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 60605e7bdeeef32889bc0ac104fa34bd66d4444d
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44299096"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50962873"
 ---
 # <a name="automate-azure-application-insights-processes-with-the-connector-for-microsoft-flow"></a>Automatizace procesů Azure Application Insights pomocí konektoru pro Microsoft Flow
 
@@ -125,7 +125,7 @@ Při běhu tohoto toku, příjemce, které jste zadali v seznamu e-mailu dostáv
 
 ## <a name="next-steps"></a>Další postup
 
-- Další informace o vytváření [analytických dotazů](app-insights-analytics-using.md).
+- Další informace o vytváření [analytických dotazů](../log-analytics/query-language/get-started-queries.md).
 - Další informace o [Microsoft Flow](https://ms.flow.microsoft.com).
 
 

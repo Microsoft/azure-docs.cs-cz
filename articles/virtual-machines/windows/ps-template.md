@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/18/2017
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: df1cada5e730189546f65d9799926807390db083
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: b61ee3c3baa4590dc8a2fbf91b1ff941626a01e4
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47432252"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50959816"
 ---
 # <a name="create-a-windows-virtual-machine-from-a-resource-manager-template"></a>Vytvoření virtuálního počítače s Windows pomocí šablony Resource Manageru
 
@@ -53,9 +53,9 @@ Všechny prostředky musí být nasazený v [skupiny prostředků](../../azure-r
 
 ## <a name="create-the-files"></a>Vytvoření souborů
 
-V tomto kroku vytvoříte soubor šablony, který se nasazuje prostředky a parametry souboru, který poskytuje hodnoty parametrů v šabloně. Můžete také vytvořit soubor autorizace, který se používá k provádění operací Azure Resource Manageru.
+V tomto kroku vytvoříte soubor šablony, který se nasazuje prostředky a parametry souboru, který poskytuje hodnoty parametrů v šabloně. Můžete také vytvořit soubor autorizace, který se používá k provádění operací Azure Resource Manageru. 
 
-1. Vytvořte soubor s názvem *CreateVMTemplate.json* a přidejte tento kód JSON do ní:
+1. Vytvořte soubor s názvem *CreateVMTemplate.json* a k němu přidat kód JSON. Nahraďte hodnotu `domainNameLabel` s vlastním jedinečným názvem.
 
     ```json
     {

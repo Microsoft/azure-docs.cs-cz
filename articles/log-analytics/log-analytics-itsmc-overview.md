@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: v-jysur
 ms.component: ''
-ms.openlocfilehash: 4f8261983feb8e655333f548b0b90f822eda30a6
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 526ba73858322ee41f649a338f22226da6af33e7
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50421182"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50964051"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Připojení Azure k nástrojům ITSM pomocí IT Service Management Connector
 
@@ -157,13 +157,13 @@ Data žádosti incidentů a změn lze vizualizovat na řídicím panelu ITSM kon
 
 Můžete také vizualizovat incidenty synchronizované proti ovlivněné počítače v rámci řešení Service Map.
 
-Řešení Service Map automaticky zjišťuje komponenty aplikací v systémech Windows a Linux a mapuje komunikace mezi službami. Umožňuje zobrazit servery přirozeným způsobem – jako propojené systémy, které doručují důležité služby. Service Map ukazuje propojení mezi servery, procesy a porty v jakékoli architektuře propojené TCP bez konfigurace vyžaduje jiné než instalace agenta. [Další informace](../operations-management-suite/operations-management-suite-service-map.md).
+Řešení Service Map automaticky zjišťuje komponenty aplikací v systémech Windows a Linux a mapuje komunikace mezi službami. Umožňuje zobrazit servery přirozeným způsobem – jako propojené systémy, které doručují důležité služby. Service Map ukazuje propojení mezi servery, procesy a porty v jakékoli architektuře propojené TCP bez konfigurace vyžaduje jiné než instalace agenta. [Další informace](../monitoring/monitoring-service-map.md).
 
 Pokud používáte řešení Service Map, můžete zobrazit položek oddělení služeb vytvořené v řešení ITSM, jak je znázorněno v následujícím příkladu:
 
 ![Log Analytics obrazovky](media/log-analytics-itsmc-overview/itsmc-overview-integrated-solutions.png)
 
-Další informace: [Service Map](../operations-management-suite/operations-management-suite-service-map.md)
+Další informace: [Service Map](../monitoring/monitoring-service-map.md)
 
 
 ## <a name="additional-information"></a>Další informace

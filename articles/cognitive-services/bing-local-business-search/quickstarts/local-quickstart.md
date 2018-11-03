@@ -10,12 +10,12 @@ ms.component: bing-local-business
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: c05dc646cae3c2a7c6f70ed8df711a0efa77e05e
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.openlocfilehash: f2545c7093d6ed9b4183cfd27bdfddcc1f79a75d
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50748635"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50959184"
 ---
 # <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-in-c"></a>Rychlý start: Odeslání dotazu do API Bingu pro místní obchodní vyhledávání vC#
 
@@ -38,7 +38,7 @@ Následující kód vytvoří `WebRequest`, nastaví hlavičku klíčů přístu
     // Replace the accessKey string value with your valid access key.
     const string accessKey = "enter key here";
 
-    const string uriBase = "https://www.bingapis.com/api/v7/localbusinesses/search";   
+    const string uriBase = "https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search";   
 
     const string searchTerm = "restaurant in Bellevue";
     // Construct the URI of the search request
@@ -78,7 +78,7 @@ namespace localSearch
         // Replace the accessKey string value with your valid access key.
         const string accessKey = "enter key here";
 
-        const string uriBase = "https://www.bingapis.com/api/v7/localbusinesses/search";   
+        const string uriBase = "https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search";   
 
         const string searchTerm = "restaurant in Bellevue";
 

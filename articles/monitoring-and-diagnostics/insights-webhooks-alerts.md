@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 04/03/2017
 ms.author: snmuvva
 ms.component: alerts
-ms.openlocfilehash: 08ba5e7cbdc041a41f1d006d69980bf6efc00101
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 0f08e63d6cbf5be8667b1fd61556e3f33e31d06f
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44380282"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50957654"
 ---
 # <a name="have-a-classic-metric-alert-notify-a-non-azure-system-using-a-webhook"></a>Mít klasických upozornění na metriku oznámení do systému mimo Azure, pomocí webhooku
 Použití webhooků pro směrování Azure oznámení s dalšími systémy pro následné zpracování nebo vlastní akce. Webhooku v upozornění můžete směrovat do služby, které posílat SMS zprávy do protokolu chyb, které chcete upozornit tým prostřednictvím chatu nebo zasílání zpráv služby, nebo pro různé další akce. 
 
-Tento článek popisuje, jak nastavit webhooku v upozornění metriky Azure. Taky se naučíte vypadá datová část požadavku HTTP POST do webhooku. Informace o instalaci a schéma pro aktivitu Azure upozornění protokolu (upozornění na události), najdete v části [zavolání webhooku v upozornění protokolu aktivit Azure](insights-auditlog-to-webhook-email.md).
+Tento článek popisuje, jak nastavit webhooku v upozornění metriky Azure. Taky se naučíte vypadá datová část požadavku HTTP POST do webhooku. Informace o instalaci a schéma pro aktivitu Azure upozornění protokolu (upozornění na události), najdete v části [zavolání webhooku v upozornění protokolu aktivit Azure](monitor-alerts-unified-log-webhook.md).
 
 Upozornění v Azure pomocí HTTP POST k odesílání výstrah obsah ve formátu JSON pro webhook identifikátor URI, který zadáte při vytváření upozornění. Schéma je definované dále v tomto článku. Identifikátor URI musí být platný koncový bod HTTP nebo HTTPS. Azure účtuje jedna položka každý požadavek při aktivaci výstrahy.
 

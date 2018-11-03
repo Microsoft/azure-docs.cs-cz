@@ -7,12 +7,12 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/16/2018
-ms.openlocfilehash: 05bdc841108bf1fb909375b6f2c6399f8121ceeb
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 45d1f55e60763724aeb1b1685c5c69696475a424
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49344647"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50958096"
 ---
 # <a name="create-users-in-azure-database-for-postgresql-server"></a>Vytvoření uživatelů ve službě Azure Database pro PostgreSQL server 
 Tento článek popisuje, jak vytvořit uživatele v serveru Azure Database for PostgreSQL.
@@ -36,7 +36,7 @@ Uživatelský účet správce serveru slouží k vytvoření dalších uživatel
    Pokud se chcete připojit ke svému databázovému serveru, potřebujete úplný název serveru a přihlašovací údaje správce. Můžete snadno vyhledat název serveru a přihlašovací údaje ze serveru **přehled** stránky nebo **vlastnosti** stránky na webu Azure Portal. 
 
 2. Použijte účet správce a heslo pro připojení k vašemu databázovému serveru. Použijte váš upřednostňovaný klientském nástroji, jako pgAdmin nebo psql.
-   Pokud si nejste jistí, jak se připojit, přečtěte si téma [připojit k databázi PostgreSQL pomocí psql ve službě Cloud Shell](./quickstart-create-server-database-portal.md#connect-to-the-postgresql-database-by-using-psql-in-cloud-shell)
+   Pokud si nejste jistí, jak se připojit, přečtěte si téma [rychlý start](./quickstart-create-server-database-portal.md)
 
 3. Upravit a spuštěním následujícího kódu SQL. Nahraďte nové uživatelské jméno pro hodnotu zástupného symbolu < new_user > a heslo zástupný symbol nahraďte silné heslo. 
 

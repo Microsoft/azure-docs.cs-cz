@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 05/04/2017
 ms.reviewer: antonfr
 ms.author: mbullwin
-ms.openlocfilehash: b0256e899d47e3b6f8141218c11e1a7a62ca8e1a
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 099e597982172bcea39fedd0fd1445f466eb2bc1
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50419720"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50960816"
 ---
 # <a name="smart-detection---performance-anomalies"></a>Inteligentní zjišťování – anomálie výkonu
 
@@ -161,7 +161,7 @@ Všimněte si, že musíte:
 
 Application Insights vyhledá problémy s výkonem, které mohou ovlivňují jenom část z vašich uživatelů, nebo mají vliv jenom uživatelé v některých případech. Například oznámení o načítání stránek je pomalejší na jeden typ prohlížeče než u jiných typů prohlížečů, nebo pokud požadavky se obsluhují pomaleji z určitého serveru. Problémy související s kombinací vlastnosti, může také vyhledat, jako je pomalé stránka načte v jedné zeměpisné oblasti pro klienty, kteří používají konkrétní operační systém.  
 
-Anomálie obdobné jsou velmi obtížné zjistit jen, že se podíváte data, ale jsou mnohem běžnější, než si možná myslíte. Často jsou pouze docházet, pokud si vaši zákazníci začnou stěžovat. Během této doby je příliš pozdě s: ovlivnění uživatelé jsou již přepnutí na konkurencí!
+Anomálie obdobné jsou velmi obtížné zjistit jen, že se podíváte data, ale jsou mnohem běžnější, než si možná myslíte. Často jsou pouze docházet, pokud si vaši zákazníci začnou stěžovat. Během této doby bude příliš pozdě: ovlivnění uživatelé jsou již přepnutí na konkurencí!
 
 V současné době naše algoritmy podívejte se na dobu načítání stránek, dobu odezvy požadavku na serveru a doby odezvy závislostí.  
 
@@ -185,8 +185,8 @@ Tyto diagnostické nástroje umožňují kontrolovat telemetrie z vaší aplikac
 
 * [Profiler](app-insights-profiler.md) 
 * [Ladicí program snímků](app-insights-snapshot-debugger.md)
-* [Analýzy](app-insights-analytics-tour.md)
-* [Inteligentní Diagnostika Analytics](app-insights-analytics-diagnostics.md)
+* [Analýzy](../log-analytics/query-language/get-started-analytics-portal.md)
+* [Inteligentní Diagnostika Analytics](app-insights-analytics.md)
 
 Inteligentní detekce je úplně automatický. Ale možná chcete nastavit některé další oznámení?
 

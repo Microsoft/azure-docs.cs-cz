@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 10/30/2018
+ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 7f5e1f2141a58f666367d253d5fc313499e64c9f
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 8b12e3cdc53b926f660e12b7cf4b79a8cb6f40c2
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50239386"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50960153"
 ---
 # <a name="troubleshoot-an-rdp-general-error-in-azure-vm"></a>Řešení potíží s RDP obecné chybě ve virtuálním počítači Azure
 
@@ -65,7 +65,7 @@ Chcete-li vyřešit tento problém [zálohování disku s operačním systémem]
 
 ### <a name="serial-console"></a>Konzola sériového portu
 
-#### <a name="step-1-turn-on-remote-deskop"></a>Krok 1: Zapněte vzdálenou Desktopovou
+#### <a name="step-1-turn-on-remote-desktop"></a>Krok 1: Zapněte vzdálenou plochu
 
 1. Přístup [konzoly sériového portu](serial-console-windows.md) tak, že vyberete **podpora a řešení potíží** > **sériová konzola (Preview)**. Pokud je povolená funkce, na virtuálním počítači, může úspěšně připojit virtuální počítač.
 
@@ -76,94 +76,91 @@ Chcete-li vyřešit tento problém [zálohování disku s operačním systémem]
    ```
    ch -si 1
    ```
-4. Zkontrolujte hodnoty klíčů registru takto:
 
-   1. Ujistěte se, že je povolená součást RDP.
+#### <a name="step-2-check-the-values-of-rdp-registry-keys"></a>Krok 2: Zkontrolujte hodnoty klíče registru pro protokol RDP:
+
+1. Zkontrolujte, jestli je protokol RDP zakázal zásady.
 
       ```
-      REM Get the local policy
+      REM Get the local policy 
       reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server " /v fDenyTSConnections
 
       REM Get the domain policy if any
       reg query "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fDenyTSConnections
       ```
 
-      Pokud zásada domény existuje, přepíše instalaci na místní zásady.
+      - Pokud zásada domény existuje, přepíše instalaci na místní zásady.
+      - Pokud zásada domény uvádí, že protokol RDP je zakázaný (1) a pak zásady aktualizace AD z řadiče domény.
+      - Pokud zásada domény uvádí, že protokol RDP je povoleno (0), není zapotřebí žádná aktualizace.
+      - Pokud zásada domény neexistuje a místní zásady určují, že je zakázaný protokol RDP (1), povolte protokol RDP s použitím následujícího příkazu: 
+      
+            reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0 /f
+                  
 
-         - Pokud zásada domény uvádí, že protokol RDP je zakázaný (1) a pak zásady aktualizace AD z řadiče domény.
-         - Pokud zásada domény uvádí, že protokol RDP je povoleno (0), není zapotřebí žádná aktualizace.
-
-      Pokud zásada domény neexistuje a místní zásady určují, že je zakázaný protokol RDP (1), povolte protokol RDP s použitím následujícího příkazu:
-
-         ```
-         reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0 /f
-         ```
-
-   2. Zkontrolujte aktuální konfiguraci terminálového serveru.
+2. Zkontrolujte aktuální konfiguraci terminálového serveru.
 
       ```
       reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v TSEnabled
       ```
 
-   3. Pokud příkaz vrátí hodnotu 0, je zakázané terminálového serveru. Terminálový server. potom povolte následujícím způsobem:
+      Pokud příkaz vrátí hodnotu 0, je zakázané terminálového serveru. Terminálový server. potom povolte následujícím způsobem:
 
       ```
       reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v TSEnabled /t REG_DWORD /d 1 /f
       ```
 
-   4. Modul Terminálový Server je nastaven na režimu vyprazdňování, pokud je server, v terminálu serverové farmy (vzdálené plochy nebo Citrix). Zkontrolujte aktuální režim modulu terminálového serveru.
+3. Modul Terminálový Server je nastaven na režimu vyprazdňování, pokud je server, v terminálu serverové farmy (vzdálené plochy nebo Citrix). Zkontrolujte aktuální režim modulu terminálového serveru.
 
       ```
       reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v TSServerDrainMode
       ```
 
-   5. Pokud příkaz vrátí hodnotu 1, modul terminálového serveru nastavená na režim vyprazdňování. Potom nastavte modulu na pracovní režim následujícím způsobem:
+      Pokud příkaz vrátí hodnotu 1, modul terminálového serveru nastavená na režim vyprazdňování. Potom nastavte modulu na pracovní režim následujícím způsobem:
 
       ```
       reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v TSServerDrainMode /t REG_DWORD /d 0 /f
       ```
 
-   6. Zkontrolujte, zda se mohou připojit k terminálového serveru.
+4. Zkontrolujte, zda se mohou připojit k terminálového serveru.
 
       ```
       reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v TSUserEnabled
       ```
 
-   7. Pokud příkaz vrátí hodnotu 1, nemůžete připojit k terminálového serveru. Potom povolte připojení následujícím způsobem:
+      Pokud příkaz vrátí hodnotu 1, nemůžete připojit k terminálového serveru. Potom povolte připojení následujícím způsobem:
 
       ```
       reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v TSUserEnabled /t REG_DWORD /d 0 /f
       ```
-
-   8. Zkontrolujte aktuální konfiguraci naslouchacího procesu protokolu RDP.
+5. Zkontrolujte aktuální konfiguraci naslouchacího procesu protokolu RDP.
 
       ```
       reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\Winstations\RDP-Tcp" /v fEnableWinStation
       ```
 
-   9. Pokud příkaz vrátí hodnotu 0, naslouchací proces RDP je zakázaný. Naslouchací proces potom povolte následujícím způsobem:
+      Pokud příkaz vrátí hodnotu 0, naslouchací proces RDP je zakázaný. Naslouchací proces potom povolte následujícím způsobem:
 
       ```
       reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\Winstations\RDP-Tcp" /v fEnableWinStation /t REG_DWORD /d 1 /f
       ```
 
-   10. Zkontrolujte, zda se můžete připojit k naslouchací proces RDP.
+6. Zkontrolujte, zda se můžete připojit k naslouchací proces RDP.
 
       ```
       reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\Winstations\RDP-Tcp" /v fLogonDisabled
       ```
 
-   11. Pokud příkaz vrátí hodnotu 1, nemůže připojit k naslouchací proces RDP. Potom povolte připojení následujícím způsobem:
+   Pokud příkaz vrátí hodnotu 1, nemůže připojit k naslouchací proces RDP. Potom povolte připojení následujícím způsobem:
 
       ```
       reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\Winstations\RDP-Tcp" /v fLogonDisabled /t REG_DWORD /d 0 /f
       ```
 
-6. Restartujte virtuální počítač.
+7. Restartujte virtuální počítač.
 
-7. Ukončení CMD instance zadáním `exit`a potom stiskněte klávesu **Enter** dvakrát.
+8. Ukončení CMD instance zadáním `exit`a potom stiskněte klávesu **Enter** dvakrát.
 
-8. Restartujte virtuální počítač tak, že zadáte `restart`.
+9. Restartujte virtuální počítač tak, že zadáte `restart`a potom se připojte k virtuálnímu počítači.
 
 Pokud problém stále dochází, přejděte ke kroku 2.
 
@@ -177,13 +174,13 @@ Další informace najdete v tématu [vzdálené plochy odpojí často ve virtuá
 
 ### <a name="offline-repair"></a>Offline oprava
 
-#### <a name="step-1-turn-on-remote-deskop"></a>Krok 1: Zapněte vzdálenou Desktopovou
+#### <a name="step-1-turn-on-remote-desktop"></a>Krok 1: Zapněte vzdálenou plochu
 
 1. [Připojte disk s operačním systémem pro virtuální počítač pro obnovení](../windows/troubleshoot-recovery-disks-portal.md).
 2. Spusťte připojení ke vzdálené ploše pro virtuální počítač pro obnovení.
 3. Ujistěte se, že disk je označený jako **Online** v konzole Správa disků. Poznamenejte si písmeno jednotky, která je přiřazena připojeném disku s operačním systémem.
-3. Spusťte připojení ke vzdálené ploše pro virtuální počítač pro obnovení.
-4. Otevřete relaci příkazového řádku se zvýšenými oprávněními (**spustit jako správce**). Spuštěním následujících skriptů. V tomto skriptu předpokládáme, že je písmeno jednotky, která je přiřazena připojeném disku s operačním systémem F. nahradit toto písmeno jednotky s odpovídající hodnotou pro váš virtuální počítač.
+4. Spusťte připojení ke vzdálené ploše pro virtuální počítač pro obnovení.
+5. Otevřete relaci příkazového řádku se zvýšenými oprávněními (**spustit jako správce**). Spuštěním následujících skriptů. V tomto skriptu předpokládáme, že je písmeno jednotky, která je přiřazena připojeném disku s operačním systémem F. nahradit toto písmeno jednotky s odpovídající hodnotou pro váš virtuální počítač.
 
       ```
       reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv 
@@ -219,21 +216,21 @@ Další informace najdete v tématu [vzdálené plochy odpojí často ve virtuá
       reg unload HKLM\BROKENSOFTWARE 
       ```
 
-3. Pokud je virtuální počítač k doméně, zkontrolujte následující klíč registru, jestli se zásady skupiny, ke které dojde k zakázání protokolu RDP. 
+6. Pokud je virtuální počítač k doméně, zkontrolujte následující klíč registru, jestli se zásady skupiny, ke které dojde k zakázání protokolu RDP. 
 
-   ```
-   HKLM\BROKENSOFTWARE\Policies\Microsoft\Windows NT\Terminal Services\fDenyTSConnectionS
-   ```
-
+      ```
+      HKLM\BROKENSOFTWARE\Policies\Microsoft\Windows NT\Terminal Services\fDenyTSConnectionS
+      ```
 
       Pokud tato hodnota klíče je nastavená na hodnotu 1, to znamená, že RDP je zakázaný těmito zásadami. Povolit vzdálenou plochu pomocí objektu zásad skupiny zásad, změňte tyto zásady z řadiče domény:
 
-   ```
-   Computer Configuration\Policies\Administrative Templates: Policy definitions\Windows Components\Remote Desktop Services\Remote Desktop Session Host\Connections\Allow users to connect remotely by using Remote Desktop Services
-   ```
+   
+      **Šablony Konfigurace počítače\Zásady\Šablony počítače:**
 
-4. Odpojte disk od zachránit virtuálního počítače.
-5. [Vytvořit nový virtuální počítač z disku](../windows/create-vm-specialized.md).
+      Zásady definitions\Windows Windows\Vzdálená Desktopu plocha\Hostitel Desktop relace Host\Connections\Allow uživatelům vzdálené připojení s použitím služby Vzdálená plocha
+  
+7. Odpojte disk od zachránit virtuálního počítače.
+8. [Vytvořit nový virtuální počítač z disku](../windows/create-vm-specialized.md).
 
 Pokud problém stále dochází, přejděte ke kroku 2.
 

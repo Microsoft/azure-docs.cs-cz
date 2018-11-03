@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/28/2018
 ms.author: raynew
-ms.openlocfilehash: ad6bf2db44996684096deb2b351301e450d80249
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.openlocfilehash: 5cce3005a0058604136e05d9c3bf9700d5296bf3
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50747962"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50964050"
 ---
 # <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>Matice podpory pro které se replikují z jedné oblasti Azure do jiné
 
@@ -204,7 +204,7 @@ Pro virtuální sítě brány firewall služby Azure Storage  | Ano | Pokud pro 
 ## <a name="replicated-machines---networking"></a>Replikované počítače - sítě
 **Konfigurace** | **Podpora** | **Podrobnosti**
 --- | --- | ---
-NIC | Maximální počet podporovaný pro určitá velikost virtuálního počítače Azure | Síťové karty se vytvářejí, když virtuální počítač se vytvoří během převzetí služeb při selhání.<br/><br/> Počet síťových adaptérů na převzetí služeb při selhání virtuálního počítače závisí na počet síťových adaptérů na zdrojovém virtuálním počítači při povolení replikace. Je-li přidat nebo odebrat síťovou kartu po povolení replikace, neovlivní počet síťových adaptérů na replikovanému virtuálnímu počítači po převzetí služeb při selhání.
+NIC | Maximální počet podporovaný pro určité velikosti virtuálních počítačů Azure | Síťové karty se vytvářejí, když virtuální počítač se vytvoří během převzetí služeb při selhání.<br/><br/> Počet síťových adaptérů na převzetí služeb při selhání virtuálního počítače závisí na počet síťových adaptérů na zdrojovém virtuálním počítači při povolení replikace. Je-li přidat nebo odebrat síťovou kartu po povolení replikace, neovlivní počet síťových adaptérů na replikovanému virtuálnímu počítači po převzetí služeb při selhání.
 Internetový nástroj pro vyrovnávání zatížení | Podporováno | Přidružte předkonfigurované zátěže pomocí Azure Automation skriptu v plánu obnovení.
 Interní nástroj pro vyrovnávání zatížení | Podporováno | Přidružte předkonfigurované zátěže pomocí Azure Automation skriptu v plánu obnovení.
 Veřejná IP adresa | Podporováno | Stávající veřejnou IP adresu přidružit k síťové kartě Vytvoření veřejné IP adresy a přidružte jej k síťovému rozhraní pomocí Azure Automation skriptu v plánu obnovení.

@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
 ms.component: common
-ms.openlocfilehash: ffb355b4471bd8455f67e657d9557c3f372c3f4e
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: fa73062cc2fdfa3704088f37b2e4856e134a6dfe
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49470316"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50979025"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Průvodce odstraňováním potíží Azure Storage Exploreru
 
@@ -143,6 +143,12 @@ Pokud vaše nastavení proxy serveru jsou správné, bude pravděpodobně nutné
 ## <a name="unable-to-retrieve-children-error-message"></a>Chybová zpráva "Nelze načíst podřízené položky"
 
 Pokud jste připojení k Azure prostřednictvím proxy serveru, ověřte správnost nastavení serveru proxy. Pokud od vlastníka předplatného nebo účtu byly udělen přístup k prostředku, zkontrolujte, zda si přečetl(a) nebo seznamu oprávnění pro daný prostředek.
+
+## <a name="connection-string-does-not-have-complete-configuration-settings"></a>Připojovací řetězec neobsahuje kompletní konfigurace nastavení
+
+Pokud se zobrazí tato chybová zpráva, je možné, že nemáte potřebná oprávnění k získání klíčů účtu úložiště. Pokud chcete potvrdit, pokud se jedná o tento případ, přejděte na portál a vyhledejte svůj účet úložiště. Můžete rychle to provedete tak, že kliknete pravým tlačítkem na uzel účtu úložiště a kliknutím na "Otevřít v portál". Až to uděláte, přejděte do okna "Přístupových klíčů". Pokud nemáte oprávnění k zobrazení klíče se zobrazí stránka se zprávou "Nemáte přístup". Chcete-li vyřešit tento problém, můžete buď získat klíče účtu z někdo jiný a připojit pomocí názvu a klíče, nebo můžete požádat jiného pro SAS účtu úložiště a použít ho k připojení k účtu úložiště.
+
+Pokud se zobrazí klíče účtu, pak prosím založte problém na Githubu jsme mohli pomoct vyřešit problém.
 
 ## <a name="issues-with-sas-url"></a>Problémy s adresou URL SAS
 Pokud se připojujete ke službě pomocí adresy URL SAS a dochází k této chybě:

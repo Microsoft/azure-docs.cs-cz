@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 297b3f4c9ef110f8adc9dcb5cd9eac9e30729a5d
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: da1f69fc4b962114668c3365ef345c361a22a526
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47180121"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50963961"
 ---
 # <a name="collect-azure-service-logs-and-metrics-for-use-in-log-analytics"></a>Shromažďovat protokoly služby Azure a metriky pro použití v Log Analytics
 
@@ -35,7 +35,7 @@ Existují různé způsoby shromažďování protokolů a metrik pro služby Azu
 | Služba                 | Typ prostředku                           | Logs        | Metriky     | Řešení |
 | --- | --- | --- | --- | --- |
 | Application Gateway    | Microsoft.Network/applicationGateways   | Diagnostika | Diagnostika | [Analýzy Azure Application Gateway](log-analytics-azure-networking-analytics.md#azure-application-gateway-analytics-solution-in-log-analytics) |
-| Application Insights    |                                         | Spojovací čára   | Spojovací čára   | [Application Insights Connector](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/) (Preview) |
+| Application insights    |                                         | Spojovací čára   | Spojovací čára   | [Application Insights Connector](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/) (Preview) |
 | Účty Automation     | Microsoft.Automation/AutomationAccounts | Diagnostika |             | [Další informace](../automation/automation-manage-send-joblogs-log-analytics.md)|
 | Účty Batch          | Microsoft.Batch/batchAccounts           | Diagnostika | Diagnostika | |
 | Klasické cloudové služby  |                                         | Úložiště     |             | [Další informace](log-analytics-azure-storage-iis-table.md) |
@@ -51,7 +51,7 @@ Existují různé způsoby shromažďování protokolů a metrik pro služby Azu
 | Trezory služby Recovery         | Microsoft.RecoveryServices/vaults       |             |             | [Analýza (Preview) služby Azure Recovery Services](https://github.com/krnese/AzureDeploy/blob/master/OMS/MSOMS/Solutions/recoveryservices/)|
 | Služby hledání         | Microsoft.Search/searchServices         | Diagnostika | Diagnostika | |
 | Obor názvů služby Service Bus   | Microsoft.ServiceBus/namespaces         | Diagnostika | Diagnostika | [Služba Service Bus Analytics (Náhled)](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-servicebus-solution)|
-| Service Fabric          |                                         | Úložiště     |             | [Analýza služby Service Fabric (verze Preview)](log-analytics-service-fabric.md) |
+| Service Fabric          |                                         | Úložiště     |             | [Analýza služby Service Fabric (verze Preview)](../service-fabric/service-fabric-diagnostics-oms-setup.md) |
 | SQL (v12)               | Microsoft.Sql/servers/databases <br> Microsoft.Sql/servers/elasticPools |             | Diagnostika | [Azure SQL Analytics (Náhled)](log-analytics-azure-sql.md) |
 | Úložiště                 |                                         |             | Skript      | [Analýza úložiště Azure (Preview)](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-azure-storage-analytics-solution) |
 | Virtuální počítače        | Microsoft.Compute/virtualMachines       | Linka   | Linka <br> Diagnostika  | |
@@ -61,14 +61,14 @@ Existují různé způsoby shromažďování protokolů a metrik pro služby Azu
 
 
 > [!NOTE]
-> Monitorování virtuálních počítačů Azure (Linux i Windows), doporučujeme nejprve nainstalovat [rozšíření virtuálního počítače Log Analytics](log-analytics-azure-vm-extension.md). Agent poskytuje přehled shromážděných z v rámci vašich virtuálních počítačů. Můžete také použít rozšíření pro škálovací sady virtuálních počítačů.
+> Monitorování virtuálních počítačů Azure (Linux i Windows), doporučujeme nejprve nainstalovat [rozšíření virtuálního počítače Log Analytics](log-analytics-quick-collect-azurevm.md). Agent poskytuje přehled shromážděných z v rámci vašich virtuálních počítačů. Můžete také použít rozšíření pro škálovací sady virtuálních počítačů.
 >
 >
 
 ## <a name="azure-diagnostics-direct-to-log-analytics"></a>Diagnostika Azure směrovat do služby Log Analytics
 Řadu prostředků Azure jsou schopni zapisovat diagnostické protokoly a metriky přímo k Log Analytics, což je upřednostňovaný způsob shromažďování dat pro analýzu. Při použití diagnostiky Azure, data se zapisují okamžitě do Log Analytics a není nutné nejprve zapisovat data do úložiště.
 
-Prostředky Azure, které podporují [Azure monitor](../monitoring-and-diagnostics/monitoring-overview.md) posílat svoje protokoly a metriky přímo ke službě Log Analytics.
+Prostředky Azure, které podporují [Azure monitor](../azure-monitor/overview.md) posílat svoje protokoly a metriky přímo ke službě Log Analytics.
 
 > [!NOTE]
 > Odesílání vícedimenzionálních metrik do Log Analytics přes nastavení diagnostiky se v současné době nepodporuje. Metriky s dimenzemi se exportují jako ploché jednodimenzionální metriky agregované napříč hodnotami dimenzí.
@@ -158,5 +158,5 @@ Galerie Azure šablony má [příklady použití Azure Automation](https://azure
 ## <a name="next-steps"></a>Další postup
 
 * [Použití úložiště objektů blob pro službu IIS a table storage pro události](log-analytics-azure-storage-iis-table.md) číst protokoly pro diagnostiku tohoto zápisu do table storage nebo protokoly IIS zapsána do úložiště objektů blob služby Azure.
-* [Povolení řešení](log-analytics-add-solutions.md) k poskytování přehledů o data.
-* [Pomocí vyhledávacích dotazů](log-analytics-log-searches.md) chcete analyzovat data.
+* [Povolení řešení](../monitoring/monitoring-solutions.md) k poskytování přehledů o data.
+* [Pomocí vyhledávacích dotazů](log-analytics-log-search.md) chcete analyzovat data.

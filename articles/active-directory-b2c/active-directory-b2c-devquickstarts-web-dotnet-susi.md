@@ -11,11 +11,11 @@ ms.date: 03/17/2017
 ms.author: davidmu
 ms.component: B2C
 ms.openlocfilehash: 1db805efe7eaec77fcafeb169b3d99098b57f582
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50155759"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50978974"
 ---
 # <a name="create-an-aspnet-web-app-with-azure-active-directory-b2c-sign-up-sign-in-profile-edit-and-password-reset"></a>Vytvoření webové aplikace ASP.NET pomocí Azure Active Directory B2C profil registrace, přihlašování, úpravy a resetování hesla
 

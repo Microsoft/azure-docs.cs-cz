@@ -5,15 +5,15 @@ services: iot-central
 ms.service: iot-central
 author: tbhagwat3
 ms.author: tanmayb
-ms.date: 07/09/2018
+ms.date: 10/29/2018
 ms.topic: conceptual
 manager: peterpr
-ms.openlocfilehash: d32e05e99543b30ee92ea455ae2f800b09d83661
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 5db215a3bf87ac42ac832a59ce39f7e72c45527f
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39009291"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50963349"
 ---
 # <a name="as-a-csp-create-and-manage-an-azure-iot-central-application-on-behalf-of-your-customer"></a>Jako zprostředkovatel kryptografických služeb vytvářet a spravovat Azure IoT Central aplikace jménem vašich zákazníků 
 
@@ -35,13 +35,13 @@ Budete přesměrováni na stránku Azure IoT Central aplikace správce. Azure Io
 
 Chcete-li vytvořit aplikaci Azure IoT Central, klikněte na tlačítko **novou aplikaci** dlaždici. Tím se načtou na stránku pro vytvoření aplikace. Musíte vyplnit všechna pole na této stránce a pak zvolte **vytvořit**. Můžete najít další informace o každé z níže uvedených polí.
 
-![Vytvoření stránky aplikace pro zprostředkovatele kryptografických služeb](media\howto-create-application-asCSP\image4-1.png)
+![Vytvoření stránky aplikace pro zprostředkovatele kryptografických služeb](media\howto-create-application-asCSP\image4.png)
 
-![Vytvoření stránky aplikace pro zprostředkovatele kryptografických služeb](media\howto-create-application-asCSP\image4-2.png)
+![Vytvoření stránky aplikace pro zprostředkovatele kryptografických služeb](media\howto-create-application-asCSP\image4-1.png)
 
 ## <a name="payment-plan"></a>Plán plateb
 
-Můžete vytvořit pouze vytvořit placené aplikace jako zprostředkovatel kryptografických služeb. K prezentaci zákazníkovi Azure IoT Central, můžete vytvořit zkušební verze aplikace samostatně. Další informace o zkušebních verzí a placená aplikace na [Azure IoT Central stránce s cenami](https://azure.microsoft.com/pricing/details/iot-central/).
+Aplikace s průběžnými platbami můžete vytvořit pouze jako odběratel CSP. K prezentaci zákazníkovi Azure IoT Central, můžete vytvořit zkušební verze aplikace samostatně. Další informace o aplikacích zkušební verze a s průběžnými platbami na [Azure IoT Central stránce s cenami](https://azure.microsoft.com/pricing/details/iot-central/).
 
 ## <a name="application-name"></a>Název aplikace
 

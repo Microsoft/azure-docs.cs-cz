@@ -13,19 +13,19 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 10/16/2018
 ms.author: juliako
-ms.openlocfilehash: 533aa505c38d3cbfb46d70acecd43cc66614b13d
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: c8e4e84d7ae0defdb053108dc668956062c47ea5
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49378132"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50962380"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Živé streamování pomocí služby Azure Media Services v3
 
 Při doručování živě streamovaných událostí pomocí Azure Media Services se běžně podílejí následující komponenty:
 
 * Kamera používaná k vysílání události.
-* Živé video encoder, který převádí signály z kamery (nebo jiné zařízení, jako jsou přenosné počítače) pro datové proudy, které se odesílají do služby flikty streamování. Signály mohou zahrnovat také inzerování SCTE 35 a Ad pomůcky. 
+* Živé video encoder, který převádí signály z kamery (nebo jiné zařízení, jako jsou přenosné počítače) pro datové proudy, které se odesílají do služby živého streamování. Signály mohou zahrnovat také inzerování SCTE 35 a Ad pomůcky. 
 * Služba Media Services Live Streaming vám umožňuje ingestovat, ve verzi preview, balení, záznamu, šifrování a všesměrového vysílání obsahu vašim zákazníkům nebo do sítě CDN pro další distribuci.
 
 Tento článek poskytuje podrobný přehled a zahrnuje diagramy hlavní součásti účastnící se živé streamování pomocí služby Media Services.

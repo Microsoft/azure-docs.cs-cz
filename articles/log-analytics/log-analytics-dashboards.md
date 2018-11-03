@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 08/08/2017
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: bf5b37bfa2cb103ef8151203359041fa4bd10f0b
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: d906515214e042a09d434f02be1778c275f214a8
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48043324"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50958130"
 ---
 # <a name="create-a-custom-dashboard-for-use-in-log-analytics"></a>Vytvořit vlastní řídicí panel pro použití v Log Analytics
 
@@ -88,4 +88,4 @@ Odebrat dlaždici, přejděte do zobrazení Můj řídicí panel a klikněte na 
 ![Odebrat dlaždici](./media/log-analytics-dashboards/oms-dashboards-remove-tile.png)
 
 ## <a name="next-steps"></a>Další postup
-* Vytvoření [výstrahy](log-analytics-alerts.md) v Log Analytics ke generování oznámení a opravovat problémy.
+* Vytvoření [výstrahy](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md) v Log Analytics ke generování oznámení a opravovat problémy.

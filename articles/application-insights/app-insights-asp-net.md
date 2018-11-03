@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: mbullwin
-ms.openlocfilehash: 86c0343a3492bf91eedda9303e3c6ac9cf86c4c3
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 498633d9f73c4a9b669ddd3469b62c01d2a19397
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46947315"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50958708"
 ---
 # <a name="set-up-application-insights-for-your-aspnet-website"></a>Nastavení Application Insights pro web ASP.NET
 
@@ -150,7 +150,7 @@ K dispozici jsou i alternativní témata, na která se v případě zájmu můž
 
 * **[Práce s Application Insights v sadě Visual Studio](app-insights-visual-studio.md)**<br/>Zahrnuje informace o ladění pomocí telemetrie, diagnostických hledáních a podrobném procházení kódem.
 * **[Práce s portálem Application Insights](app-insights-dashboards.md)**<br/> Zahrnuje informace o řídicích panelech, výkonných nástrojích pro diagnostiku a analýzy, výstrahách, aktivních mapách závislostí vaší aplikace a exportu telemetrie.
-* **[Analytics](app-insights-analytics-tour.md)** – Výkonný dotazovací jazyk.
+* **[Analytics](../log-analytics/query-language/get-started-analytics-portal.md)** – Výkonný dotazovací jazyk.
 
 ### <a name="alerts"></a>Výstrahy
 

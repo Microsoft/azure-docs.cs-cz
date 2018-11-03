@@ -11,23 +11,22 @@ ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: andrl
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5cb439f7fe6461fcef0d010535179e16e28c294a
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 2611c25764503551c4da918d06bcaabe315cbf7c
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50239165"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50963077"
 ---
 # <a name="consistency-levels-in-azure-cosmos-db"></a>Úrovně konzistence ve službě Azure Cosmos DB
 
-Distribuované databáze spoléhat na replikaci pro vysokou dostupnost, s nízkou latencí nebo obojí, ujistěte se, základní kompromis mezi konzistence čtení a dostupnosti, latence a propustnosti. Většina komerčně dostupný distribuovaných databází požádejte vývojáři zvolit mezi těmito dvěma modely extreme konzistence: silnou konzistenci a konečné konzistence. Zatímco [linearizovatelnosti](http://cs.brown.edu/~mph/HerlihyW90/p463-herlihy.pdf) nebo model pro zajištění konzistence je zlatým standardem programovatelnosti data, obsahuje strmá cenu vyšší latence (v stabilního stavu) a nižší dostupnost (při selhání). Na druhé straně konečné konzistence nabízí vyšší dostupnost a lepší výkon, ale je velmi obtížné naprogramovat oproti.
+Distribuované databáze spoléhat na replikaci pro vysokou dostupnost, s nízkou latencí nebo obojí, ujistěte se, základní kompromis mezi konzistence čtení a dostupnosti, latence a propustnosti. Většina komerčně dostupný distribuovaných databází požádejte vývojáři zvolit mezi těmito dvěma modely extreme konzistence: silnou konzistenci a konečné konzistence. Zatímco [linearizovatelnosti](http://cs.brown.edu/~mph/HerlihyW90/p463-herlihy.pdf) nebo model pro zajištění konzistence je zlatým standardem programovatelnosti dat, přidá strmá cenu vyšší latence (v stabilního stavu) a nižší dostupnost (při selhání). Na druhé straně konečné konzistence nabízí vyšší dostupnost a lepší výkon, ale je obtížné, jak programovat aplikace.
 
-Cosmos DB blíží konzistence dat jako celé spektrum od volby místo dvou extrémů. Silná konzistence a konečné konzistence jsou dva elementy end třídy spektra, existuje mnoho voleb konzistence podél spektra konzistence. Tyto možnosti konzistence umožňují vývojářům přesné volby a kompromisy rozlišovací schopnosti s ohledem na vysokou dostupnost nebo výkon. Cosmos DB umožňuje vývojářům vybrat mezi pět jasně definované modely konzistence ze spektra konzistence (nejsilnější do nejslabší) – **silné**, **omezená neaktuálnost**, **relace** , **konzistentní předpona**, a **konečné**. Každá z těchto modelů konzistence je dobře definovaný a intuitivní a je možné u konkrétních scénářů reálného světa. Každá z pět modelů konzistence poskytnout jasné dostupnost a výkon kompromisy a je zajištěná komplexní smlouvy SLA.
+Cosmos DB blíží konzistence dat jako celé spektrum od volby místo dvou extrémů. Silná konzistence a konečné konzistence jsou dva elementy end třídy spektra, existuje mnoho voleb konzistence podél spektra. Tyto možnosti konzistence umožňují vývojářům přesné volby a detailní kompromisy s ohledem na vysokou dostupnost nebo výkon. Cosmos DB umožňuje vývojářům vybírat (nejsilnější do nejslabší) – spektra konzistence mezi pět jasně definované modely konzistence **silné**, **omezená neaktuálnost**, **relace** , **konzistentní předpona**, a **konečné**. Každá z těchto modelů konzistence je dobře definovaný a intuitivní a je možné u konkrétních scénářů reálného světa. Zadejte každou pět modelů konzistence [dostupnost a výkon kompromisy](consistency-levels-tradeoffs.md) a je zajištěná komplexní smlouvy SLA.
 
-![Konzistence je škála možností](./media/consistency-levels/five-consistency-levels.png)
-**je škála možností konzistence**
+![Konzistence jako spektrum](./media/consistency-levels/five-consistency-levels.png)
 
-Všimněte si, že jsou úrovně konzistence nezávislých na oblasti. Konzistence úroveň (a odpovídající záruky konzistence) účtu služby Cosmos DB je zaručeno, že pro všechny operace čtení bez ohledu na to, následující:
+Úrovně konzistence jsou nezávislá na oblast. Úroveň konzistence účtu Cosmos DB je zaručeno, že pro všechny operace čtení bez ohledu na to následující vlastnosti:
 
 - Oblast, ze které se obsluhují čtení a zápisy
 - Počet oblastí přidružených k účtu Cosmos
@@ -35,32 +34,41 @@ Všimněte si, že jsou úrovně konzistence nezávislých na oblasti. Konzisten
 
 ## <a name="scope-of-the-read-consistency"></a>Rozsah konzistence čtení
 
-Konzistence čtení se vztahuje na jeden obor rozsahu klíč oddílu (označuje se také jako logický oddíl) operace čtení. Operace čtení můžou být vystavené vzdáleného klienta nebo uložené procedury.
+Konzistence čtení se vztahuje na jeden obor v rozsahu klíč oddílu (tj. logického oddílu) operace čtení. Operace čtení můžou být vystavené vzdáleného klienta nebo uložené procedury.
 
 ## <a name="configuring-the-default-consistency-level"></a>Konfigurace výchozí úroveň konzistence
 
-Můžete nakonfigurovat **výchozí úroveň konzistence** na účtu služby Cosmos DB v každém okamžiku. Výchozí úroveň konzistence nakonfigurovaný na vašem účtu se vztahuje na všechny databáze Cosmos (a kontejnery) pod tímto účtem. Všechny dotazy vydaný pro kontejner nebo databáze a čtení použije tuto úroveň konzistence ve výchozím nastavení. Zde uvedený postup [nakonfigurovat výchozí úroveň konzistence](how-to-manage-consistency.md#configure-the-default-consistency-level).
+Můžete nakonfigurovat **výchozí úroveň konzistence** na účtu služby Cosmos DB v každém okamžiku. Výchozí úroveň konzistence nakonfigurovaný na vašem účtu se vztahuje na všechny databáze Cosmos (a kontejnery) pod tímto účtem. Všechny dotazy vydaný pro kontejner nebo databáze a čtení použije úrovně konzistence zadané ve výchozím nastavení. Další informace najdete v tématu Jak [nakonfigurovat výchozí úroveň konzistence](how-to-manage-consistency.md#configure-the-default-consistency-level) článku.
 
 ## <a name="guarantees-associated-with-consistency-levels"></a>Záruky související s úrovní konzistence
 
-Komplexní smlouvy SLA k dispozici ve službě Azure Cosmos DB zaručuje, že 100 % požadavků na čtení vyhoví záruce konzistence pro všechny úrovně konzistence, kterou si zvolíte. Žádost o čtení se považuje za splnili konzistence smlouvou SLA, pokud jsou splněny všechny záruky konzistence spojené s úrovní konzistence. Přesné definice úrovní pět konzistence ve službě Cosmos DB s použitím [TLA + specifikačnímu jazyku (TLA +)](http://lamport.azurewebsites.net/tla/tla.html) jsou součástí [azure-cosmos-tla](https://github.com/Azure/azure-cosmos-tla) úložiště GitHub. Sémantika úrovně konzistence pět jsou popsané níže:
+Komplexní smlouvy SLA k dispozici ve službě Azure Cosmos DB záruku, že 100 % požadavků na čtení vyhoví záruce konzistence pro všechny úrovně konzistence, že kterou si zvolíte. Žádost o čtení je považován za pro splnění SLA, konzistence, pokud jsou splněny všechny záruky konzistence spojené s úrovní konzistence. Přesné definice úrovní pět konzistence ve službě Cosmos DB s použitím [TLA + specifikačnímu jazyku](http://lamport.azurewebsites.net/tla/tla.html) jsou součástí [azure-cosmos-tla](https://github.com/Azure/azure-cosmos-tla) úložiště GitHub. Sémantika úrovně konzistence pět jsou popsané níže:
 
-- **Úroveň konzistence = "strong"**: nabízí silnou konzistenci [linearizovatelnosti](https://aphyr.com/posts/313-strong-consistency-models) zaručit s čtení zaručeno, že vrátí nejnovější potvrzené verzi položky. Klient nikdy neuvidí nepotvrzených nebo částečné zápisu a je vždycky zaručeno, že přečte nejnovější potvrzené zápisu.
-- **Úroveň konzistence = "omezená neaktuálnost"**: čtení má zaručeno případném dalším sdílení dodržovat záruku konzistentní předpony. Může prodleva čtení zápisů maximálně K verzí nebo předpony (například aktualizace) položky nebo nejde "časový interval. Proto pokud zvolíte omezená neaktuálnost, "neaktuálnost" je možné nakonfigurovat dvěma způsoby: číslo verze (kB) položky nebo časový interval (t), podle kterého může prodleva čtení zápisů. Omezená neaktuálnost nabízí celkový globální pořadí s výjimkou v rámci "neaktuálnost okno." Monotónní čtení záruky existovat v rámci oblasti vnitřní a vnější "neaktuálnost okno." Silná konzistence má stejnou sémantiku jako omezená neaktuálnost, ale s "neaktuálnost okno" rovno nule. Omezená neaktuálnost se také označuje jako "zpožděné čas linearizovatelnosti". Když klient provádí operace čtení v oblasti přijímá zápisy, záruky poskytované konzistenci omezená neaktuálnost jsou stejné jako ty, které mají silnou konzistenci.
+- **Úroveň konzistence = "strong"**: nabízí silnou konzistenci [linearizovatelnosti](https://aphyr.com/posts/313-strong-consistency-models) zaručit s čtení zaručeno, že vrátí nejnovější potvrzené verzi položky. Klient se nikdy neuvidí nepotvrzených nebo částečné zápisu. Přečtěte si nejnovější potvrzené zápisu uživatele je vždycky zaručená.
+
+- **Úroveň konzistence = "omezená neaktuálnost"**: čtení má zaručeno případném dalším sdílení dodržovat záruku konzistentní předpony. Může prodleva čtení zápisů maximálně K verzí (které je "aktualizací" položky) nebo 't' časový interval. Při výběru omezená neaktuálnost, "neaktuálnost" můžete nakonfigurovat dvěma způsoby: 
+
+  * Číslo verze (kB) položky nebo
+  * Časový interval (t) podle kterého může prodleva čtení zápisů. 
+
+  Omezená neaktuálnost nabízí celkový globální pořadí s výjimkou v rámci "neaktuálnost okno." Monotónní čtení záruky existovat v rámci oblasti vnitřní a vnější "neaktuálnost okno." Silná konzistence má stejnou sémantiku jako ty, které nabízí omezená neaktuálnost a s "neaktuálnost okno" je rovno nule. Omezená neaktuálnost se také označuje jako **času zpoždění linearizovatelnosti**. Když klient provádí operace čtení v oblasti, která přijímá zápisy, záruky poskytované konzistenci omezená neaktuálnost jsou stejné jako ty, které mají silnou konzistenci.
+
 - **Úroveň konzistence = "relace"**: čtení má zaručeno případném dalším sdílení dodržovat konzistentní předpona, monotónní čtení, monotónní zápisy, čtení zápisů, zápis čtení záruky. Konzistence typu relace je vymezen relace klienta.
-- **Úroveň konzistence = "konzistentní předpona"**: vrácené aktualizace jsou předponou všech aktualizací bez mezer. Konzistentní předpona zaručuje, že čtení nikdy neuvidí zápisy mimo pořadí.
+
+- **Úroveň konzistence = "konzistentní předpona"**: aktualizací vrácených obsahovat některé předpony všech aktualizací bez mezer. Konzistentní předpona záruku, že čtení nikdy neuvidí zápisy mimo pořadí.
+
 - **Úroveň konzistence = "konečné"**: není zaručeno pořadí pro čtení. V dalším zápisům chybí nakonec sloučí repliky.
 
 ## <a name="consistency-levels-explained-through-baseball"></a>Úrovně konzistence je vysvětleno pomocí baseballu
 
-Jako [replikovat konzistence dat pomocí baseballu](https://www.microsoft.com/en-us/research/wp-content/uploads/2011/10/ConsistencyAndBaseballReport.pdf) znázorňuje papíru, imagine posloupnost zápisy představující skóre z baseballu hra se skóre inning inning řádku. V této hře hypotetické baseballu je aktuálně uprostřed sedmého inning (proverbial sedmý – inning roztáhnout), a domácí týmu je winning 2 – 5.
+Pojďme provést scénář herní baseballu jako příklad, imagine posloupnost zápisy představující skóre z baseballu hra se skóre inning inning řádku, jak je popsáno v [replikovat konzistence dat pomocí baseballu](https://www.microsoft.com/en-us/research/wp-content/uploads/2011/10/ConsistencyAndBaseballReport.pdf) dokument. V této hře hypotetické baseballu je aktuálně uprostřed sedmého inning (proverbial sedmý – inning roztáhnout), a domácí týmu je winning 2 – 5.
 
 | | **1** | **2** | **3** | **4** | **5** | **6** | **7** | **8** | **9** | **Spuštění** |
 | - | - | - | - | - | - | - | - | - | - | - |
-| **Návštěvníci** | 0 | 0 | 1 | 0 | 5 | 0 | 0 |  |  | 2 |
+| **Návštěvníci** | 0 | 0 | 1 | 0 | 1 | 0 | 0 |  |  | 2 |
 | **Domovská stránka** | 1 | 0 | 1 | 1 | 0 | 2 |  |  |  | 5 |
 
-Kontejneru Cosmos DB uchovává návštěvníkům a spuštění součty domácí týmu. Zatímco probíhá hry, různé čtení záruky může vést k čtení skóre, které se různé klienty. V následující tabulce jsou uvedeny úplnou sadu výsledků, které mohou být vráceny čtení návštěvníci a domácí skóre, které se s jednotlivými záruky konzistence pět. Všimněte si, že návštěvníci skóre je uvedená jako první, a možné návratové hodnoty jsou oddělené čárkami.
+Kontejneru Cosmos DB uchovává návštěvníkům a spuštění součty domácí týmu. Zatímco probíhá hry, různé čtení záruky může vést k čtení skóre, které se různé klienty. V následující tabulce jsou uvedeny úplnou sadu výsledků, které mohou být vráceny čtení návštěvníci a domácí skóre, které se s jednotlivými záruky konzistence pět. Skóre návštěvníci je uvedená jako první, a možné návratové hodnoty jsou oddělené čárkami.
 
 | **Úrovně konzistence** | **Skóre** |
 | - | - |

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: bed0c15504323aba4ebf680273870720a8ff833a
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 62b5c8fd0a63e660cd4126755d94ea90cf4d412b
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49388293"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50961156"
 ---
 # <a name="create-metric-alerts-for-logs-in-azure-monitor"></a>Vytvářet upozornění metrik, protokolů ve službě Azure Monitor  
 
@@ -22,8 +22,8 @@ Azure podporuje monitorování [výstrahu typu metrika](monitoring-near-real-tim
 
 Upozornění na metriku můžete použít na oblíbené Log Analytics protokoly extrahovat jako metriky jako součást metriky z protokolů, včetně prostředků v Azure nebo místním. Podporované řešení Log Analytics jsou uvedeny níže:
 - [Čítače výkonu](../log-analytics/log-analytics-data-sources-performance-counters.md) u počítačů s Windows a Linuxu
-- [Záznamy prezenčního signálu služby Agent Health](../operations-management-suite/oms-solution-agenthealth.md)
-- [Správa aktualizací](../operations-management-suite/oms-solution-update-management.md) záznamů
+- [Záznamy prezenčního signálu služby Agent Health](../monitoring/monitoring-solution-agenthealth.md)
+- [Správa aktualizací](../automation/automation-update-management.md) záznamů
 - [Data události](../log-analytics/log-analytics-data-sources-windows-events.md) protokoly
  
 Existuje mnoho výhod pro používání **upozornění metriky pro protokoly** přes na základě dotazu [upozornění protokolů](alert-log.md) v Azure; některé z nich jsou uvedeny níže:
@@ -47,7 +47,7 @@ Data metriky z oblíbených protokolů je přesměrovaná před zpracováním v 
 Před metriky pro protokoly se shromažďují v Log Analytics data funguje, následující musí být nastavena spuštěné a dostupné:
 1. **Aktivní pracovní prostor Log Analytics**: musí být platné a aktivní pracovní prostor Log Analytics. Další informace najdete v tématu [vytvořit pracovní prostor Log Analytics na webu Azure portal](../log-analytics/log-analytics-quick-create-workspace.md).
 2. **Agent je nakonfigurován pro pracovní prostor Log Analytics**: Agent musí být nakonfigurovaná pro virtuální počítače Azure (a/nebo) na místním virtuálním počítačům k odesílání dat do pracovního prostoru Log Analytics používá v dřívějším kroku. Další informace najdete v tématu [Log Analytics – přehled agenta](../monitoring/monitoring-overview-azure-agents.md).
-3. **Je nainstalovaná podporovaných řešení Log Analytics**: řešení Log Analytics by měla být nakonfigurovaná a odesílání dat do pracovního prostoru Log Analytics – podporované řešení jsou [čítače výkonu pro Windows a Linuxu](../log-analytics/log-analytics-data-sources-performance-counters.md), [Záznamy prezenčního signálu služby Agent Health](../operations-management-suite/oms-solution-agenthealth.md), [Update management, a [data události](../log-analytics/log-analytics-data-sources-windows-events.md).
+3. **Je nainstalovaná podporovaných řešení Log Analytics**: řešení Log Analytics by měla být nakonfigurovaná a odesílání dat do pracovního prostoru Log Analytics – podporované řešení jsou [čítače výkonu pro Windows a Linuxu](../log-analytics/log-analytics-data-sources-performance-counters.md), [Záznamy prezenčního signálu služby Agent Health](../monitoring/monitoring-solution-agenthealth.md), [Update management, a [data události](../log-analytics/log-analytics-data-sources-windows-events.md).
 4. **Protokolu analytická řešení, které jsou nakonfigurované k odeslání protokolů**: služby Log Analytics řešení by měly mít odpovídající požadované protokoly a data na [metriky podporovat pro pracovní prostory Log Analytics](monitoring-supported-metrics.md#microsoftoperationalinsightsworkspaces) povolena. Například pro *% dostupné paměti* čítač ho musí být nakonfigurovány v [čítače výkonu](../log-analytics/log-analytics-data-sources-performance-counters.md) řešení první.
 
 ## <a name="configuring-metric-alert-for-logs"></a>Konfigurace upozornění na metriku pro protokoly

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: b5632db57e902eef76860f85de6e76f85861090a
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: c478c2c4af12ecaa02e6700ec7faffc5b9862a00
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45728959"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50958181"
 ---
 # <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-python"></a>Připojte Raspberry Pi do aplikace Azure IoT Central (Python)
 
@@ -23,9 +23,9 @@ Tento článek popisuje, jak jako vývojář zařízení připojit Raspberry Pi 
 
 ## <a name="before-you-begin"></a>Než začnete
 
-K dokončení kroků v tomto článku budete potřebovat následující:
+K dokončení kroků v tomto článku, budete potřebovat následující komponenty:
 
-* Azure IoT Central aplikace vytvořené z **ukázka Devkits** šablony aplikace. Další informace najdete v tématu [vytvoření aplikace Azure IoT Central](howto-create-application.md).
+* Azure IoT Central aplikace vytvořené z **ukázka Devkits** šablony aplikace. Další informace najdete v tématu [vytvořit aplikaci rychlý Start](quick-deploy-iot-central.md).
 * Raspberry Pi zařízení se systémem Raspbian operačního systému. Potřebujete monitoru, klávesnice a myši připojené k Raspberry Pi přístup k prostředí grafického uživatelského rozhraní. Raspberry Pi musí být schopen [připojení k Internetu](https://www.raspberrypi.org/learning/software-guide/wifi/).
 * Volitelně můžete [smysl Hat](https://www.raspberrypi.org/products/sense-hat/) panel doplněk pro Raspberry Pi. Tento panel shromažďuje telemetrická data z různých snímačů a poslat do aplikace Azure IoT Central. Pokud nemáte k dispozici **smysl Hat** panelu, můžete místo toho použít emulátor (k dispozici jako součást image Raspberry Pi).
 
@@ -33,17 +33,28 @@ K dokončení kroků v tomto článku budete potřebovat následující:
 
 Aplikace vytvořené z **ukázka Devkits** zahrnuje šablony aplikace **Raspberry Pi** šablona zařízení s následujícími charakteristikami: 
 
-- Telemetrická data, která obsahuje měření pro zařízení **vlhkosti**, **teploty**, **tlak**, **Magnometer** (měřeno podél X Y, Z osy), **Accelorometer** (měřeno podél X, Y, osy Z), a **volný setrvačník** (měřeno podél X, Y, osy Z).
-- Nastavení zobrazení **napětí**, **aktuální**,**ventilátor rychlost** a **reakcí na Incidenty** přepínací tlačítko.
-- Vlastnosti obsahující vlastnosti zařízení **kostka číslo** a **umístění** cloudové vlastnosti.
+- Telemetrická data, která zahrnuje následující měření, které zařízení bude shromažďovat:
+    - Vlhkost
+    - Teplota
+    - Tlak
+    - Magnetometer (X, Y, Z)
+    - Akcelerometr (X, Y, Z)
+    - Volný setrvačník (X, Y, Z)
+- Nastavení
+    - Snímač napětí
+    - Aktuální
+    - Ventilátor rychlost
+    - Přepnout reakcí na Incidenty.
+- Vlastnosti
+    - Kostka vlastnost počtu zařízení
+    - Vlastnost Location cloudu
 
-
-Najdete všechny podrobnosti o konfiguraci zařízení šablony [Podrobnosti šablony Raspberry PI zařízení](howto-connect-raspberry-pi-python.md#raspberry-pi-device-template-details)
+Podrobnosti o konfiguraci zařízení šablony najdete v tématu [Podrobnosti šablony Raspberry PI zařízení](howto-connect-raspberry-pi-python.md#raspberry-pi-device-template-details)
     
 
 ## <a name="add-a-real-device"></a>Přidání skutečného zařízení
 
-V aplikaci Azure IoT Central přidat z reálného zařízení **Raspberry Pi** šablona zařízení a zaznamenání podrobností o připojení zařízení (**primární klíč ID oboru, ID zařízení**). Další informace najdete v tématu [skutečné zařízení přidat do aplikace Azure IoT Central](tutorial-add-device.md).
+V aplikaci Azure IoT Central přidat z reálného zařízení **Raspberry Pi** zařízení šablony a udržovat přehled o podrobnosti o připojení zařízení (**primární klíč ID oboru, ID zařízení**). Další informace najdete v tématu [skutečné zařízení přidat do aplikace Azure IoT Central](tutorial-add-device.md).
 
 
 ### <a name="configure-the-raspberry-pi"></a>Konfigurace Raspberry Pi
@@ -53,11 +64,11 @@ Následující kroky popisují, jak stáhnout a nakonfigurovat ukázkové aplika
 * Odesílá telemetrická data a hodnoty vlastností do Azure IoT Central.
 * Reaguje na změny provedené v Azure IoT Central nastavení.
 
-Ke konfiguraci zařízení [postupujte podle podrobných pokynů na Githubu.](http://aka.ms/iotcentral-docs-Raspi-releases)
+Ke konfiguraci zařízení, [postupujte podle podrobných pokynů na Githubu.](http://aka.ms/iotcentral-docs-Raspi-releases)
 
 
 > [!NOTE]
-> Další informace týkající se ukázky Raspberry Pi Pythonu najdete v tématu [Readme](http://aka.ms/iotcentral-docs-Raspi-releases) soubor na Githubu.
+> Další informace týkající se ukázky Raspberry Pi Pythonu najdete v tématu [README](http://aka.ms/iotcentral-docs-Raspi-releases) soubor na Githubu.
 
 
 1. Po nakonfigurování zařízení by měla vaše zařízení zahájila odesílání dat do Azure IoT Central okamžik.
@@ -103,7 +114,7 @@ Přepínací tlačítko Nastavení
 
 | Zobrazované jméno | Název pole | Na text | Vypnout text | Počáteční |
 | ------------ | ---------- | ------- | -------- | ------- |
-| PROSTŘEDÍ IR           | activateIR | ON      | OFF      | Vypnuto     |
+| IR           | activateIR | ON      | OFF      | Vypnuto     |
 
 ### <a name="properties"></a>Vlastnosti
 

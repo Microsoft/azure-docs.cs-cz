@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/09/2018
 ms.author: iainfou
-ms.openlocfilehash: bd7f8748dc5260ed6574a1b48632318e9399bca0
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 0dc0421baf1e5cb19be925072b5fffb989e23a3b
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48042117"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50979246"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service"></a>Integrace služby Azure Active Directory s Azure Kubernetes Service
 
@@ -68,7 +68,9 @@ První aplikaci Azure AD slouží k získání členství ve skupině uživatel�
 
   ![Nastavte oprávnění ke graphu aplikace](media/aad-integration/delegated-permissions.png)
 
-7. Vyberte **provádí**, zvolte *Microsoft Graphu* ze seznamu rozhraní API, vyberte **udělit oprávnění**. Tento krok selže, pokud není aktuální účet správce tenanta.
+  Vyberte **Done** (Hotovo).
+
+7. Zvolte *Microsoft Graphu* ze seznamu rozhraní API, vyberte **udělit oprávnění**. Tento krok selže, pokud není aktuální účet správce tenanta.
 
   ![Nastavte oprávnění ke graphu aplikace](media/aad-integration/grant-permissions.png)
 
@@ -98,7 +100,9 @@ Druhá aplikace Azure AD se používá při přihlášení s využitím rozhran�
 
   ![Vyberte koncový bod aplikace AKS AAD serveru](media/aad-integration/select-server-app.png)
 
-4. Vyberte **provádí** a **udělit oprávnění** k dokončení tohoto kroku.
+  Vyberte **Hotovo**
+
+4. Vyberte svůj server API ze seznamu a klikněte na tlačítko **udělit oprávnění**:
 
   ![Udělení oprávnění](media/aad-integration/grant-permissions-client.png)
 

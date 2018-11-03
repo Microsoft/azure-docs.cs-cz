@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 88285ea658b194daf69b12116649e2389374c349
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: d166d490c00a9805ec9cecae6509acc531d8d711
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50025527"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50959864"
 ---
 # <a name="connect-a-windows-iot-core-device-to-your-azure-iot-central-application"></a>Připojit zařízení s Windows IoT Core do aplikace Azure IoT Central
 
@@ -23,7 +23,7 @@ Tento článek popisuje, jak jako vývojář zařízení pro zařízení s Windo
 
 K dokončení kroků v tomto článku budete potřebovat následující:
 
-1. Azure IoT Central aplikace vytvořené z **ukázka Devkits** šablony aplikace. Další informace najdete v tématu [vytvoření aplikace Azure IoT Central](howto-create-application.md).
+1. Azure IoT Central aplikace vytvořené z **ukázka Devkits** šablony aplikace. Další informace najdete v tématu [vytvořit aplikaci rychlý Start](quick-deploy-iot-central.md).
 2. Zařízení s operačním systémem Windows 10 IoT Core. V tomto návodu budeme používat Raspberry Pi.
 
 

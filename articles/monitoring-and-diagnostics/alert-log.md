@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: fd183b5776f30b12d577a94be147eabef05d258f
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 43ff945747915edb76da8b593b232e86778374ce
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50419363"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50958504"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Vytvoření, zobrazení a Správa upozornění protokolů pomocí Azure monitoru  
 
@@ -57,7 +57,7 @@ Další podrobné je podrobný návod k použití protokolu výstrah pomocí roz
 
    > [!NOTE]
 
-   > Upozornění seznamy můžete importovat dotaz analytics jako typ signálu - **protokolu (uložený dotaz)**, jak je znázorněno výše obrázku. Tak, že uživatelé mohou zdokonalujete dotazu v Analytics a pak je ukládejte pro budoucí použití v upozornění – další podrobnosti o použití uložení dotazu, které jsou k dispozici na [pomocí prohledávání protokolů v log analytics](../log-analytics/log-analytics-log-searches.md) nebo [sdíleného dotazu ve službě application insights Analytics](../log-analytics/log-analytics-overview.md). 
+   > Upozornění seznamy můžete importovat dotaz analytics jako typ signálu - **protokolu (uložený dotaz)**, jak je znázorněno výše obrázku. Tak, že uživatelé mohou zdokonalujete dotazu v Analytics a pak je ukládejte pro budoucí použití v upozornění – další podrobnosti o použití uložení dotazu, které jsou k dispozici na [pomocí prohledávání protokolů v log analytics](../log-analytics/log-analytics-log-searches.md) nebo [sdíleného dotazu ve službě application insights Analytics](../log-analytics/log-analytics-queries.md). 
 
 1.  *Upozornění protokolů*: Po výběru dotazu pro generování výstrah můžou zobrazovat v **vyhledávací dotaz** pole; Pokud syntaxe dotazu není správná, pole se zobrazí chyba červeně. Pokud je správná syntaxe dotazu – pro referenci historických dat stanovených dotazu se zobrazuje jako graf s možností pro upravit časový interval z posledních šest hodin na poslední týden.
 
@@ -132,7 +132,7 @@ Níže uvedené části proto najdete podrobnosti o použití šablony Resource 
 ### <a name="azure-resource-template-for-log-analytics"></a>Šablony Azure Resource ke službě Log Analytics
 Upozornění protokolů pro Log Analytics jsou vytvořené pravidly upozornění, na kterých běží uložené výsledky hledání v pravidelných intervalech. Pokud výsledky dotazu porovnávání zadaným kritériím, vytvoří záznam o upozornění a spuštění jednu nebo více akcí. 
 
-Prostředek šablony pro uložené výsledky hledání a využitím upozornění Log analytics Log analytics jsou k dispozici v části dokumentace ke službě Log Analytics. Další informace najdete v tématu, [přidání Log Analytics uložené hledání a výstrahy](../operations-management-suite/operations-management-suite-solutions-resources-searches-alerts.md), který obsahuje ilustrativní ukázky, jakož i informace o schématu.
+Prostředek šablony pro uložené výsledky hledání a využitím upozornění Log analytics Log analytics jsou k dispozici v části dokumentace ke službě Log Analytics. Další informace najdete v tématu, [přidání Log Analytics uložené hledání a výstrahy](../monitoring/monitoring-solutions-resources-searches-alerts.md), který obsahuje ilustrativní ukázky, jakož i informace o schématu.
 
 ### <a name="azure-resource-template-for-application-insights"></a>Šablony Azure Resource na Application Insights
 Upozornění protokolu pro prostředky Application Insights má typ `Microsoft.Insights/scheduledQueryRules/`. Další informace v tomto typu prostředku, naleznete v tématu [Azure Monitor – reference k rozhraní API naplánované pravidla dotazu](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/).
@@ -246,5 +246,5 @@ az group deployment create --resource-group myRG --template-file sampleScheduled
 * Další informace o [upozornění protokolů ve výstrahách Azure](monitor-alerts-unified-log.md)
 * Vysvětlení [akce Webhooku pro výstrahy protokolu](monitor-alerts-unified-log-webhook.md)
 * Další informace o [Application Insights](../application-insights/app-insights-analytics.md)
-* Další informace o [Log Analytics](../log-analytics/log-analytics-overview.md). 
+* Další informace o [Log Analytics](../log-analytics/log-analytics-queries.md). 
 

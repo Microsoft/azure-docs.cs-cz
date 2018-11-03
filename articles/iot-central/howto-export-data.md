@@ -8,12 +8,12 @@ ms.date: 09/18/2018
 ms.topic: conceptual
 ms.service: iot-central
 manager: peterpr
-ms.openlocfilehash: 86128abd82ee41459a84fc7d9169042179807793
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 3231a956648b80d88059b7b0fc8f790e0e58be99
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47034905"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50962788"
 ---
 # <a name="export-your-data-in-azure-iot-central"></a>Exportujte data v Azure IoT Central
 
@@ -26,10 +26,10 @@ Tento článek popisuje, jak používat souvislá datová funkce exportu v Azure
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Rozšířené 30denní zkušební verze IoT Central aplikace, nebo placené aplikace.
-- Účet Azure s předplatným Azure.
-- Stejný účet Azure je správcem ve vaší aplikaci IoT Central.
-- Stejný účet Azure má oprávnění vytvořit účet úložiště nebo získat přístup k existující účet úložiště ve stejném předplatném Azure.
+- Aplikace s průběžnými platbami.
+- Správce ve vaší aplikaci IoT Central, který obsahuje:
+    - účet Azure v rámci předplatného Azure IoT Central aplikace je v
+    - oprávnění k vytvoření úložiště účet nebo získat přístup k existující účet úložiště v rámci tohoto předplatného Azure
 
 ## <a name="types-of-data-to-export"></a>Datové typy k exportu
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 4702b0eb53897f173311c40469c912cf41751f24
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 9d97b14d52a33d6879ee92b38993f4526823c4a0
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50155146"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50963981"
 ---
 # <a name="connect-a-generic-client-application-to-your-azure-iot-central-application-nodejs"></a>Připojení aplikace obecného klienta aplikace Azure IoT Central (Node.js)
 
@@ -23,7 +23,7 @@ Tento článek popisuje, jak jako vývojář zařízení připojit Obecná aplik
 
 K dokončení kroků v tomto článku budete potřebovat následující:
 
-1. Aplikace Azure IoT Central. Další informace najdete v tématu [vytvoření aplikace Azure IoT Central](howto-create-application.md).
+1. Aplikace Azure IoT Central. Další informace najdete v tématu [vytvořit aplikaci rychlý Start](quick-deploy-iot-central.md).
 1. Vývojovém počítači s [Node.js](https://nodejs.org/) verze 4.0.0 nebo novější. Můžete spustit `node --version` na příkazovém řádku k ověření verze. Node.js je k dispozici pro širokou škálu operačních systémů.
 
 ## <a name="create-a-device-template"></a>Vytvoření šablony zařízení

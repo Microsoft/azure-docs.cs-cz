@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: v-jysur
 ms.component: ''
-ms.openlocfilehash: 4faea38817a546dbab02064d22a0813362f77b3d
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: e504f8c4fb34084d613e7ab1e506187a856defef
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50416456"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50961836"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>Připojení ITSM produktů a služeb s IT Service Management Connector
 Tento článek obsahuje informace o tom, jak nakonfigurovat připojení mezi ITSM produkt nebo službu a na IT Service Management Connector (ITSMC) ve službě Log Analytics a centrálně spravovat pracovní položky. Další informace o ITSMC najdete v tématu [přehled](log-analytics-itsmc-overview.md).
@@ -293,7 +293,7 @@ Ujistěte se, že jsou splněné následující požadavky:
 
 
 - ITSMC nainstalované. Další informace: [přidávání řešení IT Service Management Connector](log-analytics-itsmc-overview.md#adding-the-it-service-management-connector-solution).
-- S Azure AD – by měly být zaregistrovány aplikace provance a ID klienta je k dispozici. Podrobné informace najdete v tématu [ke konfiguraci ověřování služby active directory](../app-service-mobile/app-service-mobile-how-to-configure-active-directory-authentication.md).
+- S Azure AD – by měly být zaregistrovány aplikace provance a ID klienta je k dispozici. Podrobné informace najdete v tématu [ke konfiguraci ověřování služby active directory](../app-service/app-service-mobile-how-to-configure-active-directory-authentication.md).
 
 - Role uživatele: správce.
 

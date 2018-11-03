@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/27/2017
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: 1a42c13bc0b441074829b1753c1d3cab8fbfaccf
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 6a197cf5667e1668b2007a5f552b813cb8ed68d3
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47407565"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50957824"
 ---
 # <a name="get-started-with-roles-permissions-and-security-with-azure-monitor"></a>Začínáme s rolemi, oprávnění a zabezpečení prostřednictvím služby Azure Monitor
 Mnoho týmů potřebuje pro výhradně regulovat přístup k monitorování data a nastavení. Například pokud jste členy týmu, kteří pracují výhradně na monitorování (techniky podpory, technikům devops) nebo pokud používáte poskytovatel spravované služby, můžete jim udělit přístup k datům monitorování pouze při omezení jejich schopnost vytvářet, upravovat, nebo Odstraňte prostředky. Tento článek ukazuje, jak rychle použít předdefinované role RBAC monitorování na uživatele v Azure nebo vytvářet vlastní vlastní role pro uživatele, který potřebuje monitorování omezená oprávnění. Pak popisuje aspekty zabezpečení pro vaše prostředky související s Azure Monitor a jak můžete omezit přístup k datům, které obsahují.
@@ -186,5 +186,5 @@ Další informace najdete v tématu [Network security a Azure Storage](../storag
 
 ## <a name="next-steps"></a>Další postup
 * [Přečtěte si informace o RBAC a oprávnění v Resource Manageru](../role-based-access-control/overview.md)
-* [Přečíst Přehled monitorování v Azure](monitoring-overview.md)
+* [Přečíst Přehled monitorování v Azure](../azure-monitor/overview.md)
 

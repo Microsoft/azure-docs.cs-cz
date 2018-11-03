@@ -1,5 +1,5 @@
 ---
-title: Rozšíření upozornění z Analytcs protokolu do Azure
+title: Rozšíření upozornění z Log Analytics do Azure
 description: Tento článek popisuje nástroje a rozhraní API, pomocí kterého můžete rozšíření upozornění z Log Analytics do Azure Alerts.
 author: msvijayn
 services: azure-monitor
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/04/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: ed6b2fafbb3329e20985b75f55d29b52dcc5da57
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: a470299df86f6b8f7fd61279af0334d01ef94f8d
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50415697"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50957417"
 ---
 # <a name="extend-alerts-from-log-analytics-into-azure-alerts"></a>Rozšíření upozornění z Log Analytics do upozornění Azure
 Funkce výstrah ve službě Azure Log Analytics teď nahrazuje Azure Alerts. Jako součást tohoto přechodu je výstrahy, které jste nakonfigurovali v Log Analytics se rozšířit do Azure. Pokud nechcete čekat na jejich automaticky přesunou na Azure, můžete zahájit proces:
@@ -470,7 +470,7 @@ Tady jsou kroky nápravy u každé chyby:
 
 - **Chyba: Zásady nachází na úrovni předplatného nebo prostředek skupiny**: ![snímek obrazovky s Operations Management Suite nastavení výstrah stránky portálu, se zvýrazněným zásad chybová zpráva](media/monitoring-alerts-extend-tool/ErrorPolicy.png)
 
-    Když [Azure Policy](../azure-policy/azure-policy-introduction.md) je použita, omezuje nový prostředek ve skupině předplatné nebo prostředek, který obsahuje tento pracovní prostor Log Analytics (Operations Management Suite). Systém se nemůže rozšířit upozornění do Azure a vytvořte potřebné skupiny akcí.
+    Když [Azure Policy](../governance/policy/overview.md) je použita, omezuje nový prostředek ve skupině předplatné nebo prostředek, který obsahuje tento pracovní prostor Log Analytics (Operations Management Suite). Systém se nemůže rozšířit upozornění do Azure a vytvořte potřebné skupiny akcí.
     
     Pokud chcete vyřešit, upravit zásadu, která je příčinou *[RequestDisallowedByPolicy](../azure-resource-manager/resource-manager-policy-requestdisallowedbypolicy-error.md)* chybu, která brání vytváření nových prostředků na vaše předplatné nebo skupinu prostředků, který obsahuje tento pracovní prostor. Můžete to provést pomocí webu Azure portal, Powershellu, rozhraní příkazového řádku Azure nebo rozhraní API. Můžete auditovat akce najít příslušnou zásadu, která je příčinou selhání. Další informace najdete v tématu [zobrazení protokolů aktivit pro auditování akcí](../azure-resource-manager/resource-group-audit.md). 
     

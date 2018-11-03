@@ -1,3 +1,16 @@
+---
+author: alkohli
+ms.service: storsimple
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: alkohli
+ms.openlocfilehash: 8a349916d0c0efc0f7895368a614897e3c6a15dc
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50964546"
+---
 <!--author=alkohli last changed: 12/15/15-->
 
 | Identifikátor omezení | Omezení | Komentáře |

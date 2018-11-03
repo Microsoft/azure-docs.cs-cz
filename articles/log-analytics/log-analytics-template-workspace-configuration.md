@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 06/11/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: a715c300cc5490eef9dbe7971dabe1733fd47f49
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 833bb6838733395d83468be3d2960c7c237aa3fc
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49402212"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50957671"
 ---
 # <a name="manage-log-analytics-using-azure-resource-manager-templates"></a>Správa služby Log Analytics pomocí šablon Azure Resource Manageru
 Můžete použít [šablon Azure Resource Manageru](../azure-resource-manager/resource-group-authoring-templates.md) vytvořit a nakonfigurovat pracovní prostory Log Analytics. Mezi příklady úloh, které můžete provádět pomocí šablony patří:
@@ -521,6 +521,6 @@ Galerie šablon rychlý start Azure obsahuje několik šablon pro Log Analytics,
 * [Přidat existující účet úložiště do služby Log Analytics](https://azure.microsoft.com/resources/templates/oms-existing-storage-account/)
 
 ## <a name="next-steps"></a>Další postup
-* [Nasazení agenta Windows na virtuální počítače Azure pomocí šablony Resource Manageru](../virtual-machines/windows/extensions-oms.md).
-* [Nasazení linuxového agenta na virtuální počítače Azure pomocí šablony Resource Manageru](../virtual-machines/linux/extensions-oms.md).
+* [Nasazení agenta Windows na virtuální počítače Azure pomocí šablony Resource Manageru](../virtual-machines/extensions/oms-windows.md).
+* [Nasazení linuxového agenta na virtuální počítače Azure pomocí šablony Resource Manageru](../virtual-machines/extensions/oms-linux.md).
 

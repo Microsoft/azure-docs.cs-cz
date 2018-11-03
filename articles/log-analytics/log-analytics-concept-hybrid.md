@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 10/15/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 03133c6d6518444f8e6fb15cfa425969dbafdedc
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 6c58967255270231f61c59205ed12a9cdfec6897
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406870"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50958691"
 ---
 # <a name="collect-data-in-a-hybrid-environment-with-log-analytics-agent"></a>Shromažďování dat v hybridním prostředí pomocí agenta Log Analytics
 
@@ -127,6 +127,6 @@ Připojení místních počítačů přímo k Log Analytics můžete provést po
 
 * Kontrola [zdroje dat](log-analytics-data-sources.md) pochopit zdroje dat dostupné pro shromažďování dat ze systému Windows nebo Linux. 
 
-* Další informace o [prohledávání protokolů](log-analytics-log-searches.md) analyzovat data shromážděná ze zdrojů dat a jejich řešení. 
+* Další informace o [prohledávání protokolů](log-analytics-log-search.md) analyzovat data shromážděná ze zdrojů dat a jejich řešení. 
 
-* Další informace o [řešení](log-analytics-add-solutions.md) , které doplňují do Log Analytics a také shromažďovat data do pracovního prostoru Log Analytics.
+* Další informace o [řešení](../monitoring/monitoring-solutions.md) , které doplňují do Log Analytics a také shromažďovat data do pracovního prostoru Log Analytics.

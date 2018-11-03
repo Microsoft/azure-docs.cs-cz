@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 09/29/2017
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 6f09e523b70e541c724ea53d0bd47215ad44d623
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 224d5673b374b9b30237d25113e07aaf6dd4feaf
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041982"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50960961"
 ---
 # <a name="automate-log-analytics-processes-with-the-connector-for-microsoft-flow"></a>Automatizace procesů Log Analytics pomocí konektoru pro Microsoft Flow
 [Microsoft Flow](https://ms.flow.microsoft.com) můžete vytvářet automatizované pracovní postupy pomocí stovek akce pro širokou škálu služeb. Výstup z jedné akce můžete použít jako vstup do druhé umožňuje vytvářet integrace mezi různými službami.  Azure Log Analytics connector pro Microsoft Flow umožňují vytvářet pracovní postupy, které zahrnují data načtená pomocí prohledávání protokolů v Log Analytics.
@@ -79,7 +79,7 @@ Kurz v tomto článku se dozvíte, jak vytvořit tok, který automaticky odesíl
 
 ## <a name="next-steps"></a>Další postup
 
-- Další informace o [prohledávání protokolů v Log Analytics](log-analytics-log-search-new.md).
+- Další informace o [prohledávání protokolů v Log Analytics](log-analytics-log-search.md).
 - Další informace o [Microsoft Flow](https://ms.flow.microsoft.com).
 
 

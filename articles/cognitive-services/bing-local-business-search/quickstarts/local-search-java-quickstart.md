@@ -10,12 +10,12 @@ ms.component: bing-local-business
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: c78094963202fe3784ee020db19356a9bd2da29a
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.openlocfilehash: e55c06c7e8a2d0952cac809b622fa9a63ccee399
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50748629"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50959796"
 ---
 # <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-using-java"></a>Rychlý start: Odešle dotaz do API Bingu pro místní obchodní vyhledávání pomocí Javy
 
@@ -93,8 +93,8 @@ public class LocalSearchCls {
         // Replace the subscriptionKey string value with your valid subscription key.
         static String subscriptionKey = "YOUR-ACCESS-KEY";
 
-        static String host = "https://www.bingapis.com/api";
-        static String path = "/v7/localbusinesses/search";
+        static String host = "https://api.cognitive.microsoft.com/bing";
+        static String path = "/v7.0/localbusinesses/search";
 
         static String searchTerm = "Hotel in Bellevue";
 

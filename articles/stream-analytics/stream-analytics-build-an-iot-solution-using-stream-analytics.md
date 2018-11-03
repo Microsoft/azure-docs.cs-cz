@@ -3,18 +3,18 @@ title: Sestavení řešení IoT pomocí Azure Stream Analytics
 description: Úvodní kurz pro řešení Stream Analytics IoT tollbooth scénáře
 services: stream-analytics
 author: jasonwhowell
-ms.author: jasonh
+ms.author: mamccrea
 manager: kfile
 ms.reviewer: jasonh, sngun
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/21/2018
-ms.openlocfilehash: 88c58175f4886d4796ed4e32b41d030c9ee441fc
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: e70a1210d44e5bfec914006afaf18eff772cac47
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49986880"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50978787"
 ---
 # <a name="build-an-iot-solution-by-using-stream-analytics"></a>Sestavení řešení IoT s použitím Stream Analytics
 
@@ -91,7 +91,7 @@ Tady je stručný popis sloupce:
 ### <a name="commercial-vehicle-registration-data"></a>Komerční vozidla registrační data
 Toto řešení využívá statické snímek komerční vozidla registrační databázi. Tato data se uloží jako soubor JSON do úložiště objektů blob v Azure, obsažené v ukázce.
 
-| LicensePlate | RegistrationId | Vypršela |
+| LicensePlate | RegistrationId | Vypršela platnost |
 | --- | --- | --- |
 | SVT 6023 |285429838 |1 |
 | XLZ 3463 |362715656 |0 |
@@ -106,7 +106,7 @@ Tady je stručný popis sloupce:
 | --- | --- |
 | LicensePlate |Registrační číslo vozidla |
 | RegistrationId |ID registrace vozidla |
-| Vypršela |Stav registrace vozidla: 0, pokud vozidla registrace je aktivní, 1, pokud vypršela platnost registrace |
+| Vypršela platnost |Stav registrace vozidla: 0, pokud vozidla registrace je aktivní, 1, pokud vypršela platnost registrace |
 
 ## <a name="set-up-the-environment-for-azure-stream-analytics"></a>Nastavení prostředí pro Azure Stream Analytics
 K dokončení tohoto řešení, budete potřebovat předplatné Microsoft Azure. Pokud nemáte účet Azure, můžete si [požádat o bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).

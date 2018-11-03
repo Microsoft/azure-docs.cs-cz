@@ -1,6 +1,6 @@
 ---
-title: Vytvoření skupin akce pomocí šablony Resource Manageru
-description: Naučte se vytvořit skupinu akce pomocí šablony Azure Resource Manager.
+title: Vytvoření skupiny akcí pomocí šablon Resource Manageru
+description: Zjistěte, jak vytvořit skupiny akcí s použitím šablony Azure Resource Manageru.
 author: dkamstra
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,27 +8,27 @@ ms.topic: conceptual
 ms.date: 02/16/2018
 ms.author: dukek
 ms.component: alerts
-ms.openlocfilehash: 9b49d21dad9bb1e48194cc31940c5cd53c909dc0
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 583a84fd943f6dab63f94e2811e21853e6e5f6a1
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35263095"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50959167"
 ---
-# <a name="create-an-action-group-with-a-resource-manager-template"></a>Vytvořit skupinu akce pomocí šablony Resource Manageru
-V tomto článku se dozvíte, jak používat [šablony Azure Resource Manageru](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates) ke konfiguraci skupin akce. Pomocí šablony můžete automaticky nastavit skupiny akce, které lze znovu použít v určitých typů výstrahy. Tyto skupiny akce Ujistěte se, že všechny správné strany se upozorní, když se výstraha.
+# <a name="create-an-action-group-with-a-resource-manager-template"></a>Vytvoření skupiny akcí pomocí šablony Resource Manageru
+V tomto článku se dozvíte, jak pomocí [šablony Azure Resource Manageru](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates) ke konfiguraci skupin akcí. Pomocí šablon můžete automaticky nastavit skupiny akcí, které je možné využít v určitých typů výstrahy. Tyto skupiny akcí Ujistěte se, že jsou všechny správné strany oznámení, když se aktivuje upozornění.
 
 Toto jsou základní kroky:
 
-1. Vytvořte šablonu jako soubor JSON, který popisuje, jak vytvořit skupinu akce.
+1. Vytvoření šablony jako soubor JSON, který popisuje, jak vytvořit skupinu akcí.
 
 2. Nasazení šablony pomocí [libovolnou metodu nasazení](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy).
 
-Nejdřív jsme popisují, jak vytvořit šablonu Resource Manageru pro skupinu akcí, kde definice akce jsou pevně zakódovaná v šabloně. Druhý jsme popisují, jak vytvořit šablonu, která přebírá informace o konfiguraci webhooku jako vstupní parametry při nasazení šablony.
+Nejprve zjistíte, jak vytvořit šablonu Resource Manageru pro skupinu akcí, kde definice akce jsou pevně zakódované v šabloně. Za druhé zjistíte, jak vytvořit šablonu, která přebírá informace o konfiguraci webhooků jako vstupní parametry při nasazení šablony.
 
-## <a name="resource-manager-templates-for-an-action-group"></a>Šablony Resource Manageru pro skupinu akce
+## <a name="resource-manager-templates-for-an-action-group"></a>Šablony Resource Manageru pro skupinu akcí
 
-Pokud chcete vytvořit skupinu akce pomocí šablony Resource Manageru, vytvořit prostředek typu `Microsoft.Insights/actionGroups`. Potom můžete vyplnit všech souvisejících vlastností. Tady jsou dvě ukázkové šablony, které vytvořit skupinu akce.
+Chcete-li vytvořit skupinu akcí pomocí šablony Resource Manageru vytvoříte prostředek typu `Microsoft.Insights/actionGroups`. Potom vyplňte všechny související vlastnosti. Tady jsou dvě ukázkové šablony, které vytvářejí skupiny akcí.
 
 ```json
 {
@@ -166,4 +166,4 @@ Pokud chcete vytvořit skupinu akce pomocí šablony Resource Manageru, vytvoři
 ## <a name="next-steps"></a>Další postup
 * Další informace o [skupiny akcí](monitoring-action-groups.md).
 * Další informace o [výstrahy](monitoring-overview-alerts.md).
-* Informace o postupu přidání [výstrah pomocí šablony Resource Manageru](monitoring-create-activity-log-alerts-with-resource-manager-template.md).
+* Zjistěte, jak přidat [výstrah pomocí šablony Resource Manageru](alert-activity-log.md).

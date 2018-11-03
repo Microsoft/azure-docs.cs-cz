@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 09/14/2018
 ms.author: ancav
 ms.component: metrics
-ms.openlocfilehash: 15cac40e743f44ea7e0954c94683674ad9372a7a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 5f6140b582b2412a164593bd2aa99bfbde5fb688
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46962943"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50964182"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Podporované metriky ve službě Azure Monitor
 Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, včetně grafů na portálu, přístup přes rozhraní REST API nebo dotazování je pomocí Powershellu nebo rozhraní příkazového řádku. Níže je úplný seznam všech metrik aktuálně k dispozici pro monitorování Azure metriky kanálu. Jiné metriky, může být k dispozici na portálu nebo pomocí starší verze rozhraní API. Tento seznam níže obsahuje pouze metriky, které jsou k dispozici prostřednictvím konsolidované kanálu metrik Azure monitoru. K vyhledání a přístup k těmto metrikám prosím použijte [2018-01-01 verze api-version](https://docs.microsoft.com/rest/api/monitor/metricdefinitions)
@@ -350,7 +350,7 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 |Latence|Latence|Milisekundy|Průměr|Latence v milisekundách|Žádné dimenze|
 |CharactersTranslated|Přeložené znaky|Počet|Celkem|Celkový počet znaků v příchozí textové žádosti|Žádné dimenze|
 |SpeechSessionDuration|Doba trvání řečové relace|Sekundy|Celkem|Celková doba trvání řečové relace v sekundách|Žádné dimenze|
-|TotalTransactions|Transakce celkem|Počet|Celkem|Celkový počet transakcí.|Žádné dimenze|
+|TotalTransactions|Transakce celkem|Počet|Celkem|Celkový počet transakcí|Žádné dimenze|
 |TotalTokenCalls|Celkem volání tokenů|Počet|Celkem|Celkový počet volání tokenů|Žádné dimenze|
 
 ## <a name="microsoftcomputevirtualmachines"></a>Microsoft.Compute/virtualMachines
@@ -360,22 +360,22 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 |Procento CPU|Procento CPU|Procento|Průměr|Procento přidělených výpočetních jednotek, které virtuální počítače aktuálně používají|Žádné dimenze|
 |Síťové vstupy|Síťové vstupy|B|Celkem|Počet bajtů přijatých virtuálními počítači na všech síťových rozhraních (příchozí provoz)|Žádné dimenze|
 |Síťové výstupy|Síťové výstupy|B|Celkem|Počet bajtů odchozích ze všech síťových rozhraní virtuálních počítačů (odchozí provoz)|Žádné dimenze|
-|Čtení z disku – bajty|Čtení z disku – bajty|B|Celkem|Celkový počet bajtů přečtený z disku během sledování|Žádné dimenze|
-|Zápis na disk – bajty|Zápis na disk – bajty|B|Celkem|Celkový počet bajtů zapsaný na disk během sledování|Žádné dimenze|
+|Čtení z disku – bajty|Čtení z disku – bajty|B|Celkem|Celkový počet bajtů přečtený z disku během období monitorování|Žádné dimenze|
+|Zápis na disk – bajty|Zápis na disk – bajty|B|Celkem|Celkový počet bajtů zapsaný na disk během období monitorování|Žádné dimenze|
 |Čtení z disku – operace/s|Čtení z disku – operace/s|CountPerSecond|Průměr|Čtení z disku – IOPS|Žádné dimenze|
 |Zápis na disk – operace/s|Zápis na disk – operace/s|CountPerSecond|Průměr|Zápis na disk – IOPS|Žádné dimenze|
 |Zbývající kredity CPU|Zbývající kredity CPU|Počet|Průměr|Celkové množství kreditu, které se dá využít|Žádné dimenze|
 |Spotřebované kredity CPU|Spotřebované kredity CPU|Počet|Průměr|Celkové množství kreditu, které spotřeboval virtuální počítač|Žádné dimenze|
-|Přečtené bajty podle disku za sekundu|Bajty přečtené z datového disku za sekundu (Preview)|CountPerSecond|Průměr|Celkový počet bajtů za sekundu přečtených z jednoho disku během období sledování|SlotId|
-|Zapsané bajty podle disku za sekundu|Bajty zapsané na datový disk za sekundu (Preview)|CountPerSecond|Průměr|Celkový počet bajtů za sekundu zapsaných na jeden disk během období sledování|SlotId|
+|Přečtené bajty podle disku za sekundu|Bajty přečtené z datového disku za sekundu (Preview)|CountPerSecond|Průměr|Celkový počet bajtů za sekundu přečtených z jednoho disku během období monitorování|SlotId|
+|Zapsané bajty podle disku za sekundu|Bajty zapsané na datový disk za sekundu (Preview)|CountPerSecond|Průměr|Celkový počet bajtů za sekundu zapsaných na jeden disk během období monitorování|SlotId|
 |Operace čtení podle disku za sekundu|Operace čtení z datového disku za sekundu (Preview)|CountPerSecond|Průměr|Celkový počet IOPS provedených při čtení z jednoho disku během období monitorování|SlotId|
 |Operace zápisu podle disku za sekundu|Operace zápisu na datový disk za sekundu (Preview)|CountPerSecond|Průměr|Celkový počet IOPS provedených při zápisu na jeden disk během období monitorování|SlotId|
-|HF podle disku|HF datového disku (Preview)|Počet|Průměr|Hloubka fronty datového disku (nebo délka fronty)|SlotId|
-|Přečtené bajty v operačním systému podle disku za sekundu|Bajty přečtené z disku s operačním systémem za sekundu (Preview)|CountPerSecond|Průměr|Celkový počet bajtů za sekundu přečtených z jednoho disku během období sledování pro disk s operačním systémem|Žádné dimenze|
-|Zapsané bajty v operačním systému podle disku za sekundu|Bajty zapsané na disk s operačním systémem za sekundu (Preview)|CountPerSecond|Průměr|Celkový počet bajtů za sekundu zapsaných na jeden disk během období sledování pro disk s operačním systémem|Žádné dimenze|
+|HF podle disku|HF (Preview) datového disku|Počet|Průměr|Hloubka fronty datového disku (nebo délka fronty)|SlotId|
+|Přečtené bajty v operačním systému podle disku za sekundu|Bajty přečtené z disku s operačním systémem za sekundu (Preview)|CountPerSecond|Průměr|Celkový počet bajtů za sekundu přečtených z jednoho disku během období monitorování pro disk s operačním systémem|Žádné dimenze|
+|Zapsané bajty v operačním systému podle disku za sekundu|Bajty zapsané na disk s operačním systémem za sekundu (Preview)|CountPerSecond|Průměr|Celkový počet bajtů za sekundu zapsaných na jeden disk během období monitorování pro disk s operačním systémem|Žádné dimenze|
 |Operace čtení v operačním systému podle disku za sekundu|Operace čtení z disku s operačním systémem za sekundu (Preview)|CountPerSecond|Průměr|Celkový počet IOPS provedených při čtení z jednoho disku během období monitorování pro disk s operačním systémem|Žádné dimenze|
 |Operace zápisu v operačním systému podle disku za sekundu|Operace zápisu na disk s operačním systémem za sekundu (Preview)|CountPerSecond|Průměr|Celkový počet IOPS provedených při zápisu na jeden disk během období monitorování pro disk s operačním systémem|Žádné dimenze|
-|HF v operačním systému podle disku|HF disku s operačním systémem (Preview)|Počet|Průměr|Hloubka fronty disku s operačním systémem (nebo délka fronty)|Žádné dimenze|
+|HF v operačním systému podle disku|Disk s operačním systémem hloubka fronty (Preview)|Počet|Průměr|Hloubka fronty disku s operačním systémem (nebo délka fronty)|Žádné dimenze|
 
 ## <a name="microsoftcomputevirtualmachinescalesets"></a>Microsoft.Compute/virtualMachineScaleSets
 
@@ -384,22 +384,22 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 |Procento CPU|Procento CPU|Procento|Průměr|Procento přidělených výpočetních jednotek, které virtuální počítače aktuálně používají|Žádné dimenze|
 |Síťové vstupy|Síťové vstupy|B|Celkem|Počet bajtů přijatých virtuálními počítači na všech síťových rozhraních (příchozí provoz)|Žádné dimenze|
 |Síťové výstupy|Síťové výstupy|B|Celkem|Počet bajtů odchozích ze všech síťových rozhraní virtuálních počítačů (odchozí provoz)|Žádné dimenze|
-|Čtení z disku – bajty|Čtení z disku – bajty|B|Celkem|Celkový počet bajtů přečtený z disku během sledování|Žádné dimenze|
-|Zápis na disk – bajty|Zápis na disk – bajty|B|Celkem|Celkový počet bajtů zapsaný na disk během sledování|Žádné dimenze|
+|Čtení z disku – bajty|Čtení z disku – bajty|B|Celkem|Celkový počet bajtů přečtený z disku během období monitorování|Žádné dimenze|
+|Zápis na disk – bajty|Zápis na disk – bajty|B|Celkem|Celkový počet bajtů zapsaný na disk během období monitorování|Žádné dimenze|
 |Čtení z disku – operace/s|Čtení z disku – operace/s|CountPerSecond|Průměr|Čtení z disku – IOPS|Žádné dimenze|
 |Zápis na disk – operace/s|Zápis na disk – operace/s|CountPerSecond|Průměr|Zápis na disk – IOPS|Žádné dimenze|
 |Zbývající kredity CPU|Zbývající kredity CPU|Počet|Průměr|Celkové množství kreditu, které se dá využít|Žádné dimenze|
 |Spotřebované kredity CPU|Spotřebované kredity CPU|Počet|Průměr|Celkové množství kreditu, které spotřeboval virtuální počítač|Žádné dimenze|
-|Přečtené bajty podle disku za sekundu|Bajty přečtené z datového disku za sekundu (Preview)|CountPerSecond|Průměr|Celkový počet bajtů za sekundu přečtených z jednoho disku během období sledování|SlotId|
-|Zapsané bajty podle disku za sekundu|Bajty zapsané na datový disk za sekundu (Preview)|CountPerSecond|Průměr|Celkový počet bajtů za sekundu zapsaných na jeden disk během období sledování|SlotId|
+|Přečtené bajty podle disku za sekundu|Bajty přečtené z datového disku za sekundu (Preview)|CountPerSecond|Průměr|Celkový počet bajtů za sekundu přečtených z jednoho disku během období monitorování|SlotId|
+|Zapsané bajty podle disku za sekundu|Bajty zapsané na datový disk za sekundu (Preview)|CountPerSecond|Průměr|Celkový počet bajtů za sekundu zapsaných na jeden disk během období monitorování|SlotId|
 |Operace čtení podle disku za sekundu|Operace čtení z datového disku za sekundu (Preview)|CountPerSecond|Průměr|Celkový počet IOPS provedených při čtení z jednoho disku během období monitorování|SlotId|
 |Operace zápisu podle disku za sekundu|Operace zápisu na datový disk za sekundu (Preview)|CountPerSecond|Průměr|Celkový počet IOPS provedených při zápisu na jeden disk během období monitorování|SlotId|
-|HF podle disku|HF datového disku (Preview)|Počet|Průměr|Hloubka fronty datového disku (nebo délka fronty)|SlotId|
-|Přečtené bajty v operačním systému podle disku za sekundu|Disk s operačním systémem přečtené bajty/s|CountPerSecond|Průměr|Celkový počet bajtů za sekundu přečtených z jednoho disku během období sledování pro disk s operačním systémem|Žádné dimenze|
-|Zapsané bajty v operačním systému podle disku za sekundu|Bajty zapsané na disk s operačním systémem za sekundu (Preview)|CountPerSecond|Průměr|Celkový počet bajtů za sekundu zapsaných na jeden disk během období sledování pro disk s operačním systémem|Žádné dimenze|
+|HF podle disku|HF (Preview) datového disku|Počet|Průměr|Hloubka fronty datového disku (nebo délka fronty)|SlotId|
+|Přečtené bajty v operačním systému podle disku za sekundu|Disk s operačním systémem přečtené bajty/s|CountPerSecond|Průměr|Celkový počet bajtů za sekundu přečtených z jednoho disku během období monitorování pro disk s operačním systémem|Žádné dimenze|
+|Zapsané bajty v operačním systému podle disku za sekundu|Bajty zapsané na disk s operačním systémem za sekundu (Preview)|CountPerSecond|Průměr|Celkový počet bajtů za sekundu zapsaných na jeden disk během období monitorování pro disk s operačním systémem|Žádné dimenze|
 |Operace čtení v operačním systému podle disku za sekundu|Operace čtení z disku s operačním systémem za sekundu (Preview)|CountPerSecond|Průměr|Celkový počet IOPS provedených při čtení z jednoho disku během období monitorování pro disk s operačním systémem|Žádné dimenze|
 |Operace zápisu v operačním systému podle disku za sekundu|Operace zápisu na disk s operačním systémem za sekundu (Preview)|CountPerSecond|Průměr|Celkový počet IOPS provedených při zápisu na jeden disk během období monitorování pro disk s operačním systémem|Žádné dimenze|
-|HF v operačním systému podle disku|HF disku s operačním systémem (Preview)|Počet|Průměr|Hloubka fronty disku s operačním systémem (nebo délka fronty)|Žádné dimenze|
+|HF v operačním systému podle disku|Disk s operačním systémem hloubka fronty (Preview)|Počet|Průměr|Hloubka fronty disku s operačním systémem (nebo délka fronty)|Žádné dimenze|
 
 ## <a name="microsoftcomputevirtualmachinescalesetsvirtualmachines"></a>Microsoft.Compute/virtualMachineScaleSets/virtualMachines
 
@@ -408,22 +408,22 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 |Procento CPU|Procento CPU|Procento|Průměr|Procento přidělených výpočetních jednotek, které virtuální počítače aktuálně používají|Žádné dimenze|
 |Síťové vstupy|Síťové vstupy|B|Celkem|Počet bajtů přijatých virtuálními počítači na všech síťových rozhraních (příchozí provoz)|Žádné dimenze|
 |Síťové výstupy|Síťové výstupy|B|Celkem|Počet bajtů odchozích ze všech síťových rozhraní virtuálních počítačů (odchozí provoz)|Žádné dimenze|
-|Čtení z disku – bajty|Čtení z disku – bajty|B|Celkem|Celkový počet bajtů přečtený z disku během sledování|Žádné dimenze|
-|Zápis na disk – bajty|Zápis na disk – bajty|B|Celkem|Celkový počet bajtů zapsaný na disk během sledování|Žádné dimenze|
+|Čtení z disku – bajty|Čtení z disku – bajty|B|Celkem|Celkový počet bajtů přečtený z disku během období monitorování|Žádné dimenze|
+|Zápis na disk – bajty|Zápis na disk – bajty|B|Celkem|Celkový počet bajtů zapsaný na disk během období monitorování|Žádné dimenze|
 |Čtení z disku – operace/s|Čtení z disku – operace/s|CountPerSecond|Průměr|Čtení z disku – IOPS|Žádné dimenze|
 |Zápis na disk – operace/s|Zápis na disk – operace/s|CountPerSecond|Průměr|Zápis na disk – IOPS|Žádné dimenze|
 |Zbývající kredity CPU|Zbývající kredity CPU|Počet|Průměr|Celkové množství kreditu, které se dá využít|Žádné dimenze|
 |Spotřebované kredity CPU|Spotřebované kredity CPU|Počet|Průměr|Celkové množství kreditu, které spotřeboval virtuální počítač|Žádné dimenze|
-|Přečtené bajty podle disku za sekundu|Bajty přečtené z datového disku za sekundu (Preview)|CountPerSecond|Průměr|Celkový počet bajtů za sekundu přečtených z jednoho disku během období sledování|SlotId|
-|Zapsané bajty podle disku za sekundu|Bajty zapsané na datový disk za sekundu (Preview)|CountPerSecond|Průměr|Celkový počet bajtů za sekundu zapsaných na jeden disk během období sledování|SlotId|
+|Přečtené bajty podle disku za sekundu|Bajty přečtené z datového disku za sekundu (Preview)|CountPerSecond|Průměr|Celkový počet bajtů za sekundu přečtených z jednoho disku během období monitorování|SlotId|
+|Zapsané bajty podle disku za sekundu|Bajty zapsané na datový disk za sekundu (Preview)|CountPerSecond|Průměr|Celkový počet bajtů za sekundu zapsaných na jeden disk během období monitorování|SlotId|
 |Operace čtení podle disku za sekundu|Operace čtení z datového disku za sekundu (Preview)|CountPerSecond|Průměr|Celkový počet IOPS provedených při čtení z jednoho disku během období monitorování|SlotId|
 |Operace zápisu podle disku za sekundu|Operace zápisu na datový disk za sekundu (Preview)|CountPerSecond|Průměr|Celkový počet IOPS provedených při zápisu na jeden disk během období monitorování|SlotId|
-|HF podle disku|HF datového disku (Preview)|Počet|Průměr|Hloubka fronty datového disku (nebo délka fronty)|SlotId|
-|Přečtené bajty v operačním systému podle disku za sekundu|Bajty přečtené z disku s operačním systémem za sekundu (Preview)|CountPerSecond|Průměr|Celkový počet bajtů za sekundu přečtených z jednoho disku během období sledování pro disk s operačním systémem|Žádné dimenze|
-|Zapsané bajty v operačním systému podle disku za sekundu|Bajty zapsané na disk s operačním systémem za sekundu (Preview)|CountPerSecond|Průměr|Celkový počet bajtů za sekundu zapsaných na jeden disk během období sledování pro disk s operačním systémem|Žádné dimenze|
+|HF podle disku|HF (Preview) datového disku|Počet|Průměr|Hloubka fronty datového disku (nebo délka fronty)|SlotId|
+|Přečtené bajty v operačním systému podle disku za sekundu|Bajty přečtené z disku s operačním systémem za sekundu (Preview)|CountPerSecond|Průměr|Celkový počet bajtů za sekundu přečtených z jednoho disku během období monitorování pro disk s operačním systémem|Žádné dimenze|
+|Zapsané bajty v operačním systému podle disku za sekundu|Bajty zapsané na disk s operačním systémem za sekundu (Preview)|CountPerSecond|Průměr|Celkový počet bajtů za sekundu zapsaných na jeden disk během období monitorování pro disk s operačním systémem|Žádné dimenze|
 |Operace čtení v operačním systému podle disku za sekundu|Operace čtení z disku s operačním systémem za sekundu (Preview)|CountPerSecond|Průměr|Celkový počet IOPS provedených při čtení z jednoho disku během období monitorování pro disk s operačním systémem|Žádné dimenze|
 |Operace zápisu v operačním systému podle disku za sekundu|Operace zápisu na disk s operačním systémem za sekundu (Preview)|CountPerSecond|Průměr|Celkový počet IOPS provedených při zápisu na jeden disk během období monitorování pro disk s operačním systémem|Žádné dimenze|
-|HF v operačním systému podle disku|HF disku s operačním systémem (Preview)|Počet|Průměr|Hloubka fronty disku s operačním systémem (nebo délka fronty)|Žádné dimenze|
+|HF v operačním systému podle disku|Disk s operačním systémem hloubka fronty (Preview)|Počet|Průměr|Hloubka fronty disku s operačním systémem (nebo délka fronty)|Žádné dimenze|
 
 ## <a name="microsoftcontainerinstancecontainergroups"></a>Microsoft.ContainerInstance/containerGroups
 
@@ -431,7 +431,7 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 |---|---|---|---|---|---|
 |CpuUsage|Využití procesoru|Počet|Průměr|Využití procesoru u všech jader v jednotkách millicore|containerName|
 |Parametru MemoryUsage|Využití paměti|B|Průměr|Celkové využití paměti v bajtech|containerName|
-|NetworkBytesReceivedPerSecond|Bajtů přijatých za sekundu ze sítě|B|Průměr|Síť počet přijatých bajtů za sekundu.|Žádné dimenze|
+|NetworkBytesReceivedPerSecond|Bajty přijaté přes síť za sekundu|B|Průměr|Bajty přijaté přes síť za sekundu|Žádné dimenze|
 |NetworkBytesTransmittedPerSecond|Bajty přenesené přes síť za sekundu|B|Průměr|Bajty přenesené přes síť za sekundu|Žádné dimenze|
 
 ## <a name="microsoftcontainerservicemanagedclusters"></a>Microsoft.ContainerService/managedClusters
@@ -587,8 +587,8 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 |devices.totalDevices|Celkový počet zařízení (zastaralé)|Počet|Celkem|Počet zařízení zaregistrovaný do služby IoT hub|Žádné dimenze|
 |devices.connectedDevices.allProtocol|Připojené zařízení (zastaralé) |Počet|Celkem|Počet zařízení připojená ke službě IoT hub|Žádné dimenze|
 |d2c.telemetry.egress.success|Směrování: telemetrické zprávy doručí|Počet|Celkem|Počet pokusů, které zprávy se úspěšně doručila na všechny koncové body pomocí služby IoT Hub směrování. Pokud zpráva je směrována do několika koncových bodů, tato hodnota zvýší o jedna pro každé úspěšné dodání. Pokud zpráva se doručí na stejný koncový bod vícekrát, tato hodnota zvýší o jedna pro každé úspěšné dodání.|Žádné dimenze|
-|d2c.telemetry.egress.dropped|Směrování: telemetrie počet ztracených zpráv |Počet|Celkem|Počet pokusů, které služba IoT Hub směrování z důvodu dead koncové body byly zahodit zprávy. Tato hodnota nepočítá doručování zpráv do základní trasy dodaným vynechané zprávy nejsou existuje.|Žádné dimenze|
-|d2c.telemetry.egress.orphaned|Směrování: telemetrické zprávy osamocené |Počet|Celkem|Počet pokusů, které zprávy byly osamocené přesměrováním služby IoT Hub, protože neodpovídají žádné pravidla směrování (včetně základní pravidlo). |Žádné dimenze|
+|d2c.telemetry.egress.dropped|Směrování: telemetrie počet ztracených zpráv |Počet|Celkem|Počet pokusů, které služba IoT Hub směrování z důvodu dead koncové body byly zahodit zprávy. Tato hodnota nepočítá doručování zpráv do základní trasy dodaným vynechané zprávy nejsou existuje.|Žádné dimenze|
+|d2c.telemetry.egress.orphaned|Směrování: telemetrické zprávy osamocené |Počet|Celkem|Počet pokusů, které zprávy byly osamocené přesměrováním služby IoT Hub, protože neodpovídají žádné pravidla směrování (včetně základní pravidlo). |Žádné dimenze|
 |d2c.telemetry.egress.invalid|Směrování: telemetrické zprávy nekompatibilní|Počet|Celkem|Počet pokusů směrování služby IoT Hub se nepodařilo doručit z důvodu nekompatibility s koncovým bodem. Tato hodnota nezahrnuje opakovaných pokusů.|Žádné dimenze|
 |d2c.telemetry.egress.fallback|Směrování: zprávy doručeny pro použití náhradní lokality|Počet|Celkem|Počet pokusů, které směrování služby IoT Hub doručení zprávy na koncový bod přidružený k použití náhradní lokality trasy.|Žádné dimenze|
 |d2c.endpoints.egress.eventHubs|Směrování: zprávy doručeny do centra událostí|Počet|Celkem|Počet pokusů, které se úspěšně směrování služby IoT Hub doručení zpráv do koncových bodů centra událostí.|Žádné dimenze|
@@ -658,7 +658,7 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 |MongoRequestCharge|Zátěž žádostí mongo|Počet|Celkem|Spotřebované jednotky žádostí mongo|Název databáze, CollectionName, oblast, CommandName, kód chyby|
 |MongoRequests|Požadavky mongo|Počet|Počet|Počet zpracovaných požadavků Mongo|Název databáze, CollectionName, oblast, CommandName, kód chyby|
 |TotalRequestUnits|Celkový požadavek jednotky|Počet|Celkem|Požadavku že spotřebované jednotky|Název databáze, StatusCode CollectionName, oblasti,|
-|TotalRequests|Celkový počet žádostí|Počet|Počet|Počet zpracovaných požadavků|Název databáze, StatusCode CollectionName, oblasti,|
+|TotalRequests|Požadavky celkem|Počet|Počet|Počet zpracovaných požadavků|Název databáze, StatusCode CollectionName, oblasti,|
 
 
 ## <a name="microsofteventgridtopics"></a>Microsoft.EventGrid/topics
@@ -794,7 +794,7 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 |čítače výkonu nebo memoryAvailableBytes|Dostupná paměť|B|Průměr|Okamžitě dostupná fyzická paměť pro přidělení procesu nebo pro systémové použití|cloud nebo instance role|
 |čítače výkonu nebo processPrivateBytes|Privátní bajty procesu|B|Průměr|Paměť exkluzivně přiřazená k procesům monitorované aplikace|cloud nebo instance role|
 |požadavky a doba trvání|Doba odezvy serveru|Milisekundy|Průměr|Doba mezi přijetím žádosti HTTP a dokončením odesílání odpovědi|žádost/performanceBucket, požadavek/kód výsledku, operace nebo syntetický, cloud nebo instance role, žádost o/úspěch, cloudu/roleName|
-|požadavky nebo count|Žádosti serveru|Počet|Počet|Počet dokončených žádostí HTTP|žádost/performanceBucket, požadavek/kód výsledku, operace nebo syntetický, cloud nebo instance role, žádost o/úspěch, cloudu/roleName|
+|požadavky nebo count|Požadavky serveru|Počet|Počet|Počet dokončených žádostí HTTP|žádost/performanceBucket, požadavek/kód výsledku, operace nebo syntetický, cloud nebo instance role, žádost o/úspěch, cloudu/roleName|
 |/ Neúspěšné požadavky|Neúspěšné požadavky|Počet|Počet|Požadavky HTTP počet označen jako neúspěšný. Ve většině případů jde o žádosti s kódem odpovědi > = 400 a není rovno 401.|žádost/performanceBucket, požadavek/resultCode, operace nebo syntetický, cloudu/instance role, cloudu/roleName|
 |výjimky nebo count|Výjimky|Počet|Celkem|Kombinovaný počet všech nezachycených výjimek.|cloud/roleName, cloud nebo instance role, klient/typu|
 |výjimky a prohlížeče|Výjimky prohlížečů|Počet|Celkem|Počet nezachycených výjimek vyvolaných v prohlížeči|Žádné dimenze|
@@ -975,7 +975,7 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 |Propustnost|Propustnost|BytesPerSecond|Celkem|Počet bajtů za sekundu, které má služby Application Gateway|Žádné dimenze|
 |UnhealthyHostCount|Není v pořádku. počet hostitelů|Počet|Průměr|Počet hostitelů back-end není v pořádku|BackendSettingsPool|
 |HealthyHostCount|V pořádku. počet hostitelů|Počet|Průměr|Počet hostitelů v dobrém stavu back-endu|BackendSettingsPool|
-|TotalRequests|Celkový počet žádostí|Počet|Celkem|Počet úspěšných požadavků, které má služba Application Gateway obsluhuje|BackendSettingsPool|
+|TotalRequests|Požadavky celkem|Počet|Celkem|Počet úspěšných požadavků, které má služba Application Gateway obsluhuje|BackendSettingsPool|
 |FailedRequests|Neúspěšné žádosti|Počet|Celkem|Počet neúspěšných žádostí, které má služba Application Gateway obsluhuje|BackendSettingsPool|
 |ResponseStatus|Stav odpovědi|Počet|Celkem|Stav odpovědi HTTP vrácené Application Gateway|HttpStatusGroup|
 |CurrentConnections|Aktuální počet připojení|Počet|Celkem|Počet aktuální připojení ke službě Application Gateway|Žádné dimenze|
@@ -1306,7 +1306,7 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 |io_bytes_read|Přečtené bajty vstupně-výstupních operací|B|Průměr|Přečtené bajty vstupně-výstupních operací|Žádné dimenze|
 |io_bytes_written|Zapsané bajty vstupně-výstupních operací|B|Průměr|Zapsané bajty vstupně-výstupních operací|Žádné dimenze|
 
-## <a name="microsoftstoragestorageaccounts"></a>Microsoft.Storage/storageAccounts
+## <a name="microsoftstoragestorageaccounts"></a>Microsoft.Storage/storageAccounts.
 
 |Metrika|Metriky zobrazovaný název|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
@@ -1570,6 +1570,6 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 |MemoryPercentage|Procento paměti|Procento|Průměr|Procento paměti|Instance|
 
 ## <a name="next-steps"></a>Další postup
-* [Přečtěte si informace o metriky ve službě Azure Monitor](monitoring-overview-metrics.md)
-* [Vytváření upozornění na metriky](insights-receive-alert-notifications.md)
+* [Přečtěte si informace o metriky ve službě Azure Monitor](../monitoring/monitoring-data-collection.md)
+* [Vytváření upozornění na metriky](monitoring-overview-alerts.md)
 * [Export metrik úložiště, Centrum událostí a Log Analytics](monitoring-overview-of-diagnostic-logs.md)

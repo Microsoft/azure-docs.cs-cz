@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: mamit
 ms.component: alerts
-ms.openlocfilehash: c4c8279a1d4638a1c5d889b53e2d9e89e458cc37
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 30b2d60868702c6113612668b8e4cf9975aa2c40
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39117613"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50962193"
 ---
 # <a name="unified-alerts-in-azure-monitor"></a>Sjednocené výstrah ve službě Azure Monitor
 
@@ -82,9 +82,9 @@ Vytvořit nové pravidlo upozornění s následující tři kroky:
  
 Tato zjednodušený proces vytváření už vyžaduje, abyste znali monitorování zdroje nebo signály, které jsou podporovány před výběrem prostředku Azure. Seznam dostupné signály se automaticky filtruje podle cílový prostředek, který jste vybrali, a provede vás těmito možnostmi definování logiky pravidla výstrahy.
 
-Další informace o tom, jak vytvořit pravidla výstrah ve službě [vytvoření, zobrazení a Správa výstrah pomocí Azure monitoru](monitor-alerts-unified-usage.md).
+Další informace o tom, jak vytvořit pravidla výstrah ve službě [vytvoření, zobrazení a Správa výstrah pomocí Azure monitoru](alert-metric.md).
 
-Výstrahy jsou dostupné v rámci několika služeb monitorování v Azure. Informace, jak a kdy se má používat každý z těchto služeb najdete v tématu [aplikací a prostředků Monitoring Azure](./monitoring-overview.md). Následující tabulka obsahuje seznam typů pravidel upozornění, které jsou dostupné v rámci Azure. Také uvádí, co v současné době nepodporuje jednotné prostředí upozornění.
+Výstrahy jsou dostupné v rámci několika služeb monitorování v Azure. Informace, jak a kdy se má používat každý z těchto služeb najdete v tématu [aplikací a prostředků Monitoring Azure](../azure-monitor/overview.md). Následující tabulka obsahuje seznam typů pravidel upozornění, které jsou dostupné v rámci Azure. Také uvádí, co v současné době nepodporuje jednotné prostředí upozornění.
 
 | **Zdroj monitorování** | **Typ signálu**  | **Popis** | 
 |-------------|----------------|-------------|
@@ -224,7 +224,7 @@ Stránka s podrobnostmi inteligentní skupiny obsahuje následující části.
 | Historie | Obsahuje všechny akce podniknuté inteligentní skupinou a změnách, které se provedly. Toto je aktuálně omezená na změny stavu a výstrahy členství. |
 
 ## <a name="next-steps"></a>Další postup
-- [Naučte se používat nové prostředí upozornění k vytvoření, zobrazení a Správa výstrah](monitor-alerts-unified-usage.md)
+- [Naučte se používat nové prostředí upozornění k vytvoření, zobrazení a Správa výstrah](alert-metric.md)
 - [Další informace o upozornění protokolů v prostředí upozornění](monitor-alerts-unified-log.md)
 - [Další informace o upozorněních metrik v prostředí upozornění](monitoring-near-real-time-metric-alerts.md)
-- [Další informace o upozornění protokolu aktivit v prostředí upozornění](monitoring-activity-log-alerts-new-experience.md)
+- [Další informace o upozornění protokolu aktivit v prostředí upozornění](alert-activity-log.md)

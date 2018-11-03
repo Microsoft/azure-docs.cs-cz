@@ -4,19 +4,18 @@ titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
 ms.component: azds-kubernetes
-author: ghogen
-ms.author: ghogen
+author: iainfoulds
+ms.author: iainfou
 ms.date: 09/11/2018
 ms.topic: article
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery
-manager: douge
-ms.openlocfilehash: 3f30a62a2f351aecabc37206607c3e28ec5e3ab5
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: bca818cb4e13066f8a631111b75f50384e521ac1
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353354"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50978889"
 ---
 # <a name="troubleshooting-guide"></a>Průvodce odstraňováním potíží
 
@@ -231,6 +230,16 @@ K této chybě dochází, pokud klient Helm může už sdělit pod Tiller spušt
 
 ### <a name="try"></a>Zkuste:
 Obvykle restartování agentské uzly v clusteru vyřeší tento problém.
+
+## <a name="azure-dev-spaces-proxy-can-interfere-with-other-pods-running-in-a-dev-space"></a>Proxy služby Azure Dev mezer může narušovat dalších podů se spuštěnou v prostoru vývoj
+
+### <a name="reason"></a>Důvod
+Když povolíte prostory vývoj oboru názvů v clusteru AKS, volá se kontejnerem Další _mindaro proxy_ je nainstalován ve všech pody spuštěné v tomto oboru názvů. Tento kontejner zachycuje volání služeb v podu, která je nedílnou součástí vývoje prostorů týmu vývojářských funkcí.
+
+Bohužel by mohl narušovat určité služby spuštěné v tyto pody. Konkrétně to naruší to podů spuštění Redis cache, příčinou chyb připojení a chyby v komunikaci typu hlavní/podřízený.
+
+### <a name="try"></a>Zkuste:
+Ovlivněné pod(s) můžete přesunout do oboru názvů v clusteru, který nemá _není_ Dev prostory povolené při pokračování v používání zbytek aplikace uvnitř oboru názvů s povoleným Dev mezery. Vývoj prostory nelze nainstalovat _mindaro proxy_ kontejneru uvnitř Dev prostory povolených oborů názvů.
 
 ## <a name="azure-dev-spaces-doesnt-seem-to-use-my-existing-dockerfile-to-build-a-container"></a>Azure Dev prostory vypadá, že nepodporuje použití Můj existující soubor Dockerfile k vytvoření kontejneru 
 

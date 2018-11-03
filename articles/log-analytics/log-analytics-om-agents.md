@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 08/02/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 0c274b1ed3cbd0e00e96072adb2fca41541af686
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: fcdc14534e833ee394645e19cf8bc4bd9d6a7aaa
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49402656"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50961139"
 ---
 # <a name="connect-operations-manager-to-log-analytics"></a>Připojení nástroje Operations Manager ke službě Log Analytics
 Nástroj Operations Manager můžete integrovat do svého pracovního prostoru Log Analytics, abyste nepřišli o své investice do systému System Center Operations Manager a mohli využívat rozšířené možnosti Log Analytics. Díky tomu budete moct využívat to, co nabízí Log Analytics, a současně nadále používat nástroj Operations Manager pro tyto činnosti:
@@ -331,6 +331,6 @@ V budoucnu Pokud máte v plánu na opětovné připojení skupiny pro správu k 
 * V nejnovější kumulativní aplikaci použité u vaší skupiny pro správu. V případě verze Operations Manager 2012 jde o zdrojovou složku ` %ProgramFiles%\Microsoft System Center 2012\Operations Manager\Server\Management Packs for Update Rollups` a v případě verze 2012 R2 jde o umístění `System Center 2012 R2\Operations Manager\Server\Management Packs for Update Rollups`.
 
 ## <a name="next-steps"></a>Další postup
-Informace o přidávání funkcí a shromažďování dat najdete v článku [Přidání řešení Log Analytics z galerie řešení](log-analytics-add-solutions.md).
+Informace o přidávání funkcí a shromažďování dat najdete v článku [Přidání řešení Log Analytics z galerie řešení](../monitoring/monitoring-solutions.md).
 
 

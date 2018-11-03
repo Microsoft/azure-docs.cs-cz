@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/08/2017
 ms.author: mbullwin
-ms.openlocfilehash: 4c35f4366b2290164036316be8de730e20aa99bf
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 99ace7be05f186ac920aa9671946389e95e3a3a6
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47092658"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50958113"
 ---
 # <a name="exploring-metrics-in-application-insights"></a>Zkoumání metrik ve službě Application Insights
 Metriky na [Application Insights] [ start] měřené hodnoty a počty událostí, které se odesílají v telemetrii z vaší aplikace. Pomáhají zjišťovat problémy s výkonem a sledovat trendy ve využití vaší aplikace. Existuje širokou škálu standardních metrik a můžete také vytvořit své vlastní metriky a události.
@@ -194,14 +194,14 @@ Z grafu metrik můžete kliknout na ikonu Analytics získat přímo na ekvivalen
 
     Pokud chcete nastavit filtry, jiné na různých grafů, vytvořte je v jiné listy, uložte jako samostatné Oblíbené položky. Pokud chcete, můžete ho připnout na řídicí panel, tak, aby si ji můžete zobrazit vedle sebe navzájem.
 * Pokud seskupíte podle vlastnosti, která není definována na metriku grafu, pak nebude nic v grafu. Vymažte "Seskupit podle", nebo zvolte jinou seskupení vlastnost.
-* Údaje o výkonu (procesor, frekvence v/v a tak dále) je k dispozici pro Java webových služeb, aplikací klasické pracovní plochy Windows [IIS webové aplikace a služby, pokud budete instalovat monitorování stavu](app-insights-monitor-performance-live-website-now.md), a [Azure Cloud Services](app-insights-azure.md). Není k dispozici pro Azure websites.
+* Údaje o výkonu (procesor, frekvence v/v a tak dále) je k dispozici pro Java webových služeb, aplikací klasické pracovní plochy Windows [IIS webové aplikace a služby, pokud budete instalovat monitorování stavu](app-insights-monitor-performance-live-website-now.md), a [Azure Cloud Services](app-insights-overview.md). Není k dispozici pro Azure websites.
 
 ## <a name="video"></a>Video
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player]
 
 ## <a name="next-steps"></a>Další postup
-* [Sledování využití pomocí Application Insights](app-insights-web-track-usage.md)
+* [Sledování využití pomocí Application Insights](app-insights-usage-overview.md)
 * [Pomocí vyhledávání diagnostiky](app-insights-diagnostic-search.md)
 
 <!--Link references-->

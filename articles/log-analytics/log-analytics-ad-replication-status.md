@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/24/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 7c850eee67224d09ea2715a58c3cd8eca4ab07af
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: c248e126d99c7cb83895871ec24d41ffcfd84d29
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041896"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50960680"
 ---
 # <a name="monitor-active-directory-replication-status-with-log-analytics"></a>Monitorování stavu replikace služby Active Directory pomocí služby Log Analytics
 
@@ -34,7 +34,7 @@ Balíček stavem replikace AD řešení pravidelně monitoruje prostředí služ
 K instalaci a konfiguraci řešení můžete použít následující informace.
 
 * Musíte nainstalovat agenty na řadiče domény, které jsou členy domény, který se má vyhodnotit. Nebo, musíte nainstalovat agenty na členských serverech a konfigurace agentů k odesílání dat replikace AD do služby Log Analytics. Chcete-li pochopit, jak připojit počítače s Windows ke službě Log Analytics, přečtěte si téma [počítače Windows se připojit ke službě Log Analytics](log-analytics-windows-agent.md). Pokud řadiče domény už je součástí existujícího prostředí System Center Operations Manager, který chcete připojit ke službě Log Analytics, najdete v článku [připojení Operations Manageru k Log Analytics](log-analytics-om-agents.md).
-* Přidejte řešení pro stav replikace služby Active Directory do pracovního prostoru Log Analytics pomocí postupu popsaného v [přidání řešení Log Analytics z Galerie řešení](log-analytics-add-solutions.md).  Není nutná žádná další konfigurace.
+* Přidejte řešení pro stav replikace služby Active Directory do pracovního prostoru Log Analytics pomocí postupu popsaného v [přidání řešení Log Analytics z Galerie řešení](../monitoring/monitoring-solutions.md).  Není nutná žádná další konfigurace.
 
 ## <a name="ad-replication-status-data-collection-details"></a>Podrobnosti kolekce dat stavu replikace AD
 V následující tabulce jsou uvedeny metody shromažďování dat a další podrobnosti o tom, jak data se shromažďují pro stav replikace AD.
@@ -110,7 +110,7 @@ Po kliknutí na libovolnou položku v jednom seznamu se zobrazí další podrobn
 
 ![Chyby stavu replikace AD ve výsledcích hledání](./media/log-analytics-ad-replication-status/oms-ad-replication-search-details.png)
 
-Z tohoto místa můžete dále filtrovat, Upravit vyhledávací dotaz a podobně. Další informace o používání prohledávání protokolů, najdete v části [prohledávání protokolů](log-analytics-log-searches.md).
+Z tohoto místa můžete dále filtrovat, Upravit vyhledávací dotaz a podobně. Další informace o používání prohledávání protokolů, najdete v části [prohledávání protokolů](log-analytics-log-search.md).
 
 **HelpLink** poli se zobrazí adresa URL stránky TechNet s dalšími podrobnosti o této konkrétní chyba. Můžete zkopírovat a vložit tento odkaz do okna prohlížeče, pokud chcete zobrazit informace o řešení potíží a opravě chyby.
 
@@ -154,4 +154,4 @@ Pokud potřebujete pomoc s připojením jeden z řadičů domény, můžete zobr
 Pokud nechcete, aby všechny řadiče domény připojit přímo ke službě Log Analytics nebo System Center Operations Manager, najdete v článku [povolit řadiči domény k odesílání dat AD do služby Log Analytics](#to-enable-a-non-domain-controller-to-send-ad-data-to-oms).
 
 ## <a name="next-steps"></a>Další postup
-* Použití [prohledávání protokolů v Log Analytics](log-analytics-log-searches.md) zobrazíte podrobné údaje o stavu replikace služby Active Directory.
+* Použití [prohledávání protokolů v Log Analytics](log-analytics-log-search.md) zobrazíte podrobné údaje o stavu replikace služby Active Directory.

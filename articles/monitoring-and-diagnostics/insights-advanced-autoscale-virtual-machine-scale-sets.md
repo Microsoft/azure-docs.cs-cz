@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 02/22/2016
 ms.author: ancav
 ms.component: autoscale
-ms.openlocfilehash: 995e93290e7c305e217c1f44609d383f69d83a9a
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 49012c69a6dacaf76c95ea4c760e5951ecb6a9fb
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50420553"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50958835"
 ---
 # <a name="advanced-autoscale-configuration-using-resource-manager-templates-for-vm-scale-sets"></a>Rozšířená konfigurace škálování pro Škálovací sady virtuálních počítačů pomocí šablon Resource Manageru
 Můžete škálování na méně instancí a škálování Škálovací sady virtuálních počítačů na základě výkonu metriky prahových hodnot, podle opakovaného plánu nebo podle konkrétního data. Můžete také nakonfigurovat emailová a webhooková oznámení pro akce škálování. Tento návod ukazuje příklad konfigurace všechny tyto objekty pomocí šablony Resource Manageru v sadě škálování virtuálního počítače.
 
 > [!NOTE]
-> Přestože tento návod popisuje kroky pro Škálovací sady virtuálních počítačů, stejné informace se vztahují k automatickému škálování [Cloud Services](https://azure.microsoft.com/services/cloud-services/), [App Service – Web Apps](https://azure.microsoft.com/services/app-service/web/), a [služby API Management](https://docs.microsoft.com/azure/api-management/api-management-key-concepts) Jednoduché škálování vstup a výstup nastavení v sadě škálování virtuálního počítače založeného na jednoduché výkonu metriky, například CPU, odkazovat [Linux](../virtual-machine-scale-sets/virtual-machine-scale-sets-linux-autoscale.md) a [Windows](../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md) dokumentů
+> Přestože tento návod popisuje kroky pro Škálovací sady virtuálních počítačů, stejné informace se vztahují k automatickému škálování [Cloud Services](https://azure.microsoft.com/services/cloud-services/), [App Service – Web Apps](https://azure.microsoft.com/services/app-service/web/), a [služby API Management](https://docs.microsoft.com/azure/api-management/api-management-key-concepts) Jednoduché škálování vstup a výstup nastavení v sadě škálování virtuálního počítače založeného na jednoduché výkonu metriky, například CPU, odkazovat [Linux](../virtual-machine-scale-sets/virtual-machine-scale-sets-linux-autoscale.md) a [Windows](../virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-powershell.md) dokumentů
 >
 >
 

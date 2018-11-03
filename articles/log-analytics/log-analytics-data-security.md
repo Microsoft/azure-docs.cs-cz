@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 09/19/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 97fa3e9cf043037bf2fe4b0ba198bbdf68de9fa4
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: d042033981cba4e9d56b48543a7c6016a38efb53
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48044684"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50958533"
 ---
 # <a name="log-analytics-data-security"></a>Zabezpečení dat analýzy protokolů
 Účelem tohoto dokumentu je poskytnout konkrétní informace ke službě Log Analytics, což je funkce služby Azure Monitor k doplnění informací na [Centrum zabezpečení Azure](../security/security-microsoft-trust-center.md).  
@@ -158,7 +158,7 @@ Skupiny pro správu nástroje Operations Manager pro nástroj Operations Manager
 
 Veškerá komunikace mezi systémy připojené a služba Log Analytics je zašifrovaná. Protokol TLS (HTTPS) se používá pro šifrování.  Procesu Microsoft SDL je následovat, ujistěte se, že je aktuální pomocí nejnovější zálohy v kryptografické protokoly Log Analytics.
 
-Každý typ agent shromažďuje data pro Log Analytics. Typ dat, která se shromažďují je závisí na typech řešení použít. Můžete prohlédnout souhrnné informace o shromažďování dat [přidání řešení Log Analytics z Galerie řešení](log-analytics-add-solutions.md). Kromě toho je k dispozici pro většinu řešení podrobnější informace o kolekci. Řešení je sada předdefinovaných zobrazení, vyhledávací dotazy protokolů, pravidla shromažďování dat a zpracování logiky. Pouze správci Log Analytics můžete použít k importu řešení. Po importu řešení se přesune na servery pro správu nástroje Operations Manager (Pokud se používá) a potom na všechny agenty, které jste zvolili. Následně agenty shromažďovat data.
+Každý typ agent shromažďuje data pro Log Analytics. Typ dat, která se shromažďují je závisí na typech řešení použít. Můžete prohlédnout souhrnné informace o shromažďování dat [přidání řešení Log Analytics z Galerie řešení](../monitoring/monitoring-solutions.md). Kromě toho je k dispozici pro většinu řešení podrobnější informace o kolekci. Řešení je sada předdefinovaných zobrazení, vyhledávací dotazy protokolů, pravidla shromažďování dat a zpracování logiky. Pouze správci Log Analytics můžete použít k importu řešení. Po importu řešení se přesune na servery pro správu nástroje Operations Manager (Pokud se používá) a potom na všechny agenty, které jste zvolili. Následně agenty shromažďovat data.
 
 ## <a name="2-send-data-from-agents"></a>2. Odesílání dat z agentů
 Zaregistrujte všechny typy agenta s klíčem registrace a navázat zabezpečené připojení mezi agentem a službou Log Analytics pomocí ověřování pomocí certifikátů a šifrování protokolu SSL s portem 443. Log Analytics používá úložiště tajných kódů pro generování a správy klíčů. Soukromé klíče jsou otočeny každých 90 dní a jsou uloženy v Azure a jsou spravované pomocí operací Azure, kteří striktní postupy zákonné požadavky a dodržování předpisů.

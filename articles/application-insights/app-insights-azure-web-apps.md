@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: mbullwin
-ms.openlocfilehash: 91b050c4e1ca37c0af208d6df1ce4f8272235294
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: e88d38e6d95459cc1c41adecee6b7ece659eac99
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50139767"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50957234"
 ---
 # <a name="monitor-azure-web-app-performance"></a>Monitorování výkonu webových aplikací Azure
 Na webu [Azure Portal](https://portal.azure.com) můžete pro své [webové aplikace Azure](../app-service/app-service-web-overview.md) nastavit monitorování výkonu. [Azure Application Insights](app-insights-overview.md) využívá vaši aplikaci k odesílání telemetrických dat o jejích aktivitách do služby Application Insights, kde se ukládají a analyzují. Tam lze grafy metrik a vyhledávací nástroje použít při řešení problémů s diagnostikou, při zvyšování výkonu a při vyhodnocování využití.
@@ -100,9 +100,9 @@ Application Insights může poskytovat podrobnější telemetrie po nainstalová
 ## <a name="next-steps"></a>Další postup
 * [Spusťte profiler v živé aplikaci](app-insights-profiler.md).
 * [Azure Functions](https://github.com/christopheranderson/azure-functions-app-insights-sample) – monitorujte službu Azure Functions pomocí Application Insights.
-* [Povolte odesílání diagnostiky Azure](app-insights-azure-diagnostics.md) do Application Insights.
-* [Monitorujte metriky stavu služby](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md), abyste zajistili dostupnost služby a její schopnost dobře reagovat.
-* [Přijímejte oznámení o výstrahách](../monitoring-and-diagnostics/insights-receive-alert-notifications.md) vždy, když nastanou provozní události nebo když metriky překročí prahovou hodnotu.
+* [Povolte odesílání diagnostiky Azure](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md) do Application Insights.
+* [Monitorujte metriky stavu služby](../monitoring/monitoring-data-collection.md), abyste zajistili dostupnost služby a její schopnost dobře reagovat.
+* [Přijímejte oznámení o výstrahách](../monitoring-and-diagnostics/monitoring-overview-alerts.md) vždy, když nastanou provozní události nebo když metriky překročí prahovou hodnotu.
 * Použitím [Application Insights pro aplikace JavaScript a webové stránky](app-insights-javascript.md) získávejte telemetrické údaje klienta z prohlížečů, které webovou stránky navštíví.
 * [Nastavte testy dostupnosti webu](app-insights-monitor-web-app-availability.md) tak, aby se aktivovaly výstrahy, pokud je webový server mimo provoz.
 

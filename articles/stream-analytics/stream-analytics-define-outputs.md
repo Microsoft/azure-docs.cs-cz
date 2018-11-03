@@ -3,18 +3,18 @@ title: Vysvětlení vytvořené jako výstupy z Azure Stream Analytics
 description: Tento článek popisuje možnosti výstupní data k dispozici ve službě Azure Stream Analytics, včetně Power BI pro výsledky analýzy.
 services: stream-analytics
 author: jasonwhowell
-ms.author: jasonh
+ms.author: mamccrea
 manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/22/2018
-ms.openlocfilehash: 396b843ecd17c15e9476bacb5e96545f963f0c4e
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.openlocfilehash: abf581430f7cf7020145b0217c387b8c2fc4f795
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50747843"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50979399"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Vysvětlení vytvořené jako výstupy z Azure Stream Analytics
 Tento článek popisuje různé typy výstupy, které jsou k dispozici pro úlohy Azure Stream Analytics. Výstupy umožňují ukládat a uložit výsledky úlohy Stream Analytics. Pomocí výstupní data, můžete provést další obchodní analýzy a skladování dat vaše data. 
@@ -323,10 +323,11 @@ Následující tabulka popisuje některé důležité informace pro výstup do d
 | Fronty Azure Service Bus   | 256 KB na zprávu</br> Viz také [omezuje služby Service Bus](../service-bus-messaging/service-bus-quotas.md) | Jednu událost za správu. |
 | Azure tématu služby Service Bus | 256 KB na zprávu</br> Viz také [omezuje služby Service Bus](../service-bus-messaging/service-bus-quotas.md) | Jednu událost za správu. |
 | Azure Cosmos DB   | Zobrazit [omezení služby Azure Cosmos DB](../azure-subscription-service-limits.md#azure-cosmos-db-limits) | Batch velikost a zápis, je frekvence upravené dynamicky na základě odpovědi služby cosmos DB. </br> Žádné předem omezení ze Stream Analytics. |
-| Azure Functions   | | Výchozí velikost dávky je 246 KB. </br> Výchozí počet událostí za služby batch je 100. </br> Velikost dávky je možné konfigurovat a můžete se zvýší nebo sníží ve službě Stream Analytics [výstup možnosti](#azure-functions). 
+| Azure Functions   | | Výchozí velikost dávky je 256 KB. </br> Výchozí počet událostí za služby batch je 100. </br> Velikost dávky je možné konfigurovat a můžete se zvýší nebo sníží ve službě Stream Analytics [výstup možnosti](#azure-functions). 
 
 ## <a name="next-steps"></a>Další postup
 > [!div class="nextstepaction"]
+
 > [Rychlý start: Vytvoření úlohy Stream Analytics pomocí webu Azure portal](stream-analytics-quick-create-portal.md)
 
 <!--Link references-->

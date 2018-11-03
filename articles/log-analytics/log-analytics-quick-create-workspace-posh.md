@@ -15,12 +15,12 @@ ms.topic: conceptal
 ms.date: 09/18/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: b7b8734e648e79ab22a6783e7fab31e942f08eb4
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 11307e3c0dbf831a03b5f7685b8e44f03f8d242e
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50418416"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50957214"
 ---
 # <a name="create-a-log-analytics-workspace-with-azure-powershell"></a>Vytvořit pracovní prostor Log Analytics pomocí Azure Powershellu
 
@@ -131,4 +131,4 @@ Teď, když máte k dispozici pracovní prostor, konfigurace shromažďování d
 * Pokud chcete povolit shromažďování dat z prostředků Azure pomocí diagnostiky Azure nebo do úložiště Azure, najdete v článku [metriky pro použití v Log Analytics a Azure shromažďovat protokoly služby](log-analytics-azure-storage.md).  
 * Přidat [System Center Operations Manager jako zdroj dat](log-analytics-om-agents.md) shromažďovat data z agenty posílající sestavy skupině pro správu nástroje Operations Manager a uloží je v pracovním prostoru Log Analytics.  
 * Připojit [nástroje Configuration Manager](log-analytics-sccm.md) importovat počítače, které jsou členy kolekce v hierarchii.  
-* Zkontrolujte [řešení pro správu](log-analytics-add-solutions.md) k dispozici a jak přidat nebo odebrat některé řešení z pracovního prostoru.
+* Zkontrolujte [řešení pro správu](../monitoring/monitoring-solutions.md) k dispozici a jak přidat nebo odebrat některé řešení z pracovního prostoru.

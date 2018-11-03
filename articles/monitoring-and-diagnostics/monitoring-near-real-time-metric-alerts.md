@@ -8,28 +8,21 @@ ms.topic: conceptual
 ms.date: 06/29/2018
 ms.author: snmuvva
 ms.component: alerts
-ms.openlocfilehash: 47dee26c84d96ebf5b0a421c2f10d18892d6d933
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: dae75d118ec46c5023f0bb347fe5fbefafb84c4a
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47227244"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50961499"
 ---
 # <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>Podporované zdroje pro upozornění metrik ve službě Azure Monitor
 
-Azure teď podporuje sledování [novou výstrahu typu metrika](monitoring-overview-unified-alerts.md) která má významné výhody přes starší [klasického upozornění metrik](insights-alerts-portal.md). Metriky jsou k dispozici pro [velké seznam služeb Azure](monitoring-supported-metrics.md). Novější upozornění podporují podmnožinu typů prostředků (rostoucí). Tento článek uvádí tuto podmnožinu.
+Azure Monitor teď podporuje nové metriky upozornění typ, který má významné výhody starší [klasického upozornění metrik](insights-alerts-portal.md). Metriky jsou k dispozici pro [velké seznam služeb Azure](monitoring-supported-metrics.md). Novější upozornění podporují podmnožinu typů prostředků (rostoucí). Tento článek uvádí tuto podmnožinu.
 
-Novějších upozornění metrik můžete použít také u oblíbených protokoly analýzy protokolu extrahovat jako metriky jako součást metriky z protokolů 
-- [Čítače výkonu](../log-analytics/log-analytics-data-sources-performance-counters.md) u počítačů s Windows a Linuxu
-- [Záznamy prezenčního signálu služby Agent Health](../operations-management-suite/oms-solution-agenthealth.md)
-- [Správa aktualizací](../operations-management-suite/oms-solution-update-management.md) záznamů
-- [Data události](../log-analytics/log-analytics-data-sources-windows-events.md) protokoly
- 
-> [!NOTE]
-> Určité metriky a/nebo dimenze pouze zobrazí-li data pro něj existuje za vybrané období. Tyto metriky jsou k dispozici pro zákazníky s pracovních prostorů Azure Log Analytics v oblastech východní USA, západní USA, střed USA a západní Evropa. Metriky z Log Analytics je aktuálně ve verzi public preview a může se měnit.
+Můžete také novějších upozornění metrik na oblíbené protokoly analýzy protokolu extrahovat jako metriky. Další informace získáte [upozornění metriky pro protokoly](monitoring-metric-alerts-logs.md).
 
 ## <a name="portal-powershell-cli-rest-support"></a>Portálu, Powershellu, rozhraní příkazového řádku, REST podpory
-V současné době můžete pouze na portálu Azure vytvořit novějších upozornění metrik [rozhraní REST API](https://docs.microsoft.com/rest/api/monitor/metricalerts/createorupdate) nebo [šablon Resource Manageru](monitoring-create-metric-alerts-with-templates.md). Podpora konfigurace novější výstrah pomocí Powershellu a Azure CLI verze 2.0 a vyšší je již brzy.
+V současné době můžete pouze na portálu Azure vytvořit novějších upozornění metrik [rozhraní REST API](https://docs.microsoft.com/rest/api/monitor/metricalerts/), nebo [šablon Resource Manageru](monitoring-create-metric-alerts-with-templates.md). Podpora konfigurace novější výstrah pomocí Powershellu a Azure CLI verze 2.0 a vyšší je již brzy.
 
 ## <a name="metrics-and-dimensions-supported"></a>Metriky a dimenze podporována
 Novějších upozornění metrik podporují výstrahy pro metriky, které dimenze použít. Dimenze můžete použít k filtrování vaší metrika správnou úroveň. Všechny podporované metriky spolu s příslušné dimenze můžete prozkoumat a vizualizovat z [Azure Monitor – Průzkumník metrik](monitoring-metric-charts.md).
@@ -58,12 +51,12 @@ Tady je úplný seznam podporovaných novější upozornění metriky zdrojů Az
 |Microsoft.Network/expressRouteCircuits | neuvedeno |  [Express Route okruhy](monitoring-supported-metrics.md#microsoftnetworkexpressroutecircuits) |
 |Microsoft.Network/dnsZones | neuvedeno| [Zóny DNS](monitoring-supported-metrics.md#microsoftnetworkdnszones) |
 |Microsoft.Network/loadBalancers (pouze pro standardní skladové položky)| Ano| [Nástroje pro vyrovnávání zatížení](monitoring-supported-metrics.md#microsoftnetworkloadbalancers) |
-|Microsoft.Network/publicipaddresses     |  neuvedeno       |[Veřejná IP adresa Addreses](monitoring-supported-metrics.md#microsoftnetworkpublicipaddresses)|
+|Microsoft.Network/publicipaddresses     |  neuvedeno       |[Veřejné IP adresy](monitoring-supported-metrics.md#microsoftnetworkpublicipaddresses)|
 |Microsoft.PowerBIDedicated/capacities | neuvedeno | [Kapacity](monitoring-supported-metrics.md#microsoftpowerbidedicatedcapacities)|
 |Microsoft.Network/trafficManagerProfiles | Ano | [Profily Traffic Manageru](monitoring-supported-metrics.md#microsoftnetworktrafficmanagerprofiles) |
 |Microsoft.Search/searchServices     |   neuvedeno      |[Vyhledávací služby](monitoring-supported-metrics.md#microsoftsearchsearchservices)|
 |Microsoft.ServiceBus/namespaces     |  Ano       |[Service Bus](monitoring-supported-metrics.md#microsoftservicebusnamespaces)|
-|Microsoft.Storage/storageAccounts     |    Ano     | [Účty úložiště](monitoring-supported-metrics.md#microsoftstoragestorageaccounts)|
+|Microsoft.Storage/storageAccounts.     |    Ano     | [Účty úložiště](monitoring-supported-metrics.md#microsoftstoragestorageaccounts)|
 |Microsoft.Storage/storageAccounts/services     |     Ano    | [Objekt BLOB služby](monitoring-supported-metrics.md#microsoftstoragestorageaccountsblobservices), [souborové služby](monitoring-supported-metrics.md#microsoftstoragestorageaccountsfileservices), [fronty služby](monitoring-supported-metrics.md#microsoftstoragestorageaccountsqueueservices) a [tabulky služeb](monitoring-supported-metrics.md#microsoftstoragestorageaccountstableservices)|
 |Microsoft.StreamAnalytics/streamingjobs     |  neuvedeno       | [Stream Analytics](monitoring-supported-metrics.md#microsoftstreamanalyticsstreamingjobs)|
 | Microsoft.Web/serverfarms | Ano | [Plány služby App Service](monitoring-supported-metrics.md#microsoftwebserverfarms)  |

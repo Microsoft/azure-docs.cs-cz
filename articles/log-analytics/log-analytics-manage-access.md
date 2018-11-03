@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 75faceb641382df29a93c44803af48dcfed142d4
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 796e10053df79f8f7106d98dd9c9be6083d9f719
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50421165"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50964148"
 ---
 # <a name="manage-workspaces"></a>Správa pracovních prostorů
 
@@ -52,7 +52,7 @@ Z využití pohledu doporučujeme, abyste že nejdříve vytvoříte jako někol
 * Jste poskytovatel spravované služby a potřebujete uchovávat data Log Analytics pro každého zákazníka odděleně od dat ostatních zákazníků.
 * Spravujete víc zákazníků a chcete, aby každý zákazník / oddělení nebo obchodní skupina mohli podívat na svoje vlastní data, ale ne data od ostatních.
 
-Při používání agentů Windows ke shromažďování dat můžete [každého agenta konfigurovat tak, aby ukládal data do jednoho nebo více pracovních prostorů](log-analytics-windows-agents.md).
+Při používání agentů Windows ke shromažďování dat můžete [každého agenta konfigurovat tak, aby ukládal data do jednoho nebo více pracovních prostorů](log-analytics-agent-windows.md).
 
 Pokud používáte System Center Operations Manager, můžete připojit každou skupinu nástroje Operations Manager jen do jednoho pracovního prostoru. Můžete nainstalovat Microsoft Monitoring Agent do počítačů spravovaných nástrojem Operations Manager a nastavit agenta tak, aby odesílal data do nástroje Operations Manager i do jiného pracovního prostoru Log Analytics.
 
@@ -73,7 +73,7 @@ Podrobnosti o pracovním prostoru můžete zobrazit na webu Azure Portal.
     ![Podrobnosti o pracovním prostoru](./media/log-analytics-manage-access/workspace-overview-page.png)  
 
 ## <a name="manage-accounts-and-users"></a>Správa účtů a uživatelů
-Každý pracovní prostor může mít přiřazených více účtů a každý účet může mít přístup k několika pracovním prostorům. Přístup ke správě [přístupu na základě rolí Azure](../active-directory/role-based-access-control-configure.md). Tato přístupová práva se vztahuje na webu Azure portal i na přístup k rozhraní API.
+Každý pracovní prostor může mít přiřazených více účtů a každý účet může mít přístup k několika pracovním prostorům. Přístup ke správě [přístupu na základě rolí Azure](../role-based-access-control/role-assignments-portal.md). Tato přístupová práva se vztahuje na webu Azure portal i na přístup k rozhraní API.
 
 
 Následující aktivity také vyžadují oprávnění Azure:
@@ -87,7 +87,7 @@ Následující aktivity také vyžadují oprávnění Azure:
 
 
 ### <a name="managing-access-to-log-analytics-using-azure-permissions"></a>Správa přístupu k Log Analytics pomocí oprávnění Azure
-Pokud chcete udělit přístup k Log Analytics pomocí oprávnění Azure, postupujte podle kroků v tématu [Použití přiřazení rolí ke správě přístupu k prostředkům předplatného Azure](../active-directory/role-based-access-control-configure.md).
+Pokud chcete udělit přístup k Log Analytics pomocí oprávnění Azure, postupujte podle kroků v tématu [Použití přiřazení rolí ke správě přístupu k prostředkům předplatného Azure](../role-based-access-control/role-assignments-portal.md).
 
 Azure má pro Log Analytics dvě předdefinované role uživatele:
 - Čtenář Log Analytics
@@ -146,7 +146,7 @@ Pomocí těchto rolí můžete uživatelům udělit přístup v různých oborec
 - Skupina prostředků – Přístup ke všem pracovním prostorům v rámci skupiny prostředků
 - Prostředek – Přístup pouze k zadanému pracovnímu prostoru
 
-Doporučujeme provést přiřazení na úrovni prostředků (pracovního prostoru), abyste zajistili přesné řízení přístupu.  Pomocí [vlastních rolí](../active-directory/role-based-access-control-custom-roles.md) můžete vytvářet role s konkrétními požadovanými oprávněními.
+Doporučujeme provést přiřazení na úrovni prostředků (pracovního prostoru), abyste zajistili přesné řízení přístupu.  Pomocí [vlastních rolí](../role-based-access-control/custom-roles.md) můžete vytvářet role s konkrétními požadovanými oprávněními.
 
 ## <a name="link-an-existing-workspace-to-an-azure-subscription"></a>Připojení existujícího pracovního prostoru k předplatnému Azure
 Všechny pracovní prostory vytvořené po 26. září 2016 musí být propojené s předplatným Azure v okamžiku vytvoření. Pracovní prostory vytvořené před tímto datem je potřeba propojit s předplatným při přihlášení. Když vytváříte pracovní prostor z webu Azure Portal nebo propojujete pracovní prostor s předplatným Azure, služba Azure Active Directory se propojí jako účet vaší organizace.
@@ -241,5 +241,5 @@ Váš nový datový tarif se zobrazí pásu karet portálu OMS v horní části 
 ## <a name="next-steps"></a>Další postup
 * V článku [Shromažďování dat z počítačů v prostředí se službou Log Analytics](log-analytics-concept-hybrid.md) najdete informace o shromažďování dat z počítačů v datacentru nebo jiném cloudovém prostředí.
 * V článku [Shromažďování dat o virtuálních počítačích Azure](log-analytics-quick-collect-azurevm.md) najdete informace o konfiguraci shromažďování dat z virtuálních počítačů Azure.  
-* Článek [Přidání řešení Log Analytics z galerie řešení](log-analytics-add-solutions.md) popisuje přidání funkcí a shromažďování dat.
+* Článek [Přidání řešení Log Analytics z galerie řešení](../monitoring/monitoring-solutions.md) popisuje přidání funkcí a shromažďování dat.
 

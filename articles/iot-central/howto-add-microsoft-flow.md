@@ -8,12 +8,12 @@ ms.date: 09/18/2018
 ms.topic: conceptual
 ms.service: iot-central
 manager: peterpr
-ms.openlocfilehash: cc54a3a375fa2780e289a20b699df5d65aaf08cc
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: c06939ccb920954c08ef02f38e6d12471ac267db
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50155571"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50959286"
 ---
 # <a name="build-workflows-with-the-iot-central-connector-in-microsoft-flow"></a>Vytváření pracovních postupů s IoT Central konektorem v Microsoft Flow
 
@@ -21,8 +21,10 @@ ms.locfileid: "50155571"
 
 Pomocí Microsoft Flow můžete automatizovat pracovní postupy mezi mnoha aplikacemi a služeb, které využívají firemní uživatelé. Pracovní postupy můžete aktivovat pomocí IoT Central konektoru v Microsoft Flow, když se pravidlo aktivuje v IoT Central. V pracovním postupu aktivovaného IoT Central nebo jakékoli jiné aplikace můžete použít akce v konektoru IoT Central vytvoření zařízení, aktualizovat vlastnosti a nastavení zařízení nebo zařízení odstranit. Podívejte se na [tyto šablony Microsoft Flow](https://aka.ms/iotcentralflowtemplates) IoT Central, které se připojovat k jiným službám, jako jsou mobilní oznámení a Microsoft Teams.
 
-> [!NOTE] 
-> Budete potřebovat k přihlášení do Microsoft Flow s Microsoftem osobní nebo pracovní nebo školní účet. Další informace o plánech Microsoft Flow [tady](https://aka.ms/microsoftflowplans).
+## <a name="prerequisites"></a>Požadavky
+
+- Aplikace s průběžnými platbami
+- Microsoft osobní nebo pracovní nebo školní účet pro přihlášení do Flow ([Další informace o plánech Microsoft Flow](https://aka.ms/microsoftflowplans))
 
 ## <a name="trigger-a-workflow-when-a-rule-is-triggered"></a>Aktivovat pracovní postup, když se aktivuje pravidlo
 

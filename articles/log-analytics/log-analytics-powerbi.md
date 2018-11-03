@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/19/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 7610fcfc144e4337f8556c8824dc7d104265bcc4
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: c3e0494d813f625a23f55171953d9145411a7024
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48044548"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50960292"
 ---
 # <a name="import-azure-log-analytics-data-into-power-bi"></a>Import dat Azure Log Analytics do Power BI
 
@@ -81,5 +81,5 @@ Datová sada v Power BI bude mít stejná data, která jste předtím viděli v 
 
 
 ## <a name="next-steps"></a>Další postup
-* Další informace o [prohledávání protokolů](log-analytics-log-searches.md) sestavování dotazů, které je možné exportovat do Power BI.
+* Další informace o [prohledávání protokolů](log-analytics-log-search.md) sestavování dotazů, které je možné exportovat do Power BI.
 * Další informace o [Power BI](http://powerbi.microsoft.com) k vytváření vizualizací založených na exporty Log Analytics.

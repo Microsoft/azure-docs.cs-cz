@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/05/2018
+ms.date: 11/02/2018
 ms.author: cephalin;dariac
-ms.openlocfilehash: f82a01f3a2b88e66988717eb008a65c8f2aecf28
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 8f32e84e5381a548ada2c5ad393e16c65b17379e
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48900321"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50957178"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>Nasazení aplikace do Azure App Service pomocí FTP/S
 
@@ -45,7 +45,7 @@ Doporučuje se, že používáte **aplikace pověření** nasadit do vaší apli
 
 ## <a name="deploy-files-to-azure"></a>Nasazení souborů do Azure
 
-1. Ze svého klienta FTP (například [sady Visual Studio](https://www.visualstudio.com/vs/community/) nebo [Filezilly](https://filezilla-project.org/download.php?type=client)), použijte informace o připojení, které jste shromáždili pro připojení k vaší aplikace.
+1. Ze svého klienta FTP (například [sady Visual Studio](https://www.visualstudio.com/vs/community/), [Cyberduck](https://cyberduck.io/), nebo [WinSCP](https://winscp.net/index.php)), použijte informace o připojení, které jste shromáždili pro připojení k vaší aplikace.
 3. Zkopírujte své soubory a příslušnou adresářovou strukturu do [ **/site/wwwroot** directory](https://github.com/projectkudu/kudu/wiki/File-structure-on-azure) v Azure (nebo **/site/wwwroot/App_Data/úlohy/** adresář pro webové úlohy).
 4. Přejděte na adresu URL vaší aplikace k ověření, že aplikace běží správně. 
 

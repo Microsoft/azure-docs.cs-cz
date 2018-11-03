@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: caa8f1a10652c16e181c47fbbe4f9f0c815cfd67
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: ab7689cb18dcd11926abc2e9806885b1072e3886
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46983680"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50960170"
 ---
 # <a name="archive-azure-diagnostic-logs"></a>Archivovat diagnostické protokoly Azure
 
@@ -26,7 +26,7 @@ V tomto článku vám ukážeme, jak pomocí webu Azure portal, rutin prostřed�
 
 ## <a name="prerequisites"></a>Požadavky
 
-Než začnete, budete muset [vytvořit účet úložiště](../storage/storage-create-storage-account.md) ke kterému můžete archivovat diagnostické protokoly. Důrazně doporučujeme, že nepoužíváte existující účet úložiště, který obsahuje jiné, než monitorování data uložená v něm může lépe řídit přístup k datům monitorování. Pokud jsou také archivace protokolu aktivit a diagnostických metrik na účet úložiště, ale může být použití účtu úložiště pro diagnostické protokoly a aby se všechna data monitorování v centrálním umístění.
+Než začnete, budete muset [vytvořit účet úložiště](../storage/common/storage-create-storage-account.md) ke kterému můžete archivovat diagnostické protokoly. Důrazně doporučujeme, že nepoužíváte existující účet úložiště, který obsahuje jiné, než monitorování data uložená v něm může lépe řídit přístup k datům monitorování. Pokud jsou také archivace protokolu aktivit a diagnostických metrik na účet úložiště, ale může být použití účtu úložiště pro diagnostické protokoly a aby se všechna data monitorování v centrálním umístění.
 
 > [!NOTE]
 >  Momentálně nelze archivovat data do úložiště účtu, který za zabezpečené virtuální síti.
@@ -161,7 +161,7 @@ V rámci souboru pt1h.JSON, když se ukládají všechny události v poli "zázn
 
 ## <a name="next-steps"></a>Další postup
 
-* [Stažení objektů blob pro analýzu](../storage/storage-dotnet-how-to-use-blobs.md)
+* [Stažení objektů blob pro analýzu](../storage/blobs/storage-dotnet-how-to-use-blobs.md)
 * [Stream diagnostické protokoly na obor názvů služby Event Hubs](monitoring-stream-diagnostic-logs-to-event-hubs.md)
 * [Archivovat protokoly služby Azure Active Directory prostřednictvím služby Azure Monitor](../active-directory/reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account.md)
 * [Další informace o diagnostických protokolů](monitoring-overview-of-diagnostic-logs.md)

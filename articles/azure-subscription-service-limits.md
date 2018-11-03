@@ -10,12 +10,12 @@ ms.service: billing
 ms.topic: article
 ms.date: 10/19/2018
 ms.author: byvinyal
-ms.openlocfilehash: c22f3dbc06dd43a31bf43634437c7f377dac8813
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
-ms.translationtype: MT
+ms.openlocfilehash: 702783ce581ba59b64892035eca3fb28787eec0f
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49457302"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50958963"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Limity, kvóty a omezení předplatného a služeb Azure
 Tento dokument uvádí některé nejčastějšími omezeními Microsoft Azure, které se taky říká se jim kvóty. Tento dokument nepopisuje aktuálně všech služeb Azure. V průběhu času v seznamu rozbalit a doplněn o popis další platformy.
@@ -145,6 +145,8 @@ Následující tabulka obsahuje podrobnosti o funkcích a omezení Basic, Standa
 [!INCLUDE [azure-virtual-network-limits](../includes/azure-virtual-network-limits.md)]
 
 #### <a name="application-gateway-limits"></a>Omezuje Application Gateway
+
+V následující tabulce platí pro v1, v2, Standard a SKU WAF, pokud není uvedeno jinak.
 [!INCLUDE [application-gateway-limits](../includes/application-gateway-limits.md)]
 
 #### <a name="network-watcher-limits"></a>Omezuje Network Watcher

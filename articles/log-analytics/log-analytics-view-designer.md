@@ -15,15 +15,15 @@ ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 9a981b80921b8fea60941a994595b19933b61a21
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 042271594893350e4883c6dc7dbdd21d84db0520
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48042372"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50958317"
 ---
 # <a name="create-custom-views-by-using-view-designer-in-log-analytics"></a>Vytváření vlastních zobrazení pomocí návrháře zobrazení v Log Analytics
-Pomocí návrháře zobrazení v [Azure Log Analytics](log-analytics-overview.md), řadu vlastních zobrazení můžete vytvořit na webu Azure Portal, který může pomoci vám vizualizovat data ve vašem pracovním prostoru Log Analytics. Tento článek obsahuje přehled nástroje Návrhář zobrazení a postupy pro vytváření a úpravu vlastní zobrazení.
+Pomocí návrháře zobrazení v [Azure Log Analytics](log-analytics-queries.md), řadu vlastních zobrazení můžete vytvořit na webu Azure Portal, který může pomoci vám vizualizovat data ve vašem pracovním prostoru Log Analytics. Tento článek obsahuje přehled nástroje Návrhář zobrazení a postupy pro vytváření a úpravu vlastní zobrazení.
 
 Další informace o návrháři zobrazení najdete v tématu:
 
@@ -42,7 +42,7 @@ Zobrazení, které vytvoříte pomocí návrháře zobrazení obsahovat prvky, k
 |:--- |:--- |
 | Dlaždice | Jsou zobrazeny ve svém pracovním prostoru Log Analytics **přehled** stránky. Každé dlaždici se zobrazí vizuální přehled, který představuje vlastní zobrazení. Každý typ dlaždice obsahuje vizualizaci různých záznamů. Můžete vybrat příslušnou dlaždici a vlastní zobrazení. |
 | Vlastní zobrazení | Zobrazí, když vyberete dlaždici. Každé zobrazení obsahuje jednu nebo více částí vizualizace. |
-| Části vizualizace | K dispozici vizualizace dat v pracovním prostoru Log Analytics na základě jedné nebo více [prohledávání protokolů](log-analytics-log-searches.md). Většina části patří hlavičky, která poskytuje vizualizaci vysoké úrovně, a seznam, který zobrazí nejlepší výsledky. Každý typ části poskytuje různé vizualizace záznamů v pracovním prostoru Log Analytics. Vybrat elementy v části provést hledání v protokolu, která poskytuje podrobné záznamy. |
+| Části vizualizace | K dispozici vizualizace dat v pracovním prostoru Log Analytics na základě jedné nebo více [prohledávání protokolů](log-analytics-log-search.md). Většina části patří hlavičky, která poskytuje vizualizaci vysoké úrovně, a seznam, který zobrazí nejlepší výsledky. Každý typ části poskytuje různé vizualizace záznamů v pracovním prostoru Log Analytics. Vybrat elementy v části provést hledání v protokolu, která poskytuje podrobné záznamy. |
 
 
 ## <a name="work-with-an-existing-view"></a>Práce s existující zobrazení

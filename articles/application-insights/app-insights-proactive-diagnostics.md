@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/31/2016
 ms.author: mbullwin
-ms.openlocfilehash: fe1fe5d270dd8eb871301a8ec81375f35b2568da
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 0083c157eab489943f94ed1453c66a5c8d2f291a
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47096578"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50960298"
 ---
 # <a name="smart-detection-in-application-insights"></a>Inteligentní detekce ve službě Application Insights
  Inteligentní zjišťování automaticky upozorní vás na potenciální problémy s výkonem ve webové aplikaci. Provádí proaktivní analýzy telemetrie, která vaše aplikace odesílá do [Application Insights](app-insights-overview.md). Pokud je nečekané zvýšení míry selhání nebo nestandardní vzorce výkonu klienta nebo serveru, zobrazí se upozornění. Tato funkce vyžaduje žádná konfigurace. To funguje, pokud vaše aplikace odesílá dostatek telemetrie.
@@ -57,7 +57,7 @@ Tyto diagnostické nástroje umožňují kontrolovat telemetrie z vaší aplikac
 
 * [Průzkumník metrik](app-insights-metrics-explorer.md)
 * [Průzkumník služby Search](app-insights-diagnostic-search.md)
-* [Analýza – výkonný dotazovací jazyk](app-insights-analytics-tour.md)
+* [Analýza – výkonný dotazovací jazyk](../log-analytics/query-language/get-started-analytics-portal.md)
 
 Inteligentní zjišťování je úplně automatický. Ale možná chcete nastavit některé další oznámení?
 

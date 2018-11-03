@@ -1,5 +1,5 @@
 ---
-title: Konzola sériového portu virtuálního počítače Azure | Dokumentace Microsoftu
+title: Konzola sériového portu virtuálního počítače Azure pro Linux | Dokumentace Microsoftu
 description: Obousměrné sériové konzoly pro virtuální počítače Azure.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: harijay
-ms.openlocfilehash: 22128f027f0a218756e413653aa92ee097064587
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: a3d59d0e7575721dbb719944f27fd673ba41f469
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50741704"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50963814"
 ---
 # <a name="virtual-machine-serial-console-for-linux"></a>Konzola sériového portu virtuálního počítače pro Linux
 
@@ -33,17 +33,17 @@ Dokumentaci ke konzole sériového portu pro virtuální počítače s Windows, 
 
 ## <a name="prerequisites"></a>Požadavky 
 
-* Virtuální počítač, ve kterém jsou přístup ke konzole sériového portu, musíte použít model nasazení správy prostředků. Klasická nasazení nejsou podporovány. 
+- Virtuální počítač, ve kterém přistupujete konzoly sériového portu, musíte použít model nasazení správy prostředků. Klasická nasazení nejsou podporovány. 
 
-* Virtuální počítač, ve kterém jsou přístup ke konzole sériového portu musí mít [Diagnostika spouštění](boot-diagnostics.md) povolena. Vyberte **Diagnostika spouštění** z **podpora a řešení potíží** oddílu.
+- Virtuální počítač, ve kterém přistupujete konzoly sériového portu musí mít [Diagnostika spouštění](boot-diagnostics.md) povolena. 
 
     ![Nastavení diagnostiky spouštění](./media/virtual-machines-serial-console/virtual-machine-serial-console-diagnostics-settings.png)
 
-Musíte mít účet, který se používá konzoly sériového portu [role Přispěvatel virtuálních počítačů](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) pro virtuální počítač a [Diagnostika spouštění](boot-diagnostics.md) účtu úložiště: 
+- Musíte mít účet, který se používá konzoly sériového portu [role Přispěvatel virtuálních počítačů](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) pro virtuální počítač a [Diagnostika spouštění](boot-diagnostics.md) účtu úložiště: 
 
-* Virtuální počítač, ve kterém jsou přístup ke konzole sériového portu, musíte mít účet založené na heslech. Můžete si ho vytvořit pomocí [resetovat heslo](https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#reset-password) funkce rozšíření přístupu virtuálních počítačů. Vyberte **resetovat heslo** z **podpora a řešení potíží** oddílu. 
+    - Virtuální počítač, ve kterém přistupujete konzoly sériového portu, musíte mít účet založené na heslech. Můžete si ho vytvořit pomocí [resetovat heslo](https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#reset-password) funkce rozšíření přístupu virtuálních počítačů. Vyberte **resetovat heslo** z **podpora a řešení potíží** oddílu. 
 
-* Nastavení specifická pro Linuxové distribuce, naleznete v tématu [konzoly sériového portu dostupnost distribuce Linuxu](#serial-console-linux-distribution-availability).
+    - Nastavení specifická pro Linuxové distribuce, naleznete v tématu [konzoly sériového portu dostupnost distribuce Linuxu](#serial-console-linux-distribution-availability).
 
 
 
@@ -51,12 +51,14 @@ Musíte mít účet, který se používá konzoly sériového portu [role Přisp
 Konzole sériového portu pro virtuální počítače je přístupný pouze prostřednictvím webu Azure portal:
 
   1. Otevřete web [Azure Portal](https://portal.azure.com).
+
   1. V nabídce vlevo vyberte **virtuálních počítačů**.
+
   1. V seznamu vyberte virtuální počítač. Otevře se stránka s přehledem pro virtuální počítač.
+
   1. Přejděte dolů k položce **podpora a řešení potíží** a vyberte **konzoly sériového portu**. Nové podokno v konzole sériového portu se otevře a aktivuje připojení.
 
-   ![Okno konzoly sériového portu Linux](./media/virtual-machines-serial-console/virtual-machine-linux-serial-console-connect.gif)
-
+     ![Okno konzoly sériového portu Linux](./media/virtual-machines-serial-console/virtual-machine-linux-serial-console-connect.gif)
 
 
 > [!NOTE] 

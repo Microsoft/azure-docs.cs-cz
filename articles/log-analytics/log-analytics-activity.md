@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: dd404bf8766082148a2c5a1ae55189f5f82f9021
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: f5db8c4e8137d9758113210ad433278eb8f5a2ee
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49404065"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50962125"
 ---
 # <a name="collect-and-analyze-azure-activity-logs-in-log-analytics"></a>Shromažďování a analýza protokolů aktivit Azure do Log Analytics
 
@@ -54,8 +54,8 @@ Na rozdíl od většiny jiných řešení Log Analytics data nejsou shromažďov
 
 | Připojený zdroj | Podporováno | Popis |
 | --- | --- | --- |
-| [Agenti systému Windows](log-analytics-windows-agent.md) | Ne | Řešení neshromažďuje informace z agentů Windows. |
-| [Agenti systému Linux](log-analytics-linux-agents.md) | Ne | Řešení neshromažďuje informace z agentů Linuxu. |
+| [Agenti systému Windows](log-analytics-agent-windows.md) | Ne | Řešení neshromažďuje informace z agentů Windows. |
+| [Agenti systému Linux](log-analytics-quick-collect-linux-computer.md) | Ne | Řešení neshromažďuje informace z agentů Linuxu. |
 | [Skupiny pro správu SCOM](log-analytics-om-agents.md) | Ne | Řešení neshromažďuje informace z agentů v připojené skupině pro správu nástroje SCOM. |
 | [Účet služby Azure Storage](log-analytics-azure-storage.md) | Ne | Řešení neshromažďuje informace ze služby Azure storage. |
 
@@ -67,7 +67,7 @@ Na rozdíl od většiny jiných řešení Log Analytics data nejsou shromažďov
 
 Proveďte následující postup pro konfiguraci řešení Activity Log Analytics pro váš pracovní prostory.
 
-1. Povolte řešení Activity Log Analytics z [Azure marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureActivityOMS?tab=Overview) nebo pomocí postupu popsaného v článku [Přidání řešení Log Analytics z galerie řešení](log-analytics-add-solutions.md).
+1. Povolte řešení Activity Log Analytics z [Azure marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureActivityOMS?tab=Overview) nebo pomocí postupu popsaného v článku [Přidání řešení Log Analytics z galerie řešení](../monitoring/monitoring-solutions.md).
 2. Konfigurace protokolů aktivit do přejděte do pracovního prostoru Log Analytics.
     1. Na webu Azure Portal, vyberte pracovní prostor a pak klikněte na tlačítko **protokol aktivit Azure**.
     2. Pro každé předplatné klikněte na název předplatného.  
@@ -100,5 +100,5 @@ Data protokolu aktivit se zobrazí jenom *po* konfiguraci vašich protokolů akt
 
 ## <a name="next-steps"></a>Další postup
 
-- Vytvoření [výstraha](log-analytics-alerts-creating.md) když se stane konkrétní aktivitu.
-- Použití [prohledávání protokolů](log-analytics-log-searches.md) k zobrazení podrobných informací z protokolů aktivit.
+- Vytvoření [výstraha](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md) když se stane konkrétní aktivitu.
+- Použití [prohledávání protokolů](log-analytics-log-search.md) k zobrazení podrobných informací z protokolů aktivit.

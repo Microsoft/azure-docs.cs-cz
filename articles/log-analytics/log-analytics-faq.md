@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 08a85cea75d692573f9e9e6c4bcd8bb61e03867f
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 403ac2fd0ab497239350c8b4a68a6b6f53bb24b4
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041965"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50963910"
 ---
 # <a name="log-analytics-faq"></a>Nejčastější dotazy k Log Analytics
 Tato FAQ Microsoft je uveden seznam nejčastější dotazy o službě Log Analytics v Microsoft Azure. Pokud máte nějaké další dotazy o službě Log Analytics, pokračujte [diskusní fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights) a zveřejněte své dotazy. Pokud je dotaz pokládán často, přidáme ji k tomuto článku tak, aby jej lze rychle a snadno najít.
@@ -88,7 +88,7 @@ Odpověď: Tato oblast je v dočasné kapacity. Limit se plánuje se zákazníky
 
 ### <a name="q-does-log-analytics-use-the-same-agent-as-azure-security-center"></a>Otázka: Používá Log Analytics stejný agent, kterého jako Azure Security Center?
 
-Odpověď: v rané fázi. června 2017 Azure Security Center začal, shromažďování a ukládání dat pomocí agenta Microsoft Monitoring Agent. Další informace najdete v tématu [Azure Security Center platformy migrace – nejčastější dotazy](../security-center/security-center-platform-migration-faq.md).
+Odpověď: v rané fázi. června 2017 Azure Security Center začal, shromažďování a ukládání dat pomocí agenta Microsoft Monitoring Agent. Další informace najdete v tématu [Azure Security Center platformy migrace – nejčastější dotazy](../security-center/security-center-enable-data-collection.md).
 
 ### <a name="q-what-checks-are-performed-by-the-ad-and-sql-assessment-solutions"></a>Otázka: AD provádí jaké kontroly a řešení pro posouzení SQL?
 
@@ -135,7 +135,7 @@ Log Analytics používá čas UTC a spustí každý den o půlnoci UTC. Pokud pr
 
 ### <a name="q-how-can-i-be-notified-when-data-collection-stops"></a>Otázka: Jak si nastavím upozorňování při zastavení shromažďování dat?
 
-Odpověď: použijte postup popsaný v [vytvořit nové oznámení protokolu](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md) která vás upozorní, když se shromažďování dat zastaví.
+Odpověď: použijte postup popsaný v [vytvořit nové oznámení protokolu](../monitoring-and-diagnostics/alert-metric.md) která vás upozorní, když se shromažďování dat zastaví.
 
 Při vytváření upozornění pro při zastavení shromažďování dat, nastavte:
 
@@ -231,4 +231,4 @@ Type=WireData (ProcessName="C:\\Program Files\\Microsoft Monitoring Agent\\Agent
 ```
 
 ## <a name="next-steps"></a>Další postup
-* [Začínáme se službou Log Analytics](log-analytics-get-started.md) Další informace o službě Log Analytics a uvedení do provozu během několika minut.
+* [Začínáme se službou Log Analytics](../azure-monitor/overview.md) Další informace o službě Log Analytics a uvedení do provozu během několika minut.

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: dfa0a4b637153d6fa3cce5c9b402587950686341
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: ad5721ff7304629ba786b1fed308ccb05b4a5211
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50418071"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50962720"
 ---
 # <a name="connect-configuration-manager-to-log-analytics"></a>Propojení Configuration Manageru k Log Analytics
 Můžete svoje prostředí System Center Configuration Manager připojit ke službě Azure Log Analytics k synchronizaci zařízení shromažďování dat a odkazují na tyto kolekce v Log Analytics a Azure Automation.  
@@ -69,7 +69,7 @@ Pokud chcete přidat připojení k Log Analytics, musíte mít prostředí Confi
    
 2. Na **Obecné** obrazovky, potvrďte, že jste provedli následující akce a že jste podrobnosti pro každou položku a pak vyberte **Další**.
 
-   1. Na webu Azure Portal, zaregistrovaný nástroje Configuration Manager jako webovou aplikaci nebo webové rozhraní API app a že máte [ID klienta z registrace](../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md).
+   1. Na webu Azure Portal, zaregistrovaný nástroje Configuration Manager jako webovou aplikaci nebo webové rozhraní API app a že máte [ID klienta z registrace](../active-directory/develop/quickstart-v1-add-azure-ad-app.md).
    2. Na webu Azure Portal vytvoříte tajného klíče aplikace registrovaná aplikace v Azure Active Directory.  
    3. Na webu Azure Portal jste zadali zaregistrovanou webovou aplikaci s oprávněním pro přístup k Log Analytics.  
       ![Připojení k Log Analytics Průvodce Obecná stránka](./media/log-analytics-sccm/sccm-console-general01.png)
@@ -113,7 +113,7 @@ Po importu kolekce se zobrazí, kolik počítačů s členstvím v kolekci byl z
 
 ![Skupiny počítačů – SCCM kartu](./media/log-analytics-sccm/sccm-computer-groups02.png)
 
-Po kliknutí na některé z nich, otevře se vyhledávání, zobrazí všechny importované skupiny nebo všechny počítače, které patří do jednotlivých skupin. Pomocí [prohledávání protokolů](log-analytics-log-searches.md), můžete začít potřebují podrobně analyzovat data Configuration Manageru.
+Po kliknutí na některé z nich, otevře se vyhledávání, zobrazí všechny importované skupiny nebo všechny počítače, které patří do jednotlivých skupin. Pomocí [prohledávání protokolů](log-analytics-log-search.md), můžete začít potřebují podrobně analyzovat data Configuration Manageru.
 
 ## <a name="next-steps"></a>Další postup
-* Použití [prohledávání protokolů](log-analytics-log-searches.md) Chcete-li zobrazit podrobné informace týkající se vašich dat nástroje Configuration Manager.
+* Použití [prohledávání protokolů](log-analytics-log-search.md) Chcete-li zobrazit podrobné informace týkající se vašich dat nástroje Configuration Manager.

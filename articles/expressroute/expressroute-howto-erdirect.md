@@ -2,28 +2,28 @@
 title: Postup konfigurace přímo Azure ExpressRoute | Dokumentace Microsoftu
 description: Tato stránka vám pomůže s konfigurací ExpressRoute Direct (Preview)
 services: expressroute
-author: cherylmc
+author: jaredr80
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 09/21/2018
-ms.author: cherylmc
-ms.openlocfilehash: e0009791263c45e0172abcb4836aaadde26f3ace
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.date: 11/02/2018
+ms.author: jaredro
+ms.openlocfilehash: 857602cf9c3c743e91ea6dace64e71e03cdd879b
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48887185"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50959663"
 ---
 # <a name="how-to-configure-expressroute-direct-preview"></a>Konfigurace ExpressRoute Direct (Preview)
 
 Přímé ExpressRoute poskytuje možnost připojení přímo do globální síti Microsoftu na umístění partnerského vztahu strategicky distribuovaných po celém světě. Další informace najdete v tématu [informace o ExpressRoute přímé připojení](expressroute-erdirect-about.md).
 
 > [!IMPORTANT]
-> ExpressRoute s přímým přístupem je aktuálně ve verzi Preview.
+> Přímé ExpressRoute je aktuálně ve verzi Preview.
 >
 > Tato verze Public Preview se poskytuje bez smlouvy o úrovni služeb a neměla by se používat pro úlohy v produkčním prostředí. Některé funkce nemusí být podporované, můžou mít omezené možnosti nebo nemusí být dostupné ve všech umístěních Azure. Podrobnosti najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="resources"></a>1. Vytvoření prostředku
+## <a name="resources"></a>Vytvoření prostředku
 
 1. Přihlaste se k Azure a vyberte předplatné. Prostředek přímo ExpressRoute a okruhy ExpressRoute musí být ve stejném předplatném.
 
@@ -154,10 +154,9 @@ Přímé ExpressRoute poskytuje možnost připojení přímo do globální síti
   Circuits                   : []
   ```
 
-## <a name="state"></a>2. Změnit stav správce odkazů
+## <a name="state"></a>Změnit stav správce odkazů
 
-Tento proces by měla sloužit k provedení testu vrstvy 1, zajistit, aby každý křížové připojení správně opravený do směrovače pro primární a sekundární.
-
+  Tento proces by měla sloužit k provedení testu vrstvy 1, zajistit, aby každý křížové připojení správně opravený do směrovače pro primární a sekundární.
 1. Získáte přímé ExpressRoute podrobnosti.
 
   ```powershell
@@ -223,9 +222,9 @@ Tento proces by měla sloužit k provedení testu vrstvy 1, zajistit, aby každ�
   Circuits                   : []
   ```
 
-Použijte stejný postup s `AdminState = “Disabled”` Chcete-li snížit porty.
+  Použijte stejný postup s `AdminState = “Disabled”` Chcete-li snížit porty.
 
-## <a name="circuit"></a>3. Vytvoření okruhu
+## <a name="circuit"></a>Vytvoření okruhu
 
 Ve výchozím nastavení můžete vytvořit v rámci předplatného, ve kterém je prostředek přímo ExpressRoute 10 okruhy. To jde navýšit o podporu. Které nesou odpovědnost za sledování zřízená a využité šířky pásma. Přenosového pásma je součet šířky pásma všechny okruhy ExpressRoute přímo prostředku a využívaných šířky pásma fyzického využití základní fyzické rozhraní.
 
@@ -235,43 +234,43 @@ Je možné vytvářet okruhy úrovně Standard nebo premium. Standardní okruhy 
 
 Vytvoření okruhu ExpressRoute přímo prostředku.
 
-```powershell
-New-AzureRmExpressRouteCircuit -Name $Name -ResourceGroupName $ResourceGroupName -ExpressRoutePort $ERDirect -BandwidthinGbps 1.0 | 2.0 | 5.0 | 10.0 | 40.0 | 100.0  -Location $AzureRegion -SkuTier Premium -SkuFamily MeteredData 
-```
+  ```powershell
+  New-AzureRmExpressRouteCircuit -Name $Name -ResourceGroupName $ResourceGroupName -ExpressRoutePort $ERDirect -BandwidthinGbps 100.0  -Location $AzureRegion -SkuTier Premium -SkuFamily MeteredData 
+  ```
 
-Zahrnout další šířek pásma: 1.0, 2.0, 5.0, 10.0 a 40.0
+  Zahrnout další šířek pásma: 5.0, 10.0 a 40.0
 
-**Příklad výstupu:**
+  **Příklad výstupu:**
 
-```powershell
-Name                             : ExpressRoute-Direct-ckt
-ResourceGroupName                : Contoso-Direct-rg
-Location                         : westcentralus
-Id                               : /subscriptions/<subscriptionID>/resourceGroups/Contoso-Direct-rg/providers/Microsoft.Netwo
+  ```powershell
+  Name                             : ExpressRoute-Direct-ckt
+  ResourceGroupName                : Contoso-Direct-rg
+  Location                         : westcentralus
+  Id                               : /subscriptions/<subscriptionID>/resourceGroups/Contoso-Direct-rg/providers/Microsoft.Netwo
                                    rk/expressRouteCircuits/ExpressRoute-Direct-ckt
-Etag                             : W/"<etagnumber>"
-ProvisioningState                : Succeeded
-Sku                              : {
+  Etag                             : W/"<etagnumber>"
+  ProvisioningState                : Succeeded
+  Sku                              : {
                                      "Name": "Premium_MeteredData",
                                      "Tier": "Premium",
                                      "Family": "MeteredData"
                                    }
-CircuitProvisioningState         : Enabled
-ServiceProviderProvisioningState : Provisioned
-ServiceProviderNotes             : 
-ServiceProviderProperties        : null
-ExpressRoutePort                 : {
+  CircuitProvisioningState         : Enabled
+  ServiceProviderProvisioningState : Provisioned
+  ServiceProviderNotes             : 
+    ServiceProviderProperties        : null
+  ExpressRoutePort                 : {
                                      "Id": "/subscriptions/<subscriptionID>n/resourceGroups/Contoso-Direct-rg/providers/Micros
                                    oft.Network/expressRoutePorts/Contoso-Direct"
                                    }
-BandwidthInGbps                  : 10
-Stag                             : 2
-ServiceKey                       : <number>
-Peerings                         : []
-Authorizations                   : []
-AllowClassicOperations           : False
-GatewayManagerEtag     
-```
+  BandwidthInGbps                  : 10
+  Stag                             : 2
+  ServiceKey                       : <number>
+  Peerings                         : []
+  Authorizations                   : []
+  AllowClassicOperations           : False
+  GatewayManagerEtag     
+  ```
 
 ## <a name="next-steps"></a>Další postup
 

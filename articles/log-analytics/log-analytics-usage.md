@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 08/11/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: c14013121517267445e89f43e228b03ba184f013
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 0ca9cf0ff75ea76cd2dc203fbdb37162ed1ace34
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50415252"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50962754"
 ---
 # <a name="analyze-data-usage-in-log-analytics"></a>Analýza využití dat v Log Analytics
 
@@ -58,7 +58,7 @@ Log Analytics obsahuje informace o objemu shromážděných dat, zdrojích odes�
 3. V seznamu pracovních prostorů Log Analytics vyberte pracovní prostor.
 4. V seznamu v levém podokně vyberte **Využití a odhad nákladů**.
 5. Na řídicím panelu **Využití a odhad nákladů** můžete upravit časový rozsah výběrem možnosti **Čas: Posledních 24 hodin** a změnou časového intervalu.<br><br> ![časový interval](./media/log-analytics-usage/usage-time-filter-01.png)<br><br>
-6. Zobrazte okna kategorií využití s oblastmi, které vás zajímají. Vyberte okno a pak v něm klikněte na některou položku, abyste zobrazili další podrobnosti v [Prohledávání protokolů](log-analytics-log-searches.md).<br><br> ![příklad klíčového indikátoru výkonnosti využití dat](media/log-analytics-usage/data-volume-kpi-01.png)<br><br>
+6. Zobrazte okna kategorií využití s oblastmi, které vás zajímají. Vyberte okno a pak v něm klikněte na některou položku, abyste zobrazili další podrobnosti v [Prohledávání protokolů](log-analytics-log-search.md).<br><br> ![příklad klíčového indikátoru výkonnosti využití dat](media/log-analytics-usage/data-volume-kpi-01.png)<br><br>
 7. Na řídicím panelu Prohledávání protokolů zkontrolujte vrácené výsledky hledání.<br><br> ![příklad prohledávání protokolů využití](./media/log-analytics-usage/usage-log-search-01.png)
 
 ## <a name="create-an-alert-when-data-collection-is-higher-than-expected"></a>Vytvoření upozornění při větším než očekávaném shromažďování dat
@@ -78,7 +78,7 @@ Následující dotaz pomocí jednoduchého vzorce předvídá, jestli dojde k od
 
 Pokud chcete upozornit na jiný objem dat, změňte v dotazech hodnotu 100 na počet GB, na který chcete upozornit.
 
-Pokud chcete být upozorňováni při větším než očekávaném shromažďování dat, postupujte podle kroků popsaných v tématu týkajícím se [vytvoření nového upozornění protokolu](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md).
+Pokud chcete být upozorňováni při větším než očekávaném shromažďování dat, postupujte podle kroků popsaných v tématu týkajícím se [vytvoření nového upozornění protokolu](../monitoring-and-diagnostics/alert-metric.md).
 
 Při vytváření upozornění pro první dotaz (více než 100 GB dat během 24 hodin) nastavte:  
 
@@ -163,19 +163,19 @@ Pomocí následujících kroků snižte objem shromažďovaných protokolů:
 | Protokoly událostí                 | Změňte [konfiguraci protokolů událostí](log-analytics-data-sources-windows-events.md) tak, aby se: <br> – Snížil počet shromažďovaných protokolů událostí <br> – Shromažďovaly pouze požadované úrovně událostí Například zrušte shromažďování událostí úrovně *Informace*. |
 | Syslog                     | Změňte [konfiguraci syslogu](log-analytics-data-sources-syslog.md) tak, aby se: <br> – Snížil počet zařízení, ze kterých se shromažďují data <br> – Shromažďovaly pouze požadované úrovně událostí Například zrušte shromažďování událostí úrovně *Informace* a *Ladění*. |
 | AzureDiagnostics           | Změňte shromažďování protokolů prostředků tak, aby se: <br> – Snížil počet prostředků, které odesílají protokoly do Log Analytics <br> – Shromažďovaly pouze požadované protokoly |
-| Data řešení z počítačů, které řešení nepotřebují | Použijte [cílení na řešení](../operations-management-suite/operations-management-suite-solution-targeting.md) a shromažďujte data pouze z požadované skupiny počítačů. |
+| Data řešení z počítačů, které řešení nepotřebují | Použijte [cílení na řešení](../monitoring/monitoring-solution-targeting.md) a shromažďujte data pouze z požadované skupiny počítačů. |
 
 ### <a name="check-if-there-are-more-nodes-than-expected"></a>Kontrola, jestli existuje více uzlů, než se čekalo
 Pokud používáte *za uzel (Log Analytics)* cenové úrovně, pak se bude účtovat podle počtu uzlů a řešení. V části *nabídek* řídicího panelu využití můžete zobrazit, kolik uzlů každé nabídky se používá.<br><br> ![řídicí panel využití](./media/log-analytics-usage/log-analytics-usage-offerings.png)<br><br>
 
 Kliknutím na **Zobrazit všechno...** zobrazte úplný seznam počítačů odesílajících data do vybrané nabídky.
 
-Použijte [cílení na řešení](../operations-management-suite/operations-management-suite-solution-targeting.md) a shromažďujte data pouze z požadované skupiny počítačů.
+Použijte [cílení na řešení](../monitoring/monitoring-solution-targeting.md) a shromažďujte data pouze z požadované skupiny počítačů.
 
 ## <a name="next-steps"></a>Další postup
-* V tématu [Prohledávání protokolů v Log Analytics](log-analytics-log-searches.md) zjistíte, jak používat jazyk vyhledávání. Pomocí vyhledávacích dotazů můžete na datech o využití provádět další analýzy.
-* Pokud chcete být upozorňováni při splnění kritérií vyhledávání, postupujte podle kroků popsaných v tématu týkajícím se [vytvoření nového upozornění protokolu](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md).
-* Použijte [cílení na řešení](../operations-management-suite/operations-management-suite-solution-targeting.md) a shromažďujte data pouze z požadované skupiny počítačů.
+* V tématu [Prohledávání protokolů v Log Analytics](log-analytics-log-search.md) zjistíte, jak používat jazyk vyhledávání. Pomocí vyhledávacích dotazů můžete na datech o využití provádět další analýzy.
+* Pokud chcete být upozorňováni při splnění kritérií vyhledávání, postupujte podle kroků popsaných v tématu týkajícím se [vytvoření nového upozornění protokolu](../monitoring-and-diagnostics/alert-metric.md).
+* Použijte [cílení na řešení](../monitoring/monitoring-solution-targeting.md) a shromažďujte data pouze z požadované skupiny počítačů.
 * Pokud chcete nakonfigurovat efektivní zásadu shromažďování událostí zabezpečení, přečtěte si téma popisující [zásady filtrování v Azure Security Center](../security-center/security-center-enable-data-collection.md).
 * Změňte [konfiguraci čítačů výkonu](log-analytics-data-sources-performance-counters.md).
 * Pokud chcete upravit nastavení shromažďování událostí, přečtěte si téma popisující [konfiguraci protokolu událostí](log-analytics-data-sources-windows-events.md).

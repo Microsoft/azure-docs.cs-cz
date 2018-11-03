@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: robb
 ms.component: diagnostic-extension
-ms.openlocfilehash: ef1422db799db6d635ad9f03908e3a34f312e408
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 752a0262503550b9995ac76f648a132429203cce
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46974234"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50961428"
 ---
 # <a name="what-is-azure-diagnostics-extension"></a>Co je rozšíření Azure Diagnostics
-Rozšíření Azure Diagnostics je agent v Azure, která umožňuje shromažďování diagnostických dat v nasazené aplikaci. Rozšíření diagnostiky můžete z mnoha různých zdrojů. V tuto chvíli nepodporuje jsou cloudové služby Azure (klasické) webové a pracovní role, Virtual Machines, Virtual Machine Scale sets a Service Fabric. Další služby Azure mají různé diagnostiky metody. Zobrazit [Přehled monitorování v Azure](monitoring-overview.md).
+Rozšíření Azure Diagnostics je agent v Azure, která umožňuje shromažďování diagnostických dat v nasazené aplikaci. Rozšíření diagnostiky můžete z mnoha různých zdrojů. V tuto chvíli nepodporuje jsou cloudové služby Azure (klasické) webové a pracovní role, Virtual Machines, Virtual Machine Scale sets a Service Fabric. Další služby Azure mají různé diagnostiky metody. Zobrazit [Přehled monitorování v Azure](../azure-monitor/overview.md).
 
-## <a name="linux-agent"></a>Agenta pro Linux
-A [Linux verze rozšíření](../virtual-machines/linux/diagnostic-extension.md) je k dispozici pro virtuální počítače s Linuxem. Shromažďovat statistiky a chování se liší od verze Windows.
+## <a name="linux-agent"></a>Linuxový agent
+A [Linux verze rozšíření](../virtual-machines/extensions/diagnostics-linux.md) je k dispozici pro virtuální počítače s Linuxem. Shromažďovat statistiky a chování se liší od verze Windows.
 
 ## <a name="data-you-can-collect"></a>Data můžete shromažďovat
 Rozšíření Azure Diagnostics můžete shromažďovat následující typy dat:
@@ -42,7 +42,7 @@ Rozšíření Azure Diagnostics můžete shromažďovat následující typy dat:
 ## <a name="data-storage"></a>Úložiště dat
 Rozšíření ukládá data do [účtu služby Azure Storage](azure-diagnostics-storage.md) , který zadáte.
 
-Můžete také odeslat ho do [Application Insights](../application-insights/app-insights-cloudservices.md). Další možností je na datový proud stream [centra událostí](../event-hubs/event-hubs-what-is-event-hubs.md), která pak můžete odeslat do služby pro monitorování mimo Azure.
+Můžete také odeslat ho do [Application Insights](../application-insights/app-insights-cloudservices.md). Další možností je na datový proud stream [centra událostí](../event-hubs/event-hubs-about.md), která pak můžete odeslat do služby pro monitorování mimo Azure.
 
 ### <a name="azure-monitor"></a>Azure Monitor
 Máte také možnost odeslání dat do služby Azure Monitor. V současné době tuto jímku platí pouze pro čítače výkonu. Umožňuje vám odesílat čítače výkonu shromážděné na vašem virtuálním počítači, VMSS, nebo cloudové služby Azure monitor jako vlastní metriky. Jímka Azure monitoru podporuje:
@@ -53,7 +53,7 @@ Máte také možnost odeslání dat do služby Azure Monitor. V současné době
 Další informace o tom, jak nakonfigurovat tento jímky, najdete [dokumentace schématu Azure diagnostics.](azure-diagnostics-schema-1dot3-and-later.md)
 
 ## <a name="versioning-and-configuration-schema"></a>Schéma vytváření verzí a konfigurace
-Zobrazit [historie verzí diagnostiky Azure a schéma](azure-diagnostics-versioning-history.md).
+Zobrazit [historie verzí diagnostiky Azure a schéma](azure-diagnostics-schema.md).
 
 
 ## <a name="next-steps"></a>Další postup
@@ -68,16 +68,16 @@ Pokročilejší témata naleznete v tématu
 
 * [Pro cloudové služby pomocí diagnostiky Azure pomocí Application Insights](../application-insights/app-insights-cloudservices.md)
 * [Trasování toku aplikace Cloud Services s využitím Azure Diagnostics](../cloud-services/cloud-services-dotnet-diagnostics-trace-flow.md)
-* [Nastavení diagnostiky na Cloud Services pomocí Powershellu](../virtual-machines/windows/ps-extensions-diagnostics.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Nastavení diagnostiky na Cloud Services pomocí Powershellu](../virtual-machines/extensions/diagnostics-windows.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 ## <a name="virtual-machines"></a>Virtuální počítače
 * Pokud používáte Visual Studio, přečtěte si téma [pomocí aplikace Visual Studio trasování Azure Virtual Machines](../vs-azure-tools-debug-cloud-services-virtual-machines.md) začít. V opačném případě naleznete v tématu
-* [Nastavení Azure Diagnostics na virtuálním počítači Azure](../virtual-machines-dotnet-diagnostics.md)
+* [Nastavení Azure Diagnostics na virtuálním počítači Azure](../virtual-machines/virtual-machines-dotnet-diagnostics.md)
 
 Pokročilejší témata naleznete v tématu
 
-* [Použití Powershellu k nastavení diagnostiky v Azure Virtual Machines](../virtual-machines/windows/ps-extensions-diagnostics.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [Vytvoření Windows virtuální počítače s monitorováním a diagnostikou pomocí šablony Azure Resource Manageru](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Použití Powershellu k nastavení diagnostiky v Azure Virtual Machines](../virtual-machines/extensions/diagnostics-windows.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Vytvoření Windows virtuální počítače s monitorováním a diagnostikou pomocí šablony Azure Resource Manageru](../virtual-machines/extensions/diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 ## <a name="service-fabric"></a>Service Fabric
 Začínáme při [monitorovat aplikace Service Fabric](../service-fabric/service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md). Mnoho dalších článcích diagnostické nástroje Service Fabric jsou k dispozici v navigačním stromu na levé straně, jakmile získáte k tomuto článku.

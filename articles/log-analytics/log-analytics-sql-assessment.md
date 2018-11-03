@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 4f9882ce94827e490b676fdf421095eae40420d5
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: be2fd826ffa658ec04bd937036e37bf55cbf65a4
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49407720"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50964131"
 ---
 # <a name="optimize-your-sql-environment-with-the-sql-server-health-check-solution-in-log-analytics"></a>Optimalizujete si prostředí SQL s řešením kontroly stavu SQL serveru ve službě Log Analytics
 
@@ -53,7 +53,7 @@ Po přidání řešení a posouzení hotové, souhrnné informace pro konkrétn�
 
 Provádění kontroly stavu na serverech systému SQL Server, vyžadují agenta a připojení ke službě Log Analytics pomocí jedné z následujících podporovaných metod:
 
-1. Nainstalujte [Microsoft Monitoring Agent (MMA)](log-analytics-windows-agent.md) Pokud server není již monitorovaná System Center 2016 – Operations Manager nebo Operations Manager 2012 R2.
+1. Nainstalujte [Microsoft Monitoring Agent (MMA)](log-analytics-agent-windows.md) Pokud server není již monitorovaná System Center 2016 – Operations Manager nebo Operations Manager 2012 R2.
 2. Pokud je monitorovat pomocí nástroje System Center 2016 – Operations Manager nebo Operations Manager 2012 R2 a skupině pro správu není integrovaná se službou Log Analytics, je možné serveru s více adresami pomocí Log Analytics pro shromažďování dat a předat službě a stále sledování Operations Managerem.  
 3. Jinak, pokud vaší skupině pro správu Operations Manageru je integrovaná se službou, budete muset přidat řadiče domény pro shromažďování dat podle pokynů v části služby [přidat počítače spravované bez agenta](log-analytics-om-agents.md#connecting-operations-manager-to-log-analytics) po povolení řešení ve vašem pracovním prostoru.  
 
@@ -184,7 +184,7 @@ Pokud máte doporučení, která má být ignorována, můžete vytvořit textov
     ```
 
     >[!NOTE]
-    > Pokud byl váš pracovní prostor upgradován na [dotazovací jazyk Log Analytics nové](log-analytics-log-search-upgrade.md), pak se změní výše uvedeném dotazu následující.
+    > Pokud byl váš pracovní prostor upgradován na [dotazovací jazyk Log Analytics nové](log-analytics-log-search.md), pak se změní výše uvedeném dotazu následující.
     >
     > `SQLAssessmentRecommendation | where RecommendationResult == "Failed" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
 
@@ -209,7 +209,7 @@ Pokud máte doporučení, která má být ignorována, můžete vytvořit textov
     ```
 
     >[!NOTE]
-    > Pokud byl váš pracovní prostor upgradován na [dotazovací jazyk Log Analytics nové](log-analytics-log-search-upgrade.md), pak se změní výše uvedeném dotazu následující.
+    > Pokud byl váš pracovní prostor upgradován na [dotazovací jazyk Log Analytics nové](log-analytics-log-search.md), pak se změní výše uvedeném dotazu následující.
     >
     > `SQLAssessmentRecommendation | where RecommendationResult == "Ignored" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
 
@@ -265,4 +265,4 @@ Pokud máte doporučení, která má být ignorována, můžete vytvořit textov
 * Ano, naleznete v tématu [ignorujte doporučení](#ignore-recommendations) výše uvedené části.
 
 ## <a name="next-steps"></a>Další postup
-* [Hledání protokolů](log-analytics-log-searches.md) informace o analýze podrobných dat o kontrolu stavu SQL a doporučení.
+* [Hledání protokolů](log-analytics-log-search.md) informace o analýze podrobných dat o kontrolu stavu SQL a doporučení.

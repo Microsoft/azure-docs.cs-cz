@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.component: authentication
 ms.topic: article
-ms.date: 10/30/2018
+ms.date: 11/02/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: jsimmons
-ms.openlocfilehash: 6a61fdeaf1a751ab4001257335abdcbd6fac9cbf
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: e728162da8221046b8496cced8671695c7794164
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50739460"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50978379"
 ---
 # <a name="preview-azure-ad-password-protection-operational-procedures"></a>Ve verzi Preview: Azure AD hesla ochranu provozní postupy
 
@@ -67,7 +67,7 @@ Toto nastavení by měla zůstat normálně ve výchozím povolené (Ano) stavu.
 
 `Get-AzureADPasswordProtectionSummaryReport` Rutina slouží k vytvoření souhrnné zobrazení aktivity. Ukázkový výstup této rutiny je následujícím způsobem:
 
-```
+```Powershell
 Get-AzureADPasswordProtectionSummaryReport -DomainController bplrootdc2
 DomainController                : bplrootdc2
 PasswordChangesValidated        : 6677
@@ -83,10 +83,26 @@ PasswordSetErrors               : 1
 Rozsah rutiny reporting může jím můžou být jedním z – doménové struktury, domény nebo – DomainController parametrů. Bez zadání parametru znamená – doménová struktura.
 
 > [!NOTE]
-> Tato rutina funguje tak, že otevřete relaci Powershellu na každém řadiči domény. V pořadí na úspěšné provedení musí být povolena podpora vzdálené relace Powershellu na každém řadiči domény a klient musí mít dostatečná oprávnění. Další informace o požadavcích vzdálené relace prostředí Powershell spusťte v okně Powershellu "Get-Help about_Remote_Troubleshooting".
+> Tato rutina funguje tak, že otevřete relaci Powershellu na každém řadiči domény. Aby bylo možné úspěšné, musí být povolena podpora vzdálené relace Powershellu na každém řadiči domény a klient musí mít dostatečná oprávnění. Další informace o požadavcích vzdálené relace prostředí Powershell spusťte v okně Powershellu "Get-Help about_Remote_Troubleshooting".
 
 > [!NOTE]
 > Tato rutina funguje tak, že vzdáleně dotazování protokolu událostí správce každé služby agenta řadiče domény. Když protokoly událostí obsahují velký počet událostí, rutina může trvat dlouhou dobu pro dokončení. Kromě toho hromadné sítě dotazy velkých datových sad může ovlivnit výkon řadiče domény. Proto by měla tuto rutinu použít pečlivě v produkčním prostředí.
+
+## <a name="dc-agent-discovery"></a>Zjišťování agentů DC
+
+`Get-AzureADPasswordProtectionDCAgent` Rutiny lze zobrazit základní informace o různých agentů DC spuštěných v doméně nebo doménové struktuře. Tyto informace získány z serviceConnectionPoint objekty registrované ve spuštěné službě agenta řadiče domény. Ukázkový výstup této rutiny je následujícím způsobem:
+
+```Powershell
+Get-AzureADPasswordProtectionDCAgent
+ServerFQDN            : bplChildDC2.bplchild.bplRootDomain.com
+Domain                : bplchild.bplRootDomain.com
+Forest                : bplRootDomain.com
+Heartbeat             : 2/16/2018 8:35:01 AM
+```
+
+Různé vlastnosti se aktualizují každou službu agenta DC přibližně hodinu. Data se stále latenci replikace služby Active Directory.
+
+Rozsah rutiny dotazu může jím můžou být buď pomocí – doménová struktura nebo – doména parametry.
 
 ## <a name="next-steps"></a>Další postup
 

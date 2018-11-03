@@ -16,12 +16,12 @@ ms.date: 10/23/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 3a3768e796284895b25eb62d00a58b20ca811540
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 18de5ce2f47b6593d4c8556af045f14ade957fb9
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49958937"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50979229"
 ---
 # <a name="azure-active-directory-access-tokens"></a>Azure Active Directory přístupové tokeny
 
@@ -86,7 +86,7 @@ Deklarace identity jsou k dispozici pouze v případě, že existuje hodnota do 
 | Deklarovat | Formát | Popis |
 |-----|--------|-------------|
 | `aud` | Řetězec, identifikátor ID URI aplikace | Identifikuje zamýšlený příjemce tokenu. V přístupových tokenech je cílová skupina ID vaší aplikace, přiřazené vaší aplikaci na webu Azure Portal. Vaše aplikace by měl ověřit tuto hodnotu a odmítnout token, pokud hodnota se neshoduje. |
-| `iss` | Řetězec, identifikátor URI služby tokenů zabezpečení | Identifikuje službu tokenů zabezpečení (STS), který vytvoří a vrátí token a tenanta Azure AD, ve kterém byl uživatel ověřený. Pokud byl token vydán bodem v2.0, identifikátor URI, skončí za `/v2.0`. Identifikátor GUID, který označuje, že uživatel je příjemce uživatele z účtu Microsoft je `9188040d-6c67-4c5b-b112-36a304b66dad`. Aplikace by měla část GUID deklarace slouží k omezení sadu klienty, kteří se můžou přihlásit k aplikaci, pokud je k dispozici. |
+| `iss` | Řetězec, identifikátor URI služby tokenů zabezpečení | Identifikuje službu tokenů zabezpečení (STS), který vytvoří a vrátí token a tenanta Azure AD, ve kterém byl uživatel ověřený. Pokud je token vydaný v2.0 token (najdete v článku `ver` deklarace identity), identifikátor URI, skončí za `/v2.0`. Identifikátor GUID, který označuje, že uživatel je příjemce uživatele z účtu Microsoft je `9188040d-6c67-4c5b-b112-36a304b66dad`. Aplikace by měla část GUID deklarace slouží k omezení sadu klienty, kteří se můžou přihlásit k aplikaci, pokud je k dispozici. |
 |`idp`|Řetězec, obvykle o identifikátor URI služby tokenů zabezpečení | Zaznamenává zprostředkovatele identity, který ověřil subjekt tokenu. Tato hodnota se shoduje s hodnotu deklarace identity vystavitele, není-li uživatelský účet není ve stejném tenantovi jako vystavitel - hosté, třeba. Pokud deklarace identity není k dispozici, znamená to, že hodnota `iss` lze použít.  Pro osobní účty, které se používá v kontextu orgnizational (například pomocí osobního účtu pozvat do tenanta služby Azure AD) `idp` deklarace může být 'live.com' nebo identifikátor URI služby tokenů zabezpečení obsahující tenanta účtu Microsoft `9188040d-6c67-4c5b-b112-36a304b66dad`. |  
 | `iat` | int, UNIXOVÉ časové razítko | "Vystaveno v" označuje, kdy došlo k ověřování pro tento token. |
 | `nbf` | int, UNIXOVÉ časové razítko | Deklarace identity "nbf" (ne dřív) označuje čas, před kterým nesmí být přijaty tokenů JWT pro zpracování. |
@@ -139,7 +139,7 @@ Microsoft identity můžete ověřit v celou řadu způsobů, který může být
 | `rsa` | Ověřování bylo založeno na důkaz klíč RSA, například s [aplikaci Microsoft Authenticator](https://aka.ms/AA2kvvu). Patří sem, pokud bylo ověřování službou vlastněných X509 prováděné token JWT podepsaný svým držitelem certifikátu. |
 | `otp` | Jednorázové heslo pomocí e-mailem nebo textovou zprávu. |
 | `fed` | Kontrolní výraz federovaného ověřování (například token JWT nebo SAML) byla použita. |
-| `wia` | Integrované ověřování Windows |
+| `wia` | Integrované ověřování systému Windows |
 | `mfa` | Ověřování službou Multi-Factor Authentication byl použit. Když existuje jiné metody ověřování budou také zahrnuty. |
 | `ngcmfa` | Ekvivalentní `mfa`, která slouží k zřizování určité typy pokročilé přihlašovacích údajů. |
 | `wiaormfa`| Uživatel používá Windows nebo pověření vícefaktorové ověřování k ověření. |
@@ -228,12 +228,12 @@ Aktualizovat tokeny můžete platnost nebo kdykoli pro celou řadu důvodů odvo
 |   | Heslo na základě souborů cookie | Založené na token | Heslo bez souborů cookie s využitím | Na základě tokenu bez hesla | Token důvěrnému klientovi| 
 |---|-----------------------|----------------------|---------------------------|--------------------------|--------------------------|
 | Vypršení platnosti hesla | Zůstane aktivní| Zůstane aktivní | Zůstane aktivní | Zůstane aktivní | Zůstane aktivní |
-| Heslo změněno uživatelem | Odvolaný | Odvolaný | Zůstane aktivní | Zůstane aktivní | Zůstane aktivní |
-| Uživatel provede samoobslužné resetování HESLA | Odvolaný | Odvolaný | Zůstane aktivní | Zůstane aktivní | Zůstane aktivní |
-| Resetování hesla správce | Odvolaný | Odvolaný | Zůstane aktivní | Zůstane aktivní | Zůstane aktivní |
-| Uživatel Odvolá jejich obnovovací tokeny [přes PowerShell](https://docs.microsoft.com/powershell/module/azuread/revoke-azureadsignedinuserallrefreshtoken) | Odvolaný | Odvolaný |Odvolaný | Odvolaný |Odvolaný | Odvolaný |
-| Správce pro tenanta odvolá všechny obnovovací tokeny [přes PowerShell](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken) | Odvolaný | Odvolaný |Odvolaný | Odvolaný |Odvolaný | Odvolaný |
-| [Odhlášení jednoho](v1-protocols-openid-connect-code.md#single-sign-out) na webu | Odvolaný | Zůstane aktivní | Odvolaný | Zůstane aktivní | Zůstane aktivní |
+| Heslo změněno uživatelem | Odvoláno | Odvoláno | Zůstane aktivní | Zůstane aktivní | Zůstane aktivní |
+| Uživatel provede samoobslužné resetování HESLA | Odvoláno | Odvoláno | Zůstane aktivní | Zůstane aktivní | Zůstane aktivní |
+| Resetování hesla správce | Odvoláno | Odvoláno | Zůstane aktivní | Zůstane aktivní | Zůstane aktivní |
+| Uživatel Odvolá jejich obnovovací tokeny [přes PowerShell](https://docs.microsoft.com/powershell/module/azuread/revoke-azureadsignedinuserallrefreshtoken) | Odvoláno | Odvoláno |Odvoláno | Odvoláno |Odvoláno | Odvoláno |
+| Správce pro tenanta odvolá všechny obnovovací tokeny [přes PowerShell](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken) | Odvoláno | Odvoláno |Odvoláno | Odvoláno |Odvoláno | Odvoláno |
+| [Odhlášení jednoho](v1-protocols-openid-connect-code.md#single-sign-out) na webu | Odvoláno | Zůstane aktivní | Odvoláno | Zůstane aktivní | Zůstane aktivní |
 
 > [!NOTE]
 > Kde uživatele nebylo zadáno heslo se dá stáhnout je "bez hesla na základě" přihlášení. Například použití vaší pro rozpoznávání tváře s Windows Hello, FIDO klíč nebo PIN kód. 

@@ -1,110 +1,67 @@
 ---
 title: Správa aplikace Azure IoT Central | Dokumentace Microsoftu
 description: Jako správce jak spravovat aplikace Azure IoT Central
-author: tbhagwat3
-ms.author: tanmayb
+author: viv-liu
+ms.author: viviali
 ms.date: 04/16/2018
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 25b4777be4257933b84d58d0f10cf12571de9590
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 4bfb7dc2b65dc479189ac7920509e1fd8a23ce4f
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50155316"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50961343"
 ---
-# <a name="administer-your-iot-central-application"></a>Spravovat aplikace IOT Central
+# <a name="administer-your-iot-central-application"></a>Spravovat aplikace IoT Central
 
-Po vytvoření aplikace Microsoft Azure IoT Central, můžete použít **správu** část Azure IoT Central uživatelské rozhraní pro jeho správu. Přejděte **správu** vyberte **správu** v levé navigační nabídce.
-
-**Správu** část umožňuje:
-
-- Správa uživatelů
-
-- Správa rolí
-
-- Zobrazit informace o fakturaci
+Po vytvoření aplikace IoT Central, můžete přejít na **správu** části:
 
 - Spravovat nastavení aplikace
+- Správa uživatelů
+- Správa rolí
+- Prohlédněte si fakturu
+- Přejděte k průběžným platbám platnost svojí zkušební verze
+- Exportovat data
+- Spravovat připojení zařízení
+- Použití přístupových tokenů
 
-- Nabízí bezplatné zkušební verze
+Pro přístup k a použít **správu** oddíl, musí být v **správce** role pro aplikaci Azure IoT Central. Pokud vytvoříte aplikaci Azure IoT Central, je automaticky přiřazen k **správce** role pro danou aplikaci. [Spravovat uživatele](#manage-users) části v tomto článku obsahuje další informace o tom, jak přiřadit **správce** role jiným uživatelům.
 
-V **správu** část, sekundární navigační nabídka obsahuje odkazy na různé úlohy správy.
+## <a name="manage-application-settings"></a>Spravovat nastavení aplikace
 
-Pro přístup k a použít **správu** oddíl, musí být v **správce** role pro aplikaci Azure IoT Central. Pokud vytvoříte aplikaci Azure IoT Central, je automaticky přiřazen k **správce** role pro danou aplikaci. [Správa uživatelů](#manage-users) části v tomto článku obsahuje další informace o tom, jak přiřadit **správce** role jiným uživatelům.
-
-## <a name="change-application-name"></a>Změna názvu aplikace
-
-Chcete-li změnit název vaší aplikace, přejděte na pomocí sekundární navigační nabídce **nastavení aplikace** stránku **správu** části.
-
-Na **nastavení aplikace** stránky, zadejte název zvoleného v **název_aplikace** pole. Potom vyberte **Uložit**.
-
-## <a name="change-the-application-url"></a>Změňte adresu URL aplikace
-
-Změnit adresu URL pro vaši aplikaci, přejděte na pomocí sekundární navigační nabídce **nastavení aplikace** stránku **správu** oddílu.
+### <a name="change-application-name-and-url"></a>Změna názvu aplikace a adresu URL
+V **nastavení aplikace** stránky, můžete změnit název a adresu URL vaší aplikace a pak vyberte **Uložit**.
 
 ![Stránka nastavení aplikace](media\howto-administer\image0-a.png)
-
-Na **nastavení aplikace** stránky, zadejte adresu URL podle vašeho výběru v **URL** pole a pak vyberte **Uložit**. Vaše adresa URL může být maximálně 200 znaků. Pokud adresa URL není k dispozici, se zobrazí chyba ověření.
 
 > [!Note]
 > Pokud změníte adresu URL, můžete původní adresu URL provedenou jiný zákazník Azure IoT Central. Pokud k tomu dojde, není již k dispozici pro použití. Když změníte adresu URL, původní adresa URL již není funkční a budete muset informovat uživatele o nové adrese URL použít.
 
-## <a name="change-the-application-image"></a>Změnit image aplikací
+### <a name="prepare-and-upload-image"></a>Přípravě a nahrávání obrázků
+Chcete-li změnit image aplikace, [Prepare a nahrávání imagí do aplikace Azure IoT Central](howto-prepare-images.md).
 
-Další informace o používání imagí v aplikaci Azure IoT Central, naleznete v tématu [Prepare a nahrávání imagí do aplikace Azure IoT Central](howto-prepare-images.md).
+### <a name="copy-an-application"></a>Kopírovat aplikaci
+Můžete vytvořit kopii jakékoli aplikace, bez jakékoli instance zařízení, data historie zařízení a uživatelská data. Kopie bude aplikace s průběžnými platbami, která vám bude účtovat. Tímto způsobem nelze vytvořit zkušební verzi aplikace.
 
-## <a name="copy-an-application"></a>Kopírovat aplikaci
-
-Můžete vytvořit kopii jakékoli aplikace, bez jakékoli instance zařízení, data historie zařízení a uživatelská data. Kopie bude placené aplikace, která vám budeme účtovat. Zkušební verze aplikace nejde vytvořit zkopírováním jiná aplikace.
-
-Kopírujete aplikaci, přejděte **nastavení aplikace** stránky. Vyberte **kopírování** tlačítko.
-
-![Stránka nastavení aplikace](media\howto-administer\appCopy1.png)
-
-Výběr **kopírování** tlačítko otevře dialogové okno, ve kterém můžete vybrat název, URL, Azure AD directory, předplatné a oblast Azure pro novou aplikaci, která bude vytvořena tak, že zkopírujete vaší aplikace. Vyberte hodnoty pro každé z těchto polí. Vyberte **kopírování** potvrďte, že chcete pokračovat. Další informace o tom, co zadat tyto hodnoty v tomto článku o [jak vytvořit aplikaci](howto-create-application.md).
+Klikněte na tlačítko **kopírování** tlačítko. V dialogovém okně zadejte podrobnosti pro novou aplikaci s průběžnými platbami. Klikněte **kopírování** potvrďte, že chcete pokračovat. Další informace o polích v tomto formuláři v [vytvořit aplikaci](quick-deploy-iot-central.md) rychlý start.
 
 ![Stránka nastavení aplikace](media\howto-administer\appCopy2.png)
 
-Po úspěšném provedení operace kopie aplikace, můžete přejít na novou aplikaci, která byla vytvořena tak, že zkopírujete vaší aplikace. Chcete-li přejít do aplikace, vyberte odkaz, který se zobrazí na **nastavení aplikace** stránky.
+Po úspěšném provedení operace kopie aplikace, můžete přejít na novou aplikaci, která byla vytvořena tak, že zkopírujete svoji aplikaci pomocí odkazu, který se zobrazí.
 
 ![Stránka nastavení aplikace](media\howto-administer\appCopy3.png)
 
 > [!Note]
-> Kopírování aplikace také zkopíruje definici pravidla nebo akce. Ale vzhledem k tomu, že uživatelé, kteří mají přístup k původní aplikace nejsou zkopírovány do zkopírovaný aplikace, budete muset ručně přidat uživatele do akce, jako je e-mailu, pro kterou jsou uživatelé jako nezbytné komponenty.
+> Kopírování aplikace také zkopíruje definice pravidla a akce. Ale vzhledem k tomu, že uživatelé, kteří mají přístup k původní aplikace nejsou zkopírovány do zkopírovaný aplikace, budete muset ručně přidat uživatele do akce, jako je e-mailu, pro které uživatelé jsou požadovány. Obecně je vhodné zkontrolovat pravidla a akce, abyste měli jistotu, že jsou aktuální v nové aplikaci.
 
-## <a name="delete-an-application"></a>Odstranění aplikace
+### <a name="delete-an-application"></a>Odstranění aplikace
 
-Odstraňujete aplikaci, přejděte na pomocí sekundární navigační nabídce **nastavení aplikace** stránku **správu** části.
-
-Zvolte **odstranit**.
-
-> [!Note]
-> Odstraňuje se aplikace trvale odstraní všechna data, která má přidruženou k této aplikaci.  Aplikaci odstranit, musíte také mít oprávnění k odstranění prostředků v předplatném Azure jste zvolili při vytváření aplikace. Další informace najdete v tématu [použití řízení přístupu na základě rolí ke správě přístupu k prostředkům předplatného Azure](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure).
-
-## <a name="roles-in-azure-iot-central"></a>Role v Azure IoT Central
-
-Role umožňují řídit, kdo ve vaší organizaci můžete provádět různé úlohy Azure IoT Central. Azure IoT Central má tři role, které můžete přiřazovat uživatelům vaší aplikace. Role jsou přiřazené podle jednotlivých aplikací. Stejný uživatel může mít různé role v různých aplikacích. Stejný uživatel můžete přiřadit k více rolím v rámci aplikace.
-
-### <a name="administrator"></a>Správce
-
-Uživatelé v **správce** role mají přístup ke všem funkcím v aplikaci Azure IoT Central.
-
-Uživatel, který vytváří aplikace se automaticky přiřadí **správce** role. Musí být vždy alespoň jeden uživatel ve **správce** role.
-
-### <a name="application-builder"></a>Tvůrce aplikací
-
-Uživatelé v **Tvůrce aplikací** role můžou provádět vše v aplikaci Azure IoT Central, s výjimkou spravovat aplikace.
-
-### <a name="application-operator"></a>Aplikace – operátor
-
-Uživatelé v **operátor aplikací** roli nemají přístup k **Tvůrce aplikací** stránky. Nelze spravovat aplikace.
+Použití **odstranit** tlačítko pro trvalé odstranění aplikace IoT Central. Tím se trvale odstraní všechna data, která má přidruženou k této aplikaci. Aplikaci odstranit, musíte také mít oprávnění k odstranění prostředků v předplatném Azure jste zvolili při vytváření aplikace. Další informace najdete v tématu [použití řízení přístupu na základě rolí ke správě přístupu k prostředkům předplatného Azure](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure).
 
 ## <a name="manage-users"></a>Správa uživatelů
-
-Správci aplikace můžete přiřadit uživatele k rolím v aplikaci.
 
 ### <a name="add-users"></a>Přidání uživatelů
 
@@ -112,24 +69,18 @@ Než mohou přihlásit a získat přístup k Azure IoT Central aplikaci, každý
 
 Další informace najdete v tématu [nápovědy účtu společnosti Microsoft](https://support.microsoft.com/products/microsoft-account?category=manage-account) a [rychlý start: přidání nových uživatelů do služby Azure Active Directory](https://docs.microsoft.com/azure/active-directory/add-users-azure-active-directory).
 
-1. K přidání uživatelského účtu k aplikaci Azure IoT Central, přejděte na pomocí sekundární navigační nabídce **uživatelé** stránku **správu** části.
+1. Chcete-li přidat uživatele k IoT Central aplikaci, přejděte na **uživatelé** stránku **správu** oddílu.
 
     ![Seznam uživatelů](media\howto-administer\image1.png)
 
 1. Pokud chcete přidat uživatele, na **uživatelé** zvolte **+ přidat uživatele**.
 
-    ![Přidání uživatele](media\howto-administer\image2.png)
-
-1. Vyberte roli pro uživatele **Role** rozevírací nabídky. Další informace o rolích v *role v Azure IoT Central* části tohoto článku.
+1. Vyberte roli pro uživatele **Role** rozevírací nabídky. Další informace o rolích v [spravovat role](#manage-roles) části tohoto článku.
 
     ![Výběr role](media\howto-administer\image3.png)
 
     > [!NOTE]
     >  Hromadné přidání uživatelů, zadejte ID všech uživatelů, které chcete přidat uživatele oddělených středníky. Zvolte roli z **Role** rozevírací nabídky. Potom vyberte **Uložit**.
-
-1. Poté, co přidáte uživatele, zobrazí se položka pro tohoto uživatele na **uživatelé** stránky.
-
-    ![Seznam uživatelů](media\howto-administer\image4.png)
 
 ### <a name="edit-the-roles-that-are-assigned-to-users"></a>Upravit role, které jsou přiřazené uživatelům
 
@@ -139,35 +90,63 @@ Role nelze změnit, jakmile budou přiřazena. Chcete-li změnit roli, která je
 
 Pokud chcete odstranit uživatele, vyberte jeden nebo více políček na **uživatelé** stránky. Vyberte **Odstranit**.
 
+## <a name="manage-roles"></a>Správa rolí
+
+Role umožňují řídit, kdo ve vaší organizaci můžete provádět různé úlohy v IoT Central. Existují tři role, které můžete přiřazovat uživatelům vaší aplikace. 
+
+### <a name="administrator"></a>Správce
+
+Uživatelé v **správce** role mají přístup ke všem funkcím v aplikaci.
+
+Uživatel, který vytváří aplikace se automaticky přiřadí **správce** role. Musí být vždy alespoň jeden uživatel ve **správce** role.
+
+### <a name="application-builder"></a>Tvůrce aplikací
+
+Uživatelé v **Tvůrce aplikací** role můžou provádět vše v aplikaci s tím rozdílem, správě aplikace. To znamená, že tvůrci můžete vytvořit, upravit, odstranit šablon zařízení a zařízení, Správa sad zařízení a spouštět úlohy a analýzy. Tvůrci nebudete mít přístup k **správu** části aplikace.
+
+### <a name="application-operator"></a>Aplikace – operátor
+
+Uživatelé v **operátor aplikací** role nemůže provádět změny šablon a nelze spravovat aplikace. To znamená, že operátory lze přidání a odstranění zařízení, Správa sad zařízení a spouštět úlohy a analýzy. Operátory nebudete mít přístup k **Tvůrce aplikací** a **správu** stránky.
+
+
 ## <a name="view-your-bill"></a>Prohlédněte si fakturu
 
-Chcete-li zobrazit váš účet, přejděte na **fakturace** stránku **správy** části. Potom vyberte **fakturace**. Azure fakturační stránka se otevře na nové kartě, ve kterém uvidíte na faktuře pro jednotlivé aplikace Azure IoT Central.
+Chcete-li zobrazit váš účet, přejděte na **fakturace** stránku **správy** části. Azure fakturační stránka se otevře na nové kartě, ve kterém uvidíte na faktuře pro jednotlivé aplikace Azure IoT Central.
 
-## <a name="convert-your-trial-to-a-paid-application"></a>Převést na placené aplikace platnost svojí zkušební verze
+### <a name="convert-your-trial-to-pay-as-you-go"></a>Přejděte k průběžným platbám platnost svojí zkušební verze
 
-Poté, co jste vyhodnotili IoT Central, můžete převést platnost svojí zkušební verze na placené aplikace. K dokončení tohoto procesu samoobslužné služby, postupujte podle těchto kroků:
+Můžete převést zkušební verzi aplikace do aplikace s průběžnými platbami. Zde jsou rozdíly mezi těmito typy aplikací.
 
-1. Můžete přejít na sekundární navigační nabídce **fakturace** stránku **správu** oddílu. Pokud jste nerozšířili platnost svojí zkušební verze, bude stránka vypadat jako na následujícím snímku obrazovky:
+- **Zkušební verze** aplikací jsou zdarma po dobu 7 dní před vypršením jejich platnosti. Je lze převést na průběžné platby v každém okamžiku před vypršením jejich platnosti.
+- **Průběžné platby** aplikace účtují podle zařízení, a to zdarma prvních 5 zařízení.
 
-    ![Bezplatná zkušební verze stavu](media/howto-administer/freetrial.png)
+Další informace o cenách najdete na [Azure IoT Central stránce s cenami](https://azure.microsoft.com/pricing/details/iot-central/).
+    
+K dokončení tohoto procesu samoobslužné služby, postupujte podle těchto kroků:
 
-2. Vyberte **převést na placené**. Pokud jste nerozšířili platnost svojí zkušební verze, v automaticky otevíraném okně vypadá jako na následujícím snímku obrazovky:
+1. Přejděte na **fakturace** stránku **správu** oddílu. 
 
-    ![Prodlužte platnost bezplatné zkušební verze](media/howto-administer/extend.png)
+    ![Zkušební verze stavu](media/howto-administer/freetrialbilling.png)
 
-3. V místním okně vyberte odpovídající tenanta Azure Active Directory a pak předplatné Azure pro vaše aplikace IoT Central.
+1. Klikněte na tlačítko **přejděte k průběžným platbám**. 
 
-3. Po výběru **převést**, vaše zkušební verze převede na placené aplikace a spustit načítání účtuje.
+    ![Převést zkušební verzi](media/howto-administer/convert.png)
 
-## <a name="extend-your-free-trial"></a>Prodloužit platnost bezplatné zkušební verze
+1. Vyberte odpovídající Azure Active Directory a pak předplatné Azure, které chcete použít pro vaši aplikaci s průběžnými platbami.
 
-Ve výchozím nastavení všechny bezplatné zkušební verze jsou k dispozici po dobu sedmi dní. Pokud chcete zvýšit vaše zkušební verze na 30 dnů, postupujte podle těchto kroků:
+1. Po kliknutí na **převést**, vaše aplikace je teď aplikace s průběžnými platbami a spustit načítání účtuje.
 
-1. Můžete přejít na sekundární navigační nabídce **fakturace** stránku **správu** oddílu.
+## <a name="export-data"></a>Exportovat data
 
-1. Vyberte **prodloužit platnost zkušební verze**. V místním okně vyberte odpovídající tenanta Azure Active Directory a potom předplatné Azure pro vaše aplikace IoT Central.
+Můžete povolit **nepřetržitý export dat** exportovat měření, zařízení a zařízení šablony dat do účtu úložiště objektů Blob v Azure. Další informace o [exportování dat](#howto-export-data).
 
-1. Potom vyberte **rozšířit**. Platnost svojí zkušební verze je teď platný po dobu 30 dnů.
+## <a name="manage-device-connection"></a>Spravovat připojení zařízení
+
+Připojení zařízení v měřítku ve vaší aplikaci pomocí klíčů a certifikátů tady. Další informace o [připojení zařízení](#concepts-connectivity).
+
+## <a name="use-access-tokens"></a>Použití přístupových tokenů
+
+Generovat přístupové tokeny pro jejich použití v nástrojích pro vývojáře. Aktuálně je jeden vývojářský nástroj k dispozici tedy IoT Central explorer pro zprávy typu zařízení a změny v propreties a nastavení monitorování. Další informace o [IoT Central explorer](#howto-use-iotc-explorer). 
 
 ## <a name="use-the-azure-sdks-for-control-plane-operations"></a>Použití sady Azure SDK pro operace roviny řízení
 

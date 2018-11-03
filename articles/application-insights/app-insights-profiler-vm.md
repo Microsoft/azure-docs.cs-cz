@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.reviewer: cawa
 ms.date: 08/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 10cd05bd40262815e3b27c861982debc18e5b4f3
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 152632c55fc21d2b49f6dfd8ae734833ea870898
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50142352"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50978362"
 ---
 # <a name="profile-web-apps-running-on-an-azure-virtual-machine-or-virtual-machine-scale-set-with-application-insights-profiler"></a>Profil webové aplikace běžící na virtuálním počítači Azure nebo škálovací sady virtuálních počítačů pomocí Application Insights Profiler
 Můžete také nasadit Application Insights profiler za tyto služby:
@@ -63,11 +63,8 @@ Tato stránka vás provede kroky potřebuje získat Application Insights profile
 
 1. Při nasazování aplikace.
 
-## <a name="enable-profiler-on-on-premises-servers"></a>Povolit Profiler na místních serverech
-
-Povoluje se Profiler na místní server se taky říká spuštěné Application Insights Profiler v samostatném režimu. Není vázaný na Úpravy rozšíření Azure Diagnostics.
-
-Máme k dispozici žádný plán oficiálně podporovalo Profiler pro místní servery. Pokud vás zajímá experimentování v tomto scénáři, můžete si [stáhnout kód podpory](https://github.com/ramach-msft/AIProfiler-Standalone). Nepovedlo se *není* zodpovědná za údržbu, že kód, nebo pro reakce na problémy a žádosti o funkce, které se vztahují ke kódu.
+## <a name="can-profiler-run-on-on-premises-servers"></a>Můžete spustit profiler na místní servery?
+Nemáme žádné plány pro podporu aplikace Insights Profiler pro místní servery. 
 
 ## <a name="next-steps"></a>Další postup
 

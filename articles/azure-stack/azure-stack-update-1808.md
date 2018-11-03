@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/18/2018
+ms.date: 11/01/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 1ca305ab88e30c911bbded1e5ff97162e12f7652
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 1414fd7b559a1bf12cc26d218f4577bbdc986916
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49429061"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50964114"
 ---
 # <a name="azure-stack-1808-update"></a>Aktualizace služby Azure Stack. 1808
 
@@ -157,6 +157,10 @@ Tato aktualizace obsahuje také ke zmírnění chyby zabezpečení spekulativní
 - V některých případech při aktualizaci vyžaduje pozornost, odpovídající nemusí být vygenerována výstraha. Přesné stavu se stále projeví na portálu a není ovlivněn.
 
 ### <a name="post-update-steps"></a>Postup po aktualizaci
+
+> [!Important]  
+> Příprava vašeho nasazení Azure stacku pro rozšíření hostitele. Příprava systému podle následujících pokynů k [Příprava hostitele rozšíření pro službu Azure Stack](azure-stack-extension-host-prepare.md).
+
 Po instalaci této aktualizace nainstalujte všechny příslušné opravy hotfix. Další informace naleznete následující články znalostní báze, stejně jako naše [zásady obsluhy](azure-stack-servicing-policy.md). 
 - [KB 4468920 – Azure Stack opravu Hotfix Azure Stack Hotfix 1.1808.5.110](https://support.microsoft.com/help/4468920/)
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/04/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: 057ce4b93be27c27e27d49e61a89a7c2b9e46dc8
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: e9f082b795325349001b5231304588e5297a1443
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50421063"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50960714"
 ---
 # <a name="stream-azure-diagnostic-logs-to-log-analytics"></a>Stream diagnostické protokoly Azure do Log Analytics
 
@@ -96,7 +96,7 @@ Můžete přidat další kategorie pro protokol diagnostiky tak, že přidáte s
 
 ## <a name="how-do-i-query-the-data-in-log-analytics"></a>Jak dotaz na data v Log Analytics?
 
-V okně hledání v protokolu na portálu nebo Advanced Analytics prostředí jako součást Log Analytics se můžete dotazovat diagnostické protokoly jako součást řešení Správa protokolů ve složce AzureDiagnostics tabulky. Existují také [několik řešení pro prostředky Azure](../log-analytics/log-analytics-add-solutions.md) instalací získat okamžitý přehled o data protokolu odesílají do Log Analytics.
+V okně hledání v protokolu na portálu nebo Advanced Analytics prostředí jako součást Log Analytics se můžete dotazovat diagnostické protokoly jako součást řešení Správa protokolů ve složce AzureDiagnostics tabulky. Existují také [několik řešení pro prostředky Azure](../monitoring/monitoring-solutions.md) instalací získat okamžitý přehled o data protokolu odesílají do Log Analytics.
 
 ## <a name="next-steps"></a>Další postup
 

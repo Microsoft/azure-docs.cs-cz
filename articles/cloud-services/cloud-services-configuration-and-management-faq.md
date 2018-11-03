@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: 30a23010f326189ffd5886407d70e357abb9c53e
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 81e41ce6818a6f56ba5e6e888480f8b25979fb81
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42060737"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50979195"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Konfigurace a správa problémů pro Azure Cloud Services: Nejčastější dotazy (FAQ)
 
@@ -142,7 +142,7 @@ Další informace najdete v tématu v následujících dokumentech:
 
 ### <a name="how-do-i-enable-wad-logging-for-cloud-services"></a>Jak povolit protokolování WAD pro cloudové služby?
 Můžete povolit protokolování Windows Azure Diagnostics (WAD), pomocí následujících možností:
-1. [Povolit ze sady Visual Studio](https://docs.microsoft.com/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#turn-on-diagnostics-in-cloud-service-projects-before-you-deploy-them)
+1. [Povolit ze sady Visual Studio](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#turn-on-diagnostics-in-cloud-service-projects-before-you-deploy-them)
 2. [Povolit prostřednictvím kódu rozhraní .net](https://docs.microsoft.com/azure/cloud-services/cloud-services-dotnet-diagnostics)
 3. [Povolit pomocí Powershellu](https://docs.microsoft.com/azure/cloud-services/cloud-services-diagnostics-powershell)
 
@@ -248,7 +248,7 @@ Další informace o tom, jak integrovat Azure Diagnostics Application Insights p
 
 Další informace o povolení Application Insights pro služby Cloud Services najdete v tématu [Application Insights pro Azure Cloud Services](https://docs.microsoft.com/azure/application-insights/app-insights-cloudservices)
 
-Další informace o tom, jak povolit protokolování diagnostiky Azure pro cloudové služby, najdete v části [nastavení diagnostiky pro Azure Cloud Services a virtual machines](../vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md#turn-on-diagnostics-in-cloud-service-projects-before-you-deploy-them)
+Další informace o tom, jak povolit protokolování diagnostiky Azure pro cloudové služby, najdete v části [nastavení diagnostiky pro Azure Cloud Services a virtual machines](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#turn-on-diagnostics-in-cloud-service-projects-before-you-deploy-them)
 
 ## <a name="generic"></a>Obecné
 

@@ -4,18 +4,18 @@ description: Jak otestovat své dotazy v úlohách Stream Analytics.
 keywords: Tento článek popisuje, jak pomocí webu Azure portal k testování úloze Azure Stream Analytics, ukázkový vstup a odeslat ukázková data.
 services: stream-analytics
 author: jasonwhowell
-ms.author: jasonh
+ms.author: mamccrea
 ms.reviewer: jasonh
 manager: kfile
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/27/2018
-ms.openlocfilehash: 63f9b98bcd70378ae02769298f0ffcd796378612
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 139ad76826f3e67577beba0369f6d4425e242af9
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44027261"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50978345"
 ---
 # <a name="test-a-stream-analytics-query-with-sample-data"></a>Testování dotazu Stream Analytics s ukázkovými daty
 

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
 ms.component: ''
-ms.openlocfilehash: fc5ab802b39597d72f01f756c9bdb16597862e3c
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: d49360fe39b0df7fc1172c3927e8725af10f927d
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49638191"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50963876"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Network Performance Monitor řešení v Azure
 
@@ -103,7 +103,7 @@ Network Performance Monitor používá k monitorování výkonu sítě mezi zdro
 
 ### <a name="configure-the-solution"></a>Konfigurovat řešení 
 
-1. Přidat do pracovního prostoru z řešení Network Performance Monitor [Azure marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.NetworkMonitoringOMS?tab=Overview). Také můžete použít postup v [přidání řešení Log Analytics z Galerie řešení](log-analytics-add-solutions.md). 
+1. Přidat do pracovního prostoru z řešení Network Performance Monitor [Azure marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.NetworkMonitoringOMS?tab=Overview). Také můžete použít postup v [přidání řešení Log Analytics z Galerie řešení](../monitoring/monitoring-solutions.md). 
 2. Otevřete váš pracovní prostor Log Analytics a vyberte **přehled** dlaždici. 
 3. Vyberte **Network Performance Monitor** dlaždici s touto zprávou *řešení vyžaduje další konfiguraci*.
 
@@ -251,7 +251,7 @@ Topologie zobrazené na mapě se topologie vrstvy 3 a neobsahuje vrstvy 2 zaří
 
 ## <a name="log-analytics-search"></a>Hledání log Analytics 
 
-Všechna data, která je graficky vystavené prostřednictvím řídicího panelu monitorování výkonu sítě a její procházení stránek je taky dostupný nativně v [hledání Log Analytics](log-analytics-log-search-new.md). Můžete provádět interaktivní analýzu dat v úložišti a korelovat data z různých zdrojů. Můžete také vytvořit vlastní výstrahy a zobrazení a export dat do Excelu, Power BI nebo ke sdílení odkazu.  **Běžné dotazy** oblasti na řídicím panelu má některé užitečné dotazy, které můžete použít jako výchozí bod k vytvoření vlastních dotazů a sestav. 
+Všechna data, která je graficky vystavené prostřednictvím řídicího panelu monitorování výkonu sítě a její procházení stránek je taky dostupný nativně v [hledání Log Analytics](log-analytics-log-search.md). Můžete provádět interaktivní analýzu dat v úložišti a korelovat data z různých zdrojů. Můžete také vytvořit vlastní výstrahy a zobrazení a export dat do Excelu, Power BI nebo ke sdílení odkazu.  **Běžné dotazy** oblasti na řídicím panelu má některé užitečné dotazy, které můžete použít jako výchozí bod k vytvoření vlastních dotazů a sestav. 
 
 ## <a name="alerts"></a>Výstrahy
 

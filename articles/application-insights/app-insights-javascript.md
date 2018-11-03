@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 6d826702d8302246a225ebfcdf0a5987cf9d2045
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 46939e15100468eab0d5575546eb6bd58df4aacd
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167048"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50961071"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights pro webové stránky
 Zjistěte informace o výkonu a využití webové stránky nebo aplikace. Když přidáte [Application Insights](app-insights-overview.md) do skriptu stránky, získáte časování načtení stránky a volání AJAX, počty a podrobnosti výjimek prohlížeče a selhání AJAX, a také počty uživatelů a relací. Všechny tyto hodnoty mohou být segmentovány podle stránky, klientského operačního systému a verze prohlížeče, zeměpisné polohy a ostatních dimenzí. Můžete nastavit výstrahy na počet selhání nebo pomalé načítání stránky. A vložíte-li do kódu JavaScript trasování volání, můžete sledovat využití různých funkcí aplikace webové stránky.
@@ -230,7 +230,7 @@ Název stránky může obsahovat stejné znaky jako adresa URL, ale cokoli za �
 ## <a name="usage-tracking"></a>Sledování využití
 Chcete zjistit, co uživatelé provádějí s vaší aplikací?
 
-* [Další informace o nástrojích pro analýzu chování uživatele](app-insights-web-track-usage.md)
+* [Další informace o nástrojích pro analýzu chování uživatele](app-insights-usage-overview.md)
 * [Další informace o vlastních událostech a metrikách rozhraní API](app-insights-api-custom-events-metrics.md).
 
 ## <a name="video"></a> Video
@@ -241,7 +241,7 @@ Chcete zjistit, co uživatelé provádějí s vaší aplikací?
 
 
 ## <a name="next"></a> Další kroky
-* [Sledování využití](app-insights-web-track-usage.md)
+* [Sledování využití](app-insights-usage-overview.md)
 * [Vlastní události a metriky](app-insights-api-custom-events-metrics.md)
-* [Sestavení vyhodnocení poučení](app-insights-web-track-usage.md)
+* [Sestavení vyhodnocení poučení](app-insights-usage-overview.md)
 

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/04/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 38537f3e2884160a99d333f1414d3f45755cd4f9
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 9b0a9b8c976ce5ef9fb57a6f8bcfd076f370bb10
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49404609"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50963982"
 ---
 # <a name="vmware-monitoring-preview-solution-in-log-analytics"></a>Řešení VMware Monitoring (Preview) ve službě Log Analytics
 
@@ -42,7 +42,7 @@ K instalaci a konfiguraci řešení můžete použít následující informace.
 vSphere hostitele ESXi 5.5, 6.0 a 6.5
 
 #### <a name="prepare-a-linux-server"></a>Příprava serveru s Linuxem
-Vytvořte operační systém Linux virtuálního počítače pro příjem všechna data syslogu z hostitele ESXi. [Agenta Log Analytics Linux](log-analytics-linux-agents.md) je bod kolekce pro všechna data syslogu hostitele ESXi. Více hostitelích ESXi můžete použít k předávání protokolů na jednom serveru systému Linux, jako v následujícím příkladu.
+Vytvořte operační systém Linux virtuálního počítače pro příjem všechna data syslogu z hostitele ESXi. [Agenta Log Analytics Linux](log-analytics-quick-collect-linux-computer.md) je bod kolekce pro všechna data syslogu hostitele ESXi. Více hostitelích ESXi můžete použít k předávání protokolů na jednom serveru systému Linux, jako v následujícím příkladu.
 
 [!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)]  
 
@@ -131,7 +131,7 @@ V **VMware** zobrazení řídicího panelu okna jsou uspořádané podle:
 
 Klikněte na libovolné okno otevřete podokno hledání Log Analytics, který zobrazuje detailní informace specifické pro okno.
 
-Tady můžete upravit vyhledávací dotaz upravit pro určitý objekt. Podrobné informace o vytváření prohledávání protokolů, najdete v článku [našla data pomocí prohledávání protokolů v Log Analytics](log-analytics-log-searches.md).
+Tady můžete upravit vyhledávací dotaz upravit pro určitý objekt. Podrobné informace o vytváření prohledávání protokolů, najdete v článku [našla data pomocí prohledávání protokolů v Log Analytics](log-analytics-log-search.md).
 
 #### <a name="find-esxi-host-events"></a>Najít akce hostitele ESXi
 Jednoho hostitele ESXi generuje více protokolů na základě jejich procesů. Řešení VMware Monitoring centralizuje je a obsahuje souhrn počtu událostí. Toto zobrazení centralizované vám pomůže pochopit hostitele ESXi, který má k velkému počtu událostí a které události se nejčastěji vyskytují ve vašem prostředí.
@@ -165,7 +165,7 @@ Ukládání vyhledávacích dotazů je standardní funkce v Log Analytics a mů�
 ![DockerDashboardView](./media/log-analytics-vmware/dockerdashboardview.png)
 
 #### <a name="create-alerts-from-queries"></a>Vytvářet upozornění z dotazů
-Po vytvoření dotazů, můžete využívat dotazy a zobrazí vám upozornění, když dojde k určité události. Zobrazit [upozornění v Log Analytics](log-analytics-alerts.md) informace o tom, jak vytvářet výstrahy. Příklady výstrah dotazy a další příklady dotazů, najdete v článku [VMware monitorování pomocí Log Analytics](https://blogs.technet.microsoft.com/msoms/2016/06/15/monitor-vmware-using-oms-log-analytics) blogový příspěvek.
+Po vytvoření dotazů, můžete využívat dotazy a zobrazí vám upozornění, když dojde k určité události. Zobrazit [upozornění v Log Analytics](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md) informace o tom, jak vytvářet výstrahy. Příklady výstrah dotazy a další příklady dotazů, najdete v článku [VMware monitorování pomocí Log Analytics](https://blogs.technet.microsoft.com/msoms/2016/06/15/monitor-vmware-using-oms-log-analytics) blogový příspěvek.
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 ### <a name="what-do-i-need-to-do-on-the-esxi-host-setting-what-impact-will-it-have-on-my-current-environment"></a>Co je potřeba na ESXi hostovat nastavení? Jaký vliv bude mít na mé aktuální prostředí?
@@ -206,6 +206,6 @@ Může existovat několik důvodů:
     d. Pokud soubor neexistuje nebo uživatel a skupina nastavení se nepovedlo, provést nápravné opatření [Příprava serveru s Linuxem](#prepare-a-linux-server).
 
 ## <a name="next-steps"></a>Další postup
-* Použití [prohledávání protokolů](log-analytics-log-searches.md) v Log Analytics, chcete-li zobrazit podrobné VMware hostovat data.
+* Použití [prohledávání protokolů](log-analytics-log-search.md) v Log Analytics, chcete-li zobrazit podrobné VMware hostovat data.
 * [Vytvářejte vlastní řídicí panely](log-analytics-dashboards.md) zobrazující data hostitele VMware.
-* [Vytvořit upozornění](log-analytics-alerts.md) Pokud dojde k určité událostem hostitele VMware.
+* [Vytvořit upozornění](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md) Pokud dojde k určité událostem hostitele VMware.

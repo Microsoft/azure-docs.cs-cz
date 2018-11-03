@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: robb
 ms.component: diagnostic-extension
-ms.openlocfilehash: c87a4acb8ca333af73643a38ae1338c9c8769d13
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: 123005a32315ba3972ed4f1c1784d3ac9460b101
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37341226"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50958946"
 ---
 # <a name="streaming-azure-diagnostics-data-in-the-hot-path-by-using-event-hubs"></a>Streamování dat diagnostiky Azure do horké cesty s využitím služby Event Hubs
 Diagnostika Azure nabízí flexibilní možnosti, jak shromažďovat metriky a protokoly z cloudové služby virtuálních počítačů (VM) a přenést výsledky do služby Azure Storage. Od března 2016 (SDK 2.9) časový rámec, můžete odeslání diagnostiky do vlastní zdroje dat a přenos dat kritickou cestu během několika sekund pomocí [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/).
@@ -42,7 +42,7 @@ Event Hubs receieving data z Azure Diagnostics se podporuje v cloudových služe
 * Existující konfigurace diagnostiky Azure v aplikaci s využitím *.wadcfgx* soubor a jeden z následujících metod:
   * Visual Studio: [konfigurace diagnostiky pro Azure Cloud Services a Virtual Machines](../vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md)
   * Prostředí Windows PowerShell: [povolení diagnostiky v Azure Cloud Services pomocí Powershellu](../cloud-services/cloud-services-diagnostics-powershell.md)
-* Zřízeno na článek, obor názvů služby Event Hubs [Začínáme se službou Event Hubs](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)
+* Zřízeno na článek, obor názvů služby Event Hubs [Začínáme se službou Event Hubs](../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)
 
 ## <a name="connect-azure-diagnostics-to-event-hubs-sink"></a>Připojení diagnostiky Azure do služby Event Hubs jímky
 Ve výchozím nastavení Azure Diagnostics vždy posílá protokoly a metriky pro účet služby Azure Storage. Aplikace může také posílat do služby Event Hubs tak, že přidáte nový **jímky** části **PublicConfig** / **WadCfg** elementu *. wadcfgx* souboru. V sadě Visual Studio *.wadcfgx* soubor je uložený v následujícím umístění: **projekt cloudové služby** > **role** > **() RoleName)** > **diagnostics.wadcfgx** souboru.
@@ -220,7 +220,7 @@ Na následujícím obrázku zobrazuje řídicí panel služby Event Hubs v dobr�
 ## <a name="view-hot-path-data"></a>Data zobrazení horké cesty
 Jak je popsáno výše, existuje mnoho případy použití pro příjem a zpracování dat služby Event Hubs.
 
-Jeden jednoduchý přístupem je vytvoření konzolové aplikace malý test naslouchat službě eventhub a tisknout do výstupního datového proudu. Můžete provádět následující kód, který je podrobněji vysvětleno [Začínáme se službou Event Hubs](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)), v konzolové aplikaci.  
+Jeden jednoduchý přístupem je vytvoření konzolové aplikace malý test naslouchat službě eventhub a tisknout do výstupního datového proudu. Můžete provádět následující kód, který je podrobněji vysvětleno [Začínáme se službou Event Hubs](../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)), v konzolové aplikaci.  
 
 Všimněte si, že musí obsahovat konzolovou aplikaci [balíček NuGet hostitel procesoru událostí](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost/).  
 
@@ -508,7 +508,7 @@ Chráněná nastavení pro:
 ## <a name="next-steps"></a>Další postup
 Další informace o službě Event Hubs najdete na následujících odkazech:
 
-* [Přehled služby Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md)
+* [Přehled služby Event Hubs](../event-hubs/event-hubs-about.md)
 * [Vytvoření centra událostí](../event-hubs/event-hubs-create.md)
 * [Nejčastější dotazy k Event Hubs](../event-hubs/event-hubs-faq.md)
 

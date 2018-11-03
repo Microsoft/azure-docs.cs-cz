@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2018
 ms.author: cynthn
-ms.openlocfilehash: aa1891ecec139746d6051dcabdb3c9db4f6062c6
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 44b0f8b3d11b737ad88f7d33b036b52d24b70e33
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46996345"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50960323"
 ---
 # <a name="install-and-configure-remote-desktop-to-connect-to-a-linux-vm-in-azure"></a>Instalace a konfigurace vzdálené plochy pro připojení k virtuálnímu počítači s Linuxem v Azure
 Virtuální počítače s Linuxem (VM) v Azure jsou obvykle spravovat z příkazového řádku pomocí připojení (SSH secure shell). Při nové po Linux, nebo pro rychlé řešení problémů s scénáře, využívání vzdálené plochy může být jednodušší. Tento článek podrobně popisuje, jak nainstalovat a nakonfigurovat desktopové prostředí ([xfce](https://www.xfce.org)) a vzdálené plochy ([xrdp](http://www.xrdp.org)) pro virtuální počítač s Linuxem pomocí modelu nasazení Resource Manager.
@@ -57,6 +57,7 @@ Teď, když máte desktopové prostředí nainstalovaná, nakonfigurujte služby
 
 ```bash
 sudo apt-get install xrdp
+sudo systemctl enable xrdp
 ```
 
 Řekněte xrdp jaké desktopové prostředí pro použití při spuštění relace. Nakonfigurujte xrdp určený xfce jako desktopové prostředí:

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 06/21/2018
 ms.author: richrund
 ms.component: ''
-ms.openlocfilehash: bc2b93312ed005154aa7d2530fb5493278a15c67
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 2ba921a45619c74af230b282c23adff502ae5b6d
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50418598"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50961445"
 ---
 # <a name="azure-networking-monitoring-solutions-in-log-analytics"></a>Sítě Azure monitoring řešení v Log Analytics
 
@@ -86,7 +86,7 @@ Pro brány Application Gateway se podporují následující metriky: znovu
 ### <a name="install-and-configure-the-solution"></a>Instalace a konfigurace řešení
 Pomocí následujících pokynů k instalaci a konfiguraci řešení analýzy Azure Application Gateway:
 
-1. Povolení řešení analýzy Azure Application Gateway z [Azure marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureAppGatewayAnalyticsOMS?tab=Overview) nebo pomocí procesu popsaného v [přidání řešení Log Analytics z Galerie řešení](log-analytics-add-solutions.md).
+1. Povolení řešení analýzy Azure Application Gateway z [Azure marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureAppGatewayAnalyticsOMS?tab=Overview) nebo pomocí procesu popsaného v [přidání řešení Log Analytics z Galerie řešení](../monitoring/monitoring-solutions.md).
 2. Povolení protokolování diagnostiky [brány Application Gateway](../application-gateway/application-gateway-diagnostics.md) chcete monitorovat.
 
 #### <a name="enable-azure-application-gateway-diagnostics-in-the-portal"></a>Povolení diagnostiky Azure Application Gateway na portálu
@@ -157,7 +157,7 @@ Tyto protokoly jsou podporovány pro skupiny zabezpečení sítě:
 ### <a name="install-and-configure-the-solution"></a>Instalace a konfigurace řešení
 Pomocí následujících pokynů k instalaci a konfiguraci řešení Azure Networking Analytics:
 
-1. Povolit skupiny zabezpečení sítě Azure analytického řešení z [Azure marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.AzureNSGAnalyticsOMS?tab=Overview) nebo pomocí procesu popsaného v [přidání řešení Log Analytics z Galerie řešení](log-analytics-add-solutions.md).
+1. Povolit skupiny zabezpečení sítě Azure analytického řešení z [Azure marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.AzureNSGAnalyticsOMS?tab=Overview) nebo pomocí procesu popsaného v [přidání řešení Log Analytics z Galerie řešení](../monitoring/monitoring-solutions.md).
 2. Povolení protokolování diagnostiky [skupinu zabezpečení sítě](../virtual-network/virtual-network-nsg-manage-log.md) prostředků, kterou chcete monitorovat.
 
 ### <a name="enable-azure-network-security-group-diagnostics-in-the-portal"></a>Povolení diagnostiky skupiny zabezpečení sítě Azure na portálu
@@ -215,7 +215,7 @@ Používat aktualizované řešení:
 
 1. [Konfigurovat diagnostiku, která se pošle přímo ke službě Log Analytics z Azure Application Gateway](#enable-azure-application-gateway-diagnostics-in-the-portal)
 2. [Konfigurovat diagnostiku, která se pošle přímo ke službě Log Analytics ze skupin zabezpečení sítě Azure](#enable-azure-network-security-group-diagnostics-in-the-portal)
-2. Povolit *Azure Application Gateway Analytics* a *analýzy skupin zabezpečení sítě Azure* řešení pomocí procesu popsaného v [přidání řešení Log Analytics z Galerie řešení](log-analytics-add-solutions.md)
+2. Povolit *Azure Application Gateway Analytics* a *analýzy skupin zabezpečení sítě Azure* řešení pomocí procesu popsaného v [přidání řešení Log Analytics z Galerie řešení](../monitoring/monitoring-solutions.md)
 3. Aktualizovat všechny uložené dotazy, řídicí panely nebo výstrahy k použití nového datového typu
   + Typ je AzureDiagnostics. Elementu ResourceType můžete použít k filtrování síťových protokolů Azure.
 
@@ -236,4 +236,4 @@ Data shromážděná před změna není viditelný v novém řešení. Můžete 
 [!INCLUDE [log-analytics-troubleshoot-azure-diagnostics](../../includes/log-analytics-troubleshoot-azure-diagnostics.md)]
 
 ## <a name="next-steps"></a>Další postup
-* Použití [prohledávání protokolů v Log Analytics](log-analytics-log-searches.md) zobrazíte podrobné dat diagnostiky Azure.
+* Použití [prohledávání protokolů v Log Analytics](log-analytics-log-search.md) zobrazíte podrobné dat diagnostiky Azure.

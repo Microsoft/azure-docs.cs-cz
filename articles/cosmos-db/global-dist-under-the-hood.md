@@ -8,33 +8,32 @@ ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: 21464ccfbd5712b18e46a271a93232dc3ba7d3c8
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 656742727b2bd85ac93211c74d82fe11d0bc0f46
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50244077"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50963893"
 ---
-# <a name="global-distribution---under-the-hood"></a>Globální distribuce - pod pokličkou
+# <a name="azure-cosmos-db-global-distribution---under-the-hood"></a>Azure Cosmos DB globální distribuce - pod pokličkou
 
-Azure Cosmos DB je podkladovou službu Azure, takže je nasazená ve všech oblastech Azure po celém světě, včetně veřejného, suverénních, ministerstva obrany (DoD) a cloudů pro státní správu. V rámci datového centra můžeme nasadit a spravovat služby Azure Cosmos DB na velkém "razítka" počítačů, každý s vyhrazenou místního úložiště. V rámci datového centra Azure Cosmos DB je nasadit napříč mnoha clusterech je každý potenciálně spuštění více generacemi hardwaru. Počítače v rámci clusteru jsou typicky rozděleny mezi 10-20 domén selhání.
+Azure Cosmos DB je podkladovou službu Azure, takže je nasazená ve všech oblastech Azure po celém světě, včetně veřejného, suverénních, ministerstva obrany (DoD) a cloudů pro státní správu. V rámci datového centra můžeme nasadit a spravovat služby Azure Cosmos DB na velkém razítka počítačů, každý s vyhrazenou místního úložiště. V rámci datového centra Azure Cosmos DB je nasadit napříč mnoha clusterech je každý potenciálně spuštění více generacemi hardwaru. Počítače v rámci clusteru jsou typicky rozděleny mezi 10-20 domén selhání. Následující obrázek ukazuje topologie systému globální distribuce služby Cosmos DB:
 
 ![Topologie systému](./media/global-dist-under-the-hood/distributed-system-topology.png)
-**topologie systému**
 
-Globální distribuce ve službě Azure Cosmos DB je klíč: v každém okamžiku jen několika kliknutími nebo programově pomocí jediného volání rozhraní API zákazníka můžete přidávat nebo odebírat zeměpisných oblastí, přidružených k jejich databáze Cosmos. Databáze Cosmos zase obsahuje sadu kontejnerů Cosmos. Ve službě Cosmos DB kontejnery slouží jako logické jednotky distribuci a škálovatelnost. Kolekce, tabulky a grafy, které vytvoříte jsou (interní) právě Cosmos kontejnery. Kontejnery jsou zcela nezávislý na schématu a zadejte rozsah dotazu. Při příjmu automaticky indexuje všechna data v kontejneru Cosmos. Automatické indexování umožňuje uživatelům zadávat dotazy na data, aniž byste museli řešit schématu nebo starostí se správou indexu, zejména v globálně distribuované instalaci.  
-
-Jak je znázorněno na následujícím obrázku, data v rámci kontejneru se distribuují podél dvou dimenzí:  
+**Globální distribuce ve službě Azure Cosmos DB je klíč:** v každém okamžiku jen několika kliknutími nebo programově pomocí jediného volání rozhraní API, můžete přidat nebo odebrat zeměpisných oblastí, přidružených k jejich databáze Cosmos. Databáze Cosmos zase obsahuje sadu kontejnerů Cosmos. Ve službě Cosmos DB kontejnery slouží jako logické jednotky distribuci a škálovatelnost. Kolekce, tabulky a grafy, které vytvoříte jsou (interní) právě Cosmos kontejnery. Kontejnery jsou zcela nezávislý na schématu a zadejte rozsah dotazu. Data v kontejneru Cosmos automaticky indexuje po ingestování. Automatické indexování umožňuje uživatelům zadávat dotazy na data, aniž byste museli řešit schématu nebo starostí se správou indexu, zejména v globálně distribuované instalaci.  
 
 - V dané oblasti distribuci dat v rámci kontejneru pomocí oddílu – klíče, které poskytuje a transparentně spravuje oddíly prostředků (místní distribuce).  
+
 - Každý oddíl prostředků se také replikuje napříč zeměpisnými oblastmi (globální distribuce). 
 
 Když aplikace pomocí služby Cosmos DB Elasticky škáluje propustnost (nebo využívá další úložiště) v kontejneru Cosmos, Cosmos DB transparentně zpracovává operace správy oddílů (rozdělení, klonování, odstranění) ve všech oblastech. Bez ohledu na škálování, distribuci nebo selhání, Cosmos DB nadále bude poskytovat jeden systémový obraz data v kontejnerech, které jsou globálně distribuované napříč libovolným počtem oblastí.  
 
-![Oddíly prostředků](./media/global-dist-under-the-hood/distribution-of-resource-partitions.png)
-**rozdělení oddílů prostředků**
+Jak je znázorněno na následujícím obrázku, data v rámci kontejneru se distribuují podél dvou dimenzí:  
 
-Oddíl prostředků je fyzicky, implementované skupina repliky, názvem sady replik. Každý počítač hostuje stovky repliky odpovídající různé oddíly prostředků v rámci dlouhodobého procesy, jak je znázorněno na předchozím obrázku. Repliky odpovídající oddílů prostředků jsou umístěny dynamicky a vyrovnáváno zatížení napříč počítači v rámci clusteru a datových center v rámci oblasti.  
+![Oddíly prostředků](./media/global-dist-under-the-hood/distribution-of-resource-partitions.png)
+
+Oddíl prostředků je implementováno skupina repliky, názvem sady replik. Každý počítač hostuje stovky repliky, které odpovídají různé oddíly prostředků v rámci dlouhodobého procesy, jak je znázorněno na předchozím obrázku. Repliky odpovídající oddílů prostředků jsou umístěny dynamicky a vyrovnáváno zatížení napříč počítači v rámci clusteru a datových center v rámci oblasti.  
 
 Replika jednoznačně patří do tenanta služby Azure Cosmos DB. Každá replika je hostitelem instance služby Cosmos DB [databázový stroj](https://www.vldb.org/pvldb/vol8/p1668-shukla.pdf), která spravuje prostředky, jakož i přidružené indexy. Databázový stroj Cosmos DB funguje v systému typu atom sekvence záznamů (ARS). Modul je závislá na konceptu schéma a rozmazání hranici mezi strukturu a instance hodnoty záznamů. Cosmos DB dosahuje úplného schématu agnosticism automaticky automatického indexování veškerých při ingestování efektivním způsobem, který umožňuje dotazování jejich globálně distribuovaných dat bez nutnosti schéma nebo správu indexů.
 

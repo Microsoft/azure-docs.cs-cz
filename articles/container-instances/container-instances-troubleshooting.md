@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: d2e4491f2ee21deedd674a5a8a64e4dd99149924
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 41e3f38817abbdd0cab9ab2c72d39cb6f3f69531
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49079346"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50978174"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>Řešení běžných potíží ve službě Azure Container Instances
 
@@ -102,7 +102,7 @@ az container create -g MyResourceGroup --name myapp --image ubuntu --command-lin
 
 ```azurecli-interactive 
 ## Deploying a Windows container
-az container create -g myResourceGroup --name mywindowsapp --os-type Windows --image windowsservercore:ltsc2016
+az container create -g myResourceGroup --name mywindowsapp --os-type Windows --image microsoft/windowsservercore:ltsc2016
  --command-line "ping -t localhost"
 ```
 
@@ -187,7 +187,7 @@ Pokud chcete zajistit nejrychlejší doba spuštění kontejneru Windows, použi
 
 ### <a name="windows-containers-slow-network-readiness"></a>Připravenost pomalou síť kontejnery Windows
 
-Kontejnery Windows mohou vám být naúčtovány žádné příchozí nebo odchozí připojení při počátečním vytvoření až na 5 sekund. Po počátečním nastavení sítě kontejnerů by měla pokračovat v odpovídajícím způsobem.
+Při počátečním vytvoření kontejnerů Windows může mít žádné příchozí nebo odchozí připojení po dobu až 30 sekund (nebo i delší dobu, ve výjimečných případech). Pokud svou aplikaci typu kontejner potřebuje připojení k Internetu, přidejte zpoždění a opakujte logiku, která umožní 30 sekund k navázání připojení k Internetu. Po počátečním nastavení sítě kontejnerů by měla pokračovat v odpovídajícím způsobem.
 
 ## <a name="resource-not-available-error"></a>Prostředek není k dispozici – chyba
 

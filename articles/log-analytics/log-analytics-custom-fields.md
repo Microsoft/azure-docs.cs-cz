@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/23/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: e86b79cb57b9d4a590d69a98eca591679ee10334
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: febe5c58857aa9cee6f6cfd5855919075d10d58a
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48042933"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50958079"
 ---
 # <a name="custom-fields-in-log-analytics"></a>Vlastní pole v Log Analytics
 **Vlastní pole** funkce Log Analytics můžete rozšířit existující záznamy ve službě Log Analytics tak, že přidáte vlastní prohledávatelná pole.  Vlastní pole se vyplní automaticky z dat extrahují z dalších vlastností ve stejném záznamu.
@@ -46,9 +46,9 @@ Postup pro vytvoření vlastní pole v následujících částech.  V dolní č�
 > 
 
 ### <a name="step-1--identify-records-that-will-have-the-custom-field"></a>Krok 1 – identifikace záznamy, které budou mít vlastní pole
-Prvním krokem je identifikace záznamy, které vám pomůžou vlastní pole.  Začínáte [prohledávání protokolů standardní](log-analytics-log-searches.md) a pak vyberte záznam tak, aby fungoval jako model, který Log Analytics se dozvíte z.  Pokud určíte, že budete extrahovat data do vlastního pole **Průvodce extrakce pole** se otevře, kde můžete ověřit a zpřesnit kritéria.
+Prvním krokem je identifikace záznamy, které vám pomůžou vlastní pole.  Začínáte [prohledávání protokolů standardní](log-analytics-log-search.md) a pak vyberte záznam tak, aby fungoval jako model, který Log Analytics se dozvíte z.  Pokud určíte, že budete extrahovat data do vlastního pole **Průvodce extrakce pole** se otevře, kde můžete ověřit a zpřesnit kritéria.
 
-1. Přejděte na **prohledávání protokolů** a použít [dotaz pro načtení záznamů](log-analytics-log-searches.md) , která bude mít vlastní pole.
+1. Přejděte na **prohledávání protokolů** a použít [dotaz pro načtení záznamů](log-analytics-log-search.md) , která bude mít vlastní pole.
 2. Vyberte záznam, který bude používat Log Analytics tak, aby fungoval jako model pro extrahování dat k vyplnění pole vlastní.  Bude identifikovat data, která mají být extrahovány z tohoto záznamu a Log Analytics bude tyto informace slouží k určení logiku k naplnění vlastní pole pro všechny podobné záznamy.
 3. Klikněte na tlačítko vlevo od nějaká vlastnost text záznam a vyberte **extrahovat pole z**.
 4. **Se otevře Průvodce extrakce pole**, a zobrazí se v záznamu, který jste vybrali **hlavním příkladem** sloupce.  Vlastní pole bude potřeba definovat pro ty záznamy pomocí stejných hodnot ve vlastnostech, které jsou vybrány.  
@@ -140,6 +140,6 @@ Teď můžeme použít vlastní pole, stejně jako jakoukoli jinou vlastnosti z�
 ![Seskupit podle dotazu](media/log-analytics-custom-fields/query-group.png)
 
 ## <a name="next-steps"></a>Další postup
-* Další informace o [prohledávání protokolů](log-analytics-log-searches.md) sestavování dotazů pomocí vlastních polí pro kritéria.
+* Další informace o [prohledávání protokolů](log-analytics-log-search.md) sestavování dotazů pomocí vlastních polí pro kritéria.
 * Monitorování [vlastního protokolu souborů](log-analytics-data-sources-custom-logs.md) , která můžete analyzovat pomocí vlastní pole.
 

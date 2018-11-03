@@ -5,21 +5,21 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/01/2018
+ms.date: 11/02/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 50bd22559c3695ac4161932652eb191084e2b46e
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 338035014cb8e34caa7aea688028a96d039b028c
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48017350"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50977664"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>Kurz: Vytvoření a Správa rozpočtů Azure
 
-Rozpočty ve službě Cost Management vám pomohou naplánovat a organizace tak podpořit přebírání odpovědnosti. S rozpočty může účet pro služby Azure využívat nebo přihlášení k odběru určité době. Pomáhají informovat ostatní o jejich útraty aktivně spravovat náklady a sledovat, jak útraty postupuje v čase. Uvidíte jak útraty průběh v čase. Při překročení prahových hodnot rozpočtu, který jste vytvořili, se aktivují jenom oznámení. Žádná z vašich prostředků neovlivní a spotřebu není zastavená. Rozpočty můžete porovnat a sledovat výdaje podle analýzu nákladů.
+Rozpočty ve službě Cost Management pomáhají plánovat a řídit odpovědnost v organizaci. Pomocí rozpočtů můžete zodpovídat za služby Azure, které využíváte nebo k jejichž odběru jste po určitou dobu přihlášení. Pomáhají informovat ostatní o jejich útraty aktivně spravovat náklady a sledovat, jak útraty postupuje v čase. Uvidíte jak útraty průběh v čase. Při překročení prahových hodnot rozpočtu, který jste vytvořili, se aktivují jenom oznámení. Žádná z vašich prostředků neovlivní a spotřebu není zastavená. Rozpočty můžete porovnat a sledovat výdaje podle analýzu nákladů.
 
 Rozpočty automaticky resetovat na konci období (měsíčně, čtvrtletně nebo ročně) pro velkou rozpočtu vyberete datum vypršení platnosti v budoucnosti. Protože resetují se stejnou velikostí rozpočtu, budete muset vytvořit samostatné rozpočty při rozpočtu peněžních hodnot se liší v budoucích obdobích.
 
@@ -33,13 +33,13 @@ V tomto kurzu se naučíte:
 
 ## <a name="prerequisites"></a>Požadavky
 
-Rozpočty jsou k dispozici pro všechny zákazníky Azure EA. Musíte mít přístup pro čtení k předplatnému Azure EA můžete vytvářet a spravovat rozpočet. EA fakturační účty nejsou podporovány rozpočtů.
+Rozpočty jsou k dispozici pro všechny zákazníky Azure EA. Pro vytváření a správu rozpočtů musíte mít k předplatnému Azure EA přístup pro čtení. Můžete vytvořit jednotlivé rozpočty pro skupiny prostředků a předplatných EA. Nelze však vytvořit rozpočty pro fakturační účty EA.
 
-Rozpočty se vytvářejí na úrovni skupiny prostředků nebo předplatného jednotlivě. Následující oprávnění Azure se podporuje na předplatné pro rozpočty uživatelů a skupin:
+Následující oprávnění Azure se podporuje na předplatné pro rozpočty uživatelů a skupin:
 
-- Vlastník – můžete vytvořit, upravit nebo Odstranit rozpočty pro předplatné.
-- Přispěvatel – můžete vytvořit, upravit nebo odstranit vlastní rozpočty. Můžete upravit hodnotu rozpočtu rozpočtů vytvořené někým jiným.
-- Čtenář – můžete zobrazit rozpočty, ke kterým mají oprávnění.
+- Vlastník – Může vytvářet, upravovat a odstraňovat rozpočty u předplatných.
+- Přispěvatel – Může vytvářet, upravovat a odstraňovat svoje vlastní rozpočty. Může měnit částky rozpočtu pro rozpočty, které vytvářejí jiní uživatelé.
+- Čtenář – Může zobrazovat rozpočty, ke kterým má oprávnění.
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 

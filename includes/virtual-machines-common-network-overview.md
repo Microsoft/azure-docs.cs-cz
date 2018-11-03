@@ -5,15 +5,15 @@ services: virtual-machines-windows
 author: cynthn
 ms.service: virtual-machines-windows
 ms.topic: include
-ms.date: 03/11/2018
+ms.date: 11/01/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 89d35197567c4bd44c5867dbb120d07e9f99d1e9
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 73273447bcf534f6ffd4584673756c40e8509e21
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50746236"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50973747"
 ---
 Když vytváříte virtuální počítač Azure, musíte vytvořit [virtuální síť](../articles/virtual-network/virtual-networks-overview.md) (VNet), nebo použít existující VNet. Také musíte rozhodnout, jak budou vaše virtuální počítače v síti VNet dostupné. Je důležité [plánovat před vytvořením prostředků](../articles/virtual-network/virtual-network-vnet-plan-design-arm.md) a dobře porozumět [omezením síťových prostředků](../articles/azure-subscription-service-limits.md#networking-limits).
 
@@ -36,9 +36,7 @@ Vedle těchto základních prostředků byste měli zvážit také následujíc�
 
 [Síťové rozhraní (NIC)](../articles/virtual-network/virtual-network-network-interface.md) je propojení mezi virtuálním počítačem a virtuální sítí (VNet). Virtuální počítač musí mít alespoň jedno síťové rozhraní, ale může jich mít víc, v závislosti na své velikosti. Další informace o tom, kolik síťových adaptérů každý virtuální počítač velikost podporuje pro [Windows](../articles/virtual-machines/windows/sizes.md) nebo [Linux](../articles/virtual-machines/linux/sizes.md).
 
-Můžete vytvořit virtuální počítač s několika síťovými kartami a přidat nebo odebrat síťových adaptérů v životním cyklu virtuálního počítače. Několik síťových adaptérů umožňují virtuálnímu počítači připojit k různým podsítím a odesílat nebo přijímat provoz přes rozhraní nejvhodnější.
-
-Pokud virtuální počítač přidáte do skupiny dostupnosti, všechny virtuální počítače v této skupině dostupnosti musí mít buď jedno, nebo několik síťových rozhraní. Pokud jich mají několik, na počtu nezáleží, ale všechny virtuální počítače ve skupině musí mít aspoň dvě rozhraní.
+Můžete vytvořit virtuální počítač s několika síťovými kartami a přidat nebo odebrat síťových adaptérů v životním cyklu virtuálního počítače. Několik síťových adaptérů umožňují virtuálnímu počítači připojit k různým podsítím a odesílat nebo přijímat provoz přes rozhraní nejvhodnější. Virtuální počítače s libovolným počtem síťových rozhraní může existovat ve stejné sadě dostupnosti, až na počet podporovaný velikostí virtuálních počítačů. 
 
 Každé síťové rozhraní přidružené k virtuálnímu počítači musí být ve stejném umístění a předplatném Azure jako samotný virtuální počítač. Každé síťové rozhraní musí být připojené k virtuální síti VNet, která je ve stejném umístění a předplatném Azure jako síťové rozhraní. Můžete změnit podsíť, ve které virtuální počítač je připojený k po jeho vytvoření, ale nelze změnit virtuální síť. Každé síťové rozhraní připojené k virtuálnímu počítači má přiřazenou adresu MAC, která se nezmění, dokud virtuální počítač neodstraníte.
 

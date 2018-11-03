@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 04/10/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 85cf55b4117208266e247316b1050e3988a2ce23
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 5effed58ea0fab9051470a44be30fbb3a7fd7feb
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49409148"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50962652"
 ---
 # <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>Vytvářet a spravovat pravidla výstrah ve službě Log Analytics pomocí rozhraní REST API
 Log Analytics výstrah REST API můžete vytvářet a spravovat upozornění v Log Analytics.  Tento článek obsahuje podrobnosti o rozhraní API a několik příkladů k provádění různých operací.
@@ -28,7 +28,7 @@ Log Analytics výstrah REST API můžete vytvářet a spravovat upozornění v L
 REST API pro hledání Log Analytics je RESTful a je přístupný prostřednictvím rozhraní REST API Azure Resource Manageru. V tomto dokumentu najdete příklady kde je rozhraní API pro přístup z příkazového řádku pomocí prostředí PowerShell [ARMClient](https://github.com/projectkudu/ARMClient), nástroje příkazového řádku open source, který zjednodušuje volání rozhraní API Azure Resource Manageru. Použití ARMClient a prostředí PowerShell je jedním z mnoha možností pro přístup k rozhraní API pro hledání Log Analytics. Pomocí těchto nástrojů můžete využít rozhraní RESTful API Azure Resource Manageru provádět volání do pracovních prostorů Log Analytics a provádět příkazy vyhledávání v nich. Rozhraní API bude vypsání výsledků vyhledávání vám ve formátu JSON, abyste mohli používat výsledky hledání prostřednictvím kódu programu mnoha různými způsoby.
 
 ## <a name="prerequisites"></a>Požadavky
-V současné době mohou výstrahy vytvořeny pouze se uložené výsledky hledání v Log Analytics.  Můžete se podívat do [protokolu REST API služby Search](log-analytics-log-search-api.md) Další informace.
+V současné době mohou výstrahy vytvořeny pouze se uložené výsledky hledání v Log Analytics.  Můžete se podívat do [protokolu REST API služby Search](log-analytics-log-search.md) Další informace.
 
 ## <a name="schedules"></a>Plány
 Uložené výsledky hledání můžete mít nejmíň jeden plán. Plán definuje, jak často se hledání spuštění a časový interval nad tím, které je identifikován kritéria.
@@ -451,8 +451,7 @@ Následuje Úplný příklad k vytvoření nového e-mailové upozornění.  Tí
     $scheduleJson = "{'properties': { 'Interval': 15, 'QueryTimeSpan':15, 'Active':'true' }"
     armclient put /subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.OperationalInsights/workspaces/$workspaceName/savedSearches/$searchId/schedules/$scheduleId/?api-version=2015-03-20 $scheduleJson
 
-    $emailJson = "{'properties': { 'Name': 'MyEmailAction', 'Version':'1', 'Severity':'Warning', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 10 }, 'EmailNotification': {'Recipients': ['recipient1@contoso.com', 'recipient2@contoso.com'], 'Subject':'This is the subject', 'Attachment':'None'} }"
-    armclient put /subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.OperationalInsights/workspaces/$workspaceName/savedSearches/$searchId/schedules/$scheduleId/actions/$actionId/?api-version=2015-03-20 $emailJson
+    $emailJson = "{'vlastnosti': {"Name": 'MyEmailAction', 'Version':"1', 'závažnost":"Upozornění","typ":"", prahová hodnota" pro výstrahy": {'Operator': gt, 'Value': 10},"EmailNotification": {"Příjemci": ["recipient1@contoso.com","recipient2@contoso.com"],"Předmět":" Předmět ","Přílohy":"Žádný"}}" armclient umístit /subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.OperationalInsights/workspaces/$workspaceName/savedSearches/$searchId/schedules/$scheduleId/ Akce / $actionId /? api-version = 2015-03-20 emailJson $
 
 #### <a name="webhook-actions"></a>Akce Webhooku
 Akce Webhooku spuštění procesu pomocí volání adresy URL a volitelně poskytuje datovou část, která je k odeslání.  Když se podobají nápravné akce, s výjimkou jsou určeny pro webhooky, které mohou vyvolat procesy než runbooky Azure Automation.  Obsahují taky další možnost poskytnout datovou část, která bude doručen do vzdáleného procesu.
@@ -511,6 +510,6 @@ Použijte metodu Put se existující ID akce k úpravě akce webhooku pro plán.
 
 
 ## <a name="next-steps"></a>Další postup
-* Použití [rozhraní REST API k provedení prohledávání protokolů](log-analytics-log-search-api.md) v Log Analytics.
+* Použití [rozhraní REST API k provedení prohledávání protokolů](log-analytics-log-search.md) v Log Analytics.
 * Další informace o [upozornění protokolů ve výstrahách azure](../monitoring-and-diagnostics/monitor-alerts-unified-log.md)
 

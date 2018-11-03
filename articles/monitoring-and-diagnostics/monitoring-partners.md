@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: 8ffeac78b809ea19163360e85d1c841c55b2364a
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: eb60afc21b7f8e21c4573e46165696c3461d3613
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/02/2018
-ms.locfileid: "50914614"
+ms.locfileid: "50963859"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Integrace partnerů Azure Monitor
 | Partneři |  |  |
@@ -164,7 +164,7 @@ Turbonomic zajišťuje automatizaci úloh pro hybridní cloudy a současně opti
 
 
 ## <a name="next-steps"></a>Další kroky
-* [Další informace o Azure monitoru](monitoring-overview.md)
+* [Další informace o Azure monitoru](../azure-monitor/overview.md)
 * [Metriky přístup pomocí rozhraní REST API](monitoring-rest-api-walkthrough.md)
 * [Protokol aktivit do služby jiných společností než Microsoft Stream](monitoring-stream-activity-logs-event-hubs.md)
 * [Stream diagnostických protokolů do služby jiných výrobců](monitoring-stream-diagnostic-logs-to-event-hubs.md)

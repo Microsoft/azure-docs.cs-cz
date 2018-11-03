@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: mbullwin
-ms.openlocfilehash: 5ea026de228f3c93eed04770ad931d072387aa95
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 86b7b87c8cc11be5c4f2c8892905bb6e6800e729
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49079068"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50958870"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Shromažďování, uchování a ukládání dat v nástroji Application Insights
 
@@ -173,7 +173,7 @@ TelemetryConfiguration.Active.TelemetryChannel = channel;
 
 Ve výchozím nastavení `ServerTelemetryChannel` používá složky dat lokální aplikace pro aktuálního uživatele `%localAppData%\Microsoft\ApplicationInsights` nebo dočasnou složku `%TMP%`. (Viz [implementace](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/91e9c91fcea979b1eec4e31ba8e0fc683bf86802/src/ServerTelemetryChannel/Implementation/ApplicationFolderProvider.cs#L54-L84) zde.) V prostředí Linux místní úložiště se deaktivuje, pokud se zadá složka úložiště.
 
-Následující fragment kódu ukazuje, jak nastavit `ServerTelemetryChannel.StorageFolder` v `ConfigureServices()` metodu vaše `Startup.cs` třídy:
+Následující fragment kódu ukazuje, jak nastavit `ServerTelemetryChannel.StorageFolder` v `ConfigureServices()`  metodu vaše `Startup.cs` třídy:
 
 ```
 services.AddSingleton(typeof(ITelemetryChannel), new ServerTelemetryChannel () {StorageFolder = "/tmp/myfolder"});
@@ -232,7 +232,7 @@ openssl s_client -connect bing.com:443 -tls1_2
 
 ## <a name="personal-data-stored-in-application-insights"></a>Osobní údaje uložené ve službě Application Insights
 
-Naše [článku osobních údajů služby Application Insights](app-insights-customer-data.md) podrobné tento problém.
+Naše [článku osobních údajů služby Application Insights](../log-analytics/log-analytics-personal-data-mgmt.md) podrobné tento problém.
 
 #### <a name="can-my-users-turn-off-application-insights"></a>Můžete svým uživatelům vypnout Application Insights?
 Ne přímo. Neposkytujeme přepínač, který chcete-li vypnout Application Insights můžete provozovat vaši uživatelé.
@@ -274,7 +274,7 @@ Pro [sady SDK pro jiné platformy][platforms], najdete v článku své dokumenty
 | Požadavky |Adresa URL, doba trvání, kód odpovědi |
 | Závislosti |Typ (SQL, protokolu HTTP,...), připojovací řetězec nebo identifikátor URI, sync/async, doba trvání, úspěch, příkaz SQL (pomocí monitorování stavu) |
 | **Výjimky** |Typ, **zpráva**, zásobníky volání, zdrojového souboru a řádku číslo id vlákna |
-| Chyby |Id procesu, id nadřazeného procesu, id vlákna selhání; Oprava aplikace, id, sestavení;  Typ výjimky, adresa, z důvodu; obfuskovaný symboly a registry, binární počáteční a koncovou adresu, binární název a cesta, typ procesoru |
+| Dojde k chybě |Id procesu, id nadřazeného procesu, id vlákna selhání; Oprava aplikace, id, sestavení;  Typ výjimky, adresa, z důvodu; obfuskovaný symboly a registry, binární počáteční a koncovou adresu, binární název a cesta, typ procesoru |
 | Trasování |**Zpráva** a úroveň závažnosti |
 | Čítače výkonu |Času procesoru, paměti, frekvence požadavků, frekvence výjimek, nesdílených bajtů procesu, frekvence v/v, doba trvání žádosti, délka fronty požadavků |
 | Dostupnost |Odpovědi kódu webového testu, dobu trvání každý krok testu, název testu, časové razítko, úspěch, doby odezvy, umístění testu |

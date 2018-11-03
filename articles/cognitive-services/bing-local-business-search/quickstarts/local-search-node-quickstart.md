@@ -10,12 +10,12 @@ ms.component: bing-local-business
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: 571ac9f593e51d66a905f34be9ead2f42753635b
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.openlocfilehash: ca05941a499d6bc3e183919de7b407cfba53038d
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50748631"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50958249"
 ---
 # <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-using-nodejs"></a>Rychlý start: Odeslání dotaz Bingu místní firmy hledání rozhraní API pomocí Node.js
 
@@ -50,8 +50,8 @@ let https = require('https');
 // Replace the subscriptionKey string value with your valid subscription key.
 let subscriptionKey = 'your-access-key';
 
-let host = 'www.bingapis.com';
-let path = '/api/v7/localbusinesses/search';
+let host = 'api.cognitive.microsoft.com/bing';
+let path = '/v7.0/localbusinesses/search';
 
 let mkt = 'en-US';
 let q = 'hotel in Bellevue';

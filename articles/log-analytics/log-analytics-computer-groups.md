@@ -15,16 +15,16 @@ ms.topic: conceptual
 ms.date: 05/03/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 81eacf464c90d56c4ebeae1d1cefbd6f2f0fdab8
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: bb95caf7f50b52d2c423de31d4fda701f4c16b40
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49408536"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50963753"
 ---
 # <a name="computer-groups-in-log-analytics-log-searches"></a>Prohledávání protokolů skupiny počítačů v Log Analytics
 
-Skupiny počítačů v Log Analytics vám umožní oboru [prohledávání protokolů](log-analytics-log-search-new.md) konkrétní sadě počítačů.  Každá skupina se zaplní, buď dotaz, který definujete pomocí počítače nebo importováním skupiny z různých zdrojů.  Skupiny je obsažen v prohledávání protokolu, výsledky jsou omezené na záznamy, které odpovídají počítačů ve skupině.
+Skupiny počítačů v Log Analytics vám umožní oboru [prohledávání protokolů](log-analytics-log-search.md) konkrétní sadě počítačů.  Každá skupina se zaplní, buď dotaz, který definujete pomocí počítače nebo importováním skupiny z různých zdrojů.  Skupiny je obsažen v prohledávání protokolu, výsledky jsou omezené na záznamy, které odpovídají počítačů ve skupině.
 
 ## <a name="creating-a-computer-group"></a>Vytvořit skupinu počítačů
 Vytvořit skupinu počítačů v Log Analytics pomocí některé z metod v následující tabulce.  Podrobnosti o každé metody jsou k dispozici v následujících částech. 
@@ -136,5 +136,5 @@ V pracovním prostoru Log Analytics pro každého členství ve skupině počít
 | TimeGenerated |Datum a čas vytvoření nebo aktualizace skupiny počítačů. |
 
 ## <a name="next-steps"></a>Další postup
-* Další informace o [prohledávání protokolů](log-analytics-log-searches.md) analyzovat data shromážděná ze zdrojů dat a jejich řešení.  
+* Další informace o [prohledávání protokolů](log-analytics-log-search.md) analyzovat data shromážděná ze zdrojů dat a jejich řešení.  
 

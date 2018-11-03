@@ -9,12 +9,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: spelluru
-ms.openlocfilehash: 293cde00e53171e848263df8564ec85f273c1a40
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 7d4b4a98c38757eb33c3f8713f662ed52a686924
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47166329"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50978651"
 ---
 # <a name="azure-service-bus-metrics-in-azure-monitor-preview"></a>Metriky Azure Service Bus ve službě Azure Monitor (preview)
 
@@ -80,6 +80,8 @@ Následující dva typy chyb jsou klasifikovány jako chyby uživatele:
 | ------------------- | ----------------- |
 |Příchozí zprávy (preview)|Počet událostí nebo zprávy odeslané do služby Service Bus v zadaném období.<br/><br/> Jednotky: počet <br/> Typ agregace: Celkový počet <br/> Dimenze: EntityName|
 |Odchozí zprávy (preview)|Počet zpráv přijatých z Service Bus v zadaném období nebo události.<br/><br/> Jednotky: počet <br/> Typ agregace: Celkový počet <br/> Dimenze: EntityName|
+| Zprávy (preview) | Počet zpráv ve frontě nebo tématu. <br/><br/> Jednotky: počet <br/> Typ agregace: průměr <br/> Dimenze: EntityName |
+| ActiveMessages (preview) | Počet aktivních zpráv ve frontě nebo tématu. <br/><br/> Jednotky: počet <br/> Typ agregace: průměr <br/> Dimenze: EntityName |
 
 ## <a name="connection-metrics"></a>Metrik připojení
 

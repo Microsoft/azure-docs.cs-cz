@@ -1,5 +1,5 @@
 ---
-title: Práce s Geoprostorová data ve službě Azure Cosmos DB | Dokumentace Microsoftu
+title: Práce s Geoprostorová data v účtu rozhraní SQL API služby Azure Cosmos DB | Dokumentace Microsoftu
 description: Naučte se vytvářet, indexování a dotazovat Prostorové objekty s Azure Cosmos DB a rozhraní SQL API.
 services: cosmos-db
 author: SnehaGunda
@@ -7,18 +7,18 @@ manager: kfile
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/20/2017
+ms.date: 11/01/2017
 ms.author: sngun
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1b1dcd9ba428618e1b234d76d5ad459eab0662aa
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 6ad59f14a0ade305bc9b1f9f125c21e9bdc39c0d
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50417553"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50961904"
 ---
-# <a name="working-with-geospatial-and-geojson-location-data-in-azure-cosmos-db"></a>Práce s geoprostorové a údaje o poloze GeoJSON ve službě Azure Cosmos DB
-Tento článek je úvodem do geoprostorové funkce v [služby Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/). Po přečtení to, bude moci odpovědět na následující otázky:
+# <a name="use-geospatial-and-geojson-location-data-with-azure-cosmos-db-sql-api-account"></a>Použití geoprostorových a GeoJSON umístění dat pomocí účtu rozhraní SQL API služby Azure Cosmos DB
+
+Tento článek je úvodem do geoprostorové funkce ve službě Azure Cosmos DB. Aktuálně účely ukládání a zpřístupnění geoprostorových dat podporuje pouze účty SQL API služby Cosmos DB. Po přečtení tohoto článku, budou moci odpovědět na následující otázky:
 
 * Jak můžu ukládat prostorová data ve službě Azure Cosmos DB?
 * Jak lze Geoprostorová data ve službě Azure Cosmos DB v SQL a LINQ dotaz?
@@ -133,9 +133,6 @@ public class UserProfile
     [JsonProperty("location")]
     public Point Location { get; set; }
 
-    [JsonProperty("profiletype")]
-    public string ProfileType { get; set; }
-
     // More properties
 }
 
@@ -154,7 +151,7 @@ Pokud není k dispozici informace o zeměpisné šířce a délce, ale název um
 Teď, když jsme měli podívat, jak vložit Geoprostorová data, Pojďme se podívat, jak zadávat dotazy na tato data pomocí služby Azure Cosmos DB pomocí jazyka SQL a LINQ.
 
 ### <a name="spatial-sql-built-in-functions"></a>Prostorové integrované funkce SQL
-Azure Cosmos DB podporuje následující předdefinované funkce Otevřít geoprostorové W3c (OGC) pro geoprostorové dotazování. Další podrobnosti o kompletní sadu integrovaných funkcí v jazyce SQL najdete v tématu [dotazů Azure Cosmos DB](sql-api-sql-query.md).
+Azure Cosmos DB podporuje následující předdefinované funkce Otevřít geoprostorové W3c (OGC) pro geoprostorové dotazování. Další informace o kompletní sadu integrovaných funkcí v jazyce SQL najdete v tématu [dotazů Azure Cosmos DB](sql-api-sql-query.md).
 
 <table>
 <tr>
@@ -197,7 +194,7 @@ Prostorové funkce lze použít k provádění dotazů blízkosti prostorová da
       "id": "WakefieldFamily"
     }]
 
-Pokud zahrnete prostorového indexování v zásady indexování, pak "vzdálenost dotazy" bude obsluhovat efektivně pomocí indexu. Další podrobnosti o prostorového indexování najdete v následující části. Pokud nemáte prostorový index pro zadané cesty, může stále zlepšovat prostorových dotazů tak, že zadáte `x-ms-documentdb-query-enable-scan` hlavičce žádosti s nastavenou hodnotu "true". V rozhraní .NET, to můžete udělat tak volitelného **FeedOptions** argument dotazů s [EnableScanInQuery](https://msdn.microsoft.com/library/microsoft.azure.documents.client.feedoptions.enablescaninquery.aspx#P:Microsoft.Azure.Documents.Client.FeedOptions.EnableScanInQuery) nastavenou na hodnotu true. 
+Pokud zahrnete prostorového indexování v zásady indexování, pak "vzdálenost dotazy" bude obsluhovat efektivně pomocí indexu. Další informace o prostorového indexování najdete v následující části. Pokud nemáte prostorový index pro zadané cesty, může stále zlepšovat prostorových dotazů tak, že zadáte `x-ms-documentdb-query-enable-scan` hlavičce žádosti s nastavenou hodnotu "true". V rozhraní .NET, to můžete udělat tak volitelného **FeedOptions** argument dotazů s [EnableScanInQuery](https://msdn.microsoft.com/library/microsoft.azure.documents.client.feedoptions.enablescaninquery.aspx#P:Microsoft.Azure.Documents.Client.FeedOptions.EnableScanInQuery) nastavenou na hodnotu true. 
 
 ST_WITHIN slouží ke kontrole, pokud bod leží uvnitř mnohoúhelníku. Mnohoúhelníky se běžně používá k reprezentování hranice jako PSČ, hranice stavu nebo fyzických struktur. Znovu zadáte-li prostorového indexování v zásady indexování, pak "v" dotazy bude obsluhovat efektivně pomocí indexu. 
 
@@ -279,7 +276,7 @@ Tady je příklad dotazu LINQ, který najde všechny dokumenty v kolekci Azure C
 **Dotaz LINQ vzdálenosti**
 
     foreach (UserProfile user in client.CreateDocumentQuery<UserProfile>(UriFactory.CreateDocumentCollectionUri("db", "profiles"))
-        .Where(u => u.ProfileType == "Public" && u.Location.Distance(new Point(32.33, -4.66)) < 30000))
+        .Where(u => u.ProfileType == "Public" && a.Location.Distance(new Point(32.33, -4.66)) < 30000))
     {
         Console.WriteLine("\t" + user);
     }

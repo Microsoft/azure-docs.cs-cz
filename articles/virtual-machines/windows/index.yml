@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: c670ddf7543cc4a88827bed6a495c9f5d83d446f
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 64a502133e671037c0ff665bc47989bdd32f8b6d
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46950915"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50979110"
 documentType: LandingData
 title: Dokumentace k virtuálním počítačům s Windows
 metadata:
@@ -79,7 +79,6 @@ sections:
     - html: <a href="/azure/virtual-machines/windows/tutorial-govern-resources">Řízení virtuálních počítačů</a>
     - html: <a href="/azure/virtual-machines/windows/tutorial-monitoring">Monitorování virtuálních počítačů</a>
     - html: <a href="/azure/virtual-machines/windows/tutorial-azure-security">Správa zabezpečení na virtuálních počítačích</a>
-    - html: <a href="/azure/virtual-machines/windows/tutorial-vsts-iis-cicd">Vytvoření kanálu průběžné integrace se sadou Visual Studio</a>
     - html: <a href="/azure/virtual-machines/windows/tutorial-iis-sql">Instalace zásobníku SQL/IIS/.NET</a>
     - html: <a href="/azure/virtual-machines/windows/tutorial-secure-web-server">Zabezpečení webového serveru pomocí SSL</a>
 - title: Získávání dovedností pomocí Microsoft Learn
@@ -88,7 +87,7 @@ sections:
     style: cards
     className: cardsFTitle
     items:
-    - title: " Vytvoření virtuálního počítače s Windows v Azure"
+    - title: " Vytvoření virtuálního počítače s Windows v Azure"
       href: /learn/modules/create-windows-virtual-machine-in-azure/
       image:
         src: /learn/achievements/create-windows-virtual-machine-in-azure.svg

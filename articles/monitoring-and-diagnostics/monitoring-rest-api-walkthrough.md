@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/19/2018
 ms.author: mcollier
 ms.component: ''
-ms.openlocfilehash: 59e7ac5e2da733724c047f6842561ce87fb495bb
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 1d04c4335fcb2d7264d91e0b147c43828b3cff2e
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49955299"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50958742"
 ---
 # <a name="azure-monitoring-rest-api-walkthrough"></a>Azure návod monitorování rozhraní REST API
 Tento článek popisuje, jak provádět ověřování, takže váš kód může použít [Reference k REST API Microsoft Azure Monitor](https://msdn.microsoft.com/library/azure/dn931943.aspx).         
@@ -54,7 +54,7 @@ New-AzureRmRoleAssignment -RoleDefinitionName Reader `
 
 ```
 
-Dotaz rozhraní API služby Azure Monitor, klientská aplikace k ověření používala dříve vytvořený instanční objekt. Skript prostředí PowerShell následující příklad ukazuje jednu přístup, pomocí [Active Directory Authentication Library](../active-directory/active-directory-authentication-libraries.md) (ADAL) k získání ověřovacího tokenu JWT. JWT token je předán jako součást parametrem HTTP autorizace v požadavku REST API služby Azure Monitor.
+Dotaz rozhraní API služby Azure Monitor, klientská aplikace k ověření používala dříve vytvořený instanční objekt. Skript prostředí PowerShell následující příklad ukazuje jednu přístup, pomocí [Active Directory Authentication Library](../active-directory/develop/active-directory-authentication-libraries.md) (ADAL) k získání ověřovacího tokenu JWT. JWT token je předán jako součást parametrem HTTP autorizace v požadavku REST API služby Azure Monitor.
 
 ```PowerShell
 $azureAdApplication = Get-AzureRmADApplication -IdentifierUri "https://localhost/azure-monitor"
@@ -694,7 +694,7 @@ Invoke-RestMethod -Uri $request `
 ```
 
 ## <a name="next-steps"></a>Další postup
-* Zkontrolujte [Přehled monitorování](monitoring-overview.md).
+* Zkontrolujte [Přehled monitorování](../azure-monitor/overview.md).
 * Zobrazení [podporované metriky ve službě Azure Monitor](monitoring-supported-metrics.md).
 * Zkontrolujte [Microsoft Azure, monitorování, Reference k rozhraní REST API](https://msdn.microsoft.com/library/azure/dn931943.aspx).
 * Zkontrolujte [knihovny správy Azure](https://msdn.microsoft.com/library/azure/mt417623.aspx).

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: meirm
 ms.component: ''
-ms.openlocfilehash: ef3cc76c0188cb2a0d3236d462d0645e3e45040b
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: ef1956f5283105548ba8790b87e82c35d6c9e1cd
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48044276"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50960935"
 ---
 # <a name="log-analytics-for-service-providers"></a>Log Analytics pro poskytovatele služeb
 Log Analytics může pomoct, poskytovatelům spravovaných služeb (MSP), pro velké podniky, nezávislí výrobci softwaru (ISV) a poskytovatelů hostitelských služeb spravovat a monitorovat servery v jeho místní nebo cloudovou infrastrukturu. 
@@ -82,6 +82,6 @@ Existují dvě možnosti, jak implementovat centrální umístění ve službě 
 ## <a name="next-steps"></a>Další kroky
 * Automatizace vytváření a konfiguraci mezi pracovními prostory pomocí [šablon Resource Manageru](log-analytics-template-workspace-configuration.md)
 * Automatizace vytváření pracovních prostorů pomocí [prostředí PowerShell](log-analytics-powershell-workspace-configuration.md) 
-* Použití [výstrahy](log-analytics-alerts.md) integrovat se stávajícími systémy
+* Použití [výstrahy](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md) integrovat se stávajícími systémy
 * Pomocí souhrnné sestavy [Power BI](log-analytics-powerbi.md)
 * Zkontrolujte proces [konfigurace Log Analytics a Power BI k monitorování více zákazníků CSP](https://docs.microsoft.com/azure/cloud-solution-provider/support/monitor-multiple-customers)

@@ -1,6 +1,6 @@
 ---
-title: Migrace Azure výstrahy na události správy do protokolu činnosti výstrahy
-description: Výstrahy na události správy budou odebrány říjen 1. Připravte migraci existujícího výstrahy.
+title: Migrace na upozornění protokolu aktivit Azure výstrahy týkající se událostí správy
+description: Výstrahy na události správy odebere 1. října. Připravte migraci existujícího upozornění.
 author: johnkemnetz
 services: monitoring
 ms.service: azure-monitor
@@ -8,29 +8,29 @@ ms.topic: conceptual
 ms.date: 08/14/2017
 ms.author: johnkem
 ms.component: alerts
-ms.openlocfilehash: 9e4302b780d0c08afbc791a0aec6bfd806aba161
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 21651c577dc6b519b139aa7bbfc6d03d8f2c6980
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35263700"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50962142"
 ---
-# <a name="migrate-azure-alerts-on-management-events-to-activity-log-alerts"></a>Migrace Azure výstrahy na události správy do protokolu činnosti výstrahy
+# <a name="migrate-azure-alerts-on-management-events-to-activity-log-alerts"></a>Migrace na upozornění protokolu aktivit Azure výstrahy týkající se událostí správy
 
 
 > [!WARNING]
-> Výstrahy na události správy se vypne na nebo po říjen 1. Následující pokyny slouží k pochopení, pokud máte tyto výstrahy a migraci, je-li tomu tak.
+> Výstrahy na události správy se vypne nebo po 1. října. Postupujte podle pokynů níže pochopit, pokud máte tyto výstrahy a jejich migraci, pokud tomu tak je.
 >
 > 
 
-## <a name="what-is-changing"></a>Co je změna
+## <a name="what-is-changing"></a>Co se mění
 
-Azure monitorování (dříve Statistika Azure) nabízí možnost vytvořit výstrahu, která aktivuje z událostí správy a vygeneruje oznámení na webhooku adresu URL nebo e-mailové adresy. Jste vytvořili jednu z těchto výstrah některý z těchto způsobů:
-* Na portálu Azure pro určité typy prostředků v části monitorování -> Výstrahy -> Přidat výstrahy, kde "Výstrah na" je nastaven na "Události"
-* Spuštěním rutiny Add-AzureRmLogAlertRule prostředí PowerShell
-* Přímo pomocí [výstrahy REST API](http://docs.microsoft.com/rest/api/monitor/alertrules) s odata.type = "ManagementEventRuleCondition" a dataSource.odata.type = "RuleManagementEventDataSource"
+Azure Monitor (dříve Azure Insights) nabízí možnost vytvořit výstrahu, která aktivuje z události správy a vygenerovat oznámení webhooku adresu URL nebo e-mailové adresy. Pravděpodobně jste si vytvořili jednu z těchto výstrah kterýmkoli z těchto způsobů:
+* Na portálu Azure pro některé typy prostředků v části monitorování -> Výstrahy -> přidat oznámení, kde "Výstrah na" je nastaven na "Události"
+* Spuštěním rutiny Add-AzureRmLogAlertRule Powershellu
+* Přímo pomocí [REST API upozornění](http://docs.microsoft.com/rest/api/monitor/alertrules) s odata.type = "ManagementEventRuleCondition" a dataSource.odata.type = "RuleManagementEventDataSource"
  
-Následující skript prostředí PowerShell vrátí seznam všech výstrah v události správy, které máte v vašeho předplatného, jakož i podmínky nastavit pro jednotlivé výstrahy.
+Následující skript prostředí PowerShell vrátí seznam hodnot všechny výstrahy na události správy, které mají v vašeho předplatného, jakož i podmínky nastavené na jednotlivé výstrahy.
 
 ```powershell
 Connect-AzureRmAccount
@@ -49,11 +49,11 @@ foreach ($alert in $alerts) {
 } 
 ```
 
-Pokud máte žádné výstrahy týkající se správy událostí, výše uvedené rutiny prostředí PowerShell výstup řadu zprávy upozornění podobné následujícímu:
+Pokud nemáte žádná upozornění na události správy, bude výstup výše uvedené rutiny Powershellu řadu upozornění podobný následujícímu:
 
 `WARNING: The output of this cmdlet will be flattened, i.e. elimination of the properties field, in a future release to improve the user experience.`
 
-Tyto zprávy upozornění můžete ignorovat. Pokud máte výstrahy na události správy, bude výstup této rutiny prostředí PowerShell vypadat takto:
+Tyto zprávy upozornění můžete ignorovat. Pokud máte výstrahy na události správy, výstup této rutiny prostředí PowerShell bude vypadat například takto:
 
 ```
 Alert Name: webhookEvent1
@@ -90,29 +90,29 @@ ResourceUri          : /subscriptions/<subscription-id>/resourceGroups/<resource
 ---------------------------------
 ```
 
-Každá výstraha je oddělená na přerušovanou čáru a podrobnosti zahrnují ID prostředku výstraha a konkrétní pravidlo, které jsou monitorovány.
+Každé upozornění jsou oddělené oddělovačem na přerušovanou čáru a podrobnosti zahrnují ID prostředku výstrahy a příslušné pravidlo monitoruje.
 
-Tato funkce přešla do [Azure monitorování aktivity protokolu výstrah](monitoring-activity-log-alerts.md). Tyto nové výstrahy umožňují nastavit stav aktivity protokolu událostí a přijímat oznámení, když o novou událost odpovídá podmínku. Také nabízí několik vylepšení z výstrahy na události správy:
-* Můžete opakovaně použít skupině příjemců oznámení ("akce") napříč více výstrah pomocí [skupiny akcí](monitoring-action-groups.md), snižuje složitost změny příjemce výstrahu.
-* Můžete obdržet oznámení přímo na váš telefon SMS pomocí akce skupiny.
-* Můžete [vytvářet výstrahy, aktivity protokolu pomocí šablony Resource Manageru](monitoring-create-activity-log-alerts-with-resource-manager-template.md).
-* Podmínky lze vytvořit s větší flexibilitu a složitost tak, aby vyhovovala vašim konkrétním potřebám.
-* Oznámení se doručují rychleji.
+Tato funkce byla převedena do [upozornění protokolu aktivit Azure Monitor](monitoring-activity-log-alerts.md). Tyto nové výstrahy umožňují nastavit podmínku pro události protokolu aktivit a při vytvoření nové události odpovídá podmínce, dostanete oznámení. Také nabízí několik vylepšení z výstrahy na události správy:
+* Můžete znovu použít, vaše skupina příjemců oznámení ("akce") mezi výstrahami generovanými při použití [skupiny akcí](monitoring-action-groups.md), omezil složitost změny, kdo by měl zobrazit upozornění.
+* Upozornění můžete dostávat přímo na váš telefon SMS pomocí skupin akcí.
+* Je možné [vytvoření upozornění protokolu aktivit se šablonami Resource Manageru](alert-activity-log.md).
+* Podmínky lze vytvořit s větší flexibilitou a složitosti a vyhovět vašim konkrétním potřebám.
+* Oznámení se dodávají rychleji.
  
-## <a name="how-to-migrate"></a>Postup migrace
+## <a name="how-to-migrate"></a>Jak migrovat
  
-Pokud chcete vytvořit oznámení nové aktivity na protokolu, můžete buď:
-* Postupujte podle [našem návodu o tom, jak vytvořit upozornění na portálu Azure](monitoring-activity-log-alerts.md)
-* Zjistěte, jak [vytvořena výstraha pomocí šablony Resource Manageru](monitoring-create-activity-log-alerts-with-resource-manager-template.md)
+Chcete-li vytvořit novou aktivitu protokolu oznámení na, můžete buď:
+* Postupujte podle [naší příručce o tom, jak vytvořit upozornění na webu Azure Portal](monitoring-activity-log-alerts.md)
+* Zjistěte, jak [vytvořte výstrahu pomocí šablony Resource Manageru](alert-activity-log.md)
  
-Výstrahy na události správy, které jste předtím vytvořili, nebude se migrovat automaticky aktivity protokolu výstrah. Budete muset použít předchozí skript prostředí PowerShell k zobrazení seznamu výstrahy na události správy jste nakonfigurovali a ručně je znovu vytvořit jako aktivity protokolu výstrahy. To je třeba provést před říjen 1, po jejímž uplynutí výstrahy na události správy se už nebude zobrazovat ve vašem předplatném Azure. Jiné typy výstrah, Azure, včetně monitorování Azure metriky výstrah, Application Insights výstrahy a upozornění analýzy protokolů jsou tato změna nemá vliv. Pokud máte nějaké otázky, post v komentářích níže.
+Výstrahy na události správy, které jste předtím vytvořili nebudou automaticky migrovat na upozornění protokolu aktivit. Budete muset použít předchozí skript prostředí PowerShell pro zobrazení seznamu výstrah událostí správy jste nakonfigurovali a ručně je znovu vytvořit jako upozornění protokolu aktivit. To je nutné provést před 1. října, po jejímž uplynutí výstrahy na události správy nebudou viditelné ve vašem předplatném Azure. Jiné typy upozornění v Azure, včetně upozornění metrik Azure monitoru, Application Insights výstrah a upozornění Log Analytics se tato změna nemá vliv. Pokud máte nějaké dotazy, publikuje do komentářů dole.
 
 
 ## <a name="next-steps"></a>Další postup
 
-* Další informace o [protokol aktivit](monitoring-overview-activity-logs.md)
-* Konfigurace [aktivity protokolu výstrahy prostřednictvím portálu Azure](monitoring-activity-log-alerts.md)
-* Konfigurace [aktivity protokolu výstrahy prostřednictvím Resource Manageru](monitoring-create-activity-log-alerts-with-resource-manager-template.md)
-* Zkontrolujte [schématu výstrahy webhooku protokolu aktivit](monitoring-activity-log-alerts-webhook.md)
-* Další informace o [oznámení o službách](monitoring-service-notifications.md)
+* Další informace o [protokolu aktivit](monitoring-overview-activity-logs.md)
+* Konfigurace [upozornění protokolu aktivit prostřednictvím webu Azure portal](monitoring-activity-log-alerts.md)
+* Konfigurace [upozornění protokolu aktivit prostřednictvím Resource Manageru](alert-activity-log.md)
+* Zkontrolujte [schéma webhooku v upozornění protokolu aktivit](monitoring-activity-log-alerts-webhook.md)
+* Další informace o [oznámení služby](monitoring-service-notifications.md)
 * Další informace o [skupiny akcí](monitoring-action-groups.md)

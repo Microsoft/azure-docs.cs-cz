@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/03/2018
 ms.author: v-daljep
 ms.component: ''
-ms.openlocfilehash: 3c80007a8188fb239a13aaa0ccc9ef2237a2d8d1
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: f43db05cac03d090116d227536e343c4a7bb0df4
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50025663"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50958863"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Monitorování Azure SQL Database pomocí Azure SQL Analytics (Preview)
 
@@ -46,8 +46,8 @@ Jako řešení nepoužívá agentů pro připojení ke službě Log Analytics, �
 | --- | --- | --- |
 | **[Diagnostika Azure](log-analytics-azure-storage.md)** | **Ano** | Azure data metrik a protokolů se odesílají do Log Analytics přímo v Azure. |
 | [Účet služby Azure Storage](log-analytics-azure-storage.md) | Ne | Log Analytics nemá číst data z účtu úložiště. |
-| [Agenti systému Windows](log-analytics-windows-agent.md) | Ne | Přímí agenti Windows nejsou používány nástrojem řešení. |
-| [Agenti systému Linux](log-analytics-linux-agents.md) | Ne | Přímí agenti systému Linux nejsou používány nástrojem řešení. |
+| [Agenti systému Windows](log-analytics-agent-windows.md) | Ne | Přímí agenti Windows nejsou používány nástrojem řešení. |
+| [Agenti systému Linux](log-analytics-quick-collect-linux-computer.md) | Ne | Přímí agenti systému Linux nejsou používány nástrojem řešení. |
 | [Skupiny pro správu SCOM](log-analytics-om-agents.md) | Ne | Přímé připojení z agenta nástroje SCOM k Log Analytics se nepoužívá tímto řešením. |
 
 ## <a name="configuration"></a>Konfigurace
@@ -192,7 +192,7 @@ Automatické výstrahy v řešení je založena na psaní dotazu Log Analytics, 
 
 ### <a name="creating-alerts-for-azure-sql-database"></a>Vytvoření výstrah pro službu Azure SQL Database
 
-Můžete snadno [vytvářet upozornění](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md) s daty pocházející z prostředků Azure SQL Database. Tady jsou některé užitečné [prohledávání protokolů](log-analytics-log-searches.md) dotazy, které můžete používat upozornění protokolu:
+Můžete snadno [vytvářet upozornění](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md) s daty pocházející z prostředků Azure SQL Database. Tady jsou některé užitečné [prohledávání protokolů](log-analytics-log-search.md) dotazy, které můžete používat upozornění protokolu:
 
 *Vysoké využití procesoru pro službu Azure SQL Database*
 
@@ -289,6 +289,6 @@ Při řešení používat, platí spotřeby telemetrická data diagnostiky nad v
 
 ## <a name="next-steps"></a>Další postup
 
-- Použití [prohledávání protokolů](log-analytics-log-searches.md) v Log Analytics k zobrazení podrobných dat Azure SQL.
+- Použití [prohledávání protokolů](log-analytics-log-search.md) v Log Analytics k zobrazení podrobných dat Azure SQL.
 - [Vytvářejte vlastní řídicí panely](log-analytics-dashboards.md) zobrazení dat Azure SQL.
-- [Vytvořit upozornění](log-analytics-alerts.md) Pokud dojde k určité událostem Azure SQL.
+- [Vytvořit upozornění](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md) Pokud dojde k určité událostem Azure SQL.

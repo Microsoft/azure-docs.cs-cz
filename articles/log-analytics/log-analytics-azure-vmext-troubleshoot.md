@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/08/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 845bc46ec56bfd6681c4fb318a57de19f66c0edf
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: f1ca7abc867df25d37093cb777f35216b5ee5a30
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49403863"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50957977"
 ---
 # <a name="troubleshooting-the-log-analytics-vm-extension"></a>Řešení potíží s rozšíření virtuálního počítače Log Analytics
 Tento článek poskytuje nápovědu řešení potíží s chybami setkat s rozšířením Log Analytics VM pro virtuální počítače Windows a Linuxu spuštěné na Microsoft Azure a navrhne řešení k jejich řešení.
@@ -58,7 +58,7 @@ Pokud *agenta Microsoft Monitoring Agent* není instalace rozšíření virtuál
 6. Zobrazení stavu agenta Microsoft Monitoring Agent pomocí následujícího příkazu v okně PowerShell se zvýšenými oprávněními na virtuálním počítači `  (New-Object -ComObject 'AgentConfigManager.MgmtSvcCfg').GetCloudWorkspaces() | Format-List`
 7. Projděte si soubory protokolů instalace agenta Microsoft Monitoring Agent v `C:\Windows\System32\config\systemprofile\AppData\Local\SCOM\Logs`
 
-Další informace najdete v tématu [řešení potíží s rozšířeními Windows](../virtual-machines/windows/extensions-oms.md).
+Další informace najdete v tématu [řešení potíží s rozšířeními Windows](../virtual-machines/extensions/oms-windows.md).
 
 ## <a name="troubleshooting-linux-vm-extension"></a>Řešení potíží s rozšíření virtuálního počítače s Linuxem
 [!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)] 
@@ -70,7 +70,7 @@ Pokud *agenta Log Analytics pro Linux* není instalace rozšíření virtuální
 2. Ostatní stavy není v pořádku, najdete v tématu agenta Log Analytics pro rozšíření virtuálního počítače s Linuxem soubory protokolů `/var/log/azure/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux/*/extension.log` a `/var/log/azure/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux/*/CommandExecution.log`
 3. Pokud se stav extension byl v pořádku, ale není v průběhu nahrávání dat zkontrolujte agenta pro Linux soubory protokolu v Log Analytics `/var/opt/microsoft/omsagent/log/omsagent.log`
 
-Další informace najdete v tématu [řešení potíží s rozšířeními Linux](../virtual-machines/linux/extensions-oms.md).
+Další informace najdete v tématu [řešení potíží s rozšířeními Linux](../virtual-machines/extensions/oms-linux.md).
 
 ## <a name="next-steps"></a>Další postup
 

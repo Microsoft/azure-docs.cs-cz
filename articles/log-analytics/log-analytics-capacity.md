@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 0244673d50e22124e8a0678e202004f06b0bca00
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: e1f33551c02562bbd8b7cc6a4187f7135a06c60f
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47182616"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50961938"
 ---
 # <a name="plan-hyper-v-virtual-machine-capacity-with-the-capacity-and-performance-solution-preview"></a>Plánování kapacity virtuálních počítačů Hyper-V s řešením kapacitu a výkon (Preview)
 
@@ -50,8 +50,8 @@ Následující tabulka popisuje připojené zdroje, které toto řešení podpor
 
 | Připojený zdroj | Podpora | Popis |
 |---|---|---|
-| [Agenti systému Windows](log-analytics-windows-agent.md) | Ano | Řešení shromažďuje informace o datech kapacitu a výkon z agentů Windows. |
-| [Agenti systému Linux](log-analytics-linux-agents.md) | Ne    | Řešení neshromažďuje informace o datech kapacitu a výkon z přímí agenti systému Linux.|
+| [Agenti systému Windows](log-analytics-agent-windows.md) | Ano | Řešení shromažďuje informace o datech kapacitu a výkon z agentů Windows. |
+| [Agenti systému Linux](log-analytics-quick-collect-linux-computer.md) | Ne    | Řešení neshromažďuje informace o datech kapacitu a výkon z přímí agenti systému Linux.|
 | [Skupiny pro správu SCOM](log-analytics-om-agents.md) | Ano |Řešení shromažďuje data kapacity a výkonu z agentů v připojené skupině pro správu nástroje SCOM. Přímé připojení z agenta nástroje SCOM k Log Analytics se nevyžaduje.|
 | [Účet služby Azure Storage](log-analytics-azure-storage.md) | Ne | Úložiště Azure neobsahuje data kapacitu a výkon.|
 
@@ -64,7 +64,7 @@ Následující tabulka popisuje připojené zdroje, které toto řešení podpor
 
 Proveďte následující krok a přidejte kapacitu a výkon řešení do pracovního prostoru.
 
-- Přidat kapacitu a výkon řešení do pracovního prostoru Log Analytics pomocí postupu popsaného v [přidání řešení Log Analytics z Galerie řešení](log-analytics-add-solutions.md).
+- Přidat kapacitu a výkon řešení do pracovního prostoru Log Analytics pomocí postupu popsaného v [přidání řešení Log Analytics z Galerie řešení](../monitoring/monitoring-solutions.md).
 
 ## <a name="management-packs"></a>Sady Management Pack
 
@@ -138,4 +138,4 @@ Následující tabulka obsahuje ukázky hledání v protokolech pro kapacitu a v
 
 
 ## <a name="next-steps"></a>Další postup
-* Použití [prohledávání protokolů v Log Analytics](log-analytics-log-search.md) k zobrazení podrobných dat o kapacitě a výkonu.
+* Použití [prohledávání protokolů v Log Analytics](log-analytics-queries.md) k zobrazení podrobných dat o kapacitě a výkonu.

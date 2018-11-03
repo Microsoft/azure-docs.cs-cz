@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 94de5566db2395a3daf24c99a43cca6853e12cce
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: cca475f552495a42aabc60faf0bd57382f148120
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45736967"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50958563"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>Připojení MXChip IoT DevKit zařízení do aplikace Azure IoT Central
 
@@ -23,7 +23,7 @@ Tento článek popisuje, jak jako vývojář zařízení pro připojení MXChip 
 
 K dokončení kroků v tomto článku budete potřebovat následující:
 
-1. Azure IoT Central aplikace vytvořené z **ukázka Devkits** šablony aplikace. Další informace najdete v tématu [vytvoření aplikace Azure IoT Central](howto-create-application.md).
+1. Azure IoT Central aplikace vytvořené z **ukázka Devkits** šablony aplikace. Další informace najdete v tématu [vytvořit aplikaci rychlý Start](quick-deploy-iot-central.md).
 1. DevKit zařízení. Koupit DevKit zařízení, najdete v tématu [MXChip IoT DevKit](http://mxchip.com/az3166).
 
 
@@ -226,7 +226,7 @@ Přepínací tlačítko Nastavení
 
 | Zobrazované jméno | Název pole | Na text | Vypnout text | Počáteční |
 | ------------ | ---------- | ------- | -------- | ------- |
-| PROSTŘEDÍ IR           | activateIR | ON      | OFF      | Vypnuto     |
+| IR           | activateIR | ON      | OFF      | Vypnuto     |
 
 ### <a name="properties"></a>Vlastnosti
 

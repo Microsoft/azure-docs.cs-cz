@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 10/27/2017
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: c56a0239209f5c71130c9dd8173eed48f60a3b0a
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 92d456ae4db1b4016c1a3676b5adfd7cbc2e7867
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48042066"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50962771"
 ---
 # <a name="optimize-your-active-directory-environment-with-the-active-directory-health-check-solution-in-log-analytics"></a>Optimalizace prostředí služby Active Directory s řešením Kontrola stavu služby Active Directory v Log Analytics
 
@@ -53,7 +53,7 @@ Poté, co jste přidali řešení a kontrola je dokončené a souhrnné informac
 
 Provádění kontroly stavu proti řadiči domény, které jsou členy domény, který se má vyhodnotit, vyžadují agenta a připojení ke službě Log Analytics pomocí jedné z následujících podporovaných metod:
 
-1. Nainstalujte [Microsoft Monitoring Agent (MMA)](log-analytics-windows-agent.md) Pokud řadič domény není již monitorovaná System Center 2016 – Operations Manager nebo Operations Manager 2012 R2.
+1. Nainstalujte [Microsoft Monitoring Agent (MMA)](log-analytics-agent-windows.md) Pokud řadič domény není již monitorovaná System Center 2016 – Operations Manager nebo Operations Manager 2012 R2.
 2. Pokud je monitorovat pomocí nástroje System Center 2016 – Operations Manager nebo Operations Manager 2012 R2 a skupině pro správu není integrovaná se službou Log Analytics, může být řadič domény s více adresami pomocí Log Analytics ke shromažďování a předávání služby a pořád monitorované nástrojem Operations Manager.  
 3. Jinak, pokud vaší skupině pro správu Operations Manageru je integrovaná se službou, budete muset přidat řadiče domény pro shromažďování dat podle pokynů v části služby [přidat počítače spravované bez agenta](log-analytics-om-agents.md#connecting-operations-manager-to-log-analytics) po povolení řešení ve vašem pracovním prostoru.  
 
@@ -186,4 +186,4 @@ Až dalšího naplánovaného spuštění kontroly stavu, ve výchozím nastaven
 * Ano, naleznete v tématu [ignorujte doporučení](#ignore-recommendations) výše uvedené části.
 
 ## <a name="next-steps"></a>Další postup
-* Použití [prohledávání protokolů v Log Analytics](log-analytics-log-searches.md) informace o analýze podrobné doporučení a údaje o kontrolu stavu AD.
+* Použití [prohledávání protokolů v Log Analytics](log-analytics-log-search.md) informace o analýze podrobné doporučení a údaje o kontrolu stavu AD.

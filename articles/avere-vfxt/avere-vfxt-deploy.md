@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: v-erkell
-ms.openlocfilehash: 47773f9375927e4d8dfbfec922e4cf11e42ade04
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 359ada08f1d9df6b60fc27ca385f6003af498e17
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50633858"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50958596"
 ---
 # <a name="deploy-the-vfxt-cluster"></a>Nasazení clusteru vFXT
 
@@ -30,7 +30,7 @@ Další informace o plánování a kroky nasazení clusteru, najdete v článku 
 
 Po provedení kroků v tomto dokumentu, budete mít virtuální síť, podsíť, kontroleru a vFXT clusteru, jak je znázorněno v následujícím diagramu:
 
-![Diagram znázorňující virtuální síť obsahuje volitelné blob storage a podsítě obsahující tři seskupené virtuálních počítačů označené jako clusterové uzly/vFXT vFXT a jeden kontroler s popiskem clusteru virtuálních počítačů](media/avere-vfxt-deployment-500px.png)
+![Diagram znázorňující virtuální síť obsahuje volitelné blob storage a podsítě obsahující tři seskupené virtuálních počítačů označené jako clusterové uzly/vFXT vFXT a jeden kontroler s popiskem clusteru virtuálních počítačů](media/avere-vfxt-deployment.png)
 
 Než začnete, ujistěte se, že jste vyřešili těchto nezbytných podmínkách:  
 
@@ -198,9 +198,7 @@ Můžete také vyhledat chybějící informace tak, že přejdete na stránku in
 
 Jak najít tyto informace ze Správce prostředků výstup šablony, postupujte takto:
 
-1. Na ikonu oznámení v horním panelu na webu Azure portal, klikněte na **přejít ke skupině prostředků**. To ukazuje novou skupinu prostředků, která obsahuje řadiče a virtuální sítě.
-
-   ![Oznámení zprávy části portálu se "Nasazení bylo úspěšné" a "Přejít ke skupině prostředků" a "Připnout na řídicí panel" tlačítka](media/avere-vfxt-browse-to-rg.png)
+1. Přejděte do skupiny prostředků pro váš cluster kontroleru.
 
 1. Na levé straně a klikněte na tlačítko **nasazení**a potom **Microsoft.Template**.
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: mbullwin
-ms.openlocfilehash: 4f063299a0bb454c8eaf3d38a0cb0a5fb20abcc8
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 60195f135b8b0e102a36c3573a341432f2e0c784
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47094074"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50959303"
 ---
 # <a name="application-insights-frequently-asked-questions"></a>Application Insights: Nejčastější dotazy
 
@@ -27,7 +27,7 @@ ms.locfileid: "47094074"
 
 * [Aplikace .NET](app-insights-asp-net-troubleshoot-no-data.md)
 * [Monitorování již spuštěné aplikace](app-insights-monitor-performance-live-website-now.md#troubleshooting-runtime-configuration-of-application-insights)
-* [Diagnostika Azure](app-insights-azure-diagnostics.md)
+* [Diagnostika Azure](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md)
 * [Webová aplikace Java](app-insights-java-troubleshoot.md)
 
 *Můžu získat žádná data ze svého serveru*
@@ -111,7 +111,7 @@ Ze serveru webové aplikace:
 
 Z [klientské webové stránky](app-insights-javascript.md):
 
-* [Počty zobrazení stránek](app-insights-web-track-usage.md)
+* [Počty zobrazení stránek](app-insights-usage-overview.md)
 * [Volání AJAX](app-insights-asp-net-dependencies.md) žádosti ze spuštěného skriptu.
 * Data načtení zobrazení stránky
 * Počty uživatelů a relací
@@ -119,7 +119,7 @@ Z [klientské webové stránky](app-insights-javascript.md):
 
 Z jiných zdrojů, pokud je konfigurace:
 
-* [Diagnostika Azure](app-insights-azure-diagnostics.md)
+* [Diagnostika Azure](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md)
 * [Kontejnery dockeru](app-insights-docker.md)
 * [Import tabulky do analýzy](app-insights-analytics-import.md)
 * [Log Analytics](https://azure.microsoft.com/blog/omssolutionforappinsightspublicpreview/)

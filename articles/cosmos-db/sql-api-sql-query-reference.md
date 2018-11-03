@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 08/19/2018
 ms.author: laviswa
-ms.openlocfilehash: 33614628926e53354db14886530d7ca44da61f0a
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: 762997492d18e9b14525dc6a196f98815f27fbbb
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42060116"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50979501"
 ---
 # <a name="azure-cosmos-db-sql-syntax-reference"></a>Reference k syntaxi služby Azure Cosmos DB SQL
 
@@ -2656,20 +2656,30 @@ ARRAY_SLICE (<arr_expr>, <num_expr> [, <num_expr>])
   
 -   `num_expr`  
   
-     Je jakýkoli platný číselný výraz.  
-  
+     Založený na nule číselný index, na kterém má být pole. Záporné hodnoty slouží k určení počátečního indexu relativnímu k poslední prvek pole tedy -1 odkazy na poslední prvek v poli.  
+
+-   `num_expr`  
+
+     Maximální počet prvků v výsledným polem.    
+
  **Návratové typy**  
   
- Vrátí logickou hodnotu.  
+ Vrátí výraz pole.  
   
  **Příklady**  
   
- Následující příklad získání část k poli pomocí ARRAY_SLICE.  
+ Následující příklad ukazuje, jak získat jiné řezy k poli pomocí ARRAY_SLICE.  
   
 ```  
 SELECT   
            ARRAY_SLICE(["apples", "strawberries", "bananas"], 1),  
-           ARRAY_SLICE(["apples", "strawberries", "bananas"], 1, 1)  
+           ARRAY_SLICE(["apples", "strawberries", "bananas"], 1, 1),
+           ARRAY_SLICE(["apples", "strawberries", "bananas"], -2, 1),
+           ARRAY_SLICE(["apples", "strawberries", "bananas"], -2, 2),
+           ARRAY_SLICE(["apples", "strawberries", "bananas"], 1, 0),
+           ARRAY_SLICE(["apples", "strawberries", "bananas"], 1, 1000),
+           ARRAY_SLICE(["apples", "strawberries", "bananas"], 1, -100)      
+  
 ```  
   
  Tady je sada výsledků.  
@@ -2677,10 +2687,15 @@ SELECT
 ```  
 [{  
            "$1": ["strawberries", "bananas"],   
-           "$2": ["strawberries"]  
-       }]  
+           "$2": ["strawberries"],
+           "$3": ["strawberries"],  
+           "$4": ["strawberries", "bananas"], 
+           "$5": [],
+           "$6": ["strawberries", "bananas"],
+           "$7": [] 
+}]  
 ```  
-  
+ 
 ###  <a name="bk_spatial_functions"></a> Prostorové funkce  
  Následující skalární funkce provádění operací na prostorový vstupní hodnotu a vrátí číslo nebo logickou hodnotu.  
   

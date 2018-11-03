@@ -13,12 +13,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: e77389411e52853efb52252a17c8612f0480fa61
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: ae033b944e93fe90392af9b17de883d791d3e4dc
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44298638"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50958587"
 ---
 # <a name="deep-diagnostics-for-web-apps-and-services-with-application-insights"></a>Hloubková diagnostika webových aplikací a služeb pomocí Application Insights
 ## <a name="why-do-i-need-application-insights"></a>Proč potřebuji Application Insights?
@@ -172,7 +172,7 @@ Když je vyvolána výstraha, Application Insights automaticky vytvořit pracovn
 ## <a name="next-steps"></a>Další postup
 Začínáme s Application Insights je snadné. Jsou hlavní možnosti:
 
-* Instrumentace webové aplikace už běží. To vám veškerá telemetrická data integrovaných výkonu. Je k dispozici pro [Java](app-insights-java-live.md) a [servery služby IIS](app-insights-monitor-performance-live-website-now.md)a také pro [webových aplikací Azure web apps](app-insights-azure.md).
+* Instrumentace webové aplikace už běží. To vám veškerá telemetrická data integrovaných výkonu. Je k dispozici pro [Java](app-insights-java-live.md) a [servery služby IIS](app-insights-monitor-performance-live-website-now.md)a také pro [webových aplikací Azure web apps](app-insights-overview.md).
 * Instrumentujte projektu během vývoje. Můžete to provést [ASP.NET](app-insights-asp-net.md) nebo [Java](app-insights-java-get-started.md) aplikace, stejně jako [Node.js](app-insights-nodejs.md) a celou řadu [jiné typy](app-insights-platforms.md). 
 * Nástroj [libovolná webová stránka](app-insights-javascript.md) přidáním krátkého kódu.
 

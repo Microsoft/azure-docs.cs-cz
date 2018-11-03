@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 3/26/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: e8af84467c008f5c576142fa094b2757cfd30387
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: 6e5bbdf0d43b642816a58419c2ce1c186fd44acb
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39248074"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50960748"
 ---
 # <a name="automatically-enable-diagnostic-settings-at-resource-creation-using-a-resource-manager-template"></a>Automaticky povolení diagnostických nastavení při vytváření prostředků pomocí šablony Resource Manageru
 V tomto článku vám ukážeme, jak můžete použít [šablony Azure Resource Manageru](../azure-resource-manager/resource-group-authoring-templates.md) ke konfiguraci nastavení diagnostiky pro prostředek při jeho vytvoření. To umožňuje automaticky spustit streamování diagnostických protokolů a metrik do služby Event Hubs, archivovat v účtu úložiště nebo odeslání do Log Analytics, když se vytvoří prostředek.
@@ -263,9 +263,9 @@ Povolit diagnostiku na výpočetní prostředek, třeba clusteru virtuálního p
 > 
 > 
 
-Celý proces, včetně ukázek, je popsaná [v tomto dokumentu](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Celý proces, včetně ukázek, je popsaná [v tomto dokumentu](../virtual-machines/extensions/diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 ## <a name="next-steps"></a>Další postup
-* [Další informace o diagnostické protokoly Azure](monitoring-overview-of-diagnostic-logs.md)
+* [Další informace o diagnostických protokolech Azure](monitoring-overview-of-diagnostic-logs.md)
 * [Stream diagnostické protokoly Azure do služby Event Hubs](monitoring-stream-diagnostic-logs-to-event-hubs.md)
 

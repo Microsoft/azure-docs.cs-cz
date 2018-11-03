@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/6/2016
 ms.author: ancav
 ms.component: autoscale
-ms.openlocfilehash: 48c53b1b0c037e6bcfea3be49fdd2110e1e694b3
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: c2a231de3eaa67a656fb90d6498d36a226ff8622
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46970698"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50963060"
 ---
 # <a name="azure-monitor-autoscaling-common-metrics"></a>Azure Monitor běžné metriky automatického škálování
 Automatické škálování Azure Monitor umožňuje škálování více spuštěných instancích směrem nahoru nebo dolů, na základě telemetrických dat (metriky). Tento dokument popisuje běžné metriky, které chcete použít. Na webu Azure Portal můžete zvolit metrika prostředku, který chcete škálovat. Ale můžete také jakékoliv metriky z různých zdrojů škálovat podle.
@@ -29,7 +29,7 @@ Pokud používáte škálovací sady virtuálních počítačů a nevidíte konk
 
 Pokud není konkrétní metriky vzorkovány nebo přenesená frekvencí chcete, můžete aktualizovat konfiguraci diagnostiky.
 
-Pokud obou předchozích případech má hodnotu true, pak si projděte [použití Powershellu k povolení diagnostiky Azure v rámci virtuálního počítače se systémem Windows](../virtual-machines/windows/ps-extensions-diagnostics.md) o použití Powershellu ke konfiguraci a aktualizovat vaše rozšíření diagnostiku virtuálních počítačů Azure pro umožnění metriku. Tento článek také obsahuje ukázkový soubor konfigurace diagnostiky.
+Pokud obou předchozích případech má hodnotu true, pak si projděte [použití Powershellu k povolení diagnostiky Azure v rámci virtuálního počítače se systémem Windows](../virtual-machines/extensions/diagnostics-windows.md) o použití Powershellu ke konfiguraci a aktualizovat vaše rozšíření diagnostiku virtuálních počítačů Azure pro umožnění metriku. Tento článek také obsahuje ukázkový soubor konfigurace diagnostiky.
 
 ### <a name="host-metrics-for-resource-manager-based-windows-and-linux-vms"></a>Metriky hostitele pro Windows využívající Resource Manager a virtuální počítače s Linuxem
 Následující metriky na úrovni hostitele jsou emitovány ve výchozím nastavení pro virtuální počítač Azure a VMSS ve Windows i Linuxem instancí. Tyto metriky popisují váš virtuální počítač Azure, ale se shromažďují z hostitele virtuálního počítače Azure, nikoli přes agenta nainstalovaného na virtuálním počítači hosta. Tyto metriky můžete použít v pravidlech automatického škálování.

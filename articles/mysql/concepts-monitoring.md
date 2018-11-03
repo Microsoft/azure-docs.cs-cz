@@ -8,13 +8,13 @@ manager: kfile
 editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
-ms.date: 10/03/2018
-ms.openlocfilehash: c2248f185c5c1c5dd8c4e1d4a24e6145a82ec5cb
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.date: 11/01/2018
+ms.openlocfilehash: 0796ab0a0923d9a04e07542c576883c004c63263
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49091551"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50957722"
 ---
 # <a name="monitoring-in-azure-database-for-mysql"></a>Monitorování v Azure Database for MySQL
 Data o vašich serverech monitorování vám pomůže řešit a optimalizovat pro vaši úlohu. Azure Database for MySQL poskytuje různé metriky, které poskytují přehled o chování vašeho serveru.
@@ -41,9 +41,10 @@ Tyto metriky jsou k dispozici pro službu Azure Database for MySQL:
 |seconds_behind_master|Zpoždění replikace v řádu sekund|Počet|Počet sekund, po které server repliky zaostává s hlavním serverem.|
 |network_bytes_egress|Síťové výstupy|B|Odchozí síťový provoz mezi aktivních připojení.|
 |network_bytes_ingress|Síťové vstupy|B|Sítě v rámci aktivních připojení.|
+|backup_storage_used|Využité úložiště záloh|B|Velikost úložiště záloh používá.|
 
 ## <a name="server-logs"></a>Protokoly serveru
-Můžete povolit na vašem serveru protokolování pomalých dotazů. Tyto protokoly jsou také k dispozici prostřednictvím Azure diagnostické protokoly v OMS Log Analytics, Event Hubs a účet úložiště. Další informace o protokolování, najdete [protokoly serveru](concepts-server-logs.md) stránky.
+Můžete povolit na vašem serveru protokolování pomalých dotazů. Tyto protokoly jsou také k dispozici prostřednictvím Azure diagnostické protokoly v OMS Log Analytics, Event Hubs a účet úložiště. Další informace o protokolování, najdete [protokoly serveru](concepts-server-logs.md) stránky.
 
 ## <a name="next-steps"></a>Další postup
 - Zobrazit [jak nastavit výstrahy](howto-alert-on-metric.md) pokyny k vytvoření upozornění na metriku.

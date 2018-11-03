@@ -10,12 +10,12 @@ ms.component: consume
 ms.date: 04/17/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: 6e9a6e9c7407939ea9e76cad569e870d578b37f9
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 3aca356b9caadc3a4ffee98ca7dc330eb1c520d8
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43307357"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50962941"
 ---
 # <a name="use-azure-stream-analytics-with-sql-data-warehouse"></a>Pomocí Azure Stream Analytics s využitím SQL Data Warehouse
 Azure Stream Analytics je plně spravovaná služba poskytuje nízkou latenci, vysoce dostupná a škálovatelná komplexní zpracování událostí přes streamovaných dat v cloudu. Seznámíte se základy načtením [Úvod do služby Azure Stream Analytics][Introduction to Azure Stream Analytics]. Můžete pak zjistěte, jak vytvořit-ucelené řešení Stream Analytics pomocí následujících [začít používat Azure Stream Analytics] [ Get started using Azure Stream Analytics] kurzu.

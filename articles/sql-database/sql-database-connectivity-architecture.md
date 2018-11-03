@@ -7,17 +7,17 @@ ms.subservice: development
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: oslake
-ms.author: moslake
+author: srdan-bozovic-msft
+ms.author: srbozovi
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 01/24/2018
-ms.openlocfilehash: ca1ef9c402b370a8d1228e13d7fe3e13fd225f79
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.date: 11/02/2018
+ms.openlocfilehash: 11133a24f4446478dcc7f38ed50eb36de8843442
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49986317"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50978397"
 ---
 # <a name="azure-sql-database-connectivity-architecture"></a>Architektura připojení k Azure SQL Database
 
@@ -31,19 +31,30 @@ Následující diagram představuje podrobný přehled architektury připojení 
 
 Následující kroky popisují, jak navázat připojení ke službě Azure SQL database prostřednictvím Azure SQL Database – pro vyrovnávání zatížení softwaru (SLB) a brány Azure SQL Database.
 
-- Klienti v rámci Azure nebo mimo Azure připojovat k SLB, který má veřejnou IP adresu a naslouchá na portu 1433.
-- Nástroj SLB směruje provoz do Azure SQL Database brány.
-- Brána přesměruje provoz s middlewarem správný proxy server.
-- Proxy middleware přesměruje provoz k příslušné databázi Azure SQL.
+- Klienti připojovat k SLB, který má veřejnou IP adresu a naslouchá na portu 1433.
+- Nástroj SLB předává přenos k bráně Azure SQL Database.
+- Brána, v závislosti na zásady platné připojení, přesměrování nebo proxy servery provoz s middlewarem správný proxy server.
+- Proxy middleware předává přenos pro příslušnou databázi Azure SQL.
 
 > [!IMPORTANT]
 > Každá z těchto komponent distribuoval s cílem odepření služeb (DDoS) ochrany integrované v síti a vrstvu aplikace.
 
+## <a name="connection-policy"></a>Zásady připojení
+
+Azure SQL Database podporuje tři následující možnosti pro nastavení zásad připojení databáze SQL serveru:
+
+- **Přesměrování (doporučeno):** klientům navázat připojení přímo k uzlu, který je hostitelem databáze. Pokud chcete povolit připojení, klienti musí umožňovat odchozí pravidla brány firewall na všech IP adres Azure v oblasti (zkuste to pomocí skupin zabezpečení sítě (NSG) s [značky služeb](../virtual-network/security-overview.md#service-tags)), nikoli jenom adresy IP adres brány Azure SQL Database. Vzhledem k tomu, že pakety přejít přímo k databázi, mají latenci a propustnost vyšší výkon.
+- **Proxy server:** v tomto režimu se všechna připojení jsou směrovány přes proxy server prostřednictvím bran Azure SQL Database. Pokud chcete povolit připojení, klient musí mít odchozí pravidla brány firewall, které umožňují pouze Azure SQL Database Gateway IP adresy (obvykle dvě IP adresy v jedné oblasti). Výběr v tomto režimu může vést k vyšší latence a propustnosti nižší, v závislosti na povaze zatížení. Důrazně doporučujeme zásady přesměrování připojení přes zásady připojení proxy server pro nejnižší latenci a propustnost nejvyšší.
+- **Výchozí hodnota:** to platí zásady připojení ve všech serverech po vytvoření není-li explicitně změnit zásady připojení k proxy serveru nebo přesměrovat. Platné zásady závisí na tom, zda připojení pocházejí z v rámci Azure (přesměrování) nebo mimo systém Azure (Proxy).
+
 ## <a name="connectivity-from-within-azure"></a>Připojení z v rámci Azure
 
-Pokud se chcete připojit z v rámci Azure, vaše připojení mají zásady připojení **přesměrování** ve výchozím nastavení. Zásady **přesměrování** znamená, že připojení po relaci protokolu TCP do Azure SQL database, relace klienta se pak přesměrují na middlewaru serveru proxy a změní na virtuální IP adresu cílového od Azure Brána SQL Database, middleware proxy serveru. Po tomto datu všechny následné pakety tok přímo prostřednictvím proxy serveru middlewaru, obcházení brány Azure SQL Database. Následující diagram znázorňuje tento tok provozu.
+Pokud se chcete připojit z v rámci Azure na serveru vytvořené po 10. listopadu 2018, vaše připojení mají zásady připojení **přesměrování** ve výchozím nastavení. Zásady **přesměrování** znamená, že připojení po relaci protokolu TCP do Azure SQL database, relace klienta se pak přesměrují na middlewaru serveru proxy a změní na virtuální IP adresu cílového od Azure Brána SQL Database, middleware proxy serveru. Po tomto datu všechny následné pakety tok přímo prostřednictvím proxy serveru middlewaru, obcházení brány Azure SQL Database. Následující diagram znázorňuje tento tok provozu.
 
 ![Přehled architektury](./media/sql-database-connectivity-architecture/connectivity-from-within-azure.png)
+
+> [!IMPORTANT]
+> Když vytvoříte Server služby SQL Database před 10. listopadu 2018 zásad připojení nastavený explicitně na **Proxy**. Při použití koncové body služby, důrazně doporučujeme změna zásad připojení k **přesměrování** umožňuje lepší příjem. Pokud změníte připojení zásadu **přesměrování**, nebude stačit povolit odchozí na vaše skupiny zabezpečení sítě k bráně Azure SQL Database níže uvedených IP adres, musíte povolit odchozí všechny Azure SQL Database IP adresy. To lze provést pomocí značky služeb skupiny zabezpečení sítě (skupiny zabezpečení sítě). Další informace najdete v tématu [značky služeb](../virtual-network/security-overview.md#service-tags).
 
 ## <a name="connectivity-from-outside-of-azure"></a>Připojení z mimo Azure
 
@@ -51,19 +62,11 @@ Pokud se chcete připojit z mimo Azure, vaše připojení mají zásady připoje
 
 ![Přehled architektury](./media/sql-database-connectivity-architecture/connectivity-from-outside-azure.png)
 
-> [!IMPORTANT]
-> Při používání koncových bodů služby s Azure SQL Database je vaše zásady **Proxy** ve výchozím nastavení. Pokud chcete povolit připojení z uvnitř virtuální sítě, musíte také povolit odchozí připojení k Azure SQL Database brány IP adresy určené v níže uvedeném seznamu.
-
-Při použití koncové body služby, důrazně doporučujeme změna zásad připojení k **přesměrování** umožňuje lepší příjem. Pokud změníte připojení zásadu **přesměrování** nebude stačit povolit odchozí na vaše skupiny zabezpečení sítě k bráně Azure SQL Database níže uvedených IP adres, musíte povolit odchozí všechny Azure SQL Database IP adresy. To lze provést pomocí značky služeb skupiny zabezpečení sítě (skupiny zabezpečení sítě). Další informace najdete v tématu [značky služeb](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags).
-
 ## <a name="azure-sql-database-gateway-ip-addresses"></a>IP adresy brány Azure SQL Database
 
 Pro připojení k databázi Azure SQL z místních prostředků, budete muset povolit odchozí síťový provoz do Azure SQL Database brány pro vaši oblast Azure. Připojení, jdou pouze přes bránu pro připojení v režimu proxy serveru, což je výchozí hodnota při připojování z místních prostředků.
 
 V následující tabulce jsou uvedeny primárních a sekundárních IP adresy brány Azure SQL Database pro všechny datové oblasti. V některých oblastech existují dvě IP adresy. V těchto oblastech primární IP adresa je aktuální IP adresu brány a druhou IP adresu je IP adresa převzetí služeb při selhání. Převzetí služeb při selhání adresa je adresa, do kterého jsme může přesunout vašeho serveru, abyste měli vysokou dostupnost služeb. Pro tyto oblasti doporučujeme vám povolit odchozí IP adresy. Druhá IP adresa není ve vlastnictví společnosti Microsoft a není naslouchání žádné služby, dokud je aktivovaná služba Azure SQL Database tak, aby přijímal připojení.
-
-> [!IMPORTANT]
-> Pokud se chcete připojit z v rámci Azure zásad připojení bude **přesměrování** ve výchozím nastavení (s výjimkou případů, pokud použijete koncové body služby). Nebude stačit povolit následující IP adresy. Musíte také povolit všechny Azure SQL Database IP adresy. Pokud se chcete připojit z v rámci virtuální sítě, můžete to provést pomocí značky služeb skupiny zabezpečení sítě (skupiny zabezpečení sítě). Další informace najdete v tématu [značky služeb](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags).
 
 | Název oblasti | Primární IP adresu | Sekundární adresa IP |
 | --- | --- |--- |

@@ -15,19 +15,19 @@ ms.workload: infrastructure-services
 ms.date: 06/26/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: b8c3a2cc67c47753957963fc04b52f934b10ddfc
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 776033bde46f170295900d154cbbb3c7df73ab11
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041709"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50960255"
 ---
 # <a name="data-sources-in-log-analytics"></a>Zdroje dat v Log Analytics
 Log Analytics shromažďuje data z vašeho připojené zdroje a ukládá ho do pracovního prostoru Log Analytics.  Je definována data, která se shromažďují ze všech zdrojů dat, který nakonfigurujete.  Data ve službě Log Analytics se ukládají jako sady záznamů.  Každý zdroj dat vytvoří záznamy určitého typu s jednotlivými typu s vlastní sadu vlastností.
 
 ![Shromažďování dat analýzy protokolů](./media/log-analytics-data-sources/overview.png)
 
-Zdroje dat se liší od [řešení pro správu](log-analytics-add-solutions.md), což také shromažďovat data z připojené zdroje a vytvářet záznamy ve službě Log Analytics.  Kromě shromažďování dat, obvykle zahrnují řešení prohledávání protokolů a zobrazení, které vám pomůžou analyzovat operace určitá aplikace nebo služby.
+Zdroje dat se liší od [řešení pro správu](../monitoring/monitoring-solutions.md), což také shromažďovat data z připojené zdroje a vytvářet záznamy ve službě Log Analytics.  Kromě shromažďování dat, obvykle zahrnují řešení prohledávání protokolů a zobrazení, které vám pomůžou analyzovat operace určitá aplikace nebo služby.
 
 
 ## <a name="summary-of-data-sources"></a>Přehled zdrojů dat
@@ -68,5 +68,5 @@ Všechna data shromážděná službou Log Analytics je v pracovním prostoru ul
 
 ## <a name="next-steps"></a>Další postup
 * Další informace o [řešení](../monitoring/monitoring-solutions.md) , které doplňují do Log Analytics a také shromažďovat data do pracovního prostoru.
-* Další informace o [prohledávání protokolů](log-analytics-log-searches.md) analyzovat data shromážděná ze zdrojů dat a jejich řešení.  
-* Konfigurace [výstrahy](log-analytics-alerts.md) můžete zajistit aktivní upozorňování kritických dat shromážděných ze zdroje dat a řešení.
+* Další informace o [prohledávání protokolů](log-analytics-log-search.md) analyzovat data shromážděná ze zdrojů dat a jejich řešení.  
+* Konfigurace [výstrahy](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md) můžete zajistit aktivní upozorňování kritických dat shromážděných ze zdroje dat a řešení.

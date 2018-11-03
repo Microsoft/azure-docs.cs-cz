@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 12/19/2017
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 5822d32906419e8b0615dd8686ec47de28deb38f
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: d03af1398f8fd714246c88308ba615ae17010b39
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47182203"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50962023"
 ---
 # <a name="windows-and-linux-performance-data-sources-in-log-analytics"></a>Windows a Linuxem zdroje dat výkonu do Log Analytics
 Čítače výkonu ve Windows a Linuxu poskytují přehled o výkonu hardwarové součásti, operačních systémů a aplikací.  Log Analytics může shromažďovat čítače výkonu v pravidelných intervalech pro analýzu v téměř reálném čase (NRT) kromě agregaci údajů o výkonu pro delší dlouhodobější analýzu a generování sestav.
@@ -227,5 +227,5 @@ Následující tabulka obsahuje příklady různých prohledávání protokolů,
 
 ## <a name="next-steps"></a>Další postup
 * [Získat čítače výkonu z aplikace pro Linux](log-analytics-data-sources-linux-applications.md) včetně MySQL serveru Apache HTTP Server.
-* Další informace o [prohledávání protokolů](log-analytics-log-searches.md) analyzovat data shromážděná ze zdrojů dat a jejich řešení.  
+* Další informace o [prohledávání protokolů](log-analytics-log-search.md) analyzovat data shromážděná ze zdrojů dat a jejich řešení.  
 * Export shromážděná data [Power BI](log-analytics-powerbi.md) další vizualizace a analýzy.

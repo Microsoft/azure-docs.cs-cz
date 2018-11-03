@@ -9,12 +9,12 @@ ms.date: 07/12/2018
 ms.topic: conceptual
 ms.service: service-fabric-mesh
 manager: timlt
-ms.openlocfilehash: 0047ed4f0a172451bd50af3f62e2fecb8e147bf2
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 925d97658a299bea983b16ae6b507159ef0e9e62
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49944435"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50979127"
 ---
 # <a name="service-fabric-mesh-terminology"></a>Terminologie Service Fabric mřížky
 
@@ -84,5 +84,6 @@ Následující tabulka popisuje různé aplikačních modelů a nástrojů, kter
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o Service Fabric sítě, naleznete v přehledu:
-- [Přehled Service Fabric mřížky](service-fabric-mesh-overview.md)
+Další informace o službě Service Fabric Mesh najdete v článku s [přehledem služby Service Fabric Mesh](service-fabric-mesh-overview.md).
+
+Najděte odpovědi na [běžné otázky](service-fabric-mesh-faq.md).

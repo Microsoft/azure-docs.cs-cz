@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2018
 ms.author: spelluru
-ms.openlocfilehash: 8653056c5c4b0e5b6831d3cc2b0006e89ac01bdd
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 8a661c94ecc660e0ebd0e9818acef81b8a7b819b
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48251013"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50978611"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---application-migration-and-integration"></a>Zásady správného řízení infrastruktury Azure DevTest Labs - migrace aplikací a integrace
-Po vytvoření prostředí laboratoře vývoj/testování, je potřeba uvažovat o na následující otázky: 
+Po vytvoření prostředí laboratoře vývoj/testování, je potřeba uvažovat o na následující otázky:
 
-- Jak využít prostředí v rámci týmu projektu? 
+- Jak využít prostředí v rámci týmu projektu?
 - Jak je zajistit, že řídí všechny požadované zásady organizace a udržovat flexibilitu, abyste mohli přidat hodnotu do vaší aplikace?
 
 ## <a name="azure-marketplace-images-vs-custom-images"></a>Image z Azure Marketplace vs. vlastní Image
@@ -60,10 +60,10 @@ Jak nastavím snadno opakovatelné procesu uvést Moje vlastní organizační Im
 ### <a name="answer"></a>Odpověď
 Zobrazit [toto video na objekt pro vytváření Immage vzoru](https://blogs.msdn.microsoft.com/devtestlab/2017/04/17/video-custom-image-factory-with-azure-devtest-labs/). Tento scénář je pokročilý scénář a skripty k dispozici jsou pouze ukázkové skripty. Pokud jsou vyžadovány žádné změny, musíte pro správu a údržbu skripty používané ve vašem prostředí.
 
-Pomocí DevTest Labs k vytvoření vlastní image kanálu v aplikaci Visual Studio Team Services (VSTS):
+Použití k vytvoření vlastní image kanálu v kanálech Azure DevTest Labs:
 
 - [Představení: Příprava virtuálních počítačů během několika minut díky nastavení objektu pro vytváření bitové kopie ve službě Azure DevTest Labs](https://blogs.msdn.microsoft.com/devtestlab/2016/09/14/introduction-get-vms-ready-in-minutes-by-setting-up-image-factory-in-azure-devtest-labs/)
-- [Obrázek Factory – 2. část! Instalační program VSTS a objekt pro vytváření testovacího prostředí vytvořit virtuální počítače](https://blogs.msdn.microsoft.com/devtestlab/2017/10/25/image-factory-part-2-setup-vsts-to-create-vms-based-on-devtest-labs/)
+- [Obrázek Factory – 2. část! Nastavit kanály pro Azure a objekt pro vytváření testovacího prostředí k vytvoření virtuálních počítačů](https://blogs.msdn.microsoft.com/devtestlab/2017/10/25/image-factory-part-2-setup-vsts-to-create-vms-based-on-devtest-labs/)
 - [Obrázek Factory – část 3: Uložení vlastních Imagí a distribuovat do více testovacích prostředí](https://blogs.msdn.microsoft.com/devtestlab/2018/01/10/image-factory-part-3-save-custom-images-and-distribute-to-multiple-labs/)
 - [Video: Vlastní Image objekt pro vytváření s Azure DevTest Labs](https://blogs.msdn.microsoft.com/devtestlab/2017/04/17/video-custom-image-factory-with-azure-devtest-labs/)
 
@@ -79,7 +79,7 @@ Ano. Existují dva aspekty ke zvážení – příchozí a odchozí provoz.
 
 **Odchozí provoz** – Pokud chcete zabránit virtuálních počítačů přejdete přímo do veřejného Internetu a vynucení provozu prostřednictvím podnikové brány firewall, pak může směrovat provoz místních přes expressroute nebo VPN, pomocí vynucené směrování.
 
-> [!NOTE] 
+> [!NOTE]
 > Pokud máte proxy server, která blokuje provoz bez nastavení proxy serveru, nezapomeňte do účtu úložiště artefaktů v testovacím prostředí, přidejte výjimky.
 
 Můžete také použít skupiny zabezpečení sítě pro virtuální počítače nebo podsítí. Tento krok přidává další vrstvu ochrany pro povolení / blokování provozu.
@@ -100,9 +100,9 @@ Každé prostředí DevTest Labs, jinak může mít svůj vlastní virtuální s
 Kdy použít se sdílené IP Adresou a veřejnou IP adresu a privátní IP adresa?
 
 ### <a name="answer"></a>Odpověď
-Pokud používáte síť VPN site-to-site nebo Expressroute, zvažte použití privátních IP adres tak, že vaše počítače jsou přístupné prostřednictvím vaší interní síti a nejsou přístupné prostřednictvím veřejného Internetu. 
+Pokud používáte síť VPN site-to-site nebo Expressroute, zvažte použití privátních IP adres tak, že vaše počítače jsou přístupné prostřednictvím vaší interní síti a nejsou přístupné prostřednictvím veřejného Internetu.
 
-> [!NOTE] 
+> [!NOTE]
 > Vlastníků testovacího prostředí můžete změnit tyto zásady podsítě k zajištění, že nikdo neúmyslně vytvoří veřejné IP adresy pro své virtuální počítače. Vlastník předplatného byste vytvořit zásady předplatného brání vytváření veřejné IP adresy.
 
 Při použití sdílené veřejné IP adresy, virtuální počítače v testovacím prostředí, sdílet veřejnou IP adresu. Tento přístup může být užitečné, když budete chtít zabránit porušení omezení pro veřejné IP adresy pro daný odběr.
@@ -125,7 +125,7 @@ Při zvažování počet virtuálních počítačů na uživatele nebo počet v 
 Jak lze pomocí šablon Resource Manageru v mého prostředí DevTest Labs?
 
 ### <a name="answer"></a>Odpověď
-Nasadit své šablony Resource Manageru prostředí v DevTest Labs pomocí kroků uvedených v [funkce prostředí v DevTest labs](devtest-lab-test-env.md) článku. V podstatě, zkontrolujte své šablony Resource Manageru do úložiště Git (Visual Studio Team Services nebo GitHub) a přidejte [soukromé úložiště k šablonám](devtest-lab-test-env.md) testovací prostředí.
+Nasadit své šablony Resource Manageru prostředí v DevTest Labs pomocí kroků uvedených v [funkce prostředí v DevTest labs](devtest-lab-test-env.md) článku. V podstatě, zkontrolujte své šablony Resource Manageru do úložiště Git (úložiště Azure nebo GitHub) a přidejte [soukromé úložiště k šablonám](devtest-lab-test-env.md) testovací prostředí.
 
 Tento scénář nemusí být užitečné, pokud používáte DevTest Labs hostovat vývojové počítače, ale může být užitečné, pokud vytváříte pracovní prostředí, které je zástupce produkčního prostředí.
 

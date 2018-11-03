@@ -11,13 +11,13 @@ author: aamalvea
 ms.author: aamalvea
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 09/14/2018
-ms.openlocfilehash: 27f807c8f2f6b6a65ef95136047f5eed1b3aab02
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 11/02/2018
+ms.openlocfilehash: 11777013eca0ba3a759635ef99c2cfa04104e24b
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47159308"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50978991"
 ---
 # <a name="use-azure-portal-to-create-alerts-for-azure-sql-database-and-data-warehouse"></a>Vytvoření výstrah pro Azure SQL Database a Data Warehouse pomocí webu Azure portal
 
@@ -44,19 +44,15 @@ Můžete nakonfigurovat a získat informace o použití pravidel upozornění
 
 ## <a name="create-an-alert-rule-on-a-metric-with-the-azure-portal"></a>Vytvoření pravidla upozornění na metriku pomocí webu Azure portal
 1. V [portál](https://portal.azure.com/), vyhledejte prostředek zájem o sledování a vyberte ho.
-2. Tento krok se liší pro SQL Database a elastické fondy a SQL data Warehouse: 
-
-   - **SQL Database a elastické fondy**: vyberte **výstrahy** nebo **pravidla upozornění** v části monitorování. Text a ikona se mohou mírně lišit pro různé prostředky.  
+2. Vyberte **upozornění (klasická)** v části monitorování. Text a ikona se mohou mírně lišit pro různé prostředky.  
    
-     ![Monitorování](../monitoring-and-diagnostics/media/insights-alerts-portal/AlertRulesButton.png)
+     ![Monitorování](../monitoring-and-diagnostics/media/insights-alerts-portal/AlertsClassicButton.JPG)
   
-   - **SQL data Warehouse pouze**: vyberte **monitorování** v části společné úkoly. Klikněte na tlačítko **využití DWU** grafu.
+   - **SQL data Warehouse pouze**: klikněte na tlačítko **využití DWU** grafu. Vyberte **zobrazit upozornění classic**
 
-     ![BĚŽNÉ ÚLOHY](../monitoring-and-diagnostics/media/insights-alerts-portal/AlertRulesButtonDW.png)
-
-3. Vyberte **přidat upozornění** příkazů a přejít k vyplnění polí.
+3. Vyberte **přidat upozornění metriky (klasické)** tlačítko a přejít k vyplnění polí.
    
-    ![Přidat výstrahu](../monitoring-and-diagnostics/media/insights-alerts-portal/AddDBAlertPage.png)
+    ![Přidat výstrahu](../monitoring-and-diagnostics/media/insights-alerts-portal/AddDBAlertPageClassic.JPG)
 4. **Název** upozornění pravidlo a vyberte **popis**, které zároveň ukazuje oznámení e-mailů.
 5. Vyberte **metrika** chcete monitorovat, a potom vyberte **podmínku** a **prahová hodnota** hodnoty pro metriku. Se také rozhodnout **období** , kterou pravidlo metriky musí být splněny před výstrah aktivační události. Třeba Pokud používáte období "PT5M" a upozornění hledá CPU vyšší než 80 %, aktivaci upozornění při **průměrné** procesoru byla vyšší než 80 % po dobu 5 minut. Jakmile dojde k první aktivační událost, se znovu aktivuje, když průměrné využití procesoru je nižší než 80 % více než 5 minut. Měření využití procesoru dochází každou 1 minutu. Podporované časových oken naleznete v následující tabulce a že každý typ agregace upozornění používá ne všechny výstrahy použít průměrnou hodnotu.   
 6. Zkontrolujte **e-mailu vlastníky...**  Pokud chcete, aby správci a spolusprávci e-mailem odešle, když se aktivuje upozornění.

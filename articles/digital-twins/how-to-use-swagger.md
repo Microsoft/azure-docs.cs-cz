@@ -1,6 +1,6 @@
 ---
-title: Pochopení způsobu, jak používat Azure digitální dvojče Swagger | Dokumentace Microsoftu
-description: Jak používat Azure digitální dvojče Swagger
+title: Pochopit, jak používat Azure digitální dvojče Swagger | Dokumentace Microsoftu
+description: Použití Azure digitální dvojče Swagger
 author: kingdomofends
 manager: alinast
 ms.service: digital-twins
@@ -8,42 +8,42 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: adgera
-ms.openlocfilehash: 3bc365c204ab75a2f136c3e26c4b598b25f66114
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 69b8f64574427a6b3d3d2cf0312eac88d86e5907
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50093485"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50960190"
 ---
-# <a name="how-to-use-azure-digital-twins-swagger"></a>Jak používat Azure digitální dvojče Swagger
+# <a name="use-azure-digital-twins-swagger"></a>Použití Azure digitální dvojče Swagger
 
 Každá instance zřízené digitální dvojče Azure zahrnuje vlastní automaticky generované referenční dokumentaci Swagger.
 
-[Swagger](https://swagger.io/) (nebo [OpenAPI](https://www.openapis.org/)) sjednotí komplexní informace o rozhraní API do prostředek referenční dokumentace pro interaktivní a jazykově nezávislé. Konkrétně Swagger poskytuje důležité referenční materiály, o které datové části JSON, metod HTTP a konkrétní koncové body používat k provedení operací k rozhraní API.
+[Swagger](https://swagger.io/), nebo [OpenAPI](https://www.openapis.org/), sjednotí komplexní informace o rozhraní API do prostředek referenční dokumentace pro interaktivní a jazykově nezávislé. Swagger obsahuje důležité referenční materiály, o které datové části JSON, metod HTTP a konkrétní koncové body používat k provedení operací k rozhraní API.
 
 ## <a name="swagger-summary"></a>Souhrn swagger
 
-Swagger poskytuje interaktivní přehled vašeho rozhraní API, včetně:
+Swagger poskytuje interaktivní přehled vašeho rozhraní API, která zahrnuje:
 
 * Informace o rozhraní API a objekt modelu.
-* Koncových bodů rozhraní REST API pro zadání požadované datové části požadavku, záhlaví, parametrů, kontextu cesty a metody HTTP.
+* Koncových bodů rozhraní REST API, které zadejte požadované žádosti datových částí, záhlaví, parametry, kontext cesty a metody HTTP.
 * Testování funkce rozhraní API.
-* Příklad odpovědi informace pro ověřování a potvrzení odpovědi protokolu HTTP.
+* Informace o odpovědi příklad používá k ověření a potvrďte odpovědi protokolu HTTP.
 * Informace o kódu chyby.
 
-Swagger se proto vhodný nástroj, který vám pomůže s vývoj a testování volání rozhraní API pro správu.
+Swagger je praktický nástroj, který vám pomůže s vývoj a testování volání rozhraní API pro správu.
 
 > [!TIP]
-> Pro srovnání neoficiální Swagger ve verzi preview neposkytujeme k předvedení funkcí rozhraní API nastavit.
+> Neoficiální Swagger ve verzi preview neposkytujeme k předvedení funkcí rozhraní API nastavit.
 > Je hostovaný na [docs.westcentralus.azuresmartspaces.net/management/swagger](https://docs.westcentralus.azuresmartspaces.net/management/swagger).
 
-Je možné otevřít vlastní, vygenerované, dokumentaci Swagger rozhraní API Management na:
+Je možné otevřít vlastní vygenerovaná dokumentace Swagger rozhraní API Management na:
 
 ```plaintext
 https://yourInstanceName.yourLocation.azuresmartspaces.net/management/swagger
 ```
 
-| Název vlastního atributu | Nahraďte |
+| Název vlastního atributu | Nahradit hodnotou |
 | --- | --- |
 | *Název_vaší_instance* | Název instance digitální dvojče Azure |
 | *yourLocation* | Jaké oblasti serveru vaší instance je hostován aplikací |
@@ -52,25 +52,25 @@ https://yourInstanceName.yourLocation.azuresmartspaces.net/management/swagger
 
 Automaticky generované referenční materiály, které popisuje důležité koncepty a objektové modely.
 
-Stručný přehled popisuje rozhraní API:
+Stručný přehled popisuje rozhraní API.
 
 ![Horní swagger][1]
 
-Základní rozhraní API objektové modely jsou také uvedeny:
+Základní rozhraní API objektové modely jsou také uvedeny.
 
 ![Modely swagger][2]
 
-Klikněte na tlačítko do jednotlivých uvedených objektový Model pro podrobnější přehled klíčových atributů:
+Můžete vybrat jednotlivých uvedených objektový model pro podrobnější přehled klíčových atributů.
 
 ![Swagger model][3]
 
-Vygenerovaný Swagger objektové modely jsou vhodné zobrazíte všechny dostupné Azure digitální dvojče [objekty a rozhraní API](./concepts-objectmodel-spatialgraph.md). To je skvělý prostředek pro vývojáře pro použití při vytváření řešení na Azure digitální dvojče.
+Vygenerovaný objektové modely Swaggeru je pohodlné zobrazíte všechny dostupné Azure digitální dvojče [objekty a rozhraní API](./concepts-objectmodel-spatialgraph.md). Vývojáři mohli při jejich sestavování řešení v Azure digitální dvojče pomocí tohoto prostředku.
 
 ## <a name="endpoint-summary"></a>Souhrn koncového bodu
 
 Swagger obsahuje také důkladný přehled všechny koncové body, které tvoří rozhraní API.
 
-Každý koncový bod uvedené také obsahuje informace o požadované žádosti o jako například:
+Každý koncový bod uvedené také zahrnuje požadovaná žádost o informace, jako:
 
 * Požadované parametry.
 * Povinný parametr datové typy.
@@ -78,25 +78,25 @@ Každý koncový bod uvedené také obsahuje informace o požadované žádosti 
 
 ![Swagger koncových bodů][4]
 
-Jednotlivé prostředky můžete kliknutí zobrazíte podrobnější přehled.
+Pokud chcete zobrazit podrobnější přehled, vyberte každého prostředku.
 
-## <a name="using-swagger-to-test-endpoints"></a>K testování koncových bodů využívající Swagger
+## <a name="use-swagger-to-test-endpoints"></a>Využití Swaggeru k testování koncových bodů
 
-Jednou z Swagger poskytuje výkonné funkce je schopnost **vyzkoušet** nebo koncový bod rozhraní API přímo prostřednictvím uživatelského rozhraní v dokumentaci k testování.
+Jednou výkonné funkce, které poskytuje Swaggeru je schopnost testování koncového bodu přímo prostřednictvím uživatelského rozhraní v dokumentaci k rozhraní API.
 
-Po kliknutí do určitého koncového bodu, zobrazí se vám **vyzkoušet** tlačítka:
+Když vyberete určitý koncový bod, zobrazí se **vyzkoušet**.
 
 ![Zkuste swagger][5]
 
-Rozbalením této části zobrazí vstupní pole pro každý parametr požadované a volitelné. Zadejte hodnoty odpovídajícím způsobem a klikněte na tlačítko **Execute**:
+Rozbalte tuto část, abyste vyvolali vstupní pole pro každý parametr požadované a volitelné. Zadejte hodnoty odpovídajícím způsobem a vyberte **Execute**.
 
 ![Pokusili swagger][6]
 
-Po spuštění testu, můžete ověřit data odpovědi.
+Po spuštění testu můžete ověřit data odpovědi.
 
 ## <a name="swagger-response-data"></a>Data odpovědi swagger
 
-Každý koncový bod uvedené také zahrnuje data těla odpovědi k ověření pro vývoj a testování. Tyto příklady: požadovaný stavové kódy a JSON pro úspěšné požadavky HTTP.
+Každý koncový bod uvedené také zahrnuje data těla odpovědi k ověření pro vývoj a testování. Tyto příklady: stavový kód a JSON, které chcete zobrazit pro úspěšné požadavky HTTP.
 
 ![Odpověď swagger][7]
 
@@ -108,7 +108,7 @@ Testovat požadavků na prostředky rozhraní API OAuth 2.0, najdete v článku 
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o Azure digitální dvojče objektové modely a Prostorové řady grafu, přečtěte si [v tomto článku](./concepts-objectmodel-spatialgraph.md).
+Přečtěte si další informace o Azure digitální dvojče objektové modely a Prostorové řady grafu, přečtěte si [Principy Dvojčat digitální Azure objektu modely](./concepts-objectmodel-spatialgraph.md).
 
 Zjistěte, jak ověřování pomocí rozhraní API pro správu, přečtěte si téma [ověřování pomocí rozhraní API](./security-authenticating-apis.md).
 

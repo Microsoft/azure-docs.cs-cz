@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.reviewer: cawa
 ms.date: 08/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 28de0f8bdcaa730c5beea0c630d4e86e15642809
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 6013c0a1b404336ad7cca21edafb7adec5c7f7ca
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50142371"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50978838"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>Poradce při potížích, povolení nebo zobrazení Application Insights Profiler
 
@@ -46,16 +46,16 @@ Profiler zapisuje zprávy trasování a vlastní události do vašeho prostředk
 
 1. Pokud existují požadavky během časového období spuštění profileru, ujistěte se, že jsou požadavky zpracovávány podle části aplikace, který má povolené profileru. Někdy se aplikace skládají z několika součástí, ale Profiler je povolená jenom pro některé, ne všechny součásti. Na stránce konfigurace Application Insights Profiler se zobrazí součásti, které jste nahráli trasování.
 
-### <a name="net-core-21-bug"></a>**.Net Core 2.1 chyb** 
+### <a name="net-core-21-bug"></a>.Net Core 2.1 chyb
 Agent profileru, který zabrání odesílání trasování z aplikací běžících na ASP.NET Core 2.1 je chyba. Jsme pracují na opravě a bude mít je připraven brzy. Oprava této chyby se nasadí do konce října.
 
-### <a name="other-things-to-check"></a>**Chcete-li zkontrolovat další věci:**
+### <a name="other-things-to-check"></a>Chcete-li zkontrolovat další věci:
 * Vaše aplikace běží na rozhraní .NET Framework 4.6.
 * Když je vaše aplikace webové aplikace ASP.NET Core, musí používat minimálně ASP.NET Core 2.0.
 * Pokud data, která se pokoušíte zobrazit, je starší než několik týdnů, zkuste omezení časový filtr a zkuste to znovu. Trasování se odstraní po sedm dní.
 * Ujistěte se, že proxy nebo brány firewall nejsou zablokoval přístup k https://gateway.azureserviceprofiler.net.
 
-### <a id="double-counting"></a>**Double, počítací v paralelních vláken**
+### <a id="double-counting"></a>Double, počítací v paralelních vláken
 
 V některých případech se celková doba metriky v prohlížeči zásobníku je větší než doba trvání žádosti.
 
@@ -63,11 +63,11 @@ Tato situace může nastat, když dva nebo více vláken jsou spojené se žádo
 
 Při paralelních vláken se zobrazí v trasování, určete, která vlákna čekající tak můžete zjistit kritickou cestu pro žádost. Ve většině případů vlákno, které rychle přejde do stavu čekání jednoduše čeká na ostatní vlákna. Soustředit se na ostatní vlákna a ignorovat časové čekajících vláken.
 
-### <a name="error-report-in-the-profiling-viewer"></a>**Zprávu o chybách v prohlížeči profilování**
+### <a name="error-report-in-the-profile-viewer"></a>Zprávu o chybách v prohlížeči profilu
 Vyplňte lístek podpory na portálu. Nezapomeňte zahrnout ID korelace z chybové zprávy.
 
 ## <a name="troubleshooting-profiler-on-app-services"></a>Řešení potíží s Profiler v App Service
-### <a name="for-the-profiler-to-work-properly"></a>**Pro profiler fungovala správně:**
+### <a name="for-the-profiler-to-work-properly"></a>Pro profiler fungovala správně:
 * Plán služby app service web musí být na úrovni Basic nebo vyšší.
 * Webové aplikace musí mít rozšíření Application Insights pro aplikaci služby (2.6.5) nainstalovaný.
 * Webové aplikace musí mít **APPINSIGHTS_INSTRUMENTATIONKEY** nastavení aplikace, které jsou nakonfigurované se stejným klíčem instrumentace, který používá sadu SDK Application Insights.
@@ -82,7 +82,7 @@ Vyplňte lístek podpory na portálu. Nezapomeňte zahrnout ID korelace z chybov
     
     ![Profiler-webová úloha log]
 
-### <a name="manual-installation"></a>**Ruční instalace**
+### <a name="manual-installation"></a>Ruční instalace
 
 Když konfigurujete Profiler, jsou provedeny aktualizace nastavení webové aplikace. Pokud vaše prostředí vyžaduje ji můžete ručně aplikovat aktualizace. Příkladem může být, že vaše aplikace běží v prostředí s Web Apps pro PowerApps.
 
@@ -97,9 +97,9 @@ Když konfigurujete Profiler, jsou provedeny aktualizace nastavení webové apli
 1. Nainstalujte **Application Insights** z Galerie Azure Web Apps.
 1. Restartujte webovou aplikaci.
 
-### <a name="too-many-active-profiling-sessions"></a>**Příliš mnoho aktivní relace profilování**
+### <a name="too-many-active-profiling-sessions"></a>Příliš mnoho aktivní relace profilování
 
-V současné době můžete povolit Profiler na maximálně čtyři Azure webové aplikace a sloty nasazení, které jsou spuštěny v rámci stejného plánu služby. Pokud Profiler webové úlohy je příliš mnoho aktivních relací profilování, přesuňte některé webové aplikace k plánu jiné služby.
+V současné době můžete povolit Profiler na maximálně čtyři Azure webové aplikace a sloty nasazení, které jsou spuštěny v rámci stejného plánu služby. Pokud máte více webových aplikací než spuštěným v jeden plán služby app service, může se zobrazit Microsoft.ServiceProfiler.Exceptions.TooManyETWSessionException vyvolány profileru. Profiler běží odděleně pro každou webovou aplikaci a pokusí se spustit relaci trasování událostí pro Windows pro každou aplikaci. Existuje ale omezený počet relací ETW, které mohou být v jednom okamžiku aktivní. Pokud Profiler webové úlohy je příliš mnoho aktivních relací profilování, přesuňte některé webové aplikace k plánu jiné služby.
 
 ### <a name="deployment-error-directory-not-empty-dhomesitewwwrootappdatajobs"></a>Chyba nasazení: adresář není prázdný ' D:\\domácí\\lokality\\wwwroot\\App_Data\\úloh.
 

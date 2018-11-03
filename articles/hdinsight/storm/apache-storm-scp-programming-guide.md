@@ -4,17 +4,17 @@ description: Další informace o použití SCP.NET vytvořit. Na základě NET t
 services: hdinsight
 ms.service: hdinsight
 author: jasonwhowell
-ms.author: jasonwhowell
+ms.author: jasonh
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2016
-ms.openlocfilehash: daf9efb2f9044ed1395b0f2aa3663c2471406e2f
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: fb7a8ed81794e3a5c1a772fd242f5ef85a800365
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43045460"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50959201"
 ---
 # <a name="scp-programming-guide"></a>Průvodce programováním pro spojovací bod služby
 Spojovací bod služby je platformou můžete tvořit v reálném čase spolehlivé a konzistentní a zpracování dat vysoce výkonné aplikace. Systém orchard je založen na horní [Apache Storm](http://storm.incubator.apache.org/) – systém ve komunity OSS pro zpracování datových proudů. Storm je určen Nathan marz a byla open source služba Twitter. Využívá [Apache ZooKeeper](http://zookeeper.apache.org/), jiný projekt Apache umožňující vysoce spolehlivých distribuovaných správy koordinace a stavu. 

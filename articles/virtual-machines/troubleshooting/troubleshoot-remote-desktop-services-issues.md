@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/23/2018
 ms.author: genli
-ms.openlocfilehash: 756417ee2f98549d648386c2471baa74889245a4
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: 904387def0fd8842f196e80cfcf72d9dd1639458
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/02/2018
-ms.locfileid: "50914018"
+ms.locfileid: "50957689"
 ---
 # <a name="remote-desktop-services-isnt-starting-on-an-azure-vm"></a>Vzdálená plocha nespouští na Virtuálním počítači Azure
 
@@ -58,6 +58,7 @@ K tomuto problému dochází, protože na virtuálním počítači není spušt�
 
 - Inicializace služby je nastaven na **zakázané**. 
 - Služba inicializace padá nebo přestanou reagovat. 
+- Inicializace nespouští z důvodu nesprávné konfigurace.
 
 ## <a name="solution"></a>Řešení
 
@@ -98,16 +99,17 @@ Pokud chcete tento problém vyřešit, použijte konzole sériového portu. Or e
 
     |  Chyba |  Návrh |
     |---|---|
-    |5 - PŘÍSTUP BYL ODEPŘEN |Zobrazit [inicializace je zastavena kvůli chybě přístup odepřen](#termService-service-is-stopped-because-of-an-access-denied-error). |
-    |1058 - ERROR_SERVICE_DISABLED  |Zobrazit [inicializace služba je zakázána](#termService-service-is-disabled).  |
+    |5 - PŘÍSTUP BYL ODEPŘEN |Zobrazit [inicializace je zastavena kvůli chybě přístup odepřen](#termService-service-is-stopped-because-of-an-access-denied-problem). |   |1053 - ERROR_SERVICE_REQUEST_TIMEOUT  |Zobrazit [inicializace služba je zakázána](#termService-service-is-disabled).  |  
+    |1058 - ERROR_SERVICE_DISABLED  |Zobrazit [inicializace služby k chybovým ukončením nebo přestane reagovat](#termService-service-crashes-or-hangs).  |
     |. 1059 - ERROR_CIRCULAR_DEPENDENCY |[Obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) pro rychlé vyřešení problému.|
+    |1067 - ERROR_PROCESS_ABORTED  |Zobrazit [inicializace služby k chybovým ukončením nebo přestane reagovat](#termService-service-crashes-or-hangs).  |
     |1068 - ERROR_SERVICE_DEPENDENCY_FAIL|[Obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) pro rychlé vyřešení problému.|
-    |1069 - ERROR_SERVICE_LOGON_FAILED  |[Obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) pro rychlé vyřešení problému.    |
-    |1070 - ERROR_SERVICE_START_HANG   | [Obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) pro rychlé vyřešení problému.  |
+    |1069 - ERROR_SERVICE_LOGON_FAILED  |Zobrazit [inicializace služby selže z důvodu selhání přihlášení](#termService-service-fails-because-of-logon-failure) |
+    |1070 - ERROR_SERVICE_START_HANG   | Zobrazit [inicializace služby k chybovým ukončením nebo přestane reagovat](#termService-service-crashes-or-hangs). |
     |1077. - ERROR_SERVICE_NEVER_STARTED   | Zobrazit [inicializace služba je zakázána](#termService-service-is-disabled).  |
     |1079 - ERROR_DIFERENCE_SERVICE_ACCOUNT   |[Obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) pro rychlé vyřešení problému. |
-    |1753   |[Obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) pro rychlé vyřešení problému.   |
-
+    |1753   |[Obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) pro rychlé vyřešení problému.   |   |5 - PŘÍSTUP BYL ODEPŘEN |Zobrazit [inicializace je zastavena kvůli chybě přístup odepřen](#termService-service-is-stopped-because-of-an-access-denied-error). |
+    
 #### <a name="termservice-service-is-stopped-because-of-an-access-denied-problem"></a>Inicializace je zastavena kvůli problému přístup odepřen
 
 1. Připojte se k [konzoly sériového portu](serial-console-windows.md#) a otevřete instance prostředí PowerShell.
@@ -139,7 +141,14 @@ Pokud chcete tento problém vyřešit, použijte konzole sériového portu. Or e
    procmon /Terminate 
    ```
 
-5. Shromáždit soubor **c:\temp\ProcMonTrace.PML**. Otevřete ho pomocí **procmon**. Potom vyfiltrovat **výsledkem je přístup ODEPŘEN**, jak je znázorněno na následujícím snímku obrazovky:
+5. Shromáždit soubor **c:\temp\ProcMonTrace.PML**:
+
+    1. [Připojení datového disku k virtuálnímu počítači](../windows/attach-managed-disk-portal.md
+).
+    2. Pomocí konzoly sériového portu můžete zkopírovat soubor na nový disk. Například, `copy C:\temp\ProcMonTrace.PML F:\`. V tomto příkazu F je ovladač písmeno přídavný datový disk.
+    3. Odpojit datový disk a připojit ho na funkční virtuální počítač, který má nainstalovaný ubstakke monitorování procesu.
+
+6. Otevřít **ProcMonTrace.PML** pomocí monitorování procesu funkčním virtuálním počítači. Potom vyfiltrovat **výsledkem je přístup ODEPŘEN**, jak je znázorněno na následujícím snímku obrazovky:
 
     ![Filtrovat podle výsledku v monitorování procesu](./media/troubleshoot-remote-desktop-services-issues/process-monitor-access-denined.png)
 
@@ -168,6 +177,27 @@ Pokud chcete tento problém vyřešit, použijte konzole sériového portu. Or e
 
 4. Pokuste se připojit k virtuálnímu počítači pomocí vzdálené plochy.
 
+#### <a name="termservice-service-fails-because-of-logon-failure"></a>Inicializace služby selže z důvodu selhání přihlášení
+
+1. K tomuto problému dochází, pokud byl změněn účet při spuštění této služby. Změnit tomto zpět na výchozí: 
+
+        sc config TermService obj= 'NT Authority\NetworkService'
+2. Spusťte službu:
+
+        sc start TermService
+3. Pokuste se připojit k virtuálnímu počítači pomocí vzdálené plochy.
+
+#### <a name="termservice-service-crashes-or-hangs"></a>Inicializace služby k chybovým ukončením nebo přestane reagovat
+1. Pokud stav služby se zasekla v automatickém **počáteční** nebo **zastavení**, zkuste zastavit službu: 
+
+        sc stop TermService
+2. Izolace službu na kontejneru "svchost":
+
+        sc config TermService type= own
+3. Spusťte službu:
+
+        sc start TermService
+4. Pokud služba je stále selhání spuštění, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
 ### <a name="repair-the-vm-offline"></a>Opravte virtuální počítač v režimu offline
 

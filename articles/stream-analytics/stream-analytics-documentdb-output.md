@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/28/2017
-ms.openlocfilehash: 95cfc7e6d9515274aa7a3c5fde382244f3b33fab
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 8dc85c55dd67d8acd394d7922e947c91234ef23b
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42057213"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50957123"
 ---
 # <a name="azure-stream-analytics-output-to-azure-cosmos-db"></a>Výstup Azure Stream Analytics ke službě Azure Cosmos DB  
 Stream Analytics můžete směrovat [služby Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) výstup ve formátu JSON, povolení archivace a s nízkou latencí dotazy na data nestrukturovaných dat JSON. Tento dokument uvádí i některé doporučené postupy pro implementaci této konfigurace.
@@ -37,6 +37,13 @@ Tak, aby odpovídaly vašim požadavkům na aplikace, služby Azure Cosmos DB v�
 Integrace Stream Analytics pomocí služby Azure Cosmos DB umožňuje vložit nebo aktualizovat záznamy v kolekci na základě daného sloupce ID dokumentu. To se také označuje jako *Upsert*.
 
 Stream Analytics používá optimistické upsert přístupu, kde aktualizace jsou pouze provedeno při vložení selže kvůli konfliktu ID dokumentu. Tato aktualizace se provádí jako opravu, takže umožňuje částečné aktualizace v dokumentu, který je, přidání nových vlastností nebo nahrazuje existující vlastnost se provádí postupně. Však není sloučit změny hodnoty vlastnosti pole ve vašich výsledku dokumentu JSON v celého pole získávání přepsány, to znamená, pole.
+
+Pokud vstupní dokument JSON má existující pole ID, že pole je automaticky použít jako sloupec ID dokumentu ve službě Cosmos DB a jakékoli další zápisy jsou zpracovány jako takové, což vede k jednomu z těchto situací:
+- Jedinečné ID vést k vložení
+- duplicitní ID a "ID dokumentu' nastavena na"ID"vede má upsertovat
+- duplicitní ID a 'ID dokumentu' není sada vede k chybě, po první dokument
+
+Pokud chcete uložit <i>všechny</i> dokumenty, včetně těch s duplicitním ID přejmenovat pole ID v dotazu (s klíčovým slovem AS) a umožní Cosmos DB vytvořit pole ID nebo nahraďte ID s hodnotou jiného sloupce (pomocí klíčového slova AS, nebo pomocí nastavení "ID dokumentu").
 
 ## <a name="data-partitioning-in-cosmos-db"></a>Dělení dat v databázi Cosmos DB
 Azure Cosmos DB [neomezené](../cosmos-db/partition-data.md) jsou doporučený postup pro dělení dat, jako Azure Cosmos DB automaticky škáluje oddíly na základě vašich úloh. Při zápisu do neomezené kontejnery, Stream Analytics používá libovolný počet paralelních zapisovače jako předchozí krok dotazu nebo vstupní schéma vytváření oddílů.

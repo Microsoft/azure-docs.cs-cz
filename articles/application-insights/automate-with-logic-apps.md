@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/29/2017
 ms.author: mbullwin
-ms.openlocfilehash: 91b5c2c23445e5cd3445d1d5b640cb3ecb8e5e7a
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 1e9170c955f2a36d68600372e3dcdac2a63056c1
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44301187"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50957740"
 ---
 # <a name="automate-application-insights-processes-by-using-logic-apps"></a>Automatizace procesů Application Insights s využitím Logic Apps
 
@@ -132,7 +132,7 @@ Při spuštění aplikace logiky, příjemce, které jste zadali v seznamu e-mai
 
 ## <a name="next-steps"></a>Další postup
 
-- Další informace o vytváření [analytických dotazů](app-insights-analytics-using.md).
+- Další informace o vytváření [analytických dotazů](../log-analytics/query-language/get-started-queries.md).
 - Další informace o [Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-what-are-logic-apps).
 
 

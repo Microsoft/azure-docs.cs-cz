@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: ellacroi
-ms.openlocfilehash: b8caeab7f08ffeee81492b01750cbb255e172872
-ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
+ms.openlocfilehash: d2ff854d291f65848c7e87b88d8020a835b3bdaa
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43144518"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50958657"
 ---
 # <a name="virtual-machine-offer-publishing-guide"></a>Průvodce publikováním nabídky virtuálních počítačů
 
@@ -29,18 +29,18 @@ Jedná se o transakci nabídek, které se nasazují a prostřednictvím webu Mar
 
 ## <a name="free-trial"></a>Bezplatná zkušební verze 
 
-Můžete uspořádat uživatelům přístup k omezené období softwarových licencí, při použití modelu používání vlastní licence (BYOL) blling otestovat vaši nabídku. Níže jsou uvedeny požadavky pro nasazení v rámci této nabídky. 
+Můžete uspořádat uživatelů otestovat vaši nabídku přístupu k omezené období softwarových licencí, při použití modelu fakturace používání vlastní licence (BYOL). Níže jsou uvedeny požadavky pro nasazení v rámci této nabídky. 
 
 |Požadavky  |Podrobnosti  |
 |---------|---------|
-|Období bezplatné zkušební verze a zkušební verze     |   Zákazník může aplikaci vyzkoušet zdarma po omezenou dobu. Váš zákazník není potřeba platit žádné poplatky za licence nebo předplatné pro vaši nabídku. Vaši zákazníci nejsou nutné k úhradě základní Microsoft první strany produktu nebo službě. Všechny možnosti zkušebních verzí se nasadí do vašeho předplatného Azure. Máte výhradní kontrolu nad optimalizaci nákladů a správu. Můžete si zvolit bezplatnou zkušební verzi nebo interaktivní ukázku. Bez ohledu na to, které zvolíte musí si bezplatnou zkušební verzi poskytují zákazník přednastaveným množství čas na vyzkoušení nabídky bez dalších poplatků.|
+|Období bezplatné zkušební verze a zkušební verze     |   Vaši zákazníci mohou vaši aplikaci vyzkoušet zdarma po omezenou dobu. Poznámka: potřeba platit žádné poplatky za licence nebo předplatné pro vaši nabídku jsou vaši zákazníci. Vaši zákazníci nejsou nutné k úhradě základní Microsoft první strany produktu nebo službě. Všechny možnosti zkušebních verzí se nasadí do vašeho předplatného Azure. Máte výhradní kontrolu nad optimalizaci nákladů a správu. Můžete si zvolit bezplatnou zkušební verzi nebo interaktivní ukázku. Bez ohledu na to, které zvolíte musí si bezplatnou zkušební verzi poskytují zákazníkům přednastaveným množství čas na vyzkoušení nabídky bez dalších poplatků.|
 |Dají se snadno konfigurovat a připravené k použití řešení    |  Snadné a rychlé ke konfiguraci a nastavení, musí být vaše aplikace.       |
 |Dostupnost / doba provozu    |    Aplikace SaaS nebo platformy musí mít minimálně 99,9 % dostupnost.     |
 |Azure Active Directory     |    Nabídky musíte povolit, že Azure Active Directory (Azure AD) federované jednotné přihlašování (SSO) (Azure AD federované jednotné přihlašování) pomocí souhlasu povolena.     |
 
-## <a name="test-drive"></a>Test Drive
+## <a name="test-drive"></a>Testovací verze
 
-Můžete nasadit jeden nebo více virtuálních počítačů prostřednictvím infrastructure-as-a-service(IaaS) nebo aplikací SaaS. Výhoda test jednotky, kterou možnost publikování je automatického zřizování virtuálního počítače nebo celé řešení vedené partnerem hostované průvodce. Testovací verze poskytuje zákazníkům vyhodnocení bez dalších poplatků. Zákazník nemusí být stávající zákazník Azure provozovat zkušební prostředí s. 
+Můžete nasadit jednu nebo více virtuálních počítačů prostřednictvím infrastructure-as--service (IaaS) nebo software-as-a-service (SaaS) aplikací. Výhoda test jednotky, kterou možnost publikování je automatického zřizování virtuálního počítače nebo celé řešení vedené partnerem hostované průvodce. Testovací verze poskytuje zákazníkům vyhodnocení bez dalších poplatků. Zákazník nemusí být stávající zákazník Azure provozovat zkušební prostředí s. 
 
 Kontaktujte nás na adrese [amp testdrive](mailto:amp-testdrive@microsoft.com) začít. 
 
