@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: bc273b8979b29057163e02dc9605e631aef173f1
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 28c943b2588270af823c0712d4e510a4f018da3e
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50227297"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50981400"
 ---
 # <a name="use-infrastructure-automation-tools-with-virtual-machines-in-azure"></a>Použití nástrojů automatizace infrastruktury s virtuálními počítači v Azure
 Vytvoření a správa virtuálních počítačů Azure (VM) konzistentním způsobem v měřítku, uvítáte nějakou formu automatizace. Existuje mnoho nástrojů a řešení, která umožňují automatizovat nasazení kompletní infrastrukturu Azure a životního cyklu správy. Tento článek představuje některé z infrastruktury automatizační nástroje, které můžete použít v Azure. Tyto nástroje běžně nevešla do jedné z následujících postupů:
@@ -129,9 +129,9 @@ Naučte se:
 ## <a name="azure-devops-services"></a>Azure DevOps Services
 [Služby Azure DevOps](https://www.visualstudio.com/team-services/) je sada nástrojů, které umožňují sdílení a sledování kódu, pomocí automatizovaného sestavení a vytvoření kompletní průběžnou integraci a vývoj (CI/CD) kanálu. Služby Azure DevOps se integruje se sadou Visual Studio a jiných editorech zjednodušit využití. Služby Azure DevOps můžete také vytvořit a konfigurovat virtuální počítače Azure a pak nasaďte kód na ně.
 
-Naučte se:
+Další informace:
 
-- [Vytvoření kanálu průběžné integrace se službami Azure DevOps](../articles/virtual-machines/windows/tutorial-vsts-iis-cicd.md).
+- [Služby Azure DevOps](https://docs.microsoft.com/azure/devops/user-guide/index?view=vsts).
 
 
 ## <a name="jenkins"></a>Jenkins

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/02/2018
 ms.author: shants
 ms.custom: include file
-ms.openlocfilehash: b3f71c4710bd9711a3209dd55f8e680f63627c1b
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: b8d759c7b55608be780389991e6bb393f4f3fe9f
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50035434"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50981399"
 ---
 ## <a name="view-vms-scheduled-for-maintenance-in-the-portal"></a>Zobrazovat virtuální počítače s naplánovanou údržbou na portálu
 
@@ -49,17 +49,9 @@ Můžete použít na webu Azure portal a vyhledejte virtuální počítače s na
 
 ## <a name="notification-and-alerts-in-the-portal"></a>Oznámení a výstrahy na portálu
 
-Azure komunikuje plánu kvůli plánované údržbě e-mailem do skupiny vlastník a spoluvlastníci předplatného. Můžete přidat další příjemce a kanály pro tuto komunikaci tak, že vytvoříte upozornění protokolu aktivit Azure. Další informace najdete v tématu [monitorovat aktivitu předplatného se protokol aktivit Azure](../articles/monitoring-and-diagnostics/monitoring-overview-activity-logs.md).
+Azure komunikuje plánu kvůli plánované údržbě e-mailem do skupiny vlastník a spoluvlastníci předplatného. Můžete přidat další příjemce a kanály pro tuto komunikaci tak, že vytvoříte upozornění protokolu aktivit Azure. Další informace najdete v tématu [vytvoření upozornění protokolu aktivit pro oznámení služby](../articles/monitoring-and-diagnostics/monitoring-activity-log-alerts-on-service-notifications.md).
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. V nabídce na levé straně vyberte **monitorování**. 
-3. V **monitorování – upozornění (klasická)** podokně klikněte na tlačítko **+ přidat upozornění protokolu aktivit**.
-5. Zadejte údaje **přidat upozornění protokolu aktivit** stránce a ujistěte se, že jste nastavili následující v **kritéria**:
-   - **Kategorie události**: stav služby
-   - **Služby**: Škálovací sady virtuálních počítačů a virtuálních počítačů
-   - **Typ**: plánovaná údržba 
-    
-Další informace o tom, jak nakonfigurovat upozornění protokolu aktivit najdete v tématu [vytvoření upozornění protokolu aktivit](../articles/monitoring-and-diagnostics/monitoring-activity-log-alerts.md).
+Ujistěte se, že nastavíte **typ události** jako **plánované údržby** a **služby** jako **Virtual Machine Scale Sets** a/nebo **Virtuálních počítačů**
     
     
 ## <a name="start-maintenance-on-your-vm-from-the-portal"></a>Spustit údržbu na virtuálním počítači z portálu
