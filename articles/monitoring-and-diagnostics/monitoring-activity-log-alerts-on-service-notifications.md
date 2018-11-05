@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/09/2018
 ms.author: shtabriz
 ms.component: alerts
-ms.openlocfilehash: 221434a391f963a764ef36b9533cc8cfd0e16c01
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: a86a7188c488a634de7b0ac71657bea0105381c7
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43123444"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50961887"
 ---
 # <a name="create-activity-log-alerts-on-service-notifications"></a>Vytvoření upozornění protokolu aktivit pro oznámení služby
 ## <a name="overview"></a>Přehled
@@ -36,7 +36,7 @@ Můžete také konfigurovat Komu musí odesílat výstrahy:
 
 Další informace o skupinách akcí najdete v tématu [Vytváření a správa skupin akcí](monitoring-action-groups.md).
 
-Informace o tom, jak nakonfigurovat službu stavu oznámení výstrah pomocí šablon Azure Resource Manageru najdete v tématu [šablon Resource Manageru](monitoring-create-activity-log-alerts-with-resource-manager-template.md).
+Informace o tom, jak nakonfigurovat službu stavu oznámení výstrah pomocí šablon Azure Resource Manageru najdete v tématu [šablon Resource Manageru](alert-activity-log.md).
 
 ## <a name="create-an-alert-on-a-service-health-notification-for-a-new-action-group-by-using-the-azure-portal"></a>Vytvořit upozornění na nová skupina akcí oznámení služby stavu s využitím webu Azure portal
 1. V [portál](https://portal.azure.com)vyberte **Service Health**.
@@ -70,7 +70,7 @@ Informace o tom, jak nakonfigurovat službu stavu oznámení výstrah pomocí š
 
 1. Definujte seznam příjemců pro příjemce:
 
-    a. **Název**: Zadejte název, alias nebo identifikátor příjemce.
+    a. **Název**: Zadejte jméno příjemce s, alias nebo identifikátor.
 
     b. **Typ akce**: Vyberte SMS, e-mailu, webhooku, aplikace Azure a další.
 

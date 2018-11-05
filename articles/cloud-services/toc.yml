@@ -1,0 +1,208 @@
+items:
+- name: Dokumentace ke službě Cloud Services
+  href: index.md
+- name: Přehled
+  items:
+  - name: Co je služba Cloud Services?
+    href: cloud-services-choose-me.md
+  - name: Balíčky a konfigurační soubory cloudových služeb
+    href: cloud-services-model-and-package.md
+- name: Začínáme
+  items:
+  - name: Příklad cloudové služby v .NET
+    href: cloud-services-dotnet-get-started.md
+  - name: Příklad cloudové služby v Pythonu pro Visual Studio
+    href: cloud-services-python-ptvs.md
+  - name: Nastavení hybridního clusteru HPC pomocí sady Microsoft HPC Pack
+    href: cloud-services-setup-hybrid-hpcpack-cluster.md
+- name: Postup
+  items:
+  - name: Plánování
+    items:
+    - name: Velikosti virtuálních počítačů
+      href: cloud-services-sizes-specs.md
+    - name: Aktualizace
+      href: cloud-services-update-azure-service.md
+  - name: Vývoj
+    items:
+    - name: Vytvoření rolí pracovního procesu a webu PHP
+      href: ../cloud-services-php-create-web-role.md
+    - name: Sestavení a nasazení aplikace Node.js do Azure
+      href: cloud-services-nodejs-develop-deploy-app.md
+    - name: Sestavení webové aplikace Node.js pomocí Expressu
+      href: cloud-services-nodejs-develop-deploy-express-app.md
+    - name: Služba Storage a Visual Studio
+      items:
+      - name: Blob Storage a propojené služby
+        href: ../visual-studio/vs-storage-cloud-services-getting-started-blobs.md
+      - name: Queue Storage a propojené služby
+        href: ../visual-studio/vs-storage-cloud-services-getting-started-queues.md
+      - name: Table Storage a propojené služby
+        href: ../visual-studio/vs-storage-cloud-services-getting-started-tables.md
+    - name: Konfigurace provozních pravidel pro roli
+      href: cloud-services-enable-communication-role-instances.md
+    - name: Zpracování událostí životního cyklu cloudových služeb
+      href: cloud-services-role-lifecycle-dotnet.md
+    - name: Socket.io (Node.js)
+      href: cloud-services-nodejs-chat-app-socketio.md
+    - name: Použití Twilia k telefonování (.NET)
+      href: ../partner-twilio-cloud-services-dotnet-phone-call-web-role.md
+    - name: Konfigurace úloh při spuštění
+      items:
+      - name: Vytvoření úloh při spuštění
+        href: cloud-services-startup-tasks.md
+      - name: Běžné úlohy při spuštění
+        href: cloud-services-startup-tasks-common.md
+      - name: Použití úlohy pro instalaci .NET v roli cloudové služby
+        href: cloud-services-dotnet-install-dotnet.md
+    - name: Konfigurace vzdálené plochy
+      items:
+      - name: Portál
+        href: cloud-services-role-enable-remote-desktop-new-portal.md
+      - name: PowerShell
+        href: cloud-services-role-enable-remote-desktop-powershell.md
+      - name: Visual Studio
+        href: cloud-services-role-enable-remote-desktop-visual-studio.md
+  - name: Nasazení
+    items:
+    - name: Vytvoření a nasazení cloudové služby na portálu
+      href: cloud-services-how-to-create-deploy-portal.md
+    - name: Vytvoření prázdného kontejneru cloudové služby v PowerShellu
+      href: cloud-services-powershell-create-cloud-container.md
+    - name: Konfigurace názvu vlastní domény
+      href: cloud-services-custom-domain-name-portal.md
+    - name: Připojení k vlastnímu řadiči domény
+      href: cloud-services-connect-to-custom-domain.md
+  - name: Správa služby
+    items:
+    - name: Běžné úlohy správy
+      href: cloud-services-how-to-manage-portal.md
+    - name: Konfigurace cloudové služby
+      href: cloud-services-how-to-configure-portal.md
+    - name: Správa cloudové služby pomocí Azure Automation
+      href: automation-manage-cloud-services.md
+    - name: Konfigurace automatického škálování
+      href: cloud-services-how-to-scale-portal.md
+    - name: Použití Pythonu ke správě prostředků Azure
+      href: cloud-services-python-how-to-use-service-management.md
+    - name: Omezení spekulativního spouštění
+      href: mitigate-se.md
+    - name: Opravy hostovaného operačního systému
+      href: cloud-services-guestos-msrc-releases.md
+    - name: Vyřazení hostovaného operačního systému
+      items:
+      - name: Zásady vyřazení
+        href: cloud-services-guestos-retirement-policy.md
+      - name: Oznámení o vyřazení řady 1 z provozu
+        href: cloud-services-guestos-family1-retirement.md
+    - name: Příspěvky k vydání hostovaného operačního systému
+      href: cloud-services-guestos-update-matrix.md
+    - name: Tahák Xpath pro konfigurace role Cloud Services
+      href: cloud-services-role-config-xpath.md
+  - name: Správa certifikátů
+    items:
+    - name: Cloud Services a správa certifikátů
+      href: cloud-services-certs-create.md
+    - name: Konfigurace SSL
+      href: cloud-services-configure-ssl-certificate-portal.md
+  - name: Monitorování
+    items:
+    - name: Monitorování cloudové služby
+      href: cloud-services-how-to-monitor.md
+    - name: Použití čítačů výkonu
+      href: diagnostics-performance-counters.md
+    - name: Testování výkonu
+      href: /visualstudio/azure/vs-azure-tools-performance-profiling-cloud-services?toc=/azure/cloud-services/toc.json
+      items:
+      - name: Testování pomocí profileru sady Visual Studio
+        href: cloud-services-performance-testing-visual-studio-profiler.md
+    - name: Povolení diagnostiky
+      items:
+      - name: Azure PowerShell
+        href: cloud-services-diagnostics-powershell.md
+      - name: .NET
+        href: cloud-services-dotnet-diagnostics.md
+      - name: Visual Studio
+        href: /visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines?toc=/azure/cloud-services/toc.json
+    - name: Ukládání a zobrazení diagnostických dat v Azure Storage
+      href: ../monitoring-and-diagnostics/azure-diagnostics-storage.md?toc=%2fazure%2fcloud-services%2ftoc.json
+    - name: Trasování cloudové služby pomocí diagnostiky
+      href: cloud-services-dotnet-diagnostics-trace-flow.md
+  - name: Řešení potíží
+    items:
+    - name: Ladění
+      items:
+      - name: Možnosti pro cloudovou službu
+        href: /visualstudio/azure/vs-azure-tools-debugging-cloud-services-overview?toc=/azure/cloud-services/toc.json
+      - name: Místní cloudová služba s využitím sady Visual Studio
+        href: /visualstudio/azure/vs-azure-tools-debug-cloud-services-virtual-machines?toc=/azure/cloud-services/toc.json
+      - name: Publikovaná cloudová služba s využitím sady Visual Studio
+        href: /visualstudio/azure/vs-azure-tools-intellitrace-debug-published-cloud-services?toc=/azure/cloud-services/toc.json
+    - name: Chyba přidělení cloudové služby
+      href: cloud-services-allocation-failures.md
+    - name: Běžné příčiny recyklování rolí cloudové služby
+      href: cloud-services-troubleshoot-common-issues-which-cause-roles-recycle.md
+    - name: Výchozí velikost složky TEMP je pro roli příliš malá
+      href: cloud-services-troubleshoot-default-temp-folder-size-too-small-web-worker-role.md
+    - name: Běžné problémy s nasazením
+      href: cloud-services-troubleshoot-deployment-problems.md
+    - name: Role se nespustila
+      href: cloud-services-troubleshoot-roles-that-fail-start.md
+    - name: Pokyny k zotavení
+      href: cloud-services-disaster-recovery-guidance.md
+    - name: Cloud Services – nejčastější dotazy
+      items:
+      - name: Dostupnost aplikací a služeb – nejčastější dotazy
+        href: cloud-services-application-and-service-availability-faq.md
+      - name: Nejčastější dotazy ke konfiguraci a správě
+        href: cloud-services-configuration-and-management-faq.md
+      - name: Možnosti připojení a sítě – nejčastější dotazy
+        href: cloud-services-connectivity-and-networking-faq.md
+      - name: Nejčastější dotazy k nasazení
+        href: cloud-services-deployment-faq.md
+- name: Referenční informace
+  items:
+  - name: Ukázky kódů
+    href: https://azure.microsoft.com/resources/samples/?service=cloud-services
+  - name: Schéma .csdef XML
+    href: schema-csdef-file.md
+    items:
+    - name: Schéma LoadBalancerProbe
+      href: schema-csdef-loadbalancerprobe.md
+    - name: Schéma WebRole
+      href: schema-csdef-webrole.md
+    - name: Schéma WorkerRole
+      href: schema-csdef-workerrole.md
+    - name: Schéma NetworkTrafficRules
+      href: schema-csdef-networktrafficrules.md
+  - name: Schéma .cscfg XML
+    href: schema-cscfg-file.md
+    items:
+    - name: Schéma rolí
+      href: schema-cscfg-role.md
+    - name: Schéma NetworkConfiguration
+      href: schema-cscfg-networkconfiguration.md
+  - name: REST
+    href: /rest/api/compute/cloudservices/
+- name: Zdroje a prostředky
+  items:
+  - name: Plány Azure do budoucna
+    href: https://azure.microsoft.com/roadmap/?category=compute
+  - name: Postup výuky
+    href: https://azure.microsoft.com/documentation/learning-paths/cloud-services/
+  - name: Fórum MSDN
+    href: https://social.msdn.microsoft.com/Forums/en-us/home?forum=windowsazuredevelopment
+  - name: Ceny
+    href: https://azure.microsoft.com/pricing/details/cloud-services/
+  - name: Cenová kalkulačka
+    href: https://azure.microsoft.com/pricing/calculator/
+  - name: Aktualizace služeb
+    href: https://azure.microsoft.com/updates/?product=cloud-services&updatetype=&platform=
+  - name: Videa
+    href: https://azure.microsoft.com/documentation/videos/index/?services=cloud-services
+ms.openlocfilehash: 444b5b08659c3f415fd016176464d86f549669a5
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50980054"

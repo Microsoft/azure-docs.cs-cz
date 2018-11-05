@@ -9,12 +9,12 @@ ms.date: 10/28/2018
 ms.author: moderakh
 ms.devlang: java
 ms.component: cosmosdb-sql
-ms.openlocfilehash: ef1d2d0751bf1b1a7ee88fbf37e44e6316dee8f8
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: efa2b60ccfc6af6cfb4a46e17b13a426d4e8c9fe
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50249861"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50958810"
 ---
 # <a name="troubleshooting-issues-when-using-java-async-sdk-with-azure-cosmos-db-sql-api-accounts"></a>Řešení potíží při použití sady Java SDK pro asynchronní s účty SQL API služby Azure Cosmos DB
 Tento článek popisuje běžné problémy, řešení, kroky pro diagnostiku a nástroje, při použití [ADK Async Javu](sql-api-sdk-async-java.md) s účty SQL API služby Azure Cosmos DB.
@@ -48,7 +48,7 @@ Počet otevřených souborů ("nofile") musí být dostatečně velký (na nejm�
 
 ##### <a name="snat"></a>Vyčerpání portů Azure SNAT PAT
 
-Pokud je aplikace nasazená na virtuálním počítači Azure, ve výchozím nastavení [porty Azure SNAT](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#preallocatedports) se používá k navázání připojení pro libovolný koncový bod mimo váš virtuální počítač. Počet připojení povolených z virtuálního počítače do koncového bodu služby Cosmos DB je omezena [konfigurace Azure SNAT](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#preallocatedports).
+Pokud vaše aplikace je nasazená na virtuálním počítači Azure bez veřejné IP adresy, ve výchozím nastavení [porty Azure SNAT](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#preallocatedports) se používá k navázání připojení pro libovolný koncový bod mimo váš virtuální počítač. Počet připojení povolených z virtuálního počítače do koncového bodu služby Cosmos DB je omezena [konfigurace Azure SNAT](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#preallocatedports).
 
 Azure SNAT porty se používají pouze v případě, že váš virtuální počítač Azure je privátní IP adresu a proces z virtuálního počítače se pokusí navázat připojení k veřejné IP adresy. Proto existují dvě alternativní řešení, aby Azure SNAT omezení:
     * Přidání vašeho koncového bodu služby Azure Cosmos DB k podsíti virtuální sítě virtuálních počítačů Azure, jak je vysvětleno v [povolení koncového bodu služby virtuální sítě](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview). Když je povolený koncový bod služby, žádosti už se odesílají z veřejné IP adresy do služby cosmos DB místo toho virtuální sítě a podsítě identity se odešle. Tato změna může způsobit drops brány firewall, pokud pouze veřejné IP adresy jsou povoleny. Pokud používáte bránu firewall, při povolení koncového bodu služby, přidejte podsíť brány firewall pomocí [seznamy ACL sítě VNET](https://docs.microsoft.com/azure/virtual-network/virtual-networks-acl).

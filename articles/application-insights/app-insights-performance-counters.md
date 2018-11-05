@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/11/2016
 ms.author: mbullwin
-ms.openlocfilehash: bb1b1e2934de052479f39d40bfe143345e91bc26
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: e5915f18799386ae92019073fb50dac96da107ea
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47094079"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50960102"
 ---
 # <a name="system-performance-counters-in-application-insights"></a>Čítače výkonu systému ve službě Application Insights
 Windows poskytuje širokou škálu [čítače výkonu](http://www.codeproject.com/Articles/8590/An-Introduction-To-Performance-Counters) například vytížení procesoru, paměti, disku a využití sítě. Můžete také definovat své vlastní. [Application Insights](app-insights-overview.md) můžete zobrazit tyto čítače výkonu, pokud je aplikace spuštěna v rámci služby IIS na místního hostitele nebo virtuální počítač, ke kterému máte přístup pro správu. Grafy označují prostředky dostupné pro vaše živé aplikace a může pomoct identifikovat nevyváženého zatížení mezi instancemi serveru.
@@ -27,7 +27,7 @@ Windows poskytuje širokou škálu [čítače výkonu](http://www.codeproject.co
 
 ![Čítače výkonu v Application Insights](./media/app-insights-performance-counters/counters-by-server-instance.png)
 
-(Čítače výkonu nejsou k dispozici pro Azure Web Apps. Ale můžete [odesílání Azure Diagnostics do Application Insights](app-insights-azure-diagnostics.md).)
+(Čítače výkonu nejsou k dispozici pro Azure Web Apps. Ale můžete [odesílání Azure Diagnostics do Application Insights](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md).)
 
 ## <a name="view-counters"></a>Zobrazení čítačů
 Ukazuje blade servery výchozí sadu čítačů výkonu. 
@@ -96,7 +96,7 @@ Nebo můžete provést totéž s vlastní metriky, které jste vytvořili:
 ## <a name="performance-counters-in-analytics"></a>Čítače výkonu v Analytics
 Můžete vyhledat a zobrazit sestavy čítačů výkonu v [Analytics](app-insights-analytics.md).
 
-**Čítače výkonu** zpřístupňuje schématu `category`, `counter` název, a `instance` název jednotlivých čítačů výkonu.  V telemetrii pro každou aplikaci zobrazí se vám jenom čítače pro tuto aplikaci. Například pokud chcete zobrazit jsou k dispozici co čítače: 
+**Čítače výkonu** zpřístupňuje schématu `category`, `counter` název, a `instance` název jednotlivých čítačů výkonu.  V telemetrii pro každou aplikaci můžete zobrazí pouze čítače pro tuto aplikaci. Například pokud chcete zobrazit jsou k dispozici co čítače: 
 
 ![Čítače výkonu ve službě Application Insights analytics](./media/app-insights-performance-counters/analytics-performance-counters.png)
 

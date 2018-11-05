@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/10/2018
 ms.author: mbullwin
-ms.openlocfilehash: fc651b3bc28e59c5c5a195211d811e206eee3e42
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 71d5c26c8c41c470e188291dea4a4dab2811a67e
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42055277"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50963111"
 ---
 # <a name="feed-power-bi-from-application-insights"></a>Informační kanál Power BI ze služby Application Insights
 [Power BI](http://www.powerbi.com/) je sada nástrojů pro obchodní, která pomáhá analyzovat data a sdílet přehledy. Bohaté řídicí panely jsou k dispozici na všech zařízeních. Můžete kombinovat data z mnoha zdrojů, včetně analytických dotazů z [Azure Application Insights](app-insights-overview.md).
@@ -41,7 +41,7 @@ Chcete-li importovat dotaz Application Insights, použijete desktopovou verzi Po
 Nainstalujte [Power BI Desktop](https://powerbi.microsoft.com/en-us/desktop/).
 
 ### <a name="export-an-analytics-query"></a>Export dotazu Analytics
-1. [Otevřít analýzu a napsat dotaz](app-insights-analytics-tour.md).
+1. [Otevřít analýzu a napsat dotaz](../log-analytics/query-language/get-started-analytics-portal.md).
 2. Testování a až budete spokojení s výsledky upřesněte dotaz. Ujistěte se, že dotaz běží správně v Analytics předtím, než ho exportovat.
 3. Na **exportovat** nabídce zvolte **Power BI (M)**. Uložte tento textový soubor.
    
@@ -109,7 +109,7 @@ Pokud snižování datové sady z dotazu Analytics nesplňuje vaše požadavky, 
    * Nahraďte  **https://management.azure.com/subscriptions/...**
    * s  **https://api.applicationinsights.io/beta/apps/...**
 3. Nakonec aktualizujte přihlašovací údaje na základní a použijte svůj klíč rozhraní API.
-  
+ �
 
 **Existujícího skriptu**
  ```
@@ -155,5 +155,5 @@ Po počátečním importu se pokračovat řídicí panel a sestavy denně aktual
 
 ## <a name="next-steps"></a>Další postup
 * [Power BI – Další informace](http://www.powerbi.com/learning/)
-* [Kurz analýzy](app-insights-analytics-tour.md)
+* [Kurz analýzy](../log-analytics/query-language/get-started-analytics-portal.md)
 

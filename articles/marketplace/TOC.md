@@ -86,7 +86,18 @@
 ### [Prodej SaaS přes Azure](./cloud-partner-portal-orig/cloud-partner-portal-saas-offer-subscriptions.md)
 ### [Rozhraní API SaaS](./cloud-partner-portal-orig/cloud-partner-portal-saas-subscription-apis.md)
 
-## [Containers](./cloud-partner-portal-orig/cloud-partner-portal-containers-guide.md)
+<!-- Legacy ## [Containers](./cloud-partner-portal-orig/cloud-partner-portal-containers-guide.md) -->
+
+## [Nabídka kontejnerů](./cloud-partner-portal/containers/cpp-containers-offer.md)
+### [Požadavky](./cloud-partner-portal/containers/cpp-prerequisites.md)
+### [Vytvoření nabídky kontejnerů](./cloud-partner-portal/containers/cpp-create-offer.md)
+#### [Karta nastavení nabídky](./cloud-partner-portal/containers/cpp-offer-settings-tab.md)
+#### [Karta Skladové položky](./cloud-partner-portal/containers/cpp-skus-tab.md)
+#### [Karta Marketplace](./cloud-partner-portal/containers/cpp-marketplace-tab.md)
+#### [Karta Podpora](./cloud-partner-portal/containers/cpp-support-tab.md)
+### [Vytvoření technických prostředků kontejneru](./cloud-partner-portal/containers/cpp-create-technical-assets.md)
+### [Publikace nabídky kontejnerů](./cloud-partner-portal/containers/cpp-publish-offer.md)
+### [Aktualizace stávající nabídky](./cloud-partner-portal/containers/cpp-update-existing-offer.md)
 
 ## [Nabídka modul IoT Edge](./cloud-partner-portal/iot-edge-module/cpp-offer-process-parts.md)
 ### [Požadavky](./cloud-partner-portal/iot-edge-module/cpp-prerequisites.md)

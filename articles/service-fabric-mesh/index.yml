@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 14938e25cc41ea11baef94b6a9e01e070ffac654
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 029342b5db33a7c713e915ae72066f732b6f46f0
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47158186"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50979416"
 documentType: LandingData
 title: Dokumentace ke službě Azure Service Fabric Mesh
 metadata:
@@ -20,7 +20,7 @@ metadata:
   ms.date: 07/26/2018
   ms.author: ryanwi
 abstract:
-  description: Azure Service Fabric Mesh je plně spravovaná služba, která vývojářům umožňuje sestavovat a nasazovat klíčové aplikace bez nutnosti spravovat infrastrukturu.  Pomocí služby Service Fabric Mesh můžete sestavovat a spouštět zabezpečené distribuované aplikace mikroslužeb, které se škálují na vyžádání. Naučte se používat službu Service Fabric Mesh prostřednictvím našich šablon Rychlý start a kurzů.  Pokud se chcete dozvědět víc, přečtěte si <a href="/azure/service-fabric-mesh/service-fabric-mesh-overview">přehled služby Service Fabric Mesh</a>.
+  description: Azure Service Fabric Mesh je plně spravovaná služba, která vývojářům umožňuje sestavovat a nasazovat klíčové aplikace bez nutnosti spravovat infrastrukturu.  Pomocí služby Service Fabric Mesh můžete sestavovat a spouštět zabezpečené distribuované aplikace mikroslužeb, které se škálují na vyžádání. Naučte se používat službu Service Fabric Mesh prostřednictvím našich šablon Rychlý start a kurzů.  Další informace najdete v <a href="/azure/service-fabric-mesh/service-fabric-mesh-overview">přehledu služby Service Fabric Mesh</a> a <a href="/azure/service-fabric-mesh/service-fabric-mesh-faq">nejčastějších dotazech</a>.
 sections:
 - title: Zprovoznění během 5 minut
   items:

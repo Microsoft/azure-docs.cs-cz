@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: robb
 ms.component: alerts
-ms.openlocfilehash: 7046a0c6ac84ad5f156098a26dcef2b8accd50af
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: c69a61f19b55cd325cd594173dbf3b5f2b4576b8
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46987641"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50962924"
 ---
 # <a name="what-are-classic-alerts-in-microsoft-azure"></a>Co jsou upozornění v Microsoft Azure classic?
 
@@ -29,7 +29,7 @@ V posledních monitorování Azure Application Insights, Log Analytics a stavy s
 
 Upozornění classic můžete zobrazit pouze na obrazovce uživatele klasických upozornění na webu Azure Portal. Získat z této obrazovky **zobrazit upozornění classic** tlačítko na obrazovce oznámení. 
 
- ![Upozornění možností na webu Azure portal](./media/monitoring-overview-alerts-classic/monitor-alert-screen2.png) 
+ ![Upozornění možností na webu Azure portal](./media/monitoring-overview-alerts-classic/monitor-alert-screen2.png)�
 
 Nové prostředí upozornění uživatele má tyto výhody nad komfortem při upozornění classic:
 -   **Lepší systému oznámení** – všechny novější upozornění použití skupin akcí, které jsou pojmenované skupiny oznámení a akce, které lze znovu použít ve více výstrah. Klasického upozornění metrik a starší upozornění Log Analytics není použití skupin akcí.
@@ -89,14 +89,14 @@ Webhooky umožňuje automatizaci a nápravu, například pomocí:
 ## <a name="next-steps"></a>Další postup
 Získání informací o pravidla upozornění a nakonfigurovaly pomocí:
 
-* Další informace o [metriky](monitoring-overview-metrics.md)
-* Konfigurace [klasických upozornění na metriku pomocí webu Azure portal](insights-alerts-portal.md)
-* Konfigurace [classic PowerShell upozornění metriky](insights-alerts-powershell.md)
-* Konfigurace [klasické rozhraní příkazového řádku upozornění metriky (CLI)](insights-alerts-command-line-interface.md)
+* Další informace o [metriky](../monitoring/monitoring-data-collection.md)
+* Konfigurace [klasických upozornění na metriku pomocí webu Azure portal](alert-metric-classic.md)
+* Konfigurace [classic PowerShell upozornění metriky](alert-metric-classic.md)
+* Konfigurace [klasické rozhraní příkazového řádku upozornění metriky (CLI)](alert-metric-classic.md)
 * Konfigurace [klasické metriky upozornění monitorování rozhraní REST API Azure](https://msdn.microsoft.com/library/azure/dn931945.aspx)
 * Další informace o [protokolu aktivit](monitoring-overview-activity-logs.md)
 * Konfigurace [upozornění protokolu aktivit prostřednictvím webu Azure portal](monitoring-activity-log-alerts.md)
-* Konfigurace [upozornění protokolu aktivit prostřednictvím Resource Manageru](monitoring-create-activity-log-alerts-with-resource-manager-template.md)
+* Konfigurace [upozornění protokolu aktivit prostřednictvím Resource Manageru](alert-activity-log.md)
 * Zkontrolujte [schéma webhooku v upozornění protokolu aktivit](monitoring-activity-log-alerts-webhook.md)
 * Další informace o [skupiny akcí](monitoring-action-groups.md)
-* Konfigurace [novější upozornění](monitor-alerts-unified-usage.md)
+* Konfigurace [novější upozornění](alert-metric.md)
