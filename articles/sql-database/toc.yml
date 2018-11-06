@@ -342,7 +342,7 @@ items:
       - name: Pokročilé sledování
         items:
         - name: Sledování služby Azure SQL Analytics
-          href: https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-azure-sql
+          href: https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql
         - name: Protokolování diagnostických telemetrických dat
           href: sql-database-metrics-diag-logging.md
       - name: Automatizované řešení potíží
@@ -638,9 +638,9 @@ items:
     href: /azure/architecture/
   - name: Příběhy zákazníků
     href: http://customers.microsoft.com/en-us/search?sq=%22Azure%20SQL%20Database%22&ff=&p=0&so=story_publish_date%20desc
-ms.openlocfilehash: 691918eab050f99353e2a1061b9bfdd17e33ef52
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 6bb5612edc4a51af16a861cdaf2a339671775b10
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50240116"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51037239"

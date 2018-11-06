@@ -2,6 +2,7 @@
 
 # Přehled
 ## [Co je služba Azure Active Directory Domain Services?](active-directory-ds-overview.md)
+## [Nejčastější dotazy](active-directory-ds-faqs.md)
 ## Hodí se pro vás?
 ### [Porovnání s AD na Windows Serveru](active-directory-ds-comparison.md)
 ### [Porovnání se službou Azure AD Join](active-directory-ds-compare-with-azure-ad-join.md)
@@ -55,7 +56,6 @@
 ## [Řešení potíží s protokolem Secure LDAP](active-directory-ds-ldaps-troubleshoot.md)
 
 # Řešení potíží
-## [Nejčastější dotazy](active-directory-ds-faqs.md)
 ## [Průvodce řešením problémů](active-directory-ds-troubleshooting.md)
 ## [Řešení výstrah](active-directory-ds-troubleshoot-alerts.md)
 ### [Oprava narušené konfigurace NSG](active-directory-ds-troubleshoot-nsg.md)
