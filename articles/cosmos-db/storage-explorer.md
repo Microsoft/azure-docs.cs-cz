@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: jejiang
-ms.openlocfilehash: b45328425cff978377d5e05de487d42e786c063b
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 1e18db960b9e07ae412d0c41c4544ef6bb35977c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37345103"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261145"
 ---
 # <a name="manage-azure-cosmos-db-in-azure-storage-explorer"></a>Správa služby Azure Cosmos DB v Průzkumníku služby Azure Storage
 
@@ -130,7 +130,7 @@ Po kliknutí pravým tlačítkem na předplatné v podokně Průzkumníka může
 
 2. Vyberte **Neomezená**, abyste mohli zadat klíč oddílu, a kliknutím na **OK** vytváření dokončete.
 
-    Pokud se při vytváření kolekce použije klíč oddílu, po vytvoření se hodnota klíče oddílu pro kolekci nedá změnit. Informace o nastavení klíče oddílu najdete v tématu popisujícím [Návrh pro dělení](partition-data.md#designing-for-partitioning).
+    Pokud se při vytváření kolekce použije klíč oddílu, po vytvoření se hodnota klíče oddílu pro kolekci nedá změnit.
 
     ![Klíč oddílu](./media/storage-explorer/partitionkey.png)
 
