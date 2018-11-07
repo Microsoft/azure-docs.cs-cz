@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: 7082edf43e53766d32bd967d0b894f6439eaa492
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: 760feae2c9b58e162dae487e240dda72099ed91b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42059079"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51227973"
 ---
 # <a name="azure-api-management-faqs"></a>Nejčastější dotazy k Azure API Management
 Získejte odpovědi na běžné dotazy, vzory a osvědčené postupy pro službu Azure API Management.
@@ -77,7 +77,7 @@ Máte několik možností, pokud chcete zkopírovat do nové instance instance s
 Ano, API Management prostřednictvím kódu programu spravovat pomocí:
 
 * [Rozhraní REST API služby API Management](https://msdn.microsoft.com/library/azure/dn776326.aspx).
-* [Knihovna správy ApiManagement služby Microsoft Azure SDK](http://aka.ms/apimsdk).
+* [Knihovna správy ApiManagement služby Microsoft Azure SDK](https://aka.ms/apimsdk).
 * [Nasazení služby](https://docs.microsoft.com/powershell/module/wds) a [Správa služeb](https://docs.microsoft.com/powershell/azure/servicemanagement/overview) rutin prostředí PowerShell.
 
 ### <a name="how-do-i-add-a-user-to-the-administrators-group"></a>Jak přidat uživatele do skupiny Administrators?
@@ -104,7 +104,7 @@ K nastavení více prostředí, například testovací prostředí a produkční
 * Hostování stejná rozhraní API na různých tenantech.
 
 ### <a name="can-i-use-soap-with-api-management"></a>Můžete použít protokol SOAP službou API Management?
-[Průchod SOAP](http://blogs.msdn.microsoft.com/apimanagement/2016/10/13/soap-pass-through/) je teď dostupná podpora. Správci mohou importovat WSDL jejich službu SOAP a Azure API Management se vytvoří front-endu SOAP. Dokumentaci k portálu pro vývojáře, testovací konzole, zásady a analytics jsou všechny dostupné služby SOAP.
+[Průchod SOAP](https://blogs.msdn.microsoft.com/apimanagement/2016/10/13/soap-pass-through/) je teď dostupná podpora. Správci mohou importovat WSDL jejich službu SOAP a Azure API Management se vytvoří front-endu SOAP. Dokumentaci k portálu pro vývojáře, testovací konzole, zásady a analytics jsou všechny dostupné služby SOAP.
 
 ### <a name="is-the-api-management-gateway-ip-address-constant-can-i-use-it-in-firewall-rules"></a>Je konstanta IP adresa brány API Management? Můžete použít ho v pravidlech brány firewall?
 Ve všech úrovních služby API Management veřejnou IP adresu (VIP) tenanta služby API Management je statická po dobu životnosti tenanta, s několika výjimkami. Změny IP adresy za těchto okolností:
@@ -126,7 +126,7 @@ Další informace o konfiguraci serveru autorizace OAuth 2.0 se zabezpečením s
 API Management použije [metodu směrování provozu výkonu](../traffic-manager/traffic-manager-routing-methods.md#performance) v nasazení do několika geografických umístěních. Příchozí provoz se směruje na nejbližší Brána rozhraní API. Pokud jedna oblast přejde do režimu offline, příchozí provoz automaticky směrují na nejbližší další brány. Další informace o metodách směrování v [metody směrování Traffic Manageru](../traffic-manager/traffic-manager-routing-methods.md).
 
 ### <a name="can-i-use-an-azure-resource-manager-template-to-create-an-api-management-service-instance"></a>Můžete použít šablony Azure Resource Manageru k vytvoření instance služby API Management?
-Ano. Zobrazit [služby Azure API Management](http://aka.ms/apimtemplate) šablony pro rychlý start.
+Ano. Zobrazit [služby Azure API Management](https://aka.ms/apimtemplate) šablony pro rychlý start.
 
 ### <a name="can-i-use-a-self-signed-ssl-certificate-for-a-back-end"></a>Můžete použít certifikát podepsaný svým držitelem SSL pro back-end?
 Ano. To lze provést pomocí Powershellu nebo přímo, odešlete do rozhraní API. To zakáže ověřování řetězu certifikátů a vám umožní použít certifikáty podepsané svým držitelem nebo soukromě podepsané při komunikaci ze služby API Management se back-end služby.

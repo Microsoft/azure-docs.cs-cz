@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 8852fc75658298a2c6887d8fef154d5a0b59affd
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 482faaea7089e095da13a2bae5f5937e20d50616
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47159903"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51246748"
 ---
 # <a name="extended-events-in-sql-database"></a>Rozšířené události ve službě SQL Database
 [!INCLUDE [sql-database-xevents-selectors-1-include](../../includes/sql-database-xevents-selectors-1-include.md)]
@@ -32,15 +32,15 @@ Toto téma vysvětluje, jak se mírně liší implementace rozšířeného počt
 
 Další informace o rozšířených událostech pro Azure SQL Database a Microsoft SQL Server, je k dispozici na:
 
-- [Rychlý Start: Rozšířené události v systému SQL Server](http://msdn.microsoft.com/library/mt733217.aspx)
-- [Rozšířené události](http://msdn.microsoft.com/library/bb630282.aspx)
+- [Rychlý Start: Rozšířené události v systému SQL Server](https://msdn.microsoft.com/library/mt733217.aspx)
+- [Rozšířené události](https://msdn.microsoft.com/library/bb630282.aspx)
 
 ## <a name="prerequisites"></a>Požadavky
 
 Toto téma předpokládá, že již máte základní znalost:
 
 - [Služba Azure SQL Database](https://azure.microsoft.com/services/sql-database/).
-- [Rozšířené události](http://msdn.microsoft.com/library/bb630282.aspx) v systému Microsoft SQL Server.
+- [Rozšířené události](https://msdn.microsoft.com/library/bb630282.aspx) v systému Microsoft SQL Server.
 
 - Hromadné naší dokumentaci informace o rozšířených událostí se vztahuje na systém SQL Server a SQL Database.
 
@@ -69,10 +69,10 @@ Související témata obsahují dvě ukázky kódu:
 ## <a name="transact-sql-differences"></a>Rozdíly v Transact-SQL
 
 
-- Při spuštění [vytvořit událost relace](http://msdn.microsoft.com/library/bb677289.aspx) příkaz na SQL serveru, je použít **ON SERVER** klauzuli. Ale v databázi SQL používáte **databáze dále** klauzule místo.
+- Při spuštění [vytvořit událost relace](https://msdn.microsoft.com/library/bb677289.aspx) příkaz na SQL serveru, je použít **ON SERVER** klauzuli. Ale v databázi SQL používáte **databáze dále** klauzule místo.
 
 
-- **Databáze dále** klauzule platí také pro [ALTER události relace](http://msdn.microsoft.com/library/bb630368.aspx) a [VYŘADIT události relace](http://msdn.microsoft.com/library/bb630257.aspx) příkazů jazyka Transact-SQL.
+- **Databáze dále** klauzule platí také pro [ALTER události relace](https://msdn.microsoft.com/library/bb630368.aspx) a [VYŘADIT události relace](https://msdn.microsoft.com/library/bb630257.aspx) příkazů jazyka Transact-SQL.
 
 
 - Osvědčeným postupem je zahrnují možnost relace události **STARTUP_STATE = ON** ve vaší **vytvořit událost relace** nebo **ALTER události relace** příkazy.
@@ -80,7 +80,7 @@ Související témata obsahují dvě ukázky kódu:
 
 ## <a name="new-catalog-views"></a>Nová zobrazení katalogu
 
-Funkce Rozšířené události podporuje několik [zobrazení katalogu](http://msdn.microsoft.com/library/ms174365.aspx). Informace o zobrazení katalogu *metadat nebo definice* z relace události vytvořené uživatelem v aktuální databázi. Zobrazení informací o instancích relace aktivní události nevrátí.
+Funkce Rozšířené události podporuje několik [zobrazení katalogu](https://msdn.microsoft.com/library/ms174365.aspx). Informace o zobrazení katalogu *metadat nebo definice* z relace události vytvořené uživatelem v aktuální databázi. Zobrazení informací o instancích relace aktivní události nevrátí.
 
 | Název<br/>Zobrazení katalogu | Popis |
 |:--- |:--- |
@@ -92,9 +92,9 @@ Funkce Rozšířené události podporuje několik [zobrazení katalogu](http://m
 
 V systému Microsoft SQL Server, podobně jako zobrazení katalogu mít názvy, které zahrnují *server\_*  místo *.database\_*. Vzor názvů je třeba **sys.server_event_%**.
 
-## <a name="new-dynamic-management-views-dmvshttpmsdnmicrosoftcomlibraryms188754aspx"></a>Nové zobrazení dynamické správy [(DMV)](http://msdn.microsoft.com/library/ms188754.aspx)
+## <a name="new-dynamic-management-views-dmvshttpsmsdnmicrosoftcomlibraryms188754aspx"></a>Nové zobrazení dynamické správy [(DMV)](https://msdn.microsoft.com/library/ms188754.aspx)
 
-Azure SQL Database má [zobrazení dynamické správy (DMV)](http://msdn.microsoft.com/library/bb677293.aspx) , které podporují rozšířené události. Zobrazení dynamické správy informovat o *aktivní* relace události.
+Azure SQL Database má [zobrazení dynamické správy (DMV)](https://msdn.microsoft.com/library/bb677293.aspx) , které podporují rozšířené události. Zobrazení dynamické správy informovat o *aktivní* relace události.
 
 | Název zobrazení dynamické správy | Popis |
 |:--- |:--- |
@@ -149,11 +149,11 @@ SELECT
 
 Tady jsou cíle, které můžete zaznamenat výsledky z relací prostředí událostí pro službu SQL Database:
 
-- [Cíle cyklické vyrovnávací paměti](http://msdn.microsoft.com/library/ff878182.aspx) -stručně uchovává data událostí v paměti.
-- [Cíl události čítače](http://msdn.microsoft.com/library/ff878025.aspx) – spočítá všechny události, ke kterým dochází během relace rozšířených událostí.
-- [Cíle souboru událostí](http://msdn.microsoft.com/library/ff878115.aspx) -zapíše kompletní vyrovnávací paměti do kontejneru služby Azure Storage.
+- [Cíle cyklické vyrovnávací paměti](https://msdn.microsoft.com/library/ff878182.aspx) -stručně uchovává data událostí v paměti.
+- [Cíl události čítače](https://msdn.microsoft.com/library/ff878025.aspx) – spočítá všechny události, ke kterým dochází během relace rozšířených událostí.
+- [Cíle souboru událostí](https://msdn.microsoft.com/library/ff878115.aspx) -zapíše kompletní vyrovnávací paměti do kontejneru služby Azure Storage.
 
-[Trasování událostí pro Windows (ETW)](http://msdn.microsoft.com/library/ms751538.aspx) rozhraní API není k dispozici pro rozšířené události v databázi SQL.
+[Trasování událostí pro Windows (ETW)](https://msdn.microsoft.com/library/ms751538.aspx) rozhraní API není k dispozici pro rozšířené události v databázi SQL.
 
 ## <a name="restrictions"></a>Omezení
 
@@ -195,8 +195,8 @@ Pokud se zobrazí chybová zpráva s upozorněním, že maximální paměti bylo
 - [Rutiny služby Azure Storage](https://docs.microsoft.com/powershell/module/Azure.Storage)
 - [Pomocí Azure Powershellu s Azure Storage](../storage/common/storage-powershell-guide-full.md) – poskytuje podrobné informace o prostředí PowerShell a službu Azure Storage.
 - [Použití Blob storage pomocí technologie .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md)
-- [CREATE CREDENTIAL (Transact-SQL)](http://msdn.microsoft.com/library/ms189522.aspx)
-- [Vytvoření relace události (Transact-SQL)](http://msdn.microsoft.com/library/bb677289.aspx)
+- [CREATE CREDENTIAL (Transact-SQL)](https://msdn.microsoft.com/library/ms189522.aspx)
+- [Vytvoření relace události (Transact-SQL)](https://msdn.microsoft.com/library/bb677289.aspx)
 - [Jonathan Kehayias příspěvky o rozšířené události v systému Microsoft SQL Server](http://www.sqlskills.com/blogs/jonathan/category/extended-events/)
 
 
@@ -209,6 +209,6 @@ Další témata ukázkový kód pro rozšířené události jsou k dispozici pro
 <!--
 ('lock_acquired' event.)
 
-- Code sample for SQL Server: [Determine Which Queries Are Holding Locks](http://msdn.microsoft.com/library/bb677357.aspx)
-- Code sample for SQL Server: [Find the Objects That Have the Most Locks Taken on Them](http://msdn.microsoft.com/library/bb630355.aspx)
+- Code sample for SQL Server: [Determine Which Queries Are Holding Locks](https://msdn.microsoft.com/library/bb677357.aspx)
+- Code sample for SQL Server: [Find the Objects That Have the Most Locks Taken on Them](https://msdn.microsoft.com/library/bb630355.aspx)
 -->

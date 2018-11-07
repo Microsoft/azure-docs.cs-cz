@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/12/2018
 ms.author: genli
-ms.openlocfilehash: df48e0dbf5a6c010f659e1019e56b7670c264234
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: bd2b28a7f8d0a765e10ffa58b5a72b4bd5bc47b0
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49319689"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228177"
 ---
 # <a name="reserved-ip-addresses-classic-deployment"></a>Rezervované IP adresy (klasické nasazení)
 
@@ -43,7 +43,7 @@ Další informace o IP adresách v Azure najdete v článku [IP adresy](virtual-
 - Počet vyhrazených IP adres může mít?
     Podrobnosti najdete v tématu [omezeních Azure](../azure-subscription-service-limits.md#networking-limits) článku.
 - Platí se za pro rezervované IP adresy?
-    V některých případech. Podrobnosti o cenách najdete v článku [rezervované IP adresy – podrobnosti o cenách](http://go.microsoft.com/fwlink/?LinkID=398482) stránky.
+    V některých případech. Podrobnosti o cenách najdete v článku [rezervované IP adresy – podrobnosti o cenách](https://go.microsoft.com/fwlink/?LinkID=398482) stránky.
 - Jak můžu rezervovat IP adresu?
     Můžete použít PowerShell, [REST API pro správu Azure](https://msdn.microsoft.com/library/azure/dn722420.aspx), nebo [webu Azure portal](https://portal.azure.com) rezervovat IP adresu v oblasti Azure. Vyhrazená IP adresa je přidružená k vašemu předplatnému.
 - Můžete použít vyhrazenou IP adresu pomocí virtuální sítě založené na skupinu vztahů?
@@ -83,7 +83,7 @@ Očekávaný výstup:
     OperationStatus      : Succeeded
 
 >[!NOTE]
->Když vytvoříte vyhrazené IP adresy pomocí prostředí PowerShell, nelze zadat skupinu prostředků vytvořit vyhrazenou IP adresu v. Azure umístí do skupiny prostředků s názvem *výchozí sítě* automaticky. Pokud vytvoříte rezervované IP používat [webu Azure portal](http://portal.azure.com), můžete zadat všechny skupiny prostředků, které zvolíte. Pokud vytvoříte vyhrazenou IP adresu ve skupině prostředků než *výchozí sítě* však vždy, když odkazujete vyhrazenou IP adresu s příkazy, jako `Get-AzureReservedIP` a `Remove-AzureReservedIP`, musí odkazovat na název  *Vyhrazené resource-group-name-ip název skupiny*.  Například můžete vytvořit vyhrazenou IP adresu s názvem *myReservedIP* ve skupině prostředků s názvem *myResourceGroup*, musí odkazovat na název vyhrazené IP adresy jako *myResourceGroup skupiny myReservedIP*.   
+>Když vytvoříte vyhrazené IP adresy pomocí prostředí PowerShell, nelze zadat skupinu prostředků vytvořit vyhrazenou IP adresu v. Azure umístí do skupiny prostředků s názvem *výchozí sítě* automaticky. Pokud vytvoříte rezervované IP používat [webu Azure portal](http://portal.azure.com), můžete zadat všechny skupiny prostředků, které zvolíte. Pokud vytvoříte vyhrazenou IP adresu ve skupině prostředků než *výchozí sítě* však vždy, když odkazujete vyhrazenou IP adresu s příkazy, jako `Get-AzureReservedIP` a `Remove-AzureReservedIP`, musí odkazovat na název  *Vyhrazené resource-group-name-ip název skupiny*.  Například můžete vytvořit vyhrazenou IP adresu s názvem *myReservedIP* ve skupině prostředků s názvem *myResourceGroup*, musí odkazovat na název vyhrazené IP adresy jako *myResourceGroup skupiny myReservedIP*.   
 
 
 Jakmile je vyhrazené IP adresy, zůstane přidružený k vašemu předplatnému, dokud je neodstraníte. Odstraňte vyhrazenou IP adresu následujícím způsobem:

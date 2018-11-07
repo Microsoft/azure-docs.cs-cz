@@ -1,6 +1,6 @@
 ---
-title: Kontrolu zabezpečení prostředků ve službě Azure Security Center | Dokumentace Microsoftu
-description: Tento článek vám umožní začít s monitorováním kontrolu zabezpečení vašich prostředků v Azure Security Center.
+title: Posílení stavu zabezpečení v Azure Security Center | Dokumentace Microsoftu
+description: Tento článek pomáhá posílení stavu zabezpečení díky monitorování vašich prostředků v Azure Security Center.
 services: security-center
 documentationcenter: na
 author: rkarlin
@@ -12,22 +12,21 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 9/21/2018
+ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 361fc2c6931dcfaed062bd39b75be7bef059b467
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 23369ac9f6cef74bac045017e8f956470e9a1159
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46122058"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51248856"
 ---
-# <a name="monitoring-resource-security-hygiene-in-azure-security-center"></a>Monitorování prostředků kontrolu zabezpečení ve službě Azure Security Center
-Tento článek vám pomůže používat funkce sledování v Azure Security Center zajistit, aby že se tak vysoké jako možné a monitorování dodržování předpisů se zásadami zabezpečení vašich prostředků.
+# <a name="strengthen-your-security-posture-with-azure-security-center"></a>Posílení stavu zabezpečení v Azure Security Center
+Tento článek pomáhá posílení stavu zabezpečení. Ujistěte se, že je tak vysoké jako možné a monitorování dodržování předpisů se zásadami zabezpečení vašich prostředků pomocí funkce sledování v Azure Security Center.
 
-## <a name="what-is-resource-security-hygiene"></a>Co je kontrolu zabezpečení prostředků?
-Pod pojmem sledování si často představujeme pozorování a čekání, až se stane nějaká událost, abychom na situaci reagovali. Kontrolu zabezpečení prostředků odkazuje na používání proaktivní strategie, kdy se auditují vaše prostředky a identifikují systémy, které nesplňují organizační standardy nebo osvědčené postupy.
+## <a name="how-do-you-strengthen-your-security-posture"></a>Jak je posílení stavu zabezpečení?
+Pod pojmem sledování si často představujeme pozorování a čekání, až se stane nějaká událost, abychom na situaci reagovali. Posílení stavu zabezpečení odkazuje na používání proaktivní strategie, kdy se auditují vaše prostředky a identifikují systémy, které nesplňují organizační standardy nebo osvědčené postupy.
 
-## <a name="resource-security-hygiene"></a>Kontrolu zabezpečení prostředků
 Po povolení [zásad zabezpečení](security-center-policies.md) pro prostředky předplatného služba Security Center analyzuje zabezpečení vašich prostředků, aby identifikovala potenciální ohrožení zabezpečení. Informace o konfiguraci vaší sítě jsou k dispozici okamžitě. Získání informací o konfiguraci virtuálních počítačů a počítačů, jako je stav aktualizace zabezpečení nebo konfigurace operačního systému, může trvat hodinu i déle v závislosti na počtu virtuálních počítačů a počítačů, na kterých máte nainstalovaného agenta. Můžete zobrazit úplný seznam problémů a způsoby, jak posílení zabezpečení sítě a opravovat rizika **doporučení** dlaždici.
 
 Můžete zobrazit stav zabezpečení svých prostředků a všechny problémy na typ prostředku:
@@ -54,4 +53,4 @@ V tomto článku jste zjistili, jak ve službě Azure Security Center používat
 * [Správa a zpracování výstrah zabezpečení v Azure Security Center](security-center-managing-and-responding-alerts.md): Zjistěte, jak spravovat výstrahy zabezpečení a reagovat na ně.
 * [Sledování partnerských řešení pomocí Azure Security Center](security-center-partner-solutions.md): Zjistěte, jak sledovat stav vašich partnerských řešení.
 * [Časté otázky k Azure Security Center](security-center-faq.md): Přečtěte si nejčastější dotazy k používání této služby.
-* [Blog o zabezpečení Azure](http://blogs.msdn.com/b/azuresecurity/): Přečtěte si příspěvky o zabezpečení a dodržování předpisů Azure.
+* [Blog o zabezpečení Azure](https://blogs.msdn.com/b/azuresecurity/): Přečtěte si příspěvky o zabezpečení a dodržování předpisů Azure.

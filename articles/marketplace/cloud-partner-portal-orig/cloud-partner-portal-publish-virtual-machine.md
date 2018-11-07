@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 3b046022990e95e65ed02880bd3fefbd78bcad28
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: d77dad52e75253de02fd079d791861356c4c5e1f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49387348"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51247071"
 ---
 # <a name="publish-a-virtual-machine-to-azure-marketplace"></a>Publikování virtuálního počítače na webu Azure Marketplace
 
@@ -37,7 +37,7 @@ Následující technická a Netechnická požadavky platí pro publikování vir
 
 -   [Vytvořit & testovací virtuální počítač s Linuxem pomocí bitové kopie](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-upload-vhd)
 
--   [Vytvoření a nahrání virtuálního pevného disku Windows ](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-prepare-for-upload-vhd-image?toc=/azure/virtual-machines/windows/toc.json)
+-   [Vytvoření a nahrání virtuálního pevného disku Windows ](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-prepare-for-upload-vhd-image?toc=/azure/virtual-machines/windows/toc.json)
 
 -   [Vytvořit & testovací virtuálního počítače s Windows pomocí bitové kopie](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-create-vm-generalized-managed?toc=/azure/virtual-machines/windows/toc.json)
 
@@ -60,7 +60,7 @@ Následující technická a Netechnická požadavky platí pro publikování vir
 
 -   Souhlasíte s podmínkami zásady účasti na Azure Marketplace a smlouvě s vydavatelem.
 
--   Budete souhlasit s [Terms of Use](https://azure.microsoft.com/support/legal/website-terms-of-use/) , [prohlášení o ochraně osobních údajů Microsoft](http://www.microsoft.com/privacystatement/default.aspx), a [smlouvou Microsoft Azure Certified Program](https://azure.microsoft.com/support/legal/marketplace/certified-program-agreement/).
+-   Budete souhlasit s [Terms of Use](https://azure.microsoft.com/support/legal/website-terms-of-use/) , [prohlášení o ochraně osobních údajů Microsoft](https://www.microsoft.com/privacystatement/default.aspx), a [smlouvou Microsoft Azure Certified Program](https://azure.microsoft.com/support/legal/marketplace/certified-program-agreement/).
 
 ## <a name="before-you-begin"></a>Než začnete
 
@@ -211,7 +211,7 @@ V této cenové Excelu jsou uvedené ceny pro různé oblasti v místní měně.
 
 >[!IMPORTANT]
 >-   Ceny nelze změnit po ukončení nabídky za provozu. Však může i nadále budete moci přidat nebo odebrat oblasti jsou podporované.
->-   Tato cena se účtuje uživateli kromě [Azure\'ceny virtuálních počítačů s](http://aka.ms/vmpricingdetails).
+>-   Tato cena se účtuje uživateli kromě [Azure\'ceny virtuálních počítačů s](https://aka.ms/vmpricingdetails).
 >-   Ceny se nastavují pro všechny oblasti v místní měně, pomocí kurzů k dispozici měny v době nastavování ceny.
 >-   Nastavit nebo zobrazit ceny v jednotlivých oblastech jednotlivě, ocenění tabulky export a import pomocí vlastní ceny.
 
@@ -225,7 +225,7 @@ Další části a proveďte bude části Imagí virtuálních počítačů. Pře
 
 -   [Vytvořit & testovací virtuální počítač s Linuxem pomocí bitové kopie](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-upload-vhd)
 
--   [Vytvoření a nahrání virtuálního pevného disku Windows ](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-prepare-for-upload-vhd-image?toc=/azure/virtual-machines/windows/toc.json)
+-   [Vytvoření a nahrání virtuálního pevného disku Windows ](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-prepare-for-upload-vhd-image?toc=/azure/virtual-machines/windows/toc.json)
 
 -   [Vytvořit & testovací virtuálního počítače s Windows pomocí bitové kopie](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-create-vm-generalized-managed?toc=/azure/virtual-machines/windows/toc.json)
 

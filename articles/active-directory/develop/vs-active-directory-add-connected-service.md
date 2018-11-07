@@ -13,12 +13,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
-ms.openlocfilehash: 9b61362525962c5e01d7fef6d317cf9861dfd0a3
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 565a484d2eae0879b625e79ef7ffbdd8eb5e4455
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46977889"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51251032"
 ---
 # <a name="adding-an-azure-active-directory-by-using-connected-services-in-visual-studio"></a>Přidání služby Azure Active Directory pomocí připojené služby v sadě Visual Studio
 
@@ -64,7 +64,7 @@ V současné době nepodporuje službu Active Directory, které jsou připojené
     - [Začínáme s projekty .NET MVC](vs-active-directory-dotnet-getting-started.md)
     - [Začínáme s projekty WebAPI](vs-active-directory-webapi-getting-started.md)
 
-1. Domény služby Active Directory můžete zobrazit také na [webu Azure portal](http://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Domény služby Active Directory můžete zobrazit také na [webu Azure portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
 ## <a name="how-your-project-is-modified"></a>Jak se váš projekt změnil
 

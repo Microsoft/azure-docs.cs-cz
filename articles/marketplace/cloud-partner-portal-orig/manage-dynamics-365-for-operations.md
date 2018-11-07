@@ -14,18 +14,18 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: f2e0c7b335b09a0d2b8b8399e807a354ec8e4282
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 41f3fd55be02364b4028642db9db1d3f47043afa
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48809262"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51245082"
 ---
 # <a name="how-to-create-dynamics-365-for-operations-offer-via-cloud-partner-portal"></a>Jak vytvořit Dynamics 365 pro operace nabízejí přes portál Cloud Partner
 
 Portálu pro publikování poskytuje přístup na základě rolí na portálu pro povolení více osob, abyste mohli spolupracovat na publikování nabídky. Zobrazit [cloudu portálu spravovat uživatele](./cloud-partner-portal-manage-users.md) pro další informace.
 
-Před publikováním nabídky jménem vydavatel účtu, jeden z uživatelé, kteří mají \"vlastníka\" role je potřeba souhlasit s [Terms of Use](https://azure.microsoft.com/support/legal/website-terms-of-use/), [prohlášení o ochraně osobních údajů Microsoft](http://www.microsoft.com/privacystatement/default.aspx), a [smlouva k programu Microsoft Azure Certified](https://azure.microsoft.com/support/legal/marketplace/certified-program-agreement/).
+Před publikováním nabídky jménem vydavatel účtu, jeden z uživatelé, kteří mají \"vlastníka\" role je potřeba souhlasit s [Terms of Use](https://azure.microsoft.com/support/legal/website-terms-of-use/), [prohlášení o ochraně osobních údajů Microsoft](https://www.microsoft.com/privacystatement/default.aspx), a [smlouva k programu Microsoft Azure Certified](https://azure.microsoft.com/support/legal/marketplace/certified-program-agreement/).
 
 ## <a name="how-to-create-a-new-dynamics-365-for-operations-offer"></a>Jak vytvořit nový Dynamics 365 pro operace nabídky
 
@@ -108,7 +108,7 @@ Nejprve je vaše podrobnosti nabídky.
 
 ### <a name="listing-details"></a>Podrobnosti
 
-![Obrazovka s podrobnostmi prezentace](./media/publish_d365_new_offer/storefront_details.png)
+![obrazovka s podrobnostmi prezentace](./media/publish_d365_new_offer/storefront_details.png)
 
 1. **Obory** – zkontrolujte mít délku maximálně dva obory z se zadanými možnostmi.
 2. **Kategorie** – zkontrolujte mít délku maximálně tři kategorie z se zadanými možnostmi.

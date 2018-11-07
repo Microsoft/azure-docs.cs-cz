@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 212afbd605e3a16da7be2c04492ec41875ff5b75
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 378eb8c1f2070e8f4b28c221369938e2ff04e2f3
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38666835"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51255166"
 ---
 # <a name="manage-all-policies-for-a-lab-in-azure-devtest-labs"></a>Správa všech zásad pro testovací prostředí ve službě Azure DevTest Labs
 
@@ -27,7 +27,7 @@ Azure DevTest Labs umožňuje řízení nákladů a minimalizace plýtvání v v
 ## <a name="set-allowed-virtual-machine-sizes"></a>Sada povolené velikosti virtuálního počítače
 Zásady pro nastavení povolených velikostí virtuálních počítačů pomáhá minimalizovat plýtvání testovacího prostředí tím, že vám určit, jaké velikosti virtuálních počítačů jsou povoleny v testovacím prostředí. Pokud tato zásada se aktivuje, jenom velikosti virtuálních počítačů z tohoto seznamu lze použít k vytvoření virtuálních počítačů.
 
-1. V [webu Azure portal](http://go.microsoft.com/fwlink/p/?LinkID=525040), vyberte testovacího prostředí a pak vyberte **konfigurace a zásad**.
+1. V [webu Azure portal](https://go.microsoft.com/fwlink/p/?LinkID=525040), vyberte testovacího prostředí a pak vyberte **konfigurace a zásad**.
 
     ![Přístup ke konfiguraci a zásady testovacího prostředí](./media/devtest-lab-set-lab-policy/policies-menu.png)
 

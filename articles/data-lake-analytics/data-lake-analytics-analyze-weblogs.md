@@ -9,19 +9,19 @@ ms.assetid: 3a196735-d0d9-4deb-ba68-c4b3f3be8403
 ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 12/05/2016
-ms.openlocfilehash: 5d25aed196dd6b4ce92ae1cf18e556d1c32295d3
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 4f9a30bf25cea1e80f53596be9eea6ae57a79889
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43051963"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51246459"
 ---
 # <a name="analyze-website-logs-using-azure-data-lake-analytics"></a>Analýza webových protokolů pomocí Azure Data Lake Analytics
 Zjistěte, jak analýza webových protokolů pomocí Data Lake Analytics, zvláště na hledání, které odkazující servery nastaly chyby při pokusu o přejděte na webovou stránku.
 
 ## <a name="prerequisites"></a>Požadavky
 * **Visual Studio 2015 nebo Visual Studio 2013**.
-* **[Nástroje Data Lake pro Visual Studio](http://aka.ms/adltoolsvs)**.
+* **[Nástroje Data Lake pro Visual Studio](https://aka.ms/adltoolsvs)**.
 
     Po instalaci nástrojů Data Lake pro Visual Studio se zobrazí **Data Lake** položky v **nástroje** nabídky v sadě Visual Studio:
 

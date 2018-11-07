@@ -15,12 +15,12 @@ ms.devlang: javascript
 ms.topic: article
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: 49ee6b7fabe78c2328a2a772347c612ad38cfe7a
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 8e4c97a710cc9e6d3af4ebdd7dc97bda9f8d02ed
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44091716"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228432"
 ---
 # <a name="sending-push-notifications-with-azure-notification-hubs-and-nodejs"></a>Odesílání nabízených oznámení pomocí Azure Notification Hubs a Node.js
 [!INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]
@@ -43,7 +43,7 @@ Mezi popsané scénáře patří odesílání nabízených oznámení do aplikac
 Další informace o notification hubs najdete v článku [další kroky](#next) oddílu.
 
 ## <a name="what-are-notification-hubs"></a>Co jsou Notification Hubs?
-Azure Notification Hubs poskytuje snadno použitelné, multiplatformní a škálovatelnou infrastrukturu pro posílání nabízených oznámení do mobilních zařízení. Podrobnosti o infrastruktuře služby, najdete v článku [Azure Notification Hubs](http://msdn.microsoft.com/library/windowsazure/jj927170.aspx) stránky.
+Azure Notification Hubs poskytuje snadno použitelné, multiplatformní a škálovatelnou infrastrukturu pro posílání nabízených oznámení do mobilních zařízení. Podrobnosti o infrastruktuře služby, najdete v článku [Azure Notification Hubs](https://msdn.microsoft.com/library/windowsazure/jj927170.aspx) stránky.
 
 ## <a name="create-a-nodejs-application"></a>Vytvoření aplikace v Node.js
 Prvním krokem v tomto kurzu je vytvoření nové prázdné aplikace Node.js. Pokyny týkající se vytvoření aplikace Node.js najdete v tématu [vytvoření a nasazení aplikace Node.js na Azure web][nodejswebsite], [cloudové služby pro Node.js] [ Node.js Cloud Service] pomocí Windows Powershellu nebo [webu pomocí Webmatrixu][webmatrix].
@@ -141,11 +141,11 @@ Následující kód používá **ApnsService** instance vystavené **Notificatio
 * **Značky** -identifikátor značky. Pokud se neposkytne žádná značka oznámení odesláno všem klientům.
 * **Datová část** -datovou část zprávy XML.
 * **TargetName**  -  `toast` pro informační zprávy. `token` dlaždice oznámení.
-* **NotificationClass** -prioritu oznámení. Najdete v článku **prvky hlavičky protokolu HTTP** část [nabízená oznámení ze serveru](http://msdn.microsoft.com/library/hh221551.aspx) dokumentu platné hodnoty.
+* **NotificationClass** -prioritu oznámení. Najdete v článku **prvky hlavičky protokolu HTTP** část [nabízená oznámení ze serveru](https://msdn.microsoft.com/library/hh221551.aspx) dokumentu platné hodnoty.
 * **Možnosti** – volitelné hlavičky požadavku.
 * **Zpětné volání** – funkce zpětného volání.
 
-Seznam platných **TargetName**, **NotificationClass** a možnosti záhlaví, podívejte se [nabízená oznámení ze serveru](http://msdn.microsoft.com/library/hh221551.aspx) stránky.
+Seznam platných **TargetName**, **NotificationClass** a možnosti záhlaví, podívejte se [nabízená oznámení ze serveru](https://msdn.microsoft.com/library/hh221551.aspx) stránky.
 
 Následující ukázkový kód používá **MpnsService** instance vystavené **NotificationHubService** k odesílání nabízených oznámení:
 
@@ -165,7 +165,7 @@ Následující ukázkový kód používá **MpnsService** instance vystavené **
 * **Možnosti** – volitelné hlavičky požadavku.
 * **Zpětné volání** – funkce zpětného volání.
 
-Seznam platné typy a hlavičky požadavku najdete v tématu [nabízená oznámení hlavičky požadavku a odpovědi služby](http://msdn.microsoft.com/library/windows/apps/hh465435.aspx).
+Seznam platné typy a hlavičky požadavku najdete v tématu [nabízená oznámení hlavičky požadavku a odpovědi služby](https://msdn.microsoft.com/library/windows/apps/hh465435.aspx).
 
 Následující kód používá **WnsService** instance vystavené **NotificationHubService** k odesílání nabízených oznámení do aplikace pro UPW:
 

@@ -1,25 +1,25 @@
 ---
-title: Nahrání dat úloh Hadoopu do služby HDInsight
-description: Zjistěte, jak nahrát a přístup k datům pro úlohy systému Hadoop v HDInsight pomocí Azure classic CLI, Průzkumníka služby Azure Storage, Azure Powershellu, příkazového řádku Hadoopu nebo Sqoopu.
+title: Nahrání dat pro úlohy Apache Hadoop v HDInsight
+description: Zjistěte, jak nahrát a přístup k datům pro úlohy Apache Hadoop v HDInsight pomocí Azure classic CLI, Průzkumníka služby Azure Storage, Azure Powershellu, příkazového řádku Hadoopu nebo Sqoopu.
 keywords: ETL hadoop, přesun dat do služby hadoop, hadoop načítání dat
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
-ms.author: jasonh
+ms.author: hrasheed
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 05/14/2018
-ms.openlocfilehash: 44aaccee436011bd7d27bec87515fde0e898732e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.date: 11/06/2018
+ms.openlocfilehash: 50e9162da5fda98d73ccfeea0776dc89ddd25dac
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46985975"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51256914"
 ---
 # <a name="upload-data-for-hadoop-jobs-in-hdinsight"></a>Nahrání dat úloh Hadoopu do služby HDInsight
 
-Azure HDInsight nabízí v porovnání s Azure Storage a Azure Data Lake Store plně funkční distribuovaného systému souborů Hadoop (HDFS). Azure Storage a Data lake Store jsou navrženy jako rozšíření HDFS poskytuje bezproblémové prostředí pro zákazníky. Umožňují celá sada komponent v ekosystému Hadoop pracovat přímo na data, která spravuje. Azure Storage a Data Lake Store jsou systémy různých souborů, které jsou optimalizované pro úložiště dat a výpočty na těchto datech. Informace o výhodách používání služby Azure Storage najdete v tématu [použití služby Azure Storage s HDInsight] [ hdinsight-storage] a [použití Data Lake Store s HDInsight](hdinsight-hadoop-use-data-lake-store.md).
+Azure HDInsight nabízí v porovnání s Azure Storage a Azure Data Lake Storage (Gen1 a Gen2) plně funkční distribuovaného systému souborů Hadoop (HDFS). Azure Storage a Data lake Storage Gen1 a Gen2 jsou navrženy jako rozšíření HDFS poskytuje bezproblémové prostředí pro zákazníky. Umožňují celá sada komponent v ekosystému Hadoop pracovat přímo na data, která spravuje. Azure Storage, Data Lake Storage Gen1 a Gen2 jsou systémy různých souborů, které jsou optimalizované pro úložiště dat a výpočty na těchto datech. Informace o výhodách používání služby Azure Storage najdete v tématu [použití služby Azure Storage s HDInsight][hdinsight-storage], [použití Data Lake Storage Gen1 s HDInsight](hdinsight-hadoop-use-data-lake-store.md) a [ Pomocí HDInsight v Data Lake Storage Gen2](../storage/data-lake-storage/use-hdi-cluster.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -29,7 +29,8 @@ Než začnete, vezměte na vědomí následující požadavky:
 * Znalost těchto dvou článcích:
 
     - [Použití služby Azure Storage s HDInsight][hdinsight-storage]
-    - [Použití Data Lake Store s HDInsight](hdinsight-hadoop-use-data-lake-store.md)
+    - [Data Lake Storage Gen1 pomocí služby HDInsight](hdinsight-hadoop-use-data-lake-store.md)
+    - [Data Lake Storage Gen2 pomocí služby HDInsight](../storage/data-lake-storage/use-hdi-cluster.md)   
 
 ## <a name="upload-data-to-azure-storage"></a>Nahrání dat do služby Azure Storage
 
@@ -213,7 +214,7 @@ Před použitím nástroje, musíte znát vaše služby Azure storage účtu ná
     Po dokončení nahrávání souboru můžete z úloh na clusteru HDInsight.
 
 ### <a name="mount-azure-storage-as-local-drive"></a>Připojení Azure Storage jako místní disk
-Zobrazit [připojení Azure Storage jako místní jednotku](http://blogs.msdn.com/b/bigdatasupport/archive/2014/01/09/mount-azure-blob-storage-as-local-drive.aspx).
+Zobrazit [připojení Azure Storage jako místní jednotku](https://blogs.msdn.com/b/bigdatasupport/archive/2014/01/09/mount-azure-blob-storage-as-local-drive.aspx).
 
 ### <a name="upload-using-services"></a>Nahrát pomocí služby
 #### <a name="azure-data-factory"></a>Azure Data Factory
@@ -304,6 +305,8 @@ Teď, když chápete, jak načíst data do HDInsight, přečtěte si, jak prová
 [hdinsight-use-sqoop]:hadoop/hdinsight-use-sqoop.md
 
 [hdinsight-storage]: hdinsight-hadoop-use-blob-storage.md
+[hdinsight-adls-gen1]: hdinsight-hadoop-use-data-lake-store.md
+[hdinsight-adls-gen2]: ../storage/data-lake-storage/use-hdi-cluster.md
 [hdinsight-submit-jobs]:hadoop/submit-apache-hadoop-jobs-programmatically.md
 [hdinsight-get-started]:hadoop/apache-hadoop-linux-tutorial-get-started.md
 

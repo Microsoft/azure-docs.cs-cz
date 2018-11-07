@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/08/2017
 ms.author: ryanwi
-ms.openlocfilehash: c55e67e24c8f5ff6e243c67b614592874b2cc459
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 6cf2aa31e8a7207b041b9789ddde23b616f47150
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48870651"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51258438"
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>Proto chcete se dozvědět o službě Service Fabric?
 Azure Service Fabric je platforma distribuovaných systémů usnadňující balení, nasazování a spravování škálovatelných a spolehlivých mikroslužeb.  Service Fabric má velký plochy, ale a existuje mnoho dalších informací.  Tento článek poskytuje stručný Service Fabric a popisuje základní koncepty programovacích modelů životního cyklu aplikací, testování, clustery a sledování stavu. Čtení [přehled](service-fabric-overview.md) a [co jsou mikroslužby?](service-fabric-overview-microservices.md) úvod a jak Service Fabric umožňuje vytvářet mikroslužby. Tento článek obsahuje úplný seznam obsahu, ale propojit pro přehled a získávání Začínáme články pro každou oblast Service Fabric. 
@@ -218,7 +218,7 @@ Více produkty, které jsou k dispozici, která pokrývají tyto tři oblasti, a
 * Zjistěte, jak [monitorování a Diagnostika služeb](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md). 
 * Zjistěte, jak [testování vašich aplikací a služeb](service-fabric-testability-overview.md).
 * Zjistěte, jak [Správa a Orchestrace prostředků clusteru](service-fabric-cluster-resource-manager-introduction.md).
-* Projít [ukázek Service Fabric](http://aka.ms/servicefabricsamples).
+* Projít [ukázek Service Fabric](https://aka.ms/servicefabricsamples).
 * Další informace o [možnosti podpory pro Service Fabric](service-fabric-support.md).
 * Přečtěte si [blogu týmu](https://blogs.msdn.microsoft.com/azureservicefabric/) pro články a oznámení.
 

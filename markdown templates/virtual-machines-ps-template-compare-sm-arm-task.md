@@ -10,22 +10,22 @@ Pay attention to spacing and indents. They affect formatting.
 
 <!--replace this with Properties and Tags sections. These are required sections. See "article-metadata.md" in under the "contributor-guide" folder in your repo. Attributes in each section can be placed on separate lines to make them easier to read and check-->
 
-# <a name="use-azure-powershell-to-task"></a>Pomocí prostředí Azure PowerShell [úloha]
-Tento článek ukazuje, jak [úloha], použijte příkazy z modulu Azure a modulu Azure Resource Manager. Slouží jako můžete migrovat existující skripty do nové příkazy a získat nové příkazy.
+# <a name="use-azure-powershell-to-task"></a>Pomocí Azure Powershellu [úloh]
+Tento článek ukazuje, jak [úkol], pomocí příkazů v modulu Azure a modulu Azure Resource Manageru. Má to vám pomůže se naučit nové příkazy taky umožňuje migrovat stávající skripty do nových příkazů.
 
-## <a name="prerequisite-install-a-recent-version-of-azure-powershell"></a>Předpoklad: Nainstalujte nejnovější verzi prostředí Azure PowerShell
-Pokud jste tak ještě neučinili, nainstalujte aspoň [číslo verze] verzi prostředí Azure PowerShell v místním počítači. Pokud používáte starší verzi, nebude mít rutiny Azure Resource Manager popsané v tomto článku. Podrobnosti najdete tady:
+## <a name="prerequisite-install-a-recent-version-of-azure-powershell"></a>Předpoklad: Instalace nejnovější verzi Azure Powershellu
+Pokud jste tak ještě neučinili, nainstalujte aspoň [číslo verze] verzi Azure Powershellu v místním počítači. Pokud používáte starší verzi, nebude mít rutiny Azure Resource Manageru, které jsou popsané v tomto článku. Podrobnosti najdete tady:
 
-* [Postup instalace a konfigurace prostředí Azure PowerShell](install-configure-powershell.md) pokyny pro nastavení prostředí Azure PowerShell.
-* [Použití prostředí Windows PowerShell s Resource Managerem](powershell-azure-resource-manager.md) pro základní informace o používání správce prostředků.
+* [Jak nainstalovat a nakonfigurovat Azure PowerShell](install-configure-powershell.md) pokyny k nastavení prostředí Azure PowerShell.
+* [Použití prostředí Windows PowerShell s Resource Managerem](powershell-azure-resource-manager.md) pro základní informace o použití Resource Manageru.
 
 > [!NOTE]
-> Většinu úloh vyžadují, abyste použijte příkazový řádek prostředí Azure PowerShell úrovni správce.
+> Většina úkolů vyžaduje použití Azure Powershellu z příkazového řádku na úrovni správce.
 > 
 > 
 
 ## <a name="command-comparison"></a>Příkaz porovnání
-To [tabulka | části] ukazuje syntaxi příkazu.
+To [table | části] ukazuje syntaxi příkazu.
 
 <!--[optional image - to use an image in this article, add a folder with the same name as the article file name without extension, inside the Media folder of the repo. Use only this folder to store the images. Don't attempt to use a common folder to share images you want to use in more than 1 file.]
 Then, use the following syntax to add a reference to the image in your article:
@@ -34,7 +34,7 @@ Then, use the following syntax to add a reference to the image in your article:
 
 <!--if a command string uses variables, define the variables first, using the  following construction. In some cases the variable is straightforward and doesn't need much explanation. But parameters such as location and size can benefit from brief explanation or listing all accepted values:--> 
 
-Tyto příklady příkazu použijte následující proměnné:
+Příklady těchto příkazů použít následující proměnné:
 
 $FriendlyName"<Describe value>"
 
@@ -46,20 +46,20 @@ $FriendlyName"<Describe value>"
 
 <!--if it makes more sense to present this one command block after the other instead of a table, use this. Otherwise, delete-->
 
-[Krátký úvod větu o příkazu. Vynechte, pokud není skutečně co říct. Ale pokud používá přístupy takové kanál, vysvětlují, který]:
+[Věty krátké úvodní informace o příkazu. Vynechte, pokud není ve skutečnosti co říct. Ale pokud používá tyto přístupy kanálu, které popisují]:
 
     [command string]
 
-## <a name="script-examples"></a>Příklady skriptů
-Tady je příklad, který používá [názvy rutin)] [úloha]. Obsahuje příkazy který:
+## <a name="script-examples"></a>Ukázkové skripty
+Tady je příklad, který používá [názvy rutin)] [úkolu]. Obsahuje příkazy, které:
 
-* [krátké operace, používá, obsahuje, je, atd]
-* [Další krátký příkaz] 
+* [krátký sloveso, použití, má, je atd]
+* [další příkaz krátký] 
 
-<!--include this statement if it uses variables that weren't introduced earlier--> It includes the following variables:
+<!--include this statement if it uses variables that weren't introduced earlier--> Zahrnuje následující proměnné:
 
-* [proměnnou 1]
-* [proměnnou 2]
+* [proměnná 1]
+* [proměnná 2]
 
 <!--This shows you how a recent example was presented as well as how it was formatted. Preceding each line with one tab or four spaces to format in a code block-->
 
@@ -94,8 +94,8 @@ Tady je příklad, který používá [názvy rutin)] [úloha]. Obsahuje příkaz
 
 <!--To link to an ACOM page outside the /documentation/ subdomain (such as a pricing page, SLA page or anything else that is not a documentation article), use an absolute URL, but omit the locale:
 
-    [link text](http://azure.microsoft.com/pricing/details/virtual-machines/)-->
+    [link text](https://azure.microsoft.com/pricing/details/virtual-machines/)-->
 
 <!--use this for URLs outside of ACOM. Be sure to locale, and if you're linking to the Azure library on MSDN, include the '/azure/' part of the URL-->
-[Dokumentace virtuální počítače](https://msdn.microsoft.com/library/azure/jj156003.aspx)
+[Dokumentace k virtuálním počítačům](https://msdn.microsoft.com/library/azure/jj156003.aspx)
 

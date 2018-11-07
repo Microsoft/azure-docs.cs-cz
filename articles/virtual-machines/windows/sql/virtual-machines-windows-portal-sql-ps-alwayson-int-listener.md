@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/22/2017
 ms.author: mikeray
-ms.openlocfilehash: b4641c847db817df905f056847a26d003ac25fd1
-ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
+ms.openlocfilehash: ee7b403c2ebdc590bd428eff880769ae83632585
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2018
-ms.locfileid: "43381791"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228211"
 ---
 # <a name="configure-one-or-more-always-on-availability-group-listeners---resource-manager"></a>Nakonfigurujte jeden nebo více Always On naslouchacích procesů skupin dostupnosti - Resource Manageru
 Toto téma ukazuje, jak:
@@ -41,7 +41,7 @@ Související témata:
 [!INCLUDE [Start your PowerShell session](../../../../includes/sql-vm-powershell.md)]
 
 ## <a name="configure-the-windows-firewall"></a>Konfigurace brány Windows Firewall
-Konfigurace Windows Firewall a povolit přístup k SQL serveru. Pravidla brány firewall umožňují připojení TCP ke portů používá instanci systému SQL Server a naslouchacího procesu kontroly. Podrobné pokyny najdete v tématu [konfigurovat bránu Windows Firewall pro přístup k databázovému stroji](http://msdn.microsoft.com/library/ms175043.aspx#Anchor_1). Vytvořte příchozí pravidlo pro port SQL serveru a portu sondy.
+Konfigurace Windows Firewall a povolit přístup k SQL serveru. Pravidla brány firewall umožňují připojení TCP ke portů používá instanci systému SQL Server a naslouchacího procesu kontroly. Podrobné pokyny najdete v tématu [konfigurovat bránu Windows Firewall pro přístup k databázovému stroji](https://msdn.microsoft.com/library/ms175043.aspx#Anchor_1). Vytvořte příchozí pravidlo pro port SQL serveru a portu sondy.
 
 Pokud jste omezení přístupu se skupinou zabezpečení sítě Azure, zajistěte, aby pravidla povolit zahrnují adres back-end IP adresy virtuálního počítače SQL serveru a nástroje pro vyrovnávání zatížení plovoucí IP adres pro naslouchacího procesu AG a IP adresu clusteru core Pokud je k dispozici.
 
@@ -110,7 +110,7 @@ Front-endový port je port, který se aplikace používají pro připojení k in
 > Každou IP adresu pro skupiny dostupnosti systému SQL Server, vyžaduje port konkrétního testu. Například pokud jedna IP adresa nástroje pro vyrovnávání zatížení používá port testu 59999, žádné další IP adresy v tomto nástroji pro vyrovnávání zatížení můžete použít port testu 59999.
 
 * Informace o omezeních nástroje pro vyrovnávání zatížení najdete v tématu **privátní front-endové IP adresy na nástroj pro vyrovnávání zatížení** pod [omezení sítě – Azure Resource Manageru](../../../azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits).
-* Informace o omezeních skupiny dostupnosti, najdete v tématu [omezení (skupiny dostupnosti)](http://msdn.microsoft.com/library/ff878487.aspx#RestrictionsAG).
+* Informace o omezeních skupiny dostupnosti, najdete v tématu [omezení (skupiny dostupnosti)](https://msdn.microsoft.com/library/ff878487.aspx#RestrictionsAG).
 
 Následující skript přidá novou IP adresu existující nástroj pro vyrovnávání zatížení. Port naslouchacího procesu ILB používá pro front-endový port pro vyrovnávání zatížení. Tento port může být port, který naslouchá SQL Server. Pro výchozí instance SQL serveru port je 1433. Pravidlo pro skupinu dostupnosti Vyrovnávání zatížení vyžaduje plovoucí IP (přímá odpověď ze serveru vrácené), takže port back-end je stejný jako front-endový port. Aktualizujte proměnné pro vaše prostředí. 
 
@@ -188,7 +188,7 @@ Chcete-li otestovat připojení:
 Připojení SQLCMD se automaticky připojí k libovolným instance systému SQL Server hostuje primární repliku. 
 
 > [!NOTE]
-> Ujistěte se, že je otevřen v bráně firewall oba servery SQL port, který zadáte. Oba servery vyžadují příchozí pravidlo pro port TCP, který používáte. Zobrazit [přidat nebo upravit pravidlo brány Firewall](http://technet.microsoft.com/library/cc753558.aspx) Další informace. 
+> Ujistěte se, že je otevřen v bráně firewall oba servery SQL port, který zadáte. Oba servery vyžadují příchozí pravidlo pro port TCP, který používáte. Zobrazit [přidat nebo upravit pravidlo brány Firewall](https://technet.microsoft.com/library/cc753558.aspx) Další informace. 
 > 
 > 
 
@@ -205,9 +205,9 @@ Další informace najdete v tématu [skupiny dostupnosti nakonfigurujte Always O
 ## <a name="powershell-cmdlets"></a>Rutiny prostředí PowerShell
 Pomocí následujících rutin prostředí PowerShell k vytvoření interního nástroje pro Azure virtual machines.
 
-* [Nový-AzureRmLoadBalancer](http://msdn.microsoft.com/library/mt619450.aspx) vytvoří nástroj pro vyrovnávání zatížení. 
-* [Nový-AzureRMLoadBalancerFrontendIpConfig](http://msdn.microsoft.com/library/mt603510.aspx) vytvoří konfiguraci front-end IP adresy nástroje pro vyrovnávání zatížení. 
-* [Nový-AzureRmLoadBalancerRuleConfig](http://msdn.microsoft.com/library/mt619391.aspx) vytvoří konfiguraci pravidla nástroje pro vyrovnávání zatížení. 
-* [Nový-AzureRmLoadBalancerBackendAddressPoolConfig](http://msdn.microsoft.com/library/mt603791.aspx) vytvoří konfiguraci fondu adres back-end pro nástroj pro vyrovnávání zatížení. 
-* [Nový-AzureRmLoadBalancerProbeConfig](http://msdn.microsoft.com/library/mt603847.aspx) vytvoří konfiguraci sondy pro nástroj pro vyrovnávání zatížení.
-* [Remove-AzureRmLoadBalancer](http://msdn.microsoft.com/library/mt603862.aspx) odebere nástroj pro vyrovnávání zatížení ze skupiny prostředků Azure.
+* [Nový-AzureRmLoadBalancer](https://msdn.microsoft.com/library/mt619450.aspx) vytvoří nástroj pro vyrovnávání zatížení. 
+* [Nový-AzureRMLoadBalancerFrontendIpConfig](https://msdn.microsoft.com/library/mt603510.aspx) vytvoří konfiguraci front-end IP adresy nástroje pro vyrovnávání zatížení. 
+* [Nový-AzureRmLoadBalancerRuleConfig](https://msdn.microsoft.com/library/mt619391.aspx) vytvoří konfiguraci pravidla nástroje pro vyrovnávání zatížení. 
+* [Nový-AzureRmLoadBalancerBackendAddressPoolConfig](https://msdn.microsoft.com/library/mt603791.aspx) vytvoří konfiguraci fondu adres back-end pro nástroj pro vyrovnávání zatížení. 
+* [Nový-AzureRmLoadBalancerProbeConfig](https://msdn.microsoft.com/library/mt603847.aspx) vytvoří konfiguraci sondy pro nástroj pro vyrovnávání zatížení.
+* [Remove-AzureRmLoadBalancer](https://msdn.microsoft.com/library/mt603862.aspx) odebere nástroj pro vyrovnávání zatížení ze skupiny prostředků Azure.
