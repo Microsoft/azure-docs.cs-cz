@@ -10,34 +10,31 @@ ms.topic: conceptual
 ms.date: 2/06/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: e008fb87b57b92f8f7e914e6b4344b52d42f9ef8
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: e36dd19aa020b8cb2a623cda904cf7fa8a0b26da
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39263925"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51004585"
 ---
-# <a name="azure-active-directory-b2c-disable-email-verification-during-consumer-sign-up"></a>Azure Active Directory B2C: Zakázání ověření e-mailu během registrace uživatelů
+# <a name="disable-email-verification-during-consumer-sign-up-in-azure-active-directory-b2c"></a>Zakázání ověření e-mailu během registrace v Azure Active Directory B2C příjemce 
 Při povolení služby Azure Active Directory (Azure AD) B2C dává možnost zaregistrovat do aplikace tak, že poskytuje e-mailovou adresu a vytvoření místního účtu příjemce. Azure AD B2C zajišťuje platné e-mailové adresy vyžadováním příjemci k ověření během procesu registrace. Zabrání také škodlivý automatizovaný proces generování falešné účty pro aplikace.
 
 Někteří vývojáři aplikace chtít přeskočit ověření e-mailu během procesu registrace a místo toho použít později ověření e-mailovou adresu uživatele. Z toho důvodu můžete nakonfigurovat Azure AD B2C k zakázání ověření e-mailu. Tím se vytvoří hladší procesu registrace a vývojářům poskytuje flexibilitu pro odlišení příjemce, kteří ověření e-mailová adresa z tito příjemci, které ještě nebyly.
 
 Zásady registrace mají ve výchozím nastavení zapnuté ověření e-mailu. Chcete-li vypnout, postupujte následovně:
 
-1. [Přejděte do okna s funkcemi B2C na webu Azure portal pomocí těchto kroků](active-directory-b2c-app-registration.md#navigate-to-b2c-settings).
-2. Klikněte na tlačítko **zásady registrace** nebo **zásady registrace nebo přihlášení** v závislosti na tom, co jste nakonfigurovali pro registraci.
-3. Klikněte na zásadu (například "B2C_1_SiUp") a otevřete ho. 
-4. Klikněte na tlačítko **upravit** v horní části okna.
-5. Klikněte na tlačítko **přizpůsobení uživatelského rozhraní stránky**.
-6. Klikněte na tlačítko **stránku pro přihlášení místním účtem**.
-7. Klikněte na tlačítko **e-mailovou adresu** v **název** sloupci **atributy registrace** oddílu.
-8. Přepnout **vyžadovat ověření** umožňuje **ne**.
-9. Klikněte na tlačítko **OK** v dolní části, dokud se nedostanete **upravit zásadu** okno.
-10. Klikněte na tlačítko **Uložit** v horní části okna. Je to!
+1. Klikněte na tlačítko **zásady registrace** nebo **zásady registrace nebo přihlášení** v závislosti na tom, co jste nakonfigurovali pro registraci.
+2. Klikněte na zásadu (například "B2C_1_SiUp") a otevřete ho. 
+3. Klikněte na tlačítko **upravit** v horní části okna.
+4. Klikněte na tlačítko **přizpůsobení uživatelského rozhraní stránky**.
+5. Klikněte na tlačítko **stránku pro přihlášení místním účtem**.
+6. Klikněte na tlačítko **e-mailovou adresu** v **název** sloupci **atributy registrace** oddílu.
+7. Přepnout **vyžadovat ověření** umožňuje **ne**.
+8. Klikněte na tlačítko **OK** v dolní části, dokud se nedostanete **upravit zásadu** okno.
+9. V horní části okna klikněte na **Uložit**. Je to!
 
 > [!NOTE]
 > Zakázání ověření e-mailu v procesu registrace může vést k zasílání nevyžádané pošty. Pokud zakážete výchozí hodnotu, doporučujeme přidat vlastní ověřovacího systému.
 > 
-> 
-
-Máme vždy otevřít na názory a návrhy! Pokud nemají nějaké problémy s tímto tématem nebo máte doporučení k vylepšení tohoto obsahu, uvítáme vaše zpětná vazba v dolní části stránky. Pro žádosti o funkce, přidejte je do [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160596-b2c).
+>

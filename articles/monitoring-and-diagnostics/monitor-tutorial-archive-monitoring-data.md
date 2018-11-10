@@ -9,12 +9,12 @@ ms.date: 09/25/2017
 ms.author: johnkem
 ms.custom: mvc
 ms.component: metrics
-ms.openlocfilehash: be6f3efd74d013e9ddb02c44031dd6a402f00871
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: ac8be998a70b31af9829eeeab24902c62fd2fe37
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47409486"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50961500"
 ---
 # <a name="archive-azure-metric-and-log-data-using-azure-storage"></a>Archivace metrik Azure a dat protokolů s použitím Azure Storage
 
@@ -42,7 +42,7 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-storage-account"></a>vytvořit účet úložiště
 
-Nejprve je potřeba nastavit účet úložiště, do kterého se data monitorování budou archivovat. Provedete to [podle těchto kroků](../storage/common/storage-create-storage-account.md).
+Nejprve je potřeba nastavit účet úložiště, do kterého se data monitorování budou archivovat. Provedete to [podle těchto kroků](../storage/common/storage-quickstart-create-account.md).
 
 ## <a name="route-subscription-logs-to-the-storage-account"></a>Směrování protokolů předplatného do účtu úložiště
 
@@ -198,4 +198,4 @@ V tomto kurzu jste zjistili, jak nastavit archivaci dat monitorování z vašeho
 Pokud chcete svá data využívat ještě lépe a získávat z nich další přehledy, odesílejte je také do Log Analytics.
 
 > [!div class="nextstepaction"]
-> [Začínáme se službou Log Analytics](../log-analytics/log-analytics-get-started.md)
+> [Začínáme se službou Log Analytics](../log-analytics/log-analytics-queries.md)

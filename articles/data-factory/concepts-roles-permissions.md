@@ -4,7 +4,7 @@ description: Popisuje role a oprávnění potřebná k vytvoření datové tová
 author: douglaslMS
 ms.author: douglasl
 manager: craigg
-ms.date: 10/08/2018
+ms.date: 11/5/2018
 ms.topic: conceptual
 ms.service: data-factory
 services: data-factory
@@ -12,12 +12,12 @@ documentationcenter: ''
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.openlocfilehash: 10f325f3b7c93b91180b6a170c8b7accb75eb03b
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 82c0ec4d114ec198ecba475b247a3c9952a6069a
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48883767"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51218759"
 ---
 # <a name="roles-and-permissions-for-azure-data-factory"></a>Role a oprávnění pro službu Azure Data Factory
 
@@ -25,13 +25,13 @@ Tento článek popisuje role potřebné k vytváření a správě prostředků A
 
 ## <a name="roles-and-requirements"></a>Role a požadavky
 
-Pro vytvoření instancí služby Data Factory musí být uživatelský účet, který použijete pro přihlášení k Azure, členem role *přispěvatel* nebo *vlastník* nebo *správcem* předplatného Azure. Chcete-li zobrazit oprávnění, která máte v rámci předplatného na webu Azure Portal, vyberte své uživatelské jméno v pravém horním rohu a pak vyberte **oprávnění**. Pokud máte přístup k několika předplatným, vyberte odpovídající předplatné. 
+Pro vytvoření instancí služby Data Factory musí být uživatelský účet, který použijete pro přihlášení k Azure, členem role *přispěvatel* nebo *vlastník* nebo *správcem* předplatného Azure. Pokud chcete zobrazit oprávnění, která máte v předplatném, na webu Azure Portal v pravém horním rohu vyberte své uživatelské jméno a potom **Oprávnění**. Pokud máte přístup k několika předplatným, vyberte odpovídající předplatné. 
 
-Vytvoření a správě podřízených prostředků pro službu Data Factory – včetně datových sad, propojených služeb, kanály, aktivační události a prostředí integration runtime – tyto požadavky platí:
-- Vytvoření a správě podřízených prostředků na webu Azure Portal, musíte patřit do **Přispěvatel Data Factory** role na úrovni skupiny prostředků nebo novější.
-- Vytvoření a správě podřízených prostředků pomocí Powershellu nebo sady SDK **Přispěvatel** role na úrovni prostředků nebo novější je dostačující.
+Při vytváření a správě podřízených prostředků pro službu Data Factory, včetně datových sad, propojených služeb, kanálů, triggerů a prostředí Integration Runtime, platí následující požadavky:
+- Pokud chcete vytvářet a spravovat podřízené prostředky na webu Azure Portal, je potřeba, abyste patřili do role **Přispěvatel Data Factory** na úrovni skupiny prostředků nebo vyšší.
+- Pro vytváření a správu podřízených prostředků pomocí PowerShellu nebo sady SDK na úrovni prostředku nebo vyšší je dostatečná role **Přispěvatel**.
 
-Ukázka pokyny o tom, jak přidat uživatele k roli najdete v tématu [přidání rolí](../billing/billing-add-change-azure-subscription-administrator.md) článku.
+Ukázku pokynů pro přidání uživatele do role najdete v článku věnovaném [přidávání rolí](../billing/billing-add-change-azure-subscription-administrator.md).
 
 ## <a name="set-up-permissions"></a>Nastavení oprávnění
 
@@ -50,6 +50,8 @@ Další informace o této role, naleznete v tématu [role Přispěvatel Data Fac
 ### <a name="resource-manager-template-deployment"></a>Nasazení šablony Resource Manageru
 
 **Přispěvatel Data Factory** role na úrovni skupiny prostředků nebo vyšší, umožňuje uživatelům nasadit šablon Resource Manageru. Členové role proto můžete použít šablony Resource Manageru k nasazování datové továrny a jejich podřízené prostředky, včetně datových sad, propojených služeb, kanály, aktivační události a prostředí integration runtime. Členství v této roli uživatele vytvořit další prostředky, ale neumožňuje.
+
+Oprávnění pro úložiště Azure a Githubu nejsou oprávnění datové továrny. V důsledku toho uživatel s oprávněními úložiště, který je pouze členové role Čtenář můžete upravit podřízené prostředky Data Factory a potvrzení změn úložišti, ale tyto změny nelze publikovat.
 
 > [!IMPORTANT]
 > Nasazení šablony Resource Manageru s **Přispěvatel Data Factory** role nezvýší vaše oprávnění. Například pokud nasadit šablonu, která vytvoří virtuální počítač Azure, a nemáte oprávnění k vytvoření virtuálních počítačů, nasazení se nezdaří s chybou autorizace.
@@ -77,7 +79,7 @@ Tady je pár příkladů, které ukazují, můžete dosáhnout s vlastními role
   Tento scénář vyžaduje dvě přiřazení rolí.
 
   1. Přiřadíte integrovanou **Přispěvatel** na objekt pro vytváření dat na úrovni role.
-  2. Vytvořit vlastní roli s oprávněním *Microsoft.Resources/deployments/*\*. Tuto vlastní roli přiřadíte uživatele na úrovni skupiny prostředků.
+  2. Vytvořit vlastní roli s oprávněním * Microsoft.Resources/deployments/**. Tuto vlastní roli přiřadíte uživatele na úrovni skupiny prostředků.
 
 - Umožní uživateli aktualizovat objekt pro vytváření dat z Powershellu nebo sady SDK, ale není na portálu Azure portal.
 

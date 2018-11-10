@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Překlad textu pomocí Pythonu – Translator Text API'
+title: 'Rychlý start: Překlad textu, Python – Translator Text API'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu za méně než 10 minut přeložíte text z jednoho jazyka do jiného pomocí služby Translator Text API a Pythonu.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.component: translator-text
 ms.topic: quickstart
 ms.date: 10/17/2018
 ms.author: erhopf
-ms.openlocfilehash: a9f848098f377a79ded07d3bbe41f212cb4a7e74
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 3ba8064a6d13cfe9d2a2ae2ac496cfa8302989cd
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945345"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50085973"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-translate-a-string-using-python"></a>Rychlý start: Překlad řetězce pomocí služby Translator Text API a Pythonu
 
@@ -114,7 +114,7 @@ response = request.json()
 Posledním krokem je vytisknout výsledky. Tento fragment kódu očistí výsledky tím, že seřadí klíče, nastaví odsazení a deklaruje oddělovače položek a klíčů.
 
 ```python
-print(json.dumps(response, sort_keys=True, indent=4, separators=(',', ': ')))
+print(json.dumps(response, sort_keys=True, indent=4, ensure_ascii=False, separators=(',', ': ')))
 ```
 
 ## <a name="put-it-all-together"></a>Spojení všech součástí dohromady

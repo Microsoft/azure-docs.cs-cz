@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: deguhath
-ms.openlocfilehash: 2fd6d556e908c47baf3c58c46172c0684b66cdd9
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 3d39e752e874b6b0c6fbdf678d6eddda0b0d9404
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394246"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51226544"
 ---
 # <a name="hdinsight-spark-data-science-walkthroughs-using-pyspark-and-scala-on-azure"></a>Pomocí Pysparkem a Scalou v Azure HDInsight Spark data science návody
 
@@ -44,7 +44,7 @@ Naleznete v tématu [rozšířené zkoumání a modelování se Sparkem](spark-a
 
 ## <a name="predict-taxi-tips-using-scala-on-azure-spark"></a>Předpovídání spropitného pro taxikáře pomocí Scala ve Sparku v Azure
 
-[Použití Scaly se Sparkem v Azure](scala-walkthrough.md) návod používá data z New Yorku taxi předpovědět, jestli jde placenou tip a rozsah částky očekává, že se budou hradit. Ukazuje, jak pomocí Scala pro technik strojového učení úlohy Spark strojového učení knihovny (MLlib) a ve SparkML balíčky v clusteru Azure HDInsight Spark. Provede vás provedou úlohami, které tvoří [vědecké zpracování dat](http://aka.ms/datascienceprocess): příjem dat a zkoumání, vizualizaci, vytváření funkcí, modelování a modelu využití. Historické modely budou vytvářeny zahrnují logistické a lineární regrese, náhodných doménové struktury a přechodu Posílený stromové struktury.
+[Použití Scaly se Sparkem v Azure](scala-walkthrough.md) návod používá data z New Yorku taxi předpovědět, jestli jde placenou tip a rozsah částky očekává, že se budou hradit. Ukazuje, jak pomocí Scala pro technik strojového učení úlohy Spark strojového učení knihovny (MLlib) a ve SparkML balíčky v clusteru Azure HDInsight Spark. Provede vás provedou úlohami, které tvoří [vědecké zpracování dat](https://aka.ms/datascienceprocess): příjem dat a zkoumání, vizualizaci, vytváření funkcí, modelování a modelu využití. Historické modely budou vytvářeny zahrnují logistické a lineární regrese, náhodných doménové struktury a přechodu Posílený stromové struktury.
 
 
 ## <a name="next-steps"></a>Další postup
