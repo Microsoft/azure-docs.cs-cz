@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2018
 ms.author: juliako
-ms.openlocfilehash: 0a4c9db8da046e901241bc383098013b2acc6bb2
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: a5171484bb4377e0f9cd84dc0a517f4ea84123e7
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50242258"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228313"
 ---
 # <a name="retry-logic-in-the-media-services-sdk-for-net"></a>Logika opakování v sadě Media Services SDK pro .NET
 Při práci se službami Microsoft Azure, přechodné chyby můžou nastat. Pokud dojde k přechodných chyb, ve většině případů po několika pokusech operace proběhne úspěšně. Media Services SDK pro .NET implementuje logika opakovaných pokusů pro zpracování přechodných chyb spojených s výjimek a chyb, které jsou způsobeny webových požadavků, provádění dotazů, ukládají se změny a operace úložiště.  Ve výchozím nastavení spustí sadu Media Services SDK pro .NET do čtyř opakovaných vyhledávání před opětném vyvolávání výjimky pro vaši aplikaci. Kód ve vaší aplikaci pak musí správně zpracovat tuto výjimku.  
@@ -49,7 +49,7 @@ Následující tabulka popisuje výjimky, které Media Services SDK pro .NET, zp
 | IOException – |Ne |Ano |Ne |Ne |
 
 ### <a name="WebExceptionStatus"></a> O výjimku WebException stavové kódy
-V následující tabulce jsou uvedeny pro kódy chyb o výjimku WebException logika opakovaných pokusů implementovaná. [WebExceptionStatus](http://msdn.microsoft.com/library/system.net.webexceptionstatus.aspx) výčet definuje kódy stavu.  
+V následující tabulce jsou uvedeny pro kódy chyb o výjimku WebException logika opakovaných pokusů implementovaná. [WebExceptionStatus](https://msdn.microsoft.com/library/system.net.webexceptionstatus.aspx) výčet definuje kódy stavu.  
 
 | Status | Webový požadavek | Úložiště | Dotaz | SaveChanges |
 | --- | --- | --- | --- | --- |

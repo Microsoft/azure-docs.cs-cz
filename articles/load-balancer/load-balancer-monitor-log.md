@@ -4,9 +4,6 @@ description: Zjistěte, jak povolit oznámení události a sběru dat stavu stav
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: timlt
-tags: azure-resource-manager
-ms.assetid: 56656d74-0241-4096-88c8-aa88515d676d
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -14,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/10/2018
 ms.author: kumud
-ms.openlocfilehash: 5c196a24d5cc9e4343762e55b5885c1264c2fcad
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
-ms.translationtype: MT
+ms.openlocfilehash: eaa44b4fff47f8e3385e86f5c86a090ff84a6bf8
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42055281"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51218878"
 ---
 # <a name="log-analytics-for-public-basic-load-balancer"></a>Log analytics pro veřejný Load balancer úrovně Basic
 

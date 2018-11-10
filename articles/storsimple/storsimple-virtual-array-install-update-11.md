@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/18/2018
 ms.author: alkohli
-ms.openlocfilehash: e10bd04f37951f93db8af083692b7a2fe25ac9b7
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 9d1229084410b6fe7c500a22f8e1e1aed1b8107d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39348287"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51227344"
 ---
 # <a name="install-update-11-on-your-storsimple-virtual-array"></a>Instalace aktualizace 1.1 na StorSimple Virtual Array
 
@@ -27,7 +27,7 @@ ms.locfileid: "39348287"
 
 Tento článek popisuje kroky potřebné k instalaci aktualizace 1.1 na StorSimple Virtual Array prostřednictvím místního webového uživatelského rozhraní a prostřednictvím webu Azure portal.
 
-Použití aktualizací softwaru nebo oprav hotfix k udržování aktuálnosti StorSimple Virtual Array. Před instalací aktualizace, doporučujeme vám věnovat svazky nebo sdílené složky offline na hostiteli první a pak zařízení. Tím se minimalizují možnost poškození dat. Jakmile svazky nebo sdílené složky jsou offline, byste měli také provést ruční zálohování zařízení.
+Použití aktualizací softwaru nebo oprav hotfix k udržování aktuálnosti StorSimple Virtual Array. Před instalací aktualizace, doporučujeme vám věnovat svazky nebo sdílené složky offline na hostiteli první a pak zařízení. Minimalizuje se tak možnost poškození dat. Jakmile svazky nebo sdílené složky jsou offline, byste měli také provést ruční zálohování zařízení.
 
 > [!IMPORTANT]
 > - Aktualizace 1.1 odpovídá **10.0.10307.0** verze softwaru na vašem zařízení. Informace o novinkách v této aktualizaci najdete v části [zpráva k vydání verze pro aktualizaci 1.1](storsimple-virtual-array-update-11-release-notes.md).
@@ -66,7 +66,7 @@ Proveďte následující kroky můžete stáhnout aktualizace 1.1 z katalogu slu
 
 #### <a name="to-download-the-update-or-the-hotfix"></a>Chcete-li stáhnout aktualizace nebo opravy hotfix
 
-1. Spustit aplikaci Internet Explorer a přejděte do [ http://catalog.update.microsoft.com ](http://catalog.update.microsoft.com).
+1. Spustit aplikaci Internet Explorer a přejděte do [ http://catalog.update.microsoft.com ](https://catalog.update.microsoft.com).
 
 2. Pokud používáte katalog služby Microsoft Update na tomto počítači poprvé, klikněte na tlačítko **nainstalovat** po zobrazení výzvy k instalaci doplňku katalog služby Microsoft Update.
 

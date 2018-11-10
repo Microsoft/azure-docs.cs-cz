@@ -10,26 +10,26 @@ ms.component: bing-entity-search
 ms.topic: quickstart
 ms.date: 11/28/2017
 ms.author: v-jaswel
-ms.openlocfilehash: 0cf1103b37572b43585e4a977dc4d034e7a50e2f
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: fb6eeafd8183d9e0ae3e6822c236344a9ea1f90f
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48814470"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50419040"
 ---
 # <a name="quickstart-for-bing-entity-search-api-with-java"></a>Rychlý start pro rozhraní API pro vyhledávání entit v Javě 
 
-V tomto článku se dozvíte, jak používat rozhraní API [Bingu pro vyhledávání entit](https://docs.microsoft.com/azure/cognitive-services/bing-entities-search/search-the-web) s využitím Javy.
+V tomto článku se dozvíte, jak používat rozhraní API [Bingu pro vyhledávání entit](https://docs.microsoft.com/azure/cognitive-services/bing-entities-search/search-the-web) s využitím Javy.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pro kompilaci a spuštění tohoto kódu budete potřebovat [JDK 7 nebo 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html). Můžete použít prostředí Java IDE, pokud je vaše oblíbené, ale stačit bude i textový editor.
+Pro kompilaci a spuštění tohoto kódu budete potřebovat [JDK 7 nebo 8](https://aka.ms/azure-jdks). Můžete použít prostředí Java IDE, pokud je vaše oblíbené, ale stačit bude i textový editor.
 
 Potřebujete [účet rozhraní API Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s **rozhraním API Bingu pro vyhledávání entit**. Pro účely tohoto rychlého startu stačí [bezplatná zkušební verze](https://azure.microsoft.com/try/cognitive-services/?api=bing-entity-search-api). Při aktivaci bezplatné zkušební verze budete potřebovat poskytnutý přístupový klíč nebo můžete použít klíč placeného předplatného z řídicího panelu Azure.
 
 ## <a name="search-entities"></a>Vyhledávání entit
 
-Pokud chcete tuto aplikaci spustit, postupujte následujícím způsobem.
+Tuto aplikaci spustíte následujícím postupem.
 
 1. Ve svém oblíbeném integrovaném vývojovém prostředí vytvořte nový projekt Javy.
 2. Přidejte níže uvedený kód.

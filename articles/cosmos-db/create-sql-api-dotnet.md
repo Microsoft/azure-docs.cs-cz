@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 04/10/2018
 ms.author: sngun
 clicktale: true
-ms.openlocfilehash: 36265685b9bc43e95c6d7bc1e7a9ad3c52835b36
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 506d21589ee8c5d284bd9ffc430d8b1d40afb910
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46977991"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50741721"
 ---
 # <a name="quickstart-build-a-net-web-app-with-azure-cosmos-db-using-the-sql-api-and-the-azure-portal"></a>Rychlý start: Vytvoření webové aplikace .NET se službou Azure Cosmos DB pomocí rozhraní SQL API a webu Azure Portal
 
@@ -120,7 +120,7 @@ Všechny následující fragmenty kódu pocházejí ze souboru DocumentDBReposit
 
 Teď se vraťte zpátky na portál Azure Portal, kde najdete informace o připojovacím řetězci, a zkopírujte je do aplikace.
 
-1. Na webu [Azure Portal](http://portal.azure.com/) klikněte v účtu databáze Azure Cosmos v levém navigačním panelu na možnost **Klíče** a potom klikněte na **Klíče pro čtení i zápis**. V dalším kroku zkopírujte pomocí tlačítek kopírování na pravé straně obrazovky identifikátor URI a primární klíč do souboru web.config.
+1. Na webu [Azure Portal](http://portal.azure.com/) v účtu služby Azure Cosmos DB v levém navigačním panelu vyberte **Klíče** a pak **Klíče pro čtení i zápis**. V dalším kroku zkopírujte pomocí tlačítek kopírování na pravé straně obrazovky identifikátor URI a primární klíč do souboru web.config.
 
     ![Zobrazení a zkopírování přístupového klíče na webu Azure Portal v okně Klíče](./media/create-sql-api-dotnet/keys.png)
 
@@ -139,15 +139,15 @@ Teď se vraťte zpátky na portál Azure Portal, kde najdete informace o připo
     `<add key="database" value="Tasks" />`    
     
 ## <a name="run-the-web-app"></a>Spuštění webové aplikace
-1. V sadě Visual Studio klikněte v **Průzkumníku řešení** pravým tlačítkem myši na projekt a potom klikněte na **Spravovat balíčky NuGet**. 
+1. V sadě Visual Studio klikněte v **Průzkumníku řešení** pravým tlačítkem na projekt a pak vyberte **Spravovat balíčky NuGet**. 
 
 2. Do pole **Procházet** v NuGetu zadejte *DocumentDB*.
 
 3. Z výsledků nainstalujte knihovnu **Microsoft.Azure.DocumentDB**. Tím se nainstaluje balíček Microsoft.Azure.DocumentDB a zároveň všechny závislosti.
 
-4. Spusťte aplikaci stisknutím CTRL+F5. Aplikace se zobrazí v prohlížeči. 
+4. Spusťte aplikaci stisknutím CTRL + F5. Aplikace se zobrazí v prohlížeči. 
 
-5. V prohlížeči klikněte na **Vytvořit nový** a vytvořte v aplikaci seznamu úkolů několik nových úloh.
+5. V prohlížeči vyberte **Create New** (Vytvořit nový) a vytvořte v aplikaci seznamu úkolů několik nových úloh.
 
    ![Aplikace seznamu úkolů s ukázkovými daty](./media/create-sql-api-dotnet/azure-comosdb-todo-app-list.png)
 

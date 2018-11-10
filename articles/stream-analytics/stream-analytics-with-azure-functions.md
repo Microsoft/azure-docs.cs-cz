@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.workload: data-services
 ms.date: 04/09/2018
-ms.author: jasonh
+ms.author: mamccrea
 ms.reviewer: jasonh
-ms.openlocfilehash: 50ea4dafe7edfdeb851ad6d9cc42a7bca262e970
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 0a187bbc476738294e2f7f31de4e11ea92e604f9
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49985807"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50977990"
 ---
 # <a name="run-azure-functions-from-azure-stream-analytics-jobs"></a>Spouštění Azure Functions z úloh Azure Stream Analytics 
 
@@ -196,6 +196,13 @@ Postupem uvedeným v kurzu [Zjišťování možných podvodů v reálném čase]
    Tento příkaz by měl vytisknout hodnotu pro zadaný klíč:
 
    ![Snímek obrazovky s výstupem Azure Redis Cache](./media/stream-analytics-with-azure-functions/image5.png)
+   
+## <a name="error-handling-and-retries"></a>Zpracování chyb a opakování
+V případě chyby při odesílání událostí do služby Azure Functions se Stream Analytics pokusí operaci znovu úspěšně dokončit. Existuje však několik chyb, u kterých se pokus o opakování neprovede. Jedná se o následující chyby:
+
+ 1. HttpRequestExceptions
+ 2. Příliš velká entita požadavku (kód chyby HTTP 413)
+ 3. ApplicationExceptions
 
 ## <a name="known-issues"></a>Známé problémy
 

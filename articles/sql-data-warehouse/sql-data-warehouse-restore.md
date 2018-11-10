@@ -10,12 +10,12 @@ ms.component: manage
 ms.date: 08/29/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 6eba50fbe7c2a7a40b08e37a96adac66583b8251
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: 112b9bac5d99556201b2038cf150293c9f2ed86d
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43781856"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51005797"
 ---
 # <a name="restoring-azure-sql-data-warehouse"></a>Obnovení Azure SQL Data Warehouse 
 V tomto článku se dozvíte, jak provést následující webu Azure portal a prostředí PowerShell:
@@ -25,10 +25,6 @@ V tomto článku se dozvíte, jak provést následující webu Azure portal a pr
 - Obnovit z odstraněné databáze
 - Obnovit z geografické zálohy
 - Vytvoření kopie vašeho datového skladu z bodu obnovení definovaný uživatelem
-
-> [!NOTE]
-> Od 8/27 mezi servery obnovení byl zakázán z důvodu známého regrese. Aktivně pracujeme na opravě v naší nejvyšší prioritou. Omlouváme se za nepříjemnosti. Do té doby můžete využít vaše [geografické zálohování](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-restore#restore-from-an-azure-geographical-region) obnovit napříč servery.  
->
 
 ## <a name="before-you-begin"></a>Než začnete
 **Ověřte kapacitu jednotek DTU.** Každý datový sklad SQL je hostitelem SQL serveru (např. myserver.database.windows.net), který má výchozí kvóty DTU.  Předtím, než bude možné obnovit datový sklad SQL, ověřte, že serveru SQL server má dostatek zbývající kvóta DTU databáze obnovena. Pokud chcete zjistit, jak chcete-li vypočítat potřebné DTU, nebo požádat o další DTU, přečtěte si téma [žádost o změnu kvóty DTU][Request a DTU quota change].
@@ -236,7 +232,7 @@ Pokud zdrojová databáze je povolené šifrování TDE, bude obnovenou databáz
 
 4. Vyberte buď **body obnovení automaticky** nebo **uživatelem definované body obnovení**.
 
-    ![Body obnovení automaticky](./media/sql-data-warehouse-restore-database-portal/restoring_1.png)
+    ![Automatické body obnovení](./media/sql-data-warehouse-restore-database-portal/restoring_1.png)
 
 5. Pro body obnovení uživatelsky definovaná **vyberte bod obnovení** nebo **vytvořit nový bod obnovení uživatelem definované**.
 

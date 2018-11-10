@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/15/2017
 ms.author: dekapur
-ms.openlocfilehash: 93b79b7adacdec18912d28bb9725e2dc77737d59
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 2190978b2583b2f5d8a1b10431c65fd24fe6842d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43050759"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228143"
 ---
 # <a name="upgrade-your-standalone-azure-service-fabric-cluster-on-windows-server"></a>Upgrade samostatného clusteru Azure Service Fabric na Windows serveru 
 > [!div class="op_single_selector"]
@@ -43,9 +43,9 @@ Cluster můžete upgradovat na novou verzi pouze v případě, že používáte 
 Dva různé pracovní postupy svůj cluster můžete upgradovat na nejnovější verzi nebo s podporovanou verzí Service Fabric. Jeden pracovní postup je pro clustery, které jste připojení k nejnovější verzi stáhnete automaticky. Jiný pracovní postup je pro clustery, které nemají připojení k stažení nejnovější verze Service Fabric.
 
 ### <a name="upgrade-clusters-that-have-connectivity-to-download-the-latest-code-and-configuration"></a>Upgradovat clustery, které jste připojení ke stažení nejnovější kódu a konfigurace
-Tyto kroky použijte cluster upgradovat na podporovanou verzi, pokud máte připojení k Internetu na uzly clusteru [Microsoft Download Center](http://download.microsoft.com).
+Tyto kroky použijte cluster upgradovat na podporovanou verzi, pokud máte připojení k Internetu na uzly clusteru [Microsoft Download Center](https://download.microsoft.com).
 
-Pro clustery, které jste připojení k [Microsoft Download Center](http://download.microsoft.com), Microsoft pravidelně kontroluje dostupnost nových verzí Service Fabric.
+Pro clustery, které jste připojení k [Microsoft Download Center](https://download.microsoft.com), Microsoft pravidelně kontroluje dostupnost nových verzí Service Fabric.
 
 Když je dostupná nová verze Service Fabric, je balíček stáhli do clusteru a zřídit pro upgrade. Kromě toho k informování zákazníků tuto novou verzi, systém zobrazí upozornění stavu explicitní clusteru, který je podobný následujícímu:
 
@@ -106,7 +106,7 @@ Když se zobrazí upozornění stavu clusteru, postupujte takto:
     Po vyřešení problémů, z kterých vzniklo vrácení změn zahájení upgradu znovu podle stejných kroků jako výše popsaným.
 
 ### <a name="upgrade-clusters-that-have-no-connectivity-to-download-the-latest-code-and-configuration"></a>Upgradovat clustery, které mají *bez připojení k* si chcete stáhnout nejnovější kód a konfigurace
-Tyto kroky použijte cluster upgradovat na podporovanou verzi, pokud uzly clusteru nemají připojení k Internetu na [Microsoft Download Center](http://download.microsoft.com).
+Tyto kroky použijte cluster upgradovat na podporovanou verzi, pokud uzly clusteru nemají připojení k Internetu na [Microsoft Download Center](https://download.microsoft.com).
 
 > [!NOTE]
 > Pokud máte spuštěný cluster, který není připojený k Internetu, budete muset monitorovat Týmový blog Service Fabric se dozvíte o nových verzích. Systém nezobrazí upozornění stavu clusteru vás upozorní na nové verze.  

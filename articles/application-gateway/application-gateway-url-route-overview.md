@@ -1,25 +1,18 @@
 ---
-title: Přehled směrování obsahu na základě adresy URL | Microsoft Docs
+title: Přehled směrování obsahu na základě adresy URL | Dokumentace Microsoftu
 description: Tato stránka poskytuje přehled směrování obsahu na základě adresy URL, konfigurace UrlPathMap a pravidla PathBasedRouting ve službě Application Gateway.
-documentationcenter: na
 services: application-gateway
 author: vhorne
 manager: jpconnock
-editor: ''
-ms.assetid: 4409159b-e22d-4c9a-a103-f5d32465d163
 ms.service: application-gateway
-ms.devlang: na
-ms.topic: hero-article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 05/09/2017
+ms.date: 11/7/2018
 ms.author: victorh
-ms.openlocfilehash: f6108b5ac628b8bc2c1d74dcc871f96115094859
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
-ms.translationtype: HT
+ms.openlocfilehash: bc123307a3cc3a5040e93e517c60604dc75fc7e7
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32770334"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51218419"
 ---
 # <a name="url-path-based-routing-overview"></a>Přehled směrování na základě cest URL
 
@@ -31,7 +24,7 @@ V následujícím příkladu služba Application Gateway obsluhuje provoz pro co
 
 ![imageURLroute](./media/application-gateway-url-route-overview/figure1.png)
 
-Požadavky pro http://contoso.com/video/* se směrují na VideoServerPool a pro http://contoso.com/images/* se směrují na ImageServerPool. Pokud nevyhovuje žádný vzor cesty, vybere se VychoziFondServeru.
+Požadavky na adresu http://contoso.com/video/ se směrují na VideoServerPool a požadavky na adresu http://contoso.com/images/ na ImageServerPool. Pokud nevyhovuje žádný vzor cesty, vybere se VychoziFondServeru.
 
 > [!IMPORTANT]
 > Pravidla se zpracovávají v pořadí, v jakém jsou uvedena na portálu. Důrazně doporučujeme nakonfigurovat naslouchací procesy pro více webů před konfigurací základního naslouchacího procesu.  Tím se zajistí směrování provozu do správného back-endu. Pokud je základní naslouchací proces uveden jako první a odpovídá příchozímu požadavku, požadavek se zpracuje tímto naslouchacím procesem.
@@ -70,7 +63,7 @@ Prvek UrlPathMap slouží k určení vzorů cest pro mapování fondů back-end 
 ```
 
 > [!NOTE]
-> PathPattern: Toto nastavení je seznam vzorů cest, které je nutné splnit. Každý vzor musí začínat znakem „/“ a znak „*“ lze použít pouze na konci za znakem „/“. Řetězec předávaný ke kontrole cesty neobsahuje žádný text po počátečním znaku „?“ nebo „#“ a tyto znaky zde nejsou povolené.
+> PathPattern: Toto nastavení je seznam vzorů cest, které je nutné splnit. Každý vzor musí začínat znakem „/“ a znak „*“ lze použít pouze na konci za znakem „/“. Řetězec k předávaný cesta neobsahuje žádný text po prvním? nebo # a tyto znaky tady nejsou povolené. V opačném případě PathPattern může všech znaků v adrese URL.
 
 Více informací najdete v dokumentu [Šablona Resource Manageru používající směrování na základě adresy URL](https://azure.microsoft.com/documentation/templates/201-application-gateway-url-path-based-routing).
 
@@ -99,6 +92,6 @@ Fragment pravidla PathBasedRouting:
 ]
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Po získání informací o směrování obsahu na základě adresy URL přejděte k tématu [Vytvoření služby Application Gateway používající směrování na základě adresy URL](application-gateway-create-url-route-portal.md) a vytvořte službu Application Gateway s pravidly směrování adres URL.

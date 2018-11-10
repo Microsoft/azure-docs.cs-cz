@@ -9,13 +9,13 @@ ms.component: core
 ms.reviewer: larryfr
 manager: cgronlun
 ms.topic: conceptual
-ms.date: 10/24/2018
-ms.openlocfilehash: 6c2d5a776f603161ef730028168b91844c120aec
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
-ms.translationtype: MT
+ms.date: 11/6/2018
+ms.openlocfilehash: b95b62ab2c51fec93870e3f5593d53a599f3dad2
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50158988"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51218946"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Konfigurace prostředí pro vývoj pro Azure Machine Learning
 
@@ -84,14 +84,32 @@ Sady SDK Azure Machine Learning používá konfigurační soubor pracovního pro
 
 Azure poznámkových bloků a Azure virtuální počítače pro datové vědy (datové) jsou nakonfigurovaná tak, aby fungovaly se službou Azure Machine Learning. Tato prostředí patří požadované součásti, jako je Azure Machine Learning SDK.
 
+### <a name="azure-notebooks"></a>Azure Notebooks
+
 - Poznámkových bloků Azure je služba Poznámkový blok Jupyter v cloudu Azure.
-- Virtuální počítač pro datové vědy je přizpůsobenou image virtuálního počítače (VM) navržené pro datové vědy práce. Zahrnuje:
-  - Oblíbených nástrojů
-  - Integrované vývojové prostředí (IDE)
-  - Balíčků, jako jsou poznámkové bloky Jupyter, PyCharm a Tensorflow
 - Stále budete potřebovat konfigurační soubor pracovního prostoru do těchto prostředí používat.
 
 Příklad použití poznámkových bloků Azure se službou Azure Machine Learning najdete v tématu [Začínáme se službou Azure Machine Learning](quickstart-get-started.md).
+
+### <a name="data-science-virtual-machines"></a>Virtuální počítače pro vědecké zpracování dat
+
+- Virtuální počítač pro datové vědy je přizpůsobenou image virtuálního počítače (VM) navržené pro datové vědy práce. Zahrnuje:
+  - Nástrojů pro oblíbené datové vědy
+  - Integrované vývojové prostředí (IDE), jako je PyCharm a nástroje RStudio
+  - Balíčků, jako jsou poznámkové bloky Jupyter a Tensorflow
+
+Datové VĚDY se dodává s více prostředími Anaconda už nainstalovaná. Pokud chcete používat Azure Machine Learning Python SDK bez jakékoli instalace balíčku, otevřete okno příkazového řádku a aktivovat toto prostředí.
+
+```shell
+conda activate AzureML
+```
+
+Jednou v tomto prostředí můžete okamžitě importovat sady SDK Azure Machine Learning v sestavení nástroje podle vašeho výběru, bez instalace balíčku.
+
+```python
+import azureml.core
+print(azureml.core.VERSION)
+```
 
 Další informace o virtuální počítače pro datové vědy, naleznete v tématu [virtuální počítače pro datové vědy](https://azure.microsoft.com/services/virtual-machines/data-science-virtual-machines/).
 

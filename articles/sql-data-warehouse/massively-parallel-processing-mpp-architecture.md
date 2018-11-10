@@ -10,12 +10,12 @@ ms.component: design
 ms.date: 04/17/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 1fa31b23aa8df73b13e73da80096596bf1ce2db3
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 92e16104edb46298d6e503b7546449ed71041047
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44093292"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51005746"
 ---
 # <a name="azure-sql-data-warehouse---massively-parallel-processing-mpp-architecture"></a>Azure SQL Data Warehouse – výkonné paralelní zpracování (MPP) architektury
 Zjistěte, jak Azure SQL Data Warehouse kombinuje paralelního zpracování (MPP) s Azure storage k dosažení vysokého výkonu a škálovatelnosti. 
@@ -23,7 +23,7 @@ Zjistěte, jak Azure SQL Data Warehouse kombinuje paralelního zpracování (MPP
 > [!VIDEO https://www.youtube.com/embed/PlyQ8yOb8kc]
 
 ## <a name="mpp-architecture-components"></a>Komponenty architektury MPP
-SQL Data Warehouse využívá s horizontálním navýšením kapacity architektura distribuovat výpočetní zpracování dat napříč více uzly. Jednotka škálování je abstrakcí výpočetní výkon, který se označuje jako jednotka datového skladu. SQL Data Warehouse odděluje výpočetní ze služby storage, který umožňuje škálovat výpočetní nezávisle na data ve vašem systému.
+SQL Data Warehouse využívá s horizontálním navýšením kapacity architektura distribuovat výpočetní zpracování dat napříč více uzly. Jednotka škálování je abstrakcí výpočetní výkon, který se označuje jako [jednotka datového skladu](what-is-a-data-warehouse-unit-dwu-cdwu.md). SQL Data Warehouse odděluje výpočetní ze služby storage, který umožňuje škálovat výpočetní nezávisle na data ve vašem systému.
 
 ![Architektura služby SQL Data Warehouse](media/massively-parallel-processing-mpp-architecture/massively-parallel-processing-mpp-architecture.png)
 

@@ -1,21 +1,21 @@
 ---
-title: Vytváření prostředků pro použití s Azure Site Recovery | Microsoft Docs
-description: Zjistěte, jak připravit Azure na replikaci místních počítačů pomocí Azure Site Recovery.
+title: Příprava Azure na zotavení po havárii místních počítačů pomocí Azure Site Recovery | Microsoft Docs
+description: Zjistěte, jak připravit Azure na zotavení po havárii místních počítačů pomocí Azure Site Recovery.
 services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 10/19/2018
+ms.date: 10/29/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 1d9f84a176d4c2483c83e8961bf426e70933aaa2
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: c00dd8cd412d79093e4ae1fd7ea30a3071c9b54f
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49457142"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210240"
 ---
-# <a name="prepare-azure-resources-for-replication-of-on-premises-machines"></a>Příprava prostředků Azure na replikaci místních počítačů
+# <a name="prepare-azure-resources-for-disaster-recovery-of-on-premises-machines"></a>Příprava prostředků Azure na zotavení po havárii místních počítačů
 
  [Azure Site Recovery](site-recovery-overview.md) přispívá ke strategii provozní kontinuity a zotavení po havárii (BCDR) tím, že zajišťuje provoz a dostupnost obchodních aplikací během plánovaných i neplánovaných výpadků. Site Recovery spravuje a orchestruje zotavení po havárii místních počítačů a virtuálních počítačů Azure, včetně replikace, převzetí služeb při selhání a zotavení.
 

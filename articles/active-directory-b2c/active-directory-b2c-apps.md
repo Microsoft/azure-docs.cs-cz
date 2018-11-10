@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/13/2018
+ms.date: 11/01/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 7410dadabf9fda2eb36531991d1d7ff3c3747e2c
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 7671a0a99e12463fcce5ff33fbcba7e8677dde05
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406513"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51006190"
 ---
 # <a name="applications-types-that-can-be-used-in-active-directory-b2c"></a>Typy aplikací, které lze použít v Active Directory B2C
 
@@ -24,7 +24,7 @@ Azure Active Directory (Azure AD) B2C podporuje ověřování pro celou řadu ar
 Každá aplikace, která používá Azure AD B2C musí být zaregistrovaný ve vaší [tenanta Azure AD B2C](active-directory-b2c-get-started.md) pomocí [webu Azure Portal](https://portal.azure.com/). Proces registrace aplikace shromáždí a přiřadí hodnoty, jako například:
 
 * **ID aplikace** , který jednoznačně identifikuje vaši aplikaci.
-* A **identifikátor URI pro přesměrování** , který lze použít k cílení odpovědí zpět do vaší aplikace.
+* A **adresy URL odpovědi** , který lze použít k cílení odpovědí zpět do vaší aplikace.
 
 Každý požadavek zaslaný do Azure AD B2C určuje **zásadu**. Zásady řídí chování Azure AD. Pomocí těchto koncových bodů můžete vytvořit vysoce přizpůsobitelnou sadu činností koncového uživatele. Mezi běžné zásady patří zásady registrace, přihlášení a úpravy profilu. Pokud nejste obeznámeni se zásadami, měli byste si před pokračováním přečíst o [rozšiřitelném rozhraní zásad](active-directory-b2c-reference-policies.md) Azure AD B2C.
 
@@ -112,9 +112,9 @@ V tomto toku, aplikace provede [zásady](active-directory-b2c-reference-policies
 
 ## <a name="current-limitations"></a>Aktuální omezení
 
-Azure AD B2C momentálně nepodporuje následující typy aplikací, ale nachází se na roadmapě. 
+### <a name="application-not-supported"></a>Aplikace není podporován 
 
-### <a name="daemonsserver-side-applications"></a>Démoni nebo serverové aplikace
+#### <a name="daemonsserver-side-applications"></a>Démoni nebo serverové aplikace
 
 Aplikace, které obsahují dlouho běžící procesy nebo které pracují bez přítomnosti uživatele také potřebují způsob, jak přistupovat k zabezpečeným prostředkům, jako je například webové rozhraní API. Tyto aplikace můžete ověřit a získat tokeny pomocí identity aplikace (nikoli uživatelovy delegované identity) a pomocí klienta OAuth 2.0 tok přihlašovacích údajů. Tok přihlašovacích údajů klienta není stejný jako tok na za vás a tok na vás nemělo používat pro ověřování na serveru.
 
@@ -122,9 +122,60 @@ I když tok přihlašovacích údajů klienta se službou Azure AD B2C momentál
 
 Pokud chcete nastavit tok přihlašovacích údajů klienta, přečtěte si [tok přihlašovacích údajů Azure Active Directory v2.0 a klienta OAuth 2.0](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-protocols-oauth-client-creds). Po provedení úspěšného ověření výsledkem přijetí tokenu ve formátu tak, aby jej mohou využívat služby Azure AD jak je popsáno v [odkaz tokenu Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims).
 
-
-### <a name="web-api-chains-on-behalf-of-flow"></a>Řetězení webových rozhraní API (tok on-behalf-of)
+#### <a name="web-api-chains-on-behalf-of-flow"></a>Řetězení webových rozhraní API (tok on-behalf-of)
 
 Mnoho architektur zahrnuje webové rozhraní API, které potřebuje volat podřízené webové rozhraní API, přičemž obě jsou zabezpečené pomocí Azure AD B2C. Tento scénář je častý u nativních klientů s back-endem v podobě webového rozhraní API. To poté zavolá online službu Microsoftu, jako je například Azure AD Graph API.
 
 Tento scénář zřetězených webových rozhraní API může být podporován pomocí udělení přihlašovacích údajů nosiče OAuth 2.0 JWT, označovaného také jako tok on-behalf-of.  Nicméně tok on-behalf-of není v současné době v Azure AD B2C implementován.
+
+### <a name="reply-url-values"></a>Hodnoty adresy URL odpovědi
+
+Aktuálně je u aplikací zaregistrovaných pomocí Azure AD B2C omezená sada hodnot adresy URL odpovědi. Adresa URL odpovědi pro webové aplikace a služby musí začínat schématem `https` a všechny adresy URL odpovědi musí sdílet jednu doménu DNS. Například nemůžete zaregistrovat webovou aplikaci s některou z těchto adres URL odpovědi:
+
+`https://login-east.contoso.com`
+
+`https://login-west.contoso.com`
+
+Registrační systém porovnává celý název DNS stávající adresy URL odpovědi s názvem DNS adresy URL odpovědi, kterou přidáváte. Požadavek na přidání názvu DNS selže, pokud platí některá z následujících podmínek:
+
+- Celý název DNS nové adresy URL odpovědi neodpovídá názvu DNS stávající adresy URL odpovědi.
+- Celý název DNS nové adresy URL odpovědi není subdoménou stávající adresy URL odpovědi.
+
+Pokud má aplikace například tuto adresu URL odpovědi:
+
+`https://login.contoso.com`
+
+Můžete ji přidat tímto způsobem:
+
+`https://login.contoso.com/new`
+
+V tomto případě se název DNS přesně shoduje. Nebo můžete provést toto:
+
+`https://new.login.contoso.com`
+
+V tomto případě odkazujete na subdoménu DNS login.contoso.com. Pokud chcete mít aplikaci s adresami URL odpovědi login-east.contoso.com a login-west.contoso.com, musíte tyto adresy URL odpovědi přidat v následujícím pořadí:
+
+`https://contoso.com`
+
+`https://login-east.contoso.com`
+
+`https://login-west.contoso.com`
+
+Druhé dvě adresy URL odpovědi můžete přidat, protože jsou subdoménami první adresy URL odpovědi contoso.com. 
+
+Při vytváření mobilní/nativní aplikace, můžete definovat **identifikátor URI pro přesměrování** místo **opětovného přehrání URL**. Existují dva důležité aspekty při výběru identifikátor URI přesměrování:
+
+- **Jedinečnost:** Schéma identifikátoru URI přesměrování by mělo být pro každou aplikaci jedinečné. V příkladu `com.onmicrosoft.contoso.appname://redirect/path`, `com.onmicrosoft.contoso.appname` schéma com.onmicrosoft.contoso.appname. Tento model má následovat. Pokud dvě aplikace sdílejí stejné schéma, uživateli se zobrazí **zvolte aplikaci,** dialogového okna. Pokud uživatel použije nesprávnou volbu, přihlášení se nezdaří.
+- **Úplnost:** Identifikátor URI přesměrování musí mít schéma a cestu. Cesta musí obsahovat za doménou alespoň jedno lomítko. Například `//contoso/` funguje a `//contoso` selže. Ujistěte se, že nejsou žádné speciální znaky jako podtržítka identifikátor URI pro přesměrování.
+
+### <a name="faulted-apps"></a>Chybné aplikace
+
+Aplikace Azure AD B2C se nesmí upravovat:
+
+- Na jiných portálech pro správu aplikací, jako [portál pro registraci aplikací](https://apps.dev.microsoft.com/).
+- Pomocí rozhraní Graph API nebo Powershellu.
+
+Pokud upravíte aplikace Azure AD B2C mimo na webu Azure portal, stane se chybnou aplikací a už není použitelná s Azure AD B2C. Je nutné aplikaci odstranit a znovu ji vytvořit.
+
+Pokud chcete aplikaci odstranit, přejděte na [portál pro registraci aplikací](https://apps.dev.microsoft.com/) a tam ji odstraňte. Aby byla aplikace viditelná, musíte být vlastníkem aplikace (nestačí být pouze správcem tenanta).
+

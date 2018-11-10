@@ -3,19 +3,19 @@ title: Nastavení clusteru pro Hadoop, Spark, Kafka, HBase nebo R Server – Azu
 description: Nastavení clusterů Hadoop, Kafka, Spark, HBase, R Server nebo Storm pro HDInsight z prohlížeče, klasické rozhraní příkazového řádku Azure, Azure PowerShell, REST nebo sady SDK.
 keywords: nastavení clusteru hadoop, cluster kafka nastavení, nastavení clusteru spark, co je cluster hadoop
 services: hdinsight
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 08/27/2018
-ms.openlocfilehash: 9eb99c26510475a5db51fa30f1634813b2c377f8
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: ca3a4b4ffc8639b2636b917e656255c2c1b10d33
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46992843"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51005474"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-hadoop-spark-kafka-and-more"></a>Nastavení clusterů v HDInsight pomocí Hadoop, Spark, Kafka a další
 

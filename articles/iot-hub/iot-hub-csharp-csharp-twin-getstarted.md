@@ -9,12 +9,12 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: dobett
-ms.openlocfilehash: defb9f72148e319b36954a8d448d5f441621fc43
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
-ms.translationtype: MT
+ms.openlocfilehash: 69237d285d015d9b0b2feab752ea9f29546e881e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49321576"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228092"
 ---
 # <a name="get-started-with-device-twins-netnet"></a>Začínáme s dvojčaty zařízení (.NET/.NET)
 [!INCLUDE [iot-hub-selector-twin-get-started](../../includes/iot-hub-selector-twin-get-started.md)]
@@ -34,7 +34,7 @@ Na konci tohoto kurzu budete mít tyto aplikace konzoly .NET:
 K dokončení tohoto kurzu budete potřebovat následující:
 
 * Sada Visual Studio 2017.
-* Aktivní účet Azure. (Pokud účet nemáte, můžete vytvořit [bezplatný účet](http://azure.microsoft.com/pricing/free-trial/) během několika minut.)
+* Aktivní účet Azure. (Pokud účet nemáte, můžete vytvořit [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/) během několika minut.)
 
 [!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
 

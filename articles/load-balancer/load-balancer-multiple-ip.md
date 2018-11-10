@@ -4,9 +4,6 @@ description: Vyrovnávání zatížení napříč primární a sekundární konf
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: jpconnock
-editor: na
-ms.assetid: 244907cd-b275-4494-aaf7-dcfc4d93edfe
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -14,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 73f19293fc9dd0f68752e7b38a12a826b8f52b0c
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 0f092c471a7908eabe481adc8c722993818840b8
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48248564"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51219507"
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-by-using-the-azure-portal"></a>Vyrovnávání zatížení na více konfigurací protokolu IP pomocí webu Azure portal
 

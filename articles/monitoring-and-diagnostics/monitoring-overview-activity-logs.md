@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: johnkem
 ms.component: activitylog
-ms.openlocfilehash: 40d1f73f4aed3f3f35f3f5c9de951e9b9fd271bc
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 538481088d6355729486c1d9fbaaa6af16a1b841
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50963315"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51006018"
 ---
 # <a name="monitor-subscription-activity-with-the-azure-activity-log"></a>Monitorování aktivit předplatného s protokolem aktivit Azure
 
@@ -34,9 +34,6 @@ Události můžete načíst z váš protokol aktivit pomocí webu Azure portal, 
 
 > [!NOTE]
 >  [Novější upozornění](monitoring-overview-unified-alerts.md) nabízí vylepšené prostředí při vytváření a správa aktivit pravidel upozornění protokolů.  [Další informace](alert-activity-log.md).
-
-Zobrazte následující video Úvod do protokolu aktivit.
-> [!VIDEO https://channel9.msdn.com/Blogs/Seth-Juarez/Logs-John-Kemnetz/player]
 
 
 ## <a name="categories-in-the-activity-log"></a>Kategorie v protokolu aktivit
@@ -70,7 +67,7 @@ Tady jsou některé věci, které vám pomůžou s protokolu činnosti:
 Na webu Azure portal můžete zobrazit protokol aktivit na několika místech:
 * **Protokolu aktivit** , který se dostanete tak, že protokol aktivit v rámci **všechny služby** v levém navigačním podokně.
 * **Monitorování** se zobrazí ve výchozím nastavení v levém navigačním podokně. Protokol aktivit je jeden oddíl služby Azure Monitor.
-* Všem prostředkům **prostředků**, například v okně Konfigurace virtuálního počítače. Protokol aktivit je být jedna z částí na většině z těchto oken prostředků a po kliknutí automaticky vyfiltruje události, které mají související se tento konkrétní prostředek.
+* Většina **prostředky**, například v okně Konfigurace virtuálního počítače. Protokol aktivit je část věnovanou většina oken prostředků a po kliknutí automaticky vyfiltruje události, které mají související se tento konkrétní prostředek.
 
 Na webu Azure Portal můžete filtrovat protokol aktivit na základě těchto polí:
 * Interval TimeSpan – počáteční a koncový čas pro události.
@@ -84,11 +81,9 @@ Na webu Azure Portal můžete filtrovat protokol aktivit na základě těchto po
 * Událost inicioval(a) – "volající" nebo uživatele, který provedl operaci.
 * Otevřít hledání – to je otevřít textové vyhledávací pole, který vyhledá tento řetězec ve všech polích ve všech událostí.
 
-Po definování sady filtrů, můžete ji uložit jako dotaz, který se uchovávají napříč relacemi, pokud byste někdy potřebovali provést stejný dotaz tyto filtry použít znovu v budoucnu. Dotaz můžete také připnout na řídicí panel Azure vždy dohlížet na konkrétní události.
+Po definování sady filtrů můžete připnout dotaz na řídicím panelu Azure vždy dohlížet na konkrétní události.
 
-Kliknutím na "Použití" spustí dotaz a zobrazit všechny odpovídající události. Kliknutím na libovolnou událost v seznamu zobrazuje souhrn tuto událost i úplné nezpracovaném formátu JSON tuto událost.
-
-Pro ještě větší výkon, můžete kliknout na **prohledávání protokolů** ikonu, která zobrazuje data protokolu aktivit v [řešení Log Analytics Activity Log Analytics](../log-analytics/log-analytics-activity.md). Okno Protokol aktivit nabízí prostředí základní filtr nebo přejděte na protokoly, ale Log Analytics umožňuje otáčení, dotazování a vizualizace dat výkonnější způsoby.
+Pro ještě větší výkon, můžete kliknout na **protokoly** ikonu, která zobrazuje data protokolu aktivit v [řešení Log Analytics Activity Log Analytics](../log-analytics/log-analytics-activity.md). Okno Protokol aktivit nabízí prostředí základní filtr nebo přejděte na protokoly, ale Log Analytics umožňuje otáčení, dotazování a vizualizace dat výkonnější způsoby.
 
 ## <a name="export-the-activity-log-with-a-log-profile"></a>Exportovat protokol aktivit k profilu protokolu
 A **profilu protokolu** řídí, jak exportovat protokol aktivit. Pomocí profilu protokolu, můžete nakonfigurovat:
@@ -114,14 +109,14 @@ Můžete použít úložiště účtu nebo událostí centra oboru názvů, kter
 Tato nastavení můžete nakonfigurovat přes možnost "Export" v okně protokolu aktivit na portálu. Se taky dají konfigurovat prostřednictvím kódu programu [pomocí REST API služby Azure Monitor](https://msdn.microsoft.com/library/azure/dn931927.aspx), rutin prostředí PowerShell nebo rozhraní příkazového řádku. Předplatné může mít jenom jeden profil protokolu.
 
 ### <a name="configure-log-profiles-using-the-azure-portal"></a>Konfigurovat profily protokolů pomocí webu Azure portal
-Můžete streamování protokolu aktivit do centra událostí nebo je uložíte na účet úložiště pomocí možnosti "Export" na webu Azure Portal.
+Můžete streamování protokolu aktivit do centra událostí nebo je uložíte na účet úložiště pomocí možnosti "Export do centra událostí" na webu Azure Portal.
 
 1. Přejděte do **protokolu aktivit** pomocí nabídky na levé straně na portálu.
 
-    ![Přejít na protokol aktivit v portálu](./media/monitoring-overview-activity-logs/activity-logs-portal-navigate.png)
-2. Klikněte na tlačítko **exportovat** tlačítko v horní části okna.
+    ![Přejít na protokol aktivit v portálu](./media/monitoring-overview-activity-logs/activity-logs-portal-navigate-v2.png)
+2. Klikněte na tlačítko **exportovat do centra událostí** tlačítko v horní části okna.
 
-    ![Tlačítko pro export na portálu](./media/monitoring-overview-activity-logs/activity-logs-portal-export.png)
+    ![Tlačítko pro export na portálu](./media/monitoring-overview-activity-logs/activity-logs-portal-export-v2.png)
 3. V zobrazeném okně můžete vybrat:  
   * oblasti, pro které chcete exportovat události
   * Účet úložiště, do kterého chcete uložit události

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/08/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 618e1f5249f2e05c26e91231b4283d82546a880b
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
-ms.translationtype: MT
+ms.openlocfilehash: 3d6d3184c2a17e397e5bbba9fff6cf9c3de9b73e
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49954483"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51218487"
 ---
 # <a name="azure-storage-replication"></a>Účet replikace Azure Storage
 
@@ -39,7 +39,7 @@ Následující tabulka poskytuje rychlý přehled o oboru odolnosti a dostupnost
 | K výpadku celé oblasti                                                                                     | Ne                              | Ne                               | Ano                                  | Ano                                  |
 | Přístup pro čtení k datům (v oblasti vzdálené, geograficky replikovaného) v případě nedostupnosti celé oblasti | Ne                              | Ne                               | Ne                                   | Ano                                  |
 | Navrženo pro zajištění \_ \_ odolnosti objektů v průběhu daného roku                                          | alespoň 99,999999999 % (11 9) | alespoň 99,9999999999 % (12 9) | minimálně 99,99999999999999 % (16. 9) | minimálně 99,99999999999999 % (16. 9) |
-| Typy účtů úložiště podporuje                                                                   | Objektů Blob v účtech GPv1, GPv2                | Účty GPv2, GPv1 (prostřednictvím poskytovatele prostředí PowerShell, rozhraní příkazového řádku Azure nebo prostředku rozhraní API)                             | Objektů Blob v účtech GPv1, GPv2                     | Objektů Blob v účtech GPv1, GPv2                     |
+| Typy účtů úložiště podporuje                                                                   | Objektů Blob v účtech GPv1, GPv2                | GPv2                             | Objektů Blob v účtech GPv1, GPv2                     | Objektů Blob v účtech GPv1, GPv2                     |
 | Smlouva SLA o dostupnosti pro požadavky na čtení | Minimálně 99,9 % (99 % pro vrstvu přístupu cool) | Minimálně 99,9 % (99 % pro vrstvu přístupu cool) | Minimálně 99,9 % (99 % pro vrstvu přístupu cool) | Minimálně 99,99 % (99,9 % pro vrstvu přístupu Cool) |
 | Smlouva SLA o dostupnosti pro požadavky na zápis | Minimálně 99,9 % (99 % pro vrstvu přístupu cool) | Minimálně 99,9 % (99 % pro vrstvu přístupu cool) | Minimálně 99,9 % (99 % pro vrstvu přístupu cool) | Minimálně 99,9 % (99 % pro vrstvu přístupu cool) |
 

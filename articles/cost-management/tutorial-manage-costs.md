@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/18/2018
+ms.date: 10/31/2018
 ms.topic: tutorial
 ms.service: cost-management
 ms.custom: ''
 manager: dougeby
-ms.openlocfilehash: 743576d8cbd7135369fb692e601360cb57a6c3bd
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 8e1c85b345acdce6f50cfa169977c513ba0ae2a3
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46989631"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50740421"
 ---
 # <a name="tutorial-manage-costs-by-using-cloudyn"></a>Kurz: Správa nákladů pomocí Cloudyn
 
@@ -49,7 +49,7 @@ Při použití tohoto modelu přidělování nákladů definujete kategorie (zna
 
 Mějte na paměti, že informace o značkách se u těchto prostředků nezobrazují v sestavách *analýzy nákladů*. Značky použité v Cloudyn pomocí přidělování nákladů se navíc neodesílají do Azure, takže je neuvidíte na webu Azure Portal.
 
-Když začnete s přidělováním nákladů, první věc, kterou je potřeba udělat, je definovat rozsah s použitím modelu nákladů. Model nákladů nemění náklady, ale provádí jejich rozúčtování. Při vytváření modelu nákladů rozdělíte svá data podle entity nákladů, účtu nebo předplatného a několika značek. Mezi běžné příklady značek může patřit kód pro fakturaci, nákladové středisko nebo název skupiny. Značky pomáhají také provádět showback a chargeback do jiných částí organizace.
+Když začnete s přidělováním nákladů, první věc, kterou je potřeba udělat, je definovat rozsah s použitím modelu nákladů. Model nákladů náklady nemění, ale distribuuje je. Při vytváření modelu nákladů rozdělíte svá data podle entity nákladů, účtu nebo předplatného a několika značek. Mezi běžné příklady značek může patřit kód pro fakturaci, nákladové středisko nebo název skupiny. Značky pomáhají také provádět showback a chargeback do jiných částí organizace.
 
 Pokud chcete vytvořit vlastní model přidělování nákladů, vyberte v nabídce sestavy **Costs (Náklady)** &gt; **Cost Management (Správa nákladů)** &gt; **Cost Allocation 360° (360° přidělování nákladů)**.
 
@@ -61,17 +61,17 @@ Na stránce **Cost Allocation 360°** (360° přidělování nákladů) vyberte 
 
 
 
-Příklad ukazuje, že 14 444 USD není zařazeno do kategorií (nemá značku).
+Příklad ukazuje, že 19 680 USD není zařazeno do kategorií (nemá značku).
 
 Dále vyberte **Uncategorized Resources** (Prostředky nezařazené do kategorií) a vyberte služby s nepřidělenými náklady. Pak definujte pravidla pro přidělení prostředků.
 
-Můžete například vzít náklady na úložiště Azure a rovnoměrně je rozúčtovat na virtuální počítače Azure. Pokud to chcete provést, vyberte službu **Azure/Storage**, pak možnost **Proportional to Categorized** (Proporční na kategorizované) a pak vyberte **Azure/VM**. Potom vyberte **Create** (Vytvořit).
+Můžete například vzít náklady na úložiště Azure a rovnoměrně je distribuovat na virtuální počítače Azure. Pokud to chcete provést, vyberte službu **Azure/Storage**, pak možnost **Proportional to Categorized** (Proporční na kategorizované) a pak vyberte **Azure/VM**. Potom vyberte **Create** (Vytvořit).
 
-![Příklad pravidla přidělení v modelu nákladů pro rovnoměrné rozúčtování](./media/tutorial-manage-costs/cost-model02.png)
+![Příklad pravidla přidělování v modelu nákladů pro rovnoměrnou distribuci](./media/tutorial-manage-costs/cost-model02.png)
 
 
 
-V jiném příkladu můžete chtít přidělit veškeré náklady na síť Azure ke konkrétní obchodní jednotce v rámci organizace. Uděláte to tak, že vyberete službu **Azure/Network** a pak v oblasti **Define Allocation Rule** (Definovat pravidlo přidělování) vyberete **Explicit Distribution** (Explicitní rozúčtování). Potom nastavte procento rozúčtování na 100 a vyberte obchodní jednotku – na následujícím obrázku je to **G&amp;A**:
+V jiném příkladu můžete chtít přidělit veškeré náklady na síť Azure ke konkrétní obchodní jednotce v rámci organizace. Uděláte to tak, že vyberete službu **Azure/Network** a pak v oblasti **Define Allocation Rule** (Definovat pravidlo přidělování) vyberete **Explicit Distribution** (Explicitní rozúčtování). Potom nastavte podíl distribuce v procentech na 100 a vyberte obchodní jednotku – na následujícím obrázku je to **G&amp;A**:
 
 ![Příklad pravidla přidělování v modelu nákladů pro konkrétní obchodní jednotku](./media/tutorial-manage-costs/cost-model03.png)
 

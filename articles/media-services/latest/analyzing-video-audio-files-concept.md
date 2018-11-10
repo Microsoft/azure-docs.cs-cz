@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 10/23/2018
 ms.author: juliako
-ms.openlocfilehash: 90aa3551bb9e2d903fb0f66e3a9b464b0f4be928
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: a087c1a069e340c01f2eda657a3d0ecce768168c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49987609"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228126"
 ---
 # <a name="analyzing-video-and-audio-files"></a>Analýza videosouborů a zvukových souborů
 
@@ -25,20 +25,29 @@ Azure Media Services v3 umožňuje extrakce poznatků z videí a zvukových soub
 Analyzovat obsah pomocí služby Media Services v3 přednastavení, vytvoříte **transformace** a odeslat **úlohy** , který používá jednu z těchto předvolby: **AudioAnalyzerPreset** nebo **VideoAnalyzerPreset**. V následujícím článku ukazuje, jak používat **VideoAnalyzerPreset**: [kurz: Analýza videa pomocí služby Azure Media Services](analyze-videos-tutorial-with-api.md).
 
 > [!NOTE]
-> Při použití Video nebo zvuk analyzátor přednastavení, pomocí webu Azure portal můžete nastavit váš účet mít 10 rezervované jednotky médií S3. Další informace najdete v tématu [škálování zpracování médií](../previous/media-services-scale-media-processing-overview.md).
+> Pokud použijete předvolby analyzátoru videa nebo zvuku, pomocí webu Azure Portal nastavte pro svůj účet 10 rezervovaných jednotek médií S3. Další informace najdete v tématu [Škálování zpracování médií](../previous/media-services-scale-media-processing-overview.md).
 
-## <a name="audioanalyzerpreset"></a>AudioAnalyzerPreset
+## <a name="built-in-presets"></a>Předdefinované předvolby
 
-**AudioAnalyzerPreset** umožňuje extrahovat více insights zvuk ze souboru zvuku nebo videa. Výstup obsahuje soubor JSON (všechny přehledy) a soubor VTT přepisu zvuku. Tato předvolba přijímá vlastnost, která určuje jazyk, který vstupního souboru ve formě [BCP47](https://tools.ietf.org/html/bcp47) řetězec. Zahrnout zvukové insights:
+Služba Media Services aktuálně podporuje následující předdefinované analyzátor předvolby:  
+
+|**Název předvolby**|**Scénář**|**Podrobnosti**|
+|---|---|---|
+|**AudioAnalyzerPreset**|Analýza zvuku|Přednastavení platí předem definovanou sadu operace analýzy založené na AI včetně určené k transkripci řeči. V současné době podporuje přednastavení zpracování obsahu pomocí jednoho zvuková stopa.<br/>Můžete určit jazyk pro zvuk datovou část vstup ve formátu BCP-47 "jazyk značky region" (například "en US"). Seznam podporovaných jazyků, které jsou, "en US", "en-GB", "es-ES", "es-MX", "fr-FR", "it-IT", "ja-JP", "pt-BR", "zh-CN".|
+|**VideoAnalyzerPreset**|Analýza zvuku a videa|Extrahuje insights (bohatých metadat) z audio a video a uloží soubor formátu JSON. Můžete určit, zda chcete pouze poznatky zvuku při zpracování souboru videa. Další informace najdete v tématu [analyzovat video](analyze-videos-tutorial-with-api.md).|
+
+### <a name="audioanalyzerpreset"></a>AudioAnalyzerPreset
+
+Přednastavení umožňuje poznatky více zvuk ze souboru zvuku nebo videa. Výstup obsahuje soubor JSON (všechny přehledy) a soubor VTT přepisu zvuku. Tato předvolba přijímá vlastnost, která určuje jazyk, který vstupního souboru ve formě [BCP47](https://tools.ietf.org/html/bcp47) řetězec. Zahrnout zvukové insights:
 
 * Přepisování zvukového záznamu – přepis mluveného slova s časovými razítky. Podporuje více jazyků
 * Mluvčího indexování – mapování mluvčích a odpovídající mluveného slova
 * Provést analýzu subjektivního hodnocení řeči – výstup analýzy mínění na přepisování zvukového záznamu
 * Klíčová slova – klíčová slova, která se extrahují z přepisování zvukového záznamu.
 
-## <a name="videoanalyzerpreset"></a>VideoAnalyzerPreset
+### <a name="videoanalyzerpreset"></a>VideoAnalyzerPreset
 
-**VideoAnalyzerPreset** umožňuje extrahovat více audio a video přehledy z videosouboru. Výstup obsahuje soubor JSON (s všechny přehledy), soubor VTT pro přepis videa a kolekce miniatur. Tato předvolba přijímá také [BCP47](https://tools.ietf.org/html/bcp47) string (představující jazyk videa) jako vlastnost. Poznatky z videí zahrnout všechny zvukové přehledy uvedených výše a navíc následující položky:
+Přednastavení umožňuje extrahovat více audio a video přehledy z videosouboru. Výstup obsahuje soubor JSON (s všechny přehledy), soubor VTT pro přepis videa a kolekce miniatur. Tato předvolba přijímá také [BCP47](https://tools.ietf.org/html/bcp47) string (představující jazyk videa) jako vlastnost. Poznatky z videí zahrnout všechny zvukové přehledy uvedených výše a navíc následující položky:
 
 * Sledování pro rozpoznávání tváře – čas, během které tváře nacházejí ve videu. Každý obličej má id pro rozpoznávání tváře a odpovídající kolekci miniatur
 * Visual text – text, který je zjištěn prostřednictvím optické rozpoznávání znaků. Text je čas razítkem a také použít k extrahování klíčových slov (navíc k přepisu zvuku)

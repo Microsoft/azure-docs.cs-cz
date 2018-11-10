@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 08/11/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 0ca9cf0ff75ea76cd2dc203fbdb37162ed1ace34
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: ad3deaad8c069cfb11bb0eb997d886807ecdb0f8
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50962754"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51006494"
 ---
 # <a name="analyze-data-usage-in-log-analytics"></a>Analýza využití dat v Log Analytics
 
@@ -58,7 +58,7 @@ Log Analytics obsahuje informace o objemu shromážděných dat, zdrojích odes�
 3. V seznamu pracovních prostorů Log Analytics vyberte pracovní prostor.
 4. V seznamu v levém podokně vyberte **Využití a odhad nákladů**.
 5. Na řídicím panelu **Využití a odhad nákladů** můžete upravit časový rozsah výběrem možnosti **Čas: Posledních 24 hodin** a změnou časového intervalu.<br><br> ![časový interval](./media/log-analytics-usage/usage-time-filter-01.png)<br><br>
-6. Zobrazte okna kategorií využití s oblastmi, které vás zajímají. Vyberte okno a pak v něm klikněte na některou položku, abyste zobrazili další podrobnosti v [Prohledávání protokolů](log-analytics-log-search.md).<br><br> ![příklad klíčového indikátoru výkonnosti využití dat](media/log-analytics-usage/data-volume-kpi-01.png)<br><br>
+6. Zobrazte okna kategorií využití s oblastmi, které vás zajímají. Vyberte okno a pak v něm klikněte na některou položku, abyste zobrazili další podrobnosti v [Prohledávání protokolů](log-analytics-queries.md).<br><br> ![příklad klíčového indikátoru výkonnosti využití dat](media/log-analytics-usage/data-volume-kpi-01.png)<br><br>
 7. Na řídicím panelu Prohledávání protokolů zkontrolujte vrácené výsledky hledání.<br><br> ![příklad prohledávání protokolů využití](./media/log-analytics-usage/usage-log-search-01.png)
 
 ## <a name="create-an-alert-when-data-collection-is-higher-than-expected"></a>Vytvoření upozornění při větším než očekávaném shromažďování dat
@@ -173,7 +173,7 @@ Kliknutím na **Zobrazit všechno...** zobrazte úplný seznam počítačů odes
 Použijte [cílení na řešení](../monitoring/monitoring-solution-targeting.md) a shromažďujte data pouze z požadované skupiny počítačů.
 
 ## <a name="next-steps"></a>Další postup
-* V tématu [Prohledávání protokolů v Log Analytics](log-analytics-log-search.md) zjistíte, jak používat jazyk vyhledávání. Pomocí vyhledávacích dotazů můžete na datech o využití provádět další analýzy.
+* V tématu [Prohledávání protokolů v Log Analytics](log-analytics-queries.md) zjistíte, jak používat jazyk vyhledávání. Pomocí vyhledávacích dotazů můžete na datech o využití provádět další analýzy.
 * Pokud chcete být upozorňováni při splnění kritérií vyhledávání, postupujte podle kroků popsaných v tématu týkajícím se [vytvoření nového upozornění protokolu](../monitoring-and-diagnostics/alert-metric.md).
 * Použijte [cílení na řešení](../monitoring/monitoring-solution-targeting.md) a shromažďujte data pouze z požadované skupiny počítačů.
 * Pokud chcete nakonfigurovat efektivní zásadu shromažďování událostí zabezpečení, přečtěte si téma popisující [zásady filtrování v Azure Security Center](../security-center/security-center-enable-data-collection.md).

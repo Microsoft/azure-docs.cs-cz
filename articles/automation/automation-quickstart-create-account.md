@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: automation
 ms.component: process-automation
 ms.custom: mvc
-ms.openlocfilehash: 701d2c348e91efed17c8c7828ace920914093b5a
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 6d473d8874208297e905a5d90a08ffd870ffa8a6
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49426188"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50091820"
 ---
 # <a name="create-an-azure-automation-account"></a>Vytvoření účtu Azure Automation
 
@@ -35,6 +35,9 @@ Přihlaste se k Azure na adrese https://portal.azure.com.
 1. Zadejte informace o účtu. U možnosti **Vytvořit účet Spustit v Azure jako** zvolte **Ano**, aby se automaticky povolily artefakty, které zjednoduší ověřování do Azure. Je důležité si uvědomit, že při vytváření účtu Automation není možné změnit již zvolený název. Jeden účet Automation může spravovat prostředky napříč všemi oblastmi a předplatnými daného tenanta. Jakmile budete hotovi, klikněte na **Vytvořit** a spusťte nasazování účtu Automation.
 
     ![Zadání informací o účtu Automation na stránce](./media/automation-quickstart-create-account/create-automation-account-portal-blade.png)  
+
+    > [!NOTE]
+    > Aktualizovaný seznam umístění, do kterých můžete účet Automation nasadit, najdete na stránce [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/en-us/global-infrastructure/services/?products=automation&regions=all).
 
 1. Po dokončení nasazení klikněte na **Všechny služby**, vyberte **Účty Automation** a vyberte účet Automation, který jste vytvořili.
 

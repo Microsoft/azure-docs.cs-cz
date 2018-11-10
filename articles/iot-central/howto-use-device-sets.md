@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpfr
-ms.openlocfilehash: 28706ad77f48ae826b621ebdd920d26f3b87178a
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: a5dd018197ff78ff0563349fd941308c3684a456
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45731970"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51004115"
 ---
 # <a name="use-device-sets-in-your-azure-iot-central-application"></a>Pomocí sady zařízení ve vaší aplikaci Azure IoT Central
 
-Tento článek popisuje, jak, jakožto obsluha používat zařízení nastaví v aplikaci Microsoft Azure IoT Central.
+Tento článek popisuje, jak, jakožto obsluha používat zařízení nastaví v aplikaci Azure IoT Central.
 
-Sada zařízení je seznam zařízení, které jsou seskupeny vzhledem k tomu, aby všechny odpovídaly některé zadaným kritériím. Nastaví zařízení pomáhají spravovat, vizualizovat a analyzovat zařízení ve velkém měřítku pomocí seskupení zařízení do menších logické skupiny. Například v Praze umožňující technika Seattle najít všechna zařízení, pro které je zodpovědný vytvořit seznam všech zařízení klimatizace. V tomto článku se dozvíte, jak vytvořit a nakonfigurovat sady zařízení.
+Sada zařízení je seznam zařízení, které jsou seskupeny vzhledem k tomu, aby všechny odpovídaly některé zadaným kritériím. Nastaví zařízení pomáhají spravovat, vizualizovat a analyzovat zařízení ve velkém měřítku pomocí seskupení zařízení do menších logické skupiny. Například v Praze umožňující technika Seattle najít všechna zařízení, pro které je zodpovědný technik vytvořit seznam všech zařízení klimatizace. V tomto článku se dozvíte, jak vytvořit a nakonfigurovat sady zařízení.
 
 ## <a name="create-a-device-set"></a>Vytvoření sady zařízení
 
@@ -73,7 +73,7 @@ Po vytvoření sady zařízení, můžete nakonfigurovat jeho **řídicí panel*
         ![Zvolte mřížky](media/howto-use-device-sets/image8.png)
 
     1. Poskytují vaší mřížkou **Title**.
-    1. Vyberte sloupce, které chcete zobrazit kliknutím na tlačítko nastavení. V panelu, která se otevře zvolte sloupec má a klikněte na šipku doprava a vyberte ji.
+    1. Vyberte sloupce, které chcete zobrazit výběrem **přidat nebo odebrat**. V panelu, která se otevře zvolte sloupec má a klikněte na šipku doprava a vyberte ji.
     1. Vyberte **OK**.
     1. Zvolte **Uložit**.
 
@@ -101,9 +101,10 @@ Pokud chcete přidat mapu umístění, která bude zařízení nastaví řídic�
 
 2. Zadejte název a vyberte vlastnost umístění, které jste dříve nakonfigurovali v rámci vlastnosti zařízení.
 3. Uložit a můžete se zobrazí na mapě dlaždici zobrazení umístění zařízení v nastavení zařízení.
-4. Teď když operátor řídicí panel sady zařízení, tak může vidět všechny dlaždice jste nakonfigurovali, včetně umístění mapu, která bude vizualizovat všechna umístění zařízení na první pohled! 
+4. Nyní když operátor zobrazení řídicího panelu sady zařízení, operátor, který můžete vidět všechny dlaždice, které jste nakonfigurovali, včetně umístění mapu, která bude vizualizovat všechna umístění zařízení na první pohled! 
     
-[!NOTE] Budete moct změnit velikost mapování na požadovanou velikost. Kliknutím na kód pin na mapě zobrazíte informace o zařízení, název a umístění. Můžete kliknout na automaticky otevírané okno, přejděte na stránku vlastností zařízení.  
+> [!NOTE] 
+> Budete moct změnit velikost mapování na požadovanou velikost. Kliknutím na kód pin na mapě zobrazíte informace o zařízení, název a umístění. Můžete kliknout na automaticky otevírané okno, přejděte na stránku vlastností zařízení.  
 
 
 ## <a name="configure-the-list-for-your-device-set"></a>Proveďte konfiguraci seznamu pro vaši sadu zařízení

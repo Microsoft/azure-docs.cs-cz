@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 10/29/2018
 ms.author: asgang
-ms.openlocfilehash: 3090dd9e0d9681dbf77f052e9d324f2add0a1910
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: ddbfdc9928122373b82d043fac0777576c5fe99e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50215034"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51227469"
 ---
 # <a name="troubleshoot-issues-with-the-azure-site-recovery-agent"></a>Řešení potíží s agentem Azure Site Recovery
 
@@ -64,7 +64,7 @@ Agent virtuálního počítače může být poškozený nebo služba zastavila. 
 1. Určení, zda "Windows službu agenta hosta Azure" je spuštěný ve virtuálním počítači službami (services.msc). Restartujte "Windows službu agenta hosta Azure".    
 2. Pokud nejsou viditelná ve službách, v Ovládacích panelech, službu agenta hosta Azure pro Windows, přejděte na **programy a funkce** k určení, zda je nainstalována služba Windows agenta hosta.
 4. Pokud agenta hosta Azure Windows se zobrazí v **programy a funkce**, odinstalujte agenta hosta Windows.
-5. Stáhněte a nainstalujte [nejnovější verzi MSI agenta](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). Musíte mít oprávnění správce k dokončení instalace.
+5. Stáhněte a nainstalujte [nejnovější verzi MSI agenta](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). Musíte mít oprávnění správce k dokončení instalace.
 6. Ověřte, že služby agenta hosta Azure pro Windows se zobrazí v služeb.
 7. Restartujte úlohu ochrany.
 

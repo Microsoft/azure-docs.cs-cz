@@ -5,14 +5,14 @@ services: container-service
 author: seanmck
 ms.service: container-service
 ms.topic: troubleshooting
-ms.date: 09/13/2018
+ms.date: 11/05/2018
 ms.author: seanmck
-ms.openlocfilehash: e29308b7b1c17377cf1d627f2a32a2ba6ea4d077
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 01095ac4ed8e362f1a89a53b10b5da6a547feb57
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46314892"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51218627"
 ---
 # <a name="checking-for-kubernetes-best-practices-in-your-cluster"></a>Kontrola osvědčených postupů Kubernetes v clusteru
 
@@ -30,7 +30,7 @@ Existuje několik osvědčených postupů, které byste měli postupovat na vaš
 Ke spuštění nástroje na cluster, který je nakonfigurovaný pro [řízení přístupu na základě role (RBAC)](aad-integration.md), pomocí následujících příkazů. První příkaz vytvoří účet služby Kubernetes. Druhý příkaz spustí nástroj v podu pomocí tohoto účtu služby a nakonfiguruje pod k odstranění po jeho ukončení. 
 
 ```bash
-kubectl apply -f https://raw.githubusercontent.com/Azure/kube-advisor/master/sa.yaml?token=ABLLDrNcuHMro9jQ0xduCaEbpzLupzQUks5bh3RhwA%3D%3D
+kubectl apply -f https://raw.githubusercontent.com/Azure/kube-advisor/master/sa.yaml
 
 kubectl run --rm -i -t kubeadvisor --image=mcr.microsoft.com/aks/kubeadvisor --restart=Never --overrides="{ \"apiVersion\": \"v1\", \"spec\": { \"serviceAccountName\": \"kube-advisor\" } }"
 ```
@@ -60,7 +60,7 @@ Ve výchozím nastavení jsou nastaveny žádné požadavky nebo omezení na spe
 Pokud váš cluster má RBAC povolená, můžete vyčistit `ClusterRoleBinding` po spuštění nástroje, pomocí následujícího příkazu:
 
 ```bash
-kubectl delete -f https://raw.githubusercontent.com/Azure/kube-advisor/master/sa.yaml?token=ABLLDrNcuHMro9jQ0xduCaEbpzLupzQUks5bh3RhwA%3D%3D
+kubectl delete -f https://raw.githubusercontent.com/Azure/kube-advisor/master/sa.yaml
 ```
 
 Pokud používáte nástroj proti clusteru, který není povolen RBAC, vyžaduje se žádné čištění.

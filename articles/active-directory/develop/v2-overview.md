@@ -16,12 +16,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 265d34c91a8c803256e718899f5b6ce2738a88e5
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: daa1bba0aacdceb7d6655c5f491be587d388176a
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49956422"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50087368"
 ---
 # <a name="about-v20"></a>Informace o v2.0
 
@@ -56,10 +56,10 @@ Prostudujte si podrobné informace týkající se v2.0:
 
 * [informace o protokolech v2.0](active-directory-v2-protocols.md)
 * [informace o přístupových tokenech](access-tokens.md)
-* [informace o `id_tokens`](id-tokens.md)
+* [informace o tokenech ID](id-tokens.md)
 * [informace o knihovnách ověřování v2.0](reference-v2-libraries.md)
-* [obory a vyžádání souhlasu uživatele pro v2.0](v2-permissions-and-consent.md)
-* [rozhraní Microsoft Graph API](https://graph.microsoft.io)
+* [Oprávnění a souhlas ve v2.0](v2-permissions-and-consent.md)
+* [Microsoft Graph API](https://graph.microsoft.io)
 
 > [!NOTE]
 > Pokud potřebujete řešit přihlášení jen pracovními a školními účty v rámci Azure Active Directory, začněte [průvodcem Azure AD pro vývojáře](v1-overview.md). Koncový bod v2.0 je určen pro vývojáře, kteří explicitně potřebují řešit přihlášení osobními účty Microsoft.

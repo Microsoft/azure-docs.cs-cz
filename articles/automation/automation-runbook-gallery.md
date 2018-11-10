@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 09/11/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 988f77dd0f8f31f6e31e5371ed263d4c4195c105
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: ca19ce2cca314950adc40bbf065dec80e7fa3e1f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45984869"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51227922"
 ---
 # <a name="runbook-and-module-galleries-for-azure-automation"></a>Galerie modulů a Runbooků Azure Automation
 Místo vytváření vlastních modulů a runbooků ve službě Azure Automation, můžete přistupovat širokou škálu scénářů, které již byly vytvořeny od Microsoftu a komunity.  Můžete použít tyto scénáře bez jakýchkoli úprav nebo můžete použít jako výchozí bod a upravit je pro vaše konkrétní požadavky.
@@ -22,7 +22,7 @@ Místo vytváření vlastních modulů a runbooků ve službě Azure Automation,
 Můžete získat runbooky [Galerie Runbooků](#runbooks-in-runbook-gallery) a modulů [Galerie prostředí PowerShell](#modules-in-powerShell-gallery).  Můžete přispívat také v komunitě sdílením scénáře, které vyvíjíte, naleznete v tématu [přidání sady runbook do Galerie](automation-runbook-gallery.md#adding-a-runbook-to-the-runbook-gallery)
 
 ## <a name="runbooks-in-runbook-gallery"></a>Sady Runbook ve galerii Runbooků
-[Galerie Runbooků](http://gallery.technet.microsoft.com/scriptcenter/site/search?f\[0\].Type=RootCategory&f\[0\].Value=WindowsAzure&f\[1\].Type=SubCategory&f\[1\].Value=WindowsAzure_automation&f\[1\].Text=Automation) od Microsoftu a komunity, který můžete importovat do služby Azure Automation poskytuje celou řadu sad runbook. Můžete buď stáhnout sady runbook z galerie, která je hostována v [centra skriptů TechNet](https://gallery.technet.microsoft.com/scriptcenter/site/upload), nebo může přímo importovat sady runbook z Galerie na webu Azure Portal.
+[Galerie Runbooků](https://gallery.technet.microsoft.com/scriptcenter/site/search?f\[0\].Type=RootCategory&f\[0\].Value=WindowsAzure&f\[1\].Type=SubCategory&f\[1\].Value=WindowsAzure_automation&f\[1\].Text=Automation) od Microsoftu a komunity, který můžete importovat do služby Azure Automation poskytuje celou řadu sad runbook. Můžete buď stáhnout sady runbook z galerie, která je hostována v [centra skriptů TechNet](https://gallery.technet.microsoft.com/scriptcenter/site/upload), nebo může přímo importovat sady runbook z Galerie na webu Azure Portal.
 
 Můžete importovat pouze přímo z Galerie Runbooků pomocí webu Azure portal. Nelze provést tuto funkci pomocí Windows Powershellu.
 
@@ -37,7 +37,7 @@ Můžete importovat pouze přímo z Galerie Runbooků pomocí webu Azure portal.
 3. Vyhledejte položku Galerie a vybrat zobrazíte její podrobnosti. Na levé straně můžete zadat další vyhledávací parametry pro vydavatele a typu.
    
     ![Procházet galerii](media/automation-runbook-gallery/browse-gallery.png)
-5. Klikněte na **zobrazit zdrojový projekt** zobrazíte položky ve [centra skriptů TechNet](http://gallery.technet.microsoft.com/).
+5. Klikněte na **zobrazit zdrojový projekt** zobrazíte položky ve [centra skriptů TechNet](https://gallery.technet.microsoft.com/).
 6. Pokud chcete importovat položky, klikněte na něj a zobrazit jeho podrobnosti a potom klikněte na tlačítko **importovat** tlačítko.
    
     ![Tlačítko Import](media/automation-runbook-gallery/gallery-item-detail.png)
@@ -45,7 +45,7 @@ Můžete importovat pouze přímo z Galerie Runbooků pomocí webu Azure portal.
 8. Runbook se zobrazí na **sady Runbook** kartu pro účet Automation.
 
 ### <a name="adding-a-runbook-to-the-runbook-gallery"></a>Přidání sady runbook do Galerie runbooků
-Microsoft doporučuje, abyste k přidání runbooků do Galerie Runbooků, které si myslíte, že bude užitečné pro ostatní zákazníci.  Můžete přidat sady runbook pomocí [pak ho nahrát do centra skriptů](http://gallery.technet.microsoft.com/site/upload) zohledněním následující podrobnosti.
+Microsoft doporučuje, abyste k přidání runbooků do Galerie Runbooků, které si myslíte, že bude užitečné pro ostatní zákazníci.  Můžete přidat sady runbook pomocí [pak ho nahrát do centra skriptů](https://gallery.technet.microsoft.com/site/upload) zohledněním následující podrobnosti.
 
 * Je nutné zadat *Windows Azure* pro **kategorie** a *automatizace* pro **podkategorie** pro sadu runbook, který se má zobrazit Průvodce.  
 * Nahrávání musí být jeden soubor .ps1 nebo .graphrunbook.  Pokud runbook vyžaduje všechny moduly, podřízené runbooky a prostředky, pak můžete zveřejnit v popisu odesílání a v části komentáře sady runbook.  Pokud máte scénář, které vyžadují více sad runbook, nahrajte každý samostatně a seznam názvů souvisejících sad runbook v každé z jejich popisy. Ujistěte se, že je možné použít stejné značky tak, aby se zobrazí ve stejné kategorii. Uživatel bude muset přečíst popis vědět, že se vyžadují další sady runbook scénář fungovat.
@@ -100,7 +100,7 @@ Moduly prostředí PowerShell obsahují rutiny, které můžete použít v runbo
 Jsou k dispozici v sadách Runbook Python [Galerie centra skriptů](https://gallery.technet.microsoft.com/scriptcenter/site/search?f%5B0%5D.Type=RootCategory&f%5B0%5D.Value=WindowsAzure&f%5B1%5D.Type=ProgrammingLanguage&f%5B1%5D.Value=Python&f%5B1%5D.Text=Python&sortBy=Date&username=). Runbook Python do Galerie centra skriptů můžete přispívat. Když, zajistíte tím, že přidáte značku **Python** při odesílání vašeho příspěvku.
 
 ## <a name="requesting-a-runbook-or-module"></a>Vyžádání do sady runbook nebo modulu
-Můžete odesílat žádosti o [User Voice](https://feedback.azure.com/forums/246290-azure-automation/).  Pokud potřebujete pomoc, zápis sady runbook nebo máte dotaz týkající se prostředí PowerShell, odeslat dotaz do našich [fórum](http://social.msdn.microsoft.com/Forums/windowsazure/en-US/home?forum=azureautomation&filter=alltypes&sort=lastpostdesc).
+Můžete odesílat žádosti o [User Voice](https://feedback.azure.com/forums/246290-azure-automation/).  Pokud potřebujete pomoc, zápis sady runbook nebo máte dotaz týkající se prostředí PowerShell, odeslat dotaz do našich [fórum](https://social.msdn.microsoft.com/Forums/windowsazure/en-US/home?forum=azureautomation&filter=alltypes&sort=lastpostdesc).
 
 ## <a name="next-steps"></a>Další kroky
 * Začínáme se sadami runbook, najdete v článku [vytvoření nebo import runbooku ve službě Azure Automation](automation-creating-importing-runbook.md)

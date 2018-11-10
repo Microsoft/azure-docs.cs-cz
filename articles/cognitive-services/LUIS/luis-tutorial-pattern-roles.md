@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: c7e7b100242d6ceb35172b872f2fb6ff7f4b402b
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 3274c25227637d3b23ccd7fd21df01dc05400c11
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48886156"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50086433"
 ---
 # <a name="tutorial-4-extract-contextually-related-patterns"></a>Kurz 4: Extrakce vzorů souvisejících s kontextem
 
@@ -40,8 +40,8 @@ Pokud máte potíže s určováním jednoduché entity, protože jde o název, n
 
 > [!div class="checklist"]
 > * Používat existující ukázkovou aplikaci
-> * Vytvořit nové entity
-> * Vytvořit nový záměr
+> * Tvorba nových entit
+> * Tvorba nového záměru
 > * Trénování
 > * Publikování
 > * Zjistit záměry a entity z koncového bodu
@@ -380,6 +380,8 @@ V tomto kurzu aplikace Human Resources detekuje promluvy, které se týkají st�
 |--|--|--|
 |[Hierarchicky (bez rolí)](luis-quickstart-intent-and-hier-entity.md)|ps Jill Jones z **a-2349** do **b-1298**|a-2349, b-1298|
 |Tento kurz (s rolemi)|Přestěhovat Billy Patterson z **Yuma** do **Denver**.|Yuma, Denver|
+
+Další informace najdete v tématu věnovaném [porovnání rolí a hierarchických entit](luis-concept-roles.md#roles-versus-hierarchical-entities).
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

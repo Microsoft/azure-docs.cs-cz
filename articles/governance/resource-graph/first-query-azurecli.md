@@ -4,23 +4,23 @@ description: Tento článek vás provede po krocích povolením rozšíření Re
 services: resource-graph
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/18/2018
+ms.date: 10/22/2018
 ms.topic: quickstart
 ms.service: resource-graph
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: df01a57cda063e301efbc4d99f3bac8dbb4b2e66
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: a252dd6698a5e4f724fcbbf821b01f63ab4f529b
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47054162"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50086807"
 ---
 # <a name="run-your-first-resource-graph-query-using-azure-cli"></a>Spusťte nejdříve dotaz na Resource Graph použitím Azure CLI
 
-Prvním krokem k použití Azure Resource Graph je zajistit, aby bylo nainstalováno rozšíření [ Azure CLI ](/cli/azure/). Tento rychlý start vás provede procesem přidání rozšíření k instalaci rozhraní příkazového řádku Azure CLI. Rozšíření můžete použít pomocí Azure CLI nainstalované místně nebo prostřednictvím [Azure Cloud Shell](https://shell.azure.com).
+Prvním krokem k použití služby Azure Resource Graph je zkontrolovat, že je nainstalované rozšíření pro [ Azure CLI ](/cli/azure/). Tento rychlý start vás provede procesem přidání rozšíření k instalaci rozhraní příkazového řádku Azure CLI. Rozšíření můžete použít pomocí Azure CLI nainstalované místně nebo prostřednictvím [Azure Cloud Shell](https://shell.azure.com).
 
-Na konci tohoto procesu se provede přidání rozšíření k instalaci rozhraní příkazového řádku Azure CLI podle výběru a spuštění vaší úplně první dotaz na graf prostředků.
+Na konci tohoto procesu budete mít za sebou přidání rozšíření k vybrané instalaci Azure CLI a spuštění prvního dotazu na službu Resource Graph.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
@@ -28,7 +28,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 K povolení rozhraní příkazového řádku Azure CLI k dotazu Azure Resource Graph, je nutné přidat rozšíření. Toto rozšíření funguje bez ohledu na to rozhraní příkazového řádku Azure je možné, včetně [bash ve Windows 10](/windows/wsl/install-win10), [Cloud Shell](https://shell.azure.com) (samostatné a uvnitř portálu), [image Dockeru rozhraní příkazového řádku Azure](https://hub.docker.com/r/microsoft/azure-cli/), nebo lokálně nainstalované.
 
-1. Zkontrolujte, že je nainstalovaný nejnovější agent Azure CLI (minimálně **2.0.45**). Pokud ještě není nainstalovaná, postupujte podle [těchto pokynů](/cli/azure/install-azure-cli-windows?view=azure-cli-latest).
+1. Zkontrolujte, že je nainstalovaná nejnovější verze Azure CLI (alespoň **2.0.45**). Pokud ještě není nainstalovaný, postupujte podle [těchto pokynů](/cli/azure/install-azure-cli-windows?view=azure-cli-latest).
 
 1. V prostředí Azure CLI podle vašeho výběru ho importujete pomocí následujícího příkazu:
 
@@ -49,7 +49,7 @@ K povolení rozhraní příkazového řádku Azure CLI k dotazu Azure Resource G
 
 ## <a name="run-your-first-resource-graph-query"></a>Spusťte nejdříve dotaz na Resource Graph použitím Azure CLI
 
-Teď, když se rozšíření rozhraní příkazového řádku Azure CLI přidalo do vašeho prostředí podle výběru, můžete vyzkoušet jednoduchý dotaz na Resource Graph. Dotaz vrátí prvních pět zdrojů Azure pomocí **Názvem** a **Typem zdroje** každého zdroje.
+Když se rozšíření Azure CLI přidal do vašeho vybraného prostředí, můžete vyzkoušet jednoduchý dotaz na službu Resource Graph. Dotaz vrátí prvních pět zdrojů Azure pomocí **Názvem** a **Typem zdroje** každého zdroje.
 
 1. Spusťte nejdřív první dotaz na Azure Resource Graph pomocí `graph` rozšíření a `query` příkazu:
 
@@ -73,14 +73,14 @@ Teď, když se rozšíření rozhraní příkazového řádku Azure CLI přidalo
   > [!NOTE]
   > Stejně jako u prvního dotazu opakované spouštění tohoto dotazu pravděpodobně poskytne jinou sadu zdrojů na jednu žádost. Pořadí příkazů dotazů je důležité. V tomto příkladu `order by` přichází po `limit`. Tak se nejdřív omezí rozsah výsledků dotazu a ty se pak seřadí.
 
-1. Aktualizujte dotaz na `order by` **název** vlastnosti a potom `limit` na prvních 5 výsledků:
+1. Aktualizujte dotaz tak, aby se nejprve výsledky seřadily podle názvu (nastavte `order by` na **Name**) a pak nastavte omezení (`limit`) na prvních pět výsledků:
 
    ```azurecli-interactive
    # Run Azure Resource Graph query with `order by` first, then with `limit`
    az graph query -q 'project name, type | order by name asc | limit 5'
    ```
 
-Pokud konečný dotaz proběhne více než jednou za předpokladu, že se ve vašem prostředí nic nemění, vrácené výsledky budou konzistentní jak se očekává – seřazené podle **názvu** vlastností, ale stále s omezením na prvních 5 výsledků.
+Pokud se konečný dotaz spustí několikrát, za předpokladu, že se ve vašem prostředí nic nemění, budou vrácené výsledky konzistentní a podle očekávání – seřazené podle vlastnosti **Name**, ale stále s omezením na prvních pět výsledků.
 
 ## <a name="cleanup"></a>Vyčištění
 

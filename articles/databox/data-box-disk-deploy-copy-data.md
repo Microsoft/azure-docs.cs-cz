@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 10/09/2018
+ms.date: 10/31/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 7bc8b3ba415f8fe701098a9fa7e51d60ffb9df4e
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: ade409760e3946e9d574a304afc5b48ec4279157
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49092449"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50740259"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-disk-and-verify"></a>Kurz: Kopírování dat na Azure Data Box Disk a jejich ověření
 
@@ -38,7 +38,7 @@ Než začnete, ujistěte se, že:
 
 Pokud chcete připojit počítač k Data Box Disku a zkopírovat z něj data, proveďte následující kroky.
 
-1. Zobrazte obsah odemknuté jednotky. 
+1. Zobrazte obsah odemknuté jednotky.
 
     ![Zobrazení obsahu jednotky](media/data-box-disk-deploy-copy-data/data-box-disk-content.png)
  
@@ -229,7 +229,7 @@ Po dokončení kopírování dat je dalším krokem ověření dat.
 
 Data ověříte následujícím postupem.
 
-1. Spusťte příkaz `DataBoxDiskValidation.cmd` pro ověření kontrolního součtu ve složce *AzureImportExport* na jednotce. 
+1. Spusťte soubor `DataBoxDiskValidation.cmd` pro ověření kontrolního součtu ve složce *DataBoxDiskImport* na jednotce. 
     
     ![Výstup ověřovacího nástroje Data Box Disku](media/data-box-disk-deploy-copy-data/data-box-disk-validation-tool-output.png)
 

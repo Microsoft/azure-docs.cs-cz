@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/15/2017
 ms.author: dekapur
-ms.openlocfilehash: 8383d6afa4b6029aca3978c53eec1865d1d8c8ea
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: b23b2c46098fb53a3a08ff86c46cc6b6c9b936bb
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44721836"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228568"
 ---
 # <a name="secure-a-standalone-cluster-on-windows-by-using-x509-certificates"></a>Zabezpečení samostatného clusteru ve Windows pomocí certifikátů X.509
 Tento článek popisuje, jak zabezpečit komunikaci mezi různými uzly samostatného clusteru Windows. Také popisuje, jak k ověřování klientů, které se připojují k tomuto clusteru pomocí certifikátů X.509. Ověřování zajišťuje, že můžete jenom Autorizovaní uživatelé přístup ke clusteru a nasazených aplikací a provádění úloh správy. Certifikát zabezpečení musí být povolené na clusteru při vytvoření clusteru.  
@@ -257,7 +257,7 @@ Pokud používáte úložiště vystavitele, pak žádný upgrade konfigurace je
 ## <a name="acquire-the-x509-certificates"></a>Získat certifikáty X.509
 Pro zabezpečení komunikace v rámci clusteru, musíte nejprve získat certifikáty X.509 pro uzly clusteru. Kromě toho pokud chcete omezit připojení k tomuto clusteru na autorizované počítače/uživatele, musíte získat a nainstalovat certifikáty pro klientské počítače.
 
-Pro clustery, na kterých běží úlohy v produkčním prostředí, použijte [certifikační autority (CA)](https://en.wikipedia.org/wiki/Certificate_authority)-podepsaný certifikát X.509 k zabezpečení clusteru. Další informace o tom, jak získat tyto certifikáty, najdete v části [jak získat certifikát](http://msdn.microsoft.com/library/aa702761.aspx).
+Pro clustery, na kterých běží úlohy v produkčním prostředí, použijte [certifikační autority (CA)](https://en.wikipedia.org/wiki/Certificate_authority)-podepsaný certifikát X.509 k zabezpečení clusteru. Další informace o tom, jak získat tyto certifikáty, najdete v části [jak získat certifikát](https://msdn.microsoft.com/library/aa702761.aspx).
 
 Pro clustery, které používáte pro účely testování můžete použít certifikát podepsaný svým držitelem.
 

@@ -15,17 +15,17 @@ ms.topic: get-started-article
 ms.date: 07/13/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 7d11d238b921c63d1d2317371da07d8e49e8ac9d
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 41bbc2fd57617bb4bafb121f9c766b1f673dd075
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46301968"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228619"
 ---
 # <a name="azure-ad-connect-upgrade-from-dirsync"></a>Azure AD Connect: Upgrade z nástroje DirSync
 Azure AD Connect je nástupcem nástroje DirSync. V tomto tématu najdete popis způsobů upgradu z nástroje DirSync. Pokud upgradujete z jiné verze služby Azure AD Connect nebo ze služby Azure AD Sync, tyto kroky nefungují.
 
-Před zahájením instalace Azure AD Connect nezapomeňte [stáhnout Azure AD Connect](http://go.microsoft.com/fwlink/?LinkId=615771) a provést požadovanou přípravu popsanou v tématu [Azure AD Connect: Hardware a nezbytné předpoklady](how-to-connect-install-prerequisites.md). Zejména si přečtěte následující informace, protože se od DirSync liší tyto oblasti:
+Před zahájením instalace Azure AD Connect nezapomeňte [stáhnout Azure AD Connect](https://go.microsoft.com/fwlink/?LinkId=615771) a provést požadovanou přípravu popsanou v tématu [Azure AD Connect: Hardware a nezbytné předpoklady](how-to-connect-install-prerequisites.md). Zejména si přečtěte následující informace, protože se od DirSync liší tyto oblasti:
 
 * Požadovaná verze rozhraní .NET a prostředí PowerShell. Je třeba, aby na serveru byly novější verze, než jaké vyžaduje DirSync.
 * Konfigurace proxy serveru. Pokud pro přístup k Internetu používáte proxy server, toto nastavení je třeba konfigurovat ještě před upgradem. DirSync vždy používá proxy server nakonfigurovaný pro uživatele, který provádí instalaci, ale Azure AD Connect používá nastavení platné pro počítač.

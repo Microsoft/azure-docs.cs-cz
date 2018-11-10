@@ -5,15 +5,15 @@ services: storage
 author: tolandmike
 ms.service: storage
 ms.topic: article
-ms.date: 03/20/2018
+ms.date: 10/20/2018
 ms.author: jeking
 ms.component: common
-ms.openlocfilehash: eee9998280f2105fee5144b520bc8000b086f941
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: 85d69db2f94e4bddf1258233c34c64dcf78a3eeb
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45603921"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51219218"
 ---
 # <a name="geo-redundant-storage-grs-cross-regional-replication-for-azure-storage"></a>Geograficky redundantní úložiště (GRS): replikace mezi zónami pro službu Azure Storage
 [!INCLUDE [storage-common-redundancy-GRS](../../../includes/storage-common-redundancy-grs.md)]
@@ -26,22 +26,22 @@ Když povolíte přístup jen pro čtení k datům v sekundární oblasti, vaše
 Některé aspekty, mějte na paměti při použití RA-GRS:
 
 * Má vaše aplikace pro správu, který koncový bod je interakce s při použití RA-GRS.
-* Vzhledem k tomu, že asynchronní replikace zahrnuje zpoždění, pokud data nejde obnovit z primární oblasti, například v případě regionálního může dojít ke ztrátě změny, které nebyly dosud replikují do sekundární oblasti.
+* Vzhledem k tomu, že asynchronní replikace zahrnuje zpoždění, změny, které nebyly dosud replikují do sekundární oblasti mohou být ztraceny, pokud není možné obnovit data z primární oblasti.
 * Čas poslední synchronizace účtu úložiště můžete zkontrolovat. Čas poslední synchronizace je hodnota data a času GMT. Všechny operace zápisu primární před čas poslední synchronizace byla úspěšně zapsána do sekundárního umístění, což znamená, že jsou k dispozici ke čtení ze sekundárního umístění. Primární zapisuje po čas poslední synchronizace může nebo nemusí být k dispozici pro operace čtení ještě. Dotazovat můžete podle této hodnoty [webu Azure portal](https://portal.azure.com/), [prostředí Azure PowerShell](storage-powershell-guide-full.md), nebo jednu z knihoven klienta služby Azure Storage.
-* Pokud Microsoft iniciuje převzetí služeb při selhání do sekundární oblasti, budete mít ke čtení a zápis k těmto datům po převzetí služeb se dokončí. Další informace najdete v tématu [pokyny pro zotavení po havárii](storage-disaster-recovery-guidance.md).
+* Pokud Microsoft iniciuje převzetí služeb při selhání do sekundární oblasti, budete mít načtete a přístup pro zápis k těmto datům po převzetí služeb byla dokončena. Další informace najdete v tématu [pokyny pro zotavení po havárii](storage-disaster-recovery-guidance.md).
 * Informace o tom, jak přepnout do sekundární oblasti, naleznete v tématu [co dělat, když dojde k výpadku služby Azure Storage](storage-disaster-recovery-guidance.md).
 * RA-GRS je určená pro účely vysokou dostupnost. Doprovodné materiály škálovatelnosti, najdete v tématu [kontrolní seznam výkonu](storage-performance-checklist.md).
 * Návrhy k návrhu pro zajištění vysoké dostupnosti s RA-GRS, naleznete v tématu [navrhování aplikací s vysokou dostupností pomocí RA-GRS úložiště](storage-designing-ha-apps-with-ragrs.md).
 
 ## <a name="what-is-the-rpo-and-rto-with-grs"></a>Co je RPO a RTO s GRS?
-**Cíl bodu obnovení (RPO):** GRS a RA-GRS, úložiště služby asynchronně geografickou replikaci dat z primárního do sekundárního umístění. V případě větší havárie regionální v primární oblasti Microsoft provede převzetí služeb při selhání do sekundární oblasti. Pokud dojde k selhání, může dojít ke ztrátě nedávné změny, které dosud nebyly geograficky replikovaný. Počet minut potenciální ztráta dat se označuje jako cíle bodu obnovení a informuje bod v čase, ke kterému můžete data obnovit. Azure Storage obvykle má RPO kratší než 15 minut, ale aktuálně neexistuje žádná smlouva SLA na jak dlouho georeplikace trvá.
+**Cíl bodu obnovení (RPO):** GRS a RA-GRS, úložiště služby asynchronně geografickou replikaci dat z primárního do sekundárního umístění. V případě větší havárie regionální v primární oblasti Microsoft provede převzetí služeb při selhání do sekundární oblasti. Pokud dojde k selhání, může dojít ke ztrátě nedávné změny, které dosud nebyly geograficky replikovaný. Počet minut, ke které došlo ke ztrátě dat. se označuje jako cíle bodu obnovení. Cíle bodu obnovení Určuje bod v čase, ke kterému můžete data obnovit. Azure Storage obvykle má RPO kratší než 15 minut, ale aktuálně neexistuje žádná smlouva SLA na jak dlouho georeplikace trvá.
 
 **Plánovaná doba obnovení (RTO):** RTO měří dobu potřebnou k provedení převzetí služeb při selhání a získat zpět do online režimu účtu úložiště. Čas k provedení převzetí služeb zahrnuje následující akce:
 
-   * Čas, aby Microsoftu určit, zda data můžete obnovit v primární lokalitě nebo pokud je nutné převzetí služeb při selhání.
-   * Čas k provedení převzetí služeb při selhání z účtu úložiště tak, že změníte primární záznamy DNS tak, aby odkazoval na sekundární lokalitě.
+   * Čas Microsoft vyžaduje k určení, zda lze obnovit data v primární lokalitě nebo pokud je nutné převzetí služeb při selhání
+   * Čas k provedení převzetí služeb při selhání z účtu úložiště tak, že změníte primární záznamy DNS tak, aby odkazoval na sekundární lokalitě
 
-   Společnost Microsoft má na starost zachování vašich dat vážně. Pokud je pravděpodobné, že obnovení dat v primární oblasti, Microsoft zpoždění převzetí služeb při selhání a zaměřit se na obnovení dat. 
+Společnost Microsoft má na starost zachování vašich dat vážně. Pokud je pravděpodobné, že obnovení dat v primární oblasti, Microsoft zpoždění převzetí služeb při selhání a se zaměřuje na obnovit data. 
 
 ## <a name="paired-regions"></a>Spárované oblasti 
 Při vytváření účtu úložiště vyberte primární oblast pro účet. Spárované oblasti sekundární závisí na primární oblasti a nelze změnit. Aktuální informace o oblasti, které podporuje Azure najdete v tématu [obchodní kontinuity podnikových procesů a zotavení po havárii (BCDR): spárované oblasti Azure](../../best-practices-availability-paired-regions.md).

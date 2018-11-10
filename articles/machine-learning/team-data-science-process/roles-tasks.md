@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: deguhath
-ms.openlocfilehash: 3e0e9a59d7f77355077fc1f7781eb3be4dbe0532
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: c245a844ae594f5d78b47a168ad5870f8aea10e9
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44296699"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51227769"
 ---
 # <a name="team-data-science-process-roles-and-tasks"></a>Tým vědecké zpracování dat role a úlohy
 
@@ -66,7 +66,7 @@ Toto schéma a následující, podrobnější přehled úkolů, které jsou při
 > [!NOTE]
 > Následující pokyny ukazují postup, jak nastavit prostředí TDSP a dokončete jiných úloh datových věd v Azure DevOps. Můžeme určit způsob k provedení těchto úloh s Azure DevOps, protože to je, co se používá k implementaci TDSP v Microsoftu. Azure DevOps usnadňuje spolupráci díky integraci správy pracovních položek, které sledování úkolů a kód hostitelská služba používá ke sdílení nástrojů, uspořádání verzích a poskytují zabezpečení na základě rolí. Budete moct zvolit jiné platformy, pokud chcete provádět úkoly, ohraničená TDSP. Ale v závislosti na vaší platformě, nemusí být k dispozici některé funkce z Azure DevOps. 
 >
->Pokyny zde také použít [dat virtuálního počítače VĚDY](http://aka.ms/dsvm) na Azure v cloudu jako analytický desktop s několik oblíbených nástrojů pro datové vědy předem nakonfigurované a integrují různé software společnosti Microsoft a Azure služby. Datové VĚDY nebo jiné vývojové prostředí můžete použít k implementaci TDSP. 
+>Pokyny zde také použít [dat virtuálního počítače VĚDY](https://aka.ms/dsvm) na Azure v cloudu jako analytický desktop s několik oblíbených nástrojů pro datové vědy předem nakonfigurované a integrují různé software společnosti Microsoft a Azure služby. Datové VĚDY nebo jiné vývojové prostředí můžete použít k implementaci TDSP. 
 
 
 ## <a name="group-manager-tasks"></a>Správce skupiny úloh

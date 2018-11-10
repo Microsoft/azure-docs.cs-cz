@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 02/24/2017
 ms.author: juliako
-ms.openlocfilehash: 01b8ccc9fe6b5469408131bce68a903f15382998
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 04ee2daaf7b06f8e7bdd8de144a039474551ea11
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39222524"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51227038"
 ---
 # <a name="azure-sdk-for-net-29-release-notes"></a>Poznámky k verzi Azure SDK pro .NET 2.9
 
@@ -80,7 +80,7 @@ Tato aktualizace zahrnuje následující položky:
 
 * **Azure Data Lake Tools** pro Visual Studio je nyní sloučeny do sady Azure SDK pro .NET verze. Nástroj je automaticky nainstalován při instalaci sady Azure SDK. 
   
-    Nástroj se často aktualizuje, přejděte [tady](http://aka.ms/datalaketool) můžou získat aktualizace.
+    Nástroj se často aktualizuje, přejděte [tady](https://aka.ms/datalaketool) můžou získat aktualizace.
 * **Průzkumník serveru** teď umožňuje zobrazit vše a vytvořit některé metadat entity U-SQL. Další informace najdete v tématu [to](https://azure.microsoft.com/documentation/services/data-lake-analytics/) blogu.
 
 ## <a name="hdinsight-tools"></a>Nástroje HDInsight

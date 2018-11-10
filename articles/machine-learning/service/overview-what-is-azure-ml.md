@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 author: garyericson
 ms.author: garye
 ms.date: 09/24/2018
-ms.openlocfilehash: 4a867692d3ce509443e5aa94536075fdcd4bab84
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: e3b8d6bfaa54991e0e521a0c42eba8ca3f995c92
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945956"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50741160"
 ---
 # <a name="what-is-azure-machine-learning-service-preview"></a>Co je služba Azure Machine Learning (Preview)?
 
@@ -59,7 +59,7 @@ Na výběr máte celou řadu komponent strojového učení dostupných v Open So
 
 Až budete mít model, můžete ho použít k vytvoření kontejneru (jako je Docker), který lze nasadit místně pro účely testování a následně ve formě produkční webové služby do [Azure Container Instances](how-to-deploy-to-aci.md) nebo [Azure Kubernetes Service](how-to-deploy-to-aks.md).
 
-Nasazené modely pak můžete spravovat přes [Azure Portal](https://portal.azure.com/) nebo [rozšíření rozhraní příkazového řádku pro Azure Machine Learning](https://review.docs.microsoft.com/azure/machine-learning/service/reference-azure-machine-learning-cli).
+Nasazené modely pak můžete spravovat přes [Azure Portal](https://portal.azure.com/) nebo [rozšíření rozhraní příkazového řádku pro Azure Machine Learning](reference-azure-machine-learning-cli.md).
 Během sledování experimentů s modelem můžete vyhodnotit jeho metriky, znovu ho vytrénovat a opětovně nasadit nové verze.
 
 Pokud chcete službu Azure Machine Learning začít používat, podívejte se na [Další kroky](#next-steps) níže.
@@ -85,6 +85,8 @@ Pokud nejste předplatitel, můžete si [zdarma otevřít účet Azure](https://
 - Projděte kompletní kurz věnovaný [trénování modelu klasifikace obrázků pomocí Azure Machine Learning](tutorial-train-models-with-aml.md), kde se naučíte, jak trénovat a nasazovat modely pomocí služby Azure Machine Learning.
 
 - Informace o tom, jak může Azure Machine Learning automaticky vygenerovat a optimalizovat váš model, najdete v [kurzu věnovanému automatickému trénování modelu klasifikace pomocí automatizovaného strojového učení Azure](tutorial-auto-train-models.md).
+
+- Seznamte se s [kanály strojového učení](/azure/machine-learning/service/concept-ml-pipelines), které umožňují vytvářet, optimalizovat a spravovat scénáře strojového učení.
 
 - Podrobný technický rozbor této služby najdete v článku o [architektuře a konceptech služby Azure Machine Learning](concept-azure-machine-learning-architecture.md).
 

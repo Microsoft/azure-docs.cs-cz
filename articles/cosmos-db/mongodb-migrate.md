@@ -4,93 +4,39 @@ description: Zjistěte, jak pomocí nástrojů mongoimport a mongorestore import
 keywords: mongoimport, mongorestore
 services: cosmos-db
 author: SnehaGunda
-manager: slyons
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/07/2018
-ms.author: sclyon
+ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: 56d885fa4a52c907ef2b7eab10899191a1ac3acd
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: d3a7ddcd4a95660264bdf9609f54af39a05c97b3
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48248515"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50741023"
 ---
-# <a name="migrate-your-data-to-azure-cosmos-db-mongodb-api-account"></a>Migrace dat do účtu rozhraní MongoDB API služby Azure Cosmos DB
+# <a name="tutorial-migrate-your-data-to-azure-cosmos-db-mongodb-api-account"></a>Kurz: Migrace dat do účtu rozhraní MongoDB API služby Azure Cosmos DB
 
-Pokud chcete migrovat data z MongoDB do účtu Azure Cosmos DB, aby je bylo možné použít pomocí rozhraní API pro MongoDB, musíte:
-
-* Stáhnout a nainstalovat komunitní server z webu [MongoDB Download Center](https://www.mongodb.com/download-center).
-* Použít soubor mongoimport.exe nebo mongorestore.exe nainstalovaný v adresáři složka_instalace/bin. 
-* Získat [připojovací řetězec API pro MongoDB](connect-mongodb-account.md).
-
-Pokud importujete data z MongoDB a plánujete je používat s rozhraním SQL API služby Azure Cosmos DB, měli byste k importu dat použít [nástroj pro migraci dat](import-data.md).
+Tento kurz obsahuje pokyny k migraci dat uložených v MongoDB do účtu rozhraní MongoDB API služby Azure Cosmos DB. Pokud importujete data z MongoDB a plánujete je používat s rozhraním SQL API služby Azure Cosmos DB, měli byste k importu dat použít [nástroj pro migraci dat](import-data.md).
 
 Tento kurz se zabývá následujícími úkony:
 
 > [!div class="checklist"]
-> * Načtení připojovacího řetězce
-> * Import dat MongoDB pomocí nástroje mongoimport
-> * Import dat MongoDB pomocí nástroje mongorestore
+> * Plánování migrace
+> * Požadavky na migraci
+> * Migrace dat pomocí nástroje mongoimport
+> * Migrace dat pomocí nástroje mongorestore
 
-## <a name="prerequisites"></a>Požadavky
+Před migrací dat do účtu rozhraní MongoDB API se ujistěte, že máte nějaká ukázková data MongoDB. Pokud nemáte ukázkovou databázi MongoDB, můžete si stáhnout a nainstalovat [komunitní server MongoDB](https://www.mongodb.com/download-center), vytvořit ukázkovou databázi a pomocí aplikace mongoimport.exe nebo mongorestore.exe nahrát ukázková data. 
 
-* **Zvýšená propustnost:** Doba trvání migrace dat závisí na propustnosti, kterou pro jednotlivé kolekce nebo sady kolekcí nastavíte. V případě rozsáhlejších migrací dat nezapomeňte propustnost zvýšit. Po dokončení migrace propustnost snižte, abyste dosáhli nižších nákladů. Další informace o zvýšení propustnosti na webu [Azure Portal](https://portal.azure.com) najdete v tématu [Úrovně výkonu a cenové úrovně ve službě Azure Cosmos DB](performance-levels.md).
-
-* **Povolený protokol SSL:** Azure Cosmos DB má striktní bezpečnostní požadavky a standardy. Při práci se svým účtem nezapomeňte povolit SSL. Postup pro povolení SSL pro mongoimport a mongorestore najdete ve zbývající části článku.
-
-* **Vytvoření prostředků služby Azure Cosmos DB:** Ještě před zahájením migrace dat vytvořte všechny kolekce na webu Azure Portal. Pokud provádíte migraci na účet služby Azure Cosmos DB, který má propustnost na úrovni databáze, nezapomeňte při vytváření kolekcí Azure Cosmos DB zadat klíč oddílu.
-
-## <a name="get-your-connection-string"></a>Získání připojovacího řetězce 
-
-1. V levém podokně na webu [Azure Portal](https://portal.azure.com) klikněte na položku **Azure Cosmos DB**.
-1. V podokně **Předplatná** vyberte název vašeho účtu.
-1. V okně **Připojovací řetězec** klikněte na **Připojovací řetězec**.
-
-   Pravé podokno obsahuje všechny informace, které potřebujete pro úspěšné připojení ke svému účtu.
-
-   ![Okno Připojovací řetězec](./media/mongodb-migrate/ConnectionStringBlade.png)
-
-## <a name="migrate-data-by-using-mongoimport"></a>Migrace dat pomocí nástroje mongoimport
-
-K importu dat do svého účtu služby Azure Cosmos DB použijte následující šablonu. Vyplňte *hostitele*, *uživatelské jméno* a *heslo* pomocí hodnot specifických pro váš účet.  
-
-Šablona:
-
-```bash
-    mongoimport.exe --host <your_hostname>:10255 -u <your_username> -p <your_password> --db <your_database> --collection <your_collection> --ssl --sslAllowInvalidCertificates --type json --file "C:\sample.json"
-```
-
-Příklad:  
-
-```bash
-    mongoimport.exe --host cosmosdb-mongodb-account.documents.azure.com:10255 -u cosmosdb-mongodb-account -p tkvaVkp4Nnaoirnouenrgisuner2435qwefBH0z256Na24frio34LNQasfaefarfernoimczciqisAXw== --ssl --sslAllowInvalidCertificates --db sampleDB --collection sampleColl --type json --file "C:\Users\admin\Desktop\*.json"
-```
-
-## <a name="migrate-data-by-using-mongorestore"></a>Migrace dat pomocí nástroje mongorestore
-
-K obnovení dat do svého účtu rozhraní API pro MongoDB použijte následující šablonu pro spuštění importu. Vyplňte *hostitele*, *uživatelské jméno* a *heslo* pomocí hodnot specifických pro váš účet.
-
-Šablona:
-
-```bash
-    mongorestore.exe --host <your_hostname>:10255 -u <your_username> -p <your_password> --db <your_database> --collection <your_collection> --ssl --sslAllowInvalidCertificates <path_to_backup>
-```
-
-Příklad:
-
-```bash
-    mongorestore.exe --host cosmosdb-mongodb-account.documents.azure.com:10255 -u cosmosdb-mongodb-account -p tkvaVkp4Nnaoirnouenrgisuner2435qwefBH0z256Na24frio34LNQasfaefarfernoimczciqisAXw== --ssl --sslAllowInvalidCertificates ./dumps/dump-2016-12-07
-```
-    
-## <a name="steps-for-a-successful-migration"></a>Postup úspěšné migrace
+## <a name="plan-for-migration"></a>Plánování migrace
 
 1. Předem vytvořte a škálujte kolekce:
         
-    * Ve výchozím nastavení Azure Cosmos DB zřídí novou kolekci MongoDB s 1 000 jednotek žádostí za sekundu (RU/s). Před zahájením migrace pomocí nástroje mongoimport nebo mongorestore předem vytvořte všechny kolekce pomocí webu [Azure Portal](https://portal.azure.com) nebo ovladačů a nástrojů MongoDB. Pokud je velikost vašich dat větší než 10 GB, nezapomeňte vytvořit [sdílenou/dělenou kolekci](partition-data.md) s odpovídajícím klíčem horizontálního dělení.
+    * Ve výchozím nastavení Azure Cosmos DB zřídí novou kolekci MongoDB s 1 000 jednotek žádostí za sekundu (RU/s). Před zahájením migrace pomocí nástroje mongoimport nebo mongorestore předem vytvořte všechny kolekce pomocí webu [Azure Portal](https://portal.azure.com) nebo ovladačů a nástrojů MongoDB. Pokud je velikost dat větší než 10 GB, nezapomeňte vytvořit [dělenou kolekci](partition-data.md) s odpovídajícím klíčem horizontálního dělení.
 
     * Jen pro účely migrace na webu [Azure Portal](https://portal.azure.com) zvyšte propustnost vašich kolekcí z 1 000 RU/s pro kolekce s jedním oddílem a 2 500 RU/s pro horizontálně dělené kolekce. Vyšší propustnost vám umožní zabránit omezování rychlosti a zkrátit dobu migrace. Okamžitě po migraci můžete propustnost snížit, abyste dosáhli nižších nákladů.
 
@@ -143,9 +89,9 @@ Příklad:
     
     b. Spusťte jednoduchý dotaz na databázi: ```db.coll.find().limit(1)```. Zobrazí se odpověď, která vypadá následovně:
 
-        ```
-        Fetched 1 record(s) in 100(ms)
-        ```
+       ```bash
+       Fetched 1 record(s) in 100(ms)
+       ```
         
 1. Odeberte dokument vložený před migrací, abyste zajistili, že nedojde k duplicitě dokumentů. Dokumenty můžete odebrat pomocí tohoto příkazu: ```db.coll.remove({})```.
 
@@ -169,16 +115,66 @@ Příklad:
     
     *numInsertionWorkers = (10 000 RU × 0,1 s) / (24 × 10 RU) = 4,1666*
 
-1. Spusťte dokončený příkaz pro migraci:
+1. Spusťte příkaz pro migraci. Popis možností pro migraci dat najdete v dalších částech.
 
    ```bash
-   mongoimport.exe --host cosmosdb-mongodb-account.documents.azure.com:10255 -u cosmosdb-mongodb-account -p wzRJCyjtLPNuhm53yTwaefawuiefhbauwebhfuabweifbiauweb2YVdl2ZFNZNv8IU89LqFVm5U0bw== --ssl --sslAllowInvalidCertificates --jsonArray --db dabasename --collection collectionName --file "C:\sample.json" --numInsertionWorkers 4 --batchSize 24
+   mongoimport.exe --host cosmosdb-mongodb-account.documents.azure.com:10255 -u cosmosdb-mongodb-account -p <Your_MongoDB_password> --ssl --sslAllowInvalidCertificates --jsonArray --db dabasename --collection collectionName --file "C:\sample.json" --numInsertionWorkers 4 --batchSize 24
    ```
    Případně můžete použít mongorestore (ujistěte se, že všechny kolekce mají nastavenou propustnost minimálně na stejný počet RU jako v předchozích výpočtech):
    
    ```bash
-   mongorestore.exe --host cosmosdb-mongodb-account.documents.azure.com:10255 -u cosmosdb-mongodb-account -p wzRJCyjtLPNuhm53yTwaefawuiefhbauwebhfuabweifbiauweb2YVdl2ZFNZNv8IU89LqFVm5U0bw== --ssl --sslAllowInvalidCertificates ./dumps/dump-2016-12-07 --numInsertionWorkersPerCollection 4 --batchSize 24
+   mongorestore.exe --host cosmosdb-mongodb-account.documents.azure.com:10255 -u cosmosdb-mongodb-account -p <Your_MongoDB_password> --ssl --sslAllowInvalidCertificates ./dumps/dump-2016-12-07 --numInsertionWorkersPerCollection 4 --batchSize 24
    ```
+
+## <a name="prerequisites-for-migration"></a>Požadavky na migraci
+
+* **Zvýšená propustnost:** Doba trvání migrace dat závisí na propustnosti, kterou pro jednotlivé kolekce nebo sady kolekcí nastavíte. V případě rozsáhlejších migrací dat nezapomeňte propustnost zvýšit. Po dokončení migrace propustnost snižte, abyste dosáhli nižších nákladů. Další informace o zvýšení propustnosti na webu [Azure Portal](https://portal.azure.com) najdete v tématu [Úrovně výkonu a cenové úrovně ve službě Azure Cosmos DB](performance-levels.md).
+
+* **Povolený protokol SSL:** Azure Cosmos DB má striktní bezpečnostní požadavky a standardy. Při práci se svým účtem nezapomeňte povolit SSL. Postup pro povolení SSL pro mongoimport a mongorestore najdete ve zbývající části článku.
+
+* **Vytvoření prostředků služby Azure Cosmos DB:** Ještě před zahájením migrace dat vytvořte všechny kolekce na webu Azure Portal. Pokud provádíte migraci na účet služby Azure Cosmos DB, který má propustnost na úrovni databáze, nezapomeňte při vytváření kolekcí Azure Cosmos DB zadat klíč oddílu.
+
+## <a name="get-your-connection-string"></a>Získání připojovacího řetězce 
+
+1. V levém podokně na webu [Azure Portal](https://portal.azure.com) klikněte na položku **Azure Cosmos DB**.
+1. V podokně **Předplatná** vyberte název vašeho účtu.
+1. V okně **Připojovací řetězec** klikněte na **Připojovací řetězec**.
+
+   Pravé podokno obsahuje všechny informace, které potřebujete pro úspěšné připojení ke svému účtu.
+
+   ![Okno Připojovací řetězec](./media/mongodb-migrate/ConnectionStringBlade.png)
+
+## <a name="migrate-data-by-using-mongoimport"></a>Migrace dat pomocí nástroje mongoimport
+
+K importu dat do svého účtu služby Azure Cosmos DB použijte následující šablonu. Vyplňte *hostitele*, *uživatelské jméno* a *heslo* pomocí hodnot specifických pro váš účet.  
+
+Šablona:
+
+```bash
+mongoimport.exe --host <your_hostname>:10255 -u <your_username> -p <your_password> --db <your_database> --collection <your_collection> --ssl --sslAllowInvalidCertificates --type json --file "C:\sample.json"
+```
+
+Příklad:  
+
+```bash
+mongoimport.exe --host cosmosdb-mongodb-account.documents.azure.com:10255 -u cosmosdb-mongodb-account -p <Your_MongoDB_password> --ssl --sslAllowInvalidCertificates --db sampleDB --collection sampleColl --type json --file "C:\Users\admin\Desktop\*.json"
+```
+
+## <a name="migrate-data-by-using-mongorestore"></a>Migrace dat pomocí nástroje mongorestore
+
+K obnovení dat do svého účtu rozhraní API pro MongoDB použijte následující šablonu pro spuštění importu. Vyplňte *hostitele*, *uživatelské jméno* a *heslo* pomocí hodnot specifických pro váš účet.
+
+Šablona:
+
+```bash
+mongorestore.exe --host <your_hostname>:10255 -u <your_username> -p <your_password> --db <your_database> --collection <your_collection> --ssl --sslAllowInvalidCertificates <path_to_backup>
+```
+
+Příklad:
+
+```bash
+mongorestore.exe --host cosmosdb-mongodb-account.documents.azure.com:10255 -u cosmosdb-mongodb-account -p <Your_MongoDB_password> --ssl --sslAllowInvalidCertificates ./dumps/dump-2016-12-07
+```
 
 ## <a name="next-steps"></a>Další kroky
 

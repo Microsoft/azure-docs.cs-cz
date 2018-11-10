@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.date: 04/04/2017
-ms.openlocfilehash: 240be0e7dc199a84130739244743d245b780b608
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 2f3d96908cbcb68ff01a6e43696a119bf21d02ce
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902072"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51226561"
 ---
 # <a name="overview-diagram-of-azure-machine-learning-studio-capabilities"></a>Diagram s přehledem možností nástroje Machine Learning Studio
 Diagram s **přehledem možností nástroje Machine Learning Studio** nastiňuje na nejvyšší úrovni, jak pomocí nástroje Machine Learning Studio vyvinout model prediktivní analýzy a zprovoznit ho v cloudu Azure.
@@ -39,7 +39,7 @@ Tento diagram znázorňuje, jak do sebe všechny tyto součásti zapadají.
 ## <a name="download-the-machine-learning-studio-overview-diagram"></a>Stažení diagramu s přehledem nástroje Machine Learning Studio
 Stáhněte si diagram s **přehledem možností nástroje Machine Learning Studio**, který na nejvyšší úrovni znázorňuje schéma funkcí nástroje Machine Learning Studio. Pokud ho chcete mít po ruce, můžete si ho vytisknout ve velikosti tabloid (11 × 17 palců).
 
-**Diagram si můžete stáhnout tady: [Přehled možností nástroje Microsoft Machine Learning Studio.](http://download.microsoft.com/download/C/4/6/C4606116-522F-428A-BE04-B6D3213E9E52/ml_studio_overview_v1.1.pdf)**
+**Diagram si můžete stáhnout tady: [Přehled možností nástroje Microsoft Machine Learning Studio.](https://download.microsoft.com/download/C/4/6/C4606116-522F-428A-BE04-B6D3213E9E52/ml_studio_overview_v1.1.pdf)**
 
 ![Přehled možností nástroje Microsoft Machine Learning Studio][studio-overview]
 

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 9/12/2018
+ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: b1f7120b3758e35d818aedbcc3b85feca44f8c33
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: a7f21d0ebebbe2c811470de384cc5ee9a34ab060
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46129654"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51006154"
 ---
 # <a name="protect-your-network-resources-in-azure-security-center"></a>Chraňte své prostředky sítě v Azure Security Center
 Azure Security Center průběžně analyzuje stav zabezpečení vašich prostředků Azure pro osvědčené postupy zabezpečení sítě. Když Security Center identifikuje potenciální ohrožení zabezpečení, vytvoří se doporučení, která vás provede procesem konfigurace potřebných kontrol k posílení zabezpečení a ochraně vašich prostředků.
@@ -126,6 +126,20 @@ V tomto zobrazení topologie zobrazí první úroveň virtuální sítě. Druhý
 
 Na třetí úrovni zobrazí virtuální počítače, který je podobný už uváděli dříve. Můžete kliknout na prostředek pro další informace nebo použijete řízení potřebné zabezpečení nebo konfigurace.
 
+## <a name="network-recommendations"></a>Doporučení pro síť
+
+|Typ prostředku|Bezpečnostní skóre|Doporučení|Popis|
+|----|----|----|----|
+|Počítač|40|Povolit skupiny NSG na virtuálních počítačích|Povolte skupiny zabezpečení sítě řídit přístup k síti virtuálních počítačů.|
+|Podsíť|35|Povolit skupiny zabezpečení sítě u podsítí |Povolte skupiny zabezpečení sítě řídit přístup k síti prostředků nasazené ve vaší podsítě.|
+|Počítač|30|Použití řízení přístupu k síti podle potřeby|Platí jenom v řízení přístupu na čas virtuálního počítače trvale zamezit přístup k portům vybrané a povolte autorizovaným uživatelům otevírat prostřednictvím stejný mechanismus a po omezenou dobu.|
+|Počítač|20|Omezit přístup přes internetový koncový bod|Posílení zabezpečení goups sítě z vašeho internetového virtuální počítače tak, že omezíte přístup k vaší existující povolit pravidla.|
+|Počítač|10|Přidání brány firewall příští generace|Přidáte řešení Brána Firewall další generace (NGFW) kvůli lepší ochraně vašich virtuálních počítačů směřujících do Internetu.|
+|Počítač|5|Směrování provozu přes síťové brány jenom přes firewall|Aby bylo možné dokončit nasazení další generace řešení brány firewall, se mají směrovat provoz do vašich chráněných virtuálních počítačů směřujících do Internetu jenom přes další generace řešení brány firewall.|
+|VNet|5|Povolit před útoky DDoS standard protection|Aplikace s veřejnými IP adresami v těchto virtuálních sítích nejsou chráněny službou ochrany před útoky DDOS standard. Doporučujeme, aby je chcete povolit omezení rizik odměrné sítě a útoky protokolu.|
+|Počítač|10|Přidání brány firewall příští generace|dd řešení Brána Firewall další generace (NGFW) kvůli lepší ochraně vašich virtuálních počítačů směřujících do Internetu.|
+|Počítač|5|Směrování provozu přes síťové brány jenom přes firewall|Aby bylo možné dokončit nasazení další generace řešení brány firewall, se mají směrovat provoz do vašich chráněných virtuálních počítačů směřujících do Internetu jenom přes další generace řešení brány firewall.|
+Virtuální síť|5|Povolit před útoky DDoS standard protection|Aplikace s veřejnými IP adresami v těchto virtuálních sítích nejsou chráněny službou ochrany před útoky DDOS standard. Doporučujeme, aby je chcete povolit omezení rizik odměrné sítě a útoky protokolu.|
 ## <a name="see-also"></a>Další informace najdete v tématech
 Další informace o doporučení, které se vztahují na jiné typy prostředků Azure, naleznete v následujících tématech:
 

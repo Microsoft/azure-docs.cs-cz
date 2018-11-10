@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/13/2017
+ms.date: 10/13/2018
 ms.author: yurid
-ms.openlocfilehash: 6ab3611d47b32eddd41736df69a3e7382c2b220d
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 9c13bd671efee5bc07885320cbaa0bd090cc1390
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44298757"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51226356"
 ---
 # <a name="connecting-azure-active-directory-identity-protection-to-azure-security-center"></a>Připojení služby Azure Active Directory Identity Protection ke službě Azure Security Center
 Tento dokument vám umožní nakonfigurovat integraci Azure Active Directory (AD) Identity Protection a Azure Security Center.
@@ -55,6 +55,6 @@ V tomto dokumentu jste zjistili, jak se připojit ke službě Security Center sl
 * [Sledování partnerských řešení pomocí Azure Security Center](security-center-partner-solutions.md) – Zjistěte, jak pomocí Azure Security Center sledovat stav vašich partnerských řešení.
 - [Zabezpečení dat ve službě Azure Security Center](security-center-data-security.md) – zjistěte, jak data správy a ochrany ve službě Security Center.
 * [Azure Security Center – nejčastější dotazy](security-center-faq.md) – Přečtěte si nejčastější dotazy o použití této služby.
-* [Blog o zabezpečení Azure](http://blogs.msdn.com/b/azuresecurity/) – získejte nejnovější zprávy zabezpečení Azure a informace.
+* [Blog o zabezpečení Azure](https://blogs.msdn.com/b/azuresecurity/) – získejte nejnovější zprávy zabezpečení Azure a informace.
 
 

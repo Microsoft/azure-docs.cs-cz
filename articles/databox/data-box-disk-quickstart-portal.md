@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 09/07/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to quickly deploy Data Box Disk so as to import data into Azure.
-ms.openlocfilehash: ca0fb177c8b6a16cf624fd4533c9c9040e6d9dee
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: eb5cf5c6eb210e8bd26c7c074ef6f499e5d4c83d
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49365230"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50740744"
 ---
 # <a name="quickstart-deploy-azure-data-box-disk-using-the-azure-portal-preview"></a>Rychlé zprovoznění: Nasazení Azure Data Box Disku pomocí webu Azure Portal (Preview)
 
@@ -70,11 +70,11 @@ Tento krok trvá přibližně 5 minut.
     3. Spusťte odemykací nástroj Data Box Disku a zadejte klíč. Při vložení dalšího disku vždy znovu spusťte odemykací nástroj a zadejte klíč. **K odemknutí disku nepoužívejte dialogové okno nástroje BitLocker ani klíč nástroje BitLocker.** Další informace o odemykání disků najdete v článku o [odemknutí disků v klientovi pro Windows]() nebo [odemknutí disků v klientovi pro Linux]().
     4. Nástroj zobrazí písmeno jednotky přiřazené k danému disku. Poznamenejte si písmeno diskové jednotky. Budete ho potřebovat v dalších krocích.
 
-## <a name="copy-data-and-verify"></a>Kopírování dat a ověření
+## <a name="copy-data-and-validate"></a>Kopírování dat a ověření
 
 Doba trvání této operace závisí na množství dat. 
 
-1. Jednotka obsahuje složky *PageBlob*, *BlockBlob* a *AzureImportExport*. Přetáhněte data ke kopírování, která chcete importovat jako objekty blob bloku, do složky *BlockBlob*. Data jako VHD/VHDX podobně zkopírujte do složky *PageBlob*.
+1. Jednotka obsahuje složky *PageBlob*, *BlockBlob* a *DataBoxDiskImport*. Přetáhněte data ke kopírování, která chcete importovat jako objekty blob bloku, do složky *BlockBlob*. Data jako VHD/VHDX podobně zkopírujte do složky *PageBlob*.
 
     V účtu služby Azure Storage se pro každou podsložku ve složkách *BlockBlob* a *PageBlob* vytvoří zvláštní kontejner. Všechny soubory ve složkách *BlockBlob* a *PageBlob* se zkopírují do výchozího kontejneru `$root` v účtu Azure Storage.
 
@@ -82,7 +82,7 @@ Doba trvání této operace závisí na množství dat.
     > - Všechny kontejnery a objekty blob by měly být v souladu se [zásadami vytváření názvů v Azure](data-box-disk-limits.md#azure-block-blob-and-page-blob-naming-conventions). Při nedodržení těchto pravidel se odesílání dat do Azure nezdaří.
     > - Ujistěte se, že velikost souborů nepřekračuje ~4,75 TiB v případě objektů blob bloku a 8 TiB v případě objektů blob stránky.
 
-2. (Volitelné) Po dokončení kopírování doporučujeme vygenerovat kontrolní součty pro ověření spuštěním souboru `DataBoxDiskValidation.cmd`, který se nachází ve složce *AzureImportExport*. V závislosti na velikosti dat může tento krok nějakou dobu trvat. 
+2. (Volitelné) Po dokončení kopírování doporučujeme vygenerovat kontrolní součty pro ověření spuštěním souboru `DataBoxDiskValidation.cmd`, který se nachází ve složce *DataBoxDiskImport*. V závislosti na velikosti dat může tento krok nějakou dobu trvat. 
 3. Odpojte jednotku. 
 
 

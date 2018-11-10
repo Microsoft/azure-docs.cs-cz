@@ -5,21 +5,23 @@ services: event-grid
 keywords: ''
 author: tfitzmac
 ms.author: tomfitz
-ms.date: 10/09/2018
+ms.date: 10/30/2018
 ms.topic: quickstart
 ms.service: event-grid
-ms.openlocfilehash: 7ca8311c97faed980555c46d977a5df85c20353d
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: eb814447705112758b70d0a467489e5973c9c80a
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49067449"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50418139"
 ---
 # <a name="route-custom-events-to-azure-queue-storage-with-azure-cli-and-event-grid"></a>Směrování vlastních událostí do Azure Queue Storage pomocí Azure CLI a Event Gridu
 
 Azure Event Grid je služba zpracování událostí pro cloud. Azure Queue Storage je jednou z podporovaných obslužných rutin události. V tomto článku vytvoříte pomocí Azure CLI vlastní téma, přihlásíte se k jeho odběru a aktivujete událost, abyste viděli výsledek. Události odešlete do Queue Storage.
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
+
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 [!INCLUDE [event-grid-preview-feature-note.md](../../includes/event-grid-preview-feature-note.md)]
 
@@ -72,16 +74,17 @@ Následující skript načte ID prostředku účtu úložiště pro danou frontu
 ```azurecli-interactive
 storageid=$(az storage account show --name $storagename --resource-group gridResourceGroup --query id --output tsv)
 queueid="$storageid/queueservices/default/queues/$queuename"
+topicid=$(az eventgrid topic show --name <topic_name> -g gridResourceGroup --query id --output tsv)
 
 az eventgrid event-subscription create \
-  --topic-name <topic_name> \
-  -g gridResourceGroup \
+  --source-resource-id $topicid \
   --name <event_subscription_name> \
   --endpoint-type storagequeue \
-  --endpoint $queueid
+  --endpoint $queueid \
+  --expiration-date "2018-11-30"
 ```
 
-Účet, který vytváří odběr události, musí mít přístup k zápisu do služby Queue Storage.
+Účet, který vytváří odběr události, musí mít přístup k zápisu do služby Queue Storage. Všimněte si, že je nastavené datum vypršení platnosti odběru. Po tomto datu automaticky vyprší platnost odběru událostí. Nastavte vypršení platnosti pro odběry událostí, které jsou potřeba jenom po omezenou dobu.
 
 Pokud k vytvoření odběru používáte rozhraní REST API, předáte ID účtu úložiště a název fronty jako samostatný parametr.
 

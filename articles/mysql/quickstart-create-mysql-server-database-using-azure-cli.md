@@ -9,14 +9,14 @@ editor: jasonwhowell
 ms.service: mysql
 ms.devlang: azure-cli
 ms.topic: quickstart
-ms.date: 09/14/2018
+ms.date: 11/01/2018
 ms.custom: mvc
-ms.openlocfilehash: c5d76141de6f5d256c7591da928c1395e83a8362
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 6e6a22d450aa9b51aa16ebf5e712d65e924b7869
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47406018"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50958385"
 ---
 # <a name="create-an-azure-database-for-mysql-server-using-azure-cli"></a>Vytvoření serveru Azure Database for MySQL pomocí Azure CLI
 Tento rychlý start popisuje, jak za pět minut vytvořit pomocí Azure CLI server Azure Database for MySQL ve skupině prostředků Azure. Azure CLI slouží k vytváření a správě prostředků Azure z příkazového řádku nebo ve skriptech.
@@ -53,7 +53,7 @@ backup-retention | 7 | Určuje, jak dlouho se mají uchovávat zálohy. Jednotko
 geo-redundant-backup | Zakázáno | Určuje, jestli pro tento server mají nebo nemají být povolené geograficky redundantní zálohy. Povolené hodnoty: Enabled, Disabled.
 location | westus | Lokace Azure pro server.
 ssl-enforcement | Povoleno | Určuje, jestli pro tento server má nebo nemá být povolený protokol SSL. Povolené hodnoty: Enabled, Disabled.
-velikost úložiště | 51200 | Kapacita úložiště serveru (jednotkou jsou megabajty). Platná velikost úložiště je minimálně 5 120 MB a navyšuje se v přírůstcích 1 024 MB. Viz [cenové úrovně](./concepts-pricing-tiers.md) dokument k více informacím o kapacitách úložiště. 
+velikost úložiště | 51200 | Kapacita úložiště serveru (jednotkou jsou megabajty). Platná velikost úložiště je minimálně 5 120 MB a navyšuje se v přírůstcích 1 024 MB. Další informace o limitech velikosti úložiště najdete v dokumentu o [cenových úrovních](./concepts-pricing-tiers.md). 
 version | 5.7 | Hlavní verze MySQL.
 admin-user | myadmin | Uživatelské jméno pro přihlášení správce. Nemůže být **azure_superuser**, **admin**, **administrátor**, **root**, **host** nebo  **public**.
 admin-password | *bezpečné heslo* | Heslo uživatele, který je správcem. Musí mít 8 až 128 znaků. Heslo musí obsahovat znaky ze tří z těchto kategorií: velká písmena anglické abecedy, malá písmena anglické abecedy, číslice a jiné než alfanumerické znaky.
@@ -136,12 +136,12 @@ Výsledek je ve formátu JSON. Poznamenejte si **fullyQualifiedDomainName** a **
 ```
 
 ## <a name="connect-to-the-server-using-the-mysqlexe-command-line-tool"></a>Připojení k serveru pomocí nástroje příkazového řádku mysql.exe
-Připojte se k serveru pomocí nástroje příkazového řádku **mysql.exe**. MySQL můžete stáhnout [odsud](https://dev.mysql.com/downloads/) a nainstalovat do svého počítače. Místo toho můžete také kliknout na tlačítko **Vyzkoušet** ve vzorových kódech nebo na tlačítko `>_` v pravém horním panelu nástrojů na webu Azure Portal a spustit **Azure Cloud Shell**.
+Připojte se k serveru pomocí nástroje příkazového řádku **mysql.exe**. MySQL můžete stáhnout [odsud](https://dev.mysql.com/downloads/) a nainstalovat do svého počítače. 
 
 Zadejte další příkazy: 
 
 1. Připojení k serveru pomocí nástroje příkazového řádku **mysql**:
-```azurecli-interactive
+```bash
  mysql -h mydemoserver.mysql.database.azure.com -u myadmin@mydemoserver -p
 ```
 

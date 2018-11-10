@@ -4,21 +4,21 @@ description: Použijte Azure Resource Graph ke spuštění některých úvodníc
 services: resource-graph
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/18/2018
+ms.date: 10/22/2018
 ms.topic: quickstart
 ms.service: resource-graph
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: ba3df8f0f7fa0443e64972647b6f146f756e62d6
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: d5b2bb719bcd5c2145740a02bc408385953ff739
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49646624"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50084526"
 ---
 # <a name="starter-resource-graph-queries"></a>Úvodní dotazy na Resource Graph
 
-Prvním krokem k porozumění dotazům s Azure Resource Graph jsou základní znalosti [dotazovacího jazyka](../concepts/query-language.md). Pokud ještě nejste obeznámeni s [Azure Data Explorer](../../../data-explorer/data-explorer-overview.md), doporučuje se pročíst základní informace, abyste pochopili, jak sestavit požadavek na prostředky, které hledáte.
+Prvním krokem k porozumění dotazům s Azure Resource Graph jsou základní znalosti [dotazovacího jazyka](../concepts/query-language.md). Pokud ještě neznáte [Azure Data Explorer](../../../data-explorer/data-explorer-overview.md), doporučujeme přečíst si základní informace, abyste pochopili, jak vytvářet požadavky na prostředky, které hledáte.
 
 Projdeme následující úvodní dotazy:
 
@@ -38,11 +38,11 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="language-support"></a>Podpora jazyků
 
-Azure PowerShell (prostřednictvím modulu) a Azure CLI (prostřednictvím rozšíření) podporují Azure Resource Graph. Než se pustíte do některého z následujících dotazů, zkontrolujte, že je prostředí připravené. Zobrazte [Azure CLI](../first-query-azurecli.md#add-the-resource-graph-extension) a [Azure PowerShell](../first-query-powershell.md#add-the-resource-graph-module) pro pokyny k instalaci a ověření vašeho výběru prostředí.
+Azure PowerShell (prostřednictvím modulu) a Azure CLI (prostřednictvím rozšíření) podporují Azure Resource Graph. Před spuštěním jakéhokoli z následujících dotazů zkontrolujte, že je vaše prostředí připravené. Zobrazte [Azure CLI](../first-query-azurecli.md#add-the-resource-graph-extension) a [Azure PowerShell](../first-query-powershell.md#add-the-resource-graph-module) pro pokyny k instalaci a ověření vašeho výběru prostředí.
 
 ## <a name="count-resources"></a>Počet prostředků Azure
 
-Tento dotaz vrátí počet prostředků Azure, které existují v předplatných, ke kterým máte přístup. Je to také vhodný dotaz pro použití k ověření, že vaše vybrané prostředí má nainstalované odpovídající komponenty Azure Resource Graph a ve funkčním stavu.
+Tento dotaz vrátí počet prostředků Azure, které existují v předplatných, ke kterým máte přístup. Tento dotaz je také vhodný k ověření, že vaše vybrané prostředí má nainstalované a funkční odpovídající komponenty služby Azure Resource Graph.
 
 ```Query
 summarize count()
@@ -58,7 +58,7 @@ Search-AzureRmGraph -Query "summarize count()"
 
 ## <a name="list-resources"></a>Výpis prostředků seřazených podle názvu
 
-Tento dotaz bez omezení na jakýkoli typ prostředku nebo konkrétní odpovídající vlastnosti vrátí pouze **název**, **typ** a **umístění** prostředků Azure, ale používá `order by` k jejich řazení podle vlastnosti **názvu** ve vzestupném (`asc`) pořadí.
+Tento dotaz vrátí jakýkoli typ prostředku, ale pouze vlastnosti **name** (Název), **type** (Typ) a **location** (Umístění). Pomocí klauzule `order by` seřadí vlastnosti podle vlastnosti **name** (Název) ve vzestupném pořadí (`asc`).
 
 ```Query
 project name, type, location
@@ -75,8 +75,7 @@ Search-AzureRmGraph -Query "project name, type, location | order by name asc"
 
 ## <a name="show-vms"></a>Zobrazení všech virtuálních počítačů, které jsou seřazené podle názvu v sestupném pořadí
 
-Místo získávání všech prostředků Azure, pokud chceme seznam virtuálních počítačů (které jsou typu `Microsoft.Compute/virtualMachines`), můžeme ve výsledcích porovnat **typ** vlastnosti.
-Podobně jako v předchozím dotazu musí být změny `desc` `order by` být řazeny sestupně. `=~` ve shodě typu říká Azure Resource Graphu aby nerozlišoval malá a velká písmena.
+Když chceme vypsat pouze virtuální počítače (typ `Microsoft.Compute/virtualMachines`), můžeme ve výsledcích porovnat shodu vlastnosti **type** (Typ). Podobně jako v předchozím dotazu musí být změny `desc` `order by` být řazeny sestupně. `=~` ve shodě typu říká Azure Resource Graphu aby nerozlišoval malá a velká písmena.
 
 ```Query
 project name, location, type
@@ -112,7 +111,7 @@ Search-AzureRmGraph -Query "where type =~ 'Microsoft.Compute/virtualMachines' | 
 
 ## <a name="count-os"></a>Počet virtuálních počítačů podle typu operačního systému
 
-Staví na předchozím dotazu, jsme stále od Azure omezení prostředky typu `Microsoft.Compute/virtualMachines`, ale už nejsme omezení počtem vrácených záznamů.
+Vycházíme z předchozího dotazu a stále omezujeme prostředky Azure na typ `Microsoft.Compute/virtualMachines`, ale už neomezujeme počet vrácených záznamů.
 Místo toho jsme použili `summarize` a `count()` k definování, jak seskupit a agregovat hodnoty podle vlastností, což je v tomto příkladu `properties.storageProfile.osDisk.osType`. Příklad toho, jak tento řetězec vypadá v úplném objektu, najdete v části [zjišťování prostředků – objevování virtuálních počítačů](../concepts/explore-resources.md#virtual-machine-discovery).
 
 ```Query
@@ -165,7 +164,8 @@ Search-AzureRmGraph -Query "where type contains 'storage' | distinct type"
 
 ## <a name="list-publicip"></a>Seznam všech veřejných IP adres
 
-Podobně jako v předchozím dotazu bude nalezeno všechno, co bylo typem obsahujícím slovo **publicIPAddresses**. Tento dotaz je rozšířen na tomto vzoru, aby se vyloučily výsledky, kde **properties.ipAddress** má hodnotu nula, aby se vrátily pouze vlastnosti **properties.ipAddress**a získaly se `limit` výsledky podle prvních 100. V závislosti na zvoleném prostředí možná budete muset odebrat uvozovky.
+Podobně jako v předchozím dotazu se vyhledají všechny záznamy, jejichž typ obsahuje slovo **publicIPAddresses**.
+Tento dotaz je rozšířen na tomto vzoru, aby se vyloučily výsledky, kde **properties.ipAddress** má hodnotu nula, aby se vrátily pouze vlastnosti **properties.ipAddress**a získaly se `limit` výsledky podle prvních 100. V závislosti na zvoleném prostředí možná budete muset odebrat uvozovky.
 
 ```Query
 where type contains 'publicIPAddresses' and properties.ipAddress != ''
@@ -200,7 +200,7 @@ Search-AzureRmGraph -Query "where type contains 'publicIPAddresses' and properti
 
 ## <a name="list-tag"></a>Seznam prostředků s konkrétní hodnotou značky
 
-Rozsah výsledků můžeme omezit podle vlastností jiných než typ prostředku Azure, jako je například značka. V tomto příkladu jsme vyfiltrovali prostředky Azure s názvem značky **prostředí**, které mají hodnotu **interní**.
+Rozsah výsledků můžeme omezit podle vlastností jiných než typ prostředku Azure, jako je například značka. V tomto příkladu vyfiltrujeme prostředky Azure s názvem značky **Environment** (Prostředí) s hodnotou **Internal** (Interní).
 
 ```Query
 where tags.environment=~'internal'
@@ -215,7 +215,7 @@ az graph query -q "where tags.environment=~'internal' | project name"
 Search-AzureRmGraph -Query "where tags.environment=~'internal' | project name"
 ```
 
-Pokud bylo potřeba také zjistit, jaké značky a hodnoty tyto prostředky mají, může být tento příklad rozšířen přidáním **značek** vlastností do `project` klíčového slova.
+Pokud chcete vrátit také značky prostředku a jejich hodnoty, přidejte ke klíčovému slovu `project` vlastnost **tags** (Značky).
 
 ```Query
 where tags.environment=~'internal'
@@ -232,7 +232,7 @@ Search-AzureRmGraph -Query "where tags.environment=~'internal' | project name, t
 
 ## <a name="list-specific-tag"></a>Seznam všech účtů úložiště s konkrétní hodnotou značky
 
-Kombinuje schopnosti filtru z předchozího příkladu s použitím filtrování podle typu prostředku Azure podle vlastnosti **typu**, můžeme naše vyhledávání omezit na konkrétní typy prostředků Azure s konkrétním názvem značky a hodnotou.
+Zkombinujte funkci filtrování z předchozího příkladu a vyfiltrujte typ prostředku Azure podle vlastnosti **type** (Typ). Tento dotaz naše hledání omezuje také na konkrétní typy prostředků Azure s konkrétním názvem a hodnotou značky.
 
 ```Query
 where type =~ 'Microsoft.Storage/storageAccounts'

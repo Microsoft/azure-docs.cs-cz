@@ -3,18 +3,18 @@ title: Nasazení a správa topologií Apache Storm v Azure HDInsight
 description: Zjistěte, jak nasadit, monitorovat a správa topologií Apache Storm pomocí řídicího panelu Storm v HDInsight se systémem Windows. Použití nástrojů Hadoopu pro Visual Studio.
 services: hdinsight
 ms.service: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 03/01/2017
-ms.author: jasonh
+ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 97dfa2ffc103de377b4c510d2a3a7404b5e96747
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 53f729e23ced00bd0acb5674308f8c610bff8868
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43050725"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51005372"
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-windows-based-hdinsight"></a>Nasazení a správa topologií Apache Storm v HDInsight se systémem Windows
 

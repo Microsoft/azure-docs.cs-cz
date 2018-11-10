@@ -8,16 +8,47 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: conceptual
-ms.date: 10/12/2018
+ms.date: 11/06/2018
 ms.author: wolfma
-ms.openlocfilehash: b5e4d239121b2449a45dfce826c99765f1c3f4be
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: e2c676932541866df081f6db54fa0b1ec4da7088
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49471132"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51218589"
 ---
 # <a name="release-notes"></a>Poznámky k verzi
+
+## <a name="speech-service-sdk-110"></a>Speech Service SDK 1.1.0
+
+**Nové funkce**
+
+* Podpora pro Android x86/x64.
+* Podpora proxy: V objektu SpeechConfig můžete nyní volat funkce nastavíte informace o proxy serveru (název hostitele, port, uživatelské jméno a heslo). Tato funkce není k dispozici v systému iOS.
+* Vylepšené chybové kód a zprávy. Pokud rozlišení vrátil chybu, to již nastaven `Reason` (v případě zrušené) nebo `CancellationDetails` (v výsledek rozpoznání) k `Error`. Zrušené událost teď obsahuje dva další členy, `ErrorCode` a `ErrorDetails`. Pokud server vrátil Další informace o chybě s oznámenou chybu, teď bude k dispozici v nové členy.
+
+**Vylepšení**
+
+* Přidání dalšího ověření v konfiguraci modulu pro rozpoznávání a přidal další chybové zprávy.
+* Vylepšené zpracování dlouholetý nečinnosti uprostřed zvukový soubor.
+* Balíček NuGet: pro rozhraní .NET Framework projekty zabránit sestavování s využitím konfigurace AnyCPU.
+
+**Opravy chyb**
+
+* Opravili jsme několik výjimek, které jsou součástí nástrojů pro rozpoznávání. Kromě toho jsou výjimky zachycena a převeden na událost zrušení.
+* Opravte nevracení paměti v vlastnost správy.
+* Oprava chyby, ve kterém zvukový vstupní soubor mohlo způsobit chybu rozlišovače.
+* Je opravená chyba, kde může přijaté události po události ukončení relace.
+* Opravili jsme některé časování v dělení na vlákna.
+* Opravili jsme potíže s kompatibilitou, které by mohlo způsobit selhání pro iOS.
+* Vylepšení stability pro podporu Androidu mikrofon.
+* Je opravená chyba, kdy by rozlišovač v jazyce JavaScript ignorovat rozpoznávání jazyka.
+* Oprava chyby brání nastavení EndpointId (v některých případech) v jazyce JavaScript.
+* Pořadí parametrů změněné v AddIntent v jazyce JavaScript a přidání chybějícího podpisu AddIntent JavaScript.
+
+**Ukázky**
+
+* Přidání ukázkou jazyka C++ pro pull a push datový proud stream využití v našich [ukázkové úložiště](https://aka.ms/csspeech/samples).
 
 ## <a name="speech-service-sdk-101"></a>Speech Service SDK 1.0.1
 

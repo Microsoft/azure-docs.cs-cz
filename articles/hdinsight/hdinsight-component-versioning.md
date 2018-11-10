@@ -1,6 +1,6 @@
 ---
-title: Součásti systému Hadoop a verze – Azure HDInsight
-description: Zjistěte, komponenty a verze v HDInsight a k dispozici v této cloudové distribuce datovou platformou Hortonworks úrovně služeb.
+title: Apache Hadoop komponenty a verze – Azure HDInsight
+description: Informace o Apache Hadoop komponenty a verze v HDInsight a úrovně služeb, která je k dispozici v této cloudové distribuce datovou platformou Hortonworks.
 keywords: verzích systému hadoop, ekosystém součásti platformy hadoop, součásti platformy hadoop, jak zkontrolovat verze systému hadoop
 services: hdinsight
 ms.reviewer: jasonh
@@ -10,20 +10,20 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 09/19/2018
 ms.author: kakampf
-ms.openlocfilehash: 0e14ca31d51887626f773fb05b02b41c4325fef3
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: fca83090e6713e4360bd19d49c7fd6b9147fd6ea
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50914783"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51219728"
 ---
-# <a name="what-are-the-hadoop-components-and-versions-available-with-hdinsight"></a>Jaké jsou komponenty a verze, které jsou k dispozici s HDInsight?
+# <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>Co je Apache Hadoop komponenty a verze, které jsou k dispozici s HDInsight?
 
 Další informace o součástech ekosystému Apache Hadoop a verzí v Microsoft Azure HDInsight, jakož i Enterprise Security Package. Zjistíte také, jak chcete zkontrolovat verze komponenty systému Hadoop v HDInsight. 
 
 Každá verze HDInsight je Cloudová distribuce verze Hortonworks Data Platform (HDP).
 
-## <a name="hadoop-components-available-with-different-hdinsight-versions"></a>Součásti platformy Hadoop, které jsou k dispozici v různých verzích HDInsight
+## <a name="apache-hadoop-components-available-with-different-hdinsight-versions"></a>Apache Hadoop součásti, které jsou k dispozici v různých verzích HDInsight
 Azure HDInsight podporuje více verzích clusterů systému Hadoop, které mohou být nasazeny v každém okamžiku. Každou volbu verze vytvoří konkrétní verze dané distribuce HDP a sada komponent, které jsou obsaženy v rámci příslušné distribuci. Od 4. dubna 2017 výchozí verze clusteru používat Azure HDInsight 3.6 je a je založen na HDP 2.6.
 
 Verze součástí spojené s verzemi clusterů HDInsight jsou uvedeny v následující tabulce: 
@@ -247,7 +247,7 @@ Následující tabulky uvádějí výchozí velikostí virtuálních počítač�
   | Edge: Doporučená velikost virtuálního počítače | | | | | |Windows: D12 v2, D13 v2, D14 v2; Linux: D4 v2, D12 v2, D13 v2, D14 v2 |
 * Brazílie – jih a Japonsko – západ pouze (žádné velikosti v2):
 
-  | Typ clusteru | Hadoop | HBase | Interaktivní dotaz |Storm | Spark | Služba ML |
+  | Typ clusteru | Hadoop | HBase | Interaktivní dotaz |Storm | Spark | Služby ML |
   | --- | --- | --- | --- | --- | --- | --- |
   | Hlavní: výchozí velikosti virtuálního počítače |D3 |D3  | D13, D14 |A3 |D12 |D12 |
   | Hlavní: doporučené velikosti virtuálních počítačů |D3, D4, D12 |D3, D4, D12  | D13, D14 |A3, A4, A5 |D12, D13, D14 |D12, D13, D14 |

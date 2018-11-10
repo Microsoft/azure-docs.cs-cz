@@ -9,12 +9,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/26/2018
-ms.openlocfilehash: 5fe85d74b247e890790ec577d813d42f15290cde
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 5bf3e6d8839c3ec08bae03772d9a7ab011c67857
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50140904"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228398"
 ---
 # <a name="use-terraform-to-create-an-azure-virtual-machine-scale-set"></a>Použití Terraformu k vytvoření škálovací sady virtuálních počítačů Azure
 
@@ -569,6 +569,6 @@ Odstranění můžete trvat i několik minut.
 V tomto článku jste zjistili, jak použit Terraform k vytvoření škálovací sady virtuálních počítačů Azure. Pokud chcete o nástroji Terraform v Azure získat více informací, můžou vám pomoct následující prostředky: 
 
  [Dokumentace k Terraformu v Azure](https://docs.microsoft.com/azure/terraform/)  
- [Dokumentace k Terraformu zprostředkovatele Azure](http://aka.ms/terraform)  
- [Zdrojová data k Terraformu zprostředkovatele Azure](http://aka.ms/tfgit)  
- [Moduly Terraformu pro Azure](http://aka.ms/tfmodules)
+ [Dokumentace k Terraformu zprostředkovatele Azure](https://aka.ms/terraform)  
+ [Zdrojová data k Terraformu zprostředkovatele Azure](https://aka.ms/tfgit)  
+ [Moduly Terraformu pro Azure](https://aka.ms/tfmodules)

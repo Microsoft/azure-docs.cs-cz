@@ -14,12 +14,12 @@ ms.custom: ''
 ms.workload: infrastructure-services
 ms.date: 07/26/2017
 ms.author: victorh
-ms.openlocfilehash: b341bdbe6611187b158f353d00077d33f317f374
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: dfcd82a17a399f213f5c4e32326a8995d26e8458
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49365420"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51218265"
 ---
 # <a name="customize-web-application-firewall-rules-through-powershell"></a>Přizpůsobení pravidel firewallu webových aplikací pomocí prostředí PowerShell
 
@@ -47,45 +47,59 @@ Následující výstup je zkrácený odpovědi z předchozího příkladu:
 ```
 OWASP (Ver. 3.0):
 
-    REQUEST-910-IP-REPUTATION:
+    General:
         Description:
-            
+
         Rules:
             RuleId     Description
             ------     -----------
-            910011     Rule 910011
-            910012     Rule 910012
-            ...        ...
+            200004     Possible Multipart Unmatched Boundary.
 
     REQUEST-911-METHOD-ENFORCEMENT:
         Description:
-            
+
         Rules:
             RuleId     Description
             ------     -----------
             911011     Rule 911011
-            ...        ...
+            911012     Rule 911012
+            911100     Method is not allowed by policy
+            911013     Rule 911013
+            911014     Rule 911014
+            911015     Rule 911015
+            911016     Rule 911016
+            911017     Rule 911017
+            911018     Rule 911018
 
-OWASP (Ver. 2.2.9):
-
-    crs_20_protocol_violations:
+    REQUEST-913-SCANNER-DETECTION:
         Description:
-            
+
         Rules:
             RuleId     Description
             ------     -----------
-            960911     Invalid HTTP Request Line
-            981227     Apache Error: Invalid URI in Request.
-            960000     Attempted multipart/form-data bypass
+            913011     Rule 913011
+            913012     Rule 913012
+            913100     Found User-Agent associated with security scanner
+            913110     Found request header associated with security scanner
+            913120     Found request filename/argument associated with security scanner
+            913013     Rule 913013
+            913014     Rule 913014
+            913101     Found User-Agent associated with scripting/generic HTTP client
+            913102     Found User-Agent associated with web crawler/bot
+            913015     Rule 913015
+            913016     Rule 913016
+            913017     Rule 913017
+            913018     Rule 913018
+
             ...        ...
 ```
 
 ## <a name="disable-rules"></a>Zákaz pravidel
 
-Následující příklad zakazuje pravidla `910018` a `910017` ve službě application gateway:
+Následující příklad zakazuje pravidla `911011` a `911012` ve službě application gateway:
 
 ```powershell
-$disabledrules=New-AzureRmApplicationGatewayFirewallDisabledRuleGroupConfig -RuleGroupName REQUEST-910-IP-REPUTATION -Rules 910018,910017
+$disabledrules=New-AzureRmApplicationGatewayFirewallDisabledRuleGroupConfig -RuleGroupName REQUEST-911-METHOD-ENFORCEMENT -Rules 911011,911012
 Set-AzureRmApplicationGatewayWebApplicationFirewallConfiguration -ApplicationGateway $gw -Enabled $true -FirewallMode Detection -RuleSetVersion 3.0 -RuleSetType OWASP -DisabledRuleGroups $disabledrules
 Set-AzureRmApplicationGateway -ApplicationGateway $gw
 ```

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/02/2018
 ms.author: ergreenl
-ms.openlocfilehash: 332ad288230654eb70e7b6ead862ed57a1cf52f7
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 9c37eb064fb12ff548763a9c70a2e79219113b67
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50155129"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51227361"
 ---
 # <a name="enable-password-hash-synchronization-to-azure-active-directory-domain-services"></a>Povolení synchronizace hodnot hash hesel do služby Azure Active Directory Domain Services
 V předchozích úlohách jste povolili službu Azure Active Directory Domain Services pro tenanta služby Azure Active Directory (Azure AD). Další úlohou je povolení synchronizace hodnot hash hesel požadovaných pro ověřování protokolů NTLM (NT LAN Manager) a Kerberos do služby Azure AD Domain Services. Po nastavení synchronizace hodnot hash hesel se uživatelé můžou přihlásit ke spravované doméně s použitím podnikových přihlašovacích údajů.
@@ -53,7 +53,7 @@ Tento proces změny hesla způsobí, že služba Azure AD vygeneruje hodnoty has
 ### <a name="enable-ntlm-and-kerberos-password-hash-generation-for-a-cloud-only-user-account"></a>Povolení generování hodnot hash hesel protokolů NTLM a Kerberos u uživatelského účtu jenom cloudu
 Tyto pokyny je nutné poskytnout uživatelům, aby si mohli změnit hesla:
 
-1. Přejděte na stránku s [přístupovým panelem Azure AD](http://myapps.microsoft.com) své organizace.
+1. Přejděte na stránku s [přístupovým panelem Azure AD](https://myapps.microsoft.com) své organizace.
 
     ![Spusťte přístupový panel služby Azure AD](./media/active-directory-domain-services-getting-started/access-panel.png)
 

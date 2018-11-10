@@ -9,16 +9,16 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 2d22e995f489a6379a2f134b461b8bb17160919e
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: b85fe520bf29d10bb3dac1246349abbdadaf6df3
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49113831"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50158733"
 ---
 # <a name="tutorial-deploy-azure-stream-analytics-as-an-iot-edge-module-preview"></a>Kurz: Nasazení služby Azure Stream Analytics jako modulu IoT Edge (Preview)
 
-Celá řada řešení IoT využívá analytické služby k získání přehledu o datech přicházejících do cloudu ze zařízení IoT. Díky Azure IoT Edge můžete logiku služby [Azure Stream Analytics][azure-stream] přesunout do samotného zařízení. Zpracováním telemetrických streamů na hraničních zařízeních můžete snížit objem nahrávaných dat a zkrátit dobu reakce na přehledy umožňující provádět různé akce.
+Celá řada řešení IoT využívá analytické služby k získání přehledu o datech přicházejících do cloudu ze zařízení IoT. Díky Azure IoT Edge můžete logiku služby [Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/) přesunout do samotného zařízení. Zpracováním telemetrických streamů na hraničních zařízeních můžete snížit objem nahrávaných dat a zkrátit dobu reakce na přehledy umožňující provádět různé akce.
 
 Služby Azure IoT Edge a Azure Stream Analytics jsou integrované, takže můžete vytvořit úlohu Azure Stream Analytics na portálu Azure Portal a potom ji nasadit jako modul IoT Edge bez nutnosti dalšího programování.  
 
@@ -207,7 +207,7 @@ Pro účely tohoto kurzu nasadíte dva moduly. Prvním je modul **tempSensor**, 
 
     Měl by se zobrazit spuštěný nový modul Stream Analytics společně s modulem agenta IoT Edge a centrem služby IoT Edge.
 
-    ![Výstup modulu][7]
+    ![Výstup modulu](./media/tutorial-deploy-stream-analytics/module_output2.png)
 
 ## <a name="view-data"></a>Zobrazení dat
 
@@ -219,7 +219,7 @@ Nyní můžete přejít do zařízení IoT Edge a zkontrolovat interakci mezi mo
    iotedge list  
    ```
 <!--
-   ![Docker output][8]
+   ![Docker output](./media/tutorial-deploy-stream-analytics/docker_output.png)
 -->
 1. Zobrazte si všechny systémové protokoly a data metrik. Použijte název modulu Stream Analytics:
 
@@ -229,7 +229,7 @@ Nyní můžete přejít do zařízení IoT Edge a zkontrolovat interakci mezi mo
 
 Měli byste mít možnost sledovat, jak teplota přístroje pomalu stoupá, dokud nedosáhne 70 stupňů po dobu 30 sekund. Potom modul Stream Analytics aktivuje resetování a teplota přístroje klesne na 21. 
 
-   ![Protokol Dockeru][9]
+   ![Protokol Dockeru](./media/tutorial-deploy-stream-analytics/docker_log.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků 
 
@@ -247,29 +247,4 @@ Jinak můžete místní konfigurace a prostředky Azure vytvořené v tomto čl�
 V tomto kurzu jste nakonfigurovali úlohu Azure Streaming Analytics, aby analyzovala data ze zařízení IoT Edge. Potom jste nahráli tento modul Azure Stream Analytics na zařízení IoT Edge, aby místně zpracovával a reagoval na zvýšení teploty a posílal stream agregovaných dat do cloudu. Pokud chcete zjistit, jak Azure IoT Edge může vytvořit další řešení pro firemní využití, pokračujte dalšími kurzy.
 
 > [!div class="nextstepaction"] 
-> [Nasazení modelu Azure Machine Learning jako modulu][lnk-ml-tutorial]
-
-<!-- Images. -->
-[4]: ./media/tutorial-deploy-stream-analytics/add_device.png
-[5]: ./media/tutorial-deploy-stream-analytics/asa_job.png
-[6]: ./media/tutorial-deploy-stream-analytics/set_module.png
-[7]: ./media/tutorial-deploy-stream-analytics/module_output2.png
-[8]: ./media/tutorial-deploy-stream-analytics/docker_output.png
-[9]: ./media/tutorial-deploy-stream-analytics/docker_log.png
-[10]: ./media/tutorial-deploy-stream-analytics/storage_settings.png
-[11]: ./media/tutorial-deploy-stream-analytics/temp_module.png
-
-
-<!-- Links -->
-[lnk-what-is-iot-edge]: what-is-iot-edge.md
-[lnk-module-dev]: module-development.md
-[iot-hub-get-started-create-hub]: ../../includes/iot-hub-get-started-create-hub.md
-[azure-iot]: https://docs.microsoft.com/azure/iot-hub/
-[azure-storage]: https://docs.microsoft.com/azure/storage/
-[azure-stream]: https://docs.microsoft.com/azure/stream-analytics/
-[lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
-[lnk-quickstart-win]: quickstart.md
-[lnk-quickstart-lin]: quickstart-linux.md
-[lnk-module-tutorial]: tutorial-csharp-module.md
-[lnk-ml-tutorial]: tutorial-deploy-machine-learning.md
-
+> [Nasazení modelu Azure Machine Learning jako modulu](tutorial-deploy-machine-learning.md)

@@ -2,16 +2,16 @@
 title: Úvod do firewallu webových aplikací (WAF) služby Azure Application Gateway
 description: Tento článek obsahuje přehled firewallu webových aplikací (WAF) služby Application Gateway.
 services: application-gateway
-author: amsriva
+author: vhorne
 ms.service: application-gateway
-ms.date: 10/11/2018
+ms.date: 11/7/2018
 ms.author: amsriva
-ms.openlocfilehash: 10a67eab142287cf9303e54005b6b167e9890df0
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 4b03065c59eed8f0d72e2724e60b6d8908518727
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49068447"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51219524"
 ---
 # <a name="web-application-firewall-waf"></a>Firewall webových aplikací (WAF)
 
@@ -39,7 +39,7 @@ Tady jsou základní výhody, které poskytují Application Gateway s firewallem
 
 * Můžete monitorovat útoky na své webové aplikace pomocí protokolu WAF generovaného v reálném čase. Tento protokol je integrovaný s [Azure Monitorem](../monitoring-and-diagnostics/monitoring-overview.md) a umožňuje sledování výstrah a protokolů WAF a snadnou identifikaci trendů.
 
-* Brzy budeme integrovat WAF do služby Azure Security Center. Azure Security Center vám poskytne centrální přehled o stavu zabezpečení všech vašich prostředků Azure.
+* WAF je integrovaná s Azure Security Center. Azure Security Center vám poskytne centrální přehled o stavu zabezpečení všech vašich prostředků Azure.
 
 ### <a name="customization"></a>Přizpůsobení
 
@@ -47,11 +47,11 @@ Tady jsou základní výhody, které poskytují Application Gateway s firewallem
 
 ## <a name="features"></a>Funkce
 
-- Ochrana před útoky prostřednictvím injektáže SQL.
-- Ochrana před skriptováním mezi weby.
-- Ochrana před běžnými webovými útoky, jako je například injektáž příkazů, pronášení požadavků HTTP, rozdělování odpovědí protokolu HTTP a útok pomocí vložení vzdáleného souboru.
-- Ochrana před narušením protokolu HTTP.
-- Ochrana před anomáliemi protokolu HTTP, jako například chybějící údaj user-agent hostitele nebo hlavičky Accept.
+- Ochrana prostřednictvím injektáže SQL
+- Mezi ochranou skriptování
+- Běžné webové útoků ochranu, jako je injektáž příkazů, pronášení, rozdělování odpovědí protokolu HTTP požadavku HTTP a útok vzdáleného souboru
+- Ochrana před narušením protokolu HTTP
+- Ochrana proti anomálie protokolu HTTP například chybějící user-agent hostitele nebo hlavičky accept.
 - Ochrana před roboty, prohledávacími moduly a skenery.
 - Detekce běžných chyb v konfiguraci aplikací (tj. Apache, IIS atd.)
 
@@ -74,13 +74,13 @@ Application Gateway podporuje dvě sady pravidel, CRS 3.0 a CRS 2.2.9. Tyto zák
 
 Firewall webových aplikací se poskytuje s předem nakonfigurovanou sadou pravidel CRS 3.0, nebo můžete použít verzi 2.2.9. CRS 3.0 dosahuje menšího počtu falešně pozitivních nálezů oproti verzi 2.2.9. Je zajištěna možnost [přizpůsobit si pravidla, podle vašich potřeb](application-gateway-customize-waf-rules-portal.md). Mezi běžné webové zranitelnosti, proti kterým firewall webových aplikací chrání, patří tyto:
 
-- Ochrana před útoky prostřednictvím injektáže SQL.
-- Ochrana před skriptováním mezi weby.
-- Ochrana před běžnými webovými útoky, jako je například injektáž příkazů, pronášení požadavků HTTP, rozdělování odpovědí protokolu HTTP a útok pomocí vložení vzdáleného souboru.
-- Ochrana před narušením protokolu HTTP.
-- Ochrana před anomáliemi protokolu HTTP, jako například chybějící údaj user-agent hostitele nebo hlavičky Accept.
+- Ochrana prostřednictvím injektáže SQL
+- Mezi ochranou skriptování
+- Běžné webové útoků ochranu, jako je injektáž příkazů, pronášení, rozdělování odpovědí protokolu HTTP požadavku HTTP a útok vzdáleného souboru
+- Ochrana před narušením protokolu HTTP
+- Ochrana proti anomálie protokolu HTTP například chybějící user-agent hostitele nebo hlavičky accept.
 - Ochrana před roboty, prohledávacími moduly a skenery.
-- Detekce běžných chyb v konfiguraci aplikací (tj. Apache, IIS atd.).
+- Detekce běžných chyb v konfiguraci aplikací (tj. Apache, IIS atd.)
 
 Podrobnější seznam pravidel a jejich ochrany najdete v části [základních sad pravidel](#core-rule-sets).
 

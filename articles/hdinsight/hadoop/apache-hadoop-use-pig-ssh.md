@@ -2,19 +2,19 @@
 title: Použití Pigu Hadoop pomocí protokolu SSH v clusteru HDInsight – Azure
 description: Zjistěte, jak se připojit ke clusteru Hadoop na Linuxu pomocí SSH a pak použijte Pig příkaz ke spuštění příkazů Pig Latin interaktivně nebo jako úlohu služby batch.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
-ms.author: jasonh
-ms.openlocfilehash: 4d380c44511ad330542402499829c19de62bd39a
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.author: hrasheed
+ms.openlocfilehash: 1deb44fecad6c120dd1e8f82cec36bff6353fc0b
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43051522"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51003876"
 ---
 # <a name="run-pig-jobs-on-a-linux-based-cluster-with-the-pig-command-ssh"></a>Spuštění úlohy Pig na clusteru založených na Linuxu pomocí příkazu Pig (SSH)
 

@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 10/26/2018
+ms.date: 11/05/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 13d6ed9feab4654d3574a5aced72efa0345365a6
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
-ms.translationtype: MT
+ms.openlocfilehash: 53c50ba75a16c58d7936a6f06de87218f67f5951
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50215323"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51219592"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Pravidla dynamického členství pro skupiny ve službě Azure Active Directory
 
@@ -358,6 +358,7 @@ Můžete také vytvořit pravidlo, které vybere objekty zařízení pro členst
  organizationalUnit | libovolnou hodnotu řetězce odpovídající název organizační jednotky nastavuje v místním Active Directory | (device.organizationalUnit - eq "Počítačů USA")
  deviceId | platné ID zařízení Azure AD | (device.deviceId - eq "d4fe7726-5966-431c-b3b8-cddc8fdb717d")
  ID objektu | ID objektu platný Azure AD |  (device.objectId -eq 76ad43c9-32c5-45e8-a272-7b58b58f596d")
+ systemLabels | jakýkoli řetězec odpovídající vlastnosti zařízení Intune pro označování moderního pracoviště zařízení | (device.systemLabels – obsahuje "M365Managed")
 
 ## <a name="next-steps"></a>Další postup
 

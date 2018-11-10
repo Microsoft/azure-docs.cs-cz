@@ -10,12 +10,12 @@ ms.workload: infrastructure-services
 ms.date: 7/14/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 7fa581610e007c583dfbad512f74ad335dc21a1e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 3364df360926f2065af8650076e129de75934c1a
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46974438"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50741007"
 ---
 # <a name="tutorial-create-an-application-gateway-with-ssl-termination-using-the-azure-cli"></a>Kurz: Vytvoření aplikační brány s ukončením protokolu SSL pomocí Azure CLI
 
@@ -155,15 +155,17 @@ az vmss extension set \
 
 ## <a name="test-the-application-gateway"></a>Otestování aplikační brány
 
-K získání veřejné IP adresy aplikační brány můžete použít příkaz [az network public-ip show](/cli/azure/network/public-ip#az-network_public_ip_show). Zkopírujte veřejnou IP adresu a pak ji vložte do adresního řádku svého prohlížeče.
+K získání veřejné IP adresy aplikační brány můžete použít příkaz [az network public-ip show](/cli/azure/network/public-ip#az-network_public_ip_show).
 
-```azurepowershell-interactive
+```azurecli-interactive
 az network public-ip show \
   --resource-group myResourceGroupAG \
   --name myAGPublicIPAddress \
   --query [ipAddress] \
   --output tsv
 ```
+
+Zkopírujte veřejnou IP adresu a pak ji vložte do adresního řádku svého prohlížeče. V tomto příkladu je adresa URL **https://52.170.203.149**.
 
 ![Zabezpečené upozornění](./media/tutorial-ssl-cli/application-gateway-secure.png)
 
@@ -180,14 +182,6 @@ az group delete --name myResourceGroupAG --location eastus
 ```
 
 ## <a name="next-steps"></a>Další kroky
-
-V tomto kurzu jste se naučili:
-
-> [!div class="checklist"]
-> * Vytvořit certifikát podepsaný svým držitelem (self-signed certificate)
-> * Nastavit síť
-> * Vytvořit aplikační bránu s certifikátem
-> * Vytvořit škálovací sadu virtuálních počítačů s výchozím back-endovým fondem
 
 > [!div class="nextstepaction"]
 > [Vytvoření aplikační brány, která hostuje více webů](./tutorial-multiple-sites-cli.md)

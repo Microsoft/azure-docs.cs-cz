@@ -4,21 +4,21 @@ description: Použijte Azure Resource Graph ke spuštění některých pokročil
 services: resource-graph
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/18/2018
+ms.date: 10/22/2018
 ms.topic: quickstart
 ms.service: resource-graph
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 934dff93b9a7f5d6755f55ad1073e01e586b1ca7
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: fbbdc4a67cd6f2e7d74031f7acc584bf0004bea4
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49647829"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50085372"
 ---
 # <a name="advanced-resource-graph-queries"></a>Pokročilé dotazy na Resource Graph
 
-Prvním krokem k porozumění dotazům s Azure Resource Graph jsou základní znalosti [dotazovacího jazyka](../concepts/query-language.md). Pokud ještě nejste obeznámeni s [Azure Data Explorer](../../../data-explorer/data-explorer-overview.md), doporučuje se pročíst základní informace, abyste pochopili, jak sestavit požadavek na prostředky, které hledáte.
+Prvním krokem k porozumění dotazům s Azure Resource Graph jsou základní znalosti [dotazovacího jazyka](../concepts/query-language.md). Pokud ještě neznáte [Azure Data Explorer](../../../data-explorer/data-explorer-overview.md), doporučujeme přečíst si základní informace, abyste pochopili, jak vytvářet požadavky na prostředky, které hledáte.
 
 Projdeme následující rozšířené dotazy:
 
@@ -31,11 +31,11 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="language-support"></a>Podpora jazyků
 
-Azure PowerShell (prostřednictvím modulu) a Azure CLI (prostřednictvím rozšíření) podporují Azure Resource Graph. Než se pustíte do některého z následujících dotazů, zkontrolujte, že je prostředí připravené. Zobrazte [Azure CLI](../first-query-azurecli.md#add-the-resource-graph-extension) a [Azure PowerShell](../first-query-powershell.md#add-the-resource-graph-module) pro pokyny k instalaci a ověření vašeho výběru prostředí.
+Azure PowerShell (prostřednictvím modulu) a Azure CLI (prostřednictvím rozšíření) podporují Azure Resource Graph. Před spuštěním jakéhokoli z následujících dotazů zkontrolujte, že je vaše prostředí připravené. Zobrazte [Azure CLI](../first-query-azurecli.md#add-the-resource-graph-extension) a [Azure PowerShell](../first-query-powershell.md#add-the-resource-graph-module) pro pokyny k instalaci a ověření vašeho výběru prostředí.
 
-## <a name="vmss-capacity"></a>Získání kapacity a velikosti VMSS
+## <a name="vmss-capacity"></a>Získání kapacity a velikosti škálovací sady virtuálních počítačů
 
-Tento dotaz hledá prostředky škálovací sady virtuálního počítače (VMSS) a získá načte různé podrobnosti, včetně velikosti virtuálního počítače a kapacity škálovací sady. Tyto informace používá funkce `toint()` k přetypování kapacity na číslo tak, aby se dalo řadit. To také přejmenuje hodnoty vrácené do vlastních pojmenovaných vlastností.
+Tento dotaz hledá prostředky škálovací sady virtuálních počítačů a získá různé podrobnosti, včetně velikosti virtuálních počítačů a kapacity škálovací sady. Dotaz pomocí funkce `toint()` přetypuje kapacitu na číslo, aby bylo možné ji řadit. Nakonec se sloupce přejmenují na vlastní pojmenované vlastnosti.
 
 ```Query
 where type=~ 'microsoft.compute/virtualmachinescalesets'
@@ -75,7 +75,7 @@ Tento dotaz vyhledá virtuální počítače, které odpovídají [regulárnímu
 Odpovídající **regulární výraz @** nám umožňuje definovat regulární výraz tak, aby odpovídal, což je **^Contoso(.*)[0-9]+$**. Tato definice regulárního výrazu je vysvětlena jako:
 
 - `^` – Porovnání musí začít na začátku řetězce.
-- `Contoso` – Řetězec jádra, který má odpovídat (rozlišuje malá a velká písmena).
+- `Contoso` – Řetězec s rozlišováním velkých a malých písmen.
 - `(.*)` – Shoda dílčího výrazu:
   - `.` – Odpovídá jakémukoli jednomu znaku (s výjimkou nového řádku).
   - `*` – Shoduje se s předchozím prvkem nulakrát nebo vícekrát.

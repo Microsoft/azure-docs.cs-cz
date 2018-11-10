@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 08/24/2018
 ms.author: andret
 ms.custom: aaddev
-ms.openlocfilehash: cabc4f2212e18d774066efad70d9654bb70020d5
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: 4035e93b8eed0a7bc1dd0cddbc42f41e9c26f333
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48831496"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51218861"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>Rychlý start: Implementace přihlašování přes účet Microsoft do webové aplikace ASP.NET
 
@@ -31,17 +31,29 @@ V tomto rychlém startu se dozvíte, jak může webová aplikace ASP.NET přihla
 ![Jak funguje ukázková aplikace vygenerovaná v tomto rychlém startu](media/quickstart-v2-aspnet-webapp/aspnetwebapp-intro.png)
 
 > [!div renderon="docs"]
-> ## <a name="register-your-application-and-download-your-quickstart-app"></a>Registrace aplikace a stažení aplikace pro rychlý start
+> ## <a name="register-and-download-your-quickstart-app"></a>Registrace a stažení aplikace pro rychlý start
+> Aplikaci pro rychlý start můžete spustit dvěma způsoby:
+> * [Expresní] [Možnost 1: Registrace a automatická konfigurace aplikace a následné stažení vzorového kódu](#option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample)
+> * [Ruční] [Možnost 2: Registrace a ruční konfigurace aplikace a vzorového kódu](#option-2-register-and-manually-configure-your-application-and-code-sample)
 >
-> ### <a name="register-and-configure-your-application-and-code-sample"></a>Zaregistrujte si a nakonfigurujte svoji aplikaci a vzorový kód
+> ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Možnost 1: Registrace a automatická konfigurace aplikace a následné stažení vzorového kódu
+>
+> 1. Přejděte na [Azure Portal – Registrace aplikace (Preview)](https://portal.azure.com/?Microsoft_AAD_RegisteredApps=true#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AspNetWebAppQuickstartPage/sourceType/docs).
+> 1. Zadejte název vaší aplikace a klikněte na **Zaregistrovat**.
+> 1. Postupujte podle pokynů ke stažení a automatické konfiguraci nové aplikace jedním kliknutím.
+>
+> ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>Možnost 2: Registrace a ruční konfigurace aplikace a vzorového kódu
+>
 > #### <a name="step-1-register-your-application"></a>Krok 1: Zaregistrujte si aplikaci
-> 
-> 1. Přejděte na portál [Microsoft Application Registration Portal](https://apps.dev.microsoft.com/portal/register-app).
-> 1. Zadejte název svojí aplikace, ujistěte se, že políčko **Guided Setup** (Instalace s asistencí) není zaškrtnuté, a klikněte na **Create** (Vytvořit).
-> 1. Klikněte na `Add Platform`, pak vyberte `Web`.
-> 1. Zajistěte, aby bylo políčko **Allow Implicit Flow** (Povolit implicitní tok) *zaškrtnuté*.
-> 1. V části **Redirect URLs** (Adresy URL pro přesměrování) zadejte `https://localhost:44368/`.
-> 1. Přejděte do dolní části stránky a klikněte na **Save** (Uložit).
+> Pokud chcete zaregistrovat aplikaci a ručně přidat informace o registraci aplikace ke svému řešení, postupujte následovně:
+>
+> 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
+> 1. Pokud váš účet umožňuje přístup k více tenantům, vyberte svůj účet v pravém horním rohu a nastavte relaci portálu na požadovaného tenanta Azure AD.
+> 1. V levém navigačním podokně vyberte službu **Azure Active Directory** a pak vyberte **Registrace aplikací (Preview)** > **Nová registrace**.
+> 1. Když se zobrazí **stránka Registrace aplikace**, zadejte registrační informace vaší aplikace:
+>      - V části **Název** zadejte smysluplný název aplikace, který se zobrazí uživatelům aplikace, například `ASPNET-Quickstart`.
+>      - V části **Adresa URL odpovědi** přidejte `https://localhost:44368/` a klikněte na **Registrovat**.
+Vyberte nabídku **Ověřování**, v části **Implicitní udělení oprávnění** nastavte **Tokeny ID** a pak vyberte **Uložit**.
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-azure-portal"></a>Krok 1: Nakonfigurujte si aplikaci na portálu Azure Portal
@@ -60,15 +72,23 @@ V tomto rychlém startu se dozvíte, jak může webová aplikace ASP.NET přihla
 
 1. Extrahujte soubor ZIP do místní složky bližší ke kořenové složce, třeba **C:\Azure-Samples**.
 1. Otevřete řešení v sadě Visual Studio (AppModelv2-WebApp-OpenIDConnect-DotNet.sln).
-1. Upravte soubor **Web.config** a položku `Enter_the_Application_Id_here` nahraďte ID aplikace, kterou jste právě zaregistrovali:
+1. Upravte soubor **Web.config** a nahraďte parametry `ClientId` a `Tenant` následujícími hodnotami:
 
     ```xml
     <add key="ClientId" value="Enter_the_Application_Id_here" />
+    <add key="Tenant" value="Enter_the_Tenant_Info_Here" />
     ```
-    
-> [!div class="sxs-lookup" renderon="portal"]
-> [!IMPORTANT]
-> Pokud je vaše aplikace určená *pro jednoho tenanta* (tj. cílí na účty jen v tomto adresáři), vyhledejte v souboru **Web.config** hodnotu `Tenant` a nahraďte hodnotu `common` příslušným **ID tenanta** nebo **názvem tenanta** (například contoso.microsoft.com). Název tenanta zjistíte na **stránce s přehledem**.
+
+> [!div renderon="docs"]
+> Kde:
+> - `Enter_the_Application_Id_here` je ID aplikace, kterou jste zaregistrovali.
+> - `Enter_the_Tenant_Info_Here` je jedna z následujících možností:
+>   - Pokud vaše aplikace podporuje režim **Jen moje organizace**, nahraďte tuto hodnotu za **ID tenanta** nebo **Název tenanta** (například contoso.microsoft.com).
+>   - Pokud vaše aplikace podporuje režim **Účty v libovolném organizačním adresáři**, nahraďte tuto hodnotu za `organizations`.
+>   - Pokud vaše aplikace podporuje režim **Všichni uživatelé účtu Microsoft**, nahraďte tuto hodnotu za `common`.
+>
+> > [!TIP]
+> > Hodnoty *ID aplikace*, *ID adresáře (tenanta)* a *Podporované typy účtu* najdete na stránce **Přehled**.
 
 ## <a name="more-information"></a>Další informace
 

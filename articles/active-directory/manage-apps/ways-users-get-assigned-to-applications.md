@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: barbkess
-ms.openlocfilehash: 2301c2eee2853617251053713b50f9915962027b
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: d34671d4197735ea2c30aafc8fd01a5893427ff3
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44356383"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51226838"
 ---
 # <a name="how-to-assign-users-to-applications"></a>Přiřazení uživatelů k aplikacím
 
@@ -51,9 +51,9 @@ Pro uživatele pro přístup k aplikaci je třeba nejprve je přiřadit k ní n�
 
 6.  Správce povolí [Samoobslužná správa skupiny](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-self-service-group-management) umožňující uživateli připojení ke skupině přiřazené aplikaci položky, ale pouze **s předchozí schválení od vybraná sada firemními schvalovateli**
 
-7.  Správce přiřadí licenci pro uživatele přímo v aplikaci první strany, jako je třeba [Microsoft Office 365](http://products.office.com/)
+7.  Správce přiřadí licenci pro uživatele přímo v aplikaci první strany, jako je třeba [Microsoft Office 365](https://products.office.com/)
 
-8.  Správce přiřadí licenci ke skupině, že uživatel je členem k první aplikaci stran, jako je třeba [Microsoft Office 365](http://products.office.com/)
+8.  Správce přiřadí licenci ke skupině, že uživatel je členem k první aplikaci stran, jako je třeba [Microsoft Office 365](https://products.office.com/)
 
 9.  [Správce vyjádří souhlas aplikace](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview#understanding-user-and-admin-consent) využívat všichni uživatelé a pak uživatel přihlásí k aplikaci
 

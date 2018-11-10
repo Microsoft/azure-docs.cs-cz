@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 author: j-martens
 ms.author: jmartens
 ms.date: 09/24/2018
-ms.openlocfilehash: 88e7dad15a7080c4132a6983d949f9451ad5ce69
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: d90f1791a05d575caedfdd5c696bb1e6d6c29376
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48239251"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50091912"
 ---
 # <a name="what-is-happening-to-workbench-in-azure-machine-learning-preview"></a>Co se děje s aplikací Workbench ve službě Azure Machine Learning (Preview)?
 
@@ -46,9 +46,8 @@ Své účty pro experimentování a správu modelů můžete i s aplikací Workb
 
 |Fáze|Podrobnosti o podpoře dřívějších funkcí|
 |:---:|----------------|
-|1|Možnost vytvořit _účet pro experimentování ve službě Azure Machine Learning_ a _účet pro správu modelů_ na webu Azure Portal a z CLI. Končí i možnost vytvářet výpočetní prostředí služby Machine Learning z CLI. Pokud máte účet, bude rozhraní příkazového řádku i desktopová aplikace Workbench v této fázi dále fungovat.|
-|2|Končí základní rozhraní API pro vytváření starých pracovních prostorů a projektů v desktopové aplikaci Workbench nebo v rozhraní příkazového řádku. V této fázi můžete stále otevírat existující projekty, přidávat do nich další skripty, spouštět skripty v existujících projektech a nasazovat webové služby do stávajících výpočetních prostředí služby ML.|
-|3|V této fázi skončí podpora všeho ostatního, včetně zbývajících rozhraní API a desktopové aplikace Workbench.|
+|1|Končí možnost vytvořit _účet Experimentování ve službě Azure Machine Learning_ a _účet Správy modelů_ na webu Azure Portal a v rozhraní příkazového řádku. Končí i možnost vytvářet výpočetní prostředí služby Machine Learning z CLI. Pokud máte účet, bude rozhraní příkazového řádku i desktopová aplikace Workbench v této fázi dále fungovat.|
+|2|V této fázi skončí podpora všeho ostatního, včetně zbývajících rozhraní API a desktopové aplikace Workbench.|
 
 [Začněte s migrací](how-to-migrate.md) ještě dnes. Všechny nejnovější funkce jsou k dispozici v nové sadě <a href="http://aka.ms/aml-sdk" target="_blank">SDK</a>, v [rozhraní příkazového řádku](reference-azure-machine-learning-cli.md) a na [portálu](quickstart-get-started.md).
 

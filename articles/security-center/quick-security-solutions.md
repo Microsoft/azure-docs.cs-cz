@@ -3,7 +3,7 @@ title: Rychlý start Azure Security Center – Připojení řešení zabezpečen
 description: Rychlý start Azure Security Center – Připojení řešení zabezpečení
 services: security-center
 documentationcenter: na
-author: terrylan
+author: rkarlin
 manager: mbaldwin
 editor: ''
 ms.assetid: 3263bb3d-befc-428c-9f80-53de65761697
@@ -14,13 +14,13 @@ ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/22/2018
-ms.author: yurid
-ms.openlocfilehash: afc72f5b18460578b0cfcd085fe601184a2f898b
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.author: rkarlin
+ms.openlocfilehash: d02c71865f900c2b75da60bd2e989e04a6823d11
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38561293"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51005236"
 ---
 # <a name="quickstart-connect-security-solutions-to-security-center"></a>Rychlý start: Připojení řešení zabezpečení ke službě Security Center
 

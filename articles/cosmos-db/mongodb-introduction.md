@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 02/12/2018
 ms.author: sclyon
-ms.openlocfilehash: b0fba3cee298e55702629815da4649d9af315b25
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 1f21065414fec6bbe943014e954ecb45af2bb6b9
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43283022"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51227871"
 ---
 # <a name="introduction-to-azure-cosmos-db-mongodb-api"></a>Úvod do Azure Cosmos DB: rozhraní MongoDB API
 
@@ -66,5 +66,4 @@ Informace o rozhraní MongoDB API služby Azure Cosmos DB jsou integrované do s
 * V kurzu o [použití Studio 3T (MongoChef) se službou Azure Cosmos DB](mongodb-mongochef.md) zjistíte, jak vytvořit propojení mezi databází Azure Cosmos DB a aplikací MongoDB ve Studio 3T.
 * V kurzu o [migraci dat do Azure Cosmos DB pomocí podpory protokolů pro MongoDB](mongodb-migrate.md) naimportujete svá data do rozhraní API databáze MongoDB.
 * Pomocí [Robomongo](mongodb-robomongo.md) se připojíte k rozhraní API účtu MongoDB.
-* [Příkaz GetLastRequestStatistics a metriky na Azure Portalu](set-throughput.md#GetLastRequestStatistics) vám umožní zjistit, kolik RU vaše operace využívají.
 * Zjistíte, jak [nakonfigurovat předvolby čtení pro globálně distribuované aplikace](../cosmos-db/tutorial-global-distribution-mongodb.md).

@@ -4,9 +4,6 @@ description: Tento článek vysvětluje, jak Azure umožňuje virtuálním poč�
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: jpconnock
-editor: ''
-ms.assetid: 5f666f2a-3a63-405a-abcd-b2e34d40e001
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -14,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/01/2018
 ms.author: kumud
-ms.openlocfilehash: 58ae89a6b9d7b9e3858358d290e3ecb197e0ac2b
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 1d851b60909d548a0735e3827cdfc7746fd8121d
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48249124"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51219711"
 ---
 # <a name="outbound-connections-in-azure"></a>Odchozích připojení v Azure
 
@@ -45,7 +42,7 @@ Nástroj Azure Load Balancer a související prostředky nejsou explicitně defi
 | --- | --- | --- | --- |
 | [1. Virtuální počítač s veřejnou IP adresu Instance úroveň adresou (s nebo bez nástroje pro vyrovnávání zatížení)](#ilpip) | SNAT, ho maskují portu se nepoužívá. | TCP, UDP, PROTOKOL ICMP, ESP | Azure používá veřejné IP adresy přiřazené ke konfiguraci IP adresy z instance NIC. Instance má všechny dočasné porty, které jsou k dispozici. |
 | [2. Veřejný nástroj pro vyrovnávání zatížení, které jsou přidružené k virtuálnímu počítači (žádné Instance úroveň veřejnou IP adresu na instanci)](#lb) | SNAT pomocí portu ho maskují (cesta) pomocí nástroje pro vyrovnávání zatížení front-endů | TCP, UDP |Veřejnou IP adresu veřejnou front-endů nástroje pro vyrovnávání zatížení Azure sdílí s více privátními IP adresami. Azure používá dočasných portů front-endů token pat. |
-| [3. Samostatný virtuální počítač (žádná služba Vyrovnávání zatížení, žádné Instance úroveň veřejnou IP adresu)](#defaultsnat) | SNAT pomocí portu ho maskují (cesta) | TCP, UDP | Azure automaticky označí veřejnou IP adresu pro SNAT, sdílí s více privátními IP adresami sady dostupnosti. Tato veřejná IP adresa a používá dočasné porty tuto veřejnou IP adresu. Toto je základní scénář pro předchozí scénáře. Pokud potřebujete viditelnosti a kontroly to nedoporučujeme. |
+| [3. Samostatný virtuální počítač (žádná služba Vyrovnávání zatížení, žádné Instance úroveň veřejnou IP adresu)](#defaultsnat) | SNAT pomocí portu ho maskují (cesta) | TCP, UDP | Azure automaticky označí veřejnou IP adresu pro SNAT, sdílí s více privátními IP adresami sady dostupnosti. Tato veřejná IP adresa a používá dočasné porty tuto veřejnou IP adresu. V tomto scénáři se používají jako základní pro předchozí scénáře. Pokud potřebujete viditelnosti a kontroly to nedoporučujeme. |
 
 Pokud nechcete, aby virtuální počítač komunikovat s koncovými body mimo Azure v veřejný prostor IP adres, můžete použít skupiny zabezpečení sítě (Nsg) k blokování přístupu podle potřeby. V části [brání odchozí připojení](#preventoutbound) podrobněji popisuje skupiny zabezpečení sítě. Pokyny k návrhu, implementaci a správu virtuální síť, bez jakékoli odchozí přístup je mimo rámec tohoto článku.
 
@@ -53,7 +50,7 @@ Pokud nechcete, aby virtuální počítač komunikovat s koncovými body mimo Az
 
 V tomto scénáři má virtuální počítač instanci úroveň veřejné IP (ILPIP) přiřazenou. Jde o odchozích připojení, nezáleží, jestli virtuální počítač je Vyrovnávané nebo ne. Tento scénář má přednost před ostatní. Při použití ILPIP, virtuální počítač ILPIP používá pro všechny odchozí toky.  
 
-Veřejné IP adresa přiřazená k virtuálnímu počítači je 1:1 vztahu (spíše než 1:many) a je implementovaný jako bezstavové NAT. 1:1  Port maskování (Jan) se nepoužívá a virtuální počítač má všechny dočasné porty, které jsou k dispozici pro použití.
+Veřejné IP adresy přiřazené k virtuálnímu počítači je to vztah 1:1 (namísto 1: mnoho) a je implementovaný jako bezstavové NAT. 1:1  Port maskování (Jan) se nepoužívá a virtuální počítač má všechny dočasné porty, které jsou k dispozici pro použití.
 
 Pokud aplikace zahájí mnoho odchozích toků a dochází k vyčerpání portů SNAT, vezměte v úvahu přiřazení [ILPIP ke zmírnění SNAT omezení](#assignilpip). Kontrola [Správa SNAT vyčerpání](#snatexhaust) v celém rozsahu.
 
@@ -75,7 +72,7 @@ Pokud chcete monitorovat stav odchozí připojení s základní nástroje pro vy
 
 ### <a name="defaultsnat"></a>Scénář 3: Samostatný virtuální počítač bez Instance úroveň veřejné IP adresy
 
-V tomto případě virtuální počítač není součástí fondu veřejný nástroj pro vyrovnávání zatížení (a není součástí fondu interního Load balanceru úrovně Standard) a nemá ILPIP adresu přiřazenou. Když virtuální počítač vytvoří odchozí tok, přeloží Azure privátní zdrojové IP adresy odchozí tok veřejné Zdrojová IP adresa. Veřejnou IP adresu použít pro tento odchozí tok není Konfigurovatelný a nepočítá s limitem předplatného veřejný IP prostředek. Tato veřejná IP adresa nepatří a nemůže být rezervované. Pokud provádíte opakované nasazení virtuálního počítače nebo skupiny dostupnosti nebo VMSS, tato veřejná IP adresa se uvolní a požaduje novou veřejnou IP adresu. Nepoužívejte tento scénář pro přidávání na seznam povolených IP adres. Místo toho použijte jednu z těchto dvou scénářích Pokud explicitně deklarujete odchozí scénář a veřejnou IP adresu pro odchozí připojení.
+V tomto případě virtuální počítač není součástí fondu veřejný nástroj pro vyrovnávání zatížení (a není součástí fondu interního Load balanceru úrovně Standard) a nemá ILPIP adresu přiřazenou. Když virtuální počítač vytvoří odchozí tok, přeloží Azure privátní zdrojové IP adresy odchozí tok veřejné Zdrojová IP adresa. Veřejnou IP adresu použít pro tento odchozí tok není Konfigurovatelný a nepočítá s limitem předplatného veřejný IP prostředek. Tato veřejná IP adresa nepatří a nemůže být rezervované. Pokud provádíte opakované nasazení škálovací sady virtuálního počítače nebo skupiny dostupnosti nebo virtuální počítač, tato veřejná IP adresa se uvolní a požaduje novou veřejnou IP adresu. Nepoužívejte tento scénář pro přidávání na seznam povolených IP adres. Místo toho použijte jednu z těchto dvou scénářích Pokud explicitně deklarujete odchozí scénář a veřejnou IP adresu pro odchozí připojení.
 
 >[!IMPORTANT] 
 >Tento scénář platí i při __pouze__ je připojen interní Load balancer úrovně Basic. Scénář 3 je __není k dispozici__ když interní Load balanceru úrovně Standard je připojen k virtuálnímu počítači.  Musíte explicitně vytvořit [scénář 1](#ilpip) nebo [scénář 2](#lb) kromě používání interní Load balanceru úrovně Standard.
@@ -106,7 +103,7 @@ Můžete potlačit použitím front-endové IP adresy z používán pro odchozí
       ]
 ```
 
-Za normálních okolností se tato možnost výchozí _false_ a oznamuje, že toto pravidlo programy odchozí SNAT pro přidružené virtuální počítače v back-endový fond pravidlo Vyrovnávání zatížení.  To můžete změnit na _true_ zabránit Load Balancer pomocí IP adresy přidružené front-endu pro odchozí připojení pro virtuální počítač je ve fondu back-end toto pravidlo Vyrovnávání zatížení.  A můžete stále taky určit konkrétní IP adresu pro odchozí toky, jak je popsáno v [více, kombinované scénáře](#combinations) také.
+Za normálních okolností `disableOutboundSnat` možnost Výchozí hodnota je _false_ a oznamuje, že toto pravidlo programy odchozí SNAT pro přidružené virtuální počítače v back-endový fond pravidlo Vyrovnávání zatížení. `disableOutboundSnat` Můžete změnit na _true_ zabránit Load Balancer pomocí IP adresy přidružené front-endu pro odchozí připojení pro virtuální počítače v back-endový fond toto pravidlo Vyrovnávání zatížení.  A můžete stále taky určit konkrétní IP adresu pro odchozí toky, jak je popsáno v [více, kombinované scénáře](#combinations) také.
 
 #### <a name="load-balancer-basic"></a>Základní nástroje pro vyrovnávání zatížení
 
@@ -187,7 +184,7 @@ Přidělení SNAT porty jsou konkrétní IP přenosový protokol (TCP a UDP se z
 
 ## <a name="problemsolving"></a> Řešení problémů 
 
-Tato část je určena pro zmírnění SNAT vyčerpání a další scénáře, které mohou nastat u odchozích připojení v Azure.
+V této části je určený pro zmírnění SNAT vyčerpání a, které mohou nastat u odchozích připojení v Azure.
 
 ### <a name="snatexhaust"></a> Správa vyčerpání portů SNAT PAT
 [Dočasné porty](#preallocatedports) používá pro [token PAT](#pat) jsou vyčerpatelným prostředků, jak je popsáno v [samostatný virtuální počítač bez Instance úroveň veřejnou IP adresu](#defaultsnat) a [s vyrovnáváním zatížení virtuálních počítačů bez Úroveň veřejnou IP adresu instance](#lb).
@@ -219,7 +216,7 @@ Přiřazení ILPIP změní váš scénář [úroveň veřejná IP adresa Instanc
 
 #### <a name="multifesnat"></a>Použít několik front-endů
 
-Při použití veřejného Load Balanceru úrovně Standard, přiřadíte [několik front-endová IP adres pro odchozí připojení](#multife) a [vynásobte počet dostupných portů SNAT](#preallocatedports).  Je potřeba vytvořit front-endová konfigurace protokolu IP, pravidlo a back-endový fond pro aktivaci programování SNAT na veřejnou IP adresu front-endu.  Pravidlo nemusí fungovat a není potřeba žádná sonda stavu úspěšné.  Pokud používáte několik front-endů pro příchozí i (nejenom pro odchozí), měli byste použít sondy stavu vlastní také zajistit spolehlivost.
+Při použití veřejného Load Balanceru úrovně Standard, přiřadíte [několik front-endová IP adres pro odchozí připojení](#multife) a [vynásobte počet dostupných portů SNAT](#preallocatedports).  Vytvoření front-endová konfigurace protokolu IP, pravidlo a back-endový fond pro aktivaci programování SNAT na veřejnou IP adresu front-endu.  Pravidlo nemusí fungovat a není potřeba žádná sonda stavu úspěšné.  Pokud používáte několik front-endů pro příchozí i (nejenom pro odchozí), měli byste použít sondy stavu vlastní také zajistit spolehlivost.
 
 >[!NOTE]
 >Ve většině případů je vyčerpání portů SNAT znaménko chybný návrhu.  Ujistěte se, že víte, proč jsou vyčerpání portů před použitím více front-endů přidání portů SNAT.  Může být maskování problém, což může vést k selhání později.
@@ -228,7 +225,7 @@ Při použití veřejného Load Balanceru úrovně Standard, přiřadíte [něko
 
 [Předpřidělené porty](#preallocatedports) jsou přiřazeny v závislosti na velikosti fondu back-endu a seskupené do vrstev, pokud chcete přerušení minimalizovat, když některé porty muset znovu přidělit, aby další vrstvou velikost větší fond back-endu.  Můžete mít možnost intenzitu zrcadlových SNAT port využití pro daný front-endu se tak zvýší o škálování fondu back-endu na maximální velikost v dané vrstvě.  To vyžaduje pro aplikaci pro horizontální navýšení kapacity efektivně.
 
-2 virtuální počítače v back-endový fond by mít například 1024 SNAT porty každou konfiguraci IP, která umožňuje celkem 2 048 SNAT porty pro nasazení k dispozici.  Pokud nasazení zvýší na 50 virtuální počítače, i když počet portů SNAT předpřidělené konstanta zůstane porty na virtuální počítač, a cena celkem 51,200 (50 x 1 024) je možné toto nasazení určeno.  Pokud chcete horizontálně navýšit kapacitu vašeho nasazení, zkontrolujte počet [předpřidělené porty](#preallocatedports) za vrstvu, a ujistěte se, že obrazce vaše horizontální navýšení kapacity až na příslušné úrovni.  V předchozím příkladu Pokud jste vybrali pro horizontální navýšení kapacity až 51 místo 50 instancí by o průběhu na další úroveň a end si s menším počtem SNAT porty na virtuální počítač také jako celkový počet.
+Například dva virtuální počítače v back-endový fond by mít porty SNAT 1024 každou konfiguraci IP, která umožňuje celkem 2 048 SNAT porty pro nasazení k dispozici.  Pokud nasazení zvýší na 50 virtuální počítače, i když počet portů SNAT předpřidělené konstanta zůstane porty na virtuální počítač, a cena celkem 51,200 (50 x 1 024) je možné toto nasazení určeno.  Pokud chcete horizontálně navýšit kapacitu vašeho nasazení, zkontrolujte počet [předpřidělené porty](#preallocatedports) za vrstvu, a ujistěte se, že obrazce vaše horizontální navýšení kapacity až na příslušné úrovni.  V předchozím příkladu Pokud jste vybrali pro horizontální navýšení kapacity až 51 místo 50 instancí by o průběhu na další úroveň a end si s menším počtem SNAT porty na virtuální počítač také jako celkový počet.
 
 Pokud horizontální navýšení kapacity na další úroveň velikost větší fond back-end je potenciální pro některé z vašich odchozích připojení, vypršení časového limitu přidělené porty museli znovu přidělit.  Pokud využíváte jen některé z vašich SNAT porty, horizontální navýšení kapacity v nejbližší větší velikost fondu back-end není důležitá.  Poloviční existující porty budou nevyčerpané pokaždé, když přejdete na další úroveň fondu back-endu.  Pokud nechcete, aby to provedou, budete muset tvarovat nasazení tak, aby velikost vrstvy.  Nebo Ujistěte se, že vaše aplikace můžete zjišťovat a opakujte podle potřeby.  Keepalive TCP vám můžou pomoct v rozpoznat, kdy SNAT porty už funkce z důvodu přerozděleni.
 
@@ -254,7 +251,7 @@ Pokud skupinu NSG blokuje požadavky sondy stavu z výchozí značky AZURE_LOADB
 
 ## <a name="limitations"></a>Omezení
 - DisableOutboundSnat není k dispozici možnost při konfiguraci pravidla na portálu pro vyrovnávání zatížení.  Místo toho použijte REST, šablonu nebo klienta nástroje.
-- Webových rolí pracovního procesu bez virtuální sítě a dalších služeb platformy Microsoft může být přístupný, když kvůli vedlejším účinkem z jak pre-VNet služeb a další platformy služby funkce se používá jenom interní Load balanceru úrovně Standard. Tomuto vedlejšímu efektu nesmí využívají, jako příslušné služby sebe samu ani na základní platformě mohou změnit bez předchozího upozornění. Musíte vždy předpokládat, že je potřeba vytvořit odchozí připojení explicitně v případě potřeby při použití interní Load balanceru úrovně Standard pouze. [Výchozí SNAT](#defaultsnat) scénář 3 popsaných v tomto článku není k dispozici.
+- Webových rolí pracovního procesu bez virtuální sítě a dalších služeb platformy Microsoft může být přístupný, když kvůli vedlejším účinkem z jak pre-VNet služeb a další platformy služby funkce se používá jenom interní Load balanceru úrovně Standard. Nespoléhejte na tomuto vedlejšímu efektu jako odpovídajících samotné služby nebo základní platformy mohou změnit bez předchozího upozornění. Musíte vždy předpokládat, že je potřeba vytvořit odchozí připojení explicitně v případě potřeby při použití interní Load balanceru úrovně Standard pouze. [Výchozí SNAT](#defaultsnat) scénář 3 popsaných v tomto článku není k dispozici.
 
 ## <a name="next-steps"></a>Další postup
 

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: pbutlerm
-ms.openlocfilehash: d7f9dfee447cddc771e0e88ca5be04018b51dba2
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: a4117b41700446770e10ef799967ae4a43db342d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49430937"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51227752"
 ---
 # <a name="prepare-your-iot-edge-module-technical-assets"></a>Příprava modul IoT Edge technické prostředky
 
@@ -45,7 +45,7 @@ Modul IoT Edge musí podporovat některý z následujících možností platform
 Podporují všechny vrstvy 1 platformách podporovaných službou IoT Edge (jak je uvedeno v [podpory Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/support)). Doporučujeme tuto možnost, protože poskytuje lepší uživatelské prostředí. Bude možné předvést mezinárodním moduly, které splňují tato kritéria. Pomocí této možnosti platformy modul musí:
 
 - Zadejte `latest` značku a označení verze (například `1.0.1`), které jsou vytvořené pomocí Githubu manifestu značky [nástroj manifest](https://github.com/estesp/manifest-tool).
-- Použití [kartě Marketplace](./cpp-marketplace-tab.md) přidáte odkaz na [kompatibilní IoT Edge certifikovaných zařízení](http://aka.ms/iot-edge-certified). Tento odkaz se překládá na `http://aka.ms/iot-edge-certified`, web, kde můžou zákazníci procházet nebo Hledat certifikovaných zařízení. Tento web se také označuje jako [Azure IoT Edge Certified](https://catalog.azureiotsolutions.com/) katalog zařízení.
+- Použití [kartě Marketplace](./cpp-marketplace-tab.md) přidáte odkaz na [kompatibilní IoT Edge certifikovaných zařízení](https://aka.ms/iot-edge-certified). Tento odkaz se překládá na `http://aka.ms/iot-edge-certified`, web, kde můžou zákazníci procházet nebo Hledat certifikovaných zařízení. Tento web se také označuje jako [Azure IoT Edge Certified](https://catalog.azureiotsolutions.com/) katalog zařízení.
 
 #### <a name="a-subset-of-tier-1-platforms-supported-by-iot-edge"></a>Podmnožinu vrstvy 1 platformách podporovaných službou IoT Edge
   

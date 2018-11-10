@@ -7,5 +7,5 @@
 | Maximální počet funkcí na úlohu |60 |Platí vynucené omezení 60 funkcí na úlohu Stream Analytics. |
 | Maximální počet jednotek streamování na úlohu |120 |Existuje pevný limit 120 jednotek streamování na úlohu Stream Analytics. |
 | Maximální počet úloh na oblast |1 500 |Každé předplatné může mít až 1 500 úloh na geografickou oblast. |
-| Velikost objektu blob referenčních dat v MB | 100 | Jednotlivé objekty blob referenčních dat nemohou být větší než 100 MB. |
+| Velikost objektu blob referenčních dat v MB | 300 | Objekty BLOB referenčních dat nemůže být větší než 300 MB. |
 

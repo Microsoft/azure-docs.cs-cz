@@ -3,19 +3,19 @@ title: Jádra pro poznámkový blok Jupyter v clusterech Spark v Azure HDInsight
 description: Další informace o jádrech PySpark, PySpark3 a Spark pro poznámkový blok Jupyter s clustery Spark v Azure HDInsight k dispozici.
 keywords: Poznámkový blok jupyter pro spark, jupyter spark
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 02/22/2018
-ms.author: jasonh
-ms.openlocfilehash: 98c9f260b4be1e335e22b5c68a76e9ffb7316236
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.author: hrasheed
+ms.openlocfilehash: d3694d49256b9844f6e3a76ce83f53be4b42ca48
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43697862"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51006086"
 ---
 # <a name="kernels-for-jupyter-notebook-on-spark-clusters-in-azure-hdinsight"></a>Jádra pro poznámkový blok Jupyter v clusterech Spark v Azure HDInsight 
 

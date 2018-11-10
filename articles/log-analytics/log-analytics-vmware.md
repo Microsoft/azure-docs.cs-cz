@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/04/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 9b0a9b8c976ce5ef9fb57a6f8bcfd076f370bb10
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: fe2407f67e2ef7a2eb14105db0fef10917f34ba9
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50963982"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51005219"
 ---
 # <a name="vmware-monitoring-preview-solution-in-log-analytics"></a>Řešení VMware Monitoring (Preview) ve službě Log Analytics
 
@@ -131,7 +131,7 @@ V **VMware** zobrazení řídicího panelu okna jsou uspořádané podle:
 
 Klikněte na libovolné okno otevřete podokno hledání Log Analytics, který zobrazuje detailní informace specifické pro okno.
 
-Tady můžete upravit vyhledávací dotaz upravit pro určitý objekt. Podrobné informace o vytváření prohledávání protokolů, najdete v článku [našla data pomocí prohledávání protokolů v Log Analytics](log-analytics-log-search.md).
+Tady můžete upravit vyhledávací dotaz upravit pro určitý objekt. Podrobné informace o vytváření prohledávání protokolů, najdete v článku [našla data pomocí prohledávání protokolů v Log Analytics](log-analytics-queries.md).
 
 #### <a name="find-esxi-host-events"></a>Najít akce hostitele ESXi
 Jednoho hostitele ESXi generuje více protokolů na základě jejich procesů. Řešení VMware Monitoring centralizuje je a obsahuje souhrn počtu událostí. Toto zobrazení centralizované vám pomůže pochopit hostitele ESXi, který má k velkému počtu událostí a které události se nejčastěji vyskytují ve vašem prostředí.
@@ -206,6 +206,6 @@ Může existovat několik důvodů:
     d. Pokud soubor neexistuje nebo uživatel a skupina nastavení se nepovedlo, provést nápravné opatření [Příprava serveru s Linuxem](#prepare-a-linux-server).
 
 ## <a name="next-steps"></a>Další postup
-* Použití [prohledávání protokolů](log-analytics-log-search.md) v Log Analytics, chcete-li zobrazit podrobné VMware hostovat data.
+* Použití [prohledávání protokolů](log-analytics-queries.md) v Log Analytics, chcete-li zobrazit podrobné VMware hostovat data.
 * [Vytvářejte vlastní řídicí panely](log-analytics-dashboards.md) zobrazující data hostitele VMware.
 * [Vytvořit upozornění](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md) Pokud dojde k určité událostem hostitele VMware.

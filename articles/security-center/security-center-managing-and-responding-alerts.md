@@ -3,7 +3,7 @@ title: Správa výstrah zabezpečení ve službě Azure Security Center | Dokume
 description: Tento dokument vám pomůže používat funkce služby Azure Security Center ke správě výstrah zabezpečení a reagování na ně.
 services: security-center
 documentationcenter: na
-author: terrylan
+author: rkarlin
 manager: mbaldwin
 editor: ''
 ms.assetid: b88a8df7-6979-479b-8039-04da1b8737a7
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/3/2018
-ms.author: yurid
-ms.openlocfilehash: f139f2f967edc03419f41f8c903c71b9ab9e6fcb
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.author: rkarlin
+ms.openlocfilehash: f865a0a609422ae4938a9cccf15d9cd176a9400a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48044429"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51227786"
 ---
 # <a name="managing-and-responding-to-security-alerts-in-azure-security-center"></a>Správa a zpracování výstrah zabezpečení v Azure Security Center
 Tento dokument vám pomůže používat Azure Security Center ke správě výstrah zabezpečení a reagování na ně.
@@ -95,4 +95,4 @@ V tomto dokumentu jste zjistili, jak ve službě Security Center konfigurovat z�
 * [Funkce detekce ve službě Azure Security Center](security-center-detection-capabilities.md)
 * [Průvodce plánováním a provozem služby Azure Security Center](security-center-planning-and-operations-guide.md)
 * [Azure Security Center – nejčastější dotazy](security-center-faq.md) – Přečtěte si nejčastější dotazy o použití této služby.
-* [Blog o zabezpečení Azure](http://blogs.msdn.com/b/azuresecurity/) – Přečtěte si příspěvky o zabezpečení Azure a dodržování předpisů.
+* [Blog o zabezpečení Azure](https://blogs.msdn.com/b/azuresecurity/) – Přečtěte si příspěvky o zabezpečení Azure a dodržování předpisů.

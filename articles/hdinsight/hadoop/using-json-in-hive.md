@@ -2,19 +2,19 @@
 title: Analýza a zpracování dokumentů JSON pomocí Apache Hive v Azure HDInsight
 description: Zjistěte, jak používat dokumentů JSON a analyzovat pomocí apache Hivu ve službě Azure HDInsight
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.author: jasonh
-ms.openlocfilehash: 5388d0d6c05cdfd60f3f840761a2cf87d4b6a41e
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.author: hrasheed
+ms.openlocfilehash: 0322b95c6fecc120fd6a50b05dbf502f28afa114
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43046197"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51006562"
 ---
 # <a name="process-and-analyze-json-documents-by-using-apache-hive-in-azure-hdinsight"></a>Zpracování a analýza dokumentů JSON pomocí Apache Hive v Azure HDInsight
 

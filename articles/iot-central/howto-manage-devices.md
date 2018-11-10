@@ -3,23 +3,23 @@ title: Správa zařízení v aplikaci Azure IoT Central | Dokumentace Microsoftu
 description: Jakožto Obsluha zjistěte, jak spravovat zařízení v aplikaci Azure IoT Central.
 author: ellenfosborne
 ms.author: elfarber
-ms.date: 01/21/2018
+ms.date: 11/02/2018
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 4b4ded86075e49277bca84f5261b6762b0f4fcae
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: dc241612149de5c4ea5c1d2e698741e77d429fc7
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45737307"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51004879"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application"></a>Správa zařízení v aplikaci Azure IoT Central
 
-Tento článek popisuje, jak jako operátor ke správě zařízení v aplikaci Microsoft Azure IoT Central. Jakožto Obsluha můžete:
+Tento článek popisuje, jak jako operátor ke správě zařízení v aplikaci Azure IoT Central. Jakožto Obsluha můžete:
 
-- Použití **Explorer** stránky k zobrazení, přidání a odstranění zařízení připojená k vaší aplikaci Azure IoT Central.
+- Použití **Device Explorer** stránky k zobrazení, přidání a odstranění zařízení připojená k vaší aplikaci Azure IoT Central.
 - Zachovat aktuální inventář zařízení.
 - Vaše metadata zařízení aktualizovat tak, že změníte hodnotám uloženým ve vlastnostech zařízení.
 - Řízení chování zařízení aktualizací nastavení do konkrétních zařízení **nastavení** stránky.
@@ -28,11 +28,11 @@ Tento článek popisuje, jak jako operátor ke správě zařízení v aplikaci M
 
 Chcete-li zobrazit jednotlivá zařízení:
 
-1. Zvolte **Explorer** v levé navigační nabídce. Tady se zobrazí seznam vašich [šablon](howto-set-up-template.md).
+1. Zvolte **Device Explorer** v levé navigační nabídce. Tady se zobrazí seznam vašich [šablon](howto-set-up-template.md).
 
-1. Zvolte **šablona zařízení** v levém podokně.
+1. V levém podokně vyberte šablonu zařízení v rámci šablony.
 
-1. V pravém podokně se zobrazí seznam zařízení, které jsou vytvořené z této šablony zařízení. Zvolte jednotlivých zařízení zobrazíte **podrobnosti o zařízení** stránky pro toto zařízení:
+1. V pravém podokně stránky Device Explorer zobrazí se seznam zařízení, které jsou vytvořené z této šablony zařízení, jak je znázorněno níže. Zvolte k individuálnímu zařízení a najdete na stránce Podrobnosti o zařízení pro toto zařízení:
 
     [![Stránka Podrobnosti zařízení](./media/howto-manage-devices/image1.png)](./media/howto-manage-devices/image1.png#lightbox)
 
@@ -40,7 +40,7 @@ Chcete-li zobrazit jednotlivá zařízení:
 
 Přidání zařízení do aplikace Azure IoT Central:
 
-1. Zvolte **Explorer** v levé navigační nabídce.
+1. Zvolte **Device Explorer** v levé navigační nabídce.
 
 1. Výběr šablony zařízení, ze kterého chcete vytvořit zařízení.
 
@@ -58,7 +58,7 @@ K připojení velkého počtu zařízení pro vaši aplikaci, Azure IoT Central 
 
 K hromadné registraci zařízení ve vaší aplikaci:
 
-1. Zvolte **Explorer** v levé navigační nabídce.
+1. Zvolte **Device Explorer** v levé navigační nabídce.
 
 1. Na levém panelu vyberte šablonu zařízení, pro které chcete hromadně vytvořit zařízení.
 
@@ -83,7 +83,7 @@ Pokud zařízení importovat operace se nezdaří, zobrazí se chybová zpráva 
 **Přidružení zařízení pomocí šablony**
 
 Když si zaregistrujete zařízení spuštěním importovat v části **zrušeno přiřazení zařízení**, pak zařízení jsou vytvořeny bez jakékoli šablony přidružení zařízení. Zařízení musí být spojen se šablonou a podívejte se data a další podrobnosti o zařízení. Použijte následující postup zařízení přidružit šablonu:
-1. Zvolte **Explorer** v levé navigační nabídce.
+1. Zvolte **Device Explorer** v levé navigační nabídce.
 1. Na levém panelu, vyberte **zrušeno přiřazení zařízení**.
     [![Nepřidružené zařízení](./media/howto-manage-devices/UnassociatedDevices1.png)](./media/howto-manage-devices/UnassociatedDevices1.png#lightbox)
 1. Vyberte zařízení, které chcete přidružit k šabloně.
@@ -100,7 +100,7 @@ Když si zaregistrujete zařízení spuštěním importovat v části **zrušeno
 Ke zřízení zařízení pro připojení k IoT Central, budete potřebovat připojovací řetězec zařízení, který je generován IoT Central. Chcete-li získat připojovací řetězce a další vlastnosti zařízení hromadné z vaší aplikace můžete použít funkce exportu. Export vytvoří soubor CSV s identitou zařízení, název zařízení a primární připojovací řetězec pro všechna vybraná zařízení.
 
 Chcete-li hromadně exportovat zařízení z vaší aplikace:
-1. Zvolte **Explorer** v levé navigační nabídce.
+1. Zvolte **Device Explorer** v levé navigační nabídce.
 
 1. Na levém panelu vyberte šablonu zařízení, pro který chcete exportovat zařízení.
 
@@ -128,7 +128,7 @@ Chcete-li hromadně exportovat zařízení z vaší aplikace:
 
 Chcete-li odstranit buď reálných nebo simulovaných zařízení z aplikace Azure IoT Central:
 
-1. Zvolte **Explorer** v navigační nabídce.
+1. Zvolte **Device Explorer** v navigační nabídce.
 
 1. Zvolte šablonu zařízení na zařízení, které chcete odstranit.
 
@@ -140,7 +140,7 @@ Chcete-li odstranit buď reálných nebo simulovaných zařízení z aplikace Az
 
 Nastavení řídí chování zařízení. Jinými slovy umožňují zadat vstupy do svého zařízení. Můžete zobrazit a aktualizovat nastavení zařízení na **podrobnosti o zařízení** stránky.
 
-1. Zvolte **Explorer** v navigační nabídce.
+1. Zvolte **Device Explorer** v navigační nabídce.
 
 1. Výběr šablony zařízení zařízení, jehož nastavení chcete změnit.
 
@@ -154,15 +154,13 @@ Nastavení řídí chování zařízení. Jinými slovy umožňují zadat vstupy
 
 Vlastnosti jsou metadata zařízení přidružená k zařízení, jako je například city a sériové číslo. Můžete zobrazit a aktualizovat vlastnosti na **podrobnosti o zařízení** stránky.
 
-1. Zvolte **Explorer** v navigační nabídce.
+1. Zvolte **Device Explorer** v navigační nabídce.
 
 1. Výběr šablony zařízení zařízení, jehož vlastnosti chcete změnit.
 
 1. Zvolte **vlastnosti** kartu, kde uvidíte všechny vlastnosti.
 
-1. Upravte vlastnosti tak, aby požadované hodnoty. Můžete změnit více vlastností najednou a aktualizovat všechny najednou.
-
-1. Zvolte **aktualizace**.
+1. Upravte vlastnosti aplikace, které mají požadované hodnoty. Můžete změnit více vlastností najednou a aktualizovat všechny najednou. Zvolte **aktualizace**.
 
 > [!NOTE]
 > Nelze změnit hodnotu _vlastnosti zařízení_. Vlastnosti zařízení jsou nastaveny podle zařízení a jsou jen pro čtení v aplikaci Azure IoT Central.

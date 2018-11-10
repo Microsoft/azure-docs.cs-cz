@@ -9,19 +9,19 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/24/2018
-ms.openlocfilehash: 054cd54827dc11e57f249a270542ff81ff670912
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: da92f59c4e25ec012cd9ad389c9afac410ba28e1
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49649988"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51219303"
 ---
 # <a name="track-experiments-and-training-metrics-in-azure-machine-learning"></a>Sledujte experimenty a vzdělávání metriky ve službě Azure Machine Learning
 
 Ve službě Azure Machine Learning může sledovat vaše experimenty a monitorovat metriky vylepšit proces vytváření modelu. V tomto článku se dozvíte o různých způsobech přidání protokolování do skriptu školení, jak odeslání experimentu s **start_logging** a **ScriptRunConfig**, jak zkontrolovat průběh spuštěné úlohy a postup zobrazení výsledků spuštění. 
 
 >[!NOTE]
-> V tomto článku kódu byl testován s Azure Machine Learning SDK verze 0.168 
+> V tomto článku kódu byl testován s Azure Machine Learning SDK verze 0.1.74 
 
 ## <a name="list-of-training-metrics"></a>Seznam metrik školení 
 
@@ -67,7 +67,6 @@ Před přidáním protokolování a odeslání experimentu, musíte vytvořit pr
 
   # make up an arbitrary name
   experiment_name = 'train-in-notebook'
-  exp = Experiment(workspace_object = ws, name = experiment_name)
   ```
   
 ## <a name="option-1-use-startlogging"></a>Možnost 1: Použití start_logging
@@ -103,7 +102,8 @@ Následující příklad trénovat jednoduchý model skriptu sklearn Ridge míst
 2. Přidat sledování experimentu pomocí sady SDK služby Azure Machine Learning a nahrajte trvalý modelu do experimentu, spusťte záznam. Následující kód přidá značky, protokoly a nahraje soubor modelu pro běh experimentu.
 
   ```python
-  run = Run.start_logging(experiment = exp)
+  experiment = Experiment(workspace = ws, name = experiment_name)
+  run = experiment.start_logging()
   run.tag("Description","My first run!")
   run.log('alpha', 0.03)
   reg = Ridge(alpha = 0.03)
@@ -209,8 +209,8 @@ Tento příklad rozšiřuje základní model skriptu sklearn Ridge výše. Prov�
   ```python
   from azureml.core import ScriptRunConfig
 
-  src = ScriptRunConfig(source_directory = script_folder, script = 'train.py', run_config = run_config_user_managed)
-  run = exp.submit(src)
+  src = ScriptRunConfig(source_directory = './', script = 'train.py', run_config = run_config_user_managed)
+  run = experiment.submit(src)
   ```
   
 ## <a name="view-run-details"></a>Zobrazení podrobností o spuštění
@@ -248,11 +248,22 @@ Odkaz pro spuštění disponuje přímo na stránku Podrobnosti o spuštění na
   ![Snímek obrazovky se podrobnosti o spuštění na webu Azure Portal](./media/how-to-track-experiments/run-details-page-web.PNG)
 
 Můžete také zobrazit všechny výstupy a protokoly pro spuštění nebo stáhnout snímek experiment, který jste odeslali, složce experimentu můžete sdílet s ostatními.
+### <a name="viewing-charts-in-run-details"></a>Zobrazení grafů v podrobnosti o spuštění
+
+Existují různé způsoby, jak používat protokolování rozhraní API pro různé typy záznamů metrik během spuštění a zobrazit jako grafy na webu Azure Portal. 
+
+|Zaznamenané hodnoty|Příklad kódu| Zobrazit v portálu|
+|----|----|----|
+|Protokol pole číselných hodnot| `run.log_list(name='Fibonacci', value=[0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89])`|Single-variable spojnicový graf|
+|Přihlásit se stejným názvem metriky opakovaně použít jednu numerickou hodnotu (jako v rámci smyčky for)| `for i in tqdm(range(-10, 10)):    run.log(name='Sigmoid', value=1 / (1 + np.exp(-i))) angle = i / 2.0`| Single-variable spojnicový graf|
+|Opakovaným odesláním řádek 2 číselné sloupce|`run.log_row(name='Cosine Wave', angle=angle, cos=np.cos(angle))   sines['angle'].append(angle)      sines['sine'].append(np.sin(angle))`|Dvě proměnné spojnicový graf|
+|Tabulku protokolu s 2 číselné sloupce|`run.log_table(name='Sine Wave', value=sines)`|Dvě proměnné spojnicový graf|
 
 ## <a name="example-notebooks"></a>Příklad poznámkové bloky
 Tyto poznámkové bloky předvedení konceptů v tomto článku:
 * [01.Getting-Started/01.Train-within-notebook/01.Train-within-notebook.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/01.train-within-notebook)
 * [01.Getting-Started/02.Train-on-local/02.Train-on-local.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/02.train-on-local)
+* [01.Getting-Started/06.Logging-API/06.Logging-API.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/06.logging-api/06.logging-api.ipynb)
 
 Získejte tyto poznámkové bloky: [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 

@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 06/17/2018
 ms.author: jopapa
 ms.custom: mvc
-ms.openlocfilehash: a1705913e1656901d0a87a3cebb2eb69a6c7ad63
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 667c1fbce398e06f9f2a6edca21935ae1062a737
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43698583"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50740566"
 ---
 # <a name="create-a-mongodb-app-with-angular-and-azure-cosmos-db---part-6-add-post-put-and-delete-functions-to-the-app"></a>Vytvoření aplikace MongoDB s Angular a službou Azure Cosmos DB – Část 6: Přidání funkcí Post, Put a Delete do aplikace
 
@@ -88,13 +88,13 @@ Před zahájením této části kurzu se ujistěte, že jste dokončili kroky v 
     });
     ```
 
-5. Spusťte aplikaci a zkontrolujte, že vše funguje. Ve Visual Studio Code uložte všechny provedené změny, klikněte na tlačítko **Ladit** ![Ikona Ladit ve Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part6/debug-button.png) na levé straně a pak klikněte na tlačítko **Spustit ladění** ![Ikona Spustit ladění ve Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part6/start-debugging-button.png).
+5. Spusťte aplikaci a zkontrolujte, že vše funguje. Ve Visual Studio Code uložte všechny provedené změny, vyberte tlačítko **Ladit** ![Ikona Ladit ve Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part6/debug-button.png) na levé straně a pak vyberte tlačítko **Spustit ladění** ![Ikona Spustit ladění ve Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part6/start-debugging-button.png).
 
 6. Nyní přejděte zpět do internetového prohlížeče a stisknutím klávesy F12 (na většině počítačů) otevřete Vývojářské nástroje a kartu Síť. Přejděte na adresu [http://localhost:3000](http://localhost:3000) a sledujte prováděná volání přes síť.
 
     ![Karta Síť v prohlížeči Chrome ukazující aktivitu sítě](./media/tutorial-develop-mongodb-nodejs-part6/add-new-hero.png)
 
-7. Přidejte nového hrdinu kliknutím na tlačítko **Add New Hero** (Přidat nového hrdinu). Zadejte ID 999, jméno (name) Fred a slavný výrok (saying) „Hello“ a pak klikněte na **Save** (Uložit). Na kartě Síť by se mělo zobrazit odeslání požadavku POST pro nového hrdinu. 
+7. Přidejte nového hrdinu výběrem tlačítka **Add New Hero** (Přidat nového hrdinu). Zadejte ID 999, jméno (name) Fred a slavný výrok (saying) „Hello“ a pak vyberte **Save** (Uložit). Na kartě Síť by se mělo zobrazit odeslání požadavku POST pro nového hrdinu. 
 
     ![Karta Síť v prohlížeči Chrome se zobrazenou aktivitou sítě pro funkce Get a Post](./media/tutorial-develop-mongodb-nodejs-part6/post-new-hero.png)
 
@@ -173,17 +173,17 @@ Před zahájením této části kurzu se ujistěte, že jste dokončili kroky v 
     };
     ```
 
-4. Teď, když jste aktualizovali kód, klikněte ve Visual Studio Code na tlačítko **Restartovat** ![Tlačítko Restartovat ve Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part6/restart-debugger-button.png).
+4. Teď, když jste aktualizovali kód, vyberte ve Visual Studio Code tlačítko **Restartovat** ![Tlačítko Restartovat ve Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part6/restart-debugger-button.png).
 
-5. V internetovém prohlížeči aktualizujte stránku a klikněte na tlačítko **Add New Hero** (Přidat nového hrdinu). Přidejte nového hrdinu s ID 9, jménem (name) Starlord a slavným výrokem (saying) „Hi“. Kliknutím na tlačítko **Save** (Uložit) nového hrdinu uložte.
+5. V internetovém prohlížeči aktualizujte stránku a vyberte tlačítko **Add New Hero** (Přidat nového hrdinu). Přidejte nového hrdinu s ID 9, jménem (name) Starlord a slavným výrokem (saying) „Hi“. Výběrem tlačítka **Save** (Uložit) nového hrdinu uložte.
 
-6. Nyní vyberte hrdinu **Starlord**, změňte slavný výrok (saying) z „Hi“ na „Bye“ a klikněte na tlačítko **Save** (Uložit). 
+6. Teď vyberte hrdinu **Starlord**, změňte slavný výrok (saying) z „Hi“ na „Bye“ a vyberte tlačítko **Save** (Uložit). 
 
     Teď můžete na kartě Síť vybrat příslušné ID a zobrazit datovou část. V datové části se zobrazí, ze slavný výrok (saying) je teď nastavený na „Bye“.
 
     ![Aplikace Heroes a karta Síť se zobrazenou datovou částí](./media/tutorial-develop-mongodb-nodejs-part6/put-hero-function.png) 
 
-    V uživatelském rozhraní také můžete některého z hrdinů odstranit a podívat se, jak dlouho dokončení operace odstranění trvá. Vyzkoušejte to kliknutím na tlačítko Delete (Odstranit) u hrdiny se jménem Fred.
+    V uživatelském rozhraní také můžete některého z hrdinů odstranit a podívat se, jak dlouho dokončení operace odstranění trvá. Vyzkoušejte to výběrem tlačítka Delete (Odstranit) u hrdiny se jménem Fred.
 
     ![Aplikace Heroes a karta Síť se zobrazenými časy dokončení funkcí](./media/tutorial-develop-mongodb-nodejs-part6/times.png) 
 

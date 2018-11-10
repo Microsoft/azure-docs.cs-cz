@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/30/2018
 ms.author: rkarlin
-ms.openlocfilehash: 5638b71147592ae71c741ca86da68ddfec668af5
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: acb010b0169fd876bf540f7a4115dbabfeda923a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44299062"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51227191"
 ---
 # <a name="connecting-microsoft-azure-application-gateway-to-azure-security-center"></a>Připojení Microsoft Azure Application Gateway ke službě Azure Security Center
 Tento dokument vám umožní nakonfigurovat integraci s Application Gateway firewall webových aplikací (WAF) a Security Center.
@@ -61,4 +61,4 @@ V tomto článku jste zjistili, jak integrovat waf služby Application Gateway v
 * [Monitorování stavu zabezpečení ve službě Security Center](security-center-monitoring.md).
 * [Monitorování partnerských řešení pomocí služby Security Center](security-center-partner-solutions.md).
 * [Azure Security Center – nejčastější dotazy](security-center-faq.md).
-* [Blog o zabezpečení Azure](http://blogs.msdn.com/b/azuresecurity/).
+* [Blog o zabezpečení Azure](https://blogs.msdn.com/b/azuresecurity/).

@@ -6,13 +6,13 @@ ms.service: security
 ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 09/10/2018
-ms.openlocfilehash: 2f932ff39495916c4a9fb55714c73383e06c72e1
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.date: 11/06/2018
+ms.openlocfilehash: 5d72d883b8d28e1ca71ea9c69488da5e1659e407
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44346839"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51219677"
 ---
 # <a name="appendix-for-azure-disk-encryption"></a>Dodatek pro Azure Disk Encryption 
 Tento článek je dodatek k [Azure Disk Encryption pro virtuální počítače IaaS](azure-security-disk-encryption-overview.md). Nezapomeňte že si přečíst Azure Disk Encryption pro virtuální počítače IaaS články nejprve k pochopení kontextu. Tento článek popisuje, jak připravit předem šifrované virtuální pevné disky a další úlohy.
@@ -549,6 +549,35 @@ Při šifrování pomocí aplikace Azure AD (předchozí verzi), musí být tajn
 ### <a name="bkmk_SecretnoKEK"></a> Tajný kód disk encryption není šifrován KEK
 Chcete-li nastavit tajný klíč v trezoru klíčů, použijte [Set-AzureKeyVaultSecret](/powershell/module/azurerm.keyvault/set-azurekeyvaultsecret). Pokud máte virtuální počítače s Windows, je zakódován jako řetězec ve formátu base64 a pak nahrají do vašeho trezoru klíčů pomocí souboru klíče bek `Set-AzureKeyVaultSecret` rutiny. Heslo pro Linux, jsou zakódovány jako řetězec ve formátu base64 a pak nahrají do služby key vault. Kromě toho Ujistěte se, že následující značky jsou nastaveny při vytvoření tajného klíče v trezoru klíčů.
 
+#### <a name="windows-bek-file"></a>Soubor klíče BEK Windows
+```powershell
+# Change the VM Name, key vault name, and specify the path to the BEK file.
+$VMName ="MySecureVM"
+$BEKFilepath = "C:\test\BEK\E60CF855-1B47-4AE5-A70C-4FE6E8386AAA.BEK"
+$VeyVaultName ="MySecureVault"
+
+# Get the name of the BEK file from the BEK file path. This will be a tag for the key vault secret.
+$BEKFileName =  Split-Path $BEKFilepath -Leaf
+
+# These tags will be added to the key vault secret so you can easily see which BEK file belongs to which VM.
+$tags = @{“MachineName” = “$VMName”;"DiskEncryptionKeyEncryptionAlgorithm" = "RSA-OAEP"; "DiskEncryptionKeyFileName" = "$BEKFileName"}
+
+# Convert the BEK file to a Base64 string.
+$FileContentEncoded = [System.convert]::ToBase64String((Get-Content -Path $BEKFilepath -Encoding Byte))
+
+# Create a new secret in the vault from the converted BEK file. 
+# The file is converted to a secure string before import into the key vault
+
+$SecretName = [guid]::NewGuid().ToString()
+$SecureSecretValue = ConvertTo-SecureString $FileContentEncoded -AsPlainText -Force
+$Secret = Set-AzureKeyVaultSecret -VaultName $VeyVaultName -Name $SecretName -SecretValue $SecureSecretValue -tags $tags
+
+# Show the secret's URL and store it as a variable. This is used as -DiskEncryptionKeyUrl in Set-AzureRmVMOSDisk when you attach your OS disk. 
+$SecretUrl=$secret.Id
+$SecretUrl
+```
+
+#### <a name="linux"></a>Linux
 ```powershell
 
  # This is the passphrase that was provided for encryption during the distribution installation

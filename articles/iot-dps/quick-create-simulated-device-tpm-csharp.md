@@ -1,6 +1,6 @@
 ---
 title: Zřízení simulovaného zařízení TPM pro službu Azure IoT Hub pomocí jazyka C# | Dokumentace Microsoftu
-description: Rychlý start Azure – Vytvoření a zřízení simulovaného zařízení TPM pomocí sady SDK pro zařízení jazyka C# pro službu Azure IoT Hub Device Provisioning
+description: Rychlý start Azure – Vytvoření a zřízení simulovaného zařízení TPM pomocí sady SDK pro zařízení jazyka C# pro službu Azure IoT Hub Device Provisioning. V tomto rychlém startu se používají jednotlivé registrace.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 04/09/2018
@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: fd16defdcd3c3cb0c78994e9259b55f3d687163b
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 812b707b9711d61d0a1326a86644e57ecbe84513
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47032644"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50157885"
 ---
 # <a name="create-and-provision-a-simulated-tpm-device-using-c-device-sdk-for-iot-hub-device-provisioning-service"></a>Vytvoření a zřízení simulovaného zařízení TPM pomocí sady SDK pro zařízení jazyka C# pro službu IoT Hub Device Provisioning
 
@@ -23,6 +23,12 @@ ms.locfileid: "47032644"
 Tyto kroky ukazují, jak na vývojovém počítači s operačním systémem Windows pomocí sady Azure IoT Hub SDK pro jazyk C# sestavit ukázku simulovaného zařízení TPM a jak toto simulované zařízení propojit se službou Device Provisioning a centrem IoT. Vzorový kód používá simulátor Windows TPM jako [modul hardwarového zabezpečení (HSM)](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/) zařízení. 
 
 Pokud neznáte proces automatického zřizování, měli byste se seznámit také s [koncepty automatického zřizování](concepts-auto-provisioning.md). Než budete pokračovat, ujistěte se také, že jste provedli kroky uvedené v tématu [Nastavení služby IoT Hub Device Provisioning Service pomocí webu Azure Portal](./quick-setup-auto-provision.md). 
+
+Služba Azure IoT Device Provisioning podporuje dva typy registrací:
+- [Skupiny registrací:](concepts-service.md#enrollment-group) Slouží k registraci několika souvisejících zařízení.
+- [Jednotlivé registrace:](concepts-service.md#individual-enrollment) Slouží k registraci jednoho zařízení.
+
+V tomto článku si předvedeme jednotlivé registrace.
 
 [!INCLUDE [IoT Device Provisioning Service basic](../../includes/iot-dps-basic.md)]
 
@@ -42,7 +48,7 @@ Pokud neznáte proces automatického zřizování, měli byste se seznámit tak�
 ## <a name="provision-the-simulated-device"></a>Zřízení simulovaného zařízení
 
 
-1. Přihlaste se k webu Azure Portal. V nabídce vlevo klikněte na tlačítko **Všechny prostředky** a otevřete svou službu Device Provisioning. Z okna **Přehled** si poznamenejte hodnotu **_Rozsah ID_**.
+1. Přihlaste se k portálu Azure. V nabídce vlevo klikněte na tlačítko **Všechny prostředky** a otevřete svou službu Device Provisioning. V okně **Přehled** si poznamenejte hodnotu **_Rozsah ID_**.
 
     ![Zkopírování hodnoty Rozsah ID služby zřizování z okna portálu](./media/quick-create-simulated-device-tpm-csharp/copy-scope.png) 
 

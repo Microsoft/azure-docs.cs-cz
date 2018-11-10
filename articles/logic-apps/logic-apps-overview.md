@@ -11,12 +11,12 @@ ms.custom: mvc
 ms.date: 6/29/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: f9a59187b8de994e9ebfcab01ae2f3046f8f7971
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: f5b39b428b894fcf5dddc0a7435353d174d83b78
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42023408"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50231198"
 ---
 # <a name="what-is-azure-logic-apps"></a>Co je Azure Logic Apps?
 
@@ -139,7 +139,7 @@ Pokud máte předplatné Azure, vyzkoušejte tento [rychlý start k vytvoření 
 ## <a name="support-and-feedback"></a>Podpora a zpětná vazba
 
 * Pokud máte dotazy, navštivte [fórum Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-* Pokud chcete zanechat své nápady na funkce nebo hlasovat, navštivte [web zpětné vazby od uživatelů Logic Apps](http://aka.ms/logicapps-wish).
+* Pokud chcete zanechat své nápady na funkce nebo hlasovat, navštivte [web zpětné vazby od uživatelů Logic Apps](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Další kroky
 

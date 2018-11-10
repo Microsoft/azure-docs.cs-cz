@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 555bf95367ab0d3e6c4afe09edb6777899400dd8
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 66a2871e0c4b36959ccd8f08df5b6b7edd09f624
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49344664"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51227820"
 ---
 # <a name="asdk-administration-basics"></a>Základy správy ASDK 
 Existuje několik věcí, které je potřeba vědět, pokud je pro vás nová pro správu služby Azure Stack Development Kit (ASDK). Tento návod obsahuje základní informace o vaší role jako jejich operátory Azure stacku v prostředí pro testování a jak zajistit testovací uživatele může být tak produktivní rychle.
@@ -43,7 +43,7 @@ Existuje několik důležitých informací účtu, které byste měli vědět p�
 ## <a name="what-tools-do-i-use-to-manage"></a>Jaké nástroje použít ke správě?
 Můžete použít [portálu Azure Stack správce](https://adminportal.local.azurestack.external) nebo prostředí PowerShell pro správu služby Azure Stack. Nejjednodušší způsob, jak informace o základních konceptech je prostřednictvím portálu. Pokud chcete pomocí prostředí PowerShell, je potřeba nainstalovat [prostředí PowerShell pro Azure Stack](asdk-post-deploy.md#install-azure-stack-powershell) a [stáhnout nástroje Azure Stack z webu GitHub](asdk-post-deploy.md#download-the-azure-stack-tools).
 
-Azure Stack jako základní mechanismus nasazování, správu a organizace používá Azure Resource Manageru. Pokud budete ke správě služby Azure Stack a bylo možné podporovat uživatele, měli byste získat informace o Azure Resource Manageru. Další informace najdete [Začínáme s Azure Resource Manageru – dokument White Paper](http://download.microsoft.com/download/E/A/4/EA4017B5-F2ED-449A-897E-BD92E42479CE/Getting_Started_With_Azure_Resource_Manager_white_paper_EN_US.pdf).
+Azure Stack jako základní mechanismus nasazování, správu a organizace používá Azure Resource Manageru. Pokud budete ke správě služby Azure Stack a bylo možné podporovat uživatele, měli byste získat informace o Azure Resource Manageru. Další informace najdete [Začínáme s Azure Resource Manageru – dokument White Paper](https://download.microsoft.com/download/E/A/4/EA4017B5-F2ED-449A-897E-BD92E42479CE/Getting_Started_With_Azure_Resource_Manager_white_paper_EN_US.pdf).
 
 ## <a name="your-typical-responsibilities"></a>Typické odpovědnosti
 Vaši uživatelé chtějí používat služby. Z perspektivy hlavní role je, aby tyto služby jsou pro ně dostupné. Pomocí ASDK, další služby, které nabízí, a jak se tyto služby dostupné podle [vytváření plánů, nabídek a kvót](asdk-offer-services.md). Také budete muset přidat položky na webu Marketplace, jako jsou Image virtuálních počítačů. Nejjednodušší způsob je [stažení položek z marketplace](asdk-marketplace-item.md) z Azure do služby Azure Stack.

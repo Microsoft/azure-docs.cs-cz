@@ -8,12 +8,12 @@ ms.date: 06/26/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 4b4f9bd1c7390d64a0db08b55bfb777498a10cb0
-ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
+ms.openlocfilehash: 343264f90ecf067786db9c0096625b87b2dbd319
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2018
-ms.locfileid: "43382701"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51004404"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-azure-functions-for-azure-iot-edge"></a>Použití Visual Studio Code pro vývoj a ladění Azure functions pro Azure IoT Edge
 
@@ -74,7 +74,7 @@ Existují čtyři položky v rámci řešení:
 
 ## <a name="develop-your-module"></a>Vývoj modulu
 
-Výchozí funkce Azure Functions se kód, který je součástí řešení nachází v **moduly** > [název vašeho modulu] > **EdgeHubTrigger-Csharp** > **run.csx** . V modulu a soubor deployment.template.json nastaveny tak, aby mohli sestavit řešení, ji nasdílet do vašeho registru kontejneru a nasazení do zařízení pro začátek testování bez zásahu do jakéhokoli kódu. Modul je určený pro jednoduše trvat, než vstupní zdroj (v tomto případě tempSensor modulu, která simuluje data) a zřetězit ho do služby IoT Hub. 
+Výchozí funkce Azure Functions se kód, který je součástí řešení nachází v **moduly** > [název vašeho modulu] > **modulename.cs**. V modulu a soubor deployment.template.json nastaveny tak, aby mohli sestavit řešení, ji nasdílet do vašeho registru kontejneru a nasazení do zařízení pro začátek testování bez zásahu do jakéhokoli kódu. Modul je určený pro jednoduše trvat, než vstupní zdroj (v tomto případě tempSensor modulu, která simuluje data) a zřetězit ho do služby IoT Hub. 
 
 Jakmile budete připraveni k přizpůsobení šablony funkce Azure Functions s vlastním kódem, použijte [sady SDK služby Azure IoT Hub](../iot-hub/iot-hub-devguide-sdks.md) vytvářet moduly, které řeší klíč musí pro řešení IoT, jako je zabezpečení, Správa zařízení a spolehlivost. 
 
@@ -93,7 +93,7 @@ Kontrola stavu kontejneru v Průzkumníku VS Code Dockeru nebo spuštěním `doc
 
    ![Ladění vyberte konfiguraci](./media/how-to-debug-csharp-function/select-debug-configuration.jpg)
 
-2. Přejděte na adresu `run.csx`. Přidejte zarážku ve funkci.
+2. Přejděte na adresu `modulename.cs`. Přidejte zarážku ve funkci.
 3. Vyberte **spustit ladění** nebo vyberte **F5**. Vyberte proces pro připojení.
 4. V zobrazení ladění VS Code zobrazí se vám proměnné na levém panelu. 
 

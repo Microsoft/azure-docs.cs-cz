@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/27/2018
+ms.date: 10/25/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: 9b13b8ae0b64dc84e476f5fc5da59ea30702fd8d
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 0c865b8bc129f4f2809f2dbb09a836efe4cee3d9
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34639023"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50093036"
 ---
 # <a name="tutorial-monitor-network-communication-between-two-virtual-machines-using-the-azure-portal"></a>Kurz: Monitorování síťové komunikace mezi dvěma virtuálními počítači na webu Azure Portal
 
@@ -30,6 +30,7 @@ ms.locfileid: "34639023"
 > [!div class="checklist"]
 > * Vytvořit dva virtuální počítače
 > * Monitorovat komunikaci mezi virtuálními počítači pomocí funkce monitorování připojení v Network Watcheru
+> * Generovat upozornění na metriky monitorování připojení
 > * Diagnostikovat a vyřešit potíže s komunikací mezi dvěma virtuálními počítači
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
@@ -120,6 +121,19 @@ Vytvořte monitorování připojení pro monitorování komunikace přes port TC
     | PRŮM. DOBA ODEZVY          | Oznamuje dobu odezvy pro vytvoření připojení v milisekundách. Monitorování připojení testuje připojení každých 60 sekund, takže můžete monitorovat latenci v čase.                                         |
     | Směrování                     | Monitorování připojení oznamuje segmenty směrování mezi dvěma koncovými body. V tomto příkladu existuje připojení mezi dvěma virtuálními počítači ve stejné virtuální síti, takže je tam jenom jeden segment směrování, a to na IP adresu 10.0.0.5. Pokud provoz mezi virtuálními počítači směruje nějaký existující systém nebo vlastní směrování, například přes bránu VPN nebo síťové virtuální zařízení, budou uvedené další segmenty směrování.                                                                                                                         |
     | STAV                   | Zelené značky zaškrtnutí u jednotlivých koncových bodů oznamují, že dané koncové body jsou v pořádku.    ||
+
+## <a name="generate-alerts"></a>Generování upozornění
+
+Upozornění vytvářejí pravidla upozornění služby Azure Monitor. Pravidla mohou v pravidelných intervalech automaticky spouštět uložené dotazy nebo vlastní prohledávání protokolů. Vygenerované upozornění může automaticky spustit jednu nebo více akcí, například odeslat někomu oznámení nebo spustit jiný proces. Při nastavování pravidla upozornění se seznam dostupných metrik, které můžete ke generování upozornění použít, určí podle prostředku, na který cílíte.
+
+1. Na webu Azure Portal vyberte službu **Monitor** a pak vyberte **Upozornění** > **Nové pravidlo upozornění**.
+2. Klikněte na **Vybrat cíl** a pak vyberte prostředky, na které chcete cílit. Vyberte **Předplatné** a nastavte **Typ prostředku**, abyste vyfiltrovali monitorování připojení, které chcete použít.
+
+    ![Obrazovka upozornění s vybraným cílem](./media/connection-monitor/set-alert-rule.png)
+1. Jakmile vyberete prostředek, na který chcete cílit, vyberte **Přidat kritéria**. Network Watcher nabízí [metriky, podle kterých můžete vytvářet upozornění](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts#metrics-and-dimensions-supported). Nastavte **Dostupné signály** na metriky ProbesFailedPercent a AverageRoundtripMs:
+
+    ![Stránka upozornění s vybranými signály](./media/connection-monitor/set-alert-signals.png)
+1. Vyplňte podrobnosti o upozornění, jako je název pravidla upozornění, popis a závažnost. K upozornění můžete také přidat skupinu akcí, která vám umožní automatizovat a přizpůsobit reakci na upozornění.
 
 ## <a name="view-a-problem"></a>Zobrazení problému
 

@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 11/15/2017
 ms.author: rogarana
 ms.component: disks
-ms.openlocfilehash: feb3e60ee1b43ec85c81912fbce086858bb33742
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
-ms.translationtype: MT
+ms.openlocfilehash: 53b44d47d9421f1b37aef7ca4d30c2c753b79740
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39715926"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51218317"
 ---
 # <a name="about-disks-storage-for-azure-linux-vms"></a>O diskové úložiště pro virtuální počítače Azure s Linuxem
 Stejně jako jakýkoli jiný počítač virtuální počítače v Azure používat disky jako místo pro uložení operačního systému, aplikace a data. Všechny virtuální počítače Azure obsahovat aspoň dva disky – disk operačního systému Linux a dočasný disk. Disk s operačním systémem je vytvořen z bitové kopie a disku s operačním systémem a image jsou virtuální pevné disky (VHD) uložené v účtu služby Azure storage. Virtuální počítače také může mít jeden nebo více datových disků, které jsou také uloženy jako virtuální pevné disky.
@@ -37,8 +37,6 @@ Každý virtuální počítač obsahuje dočasný disk. Dočasný disk obsahuje 
 
 Na virtuální počítače s Linuxem, tento disk je obvykle **/dev/sdb** a je ve formátu a připojený k **/mnt** pomocí agenta Azure Linux. Velikost dočasného disku se liší, na základě velikosti virtuálního počítače. Další informace najdete v tématu [velikostí pro virtuální počítače s Linuxem](../windows/sizes.md).
 
-Další informace o tom, jak Azure používá dočasný disk najdete v tématu [pochopení dočasné jednotky na virtuálních počítačích Microsoft Azure](https://blogs.msdn.microsoft.com/mast/2013/12/06/understanding-the-temporary-drive-on-windows-azure-virtual-machines/)
-
 ## <a name="data-disk"></a>Datový disk
 
 Datový disk je virtuální pevný disk, který je připojen k virtuálnímu počítači k ukládání dat aplikací nebo data, která je potřeba nechat. Datové disky jsou registrovány jako disky SCSI a jsou označeny písmeno, kterou zvolíte. Každý datový disk má maximální kapacitu 4 095 GB. Velikost virtuálního počítače určuje, kolik datových disků můžete připojit a typ úložiště můžete použít k hostování disky.
@@ -59,4 +57,3 @@ Můžete přidat datové disky na virtuální počítač v každém okamžiku po
 * [Připojení disku](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) přidat další úložiště pro virtuální počítač.
 * [Vytvoření snímku](snapshot-copy-managed-disk.md).
 * [Převod na managed disks](convert-unmanaged-to-managed-disks.md).
-

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 425aa26c07675d57de6892adb5792eb5573f94b1
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.openlocfilehash: c84d015da907c8792f09d1d60e6bc8eddb7e2957
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50747979"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51005594"
 ---
 # <a name="troubleshoot-a-problem-azure-vm-by-using-nested-virtualization-in-azure"></a>Řešení potíží problém virtuálního počítače Azure pomocí vnořená virtualizace v Azure
 
@@ -101,7 +101,7 @@ Připojte problémový virtuální počítač, virtuální počítač zachránit
 
 11. Vyberte **připojit virtuální pevný disk později**.
 
-    ![obrázek o možnost později virtuální pevný Disk Attach](/media/troubleshoot-vm-by-use-nested-virtualization/attach-disk-later.png)
+    ![obrázek o možnost později virtuální pevný Disk Attach](media/troubleshoot-vm-by-use-nested-virtualization/attach-disk-later.png)
 
 12. Vyberte **Dokončit** při vytvoření virtuálního počítače.
 
@@ -109,11 +109,11 @@ Připojte problémový virtuální počítač, virtuální počítač zachránit
 
 14. Vyberte **řadič IDE 0**vyberte **pevném**a potom klikněte na tlačítko **přidat**.
 
-    ![Přidá obrázek o novém pevném disku](/media/troubleshoot-vm-by-use-nested-virtualization/create-new-drive.png)    
+    ![Přidá obrázek o novém pevném disku](media/troubleshoot-vm-by-use-nested-virtualization/create-new-drive.png)    
 
 15. V **fyzický pevný Disk**, vyberte disk problémový virtuální počítač, který jste připojili k virtuálnímu počítači Azure. Pokud nevidíte všechny disky uvedené, zaškrtněte, pokud je disk se nastaví na offline pomocí správy disků.
 
-    ![obrázek o připojí disk](/media/troubleshoot-vm-by-use-nested-virtualization/mount-disk.png)  
+    ![obrázek o připojí disk](media/troubleshoot-vm-by-use-nested-virtualization/mount-disk.png)  
 
 
 17. Vyberte **Apply** (Použít) a pak vyberte **OK**.
@@ -130,11 +130,11 @@ Připojte problémový virtuální počítač, virtuální počítač zachránit
 
 3.  Přejděte na **všechny prostředky**, vyhledejte název disku a pak vyberte disk.
 
-     ![obrázek o prohledá disk](/media/troubleshoot-vm-by-use-nested-virtualization/search-disk.png)     
+     ![obrázek o prohledá disk](media/troubleshoot-vm-by-use-nested-virtualization/search-disk.png)     
 
 4. Klikněte na tlačítko **vytvoření virtuálního počítače**.
 
-     ![obrázek o vytvoří virtuální počítač z disku](./media/troubleshoot-vm-by-use-nested-virtualization/create-vm-from-vhd.png) 
+     ![obrázek o vytvoří virtuální počítač z disku](media/troubleshoot-vm-by-use-nested-virtualization/create-vm-from-vhd.png) 
 
 Můžete také pomocí Azure Powershellu k vytvoření virtuálního počítače z disku. Další informace najdete v tématu [vytvoření nového virtuálního počítače z existujícího disku pomocí prostředí PowerShell](../windows/create-vm-specialized.md#create-the-new-vm). 
 
