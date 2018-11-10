@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/23/2018
 ms.author: mbullwin
-ms.openlocfilehash: 3fa41f894e3228310bae6a9407cfcc426c27bfdc
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 47cf32a57fc4a2d0e20a9f2c242db1f3dec96fe5
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50963714"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228534"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-net"></a>Řešení potíží s chybějícími daty v nástroji Application Insights pro .NET
 ## <a name="some-of-my-telemetry-is-missing"></a>Chybí některé telemetrie
@@ -141,7 +141,7 @@ Oprava:
     
     ![](./media/app-insights-asp-net-troubleshoot-no-data/ikey-check.png)
 * V [domácí řídicím panelu Microsoft Azure](https://portal.azure.com), podívejte se na stav služby mapy. Pokud jsou některé upozornění údaje, počkejte, dokud se změnil na OK a pak zavřete a znovu otevřete okno aplikace Application Insights.
-* Zkontrolujte také [náš blog o stavu](http://blogs.msdn.com/b/applicationinsights-status/).
+* Zkontrolujte také [náš blog o stavu](https://blogs.msdn.com/b/applicationinsights-status/).
 * Napsali jste kód [SDK na straně serveru](app-insights-api-custom-events-metrics.md) , který může změnit instrumentačního klíče v `TelemetryClient` instancí nebo v `TelemetryContext`? Nebo napsali jste [konfigurace filtru nebo vzorkování](app-insights-api-filtering-sampling.md) , který může být filtrování si příliš mnoho?
 * Pokud jste upravili soubor ApplicationInsights.config, pečlivě zkontrolujte konfiguraci [TelemetryInitializers a TelemetryProcessors](app-insights-api-filtering-sampling.md). Nesprávně pojmenované typ nebo parametr může způsobit sadu SDK k odesílání žádná data.
 
@@ -167,7 +167,7 @@ Zobrazit [telemetrických závislostí](app-insights-asp-net-dependencies.md) a 
 * Windows Server 2008: Ujistěte se, že máte nainstalované následující aktualizace: [KB2468871](https://support.microsoft.com/kb/2468871), [KB2533523](https://support.microsoft.com/kb/2533523), [KB2600217](https://support.microsoft.com/kb/2600217).
 
 ## <a name="i-used-to-see-data-but-it-has-stopped"></a>Můžu použít k zobrazení dat, ale byla zastavena
-* Zkontrolujte, [stav blogu](http://blogs.msdn.com/b/applicationinsights-status/).
+* Zkontrolujte, [stav blogu](https://blogs.msdn.com/b/applicationinsights-status/).
 * Jste nedosáhli kvóta měsíčního počtu datových bodů? Otevřete nastavení/kvóta a ceny a zjistěte. Pokud ano, můžete upgradovat svůj plán nebo platit za dodatečnou kapacitu. Zobrazit [cenové schéma](https://azure.microsoft.com/pricing/details/application-insights/).
 
 ## <a name="i-dont-see-all-the-data-im-expecting"></a>Nevidím všechna data, který bych čekal

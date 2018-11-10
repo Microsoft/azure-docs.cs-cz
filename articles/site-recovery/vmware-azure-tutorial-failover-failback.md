@@ -1,20 +1,19 @@
 ---
-title: Převzetí služeb při selhání a navrácení služeb po obnovení virtuálních počítačů VMware a fyzických serverů replikovaných do Azure pomocí Site Recovery | Microsoft Docs
-description: Zjistěte, jak provést převzetí služeb při selhání virtuálních počítačů VMware a fyzických serverů do Azure a navrácení služeb po obnovení do místní lokality pomocí Azure Site Recovery.
-services: site-recovery
+title: Převzetí služeb při selhání a navrácení služeb po obnovení virtuálních počítačů VMware a fyzických serverů během zotavení po havárii do Azure pomocí Site Recovery | Microsoft Docs
+description: Zjistěte, jak během zotavení po havárii do Azure pomocí Azure Site Recovery provést převzetí služeb při selhání virtuálních počítačů VMware a fyzických serverů do Azure a navrácení služeb po obnovení do místní lokality.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 09/11/2018
+ms.date: 10/29/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 7e586e7e3ec8c16dcd215dbc11251d1b9fe928e1
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: a574c28cae449526ddc8fe0fbb9323fb14b7b6f1
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49457036"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215340"
 ---
 # <a name="fail-over-and-fail-back-vmware-vms-and-physical-servers-replicated-to-azure"></a>Převzetí služeb při selhání a navrácení služeb po obnovení virtuálních počítačů VMware a fyzických serverů replikovaných do Azure
 

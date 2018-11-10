@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: timlt
-ms.openlocfilehash: 8c369ab05059e57f2e2a98339052c27292ac7c0d
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 8240cf5beb50ef16aa2bd03415e6bbff9a2f4250
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34628772"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50158138"
 ---
 <!---
 Purpose of an Overview article: 
@@ -25,7 +25,7 @@ Purpose of an Overview article:
 
 # <a name="what-is-azure-iot-central"></a>Co je Azure IoT Central?
 
-Microsoft Azure IoT Central je plně spravované řešení IoT typu SaaS (software jako služba), které usnadňuje vytváření produktů propojujících fyzický svět s tím digitálním. Svoji vizi propojených produktů můžete přivést k životu následujícími kroky:
+Azure IoT Central je plně spravované řešení IoT typu SaaS (software jako služba), které usnadňuje vytváření produktů propojujících fyzický svět s tím digitálním. Svoji vizi propojených produktů můžete přivést k životu následujícími kroky:
 
 - Získávání nových informací z připojených zařízení, které vám pomohou poskytovat zákazníkům lepší produkty a prostředí
 - Vytváření nových obchodních příležitostí pro vaši organizaci
@@ -65,7 +65,7 @@ Jako tvůrce vytvoříte pomocí Azure IoT Central pro svoji organizaci vlastní
 - Cloudová aplikace, která přijímá ze zařízení telemetrická data a umožňuje vám tato zařízení spravovat
 - Více zařízení připojených k vaší cloudové aplikaci, na kterých běží vlastní kód
 
-Novou aplikaci Azure IoT Central můžete rychle nasadit a přizpůsobit konkrétním požadavkům přímo v prohlížeči. Jako tvůrce Azure IoT Central můžete pomocí webových nástrojů vytvořit _šablonu zařízení_ pro zařízení, která se připojují k vaší aplikaci. Šablona zařízení je podrobný plán modelu zařízení, který sdílí všechna zařízení vytvořená ze šablony zařízení. Šablona zařízení definuje vlastnosti a chování určitého typu zařízení, třeba v těchto ohledech:
+Novou aplikaci Azure IoT Central můžete rychle nasadit a přizpůsobit konkrétním požadavkům přímo v prohlížeči. Jako tvůrce Azure IoT Central můžete pomocí webových nástrojů vytvořit _šablonu zařízení_ pro zařízení, která se připojují k vaší aplikaci. Šablona zařízení je podrobný plán modelu zařízení. Šablonu sdílí všechna zařízení vytvořená ze stejné šablony zařízení. Šablona zařízení definuje vlastnosti a chování určitého typu zařízení, třeba v těchto ohledech:
 
 - Telemetrická data, která odesílá
 - Obchodní vlastnosti, které můžete upravit operátor

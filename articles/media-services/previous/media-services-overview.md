@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 10/15/2018
 ms.author: juliako
-ms.openlocfilehash: cc6cb768e9403a09ea09309e0ffd85ce9012cb41
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: c3d9b0660ab7803fc0c2696ded7bbffa90e07a5a
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49352082"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50211600"
 ---
 # <a name="azure-media-services-overview"></a>Přehled služby Azure Media Services 
 
 > [!div class="op_single_selector" title1="Select the version of Media Services that you are using:"]
-> * [Verze 2 – GA](media-services-overview.md)
-> * [Verze 3 – Preview](../latest/media-services-overview.md)
+> * [Verze 2](media-services-overview.md)
+> * [Verze 3](../latest/media-services-overview.md)
 
 Microsoft Azure Media Services (AMS) je rozšiřitelná cloudová platforma, která vývojářům umožňuje vytvářet škálovatelné aplikace pro správu a doručování médií. Služba Media Services využívá rozhraní REST API, které vám umožní bezpečně nahrávat, ukládat, kódovat a balit obsah (video nebo zvuk) doručovaný na vyžádání i v živě streamovaný různým klientům (například do televizí, počítačů a mobilních zařízení).
 

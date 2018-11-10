@@ -7,20 +7,20 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 07/12/2018
+ms.date: 10/26/2018
 ms.author: dobett
-ms.openlocfilehash: 50005e38214bf22aa664c2d2b0cc4f86da412818
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: 365c6e41db865edf8384ca1f82210d9471808f94
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39144490"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50140853"
 ---
 # <a name="quickstart-try-a-cloud-based-remote-monitoring-solution"></a>Rychlý start: Vyzkoušení cloudového řešení vzdáleného monitorování
 
-V tomto rychlém startu se dozvíte, jak nasadit akcelerátor řešení vzdáleného monitorování Azure IoT, který použijete jako cloudové řešení vzdáleného monitorování. Po nasazení akcelerátoru řešení použijete stránku **Řídicí panel** řešení k vizualizaci simulovaných zařízení na mapě a stránku **Údržba** k reakci na upozornění na tlak ze simulovaného chladícího zařízení. Tento akcelerátor řešení můžete využít jako výchozí bod pro vlastní implementaci nebo jako učební nástroj.
+V tomto rychlém startu se dozvíte, jak nasadit akcelerátor řešení vzdáleného monitorování Azure IoT. V tomto cloudovém řešení použijete stránku **Řídicí panel** k vizualizaci simulovaných zařízení na mapě a stránku **Údržba** k reakci na upozornění na tlak ze simulovaného chladícího zařízení. Tento akcelerátor řešení můžete využít jako výchozí bod pro vlastní implementaci nebo jako učební nástroj.
 
-Ve počátečním nasazení se akcelerátor řešení vzdáleného monitorování nakonfiguruje pro společnost Contoso. Contoso spravuje výběr různých typů zařízení, například chladiče, nasazených v různých fyzických prostředích. Chladící zařízení do akcelerátoru řešení vzdáleného monitorování odesílá telemetrická data o teplotě, vlhkosti a tlaku.
+V počátečním nasazení se akcelerátor řešení nakonfiguruje pro společnost Contoso. Jako operátor ve společnosti Contoso spravujete výběr různých typů zařízení, například chladiče, nasazených v různých fyzických prostředích. Chladící zařízení do akcelerátoru řešení vzdáleného monitorování odesílá telemetrická data o teplotě, vlhkosti a tlaku.
 
 K dokončení tohoto rychlého startu potřebujete aktivní předplatné Azure.
 
@@ -38,13 +38,13 @@ Klikněte na **Vyzkoušejte** na dlaždici **Vzdálené monitorování**.
 
 Na stránce **Vytvořit řešení vzdáleného monitorování** vyberte **Základní** nasazení. Pokud akcelerátor řešení nasazujete kvůli tomu, abyste zjistili, jak funguje, nebo spustili ukázku, zvolte možnost **Základní**, abyste minimalizovali náklady.
 
-Jako jazyk zvolte **.NET**. Implementace Java a .NET obsahují identické funkce.
+Jako jazyk zvolte **.NET**. Implementace Java a .NET obsahují stejné funkce.
 
 Zadejte jedinečný **Název řešení** pro váš akcelerátor řešení vzdáleného monitorování. V tomto rychlém startu používáme název **contoso-rm2**.
 
 Vyberte **Předplatné** a **Oblast**, které chcete při nasazování akcelerátoru řešení použít. Obvykle byste měli zvolit oblast, která je vám nejblíže. V tomto rychlém startu používáme možnosti **Visual Studio Enterprise** a **Západní Evropa**. V předplatném musíte být [globálním správcem nebo uživatelem](iot-accelerators-permissions.md).
 
-Kliknutím na **Vytvořit řešení** zahájíte nasazování. Dokončení tohoto procesu trvá minimálně pět minut:
+Nasazování zahájíte kliknutím na **Vytvořit řešení**. Dokončení tohoto procesu trvá minimálně pět minut:
 
 ![Podrobnosti řešení vzdáleného monitorování](./media/quickstart-remote-monitoring-deploy/createform.png)
 
@@ -68,15 +68,15 @@ Kliknutím na **Přijmout** přijměte žádost o oprávnění. Ve vašem prohl�
 
 Na řídicím panelu řešení se zobrazí následující informace o simulovaných zařízeních společnosti Contoso:
 
-* **Statistika zařízení** ukazuje souhrnné informace o upozorněních a celkový počet zařízení. Ve výchozím nasazení má Contoso 10 simulovaných zařízení různých typů.
+* Na panelu **Statistika zařízení** se zobrazí souhrnné informace o upozorněních a celkový počet zařízení. Ve výchozím nasazení má Contoso 10 simulovaných zařízení různých typů.
 
-* **Umístění zařízení** ukazuje fyzické umístění zařízení. Barva připínáčku značí případná upozornění ze zařízení.
+* Na panelu **Umístění zařízení** se zobrazí fyzické umístění zařízení. Barva připínáčku značí případná upozornění ze zařízení.
 
-* **Upozornění** ukazuje podrobnosti o upozorněních ze zařízení.
+* Na panelu **Upozornění** se zobrazí podrobnosti o upozorněních ze zařízení.
 
-* **Telemetrie** ukazuje telemetrická data ze zařízení. Kliknutím na různé typy telemetrie v horní části můžete zobrazit různé datové proudy telemetrie.
+* Na panelu **Telemetrie** se zobrazí telemetrická data ze zařízení. Kliknutím na různé typy telemetrie v horní části můžete zobrazit různé datové proudy telemetrie.
 
-* **Analýza** ukazuje kombinované informace o upozorněních ze zařízení.
+* Na panelu **Analýza** se zobrazí kombinované informace o upozorněních ze zařízení.
 
 ## <a name="respond-to-an-alert"></a>Reakce na upozornění
 
@@ -108,7 +108,7 @@ Pokud chcete pracovat na chladiči, posuňte se dolů do části **Související
 
 [![Výběr zařízení a naplánování akce](./media/quickstart-remote-monitoring-deploy/maintenanceschedule-inline.png)](./media/quickstart-remote-monitoring-deploy/maintenanceschedule-expanded.png#lightbox)
 
-Na panelu **Úlohy** vyberte **Spustit metodu** a pak metodu **EmergencyValveRelease**. Přidejte název úlohy **ChillerPressureRelease** a klikněte na **Použít**. Tato nastavení vytvoří úlohu, která se okamžitě spustí.
+Na panelu **Úlohy** vyberte **Spustit metodu** a pak metodu **EmergencyValveRelease**. Přidejte název úlohy **ChillerPressureRelease** a klikněte na **Použít**. Tato nastavení pro vás vytvoří úlohu, která se okamžitě spustí.
 
 Pokud chcete zobrazit stav úlohy, vraťte se na stránku **Údržba** a prohlédněte si seznam úloh v zobrazení **Úlohy**. Možná budete muset několik sekund počkat, než se zobrazí spuštění úlohy za účelem uvolnění tlaku ventilu na chladiči:
 

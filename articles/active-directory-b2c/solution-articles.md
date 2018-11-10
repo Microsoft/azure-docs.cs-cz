@@ -4,16 +4,16 @@ description: Tento článek obsahuje odkazy na řešení a informace o školení
 services: active-directory-b2c
 author: davidmu1
 ms.author: davidmu
-ms.date: 10/11/2018
+ms.date: 11/05/2018
 ms.topic: conceptual
 ms.service: active-directory
 ms.component: b2c
-ms.openlocfilehash: 74598aa83a9ed47ee85ef71593745faccfb81ee3
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 595b69e24484bb31a13b6f3554990cddb69c1a89
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49165943"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51227465"
 ---
 # <a name="solutions-and-training-for-azure-active-directory-b2c"></a>Řešení a školení pro Azure Active Directory B2C
 
@@ -27,3 +27,4 @@ Azure Active Directory (Azure AD) B2C umožňuje organizacím implementovat fire
 | [Povolení partnery, dodavateli a zákazníky k přístupu k aplikacím pomocí Azure active Directory](https://aka.ms/aadexternalidentities) | Každá organizace úspěch, bez ohledu na její velikost, odvětví, nebo dodržování předpisů a stavu zabezpečení, spoléhá na organizační schopnost spolupracují s dalšími organizacemi a spojení se zákazníky.<br><br>Spojuje Azure AD, Azure AD B2C a spolupráce B2B ve službě Azure AD, tento průvodce Detailně popisuje, přidanou hodnotu a mechanismy sestavování aplikace nebo webové prostředí, které poskytuje konsolidované ověřování prostředí přizpůsobené kontexty z vaší zaměstnanci, obchodními partnery a dodavateli a zákazníky. |
 | [Migrace aplikace ověřování Azure AD B2C v hybridním prostředí](https://aka.ms/MigratetoAADB2C) | V dnešních organizacích moderní digitální transformace a přesunu do cloudu dojde ve fázích, vyžadování většina organizací aspoň dočasně pracovat v hybridním prostředí identity.<br><br>Tato příručka se zaměřuje na tvorbu plán migrace pro přesun první aplikace Azure AD B2C a popisuje důležité informace o to udělat v hybridním prostředí identit. |
 | [Ochrana dat Obecné aspekty Regulation (GDPR) pro aplikace směřující zákazníka](https://aka.ms/AADB2CandGDPR) | Pro všechny zákazníky Internetové aplikace podle nařízení GDPR musí vzít v úvahu všechny organizace, které pouštět na projektech, které obsahovat osobní údaje a poskytovat občany EU.<br><br>Tato příručka se zaměřuje na použití Azure AD B2C jako flexibilní součástí vaší celkovým přístupem dodržování předpisů GDPR včetně jak komponent Azure AD B2C podporovat každé z klíče GDPR práva pro jednotlivce. |
+| Práce s vlastními zásadami:<br><ul><li>[Vlastní zásady Úvod](http://download.microsoft.com/download/3/6/1/36187D50-A693-4547-848A-176F17AE1213/Deep%20Dive%20on%20Azure%20AD%20B2C%20Custom%20Policies/Azure%20AD%20B2C%20Custom%20Policies%20-%20Introduction.pdf)</li><li>[Využití vlastních zásad ve vašem tenantovi](http://download.microsoft.com/download/3/6/1/36187D50-A693-4547-848A-176F17AE1213/Deep%20Dive%20on%20Azure%20AD%20B2C%20Custom%20Policies/Azure%20AD%20B2C%20Custom%20Policies%20-%20Leveraging%20Custom%20Policies%20for%20your%20Tenant.pdf)</li><li>[Struktury zásad a správy klíčů](http://download.microsoft.com/download/3/6/1/36187D50-A693-4547-848A-176F17AE1213/Deep%20Dive%20on%20Azure%20AD%20B2C%20Custom%20Policies/Azure%20AD%20B2C%20Custom%20Policies%20-%20Structuring%20Policies%20and%20Managing%20Keys.pdf)</li><li>[Přeneste svou vlastní identitu a migrace uživatelů](http://download.microsoft.com/download/3/6/1/36187D50-A693-4547-848A-176F17AE1213/Deep%20Dive%20on%20Azure%20AD%20B2C%20Custom%20Policies/Azure%20AD%20B2C%20Custom%20Policies%20-%20Bring-your-own-identity%20and%20Migrating%20Users.pdf)</li><li>[Řešení potíží se zásadami a auditování přístupu](http://download.microsoft.com/download/3/6/1/36187D50-A693-4547-848A-176F17AE1213/Deep%20Dive%20on%20Azure%20AD%20B2C%20Custom%20Policies/Azure%20AD%20B2C%20Custom%20Policies%20-%20Troubleshooting%20Policies%20and%20Auditing.pdf)</li><li>[Podrobné informace o schématu vlastní zásady](http://download.microsoft.com/download/3/6/1/36187D50-A693-4547-848A-176F17AE1213/Deep%20Dive%20on%20Azure%20AD%20B2C%20Custom%20Policies/Azure%20AD%20B2C%20Custom%20Policies%20-%20Deep%20Dive%20on%20Custom%20Policy%20Schema.pdf)</li><br>| Tato série dokumentů obsahuje začátku do konce cesty pomocí vlastních zásad v Azure AD B2C, nabízí ten samý podrobné nejběžnější pokročilé scénáře identity.<br><br> Zahrnuje jak implementovat a spravujte vlastní zásady pro tyto scénáře a jak diagnostikovat pomocí nástrojů sady k dispozici. Poskytuje také porozuměli jak vlastní pracovní zásady a podrobnosti o tom, jak doladit, je tak, aby vyhovovaly vašim konkrétním požadavkům. |

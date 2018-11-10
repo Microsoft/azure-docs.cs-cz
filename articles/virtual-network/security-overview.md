@@ -4,9 +4,6 @@ description: Přečtěte si víc o skupinách zabezpečení sítě a aplikací. 
 services: virtual-network
 documentationcenter: na
 author: jimdial
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: NA
 ms.topic: get-started-article
@@ -14,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/26/2018
 ms.author: jdial
-ms.openlocfilehash: 79ea839a5b57a2b64b80feba8324764a23c05697
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e9a4aa1606e99057565891dc10d17ba9abf15d9c
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46987012"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50159073"
 ---
 # <a name="security-groups"></a>Skupiny zabezpečení
 <a name="network-security-groups"></a>
@@ -60,9 +57,9 @@ Rozšířená pravidla zabezpečení zjednodušují definici zabezpečení pro v
  Pro použití v definici pravidla zabezpečení jsou k dispozici následující značky služeb. Jejich názvy se mírně liší mezi [modely nasazení Azure](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 * **VirtualNetwork** (Resource Manager) (**VIRTUAL_NETWORK** v případě klasického modelu): Tato značka zahrnuje adresní prostor virtuální sítě (všechny rozsahy CIDR definované pro virtuální síť), všechny připojené místní adresní prostory a [partnerské](virtual-network-peering-overview.md) virtuální sítě nebo virtuální sítě připojené k [bráně virtuální sítě](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
-* **AzureLoadBalancer** (Resource Manager) (**AZURE_LOADBALANCER** v případě klasického modelu): Tato značka označuje nástroj pro vyrovnávání zatížení infrastruktury Azure. Značka se přeloží na [IP adresu datacentra Azure](https://www.microsoft.com/download/details.aspx?id=41653), kde mají původ sondy stavu Azure. Pokud nepoužíváte nástroj pro vyrovnávání zatížení Azure, můžete toto pravidlo přepsat.
+* **AzureLoadBalancer** (Resource Manager) (**AZURE_LOADBALANCER** v případě klasického modelu): Tato značka označuje nástroj pro vyrovnávání zatížení infrastruktury Azure. Značka se přeloží na [virtuální IP adresu hostitele](security-overview.md##azure-platform-considerations) (168.63.129.16), kde mají původ sondy stavu Azure. Pokud nepoužíváte nástroj pro vyrovnávání zatížení Azure, můžete toto pravidlo přepsat.
 * **Internet** (Resource Manager) (**INTERNET** v případě klasického modelu): Tato značka označuje adresní prostor IP adres, který se nachází mimo virtuální síť a je dostupný prostřednictvím veřejného internetu. Rozsah adres zahrnuje [veřejný adresní prostor IP adres vlastněný Azure](https://www.microsoft.com/download/details.aspx?id=41653).
-* **AzureCloud** (pouze Resource Manager): Tato značka označuje adresní prostor IP adres pro Azure zahrnující veřejné IP adresy všech datacenter. Pokud jako hodnotu zadáte *AzureCloud*, provoz směřující na veřejné IP adresy Azure se povolí nebo zakáže. Pokud chcete povolit přístup ke cloudu Azure jenom v konkrétní [oblasti](https://azure.microsoft.com/regions), můžete zadat tuto oblast. Pokud například chcete povolit přístup ke cloudu Azure pouze v oblasti USA – východ, můžete jako značku služby zadat *AzureCloud.EastUS*. 
+* **AzureCloud** (pouze Resource Manager): Tato značka označuje adresní prostor IP adres pro Azure zahrnující [veřejné IP adresy všech datacenter](https://www.microsoft.com/download/details.aspx?id=41653). Pokud jako hodnotu zadáte *AzureCloud*, provoz směřující na veřejné IP adresy Azure se povolí nebo zakáže. Pokud chcete povolit přístup ke cloudu Azure jenom v konkrétní [oblasti](https://azure.microsoft.com/regions), můžete zadat tuto oblast. Pokud například chcete povolit přístup ke cloudu Azure pouze v oblasti USA – východ, můžete jako značku služby zadat *AzureCloud.EastUS*. 
 * **AzureTrafficManager** (pouze Resource Manager): Tato značka označuje adresní prostor IP adres sondy pro Azure Traffic Manager. Další informace o IP adresách sondy pro Traffic Manager najdete v tématu [Azure Traffic Manager – nejčastější dotazy](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs). 
 * **Storage** (pouze Resource Manager): Tato značka označuje adresní prostor IP adres pro službu Azure Storage. Pokud jako hodnotu zadáte *Storage*, provoz směřující do úložiště se povolí nebo zakáže. Pokud chcete povolit přístup k úložišti pouze v konkrétní [oblasti](https://azure.microsoft.com/regions), můžete zadat tuto oblast. Pokud například chcete povolit přístup pouze ke službě Azure Storage v oblasti Východní USA, můžete jako značku služby zadat *Storage.EastUS*. Značka představuje službu, ale ne konkrétní instance služby. Značka například představuje službu Azure Storage, ale ne konkrétní účet služby Azure Storage. Všechny předpony adres reprezentované touto značkou jsou reprezentované také značkou **Internet**. 
 * **Sql** (pouze Resource Manager): Tato značka označuje předpony adres služeb Azure SQL Database a Azure SQL Data Warehouse. Pokud jako hodnotu zadáte *SQL*, provoz směřující do SQL se povolí nebo zakáže. Pokud chcete povolit přístup k SQL jenom v konkrétní [oblasti](https://azure.microsoft.com/regions), můžete zadat tuto oblast. Pokud například chcete povolit přístup pouze ke službě Azure SQL Database v oblasti Východní USA, můžete jako značku služby zadat *Storage.EastUS*. Značka představuje službu, ale ne konkrétní instance služby. Značka například představuje službu Azure SQL Database, ale ne konkrétní server nebo databázi SQL. Všechny předpony adres reprezentované touto značkou jsou reprezentované také značkou **Internet**. 
@@ -79,7 +76,6 @@ Rozšířená pravidla zabezpečení zjednodušují definici zabezpečení pro v
 * **GatewayManager** (pouze Resource Manager): Tato značka označuje předpony adres služby Správce brány Azure. Pokud jako hodnotu zadáte *GatewayManager*, provoz směřující do služby Správce brány se povolí nebo zakáže. Pokud chcete povolit přístup ke službě Správce brány pouze v konkrétní [oblasti](https://azure.microsoft.com/regions), můžete oblast zadat v následujícím formátu: GatewayManager.[název_oblasti]. 
 * **AzureDataLake** (pouze Resource Manager): Tato značka označuje předpony adres služby Azure Data Lake. Pokud jako hodnotu zadáte *AzureDataLake*, provoz směřující do služby Azure Data Lake se povolí nebo zakáže. 
 * **AzureActiveDirectory** (pouze Resource Manager): Tato značka označuje předpony adres služby Azure Active Directory. Pokud jako hodnotu zadáte *AzureActiveDirectory*, provoz směřující do služby Azure Active Directory se povolí nebo zakáže.  
-* **CorpNetSAW** (pouze Resource Manager): Tato značka označuje předpony adres [zařízení CorpNetSAW](../security/azure-security-iaas.md) provozovaných v Azure. V některých případech můžou služby Azure použít tuto značku služby k požádání o přístup ke spravovaným instancím zákazníků za účelem zlepšení možností podpory. Pokud jako hodnotu zadáte *CorpNetSAW*, provoz směřující do CorpNetSAW se povolí nebo zakáže. 
 
 > [!NOTE]
 > Značky služeb Azure označují předpony adres z konkrétního používaného cloudu. Místní značky služeb se nepodporují v národních cloudech, pouze v globálním formátu. Například *Storage* a *Sql*.

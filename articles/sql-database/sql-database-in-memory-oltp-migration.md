@@ -12,12 +12,12 @@ ms.author: jodebrui
 ms.reviewer: MightyPen
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 8c683e86cd78f4c4ebe7a537c469c875b8ca07fe
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 4455e0c0f31c9026526820b50214efb83720da0d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47159835"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228041"
 ---
 # <a name="use-in-memory-oltp-to-improve-your-application-performance-in-sql-database"></a>OLTP v paměti použijte, chcete-li zvýšit výkon vašich aplikací ve službě SQL Database
 [OLTP v paměti](sql-database-in-memory.md) slouží ke zvýšení výkonu při zpracování transakcí, ingestování a případech přechodných dat v [úrovně Premium a pro důležité obchodní informace](sql-database-service-tiers-vcore.md) databází bez zvýšení cenové úrovně. 
@@ -47,7 +47,7 @@ V aplikaci SSMS, generování sestav:
 * V **Průzkumník objektů**, klikněte pravým tlačítkem na uzel vaší databáze.
 * Klikněte na tlačítko **sestavy** > **standardních sestav** > **přehled analýzy výkonu transakce**.
 
-Další informace najdete v tématu [stanovení, pokud tabulka nebo uložené procedury by měl být přenést do OLTP v paměti](http://msdn.microsoft.com/library/dn205133.aspx).
+Další informace najdete v tématu [stanovení, pokud tabulka nebo uložené procedury by měl být přenést do OLTP v paměti](https://msdn.microsoft.com/library/dn205133.aspx).
 
 ## <a name="step-3-create-a-comparable-test-database"></a>Krok 3: Vytvoření databáze srovnatelné testu
 Předpokládejme, že sestava označuje, že vaše databáze má tabulka, která je výhodná převáděn na paměťově optimalizované tabulky. Doporučujeme nejprve vyzkoušet k potvrzení o testování.
@@ -80,9 +80,9 @@ Použití této možnosti migrace:
    * **Advisor optimalizace paměti tabulky** průvodce se zobrazí.
 3. V průvodci klikněte na tlačítko **ověření migrace** (nebo **Další** tlačítko) Chcete-li zobrazit, jestli tabulka obsahuje všechny nepodporované funkce, které nejsou podporovány v paměťově optimalizovaných tabulkách. Další informace naleznete v tématu:
    
-   * *Kontrolní seznam optimalizace paměti* v [Advisor optimalizace paměti](http://msdn.microsoft.com/library/dn284308.aspx).
-   * [Konstrukce jazyka Transact-SQL nepodporuje OLTP v paměti](http://msdn.microsoft.com/library/dn246937.aspx).
-   * [Migrace na OLTP v paměti](http://msdn.microsoft.com/library/dn247639.aspx).
+   * *Kontrolní seznam optimalizace paměti* v [Advisor optimalizace paměti](https://msdn.microsoft.com/library/dn284308.aspx).
+   * [Konstrukce jazyka Transact-SQL nepodporuje OLTP v paměti](https://msdn.microsoft.com/library/dn246937.aspx).
+   * [Migrace na OLTP v paměti](https://msdn.microsoft.com/library/dn247639.aspx).
 4. Pokud tabulka nemá žádné nepodporované funkce, Poradce pro vás provádět skutečné schéma a data migrace.
 
 #### <a name="manual-t-sql"></a>Ruční T-SQL
@@ -114,7 +114,7 @@ Nativně kompilované uložené procedury musí mít na jeho klauzule T-SQL pomo
 * HODNOTOU NATIVE_COMPILATION
 * SCHEMABINDING: význam tabulky, uložené procedury nesmí obsahovat jejich definice sloupců změnit žádným způsobem, který by došlo k ovlivnění uloženou proceduru, pokud odstraníte uloženou proceduru.
 
-Nativní modul musí používat některý velké objemy [ATOMICKÝCH bloků](http://msdn.microsoft.com/library/dn452281.aspx) pro správu transakce. Neexistuje žádná role pro explicitní BEGIN TRANSACTION, nebo pro vrácení transakce zpět. Pokud váš kód zjistí porušení obchodní pravidlo, můžete ukončit Atomický blok s [THROW](http://msdn.microsoft.com/library/ee677615.aspx) příkazu.
+Nativní modul musí používat některý velké objemy [ATOMICKÝCH bloků](https://msdn.microsoft.com/library/dn452281.aspx) pro správu transakce. Neexistuje žádná role pro explicitní BEGIN TRANSACTION, nebo pro vrácení transakce zpět. Pokud váš kód zjistí porušení obchodní pravidlo, můžete ukončit Atomický blok s [THROW](https://msdn.microsoft.com/library/ee677615.aspx) příkazu.
 
 ### <a name="typical-create-procedure-for-natively-compiled"></a>Typický postup vytvoření pro nativně kompilované
 Obvykle se podobá následující šablony T-SQL k vytvoření nativně kompilované uložené procedury:
@@ -145,7 +145,7 @@ Kroky migrace jsou:
 2. Přepište záhlaví tak, aby odpovídaly předchozí šablony.
 3. Zjistit, zda uložené procedury kód T-SQL využívá všechny funkce, které nejsou podporovány pro nativně kompilované uložené procedury. Implementovat řešení v případě potřeby.
    
-   * Podrobnosti najdete v tématu [problémy s migrací nativně zkompilován uložené procedury](http://msdn.microsoft.com/library/dn296678.aspx).
+   * Podrobnosti najdete v tématu [problémy s migrací nativně zkompilován uložené procedury](https://msdn.microsoft.com/library/dn296678.aspx).
 4. Přejmenujte staré uložené procedury pomocí proceduru SP_RENAME. Nebo jednoduše VYŘADIT.
 5. Spusťte upravený skript vytvořit PROCEDURU T-SQL.
 
@@ -168,7 +168,7 @@ Vezměte v úvahu monitorování výkonu účinky vaší implementace v paměti 
 * [Monitorování databáze Azure SQL Database pomocí zobrazení dynamické správy](sql-database-monitoring-with-dmvs.md)
 
 ## <a name="related-links"></a>Související odkazy
-* [Paměti OLTP (Optimalizace v paměti)](http://msdn.microsoft.com/library/dn133186.aspx)
-* [Seznámení s nativně Kompilovanými uloženými procedurami](http://msdn.microsoft.com/library/dn133184.aspx)
-* [Advisor optimalizace paměti](http://msdn.microsoft.com/library/dn284308.aspx)
+* [Paměti OLTP (Optimalizace v paměti)](https://msdn.microsoft.com/library/dn133186.aspx)
+* [Seznámení s nativně Kompilovanými uloženými procedurami](https://msdn.microsoft.com/library/dn133184.aspx)
+* [Advisor optimalizace paměti](https://msdn.microsoft.com/library/dn284308.aspx)
 

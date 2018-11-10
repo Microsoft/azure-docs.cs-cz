@@ -7,14 +7,14 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 07/12/2018
+ms.date: 10/26/2018
 ms.author: dobett
-ms.openlocfilehash: 10ff6565ed8997a5cb87394aa0d743a0d94b67e0
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: c56bdb5968b5f5ada902aa9212282c3cfebe2eaf
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39144308"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50139835"
 ---
 # <a name="quickstart-try-a-cloud-based-solution-to-run-a-predictive-maintenance-analysis-on-my-connected-devices"></a>Rychlý start: Vyzkoušení cloudového řešení za účelem spuštění analýzy prediktivní údržby na připojených zařízeních
 
@@ -22,7 +22,7 @@ V tomto rychlém startu se dozvíte, jak nasadit akcelerátor řešení predikti
 
 V simulaci Fabrikam představuje regionální leteckou společnost, která se zaměřuje na pohodlí zákazníků za konkurenční ceny. Jednou z příčin zpoždění letů jsou problémy s údržbou, protože údržba leteckých motorů je velmi náročná. Společnost Fabrikam musí za každou cenu zabránit poruchám motorů během letu, a proto své motory pravidelně kontroluje a plánuje údržbu v souladu s plánem. Letecké motory se ale neopotřebovávají všechny stejně. Některou údržbu motorů není vždy nutné provádět. Naproti tomu se můžou vyskytnout problémy, kvůli kterým musí letadlo zůstat na zemi, dokud není opravené. Pokud je letadlo v místě, kde nejsou k dispozici vhodní technici nebo náhradní díly, pak tyto problémy můžou být zvláště nákladné.
 
-Motory letadel společnosti Fabrikam jsou vybaveny snímači, které monitorují stav motoru během letu. Z údajů o provozu a selháních motorů nashromážděných za mnoho let analytici společnosti Fabrikam vytvořili model, který předpovídá zbývající dobu životnosti (RUL) leteckého motoru. Tento model využívá korelaci mezi daty ze čtyř snímačů v motoru a opotřebením motoru, které vede k jeho případnému selhání. I když společnost Fabrikam stále provádí pravidelné kontroly k zajištění bezpečnosti, může pomocí modelu vypočítat zbývající životnost jednotlivých motorů po každém letu. Společnost Fabrikam nyní může předvídat budoucí riziková místa a tím minimalizovat prostoje letadel a snižovat provozní náklady a současně zajistit bezpečnost cestujících i posádek.
+Motory letadel společnosti Fabrikam jsou vybaveny snímači, které monitorují stav motoru během letu. Společnost Fabrikam má z těchto snímačů roky dat o provozu a selháních motorů. Odborníci přes data ve společnosti Fabrikam využili tato data k vytvoření modelu, který předvídá zbývající dobu životnosti (RUL) motorů letadel. Tento model využívá korelaci mezi daty ze čtyř snímačů v motoru a opotřebením motoru, které vede k jeho případnému selhání. I když společnost Fabrikam stále provádí pravidelné bezpečnostní kontroly, teď může pomocí modelů vypočítat zbývající dobu životnosti jednotlivých motorů po každém letu. Společnost Fabrikam teď může předpovídat budoucí selhání a plánovat údržbu tak, aby se minimalizovaly prostoje letadel. Tento proces snižuje provozní náklady a současně zajišťuje bezpečnost cestujících i posádek.
 
 K dokončení tohoto rychlého startu potřebujete aktivní předplatné Azure.
 
@@ -32,11 +32,11 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Při nasazování akcelerátoru řešení do předplatného Azure je potřeba nastavit několik možností konfigurace.
 
-Přihlaste se k webu [azureiotsolutions.com](https://www.azureiotsolutions.com/Accelerators) pomocí přihlašovacích údajů svého účtu Azure.
+Přejděte na web [Akcelerátory řešení Microsoft Azure IoT](https://www.azureiotsolutions.com) a přihlaste se pomocí přihlašovacích údajů vašeho účtu Azure.
 
-Klikněte na **Vyzkoušejte** na dlaždici **Prediktivní údržba**.
+Klikněte na dlaždici **Prediktivní údržba**. Na stránce **Prediktivní údržba** klikněte na **Vyzkoušet**:
 
-![Volba dlaždice Prediktivní údržba](./media/quickstart-predictive-maintenance-deploy/predictivemaintenance.png)
+![Vyzkoušet](./media/quickstart-predictive-maintenance-deploy/predictivemaintenance.png)
 
 Na stránce **vytvoření řešení prediktivní údržby** zadejte jedinečný **název řešení** pro akcelerátor řešení prediktivní údržby. Pro účely tohoto rychlého startu používáme název **MyPredictiveMaintenance**.
 

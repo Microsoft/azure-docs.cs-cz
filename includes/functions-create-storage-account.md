@@ -1,8 +1,21 @@
+---
+author: ggailey777
+ms.service: azure-functions
+ms.topic: include
+ms.date: 09/04/2018
+ms.author: glenga
+ms.openlocfilehash: cf8c6f07eb38487dd29624b15be3637536be92fc
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50133822"
+---
 ## <a name="create-an-azure-storage-account"></a>Vytvoření účtu služby Azure Storage
 
-Funkce používá pro obecné účely účet ve službě Azure Storage zachování stavu a další informace o funkcí. Vytvořit účet úložiště pro obecné účely ve skupině prostředků, který jste vytvořili pomocí [vytvořit účet úložiště az](/cli/azure/storage/account#create) příkaz.
+Aplikace Functions používá účet pro obecné účely ve službě Azure Storage k zachování stavu a dalších informací o vašich funkcích. Ve skupině prostředků, kterou jste vytvořili, vytvořte účet úložiště pro obecné účely pomocí příkazu [az storage account create](/cli/azure/storage/account#create).
 
-V následujícím příkazu nahraďte název účtu globálně jedinečný úložiště, kde uvidíte `<storage_name>` zástupný symbol. Názvy účtů úložiště musí mít od 3 do 24 znaků a můžou obsahovat jenom číslice a malá písmena.
+V následujícím příkazu nahraďte zástupný text `<storage_name>` globálně jedinečným názvem účtu úložiště. Názvy účtů úložiště musí mít délku 3 až 24 znaků a můžou obsahovat jenom číslice a malá písmena.
 
 ```azurecli-interactive
 az storage account create --name <storage_name> --location westeurope --resource-group myResourceGroup --sku Standard_LRS

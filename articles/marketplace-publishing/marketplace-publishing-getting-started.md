@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2017
 ms.author: hascipio
-ms.openlocfilehash: 82580fbab68eab28a2027cd277213f1fb2a76e07
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 3556384d71649391d094172a136b863ed26fd2ad
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39715997"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51227395"
 ---
 > [!NOTE]
 > Tato dokumentace už není aktuální a není přesné. Místo toho přejděte na Azure Marketplace [Příručka pro prodejce](https://docs.microsoft.com/azure/marketplace/seller-guide/cloud-partner-portal-seller-guide) pokyny k publikování nabídky na webu Azure Marketplace.
@@ -28,7 +28,7 @@ ms.locfileid: "39715997"
 V tomto článku je k dispozici, což vývojářům umožňuje vytvářet, nasazovat a spravovat svá řešení uvedené na webu Azure Marketplace pro ostatní zákazníky a partnery Azure nákup a používání.
 
 ## <a name="marketplace-publishing"></a>Publikování na webu Marketplace
-Jako Azure vydavatele, distribuce a prodávat svoje inovativní řešení nebo služby s ostatními vývojáři, nezávislým výrobcům softwaru a odborníci na IT na webu Marketplace. Prostřednictvím webu Marketplace umožňuje oslovit zákazníky, kteří chtějí rychle vyvíjet svých cloudových aplikací a mobilních řešení. Pokud vaše řešení cílí podnikoví uživatelé, může být vhodné vzít v úvahu [AppSource](http://appsource.microsoft.com) marketplace.
+Jako Azure vydavatele, distribuce a prodávat svoje inovativní řešení nebo služby s ostatními vývojáři, nezávislým výrobcům softwaru a odborníci na IT na webu Marketplace. Prostřednictvím webu Marketplace umožňuje oslovit zákazníky, kteří chtějí rychle vyvíjet svých cloudových aplikací a mobilních řešení. Pokud vaše řešení cílí podnikoví uživatelé, může být vhodné vzít v úvahu [AppSource](https://appsource.microsoft.com) marketplace.
 
 
 ## <a name="supported-types-of-solutions"></a>Podporované typy řešení
@@ -51,7 +51,7 @@ Publikování virtuálního počítače [řešení](https://createopportunity.az
 >[!NOTE]
 > Při práci s partnerem Account manažera nebo manažera pro partnerský DX, požádejte ho, aby nominujte vaše řešení v programu Azure Certified. Můžete také přejít na [Microsoft Azure Certified](http://createopportunity.azurewebsites.net) webové stránky a vyplňte formulář přihlášky. Zadejte e-mailu partnera Account manažera nebo manažera pro partnerský DX v **Contact Microsoft sponzor** pole.
 
-Pokud splňují kritéria v [zásady účasti na webu Azure Marketplace](http://go.microsoft.com/fwlink/?LinkID=526833) a po schválení žádosti, můžeme začít pracovat s vámi na připojení vašeho řešení na webu Marketplace.
+Pokud splňují kritéria v [zásady účasti na webu Azure Marketplace](https://go.microsoft.com/fwlink/?LinkID=526833) a po schválení žádosti, můžeme začít pracovat s vámi na připojení vašeho řešení na webu Marketplace.
 
 ### <a name="register-your-account-as-a-microsoft-seller"></a>Zaregistrujte svůj účet jako prodejce Microsoftu
 Zaregistrujte svůj účet Microsoft jako [účtu Microsoft Developer](marketplace-publishing-accounts-creation-registration.md).

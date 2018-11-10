@@ -1,6 +1,6 @@
 ---
-title: Vytvoření clusterů Hadoop pomocí rozhraní .NET – Azure HDInsight
-description: Zjistěte, jak vytvářet clustery Hadoop, HBase, Storm nebo Spark na Linuxu pro HDInsight pomocí sady HDInsight .NET SDK.
+title: Vytvoření clusterů Apache Hadoopu s využitím .NET – Azure HDInsight
+description: Zjistěte, jak vytvářet clustery Apache Hadoop, Apache HBase, Apache Storm nebo Apache Spark v Linuxu pro HDInsight pomocí sady HDInsight .NET SDK.
 services: hdinsight
 author: mamccrea
 ms.reviewer: jasonh
@@ -9,19 +9,19 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: mamccrea
-ms.openlocfilehash: ea5c0d3b9f444601607ebcda8d139797eb8dd2ec
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 943d5aeccf949c1dd494dc8ec8fda0d782527749
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43093907"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51035676"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-using-the-net-sdk"></a>Vytvoření clusterů se systémem Linux v HDInsight pomocí sady .NET SDK
 
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
 
-Zjistěte, jak vytvořit Hadoop cluster v clusteru Azure HDInsight pomocí sady .NET SDK.
+Zjistěte, jak vytvořit cluster Apache Hadoop v clusteru Azure HDInsight pomocí sady .NET SDK.
 
 > [!IMPORTANT]
 > Kroky v tomto dokumentu vytvořte cluster pomocí jednoho pracovního uzlu. Pokud máte v úmyslu na více než 32 uzly pracovního procesu v clusteru vytváření nebo škálování clusteru po jeho vytvoření, musíte vybrat velikost hlavního uzlu s alespoň s 8 jádry a 14GB paměti ram.
@@ -38,7 +38,7 @@ Zjistěte, jak vytvořit Hadoop cluster v clusteru Azure HDInsight pomocí sady 
 
 ## <a name="create-clusters"></a>Vytváření clusterů
 
-1. Otevřít Visual Studio 2017.
+1. Otevřete sadu Visual Studio 2017.
 2. Vytvoření nové aplikace konzoly Visual C#.
 3. Z **nástroje** nabídky, klikněte na tlačítko **Správce balíčků NuGet**a potom klikněte na tlačítko **Konzola správce balíčků**.
 4. Spuštěním následujícího příkazu v konzole k instalaci balíčků:

@@ -10,12 +10,12 @@ ms.component: custom-vision
 ms.topic: tutorial
 ms.date: 08/28/2018
 ms.author: areddish
-ms.openlocfilehash: e302fc580d9c83d269f0deedd051a3ea23bd274e
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: d02dced071594732978f961c1b9d8effcd2e35ab
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49957205"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50415615"
 ---
 # <a name="tutorial-create-an-image-classification-project-with-the-custom-vision-sdk-for-java"></a>Kurz: Vytvoření projektu klasifikace obrázků pomocí sady Custom Vision SDK pro Javu
 
@@ -23,7 +23,7 @@ Zjistěte, jak vytvořit projekt klasifikace obrázků pomocí služby Custom Vi
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Nainstalovaná sada JDK 7 nebo 8
+- Nainstalovaná sada [JDK 7 nebo 8](https://aka.ms/azure-jdks)
 - Nainstalovaný Maven
 
 ## <a name="get-the-training-and-prediction-keys"></a>Získání tréninkového klíče a klíče předpovědi

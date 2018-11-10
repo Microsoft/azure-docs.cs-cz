@@ -14,29 +14,29 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/02/2018
 ms.author: shvija
-ms.openlocfilehash: 9e94357216690438446a738400c979d12f387df6
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: cb1d26082fe4fbbd14b2b77f54d1bc7697b3538d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49471080"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51227956"
 ---
 # <a name="receive-events-from-azure-event-hubs-using-the-net-framework"></a>Příjem událostí z Azure Event Hubs pomocí rozhraní .NET Framework
 
 ## <a name="introduction"></a>Úvod
 
-Event Hubs je služba, která zpracovává velké objemy dat událostí (telemetrie) z připojených zařízení a aplikací. Data, která shromáždíte pomocí služby Event Hubs, můžete uložit pomocí úložného clusteru nebo transformovat pomocí zprostředkovatele datové analýzy v reálném čase. Schopnost shromažďovat a zpracovávat velké množství událostí je klíčovou komponentou moderních aplikačních architektur, například internetu věcí (Internet of Things – IoT). Podrobnější přehled služby Event Hubs naleznete v tématu [Přehled služby Event Hubs](event-hubs-about.md) a [funkcích služby Event Hubs](event-hubs-features.md).
+Event Hubs je služba, která zpracovává velké objemy dat událostí (telemetrie) z připojených zařízení a aplikací. Data, která shromáždíte pomocí služby Event Hubs, můžete uložit pomocí úložného clusteru nebo transformovat pomocí zprostředkovatele datové analýzy v reálném čase. Schopnost shromažďovat a zpracovávat velké množství událostí je klíčovou komponentou moderních aplikačních architektur, například internetu věcí (Internet of Things – IoT). Podrobnější přehled služby Event Hubs najdete v tématech [Přehled služby Event Hubs](event-hubs-about.md) a [Funkce služby Event Hubs](event-hubs-features.md).
 
-Tento kurz ukazuje, jak psát aplikace konzoly rozhraní .NET Framework, která přijímá zprávy z centra událostí pomocí [Event Processor Host](event-hubs-event-processor-host.md). [Event Processor Host](event-hubs-event-processor-host.md) je třída rozhraní .NET, která zjednodušuje přijímání událostí ze služby event hubs tím, že spravuje trvalé kontrolní body a paralelní příjmy ze služby event hubs. Pomocí třídy Event Processor Host, můžete události rozdělit mezi několik příjemců, i když jsou hostované v různých uzlech. Tento příklad ukazuje, jak pomocí třídy Event Processor Host pro jednoho příjemce. [Horizontální navýšení kapacity zpracování událostí] [ Scale out Event Processing with Event Hubs] příklad ukazuje, jak pomocí třídy Event Processor Host v případě několika příjemců.
+Tento kurz ukazuje, jak psát aplikace konzoly rozhraní .NET Framework, která přijímá zprávy z centra událostí pomocí [Event Processor Host](event-hubs-event-processor-host.md). [Event Processor Host](event-hubs-event-processor-host.md) je třída rozhraní .NET, která zjednodušuje přijímání událostí z center událostí tím, že spravuje trvalé kontrolní body a paralelní příjmy z těchto center událostí. Pomocí třídy Event Processor Host můžete události rozdělit mezi několik příjemců, i když jsou hostovaní v různých uzlech. Tento příklad ukazuje způsob použití třídy Event Processor Host pro jednoho příjemce. [Horizontální navýšení kapacity zpracování událostí] [ Scale out Event Processing with Event Hubs] příklad ukazuje, jak pomocí třídy Event Processor Host v případě několika příjemců.
 
 ## <a name="prerequisites"></a>Požadavky
 
 Pro absolvování tohoto kurzu musí být splněné následující požadavky:
 
-* [Microsoft Visual Studio 2017 nebo vyšší](http://visualstudio.com).
+* [Microsoft Visual Studio 2017 nebo vyšší](https://visualstudio.com).
 
 ## <a name="create-an-event-hubs-namespace-and-an-event-hub"></a>Vytvoření oboru názvů Event Hubs a centra událostí
-Prvním krokem je použití webu [Azure Portal](https://portal.azure.com) k vytvoření oboru názvů typu Event Hubs a získání přihlašovacích údajů pro správu, které vaše aplikace potřebuje ke komunikaci s centrem událostí. Pokud chcete vytvořit obor názvů a centra událostí, postupujte podle pokynů v [v tomto článku](event-hubs-create.md), potom proveďte následující kroky v tomto kurzu.
+Prvním krokem je použití webu [Azure Portal](https://portal.azure.com) k vytvoření oboru názvů typu Event Hubs a získání přihlašovacích údajů pro správu, které vaše aplikace potřebuje ke komunikaci s centrem událostí. Pokud chcete vytvořit obor názvů a centrum událostí, postupujte podle pokynů v [tomto článku](event-hubs-create.md) a pak pokračujte podle následujících pokynů v tomto kurzu.
 
 [!INCLUDE [event-hubs-create-storage](../../includes/event-hubs-create-storage.md)]
 
@@ -113,7 +113,7 @@ Pomocí šablony projektu **Konzolová aplikace** vytvořte v sadě Visual Studi
     
       Tuto třídu volá třída **EventProcessorHost** kvůli zpracování událostí přijatých z centra událostí. Třída `SimpleEventProcessor` používá stopky, aby pravidelně volala metodu kontrolního bodu v kontextu třídy **EventProcessorHost**. Tímto způsobem je zajištěno, že příjemce v případě restartování neztratí víc než pět minut práce potřebné ke zpracování.
 
-## <a name="update-the-main-method-to-use-simpleeventprocessor"></a>Aktualizovat hlavní způsob, kterým SimpleEventProcessor
+## <a name="update-the-main-method-to-use-simpleeventprocessor"></a>Aktualizace metody Main pro použití třídy SimpleEventProcessor
 
 1. Ve třídě **Program** přidejte na začátek souboru následující příkaz `using`:
     
@@ -151,7 +151,7 @@ Blahopřejeme! Obdrželi jste nyní zprávy z centra událostí pomocí třídy 
 
 
 > [!NOTE]
-> Tento kurz používá jednu instanci třídy [EventProcessorHost](event-hubs-event-processor-host.md). Zvýšení propustnosti, doporučujeme spustit víc instancí [EventProcessorHost](event-hubs-event-processor-host.md), jak je znázorněno [škálované zpracování událostí](https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3) vzorku. V těchto případech se více instancí automaticky koordinují s jinými vyrovnávat zatížení přijatých událostí. 
+> Tento kurz používá jednu instanci třídy [EventProcessorHost](event-hubs-event-processor-host.md). Pokud chcete zvýšit propustnost, doporučujeme spustit několik instancí třídy [EventProcessorHost](event-hubs-event-processor-host.md), jak je znázorněno v ukázce [škálovaného zpracování událostí](https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3). V těchto případech se spolu navzájem automaticky koordinuje několik instancí, aby dokázaly vyrovnávat zatížení přijatých událostí. 
 
 ## <a name="next-steps"></a>Další postup
 V tomto rychlém startu jste vytvořili aplikaci rozhraní .NET Framework, která se zobrazila zprávy z centra událostí. Zjistěte, jak odesílat události do centra událostí pomocí rozhraní .NET Framework, naleznete v tématu [odesílání událostí z centra událostí - rozhraní .NET Framework](event-hubs-dotnet-framework-getstarted-send.md).
