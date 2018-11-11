@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: 4f00268fcf3797697812f3aa8b221817a2794691
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 4dd54a4a4985a33bc14022d7f722bdf83224c4aa
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49092537"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240847"
 ---
 # <a name="api-management-access-restriction-policies"></a>Zásady omezení přístupu služby API Management
-Toto téma obsahuje odkaz pro následující zásady služby API Management. Informace o přidávání a konfiguraci zásad najdete v tématu [zásady ve službě API Management](http://go.microsoft.com/fwlink/?LinkID=398186).  
+Toto téma obsahuje odkaz pro následující zásady služby API Management. Informace o přidávání a konfiguraci zásad najdete v tématu [zásady ve službě API Management](https://go.microsoft.com/fwlink/?LinkID=398186).  
   
 ##  <a name="AccessRestrictionPolicies"></a> Zásady omezení přístupu  
   
@@ -71,7 +71,7 @@ Toto téma obsahuje odkaz pro následující zásady služby API Management. Inf
 |ignorování případu|Lze nastavit na hodnotu True nebo False. Pokud je nastaveno na True případ je ignorována, pokud hodnota hlavičky se porovná sadu přijatelných hodnot.|Ano|neuvedeno|  
   
 ### <a name="usage"></a>Využití  
- Tyto zásady můžete použít v následujících zásad [oddíly](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
+ Tyto zásady můžete použít v následujících zásad [oddíly](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
 -   **Části zásad:** příchozí, odchozí  
   
@@ -126,7 +126,7 @@ Toto téma obsahuje odkaz pro následující zásady služby API Management. Inf
 |období obnovení|Doba v sekundách, po jejichž uplynutí se kvóta resetuje.|Ano|neuvedeno|  
   
 ### <a name="usage"></a>Využití  
- Tyto zásady můžete použít v následujících zásad [oddíly](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
+ Tyto zásady můžete použít v následujících zásad [oddíly](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
 -   **Části zásad:** příchozí  
   
@@ -181,7 +181,7 @@ Toto téma obsahuje odkaz pro následující zásady služby API Management. Inf
 |období obnovení|Doba v sekundách, po jejichž uplynutí se kvóta resetuje.|Ano|neuvedeno|  
   
 ### <a name="usage"></a>Využití  
- Tyto zásady můžete použít v následujících zásad [oddíly](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
+ Tyto zásady můžete použít v následujících zásad [oddíly](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
 -   **Části zásad:** příchozí  
   
@@ -224,7 +224,7 @@ Toto téma obsahuje odkaz pro následující zásady služby API Management. Inf
 |Akce filtru IP = "Povolit &#124; zakázat"|Určuje, zda mají být povolená volání nebo není pro zadané IP adresy a rozsahy adres.|Ano|neuvedeno|  
   
 ### <a name="usage"></a>Využití  
- Tyto zásady můžete použít v následujících zásad [oddíly](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
+ Tyto zásady můžete použít v následujících zásad [oddíly](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
 -   **Části zásad:** příchozí  
 -   **Zásady obory:** globální, produktu, rozhraní API, operace  
@@ -279,7 +279,7 @@ Toto téma obsahuje odkaz pro následující zásady služby API Management. Inf
 |období obnovení|Doba v sekundách, po jejichž uplynutí se kvóta resetuje.|Ano|neuvedeno|  
   
 ### <a name="usage"></a>Využití  
- Tyto zásady můžete použít v následujících zásad [oddíly](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
+ Tyto zásady můžete použít v následujících zásad [oddíly](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
 -   **Části zásad:** příchozí  
 -   **Zásady obory:** produktu  
@@ -336,7 +336,7 @@ Toto téma obsahuje odkaz pro následující zásady služby API Management. Inf
 |období obnovení|Doba v sekundách, po jejichž uplynutí se kvóta resetuje.|Ano|neuvedeno|  
   
 ### <a name="usage"></a>Využití  
- Tyto zásady můžete použít v následujících zásad [oddíly](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
+ Tyto zásady můžete použít v následujících zásad [oddíly](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
 -   **Části zásad:** příchozí  
 -   **Zásady obory:** globální, produktu, rozhraní API, operace  
@@ -506,7 +506,7 @@ Toto téma obsahuje odkaz pro následující zásady služby API Management. Inf
 |url|Otevřete adresu URL koncového bodu konfigurace ID kde lze získat metadata Open ID konfigurace. Odpověď by měla být podle specifikace definované na adrese URL:`https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata`.  Azure Active Directory použít následující adresu URL: `https://login.microsoftonline.com/{tenant-name}/.well-known/openid-configuration` nahraďte název tenanta adresáře, třeba `contoso.onmicrosoft.com`.|Ano|neuvedeno|  
   
 ### <a name="usage"></a>Využití  
- Tyto zásady můžete použít v následujících zásad [oddíly](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
+ Tyto zásady můžete použít v následujících zásad [oddíly](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
 -   **Části zásad:** příchozí  
 -   **Zásady obory:** globální, produktu, rozhraní API, operace  

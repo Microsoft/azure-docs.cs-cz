@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/29/2017
 ms.author: muralikk
 ms.component: common
-ms.openlocfilehash: 0be0d6c9613b4160a6c4c5cc3b63336fcf67d5c2
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: b16a476f1960c79c378cd3aa18eae789c289eb54
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50025614"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51244028"
 ---
 # <a name="preparing-hard-drives-for-an-import-job"></a>Příprava pevných disků pro úlohu importu
 
@@ -309,7 +309,7 @@ Pokud velikost dat je větší než velikost disku, nástroj WAImportExport dist
 
 #### <a name="where-can-i-find-previous-version-of-waimportexport-tool"></a>Kde můžu najít předchozí verzi nástroje WAImportExport?
 
-Nástroj WAImportExport má všechny funkce, do kterých se nástroj WAImportExport V1. Nástroj WAImportExport umožňuje uživatelům zadat více zdrojů a zápis do několika jednotkách. Kromě toho jeden moct snadno spravovat více zdrojová umístění, ze kterých se data, musí zkopírovat do jednoho souboru CSV. V případě, že budete potřebovat podporu SAS nebo chcete zkopírovat jeden zdroj na jeden disk, můžete si ale [stáhněte si nástroj V1 WAImportExport](http://go.microsoft.com/fwlink/?LinkID=301900&amp;clcid=0x409) věnované [WAImportExport V1 odkaz](storage-import-export-tool-how-to-v1.md) nápovědu k používání WAImportExport V1 .
+Nástroj WAImportExport má všechny funkce, do kterých se nástroj WAImportExport V1. Nástroj WAImportExport umožňuje uživatelům zadat více zdrojů a zápis do několika jednotkách. Kromě toho jeden moct snadno spravovat více zdrojová umístění, ze kterých se data, musí zkopírovat do jednoho souboru CSV. V případě, že budete potřebovat podporu SAS nebo chcete zkopírovat jeden zdroj na jeden disk, můžete si ale [stáhněte si nástroj V1 WAImportExport](https://go.microsoft.com/fwlink/?LinkID=301900&amp;clcid=0x409) věnované [WAImportExport V1 odkaz](storage-import-export-tool-how-to-v1.md) nápovědu k používání WAImportExport V1 .
 
 #### <a name="what-is-a-session-id"></a>Co je ID relace?
 

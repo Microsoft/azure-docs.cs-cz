@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 11/07/2016
 ms.author: mandia
-ms.openlocfilehash: 718b57a801a9ba62a0154ae42da2ac0c0741f203
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8e25f98f1189f71943ece4a7877a86e29698689a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "22706644"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240507"
 ---
 # <a name="biztalk-services-editions-chart"></a>BizTalk Services: Tabulka edic
 
@@ -63,7 +63,7 @@ Rozdíly jsou uvedené v následující tabulce.
 
 <tr>
 <td><strong>Počáteční cena</strong></td>
-<td colspan="5"><a HREF="http://go.microsoft.com/fwlink/p/?LinkID=304011"> Ceník služby Azure BizTalk Services</a> <br/><br/> <a HREF="http://azure.microsoft.com/pricing/calculator/?scenario=full"> Cenová kalkulačka funkcí Azure</a></td>
+<td colspan="5"><a HREF="https://go.microsoft.com/fwlink/p/?LinkID=304011"> Ceník služby Azure BizTalk Services</a> <br/><br/> <a HREF="https://azure.microsoft.com/pricing/calculator/?scenario=full"> Cenová kalkulačka funkcí Azure</a></td>
 </tr>
 <tr>
 <td><strong>Výchozí minimální konfigurace</strong></td>
@@ -153,7 +153,7 @@ Zahrnuje smlouvy TPM</td>
 <tr>
 <td><strong>Vysoká dostupnost</strong>
 <br/><br/>
-Informace o smlouvách o úrovni služeb (SLA) najdete v článku <a HREF="http://go.microsoft.com/fwlink/p/?LinkID=304011">Ceník služby Azure BizTalk Services</a>.
+Informace o smlouvách o úrovni služeb (SLA) najdete v článku <a HREF="https://go.microsoft.com/fwlink/p/?LinkID=304011">Ceník služby Azure BizTalk Services</a>.
 </td>
 <td>Nezahrnuje</td>
 <td>Nezahrnuje</td>
@@ -242,10 +242,10 @@ Edice Free neumožňuje migraci ani vertikální navýšení kapacity na jinou v
 U ostatních edic můžete k migraci artefaktů z jedné vrstvy do druhé použít funkci zálohování a obnovení. Můžete třeba zálohovat artefakty na vrstvě Standard a potom je obnovit na vrstvě |Premium. Článek [Služba BizTalk Services: Zálohování a obnovení](biztalk-backup-restore.md) popisuje podporované cesty migrace a uvádí, jaké artefakty se dají zálohovat. Upozorňujeme, že hybridní připojení se nezálohují. Po zálohování a obnovení na nové vrstvě musíte hybridní připojení znovu vytvořit.  
 
 #### <a name="is-the-biztalk-adapter-service-included-in-the-service-how-do-i-receive-the-software"></a>Je součástí služby i služba BizTalk Adapter Service? Jak tento software získám?
-Ano, součástí [stažení](http://www.microsoft.com/download/details.aspx?id=39087) sady SDK Azure BizTalk Services je také služba BizTalk Adapter Service se sadou BizTalk Adapter Pack.
+Ano, součástí [stažení](https://www.microsoft.com/download/details.aspx?id=39087) sady SDK Azure BizTalk Services je také služba BizTalk Adapter Service se sadou BizTalk Adapter Pack.
 
 ## <a name="next-steps"></a>Další kroky
-Pokud chcete vytvořit službu BizTalk Services na webu Azure Portal, přejděte na článek [BizTalk Services: Zřízení pomocí webu Azure Portal](biztalk-provision-services.md). Pokud chcete začít vytvářet aplikace, přejděte na článek [Azure BizTalk Services](http://go.microsoft.com/fwlink/p/?LinkID=235197).
+Pokud chcete vytvořit službu BizTalk Services na webu Azure Portal, přejděte na článek [BizTalk Services: Zřízení pomocí webu Azure Portal](biztalk-provision-services.md). Pokud chcete začít vytvářet aplikace, přejděte na článek [Azure BizTalk Services](https://go.microsoft.com/fwlink/p/?LinkID=235197).
 
 ## <a name="additional-resources"></a>Další zdroje
 * [BizTalk Services: Zřízení pomocí webu Azure Portal](biztalk-provision-services.md)<br/>
@@ -254,5 +254,5 @@ Pokud chcete vytvořit službu BizTalk Services na webu Azure Portal, přejděte
 * [BizTalk Services: Zálohování a obnovení](biztalk-backup-restore.md)<br/>
 * [BizTalk Services: Omezování](biztalk-throttling-thresholds.md)<br/>
 * [BizTalk Services: Název a klíč vystavitele](biztalk-issuer-name-issuer-key.md)<br/>
-* [Jak začít používat sadu SDK Azure BizTalk Services](http://go.microsoft.com/fwlink/p/?LinkID=302335)<br/>
+* [Jak začít používat sadu SDK Azure BizTalk Services](https://go.microsoft.com/fwlink/p/?LinkID=302335)<br/>
 

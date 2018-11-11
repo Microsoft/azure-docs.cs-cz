@@ -3,24 +3,24 @@ title: Historie verzí – Microsoft Genomics
 titleSuffix: Azure
 description: Microsoft Genomics pravidelně aktualizuje Pythonového klienta Microsoft Genomics pro opravy a nové funkce.
 services: genomics
-author: grhuynh
+author: ruchir
 manager: cgronlun
-ms.author: grhuynh
+ms.author: ruchir
 ms.service: genomics
 ms.topic: article
-ms.date: 03/02/2018
-ms.openlocfilehash: 96e2f30a59c5b0e366e46363f52e320cc85a245f
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.date: 11/08/2018
+ms.openlocfilehash: e673d732d1d43e3f58a295a94d11fc42f3618d93
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45732120"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51345858"
 ---
 # <a name="version-release-history"></a>Historie vydaných verzí
 Tým Microsoft Genomics pravidelně aktualizuje Pythonového klienta Microsoft Genomics pro opravy a nové funkce. 
 
 ## <a name="latest-release"></a>Nejnovější vydaná verze
-Aktuální Pythonového klienta je verze 0.7.4. Byla vydána 5. března 2018 a využívá GATK 3.3. 
+Aktuální Pythonového klienta je verze 0.7.4. 5. března 2018 a podporuje spouštění pracovních postupů s GATK 3.5 a GATK4 byl vydán.
 
 
 ## <a name="release-history"></a>Historie vydaných verzí 
@@ -30,7 +30,7 @@ Informace o vydání nových verzí Pythonového klienta Microsoft Genomics dvak
 Verze 0.7.4 zahrnuje podporu pro přijetí tokenů SAS místo klíče účtu v `config.txt` vstupu. Další informace najdete v tématu [tokeny SAS vstup rychlý Start](quickstart-input-sas.md). 
 
 ### <a name="version-073"></a>Verze 0.7.3
-Verze 0.7.3 obsahuje opravy menších chyb
+Verze 0.7.3 obsahuje menšími opravami chyb.
 
 ### <a name="version-072"></a>Verze 0.7.2
-Počáteční verze je verze 0.7.2. 1. listopadu 2017 byla vydána a využívá GATK 3.3.
+Počáteční verze je verze 0.7.2. Byl vydán 1. listopadu 2017.

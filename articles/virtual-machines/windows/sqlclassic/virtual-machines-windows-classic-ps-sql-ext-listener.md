@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/31/2017
 ms.author: mikeray
-ms.openlocfilehash: 10b4fec92752e44048454e8b63e90fd9b7fecba0
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 449df8e49eb63cb6e52cd4ec25dafc2bb0851347
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50023181"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51241755"
 ---
 # <a name="configure-an-external-listener-for-always-on-availability-groups-in-azure"></a>Konfigurace externího naslouchacího procesu pro skupiny dostupnosti Always On v Azure
 > [!div class="op_single_selector"]
@@ -127,7 +127,7 @@ Aby bylo možné získat přístup k naslouchacího procesu od mimo virtuální 
 
     sqlcmd -S "mycloudservice.cloudapp.net,<EndpointPort>" -d "<DatabaseName>" -U "<LoginId>" -P "<Password>"  -Q "select @@servername, db_name()" -l 15
 
-Na rozdíl od předchozího příkladu ověřování SQL musí použít, protože volající nelze použít ověřování systému windows přes internet. Další informace najdete v tématu [skupiny dostupnosti Always On na virtuálním počítači Azure: scénáře připojení klienta](http://blogs.msdn.com/b/sqlcat/archive/2014/02/03/alwayson-availability-group-in-windows-azure-vm-client-connectivity-scenarios.aspx). Pokud používáte ověřování SQL, ujistěte se, že vytvoření stejné přihlašovací údaje na obou replikách. Další informace o řešení potíží s přihlášení se skupinami dostupnosti najdete v tématu [mapování přihlášení nebo použití obsažené uživatele databáze SQL pro připojení k ostatními replikami a mapovat do databází dostupnosti](http://blogs.msdn.com/b/alwaysonpro/archive/2014/02/19/how-to-map-logins-or-use-contained-sql-database-user-to-connect-to-other-replicas-and-map-to-availability-databases.aspx).
+Na rozdíl od předchozího příkladu ověřování SQL musí použít, protože volající nelze použít ověřování systému windows přes internet. Další informace najdete v tématu [skupiny dostupnosti Always On na virtuálním počítači Azure: scénáře připojení klienta](https://blogs.msdn.com/b/sqlcat/archive/2014/02/03/alwayson-availability-group-in-windows-azure-vm-client-connectivity-scenarios.aspx). Pokud používáte ověřování SQL, ujistěte se, že vytvoření stejné přihlašovací údaje na obou replikách. Další informace o řešení potíží s přihlášení se skupinami dostupnosti najdete v tématu [mapování přihlášení nebo použití obsažené uživatele databáze SQL pro připojení k ostatními replikami a mapovat do databází dostupnosti](https://blogs.msdn.com/b/alwaysonpro/archive/2014/02/19/how-to-map-logins-or-use-contained-sql-database-user-to-connect-to-other-replicas-and-map-to-availability-databases.aspx).
 
 Pokud jsou repliky Always On v různých podsítích, budou muset klienti zadat **MultisubnetFailover = True** v připojovacím řetězci. Výsledkem je pokusy o paralelní připojení repliky v různých podsítích. Všimněte si, že tento scénář obsahuje nasazení skupiny dostupnosti Always On mezi oblastmi.
 

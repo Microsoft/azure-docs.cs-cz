@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: robb
 ms.component: diagnostic-extension
-ms.openlocfilehash: 123005a32315ba3972ed4f1c1784d3ac9460b101
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
-ms.translationtype: MT
+ms.openlocfilehash: 32cebecbb9185250d7d295eab3074a76dcd6a8b9
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50958946"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240490"
 ---
 # <a name="streaming-azure-diagnostics-data-in-the-hot-path-by-using-event-hubs"></a>Streamování dat diagnostiky Azure do horké cesty s využitím služby Event Hubs
 Diagnostika Azure nabízí flexibilní možnosti, jak shromažďovat metriky a protokoly z cloudové služby virtuálních počítačů (VM) a přenést výsledky do služby Azure Storage. Od března 2016 (SDK 2.9) časový rámec, můžete odeslání diagnostiky do vlastní zdroje dat a přenos dat kritickou cestu během několika sekund pomocí [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/).
@@ -70,7 +70,7 @@ Ve výchozím nastavení Azure Diagnostics vždy posílá protokoly a metriky pr
 
 V tomto příkladu URL centra událostí je nastavena na plně kvalifikovaný obor názvů centra událostí: obor názvů Event Hubs + "/" + název centra událostí.  
 
-Adresa URL se zobrazí v Centru událostí [webu Azure portal](http://go.microsoft.com/fwlink/?LinkID=213885) na řídicím panelu služby Event Hubs.  
+Adresa URL se zobrazí v Centru událostí [webu Azure portal](https://go.microsoft.com/fwlink/?LinkID=213885) na řídicím panelu služby Event Hubs.  
 
 **Jímky** název lze nastavit na libovolný platný řetězec, tak dlouho, dokud se stejnou hodnotu konzistentně používá v konfiguračním souboru.
 

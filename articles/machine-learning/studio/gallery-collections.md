@@ -1,6 +1,6 @@
 ---
-title: Kolekce Azure AI Galerie | Microsoft Docs
-description: Vyhledat a sdílet kolekce v galerii AI Azure.
+title: Kolekce Azure AI Galerie | Dokumentace Microsoftu
+description: Zjišťování a sdílení kolekce v galerii Azure AI.
 services: machine-learning
 documentationcenter: ''
 author: YasinMSFT
@@ -15,89 +15,87 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
-ms.openlocfilehash: 6b8cb104c734edf688d875a8e9674a660f2db4e2
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: b586639cc6c9d4e25d65fa9f3a510e22789acfb2
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34834596"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51346031"
 ---
-# <a name="discover-and-share-collections-in-azure-ai-gallery"></a>Vyhledat a sdílet kolekce v galerii Azure AI
-[!INCLUDE [machine-learning-gallery-item-selector](../../../includes/machine-learning-gallery-item-selector.md)]
+# <a name="discover-and-share-collections-in-azure-ai-gallery"></a>Sdílet kolekce v galerii Azure AI
 
-## <a name="collections"></a>Kolekce
-Můžete použít [kolekce](https://gallery.cortanaintelligence.com/collections) k seskupení experimenty, rozhraní API a další položky galerie, které používáte pro specifického řešení nebo koncept. Můžete je použít, uložit pro pozdější použití nebo sdílet seskupit.
+Můžete použít [kolekce](https://gallery.cortanaintelligence.com/collections) v [galerii Azure AI](http://gallery.cortanaintelligence.com) k seskupení experimentů, rozhraní API a další položky galerie, které používáte pro konkrétní řešení nebo koncept. Můžete seskupit je pomocí, uložit pro pozdější použití nebo sdílení.
 
 ## <a name="discover"></a>Informace
-K procházení kolekcí [v galerii](http://gallery.cortanaintelligence.com)v části **Další**, vyberte **kolekce**.
+K procházení kolekcí [ve galerii](http://gallery.cortanaintelligence.com)v části **Další**vyberte **kolekce**.
 
-![Vyberte kolekce na domovské stránce Galerie](./media/gallery-collections/select-collections-in-gallery.png)
+![Vybrat kolekce na domovskou stránku Galerie](./media/gallery-collections/select-collections-in-gallery.png)
 
-**[Kolekce](https://gallery.cortanaintelligence.com/collections)** stránka zobrazuje seznam nedávno přidané a oblíbených kolekcí. Chcete-li zobrazit všechny kolekce, vyberte **zobrazit všechny**. Chcete-li vyhledat určité kolekci, vyberte **zobrazit všechny**a potom vyberte filtr kritéria. Také můžete zadat hledaný text v **vyhledávání** pole v horní části stránky galerie.
+**[Kolekce](https://gallery.cortanaintelligence.com/collections)** stránce se zobrazí seznam nedávno přidaných a Oblíbené kolekcí. Chcete-li zobrazit všechny kolekce, vyberte **zobrazit všechny**. Chcete-li vyhledat určité kolekci, vyberte **zobrazit všechny**a potom vyberte kritéria. Také můžete zadat hledaný text v **hledání** pole v horní části na stránku galerie.
 
-Můžete získat další informace o kolekci na stránce s podrobnostmi o kolekci. Chcete-li otevřít stránce s podrobnostmi o kolekci, vyberte kolekci. V kolekci podrobnosti stránky, v **komentáře** části, můžete komentář, poskytnout zpětnou vazbu nebo klást otázky týkající se kolekce. Kolekce můžete také sdílet s přátele nebo kolegy na Twitteru nebo LinkedIn. Také můžete e-mailem odkaz na stránku podrobností kolekce pozvaným jiní uživatelé při zobrazení stránky.
+Můžete získat další informace o kolekci na stránce s podrobnostmi kolekce. Otevřete stránku podrobností kolekce, vyberte kolekci. V kolekci podrobnosti o stránce **komentáře** oddílu, můžete komentovat, poskytnout zpětnou vazbu nebo pokládání otázek na kolekci. Kolekci můžete i sdílet s přáteli nebo kolegy na Twitteru nebo LinkedIn. Také můžete poslat e-mail odkaz na stránku podrobností kolekce pro pozvat další uživatele zobrazíte stránku.
 
-![Sdílet tuto položku s friends](./media/gallery-how-to-use-contribute-publish/share-links.png)
+![Sdílet tuto položku s přáteli](./media/gallery-how-to-use-contribute-publish/share-links.png)
 
 ![Přidat vlastní komentáře](./media/gallery-how-to-use-contribute-publish/comments.png)
 
-## <a name="contribute"></a>Přispívání
-Můžete vytvořit kolekci, která obsahuje položky, které vlastníte nebo položky, které přispěl komunitou. Položky v kolekci může být libovolnou položku galerie, která řeší specifického řešení nebo koncept.
+## <a name="contribute"></a>Přispívat
+Můžete vytvořit kolekci, která obsahuje položky, které vlastníte nebo položky, které byly přispěla komunita. Položky v kolekci může být jakékoli položky galerie, která řeší konkrétní řešení nebo koncept.
 
-Například můžete použít kolekci seskupit položky na určité téma, nebo můžete seskupit experimentu několika kroky, které řeší složitý problém. Počáteční kolekce přispěl Microsoft, se skládá z několika kroky strojového učení experimentu šablony. Šablony můžete použít k řešení skutečných problémů, například odhalování podvodů online, text klasifikace, prodejní prognózy nebo prediktivní údržby.
+Například můžete použít kolekci seskupit položky zabývající se konkrétním tématem, nebo můžete seskupit více kroky experiment, který řeší komplexní problém. Počáteční kolekce přispěl Microsoft, se skládají z více krok strojového učení experiment šablony. Šablony můžete použít k řešení skutečných problémů, jako je například online podvodů, klasifikace textu, Prognózování maloobchodního prodeje nebo prediktivní Údržba.
 
 ### <a name="create-a-collection"></a>Vytvoření kolekce
 
-1. Přihlaste se do Galerie pomocí účtu Microsoft.
+1. Přihlaste se do galerie s použitím účtu Microsoft.
 
-2.  Vyberte bitové kopie v horní části stránky a pak vyberte název.
+2.  Vyberte bitové kopie v horní části stránky a pak vyberte své jméno.
   
-    ![Vyberte název účtu](./media/gallery-collections/click-account-name.png)
+    ![Vyberte název svého účtu](./media/gallery-collections/click-account-name.png)
 
 3. Vyberte **New Item** (Nová položka).
    
-    ![Vyberte možnost "Nová položka"](./media/gallery-collections/click-new-item.png)
-4. Na **popis** stránky, pro **typ položky**, vyberte **kolekce**. Zadejte název kolekce, stručné souhrnné informace, podrobný popis a najít všechny značky, které vám může pomoci jiných uživatelů vaší kolekce.
+    ![Vyberte "Nové položky"](./media/gallery-collections/click-new-item.png)
+4. Na **popis** stránky, pro **typ položky**vyberte **kolekce**. Zadejte název pro vaši kolekci, stručný popis, podrobný popis a všechny značky, které vám mohou pomoci ostatním uživatelům najít kolekci.
    
     ![Zadejte informace pro novou kolekci](./media/gallery-collections/create-collection-page-1.png)
-5. Na **výběr Image** vyberte obrázek, který se zobrazí s kolekcí. Můžete nahrát soubor bitové kopie, nebo vyberte uložených bitovou kopii. Vyberte obrázek, který vám může pomoci uživatelům identifikovat obsah a účel kolekce.
+5. Na **výběr Image** vyberte bitovou kopii, která se zobrazí s kolekcí. Můžete nahrát vlastní obrázek nebo vyberte základní image. Vyberte bitovou kopii, která může pomoci uživatelům identifikaci obsahu a účel kolekce.
    
     ![Zadejte informace pro novou kolekci](./media/gallery-collections/create-collection-page-2.png)
-6. Na **nastavení** stránky, pro **viditelnost**, vyberte, zda je kolekce **veřejné** (každý, kdo může zobrazit kolekce) nebo **Unlisted** (pouze ji mohly zobrazit osoby s přímý odkaz na kolekci).
+6. Na **nastavení** stránky, pro **viditelnost**vyberte, jestli je kolekce **veřejné** (kdokoli může zobrazit kolekce) nebo **Unlisted** (pouze lidé s přímým odkazem ke kolekci lze ji zobrazit).
    
    > [!IMPORTANT]
-   > Po nastavení kolekce na **veřejné** a pak vyberte **vytvořit**, nemůžete později změnit kolekce k **Unlisted**.
+   > Po nastavení kolekce na **veřejné** a pak vyberte **vytvořit**, nemůžete později změnit kolekci **Unlisted**.
    > 
    > 
    
-    ![Vyberte "Veřejná" nebo "Neuvedené"](./media/gallery-collections/create-collection-page-3.png)
+    ![Vyberte "Public" nebo "Neuvedené"](./media/gallery-collections/create-collection-page-3.png)
 7. Vyberte **Vytvořit**.
 
-Kolekce je nyní v galerii AI Azure. Vaše kolekce nejsou uvedeny na stránku účtu, na **kolekce** kartě.
+Kolekce je nyní v galerii Azure AI. Kolekce jsou uvedené na stránce svého účtu na **kolekce** kartu.
 
-### <a name="add-items-to-a-collection"></a>Přidat položky do kolekce
-Chcete-li přidat položky do kolekce, otevřete kolekci, vyberte možnost **upravit**a potom vyberte **přidat položku**.
+### <a name="add-items-to-a-collection"></a>Přidání položky do kolekce
+Chcete-li přidat položky do kolekce, otevřete kolekci, vyberte **upravit**a pak vyberte **přidat položku**.
 
-![Přidat položky do kolekce na stránce podrobností](./media/gallery-collections/add-to-collection-from-details-page.png)
+![Přidání položky do kolekce na stránce podrobností](./media/gallery-collections/add-to-collection-from-details-page.png)
 
-Seznam položek, která jste jste vložili do Galerie je zobrazený na stránku účtu. Můžete také prohledat Galerie pro položky přidat. Vyberte položky, které chcete přidat. Každá položka, kterou vyberete, je součástí sady položek, které chcete přidat. **Přidat** tlačítko Určuje, kolik položek, které jste vybrali.
+Seznam položek, které jsem přispěl ke galerii se zobrazí na stránce svého účtu. Můžete také Prohledat galerii pro položky pro přidání. Vyberte položky, které chcete přidat. Každá položka, kterou jste vybrali je součástí sady položek, které chcete přidat. **Přidat** tlačítko označuje, kolik položek, které jste vybrali.
 
 ![Přidat do kolekce](./media/gallery-collections/add-to-collection.png)
 
-Pokud zjistíte, kterou chcete přidat, když procházíte položku galerie, otevřete položku, vyberte **přidat do kolekce**. Vyberte kolekci, kterou chcete přidat položku do.
+Pokud najít položku, kterou chcete přidat, zatímco provádíte procházení vyberte galerii, otevřete položku, **přidat do kolekce**. Vyberte, kterou chcete přidat položku do kolekce.
 
-![Přidat položky do kolekce na stránce podrobností](./media/gallery-collections/add-to-collection-from-item-details.png)
+![Přidání položky do kolekce na stránce podrobností](./media/gallery-collections/add-to-collection-from-item-details.png)
 
-Chcete-li změnit souhrn, popis nebo značky pro svoji kolekci, otevřete kolekci a pak vyberte **upravit**. 
+Chcete-li změnit souhrn, popis nebo značky pro vaši kolekci, otevřete kolekci a vyberte **upravit**. 
 
-Při úpravách kolekce, můžete změnit pořadí položek v kolekci. Pomocí tlačítek vedle položky přesunout nahoru nebo dolů v seznamu pořadí. 
+Při úpravách kolekci, můžete změnit pořadí položek v kolekci. Pomocí tlačítek šipku vedle položky přesunout nahoru nebo dolů v seznamu pořadí. 
 
-Chcete-li přidat poznámky k položkám v kolekci, vyberte pravém horním rohu položky a pak vyberte **, přidat či upravit Poznámka**. 
+Přidání poznámky do položek v kolekci, vyberte pravém horním rohu položky a pak vyberte **přidat/upravit poznámku**. 
 
-Pokud chcete odebrat položku z kolekce, vyberte **odebrat**.
+Chcete-li odebrat položku z kolekce, vyberte **odebrat**.
 
 ![Změňte podrobnosti pro kolekce](./media/gallery-collections/change-collection-details.png)
 
-**[Přejděte do Galerie](http://gallery.cortanaintelligence.com)**
+**[Přejít do Galerie](http://gallery.cortanaintelligence.com)**
 
 [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]

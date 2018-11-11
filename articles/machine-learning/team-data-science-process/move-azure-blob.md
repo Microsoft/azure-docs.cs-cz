@@ -1,6 +1,6 @@
 ---
 title: Přesun dat do a z úložiště objektů Blob v Azure | Dokumentace Microsoftu
-description: Přesun dat z a do služby Azure Blob Storage
+description: Přesun dat do a z úložiště objektů Blob v Azure
 services: machine-learning,storage
 documentationcenter: ''
 author: deguhath
@@ -15,19 +15,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: deguhath
-ms.openlocfilehash: 717fdd2053cae28234458e197f8211ef25cf7f9d
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 7d0111b22df45577fccc3f4491f375ddd2e8b40f
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394387"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51344463"
 ---
 # <a name="move-data-to-and-from-azure-blob-storage"></a>Přesun dat do a z úložiště objektů Blob v Azure
-[!INCLUDE [cap-ingest-data-selector](../../../includes/cap-ingest-data-selector.md)]
 
-<!-- just in case, adding this to separate these two include references -->
+Vědecké zpracování týmových dat vyžaduje, aby se data ingestují nebo načtena do celé řady různých úložiště prostředí ji zpracovat nebo analyzovat nejvhodnějším způsobem v každé fázi procesu.
+Následující články popisují, jak přesunout data do a z Azure Blob storage pomocí různých technologií.
 
-[!INCLUDE [blob-storage-tool-selector](../../../includes/machine-learning-blob-storage-tool-selector.md)]
+* [Azure Storage Exploreru](move-data-to-azure-blob-using-azure-storage-explorer.md)
+* [AzCopy](move-data-to-azure-blob-using-azcopy.md)
+* [Python](move-data-to-azure-blob-using-python.md)
+* [SSIS](move-data-to-azure-blob-using-ssis.md)
 
 Metoda je pro vás nejvhodnější, závisí na váš scénář. [Scénáře pro pokročilé analýzy ve službě Azure Machine Learning](plan-sample-scenarios.md) článek vám pomůže určit prostředky, které potřebujete pro různé datové vědy pracovních postupech, používat v procesu pokročilých analýz.
 

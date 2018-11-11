@@ -17,12 +17,12 @@ ms.date: 04/18/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: elisol, lenalepa
-ms.openlocfilehash: fb2bfc89322d81833b1961bfb866a773c5d1d475
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 8e806fc334faf85864ea9158d4f2ed6d107327ae
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39577226"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51241493"
 ---
 # <a name="how-and-why-applications-are-added-to-azure-ad"></a>Jak a proč se aplikace přidávají do služby Azure AD
 
@@ -69,7 +69,7 @@ Jako objekty aplikace je možné také vytvářet instanční objekty přes víc
 
 * Když se uživatelé přihlásí do aplikace třetích stran integrovat se službou Azure AD
   * Při přihlašování uživatelé vyzváni k zadání oprávnění k aplikaci přístup k jejich profil a další oprávnění. První osoby, čímž udělíte souhlas způsobí, že hlavní název služby, který představuje aplikaci přidávané do adresáře.
-* Při přihlášení uživatele k online službám Microsoftu, jako jsou [Office 365](http://products.office.com/)
+* Při přihlášení uživatele k online službám Microsoftu, jako jsou [Office 365](https://products.office.com/)
   * Při přihlášení k odběru Office 365 nebo začít zkušební verzi, jeden nebo více objektů služby se vytvoří v adresáři reprezentující různé služby, které se používají k doručování všechny funkce související s Office 365.
   * Některé služby Office 365, jako je SharePoint vytvoření instančních objektů průběžně pro umožnění bezpečné komunikace mezi komponentami včetně pracovních postupů.
 * Když správce přidá aplikaci z Galerie aplikací (tím se také vytvoří základní objekt aplikace)

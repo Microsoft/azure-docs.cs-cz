@@ -10,12 +10,12 @@ author: raymondlaghaeian
 manager: cgronlun
 ms.reviewer: larryfr
 ms.date: 09/24/2018
-ms.openlocfilehash: 3ab32388e0a35f4abf3866aa0a84ee0628b0570c
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: efaaa196220213877283040120d6c2eeed86dbf3
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49318193"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51346316"
 ---
 # <a name="how-to-deploy-models-from-azure-machine-learning-service-to-azure-kubernetes-service"></a>Jak nasadit modely do služby Azure Kubernetes Service ze služby Azure Machine Learning
 
@@ -63,6 +63,9 @@ Azure Kubernetes Service používá Image Dockeru. Chcete-li vytvořit bitovou k
 1. Konfigurace image, musíte vytvořit hodnoticího skriptu a souboru prostředí. Příklad vytvoření souboru skriptu a prostředí najdete v následujících částech příklad klasifikace obrázků:
 
     * [Vytváření hodnoticí skript (score.py)](tutorial-deploy-models-with-aml.md#create-scoring-script)
+
+        > [!IMPORTANT]
+        > Hodnoticí skript načte data z klientů a předává je do modelu pro vyhodnocení. Zdokumentujte datová struktura, které skript a modelu. S této dokumentace usnadňuje při vytváření klienta k používání této webové služby.
 
     * [Vytvoření souboru prostředí (myenv.yml)](tutorial-deploy-models-with-aml.md#create-environment-file) 
 
@@ -190,3 +193,7 @@ aks_service.delete()
 image.delete()
 model.delete()
 ```
+
+## <a name="next-steps"></a>Další postup
+
+Zjistěte, jak [využívání modelu ML nasadit jako webovou službu](how-to-consume-web-service.md).

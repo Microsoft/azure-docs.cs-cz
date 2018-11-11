@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2017
 ms.author: apimpm
-ms.openlocfilehash: 29e918733cc72010aa6aa5c0f42d613331eec2a2
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 6796ecd272c7a1ed1d29c89fbe06c87dc2d4601b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48044718"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51242802"
 ---
 # <a name="api-management-transformation-policies"></a>Transformace zásady služby API Management
-Toto téma obsahuje odkaz pro následující zásady služby API Management. Informace o přidávání a konfiguraci zásad najdete v tématu [zásady ve službě API Management](http://go.microsoft.com/fwlink/?LinkID=398186).
+Toto téma obsahuje odkaz pro následující zásady služby API Management. Informace o přidávání a konfiguraci zásad najdete v tématu [zásady ve službě API Management](https://go.microsoft.com/fwlink/?LinkID=398186).
 
 ##  <a name="TransformationPolicies"></a> Zásady transformace
 
@@ -83,7 +83,7 @@ Toto téma obsahuje odkaz pro následující zásady služby API Management. Inf
 |Datum analýzy|Pokud je nastavena na `false` hodnot data zkopírují jednoduše při transformaci|Ne|true (pravda)|
 
 ### <a name="usage"></a>Využití
- Tyto zásady můžete použít v následujících zásad [oddíly](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+ Tyto zásady můžete použít v následujících zásad [oddíly](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
 -   **Části zásad:** příchozí, odchozí, na chyby
 
@@ -127,7 +127,7 @@ Toto téma obsahuje odkaz pro následující zásady služby API Management. Inf
 |Vezměte v úvahu přijmout – hlavička|Atribut musí být nastaven na jednu z následujících hodnot.<br /><br /> Pokud XML je požadováno v žádosti o hlavičku Accept - true – použijte převod.<br />-false - vždy použít převod.|Ne|true (pravda)|
 
 ### <a name="usage"></a>Využití
- Tyto zásady můžete použít v následujících zásad [oddíly](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+ Tyto zásady můžete použít v následujících zásad [oddíly](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
 -   **Části zásad:** příchozí, odchozí, na chyby
 
@@ -162,7 +162,7 @@ Toto téma obsahuje odkaz pro následující zásady služby API Management. Inf
 |na|Náhradní řetězec. Zadejte řetězec nulové délky nahrazení odebrat hledaný řetězec.|Ano|neuvedeno|
 
 ### <a name="usage"></a>Využití
- Tyto zásady můžete použít v následujících zásad [oddíly](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+ Tyto zásady můžete použít v následujících zásad [oddíly](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
 -   **Části zásad:** vstupní, výstupní a back-endu na chyby
 
@@ -193,7 +193,7 @@ Toto téma obsahuje odkaz pro následující zásady služby API Management. Inf
 |redirect-content-urls|Kořenový element.|Ano|
 
 ### <a name="usage"></a>Využití
- Tyto zásady můžete použít v následujících zásad [oddíly](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+ Tyto zásady můžete použít v následujících zásad [oddíly](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
 -   **Části zásad:** příchozí, odchozí
 
@@ -269,7 +269,7 @@ V tomto příkladu zásady přesměruje požadavek na service fabric back-endu, 
 |Název naslouchacího procesu SF|Platí jenom při back-end služba Service Fabric a je určen pomocí "backend-id". Service Fabric Reliable Services umožňuje vytvořit několik naslouchacích procesů ve službě. Tento atribut slouží k výběru konkrétním posluchačem, když má více než jeden naslouchací proces back-endem spolehlivé služby. Pokud tento atribut není zadán, API Management se pokusí použít naslouchací proces bez názvu. Naslouchací proces bez názvu je typický pro spolehlivé služby, které mají pouze jeden naslouchací proces. |Ne|neuvedeno|
 
 ### <a name="usage"></a>Využití
- Tyto zásady můžete použít v následujících zásad [oddíly](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+ Tyto zásady můžete použít v následujících zásad [oddíly](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
 -   **Části zásad:** příchozí, back-endu
 
@@ -308,12 +308,12 @@ V tomto příkladu zásady přesměruje požadavek na service fabric back-endu, 
 
 ```xml
 <set-body>
-@{ 
-    string inBody = context.Request.Body.As<string>(preserveContent: true); 
-    if (inBody[0] =='c') { 
-        inBody[0] = 'm'; 
-    } 
-    return inBody; 
+@{ 
+    string inBody = context.Request.Body.As<string>(preserveContent: true); 
+    if (inBody[0] =='c') { 
+        inBody[0] = 'm'; 
+    } 
+    return inBody; 
 }
 </set-body>
 ```
@@ -321,14 +321,14 @@ V tomto příkladu zásady přesměruje požadavek na service fabric back-endu, 
 #### <a name="example-accessing-the-body-as-a-jobject-note-that-since-we-are-not-reserving-the-original-request-body-accesing-it-later-in-the-pipeline-will-result-in-an-exception"></a>Příklad přístup k textu jako JObject. Všimněte si, že přepínač, protože jsme se rezervace původní text požadavku accesing ho později v kanálu způsobí výjimku.
 
 ```xml
-<set-body> 
-@{ 
-    JObject inBody = context.Request.Body.As<JObject>(); 
-    if (inBody.attribute == <tag>) { 
-        inBody[0] = 'm'; 
-    } 
-    return inBody.ToString(); 
-} 
+<set-body> 
+@{ 
+    JObject inBody = context.Request.Body.As<JObject>(); 
+    if (inBody.attribute == <tag>) { 
+        inBody[0] = 'm'; 
+    } 
+    return inBody.ToString(); 
+} 
 </set-body>
 
 ```
@@ -439,7 +439,7 @@ OriginalUrl.
 
 
 ### <a name="usage"></a>Využití
- Tyto zásady můžete použít v následujících zásad [oddíly](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+ Tyto zásady můžete použít v následujících zásad [oddíly](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
 -   **Části zásad:** vstupní, výstupní a back-endu
 
@@ -510,7 +510,7 @@ OriginalUrl.
 |jméno|Určuje název hlavičky, která se má nastavit.|Ano|neuvedeno|
 
 ### <a name="usage"></a>Využití
- Tyto zásady můžete použít v následujících zásad [oddíly](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+ Tyto zásady můžete použít v následujících zásad [oddíly](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
 -   **Části zásad:** vstupní, výstupní a back-endu na chyby
 
@@ -570,7 +570,7 @@ OriginalUrl.
 |jméno|Určuje název parametru dotazu, která se má nastavit.|Ano|neuvedeno|
 
 ### <a name="usage"></a>Využití
- Tyto zásady můžete použít v následujících zásad [oddíly](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+ Tyto zásady můžete použít v následujících zásad [oddíly](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
 -   **Části zásad:** příchozí, back-endu
 
@@ -648,7 +648,7 @@ OriginalUrl.
 |kopírování bezkonkurenční parametry|Určuje, zda jsou parametry dotazu v příchozím požadavku není k dispozici v původní šabloně URL přidána k adrese URL definované šablonou přepisu|Ne|true (pravda)|
 
 ### <a name="usage"></a>Využití
- Tyto zásady můžete použít v následujících zásad [oddíly](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+ Tyto zásady můžete použít v následujících zásad [oddíly](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
 -   **Části zásad:** příchozí
 
@@ -712,7 +712,7 @@ OriginalUrl.
 |: stylesheet|Kořenovém prvku šablony stylů. Všechny elementy a atributy definované v rámci dodržovat standardní [specifikaci XSLT](http://www.w3.org/TR/xslt)|Ano|
 
 ### <a name="usage"></a>Využití
- Tyto zásady můžete použít v následujících zásad [oddíly](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+ Tyto zásady můžete použít v následujících zásad [oddíly](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
 -   **Části zásad:** příchozí, odchozí
 

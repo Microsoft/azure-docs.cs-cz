@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: e6c6f36d877f220bcc8d83b75750f54f85dcc198
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: c7b9921d7eacb9b40e39f8e68d13357ce6bcfd78
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44299878"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51241544"
 ---
 # <a name="add-a-git-repository-to-store-custom-artifacts-and-resource-manager-templates"></a>Přidání úložiště Git pro ukládání vlastních artefaktů a šablony Resource Manageru
 
@@ -71,7 +71,7 @@ Přidání úložiště do vašeho testovacího prostředí, nejprve získejte i
 10. Dál [připojit se k úložišti testovacího prostředí](#connect-your-lab-to-the-repository) oddílu.
 
 ## <a name="connect-your-lab-to-the-repository"></a>Připojit se k úložišti testovacího prostředí
-1. Přihlaste se k webu [Azure Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Přihlaste se k webu [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 2. Vyberte **další služby**a pak vyberte **DevTest Labs** ze seznamu služeb.
 3. V seznamu testovacích prostředí vyberte vaše testovací prostředí. 
 4. Vyberte **konfigurace a zásad** > **úložišť** > **+ přidat**.

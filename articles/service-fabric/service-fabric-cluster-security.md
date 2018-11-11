@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/14/2018
 ms.author: aljo
-ms.openlocfilehash: e791ddd3ade2ff486f1c3ec123695ecc155353d6
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: aa0d209cf3da65bb3d50a6458ecc33cfcd85eecb
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45541900"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240592"
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Scénáře zabezpečení clusteru Service Fabric
 Cluster Azure Service Fabric je prostředek, který vlastníte. Je vaší odpovědností zajistit clusterům pomáhá zabránit neoprávněným uživatelům v připojení k nim. Zabezpečení clusteru je obzvláště důležité při spouštění úloh v produkčním prostředí v clusteru. I když je možné vytvořit nezabezpečenému clusteru, pokud clusteru zpřístupní koncových bodů správy do veřejného Internetu, můžete k němu připojit anonymním uživatelům. Nezabezpečené clustery nejsou podporovány pro produkční úlohy. 
@@ -85,7 +85,7 @@ Uživatelé, kteří mají přiřazenou roli správce mít úplný přístup k f
 Nastavte správce a uživatele klienta role při vytváření clusteru. Přiřazení rolí tím, že poskytuje samostatné identity (třeba pomocí certifikátů nebo Azure AD) pro každý typ role. Další informace o výchozí nastavení řízení přístupu a jak změnit výchozí nastavení, najdete v části [řízení přístupu na základě rolí pro Service Fabric klienty](service-fabric-cluster-security-roles.md).
 
 ## <a name="x509-certificates-and-service-fabric"></a>Certifikáty X.509 a Service Fabric
-Digitální certifikáty X.509 se běžně používají k ověřování klientů a serverů. Také se používá k šifrování a digitálnímu podepisování zpráv. Service Fabric pomocí certifikátů X.509 zabezpečení clusteru a poskytuje funkce pro zabezpečení aplikací. Další informace o digitálních certifikátů X.509 naleznete v tématu [práce s certifikáty](http://msdn.microsoft.com/library/ms731899.aspx). Použijete [služby Key Vault](../key-vault/key-vault-get-started.md) ke správě certifikátů pro clustery Service Fabric v Azure.
+Digitální certifikáty X.509 se běžně používají k ověřování klientů a serverů. Také se používá k šifrování a digitálnímu podepisování zpráv. Service Fabric pomocí certifikátů X.509 zabezpečení clusteru a poskytuje funkce pro zabezpečení aplikací. Další informace o digitálních certifikátů X.509 naleznete v tématu [práce s certifikáty](https://msdn.microsoft.com/library/ms731899.aspx). Použijete [služby Key Vault](../key-vault/key-vault-get-started.md) ke správě certifikátů pro clustery Service Fabric v Azure.
 
 Některé důležité věci k uvážení:
 
@@ -109,7 +109,7 @@ Pár dalších věcí k uvážení:
 
 * **Subjektu** pole může mít víc hodnot. Každá hodnota je předponu inicializace označující typ hodnoty. Inicializace je obvykle **CN** (pro *běžný název*); například **CN = www.contoso.com**. 
 * **Subjektu** pole může být prázdné. 
-* Pokud volitelný **alternativní název předmětu** pole vyplněné, musí mít běžný název certifikátu a jeden záznam za po síti SAN. Ty se zadávají jako **název DNS** hodnoty. Zjistěte, jak vygenerovat certifikáty, které mají alternativními názvy subjektu, najdete v článku [přidání alternativní název předmětu certifikátem protokolu secure LDAP](http://support.microsoft.com/kb/931351).
+* Pokud volitelný **alternativní název předmětu** pole vyplněné, musí mít běžný název certifikátu a jeden záznam za po síti SAN. Ty se zadávají jako **název DNS** hodnoty. Zjistěte, jak vygenerovat certifikáty, které mají alternativními názvy subjektu, najdete v článku [přidání alternativní název předmětu certifikátem protokolu secure LDAP](https://support.microsoft.com/kb/931351).
 * Hodnota **zamýšlené účely** pole certifikátu by měl obsahovat správnou hodnotu, jako například **ověřování serveru** nebo **ověření klienta**.
 
 ### <a name="application-certificates-optional"></a>Certifikáty aplikace (volitelné)

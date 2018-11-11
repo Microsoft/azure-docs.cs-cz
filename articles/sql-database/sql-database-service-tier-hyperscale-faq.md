@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/17/2018
-ms.openlocfilehash: 31f61a1d6dee19ada60a1024a235f6329d7d5ca0
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 661fd36b4451238f488bff1db60a901a8dabd5aa
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49377810"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51242150"
 ---
 # <a name="faq-about-azure-sql-hyperscale-databases"></a>Nejčastější dotazy týkající se databáze Azure SQL Hyperškálováním
 
@@ -253,7 +253,7 @@ Ano. Pocházejí z různých zdrojů dat jiné než SQL Server vyžaduje logicko
 
 ### <a name="what-slas-are-provided-for-a-hyperscale-database"></a>Co smlouvy SLA jsou k dispozici pro mírou škálování databáze
 
-Obecně platí Smlouva SLA není k dispozici ve verzi public preview. Velkokapacitní však nabízí stejnou úroveň Vysoká dostupnost s aktuálně dostupných nabídek SQL DB. Zobrazit [SLA](http://azure.microsoft.com/support/legal/sla/).
+Obecně platí Smlouva SLA není k dispozici ve verzi public preview. Velkokapacitní však nabízí stejnou úroveň Vysoká dostupnost s aktuálně dostupných nabídek SQL DB. Zobrazit [SLA](https://azure.microsoft.com/support/legal/sla/).
 
 ### <a name="are-the-database-backups-managed-for-me-by-the-azure-sql-database-service"></a>Zálohování databáze spravují mi ve službě Azure SQL Database
 

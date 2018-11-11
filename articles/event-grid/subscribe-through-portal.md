@@ -5,14 +5,14 @@ services: event-grid
 author: tfitzmac
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 08/17/2018
+ms.date: 11/08/2018
 ms.author: tomfitz
-ms.openlocfilehash: 72eaa17e78086a4e5338bb3198ef7471c44b785f
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: eb48e40007a25992a9a399176b6a4f93be89efc8
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "40234886"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51344076"
 ---
 # <a name="subscribe-to-events-through-portal"></a>Přihlášení k odběru událostí prostřednictvím portálu
 
@@ -45,6 +45,16 @@ Chcete-li vytvořit odběr Event gridu pro jakýkoli z podporovaných [zdroje ud
 1. Uveďte další podrobnosti o odběr události, jako je například koncový bod pro zpracování událostí a název předplatného.
 
    ![Zadejte podrobnosti předplatného](./media/subscribe-through-portal/provide-subscription-details.png)
+
+1. Chcete-li povolit nedoručení a přizpůsobit zásady opakování, vyberte **další funkce**.
+
+   ![Vyberte další funkce](./media/subscribe-through-portal/select-additional-features.png)
+
+1. Vyberte kontejner používat k ukládání událostí, které nejsou dodány a nastavit, jak se odesílají opakovaných pokusů.
+
+   ![Povolit nedoručení a zkuste to znovu](./media/subscribe-through-portal/set-deadletter-retry.png)
+
+1. Až budete hotovi, vyberte **Vytvořit**.
 
 ## <a name="create-subscription-on-resource"></a>Vytvoření odběru na prostředek
 

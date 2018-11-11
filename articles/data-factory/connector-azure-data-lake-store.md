@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 08/31/2018
+ms.date: 11/05/2018
 ms.author: jingwang
-ms.openlocfilehash: d8bbc3a5e4ac14ed60fcd6e5f19bdf1df03455a6
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 3b1abe60fc81ae0316e2d0552a1750129171ff5f
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48817020"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51345449"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-storage-gen1-by-using-azure-data-factory"></a>Kopírování dat do nebo z Azure Data Lake Storage Gen1 pomocí služby Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -44,9 +44,6 @@ Konkrétně tento konektor Azure Data Lake Store podporuje:
 > Návod k používání konektoru Azure Data Lake Store, naleznete v tématu [načtení dat do Azure Data Lake Store](load-azure-data-lake-store.md).
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
-
->[!NOTE]
->Když použijete nástroj pro kopírování dat vytvářet kanál kopírování nebo provádět testování připojení nebo procházení složek během vytváření obsahu pomocí uživatelského rozhraní ADF, vyžaduje oprávnění instančního objektu služby nebo MSI se udělit na kořenové úrovni. While, provádění aktivity kopírování můžete pracovat, za předpokladu, že je uděleno oprávnění k datům, které se mají zkopírovat. Vytváření operací může přeskočit, pokud potřebujete omezit oprávnění.
 
 Následující části obsahují podrobnosti o vlastnostech, které se používají k definování entit služby Data Factory, které jsou specifické pro Azure Data lake Store.
 
@@ -79,6 +76,9 @@ Pokud chcete používat ověřování instančních objektů, entity aplikaci za
 > Ujistěte se, že udělíte hlavní správné oprávnění služby v Azure Data Lake Store:
 >- **Jako zdroj**, v Průzkumníku dat -> přístup, přidělit nejméně **číst + provést** oprávnění k seznamu a zkopírujte soubory ve složce/podsložek, nebo **čtení** zkopírovat jeden soubor; a zvolit oprávnění Přidat do **tato složka a všechny podřízené objekty** pro rekurzivní a přidat jako **přístupová oprávnění a výchozí položka oprávnění**. Žádné požadavky na řízení přístupu na úrovni účtu (IAM).
 >- **Jako jímku**, v Průzkumníku dat -> přístup, přidělit nejméně **zapisovat + provést** oprávnění k vytváření podřízených položek ve složce a zvolte možnost pro přidání do **tato složka a všechny podřízené objekty** pro rekurzivní a Přidat jako **přístupová oprávnění a výchozí položka oprávnění**. Pokud používáte prostředí Azure IR kopírování (zdroj a jímka mají v cloudu), řízení přístupu (IAM), udělit alespoň **čtečky** role, aby bylo možné umožnit detekci Data Lake Store oblasti služby Data Factory. Pokud chcete se vyhnout této role IAM explicitně [vytvořit prostředí Azure IR](create-azure-integration-runtime.md#create-azure-ir) umístěním systému Data Lake Store a přidružení ve Data Lake Store propojenou službu, jako v následujícím příkladu.
+
+>[!NOTE]
+>Při použití **nástroj pro kopírování dat** vytvářet kanál kopírování nebo použití **uživatelského rozhraní ADF** provádět testování připojení nebo procházení složek během vytváření obsahu vyžaduje oprávnění instančního objektu udělením **na kořenové úrovni s oprávněním "Spustit"** v pořadí od kořenové složky seznamu. While, provádění aktivity kopírování můžete pracovat, za předpokladu, že je uděleno oprávnění k datům, které se mají zkopírovat. Vytváření operací může přeskočit, pokud potřebujete omezit oprávnění.
 
 Podporovány jsou následující vlastnosti:
 
@@ -128,6 +128,9 @@ Použití spravované identity pro ověřování prostředků Azure:
 >- **Jako zdroj**, v Průzkumníku dat -> přístup, přidělit nejméně **číst + provést** oprávnění k seznamu a zkopírujte soubory ve složce/podsložek, nebo **čtení** zkopírovat jeden soubor; a zvolit oprávnění Přidat do **tato složka a všechny podřízené objekty** pro rekurzivní a přidat jako **přístupová oprávnění a výchozí položka oprávnění**. Žádné požadavky na řízení přístupu na úrovni účtu (IAM).
 >- **Jako jímku**, v Průzkumníku dat -> přístup, přidělit nejméně **zapisovat + provést** oprávnění k vytváření podřízených položek ve složce a zvolte možnost pro přidání do **tato složka a všechny podřízené objekty** pro rekurzivní a Přidat jako **přístupová oprávnění a výchozí položka oprávnění**. Pokud používáte prostředí Azure IR kopírování (zdroj a jímka mají v cloudu), řízení přístupu (IAM), udělit alespoň **čtečky** role, aby bylo možné umožnit detekci Data Lake Store oblasti služby Data Factory. Pokud chcete se vyhnout této role IAM explicitně [vytvořit prostředí Azure IR](create-azure-integration-runtime.md#create-azure-ir) umístěním systému Data Lake Store a přidružení ve Data Lake Store propojenou službu, jako v následujícím příkladu.
 
+>[!NOTE]
+>Při použití **nástroj pro kopírování dat** vytvářet kanál kopírování nebo použití **uživatelského rozhraní ADF** provádět testování připojení nebo procházení složek během vytváření obsahu vyžaduje oprávnění udělením **kořenové úroveň díky oprávnění "Spustit"** v pořadí od kořenové složky seznamu. While, provádění aktivity kopírování můžete pracovat, za předpokladu, že je uděleno oprávnění k datům, které se mají zkopírovat. Vytváření operací může přeskočit, pokud potřebujete omezit oprávnění.
+
 Ve službě Azure Data Factory není nutné zadávat jakékoli vlastnosti kromě obecné informace o Data Lake Store v propojené službě.
 
 **Příklad:**
@@ -159,7 +162,7 @@ Pro kopírování dat do a z Azure Data Lake Store, nastavte vlastnost typ datov
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost typ datové sady, musí být nastavena na: **AzureDataLakeStoreFile** |Ano |
-| folderPath | Cesta ke složce Data Lake Store. Filtr zástupných znaků není podporován. Příklad: rootfolder/podsložka / |Ano |
+| folderPath | Cesta ke složce Data Lake Store. Filtr zástupných znaků není podporován. Pokud není zadán, odkazuje na kořen. Příklad: rootfolder/podsložka / |Ne |
 | fileName | **Název nebo zástupný filtr** pro soubory v zadané "folderPath". Pokud nezadáte hodnotu pro tuto vlastnost, datová sada odkazuje na všechny soubory ve složce. <br/><br/>Pro filtr, povoleny zástupné znaky jsou: `*` (odpovídá žádnému nebo více znaků) a `?` (odpovídá nula nebo jeden znak).<br/>– Příklad 1: `"fileName": "*.csv"`<br/>– Příklad 2: `"fileName": "???20180427.txt"`<br/>Použití `^` dostala mimo vašeho skutečného názvu souboru má zástupných znaků nebo tento znak escape uvnitř.<br/><br/>Pokud není zadán název souboru pro datovou sadu výstupů a **preserveHierarchy** není zadané v jímce aktivity aktivitě kopírování automaticky vygeneruje název souboru v následujícím formátu: "*Data. [ Aktivita běžet id Identifikátor GUID.] [Identifikátor GUID Pokud FlattenHierarchy]. [Formát pokud nakonfigurovaný]. [Pokud nakonfigurovaný komprese]* ". Příkladem je "Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt.gz". |Ne |
 | Formát | Pokud chcete **kopírovat soubory jako-je** mezi souborové úložištěm (binární kopie) a přeskočit část o formátu v definicích oba vstupní a výstupní datové sady.<br/><br/>Pokud chcete analyzovat a generovat soubory s konkrétním formátu, jsou podporovány následující typy formátů souboru: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Nastavte **typ** vlastnosti v části formát na jednu z těchto hodnot. Další informace najdete v tématu [textový formát](supported-file-formats-and-compression-codecs.md#text-format), [formátu Json](supported-file-formats-and-compression-codecs.md#json-format), [Avro formát](supported-file-formats-and-compression-codecs.md#avro-format), [Orc formát](supported-file-formats-and-compression-codecs.md#orc-format), a [formát Parquet](supported-file-formats-and-compression-codecs.md#parquet-format) oddíly. |Ne (pouze pro binární kopie scénář) |
 | Komprese | Zadejte typ a úroveň komprese pro data. Další informace najdete v tématu [podporované formáty souborů a komprese kodeky](supported-file-formats-and-compression-codecs.md#compression-support).<br/>Podporované typy jsou: **GZip**, **Deflate**, **BZip2**, a **ZipDeflate**.<br/>Jsou podporované úrovně: **Optimal** a **nejrychlejší**. |Ne |

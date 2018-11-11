@@ -9,12 +9,12 @@ ms.author: raymondl
 author: raymondlaghaeian
 ms.reviewer: sgilley
 ms.date: 09/24/2018
-ms.openlocfilehash: 8a736516a598eee051b416834d2b737211e66b96
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: b004abb3959bbfe36fc200bf762114f88f3d2ead
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49429453"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51345031"
 ---
 # <a name="deploy-web-services-to-azure-container-instances"></a>Nasazení webové služby Azure Container Instances 
 
@@ -48,9 +48,12 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 ## <a name="configure-an-image"></a>Konfigurace image
 
 Nakonfigurujte image Dockeru, který se používá k uložení všech souborů modelu.
-1. Vytváření hodnoticí skript (score.py) [podle těchto pokynů](tutorial-deploy-models-with-aml.md#create-scoring-script)
+1. Vytváření hodnoticí skript (score.py) [podle těchto pokynů](tutorial-deploy-models-with-aml.md#create-scoring-script).
 
-1. Vytvoření souboru prostředí (myenv.yml) [podle těchto pokynů](tutorial-deploy-models-with-aml.md#create-environment-file) 
+    > [!IMPORTANT]
+    > Hodnoticí skript načte data z klientů a předává je do modelu pro vyhodnocení. Zdokumentujte datová struktura, které skript a modelu. S této dokumentace usnadňuje při vytváření klienta k používání této webové služby.
+
+1. Vytvoření souboru prostředí (myenv.yml) [podle těchto pokynů](tutorial-deploy-models-with-aml.md#create-environment-file).
 
 1. Použijte tyto dva soubory konfigurace image Dockeru v Pythonu pomocí sady SDK následujícím způsobem:
 
@@ -217,8 +220,7 @@ Tato metoda poskytuje většinu kontrolu nad vytváření a pojmenování souč�
 
 Teď můžete otestovat webovou službu.
 
-<a name='test-web-service'/>
-## <a name="test-the-web-service"></a>Test webové služby
+## <a name="a-nametest-web-servicetest-the-web-service"></a><a name='test-web-service'/>Test webové služby
 
 Webová služba je stejný bez ohledu na to, která byla použita metoda.  Chcete-li získat predikcí, použijte `run` metody služby.  
 
@@ -261,4 +263,5 @@ service.delete()
 
 ## <a name="next-steps"></a>Další postup
 
-Zjistěte, jak [nasazení do služby Azure Kubernetes Service](how-to-deploy-to-aks.md) větší měřítko nasazení. 
+* Zjistěte, jak [využívání modelu ML nasadit jako webovou službu](how-to-consume-web-service.md).
+* Zjistěte, jak [nasazení do služby Azure Kubernetes Service](how-to-deploy-to-aks.md) větší měřítko nasazení. 

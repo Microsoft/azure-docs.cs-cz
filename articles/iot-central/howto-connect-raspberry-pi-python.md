@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: c478c2c4af12ecaa02e6700ec7faffc5b9862a00
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 90837092390cd2550805658471ff7aa884773371
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50958181"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51239589"
 ---
 # <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-python"></a>Připojte Raspberry Pi do aplikace Azure IoT Central (Python)
 
@@ -64,11 +64,11 @@ Následující kroky popisují, jak stáhnout a nakonfigurovat ukázkové aplika
 * Odesílá telemetrická data a hodnoty vlastností do Azure IoT Central.
 * Reaguje na změny provedené v Azure IoT Central nastavení.
 
-Ke konfiguraci zařízení, [postupujte podle podrobných pokynů na Githubu.](http://aka.ms/iotcentral-docs-Raspi-releases)
+Ke konfiguraci zařízení, [postupujte podle podrobných pokynů na Githubu.](https://aka.ms/iotcentral-docs-Raspi-releases)
 
 
 > [!NOTE]
-> Další informace týkající se ukázky Raspberry Pi Pythonu najdete v tématu [README](http://aka.ms/iotcentral-docs-Raspi-releases) soubor na Githubu.
+> Další informace týkající se ukázky Raspberry Pi Pythonu najdete v tématu [README](https://aka.ms/iotcentral-docs-Raspi-releases) soubor na Githubu.
 
 
 1. Po nakonfigurování zařízení by měla vaše zařízení zahájila odesílání dat do Azure IoT Central okamžik.

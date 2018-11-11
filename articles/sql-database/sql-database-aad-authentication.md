@@ -12,12 +12,12 @@ ms.author: mireks
 ms.reviewer: vanto, carlrab
 manager: craigg
 ms.date: 10/05/2018
-ms.openlocfilehash: 9d4ede9aee5261903a814cc2f29c788a2ba377f3
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 86e60f339af3d6d467b68d5d3b27d77a9861add1
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48869765"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51244066"
 ---
 # <a name="use-azure-active-directory-authentication-for-authentication-with-sql"></a>Pomocí ověřování Azure Active Directory pro ověřování pomocí SQL
 
@@ -35,7 +35,7 @@ Pomocí ověřování Azure AD můžete centrálně spravovat identity uživatel
 - Ukládání hesel se může eliminovat tím, že integrované ověřování Windows a další formy ověřování podporovaných službou Azure Active Directory.
 - Ověřování Azure AD používá k ověření identity na úrovni databáze, uživatele databáze s omezením.
 - Azure AD podporuje ověřování pomocí tokenu pro aplikace, připojení k SQL Database.
-- Ověřování Azure AD podporuje služby AD FS (federation domény) nebo ověřování nativní uživatele a hesla pro místní Azure Active Directory bez synchronizace domény.  
+- Ověřování Azure AD podporuje služby AD FS (federation domény) nebo ověřování nativní uživatele a hesla pro místní Azure Active Directory bez synchronizace domény.  
 - Azure AD podporuje připojení z SQL Server Management Studio, které pomocí univerzálního ověřování Active Directory, která zahrnuje Vícefaktorové ověřování (MFA).  Vícefaktorové ověřování zahrnuje silné ověřování s řadou jednoduchých možností – telefonní hovor, textová zpráva, čipové karty s PIN kódu nebo oznámení přes mobilní aplikaci. Další informace najdete v tématu [podpora nástroje SSMS pro ověřování Azure AD MFA s SQL Database a SQL Data Warehouse](sql-database-ssms-mfa-authentication.md).  
 
 > [!NOTE]  
@@ -118,10 +118,10 @@ Ověřování pomocí Azure Active Directory podporuje následující způsoby p
 - Doporučujeme nastavit časový limit připojení na 30 sekund.   
 - SQL Server 2016 Management Studio a SQL Server Data Tools pro Visual Studio 2015 (verze 14.0.60311.1April 2016 nebo novější) podporují ověřování pomocí Azure Active Directory. (Podporuje ověřování azure AD **.NET Framework Data Provider pro SqlServer**; minimální verze rozhraní .NET Framework 4.6). Proto nejnovější verze těchto nástrojů a aplikací datové vrstvy (DAC a. BACPAC) můžete použít ověřování Azure AD.   
 - [ODBC 13.1 verze](https://www.microsoft.com/download/details.aspx?id=53339) podporuje ověřování Azure Active Directory, ale `bcp.exe` nelze připojit pomocí ověřování Azure Active Directory, protože používá starší poskytovatele rozhraní ODBC.   
-- `sqlcmd` podporuje ověřování Azure Active Directory začíná 13.1 k dispozici od verze [Download Center](http://go.microsoft.com/fwlink/?LinkID=825643).
-- SQL Server Data Tools pro Visual Studio 2015 vyžaduje minimálně verzi. dubna 2016 (verze 14.0.60311.1) v nástrojích Data. Aktuálně uživatelů Azure AD se nezobrazují v Průzkumníku objektů rozšíření SSDT. Jako alternativní řešení, zobrazení uživatelů v [sys.database_principals](https://msdn.microsoft.com/library/ms187328.aspx).   
+- `sqlcmd` podporuje ověřování Azure Active Directory začíná 13.1 k dispozici od verze [Download Center](https://go.microsoft.com/fwlink/?LinkID=825643).
+- SQL Server Data Tools pro Visual Studio 2015 vyžaduje minimálně verzi. dubna 2016 (verze 14.0.60311.1) v nástrojích Data. Aktuálně uživatelů Azure AD se nezobrazují v Průzkumníku objektů rozšíření SSDT. Jako alternativní řešení, zobrazení uživatelů v [sys.database_principals](https://msdn.microsoft.com/library/ms187328.aspx).   
 - [6.0 ovladač Microsoft JDBC pro SQL Server](https://www.microsoft.com/download/details.aspx?id=11774) ověřování Azure AD podporuje. Viz také [nastavení vlastnosti připojení](https://msdn.microsoft.com/library/ms378988.aspx).   
-- PolyBase se nemůže ověřit pomocí ověřování Azure AD.   
+- PolyBase se nemůže ověřit pomocí ověřování Azure AD.   
 - Ověřování Azure AD je podporována SQL Database pomocí webu Azure portal **importovat databázi** a **exportovat databázi** oken. Import a export pomocí ověřování Azure AD je také podporována z příkazu prostředí PowerShell.   
 - Ověřování Azure AD podporuje pro SQL Database Managed Instance a SQL Data Warehouse pomocí rozhraní příkazového řádku. Další informace najdete v tématu [konfigurovat a spravovat ověřování Azure Active Directory s SQL Database nebo SQL Data Warehouse](sql-database-aad-authentication-configure.md) a [SQL Server – az sql server](https://docs.microsoft.com/cli/azure/sql/server).
 

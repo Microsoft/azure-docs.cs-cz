@@ -8,14 +8,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/07/2018
+ms.date: 11/09/2018
 ms.author: jingwang
-ms.openlocfilehash: 65495209714c37e5e166545ed7ed029e36c258c0
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 2fad3ad8bc6e1c0ca87038af6c461d863065fc95
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42054820"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51345959"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-storage-gen2-preview-using-azure-data-factory-preview"></a>Kopírování dat do nebo z Azure Data Lake Storage Gen2 Preview pomocí Azure Data Factory (Preview)
 
@@ -34,6 +34,9 @@ Konkrétně tento konektor podporuje:
 
 >[!TIP]
 >Pokud povolíte hierarchického oboru názvů, aktuálně neexistuje žádná interoperability mezi objektem Blob a rozhraní API Gen2 ADLS operací. V případě, že dosáhnete chyba "ErrorCode = FilesystemNotFound" s podrobná zpráva jako "zadaný systému souborů neexistuje.", je způsobena zadané jímky systému souborů se vytvořil prostřednictvím rozhraní API objektu Blob místo ADLS Gen2 API jinde. Pokud chcete problém vyřešit, zadejte prosím nový systém souborů s názvem, který neexistuje jako název kontejneru objektů Blob a ADF během kopírování dat automaticky vytvoří tento systém souborů.
+
+>[!NOTE]
+>Pokud vám umožňuje _"Povolit důvěryhodné služby Microsoftu pro přístup k tomuto účtu úložiště"_ možnost v nastavení brány firewall služby Azure Storage, pomocí prostředí Azure Integration Runtime připojit k Data Lake Storage Gen2 se nezdaří s chybou zakázáno, jako ADF nejsou považovány za důvěryhodné služby Microsoftu. Použijte prosím modul Integration Runtime připojit přes místo.
 
 ## <a name="get-started"></a>Začínáme
 
@@ -84,7 +87,7 @@ Pro Data Lake Storage Gen2 propojené služby jsou podporovány následující v
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost type datové sady, musí být nastavená na **AzureBlobFSFile**. |Ano |
-| folderPath | Cesta ke složce v Data Lake Storage Gen2. Filtr zástupných znaků není podporován. Příklad: rootfolder/podsložka /. |Ano |
+| folderPath | Cesta ke složce v Data Lake Storage Gen2. Filtr zástupných znaků není podporován. Pokud není zadán, odkazuje na kořen. Příklad: rootfolder/podsložka /. |Ne |
 | fileName | **Název nebo zástupný filtr** pro soubory v zadané "folderPath". Pokud nezadáte hodnotu pro tuto vlastnost, datová sada odkazuje na všechny soubory ve složce. <br/><br/>Pro filtr, povoleny zástupné znaky jsou: `*` (odpovídá žádnému nebo více znaků) a `?` (odpovídá nula nebo jeden znak).<br/>– Příklad 1: `"fileName": "*.csv"`<br/>– Příklad 2: `"fileName": "???20180427.txt"`<br/>Použití `^` dostala mimo vašeho skutečného názvu souboru má zástupných znaků nebo tento znak escape uvnitř.<br/><br/>Pokud není zadán název souboru pro datovou sadu výstupů a **preserveHierarchy** není zadané v jímce aktivity aktivitě kopírování automaticky vygeneruje název souboru s následující vzor: "*Data. [ Aktivita běžet id Identifikátor GUID.] [Identifikátor GUID Pokud FlattenHierarchy]. [Formát pokud nakonfigurovaný]. [Pokud nakonfigurovaný komprese]* ". Příkladem je "Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt.gz". |Ne |
 | Formát | Pokud chcete zkopírovat soubory, jako je mezi souborové úložiště (binární kopie), přejděte v části formát v definici vstupní a výstupní datové sady.<br/><br/>Pokud chcete analyzovat a generovat soubory s konkrétním formátu, jsou podporovány následující typy formátů souboru: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, a **ParquetFormat**. Nastavte **typ** vlastnosti v části **formátu** na jednu z těchto hodnot. Další informace najdete v tématu [textový formát](supported-file-formats-and-compression-codecs.md#text-format), [formátu JSON](supported-file-formats-and-compression-codecs.md#json-format), [formát Avro](supported-file-formats-and-compression-codecs.md#avro-format), [formát Orc](supported-file-formats-and-compression-codecs.md#orc-format), a [formát Parquet ](supported-file-formats-and-compression-codecs.md#parquet-format) oddíly. |Ne (pouze pro binární kopie scénář) |
 | Komprese | Zadejte typ a úroveň komprese pro data. Další informace najdete v tématu [podporované formáty souborů a komprese kodeky](supported-file-formats-and-compression-codecs.md#compression-support).<br/>Podporované typy jsou **GZip**, **Deflate**, **BZip2**, a **ZipDeflate**.<br/>Jsou podporované úrovně **Optimal** a **nejrychlejší**. |Ne |

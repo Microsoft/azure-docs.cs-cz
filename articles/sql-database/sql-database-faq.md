@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/22/2018
-ms.openlocfilehash: 7bb692735cb3541fb05b2c39dd7325fa74a00034
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: c9b343bba59776ca735fa5c2cbddf03ec5c92b47
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50232201"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51242819"
 ---
 # <a name="sql-database-frequently-asked-questions-faq"></a>SQL Database – nejčastější dotazy (FAQ)
 
@@ -27,7 +27,7 @@ Je aktuální verze služby SQL Database V12. Verze 11 verze je vyřazený.
 
 ## <a name="what-is-the-sla-for-sql-database"></a>Co je smlouva SLA pro službu SQL Database
 
-Garantujeme 99,99 % času, můžete mít k dispozici připojení mezi Microsoft Azure SQL Database a naší internetovou bránou bez ohledu na vaší úrovni služby. 0,01 % je vyhrazené pro převzetí služeb při selhání, opravy a upgrady. Další informace najdete v tématu [SLA](http://azure.microsoft.com/support/legal/sla/). Informace o architektuře dostupnost služby Azure SQL Database najdete v tématu [vysokou dostupnost a Azure SQL Database](sql-database-high-availability.md).
+Garantujeme 99,99 % času, můžete mít k dispozici připojení mezi Microsoft Azure SQL Database a naší internetovou bránou bez ohledu na vaší úrovni služby. 0,01 % je vyhrazené pro převzetí služeb při selhání, opravy a upgrady. Další informace najdete v tématu [SLA](https://azure.microsoft.com/support/legal/sla/). Informace o architektuře dostupnost služby Azure SQL Database najdete v tématu [vysokou dostupnost a Azure SQL Database](sql-database-high-availability.md).
 
 ## <a name="can-i-control-when-patching-downtime-occurs"></a>Můžete řídit při použití dílčích oprav výpadek nastane
 

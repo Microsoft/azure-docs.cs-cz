@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/20/2018
 ms.author: mjbrown
-ms.openlocfilehash: 8f36026c7e5802994b8cf22d60c6ecea052e6382
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 0e4105d6f56a8eb45a83e970c85319cf25041781
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50963043"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51514770"
 ---
 # <a name="availability-and-performance-tradeoffs-for-various-consistency-levels-in-azure-cosmos-db"></a>Dostupnost a výkon kompromisy pro různé úrovně konzistence ve službě Azure Cosmos DB
 
@@ -33,20 +33,6 @@ Distribuované databáze spoléhat na replikaci pro vysokou dostupnost, s nízko
 - Pro stejný počet jednotek žádostí relace, konzistentní Předpona a úrovně konzistence typu případné zajišťuje přibližně 2 X čtení propustnosti ve srovnání s silná, ohraničená odolnost.
 
 - Pro daný typ operace zápisu, jako je například vložení, nahradit, upsert, odstranění atd. zápis propustnost za jednotky žádosti je shodné pro všechny úrovně konzistence.
-
-## <a name="consistency-levels-and-durability"></a>Úrovně konzistence a odolnosti
-
-Předtím, než je potvrzení operace zápisu do klienta data trvale potvrzena kvorum replik v rámci oblasti, která přijímá operace zápisu. Navíc pokud kontejner má nakonfigurovanou konzistentní zásady indexování, index je aktualizovat také synchronně replikované a odolném potvrzení kvorum replik, před odesláním potvrzení operace zápisu do klienta.
-
-Následující tabulka shrnuje okno potenciální ztráty dat v případě regionálních po havárii pro Cosmos účty, které jsou rozmístěny v několika oblastech.
-
-| **Úrovně konzistence** | **Okno potenciální ztráty dat v případě regionálního** |
-| - | - |
-| Silné | Nula |
-| Omezená neaktuálnost | Omezit na "neaktuálnost okno" nastavení pro účet Cosmos. |
-| Relace | Až 5 sekund |
-| Konzistentní předpona | Až 5 sekund |
-| Nahodilé | Až 5 sekund |
 
 ## <a name="next-steps"></a>Další postup
 

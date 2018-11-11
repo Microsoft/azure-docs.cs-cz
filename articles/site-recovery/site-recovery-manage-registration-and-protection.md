@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: raynew
-ms.openlocfilehash: 06169ff8e084882eb9a2dbe71c89c3b2a40b384b
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 4dac0ed85500e4339f6389f05113dfd68b72c5ff
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50214082"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51244334"
 ---
 # <a name="remove-servers-and-disable-protection"></a>Odebrání serverů a zakázání ochrany
 
@@ -34,7 +34,7 @@ Pokud budete replikovat virtuální počítače VMware nebo fyzické servery Win
 3. Poznamenejte si ID serveru VMM.
 4. Zrušit přidružení zásad replikace z cloudy na serveru VMM, který chcete odebrat.  V **infrastruktura Site Recovery** > **pro System Center VMM** >  **zásady replikace**, dvakrát klikněte na panel přidružené zásady. Klikněte pravým tlačítkem na cloudu > **zrušení spojení**.
 5. Odstraňte VMM server nebo aktivní uzel. V **infrastruktura Site Recovery** > **pro System Center VMM** > **servery VMM**, klikněte pravým tlačítkem na server > **odstranit** .
-6. Pokud váš server VMM v odpojeném stavu, pak si stáhnout a spustit [skript pro vyčištění](http://aka.ms/asr-cleanup-script-vmm) na serveru VMM. Otevřete prostředí PowerShell se službou **spustit jako správce** možnost, chcete-li změnit zásady spouštění pro obor výchozí (LocalMachine). Ve skriptu zadejte ID serveru VMM, který chcete odebrat. Tento skript odebere registraci a cloudové párování informace ze serveru.
+6. Pokud váš server VMM v odpojeném stavu, pak si stáhnout a spustit [skript pro vyčištění](https://aka.ms/asr-cleanup-script-vmm) na serveru VMM. Otevřete prostředí PowerShell se službou **spustit jako správce** možnost, chcete-li změnit zásady spouštění pro obor výchozí (LocalMachine). Ve skriptu zadejte ID serveru VMM, který chcete odebrat. Tento skript odebere registraci a cloudové párování informace ze serveru.
 5. Spusťte skript vyčištění na žádném sekundárního serveru VMM.
 6. Spusťte skript vyčištění na všechny další pasivní uzly clusteru VMM, které mají nainstalovaný poskytovatel.
 7. Odinstalace poskytovatele ručně na serveru VMM. Pokud máte cluster, odeberte ze všech uzlů.

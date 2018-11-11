@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2018
 ms.author: roiyz
-ms.openlocfilehash: 134105ee2446f3c7bf0f19e2f9611597ee9bedfe
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: ddb999c252f0802ef57942de694340ae29f2d8ba
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47451948"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240354"
 ---
 # <a name="how-to-install-and-configure-trend-micro-deep-security-as-a-service-on-a-windows-vm"></a>Jak nainstalovat a nakonfigurovat Trend Micro Deep Security na virtuálním počítači s Windows jako službu
 [!INCLUDE [virtual-machines-extensions-deprecation-statement](../../../includes/virtual-machines-extensions-deprecation-statement.md)]
@@ -30,7 +30,7 @@ Klientovi je nainstalován jako rozšíření zabezpečení prostřednictvím ag
 
 Agent virtuálního počítače nemusí mít stávající virtuální počítače vytvořené pomocí webu Azure portal, Azure CLI nebo Powershellu. Pro existující virtuální počítač, který nemá agenta virtuálního počítače budete muset stáhnout a nainstalovat první. Tento článek se týká obou situacích.
 
-Pokud máte v Trend Micro aktuální předplatné pro místní řešení, můžete k ochraně virtuálních počítačů Azure. Pokud vám zákazník ještě nejsou, můžete zaregistrovat zkušební předplatné. Další informace o tomto řešení najdete v příspěvku na blogu Trend Micro [Microsoft Azure VM Agent rozšíření pro Deep Security](http://go.microsoft.com/fwlink/p/?LinkId=403945).
+Pokud máte v Trend Micro aktuální předplatné pro místní řešení, můžete k ochraně virtuálních počítačů Azure. Pokud vám zákazník ještě nejsou, můžete zaregistrovat zkušební předplatné. Další informace o tomto řešení najdete v příspěvku na blogu Trend Micro [Microsoft Azure VM Agent rozšíření pro Deep Security](https://go.microsoft.com/fwlink/p/?LinkId=403945).
 
 ## <a name="install-the-deep-security-agent-on-a-new-vm"></a>Nainstalovat Deep Security Agent na nový virtuální počítač
 
@@ -67,7 +67,7 @@ Nejprve ověřte, že Agent virtuálního počítače je již nainstalována. Za
 
 Pokud si nejste jisti, cloudové služby a název virtuálního počítače, spusťte **Get-AzureVM** k zobrazení těchto informací pro všechny virtuální počítače v aktuálním předplatném.
 
-Pokud **write-host** příkazem **True**, je nainstalovaný Agent virtuálního počítače. Vrátí-li **False**, podívejte se pokyny a odkaz ke stažení v příspěvku na blogu Azure [agenta virtuálního počítače a rozšíření – část 2](http://go.microsoft.com/fwlink/p/?LinkId=403947).
+Pokud **write-host** příkazem **True**, je nainstalovaný Agent virtuálního počítače. Vrátí-li **False**, podívejte se pokyny a odkaz ke stažení v příspěvku na blogu Azure [agenta virtuálního počítače a rozšíření – část 2](https://go.microsoft.com/fwlink/p/?LinkId=403947).
 
 Pokud je nainstalovaný Agent virtuálního počítače, spusťte tyto příkazy.
 
@@ -78,9 +78,9 @@ Pokud je nainstalovaný Agent virtuálního počítače, spusťte tyto příkazy
 ## <a name="next-steps"></a>Další postup
 Trvá několik minut, než spustíte po instalaci agenta. Potom budete muset aktivovat Deep Security na virtuálním počítači, aby se dala spravovat pomocí Deep Security Manager. Naleznete v následujících článcích pro další pokyny:
 
-* Trend na článek o tomto řešení [Instant-On cloudové zabezpečení pro Microsoft Azure](http://go.microsoft.com/fwlink/?LinkId=404101)
-* A [ukázkový skript prostředí Windows PowerShell](http://go.microsoft.com/fwlink/?LinkId=404100) ke konfiguraci virtuálního počítače
-* [Pokyny](http://go.microsoft.com/fwlink/?LinkId=404099) pro ukázku
+* Trend na článek o tomto řešení [Instant-On cloudové zabezpečení pro Microsoft Azure](https://go.microsoft.com/fwlink/?LinkId=404101)
+* A [ukázkový skript prostředí Windows PowerShell](https://go.microsoft.com/fwlink/?LinkId=404100) ke konfiguraci virtuálního počítače
+* [Pokyny](https://go.microsoft.com/fwlink/?LinkId=404099) pro ukázku
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 [Jak se přihlásit k virtuálnímu počítači s Windows serverem]

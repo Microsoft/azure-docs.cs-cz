@@ -15,19 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: deguhath
-ms.openlocfilehash: 7ed861a58b82435f9f50a5798ff821fcd6020096
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: c1cbd523b8c74bf1221dc47b832c35e9119493a9
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394129"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51346282"
 ---
 # <a name="create-hive-tables-and-load-data-from-azure-blob-storage"></a>Vytváření tabulek Hive a načtení dat z úložiště objektů Blob v Azure
-Toto téma představuje obecné dotazy Hive, které vytváření tabulek Hive a načtení dat z úložiště objektů blob v Azure. Některé poskytujeme také pokyny o dělení tabulek Hive a o používání optimalizované řádek úložiště se sloupcovou strukturou (ORC) formátování pro zlepšení výkonu dotazů.
 
-To **nabídky** odkazy na témata popisující ingestovat data do cílových prostředí, kde můžete data ukládat a zpracovávat během zpracování dat vědy (TDSP) týmu.
-
-[!INCLUDE [cap-ingest-data-selector](../../../includes/cap-ingest-data-selector.md)]
+Tento článek představuje obecné dotazy Hive, které vytváření tabulek Hive a načtení dat z úložiště objektů blob v Azure. Některé poskytujeme také pokyny o dělení tabulek Hive a o používání optimalizované řádek úložiště se sloupcovou strukturou (ORC) formátování pro zlepšení výkonu dotazů.
 
 ## <a name="prerequisites"></a>Požadavky
 Tento článek předpokládá, že máte:

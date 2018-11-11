@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
 ms.date: 10/02/2018
-ms.openlocfilehash: 885d867d0733ef923d327d8d6a36fc1588fd4961
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: ec7b956f080837b297bac56e6237ac0672601ce7
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48801008"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51344480"
 ---
 # <a name="secure-azure-machine-learning-web-services-with-ssl"></a>Zabezpečení webových služeb Azure Machine Learning s protokolem SSL
 
@@ -53,9 +53,8 @@ Při žádosti o certifikát, musíte plně kvalifikovaný název domény (FQDN)
 > [!TIP]
 > Pokud certifikační autorita nemůže poskytnout certifikát a klíč jako kódovaný PEM soubory, můžete použít nástroj, jako [OpenSSL](https://www.openssl.org/) změny formátu.
 
-> [!IMPORTANT]
-> Certifikáty podepsané svým držitelem by měla sloužit pouze pro vývoj. Není vhodné používat v produkčním prostředí. Pokud používáte certifikát podepsaný svým držitelem, přečtěte si [používání webových služeb s certifikáty podepsanými držitelem](#self-signed) části konkrétní pokyny.
-
+> [!WARNING]
+> Certifikáty podepsané svým držitelem by měla sloužit pouze pro vývoj. Není vhodné používat v produkčním prostředí. Certifikáty podepsané svým držitelem může způsobovat problémy v klientovi aplikace. Další informace naleznete v dokumentaci pro knihovny sítě použité v klientské aplikaci.
 
 ## <a name="enable-ssl-and-deploy"></a>Povolení protokolu SSL a nasazení
 
@@ -119,91 +118,8 @@ V dalším kroku je nutné aktualizovat DNS tak, aby odkazoval na webovou služb
 
   Aktualizace DNS na kartě "Konfigurace" z "Veřejné IP adresy" clusteru AKS, jak je znázorněno na obrázku. Veřejnou IP adresu najdete jako jeden z typů prostředků vytvořené v rámci skupiny prostředků, která obsahuje agentské uzly AKS a jiných síťových prostředků.
 
-  ![Služba Azure Machine Learning: zabezpečení webové služby s protokolem SSL](./media/how-to-secure-web-service/aks-public-ip-address.png)
+  ![Služba Azure Machine Learning: zabezpečení webové služby s protokolem SSL](./media/how-to-secure-web-service/aks-public-ip-address.png)Self –
 
-## <a name="consume-authenticated-services"></a>Využívání služeb ověřený
+## <a name="next-steps"></a>Další postup
 
-### <a name="how-to-consume"></a>Jak využívat 
-+ **ACI a AKS**: 
-
-  Webové služby ACI a AKS Další informace o využívání webových služeb v těchto článcích:
-  + [Postup nasazení do služby ACI](how-to-deploy-to-aci.md)
-
-  + [Postup nasazení do AKS](how-to-deploy-to-aks.md)
-
-+ **Pro FPGA**:  
-
-  Následující příklady ukazují, jak využívat služby ověřené FPGA na Python a C#.
-  Nahraďte `authkey` s primárním nebo sekundárním klíčem, který byl vrácen, pokud byla nasazená služba.
-
-  Příklad v Pythonu:
-    ```python
-    from amlrealtimeai import PredictionClient
-    client = PredictionClient(service.ipAddress, service.port, use_ssl=True, access_token="authKey")
-    image_file = R'C:\path_to_file\image.jpg'
-    results = client.score_image(image_file)
-    ```
-
-  Příklad jazyka C#:
-    ```csharp
-    var client = new ScoringClient(host, 50051, useSSL, "authKey");
-    float[,] result;
-    using (var content = File.OpenRead(image))
-        {
-            IScoringRequest request = new ImageRequest(content);
-            result = client.Score<float[,]>(request);
-        }
-    ```
-
-### <a name="set-the-authorization-header"></a>Nastavit hlavičku autorizace
-Další gRPC klienti můžou ověřovat požadavky nastavením se autorizační hlavička. Obecný postup je vytvořit `ChannelCredentials` objekt, který kombinuje `SslCredentials` s `CallCredentials`. Tím se přidá do hlavičky autorizace žádosti. Další informace o implementaci podpory pro konkrétní hlavičky najdete v tématu [ https://grpc.io/docs/guides/auth.html ](https://grpc.io/docs/guides/auth.html).
-
-Následující příklady ukazují, jak nastavit hlavičky v C# a Go:
-
-+ Použití jazyka C# k nastavení hlavičky:
-    ```csharp
-    creds = ChannelCredentials.Create(baseCreds, CallCredentials.FromInterceptor(
-                          async (context, metadata) =>
-                          {
-                              metadata.Add(new Metadata.Entry("authorization", "authKey"));
-                              await Task.CompletedTask;
-                          }));
-    
-    ```
-
-+ Použití jazyka Go k nastavení hlavičky:
-    ```go
-    conn, err := grpc.Dial(serverAddr, 
-        grpc.WithTransportCredentials(credentials.NewClientTLSFromCert(nil, "")),
-        grpc.WithPerRPCCredentials(&authCreds{
-        Key: "authKey"}))
-    
-    type authCreds struct {
-        Key string
-    }
-    
-    func (c *authCreds) GetRequestMetadata(context.Context, uri ...string) (map[string]string, error) {
-        return map[string]string{
-            "authorization": c.Key,
-        }, nil
-    }
-    
-    func (c *authCreds) RequireTransportSecurity() bool {
-        return true
-    }
-    ```
-
-<a id="self-signed"></a>
-
-## <a name="consume-services-with-self-signed-certificates"></a>Využívání služeb s certifikáty podepsané svým držitelem
-
-Existují dva způsoby pro umožnění spolupráce klienta k ověření serveru zabezpečený pomocí certifikátu podepsaného svým držitelem:
-
-* V klientském systému, nastavte `GRPC_DEFAULT_SSL_ROOTS_FILE_PATH` proměnnou prostředí v klientském systému tak, aby odkazoval na soubor certifikátu.
-
-* Při vytváření `SslCredentials` objektu, předat konstruktoru obsah souboru certifikátu.
-
-Pomocí některé z metod způsobí, že gRPC pro použití certifikátu jako kořenového certifikátu.
-
-> [!IMPORTANT]
-> gRPC nepřijímá nedůvěryhodné certifikáty. Pomocí nedůvěryhodného certifikátu se nezdaří pomocí `Unavailable` stavový kód. Podrobnosti o tomto selhání obsahovat `Connection Failed`.
+Zjistěte, jak [využívání modelu ML nasadit jako webovou službu](how-to-consume-web-service.md).

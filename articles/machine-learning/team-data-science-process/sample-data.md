@@ -1,6 +1,6 @@
 ---
-title: Ukázková data v kontejnerech objektů blob v Azure, SQL Server a tabulek Hive | Microsoft Docs
-description: Jak chcete dynamicky prozkoumávat data uložená v různých enviromnents Azure.
+title: Ukázková data v kontejnerech objektů blob v Azure, SQL Server a v tabulkách Hivu | Dokumentace Microsoftu
+description: Jak prozkoumat data uložená v různých enviromnents Azure.
 services: machine-learning
 documentationcenter: ''
 author: deguhath
@@ -15,27 +15,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: deguhath
-ms.openlocfilehash: 0efd754936b67611a747c6c5756de92443a937e4
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 60431578ba8b5c740fe5e1124dcdad32c3cb2ede
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34837995"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51344075"
 ---
-# <a name="heading"></a>Ukázková data v kontejnerech objektů blob v Azure, SQL Server a tabulek Hive
-Tento dokument obsahuje odkazy na články, které se týkají jak ukázková data, která je uložená v jednom ze tří různých Azure umístění:
+# <a name="heading"></a>Ukázková data v kontejnerech objektů blob v Azure, SQL Server a v tabulkách Hivu
 
-* **K datům kontejneru objektů blob v Azure** je vzorkovat stáhnout prostřednictvím kódu programu a potom ho vzorkování s ukázkový kód Python.
-* **Data systému SQL Server** je shromažďovat vzorky pomocí SQL a programovací jazyk Python. 
-* **Hive dat v tabulce** je vzorkovat pomocí dotazů Hive.
+Následující články popisují, jak ukázková data, která je uložena v jednom ze tří různých umístěních Azure:
 
-Následující **nabídky** odkazy na témata, které popisují, jak ukázková data ze všech těchto prostředích úložiště Azure. 
+* [**Datový kontejner objektů blob v Azure** ](sample-data-blob.md) vzorkovat stahování prostřednictvím kódu programu a potom vzorkování pomocí vzorového kódu Pythonu.
+* [**Data systému SQL Server** ](sample-data-sql-server.md) je shromažďovat vzorky pomocí SQL a programovací jazyk Python. 
+* [**Data v tabulce Hive** ](sample-data-hive.md) je shromažďovat vzorky pomocí dotazů Hive.
 
-[!INCLUDE [cap-sample-data-selector](../../../includes/cap-sample-data-selector.md)]
+Tato úloha vzorkování je krok [vědecké zpracování týmových dat (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/).
 
-Tato úloha vzorkování je krok v [tým datové vědy procesu (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/).
+**Proč ukázkových dat?**
 
-**Proč vzorová data?**
-
-Pokud je velké datové sady, které chcete analyzovat, je obvykle vhodné nižší ukázková data, která mají snížit velikost menší, ale reprezentativní a lepší správu bitlockeru. To usnadňuje pochopení dat, zkoumání a funkce inženýrství. Jeho role v procesu Cortana Analytics je umožnit rychlé vytváření prototypů zpracování dat funkcí a modelů strojového učení.
+Pokud je velké datové sady, které chcete analyzovat, je obvykle vhodné na nižší dat ke snížení velikosti menší, ale reprezentativní a lépe zvládnutelné. To usnadňuje pochopení dat, prozkoumávání a vytváření funkcí. Jejich rolí v procesu sady Cortana Analytics je umožnit rychlé vytváření prototypů funkcí pro zpracování dat a modelů strojového učení.
 

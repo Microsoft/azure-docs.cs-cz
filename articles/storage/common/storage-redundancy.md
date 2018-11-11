@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/08/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 3d6d3184c2a17e397e5bbba9fff6cf9c3de9b73e
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
-ms.translationtype: HT
+ms.openlocfilehash: 7afbdaba46674b69aa601355e80160e7c72ff373
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51218487"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240966"
 ---
 # <a name="azure-storage-replication"></a>Účet replikace Azure Storage
 
@@ -68,5 +68,5 @@ Pokud změníte z GRS na LRS, se neúčtují žádné další poplatky, ale repl
 - [Geograficky redundantní úložiště (GRS): replikace mezi zónami pro službu Azure Storage](storage-redundancy-grs.md)
 - [Azure škálovatelnost a výkonnostní cíle Storage](storage-scalability-targets.md)
 - [Navrhování aplikací s vysokou dostupností pomocí RA-GRS úložiště](../storage-designing-ha-apps-with-ragrs.md)
-- [Microsoft Azure Storage redundance možnosti a oprávnění ke čtení geograficky redundantní úložiště ](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/11/introducing-read-access-geo-replicated-storage-ra-grs-for-windows-azure-storage.aspx)
-- [Dokument SOSP - Azure Storage: Vysoce dostupné služby cloudového úložiště se silnou konzistenci](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)
+- [Microsoft Azure Storage redundance možnosti a oprávnění ke čtení geograficky redundantní úložiště ](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/11/introducing-read-access-geo-replicated-storage-ra-grs-for-windows-azure-storage.aspx)
+- [Dokument SOSP - Azure Storage: Vysoce dostupné služby cloudového úložiště se silnou konzistenci](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)

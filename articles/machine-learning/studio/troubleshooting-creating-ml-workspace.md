@@ -1,6 +1,6 @@
 ---
-title: 'Řešení potíží: Vytvořte a připojte se k pracovní prostor Machine Learning | Microsoft Docs'
-description: Řešení pro běžné problémy při vytvoření a připojení k pracovní prostor služby Azure Machine Learning
+title: 'Řešení potíží: Vytvoření a připojení k pracovnímu prostoru Machine Learning | Dokumentace Microsoftu'
+description: Řešení běžných problémů při vytváření a připojení k pracovnímu prostoru Azure Machine Learning
 services: machine-learning
 documentationcenter: ''
 author: heatherbshapiro
@@ -15,56 +15,56 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.openlocfilehash: 262c9af4e0f3ee34dc89986affacb6c0d8a0d801
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 1d53e13798f24fa6225b0a587dde71b4f34f48fc
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34835718"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51243381"
 ---
 # <a name="troubleshooting-guide-create-and-connect-to-an-machine-learning-workspace"></a>Průvodce odstraňováním potíží: Vytvoření pracovního prostoru Machine Learning a připojení k němu
-Tato příručka poskytuje řešení pro některé nejčastější problémy při se nastavování pracovních prostorů Azure Machine Learning.
+Tato příručka poskytuje řešení pro některé často zjistil problémy při nastavení pracovních prostorů Azure Machine Learning.
 
 [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
 
 ## <a name="workspace-owner"></a>Vlastník pracovního prostoru
-Otevřete pracovní prostor v nástroji Machine Learning Studio, musíte být přihlášeni k Microsoft Account jste použili k vytvoření pracovního prostoru, nebo je potřeba přijmout pozvánku od vlastníka pro připojení k pracovním prostoru. Z portálu Azure můžete spravovat pracovní prostor, který zahrnuje možnost konfigurace přístupu.
+Otevřete pracovní prostor v Machine Learning Studio, musíte být přihlášeni k Account Microsoft jste použili k vytvoření pracovního prostoru, nebo potřebujete přijmout pozvánku od vlastníka k pracovnímu prostoru. Na webu Azure Portal můžete spravovat pracovní prostor, který zahrnuje možnost konfigurovat přístup.
 
-Další informace o pracovním prostoru Správa, najdete v části [spravovat pracovní prostor služby Azure Machine Learning].
+Další informace o správě pracovního prostoru, naleznete v tématu [Správa pracovního prostoru Azure Machine Learning].
 
-[Spravovat pracovní prostor služby Azure Machine Learning]: manage-workspace.md
+[Správa pracovního prostoru Azure Machine Learning]: manage-workspace.md
 
 ## <a name="allowed-regions"></a>Povolených oblastí
-Machine Learning je aktuálně k dispozici pro omezený počet oblastí. Pokud vaše předplatné neobsahuje jednu z těchto oblastí, mohou se zobrazit chybová zpráva, "V povolených oblastí používat žádná předplatná."
+Machine Learning je aktuálně k dispozici v omezeném počtu oblastí. Pokud součástí vašeho předplatného není jedna z těchto oblastí, může se zobrazit chybová zpráva, "V oblasti povolené nemáte žádná předplatná."
 
-Chcete-li požádat o, oblast přidat do vašeho předplatného, z portálu Azure vytvořit novou žádost o podporu společnosti Microsoft, zvolte **fakturace** jako typ problému a postupujte podle pokynů a odešlete žádost.
+Požádat o přidaná v oblasti vašeho předplatného, vytvořit novou žádost o podporu společnosti Microsoft na webu Azure Portal, vyberte **fakturace** jako typ problému a postupujte podle výzev k odeslání vaší žádosti.
 
 ## <a name="storage-account"></a>Účet úložiště
-Služba Machine Learning potřebuje účet úložiště pro ukládání dat. Můžete použít existující účet úložiště, nebo můžete vytvořit nový účet úložiště, když vytvoříte nový pracovní prostor Machine Learning (Pokud máte kvóty pro vytvoření nového účtu úložiště).
+Služba Machine Learning potřebuje účet úložiště k ukládání dat. Můžete použít existující účet úložiště, nebo můžete vytvořit nový účet úložiště, když vytvoříte nový pracovní prostor Machine Learning (Pokud nemáte kvótu pro vytvoření nového účtu úložiště).
 
-Po vytvoření nového pracovního prostoru Machine Learning se můžete přihlásit Machine Learning Studio pomocí účtu Microsoft, který jste použili k vytvoření pracovního prostoru. Pokud narazíte na chybová zpráva "Prostoru nebyl nalezen" (podobně jako na následujícím snímku obrazovky), použijte následující postup odstranit soubory cookie prohlížeče.
+Po vytvoření nového pracovního prostoru Machine Learning se můžete přihlásit ke službě Machine Learning Studio pomocí účtu Microsoft, který jste použili k vytvoření pracovního prostoru. Pokud narazíte na chybovou zprávu, "Pracovní prostor nebyl nalezen" (podobně jako na následujícím snímku obrazovky), použijte následující kroky a odstranit soubory cookie v prohlížeči.
 
 ![Pracovní prostor nebyl nalezen][screen3]
 
-**Chcete-li odstranit soubory cookie prohlížeče**
+**Chcete-li odstranit soubory cookie v prohlížeči**
 
-1. Pokud používáte Internet Explorer, klikněte **nástroje** tlačítko v pravém horním rohu a vyberte **Možnosti Internetu**.  
+1. Pokud používáte Internet Explorer, klikněte na tlačítko **nástroje** tlačítko v pravém horním rohu a vyberte **Možnosti Internetu**.  
 
 ![Možnosti Internetu][screen4]
 
-2. V části **Obecné** , klikněte na **odstranit...**
+2. V části **Obecné** klikněte na tlačítko **odstranit...**
 
 ![Karta Obecné][screen5]
 
-3. V **odstranit historii procházení** dialogové okno zkontrolujte, zda **soubory cookie a data webové stránky** je vybrána a klikněte na tlačítko **odstranit**.
+3. V **odstranit historii procházení** dialogové okno pole, ujistěte se, že **soubory cookie a data webu** je vybraná a klikněte na tlačítko **odstranit**.
 
-![Odstraňte soubory cookie][screen6]
+![Odstranění souborů cookie][screen6]
 
-Po odstranění souborů cookie se znovu spustit prohlížeč a přejděte ke [Microsoft Azure Machine Learning](https://studio.azureml.net) stránky. Po zobrazení výzvy k zadání uživatelského jména a hesla, zadejte stejný účet Microsoft, které jste použili k vytvoření pracovního prostoru.
+Po odstranění souborů cookie, restartujte prohlížeč a přejděte [Microsoft Azure Machine Learning](https://studio.azureml.net) stránky. Po zobrazení výzvy k zadání uživatelského jména a hesla, zadejte stejný účet Microsoft, který jste použili k vytvoření pracovního prostoru.
 
 ## <a name="comments"></a>Komentáře
 
-Naším cílem je zajistit nejblíže jako bezproblémové prostředí Machine Learning. Položit všechny komentáře a problémy v [fórum Azure Machine Learning](http://social.msdn.microsoft.com/Forums/windowsazure/home?forum=MachineLearning) a pomoci tak můžete poskytovat lepší.
+Naším cílem je, aby co nejvíc jako bezproblémové prostředí Machine Learning. Zveřejněte ji prosím všechny komentáře a problémy ve [fórum pro Azure Machine Learning](https://social.msdn.microsoft.com/Forums/windowsazure/home?forum=MachineLearning) nám můžete poskytovat lepší.
 
 [screen1]:media/troubleshooting-creating-ml-workspace/screen1.png
 [screen2]:media/troubleshooting-creating-ml-workspace/screen2.png

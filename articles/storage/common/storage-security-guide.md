@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/31/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: cd7b475dc2bd4dade822a82f285c2e96c8d532d2
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 3d9da96e5bf6c88f76089dea930b02248cfa1d24
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50138167"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51243790"
 ---
 # <a name="azure-storage-security-guide"></a>Průvodci zabezpečením Azure Storage
 
@@ -479,7 +479,7 @@ Další informace o mechanismů jako CORS a jak se dá povolit projděte si tyto
 * [Podpora (CORS) pro služby Azure Storage na webu MSDN sdílení prostředků různého původu](https://msdn.microsoft.com/library/azure/dn535601.aspx)
 
   Toto je referenční dokumentaci pro podporu CORS pro služby Azure Storage. To obsahuje odkazy na články pro každou službu úložiště a ukazuje příklad a vysvětluje každý prvek v souboru CORS.
-* [Microsoft Azure Storage: Představujeme CORS](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/02/03/windows-azure-storage-introducing-cors.aspx)
+* [Microsoft Azure Storage: Představujeme CORS](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/02/03/windows-azure-storage-introducing-cors.aspx)
 
   Toto je odkaz na článek počáteční blogu oznamujeme CORS a ukazuje, jak ho použít.
 
@@ -490,7 +490,7 @@ Další informace o mechanismů jako CORS a jak se dá povolit projděte si tyto
 
    Pokud používáte protokol HTTPS, který poskytuje zabezpečení na úrovni přenosu, pak pomocí kontroly MD5 je redundantní a zbytečné.
 
-   Další informace najdete [Přehled služby Azure Blob MD5](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/02/18/windows-azure-blob-md5-overview.aspx).
+   Další informace najdete [Přehled služby Azure Blob MD5](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/02/18/windows-azure-blob-md5-overview.aspx).
 2. **A co FIPS pro USA Státní správy?**
 
    USA federální informace o zpracování Standard (FIPS) definuje kryptografické algoritmy, které jsou schválené pro použití v USA Federální vlády počítačové systémy pro ochranu citlivá data. Povolení standardu FIPS režimu ve Windows serveru nebo plochy říká operační systém by měla sloužit pouze standardu FIPS kryptografické algoritmy. Pokud aplikace používá algoritmy nedodržují předpisy, aplikace se přeruší. With.NET Framework verze 4.5.2 nebo novější, aplikace se automaticky přepne kryptografické algoritmy používat algoritmy odpovídající standardu FIPS, když je počítač v režimu FIPS.

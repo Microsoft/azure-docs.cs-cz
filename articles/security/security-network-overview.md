@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/29/2018
 ms.author: terrylan
-ms.openlocfilehash: 69818fdb8124b9afa176ccd4dfd74cf0f2f4b346
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: ad711fe998a3c250775c5d4f4d76305ffb7cf860
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233799"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51244589"
 ---
 # <a name="azure-network-security-overview"></a>Přehled zabezpečení sítě Azure
 
@@ -144,7 +144,7 @@ Další informace:
 
 ## <a name="secure-remote-access-and-cross-premises-connectivity"></a>Zabezpečené připojení vzdáleného přístupu a mezi různými místy
 
-Nastavení, konfiguraci a správu vašich prostředků Azure je nutné provést vzdáleně. Kromě toho, kterou chcete nasadit [hybridní IT](http://social.technet.microsoft.com/wiki/contents/articles/18120.hybrid-cloud-infrastructure-design-considerations.aspx) řešení, která mají komponenty místní a ve veřejném cloudu Azure. Tyto scénáře vyžadují zabezpečený vzdálený přístup.
+Nastavení, konfiguraci a správu vašich prostředků Azure je nutné provést vzdáleně. Kromě toho, kterou chcete nasadit [hybridní IT](https://social.technet.microsoft.com/wiki/contents/articles/18120.hybrid-cloud-infrastructure-design-considerations.aspx) řešení, která mají komponenty místní a ve veřejném cloudu Azure. Tyto scénáře vyžadují zabezpečený vzdálený přístup.
 
 Sítě Azure podporuje následující scénáře zabezpečený vzdálený přístup:
 
@@ -313,7 +313,7 @@ Další informace:
 
 ## <a name="azure-ddos-protection"></a>Azure DDoS Protection
 
-Distribuované útoky na dostupnost služeb (DDoS) jsou některé z největších obavy týkající se dostupnosti a zabezpečení zákazníci, které se pohybují své aplikace do cloudu. S útoky DDoS pokusí vyčerpání aplikační prostředky, čímž aplikaci není k dispozici pro oprávněné uživatele. Útoky DDoS můžete cílit na libovolný koncový bod, který je veřejně dostupný prostřednictvím Internetu.
+Distribuované útoky na dostupnost služeb (DDoS) patří k největším hrozbám pro dostupnost a zabezpečení, se kterými se musejí zákazníci přesouvající aplikace do cloudu vyrovnávat. Útoky DDoS se pokoušejí vyčerpat prostředky aplikace, aby byla aplikace nedostupná oprávněným uživatelům. Útoky DDoS můžou cílit na jakýkoli koncový bod, který je veřejně dostupný přes internet.
 Microsoft poskytuje ochranu před útoky DDoS říká **základní** jako součást platformy Azure. Toto je zdarma a zahrnuje vždy na monitorování a v reálném čase ke zmírnění běžných útoků úrovně sítě. Kromě ochrany před útoky DDoS protection je součástí **základní** můžete povolit **standardní** možnost. DDoS Protection standardní funkce patří:
 
 * **Integrace nativní platformy:** nativně integrované do Azure. Zahrnuje konfiguraci prostřednictvím webu Azure portal. Standardní před útoky DDoS Protection rozumí vašim prostředkům a konfiguraci prostředků.

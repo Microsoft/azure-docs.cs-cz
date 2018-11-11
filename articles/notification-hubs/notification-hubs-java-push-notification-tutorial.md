@@ -14,19 +14,19 @@ ms.devlang: java
 ms.topic: article
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: fe20cf9c9137dc1ca41d3b8e2445bac079fb33fc
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: a7ced71f2d0a8c5d956bbdbcd8fcae485aee3fc6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42060079"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51241564"
 ---
 # <a name="how-to-use-notification-hubs-from-java"></a>Jak používat Notification Hubs z Javy
 [!INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]
 
-Toto téma popisuje klíčové funkce nové plně podporované oficiální Azure Notification Hub Java SDK. Tento projekt je projekt open source a je možné zobrazit celý kód SDK na sady [Java SDK]. 
+Toto téma popisuje klíčové funkce nové plně podporované oficiální Azure Notification Hub Java SDK. Tento projekt je projekt open source a je možné zobrazit celý kód SDK na [Java SDK]. 
 
-Obecně platí, dostanete všechny funkce Notification Hubs z Javy/PHP nebo Python nebo Ruby back endem pomocí rozhraní REST centra oznámení, jak je popsáno v tématu MSDN [rozhraní REST API Notification Hubs](http://msdn.microsoft.com/library/dn223264.aspx). Tato sada Java SDK poskytuje obálku dynamického zajišťování prostřednictvím těchto rozhraní REST v jazyce Java. 
+Obecně platí, dostanete všechny funkce Notification Hubs z Javy/PHP nebo Python nebo Ruby back endem pomocí rozhraní REST centra oznámení, jak je popsáno v tématu MSDN [rozhraní REST API Notification Hubs](https://msdn.microsoft.com/library/dn223264.aspx). Tato sada Java SDK poskytuje obálku dynamického zajišťování prostřednictvím těchto rozhraní REST v jazyce Java. 
 
 Sada SDK aktuálně podporuje:
 
@@ -279,7 +279,7 @@ Spouštění kódu Java by měl nyní vytvořit oznámení uvedených na cílov�
 ## <a name="next-steps"></a>Další kroky
 Toto téma vám ukázal vytvoření jednoduchého klienta REST Javy pro Notification Hubs. Odsud můžete:
 
-* Stáhněte si kompletní sady [Java SDK], který obsahuje celý kód SDK. 
+* Stáhněte si kompletní [Java SDK], který obsahuje celý kód SDK. 
 * Pohrajte si s ukázky:
   * [Začínáme s Notification Hubs]
   * [Odesílání mimořádných zpráv]

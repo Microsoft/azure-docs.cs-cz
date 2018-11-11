@@ -14,17 +14,17 @@ ms.devlang: php
 ms.topic: article
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: b812d60363ffebf1f4374b6fd44dff5e67497e08
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: cf7dd8b111683a3b5b2f0a9f371c08ffb788fe58
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42056801"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51241068"
 ---
 # <a name="how-to-use-notification-hubs-from-php"></a>Jak používat Notification Hubs z PHP
 [!INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]
 
-Dostanete všechny funkce Notification Hubs z Javy/PHP a Ruby back endem pomocí rozhraní REST centra oznámení, jak je popsáno v tématu MSDN [rozhraní REST API Notification Hubs](http://msdn.microsoft.com/library/dn223264.aspx).
+Dostanete všechny funkce Notification Hubs z Javy/PHP a Ruby back endem pomocí rozhraní REST centra oznámení, jak je popsáno v tématu MSDN [rozhraní REST API Notification Hubs](https://msdn.microsoft.com/library/dn223264.aspx).
 
 V tomto tématu vám ukážeme, jak:
 
@@ -32,9 +32,9 @@ V tomto tématu vám ukážeme, jak:
 * Postupujte podle [kurz Začínáme](notification-hubs-ios-apple-push-notification-apns-get-started.md) pro mobilní platformy, implementace část back-end v jazyce PHP.
 
 ## <a name="client-interface"></a>Rozhraní klienta
-Hlavní klientského rozhraní můžete zadat stejné metody, které jsou k dispozici v [sadu SDK serveru .NET Notification Hubs](http://msdn.microsoft.com/library/jj933431.aspx), umožňuje přímo přeložit těchto kurzů a ukázek aktuálně k dispozici na tomto webu a přispěla Komunita na Internetu.
+Hlavní klientského rozhraní můžete zadat stejné metody, které jsou k dispozici v [sadu SDK serveru .NET Notification Hubs](https://msdn.microsoft.com/library/jj933431.aspx), umožňuje přímo přeložit těchto kurzů a ukázek aktuálně k dispozici na tomto webu a přispěla Komunita na Internetu.
 
-K dispozici v kódu lze najít [ukázkové PHP REST obálky].
+K dispozici v kódu lze najít [Ukázka obálky PHP REST].
 
 Chcete-li například vytvořit klienta:
 
@@ -47,9 +47,9 @@ K odeslání zařízení s Iosem nativní oznámení:
 
 ## <a name="implementation"></a>Implementace
 Pokud jste dosud provedli, postupujte [kurz Začínáme] až na poslední část, ve kterém bude nutné implementovat back endu.
-Navíc pokud chcete, můžete použít kód z [ukázkové PHP REST obálky] a přejít přímo na [absolvování tohoto kurzu](#complete-tutorial) části.
+Navíc pokud chcete, můžete použít kód z [Ukázka obálky PHP REST] a přejít přímo na [absolvování tohoto kurzu](#complete-tutorial) části.
 
-Všechny podrobnosti, které chcete implementovat úplné obálku REST můžete najít na [MSDN](http://msdn.microsoft.com/library/dn530746.aspx). V této části popisujeme PHP provádění hlavní kroky potřebné pro přístup k koncové body Notification Hubs REST:
+Všechny podrobnosti, které chcete implementovat úplné obálku REST můžete najít na [MSDN](https://msdn.microsoft.com/library/dn530746.aspx). V této části popisujeme PHP provádění hlavní kroky potřebné pro přístup k koncové body Notification Hubs REST:
 
 1. Analýza připojovacího řetězce
 2. Vygenerování tokenu autorizace
@@ -92,7 +92,7 @@ Tady je hlavní třída implementace klienta, jejíž konstruktor, který analyz
 
 
 ### <a name="create-security-token"></a>Vytvořit token zabezpečení
-Podrobnosti o vytvoření tokenu zabezpečení jsou k dispozici [tady](http://msdn.microsoft.com/library/dn495627.aspx).
+Podrobnosti o vytvoření tokenu zabezpečení jsou k dispozici [tady](https://msdn.microsoft.com/library/dn495627.aspx).
 Následující metoda má být přidán do **NotificationHub** třídy za účelem vytvoření tokenu podle identifikátoru URI aktuální žádosti a extrahovat z připojovacího řetězce přihlašovacích údajů.
 
     private function generateSasToken($uri) {
@@ -135,7 +135,7 @@ Nejprve definujte dejte nám Třída reprezentující oznámení.
 
 Tato třída slouží jako kontejner pro obsah nativních oznámení, nebo sadu vlastností v případě šablony oznámení a sadu hlaviček, který obsahuje formát (nativní platformy nebo šablony) a vlastnosti specifické pro platformu (např. vlastnost vypršení platnosti Apple a služby nabízených oznámení Windows záhlaví).
 
-Odkazovat [dokumentace k rozhraní REST API Notification Hubs](http://msdn.microsoft.com/library/dn495827.aspx) , který se naformátuje na platformách konkrétní oznámení pro všechny možnosti, které jsou k dispozici.
+Odkazovat [dokumentace k rozhraní REST API Notification Hubs](https://msdn.microsoft.com/library/dn495827.aspx) , který se naformátuje na platformách konkrétní oznámení pro všechny možnosti, které jsou k dispozici.
 
 Ozbrojené s touto třídou, jsme se teď dá zapisovat odeslat oznámení metody uvnitř **NotificationHub** třídy.
 
@@ -246,12 +246,12 @@ Spouštění kódu PHP mohou být vráceny nyní oznámení uvedených na cílov
 ## <a name="next-steps"></a>Další kroky
 V tomto tématu jsme vám ukázal, jak vytvořit jednoduchý klienta REST Javy pro Notification Hubs. Odsud můžete:
 
-* Stáhněte si kompletní [ukázkové PHP REST obálky], která obsahuje všechny výše uvedený kód.
+* Stáhněte si kompletní [Ukázka obálky PHP REST], která obsahuje všechny výše uvedený kód.
 * Pokračujte ve čtení o Notification Hubs označení funkce v [novinkách kurzu]
 * Další informace o odesílání nabízených oznámení pro jednotlivé uživatele v [oznamování uživatelům pomocí kurzu]
 
 Další informace najdete v tématu taky [středisko pro vývojáře PHP](https://azure.microsoft.com/develop/php/).
 
-[ukázkové PHP REST obálky]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/notificationhubs-rest-php
+[Ukázka obálky PHP REST]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/notificationhubs-rest-php
 [Kurz Začínáme]: http://azure.microsoft.com/documentation/articles/notification-hubs-ios-get-started/
 

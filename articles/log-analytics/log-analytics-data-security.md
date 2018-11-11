@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 09/19/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: d042033981cba4e9d56b48543a7c6016a38efb53
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 2b04853e8d01ae559ce4ad982daba2928a6cd130
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50958533"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51244470"
 ---
 # <a name="log-analytics-data-security"></a>Zabezpečení dat analýzy protokolů
 Účelem tohoto dokumentu je poskytnout konkrétní informace ke službě Log Analytics, což je funkce služby Azure Monitor k doplnění informací na [Centrum zabezpečení Azure](../security/security-microsoft-trust-center.md).  
@@ -36,7 +36,7 @@ Služba Log Analytics spravuje vaše data založené na cloudu bezpečně pomoc�
 * Dodržování předpisů
 * certifikace standardů zabezpečení
 
-Kontaktujte nás s dotazy, návrhy nebo potíže některý z následujících informací, včetně naše zásady zabezpečení na straně [možnosti podpory Azure](http://azure.microsoft.com/support/options/).
+Kontaktujte nás s dotazy, návrhy nebo potíže některý z následujících informací, včetně naše zásady zabezpečení na straně [možnosti podpory Azure](https://azure.microsoft.com/support/options/).
 
 ## <a name="sending-data-securely-using-tls-12"></a>Odesílání dat pomocí protokolu TLS 1.2 
 
@@ -86,7 +86,7 @@ V následující tabulce jsou uvedeny příklady typů dat:
 | Stav |StateChangeEventId, StateId, NewHealthState, OldHealthState, Context, TimeGenerated, TimeAdded, StateId2, BaseManagedEntityId, MonitorId, HealthState, LastModified, LastGreenAlertGenerated, DatabaseTimeModified |
 
 ## <a name="physical-security"></a>Fyzické zabezpečení
-Služba Log Analytics je spravovaná zaměstnanců společnosti Microsoft a všechny aktivity jsou zaznamenávány a dají auditovat. Log Analytics je provozována jako služba Azure a splňuje všechny požadavky na zabezpečení a dodržování předpisů Azure. Můžete zobrazit podrobnosti o fyzické zabezpečení prostředků Azure na stránce 18 [Přehled zabezpečení služby Microsoft Azure](http://download.microsoft.com/download/6/0/2/6028B1AE-4AEE-46CE-9187-641DA97FC1EE/Windows%20Azure%20Security%20Overview%20v1.01.pdf). Fyzické přístupová práva k zabezpečení oblasti se mění v rámci jednoho pracovního dne pro každého, kdo není k dispozici odpovědnost za službu Log Analytics, včetně převodu a ukončení. Informace o globální fyzické infrastruktury, které používáme v [Datacenters Microsoftu](https://azure.microsoft.com/global-infrastructure/).
+Služba Log Analytics je spravovaná zaměstnanců společnosti Microsoft a všechny aktivity jsou zaznamenávány a dají auditovat. Log Analytics je provozována jako služba Azure a splňuje všechny požadavky na zabezpečení a dodržování předpisů Azure. Můžete zobrazit podrobnosti o fyzické zabezpečení prostředků Azure na stránce 18 [Přehled zabezpečení služby Microsoft Azure](https://download.microsoft.com/download/6/0/2/6028B1AE-4AEE-46CE-9187-641DA97FC1EE/Windows%20Azure%20Security%20Overview%20v1.01.pdf). Fyzické přístupová práva k zabezpečení oblasti se mění v rámci jednoho pracovního dne pro každého, kdo není k dispozici odpovědnost za službu Log Analytics, včetně převodu a ukončení. Informace o globální fyzické infrastruktury, které používáme v [Datacenters Microsoftu](https://azure.microsoft.com/global-infrastructure/).
 
 ## <a name="incident-management"></a>Správa incidentů
 Log Analytics má správy incidentů proces, který dodržovat všechny služby společnosti Microsoft. Souhrnně řečeno, jsme:

@@ -14,12 +14,12 @@ ms.topic: get-started-article
 ms.date: 09/28/2018
 ms.author: mabrigg
 ms.reviewer: xiaofmao
-ms.openlocfilehash: 35c15613192ac12a7d4c64cbe28f62200724d311
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: af7500d6bf12ef34e6919aa255185a87525310b3
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452271"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240711"
 ---
 # <a name="manage-storage-accounts-in-azure-stack"></a>Správa účtů úložiště ve službě Azure Stack
 Zjistěte, jak spravovat účty úložiště ve službě Azure Stack najít, obnovit a získat kapacity úložiště na základě obchodních potřeb.
@@ -80,7 +80,7 @@ Ve službě Azure Stack je jednoduchý způsob, jak to udělat:
 3. Zkontrolujte, *stavu* účtu. By mělo být uvedeno **odstraněné**.
 4. Vyberte účet, který se otevře podokno Podrobnosti účtu.
 5. Na tomto podokně vyhledejte **obnovit** tlačítko a vyberte ji.
-6. Výběrem **Ano** potvrďte.
+6. Odstranění potvrďte výběrem **Ano**.
    
    ![](media/azure-stack-manage-storage-accounts/image8.png)
 7. Obnovení je teď v *proces... Počkejte* pro indikaci, že byla úspěšná.
@@ -136,8 +136,8 @@ Můžete také pomocí prostředí PowerShell explicitně přepsat doby uchován
 **Získat kapacitu pomocí prostředí PowerShell:**   
 
 1. Potvrďte, že máte nainstalovat a nakonfigurovat Azure PowerShell. V opačném případě postupujte podle následujících pokynů: 
-   * Nainstalujte nejnovější verzi Azure Powershellu a přidružte ji k vašemu předplatnému Azure, přečtěte si téma [instalace a konfigurace Azure Powershellu](http://azure.microsoft.com/documentation/articles/powershell-install-configure/).
-   Další informace o rutiny Azure Resource Manageru najdete v tématu [pomocí Azure Powershellu s Azure Resource Manageru](http://go.microsoft.com/fwlink/?LinkId=394767)
+   * Nainstalujte nejnovější verzi Azure Powershellu a přidružte ji k vašemu předplatnému Azure, přečtěte si téma [instalace a konfigurace Azure Powershellu](https://azure.microsoft.com/documentation/articles/powershell-install-configure/).
+   Další informace o rutiny Azure Resource Manageru najdete v tématu [pomocí Azure Powershellu s Azure Resource Manageru](https://go.microsoft.com/fwlink/?LinkId=394767)
 2. Spuštěním následující rutiny:
 
 > [!NOTE]  

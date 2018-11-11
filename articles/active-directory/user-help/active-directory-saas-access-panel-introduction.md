@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: lizross
 ms.reviewer: asteen
-ms.openlocfilehash: 1caf69ee822ec11e8797ca23c9c163d36344edc7
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: d0d07e235c33877ede7f47a6095482b2acec18d0
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44719983"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51239831"
 ---
 # <a name="what-is-the-myapps-portal"></a>Co je na portálu MyApps?
 
@@ -70,7 +70,7 @@ Rozšíření portálu MyApps je aktuálně k dispozici pro:
 - **Firefox 26.0 nebo novější**: ve Windows XP SP2 nebo novější a Mac OS X 10.6 nebo novější.
 - **Internet Explorer 11**: Windows 7 nebo novější (omezená podpora).
 
-## <a name="my-apps-secure-sign-in-extension"></a>Moje aplikace zabezpečené přihlašování rozšíření
+## <a name="my-apps-secure-sign-in-extension"></a>Rozšíření Zabezpečené přihlašování pro Moje aplikace
 Pro přihlášení k založené na heslech jednotného přihlašování, je nutné použít příponu. Po instalaci rozšíření můžete přihlásit k jeho povolení dalších funkcí tak, že vyberete **Přihlaste se k Začínáme**. 
 
 - Přihlaste se k aplikaci přímo s použitím aplikace **přihlašovací adresa URL**. Pokud používáte adresu URL aplikace, rozšíření akci rozpozná a dá vám možnost přihlašování z rozšíření.
@@ -137,7 +137,7 @@ Pokud jste správcem Azure a jste přihlášení k webu Azure portal pomocí ú�
 Testování v *různých* uživatelského účtu, postupujte takto:
 
 1. V pravém horním rohu webu Azure portal nebo portálu MyApps, vyberte **Odhlásit**. 
-2. Přejděte [portálu MyApps](http://myapps.microsoft.com).
+2. Přejděte [portálu MyApps](https://myapps.microsoft.com).
 3. Na stránce přihlášení zadejte uživatelské jméno a heslo pro účet ve vašem adresáři, který chcete testovat.
 
 

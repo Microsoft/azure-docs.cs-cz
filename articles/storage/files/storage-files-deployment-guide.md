@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/22/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: d2e09c837597dfd15e6258cbd0100762b098eedf
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: b9a98cea8ee19846afc30b322c3fdacb21f2bf44
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39523481"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51242445"
 ---
 # <a name="how-to-deploy-azure-files"></a>Nasazení služby Soubory Azure
 [Služba soubory Azure](storage-files-introduction.md) nabízí plně spravované sdílené složky v cloudu, které jsou přístupné přes standardní protokol SMB. Tento článek vám ukáže postup prakticky nasazení služby soubory Azure v rámci vaší organizace.
@@ -29,8 +29,8 @@ Tento článek předpokládá, že jste již dokončili následující kroky:
 ## <a name="transfer-data-into-azure-files"></a>Přenos dat do soubory Azure
 Můžete chtít migrovat existující sdílené složky, například tyto uložené místně, do nové sdílené složky Azure. V této části ukazují, jak přesunout data do sdílené složky Azure přes několik oblíbených uvedených z metod [Příručka pro plánování](storage-files-planning.md#data-transfer-method)
 
-### <a name="azure-file-sync"></a>Azure File Sync
-Azure File Sync umožňuje centralizovat sdílené složky organizace ve službě Soubory Azure bez ztráty flexibility, výkonu a kompatibility místního souborového serveru. Dělá to pomocí transformace serverů Windows na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít jakýkoli protokol dostupný ve Windows Serveru (včetně SMB, NFS a FTPS) a můžete mít libovolný počet mezipamětí po celém světě.
+### <a name="azure-file-sync"></a>Synchronizace souborů Azure
+Synchronizace souborů Azure umožňuje centralizovat sdílené složky organizace ve službě Soubory Azure bez ztráty flexibility, výkonu a kompatibility místního souborového serveru. Dělá to pomocí transformace serverů Windows na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít jakýkoli protokol dostupný ve Windows Serveru (včetně SMB, NFS a FTPS) a můžete mít libovolný počet mezipamětí po celém světě.
 
 Azure File Sync slouží k migraci dat do sdílené složky Azure, i když není žádoucí tento synchronizační mechanismus pro dlouhodobé používání. Další informace o tom, jak používat Azure File Sync k přenosu dat do sdílené složky Azure můžete najít v [plánování nasazení služby Azure File Sync](storage-sync-files-planning.md) a [postup nasazení služby Azure File Sync](storage-sync-files-deployment-guide.md).
 
@@ -108,7 +108,7 @@ Příkaz Robocopy je dobře známé kopírování nástroj, který se dodává s
 ### <a name="azcopy"></a>AzCopy
 AzCopy je nástroj příkazového řádku určený pro kopírování dat do a z Azure Files, jakož i úložiště objektů Blob v Azure pomocí jednoduchých příkazů s optimálním výkonem. Pomocí AzCopy velmi snadno:
 
-1. Stáhněte si [nejnovější verzi AzCopy ve Windows](http://aka.ms/downloadazcopy) nebo [Linux](../common/storage-use-azcopy-linux.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#download-and-install-azcopy).
+1. Stáhněte si [nejnovější verzi AzCopy ve Windows](https://aka.ms/downloadazcopy) nebo [Linux](../common/storage-use-azcopy-linux.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#download-and-install-azcopy).
 2. Použití `azcopy` příkazového řádku pro přesun dat do sdílené složky Azure. Syntaxe na Windows je následující: 
 
     ```

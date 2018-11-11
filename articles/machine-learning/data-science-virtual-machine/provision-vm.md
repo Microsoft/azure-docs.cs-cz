@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2018
 ms.author: gokuma
-ms.openlocfilehash: 37a30055e567b27f4e215dac162642d4447a8e49
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 1b293ee8f0f83d727cd647cdcdcc424b4db7e5d3
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44298197"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240881"
 ---
 # <a name="provision-the-windows-data-science-virtual-machine-on-azure"></a>Zřídit Windows virtuální počítač pro datové vědy v Azure
 Microsoft Data virtuálního počítače VĚDY je image virtuálního počítače (VM) Windows Azure. Má předinstalované a nakonfigurovanou řadu nástrojů, které se používají pro analýzu dat a strojové učení. Tyto nástroje jsou zahrnuty:
@@ -186,7 +186,7 @@ Několik nástrojů pro Azure jsou nainstalované na virtuálním počítači:
 * **Prostředí Azure PowerShell** je nástroj, který se používá ke správě vašich prostředků Azure v skriptovacím jazyku prostředí PowerShell. Také se nainstaluje na váš virtuální počítač. 
 
 ### <a name="power-bi"></a>Power BI
-**Power BI Desktopu** je nainstalovaná, které vám pomůžou vytvářet řídicí panely a vizualizace. Pomocí tohoto nástroje k získání dat z různých zdrojů, vytvářet řídicí panely a sestavy a publikovat je do cloudu. Další informace najdete v tématu [Power BI](http://powerbi.microsoft.com) lokality. Power BI desktopu můžete najít na **Start** nabídky. 
+**Power BI Desktopu** je nainstalovaná, které vám pomůžou vytvářet řídicí panely a vizualizace. Pomocí tohoto nástroje k získání dat z různých zdrojů, vytvářet řídicí panely a sestavy a publikovat je do cloudu. Další informace najdete v tématu [Power BI](https://powerbi.microsoft.com) lokality. Power BI desktopu můžete najít na **Start** nabídky. 
 
 > [!NOTE]
 > Budete potřebovat účet Microsoft Office 365 pro přístup k Power BI. 
@@ -228,7 +228,7 @@ Každý uživatel v aplikaci workbench musí provést jednorázovou akci. Dvakr�
 * Prozkoumejte nástroje pro datové vědy virtuálního počítače tak, že vyberete **Start** nabídky.
 * Další informace o službách Azure Machine Learning a Workbench návštěvou produktu [stránku rychlý start a kurzy](../service/index.yml). 
 * Přejděte do **C:\Program Files\Microsoft\ML Server\R_SERVER\library\RevoScaleR\demoScripts** pro ukázky, které používají RevoScaleR knihovny v jazyce R, který podporuje analýzy dat v podnikovém měřítku.  
-* Přečtěte si článek [deset věcí, které můžete provést na virtuální počítač pro datovou vědu](http://aka.ms/dsvmtenthings).
+* Přečtěte si článek [deset věcí, které můžete provést na virtuální počítač pro datovou vědu](https://aka.ms/dsvmtenthings).
 * Další informace o vytváření analytická řešení začátku do konce systematicky pomocí [vědecké zpracování týmových dat](../team-data-science-process/index.yml).
 * Přejděte [galerii Azure AI](http://gallery.cortanaintelligence.com) služeb machine learning a datové analýzy ukázek, které využívají Azure Machine Learning a související data v Azure. Připravili jsme vám také ikona pro tuto galerii na **Start** nabídky a ploše virtuálního počítače.
 

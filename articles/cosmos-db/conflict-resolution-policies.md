@@ -7,18 +7,18 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/26/2018
 ms.author: mjbrown
-ms.openlocfilehash: c682b61a39224f2c80db8fe5fa153ea5e5d82922
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 1b2a122cc8a04d4f0044ecb0fe0341357bc29c0f
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50958549"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51514821"
 ---
 # <a name="conflict-types-and-resolution-policies"></a>Zásady rozlišení a typy konfliktů
 
 Konflikty a řešení konfliktů, že zásady se dají použít, pokud je nakonfigurovaný účet Cosmos s několika zápisu oblastech.
 
-Účty Cosmos DB s více oblastí zápisu nakonfigurovanou může dojít ke konfliktům aktualizace více zapisujících současně aktualizace jedné položce v několika oblastech. Aktualizace je v konfliktu se zařazují do následující tři typy:
+Účty Cosmos nakonfigurovanou s využitím více oblastí zápisu může dojít ke konfliktům aktualizace více zapisujících současně aktualizace jedné položce v několika oblastech. Aktualizace je v konfliktu se zařazují do následující tři typy:
 
 1. **Vložit konflikty:** tyto konflikty mohou nastat při aplikaci současně vloží dva nebo více položek se stejný jedinečný index (například vlastnost ID) ze dvou nebo více oblastech. V takovém případě všechny operace zápisu může být zpočátku úspěšné, v jejich příslušných místních oblastech, ale podle zásada řešení konfliktů, kterou zvolíte, je jenom jedna položka s ID původního nakonec potvrdit.
 

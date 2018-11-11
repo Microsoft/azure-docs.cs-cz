@@ -9,22 +9,24 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/26/2018
+ms.date: 11/08/2018
 ms.author: tomfitz
-ms.openlocfilehash: 4d1b27c9b1694f987ea7461c16899f3e5ecb84d2
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: c4347254df59c62085b2bfb195496bf479cf7b35
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50140989"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51344572"
 ---
 # <a name="azure-resource-manager-deployment-modes"></a>Režimy nasazení Azure Resource Manageru
+
 Při nasazování prostředků, určíte, že je nasazení přírůstkové aktualizace nebo kompletní aktualizace.  Hlavní rozdíl mezi těchto dvou režimech je způsob, jakým zpracovává existujících prostředků ve skupině prostředků, které nejsou v šabloně Resource Manageru. Výchozí režim je přírůstkový.
 
 ## <a name="incremental-and-complete-deployments"></a>Přírůstkové a úplné nasazení
+
 Při nasazování prostředků:
 
-* V dokončení režimu Resource Manageru **odstraní** prostředky, které existují ve skupině prostředků, ale nejsou v šabloně zadané. 
+* V dokončení režimu Resource Manageru **odstraní** prostředky, které existují ve skupině prostředků, ale nejsou v šabloně zadané.
 * V přírůstkovém režimu Resource Manageru **ponechá beze změny** prostředky, které existují ve skupině prostředků, ale nejsou v šabloně zadané.
 
 Pro oba režimy se pokusí vytvořit všechny prostředky zadané v šabloně Resource Manageru. Pokud prostředek ve skupině prostředků už existuje a jsou beze změny jeho nastavení, výsledkem operace je beze změny. Při změně hodnoty vlastnosti pro určitý prostředek, prostředek se aktualizuje s těmito novými hodnotami. Pokud se pokusíte aktualizovat umístění nebo zadejte existující prostředek, nasazení se nezdaří s chybou. Místo toho nasadit nový prostředek s umístěním nebo zadejte, že potřebujete.
@@ -64,12 +66,12 @@ Při nasazení v **kompletní** režimu C prostředků se odstraní. Skupina pro
 
 Chcete-li nastavit režim nasazení při nasazení pomocí Powershellu, použijte `Mode` parametru.
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceGroupDeployment `
   -Mode Complete `
   -Name ExampleDeployment `
   -ResourceGroupName ExampleResourceGroup `
-  -TemplateFile c:\MyTemplates\storage.json 
+  -TemplateFile c:\MyTemplates\storage.json
 ```
 
 Chcete-li nastavit režim nasazení při nasazení pomocí Azure CLI, použijte `mode` parametru.
@@ -100,7 +102,7 @@ Při použití [propojené nebo vnořené šablony](resource-group-linked-templa
 ```
 
 ## <a name="next-steps"></a>Další postup
+
 * Další informace o vytváření šablon Resource Manageru najdete v tématu [šablon pro vytváření Azure Resource Manageru](resource-group-authoring-templates.md).
 * Další informace o nasazení prostředků najdete v tématu [nasazení aplikace pomocí šablony Azure Resource Manageru](resource-group-template-deploy.md).
 * Operace pro poskytovatele prostředků najdete v tématu [rozhraní Azure REST API](/rest/api/).
-

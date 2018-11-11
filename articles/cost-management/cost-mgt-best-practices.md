@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/10/2018
+ms.date: 01/09/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: f52a849fee4005628fb6a8ad567d89f5046d4765
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 43a682568708ab0286328cf3e483ddc3d5cf9dd8
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46968064"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51515348"
 ---
 # <a name="how-to-optimize-your-cloud-investment-with-azure-cost-management"></a>Jak optimalizovat vaše cloudové investice ve službě Azure Cost Management
 
@@ -186,10 +186,6 @@ Další informace najdete v tématu [co jsou Azure rezervace?](../billing/billin
 Pokud již máte licence Windows serveru nebo SQL Server v místních nasazení, můžete program zvýhodněné hybridní využití Azure pro uložení v Azure. S využitím Windows serveru každá licence pokrývá náklady na operační systém (až dva virtuální počítače) a platíte jenom základní výpočetní náklady. Můžete použít stávající licence SQL serveru a ušetřete až 55 procent na založený na virtuálních jádrech možnosti služby SQL Database. mezi možnosti patří SQL Server v Azure Virtual Machines a služby SQL Server Integration Services.
 
 Další informace najdete v tématu [Kalkulačka úspor pro program zvýhodněné hybridní využití Azure](https://azure.microsoft.com/pricing/hybrid-benefit/).
-
-#### <a name="monetary-commitment"></a>Peněžní závazek
-
-Zákazníci, kteří uzavřou smlouvu Enterprise Agreement, můžete vytvořit počáteční peněžní závazek společnosti Microsoft. Společně poskytují jednoduchý způsob, jak přidělit rozpočty ke cloudovým prostředkům, peněžní závazky umožňují mít nižší sazby v Azure. Snížení míry může vést k výrazné úspory nákladů pro vaši organizaci.
 
 ### <a name="other-resources"></a>Další prostředky
 

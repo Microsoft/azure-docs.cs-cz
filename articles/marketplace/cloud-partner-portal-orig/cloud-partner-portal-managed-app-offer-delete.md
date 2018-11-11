@@ -14,18 +14,18 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 02b4ad8aea3904ba0e99a5ea4d4d035f970e171a
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 5ad106d45c8bae2d41e0bde74b27f80f4d8ab79b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48809520"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51241272"
 ---
 <a name="delete-an-offersku-from-azure-marketplace"></a>Odstranit nabídka/SKU z Azure Marketplace 
 ==========================================
 
 Z různých důvodů se můžete rozhodnout odebrat svou nabídku z webu Marketplace. Noví zákazníci už mohou koupit a nasadit vaši nabídku, ale stávající zákazníky to neovlivní.
-Ukončení nabídky je proces ukončení služby a/nebo licenční smlouvy mezi vámi a vašimi stávajícími zákazníky. Pokyny a zásady týkající se odebrání a ukončení nabídky se řídí [smlouvy vydavatele Microsoft Marketplace](http://go.microsoft.com/fwlink/?LinkID=699560) (viz oddíl
+Ukončení nabídky je proces ukončení služby a/nebo licenční smlouvy mezi vámi a vašimi stávajícími zákazníky. Pokyny a zásady týkající se odebrání a ukončení nabídky se řídí [smlouvy vydavatele Microsoft Marketplace](https://go.microsoft.com/fwlink/?LinkID=699560) (viz oddíl
 7) a [zásadách pro účast](https://azure.microsoft.com/support/legal/marketplace/participation-policies/) (viz část 6.2). Odstraňte jiné podporované scénáře a jsou popsané kroky, které můžete provést.
 
 <a name="delete-a-live-sku-from-azure-marketplace"></a>Odstranit živé skladovou Položku z Azure Marketplace 

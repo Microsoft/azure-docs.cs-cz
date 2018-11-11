@@ -14,12 +14,12 @@ ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
 ms.date: 05/01/2017
 ms.author: wesmc
-ms.openlocfilehash: 047d23184ccf640dd6510faca9f508eef0dc50cb
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: e007b23b6e4a55e2a939994e8f95d01fc24cc529
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44050809"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51241565"
 ---
 # <a name="aspnet-session-state-provider-for-azure-redis-cache"></a>Zprostředkovatel stavu relací ASP.NET pro Azure Redis Cache
 Azure Redis Cache poskytuje zprostředkovatel stavu relací, které můžete použít k uložení vaší relace stavu in-memory s Redis Cache místo databáze systému SQL Server. Použití ukládání do mezipaměti zprostředkovatel stavu relací, nejprve nakonfigurovat mezipaměť a pak nakonfigurujte aplikaci technologie ASP.NET pro mezipaměť pomocí balíčku Redis Cache relace stavu NuGet.
@@ -94,11 +94,11 @@ Nakonfigurovat atributy s hodnotami z okna vaší mezipaměti na webu Microsoft 
 * **retryTimeoutInMilliseconds** – operací, které selžou se zopakují během tohoto intervalu zadává v milisekundách. Po 20 MS dojde k prvním opakováním a pak probíhají každou sekundu do vypršení platnosti retryTimeoutInMilliseconds interval opakování. Okamžitě po uplynutí tohoto intervalu je operaci opakovat poslední jednou. Pokud i nadále nezdaří, je volajícímu, v závislosti na nastavení throwOnError zpět vyvolána výjimka. Výchozí hodnota je 0, což znamená, že žádné opakování.
 * **ID databáze** – Určuje databázi, kterou chcete použít pro mezipaměť výstupní data. Pokud není zadán, je použita výchozí hodnota 0.
 * **applicationName** – klíče jsou uložené v redis jako `{<Application Name>_<Session ID>}_Data`. Toto schéma pojmenování umožňuje více aplikacím sdílet stejný instance Redis. Tento parametr je nepovinný a pokud nezadáte ji použije se výchozí hodnota.
-* **connectionTimeoutInMilliseconds** – toto nastavení umožňuje potlačit connectTimeout nastavení klienta StackExchange.Redis. Pokud není zadán, se používá ve výchozím nastavení connectTimeout 5000. Další informace najdete v tématu [konfigurační model StackExchange.Redis](http://go.microsoft.com/fwlink/?LinkId=398705).
-* **operationTimeoutInMilliseconds** – toto nastavení umožňuje potlačit syncTimeout nastavení klienta StackExchange.Redis. Pokud není zadán, se používá ve výchozím nastavení syncTimeout 1000. Další informace najdete v tématu [konfigurační model StackExchange.Redis](http://go.microsoft.com/fwlink/?LinkId=398705).
+* **connectionTimeoutInMilliseconds** – toto nastavení umožňuje potlačit connectTimeout nastavení klienta StackExchange.Redis. Pokud není zadán, se používá ve výchozím nastavení connectTimeout 5000. Další informace najdete v tématu [konfigurační model StackExchange.Redis](https://go.microsoft.com/fwlink/?LinkId=398705).
+* **operationTimeoutInMilliseconds** – toto nastavení umožňuje potlačit syncTimeout nastavení klienta StackExchange.Redis. Pokud není zadán, se používá ve výchozím nastavení syncTimeout 1000. Další informace najdete v tématu [konfigurační model StackExchange.Redis](https://go.microsoft.com/fwlink/?LinkId=398705).
 * **redisSerializerType** – toto nastavení umožňuje určit vlastní serializace relace obsah odeslaný do Redisu. Zadaný typ musí implementovat `Microsoft.Web.Redis.ISerializer` a musí deklarovat konstruktor public bez parametrů. Ve výchozím nastavení `System.Runtime.Serialization.Formatters.Binary.BinaryFormatter` se používá.
 
-Další informace o těchto vlastnostech najdete v tématu původní blogovém příspěvku o na [oznamujeme zprostředkovatel stavu relací ASP.NET pro Redis](http://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx).
+Další informace o těchto vlastnostech najdete v tématu původní blogovém příspěvku o na [oznamujeme zprostředkovatel stavu relací ASP.NET pro Redis](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx).
 
 Nezapomeňte okomentovat standardní InProc relace stav poskytovatele oddílu v souboru web.config.
 

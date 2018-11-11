@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/19/2018
 ms.author: kgremban
-ms.openlocfilehash: 550c3d7a2294158120ddd42ba56715d1321de04c
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: cccffb2f63fe0c929f88d172070ede1c12bcec5b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49339861"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51239453"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-ios"></a>Odesílání zpráv typu cloud zařízení pomocí služby IoT Hub (iOS)
 
@@ -41,7 +41,7 @@ Na konci tohoto článku spustíte dvě Swift projekty iOS:
 
 Pro absolvování tohoto kurzu potřebujete:
 
-- Aktivní účet Azure. (Pokud účet nemáte, můžete vytvořit [bezplatný účet](http://azure.microsoft.com/pricing/free-trial/) během několika minut.)
+- Aktivní účet Azure. (Pokud účet nemáte, můžete vytvořit [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/) během několika minut.)
 
 - Aktivním centrem IoT v Azure. 
 

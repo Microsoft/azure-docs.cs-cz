@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 6430bf524ac81af242bf7afb4c2c8196309806ab
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: fc70089517bbc1aa90f95f1e0231f2c67f930090
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391671"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51242190"
 ---
 # <a name="use-the-azure-importexport-service-for-offline-copy-of-data-to-azure-data-lake-storage-gen1"></a>Pomocí služby Azure Import/Export pro offline kopírování dat do Azure Data Lake Storage Gen1
 V tomto článku se dozvíte víc o kopírování obrovských sad dat (> 200 GB) do Azure Data Lake Storage Gen1 pomocí offline kopírování metod, jako je třeba [služba Azure Import/Export](../storage/common/storage-import-export-service.md). Soubor použitý jako příklad v tomto článku je konkrétně 339,420,860,416 bajtů nebo přibližně 319 GB na disku. Pojmenujme tuto 319GB.tsv souboru.
@@ -52,7 +52,7 @@ Postupujte podle pokynů v [pomocí služby Azure Import/Export](../storage/comm
 
 1. Pořídit pevný disk, který splňuje požadavky pro službu Azure Import/Export.
 2. Identifikujte účet úložiště Azure, ve kterém data se zkopírují po dodává se do datacentra Azure.
-3. Použití [nástrojem Import/Export Azure](http://go.microsoft.com/fwlink/?LinkID=301900&clcid=0x409), nástroje příkazového řádku. Tady je ukázka fragment kódu, který ukazuje, jak používat nástroj.
+3. Použití [nástrojem Import/Export Azure](https://go.microsoft.com/fwlink/?LinkID=301900&clcid=0x409), nástroje příkazového řádku. Tady je ukázka fragment kódu, který ukazuje, jak používat nástroj.
 
     ````
     WAImportExport PrepImport /sk:<StorageAccountKey> /t: <TargetDriveLetter> /format /encrypt /logdir:e:\myexportimportjob\logdir /j:e:\myexportimportjob\journal1.jrn /id:myexportimportjob /srcdir:F:\demo\ExImContainer /dstdir:importcontainer/vf1/

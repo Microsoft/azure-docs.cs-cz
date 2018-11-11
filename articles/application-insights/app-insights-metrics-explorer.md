@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/08/2017
 ms.author: mbullwin
-ms.openlocfilehash: 99ace7be05f186ac920aa9671946389e95e3a3a6
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: cc9b3bd1d038bd8aa9c01e806e5448824011bc93
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50958113"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240745"
 ---
 # <a name="exploring-metrics-in-application-insights"></a>Zkoumání metrik ve službě Application Insights
 Metriky na [Application Insights] [ start] měřené hodnoty a počty událostí, které se odesílají v telemetrii z vaší aplikace. Pomáhají zjišťovat problémy s výkonem a sledovat trendy ve využití vaší aplikace. Existuje širokou škálu standardních metrik a můžete také vytvořit své vlastní metriky a události.
@@ -180,7 +180,7 @@ Pokud chcete dostat e-mailu z neobvyklé hodnoty jakékoliv metriky, přidáte u
 Pokud chcete data průběžně exportovat, abyste ji může zpracovat externě, zvažte použití [průběžný export](app-insights-export-telemetry.md).
 
 ### <a name="power-bi"></a>Power BI
-Pokud chcete ještě podrobnější zobrazení vašich dat, můžete si [export do Power BI](http://blogs.msdn.com/b/powerbi/archive/2015/11/04/explore-your-application-insights-data-with-power-bi.aspx).
+Pokud chcete ještě podrobnější zobrazení vašich dat, můžete si [export do Power BI](https://blogs.msdn.com/b/powerbi/archive/2015/11/04/explore-your-application-insights-data-with-power-bi.aspx).
 
 ## <a name="analytics"></a>Analýzy
 [Analytics](app-insights-analytics.md) větší variabilitu způsob, jak analyzovat telemetrická data pomocí výkonný dotazovací jazyk. Pokud chcete kombinovat nebo vypočítat výsledky z metrik nebo provádění zblízka se podíváte na poslední výkonu vaší aplikace, použijte ji. 

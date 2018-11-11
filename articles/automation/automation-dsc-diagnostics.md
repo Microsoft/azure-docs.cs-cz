@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: dsc
 author: bobbytreed
 ms.author: robreed
-ms.date: 08/08/2018
+ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 62d201e608864949c86e52d8ac8fbf9ce8538f11
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: aa543ad119716b25b7f3ab00d49efb9fe6fb6c3f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45631459"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51244232"
 ---
 # <a name="forward-azure-automation-state-configuration-reporting-data-to-log-analytics"></a>Předávání Azure Automation stavu konfigurační data pro generování sestav do služby Log Analytics
 
@@ -44,14 +44,14 @@ Pokud chcete začít, import dat z Azure Automation DSC do Log Analytics, prove�
 
   ```powershell
   # Find the ResourceId for the Automation Account
-  Find-AzureRmResource -ResourceType 'Microsoft.Automation/automationAccounts'
+  Get-AzureRmResource -ResourceType 'Microsoft.Automation/automationAccounts'
   ```
 
 1. Získejte _ResourceId_ pracovního prostoru Log Analytics, spuštěním následujícího příkazu Powershellu: (Pokud máte více než jeden pracovní prostor, zvolte _ResourceID_ pracovního prostoru, kterou chcete nakonfigurovat).
 
   ```powershell
   # Find the ResourceId for the Log Analytics workspace
-  Find-AzureRmResource -ResourceType 'Microsoft.OperationalInsights/workspaces'
+  Get-AzureRmResource -ResourceType 'Microsoft.OperationalInsights/workspaces'
   ```
 
 1. Spuštěním následujícího příkazu Powershellu nahraďte `<AutomationResourceId>` a `<WorkspaceResourceId>` s _ResourceId_ hodnoty ze všech předchozích kroků:

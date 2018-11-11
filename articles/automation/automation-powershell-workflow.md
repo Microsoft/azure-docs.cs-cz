@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 05/04/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 4b48400920176055e7eb166c7502c06e67b29185
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 00f6f84a2065a67e999149e4b0f9e28f18e5e297
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37436357"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51239419"
 ---
 # <a name="learning-key-windows-powershell-workflow-concepts-for-automation-runbooks"></a>Učení klíčové koncepty pracovního postupu Windows Powershellu pro automatizaci sady runbook
 
@@ -22,7 +22,7 @@ Runbooky ve službě Azure Automation se implementují jako pracovní postupy pr
 
 Pracovní postup je pořadí naprogramovaných, propojených kroků, které provádějí dlouhotrvající úlohy nebo vyžadují koordinaci více kroků v rámci více zařízení nebo spravovaných uzlů. Mezi výhody pracovního postupu oproti běžnému skriptu patří schopnost současně provádět akci vůči několika zařízením a schopnost automaticky zotavit po selhání. V pracovním postupu Windows Powershellu je skript prostředí Windows PowerShell, který používá model Windows Workflow Foundation. I když pracovní postup je napsané pomocí syntaxe prostředí Windows PowerShell a spuštění pomocí prostředí Windows PowerShell, je zpracován programovacím modelem Windows Workflow Foundation.
 
-Kompletní informace o tématech v tomto článku najdete v tématu [Začínáme s pracovním postupem prostředí Windows PowerShell](http://technet.microsoft.com/library/jj134242.aspx).
+Kompletní informace o tématech v tomto článku najdete v tématu [Začínáme s pracovním postupem prostředí Windows PowerShell](https://technet.microsoft.com/library/jj134242.aspx).
 
 ## <a name="basic-structure-of-a-workflow"></a>Základní struktura pracovního postupu
 
@@ -45,9 +45,9 @@ Kód pracovního postupu Powershellu vypadá téměř stejný jako kód skriptu 
 
 ### <a name="activities"></a>Aktivity
 
-Aktivita je specifická úloha v pracovním postupu. Stejně jako se skript skládá z jednoho nebo více příkazů, pracovní postup se skládá z jedné nebo více aktivit, které se provádějí v pořadí. Pracovní postup prostředí Windows PowerShell automaticky převádí mnoho rutin prostředí Windows PowerShell na aktivity při spuštění pracovního postupu. Pokud zadáte jednu z těchto rutin ve vašem runbooku, bude odpovídající aktivita běží modelem Windows Workflow Foundation. Případě rutin bez odpovídající aktivity pracovní postup prostředí Windows PowerShell automaticky spustí rutinu v rámci [InlineScript](#inlinescript) aktivity. Existuje sada rutin, které jsou vyloučeny a nelze jej použít v pracovním postupu, pokud je výslovně nezahrnete do bloku InlineScript. Další podrobnosti o těchto konceptech najdete v tématu [pomocí aktivity ve skriptových pracovních postupech](http://technet.microsoft.com/library/jj574194.aspx).
+Aktivita je specifická úloha v pracovním postupu. Stejně jako se skript skládá z jednoho nebo více příkazů, pracovní postup se skládá z jedné nebo více aktivit, které se provádějí v pořadí. Pracovní postup prostředí Windows PowerShell automaticky převádí mnoho rutin prostředí Windows PowerShell na aktivity při spuštění pracovního postupu. Pokud zadáte jednu z těchto rutin ve vašem runbooku, bude odpovídající aktivita běží modelem Windows Workflow Foundation. Případě rutin bez odpovídající aktivity pracovní postup prostředí Windows PowerShell automaticky spustí rutinu v rámci [InlineScript](#inlinescript) aktivity. Existuje sada rutin, které jsou vyloučeny a nelze jej použít v pracovním postupu, pokud je výslovně nezahrnete do bloku InlineScript. Další podrobnosti o těchto konceptech najdete v tématu [pomocí aktivity ve skriptových pracovních postupech](https://technet.microsoft.com/library/jj574194.aspx).
 
-Aktivity pracovních postupů sdílejí sadu společných parametrů ke konfiguraci svého provozu. Podrobnosti o společných parametrech pracovního postupu najdete v tématu [about_WorkflowCommonParameters](http://technet.microsoft.com/library/jj129719.aspx).
+Aktivity pracovních postupů sdílejí sadu společných parametrů ke konfiguraci svého provozu. Podrobnosti o společných parametrech pracovního postupu najdete v tématu [about_WorkflowCommonParameters](https://technet.microsoft.com/library/jj129719.aspx).
 
 ### <a name="positional-parameters"></a>Poziční parametry
 
@@ -152,7 +152,7 @@ Aktivity InlineScript můžou být důležité v určitých pracovních postupů
 * Nemůžete použít [paralelní provádění](#parallel-processing) uvnitř InlineScriptBlock.
 * InlineScript má vliv na škálovatelnost pracovního postupu, protože drží relaci prostředí Windows PowerShell pro celou délku bloku InlineScript.
 
-Další informace o použití InlineScript, naleznete v tématu [spouštění příkazů prostředí Windows PowerShell v pracovním postupu](http://technet.microsoft.com/library/jj574197.aspx) a [o skriptu inlinescript](http://technet.microsoft.com/library/jj649082.aspx).
+Další informace o použití InlineScript, naleznete v tématu [spouštění příkazů prostředí Windows PowerShell v pracovním postupu](https://technet.microsoft.com/library/jj574197.aspx) a [o skriptu inlinescript](https://technet.microsoft.com/library/jj649082.aspx).
 
 ## <a name="parallel-processing"></a>Paralelní zpracování
 
@@ -291,7 +291,7 @@ workflow CreateTestVms
 
 To není potřeba pokud ověřujete pomocí účtu spustit jako nakonfigurovali instanční objekt.
 
-Další informace o kontrolních bodech najdete v tématu [přidání kontrolních bodů do pracovního postupu skriptu](http://technet.microsoft.com/library/jj574114.aspx).
+Další informace o kontrolních bodech najdete v tématu [přidání kontrolních bodů do pracovního postupu skriptu](https://technet.microsoft.com/library/jj574114.aspx).
 
 ## <a name="next-steps"></a>Další postup
 

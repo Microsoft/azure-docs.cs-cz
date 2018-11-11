@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 6d5c721ab84c28bae9415dceeaa09fd12cc05824
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
-ms.translationtype: MT
+ms.openlocfilehash: 532001a0cda22903d0bdf807ee868aef211336e0
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45733010"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240082"
 ---
 # <a name="show-traffic-on-the-map"></a>Na mapě Zobrazit provoz
 
@@ -39,7 +39,7 @@ Další informace o třídy a metody používané v tomto článku:
 Naleznete v následujících článcích pro úplné ukázky:
 
 > [!div class="nextstepaction"]
-> [Znaková stránka vzorku](http://aka.ms/AzureMapsSamples)
+> [Znaková stránka vzorku](https://aka.ms/AzureMapsSamples)
 
 Vylepšení uživatelského prostředí:
 

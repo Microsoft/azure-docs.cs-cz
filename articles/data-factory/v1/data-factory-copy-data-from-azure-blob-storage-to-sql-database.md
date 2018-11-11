@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: a9f76b38139cccedb97c6026f0e0efa14d0dbc8c
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 596a9e4e3e1d24bdcab561a7238548d418ac0581
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42060119"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51243569"
 ---
 # <a name="tutorial-copy-data-from-blob-storage-to-sql-database-using-data-factory"></a>Kurz: Kopírování dat z úložiště objektů Blob do služby SQL Database pomocí služby Data Factory
 > [!div class="op_single_selector"]
@@ -48,7 +48,7 @@ Aktivita kopírování provádí přesun dat ve službě Azure Data Factory. Pou
 ## <a name="prerequisites-for-the-tutorial"></a>Předpoklady pro kurz
 Je nutné, abyste před zahájením tohoto kurzu splňovali následující požadavky:
 
-* **Předplatné Azure**.  Pokud nemáte předplatné, můžete si během několika minut bezplatně vytvořit zkušební účet. Zobrazit [bezplatnou zkušební verzi](http://azure.microsoft.com/pricing/free-trial/) , kde najdete podrobnosti.
+* **Předplatné Azure**.  Pokud nemáte předplatné, můžete si během několika minut bezplatně vytvořit zkušební účet. Zobrazit [bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/) , kde najdete podrobnosti.
 * **Účet úložiště Azure**. Použijete jako úložiště objektů blob **zdroj** úložiště dat v tomto kurzu. Pokud nemáte účet úložiště Azure, přečtěte si článek [Vytvoření účtu úložiště](../../storage/common/storage-quickstart-create-account.md), kde najdete kroky pro jeho vytvoření.
 * **Azure SQL Database**. Použití služby Azure SQL database jako **cílové** úložiště dat v tomto kurzu. Pokud nemáte Azure SQL database, můžete použít v tomto kurzu, najdete v tématu [jak vytvořit a nakonfigurovat službu Azure SQL Database](../../sql-database/sql-database-get-started.md) k jejímu vytvoření.
 * **SQL Server 2012 nebo 2014 nebo Visual Studio 2013**. Použijete SQL Server Management Studio nebo Visual Studio k vytvoření ukázkové databáze a zobrazíte Výsledná data v databázi.  

@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 05/11/2018
 ms.author: dastanfo
 ms.custom: mvc
-ms.openlocfilehash: 36d65abb26435581f3e6c9c4a9fc46bb3dd538ce
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: b740aa205982bc0c1104b59e3ea89e2d5980d461
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39362768"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240337"
 ---
 # <a name="tutorial-install-and-create-service-fabric-cluster"></a>Kurz: Instalace a vytvoření clusteru Service Fabric
 
@@ -37,7 +37,7 @@ Ve druhé části této série se naučíte:
 
 ## <a name="download-the-service-fabric-for-windows-server-package"></a>Stažení balíčku Service Fabric pro Windows Server
 
-Service Fabric nabízí instalační balíček pro vytváření samostatných clusterů Service Fabric.  [Stáhněte instalační balíček](http://go.microsoft.com/fwlink/?LinkId=730690) do místního počítače.  Po úspěšném stažení ho prostřednictvím připojení RDP zkopírujte do své instance EC2 a vložte ho na plochu.
+Service Fabric nabízí instalační balíček pro vytváření samostatných clusterů Service Fabric.  [Stáhněte instalační balíček](https://go.microsoft.com/fwlink/?LinkId=730690) do místního počítače.  Po úspěšném stažení ho prostřednictvím připojení RDP zkopírujte do své instance EC2 a vložte ho na plochu.
 
 Vyberte soubor ZIP, otevřete místní nabídku a vyberte **Extrahovat vše** > **Extrahovat**.  Při extrahování souborů se na ploše vygeneruje složka se stejným názvem jako soubor ZIP.
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/29/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 37492e22b5615ae0b266bc8b2bb6d8f039fdaabe
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 6b2a6d84fffecbe30bd2a47c795ee6143458ee2b
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43336851"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51344990"
 ---
 # <a name="azure-active-directory-b2c-modify-sign-up-to-add-new-claims-and-configure-user-input"></a>Azure Active Directory B2C: Upravte přihlašování k přidání nových deklarací identity a konfigurace uživatelského vstupu.
 
@@ -277,8 +277,8 @@ Ověřit e-mailu je povolena ve výchozím nastavení `<TechnicalProfile Id="Loc
 
 ## <a name="next-steps"></a>Další postup
 
-Přidáte novou deklaraci do toků pro přihlášení účtu na sociální síti tak, že změníte TechnicalProfiles uvedených níže. Ty se používají/chyby federovaného sociálního účtu přihlášení pro zápis a čtení dat uživatele pomocí alternativeSecurityId jako Lokátor.
-```xml
-<TechnicalProfile Id="AAD-UserWriteUsingAlternativeSecurityId">
-<TechnicalProfile Id="AAD-UserReadUsingAlternativeSecurityId">
-```
+Pokud vaše zásady podporuje účty sociálních sítí, přidejte novou deklaraci do toků pro přihlášení účtu na sociální síti tak, že změníte technické profilů uvedených níže. Tyto deklarace používají přihlašovací údaje účtu na sociální síti shromažďuje a zapisuje data od uživatele.
+
+1. Vyhledejte technický profil **SelfAsserted sociálního** a přidá deklaraci výstupu. Pořadí deklarace identity v **OutputClaims** určuje pořadí, že Azure AD B2C vykreslí deklarace identity na obrazovce. Například, `<OutputClaim ClaimTypeReferenceId="city" />`.
+2. Vyhledejte technický profil **AAD UserWriteUsingAlternativeSecurityId** a přidá deklaraci persist. Například, `<PersistedClaim ClaimTypeReferenceId="city" />`.
+3. Vyhledejte technický profil **AAD UserReadUsingAlternativeSecurityId** a přidá deklaraci výstupu. Například, `<OutputClaim ClaimTypeReferenceId="city" />`.

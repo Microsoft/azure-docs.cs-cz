@@ -10,16 +10,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/28/2018
 ms.author: lbosq
-ms.openlocfilehash: bf91ec77f8d7248c6fa2047636f295c187f626c8
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 7e9de68866b5e5849d0e48ad5073fc7b89fbb1ca
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078218"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51239300"
 ---
 # <a name="using-a-partitioned-graph-in-azure-cosmos-db"></a>Použití dělené grafu ve službě Azure Cosmos DB
 
-Jednou z klíčových funkcí rozhraní Gremlin API ve službě Azure Cosmos DB je schopnost zpracování rozsáhlých grafů prostřednictvím vodorovné škálovatelnost. Tento proces můžete dosáhnout [rozdělení funkcí ve službě Azure Cosmos DB](partition-data.md#how-does-partitioning-work), ujistěte se, která pomocí kontejnerů, které je možné nezávisle škálovat z hlediska úložiště a propustnosti. Azure Cosmos DB podporuje následující typy kontejnerů na všechna rozhraní API:
+Jednou z klíčových funkcí rozhraní Gremlin API ve službě Azure Cosmos DB je schopnost zpracování rozsáhlých grafů prostřednictvím vodorovné škálovatelnost. Tento proces můžete dosáhnout [rozdělení funkcí ve službě Azure Cosmos DB](partition-data.md), ujistěte se, která pomocí kontejnerů, které je možné nezávisle škálovat z hlediska úložiště a propustnosti. Azure Cosmos DB podporuje následující typy kontejnerů na všechna rozhraní API:
 
 - **Pevný kontejner**: těchto kontejnerů můžete uložit graf databáze až 10 GB velikosti s délkou maximálně 10 000 jednotek žádostí za sekundu přiřazen. Vytvořte kontejner pevnou není nutné zadat vlastnost klíče oddílu v datech.
 

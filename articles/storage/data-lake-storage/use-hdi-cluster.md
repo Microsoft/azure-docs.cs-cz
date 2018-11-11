@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 06/27/2018
 ms.author: jamesbak
-ms.openlocfilehash: 3869d83ada1cbe0b234694b6acae88b6f68fc2dd
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
-ms.translationtype: MT
+ms.openlocfilehash: 04e2e32de90283da2563395f8b24dbb4b1dab888
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43782273"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51241749"
 ---
 # <a name="use-azure-data-lake-storage-gen2-preview-with-azure-hdinsight-clusters"></a>Použití Azure Data Lake Storage Gen2 Preview s využitím clusterů Azure HDInsight
 
@@ -49,13 +49,13 @@ Tady jsou některé aspekty při použití účtu služby Azure Storage s cluste
 * **Veřejné soubory v účtech úložiště, které nejsou připojené ke clusteru** vystavení oprávnění jen pro čtení k souborům v systému souborů.
   
   > [!NOTE]
-  > Systémy veřejných souborů umožňují získat seznam všech souborů, které jsou k dispozici v systému souborů a získat přístup k metadatům. Systémy veřejných souborů umožňují přístup k souborům, pouze v případě, že znáte přesnou adresu URL. Další informace najdete v tématu [omezení přístupu ke kontejnerům a objektům blob](http://msdn.microsoft.com/library/windowsazure/dd179354.aspx) (pravidla pro kontejnery a objekty BLOB fungovat stejným popředí soubory a systém souborů).
+  > Systémy veřejných souborů umožňují získat seznam všech souborů, které jsou k dispozici v systému souborů a získat přístup k metadatům. Systémy veřejných souborů umožňují přístup k souborům, pouze v případě, že znáte přesnou adresu URL. Další informace najdete v tématu [omezení přístupu ke kontejnerům a objektům blob](https://msdn.microsoft.com/library/windowsazure/dd179354.aspx) (pravidla pro kontejnery a objekty BLOB fungovat stejným popředí soubory a systém souborů).
  
 * **Privátní souborové systémy v účtech úložiště, které nejsou připojené ke clusteru** neumožňují přístup k souborům v systému souborů, dokud nedefinujete účet úložiště při odesílání úlohy WebHCat. Důvody pro toto omezení jsou vysvětleny dále v tomto článku.
 
 Účty úložiště, které jsou definovány v procesu vytváření a jejich klíče jsou uložené v *%HADOOP_HOME%/conf/core-site.xml* na uzlech clusteru. Výchozí chování HDInsight je používání účtů úložiště, které jsou definovány v *core-site.xml* souboru. Toto nastavení můžete upravit pomocí [Ambari](../../hdinsight/hdinsight-hadoop-manage-ambari.md).
 
-Více úloh WebHCat, včetně Hive, MapReduce, streamování Hadoop a Pig, může obsahovat popis účtů úložiště a spojených metadat. (Tento přístup aktuálně funguje pro Pig s účty úložiště, ale ne pro metadata.) Více informací najdete v části [Použití clusteru HDInsight s alternativními účty úložiště a metaúložišti](http://social.technet.microsoft.com/wiki/contents/articles/23256.using-an-hdinsight-cluster-with-alternate-storage-accounts-and-metastores.aspx).
+Více úloh WebHCat, včetně Hive, MapReduce, streamování Hadoop a Pig, může obsahovat popis účtů úložiště a spojených metadat. (Tento přístup aktuálně funguje pro Pig s účty úložiště, ale ne pro metadata.) Více informací najdete v části [Použití clusteru HDInsight s alternativními účty úložiště a metaúložišti](https://social.technet.microsoft.com/wiki/contents/articles/23256.using-an-hdinsight-cluster-with-alternate-storage-accounts-and-metastores.aspx).
 
 ## <a id="benefits"></a>Výhody služby Azure Storage
 

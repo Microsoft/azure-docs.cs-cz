@@ -16,31 +16,28 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
-ms.openlocfilehash: a5750555802489b41b007831164767beb953ebc4
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 575e17f214561bde06b70bf87c4895ae379659f2
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "34837459"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51344718"
 ---
 # <a name="import-your-training-data-into-azure-machine-learning-studio-from-various-data-sources"></a>Import cvičných dat do nástroje Azure Machine Learning Studio z různých zdrojů dat
-Chcete-li použít vlastní data ve službě Machine Learning Studio k vývoji a trénování řešení prediktivní analýzy, můžete: 
 
-* Nahrávání dat z **místního souboru** předem z vašeho pevného disku, jak vytvořit modul datovou sadu v pracovním prostoru
-* přístup k datům z jednoho z několika **online zdroje dat** experimentu je spuštěn pomocí [Import dat] [ import-data] modulu 
-* používat data z jiného Azure Machine learning **experimentovat** uložit jako datovou sadu
-* používat data z místní **databáze systému SQL Server**
+Chcete-li použít vlastní data ve službě Machine Learning Studio k vývoji a trénování řešení prediktivní analýzy, můžete použít data z: 
 
-Každá z těchto možností je popsán v tématech v následující nabídce. Tato témata ukazují, jak importovat data z těchto různých zdrojů dat pro použití v nástroji Machine Learning Studio. 
-
-[!INCLUDE [import-data-into-aml-studio-selector](../../../includes/machine-learning-import-data-into-aml-studio.md)]
+* A [ **místního souboru** ](import-data-from-local-file.md) – místní data předem načíst z vašeho pevného disku, jak vytvořit modul datovou sadu v pracovním prostoru
+* [**Online zdroje dat** ](import-data-from-online-sources.md) – použití [Import dat] [ import-data] modulu pro přístup k datům z jednoho z několika zdrojů online při spuštění experimentu
+* [**Machine Learning Studio experiment** ](import-data-from-an-experiment.md) – používají data, která byla uložena jako datové sady v nástroji Machine Learning Studio
+* [**Databáze systému SQL Server v místním** ](use-data-from-an-on-premises-sql-server.md) – aniž byste museli ručně zkopírujte data použít data z místní databáze systému SQL Server
 
 > [!NOTE]
 > Existuje několik ukázkových datových sad v nástroji Machine Learning Studio, můžete použít pro trénovací data k dispozici. Informace naleznete v tématu [použití ukázkových datových sad v nástroji Azure Machine Learning Studio](use-sample-datasets.md)).
 > 
 > 
 
-Tento úvodní téma také popisuje, jak získat data připravená k použití v nástroji Machine Learning Studio a popisuje datové typy a formáty dat podporovaných. 
+Tento úvodní článek také popisuje, jak získat data připravená k použití v nástroji Machine Learning Studio a popisuje datové typy a formáty dat podporovaných.
 
 > [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
 > 

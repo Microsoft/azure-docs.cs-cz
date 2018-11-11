@@ -1,6 +1,6 @@
 ---
-title: Zkoumat data v procesu vědecké účely dat Team | Microsoft Docs
-description: Jak zkoumat data v různých prostředích úložiště.
+title: Zkoumání dat v vědecké zpracování týmových dat | Dokumentace Microsoftu
+description: Jak prozkoumat data v různých prostředích úložiště.
 services: machine-learning,storage
 documentationcenter: ''
 author: deguhath
@@ -13,24 +13,23 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/09/2017
+ms.date: 11/08/2018
 ms.author: deguhath
-ms.openlocfilehash: 168d2852d8905735b450850c8bb32a1ae07a620d
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 55d92fedbb67d21d34464b792b3600eb6964840b
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34837285"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51345517"
 ---
 # <a name="explore-data-in-the-team-data-science-process"></a>Zkoumání dat v rámci vědeckého zkoumání týmových dat
-Tento dokument popisuje postup zkoumat data v čtyři jiného úložiště prostředí, které jsou obvykle používány v procesu vědecké účely dat:
 
-* **Kontejner objektů blob v Azure** dat je prozkoumali pomocí [Pandas](http://pandas.pydata.org/) balíček Python.
-* **SQL Server** dat je prozkoumali pomocí SQL a pomocí programovacího jazyka jako Python.
-* **Tabulka Hive** dat je prozkoumali pomocí dotazů Hive.
-* **Azure Machine Learning (AML) Studio** dat je prozkoumali pomocí AML moduly.
+Zkoumání dat je krok [vědecké zpracování týmových dat](overview.md).
 
-Následující **nabídky** odkazy na témata, které popisují, jak pomocí těchto nástrojů můžete zkoumat data z různých prostředích úložiště. 
+Následující články popisují, jak zkoumat data do tří různých úložiště prostředí, které se obvykle používají v vědecké zpracování dat:
 
-[!INCLUDE [cap-explore-data-selector](../../../includes/cap-explore-data-selector.md)]
+* Prozkoumejte [kontejneru objektů blob v Azure](explore-data-blob.md) data s využitím [Pandas](http://pandas.pydata.org/) balíček Pythonu.
+* Prozkoumejte [systému SQL Server](explore-data-sql-server.md) dat pomocí SQL a pomocí programovacího jazyka, jako je Python.
+* Prozkoumejte [tabulky Hive](explore-data-hive-tables.md) dat pomocí dotazů Hive.
 
+Kromě toho, video, [předběžného zpracování dat v Azure Machine Learning Studio](https://azure.microsoft.com/documentation/videos/preprocessing-data-in-azure-ml-studio/), popisuje běžně používané modulů pro čištění a transformace dat v Azure Machine Learning Studio.

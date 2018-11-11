@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 75d630b91a1380102fd285edfb11effa22f47859
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 29af7ad8b582682189320185c460597af53cf6d8
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50413215"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51243909"
 ---
 # <a name="how-to-use-perfinsights"></a>Použití PerfInsights
 
-[PerfInsights](http://aka.ms/perfinsightsdownload) je nástroj Diagnostika samoobslužné podpory, který shromažďuje a analyzuje diagnostická data a poskytuje sestavy, které vám pomohou vyřešit problémy s výkonem virtuálního počítače Windows v Azure. PerfInsights může běžet na virtuálních počítačích jako samostatný nástroj, přímo z portálu pomocí [výkonu diagnostiky pro virtuální počítače Azure](performance-diagnostics.md), nebo po instalaci [rozšíření virtuálního počítače výkon diagnostiky Azure ](performance-diagnostics-vm-extension.md).
+[PerfInsights](https://aka.ms/perfinsightsdownload) je nástroj Diagnostika samoobslužné podpory, který shromažďuje a analyzuje diagnostická data a poskytuje sestavy, které vám pomohou vyřešit problémy s výkonem virtuálního počítače Windows v Azure. PerfInsights může běžet na virtuálních počítačích jako samostatný nástroj, přímo z portálu pomocí [výkonu diagnostiky pro virtuální počítače Azure](performance-diagnostics.md), nebo po instalaci [rozšíření virtuálního počítače výkon diagnostiky Azure ](performance-diagnostics-vm-extension.md).
 
 Pokud máte problémy s výkonem s virtuálními počítači, než se obrátíte na podporu, spusťte tento nástroj.
 
@@ -190,7 +190,7 @@ Další informace o této možnosti najdete v tématu [instalaci virtuálního p
 Chcete-li spustit nástroj PerfInsights, postupujte takto:
 
 
-1. Stáhněte si [PerfInsights.zip](http://aka.ms/perfinsightsdownload).
+1. Stáhněte si [PerfInsights.zip](https://aka.ms/perfinsightsdownload).
 
 2. Odblokování PerfInsights.zip souboru. Chcete-li to provést, klikněte pravým tlačítkem na soubor PerfInsights.zip a vyberte **vlastnosti**. V **Obecné** kartu, vyberte možnost **Odblokovat**a pak vyberte **OK**. Tím se zajistí, že je nástroj spuštěn bez jakékoli další bezpečnostní výzvy.  
 

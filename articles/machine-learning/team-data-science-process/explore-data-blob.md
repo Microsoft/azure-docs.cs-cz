@@ -15,19 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: deguhath
-ms.openlocfilehash: b80fcecf28eaaf05e7fc199a9c318fd4148b9212
-ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
+ms.openlocfilehash: b617ae1a1df0ed220d03e0124aa9dafd9fc2388c
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46497854"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51345993"
 ---
 # <a name="explore-data-in-azure-blob-storage-with-pandas"></a>Zkoumání dat ve službě Azure blob storage pomocí knihovny pandas
-Tento dokument popisuje, jak zkoumat data, která je uložená v kontejneru objektů blob v Azure pomocí [pandas](http://pandas.pydata.org/) balíček Pythonu.
 
-Následující **nabídky** odkazy na témata, které popisují způsob použití nástroje pro zkoumání dat z různých prostředí úložiště. Tato úloha je nějaký krok [vědecké zpracování dat](overview.md).
+Tento článek popisuje, jak zkoumat data, která je uložená v kontejneru objektů blob v Azure pomocí [pandas](http://pandas.pydata.org/) balíček Pythonu.
 
-[!INCLUDE [cap-explore-data-selector](../../../includes/cap-explore-data-selector.md)]
+Tato úloha je nějaký krok [vědecké zpracování týmových dat](overview.md).
 
 ## <a name="prerequisites"></a>Požadavky
 Tento článek předpokládá, že máte:

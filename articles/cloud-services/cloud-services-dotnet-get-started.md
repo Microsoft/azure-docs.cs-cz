@@ -14,17 +14,17 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 05/15/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 819a2f81ca5403a3656bf713cf0ee3ae58050a4b
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 04c68308739f641e892a335832725ba87e36f7af
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39003109"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51242122"
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Začínáme s cloudovými službami Azure Cloud Services a technologií ASP.NET
 
 ## <a name="overview"></a>Přehled
-Tento kurz ukazuje, jak lze vytvářet vícevrstvé aplikace .NET s front-endem ASP.NET MVC a jak je nasadit do [cloudové služby Azure](cloud-services-choose-me.md). Aplikace používá [službu Azure SQL Database](http://msdn.microsoft.com/library/azure/ee336279), [službu Azure Blob service](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/unstructured-blob-storage) a [službu front Azure](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern). [Projekt sady Visual Studio můžete stáhnout](http://code.msdn.microsoft.com/Simple-Azure-Cloud-Service-e01df2e4) z galerie kódů MSDN.
+Tento kurz ukazuje, jak lze vytvářet vícevrstvé aplikace .NET s front-endem ASP.NET MVC a jak je nasadit do [cloudové služby Azure](cloud-services-choose-me.md). Aplikace používá [službu Azure SQL Database](https://msdn.microsoft.com/library/azure/ee336279), [službu Azure Blob service](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/unstructured-blob-storage) a [službu front Azure](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern). [Projekt sady Visual Studio můžete stáhnout](https://code.msdn.microsoft.com/Simple-Azure-Cloud-Service-e01df2e4) z galerie kódů MSDN.
 
 V kurzu se dozvíte, jak sestavit a spustit aplikaci místně, jak ji nasadit do Azure a spustit v cloudu a jak ji sestavit od nuly. Pokud chcete, můžete začít tím, že ji sestavíte od nuly, potom ji otestujete a nakonec provedete kroky nasazení.
 
@@ -36,7 +36,7 @@ Aplikace slouží jako vývěsní tabule pro inzerci. Uživatelé vytvářejí r
 Aplikace používá [způsob práce zaměřený na fronty](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern), aby vyvážila práci při vytváření miniatur (která je náročná na prostředky procesoru) vůči back-endovému procesu.
 
 ## <a name="alternative-architecture-web-apps-and-webjobs"></a>Alternativní architektura: Web Apps a WebJobs
-Tento kurz ukazuje, jak spustit front-end i back-end v cloudové službě Azure. Alternativou je spuštění front-endu v [Azure Web Apps](/azure/app-service/) a použití funkce [WebJobs](http://go.microsoft.com/fwlink/?LinkId=390226) pro back-end. Kurz, který používá webové úlohy, najdete v článku [Začínáme se sadou SDK pro Azure WebJobs](https://github.com/Azure/azure-webjobs-sdk/wiki). Informace o tom, jak zvolit služby, které budou nejlépe vyhovovat vašemu scénáři, najdete v článku o [porovnání webů Azure, služeb Cloud Services a virtuálních počítačů](../app-service/choose-web-site-cloud-service-vm.md).
+Tento kurz ukazuje, jak spustit front-end i back-end v cloudové službě Azure. Alternativou je spuštění front-endu v [Azure Web Apps](/azure/app-service/) a použití funkce [WebJobs](https://go.microsoft.com/fwlink/?LinkId=390226) pro back-end. Kurz, který používá webové úlohy, najdete v článku [Začínáme se sadou SDK pro Azure WebJobs](https://github.com/Azure/azure-webjobs-sdk/wiki). Informace o tom, jak zvolit služby, které budou nejlépe vyhovovat vašemu scénáři, najdete v článku o [porovnání webů Azure, služeb Cloud Services a virtuálních počítačů](../app-service/choose-web-site-cloud-service-vm.md).
 
 ## <a name="what-youll-learn"></a>Co se dozvíte
 * Postup zprovoznění počítače pro vývoj na platformě Azure nainstalováním sady Azure SDK.
@@ -71,7 +71,7 @@ Když uživatel odešle obrázek, front-end spuštěný ve webové roli obrázek
 [!INCLUDE [install-sdk](../../includes/install-sdk-2017-2015-2013.md)]
 
 ## <a name="download-and-run-the-completed-solution"></a>Stažení a spuštění dokončeného řešení
-1. Stáhněte a rozbalte [dokončené řešení](http://code.msdn.microsoft.com/Simple-Azure-Cloud-Service-e01df2e4).
+1. Stáhněte a rozbalte [dokončené řešení](https://code.msdn.microsoft.com/Simple-Azure-Cloud-Service-e01df2e4).
 2. Spusťte Visual Studio.
 3. V nabídce **Soubor** zvolte **Otevřít projekt**, přejděte do místa, kam jste řešení stáhli, a potom otevřete soubor řešení.
 4. Stisknutím kláves CTRL+SHIFT+B řešení sestavíte.
@@ -81,7 +81,7 @@ Když uživatel odešle obrázek, front-end spuštěný ve webové roli obrázek
 6. Pokud používáte Visual Studio 2015 nebo vyšší, změňte připojovací řetězec serveru SQL v aplikačním souboru *Web.config* projektu ContosoAdsWeb a v souboru *ServiceConfiguration.Local.cscfg* projektu ContosoAdsCloudService. V každém případě změňte „(localdb) \v11.0“ na „\MSSQLLocalDB (localdb)“.
 7. Stiskněte klávesy CTRL+F5 a spusťte aplikaci.
 
-    Když spouštíte projekt cloudové služby místně, Visual Studio automaticky vyvolá *emulátor služby Výpočty* Azure a *emulátor úložiště* Azure. Emulátor služby Výpočty využívá prostředky počítače k simulaci prostředí webové role a role pracovního procesu. Emulátor úložiště používá databázi serveru [SQL Server Express LocalDB](http://msdn.microsoft.com/library/hh510202.aspx) k simulaci cloudového úložiště Azure.
+    Když spouštíte projekt cloudové služby místně, Visual Studio automaticky vyvolá *emulátor služby Výpočty* Azure a *emulátor úložiště* Azure. Emulátor služby Výpočty využívá prostředky počítače k simulaci prostředí webové role a role pracovního procesu. Emulátor úložiště používá databázi serveru [SQL Server Express LocalDB](https://msdn.microsoft.com/library/hh510202.aspx) k simulaci cloudového úložiště Azure.
 
     Při prvním spuštění projektu cloudové služby může spuštění emulátorů trvat zhruba minutu. Když je spuštění emulátorů dokončené, výchozí prohlížeč otevře domovskou stránku aplikace.
 
@@ -232,7 +232,7 @@ Připojovací řetězce k účtu úložiště Azure pro projekt webové role i p
 1. V **Průzkumníku řešení** v části **Role** v projektu **ContosoAdsCloudService** klikněte pravým tlačítkem na **ContosoAdsWeb** a potom na **Vlastnosti**.
 
     ![Vlastnosti rolí](./media/cloud-services-dotnet-get-started/roleproperties.png)
-2. Klikněte na kartu **Nastavení**. V rozevíracím seznamu **Konfigurace služby** vyberte **Cloud**.
+2. Klikněte na kartu **Nastavení**. V rozevíracím seznamu Konfigurace služby vyberte **Cloud**.
 
     ![Konfigurace cloudu](./media/cloud-services-dotnet-get-started/sccloud.png)
 3. Vyberte položku **StorageConnectionString** a na pravém konci řádku se zobrazí tlačítko se třemi tečkami (**...**) . Kliknutím na tlačítko se třemi tečkami otevřete dialogové okno **Vytvoření připojovací řetězce k účtu úložiště**.
@@ -311,7 +311,7 @@ Nastavení `<Instances>` určuje počet virtuálních počítačů, na kterých 
 >
 
 ## <a name="create-the-application-from-scratch"></a>Vytvoření aplikace od začátku
-Pokud jste [dokončenou aplikaci](http://code.msdn.microsoft.com/Simple-Azure-Cloud-Service-e01df2e4) ještě nestáhli, udělejte to teď. Soubory ze staženého projektu budete kopírovat do nového projektu.
+Pokud jste [dokončenou aplikaci](https://code.msdn.microsoft.com/Simple-Azure-Cloud-Service-e01df2e4) ještě nestáhli, udělejte to teď. Soubory ze staženého projektu budete kopírovat do nového projektu.
 
 Vytvoření aplikace Contoso Ads zahrnuje následující kroky:
 
@@ -549,7 +549,7 @@ queueClient.DefaultRequestOptions.RetryPolicy = new LinearRetry(TimeSpan.FromSec
 imagesQueue = queueClient.GetQueueReference("images");
 ```
 
-Většinu kódu kontroleru je typická pro práci s datovým modelem Entity Framework za použití třídy DbContext. Výjimkou je metoda HttpPost `Create`, která soubor odešle a uloží ho do úložiště objektů blob. Vazač modelu poskytuje metodě objekt [HttpPostedFileBase](http://msdn.microsoft.com/library/system.web.httppostedfilebase.aspx).
+Většinu kódu kontroleru je typická pro práci s datovým modelem Entity Framework za použití třídy DbContext. Výjimkou je metoda HttpPost `Create`, která soubor odešle a uloží ho do úložiště objektů blob. Vazač modelu poskytuje metodě objekt [HttpPostedFileBase](https://msdn.microsoft.com/library/system.web.httppostedfilebase.aspx).
 
 ```csharp
 [HttpPost]
@@ -766,8 +766,8 @@ Aplikace Contoso Ads je kvůli úvodnímu kurzu záměrně jednoduchá. Napřík
 
 Níže uvádíme několik ukázkových aplikací cloudových služeb, které předvádějí realističtější postupy kódování (jsou řazené od méně složitých po složitější):
 
-* [PhluffyFotos](http://code.msdn.microsoft.com/PhluffyFotos-Sample-7ecffd31). Podobný koncept jako Contoso Ads, ale implementuje víc funkcí a realističtější postupy kódování.
-* [Vícevrstvé aplikace cloudových služeb Azure s tabulkami, frontami a objekty blob](http://code.msdn.microsoft.com/windowsazure/Windows-Azure-Multi-Tier-eadceb36). Představuje tabulky služby Azure Storage a také objekty blob a fronty. Vychází ze starší verzi sady Azure SDK pro .NET. Bude vyžadovat určité změny pro práci s aktuální verzí.
+* [PhluffyFotos](https://code.msdn.microsoft.com/PhluffyFotos-Sample-7ecffd31). Podobný koncept jako Contoso Ads, ale implementuje víc funkcí a realističtější postupy kódování.
+* [Vícevrstvé aplikace cloudových služeb Azure s tabulkami, frontami a objekty blob](https://code.msdn.microsoft.com/windowsazure/Windows-Azure-Multi-Tier-eadceb36). Představuje tabulky služby Azure Storage a také objekty blob a fronty. Vychází ze starší verzi sady Azure SDK pro .NET. Bude vyžadovat určité změny pro práci s aktuální verzí.
 
 Obecné informace o vývoji pro cloud najdete v článku o [vytváření reálných cloudových aplikací s Azure](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/introduction).
 

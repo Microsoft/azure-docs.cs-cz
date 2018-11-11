@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/10/2018
 ms.author: markgal
-ms.openlocfilehash: 697245a6465fc15c943acefa4b820982fbaecb55
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 38190cc613ea9d3723cc3f0f563842e8416689aa
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48887594"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51241340"
 ---
 # <a name="recovery-services-vaults-overview"></a>Přehled trezory služby Recovery Services
 
@@ -29,13 +29,13 @@ Trezory služby Recovery Services jsou založené na modelu Azure Resource Manag
 
 - **Rozšířené možnosti zabezpečení zálohování dat**: trezory Recovery Services pomocí služby Recovery Services, Azure Backup poskytuje funkce zabezpečení k ochraně cloudové zálohy. Funkce zabezpečení zajistit zabezpečení vašich záloh a bezpečně obnovit data, i v případě, že dojde k ohrožení produkční a zálohování serverů. [Další informace](backup-azure-security-feature.md)
 
-- **Centrální monitorování pro vaši hybridní IT prostředí**: trezory Recovery Services pomocí služby Recovery Services, můžete monitorovat nejenom vaše [virtuálních počítačů Azure IaaS](backup-azure-manage-vms.md) , ale také vaše [místní prostředky](backup-azure-manage-windows-server.md#manage-backup-items) z centrální portál. [Další informace](http://azure.microsoft.com/blog/alerting-and-monitoring-for-azure-backup)
+- **Centrální monitorování pro vaši hybridní IT prostředí**: trezory Recovery Services pomocí služby Recovery Services, můžete monitorovat nejenom vaše [virtuálních počítačů Azure IaaS](backup-azure-manage-vms.md) , ale také vaše [místní prostředky](backup-azure-manage-windows-server.md#manage-backup-items) z centrální portál. [Další informace](https://azure.microsoft.com/blog/alerting-and-monitoring-for-azure-backup)
 
 - **Řízení přístupu na základě rolí (RBAC)**: RBAC poskytuje jemně odstupňované řízení řízení přístupu v Azure. [Azure nabízí různé předdefinované role](../role-based-access-control/built-in-roles.md), a Azure Backup obsahuje tři [předdefinovaných rolí ke správě body obnovení](backup-rbac-rs-vault.md). Trezory služby Recovery Services, musí být kompatibilní s RBAC, který omezuje zálohování a obnovení přístupu k definovanou sadu rolí uživatelů. [Další informace](backup-rbac-rs-vault.md)
 
-- **Chránit všechny konfigurace virtuálních počítačů Azure**: trezory služby Recovery Services ochrany založené na správci prostředků virtuálních počítačů, včetně disků Premium Managed Disks a šifrovaných virtuálních počítačů. Upgrade úložiště záloh do trezoru služby Recovery Services vám dává příležitost k upgradu vašich virtuálních počítačů založené na portálu Service Manager na virtuální počítače založené na Resource Manageru. Při upgradu trezoru, můžete zachovat body obnovení virtuálního počítače založené na portálu Service Manager a nakonfigurujte ochranu pro upgradovaný virtuální počítače (Resource Manager s podporou). [Další informace](http://azure.microsoft.com/blog/azure-backup-recovery-services-vault-ga)
+- **Chránit všechny konfigurace virtuálních počítačů Azure**: trezory služby Recovery Services ochrany založené na správci prostředků virtuálních počítačů, včetně disků Premium Managed Disks a šifrovaných virtuálních počítačů. Upgrade úložiště záloh do trezoru služby Recovery Services vám dává příležitost k upgradu vašich virtuálních počítačů založené na portálu Service Manager na virtuální počítače založené na Resource Manageru. Při upgradu trezoru, můžete zachovat body obnovení virtuálního počítače založené na portálu Service Manager a nakonfigurujte ochranu pro upgradovaný virtuální počítače (Resource Manager s podporou). [Další informace](https://azure.microsoft.com/blog/azure-backup-recovery-services-vault-ga)
 
-- **Okamžitá obnova pro virtuální počítače IaaS**: trezory Recovery Services pomocí služby Recovery Services, můžete obnovit soubory a složky z virtuálního počítače IaaS bez obnovení celého virtuálního počítače, který umožňuje rychlejší obnovení. Okamžitá obnova pro virtuální počítače IaaS je k dispozici pro virtuální počítače s Linuxem i Windows. [Další informace](http://azure.microsoft.com/blog/instant-file-recovery-from-azure-linux-vm-backup-using-azure-backup-preview)
+- **Okamžitá obnova pro virtuální počítače IaaS**: trezory Recovery Services pomocí služby Recovery Services, můžete obnovit soubory a složky z virtuálního počítače IaaS bez obnovení celého virtuálního počítače, který umožňuje rychlejší obnovení. Okamžitá obnova pro virtuální počítače IaaS je k dispozici pro virtuální počítače s Linuxem i Windows. [Další informace](https://azure.microsoft.com/blog/instant-file-recovery-from-azure-linux-vm-backup-using-azure-backup-preview)
 
 ## <a name="managing-your-recovery-services-vaults-in-the-portal"></a>Správa vašich trezorech služby Recovery Services na portálu
 Vytváření a správa trezorů služby Recovery Services na webu Azure Portal je snadné, protože služba Backup integruje se s dalšími službami Azure. Tato integrace znamená, že můžete vytvářet a Spravovat trezor služby Recovery Services *v kontextu cílovou službu*. Chcete-li zobrazit body obnovení pro virtuální počítač, například vyberte svůj virtuální počítač a klikněte na tlačítko **zálohování** v nabídce operace.
