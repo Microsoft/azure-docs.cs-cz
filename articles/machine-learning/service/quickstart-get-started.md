@@ -9,16 +9,16 @@ ms.reviewer: sgilley
 author: rastala
 ms.author: roastala
 ms.date: 09/24/2018
-ms.openlocfilehash: b81e40298eae0f0b44f37e7f8f16beaddad999a5
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 624564d61a7031cee910ab98e1b327b6f0205e28
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49456809"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50159005"
 ---
 # <a name="quickstart-use-the-azure-portal-to-get-started-with-azure-machine-learning"></a>Rychlý start: Začínáme se službou Azure Machine Learning s využitím webu Azure Portal
 
-V tomto rychlém startu pomocí webu Azure Portal vytvoříte pracovní prostor služby Azure Machine Learning. Tento pracovní prostor je základním blokem v cloudu, který můžete využít k experimentování, trénování a nasazování modelů strojového učení pomocí služby Machine Learning. 
+V tomto rychlém startu pomocí webu Azure Portal vytvoříte pracovní prostor služby Azure Machine Learning. Tento pracovní prostor je základním blokem v cloudu, který můžete využít k experimentování, trénování a nasazování modelů strojového učení pomocí služby Machine Learning. V tomto rychlém startu se používají cloudové prostředky a nevyžaduje se žádná instalace. Pokud místo toho chcete nakonfigurovat vlastní server poznámkového bloku Jupyter, přečtěte si [Rychlý start: Použití Pythonu při začátcích se službou Azure Machine Learning](quickstart-create-workspace-with-python.md).
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2F9Ad]
 
@@ -78,32 +78,9 @@ Spolu se dvěma poznámkovými bloky uvidíte soubor `config.json`. Tento konfig
 
 Výběrem souboru `01.run-experiment.ipynb` otevřete poznámkový blok.
 
-Jednotlivé buňky můžete spustit pomocí `Shift`+`Enter`. Nebo vyberte `Cells` > `Run All` a spusťte celý poznámkový blok. Když se vedle buňky zobrazí hvězdička [*], znamená to, že je spuštěná. Po dokončení kódu v této buňce se zobrazí číslo.
+Jednotlivé buňky můžete spustit pomocí `Shift`+`Enter`. Nebo vyberte `Cells` > `Run All` a spusťte celý poznámkový blok. Když se vedle buňky zobrazí hvězdička [*], znamená to, že je spuštěná. Po dokončení kódu v této buňce se zobrazí číslo. 
 
-Může se zobrazit výzva k přihlášení. Zkopírujte kód ve zprávě. Potom vyberte odkaz a vložte kód do nového okna. Dávejte pozor, abyste nezkopírovali mezeru před nebo za kódem. Přihlaste se pomocí stejného účtu, který jste použili na webu Azure Portal.
-
- ![Přihlásit se](./media/quickstart-get-started/login.png)
-
-Druhá buňka v poznámkovém bloku čte z `config.json` pro připojení k vašemu pracovnímu prostoru.
-```
-ws = Workspace.from_config()
-```
-
-Třetí buňka kódu spustí experiment s názvem „my-first-experiment“. Tento název použijte k vyhledání informací o spuštění zpět ve vašem pracovním prostoru.
-
-```
-experiment = Experiment(workspace_object=ws, name = "my-first-experiment")
-```
-
-V poslední buňce poznámkového bloku si všimněte hodnot, které se zapisují do souboru protokolu.
-
-```
-# Log final results
-run.log("Final estimate: ",pi_estimate)
-run.log("Final error: ",math.pi-pi_estimate)
-```
-
-Tyto hodnoty můžete zobrazit ve svém pracovním prostoru po spuštění kódu.
+Po spuštění všech buněk v poznámkovém bloku můžete zobrazit zaprotokolované hodnoty ve vašem pracovním prostoru.
 
 ## <a name="view-logged-values"></a>Zobrazení zaprotokolovaných hodnot
 
@@ -121,11 +98,11 @@ Prohlédněte si informace o spuštění, které jste právě provedli. Posuňte
 
  ![Odkaz na historii spuštění](./media/quickstart-get-started/report.png)
 
-Zobrazí se diagramy, které se automaticky vytvořily ze zaprotokolovaných hodnot.  
+Zobrazí se diagramy, které se automaticky vytvořily ze zaprotokolovaných hodnot. Při každém zaprotokolování více hodnot se stejným parametrem názvu se pro vás automaticky vygeneruje diagram.
 
    ![Zobrazení historie](./media/quickstart-get-started/plots.png)
 
-Vzhledem k tomu, že kód pro odhad čísla pí používá náhodné hodnoty, ve vašich diagramech se zobrazí jiné hodnoty.
+Vzhledem k tomu, že kód pro odhad čísla pí používá náhodné hodnoty, ve vašich diagramech se zobrazí jiné hodnoty.  
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků 
 

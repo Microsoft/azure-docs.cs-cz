@@ -9,16 +9,16 @@ ms.component: cosmosdb-sql
 ms.custom: quick start connect, mvc, devcenter
 ms.devlang: java
 ms.topic: quickstart
-ms.date: 03/26/2018
-ms.author: sngun
-ms.openlocfilehash: 85a7a6f5b1224c732f5a385789aef13e1d7bd1db
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.date: 10/24/2018
+ms.author: moderakh
+ms.openlocfilehash: 399db2d7ed5d1c94fe359cb55e9b90df3d99e003
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46961242"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50421284"
 ---
-# <a name="azure-cosmos-db-create-a-document-database-using-java-and-the-azure-portal"></a>Azure Cosmos DB: Vytvoření databáze dokumentů pomocí Javy a webu Azure Portal
+# <a name="create-and-manage-resources-of-an-azure-cosmos-db-sql-api-account-using-a-java-application"></a>Vytváření a správa prostředků účtu rozhraní SQL API služby Azure Cosmos DB pomocí aplikace v Javě
 
 > [!div class="op_single_selector"]
 > * [.NET](create-sql-api-dotnet.md)
@@ -26,11 +26,8 @@ ms.locfileid: "46961242"
 > * [Node.js](create-sql-api-nodejs.md)
 > * [Python](create-sql-api-python.md)
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
->  
 
-Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu pro více modelů. Pomocí Azure Cosmos DB můžete rychle vytvořit a dotazovat spravované databáze dokumentů, tabulek a grafů.
-
-V tomto rychlém startu se vytvoří databáze dokumentů pomocí nástrojů pro [SQL API](sql-api-introduction.md) služby Azure Cosmos DB na webu Azure Portal. V tomto rychlém startu se také dozvíte, jak rychle vytvořit konzolovou aplikaci Java pomocí [rozhraní SQL Java API](sql-api-sdk-java.md). Pokyny v tomto rychlém startu platí pro všechny operační systémy, které podporují Javu. Po dokončení tohoto rychlého startu budete vědět, jak vytvořit a upravit prostředky databáze dokumentů v uživatelském rozhraní nebo programově podle toho, čemu dáváte přednost.
+V tomto rychlém startu se dozvíte, jak vytvářet a spravovat prostředky účtu rozhraní [SQL API](sql-api-introduction.md) služby Azure Cosmos DB pomocí aplikace v Javě. Nejprve pomocí webu Azure Portal vytvoříte účet rozhraní SQL API služby Azure Cosmos DB, pomocí sady [SQL Java SDK](sql-api-sdk-async-java.md) vytvoříte aplikaci v Javě a pomocí aplikace v Javě přidáte prostředky do svého účtu služby Cosmos DB. Pokyny v tomto rychlém startu platí pro všechny operační systémy, které podporují Javu. Po dokončení tohoto rychlého startu budete vědět, jak vytvářet a upravovat databáze a kolekce služby Cosmos DB v uživatelském rozhraní nebo programově podle toho, čemu dáváte přednost.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -39,7 +36,7 @@ V tomto rychlém startu se vytvoří databáze dokumentů pomocí nástrojů pro
 
 Navíc platí: 
 
-* [Java Development Kit (JDK) 1.7+](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+* [Java Development Kit (JDK) 1.8+](https://aka.ms/azure-jdks)
     * Na Ubuntu nainstalujte sadu JDK spuštěním příkazu `apt-get install default-jdk`.
     * Nezapomeňte nastavit proměnnou prostředí JAVA_HOME tak, aby odkazovala na složku, ve které je sada JDK nainstalovaná.
 * [Stáhněte](http://maven.apache.org/download.cgi) a [nainstalujte](http://maven.apache.org/install.html) binární archiv [Maven](http://maven.apache.org/).
@@ -70,151 +67,133 @@ Než budete moci vytvořit databázi dokumentů, je potřeba pomocí služby Azu
 
 Teď přejděme k práci s kódem. Naklonujeme aplikaci SQL API z GitHubu, nastavíme připojovací řetězec a spustíme ji. Přesvědčíte se, jak snadno se pracuje s daty prostřednictvím kódu programu. 
 
-1. Otevřete příkazový řádek, vytvořte novou složku git-samples a potom příkazový řádek zavřete.
+1. Ukázkové úložiště naklonujete spuštěním následujícího příkazu. Tento příkaz vytvoří na vašem počítači kopii ukázkové aplikace.
 
     ```bash
-    md "C:\git-samples"
-    ```
-
-2. Otevřete okno terminálu Git, například Git Bash, a pomocí příkazu `cd` přejděte do nové složky, do které chcete nainstalovat ukázkovou aplikaci. 
-
-    ```bash
-    cd "C:\git-samples"
-    ```
-
-3. Ukázkové úložiště naklonujete spuštěním následujícího příkazu. Tento příkaz vytvoří na vašem počítači kopii ukázkové aplikace.
-
-    ```bash
-    git clone https://github.com/Azure-Samples/azure-cosmos-db-documentdb-java-getting-started.git
+    git clone https://github.com/Azure-Samples/azure-cosmos-db-sql-api-async-java-getting-started
     ```
 
 ## <a name="review-the-code"></a>Kontrola kódu
 
-Tento krok je volitelný. Pokud chcete zjistit, jak se v kódu vytvářejí prostředky databáze, můžete si prohlédnout následující fragmenty kódu. Jinak můžete přeskočit přímo k části [Aktualizace informací o připojení](#update-your-connection-string). 
+Tento krok je volitelný. Pokud chcete zjistit, jak se v kódu vytvářejí prostředky databáze, můžete si prohlédnout následující fragmenty kódu. Jinak můžete přeskočit přímo k části [Spuštění aplikace](#run-the-app). 
 
-Následující fragmenty kódu pocházejí ze souboru C:\git-samples\azure-cosmos-db-documentdb-java-getting-started\src\GetStarted\Program.java.
-
-* Inicializace klienta `DocumentClient`. [DocumentClient](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._document_client) představuje logickou reprezentaci databázové služby Azure Cosmos DB na straně serveru. Tento klient slouží ke konfiguraci a provádění požadavků na službu. Části `FILLME` tohoto kódu se aktualizují později v tomto rychlém startu.
+* Inicializace klienta `AsyncDocumentClient`. [AsyncDocumentClient](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.rx._async_document_client) představuje logickou reprezentaci databázové služby Azure Cosmos DB na straně klienta. Tento klient slouží ke konfiguraci a provádění požadavků na službu.
 
     ```java
-    this.client = new DocumentClient("https://FILLME.documents.azure.com",
-            "FILLME", 
-            new ConnectionPolicy(),
-            ConsistencyLevel.Session);
+    client = new AsyncDocumentClient.Builder()
+             .withServiceEndpoint(YOUR_COSMOS_DB_ENDPOINT)
+             .withMasterKeyOrResourceToken(YOUR_COSMOS_DB_MASTER_KEY)
+             .withConnectionPolicy(ConnectionPolicy.GetDefault())
+             .withConsistencyLevel(ConsistencyLevel.Eventual)
+             .build();
     ```
 
-* Vytvoření [databáze](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._database).
+* Vytvoření [databáze](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb._database).
 
     ```java
-    Database database = new Database();
-    database.setId(databaseName);
+    Database databaseDefinition = new Database();
+    databaseDefinition.setId(databaseName);
     
-    this.client.createDatabase(database, null);
+    client.createDatabase(databaseDefinition, null)
+            .toCompletable()
+            .await();
     ```
 
-* Vytvoření kolekce [DocumentCollection](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._document_collection).
+* Vytvoření kolekce [DocumentCollection](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb._document_collection).
 
     ```java
-    DocumentCollection collectionInfo = new DocumentCollection();
-    collectionInfo.setId(collectionName);
+    DocumentCollection collectionDefinition = new DocumentCollection();
+    collectionDefinition.setId(collectionName);
 
-    ...
+    //...
 
-    this.client.createCollection(databaseLink, collectionInfo, requestOptions);
+    client.createCollection(databaseLink, collectionDefinition, requestOptions)
+            .toCompletable()
+            .await();
     ```
 
-* Vytvoření dokumentu pomocí metody [createDocument](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._document_client.createdocument).
+* Vytvoření dokumentu pomocí metody [createDocument](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb._document).
 
     ```java
-    // Any Java object within your code can be serialized into JSON and written to Azure Cosmos DB
+    // Any Java object within your code
+    // can be serialized into JSON and written to Azure Cosmos DB
     Family andersenFamily = new Family();
     andersenFamily.setId("Andersen.1");
     andersenFamily.setLastName("Andersen");
     // More properties
 
     String collectionLink = String.format("/dbs/%s/colls/%s", databaseName, collectionName);
-    this.client.createDocument(collectionLink, family, new RequestOptions(), true);
+    client.createDocument(collectionLink, family, null, true)
+            .toCompletable()
+            .await();
+
     ```
 
-* Příkazy jazyka SQL přes JSON se provádějí pomocí metody [queryDocuments](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._document_client.querydocuments).
+* Příkazy jazyka SQL přes JSON se provádějí pomocí metody [queryDocuments](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.rx._async_document_client.querydocuments?view=azure-java-stable).
 
     ```java
     FeedOptions queryOptions = new FeedOptions();
     queryOptions.setPageSize(-1);
     queryOptions.setEnableCrossPartitionQuery(true);
+    queryOptions.setMaxDegreeOfParallelism(-1);
 
-    String collectionLink = String.format("/dbs/%s/colls/%s", databaseName, collectionName);
-    FeedResponse<Document> queryResults = this.client.queryDocuments(
-        collectionLink,
-        "SELECT * FROM Family WHERE Family.lastName = 'Andersen'", queryOptions);
+    String collectionLink = String.format("/dbs/%s/colls/%s",
+            databaseName,
+            collectionName);
+    Iterator<FeedResponse<Document>> it = client.queryDocuments(
+            collectionLink,
+            "SELECT * FROM Family WHERE Family.lastName = 'Andersen'",
+            queryOptions).toBlocking().getIterator();
 
     System.out.println("Running SQL query...");
-    for (Document family : queryResults.getQueryIterable()) {
-        System.out.println(String.format("\tRead %s", family));
+    while (it.hasNext()) {
+        FeedResponse<Document> page = it.next();
+        System.out.println(
+                String.format("\tRead a page of results with %d items",
+                        page.getResults().size()));
+        for (Document doc : page.getResults()) {
+            System.out.println(String.format("\t doc %s", doc));
+        }
     }
     ```    
 
-## <a name="update-your-connection-string"></a>Aktualizace připojovacího řetězce
-
-Teď se vraťte zpátky na portál Azure Portal, kde najdete informace o připojovacím řetězci, a zkopírujte je do aplikace. Tím aplikaci umožníte komunikovat s hostovanou databází.
-
-1. Na webu [Azure Portal](http://portal.azure.com/) klikněte na **Klíče**. 
-
-    Pomocí tlačítka pro kopírování na pravé straně obrazovky zkopírujte horní hodnotu identifikátoru URI.
-
-    ![Zobrazení a zkopírování přístupového klíče na portálu Azure na stránce Klíče](./media/create-sql-api-java/keys.png)
-
-2. Otevřete soubor `Program.java` ve složce C:\git-samples\azure-cosmos-db-documentdb-java-getting-started\src\GetStarted. 
-
-3. Vložte hodnotu identifikátoru URI z portálu místo `https://FILLME.documents.azure.com` na řádku 45.
-
-4. Přejděte zpět na portál a zkopírujte hodnotu PRIMÁRNÍHO KLÍČE, jak je znázorněno na snímku obrazovky. Vložte hodnotu PRIMÁRNÍHO KLÍČE z portálu místo `FILLME` na řádku 46.
-
-    Metoda getStartedDemo by teď měla vypadat nějak takto: 
-    
-    ```java
-    private void getStartedDemo() throws DocumentClientException, IOException {
-        this.client = new DocumentClient("https://youraccountname.documents.azure.com:443/",
-                "your-primary-key...RJhQrqQ5QQ==", 
-                new ConnectionPolicy(),
-                ConsistencyLevel.Session);
-    ```
-
-5. Uložte soubor Program.java.
-
 ## <a name="run-the-app"></a>Spuštění aplikace
 
-1. V okně terminálu Git přejděte příkazem `cd` do složky azure-cosmos-db-documentdb-java-getting-started.
+Teď se vraťte zpět na web Azure Portal, kde najdete informace o připojovacím řetězci, a spusťte aplikaci s použitím informací o vašem koncovém bodu. Tím aplikaci umožníte komunikovat s hostovanou databází.
 
-    ```git
-    cd "C:\git-samples\azure-cosmos-db-documentdb-java-getting-started"
+
+1. V okně terminálu Git přejděte pomocí příkazu `cd` do složky se vzorovým kódem.
+
+    ```bash
+    cd azure-cosmos-db-sql-api-async-java-getting-started/azure-cosmosdb-get-started
     ```
 
 2. V okně terminálu Git pomocí následujícího příkazu nainstalujte požadované balíčky Java.
 
-    ```
+    ```bash
     mvn package
     ```
 
-3. V okně terminálu Git pomocí následujícího příkazu spusťte aplikaci v Javě.
+3. V okně terminálu Git pomocí následujícího příkazu spusťte aplikaci v Javě (YOUR_COSMOS_DB_HOSTNAME nahraďte hodnotou identifikátoru URI z portálu v uvozovkách a YOUR_COSMOS_DB_MASTER_KEY nahraďte primárním klíčem z portálu v uvozovkách).
 
-    ```
-    mvn exec:java -D exec.mainClass=GetStarted.Program
+    ```bash
+    mvn exec:java -DACCOUNT_HOST=YOUR_COSMOS_DB_HOSTNAME -DACCOUNT_KEY=YOUR_COSMOS_DB_MASTER_KEY
+
     ```
 
     V okně terminálu se zobrazí oznámení o vytvoření databáze FamilyDB. 
     
 4. Stisknutím jakékoli klávesy vytvořte databázi a pak opět stisknutím jakékoli klávesy vytvořte kolekci. 
 
-    Na konci programu se všechny prostředky odstraní, takže ve svém prohlížeči přepněte zpět do Průzkumníka dat, ve kterém se teď zobrazí databáze FamilyDB a kolekce FamilyCollection.
+    Přepněte v prohlížeči zpět do Průzkumníka dat, ve kterém se teď zobrazí databáze FamilyDB a kolekce FamilyCollection.
 
 5. Přepněte do okna konzoly a stisknutím jakékoli klávesy vytvořte první dokument a pak opět stisknutím jakékoli klávesy vytvořte druhý dokument. Pak přepněte zpět do Průzkumníka dat a zobrazte je. 
 
 6. Stisknutím jakékoli klávesy spusťte dotaz a podívejte se na výstup v okně konzoly. 
 
-7. Dalším stisknutím jakékoli klávesy prostředky odstraníte. Pokud chcete prostředky zachovat, můžete program ukončit stisknutím Ctrl + C v okně konzoly. Jinak stisknutím jakékoli klávesy odstraňte prostředky ze svého účtu, aby se vám neúčtovaly poplatky. 
+7. Aplikace neodstraňuje vytvořené prostředky. Přepněte zpět na portál a [vyčistěte prostředky](#clean-up-resources)  ze svého účtu, aby se vám za ně neúčtovaly poplatky.
 
-    ![Výstup konzoly](./media/create-sql-api-java/console-output.png)
+    ![Výstup konzoly](./media/create-sql-api-java/rxjava-console-output.png)
 
 
 ## <a name="review-slas-in-the-azure-portal"></a>Ověření podmínek SLA na portálu Azure Portal
@@ -231,5 +210,3 @@ V tomto rychlém startu jste se seznámili s postupem vytvoření účtu Azure
 
 > [!div class="nextstepaction"]
 > [Importování dat do služby Azure Cosmos DB](import-data.md)
-
-

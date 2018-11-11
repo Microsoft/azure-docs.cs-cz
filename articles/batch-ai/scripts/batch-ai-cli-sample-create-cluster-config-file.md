@@ -14,12 +14,12 @@ ms.tgt-pltfrm: multiple
 ms.workload: na
 ms.date: 08/16/2018
 ms.author: danlep
-ms.openlocfilehash: a1e472d237977d1948c69828d8ec391522896774
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 01281c0328fab85814ff93c73f9ea25e0d4c1b08
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44058114"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50232796"
 ---
 # <a name="cli-example-create-a-batch-ai-cluster-using-a-cluster-configuration-file"></a>Příklad rozhraní příkazového řádku: Vytvoření clusteru Batch AI pomocí konfiguračního souboru clusteru
 
@@ -27,7 +27,7 @@ Tento skript ukazuje, jak použít konfigurační soubor JSON k zadání nastave
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít Azure CLI verze 2.0.38 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0](/cli/azure/install-azure-cli). 
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít Azure CLI verze 2.0.38 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0](/cli/azure/install-azure-cli). 
 
 ## <a name="example-script"></a>Ukázkový skript
 
@@ -35,7 +35,7 @@ Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku 
 
 ## <a name="clean-up-deployment"></a>Vyčištění nasazení
 
-Spuštěním následujících příkazů odeberte skupiny prostředků a všechny k nim přidružené prostředky.
+Spuštěním následujících příkazů odeberte skupiny prostředků, včetně všech přidružených prostředků.
 
 ```azurecli-interactive
 # Remove resource group for the cluster.

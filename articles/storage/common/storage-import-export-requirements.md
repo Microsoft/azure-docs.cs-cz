@@ -9,10 +9,10 @@ ms.date: 10/15/2018
 ms.author: alkohli
 ms.component: common
 ms.openlocfilehash: 3a42f09967ec42b47947823025f2f0dcd081d1b1
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
+ms.lasthandoff: 11/09/2018
 ms.locfileid: "49352233"
 ---
 # <a name="azure-importexport-system-requirements"></a>Požadavky na systém Azure Import/Export
@@ -34,7 +34,7 @@ Pro přípravu pevných disků pomocí nástroje WAImportExport následující *
 |Platforma |Verze |
 |---------|---------|
 |.NET Framework    | 4.5.1       |
-| BitLocker        |  _          |
+| BitLocker        |  \_          |
 
 
 ## <a name="supported-storage-accounts"></a>Účty úložiště podporuje

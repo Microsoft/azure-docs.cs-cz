@@ -1,18 +1,18 @@
 ---
 title: Správa konfiguračního serveru pro VMware a fyzických serverů zotavení po havárii pomocí Azure Site Recovery | Dokumentace Microsoftu
-description: Tento článek popisuje, jak spravovat existující konfigurační server pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů do Azure pomocí Azure Site RecoveryS.
+description: Tento článek popisuje, jak spravovat existující konfigurační server pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů do Azure pomocí Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: raynew
-ms.openlocfilehash: 4ac3871893e7e8161dc087f285eb3d802cd4a355
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: f76a55778a5d4c00060192bfaa704724d5fe1045
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50215136"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51219476"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vms"></a>Správa konfiguračního serveru pro virtuální počítače VMware
 
@@ -137,10 +137,10 @@ Spuštění kumulativní aktualizace se aktualizovat konfigurační server. Aktu
 - Pokud spustíte 9.7, 9.8, 9.9 nebo 9.10, můžete upgradovat přímo na 9.11.
 - Pokud chcete provést upgrade 9.11 spustíte 9,6 nebo starší, musíte nejprve upgradovat na verzi 9.7. před 9.11.
 
-Odkazy na kumulativní aktualizace pro upgrade pro všechny verze konfiguračního serveru jsou k dispozici v [aktualizace wikistránka](https://social.technet.microsoft.com/wiki/contents/articles/38544.azure-site-recovery-service-updates.aspx).
+Odkazy na kumulativní aktualizace pro upgrade pro všechny verze konfiguračního serveru jsou k dispozici v [stránku aktualizace Azure](https://azure.microsoft.com/updates/?product=site-recovery).
 
 > [!IMPORTANT]
-> S každou novou verzí "n" Azure Site Recovery componenet, která je vydána, všechny verze nižší než n-4' je považován za bez podpory. Je vždy vhodné k upgradu na nejnovější verze k dispozici.
+> S každou novou verzí "n" Azure Site Recovery komponentu, která je všeobecně dostupné, všechny verze nižší než n-4' je považován za bez podpory. Je vždy vhodné k upgradu na nejnovější verze k dispozici.
 
 Upgrade serveru následujícím způsobem:
 

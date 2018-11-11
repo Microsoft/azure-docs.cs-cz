@@ -9,14 +9,14 @@ ms.service: cosmos-db
 ms.component: cosmosdb-cassandra
 ms.topic: tutorial
 ms.date: 09/24/2018
-ms.openlocfilehash: b5e3d87e026b65a602b7bdf2e52365d13b21f62f
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 1220bcc8445f13a4573f1a6d3181c172799638fb
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49166827"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50741776"
 ---
-# <a name="create-an-azure-cosmos-db-cassandra-api-account-database-and-a-table-by-using-a-java-application"></a>Vytvoření účtu rozhraní API Cassandra v Azure Cosmos DB, databáze a tabulky pomocí aplikace v Javě
+# <a name="tutorial-create-an-azure-cosmos-db-cassandra-api-account-database-and-a-table-by-using-a-java-application"></a>Kurz: Vytvoření účtu rozhraní API Cassandra služby Azure Cosmos DB, databáze a tabulky pomocí aplikace v Javě
 
 Tento kurz popisuje způsob použití aplikace v Javě k vytvoření účtu rozhraní API Cassandra ve službě Azure Cosmos DB, přidání databáze (označované také jako prostor klíčů) a přidání tabulky. Aplikace v Javě využívá [ovladač Javy](https://github.com/datastax/java-driver) k vytvoření uživatelské databáze, která obsahuje podrobnosti, jako je ID uživatele, uživatelské jméno, město uživatele.  
 
@@ -33,7 +33,7 @@ Tento kurz se zabývá následujícími úkony:
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si  [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)  před tím, než začnete. Případně si můžete  [vyzkoušet službu Azure Cosmos DB zdarma](https://azure.microsoft.com/try/cosmosdb/)  bez předplatného Azure, poplatků a závazků. 
 
-* Pořiďte si nejnovější verzi sady [Java Development Kit (JDK)](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html). 
+* Pořiďte si nejnovější verzi sady [Java Development Kit (JDK)](https://aka.ms/azure-jdks). 
 
 * [Stáhněte si](http://maven.apache.org/download.cgi) a [nainstalujte](http://maven.apache.org/install.html) binární archiv [Maven](http://maven.apache.org/). 
   - Na Ubuntu můžete Maven nainstalovat spuštěním příkazu  `apt-get install maven` . 
@@ -60,7 +60,7 @@ Tento kurz se zabývá následujícími úkony:
 
 ## <a name="get-the-connection-details-of-your-account"></a>Získání podrobností o připojení vašeho účtu  
 
-Opatřete si informace o připojovacím řetězci z webu Azure Portal a zkopírujte je do konfiguračního souboru Java. Tím aplikaci umožníte komunikovat s hostovanou databází. 
+Opatřete si informace o připojovacím řetězci z webu Azure Portal a zkopírujte je do konfiguračního souboru Java. Připojovací řetězec umožňuje vaší aplikaci komunikovat s hostovanou databází. 
 
 1. Na webu  [Azure Portal](http://portal.azure.com/) přejděte do svého účtu služby Cosmos DB. 
 

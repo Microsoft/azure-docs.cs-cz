@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/24/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 37498394bc163852d397337cf5728b4941ae45a7
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d264160fb3f1c14db3379a314e60efdadb6905b5
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46956502"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210410"
 ---
 # <a name="what-is-role-based-access-control-rbac"></a>Co je řízení přístupu na základě role (RBAC)?
 
@@ -54,7 +54,7 @@ Způsob řízení přístupu k prostředkům pomocí RBAC spočívá ve vytvoře
 
 ![Objekt zabezpečení pro přiřazení role](./media/overview/rbac-security-principal.png)
 
-- Uživatel – jednotlivec, který má profil ve službě Azure Active Directory. Můžete také přiřadit role uživatelům v jiných tenantech. Informace o uživatelích v jiných organizacích najdete v článku o [B2B ve službě Azure Active Directory](/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b).
+- Uživatel – jednotlivec, který má profil ve službě Azure Active Directory. Můžete také přiřadit role uživatelům v jiných tenantech. Informace o uživatelích v jiných organizacích najdete v článku o [B2B ve službě Azure Active Directory](../active-directory/b2b/what-is-b2b.md).
 - Skupina – skupina uživatelů vytvořená ve službě Azure Active Directory. Když přiřadíte roli skupině, budou mít danou roli všichni její uživatelé. 
 - Instanční objekt – identita zabezpečení, kterou používají aplikace nebo služby pro přístup ke konkrétním prostředkům Azure. Můžete si ji představit jako *identitu uživatele* (uživatelské jméno a heslo nebo certifikát) pro aplikaci.
 
@@ -130,3 +130,4 @@ V následující části popisujeme obecné kroky, které se v modelu RBAC použ
 - [Rychlý start: Udělení přístupu pro uživatele pomocí RBAC a webu Azure Portal](quickstart-assign-role-user-portal.md)
 - [Správa přístupu pomocí RBAC a portálu Azure Portal](role-assignments-portal.md)
 - [Vysvětlení různých rolí v Azure](rbac-and-directory-admin-roles.md)
+- [Přechod na podnikový cloud: Správa přístupu k prostředkům v Azure](/azure/architecture/cloud-adoption/getting-started/azure-resource-access)

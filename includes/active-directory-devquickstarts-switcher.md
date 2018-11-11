@@ -9,11 +9,11 @@ ms.date: 04/30/2018
 ms.author: celested
 ms.custom: include file
 ms.openlocfilehash: cf3e81069b1dc0a0b66e410a54c55c2245b9046e
-ms.sourcegitcommit: b34df37d1ac36161b377ba56c2f7128ba7327f3f
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46938394"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51208248"
 ---
 > [!div class="op_single_selector"]
 > * [iOS](../articles/active-directory/develop/quickstart-v1-ios.md)

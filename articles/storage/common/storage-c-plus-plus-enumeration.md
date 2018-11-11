@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: dineshm
 ms.component: common
-ms.openlocfilehash: 0a105122eccdfa671c806389908762941f23200c
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 6384af5368fe722d6c9307d56d8a071ebcd17bf0
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39525303"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51226970"
 ---
 # <a name="list-azure-storage-resources-in-c"></a>Seznam prostředků služby Azure Storage v C++
 Operace výpisu jsou klíčem k mnoha vývojové scénáře se službou Azure Storage. Tento článek popisuje, jak co nejefektivněji vytvořit výčet objektů ve službě Azure Storage pomocí seznamu rozhraní API poskytovaných v Microsoft Azure Storage Client Library jazyka C++.
@@ -195,6 +195,6 @@ Další informace o Azure Storage a Klientská knihovna pro C++ naleznete v tém
 * [Používání úložiště Table z jazyka C++](../../cosmos-db/table-storage-how-to-use-c-plus.md)
 * [Používání úložiště Queue z jazyka C++](../storage-c-plus-plus-how-to-use-queues.md)
 * [Azure Klientská knihovna pro úložiště pro dokumentaci k rozhraní API jazyka C++.](http://azure.github.io/azure-storage-cpp/)
-* [Blog týmu Azure Storage](http://blogs.msdn.com/b/windowsazurestorage/)
+* [Blog týmu Azure Storage](https://blogs.msdn.com/b/windowsazurestorage/)
 * [Dokumentace k Azure Storage](https://azure.microsoft.com/documentation/services/storage/)
 

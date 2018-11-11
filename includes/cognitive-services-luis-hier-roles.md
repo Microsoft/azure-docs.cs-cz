@@ -11,11 +11,11 @@ ms.custom: include file
 ms.date: 10/23/2018
 ms.author: diberry
 ms.openlocfilehash: 0ad3b360611a12b95568e9a20f13a57c93b2e603
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50086117"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51208300"
 ---
 ## <a name="roles-versus-hierarchical-entities"></a>Role a hierarchické entity
 

@@ -7,14 +7,14 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 07/12/2018
+ms.date: 10/26/2018
 ms.author: dobett
-ms.openlocfilehash: 649ce7bcd2d2e4ceb2fc397643f4dd0d3ef89c1e
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: 8cb604aee39f651770cb708f8dd92b6fbc0921f5
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39144509"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50138991"
 ---
 # <a name="quickstart-try-a-cloud-based-solution-to-manage-my-industrial-iot-devices"></a>Rychlé zprovoznění: Zkouška cloudového řešení pro správu průmyslových zařízení IoT
 
@@ -32,13 +32,13 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Při nasazování akcelerátoru řešení do předplatného Azure je potřeba nastavit několik možností konfigurace.
 
-Přihlaste se k webu [azureiotsolutions.com](https://www.azureiotsolutions.com/Accelerators) pomocí přihlašovacích údajů svého účtu Azure.
+Přejděte na web [Akcelerátory řešení Microsoft Azure IoT](https://www.azureiotsolutions.com) a přihlaste se pomocí přihlašovacích údajů vašeho účtu Azure.
 
-Na dlaždici **Připojená továrna** klikněte na **Vybrat**.
+Klikněte na dlaždici **Připojená továrna**. Na stránce **Připojená továrna** klikněte na **Vyzkoušet**:
 
-![Volba možnosti Připojená továrna](./media/quickstart-connected-factory-deploy/connectedfactory.png)
+![Vyzkoušet](./media/quickstart-connected-factory-deploy/connectedfactory.png)
 
-Na dlaždici **Vytvořit řešení připojené továrny** zadejte jedinečný **Název řešení** akcelerátoru řešení připojené továrny. Tento název odpovídá názvu skupiny prostředků Azure, která obsahuje všechny prostředky akcelerátoru řešení. V tomto rychlém zprovoznění používáme název **MyDemoConnectedFactory**.
+Na dlaždici **Vytvořit řešení připojené továrny** zadejte jedinečný **Název řešení** akcelerátoru řešení připojené továrny. Tento název odpovídá názvu skupiny prostředků Azure, která obsahuje všechny prostředky akcelerátoru řešení. V tomto rychlém startu se používá název **MyDemoConnectedFactory**.
 
 Vyberte **Předplatné** a **Oblast**, které chcete při nasazování akcelerátoru řešení použít. Obvykle byste měli zvolit oblast, která je vám nejblíže. V tomto rychlém zprovoznění používáme možnosti **Visual Studio Enterprise** a **Východní USA**. V předplatném musíte být [globálním správcem nebo uživatelem](iot-accelerators-permissions.md).
 
@@ -66,7 +66,7 @@ Výchozím zobrazením je *řídicí panel*. K přecházení do jiných oblastí
 
 [![Řídicí panel řešení](./media/quickstart-connected-factory-deploy/dashboard-inline.png)](./media/quickstart-connected-factory-deploy/dashboard-expanded.png#lightbox)
 
-Řídicí panel slouží ke správě průmyslových zařízení IoT. Připojená továrna zobrazuje globální konfiguraci továrny ve formě hierarchie. Na nejvyšší úrovni hierarchie je podnik, který obsahuje jednu nebo více továren, každá továrna obsahuje výrobní linky a každá výrobní linka se skládá ze stanic. Na každé úrovni můžete zobrazit celkovou účinnost vybavení a klíčové ukazatele výkonu, publikovat nové uzly telemetrii a reagovat na upozornění.
+Řídicí panel slouží ke správě průmyslových zařízení IoT. Připojená továrna zobrazuje globální konfiguraci továrny ve formě hierarchie. Na nejvyšší úrovni hierarchie je podnik, který obsahuje jednu nebo více továren. Každá továrna obsahuje výrobní linky a každá výrobní linka se skládá ze stanic. Na každé úrovni můžete zobrazit celkovou účinnost vybavení a klíčové ukazatele výkonu, publikovat nové uzly telemetrii a reagovat na upozornění.
 
 Na řídicím panelu se zobrazují tyto položky:
 
@@ -122,7 +122,7 @@ Pokud má vaše předplatné přístup k rozhraní [API pro Mapy Bing](iot-accel
 
 ### <a name="alarms"></a>Upozornění
 
-Panel **Upozornění** obsahuje upozornění vygenerovaná v případě, že některá hlášená hodnota nebo vypočítaná hodnota celkové účinnosti vybavení nebo klíčového ukazatele výkonu překročí nakonfigurovanou mezní hodnotu. Tento panel zobrazuje upozornění na všech úrovních hierarchie, od úrovně jednotlivých stanic po úroveň celého podniku. Každé upozornění obsahuje popis, datum, čas, umístění a počet výskytů:
+Na panelu **Upozornění** se zobrazí upozornění vygenerovaná v případě, že některá hlášená hodnota nebo vypočítaná hodnota celkové efektivity zařízení nebo klíčového ukazatele výkonu překročí prahovou hodnotu. Tento panel zobrazuje upozornění na všech úrovních hierarchie, od úrovně jednotlivých stanic po úroveň celého podniku. Každé upozornění obsahuje popis, datum, čas, umístění a počet výskytů:
 
 [![Upozornění](./media/quickstart-connected-factory-deploy/alarms-inline.png)](./media/quickstart-connected-factory-deploy/alarms-expanded.png#lightbox)
 
@@ -137,7 +137,7 @@ Klikněte na některé upozornění, v rozevírací nabídce **Zvolte akci** vyb
 
 Pokud chcete hlouběji analyzovat data alarmu, klikněte na graf na panelu alarmů.
 
-Tyto alarmy se generují podle pravidel zadaných v konfiguračním souboru v akcelerátoru řešení. Tato pravidla můžou generovat upozornění, pokud hodnoty celkové účinnosti vybavení, klíčového ukazatele výkonu nebo uzlu OPC UA překročí nakonfigurovanou mezní hodnotu.
+Tyto alarmy se generují podle pravidel zadaných v konfiguračním souboru v akcelerátoru řešení. Tato pravidla můžou generovat upozornění, pokud hodnoty celkové efektivity zařízení, klíčového ukazatele výkonu nebo uzlu OPC UA překročí prahovou hodnotu. Tuto prahovou hodnotu můžete nastavit.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

@@ -8,21 +8,21 @@ ms.topic: include
 ms.date: 09/20/2018
 ms.author: akjosh; cynthn
 ms.custom: include file
-ms.openlocfilehash: 6ad38d2dc1c5c41dc10685d680f70c59e7983cd2
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 8eca04478fd5aba292fcc47abac37b740b552dff
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50035388"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51208878"
 ---
-Sdílené Galerie Imagí je služba, která vám pomůže sestavit strukturu a organizace vlastních imagí virtuálních počítačů. Sdílené Galerie obrázků poskytuje tři hlavní prvky
+Sdílené Galerie Imagí je služba, která vám pomůže sestavit strukturu a organizace vlastních imagí virtuálních počítačů. Sdílené Galerie obrázků poskytuje tři hlavní prvky:
 - Jednoduchá správa
-- Změny velikosti obrázků zákazníka
+- Škálujte vaše vlastní Image
 - Sdílení vašich imagí – sdílení imagí na jiné uživatele, instančních objektů nebo skupin AD v rámci vaší organizace i v různých oblastech pomocí replikace ve více oblastech
 
-Spravované image je kopie buď úplná virtuálního počítače (včetně jakýchkoliv připojených datových disků) nebo jenom disk s operačním systémem, v závislosti na tom, jak vytvořit image. Při vytváření virtuálního počítače z image kopírování virtuálních pevných disků na obrázku se používají k vytvoření disky pro nový virtuální počítač. Spravované image zůstává v úložišti a je možné znovu a znovu vytvořit nové virtuální počítače.
+Spravované image je kopie buď úplná virtuálního počítače (včetně jakýchkoliv připojených datových disků) nebo jenom disk s operačním systémem, v závislosti na tom, jak vytvořit image. Při vytváření virtuálního počítače z image kopie virtuálních pevných disků na obrázku se používají k vytvoření disky pro nový virtuální počítač. Spravované image zůstává v úložišti a je možné znovu a znovu vytvořit nové virtuální počítače.
 
-Pokud máte velký počet spravované Image, které je potřeba, abyste a chcete zpřístupnit v rámci vaší společnosti, můžete jako úložiště, který umožňuje snadno aktualizovat a sdílet vaše Image Galerie sdílené bitové kopie. Poplatky za používání galerie sdílené bitové kopie jsou jenom náklady na úložiště využitá službou imagí a navíc všechny náklady na celkový výstup sítě při replikaci imagí ze zdrojové oblasti do publikované oblastí.
+Pokud máte velký počet spravované Image, které je potřeba, abyste a chcete zpřístupnit v rámci vaší společnosti, můžete jako úložiště, který umožňuje snadno aktualizovat a sdílet vaše Image Galerie obrázků Shared. Poplatky za používání galerie obrázků Shared jsou jenom náklady na úložiště využitá službou imagí a navíc všechny náklady na celkový výstup sítě při replikaci imagí ze zdrojové oblasti do publikované oblastí.
 
 Galerie obrázků sdílené funkce má více typů prostředků:
 
@@ -40,7 +40,7 @@ Galerie obrázků sdílené funkce má více typů prostředků:
 
 ### <a name="regional-support"></a>Místní podpora
 
-Místní podpora pro sdílené bitové kopie Galerie je omezený, ale se rozbalí v čase. Pro verzi preview, tady jsou seznamy ve kterém můžete vytvořit galerie a oblasti kde můžete replikovat libovolné galerii: 
+Místní podpora pro sdílené bitové kopie Galerie je ve verzi limited preview, ale se rozbalí v čase. Pro verzi limited preview tady je seznam oblastí, kde můžete vytvořit galerie a seznam oblastí, ve kterém se dají replikovat všechny image z galerie: 
 
 | Vytvoření galerie v  | Verze, kterou chcete replikaci |
 |--------------------|----------------------|
@@ -61,25 +61,25 @@ Místní podpora pro sdílené bitové kopie Galerie je omezený, ale se rozbal�
 
 
 ## <a name="scaling"></a>Škálování
-Sdílené Galerie Imagí můžete zadat počet replik pro obrázky, které chcete do Azure. Tato funkce umožňuje scénáře nasazení více virtuálních počítačů při nasazení virtuálního počítače je možné rozdělit do různých replik snižuje pravděpodobnost procesu vytváření instance omezený přetížení jen jednu repliku.
+Sdílené Galerie Imagí můžete zadat počet replik, které chcete do imagí Azure. Tato funkce umožňuje scénáře nasazení více virtuálních počítačů při nasazení virtuálního počítače je možné rozdělit do různých replik snižuje pravděpodobnost vytvoření instance zpracování omezený přetížení jen jednu repliku.
 
 ![Obrázek znázorňující, jak můžete škálovat imagí](./media/shared-image-galleries/scaling.png)
 
 
 ## <a name="replication"></a>Replikace
-Sdílené Galerie obrázků vám také umožní automaticky replikovat vaši Image do jiných oblastí Azure. Každá verze sdílené bitové kopie je možné replikovat do různých oblastí v závislosti na tom, co dává smysl pro vaši organizaci. Jedním z příkladů je vždy replikovat nejnovější image v několika oblastech, všechny starší verze jsou k dispozici pouze v 1 oblast. To může pomoct ušetřit na náklady na úložiště pro sdílený verze image. Je možné aktualizovat, kterou verzi image Shared je replikovat do oblastí po času vytvoření. Čas potřebný k replikaci do různých oblastí závisí na množství dat, kopírování a počtem oblastí, které verze je replikovat do. V některých případech to může trvat několik hodin. Replikace se děje, ale když zobrazíte stav replikace v jedné oblasti. Po dokončení replikace image je v oblasti, pak můžete nasadit virtuální počítač nebo VMSS použití dané verze v oblasti.
+Sdílené Galerie obrázků vám také umožní automaticky replikovat vaši Image do jiných oblastí Azure. Každá verze sdílené bitové kopie je možné replikovat do různých oblastí v závislosti na tom, co dává smysl pro vaši organizaci. Jedním z příkladů je vždy replikovat nejnovější image v několika oblastech, všechny starší verze jsou k dispozici pouze v 1 oblast. To může pomoct ušetřit na náklady na úložiště pro sdílené bitové kopie verze. Oblasti, kterou verzi sdílené bitové kopie se replikuje do je možné aktualizovat po času vytvoření. Čas potřebný k replikaci do různých oblastí závisí na množství dat, kopírování a počtem oblastí verze se replikuje do. V některých případech to může trvat několik hodin. Replikace se děje, ale když zobrazíte stav replikace v jedné oblasti. Po dokončení replikace image je v oblasti, pak můžete nasadit virtuální počítač nebo VMSS použití dané verze obrázku v oblasti.
 
 ![Obrázek znázorňující, jak se dají replikovat imagí](./media/shared-image-galleries/replication.png)
 
 
 ## <a name="access"></a>Access
-Jako galerie sdílené bitové kopie sdílené bitové kopie a sdílené bitové kopie verze jsou všechny prostředky, je může sdílet pomocí integrovaného Azure RBAC nativní ovládací prvky. Pomocí RBAC můžete sdílet tyto prostředky pro další uživatele, objektů služby a skupiny ve vaší organizaci. Rozsah sdílení těchto prostředků je ve stejném tenantovi AD. Jakmile uživatel má přístup k verzi sdílené bitové kopie, můžou třeba nasadit virtuální počítač nebo škálovací sady v některém z předplatných, ke kterým mají přístup v rámci stejné AD tenanta jako Shared verze image virtuálních počítačů.  Tady je sdílení, která pomáhá pochopit, co uživatel získá přístup k matici:
+Galerie obrázků sdílené, sdílené bitové kopie a sdílené bitové kopie verze jsou všechny prostředky, je může sdílet, pomocí integrovaného Azure RBAC nativní ovládací prvky. Pomocí RBAC můžete sdílet tyto prostředky pro další uživatele, objektů služby a skupiny ve vaší organizaci. Rozsah sdílení těchto prostředků je ve stejném tenantovi Azure AD. Jakmile uživatel má přístup k verzi sdílené bitové kopie, můžou třeba nasadit virtuální počítač nebo virtuální počítač Škálovací sady v některém z předplatných, ke kterým mají přístup v rámci stejné služby Azure AD tenanta jako verze sdílené bitové kopie.  Tady je sdílení, která pomáhá pochopit, co uživatel získá přístup k matici:
 
-| Sdílené s uživatelem     | Sdílená galerie obrázků | Sdílené bitové kopie | Verze sdílené bitové kopie |
+| Sdílené s uživatelem     | Sdílená galerie obrázků | Sdílené bitové kopie | Sdílené verze Image |
 |----------------------|----------------------|--------------|----------------------|
 | Sdílená galerie obrázků | Ano                  | Ano          | Ano                  |
 | Sdílené bitové kopie         | Ne                   | Ano          | Ano                  |
-| Verze sdílené bitové kopie | Ne                   | Ne           | Ano                  |
+| Sdílené verze Image | Ne                   | Ne           | Ano                  |
 
 
 
@@ -92,13 +92,13 @@ Neexistuje žádné další poplatky za využívání služby Shared Galerie obr
 
 **Otázka:** Jak se mám zaregistrovat sdílené Image Galerie verze Public Preview?
  
- A. Pokud se chcete zaregistrovat ve galerii Imagí sdílené veřejné verzi preview, budete muset zaregistrovat pro funkci spuštěním následujících příkazů z každého předplatného, ve kterých máte v úmyslu vytvořit Galerie sdílené bitové kopie, definici image nebo image verze prostředků, a také pokud máte v úmyslu nasadit virtuální počítače pomocí verze image.
+ A. Pokud se chcete zaregistrovat ve galerii Imagí sdílené veřejné verzi preview, budete muset zaregistrovat pro funkci spuštěním následujících příkazů z každého předplatného, ve kterých máte v úmyslu vytvořit Galerie obrázků sdílené, definici Image nebo Image verze prostředky, a také pokud máte v úmyslu nasadit virtuální počítače pomocí verze image.
 
 **ROZHRANÍ PŘÍKAZOVÉHO ŘÁDKU**: 
 
 ```bash 
 az feature register --namespace Microsoft.Compute --name GalleryPreview
-az provider register -n Microsoft.Compute
+az provider register -name Microsoft.Compute
 ```
 
 **Prostředí PowerShell**: 
@@ -119,7 +119,7 @@ Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Compute
  
  Definice image a image verze zobrazíte musí také vybrat **zobrazit skryté typy**.
  
- Seznam všech prostředků Galerie sdílené bitové kopie napříč předplatnými, ke kterým máte oprávnění, použijte následující příkaz v rozhraní příkazového řádku Azure:
+ Seznam všech prostředků Galerie obrázků sdílené napříč předplatnými, ke kterým máte oprávnění k, použijte následující příkaz v rozhraní příkazového řádku Azure:
 
  ```bash
  az account list -otsv --query "[].id" | xargs -n 1 az sig list --subscription
@@ -146,12 +146,12 @@ Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Compute
 
 **Otázka:** Můžete vytvořit image verze ze specializovaného disku?
 
- A. Ne, nepodporujeme aktuálně specializované disky jako Image. Pokud budete mít speciální disk, budete muset [vytvoření virtuálního počítače z virtuálního pevného disku](https://docs.microsoft.com/azure/virtual-machines/windows/create-vm-specialized-portal#create-a-vm-from-a-disk) připojením specializeddisk k novému virtuálnímu počítači. Jakmile budete mít spuštěný virtuální počítač, budete muset postupovat podle pokynů a vytvořte spravovanou image z [virtuálního počítače Windows](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-custom-images) nebo [virtuálního počítače s Linuxem](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-custom-images). Až budete mít generalizované image spravovaného, můžete zahájit proces vytvořit popis sdílené bitové kopie a verze image.
+ A. Ne, nepodporujeme aktuálně specializované disky jako Image. Pokud budete mít speciální disk, budete muset [vytvoření virtuálního počítače z virtuálního pevného disku](https://docs.microsoft.com/azure/virtual-machines/windows/create-vm-specialized-portal#create-a-vm-from-a-disk) připojením specializovaného disku k novému virtuálnímu počítači. Jakmile budete mít spuštěný virtuální počítač, budete muset postupovat podle pokynů a vytvořte spravovanou image z [virtuálního počítače Windows](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-custom-images) nebo [virtuálního počítače s Linuxem](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-custom-images). Až budete mít generalizované image spravovaného, můžete zahájit proces vytvořit popis sdílené bitové kopie a verze image.
 
 
 **Otázka:** Můžete vytvořit sdílené bitové kopie galerie, definici image a verze image na webu Azure portal?
 
- A. Ne, aktuálně nepodporujeme vytváření některý z Galerie Imagí sdílených prostředků prostřednictvím webu Azure portal. Nicméně podporujeme vytvoření Galerie obrázků sdílené prostředky přes rozhraní příkazového řádku, šablony a sady SDK. Také verze prostředí PowerShell bude brzy.
+ A. Ne, aktuálně nepodporujeme vytváření některý z Galerie Imagí sdílených prostředků prostřednictvím webu Azure portal. Nicméně podporujeme vytvoření Galerie obrázků sdílené prostředky přes rozhraní příkazového řádku, šablony a sady SDK. Prostředí PowerShell, budou také vydané brzy.
 
  
 **Otázka:** Po vytvoření můžete aktualizovat definici image nebo verze image? Jaký druh podrobnosti můžete změnit?
@@ -186,9 +186,9 @@ Verze Image:
 
  A. Ne, můžete replikovat verze image mezi oblastmi v rámci předplatného a používat v jiných předplatných pomocí RBAC.
 
-**Otázka:** Můžete sdílet verze image mezi klienty AD? 
+**Otázka:** Můžete sdílet verze image tenantů Azure AD? 
 
- A. Ne, galerie aktuálně sdílené bitové kopie nepodporuje sdílení verze image klientů AD. Ale může použít funkci soukromé nabídky na webu Azure Marketplace k dosažení tohoto cíle.
+ A. Ne, galerie aktuálně sdílené bitové kopie nepodporuje sdílení verze image tenantů Azure AD. Ale může použít funkci soukromé nabídky na webu Azure Marketplace k dosažení tohoto cíle.
 
 
 **Otázka:** Jak dlouho trvá replikovat verze bitové kopie do cílové oblasti?
@@ -198,7 +198,7 @@ Verze Image:
 
 **Otázka:** Kolik sdílených image galerie můžete vytvořit v jednom předplatném?
 
- A. Je výchozí kvóta 
+ A. Výchozí kvóta je: 
 - 10 sdílených image Galerie na předplatné a oblast
 - 200 definice bitové kopie, na předplatné a oblast
 - verze image 2000, na předplatné a oblast
@@ -239,4 +239,4 @@ Pokud chcete nastavit společné počet replik v rozhraní příkazového řádk
 
 **Otázka:** Jaké verze rozhraní API použijte k vytvoření Galerie obrázků sdílené, definici Image, Image verze a VM/VMSS mimo verzi Image?
 
- A. Pro virtuální počítač a virtuální počítače škálovací sady nasazení používá verzi image, doporučujeme použít rozhraní API verze 2018-04-01 nebo vyšší. Pro práci s galerií sdílené bitové kopie, definice image a image verze, doporučujeme že použít rozhraní API verze 2018-06-01. 
+ A. Pro nasazení virtuálního počítače a Škálovací sady virtuálních počítačů používá verzi image, doporučujeme, abyste použili verzi 2018-04-01 rozhraní API nebo vyšší. Pro práci s galerií sdílené bitové kopie, definice image a image verze, doporučujeme že použít rozhraní API verze 2018-06-01. 

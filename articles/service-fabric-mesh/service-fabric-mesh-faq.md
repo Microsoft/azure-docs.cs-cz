@@ -9,12 +9,12 @@ ms.date: 06/25/2018
 ms.topic: troubleshooting
 ms.service: service-fabric-mesh
 manager: timlt
-ms.openlocfilehash: d0ae7fbb22f6d98662f83968158182d447a75394
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
-ms.translationtype: MT
+ms.openlocfilehash: b32af29a123ce4d070e1bb68b5a43ba6d0d2c5e1
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39501963"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51218470"
 ---
 # <a name="commonly-asked-service-fabric-mesh-questions"></a>Nejčastější dotazy služby prostředků infrastruktury sítě
 Azure Service Fabric Mesh je plně spravovaná služba, která vývojářům umožňuje nasazovat aplikace zajišťující mikroslužby, aniž by museli spravovat virtuální počítače, úložiště nebo sítě. Tento článek obsahuje odpovědi na nejčastější dotazy.
@@ -27,24 +27,50 @@ Ptejte se, získejte odpovědi od odborníků Microsoftu a hlášení problémů
 
 **Kolik stojí účast ve verzi preview?**
 
-Neúčtují žádné poplatky pro nasazování aplikací nebo kontejnerů na síť ve verzi preview. Ale doporučujeme odstranit prostředky, nasadit a nechávat je spuštěné, pokud aktivně testování.
+Aktuálně se nic neplatí pro nasazování aplikací nebo kontejnerů sítě ve verzi Preview. Ale doporučujeme vám odstranit prostředky, nasadit a ne nechat běžet je aktivně testování.
 
 **Existuje nějaké omezení kvóty počtu jader a paměti RAM?**
 
-Ano, jsou kvóty pro každé předplatné:
+Ano, jsou kvóty pro každé předplatné nastavte následujícím způsobem:
 
 - Počet aplikací – 5 
 - Počet jader na aplikaci – 12 
 - Celkové paměti RAM na aplikaci – 48 GB 
-- Počet sítí a příchozího přenosu dat koncové body – 5  
-- Počet Azure svazků, které můžete připojit - 10 
+- Síť a příchozího přenosu dat koncové body – 5  
+- Svazky s Azure, které můžete připojit - 10 
 - Počet replik služby – 3 
-- Největší kontejner, který můžete nasadit je omezena na 4 jádra, 16GB paměti RAM.
+- Největší kontejner, který můžete nasadit je omezena na 4 jádra, 16 GB paměti RAM.
 - Kontejnery v přírůstcích po 0,5 jádra, až do maximálního počtu jader 6, kterou můžete přidělit částečné jader.
 
-**Můžete nechat aplikaci přes noc spuštění?**
+**Jak dlouho je můžete nechat nasazené pro Moje aplikace?**
 
-Ano, je to možné, ale budete ukončena. doporučujeme odstranit prostředky, nasadit a nechávat je spuštěné, dokud ho aktivně testování. Tyto zásady mohou v budoucnu změnit a prostředky se odstraní jejich zneužití.
+Právě jsme mají omezenou životnost aplikace do dvou dnů. Je to kvůli maximalizovat využití volných jader přidělené ve verzi Preview. V důsledku toho můžete jsou povolené jenom pro spuštění daného nasazení průběžně po dobu 48 hodin, po dobu se odstraní v systému. Pokud se to stát, můžete ověřit, že systém vypnout spuštěním `az mesh app show` v rozhraní příkazového řádku Azure a kontrolu příkaz vrátí-li `"status": "Failed", "statusDetails": "Stopped resource due to max lifetime policies for an application during preview. Delete the resource to continue."` 
+
+Příklad: 
+
+```cli
+chackdan@Azure:~$ az mesh app show --resource-group myResourceGroup --name helloWorldApp
+{
+  "debugParams": null,
+  "description": "Service Fabric Mesh HelloWorld Application!",
+  "diagnostics": null,
+  "healthState": "Ok",
+  "id": "/subscriptions/1134234-b756-4979-84re-09d671c0c345/resourcegroups/myResourceGroup/providers/Microsoft.ServiceFabricMesh/applications/helloWorldApp",
+  "location": "eastus",
+  "name": "helloWorldApp",
+  "provisioningState": "Succeeded",
+  "resourceGroup": "myResourceGroup",
+  "serviceNames": [
+    "helloWorldService"
+  ],
+  "services": null,
+  "status": "Failed",
+  "statusDetails": "Stopped resource due to max lifetime policies for an application during preview. Delete the resource to continue.",
+  "tags": {},
+  "type": "Microsoft.ServiceFabricMesh/applications",
+  "unhealthyEvaluation": null
+}
+```
 
 ## <a name="supported-container-os-images"></a>Image kontejnerů podporovaný operační systém
 Následující Image kontejneru operačních systémů lze použít při nasazování služby.

@@ -1,6 +1,6 @@
 ---
-title: Konfigurace vlastního názvu domény pro účet úložiště Azure | Dokumentace Microsoftu
-description: Mapování vlastních kanonického názvu (CNAME) na koncový bod objektu Blob nebo web v účtu služby Azure Storage pomocí webu Azure portal.
+title: Konfigurace vlastního názvu domény pro váš účet úložiště Azure | Dokumentace Microsoftu
+description: Mapování vlastních kanonického názvu (CNAME) do úložiště nebo webový koncový bod služby Blob v účtu služby Azure storage pomocí webu Azure portal.
 services: storage
 author: tamram
 ms.service: storage
@@ -8,25 +8,25 @@ ms.topic: article
 ms.date: 06/26/2018
 ms.author: tamram
 ms.component: blobs
-ms.openlocfilehash: beacb39752b2af51aba4ddeb41c9bff68803df1b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 74d6acb03f9ba984d35caf1f5c7963f686cda5a7
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46954768"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51219252"
 ---
-# <a name="configure-a-custom-domain-name-for-your-azure-storage-account"></a>Konfigurace vlastního názvu domény pro váš účet Azure Storage
+# <a name="configure-a-custom-domain-name-for-your-azure-storage-account"></a>Konfigurace vlastního názvu domény pro váš účet úložiště Azure
 
-Můžete nakonfigurovat vlastní doménu pro přístup k datům objektu blob v účtu úložiště Azure. Výchozí koncový bod pro úložiště objektů Blob je `<storage-account-name>.blob.core.windows.net`. Můžete také použít webový koncový bod generována jako součást [funkce statických webů (preview)](storage-blob-static-website.md). Pokud namapujete vlastní doménu a subdoménu jako **www.contoso.com** koncový bod objektu blob nebo web pro úložiště účtu, uživatelé můžou potom přístup k datům objektu blob v účtu úložiště pomocí této domény.
+Můžete nakonfigurovat vlastní doménu pro přístup k datům objektu blob v účtu úložiště Azure. Výchozí koncový bod pro úložiště objektů Blob v Azure je  *\<název účtu úložiště >. blob.core.windows.net*. Můžete také použít webový koncový bod, který je generován jako součást [funkce statických webů (preview)](storage-blob-static-website.md). Pokud například mapování vlastní domény a subdomény, *www.contoso.com*, ke koncovému bodu objektu blob nebo web pro váš účet úložiště, můžou uživatelé používala tuto doménu pro přístup k datům objektu blob v účtu úložiště.
 
 > [!IMPORTANT]
-> Azure Storage zatím nativně nepodporuje protokol HTTPS s použitím vlastních domén. Aktuálně můžete [přístup k objektům BLOB s použitím vlastních domén přes protokol HTTPS pomocí Azure CDN](storage-https-custom-domain-cdn.md).
+> Azure Storage zatím nativně nepodporuje protokol HTTPS s použitím vlastních domén. Aktuálně můžete [použití Azure CDN přístup k objektům BLOB s použitím vlastních domén přes protokol HTTPS](storage-https-custom-domain-cdn.md).
 >
 
 > [!NOTE]  
-> Účty úložiště se aktuálně podporují jenom jeden vlastní název domény na jeden účet. To znamená, že vlastní název domény nelze mapovat na koncové body služeb web a objektů blob.
+> Účty úložiště se aktuálně podporují jenom jeden vlastní název domény na jeden účet. Vlastní název domény nelze mapovat do koncových bodů služby web a objektů blob.
 
-Následující tabulka ukazuje několik ukázky adresy URL pro data objektů blob v účtu úložiště s názvem **mystorageaccount**. Vlastní doména zaregistrovaná pro účet úložiště je **www.contoso.com**:
+Následující tabulka ukazuje několik ukázky adresy URL pro data objektů blob, který se nachází v účtu úložiště s názvem *mystorageaccount*. Vlastní domény, který je registrovaný pro účet úložiště je *www.contoso.com*:
 
 | Typ prostředku | Výchozí adresa URL | Adresa URL vlastní domény |
 | --- | --- | --- | --- |
@@ -36,72 +36,102 @@ Následující tabulka ukazuje několik ukázky adresy URL pro data objektů blo
 | Web |  http://mystorageaccount. [zone].web.core.windows.net/$web/[indexdoc] nebo http://mystorageaccount. [ Zone].Web.Core.Windows.NET/[indexdoc] nebo http://mystorageaccount. [ Zone].Web.Core.Windows.NET/$Web nebo http://mystorageaccount. [ Zone].Web.Core.Windows.NET/ | http://www.contoso.com/$web nebo http://www.contoso.com/ nebo http://www.contoso.com/$web / [indexdoc] nebo http://www.contoso.com/[indexdoc] |
 
 > [!NOTE]  
-> Všechny příklady pro koncový bod služby Blob service níže platí také pro koncový bod webové služby.
+> Jak je znázorněno v následujících částech, pro koncový bod služby blob service ve všech příkladech platí také pro koncový bod webové služby.
 
 ## <a name="direct-vs-intermediary-domain-mapping"></a>Přímé porovnání zprostředkující domény mapování
 
-Existují dva způsoby, jak vaši vlastní doménu. přejděte na koncový bod objektu blob pro účet úložiště: přímé CNAME mapování a použití *asverify* zprostředkující subdomény.
+Vlastní domény může odkazovat na koncový bod objektu blob pro účet úložiště v některém ze dvou způsobů: 
+* Použijte přímé mapování CNAME.
+* Použití *asverify* zprostředkující subdomény.
 
 ### <a name="direct-cname-mapping"></a>Přímé mapování CNAME
 
-Metoda první a nejjednodušší, je vytvořit záznam kanonického názvu (CNAME), který mapuje vaši vlastní doménu a subdoménu přímo na koncový bod objektu blob. Záznam CNAME je funkce system (DNS) název domény, která mapuje zdrojovou doménu na cílovou doménu. V takovém případě je ve zdrojové doméně své vlastní domény a subdomény, například *www.contoso.com*. Cílová doména je vašeho koncového bodu služby objektů Blob, například *mystorageaccount.blob.core.windows.net*.
+Metoda první a nejjednodušší, je vytvořit záznam kanonického názvu (CNAME), který mapuje vaši vlastní doménu a subdoménu přímo na koncový bod objektu blob. Záznam CNAME je funkce system (DNS) název domény, která mapuje zdrojovou doménu na cílovou doménu. V našem příkladu je ve zdrojové doméně své vlastní doménu a subdoménu (*www.contoso.com*, například). Cílová doména je koncový bod služby blob service (*mystorageaccount.blob.core.windows.net*, například).
 
-Přímé metody jsou obsaženy v [registrace vlastní domény](#register-a-custom-domain).
+Přímé metody je popsané v části "Zaregistrovat vlastní doménu".
 
 ### <a name="intermediary-mapping-with-asverify"></a>Zprostředkující mapování *asverify*
 
-Druhá metoda používá také záznamy CNAME, ale nejprve využívá speciální subdomény rozpoznávaných Azure, aby se zabránilo výpadkům: **asverify**.
+Druhá metoda používá také záznamy CNAME. Výpadky, ale nejprve využívá speciální subdomény *asverify* , který je rozpoznáván Azure.
 
-Proces mapování vlastní domény do koncového bodu objektu blob může způsobit krátkému výpadku domény během registrace v [webu Azure portal](https://portal.azure.com). Pokud vaše vlastní doména se aktuálně podporují aplikace smlouvu o úrovni služeb (SLA), která nevyžaduje žádný výpadek, pak můžete použít Azure *asverify* subdoménu jako krok zprostředkující registrace. Tento zprostředkující krok zajistí, že uživatelé se můžou během mapování DNS přístup k vaší doméně.
+Mapování vlastní domény do koncového bodu objektu blob může způsobit na krátkou dobu výpadku během registrace domény v [webu Azure portal](https://portal.azure.com). Pokud domény aktuálně podporuje aplikace s smlouvu o úrovni služeb (SLA), která nevyžaduje žádný výpadek, použijte Azure *asverify* subdoménu jako krok zprostředkující registrace. Tento krok zajistí, že uživatelé během mapování DNS přístup vaší domény.
 
-Se věnuje metodě zprostředkující [zaregistrovat vlastní doménu pomocí *asverify* subdoménu](#register-a-custom-domain-using-the-asverify-subdomain).
+Se věnuje metodě zprostředkující [registrace vlastní domény s použitím *asverify* subdoménu](#register-a-custom-domain-using-the-asverify-subdomain).
 
 ## <a name="register-a-custom-domain"></a>Registrace vlastní domény
-Tento postup použijte k registraci vaši vlastní doménu. Pokud máte obavu, informace o doméně stručně není k dispozici uživatelům nebo pokud vaší vlastní domény není aktuálně hostování aplikace. Azure DNS můžete použít ke konfiguraci vlastního názvu DNS pro úložiště objektů Blob v Azure. Další informace najdete v tématu popisujícím [použití Azure DNS k určení nastavení vlastní domény pro službu Azure](https://docs.microsoft.com/azure/dns/dns-custom-domain#blob-storage).
+Registrace domény pomocí postupu v této části, je-li použít následující příkazy:
+* Jste unconcerned doména je krátce není k dispozici pro vaše uživatele.
+* Vaše vlastní doména není aktuálně hostování aplikace. 
 
-Pokud ve vaší vlastní doméně aktuálně podporuje aplikace, která nemůže mít žádné výpadky, postupujte podle pokynů uvedených v [zaregistrovat vlastní doménu pomocí *asverify* subdoménu](#register-a-custom-domain-using-the-asverify-subdomain).
+Azure DNS můžete použít ke konfiguraci vlastního názvu DNS pro úložiště objektů Blob v Azure. Další informace najdete v tématu popisujícím [použití Azure DNS k určení nastavení vlastní domény pro službu Azure](https://docs.microsoft.com/azure/dns/dns-custom-domain#blob-storage).
 
-Pokud chcete nakonfigurovat vlastní název domény, musíte vytvořit nový záznam CNAME v DNS. Určuje záznam CNAME, alias pro název domény. V takovém případě mapuje adresu vaši vlastní doménu na koncový bod úložiště objektů Blob v účtu úložiště.
+Pokud vaši vlastní doménu aktuálně podporuje aplikace, která nemůže mít žádné výpadky, použijte postup v [zaregistrovat se pomocí vlastní domény *asverify* subdomény](#register-a-custom-domain-using-the-asverify-subdomain).
 
-Obvykle můžete spravovat nastavení DNS pro vaši doménu na webu vašeho registrátora domény. Každý Registrátor má podobné, ale mírně odlišné metodu pro určení záznam CNAME, ale koncept je stejný. Některé balíčky doména pro základní registrace nenabízejí konfigurace DNS, proto budete muset upgradovat registrační balíček vaší domény, než budete moct vytvořit záznam CNAME.
+Konfigurace vlastního názvu domény, vytvořte nový záznam CNAME v DNS. Určuje záznam CNAME, alias pro název domény. V našem příkladu mapuje adresu vaši vlastní doménu na koncový bod vašeho účtu úložiště Blob storage.
 
-1. Přejděte do svého účtu úložiště v [webu Azure portal](https://portal.azure.com).
-1. V části **služby BLOB SERVICE** v okně s nabídkou vyberte **vlastní domény** otevřít *vlastní domény* okno.
-1. Přihlaste se k webu vašeho registrátora domény a přejděte na stránku pro správu DNS. Může to být v části, jako je **Název domény**, **DNS** nebo **Správa názvového serveru**.
-1. Najděte část pro správu záznamů CNAME. Bude pravděpodobně nutné přejít na stránku rozšířeného nastavení a hledat slova **CNAME**, **Alias**, nebo **subdomény**.
-1. Vytvoří nový záznam CNAME a zadejte subdoménu alias jako **www** nebo **fotografie**. Potom zadejte název hostitele, což je služba koncový bod služby Blob, ve formátu **mystorageaccount.blob.core.windows.net** (kde *mystorageaccount* je název vašeho účtu úložiště). Název hostitele pro použití se zobrazí u položky #1 *vlastní domény* okna portálu [webu Azure portal](https://portal.azure.com).
-1. Do textového pole na *vlastní domény* okna portálu [webu Azure portal](https://portal.azure.com), zadejte název vlastní doménu včetně poddomény. Například, pokud je vaše doména **contoso.com** a je váš alias subdoménu **www**, zadejte **www.contoso.com**. Pokud je vaše subdoménu **fotografie**, zadejte **photos.contoso.com**. Se subdoménou *požadované*.
-1. Vyberte **Uložit** na *vlastní domény* okno k registraci ve vaší vlastní doméně. Pokud registrace je úspěšný, zobrazí se oznámení na portálu účtu úložiště se úspěšně aktualizovala.
+Obvykle můžete spravovat nastavení DNS pro vaši doménu na webu vašeho registrátora domény. Každý Registrátor má podobné, ale mírně odlišné metodu pro určení záznam CNAME, ale koncept je stejný. Protože některé balíčky doména pro základní registrace nenabízí konfigurace DNS, můžete potřebovat k upgradu vaší domény registrační balíček, než budete moct vytvořit záznam CNAME.
 
-Jakmile nový záznam CNAME se rozšíří prostřednictvím DNS, vaši uživatelé můžete zobrazit data objektů blob s použitím vlastní domény, tak dlouho, dokud mají příslušná oprávnění.
+1. V [webu Azure portal](https://portal.azure.com), přejděte do svého účtu úložiště.
 
-## <a name="register-a-custom-domain-using-the-asverify-subdomain"></a>Registrace a s použitím vlastní domény *asverify* subdomény
-Pomocí tohoto postupu můžete zaregistrovat vlastní domény Pokud vaší vlastní domény aktuálně podporuje aplikace se smlouvou SLA, která vyžaduje, aby existovat bez výpadků. Tím, že vytvoříte záznam CNAME, který se odkazuje z `asverify.<subdomain>.<customdomain>` k `asverify.<storageaccount>.blob.core.windows.net`, můžete předem zaregistrovat vaši doménu v Azure. Potom můžete vytvořit druhý záznam CNAME, který se odkazuje z `<subdomain>.<customdomain>` k `<storageaccount>.blob.core.windows.net`, v tomto okamžiku budete přesměrováni provozu do vaší vlastní domény na koncový bod služby blob.
+1. Na panelu nabídky klikněte v části **služby Blob Service**vyberte **vlastní domény**.  
+   **Vlastní domény** se otevře podokno.
 
-**Asverify** subdoménu je speciální subdoména rozpoznána platformou Azure. Předponou v podobě `asverify` vlastní poddomény povolit Azure beze změny záznam DNS pro doménu rozpoznala vaši vlastní doménu. Při úpravě záznamu DNS pro doménu, se namapují na koncový bod služby blob došlo k výpadku.
+1. Přihlaste se k webu vašeho registrátora domény a pak přejděte na stránku pro správu DNS.  
+   Můžete se setkat na stránce v části s názvem **název domény**, **DNS**, nebo **Name Server Management**.
 
-1. Přejděte do svého účtu úložiště v [webu Azure portal](https://portal.azure.com).
-1. V části **služby BLOB SERVICE** v okně s nabídkou vyberte **vlastní domény** otevřít *vlastní domény* okno.
-1. Přihlaste se k webu vašeho poskytovatele DNS a přejděte na stránku pro správu DNS. Může to být v části, jako je **Název domény**, **DNS** nebo **Správa názvového serveru**.
-1. Najděte část pro správu záznamů CNAME. Bude pravděpodobně nutné přejít na stránku rozšířeného nastavení a hledat slova **CNAME**, **Alias**, nebo **subdomény**.
-1. Vytvoří nový záznam CNAME a zadejte subdoménu alias, který zahrnuje *asverify* subdomény. Například **asverify.www** nebo **asverify.photos**. Potom zadejte název hostitele, což je služba koncový bod služby Blob, ve formátu **asverify.mystorageaccount.blob.core.windows.net** (kde **mystorageaccount** je název vašeho účtu úložiště). Název hostitele pro použití se zobrazí v bodu #2 *vlastní domény* okna portálu [webu Azure portal](https://portal.azure.com).
-1. Do textového pole na *vlastní domény* okna portálu [webu Azure portal](https://portal.azure.com), zadejte název vlastní doménu včetně poddomény. Nezahrnují *asverify*. Například, pokud je vaše doména **contoso.com** a je váš alias subdoménu **www**, zadejte **www.contoso.com**. Pokud je vaše subdoménu **fotografie**, zadejte **photos.contoso.com**. Vyžaduje se subdoménou.
+1. Najděte část pro správu záznamů CNAME.  
+   Budete muset přejít na stránku rozšířeného nastavení a Hledat **CNAME**, **Alias**, nebo **subdomény**.
+
+1. Vytvoří nový záznam CNAME, zadejte subdoménu alias jako **www** nebo **fotografie**a potom zadejte název hostitele.  
+   Je název hostitele vašeho koncového bodu služby objektů blob. Má formát  *\<mystorageaccount >. blob.core.windows.net*, kde *mystorageaccount* je název vašeho účtu úložiště. Název hostitele pro použití se zobrazí u položky #1 **vlastní domény** v podokně [webu Azure portal](https://portal.azure.com).
+
+1. V **vlastní domény** podokně, v textovém poli zadejte název vlastní doménu včetně poddomény.  
+   Například, pokud je vaše doména *contoso.com* a je váš alias subdoménu *www*, zadejte **www.contoso.com**. Pokud je vaše subdoménu *fotografie*, zadejte **photos.contoso.com**.
+
+1. Chcete-li zaregistrovat ve vaší vlastní doméně, vyberte **Uložit**.  
+   Pokud je úspěšné registraci, portál vás upozorní, že váš účet úložiště se úspěšně aktualizovala.
+
+Po nový záznam CNAME se rozšíří prostřednictvím DNS, pokud mají vaši uživatelé příslušná oprávnění, se můžete zobrazit data objektů blob s použitím vlastní domény.
+
+## <a name="register-a-custom-domain-by-using-the-asverify-subdomain"></a>Zaregistrovat se pomocí vlastní domény *asverify* subdomény
+Pokud ve vaší vlastní doméně aktuálně podporuje aplikace se smlouvou SLA, která vyžaduje, aby existuje bez výpadku, zaregistrujte vaši vlastní doménu pomocí postupu v této části. Tím, že vytvoříte záznam CNAME, který se odkazuje z *asverify.\< subdoména >. \<chyby >* k *asverify.\< účet úložiště >. blob.core.windows.net*, můžete předem zaregistrovat vaši doménu v Azure. Potom můžete vytvořit druhý záznam CNAME, který se odkazuje z  *\<subdoména >.\< chyby >* k  *\<účet úložiště >. blob.core.windows.net*, a pak se provoz do vaší vlastní doméně směřuje na koncový bod služby blob.
+
+*Asverify* subdoménu je speciální subdoména rozpoznána platformou Azure. Předponou v podobě *asverify* vlastní poddomény povolit Azure bez nutnosti upravit záznam DNS pro doménu rozpoznala vaši vlastní doménu. Při úpravě záznamu DNS pro doménu, se namapují na koncový bod služby blob došlo k výpadku.
+
+1. V [webu Azure portal](https://portal.azure.com), přejděte do svého účtu úložiště.
+
+1. Na panelu nabídky klikněte v části **služby Blob Service**vyberte **vlastní domény**.  
+   **Vlastní domény** se otevře podokno.
+
+1. Přihlaste se k webu vašeho poskytovatele DNS a potom přejděte na stránku pro správu DNS.  
+   Můžete se setkat na stránce v části s názvem **název domény**, **DNS**, nebo **Name Server Management**.
+
+1. Najděte část pro správu záznamů CNAME.  
+   Budete muset přejít na stránku rozšířeného nastavení a Hledat **CNAME**, **Alias**, nebo **subdomény**.
+
+1. Vytvoří nový záznam CNAME, zadejte subdoménu alias, který zahrnuje *asverify* subdomény, jako například **asverify.www** nebo **asverify.photos**a potom zadejte název hostitele.  
+   Je název hostitele vašeho koncového bodu služby objektů blob. Má formát *asverify.\< mystorageaccount >. blob.core.windows.net*, kde *mystorageaccount* je název vašeho účtu úložiště. Název hostitele pro použití se zobrazí v bodu #2 *vlastní domény* v podokně [webu Azure portal](https://portal.azure.com).
+
+1. V **vlastní domény** podokně, v textovém poli zadejte název vlastní doménu včetně poddomény.  
+   Nezahrnují *asverify*. Například, pokud je vaše doména *contoso.com* a je váš alias subdoménu *www*, zadejte **www.contoso.com**. Pokud je vaše subdoménu *fotografie*, zadejte **photos.contoso.com**.
+
 1. Vyberte **použít nepřímé ověření CNAME** zaškrtávací políčko.
-1. Vyberte **Uložit** na *vlastní domény* okno k registraci ve vaší vlastní doméně. Pokud registrace je úspěšný, zobrazí se oznámení na portálu s informacemi o tom, že váš účet úložiště se úspěšně aktualizovala. V tomto okamžiku se neověří vlastní doménu Azure, ale provoz do domény není dosud směrovány do vašeho účtu úložiště.
-1. Zpět na web poskytovatele DNS a vytvořit další záznam CNAME, který mapuje vaše subdomény na koncový bod služby Blob service. Například zadejte subdoménu jako **www** nebo **fotografie** (bez *asverify*) a název hostitele jako **mystorageaccount.blob.core.windows.net**  (kde **mystorageaccount** je název vašeho účtu úložiště). S tímto krokem je dokončení registrace vlastní domény.
-1. Nakonec můžete odstranit záznam CNAME, který jste vytvořili, který obsahuje **asverify** subdomény, protože bylo zapotřebí pouze jako zprostředkující kroky.
 
-Jakmile nový záznam CNAME se rozšíří prostřednictvím DNS, vaši uživatelé můžete zobrazit data objektů blob s použitím vlastní domény, tak dlouho, dokud mají příslušná oprávnění.
+1. Chcete-li zaregistrovat ve vaší vlastní doméně, vyberte **Uložit**.  
+   Pokud je úspěšné registraci, portál vás upozorní, že váš účet úložiště se úspěšně aktualizovala. Vaše vlastní doména se ověřila pomocí Azure, ale provoz do domény není dosud směrovány do vašeho účtu úložiště.
+
+1. Zpět na web poskytovatele DNS a potom vytvořit jiný záznam CNAME, který mapuje vaše subdomény na koncový bod služby blob service.  
+   Například zadejte subdoménu jako *www* nebo *fotografie* (bez *asverify*) a zadejte název hostitele jako  *\<mystorageaccount >. blob.core.windows.net*, kde *mystorageaccount* je název vašeho účtu úložiště. S tímto krokem je dokončení registrace vlastní domény.
+
+1. Nakonec můžete odstranit nově vytvořený záznam CNAME, který obsahuje *asverify* subdoménu, která byla požadována pouze jako zprostředkující kroky.
+
+Po nový záznam CNAME se rozšíří prostřednictvím DNS, pokud mají vaši uživatelé příslušná oprávnění, se můžete zobrazit data objektů blob s použitím vlastní domény.
 
 ## <a name="test-your-custom-domain"></a>Testování vlastní domény
 
-Potvrďte, že vaše vlastní doména se mapuje skutečně na koncový bod služby Blob service, vytvoření objektu blob ve veřejném kontejneru v účtu úložiště. Potom ve webovém prohlížeči, použijte identifikátor URI v následujícím formátu a přístup k objektu blob:
+Pokud chcete potvrdit, že vaše vlastní doména se mapuje na koncový bod služby blob service, vytvoření objektu blob ve veřejném kontejneru v účtu úložiště. Ve webovém prohlížeči přístupu objektu blob s použitím identifikátoru URI v následujícím formátu: `http://<subdomain.customdomain>/<mycontainer>/<myblob>`
 
-`http://<subdomain.customdomain>/<mycontainer>/<myblob>`
-
-Například můžete použít následující identifikátor URI pro přístup k webové formuláře v **myforms** kontejneru **photos.contoso.com** vlastní subdomény:
-
-`http://photos.contoso.com/myforms/applicationform.htm`
+Například pro přístup k webové formuláře v *myforms* kontejneru *photos.contoso.com* vlastní subdomény, můžete použít následující identifikátor URI: `http://photos.contoso.com/myforms/applicationform.htm`
 
 ## <a name="deregister-a-custom-domain"></a>Zrušení registrace vlastní domény
 
@@ -109,18 +139,22 @@ Zrušení registrace vlastní domény pro koncový bod služby Blob storage, pou
 
 ### <a name="azure-portal"></a>portál Azure
 
-Na webu Azure Portal k odebrání nastavení vlastní domény, proveďte následující kroky:
+Pokud chcete odebrat nastavení vlastní domény, postupujte takto:
 
-1. Přejděte do svého účtu úložiště v [webu Azure portal](https://portal.azure.com).
-1. V části **služby BLOB SERVICE** v okně s nabídkou vyberte **vlastní domény** otevřít *vlastní domény* okno.
-1. Vymazání obsahu textového pole obsahující vlastní název domény.
+1. V [webu Azure portal](https://portal.azure.com), přejděte do svého účtu úložiště.
+
+1. Na panelu nabídky klikněte v části **služby Blob Service**vyberte **vlastní domény**.  
+   **Vlastní domény** se otevře podokno.
+
+1. Vymazání obsahu textového pole, která obsahuje vlastní název domény.
+
 1. Vyberte tlačítko **Uložit**.
 
-Při vlastní domény byl úspěšně odebrán, zobrazí se oznámení na portálu s informacemi o tom, že váš účet úložiště se úspěšně aktualizovala.
+Po vlastní domény byl úspěšně odebrán, zobrazí se oznámení na portálu účtu úložiště se úspěšně aktualizovala.
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Použití [aktualizace účtu úložiště az](https://docs.microsoft.com/cli/azure/storage/account#az_storage_account_update) rozhraní příkazového řádku příkaz a zadejte prázdný řetězec (`""`) pro `--custom-domain` hodnota argumentu k odebrání registrace vlastní domény.
+K odebrání registrace vlastní domény, použijte [aktualizace účtu úložiště az](https://docs.microsoft.com/cli/azure/storage/account#az_storage_account_update) rozhraní příkazového řádku příkaz a pak zadejte prázdný řetězec (`""`) pro `--custom-domain` hodnota argumentu.
 
 * Formát příkazu:
 
@@ -142,7 +176,7 @@ Použití [aktualizace účtu úložiště az](https://docs.microsoft.com/cli/az
 
 ### <a name="powershell"></a>PowerShell
 
-Použití [Set-AzureRmStorageAccount](/powershell/module/azurerm.storage/set-azurermstorageaccount) rutiny prostředí PowerShell a zadejte prázdný řetězec (`""`) pro `-CustomDomainName` hodnota argumentu k odebrání registrace vlastní domény.
+K odebrání registrace vlastní domény, použijte [Set-AzureRmStorageAccount](/powershell/module/azurerm.storage/set-azurermstorageaccount) rutiny Powershellu a pak zadejte prázdný řetězec (`""`) pro `-CustomDomainName` hodnota argumentu.
 
 * Formát příkazu:
 
@@ -165,4 +199,4 @@ Použití [Set-AzureRmStorageAccount](/powershell/module/azurerm.storage/set-azu
 ## <a name="next-steps"></a>Další postup
 * [Mapování vlastní domény do koncového bodu Azure Content Delivery Network (CDN)](../../cdn/cdn-map-content-to-custom-domain.md)
 * [Přístup k objektům BLOB s použitím vlastních domén přes protokol HTTPS pomocí Azure CDN](storage-https-custom-domain-cdn.md)
-* [Hostování statického webu ve službě Azure Blob Storage (Preview)](storage-blob-static-website.md)
+* [Hostování statického webu ve službě Azure Blob storage (preview)](storage-blob-static-website.md)

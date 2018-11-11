@@ -16,12 +16,12 @@ ms.topic: overview
 ms.date: 08/25/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 3baa48113022bed1bdc7caa5854a231334c975af
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: cabd54d5f3847e6f273793800a75d4d1c240b2ce
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47224626"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50420757"
 ---
 # <a name="what-is-device-management-in-azure-active-directory"></a>Co je správa zařízení v Azure Active Directory?
 
@@ -45,7 +45,7 @@ Pokud chcete získat kontrolu nad zařízeními prostřednictvím Azure AD, mát
 
 **Registrace** zařízení do Azure AD vám umožní spravovat identitu zařízení. Po registraci zařízení mu registrace zařízení služby Azure AD poskytne identitu, která se používá k ověření zařízení při přihlášení uživatele k Azure AD. Pomocí identity můžete zařízení povolit nebo zakázat.
 
-Při kombinaci s řešením správy mobilních zařízení (MDM), jako je například Microsoft Intune, se atributy zařízení v Azure AD aktualizují o další informace o zařízení. To vám umožňuje vytvořit pravidla podmíněného přístupu, která vynucují, aby přístup měla pouze taková zařízení, která splňují vaše standardy zabezpečení a dodržování předpisů.  Další informace o registraci zařízení v Microsoft Intune najdete v tématu Registrace zařízení pro správu v Intune.
+Při kombinaci s řešením správy mobilních zařízení (MDM), jako je například Microsoft Intune, se atributy zařízení v Azure AD aktualizují o další informace o zařízení. To vám umožňuje vytvořit pravidla podmíněného přístupu, která vynucují, aby přístup měla pouze taková zařízení, která splňují vaše standardy zabezpečení a dodržování předpisů.  Další informace o registraci zařízení v Microsoft Intune najdete v tématu [Registrace zařízení pro správu v Intune](https://docs.microsoft.com/en-us/intune/device-enrollment#supported-device-platforms).
 
 **Připojení** zařízení představuje rozšíření registrace zařízení. To znamená, že vám poskytne všechny výhody registrace zařízení a navíc také změní místní stav zařízení. Změna místního stavu umožní vašim uživatelům přihlašovat se k zařízení pomocí pracovního nebo školního účtu organizace, a ne osobního účtu.
 

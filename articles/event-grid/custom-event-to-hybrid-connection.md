@@ -5,23 +5,25 @@ services: event-grid
 keywords: ''
 author: tfitzmac
 ms.author: tomfitz
-ms.date: 10/02/2018
+ms.date: 10/30/2018
 ms.topic: tutorial
 ms.service: event-grid
-ms.openlocfilehash: d56a07bf6fcb368f50e081a1f56b7cfb022c05ca
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 788e0c8cf799922c425424fe4733e1e6618215e4
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48042236"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50421012"
 ---
 # <a name="route-custom-events-to-azure-relay-hybrid-connections-with-azure-cli-and-event-grid"></a>Směrování vlastních událostí do Azure Relay Hybrid Connections pomocí Azure CLI a Event Gridu
 
-Azure Event Grid je služba zpracování událostí pro cloud. Azure Relay Hybrid Connections je jednou z podporovaných obslužných rutin událostí. Hybridní připojení použijete jako obslužnou rutinu události, když je potřeba zpracovat události z aplikací, které nemají veřejný koncový bod. Tyto aplikace se můžou nacházet ve vaší podnikové síti. V tomto článku pomocí Azure CLI vytvoříte vlastní téma, přihlásíte se k jeho odběru a aktivujete událost, abyste viděli výsledek. Události odešlete do hybridního připojení.
+Azure Event Grid je služba zpracování událostí pro cloud. Azure Relay Hybrid Connections je jednou z podporovaných obslužných rutin událostí. Hybridní připojení použijete jako obslužnou rutinu události, když je potřeba zpracovat události z aplikací, které nemají veřejný koncový bod. Tyto aplikace se můžou nacházet ve vaší podnikové síti. V tomto článku vytvoříte pomocí Azure CLI vlastní téma, přihlásíte se k jeho odběru a aktivujete událost, abyste viděli výsledek. Události odešlete do hybridního připojení.
 
 ## <a name="prerequisites"></a>Požadavky
 
 Tento článek předpokládá, že už máte hybridní připojení a aplikaci naslouchacího procesu. Pokud chcete začít používat hybridní připojení, přečtěte si téma [Začínáme s Relay Hybrid Connections – .NET](../service-bus-relay/relay-hybrid-connections-dotnet-get-started.md) nebo [Začínáme s Relay Hybrid Connections – Node](../service-bus-relay/relay-hybrid-connections-node-get-started.md).
+
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 [!INCLUDE [event-grid-preview-feature-note.md](../../includes/event-grid-preview-feature-note.md)]
 
@@ -64,14 +66,17 @@ hybridname=<hybrid-name>
 
 relayid=$(az resource show --name $relayname --resource-group $relayrg --resource-type Microsoft.Relay/namespaces --query id --output tsv)
 hybridid="$relayid/hybridConnections/$hybridname"
+topicid=$(az eventgrid topic show --name <topic_name> -g gridResourceGroup --query id --output tsv)
 
 az eventgrid event-subscription create \
-  --topic-name <topic_name> \
-  -g gridResourceGroup \
+  --source-resource-id $topicid \
   --name <event_subscription_name> \
   --endpoint-type hybridconnection \
-  --endpoint $hybridid
+  --endpoint $hybridid \
+  --expiration-date "2018-11-30"
 ```
+
+Všimněte si, že je nastavené datum vypršení platnosti odběru. Po tomto datu automaticky vyprší platnost odběru událostí. Nastavte vypršení platnosti pro odběry událostí, které jsou potřeba jenom po omezenou dobu.
 
 ## <a name="create-application-to-process-events"></a>Vytvoření aplikace pro zpracování událostí
 
@@ -98,7 +103,7 @@ endpoint=$(az eventgrid topic show --name <topic_name> -g gridResourceGroup --qu
 key=$(az eventgrid topic key list --name <topic_name> -g gridResourceGroup --query "key1" --output tsv)
 ```
 
-Pro zjednodušení tohoto článku použijte k odeslání do vlastního tématu ukázková data události. Obvykle by aplikace nebo služba Azure odesílala data události. CURL je nástroj, který odesílá požadavky HTTP. V tomto článku používáme nástroj CURL k odeslání události do vlastního tématu.
+V zájmu zjednodušení tohoto článku použijte k odeslání do vlastního tématu ukázková data události. Obvykle by aplikace nebo služba Azure odesílala data události. CURL je nástroj, který odesílá požadavky HTTP. V tomto článku používáme nástroj CURL k odeslání události do vlastního tématu.
 
 ```azurecli-interactive
 event='[ {"id": "'"$RANDOM"'", "eventType": "recordInserted", "subject": "myapp/vehicles/motorcycles", "eventTime": "'`date +%Y-%m-%dT%H:%M:%S%z`'", "data":{ "make": "Ducati", "model": "Monster"},"dataVersion": "1.0"} ]'

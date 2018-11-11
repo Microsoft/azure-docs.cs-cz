@@ -10,20 +10,20 @@ ms.component: bing-autosuggest
 ms.topic: quickstart
 ms.date: 09/14/2017
 ms.author: v-jaswel
-ms.openlocfilehash: 6f79416c28631a47209558fd0c415ae79cff93bc
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: c19fa95bd5529f18a65ad466e9c6352b1be80657
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48831394"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50421114"
 ---
 # <a name="quickstart-for-bing-autosuggest-api-with-java"></a>Rychlý start pro rozhraní API pro automatické návrhy Bingu s Javou
 
-V tomto článku se dozvíte, jak používat [rozhraní API pro automatické návrhy Bingu](https://azure.microsoft.com/services/cognitive-services/autosuggest/) s Javou. Rozhraní API pro automatické návrhy Bingu vrací seznam navrhovaných dotazů založený na části řetězce dotazu, který uživatel do vyhledávacího pole zadává. Obvykle se toto rozhraní API volá pokaždé, když uživatel zadá do vyhledávacího pole další znak, a potom se v rozevíracím seznamu ve vyhledávacím poli zobrazí návrhy. V tomto článku se dozvíte, jak odeslat požadavek, který vrátí navrhované řetězce dotazu pro dotaz *sail*.
+V tomto článku se dozvíte, jak používat [rozhraní API pro automatické návrhy Bingu](https://azure.microsoft.com/services/cognitive-services/autosuggest/) s využitím Javy. Rozhraní API pro automatické návrhy Bingu vrací seznam navrhovaných dotazů založený na části řetězce dotazu, který uživatel do vyhledávacího pole zadává. Obvykle se toto rozhraní API volá pokaždé, když uživatel zadá do vyhledávacího pole další znak, a potom se v rozevíracím seznamu ve vyhledávacím poli zobrazí návrhy. V tomto článku se dozvíte, jak odeslat požadavek, který vrátí navrhované řetězce dotazu pro dotaz *sail*.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pro kompilaci a spuštění tohoto kódu budete potřebovat [JDK 7 nebo 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html). Můžete použít prostředí Java IDE, pokud je vaše oblíbené, ale stačit bude i textový editor.
+Pro kompilaci a spuštění tohoto kódu budete potřebovat [JDK 7 nebo 8](https://aka.ms/azure-jdks). Můžete použít prostředí Java IDE, pokud je vaše oblíbené, ale stačit bude i textový editor.
 
 Potřebujete [účet rozhraní API Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s **rozhraním API pro automatické návrhy Bingu verze 7**. Pro účely tohoto rychlého startu stačí [bezplatná zkušební verze](https://azure.microsoft.com/try/cognitive-services/#search). Při aktivaci bezplatné zkušební verze budete potřebovat poskytnutý přístupový klíč nebo můžete použít klíč placeného předplatného z řídicího panelu Azure.
 
@@ -190,5 +190,5 @@ public class Autosuggest {
 
 ## <a name="see-also"></a>Viz také
 
-- [Co jsou Automatické návrhy Bingu?](../get-suggested-search-terms.md)
+- [Co jsou automatické návrhy Bingu?](../get-suggested-search-terms.md)
 - [Referenční materiály rozhraní API pro automatické návrhy Bingu verze 7](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v7-reference)

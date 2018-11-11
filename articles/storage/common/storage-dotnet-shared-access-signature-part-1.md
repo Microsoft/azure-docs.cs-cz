@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/18/2017
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: c7d2c16ef135644c1ff23d7a71c66bec27ac930d
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 1bc93b083b0f6f0d813f209c9371ce38e8a9daa6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50241041"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228806"
 ---
 # <a name="using-shared-access-signatures-sas"></a>Použití sdílených přístupových podpisů (SAS)
 
@@ -223,7 +223,7 @@ Toto riziko omezit, pomůže následující doporučení pro použití sdílený
 7. **Vysvětlení, že váš účet se bude účtovat veškeré využití, která se provádí pomocí SAS.** Pokud poskytnete oprávnění k zápisu do objektu blob, můžete zvolit k nahrání objektu blob 200GB. Pokud jste dali je také přístup pro čtení, se může rozhodnete si ho stáhnout 10krát, bez 2 TB za výchozí přenos dat pro vás. Znovu zadejte omezenými oprávněními, aby mohlo včas reagovat na potenciální akce uživateli se zlými úmysly. Krátkodobé a jednorázové SAS můžete tuto hrozbu zmírnit (ale dávejte zkosení podél koncový čas hodiny).
 8. **Ověření dat zapsaných pomocí SAS.** Když klientská aplikace zapíše data do účtu úložiště, mějte na paměti, že může být problémy s daty. Pokud vaše aplikace vyžaduje, aby se data ověření nebo oprávnění předtím, než je připravený k použití, měli byste provést toto ověření po zapsání dat a předtím, než je použit v aplikaci. Tento postup také chrání před poškozený nebo škodlivý data je zapsána do vašeho účtu uživatele, který správně získat SAS nebo uživatelem využívajícím uniklé SAS.
 9. **Nepoužívejte vždy SAS.** Někdy rizika spojená s konkrétní operace proti účtu úložiště převážit nad výhodami SAS. Pro tyto operace vytvoření střední vrstvy služby, která zapisuje do vašeho účtu úložiště po provedení obchodní pravidla ověřování, ověřování a auditování. Někdy je také jednodušší Správa přístupu k jiným způsobem. Například pokud chcete, aby všechny objekty BLOB v kontejneru veřejně čitelné, můžete vytvořit kontejner Public, místo poskytování SAS pro přístup na všechny klienty.
-10. **Použití Storage Analytics pro monitorování vaší aplikace.** Protokolování a metriky můžete sledovat všechny nárůst selhání ověřování kvůli výpadku služby Zprostředkovatel SAS nebo nechtěnému odstranění uložených zásad přístupu. Zobrazit [Blog týmu Azure Storage](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/08/03/windows-azure-storage-logging-using-logs-to-track-storage-requests.aspx) pro další informace.
+10. **Použití Storage Analytics pro monitorování vaší aplikace.** Protokolování a metriky můžete sledovat všechny nárůst selhání ověřování kvůli výpadku služby Zprostředkovatel SAS nebo nechtěnému odstranění uložených zásad přístupu. Zobrazit [Blog týmu Azure Storage](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/08/03/windows-azure-storage-logging-using-logs-to-track-storage-requests.aspx) pro další informace.
 
 ## <a name="sas-examples"></a>Příklady SAS
 Níže je několik příkladů oba typy sdíleného přístupového podpisu SAS účtu a SAS služby.
@@ -423,5 +423,5 @@ Sdílené přístupové podpisy jsou užitečná omezená oprávnění k účtu 
 ## <a name="next-steps"></a>Další kroky
 * [Sdílené přístupové podpisy, část 2: Vytvoření a použití SAS s úložištěm objektů Blob](../blobs/storage-dotnet-shared-access-signature-part-2.md)
 * [Správa anonymního přístupu pro čtení ke kontejnerům a objektům BLOB](../blobs/storage-manage-access-to-resources.md)
-* [Delegování přístupu se sdíleným přístupovým podpisem](http://msdn.microsoft.com/library/azure/ee395415.aspx)
-* [Úvod do tabulky a SAS fronty.](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-table-sas-shared-access-signature-queue-sas-and-update-to-blob-sas.aspx)
+* [Delegování přístupu se sdíleným přístupovým podpisem](https://msdn.microsoft.com/library/azure/ee395415.aspx)
+* [Úvod do tabulky a SAS fronty.](https://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-table-sas-shared-access-signature-queue-sas-and-update-to-blob-sas.aspx)

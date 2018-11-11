@@ -5,14 +5,14 @@ services: expressroute
 author: ganesr
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 08/29/2018
+ms.date: 11/05/2018
 ms.author: ganesr
-ms.openlocfilehash: 35644912da2b75009ba2b16f4a188011ba1f813e
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
-ms.translationtype: MT
+ms.openlocfilehash: 9c9f216ee25cd74ac8bcb5521cad85d051422eb2
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49650124"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51219337"
 ---
 # <a name="expressroute-routing-requirements"></a>Požadavky na směrování služby ExpressRoute
 Pokud se chcete připojit ke cloudovým službám Microsoftu pomocí služby ExpressRoute, budete muset nastavit a spravovat směrování. Někteří poskytovatelé připojení nabízejí nastavení a správu směrování jako spravovanou službu. Zeptejte se svého poskytovatele připojení, jestli tuto službu nabízí. Pokud ne, je nutné splnit následující požadavky:
@@ -100,7 +100,7 @@ Pokud vám ve výše uvedených registrech nejsou přiřazeny vaše předpony a 
 U partnerského vztahu Microsoftu je povoleno soukromé číslo AS, které ale také vyžaduje ruční ověření. Kromě toho v AS PATH odebereme soukromá čísla AS pro přijaté předpony. V důsledku toho nebudete moct připojit soukromá čísla AS k AS PATH, abyste [ovlivnili směrování pro partnerský vztah Microsoftu](expressroute-optimize-routing.md). 
 
 > [!IMPORTANT]
-> Veřejné IP adresy inzerované do Microsoftu prostřednictvím ExpressRoute nesmí být inzerované na internetu. To by mohlo způsobit přerušení připojení k jiným službám Microsoftu. Nicméně veřejné IP adresy používané servery ve vaší síti, které komunikují s koncovými body O365 v rámci Microsoftu, lze inzerovat prostřednictvím ExpressRoute. 
+> Neprovádějí stejnou veřejnou IP trasy do veřejného Internetu a přes ExpressRoute. Důrazně doporučujeme inzerovat konkrétnější trasu přes ExpressRoute a další obecné směrují do Internetu pro [NAT](expressroute-nat.md). Kromě veřejné trasy pro překlad adres, můžete také inzerovat přes ExpressRoute veřejné IP adresy používané servery ve vaší místní síti, které komunikují s koncovými body služeb Office 365 v rámci Microsoftu. 
 > 
 > 
 

@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/20/2018
+ms.date: 11/05/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 6f7fced5163476dc1de866474484f98d546d1901
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
-ms.translationtype: MT
+ms.openlocfilehash: 1def5686933a971b1192ec58bc72d64cbc5e8931
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945718"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51219320"
 ---
 # <a name="add-adfs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>Přidání služby AD FS jako zprostředkovatele identity SAML pomocí vlastních zásad v Azure Active Directory B2C
 
@@ -64,6 +64,7 @@ Pokud chcete uživatelům umožní přihlásit pomocí účtu služby AD FS, mus
           <Metadata>
             <Item Key="WantsEncryptedAssertions">false</Item>
             <Item Key="PartnerEntity">https://your-ADFS-domain/federationmetadata/2007-06/federationmetadata.xml</Item>
+            <Item Key=" XmlSignatureAlgorithm">Sha256</Item>
           </Metadata>
           <CryptographicKeys>
             <Key Id="SamlAssertionSigning" StorageReferenceId="B2C_1A_ADFSSamlCert"/>
@@ -165,6 +166,15 @@ Otevřete prohlížeč a přejděte na adresu URL. Ujistěte se, že jste zadali
 9. Vyberte **přidat pravidlo**.  
 10. V **šablony pravidla deklarace identity**vyberte **odesílat atributy LDAP jako deklarace identity**.
 11. Zadejte **název pravidla deklarace identity**. Pro **úložiště atributů**vyberte **služby Active Directory vyberte**, přidejte následující deklarace identity a pak klikněte na tlačítko **Dokončit** a **OK**.
+
+    | LDAP attrubute | Typ odchozí deklarace |
+    | -------------- | ------------------- |
+    | Uživatel Principal-Name | userPricipalName |
+    | příjmení | family_name |
+    | Zadaný název | given_name |
+    | E-mailovou adresu | e-mail |
+    | Zobrazovaný název | jméno |
+    
 12.  Podle typu certifikátu, budete muset nastavit HASHOVACÍHO algoritmu. Předávající strany vztahu důvěryhodnosti (ukázka B2C) okna vlastnosti, vyberte **Upřesnit** kartu a změnit **Secure hash algorithm** k `SHA-1` nebo `SHA-256`a klikněte na tlačítko **Ok**.  
 13. Ve Správci serveru vyberte **nástroje**a pak vyberte **správu služby AD FS**.
 14. Vyberte vztah důvěryhodnosti předávající strany jste vytvořili, vyberte **aktualizace z federačních metadat**a potom klikněte na tlačítko **aktualizace**. 

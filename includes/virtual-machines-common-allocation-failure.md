@@ -9,11 +9,11 @@ ms.date: 04/14/2018
 ms.author: genli
 ms.custom: include file
 ms.openlocfilehash: 2eb7fb82b358d4ec8628bfa546b572ee3cbe47fa
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47413428"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51208290"
 ---
 Při vytvoření virtuálního počítače (VM), restartování zastaveno (přidělení zrušeno) virtuálních počítačů nebo změně velikosti virtuálního počítače, platforma Microsoft Azure přiřadí výpočetní prostředky, které vaše předplatné. Budeme průběžně společností investuje do další infrastrukturu a funkce, abyste měli jistotu, že vždy máme všechny typy virtuálních počítačů jsou dostupné pro podporu poptávky zákazníků. Však může občas docházet k selhání přidělení prostředků z důvodu nebývalému nárůstu poptávky pro služby Azure v různých oblastech. Tento problém může vzniknout při pokusu o vytvoření nebo spuštění virtuálních počítačů v oblasti, zatímco se virtuální počítače se zobrazují následující kód chyby a zprávy:
 

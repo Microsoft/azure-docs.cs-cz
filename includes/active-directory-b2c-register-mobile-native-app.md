@@ -9,11 +9,11 @@ ms.date: 04/09/2018
 ms.author: davidmu
 ms.custom: include file
 ms.openlocfilehash: 8363d023e89c77aabc0d123f19264c9a0758a656
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38740459"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51208241"
 ---
 [!INCLUDE [active-directory-b2c-portal-add-application](active-directory-b2c-portal-add-application.md)]
 

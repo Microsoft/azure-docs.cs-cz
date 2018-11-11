@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/29/2018
 ms.author: terrylan
-ms.openlocfilehash: 8c236b995d71cd067546cea5eeaaebe6d5dc4fab
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: de8a61b315ad433bef638368a30130b677e0a005
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44300643"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51229010"
 ---
 # <a name="investigate-incidents-and-alerts-in-azure-security-center-preview"></a>Vyšetřování incidentů a výstrah v Azure Security Center (Preview)
 Tento dokument vám pomůže používat funkci šetření v Azure Security Center k vyšetřování výstrah a incidentů zabezpečení.
@@ -118,4 +118,4 @@ V tomto dokumentu jste zjistili, jak používat funkci šetření ve službě Se
 * [Principy výstrah zabezpečení ve službě Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-alerts-type). Seznamte se s dalšími typy výstrah zabezpečení.
 * [Průvodce odstraňováním potíží pro službu Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-troubleshooting-guide). Zjistěte, jak řešit běžné problémy ve službě Security Center.
 * [Azure Security Center – nejčastější dotazy](security-center-faq.md). Přečtěte si nejčastější dotazy o použití této služby.
-* [Blog o zabezpečení Azure](http://blogs.msdn.com/b/azuresecurity/). Přečtěte si příspěvky o zabezpečení Azure a dodržování předpisů.
+* [Blog o zabezpečení Azure](https://blogs.msdn.com/b/azuresecurity/). Přečtěte si příspěvky o zabezpečení Azure a dodržování předpisů.

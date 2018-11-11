@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/03/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 3e660dbcbfecd57c43ecec6006581364660adb44
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 40396462cc568a4ad7dea798fc30d72dcd75fd07
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50737223"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51210159"
 ---
 # <a name="azure-managed-disks-overview"></a>Přehled služby Azure Managed Disks
 
@@ -69,7 +69,7 @@ Pojďme se na ně podívat tyto možnosti.
 
 Tady jsou k dispozici pro spravovaný disk úrovně premium velikosti disků:
 
-| **Premium SDD Managed <br>typ disku** | **P4** | **P6** | **P10** | **P15** | **P20** | **P30** | **P40** | **P50** | **P60** | **P70** | **P80** |
+| **Premium SSD spravované <br>typ disku** | **P4** | **P6** | **P10** | **P15** | **P20** | **P30** | **P40** | **P50** | **P60** | **P70** | **P80** |
 |------------------|---------|---------|--------|--------|--------|----------------|----------------|----------------|----------------|----------------|----------------|
 | Velikost disku        | 32 GiB  | 64 GiB  | 128 GiB | 256 GiB | 512 GiB | 1 024 giB (1 TB) | 2 048 giB (2 TB) | 4095 giB (4 TB) | 8192 giB (8 TB) | 16384 giB (16 TB) | 32 767 giB (TB) |
 
