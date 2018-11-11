@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 08/27/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 6e3026ea3aca897ab63f4ad7d72eac438fdb7199
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 8aec6ae3532acaaa5d039ee9db8745927c66957b
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389107"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51288777"
 ---
 # <a name="oms-portal-moving-to-azure"></a>Portál OMS do Azure
 
@@ -55,7 +55,7 @@ Odkazovat na [běžné otázky týkající se přechodu z portálu OMS na webu A
 Správa přístupu na portálu Azure je bohatší a výkonnější než správu přístupu na portálu OMS. Zobrazit [Správa pracovních prostorů](log-analytics-manage-access.md#manage-accounts-and-users) podrobné řízení přístupu ve službě Log Analytics.
 
 > [!NOTE]
-> Předchozí verze tohoto článku je uvedeno, že oprávnění by automaticky převést z portálu OMS na webu Azure portal. Tato automatická konverzace je již plánované a je třeba provést převod, sami.
+> Předchozí verze tohoto článku je uvedeno, že oprávnění by automaticky převést z portálu OMS na webu Azure portal. Tento automatický převod se už plánované a je třeba provést převod, sami.
 
 Možná už máte správný přístup na webu Azure Portal v takovém případě nemusíte nic měnit. Existuje několik případů, kdy nemusí mít odpovídající přístup v takovém případě správce musíte přiřadit jste oprávnění.
 

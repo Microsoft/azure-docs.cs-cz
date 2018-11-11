@@ -1,5 +1,5 @@
 ---
-title: Nasazení pracovní prostor Machine Learning s Azure Resource Manager | Microsoft Docs
+title: Nasazení pracovního prostoru Machine Learning pomocí Azure Resource Manageru | Dokumentace Microsoftu
 description: Postup nasazení pracovního prostoru pro Azure Machine Learning pomocí šablony Azure Resource Manageru
 services: machine-learning
 documentationcenter: ''
@@ -15,23 +15,23 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 2/05/2018
-ms.openlocfilehash: 82d2316b3f72fbb0c5c3ee1ea9424afcc7661361
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: fc19c77e90ffd2d300497fc496da02b2d2234d3a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34833967"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51244385"
 ---
 # <a name="deploy-machine-learning-workspace-using-azure-resource-manager"></a>Nasazení pracovního prostoru Machine Learning pomocí Azure Resource Manageru
 ## <a name="introduction"></a>Úvod
-Pomocí Azure Resource Manager šablonu nasazení šetří čas je tím, že jste škálovatelné způsob, jak nasadit vzájemně propojena k součástem s ověřování a opakujte mechanismus. Abyste nastavili Azure Machine Learning pracovní prostory, například musíte nejdřív nakonfigurovat účet úložiště Azure a pak nasadit pracovního prostoru. Představte si to ručně ve velkém množství pracovních prostorů. Jednodušší alternativou je pomocí šablony Azure Resource Manager k nasazení pracovní prostor služby Azure Machine Learning a všechny jeho závislé součásti. Tento článek vás provede krok za krokem tohoto procesu. Skvělý Přehled služby Správce prostředků Azure, najdete v části [přehled Azure Resource Manageru](../../azure-resource-manager/resource-group-overview.md).
+Pomocí Azure Resource Manageru šablony nasazení šetří čas vyznačuje mimořádně škálovatelný způsob, jak nasadit vzájemně propojených součástí ověřování a mechanismus opakování. Nastavení pracovních prostorů Azure Machine Learning, například musíte nejprve nakonfigurovat účet úložiště Azure a pak nasaďte váš pracovní prostor. Představte si to ručně pro stovky pracovní prostory. Jednodušší alternativu je použití šablony Azure Resource Manageru k nasazení pracovního prostoru služby Azure Machine Learning a všechny jeho závislosti. Tento článek vás provede krok za krokem tohoto procesu. Skvělý přehled Azure Resource Manageru najdete v tématu [přehled Azure Resource Manageru](../../azure-resource-manager/resource-group-overview.md).
 
-## <a name="step-by-step-create-a-machine-learning-workspace"></a>Postup: vytvoření pracovního prostoru Machine Learning
-Jsme se vytvořit skupinu prostředků Azure a pak nasaďte nový účet úložiště Azure a nový Azure Machine Learning pracovní prostor pomocí šablony Resource Manageru. Po dokončení nasazení jsme se vytiskněte důležité informace o pracovních prostorech, které byly vytvořeny (primární klíč, ID pracovního prostoru a adresu URL do pracovního prostoru).
+## <a name="step-by-step-create-a-machine-learning-workspace"></a>Podrobný postup: vytvořit pracovní prostor Machine Learning
+Jsme se vytvořit skupinu prostředků Azure a pak nasaďte nový účet úložiště Azure a nový Azure pracovní prostor Machine Learning pomocí šablony Resource Manageru. Po dokončení nasazení můžeme se vytiskne důležité informace o pracovních prostorech, které byly vytvořeny (primární klíč, ID pracovního prostoru a adresu URL do pracovního prostoru).
 
-### <a name="create-an-azure-resource-manager-template"></a>Vytvořit šablonu Azure Resource Manager
-Pracovní prostor Machine Learning vyžaduje účet úložiště Azure pro uložení datové sady na sebe napojenou.
-Následující šablona používá název skupiny prostředků můžete vygenerovat název účtu úložiště a název pracovního prostoru.  Také používá název účtu úložiště jako vlastnost při vytváření pracovního prostoru.
+### <a name="create-an-azure-resource-manager-template"></a>Vytvoření šablony Azure Resource Manageru
+Pracovní prostor Machine Learning vyžaduje účet Azure storage k uložení datové sady na sebe.
+Následující šablony používá název skupiny prostředků pro vygenerování názvu účtu úložiště a název pracovního prostoru.  Také používá název účtu úložiště jako vlastnost při vytváření pracovního prostoru.
 
 ```
 {
@@ -78,11 +78,11 @@ Následující šablona používá název skupiny prostředků můžete vygenero
 }
 
 ```
-Uložte jako soubor mlworkspace.json pod c:\temp\ této šablony.
+Tuto šablonu uložte jako soubor mlworkspace.json pod c:\temp\.
 
 ### <a name="deploy-the-resource-group-based-on-the-template"></a>Nasazení skupiny prostředků, na základě šablony
 * Otevření Powershellu
-* Instalace modulů pro správu služby Azure a Azure Resource Manager  
+* Nainstalujte moduly Azure Resource Manageru a správy služeb prostředí Azure  
 
 ```
 # Install the Azure Resource Manager modules from the PowerShell Gallery (press “A”)
@@ -92,7 +92,7 @@ Install-Module AzureRM -Scope CurrentUser
 Install-Module Azure -Scope CurrentUser
 ```
 
-   Tyto kroky stáhnout a nainstalovat moduly, které jsou potřebné k dokončení zbývající kroky. Stačí, když to se provádí jednou v prostředí, kde jsou prováděny příkazy prostředí PowerShell.   
+   Tyto kroky stáhněte a nainstalujte moduly, které jsou nezbytné pro dokončení zbývajících kroků. To je pouze potřeba provést v prostředí, ve kterém spouštíte příkazy prostředí PowerShell.   
 
 * Ověřování v Azure  
 
@@ -100,11 +100,11 @@ Install-Module Azure -Scope CurrentUser
 # Authenticate (enter your credentials in the pop-up window)
 Connect-AzureRmAccount
 ```
-Tento krok je potřeba zopakovat pro každou relaci. Po ověření, má být zobrazena informace o vašem předplatném.
+Tento krok je potřeba opakovat pro každou relaci. Po ověření, má být zobrazena informace o vašem předplatném.
 
 ![Účet Azure][1]
 
-Teď, když máme přístup k Azure, můžeme vytvořit skupiny prostředků.
+Když teď máme přístup k Azure, můžeme vytvořit skupinu prostředků.
 
 * Vytvoření skupiny prostředků
 
@@ -113,8 +113,8 @@ $rg = New-AzureRmResourceGroup -Name "uniquenamerequired523" -Location "South Ce
 $rg
 ```
 
-Ověřte, že je správně zřízený skupině prostředků. **Stav zřizování** by měl být "byla úspěšná."
-Název skupiny prostředků se šablonou používá ke generování název účtu úložiště. Název účtu úložiště musí být v rozmezí 3 až 24 znaků a používat jenom číslice a malá písmena.
+Ověřte, že skupina prostředků je správně zřízený. **Stav zřizování** by měl být "byla úspěšná."
+Název skupiny prostředků pomocí šablony slouží ke generování názvu účtu úložiště. Název účtu úložiště musí být dlouhý 3 až 24 znaků a použít pouze číslice a malá písmena.
 
 ![Skupina prostředků][2]
 
@@ -125,25 +125,25 @@ Název skupiny prostředků se šablonou používá ke generování název účt
 $rgd = New-AzureRmResourceGroupDeployment -Name "demo" -TemplateFile "C:\temp\mlworkspace.json" -ResourceGroupName $rg.ResourceGroupName
 ```
 
-Po dokončení nasazení je snadný přístup k vlastnosti pracovního prostoru, které jste nasadili. Například můžete přistupovat tokenu primární klíč.
+Po dokončení nasazení je jednoduché pro přístup k vlastnostem pracovního prostoru, který jste nasadili. Například můžete přistupovat primární klíč tokenu.
 
 ```
 # Access Azure ML Workspace Token after its deployment.
 $rgd.Outputs.mlWorkspaceToken.Value
 ```
 
-Použití příkazu Invoke-AzureRmResourceAction je jiný způsob, jak načíst tokeny existujícímu pracovnímu prostoru. Například můžete vytvořit seznam tokenů primární a sekundární všech pracovních prostorů.
+Dalším způsobem, jak získat tokeny existující pracovní prostor je použití příkazu Invoke-AzureRmResourceAction. Například můžete vytvořit seznam primární a sekundární tokeny všechny pracovní prostory.
 
 ```  
 # List the primary and secondary tokens of all workspaces
 Get-AzureRmResource |? { $_.ResourceType -Like "*MachineLearning/workspaces*"} |% { Invoke-AzureRmResourceAction -ResourceId $_.ResourceId -Action listworkspacekeys -Force}  
 ```
-Po zřízení pracovním prostoru můžete také automatizovat celou řadu úloh Azure Machine Learning Studio pomocí [modul prostředí PowerShell pro Azure Machine Learning](http://aka.ms/amlps).
+Po zřízení pracovního prostoru můžete automatizovat řadu úloh Azure Machine Learning Studio pomocí [modul PowerShell pro Azure Machine Learning](https://aka.ms/amlps).
 
 ## <a name="next-steps"></a>Další kroky
-* Další informace o [vytváření šablon Azure Resource Manageru](../../azure-resource-manager/resource-group-authoring-templates.md). 
-* Podívejte se na [úložiště šablony Azure rychlý Start](https://github.com/Azure/azure-quickstart-templates). 
-* Přehrát toto video o [Azure Resource Manager](https://channel9.msdn.com/Events/Ignite/2015/C9-39). 
+* Další informace o [Tvorba šablon Azure Resource Manageru](../../azure-resource-manager/resource-group-authoring-templates.md). 
+* Podívejte se na [úložišti šablon Azure Quickstart](https://github.com/Azure/azure-quickstart-templates). 
+* Podívejte se na video o [Azure Resource Manageru](https://channel9.msdn.com/Events/Ignite/2015/C9-39). 
 
 <!--Image references-->
 [1]: ./media/deploy-with-resource-manager-template/azuresubscription.png

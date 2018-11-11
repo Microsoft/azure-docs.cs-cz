@@ -10,14 +10,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/25/2018
+ms.date: 11/08/2018
 ms.author: tomfitz
-ms.openlocfilehash: e99d5d36fa46e9972e706d580e4dfb1d5f9e8bbc
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: c65f5364ccd4943d1d3e703ed27099408d3a2a27
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50093817"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51346588"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Přesunutí prostředků do nové skupiny prostředků nebo předplatného
 
@@ -28,11 +28,10 @@ Při přesouvání prostředků, zdrojová skupina a cílová skupina jsou zamč
 Nelze změnit umístění prostředku. Přesunutí prostředku pouze přesune do nové skupiny prostředků. Nová skupina prostředků může mít jiné umístění, ale to se nemění umístění prostředku.
 
 > [!NOTE]
-> Tento článek popisuje, jak přesunout prostředky v rámci Azure existující účet nabídky. Pokud chcete skutečně změnit svého účtu Azure nabízí (například upgrade z bezplatné na průběžné platby) budete muset převést vaše předplatné. 
+> Tento článek popisuje, jak přesunout prostředky v rámci Azure existující účet nabídky. Pokud chcete skutečně změnit svého účtu Azure nabízí (například upgrade z bezplatné na průběžné platby) budete muset převést vaše předplatné.
 > * Upgrade bezplatné zkušební verze, najdete v článku [upgradujte vaše předplatné Microsoft Imagine Azure nebo bezplatná zkušební verze na průběžné platby](..//billing/billing-upgrade-azure-subscription.md).
 > * Chcete-li změnit účet s průběžnými platbami, [změnit předplatné Azure s průběžnými platbami na jinou nabídku](../billing/billing-how-to-switch-azure-offer.md).
 > * Pokud nelze převést předplatné [vytvoření žádosti o podporu Azure](../azure-supportability/how-to-create-azure-support-request.md). Vyberte **správy předplatných** typ problému.
->
 
 ## <a name="checklist-before-moving-resources"></a>Kontrolní seznam před přesunutím prostředků
 
@@ -42,7 +41,7 @@ Před přesunutím prostředku je nutné provést několik důležitých kroků.
 
   Pro prostředí Azure PowerShell použijte:
 
-  ```powershell
+  ```azurepowershell-interactive
   (Get-AzureRmSubscription -SubscriptionName <your-source-subscription>).TenantId
   (Get-AzureRmSubscription -SubscriptionName <your-destination-subscription>).TenantId
   ```
@@ -63,14 +62,14 @@ Před přesunutím prostředku je nutné provést několik důležitých kroků.
 
   Pokud používáte PowerShell, použijte následující příkazy získat stav registrace:
 
-  ```powershell
+  ```azurepowershell-interactive
   Set-AzureRmContext -Subscription <destination-subscription-name-or-id>
   Get-AzureRmResourceProvider -ListAvailable | Select-Object ProviderNamespace, RegistrationState
   ```
 
   Zaregistrovat poskytovatele prostředků, použijte:
 
-  ```powershell
+  ```azurepowershell-interactive
   Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Batch
   ```
 
@@ -112,7 +111,7 @@ Kontakt [podporují](https://portal.azure.com/#blade/Microsoft_Azure_Support/Hel
 
 ## <a name="validate-move"></a>Ověří přesun
 
-[Ověření operace přesunu](/rest/api/resources/resources/resources_validatemoveresources) umožňuje testovat váš scénář přesunu bez skutečně přesouvání prostředků. Pomocí této operace můžete zjistit, pokud bude úspěšné přesunutí. K provedení této operace, je nutné:
+[Ověření operace přesunu](/rest/api/resources/resources/validatemoveresources) umožňuje testovat váš scénář přesunu bez skutečně přesouvání prostředků. Pomocí této operace můžete zjistit, pokud bude úspěšné přesunutí. K provedení této operace, je nutné:
 
 * Název zdrojové skupiny prostředků
 * ID prostředku cílová skupina prostředků
@@ -325,7 +324,6 @@ Tady jsou omezení, které se zatím nepodporují:
 * Škálovací sady virtuálních počítačů pomocí nástroje pro vyrovnávání zatížení standardní SKU nebo standardní veřejnou IP Adresou skladové položky nelze přesunout.
 * Virtuální počítače vytvořené z Marketplace prostředky s plány připojené se nedají přesouvat mezi skupinami prostředků nebo předplatných. Zrušení zřízení virtuálního počítače v rámci aktuálního předplatného a znovu nasadit v rámci nového předplatného.
 
-
 ## <a name="virtual-networks-limitations"></a>Omezení virtuální sítě
 
 Při přesunu virtuální síť, musíte také přesunout její závislé prostředky. Pro brány sítě VPN musíte přesunout IP adresy brány virtuální sítě a všechny prostředky přidružené připojení. Brány místní sítě může být v jiné skupině prostředků.
@@ -346,9 +344,9 @@ Při přesunu webovou aplikaci _v rámci stejného předplatného_, nelze přesu
 
 Pokud chcete přesunout certifikát SSL s webovou aplikací, postupujte podle těchto kroků:
 
-1.  Odstranění se nahraný certifikát z webové aplikace.
-2.  Přesun webové aplikace.
-3.  Nahrajte certifikát do přesunutý webové aplikace.
+1. Odstranění se nahraný certifikát z webové aplikace.
+2. Přesun webové aplikace.
+3. Nahrajte certifikát do přesunutý webové aplikace.
 
 ### <a name="moving-across-subscriptions"></a>Přesun mezi předplatnými
 
@@ -503,7 +501,7 @@ Po jeho dokončení budete informováni o výsledek.
 
 Chcete-li stávající prostředky přesunout do jiné skupiny prostředků nebo předplatného, použijte [Move-AzureRmResource](/powershell/module/azurerm.resources/move-azurermresource) příkazu. Následující příklad ukazuje, jak přesunout více prostředků do nové skupiny prostředků.
 
-```powershell
+```azurepowershell-interactive
 $webapp = Get-AzureRmResource -ResourceGroupName OldRG -ResourceName ExampleSite
 $plan = Get-AzureRmResource -ResourceGroupName OldRG -ResourceName ExamplePlan
 Move-AzureRmResource -DestinationResourceGroupName NewRG -ResourceId $webapp.ResourceId, $plan.ResourceId

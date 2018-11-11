@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/25/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: fa7d0f98f8119ad34e0764423e99af4564f20387
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 8d351e41eac3c820b9295b3b5cf314428bebc746
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46311924"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51242989"
 ---
 # <a name="azure-ad-connect-sync-service-features"></a>Funkce služby synchronizace Azure AD Connect
 Funkce synchronizace služby Azure AD Connect má dvě součásti:
@@ -30,7 +30,7 @@ Funkce synchronizace služby Azure AD Connect má dvě součásti:
 
 Toto téma vysvětluje, jak tyto funkce **služby synchronizace Azure AD Connect** práce a jak pomocí prostředí Windows PowerShell nakonfigurovat.
 
-Tato nastavení jsou konfigurována pomocí [modulu Azure Active Directory pro Windows PowerShell](https://aka.ms/aadposh). Stáhněte si a nainstalujte odděleně od Azure AD Connect. Rutiny uvedené v tomto tématu byly zavedeny v [vydání březen 2016 (build 9031.1)](http://social.technet.microsoft.com/wiki/contents/articles/28552.microsoft-azure-active-directory-powershell-module-version-release-history.aspx#Version_9031_1). Pokud používáte rutiny popsané v tomto tématu nebo záměrně neprodukují stejný výsledek, ujistěte se, že běží nejnovější verze.
+Tato nastavení jsou konfigurována pomocí [modulu Azure Active Directory pro Windows PowerShell](https://aka.ms/aadposh). Stáhněte si a nainstalujte odděleně od Azure AD Connect. Rutiny uvedené v tomto tématu byly zavedeny v [vydání březen 2016 (build 9031.1)](https://social.technet.microsoft.com/wiki/contents/articles/28552.microsoft-azure-active-directory-powershell-module-version-release-history.aspx#Version_9031_1). Pokud používáte rutiny popsané v tomto tématu nebo záměrně neprodukují stejný výsledek, ujistěte se, že běží nejnovější verze.
 
 Pokud chcete zobrazit konfiguraci v adresáři služby Azure AD, spusťte `Get-MsolDirSyncFeatures`.  
 ![Get-MsolDirSyncFeatures výsledek](./media/how-to-connect-syncservice-features/getmsoldirsyncfeatures.png)
@@ -59,7 +59,7 @@ Následující nastavení jsou nakonfigurovány pomocí služby Azure AD Connect
 | DirectoryExtensions |[Synchronizace Azure AD Connect: rozšíření adresáře](how-to-connect-sync-feature-directory-extensions.md) |
 | [DuplicateProxyAddressResiliency<br/>DuplicateUPNResiliency](#duplicate-attribute-resiliency) |Umožňuje atribut, který má být umístěn do karantény, když je duplikátem jiného objektu spíš než celý objekt selhání během exportu. |
 | Synchronizace hodnoty hash hesel |[Implementace synchronizace hodnot hash hesel pomocí synchronizace Azure AD Connect](how-to-connect-password-hash-synchronization.md) |
-|Předávací ověřování|[Přihlášení uživatele pomocí předávacího ověřování Azure Active Directory](how-to-connect-pta.md)|
+|Předávací ověřování|[Přihlašování uživatelů s využitím předávacího ověřování služby Azure Active Directory](how-to-connect-pta.md)|
 | UnifiedGroupWriteback |[Ve verzi Preview: Zpětný zápis skupin](how-to-connect-preview.md#group-writeback) |
 | UserWriteback |Není aktuálně podporováno. |
 

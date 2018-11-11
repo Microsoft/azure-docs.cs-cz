@@ -10,12 +10,12 @@ ms.devlang: nodejs
 ms.topic: sample
 ms.date: 04/05/2018
 ms.author: sngun
-ms.openlocfilehash: 2b88bd3c86d520b10c27746319f807d2f6208bfa
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 77d5d6fa9b9494c934f850d5b82a0328cead67b9
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43048171"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51245167"
 ---
 # <a name="how-to-use-azure-table-storage-or-the-azure-cosmos-db-table-api-from-nodejs"></a>Jak používat službu Azure Table Storage nebo rozhraní Table API služby Azure Cosmos DB z Node.js
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -123,7 +123,7 @@ Pokud chcete přidat entitu, nejprve vytvořte objekt definující vlastnosti en
 * **PartitionKey** – Určuje oddíl, ve kterém je entita uložená.
 * **RowKey** – Jednoznačně identifikuje entitu v rámci oddílu.
 
-**PartitionKey** i **RowKey** musí být řetězcové hodnoty. Další informace najdete v tématu [Vysvětlení datového modelu služby Table Storage](http://msdn.microsoft.com/library/azure/dd179338.aspx).
+**PartitionKey** i **RowKey** musí být řetězcové hodnoty. Další informace najdete v tématu [Vysvětlení datového modelu služby Table Storage](https://msdn.microsoft.com/library/azure/dd179338.aspx).
 
 Následuje příklad definice entity. Všimněte si, že **dueDate** je definovaný jako typ **Edm.DateTime**. Zadání typu je volitelné. Pokud typ není zadaný, odvodí se.
 

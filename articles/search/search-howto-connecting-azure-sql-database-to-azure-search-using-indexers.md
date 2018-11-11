@@ -9,12 +9,12 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
-ms.openlocfilehash: 1c498bb857b717682f943af96b222d9712b5d389
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: ba2ce12fcfad14b0910144b1a95efd44be54811f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49409216"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51245643"
 ---
 # <a name="connecting-azure-sql-database-to-azure-search-using-indexers"></a>Připojení k Azure Search pomocí indexerů Azure SQL Database
 
@@ -140,7 +140,7 @@ Odpověď by měl vypadat nějak takto:
     }
 
 Historie provádění obsahuje až 50 nedávno dokončené spuštění, které jsou seřazeny v opačném pořadí chronologickém (tak, aby poslední spuštění je dodávána první v odpovědi).
-Další informace o odpovědi můžete najít v [získání stavu indexeru](http://go.microsoft.com/fwlink/p/?LinkId=528198)
+Další informace o odpovědi můžete najít v [získání stavu indexeru](https://go.microsoft.com/fwlink/p/?LinkId=528198)
 
 ## <a name="run-indexers-on-a-schedule"></a>Indexery spouštět podle plánu
 Můžete také uspořádat indexer pravidelné spouštění podle plánu. Chcete-li to provést, přidejte **plán** vlastnost při vytváření nebo aktualizaci indexeru. Následující příklad ukazuje požadavek PUT aktualizovat indexer:

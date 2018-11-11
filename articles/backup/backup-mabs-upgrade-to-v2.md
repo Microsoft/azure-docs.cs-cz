@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: adigan
-ms.openlocfilehash: a458a46f3775a593f369d5acb967fc90d61efde8
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 4f1e0c14d3a835b9f6d739511186bdcc19917a7a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39628337"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230970"
 ---
 # <a name="install-azure-backup-server-v2"></a>Instalace Azure Backup Server v2
 
@@ -103,7 +103,7 @@ Přidání svazku v konzole pro správu:
 
   Pokud chcete přidat disk, disk musí patřit do skupiny ochrany, které mají starší verzi úložiště. Tyto disky můžete použít pouze pro tyto skupiny ochrany. Pokud Backup Server nemá zdroje, které mají starší verzí ochrany, disk není uvedený.
 
-  Další informace o přidávání disků najdete v tématu [přidejte disky do starší verze úložiště zvětšila](http://docs.microsoft.com/system-center/dpm/upgrade-to-dpm-2016#adding-disks-to-increase-legacy-storage). Disk není možné udělit popisný název.
+  Další informace o přidávání disků najdete v tématu [přidejte disky do starší verze úložiště zvětšila](https://docs.microsoft.com/system-center/dpm/upgrade-to-dpm-2016#adding-disks-to-increase-legacy-storage). Disk není možné udělit popisný název.
 
 
 ### <a name="assign-workloads-to-volumes"></a>Přiřazení úloh ke svazkům
@@ -160,7 +160,7 @@ Chcete-li vytvořit skupinu ochrany:
 
   ![Stránka Kontrola přidělení diskového úložiště](./media/backup-mabs-upgrade-to-v2/create-a-protection-group-6.png)
 
-  Svazky úložiště jsou na základě úlohy přidělené svazku (nastavení s použitím prostředí PowerShell) a dostupné úložiště. Svazky úložiště můžete změnit výběrem jiných svazků v rozevírací nabídce. Pokud změníte hodnotu **cílové úložiště**, hodnota **dostupné diskové úložiště** dynamicky měnit podle hodnoty v rámci **volného místa** a ** Nevytížené místo**.
+  Svazky úložiště jsou na základě úlohy přidělené svazku (nastavení s použitím prostředí PowerShell) a dostupné úložiště. Svazky úložiště můžete změnit výběrem jiných svazků v rozevírací nabídce. Pokud změníte hodnotu **cílové úložiště**, hodnota **dostupné diskové úložiště** dynamicky měnit podle hodnoty v rámci **volného místa** a  **Nevytížené místo**.
 
   Pokud zdroje dat rozrůstají podle plánu, hodnota **Nevytíženého místa** sloupec v **dostupné diskové úložiště** odráží velikost dalšího úložiště, který je nezbytný. Tuto hodnotu použijte, abyste mohli naplánovat požadavky na ukládání pro plynulého zálohování. Pokud je hodnota nula, nejsou v předvídatelné budoucnosti žádné potenciální problémy s úložištěm. Pokud je hodnota jiné číslo než nula, nemáte přidělené dostatečné úložiště (podle vašich zásad ochrany a velikosti dat chráněných členů).
 
@@ -175,13 +175,13 @@ Aktualizace skupin ochrany na používání moderního úložiště záloh je vo
 
 1. V System Center 2016 konzole správce aplikace DPM, vyberte **ochrany** funkce. V **člena skupiny ochrany** seznamu, klikněte pravým tlačítkem na člena a pak vyberte **zastavit ochranu člena**.
 
-  ![Zastavit ochranu člena](http://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-stop-protection1.png)
+  ![Zastavit ochranu člena](https://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-stop-protection1.png)
 
 2. V **odebrat ze skupiny** dialogové okno pole, zkontrolujte, využité místo na disku a dostupné volné místo pro fond úložiště. Ve výchozím nastavení je nechat body obnovení na disku a umožnit jim vypršení platnosti podle přidružené zásady uchovávání. Vyberte **OK**.
 
   Pokud chcete využité místo na disku ihned vrátit do volného fondu úložiště, vyberte **odstranit repliku na disku** zaškrtávací políčko, chcete-li odstranit zálohovaná data (a body obnovení) přidružené k tohoto člena.
 
-  ![Odebrat ze skupiny, dialogové okno](http://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-retain-data.png)
+  ![Odebrat ze skupiny, dialogové okno](https://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-retain-data.png)
 
 3. Vytvořte skupinu ochrany, která používá moderní úložiště záloh. Zahrnout ní nechráněné zdroje dat.
 
@@ -194,7 +194,7 @@ Chcete-li přidat diskové úložiště:
 
 1. V System Center 2016 konzole správce aplikace DPM, vyberte **správu** > **diskové úložiště** > **přidat**.
 
-  ![Přidat dialog diskové úložiště](http://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-add-disk-storage.png)
+  ![Přidat dialog diskové úložiště](https://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-add-disk-storage.png)
 
 2. V **přidat diskové úložiště** dialogu **přidat disky**.
 

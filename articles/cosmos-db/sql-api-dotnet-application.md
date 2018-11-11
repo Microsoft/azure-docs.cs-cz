@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 08/03/2017
 ms.author: sngun
 ms.custom: devcenter, vs-azure
-ms.openlocfilehash: 110f787866296ec08b9937d56461d37574270a43
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 22856b6e9b543504db66bce074d32d9ad70f5238
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46980919"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51247666"
 ---
 # <a name="_Toc395809351"></a>Kurz k ASP.NET MVC: Vývoj webové aplikace s použitím služby Azure Cosmos DB
 
@@ -488,7 +488,7 @@ Ještě musíme implementovat jednu poslední funkci, a to přidat schopnost upr
             return View(item);
         }
    
-    První metoda zpracovává operaci HTTP GET, ke které dochází, když uživatel klikne na odkaz **Upravit** v zobrazení **Index**. Tato metoda načítá [**dokument**](http://msdn.microsoft.com/library/azure/microsoft.azure.documents.document.aspx) ze služby Azure Cosmos DB a předává jej do zobrazení **Edit**.
+    První metoda zpracovává operaci HTTP GET, ke které dochází, když uživatel klikne na odkaz **Upravit** v zobrazení **Index**. Tato metoda načítá [**dokument**](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.document.aspx) ze služby Azure Cosmos DB a předává jej do zobrazení **Edit**.
    
     Zobrazení **Edit** pak provede operaci HTTP POST do **IndexControlleru**. 
    

@@ -17,12 +17,12 @@ ms.date: 09/27/2018
 ms.author: andret
 ms.reviewer: hirsin, andret
 ms.custom: aaddev
-ms.openlocfilehash: e393851535c36eb604d57cc4d7c7561a3ebb201b
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 215e0abe196620624dcca7f430aec4ee9b9612f2
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49955416"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51288199"
 ---
 # <a name="comparing-the-azure-ad-v20-endpoint-with-the-v10-endpoint"></a>Porovnání koncového bodu Azure AD v2.0 s koncovým bodem v1.0
 
@@ -41,7 +41,7 @@ Při vývoji nových aplikací, je důležité znát rozdíly mezi koncové body
 
 * Koncové body v1.0 a v2.0 také přijímat přihlášení z *[uživatele typu Host](https://docs.microsoft.com/azure/active-directory/b2b/what-is-b2b)* adresáře Azure AD pro aplikace, konfigurované jako *[jednoho tenanta](single-and-multi-tenant-apps.md)* nebo *víceklientské* aplikace, konfigurované tak, aby odkazoval na koncový bod specifickým pro tenanta (`https://login.microsoftonline.com/{TenantId_or_Name}`).
 
-Koncový bod verze 2.0 umožňuje psát aplikace, které přijímají přihlášení z osobní a pracovní a školní účty, získáte schopnost psát aplikace kompletně účet bez ohledu na. Například pokud vaše aplikace volá [Microsoft Graphu](https://graph.microsoft.io), některé další funkce a data bude možné pracovní účty, jako je například jejich Sharepointových webech nebo data adresáře. Ale pro mnoho akcí jako například [čtení pošty uživatele](https://graph.microsoft.io/docs/api-reference/v1.0/resources/message), stejný kód může přistupovat k e-mailu pro osobní a pracovní a školní účty.
+Koncový bod verze 2.0 umožňuje psát aplikace, které přijímají přihlášení z osobní a pracovní a školní účty, získáte schopnost psát aplikace kompletně účet bez ohledu na. Například pokud vaše aplikace volá [Microsoft Graphu](https://developer.microsoft.com/graph), některé další funkce a data bude možné pracovní účty, jako je například jejich Sharepointových webech nebo data adresáře. Ale pro mnoho akcí jako například [čtení pošty uživatele](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/message), stejný kód může přistupovat k e-mailu pro osobní a pracovní a školní účty.
 
 Pro koncový bod verze 2.0 můžete použít jeden library (MSAL) k získání přístupu k spotřebitele, vzdělávací i světů enterprise.
 

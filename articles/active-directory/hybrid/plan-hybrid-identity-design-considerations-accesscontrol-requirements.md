@@ -16,12 +16,12 @@ ms.date: 05/30/2018
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 8a40acda189507c1589373a48166ed1668e30650
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: a92d3237300fcd29fecf49d78b2866f8bd7e6a6b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46313660"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51247700"
 ---
 # <a name="determine-access-control-requirements-for-your-hybrid-identity-solution"></a>Určete požadavky na řízení přístupu pro vaše řešení hybridní identity
 Organizace je návrh jejich řešení hybridní identity, může také použít tuto příležitost zkontrolovat požadavky na přístup pro prostředky, které jsou plánování a zpřístupnit ji pro uživatele. Přístup k datům napříč všechny čtyři pilíře identity, které jsou:
@@ -34,7 +34,7 @@ Organizace je návrh jejich řešení hybridní identity, může také použít 
 Následující části budou zahrnovat ověřování a autorizace podrobněji ukáží, Správa a auditování jsou součástí životního cyklu hybridní identity. Čtení [určit úlohy správy hybridních identit](plan-hybrid-identity-design-considerations-hybrid-id-management-tasks.md) pro další informace o těchto funkcích.
 
 > [!NOTE]
-> Čtení [čtyři pilíře z Identity – Správa identit ve věku hybridní IT](http://social.technet.microsoft.com/wiki/contents/articles/15530.the-four-pillars-of-identity-identity-management-in-the-age-of-hybrid-it.aspx) Další informace o každé z těchto pilíře.
+> Čtení [čtyři pilíře z Identity – Správa identit ve věku hybridní IT](https://social.technet.microsoft.com/wiki/contents/articles/15530.the-four-pillars-of-identity-identity-management-in-the-age-of-hybrid-it.aspx) Další informace o každé z těchto pilíře.
 > 
 > 
 

@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 04/11/2018
 ms.author: rangv
-ms.openlocfilehash: ea7754c9bf755a5fc00823629df17317be0f8901
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: e49a3063d6314947c59c5ae863077748d997f2b5
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39343674"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51515467"
 ---
 # <a name="connect-adafruit-feather-huzzah-esp8266-to-azure-iot-hub-in-the-cloud"></a>Sada Adafruit Feather HUZZAH ESP8266 připojit ke službě Azure IoT Hub v cloudu
 
 [!INCLUDE [iot-hub-get-started-device-selector](../../includes/iot-hub-get-started-device-selector.md)]
 
-![Připojení mezi DHT22 Feather HUZZAH ESP8266 a IoT Hub](media/iot-hub-arduino-huzzah-esp8266-get-started/1_connection-hdt22-feather-huzzah-iot-hub.png)
+![Připojení mezi DHT22 Feather HUZZAH ESP8266 a IoT Hub](./media/iot-hub-arduino-huzzah-esp8266-get-started/1_connection-hdt22-feather-huzzah-iot-hub.png)
 
 ## <a name="what-you-do"></a>Co můžete dělat
 
@@ -38,7 +38,7 @@ Sada Adafruit Feather HUZZAH ESP8266 připojení do služby IoT hub, kterou vytv
 
 ## <a name="what-you-need"></a>Co potřebujete
 
-![součásti potřebné pro tento kurz](media/iot-hub-arduino-huzzah-esp8266-get-started/2_parts-needed-for-the-tutorial.png)
+![součásti potřebné pro tento kurz](./media/iot-hub-arduino-huzzah-esp8266-get-started/2_parts-needed-for-the-tutorial.png)
 
 K dokončení této operace, budete potřebovat následující části z Feather HUZZAH ESP8266 Starter Kit:
 
@@ -62,7 +62,17 @@ Následující položky jsou volitelné, v případě, že nemáte senzoru. Mát
 * Breadboard
 * M nebo M můstek vodičům stanice
 
-[!INCLUDE [iot-hub-get-started-create-hub-and-device](../../includes/iot-hub-get-started-create-hub-and-device.md)]
+## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
+
+[!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
+
+### <a name="retrieve-connection-string-for-iot-hub"></a>Načtení připojovacího řetězce pro službu IoT hub
+
+[!INCLUDE [iot-hub-include-find-connection-string](../../includes/iot-hub-include-find-connection-string.md)]
+
+## <a name="register-a-new-device-in-the-iot-hub"></a>Zaregistrujte nové zařízení ve službě IoT hub
+
+[!INCLUDE [iot-hub-include-create-device](../../includes/iot-hub-include-create-device.md)]
 
 ## <a name="connect-feather-huzzah-esp8266-with-the-sensor-and-your-computer"></a>Připojit Feather HUZZAH ESP8266 s senzor a počítač
 
@@ -72,7 +82,7 @@ V této části se připojíte k panelu snímačům. Poté připojíte zařízen
 
 Používejte breadboard a můstek vodičům stanice, aby připojení následujícím způsobem. Pokud nemáte senzor, přeskočte tuto část, protože byste mohli použít data ze simulovaných senzorů.
 
-![odkaz na připojení](media/iot-hub-arduino-huzzah-esp8266-get-started/17_connections_on_breadboard.png)
+![odkaz na připojení](./media/iot-hub-arduino-huzzah-esp8266-get-started/17_connections_on_breadboard.png)
 
 Senzor kód PIN použijte následující propojení:
 

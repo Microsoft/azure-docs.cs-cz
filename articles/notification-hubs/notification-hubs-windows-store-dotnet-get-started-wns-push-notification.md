@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: c3bb170800508d5a546573850f445b2a8991ea8c
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 37d9f433f39b60609870913a13f23e5a6e419476
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38597740"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51246493"
 ---
 # <a name="tutorial-send-notifications-to-universal-windows-platform-apps-by-using-azure-notification-hubs"></a>Kurz: Zasílání oznámení aplikacím pro Univerzální platformu Windows službou Azure Notification Hubs
 
@@ -57,7 +57,7 @@ Pokud chcete odesílat nabízená oznámení do aplikací UPW, přidružte svou 
 1. Zadejte název aplikace a vyberte, že chcete **rezervovat název produktu**. Tím se vytvoří nová registrace Windows Store pro vaši aplikaci.
 
     ![Uložení názvu aplikace](./media/notification-hubs-windows-store-dotnet-get-started/store-app-name.png)
-1. Rozbalte **Správu aplikací**, vyberte **WNS/MPNS**, vyberte **WNS/MPNS**, a pak vyberte **web Live Services**. Přihlaste se ke svému účtu Microsoft. **Portál pro registraci aplikací** se otevře na nové kartě. Na stránku [portálu pro registraci aplikací](http://apps.dev.microsoft.com) také můžete přejít přímo, když vyberete název aplikace.
+1. Rozbalte **Správu aplikací**, vyberte **WNS/MPNS**, vyberte **WNS/MPNS**, a pak vyberte **web Live Services**. Přihlaste se ke svému účtu Microsoft. **Portál pro registraci aplikací** se otevře na nové kartě. Na stránku [portálu pro registraci aplikací](https://apps.dev.microsoft.com) také můžete přejít přímo, když vyberete název aplikace.
 
     ![Stránka WNS/MPNS](./media/notification-hubs-windows-store-dotnet-get-started/wns-mpns-page.png)
 1.   Poznamenejte si **tajný klíč aplikace** a **identifikátor zabezpečení (SID) balíčku**.

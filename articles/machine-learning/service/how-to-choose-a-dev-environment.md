@@ -10,12 +10,12 @@ ms.component: core
 ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 9/24/2018
-ms.openlocfilehash: f221d160685dd12fb18a611432911baa60ebc6f7
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 4d25e147044053aa76afe2da482b71c24efc2325
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48888060"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51242870"
 ---
 # <a name="development-environment-for-azure-machine-learning"></a>Vývojové prostředí pro Azure Machine Learning 
 
@@ -59,7 +59,7 @@ Doporučujeme [Visual Studio Code](https://code.visualstudio.com/), protože nab
 
 ## <a name="data-science-virtual-machine"></a>Virtuální počítač pro datové vědy
 
-Na Data virtuálního počítače VĚDY je kombinací předchozí prostředí. Je virtuální počítač na platformě Azure, který má poznámkové bloky Jupyter, Visual Studio Code a sadu SDK Azure Machine Learning předinstalovaným. Vytvoření virtuálního počítače je složitější než poznámkových bloků Azure, ale méně složitý než nastavení počítače úplně od začátku. Vzhledem k tomu, že požadovaný software je předinstalovaná v image virtuálního počítače, můžete začít experimentovat s Azure Machine Learning rychle po vytvoření virtuálního počítače.
+Na Data virtuálního počítače VĚDY je kombinací předchozí prostředí. Je virtuální počítač na platformě Azure, který má poznámkové bloky Jupyter, Visual Studio Code a sadu SDK Azure Machine Learning předinstalovaným. Vzhledem k tomu, že požadovaný software je předinstalovaná v image virtuálního počítače, můžete začít experimentovat s Azure Machine Learning rychle po vytvoření virtuálního počítače.
 
 Datové VĚDY umožňuje vybrat výpočetní prostředky, které potřebujete, například procesoru, paměti a GPU. To je také s předinstalovanou jiném editoru, jako je například PyCharm a také oblíbené strojového učení software, jako je TensorFlow, Keras a PyTorch. Pokud není nainstalován software, který potřebujete, můžete ho nainstalovat sami.
 

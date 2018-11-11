@@ -1,6 +1,6 @@
 ---
-title: Nahrát generalizace virtuálního pevného disku pro vytvoření několika virtuálními počítači v Azure | Microsoft Docs
-description: Nahrajte zobecněný virtuální pevný disk do účtu úložiště Azure k vytvoření virtuálního počítače s Windows pro použití s modelem nasazení Resource Manager.
+title: Nahrát generalizace virtuálního pevného disku pro vytvoření několika virtuálních počítačů v Azure | Dokumentace Microsoftu
+description: Nahrání generalizovaného virtuálního pevného disku do účtu úložiště Azure k vytvoření virtuálního počítače s Windows pomocí modelu nasazení Resource Manager.
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -16,68 +16,68 @@ ms.topic: article
 ms.date: 05/18/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
-ms.openlocfilehash: be2ec6df33f5756dc080195bfad32e0c9079453c
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 199343fce4774ea643bc22c879efc6717aa0a510
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31603196"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51244725"
 ---
-# <a name="upload-a-generalized-vhd-to-azure-to-create-a-new-vm"></a>Nahrajte zobecněný virtuální pevný disk do Azure k vytvoření nového virtuálního počítače
+# <a name="upload-a-generalized-vhd-to-azure-to-create-a-new-vm"></a>Nahrání generalizovaného virtuálního pevného disku do Azure a vytvořte nový virtuální počítač
 
-Toto téma popisuje zobecněný nespravované disk se nahrávají na účet úložiště a pak vytvořit nový virtuální počítač pomocí nahrané disku. Bitovou kopii zobecněný virtuální pevný disk má měly všechny vaše osobní účet informace odebrat pomocí nástroje Sysprep. 
+Toto téma popisuje nahrání generalizovaného nespravovaného disku do účtu úložiště a pak vytvořit nový virtuální počítač pomocí nahrané disku. Generalizované image virtuálního pevného disku byla všechny informace vašeho osobního účtu odebrat, pomocí nástroje Sysprep. 
 
-Pokud chcete vytvořit virtuální počítač z specializované virtuálního pevného disku v účtu úložiště, najdete v části [vytvoření virtuálního počítače z disku VHD specializované](sa-create-vm-specialized.md).
+Pokud chcete k vytvoření virtuálního počítače ze specializovaného VHD v účtu úložiště, přečtěte si téma [vytvoření virtuálního počítače ze specializovaného VHD](sa-create-vm-specialized.md).
 
-Toto téma popisuje používání účtů úložiště, ale doporučujeme zákazníkům přesunutí místo toho použít spravované disky. Kompletní návod jak připravit, odeslání a vytvoření nového virtuálního počítače pomocí spravovaných disků, najdete v části [vytvořit nový virtuální počítač z zobecněný virtuální pevný disk nahrán do Azure pomocí spravované disky](upload-generalized-managed.md).
+Toto téma popisuje používání účtů úložiště, ale doporučujeme zákazníkům přesunutí místo toho použít Managed Disks. Kompletní návod, jak o tom, jak připravit, nahrání a vytvoření nového virtuálního počítače pomocí spravované disky, najdete v části [vytvoření nového virtuálního počítače z generalizovaného virtuálního pevného disku nahráli do Azure pomocí Managed Disks](upload-generalized-managed.md).
 
 
 
 ## <a name="prepare-the-vm"></a>Příprava virtuálního počítače
 
-Zobecněný virtuální pevný disk má měly všechny vaše osobní účet informace odebrat pomocí nástroje Sysprep. Pokud máte v úmyslu použít virtuální pevný disk jako bitovou kopii k vytvoření nové virtuální počítače z, proveďte následující kroky:
+Generalizovaného virtuálního pevného disku byla všechny informace vašeho osobního účtu odebrat, pomocí nástroje Sysprep. Pokud máte v úmyslu použít virtuální pevný disk jako image k vytvoření nové virtuální počítače z, měli byste:
   
-  * [Příprava virtuálního pevného disku Windows nahrát do Azure](prepare-for-upload-vhd-image.md). 
-  * Virtuální počítač pomocí nástroje Sysprep generalize
+  * [Příprava virtuálního pevného disku Windows k nahrání do Azure](prepare-for-upload-vhd-image.md). 
+  * Generalizace virtuálního počítače pomocí nástroje Sysprep
 
-### <a name="generalize-a-windows-virtual-machine-using-sysprep"></a>Generalize virtuálního počítače s Windows pomocí nástroje Sysprep
-V této části se dozvíte, jak ke generalizaci virtuálního počítače Windows pro použití jako obrázek. Nástroj Sysprep odstraní všechny vaše osobní informace o účtu, mimo jiné a připraví počítač, který se má použít jako obrázek. Podrobnosti o nástroji Sysprep najdete v tématu [postup použití nástroje Sysprep: Úvod](http://technet.microsoft.com/library/bb457073.aspx).
+### <a name="generalize-a-windows-virtual-machine-using-sysprep"></a>Generalizace virtuálního počítače s Windows pomocí nástroje Sysprep
+Tato část ukazuje, jak zobecnit pro použití jako image virtuálního počítače Windows. Nástroj Sysprep kromě jiného odebere všechny informace o vašich osobních účtech a připraví počítač, aby se dal použít jako image. Další informace o nástroji Sysprep najdete v článku věnovaném [úvodu do použití nástroje Sysprep](https://technet.microsoft.com/library/bb457073.aspx).
 
-Ujistěte se, že role serveru spuštěná na tomto počítači jsou podporovány nástrojem Sysprep. Další informace najdete v tématu [podpora nástroje Sysprep pro role serveru](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)
+Ujistěte se, že na počítači spuštěná role serveru jsou podporované pomocí nástroje Sysprep. Další informace najdete v tématu [podpory nástroje Sysprep pro role serveru](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)
 
 > [!IMPORTANT]
-> Pokud používáte nástroj Sysprep před nahráním svůj disk VHD do Azure poprvé, ujistěte se, máte [připravit virtuální počítač](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) před spuštěním nástroje Sysprep. 
+> Pokud používáte nástroj Sysprep před nahráním vašeho virtuálního pevného disku do Azure poprvé, ujistěte se, že máte [připravit virtuální počítač](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) před spuštěním nástroje Sysprep. 
 > 
 > 
 
 1. Přihlaste se k virtuálnímu počítači Windows.
-2. Otevřete okno příkazového řádku jako správce. Změňte adresář na **%windir%\system32\sysprep**a poté spusťte `sysprep.exe`.
-3. V **nástroj pro přípravu systému** dialogové okno, vyberte **prostředí Out-of-Box zadejte systému (při prvním zapnutí)** a ujistěte se, že **generalizace** je zaškrtnuté políčko.
-4. V **možnosti vypnutí**, vyberte **vypnutí**.
+2. Otevřete okno příkazového řádku jako správce. Změňte adresář na **%windir%\system32\sysprep**a pak spusťte `sysprep.exe`.
+3. V dialogovém okně **Nástroj pro přípravu systému** vyberte **Zobrazit prostředí prvního spuštění počítače** a ujistěte se, že je zaškrtnuté políčko **Generalizovat**.
+4. V **možnosti vypnutí**vyberte **vypnutí**.
 5. Klikněte na **OK**.
    
-    ![Spusťte nástroj Sysprep](./media/upload-generalized-managed/sysprepgeneral.png)
+    ![Spustit Sysprep](./media/upload-generalized-managed/sysprepgeneral.png)
 6. Po dokončení nástroj Sysprep vypne virtuální počítač. 
 
 > [!IMPORTANT]
-> Virtuální počítač nerestartuje, až do dokončení odesílání virtuálního pevného disku do Azure nebo vytvoření bitové kopie z virtuálního počítače. Pokud omylem získá restartování virtuálního počítače, spusťte nástroj Sysprep ke generalizaci ho znovu.
+> Virtuální počítač nerestartuje, dokud nedokončíte nahrání virtuálního pevného disku do Azure nebo vytvoření image z virtuálního počítače. Pokud omylem získá restartování virtuálního počítače, spusťte nástroj Sysprep k zobecnění znovu.
 > 
 > 
 
 
 ## <a name="upload-the-vhd"></a>Nahrání virtuálního pevného disku
 
-Nahrání virtuálního pevného disku do účtu úložiště Azure.
+Nahrání virtuálního pevného disku do účtu služby Azure storage.
 
 ### <a name="log-in-to-azure"></a>Přihlášení k Azure
-Pokud ještě nemáte prostředí PowerShell verze 1.4 nebo vyšší nainstalovaná, přečtěte si [postup instalace a konfigurace prostředí Azure PowerShell](/powershell/azure/overview).
+Pokud ještě nemáte PowerShell verze 1.4 nebo vyšší nainstalovaný, přečtěte si [instalace a konfigurace Azure Powershellu](/powershell/azure/overview).
 
-1. Otevřete prostředí Azure PowerShell a přihlaste se k účtu Azure. Automaticky otevírané okno otevře zadat přihlašovací údaje účtu Azure.
+1. Otevřete prostředí Azure PowerShell a přihlaste se ke svému účtu Azure. K zadání přihlašovacích údajů k účtu Azure se otevře automaticky otevírané okno.
    
     ```powershell
     Connect-AzureRmAccount
     ```
-2. Pořiďte si předplatné ID pro dostupných předplatných.
+2. Získejte ID předplatného pro předplatné k dispozici.
    
     ```powershell
     Get-AzureRmSubscription
@@ -88,41 +88,41 @@ Pokud ještě nemáte prostředí PowerShell verze 1.4 nebo vyšší nainstalova
     Select-AzureRmSubscription -SubscriptionId "<subscriptionID>"
     ```
 
-### <a name="get-the-storage-account"></a>Získat účet úložiště
-Potřebujete účet úložiště v Azure k ukládání nahrané image virtuálního počítače. Můžete použít existující účet úložiště, nebo vytvořte novou. 
+### <a name="get-the-storage-account"></a>Získat účet úložiště.
+Budete potřebovat účet úložiště v Azure k uložení této odeslané image virtuálního počítače. Můžete použít existující účet úložiště nebo vytvořte novou. 
 
-Chcete-li zobrazit účty úložiště k dispozici, zadejte:
+Pokud chcete zobrazit účty úložiště k dispozici, zadejte:
 
 ```powershell
 Get-AzureRmStorageAccount
 ```
 
-Pokud chcete použít existující účet úložiště, pokračujte [nahrajte image virtuálního počítače](#upload-the-vm-vhd-to-your-storage-account) části.
+Pokud chcete použít existující účet úložiště, pokračujte [nahrání image virtuálního počítače](#upload-the-vm-vhd-to-your-storage-account) oddílu.
 
-Pokud potřebujete vytvořit účet úložiště, postupujte takto:
+Pokud potřebujete vytvořit účet úložiště, postupujte podle těchto kroků:
 
-1. Je třeba na název skupiny prostředků, kde by měl být vytvořen účet úložiště. Chcete-li zjistit všechny skupiny prostředků, které jsou v rámci vašeho předplatného, zadejte:
+1. Budete potřebovat název skupiny prostředků, ve kterém by měl vytvořit účet úložiště. Pokud chcete zjistit všechny skupiny prostředků, které jsou ve vašem předplatném, zadejte:
    
     ```powershell
     Get-AzureRmResourceGroup
     ```
 
-    Chcete-li vytvořit skupinu prostředků s názvem **myResourceGroup** v **západní USA** oblast, zadejte:
+    Chcete-li vytvořit skupinu prostředků s názvem **myResourceGroup** v **USA – západ** oblast, typ:
 
     ```powershell
     New-AzureRmResourceGroup -Name myResourceGroup -Location "West US"
     ```
 
-2. Vytvořit účet úložiště s názvem **můj_účet_úložiště** v této skupině prostředků s použitím [AzureRmStorageAccount nový](/powershell/module/azurerm.storage/new-azurermstorageaccount) rutiny:
+2. Vytvoření účtu úložiště s názvem **mystorageaccount** v této skupině prostředků s použitím [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/new-azurermstorageaccount) rutiny:
    
     ```powershell
     New-AzureRmStorageAccount -ResourceGroupName myResourceGroup -Name mystorageaccount -Location "West US" `
         -SkuName "Standard_LRS" -Kind "Storage"
     ```
  
-### <a name="start-the-upload"></a>Spusťte 
+### <a name="start-the-upload"></a>Spustit nahrávání 
 
-Použití [přidat AzureRmVhd](/powershell/module/azurerm.compute/add-azurermvhd) rutiny Odeslat bitovou kopii do kontejneru v účtu úložiště. Tento příklad nahrávání souboru **myVHD.vhd** z `"C:\Users\Public\Documents\Virtual hard disks\"` na účet úložiště s názvem **můj_účet_úložiště** v **myResourceGroup** skupinu prostředků. Soubor se umístí do kontejner s názvem **můj_kontejner** a nový název souboru bude **myUploadedVHD.vhd**.
+Použití [Add-AzureRmVhd](/powershell/module/azurerm.compute/add-azurermvhd) rutiny pro nahrání obrázku do kontejneru v účtu úložiště. Tento příklad nahraje soubor **myVHD.vhd** z `"C:\Users\Public\Documents\Virtual hard disks\"` na účet úložiště s názvem **mystorageaccount** v **myResourceGroup** skupinu prostředků. Soubor se umístí do kontejneru s názvem **mycontainer** a nový název souboru bude **myUploadedVHD.vhd**.
 
 ```powershell
 $rgName = "myResourceGroup"
@@ -132,7 +132,7 @@ Add-AzureRmVhd -ResourceGroupName $rgName -Destination $urlOfUploadedImageVhd `
 ```
 
 
-Pokud bylo úspěšné, můžete získat odpovědi, která vypadá podobně jako tento:
+V případě úspěchu se získat odpověď bude vypadat nějak takto:
 
 ```powershell
 MD5 hash is being calculated for the file C:\Users\Public\Documents\Virtual hard disks\myVHD.vhd.
@@ -146,16 +146,16 @@ LocalFilePath           DestinationUri
 C:\Users\Public\Doc...  https://mystorageaccount.blob.core.windows.net/mycontainer/myUploadedVHD.vhd
 ```
 
-V závislosti na připojení k síti a velikost souboru virtuálního pevného disku tento příkaz může trvat nějakou dobu pro dokončení.
+V závislosti na připojení k síti a velikost souboru virtuálního pevného disku tohoto příkazu může trvat dobu.
 
 
 ## <a name="create-a-new-vm"></a>Vytvoření nového virtuálního počítače 
 
-Nyní můžete nahraný virtuální pevný disk pro vytvoření nového virtuálního počítače. 
+Nahraný virtuální pevný disk můžete teď použít k vytvoření nového virtuálního počítače. 
 
-### <a name="set-the-uri-of-the-vhd"></a>Nastavit identifikátor URI virtuálního pevného disku
+### <a name="set-the-uri-of-the-vhd"></a>Nastavte identifikátor URI virtuálního pevného disku
 
-Identifikátor URI pro VHD, který chcete používat je ve formátu: https://**můj_účet_úložiště**.blob.core.windows.net/**můj_kontejner**/**MyVhdName**VHD. V tomto příkladu virtuální pevný disk s názvem **myVHD** je v účtu úložiště **můj_účet_úložiště** v kontejneru **můj_kontejner**.
+Identifikátor URI pro VHD, který chcete použít je ve formátu: https://**mystorageaccount**.blob.core.windows.net/**mycontainer**/**MyVhdName**VHD. V tomto příkladu virtuální pevný disk s názvem **myVHD** je v účtu úložiště **mystorageaccount** v kontejneru **mycontainer**.
 
 ```powershell
 $imageURI = "https://mystorageaccount.blob.core.windows.net/mycontainer/myVhd.vhd"
@@ -165,14 +165,14 @@ $imageURI = "https://mystorageaccount.blob.core.windows.net/mycontainer/myVhd.vh
 ### <a name="create-a-virtual-network"></a>Vytvoření virtuální sítě
 Vytvořit virtuální síť a podsíť [virtuální sítě](../../virtual-network/virtual-networks-overview.md).
 
-1. Vytvořte podsíť. Následující příklad vytvoří podsíť s názvem **mySubnet** ve skupině prostředků **myResourceGroup** s předponou adresy z **10.0.0.0/24**.  
+1. Vytvořte podsíť. Následující příklad vytvoří podsíť s názvem **mySubnet** ve skupině prostředků **myResourceGroup** s předponou adresy **10.0.0.0/24**.  
    
     ```powershell
     $rgName = "myResourceGroup"
     $subnetName = "mySubnet"
     $singleSubnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24
     ```
-2. Vytvořte virtuální síť. Následující ukázka vytvoří virtuální síť s názvem **myVnet** v **západní USA** umístění s předponou adresy z **10.0.0.0/16**.  
+2. Vytvořte virtuální síť. Následující příklad vytvoří virtuální síť s názvem **myVnet** v **USA – západ** umístění s předponou adresy **10.0.0.0/16**.  
    
     ```powershell
     $location = "West US"
@@ -191,7 +191,7 @@ Pokud chcete povolit komunikaci s virtuálním počítačem ve virtuální síti
     $pip = New-AzureRmPublicIpAddress -Name $ipName -ResourceGroupName $rgName -Location $location `
         -AllocationMethod Dynamic
     ```       
-2. Vytvořit síťovou kartu. Tento příklad vytvoří síťový adaptér s názvem **myNic**. 
+2. Vytvořte síťové rozhraní Tento příklad vytvoří síťové rozhraní s názvem **myNic**. 
    
     ```powershell
     $nicName = "myNic"
@@ -200,9 +200,9 @@ Pokud chcete povolit komunikaci s virtuálním počítačem ve virtuální síti
     ```
 
 ### <a name="create-the-network-security-group-and-an-rdp-rule"></a>Vytvořte skupinu zabezpečení sítě a pravidlo protokolu RDP
-Abyste mohli přihlásit k virtuálnímu počítači pomocí protokolu RDP, musíte mít pravidlo zabezpečení, která umožňuje přístup RDP na portu 3389. 
+Abyste mohli pro přihlášení k virtuálnímu počítači pomocí protokolu RDP, budete muset mít pravidlo zabezpečení, které povoluje přístup protokolu RDP na portu 3389. 
 
-Tento příklad vytvoří skupinu NSG s názvem **myNsg** obsahující pravidlo názvem **myRdpRule** přes port 3389 umožňuje provoz protokolu RDP. Další informace o skupinách Nsg najdete v tématu [otevřít porty pro virtuální počítač v Azure pomocí prostředí PowerShell](nsg-quickstart-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Tento příklad vytvoří skupinu zabezpečení sítě s názvem **myNsg** , který obsahuje pravidlo s názvem **myRdpRule** , která umožní provoz protokolu RDP přes port 3389. Další informace o skupinách Nsg najdete v tématu [otevření portů k virtuálnímu počítači v Azure pomocí Powershellu](nsg-quickstart-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 ```powershell
 $nsgName = "myNsg"
@@ -218,14 +218,14 @@ $nsg = New-AzureRmNetworkSecurityGroup -ResourceGroupName $rgName -Location $loc
 
 
 ### <a name="create-a-variable-for-the-virtual-network"></a>Vytvořte proměnnou pro virtuální síť
-Vytvořte proměnnou pro dokončené virtuální síť. 
+Vytvořte proměnnou pro dokončené virtuální sítě. 
 
 ```powershell
 $vnet = Get-AzureRmVirtualNetwork -ResourceGroupName $rgName -Name $vnetName
 ```
 
 ### <a name="create-the-vm"></a>Vytvořte virtuální počítač.
-Následující skript prostředí PowerShell ukazuje, jak nastavit konfiguraci virtuálního počítače a použít nahrané image virtuálního počítače jako zdroj pro novou instalaci.
+Následující skript prostředí PowerShell ukazuje, jak nastavit konfigurací virtuálních počítačů a používat této odeslané image virtuálního počítače jako zdroj pro novou instalaci.
 
 
 
@@ -282,8 +282,8 @@ Následující skript prostředí PowerShell ukazuje, jak nastavit konfiguraci v
     New-AzureRmVM -ResourceGroupName $rgName -Location $location -VM $vm
 ```
 
-## <a name="verify-that-the-vm-was-created"></a>Zkontrolujte, zda byl vytvořen virtuální počítač
-Po dokončení byste měli vidět nově vytvořený virtuální počítač v [portál Azure](https://portal.azure.com) pod **Procházet** > **virtuální počítače**, nebo pomocí následujících příkazů prostředí PowerShell:
+## <a name="verify-that-the-vm-was-created"></a>Ověřte, že se vytvořil virtuální počítač
+Jakmile budete hotovi, zobrazí se nově vytvořenému virtuálnímu počítači v [webu Azure portal](https://portal.azure.com) pod **Procházet** > **virtuálních počítačů**, nebo použijte následující příkaz Powershellu příkazy:
 
 ```powershell
     $vmList = Get-AzureRmVM -ResourceGroupName $rgName
@@ -291,6 +291,6 @@ Po dokončení byste měli vidět nově vytvořený virtuální počítač v [po
 ```
 
 ## <a name="next-steps"></a>Další postup
-Ke správě nového virtuálního počítače v prostředí Azure PowerShell najdete [Správa virtuálních počítačů pomocí Azure Resource Manageru a prostředí PowerShell](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Ke správě vašeho nového virtuálního počítače pomocí Azure Powershellu, najdete v článku [Správa virtuálních počítačů pomocí Azure Resource Manageru a Powershellu](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 

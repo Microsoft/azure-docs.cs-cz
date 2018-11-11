@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/18/2018
 ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: 4b254f9a4446a1b0ff400e0d63effe68fc4f82b4
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: cf39ba6b1754a5e809e7295f2783846e95636ce8
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46363662"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51241732"
 ---
 # <a name="deploy-a-template-to-azure-stack-using-powershell"></a>Nasazení šablony do služby Azure Stack pomocí Powershellu
 
@@ -35,7 +35,7 @@ Tento příklad používá rutiny AzureRM Powershellu a šablony uložené na Gi
 >[!NOTE]
 >Než se pokusíte v tomto příkladu, ujistěte se, že jste [nakonfigurovali PowerShell](azure-stack-powershell-configure-user.md) pro uživatele Azure stacku.
 
-1. Přejděte na [ http://aka.ms/AzureStackGitHub ](http://aka.ms/AzureStackGitHub) a najít **101-simple-windows-vm** šablony. Uložte šablonu do tohoto umístění: C:\\šablony\\azuredeploy-101-simple-windows-vm.json.
+1. Přejděte na [ http://aka.ms/AzureStackGitHub ](https://aka.ms/AzureStackGitHub) a najít **101-simple-windows-vm** šablony. Uložte šablonu do tohoto umístění: C:\\šablony\\azuredeploy-101-simple-windows-vm.json.
 2. Otevřete příkazový řádek se zvýšenými oprávněními prostředí PowerShell.
 3. Nahraďte *uživatelské jméno* a *heslo* v následujícím skriptu se uživatelské jméno a heslo a pak spusťte skript.
 

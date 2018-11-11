@@ -3,7 +3,7 @@ title: Service Fabric Azure, soubory ovladačů svazků (Preview) | Dokumentace 
 description: Service Fabric podporuje použití služby soubory Azure zálohovat svazky z vašeho kontejneru. Toto je momentálně ve verzi preview.
 services: service-fabric
 documentationcenter: other
-author: mani-ramaswamy
+author: TylerMSFT
 manager: timlt
 editor: ''
 ms.assetid: ab49c4b9-74a8-4907-b75b-8d2ee84c6d90
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 6/10/2018
-ms.author: subramar
-ms.openlocfilehash: 0ce1ca09327fa0bd7fbbb82b8dc3c3bdc70d5028
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.author: twhitney, subramar
+ms.openlocfilehash: fabb44f9369dd7b7050ae353ab94263f140aae48
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50239368"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51346401"
 ---
 # <a name="service-fabric-azure-files-volume-driver-preview"></a>Service Fabric soubory Azure svazku ovladače (Preview)
 Je modul plug-in Azure Files svazku [modulu plug-in svazku Docker](https://docs.docker.com/engine/extend/plugins_volume/) poskytující [soubory Azure](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) na základě svazky pro kontejnery Dockeru. Tento modul plug-in Docker svazek je zabalený jako aplikace Service Fabric, který je možné nasadit do clusterů Service Fabric. Jeho účelem je poskytnout službě soubory Azure založené na svazky pro ostatní kontejnerové aplikace Service Fabric, které jsou nasazené na clusteru.
@@ -166,12 +166,11 @@ V **svazku** element ve výše uvedeném fragmentu, modul plug-in Azure Files sv
 - **Určení** – tato značka je místo, svazek je namapována na v rámci spuštěný kontejner. Díky tomu se cíl nemůže být umístění, které již v kontejneru
 
 Jak je znázorněno **DriverOption** elementy ve výše uvedeném fragmentu, modul plug-in svazku soubory Azure podporuje následující možnosti ovladače:
+- **shareName** – název sdílené složky Azure Files, která poskytuje svazku pro kontejner.
+- **storageAccountName** – název účtu úložiště Azure, která obsahuje soubor Azure Files sdílet.
+- **storageAccountKey** -přístupový klíč pro účet úložiště Azure, který obsahuje sdílené soubory Azure.
+- **storageAccountFQDN** – název domény přidružený k účtu úložiště. Pokud není zadán storageAccountFQDN, název domény bude vytvořen pomocí suffix(.file.core.windows.net) výchozí položka storageAccountName.  
 
-Možnosti podporované ovladače:
-- **shareName** – název sdílené složky Azure Files, která poskytuje svazku pro kontejner
-- **storageAccountName** – název účtu služby Azure storage, který obsahuje soubory Azure soubor sdílet
-- **storageAccountKey** -přístupový klíč pro účet úložiště Azure, který obsahuje sdílené soubory Azure
-- **storageAccountFQDN** – název domény přidružený k účtu úložiště. Pokud není zadán storageAccountFQDN, název domény bude vytvořen pomocí suffix(.file.core.windows.net) výchozí položka storageAccountName. 
     ```xml
     - Example1: 
         <DriverOption Name="shareName" Value="myshare1" />
@@ -184,6 +183,7 @@ Možnosti podporované ovladače:
         <DriverOption Name="storageAccountKey" Value="mykey2" />
         <DriverOption Name="storageAccountFQDN" Value="myaccount2.file.core.chinacloudapi.cn" />
     ```
+
 ## <a name="using-your-own-volume-or-logging-driver"></a>Použití vlastní svazek nebo ovladače protokolování
 Service Fabric také umožní používat vlastní [svazku](https://docs.docker.com/engine/extend/plugins_volume/) nebo [protokolování](https://docs.docker.com/engine/admin/logging/overview/) ovladače. Pokud v clusteru není nainstalován ovladač Dockeru svazek/protokolování, můžete je nainstalovat ručně pomocí protokolů RDP/SSH. Instalace se prostřednictvím těchto protokolů můžete provádět [škálovací sady virtuálních počítačů spouštěcí skript](https://azure.microsoft.com/resources/templates/201-vmss-custom-script-windows/) nebo [SetupEntryPoint skript](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-model#describe-a-service).
 

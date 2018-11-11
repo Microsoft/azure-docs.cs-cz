@@ -3,19 +3,19 @@ title: Připojení ke službě Azure HDInsight pomocí nástrojů Data Lake pro 
 description: Naučte se instalovat a používat nástroje Data Lake pro Visual Studio pro připojení ke clusterům Hadoop ve službě Azure HDInsight a následné spouštění dotazů Hive.
 keywords: hadoop tools, hive query, visual studio, visual studio hadoop
 services: hdinsight
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive, hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.openlocfilehash: 0c90dfe0aa76bd4f27bbc6f9a5e7e30c76595ea1
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 281c3744dc311fdced20f810e0a9f2b233076472
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43050143"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51247139"
 ---
 # <a name="use-data-lake-tools-for-visual-studio-to-connect-to-azure-hdinsight-and-run-hive-queries"></a>Použití nástrojů Data Lake pro Visual Studio pro připojení ke službě Azure HDInsight a spouštění dotazů Hive
 
@@ -65,7 +65,7 @@ Pokud nemáte nainstalovanou sadu Visual Studio, pomocí [Instalace webové plat
 Pomocí nástrojů Data Lake pro Visual Studio se můžete připojit ke clusterům HDInsight, provádět některé základní operace správy a spouštět dotazy Hive.
 
 > [!NOTE]
-> Informace o připojení k obecnému clusteru Hadoop najdete v tématu [Zapisování a odesílání dotazů Hive pomocí sady Visual Studio](http://blogs.msdn.com/b/xiaoyong/archive/2015/05/04/how-to-write-and-submit-hive-queries-using-visual-studio.aspx).
+> Informace o připojení k obecnému clusteru Hadoop najdete v tématu [Zapisování a odesílání dotazů Hive pomocí sady Visual Studio](https://blogs.msdn.com/b/xiaoyong/archive/2015/05/04/how-to-write-and-submit-hive-queries-using-visual-studio.aspx).
 > 
 > 
 

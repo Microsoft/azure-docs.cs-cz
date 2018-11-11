@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 29faba8947e189072317f1e85ba6fe71e7805462
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 99b915f14aaa7d306d1bceb5bd4f6bb23abdb929
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50957841"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51245371"
 ---
 # <a name="reset-remote-desktop-services-or-its-administrator-password-in-a-windows-vm"></a>Resetování služby Vzdálená plocha nebo jeho heslo správce virtuálního počítače s Windows
 Pokud se nemůžete připojit k virtuálnímu počítači Windows (VM), můžete resetovat heslo místního správce nebo resetujte konfiguraci služby Vzdálená plocha (není podporováno ve Windows řadiče domény). K resetování hesla, pomocí webu Azure portal nebo rozšíření přístupu virtuálních počítačů v prostředí Azure PowerShell. Po přihlášení k virtuálnímu počítači, resetujte heslo pro tento místní správce.  
@@ -93,7 +93,7 @@ Nejprve zkontrolujte, že máte [nejnovější modul Powershellu nainstalovanou 
 
 - [Další informace o rozšíření virtuálních počítačů Azure a funkce](../extensions/features-windows.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-- [Připojte se k virtuálnímu počítači Azure pomocí RDP nebo SSH](http://msdn.microsoft.com/library/azure/dn535788.aspx).
+- [Připojte se k virtuálnímu počítači Azure pomocí RDP nebo SSH](https://msdn.microsoft.com/library/azure/dn535788.aspx).
 
 - [Řešení potíží s připojeními vzdálené plochy k virtuálnímu počítači s Windows v Azure](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 

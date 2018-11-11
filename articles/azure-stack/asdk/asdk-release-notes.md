@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/26/2018
+ms.date: 11/07/2018
 ms.author: sethm
 ms.reviewer: misainat
-ms.openlocfilehash: 284a964162a2374287b42698b9a2021be36590dd
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
-ms.translationtype: MT
+ms.openlocfilehash: 8e8518cdf95e1b97bd4b641322c1b2a3fdc3bf9e
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50158155"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282454"
 ---
 # <a name="asdk-release-notes"></a>Zpráva k vydání verze ASDK  
 Tento článek obsahuje informace o vylepšení, oprav a známé problémy v Azure Stack Development Kit (ASDK). Pokud si nejste jistí, kterou verzi používáte, můžete si [použití portálu ke kontrole](.\.\azure-stack-updates.md#determine-the-current-version).
@@ -99,6 +99,9 @@ Další informace najdete v tématu [předávání syslog Azure Stack](../azure-
 
 
 #### <a name="compute"></a>Compute 
+
+<!-- TBD – IS, ASDK -->
+- Opětovné odpojený disk do stejného virtuálního počítače (VM) se stejným názvem a logická jednotka se nezdaří s chybou jako **nelze připojit datový disk "datadisk" k virtuálnímu počítači "vm1"**. Protože disk je v tuto chvíli odpojuje nebo poslední operace odpojení nebyla úspěšná, dojde k chybě. Počkejte, dokud je zcela odpojit disk a potom opakujte operaci nebo odstraňte nebo odpojte disk explicitně znovu. Alternativním řešením je se znovu připojit s jiným názvem nebo na různých logických jednotkách. 
 
 <!-- 3235634 – IS, ASDK -->
 - K nasazení virtuálních počítačů s velikostí, který obsahuje **v2** přípony; například **Standard_A2_v2**, zadejte příponu jako **Standard_A2_v2** (malá písmena v). Nepoužívejte **Standard_A2_V2** (velká písmena V). To funguje v globální Azure a nekonzistence ve službě Azure Stack.

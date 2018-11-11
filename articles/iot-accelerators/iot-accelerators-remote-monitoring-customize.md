@@ -6,45 +6,47 @@ manager: timlt
 ms.author: dobett
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.date: 01/17/2018
+ms.date: 11/09/2018
 ms.topic: conceptual
-ms.openlocfilehash: 59f2860168782d96bf82d0a27f9bb9eeed0f1020
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 53361ed460917fff42008283429967eff2e80ab2
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167490"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51345092"
 ---
 # <a name="customize-the-remote-monitoring-solution-accelerator"></a>Přizpůsobení akcelerátoru řešení vzdáleného monitorování
 
-Tento článek obsahuje informace o tom, jak můžete přístup ke zdrojovému kódu a přizpůsobení uživatelského rozhraní vzdálené monitorování akcelerátorů řešení. Tento článek popisuje:
+Tento článek obsahuje informace o tom, jak můžete přístup ke zdrojovému kódu a přizpůsobení uživatelského rozhraní vzdálené monitorování akcelerátorů řešení.
+
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="prepare-a-local-development-environment-for-the-ui"></a>Příprava prostředí pro místní vývoj uživatelského rozhraní
 
 Akcelerátor řešení vzdálené monitorování kód uživatelského rozhraní je implementováno pomocí rozhraní React.js. Můžete najít zdrojový kód v [azure-iot-pcs-remote-monitoring-webui](https://github.com/Azure/azure-iot-pcs-remote-monitoring-webui) úložiště GitHub.
 
-Pokud chcete provést změny v uživatelském rozhraní, můžete jeho kopii spustit místně. Místní kopie se připojí k instanci nasazené řešení k provedení akce, třeba načítání telemetrická data.
+Pokud chcete provést změny v uživatelském rozhraní, můžete jeho kopii spustit místně. Dokončit akce, třeba načítání telemetrická data, místní kopii připojí k instanci nasazeného řešení.
 
 Následující kroky popisují postup nastavení místní prostředí pro vývoj uživatelského rozhraní:
 
 1. Nasazení **základní** instanci pomocí akcelerátor řešení **počítače** rozhraní příkazového řádku. Poznamenejte si název vašeho nasazení a přihlašovací údaje, které jste zadali pro virtuální počítač. Další informace najdete v tématu [nasazení pomocí rozhraní příkazového řádku](iot-accelerators-remote-monitoring-deploy-cli.md).
 
-1. Pomocí webu Azure portal nebo [az rozhraní příkazového řádku](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) povolit přístup přes SSH k virtuálnímu počítači, který je hostitelem mikroslužeb ve vašem řešení. Příklad:
+1. Pokud chcete povolit přístup přes SSH k virtuálnímu počítači, který je hostitelem mikroslužeb ve vašem řešení, pomocí webu Azure portal nebo Azure Cloud Shell. Příklad:
 
-    ```sh
+    ```azurecli-interactive
     az network nsg rule update --name SSH --nsg-name {your solution name}-nsg --resource-group {your solution name} --access Allow
     ```
 
-    Přístup přes SSH byste měli povolit jenom během vývoj a testování. Pokud povolíte SSH, [byste měli znovu co nejdříve zakázat](../security/azure-security-network-security-best-practices.md#disable-rdpssh-access-to-virtual-machines).
+    Povolte přístup přes SSH pouze během vývoj a testování. Pokud povolíte SSH, [byste měli zakázat, jakmile budete hotovi, jeho použití](../security/azure-security-network-security-best-practices.md#disable-rdpssh-access-to-virtual-machines).
 
-1. Pomocí webu Azure portal nebo [az rozhraní příkazového řádku](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) najít název a veřejnou IP adresu vašeho virtuálního počítače. Příklad:
+1. Najít název a veřejnou IP adresu vašeho virtuálního počítače pomocí webu Azure portal nebo Azure Cloud Shell. Příklad:
 
-    ```sh
+    ```azurecli-interactive
     az resource list --resource-group {your solution name} -o table
     az vm list-ip-addresses --name {your vm name from previous command} --resource-group {your solution name} -o table
     ```
 
-1. Pomocí SSH se připojte k virtuálnímu počítači pomocí IP adresy z předchozího kroku a přihlašovací údaje, které jste zadali při spuštění **počítače** k nasazení řešení.
+1. Pomocí SSH se připojte ke svému virtuálnímu počítači. Použít IP adresu z předchozího kroku a přihlašovací údaje, které jste zadali při spuštění **počítače** k nasazení řešení. `ssh` Příkaz je k dispozici ve službě Azure Cloud Shell.
 
 1. Pokud chcete povolit místní uživatelského rozhraní pro připojení, spusťte následující příkazy v prostředí bash ve virtuálním počítači:
 
@@ -62,7 +64,9 @@ Následující kroky popisují postup nastavení místní prostředí pro vývoj
     REACT_APP_BASE_SERVICE_URL=https://{your solution name}.azurewebsites.net/
     ```
 
-1. Na příkazovém řádku v místní kopii `azure-iot-pcs-remote-monitoring-webui` složky, spusťte následující příkazy a instalace potřebných knihoven a místní spuštění uživatelského rozhraní:
+1. Na příkazovém řádku přejděte do místní kopie `azure-iot-pcs-remote-monitoring-webui` složky.
+
+1. Instalace potřebných knihoven a místní spuštění uživatelského rozhraní, spusťte následující příkazy:
 
     ```cmd/sh
     npm install
@@ -73,131 +77,160 @@ Následující kroky popisují postup nastavení místní prostředí pro vývoj
 
 ## <a name="customize-the-layout"></a>Přizpůsobení rozložení
 
-Každá stránka v řešení vzdáleného monitorování se skládá ze sady ovládacích prvků, které jsou označovány jako *panelů* ve zdrojovém kódu. Například **řídicí panel** stránky se skládá z pěti panely: Přehled, Map, alarmy, Telemetrie a klíčové ukazatele výkonu. Můžete najít zdrojový kód, který definuje každé stránce a jeho panelů v [počítače remote monitorování webui](https://github.com/Azure/pcs-remote-monitoring-webui) úložiště GitHub. Například kód, který definuje **řídicí panel** stránky, rozložení a panelů na stránce se nachází v [src/součásti/stránek/řídicí panel](https://github.com/Azure/pcs-remote-monitoring-webui/tree/master/src/components/pages/dashboard) složky.
+Každá stránka v řešení vzdáleného monitorování se skládá ze sady ovládacích prvků, které jsou označovány jako *panelů* ve zdrojovém kódu. **Řídicí panel** stránky se skládá z pěti panely: Přehled, mapy, alarmy, telemetrická data a analýzy. Můžete najít zdrojový kód, který definuje každé stránce a jeho panelů v [počítače remote monitorování webui](https://github.com/Azure/pcs-remote-monitoring-webui) úložiště GitHub. Například kód, který definuje **řídicí panel** stránky, rozložení a panelů na stránce se nachází v [src/součásti/stránek/řídicí panel](https://github.com/Azure/pcs-remote-monitoring-webui/tree/master/src/components/pages/dashboard) složky.
 
-Protože panely spravovat jejich vlastní rozložení a změna velikosti, můžete snadno upravit rozložení stránky. Například následující změny **PageContent** prvek `src/components/pages/dashboard/dashboard.js` souboru odkládacího umístění panelů mapy a telemetrii a změnit relativní šířku mapy a panelů klíčového ukazatele výkonu:
+Protože panely spravovat jejich vlastní rozložení a změna velikosti, můžete snadno upravit rozložení stránky. Proveďte následující změny **PageContent** prvek `src/components/pages/dashboard/dashboard.js` do souboru:
+
+* Odkládacího umístění panelů mapy a telemetrie.
+* Změňte relativní šířku panelů mapy a analýzy.
 
 ```nodejs
-<PageContent className="dashboard-container" key="page-content">
+<PageContent className="dashboard-container">
   <Grid>
     <Cell className="col-1 devices-overview-cell">
       <OverviewPanel
+        activeDeviceGroup={activeDeviceGroup}
         openWarningCount={openWarningCount}
         openCriticalCount={openCriticalCount}
         onlineDeviceCount={onlineDeviceCount}
         offlineDeviceCount={offlineDeviceCount}
-        isPending={kpisIsPending || devicesIsPending}
-        error={devicesError || kpisError}
+        isPending={analyticsIsPending || devicesIsPending}
+        error={deviceGroupError || devicesError || analyticsError}
         t={t} />
     </Cell>
-    <Cell className="col-5">
+    <Cell className="col-6">
       <TelemetryPanel
+        timeSeriesExplorerUrl={timeSeriesParamUrl}
         telemetry={telemetry}
         isPending={telemetryIsPending}
-        error={telemetryError}
+        lastRefreshed={lastRefreshed}
+        error={deviceGroupError || telemetryError}
+        theme={theme}
         colors={chartColorObjects}
         t={t} />
     </Cell>
     <Cell className="col-3">
-      <CustAlarmsPanel
-        alarms={currentActiveAlarmsWithName}
-        isPending={kpisIsPending || rulesIsPending}
-        error={rulesError || kpisError}
-        t={t} />
+      <AlertsPanel
+        alerts={currentActiveAlertsWithName}
+        isPending={analyticsIsPending || rulesIsPending}
+        error={rulesError || analyticsError}
+        t={t}
+        deviceGroups={deviceGroups} />
     </Cell>
     <Cell className="col-4">
-    <PanelErrorBoundary msg={t('dashboard.panels.map.runtimeError')}>
+      <PanelErrorBoundary msg={t('dashboard.panels.map.runtimeError')}>
         <MapPanel
+          analyticsVersion={analyticsVersion}
           azureMapsKey={azureMapsKey}
           devices={devices}
-          devicesInAlarm={devicesInAlarm}
+          devicesInAlert={devicesInAlert}
           mapKeyIsPending={azureMapsKeyIsPending}
-          isPending={devicesIsPending || kpisIsPending}
-          error={azureMapsKeyError || devicesError || kpisError}
+          isPending={devicesIsPending || analyticsIsPending}
+          error={azureMapsKeyError || devicesError || analyticsError}
           t={t} />
       </PanelErrorBoundary>
     </Cell>
     <Cell className="col-6">
-      <KpisPanel
-        topAlarms={topAlarmsWithName}
-        alarmsPerDeviceId={alarmsPerDeviceType}
-        criticalAlarmsChange={criticalAlarmsChange}
-        warningAlarmsChange={warningAlarmsChange}
-        isPending={kpisIsPending || rulesIsPending || devicesIsPending}
-        error={devicesError || rulesError || kpisError}
+      <AnalyticsPanel
+        timeSeriesExplorerUrl={timeSeriesParamUrl}
+        topAlerts={topAlertsWithName}
+        alertsPerDeviceId={alertsPerDeviceType}
+        criticalAlertsChange={criticalAlertsChange}
+        isPending={analyticsIsPending || rulesIsPending || devicesIsPending}
+        error={devicesError || rulesError || analyticsError}
+        theme={theme}
         colors={chartColorObjects}
         t={t} />
     </Cell>
+    {
+      Config.showWalkthroughExamples &&
+      <Cell className="col-4">
+        <ExamplePanel t={t} />
+      </Cell>
+    }
   </Grid>
 </PageContent>
 ```
 
 ![Změna rozložení panelu](./media/iot-accelerators-remote-monitoring-customize/layout.png)
 
-> [!NOTE]
-> Mapa není nakonfigurovaná místní nasazení.
-
-Můžete také přidat více instancí stejného panelu, nebo více verzí Pokud jste [duplicitní a přizpůsobit panel](#duplicate-and-customize-an-existing-control). Následující příklad ukazuje, jak přidat dvě instance panelu telemetrie úpravou `src/components/pages/dashboard/dashboard.js` souboru:
+Můžete také přidat více instancí stejného panelu, nebo několik verzí Pokud jste [duplicitní a přizpůsobit panel](#duplicate-and-customize-an-existing-control). Následující příklad ukazuje, jak přidat dvě instance panelu telemetrická data. Chcete-li tyto změny udělat, upravte `src/components/pages/dashboard/dashboard.js` souboru:
 
 ```nodejs
-<PageContent className="dashboard-container" key="page-content">
+<PageContent className="dashboard-container">
   <Grid>
     <Cell className="col-1 devices-overview-cell">
       <OverviewPanel
+        activeDeviceGroup={activeDeviceGroup}
         openWarningCount={openWarningCount}
         openCriticalCount={openCriticalCount}
         onlineDeviceCount={onlineDeviceCount}
         offlineDeviceCount={offlineDeviceCount}
-        isPending={kpisIsPending || devicesIsPending}
-        error={devicesError || kpisError}
+        isPending={analyticsIsPending || devicesIsPending}
+        error={deviceGroupError || devicesError || analyticsError}
         t={t} />
     </Cell>
     <Cell className="col-3">
       <TelemetryPanel
+        timeSeriesExplorerUrl={timeSeriesParamUrl}
         telemetry={telemetry}
         isPending={telemetryIsPending}
-        error={telemetryError}
+        lastRefreshed={lastRefreshed}
+        error={deviceGroupError || telemetryError}
+        theme={theme}
         colors={chartColorObjects}
         t={t} />
     </Cell>
     <Cell className="col-3">
       <TelemetryPanel
+        timeSeriesExplorerUrl={timeSeriesParamUrl}
         telemetry={telemetry}
         isPending={telemetryIsPending}
-        error={telemetryError}
+        lastRefreshed={lastRefreshed}
+        error={deviceGroupError || telemetryError}
+        theme={theme}
         colors={chartColorObjects}
         t={t} />
     </Cell>
-    <Cell className="col-2">
-      <CustAlarmsPanel
-        alarms={currentActiveAlarmsWithName}
-        isPending={kpisIsPending || rulesIsPending}
-        error={rulesError || kpisError}
-        t={t} />
+    <Cell className="col-3">
+      <AlertsPanel
+        alerts={currentActiveAlertsWithName}
+        isPending={analyticsIsPending || rulesIsPending}
+        error={rulesError || analyticsError}
+        t={t}
+        deviceGroups={deviceGroups} />
     </Cell>
     <Cell className="col-4">
-    <PanelErrorBoundary msg={t('dashboard.panels.map.runtimeError')}>
+      <PanelErrorBoundary msg={t('dashboard.panels.map.runtimeError')}>
         <MapPanel
+          analyticsVersion={analyticsVersion}
           azureMapsKey={azureMapsKey}
           devices={devices}
-          devicesInAlarm={devicesInAlarm}
+          devicesInAlert={devicesInAlert}
           mapKeyIsPending={azureMapsKeyIsPending}
-          isPending={devicesIsPending || kpisIsPending}
-          error={azureMapsKeyError || devicesError || kpisError}
+          isPending={devicesIsPending || analyticsIsPending}
+          error={azureMapsKeyError || devicesError || analyticsError}
           t={t} />
       </PanelErrorBoundary>
     </Cell>
     <Cell className="col-6">
-      <KpisPanel
-        topAlarms={topAlarmsWithName}
-        alarmsPerDeviceId={alarmsPerDeviceType}
-        criticalAlarmsChange={criticalAlarmsChange}
-        warningAlarmsChange={warningAlarmsChange}
-        isPending={kpisIsPending || rulesIsPending || devicesIsPending}
-        error={devicesError || rulesError || kpisError}
+      <AnalyticsPanel
+        timeSeriesExplorerUrl={timeSeriesParamUrl}
+        topAlerts={topAlertsWithName}
+        alertsPerDeviceId={alertsPerDeviceType}
+        criticalAlertsChange={criticalAlertsChange}
+        isPending={analyticsIsPending || rulesIsPending || devicesIsPending}
+        error={devicesError || rulesError || analyticsError}
+        theme={theme}
         colors={chartColorObjects}
         t={t} />
     </Cell>
+    {
+      Config.showWalkthroughExamples &&
+      <Cell className="col-4">
+        <ExamplePanel t={t} />
+      </Cell>
+    }
   </Grid>
 </PageContent>
 ```
@@ -206,33 +239,30 @@ Pak můžete zobrazit jiné telemetrie každou panelu:
 
 ![Více panelů telemetrie](./media/iot-accelerators-remote-monitoring-customize/multiple-telemetry.png)
 
-> [!NOTE]
-> Mapa není nakonfigurovaná místní nasazení.
-
 ## <a name="duplicate-and-customize-an-existing-control"></a>Duplicitní a přizpůsobit existující ovládací prvek
 
-Následující kroky popisují způsob použití **alarmy** panelu jako příklad toho, jak duplikovat stávající panely, upravit a použít upravenou verzi:
+Následující kroky popisují, jak duplicitní stávající panely, upravte ho a pak použít upravenou verzi. Použijte postup **výstrahy** panelu jako příklad:
 
-1. V místní kopii úložiště, vytvořte kopii **alarmy** složky `src/components/pages/dashboard/panels` složky. Pojmenujte novou kopii **cust_alarms**.
+1. V místní kopii úložiště, vytvořte kopii **výstrahy** složky `src/components/pages/dashboard/panels` složky. Pojmenujte novou kopii **cust_alerts**.
 
-1. V **alarmsPanel.js** soubor **cust_alarms** složku, upravit název třídy, která má být **CustAlarmsPanel**:
+1. V **alertsPanel.js** soubor **cust_alerts** složku, upravit název třídy, která má být **CustAlertsPanel**:
 
     ```nodejs
-    export class CustAlarmsPanel extends Component {
+    export class CustAlertsPanel extends Component {
     ```
 
 1. Přidejte následující řádek, který `src/components/pages/dashboard/panels/index.js` souboru:
 
     ```nodejs
-    export * from './cust_alarms';
+    export * from './cust_alerts';
     ```
 
-1. Nahraďte `AlarmsPanel` s `CustAlarmsPanel` v `src/components/pages/dashboard/dashboard.js` souboru:
+1. Nahraďte `alertsPanel` s `CustAlertsPanel` v `src/components/pages/dashboard/dashboard.js` souboru:
 
     ```nodejs
     import {
       OverviewPanel,
-      CustAlarmsPanel,
+      CustAlertsPanel,
       TelemetryPanel,
       KpisPanel,
       MapPanel,
@@ -243,17 +273,17 @@ Následující kroky popisují způsob použití **alarmy** panelu jako příkla
     ...
 
     <Cell className="col-3">
-      <CustAlarmsPanel
-        alarms={currentActiveAlarmsWithName}
+      <CustAlertsPanel
+        alerts={currentActivealertsWithName}
         isPending={kpisIsPending || rulesIsPending}
         error={rulesError || kpisError}
         t={t} />
     </Cell>
     ```
 
-Nyní jste nahradili původní **alarmy** panel s názvem kopií **CustAlarms**. Tato kopie je totožná s původní. Nyní můžete upravit kopii. Například, chcete-li změnit sloupce řazení **alarmy** panelu:
+Jste teď nahrazuje původní **výstrahy** panel s názvem kopií **CustAlerts**. Tato kopie je stejný jako původní. Nyní můžete upravit kopii. Například, chcete-li změnit sloupce řazení **výstrahy** panelu:
 
-1. Otevřete soubor `src/components/pages/dashboard/panels/cust_alarms/alarmsPanel.js`.
+1. Otevřete soubor `src/components/pages/dashboard/panels/cust_alerts/alertsPanel.js`.
 
 1. Upravte definice sloupců, jak je znázorněno v následujícím fragmentu kódu:
 
@@ -272,13 +302,13 @@ Nyní jste nahradili původní **alarmy** panel s názvem kopií **CustAlarms**.
     ];
     ```
 
-Následující snímek obrazovky ukazuje novou verzi **alarmy** panelu:
+Následující snímek obrazovky ukazuje novou verzi **výstrahy** panelu:
 
-![Panel alarmy aktualizovat](./media/iot-accelerators-remote-monitoring-customize/reorder-columns.png)
+![aktualizovat panel výstrah](./media/iot-accelerators-remote-monitoring-customize/reorder-columns.png)
 
 ## <a name="customize-the-telemetry-chart"></a>Přizpůsobení telemetrických dat grafu
 
-Na graf telemetrických dat **řídicí panel** stránce je definován soubory v `src/components/pages/dashboard/panels/telemtry` složky. Uživatelské rozhraní načte telemetrická data z back-end řešení v `src/services/telemetryService.js` souboru. Následující kroky ukazují, jak změnit časové období, zobrazeny v grafu telemetrická data z 15 minut až 5 minut:
+Soubory v `src/components/pages/dashboard/panels/telemtry` složky definovat telemetrická data grafu pro **řídicí panel** stránky. Uživatelské rozhraní načte telemetrická data z back-end řešení v `src/services/telemetryService.js` souboru. Následující kroky ukazují, jak změnit časové období, zobrazeny v grafu telemetrická data z 15 až 5 minut:
 
 1. V `src/services/telemetryService.js` souboru, vyhledejte volaná funkce **getTelemetryByDeviceIdP15M**. Vytvořte kopii této funkce a upravit kopii následujícím způsobem:
 
@@ -305,28 +335,29 @@ Telemetrie graf teď zobrazuje pět minut telemetrická data:
 
 ## <a name="add-a-new-kpi"></a>Přidat nový klíčový ukazatel výkonu
 
-**Řídicí panel** stránce se zobrazí klíčové ukazatele výkonu v **klíčové ukazatele výkonu systému** panelu. Tyto klíčové ukazatele výkonu počítají v `src/components/pages/dashboard/dashboard.js` souboru. Klíčové ukazatele výkonu jsou vykreslovány `src/components/pages/dashboard/panels/kpis/kpisPanel.js` souboru. Následující kroky popisují, jak vypočítat a vykreslení novou hodnotu klíčového ukazatele výkonu **řídicí panel** stránky. Přidat novou změnu procenta varování klíčový ukazatel výkonu je, jak ukazuje příklad:
+**Řídicí panel** stránce se zobrazí klíčové ukazatele výkonu v **Analytics** panelu. Tyto klíčové ukazatele výkonu počítají v `src/components/pages/dashboard/dashboard.js` souboru. Klíčové ukazatele výkonu jsou vykreslovány `src/components/pages/dashboard/panels/analytics/analyticsPanel.js` souboru. Následující kroky popisují, jak vypočítat a vykreslení novou hodnotu klíčového ukazatele výkonu **řídicí panel** stránky. Přidat novou změnu procenta varování klíčový ukazatel výkonu je, jak ukazuje příklad:
 
-1. Otevřete soubor `src/components/pages/dashboard/dashboard.js`. Upravit **initialState** objektu, který chcete zahrnout **warningAlarmsChange** vlastnost následujícím způsobem:
+1. Otevřete soubor `src/components/pages/dashboard/dashboard.js`. Upravit **initialState** objektu, který chcete zahrnout **warningAlertsChange** vlastnost následujícím způsobem:
 
     ```nodejs
     const initialState = {
       ...
 
-      // Kpis data
-      currentActiveAlarms: [],
-      topAlarms: [],
-      alarmsPerDeviceId: {},
-      criticalAlarmsChange: 0,
-      warningAlarmsChange: 0,
-      kpisIsPending: true,
-      kpisError: null,
+      // Analytics data
+      analyticsVersion: 0,
+      currentActiveAlerts: [],
+      topAlerts: [],
+      alertsPerDeviceId: {},
+      criticalAlertsChange: 0,
+      warningAlertsChange: 0,
+      analyticsIsPending: true,
+      analyticsError: null
 
       ...
     };
     ```
 
-1. Upravit **currentAlarmsStats** objektu, který chcete zahrnout **totalWarningCount** jako vlastnost:
+1. Upravit **currentAlertsStats** objektu, který chcete zahrnout **totalWarningCount** jako vlastnost:
 
     ```nodejs
     return {
@@ -338,49 +369,51 @@ Telemetrie graf teď zobrazuje pět minut telemetrická data:
     };
     ```
 
-1. Vypočítá nový klíčový ukazatel výkonu. Najdete výpočtu pro počet kritických alarmy. Duplicitní kód a upravit kopii následujícím způsobem:
+1. Vypočítá nový klíčový ukazatel výkonu. Najdete výpočtu pro počet kritických výstrah. Duplicitní kód a upravit kopii následujícím způsobem:
 
     ```nodejs
-    // ================== Warning Alarms Count - START
-    const currentWarningAlarms = currentAlarmsStats.totalWarningCount;
-    const previousWarningAlarms = previousAlarms.reduce(
-      (cnt, { severity }) => severity === 'warning' ? cnt + 1 : cnt,
+    // ================== Warning Alerts Count - START
+    const currentWarningAlerts = currentAlertsStats.totalWarningCount;
+    const previousWarningAlerts = previousAlerts.reduce(
+      (cnt, { severity }) => severity === Config.ruleSeverity.warning ? cnt + 1 : cnt,
       0
     );
-    const warningAlarmsChange = ((currentWarningAlarms - previousWarningAlarms) / currentWarningAlarms * 100).toFixed(2);
-    // ================== Warning Alarms Count - END
+    const warningAlertsChange = ((currentWarningAlerts - previousWarningAlerts) / currentWarningAlerts * 100).toFixed(2);
+    // ================== Warning Alerts Count - END
     ```
 
-1. Zahrnout nové **warningAlarmsChange** klíčového ukazatele výkonu v datovém proudu klíčového ukazatele výkonu:
+1. Zahrnout nové **warningAlertsChange** klíčového ukazatele výkonu v datovém proudu klíčového ukazatele výkonu:
 
     ```nodejs
     return ({
-      kpisIsPending: false,
+      analyticsIsPending: false,
+      analyticsVersion: this.state.analyticsVersion + 1,
 
-      // Kpis data
-      currentActiveAlarms,
-      topAlarms,
-      criticalAlarmsChange,
-      warningAlarmsChange,
-      alarmsPerDeviceId: currentAlarmsStats.alarmsPerDeviceId,
+      // Analytics data
+      currentActiveAlerts,
+      topAlerts,
+      criticalAlertsChange,
+      warningAlertsChange,
+      alertsPerDeviceId: currentAlertsStats.alertsPerDeviceId,
 
       ...
     });
     ```
 
-1. Zahrnout nové **warningAlarmsChange** klíčový ukazatel výkonu v data o stavu použitý pro vykreslení uživatelského rozhraní:
+1. Zahrnout nové **warningAlertsChange** klíčový ukazatel výkonu v data o stavu použitý pro vykreslení uživatelského rozhraní:
 
     ```nodejs
     const {
       ...
 
-      currentActiveAlarms,
-      topAlarms,
-      alarmsPerDeviceId,
-      criticalAlarmsChange,
-      warningAlarmsChange,
-      kpisIsPending,
-      kpisError,
+      analyticsVersion,
+      currentActiveAlerts,
+      topAlerts,
+      alertsPerDeviceId,
+      criticalAlertsChange,
+      warningAlertsChange,
+      analyticsIsPending,
+      analyticsError,
 
       ...
     } = this.state;
@@ -389,46 +422,47 @@ Telemetrie graf teď zobrazuje pět minut telemetrická data:
 1. Aktualizace dat předávaných do panelu klíčových ukazatelů výkonu:
 
     ```node.js
-    <KpisPanel
-      topAlarms={topAlarmsWithName}
-      alarmsPerDeviceId={alarmsPerDeviceType}
-      criticalAlarmsChange={criticalAlarmsChange}
-      warningAlarmsChange={warningAlarmsChange}
-      isPending={kpisIsPending || rulesIsPending || devicesIsPending}
-      error={devicesError || rulesError || kpisError}
+    <AnalyticsPanel
+      timeSeriesExplorerUrl={timeSeriesParamUrl}
+      topAlerts={topAlertsWithName}
+      alertsPerDeviceId={alertsPerDeviceType}
+      criticalAlertsChange={criticalAlertsChange}
+      warningAlertsChange={warningAlertsChange}
+      isPending={analyticsIsPending || rulesIsPending || devicesIsPending}
+      error={devicesError || rulesError || analyticsError}
+      theme={theme}
       colors={chartColorObjects}
       t={t} />
     ```
 
-Nyní jste dokončili změny v `src/components/pages/dashboard/dashboard.js` souboru. Následující kroky popisují změny provádět v `src/components/pages/dashboard/panels/kpis/kpisPanel.js` soubor k zobrazení nový klíčový ukazatel výkonu:
+Nyní jste dokončili změnami `src/components/pages/dashboard/dashboard.js` souboru. Následující kroky popisují změny provádět v `src/components/pages/dashboard/panels/analytics/analyticsPanel.js` soubor k zobrazení nový klíčový ukazatel výkonu:
 
 1. Upravte následující řádek kódu k načtení nové hodnoty klíčového ukazatele výkonu následujícím způsobem:
 
     ```nodejs
-    const { t, isPending, criticalAlarmsChange, warningAlarmsChange, error } = this.props;
+    const { t, isPending, criticalAlertsChange, warningAlertsChange, alertsPerDeviceId, topAlerts, timeSeriesExplorerUrl, error } = this.props;
     ```
 
 1. Upravte značky pro novou hodnotu klíčového ukazatele výkonu se zobrazí takto:
 
     ```nodejs
-    <div className="kpi-cell">
-      <div className="kpi-header">{t('dashboard.panels.kpis.criticalAlarms')}</div>
-      <div className="critical-alarms">
+    <div className="analytics-cell">
+      <div className="analytics-header">{t('dashboard.panels.analytics.criticalAlerts')}</div>
+      <div className="critical-alerts">
         {
-          criticalAlarmsChange !== 0 &&
-            <div className="kpi-percentage-container">
-              <div className="kpi-value">{ criticalAlarmsChange }</div>
-              <div className="kpi-percentage-sign">%</div>
+          !showOverlay &&
+            <div className="analytics-percentage-container">
+              <div className="analytics-value">{ !isNaN(criticalAlertsChange) ? criticalAlertsChange : 0 }</div>
+              <div className="analytics-percentage-sign">%</div>
             </div>
         }
       </div>
-      <div className="kpi-header">{t('Warning alarms')}</div>
-      <div className="critical-alarms">
+      <div className="critical-alerts">
         {
-          warningAlarmsChange !== 0 &&
-            <div className="kpi-percentage-container">
-              <div className="kpi-value">{ warningAlarmsChange }</div>
-              <div className="kpi-percentage-sign">%</div>
+          !showOverlay &&
+            <div className="analytics-percentage-container">
+              <div className="analytics-value">{ !isNaN(warningAlertsChange) ? warningAlertsChange : 0 }</div>
+              <div className="analytics-percentage-sign">%</div>
             </div>
         }
       </div>

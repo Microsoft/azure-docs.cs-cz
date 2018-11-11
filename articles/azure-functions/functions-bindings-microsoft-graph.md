@@ -9,16 +9,16 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/20/2017
 ms.author: cshoe
-ms.openlocfilehash: fa429553caf874dd634944a5fca6cd9283194bb4
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
-ms.translationtype: MT
+ms.openlocfilehash: b77b035d829218d7416da4c6d57919e75b278e02
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50251103"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51288896"
 ---
 # <a name="microsoft-graph-bindings-for-azure-functions"></a>Vazeb Microsoft Graphu, Azure functions
 
-Tento článek vysvětluje postup konfigurace a práce s Microsoft Graphem triggerů a vazeb ve službě Azure Functions. Pomocí těchto, můžete použít pro práci s daty, insights a události z Azure Functions [Microsoft Graphu](https://graph.microsoft.io).
+Tento článek vysvětluje postup konfigurace a práce s Microsoft Graphem triggerů a vazeb ve službě Azure Functions. Pomocí těchto, můžete použít pro práci s daty, insights a události z Azure Functions [Microsoft Graphu](https://developer.microsoft.com/graph).
 
 Rozšíření Microsoft Graph poskytuje následující vazby:
 - [Ověřovací token vstupní vazby](#token-input) umožňuje pracovat s jakékoli rozhraní Microsoft Graph API.

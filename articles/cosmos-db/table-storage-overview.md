@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: overview
 ms.date: 11/03/2017
 ms.author: sngun
-ms.openlocfilehash: 495fc0fff39a04dee4fc707bd0d2f6b3571cc46a
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 204d0032516886c2d954965c7c4561d967bae705
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38582060"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51232184"
 ---
 # <a name="azure-table-storage-overview"></a>Přehled služby Azure Table Storage
 
@@ -35,6 +35,6 @@ Table Storage můžete používat k ukládání flexibilních datových sad, nap
 
 * Projděte si referenční dokumentaci ke službě Table service, kde najdete úplné podrobnosti o dostupných rozhraních API:
 
-    * [Klientská knihovna Storage pro .NET – referenční informace](http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409)
+    * [Klientská knihovna Storage pro .NET – referenční informace](https://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409)
 
-    * [REST API – referenční informace](http://msdn.microsoft.com/library/azure/dd179355)
+    * [REST API – referenční informace](https://msdn.microsoft.com/library/azure/dd179355)

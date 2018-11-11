@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/27/2018
 ms.author: barclayn
-ms.openlocfilehash: 31998c3b9cc151e96d0b2e0b85895603698f493b
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: f027ced7d6e317bfdf101cb792d9f2f2b7612242
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44303214"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51247738"
 ---
 # <a name="how-to-generate-and-transfer-hsm-protected-keys-for-azure-key-vault"></a>Postup generování a přenos chráněných pomocí HSM klíčů pro Azure Key Vault
 
@@ -61,7 +61,7 @@ Najdete v následující tabulce najdete seznam požadavků pro funkce přineste
 | Předplatné Azure |K vytvoření služby Azure Key Vault, budete potřebovat předplatné Azure: [zaregistrujte si bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/) |
 | Úroveň služby Azure Key Vault Premium k podpoře klíčů chráněných pomocí HSM |Další informace o úrovních služeb a možnostech pro Azure Key Vault najdete v tématu [cenách služby Azure Key Vault](https://azure.microsoft.com/pricing/details/key-vault/) webu. |
 | Modulu HSM společnosti Thales, čipové karty a podpůrný software |Musíte mít přístup k modulu hardwarového zabezpečení Thales a základní provozní znalosti o modulech HSM Thales. Zobrazit [modulu hardwarového zabezpečení Thales](https://www.thales-esecurity.com/msrms/buy) seznam kompatibilních modelů nebo pokud chcete zakoupit modulu hardwarového zabezpečení, pokud nemáte jednu. |
-| Níže uvedený hardware a software:<ol><li>Offline x64 pracovní stanice s minimální operační systém Windows Windows 7 a Thales nShield software, který je minimálně verze 11.50.<br/><br/>Pokud tato pracovní stanice používá Windows 7, je nutné [nainstalovat rozhraní Microsoft .NET Framework 4.5](http://download.microsoft.com/download/b/a/4/ba4a7e71-2906-4b2d-a0e1-80cf16844f5f/dotnetfx45_full_x86_x64.exe).</li><li>Pracovní stanice, která je připojená k Internetu a má minimální operační systém Windows Windows 7 a [prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-6.7.0) **minimální verzi 1.1.0** nainstalované.</li><li>USB Flash disk nebo jiné přenosné úložné zařízení, která obsahuje aspoň 16 MB volného místa.</li></ol> |Z bezpečnostních důvodů doporučujeme, aby první pracovní stanice nebyla připojená k síti. Nicméně toto doporučení nevynucujeme prostřednictvím kódu programu.<br/><br/>Všimněte si, že v následujících pokynech, této pracovní stanici se označuje jako odpojené pracovní stanici.</p></blockquote><br/>Kromě toho pokud váš klíč tenanta je pro produkční síť, doporučujeme použít druhou, samostatnou pracovní stanici, která ke stažení na sadu nástrojů a odešlete klíč tenanta. Ale pro účely testování můžete použít stejný pracovní stanice jako první z nich.<br/><br/>Všimněte si, že v následujících pokynech, druhá pracovní stanice označuje jako pracovní stanici připojené k Internetu.</p></blockquote><br/> |
+| Níže uvedený hardware a software:<ol><li>Offline x64 pracovní stanice s minimální operační systém Windows Windows 7 a Thales nShield software, který je minimálně verze 11.50.<br/><br/>Pokud tato pracovní stanice používá Windows 7, je nutné [nainstalovat rozhraní Microsoft .NET Framework 4.5](https://download.microsoft.com/download/b/a/4/ba4a7e71-2906-4b2d-a0e1-80cf16844f5f/dotnetfx45_full_x86_x64.exe).</li><li>Pracovní stanice, která je připojená k Internetu a má minimální operační systém Windows Windows 7 a [prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-6.7.0) **minimální verzi 1.1.0** nainstalované.</li><li>USB Flash disk nebo jiné přenosné úložné zařízení, která obsahuje aspoň 16 MB volného místa.</li></ol> |Z bezpečnostních důvodů doporučujeme, aby první pracovní stanice nebyla připojená k síti. Nicméně toto doporučení nevynucujeme prostřednictvím kódu programu.<br/><br/>Všimněte si, že v následujících pokynech, této pracovní stanici se označuje jako odpojené pracovní stanici.</p></blockquote><br/>Kromě toho pokud váš klíč tenanta je pro produkční síť, doporučujeme použít druhou, samostatnou pracovní stanici, která ke stažení na sadu nástrojů a odešlete klíč tenanta. Ale pro účely testování můžete použít stejný pracovní stanice jako první z nich.<br/><br/>Všimněte si, že v následujících pokynech, druhá pracovní stanice označuje jako pracovní stanici připojené k Internetu.</p></blockquote><br/> |
 
 ## <a name="generate-and-transfer-your-key-to-azure-key-vault-hsm"></a>Vygenerování a přenos klíče do služby Azure Key Vault HSM
 
@@ -101,7 +101,7 @@ Nezavírejte okno Azure PowerShell.
 
 ### <a name="step-13-download-the-byok-toolset-for-azure-key-vault"></a>Krok 1.3: Stažení sady nástrojů funkce BYOK pro Azure Key Vault
 
-Přejděte na webu Microsoft Download Center a [stáhnete sadu nástrojů pro BYOK služby Azure Key Vault](http://www.microsoft.com/download/details.aspx?id=45345) pro geografické oblasti nebo instance Azure. Následující informace použijte k určení názvu balíčku ke stažení a jeho odpovídajícího balíčku hash SHA-256:
+Přejděte na webu Microsoft Download Center a [stáhnete sadu nástrojů pro BYOK služby Azure Key Vault](https://www.microsoft.com/download/details.aspx?id=45345) pro geografické oblasti nebo instance Azure. Následující informace použijte k určení názvu balíčku ke stažení a jeho odpovídajícího balíčku hash SHA-256:
 
 - - -
 **Spojené státy americké:**

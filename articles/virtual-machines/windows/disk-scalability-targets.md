@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: virtual-machines
 ms.tgt_pltfrm: windows
 ms.component: disks
-ms.openlocfilehash: 401b8ebaa119f146cfcea0f948221c92e8bc6eb9
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: cd2f73b3fb2a8a3d80586063566fe66c37c26c67
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39713869"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51243449"
 ---
 # <a name="scalability-and-performance-targets-for-vm-disks-on-windows"></a>Škálovatelnost a výkonnostní cíle pro disky virtuálních počítačů ve Windows
 
@@ -23,6 +23,8 @@ ms.locfileid: "39713869"
 Zobrazit [velikosti virtuálních počítačů s Windows](../../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) další podrobnosti.
 
 ## <a name="managed-virtual-machine-disks"></a>Spravované virtuální počítače s disky
+
+Velikosti označený hvězdičkou jsou aktuálně ve verzi preview. Najdete v našich [nejčastější dotazy k](faq-for-disks.md#new-disk-sizes-managed-and-unmanaged) se dozvíte, jaké oblasti jsou k dispozici v.
 
 [!INCLUDE [azure-storage-limits-vm-disks-managed](../../../includes/azure-storage-limits-vm-disks-managed.md)]
 
@@ -34,4 +36,3 @@ Zobrazit [velikosti virtuálních počítačů s Windows](../../virtual-machines
 ## <a name="see-also"></a>Další informace najdete v tématech
 
 [Limity, kvóty a omezení předplatného a služeb Azure](https://docs.microsoft.com/azure/azure-subscription-service-limits)
-

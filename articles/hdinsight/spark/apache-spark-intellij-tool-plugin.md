@@ -2,19 +2,19 @@
 title: 'Sada Azure Toolkit pro IntelliJ: vytvoření aplikací Spark pro HDInsight cluster '
 description: Pomocí sady Azure Toolkit pro IntelliJ můžete vyvíjet aplikace Spark napsané v jazyce Scala a odesílat je na cluster HDInsight Spark.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/11/2018
+ms.date: 11/08/2018
 ms.author: maxluk
-ms.openlocfilehash: 51e1e7696ece46e63358b2ed6efa55bbf6ab01fd
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: ff7cfcd56158bd38d031a29a21247fb9eb6b91f9
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50420774"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51289066"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-create-spark-applications-for-an-hdinsight-cluster"></a>Vytvoření aplikací Spark pro cluster služby HDInsight pomocí sady Azure Toolkit pro IntelliJ
 
@@ -195,7 +195,7 @@ Po vytvoření aplikace v jazyce Scala, můžete ho odeslat do clusteru.
        > [!NOTE]
        > Nahrát odkazuje JARs a odkazované soubory, najdete v tématu: [jak nahrát prostředky do clusteru](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-storage-explorer)
                          
-    * **Nahrát cesta**: můžete určit umístění úložiště pro soubor Jar nebo Scala odeslání prostředků projektu. Existují tři typy úložiště se nepodporuje: **objektů Blob v Azure**, **interaktivní relace použití Sparku k nahrání artefakty**, a **použít výchozí účet úložiště clusteru**. Následující snímek obrazovky je příklad pro objektů Blob v Azure.
+    * **Nahrát cesta**: můžete určit umístění úložiště pro soubor Jar nebo Scala odeslání prostředků projektu. Existují tři typy úložiště se nepodporuje: **objektů Blob v Azure**, **interaktivní relace použití Sparku k nahrání artefakty**, a **použít výchozí účet úložiště clusteru**a **ADLS Gen1**. Následující snímek obrazovky je příklad pro objektů Blob v Azure.
 
         ![Dialogové okno odeslání Spark](./media/apache-spark-intellij-tool-plugin/hdi-submit-spark-upload-storage-types.png)
 
@@ -258,26 +258,25 @@ Ve výchozím nastavení sady Azure Toolkit pro IntelliJ seznam clusterů Spark 
 Můžete spustit místní Console(Scala) Spark nebo spuštění Sparku Livy interaktivní relace Console(Scala).
 
 ### <a name="spark-local-consolescala"></a>Místní Console(Scala) Spark
-1. Závislosti musí přidat ručně. V nabídce **souboru**->**struktury projektů**->**nastavení projektu**->**knihovny**, pak klikněte na tlačítko **+**, zvolte **z nástroje Maven...** . Zadejte **org.apache.spark:spark-repl_2.11:2.1.0** v místním dialogovém okně. Po přidání závislosti v knihovnách, potřebujete přesunout závislost na první řádek v **moduly** v **struktury projektů** okna. Před přesunutím, změnit **oboru** k **Runtime**.
-
-    ![Místní konzoly přidat závislost knihoven](./media/apache-spark-intellij-tool-plugin/local-console-add-dependency-libraries.png)
-
-    ![Místní konzoly přesunout na první řádek](./media/apache-spark-intellij-tool-plugin/local-console-move-first-line.png)
-
-2. Pokud nemáte žádné před nastavení konfigurace. V **konfigurace spuštění/ladění** okna, klikněte na tlačítko **+** -> **Azure HDInsight Spark**, vyberte kartu **místně spusťte**, zvolte hlavní třída a potom klikněte na tlačítko **OK**.
+1. Pokud nemáte žádné před nastavení konfigurace. V **konfigurace spuštění/ladění** okna, klikněte na tlačítko **+** -> **Azure HDInsight Spark**, vyberte kartu **místně spusťte**a **vzdáleně spouštět v clusteru**, zvolte hlavní třída a potom klikněte na tlačítko **OK**.
 
     ![Konfigurace sady místní konzoly](./media/apache-spark-intellij-tool-plugin/console-set-configuration.png)
  
-3. Otevřete soubor odpovídající souboru hlavní třídy a klikněte pravým tlačítkem myši **Spark konzoly**, pak klikněte na tlačítko **spustit místní Console(Scala) Spark**. Nebo přejděte do nabídky **nástroje**->**Spark konzoly**->**spustit místní Console(Scala) Spark** ke spuštění konzoly.
+2. Otevřete soubor odpovídající hlavní třídy a klikněte pravým tlačítkem myši **Spark konzoly**, pak klikněte na tlačítko **spustit místní Console(Scala) Spark**. Nebo přejděte do nabídky **nástroje**->**Spark konzoly**->**spustit místní Console(Scala) Spark** ke spuštění konzoly. Pak dvě dialogová okna se zobrazí zadat, jestli chcete automaticky opravit závislosti. Stačí kliknout na tlačítko **Automatická oprava**.
+
+    ![Automatické Fix1 Spark](./media/apache-spark-intellij-tool-plugin/console-auto-fix1.png)
+
+    ![Automatické Fix2 Spark](./media/apache-spark-intellij-tool-plugin/console-auto-fix2.png)
 
     ![Spark místní vstupní bod](./media/apache-spark-intellij-tool-plugin/spark-console-local-entry-script.png)
 
-4. Po úspěšném spuštění místní konzoly. Vypadá jako níže. Můžete udělat něco, co chcete. Zadejte například **sc.appName**, stiskněte klávesy ctrl + Enter, pak se zobrazí výsledek.
+3. Po úspěšném spuštění místní konzoly. Vypadá jako níže. Můžete udělat něco, co chcete. Zadejte například **sc.appName**, stiskněte klávesy ctrl + Enter, pak se zobrazí výsledek. Místní konzoly můžete ukončit kliknutím na červené tlačítko.
 
     ![Výsledek místní konzoly](./media/apache-spark-intellij-tool-plugin/local-console-result.png)
 
+
 ### <a name="spark-livy-interactive-session-consolescala"></a>Spark Console(Scala) interaktivní relace Livy
-Je podporován pouze na IntelliJ 2018.2.
+Je podporován pouze na IntelliJ 2018.2 a 2018.3.
 
 1. Pokud nemáte žádné před nastavení konfigurace. V **konfigurace spuštění/ladění** okna, klikněte na tlačítko **+** -> **Azure HDInsight Spark**, vyberte kartu **vzdáleně spouštět v clusteru** , zvolte název clusteru a hlavní třída a potom klikněte na tlačítko **OK**.
 
@@ -290,6 +289,11 @@ Je podporován pouze na IntelliJ 2018.2.
 3. Po spuštění konzoly nástroje úspěšně, můžete udělat něco, co chcete. Zadejte například **sc.appName**, stiskněte klávesy ctrl + Enter, pak se zobrazí výsledek.
 
     ![Výsledek interaktivní konzoly](./media/apache-spark-intellij-tool-plugin/interactive-console-result.png)
+
+### <a name="send-selection-to-spark-console"></a>Odeslat výběr do konzoly Spark
+Je vhodné pro vás forsee výsledek skriptu odesláním některých kódů místní konzoly nebo Livy Console(Scala) interaktivní relace. Můžete zvýraznit některých kódů v souboru Scala a pak klikněte pravým tlačítkem myši **odeslat výběr do konzoly Spark**. Vybrané kódy se odešlou do konzoly a provést. Výsledek se zobrazí po kódy v konzole. Konzole zjistí chyby, jestli existující. 
+
+   ![Odeslat výběr do konzoly Spark](./media/apache-spark-intellij-tool-plugin/send-selection-to-console.png)
 
 ## <a name="convert-existing-intellij-idea-applications-to-use-azure-toolkit-for-intellij"></a>Převést stávající aplikace IntelliJ IDEA pro použití sady Azure Toolkit pro IntelliJ
 Můžete převést stávající Scala Spark aplikací, které jste vytvořili v IntelliJ IDEA, aby byl kompatibilní s Azure Toolkit pro IntelliJ. Potom můžete modul plug-in k odeslání aplikace do clusteru HDInsight Spark.
@@ -333,11 +337,7 @@ Tyto chyby dojít, protože velikost haldy není dostatečně velký pro Spark k
 ![Přidání možností do pole "Možnosti virtuálního počítače" v IntelliJ](./media/apache-spark-intellij-tool-plugin/change-heap-size.png)
 
 ## <a name="faq"></a>Nejčastější dotazy
-Při propojení clusteru, můžu Navrhněte poskytnutí přihlašovacích údajů úložiště.
-
-![Propojení clusteru, zadejte přihlašovací údaje úložiště](./media/apache-spark-intellij-tool-plugin/link-cluster-with-storage-credential-intellij.png)
-
-Existují dva režimy pro odeslání úlohy. Pokud přihlašovací údaje úložiště v dávkovém režimu se použije k odeslání úlohy. V opačném případě se použije interaktivním režimu. Pokud cluster je zaneprázdněný, může se zobrazit následující chyba.
+Pokud cluster je zaneprázdněný, může se zobrazit následující chyba.
 
 ![Intellij zobrazí chybová zpráva při clusteru zaneprázdněný](./media/apache-spark-intellij-tool-plugin/intellij-interactive-cluster-busy-upload.png)
 

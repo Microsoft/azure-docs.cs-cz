@@ -1,7 +1,7 @@
 ---
-title: Importovat data ze souboru do Azure Machine Learning Studio | Microsoft Docs
-description: Zjistěte, jak nahrát soubor školení data z pevného disku do Azure Machine Learning Studio. Tím se vytvoří datová sada modulu v pracovním prostoru.
-keywords: Importujte dat, formát dat, datové typy, zdroje dat, Cvičná data
+title: Import dat ze souboru do Azure Machine Learning Studio | Dokumentace Microsoftu
+description: Zjistěte, jak nahrát soubor trénovací data z pevného disku do Azure Machine Learning Studio. Tím se vytvoří datová sada modulu v pracovním prostoru.
+keywords: Importujte dat, formát dat, datové typy, zdroje dat, trénovacích dat
 services: machine-learning
 documentationcenter: ''
 author: heatherbshapiro
@@ -16,32 +16,31 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.openlocfilehash: 0365492b2814d686dd0bfa099e94717137b51725
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 70e159e7b7b2b5934cc584e9eb2e511d2b0ce0db
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34834766"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51346206"
 ---
-# <a name="import-training-data-from-a-file-on-your-hard-drive-into-machine-learning-studio"></a>Importu trénovacích dat ze souboru na pevném disku do nástroje Machine Learning Studio
-[!INCLUDE [import-data-into-aml-studio-selector](../../../includes/machine-learning-import-data-into-aml-studio.md)]
+# <a name="import-training-data-from-a-file-on-your-hard-drive-into-machine-learning-studio"></a>Import trénovacích dat ze souboru na pevném disku do nástroje Machine Learning Studio
 
-Naučte se nahrát soubor dat z pevného disku pro použití jako Cvičná data v Azure Machine Learning Studio. Importováním datového souboru máte datovou sadu modul, který je připravený k použití v pracovním prostoru.
+Zjistěte, jak nahrát soubor dat z vašeho pevného disku, který se použije jako trénovacích dat v Azure Machine Learning Studio. Importováním souboru dat máte datovou sadu modul, který je připravený k použití ve vašem pracovním prostoru.
 
 ## <a name="steps-to-import-data-from-a-local-file"></a>Postup při importu dat z místního souboru
-Pokud chcete importovat data z místního pevného disku, postupujte takto:
+Import dat z místního pevného disku, postupujte takto:
 
-1. Klikněte na tlačítko **+ nový** v dolní části okna Machine Learning Studio.
+1. Klikněte na tlačítko **+ nová** v dolní části okna Machine Learning Studio.
 2. Vyberte **datovou sadu** a **z místního souboru**.
-3. V **nahrát nová datová sada** dialogové okno, přejděte na soubor, který chcete odeslat
-4. Zadejte název, identifikace typu dat a volitelně zadat popis. Popis se doporučuje – umožňuje zaznamenávat žádné charakteristiky data, která chcete mějte na paměti, při použití data v budoucnosti.
-5. Zaškrtávací políčko **jde o nové verzi existující datovou sadu** umožňuje aktualizovat existující datovou sadu s nová data. Klikněte na toto políčko a potom zadejte název existující datovou sadu.
+3. V **nahrát novou datovou sadu** dialogové okno, přejděte na soubor, který chcete nahrát
+4. Zadejte název, identifikace typu dat a volitelně zadejte popis. Popis se doporučuje – umožňuje zaznamenat všechny charakteristiky data, která chcete mějte na paměti při používání dat v budoucnu.
+5. Zaškrtávací políčko **jde o novou verzi existující datovou sadu** umožňuje aktualizovat existující datovou sadu s novými daty. Klikněte na toto zaškrtávací políčko a potom zadejte název existující datovou sadu.
 
-![Nahrát nová datová sada](./media/import-data-from-local-file/upload-dataset.png)
+![Nahrát novou datovou sadu](./media/import-data-from-local-file/upload-dataset.png)
 
-Během nahrávání se zobrazí zpráva, že váš soubor se nahrává. Nahrát doba závisí na velikosti vaší dat a rychlosti připojení ke službě. Pokud víte, že soubor bude trvat dlouhou dobu, můžete provést jiných věcí uvnitř Machine Learning Studio popředí. Ale zavření prohlížeče způsobí, že nahrání dat selžou.
+Při nahrávání zobrazí se vám zpráva, že váš soubor se nahrává. Nahrát doba závisí na velikosti dat a rychlosti vašeho připojení ke službě. Pokud víte, že soubor bude trvat dlouhou dobu, během čekáte můžete provádět další akce v nástroji Machine Learning Studio. Však zavření prohlížeče způsobí, že se data odeslala selhání.
 
-## <a name="dataset-module-is-ready-for-use"></a>Modul datové sady je připravený k použití
-Po nahrání dat je uložený v modulu datová sada a je k dispozici pro všechny experimentu v pracovním prostoru.
+## <a name="dataset-module-is-ready-for-use"></a>Modul datová sada je připravená k použití
+Po nahrání dat je uložený v modulu datová sada a je k dispozici žádné experimentu do pracovního prostoru.
 
-Při úpravě experiment, můžete najít datové sady, které jste vytvořili v **Moje datové sady** v rámci **uložit datové sady** seznamu paletě modulů. Můžete přetáhnout a vyřadit datovou sadu na plátno experimentu, pokud chcete použít datovou sadu pro další analýzy a strojové učení.
+Při úpravě experiment, můžete najít datových sad, které jste vytvořili v **Moje datové sady** seznamu v části **uložení datové sady** seznamu paletě modulů. Můžete přetáhnout a vyřadit datovou sadu na plátno experimentu. Pokud chcete používat datovou sadu pro další analýzy s využitím a strojové učení.

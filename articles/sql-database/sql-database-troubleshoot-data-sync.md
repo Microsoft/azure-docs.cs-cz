@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
 ms.date: 07/16/2018
-ms.openlocfilehash: 0f836a857d6f9748416fda1526a1957af4fc51e4
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
-ms.translationtype: MT
+ms.openlocfilehash: beab191ff33939053da942b0ce7df22238b8acef
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47163592"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51247309"
 ---
 # <a name="troubleshoot-issues-with-sql-data-sync"></a>Řešení potíží se synchronizací dat SQL
 
@@ -146,7 +146,7 @@ Klientský agent nebude fungovat, i když můžete zrušit jeho odinstalaci.
 - **Rozlišení**. Můžete vyzkoušet tyto dvě řešení:
 
     -   Zadejte znovu přihlašovací údaje pro agenta klienta pomocí modulu services.msc.
-    -   Odinstalujte tohoto agenta klienta a pak nainstalovat novou. Stáhněte a nainstalujte nejnovějšího agenta klienta [Download Center](http://go.microsoft.com/fwlink/?linkid=221479).
+    -   Odinstalujte tohoto agenta klienta a pak nainstalovat novou. Stáhněte a nainstalujte nejnovějšího agenta klienta [Download Center](https://go.microsoft.com/fwlink/?linkid=221479).
 
 ### <a name="agent-list"></a> Moje databáze není uvedená v seznamu agenta
 

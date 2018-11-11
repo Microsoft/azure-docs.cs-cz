@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: f50be01d067032b1143a80e56ccb5d49d899d4d6
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: c1f48e3273ac0a237c72565acf25049b763dba8a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50415963"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51246663"
 ---
 # <a name="understand-a-system-reboot-for-azure-vm"></a>Vysvětlení restartování systému pro virtuální počítač Azure
 
@@ -108,7 +108,7 @@ Doba trvání vypnutí dá zkrátit až pět minut, ale mohou být podstatně de
 
 **Vstupně-výstupních operací překročení omezení**
 
-Virtuální počítače může být dočasně vypnout, když vstupně-výstupních požadavků se omezují konzistentní vzhledem k tomu, že objem vstupně-výstupních operací za sekundu (IOPS) překračuje limity vstupně-výstupních operací disku. (Disk storage úrovně standard je omezený na 500 IOPS.) Chcete-li tento problém zmírnit, použijte prokládání disků nebo nakonfigurovat v prostoru úložiště uvnitř hostovaného virtuálního počítače, v závislosti na zatížení. Podrobnosti najdete v tématu [konfigurace virtuálních počítačů Azure pro optimální výkon úložiště](http://blogs.msdn.com/b/mast/archive/2014/10/14/configuring-azure-virtual-machines-for-optimal-storage-performance.aspx).
+Virtuální počítače může být dočasně vypnout, když vstupně-výstupních požadavků se omezují konzistentní vzhledem k tomu, že objem vstupně-výstupních operací za sekundu (IOPS) překračuje limity vstupně-výstupních operací disku. (Disk storage úrovně standard je omezený na 500 IOPS.) Chcete-li tento problém zmírnit, použijte prokládání disků nebo nakonfigurovat v prostoru úložiště uvnitř hostovaného virtuálního počítače, v závislosti na zatížení. Podrobnosti najdete v tématu [konfigurace virtuálních počítačů Azure pro optimální výkon úložiště](https://blogs.msdn.com/b/mast/archive/2014/10/14/configuring-azure-virtual-machines-for-optimal-storage-performance.aspx).
 
 Vyšší limity vstupně-výstupních operací jsou k dispozici prostřednictvím Azure Premium Storage s využitím až 80 000 vstupně-výstupních operací. Další informace najdete v tématu [vysoce výkonné úložiště úrovně Premium](../windows/premium-storage.md).
 

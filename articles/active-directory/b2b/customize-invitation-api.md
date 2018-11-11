@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 8809a5a8b4f76d6e33bbb934e13931e86f2d681c
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: a2a869c04034f8ca38e80e1bf10518d22e38bcbc
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49091761"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51286992"
 ---
 # <a name="azure-active-directory-b2b-collaboration-api-and-customization"></a>Azure Active Directory s B2B spolupráce rozhraní API a přizpůsobení
 
@@ -75,7 +75,7 @@ V tomto režimu, kdo používá požadavky rozhraní API oprávnění, se vytvo�
 ### <a name="app-only-mode"></a>Režim pouze aplikace
 V kontextu pouze pro aplikace aplikace musí User.Invite.All oboru této pozvánky proběhla úspěšně.
 
-Další informace naleznete na: https://graph.microsoft.io/docs/authorization/permission_scopes
+Další informace naleznete na: https://developer.microsoft.com/graph/docs/authorization/permission_scopes
 
 
 ## <a name="powershell"></a>PowerShell

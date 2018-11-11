@@ -10,16 +10,16 @@ ms.component: bing-custom-search
 ms.topic: conceptual
 ms.date: 09/28/2017
 ms.author: v-brapel
-ms.openlocfilehash: a74e6a6a90a242d4d1b2fd71a5fc6cf949ea55cb
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 5e168608202f81f698221b52315de83e9713feab
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48815252"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282915"
 ---
 # <a name="configure-your-custom-search-experience"></a>Konfigurace prostředí pro vlastní vyhledávání
 
-Instanci vlastního vyhledávání umožňuje přizpůsobit možnosti vyhledávání zahrnout obsah jenom z webů, které vaši uživatelé záleží. Místo prohledávání celé webové vyhledává Bing jenom jeden řez webu, který vás zajímá. Chcete-li vytvořit vlastní zobrazení webu, použijte vlastní vyhledávání Bingu [portál](https://customsearch.ai). Informace o přihlášení k portálu najdete v tématu [vytvořit první instanci vlastního vyhledávání Bingu](https://docs.microsoft.com/azure/cognitive-services/bing-custom-search/quick-start). 
+Instanci vlastního vyhledávání umožňuje přizpůsobit možnosti vyhledávání zahrnout obsah jenom z webů, které vaši uživatelé záleží. Místo prohledávání celé webové vyhledává Bing jenom jeden řez webu, který vás zajímá. Pokud chcete vytvořit vlastní zobrazení webu, použijte [portál](https://customsearch.ai) Vlastní vyhledávání Bingu. Informace o přihlášení k portálu najdete v tématu [vytvořit první instanci vlastního vyhledávání Bingu](https://docs.microsoft.com/azure/cognitive-services/bing-custom-search/quick-start). 
 
 Na portálu umožňuje vytvořit instanci hledání, který určuje domény, podstránky a webové stránky, které chcete, aby Bingu pro vyhledávání a ty, které nechcete, aby ji k prohledávání. Kromě zadání adresy URL, o kterém víte o obsahu, můžete také klást na portálu pro návrh obsah, který chcete přidat do zobrazení. 
 
@@ -64,7 +64,7 @@ Upravit nebo odstranit řezů, pomocí možností v části **ovládací prvky**
 
 ## <a name="pinned-list"></a>Připnuté seznamu
 
-Na portálu můžete taky připnout konkrétní webové stránky k hornímu okraji výsledek hledání, pokud uživatel zadá konkrétní hledaný termín. **Pinned** karta obsahuje seznam dvojic dotazu období a webové stránky, které určují webovou stránku, která se zobrazí jako nejlepší výsledek pro konkrétní dotaz. Informace o připínání výsledků najdete v tématu [upravit pořadí](#adjustrank).
+Portál také umožňuje připnout konkrétní webovou stránku na začátek výsledků hledání v případě, že uživatel zadá konkrétní hledaný termín. **Pinned** karta obsahuje seznam dvojic dotazu období a webové stránky, které určují webovou stránku, která se zobrazí jako nejlepší výsledek pro konkrétní dotaz. Kromě toho pouze indexovaná webové stránky se zobrazí v hledání. Informace o připínání výsledků najdete v tématu [upravit pořadí](#adjustrank). 
 
 Připnutí výsledky není k dispozici pro vyhledávání obrázků a dojde k hledání videí.
 
@@ -95,9 +95,9 @@ Na portálu umožňuje nastavit hodnocení k manipulaci s výsledky, které Bing
   
 - Boost. Zvyšuje obsah z domény nebo podstránku vyšší ve výsledcích hledání. Vyberte, jestli se má zvýšit obsah z domény nebo podstránky, že webová stránka patří. [Další informace](#boosting-and-demoting)  
   
-- Snížení úrovně. Sníží úroveň obsah z domény nebo podstránku nižší ve výsledcích hledání. Vyberte, jestli se má obsah z domény degradovat nebo podstránky, že webová stránka patří. [Přečtěte si další informace](#boosting-and-demoting).  
+- Snížení úrovně. Sníží úroveň obsah z domény nebo podstránku nižší ve výsledcích hledání. Vyberte, jestli se má obsah z domény degradovat nebo podstránky, že webová stránka patří. [Další informace](#boosting-and-demoting).  
   
-- Připnout nahoru. Definujte webovou stránku, která se zobrazuje v horní části výsledků Pokud řetězec dotazu odpovídá že kolíky dotaz řetězec v závislosti na podmínce shody PIN kód. Seznam aktivních nemusí obsahovat webové stránce si můžete připnout. [Přečtěte si další informace](#pin-to-top).
+- Připnout nahoru. Definujte webovou stránku, která se zobrazuje v horní části výsledků Pokud řetězec dotazu odpovídá že kolíky dotaz řetězec v závislosti na podmínce shody PIN kód. Seznam aktivních nemusí obsahovat webové stránce si můžete připnout. [Další informace](#pin-to-top).
 
 Úprava pořadí není k dispozici pro vyhledávání obrázků a dojde k hledání videí.
 
@@ -176,6 +176,6 @@ Pokud jste přihlášení k odběru vlastního vyhledávání na příslušné �
 ## <a name="next-steps"></a>Další postup
 
 - [Volání vlastního vyhledávání](./search-your-custom-view.md)
-- [Konfigurace prostředí uživatelského rozhraní](./hosted-ui.md)
-- [Použití dekorace značek zvýraznění textu](./hit-highlighting.md)
-- [Stránka webové stránky](./page-webpages.md)
+- [Konfigurace prostředí pro hostované uživatelské rozhraní](./hosted-ui.md)
+- [Zvýraznění textu pomocí dekoračních značek](./hit-highlighting.md)
+- [Stránkování webových stránek](./page-webpages.md)

@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: powerbi
 ms.date: 09/25/2017
 ms.author: maghan
-ms.openlocfilehash: cd7da8d2bbd684df29432bb924bdae3cd9ac7e64
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: a2e1604a51b8343d926dda3b258d38b19266deeb
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43044433"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51246680"
 ---
 # <a name="get-started-with-power-bi-workspace-collections-sample"></a>Začínáme s ukázkou kolekce pracovních prostorů Power BI
 
@@ -26,9 +26,9 @@ S **kolekce pracovních prostorů Power BI Microsoft**, můžete integrovat sest
 
 Než půjdeme dál, kterého chcete uložit následující prostředky: pomáhají při příliš integrace sestav Power BI do ukázkové aplikace a vlastních aplikací.
 
-* [Ukázkový pracovní prostor webové aplikace](http://go.microsoft.com/fwlink/?LinkId=761493)
+* [Ukázkový pracovní prostor webové aplikace](https://go.microsoft.com/fwlink/?LinkId=761493)
 * [Referenční materiály k Power BI pracovního prostoru kolekce API](https://msdn.microsoft.com/library/azure/mt711507.aspx)
-* [Power BI .NET SDK ](http://go.microsoft.com/fwlink/?LinkId=746472) (k dispozici prostřednictvím NuGet)
+* [Power BI .NET SDK ](https://go.microsoft.com/fwlink/?LinkId=746472) (k dispozici prostřednictvím NuGet)
 * [Ukázku vložení sestavy jazyka JavaScript](https://microsoft.github.io/PowerBI-JavaScript/demo)
 
 > [!NOTE]
@@ -38,7 +38,7 @@ Než půjdeme dál, kterého chcete uložit následující prostředky: pomáhaj
 
 Projděme si nastavení vývojového prostředí sady Visual Studio pro přístup k součástem potřebných ke spuštění ukázkové aplikace.
 
-1. Stáhněte a rozbalte [kolekce pracovních prostorů Power BI – integrace sestavy do webové aplikace](http://go.microsoft.com/fwlink/?LinkId=761493) ukázka na Githubu.
+1. Stáhněte a rozbalte [kolekce pracovních prostorů Power BI – integrace sestavy do webové aplikace](https://go.microsoft.com/fwlink/?LinkId=761493) ukázka na Githubu.
 2. Otevřít **PowerBI embedded.sln** v sadě Visual Studio. Možná budete muset provést **Update-Package** příkazu v konzole Správce balíčků NuGet, abyste mohli aktualizovat balíčky používané v tomto řešení.
 3. Sestavte řešení.
 4. Spustit **ProvisionSample** konzolovou aplikaci. V ukázkové aplikaci konzoly zřízení pracovního prostoru a naimportovat soubor PBIX.
@@ -51,7 +51,7 @@ Projděme si nastavení vývojového prostředí sady Visual Studio pro přístu
 8. Zkopírujte a uložte nově vytvořený **ID pracovního prostoru** pro pozdější použití v tomto článku. Po **ID pracovního prostoru** je vytvořen, najdete ho **webu Azure portal**.
 
     ![ID pracovního prostoru v rámci webu Azure portal](media/get-started-sample/workspace-id.png)
-9. Import souboru PBIX do vaší **pracovní prostor**, vyberte možnost **6. Import souboru PBIX Desktopu do existujícího pracovního prostoru**. Pokud nemáte k dispozici PBIX souboru po ruce, můžete stáhnout [ukázkový soubor PBIX prodejní analýzy](http://go.microsoft.com/fwlink/?LinkID=780547).
+9. Import souboru PBIX do vaší **pracovní prostor**, vyberte možnost **6. Import souboru PBIX Desktopu do existujícího pracovního prostoru**. Pokud nemáte k dispozici PBIX souboru po ruce, můžete stáhnout [ukázkový soubor PBIX prodejní analýzy](https://go.microsoft.com/fwlink/?LinkID=780547).
 10. Pokud se zobrazí výzva, zadejte popisný název pro váš **datovou sadu**.
 
 Měli byste vidět odpovědi podobně jako:
@@ -83,7 +83,7 @@ Ukázkové webové aplikace je ukázková aplikace, který vykreslí sestav se i
     ```
 3. Spustit **EmbedSample** webovou aplikaci.
 
-Po spuštění **EmbedSample** webovou aplikaci, by měl obsahovat levém navigačním panelu **sestavy** nabídky. Chcete-li zobrazit sestavu jste naimportovali, rozbalte **sestavy**a klikněte na sestavu. Pokud jste naimportovali [ukázkový soubor PBIX prodejní analýzy](http://go.microsoft.com/fwlink/?LinkID=780547), ukázková webová aplikace bude vypadat takto:
+Po spuštění **EmbedSample** webovou aplikaci, by měl obsahovat levém navigačním panelu **sestavy** nabídky. Chcete-li zobrazit sestavu jste naimportovali, rozbalte **sestavy**a klikněte na sestavu. Pokud jste naimportovali [ukázkový soubor PBIX prodejní analýzy](https://go.microsoft.com/fwlink/?LinkID=780547), ukázková webová aplikace bude vypadat takto:
 
 ![Ukázka levé navigaci v rámci ukázkové aplikace](media/get-started-sample/sample-left-nav.png)
 

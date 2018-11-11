@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 744d9929d7f82242d2bb75452b70b11af19b3af7
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 6179086c6a2cf187c976ff23bf24180257023d28
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49084305"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51289168"
 ---
-# <a name="secure-your-iot-deployment"></a>Zabezpečení nasazení IoT
+# <a name="secure-your-internet-of-things-iot-deployment"></a>Zabezpečení nasazení Internet of Things (IoT)
 
 Tento článek poskytuje další úroveň podrobností pro zabezpečení infrastruktury založené na Azure IoT Internet of Things (IoT). Odkazuje na úroveň podrobností implementace pro konfiguraci a zavádění jednotlivých komponent. Také poskytuje porovnávání s rozlišením a se nemusíte rozhodovat mezi různé konkurenční metody.
 

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/17/2016
 ms.author: roiyz
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 73e5e54e40223f7cd972e2bd2752add9ca82ff2b
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 0c19d32f6c6f491a91ba6c2219be9fd016b5ec34
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452339"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51243875"
 ---
 # <a name="understanding-and-using-the-azure-linux-agent"></a>Princip a používání agenta Azure Linux
 
@@ -73,7 +73,7 @@ Tok informací z platformy k agentovi dojde k přes dva kanály:
 Tyto systémy byly testovány a jsou známé pro práci s agentem Azure Linux:
 
 > [!NOTE]
-> Tento seznam může lišit od oficiálního seznamu podporovaných systémech na platformě Microsoft Azure, jak je popsáno zde: [http://support.microsoft.com/kb/2805216](http://support.microsoft.com/kb/2805216)
+> Tento seznam může lišit od oficiálního seznamu podporovaných systémech na platformě Microsoft Azure, jak je popsáno zde: [http://support.microsoft.com/kb/2805216](https://support.microsoft.com/kb/2805216)
 > 
 > 
 
@@ -344,6 +344,6 @@ Využití cloudu Imagemi Ubuntu [cloud-init](https://launchpad.net/ubuntu/+sourc
 
 * Další informace najdete v tématu záměna prostoru imagemi Ubuntu cloudu během zřizování a nakonfigurovat prostředek disku přípojného bodu na následujících odkazech:
   
-  * [Ubuntu Wiki: Konfigurace oddílů prohození](http://go.microsoft.com/fwlink/?LinkID=532955&clcid=0x409)
+  * [Ubuntu Wiki: Konfigurace oddílů prohození](https://go.microsoft.com/fwlink/?LinkID=532955&clcid=0x409)
   * [Vkládání vlastních dat do virtuálního počítače Azure](../windows/classic/inject-custom-data.md)
 

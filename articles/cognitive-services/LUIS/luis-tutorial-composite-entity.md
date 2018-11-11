@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 99e0b22b663f6edab9646111b390186a6f89a90f
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 1521bba188fcd7d8bade88196fe687929f414f93
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47035177"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51283508"
 ---
 # <a name="tutorial-6-group-and-extract-related-data"></a>Kurz 6: Seskupovat a extrahovat souvisejících dat
 V tomto kurzu přidáte složené entitu seskupit do jedné entity obsahující extrahované data různých typů. Seskupí dat, klientská aplikace snadno extrahovat souvisejících dat v různých datových typů.
@@ -26,30 +26,30 @@ Složený entita je vhodný pro tento typ dat, protože data:
 
 * Se vztahují k sobě navzájem. 
 * Využijte celou řadu typů entit.
-* Je třeba seskupeny a zpracovány klientskou aplikaci jako celek informací.
+* Musí být seskupeny a zpracovány klientskou aplikací jako jediná informace.
 
-**V tomto kurzu se dozvíte, jak:**
+**V tomto kurzu se naučíte:**
 
 <!-- green checkmark -->
 > [!div class="checklist"]
-> * Použít existující ukázková aplikace
+> * Používat existující ukázkovou aplikaci
 > * Přidání složené entity 
 > * Trénování
 > * Publikování
-> * Získat záměry a entity z koncového bodu
+> * Zjistit záměry a entity z koncového bodu
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="use-existing-app"></a>Použití existující aplikace
-Pokračovat s aplikací vytvořili v posledním kurzu s názvem **Lidskézdroje**. 
+Pokračujte s aplikací **HumanResources**, kterou jste vytvořili v posledním kurzu. 
 
-Pokud nemáte aplikaci lidských zdrojů z předchozí kurz o službě, použijte následující kroky:
+Pokud aplikaci HumanResources z předchozího kurzu nemáte, postupujte takto:
 
-1.  Stáhněte a uložte [souboru JSON aplikace](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-hier-HumanResources.json).
+1.  Stáhněte si [soubor JSON aplikace](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-hier-HumanResources.json) a uložte si ho.
 
-2. Importujte ve formátu JSON do nové aplikace.
+2. Naimportujte soubor JSON do nové aplikace.
 
-3. Z **spravovat** části na **verze** kartu, naklonujte na verzi a pojmenujte ho `composite`. Klonování představuje skvělý způsob, jak si můžete vyzkoušet různé funkce služby LUIS, aniž by to mělo vliv na původní verzi. Název verze, protože se používají jako součást trasu adresy URL název nesmí obsahovat žádné znaky, které nejsou platné v adrese URL.
+3. V části **Manage** (Správa) na kartě **Versions** (Verze) naklonujte verzi a pojmenujte ji `composite`. Klonování představuje skvělý způsob, jak si můžete vyzkoušet různé funkce služby LUIS, aniž by to mělo vliv na původní verzi. Název verze je součástí cesty URL, a proto smí obsahovat jenom znaky, které jsou platné v adresách URL.
 
 
 ## <a name="composite-entity"></a>Složený entity
@@ -97,7 +97,7 @@ Extrahovaných dat z koncového bodu by měl obsahovat tyto informace a vrátit 
 ]
 ```
 
-1. [!include[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
+1. [!INCLUDE[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. Na **záměry** stránce **MoveEmployee** záměr. 
 
@@ -153,7 +153,7 @@ Extrahovaných dat z koncového bodu by měl obsahovat tyto informace a vrátit 
 
 [!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
-## <a name="get-intent-and-entities-from-endpoint"></a>Získání záměru a entity z koncového bodu 
+## <a name="get-intent-and-entities-from-endpoint"></a>Získání záměru a entit z koncového bodu 
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 

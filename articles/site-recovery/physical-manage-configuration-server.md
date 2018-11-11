@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: ramamill
-ms.openlocfilehash: 4bf9277598c3e56c0429dddcb2204cb1338a33be
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 0e8dbf47c40339c90a0e28c3ef497a8da963e481
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50213238"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230984"
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>Správa konfiguračního serveru pro zotavení po havárii fyzického serveru
 
@@ -42,7 +42,7 @@ Tabulka shrnuje předpoklady pro nasazení počítače místní konfigurační s
 
 ## <a name="download-the-latest-installation-file"></a>Stažení nejnovějšího instalačního souboru
 
-Nejnovější verzi instalačního souboru konfigurace serveru je k dispozici na portálu Site Recovery. Kromě toho můžete stáhnout přímo z [Microsoft Download Center](http://aka.ms/unifiedsetup).
+Nejnovější verzi instalačního souboru konfigurace serveru je k dispozici na portálu Site Recovery. Kromě toho můžete stáhnout přímo z [Microsoft Download Center](https://aka.ms/unifiedsetup).
 
 1. Přihlaste se k webu Azure portal a přejděte do vašeho trezoru služby Recovery Services.
 2. Přejděte do **infrastruktura Site Recovery** > **konfigurační servery** (v části pro VMware a fyzické počítače).

@@ -4,16 +4,16 @@ description: Popisuje, jak je používat prostředku definice zásady Azure Poli
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/18/2018
+ms.date: 10/30/2018
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 0ff56b86243956d1fa6b51a6dfd14af9e00d8367
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: b5c7d0c6d54272518b19ffec0d8f02ebbcfe55d9
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50212773"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51283286"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definic Azure Policy
 
@@ -123,12 +123,12 @@ V pravidlu zásad můžete odkazovat na parametry u následujících `parameters
 
 ## <a name="definition-location"></a>Umístění definice
 
-Při vytváření definice iniciativy nebo zásady, je důležité, že zadáte umístění definice.
+Při vytváření iniciativy nebo zásady, je nutné zadat umístění definice. Umístění definice musí být skupinu pro správu nebo předplatného a určuje obor, ke které je možné přiřadit iniciativy nebo zásady. Prostředky musí být přímými členy nebo podřízené prvky v rámci hierarchie umístění definice cílit na přiřazení.
 
-Umístění definice určuje obor, ke které je možné přiřadit definici iniciativy nebo zásady. Umístění lze zadat jako skupinu pro správu nebo předplatného.
+Pokud je umístění definice:
 
-> [!NOTE]
-> Pokud budete chtít platí tato definice zásady pro více předplatných, musí být umístění, která obsahuje odběry, které se přiřazení iniciativy nebo zásady skupiny pro správu.
+- **Předplatné** – pouze pro prostředky v rámci tohoto předplatného je možné přiřadit zásady.
+- **Skupina pro správu** – pouze pro prostředky v rámci podřízené skupiny pro správu a podřízené předplatná je možné přiřadit zásady. Pokud budete chtít použít definici zásady pro více předplatných, musí být umístění skupiny pro správu, který obsahuje těchto předplatných.
 
 ## <a name="display-name-and-description"></a>Zobrazovaný název a popis
 
@@ -146,7 +146,7 @@ V **pak** bloku, definujete efekt, který se stane, když **Pokud** jsou splněn
         <condition> | <logical operator>
     },
     "then": {
-        "effect": "deny | audit | append | auditIfNotExists | deployIfNotExists"
+        "effect": "deny | audit | append | auditIfNotExists | deployIfNotExists | disabled"
     }
 }
 ```
@@ -232,7 +232,8 @@ Zásady podporuje následující typy dopadu:
 - **Audit**: vygeneruje událost upozornění v protokolu aktivit, ale ne nesplní žádost
 - **Připojit**: Přidá definovanou sadu polí k této žádosti
 - **AuditIfNotExists**: povolí auditování Pokud prostředek neexistuje.
-- **DeployIfNotExists**: nasadí prostředek, pokud ještě neexistuje.
+- **DeployIfNotExists**: nasadí prostředek, pokud ještě neexistuje
+- **Zakázané**: Nelze vyhodnotit prostředky pro pravidlo zásad dodržování předpisů
 
 Pro **připojit**, je nutné zadat následující údaje:
 
@@ -247,6 +248,18 @@ Pro **připojit**, je nutné zadat následující údaje:
 Hodnota může být řetězec nebo objekt formátu JSON.
 
 S **AuditIfNotExists** a **DeployIfNotExists** můžete vyhodnotit existenci souvisejících prostředků a použít pravidla a odpovídající efekt, pokud daný prostředek neexistuje. Můžete třeba vyžadovat, že sledovací proces sítě se nasazuje pro všechny virtuální sítě. Příklad audit, když rozšíření virtuálního počítače není nasazený, naleznete v tématu [auditovat, jestli rozšíření neexistuje](../samples/audit-ext-not-exist.md).
+
+**DeployIfNotExists** vyžaduje vliv **roledefinitionid, které je** vlastnost **podrobnosti** část pravidla zásad. Další informace najdete v tématu [nápravy - nakonfigurovat definici zásady](../how-to/remediate-resources.md#configure-policy-definition).
+
+```json
+"details": {
+    ...
+    "roleDefinitionIds": [
+        "/subscription/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/{roleGUID}",
+        "/providers/Microsoft.Authorization/roleDefinitions/{builtinroleGUID}"
+    ]
+}
+```
 
 Kompletní informace o jednotlivých vliv pořadí vyhodnocení, vlastností a příkladů, najdete v části [účinky zásad Principy](effects.md).
 

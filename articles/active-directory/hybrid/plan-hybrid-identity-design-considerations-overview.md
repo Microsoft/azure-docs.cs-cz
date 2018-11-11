@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 05/30/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 6d916e884e7764a1ba5ebaf224750f38e7d7673e
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: d85157c3f1aafd33a2b996168f2f9eac613a209c
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46313891"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51344878"
 ---
 # <a name="azure-active-directory-hybrid-identity-design-considerations"></a>Důležité informace k návrhu hybridní identity Azure Active Directory
 Zařízení se systémem příjemce se proliferating světě a se snadno přijmout cloudové aplikace software jako služba (SaaS). V důsledku toho je náročné mít pod kontrolou přístupu uživatelů aplikace mezi interní datacentry a cloudovými platformami.  
@@ -58,10 +58,10 @@ Dostanete se na design, která nejlépe splňuje vaše požadavky dopracujete ž
 
 | Hybridní identita fáze | Seznam témat |
 | --- | --- |
-| Určení požadavků na identity |[Určit, potřeb firmy](plan-hybrid-identity-design-considerations-business-needs.md)<br> [Určete požadavky na synchronizaci adresáře](plan-hybrid-identity-design-considerations-directory-sync-requirements.md)<br> [Určení požadavků na ověření službou Multi-Factor Authentication](plan-hybrid-identity-design-considerations-multifactor-auth-requirements.md)<br> [Definování strategie přijetí hybridní identity](plan-hybrid-identity-design-considerations-identity-adoption-strategy.md) |
+| Určení požadavků na identitu |[Určit, potřeb firmy](plan-hybrid-identity-design-considerations-business-needs.md)<br> [Určete požadavky na synchronizaci adresáře](plan-hybrid-identity-design-considerations-directory-sync-requirements.md)<br> [Určení požadavků na ověření službou Multi-Factor Authentication](plan-hybrid-identity-design-considerations-multifactor-auth-requirements.md)<br> [Definování strategie přijetí hybridní identity](plan-hybrid-identity-design-considerations-identity-adoption-strategy.md) |
 | Plán pro zlepšení zabezpečení dat prostřednictvím řešení využívá silné identity |[Určení požadavků na ochranu dat](plan-hybrid-identity-design-considerations-dataprotection-requirements.md) <br> [Určení požadavků na správu obsahu](plan-hybrid-identity-design-considerations-contentmgt-requirements.md)<br> [Určete požadavky na řízení přístupu](plan-hybrid-identity-design-considerations-accesscontrol-requirements.md)<br> [Určení požadavků na reakce na incidenty](plan-hybrid-identity-design-considerations-incident-response-requirements.md) <br> [Definování strategie ochrany dat](plan-hybrid-identity-design-considerations-data-protection-strategy.md) |
 | Plánování životního cyklu hybridní identity |[Určení úloh správy hybridní identity](plan-hybrid-identity-design-considerations-hybrid-id-management-tasks.md) <br> [Správa synchronizace](plan-hybrid-identity-design-considerations-hybrid-id-management-tasks.md)<br> [Určení strategie přijetí správy hybridní identity](plan-hybrid-identity-design-considerations-lifecycle-adoption-strategy.md) |
 
-## <a name="download-this-guide"></a>Stáhněte si tuto příručku
-Můžete stáhnout soubor pdf verzi Průvodce aspekty návrhu hybridní Identity z [Galerie Technet](https://gallery.technet.microsoft.com/Azure-Hybrid-Identity-b06c8288). 
+## <a name="next-steps"></a>Další kroky
+[Určení požadavků na identity](plan-hybrid-identity-design-considerations-business-needs.md)
 

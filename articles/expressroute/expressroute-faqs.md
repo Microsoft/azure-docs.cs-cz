@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: cherylmc
-ms.openlocfilehash: 3af2b2a1b35a290746007d7f486473162a055b99
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 8cde172207717aca2af5dfa706f7d9c6d290c36e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50211362"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51239198"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute – nejčastější dotazy
 
@@ -76,7 +76,7 @@ ExpressRoute podporuje [tři domény směrování](expressroute-circuit-peerings
 
 ### <a name="microsoft-peering"></a>Partnerský vztah Microsoftu
 
-* [Office 365](http://aka.ms/ExpressRouteOffice365)
+* [Office 365](https://aka.ms/ExpressRouteOffice365)
 * Dynamics 365 
 * Power BI
 * Azure Active Directory
@@ -199,11 +199,7 @@ Ano. Virtuální počítače nasazené ve virtuálních sítích, které jsou p�
 
 ### <a name="can-i-use-site-to-site-connectivity-for-virtual-networks-in-conjunction-with-expressroute"></a>Můžete použít připojení site-to-site pro virtuální sítě ve spojení s ExpressRoute?
 
-Ano. Mohou existovat vedle sebe ExpressRoute s VPN typu site-to-site.
-
-### <a name="can-i-move-a-virtual-network-from-site-to-site--point-to-site-configuration-to-use-expressroute"></a>Můžete přesunout virtuální sítě z konfigurace site-to-site nebo point-to-site používat ExpressRoute?
-
-Ano. Budete muset vytvořit bránu ExpressRoute v rámci vaší virtuální sítě. Je malý výpadek spojených s procesem.
+Ano. Mohou existovat vedle sebe ExpressRoute s VPN typu site-to-site. Zobrazit [společně používaných připojení typu site-to-site a ExpressRoute nakonfigurovat](expressroute-howto-coexist-resource-manager.md).
 
 ### <a name="why-is-there-a-public-ip-address-associated-with-the-expressroute-gateway-on-a-virtual-network"></a>Proč je veřejná IP adresa přidružená k bráně ExpressRoute ve virtuální síti?
 
@@ -287,7 +283,7 @@ Ano. ExpressRoute premium poplatky nad rámec poplatků za okruhu ExpressRoute a
 
 1. Zkontrolujte [stránku požadavků pro ExpressRoute](expressroute-prerequisites.md) k Ujistěte se, že se splnily požadavky.
 2. Aby bylo zajištěno, že jsou splněny vaše potřeby připojení, projděte si seznam poskytovatelů služeb a umístění v [ExpressRoute partneři a umístění](expressroute-locations.md) článku.
-3. Plánování vašim požadavkům na kapacitu kontrolou [plánování sítě a optimalizace výkonu pro Office 365](http://aka.ms/tune/).
+3. Plánování vašim požadavkům na kapacitu kontrolou [plánování sítě a optimalizace výkonu pro Office 365](https://aka.ms/tune/).
 4. Postupujte podle kroků uvedených v pracovních postupech nastavit propojení [pracovní postupy ExpressRoute pro zřizování okruhů a stavy okruhů](expressroute-workflows.md).
 
 > [!IMPORTANT]
@@ -297,11 +293,11 @@ Ano. ExpressRoute premium poplatky nad rámec poplatků za okruhu ExpressRoute a
 
 ### <a name="can-my-existing-expressroute-circuits-support-connectivity-to-office-365-services-and-dynamics-365"></a>Mé existující okruhy ExpressRoute podporuje připojení ke službám Office 365 a Dynamics 365?
 
-Ano. Stávající okruh ExpressRoute může být nakonfigurované pro podporu připojení ke službám Office 365. Ujistěte se, že máte dostatečnou kapacitu pro připojení ke službám Office 365 a že jste povolili doplněk premium. [Plánování sítě a optimalizace výkonu pro Office 365](http://aka.ms/tune/) potřebuje vám pomůže s plánováním připojení. Viz také [vytvoření a úprava okruhu ExpressRoute](expressroute-howto-circuit-classic.md).
+Ano. Stávající okruh ExpressRoute může být nakonfigurované pro podporu připojení ke službám Office 365. Ujistěte se, že máte dostatečnou kapacitu pro připojení ke službám Office 365 a že jste povolili doplněk premium. [Plánování sítě a optimalizace výkonu pro Office 365](https://aka.ms/tune/) potřebuje vám pomůže s plánováním připojení. Viz také [vytvoření a úprava okruhu ExpressRoute](expressroute-howto-circuit-classic.md).
 
 ### <a name="what-office-365-services-can-be-accessed-over-an-expressroute-connection"></a>Jaké Office 365 služby přístupné přes připojení ExpressRoute?
 
-Odkazovat na [Office 365 – adresy URL a rozsahy IP adres](http://aka.ms/o365endpoints) stránky pro aktuální seznam služeb podporovaných přes ExpressRoute.
+Odkazovat na [Office 365 – adresy URL a rozsahy IP adres](https://aka.ms/o365endpoints) stránky pro aktuální seznam služeb podporovaných přes ExpressRoute.
 
 ### <a name="how-much-does-expressroute-for-office-365-services-cost"></a>Jaká je ExpressRoute pro náklady na služby Office 365?
 

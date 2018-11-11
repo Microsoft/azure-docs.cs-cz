@@ -5,14 +5,14 @@ services: event-grid
 author: tfitzmac
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 10/29/2018
+ms.date: 11/05/2018
 ms.author: tomfitz
-ms.openlocfilehash: 24337863d4e3f8e093c2e33afbb39364ec37516d
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: fd33ca723bd00b4a9c25009ef5b4f444487244f0
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50252184"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281944"
 ---
 # <a name="understand-event-filtering-for-event-grid-subscriptions"></a>Principy událostí filtrování pro předplatná Event gridu
 
@@ -57,9 +57,9 @@ Syntaxe JSON pro filtrování podle typu události je následující:
 
 Filtrovat podle hodnot v datových polích a zadejte operátor porovnání, použijte možnost rozšířeného filtrování. V rozšířené filtrování, můžete zadat:
 
-* Operator - typ porovnání.
+* typ operátoru - typ porovnání.
 * klíč – pole v dat události, které používáte pro filtrování. To může být číslo, logickou hodnotu nebo řetězec.
-* hodnoty – hodnoty k porovnání s klíči.
+* hodnota nebo hodnoty – hodnota nebo hodnoty k porovnání s klíči.
 
 Syntaxi JSON pro používání rozšířených filtrů, je:
 
@@ -67,14 +67,14 @@ Syntaxi JSON pro používání rozšířených filtrů, je:
 "filter": {
   "advancedFilters": [
     {
-      "Operator": "NumberGreaterThanOrEquals",
-      "Key": "Data.Key1",
-      "Values": 5
+      "operatorType": "NumberGreaterThanOrEquals",
+      "key": "Data.Key1",
+      "value": 5
     },
     {
-      "Operator": "StringContains",
-      "Key": "Subject",
-      "Values": ["container1", "container2"]
+      "operatorType": "StringContains",
+      "key": "Subject",
+      "values": ["container1", "container2"]
     }
   ]
 }
@@ -122,7 +122,7 @@ Pro události v cloudu události schéma použijte následující hodnoty pro kl
 * eventTypeVersion
 * Data událostí (např. Data.key1)
 
-Pro vlastní vstupní schéma použijte datová pole událostí (např. Data.key1 Data.key1.key2).
+Pro vlastní vstupní schéma použijte pole dat události (jako jsou Data.key1).
 
 ### <a name="values"></a>Hodnoty
 
@@ -140,7 +140,7 @@ Rozšířené filtrování má následující omezení:
 * Pět rozšířené filtry na odběr služby event grid
 * 512 znaků na jednu řetězcovou hodnotu
 * Pět hodnoty **v** a **není v** operátory
-* Klíč může mít pouze dvě úrovně vnoření (např. data.key1.key2)
+* Klíč může mít pouze jednu úroveň vnoření (např. data.key1)
 
 Stejný klíč můžete použít ve více než jeden filtr.
 

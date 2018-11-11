@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 5c16f06d0cc031cd9b51a3c6cf0beb149a19aeb4
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 9cf37e611dce5705a4c866f25afa59e5c1602ec4
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39001435"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282199"
 ---
 # <a name="certificates-overview-for-azure-cloud-services"></a>Přehled certifikátů pro Azure Cloud Services
 Certifikáty se používají v Azure pro cloudové služby ([služby certifikátů](#what-are-service-certificates)) a pro ověřování pomocí rozhraní API pro správu ([certifikáty pro správu](#what-are-management-certificates)). Toto téma obsahuje obecný přehled o oba typy certifikátů, jak k [vytvořit](#create) a [nasazení](#deploy) do Azure.
@@ -27,6 +27,9 @@ Certifikáty se používají v Azure pro cloudové služby ([služby certifikát
 Certifikáty používané v Azure jsou x.509 v3 certifikáty a může být podepsány jiný certifikát pro důvěryhodného nebo mohou být podepsaný svým držitelem. Certifikát podepsaný svým držitelem je podepsaný vlastním creator, proto není důvěryhodný ve výchozím nastavení. Většina prohlížečů můžete ignorovat tento problém. Byste měli používat jenom certifikáty podepsané svým držitelem při vývoji a testování vašich cloudových služeb. 
 
 Certifikáty používané službou Azure může obsahovat privátního nebo veřejného klíče. Certifikáty mít kryptografický otisk, který poskytuje prostředky k identifikaci jednoznačným způsobem. Tímto kryptografickým otiskem se používá ve službě Azure [konfigurační soubor](cloud-services-configure-ssl-certificate-portal.md) k identifikaci který certifikát je Cloudová služba by měla používat. 
+
+>[!Note]
+>Azure Cloud Services nepřijímá zašifrovaný certifikát AES256 SHA256.
 
 ## <a name="what-are-service-certificates"></a>Co jsou certifikáty služeb?
 Certifikáty služby jsou připojeny k cloudových služeb a povolení zabezpečené komunikace do a ze služby. Pokud jste nasadili webovou roli, by například chcete zadat certifikát, který může ověřit koncový bod HTTPS vystavené. Certifikáty služby, definované v definici služby se automaticky nasadí do virtuálního počítače, na kterém běží instance role. 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: big-compute
 ms.date: 10/12/2016
 ms.author: danlep
-ms.openlocfilehash: 2d4091d8ad6a778405ee6bb916c399e0b144f21d
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 4156071c36b06be586b05ee98e9eeb0a9138e4bb
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39441523"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51246850"
 ---
 # <a name="get-started-with-linux-compute-nodes-in-an-hpc-pack-cluster-in-azure"></a>Začínáme s výpočetními uzly Linuxu v clusteru HPC Pack v Azure
 Nastavení [sady Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029.aspx) clusteru v Azure, která obsahuje hlavního uzlu se systémem Windows Server a některé výpočetní uzly, které běží podporované distribuce systému Linux. Prozkoumejte možnosti služby pro přesun dat mezi uzly s Linuxem a k hlavnímu uzlu clusteru Windows. Zjistěte, jak odesílat úlohy HPC pro Linux do clusteru.
@@ -186,7 +186,7 @@ Máte několik možností pro přesun dat mezi uzly s Linuxem a k hlavnímu uzlu
 ### <a name="azure-file-storage"></a>Azure File storage
 [Azure File](https://azure.microsoft.com/services/storage/files/) služba zpřístupňuje sdílené složky, které používají standardní protokol SMB 2.1. Virtuální počítače Azure a cloudové služby můžou sdílet souborová data mezi komponentami aplikace přes sdílené složky a místní aplikace můžou k souborovým datům ve sdílené složce přes API úložiště souborů. 
 
-Podrobný postup vytvoření sdílené složky Azure a připojit ji hlavního uzlu, naleznete v tématu [Začínáme s Azure File storage ve Windows](../../../storage/files/storage-how-to-use-files-windows.md). Připojení sdílené složky Azure v uzlech systému Linux, najdete v článku [postupy používání Azure File storage s Linuxem](../../../storage/files/storage-how-to-use-files-linux.md). Nastavení trvalých připojení, naleznete v tématu [Persisting připojení k Microsoft Azure Files](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx).
+Podrobný postup vytvoření sdílené složky Azure a připojit ji hlavního uzlu, naleznete v tématu [Začínáme s Azure File storage ve Windows](../../../storage/files/storage-how-to-use-files-windows.md). Připojení sdílené složky Azure v uzlech systému Linux, najdete v článku [postupy používání Azure File storage s Linuxem](../../../storage/files/storage-how-to-use-files-linux.md). Nastavení trvalých připojení, naleznete v tématu [Persisting připojení k Microsoft Azure Files](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx).
 
 V následujícím příkladu vytvoření sdílené složky Azure v účtu úložiště. Připojte sdílenou složku hlavního uzlu, otevřete příkazový řádek a zadejte následující příkazy:
 
@@ -271,7 +271,7 @@ Existuje několik způsobů, jak odesílat úlohy do clusteru HPC Pack:
 
 Odeslání úlohy do clusteru v Azure pomocí nástroje pro prostředí HPC Pack grafickým uživatelským rozhraním a webového portálu HPC jsou stejné jako u Windows výpočetních uzlů. Zobrazit [Správce úloh HPC Pack](https://technet.microsoft.com/library/ff919691.aspx) a [postup odesílání úloh z klientských počítačů v místním](../../windows/hpcpack-cluster-submit-jobs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-Chcete-li odesílat úlohy prostřednictvím rozhraní REST API, přečtěte si [vytváření a odesílání úloh pomocí rozhraní REST API v Microsoft HPC Pack](http://social.technet.microsoft.com/wiki/contents/articles/7737.creating-and-submitting-jobs-by-using-the-rest-api-in-microsoft-hpc-pack-windows-hpc-server.aspx). Odesílání úloh z klienta systému Linux, také naleznete ukázku Pythonu v [sady HPC Pack SDK](https://www.microsoft.com/download/details.aspx?id=47756).
+Chcete-li odesílat úlohy prostřednictvím rozhraní REST API, přečtěte si [vytváření a odesílání úloh pomocí rozhraní REST API v Microsoft HPC Pack](https://social.technet.microsoft.com/wiki/contents/articles/7737.creating-and-submitting-jobs-by-using-the-rest-api-in-microsoft-hpc-pack-windows-hpc-server.aspx). Odesílání úloh z klienta systému Linux, také naleznete ukázku Pythonu v [sady HPC Pack SDK](https://www.microsoft.com/download/details.aspx?id=47756).
 
 ## <a name="clusrun-for-linux-nodes"></a>Clusrun pro uzly s Linuxem
 HPC Pack [clusrun](https://technet.microsoft.com/library/cc947685.aspx) nástroj můžete použít ke spuštění příkazů na uzly s Linuxem prostřednictvím příkazového řádku nebo Správce clusterů HPC. Toto jsou některé základní příklady.

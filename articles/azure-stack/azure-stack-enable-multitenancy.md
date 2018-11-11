@@ -11,14 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/24/2018
+ms.date: 11/6/2018
 ms.author: patricka
-ms.openlocfilehash: a1c516ebbeb33d2aa92f6a0e3031a2b2d9fb4e9c
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.reviewer: bryanr
+ms.openlocfilehash: fbf62e53ffe3fc3540086137955417bec56e7825
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50026156"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240167"
 ---
 # <a name="multi-tenancy-in-azure-stack"></a>Víceklientská architektura v Azure stacku
 
@@ -26,9 +27,9 @@ ms.locfileid: "50026156"
 
 Můžete nakonfigurovat služby Azure Stack pro podporu uživatelů z více tenantů Azure Active Directory (Azure AD) pro použití služeb ve službě Azure Stack. Představte si třeba následující scénář:
 
- - Jste správcem služby contoso.onmicrosoft.com, kde je nainstalovaný Azure Stack.
- - Jan je správcem adresáře fabrikam.onmicrosoft.com, kde se nachází uživatelé typu Host. 
- - Její společnosti přijme služby IaaS a PaaS ve vaší společnosti a je potřeba povolit uživatelům z adresáře hosta (fabrikam.onmicrosoft.com) přihlásit a používat prostředky služby Azure Stack v contoso.onmicrosoft.com.
+- Jste správce služeb contoso.onmicrosoft.com, kde je nainstalovaný Azure Stack.
+- Jan je správcem adresáře fabrikam.onmicrosoft.com, kde se nachází uživatelé typu Host.
+- Její společnosti přijme služby IaaS a PaaS ve vaší společnosti a je potřeba povolit uživatelům z adresáře hosta (fabrikam.onmicrosoft.com) přihlásit a používat prostředky služby Azure Stack v contoso.onmicrosoft.com.
 
 Tato příručka obsahuje kroky potřebné v rámci tohoto scénáře, chcete-li nakonfigurovat více tenantů ve službě Azure Stack. V tomto scénáři jste a Mary musíte dokončit postup povolení uživatelům k využívání služeb v nasazení Azure Stack ve společnosti Contoso a Fabrikam.  
 
@@ -50,6 +51,8 @@ Existuje několik požadavků pro účet předtím, než nakonfigurujete více t
 V této části nakonfigurujete tak, aby přihlášení ze společnosti Fabrikam Azure AD directory tenantů Azure Stack.
 
 Připojení ke službě Azure Stack konfigurací Azure Resource Manageru a akceptovat uživatele objekty zabezpečení v tenantu Active directory hostované služby hosta Tenantu Active Directory (Fabrikam).
+
+Správce služeb contoso.onmicrosoft.com spouští následující příkazy.
 
 ````PowerShell  
 ## The following Azure Resource Manager endpoint is for the ASDK. If you are in a multinode environment, contact your operator or service provider to get the endpoint.
@@ -76,11 +79,11 @@ Register-AzSGuestDirectoryTenant -AdminResourceManagerEndpoint $adminARMEndpoint
 
 ### <a name="configure-guest-directory"></a>Nakonfigurujte adresář hostů
 
-Po dokončení kroků v adresáři služby Azure Stack Mary musí poskytnout souhlas adresář hostů přístup ke službě Azure Stack a Azure Stack zaregistrovat adresář hostů. 
+Jakmile správce Azure Stack / – operátor povolila Fabrikam adresář, který chcete použít s Azure Stack, Mary musíte zaregistrovat u společnosti Fabrikam adresář tenanta služby Azure Stack.
 
 #### <a name="registering-azure-stack-with-the-guest-directory"></a>Registrace Azure Stack s adresář hostů
 
-Jakmile správce adresáře hosta poskytl souhlas pro Azure Stack pro přístup do adresáře společnosti Fabrikam, Mary zaregistrujte Azure Stack s tenantem adresář společnosti Fabrikam.
+Jan správcem adresáře aplikace Fabrikam spouští následující příkazy v directory fabrikam.onmicrosoft.com hosta.
 
 ````PowerShell
 ## The following Azure Resource Manager endpoint is for the ASDK. If you are in a multinode environment, contact your operator or service provider to get the endpoint.
@@ -99,14 +102,14 @@ Register-AzSWithMyDirectoryTenant `
 > Pokud správce služby Azure Stack v budoucnu nainstaluje nové služby nebo aktualizace, budete muset znovu spusťte tento skript.
 >
 > Tento skript spusťte znovu kdykoli zkontrolovat stav služby Azure Stack aplikace ve vašem adresáři.
-> 
+>
 > Pokud jste si všimli problémy s vytvářením virtuálních počítačů ve službě Managed Disks (zaveden v aktualizaci. 1808), nový **poskytovatele prostředků disku** se přidal, tento skript spustit znovu.
 
 ### <a name="direct-users-to-sign-in"></a>Přímé přihlášení uživatele
 
 Teď, když jste a Mary jste dokončili kroky pro začlenění Mary adresáře, může směrovat Mary Fabrikam uživatelům umožní přihlásit.  Fabrikam uživatele (to znamená, že uživatelé s příponou fabrikam.onmicrosoft.com) přihlaste návštěvou https://portal.local.azurestack.external.  
 
-Marie bude směrovat všechny [cizích objektů zabezpečení](../role-based-access-control/rbac-and-directory-admin-roles.md) v adresáři společnosti Fabrikam (to znamená, že uživatelé v adresáři společnosti Fabrikam bez přípony fabrikam.onmicrosoft.com) k přihlášení pomocí https://portal.local.azurestack.external/fabrikam.onmicrosoft.com.  Pokud se nepoužívají tuto adresu URL, se odesílají do jejich výchozí adresář (Fabrikam) a zobrazí se chyba s upozorněním, že jejich správu. nevyjádřil.
+Marie bude směrovat všechny [cizích objektů zabezpečení](../role-based-access-control/rbac-and-directory-admin-roles.md) v adresáři společnosti Fabrikam (to znamená, že uživatelé v adresáři společnosti Fabrikam bez přípony fabrikam.onmicrosoft.com) k přihlášení pomocí https://portal.local.azurestack.external/fabrikam.onmicrosoft.com.  Pokud není používá tuto adresu URL, budete odesílat své výchozí adresář (Fabrikam) a zobrazí se chyba s upozorněním, že jejich správu. nevyjádřil.
 
 ## <a name="disable-multi-tenancy"></a>Zakázat víceklientské architektury
 

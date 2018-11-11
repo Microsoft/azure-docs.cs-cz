@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/05/2018
+ms.date: 11/08/2018
 ms.author: celested
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
-ms.openlocfilehash: dcc27992c318a970a86f1ff5c60723daeef881b6
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: 0983c2235fba0cacbda53208e5dcad5b2878619c
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50914647"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51345483"
 ---
 # <a name="how-to-provide-optional-claims-to-your-azure-ad-app-public-preview"></a>Postupy: Zadejte nepovinných deklarací identity do aplikace Azure AD (Public Preview)
 
@@ -42,7 +42,7 @@ Jedním z cílů systému [koncového bodu Azure AD v2.0](active-directory-appmo
 | Typ účtu | Koncový bod verze 1.0 | Koncový bod verze 2.0  |
 |--------------|---------------|----------------|
 | Osobní účet Microsoft  | Není k dispozici – místo toho používají lístky RPS | Podpora už |
-| Účet Azure AD          | Podporováno                          | Podporované s omezením      |
+| Účet Azure AD          | Podporováno                          | Podporované s omezením |
 
 > [!IMPORTANT]
 > Aplikace, které podporují osobní účty a Azure AD (registrovaný prostřednictvím metody [portál pro registraci aplikace](https://apps.dev.microsoft.com)) nejde použít nepovinných deklarací identity. Aplikace registrované u právě Azure AD pomocí koncového bodu v2.0 však můžete získat nepovinných deklarací identity, které, o který žádali v manifestu. Na webu Azure Portal, můžete použít editor manifestu aplikace v existujícím **registrace aplikací** prostředí pro úpravy nepovinných deklarací identity. Ale tato funkce ještě není k dispozici pomocí editoru manifestu aplikace na novém **registrace aplikací (Preview)** prostředí.
@@ -60,8 +60,6 @@ Sada nepovinných deklarací identity ve výchozím nastavení dostupné pro pou
 |-----------------------------|----------------|------------|-----------|--------|
 | `auth_time`                | Čas, kdy naposledy ověření uživatele. Specifikace OpenID Connect najdete v tématu.| JWT        |           |  |
 | `tenant_region_scope`      | Oblast prostředku tenanta | JWT        |           | |
-| `signin_state`             | Přihlaste se deklarace identity stavu   | JWT        |           | 6 návratové hodnoty, jako příznaky:<br> "dvc_mngd": je zařízení spravované<br> "dvc_cmp": zařízení splňuje předpisy<br> "dvc_dmjd": zařízení je připojené k doméně<br> "dvc_mngd_app": je zařízení spravováno přes MDM<br> "inknownntwk": zařízení je ve známé síti.<br> "políčko zůstat přihlášeni": Keep mě přihlášené byl použit. <br> |
-| `controls`                 | Více hodnot deklarací identity, který obsahuje ovládací prvky relací vynucuje zásady podmíněného přístupu. | JWT        |           | 3 hodnoty:<br> "app_res": aplikace je potřeba vynutit podrobnější omezení. <br> "ca_enf": vynucení podmíněného přístupu bylo odloženo a je nutné použít. <br> "no_cookie": Tento token není dostatečná k výměně pro soubor cookie v prohlížeči. <br>  |
 | `home_oid`                 | Pro uživatele typu Host, ID objektu uživatele v domovském tenantovi uživatele.| JWT        |           | |
 | `sid`                      | ID relace používané pro odhlášení relace uživatele. | JWT        |           |         |
 | `platf`                    | Platforma zařízení    | JWT        |           | Omezeno na spravovaná zařízení, které můžete ověřit typ zařízení.|
@@ -76,6 +74,7 @@ Sada nepovinných deklarací identity ve výchozím nastavení dostupné pro pou
 | `xms_pl`                   | Uživatel upřednostňovaný jazyk  | JWT ||Uživatel upřednostňovaného jazyka, pokud se nastavení. Zdrojem je jejich domovském tenantovi ve scénářích přístup hosta. Všechny kopie ve formátu ("en-us"). |
 | `xms_tpl`                  | Tenant upřednostňovaný jazyk| JWT | | Prostředků tenanta upřednostňovaného jazyka, pokud se nastavení. Formátovaný LL ("en"). |
 | `ztdid`                    | Automatizované ID nasazení | JWT | | Identita zařízení používaná pro [Windows AutoPilot](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot) |
+|`email`                     | Adresovatelný e-mailu pro tohoto uživatele, pokud má jeden uživatel.  | JWT, SAML | | Tato hodnota je zahrnuta ve výchozím nastavení, pokud je uživatel typu Host v tenantovi.  Pro spravované uživatele (ty uvnitř tenanta) se musí být požadován prostřednictvím této volitelné deklarace identity, nebo na pouze, verze 2.0 s rozsahem OpenID.  Pro spravované uživatele, e-mailová adresa musí být nastavena v [portálu pro správu Office](https://portal.office.com/adminportal/home#/users).|  
 | `acct`             | Stav účtu uživatele v tenantovi. | JWT, SAML | | Pokud je uživatel členem tenanta, hodnota je `0`. Pokud jsou hosta, hodnota je `1`. |
 | `upn`                      | Deklarace identity UserPrincipalName. | JWT, SAML  |           | I když tato deklarace identity je automaticky přidána, můžete je zadat jako volitelnou deklaraci připojit další vlastnosti, změnit její chování v případě uživatelů typu Host. <br> Další vlastnosti: <br> `include_externally_authenticated_upn` <br> `include_externally_authenticated_upn_without_hash` |
 

@@ -1,6 +1,6 @@
 ---
-title: Azure API Management napříč zásady domény | Microsoft Docs
-description: Další informace o k dispozici pro použití v Azure API Management napříč doménami zásady.
+title: Mezidoménové zásady Azure API Management | Dokumentace Microsoftu
+description: Další informace týkající se dají používat ve službě Azure API Management napříč doménami zásad.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -14,24 +14,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: 590831454e8a18678e357b4824eb35a717d1fee0
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: bd5082d9f66e65bb487c9216131b7e13f825340e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2017
-ms.locfileid: "26129030"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51246646"
 ---
 # <a name="api-management-cross-domain-policies"></a>Zásady pro API Management napříč doménami
-Toto téma obsahuje odkaz pro následující zásady služby API Management. Informace o přidávání a konfiguraci zásad najdete v tématu [zásady ve službě API Management](http://go.microsoft.com/fwlink/?LinkID=398186).  
+Toto téma obsahuje odkaz pro následující zásady služby API Management. Informace o přidávání a konfiguraci zásad najdete v tématu [zásady ve službě API Management](https://go.microsoft.com/fwlink/?LinkID=398186).  
   
-##  <a name="CrossDomainPolicies"></a>Různé zásady domény  
+##  <a name="CrossDomainPolicies"></a> Mezidoménové zásady  
   
--   [Povolit volání mezi doménami](api-management-cross-domain-policies.md#AllowCrossDomainCalls) -zpřístupní rozhraní API z Adobe Flash a Microsoft Silverlight založené na prohlížeči klientů.  
--   [CORS](api-management-cross-domain-policies.md#CORS) – přidává podporu (CORS), aby operace nebo rozhraní API umožňující volání napříč doménami založené na prohlížeči klientů pro sdílení prostředků různého původu.  
--   [JSONP](api-management-cross-domain-policies.md#JSONP) -přidá JSON s podporou odsazení (JSONP) operace nebo rozhraní API, chcete-li povolit volání mezi doménami z klientů JavaScript založené na prohlížeči.  
+-   [Povolit volání mezi doménami](api-management-cross-domain-policies.md#AllowCrossDomainCalls) -zpřístupňuje rozhraní API z Adobe Flash a Silverlight Microsoftu založené na prohlížeči klientů.  
+-   [CORS](api-management-cross-domain-policies.md#CORS) – přidá prostředků mezi zdroji (CORS) podporu o operaci nebo rozhraní API pro povolit volání mezi doménami založené na prohlížeči klientů pro sdílení obsahu.  
+-   [JSONP](api-management-cross-domain-policies.md#JSONP) – přidá JSON s podporou odsazení (JSONP) pro operaci nebo rozhraní API pro volání mezi doménami založené na prohlížeči klientů JavaScript povolit.  
   
-##  <a name="AllowCrossDomainCalls"></a>Povolit volání mezi doménami  
- Použití `cross-domain` zásady zpřístupněte rozhraní API z Adobe Flash a Microsoft Silverlight založené na prohlížeči klientů.  
+##  <a name="AllowCrossDomainCalls"></a> Povolit volání mezi doménami  
+ Použití `cross-domain` zásad zpřístupnit rozhraní API z Adobe Flash a Silverlight Microsoftu založené na prohlížeči klientů.  
   
 ### <a name="policy-statement"></a>Prohlášení o zásadách  
   
@@ -42,7 +42,7 @@ Toto téma obsahuje odkaz pro následující zásady služby API Management. Inf
 </cross-domain>  
 ```  
   
-### <a name="example"></a>Příklad  
+### <a name="example"></a>Příklad:  
   
 ```xml  
 <cross-domain>  
@@ -54,20 +54,20 @@ Toto téma obsahuje odkaz pro následující zásady služby API Management. Inf
   
 ### <a name="elements"></a>Elementy  
   
-|Name (Název)|Popis|Požaduje se|  
+|Název|Popis|Požaduje se|  
 |----------|-----------------|--------------|  
-|mezi doménami|Kořenový element. Podřízené elementy musí odpovídat [specifikaci souboru zásady mezi doménami Adobe](http://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html).|Ano|  
+|mezi doménami|Kořenový element. Podřízené elementy musí odpovídat [specifikace souboru Adobe zásady mezi doménami](http://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html).|Ano|  
   
 ### <a name="usage"></a>Využití  
- Tuto zásadu lze použít v tyto zásady [části](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
+ Tyto zásady můžete použít v následujících zásad [oddíly](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
--   **Části zásady:** příchozí  
+-   **Části zásad:** příchozí  
 -   **Zásady obory:** globální  
   
-##  <a name="CORS"></a>CORS  
- `cors` Zásad přidá podporu (CORS), aby operace nebo rozhraní API umožňující volání napříč doménami založené na prohlížeči klientů pro sdílení prostředků různého původu.  
+##  <a name="CORS"></a> CORS  
+ `cors` Zásad přidá prostředků mezi zdroji (CORS) podporu o operaci nebo rozhraní API pro povolit volání mezi doménami založené na prohlížeči klientů pro sdílení obsahu.  
   
- CORS umožňuje prohlížečem a serverem komunikovat a zjistěte, zda chcete povolit konkrétní požadavky cross-origin (tj. XMLHttpRequests volání z jazyka JavaScript na webové stránce do jiných domén). To umožňuje více flexibility než povolíte jen žádostí stejné zdroji, ale je bezpečnější než povolení všech žádostí napříč zdroji.  
+ CORS umožňuje jenom prohlížeč a server interakce a zjistěte, jestli se mají povolit konkrétní požadavky mezi zdroji (například XMLHttpRequests volání z jazyka JavaScript na webové stránce do jiných domén). To umožňuje více flexibility než povolíte jen pro stejné požadavky, ale je bezpečnější než povolíte všechny požadavky mezi zdroji.  
   
 ### <a name="policy-statement"></a>Prohlášení o zásadách  
   
@@ -88,8 +88,8 @@ Toto téma obsahuje odkaz pro následující zásady služby API Management. Inf
 </cors>  
 ```  
   
-### <a name="example"></a>Příklad  
- Tento příklad ukazuje, jak pro podporu požadavků před letu, například těch, které se vlastní hlavičky nebo jiných metod než GET a POST. Chcete-li podporovat vlastní hlavičky a další příkazy HTTP, použijte `allowed-methods` a `allowed-headers` částech, jak je znázorněno v následujícím příkladu.  
+### <a name="example"></a>Příklad:  
+ Tento příklad ukazuje, jak podporovat přípravné požadavků, například ty, které mají vlastní hlavičky nebo jiných metod než GET a POST. Chcete-li podporovat vlastní hlavičky a dalších příkazů HTTP, použijte `allowed-methods` a `allowed-headers` sections – jak je znázorněno v následujícím příkladu.  
   
 ```xml  
 <cors allow-credentials="true">  
@@ -123,32 +123,32 @@ Toto téma obsahuje odkaz pro následující zásady služby API Management. Inf
   
 ### <a name="elements"></a>Elementy  
   
-|Name (Název)|Popis|Požaduje se|Výchozí|  
+|Název|Popis|Požaduje se|Výchozí|  
 |----------|-----------------|--------------|-------------|  
-|cors|Kořenový element.|Ano|Není k dispozici|  
-|Povolené zdroje|Obsahuje `origin` prvky, které popisují povolené zdroje pro požadavky napříč doménami. `allowed-origins`může obsahovat buď jediný `origin` element, který určuje `*` umožňující jakýkoli původ nebo jeden nebo více `origin` elementy, které obsahují identifikátoru URI.|Ano|Není k dispozici|  
-|Počátek|Hodnota může být buď `*` umožňuje všechny původy nebo identifikátor URI, který určuje jeden počátek. Identifikátor URI musí obsahovat schéma, hostitele a portu.|Ano|Při vynechání je port v identifikátoru URI je používá port 80 pro protokol HTTP a port 443 se používá pro protokol HTTPS.|  
-|povolené metody|Tento prvek je nutný, pokud metody jiné než GET nebo POST jsou povoleny. Obsahuje `method` elementy, které určují, podporované příkazy HTTP.|Ne|Pokud v této části není zadán, jsou podporovány GET a POST.|  
-|– Metoda|Určuje příkaz HTTP.|Alespoň jeden `method` prvek je nutný, pokud `allowed-methods` část je k dispozici.|Není k dispozici|  
-|povolené hlavičky|Tento prvek obsahuje `header` elementy zadání názvy seznam hlaviček, které můžou být součástí požadavku.|Ne|Není k dispozici|  
-|Zveřejněte hlavičky|Tento prvek obsahuje `header` elementy zadání názvy seznam hlaviček, které budou přístupné klientem.|Ne|Není k dispozici|  
-|záhlaví|Určuje název hlavičky.|Alespoň jeden `header` element je vyžadována ve `allowed-headers` nebo `expose-headers` Pokud se nachází v části.|Není k dispozici|  
+|cors|Kořenový element.|Ano|neuvedeno|  
+|Povolené zdroje|Obsahuje `origin` prvky, které popisují povolené zdroje pro požadavky napříč doménami. `allowed-origins` může obsahovat buď jeden `origin` prvek, který určuje `*` umožňující jakýkoli původ nebo jeden nebo více `origin` prvky, které obsahují identifikátoru URI.|Ano|neuvedeno|  
+|počátek|Hodnota může být buď `*` povolit všechny původy nebo identifikátor URI, který určuje jeden počátek. Identifikátor URI musí obsahovat schéma, hostitele a port.|Ano|Pokud port není uveden v identifikátoru URI, používá port 80 pro protokol HTTP a používá port 443 pro protokol HTTPS.|  
+|povolené metody|Tento prvek je nutný, pokud metody jiné než GET nebo POST jsou povoleny. Obsahuje `method` elementy, které určují podporované příkazy HTTP.|Ne|Pokud tento oddíl není k dispozici, jsou podporovány GET a POST.|  
+|method|Určuje příkaz HTTP.|Alespoň jeden `method` element je povinný, pokud `allowed-methods` oddílu je k dispozici.|neuvedeno|  
+|povolené hlavičky|Tento prvek obsahuje `header` elementy názvy záhlaví, které mohou být součástí požadavku.|Ne|neuvedeno|  
+|expose-headers.|Tento prvek obsahuje `header` elementy názvy záhlaví, které budou přístupné pro klienta.|Ne|neuvedeno|  
+|záhlaví|Určuje název hlavičky.|Alespoň jeden `header` je vyžadován prvek v `allowed-headers` nebo `expose-headers` oddíl je k dispozici.|neuvedeno|  
   
 ### <a name="attributes"></a>Atributy  
   
-|Name (Název)|Popis|Požaduje se|Výchozí|  
+|Název|Popis|Požaduje se|Výchozí|  
 |----------|-----------------|--------------|-------------|  
-|Povolit přihlašovací údaje|`Access-Control-Allow-Credentials` Hlavičky v předběžné odpovědi bude nastavena na hodnotu tohoto atributu a vliv na schopnost klienta odeslat přihlašovací údaje v žádosti napříč doménami.|Ne|False|  
-|Kontrola před výstupem výsledek max-age|`Access-Control-Max-Age` Hlavičky v předběžné odpovědi bude nastavena na hodnotu tohoto atributu a vliv na schopnost uživatelský agent mezipaměti před letu odpovědi.|Ne|0|  
+|Povolit přihlašovací údaje|`Access-Control-Allow-Credentials` Záhlaví v předběžné odpovědi se nastaví na hodnotu tohoto atributu a mít vliv na schopnost klienta přihlašovacích údajů napříč doménami požadavků na odeslání.|Ne|false (nepravda)|  
+|zaregistrovat k předběžné verzi výsledek max-age|`Access-Control-Max-Age` Záhlaví v předběžné odpovědi se nastaví na hodnotu tohoto atributu a mít vliv na schopnost uživatelský agent odpověď přípravné mezipaměti.|Ne|0|  
   
 ### <a name="usage"></a>Využití  
- Tuto zásadu lze použít v tyto zásady [části](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
+ Tyto zásady můžete použít v následujících zásad [oddíly](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
--   **Části zásady:** příchozí  
+-   **Části zásad:** příchozí  
 -   **Zásady obory:** rozhraní API, operace  
   
-##  <a name="JSONP"></a>JSONP  
- `jsonp` Zásad přidá JSON s podporou odsazení (JSONP) do operace nebo rozhraní API, chcete-li povolit volání mezi doménami z klientů JavaScript založené na prohlížeči. JSONP je metoda použitá v programech, JavaScript při žádosti o data ze serveru v jiné doméně. JSONP obchází omezení vynucená většina webových prohlížečů, kde přístup k webovým stránkám musí být ve stejné doméně.  
+##  <a name="JSONP"></a> JSONP  
+ `jsonp` Zásad přidá JSON s podporou odsazení (JSONP) pro operaci nebo rozhraní API pro volání mezi doménami založené na prohlížeči klientů JavaScript povolit. JSONP je metoda použita v programech jazyka JavaScript požadovat data ze serveru v jiné doméně. JSONP obchází omezení vynucená většina webových prohlížečů, ve kterém přístup k webovým stránkám musí být ve stejné doméně.  
   
 ### <a name="policy-statement"></a>Prohlášení o zásadách  
   
@@ -156,39 +156,39 @@ Toto téma obsahuje odkaz pro následující zásady služby API Management. Inf
 <jsonp callback-parameter-name="callback function name" />  
 ```  
   
-### <a name="example"></a>Příklad  
+### <a name="example"></a>Příklad:  
   
 ```xml  
 <jsonp callback-parameter-name="cb" />  
 ```  
   
- Pokud jste volali metodu bez parametru zpětného volání? cb = XXX vrátí prostý JSON (bez obálku volání funkce).  
+ Při volání metody bez parametru zpětného volání? cb = XXX vrátí prostý JSON (bez Obálka volání funkce).  
   
- Pokud přidáte parametr zpětného volání `?cb=XXX` vrátí výsledek JSONP, zabalení původní JSON jako výsledky kolem funkce zpětného volání`XYZ('<json result goes here>');`  
+ Pokud chcete přidat parametr zpětného volání `?cb=XXX` vrátí výsledek JSONP, původní JSON pro zabalení jako výsledků v požadovaném funkce zpětného volání `XYZ('<json result goes here>');`  
   
 ### <a name="elements"></a>Elementy  
   
-|Name (Název)|Popis|Požaduje se|  
+|Název|Popis|Požaduje se|  
 |----------|-----------------|--------------|  
 |JSONP|Kořenový element.|Ano|  
   
 ### <a name="attributes"></a>Atributy  
   
-|Name (Název)|Popis|Požaduje se|Výchozí|  
+|Název|Popis|Požaduje se|Výchozí|  
 |----------|-----------------|--------------|-------------|  
-|Název parametru zpětného volání|Volání pro funkce JavaScript se mezi doménami, předponu název plně kvalifikované domény, kde se funkce nachází.|Ano|Není k dispozici|  
+|Název parametru zpětného volání|Mezi doménami JavaScript volání funkce s předponou plně kvalifikovaný název domény ve kterém se funkce nachází.|Ano|neuvedeno|  
   
 ### <a name="usage"></a>Využití  
- Tuto zásadu lze použít v tyto zásady [části](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
+ Tyto zásady můžete použít v následujících zásad [oddíly](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
--   **Části zásady:** odchozí  
+-   **Části zásad:** odchozí  
 -   **Zásady obory:** globální, produktu, rozhraní API, operace  
   
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Práce se zásadami pro další informace najdete v tématu:
 
 + [Zásady ve službě API Management](api-management-howto-policies.md)
-+ [Transformuje rozhraní API](transform-api.md)
-+ [Referenční informace o zásadách](api-management-policy-reference.md) pro úplný seznam příkazy zásad a jejich nastavení
++ [Transformujte rozhraní API](transform-api.md)
++ [Referenční příručce o zásadách](api-management-policy-reference.md) úplný seznam zásad příkazy a jejich nastavení
 + [Ukázky zásad](policy-samples.md)   

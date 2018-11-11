@@ -9,12 +9,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 09/08/2018
-ms.openlocfilehash: f261c59193349d55d407e6079002b75884273e84
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: fb4eabb247e6a4fe5550b2b23d34862c789bfaa1
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46960239"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51232320"
 ---
 # <a name="create-a-kubernetes-cluster-with-azure-kubernetes-service-and-terraform"></a>Vytvoření clusteru Kubernetes pomocí služby Azure Kubernetes Service a Terraformu
 [Azure Kubernetes Service (AKS)](/azure/aks/) spravuje hostované prostředí Kubernetes a umožňuje rychle a snadno nasazovat a spravovat kontejnerizované aplikace bez znalosti orchestrace kontejnerů. Zároveň eliminuje režii spojenou s probíhajícími operacemi a údržbou díky zřizování, upgradování a škálování prostředků na vyžádání bez nutnosti odpojovat aplikace.
@@ -372,6 +372,6 @@ Nově vytvořený cluster můžete pomocí nástrojů Kubernetes ověřit.
 V tomto článku jste zjistili, jak pomocí Terraformu a AKS vytvořit cluster Kubernetes. Pokud chcete o nástroji Terraform v Azure získat více informací, můžou vám pomoct následující prostředky: 
 
  [Dokumentace k Terraformu v Azure](https://docs.microsoft.com/azure/terraform/)  
- [Dokumentace k Terraformu zprostředkovatele Azure](http://aka.ms/terraform)  
- [Zdrojová data k Terraformu zprostředkovatele Azure](http://aka.ms/tfgit)  
- [Moduly Terraformu pro Azure](http://aka.ms/tfmodules)
+ [Dokumentace k Terraformu zprostředkovatele Azure](https://aka.ms/terraform)  
+ [Zdrojová data k Terraformu zprostředkovatele Azure](https://aka.ms/tfgit)  
+ [Moduly Terraformu pro Azure](https://aka.ms/tfmodules)

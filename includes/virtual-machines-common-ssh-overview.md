@@ -5,15 +5,15 @@ services: virtual-machines-linux
 author: dlepow
 ms.service: virtual-machines-linux
 ms.topic: include
-ms.date: 04/16/2018
+ms.date: 11/08/2018
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 0363b719e2587226282257e19e58e3c4e55c2219
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: cff3d7bfb89d5b03f986da32edc148efcfb7e7bd
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47454492"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51506291"
 ---
 ## <a name="overview-of-ssh-and-keys"></a>Přehled Azure a klíčů SSH
 
@@ -21,7 +21,7 @@ SSH je šifrované připojení protokol, který umožňuje zabezpečené přihl�
 
 * *Veřejný klíč* je umístěn na virtuální počítač s Linuxem nebo jakoukoli jinou službu, kterou chcete používat s kryptografie využívající veřejný klíč.
 
-* *Privátní klíč* je, co se předkládá virtuálního počítače s Linuxem při vytvořte připojení SSH, abychom ověřili vaši identitu. Chraňte tento privátní klíč. Nesdílejte ho.
+* *Privátní klíč* na vás místní systém používá klienta SSH k ověření vaší identity při připojování k virtuálním počítačům s Linuxem. Chraňte tento privátní klíč. Nesdílejte ho.
 
 V závislosti na zásadách zabezpečení vaší organizace můžete využít jeden pár veřejného a privátního klíče pro přístup k více virtuálních počítačů Azure a služeb. Není nutné samostatné páru klíčů pro každý virtuální počítač nebo službu, kterou budete chtít získat přístup. 
 

@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: cynthn
-ms.openlocfilehash: bbe8059b3a239570c2c9b25586dae9adbe25312d
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: e91f75299dddf0ac173499a531ea959292082a9f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37931374"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51246544"
 ---
 # <a name="how-to-reset-the-remote-desktop-service-or-its-login-password-in-a-windows-vm-created-using-the-classic-deployment-model"></a>Jak obnovit službu Vzdálená plocha nebo jeho heslo přihlášení do virtuálního počítače s Windows, vytvořené pomocí modelu nasazení Classic
 > [!IMPORTANT]
-> Azure má dva různé modely nasazení pro vytváření a práci s prostředky: [Resource Manager a classic](../../../resource-manager-deployment-model.md). Tento článek se věnuje modelu nasazení Classic. Microsoft doporučuje, aby byl ve většině nových nasazení použit model Resource Manager. Můžete také [proveďte tyto kroky pro virtuální počítače vytvořené pomocí modelu nasazení Resource Manager](../reset-rdp.md).
+> Azure nabízí dva různé modely nasazení pro vytváření a práci s prostředky: [nástroj Resource Manager a klasický režim](../../../resource-manager-deployment-model.md). Tento článek se věnuje modelu nasazení Classic. Microsoft doporučuje, aby byl ve většině nových nasazení použit model Resource Manager. Můžete také [proveďte tyto kroky pro virtuální počítače vytvořené pomocí modelu nasazení Resource Manager](../reset-rdp.md).
 > [!INCLUDE [virtual-machines-common-classic-createportal](../../../../includes/virtual-machines-classic-portal.md)]
 
 
@@ -36,7 +36,7 @@ Služby Vzdálená plocha a přihlašovací údaje můžete resetovat několika 
 - [Resetovat pomocí webu Azure portal](#azure-portal)
 - [Obnovit pomocí Azure Powershellu](#vmaccess-extension-and-powershell)
 
-## <a name="azure-portal"></a>Azure Portal
+## <a name="azure-portal"></a>portál Azure
 Můžete použít [webu Azure portal](https://portal.azure.com) obnovíte službu Vzdálená plocha. Rozbalte nabídku portálu, klikněte na tři pruhy v levém horním rohu a pak klikněte na **virtuální počítače (classic)**:
 
 ![Procházet pro váš virtuální počítač Azure](./media/reset-rdp/Portal-Select-Classic-VM.png)
@@ -59,7 +59,7 @@ $vm = Get-AzureVM -ServiceName "myCloudService" -Name "myVM"
 write-host $vm.VM.ProvisionGuestAgent
 ```
 
-Pokud **write-host** příkaz zobrazí **True**, je nainstalovaný Agent virtuálního počítače. Pokud se zobrazí **False**, najdete v článku pokynů a odkaz ke stažení v [agenta virtuálního počítače a rozšíření – část 2](http://go.microsoft.com/fwlink/p/?linkid=403947&clcid=0x409) příspěvku na blogu Azure.
+Pokud **write-host** příkaz zobrazí **True**, je nainstalovaný Agent virtuálního počítače. Pokud se zobrazí **False**, najdete v článku pokynů a odkaz ke stažení v [agenta virtuálního počítače a rozšíření – část 2](https://go.microsoft.com/fwlink/p/?linkid=403947&clcid=0x409) příspěvku na blogu Azure.
 
 Pokud jste vytvořili virtuální počítač pomocí portálu, zkontrolujte, zda `$vm.GetInstance().ProvisionGuestAgent` vrátí **True**. Pokud ne, můžete ho nastavit pomocí tohoto příkazu:
 
@@ -108,7 +108,7 @@ Pokud se neobjeví odpověď rozšíření přístupu virtuálních počítačů
 
 [Funkce a rozšíření virtuálních počítačů Azure](../extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
-[Připojte se k virtuálnímu počítači Azure pomocí RDP nebo SSH](http://msdn.microsoft.com/library/azure/dn535788.aspx)
+[Připojte se k virtuálnímu počítači Azure pomocí RDP nebo SSH](https://msdn.microsoft.com/library/azure/dn535788.aspx)
 
 [Řešení potíží s připojeními vzdálené plochy k virtuálnímu počítači s Windows v Azure](../troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 

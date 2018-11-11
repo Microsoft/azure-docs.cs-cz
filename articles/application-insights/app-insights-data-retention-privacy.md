@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: mbullwin
-ms.openlocfilehash: 86b7b87c8cc11be5c4f2c8892905bb6e6800e729
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 1994c714f691177b526b44e277fea705d18b4335
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50958870"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51245694"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Shromažďování, uchování a ukládání dat v nástroji Application Insights
 
@@ -108,9 +108,9 @@ Společnost Microsoft používá data jenom k poskytování služeb.
 * Ne. Vaše aplikace mohla spustit kdekoli, v místních hostitelů nebo v cloudu.
 
 ## <a name="how-secure-is-my-data"></a>Zabezpečené jsou moje data?
-Application Insights je služba Azure. Zásady zabezpečení jsou popsány v [dokument white paper zabezpečení Azure, ochrana osobních údajů a dodržování předpisů](http://go.microsoft.com/fwlink/?linkid=392408).
+Application Insights je služba Azure. Zásady zabezpečení jsou popsány v [dokument white paper zabezpečení Azure, ochrana osobních údajů a dodržování předpisů](https://go.microsoft.com/fwlink/?linkid=392408).
 
-Jsou data uložená na serverech Microsoft Azure. Pro účty na webu Azure Portal, účet omezení jsou popsaná v [Azure zabezpečení, ochrany osobních údajů a dodržování předpisů dokumentu](http://go.microsoft.com/fwlink/?linkid=392408).
+Jsou data uložená na serverech Microsoft Azure. Pro účty na webu Azure Portal, účet omezení jsou popsaná v [Azure zabezpečení, ochrany osobních údajů a dodržování předpisů dokumentu](https://go.microsoft.com/fwlink/?linkid=392408).
 
 Přístup k vašim datům zaměstnanců společnosti Microsoft je omezen. Jsme přístup k vašim datům pouze s vaším souhlasem, a pokud je nezbytný pro podporu používání Application Insights. 
 

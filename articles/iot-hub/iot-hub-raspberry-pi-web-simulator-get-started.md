@@ -10,12 +10,12 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 04/11/2018
 ms.author: rangv
-ms.openlocfilehash: 2dd9b14ebd7e64a1073ab773b2f1ac8d8c05ac0a
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: a2d067f71b7b68944e479cfd27c1dbf414762af8
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39185243"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51514872"
 ---
 # <a name="connect-raspberry-pi-online-simulator-to-azure-iot-hub-nodejs"></a>Připojte se ke službě Azure IoT Hub (Node.js) online simulátor Raspberry Pi
 
@@ -59,9 +59,13 @@ Klikněte na tlačítko Spustit simulátor Raspberry Pi online.
 <a href="https://azure-samples.github.io/raspberry-pi-web-simulator/#GetStarted" target="_blank">Spusťte simulátor Raspberry Pi</a>
 
 Existují tři oblasti v webový simulátor.
+
 1. Oblast sestavení – výchozí okruh je, že přístup k na Pi BME280 snímačů a kontrolku LED. V oblasti uzamčeno ve verzi preview to aktuálně neumožňuje přizpůsobení.
+
 2. Kódování oblast – editor online kódu vám umožňuje psát kód s Raspberry Pi. Ukázková aplikace výchozí umožňuje shromažďovat data ze senzorů z BME280 snímačů a odesílá do služby Azure IoT Hub. Aplikace je plně kompatibilní s skutečných platformy zařízení. 
+
 3. Integrovaná konzola okno - zobrazí výstup kódu. V horní části tohoto okna jsou tři tlačítka.
+
    * **Spustit** – spusťte aplikaci v oblasti kódování.
    * **Resetovat** -obnovíte výchozí ukázkovou aplikaci v oblasti kódování.
    * **Sbalení a rozbalení** – na pravé straně je tlačítko pro rozbalení/sbalení v okně konzoly.
@@ -71,8 +75,17 @@ Webový simulátor Raspberry Pi je teď dostupná ve verzi preview. Jsme rádi b
 
 ![Přehled platformy online simulátoru](media/iot-hub-raspberry-pi-web-simulator/0_overview.png)
 
-[!INCLUDE [iot-hub-get-started-create-hub-and-device](../../includes/iot-hub-get-started-create-hub-and-device.md)]
+## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
 
+[!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
+
+### <a name="retrieve-connection-string-for-iot-hub"></a>Načtení připojovacího řetězce pro službu IoT hub
+
+[!INCLUDE [iot-hub-include-find-connection-string](../../includes/iot-hub-include-find-connection-string.md)]
+
+## <a name="register-a-new-device-in-the-iot-hub"></a>Zaregistrujte nové zařízení ve službě IoT hub
+
+[!INCLUDE [iot-hub-include-create-device](../../includes/iot-hub-include-create-device.md)]
 
 ## <a name="run-a-sample-application-on-pi-web-simulator"></a>Spustit ukázkovou aplikaci v simulátoru web Pi
 
@@ -80,7 +93,6 @@ Webový simulátor Raspberry Pi je teď dostupná ve verzi preview. Jsme rádi b
    ![Nahraďte připojovací řetězec zařízení](media/iot-hub-raspberry-pi-web-simulator/1_connectionstring.png)
 
 2. Klikněte na tlačítko **spustit** nebo typ `npm start` ke spuštění aplikace.
-
 
 Zobrazí se následující výstup, který zobrazuje data ze senzorů a zprávy, které se odesílají do služby IoT hub ![výstup – data ze senzorů odeslané do služby IoT hub z Raspberry Pi](media/iot-hub-raspberry-pi-web-simulator/2_run_application.png)
 

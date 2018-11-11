@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2018
 ms.author: spelluru
-ms.openlocfilehash: 8f9504458b1f332193e8457bcc9cf41e85fd6aca
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 558df3fa70989aaf9ba182df3a918994c7dc9db6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38573396"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51243705"
 ---
 # <a name="add-owners-and-users-in-azure-devtest-labs"></a>Přidat vlastníky a uživatele ve službě Azure DevTest Labs
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/How-to-set-security-in-your-DevTest-Lab/player]
@@ -64,7 +64,7 @@ Následující tabulka popisuje akce, které mohou provádět uživatelé v kaž
 Uživatelů a vlastníků lze přidat na úrovni prostředí prostřednictvím webu Azure portal. Uživatel může být externím uživatelem s platným [účet Microsoft (MSA)](devtest-lab-faq.md#what-is-a-microsoft-account).
 Následující postup vás provede procesem přidávání roli vlastníka nebo uživatele do testovacího prostředí ve službě Azure DevTest Labs:
 
-1. Přihlaste se k webu [Azure Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Přihlaste se k webu [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 2. Vyberte **všechny služby**a pak vyberte **DevTest Labs** ze seznamu.
 3. V seznamu testovacích prostředí vyberte požadované prostředí.
 4. V okně testovacího prostředí, vyberte **konfigurace a zásad**. 
@@ -116,11 +116,11 @@ Můžete načíst `subscriptionId`, `labResourceGroup`, a `labName` hodnoty v ok
 ## <a name="add-an-owner-or-user-at-the-subscription-level"></a>Přidání vlastníkem nebo uživateli na úrovni předplatného
 Oprávnění Azure přecházejí z nadřazeného oboru na podřízeném oboru v Azure. Vlastníci předplatného Azure, který obsahuje testovací prostředí se proto automaticky vlastníků těchto testovacích prostředí. Také vlastní virtuální počítače a další prostředky vytvořené v rámci testovacího prostředí uživatele a služba Azure DevTest Labs. 
 
-Můžete přidat další vlastníky do testovacího prostředí prostřednictvím okna testovacího prostředí portálu [webu Azure portal](http://go.microsoft.com/fwlink/p/?LinkID=525040). Přidání vlastníka obor správy je však užším než vlastník předplatného oboru. Například přidání vlastníků nemají úplný přístup k některé z prostředků, které jsou vytvořeny v rámci předplatného služba DevTest Labs. 
+Můžete přidat další vlastníky do testovacího prostředí prostřednictvím okna testovacího prostředí portálu [webu Azure portal](https://go.microsoft.com/fwlink/p/?LinkID=525040). Přidání vlastníka obor správy je však užším než vlastník předplatného oboru. Například přidání vlastníků nemají úplný přístup k některé z prostředků, které jsou vytvořeny v rámci předplatného služba DevTest Labs. 
 
 Přidání vlastníka k předplatnému Azure, postupujte podle těchto kroků:
 
-1. Přihlaste se k webu [Azure Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Přihlaste se k webu [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 2. Vyberte **všechny služby**a pak vyberte **předplatná** ze seznamu.
 3. Vyberte požadované předplatné.
 4. Vyberte **přístup** ikonu. 

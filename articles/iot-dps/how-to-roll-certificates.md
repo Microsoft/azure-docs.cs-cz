@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 51e96065f726fadd528323157609034b5bb3f151
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 8cf5f262a758efe08ad73e2d8066ad4b736e76d1
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49387884"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51247717"
 ---
 # <a name="how-to-roll-x509-device-certificates"></a>Jak chcete-li vrátit zařízení certifikáty X.509
 
 Během životního cyklu řešení IoT musíte vrátit certifikáty. Dva hlavní důvody pro certifikáty se zajištěním provozu by bezpečnosti a vypršení platnosti certifikátů. 
 
-Certifikáty se zajištěním provozu je osvědčeným postupem zabezpečení k zabezpečení vašeho systému v případě porušení zabezpečení. Jako součást [Předpokládejme metodologie porušení](http://download.microsoft.com/download/C/1/9/C1990DBA-502F-4C2A-848D-392B93D9B9C3/Microsoft_Enterprise_Cloud_Red_Teaming.pdf), Microsoft nejzávažnějších potřebu s procesy reaktivní zabezpečení na místě spolu s preventivní opatření. Vaše zařízení certifikáty se zajištěním provozu by měl být součástí tyto procesy zabezpečení. Frekvence, ve kterém bude možné certifikáty bude záviset na požadavky na zabezpečení vašeho řešení. Zákazníci s řešeními týkajících se vysoce citlivá data může vrátit certifikátu každý den, zatímco ostatní vrátit své certifikáty každých několik let.
+Certifikáty se zajištěním provozu je osvědčeným postupem zabezpečení k zabezpečení vašeho systému v případě porušení zabezpečení. Jako součást [Předpokládejme metodologie porušení](https://download.microsoft.com/download/C/1/9/C1990DBA-502F-4C2A-848D-392B93D9B9C3/Microsoft_Enterprise_Cloud_Red_Teaming.pdf), Microsoft nejzávažnějších potřebu s procesy reaktivní zabezpečení na místě spolu s preventivní opatření. Vaše zařízení certifikáty se zajištěním provozu by měl být součástí tyto procesy zabezpečení. Frekvence, ve kterém bude možné certifikáty bude záviset na požadavky na zabezpečení vašeho řešení. Zákazníci s řešeními týkajících se vysoce citlivá data může vrátit certifikátu každý den, zatímco ostatní vrátit své certifikáty každých několik let.
 
 Aktualizace certifikátu uložené na zařízení a služby IoT hub bude zahrnovat certifikáty zařízení se zajištěním provozu. Později, můžete zařízení zmenšil sama s IoT hubu pomocí normální [automatického zřizování](concepts-auto-provisioning.md) službě Device Provisioning.
 

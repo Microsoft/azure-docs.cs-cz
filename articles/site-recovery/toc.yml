@@ -12,35 +12,35 @@ items:
   expanded: true
 - name: Kurzy
   items:
-  - name: Virtuální počítače Azure
+  - name: Zotavení po havárii virtuálního počítače Azure do Azure
     items:
-    - name: Nastavení zotavení po havárii
+    - name: Povolení replikace
       href: azure-to-azure-tutorial-enable-replication.md
     - name: Spuštění postupu zotavení po havárii
       href: azure-to-azure-tutorial-dr-drill.md
     - name: Spuštění převzetí služeb při selhání a navrácení služeb po obnovení
       href: azure-to-azure-tutorial-failover-failback.md
-  - name: Virtuální počítače VMware
+  - name: Zotavení po havárii virtuálního počítače VMware do Azure
     items:
     - name: Příprava Azure
       href: tutorial-prepare-azure.md
     - name: Příprava VMware v místním prostředí
       href: vmware-azure-tutorial-prepare-on-premises.md
-    - name: Nastavení zotavení po havárii
+    - name: Nastavení replikace
       href: vmware-azure-tutorial.md
     - name: Spuštění postupu zotavení po havárii
       href: tutorial-dr-drill-azure.md
     - name: Spuštění převzetí služeb při selhání a navrácení služeb po obnovení
       href: vmware-azure-tutorial-failover-failback.md
-  - name: Virtuální počítače Hyper-V
+  - name: Zotavení po havárii virtuálního počítače Hyper-V do Azure
     items:
     - name: Příprava Azure
       href: tutorial-prepare-azure.md
     - name: Příprava místního Hyper-V
       href: hyper-v-prepare-on-premises-tutorial.md
-    - name: Nastavení zotavení po havárii pro virtuální počítače Hyper-V
+    - name: Nastavení replikace pro virtuální počítače Hyper-V
       href: hyper-v-azure-tutorial.md
-    - name: Nastavení zotavení po havárii pro virtuální počítače Hyper-V v cloudech VMM
+    - name: Nastavení replikace pro virtuální počítače Hyper-V v cloudech VMM
       href: hyper-v-vmm-azure-tutorial.md
     - name: Spuštění postupu zotavení po havárii
       href: tutorial-dr-drill-azure.md
@@ -52,7 +52,7 @@ items:
       href: tutorial-prepare-azure.md
     - name: Migrace místních počítačů do Azure
       href: migrate-tutorial-on-premises-azure.md
-    - name: Migrace serverů se systémem Windows Server 2008 do Azure
+    - name: Migrace místních serverů se systémem Windows Server 2008 do Azure
       href: migrate-tutorial-windows-server-2008.md
     - name: Migrace instancí AWS do Azure
       href: migrate-tutorial-aws-azure.md
@@ -60,7 +60,9 @@ items:
       href: azure-to-azure-tutorial-migrate.md
 - name: Koncepty
   items:
-  - name: Virtuální počítače Azure
+  - name: Nejčastější dotazy
+    href: site-recovery-faq.md
+  - name: O zotavení po havárii virtuálního počítače Azure do Azure
     items:
     - name: Architektura replikace z Azure do Azure
       href: azure-to-azure-architecture.md
@@ -70,47 +72,35 @@ items:
       href: azure-vm-disaster-recovery-with-accelerated-networking.md
     - name: ExpressRoute se zotavení po havárii virtuálního počítače Azure
       href: azure-vm-disaster-recovery-with-expressroute.md
-  - name: Virtuální počítače VMware a fyzické servery
+  - name: O zotavení po havárii virtuálního počítače VMware do Azure
     items:
-    - name: Replikace do Azure
-      items:
-      - name: Běžné otázky pro replikaci z VMware do Azure
-        href: vmware-azure-common-questions.md
-      - name: Matice podpory
-        href: vmware-physical-azure-support-matrix.md
-      - name: Architektura replikace z VMware do Azure
-        href: vmware-azure-architecture.md
-      - name: Architektura replikace z fyzických prostředků do Azure
-        href: physical-azure-architecture.md
-      - name: Informace o zotavení po havárii
-        href: vmware-azure-about-disaster-recovery.md
-      - name: Informace o možnostech umístění navrácení služeb po obnovení
-        href: concepts-types-of-failback.md
-      - name: Informace o podpoře více tenantů pro VMware
-        href: vmware-azure-multi-tenant-overview.md
-    - name: Replikace do sekundární lokality
-      items:
-      - name: Systém podpory replikace z VMware/fyzických prostředků do sekundární lokality
-        href: vmware-physical-secondary-support-matrix.md
-      - name: Architektura replikace z VMware/fyzických prostředků do sekundární lokality
-        href: vmware-physical-secondary-architecture.md
-  - name: Virtuální počítače Hyper-V
+    - name: Přehled zotavení po havárii VMware
+      href: vmware-azure-about-disaster-recovery.md
+    - name: Časté dotazy
+      href: vmware-azure-common-questions.md
+    - name: Matice podpory
+      href: vmware-physical-azure-support-matrix.md
+    - name: Architektura replikace z VMware do Azure
+      href: vmware-azure-architecture.md
+    - name: Možnosti umístění navrácení služeb po obnovení z Azure do VMware
+      href: concepts-types-of-failback.md
+    - name: Podpora více tenantů pro zotavení po havárii VMware
+      href: vmware-azure-multi-tenant-overview.md
+  - name: O zotavení po havárii virtuálního počítače Hyper-V do Azure
     items:
-    - name: Replikace do Azure
-      items:
-      - name: Běžné otázky pro replikaci z Hyper-V do Azure
-        href: hyper-v-azure-common-questions.md
-      - name: Systém podpory replikace z Hyper-V do Azure
-        href: hyper-v-azure-support-matrix.md
-      - name: Architektura replikace z Hyper-V do Azure
-        href: hyper-v-azure-architecture.md
-    - name: Replikace do sekundární lokality
-      items:
-      - name: Systém podpory replikace z Hyper-V do sekundární lokality
-        href: hyper-v-vmm-secondary-support-matrix.md
-      - name: Architektura replikace z Hyper-V do sekundární lokality
-        href: hyper-v-vmm-architecture.md
-  - name: Sítě
+    - name: Časté dotazy
+      href: hyper-v-azure-common-questions.md
+    - name: Matice podpory
+      href: hyper-v-azure-support-matrix.md
+    - name: Architektura replikace z Hyper-V do Azure
+      href: hyper-v-azure-architecture.md
+  - name: O zotavení po havárii fyzického serveru do Azure
+    items:
+    - name: Matice podpory
+      href: vmware-physical-azure-support-matrix.md
+    - name: Architektura replikace z fyzických serverů do Azure
+      href: physical-azure-architecture.md
+  - name: O sítích pro zotavení po havárii do Azure
     items:
     - name: Azure Traffic Manager se službou Site Recovery
       href: concepts-traffic-manager-with-site-recovery.md
@@ -118,25 +108,31 @@ items:
       href: concepts-expressroute-with-site-recovery.md
     - name: Skupiny zabezpečení sítě se službou Site Recovery
       href: concepts-network-security-group-with-site-recovery.md
-    - name: Veřejná IP adresa se službou Site Recovery
+    - name: Použitích veřejných IP adres se službou Site Recovery
       href: concepts-public-ip-address-with-site-recovery.md
-  - name: Zotavení po havárii pro aplikace
-    href: site-recovery-workload.md
-  - name: Plány obnovení
+  - name: O plánech převzetí služeb při selhání a zotavení
     href: recovery-plan-overview.md
-  - name: Informace o migraci
+  - name: O migraci do Azure
     href: migrate-overview.md
   - name: Řízení přístupu na základě role s využitím Site Recovery
     href: site-recovery-role-based-linked-access-control.md
-  - name: Nejčastější dotazy
-    href: site-recovery-faq.md
+  - name: O zotavení po havárii do místní sekundární lokality
+    items:
+    - name: Systém podpory pro VMware / fyzický server
+      href: vmware-physical-secondary-support-matrix.md
+    - name: Architektura pro replikaci virtuálního počítače nebo fyzického serveru VMware do sekundární lokality
+      href: vmware-physical-secondary-architecture.md
+    - name: Systém podpory pro Hyper-V
+      href: hyper-v-vmm-secondary-support-matrix.md
+    - name: Architektura pro replikaci virtuálního počítače Hyper-V do sekundární lokality
+      href: hyper-v-vmm-architecture.md
 - name: Návody
   items:
-  - name: Azure do Azure
+  - name: Zotavení po havárii Azure do Azure
     items:
-    - name: Sítě
+    - name: Nastavení síťových služeb
       items:
-      - name: Správa sítě pro zotavení po havárii virtuálního počítače Azure
+      - name: Příprava sítě pro zotavení po havárii virtuálního počítače Azure
         href: azure-to-azure-about-networking.md
       - name: Příprava mapování sítě pro zotavení po havárii virtuálního počítače Azure
         href: azure-to-azure-network-mapping.md
@@ -144,41 +140,39 @@ items:
         href: site-recovery-retain-ip-azure-vm-failover.md
       - name: Integrace ExpressRoute se zotavením po havárii virtuálního počítače Azure
         href: azure-vm-disaster-recovery-with-expressroute.md
-    - name: Zotavení po havárii
-      items:
-      - name: Zotavení po havárii virtuálních počítačů Azure po migraci do Azure
-        href: azure-to-azure-replicate-after-migration.md
-      - name: Zotavení po havárii virtuálních počítačů Azure s využitím PowerShellu
-        href: azure-to-azure-powershell.md
-    - name: Replikace, převzetí služeb při selhání a navrácení služeb po obnovení
+    - name: Nastavení zotavení po havárii
       items:
       - name: Povolení replikace z Azure do Azure
         href: azure-to-azure-how-to-enable-replication.md
       - name: Povolení replikace z Azure do Azure pro šifrované virtuální počítače
         href: azure-to-azure-how-to-enable-replication-ade-vms.md
-      - name: Zpětná replikace ze sekundární do primární oblasti Azure
+      - name: Znovunastavení ochrany virtuálních počítačů Azure po převzetí služeb při selhání
         href: azure-to-azure-how-to-reprotect.md
     - name: Řešení potíží
       items:
       - name: Řešení potíží s replikací z Azure do Azure
         href: azure-to-azure-troubleshoot-errors.md
+      - name: Řešení potíží s probíhající replikací
+        href: azure-to-azure-troubleshoot-replication.md
       - name: Řešení potíží s rozšířením Azure Site Recovery
         href: site-recovery-extension-troubleshoot.md
+      - name: Nastavení zotavení po havárii virtuálních počítačů Azure po migraci do Azure
+        href: azure-to-azure-replicate-after-migration.md
     - name: Spravovat
       items:
-      - name: Automatická aktualizace rozšíření služby mobility
+      - name: Aktualizace služby Mobility pro virtuální počítače Azure
         href: azure-to-azure-autoupdate.md
-  - name: VMware/fyzické prostředky do Azure
+  - name: Zotavení po havárii VMware do Azure
     items:
-    - name: Sítě
+    - name: Nastavení síťových služeb
       items:
       - name: Správa síťových rozhraní pro replikaci místního prostředí do Azure
         href: site-recovery-manage-network-interfaces-on-premises-to-azure.md
       - name: Nastavení přidělování IP adres pro převzetí služeb při selhání
         href: concepts-on-premises-to-azure-networking.md
-    - name: Plánování kapacity
+    - name: Provedení plánování kapacity
       items:
-      - name: Plánování kapacity pro replikaci VMware do Azure
+      - name: Plánování kapacity
         href: site-recovery-plan-capacity-vmware.md
       - name: Plánovač nasazení pro replikaci VMware do Azure
         items:
@@ -192,44 +186,36 @@ items:
           href: site-recovery-vmware-deployment-planner-cost-estimation.md
       - name: Horizontální navýšení kapacity procesních serverů pro replikaci VMware
         href: vmware-azure-set-up-process-server-scale.md
-    - name: Zotavení po havárii
+    - name: Nastavení zotavení po havárii
       items:
-      - name: Replikace virtuálních počítačů VMware do Azure s využitím PowerShellu
-        href: vmware-azure-disaster-recovery-powershell.md
-      - name: Nastavení zdrojového prostředí pro virtuální počítače VMware
+      - name: Nastavení zdrojového prostředí
         href: vmware-azure-set-up-source.md
-      - name: Nasazení konfiguračního serveru pro replikaci VMware
+      - name: Nasazení konfiguračního serveru pro virtuální počítače VMware
         href: vmware-azure-deploy-configuration-server.md
-      - name: Nastavení cílového prostředí pro virtuální počítače VMware
+      - name: Nastavení cílového prostředí
         href: vmware-azure-set-up-target.md
-      - name: Konfigurace nastavení replikace pro virtuální počítače VMware
+      - name: Konfigurace nastavení replikace
         href: vmware-azure-set-up-replication.md
+      - name: Nasazení služby Mobility
+        items:
+        - name: Instalace služby Mobility
+          href: vmware-physical-mobility-service-overview.md
+        - name: Příprava na nabízenou instalaci služby Mobility
+          href: vmware-azure-install-mobility-service.md
+        - name: Ruční instalace služby Mobility
+          href: vmware-physical-mobility-service-install-manual.md
+        - name: Nasazení služby Mobility s využitím System Center Configuration Manageru
+          href: vmware-azure-mobility-install-configuration-mgr.md
       - name: Povolení replikace pro virtuální počítače VMware
         href: vmware-azure-enable-replication.md
-      - name: Vyloučení disků z replikace virtuálních počítačů VMware
+      - name: Vyloučení disků
         href: vmware-azure-exclude-disk.md
-      - name: Nastavení replikace s víceklientským prostředím a CSP pro virtuální počítače VMware
+      - name: Průvodce nastavením replikace s víceklientským prostředím a CSP pro virtuální počítače VMware
         href: vmware-azure-multi-tenant-csp-disaster-recovery.md
-      - name: Nastavení zotavení po havárii fyzických serverů do Azure
-        href: physical-azure-disaster-recovery.md
-      - name: Nastavení zdrojového prostředí pro replikaci fyzických serverů
-        href: physical-azure-set-up-source.md
-      - name: Nastavení cílového prostředí pro replikaci fyzických serverů
-        href: vmware-azure-set-up-target.md
-      - name: Nastavení zotavení po havárii pro virtuální počítače Azure Stack
-        href: azure-stack-site-recovery.md
-    - name: Nasazení služby Mobility
-      items:
-      - name: Přehled služby Mobility
-        href: vmware-azure-install-mobility-service.md
-      - name: Nasazení služby Mobility s využitím System Center Configuration Manageru
-        href: vmware-azure-mobility-install-configuration-mgr.md
-    - name: Převzetí služeb při selhání a navrácení služeb po obnovení
+    - name: Spuštění převzetí služeb při selhání a navrácení služeb po obnovení
       items:
       - name: Nastavení plánů obnovení
         href: site-recovery-create-recovery-plans.md
-      - name: Přidání runbooků Azure do plánů obnovení
-        href: site-recovery-runbook-automation.md
       - name: Spuštění postupu zotavení po havárii do Azure
         href: site-recovery-test-failover-to-azure.md
       - name: Spuštění převzetí služeb při selhání do Azure
@@ -242,14 +228,10 @@ items:
         href: vmware-azure-set-up-process-server-azure.md
       - name: Nastavení hlavního linuxového cílového serveru pro navrácení služeb po obnovení
         href: vmware-azure-install-linux-master-target.md
-      - name: Spuštění převzetí služeb při selhání a navrácení služeb po obnovení pro fyzické servery
-        href: physical-to-azure-failover-failback.md
     - name: Spravovat
       items:
-      - name: Správa konfiguračního serveru pro replikaci VMware
+      - name: Správa konfiguračního serveru pro VMware
         href: vmware-azure-manage-configuration-server.md
-      - name: Správa konfiguračního serveru pro replikaci fyzických serverů
-        href: physical-manage-configuration-server.md
       - name: Správa procesních serverů
         href: vmware-azure-manage-process-server.md
       - name: Správa serverů vCenter
@@ -258,31 +240,57 @@ items:
         href: site-recovery-manage-registration-and-protection.md
       - name: Odstranění trezoru
         href: delete-vault.md
-    - name: Monitorování a odstraňování potíží
-      items:
-      - name: Monitorování služby Azure Site Recovery
-        href: site-recovery-monitor-and-troubleshoot.md
-      - name: Řešení potíží s replikací z VMware do Azure
-        href: vmware-azure-troubleshoot-replication.md
-      - name: Řešení potíží se službou Mobility / nabízenou instalací ve VMware a replikací fyzických serverů
-        href: vmware-azure-troubleshoot-push-install.md
-      - name: Řešení potíží s převzetím služeb při selhání do Azure
-        href: site-recovery-failover-to-azure-troubleshoot.md
-      - name: Řešení potíží s opětovným nastavením ochrany a navrácením služeb po obnovení virtuálních počítačů VMware z Azure
-        href: vmware-azure-troubleshoot-failback-reprotect.md
-  - name: Z VMware/fyzických do sekundární lokality
+  - name: Zotavení po havárii fyzických prostředků do Azure
     items:
-    - name: Zotavení fyzických serverů a virtuálních počítačů VMware po havárii do sekundární lokality
-      href: vmware-physical-secondary-disaster-recovery.md
-  - name: Z Hyper-V do Azure
-    items:
-    - name: Sítě
+    - name: Nastavení síťových služeb
       items:
       - name: Správa síťových rozhraní pro replikaci místního prostředí do Azure
         href: site-recovery-manage-network-interfaces-on-premises-to-azure.md
       - name: Nastavení přidělování IP adres pro převzetí služeb při selhání
         href: concepts-on-premises-to-azure-networking.md
-    - name: Plánování kapacity
+    - name: Nastavení zotavení po havárii
+      items:
+      - name: Nastavení zdrojového prostředí
+        href: physical-azure-set-up-source.md
+      - name: Nastavení cílového prostředí
+        href: vmware-azure-set-up-target.md
+      - name: Nasazení služby Mobility
+        items:
+        - name: Instalace služby Mobility
+          href: vmware-physical-mobility-service-overview.md
+        - name: Příprava na nabízenou instalaci služby Mobility
+          href: vmware-azure-install-mobility-service.md
+        - name: Ruční instalace služby Mobility
+          href: vmware-physical-mobility-service-install-manual.md
+        - name: Nasazení služby Mobility s využitím System Center Configuration Manageru
+          href: vmware-azure-mobility-install-configuration-mgr.md
+        - name: Průvodce nastavením zotavení po havárii
+          href: physical-azure-disaster-recovery.md
+    - name: Spuštění převzetí služeb při selhání a navrácení služeb po obnovení
+      href: physical-to-azure-failover-failback.md
+    - name: Spravovat
+      items:
+      - name: Správa konfiguračního serveru pro replikaci fyzických serverů
+        href: physical-manage-configuration-server.md
+      - name: Správa procesních serverů
+        href: vmware-azure-manage-process-server.md
+      - name: Odebrání serverů a zakázání ochrany
+        href: site-recovery-manage-registration-and-protection.md
+      - name: Odstranění trezoru
+        href: delete-vault.md
+  - name: Zotavení po havárii virtuálního počítače Azure Stack
+    items:
+    - name: Průvodce nastavením zotavení po havárii pro virtuální počítače Azure Stack
+      href: azure-stack-site-recovery.md
+  - name: Zotavení po havárii Hyper-V do Azure
+    items:
+    - name: Nastavení síťových služeb
+      items:
+      - name: Správa síťových rozhraní pro replikaci místního prostředí do Azure
+        href: site-recovery-manage-network-interfaces-on-premises-to-azure.md
+      - name: Nastavení přidělování IP adres pro převzetí služeb při selhání
+        href: concepts-on-premises-to-azure-networking.md
+    - name: Provedení plánování kapacity
       items:
       - name: Nástroj Plánovač nasazení pro replikaci Hyper-V do Azure
         items:
@@ -294,26 +302,20 @@ items:
           href: hyper-v-deployment-planner-analyze-report.md
         - name: Analýza sestavy odhadu náklady
           href: hyper-v-deployment-planner-cost-estimation.md
-    - name: Zotavení po havárii
+    - name: Nastavení zotavení po havárii
       items:
-      - name: Nastavení replikace Hyper-V do Azure (bez VMM) s využitím PowerShellu
-        href: hyper-v-azure-powershell-resource-manager.md
-      - name: Nastavení replikace Hyper-V do Azure (s VMM) s využitím PowerShellu
-        href: hyper-v-vmm-powershell-resource-manager.md
       - name: Příprava mapování sítě pro zotavení po havárii virtuálního počítače Hyper-V
         href: hyper-v-vmm-network-mapping.md
       - name: Vyloučení disků z replikace pro Hyper-V do Azure
         href: hyper-v-exclude-disk.md
-    - name: Převzetí služeb při selhání a navrácení služeb po obnovení
+    - name: Spuštění převzetí služeb při selhání a navrácení služeb po obnovení
       items:
-      - name: Spuštění postupu zotavení po havárii do Azure
-        href: site-recovery-test-failover-to-azure.md
       - name: Nastavení plánů obnovení
         href: site-recovery-create-recovery-plans.md
       - name: Přidání skriptů VMM do plánů obnovení
         href: hyper-v-vmm-recovery-script.md
-      - name: Přidání runbooků Azure do plánů obnovení
-        href: site-recovery-runbook-automation.md
+      - name: Spuštění postupu zotavení po havárii do Azure
+        href: site-recovery-test-failover-to-azure.md
       - name: Spuštění převzetí služeb při selhání do Azure
         href: site-recovery-failover.md
       - name: Navrácení služeb po obnovení z Azure na Hyper-V
@@ -324,30 +326,10 @@ items:
         href: site-recovery-manage-registration-and-protection.md
       - name: Odstranění trezoru
         href: delete-vault.md
-    - name: Monitorování a odstraňování potíží
-      items:
-      - name: Řešení potíží s replikaci Hyper-V
-        href: hyper-v-azure-troubleshoot.md
-      - name: Monitorování služby Azure Site Recovery
-        href: site-recovery-monitor-and-troubleshoot.md
-  - name: Hyper-V do sekundární lokality
+  - name: Zotavení po havárii pro aplikace
     items:
-    - name: Zotavení virtuálních počítačů Hyper-V po havárii do sekundární lokality
-      href: hyper-v-vmm-disaster-recovery.md
-    - name: Nastavení replikace Hyper-V do sekundární lokality VMM s využitím PowerShellu
-      href: hyper-v-vmm-powershell-resource-manager.md
-    - name: Spuštění postupu zotavení virtuálních počítačů Hyper-V po havárii do sekundární lokality
-      href: hyper-v-vmm-test-failover.md
-    - name: Nastavení přidělování IP adres pro převzetí služeb při selhání
-      href: hyper-v-vmm-networking.md
-    - name: Přidání skriptů VMM do plánů obnovení
-      href: hyper-v-vmm-recovery-script.md
-    - name: Spuštění převzetí služeb při selhání a navrácení služeb po obnovení mezi místními lokalitami
-      href: hyper-v-vmm-failover-failback.md
-    - name: Testy škálování výkonu pro replikaci Hyper-V do sekundární lokality
-      href: hyper-v-vmm-performance-results.md
-  - name: Replikace aplikací
-    items:
+    - name: Nastavení zotavení po havárii do Azure pro místní aplikace
+      href: site-recovery-workload.md
     - name: Active Directory a DNS
       href: site-recovery-active-directory.md
     - name: SQL Server
@@ -370,6 +352,64 @@ items:
       href: site-recovery-citrix-xenapp-and-xendesktop.md
     - name: Další úlohy
       href: site-recovery-workload.md#workload-summary
+  - name: Zotavení po havárii do sekundární lokality
+    items:
+    - name: Virtuální počítače / fyzické servery VMware
+      items:
+      - name: Průvodce zotavením fyzických serverů a virtuálních počítačů VMware po havárii do sekundární lokality
+        href: vmware-physical-secondary-disaster-recovery.md
+    - name: Virtuální počítače Hyper-V
+      items:
+      - name: Průvodce zotavením virtuálních počítačů Hyper-V v cloudech VMM po havárii do sekundární lokality
+        href: hyper-v-vmm-disaster-recovery.md
+      - name: Spuštění postupu zotavení virtuálních počítačů Hyper-V po havárii do sekundární lokality
+        href: hyper-v-vmm-test-failover.md
+      - name: Nastavení přidělování IP adres pro převzetí služeb při selhání
+        href: hyper-v-vmm-networking.md
+      - name: Přidání skriptů VMM do plánů obnovení
+        href: hyper-v-vmm-recovery-script.md
+      - name: Spuštění převzetí služeb při selhání a navrácení služeb po obnovení mezi místními lokalitami
+        href: hyper-v-vmm-failover-failback.md
+      - name: Testy škálování výkonu pro zotavení po havárii do sekundární lokality
+        href: hyper-v-vmm-performance-results.md
+- name: Automation
+  items:
+  - name: Nastavení zotavení po havárii virtuálních počítačů Azure s využitím PowerShellu
+    href: azure-to-azure-powershell.md
+  - name: Nastavení zotavení po havárii virtuálních počítačů VMware do Azure s využitím PowerShellu
+    href: vmware-azure-disaster-recovery-powershell.md
+  - name: Nastavení zotavení po havárii virtuálních počítačů Hyper-V do Azure s využitím PowerShellu
+    href: hyper-v-azure-powershell-resource-manager.md
+  - name: Nastavení zotavení po havárii virtuálních počítačů Hyper-V (s VMM) do Azure s využitím PowerShellu
+    href: hyper-v-vmm-powershell-resource-manager.md
+  - name: Přidání runbooků Azure Automation do plánů obnovení pro orchestraci převzetí služeb při selhání
+    href: site-recovery-runbook-automation.md
+- name: Monitorování a odstraňování potíží
+  items:
+  - name: Monitorování služby Azure Site Recovery
+    href: site-recovery-monitor-and-troubleshoot.md
+  - name: Virtuální počítače Azure
+    items:
+    - name: Řešení potíží s replikací z Azure do Azure
+      href: azure-to-azure-troubleshoot-errors.md
+    - name: Řešení potíží se službou Mobility pro virtuální počítače Azure
+      href: site-recovery-extension-troubleshoot.md
+  - name: VMware / fyzický server
+    items:
+    - name: Řešení potíží s replikací z VMware do Azure
+      href: vmware-azure-troubleshoot-replication.md
+    - name: Řešení potíží s nabízenou instalací služby Mobility pro virtuální počítače / fyzické servery VMware
+      href: vmware-azure-troubleshoot-push-install.md
+    - name: Řešení potíží s převzetím služeb při selhání do Azure
+      href: site-recovery-failover-to-azure-troubleshoot.md
+    - name: Řešení potíží s opětovným nastavením ochrany a navrácením služeb po obnovení virtuálních počítačů VMware
+      href: vmware-azure-troubleshoot-failback-reprotect.md
+  - name: Hyper-V
+    items:
+    - name: Řešení potíží s replikaci Hyper-V
+      href: hyper-v-azure-troubleshoot.md
+    - name: Řešení potíží s převzetím služeb při selhání do Azure
+      href: site-recovery-failover-to-azure-troubleshoot.md
 - name: Referenční informace
   items:
   - name: Azure PowerShell
@@ -398,9 +438,9 @@ items:
     href: https://azure.microsoft.com/pricing/calculator/
   - name: Aktualizace služeb
     href: https://azure.microsoft.com/updates/?product=site-recovery
-ms.openlocfilehash: 7fada17ee637afe9595da2080ff0433c9001df63
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 770aa6a07df6900b10558ebbb7718c248296ee51
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49404694"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51288080"

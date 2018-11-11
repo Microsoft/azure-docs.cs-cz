@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/30/2018
+ms.date: 11/08/2018
 ms.author: sethm
 ms.reviewer: xiaofmao
-ms.openlocfilehash: 3c0ab236dd6fce10be0a50c435f04517e14c1387
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: ec84c87e047d6426d24ef339d1247c6cb53954dd
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49077591"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51299415"
 ---
 # <a name="quota-types-in-azure-stack"></a>Typy kvót ve službě Azure Stack
 
@@ -31,15 +31,15 @@ ms.locfileid: "49077591"
 ## <a name="compute-quota-types"></a>COMPUTE typy kvót 
 | **Typ** | **Výchozí hodnota** | **Popis** |
 | --- | --- | --- |
-| Maximální počet virtuálních počítačů | 20 | Maximální počet virtuálních počítačů, které předplatné můžete vytvořit v tomto umístění. |
-| Maximální počet jader virtuálního počítače | 50 | Maximální počet jader, které předplatné můžete vytvořit v tomto umístění (třeba virtuální počítač A3 má čtyři jádra). |
+| Maximální počet virtuálních počítačů | 50 | Maximální počet virtuálních počítačů, které předplatné můžete vytvořit v tomto umístění. |
+| Maximální počet jader virtuálního počítače | 100 | Maximální počet jader, které předplatné můžete vytvořit v tomto umístění (třeba virtuální počítač A3 má čtyři jádra). |
 | Maximální počet skupin dostupnosti | 10 | Maximální počet skupin dostupnosti, které lze vytvořit v tomto umístění. |
-| Maximální počet virtuálních počítačů škálovacích sad | 20 | Maximální počet škálovacích sad virtuálních počítačů, které lze vytvořit v tomto umístění. |
+| Maximální počet virtuálních počítačů škálovacích sad | 100 | Maximální počet škálovacích sad virtuálních počítačů, které lze vytvořit v tomto umístění. |
 
 ## <a name="storage-quota-types"></a>Typy kvót úložiště 
 | **Položka** | **Výchozí hodnota** | **Popis** |
 | --- | --- | --- |
-| Maximální kapacita (GB) |500 |Celková velikost úložiště kapacitu, mohou být spotřebovány předplatné na tomto místě. |
+| Maximální kapacita (GB) |2 048 |Celková velikost úložiště kapacitu, mohou být spotřebovány předplatné na tomto místě. |
 | Celkový počet účtů úložiště |20 |Maximální počet účtů úložiště, které předplatné můžete vytvořit v tomto umístění. |
 
 > [!NOTE]  

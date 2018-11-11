@@ -3,18 +3,18 @@ title: Python UDF Apache Hive a Pig – Azure HDInsight
 description: Naučte se používat Python uživateli definované funkce (UDF) v Hivu a Pigu v HDInsight, technologie hadoop v Azure.
 services: hdinsight
 ms.service: hdinsight
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: c2c2a6686d5da25e5a300bc58e1cf37467737c80
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 6227b9517da3dacb18b4f9653a7012ef9ab5a4a7
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49646537"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51232269"
 ---
 # <a name="use-python-user-defined-functions-udf-with-hive-and-pig-in-hdinsight"></a>Použití Pythonu uživatelem definované funkce (UDF) s Hivem a Pig v HDInsight
 
@@ -379,7 +379,7 @@ Do úložiště HDInsight jsou také zaznamenány informace chyby (STDERR) a vý
 
 ## <a name="next"></a>Další kroky
 
-Pokud je potřeba načíst moduly Pythonu, které nejsou k dispozici ve výchozím nastavení, přečtěte si téma [nasazení modulu do Azure HDInsight](http://blogs.msdn.com/b/benjguin/archive/2014/03/03/how-to-deploy-a-python-module-to-windows-azure-hdinsight.aspx).
+Pokud je potřeba načíst moduly Pythonu, které nejsou k dispozici ve výchozím nastavení, přečtěte si téma [nasazení modulu do Azure HDInsight](https://blogs.msdn.com/b/benjguin/archive/2014/03/03/how-to-deploy-a-python-module-to-windows-azure-hdinsight.aspx).
 
 Další způsoby použití Pig, Hive a další informace o použití prostředí MapReduce, naleznete v následujících dokumentech:
 

@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/17/2018
 ms.author: barclayn
-ms.openlocfilehash: b1002d046014abd15452489e343ecf7c30b00d73
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: 64d940552f2790c08e8087f279990d0a6c595bac
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49311333"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51245717"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure správu identit a řízení přístupu osvědčené postupy zabezpečení
 
-Mnoho vezměte v úvahu identity jako novou vrstvu hranici pro zabezpečení, trvá déle než tuto roli z hlediska tradiční zaměřené na síti. Tomuto vývoji primární pivot pro zabezpečení pozornost a investic pocházejí z skutečnost, že se stává stále porézní perimetry sítě a této hraniční obrana nemůže být co nejúčinnější, jednou byly před obrovské množství nových [modelu BYOD ](http://aka.ms/byodcg) zařízení a cloudové aplikace.
+Mnoho vezměte v úvahu identity jako novou vrstvu hranici pro zabezpečení, trvá déle než tuto roli z hlediska tradiční zaměřené na síti. Tomuto vývoji primární pivot pro zabezpečení pozornost a investic pocházejí z skutečnost, že se stává stále porézní perimetry sítě a této hraniční obrana nemůže být co nejúčinnější, jednou byly před obrovské množství nových [modelu BYOD ](https://aka.ms/byodcg) zařízení a cloudové aplikace.
 
 V tomto článku se podíváme na kolekci správy identit Azure a osvědčené postupy pro zabezpečení řízení přístupu. Tyto osvědčené postupy, které jsou odvozeny z našich zkušenostech s [Azure AD](../active-directory/fundamentals/active-directory-whatis.md) a prostředí zákazníků, jako je sami.
 
@@ -51,7 +51,7 @@ Identita Azure správu nebo přístupová ovládací prvek osvědčené postupy 
 
 ## <a name="treat-identity-as-the-primary-security-perimeter"></a>Nakládat jako primárního obvodu zabezpečení identit
 
-Mnoho vezměte v úvahu identity jako primárního obvodu zabezpečení. Je to odklon od tradičního zaměřením na zabezpečení sítě. Sítě perimetry dále zobrazovat více porézní a že hraniční obrana nemůže být nejnižších před obrovské množství nových [BYOD](http://aka.ms/byodcg) zařízení a cloudové aplikace.
+Mnoho vezměte v úvahu identity jako primárního obvodu zabezpečení. Je to odklon od tradičního zaměřením na zabezpečení sítě. Sítě perimetry dále zobrazovat více porézní a že hraniční obrana nemůže být nejnižších před obrovské množství nových [BYOD](https://aka.ms/byodcg) zařízení a cloudové aplikace.
 [Azure Active Directory (Azure AD)](../active-directory/active-directory-whatis.md) je řešení Azure pro správu identit a přístupů. Azure AD je víceklientské, založené na cloudu adresáři a identitami služba pro správu od Microsoftu. Kombinuje základní adresářové služby, správu přístupu k aplikacím a ochranu identity v rámci jednoho řešení.
 
 Osvědčené postupy pro zabezpečení přístupu a identit pomocí Azure AD v následujících částech.

@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/12/2018
+ms.date: 11/08/2018
 ms.author: jingwang
-ms.openlocfilehash: a4de054926339985b77f110bd00f77c5c8f7d705
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: cd137462235431f0a0c1562e15a32951fe2a41c5
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49957985"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51346696"
 ---
 # <a name="copy-data-to-or-from-azure-sql-database-by-using-azure-data-factory"></a>Kopírování dat do nebo ze služby Azure SQL Database s použitím služby Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you use:"]
@@ -208,7 +208,7 @@ Chcete-li kopírovat data z nebo do služby Azure SQL Database, nastavte **typ**
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | **Typ** musí být nastavena vlastnost datové sady **AzureSqlTable**. | Ano |
-| tableName | Název tabulky nebo zobrazení v instanci Azure SQL Database, která odkazuje propojenou službu. | Ano |
+| tableName | Název tabulky nebo zobrazení v instanci Azure SQL Database, která odkazuje propojenou službu. | Ne pro zdroj, Ano pro jímku |
 
 #### <a name="dataset-properties-example"></a>Příklad vlastnosti datové sady
 
@@ -248,7 +248,6 @@ Ke zkopírování dat z Azure SQL Database, nastavte **typ** vlastnosti ve zdroj
 
 - Pokud **sqlReaderQuery** je určená pro **SqlSource**, spustí aktivita kopírování tohoto dotazu na zdroji Azure SQL Database se mají získat data. Nebo můžete zadat uloženou proceduru. Zadejte **sqlReaderStoredProcedureName** a **storedProcedureParameters** pokud používá parametry uložené procedury.
 - Pokud nezadáte buď **sqlReaderQuery** nebo **sqlReaderStoredProcedureName**, sloupce definované v **struktura** část datové sady JSON se používají pro Sestavte dotaz. `select column1, column2 from mytable` spouští se pro Azure SQL Database. Pokud nemá definici datové sady **struktura**, jsou vybrány všechny sloupce z tabulky.
-- Při použití **sqlReaderStoredProcedureName**, stále je třeba zadat fiktivní **tableName** vlastnost v datové sadě JSON.
 
 #### <a name="sql-query-example"></a>Příklad dotazu SQL
 
@@ -588,7 +587,7 @@ Při kopírování dat z nebo do služby Azure SQL Database, se používají ná
 | DateTimeOffset |DateTimeOffset |
 | Decimal |Decimal |
 | Atribut FILESTREAM (varbinary(max)) |Byte] |
-| plovoucí desetinnou čárkou |Double |
+| Float |Double |
 | image |Byte] |
 | int |Datový typ Int32 |
 | peníze |Decimal |

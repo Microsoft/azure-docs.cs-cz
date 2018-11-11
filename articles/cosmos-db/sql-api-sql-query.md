@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/10/2018
 ms.author: laviswa
-ms.openlocfilehash: 766a2a9a2b71d9cd013f26b843d413d7603ab1fd
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 22b31e7df4e11f8f98877a8497b533203dcc26b3
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44051353"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51233299"
 ---
 # <a name="query-azure-cosmos-db-data-with-sql-queries"></a>Dotazování na data služby Azure Cosmos DB pomocí dotazů SQL
 
@@ -368,7 +368,7 @@ Následující binární operátory jsou aktuálně podporovány a je možné v 
 |Aritmetické operace    |   +,-,*,/,%   |
 |bitové operace  |   |, &, ^, <<>>,, >>> (výplně nulové posunutí doprava)      |
 |Logické   |   A, NEBO NE      |
-|porovnání   |    =, !=, &lt;, &gt;, &lt;=, &gt;=, <>     |
+|Porovnání   |    =, !=, &lt;, &gt;, &lt;=, &gt;=, <>     |
 |Řetězec  |  || (zřetězení)       |
 
 Pojďme se podívat na některé dotazy pomocí binární operátory.
@@ -1557,7 +1557,7 @@ Funkce pro kontrolu typů umožňují zkontrolujte typ výrazu v rámci dotazů 
 
 <table>
 <tr>
-  <td><strong>Využití</strong></td>
+  <td><strong>Použití</strong></td>
   <td><strong>Popis</strong></td>
 </tr>
 <tr>
@@ -1763,7 +1763,7 @@ Cosmos DB podporuje následující předdefinované funkce Otevřít geoprostoro
 
 <table>
 <tr>
-  <td><strong>Využití</strong></td>
+  <td><strong>Použití</strong></td>
   <td><strong>Popis</strong></td>
 </tr>
 <tr>
@@ -2405,13 +2405,13 @@ Následující příklad ukazuje způsob použití queryDocuments v rozhraní AP
 
 ## <a id="References"></a>Odkazy
 1. [Úvod do služby Azure Cosmos DB][introduction]
-2. [Azure Cosmos DB SQL specifikace](http://go.microsoft.com/fwlink/p/?LinkID=510612)
+2. [Azure Cosmos DB SQL specifikace](https://go.microsoft.com/fwlink/p/?LinkID=510612)
 3. [Ukázky v Azure Cosmos DB .NET](https://github.com/Azure/azure-documentdb-net)
 4. [Úrovně konzistence služby Azure Cosmos DB][consistency-levels]
 5. ANSI SQL 2011 [http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=53681](http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=53681)
 6. JSON [http://json.org/](http://json.org/)
 7. Specifikace jazyka JavaScript [http://www.ecma-international.org/publications/standards/Ecma-262.htm](http://www.ecma-international.org/publications/standards/Ecma-262.htm) 
-8. LINQ [http://msdn.microsoft.com/library/bb308959.aspx](http://msdn.microsoft.com/library/bb308959.aspx) 
+8. LINQ [http://msdn.microsoft.com/library/bb308959.aspx](https://msdn.microsoft.com/library/bb308959.aspx) 
 9. Techniky hodnocení dotazování u velkých databází [http://dl.acm.org/citation.cfm?id=152611](http://dl.acm.org/citation.cfm?id=152611)
 10. Zpracování v paralelní relačními databázovými systémy. počítač IEEE Press společnosti, 1994 dotazů
 11. Logická jednotka, Ooi, Tan, zpracování v paralelní relačními databázovými systémy. počítač IEEE Press společnosti, 1994 dotazů.

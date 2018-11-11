@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: wesmc
-ms.openlocfilehash: c5a18a2e8d58553e49797da418f76fc3f251e003
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 21b5050996428328bfda314b2f2242ed2a766e74
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50026037"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51239759"
 ---
 # <a name="azure-redis-cache-faq"></a>Nejčastější dotazy k Azure Redis Cache
 Přečtěte si odpovědi na běžné dotazy, vzory a osvědčené postupy pro Azure Redis Cache.
@@ -250,7 +250,7 @@ Můžete použít některý z příkazů uvedený na [příkazy Redis](http://re
 * `redis-cli -h <redis cache name>.redis.cache.windows.net -a <key>`
 
 > [!NOTE]
-> Nástroje příkazového řádku Redis nebude fungovat s portem SSL, ale nástroj, který můžete použít například `stunnel` k bezpečnému propojení nástroje SSL port pomocí následujícího postupu v [oznamujeme zprostředkovatel stavu relací ASP.NET pro redis Cache ve verzi Preview Verze](http://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx) blogový příspěvek.
+> Nástroje příkazového řádku Redis nebude fungovat s portem SSL, ale nástroj, který můžete použít například `stunnel` k bezpečnému propojení nástroje SSL port pomocí následujícího postupu v [oznamujeme zprostředkovatel stavu relací ASP.NET pro redis Cache ve verzi Preview Verze](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx) blogový příspěvek.
 >
 >
 
@@ -295,7 +295,7 @@ Redis server nepodporuje nativně protokol SSL, ale nemá Azure Redis Cache. Pok
 >
 >
 
-Redis nástroje, jako `redis-cli` nefungují s portem SSL, ale nástroj, který můžete použít například `stunnel` k bezpečnému propojení nástroje SSL port pomocí následujícího postupu v [oznamujeme zprostředkovatel stavu relací ASP.NET pro Redis Verze Preview](http://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx) blogový příspěvek.
+Redis nástroje, jako `redis-cli` nefungují s portem SSL, ale nástroj, který můžete použít například `stunnel` k bezpečnému propojení nástroje SSL port pomocí následujícího postupu v [oznamujeme zprostředkovatel stavu relací ASP.NET pro Redis Verze Preview](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx) blogový příspěvek.
 
 Pokyny ke stahování nástroje Redis, najdete v článku [jak mohu spustit příkazy Redis?](#cache-commands) oddílu.
 

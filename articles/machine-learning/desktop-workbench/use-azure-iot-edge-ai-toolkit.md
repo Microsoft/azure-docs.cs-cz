@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 2/1/2018
 ROBOTS: NOINDEX
-ms.openlocfilehash: 9b2f4dbf1e87aa5aa035bfd9071fed7be74a9c07
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 023674f05dda6c2da8edddb843277dd07a513162
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978983"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51244623"
 ---
 # <a name="use-the-ai-toolkit-for-azure-iot-edge"></a>Použití sady AI Toolkit pro Azure IoT Edge
 
@@ -27,4 +27,4 @@ Začněte využívat možnosti umělé inteligence, strojové učení a pokroči
 
 AI Toolkit pro Azure IoT Edge je kolekce skripty, kód a nasadit kontejnery. Mezi příklady patří prediktivní Údržba, klasifikace obrázků a zpracování řeči, jakož i nasazení vlastního modelu Azure Machine Learning a Azure IoT Hub. Modely, které jsou součástí sady nástrojů může sloužit jako-se, ale všechny zdrojový kód a data jsou k dispozici pro vývojáře přizpůsobit podle svých potřeb.
 
-AI Toolkit pro Azure IoT Edge veřejného úložiště GitHub lze nalézt v [aka.ms/AI – sada nástrojů](http://aka.ms/AI-toolkit).
+AI Toolkit pro Azure IoT Edge veřejného úložiště GitHub lze nalézt v [aka.ms/AI – sada nástrojů](https://aka.ms/AI-toolkit).

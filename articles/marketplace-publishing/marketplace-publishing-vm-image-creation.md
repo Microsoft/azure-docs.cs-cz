@@ -14,12 +14,12 @@ ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 01/05/2017
 ms.author: hascipio; v-divte
-ms.openlocfilehash: 2a3c317dc9abdb861a007be9aaed714089e9f453
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 2ec758d9457b75cd7e5f6f29757d3201f3a6d62e
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49388190"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51283474"
 ---
 # <a name="guide-to-create-a-virtual-machine-image-for-the-azure-marketplace"></a>Příručka k vytvoření image virtuálního počítače pro Azure Marketplace
 Tento článek **kroku 2**, vás provede přípravou virtuálních pevných disků (VHD), které nasadíte do Azure Marketplace. Virtuální pevné disky jsou základem pro vaši skladovou jednotku. Proces se liší v závislosti na tom, jestli poskytujete skladovou jednotku založených na Linuxu nebo Windows. Tento článek popisuje oba scénáře. Tento proces se dá provádět zároveň s [vytváření účtů a registraci][link-acct-creation].
@@ -148,11 +148,11 @@ Chcete-li stáhnout soubor vzdálené plochy do místního počítače, použijt
 
         Get‐AzureRemoteDesktopFile ‐ServiceName “baseimagevm‐6820cq00” ‐Name “BaseImageVM” –LocalPath “C:\Users\Administrator\Desktop\BaseImageVM.rdp”
 
-Další informace o protokolu RDP najdete na webu MSDN v článku [připojit k virtuálnímu počítači Azure pomocí RDP nebo SSH](http://msdn.microsoft.com/library/azure/dn535788.aspx).
+Další informace o protokolu RDP najdete na webu MSDN v článku [připojit k virtuálnímu počítači Azure pomocí RDP nebo SSH](https://msdn.microsoft.com/library/azure/dn535788.aspx).
 
 **Konfigurace virtuálního počítače a vytvoření skladové jednotky**
 
-Po operační systém, který se stáhne virtuální pevný disk použijte Hyper-v a konfigurace virtuálního počítače můžete začít vytvářet skladovou jednotku. Podrobný postup najdete v následujícím odkazu TechNetu: [Hyper-v instalovat a konfigurovat virtuální počítač](http://technet.microsoft.com/library/hh846766.aspx).
+Po operační systém, který se stáhne virtuální pevný disk použijte Hyper-v a konfigurace virtuálního počítače můžete začít vytvářet skladovou jednotku. Podrobný postup najdete v následujícím odkazu TechNetu: [Hyper-v instalovat a konfigurovat virtuální počítač](https://technet.microsoft.com/library/hh846766.aspx).
 
 ### <a name="34-choose-the-correct-vhd-size"></a>3.4 výběr správné velikosti virtuálního pevného disku
 Operačního systému Windows virtuální pevný disk ve vaší imagi virtuálního počítače měl vytvořit jako 128 GB pevného formátu virtuálního pevného disku.  
@@ -191,7 +191,7 @@ Další informace o imagích virtuálních počítačů, najdete v těchto blogo
 
 ### <a name="set-up-the-necessary-tools-powershell-and-azure-classic-cli"></a>Nastavit potřebné nástroje, Powershellu a příkazového řádku Azure classic
 * [Jak nastavit prostředí PowerShell](/powershell/azure/overview)
-* [Postup instalace Azure classic CLI](../cli-install-nodejs.md)
+* [Postup instalace Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)
 
 ### <a name="41-create-a-user-vm-image"></a>4.1 Vytvoření uživatelské image virtuálního počítače
 #### <a name="capture-vm"></a>Zachycení virtuálního počítače
@@ -427,63 +427,45 @@ Tady je postup pro vytvoření adresy URL SAS pomocí Průzkumníka služby Micr
 
 11. Tyto kroky zopakujte pro každý virtuální pevný disk ve skladové jednotce.
 
-**Klasické rozhraní příkazového řádku Azure (doporučeno pro průběžné integrace a Non-Windows)**
+**Azure CLI 2.0 (doporučeno pro mimo Windows a průběžné integrace)**
 
 Toto jsou kroky pro vygenerování adresy URL SAS pomocí příkazového řádku Azure classic
 
 [!INCLUDE [outdated-cli-content](../../includes/contains-classic-cli-content.md)]
 
-1.  Stáhnout Azure CLI classic z [tady](https://azure.microsoft.com/documentation/articles/xplat-cli-install/). Můžete také vyhledat odkazy na různé **[Windows](http://aka.ms/webpi-azure-cli)** a  **[MAC OS](http://aka.ms/mac-azure-cli)**.
+1.  Stáhněte si Microsoft Azure CLI z [tady](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Můžete také vyhledat odkazy na různé **[Windows](https://docs.microsoft.com/cli/azure/install-azure-cli-windows?view=azure-cli-latest)** a  **[MAC OS](https://docs.microsoft.com/cli/azure/install-azure-cli-macos?view=azure-cli-latest)**.
 
 2.  Po stažení, nainstalujte
 
-3.  Vytvoření Powershellu (nebo jiného spustitelného souboru skriptu) soubor s následujícím kódem a uloží do místního prostředí
+3.  Vytvoření Bash (nebo jiného spustitelného souboru ekvivalentní skript) souboru následujícím kódem a uloží do místního prostředí
 
-          $conn="DefaultEndpointsProtocol=https;AccountName=<StorageAccountName>;AccountKey=<Storage Account Key>"
-          azure storage container list vhds -c $conn
-          azure storage container sas create vhds rl <Permission End Date> -c $conn --start <Permission Start Date>  
+        export AZURE_STORAGE_ACCOUNT=<Storage Account Name>
+        EXPIRY=$(date -d "3 weeks" '+%Y-%m-%dT%H:%MZ')
+        CONTAINER_SAS=$(az storage container generate-sas --account-name -n vhds --permissions rl --expiry $EXPIRY -otsv)
+        BLOB_URL=$(az storage blob url -c vhds -n <VHD Blob Name> -otsv)
+        echo $BLOB_URL\?$CONTAINER_SAS
 
     Aktualizujte následující parametry v výše
 
-    a. **`<StorageAccountName>`**: Zadejte název svého účtu úložiště
+    a. **`<Storage Account Name>`**: Zadejte název svého účtu úložiště
 
-    b. **`<Storage Account Key>`**: Zadejte klíč účtu úložiště
+    b. **`<VHD Blob Name>`**: Zadejte název objektu virtuálního pevného disku.
 
-    c. **`<Permission Start Date>`**: Pokud chcete ochranu pro čas UTC, vyberte den před aktuálním datem. Například pokud je aktuální datum 26. říjnu 2016, pak hodnota by měla být 10/25/2016. Pokud používáte Azure CLI verze 2.0 nebo vyšší, zadejte datum a čas v počáteční a koncové datum, například: 10-25-2016T00:00:00Z.
+    Vyberte datum, které je nejméně 3 týdny po počátečním datu (výchozí nastavení generování tokenu sas). Příkladem hodnoty je: **2018-10-11T23:56Z**.
 
-    d. **`<Permission End Date>`**: Vyberte datum, které je nejméně 3 týdny po **datum zahájení**. Hodnota by měla být **11/02/2016**. Pokud používáte Azure CLI verze 2.0 nebo vyšší, zadejte datum a čas v počáteční a koncové datum, například: 11-02-2016T00:00:00Z.
+    Tady je příklad kódu po aktualizaci správné parametry exportu AZURE_STORAGE_ACCOUNT = vypršení platnosti vhdstorage1ba78dfb6bc2d8 = $(datum -d "3 týdny" "+ %Y-min %-dT % H: % MZ) CONTAINER_SAS = $(az storage container generovat sas - n virtuální pevné disky – oprávnění rl – $ vypršení platnosti Vypršení platnosti - otsv) BLOB_URL = $(az storage blob url - c virtuální pevné disky - n osdisk_1ba78dfb6b.vhd - otsv) echo $BLOB_URL\?$CONTAINER_SAS
 
-    Tady je příklad kódu po aktualizaci správné parametry
+4.  Spusťte skript a poskytne vám adresa URL SAS pro úrovně přístupu ke kontejneru.
 
-          $conn="DefaultEndpointsProtocol=https;AccountName=st20151;AccountKey=TIQE5QWMKHpT5q2VnF1bb+NUV7NVMY2xmzVx1rdgIVsw7h0pcI5nMM6+DVFO65i4bQevx21dmrflA91r0Vh2Yw=="
-          azure storage container list vhds -c $conn
-          azure storage container sas create vhds rl 11/02/2016 -c $conn --start 10/25/2016  
-
-4.  Otevřete editor Powershellu v režimu "Spustit jako správce" a otevřete soubor v kroku #3. Můžete použít libovolný editor skriptu, který je k dispozici na vašem operačním systému.
-
-5.  Spusťte skript a poskytne vám adresa URL SAS pro úrovně přístupu ke kontejneru
-
-    Následující výstup podpis SAS, který se zkopírujte zvýrazněná část v poznámkového bloku
-
-    ![Kreslení](media/marketplace-publishing-vm-image-creation/img5.2_16.png)
-
-6.  Teď získáte úrovni kontejneru adresy URL SAS a budete muset přidat název virtuálního pevného disku v ní.
-
-    Adresa URL SAS úrovni kontejneru #
-
-    `https://st20151.blob.core.windows.net/vhds?st=2016-10-25T07%3A00%3A00Z&se=2016-11-02T07%3A00%3A00Z&sp=rl&sv=2015-12-11&sr=c&sig=wnEw9RfVKeSmVgqDfsDvC9IHhis4x0fc9Hu%2FW4yvBxk%3D`
-
-7.  Vložit název virtuálního pevného disku za název kontejneru v adrese URL SAS, jak je znázorněno níže `https://st20151.blob.core.windows.net/vhds/<VHDName>?st=2016-10-25T07%3A00%3A00Z&se=2016-11-02T07%3A00%3A00Z&sp=rl&sv=2015-12-11&sr=c&sig=wnEw9RfVKeSmVgqDfsDvC9IHhis4x0fc9Hu%2FW4yvBxk%3D`
-
-    Příklad:
-
-    TestRGVM201631920152.vhd je název virtuálního pevného disku, pak bude mít adresu URL virtuální pevný disk SAS
-
-    `https://st20151.blob.core.windows.net/vhds/ TestRGVM201631920152.vhd?st=2016-10-25T07%3A00%3A00Z&se=2016-11-02T07%3A00%3A00Z&sp=rl&sv=2015-12-11&sr=c&sig=wnEw9RfVKeSmVgqDfsDvC9IHhis4x0fc9Hu%2FW4yvBxk%3D`
+5.  Zkontrolujte vaše adresa URL SAS.
 
     - Ujistěte se, že váš název souboru obrázku a "VHD" jsou v identifikátoru URI.
     -   Ve středu podpis, ujistěte se, že se zobrazí "sp = rl". Tento příklad ukazuje, že byl úspěšně poskytuje přístup pro čtení a seznam.
     -   Ve středu podpis, ujistěte se, že "sr = c" se zobrazí. Tento příklad ukazuje, že máte úrovně přístupu ke kontejneru
+
+    Příklad:
+
+    `https://vhdstorage1ba78dfb6bc2d8.blob.core.windows.net/vhds/osdisk_1ba78dfb6b.vhd?se=2018-10-12T00%3A04Z&sp=rl&sv=2018-03-28&sr=c&sig=...`
 
 8.  Ujistěte se, že generované sdílený přístup podpisu URI funguje, že ji otestujte v prohlížeči. By se měl spustit proces stahování
 

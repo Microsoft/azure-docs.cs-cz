@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 0f51b232470e4e4da3f25d40d025dd3b09dd1204
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 73fb2a3f10476550bbe6bd20c387a1cc2a7727d8
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39171911"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51246476"
 ---
 # <a name="how-to-use-session-callbacks-with-a-conversation-learner-model"></a>Jak použít zpětná volání relace s modelem Learner konverzace
 
@@ -23,7 +23,7 @@ Tento kurz ukazuje onSessionStart a onSessionEnd zpětná volání.
 
 ## <a name="video"></a>Video
 
-[![Kurz 11 ve verzi Preview](http://aka.ms/cl-tutorial-11-preview)](http://aka.ms/blis-tutorial-11)
+[![Kurz 11 ve verzi Preview](https://aka.ms/cl-tutorial-11-preview)](https://aka.ms/blis-tutorial-11)
 
 ## <a name="requirements"></a>Požadavky
 Tento kurz vyžaduje, aby `tutorialSessionCallbacks` bot běží.

@@ -15,15 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: deguhath
-ms.openlocfilehash: f87bc1d8140bea9ebb09e45d42b27e201b474026
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: ecdc6ae6c7e0c8a89d97611f41146d168bc74741
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39214338"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51344106"
 ---
 # <a name="parallel-bulk-data-import-using-sql-partition-tables"></a>Paralelní hromadný import dat pomocí tabulek oddílů SQL
-Tento dokument popisuje, jak vytvářet dělené tabulky pro rychlé paralelní hromadný import dat do databáze SQL serveru. Pro načítání velkých objemů dat nebo přenos do služby SQL database, import dat do SQL DB a dalších dotazů lze zvýšit pomocí *dělené tabulky a zobrazení*. 
+
+Tento článek popisuje, jak vytvářet dělené tabulky pro rychlé paralelní hromadný import dat do databáze SQL serveru. Pro načítání velkých objemů dat nebo přenos do služby SQL database, import dat do SQL DB a dalších dotazů lze zvýšit pomocí *dělené tabulky a zobrazení*. 
 
 ## <a name="create-a-new-database-and-a-set-of-filegroups"></a>Vytvořit novou databázi a sadu skupin souborů
 * [Vytvořit novou databázi](https://technet.microsoft.com/library/ms176061.aspx), pokud již neexistuje.
@@ -102,7 +103,7 @@ Další informace najdete v tématu [vytvořit dělené tabulky a indexy](https:
 * [Mění databázi](https://msdn.microsoft.com/library/bb522682.aspx) Chcete-li změnit režim protokolování transakce BULK_LOGGED minimalizovat nároky na protokolování, například:
   
         ALTER DATABASE <database_name> SET RECOVERY BULK_LOGGED
-* K urychlení načítání dat, spuštění operace hromadného importu paralelně. Tipy k urychlení hromadného importu velkých objemů dat do databáze SQL serveru, naleznete v tématu [načtení 1TB za méně než 1 hodina](http://blogs.msdn.com/b/sqlcat/archive/2006/05/19/602142.aspx).
+* K urychlení načítání dat, spuštění operace hromadného importu paralelně. Tipy k urychlení hromadného importu velkých objemů dat do databáze SQL serveru, naleznete v tématu [načtení 1TB za méně než 1 hodina](https://blogs.msdn.com/b/sqlcat/archive/2006/05/19/602142.aspx).
 
 Následující příkaz powershellu je příkladem paralelních dat pomocí BCP načítají.
 

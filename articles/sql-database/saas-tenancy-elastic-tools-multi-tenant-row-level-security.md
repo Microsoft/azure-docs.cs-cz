@@ -12,12 +12,12 @@ ms.author: vanto
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: d669e7beb2d0e41ff26408d4f71c3e1648c41e3a
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 6d701878886cb1d5cc20a57614a474537f06a728
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50242564"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51242904"
 ---
 # <a name="multi-tenant-applications-with-elastic-database-tools-and-row-level-security"></a>Aplikace s více tenanty s nástroji elastic database a zabezpečení na úrovní řádků
 
@@ -41,7 +41,7 @@ Cílem je používat Klientská knihovna elastic database [směrování závisl�
 
 - Pomocí sady Visual Studio (2012 nebo novějším)
 - Vytvořte tři databáze Azure SQL
-- Stáhněte si ukázkový projekt: [elastické databáze nástroje pro Azure SQL – víceklientské horizontální oddíly](http://go.microsoft.com/?linkid=9888163)
+- Stáhněte si ukázkový projekt: [elastické databáze nástroje pro Azure SQL – víceklientské horizontální oddíly](https://go.microsoft.com/?linkid=9888163)
   - Vyplňte informace o vašich databází na začátku **Program.cs** 
 
 Rozšiřuje popsané v tomto projektu [elastické databáze nástroje pro Azure SQL – integrace Entity Frameworku](sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md) přidáním podpory pro databáze s více tenanty horizontálními oddíly. Projekt se sestaví jednoduchou konzolovou aplikaci pro vytváření blogů a příspěvky. Projekt nezahrnuje čtyřmi klienty a dvěma databázemi s horizontálními oddíly více tenantů. Tato konfigurace je znázorněno na předchozím obrázku. 
@@ -254,7 +254,7 @@ GO
 ```
 
 > [!TIP]
-> V komplexní projekt možná budete muset přidat predikát na stovkách tabulky, který může být zdlouhavé. Je pomocná uložené procedury, která automaticky generuje zásadu zabezpečení a přidá predikát ve všech tabulkách ve schématu. Další informace najdete v příspěvku na blogu [použít zabezpečení na úrovní řádků pro všechny tabulky – pomocné rutiny skriptu (blog)](http://blogs.msdn.com/b/sqlsecurity/archive/2015/03/31/apply-row-level-security-to-all-tables-helper-script).
+> V komplexní projekt možná budete muset přidat predikát na stovkách tabulky, který může být zdlouhavé. Je pomocná uložené procedury, která automaticky generuje zásadu zabezpečení a přidá predikát ve všech tabulkách ve schématu. Další informace najdete v příspěvku na blogu [použít zabezpečení na úrovní řádků pro všechny tabulky – pomocné rutiny skriptu (blog)](https://blogs.msdn.com/b/sqlsecurity/archive/2015/03/31/apply-row-level-security-to-all-tables-helper-script).
 
 Teď Pokud spustíte ukázkovou aplikaci znovu, tenantů se projeví pouze řádky, které patří k nim. Kromě toho aplikace nelze vložit řádky, které patří do jiných než ten, který aktuálně připojených do horizontálních oddílů databáze tenantů. Aplikaci nelze aktualizovat také ID Tenanta v nějaké řádky, které můžete zobrazit. Pokud se aplikace pokusí udělat, je vyvolána DbUpdateException.
 
@@ -342,7 +342,7 @@ GO
 ### <a name="maintenance"></a>Údržba
 
 - **Přidání nových horizontálních oddílů**: spuštění skriptu T-SQL k povolení zabezpečení na úrovni řádků na všech nových horizontálních oddílů, v opačném případě nejsou filtrovány dotazy v těchto horizontálních oddílech.
-- **Přidání nových tabulek**: Přidat predikát filtru a blok zásady zabezpečení na všechny horizontální oddíly pokaždé, když je vytvořena nová tabulka. V opačném případě nefiltrují dotazy na novou tabulku. Toto přidání je možné automatizovat pomocí aktivační událost jazyka DDL, jak je popsáno v [použít zabezpečení na úrovní řádků automaticky na nově vytvořené tabulky (blog)](http://blogs.msdn.com/b/sqlsecurity/archive/2015/05/22/apply-row-level-security-automatically-to-newly-created-tables.aspx).
+- **Přidání nových tabulek**: Přidat predikát filtru a blok zásady zabezpečení na všechny horizontální oddíly pokaždé, když je vytvořena nová tabulka. V opačném případě nefiltrují dotazy na novou tabulku. Toto přidání je možné automatizovat pomocí aktivační událost jazyka DDL, jak je popsáno v [použít zabezpečení na úrovní řádků automaticky na nově vytvořené tabulky (blog)](https://blogs.msdn.com/b/sqlsecurity/archive/2015/05/22/apply-row-level-security-automatically-to-newly-created-tables.aspx).
 
 ## <a name="summary"></a>Souhrn
 
@@ -358,7 +358,7 @@ Nástroje pro elastické databáze a zabezpečení na úrovní řádků může b
 
 ## <a name="questions-and-feature-requests"></a>Otázky a žádosti o funkce
 
-Máte dotazy, kontaktujte nás na [fórum SQL Database](http://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted). A přidejte jakékoli žádosti o funkce pro [fóru pro zpětnou vazbu SQL Database](https://feedback.azure.com/forums/217321-sql-database/).
+Máte dotazy, kontaktujte nás na [fórum SQL Database](https://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted). A přidejte jakékoli žádosti o funkce pro [fóru pro zpětnou vazbu SQL Database](https://feedback.azure.com/forums/217321-sql-database/).
 
 
 <!--Image references-->

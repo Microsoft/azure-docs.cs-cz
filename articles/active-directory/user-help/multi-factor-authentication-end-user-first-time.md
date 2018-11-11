@@ -13,12 +13,12 @@ ms.component: user-help
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: lizross
-ms.openlocfilehash: b6d548183cfa548f9ad35f06922752c929e318ac
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 9f602b08e94071a335d0c88377912ea9b53f37b2
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47041951"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51244436"
 ---
 # <a name="set-up-my-account-for-two-step-verification"></a>Nastavit účtu pro dvoustupňové ověřování.
 Dvoustupňové ověření je krok dodatečné zabezpečení, která pomáhá chránit váš účet kvůli tomu je těžší jinými lidmi, kteří možnost proniknout. Pokud čtete tento článek, pravděpodobně máte e-mailu ze svého pracovního nebo školního správce o ověřování službou Multi-Factor Authentication. Nebo možná jste zkoušeli přihlásit a zpráva s výzvou k nastavení dalšího ověření zabezpečení. Pokud je to tento případ **nemůžete se přihlásit před dokončením procesu automatické registrace**.
@@ -41,12 +41,12 @@ Na první otázku v procesu registrace je, jak chcete, abychom vás kontaktovali
 
 | Způsob kontaktu | Popis |
 | --- | --- |
-| [Mobilní aplikace](#use-a-mobile-app-as-the-contact-method) |- **Dostávat oznámení o ověření.** Tato možnost odešle oznámení do aplikace authenticator na tablet nebo smartphone. Oznámení zobrazte a pokud je legitimní, vyberte **ověřit** v aplikaci. Vaše firma nebo škola může vyžadovat zadání kódu PIN, než můžete ověřit.<br>- **Použijte ověřovací kód.** V tomto režimu se ověřovací aplikace generuje ověřovací kód, který aktualizuje každých 30 sekund. Zadejte aktuální ověřovací kód v rozhraní přihlášení.<br>Aplikace Microsoft Authenticator je k dispozici pro [Android](https://go.microsoft.com/fwlink/?linkid=866594), [iOS](https://go.microsoft.com/fwlink/?linkid=866594) a [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071). |
+| [Mobilní aplikace](#use-a-mobile-app-as-the-contact-method) |- **Dostávat oznámení o ověření.** Tato možnost odešle oznámení do aplikace authenticator na tablet nebo smartphone. Oznámení zobrazte a pokud je legitimní, vyberte **ověřit** v aplikaci. Vaše firma nebo škola může vyžadovat zadání kódu PIN, než můžete ověřit.<br>- **Použijte ověřovací kód.** V tomto režimu se ověřovací aplikace generuje ověřovací kód, který aktualizuje každých 30 sekund. Zadejte aktuální ověřovací kód v rozhraní přihlášení.<br>Aplikace Microsoft Authenticator je k dispozici pro [Android](https://go.microsoft.com/fwlink/?linkid=866594), [iOS](https://go.microsoft.com/fwlink/?linkid=866594) a [Windows Phone](https://go.microsoft.com/fwlink/?Linkid=825071). |
 | [Volání na mobilní telefon nebo text](#use-your-mobile-phone-as-the-contact-method) |- **Telefonní hovor** umístí automatizovaný hlasový hovor na telefonní číslo, které zadáte. Stačí odpovědět volání a stisknutím klávesy # na klávesnici telefonu provede ověření.<br>- **Textová zpráva** ukončí textovou zprávu s ověřovacím kódem. Po zobrazení výzvy v textu odpovědět na textovou zprávu nebo zadejte ověřovací kód do rozhraní pro přihlášení k dispozici. |
 | [Volání na telefon do kanceláře](#use-your-office-phone-as-the-contact-method) |Umístí automatizovaný hlasový hovor na telefonní číslo, které zadáte. Odpovězte volání a stiskem tlačítka # na klávesnici telefonu provede ověření. |
 
 ## <a name="use-a-mobile-app-as-the-contact-method"></a>Použití mobilní aplikace jako způsob kontaktu
-Pomocí této metody vyžaduje instalaci ověřovací aplikace na telefonu nebo tabletu. Kroky v tomto článku jsou založeny na aplikaci Microsoft Authenticator, která je k dispozici pro [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071), [Android](http://go.microsoft.com/fwlink/?Linkid=825072), a [iOS](http://go.microsoft.com/fwlink/?Linkid=825073).
+Pomocí této metody vyžaduje instalaci ověřovací aplikace na telefonu nebo tabletu. Kroky v tomto článku jsou založeny na aplikaci Microsoft Authenticator, která je k dispozici pro [Windows Phone](https://go.microsoft.com/fwlink/?Linkid=825071), [Android](https://go.microsoft.com/fwlink/?Linkid=825072), a [iOS](https://go.microsoft.com/fwlink/?Linkid=825073).
 
 >[!NOTE]
 >Není nutné použít aplikaci Microsoft Authenticator. Pokud už používáte jinou ověřovací aplikaci, můžete nadále používat ho.

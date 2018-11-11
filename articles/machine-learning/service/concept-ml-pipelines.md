@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: sanpil
 author: sanpil
-ms.date: 09/24/2018
-ms.openlocfilehash: 45aa954d2f85267b2c7c9aa2a7ba04e436765433
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
-ms.translationtype: MT
+ms.date: 11/07/2018
+ms.openlocfilehash: 212488b74ba726012966787c7b2de633414e96a4
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50023919"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51245337"
 ---
 # <a name="pipelines-and-azure-machine-learning"></a>Kanály a Azure Machine Learning
 
@@ -22,11 +22,11 @@ V tomto článku najdete informace o machine learningu kanály, které můžete 
 
 ## <a name="what-are-machine-learning-pipelines"></a>Co jsou kanály machine learning?
 
-Machine learning (ML) kanály využívají odborníci přes data sestavení, optimalizovat a spravovat jejich strojového učení pracovních postupů. Typické kanálu zahrnuje řadu kroků, které pokrývají tyto oblasti:
-
+Pomocí machine learning (ML) kanály, odborníci přes data, datovými architekty a odborníky v oblasti můžete spolupracovat na kroky:
 + Příprava dat, jako je například normalizations a transformace
-+ Model školení, jako například hyper parametr ladění a ověřování
-+ Modely nasazení a vyhodnocení  
++ Cvičení modelu
++ Vyhodnocení modelu
++ Nasazení 
 
 Následující diagram znázorňuje kanál příkladu:
 
@@ -38,7 +38,7 @@ Následující diagram znázorňuje kanál příkladu:
 
 S kanály můžete optimalizovat pracovní postup s jednoduchost, rychlost, přenositelnost a opakované použití. Při sestavování kanálů v Azure Machine learningu, můžete se soustředit na co znáte nejlepší &mdash; strojového učení &mdash; místo infrastruktury.
 
-Použití samostatné kroky umožňuje znovu spustit pouze kroky, které je třeba upravit a testování pracovního postupu. Krok je výpočetní jednotka v kanálu. Jak je uvedeno ve výše uvedeném diagramu, úkolů přípravy dat může zahrnovat mnoho kroků, včetně, avšak nikoli výlučně normalizace, transformace, ověření a snadné.
+Použití samostatné kroky umožňuje znovu spustit pouze kroky, které je třeba upravit a testování pracovního postupu. Krok je výpočetní jednotka v kanálu. Jak je uvedeno ve výše uvedeném diagramu, úkolů přípravy dat může zahrnovat mnoho kroků, včetně, avšak nikoli výlučně normalizace, transformace, ověření a snadné. Zdroje dat a dočasných dat se využívají opakovaně v kanálu, který uloží výpočetní čas a prostředky. 
 
 Jakmile kanálu je určen, je často Další doladění kolem smyčky školení kanálu. Když znovu spusťte kanál, spuštění přejde do kroků, které je potřeba znovu spustit, jako je například aktualizované cvičný skript a přeskočí, co se nezměnil. Stejné paradigma se vztahuje na beze změny skripty používané pro provedení kroku. 
 
@@ -59,7 +59,7 @@ Klíčové výhody pro vytváření kanálů pro strojového učení pracovních
 
 Použití Pythonu k vytvoření kanálů ML. Sada SDK Azure Machine Learning nabízí imperativní konstrukce pro pořadí úloh a paralelní provádění kroků ve vašich kanálů, když je k dispozici žádná data závislost. Můžete pracovat s ním v poznámkových blocích Jupyter nebo v jiné upřednostňované prostředí IDE. 
 
-Použití závislostí deklarativní data, můžete optimalizovat vaše úkoly. Sada SDK zahrnuje rozhraní předem připravené moduly pro běžné úkoly, jako jsou data přenosu, vytvoření cílové výpočetní a model publikování. Rozhraní je možné rozšířit na model vlastní zásady odvíjející implementací vlastní kroky, které jsou opakovaně použitelné pro kanály.
+Použití závislostí deklarativní data, můžete optimalizovat vaše úkoly. Sada SDK zahrnuje rozhraní předem připravené moduly pro běžné úkoly jako přenos dat a modelu publikování. Rozhraní je možné rozšířit na model vlastní zásady odvíjející implementací vlastní kroky, které jsou opakovaně použitelné pro kanály. Cílových výpočetních prostředí a prostředků úložiště je také možné spravovat přímo ze sady SDK.
 
 Kanály můžou být uložena jako šablony a mohou být nasazeny na koncový bod REST, můžete plánovat úlohy dávkové bodování nebo přeučení.
 

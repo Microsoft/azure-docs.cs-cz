@@ -13,19 +13,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/03/2017
 ms.author: mbullwin
-ms.openlocfilehash: 5d46b446a71d75a20cc4771b651fbf107db31358
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: a1244076efe1c920a23f29de9d25ab6845747fe4
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50958437"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51245847"
 ---
 # <a name="more-telemetry-from-application-insights"></a>Další telemetrická data ze služby Application Insights
 Až budete mít [přidat Application Insights do kódu ASP.NET](app-insights-asp-net.md), existuje několik věcí, které můžete udělat, abyste získali další telemetrické údaje. 
 
 | Akce | Co získáte|
 |---|---|
-|(Servery služby IIS) [Nainstalujte monitorování stavu](http://go.microsoft.com/fwlink/?LinkId=506648) na každý počítač se serverem.<br/>(Webové aplikace azure) V Azure ovládací panely pro webovou aplikaci otevřete okno Application Insights.| [**Čítače výkonu**](app-insights-performance-counters.md)<br/>[**Výjimky** ](app-insights-asp-net-exceptions.md) – podrobné trasování zásobníku<br/>[**Závislosti**](app-insights-asp-net-dependencies.md)|
+|(Servery služby IIS) [Nainstalujte monitorování stavu](https://go.microsoft.com/fwlink/?LinkId=506648) na každý počítač se serverem.<br/>(Webové aplikace azure) V Azure ovládací panely pro webovou aplikaci otevřete okno Application Insights.| [**Čítače výkonu**](app-insights-performance-counters.md)<br/>[**Výjimky** ](app-insights-asp-net-exceptions.md) – podrobné trasování zásobníku<br/>[**Závislosti**](app-insights-asp-net-dependencies.md)|
 |[Přidejte javascriptový fragment kódu do webových stránek](app-insights-javascript.md)|[Stránka výkonu](app-insights-usage-overview.md), výjimky prohlížeče, výkonu aplikace AJAX. Vlastní telemetrii na straně klienta.|
 |[Vytvořit testy dostupnosti webu](app-insights-monitor-web-app-availability.md)|Dostávejte upozornění, pokud web přestane být k dispozici|
 |[Zajištění buildinfo.config](https://msdn.microsoft.com/library/dn449058.aspx) vygenerované nástrojem MSBuild|[Vytváření poznámek v grafy metrik](https://blogs.msdn.microsoft.com/visualstudioalm/2013/11/14/implementing-deployment-markers-in-application-insights/)

@@ -9,12 +9,12 @@ ms.author: robreed
 ms.topic: conceptual
 ms.date: 08/08/2018
 manager: carmonm
-ms.openlocfilehash: 554c575f338ebaa415ed21be8dc8b27eb79c3c0c
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: fea0a0dfd2e138fa4f33f4f489be74f5038b4ca6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45634400"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51244521"
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-state-configuration"></a>Připojování počítačů pro správu podle konfigurace stavu služby Azure Automation
 
@@ -150,9 +150,9 @@ Můžete snadno připojit virtuální počítače služby Amazon Web Services za
 
 Místní počítače Windows a Windows počítače do cloudů mimo Azure (například Amazon Web Services) může být také zapojený do služby Azure Automation stav konfigurace, jako mají odchozí přístup k Internetu prostřednictvím několika jednoduchými kroky:
 
-1. Ujistěte se, že nejnovější verze [WMF 5](http://aka.ms/wmf5latest) je nainstalován v počítačích, které chcete pro připojení k Azure Automation stav konfigurace.
+1. Ujistěte se, že nejnovější verze [WMF 5](https://aka.ms/wmf5latest) je nainstalován v počítačích, které chcete pro připojení k Azure Automation stav konfigurace.
 1. Postupujte podle pokynů v následující části [ **generování DSC metaconfigurations** ](#generating-dsc-metaconfigurations) ke generování složku obsahující potřebné metaconfigurations DSC.
-1. Vzdáleně se vztahují metaconfiguration DSC Powershellu na počítače, které chcete připojit. **Příkaz spouštíte z počítače musí mít nejnovější verzi [WMF 5](http://aka.ms/wmf5latest) nainstalované**:
+1. Vzdáleně se vztahují metaconfiguration DSC Powershellu na počítače, které chcete připojit. **Příkaz spouštíte z počítače musí mít nejnovější verzi [WMF 5](https://aka.ms/wmf5latest) nainstalované**:
 
    ```powershell
    Set-DscLocalConfigurationManager -Path C:\Users\joe\Desktop\DscMetaConfigs -ComputerName MyServer1, MyServer2
@@ -190,7 +190,7 @@ Počítače s Linuxem v místním, počítače s Linuxem v Azure a počítačů 
     Set-DscLocalConfigurationManager -CimSession $Session -Path C:\Users\joe\Desktop\DscMetaConfigs
     ```
 
-Příkaz spouštíte z počítače musí mít nejnovější verzi [WMF 5](http://aka.ms/wmf5latest) nainstalované.
+Příkaz spouštíte z počítače musí mít nejnovější verzi [WMF 5](https://aka.ms/wmf5latest) nainstalované.
 
 1. Pokud nemůžete použít metaconfigurations DSC Powershellu vzdáleně, pro každý počítač s Linuxem připojit, zkopírujte metaconfiguration odpovídající tomuto počítači ze složky v kroku 5 na počítači s Linuxem. Poté zavolejte `SetDscLocalConfigurationManager.py` místně na každém počítači s Linuxem chcete pro připojení k Azure Automation stav konfigurace:
 
@@ -207,7 +207,7 @@ Obecně připojit žádné počítače do Azure Automation stav konfigurace, [DS
 
 ### <a name="using-a-dsc-configuration"></a>Pomocí konfigurace DSC
 
-1. Otevřete VSCode (nebo svém oblíbeném editoru) jako správce na počítači v místním prostředí. Počítač musí mít nejnovější verzi [WMF 5](http://aka.ms/wmf5latest) nainstalované.
+1. Otevřete VSCode (nebo svém oblíbeném editoru) jako správce na počítači v místním prostředí. Počítač musí mít nejnovější verzi [WMF 5](https://aka.ms/wmf5latest) nainstalované.
 1. Zkopírujte následující skript místně. Tento skript obsahuje konfiguraci DSC Powershellu pro vytvoření metaconfigurations a pusťte se do vytváření metaconfiguration příkazu.
 
 > [!NOTE]

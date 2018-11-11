@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: a10d354cf819ebaa7e2199d9de0566b3e6bfd1bf
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: c708c396911badb7c7ce5df2497aaba47cb7defe
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42057518"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51243756"
 ---
 # <a name="getting-started-with-azure-storage-azure-webjob-projects"></a>Začínáme s Azure Storage (webová úloha Azure projektů)
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
@@ -145,5 +145,5 @@ Další informace o tom, jak používat **CloudTable** objektu, najdete v člán
 Informace o tom, jak zpracovat zpracování tabulky aktivované zpráv fronty, nebo sada WebJobs SDK scénáře nejsou specifické pro zpracování tabulky, projděte si téma [Začínáme se službou Azure Queue storage a Visual Studio připojené služby (webové úlohy projektů) ](../storage/vs-storage-webjobs-getting-started-queues.md).
 
 ## <a name="next-steps"></a>Další postup
-Tento článek poskytuje ukázek kódu, které ukazují, jak zvládnout běžné scénáře pro práci s tabulky Azure. Další informace o tom, jak používat Azure WebJobs a sada WebJobs SDK najdete v tématu [prostředků dokumentace Azure WebJobs](http://go.microsoft.com/fwlink/?linkid=390226).
+Tento článek poskytuje ukázek kódu, které ukazují, jak zvládnout běžné scénáře pro práci s tabulky Azure. Další informace o tom, jak používat Azure WebJobs a sada WebJobs SDK najdete v tématu [prostředků dokumentace Azure WebJobs](https://go.microsoft.com/fwlink/?linkid=390226).
 

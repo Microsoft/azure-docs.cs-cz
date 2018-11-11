@@ -16,12 +16,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: 2cd77ee6df52940a800733209b7e384d72d98103
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: ddc04d32f76515cb93d2cde3fe4eccaab7e4c291
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46962126"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51245354"
 ---
 # <a name="quickstart-remove-an-application-from-azure-active-directory"></a>Rychlý start: Odebrání aplikace z Azure Active Directory
 
@@ -69,7 +69,7 @@ Podmnožina aplikací, které se zobrazují ve filtru **Všechny aplikace** (s v
 
 Z technického hlediska jsou tyto aplikace s více tenanty z jiného tenanta a do vašeho tenanta se zaregistrovaly po vyjádření souhlasu. Konkrétněji je reprezentuje pouze instanční objekt ve vašem tenantovi bez odpovídajícího objektu aplikace. Další informace o rozdílech mezi objekty aplikací a instančními objekty najdete v tématu o [objektech aplikací a instančních objektech v Azure AD](app-objects-and-service-principals.md).
 
-Pokud chcete odebrat přístup aplikace s více tenanty k vašemu adresáři (po udělení souhlasu), musí správce společnosti odebrat instanční objekt aplikace. Tento správce musí mít přístup globálního správce a instanční objekt může odebrat pouze prostřednictvím webu Azure Portal nebo použitím [rutin Azure AD PowerShellu](http://go.microsoft.com/fwlink/?LinkId=294151).
+Pokud chcete odebrat přístup aplikace s více tenanty k vašemu adresáři (po udělení souhlasu), musí správce společnosti odebrat instanční objekt aplikace. Tento správce musí mít přístup globálního správce a instanční objekt může odebrat pouze prostřednictvím webu Azure Portal nebo použitím [rutin Azure AD PowerShellu](https://go.microsoft.com/fwlink/?LinkId=294151).
 
 ## <a name="next-steps"></a>Další kroky
 

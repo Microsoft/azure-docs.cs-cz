@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
 ms.reviewer: librown
-ms.openlocfilehash: a88a0d9105942502b634f3be7c3279167ea590c6
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: d5ea6f18fb288711bae67b6840ddb5b8bb9942c2
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49393248"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51245439"
 ---
 # <a name="get-started-with-the-microsoft-authenticator-app"></a>Začínáme s aplikací Microsoft Authenticator
 
@@ -39,7 +39,7 @@ Můžete také použít aplikaci Microsoft Authenticator s účty jiných spole�
 
 ## <a name="install-the-app"></a>Nainstalujte si aplikaci
 
-Aplikace Microsoft Authenticator je k dispozici pro [Android](https://go.microsoft.com/fwlink/?linkid=866594), [iOS](https://go.microsoft.com/fwlink/?linkid=866594) a [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071). Pokud chcete získat co nejlepších výsledků, byste pak měli nechat aplikací, dostávat oznámení, když budete vyzváni. 
+Aplikace Microsoft Authenticator je k dispozici pro [Android](https://go.microsoft.com/fwlink/?linkid=866594), [iOS](https://go.microsoft.com/fwlink/?linkid=866594) a [Windows Phone](https://go.microsoft.com/fwlink/?Linkid=825071). Pokud chcete získat co nejlepších výsledků, byste pak měli nechat aplikací, dostávat oznámení, když budete vyzváni. 
 
 ## <a name="add-accounts-to-the-app"></a>Přidat účty do aplikace
 
@@ -51,7 +51,7 @@ Pro osobní účet Microsoft (ten, který používáte pro přihlášení k Outl
 
 ### <a name="add-a-work-or-school-account"></a>Přidat pracovní nebo školní účet
 
-1. Pokud je to možné, přejděte [dalšího ověření zabezpečení](http://aka.ms/mfasetup) obrazovky na jiný počítač nebo zařízení. Informace o tom, jak na této obrazovce najdete v tématu [změnou nastavení zabezpečení](multi-factor-authentication-end-user-manage-settings.md#where-to-find-the-settings-page) nebo se obraťte na svého správce.
+1. Pokud je to možné, přejděte [dalšího ověření zabezpečení](https://aka.ms/mfasetup) obrazovky na jiný počítač nebo zařízení. Informace o tom, jak na této obrazovce najdete v tématu [změnou nastavení zabezpečení](multi-factor-authentication-end-user-manage-settings.md#where-to-find-the-settings-page) nebo se obraťte na svého správce.
 
     >[!Note]
     >Pokud správce zapnul prostředí zabezpečení informací ve verzi preview, můžete postupujte podle pokynů [nastavení bezpečnostní údaje pro použití ověřovací aplikaci](security-info-setup-auth-app.md) oddílu.

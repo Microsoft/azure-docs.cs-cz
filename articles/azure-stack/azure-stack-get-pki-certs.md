@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 10/22/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 9f88e71df7697156e0745aeaf6b989548bcc223f
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: a4a9fefa98d30d0f9815a935f000c8a663dffd21
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945107"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51514192"
 ---
 # <a name="azure-stack-certificates-signing-request-generation"></a>Azure Stack certifikáty Podepisování generování požadavku
 
@@ -29,7 +29,7 @@ Nástroj prerequisite Checker připravenosti Azure Stack (AzsReadinessChecker) p
  - **Standardní certifikát požadavků**  
     Požádat o podle [vygenerovat certifikáty PKI pro nasazení Azure stacku](azure-stack-get-pki-certs.md).
  - **Platforma jako služba**  
-    Volitelně můžete požádat o platforma jako služba (PaaS) názvy certifikátů, jak je uvedeno v [požadavky na certifikáty infrastruktury veřejných klíčů v Azure stacku – volitelné PaaS certifikáty](azure-stack-pki-certs.md#optional-paas-certificates).
+    Můžete požádat o názvy platforma jako služba (PaaS) pro certifikáty, jak je uvedeno v [požadavky na certifikáty infrastruktury veřejných klíčů v Azure stacku – volitelné PaaS certifikáty](azure-stack-pki-certs.md#optional-paas-certificates).
 
 
 
@@ -78,7 +78,7 @@ Pomocí těchto kroků můžete připravit a ověřování certifikátů Azure S
     $IdentitySystem = "AAD"
     ````
 
-    Služba AD FS (Active Directory Federation Services)
+    Active Directory Federation Services
 
     ```PowerShell
     $IdentitySystem = "ADFS"
@@ -102,7 +102,7 @@ Pomocí těchto kroků můžete připravit a ověřování certifikátů Azure S
 
     Aby byly služby PaaS, zadejte přepínač ```-IncludePaaS```
 
-7. Další možností pro vývojová a testovací prostředí. K vygenerování žádosti o jeden certifikát s více alternativní názvy subjektů přidat **– typ RequestType SingleCSR** parametr a hodnotu (**není** doporučuje pro produkční prostředí):
+7. Můžete také pro vývojová a testovací prostředí, pro generování žádosti o jeden certifikát s více alternativní názvy subjektů přidat **– typ RequestType SingleCSR** parametr a hodnotu (**není** doporučeno pro pro produkční prostředí):
 
     ```PowerShell  
     New-AzsCertificateSigningRequest -RegionName $regionName -FQDN $externalFQDN -subject $subjectHash -RequestType SingleCSR -OutputRequestPath $OutputDirectory -IdentitySystem $IdentitySystem

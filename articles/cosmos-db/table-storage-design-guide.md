@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/03/2017
 ms.author: sngun
-ms.openlocfilehash: 2af93d149948071f78d0c684b812e84fa68db341
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 6ac0895ac31a815f00ca6c5fa1dfd325be2e3963
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50251120"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51245813"
 ---
 # <a name="azure-storage-table-design-guide-designing-scalable-and-performant-tables"></a>Průvodce návrhem tabulky Azure Storage: Návrh škálovatelných a výkonných tabulek
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-tip-include.md)]
@@ -122,7 +122,7 @@ Následující příklad ukazuje, jednoduché tabulky návrhu k uložení entity
 </table>
 
 
-Zatím Tenhle návrh bude vypadat nějak tabulky v relační databázi s hlavní rozdíly jsou povinné sloupce a umožnit ukládání více typů entit ve stejné tabulce. Kromě toho, uživatelem definované vlastnosti, jako **FirstName** nebo **stáří** má datový typ, jako je například integer či string, stejně jako sloupec v relační databázi. I když na rozdíl od v relační databázi, bez schématu povaha služby Table service znamená, že vlastnost nemusí mít stejný datový typ. u každé entity. Pokud chcete uložit komplexních datových typů v jedné vlastnosti, musíte použít serializovaný formát jako je JSON nebo XML. Další informace o tabulce služby, například podporované datové typy, podporovaných rozsahů, pravidla pojmenování a omezením způsobeným velikostí najdete v tématu [Principy datového modelu služby Table Service](http://msdn.microsoft.com/library/azure/dd179338.aspx).
+Zatím Tenhle návrh bude vypadat nějak tabulky v relační databázi s hlavní rozdíly jsou povinné sloupce a umožnit ukládání více typů entit ve stejné tabulce. Kromě toho, uživatelem definované vlastnosti, jako **FirstName** nebo **stáří** má datový typ, jako je například integer či string, stejně jako sloupec v relační databázi. I když na rozdíl od v relační databázi, bez schématu povaha služby Table service znamená, že vlastnost nemusí mít stejný datový typ. u každé entity. Pokud chcete uložit komplexních datových typů v jedné vlastnosti, musíte použít serializovaný formát jako je JSON nebo XML. Další informace o tabulce služby, například podporované datové typy, podporovaných rozsahů, pravidla pojmenování a omezením způsobeným velikostí najdete v tématu [Principy datového modelu služby Table Service](https://msdn.microsoft.com/library/azure/dd179338.aspx).
 
 Jak se zobrazí, podle vašeho výběru **PartitionKey** a **RowKey** je zásadní pro návrh dobrý tabulky. Každá entita uložena v tabulce musí mít jedinečnou kombinaci **PartitionKey** a **RowKey**. Stejně jako u klíče v tabulce relační databáze, **PartitionKey** a **RowKey** hodnoty jsou indexovány pro vytvoření clusterovaného indexu umožňující rychlé look-ups; však služby Table service nevytvoří žádné sekundární indexy, jedná se pouze dvě indexované vlastnosti (některé vzory popsané dále zobrazit jak obejít tato omezení zřejmý).  
 
@@ -133,7 +133,7 @@ Název účtu, název tabulky a **PartitionKey** společně identifikovat oddíl
 
 Ve službě Table service, služby jednotlivých uzlů jeden nebo více dokončení oddíly a škálování služby pomocí dynamické vyrovnávání zatížení oddílů mezi uzly. Pokud uzel je zatížení, můžete služby table service *rozdělit* rozsahem oddílů obsluhovány pomocí tohoto uzlu na různých uzlech; při provozu poklesne, můžete službu *sloučení* rozsahů oddílů z quiet uzlů zpět na jeden uzel.  
 
-Další informace o interní informace služby Table service, zejména způsob, jakým služba spravuje oddíly, najdete v dokumentu paper [Microsoft Azure Storage: A vysoce dostupné služby cloudového úložiště se silnou konzistencí](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx).  
+Další informace o interní informace služby Table service, zejména způsob, jakým služba spravuje oddíly, najdete v dokumentu paper [Microsoft Azure Storage: A vysoce dostupné služby cloudového úložiště se silnou konzistencí](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx).  
 
 ### <a name="entity-group-transactions"></a>Transakcí skupin entit
 Ve službě Table service transakcí skupin entit (EGTs) jsou pouze předdefinovaný mechanismus pro provádění atomické aktualizace napříč více entit. EGTs se také označují jako *dávkové transakce* v některé dokumentaci. EGTs může pracovat pouze s entitami, které jsou uložené ve stejném oddílu (sdílená složka stejným klíčem oddílu v dané tabulce), tak kdykoli potřebujete atomic transakční chování napříč více entit, je nutné se ujistit, že jsou tyto entity do stejného oddílu. To je často důvod pro udržování několik typů entit ve stejné tabulce (a oddílu) a bez použití více tabulek pro typy jiné entity. Jeden EGT může pracovat na maximálně 100 entit.  Pokud uvedete více souběžných EGTs pro zpracování, je důležité zajistit, že tyto EGTs není pracovat u entit, které jsou společné napříč EGTs, protože jinak zpracování může zpozdit.
@@ -153,7 +153,7 @@ Následující tabulka obsahuje některé z klíčových hodnot je potřeba věd
 | Velikost **RowKey** |Řetězec, velikost až 1 KB |
 | Velikost transakce skupin entit |Transakce může obsahovat maximálně 100 entit a datová část musí být menší než 4 MB. EGT lze aktualizovat pouze entity jednou. |
 
-Další informace najdete v tématu [Vysvětlení datového modelu služby Table Storage](http://msdn.microsoft.com/library/azure/dd179338.aspx).  
+Další informace najdete v tématu [Vysvětlení datového modelu služby Table Storage](https://msdn.microsoft.com/library/azure/dd179338.aspx).  
 
 ### <a name="cost-considerations"></a>Důležité informace o nákladech
 Table storage je relativně levný, ale měli byste zahrnout odhady nákladů na využití kapacity a množství transakcí jako součást vaší zkušební verze řešení, která používá služby Table service. V mnoha scénářích ukládání Nenormalizovaná nebo duplicitních dat za účelem zlepšení výkonu nebo škálovatelnost řešení ale platný přístup umožní. Další informace o cenách najdete v tématu [ceny za Azure Storage](https://azure.microsoft.com/pricing/details/storage/).  
@@ -208,7 +208,7 @@ Následující příklady předpokládají, že služba table service je uklád�
 | **Stáří** |Integer |
 | **EmailAddress** |Řetězec |
 
-V dřívější části [Přehled služby Azure Table](#overview) popisuje některé klíčové funkce služby Azure Table service, které mají přímý vliv na návrh pro dotaz. Tyto za následek následující obecné pokyny pro návrh služby dotazy na tabulku. Syntaxe filtru použít v následujících příkladech je z rozhraní REST API služby tabulky pro další informace najdete v tématu [dotazu entity](http://msdn.microsoft.com/library/azure/dd179421.aspx).  
+V dřívější části [Přehled služby Azure Table](#overview) popisuje některé klíčové funkce služby Azure Table service, které mají přímý vliv na návrh pro dotaz. Tyto za následek následující obecné pokyny pro návrh služby dotazy na tabulku. Syntaxe filtru použít v následujících příkladech je z rozhraní REST API služby tabulky pro další informace najdete v tématu [dotazu entity](https://msdn.microsoft.com/library/azure/dd179421.aspx).  
 
 * A ***dotazu bodu*** je nejúčinnější vyhledávání používat a doporučuje se použít pro vyhledávání velkého rozsahu nebo vyhledávání, které vyžadují nejnižší latenci. Takový dotaz lze použít indexy, které k vyhledání jednotlivých entit efektivně tak, že určíte, jak **PartitionKey** a **RowKey** hodnoty. Příklad: $filter = (PartitionKey eq "Prodeje") a (RowKey eq '2')  
 * Za druhé nejlepší je ***dotazu na rozsah*** , která používá **PartitionKey** a filtry na mnoha různých **RowKey** hodnoty k vrácení více než jednu entitu. **PartitionKey** hodnota označuje konkrétní oddíl a **RowKey** hodnoty identifikaci podmnožiny entity v tomto oddílu. Příklad: $filter = PartitionKey eq "Prodeje a RowKey ge" a RowKey lt 'T'  
@@ -437,7 +437,7 @@ Když odešlete dotaz rozsahu entit zaměstnanců, můžete zadat rozsah seřaze
 * Najít všechny zaměstnance v prodejní oddělení s id zaměstnanců používá rozsah 000100 k 000199: $filter = (PartitionKey eq "Prodeje") a (RowKey ge "empid_000100") a (RowKey le "empid_000199")  
 * Najít všechny zaměstnance z oddělení prodeje s e-mailovou adresu, začíná písmenem "a" použití: $filter = (PartitionKey eq "Prodeje") a (RowKey ge "email_a") a (RowKey lt "email_b")  
   
-  Filtr syntaxe používané ve výše uvedených příkladech je z rozhraní REST API služby tabulky pro další informace najdete v tématu [dotazu entity](http://msdn.microsoft.com/library/azure/dd179421.aspx).  
+  Filtr syntaxe používané ve výše uvedených příkladech je z rozhraní REST API služby tabulky pro další informace najdete v tématu [dotazu entity](https://msdn.microsoft.com/library/azure/dd179421.aspx).  
 
 #### <a name="issues-and-considerations"></a>Problémy a důležité informace
 Když se budete rozhodovat, jak tento model implementovat, měli byste vzít v úvahu následující skutečnosti:  
@@ -491,7 +491,7 @@ Když odešlete dotaz rozsahu entit zaměstnanců, můžete zadat rozsah seřaze
 * Najít všechny zaměstnance z oddělení prodeje s id zaměstnance v rozsahu **000100** k **000199** seřazeny vzestupně v zaměstnance id pořadí použití: $filter = (PartitionKey eq ' empid_Sales") a (RowKey ge"000100") a (RowKey le "000199")  
 * Najít všechny zaměstnance z oddělení prodeje s e-mailovou adresu, která začíná textem "a" v e-mailovou adresu pořadí použijte seřazený: $filter = (PartitionKey eq ' email_Sales") a (RowKey ge"a") a (RowKey lt"b")  
 
-Všimněte si, že filtr syntaxe používané ve výše uvedených příkladech je z rozhraní REST API služby tabulky pro další informace najdete v tématu [dotazu entity](http://msdn.microsoft.com/library/azure/dd179421.aspx).  
+Všimněte si, že filtr syntaxe používané ve výše uvedených příkladech je z rozhraní REST API služby tabulky pro další informace najdete v tématu [dotazu entity](https://msdn.microsoft.com/library/azure/dd179421.aspx).  
 
 #### <a name="issues-and-considerations"></a>Problémy a důležité informace
 Když se budete rozhodovat, jak tento model implementovat, měli byste vzít v úvahu následující skutečnosti:  
@@ -1002,7 +1002,7 @@ Optimální dotaz vrací jednotlivé entity na základě **PartitionKey** hodnot
 
 V takových situacích by měl vždy plně testování výkonu vaší aplikace.  
 
-Dotaz vůči službě table service může vrátit maximálně 1 000 entit najednou a mohou spouštět maximálně pět sekund. Pokud sada výsledků obsahuje víc než 1 000 entity, pokud dotaz nebyla dokončena do pěti sekund, nebo pokud dotaz překročí hranice oddílu, vrátí služba Table service token pro pokračování umožňuje klientské aplikaci požádat o další sadu entit. Další informace o jak pokračování tokeny práce, naleznete v tématu [časový limit dotazu a stránkování](http://msdn.microsoft.com/library/azure/dd135718.aspx).  
+Dotaz vůči službě table service může vrátit maximálně 1 000 entit najednou a mohou spouštět maximálně pět sekund. Pokud sada výsledků obsahuje víc než 1 000 entity, pokud dotaz nebyla dokončena do pěti sekund, nebo pokud dotaz překročí hranice oddílu, vrátí služba Table service token pro pokračování umožňuje klientské aplikaci požádat o další sadu entit. Další informace o jak pokračování tokeny práce, naleznete v tématu [časový limit dotazu a stránkování](https://msdn.microsoft.com/library/azure/dd135718.aspx).  
 
 Pokud používáte klientskou knihovnu pro úložiště, je pokračování tokeny automaticky zpracovat za vás jako vrátí entity ze služby Table service. Následující vzorový kód C# pomocí klientskou knihovnu pro úložiště automaticky zpracovává pokračování tokeny služby table service je vrátí v odpovědi:  
 

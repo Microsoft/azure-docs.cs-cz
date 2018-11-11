@@ -10,17 +10,15 @@ ms.topic: conceptual
 ms.date: 08/16/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: c6ab5ede0b8af6c601cc53e044a3e6902fbd2e11
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: d388242b4b0c882d60a83227a37af997b1ceb1f6
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43340806"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282641"
 ---
 # <a name="azure-active-directory-b2c-oauth-20-authorization-code-flow"></a>Azure Active Directory B2C: Tok autorizačního kódu OAuth 2.0
 Udělení autorizačního kódu OAuth 2.0 můžete použít v aplikacích, které jsou nainstalované v zařízení získat přístup k chráněným prostředkům, jako je například webové rozhraní API. Pomocí Azure Active Directory B2C (Azure AD B2C) provádění OAuth 2.0, můžete přidat registrace, přihlašování a identity management. Další úkoly do vašich mobilních a desktopových aplikací. Tento článek je nezávislým na jazyku. V následujícím článku zjistíte, jak posílat a přijímat zprávy HTTP bez použití jakékoli knihovny open-source.
-
-<!-- TODO: Need link to libraries -->
 
 Tok autorizačního kódu OAuth 2.0 je popsaný v [části 4.1 specifikace OAuth 2.0](http://tools.ietf.org/html/rfc6749). Můžete ho použít pro ověřování a autorizace ve většině [typy aplikací](active-directory-b2c-apps.md), včetně webových aplikací a nativně nainstalovaných aplikací. Tok autorizačního kódu OAuth 2.0 můžete použít k zabezpečenému získat přístupové tokeny a obnovovacích tokenů pro vaše aplikace, které je možné použít pro přístup k prostředkům, které jsou zabezpečené pomocí [autorizační server](active-directory-b2c-reference-protocols.md).  Obnovovací token umožňuje klientovi získat přístup k nové (a aktualizace) tokeny po vypršení platnosti přístupového tokenu, obvykle po jedné hodině.
 
@@ -80,7 +78,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 | redirect_uri |Požaduje se |Identifikátor URI přesměrování vaší aplikace, kde jsou žádosti o ověření odesílat a přijímat vaší aplikace. Ho musí přesně odpovídat jedné z přesměrování identifikátory URI, které jste zaregistrovali na portálu s tím rozdílem, že musí být kódovaná adresou URL. |
 | scope |Požaduje se |Seznam oborů oddělených mezerami. Hodnota jeden obor značí do Azure Active Directory (Azure AD) i oprávnění, které jsou požadovány. Pomocí ID klienta jako obor Určuje, že vaše aplikace potřebuje přístupový token, dá se použít pro vlastní služba nebo webové rozhraní API, reprezentovaný stejné ID klienta.  `offline_access` Obor Určuje, že vaše aplikace potřebuje obnovovací token pro dlouhodobé přístup k prostředkům. Můžete také použít `openid` oboru k vyžádání tokenu ID z Azure AD B2C. |
 | response_mode |Doporučené |Metoda, která můžete používat k odesílání výsledný autorizační kód zpět do vaší aplikace. Může to být `query`, `form_post`, nebo `fragment`. |
-| state |Doporučené |Hodnota v požadavku, který je vrácený v odpovědi tokenu. Může být řetězec jakéhokoli obsahu, který chcete použít. Obvykle náhodně generované jedinečná hodnota se používá, prevenci proti útokům padělání žádosti více webů. Stav se také používá ke kódování informace o stavu uživatele v aplikaci předtím, než požadavek na ověření došlo k chybě. Například stránka, kterou uživatel byl v nebo právě provedenou zásadu. |
+| state |Doporučené |Hodnota v požadavku, který se může jednat o řetězec veškerý obsah, který chcete použít. Obvykle náhodně generované jedinečná hodnota se používá, prevenci proti útokům padělání žádosti více webů. Stav se také používá ke kódování informace o stavu uživatele v aplikaci předtím, než požadavek na ověření došlo k chybě. Například stránka, kterou uživatel byl v nebo právě provedenou zásadu. |
 | p |Požaduje se |Zásada, která se spustí. Je název zásady, které se vytvoří v adresáři Azure AD B2C. Hodnota názvu zásad by měl začínat **b2c\_1\_**. Další informace o zásadách najdete v tématu [integrované zásady Azure AD B2C](active-directory-b2c-reference-policies.md). |
 | řádek |Nepovinné |Typ interakce s uživatelem, který je požadován. V současné době je jedinou platnou hodnotou `login`, které donutí uživatele k zadání přihlašovacích údajů tohoto požadavku. Jednotné přihlašování se projeví. |
 

@@ -6,16 +6,16 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: v-erkell
-ms.openlocfilehash: 359ada08f1d9df6b60fc27ca385f6003af498e17
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: eb0f5a4a4219c63334e0a5be3ea4378c3c317bec
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50958596"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51288097"
 ---
 # <a name="deploy-the-vfxt-cluster"></a>Nasazení clusteru vFXT
 
-Vytvořit vFXT cluster, nejjednodušší způsob je použít řadič clusteru, který je virtuální počítač, který obsahuje požadované skripty, šablony a infrastruktury softwaru pro vytváření a správu clusteru vFXT.
+Nejjednodušší způsob, jak vytvořit vFXT cluster v Azure je pro použití kontroléru clusteru. Kontroler clusteru je virtuální počítač, který obsahuje požadované skripty, šablony a infrastruktury softwaru pro vytváření a správu clusteru vFXT.
 
 Nasazení nového clusteru vFXT zahrnuje tyto kroky:
 
@@ -82,7 +82,7 @@ V **nastavení** části:
 * Skupina prostředků virtuální sítě, název a název podsítě – zadejte názvy stávajících prostředků (Pokud používáte stávající virtuální síť) nebo zadejte nové názvy, pokud vytváříte novou virtuální síť
 * **Název kontroleru** – nastavte název virtuálního počítače řadiče
 * Uživatelské jméno správce řadiče – výchozí hodnota je `azureuser`
-* Klíč SSH - vložit veřejný klíč pro přidružení k uživatelské jméno správce. Čtení [jak vytvořit a používat klíče SSH](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys) Pokud potřebujete pomoc.
+* Klíč SSH - vložit veřejný klíč pro přidružení k uživatelské jméno správce. Čtení [jak vytvořit a používat klíče SSH](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows) Pokud potřebujete pomoc.
 
 V části **podmínky a ujednání**: 
 
@@ -93,16 +93,13 @@ V části **podmínky a ujednání**:
 
 Klikněte na tlačítko **nákupní** po dokončení. Po pěti nebo šesti minut bude uzel vaše řadiče do provozu.
 
-By měl najdete na stránce výstupy ke shromažďování informací potřebných pro cluster. Čtení [vstupy potřebné pro vytvoření clusteru](#inputs-needed-for-cluster-creation) Další informace.
+Na stránce výstupy shromažďovat informace o řadičích, které potřebujete k vytvoření clusteru. Čtení [informace potřebné k vytvoření clusteru](#information-needed-to-create-the-cluster) Další informace.
 
 ### <a name="create-controller---azure-marketplace-image"></a>Vytvoření řadiče - image na Azure Marketplace
 
-Najít šablonu adaptéru tak, že na webu Azure Marketplace pro název ``Avere``. Vyberte **Avere vFXT pro kontroler Azure** šablony. 
+Najít šablonu adaptéru tak, že na webu Azure Marketplace pro název ``Avere``. Vyberte **Avere vFXT pro kontroler Azure** šablony.
 
 Pokud jste tak již neučinili, přijměte podmínky a povolit programový přístup pro Marketplace image kliknutím "chcete nasadit prostřednictvím kódu programu?" odkaz pod **vytvořit** tlačítko.
-
-> [!NOTE] 
-> Při první týden v obecné dostupnosti (31. října - 7. listopadu 2018) musíte použít možnost příkazového řádku tak, aby přijímal podmínky pro dvě bitové kopie softwaru namísto tohoto postupu. Postupujte podle pokynů v [přijměte podmínky předem softwaru](avere-vfxt-prereqs.md#accept-software-terms-in-advance). 
 
 ![Snímek obrazovky s odkazem programový přístup, který je pod tlačítko Vytvořit](media/avere-vfxt-deploy-programmatically.png)
 
@@ -125,7 +122,7 @@ V prvním panelu zadejte nebo potvrďte tyto základní možnosti:
   * Vyberte uživatelské jméno/heslo nebo veřejný klíč SSH (doporučeno).
   
     > [!TIP] 
-    > Klíč SSH je bezpečnější. Čtení [jak vytvořit a používat klíče SSH](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys) Pokud potřebujete pomoc. 
+    > Klíč SSH je bezpečnější. Čtení [jak vytvořit a používat klíče SSH](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows) Pokud potřebujete pomoc. 
   * Zadejte uživatelské jméno 
   * Vložte klíč SSH, nebo zadejte a potvrďte heslo
 * **Příchozí pravidla portů** – Pokud se používá veřejnou IP adresu, otevřený port 22 (SSH)
@@ -172,29 +169,31 @@ Pokud používáte úložiště objektů Blob v Azure pro váš back endovým da
 
   ![Azure portal – snímek obrazovky s poznámkami postup vytvoření koncového bodu služby](media/avere-vfxt-service-endpoint.png)
 
-## <a name="gather-needed-inputs"></a>Shromáždění potřebných vstupy
+## <a name="information-needed-to-create-the-cluster"></a>Informace potřebné k vytvoření clusteru
 
-Budete potřebovat následující informace k vytvoření clusteru. 
+Po vytvoření clusteru kontroleru, ujistěte se, že máte informace, které potřebujete pro další kroky. 
 
-Pokud uzel řadiče vytvoříte pomocí šablony Resource Manageru, můžete si [získat informace z výstupu šablony](#finding-template-output). 
+Informace potřebné pro připojení ke kontroleru: 
 
-Potřebné pro připojení ke kontroleru: 
-
-* Kontroler uživatelského jména a hesla nebo klíče SSH
+* Kontroler uživatelské jméno a klíč SSH (nebo heslo)
 * IP adresa adaptéru nebo jiné metody pro připojení k řadiči virtuálního počítače
 
-Potřebné pro vytvoření clusteru: 
+Informace potřebné pro cluster: 
 
 * Název skupiny prostředků
 * Lokalita Azure 
 * Název virtuální sítě
 * Název podsítě
-* Název role uzlu clusteru
+* Název role uzlu clusteru – tento název je nastavena, když vytvoříte roli, je popsáno [níže](#create-the-cluster-node-access-role)
 * Název účtu úložiště při vytváření kontejneru objektů Blob
 
-Můžete také vyhledat chybějící informace tak, že přejdete na stránku informace virtuálního počítače řadiče. Klikněte například na **všechny prostředky** a vyhledání názvu kontroleru a potom klikněte na název řadiče zobrazíte podrobnosti.
+Pokud uzel řadiče vytvoříte pomocí šablony Resource Manageru, můžete získat informace z [výstup šablony](#find-template-output). 
 
-### <a name="finding-template-output"></a>Výstup šablony hledání
+Pokud jste použili k vytvoření kontroleru image Azure Marketplace, většina z těchto položek můžete zadat přímo. 
+
+Najdete všechny chybějící položky tak, že přejdete na stránku informace virtuálního počítače řadiče. Klikněte například na **všechny prostředky** a vyhledejte názvu kontroleru a pak klikněte na název kontroleru zobrazíte její podrobnosti.
+
+### <a name="find-template-output"></a>Najít výstup šablony
 
 Jak najít tyto informace ze Správce prostředků výstup šablony, postupujte takto:
 
@@ -215,7 +214,7 @@ Proveďte zbývající kroky nasazení, budete muset připojit ke kontroleru clu
 1. Metoda pro připojení k řadiči clusteru závisí na nastavení.
 
    * Nastavíte-li kontroler má veřejnou IP adresu, SSH na IP adresu kontroleru jako uživatelské jméno správce (například ``ssh azureuser@40.117.136.91``).
-   * Pokud zařízení nemá veřejnou IP adresu, použijte [ExpressRoute](https://docs.microsoft.com/azure/expressroute/) nebo připojení VPN k virtuální síti.
+   * Pokud kontroler nemá veřejnou IP adresu, používat síť VPN nebo [ExpressRoute](https://docs.microsoft.com/azure/expressroute/) připojení k virtuální síti.
 
 1. Po přihlášení k řadiči, ověřit spuštěním `az login`. Zkopírování ověřovacího kódu v prostředí a potom pomocí webového prohlížeče k načtení [ https://microsoft.com/devicelogin ](https://microsoft.com/devicelogin) a proveďte ověření pomocí systému společnosti Microsoft. Vraťte se do okna pro potvrzení.
 
@@ -292,15 +291,18 @@ RESOURCE_GROUP=
 Uložte soubor a ukončete.
 
 ### <a name="run-the-script"></a>Spuštění skriptu
+
 Spusťte skript zadáním názvu souboru, který jste vytvořili. (Příklad: `./create-cloudbacked-cluster-west1`)  
 
-Zvažte spuštění tohoto příkazu uvnitř [terminálu multiplexor](http://linuxcommand.org/lc3_adv_termmux.php) jako `screen` nebo `tmux` v případě ztráty připojení.  
+> [!TIP]
+> Zvažte spuštění tohoto příkazu uvnitř [terminálu multiplexor](http://linuxcommand.org/lc3_adv_termmux.php) jako `screen` nebo `tmux` v případě ztráty připojení.  
+
 Výstup se taky zaznamenává do `~/vfxt.log`.
 
 Po dokončení skriptu zkopírujte IP adresu správy, která je potřebná pro správu clusteru.
 
 ![Výstup příkazového řádku souboru, který zobrazuje IP adresa pro správu poblíž konce](media/avere-vfxt-mgmt-ip.png)
 
-### <a name="next-step"></a>Další krok
+## <a name="next-step"></a>Další krok
 
 Teď, když cluster běží a znáte jeho IP adresa pro správu, můžete [připojit k nástroji Konfigurace clusteru](avere-vfxt-cluster-gui.md) povolit podporu a v případě potřeby přidejte úložiště.

@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 10/01/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: b1333eda0fa0bffdf3852f24414511f55acc090e
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 11cc6a69b8072fca0639da5e517a39c22645710e
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49395617"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51300502"
 ---
 # <a name="install-and-use-the-log-analytics-views-for-azure-active-directory"></a>Nainstalovat a používat zobrazení Log Analytics pro Azure Active Directory
 
@@ -42,7 +42,7 @@ Pokud chcete použít v zobrazeních Log Analytics, budete potřebovat:
 
 1. Přejděte do pracovního prostoru Log Analytics. Chcete-li to provést, nejprve přejděte do [webu Azure portal](https://portal.azure.com) a vyberte **všechny služby**. Typ **Log Analytics** textového pole a vyberte **Log Analytics**. Vyberte pracovní prostor, můžete směrovat protokoly aktivit, jako součást požadavků.
 2. Vyberte **Návrhář zobrazení**vyberte **importovat** a pak vyberte **zvolit soubor** pro import zobrazení ze svého místního počítače.
-3. Vyberte zobrazení, které jste si stáhli z požadavků a vyberte **Uložit** uložit importu. Provést tuto akci **události zřizování účtu služby Azure AD** zobrazení **události přihlášení** zobrazení a **provádění souhlas uživatele** zobrazení.
+3. Vyberte zobrazení, které jste si stáhli z požadavků a vyberte **Uložit** uložit importu. Provést tuto akci **události zřizování účtu služby Azure AD** zobrazení a **události přihlášení** zobrazení.
 
 ## <a name="use-the-views"></a>Použijte zobrazení
 
@@ -52,7 +52,6 @@ Pokud chcete použít v zobrazeních Log Analytics, budete potřebovat:
 
     * **Azure AD účet zřizování události**: Toto zobrazení uvádí sestavy k auditování aktivity zajišťování na aktivitu, jako je počet nových uživatelů, které jsou zřízené a selhání zřizování, počet uživatelů, aktualizovat a aktualizovat při selhání a počet uživatelů zruší a odpovídající selhání.    
     * **Události přihlášení**: Toto zobrazení uvádí relevantní zprávy související s monitorování aktivit přihlašování, jako je například přihlášení aplikace, uživatelů, zařízení, stejně jako přehled sledování počet přihlášení v čase.
-    * **Provádění souhlas uživatele**: Toto zobrazení uvádí sestavy související se souhlas uživatele, jako například uděluje souhlas uživatele, přihlášení podle uživatele, kteří udělili souhlas, jakož i přihlášení aplikace pro všechny aplikace na základě vyjádření souhlasu. 
 
 3. Vyberte některou z těchto zobrazení přejít v jednotlivých sestavách. Můžete také nastavit výstrahy na některý z parametrů sestavy. Například můžeme nastavit výstrahu týkající se pokaždé, když dochází k chybě přihlášení. Chcete-li to provést, vyberte nejdřív **události přihlášení** zobrazit, vyberte možnost **chyby přihlášení v průběhu času** sestavy a pak vyberte **Analytics** otevřete stránku podrobností s samotný dotaz dané sestavy. 
 

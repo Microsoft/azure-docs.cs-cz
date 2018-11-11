@@ -3,17 +3,17 @@ title: Vytvoření úlohy streamování Sparku s přesně-událostí zpracován�
 description: Jak vytvořit streamování Sparku pro zpracování událostí pouze jednou a jednou.
 services: hdinsight
 ms.service: hdinsight
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 01/26/2018
-ms.openlocfilehash: ae170e90cede26bd6a43fcc10b93fcd7490d838f
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.date: 11/06/2018
+ms.openlocfilehash: 6c39eb02e9610e0020ab2abe8a192dabf0b768d9
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39618817"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51241308"
 ---
 # <a name="create-spark-streaming-jobs-with-exactly-once-event-processing"></a>Vytvoření úlohy streamování Sparku s přesně-událostí zpracování
 
@@ -61,13 +61,21 @@ Kontrolní body jsou povolené v Spark Streaming ve dvou krocích.
 
 1. V objektu StreamingContext konfiguraci cesty úložiště pro body obnovení:
 
-    Val ssc = nové StreamingContext (spark, Seconds(1)) ssc.checkpoint("/path/to/checkpoints")
+    ```Scala
+    val ssc = new StreamingContext(spark, Seconds(1))
+    ssc.checkpoint("/path/to/checkpoints")
+    ```
 
     V HDInsight tyto kontrolní body uložit do výchozího úložiště připojené k vašemu clusteru služby Azure Storage nebo Azure Data Lake Store.
 
 2. Dále určete kontrolního bodu interval (v sekundách) na DStream. V každém intervalu se ukládají data o stavu odvozené ze vstupních událostí do úložiště. Trvalý stav dat může snížit výpočetní potřeby při opětovném sestavování stav ze zdroje události.
 
-    řádky Val = ssc.socketTextStream ("název hostitele" 9999) lines.checkpoint(30) ssc.start() ssc.awaitTermination()
+    ```Scala
+    val lines = ssc.socketTextStream("hostname", 9999)
+    lines.checkpoint(30)
+    ssc.start()
+    ssc.awaitTermination()
+    ```
 
 ### <a name="use-idempotent-sinks"></a>Použití idempotentní jímky
 

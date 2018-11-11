@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/26/2018
 ms.author: seguler
 ms.component: common
-ms.openlocfilehash: 1aff2ecdec83886d40d12b76e64a14a81451e89e
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 79aa9cd3e634238702419d01650c7ef29c4dbb95
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49386684"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51242021"
 ---
 # <a name="transfer-data-with-azcopy-on-linux"></a>Přenos dat pomocí AzCopy v Linuxu
 
@@ -357,7 +357,7 @@ azcopy \
     --dest-key <key>
 ```
 
-Při kopírování objektu blob bez – možnosti synchronizace kopírování [kopírování na straně serveru](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx) proběhlo.
+Při kopírování objektu blob bez – možnosti synchronizace kopírování [kopírování na straně serveru](https://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx) proběhlo.
 
 ### <a name="copy-single-blob-across-storage-accounts"></a>Zkopírujte jeden objekt blob mezi účty úložiště
 
@@ -369,7 +369,7 @@ azcopy \
     --dest-key <key2>
 ```
 
-Při kopírování objektu blob bez – možnosti synchronizace kopírování [kopírování na straně serveru](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx) proběhlo.
+Při kopírování objektu blob bez – možnosti synchronizace kopírování [kopírování na straně serveru](https://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx) proběhlo.
 
 ### <a name="copy-single-blob-from-secondary-region-to-primary-region"></a>Zkopírujte jeden objekt blob ze sekundární oblasti do primární oblasti
 
@@ -488,7 +488,7 @@ azcopy \
     --dest-key <key2> \
     --recursive
 ```
-Při kopírování souboru ve sdílené složky [kopírování na straně serveru](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx) proběhlo.
+Při kopírování souboru ve sdílené složky [kopírování na straně serveru](https://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx) proběhlo.
 
 ### <a name="copy-from-file-share-to-blob"></a>Kopírování ze sdílené souborové položky do objektu blob
 
@@ -500,7 +500,7 @@ azcopy \
     --dest-key <key2> \
     --recursive
 ```
-Při kopírování souboru ze sdílené souborové položky do objektu blob, [kopírování na straně serveru](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx) proběhlo.
+Při kopírování souboru ze sdílené souborové položky do objektu blob, [kopírování na straně serveru](https://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx) proběhlo.
 
 ### <a name="copy-from-blob-to-file-share"></a>Zkopírujte z objektu blob do sdílené složky
 
@@ -512,7 +512,7 @@ azcopy \
     --dest-key <key2> \
     --recursive
 ```
-Při kopírování souboru z objektu blob do sdílené složky, [kopírování na straně serveru](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx) proběhlo.
+Při kopírování souboru z objektu blob do sdílené složky, [kopírování na straně serveru](https://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx) proběhlo.
 
 ### <a name="synchronously-copy-files"></a>Synchronně zkopírovat soubory
 Můžete zadat `--sync-copy` možnost ke zkopírování dat z úložiště souborů do služby File Storage, File Storage do služby Blob Storage a z úložiště objektů Blob do služby File Storage synchronně. AzCopy se spustí tuto operaci stažením zdrojových dat k místní paměti, a pak pak ho nahrát do cíle. V tomto případě platí poplatky za standardní výstup.
@@ -715,10 +715,10 @@ Další informace o službě Azure Storage a AzCopy najdete v následujících z
 ### <a name="azure-storage-blog-posts"></a>Azure Storage blogových příspěvků:
 * [Oznamujeme vydání AzCopy v Linuxu ve verzi Preview](https://azure.microsoft.com/blog/announcing-azcopy-on-linux-preview/)
 * [Úvod do služby Azure Storage dat přesun knihovny ve verzi Preview](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/)
-* [AzCopy: Představujeme synchronní kopie a vlastní typ obsahu](http://blogs.msdn.com/b/windowsazurestorage/archive/2015/01/13/azcopy-introducing-synchronous-copy-and-customized-content-type.aspx)
-* [AzCopy: Oznámení obecné dostupnosti AzCopy 3.0 a 4.0 nástroje AzCopy vydání ve verzi preview s podporou tabulka a soubor](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/10/29/azcopy-announcing-general-availability-of-azcopy-3-0-plus-preview-release-of-azcopy-4-0-with-table-and-file-support.aspx)
-* [AzCopy: Optimalizovaná pro scénáře, ve velkém měřítku kopírování](http://go.microsoft.com/fwlink/?LinkId=507682)
-* [AzCopy: Podpora pro geograficky redundantní úložiště jen pro čtení](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/04/07/azcopy-support-for-read-access-geo-redundant-account.aspx)
-* [AzCopy: Přenos dat pomocí restartovatelnou službu režimu a tokenu SAS](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/09/07/azcopy-transfer-data-with-re-startable-mode-and-sas-token.aspx)
-* [AzCopy: Objekt Blob kopírování mezi účtu pomocí](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/04/01/azcopy-using-cross-account-copy-blob.aspx)
-* [AzCopy: Nahrávání a stahování souborů pro objekty BLOB Azure](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/12/03/azcopy-uploading-downloading-files-for-windows-azure-blobs.aspx)
+* [AzCopy: Představujeme synchronní kopie a vlastní typ obsahu](https://blogs.msdn.com/b/windowsazurestorage/archive/2015/01/13/azcopy-introducing-synchronous-copy-and-customized-content-type.aspx)
+* [AzCopy: Oznámení obecné dostupnosti AzCopy 3.0 a 4.0 nástroje AzCopy vydání ve verzi preview s podporou tabulka a soubor](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/10/29/azcopy-announcing-general-availability-of-azcopy-3-0-plus-preview-release-of-azcopy-4-0-with-table-and-file-support.aspx)
+* [AzCopy: Optimalizovaná pro scénáře, ve velkém měřítku kopírování](https://go.microsoft.com/fwlink/?LinkId=507682)
+* [AzCopy: Podpora pro geograficky redundantní úložiště jen pro čtení](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/04/07/azcopy-support-for-read-access-geo-redundant-account.aspx)
+* [AzCopy: Přenos dat pomocí restartovatelnou službu režimu a tokenu SAS](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/09/07/azcopy-transfer-data-with-re-startable-mode-and-sas-token.aspx)
+* [AzCopy: Objekt Blob kopírování mezi účtu pomocí](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/04/01/azcopy-using-cross-account-copy-blob.aspx)
+* [AzCopy: Nahrávání a stahování souborů pro objekty BLOB Azure](https://blogs.msdn.com/b/windowsazurestorage/archive/2012/12/03/azcopy-uploading-downloading-files-for-windows-azure-blobs.aspx)

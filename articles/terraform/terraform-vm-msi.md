@@ -9,12 +9,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 3/12/2018
-ms.openlocfilehash: 1ec6228993c516ce2974c64bfa5b6dcdf63e7f91
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: a162d0c19bef28e6e4566d39c2dc3b82a87a4aa9
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49343822"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51242088"
 ---
 # <a name="use-an-azure-marketplace-image-to-create-a-terraform-linux-virtual-machine-with-managed-identities-for-azure-resources"></a>Použití image z Azure Marketplace k vytvoření virtuálního počítače Terraform s Linuxem pomocí spravovaných identit pro prostředky Azure
 
@@ -97,9 +97,9 @@ Předchozí skript používá k ověření v Azure a přiřazení oprávnění p
 V tomto článku jste zjistili, jak v Azure nastavit virtuální počítač Terraform s Linuxem. Pokud chcete o nástroji Terraform v Azure získat více informací, můžou vám pomoct následující prostředky: 
 
  [Dokumentace k Terraformu v Azure](https://docs.microsoft.com/azure/terraform/)  
- [Dokumentace k Terraformu zprostředkovatele Azure](http://aka.ms/terraform)  
- [Zdrojová data k Terraformu zprostředkovatele Azure](http://aka.ms/tfgit)  
- [Moduly Terraformu pro Azure](http://aka.ms/tfmodules)
+ [Dokumentace k Terraformu zprostředkovatele Azure](https://aka.ms/terraform)  
+ [Zdrojová data k Terraformu zprostředkovatele Azure](https://aka.ms/tfgit)  
+ [Moduly Terraformu pro Azure](https://aka.ms/tfmodules)
  
 
 

@@ -1,5 +1,5 @@
 ---
-title: Zabezpečení vašich Internetu věcí od základů nahoru
+title: Zabezpečení pro Internet věcí (IoT) od počátku
 description: Tento článek popisuje integrované bezpečnostní funkce akcelerátory řešení Microsoft Azure IoT
 author: robinsh
 ms.service: iot-fundamentals
@@ -7,12 +7,12 @@ services: iot-fundamentals
 ms.topic: conceptual
 ms.date: 10/09/2018
 ms.author: robinsh
-ms.openlocfilehash: 043ba54f3607cd669245e7defbf32aeb586ae292
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 5d4034aa3ea2ceb3a3c294e05952461d46835895
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49066951"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51286958"
 ---
 [!INCLUDE [iot-security-ground-up](../../includes/iot-security-ground-up.md)]
 

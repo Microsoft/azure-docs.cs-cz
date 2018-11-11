@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 7470416ab5e5d71cc569db19e47d34c5a29bc063
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 1cd9e99d9f530abb34ff072a740d89bc511c64ed
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48809299"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51241510"
 ---
 <a name="cloud-partner-portal-gdpr-compliance"></a>Dodržování předpisů GDPR portál partnerů cloudu
 ====================================
@@ -48,6 +48,6 @@ Pro správu vyjádření souhlasu v portál Cloud Partner, se vždy zpočátku z
 
 -   [Jak a kde Microsoft pošle zákazníkům\' data, včetně geografické umístění](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located)
 -   [Subdodavatelé, kteří mají přístup k zákazníkům\' dat](https://aka.ms/Online_Serv_Subcontractor_List)
--   [Podrobnosti o Azure bezpečnostní opatření spravovaný společností Microsoft](http://download.microsoft.com/download/1/6/0/160216AA-8445-480B-B60F-5C8EC8067FCA/WindowsAzure-SecurityPrivacyCompliance.pdf)
+-   [Podrobnosti o Azure bezpečnostní opatření spravovaný společností Microsoft](https://download.microsoft.com/download/1/6/0/160216AA-8445-480B-B60F-5C8EC8067FCA/WindowsAzure-SecurityPrivacyCompliance.pdf)
 -   [Podrobnosti týkající se Microsoft\'ochrany osobních údajů s kontroly procesu, které pro všechny produkty, včetně všech služeb Azure](https://www.microsoft.com/trustcenter/privacy/we-set-and-adhere-to-stringent-standards)
 -   [Co Microsoft shromažďuje data a procesy zákazníka a k systémům a koncoví uživatelé](https://www.microsoft.com/trustcenter/privacy/you-own-your-data)

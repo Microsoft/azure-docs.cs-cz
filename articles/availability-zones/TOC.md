@@ -1,6 +1,6 @@
 
 # Odolnost Azure
-## [Stránka funkce odolnosti Azure](http://azure.microsoft.com/features/resiliency)
+## [Stránka funkce odolnosti Azure](https://azure.microsoft.com/features/resiliency)
 ## [Návrh odolných aplikací pro Azure](https://docs.microsoft.com/azure/architecture/resiliency/)
 
 # Vysoká dostupnost

@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: mathoma
 manager: craigg
 ms.date: 09/25/2018
-ms.openlocfilehash: 25d13ba53eb5a8b411a557b5eaf05d278faa3733
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 3b979a9a7e93992ba593697fa9465fdadc1e58b9
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48869308"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240388"
 ---
 # <a name="replication-with-sql-database-managed-instance"></a>Replikace SQL Database Managed Instance
 
@@ -77,7 +77,7 @@ Podporuje:
 ## <a name="configure-publishing-and-distribution-example"></a>Konfigurace publikování a distribuci příklad
 
 1. [Vytvoření Azure SQL Database Managed Instance](sql-database-managed-instance-create-tutorial-portal.md) na portálu.
-2. [Vytvoření účtu služby Azure Storage](http://docs.microsoft.com/azure/storage/common/storage-create-storage-account#create-a-storage-account) pro pracovní adresář.
+2. [Vytvoření účtu služby Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account#create-a-storage-account) pro pracovní adresář.
 
    Nezapomeňte si zkopírovat klíče úložiště. Zobrazit [zobrazení a zkopírování přístupových klíčů úložiště](../storage/common/storage-account-manage.md#access-keys
 ).
@@ -85,11 +85,11 @@ Podporuje:
 
    V níže uvedené příklady skriptů, nahraďte `<Publishing_DB>` s názvem této databáze.
 
-4. Vytvořte uživatele databáze s ověřováním SQL pro daného distributora. Zobrazit, [vytváření uživatelů databáze](http://docs.microsoft.com/azure/sql-database/sql-database-security-tutorial#creating-database-users). Použijte zabezpečené heslo.
+4. Vytvořte uživatele databáze s ověřováním SQL pro daného distributora. Zobrazit, [vytváření uživatelů databáze](https://docs.microsoft.com/azure/sql-database/sql-database-security-tutorial#creating-database-users). Použijte zabezpečené heslo.
 
    V níže uvedené příklady skriptů pomocí `<SQL_USER>` a `<PASSWORD>` s tímto účtem serveru SQL databáze, uživatele a heslo.
 
-5. [Připojení ke spravované instanci SQL Database](http://docs.microsoft.com/azure/sql-database/sql-database-connect-query-ssms).
+5. [Připojení ke spravované instanci SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-connect-query-ssms).
 
 6. Spusťte následující dotaz pro přidání distributora a distribuční databázi.
 
@@ -197,4 +197,4 @@ Nejsou podporovány následující funkce:
 
 ## <a name="see-also"></a>Viz také
 
-- [Co je Managed Instance?](http://docs.microsoft.com/azure/sql-database/sql-database-managed-instance)
+- [Co je Managed Instance?](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance)

@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 09/04/2018
 ms.author: cshoe
-ms.openlocfilehash: 9430a2b72e2599f4a64103016fcae940cbc0a417
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: ac15b95c19fb0184e902ebb43146a76b6ba2faaf
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50249191"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51283729"
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Trigger služby Event Grid pro službu Azure Functions
 
@@ -245,12 +245,12 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 ## <a name="usage"></a>Využití
 
-Pro funkce C# a F # v Azure Functions 1.x, můžete použít následující typy parametrů pro trigger služby Event Grid:
+Pro C# a F# funkcí v Azure Functions 1.x, můžete použít následující typy parametrů pro trigger služby Event Grid:
 
 * `JObject`
 * `string`
 
-Pro funkce C# a F # v Azure Functions 2.x, máte také možnost použít následující typ parametru pro trigger služby Event Grid:
+Pro C# a F# funkcí ve službě Azure Functions 2.x, máte také možnost použít následující typ parametru pro trigger služby Event Grid:
 
 * `Microsoft.Azure.EventGrid.Models.EventGridEvent`-Definuje vlastnosti pro pole společná pro všechny typy událostí.
 
@@ -358,6 +358,14 @@ Další informace o tom, jak vytvoříte odběr, naleznete v tématu [rychlému 
 ### <a name="get-the-system-key"></a>Získání klíče systému
 
 Klíč systému můžete získat pomocí následující rozhraní API (HTTP GET):
+
+#### <a name="version-2x-runtime"></a>Modul runtime verze 2.x
+
+```
+http://{functionappname}.azurewebsites.net/admin/host/systemkeys/eventgrid_extension?code={masterkey}
+```
+
+#### <a name="version-1x-runtime"></a>Modul runtime verze 1.x
 
 ```
 http://{functionappname}.azurewebsites.net/admin/host/systemkeys/eventgridextensionconfig_extension?code={masterkey}

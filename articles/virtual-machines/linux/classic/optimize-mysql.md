@@ -1,6 +1,6 @@
 ---
-title: Optimalizace výkonu databáze MySQL na systému Linux | Microsoft Docs
-description: Informace o optimalizaci MySQL spuštěna na virtuálním počítači Azure (VM) s Linuxem.
+title: Optimalizace výkonu MySQL v Linuxu | Dokumentace Microsoftu
+description: Zjistěte, jak optimalizovat MySQL běžící na virtuálním počítači Azure (VM) s Linuxem.
 services: virtual-machines-linux
 documentationcenter: ''
 author: NingKuang
@@ -15,108 +15,108 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/31/2017
 ms.author: ningk
-ms.openlocfilehash: 447532452a848c88fd927f42e4263cef4742dd89
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 0ba85e82824bc257869d9801f342bd6dbb0402d2
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "30841499"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51247445"
 ---
-# <a name="optimize-mysql-performance-on-azure-linux-vms"></a>Optimalizace výkonu databáze MySQL na virtuálních počítačích Azure Linux
-Existuje celá řada faktorů, které ovlivňují výkon databáze MySQL na Azure, jak v výběr virtuální hardwarové a softwarové konfigurace. Tento článek se zaměřuje na optimalizace výkonu úložiště, systému a konfigurace databáze.
+# <a name="optimize-mysql-performance-on-azure-linux-vms"></a>Optimalizace výkonu MySQL na virtuálních počítačích Azure s Linuxem
+Existuje celá řada faktorů, které ovlivňují výkon MySQL v Azure, jak ve výběru virtuální hardware a konfiguraci softwaru. Tento článek se zaměřuje na optimalizace výkonu prostřednictvím úložiště systému a konfigurace databáze.
 
 > [!IMPORTANT]
-> Azure má dva různé modely nasazení pro vytváření a práci s prostředky: [Azure Resource Manager](../../../resource-manager-deployment-model.md) a classic. Tento článek se věnuje použití klasického modelu nasazení. Microsoft doporučuje, aby byl ve většině nových nasazení použit model Resource Manager. Informace o optimalizace virtuálního počítače s Linuxem pomocí modelu Resource Manager najdete v tématu [optimalizovat virtuálním počítačům s Linuxem v Azure](../optimization.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+> Azure má dva různé modely nasazení pro vytváření a práci s prostředky: [Azure Resource Manageru](../../../resource-manager-deployment-model.md) a classic. Tento článek se věnuje použití klasického modelu nasazení. Microsoft doporučuje, aby byl ve většině nových nasazení použit model Resource Manager. Informace o optimalizace virtuálního počítače s Linuxem pomocí modelu Resource Manageru najdete v tématu [optimalizovat virtuální počítač s Linuxem v Azure](../optimization.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 > [!INCLUDE [virtual-machines-common-classic-createportal](../../../../includes/virtual-machines-classic-portal.md)]
 
-## <a name="utilize-raid-on-an-azure-virtual-machine"></a>Využívat RAID na virtuální počítač Azure
-Úložiště je klíčovým faktorem, který ovlivňuje výkon databáze v prostředí cloudu. Porovnání na jeden disk, RAID zajistí rychlejší přístup prostřednictvím souběžnosti. Další informace najdete v tématu [standardní RAID úrovně](http://en.wikipedia.org/wiki/Standard_RAID_levels).   
+## <a name="utilize-raid-on-an-azure-virtual-machine"></a>Využití diskového pole RAID na virtuálním počítači Azure
+Úložiště je klíčovým faktorem, který ovlivňuje výkon databáze v cloudovém prostředí. Porovnání na jeden disk, RAID poskytuje rychlejší přístup prostřednictvím souběžnosti. Další informace najdete v tématu [úrovně Standard RAID](http://en.wikipedia.org/wiki/Standard_RAID_levels).   
 
-Propustnost vstupu/výstupu disku a vstupně-výstupních operací dobu odezvy v Azure je možné zlepšit prostřednictvím RAID. Naše testy testovacího prostředí zobrazit, může být dvojitá propustnost vstupu/výstupu disku a vstupně-výstupních operací odezvu může snížit půl v průměru při je dvojnásobný počet disků RAID (ze dvou na čtyři, čtyř do osmi atd.). V tématu [příloha A](#AppendixA) podrobnosti.  
+Propustnost disku vstupně-výstupní operace a dobu odezvy vstupně-výstupních operací v Azure je možné zlepšit prostřednictvím RAID. Naše testy testovacího prostředí ukazují, že může být dvojitá propustnost vstupně-výstupních operací disku a vstupně-výstupních operací Doba odezvy lze snížit o polovinu v průměru když je počet disků RAID dvojnásobný (ze dvou čtyři, čtyři až osm atd.). Zobrazit [příloha A](#AppendixA) podrobnosti.  
 
-Kromě diskových operací zlepšuje výkon MySQL když zvýšíte úroveň pole RAID.  V tématu [příloha B](#AppendixB) podrobnosti.  
+Kromě disku vstupně-výstupních operací zlepšuje výkonu MySQL když zvýšíte úroveň pole RAID.  Zobrazit [dodatku B](#AppendixB) podrobnosti.  
 
-Můžete také zvážit velikost bloku. Obecně platí když máte větší velikost bloku, získáte nižší nároky, hlavně pro velké zápisy. Ale pokud velikost bloku je příliš velký, může přidat další režie, které zabraňují využívat výhod RAID. Aktuální výchozí velikost je 512 KB, který je ověřené být optimální pro nejobecnější provozní prostředí. V tématu [příloha C](#AppendixC) podrobnosti.   
+Můžete také vezměte v úvahu velikost bloku. Obecně platí Pokud máte větší velikost bloku dat, získáte nižší režie, zejména u velkých zápisy. Ale když velikost deduplikačního bloku dat je příliš velká, může přidat další režie, který zabraňuje využití diskového pole RAID. Aktuální výchozí velikost je 512 KB, což je prověřené bude ideální pro většinu produkčních prostředí. Zobrazit [dodatku C](#AppendixC) podrobnosti.   
 
-Existují omezení na tom, kolik disků můžete přidat pro typy jiný virtuální počítač. Tato omezení jsou podrobně popsané na [velikosti virtuálního počítače a cloudové služby pro Azure](http://msdn.microsoft.com/library/azure/dn197896.aspx). I když můžete nastavit RAID s méně disky, budete potřebovat čtyři připojené datových disků RAID příkladu v tomto článku.  
+Existují omezení na tom, kolik disků můžete přidat pro typy jiný virtuální počítač. Tato omezení jsou podrobně popsány v [služby velikosti virtuálního počítače a cloud pro Azure](https://msdn.microsoft.com/library/azure/dn197896.aspx). I když můžete také nastavit RAID s menším počtem disků, budete potřebovat čtyři připojené datové disky v našem příkladu diskového pole RAID v tomto článku.  
 
-Tento článek předpokládá jste již vytvořili virtuální počítač s Linuxem a MYSQL nainstalován a nakonfigurován. Další informace o Začínáme najdete v části Jak nainstalovat MySQL v Azure.  
+Tento článek předpokládá už máte vytvořený virtuální počítač s Linuxem a MYSQL nainstalován a nakonfigurován. Další informace o zahájení práce zjistit, jak nainstalovat MySQL v Azure.  
 
-### <a name="set-up-raid-on-azure"></a>Nastavení diskového pole RAID na Azure
-Následující kroky ukazují, jak vytvořit RAID na platformě Azure pomocí portálu Azure. Můžete také nastavit tak RAID pomocí skriptů prostředí Windows PowerShell.
-V tomto příkladu nakonfigurujeme RAID 0 s čtyři disky.  
+### <a name="set-up-raid-on-azure"></a>Nastavení pole RAID v Azure
+Následující kroky ukazují, jak vytvořit pole RAID v Azure pomocí webu Azure portal. Pomocí skriptů Windows Powershellu můžete také nastavení diskového pole RAID.
+V tomto příkladu nakonfigurujeme RAID 0 se čtyři disky.  
 
-#### <a name="add-a-data-disk-to-your-virtual-machine"></a>Přidat datový disk k virtuálnímu počítači
-Na portálu Azure přejděte do řídicího panelu a vyberte virtuální počítač, do které chcete přidat datový disk. V tomto příkladu je virtuální počítač mysqlnode1.  
+#### <a name="add-a-data-disk-to-your-virtual-machine"></a>Přidání datového disku k virtuálnímu počítači
+Na webu Azure Portal přejděte na řídicí panel a vyberte virtuální počítač, ke kterému chcete přidat datový disk. V tomto příkladu je virtuální počítač mysqlnode1.  
 
 <!--![Virtual machines][1]-->
 
-Klikněte na tlačítko **disky** a pak klikněte na **připojit nový**.
+Klikněte na tlačítko **disky** a potom klikněte na tlačítko **připojit nový**.
 
-![Virtuální počítače přidejte disk](media/optimize-mysql/virtual-machines-linux-optimize-mysql-perf-Disks-option.png)
+![Přidání disku virtuálního počítače](media/optimize-mysql/virtual-machines-linux-optimize-mysql-perf-Disks-option.png)
 
-Vytvoření nového disku 500 GB. Ujistěte se, že **předvoleb mezipaměti hostitele** je nastaven na **žádné**.  Až budete hotovi, klikněte na tlačítko **OK**.
+Vytvoření nového disku 500 GB. Ujistěte se, že **Preference mezipaměti hostitele** je nastavena na **žádný**.  Jakmile budete hotovi, klikněte na tlačítko **OK**.
 
 ![Připojte prázdný disk](media/optimize-mysql/virtual-machines-linux-optimize-mysql-perf-attach-empty-disk.png)
 
 
-Tento postup přidá jeden prázdný disk do virtuálního počítače. Opakujte tento krok tři vícekrát, aby měli čtyři datových disků RAID.  
+Tento postup přidá jeden prázdný disk k virtuálnímu počítači. Opakujte tento krok tři víckrát, abyste měli čtyři datové disky RAID.  
 
-Přidání jednotky ve virtuálním počítači zobrazíte prohlížení protokolů zpráv jádra. Například je vidět na Ubuntu, použijte následující příkaz:  
+Zobrazí se přidání jednotky ve virtuálním počítači pohledem na protokol zpráv jádra. Například zobrazit na Ubuntu, použijte následující příkaz:  
 
     sudo grep SCSI /var/log/dmesg
 
-#### <a name="create-raid-with-the-additional-disks"></a>Vytvoření RAID pomocí dalších disků.
-Následující kroky popisují postup [konfigurace softwaru diskového pole RAID v systému Linux](../configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+#### <a name="create-raid-with-the-additional-disks"></a>Vytvoření RAID s další disky
+Následující kroky popisují, jak [konfigurace softwarového pole RAID v Linuxu](../configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 > [!NOTE]
-> Pokud používáte systém souborů XFS, provést následující kroky po vytvoření RAID.
+> Pokud používáte systém souborů XFS, proveďte následující kroky po vytvoření RAID.
 >
 >
 
-K instalaci XFS na Debian a Ubuntu a Linux máta, použijte následující příkaz:  
+K instalaci v systému Debian, Ubuntu nebo Linux Mint XFS, použijte následující příkaz:  
 
     apt-get -y install xfsprogs  
 
-Nainstalovat XFS Fedora, CentOS nebo RHEL, použijte následující příkaz:  
+Chcete-li nainstalovat XFS RHEL, Fedora nebo CentOS, použijte následující příkaz:  
 
     yum -y install xfsprogs  xfsdump
 
 
 #### <a name="set-up-a-new-storage-path"></a>Nastavit novou cestu úložiště
-Nastavit nové cesty úložiště, použijte následující příkaz:  
+Nastavit novou cestu úložiště použijte následující příkaz:  
 
     root@mysqlnode1:~# mkdir -p /RAID0/mysql
 
-#### <a name="copy-the-original-data-to-the-new-storage-path"></a>Zkopírujte původní data na novou cestu úložiště
-Ke zkopírování dat na novou cestu úložiště použijte následující příkaz:  
+#### <a name="copy-the-original-data-to-the-new-storage-path"></a>Kopírování původní data, která mají novou cestu úložiště
+Použijte následující příkaz pro kopírování dat na novou cestu úložiště:  
 
     root@mysqlnode1:~# cp -rp /var/lib/mysql/* /RAID0/mysql/
 
-#### <a name="modify-permissions-so-mysql-can-access-read-and-write-the-data-disk"></a>Upravit oprávnění, můžete přístup MySQL (čtení a zápisu) datový disk
-Použijte následující příkaz pro úpravu oprávnění:  
+#### <a name="modify-permissions-so-mysql-can-access-read-and-write-the-data-disk"></a>Upravit oprávnění, aby měli přístup k MySQL (čtení a zápis) datového disku
+Použijte následující příkaz k úpravě oprávnění:  
 
     root@mysqlnode1:~# chown -R mysql.mysql /RAID0/mysql && chmod -R 755 /RAID0/mysql
 
 
-## <a name="adjust-the-disk-io-scheduling-algorithm"></a>Upravit algoritmus plánování diskové vstupně-výstupních operací
+## <a name="adjust-the-disk-io-scheduling-algorithm"></a>Upravte plánování algoritmus vstupně-výstupní operace disku
 Linux implementuje čtyři typy vstupně-výstupních operací plánování algoritmů:  
 
-* Nedojde k žádné akci algoritmus (ne operace)
-* Algoritmus konečného termínu (termín)
-* Úplně správného algoritmu front zpráv (CFQ)
-* Nároky období algoritmus (Anticipatory)  
+* Algoritmus NOOP (ne operace)
+* Algoritmus konečného termínu (termínu)
+* Zcela veletrh algoritmus řazení do fronty (CFQ)
+* Rozpočet období algoritmus (Anticipatory)  
 
-Můžete vybrat jiný plánovače vstupně-výstupních operací v různých scénářích za účelem optimalizace výkonu. V prostředí s úplně náhodný přístup není velký rozdíl mezi algoritmy CFQ a konečný termín pro výkon. Doporučujeme nastavit prostředí databáze MySQL na konečný termín pro stabilitu. Pokud existuje mnoho sekvenčních vstupně-výstupních operací, CFQ může snížit výkon vstupně-výstupní operace disku.   
+Můžete vybrat jiné vstupně-výstupních operací plánovače v různých scénářích za účelem optimalizace výkonu. V prostředí zcela náhodný přístup není značný rozdíl mezi algoritmy CFQ a konečný termín pro výkon. Doporučujeme nastavit prostředí databáze MySQL do konečného termínu pro zvýšení stability. Pokud dochází k mnoha sekvenčních vstupně-výstupních operací, CFQ může snížit výkon vstupně-výstupní operace disku.   
 
-Pro SSD a dalších zařízení nedojde k žádné akci nebo konečný termín můžete dosáhnout lepší výkon než výchozí plánovače.   
+SSD a další zařízení můžete dosáhnout lepší výkon než výchozí plánovač NOOP nebo konečného termínu.   
 
-Před jádra 2.5 výchozí algoritmus plánování vstupně-výstupních operací je konečný termín. Počínaje jádra 2.6.18, CFQ stala výchozí algoritmus plánování vstupně-výstupní operace.  Můžete určit toto nastavení při spuštění jádra nebo dynamicky upravit toto nastavení při spuštění systému.  
+Před jádra, 2,5 je výchozí algoritmus plánování vstupně-výstupních operací konečný termín. Od verze jádra 2.6.18, CFQ začal být výchozí algoritmus plánování vstupně-výstupních operací.  Můžete určit tato nastavení v době spuštění jádra nebo dynamicky upravit toto nastavení při spuštění systému.  
 
-Následující příklad ukazuje, jak zkontrolovat a nastavit výchozí plánovač na řady Debian distribuční algoritmus nedojde k žádné akci.  
+Následující příklad ukazuje, jak zkontrolovat a nastavit výchozí plánovač NOOP algoritmus řady distribuce Debian.  
 
-### <a name="view-the-current-io-scheduler"></a>Zobrazení aktuálního plánovače vstupně-výstupních operací
-Chcete-li zobrazit Plánovač spusťte následující příkaz:  
+### <a name="view-the-current-io-scheduler"></a>Zobrazit aktuální Plánovač vstupně-výstupních operací
+Chcete-li zobrazit Plánovač, spusťte následující příkaz:  
 
     root@mysqlnode1:~# cat /sys/block/sda/queue/scheduler
 
@@ -125,8 +125,8 @@ Zobrazí se následující výstup, který označuje aktuálního plánovače:
     noop [deadline] cfq
 
 
-### <a name="change-the-current-device-devsda-of-the-io-scheduling-algorithm"></a>Změňte aktuální zařízení (/ dev/sda) plánování algoritmu vstupně-výstupních operací
-Spusťte následující příkazy a změňte aktuální zařízení:  
+### <a name="change-the-current-device-devsda-of-the-io-scheduling-algorithm"></a>Změňte aktuální zařízení (/ dev/sda) plánování algoritmů vstupně-výstupních operací
+Spusťte následující příkazy, chcete-li změnit aktuální zařízení:  
 
     azureuser@mysqlnode1:~$ sudo su -
     root@mysqlnode1:~# echo "noop" >/sys/block/sda/queue/scheduler
@@ -134,11 +134,11 @@ Spusťte následující příkazy a změňte aktuální zařízení:
     root@mysqlnode1:~# update-grub
 
 > [!NOTE]
-> Nastavení to samostatně/dev/sda není užitečné. Je nutné ji nastavit na všech discích data kde je umístěna databáze.  
+> Nastavení pro/dev/sda samostatně není užitečné. Je nutné ji nastavit na všechny datové disky ve které se nachází v databázi.  
 >
 >
 
-Měli byste vidět následující výstup, oznamující, že tento grub.cfg byla znovu sestavena úspěšně a že plánovač výchozí se aktualizovalo a nedojde k žádné akci:  
+Byste měli vidět následující výstup, oznamující, že tento grub.cfg byla znovu sestavena úspěšně a že výchozím plánovačem se aktualizovala na NOOP:  
 
     Generating grub configuration file ...
     Found linux image: /boot/vmlinuz-3.13.0-34-generic
@@ -149,16 +149,16 @@ Měli byste vidět následující výstup, oznamující, že tento grub.cfg byla
     Found memtest86+ image: /memtest86+.bin
     done
 
-Pro řadu distribuční Red Hat potřebujete jenom následující příkaz:
+Distribuce řady Red Hat potřebujete pouze následující příkaz:
 
     echo 'echo noop >/sys/block/sda/queue/scheduler' >> /etc/rc.local
 
-## <a name="configure-system-file-operations-settings"></a>Konfigurace nastavení operace systému souborů
-Jeden osvědčeným postupem je zakázat *atime* funkce protokolování v systému souborů. Atime je čas posledního přístupu k souboru. Vždy, když je přístup k souboru, systém souborů zaznamenává časové razítko v protokolu. Tyto informace se ale zřídka používá. Ji můžete vypnout, pokud tomu tak není, které se sníží celkový čas přístup k disku.  
+## <a name="configure-system-file-operations-settings"></a>Nakonfigurujte nastavení operace systému souborů
+Jeden osvědčeným postupem je zakázat *atime* funkce protokolování v systému souborů. Atime, je čas posledního přístupu k souboru. Pokaždé, když přistupuje k souboru, zaznamenává systém souborů časové razítko v protokolu. Tyto informace se však zřídka používají. To můžete zakázat, pokud ho nepotřebujete, které se sníží celkový čas přístupu k disku.  
 
-Zakázat atime protokolování, budete muset upravit soubor system configuration soubor/etc / fstab a přidat **noatime** možnost.  
+Zakázat protokolování atime, je potřeba upravit soubor systému konfigurační soubor/etc / fstab a přidejte **noatime** možnost.  
 
-Můžete třeba upravte soubor /etc/fstab vim přidáním noatime, jak znázorňuje následující ukázka:  
+Můžete třeba upravte soubor /etc/fstab vim přidáním noatime, jak je znázorněno v následujícím příkladu:  
 
     # CLOUD_IMG: This file was created/modified by the Cloud Image build process
     UUID=3cc98c06-d649-432d-81df-6dcd2a584d41       /        ext4   defaults,discard        0 0
@@ -166,103 +166,103 @@ Můžete třeba upravte soubor /etc/fstab vim přidáním noatime, jak znázorň
     UUID="431b1e78-8226-43ec-9460-514a9adf060e"     /RAID0   xfs   defaults,nobootwait, noatime 0 0
     /dev/sdb1       /mnt    auto    defaults,nobootwait,comment=cloudconfig 0       2
 
-Potom se znovu připojte systém souborů pomocí následujícího příkazu:  
+Potom připojte systém souborů pomocí následujícího příkazu:  
 
     mount -o remount /RAID0
 
-Otestujte upravené výsledek. Když upravíte testovací soubor, čas přístupu se neaktualizuje. Následující příklady ukazují, jak kód vypadá před a po změnách.
+Upravené výsledek testu. Když upravíte soubor testu, čas přístupu není aktualizován. Následující příklady ukazují, jak kód vypadá před a po změně.
 
 Před:        
 
-![Před úpravou přístupu kódu][5]
+![Před úprava přístupu ke kódu][5]
 
 Po:
 
-![Po změnách přístupu kódu][6]
+![Po úprava přístupu ke kódu][6]
 
 ## <a name="increase-the-maximum-number-of-system-handles-for-high-concurrency"></a>Zvýšit maximální počet popisovačů systému pro vysokou souběžnosti
-MySQL je vysoká souběžnosti databáze. Výchozí počet souběžných obslužné rutiny je 1024 pro Linux, což není vždy dostatečná. Pomocí následujících kroků zvýšit maximální souběžných popisovačů systému pro podporu vysoké souběžnosti MySQL.
+MySQL je vysoká souběžnosti databáze. Výchozí počet souběžných popisovače je 1024 pro Linux, která vždy není dostatečná. Pomocí následujících kroků ke zvýšení maximální souběžných popisovačů systému pro podporu vysoké souběžnosti MySQL.
 
 ### <a name="modify-the-limitsconf-file"></a>Upravte soubor limits.conf
-Pokud chcete zvýšit maximální povolené souběžných obslužných rutin, přidejte následující čtyři řádky v souboru /etc/security/limits.conf. Všimněte si, že 65536 je maximální počet, který podporuje systém.   
+Pokud chcete zvýšit maximální povolené souběžných obslužné rutiny, přidejte následující čtyři řádky do souboru /etc/security/limits.conf. Všimněte si, že 65536 je největší číslo, které může systém podporovat.   
 
-    * logicky nofile 65536
+    * obnovitelné nofile 65536
     * pevné nofile 65536
-    * soft nproc 65536
+    * obnovitelné nproc 65536
     * pevné nproc 65536
 
-### <a name="update-the-system-for-the-new-limits"></a>Aktualizujte systém na nový limity
-Chcete-li aktualizovat systém, spusťte následující příkazy:  
+### <a name="update-the-system-for-the-new-limits"></a>Aktualizovat systém, hledá nové omezení
+Pokud chcete aktualizovat systém, spusťte následující příkazy:  
 
     ulimit -SHn 65536
     ulimit -SHu 65536
 
 ### <a name="ensure-that-the-limits-are-updated-at-boot-time"></a>Ujistěte se, že omezení jsou aktualizovány při spuštění
-Vložte následující příkazy spuštění souboru /etc/rc.local tak projeví při spuštění.  
+Vložte následující příkazy po spuštění souboru /etc/rc.local, projeví se při spuštění.  
 
     echo “ulimit -SHn 65536” >>/etc/rc.local
     echo “ulimit -SHu 65536” >>/etc/rc.local
 
 ## <a name="mysql-database-optimization"></a>Optimalizace databáze MySQL
-Ke konfiguraci databáze MySQL na Azure, můžete použít stejné strategie optimalizace výkonu, který používáte v místním počítači.  
+Pokud chcete nakonfigurovat MySQL v Azure, můžete použít stejné strategie optimalizace výkonu, které používáte na místním počítači.  
 
 Hlavní pravidla optimalizace vstupně-výstupní operace jsou:   
 
 * Zvětšete velikost mezipaměti.
-* Snížení doby odezvy vstupně-výstupní operace.  
+* Snížení doby odezvy vstupně-výstupních operací.  
 
-Chcete-li optimalizovat nastavení serveru MySQL, můžete aktualizovat my.cnf souboru, který je výchozí konfigurační soubor pro server a klientských počítačů.  
+K optimalizaci nastavení serveru MySQL, můžete aktualizovat soubor my.cnf, což je výchozí konfigurační soubor pro server a klientských počítačů.  
 
-Hlavní faktory, které ovlivňují výkon MySQL jsou následující položky konfigurace:  
+Následující položky jsou hlavní faktory ovlivňující výkon MySQL:  
 
-* **innodb_buffer_pool_size**: fondu vyrovnávací paměti obsahuje data ve vyrovnávací paměti a index. To je obvykle nastavena na 70 procent fyzické paměti.
-* **innodb_log_file_size**: Toto je velikost protokolu operaci znovu. Opakování protokoly se použít k zajištění, že operace zápisu jsou rychlé, spolehlivé a použitelná pro obnovení po chybě. Je nastavena na 512 MB, který vám poskytne dostatek místa pro protokolování operace zápisu.
-* **max_connections**: v některých případech aplikace neukončujte připojení správně. Větší hodnotu získáte víc času recyklace nečinný připojení serveru. Maximální počet připojení je 10 000, ale maximální Doporučená hodnota je 5 000.
-* **Innodb_file_per_table**: Toto nastavení povolí nebo zakáže schopnost InnoDB ukládání tabulek v samostatné soubory. Zapněte možnost zajistit, že několik operací pokročilé správy může být použitá efektivně. Z výkonu hlediska může urychlit přenos místo tabulky a optimalizace výkonu správy zbytků. Doporučené nastavení pro tuto možnost je ON.</br></br>
-Z databáze MySQL 5.6 výchozí nastavení je ON, takže není vyžadována žádná akce. U starších verzí je ve výchozím nastavení VYPNUTÝ. Nastavení by měl změnit před načtením dat, protože to ovlivňuje pouze nově vytvořené tabulky.
-* **innodb_flush_log_at_trx_commit**: výchozí hodnota je 1, spolu s rozsahem nastaven na hodnotu 0 ~ 2. Výchozí hodnota je nejvhodnější možnost pro samostatnou databáze MySQL. Nastavení 2 umožňuje většinu integritu dat a je vhodný pro hlavní server v clusteru MySQL. Nastavení 0 umožňuje ztrátě dat, která může mít vliv na spolehlivost (v některých případech s lepším výkonem) a je vhodný pro podřízený v clusteru MySQL.
-* **Innodb_log_buffer_size**: umožňuje vyrovnávací paměť protokolu transakcí spustit bez nutnosti před potvrzení transakce jsou zapsány disku v protokolu. Pokud je binární rozsáhlý objekt nebo textové pole, mezipaměti využijí rychle a aktivuje se často diskové vstupně-výstupní operace. Pokud proměnné stavu Innodb_log_waits není lépe zvětšete velikost vyrovnávací paměti je 0.
-* **query_cache_size**: nejlepší možnost je zakázat od samého počátku. Nastavte query_cache_size na hodnotu 0 (Toto je výchozí nastavení v MySQL 5.6) a použít jiné metody pro urychlení dotazů.  
+* **innodb_buffer_pool_size**: fond vyrovnávacích pamětí obsahuje data ve vyrovnávací paměti a index. To je obvykle nastavena na 70 procent fyzické paměti.
+* **innodb_log_file_size**: Toto je velikost protokolu znovu. Protokoly znovu použít k zajištění, že operace zápisu jsou rychlé, spolehlivé a zotavit po chybě. Je nastavené na 512 MB, což vám dostatek místa pro protokolování operace zápisu.
+* **max_connections**: někdy aplikace nezavírejte připojení správně. Větší hodnotu vám poskytne serveru k recyklaci nečinný připojení více času. Maximální počet připojení je 10 000 operací, ale doporučený maximální počet je 5 000.
+* **Innodb_file_per_table**: Toto nastavení povolí nebo zakáže možnost InnoDB k ukládání tabulek do samostatných souborů. Zapněte možnost chcete ujistit, že několik operací pokročilou správu mohou být efektivně. Z výkonu hlediska ho urychlit přenos místo tabulky a optimalizovat výkon správu odpad. Doporučené nastavení pro tuto možnost je ON.</br></br>
+Z MySQL 5.6 výchozí nastavení je dále, takže není vyžadována žádná akce. U starších verzí je ve výchozím nastavení vypnuto. Nastavení by měl změnit před načtením dat, protože se vztahuje pouze nově vytvořené tabulky.
+* **innodb_flush_log_at_trx_commit**: výchozí hodnota je 1, kde obor nastaven na hodnotu 0 ~ 2. Výchozí hodnota je nejvhodnější volba pro samostatné databáze MySQL. Nastavení 2 umožňuje většina integritu dat a je vhodný pro hlavní server v clusteru MySQL. Nastavení 0 umožňuje ztráty dat, což může ovlivnit spolehlivost (v některých případech s lepším výkonem) a je vhodný pro podřízený server v clusteru MySQL.
+* **Innodb_log_buffer_size**: protokolu vyrovnávací paměti umožňuje spustit bez nutnosti před potvrzení transakce jsou zapsány disku v protokolu transakcí. Pokud je binární rozsáhlý objekt nebo textové pole, do mezipaměti bude rychle spotřebovávat a časté diskové vstupně-výstupní operace se aktivuje. Je lepší zvětšete velikost vyrovnávací paměti proměnné stavu Innodb_log_waits není-li 0.
+* **query_cache_size**: nejlepší možností je pro jeho zakázání od samého počátku. Query_cache_size nastavena na hodnotu 0 (to je výchozí nastavení v MySQL 5.6) a použít jiné metody ke zrychlení dotazů.  
 
-V tématu [Dodatek D](#AppendixD) porovnání před a po optimalizace výkonu.
+Zobrazit [Dodatek D](#AppendixD) porovnání před a po optimalizaci výkonu.
 
-## <a name="turn-on-the-mysql-slow-query-log-for-analyzing-the-performance-bottleneck"></a>Zapnout protokol pomalé dotazu MySQL pro analýzu kritická místa výkonu
-Protokol dotazu pomalé MySQL můžete identifikovat pomalé dotazů pro databázi MySQL. Když povolíte protokol pomalé dotazu MySQL, můžete použít nástroje MySQL jako **mysqldumpslow** identifikovat kritická místa výkonu.  
+## <a name="turn-on-the-mysql-slow-query-log-for-analyzing-the-performance-bottleneck"></a>Zapnout protokol pomalých dotazů MySQL pro analýzu výkonu kritickým bodem
+Protokol pomalých dotazů MySQL můžete identifikovat pomalých dotazů MySQL. Jakmile povolíte protokol pomalých dotazů MySQL, můžete použít nástroje MySQL jako **mysqldumpslow** k identifikaci snížení výkonu.  
 
-Ve výchozím nastavení to není povoleno. Zapnutí protokol pomalé dotazu může využívat některé prostředky procesoru. Doporučujeme, abyste povolili to dočasně pro řešení potíží s kritické body. Chcete-li na protokol pomalé dotazu:
+Ve výchozím nastavení to není povoleno. Zapnutí protokolu pomalých dotazů může využívat některé prostředky procesoru. Doporučujeme, abyste povolili to dočasně pro řešení potíží s problémových míst výkonu. Chcete-li na protokol pomalého dotazu:
 
-1. Upravte soubor my.cnf přidáním následující řádky na konec:
+1. Upravte soubor my.cnf tak, že přidáte následující řádky na konec:
 
         long_query_time = 2
         slow_query_log = 1
         slow_query_log_file = /RAID0/mysql/mysql-slow.log
 
-2. Restartujte server, MySQL.
+2. Restartujte MySQL server.
 
         service  mysql  restart
 
-3. Zkontrolujte, zda nastavení trvá vliv pomocí **zobrazit** příkaz.
+3. Zkontrolujte, zda nastavení se uplatní, s použitím **zobrazit** příkazu.
 
-![ON zpomalit protokol dotazu][7]   
+![DÁLE zpomalit protokol dotazů][7]   
 
-![Výsledky zpomalit protokol dotazu][8]
+![Zpomalit protokolu dotazu výsledky][8]
 
-V tomto příkladu vidíte, že byla zapnuta funkce pomalé dotazu. Pak můžete použít **mysqldumpslow** nástroj zjistit kritická místa výkonu a optimalizace výkonu, jako je například přidávání indexy.
+V tomto příkladu vidíte, že je zapnutý funkci pomalých dotazů. Pak můžete použít **mysqldumpslow** nástroj odhalit kritická místa výkonu a optimalizovat výkon, jako je například přidávání indexy.
 
 ## <a name="appendices"></a>Přílohy
-Následuje ukázková výkonu testovací data vytvořeného v cílové testovacím prostředí. Poskytují obecné na trend data výkonu s jinou ladění přístupy výkonu. Výsledky se můžou lišit v rámci různých verzí prostředí nebo produktu.
+Tady jsou ukázkové výkonu testovací data vytvořená v cílovém testovacím prostředí. Poskytují obecné na trend dat výkonu různých postupů pro optimalizaci výkonu. Výsledky můžou lišit podle různých verzí prostředí nebo produktu.
 
 ### <a name="AppendixA"></a>Příloha A  
 **Výkon disku (IOPS) s různými úrovněmi diskového pole RAID**
 
-![Disk IOPS s různými úrovněmi diskového pole RAID][9]
+![VSTUPNĚ-výstupních diskových s různými úrovněmi diskového pole RAID][9]
 
-**Test příkazy**  
+**Příkazy testu**  
 
     fio -filename=/path/test -iodepth=64 -ioengine=libaio -direct=1 -rw=randwrite -bs=4k -size=5G -numjobs=64 -runtime=30 -group_reporting -name=test-randwrite
 
 > [!NOTE]
-> Zatížení tento test používá 64 vláken, dostat horní limit počtu RAID.
+> Zatížení tohoto testu používá 64 vlákna pokusu dosahovat horního omezení RAID.
 >
 >
 
@@ -273,61 +273,61 @@ Následuje ukázková výkonu testovací data vytvořeného v cílové testovac�
 ![Porovnání výkonu MySQL s různými úrovněmi diskového pole RAID][10]  
 ![Porovnání výkonu MySQL s různými úrovněmi diskového pole RAID][11]
 
-**Test příkazy**
+**Příkazy testu**
 
     mysqlslap -p0ps.123 --concurrency=2 --iterations=1 --number-int-cols=10 --number-char-cols=10 -a --auto-generate-sql-guid-primary --number-of-queries=10000 --auto-generate-sql-load-type=write –engine=innodb
 
 **Porovnání výkonu (OLTP) MySQL s různými úrovněmi diskového pole RAID**  
 ![Porovnání výkonu (OLTP) MySQL s různými úrovněmi diskového pole RAID][12]
 
-**Test příkazy**
+**Příkazy testu**
 
     time sysbench --test=oltp --db-driver=mysql --mysql-user=root --mysql-password=0ps.123  --mysql-table-engine=innodb --mysql-host=127.0.0.1 --mysql-port=3306 --mysql-socket=/var/run/mysqld/mysqld.sock --mysql-db=test --oltp-table-size=1000000 prepare
 
-### <a name="AppendixC"></a>Příloha C   
-**Porovnání výkonu (IOPS) disku pro různé bloku velikosti**  
+### <a name="AppendixC"></a>Dodatek C   
+**Porovnání disků výkon (IOPS) pro různé bloků velikosti**  
 (Systém souborů XFS)
 
 ![][13]
 
-**Test příkazy**  
+**Příkazy testu**  
 
     fio -filename=/path/test -iodepth=64 -ioengine=libaio -direct=1 -rw=randwrite -bs=4k -size=30G -numjobs=64 -runtime=30 -group_reporting -name=test-randwrite
     fio -filename=/path/test -iodepth=64 -ioengine=libaio -direct=1 -rw=randwrite -bs=4k -size=1G -numjobs=64 -runtime=30 -group_reporting -name=test-randwrite  
 
-Velikosti souborů použít pro toto testování 30 GB 1 GB, v uvedeném pořadí a s RAID 0 (4 disky) XFS systému souborů.
+Velikosti souborů pro tento test se 30 GB a 1 GB, respektive, RAID 0 (4 disky) XFS systém souborů.
 
-### <a name="AppendixD"></a>Dodatek D  
-**Porovnání výkonu (propustnost) MySQL před a po optimalizace**  
+### <a name="AppendixD"></a>Příloha D  
+**Porovnání výkonu (propustnost) MySQL před a po optimalizaci**  
 (Systém souborů XFS)
 
-![Porovnání výkonu (propustnost) MySQL před a po optimalizace][14]
+![Porovnání výkonu (propustnost) MySQL před a po optimalizaci][14]
 
-**Test příkazy**
+**Příkazy testu**
 
     mysqlslap -p0ps.123 --concurrency=2 --iterations=1 --number-int-cols=10 --number-char-cols=10 -a --auto-generate-sql-guid-primary --number-of-queries=10000 --auto-generate-sql-load-type=write –engine=innodb,misam
 
-**Nastavení konfigurace pro výchozí a optimalizace vypadá takto:**
+**Konfigurace nastavení pro výchozí a optimalizace vypadá takto:**
 
 | Parametry | Výchozí | Optimalizace |
 | --- | --- | --- |
 | **innodb_buffer_pool_size** |Žádný |7 GB |
-| **innodb_log_file_size** |5 MB |512 MB |
+| **innodb_log_file_size** |5 MB. |512 MB |
 | **max_connections** |100 |5000 |
 | **innodb_file_per_table** |0 |1 |
 | **innodb_flush_log_at_trx_commit** |1 |2 |
 | **innodb_log_buffer_size** |8 MB |128 MB |
 | **query_cache_size** |16 MB |0 |
 
-Další podrobné [parametry konfigurace optimalizace](http://dev.mysql.com/doc/refman/5.6/en/innodb-configuration.html), naleznete [oficiální pokyny MySQL](http://dev.mysql.com/doc/refman/5.6/en/innodb-parameters.html#sysvar_innodb_flush_method).  
+Pro podrobnější [parametry konfigurace optimalizace](http://dev.mysql.com/doc/refman/5.6/en/innodb-configuration.html), odkazovat [oficiální pokyny MySQL](http://dev.mysql.com/doc/refman/5.6/en/innodb-parameters.html#sysvar_innodb_flush_method).  
 
   **Testovací prostředí**  
 
 | Hardware | Podrobnosti |
 | --- | --- |
-| Procesor |AMD Opteron(tm) procesoru 4171 HE / 4 jádra |
+| Procesor |4171 procesor AMD Opteron(tm) HE / 4 jádra |
 | Memory (Paměť) |14 GB |
-| Disk |10 GB místa na disku |
+| Disk |10 GB/disk |
 | Operační systém |Ubuntu 14.04.1 LTS |
 
 [1]:media/optimize-mysql/virtual-machines-linux-optimize-mysql-perf-01.png

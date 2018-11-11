@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/23/2017
-ms.openlocfilehash: 9d2cfeb780687e1bf0e61173b3550e26f4019115
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: a107907dd01b15015c644f835239f6f90b948296
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47394144"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51245830"
 ---
 # <a name="walkthrough-develop-a-predictive-analytics-solution-for-credit-risk-assessment-in-azure-machine-learning"></a>Názorný průvodce: Vývoj řešení prediktivní analýzy pro posuzování úvěrového rizika v Azure Machine Learning
 
@@ -57,4 +57,4 @@ Při vytváření řešení pro posuzování úvěrového rizika budeme postupov
 > [!TIP] 
 > Pracovní kopii experimentu, který vyvíjíme v tomto názorném průvodci, najdete v [galerii Azure AI](https://gallery.cortanaintelligence.com). Přejděte k části **[Názorný průvodce – Predikce úvěrového rizika](https://gallery.cortanaintelligence.com/Experiment/Walkthrough-Credit-risk-prediction-1)**, klikněte na **Open in Studio** (Otevřít v sadě Studio) a stáhněte kopii experimentu do pracovního prostoru Machine Learning Studio.
 > 
-> Tento názorný postup je založen na zjednodušené verzi ukázkového experimentu [Binární klasifikace: Predikce úvěrového rizika](http://go.microsoft.com/fwlink/?LinkID=525270), který je také k dispozici v [Galerii](http://gallery.cortanaintelligence.com/).
+> Tento názorný postup je založen na zjednodušené verzi ukázkového experimentu [Binární klasifikace: Predikce úvěrového rizika](https://go.microsoft.com/fwlink/?LinkID=525270), který je také k dispozici v [Galerii](http://gallery.cortanaintelligence.com/).

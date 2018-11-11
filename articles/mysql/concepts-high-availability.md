@@ -1,6 +1,6 @@
 ---
-title: Koncepty vysoké dostupnosti v Azure Database pro databázi MySQL
-description: Toto téma obsahuje informace o vysoké dostupnosti při použití Azure databáze pro databázi MySQL
+title: Koncepty vysoké dostupnosti ve službě Azure Database for MySQL
+description: Toto téma obsahuje informace o vysoké dostupnosti při používání Azure Database for MySQL
 services: mysql
 author: jasonwhowell
 ms.author: jasonh
@@ -9,30 +9,31 @@ editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: 90dc603c0ee520774bd22531c7136e0949f6cf90
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 82d6106b7cebf47e6d68347857dd3d8a2d22dc3c
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35264176"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51298683"
 ---
-# <a name="high-availability-concepts-in-azure-database-for-mysql"></a>Koncepty vysoké dostupnosti v Azure Database pro databázi MySQL
-Databáze Azure pro službu MySQL poskytuje zaručené vysokou dostupnost. Finančně zálohovány smlouvu o úrovni služeb (SLA) je 99,99 % při obecné dostupnosti. Není prakticky žádná aplikace výpadek při používání této služby.
+# <a name="high-availability-concepts-in-azure-database-for-mysql"></a>Koncepty vysoké dostupnosti ve službě Azure Database for MySQL
+Služba Azure Database for MySQL poskytuje zaručenou vysokou dostupnost. Je žádnou finančně zajištěnou smlouvu o úrovni služeb (SLA) 99,99 % při všeobecné dostupnosti. Neexistuje žádná aplikace prakticky časové prodlevy při používání této služby.
 
 ## <a name="high-availability"></a>Vysoká dostupnost
-Model vysokou dostupnost (HA) je založen na integrovaný mechanismus převzetí služeb při selhání, když dojde k přerušení úrovni uzlu. Přerušení úrovni uzlu mohlo dojít z důvodu selhání hardwaru nebo v reakci na nasazení služby.
+Model vysoké dostupnosti (HA) je založen na integrovaný mechanismus převzetí služeb při selhání, když dojde k přerušení úrovni uzlu. Přerušení úrovni uzlu mohlo dojít z důvodu selhání hardwaru nebo v reakci na nasazení služby.
 
-Vždy změny provedené v databázi Azure pro server databáze MySQL dojít v kontextu transakce. Změny se zaznamenávají synchronně v úložišti Azure, když je transakce potvrzena. Pokud dojde k přerušení úrovni uzlu, serveru databáze automaticky vytvoří nový uzel a připojí ukládání dat do nového uzlu. Žádné aktivní připojení jsou vyřazen a jakékoli aktivních pořadových transakce nejsou potvrzeny.
+Po celou dobu změny provedené serveru Azure Database for MySQL database dochází v kontextu transakce. Změny se zaznamenávají synchronně ve službě Azure storage, když je transakce potvrzena. Pokud dojde k přerušení úrovni uzlu, serveru databáze automaticky vytvoří nový uzel a připojí úložiště dat do nového uzlu. Každé aktivní propojení se zahodí a nejsou potvrzeny všechny probíhající transakce.
 
-## <a name="application-retry-logic-is-essential"></a>Logika opakovaných pokusů aplikací je nezbytné
-Je důležité, MySQL databázové aplikace jsou postaveny ke zjišťování a opakujte vyřadit připojení a transakce se nezdařilo. Při opakování aplikace, je připojení aplikace transparentně přesměrován na nově vytvořená instance, který má u nezdařených instancí.
+## <a name="application-retry-logic-is-essential"></a>Je základní aplikace logiky opakování
+Je důležité, že MySQL database aplikace se vytvářejí ke zjišťování a zkuste to znovu přerušení připojení a transakce se nezdařilo. Když aplikace opakování, připojení vaší aplikace transparentně přesměrují na nově vytvořená instance, která má pro chybné instance.
 
-Interně v Azure, brána slouží k přesměrování připojení k nové instanci. Celý proces převzetí služeb při selhání po přerušení, obvykle trvá desítkami sekund. Vzhledem k tomu, že přesměrování interně zpracovává bránou, externí připojovací řetězec zůstává stejná pro klientské aplikace.
+Interně v Azure, brány slouží k přesměrování připojení k nové instanci. Celý proces převzetí služeb při selhání při přerušení, obvykle trvá desítky vteřin. Protože přesměrování interně zpracována třídou brány, externí připojovací řetězec zůstává pro klientské aplikace.
 
-## <a name="scaling-up-or-down"></a>Škálování nahoru nebo dolů
-Podobně jako u HA model, při změně měřítka Azure Database pro databázi MySQL nahoru nebo dolů, je vytvořena nová instance serveru s po zadanou velikost. Je stávající úložiště dat je odpojený od původní instance a připojena k nové instanci.
+## <a name="scaling-up-or-down"></a>Škálování směrem nahoru nebo dolů
+Podobně jako u modelu vysokou dostupnost, když Azure Database for MySQL je vertikálně navýšit nebo snížit, je vytvořena nová instance serveru s zadané velikosti. Je stávající úložiště dat je odpojena od původní instance a připojena k nové instanci.
 
-Během operace škálování dojde k přerušení připojení databáze. Klientské aplikace jsou odpojené a otevřete nepotvrzené transakce budou zrušeny. Jakmile klientská aplikace opakuje připojení nebo vytvoří nové připojení, přesměruje bránu připojení k nově velikostí instance. 
+Během operace škálování dojde k přerušení připojení databáze. Nejste připojení klientských aplikací a otevřít nepotvrzené transakce se zrušila. Jakmile se klientská aplikace opakuje připojení, nebo vytvoří nové připojení, brány směruje připojení na nově velikosti instance. 
 
 ## <a name="next-steps"></a>Další postup
-- Přehled služby najdete v tématu [Azure databáze MySQL přehled](overview.md)
+- Přehled služby najdete v tématu [– Azure Database for MySQL – přehled](overview.md)
+- Přehled na logiku opakování, naleznete v tématu [zpracování připojení přechodných chyb pro službu Azure Database for MySQL](concepts-connectivity.md)

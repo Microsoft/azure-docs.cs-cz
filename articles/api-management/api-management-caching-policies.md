@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2017
 ms.author: apimpm
-ms.openlocfilehash: 160172b25f4bcdb04ac9f9649bca6b08e0be1b0d
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: 1706364ca0281240b5b887bea219620c7b4add5e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48269068"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51246833"
 ---
 # <a name="api-management-caching-policies"></a>Zásady ukládání do mezipaměti služby API Management
-Toto téma obsahuje odkaz pro následující zásady služby API Management. Informace o přidávání a konfiguraci zásad najdete v tématu [zásady ve službě API Management](http://go.microsoft.com/fwlink/?LinkID=398186).  
+Toto téma obsahuje odkaz pro následující zásady služby API Management. Informace o přidávání a konfiguraci zásad najdete v tématu [zásady ve službě API Management](https://go.microsoft.com/fwlink/?LinkID=398186).  
   
 ##  <a name="CachingPolicies"></a> Zásady ukládání do mezipaměti  
   
@@ -121,7 +121,7 @@ Toto téma obsahuje odkaz pro následující zásady služby API Management. Inf
 |se liší podle – pro vývojáře – skupiny|Nastavte na `true` do mezipaměti odpovědi na roli uživatele.|Ano||  
   
 ### <a name="usage"></a>Využití  
- Tyto zásady můžete použít v následujících zásad [oddíly](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
+ Tyto zásady můžete použít v následujících zásad [oddíly](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
 -   **Části zásad:** příchozí  
 -   **Zásady obory:** rozhraní API, operace, produkt  
@@ -193,7 +193,7 @@ Toto téma obsahuje odkaz pro následující zásady služby API Management. Inf
 |doba trvání|Time-to-live uložené v mezipaměti položek, které se zadávají v sekundách.|Ano|neuvedeno|  
   
 ### <a name="usage"></a>Využití  
- Tyto zásady můžete použít v následujících zásad [oddíly](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
+ Tyto zásady můžete použít v následujících zásad [oddíly](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
 -   **Části zásad:** odchozí    
 -   **Zásady obory:** rozhraní API, operace, produkt  
@@ -237,7 +237,7 @@ Toto téma obsahuje odkaz pro následující zásady služby API Management. Inf
 |Název proměnné|Název [kontextovou proměnnou](api-management-policy-expressions.md#ContextVariables) looked nahoru hodnota se přiřadí, pokud je úspěšné vyhledávání. Pokud je vyhledávání výsledkem by chyběla, proměnné se přiřadí hodnotu `default-value` atribut nebo `null`, pokud `default-value` atribut je vynechán.|Ano|neuvedeno|  
   
 ### <a name="usage"></a>Využití  
- Tyto zásady můžete použít v následujících zásad [oddíly](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
+ Tyto zásady můžete použít v následujících zásad [oddíly](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
 -   **Části zásad:** vstupní, výstupní a back-endu na chyby  
 -   **Zásady obory:** globální, rozhraní API, operace, produkt  
@@ -279,7 +279,7 @@ Toto téma obsahuje odkaz pro následující zásady služby API Management. Inf
 |hodnota|Hodnota ukládat do mezipaměti.|Ano|neuvedeno|  
   
 ### <a name="usage"></a>Využití  
- Tyto zásady můžete použít v následujících zásad [oddíly](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
+ Tyto zásady můžete použít v následujících zásad [oddíly](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
 -   **Části zásad:** vstupní, výstupní a back-endu na chyby  
 -   **Zásady obory:** globální, rozhraní API, operace, produkt  
@@ -316,7 +316,7 @@ Toto téma obsahuje odkaz pro následující zásady služby API Management. Inf
 |key|Klíče uložené v mezipaměti hodnota, která má být odebrány z mezipaměti.|Ano|neuvedeno|  
   
 #### <a name="usage"></a>Využití  
- Tyto zásady můžete použít v následujících zásad [oddíly](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) .  
+ Tyto zásady můžete použít v následujících zásad [oddíly](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) .  
   
 -   **Části zásad:** vstupní, výstupní a back-endu na chyby  
 -   **Zásady obory:** globální, rozhraní API, operace, produkt  

@@ -15,15 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/15/2017
 ms.author: deguhath
-ms.openlocfilehash: 95403e71367f111877c6f317c63811333bd054dd
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 76b67112ade2d160f281533c4be7d41c98087398
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49395186"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51345534"
 ---
 # <a name="operationalize-spark-built-machine-learning-models"></a>Zprovoznění modelů strojového učení předdefinovaných Spark
-[!INCLUDE [machine-learning-spark-modeling](../../../includes/machine-learning-spark-modeling.md)]
 
 Toto téma ukazuje, jak zprovoznit model uložené machine learning (ML) pomocí Pythonu v clusterech HDInsight Spark. Popisuje, jak načíst modely strojového učení, které se sestavily pomocí Spark MLlib a uložená v Azure Blob Storage (WASB) a jak skóre u datových sad, které jsou uložené taky v WASB. Zobrazuje předběžně zpracovat vstupní data, transformovali funkcí s použitím funkcí indexování a kódování v sadě nástrojů MLlib a vytvoření datového objektu s popiskem bod, který může sloužit jako vstup pro vyhodnocení s modely ML. Modely použité pro vyhodnocování zahrnují lineární regrese, logistické regrese, náhodných modely doménové struktury a přechodu modely zvýšení úrovně stromu.
 
