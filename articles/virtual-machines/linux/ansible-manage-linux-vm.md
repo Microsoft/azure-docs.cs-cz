@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: quickstart
 ms.date: 09/27/2018
-ms.openlocfilehash: d9ff0387a1d02eb5f4684048aeed8ad0079b28ef
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 06a0f2416ecff9e2f9a21877e26487b56452d0a0
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434411"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51251317"
 ---
 # <a name="use-ansible-to-manage-a-linux-virtual-machine-in-azure"></a>Použití Ansible ke správě virtuálního počítače s Linuxem v Azure
 Ansible umožňuje automatizovat nasazování a konfiguraci prostředků ve vašem prostředí. Pomocí Ansible můžete spravovat virtuální počítače Azure stejně jako jakékoli jiné prostředky. V tomto článku se dozvíte, jak pomocí playbooku Ansible spustit a zastavit virtuální počítač s Linuxem. 
@@ -27,7 +27,7 @@ Ansible umožňuje automatizovat nasazování a konfiguraci prostředků ve vaš
 ## <a name="use-ansible-to-deallocate-stop-an-azure-virtual-machine"></a>Použití Ansible k uvolnění (zastavení) virtuálního počítače Azure
 Tato část ukazuje, jak pomocí Ansible uvolnit (zastavit) virtuální počítač Azure.
 
-1.  Přihlaste se k webu [Azure Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040).
+1.  Přihlaste se k webu [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
 1.  Otevřete [Cloud Shell](/azure/cloud-shell/overview).
 
@@ -85,7 +85,7 @@ Tato část ukazuje, jak pomocí Ansible uvolnit (zastavit) virtuální počíta
 ## <a name="use-ansible-to-start-a-deallocated-stopped-azure-virtual-machine"></a>Použití Ansible ke spuštění uvolněného (zastaveného) virtuálního počítače Azure
 Tato část ukazuje, jak pomocí Ansible spustit uvolněný (zastavený) virtuální počítač Azure.
 
-1.  Přihlaste se k webu [Azure Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040).
+1.  Přihlaste se k webu [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
 1.  Otevřete [Cloud Shell](/azure/cloud-shell/overview).
 

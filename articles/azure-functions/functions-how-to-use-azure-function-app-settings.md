@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/28/2018
 ms.author: glenga
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 18e4adb47ecf8e6d44edea873a4b3cc73492b273
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 5e34aae62f871cba2a27a292242cff8e90c67934
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44301479"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228976"
 ---
 # <a name="how-to-manage-a-function-app-in-the-azure-portal"></a>Správa aplikace function app na webu Azure Portal 
 
@@ -50,7 +50,7 @@ Může být někdy obtížné najít prostředky v [Azure Portal]. Aby bylo snaz
 
 **Nastavení** je karta, kde můžete aktualizovat verze modulu runtime Functions používá aplikace function App. Je také kde budete spravovat hostitele klíčů používá k omezení přístupu k protokolu HTTP k všech funkcí hostované aplikace function app.
 
-Služba Functions podporuje hostování Consumption a plánů hostování služby App Service. Další informace najdete v tématu [zvolte správného plánu služby pro službu Azure Functions](functions-scale.md). Pro poskytují lépe předvídatelnou v plánu Consumption funkce vám umožní omezit využití platformy tak, že nastavíte denní kvótu využití v gigabajtech sekund. Jakmile se denní kvóta využití naplní, aplikace function app je zastavená. Aplikace function app zastavena v důsledku dosažení kvóty útraty může být ze stejné oblasti jako zřízení denní kvóta útraty znovu zapnout. Zobrazit [stránce s cenami za Azure Functions](http://azure.microsoft.com/pricing/details/functions/) podrobné informace o fakturaci.   
+Služba Functions podporuje hostování Consumption a plánů hostování služby App Service. Další informace najdete v tématu [zvolte správného plánu služby pro službu Azure Functions](functions-scale.md). Pro poskytují lépe předvídatelnou v plánu Consumption funkce vám umožní omezit využití platformy tak, že nastavíte denní kvótu využití v gigabajtech sekund. Jakmile se denní kvóta využití naplní, aplikace function app je zastavená. Aplikace function app zastavena v důsledku dosažení kvóty útraty může být ze stejné oblasti jako zřízení denní kvóta útraty znovu zapnout. Zobrazit [stránce s cenami za Azure Functions](https://azure.microsoft.com/pricing/details/functions/) podrobné informace o fakturaci.   
 
 ## <a name="platform-features-tab"></a>Kartě funkce platformy
 

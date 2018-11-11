@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: c078320ce31e0c51c7aef0bc0a2aa14e68ac2fc3
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 41e627d895f0276d372ee42df3e0a43fdadc4051
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48042857"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51016059"
 ---
 # <a name="collect-azure-activity-logs-into-log-analytics-across-subscriptions"></a>Shromažďování protokolů aktivit Azure do Log Analytics napříč předplatnými
 
@@ -29,7 +29,7 @@ Pokud je pracovní prostor Log Analytics ve stejném předplatném Azure nebo v 
 
 ## <a name="overview"></a>Přehled
 
-Strategie použitá v tomto scénáři spočívá v odesílání událostí protokolu aktivit Azure do [centra událostí](../event-hubs/event-hubs-what-is-event-hubs.md), ze kterého je [aplikace logiky](../logic-apps/logic-apps-overview.md) odesílá do vašeho prostoru Log Analytics. 
+Strategie použitá v tomto scénáři spočívá v odesílání událostí protokolu aktivit Azure do [centra událostí](../event-hubs/event-hubs-about.md), ze kterého je [aplikace logiky](../logic-apps/logic-apps-overview.md) odesílá do vašeho prostoru Log Analytics. 
 
 ![obrázek toku dat z protokolu aktivit do Log Analytics](media/log-analytics-activity-logs-subscriptions/data-flow-overview.png)
 

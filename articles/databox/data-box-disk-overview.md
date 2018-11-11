@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: overview
-ms.date: 09/04/2018
+ms.date: 10/30/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand what Data Box Disk is and how it works so I can use it to import on-premises data into Azure.
-ms.openlocfilehash: 322c398bd6384821697e2b672825cc0805eb43ad
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 47cffbabf073fac3fc24fc070b8d5164fecf3f9c
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49092894"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50418751"
 ---
 # <a name="what-is-azure-data-box-disk-preview"></a>Co je Azure Data Box Disk? (Preview)
 
@@ -112,7 +112,7 @@ Po dobu platnosti verze Preview může služba Data Box Disk přenášet data do
 
 ## <a name="pricing"></a>Ceny
 
-Ve verzi Preview je služba Data Box Disk dostupná zdarma. To se změní, jakmile bude služba Data Box Disk dostupná obecně.
+Informace o cenách najdete na stránce s [cenami verze Preview](https://azure.microsoft.com/pricing/details/storage/databox/disk/).
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -2,19 +2,19 @@
 title: Microsoft Cognitive Toolkit s Azure HDInsight Spark pro obsáhlý learning
 description: Zjistěte, jak trénovaného modelu obsáhlého learningu Microsoft Cognitive Toolkit lze použít u datové sady pomocí rozhraní Python API Spark v clusteru Azure HDInsight Spark.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/28/2017
-ms.author: jasonh
-ms.openlocfilehash: cc36c68f4867b9b450703c881a13a65f17ebad4b
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.author: hrasheed
+ms.openlocfilehash: 4bcf6df37e7341baf227b9c77b718a955526823d
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43049447"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51010928"
 ---
 # <a name="use-microsoft-cognitive-toolkit-deep-learning-model-with-azure-hdinsight-spark-cluster"></a>Použití sady Microsoft Cognitive Toolkit hloubkového učení modelu s clusterem Azure HDInsight Spark
 

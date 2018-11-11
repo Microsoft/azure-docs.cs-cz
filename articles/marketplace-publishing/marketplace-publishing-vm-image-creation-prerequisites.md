@@ -14,12 +14,12 @@ ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 04/29/2016
 ms.author: hascipio; v-divte
-ms.openlocfilehash: af3e2ad623d8d7bfafe676411f9ae3fbee78aab8
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 79fb9869b37e82df3f41a50e4425e7c0cd08c841
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39714328"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51255264"
 ---
 # <a name="technical-prerequisites-for-creating-a-virtual-machine-image-for-the-azure-marketplace"></a>Technické požadavky pro vytváření imagí virtuálních počítačů pro Azure Marketplace
 Přečtěte si důkladně před zahájením procesu a pochopit, kde a proč provádění jednotlivých kroků. Co je to možné, můžete by měla připravit informace o vaší společnosti a další data, stáhněte potřebné nástroje, nebo vytvořit technickými komponentami před zahájením procesu vytvoření nabídky. Tyto položky by měl být zřejmé z revize v tomto článku.  
@@ -30,7 +30,7 @@ Byste měli mít připravené před zahájením procesu následující položky:
 * V závislosti na tom, jaký operační systém cílíte, nainstalujte [rutin prostředí Azure PowerShell](https://www.microsoft.com/web/handlers/webpi.ashx/getinstaller/WindowsAzurePowershellGet.3f.3f.3fnew.appids) nebo [nástrojů rozhraní příkazového řádku systému Linux](https://go.microsoft.com/fwlink/?LinkId=253472&clcid=0x409) z [soubory ke stažení Azure](https://azure.microsoft.com/downloads/) stránky.
 * Instalace Průzkumníka služby Azure Storage na webu CodePlex.
 * Stáhněte a nainstalujte nástroj Test certifikace pro Azure Certified:
-  * [http://go.microsoft.com/fwlink/?LinkID=526913](http://go.microsoft.com/fwlink/?LinkID=526913). Je nutné počítače se systémem Windows ke spuštění certifikačního nástroje. Pokud nemáte k dispozici počítače založené na Windows, můžete spustit nástroj pomocí virtuálního počítače s operačním systémem Windows v Azure.
+  * [http://go.microsoft.com/fwlink/?LinkID=526913](https://go.microsoft.com/fwlink/?LinkID=526913). Je nutné počítače se systémem Windows ke spuštění certifikačního nástroje. Pokud nemáte k dispozici počítače založené na Windows, můžete spustit nástroj pomocí virtuálního počítače s operačním systémem Windows v Azure.
 
 ## <a name="platforms-supported"></a>Podporované platformy
 Můžete vyvíjet virtuálních počítačů Azure ve Windows nebo Linuxu. Některé prvky procesu publikování – například vytváření kompatibilní s Azure virtuálního pevného disku (VHD) – pomocí různých nástrojů a kroky, podle toho, jaký operační systém používáte:  

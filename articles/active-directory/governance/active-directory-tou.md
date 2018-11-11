@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.component: compliance
-ms.date: 10/30/2018
+ms.date: 11/02/2018
 ms.author: rolyon
-ms.openlocfilehash: 87b08ce138cde5cc70c5a80cc414c68dd7aea743
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 8fddcdbb8aa523cf3a98a8f2b203440ceedbdf06
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50249791"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51015196"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Funkce Azure Active Directory Terms of Use
 Azure AD Terms of Use poskytuje organizacím jednoduchý způsob předkládání informací koncovým uživatelům. Toto předkládání zajistí, že se uživatelům zobrazí příslušná právní omezení pro zákonné požadavky nebo požadavky dodržování předpisů. Tento článek popisuje, jak začít pracovat s podmínkami použití.
@@ -218,7 +218,7 @@ Zásady podmíněného přístupu vstupují v platnost okamžitě. Pokud k tomu 
 
 **Otázka: Jak poznám, kdy/jestli uživatel přijal podmínky použití?**</br>
 Odpověď: na podmínky použití okna, klikněte na číslo pod **přijato**. Můžete také zobrazit nebo Hledat přijmout aktivity ve službě Azure AD protokoly auditu. Další informace najdete v tématu [zobrazit sestavu kteří je přijali a odmítli](#view-who-has-accepted-and-declined) a [protokolů auditu Azure AD zobrazení](#view-azure-ad-audit-logs).
- 
+
 **Otázka: Jak dlouho se informace uchovávají?**</br>
 Odpověď: uživatel se počítá v podmínkách použití sestavy a na koho se přijata nebo odmítnuta se uchovávají po dobu životnosti podmínky použití. Po dobu 30 dnů se ukládají protokoly auditu Azure AD.
 
@@ -245,12 +245,15 @@ Odpověď: Můžete vytvořit zásady podmíněného přístupu pro podnikové a
 
 **Otázka: Je možné pro konkrétního uživatele nebo aplikaci přidat několikero podmínek použití?**</br>
 Odpověď: Ano, a to tak, že vytvoříte několik zásad podmíněného přístupu, které cílí na tyto skupiny nebo aplikace. Pokud uživatel spadá do rozsahu několika podmínek použití, musí je odsouhlasit postupně.
- 
+
 **Otázka: Co se stane, když uživatel odmítne podmínky použití?**</br>
 Odpověď: Uživatel bude mít k zablokovaný přístup k aplikaci. Uživatel musel znovu přihlásit a souhlasit s podmínkami, aby bylo možné získat přístup.
- 
+
 **Otázka: je možné unaccept podmínky použití, které byly dříve přijali službu?**</br>
 Odpověď: můžete [kontrola dříve přijali podmínky použití](#how-users-can-review-their-terms-of-use), ale aktuálně není k dispozici způsob, jak unaccept.
+
+**Otázka: co se stane, když také používám Intune podmínky a ujednání?**</br>
+Odpověď: Pokud jste nakonfigurovali obě Azure AD podmínky použití a [Intune podmínky a ujednání](/intune/terms-and-conditions-create), uživatel bude muset přijmout. Další informace najdete v tématu [Volba správného řešení pro vaši organizaci blogový příspěvek podmínky](https://go.microsoft.com/fwlink/?linkid=2010506&clcid=0x409).
 
 ## <a name="next-steps"></a>Další postup
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/15/2018
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: c30c233fb1d413c6a55c7ec0af8c63ca60284b86
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: d29f01c7f953ed211b429e41b844a01c67e41054
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50960272"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282369"
 ---
 # <a name="scaling-throughput-in-azure-cosmos-db"></a>Škálování propustnosti ve službě Azure Cosmos DB
 
@@ -25,7 +25,7 @@ Můžete zřídit RU v kontejneru Cosmos nebo v databázi Cosmos. RU zřízenýc
 
 Elasticky škálovat propustnost, můžete zvýšit nebo snížit RU/s zřízených v každém okamžiku. Další informace najdete v tématu [postupy: poskytování propustnost](set-throughput.md) a Elasticky škálovat Cosmos kontejnerů a databáze. Globální škálování propustnosti, můžete přidání nebo odebrání oblastí na vašem účtu Cosmos kdykoli. Další informace najdete v tématu [postup přidání nebo odebrání oblastí k vašemu účtu Cosmos](how-to-manage-database-account.md#addremove-regions-from-your-database-account). Přidružení účtu Cosmos více oblastí je důležité pro mnoho scénářů s nízkou latencí dosáhnout a [vysoké dostupnosti](high-availability.md) po celém světě.
 
-## <a name="how-throughput-scaling-works"></a>Jak funguje škálování propustnosti
+## <a name="how-provisioned-throughput-is-distributed-across-regions"></a>jak zřízená propustnost je distribuovaná napříč oblastmi
 
 Pokud zřizujete "R" ru na databázi Cosmos kontejneru (nebo), Cosmos DB zajišťuje, že jsou k dispozici v "R" ru *každý* oblasti přidružené k účtu Cosmos. Pokaždé, když přidáte novou oblast ke svému účtu služby Cosmos DB automaticky zřídí ru "R" v nově přidaném oblasti. Operací provedených v kontejneru Cosmos je zaručeno, chcete-li získat ru "R" v jednotlivých oblastech. Nelze přiřadit selektivně ru určité oblasti. Pro všemi oblastmi spojenými s vaším účtem Cosmos jsou zřízené ru zřízených pro databázi Cosmos kontejneru (nebo).
 

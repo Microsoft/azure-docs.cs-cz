@@ -2,19 +2,18 @@
 title: Správa připojení v Azure Functions
 description: Zjistěte, jak se vyhnout problémy s výkonem ve službě Azure Functions pomocí statického připojení klientů.
 services: functions
-documentationcenter: ''
 author: ggailey777
 manager: jeconnoc
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 07/13/2018
+ms.date: 11/02/2018
 ms.author: glenga
-ms.openlocfilehash: 6a877bb7f21b129522b9ffeab22eb77d7a556d53
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: eb5c302c807f85f24f53fa1ba32ef4cd7b52274a
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44094795"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51036457"
 ---
 # <a name="how-to-manage-connections-in-azure-functions"></a>Správa připojení v Azure Functions
 
@@ -37,9 +36,13 @@ Tady jsou některé zásady dodržovat při použití klienta specifickou pro sl
 - **PROVEĎTE** vytvořit jeden, statické klienta, které mohou být využívána každé volání funkce.
 - **Vezměte v úvahu** vytvoření jeden statický klienta ve sdílených pomocnou třídu, pokud různé funkce používaly stejnou službu.
 
-## <a name="httpclient-code-example"></a>Příklad kódu HttpClient
+## <a name="client-code-examples"></a>Příklady kódu klienta
 
-Tady je příklad kódu funkce, která vytvoří statickou [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx):
+Tato část ukazuje osvědčené postupy pro vytváření a používání klientů z kód vaší funkce.
+
+### <a name="httpclient-example-c"></a>Příklad HttpClient (C#)
+
+Tady je příklad C# funkční kód, který vytvoří statickou [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx):
 
 ```cs
 // Create a single, static HttpClient
@@ -54,7 +57,27 @@ public static async Task Run(string input)
 
 Běžné otázky o .NET [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx) je "By měl jsem se připravuje se klient?" Obecně platí, Uvolňujte objekty, které implementují `IDisposable` po dokončení jejich používání. Ale statického klienta není vyřadit, protože není vše nastaveno použití po skončení funkce. Chcete, aby statické klienta na živá po dobu trvání aplikace.
 
-## <a name="documentclient-code-example"></a>Příklad kódu DocumentClient
+### <a name="http-agent-examples-nodejs"></a>Příklady agenta HTTP (Node.js)
+
+Protože lepší připojení poskytuje možnosti správy, měli byste používat nativní [ `http.agent` ](https://nodejs.org/dist/latest-v6.x/docs/api/http.html#http_class_http_agent) třídy místo metody není nativní, jako `node-fetch` modulu. Parametry připojení jsou nakonfigurované na použití možností `http.agent` třídy. Zobrazit [nového agenta (\[možnosti\])](https://nodejs.org/dist/latest-v6.x/docs/api/http.html#http_new_agent_options) podrobné možnosti k dispozici s agentem HTTP.
+
+Globální `http.globalAgent` používané `http.request()` má všechny tyto hodnoty příslušných výchozí nastavení. Doporučeným způsobem, jak nakonfigurovat omezení počtu připojení ve funkcích se nastavit maximální počet globálně. Následující příklad nastaví maximální počet soketů pro danou aplikaci funkcí:
+
+```js
+http.globalAgent.maxSockets = 200;
+```
+
+ Následující příklad vytvoří nový požadavek HTTP s vlastní agenta HTTP jenom pro tento požadavek.
+
+```js
+var http = require('http');
+var httpAgent = new http.Agent();
+httpAgent.maxSockets = 200;
+options.agent = httpAgent;
+http.request(options, onResponseCallback);
+```
+
+### <a name="documentclient-code-example-c"></a>Příklad kódu DocumentClient (C#)
 
 [DocumentClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient
 ) připojí k instanci služby Azure Cosmos DB. Dokumentace ke službě Azure Cosmos DB doporučuje vám [používání klienta služby Azure Cosmos DB jednotlivý prvek po dobu životnosti aplikace](https://docs.microsoft.com/azure/cosmos-db/performance-tips#sdk-usage). Následující příklad ukazuje jeden vzor, který to ve funkci:

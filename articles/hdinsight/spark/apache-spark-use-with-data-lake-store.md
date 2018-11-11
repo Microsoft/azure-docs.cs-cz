@@ -3,18 +3,18 @@ title: Analýza dat v Azure Data Lake Store pomocí Apache Sparku
 description: Spuštění úlohy Spark analyzovat data uložená v Azure Data Lake Store
 services: hdinsight
 ms.service: hdinsight
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/21/2018
-ms.openlocfilehash: aae63b06999c0b8eafa0d42608d32a4d467a900c
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 9fe4b3e49f8e3270f58929a5708a83ab02e2486c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43041057"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51255246"
 ---
 # <a name="use-hdinsight-spark-cluster-to-analyze-data-in-data-lake-store"></a>Použití clusteru Spark v HDInsight k analýze dat v Data Lake Store
 
@@ -34,7 +34,7 @@ V tomto kurzu použijete k dispozici Poznámkový blok Jupyter s clustery HDInsi
 >
 >
 
-Pokud jste vytvořili cluster služby HDInsight s Data Lake Store jako dalšího úložiště a Azure Storage Blob jako výchozím úložištěm, měli byste nejprve zkopírovat přes nějaká ukázková data do účtu Data Lake Store. Můžete tak ukázku, kterou data z Azure Storage Blob přidružené ke clusteru HDInsight. Můžete použít [ADLCopy nástroj](http://aka.ms/downloadadlcopy) Uděláte to tak. Stáhněte a nainstalujte nástroj z odkazu.
+Pokud jste vytvořili cluster služby HDInsight s Data Lake Store jako dalšího úložiště a Azure Storage Blob jako výchozím úložištěm, měli byste nejprve zkopírovat přes nějaká ukázková data do účtu Data Lake Store. Můžete tak ukázku, kterou data z Azure Storage Blob přidružené ke clusteru HDInsight. Můžete použít [ADLCopy nástroj](https://aka.ms/downloadadlcopy) Uděláte to tak. Stáhněte a nainstalujte nástroj z odkazu.
 
 1. Otevřete příkazový řádek a přejděte do adresáře, kde AdlCopy je nainstalovaný, obvykle `%HOMEPATH%\Documents\adlcopy`.
 

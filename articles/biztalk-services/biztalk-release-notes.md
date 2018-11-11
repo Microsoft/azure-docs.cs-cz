@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2016
 ms.author: deonhe
-ms.openlocfilehash: db79ee85c19e5f3cdced9b894aca48de4d7d1c42
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: f990aa086997d51e59df4285aabeccd31dcce822
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45576466"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51253427"
 ---
 # <a name="release-notes-for-azure-biztalk-services"></a>Poznámky k verzi pro služby Azure BizTalk Services
 
@@ -188,7 +188,7 @@ Představte si třeba situaci, kde používáte chování na základě název pr
 
 ### <a name="bridges-continue-to-process-messages-even-when-the-sql-database-is-offline"></a>Mosty pokračovat ve zpracování zprávy i v případě, že databáze SQL je offline
 Mosty BizTalk Services i nadále zpracovávat zprávy na dobu, i v případě, že Microsoft Azure SQL Database (která obsahuje provozní informace, například nasazené artefakty a kanály), je offline. Toto je vzhledem k tomu BizTalk Services se používá v mezipaměti artefakty a konfigurace mostu.
-Pokud nechcete, aby mosty zpracovávat všechny zprávy, když databáze SQL je offline, můžete použít rutiny prostředí PowerShell BizTalk Services pro zastavení nebo pozastavení služby BizTalk. Zobrazit [Ukázka správy služby Azure BizTalk](http://go.microsoft.com/fwlink/p/?LinkID=329019) pro rutiny Windows Powershellu ke správě operací.  
+Pokud nechcete, aby mosty zpracovávat všechny zprávy, když databáze SQL je offline, můžete použít rutiny prostředí PowerShell BizTalk Services pro zastavení nebo pozastavení služby BizTalk. Zobrazit [Ukázka správy služby Azure BizTalk](https://go.microsoft.com/fwlink/p/?LinkID=329019) pro rutiny Windows Powershellu ke správě operací.  
 
 ### <a name="reading-the-xml-message-within-a-bridges-custom-code-component-includes-an-extra-bom-character"></a>Čtení zprávy XML v rámci komponenty mostu vlastní kód obsahuje znak navíc BOM
 Představte si třeba situaci, kdy si chcete přečíst zprávu XML v rámci mostu vlastní kód. Pokud používáte System.Text.Encoding.UTF8.GetString(bytes) rozhraní API .NET je znak navíc BOM součástí výstupu na začátek zprávy. Ano, pokud nechcete, aby výstup do další znak BOM, je nutné použít ```System.IO.StreamReader().ReadToEnd()```.

@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/23/2016
 ms.author: ghogen
-ms.openlocfilehash: a114833b40fe834aa0108d1a2f3821f0b7cbddbc
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 5234f5c82e98fcb402cadf9a8a469a15bbb7ac6d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49321848"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51250811"
 ---
 # <a name="get-started-with-azure-queue-storage-and-visual-studio-connected-services-aspnet"></a>Začínáme s Azure queue storage a Visual Studio připojené služby (ASP.NET)
 
@@ -141,7 +141,7 @@ Následující kroky ukazují, jak vytvořit frontu:
   
     ![Vytvořit frontu](./media/vs-storage-aspnet-getting-started-queues/create-queue-results.png)
 
-    Jak už bylo zmíněno dříve, **CloudQueue.CreateIfNotExists** vrátí metoda **true** pouze když neexistuje a vytvoření fronty. Proto při spuštění aplikace, fronta existuje, metoda vrátí **false**. Ke spuštění aplikace více než jednou, je nutné odstranit fronty před spuštěním aplikace. Odstranění fronty, můžete to udělat pomocí **CloudQueue.Delete** metody. Můžete také odstranit pomocí fronty [webu Azure portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) nebo [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md).  
+    Jak už bylo zmíněno dříve, **CloudQueue.CreateIfNotExists** vrátí metoda **true** pouze když neexistuje a vytvoření fronty. Proto při spuštění aplikace, fronta existuje, metoda vrátí **false**. Ke spuštění aplikace více než jednou, je nutné odstranit fronty před spuštěním aplikace. Odstranění fronty, můžete to udělat pomocí **CloudQueue.Delete** metody. Můžete také odstranit pomocí fronty [webu Azure portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) nebo [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md).  
 
 ## <a name="add-a-message-to-a-queue"></a>Přidání zprávy do fronty
 

@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: d42aed76ecdbc2bd840e17517db2ca0b6ba11aa0
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: d73284ecf40b2dfcd4954c1ddee82bf92a8931b9
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47034429"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281791"
 ---
 # <a name="tutorial-2-identify-common-intents-and-entities"></a>Kurz 2: Identifikace běžných záměrů a entit
 V tomto kurzu se upravíte aplikaci pro lidské zdroje. Přidejte do ukázkové aplikace pro lidské zdroje předem připravené záměry a entity a získejte tak rychle předpověď záměru a extrakci dat. Není potřeba označovat promluvy s předem vytvořenými entitami, protože příslušná entita se rozpozná automaticky.
@@ -25,30 +25,30 @@ Předem připravené modely běžných domén předmětů a datových typů vám
 **Co se v tomto kurzu naučíte:**
 
 > [!div class="checklist"]
-> * Použití existující ukázkové aplikace
+> * Používat existující ukázkovou aplikaci
 > * Přidání předem připravených záměrů 
 > * Přidání předem připravených entit 
 > * Trénování 
 > * Publikování 
-> * Získání záměrů a entit z koncového bodu
+> * Zjistit záměry a entity z koncového bodu
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="use-existing-app"></a>Použití existující aplikace
 Pokračujte s aplikací **HumanResources**, kterou jste vytvořili v posledním kurzu. 
 
-Pokud tuto aplikaci nemáte, proveďte tyto kroky:
+Pokud aplikaci HumanResources z předchozího kurzu nemáte, postupujte takto:
 
-1.  Stáhněte a uložte si [soubor JSON aplikace](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-intent-only-HumanResources.json).
+1.  Stáhněte si [soubor JSON aplikace](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-intent-only-HumanResources.json) a uložte si ho.
 
-2. Naimportujte JSON do nové aplikace.
+2. Naimportujte soubor JSON do nové aplikace.
 
-3. V části **Manage** (Správa) na kartě **Versions** (Verze) naklonujte verzi a pojmenujte ji `prebuilts`. Klonování představuje skvělý způsob, jak si můžete vyzkoušet různé funkce služby LUIS, aniž by to mělo vliv na původní verzi. Název verze je součástí cesty URL, a proto může obsahovat jenom znaky podporované v adresách URL. 
+3. V části **Manage** (Správa) na kartě **Versions** (Verze) naklonujte verzi a pojmenujte ji `prebuilts`. Klonování představuje skvělý způsob, jak si můžete vyzkoušet různé funkce služby LUIS, aniž by to mělo vliv na původní verzi. Název verze je součástí cesty URL, a proto smí obsahovat jenom znaky, které jsou platné v adresách URL. 
 
 ## <a name="add-prebuilt-intents"></a>Přidání předem připravených záměrů
 Služba LUIS poskytuje několik předem připravených záměrů, které vám pomůžou s běžnými záměry uživatelů.  
 
-1. [!include[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
+1. [!INCLUDE[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. Vyberte **Add prebuilt intent** (Přidat předem připravený záměr). 
 

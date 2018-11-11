@@ -1,6 +1,6 @@
 ---
-title: Samostatný balíček prostředků infrastruktury Azure služby pro systém Windows Server | Microsoft Docs
-description: Popis a obsah balíčku Azure Service Fabric Standalone pro systém Windows Server.
+title: Azure Service Fabric samostatného balíčku pro Windows Server | Dokumentace Microsoftu
+description: Popis a obsah Azure Service Fabric samostatného balíčku pro systém Windows Server.
 services: service-fabric
 documentationcenter: .net
 author: maburlik
@@ -13,49 +13,49 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/10/2017
 ms.author: maburlik
-ms.openlocfilehash: dccdd6518dd97299150892a5629809ea7f708838
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: afb6c8345cd71e7d39b7f3a0b2307c99cf31b449
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34209351"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51253328"
 ---
-# <a name="contents-of-service-fabric-standalone-package-for-windows-server"></a>Obsah balíčku Fabric samostatné služby pro systém Windows Server
-V [Stáhnout](http://go.microsoft.com/fwlink/?LinkId=730690) Service Fabric samostatný balíček, zjistíte, následující soubory:
+# <a name="contents-of-service-fabric-standalone-package-for-windows-server"></a>Obsah balíčku Service Fabric Standalone pro systém Windows Server
+V [stáhli](https://go.microsoft.com/fwlink/?LinkId=730690) Service Fabric samostatného balíčku, najdete následující soubory:
 
 | **Název souboru** | **Krátký popis** |
 | --- | --- |
-| CreateServiceFabricCluster.ps1 |Skript prostředí PowerShell, který vytváří cluster pomocí nastavení v souboru ClusterConfig.json. |
-| RemoveServiceFabricCluster.ps1 |Skript prostředí PowerShell, které odstraní cluster pomocí nastavení v souboru ClusterConfig.json. |
-| AddNode.ps1 |Skript prostředí PowerShell pro přidání uzlu do existujícího nasazení clusteru do aktuálního počítače. |
-| RemoveNode.ps1 |Skript prostředí PowerShell pro odebrání uzlu ze stávajícího nasazení clusteru z aktuálního počítače. |
-| CleanFabric.ps1 |Skript prostředí PowerShell pro čištění samostatnou instalaci Service Fabric vypnout do aktuálního počítače. Pomocí vlastních přidružené uninstallers, byste měli odebrat předchozí instalace Instalační služby MSI. |
-| TestConfiguration.ps1 |Skript prostředí PowerShell pro analýzu infrastruktury zadané v Cluster.json. |
-| DownloadServiceFabricRuntimePackage.ps1 |Skript prostředí PowerShell použít pro stažení nejnovější balíčku runtime vzdálené správy pro scénáře, kde není nasazení počítač připojený k Internetu. |
-| DeploymentComponentsAutoextractor.exe |Samorozbalovací archivu obsahující nasazení komponenty používané stránkami skripty samostatný balíček. |
-| EULA_ENU.txt |Licenční podmínky pro použití balíček Windows Server samostatné verze Microsoft Azure Service Fabric. Můžete [stáhnout kopii smlouvy EULA](http://go.microsoft.com/fwlink/?LinkID=733084) nyní. |
-| Readme.txt |Odkaz na poznámky k verzi a pokyny k základní instalaci. Je podmnožinou podle pokynů v tomto dokumentu. |
-| ThirdPartyNotice.rtf |Oznámení o software třetích stran, který je v balíčku. |
-| Tools\Microsoft.Azure.ServiceFabric.windowsserver.SupportPackage.zip |StandaloneLogCollector.exe který běží na vyžádání shromažďovat a odesílat protokoly trasování pro účely podpory společnosti Microsoft. |
-| Tools\ServiceFabricUpdateService.zip |Nástroj používaný pro povolení automatického upgradu kódu pro clustery, které nemají přístup k Internetu. Další podrobnosti najdete [sem](service-fabric-cluster-upgrade-windows-server.md)|
+| CreateServiceFabricCluster.ps1 |Skript Powershellu, který vytváří cluster pomocí nastavení v ClusterConfig.json. |
+| RemoveServiceFabricCluster.ps1 |Skript Powershellu, které odstraní cluster pomocí nastavení v ClusterConfig.json. |
+| AddNode.ps1 |Skript prostředí PowerShell pro přidání uzlu do existujícího nasazení clusteru na aktuálním počítači. |
+| RemoveNode.ps1 |Skript Powershellu pro odebrání uzlu ze stávajícího nasazení clusteru z aktuálního počítače. |
+| CleanFabric.ps1 |Skript prostředí PowerShell pro čištění samostatná instalace Service Fabric vypnout aktuálního počítače. Používání svoje vlastní přidružené uninstallers, byste měli odebrat předchozí instalace MSI. |
+| TestConfiguration.ps1 |Skript prostředí PowerShell pro analýzu infrastruktury, jak je uvedeno v Cluster.json. |
+| DownloadServiceFabricRuntimePackage.ps1 |Skript prostředí PowerShell použít si stáhli nejnovější balíček modulu runtime mimo pásmo, pro scénáře, kdy nasazujete počítač není připojený k Internetu. |
+| DeploymentComponentsAutoextractor.exe |Extrahování archiv obsahující komponenty pro nasazení používá skripty samostatný balíček. |
+| EULA_ENU.txt |Licenční podmínky pro použití Microsoft Azure Service Fabric samostatného systému Windows Server balíčku. Je možné [stáhnout kopii této smlouvy EULA](https://go.microsoft.com/fwlink/?LinkID=733084) nyní. |
+| Readme.txt |Odkaz na zprávu k vydání verze a pokyny k základní instalaci. Je podmnožinou podle pokynů v tomto dokumentu. |
+| ThirdPartyNotice.rtf |Oznámení o softwaru třetích stran, který je v balíčku. |
+| Tools\Microsoft.Azure.ServiceFabric.windowsserver.SupportPackage.zip |StandaloneLogCollector.exe který běží na vyžádání ke shromáždění a nahrajeme do Microsoftu protokoly trasování za účelem podpory. |
+| Tools\ServiceFabricUpdateService.zip |Nástroj, který se používá k povolení automatického upgradu kódu pro clustery, které nemají přístup k Internetu. Další podrobnosti najdete [zde](service-fabric-cluster-upgrade-windows-server.md)|
 
 **Šablony** 
 | **Název souboru** | **Krátký popis** |
 | --- | --- |
-| ClusterConfig.Unsecure.DevCluster.json |Soubor ukázkové konfiguraci clusteru, který obsahuje nastavení pro zabezpečená, tři uzly, jeden počítač (nebo virtuální počítač) vývoj clusteru služby, včetně informací pro každý uzel v clusteru. |
-| ClusterConfig.Unsecure.MultiMachine.json |Soubor ukázkové konfiguraci clusteru, který obsahuje nastavení pro cluster služby zabezpečená, více počítače (nebo virtuálního počítače), včetně informací pro každý počítač v clusteru. |
-| ClusterConfig.Windows.DevCluster.json |Soubor ukázkové konfiguraci clusteru, který obsahuje všechna nastavení pro zabezpečené, tři uzly, jeden počítač (nebo virtuální počítač) vývoj cluster, včetně informací pro každý uzel, který je v clusteru. Cluster je zabezpečená pomocí [Windows identity](https://msdn.microsoft.com/library/ff649396.aspx). |
-| ClusterConfig.Windows.MultiMachine.json |Soubor ukázkové konfiguraci clusteru, který obsahuje všechna nastavení zabezpečení, více počítače (nebo virtuálního počítače) clusteru pomocí zabezpečení systému Windows, včetně informací pro každý počítač, který je v zabezpečené clusteru. Cluster je zabezpečená pomocí [Windows identity](https://msdn.microsoft.com/library/ff649396.aspx). |
-| ClusterConfig.x509.DevCluster.json |Soubor ukázkové konfiguraci clusteru, který obsahuje všechna nastavení pro zabezpečené, tři uzly, jeden počítač (nebo virtuální počítač) vývoj cluster, včetně informací pro každý uzel v clusteru. Cluster zabezpečené pomocí x509 certifikáty. |
-| ClusterConfig.x509.MultiMachine.json |Soubor ukázkové konfiguraci clusteru, který obsahuje všechna nastavení pro cluster zabezpečené, více počítače (nebo virtuálního počítače), včetně informací pro každý uzel v clusteru zabezpečené. Cluster zabezpečené pomocí x509 certifikáty. |
-| ClusterConfig.gMSA.Windows.MultiMachine.json |Soubor ukázkové konfiguraci clusteru, který obsahuje všechna nastavení pro cluster zabezpečené, více počítače (nebo virtuálního počítače), včetně informací pro každý uzel v clusteru zabezpečené. Cluster zabezpečené pomocí [skupinové účty spravované služby](https://technet.microsoft.com/library/jj128431(v=ws.11).aspx). |
+| ClusterConfig.Unsecure.DevCluster.json |Soubor ukázky konfigurace clusteru, který obsahuje nastavení nezabezpečenou se třemi uzly, jednoho počítače (nebo virtuálním počítači) vývojový cluster, včetně informací pro každý uzel v clusteru. |
+| ClusterConfig.Unsecure.MultiMachine.json |Soubor ukázkové konfigurace clusteru, který obsahuje nastavení pro nezabezpečené, více počítačů (nebo virtuálního počítače) clusteru, včetně informací pro každý počítač v clusteru. |
+| ClusterConfig.Windows.DevCluster.json |Soubor ukázky konfigurace clusteru, který obsahuje všechna nastavení zabezpečení se třemi uzly, jeden počítač (nebo virtuálním počítači) vývojový cluster, včetně informací pro každý uzel, který je v clusteru. Je tento cluster zabezpečený pomocí [identity Windows](https://msdn.microsoft.com/library/ff649396.aspx). |
+| ClusterConfig.Windows.MultiMachine.json |Soubor ukázky konfigurace clusteru, který obsahuje všechna nastavení zabezpečení, více počítačů (nebo virtuálního počítače) clusteru pomocí zabezpečení Windows, včetně informací pro každý počítač, který je zabezpečený cluster. Je tento cluster zabezpečený pomocí [identity Windows](https://msdn.microsoft.com/library/ff649396.aspx). |
+| ClusterConfig.x509.DevCluster.json |Soubor ukázky konfigurace clusteru, který obsahuje všechna nastavení zabezpečení se třemi uzly, jeden počítač (nebo virtuálním počítači) vývojový cluster, včetně informací pro každý uzel v clusteru. Je tento cluster zabezpečený pomocí x509 certifikáty. |
+| ClusterConfig.x509.MultiMachine.json |Soubor ukázky konfigurace clusteru, který obsahuje všechna nastavení pro zabezpečené, více počítačů (nebo virtuálního počítače) clusteru, včetně informací pro každý uzel v zabezpečenému clusteru. Je tento cluster zabezpečený pomocí x509 certifikáty. |
+| ClusterConfig.gMSA.Windows.MultiMachine.json |Soubor ukázky konfigurace clusteru, který obsahuje všechna nastavení pro zabezpečené, více počítačů (nebo virtuálního počítače) clusteru, včetně informací pro každý uzel v zabezpečenému clusteru. Je tento cluster zabezpečený pomocí [skupinových účtů spravované služby](https://technet.microsoft.com/library/jj128431(v=ws.11).aspx). |
 
 ## <a name="cluster-configuration-samples"></a>Ukázky konfigurace clusteru
-Nejnovější verze šablon konfigurace clusteru najdete na GitHub stránce: [ukázky konfigurace clusteru samostatné](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples).
+Nejnovější verze šablony konfigurace clusteru můžete najít na stránku Githubu: [ukázky konfigurace samostatného clusteru](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples).
 
 ## <a name="independent-runtime-package"></a>Nezávislé balíček modulu Runtime
-Nejnovější modul runtime balíček se nestahuje automaticky při nasazení clusteru z [stáhnout odkaz - Service Fabric Runtime - Windows Server](https://go.microsoft.com/fwlink/?linkid=839354).
+Nejnovější balíček modulu runtime se nestahuje automaticky při nasazování clusteru z [stáhnout odkaz – modul Runtime Service Fabric – Windows Server](https://go.microsoft.com/fwlink/?linkid=839354).
 
 ## <a name="related"></a>Související
-* [Vytvoření clusteru s podporou samostatné Azure Service Fabric](service-fabric-cluster-creation-for-windows-server.md)
+* [Vytvoření samostatného clusteru Azure Service Fabric](service-fabric-cluster-creation-for-windows-server.md)
 * [Scénáře zabezpečení clusteru Service Fabric](service-fabric-windows-cluster-windows-security.md)

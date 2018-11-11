@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 4945bf6064f2614c1779957317d21279d09e05d3
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 2a64b9fc7e2f13c3b9974e95d914a3d3b675d883
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50964097"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51006800"
 ---
 # <a name="reference-guide-to-view-designer-tiles-in-log-analytics"></a>Referenční příručka pro dlaždice Návrhář zobrazení v Log Analytics
 Pomocí návrháře zobrazení v Azure Log Analytics můžete vytvořit vlastní zobrazení na webu Azure Portal, který k dispozici různé vizualizace dat ve vašem pracovním prostoru Log Analytics. Tento článek je referenční příručka k nastavení pro dlaždice, které jsou k dispozici do vlastních zobrazení.
@@ -179,5 +179,5 @@ Tuto dlaždici má oba řádek graf této zobrazí více řad z protokolu dotaz 
 
 
 ## <a name="next-steps"></a>Další postup
-* Další informace o [prohledávání protokolů](log-analytics-log-search.md) pro podporu dotazů v dlaždicích.
+* Další informace o [prohledávání protokolů](log-analytics-queries.md) pro podporu dotazů v dlaždicích.
 * Přidat [části vizualizace](log-analytics-view-designer-parts.md) do vlastních zobrazení.

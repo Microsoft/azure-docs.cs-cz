@@ -12,15 +12,15 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 11/06/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 25a8150a2fcf7cdd4e3c82478c0b3db3dad870b4
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: a7d77c0a2ce334c9909a621c55866a67e036f9cb
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48887560"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282777"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Kvóty a omezení služby Batch
 
@@ -45,17 +45,27 @@ Pokud máte v plánu pro spouštění úloh v produkčním prostředí ve služb
 
 Pokud jste nevytvořili účet Batch s režimem přidělování fondu nastavit na **předplatné uživatele**, jinak se uplatňují kvóty. V tomto režimu se virtuální počítače dávky a dalším prostředkům vytvářejí přímo ve vašem předplatném při vytvoření fondu. Kvóty jader Azure Batch se nevztahují na účet vytvořený v tomto režimu. Místo toho kvóty ve vašem předplatném pro místní výpočetních jader a další prostředky se použijí. Další informace o těchto kvót v [předplatného Azure a limity, kvóty a omezení](../azure-subscription-service-limits.md).
 
+## <a name="pool-size-limits"></a>Omezení velikosti fondu
+
+| **Prostředek** | **Maximální omezení** |
+| --- | --- |
+| **Výpočetní uzly v [fondu komunikace mezi uzly povolena](batch-mpi.md)**  ||
+| Režim přidělování fondů služba batch | 100 |
+| Režim přidělování fondů předplatné služby batch | 80 |
+| **Výpočetní uzly v [fond vytvořen s použitím vlastní image virtuálního počítače](batch-custom-images.md)**<sup>1</sup> ||
+| Vyhrazené uzly | 2000 |
+| Uzly s nízkou prioritou | 1000 |
+
+<sup>1</sup> pro fondy, které je Poznámka: komunikace mezi uzly povolena.
+
 ## <a name="other-limits"></a>Další omezení
 
 | **Prostředek** | **Maximální omezení** |
 | --- | --- |
-| [Souběžné úlohy](batch-parallel-node-tasks.md) na výpočetním uzlu |4 x počet jader na uzel |
-| [Aplikace](batch-application-packages.md) jeden účet Batch |20 |
-| Balíčky aplikací na jednu aplikaci |40 |
+| [Souběžné úlohy](batch-parallel-node-tasks.md) na výpočetním uzlu | 4 x počet jader na uzel |
+| [Aplikace](batch-application-packages.md) jeden účet Batch | 20 |
+| Balíčky aplikací na jednu aplikaci | 40 |
 | Úloha maximální doba života | 7 dní<sup>1</sup> |
-| Výpočetní uzly v [fondu komunikace mezi uzly povolena](batch-mpi.md) | 100 |
-| Vyhrazené výpočetní uzly v [fond vytvořen s použitím vlastní image virtuálního počítače](batch-custom-images.md) | 2500 |
-| S nízkou prioritou výpočetních uzlů ve [fond vytvořen s použitím vlastní image virtuálního počítače](batch-custom-images.md) | 1000 |
 
 <sup>1</sup> maximální doba života úkolu, od jeho přidání do úlohy po jeho dokončení, je 7 dní. Dokončené úkoly se zachovávají po neomezenou dobu; data pro úkoly, které se nedokončí v rámci maximální doby života, nejsou dostupná.
 
@@ -115,7 +125,7 @@ Fondy služby batch v konfiguraci virtuálního počítače nasazené ve služb�
 * 1 [veřejnou IP adresu](../virtual-network/virtual-network-ip-addresses-overview-arm.md)
 * 1 [nástroj pro vyrovnávání zatížení](../load-balancer/load-balancer-overview.md)
 
-Tyto prostředky se přidělují v předplatném, která obsahuje virtuální síť zadali při vytváření fondu služby Batch. Tyto prostředky se uplatňuje limit vycházející předplatného [kvóty prostředků](../azure-subscription-service-limits.md). Pokud máte v plánu nasazení velkého fondu ve virtuální síti, zkontrolujte předplatného kvóty pro tyto prostředky. V případě potřeby požádat o zvýšení na webu Azure Portal tak, že vyberete **Nápověda a podpora**.
+Tyto prostředky se přidělují v předplatném, která obsahuje virtuální síť zadali při vytváření fondu služby Batch. Pro tyto prostředky platí omezení [kvót prostředků](../azure-subscription-service-limits.md) předplatného. Pokud máte v plánu nasazení velkého fondu ve virtuální síti, zkontrolujte předplatného kvóty pro tyto prostředky. V případě potřeby požádat o zvýšení na webu Azure Portal tak, že vyberete **Nápověda a podpora**.
 
 
 ## <a name="related-topics"></a>Související témata

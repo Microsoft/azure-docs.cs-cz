@@ -8,22 +8,22 @@ ms.service: storage
 ms.topic: how-to
 ms.date: 06/27/2018
 ms.author: seguler
-ms.openlocfilehash: 065c4c4315bda209484cc1b2449980e55d4ac798
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 09703e203370a524b24f552c93161e4cb64d803d
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39522692"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281672"
 ---
 # <a name="use-distcp-to-copy-data-between-azure-storage-blobs-and-data-lake-storage-gen2-preview"></a>Použití Distcp ke kopírování dat mezi objekty BLOB Azure Storage a verzi Preview služby Data Lake Storage Gen2
 
-Pokud máte cluster HDInsight s přístupem k Azure Data Lake Storage Gen2 ve verzi Preview, můžete použít nástroje ekosystému Hadoopu, jako je [Distcp](https://hadoop.apache.org/docs/stable/hadoop-distcp/DistCp.html) ke kopírování dat **do a z** úložišti clusteru HDInsight (WASB) do Data Podporuje účet Lake Storage Gen2. Tento článek obsahuje pokyny, jak používat nástroj Distcp.
+Pokud máte HDInsight cluster a jsou zaregistrovaná v Azure Data Lake Storage Gen2 ve verzi Preview, můžete použít nástroje ekosystému Hadoopu, jako je [Distcp](https://hadoop.apache.org/docs/stable/hadoop-distcp/DistCp.html) ke kopírování dat **do a z** úložiště clusteru HDInsight (WASB) do účtu úložiště pomocí Data Lake Storage Gen2 povolena. Tento článek obsahuje pokyny, jak používat nástroj Distcp.
 
 ## <a name="prerequisites"></a>Požadavky
 
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
-* **Účet služby Azure Storage s Azure Data Lake Storage (Preview) funkce povolena**. Pokyny k jeho vytvoření najdete v tématu [vytvoření účtu úložiště Azure Data Lake Storage Gen2 ve verzi Preview](quickstart-create-account.md)
-* **Azure HDInsight cluster** s přístupem k účtu Data Lake Storage. Zobrazit [clusterů pomocí Azure Data Lake Storage Gen2 s Azure HDInsight](use-hdi-cluster.md). Ujistěte se, že se že povolení vzdálené plochy pro cluster.
+* **Účet služby Azure Storage s Data Lake Storage Gen2 (Preview) funkce povolena**. Pokyny k jeho vytvoření najdete v tématu [vytvoření účtu úložiště Azure Data Lake Storage Gen2 ve verzi Preview](quickstart-create-account.md)
+* **Azure HDInsight cluster** s přístupem k účtu úložiště pomocí Data Lake Storage Gen2 povolena. Zobrazit [clusterů pomocí Azure Data Lake Storage Gen2 s Azure HDInsight](use-hdi-cluster.md). Ujistěte se, že se že povolení vzdálené plochy pro cluster.
 
 ## <a name="use-distcp-from-an-hdinsight-linux-cluster"></a>Použití Distcp z clusteru HDInsight Linux
 
@@ -97,4 +97,4 @@ Když je velká velikost datové sady, chcete-li přesunout (například > 1 TB)
 
 * DistCp je omezeno na pouze jednoho mapování na soubor. Proto by neměl mít více mapovačů, než jste soubory. Protože DistCp lze přiřadit pouze jeden Mapovač do souboru, to omezuje množství souběžnosti, který slouží ke kopírování velkých souborů.
 
-* Pokud máte malé množství velkých souborů, byste je rozdělit do 256 MB bloky dat souborů poskytnout další potenciální souběžnosti. 
+* Pokud máte malé množství velkých souborů, byste je rozdělit do 256 MB bloky dat souborů poskytnout další potenciální souběžnosti.

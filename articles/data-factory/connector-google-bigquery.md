@@ -1,6 +1,6 @@
 ---
-title: Kopírování dat z Google BigQuery pomocí Azure Data Factory | Microsoft Docs
-description: Postup kopírování dat z Google BigQuery do úložiště dat podporovaných podřízený pomocí aktivity kopírování v kanálu data factory.
+title: Kopírování dat z Google BigQuery pomocí služby Azure Data Factory | Dokumentace Microsoftu
+description: Zjistěte, jak kopírovat data z Google BigQuery úložišť dat podporovaných jímky pomocí aktivity kopírování v kanálu datové továrny.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -11,52 +11,55 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/12/2018
+ms.date: 11/05/2018
 ms.author: jingwang
-ms.openlocfilehash: 51cacb385f28cf70a65b9c0e1c14d48e22be0a4d
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: ca12c7a3fe8a5ade8cf0e4ce00977bdcc9a300a6
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37051106"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51007650"
 ---
-# <a name="copy-data-from-google-bigquery-by-using-azure-data-factory"></a>Kopírování dat z Google BigQuery pomocí Azure Data Factory
+# <a name="copy-data-from-google-bigquery-by-using-azure-data-factory"></a>Kopírování dat z Google BigQuery pomocí služby Azure Data Factory
 
-Tento článek popisuje, jak pomocí aktivity kopírování v Azure Data Factory ke zkopírování dat z Google BigQuery. Vychází [aktivity kopírování přehled](copy-activity-overview.md) článek, který představuje obecný přehled o aktivitě kopírování.
+Tento článek popisuje, jak pomocí aktivity kopírování ve službě Azure Data Factory ke zkopírování dat z Google BigQuery. Je nástavbou [přehled aktivit kopírování](copy-activity-overview.md) článek, který nabízí obecný přehled o aktivitě kopírování.
 
-## <a name="supported-capabilities"></a>Podporované možnosti
+## <a name="supported-capabilities"></a>Podporované funkce
 
-Data můžete zkopírovat z Google BigQuery do úložiště dat žádné podporované jímky. Seznam úložišť dat, které jsou podporovány jako zdroje nebo jímky aktivitě kopírování najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats) tabulky.
+Kopírování dat z Google BigQuery do jakékoli podporovaného úložiště dat jímky. Seznam úložišť dat podporovaných jako zdroje a jímky v aktivitě kopírování najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats) tabulky.
 
- Data Factory poskytuje integrované ovladače pro umožnění připojení. Proto nemusíte ručně nainstalovat ovladač, který chcete použít tento konektor.
+Data Factory poskytuje integrovaný ovladač umožňující připojení. Proto není nutné ručně nainstalovat ovladač pro tento konektor použít.
+
+>[!NOTE]
+>Tento konektor Google BigQuery je postavený na rozhraní API BigQuery. Mějte na paměti, že omezení BigQuery maximální rychlost přenosu příchozích požadavků a vynucuje příslušné kvóty na základě jednotlivých projektů, odkazují na [kvóty a omezení – rozhraní API požaduje](https://cloud.google.com/bigquery/quotas#api_requests). Zajistěte, aby že nespouštějí příliš mnoha souběžnými požadavky na účet.
 
 ## <a name="get-started"></a>Začínáme
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Následující části obsahují podrobnosti o vlastnosti, které slouží k určení konkrétní entity služby Data Factory ke konektoru Google BigQuery.
+Následující části obsahují podrobnosti o vlastnostech, které se používají k definování entit služby Data Factory konkrétní konektor Google BigQuery.
 
 ## <a name="linked-service-properties"></a>Vlastnosti propojené služby
 
-Následující vlastnosti jsou podporovány pro Google BigQuery propojené služby.
+Následující vlastnosti jsou podporovány pro Google BigQuery propojenou službu.
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost typu musí být nastavená na **GoogleBigQuery**. | Ano |
-| projekt | ID projektu výchozí projekt BigQuery k dotazu vůči.  | Ano |
-| additionalProjects | Čárkami oddělený seznam ID projektů z veřejné BigQuery projektů přístup.  | Ne |
-| requestGoogleDriveScope | Určuje, zda chcete požadovat přístup k Google Drive. Povolení přístupu Google Drive umožňuje podporu pro federované tabulky, které spojují BigQuery dat s daty z Google Drive. Výchozí hodnota je **false**.  | Ne |
-| authenticationType. | Metoda ověřování OAuth 2.0, používá k ověřování. ServiceAuthentication lze použít pouze v Self-hosted integrace Runtime. <br/>Povolené hodnoty jsou **UserAuthentication** a **ServiceAuthentication**. Naleznete v části dál v této tabulce na další vlastnosti a ukázky JSON pro tyto typy ověřování v uvedeném pořadí. | Ano |
+| type | Vlastnost type musí být nastavená na **GoogleBigQuery**. | Ano |
+| Projekt | ID projektu výchozí projekt BigQuery chcete dotazovat.  | Ano |
+| additionalProjects | Čárkou oddělený seznam ID projektu veřejných BigQuery projekty se mají přístup.  | Ne |
+| requestGoogleDriveScope | Určuje, zda žádat o přístup k disku Google. Povolení přístupu k disku Google. umožňuje podporu pro federované tabulky, které kombinují BigQuery data s daty z disku Google. Výchozí hodnota je **false**.  | Ne |
+| authenticationType. | Mechanismus ověřování OAuth 2.0 pro ověřování. ServiceAuthentication lze použít pouze na modul Integration Runtime. <br/>Povolené hodnoty jsou **UserAuthentication** a **ServiceAuthentication**. Naleznete v oddílech dál v této tabulce na další vlastnosti a ukázky JSON pro typy ověřování v uvedeném pořadí. | Ano |
 
 ### <a name="using-user-authentication"></a>Pomocí ověřování uživatelů
 
-Nastavte vlastnost "authenticationType" na **UserAuthentication**a zadejte následující vlastnosti společně s obecné vlastnosti, které jsou popsané v předchozí části:
+Nastavte vlastnost "authenticationType" **UserAuthentication**a zadejte následující požadované vlastnosti spolu s generické vlastnosti, které jsou popsané v předchozí části:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| clientId | ID aplikace sloužící k vygenerování tokenu obnovení. | Ne |
-| clientSecret | Tajný klíč aplikace použít k vygenerování tokenu obnovení. Toto pole označit jako SecureString bezpečně uložit v datové továrně nebo [odkazovat tajného klíče uložené v Azure Key Vault](store-credentials-in-key-vault.md). | Ne |
-| refreshToken | Aktualizace tokenu získaného z Google použitý k autorizaci přístupu k BigQuery. Další informace o získání jednoho z [přístupových tokenů OAuth 2.0 získání](https://developers.google.com/identity/protocols/OAuth2WebServer#obtainingaccesstokens) a [tomto blogu komunity](https://jpd.ms/getting-your-bigquery-refresh-token-for-azure-datafactory-f884ff815a59). Toto pole označit jako SecureString bezpečně uložit v datové továrně nebo [odkazovat tajného klíče uložené v Azure Key Vault](store-credentials-in-key-vault.md). | Ne |
+| ID klienta | ID aplikace použili k vygenerování tokenu obnovení. | Ne |
+| ClientSecret | Tajný klíč aplikace použili k vygenerování tokenu obnovení. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ne |
+| refreshToken | Obnovovací token získaný z Googlu pro autorizaci přístupu k BigQuery. Další informace o získání jednoho z [přístupových tokenů OAuth 2.0 získání](https://developers.google.com/identity/protocols/OAuth2WebServer#obtainingaccesstokens) a [tento blog komunity](https://jpd.ms/getting-your-bigquery-refresh-token-for-azure-datafactory-f884ff815a59). Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ne |
 
 **Příklad:**
 
@@ -86,14 +89,14 @@ Nastavte vlastnost "authenticationType" na **UserAuthentication**a zadejte násl
 
 ### <a name="using-service-authentication"></a>Pomocí ověřování služby
 
-Nastavte vlastnost "authenticationType" na **ServiceAuthentication**a zadejte následující vlastnosti společně s obecné vlastnosti, které jsou popsané v předchozí části. Tento typ ověřování lze použít pouze v Self-hosted integrace Runtime.
+Nastavte vlastnost "authenticationType" **ServiceAuthentication**a zadejte následující požadované vlastnosti spolu s generické vlastnosti, které jsou popsané v předchozí části. Tento typ ověřování lze použít pouze na modul Integration Runtime.
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| e-mail | ID s e-mailu účtu služby, který se používá pro ServiceAuthentication. Je možné použít pouze s Self-hosted integrace Runtime.  | Ne |
-| keyFilePath | Úplná cesta k souboru klíče .p12, který se používá k ověření e-mailovou adresu účtu služby. | Ne |
-| trustedCertPath | Úplná cesta soubor .pem, který obsahuje certifikáty důvěryhodné certifikační Autority používají k ověření serveru, jakmile se připojíte přes protokol SSL. Tuto vlastnost lze nastavit pouze při použití protokolu SSL na Self-hosted integrace Runtime. Výchozí hodnota je soubor cacerts.pem nainstalovaný s modulem runtime integrace.  | Ne |
-| useSystemTrustStore | Určuje, jestli chcete použít certifikát Certifikační autority z obchodu důvěryhodnosti systému nebo ze souboru zadané .pem. Výchozí hodnota je **false**.  | Ne |
+| e-mail | ID účtu služby e-mailu, který se používá pro ServiceAuthentication. Je možné použít pouze na modul Integration Runtime.  | Ne |
+| keyFilePath | Úplná cesta k souboru s klíčem .p12, který se používá k ověření e-mailovou adresu účtu služby. | Ne |
+| trustedCertPath | Úplná cesta soubor .pem, který obsahuje certifikáty důvěryhodné certifikační Autority používaného k ověřování serveru, když se připojíte přes protokol SSL. Tuto vlastnost lze nastavit pouze při použití protokolu SSL na modul Integration Runtime. Výchozí hodnota je soubor cacerts.pem nainstalované s modulem runtime integrace.  | Ne |
+| useSystemTrustStore | Určuje, jestli se má použít certifikát certifikační Autority ze systémového úložiště důvěryhodnosti nebo ze souboru zadaného .pem. Výchozí hodnota je **false**.  | Ne |
 
 **Příklad:**
 
@@ -119,9 +122,9 @@ Nastavte vlastnost "authenticationType" na **ServiceAuthentication**a zadejte n�
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
 
-Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady, najdete v článku [datové sady](concepts-datasets-linked-services.md) článku. Tato část obsahuje seznam vlastností nepodporuje datovou sadu Google BigQuery.
+Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady, najdete v článku [datových sad](concepts-datasets-linked-services.md) článku. Tato část obsahuje seznam vlastností podporovaných datovou sadu Google BigQuery.
 
-Ke zkopírování dat z Google BigQuery, nastavte vlastnost typu datové sady, která **GoogleBigQueryObject**. Není k dispozici žádné další vlastnosti specifické pro typ v tomto typu datové sady.
+Ke zkopírování dat z Google BigQuery, nastavte vlastnost typ datové sady na **GoogleBigQueryObject**. Neexistuje žádné další vlastnosti specifické pro typ. v tomto typu datové sady.
 
 **Příklad**
 
@@ -140,16 +143,16 @@ Ke zkopírování dat z Google BigQuery, nastavte vlastnost typu datové sady, k
 
 ## <a name="copy-activity-properties"></a>Vlastnosti aktivity kopírování
 
-Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování aktivity, najdete v článku [kanály](concepts-pipelines-activities.md) článku. Tato část obsahuje seznam vlastností nepodporuje typ zdroje Google BigQuery.
+Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování aktivit najdete v článku [kanály](concepts-pipelines-activities.md) článku. Tato část obsahuje seznam vlastností podporovaný typ zdroje Google BigQuery.
 
 ### <a name="googlebigquerysource-as-a-source-type"></a>GoogleBigQuerySource jako typ zdroje
 
-Ke zkopírování dat z Google BigQuery, nastavte typ zdroje v aktivitě kopírování do **GoogleBigQuerySource**. Následující vlastnosti jsou podporovány v aktivitě kopírování **zdroj** části.
+Ke zkopírování dat z Google BigQuery, nastavte typ zdroje v aktivitě kopírování do **GoogleBigQuerySource**. Následující vlastnosti jsou podporovány v aktivitě kopírování **zdroj** oddílu.
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost typ zdroje kopie aktivity musí být nastavena na **GoogleBigQuerySource**. | Ano |
-| query | Čtení dat pomocí vlastního dotazu SQL. Příklad: `"SELECT * FROM MyTable"`. | Ano |
+| type | Vlastnost type zdroje aktivity kopírování musí být nastavená na **GoogleBigQuerySource**. | Ano |
+| query | Použijte vlastní dotaz SQL číst data. Příklad: `"SELECT * FROM MyTable"`. | Ano |
 
 **Příklad:**
 
@@ -184,4 +187,4 @@ Ke zkopírování dat z Google BigQuery, nastavte typ zdroje v aktivitě kopíro
 ```
 
 ## <a name="next-steps"></a>Další postup
-Seznam úložišť dat jako zdroje a jímky nepodporuje aktivitu kopírování v objektu pro vytváření dat najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats).
+Seznam úložišť dat podporovaných jako zdroje a jímky v aktivitě kopírování ve službě Data Factory najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats).

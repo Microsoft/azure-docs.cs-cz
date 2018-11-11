@@ -8,19 +8,19 @@ ms.service: security
 ms.topic: article
 ms.date: 05/14/2018
 ms.author: jomolesk
-ms.openlocfilehash: 84e26212b1102d693b84e5b66fbd606da2673934
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: d1099b813e84cd4885b011dec205a1e631fc6599
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49405927"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51250709"
 ---
 # <a name="azure-security-and-compliance-blueprint-data-warehouse-for-gdpr"></a>Zabezpečení Azure a dodržování předpisů: datový sklad gdpr
 
 ## <a name="overview"></a>Přehled
 Obecné nařízení (GDPR) obsahuje mnoho požadavků o shromažďování, ukládání a používání osobní informace, včetně jak organizacím identifikovat a zabezpečení osobních údajů, plnění požadavků na transparentnosti, zjišťovat a sestavy porušení osobní údaje a o ochraně osobních údajů pracovníci trénování a ostatními zaměstnanci. GDPR poskytuje větší kontrolu nad jejich osobní údaje jednotlivce a ukládá mnoho nových závazků na organizací, které shromažďovat, zpracovávat, analyzovat osobní údaje. GDPR ukládá nová pravidla pro organizace, které nabízejí zboží a služby lidem v Evropské unii (EU) nebo které shromažďovat a analyzovat data svázaná s pobytem v EU. GDPR se vztahuje bez ohledu na to, kde se nachází organizace.
 
-Microsoft proto navrhl Azure se špičkovou bezpečnostní opatření a zásad ochrany osobních údajů zabezpečující data v cloudu, včetně kategorií osobní údaje, které jsou identifikované GDPR. Společnosti Microsoft [smluvní podmínky](http://aka.ms/Online-Services-Terms) garantoval splňování požadavků procesorů Microsoft.
+Microsoft proto navrhl Azure se špičkovou bezpečnostní opatření a zásad ochrany osobních údajů zabezpečující data v cloudu, včetně kategorií osobní údaje, které jsou identifikované GDPR. Společnosti Microsoft [smluvní podmínky](https://aka.ms/Online-Services-Terms) garantoval splňování požadavků procesorů Microsoft.
 
 Toto zabezpečení Azure a dodržování předpisů poskytuje pokyny pro nasazení architektury datového skladu v Azure, která pomáhá zajistit s požadavky GDPR. Toto řešení ukazuje způsoby, ve které zákazníci mohou pokrýt konkrétní požadavky na zabezpečení a dodržování předpisů a slouží jako základ pro zákazníky, kteří k vytvoření a konfigurace vlastních řešení datových skladů v Azure. Zákazníci mohou využívat tuto referenční architekturu a postupujte podle společnosti Microsoft [čtyři kroky](https://aka.ms/gdprebook) v cestě k dodržování předpisů GDPR:
 1. Vyhledávání: Určete, které osobní údaje existuje a kde se nachází.

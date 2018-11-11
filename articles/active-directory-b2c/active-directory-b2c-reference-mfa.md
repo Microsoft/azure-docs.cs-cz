@@ -7,51 +7,46 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/06/2016
+ms.date: 11/01/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 3d18e1b2e45aba4e83989e29c533cfc7bf5033fc
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: eabae0f3575719c6cb93affefe0a393dd13d1439
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37442704"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51014002"
 ---
-# <a name="azure-active-directory-b2c-enable-multi-factor-authentication-in-your-consumer-facing-applications"></a>Azure Active Directory B2C: Povolení služby Multi-Factor Authentication v aplikacích určených
-Azure Active Directory (Azure AD) B2C se integruje přímo do [ověřování Azure Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md) tak, aby druhou vrstvu zabezpečení můžete přidat do prostředí registrace a přihlášení ve svých aplikacích zaměřené na spotřebitele. A můžete to provést aniž byste museli napsat jediný řádek kódu. Momentálně podporujeme ověření telefonního hovoru a textové zprávy. Pokud jste už vytvořili zásady registrace a přihlášení, můžete stále povolit ověřování službou Multi-Factor Authentication.
+# <a name="enable-multi-factor-authentication-in-azure-active-directory-b2c"></a>Povolení služby Multi-Factor authentication v Azure Active Directory B2C
 
-> [!NOTE]
-> Ověřování službou Multi-Factor Authentication je možné povolit také při vytváření zásad registrace a přihlašování, ne jenom úpravou existující zásady.
-> 
-> 
+Azure Active Directory (Azure AD) B2C se integruje přímo do [ověřování Azure Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md) tak, že přidáte druhou vrstvu zabezpečení do prostředí registrace a přihlášení ve svých aplikacích. Povolení služby Multi-Factor authentication aniž byste museli napsat jediný řádek kódu. Pokud jste už vytvořili sign up a zásady přihlašování, můžete stále povolit ověřování službou Multi-Factor Authentication.
 
 Tato funkce pomáhá aplikacím zpracovávat scénáře, jako je následující:
 
-* Nemusíte vyžadovat Vícefaktorové ověřování pro přístup k jedné aplikaci, ale chcete, aby pro přístup k jiným. Například příjemci budou moct přihlašovat do aplikace automaticky pojištění s sociálních sítí nebo místní účet, ale před přístup k domovské pojištění aplikaci registrované ve stejném adresáři, musíte ověřit telefonní číslo.
-* Nemusíte vyžadovat Vícefaktorové ověřování pro přístup k aplikaci obecně platí, ale chcete, aby pro přístup k citlivým části v rámci něj. Například příjemce může přihlásit k aplikaci bankovnictví s sociálních sítí nebo místní účet a Kontrola zůstatku, ale před pokusem o převod při přenosu musí ověřit telefonní číslo.
+- Nemusíte vyžadovat vícefaktorové ověřování pro přístup k jedné aplikaci, ale chcete, aby pro přístup k jiné. Například zákazník se můžete přihlásit automaticky pojištění aplikace sociálních sítí nebo místní účet, ale před přístup k domovské pojištění aplikaci registrované ve stejném adresáři, musíte ověřit telefonní číslo.
+- Nemusíte vyžadovat vícefaktorové ověřování pro přístup k aplikaci obecně platí, ale chcete, aby pro přístup k citlivým části v rámci něj. Například zákazník se můžete přihlásit k aplikaci bankovnictví s sociální sítě nebo místní účet a kontrola účet zůstatek, ale před pokusem o převod při přenosu musí ověřit tak telefonní číslo.
 
-## <a name="modify-your-sign-up-policy-to-enable-multi-factor-authentication"></a>Upravit svojí registrační zásadě povolit Vícefaktorové ověřování
-1. [Přejděte do okna s funkcemi B2C na webu Azure portal pomocí těchto kroků](active-directory-b2c-app-registration.md#navigate-to-b2c-settings).
-2. Klikněte na **Zásady registrace**.
-3. Klikněte na svojí registrační zásadě (například "B2C_1_SiUp") a otevřete ho.
-4. Klikněte na tlačítko **ověřování službou Multi-Factor Authentication** a zapnout **stavu** k **ON**. Klikněte na **OK**.
-5. Klikněte na tlačítko **Uložit** v horní části okna.
+## <a name="set-multi-factor-authentication"></a>Nastavení služby Multi-Factor authentication
 
-Funkce "Spustit nyní" na zásadu, kterou můžete použít k ověření uživatelské prostředí. Zkontrolujte:
+Když vytvoříte zásadu, máte možnost povolit ověřování službou Multi-Factor Authentication.
 
-Uživatelský účet se vytvoří ve vašem adresáři, než dojde k krok ověřování službou Multi-Factor Authentication. Během kroku se příjemce zobrazí výzva, zadejte své telefonní číslo a ověřte ji. Pokud je ověření úspěšné, telefonní číslo je připojen k uživatelský účet pro pozdější použití. I v případě, že uživatel zruší nebo potlačení, uživatel může být zobrazí výzva k potvrzení telefonního čísla znovu při dalším přihlášení (s zapnuté Vícefaktorové ověřování).
+![Nastavení služby Multi-Factor authentication](./media/active-directory-b2c-reference-mfa/add-policy.png)
 
-## <a name="modify-your-sign-in-policy-to-enable-multi-factor-authentication"></a>Upravit zásady přihlášení k povolení služby Multi-Factor Authentication
-1. [Přejděte do okna s funkcemi B2C na webu Azure portal pomocí těchto kroků](active-directory-b2c-app-registration.md#navigate-to-b2c-settings).
-2. Klikněte na tlačítko **zásady přihlašování**.
-3. Klikněte na tlačítko Přihlásit zásady (například "B2C_1_SiIn") a otevřete ho. Klikněte na tlačítko **upravit** v horní části okna.
-4. Klikněte na tlačítko **ověřování službou Multi-Factor Authentication** a zapnout **stavu** k **ON**. Klikněte na **OK**.
-5. Klikněte na tlačítko **Uložit** v horní části okna.
+Nastavte **stavu** k **na**.
 
-Funkce "Spustit nyní" na zásadu, kterou můžete použít k ověření uživatelské prostředí. Zkontrolujte:
+Můžete použít **spustit nyní** na zásadu, kterou chcete ověřit prostředí. Zkontrolujte následující scénář:
 
-Když se přihlásí uživatel (pomocí sociálních sítí nebo místní účet), pokud ověřené telefonní číslo je připojena k uživatelský účet, uživatel je vyzván k ověří, že. Pokud je připojen bez telefonního čísla, příjemce se zobrazí výzva, zadejte jeden a ověří, že. Telefonní číslo připojen na úspěšné ověřování, uživatelský účet pro pozdější použití.
+Účet zákazníka se vytvoří ve vašem tenantovi, než dojde k krok ověřování službou Multi-Factor Authentication. Během kroku zákazník se zobrazí výzva zadat telefonní číslo a ověřte ji. Pokud je ověření úspěšné, telefonní číslo je připojený k účtu pro pozdější použití. I v případě, že zákazník zruší nebo potlačení, Zákazník může být zobrazí výzva k potvrzení telefonní číslo znovu při dalším přihlášení s povoleným ověřováním službou Multi-Factor Authentication.
 
-## <a name="multi-factor-authentication-on-other-policies"></a>Ověřování službou Multi-Factor Authentication na další zásady
-Jak je popsáno pro registraci a přihlašování zásady, výše, je také možné povolit vícefaktorové ověřování při registraci nebo zásady přihlášení a hesla resetovat zásady. Bude možné brzy na zásady upravování profilu.
+## <a name="add-multi-factor-authentication"></a>Přidat ověřování službou Multi-Factor Authentication
+
+Je možné povolit vícefaktorové ověřování u zásady, které jste předtím vytvořili. 
+
+Pokud chcete povolit ověřování službou Multi-Factor Authentication:
+
+1. Otevřete zásadu a pak vyberte **upravit**. 
+2. Vyberte **ověřování službou Multi-Factor Authentication**
+3. Nastavte **stavu** k **na**.
+4. Klikněte na **Uložit** v horní části stránky.
+
 

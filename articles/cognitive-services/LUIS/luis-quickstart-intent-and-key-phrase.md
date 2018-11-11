@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 8fa183c22b9b6830c57b0a16b7f5d20ca38e3ef3
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 126e081bae08d220b0e3921cdfec7d7f58eacea8
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47166516"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50138289"
 ---
 # <a name="tutorial-8-extract-key-phrases-of-utterance"></a>Kurz 8: Extrahování klíčových frází z promluvy
 V tomto kurzu použijete předem připravenou entitu keyPhrase k extrahování témat z promluv. Není potřeba označovat promluvy s předem vytvořenými entitami. Příslušná entita se rozpozná automaticky.
@@ -33,11 +33,11 @@ Vaše klientská aplikace může tyto hodnoty používat spolu s dalšími extra
 
 <!-- green checkmark -->
 > [!div class="checklist"]
-> * Použití existující ukázkové aplikace
+> * Používat existující ukázkovou aplikaci
 > * Přidání entity klíčové fráze 
 > * Trénování
 > * Publikování
-> * Získání záměrů a entit z koncového bodu
+> * Zjistit záměry a entity z koncového bodu
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
@@ -45,13 +45,13 @@ Vaše klientská aplikace může tyto hodnoty používat spolu s dalšími extra
 
 Pokračujte s aplikací **HumanResources**, kterou jste vytvořili v posledním kurzu. 
 
-Pokud tuto aplikaci nemáte, proveďte tyto kroky:
+Pokud aplikaci HumanResources z předchozího kurzu nemáte, postupujte takto:
 
-1.  Stáhněte a uložte si [soubor JSON aplikace](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-simple-HumanResources.json).
+1.  Stáhněte si [soubor JSON aplikace](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-simple-HumanResources.json) a uložte si ho.
 
-2. Naimportujte JSON do nové aplikace.
+2. Naimportujte soubor JSON do nové aplikace.
 
-3. V části **Manage** (Správa) na kartě **Versions** (Verze) naklonujte verzi a pojmenujte ji `keyphrase`. Klonování představuje skvělý způsob, jak si můžete vyzkoušet různé funkce služby LUIS, aniž by to mělo vliv na původní verzi. Název verze je součástí cesty URL, a proto může obsahovat jenom znaky podporované v adresách URL.
+3. V části **Manage** (Správa) na kartě **Versions** (Verze) naklonujte verzi a pojmenujte ji `keyphrase`. Klonování představuje skvělý způsob, jak si můžete vyzkoušet různé funkce služby LUIS, aniž by to mělo vliv na původní verzi. Název verze je součástí cesty URL, a proto smí obsahovat jenom znaky, které jsou platné v adresách URL.
 
 ## <a name="add-keyphrase-entity"></a>Přidání entity klíčové fráze 
 Přidejte předem připravenou entitu klíčové fráze pro extrahování témat z promluv.
@@ -60,7 +60,7 @@ Přidejte předem připravenou entitu klíčové fráze pro extrahování témat
 
 2. V levé nabídce vyberte **Entities** (Entity).
 
-3. Vyberte **Manage prebuilt entities** (Spravovat předem připravené entity).
+3. Vyberte **Add prebuilt entity** (Přidat předem připravenou entitu).
 
 4. V automaticky otevíraném dialogovém okně vyberte **keyPhrase** (Klíčová fráze) a pak vyberte **Done** (Hotovo). 
 

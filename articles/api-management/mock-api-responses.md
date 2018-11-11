@@ -14,12 +14,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 916d0cf37ab3588091d4ca2d45f43a5669afe4f1
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 9b9a691cb2bce2357d184420912ab340aee534e8
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47094891"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50412734"
 ---
 # <a name="mock-api-responses"></a>Napodobení odpovědí API
 
@@ -40,11 +40,15 @@ V tomto kurzu se naučíte:
 
 ## <a name="prerequisites"></a>Požadavky
 
-Projděte si následující rychlý start: [Vytvoření instance Azure API Managementu](get-started-create-service-instance.md).
++ Seznamte se s [terminologií služby Azure API Management](api-management-terminology.md).
++ Seznamte se s [konceptem zásad ve službě Azure API Management](api-management-howto-policies.md).
++ Projděte si následující rychlý start: [Vytvoření instance Azure API Managementu](get-started-create-service-instance.md).
 
 ## <a name="create-a-test-api"></a>Vytvoření testovacího rozhraní API 
 
 Postup v této části ukazuje, jak vytvořit prázdné rozhraní API bez jakéhokoli back-endu. Také ukazuje, jak do rozhraní API přidat operaci. Zavolání operace po dokončení kroků v této části způsobí chybu. Po dokončení postupu v části Povolení napodobování odpovědí už se chyby zobrazovat nebudou.
+
+![Vytvoření prázdného rozhraní API](./media/mock-api-responses/03-MockAPIResponses-01-CreateTestAPI.png)
 
 1. Vyberte **rozhraní API** ze služby **API Management**.
 2. V levé nabídce vyberte **+ Přidat rozhraní API**.
@@ -55,19 +59,20 @@ Postup v této části ukazuje, jak vytvořit prázdné rozhraní API bez jakéh
 
 ## <a name="add-an-operation-to-the-test-api"></a>Přidání operace do testovacího rozhraní API
 
+![Přidání operace do rozhraní API](./media/mock-api-responses/03-MockAPIResponses-02-AddOperation.png)
+
 1. Vyberte rozhraní API, které jste vytvořili v předchozím kroku.
 2. Klikněte na **+ Přidat operaci**.
-    ![Napodobení odpovědi operace](./media/mock-api-responses/mock-api-responses-add-operation.png)
 
-    |Nastavení|Hodnota|Popis|
-    |---|---|---|
-    |**Zobrazovaný název**|*Test call*|Název, který se zobrazí na **portálu pro vývojáře**.|
-    |**Adresa URL** (příkaz HTTP)|GET|Můžete zvolit některý z předdefinovaných příkazů HTTP.|
-    |**Adresa URL** |*/test*|Cesta URL k rozhraní API. |
-    |**Popis**||Zadejte popis operace, který se na **portálu pro vývojáře** použije jako dokumentace pro vývojáře používající toto rozhraní API.|
-    |Karta **Dotaz**||Můžete přidat parametry dotazu. Kromě zadání názvu a popisu můžete do tohoto parametru zadat hodnoty, které je možné přiřadit. Jedna z hodnot může být označená jako výchozí (volitelné).|
-    |Karta **Požadavek**||Můžete definovat typy obsahu, příklady a schémata požadavku. |
-    |Karta **Odpověď**|Viz kroky uvedené pod touto tabulkou.|Definujte stavový kód, typy obsahu, příklady a schémata odpovědi.|
+    | Nastavení             | Hodnota                             | Popis                                                                                                                                                                                   |
+    |---------------------|-----------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+    | **Zobrazovaný název**    | *Test call*                       | Název, který se zobrazí na **portálu pro vývojáře**.                                                                                                                                       |
+    | **Adresa URL** (příkaz HTTP) | GET                               | Můžete zvolit některý z předdefinovaných příkazů HTTP.                                                                                                                                         |
+    | **Adresa URL**             | */test*                           | Cesta URL k rozhraní API.                                                                                                                                                                       |
+    | **Popis**     |                                   | Zadejte popis operace, který se na **portálu pro vývojáře** použije jako dokumentace pro vývojáře používající toto rozhraní API.                                                    |
+    | Karta **Dotaz**       |                                   | Můžete přidat parametry dotazu. Kromě zadání názvu a popisu můžete do tohoto parametru zadat hodnoty, které je možné přiřadit. Jedna z hodnot může být označená jako výchozí (volitelné). |
+    | Karta **Požadavek**     |                                   | Můžete definovat typy obsahu, příklady a schémata požadavku.                                                                                                                                  |
+    | Karta **Odpověď**    | Viz kroky uvedené pod touto tabulkou. | Definujte stavový kód, typy obsahu, příklady a schémata odpovědi.                                                                                                                           |
 
 3. Vyberte kartu **Odpověď**, která se nachází pod poli Adresa URL, Zobrazovaný název a Popis.
 4. Klikněte na **+ Přidat odpověď**.
@@ -79,16 +84,25 @@ Postup v této části ukazuje, jak vytvořit prázdné rozhraní API bez jakéh
 
 ## <a name="enable-response-mocking"></a>Povolení napodobování odpovědí
 
+![Povolení napodobování odpovědí](./media/mock-api-responses/03-MockAPIResponses-03-EnableMocking.png)
+
 1. Vyberte rozhraní API, které jste vytvořili v kroku Vytvoření testovacího rozhraní API.
 2. Vyberte testovací operaci, kterou jste přidali.
 3. V pravém okně klikněte na kartu **Návrh**.
-4. V okně **Vstupní zpracování** klikněte na ikonu tužky.
-5. Na kartě **Napodobování** v části **Chování při napodobování** vyberte **Statické odpovědi**.
-6. Do textového pole **API Management vrátí následující odpověď:** zadejte **200 OK, application/json**. Tento výběr určuje, že by vaše rozhraní API mělo vracet ukázku odpovědi, kterou jste definovali v předchozí části.
+4. V okně **Zpracování na vstupu** klikněte na **+ Přidat zásadu**.
+5. V galerii vyberte dlaždici **Napodobení odpovědí**.
+
+    ![Dlaždice zásady Napodobení odpovědí](./media/mock-api-responses/mock-responses-policy-tile.png)
+
+6. Do textového pole **Odpověď služby API Management** zadejte **200 OK, application/json**. Tento výběr určuje, že by vaše rozhraní API mělo vracet ukázku odpovědi, kterou jste definovali v předchozí části.
+
     ![Povolení napodobování odpovědí](./media/mock-api-responses/mock-api-responses-set-mocking.png)
+
 7. Klikněte na **Uložit**.
 
 ## <a name="test-the-mocked-api"></a>Test imitace rozhraní API
+
+![Test imitace rozhraní API](./media/mock-api-responses/03-MockAPIResponses-04-TestMocking.png)
 
 1. Vyberte rozhraní API, které jste vytvořili v kroku Vytvoření testovacího rozhraní API.
 2. Otevřete kartu **Test**.
@@ -99,15 +113,15 @@ Postup v této části ukazuje, jak vytvořit prázdné rozhraní API bez jakéh
 
 4. Vyberte **Odeslat** a proveďte testovací volání.
 5. V **odpovědi HTTP** se zobrazí JSON zadaný jako ukázka v první části tohoto kurzu.
+
     ![Povolení napodobování odpovědí](./media/mock-api-responses/mock-api-responses-test-response.png)
 
 ## <a name="video"></a>Video
 
 > [!VIDEO https://www.youtube.com/embed/i9PjUAvw7DQ]
-> 
-> 
 
 ## <a name="next-steps"></a>Další kroky
+
 V tomto kurzu jste se naučili:
 
 > [!div class="checklist"]

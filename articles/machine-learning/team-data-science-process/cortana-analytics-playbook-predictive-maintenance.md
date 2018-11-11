@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2018
 ms.author: fboylu
-ms.openlocfilehash: 8f42ee996dae476de3744239d4cc5f053722d52b
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 611896dc9428092a76a891168b48f6962d760e60
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50093207"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51254566"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>Průvodce Azure AI pro řešení prediktivní údržby
 
@@ -431,13 +431,13 @@ Microsoft Azure nabízí postupy výuky pro základní principy PdM techniky, kr
 |:-------------------|--------------|
 | [Postup výuky pro PdM pomocí stromy a doménové struktury Random](https://aischool.microsoft.com/learning-paths/1H5vH5wAYcAy88CoQWQcA8) | Public | 
 | [Postup výuky pro PdM využívající hloubkové učení](https://aischool.microsoft.com/learning-paths/FSIXxYkOGcauo0eUO8qAS) | Public |
-| [Vývojář AI v Azure](http://azure.microsoft.com/training/learning-paths/azure-ai-developer) | Public |
-| [Školní Microsoft AI](http://aischool.microsoft.com/learning-paths) | Public |
+| [Vývojář AI v Azure](https://azure.microsoft.com/training/learning-paths/azure-ai-developer) | Public |
+| [Školní Microsoft AI](https://aischool.microsoft.com/learning-paths) | Public |
 | [Azure AI učení z Githubu](https://github.com/Azure/connectthedots/blob/master/readme.md) | Public |
 | [LinkedIn Learning](http://www.linkedin.com/learning) | Public |
 | [Webináře Microsoft AI Youtube](https://www.youtube.com/watch?v=NvrH7_KKzoM&t=4s) | Public |
 | [Zobrazit Microsoft AI](http://channel9.msdn.com/Shows/AI-Show) | Public |
-| [LearnAI@MS](http://learnanalytics.microsoft.com) | Partneři |
-| [Microsoft Partner Network](http://learningportal.microsoft.com) | Partneři |
+| [LearnAI@MS](https://learnanalytics.microsoft.com) | Partneři |
+| [Microsoft Partner Network](https://learningportal.microsoft.com) | Partneři |
 
 Navíc jsou zdarma MOOCS (massive open online kurzy) na AI online nabízené, akademické instituce jako informačních technologií a MIT a další vzdělávací společnosti.

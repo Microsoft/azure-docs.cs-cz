@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/29/2018
 ms.author: ccompy
-ms.openlocfilehash: 6d4f7fab0c36095d96cec0038a39744102e8972b
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 535f70658593ff5a9ae1642ae7a97646e3fefb63
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47433748"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51288250"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>Důležité informace o sítích pro službu App Service Environment #
 
@@ -33,7 +33,7 @@ Existují dvě verze služby App Service Environment: ASEv1 a ASEv2. Informace v
 
 Všechna volání ze služby ASE, které připojuje k Internetu, ponechejte virtuální sítě pomocí virtuální IP adresy přiřazené pro danou službu ASE. Veřejnou IP Adresou této virtuálních IP adres je zdrojová IP adresa pro všechna volání ze služby ASE, které připojuje k Internetu. Pokud aplikace ve vaší službě ASE provést volání k prostředkům ve vaší virtuální síti nebo přes síť VPN, Zdrojová IP adresa je jednou z IP adresy v podsíti používaným vaší službou ASE. Vzhledem k tomu, že služba ASE je v rámci virtuální sítě, dostanete také prostředky v rámci virtuální sítě bez jakékoli dodatečné konfigurace. Pokud virtuální síť je připojená k vaší místní síti, aplikace ve vaší službě ASE také mají přístup k prostředkům existuje bez další konfigurace.
 
-![Externí služby ASE][1] 
+![Externí služby ASE][1] 
 
 Pokud už máte externí služby ASE, je koncový bod, který vaše aplikace služby ASE přeložit pro také veřejných virtuálních IP adres:
 
@@ -48,11 +48,11 @@ Pokud máte službu ASE, je adresa ILB koncových bodů HTTP/S, FTP/S, nasazení
 
 Běžná aplikace přístupové porty jsou:
 
-| Použití | Od | Akce |
+| Použití | Od | až |
 |----------|---------|-------------|
 |  HTTP/HTTPS  | Konfigurovatelná uživatelem |  80, 443 |
 |  FTP/FTPS    | Konfigurovatelná uživatelem |  21, 990, 10001-10020 |
-|  Visual Studio vzdálené ladění  |  Konfigurovatelná uživatelem |  4016, 4018, 4020, 4022 |
+|  Visual Studio vzdálené ladění  |  Konfigurovatelná uživatelem |  4020, 4022, 4024 |
 
 Toto je hodnota true, pokud jste na externí služby ASE nebo ASE s ILB. Pokud používáte externí služby ASE, dostanete se tyto porty na veřejných virtuálních IP adres. Pokud používáte službu ASE, dostanete se tyto porty na ILB. Pokud se uzamknout port 443, může být vliv na některé funkce v portálu. Další informace najdete v tématu [závislosti portálu](#portaldep).
 
@@ -71,7 +71,7 @@ Když škálujete směrem nahoru nebo dolů, se přidají nové role odpovídaj�
 
 Služba ASE příchozí přístup, který se závislosti:
 
-| Použití | Od | Akce |
+| Použití | Od | až |
 |-----|------|----|
 | Správa | Adresy pro správu aplikace app Service | Podsíti služby ASE: 454, 455 |
 |  Interní komunikace služby ASE | Podsíti služby ASE: všechny porty | Podsíti služby ASE: všechny porty
@@ -116,7 +116,7 @@ Kromě funkční závislostí služby ASE se několik další položky týkajíc
 -   Kudu
 -   Rozšíření
 -   Průzkumník procesů
--   Konzola
+-   Console
 
 Pokud používáte službu ASE, není web SCM Internetu dostupné z oblasti mimo virtuální síť. Když je vaše aplikace hostovaná ve službě ASE s ILB, nebudou fungovat některé funkce z portálu.  
 
@@ -154,7 +154,7 @@ S externí služby ASE můžete přiřadit IP adresy pro jednotlivé aplikace. N
 
 Pokud aplikace má vlastní SSL založené na protokolu IP adresu, službu ASE rezervuje dva porty pro mapování na tuto IP adresu. Jeden port je pro provoz protokolu HTTP a je jiný port pro protokol HTTPS. Tyto porty jsou uvedené v uživatelském rozhraní služby ASE v části IP adresy. Provoz musí být schopen kontaktovat tyto porty z virtuální IP adresy nebo aplikace nejsou dostupné. Tento požadavek je důležité si pamatovat, když konfigurujete skupiny zabezpečení sítě (Nsg).
 
-## <a name="network-security-groups"></a>Network Security Groups (Skupiny zabezpečení sítě) ##
+## <a name="network-security-groups"></a>Skupiny zabezpečení sítě ##
 
 [Skupiny zabezpečení sítě] [ NSGs] poskytnout možnost řídit přístup k síti v rámci virtuální sítě. Při použití na portálu se s nejnižší prioritou na Zamítnout vše, co pravidlo odepřít implicitní. Co je vytvořit jsou vaše pravidla povolit.
 
@@ -170,7 +170,7 @@ První dva příchozí požadavky pro službu ASE tak funkce se zobrazí v horn�
 
 Výchozí pravidlo umožňuje IP adresy ve virtuální síti komunikovat s podsíti služby ASE. Další výchozí pravidlo umožňuje nástroje pro vyrovnávání zatížení, označované také jako veřejnou virtuální IP adresy, ke komunikaci se službou ASE. Pokud chcete zobrazit výchozí pravidla, vyberte **výchozí pravidla** vedle **přidat** ikonu. Když vložíte odepřít všechno ostatní pravidla po pravidla skupiny zabezpečení sítě je vidět, zabránit provoz mezi virtuální IP adresy a služby ASE. Chcete-li zabránit provoz přicházející z uvnitř virtuální sítě, přidejte vlastní pravidlo, které povolí příchozí. Použít prostředek rovna AzureLoadBalancer s cílovou **jakékoli** a rozsah portů **\***. Vzhledem k tomu, že pravidlo NSG, je použita na podsíti služby ASE, nemusíte být konkrétní v cílovém umístění.
 
-Pokud jste IP adresy přiřazené vaší aplikaci, ujistěte se, že můžete ponechat porty otevřené. Pokud chcete zobrazit porty, vyberte **služby App Service Environment** > **IP adresy**.  
+Pokud jste IP adresy přiřazené vaší aplikaci, ujistěte se, že můžete ponechat porty otevřené. Pokud chcete zobrazit porty, vyberte **služby App Service Environment** > **IP adresy**.  
 
 Všechny položky uvedené v následující odchozí pravidla jsou potřeba, s výjimkou poslední položky. Umožňují přístup k síti závislostí služby ASE, které jste si poznamenali dříve v tomto článku. Pokud některý z nich, vaše služba ASE přestane fungovat. Poslední položku v seznamu umožňuje vaší služby ASE ke komunikaci s ostatními prostředky ve virtuální síti.
 

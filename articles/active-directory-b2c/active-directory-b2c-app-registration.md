@@ -1,134 +1,84 @@
 ---
-title: Registrace aplikace v Azure Active Directory B2C | Microsoft Docs
-description: Postup registrace aplikace pomocí Azure Active Directory B2C
+title: Registrace aplikace v Azure Active Directory B2C | Dokumentace Microsoftu
+description: Zjistěte, jak zaregistrovat aplikaci pomocí Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 6/13/2017
+ms.date: 11/01/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 4f8a5b1ceda77ef254ad0c2afb7d2316581d778e
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 8068c4a8f38cd33a1a0547f5db5079bc75c76ec1
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49376392"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51013407"
 ---
-# <a name="azure-active-directory-b2c-register-your-application"></a>Azure Active Directory B2C: Registrace vaší aplikace
+# <a name="register-an-application-in-azure-active-directory-b2c"></a>Registrace aplikace v Azure Active Directory B2C
 
-Tento rychlý start vám pomůže zaregistrovat aplikaci v tenantovi Microsoft Azure Active Directory (Azure AD) B2C během několika minut. Jakmile budete hotovi, vaše aplikace bude zaregistrovaná pro použití v tenantovi Azure AD B2C.
+K sestavení [aplikace](active-directory-b2c-apps.md) , který přijímá registrace a přihlašování uživatelů, musíte nejprve registrovat aplikaci s tenantem Azure AD B2C. Tento článek pomůže zaregistrovat aplikaci v tenantovi Azure Active Directory (Azure AD) B2C během několika minut. Jakmile budete hotovi, vaše aplikace bude zaregistrovaná pro použití v tenantovi Azure AD B2C.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li sestavit aplikaci, která podporuje registrace a přihlašování uživatelů, musíte aplikaci nejprve zaregistrovat pomocí klienta Azure Active Directory B2C. Vlastního klienta získáte pomocí návodu v tématu [Vytvoření klienta Azure AD B2C](active-directory-b2c-get-started.md).
+Vlastního klienta získáte pomocí postupu v [vytvoření tenanta Azure Active Directory B2C](tutorial-create-tenant.md).
 
-Aplikace vytvořené na webu Azure Portal se musí spravovat ze stejného místa. Pokud upravíte aplikace Azure AD B2C pomocí PowerShellu nebo jiného portálu, stanou se nepodporované a nebudou s Azure AD B2C pracovat. Podrobnosti najdete v části věnující se [chybným aplikacím](#faulted-apps). 
+Výběr dalších kroků podle typu aplikace:
 
-V tomto článku se používají příklady, které vám pomůžou začít s našimi ukázkami. Více informací o těchto ukázkách najdete v dalších článcích.
+- [Registrace webové aplikace](#register-a-web-application)
+- [Registrace webového rozhraní API](#register-a-web-api)
+- [Registrace mobilní nebo nativní aplikace](#register-a-mobile-or-native-application)
 
-## <a name="navigate-to-b2c-settings"></a>Přechod do nastavení B2C
+## <a name="register-a-web-application"></a>Registrace webové aplikace
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com/) jako globální správce tenanta B2C. 
+1. Ujistěte se, že používáte adresáře, který obsahuje vašeho tenanta Azure AD B2C kliknutím **filtr adresářů a předplatných** v horní nabídce a výběrem adresáře, který obsahuje váš tenant.
+2. Zvolte **všechny služby** v horním levém horním rohu webu Azure portal a poté vyhledejte a vyberte **Azure AD B2C**.
+3. Vyberte **aplikací**a pak vyberte **přidat**.
+4. Zadejte název aplikace. Například *testapp1*.
+5. Pro **zahrnout webovou aplikaci / webové rozhraní API** a **povolit implicitní tok**vyberte **Ano**.
+6. Pro **adresy URL odpovědi**, zadejte koncový bod kam by měl Azure AD B2C vrátí všechny tokeny, které vaše aplikace požaduje. Například můžete nastavit ji pro naslouchání lokálně na `https://localhost:44316`. Pokud ještě neznáte číslo portu, můžete zadat hodnotu zástupného symbolu a později změnit.
+7. Klikněte na možnost **Vytvořit**.
 
-[!INCLUDE [active-directory-b2c-switch-b2c-tenant](../../includes/active-directory-b2c-switch-b2c-tenant.md)]
+### <a name="create-a-client-secret"></a>Vytvoření tajného klíče klienta
 
-[!INCLUDE [active-directory-b2c-portal-navigate-b2c-service](../../includes/active-directory-b2c-portal-navigate-b2c-service.md)]
+Pokud vaše aplikace volá webové rozhraní API zabezpečené pomocí Azure AD B2C, budete muset vytvořit tajný klíč aplikace.
 
-## <a name="choose-next-steps-based-on-your-application-type"></a>Výběr dalších kroků podle typu aplikace
+1. Vyberte **klíče** a potom klikněte na tlačítko **vygenerovat klíč**. 
+2. Vyberte **Uložit** zobrazíte klíče. Poznamenejte si hodnotu **Klíč aplikace**. Tuto hodnotu použijete jako tajný klíč aplikace v kódu vaší aplikace.
+3. Vyberte **přístup přes rozhraní API**, klikněte na tlačítko **přidat**a vyberte vaše webové rozhraní API a obory (oprávnění).
 
-* [Registrace webové aplikace](#register-a-web-app)
-* [Registrace webového rozhraní API](#register-a-web-api)
-* [Registrace mobilní nebo nativní aplikace](#register-a-mobile-or-native-app)
- 
-### <a name="register-a-web-app"></a>Registrace webové aplikace
+## <a name="register-a-web-api"></a>Registrace webové rozhraní API
 
-[!INCLUDE [active-directory-b2c-register-web-app](../../includes/active-directory-b2c-register-web-app.md)]
+1. Ujistěte se, že používáte adresáře, který obsahuje vašeho tenanta Azure AD B2C kliknutím **filtr adresářů a předplatných** v horní nabídce a výběrem adresáře, který obsahuje váš tenant.
+2. Zvolte **všechny služby** v horním levém horním rohu webu Azure portal a poté vyhledejte a vyberte **Azure AD B2C**.
+3. Vyberte **aplikací**a pak vyberte **přidat**.
+4. Zadejte název aplikace. Například *testapp2*.
+5. Pro **zahrnout webovou aplikaci / webové rozhraní API** a **povolit implicitní tok**vyberte **Ano**.
+6. Pro **adresy URL odpovědi**, zadejte koncový bod kam by měl Azure AD B2C vrátí všechny tokeny, které vaše aplikace požaduje. Například můžete nastavit ji pro naslouchání lokálně na `https://localhost:44316`. Pokud ještě neznáte číslo portu, můžete zadat hodnotu zástupného symbolu a později změnit.
+7. Pro **identifikátor ID URI aplikace**, zadejte identifikátor použitý pro vaše webového rozhraní API. Vygeneruje se pro vás úplný identifikátor URI včetně domény. Například, `https://contosotenant.onmicrosoft.com/api`.
+8. Klikněte na možnost **Vytvořit**.
+9. Vyberte **publikované obory** na podle potřeby přidejte další obory. Ve výchozím nastavení `user_impersonation` rozsah je definován. `user_impersonation` Oboru umožňuje aplikacím přístup k tomuto rozhraní API jménem přihlášeného uživatele. Pokud chcete, `user_impersonation` obor je možné odebrat.
 
-### <a name="create-a-web-app-client-secret"></a>Vytvoření tajného klíče klienta webové aplikace
+## <a name="register-a-mobile-or-native-application"></a>Registrace mobilní nebo nativní aplikace
 
-Pokud vaše webová aplikace volá webové rozhraní API zabezpečené pomocí Azure AD B2C, proveďte tyto kroky:
-   1. Vytvořte Tajný klíč aplikace – přejděte do okna **Klíče** a klikněte na tlačítko **Vygenerovat klíč**. Poznamenejte si hodnotu **Klíč aplikace**. Tuto hodnotu použijete jako tajný klíč aplikace v kódu vaší aplikace.
-   2. Klikněte na **Přístup přes rozhraní API**, pak na **Přidat** a vyberte vaše webové rozhraní API a obory (oprávnění).
+1. Ujistěte se, že používáte adresáře, který obsahuje vašeho tenanta Azure AD B2C kliknutím **filtr adresářů a předplatných** v horní nabídce a výběrem adresáře, který obsahuje váš tenant.
+2. Zvolte **všechny služby** v horním levém horním rohu webu Azure portal a poté vyhledejte a vyberte **Azure AD B2C**.
+3. Vyberte **aplikací**a pak vyberte **přidat**.
+4. Zadejte název aplikace. Například *testapp3*.
+5. Pro **zahrnout webovou aplikaci / webové rozhraní API**vyberte **ne**.
+6. Pro **zahrnout nativního klienta**vyberte **Ano**.
+7. Pro **identifikátor URI pro přesměrování**, zadejte [identifikátor URI přesměrování s vlastním schématem](active-directory-b2c-apps.md). Ujistěte se, zvolte na dobrý identifikátor URI přesměrování a nemusí obsahovat speciální znaky jako podtržítka.
+8. Klikněte na možnost **Vytvořit**.
 
-> [!NOTE]
-> **Tajný klíč aplikace** je důležitý údaj zabezpečení a musí být řádně zabezpečen.
-> 
+### <a name="create-a-client-secret"></a>Vytvoření tajného klíče klienta
 
-[Přejít na **další kroky**](#next-steps)
+Pokud vaše aplikace volá webové rozhraní API zabezpečené pomocí Azure AD B2C, budete muset vytvořit tajný klíč aplikace.
 
-### <a name="register-a-web-api"></a>Registrace webové rozhraní API
-
-[!INCLUDE [active-directory-b2c-register-web-api](../../includes/active-directory-b2c-register-web-api.md)]
-
-Klikněte na **Publikované obory** a podle potřeby přidejte další obory. Ve výchozím nastavení je definovaný obor user_impersonation. Obor user_impersonation umožňuje jiným aplikacím přístup k tomuto rozhraní API jménem přihlášeného uživatele. Pokud chcete, můžete obor user_impersonation odebrat.
-
-[Přejít na **další kroky**](#next-steps)
-
-### <a name="register-a-mobile-or-native-app"></a>Registrace mobilní nebo nativní aplikace
-
-[!INCLUDE [active-directory-b2c-register-mobile-native-app](../../includes/active-directory-b2c-register-mobile-native-app.md)]
-
-[Přejít na **další kroky**](#next-steps)
-
-## <a name="limitations"></a>Omezení
-
-### <a name="choosing-a-web-app-or-api-reply-url"></a>Výběr adresy URL odpovědi webové aplikace nebo rozhraní API
-
-Aktuálně je u aplikací zaregistrovaných pomocí Azure AD B2C omezená sada hodnot adresy URL odpovědi. Adresa URL odpovědi pro webové aplikace a služby musí začínat schématem `https` a všechny adresy URL odpovědi musí sdílet jednu doménu DNS. Například nemůžete zaregistrovat webovou aplikaci s některou z těchto adres URL odpovědi:
-
-`https://login-east.contoso.com`
-
-`https://login-west.contoso.com`
-
-Registrační systém porovnává celý název DNS stávající adresy URL odpovědi s názvem DNS adresy URL odpovědi, kterou přidáváte. Požadavek na přidání názvu DNS selže, pokud platí některá z následujících podmínek:
-
-* Celý název DNS nové adresy URL odpovědi neodpovídá názvu DNS stávající adresy URL odpovědi.
-* Celý název DNS nové adresy URL odpovědi není subdoménou stávající adresy URL odpovědi.
-
-Pokud má aplikace například tuto adresu URL odpovědi:
-
-`https://login.contoso.com`
-
-Můžete ji přidat tímto způsobem:
-
-`https://login.contoso.com/new`
-
-V tomto případě se název DNS přesně shoduje. Nebo můžete provést toto:
-
-`https://new.login.contoso.com`
-
-V tomto případě odkazujete na subdoménu DNS login.contoso.com. Pokud chcete mít aplikaci s adresami URL odpovědi login-east.contoso.com a login-west.contoso.com, musíte tyto adresy URL odpovědi přidat v následujícím pořadí:
-
-`https://contoso.com`
-
-`https://login-east.contoso.com`
-
-`https://login-west.contoso.com`
-
-Druhé dvě adresy URL odpovědi můžete přidat, protože jsou subdoménami první adresy URL odpovědi contoso.com.
-
-### <a name="choosing-a-native-app-redirect-uri"></a>Výběr identifikátoru URI přesměrování nativní aplikace
-
-Existují dva důležité aspekty při výběru identifikátoru URI přesměrování pro mobilní/nativní aplikace:
-
-* **Jedinečnost:** Schéma identifikátoru URI přesměrování by mělo být pro každou aplikaci jedinečné. V našem příkladu (com.onmicrosoft.contoso.appname://redirect/path) použijeme jako schéma com.onmicrosoft.contoso.appname. Doporučujeme používat tento vzor. Pokud dvě aplikace sdílejí stejné schéma, uživateli se zobrazí dialogové okno pro výběr aplikace. Pokud uživatel použije nesprávnou volbu, přihlášení se nezdaří.
-* **Úplnost:** Identifikátor URI přesměrování musí mít schéma a cestu. Cesta musí obsahovat za doménou alespoň jedno lomítko (například //contoso/ funguje a //contoso selže).
-
-Ujistěte se, že identifikátor URI přesměrování neobsahuje žádné speciální znaky jako podtržítka.
-
-### <a name="faulted-apps"></a>Chybné aplikace
-
-Aplikace B2C se NESMÍ upravovat:
-
-* Na jiných portálech pro správu aplikací, jako je [Portál pro registraci aplikací](https://apps.dev.microsoft.com/).
-* Pomocí rozhraní Graph API nebo PowerShellu.
-
-Pokud aplikaci Azure AD B2C upravíte popsaným způsobem a pokusíte se ji znovu upravit v okně funkcí Azure AD B2C na webu Azure Portal, stane se chybnou aplikací a už ji nebude možné použít s Azure AD B2C. Je nutné aplikaci odstranit a znovu ji vytvořit.
-
-Pokud chcete aplikaci odstranit, přejděte na [Portál pro registraci aplikací](https://apps.dev.microsoft.com/) a tam ji odstraňte. Aby byla aplikace viditelná, musíte být vlastníkem aplikace (nestačí být pouze správcem tenanta).
+1. Vyberte **klíče** a potom klikněte na tlačítko **vygenerovat klíč**. 
+2. Vyberte **Uložit** zobrazíte klíče. Poznamenejte si hodnotu **Klíč aplikace**. Tuto hodnotu použijete jako tajný klíč aplikace v kódu vaší aplikace.
+3. Vyberte **přístup přes rozhraní API**, klikněte na tlačítko **přidat**a vyberte vaše webové rozhraní API a obory (oprávnění).
 
 ## <a name="next-steps"></a>Další postup
 

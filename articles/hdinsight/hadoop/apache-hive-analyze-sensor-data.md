@@ -3,18 +3,18 @@ title: Analýza dat ze senzorů pomocí Hivu a Hadoop – Azure HDInsight
 description: Zjistěte, jak analyzovat data ze senzorů pomocí konzoly pro dotazy Hive s HDInsight (Hadoop) a pak data vizualizovat v Microsoft Excel pomocí PowerView.
 services: hdinsight
 ms.service: hdinsight
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 04/14/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: f82bac1b478183cad41e1bb9f7dce3fed8b5417b
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: dfc4d930f185c36c3ba0c869494ba0e7dee64cac
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43048894"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51249400"
 ---
 # <a name="analyze-sensor-data-using-the-hive-query-console-on-hadoop-in-hdinsight"></a>Analýza dat senzoru pomocí konzoly pro dotazy Hive platformy hadoop v HDInsight
 
@@ -41,7 +41,7 @@ V této ukázce použijete Hive ke zpracování historických dat a identifikova
   > [!NOTE]
   > Aplikace Microsoft Excel se používá pro vizualizace dat s využitím [Power View](https://support.office.com/Article/Power-View-Explore-visualize-and-present-your-data-98268d31-97e2-42aa-a52b-a68cf460472e?ui=en-US&rs=en-US&ad=US).
 
-* [Ovladače ODBC Microsoft Hivu](http://www.microsoft.com/download/details.aspx?id=40886)
+* [Ovladače ODBC Microsoft Hivu](https://www.microsoft.com/download/details.aspx?id=40886)
 
 ## <a name="to-run-the-sample"></a>Ke spuštění ukázky
 

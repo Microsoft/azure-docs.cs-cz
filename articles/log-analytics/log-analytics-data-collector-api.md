@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/03/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: cedebbe1ba0dcf40af0f2f001f022ffaad175c70
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 497b5b9d33ab2dea37e1017fa2d5bf2d0db66a5f
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50959626"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51007667"
 ---
 # <a name="send-data-to-log-analytics-with-the-http-data-collector-api-public-preview"></a>Posílat data do Log Analytics pomocí rozhraní API kolekce dat HTTP (public preview)
 V tomto článku se dozvíte, jak používat rozhraní API kolekce dat HTTP k odesílání dat do Log Analytics z klienta REST API.  Popisuje jak formátovat data shromážděná z vašich skriptů nebo aplikací, zahrnout do požadavku a jste tento požadavek na oprávnění od Log Analytics.  Příklady jsou k dispozici pro prostředí PowerShell, C# a Python.
@@ -201,7 +201,7 @@ Tato tabulka uvádí kompletní sadu stavové kódy, které může vrátit služ
 Zadat dotaz na data odeslaná Log Analytics HTTP rozhraní API kolekce dat, hledat záznamy s **typ** , který je roven **LogType** hodnotu, která jste zadali, s příponou **_CL**. Například, pokud jste použili **MyCustomLog**, pak by vrátí všechny záznamy s **typ = MyCustomLog_CL**.
 
 >[!NOTE]
-> Pokud byl váš pracovní prostor upgradován na [dotazovací jazyk Log Analytics nové](log-analytics-log-search.md), pak se změní výše uvedeném dotazu následující.
+> Pokud byl váš pracovní prostor upgradován na [dotazovací jazyk Log Analytics nové](log-analytics-queries.md), pak se změní výše uvedeném dotazu následující.
 
 > `MyCustomLog_CL`
 
@@ -470,6 +470,6 @@ post_data(customer_id, shared_key, body, log_type)
 ```
 
 ## <a name="next-steps"></a>Další postup
-- Použití [rozhraní API pro vyhledávání protokolu](log-analytics-log-search.md) k načtení dat v úložišti Log Analytics.
+- Použití [rozhraní API pro vyhledávání protokolu](log-analytics-queries.md) k načtení dat v úložišti Log Analytics.
 
 - Další informace o tom [vytvoření datového kanálu pomocí rozhraní API kolekce dat](log-analytics-create-pipeline-datacollector-api.md) pomocí pracovního postupu aplikace logiky do Log Analytics.

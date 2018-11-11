@@ -3,128 +3,65 @@ title: Instalace služby Mobility pro zotavení po havárii virtuálních počí
 description: Zjistěte, jak nainstalovat agenta služby Mobility pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů do Azure pomocí služby Azure Site Recovery.
 author: Rajeswari-Mamilla
 ms.service: site-recovery
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: ramamill
-ms.openlocfilehash: 145affbcff128e0ec599ad1f97c79260b0dcae5a
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 14be544c53bf3393466cfa33b2ad815f07d0005d
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50212688"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51007412"
 ---
 # <a name="install-the-mobility-service-for-disaster-recovery-of-vmware-vms-and-physical-servers"></a>Instalace služby Mobility pro zotavení po havárii virtuálních počítačů VMware a fyzické servery
 
-Službu Mobility Azure Site Recovery je nainstalován na virtuálních počítačích VMware a fyzické servery, které chcete replikovat do Azure. Služba zaznamenává datové zápisy na počítači a předává je na procesní server. Nasazení služby Mobility do každého počítače (virtuální počítač VMware nebo fyzický server), který chcete replikovat do Azure. Můžete nasadit službu Mobility na serverech a virtuálních počítačů VMware, které chcete chránit pomocí následujících metod:
+Při nastavení zotavení po havárii pro virtuální počítače VMware a fyzických serverů požíváním [Azure Site Recovery](site-recovery-overview.md), můžete nainstalovat [služby Site Recovery Mobility](vmware-physical-mobility-service-overview.md) na každém místních virtuálních počítačů VMware a fyzických serverů.  Služba Mobility zaznamenává datové zápisy na počítači a předává je na procesní server Site Recovery.
+
+## <a name="install-on-windows-machine"></a>Nainstalujte na počítači s Windows
+
+Na každém počítači s Windows, kterou chcete chránit, postupujte takto:
+
+1. Zkontrolujte, zda je síťové připojení mezi počítačem a procesovým serverem. Pokud jste nenastavili samostatný procesový server, pak ve výchozím nastavení běží na konfiguračním serveru.
+1. Vytvořte účet, pomocí kterého bude procesový server moct přistupovat k počítači. Účet by měl mít oprávnění správce, místní nebo doménový. Pouze pro nabízenou instalaci a aktualizací agenta, použijte tento účet.
+2. Pokud nepoužíváte doménový účet, zakažte vzdálené řízení přístupu uživatele v místním počítači následujícím způsobem:
+    - V klíči registru HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System přidáte novou hodnotu DWORD: **LocalAccountTokenFilterPolicy**. Nastavte hodnotu na **1**.
+    -  Chcete-li to provést z příkazového řádku, spusťte následující příkaz:  
+   "REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d
+3. V bráně Windows Firewall na počítači, který chcete chránit, vyberte **povolit aplikaci nebo funkci průchod bránou Firewall**. Povolit **sdílení souborů a tiskáren** a **Windows Management Instrumentation (WMI)**. Pro počítače, které patří do nějaké domény můžete nakonfigurovat nastavení brány firewall pomocí objektu zásad skupiny (GPO).
+
+   ![Nastavení brány firewall](./media/vmware-azure-install-mobility-service/mobility1.png)
+
+4. V nástroji CSPSConfigtool přidejte účet, který jste vytvořili. Chcete-li to provést, přihlaste se ke konfiguračnímu serveru.
+5. Otevřete **cspsconfigtool.exe**. Je k dispozici jako zástupce na ploše a ve složce %ProgramData%\home\svsystems\bin.
+6. Na **spravovat účty** kartu, vyberte možnost **přidat účet**.
+7. Přidejte účet, který jste vytvořili.
+8. Zadejte přihlašovací údaje, které používáte při povolení replikace počítače.
+
+## <a name="install-on-linux-machine"></a>Nainstalujte na počítač s Linuxem
+
+Na každém počítači s Linuxem, který chcete chránit postupujte takto:
+
+1. Zkontrolujte, zda je síťové připojení mezi počítačem s Linuxem a procesovým serverem.
+2. Vytvořte účet, pomocí kterého bude procesový server moct přistupovat k počítači. Účet musí být na zdrojovém serveru s Linuxem uživatelem **root**. Použijte tento účet pouze pro nabízenou instalaci a aktualizace.
+3. Zkontrolujte, že soubor /etc/hosts na zdrojovém serveru s Linuxem obsahuje položky, které mapují místní název hostitele na IP adresy přidružené ke všem síťovým adaptérům.
+4. Na počítači, který chcete replikovat, nainstalujte nejnovější balíčky openssh, openssh-server a openssl.
+5. Ujistěte se, že je povolený Secure Shell (SSH) a že běží na portu 22.
+4. SFTP subsystému a ověřování heslem v souboru sshd_config povolte. Chcete-li to provést, přihlaste se jako **kořenové**.
+5. V **/etc/ssh/sshd_config** souboru, vyhledejte řádek, který začíná **PasswordAuthentication**.
+6. Zrušte na řádku komentář a změňte hodnotu na **Ano**.
+7. Vyhledejte řádek, který začíná **subsystému**, a zrušte komentář na řádku.
+
+      ![Linux](./media/vmware-azure-install-mobility-service/mobility2.png)
+
+8. Restartujte službu **sshd**.
+9. V nástroji CSPSConfigtool přidejte účet, který jste vytvořili. Chcete-li to provést, přihlaste se ke konfiguračnímu serveru.
+10. Otevřete **cspsconfigtool.exe**. Je k dispozici jako zástupce na ploše a ve složce %ProgramData%\home\svsystems\bin.
+11. Na **spravovat účty** kartu, vyberte možnost **přidat účet**.
+12. Přidejte účet, který jste vytvořili.
+13. Zadejte přihlašovací údaje, které používáte při povolení replikace počítače.
+
+## <a name="next-steps"></a>Další postup
+
+Po instalaci služby Mobility na webu Azure Portal, vyberte **+ replikovat** chcete začít chránit tyto virtuální počítače. Další informace o povolení replikace pro [VMware VMs(vmware-azure-enable-replication.md) a [fyzických serverů](physical-azure-disaster-recovery.md#enable-replication).
 
 
-* [Instalace pomocí nástrojů pro nasazení softwaru jako je System Center Configuration Manager](vmware-azure-mobility-install-configuration-mgr.md)
-* [Instalace pomocí služby Azure Automation a Desired State Configuration (DSC služby Automation)](vmware-azure-mobility-deploy-automation-dsc.md)
-* [Nainstalovat ručně z uživatelského rozhraní](vmware-azure-install-mobility-service.md#install-mobility-service-manually-by-using-the-gui)
-* [Ruční instalace z příkazového řádku](vmware-azure-install-mobility-service.md#install-mobility-service-manually-at-a-command-prompt)
-* [Nainstalovat pomocí nabízené instalace Site Recovery](vmware-azure-install-mobility-service.md#install-mobility-service-by-push-installation-from-azure-site-recovery)
-
-
->[!IMPORTANT]
-> Počínaje verzí 9.7.0.0, **na virtuálních počítačích s Windows**, instalační program služby Mobility nainstaluje také k dispozici nejnovější [agenta virtuálního počítače Azure](../virtual-machines/extensions/features-windows.md#azure-vm-agent). Když počítač převezme služby při selhání do Azure, tento počítač splňuje požadavky všechna rozšíření virtuálních počítačů pomocí instalace agenta.
-> </br>Na **virtuální počítače s Linuxem**, WALinuxAgent musí ručně nainstalovat.
-
-## <a name="prerequisites"></a>Požadavky
-Než ručně nainstalovat službu Mobility na serveru, proveďte tyto požadované kroky:
-1. Přihlaste se ke konfiguračnímu serveru a pak otevřete okno příkazového řádku jako správce.
-2. Změňte adresář na složku bin a poté vytvořit soubor přístupové heslo.
-
-    ```
-    cd %ProgramData%\ASR\home\svsystems\bin
-    genpassphrase.exe -v > MobSvc.passphrase
-    ```
-3. Store souboru s heslem v zabezpečeném umístění. Použijte soubor během instalace služby Mobility.
-4. Instalace služby mobility pro všechny podporované operační systémy se ve složce %ProgramData%\ASR\home\svsystems\pushinstallsvc\repository.
-
-### <a name="mobility-service-installer-to-operating-system-mapping"></a>Mapování mobility služby Instalační služby operačního systému
-
-Pokud chcete zobrazit seznam operační systém verze kompatibilní balíček služby Mobility s odkazují na seznam [podporované operační systémy pro virtuální počítače VMware a fyzické servery](vmware-physical-azure-support-matrix.md#replicated-machines).
-
-| Název šablony souboru instalačního programu| Operační systém |
-|---|--|
-|Microsoft-ASR\_UA\*Windows\*release.exe | Windows Server 2008 R2 SP1 (64 bitů) </br> Windows Server 2012 (64 bitů) </br> Windows Server 2012 R2 (64 bitů) </br> Windows Server 2016 (64 bitů) |
-|Microsoft Azure Site Recovery\_UA\*počítače RHEL6 64\*release.tar.gz | Red Hat Enterprise Linux (RHEL) 6.* (pouze 64bitové verze) </br> CentOS 6.* (pouze 64bitové verze) |
-|Microsoft-ASR\_UA\*RHEL7-64\*release.tar.gz | Red Hat Enterprise Linux (RHEL) 7.* (pouze 64bitové verze) </br> CentOS 7.* (pouze 64bitové verze) |
-|Microsoft Azure Site Recovery\_UA\*SLES12 64\*release.tar.gz | SUSE Linux Enterprise Server 12 SP1, SP2 SP3 (pouze 64bitové verze)|
-|Microsoft-ASR\_UA\*SLES11-SP3-64\*release.tar.gz| SUSE Linux Enterprise Server 11 SP3 (pouze 64bitové verze)|
-|Microsoft-ASR\_UA\*SLES11-SP4-64\*release.tar.gz| SUSE Linux Enterprise Server 11 SP4 (pouze 64bitové verze)|
-|Microsoft-ASR\_UA\*OL6-64\*release.tar.gz | Oracle Enterprise Linux 6.4, 6.5 (pouze 64bitové verze)|
-|Microsoft-ASR\_UA\*UBUNTU-14.04-64\*release.tar.gz | Ubuntu Linux 14.04 (pouze 64bitové verze)|
-|Microsoft-ASR\_UA\*UBUNTU-16.04-64\*release.tar.gz | Server se systémem Ubuntu Linux 16.04 LTS (pouze 64bitové verze)|
-|Microsoft-ASR_UA\*DEBIAN7-64\*release.tar.gz | Debian 7 (pouze 64bitová verze)|
-|Microsoft-ASR_UA\*DEBIAN8-64\*release.tar.gz | Debian 8 (pouze 64bitové verze)|
-
-## <a name="install-mobility-service-manually-by-using-the-gui"></a>Nainstalovat službu Mobility ručně pomocí grafického uživatelského rozhraní
-
->[!IMPORTANT]
-> Pokud používáte k replikaci virtuálních počítačů Azure IaaS z jedné předplatné/oblasti Azure do jiného konfiguračního serveru, použijte metodu instalace na základě na příkazovém řádku.
-
-[!INCLUDE [site-recovery-install-mob-svc-gui](../../includes/site-recovery-install-mob-svc-gui.md)]
-
-## <a name="install-mobility-service-manually-at-a-command-prompt"></a>Nainstalovat službu Mobility ručně z příkazového řádku
-
-### <a name="command-line-installation-on-a-windows-computer"></a>Instalace z příkazového řádku na počítači Windows
-[!INCLUDE [site-recovery-install-mob-svc-win-cmd](../../includes/site-recovery-install-mob-svc-win-cmd.md)]
-
-### <a name="command-line-installation-on-a-linux-computer"></a>Instalace z příkazového řádku na počítači s Linuxem
-[!INCLUDE [site-recovery-install-mob-svc-lin-cmd](../../includes/site-recovery-install-mob-svc-lin-cmd.md)]
-
-
-## <a name="install-mobility-service-by-push-installation-from-azure-site-recovery"></a>Nainstalovat službu Mobility pomocí nabízené instalace ze služby Azure Site Recovery
-Provedení nabízené instalace služby Mobility s využitím Site Recovery. Všechny cílové počítače, musí splňovat následující požadavky.
-
-[!INCLUDE [site-recovery-prepare-push-install-mob-svc-win](../../includes/site-recovery-prepare-push-install-mob-svc-win.md)]
-
-[!INCLUDE [site-recovery-prepare-push-install-mob-svc-lin](../../includes/site-recovery-prepare-push-install-mob-svc-lin.md)]
-
-
-> [!NOTE]
-Po instalaci služby Mobility na webu Azure Portal, vyberte **+ replikovat** chcete začít chránit tyto virtuální počítače.
-
-## <a name="update-mobility-service"></a>Aktualizace služby Mobility
-
-> [!WARNING]
-> Ujistěte se, že konfigurační server, horizontální navýšení kapacity procesových serverů a všechny hlavní cílové servery, které jsou součástí vašeho nasazení jsou aktualizované před zahájením aktualizace služby Mobility na chráněné servery.
-
-1. Na portálu Azure portal, přejděte *název trezoru* > **replikované položky** zobrazení.
-2. Pokud již byla aktualizována konfigurační server na nejnovější verzi, se zobrazí oznámení, který čte "je k dispozici nová aktualizace agenta replikace Site recovery. Klikněte na tlačítko nainstalovat."
-
-     ![Okno replikované položky](.\media\vmware-azure-install-mobility-service\replicated-item-notif.png)
-3. Vyberte oznámení a otevřete stránku výběru virtuálního počítače.
-4. Vyberte virtuální počítače, kterou chcete upgradovat službu mobility na a vyberte **OK**.
-
-     ![Replikované položky seznamu virtuálních počítačů](.\media\vmware-azure-install-mobility-service\update-okpng.png)
-
-Úloha aktualizace služby Mobility se spustí pro každou z vybraných virtuálních počítačů.
-
-> [!NOTE]
-> [Přečtěte si další](vmware-azure-manage-configuration-server.md) o tom, jak aktualizovat heslo pro účet použitý k instalaci služby Mobility.
-
-## <a name="uninstall-mobility-service-on-a-windows-server-computer"></a>Odinstalujte službu Mobility na počítač s Windows serverem
-Odinstalujte službu Mobility na počítač s Windows serverem pomocí jedné z následujících metod.
-
-### <a name="uninstall-by-using-the-gui"></a>Odinstalace pomocí grafického uživatelského rozhraní
-1. V Ovládacích panelech vyberte **programy**.
-2. Vyberte **Microsoft Azure Site Recovery Mobility Service/hlavní cílový server**a pak vyberte **odinstalovat**.
-
-### <a name="uninstall-at-a-command-prompt"></a>Odinstalovat z příkazového řádku
-1. Otevřete okno příkazového řádku jako správce.
-2. Odinstalace služby Mobility, spusťte následující příkaz:
-
-    ```
-    MsiExec.exe /qn /x {275197FC-14FD-4560-A5EB-38217F80CBD1} /L+*V "C:\ProgramData\ASRSetupLogs\UnifiedAgentMSIUninstall.log"
-    ```
-
-## <a name="uninstall-mobility-service-on-a-linux-computer"></a>Odinstalujte službu Mobility na počítači s Linuxem
-1. Na serveru Linux, přihlaste se jako **kořenové** uživatele.
-2. V terminálu přejděte do /user/local/ASR.
-3. Odinstalace služby Mobility, spusťte následující příkaz:
-
-    ```
-    uninstall.sh -Y
-    ```

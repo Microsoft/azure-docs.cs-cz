@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/24/2018
 ms.author: pkc
-ms.openlocfilehash: e22a2431ecae68278276b069bc199cfea60cd413
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 5d2edd3b4d8655133ef2835f0d0e579280123ae7
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44347354"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51249417"
 ---
 # <a name="azure-service-fabric-support-options"></a>Možnosti podpory Azure Service Fabric
 
@@ -27,7 +27,7 @@ K zajištění příslušné podporu clusterů Service Fabric, na kterých běž
 
 ## <a name="report-production-issues-or-request-paid-support-for-azure"></a>Oznámit problémy v produkčním prostředí nebo požádat o placené podpory pro Azure
 
-Hlášení problémů s ve vašem clusteru Service Fabric, nasadit do Azure, otevřete lístek podpory [na portálu Azure portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) nebo [Microsoft support portal](http://support.microsoft.com/oas/default.aspx?prid=16146).
+Hlášení problémů s ve vašem clusteru Service Fabric, nasadit do Azure, otevřete lístek podpory [na portálu Azure portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) nebo [Microsoft support portal](https://support.microsoft.com/oas/default.aspx?prid=16146).
 
 Další informace:
  
@@ -38,7 +38,7 @@ Další informace:
 
 ## <a name="report-production-issues-or-request-paid-support-for-standalone-service-fabric-clusters"></a>Oznámit problémy v produkčním prostředí nebo požádat o placené podpory pro samostatnou službu, kterou clusterů Service Fabric
 
-Pro vytváření sestav místně nasadili problémy ve vašem clusteru Service Fabric nebo v jiných cloudech, otevřete lístek pro profesionální podporu na [Microsoft support portal](http://support.microsoft.com/oas/default.aspx?prid=16146).
+Pro vytváření sestav místně nasadili problémy ve vašem clusteru Service Fabric nebo v jiných cloudech, otevřete lístek pro profesionální podporu na [Microsoft support portal](https://support.microsoft.com/oas/default.aspx?prid=16146).
 
 Další informace:
 

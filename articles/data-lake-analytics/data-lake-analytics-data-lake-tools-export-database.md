@@ -9,16 +9,16 @@ ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
 ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 11/27/2017
-ms.openlocfilehash: e4eea3cb4b16460c7e17bb6575c4e6cf8dda5a0a
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 7a4aae87cd704cf94c89c308c0c056ae5b9a8b4d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43047250"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51250998"
 ---
 # <a name="export-a-u-sql-database"></a>Exportovat databázi U-SQL
 
-V tomto článku najdete další informace o použití [Azure Data Lake Tools pro Visual Studio](http://aka.ms/adltoolsvs) exportovat databázi U-SQL jako jeden skript U-SQL a stažené zdroje. Vyexportované databáze můžete importovat do místní účet v rámci stejného procesu.
+V tomto článku najdete další informace o použití [Azure Data Lake Tools pro Visual Studio](https://aka.ms/adltoolsvs) exportovat databázi U-SQL jako jeden skript U-SQL a stažené zdroje. Vyexportované databáze můžete importovat do místní účet v rámci stejného procesu.
 
 Zákazníci obvykle udržovat několik prostředí pro vývoj, testování a produkce. Tato prostředí jsou hostované na obou místní účet, na místním počítači vývojáře a v rámci účtu Azure Data Lake Analytics v Azure. 
 
@@ -35,7 +35,7 @@ Všechny účty Data Lake Analytics, ke kterým máte oprávnění pro jsou uved
    
     ![Průzkumník serveru – Export databáze](./media/data-lake-analytics-data-lake-tools-export-database/export-database.png)
 
-     Pokud **exportovat** možnost nabídky nebude k dispozici, budete muset [aktualizaci nástroj lasted verzi](http://aka.ms/adltoolsvs).
+     Pokud **exportovat** možnost nabídky nebude k dispozici, budete muset [aktualizaci nástroj lasted verzi](https://aka.ms/adltoolsvs).
 
 ### <a name="step-2-configure-the-objects-that-you-want-to-export"></a>Krok 2: Konfigurace, které chcete exportovat objekty
 

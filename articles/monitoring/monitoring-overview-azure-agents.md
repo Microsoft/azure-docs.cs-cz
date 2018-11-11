@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2018
 ms.author: magoedte
-ms.openlocfilehash: 62edeb36fcd56733630edc6fa27c9963f20b0186
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: 81db6720422de111cc5b390c58e9020d7c19f90a
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50913542"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282029"
 ---
 # <a name="overview-of-the-azure-agents-to-monitor-azure-virtual-machines"></a>Přehled Azure agentům monitorovat virtuální počítače Azure
 Microsoft Azure poskytuje několik způsobů, jak shromažďovat různé druhy dat z virtuálních počítačů hostovaných v Azure nebo jiných poskytovatelů cloudových služeb s Microsoft Windows a Linux.  Tento článek vám pomůže popisují rozdíly a funkce přináší každého agenta v pořadí, abyste mohli určit, která bude podporovat správu služby nebo obecné požadavky na monitorování.  
@@ -27,7 +27,7 @@ Microsoft Azure poskytuje několik způsobů, jak shromažďovat různé druhy d
 ## <a name="comparing-azure-diagnostic-and-log-analytics-agent"></a>Porovnání agenta diagnostiky Azure a Log Analytics
 Dnes v Azure existují dva typy agentů k dispozici pro monitorování virtuálního počítače Azure – rozšíření Azure Diagnostics a agenta Log Analytics pro systémy Linux a Windows.  V podstatě Tito agenti jsou navržené ke shromažďování metrik a protokolů a předávání do úložiště. Který je však kde ukončit jejich podobnosti.  
 
-[Rozšíření Azure Diagnostics](../monitoring-and-diagnostics/azure-diagnostics.md), který byl poskytnut pro Azure Cloud Services od stala všeobecně dostupná v roce 2010, je agent, který poskytuje simple shromažďování diagnostických dat z prostředku Azure IaaS jako virtuální počítač, a zachovat ho do úložiště Azure.  Jakmile se v úložišti, jste se rozhodli zobrazení s jedním z několika dostupných nástrojů, jako například [Průzkumníku serveru v sadě Visual Studio](../vs-azure-tools-storage-resources-server-explorer-browse-manage.md) a [Průzkumníka služby Azure Storage](../vs-azure-tools-storage-manage-with-storage-explorer.md).
+[Rozšíření Azure Diagnostics](../monitoring-and-diagnostics/azure-diagnostics.md), který byl poskytnut pro Azure Cloud Services od stala všeobecně dostupná v roce 2010, je agent, který poskytuje simple shromažďování diagnostických dat z prostředku Azure IaaS jako virtuální počítač, a zachovat ho do úložiště Azure.  Jakmile se v úložišti, jste se rozhodli zobrazení s jedním z několika dostupných nástrojů, jako například [Průzkumníku serveru v sadě Visual Studio](/visualstudio/azure/vs-azure-tools-storage-resources-server-explorer-browse-manage) a [Průzkumníka služby Azure Storage](../vs-azure-tools-storage-manage-with-storage-explorer.md).
 
 Můžete shromažďovat:
 
@@ -38,7 +38,7 @@ Můžete shromažďovat:
 * Shromažďovat události protokolu syslog  
 * Výpisy stavu systému 
 
-Data můžete také předávat [Application Insights](../application-insights/app-insights-cloudservices.md), [Log Analytics](../log-analytics/log-analytics-overview.md), nebo mimo Azure services pomocí [centra událostí](../event-hubs/event-hubs-about.md). 
+Data můžete také předávat [Application Insights](../application-insights/app-insights-cloudservices.md), [Log Analytics](../log-analytics/log-analytics-queries.md), nebo mimo Azure services pomocí [centra událostí](../event-hubs/event-hubs-about.md). 
 
 U rozšířené monitorování, kdy potřebujete víc než shromažďování metrik a podmnožinu protokolů, se vyžaduje agenta Log Analytics pro Windows a Linux.  Pomocí tohoto agenta budete moct využívat služby Azure, například služby Automation a Log Analytics, včetně kompletní sadu funkcí, které nabízejí, k poskytování komplexní správu virtuálních počítačů Azure prostřednictvím jejich životního cyklu. To zahrnuje:
 

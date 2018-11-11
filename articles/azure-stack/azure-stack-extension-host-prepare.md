@@ -5,17 +5,17 @@ services: azure-stack
 keywords: ''
 author: mattbriggs
 ms.author: mabrigg
-ms.date: 11/02/2018
+ms.date: 11/09/2018
 ms.topic: article
 ms.service: azure-stack
 ms.reviewer: thoroet
 manager: femila
-ms.openlocfilehash: 4376b9e89aeef32987f7a3bb29ca6815e941ba00
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 049e859f1d736e7c06ac5d40e33d91d1540c3d9e
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50960238"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51514362"
 ---
 # <a name="prepare-for-extension-host-for-azure-stack"></a>Příprava pro rozšíření hostitele pro Azure Stack
 
@@ -84,8 +84,7 @@ Použijte počítač, který lze připojit ke koncovému bodu Azure Stack privil
 
 1. Použijte počítač, který lze připojit ke koncovému bodu Azure Stack privilegovaného pro další kroky. Ujistěte se, že přístup k nové soubory certifikát z tohoto počítače.
 2. Otevřete prostředí PowerShell ISE a provést další bloky skriptu
-3. Importujte certifikát pro hostování koncový bod. Upravte skript, aby odpovídaly vašemu prostředí.
-4. Importujte certifikát pro správu, který je hostitelem koncového bodu.
+3. Importujte certifikát pro správu, který je hostitelem koncového bodu.
 
     ```PowerShell  
 
@@ -104,7 +103,7 @@ Použijte počítač, který lze připojit ke koncovému bodu Azure Stack privil
             Import-AdminHostingServiceCert $AdminHostingCertContent $certPassword
     }
     ```
-5. Importujte certifikát pro koncový bod služby hostingu.
+4. Importujte certifikát pro koncový bod služby hostingu.
     ```PowerShell  
     $CertPassword = read-host -AsSecureString -prompt "Certificate Password"
 

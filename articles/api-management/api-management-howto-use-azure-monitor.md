@@ -14,12 +14,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: b4c885758f572851f058edb6e7851d650faed9f9
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 683b77e47857e4efbe2c24425953e9a3d83177f9
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38972994"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50418838"
 ---
 # <a name="monitor-published-apis"></a>Monitorování publikovaných rozhraní API
 
@@ -36,11 +36,10 @@ V tomto kurzu se naučíte:
 Následující video ukazuje, jak pomocí služby Azure Monitor monitorovat službu API Management. 
 
 > [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Monitor-API-Management-with-Azure-Monitor/player]
->
->
 
 ## <a name="prerequisites"></a>Požadavky
 
++ Seznamte se s [terminologií služby Azure API Management](api-management-terminology.md).
 + Projděte si následující rychlý start: [Vytvoření instance Azure API Managementu](get-started-create-service-instance.md).
 + Projděte si také následující kurz: Navíc kurzu: [Import a publikování vašeho prvního rozhraní API](import-and-publish.md).
 
@@ -55,17 +54,16 @@ API Management každou minutu vysílá metriky, takže vám skoro v reálném č
 * Neoprávněné požadavky brány: počet požadavků rozhraní API, které obdržely kódy odpovědi HTTP jako 401, 403 a 429.
 * Ostatní požadavky brány: počet požadavků rozhraní API, které obdržely kódy odpovědi HTTP nepatřící do žádné z výše uvedených skupin (například 418).
 
+![Graf metrik](./media/api-management-azure-monitor/apim-monitor-metrics.png)
+
 Přístup k metrikám:
 
 1. V nabídce ve spodní části stránky vyberte **Metriky**.
 
     ![Průzkumníku metrik](./media/api-management-azure-monitor/api-management-metrics-blade.png)
 
-2. V rozevíracím seznamu vyberte metriky, které vás zajímají (můžete jich přidat několik).  
-    V seznamu dostupných metrik vyberte třeba **Celkový počet požadavků brány** a **Neúspěšné požadavky brány**.
-3. Graf zobrazí celkový počet volání rozhraní API. Ukazuje také počet volání rozhraní API, která se nezdařila.
-
-    ![Graf metrik](./media/api-management-azure-monitor/apim-monitor-metrics.png)
+2. V rozevíracím seznamu vyberte metriky, které vás zajímají. Například **Úspěšné požadavky brány**. Do grafu můžete přidat i další metriky.
+3. Graf zobrazí celkový počet úspěšných volání rozhraní API.
 
 ## <a name="set-up-an-alert-rule-for-unauthorized-request"></a>Nastavení pravidla upozornění při neoprávněných požadavcích
 
@@ -102,6 +100,8 @@ Protokoly aktivit poskytují přehled o operacích provedených vašimi službam
 
 Protokoly aktivit můžete zobrazit ve své službě API Management nebo k nim můžete získat přístup ze všech svých prostředků Azure prostřednictvím služby Azure Monitor. 
 
+![Protokoly aktivit](./media/api-management-azure-monitor/apim-monitor-activity-logs.png)
+
 Zobrazení protokolů aktivit:
 
 1. Vyberte instanci služby APIM.
@@ -111,8 +111,6 @@ Zobrazení protokolů aktivit:
 
 3. Vyberte požadovaný obor filtrování a klikněte na **Použít**.
 
-    ![Protokoly aktivit](./media/api-management-azure-monitor/apim-monitor-activity-logs.png)
-
 ## <a name="diagnostic-logs"></a>Diagnostické protokoly
 
 Diagnostické protokoly poskytují spoustu informací o operacích a chybách, které jsou důležité pro audit i pro účely odstraňování potíží. Diagnostické protokoly se liší od protokolů aktivit. Protokoly aktivit poskytují přehled o operacích provedených ve vašich prostředcích Azure. Diagnostické protokoly poskytují přehled o operacích, které provedly vaše prostředky.
@@ -120,7 +118,7 @@ Diagnostické protokoly poskytují spoustu informací o operacích a chybách, k
 Konfigurace diagnostických protokolů:
 
 1. Vyberte instanci služby APIM.
-2. Klikněte na **Diagnostické protokoly**.
+2. Klikněte na **Nastavení diagnostiky**.
 
     ![Diagnostické protokoly](./media/api-management-azure-monitor/api-management-diagnostic-logs-blade.png)
 

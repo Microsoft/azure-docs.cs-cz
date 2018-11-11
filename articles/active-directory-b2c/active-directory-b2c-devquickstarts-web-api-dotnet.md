@@ -1,5 +1,5 @@
 ---
-title: Volání zabezpečené ASP.NET web api v Azure Active Directory B2C | Dokumentace Microsoftu
+title: Volání webového rozhraní API .NET z webové aplikace .NET v Azure Active Directory B2C | Dokumentace Microsoftu
 description: Vytvoření aplikace .NET Web app a volání webového rozhraní api pomocí přístupových tokenů Azure Active Directory B2C a OAuth 2.0.
 services: active-directory-b2c
 author: davidmu1
@@ -10,14 +10,14 @@ ms.topic: conceptual
 ms.date: 03/17/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 38ad6d8f3746d856d8c0a73520d55fad9d8344e6
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 7296954a17b21183eb8be2744b42289522cf7f57
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50157917"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51012492"
 ---
-# <a name="azure-ad-b2c-call-a-net-web-api-from-a-net-web-app"></a>Azure AD B2C: Volání webového rozhraní API .NET z webové aplikace .NET
+# <a name="call-a-net-web-api-from-a-net-web-app-in-azure-active-directory-b2c"></a>Volání webového rozhraní API .NET z webové aplikace .NET v Azure Active Directory B2C
 
 Pomocí Azure AD B2C, můžete přidat funkce správy identity výkonné do vašich webových aplikacích a webových rozhraní API. Tento článek popisuje, jak požádat o tokeny přístupu a zkontrolujte volání z webové aplikace .NET "seznam úkolů".NET webové rozhraní api.
 
@@ -31,10 +31,10 @@ Tento článek nepopisuje, jak implementovat přihlášení, registrace a správ
 Chcete-li vytvořit webovou aplikaci, která volá webové rozhraní api, musíte:
 
 1. [Vytvoření tenanta Azure AD B2C](active-directory-b2c-get-started.md).
-2. [Registrace webové rozhraní api](active-directory-b2c-app-registration.md#register-a-web-api).
-3. [Zaregistrovat webovou aplikaci](active-directory-b2c-app-registration.md#register-a-web-app).
+2. [Registrace webové rozhraní api](active-directory-b2c-app-registration.md).
+3. [Zaregistrovat webovou aplikaci](active-directory-b2c-app-registration.md).
 4. [Nastavení zásad](active-directory-b2c-reference-policies.md).
-5. [Udělit oprávnění k použití webové aplikaci webového rozhraní api](active-directory-b2c-access-tokens.md#publishing-permissions).
+5. [Udělit oprávnění k použití webové aplikaci webového rozhraní api](active-directory-b2c-access-tokens.md).
 
 > [!IMPORTANT]
 > Klientská aplikace a webové rozhraní API musí používat stejný adresář Azure AD B2C.

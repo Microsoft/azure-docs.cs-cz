@@ -1,6 +1,6 @@
 ---
-title: Diagnostikovat chyby a výjimky v webové aplikace pomocí služby Azure Application Insights | Microsoft Docs
-description: Zachytit výjimky z aplikací ASP.NET společně s telemetrická žádost.
+title: Diagnostikujte chyby a výjimky ve službě web apps s využitím Azure Application Insights | Dokumentace Microsoftu
+description: Zachytit výjimky z aplikací ASP.NET spolu s telemetrie žádostí.
 services: application-insights
 documentationcenter: .net
 author: mrbullwinkle
@@ -13,106 +13,106 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/19/2017
 ms.author: mbullwin
-ms.openlocfilehash: a3dcf4211df5d40c4b174fd9a818d3268ffaa3a0
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 87de134f6f0484208e8b6cec52b5eefaac4621c6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35295706"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51251930"
 ---
-# <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>Diagnostikovat výjimky ve webových aplikacích pomocí služby Application Insights
-Výjimky v svou živou webovou aplikaci oznamuje [Application Insights](app-insights-overview.md). Neúspěšných požadavků mohou korelovat s výjimky a dalších událostí na klienta a serveru, takže můžete rychle diagnostikovat příčin.
+# <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>Diagnostika výjimky ve vašich webových aplikací pomocí Application Insights
+Výjimky ve vaší živé webové aplikace jsou hlášeny sadou [Application Insights](app-insights-overview.md). Neúspěšné požadavky můžete korelovat s výjimky a dalších událostí na klienta a serveru, tak, že můžete rychle Diagnostikujte příčiny.
 
-## <a name="set-up-exception-reporting"></a>Nastavit generování sestav výjimky
-* Mít výjimky nahlášené z vaší aplikace. server:
+## <a name="set-up-exception-reporting"></a>Nastavení generování sestav výjimky
+* K výjimkám hlášené z aplikací serveru:
   * Nainstalujte [Application Insights SDK](app-insights-asp-net.md) v kódu aplikace, nebo
-  * Webové servery služby IIS: Spusťte [agenta Application Insights](app-insights-monitor-performance-live-website-now.md); nebo
-  * Službě Azure web apps: Přidat [rozšíření Application Insights](app-insights-azure-web-apps.md)
-  * Webové aplikace v jazyce Java: Nainstalujte [agenta Java](app-insights-java-agent.md)
-* Nainstalujte [fragment kódu JavaScript](app-insights-javascript.md) na webových stránkách zachycení výjimky v prohlížeči.
-* Některé architektury aplikace nebo s některými nastaveními budete muset provést některé další kroky pro zachycení více výjimek:
+  * Webové servery služby IIS: Spusťte [Application Insights Agent](app-insights-monitor-performance-live-website-now.md); nebo
+  * Webové aplikace Azure: Přidejte [rozšíření Application Insights](app-insights-azure-web-apps.md)
+  * Webové aplikace v Javě: Nainstalujte [agenta Java](app-insights-java-agent.md)
+* Nainstalujte [fragment kódu jazyka JavaScript](app-insights-javascript.md) na webových stránkách jak zachytávat výjimky prohlížeče.
+* V některých aplikační architektury, nebo s některými nastaveními je potřeba udělat některé dodatečné kroky, jak zachytávat výjimky Další:
   * [Webové formuláře](#web-forms)
   * [MVC](#mvc)
-  * [1.* webové rozhraní API](#web-api-1x)
-  * [2.* webové rozhraní API](#web-api-2x)
+  * [1.* webového rozhraní API](#web-api-1x)
+  * [2.* webového rozhraní API](#web-api-2x)
   * [WCF](#wcf)
 
-## <a name="diagnosing-exceptions-using-visual-studio"></a>Diagnostikování výjimky pomocí sady Visual Studio
-Otevřete aplikaci řešení v sadě Visual Studio, které pomáhají při ladění.
+## <a name="diagnosing-exceptions-using-visual-studio"></a>Diagnostika výjimek pomocí sady Visual Studio
+Otevřete aplikaci řešení v sadě Visual Studio k pomoci s laděním.
 
-Spusťte aplikaci na vašem serveru nebo na počítači pro vývoj pomocí F5.
+Spusťte aplikaci, na vašem serveru nebo na počítači pro vývoj pomocí klávesy F5.
 
-Otevřete okno hledání Application Insights v sadě Visual Studio a nastavte ji chcete zobrazit události z vaší aplikace. Při ladění, můžete k tomu jednoduše kliknutím na tlačítko Application Insights.
+Otevření okna hledání Application Insights v sadě Visual Studio a nastavte ho chcete zobrazit události z vaší aplikace. Při ladění, můžete to provést jednoduše kliknutím na tlačítko Application Insights.
 
 ![Klikněte pravým tlačítkem na projekt a vyberte Application Insights, otevřete.](./media/app-insights-asp-net-exceptions/34.png)
 
-Všimněte si, že můžete filtrovat sestavě zobrazily jenom výjimky.
+Všimněte si, že můžete filtrovat sestavu pro zobrazení jenom výjimky.
 
-*Žádné výjimky zobrazující? V tématu [zachycení výjimky](#exceptions).*
+*Žádné výjimky, zobrazuje? Zobrazit [zachycení výjimek](#exceptions).*
 
-Klikněte na sestavu výjimky a zobrazit jeho trasování zásobníku.
-Klikněte na odkaz řádku v trasování zásobníku, otevřete soubor odpovídající kód.  
+Klikněte na tlačítko sestava zobrazíte jeho trasování zásobníku výjimek.
+Klikněte na tlačítko s odkazem na řádek v trasování zásobníku, otevřete soubor odpovídající kód.  
 
-V kódu Všimněte si, že Codelensu zobrazuje data o výjimky:
+V kódu Všimněte si, že CodeLens ukazuje údaje o výjimky:
 
-![Oznámení Codelensu výjimek.](./media/app-insights-asp-net-exceptions/35.png)
+![CodeLens oznámení o výjimkách.](./media/app-insights-asp-net-exceptions/35.png)
 
-## <a name="diagnosing-failures-using-the-azure-portal"></a>Diagnostikování chyb pomocí portálu Azure
-Application Insights se dodává s kurátorované prostředí APM při diagnostikování selhání v monitorovaných aplikací. Pokud chcete spustit, klikněte na možnost selhání v nabídce prostředku Application Insights v sekci prošetřit. Měli byste vidět zobrazení na celou obrazovku, zobrazující trendy míra selhání pro své žádosti, kolik z nich se nedaří a dopad na tom, kolik uživatelů. Na pravé straně uvidíte některé specifické pro vybraný nejužitečnější distribuce selhání operace, včetně kódy odpovědí horní 3, 3 hlavních typy výjimek a nejvyšší 3 selhání závislostí typy. 
+## <a name="diagnosing-failures-using-the-azure-portal"></a>Diagnostikování chyb pomocí webu Azure portal
+Application Insights přichází s APM způsob při diagnostice chyb ve vašich monitorovaných aplikacích. Pokud chcete začít, klikněte na možnost selhání v nabídce prostředků Application Insights v části prozkoumat. Měli byste vidět zobrazení na celou obrazovku, který zobrazuje trendy míra selhání pro vaše požadavky, kolik z nich se nedaří a kolik uživatelů bylo ovlivněno. Na pravé straně uvidíte některé specifické pro vybranou nejužitečnější distribucí neúspěšné operace, včetně kódy odpovědí první 3, 3 nejpoužívanější typy výjimek a nejčastější 3 typy závislostí služeb při selhání. 
 
-![Selhání rychlou kontrolu zobrazení (kartu operace)](./media/app-insights-asp-net-exceptions/FailuresTriageView.png)
+![Chyby třídění zobrazení (kartu operace)](./media/app-insights-asp-net-exceptions/FailuresTriageView.png)
 
-Jedním kliknutím pak můžete zkontrolovat ukázky pro každou z těchto podmnožin operací. Při diagnostice výjimky, zejména, můžete kliknutím na počet konkrétní výjimka předkládané s okno Podrobnosti výjimky, jako je tato:
+Jedním kliknutím můžete potom zkontrolovat reprezentativní vzorky pro každou z těchto podmnožin operací. Diagnostikovat výjimky, zejména, můžete kliknout na počet konkrétní výjimky, které se budou zobrazovat s okno s podrobnostmi o výjimky, jako je například tento:
 
-![Okno Podrobnosti výjimky](./media/app-insights-asp-net-exceptions/ExceptionDetailsBlade.png)
+![Okno s podrobnostmi o výjimce](./media/app-insights-asp-net-exceptions/ExceptionDetailsBlade.png)
 
-**Alternativně** místo prohlížení výjimky operace konkrétní selhání, můžete spustit z celkový přehled o výjimky, přepnutím na kartu výjimky:
+**Alternativně** namísto pohledu na výjimky, které konkrétní neúspěšnou operaci, můžete spustit z celkového přehledu o výjimkách, přepnutím na kartu výjimky:
 
-![Selhání rychlou kontrolu zobrazení (karta výjimek)](./media/app-insights-asp-net-exceptions/FailuresTriageView_Exceptions.png)
+![Chyby třídění zobrazení (kartu výjimky)](./media/app-insights-asp-net-exceptions/FailuresTriageView_Exceptions.png)
 
-Zde se zobrazí všechny výjimky shromážděných pro monitorované aplikace.
+Zde můžete zobrazit všechny výjimky, které jsou shromažďovány pro monitorované aplikace.
 
-*Žádné výjimky zobrazující? V tématu [zachycení výjimky](#exceptions).*
+*Žádné výjimky, zobrazuje? Zobrazit [zachycení výjimek](#exceptions).*
 
 
 ## <a name="custom-tracing-and-log-data"></a>Vlastní trasování a data protokolu
-K získání diagnostických dat specifické pro vaši aplikaci, můžete vložit kódu pro odeslání vlastní telemetrická data. Toto zobrazí ve vyhledávání diagnostiky společně se žádosti, zobrazení stránky a další automaticky shromažďovat data.
+K získání diagnostických dat specifické pro vaši aplikaci, můžete vložit kód pro odesílání vlastních telemetrických dat. To zobrazuje v diagnostickém vyhledávání vedle požadavku, zobrazení stránky a další data se automaticky shromažďují.
 
 Máte několik možností:
 
-* [TrackEvent()](app-insights-api-custom-events-metrics.md#trackevent) se obvykle používá ke sledování vzorů využití, ale také odesílá data se zobrazí v části vlastní události ve vyhledávání diagnostiky. Události jsou pojmenované a přenášet vlastnosti řetězce a číselné metriky, ve kterém můžete [filtrovat diagnostických hledání](app-insights-diagnostic-search.md).
-* [TrackTrace()](app-insights-api-custom-events-metrics.md#tracktrace) umožňuje odesílat delší data, jako jsou informace o POST.
-* [TrackException()](#exceptions) odešle trasování zásobníku. [Další informace o výjimky](#exceptions).
-* Pokud už používáte rozhraní protokolování, jako je Log4Net nebo NLog, můžete [zaznamenat tyto protokoly](app-insights-asp-net-trace-logs.md) a zobrazovat ve vyhledávání diagnostiky společně se data požadavku a výjimky.
+* [Funkce TrackEvent()](app-insights-api-custom-events-metrics.md#trackevent) se obvykle používá pro monitorování vzorce používání, ale také odesílá data se zobrazí v části vlastní události v diagnostickém vyhledávání. Události jsou pojmenovány a mohou obsahovat vlastnosti řetězce a číselnou metriky, na kterém je možné [filtrovat diagnostických hledání](app-insights-diagnostic-search.md).
+* [Použitím metod TrackTrace()](app-insights-api-custom-events-metrics.md#tracktrace) vám umožní odeslat delší data, jako jsou informace o příspěvku.
+* [Metody TrackException()](#exceptions) odešle trasování zásobníku. [Další informace o výjimkách](#exceptions).
+* Pokud už používáte protokolovací rozhraní, jako jsou Log4Net nebo NLog, můžete si [zaznamenat tyto protokoly](app-insights-asp-net-trace-logs.md) a zobrazit je v diagnostickém vyhledávání vedle dat požadavků a výjimek.
 
-Pokud chcete zobrazit tyto události, otevřete [vyhledávání](app-insights-diagnostic-search.md), otevřete filtr a potom vyberte vlastní události, trasování nebo výjimky.
+Chcete-li zobrazit tyto události, otevřete [hledání](app-insights-diagnostic-search.md), otevřete filtr a pak zvolte vlastní události, trasování a výjimky.
 
-![Procházení](./media/app-insights-asp-net-exceptions/viewCustomEvents.png)
+![Procházet na podrobnosti](./media/app-insights-asp-net-exceptions/viewCustomEvents.png)
 
 > [!NOTE]
-> Pokud vaše aplikace generuje mnoho telemetrických dat, sníží modul adaptivního vzorkování automaticky objem dat odesílaných na portál tím, že budou odesílány pouze reprezentativní vzorky událostí. Události, které jsou součástí stejné operace bude vybraná nebo nevybrány jako skupina, takže mohou procházet mezi souvisejícími událostmi. [Další informace o vzorkování.](app-insights-sampling.md)
+> Pokud vaše aplikace generuje mnoho telemetrických dat, sníží modul adaptivního vzorkování automaticky objem dat odesílaných na portál tím, že budou odesílány pouze reprezentativní vzorky událostí. Události, které jsou součástí stejné operace bude zaškrtnuto nebo nevybrány jako skupina, takže mohou procházet mezi souvisejícími událostmi. [Další informace o vzorkování.](app-insights-sampling.md)
 >
 >
 
-### <a name="how-to-see-request-post-data"></a>Jak zjistit, data požadavku POST
-Podrobnosti požadavku neobsahují data odeslaná do vaší aplikace v volání POST. Aby tato data nahlášené:
+### <a name="how-to-see-request-post-data"></a>Jak zobrazit data požadavku POST
+Podrobnosti o žádosti jsou data odeslaná do vaší aplikace v rámci volání POST. Aby tato data ohlásil:
 
-* [Instalace sady SDK](app-insights-asp-net.md) ve vašem projektu aplikace.
-* Vložení kódu v aplikaci k volání [Microsoft.ApplicationInsights.TrackTrace()](app-insights-api-custom-events-metrics.md#tracktrace). Odesílání dat POST v parametru zprávy. Neexistuje omezení povolenou velikost, takže pokuste odeslat jenom základní data.
-* Pokud byste prozkoumat chybných požadavků, najdete přidružené trasování.  
+* [Instalace sady SDK](app-insights-asp-net.md) v projektu aplikace.
+* Vložení kódu v aplikaci volat [Microsoft.ApplicationInsights.TrackTrace()](app-insights-api-custom-events-metrics.md#tracktrace). Odeslat příspěvek data v parametru zprávy. Platí omezení na povolenou velikost, snažte se odeslat jenom základní data.
+* Při zkoumání neúspěšného požadavku najdete související trasování.  
 
-![Procházení](./media/app-insights-asp-net-exceptions/060-req-related.png)
+![Procházet na podrobnosti](./media/app-insights-asp-net-exceptions/060-req-related.png)
 
-## <a name="exceptions"></a> Zachytávání výjimek a související diagnostických dat
-Na první pohled neuvidíte na portálu všechny výjimky, které způsobí selhání ve vaší aplikaci. Zobrazí všechny výjimky prohlížeče (Pokud používáte [JavaScript SDK](app-insights-javascript.md) na webových stránkách). Ale většina serveru výjimky jsou zachyceny službou IIS a máte k zápisu verze kódu k jejich zobrazení.
+## <a name="exceptions"></a> Zachycení výjimky a související diagnostických dat
+Zpočátku nezobrazí na portálu všechny výjimky, které způsobí selhání ve vaší aplikaci. Zobrazí se vám všechny výjimky prohlížeče (Pokud používáte [JavaScript SDK](app-insights-javascript.md) na webových stránkách). Ale většina serverové výjimky jsou zachyceny službou IIS a budete muset psát hodně kódu k jejich zobrazení.
 
 Můžete:
 
-* **Protokolování výjimek explicitně** vložením kódu do obslužné rutiny výjimek nahlásit výjimky.
-* **Zachytit výjimky automaticky** nakonfigurováním požadované rozhraní ASP.NET. Potřebné dodatky se liší pro různé typy framework.
+* **Protokolování výjimek explicitně** tak, že vloží kód do obslužné rutiny výjimek k hlášení výjimek.
+* **Zachycení výjimek automaticky** nakonfigurováním ASP.NET framework. Potřebné dodatky se liší pro různé typy rozhraní.
 
-## <a name="reporting-exceptions-explicitly"></a>Explicitně Reporting výjimky
-Nejjednodušší způsob, jak se má vložit volání pro TrackException() do obslužné rutiny výjimek.
+## <a name="reporting-exceptions-explicitly"></a>Explicitně hlášení výjimek
+Nejjednodušší způsob je vložit volání pro TrackException() do obslužné rutiny výjimky.
 
 ```javascript
     try
@@ -164,17 +164,17 @@ Nejjednodušší způsob, jak se má vložit volání pro TrackException() do ob
     End Try
 ```
 
-Vlastnosti a měření parametry jsou volitelné, ale jsou užitečné pro [filtrování a přidání](app-insights-diagnostic-search.md) doplňující informace. Například pokud máte aplikaci, která můžete spustit několik hry, může najít všechny sestavy výjimky související s konkrétní hru. Můžete přidat libovolný počet položek, jako má každý slovníku.
+Vlastnosti a měření parametry jsou volitelné, ale jsou užitečné pro [filtrování a přidání](app-insights-diagnostic-search.md) dodatečné informace. Pokud máte aplikaci, kterou můžete spustit několik her, například může vyhledat všechny sestavy výjimky související s konkrétním hru. Můžete přidat tolik položek, jako má každý slovník.
 
 ## <a name="browser-exceptions"></a>Výjimky prohlížečů
-Většina prohlížeče výjimek jsou hlášeny.
+Většina výjimek prohlížeče jsou hlášeny.
 
-Pokud vaše webová stránka obsahuje soubory skriptu ze sítě pro doručování obsahu nebo v jiných doménách, ujistěte se, vaše značky script má atribut ```crossorigin="anonymous"```, a že server odešle [hlavičky CORS](http://enable-cors.org/). To vám umožní získat trasování zásobníku a podrobnosti pro neošetřených výjimek jazyka JavaScript z těchto prostředků.
+Pokud vaše webová stránka obsahuje soubory skriptů ze sítí pro doručování obsahu nebo v jiných doménách, ujistěte se, vaši značku skriptu má atribut ```crossorigin="anonymous"```, a že server odešle [hlavičky CORS](http://enable-cors.org/). To vám umožní získat trasování zásobníku a podrobnosti pro neošetřených výjimek jazyka JavaScript z těchto prostředků.
 
 ## <a name="web-forms"></a>Webové formuláře
-U webových formulářů bude možné ke shromažďování výjimky, když nejsou žádné přesměrování nakonfigurované CustomErrors modulu protokolu HTTP.
+Pro webové formuláře bude moci shromažďovat výjimky, když nejsou žádná přesměrování nakonfigurovanou CustomErrors modulu protokolu HTTP.
 
-Ale pokud máte aktivní přesměrování, přidejte následující řádky do funkce Application_Error Global.asax.cs. (Pokud jste ještě nemáte, přidejte souboru Global.asax.)
+Ale pokud máte aktivní přesměrování, přidejte následující řádky do funkce Application_Error Global.asax.cs. (Pokud ho ještě nemáte, přidejte soubor Global.asax.)
 
 ```csharp
     void Application_Error(object sender, EventArgs e)
@@ -189,23 +189,23 @@ Ale pokud máte aktivní přesměrování, přidejte následující řádky do f
 ```
 
 ## <a name="mvc"></a>MVC
-Počínaje Application Insights Web SDK verzi 2.6 (beta3 a novější), Application Insights shromažďuje neošetřené výjimky vzniklé v metodách 5 + řadiče MVC automaticky. Pokud jste dříve přidali vlastní obslužnou rutinu pro sledování takové výjimky (jak je popsáno v následujících příkladech), může odebrat, abychom zabránili jeho dvojité sledování výjimek.
+Spouští se pomocí Application Insights Web SDK verze 2.6 (beta3 a novější), Application Insights shromažďuje neošetřené výjimky vzniklé v metodách 5 + řadiče MVC automaticky. Pokud jste dříve přidali vlastní obslužnou rutinu ke sledování těchto výjimek (jak je popsáno v následujících příkladech), můžete odebrat zabránili double sledování výjimek.
 
-Existuje několik případů, které nelze zpracovat filtry výjimek. Příklad:
+Existuje několik případů, které nemůže zpracovat filtry výjimek. Příklad:
 
-* Výjimky vydané z konstruktorů řadiče.
-* Výjimek vyvolaných z obslužné rutiny zpráv.
-* Výjimky vydané během trasování.
-* Výjimky vydané během serializace obsahu odpovědi.
-* Během spuštění aplikace došlo k výjimce.
-* V úlohy na pozadí došlo k výjimce.
+* Výjimky vyvolané z konstruktorů kontroleru.
+* Výjimky vyvolané z obslužné rutiny zpráv.
+* Výjimky vyvolané při směrování.
+* Výjimky vyvolané během serializace obsahu odpovědí.
+* Byla vyvolána výjimka při spuštění aplikace.
+* V úlohách na pozadí došlo k výjimce.
 
-Všechny výjimky *zpracovává* aplikace stále je třeba sledovat ručně. Nezpracované výjimky pocházející z řadičů obvykle za následek odpovědi 500 "Vnitřní chyba serveru". Pokud tyto odpovědi je ručně vytvořený v důsledku zpracování výjimek (nebo žádná výjimka na všechny) je sledovány v odpovídající telemetrická žádost s `ResultCode` 500, Application Insights SDK je ale nemůže sledovat odpovídající výjimce.
+Všechny výjimky *zpracovává* aplikací stále potřeba sledovat ručně. Neošetřených výjimek pocházejících od řadičů obvykle za následek odpovědi 500 "Vnitřní chyba serveru". Pokud takové odpovědi je ručně vytvořený jako výsledek zpracování výjimek (nebo vůbec žádné výjimky) je sledována v odpovídající telemetrie žádostí s `ResultCode` 500, ale není schopen sledovat odpovídající výjimek Application Insights SDK.
 
-### <a name="prior-versions-support"></a>Podpora předchozí verze
-Pokud používáte MVC 4 (a před) aplikace Insights Web SDK 2.5 (a před), naleznete v následujících příkladech ke sledování výjimek.
+### <a name="prior-versions-support"></a>Předchozí verze podporují
+Pokud používáte MVC 4 (a předchozí) z Application Insights Web SDK 2.5 (a předchozí), najdete v následujících příkladech ke sledování výjimek.
 
-Pokud [CustomErrors](https://msdn.microsoft.com/library/h0hfz6fc.aspx) konfigurace je `Off`, bude k dispozici pro výjimky [modulu HTTP](https://msdn.microsoft.com/library/ms178468.aspx) ke shromažďování. Ale pokud je `RemoteOnly` (výchozí), nebo `On`, bude výjimka nezaškrtnuté a nejsou k dispozici pro službu Application Insights automaticky shromažďovat. Můžete to opravíme přepsáním [System.Web.Mvc.HandleErrorAttribute – třída](http://msdn.microsoft.com/library/system.web.mvc.handleerrorattribute.aspx)a použití přepsaného třídu, jak je uvedeno pro různé verze MVC níže ([githubu zdroj](https://github.com/AppInsightsSamples/Mvc2UnhandledExceptions/blob/master/MVC2App/Controllers/AiHandleErrorAttribute.cs)):
+Pokud [CustomErrors](https://msdn.microsoft.com/library/h0hfz6fc.aspx) konfigurace je `Off`, bude k dispozici pro výjimky [modulu HTTP služby](https://msdn.microsoft.com/library/ms178468.aspx) ke shromažďování. Nicméně pokud je `RemoteOnly` (výchozí), nebo `On`, výjimka bude zaškrtnuté a není k dispozici pro službu Application Insights automaticky shromažďovat. Která můžete opravit tak, že přepíšete [System.Web.Mvc.HandleErrorAttribute třídy](https://msdn.microsoft.com/library/system.web.mvc.handleerrorattribute.aspx)a jak je znázorněno pro různé verze MVC níže použití přepsané třídy ([zdroje githubu](https://github.com/AppInsightsSamples/Mvc2UnhandledExceptions/blob/master/MVC2App/Controllers/AiHandleErrorAttribute.cs)):
 
 ```csharp
     using System;
@@ -235,7 +235,7 @@ Pokud [CustomErrors](https://msdn.microsoft.com/library/h0hfz6fc.aspx) konfigura
 ```
 
 #### <a name="mvc-2"></a>MVC 2
-Atribut HandleError nahraďte váš nový atribut v řadičů.
+Atribut HandleError nahraďte nového atributu ve vašich kontrolerech.
 
 ```csharp
     namespace MVC2App.Controllers
@@ -249,7 +249,7 @@ Atribut HandleError nahraďte váš nový atribut v řadičů.
 [Ukázka](https://github.com/AppInsightsSamples/Mvc2UnhandledExceptions)
 
 #### <a name="mvc-3"></a>MVC 3
-Zaregistrovat `AiHandleErrorAttribute` jako globální filtr ve funkci Global.asax.cs:
+Zaregistrujte `AiHandleErrorAttribute` jako globální filtr v Global.asax.cs:
 
 ```csharp
     public class MyMvcApplication : System.Web.HttpApplication
@@ -264,7 +264,7 @@ Zaregistrovat `AiHandleErrorAttribute` jako globální filtr ve funkci Global.as
 [Ukázka](https://github.com/AppInsightsSamples/Mvc3UnhandledExceptionTelemetry)
 
 #### <a name="mvc-4-mvc5"></a>MVC 4, MVC5
-Zaregistrujte AiHandleErrorAttribute jako globální filtr ve funkci FilterConfig.cs:
+Zaregistrujte se jako globální filtr v FilterConfig.cs AiHandleErrorAttribute:
 
 ```csharp
     public class FilterConfig
@@ -280,21 +280,21 @@ Zaregistrujte AiHandleErrorAttribute jako globální filtr ve funkci FilterConfi
 [Ukázka](https://github.com/AppInsightsSamples/Mvc5UnhandledExceptionTelemetry)
 
 ## <a name="web-api"></a>Web API
-Počínaje Application Insights Web SDK verzi 2.6 (beta3 a novější), Application Insights shromažďuje neošetřené výjimky vzniklé v metodách řadiče automaticky pro WebAPI 2 +. Pokud jste dříve přidali vlastní obslužnou rutinu pro sledování takové výjimky (jak je popsáno v následujících příkladech), může odebrat, abychom zabránili jeho dvojité sledování výjimek.
+Spouští se pomocí Application Insights Web SDK verze 2.6 (beta3 a novější), Application Insights shromažďuje neošetřené výjimky vzniklé v metodách kontroleru automaticky pro WebAPI 2 +. Pokud jste dříve přidali vlastní obslužnou rutinu ke sledování těchto výjimek (jak je popsáno v následujících příkladech), můžete odebrat zabránili double sledování výjimek.
 
-Existuje několik případů, které nelze zpracovat filtry výjimek. Příklad:
+Existuje několik případů, které nemůže zpracovat filtry výjimek. Příklad:
 
-* Výjimky vydané z konstruktorů řadiče.
-* Výjimek vyvolaných z obslužné rutiny zpráv.
-* Výjimky vydané během trasování.
-* Výjimky vydané během serializace obsahu odpovědi.
-* Během spuštění aplikace došlo k výjimce.
-* V úlohy na pozadí došlo k výjimce.
+* Výjimky vyvolané z konstruktorů kontroleru.
+* Výjimky vyvolané z obslužné rutiny zpráv.
+* Výjimky vyvolané při směrování.
+* Výjimky vyvolané během serializace obsahu odpovědí.
+* Byla vyvolána výjimka při spuštění aplikace.
+* V úlohách na pozadí došlo k výjimce.
 
-Všechny výjimky *zpracovává* aplikace stále je třeba sledovat ručně. Nezpracované výjimky pocházející z řadičů obvykle za následek odpovědi 500 "Vnitřní chyba serveru". Pokud tyto odpovědi je ručně vytvořený v důsledku zpracování výjimek (nebo žádná výjimka na všechny) je sledovány v odpovídající telemetrická žádost s `ResultCode` 500, Application Insights SDK je ale nemůže sledovat odpovídající výjimce.
+Všechny výjimky *zpracovává* aplikací stále potřeba sledovat ručně. Neošetřených výjimek pocházejících od řadičů obvykle za následek odpovědi 500 "Vnitřní chyba serveru". Pokud takové odpovědi je ručně vytvořený jako výsledek zpracování výjimek (nebo vůbec žádné výjimky) je sledována v odpovídající telemetrie žádostí s `ResultCode` 500, ale není schopen sledovat odpovídající výjimek Application Insights SDK.
 
-### <a name="prior-versions-support"></a>Podpora předchozí verze
-Pokud používáte WebAPI 1 (a před) aplikace Insights Web SDK 2.5 (a před), naleznete v následujících příkladech ke sledování výjimek.
+### <a name="prior-versions-support"></a>Předchozí verze podporují
+Pokud používáte WebAPI 1 (a předchozí) z Application Insights Web SDK 2.5 (a předchozí), najdete v následujících příkladech ke sledování výjimek.
 
 #### <a name="web-api-1x"></a>Webové rozhraní API 1.x
 Override System.Web.Http.Filters.ExceptionFilterAttribute:
@@ -320,7 +320,7 @@ Override System.Web.Http.Filters.ExceptionFilterAttribute:
     }
 ```
 
-Můžete přidat tento atribut přepsaného na konkrétní řadiče, nebo ho přidat do konfigurace globálních filtrů v třídy WebApiConfig:
+Může přidat tento atribut přepsané na konkrétní řadiče, nebo ho přidejte do konfigurace globálních filtrů třídy WebApiConfig:
 
 ```csharp
     using System.Web.Http;
@@ -347,7 +347,7 @@ Můžete přidat tento atribut přepsaného na konkrétní řadiče, nebo ho př
 [Ukázka](https://github.com/AppInsightsSamples/WebApi_1.x_UnhandledExceptions)
 
 #### <a name="web-api-2x"></a>Webové rozhraní API 2.x
-Přidání implementace IExceptionLogger:
+Přidáte implementaci nástroje IExceptionLogger:
 
 ```csharp
     using System.Web.Http.ExceptionHandling;
@@ -370,7 +370,7 @@ Přidání implementace IExceptionLogger:
     }
 ```
 
-Přidejte tuto pro služby WebApiConfig:
+Přidejte ke službám v WebApiConfig následující:
 
 ```csharp
     using System.Web.Http;
@@ -401,10 +401,10 @@ Přidejte tuto pro služby WebApiConfig:
 
 [Ukázka](https://github.com/AppInsightsSamples/WebApi_2.x_UnhandledExceptions)
 
-Jako alternativy které může:
+Jako alternativy můžete:
 
-1. Nahraďte pouze ExceptionHandler vlastní implementaci IExceptionHandler. Volá se, jenom když rozhraní je možné zvolit které zprávu odpovědi na odeslání (při připojení není přerušena pro instanci)
-2. Filtry výjimek (jak je popsáno v části na řadičích 1.x webového rozhraní API výše) – ve všech případech není volána.
+1. Nahraďte vlastní implementaci IExceptionHandler pouze ExceptionHandler. Volá se, jenom když rozhraní framework je stále možnost rozhodnout, jaké zprávy s odpovědí na odeslání (při připojení není přerušena pro instanci)
+2. Filtry výjimek (jak je popsáno v části o 1.x kontrolerů rozhraní Web API výše) – ve všech případech se nevolala.
 
 ## <a name="wcf"></a>WCF
 Přidejte třídu, která rozšiřuje atribut a implementuje IErrorHandler a IServiceBehavior.
@@ -472,19 +472,19 @@ Add the attribute to the service implementations:
 [Ukázka](https://github.com/AppInsightsSamples/WCFUnhandledExceptions)
 
 ## <a name="exception-performance-counters"></a>Čítače výkonu výjimky
-Pokud máte [nainstalovat agenta Application Insights](app-insights-monitor-performance-live-website-now.md) na serveru, můžete získat graf míry výjimky měří v rozhraní .NET. To zahrnuje zpracovávaný i neošetřené výjimky .NET.
+Pokud máte [nainstalovaného agenta Application Insights](app-insights-monitor-performance-live-website-now.md) na serveru, můžete získat graf frekvence výjimek, měřeny pomocí .NET. To zahrnuje zpracovaných a nezpracovaných výjimek .NET.
 
-Otevřete okno Průzkumníka metrika, přidejte nový graf a vyberte **výjimka míra**, uvedené v části čítače výkonu.
+Otevře se okno Průzkumníku metrik, přidejte nový graf a vyberte **frekvence výjimek**popsaný v části čítače výkonu.
 
-Rozhraní .NET framework vypočítá rychlost počítání počet výjimek v intervalu a vydělí délku intervalu.
+Rozhraní .NET framework se vypočítává míra počítání počet výjimek v intervalu a dělení délku intervalu.
 
-To se liší od počtu "Výjimky" vypočítána portálu služby Application Insights počítání TrackException sestavy. Během intervalů vzorkování se liší a sady SDK neodešle TrackException sestavy pro všechny zpracovat a neošetřené výjimky.
+Tím se liší od počtu "Výjimek", počítá pomocí portálu služby Application Insights, počítací TrackException sestavy. Intervalů vzorkování se liší a sada SDK nebude odesílat TrackException sestavy pro všechny ošetřené i neošetřené výjimky.
 
 ## <a name="video"></a>Video
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player] 
 
 ## <a name="next-steps"></a>Další postup
-* [Sledování REST, SQL a jiné volání závislosti](app-insights-asp-net-dependencies.md)
-* [Monitorování časů načtení stránky, výjimek prohlížeče a volání AJAX](app-insights-javascript.md)
-* [Čítače sledování výkonu](app-insights-performance-counters.md)
+* [Monitorování REST, SQL a další volání závislostí](app-insights-asp-net-dependencies.md)
+* [Sledujte dobu načítání stránek, výjimek prohlížeče a volání jazyka AJAX](app-insights-javascript.md)
+* [Monitorování čítačů výkonu](app-insights-performance-counters.md)

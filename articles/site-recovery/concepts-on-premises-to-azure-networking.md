@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: mayg
-ms.openlocfilehash: ce7e5fde60503a969b88892be890173861fb15be
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: c05a97dc5a5fe9a0e8a6f1a8598ff82fcf488ab2
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50215221"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51253274"
 ---
 # <a name="set-up-ip-addressing-to-connect-to-azure-vms-after-failover"></a>Nastavení IP adres pro připojení k virtuálním počítačům Azure po převzetí služeb při selhání
 
@@ -81,7 +81,7 @@ Kromě připojení vnet-to-vnet, po převzetí služeb při selhání Woodgrove 
 
 ## <a name="assigning-new-ip-addresses"></a>Přiřazení nové IP adresy
 
-To [blogový příspěvek](http://azure.microsoft.com/blog/2014/09/04/networking-infrastructure-setup-for-microsoft-azure-as-a-disaster-recovery-site/) vysvětluje, jak nastavit síťové infrastruktury Azure, když není nutné zachovat IP adresy po převzetí služeb při selhání. Začne popis aplikace, bude vypadat na tom, jak nastavit sítě v místním úložišti a Azure a končí informace o spuštění převzetí služeb při selhání.
+To [blogový příspěvek](https://azure.microsoft.com/blog/2014/09/04/networking-infrastructure-setup-for-microsoft-azure-as-a-disaster-recovery-site/) vysvětluje, jak nastavit síťové infrastruktury Azure, když není nutné zachovat IP adresy po převzetí služeb při selhání. Začne popis aplikace, bude vypadat na tom, jak nastavit sítě v místním úložišti a Azure a končí informace o spuštění převzetí služeb při selhání.
 
 ## <a name="next-steps"></a>Další postup
 [Převzetí služeb při selhání](site-recovery-failover.md)

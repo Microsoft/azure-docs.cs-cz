@@ -1,5 +1,5 @@
 ---
-title: Azure Batch určené k transkripci rozhraní API
+title: Použití služby Azure Batch přepis rozhraní API
 titlesuffix: Azure Cognitive Services
 description: Ukázky pro přepisování velké objemy zvukový obsah.
 services: cognitive-services
@@ -10,33 +10,31 @@ ms.component: speech-service
 ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: panosper
-ms.openlocfilehash: bb87b9ae207da27d45d559903499177472ee1185
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: cd57e9a90b07447392fbff48017bb29f002ad29e
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50914205"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51035947"
 ---
-# <a name="batch-transcription"></a>Dávkový přepis
+# <a name="use-batch-transcription"></a>Použití služby batch přepis
 
-Přepis batch je ideální, pokud máte velké množství zvuku ve službě storage. Pomocí našeho rozhraní Rest API, můžete odkazovat na zvukové soubory pomocí identifikátoru URI SAS a asynchronně přijímat přepisů.
+Přepis batch je ideální, pokud máte velké množství zvuku ve službě storage. Pomocí rozhraní REST API, můžete pomocí sdíleného přístupového podpisu (SAS) identifikátor URI přejděte na příkaz zvukové soubory a asynchronně přijímat přepisů.
 
-## <a name="batch-transcription-api"></a>Přepis rozhraní API služby batch
+## <a name="the-batch-transcription-api"></a>Přepis rozhraní API služby Batch
 
-Přepis Batch API nabízí asynchronní převod řeči na text přepisu, společně s další funkce. Je vystavení metody pro rozhraní REST API:
+Rozhraní API služby Batch určené k transkripci nabízí asynchronní přepis řeči na text, společně s další funkce. Je rozhraní REST API, který poskytuje metody pro:
 
 1. Vytváření žádostí o zpracování služby batch
-
-2. Stav dotazu 
-
-3. Přepisy stahování
+1. Stav dotazu 
+1. Přepisy stahování
 
 > [!NOTE]
-> Rozhraní API služby Batch určené k transkripci je ideální pro volání Center, která obvykle accumulate tisíce hodin zvukového záznamu. Rozhraní API se řídí filozofií "vypal a zapomeň", což usnadňuje přepisy velkého objemu zvukové záznamy.
+> Rozhraní API služby Batch určené k transkripci je ideální pro volání Center, která obvykle accumulate tisíce hodin zvukového záznamu. Rozhraní API se řídí filozofií "vypal a zapomeň", což usnadňuje přepisy velké objemy zvukových nahrávek.
 
 ### <a name="supported-formats"></a>Podporované formáty
 
-Přepis rozhraní API služby Batch podporuje následující formáty:
+Rozhraní API služby Batch určené k transkripci podporuje následující formáty:
 
 Název| Kanál  |
 ----|----------|
@@ -44,51 +42,51 @@ MP3 |   Mono   |
 MP3 |  Stereo  | 
 WAV |   Mono   |
 WAV |  Stereo  |
+Díle|   Mono   |
+Díle|  Stereo  |
 
-Pro stereo zvukové datové proudy určené k transkripci Batch rozdělí levého a pravého kanálu během přepis. Každé dva soubory JSON s výsledkem jsou vytvořeny z jednoho kanálu. Časová razítka na utterance umožňují vývojářům vytvořit seřazený konečné přepisu. Podle následující ukázky JSON ukazuje výstupní kanál.
+Pro stereo zvukové datové proudy určené k transkripci batch rozdělí levého a pravého kanálu během přepis. Každé dva soubory JSON s výsledkem jsou vytvořeny z jednoho kanálu. Časová razítka na utterance umožňují vývojářům vytvořit seřazený konečné přepisu. Výstupní kanál, včetně vlastností pro nastavení filtr vulgárních výrazů a interpunkční znaménka modelu, můžete vidět v následujícím příkladu JSON:
 
 ```json
-       {
-        "recordingsUrl": "https://mystorage.blob.core.windows.net/cris-e2e-datasets/TranscriptionsDataset/small_sentence.wav?st=2018-04-19T15:56:00Z&se=2040-04-21T15:56:00Z&sp=rl&sv=2017-04-17&sr=b&sig=DtvXbMYquDWQ2OkhAenGuyZI%2BYgaa3cyvdQoHKIBGdQ%3D",
-        "resultsUrls": {
-            "channel_0": "https://mystorage.blob.core.windows.net/bestor-87a0286f-304c-4636-b6bd-b3a96166df28/TranscriptionData/24265e4c-e459-4384-b572-5e3e7795221f?sv=2017-04-17&sr=b&sig=IY2qd%2Fkgtz2PwRe2C88BphH4Hv%2F1VCb1UVJ33xsw%2BEY%3D&se=2018-04-23T14:48:24Z&sp=r"
-        },
-        "statusMessage": "None.",
-        "id": "0bb95356-ff06-469d-acc7-81f9144a269a",
-        "createdDateTime": "2018-04-20T14:11:57.167",
-        "lastActionDateTime": "2018-04-20T14:12:54.643",
-        "status": "Succeeded",
-        "locale": "en-US"
-    },
+{
+  "recordingsUrl": "https://contoso.com/mystoragelocation",
+  "models": [],
+  "locale": "en-US",
+  "name": "Transcription using locale en-US",
+  "description": "An optional description of the transcription.",
+  "properties": {
+    "ProfanityFilterMode": "Masked",
+    "PunctuationMode": "DictatedAndAutomatic"
+  },
 ```
 
 > [!NOTE]
-> Přepis rozhraní API služby Batch používá službu REST pro požadování přepisů, jejich stav a přidružené výsledky. Můžete použít rozhraní API z jakéhokoli jazyka. Další část popisuje, jak se používají.
+> Rozhraní API určené k transkripci služby Batch používá službu REST pro požadování přepisů, jejich stav a přidružené výsledky. Můžete použít rozhraní API z jakéhokoli jazyka. Další část popisuje, jak se používá rozhraní API.
 
 ## <a name="authorization-token"></a>Autorizační token
 
-Jak se všemi funkcemi Speech Service, vytvořte klíč předplatného z [webu Azure portal](https://portal.azure.com) následující naše [si úvodní příručku](get-started.md). Pokud budete chtít získat přepisů z našich základní modely pak to je všechno, co musíte udělat. 
+Se všemi funkcemi služby řeči, při vytváření odběru klíč z [webu Azure portal](https://portal.azure.com) podle našich [Příručka Začínáme](get-started.md). Pokud budete chtít získat přepisů z našich základní modely, vytváří se klíč je všechno, co musíte udělat. 
 
-Pokud máte v úmyslu na úpravách a používání vlastního modelu budete muset přidat tento klíč subscritpion na portál custom speech následujícím způsobem:
+Pokud budete chtít přizpůsobit a použití vlastního modelu, přidáte klíč předplatného portál custom speech následujícím způsobem:
 
 1. Přihlaste se k [Custom Speech](https://customspeech.ai).
 
-2. Vyberte **Předplatná**.
+2. V pravém horním rohu, vyberte **předplatná**.
 
 3. Vyberte **připojit stávající předplatné**.
 
-4. Přidání aliasu a klíč předplatného v zobrazení, která se zobrazí
+4. V místním okně přidejte alias a klíč předplatného.
 
-    ![Snímek obrazovky předplatná řeči vlastní stránky](media/stt/Subscriptions.jpg)
+    ![V okně Přidat předplatné](media/stt/Subscriptions.jpg)
 
 5. Zkopírujte a vložte tento klíč v klientském kódu v následujícím příkladu.
 
 > [!NOTE]
-> Pokud budete chtít použít vlastní model, budete potřebovat ID tohoto modelu příliš. Všimněte si, že to není ID koncového bodu, které se nachází v zobrazení Podrobnosti o koncovém bodu. To je ID modelu, který můžete načíst při výběru podrobnosti tohoto modelu.
+> Pokud budete chtít použít vlastní model, budete potřebovat ID tohoto modelu příliš. Toto ID není ID koncového bodu, které se nachází v zobrazení Podrobnosti o koncovém bodu. To je ID modelu, který můžete načíst při výběru podrobnosti tohoto modelu.
 
 ## <a name="sample-code"></a>Ukázka kódu
 
-Upravte následující vzorový kód s klíč předplatného a klíč rozhraní API. To umožňuje získat nosný token.
+Upravte následující vzorový kód s klíč předplatného a klíč rozhraní API. Tato akce umožňuje získat nosný token.
 
 ```cs
      public static CrisClient CreateApiV2Client(string key, string hostName, int port)
@@ -103,7 +101,7 @@ Upravte následující vzorový kód s klíč předplatného a klíč rozhraní 
         }
 ```
 
-Po obdržení tokenu, je nutné zadat identifikátor URI SAS odkazující na zvukový soubor, které vyžadují určené k transkripci. Zbytek kódu prochází stav a zobrazí výsledky. By zpočátku jeden nastavit klíč, oblast, modely a použít a přidružení zabezpečení. jak ukazuje následující fragment kódu. Následuje instance klienta a požadavek POST. 
+Po získání tokenu, zadejte identifikátor URI SAS, který odkazuje na zvukový soubor, který vyžaduje přepis. Zbytek kódu prochází stav a zobrazí výsledky. Zpočátku je nastavit klíč, oblast, modely a SA, jak je znázorněno v následujícím fragmentu kódu. V dalším kroku vytvoříte instanci klienta a požadavek POST. 
 
 ```cs
             private const string SubscriptionKey = "<your Speech subscription key>";
@@ -111,19 +109,19 @@ Po obdržení tokenu, je nutné zadat identifikátor URI SAS odkazující na zvu
             private const int Port = 443;
     
             // SAS URI 
-            private const string RecordingsBlobUri = "some SAS URI";
+            private const string RecordingsBlobUri = "SAS URI pointing to the file in Azure Blob Storage";
 
             // adapted model Ids
-            private static Guid AdaptedAcousticId = new Guid("some guid");
-            private static Guid AdaptedLanguageId = new Guid("some guid");
+            private static Guid AdaptedAcousticId = new Guid("guid of the acoustic adaptation model");
+            private static Guid AdaptedLanguageId = new Guid("guid of the language model");
 
-            // Creating a Batch transcription API Client
+            // Creating a Batch Transcription API Client
             var client = CrisClient.CreateApiV2Client(SubscriptionKey, HostName, Port);
             
             var transcriptionLocation = await client.PostTranscriptionAsync(Name, Description, Locale, new Uri(RecordingsBlobUri), new[] { AdaptedAcousticId, AdaptedLanguageId }).ConfigureAwait(false);
 ```
 
-Teď, když byla podána žádost uživatele můžete zadávat dotazy a stáhnout výsledky určené k transkripci jako fragment kódu ukazuje kód.
+Teď, když jste provedli požadavek, můžete vyhledat a stáhnout výsledky určené k transkripci, jak je znázorněno v následujícím fragmentu kódu:
 
 ```cs
   
@@ -141,13 +139,13 @@ Teď, když byla podána žádost uživatele můžete zadávat dotazy a stáhnou
                             // we check to see if it was one of the transcriptions we created from this client.
                         if (!createdTranscriptions.Contains(transcription.Id))
                         {
-                            // not creted form here, continue
+                            // not created from here, continue
                             continue;
                         }
                             
                         completed++;
                             
-                        // if the transcription was successfull, check the results
+                        // if the transcription was successful, check the results
                         if (transcription.Status == "Succeeded")
                         {
                             var resultsUri = transcription.ResultsUrls["channel_0"];
@@ -155,7 +153,7 @@ Teď, když byla podána žádost uživatele můžete zadávat dotazy a stáhnou
                             var filename = Path.GetTempFileName();
                             webClient.DownloadFile(resultsUri, filename);
                             var results = File.ReadAllText(filename);
-                            Console.WriteLine("Transcription succedded. Results: ");
+                            Console.WriteLine("Transcription succeeded. Results: ");
                             Console.WriteLine(results);
                         }
                     
@@ -173,30 +171,30 @@ Teď, když byla podána žádost uživatele můžete zadávat dotazy a stáhnou
         }
 ```
 
-Naše [dokument Swagger](https://westus.cris.ai/swagger/ui/index) poskytuje všechny podrobnosti na výše uvedené volání. Úplnou ukázku je vidět tady je na [Githubu](https://github.com/PanosPeriorellis/Speech_Service-BatchTranscriptionAPI).
+Úplné podrobnosti o předchozí volání, najdete v našich [dokument swagger](https://westus.cris.ai/swagger/ui/index). Úplnou ukázku je znázorněno zde, v části [Githubu](https://github.com/PanosPeriorellis/Speech_Service-BatchTranscriptionAPI).
 
 > [!NOTE]
-> V předchozím kódu klíč předplatného se z prostředku řeči, kterou vytvoříte na webu Azure portal. Klíče získané z prostředku služby Custom Speech Service nefungují.
+> V předchozím kódu klíč předplatného se z prostředku řeči, kterou vytvoříte na webu Azure Portal. Klíče, které jste získali z prostředku služby Custom Speech Service nefungují.
 
-Všimněte si, že asynchronní instalační program pro zvuk odesílání a příjem určené k transkripci stav. Vytvoření klienta je klienta .NET protokolu Http. Je `PostTranscriptions` metodu pro odesílání podrobnosti zvukový soubor a `GetTranscriptions` metoda na příjem výsledků. `PostTranscriptions` Vrátí popisovač, a `GetTranscriptions` tento popisovač používá k vytvoření popisovače k získání stavu určené k transkripci.
+Poznamenejte si nastavení asynchronní pro zvuk odesílání a příjem určené k transkripci stav. Klient, který vytvoříte je klienta .NET protokolu HTTP. Je `PostTranscriptions` metodu pro odesílání podrobnosti zvukový soubor a `GetTranscriptions` metodu pro příjem výsledků. `PostTranscriptions` Vrátí popisovač, a `GetTranscriptions` používá k vytvoření popisovače se získat stav určené k transkripci.
 
-Aktuální vzorový kód neurčuje žádné vlastní modely. Služba používá základní modely pro přepisování na soubor nebo soubory. K určení vzorů, můžete na stejné metodě předat ID modelu akustických a jazykový model. 
+Aktuální vzorový kód neurčuje vlastního modelu. Služba používá základní modely pro přepisování na soubor nebo soubory. K určení vzorů, můžete předat na stejné metodě jako ID modelu akustických a jazykový model. 
 
-Pokud nechcete použít směrný plán, musíte předat ID modelu akustických a jazykových modelů.
+Pokud nechcete použít směrný plán, předejte ID modelu akustických a jazykových modelů.
 
 > [!NOTE]
-> Pro přepis směrný plán není nutné deklarovat koncovým bodům modelů směrného plánu. Pokud chcete použít vlastní modely, zadáte své ID koncové body, jako [ukázka](https://github.com/PanosPeriorellis/Speech_Service-BatchTranscriptionAPI). Pokud chcete použít akustický směrného plánu se jazykový model směrného plánu, musíte pouze deklarovat ID vlastního modelu koncový bod. Microsoft zjistí model partnera standardní hodnoty (se ho akustický nebo jazyk) a který používá ke splnění žádosti určené k transkripci.
+> Pro směrný plán přepisů není nutné deklarovat koncovým bodům modelů směrného plánu. Pokud chcete použít vlastní modely, zadáte své ID koncové body, jako [ukázka](https://github.com/PanosPeriorellis/Speech_Service-BatchTranscriptionAPI). Pokud chcete použít akustický směrného plánu se jazykový model směrný plán, je nutné deklarovat pouze ID vlastního modelu koncový bod. Microsoft zjistí model směrného plánu partnera&mdash;zda akustických a v jakémkoli jazyce&mdash;a použije ho ke splnění žádosti určené k transkripci.
 
 ### <a name="supported-storage"></a>Podporované úložiště
 
-Úložiště objektů Blob v Azure je aktuálně pouze úložiště podporované.
+Úložiště objektů Blob v Azure je v současné době pouze úložiště podporované.
 
-## <a name="downloading-the-sample"></a>Stažení ukázky
+## <a name="download-the-sample"></a>Stažení ukázky
 
-Ukázka je vidět tady je na [Githubu](https://github.com/PanosPeriorellis/Speech_Service-BatchTranscriptionAPI).
+Ukázka v tomto článku můžete najít na [Githubu](https://github.com/PanosPeriorellis/Speech_Service-BatchTranscriptionAPI).
 
 > [!NOTE]
-> Obvykle přepisování zvukového záznamu vyžaduje časový rozsah, který se rovná době trvání zvukový soubor a režijní náklady na 2 až 3 minuty.
+> Přepisování zvukového záznamu obvykle vyžaduje časový rozsah, který je rovna hodnotě doba trvání zvukový soubor a dvěma na tři minuty režii.
 
 ## <a name="next-steps"></a>Další postup
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2018
 ms.author: spelluru
-ms.openlocfilehash: ce95a2177260e97113fd5e639671075eb6ad40cd
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: e86568da7f3d607c90e42e09a61ced9993c4d744
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39215012"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51254039"
 ---
 # <a name="add-a-vm-to-a-lab-in-azure-devtest-labs"></a>Přidání virtuálního počítače do testovacího prostředí ve službě Azure DevTest Labs
 Pokud už máte [vytvoření vašeho prvního virtuálního počítače](devtest-lab-create-first-vm.md), pravděpodobně jste to v předem načtené [image z marketplace](devtest-lab-configure-marketplace-images.md). Nyní, pokud chcete přidat další virtuální počítače do testovacího prostředí, můžete také *základní* , který je buď [vlastní image](devtest-lab-create-template.md) nebo [vzorec](devtest-lab-manage-formulas.md). Tento kurz vás provede Přidání virtuálního počítače do testovacího prostředí v DevTest Labs pomocí webu Azure portal.
@@ -27,7 +27,7 @@ Pokud už máte [vytvoření vašeho prvního virtuálního počítače](devtest
 Tento článek také ukazuje, jak spravovat artefakty pro virtuální počítač ve vaší laboratoři.
 
 ## <a name="steps-to-add-a-vm-to-a-lab-in-azure-devtest-labs"></a>Postup přidání virtuálního počítače do testovacího prostředí ve službě Azure DevTest Labs
-1. Přihlaste se k webu [Azure Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Přihlaste se k webu [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 1. Vyberte **všechny služby**a pak vyberte **DevTest Labs** ze seznamu.
 1. V seznamu testovacích prostředí vyberte prostředí, ve kterém chcete vytvořit virtuální počítač.  
 1. Cvičení **přehled** vyberte **+ přidat**.  
@@ -69,7 +69,7 @@ Při vytváření virtuálního počítače, můžete přidat existující artef
 
 Chcete zjistit, jak vytvořit artefakty, najdete v článku, [informace o vytváření vlastních artefaktů pro použití s DevTest Labs](devtest-lab-artifact-author.md).
 
-1. Přihlaste se k webu [Azure Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Přihlaste se k webu [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 1. Vyberte **všechny služby**a pak vyberte **DevTest Labs** ze seznamu.
 1. V seznamu testovacích prostředí vyberte prostředí obsahující tento virtuální počítač, se kterým chcete pracovat.  
 1. Vyberte **Moje virtual machines**.

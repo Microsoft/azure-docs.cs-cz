@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 683efc6f772337754fc21a1e486d35b7f92e8f81
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 0dc7e8836f1e6a11c44f5e0f337015cac53a92d4
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49428245"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51252798"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>Implementace zotavení po havárii pomocí služby zálohování a obnovení ve službě Azure API Management
 
@@ -38,7 +38,7 @@ Tato příručka ukazuje, jak k ověřování požadavků Azure Resource Manager
 ## <a name="authenticating-azure-resource-manager-requests"></a>Požadavky na ověřování Azure Resource Manageru
 
 > [!IMPORTANT]
-> Rozhraní REST API pro zálohování a obnovení pomocí Azure Resource Manageru a má jiný mechanismus ověřování než rozhraní REST API pro správu entit služby API Management. Kroky v této části popisují, jak ověřování požadavků Azure Resource Manageru. Další informace najdete v tématu [požadavků ověřování Azure Resource Manageru](http://msdn.microsoft.com/library/azure/dn790557.aspx).
+> Rozhraní REST API pro zálohování a obnovení pomocí Azure Resource Manageru a má jiný mechanismus ověřování než rozhraní REST API pro správu entit služby API Management. Kroky v této části popisují, jak ověřování požadavků Azure Resource Manageru. Další informace najdete v tématu [požadavků ověřování Azure Resource Manageru](https://msdn.microsoft.com/library/azure/dn790557.aspx).
 
 Všechny úlohy, které můžete provést na prostředky pomocí Azure Resource Manageru, musí být ověřené na Azure Active Directory pomocí následujících kroků:
 
@@ -212,7 +212,7 @@ Projděte si následující zdroje pro různé návody procesu zálohování a o
 
 * [Replikovat účty Azure API Management](https://www.returngis.net/en/2015/06/replicate-azure-api-management-accounts/)
 * [Automatizace rozhraní API správy zálohování a obnovení pomocí Logic Apps](https://github.com/Azure/api-management-samples/tree/master/tutorials/automating-apim-backup-restore-with-logic-apps)
-* [Azure API Management: Zálohování a obnovení konfigurace](http://blogs.msdn.com/b/stuartleeks/archive/2015/04/29/azure-api-management-backing-up-and-restoring-configuration.aspx)
+* [Azure API Management: Zálohování a obnovení konfigurace](https://blogs.msdn.com/b/stuartleeks/archive/2015/04/29/azure-api-management-backing-up-and-restoring-configuration.aspx)
   *přístup podrobné podle Stuart neodpovídá oficiální pokyny, ale je zajímavé.*
 
 [Backup an API Management service]: #step1

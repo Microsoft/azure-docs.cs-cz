@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/25/2018
 ms.author: magoedte
-ms.openlocfilehash: 8cca69109f07cbcffe2a5d796262e51fc9233cc5
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: 8591e723cad1c44e9cc8d00008485e6b304fc4d3
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50914681"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51283358"
 ---
 # <a name="how-to-onboard-the-azure-monitor-for-vms-preview"></a>Jak připojit Azure monitorovat pro virtuální počítače (Preview)
 Tento článek popisuje, jak nastavit monitorování Azure pro virtuální počítače, které monitoroval stav operačního systému vašich virtuálních počítačů Azure a zjišťuje a mapuje závislosti aplikací, které mohou být hostovány na ně.  
@@ -337,7 +337,7 @@ Pokud se rozhodnete používat rozhraní příkazového řádku Azure, musíte n
     ```
 
 ### <a name="enable-using-azure-policy"></a>Povolení s využitím Azure Policy
-Povolit monitorování Azure pro virtuální počítače ve velkém měřítku, která zajišťuje konzistentní dodržování předpisů a automatické podpory pro nové virtuální počítače zřízené, [Azure Policy](../azure-policy/azure-policy-introduction.md) se doporučuje. Tyto zásady:
+Povolit monitorování Azure pro virtuální počítače ve velkém měřítku, která zajišťuje konzistentní dodržování předpisů a automatické podpory pro nové virtuální počítače zřízené, [Azure Policy](../governance/policy/overview.md) se doporučuje. Tyto zásady:
 
 * Nasadit agenta Log Analytics a agenta závislostí 
 * Sestav o výsledcích dodržování předpisů 

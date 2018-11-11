@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: article
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: f94a9d71dab4320e561d2de00af0e2af77ab4c3f
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: c3e0bd338c38165d3a372f60e12ff5ddaa05d2a0
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42058077"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51248278"
 ---
 # <a name="getting-started-with-azure-queue-storage-and-visual-studio-connected-services-webjob-projects"></a>Začínáme s Azure Queue storage a Visual Studio připojené služby (webové úlohy projektů)
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
@@ -468,7 +468,7 @@ Výstup z konzoly metody, které volají ve funkci nebo v **Main()** metoda se z
 
 Výstup na konzole, nelze ho propojit s volání konkrétní metody, protože konzole je s jedním vláknem, ale mnoho funkcí úloha může běžet ve stejnou dobu. To je důvod, proč sada SDK poskytuje každé volání funkce s objekt zapisovače svůj vlastní jedinečný protokolu.
 
-Zapsat [protokoly trasování aplikací](../app-service/web-sites-dotnet-troubleshoot-visual-studio.md#logsoverview), použijte **Console.Out** (vytvářejí protokoly, které jsou označeny jako informace o) a **Console.Error** (vytvářejí protokoly, které jsou označeny jako chyba). Další možností je použít [trasování nebo TraceSource](http://blogs.msdn.com/b/mcsuksoldev/archive/2014/09/04/adding-trace-to-azure-web-sites-and-web-jobs.aspx), které poskytuje podrobné, upozornění, a kritická úrovních kromě informací a chyba. Protokoly trasování aplikace se zobrazí v souborech protokolů webové aplikace, tabulky Azure, nebo za objekty BLOB Azure v závislosti na tom, jak nakonfigurovat svou webovou aplikaci Azure. Platí pro všechny výstup na konzole, protokoly posledních 100 aplikací také se zobrazí na stránce řídicího panelu pro webové úlohy, ne stránku pro volání funkce.
+Zapsat [protokoly trasování aplikací](../app-service/web-sites-dotnet-troubleshoot-visual-studio.md#logsoverview), použijte **Console.Out** (vytvářejí protokoly, které jsou označeny jako informace o) a **Console.Error** (vytvářejí protokoly, které jsou označeny jako chyba). Další možností je použít [trasování nebo TraceSource](https://blogs.msdn.com/b/mcsuksoldev/archive/2014/09/04/adding-trace-to-azure-web-sites-and-web-jobs.aspx), které poskytuje podrobné, upozornění, a kritická úrovních kromě informací a chyba. Protokoly trasování aplikace se zobrazí v souborech protokolů webové aplikace, tabulky Azure, nebo za objekty BLOB Azure v závislosti na tom, jak nakonfigurovat svou webovou aplikaci Azure. Platí pro všechny výstup na konzole, protokoly posledních 100 aplikací také se zobrazí na stránce řídicího panelu pro webové úlohy, ne stránku pro volání funkce.
 
 Výstup konzoly se zobrazí na řídicím panelu pouze v případě, že je aplikace spuštěna ve webové úloze Azure, není-li program spuštěn místně nebo v nějaké jiné prostředí.
 
@@ -511,5 +511,5 @@ A v tabulce Azure **Console.Out** a **Console.Error** protokoly vypadat nějak t
 ![Protokol chyb v tabulce](./media/vs-storage-webjobs-getting-started-queues/tableerror.png)
 
 ## <a name="next-steps"></a>Další postup
-Tento článek poskytuje ukázek kódu, které ukazují, jak zvládnout běžné scénáře pro práci s frontami Azure. Další informace o tom, jak používat Azure WebJobs a sada WebJobs SDK najdete v tématu [prostředků dokumentace Azure WebJobs](http://go.microsoft.com/fwlink/?linkid=390226).
+Tento článek poskytuje ukázek kódu, které ukazují, jak zvládnout běžné scénáře pro práci s frontami Azure. Další informace o tom, jak používat Azure WebJobs a sada WebJobs SDK najdete v tématu [prostředků dokumentace Azure WebJobs](https://go.microsoft.com/fwlink/?linkid=390226).
 

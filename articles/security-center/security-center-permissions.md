@@ -4,7 +4,7 @@ description: Tento článek vysvětluje, jak Azure Security Center používá ř
 services: security-center
 cloud: na
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
 ms.assetid: ''
 ms.service: security-center
@@ -12,18 +12,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/13/2017
-ms.author: terrylan
-ms.openlocfilehash: b93b57d50ccf5d5dfb092bdb71820da77f345878
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.date: 10/28/2018
+ms.author: rkarlin
+ms.openlocfilehash: 42220a94eb0d0259b8b410e7343ffbfe09e8bfa5
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44295458"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51007854"
 ---
 # <a name="permissions-in-azure-security-center"></a>Oprávnění ve službě Azure Security Center
 
-Azure Security Center používá [řízení přístupu na základě Role (RBAC)](../role-based-access-control/role-assignments-portal.md), která poskytuje [předdefinované role](../role-based-access-control/built-in-roles.md) , které můžete přiřadit uživatelům, skupinám a službám v Azure.
+Azure Security Center používá [řízení přístupu na základě rolí (RBAC)](../role-based-access-control/role-assignments-portal.md). To poskytuje [předdefinované role](../role-based-access-control/built-in-roles.md), které se dají v Azure přiřadit uživatelům, skupinám a službám.
 
 Security Center posuzuje konfiguraci vašich prostředků identifikovat problémy se zabezpečením a ohrožení zabezpečení. Ve službě Security Center zobrazí jenom informace související s prostředku, když máte přiřazenou roli vlastník, Přispěvatel nebo Čtenář pro předplatné nebo skupinu prostředků, které prostředek patří.
 
@@ -44,7 +44,7 @@ Následující tabulka zobrazuje role a povolené akce ve službě Security Cent
 | Role | Upravit zásady zabezpečení | Použití doporučení zabezpečení pro určitý prostředek | Zavřít upozornění a doporučení | Zobrazení výstrah a doporučení |
 |:--- |:---:|:---:|:---:|:---:|
 | Vlastník předplatného | X | X | X | X |
-| Přispěvatel předplatného | X | X | X | X |
+| Přispěvatel předplatného | -- | X | X | X |
 | Vlastník skupiny prostředků | -- | X | -- | X |
 | Přispěvatelem skupiny prostředků | -- | X | -- | X |
 | Čtenář | -- | -- | -- | X |

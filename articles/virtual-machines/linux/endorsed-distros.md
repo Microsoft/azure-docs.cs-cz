@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/21/2017
 ms.author: szark
-ms.openlocfilehash: 80a165c4533f555dce2d86f044f3caa328761123
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: b39ae6b5546e9504b9f37504c486c941ab034399
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49645743"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51249995"
 ---
 # <a name="linux-on-distributions-endorsed-by-azure"></a>Linux v distribucích schválených pro Azure
 Partneři poskytují imagí Linuxu v Tržišti Azure Marketplace. Pracujeme na tom s různými komunitami Linux přidejte ještě více rozšířili se schválenou sadou distribučního seznamu. Do té doby pro distribuce, které nejsou k dispozici z webu Marketplace, můžete vždy použít vlastní Linux podle pokynů v tématu [vytvoření a nahrání virtuálního pevného disku obsahujícího operační systém Linux](https://docs.microsoft.com/azure/virtual-machines/linux/create-upload-generic).
@@ -38,9 +38,9 @@ Azure Linux Agent je už předem nainstalované na Image Azure Marketplace a je 
 | CentOS |CentOS 6.3 + 7.0 + |CentOS 6.3: [LIS stáhnout](https://www.microsoft.com/en-us/download/details.aspx?id=55106)<p>CentOS 6.4 +: V jádra |Balíček: V [úložiště](http://olcentgbl.trafficmanager.net/openlogic/6/openlogic/x86_64/RPMS/) v části "WALinuxAgent" <br/>Zdrojový kód: [Githubu](https://github.com/Azure/WALinuxAgent) |
 | [CoreOS](https://coreos.com/docs/running-coreos/cloud-providers/azure/) |494.4.0+ |Jádra systému |Zdrojový kód: [Githubu](https://github.com/coreos/coreos-overlay/tree/master/app-emulation/wa-linux-agent) |
 | Debian |Debian 7.9 +, 8.2 + |Jádra systému |Balíček: V úložišti v části "waagent" <br/>Zdrojový kód: [Githubu](https://github.com/Azure/WALinuxAgent) |
-| Oracle Linux |6.4+, 7.0+ |Jádra systému |Balíček: V úložišti v části "WALinuxAgent" <br/>Zdrojový kód: [Githubu](http://go.microsoft.com/fwlink/p/?LinkID=250998) |
+| Oracle Linux |6.4+, 7.0+ |Jádra systému |Balíček: V úložišti v části "WALinuxAgent" <br/>Zdrojový kód: [Githubu](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
 | Red Hat Enterprise Linux |RHEL 6.7 + 7.1 + |Jádra systému |Balíček: V úložišti v části "WALinuxAgent" <br/>Zdrojový kód: [Githubu](https://github.com/Azure/WALinuxAgent) |
-| SUSE Linux Enterprise |SLES/SLES pro SAP<br>11 SP4<br>12 SP1 +<br>15|Jádra systému |Balíček:<p> pro 11 v [cloudu: nástroje](https://build.opensuse.org/project/show/Cloud:Tools) úložiště<br>12 součástí modulu "Veřejný Cloud" v části "python agenta azure"<br/>Zdrojový kód: [Githubu](http://go.microsoft.com/fwlink/p/?LinkID=250998) |
+| SUSE Linux Enterprise |SLES/SLES pro SAP<br>11 SP4<br>12 SP1 +<br>15|Jádra systému |Balíček:<p> pro 11 v [cloudu: nástroje](https://build.opensuse.org/project/show/Cloud:Tools) úložiště<br>12 součástí modulu "Veřejný Cloud" v části "python agenta azure"<br/>Zdrojový kód: [Githubu](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
 | openSUSE |openSUSE přestupné 42.2 + |Jádra systému |Balíček: V [cloudu: nástroje](https://build.opensuse.org/project/show/Cloud:Tools) úložiště v části "python agenta azure" <br/>Zdrojový kód: [Githubu](https://github.com/Azure/WALinuxAgent) |
 | Ubuntu |Ubuntu 12.04 +  **<sup>1</sup>** |Jádra systému |Balíček: V úložišti v části "walinuxagent" <br/>Zdrojový kód: [Githubu](https://github.com/Azure/WALinuxAgent) |
 

@@ -12,19 +12,19 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 1b0200413fe40acac997570fdccc970a78cf6ece
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 3a25d68b0f0bdd97b204906af87fac8013ad3cff
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47162219"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51253019"
 ---
 # <a name="using-elastic-database-client-library-with-dapper"></a>Používání klientské knihovny pro elastické databáze s Dapperem
 Tento dokument je pro vývojáře, kteří využívají Dapperem k vytváření aplikací, ale také chtít využívat [nástrojů elastic database](sql-database-elastic-scale-introduction.md) k vytvoření tohoto horizontálního dělení implementují pro horizontální navýšení kapacity datovou vrstvu aplikace.  Tento dokument ukazuje změny v aplikacích Dapperem, které jsou potřebné k integraci s nástroji elastic database. Našim hlavním cílem je sestavování, Správa elastických databází horizontálních oddílů a směrování závislé na datech s Dapperem. 
 
 **Ukázkový kód**: [nástrojů Elastic database pro Azure SQL Database – Dapper integrace](https://code.msdn.microsoft.com/Elastic-Scale-with-Azure-e19fc77f).
 
-Integrace **Dapperem** a **DapperExtensions** službou elastic database klientské knihovny pro službu Azure SQL Database je snadné. Aplikace může použít směrování závislé na datech změnou vytváření a otevírání nových [SqlConnection](http://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection.aspx) objektů na používání [OpenConnectionForKey](http://msdn.microsoft.com/library/azure/dn807226.aspx) volání z [klientské knihovny ](http://msdn.microsoft.com/library/azure/dn765902.aspx). Toto nastavení omezuje změny ve vaší aplikaci pouze tam, kde jsou vytvořeny a otevřít nové připojení. 
+Integrace **Dapperem** a **DapperExtensions** službou elastic database klientské knihovny pro službu Azure SQL Database je snadné. Aplikace může použít směrování závislé na datech změnou vytváření a otevírání nových [SqlConnection](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection.aspx) objektů na používání [OpenConnectionForKey](https://msdn.microsoft.com/library/azure/dn807226.aspx) volání z [klientské knihovny ](https://msdn.microsoft.com/library/azure/dn765902.aspx). Toto nastavení omezuje změny ve vaší aplikaci pouze tam, kde jsou vytvořeny a otevřít nové připojení. 
 
 ## <a name="dapper-overview"></a>Přehled dapper
 **Dapper** je objektově relační Mapovač. Mapuje se objekty .NET z vaší aplikace do relační databáze (a naopak). První část vzorový kód ukazuje, jak integrovat Klientská knihovna elastic database s Dapperem aplikace. Druhá část vzorový kód ukazuje, jak integrovat při použití Dapperem a DapperExtensions.  
@@ -44,7 +44,7 @@ Pomocí Klientská knihovna elastic database definujete oddílů dat ve vašich 
 
 Správce mapování horizontálních oddílů uživatelé chrání před konzistentní zobrazení do shardletu data, která může dojít, když operace správy souběžných shardletu se dějí v databázích. Uděláte to tak, zprostředkovatele mapy horizontálních oddílů připojení k databázi pro aplikaci sestavenou pomocí knihovny. Při operacích správy horizontálních oddílů může mít vliv shardletu, díky tomu funkce mapy horizontálních oddílů automaticky ukončit připojení k databázi. 
 
-Nemusíte používat tradiční způsob, jak vytvořit připojení pro Dapperem, budete muset použít [OpenConnectionForKey metoda](http://msdn.microsoft.com/library/azure/dn824099.aspx). Tím se zajistí, že všechny ověřování probíhá a připojení se spravují správně, pokud žádná data se pohybuje mezi horizontálními oddíly.
+Nemusíte používat tradiční způsob, jak vytvořit připojení pro Dapperem, budete muset použít [OpenConnectionForKey metoda](https://msdn.microsoft.com/library/azure/dn824099.aspx). Tím se zajistí, že všechny ověřování probíhá a připojení se spravují správně, pokud žádná data se pohybuje mezi horizontálními oddíly.
 
 ### <a name="requirements-for-dapper-integration"></a>Požadavky pro integraci Dapper
 Při práci s Klientská knihovna elastic database a Dapper rozhraní API, budete chtít zachovat následující vlastnosti:
@@ -57,7 +57,7 @@ Následující část obsahuje pokyny pro tyto požadavky pro aplikace na zákla
 
 ## <a name="technical-guidance"></a>Technické pokyny
 ### <a name="data-dependent-routing-with-dapper"></a>Směrování závislé na datech s Dapperem
-Aplikace s Dapperem, je obvykle zodpovědný za vytváření a otevírání připojení k podkladové databázi. Daný typ T aplikací, Dapperem vrátí výsledky dotazu jako kolekce .NET typu T. Dapper provede mapování z výsledné řádky T-SQL pro objekty typu T. Obdobně Dapperem mapuje objektů .NET do SQL hodnoty nebo parametry pro příkazy data manipulaci s language (DML). Dapperem nabízí tyto funkce prostřednictvím rozšíření metod na standardní [SqlConnection](http://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection.aspx) objekt ADO .NET SQL klientské knihovny. Připojení SQL vrátil rozhraní API pružné škálování pro záznam DDR jsou také pravidelné [SqlConnection](http://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection.aspx) objekty. To nám umožňuje přímo používat Dapper rozšíření nad typem vrácená rozhraním API DDR klientskou knihovnu, jako je také jednoduchý připojení klienta SQL.
+Aplikace s Dapperem, je obvykle zodpovědný za vytváření a otevírání připojení k podkladové databázi. Daný typ T aplikací, Dapperem vrátí výsledky dotazu jako kolekce .NET typu T. Dapper provede mapování z výsledné řádky T-SQL pro objekty typu T. Obdobně Dapperem mapuje objektů .NET do SQL hodnoty nebo parametry pro příkazy data manipulaci s language (DML). Dapperem nabízí tyto funkce prostřednictvím rozšíření metod na standardní [SqlConnection](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection.aspx) objekt ADO .NET SQL klientské knihovny. Připojení SQL vrátil rozhraní API pružné škálování pro záznam DDR jsou také pravidelné [SqlConnection](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection.aspx) objekty. To nám umožňuje přímo používat Dapper rozšíření nad typem vrácená rozhraním API DDR klientskou knihovnu, jako je také jednoduchý připojení klienta SQL.
 
 Tyto poznámky zjednodušují připojení zprostředkovaných podle Klientská knihovna elastic database pro Dapperem.
 
@@ -76,15 +76,15 @@ Tento příklad kódu (z doprovodných ukázky) ukazuje přístupu, kde je klí�
                         );
     }
 
-Volání [OpenConnectionForKey](http://msdn.microsoft.com/library/azure/dn807226.aspx) API nahradí výchozí vytváření a otevírání připojení klienta SQL. [OpenConnectionForKey](http://msdn.microsoft.com/library/azure/dn807226.aspx) volání přijímá argumenty, které jsou požadovány pro směrování závislé na datech: 
+Volání [OpenConnectionForKey](https://msdn.microsoft.com/library/azure/dn807226.aspx) API nahradí výchozí vytváření a otevírání připojení klienta SQL. [OpenConnectionForKey](https://msdn.microsoft.com/library/azure/dn807226.aspx) volání přijímá argumenty, které jsou požadovány pro směrování závislé na datech: 
 
 * Mapy horizontálních oddílů pro přístup k rozhraní směrování závislé na datech
 * Klíč horizontálního dělení k identifikaci shardletu
 * Přihlašovací údaje (uživatelské jméno a heslo) pro připojení do horizontálního oddílu
 
-Objekt map horizontálních oddílů vytvoří připojení do horizontálního oddílu, který má shardletu pro klíč horizontálního dělení dané. Elastické databáze klientských rozhraní API také označovat připojení k implementaci jeho záruky konzistence. Od posledního volání [OpenConnectionForKey](http://msdn.microsoft.com/library/azure/dn807226.aspx) vrátí regulární objekt klienta systému SQL připojení, následné volání **Execute** rozšiřující metoda z Dapperem dodržuje standardní praxí Dapper.
+Objekt map horizontálních oddílů vytvoří připojení do horizontálního oddílu, který má shardletu pro klíč horizontálního dělení dané. Elastické databáze klientských rozhraní API také označovat připojení k implementaci jeho záruky konzistence. Od posledního volání [OpenConnectionForKey](https://msdn.microsoft.com/library/azure/dn807226.aspx) vrátí regulární objekt klienta systému SQL připojení, následné volání **Execute** rozšiřující metoda z Dapperem dodržuje standardní praxí Dapper.
 
-Dotazy fungují velmi podobně jako když stejné – prvním otevření připojení pomocí [OpenConnectionForKey](http://msdn.microsoft.com/library/azure/dn807226.aspx) z klientského rozhraní API. Pak můžete pomocí regulárních Dapper rozšiřující metody do objektů .NET mapovat výsledky dotazu SQL:
+Dotazy fungují velmi podobně jako když stejné – prvním otevření připojení pomocí [OpenConnectionForKey](https://msdn.microsoft.com/library/azure/dn807226.aspx) z klientského rozhraní API. Pak můžete pomocí regulárních Dapper rozšiřující metody do objektů .NET mapovat výsledky dotazu SQL:
 
     using (SqlConnection sqlconn = shardingLayer.ShardMap.OpenConnectionForKey(
                     key: tenantId1, 
@@ -109,7 +109,7 @@ Všimněte si, že **pomocí** blokovat všechny operace databáze v rámci blok
 ## <a name="data-dependent-routing-with-dapper-and-dapperextensions"></a>Směrování závislé na datech s Dapperem a DapperExtensions
 Dapperem se dodává s ekosystémem další rozšíření, které můžete zadat další abstrakce z databáze a pohodlí při vytváření databázových aplikací. DapperExtensions je příklad. 
 
-Ve vaší aplikaci pomocí DapperExtensions nemění způsob vytvoření a Správa připojení k databázi. Zodpovídá za stále aplikace k otevření připojení a pravidelné objekty připojení klienta SQL se očekává metodami rozšíření. Spoléháme na [OpenConnectionForKey](http://msdn.microsoft.com/library/azure/dn807226.aspx) jak je uvedeno výš. Jak ukazují následující ukázky kódu, pouze změny je, že už máte psát příkazy jazyka T-SQL:
+Ve vaší aplikaci pomocí DapperExtensions nemění způsob vytvoření a Správa připojení k databázi. Zodpovídá za stále aplikace k otevření připojení a pravidelné objekty připojení klienta SQL se očekává metodami rozšíření. Spoléháme na [OpenConnectionForKey](https://msdn.microsoft.com/library/azure/dn807226.aspx) jak je uvedeno výš. Jak ukazují následující ukázky kódu, pouze změny je, že už máte psát příkazy jazyka T-SQL:
 
     using (SqlConnection sqlconn = shardingLayer.ShardMap.OpenConnectionForKey(
                     key: tenantId2, 
@@ -137,7 +137,7 @@ A tady je příklad dotazu:
     }
 
 ### <a name="handling-transient-faults"></a>Zpracování přechodných chyb
-Tým Microsoft Patterns a postupy publikované [přechodné Fault Handling Application Block](http://msdn.microsoft.com/library/hh680934.aspx) pomáhá vývojářům aplikací zmírnit běžné stavy přechodných chyb došlo při spuštění v cloudu. Další informace najdete v tématu [Perseverance, tajný klíč všechny vítězství: použití blok aplikací zpracování přechodných selhání](http://msdn.microsoft.com/library/dn440719.aspx).
+Tým Microsoft Patterns a postupy publikované [přechodné Fault Handling Application Block](https://msdn.microsoft.com/library/hh680934.aspx) pomáhá vývojářům aplikací zmírnit běžné stavy přechodných chyb došlo při spuštění v cloudu. Další informace najdete v tématu [Perseverance, tajný klíč všechny vítězství: použití blok aplikací zpracování přechodných selhání](https://msdn.microsoft.com/library/dn440719.aspx).
 
 Vzorový kód spoléhá na knihovny přechodných chyb pro ochranu proti přechodným chybám. 
 
@@ -157,10 +157,10 @@ Vzorový kód spoléhá na knihovny přechodných chyb pro ochranu proti přecho
 Přístupů popsaných v tomto dokumentu zahrnuje několik omezení:
 
 * Ukázkový kód pro tento dokument není ukazují, jak spravovat schéma napříč horizontálními oddíly.
-* Zadaný požadavek, předpokládáme, že všechny její zpracování databáze je součástí jeden horizontální oddíl pomocí klíče horizontálního dělení zadané v požadavku. Ale tento předpoklad vždy neobsahuje, například když není možné zpřístupnit klíč horizontálního dělení. Z toho Klientská knihovna elastic database zahrnuje [MultiShardQuery třídy](http://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.query.multishardexception.aspx). Třída implementuje abstraktní připojení pro dotazování více horizontálních oddílů. Použití MultiShardQuery v kombinaci s Dapperem je nad rámec tohoto dokumentu.
+* Zadaný požadavek, předpokládáme, že všechny její zpracování databáze je součástí jeden horizontální oddíl pomocí klíče horizontálního dělení zadané v požadavku. Ale tento předpoklad vždy neobsahuje, například když není možné zpřístupnit klíč horizontálního dělení. Z toho Klientská knihovna elastic database zahrnuje [MultiShardQuery třídy](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.query.multishardexception.aspx). Třída implementuje abstraktní připojení pro dotazování více horizontálních oddílů. Použití MultiShardQuery v kombinaci s Dapperem je nad rámec tohoto dokumentu.
 
 ## <a name="conclusion"></a>Závěr
-Aplikace používající Dapperem nebo DapperExtensions snadno využívat nástrojů elastic database pro Azure SQL Database. Pomocí kroků uvedených v tomto dokumentu, tyto aplikace můžete použít funkci nástroje pro směrování závislé na datech změnou vytváření a otevírání nových [SqlConnection](http://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection.aspx) objektů na používání [ OpenConnectionForKey](http://msdn.microsoft.com/library/azure/dn807226.aspx) volání Klientská knihovna elastic database. To omezuje změny aplikace, které jsou potřeba těchto míst, kde jsou vytvořen a otevřít nové připojení. 
+Aplikace používající Dapperem nebo DapperExtensions snadno využívat nástrojů elastic database pro Azure SQL Database. Pomocí kroků uvedených v tomto dokumentu, tyto aplikace můžete použít funkci nástroje pro směrování závislé na datech změnou vytváření a otevírání nových [SqlConnection](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection.aspx) objektů na používání [ OpenConnectionForKey](https://msdn.microsoft.com/library/azure/dn807226.aspx) volání Klientská knihovna elastic database. To omezuje změny aplikace, které jsou potřeba těchto míst, kde jsou vytvořen a otevřít nové připojení. 
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 

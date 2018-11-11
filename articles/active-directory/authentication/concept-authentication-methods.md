@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry, michmcla
-ms.openlocfilehash: 67f99e68bc4091d076e27aee06c2851bc77e6fc7
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: d8d7850e7d5253cfec4431fed3e09f4007995494
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49378920"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51249689"
 ---
 # <a name="what-are-authentication-methods"></a>Co jsou metody ověřování?
 
@@ -59,41 +59,41 @@ Pokud používáte bezpečnostní otázky, doporučujeme používat je společn�
 
 ### <a name="predefined-questions"></a>Předdefinované dotazy
 
-* Ve kterém městě jste se seznámili s prvním manželem či manželkou (případně partnerem či partnerkou)?
+* V jakém městě jste potkali svého manžela nebo manželku (partnera nebo partnerku)?
 * V jakém městě se potkali vaši rodiče?
 * V jakém městě žije váš nejbližší sourozenec?
 * V jakém městě se narodil váš otec?
-* Ve kterém městě jste vykonávali své první zaměstnání?
-* Ve kterém městě se narodila vaše matka?
+* V jakém městě jste měli první práci?
+* V jakém městě se narodila vaše matka?
 * V jakém městě jste byli na Nový rok 2000?
-* Uveďte příjmení svého nejoblíbenějšího učitele na střední škole.
+* Jaké je příjmení vašeho oblíbeného učitele ze střední školy?
 * Jaký je název univerzity, na kterou jste se hlásili, ale nechodili na ni?
-* Jak se nazývá místo, kde se konala vaše první svatební oslava?
+* Jak se jmenuje město, kde jste měli svatební hostinu?
 * Jaký je oblíbený sport vašeho otce?
 * Jaké je vaše oblíbené jídlo?
 * Jaké je jméno a příjmení vaší babičky z matčiny strany?
-* Jaké je druhé křestní jméno vaší matky?
+* Jak se za svobodna jmenovala vaše matka?
 * Co je měsíci a roce svého nejstaršího sourozence? (např. listopad 1985)
-* Jaké je druhé křestní jméno vašeho nejstaršího sourozence?
+* Jaké je křestní jméno vašeho nejstaršího sourozence?
 * Jaké je jméno a příjmení vašeho dědečka z otcovy strany?
-* Jaké je druhé křestní jméno vašeho nejmladšího sourozence?
+* Jaké je křestní jméno vašeho nejmladšího sourozence?
 * Do jaké školy jste chodili v šesté třídě?
 * Jaké měl jméno a příjmení váš nejlepší přítel v dětství?
-* Uveďte celé jméno svého prvního partnera nebo partnerky.
-* Uveďte příjmení svého nejoblíbenějšího učitele na prvním stupni.
-* Uveďte značku a model svého prvního auta nebo motocyklu.
+* Jaké měl jméno a příjmení váš první partner nebo partnerka?
+* Jaké bylo příjmení vašeho oblíbeného učitele ze základní školy?
+* Jaká byla značka a model vašeho prvního auta nebo motorky?
 * Jaký byl název první školy, do které jste chodili?
-* Uveďte název nemocnice, ve které jste se narodili.
-* Na jaké ulici jste bydleli v dětství v úplně prvním bydlišti?
-* Jak se jmenoval váš dětský hrdina?
+* Jaký název měla nemocnice, ve které jste se narodili?
+* Jak se jmenovala ulice, kde jste v dětství bydleli?
+* Jak se jmenoval váš dětský idol?
 * Jaké bylo jméno vašeho oblíbeného plyšáka?
-* Jak se jmenoval váš první domácí mazlíček?
+* Jak se jmenovalo vaše první domácí zvířátko?
 * Jakou jste měli v dětství přezdívku?
 * Jaký byl váš oblíbený sport na střední škole?
 * Jaká byla vaše první práce?
-* Uveďte poslední čtyři číslice telefonního čísla, které jste používali v dětství?
-* Čím jste jako dítě chtěli být, až vyrostete?
-* Uveďte nejslavnějšího člověka, se kterým jste se v životě setkali.
+* Jaké byly poslední čtyři číslice vašeho telefonu v dětství?
+* Jaké bylo v dětství vaše vysněné povolání?
+* Jakou nejznámější osobnost jste kdy potkali?
 
 Všechny předdefinované bezpečnostní otázky jsou přeloženy a lokalizován do úplnou sadu Office 365 jazyky podle národního prostředí prohlížeče uživatele.
 
@@ -122,7 +122,7 @@ Společnost Microsoft doporučuje použití e-mailový účet, který nepotřebu
 
 Aplikace Microsoft Authenticator poskytuje další úroveň zabezpečení, které vaší služby Azure AD pracovní nebo školní účet nebo účtu Microsoft.
 
-Aplikace Microsoft Authenticator je k dispozici pro [Android](https://go.microsoft.com/fwlink/?linkid=866594), [iOS](https://go.microsoft.com/fwlink/?linkid=866594) a [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071).
+Aplikace Microsoft Authenticator je k dispozici pro [Android](https://go.microsoft.com/fwlink/?linkid=866594), [iOS](https://go.microsoft.com/fwlink/?linkid=866594) a [Windows Phone](https://go.microsoft.com/fwlink/?Linkid=825071).
 
 > [!NOTE]
 > Uživatelé nebudou mít možnost zaregistrovat svoje mobilní aplikace při registraci pro resetování hesla pomocí samoobslužné služby. Místo toho uživatelé můžou registrovat svoje mobilní aplikace na [ https://aka.ms/mfasetup ](https://aka.ms/mfasetup) nebo v náhledu registrační informace o zabezpečení v [ https://aka.ms/setupsecurityinfo ](https://aka.ms/setupsecurityinfo).

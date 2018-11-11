@@ -1,12 +1,25 @@
-## <a name="install-wordpress"></a>Instalace aplikace WordPress
+---
+author: cynthn
+ms.service: virtual-machines-linux
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: cynthn
+ms.openlocfilehash: 5df1f7ff44a1603dd03d1d803ae9960dc124781e
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50227400"
+---
+## <a name="install-wordpress"></a>Instalace WordPressu
 
-Pokud budete chtít zkusit do zásobníku, nainstalujte ukázkovou aplikaci. Jako příklad následující kroky instalace open source [WordPress](https://wordpress.org/) platformu pro vytváření webů a blogů. Zahrnout další úlohy a zkuste to [Drupal](http://www.drupal.org) a [Moodle](https://moodle.org/). 
+Pokud chcete vyzkoušet svůj stack, nainstalujte ukázkovou aplikaci. Například následujícím postupem se nainstaluje open source platforma pro vytváření webů a blogů [WordPress](https://wordpress.org/). Mezi další sady funkcí, které můžete vyzkoušet, patří [Drupal](http://www.drupal.org) nebo [Moodle](https://moodle.org/). 
 
-Tato instalace WordPress je pouze pro testování konceptu. Chcete-li nainstalovat nejnovější WordPress v produkčním prostředí se doporučené nastavení zabezpečení, přečtěte si téma [WordPress dokumentaci](https://codex.wordpress.org/Main_Page). 
+Tato instalace WordPressu slouží pouze pro účely testování konceptu. Pokud chcete nainstalovat nejnovější produkční verzi WordPressu s doporučeným nastavením zabezpečení, přečtěte si [dokumentaci WordPressu](https://codex.wordpress.org/Main_Page). 
 
 
 
-### <a name="install-the-wordpress-package"></a>Instalovat balíček WordPress
+### <a name="install-the-wordpress-package"></a>Instalace balíčku WordPress
 
 Spusťte následující příkaz:
 
@@ -16,15 +29,15 @@ sudo apt install wordpress
 
 ### <a name="configure-wordpress"></a>Konfigurace WordPress
 
-Konfigurace WordPress používání MySQL a PHP.
+Nakonfigurujte WordPress tak, aby používal MySQL a PHP.
 
-V pracovním adresáři, vytvořte textový soubor `wordpress.sql` konfiguraci databáze MySQL pro WordPress: 
+V pracovním adresáři vytvořte textový soubor `wordpress.sql`, který použijete ke konfiguraci databáze MySQL pro WordPress: 
 
 ```bash
 sudo sensible-editor wordpress.sql
 ```
 
-Přidejte následující příkazy, nahraďte heslo databáze podle svého výběru pro *yourPassword* (nechte ostatní hodnoty beze změny). Pokud jste dříve nastavili zásadu zabezpečení MySQL k ověření síly hesla, ujistěte se, že heslo splňuje požadavky na sílu. Uložte soubor.
+Přidejte následující příkazy a hodnotu *yourPassword* nahraďte libovolným heslem databáze (ostatní hodnoty nechte beze změny). Pokud jste dříve nastavili zásady zabezpečení MySQL pro ověřování síly hesla, ujistěte se, že vaše heslo splňuje tyto požadavky na sílu hesla. Uložte soubor.
 
 ```sql
 CREATE DATABASE wordpress;
@@ -35,24 +48,24 @@ IDENTIFIED BY 'yourPassword';
 FLUSH PRIVILEGES;
 ```
 
-Spusťte následující příkaz k vytvoření databáze:
+Spuštěním následujícího příkazu vytvořte databázi:
 
 ```bash
 cat wordpress.sql | sudo mysql --defaults-extra-file=/etc/mysql/debian.cnf
 ```
 
-Protože soubor `wordpress.sql` obsahuje přihlašovací údaje databáze, odstraňte ho po použití:
+Protože soubor `wordpress.sql` obsahuje přihlašovací údaje k databázi, po použití ho odstraňte:
 
 ```bash
 sudo rm wordpress.sql
 ```
 
-Konfigurovat PHP, spusťte následující příkaz, který otevřete textový editor podle svého výběru a vytvoření souboru `/etc/wordpress/config-localhost.php`:
+Pokud chcete nakonfigurovat PHP, spuštěním následujícího příkazu otevřete libovolný textový editor a vytvořte soubor `/etc/wordpress/config-localhost.php`:
 
 ```bash
 sudo sensible-editor /etc/wordpress/config-localhost.php
 ```
-Zkopírujte následující řádky do souboru, nahraďte heslo WordPress databáze pro *yourPassword* (nechte ostatní hodnoty beze změny). Pak soubor uložte.
+Zkopírujte do souboru následující řádky a hodnotu *yourPassword* nahraďte heslem k vaší databázi WordPressu (ostatní hodnoty nechte beze změny). Pak soubor uložte.
 
 ```php
 <?php
@@ -65,7 +78,7 @@ define('WP_CONTENT_DIR', '/usr/share/wordpress/wp-content');
 ```
 
 
-Přesunete instalaci WordPress na kořen dokumentu webového serveru:
+Přesuňte instalaci WordPressu do kořenového adresáře dokumentů webového serveru:
 
 ```bash
 sudo ln -s /usr/share/wordpress /var/www/html/wordpress
@@ -73,6 +86,6 @@ sudo ln -s /usr/share/wordpress /var/www/html/wordpress
 sudo mv /etc/wordpress/config-localhost.php /etc/wordpress/config-default.php
 ```
 
-Nyní můžete dokončit nastavení WordPress a publikovat na platformě. Otevřete prohlížeč a přejděte na `http://yourPublicIPAddress/wordpress`. Nahraďte veřejnou IP adresu vašeho virtuálního počítače. By měla vypadat podobně jako tento obrázek.
+Teď můžete dokončit instalaci WordPressu a začít na této platformě publikovat. Otevřete prohlížeč a přejděte na adresu `http://yourPublicIPAddress/wordpress`. Použijte veřejnou IP adresu svého virtuálního počítače. Informační stránka by měla vypadat podobně jako na tomto obrázku.
 
-![Stránka Instalace WordPress](./media/virtual-machines-linux-tutorial-wordpress/wordpressstartpage.png)
+![Stránka instalace Wordpressu](./media/virtual-machines-linux-tutorial-wordpress/wordpressstartpage.png)

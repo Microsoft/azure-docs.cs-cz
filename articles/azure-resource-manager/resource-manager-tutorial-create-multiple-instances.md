@@ -10,22 +10,22 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 10/18/2018
+ms.date: 10/30/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 1cfccdf644b1748a96f7638e574c66eace8d113a
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 14dd76e60f615bce4e5b5aa52e6237615071779c
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49456656"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50241919"
 ---
-# <a name="tutorial-create-multiple-resource-instances-using-resource-manager-templates"></a>Kurz: Vytvoření více instancí prostředků pomocí šablon Resource Manageru
+# <a name="tutorial-create-multiple-resource-instances-with-resource-manager-templates"></a>Kurz: Vytvoření více instancí prostředků pomocí šablon Resource Manageru
 
-Zjistěte, jak iterovat vaši šablonu Azure Resource Manageru k vytvoření více instancí prostředku Azure. V posledním kurzu jste upravovali existující šablonu k vytvoření šifrovaného účtu úložiště Azure. V tomto kurzu budete upravovat stejnou šablonu, abyste vytvořili tři instance účtu úložiště.
+Zjistěte, jak iterovat vaši šablonu Azure Resource Manageru k vytvoření více instancí prostředku Azure. V tomto kurzu upravíte šablonu tak, aby vytvořila tři instance účtu úložiště.
 
 > [!div class="checklist"]
-> * Otevření šablony rychlého startu
+> * Otevření šablony pro rychlý start
 > * Úprava šablony
 > * Nasazení šablony
 
@@ -39,7 +39,7 @@ K dokončení tohoto článku potřebujete:
 
 ## <a name="open-a-quickstart-template"></a>Otevření šablony pro rychlý start
 
-Šablona, kterou jsme použili v tomto rychlém startu, se nazývá [Create a standard storage account](https://azure.microsoft.com/resources/templates/101-storage-account-create/) (Vytvoření standardního účtu úložiště). Šablona definuje prostředek účtu služby Azure Storage.
+[Šablony Azure pro rychlý start](https://azure.microsoft.com/resources/templates/) slouží jako úložiště šablon Resource Manageru. Místo vytvoření šablony úplně od začátku si můžete najít ukázkovou šablonu a přizpůsobit ji. Šablona, kterou jsme použili v tomto rychlém startu, se nazývá [Create a standard storage account](https://azure.microsoft.com/resources/templates/101-storage-account-create/) (Vytvoření standardního účtu úložiště). Šablona definuje prostředek účtu služby Azure Storage.
 
 1. V nástroji Visual Studio Code vyberte **File** (Soubor) >**Open File** (Otevřít soubor).
 2. Do pole **File name** (Název souboru) vložte následující adresu URL:
@@ -48,20 +48,21 @@ K dokončení tohoto článku potřebujete:
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
     ```
 3. Výběrem **Open** (Otevřít) soubor otevřete.
-4. Vyberte **File** (Soubor) >**Save As** (Uložit jako) a soubor uložte jako **azuredeploy.json** na místní počítač.
+4. Šablona obsahuje definici prostředku Microsoft.Storage/storageAccounts. Porovnejte tuto šablonu s [referenčními informacemi k šablonám](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts). Než začnete šablonu přizpůsobovat, je vhodné se s ní nejprve trochu seznámit.
+5. Vyberte **File** (Soubor) >**Save As** (Uložit jako) a soubor uložte jako **azuredeploy.json** na místní počítač.
 
 ## <a name="edit-the-template"></a>Úprava šablony
 
-Cílem tohoto kurzu je pomocí iterace prostředků vytvořit tři účty úložiště.  Ukázková šablona vytvoří pouze jeden účet úložiště. 
+Stávající šablona vytvoří jeden účet úložiště. Upravíte šablonu tak, aby vytvořila tři účty úložiště.  
 
 Z Visual Studio Code proveďte následující čtyři změny:
 
 ![Azure Resource Manager vytvoří více instancí](./media/resource-manager-tutorial-create-multiple-instances/resource-manager-template-create-multiple-instances.png)
 
-1. Přidejte prvek `copy` k definování prostředků účtu úložiště. V prvku kopie určíte počet iterací a název pro tuto smyčku. Početní hodnota musí být kladný integer a nesmí překročit 800.
-2. Funkce `copyIndex()` vrátí aktuální iteraci ve smyčce. `copyIndex()` je založen na nule. Abyste odsadili hodnotu indexu, můžete hodnotu předat do funkce copyIndex(). Například *copyIndex(1)*.
+1. Přidejte prvek `copy` k definování prostředků účtu úložiště. V elementu copy určíte počet iterací a proměnnou pro tuto smyčku. Početní hodnota musí být kladný integer a nesmí překročit 800.
+2. Funkce `copyIndex()` vrátí aktuální iteraci ve smyčce. Tento index použijete jako předponu názvu. `copyIndex()` je založen na nule. Abyste odsadili hodnotu indexu, můžete hodnotu předat do funkce copyIndex(). Například *copyIndex(1)*.
 3. Odstraňte prvek **proměnné**, protože se už nepoužívá.
-4. Odstraňte prvek **výstupu**.
+4. Odstraňte prvek **výstupu**. Už není zapotřebí.
 
 Hotová šablona vypadá takto:
 

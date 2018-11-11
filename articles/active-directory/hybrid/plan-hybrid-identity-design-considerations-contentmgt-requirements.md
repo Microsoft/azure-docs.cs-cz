@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 05/30/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: a3e5ae61fcefcb65d08288a2ddc2dd239e68b211
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 60d4501257bf79d1846e62010bf7b336c1b18f19
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46312253"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51250862"
 ---
 # <a name="determine-content-management-requirements-for-your-hybrid-identity-solution"></a>Určení požadavků na správu obsahu pro vaše řešení hybridní identity
 Pochopení požadavků správy obsahu pro vaši společnost může přímo ovlivnit vaše rozhodnutí, na které řešení hybridní identity používat. S čím více zařízení a umožňuje uživatelům přinést si vlastní zařízení ([BYOD](https://aka.ms/byodcg)), společnost musí chránit svoje vlastní data, ale také musí uchovávat ochrany osobních údajů uživatele ponechá beze změny. Většinou když uživatel má své vlastní zařízení, jsou také může mít více přihlašovacích údajů, které se Alternující závislosti na aplikaci, která používají. Je důležité rozlišení, jaký obsah byl vytvořen pomocí osobních údajů a modely vytvořené pomocí firemních přihlašovacích údajů. Řešení identity měli být schopni komunikovat s cloudovou službou službami a zajistit bezproblémové prostředí pro koncového uživatele při zajištění jejich ochrany osobních údajů a zvýšit ochranu před úniky dat chránit. 
@@ -38,7 +38,7 @@ Obecně platí požadavky na správu obsahu bude využívat systém správy iden
 * Ochrana úniku dat: kontrolní mechanismy zabezpečení za ochranu dat, aby se zabránilo úniku potřebovat pro interakci s systém identit pro ověření identity uživatele. To je důležité pro záznam pro účely auditování.
 
 > [!NOTE]
-> Čtení [klasifikace dat podle připravenosti na cloud](http://download.microsoft.com/download/0/A/3/0A3BE969-85C5-4DD2-83B6-366AA71D1FE3/Data-Classification-for-Cloud-Readiness.pdf) Další informace o osvědčených postupech a pokyny pro klasifikaci dat.
+> Čtení [klasifikace dat podle připravenosti na cloud](https://download.microsoft.com/download/0/A/3/0A3BE969-85C5-4DD2-83B6-366AA71D1FE3/Data-Classification-for-Cloud-Readiness.pdf) Další informace o osvědčených postupech a pokyny pro klasifikaci dat.
 > 
 > 
 

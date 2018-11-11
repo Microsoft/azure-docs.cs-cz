@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/28/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 4dd3253b1d7ee159914f2d1fd6a8644bbc69c1f0
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 5205d7797e7d45266a4f54b842ad56f353abc6d6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50092787"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51252985"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Požadavky pro Azure AD Connect
 Toto téma popisuje požadavky a požadavky na hardware pro Azure AD Connect.
@@ -41,7 +41,7 @@ Před instalací Azure AD Connect, existuje několik věcí, které potřebujete
 
 ### <a name="on-premises-active-directory"></a>Místní služby Active Directory
 * AD schématu verze a doménová struktura úroveň funkčnosti musí být Windows Server 2003 nebo novější. Řadiče domény můžete spustit všechny verze, tak dlouho, dokud jsou splněny požadavky úrovni schématu a doménové struktury.
-* Pokud plánujete použít funkci **zpětný zápis hesla**, řadiče domény musí být v systému Windows Server 2008 (s nejnovější aktualizací SP) nebo novější. Pokud vaše řadiče domény jsou 2008 (starší verzi než R2), pak musíte také použít [opravu hotfix KB2386717](http://support.microsoft.com/kb/2386717).
+* Pokud plánujete použít funkci **zpětný zápis hesla**, řadiče domény musí být v systému Windows Server 2008 (s nejnovější aktualizací SP) nebo novější. Pokud vaše řadiče domény jsou 2008 (starší verzi než R2), pak musíte také použít [opravu hotfix KB2386717](https://support.microsoft.com/kb/2386717).
 * Musí být zapisovatelný řadič domény používá Azure AD. Je **nepodporuje** řadiče jen pro čtení (řadič domény jen pro čtení) a Azure AD Connect není postupujte podle jakékoli přesměrování zápisu.
 * Je **nepodporuje** používat s místními doménovými strukturami nebo doménami pomocí "tečkované" (název obsahuje tečku ".") Názvy NetBios.
 * Doporučuje se [povolit odpadkový koš služby Active Directory](how-to-connect-sync-recycle-bin.md).
@@ -123,11 +123,11 @@ Azure AD Connect, závisí na Microsoft PowerShell a rozhraní .NET Framework 4.
   * Ve výchozím nastavení je nainstalovaný Microsoft PowerShell. Nemusíte nic dělat.
   * Rozhraní .NET framework 4.5.1 a novějších verzí se nabízejí prostřednictvím služby Windows Update. Ujistěte se, že máte nainstalované nejnovější aktualizace na Windows Server v Ovládacích panelech.
 * Windows Server 2008 R2 a Windows Server 2012
-  * Je k dispozici v nejnovější verzi Powershellu Microsoft **Windows Management Framework 4.0**, která je dostupná na [Microsoft Download Center](http://www.microsoft.com/downloads).
-  * Jsou k dispozici v rozhraní .NET framework 4.5.1 a novějších verzí [Microsoft Download Center](http://www.microsoft.com/downloads).
+  * Je k dispozici v nejnovější verzi Powershellu Microsoft **Windows Management Framework 4.0**, která je dostupná na [Microsoft Download Center](https://www.microsoft.com/downloads).
+  * Jsou k dispozici v rozhraní .NET framework 4.5.1 a novějších verzí [Microsoft Download Center](https://www.microsoft.com/downloads).
 * Windows Server 2008
-  * Je k dispozici v nejnovější podporovanou verzi prostředí PowerShell **Windows Management Framework 3.0**, která je dostupná na [Microsoft Download Center](http://www.microsoft.com/downloads).
-  * Jsou k dispozici v rozhraní .NET framework 4.5.1 a novějších verzí [Microsoft Download Center](http://www.microsoft.com/downloads).
+  * Je k dispozici v nejnovější podporovanou verzi prostředí PowerShell **Windows Management Framework 3.0**, která je dostupná na [Microsoft Download Center](https://www.microsoft.com/downloads).
+  * Jsou k dispozici v rozhraní .NET framework 4.5.1 a novějších verzí [Microsoft Download Center](https://www.microsoft.com/downloads).
 
 ### <a name="enable-tls-12-for-azure-ad-connect"></a>Povolení protokolu TLS 1.2 pro služby Azure AD Connect
 Starší než verze 1.1.614.0 Azure AD Connect ve výchozím nastavení používá protokol TLS 1.0 pro šifrování komunikace mezi serverem modul synchronizace a Azure AD. Toto můžete změnit tím, že nakonfigurujete aplikace .net pro použití protokolu TLS 1.2 ve výchozím nastavení na serveru. Další informace o protokolu TLS 1.2 nacházely v [Microsoft Security Advisory 2960358](https://technet.microsoft.com/security/advisory/2960358).

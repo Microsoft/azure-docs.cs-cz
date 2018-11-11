@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/12/2018
+ms.date: 11/06/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 2b9e7615fc0c2262c33ab5d7be39bdb99bc752bd
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: a16230b6f51f0ce93f4a9bf53591abbcd6b4bd3b
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50412954"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51283678"
 ---
 # <a name="connect-windows-computers-to-the-log-analytics-service-in-azure"></a>Připojení počítačů s Windows ke službě Log Analytics v Azure
 
@@ -98,7 +98,7 @@ Následující tabulka obsahuje konkrétní parametry Log Analytics podporuje in
 
 ## <a name="install-the-agent-using-dsc-in-azure-automation"></a>Instalace agenta pomocí ve službě Azure Automation DSC
 
-Následující ukázkový skript můžete použít k instalaci agenta pomocí Azure Automation DSC.   Pokud nemáte účet Automation, přečtěte si téma [Začínáme s Azure Automation](../automation/automation-offering-get-started.md) vám pomohou pochopit požadavky a kroky pro vytvoření účtu Automation pomocí Automation DSC je požadována.  Pokud nejste obeznámeni s Automation DSC, přečtěte si [Začínáme se službou Automation DSC](../automation/automation-dsc-getting-started.md).
+Následující ukázkový skript můžete použít k instalaci agenta pomocí Azure Automation DSC.   Pokud nemáte účet Automation, přečtěte si téma [Začínáme s Azure Automation](/azure/automation/) vám pomohou pochopit požadavky a kroky pro vytvoření účtu Automation pomocí Automation DSC je požadována.  Pokud nejste obeznámeni s Automation DSC, přečtěte si [Začínáme se službou Automation DSC](../automation/automation-dsc-getting-started.md).
 
 Následující příklad nainstaluje agenta 64bitovým kompilátorem identifikované `URI` hodnotu. Můžete také použít 32bitovou verzi tak, že nahradíte hodnotu identifikátoru URI. Identifikátory URI pro obě verze jsou:
 
@@ -109,13 +109,13 @@ Následující příklad nainstaluje agenta 64bitovým kompilátorem identifikov
 >[!NOTE]
 >Příklad tohoto postupu a skripty nepodporuje upgrade agenta už nasadili do počítače Windows.
 
-32bitové a 64bitové verze balíček agenta mají jiný produkt kódy a vydání nové verze také mít jedinečnou hodnotu.  Kód produktu je identifikátor GUID, který je základní identifikátor aplikace nebo produktu a je reprezentována Instalační služby systému Windows **ProductCode** vlastnost.  `ProductId value` v **MMAgent.ps1** skriptu musí odpovídat kód produktu z instalačního balíčku 32bitová nebo 64bitová verze agenta.
+32bitové a 64bitové verze balíček agenta mají jiný produkt kódy a vydání nové verze také mít jedinečnou hodnotu.  Kód produktu je identifikátor GUID, který je základní identifikátor aplikace nebo produktu a je reprezentována Instalační služby systému Windows **ProductCode** vlastnost.  `ProductId` Hodnotu **MMAgent.ps1** skriptu musí odpovídat kód produktu z instalačního balíčku 32bitová nebo 64bitová verze agenta.
 
 Chcete-li načíst kód přímo z instalačního balíčku agenta, můžete použít Orca.exe z [Windows vývojáři sady SDK součásti pro Windows Installer](https://msdn.microsoft.com/library/windows/desktop/aa370834%28v=vs.85%29.aspx) , který je součástí sady Windows Software Development Kit nebo pomocí Prostředí PowerShell následující [ukázkový skript](http://www.scconfigmgr.com/2014/08/22/how-to-get-msi-file-information-with-powershell/) napsané pomocí Microsoft Valuable Professional (MVP).  Kterýkoliv přístup, musíte nejprve k extrakci **MOMagent.msi** souboru z instalačního balíčku MMASetup.  To je ukázáno dříve v prvním kroku v části [instalace agenta pomocí příkazového řádku](#install-the-agent-using-the-command-line).  
 
 1. Import DSC xPSDesiredStateConfiguration modulu z [ http://www.powershellgallery.com/packages/xPSDesiredStateConfiguration ](http://www.powershellgallery.com/packages/xPSDesiredStateConfiguration) do Azure Automation.  
 2.  Vytvoření proměnných assetů Azure Automation pro *OPSINSIGHTS_WS_ID* a *OPSINSIGHTS_WS_KEY*. Nastavte *OPSINSIGHTS_WS_ID* ID pracovního prostoru Log Analytics a nastavte *OPSINSIGHTS_WS_KEY* na primární klíč pracovního prostoru.
-3.  Zkopírujte skript a uložte ho jako MMAgent.ps1
+3.  Zkopírujte skript a uložte ho jako MMAgent.ps1.
 
     ```PowerShell
     Configuration MMAgent
@@ -153,7 +153,8 @@ Chcete-li načíst kód přímo z instalačního balíčku agenta, můžete pou�
 
     ```
 
-4. [Importovat konfigurační skript MMAgent.ps1](../automation/automation-dsc-getting-started.md#importing-a-configuration-into-azure-automation) do účtu Automation. 
+4. Aktualizace `ProductId` hodnoty ve skriptu s kódem produktu extrahují z nejnovější verze agenta nainstalovat balíček pomocí metody doporučuje dříve. 
+5. [Importovat konfigurační skript MMAgent.ps1](../automation/automation-dsc-getting-started.md#importing-a-configuration-into-azure-automation) do účtu Automation. 
 5. [Přiřaďte počítači Windows nebo uzlu](../automation/automation-dsc-getting-started.md#onboarding-an-azure-vm-for-management-with-azure-automation-state-configuration) ke konfiguraci. Během 15 minut uzel ověří jeho konfigurace a agent se vloží do uzlu.
 
 ## <a name="verify-agent-connectivity-to-log-analytics"></a>Ověřit připojení agenta k Log Analytics

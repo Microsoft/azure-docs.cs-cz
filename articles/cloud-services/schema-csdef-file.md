@@ -13,15 +13,15 @@ caps.latest.revision: 42
 author: jpconnock
 ms.author: jeconnoc
 manager: timlt
-ms.openlocfilehash: df2f7c1bf99c13779e5720e15d8d669aa4f945c0
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 9cb78362b5c0613d6ed6820bbf8e6d3275ab4787
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39002745"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51250658"
 ---
 # <a name="azure-cloud-services-definition-schema-csdef-file"></a>Schéma definice (soubor .csdef) služby Azure Cloud Services
-Definiční soubor služby definuje model služby pro aplikaci. Soubor obsahuje definice pro role, které jsou k dispozici v cloudové službě, určuje koncové body služby a vytváří nastavení konfigurace pro službu. Konfigurace nastavení hodnoty se nastavují v konfiguračním souboru služby, jak je popsáno [schéma konfigurace cloudové služby (klasické)](http://msdn.microsoft.com/library/b1ae68cd-cc95-48cb-a4a4-da91dc708a35).
+Definiční soubor služby definuje model služby pro aplikaci. Soubor obsahuje definice pro role, které jsou k dispozici v cloudové službě, určuje koncové body služby a vytváří nastavení konfigurace pro službu. Konfigurace nastavení hodnoty se nastavují v konfiguračním souboru služby, jak je popsáno [schéma konfigurace cloudové služby (klasické)](https://msdn.microsoft.com/library/b1ae68cd-cc95-48cb-a4a4-da91dc708a35).
 
 Ve výchozím nastavení, je nainstalován soubor schématu konfigurace diagnostiky Azure do `C:\Program Files\Microsoft SDKs\Windows Azure\.NET SDK\<version>\schemas` adresáře. Nahraďte `<version>` s nainstalovanou verzí [sady Azure SDK](http://www.windowsazure.com/develop/downloads/).
 

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
 ms.component: ''
-ms.openlocfilehash: 5b6d7c2e1b26d98e511f665228f7093ceac10935
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: c8ab4836274506cbfdd10b21182bffaccdfbfa06
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50963680"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51014699"
 ---
 # <a name="expressroute-monitor"></a>ExpressRoute Monitor
 
@@ -139,4 +139,4 @@ Network Performance Monitor pomáhá diagnostikovat problémy s připojením ně
  
 
 ## <a name="next-steps"></a>Další postup
-[Hledání protokolů](log-analytics-log-search.md) zobrazíte podrobné sítě výkonu datových záznamů.
+[Hledání protokolů](log-analytics-queries.md) zobrazíte podrobné sítě výkonu datových záznamů.

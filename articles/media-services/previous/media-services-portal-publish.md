@@ -1,6 +1,6 @@
 ---
-title: Publikovat obsah na webu Azure portal | Microsoft Docs
-description: Tento kurz vás provede jednotlivými kroky publikovat obsah na webu Azure portal.
+title: Publikovat obsah na webu Azure Portal | Dokumentace Microsoftu
+description: Tento kurz vás provede kroky k publikování obsahu na webu Azure Portal.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/07/2017
 ms.author: juliako
-ms.openlocfilehash: d93bfc548134f730f4fad49a37593c861d6b6cbb
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 71b7e724158255cc979e9a08cd14c7f4412c4382
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33790304"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51253393"
 ---
-# <a name="publish-content-in-the-azure-portal"></a>Publikovat obsah na portálu Azure
+# <a name="publish-content-in-the-azure-portal"></a>Publikovat obsah na webu Azure Portal
 > [!div class="op_single_selector"]
 > * [Azure Portal](media-services-portal-publish.md)
 > * [.NET](media-services-deliver-streaming-content.md)
@@ -35,9 +35,9 @@ ms.locfileid: "33790304"
 > 
 > 
 
-Pokud chcete uživatelům poskytnout adresu URL, kterou můžou použít ke streamování nebo stažení vašeho obsahu, musíte prostředek nejprve publikovat vytvořením lokátoru. Lokátory zajišťují přístup k souborům asset. Služba Azure Media Services podporuje dva typy lokátorů: 
+Pokud chcete uživatelům poskytnout adresu URL, kterou můžou použít ke streamování nebo stažení vašeho obsahu, musíte prostředek nejprve publikovat vytvořením lokátoru. Lokátory zajišťují přístup k souborů prostředků. Služba Azure Media Services podporuje dva typy lokátorů: 
 
-* **Lokátory streamování (OnDemandOrigin)**. Lokátory streamování se používají pro adaptivní streamování. Adaptivní datové proudy příklady Apple HTTP Live Streaming (HLS), technologie Smooth Streaming Microsoft a dynamické adaptivní datové proudy přes protokol HTTP (DASH, označované taky jako MPEG-DASH). Pokud chcete vytvořit lokátor streamování, váš prostředek musí obsahovat soubor .ism. Například, http://amstest.streaming.mediaservices.windows.net/61b3da1d-96c7-489e-bd21-c5f8a7494b03/scott.ism/manifest.
+* **Lokátory streamování (OnDemandOrigin)**. Lokátory streamování se používají pro adaptivní streamování. Mezi příklady adaptivního streamování patří Apple HTTP Live Streaming (HLS), Microsoft Smooth Streaming a dynamické adaptivní streamování přes protokol HTTP (DASH, také nazývané MPEG-DASH). Pokud chcete vytvořit lokátor streamování, váš prostředek musí obsahovat soubor .ism. Například, http://amstest.streaming.mediaservices.windows.net/61b3da1d-96c7-489e-bd21-c5f8a7494b03/scott.ism/manifest.
 * **Progresivní lokátory (sdílený přístupový podpis)**. Progresivní lokátory se používají k doručování videa přes progresivní stahování.
 
 Pokud chcete vytvořit adresu URL streamování HLS, připojte na konec adresy *(format=m3u8-aapl)*:
@@ -56,14 +56,14 @@ Adresa URL sdíleného přístupového podpisu má následující formát:
 
     {blob container name}/{asset name}/{file name}/{shared access signature}
 
-Další informace najdete v tématu [doručování obsahu přehled](media-services-deliver-content-overview.md).
+Další informace najdete v tématu [doručování obsahu – přehled](media-services-deliver-content-overview.md).
 
 > [!NOTE]
 > Lokátory vytvořené na webu Azure Portal před březnem 2015 mají datum vypršení platnosti dva roky.  
 > 
 > 
 
-Pokud chcete aktualizovat datum vypršení platnosti lokátoru, můžete použít [REST API](https://docs.microsoft.com/rest/api/media/operations/locator#update_a_locator) nebo [.NET API](http://go.microsoft.com/fwlink/?LinkID=533259). 
+Chcete-li aktualizovat datum vypršení platnosti lokátoru, použijte použít [rozhraní REST API](https://docs.microsoft.com/rest/api/media/operations/locator#update_a_locator) nebo [rozhraní .NET API](https://go.microsoft.com/fwlink/?LinkID=533259). 
 
 > [!NOTE]
 > Při aktualizaci data vypršení platnosti lokátoru sdíleného přístupového podpisu se změní adresa URL.

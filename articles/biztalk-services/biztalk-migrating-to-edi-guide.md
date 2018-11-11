@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 07/31/2018
 ms.reviewer: jonfan, LADocs
 ms.suite: integration
-ms.openlocfilehash: 681cafc60661e16d70deb862da71f6baf80509fd
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 38fe0e4901977637be22670d09dccffdfa274304
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48856526"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51253818"
 ---
 # <a name="migrate-biztalk-server-edi-solutions-to-biztalk-services-technical-guide"></a>Migrace řešení EDI z BizTalk serveru do BizTalk Services: technický průvodce
 
@@ -77,10 +77,10 @@ V tématu **tok scénáře/zprávy** v tomto článku pro vzor tok zpráv.
 ## <a name="agreements"></a>Smlouvy
 Pokud jste se seznámili s BizTalk Server 2010 Trading Partner smlouvy používá ke zpracování EDI, pak BizTalk Services smluv s obchodními partnery velmi povědomá. Většinu nastavení smlouvy jsou stejné a použít stejné terminologie. V některých případech jsou mnohem jednodušší nastavení smlouvy ve srovnání s stejné nastavení BizTalk serveru. Microsoft Azure BizTalk Services podporuje X12 a EDIFACT, AS2 přenosu.
 
-Microsoft Azure BizTalk Services také poskytuje **migrace dat TPM** nástroj pro migraci obchodních partnerů a smluv z modulu BizTalk Server Trading Partner k portálu BizTalk Services. Nástroj pro migraci dat čip TPM je k dispozici jako součást balíčku nástrojů, který si můžete stáhnout z [MABS SDK](http://go.microsoft.com/fwlink/p/?LinkId=235057). Balíček obsahuje také soubor readme, který poskytuje pokyny o tom, jak použít nástroje a základní informace o odstraňování potíží pro nástroj.
+Microsoft Azure BizTalk Services také poskytuje **migrace dat TPM** nástroj pro migraci obchodních partnerů a smluv z modulu BizTalk Server Trading Partner k portálu BizTalk Services. Nástroj pro migraci dat čip TPM je k dispozici jako součást balíčku nástrojů, který si můžete stáhnout z [MABS SDK](https://go.microsoft.com/fwlink/p/?LinkId=235057). Balíček obsahuje také soubor readme, který poskytuje pokyny o tom, jak použít nástroje a základní informace o odstraňování potíží pro nástroj.
 
 ## <a name="schemas"></a>Schémata
-BizTalk Services zajišťují funkce schémat EDI, které je možné použít v řešeních služby BizTalk Services.  Navíc schémat EDI z BizTalk serveru můžete také použít s BizTalk Services protože kořenový uzel schémat EDI je stejná napříč BizTalk serveru a BizTalk Services. Proto bude možné přímo využít vaše schémat EDI z BizTalk serveru a používat je v řešení EDI, které vyvíjíte pomocí BizTalk Services. Můžete si také stáhnout schémata z [MABS SDK](http://go.microsoft.com/fwlink/p/?LinkId=235057).
+BizTalk Services zajišťují funkce schémat EDI, které je možné použít v řešeních služby BizTalk Services.  Navíc schémat EDI z BizTalk serveru můžete také použít s BizTalk Services protože kořenový uzel schémat EDI je stejná napříč BizTalk serveru a BizTalk Services. Proto bude možné přímo využít vaše schémat EDI z BizTalk serveru a používat je v řešení EDI, které vyvíjíte pomocí BizTalk Services. Můžete si také stáhnout schémata z [MABS SDK](https://go.microsoft.com/fwlink/p/?LinkId=235057).
 
 ## <a name="maps-transforms"></a>Maps (transformace)
 Mapování v BizTalk serveru se nazývají transformací v BizTalk Services. Migrace map z BizTalk serveru do BizTalk Services můžou mít jednu z složitější úlohy k dosažení (v závislosti na složitosti mapy). Mapování nástroj používaný pro služby BizTalk Services se liší od Mapovač BizTalk. I v případě, Mapovač vypadá převážně stejně, se liší základní formát mapování. Functoids (volá **mapy Operations** v BizTalk Services) k dispozici pro uživatele se také liší.  V důsledku toho nelze použít přímo BizTalk map ve službě BizTalk Services. Také ne všechny functoids dostupné v BizTalk serveru jsou k dispozici jako operace map ve službě BizTalk Services.
@@ -93,23 +93,23 @@ Další příklad nové funkce transformuje BizTalk Services jsou **smyčky oper
 Dalším příkladem je, ale **If-Then-Else** operaci mapování výrazů.  If-then-else operace to bylo možné v mapování BizTalk, ale vyžaduje více functoids či provést určitý úkol zdánlivě jednoduché.
 
 ### <a name="migrating-biztalk-server-maps"></a>Mapování migrace BizTalk serveru
-Microsoft Azure BizTalk Services zajišťují, že nástroj pro migraci BizTalk serveru se mapuje na transformace BizTalk Services. **BTMMigrationTool** je k dispozici jako součást **nástroje** balíčku, opatřeného [stáhnout sadu SDK pro BizTalk Services](http://go.microsoft.com/fwlink/p/?LinkId=235057). Další informace o tomto nástroji naleznete v tématu [převést BizTalk mapy pro transformaci BizTalk Services](https://msdn.microsoft.com/library/windowsazure/hh949812.aspx).
+Microsoft Azure BizTalk Services zajišťují, že nástroj pro migraci BizTalk serveru se mapuje na transformace BizTalk Services. **BTMMigrationTool** je k dispozici jako součást **nástroje** balíčku, opatřeného [stáhnout sadu SDK pro BizTalk Services](https://go.microsoft.com/fwlink/p/?LinkId=235057). Další informace o tomto nástroji naleznete v tématu [převést BizTalk mapy pro transformaci BizTalk Services](https://msdn.microsoft.com/library/windowsazure/hh949812.aspx).
 
-Můžete se také podívat na ukázku Sandro Pereira, MVP pro BizTalk, o tom, jak [migrace mapy BizTalk serveru do BizTalk Services transformace](http://social.technet.microsoft.com/wiki/contents/articles/23220.migrating-biztalk-server-maps-to-windows-azure-biztalk-services-wabs-maps.aspx).
+Můžete se také podívat na ukázku Sandro Pereira, MVP pro BizTalk, o tom, jak [migrace mapy BizTalk serveru do BizTalk Services transformace](https://social.technet.microsoft.com/wiki/contents/articles/23220.migrating-biztalk-server-maps-to-windows-azure-biztalk-services-wabs-maps.aspx).
 
 ## <a name="orchestrations"></a>Orchestrace
 Pokud je potřeba migrovat BizTalk Server Orchestrace zpracování do Microsoft Azure, Orchestrace bude nutné, aby se povolilo, protože Microsoft Azure nepodporuje spuštěné Orchestrace BizTalk serveru.  Může přepsat funkci Orchestrace ve službě Windows Workflow Foundation 4.0 (WF4).  To může být kompletní revize, protože není aktuálně žádné migrace z Orchestrace BizTalk serveru do WF4. Tady jsou některé prostředky pracovního postupu Windows:
 
 * [*Postup při integraci služby pracovního postupu WCF pomocí front Service Bus a témat* ](https://blogs.msdn.microsoft.com/paolos/2013/04/09/how-to-integrate-a-wcf-workflow-service-with-service-bus-queues-and-topics/) podle Paolo Salvatori. 
-* [*Vytváření aplikací pomocí Windows Workflow Foundation a Azure* relace](http://go.microsoft.com/fwlink/p/?LinkId=237314) z konference Build 2011.
-* [*Středisko pro vývojáře aplikace Windows Workflow Foundation* ](http://go.microsoft.com/fwlink/p/?LinkId=237315) na webové stránce MSDN.
+* [*Vytváření aplikací pomocí Windows Workflow Foundation a Azure* relace](https://go.microsoft.com/fwlink/p/?LinkId=237314) z konference Build 2011.
+* [*Středisko pro vývojáře aplikace Windows Workflow Foundation* ](https://go.microsoft.com/fwlink/p/?LinkId=237315) na webové stránce MSDN.
 * [*Dokumentaci k Windows Workflow Foundation 4 (WF4)* ](https://msdn.microsoft.com/library/dd489441.aspx) na webové stránce MSDN.
 
 ## <a name="other-considerations"></a>Další důležité informace
 Následuje několik důležitých informací, které je nutné provést při používání služby BizTalk Services.
 
 ### <a name="fallback-agreements"></a>Použití náhradní lokality smlouvy
-Zpracování EDI z BizTalk serveru nemá koncept "Záložní smlouvy".  BizTalk Services nemá **není** zatím jste koncept smlouvu pro použití náhradní lokality.  Najdete v tématech dokumentace ke službě BizTalk [ze smluv roli při zpracování EDI](http://go.microsoft.com/fwlink/p/?LinkId=237317) a [Konfigurace globálních nebo vlastnosti smlouvy záložní](https://msdn.microsoft.com/library/bb245981.aspx) informace o používání záložního smluv v BizTalk Server.
+Zpracování EDI z BizTalk serveru nemá koncept "Záložní smlouvy".  BizTalk Services nemá **není** zatím jste koncept smlouvu pro použití náhradní lokality.  Najdete v tématech dokumentace ke službě BizTalk [ze smluv roli při zpracování EDI](https://go.microsoft.com/fwlink/p/?LinkId=237317) a [Konfigurace globálních nebo vlastnosti smlouvy záložní](https://msdn.microsoft.com/library/bb245981.aspx) informace o používání záložního smluv v BizTalk Server.
 
 ### <a name="routing-to-multiple-destinations"></a>Směrování do více cílů
 Mosty BizTalk Services v jejím aktuálním stavu nepodporuje směrování zpráv do více cílů pomocí publikování-odběru modelu. Místo toho může směrovat zprávy z most BizTalk Services do tématu Service Bus, které pak může obsahovat víc předplatných pro příjem zprávy na víc než jednom koncovém bodě.

@@ -5,17 +5,17 @@ services: application-insights
 keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 10/15/2018
+ms.date: 10/29/2018
 ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: f4de10c29364ab96f54e5d07e9c416a2beb038f6
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 8e764bfc4481343a1e1fb710df7d09f7a38f4f78
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49380164"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50420349"
 ---
 # <a name="start-monitoring-your-website"></a>Zahájení monitorování webu
 
@@ -74,7 +74,7 @@ Application Insights může shromažďovat telemetrická data ze všech aplikac�
 
 1. Vyberte **Přehled** > **Základy** a zkopírujte **instrumentační klíč** vaší aplikace.
 
-   ![Formulář Nový prostředek App Insights](./media/app-insights-nodejs-quick-start/instrumentation-key-001.png)
+   ![Formulář Nový prostředek App Insights](media/app-insights-website-monitoring/instrumentation-key-001.png)
 
 2. Do souboru ``hello_world.html`` přidejte před ukončovací značku ``</head>`` následující skript:
 
@@ -98,7 +98,7 @@ Application Insights může shromažďovat telemetrická data ze všech aplikac�
 
 1. Teď můžete znovu otevřít stránku **Přehled** služby Application Insights na webu Azure Portal, kde jste získali svůj instrumentační klíč, a zobrazit podrobné informace o aktuálně spuštěné aplikaci. Čtyři výchozí grafy na stránce Přehled mají nastavený obor na data aplikace na straně serveru. Vzhledem k tomu, že instrumentujeme interakce se sadou JavaScript SDK na straně klienta nebo prohlížeče, toto konkrétní zobrazení nás nezajímá, pokud nemáme nainstalovanou také sadu SDK na straně serveru.
 
-2. Klikněte na ![ikonu Mapa aplikace](./media/app-insights-nodejs-quick-start/006.png) **Analýza**.  Otevře se okno **Analýza** s bohatým dotazovacím jazykem pro analýzu všech dat shromážděných službou Application Insights. Pokud chcete zobrazit data související s požadavky prohlížeče na straně klienta, spusťte následující dotaz:
+2. Klikněte na ![ikonu Mapa aplikace](media/app-insights-website-monitoring/006.png) **Analýza**.  Otevře se okno **Analýza** s bohatým dotazovacím jazykem pro analýzu všech dat shromážděných službou Application Insights. Pokud chcete zobrazit data související s požadavky prohlížeče na straně klienta, spusťte následující dotaz:
 
     ```kusto
     // average pageView duration by name

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: 02db6b4691beb4bfefa3815c87cf54f350219d81
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 62e15b5845ed9faa605f978f0d2fd427c9c3ee9b
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50418003"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51008177"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---architecture-best-practices"></a>Migrace místních Apache Hadoop clusterů Azure HDInsight – osvědčené postupy architektury
 
@@ -113,7 +113,7 @@ Některé osvědčené postupy metastore Hive v HDInsight jsou následující:
 - Zvažte nahrazení impala dotazy s funkcí LLAP dotazy.
 - Zvažte nahrazení úlohy mapreduce je možné s Sparkových úloh.
 - Zvažte nahrazení použití strukturovaného streamování Sparku úloh s nízkou latencí Spark dávkových úloh.
-- Zvažte použití pro Orchestrace dat pomocí Azure Data Factory (ADF) 2.0.
+- Vezměte v úvahu pro Orchestrace dat pomocí Azure Data Factory (ADF) 2.0.
 - Vezměte v úvahu Ambari za správu clusteru.
 - Změna úložiště dat z místní HDFS WASB nebo ADLS nebo služby AD FS pro zpracování skripty.
 - Zvažte použití Ranger RBAC u tabulek Hive a auditování.

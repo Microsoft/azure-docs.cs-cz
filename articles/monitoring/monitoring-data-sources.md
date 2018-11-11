@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/15/2018
 ms.author: bwren
-ms.openlocfilehash: bddef08c6a3de15c1c156b4dc020d758b7cd0fc1
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
-ms.translationtype: MT
+ms.openlocfilehash: 4a5f820c9e6d39c65ef0942091b247c5d52fe17f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50912930"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51253206"
 ---
 # <a name="sources-of-data-in-azure-monitor"></a>Zdroje dat ve službě Azure Monitor
 Tento článek popisuje zdroje dat shromážděných službou Azure Monitor k monitorování stavu a výkonu svých prostředků a aplikace běžící na ně. Tyto prostředky může být v Azure, v jiném cloudu nebo lokálně.  Zobrazit [Data shromážděná službou Azure Monitor](monitoring-data-collection.md) podrobnosti o tom, jak tato data uložená a jak ji zobrazit.
@@ -66,7 +66,7 @@ Poskytuje informace o operace prováděné s prostředky Azure zdrojem pro úrov
 Nelze přímo zobrazit diagnostické protokoly na webu Azure Portal, ale můžete [odeslání do úložiště Azure pro archivaci](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md) a exportovat je do [centra událostí](../event-hubs/event-hubs-what-is-event-hubs.md) pro přesměrování do dalších služeb nebo [do protokolu Analytics](../monitoring-and-diagnostics/monitor-stream-diagnostic-logs-log-analytics.md) pro analýzu. Některé prostředky dokáže zapisovat přímo do Log Analytics, zatímco ostatní teprve pak ji bude zapisovat do účtu úložiště [importovat do Log Analytics](../log-analytics/log-analytics-azure-storage-iis-table.md#use-the-azure-portal-to-collect-logs-from-azure-storage).
 
 ### <a name="monitoring-solutions"></a>Řešení monitorování
- [Řešení monitorování](monitoring-solutions.md) shromažďování dat k poskytování dalších přehledů o fungování nějaká konkrétní služba nebo aplikace. Shromažďovat data do Log Analytics, kde mohou být analyzovány pomocí [dotazovací jazyk](../log-analytics/log-analytics-log-search.md) nebo [zobrazení](../log-analytics/log-analytics-view-designer.md) , které jsou typicky zahrnuty v řešení.
+ [Řešení monitorování](monitoring-solutions.md) shromažďování dat k poskytování dalších přehledů o fungování nějaká konkrétní služba nebo aplikace. Shromažďovat data do Log Analytics, kde mohou být analyzovány pomocí [dotazovací jazyk](../log-analytics/log-analytics-queries.md) nebo [zobrazení](../log-analytics/log-analytics-view-designer.md) , které jsou typicky zahrnuty v řešení.
 
 ## <a name="guest-operating-system"></a>Hostovaný operační systém
 Výpočetní prostředky v Azure, v ostatních cloudech a v místním mít hostovaný operační systém pro monitorování. Při instalaci jedné nebo více agentů může shromažďovat telemetrická data z hosta do stejné nástroje pro sledování jako samotné služby Azure.

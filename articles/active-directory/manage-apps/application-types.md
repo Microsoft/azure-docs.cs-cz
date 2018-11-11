@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: barbkess
-ms.openlocfilehash: 754a06cc8bb9cc6e660e2ac5f01ef2c40176eb05
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: f483be5866715ddf253daefb197ae3dd87e02d99
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44356460"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51249094"
 ---
 # <a name="unexpected-application-in-my-applications-list"></a>V seznamu aplikací neočekávaná aplikace
 
@@ -59,13 +59,13 @@ Při filtrování do **všechny aplikace**, **všechny aplikace** **seznamu** uk
 
 2.  Při registraci nebo přihlášení k 3<sup>VP</sup> stran aplikace integrované s Azure Active Directory. Jedním z příkladů je [Smartsheet](https://app.smartsheet.com/b/home) nebo [DocuSign](https://www.docusign.net/member/MemberLogin.aspx).
 
-3.  Při registraci nebo přidání licence pro uživatele nebo skupiny k první aplikaci stran, jako jsou [Microsoft Office 365](http://products.office.com/)
+3.  Při registraci nebo přidání licence pro uživatele nebo skupiny k první aplikaci stran, jako jsou [Microsoft Office 365](https://products.office.com/)
 
 4.  Když přidáte tak, že vytvoříte vlastní aplikaci pomocí registrace nové aplikace [registru aplikace](https://docs.microsoft.com/azure/active-directory/active-directory-app-registration)
 
 5.  Když přidáte tak, že vytvoříte vlastní aplikaci pomocí registrace nové aplikace [portál pro registraci aplikace V2.0](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-app-registration#visit-the-microsoft-app-registration-portal)
 
-6.  Pokud jste přidali aplikaci vyvíjíte pomocí sady Visual Studio [metody ověřování ASP.net](http://www.asp.net/visual-studio/overview/2013/creating-web-projects-in-visual-studio#orgauthoptions) nebo [připojené služby](http://blogs.msdn.com/b/visualstudio/archive/2014/11/19/connecting-to-cloud-services.aspx)
+6.  Pokud jste přidali aplikaci vyvíjíte pomocí sady Visual Studio [metody ověřování ASP.net](http://www.asp.net/visual-studio/overview/2013/creating-web-projects-in-visual-studio#orgauthoptions) nebo [připojené služby](https://blogs.msdn.com/b/visualstudio/archive/2014/11/19/connecting-to-cloud-services.aspx)
 
 7.  Když vytvoříte instanční objekt služby pomocí [modulu Azure AD PowerShell](/powershell/azure/install-adv2?view=azureadps-2.0)
 

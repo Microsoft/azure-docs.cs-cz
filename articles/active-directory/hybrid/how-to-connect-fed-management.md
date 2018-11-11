@@ -17,12 +17,12 @@ ms.date: 07/18/2017
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 5a36c239e296d6f393c49932f1a369d8aae80b83
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: a9a7848069300d5f52d16585a55313643e02bc72
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46311105"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51244453"
 ---
 # <a name="manage-and-customize-active-directory-federation-services-by-using-azure-ad-connect"></a>Správa a přizpůsobení služby AD FS pomocí služby Azure AD Connect
 Tento článek popisuje, jak spravovat a upravovat Active Directory Federation Services (AD FS) pomocí služby Azure Active Directory (Azure AD) Connect. Zahrnuje také dalších běžných úkolů služby AD FS, které možná bude potřeba provést kompletní konfiguraci farmy služby AD FS.
@@ -81,7 +81,7 @@ Konfigurace alternativního přihlašovacího ID pro službu AD FS zahrnuje dva 
 
     ![Upozornění na chybějící znalostní BÁZE na 2012 R2](./media/how-to-connect-fed-management/kbwarning.png)
 
-    Kvůli opravě konfigurace v případě chybějících KB, instalaci požadovaných [KB2919355](http://go.microsoft.com/fwlink/?LinkID=396590) a potom opravit pomocí vztahu důvěryhodnosti [opravit AAD a vztah důvěryhodnosti služby AD FS](#repairthetrust).
+    Kvůli opravě konfigurace v případě chybějících KB, instalaci požadovaných [KB2919355](https://go.microsoft.com/fwlink/?LinkID=396590) a potom opravit pomocí vztahu důvěryhodnosti [opravit AAD a vztah důvěryhodnosti služby AD FS](#repairthetrust).
 
 > [!NOTE]
 > Další informace o alternateID a postup, jak ručně nakonfigurovat, najdete v článku [konfigurace alternativního přihlašovacího ID](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/operations/configuring-alternate-login-id)
@@ -171,7 +171,7 @@ Je snadné přidání domény k federaci s Azure AD pomocí služby Azure AD Con
 
 4. Na další stránce průvodce obsahuje seznam domén Azure AD, které může provést federaci s vaší místní adresář. Zvolte doménu, ze seznamu.
 
-   ![Doména služby Azure AD](./media/how-to-connect-fed-management/AdditionalDomain4.PNG)
+   ![Doména Azure AD](./media/how-to-connect-fed-management/AdditionalDomain4.PNG)
 
     Až zvolíte, domény, Průvodce vám poskytne příslušné informace o další akce, které průvodce provede a vliv konfiguraci. V některých případech Pokud vyberete domény, který ještě není ověřen ve službě Azure AD, Průvodce poskytuje informace o ověření domény. Zobrazit [přidání vlastního názvu domény do Azure Active Directory](../active-directory-domains-add-azure-portal.md) další podrobnosti.
 

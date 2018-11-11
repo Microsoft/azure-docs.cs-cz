@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: gokuma
-ms.openlocfilehash: faabdb4c2d2e434863a6bed0b2cd85a05c94eab1
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: df9edfee9d8a6a0736a040924bac736cfcb3633c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47395725"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51250913"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Deset věcí, které vám pomůžou na Windows virtuální počítač pro datové vědy
 
@@ -64,9 +64,9 @@ Tady je vypadá vlastní prostředí v sadě Visual Studio.
 
 ![Instalační program PTVS](./media/vm-do-ten-things/PTVSSetup.png)
 
-Zobrazit [dokumentace k PTVS](http://aka.ms/ptvsdocs) najdete další podrobnosti o tom, jak vytvořit prostředí Pythonu.
+Zobrazit [dokumentace k PTVS](https://aka.ms/ptvsdocs) najdete další podrobnosti o tom, jak vytvořit prostředí Pythonu.
 
-Nyní jsou nastavení k vytvoření nového projektu Pythonu. Přejděte do **souboru** -> **nový** -> **projektu** -> **Python** a vyberte typ Aplikace v Pythonu, který vytváříte. Prostředí Pythonu pro aktuální projekt můžete nastavit na požadovanou verzi (Python 2.7 nebo 3.6) kliknutím pravým tlačítkem **prostředí Pythonu**, kde vyberou **přidat nebo odebrat prostředí Pythonu**a pak výběr na požadované prostředí. Další informace o práci s nástroji PTVS v produktu [dokumentaci](http://aka.ms/ptvsdocs).
+Nyní jsou nastavení k vytvoření nového projektu Pythonu. Přejděte do **souboru** -> **nový** -> **projektu** -> **Python** a vyberte typ Aplikace v Pythonu, který vytváříte. Prostředí Pythonu pro aktuální projekt můžete nastavit na požadovanou verzi (Python 2.7 nebo 3.6) kliknutím pravým tlačítkem **prostředí Pythonu**, kde vyberou **přidat nebo odebrat prostředí Pythonu**a pak výběr na požadované prostředí. Další informace o práci s nástroji PTVS v produktu [dokumentaci](https://aka.ms/ptvsdocs).
 
 ## <a name="2-using-a-jupyter-notebook-to-explore-and-model-your-data-with-python-or-r"></a>2. Pomocí poznámkového bloku Jupyter pro zkoumání a modelování dat v Pythonu nebo r.
 Poznámkový blok Jupyter je výkonné prostředí, která poskytuje pro zkoumání a modelování dat založené na prohlížeči "integrované vývojové prostředí". V poznámkovém bloku Jupyter, můžete použít Python 2, Python 3 nebo R (Open Source a Microsoft R serveru).
@@ -806,7 +806,7 @@ Tady jsou kroky na požadavky pro přístup ke službě Azure Cosmos DB z datov�
 
 1. Azure Cosmos DB Python SDK je již nainstalována na datové VĚDY (Spustit ```pip install pydocumentdb --upgrade``` z příkazového řádku k aktualizaci)
 2. Vytvoření účtu služby Azure Cosmos DB a databázi z [webu Azure portal](https://portal.azure.com)
-3. Stahování "Nástroj pro migraci Azure Cosmos DB" [tady](http://www.microsoft.com/downloads/details.aspx?FamilyID=cda7703a-2774-4c07-adcc-ad02ddc1a44d) a extrahování na adresář podle vašeho výběru
+3. Stahování "Nástroj pro migraci Azure Cosmos DB" [tady](https://www.microsoft.com/downloads/details.aspx?FamilyID=cda7703a-2774-4c07-adcc-ad02ddc1a44d) a extrahování na adresář podle vašeho výběru
 4. Import dat JSON (sopka data) uložených v [veřejných objektů blob](https://cahandson.blob.core.windows.net/samples/volcano.json) do služby Cosmos DB pomocí následujících parametrů příkazu pro nástroj pro migraci (dtui.exe z adresáře, kam jste nainstalovali nástroj pro migraci Cosmos DB). Zadejte umístění zdrojové a cílové s těmito parametry:
    
     `/s:JsonFile /s.Files:https://cahandson.blob.core.windows.net/samples/volcano.json /t:DocumentDBBulk /t.ConnectionString:AccountEndpoint=https://[DocDBAccountName].documents.azure.com:443/;AccountKey=[[KEY];Database=volcano /t.Collection:volcano1`

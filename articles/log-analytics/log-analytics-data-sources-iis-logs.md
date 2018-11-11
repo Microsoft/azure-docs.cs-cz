@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: bwren
 ms.comopnent: ''
-ms.openlocfilehash: 6670b6648a0f38879b57b05cb3c6c6e15ca832b4
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 52d81e4f4070d8d8e13497ad39d5adf1b99470de
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50958215"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51007735"
 ---
 # <a name="iis-logs-in-log-analytics"></a>Ukládání do protokolů IIS ve službě Log Analytics
 Internetové informační služby (IIS) ukládá aktivity uživatelů v souborech protokolů, které můžete shromážděná službou Log Analytics.  
@@ -80,5 +80,5 @@ Následující tabulka obsahuje příklady různých dotazů na protokoly, kter�
 
 ## <a name="next-steps"></a>Další postup
 * Konfigurace Log Analytics ke shromažďování dalších [zdroje dat](log-analytics-data-sources.md) pro analýzu.
-* Další informace o [prohledávání protokolů](log-analytics-log-search.md) analyzovat data shromážděná ze zdrojů dat a jejich řešení.
+* Další informace o [prohledávání protokolů](log-analytics-queries.md) analyzovat data shromážděná ze zdrojů dat a jejich řešení.
 * Konfigurace upozornění v Log Analytics můžete zajistit aktivní upozorňování důležité podmínek najít v protokolech služby IIS.

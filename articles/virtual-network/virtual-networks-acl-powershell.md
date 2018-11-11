@@ -1,6 +1,6 @@
 ---
-title: Správa seznamů řízení přístupu koncového bodu Azure | Prostředí PowerShell | Classic | Microsoft Docs
-description: Naučte se spravovat seznamy ACL v prostředí PowerShell
+title: Spravovat seznamy řízení přístupu koncový bod Azure | Prostředí PowerShell | Classic | Dokumentace Microsoftu
+description: Zjistěte, jak spravovat seznamy řízení přístupu pomocí Powershellu
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -14,41 +14,41 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: jdial
-ms.openlocfilehash: c3476908447380ccd7e8b9c0f1c2a55ae763cc1e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1fce5b98d9e12ad373a4ca9d851fb717b3f47045
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23928850"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51250352"
 ---
-# <a name="manage-endpoint-access-control-lists-using-powershell-in-the-classic-deployment-model"></a>Správa seznamů řízení přístupu koncový bod pomocí prostředí PowerShell v modelu nasazení classic
-Můžete vytvořit a spravovat sítě seznamy řízení přístupu (ACL) pro koncové body pomocí prostředí Azure PowerShell nebo na portálu Management Portal. V tomto tématu najdete postupy pro seznam ACL běžné úkoly, které můžete dokončit pomocí prostředí PowerShell. Seznam prostředí Azure PowerShell rutin najdete v části [rutiny pro správu Azure](http://go.microsoft.com/fwlink/?LinkId=317721). Další informace o seznamy řízení přístupu najdete v tématu [co je seznamu pro řízení přístupu sítě (ACL)?](virtual-networks-acl.md). Pokud chcete spravovat vaše seznamy ACL pomocí portálu pro správu, najdete v části [jak nastavit koncové body k virtuálnímu počítači](../virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
+# <a name="manage-endpoint-access-control-lists-using-powershell-in-the-classic-deployment-model"></a>Spravovat seznamy řízení přístupu koncový bod pomocí prostředí PowerShell v modelu nasazení classic
+Můžete vytvořit a spravovat síť seznamů řízení přístupu (ACL) pro koncové body pomocí prostředí Azure PowerShell nebo portálu pro správu. V tomto tématu najdete postupy pro seznam ACL běžné úkoly, které můžete absolvovat s použitím prostředí PowerShell. Seznam prostředí Azure PowerShell rutin najdete v části [rutiny pro správu Azure](https://go.microsoft.com/fwlink/?LinkId=317721). Další informace týkající se seznamů ACL, naleznete v tématu [co je seznamu pro řízení přístupu sítě (ACL)?](virtual-networks-acl.md). Pokud chcete spravovat vaše seznamy řízení přístupu pomocí portálu pro správu, najdete v článku [jak nastavit koncové body k virtuálnímu počítači](../virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 
-## <a name="manage-network-acls-by-using-azure-powershell"></a>Spravovat seznamy ACL sítě pomocí prostředí Azure PowerShell
-Můžete použít rutiny prostředí Azure PowerShell k vytváření, odebrat a konfigurovat (set) sítě seznamy řízení přístupu (ACL). Jsme zahrnuli několik příkladů způsoby, kterými můžete nakonfigurovat seznam ACL pomocí prostředí PowerShell.
+## <a name="manage-network-acls-by-using-azure-powershell"></a>Správa seznamů ACL sítě pomocí Azure Powershellu
+Rutiny prostředí Azure PowerShell můžete použít k vytvoření, odebírat a konfigurovat (set) sítě seznamů řízení přístupu (ACL). Přidali jsme několik uvedené příklady některých možností konfigurace seznamu ACL portu pomocí Powershellu.
 
-Načtení úplný seznam rutin prostředí PowerShell seznamu ACL, můžete použít jednu z těchto věcí:
+Pokud chcete načíst úplný seznam rutin Powershellu pro seznam ACL, můžete použít jednu z těchto:
 
     Get-Help *AzureACL*
     Get-Command -Noun AzureACLConfig
 
-### <a name="create-a-network-acl-with-rules-that-permit-access-from-a-remote-subnet"></a>Vytvoření seznamu ACL sítě pomocí pravidel, které umožňují přístup ze vzdálené podsíti
-Následující příklad ukazuje způsob, jak vytvořit nový seznamu ACL, který obsahuje pravidla. Tento seznam ACL se pak použije pro koncový bod virtuálního počítače. Pravidla seznamu ACL v následujícím příkladu povolí přístup ze vzdálené podsíti. Chcete-li vytvořit nové sítě ACL s povolení pravidla pro vzdálené podsíti, otevřete Azure PowerShell ISE. Zkopírujte a vložte níže, konfigurace skriptu s vlastními hodnotami skript a spusťte skript.
+### <a name="create-a-network-acl-with-rules-that-permit-access-from-a-remote-subnet"></a>Vytvoření seznamu ACL sítě s pravidly, které umožňují přístup ze vzdálené podsítě
+Následující příklad ukazuje způsob, jak vytvořit nový seznam ACL, který obsahuje pravidla. Tento seznam ACL se následně použije na koncový bod virtuálního počítače. Pravidla seznamu ACL v následujícím příkladu vám umožní přístup ze vzdálené podsítě. K vytvoření nového seznamu ACL sítě s pravidly povolení pro vzdálené podsítě, otevřete prostředí PowerShell ISE Azure. Zkopírovat a Vložit skript níže, konfigurace skriptu s vlastními hodnotami a potom spusťte skript.
 
 1. Vytvořte nový objekt seznamu ACL sítě.
    
         $acl1 = New-AzureAclConfig
-2. Nastavte pravidlo, která umožňuje přístup ze vzdálené podsíti. V následujícím příkladu můžete nastavit pravidlo *100* (která má přednost před pravidlo 200 a vyšší) umožňující vzdálené podsíti *10.0.0.0/8* přístup k koncový bod virtuálního počítače. Nahraďte hodnoty vlastními požadavky na konfiguraci. Název "Konfigurace služby SharePoint ACL" by měl být nahrazen popisný název, který chcete volat toto pravidlo.
+2. Nastavte pravidlo, které povoluje přístup ze vzdálené podsítě. V následujícím příkladu nastavíte pravidlo *100* (který má přednost před pravidlo 200 a vyšší) umožňující vzdálené podsítě *10.0.0.0/8* přístup ke koncovému bodu virtuálního počítače. Hodnoty nahraďte vlastními požadavky na konfiguraci. Název "Konfigurace seznamu ACL SharePoint" by měl být nahrazen popisný název, který chcete volat toto pravidlo.
    
         Set-AzureAclConfig –AddRule –ACL $acl1 –Order 100 `
             –Action permit –RemoteSubnet "10.0.0.0/8" `
             –Description "SharePoint ACL config"
-3. Pro další pravidla opakujte rutinu a nahraďte hodnoty s vlastní požadavky na konfiguraci. Nezapomeňte změnit pravidlo číslo pořadí tak, aby odrážela pořadí, ve kterém chcete pravidla, která má být použita. Nižší číslo pravidla mají přednost před vyšší číslo.
+3. Další pravidla opakujte rutinu a nahraďte hodnoty vlastními splnit požadavky na konfiguraci. Nezapomeňte změnit pravidla číslo pořadí tak, aby odrážely pořadí, ve kterém chcete pravidla použít. Nižší číslo pravidla má přednost před vyšší číslo.
    
         Set-AzureAclConfig –AddRule –ACL $acl1 –Order 200 `
             –Action permit –RemoteSubnet "157.0.0.0/8" `
             –Description "web frontend ACL config"
-4. Dále můžete buď vytvořit nový koncový bod (Přidat) nebo nastavit seznam řízení přístupu pro existující koncový bod (Set). V tomto příkladu jsme přidáte nový koncový bod virtuálního počítače názvem "web" a aktualizovat koncový bod virtuálního počítače s nastavením seznamu ACL.
+4. V dalším kroku můžete buď vytvořit nový koncový bod (Přidat) nebo nastavení seznamu ACL pro existující koncový bod (Set). V tomto příkladu jsme přidáte nový koncový bod virtuálního počítače nazývá "web" a aktualizujte nastavení seznamu ACL koncového bodu virtuálního počítače.
    
         Get-AzureVM –ServiceName $serviceName –Name $vmName `
         | Add-AzureEndpoint –Name "web" –Protocol tcp –Localport 80 - PublicPort 80 –ACL $acl1 `
@@ -66,27 +66,27 @@ Následující příklad ukazuje způsob, jak vytvořit nový seznamu ACL, kter�
         |Add-AzureEndpoint –Name "web" –Protocol tcp –Localport 80 - PublicPort 80 –ACL $acl1 `
         |Update-AzureVM
 
-### <a name="remove-a-network-acl-rule-that-permits-access-from-a-remote-subnet"></a>Odebrat pravidlo seznamu ACL sítě, která umožňuje přístup ze vzdálené podsíti
-Následující příklad ukazuje způsob, jak odebrat pravidlo seznamu ACL sítě.  Chcete-li odebrat pravidlo seznamu ACL sítě s povolení pravidla pro vzdálené podsíti, otevřete Azure PowerShell ISE. Zkopírujte a vložte níže, konfigurace skriptu s vlastními hodnotami skript a spusťte skript.
+### <a name="remove-a-network-acl-rule-that-permits-access-from-a-remote-subnet"></a>Odebrat pravidlo seznamu ACL sítě, které povoluje přístup ze vzdálené podsítě
+Následující příklad ukazuje způsob, jak odebrat pravidlo seznamu ACL sítě.  Odebrat pravidlo seznamu ACL sítě s pravidly povolení pro vzdálené podsítě, otevřete prostředí PowerShell ISE Azure. Zkopírovat a Vložit skript níže, konfigurace skriptu s vlastními hodnotami a potom spusťte skript.
 
-1. Prvním krokem je GET pro objekt sítě ACL pro koncový bod virtuálního počítače. Budete pak odeberte pravidlo seznamu ACL. V takovém případě jsme se odebrat ji podle ID pravidla. ID pravidla 0 tato akce odebere pouze ze seznamu ACL. Objekt seznamu ACL nejsou odebrány z koncový bod virtuálního počítače.
+1. Prvním krokem je získání objektu sítě ACL pro koncový bod virtuálního počítače. Budete pak odebrat pravidlo seznamu ACL. V takovém případě odstraníme ho pomocí ID pravidla. Tato akce pouze odebere pravidlo ID 0 ze seznamu ACL. Seznam ACL objektu nejsou odebrány z koncového bodu virtuálního počítače.
    
         Get-AzureVM –ServiceName $serviceName –Name $vmName `
         | Get-AzureAclConfig –EndpointName "web" `
         | Set-AzureAclConfig –RemoveRule –ID 0 –ACL $acl1
-2. Dále musíte použít objekt sítě ACL pro koncový bod virtuálního počítače a aktualizovat virtuální počítač.
+2. V dalším kroku je nutné použít objekt sítě ACL pro koncový bod virtuálního počítače a aktualizovat virtuální počítač.
    
         Get-AzureVM –ServiceName $serviceName –Name $vmName `
         | Set-AzureEndpoint –ACL $acl1 –Name "web" `
         | Update-AzureVM
 
-### <a name="remove-a-network-acl-from-a-virtual-machine-endpoint"></a>Odeberte seznam ACL sítě z koncový bod virtuálního počítače
-V některých případech můžete chtít odebrat objekt seznamu ACL sítě z koncový bod virtuálního počítače. K tomu, otevřete PowerShell ISE Azure. Zkopírujte a vložte níže, konfigurace skriptu s vlastními hodnotami skript a spusťte skript.
+### <a name="remove-a-network-acl-from-a-virtual-machine-endpoint"></a>Odebrání seznamu ACL sítě z koncového bodu virtuálního počítače
+V některých případech můžete chtít odebrat objekt seznamu ACL sítě z koncového bodu virtuálního počítače. Chcete-li to mohli udělat, otevřete ISE Powershellu Azure. Zkopírovat a Vložit skript níže, konfigurace skriptu s vlastními hodnotami a potom spusťte skript.
 
         Get-AzureVM –ServiceName $serviceName –Name $vmName `
         | Remove-AzureAclConfig –EndpointName "web" `
         | Update-AzureVM
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 [Co je seznamu pro řízení přístupu sítě (ACL)?](virtual-networks-acl.md)
 

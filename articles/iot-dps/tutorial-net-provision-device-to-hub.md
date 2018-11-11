@@ -10,12 +10,12 @@ services: iot-dps
 manager: timlt
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: 84072c7e5f7aa37e89fc1b93c1585167dd6d9f4b
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 8602f020481249282756a952a46b32bd9e768372
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "41920987"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50241315"
 ---
 # <a name="enroll-the-device-to-an-iot-hub-using-the-azure-iot-hub-provisioning-service-client-net"></a>Registrace zařízení do centra IoT pomocí klienta služby Azure IoT Hub Device Provisioning (.NET)
 
@@ -230,7 +230,7 @@ Spusťte aplikaci, aby klientská aplikace mohla zahájit registraci do vaší s
 
 ## <a name="verify-the-device-is-registered"></a>Ověření registrace zařízení
 
-Po spuštění zařízení by se měly provést následující akce. Další podrobnosti najdete v ukázkové aplikaci simulátoru TPM [dps_client_sample](https://github.com/Azure/azure-iot-device-auth/blob/master/dps_client/samples/dps_client_sample/dps_client_sample.c). 
+Po spuštění zařízení by se měly provést následující akce. Další podrobnosti najdete v [ukázce zřizování klienta zařízení](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/provisioning/Samples/device). 
 
 1. Zařízení odešle žádost o registraci do vaší služby Device Provisioning.
 2. Pro zařízení TPM služba Device Provisioning odešle zpět výzvu k registraci, na kterou zařízení zareaguje. 

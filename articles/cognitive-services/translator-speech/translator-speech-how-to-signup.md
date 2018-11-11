@@ -10,12 +10,12 @@ ms.component: translator-speech
 ms.topic: conceptual
 ms.date: 3/5/2018
 ms.author: v-jansko
-ms.openlocfilehash: 3790994c94a1d62d8afb0e2f3b9e6d029ba9ecc1
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 7a70859df572e7de7c10d211ebdd34dd5423df2d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49340388"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51252883"
 ---
 # <a name="how-to-sign-up-for-the-translator-speech-api"></a>Jak se zaregistrovat pro rozhraní Translator Speech API
 
@@ -46,7 +46,7 @@ Postupujte podle těchto kroků k registraci pro rozhraní Translator Speech API
 ## <a name="4-learn-test-and-get-support"></a>4: Přečtěte si, testování a získání podpory
 
 - [Příklady kódu na Githubu](https://github.com/MicrosoftTranslator)
-- [Fórum podpory služby Microsoft Translator](http://www.aka.ms/TranslatorForum)
+- [Fórum podpory služby Microsoft Translator](https://www.aka.ms/TranslatorForum)
 
 ## <a name="pricing-options"></a>Cenové možnosti
 

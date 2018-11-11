@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: johnkem
 ms.component: activitylog
-ms.openlocfilehash: 6743d03b623084675f5043a7e158fa99e8aa39d2
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: ea29d9052c2389b0c7d145223d3660364cbf2c74
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44054001"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51016314"
 ---
 # <a name="archive-the-azure-activity-log"></a>Archivace protokolu aktivit Azure
 V tomto článku vám ukážeme, jak pomocí webu Azure portal, rutin Powershellu nebo CLI pro různé platformy pro archivaci vaše [ **protokolu aktivit Azure** ](monitoring-overview-activity-logs.md) v účtu úložiště. Tato možnost je užitečná, pokud byste chtěli zachovat váš protokol aktivit déle než 90 dnů (s úplnou kontrolou nad zásady uchovávání informací) pro audit, statické analýzy nebo pro zálohování. Pokud potřebujete události uchovávat po 90 dní nebo méně nepotřebujete nastavit archivaci do účtu úložiště, protože události protokolu aktivit se zachovají na platformě Azure po dobu 90 dnů bez povolení archivace.
@@ -35,10 +35,10 @@ Archivace protokolu aktivit některou z níže uvedených metod, že nastavíte 
 ## <a name="archive-the-activity-log-using-the-portal"></a>Archivace protokolu aktivit na portálu
 1. Na portálu klikněte na tlačítko **protokolu aktivit** odkaz v levé navigaci. Pokud nevidíte odkaz pro protokol aktivit, klikněte na tlačítko **všechny služby** nejdřív propojit.
    
-    ![Přejděte do okna protokolu aktivit](media/monitoring-archive-activity-log/act-log-portal-navigate.png)
-2. V horní části okna klikněte na tlačítko **exportovat**.
+    ![Přejděte do okna protokolu aktivit](media/monitoring-archive-activity-log/activity-logs-portal-navigate-v2.png)
+2. V horní části okna klikněte na tlačítko **exportovat do centra událostí**.
    
-    ![Klikněte na tlačítko pro Export](media/monitoring-archive-activity-log/act-log-portal-export-button.png)
+    ![Klikněte na tlačítko pro Export](media/monitoring-archive-activity-log/activity-logs-portal-export-v2.png)
 3. V okně, které se zobrazí, zaškrtněte políčko u **exportovat do účtu úložiště** a vyberte účet úložiště.
    
     ![Nastavit účet úložiště](media/monitoring-archive-activity-log/act-log-portal-export-blade.png)
@@ -82,7 +82,7 @@ Archivace protokolu aktivit některou z níže uvedených metod, že nastavíte 
 | umístění |Ano |Místo oddělený seznam oblastí, pro které chcete shromažďovat události protokolu aktivit. Můžete zobrazit seznam všech oblastí pro vaše předplatné pomocí `az account list-locations --query [].name`. |
 | dny |Ano |Počet dní pro události, které by měla být zachována, od 1 do 2147483647. Hodnota nula bude po neomezenou dobu ukládání protokolů (trvale).  Pokud nula, povolené parametr by měl být nastavte na hodnotu true. |
 |povoleno | Ano |True nebo False.  Umožňuje povolit nebo zakázat zásady uchovávání informací.  Pokud je hodnota True, musí být parametr dní hodnotu větší než 0.
-| Kategorie |Ano |Místo oddělený seznam kategorie událostí, které se mají shromažďovat. Možné hodnoty jsou Write, Delete a akce. |
+| categories |Ano |Místo oddělený seznam kategorie událostí, které se mají shromažďovat. Možné hodnoty jsou Write, Delete a akce. |
 
 ## <a name="storage-schema-of-the-activity-log"></a>Schéma úložiště protokolu aktivit
 Po jste nastavili archivaci, kontejner úložiště se vytvoří v účtu úložiště, jakmile dojde k události protokolu aktivit. Objekty BLOB v kontejneru podle stejné zásady vytváření názvů v protokolech aktivit a diagnostické protokoly, jak je znázorněno zde:

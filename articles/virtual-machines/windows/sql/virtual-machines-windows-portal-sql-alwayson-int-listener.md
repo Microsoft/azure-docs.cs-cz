@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 02/16/2017
 ms.author: mikeray
-ms.openlocfilehash: e87b58ecd72291365f9eba70c807e3018c02ae07
-ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
+ms.openlocfilehash: 5e665cd0bcfdea436c2f493187c5bbea756f8f09
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2018
-ms.locfileid: "43382735"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51248298"
 ---
 # <a name="configure-a-load-balancer-for-an-always-on-availability-group-in-azure"></a>Konfigurace nástroje pro vyrovnávání zatížení pro skupinu dostupnosti AlwaysOn v Azure
 Tento článek vysvětluje, jak vytvořit nástroj pro vyrovnávání zatížení pro skupinu dostupnosti AlwaysOn SQL serveru ve službě Azure virtual machines, které jsou spuštěny pomocí Azure Resource Manageru. Skupině dostupnosti vyžaduje nástroj pro vyrovnávání zatížení, pokud jsou instance systému SQL Server na virtuálních počítačích Azure. Nástroje pro vyrovnávání zatížení ukládá IP adresu pro naslouchací proces skupiny dostupnosti. V případě skupiny dostupnosti pokrývá více oblastí, musí každá oblast nástroj pro vyrovnávání zatížení.
@@ -120,7 +120,7 @@ Sonda definuje, jak Azure ověří, které z instance systému SQL Server aktuá
 4.  Klikněte na **OK**. 
 
 > [!NOTE]
-> Ujistěte se, že je port, který zadáte otevřete v bráně firewall obě instance systému SQL Server. Obě instance vyžaduje příchozí pravidlo pro port TCP, který používáte. Další informace najdete v tématu [přidat nebo upravit pravidlo brány Firewall](http://technet.microsoft.com/library/cc753558.aspx). 
+> Ujistěte se, že je port, který zadáte otevřete v bráně firewall obě instance systému SQL Server. Obě instance vyžaduje příchozí pravidlo pro port TCP, který používáte. Další informace najdete v tématu [přidat nebo upravit pravidlo brány Firewall](https://technet.microsoft.com/library/cc753558.aspx). 
 > 
 > 
 
@@ -144,7 +144,7 @@ Pravidla Vyrovnávání zatížení nakonfigurovat, jak nástroj pro vyrovnává
    | **Test paměti** |Použijte název testu, který jste vytvořili pro tento nástroj pro vyrovnávání zatížení. |
    | **Trvalost relace** |**None** |
    | **Časový limit nečinnosti (minuty)** |*4* |
-   | **Plovoucí IP adresa (přímá odpověď ze serveru vrácené)** |**Povoleno** |
+   | **Plovoucí IP adresa (přímá odpověď ze serveru vrácené)** |**Enabled** (Povoleno) |
 
    > [!NOTE]
    > Budete muset posunout dolů v okně zobrazíte všechna nastavení.
@@ -276,7 +276,7 @@ Po dokončení konfigurace skupiny dostupnosti použijte novou IP adresu nakonfi
 Pokud skupinu dostupnosti se účastní distribuované skupiny dostupnosti, nástroj pro vyrovnávání zatížení potřebuje další pravidla. Toto pravidlo uloží port je používán naslouchacím procesem skupiny dostupnosti v distribuovaných.
 
 >[!IMPORTANT]
->Tento krok platí pouze pokud je součástí skupiny dostupnosti [distribuovanou skupinu dostupnosti](http://docs.microsoft.com/sql/database-engine/availability-groups/windows/configure-distributed-availability-groups). 
+>Tento krok platí pouze pokud je součástí skupiny dostupnosti [distribuovanou skupinu dostupnosti](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/configure-distributed-availability-groups). 
 
 1. Na každém serveru, který se účastní distribuované skupině dostupnosti vytvořte příchozí pravidlo na naslouchací proces skupiny dostupnosti v distribuovaných portu TCP. V mnoha příkladech dokumentace používá 5022. 
 
@@ -289,7 +289,7 @@ Pokud skupinu dostupnosti se účastní distribuované skupiny dostupnosti, nás
    |**Název** |Název pro identifikaci pravidlo Vyrovnávání zatížení pro distribuované skupině dostupnosti. 
    |**Front-endové IP adresy** |Pomocí stejné IP adresy front-endu jako skupiny dostupnosti.
    |**Protokol** |TCP
-   |**Port** |5022 – port [distribuované koncový bod naslouchacího procesu](http://docs.microsoft.com/sql/database-engine/availability-groups/windows/configure-distributed-availability-groups).</br> Může být jakýkoli dostupný port.  
+   |**Port** |5022 – port [distribuované koncový bod naslouchacího procesu](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/configure-distributed-availability-groups).</br> Může být jakýkoli dostupný port.  
    |**Back-endový port** | 5022 – použijte stejnou hodnotu jako **Port**.
    |**Back-endový fond** |Fond, který obsahuje virtuální počítače s instancí serveru SQL Server. 
    |**Sonda stavu** |Zvolte test, který jste vytvořili.

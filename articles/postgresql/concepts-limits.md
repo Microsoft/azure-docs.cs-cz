@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 06/30/2018
-ms.openlocfilehash: 0bd894e99fd575fca734a101a1cde0f0a2979682
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: f24f15134bf189097f20f75ff0b23b72a3e48363
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45983738"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51299602"
 ---
 # <a name="limitations-in-azure-database-for-postgresql"></a>Omezení ve službě Azure Database for PostgreSQL
 Následující části popisují kapacitu a limity funkční ve službě database.
@@ -31,10 +31,10 @@ Maximální počet připojení na cenová úroveň a virtuálními jádry jsou n
 |Obecné použití| 8| 480|
 |Obecné použití| 16| 950|
 |Obecné použití| 32| 1 500|
-|Paměťově optimalizované| 2| 150|
-|Paměťově optimalizované| 4| 250|
-|Paměťově optimalizované| 8| 480|
-|Paměťově optimalizované| 16| 950|
+|Paměťově optimalizované| 2| 300|
+|Paměťově optimalizované| 4| 500|
+|Paměťově optimalizované| 8| 960|
+|Paměťově optimalizované| 16| 1900|
 
 Při připojení překročí limit, může se zobrazit následující chyba:
 > Závažná chyba: je nám líto, už příliš mnoho klientů

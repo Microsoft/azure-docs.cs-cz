@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/28/2018
 ms.author: raynew
-ms.openlocfilehash: 6eb1ee90b22b9e37dcae900cd80f80cb549090e9
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 173a64181c1e8c051c6856fa8353f484540917e7
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50213946"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51249706"
 ---
 # <a name="run-a-disaster-recovery-drill-to-azure"></a>Spuštění postupu zotavení po havárii do Azure 
 
@@ -106,7 +106,7 @@ Pokud chcete připojit k virtuálním počítačům Azure po převzetí služeb 
 **Převzetí služeb při selhání** | **Umístění** | **Akce**
 --- | --- | ---
 **Virtuální počítač Azure s Windows** | V místním počítači před převzetí služeb při selhání | Pro přístup k virtuálnímu počítači Azure přes internet, povolte protokol RDP a ujistěte se, že jsou přidaná pravidla TCP a UDP pro **veřejné**, a že je povolený protokol RDP pro všechny profily ve **brány Windows Firewall**  >  **Povolené aplikace**.<br/><br/> Pro přístup k virtuálnímu počítači Azure přes připojení site-to-site, povolte na počítači protokol RDP a zajistěte, aby byl protokol RDP v **brány Windows Firewall** -> **povolené aplikace a funkce**, pro **Doménovou a privátní** sítě.<br/><br/>  Ujistěte se, že zásada SAN operačního systému nastavená **OnlineAll**. [Další informace](https://support.microsoft.com/kb/3031135).<br/><br/> Ujistěte se, že nejsou žádné čekající aktualizace Windows na virtuálním počítači při aktivaci převzetí služeb při selhání. Windows update může spustit, když se převzetí služeb při selhání, a nebude schopna se přihlásit do virtuálního počítače, dokud se aktualizace nedokončí.
-**Virtuální počítač Azure s Windows** | Virtuální počítač Azure po převzetí služeb při selhání |  [Přidejte veřejnou IP adresu](https://aka.ms/addpublicip) pro tento virtuální počítač.<br/><br/> Pravidla skupiny zabezpečení sítě na převzetí virtuálního počítače (a v podsíti Azure, ke kterému je připojený) musí povolovat příchozí připojení k portu RDP.<br/><br/> Zkontrolujte **Diagnostika spouštění** ověření snímek obrazovky virtuálního počítače.<br/><br/> Pokud se nemůžete připojit, zkontrolujte, zda je virtuální počítač spuštěný a najdete v těchto [tipy pro řešení potíží](http://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx).
+**Virtuální počítač Azure s Windows** | Virtuální počítač Azure po převzetí služeb při selhání |  [Přidejte veřejnou IP adresu](https://aka.ms/addpublicip) pro tento virtuální počítač.<br/><br/> Pravidla skupiny zabezpečení sítě na převzetí virtuálního počítače (a v podsíti Azure, ke kterému je připojený) musí povolovat příchozí připojení k portu RDP.<br/><br/> Zkontrolujte **Diagnostika spouštění** ověření snímek obrazovky virtuálního počítače.<br/><br/> Pokud se nemůžete připojit, zkontrolujte, zda je virtuální počítač spuštěný a najdete v těchto [tipy pro řešení potíží](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx).
 **Virtuální počítač Azure s Linuxem** | V místním počítači před převzetí služeb při selhání | Ujistěte se, že služba Secure Shell na virtuálním počítači je nastavena na automatické spuštění při spuštění systému.<br/><br/> Zkontrolujte, jestli pravidla brány firewall umožňují službě SSH připojit se k ní.
 **Virtuální počítač Azure s Linuxem** | Virtuální počítač Azure po převzetí služeb při selhání | Pravidla skupiny zabezpečení sítě na převzetí virtuálního počítače (a v podsíti Azure, ke kterému je připojený) musí povolovat příchozí připojení k portu SSH.<br/><br/> [Přidejte veřejnou IP adresu](https://aka.ms/addpublicip) pro tento virtuální počítač.<br/><br/> Zkontrolujte **Diagnostika spouštění** pro snímek obrazovky virtuálního počítače.<br/><br/>
 

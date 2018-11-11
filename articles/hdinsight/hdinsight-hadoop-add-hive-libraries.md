@@ -1,24 +1,24 @@
 ---
-title: Přidání knihoven Hivu při vytváření clusteru HDInsight – Azure
-description: Informace o přidání knihoven Hivu (soubory jar) do clusteru během vytváření clusteru HDInsight.
+title: Přidejte knihovny Apache Hive při vytváření clusteru HDInsight – Azure
+description: Zjistěte, jak přidat Apache Hive knihovny (soubory jar) do clusteru během vytváření clusteru HDInsight.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/27/2018
-ms.author: jasonh
+ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 40650c813efc8fe7389b0445c72007dbd97e3ce8
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: f9788c82e74b47d4550640a1069f6d97487eecc6
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43108682"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51035301"
 ---
-# <a name="add-custom-hive-libraries-when-creating-your-hdinsight-cluster"></a>Přidat vlastní knihovny Hive při vytváření clusteru HDInsight
+# <a name="add-custom-apache-hive-libraries-when-creating-your-hdinsight-cluster"></a>Přidat vlastní knihovny Apache Hive při vytváření clusteru HDInsight
 
-Zjistěte, jak přednačíst knihovny Hive v HDInsight. Tento dokument obsahuje informace o použití akce skriptu k předběžné načtení knihovny během vytváření clusteru. Knihovny přidané pomocí kroků v tomto dokumentu jsou globálně k dispozici v podregistru – není nutné používat [přidat JAR](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Cli) je načíst.
+Zjistěte, jak přednačíst knihovny Apache Hive v HDInsight. Tento dokument obsahuje informace o použití akce skriptu k předběžné načtení knihovny během vytváření clusteru. Knihovny přidané pomocí kroků v tomto dokumentu jsou globálně k dispozici v podregistru – není nutné používat [přidat JAR](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Cli) je načíst.
 
 ## <a name="how-it-works"></a>Jak to funguje
 

@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/5/2018
 ms.author: markgal
-ms.openlocfilehash: fd988e2209d8a6547ec30edb4ee62fc8ff2c803d
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 8107af53a78960d29f506c77f8ba9697c7a49d1c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39619951"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51252900"
 ---
 # <a name="back-up-a-windows-server-or-client-to-azure-using-the-resource-manager-deployment-model"></a>Zálohování klienta nebo Windows Serveru do Azure s využitím modelu nasazení Resource Manager
 Tento článek vysvětluje, jak zálohovat Windows Server (nebo klienta Windows) souborů a složek do Azure pomocí Azure Backup pomocí modelu nasazení Resource Manager.
@@ -250,7 +250,7 @@ Po dokončení prvotní zálohy se v konzole Zálohování zobrazí stav **Úloh
 ![Dokončení IR](./media/backup-configure-vault/ircomplete.png)
 
 ## <a name="questions"></a>Máte dotazy?
-Máte-li nějaké dotazy nebo pokud víte o funkci, kterou byste uvítali, [odešlete nám svůj názor](http://aka.ms/azurebackup_feedback).
+Máte-li nějaké dotazy nebo pokud víte o funkci, kterou byste uvítali, [odešlete nám svůj názor](https://aka.ms/azurebackup_feedback).
 
 ## <a name="next-steps"></a>Další postup
 Další informace o zálohování virtuálních počítačů nebo jiné úlohy naleznete v tématu:

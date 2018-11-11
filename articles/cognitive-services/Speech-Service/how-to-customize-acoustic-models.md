@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: tutorial
 ms.date: 06/25/2018
 ms.author: panosper
-ms.openlocfilehash: 81449889ae9218f2b59ea48f10c676dcee9aa8b1
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 70fc9c34599f27eb5d67b79ef823f8037ae55ba9
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49466082"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215238"
 ---
 # <a name="tutorial-create-a-custom-acoustic-model"></a>Kurz: Vytvoření vlastního akustického modelu
 
@@ -53,7 +53,7 @@ Sada akustických dat pro přizpůsobení akustického modelu se skládá ze dvo
 * Všechny zvukové soubory v sadě dat by měly být uložené ve zvukovém formátu WAV (RIFF).
 * Zvuk musí mít vzorkovací frekvenci 8 kHz nebo 16 kHz a vzorkovací hodnoty by měly být uložené jako 16bitová celá čísla se znaménkem (krátká) nekomprimovaného formátu PCM.
 * Podporují se jenom zvukové soubory s jedním kanálem (mono).
-* Délka zvukových souborů musí být v rozmezí od 100 mikrosekund do 1 minuty. V ideálním případě by měl každý zvukový soubor začínat a končit tichem po dobu nejméně 100 mikrosekund, obvyklá doba trvání ticha bývá mezi 500 mikrosekundami a 1 sekundou.
+* Zvukové soubory můžou mít délku 100 mikrosekund až 1 minuta, ale ideálně by měly mít 10 až 12 sekund. V ideálním případě by měl každý zvukový soubor začínat a končit tichem po dobu nejméně 100 mikrosekund, obvyklá doba trvání ticha bývá mezi 500 mikrosekundami a 1 sekundou.
 * Pokud je ve vašich datech šum na pozadí, doporučujeme mít v datech také nějaké ukázky s delšími segmenty ticha &mdash; například několik sekund &mdash; před nebo po mluveném obsahu.
 * Každý zvukový soubor by měl obsahovat jedinou promluvu &mdash; například jednu větu pro diktování, jeden dotaz nebo jeden obrat dialogového systému.
 * Každý zvukový soubor v sadě dat musí mít jedinečný název souboru a příponu .wav.
@@ -69,7 +69,7 @@ Sada akustických dat pro přizpůsobení akustického modelu se skládá ze dvo
 | Vzorkovací frekvence | 8 000 hertzů (Hz) nebo 16 000 Hz |
 | Kanály | 1 (mono) |
 | Vzorkovací formát | PCM, 16bitový celočíselný |
-| Doba trvání souboru | 0,1 sekundy < doba trvání < 60 sekund |
+| Doba trvání souboru | 0,1 sekundy < doba trvání < 12 sekund | 
 | Ticho na začátku a na konci | > 0,1 sekund |
 | Formát archivu | .zip |
 | Maximální velikost archivu | 2 GB |

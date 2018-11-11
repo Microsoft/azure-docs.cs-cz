@@ -10,12 +10,12 @@ ms.component: video-indexer
 ms.topic: overview
 ms.date: 10/10/2018
 ms.author: nolachar
-ms.openlocfilehash: cf761342bb434100920c3888f2f441b9f8c8de08
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 9936cd301cc8dad88ce1a2431f9253a15ab2da7f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49077913"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51251250"
 ---
 # <a name="what-is-video-indexer"></a>Co je Video Indexer?
 
@@ -65,7 +65,7 @@ Dál najdete několik scénářů, ve kterých se Video Indexer může hodit
 
 - Zapojení uživatelů – Video Insights se dá využít k lepšímu zapojení uživatelů díky možnosti předkládání relevantních videookamžiků. Jako příklad si představte vzdělávací video, které prvních 30 minut vysvětluje kulové plochy a dalších 30 minut pyramidy. Studentovi, který si čte o pyramidách, by víc pomohlo, kdyby se video nastavilo tak, aby se spustilo od značky 30 minut.
 
-Další informace najdete na tomto [blogu](http://aka.ms/videoindexerblog).
+Další informace najdete na tomto [blogu](https://aka.ms/videoindexerblog).
 
 ## <a name="next-steps"></a>Další kroky
 

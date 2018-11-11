@@ -8,24 +8,24 @@ ms.topic: article
 ms.date: 06/27/2018
 ms.author: jamesbak
 ms.component: data-lake-storage-gen2
-ms.openlocfilehash: 072573b16fbeebac1ec942b0be508cf901b5cd27
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: c86609ae5b993328beced468b74c7f2a1b65def4
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42055021"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51283610"
 ---
 # <a name="introduction-to-azure-data-lake-storage-gen2-preview"></a>Úvod do služby Azure Data Lake Storage Gen2 ve verzi Preview
 
-Azure Data Lake Storage Gen2 ve verzi Preview je sada funkcí, které jsou vyhrazené pro analýzy velkých objemů dat, postavený na [úložiště objektů Blob v Azure](../blobs/storage-blobs-introduction.md). Umožňuje uživateli rozhraní s vašimi daty použitím obou paradigmat souboru systému a objektu úložiště. Službu pouze založené na cloudu více modální úložiště, abyste mohli extrahovat hodnotu analytics ze všech vašich dat díky Data Lake Storage Gen2.
+Azure Data Lake Storage Gen2 ve verzi Preview je sada funkcí, které jsou vyhrazené pro analýzy velkých objemů dat, integrované do [úložiště objektů Blob v Azure](../blobs/storage-blobs-introduction.md). Umožňuje uživateli rozhraní s vašimi daty použitím obou paradigmat souboru systému a objektu úložiště. Přidání Data Lake Storage Gen2 díky pouze založené na cloudu více modální platformu, umožňuje extrahovat hodnotu analytics ze všech vašich dat služby Azure Storage.
 
-Gen2 úložiště data Lake obsahuje všechny vlastnosti, které jsou požadovány pro celý životní cyklus analytická data. To vyplývá z slučuje možnosti naše dva existující služby úložiště. Funkce z [Azure Data Lake Storage Gen1](../../data-lake-store/index.md), jako je například sémantiku systému souborů, souboru úroveň zabezpečení a škálování se sloučí s vrstveného úložiště s nízkými náklady, funkcím pro obnovení vysoká dostupnost/zotavení po havárii a velké sady SDK a nástroje ekosystém z [úložiště objektů Blob v Azure](../blobs/storage-blobs-introduction.md). V Data Lake Storage Gen2 zůstanou všechny vlastnosti objektu úložiště při přidávání výhody rozhraní systému souborů optimalizované pro analýzy úloh.
+Data Lake Storage Gen2 přináší všechny vlastnosti, které jsou požadovány pro celý životní cyklus analytická data do služby Azure Storage. To je výsledkem slučuje možnosti našich dva existující služby úložiště, Azure Blob Storage a Azure Data Lake Storage Gen1. Funkce z [Azure Data Lake Storage Gen1](../../data-lake-store/index.md), například sémantiku systému souborů, souboru úroveň zabezpečení a škálování se sloučí s s nízkými náklady, vrstveného úložiště, možnosti obnovení vysoká dostupnost/zotavení po havárii z [Azure Úložiště objektů blob](../blobs/storage-blobs-introduction.md).
 
 ## <a name="designed-for-enterprise-big-data-analytics"></a>Navržená pro analýzy velkých objemů dat organizace
 
-Data Lake Storage Gen2 je základní úložiště služba pro sestavování podnikových datová jezera (EDL) v Azure. Účelem je od samého začátku služby získejte tak několik petabajtů informace při udržování stovky gigabity propustnosti, Data Lake Storage Gen2 poskytuje snadný způsob, jak spravovat velké objemy dat.
+Úložiště Azure data Lake Storage Gen2 díky základ pro vytváření datová jezera enterprise v Azure. Účelem je od samého začátku služby získejte tak několik petabajtů informace při udržování stovky gigabity propustnosti, Data Lake Storage Gen2 vám umožní snadno spravovat velké objemy dat.
 
-Základní funkcí služby Data Lake Storage Gen2 je přidání [hierarchického oboru názvů](./namespace.md) do služby Blob storage, který slouží k uspořádání objektů nebo souborů do hierarchie adresářů pro přístup k datům výkonné. Data Lake Storage Gen2 podporovat i úložiště objektů a zaslat paradigmat systému ve stejnou dobu, taky umožňuje hierarchického oboru názvů. Běžné zásady vytváření názvů úložiště objektů pro instanci používá lomítek v názvu tak, aby napodoboval hierarchickou strukturu složek. Tato struktura bude skutečné s Data Lake Storage Gen2. Operace, jako je přejmenování nebo odstranění adresáře se stanou metadat jednotného atomické operace na adresář místo vytváření výčtů a zpracování všech objektů, které sdílejí předpona názvu adresáře.
+Základní součást Data Lake Storage Gen2 je přidání [hierarchického oboru názvů](./namespace.md) do služby Blob storage, který slouží k uspořádání objektů nebo souborů do hierarchie adresářů pro přístup k datům efektivní. Data Lake Storage Gen2 podporovat i úložiště objektů a zaslat paradigmat systému ve stejnou dobu, taky umožňuje hierarchického oboru názvů. Běžné zásady vytváření názvů úložiště objektů pro instanci používá lomítek v názvu tak, aby napodoboval hierarchickou strukturu složek. Tato struktura bude skutečné s Data Lake Storage Gen2. Operace, jako je přejmenování nebo odstranění adresáře se stanou metadat jednotného atomické operace na adresář místo vytváření výčtů a zpracování všech objektů, které sdílejí předpona názvu adresáře.
 
 V minulosti cloudové analýzy došlo k ohrožení v oblasti výkonu, správy a zabezpečení. Data Lake Storage Gen2 řeší všechny tyto aspekty následujícími způsoby:
 
@@ -45,9 +45,9 @@ V minulosti cloudové analýzy došlo k ohrožení v oblasti výkonu, správy a 
 
 - **Hadoop kompatibilní přístup**: Data Lake Storage Gen2 umožňuje spravovat a přistupovat k datům, stejně jako při použití [souboru systému HDFS (Hadoop Distributed)](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html). Nové [ABFS ovladač](./abfs-driver.md) je k dispozici ve všech prostředích Apache Hadoop, včetně [Azure HDInsight](../../hdinsight/index.yml) a [Azure Databricks](../../azure-databricks/index.yml) přístup k datům uloženým v Data Lake Storage Gen2.
 
-- **Nadmnožina POSIX oprávnění**: model zabezpečení pro Data Lake Gen2 plně podporuje oprávnění řízení přístupu a POSIX spolu s nějaké další specifické pro Data Lake Storage Gen2 členitosti. Nastavení může být nakonfigurován prostřednictvím správce nástroje nebo architektury, jako je Hive a Spark.
+- **Nadmnožina POSIX oprávnění**: model zabezpečení pro Data Lake Gen2 podporuje oprávnění řízení přístupu a POSIX spolu s nějaké další specifické pro Data Lake Storage Gen2 členitosti. Nastavení může být nakonfigurován prostřednictvím správce nástroje nebo architektury, jako je Hive a Spark.
 
-- **Nákladově efektivní**: Gen2 úložiště Data Lake nabízí kapacitu úložiště s nízkými náklady a transakce. Jako přechody data prostřednictvím jejich kompletní životní cyklus, fakturační sazby změnit uchování nákladů na minimum prostřednictvím integrované funkce, jako [životní cyklus úložiště objektů Blob v Azure](../common/storage-lifecycle-managment-concepts.md).
+- **Nákladově efektivní**: nabízí kapacitu úložiště s nízkými náklady a transakce s Data Lake Storage Gen2. Jako přechody data prostřednictvím jejich kompletní životní cyklus, fakturační sazby změnit uchování nákladů na minimum prostřednictvím integrované funkce, jako [životní cyklus úložiště objektů Blob v Azure](../common/storage-lifecycle-managment-concepts.md).
 
 - **Funguje s Blob storage nástroje, platformy a aplikace**: Data Lake Storage Gen2 nadále využívat širokou škálu nástroje, platformy a aplikace, které existují ještě dnes pro úložiště objektů Blob.
 
@@ -68,6 +68,6 @@ Kromě toho funkce, jako [hierarchického oboru názvů](./namespace.md) výrazn
 Následující články popisují některé hlavní koncepty nástroje Data Lake Storage Gen2 a podrobnosti k ukládání, přístup, správě a získávání informací z vašich dat:
 
 * [Hierarchického oboru názvů](./namespace.md)
-* [vytvořit účet úložiště](./quickstart-create-account.md)
+* [Vytvoření účtu úložiště](./quickstart-create-account.md)
 * [Vytvoření clusteru HDInsight s Azure Data Lake Storage Gen2](./quickstart-create-connect-hdi-cluster.md)
-* [Použít účet Azure Data Lake Storage Gen2 v Azure Databricks](./quickstart-create-databricks-account.md) 
+* [Použít účet Azure Data Lake Storage Gen2 v Azure Databricks](./quickstart-create-databricks-account.md)

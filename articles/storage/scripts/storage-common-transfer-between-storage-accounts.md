@@ -13,12 +13,12 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 02/01/2018
 ms.author: rogarana
-ms.openlocfilehash: 970315c5d597d691454f9dea0a76f2c0dc4a40ec
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 58e2275398216f29764d54d1a230959e86eda0b6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2018
-ms.locfileid: "29360713"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51253257"
 ---
 # <a name="migrate-blobs-across-storage-accounts-using-azcopy-on-windows"></a>Migrace objektů blob mezi účty úložiště pomocí AzCopy ve Windows
 
@@ -30,7 +30,7 @@ Tato ukázka vyžaduje modul Azure PowerShellu pro službu Storage verze **4.0.2
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-Tato ukázka vyžaduje také nejnovější verzi [AzCopy ve Windows](http://aka.ms/downloadazcopy). Výchozí adresář instalace je `C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\`.
+Tato ukázka vyžaduje také nejnovější verzi [AzCopy ve Windows](https://aka.ms/downloadazcopy). Výchozí adresář instalace je `C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\`.
 
 Tato ukázka přijímá název a klíč zdrojového účtu úložiště, název a klíč cílového účtu úložiště a úplnou cestu k nástroji AzCopy.exe (pokud není nainstalovaný ve výchozím adresáři).
 

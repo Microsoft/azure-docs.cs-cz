@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/05/2018
 ms.author: spelluru
-ms.openlocfilehash: 90df853eeca89e61fa69e6967218c4c18274ac1b
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 2bf059b9ebf73f6ea801b8e5a5440baa2e6c19c4
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38633032"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51249604"
 ---
 # <a name="configure-azure-marketplace-image-settings-in-azure-devtest-labs"></a>Konfigurace nastavení image Azure Marketplace ve službě Azure DevTest Labs
 DevTest Labs podporuje vytváření virtuálních počítačů založených na imagích Azure Marketplace v závislosti na tom, jak jste nakonfigurovali Image Azure Marketplace pro použití ve vaší laboratoři. Tento článek ukazuje, jak určit, které případně Image Azure Marketplace lze použít při vytváření virtuálních počítačů v testovacím prostředí. Tím se zajistí, že váš tým má přístup pouze k Image Marketplace, které potřebují. 
 
 ## <a name="select-which-azure-marketplace-images-are-allowed-when-creating-a-vm"></a>Vyberte, které Image Azure Marketplace se povolují při vytváření virtuálního počítače
-1. Přihlaste se k webu [Azure Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Přihlaste se k webu [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 2. Vyberte **všechny služby**a pak vyberte **DevTest Labs** ze seznamu.
 3. V seznamu testovacích prostředí vyberte požadované prostředí. 
 4. V okně testovacího prostředí, vyberte **konfigurace a zásad**.

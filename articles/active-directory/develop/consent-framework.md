@@ -16,22 +16,22 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: zachowd, lenalepa, jesakowi
 ms.custom: aaddev
-ms.openlocfilehash: b01cd43d1c38a9db50937a6cff9b416b8c6acd0e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 942151c0ce2a3a79dbdce9b90adea721456f920f
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46946472"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51288471"
 ---
 # <a name="azure-active-directory-consent-framework"></a>Rozhraní pro udělování souhlasu Azure Active Directory
 
 Rozhraní pro udělování souhlasu Azure Active Directory (Azure AD) umožňuje snadno vyvíjet více tenantů webových a nativních klientských aplikací. Tyto aplikace povolit přihlášení podle uživatelské účty z tenanta služby Azure AD, který je jiný než ten, ve kterém aplikace bude zaregistrovaná. Může také potřebují přístup k webové rozhraní API jiných služeb společnosti Microsoft, kromě vlastní webová rozhraní API a rozhraní API, jako je například rozhraní Microsoft Graph API (na přístup k Azure AD, Intune a službám Office 365).
 
-Rozhraní je založené na uživatele nebo správce udělení souhlasu pro aplikaci, která požádá o registrovaný v jejich adresáře, který může zahrnovat přístup k datům adresáře. Například pokud webové klientská aplikace potřebuje číst kalendář informace o uživateli z Office 365, tento uživatel je muset vyjádřit souhlas s klientskou aplikaci nejdřív. Po souhlas, klientská aplikace bude moct volat rozhraní Microsoft Graph API jménem uživatele a podle potřeby použijte informace o kalendáři. [Microsoft Graph API](https://graph.microsoft.io) poskytuje přístup k datům v Office 365 (např. zprávy ze systému Exchange, webům a seznamům ze Sharepointu, dokumenty z Onedrivu, poznámkové bloky z Onenotu, z plánovače úloh a sešity a kalendáře Aplikace Excel), a také uživatelů a skupin ze služby Azure AD a dalších datových objektů z více cloudovým službám Microsoftu.
+Rozhraní je založené na uživatele nebo správce udělení souhlasu pro aplikaci, která požádá o registrovaný v jejich adresáře, který může zahrnovat přístup k datům adresáře. Například pokud webové klientská aplikace potřebuje číst kalendář informace o uživateli z Office 365, tento uživatel je muset vyjádřit souhlas s klientskou aplikaci nejdřív. Po souhlas, klientská aplikace bude moct volat rozhraní Microsoft Graph API jménem uživatele a podle potřeby použijte informace o kalendáři. [Microsoft Graph API](https://developer.microsoft.com/graph) poskytuje přístup k datům v Office 365 (např. zprávy ze systému Exchange, webům a seznamům ze Sharepointu, dokumenty z Onedrivu, poznámkové bloky z Onenotu, z plánovače úloh a sešity a kalendáře Aplikace Excel), a také uživatelů a skupin ze služby Azure AD a dalších datových objektů z více cloudovým službám Microsoftu.
 
 Rozhraní pro udělování souhlasu je postavená na OAuth 2.0 a jeho různé toky, jako je autorizační kód udělení a klientské přihlašovací údaje, pomocí veřejné nebo důvěrných klientů. S použitím OAuth 2.0, Azure AD umožňuje vytvořit mnoho různých typů klientských aplikací--& gt, jako na telefonu, tabletu, server nebo webové aplikace – a získat přístup k potřebným prostředkům.
 
-Další informace o použití rozhraní pro udělování souhlasu s udělení autorizace OAuth 2.0 najdete v tématu [autorizaci přístupu k webovým aplikacím pomocí OAuth 2.0 a Azure AD](v1-protocols-oauth-code.md) a [scénáře ověřování pro službu Azure AD](authentication-scenarios.md). Informace o tom, jak autorizovaný přístup k Office 365 prostřednictvím Microsoft Graphu najdete v tématu [ověřování aplikací s Microsoft Graphem](https://graph.microsoft.io/docs/authorization/auth_overview).
+Další informace o použití rozhraní pro udělování souhlasu s udělení autorizace OAuth 2.0 najdete v tématu [autorizaci přístupu k webovým aplikacím pomocí OAuth 2.0 a Azure AD](v1-protocols-oauth-code.md) a [scénáře ověřování pro službu Azure AD](authentication-scenarios.md). Informace o tom, jak autorizovaný přístup k Office 365 prostřednictvím Microsoft Graphu najdete v tématu [ověřování aplikací s Microsoft Graphem](https://developer.microsoft.com/graph/docs/authorization/auth_overview).
 
 ## <a name="consent-experience---an-example"></a>Prostředí pro vyjádření souhlasu – příklad
 

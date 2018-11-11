@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: d17e7abbb3b6e4f091e19b8ab6834461dedffc71
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: 8cec3d3695eaff8719757dd022951b969de99f6a
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50914766"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51010639"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: Nejčastější dotazy (FAQ) 
 Tato stránka odpovědi na nejčastější dotazy týkající se Azure Active Directory (Azure AD) B2C. Kontrolovat novinky.
 
 ### <a name="why-cant-i-access-the-azure-ad-b2c-extension-in-the-azure-portal"></a>Proč nemám přístup k rozšíření Azure AD B2C na webu Azure Portal?
-Existují dva běžné důvody pro proč rozšíření Azure AD nefunguje pro vás.  Azure AD B2C vyžaduje vaše uživatelská role v adresář, který má být globální správce.  Pokud si myslíte, že byste měli mít přístup, kontaktujte prosím svého správce.  Pokud máte oprávnění globálního správce, ujistěte se, že jste v adresáři Azure AD B2C a není adresář služby Azure Active Directory.  Zobrazí se pokyny, jak [vytvoření adresáře Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant).
+Existují dva běžné důvody pro proč rozšíření Azure AD nefunguje pro vás.  Azure AD B2C vyžaduje vaše uživatelská role v adresář, který má být globální správce.  Pokud si myslíte, že byste měli mít přístup, kontaktujte prosím svého správce.  Pokud máte oprávnění globálního správce, ujistěte se, že jste v adresáři Azure AD B2C a není adresář služby Azure Active Directory.  Zobrazí se pokyny, jak [vytvoření tenanta Azure AD B2C](tutorial-create-tenant.md).
 
 ### <a name="can-i-use-azure-ad-b2c-features-in-my-existing-employee-based-azure-ad-tenant"></a>Můžete použít funkce Azure AD B2C v tenantovi Azure AD existující, na základě zaměstnanců?
 Azure AD a Azure AD B2C jsou samostatný produkt nabídek a nemůžou být společně ve stejném tenantovi.  Klient služby Azure AD představuje organizace.  Klient služby Azure AD B2C představuje kolekci identit pro použití s aplikacemi předávajících stran.  Pomocí vlastních zásad (ve verzi public preview) může provést federaci Azure AD B2C do služby Azure AD umožňuje ověřování zaměstnanců v organizaci.
@@ -39,12 +39,12 @@ Uživatelské účty pro aplikace se musí vždycky vytvořit prostřednictvím 
 ### <a name="which-social-identity-providers-do-you-support-now-which-ones-do-you-plan-to-support-in-the-future"></a>Které zprostředkovatele sociální identity podporujete nyní? Ty, které plánujete podporovat v budoucnu?
 Aktuálně podporujeme sítě Facebook, Google +, LinkedIn, Amazon, Twitteru (preview), WeChat (preview), Weibo (preview) a QQ (Preview). Přidáme podporou dalších zprostředkovatelů oblíbených sociálních identit, podle potřeb zákazníků.
 
-Azure AD B2C má také přidanou podporu pro [vlastní zásady](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-overview-custom).  Tyto [vlastní zásady](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-overview-custom) povolit pro vývojáře k vytvoření vlastní zásady, které s všechny zprostředkovatele identity, který podporuje [OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) nebo SAML. 
+Azure AD B2C má také přidanou podporu pro [vlastní zásady](active-directory-b2c-overview-custom.md).  Tyto [vlastní zásady](active-directory-b2c-overview-custom.md) povolit pro vývojáře k vytvoření vlastní zásady, které s všechny zprostředkovatele identity, který podporuje [OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) nebo SAML. 
 
 Začínáme s vlastními zásadami můžete najít naše [vlastní zásady starter pack](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack).
 
 ### <a name="can-i-configure-scopes-to-gather-more-information-about-consumers-from-various-social-identity-providers"></a>Můžete nakonfigurovat obory, které chcete získat další informace o příjemci od různých zprostředkovatelů sociálních identit
-Ne, ale tato funkce je do našeho plánu. Výchozí obory pro naše Sada podporovaných zprostředkovatelů sociálních identit jsou:
+Ne. Výchozí obory pro naše Sada podporovaných zprostředkovatelů sociálních identit jsou:
 
 * Facebook: e-mailu
 * Google +: e-mailu
@@ -56,7 +56,7 @@ Ne, ale tato funkce je do našeho plánu. Výchozí obory pro naše Sada podporo
 Ne, můžete hostovat aplikace kdekoli (v cloudu nebo místně). Všechno, co je potřeba pracovat s Azure AD B2C je schopnost odesílat a přijímat požadavky HTTP na veřejně přístupnými koncovými body.
 
 ### <a name="i-have-multiple-azure-ad-b2c-tenants-how-can-i-manage-them-on-the-azure-portal"></a>Mám několik tenantů Azure AD B2C. Jak můžu spravovat je na portálu Azure portal?
-Před otevřením "Azure AD B2C' v nabídce vlevo na webu Azure portal, je nutné přepnout do adresáře, který chcete spravovat.  Adresář změnit kliknutím svou identitu v pravém horním rohu webu Azure portal a potom vyberte adresář, v rozevíracím seznamu, který se zobrazí.  Krok za krokem s obrázky, naleznete v tématu [přejít na nastavení Azure AD B2C](active-directory-b2c-app-registration.md#navigate-to-b2c-settings).
+Před otevřením "Azure AD B2C' v nabídce vlevo na webu Azure portal, je nutné přepnout do adresáře, který chcete spravovat.  Adresář změnit kliknutím svou identitu v pravém horním rohu webu Azure portal a potom vyberte adresář, v rozevíracím seznamu, který se zobrazí.
 
 ### <a name="how-do-i-customize-verification-emails-the-content-and-the-from-field-sent-by-azure-ad-b2c"></a>Jak mohu přizpůsobit ověření e-mailů (obsah a "z:" pole) odeslaných službou Azure AD B2C?
 Můžete použít [firemní branding funkce](../active-directory/fundamentals/customize-branding.md) přizpůsobit obsah ověřovací e-mailů. Konkrétně je možné přizpůsobit tyto dva prvky e-mailu:
@@ -74,7 +74,7 @@ Podpis e-mailu obsahuje název tenanta Azure AD B2C, který jste zadali při prv
 1. Změnit **název** pole.
 1. Klikněte na **Uložit** v horní části stránky.
 
-V současné době neexistuje žádný způsob, jak změnit "z:" na e-mailu. Hlasujte [feedback.azure.com](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/15334335-fully-customizable-verification-emails) zájem o přizpůsobení textu ověřovací e-mail.
+V současné době neexistuje žádný způsob, jak změnit "z:" na e-mailu.
 
 ### <a name="how-can-i-migrate-my-existing-user-names-passwords-and-profiles-from-my-database-to-azure-ad-b2c"></a>Jak můžu migrovat své existující uživatelská jména, hesla a profily z databáze do Azure AD B2C?
 Azure AD Graph API můžete použít k zápisu vašeho nástroje pro migraci. Najdete v článku [uživatelská příručka migrace](active-directory-b2c-user-migration.md) podrobnosti.
@@ -113,8 +113,7 @@ Není aktuálně. Tato funkce je do našeho plánu. Ověření domény v **domé
 ### <a name="how-do-i-delete-my-azure-ad-b2c-tenant"></a>Jak odstranit tenanta Azure AD B2C?
 Postupujte podle těchto kroků odstraňte vašeho tenanta Azure AD B2C:
 
-1. Postupujte podle těchto kroků [přechod k nastavením Azure AD B2C](active-directory-b2c-app-registration.md#navigate-to-b2c-settings) na portálu Azure portal.
-1. Přejděte **aplikací**, **zprostředkovatelé Identity**, a **všechny zásady** a odstraňte všechny položky v každém z nich.
+1. Odstraňte všechny zásady ve vašem tenantovi Azure AD B2C.
 1. Teď může přihlásit k [webu Azure portal](https://portal.azure.com/) jako správce předplatného. (Použít stejný pracovní nebo školní účet nebo stejný účet Microsoft, který jste použili k registraci do Azure.)
 1. Přepnutí na tenanta Azure AD B2C chcete odstranit.
 2. Přejděte do služby Active Directory nabídky na levé straně.

@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 09/24/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b6983b49135b5a8adbef1d0cfc5a407cb7b0c7ac
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0dc7daebe91199cc6c54ac5e3a2d8f43e1592a73
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46960545"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282420"
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Node.js SDK pro rozhraní SQL API: poznámky k verzi a prostředky
 > [!div class="op_single_selector"]
@@ -45,6 +45,26 @@ ms.locfileid: "46960545"
 | Aktuální podporovanou platformu | [Node.js verze 6.x](https://nodejs.org/en/blog/release/v6.10.3/) – povinný argument pro sadu SDK verze 2.0.0 a vyšší.<br/>[Node.js v4.2.0](https://nodejs.org/en/blog/release/v4.2.0/)<br/> [Node.js v0.12](https://nodejs.org/en/blog/release/v0.12.0/)<br/> [Node.js v0.10](https://nodejs.org/en/blog/release/v0.10.0/) 
 
 ## <a name="release-notes"></a>Poznámky k verzi
+
+### <a name="2.0.5"/>2.0.5</a>
+* Přidá rozhraní pro typ agenta uzlu. Typescript uživatelé už nemusí nainstalovat @types/node jako závislost
+* Preferované umístění jsou nyní správně dodržet
+* Vylepšení přispívání dokumentaci pro vývojáře
+* Různé opravy překlep
+
+### <a name="2.0.4"/>2.0.4</a>
+* Zadejte opravy problému defenition zavedený 2.0.3
+
+### <a name="2.0.3"/>2.0.3</a>
+* Odebrat `big-integer` závislostí
+* Přepnout do direktivy odkazů pro typ AsyncIterable. Typescript uživatelé se již muset upravit jejich nastavení "lib".
+* Máte překlep opravy
+
+### <a name="2.0.2"/>bodu 2.0.2</a>
+* Opravit odkazy – soubor readme
+
+### <a name="2.0.1"/>2.0.1</a>
+* Opravit implementaci rozhraní opakování
 
 ### <a name="2.0.0"/>2.0.0</a>
 * Obecná dostupnost sady JavaScript SDK verze 2.0.0

@@ -3,18 +3,18 @@ title: Log Analytics pro Apache Kafka – Azure HDInsight
 description: Zjistěte, jak používat službu Log Analytics k analýze protokolů z cluster Apache Kafka v Azure HDInsight.
 services: hdinsight
 ms.service: hdinsight
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/15/2018
-ms.openlocfilehash: d07c37803c94d7fa39d398a97796fecbad373af4
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 809196411df56c7448a9d0f983c17c60d5d3b4ae
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43047822"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51015413"
 ---
 # <a name="analyze-logs-for-apache-kafka-on-hdinsight"></a>Analýza protokolů pro Apache Kafka v HDInsight
 

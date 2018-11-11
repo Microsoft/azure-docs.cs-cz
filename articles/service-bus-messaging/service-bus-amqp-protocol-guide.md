@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/26/2018
 ms.author: clemensv
-ms.openlocfilehash: 75c6b5c34559ad17f662c895352bff5a58da00d4
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: b3c652baa515035fc91d2a5f7f962685b673a25e
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47395844"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51013322"
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>V Azure Service Bus a Event Hubs Průvodce protokolem AMQP 1.0
 
@@ -225,8 +225,8 @@ Jakákoli vlastnost, která aplikace potřebuje definuje musí být mapováno na
 | id zprávy |Definované aplikací, volného tvaru identifikátor pro tuto zprávu. Používá se pro zjišťování duplicit. |[ID zprávy](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_MessageId) |
 | id uživatele |Identifikátor uživatele definované aplikací, není Interpretovaná ve službě Service Bus. |Není přístupný prostřednictvím rozhraní API služby Service Bus. |
 | na |Identifikátor cíle definované aplikací, není Interpretovaná ve službě Service Bus. |[Komu](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_To) |
-| Předmět |Identifikátor účelu zpráv definované aplikací není Interpretovaná ve službě Service Bus. |[Popisek](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Label) |
-| odpovědi |Indikátor definovaného aplikací odpověď path není Interpretovaná ve službě Service Bus. |[ReplyTo](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_ReplyTo) |
+| předmět |Identifikátor účelu zpráv definované aplikací není Interpretovaná ve službě Service Bus. |[Popisek](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Label) |
+| odpovědi |Indikátor definovaného aplikací odpověď path není Interpretovaná ve službě Service Bus. |[replyTo](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_ReplyTo) |
 | id korelace |Identifikátor korelace definované aplikací, není Interpretovaná ve službě Service Bus. |[ID korelace](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_CorrelationId) |
 | Typ obsahu |Definované aplikací ukazatel typu obsahu pro obsah, není Interpretovaná ve službě Service Bus. |[contentType](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_ContentType) |
 | kódování obsahu |Definované aplikací kódování obsahu indikátor pro text není Interpretovaná ve službě Service Bus. |Není přístupný prostřednictvím rozhraní API služby Service Bus. |
@@ -391,7 +391,7 @@ ANONYMNÍ mechanismus musí podporovat proto zvoleného klienta protokolu AMQP 1
 
 Jakmile se naváže připojení a relace, odkazy na připojení *$cbs* uzlu a odesílání *put token* žádosti jsou pouze povolené operace. Platný token musí být nastavena nepodaří *put token* požadavku pro některé entity uzlu v rámci 20 sekund po navázání připojení, jinak připojení je jednostranně vyřazeno ve službě Service Bus.
 
-Klient následně zodpovídá za udržování přehledu o vypršení platnosti tokenu. Když vyprší platnost tokenu, Service Bus o tom bezodkladně informuje zahodí všechny odkazy na připojení k příslušné entitě. Pokud chcete zabránit potížím, ke kterým dochází, klienta můžete nahradit token pro uzel nový kdykoli přes virtuální *$cbs* uzlu pro správu se stejnou *put token* gesta a bez získání v způsob, jak datové části provoz tohoto toků na různé odkazy.
+Klient následně zodpovídá za udržování přehledu o vypršení platnosti tokenu. Když vyprší platnost tokenu, Service Bus o tom bezodkladně informuje zahodí všechny odkazy na připojení k příslušné entitě. Pokud chcete zabránit, problém, ke kterým dochází, klienta můžete token nahradit pro uzel novým kdykoli přes virtuální *$cbs* uzlu pro správu se stejnou *put token* gesta a bez získání v způsob, jak datové části provoz tohoto toků na různé odkazy.
 
 ### <a name="send-via-functionality"></a>Odesílání prostřednictvím funkce
 

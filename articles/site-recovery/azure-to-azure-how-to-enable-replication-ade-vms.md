@@ -8,26 +8,26 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 09/28/2018
 ms.author: sutalasi
-ms.openlocfilehash: 5d1beb124bbb857d13aecad7bf0cef493d42dac5
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 6d47fe29dab37523913b96ebae0ef3ef31d11210
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48043273"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51300570"
 ---
 # <a name="replicate-azure-disk-encryption-ade-enabled-virtual-machines-to-another-azure-region"></a>Azure disk encryption (ADE) povolena virtuální počítače replikovat do jiné oblasti Azure
 
 Tento článek popisuje, jak povolit povolenou replikací z Azure disk encryption (ADE) virtuálních počítačů z jedné oblasti Azure do jiné.
 
 >[!NOTE]
->Pouze virtuální počítače Azure s operačním systémem Windows a [pro šifrování s aplikací Azure AD povolené](https://aka.ms/ade-aad-app) jsou aktuálně podporovány službou Azure Site Recovery.
+>Azure Site Recovery v současné době podporuje pouze virtuální počítače Azure s operačním systémem Windows a [povoleným šifrováním pomocí aplikace Azure AD](https://aka.ms/ade-aad-app).
 >
 
 ## <a name="required-user-permissions"></a>Požadovaná uživatelská oprávnění
 
 Pokud chcete povolit replikaci virtuálních počítačů ADE z portálu, musí mít uživatel následující oprávnění.
 - Oprávnění služby Key vault
-    - Seznam
+    - list
     - Vytvořit
     - Získat
 
@@ -64,8 +64,8 @@ Pokud uživatel povoluje zotavení po havárii (DR) nemá požadovaná oprávně
 6. Počkejte, skupiny prostředků pro načtení a pak vyberte **skupiny prostředků** vašich virtuálních počítačů.
 7. Vyberte virtuální počítače, ze seznamu virtuálních počítačů, které jsou zobrazeny. V seznamu se zobrazí jenom virtuální počítače povoleno se šifrováním disku Azure.
 8. Vyberte **cílové umístění**.
-9. **Trezory klíčů šifrování disku**: ve výchozím nastavení, Azure Site Recovery vytvoří nové služby key vault v cílové oblasti s názvem, který má příponu "Azure Site Recovery" podle klíče pro šifrování disků zdrojového virtuálního počítače. V případě, že trezor klíčů Azure Site Recovery vytvoří již existuje, je znovu. V seznamu v případě potřeby můžete vybrat jiný trezor klíčů.
-10. **Trezory klíčů šifrovací klíče**: ve výchozím nastavení, Azure Site Recovery vytvoří nové služby key vault v cílové oblasti s názvem, který má příponu "Azure Site Recovery" podle klíče šifrovací klíče zdrojového virtuálního počítače. V případě, že trezor klíčů Azure Site Recovery vytvoří již existuje, je znovu. V seznamu v případě potřeby můžete vybrat jiný trezor klíčů.
+9. **Trezory klíčů pro šifrování disků:** Azure Site Recovery ve výchozím nastavení vytvoří v cílové oblasti nový trezor klíčů s příponou názvu „asr“ na základě klíčů pro šifrování disků zdrojového virtuálního počítače. Pokud již existuje trezor klíčů vytvořený službou Azure Site Recovery, použije se tento trezor. V seznamu v případě potřeby můžete vybrat jiný trezor klíčů.
+10. **Trezory klíčů pro šifrování klíčů:** Azure Site Recovery ve výchozím nastavení vytvoří v cílové oblasti nový trezor klíčů s příponou názvu „asr“ na základě klíčových šifrovacích klíčů zdrojového virtuálního počítače. Pokud již existuje trezor klíčů vytvořený službou Azure Site Recovery, použije se tento trezor. V seznamu v případě potřeby můžete vybrat jiný trezor klíčů.
 
 ## <a name="enable-replication"></a>Povolení replikace
 
@@ -91,8 +91,8 @@ Tento postup předpokládá, že primární oblast Azure je východní Asie a ji
     - **Repliky spravovaných disků (Pokud zdrojový virtuální počítač používá spravované disky)**: Site Recovery vytvoří nové spravované disky repliky v cílové oblasti zrcadlící spravované disky zdrojového Virtuálního počítače se stejným typem úložiště (Standard nebo premium), protože zdrojový virtuální počítač spravovaný disk.
     - **Účty úložiště mezipaměti**: Site Recovery potřebuje účet úložiště s názvem úložiště mezipaměti ve zdrojové oblasti. Všechny změny aktivit ve zdrojových virtuálních počítačů jsou sledovány a odeslat do účtu úložiště mezipaměti před replikaci do cílového umístění.
     - **Skupina dostupnosti**: ve výchozím nastavení Azure Site Recovery vytvoří novou skupinu s názvem, který má příponu "Azure Site Recovery" v cílové oblasti dostupnosti. V případě, že skupina dostupnosti Azure Site Recovery vytvoří již existuje, je znovu.
-    - **Trezory klíčů šifrování disku**: ve výchozím nastavení, Azure Site Recovery vytvoří nové služby key vault v cílové oblasti s názvem, který má příponu "Azure Site Recovery" podle klíče pro šifrování disků zdrojového virtuálního počítače. V případě, že trezor klíčů Azure Site Recovery vytvoří již existuje, je znovu.
-    - **Trezory klíčů šifrovací klíče**: ve výchozím nastavení, Azure Site Recovery vytvoří nové služby key vault v cílové oblasti s názvem, který má příponu "Azure Site Recovery" podle klíče šifrovací klíče zdrojového virtuálního počítače. V případě, že trezor klíčů Azure Site Recovery vytvoří již existuje, je znovu.
+    - **Trezory klíčů pro šifrování disků:** Azure Site Recovery ve výchozím nastavení vytvoří v cílové oblasti nový trezor klíčů s příponou názvu „asr“ na základě klíčů pro šifrování disků zdrojového virtuálního počítače. Pokud již existuje trezor klíčů vytvořený službou Azure Site Recovery, použije se tento trezor.
+    - **Trezory klíčů pro šifrování klíčů:** Azure Site Recovery ve výchozím nastavení vytvoří v cílové oblasti nový trezor klíčů s příponou názvu „asr“ na základě klíčových šifrovacích klíčů zdrojového virtuálního počítače. Pokud již existuje trezor klíčů vytvořený službou Azure Site Recovery, použije se tento trezor.
     - **Zásady replikace**: definuje nastavení pro obnovení bodu uchování historie a aplikace konzistentní frekvence pořizování snímků. Ve výchozím nastavení Azure Site Recovery vytvoří novou zásadu replikace s výchozím nastavením ' 24 hodin pro uchování bodu obnovení a "60 minut, než se frekvence snímků konzistentní vzhledem k aplikacím aplikace.
 
 
@@ -104,7 +104,7 @@ Můžete upravit výchozí nastavení cíle používané pro Site Recovery.
 
 1. Klikněte na tlačítko **vlastní:** vedle 'Cílové předplatné' Chcete-li změnit výchozí cílové předplatné. Vyberte předplatné ze seznamu všech předplatných, které jsou k dispozici ve stejném tenantovi Azure Active Directory (AAD).
 
-2. Klikněte na tlačítko **vlastní:** vedle "skupiny prostředků, úložiště, sítě a dostupnost nastaví změnit pod výchozí nastavení:
+2. Klikněte na tlačítko **vlastní:** vedle "prostředek skupiny, sítě, úložiště a skupinách dostupnosti změnit pod výchozí nastavení:
     - V **cílová skupina prostředků**, vyberte skupinu prostředků z seznam všech skupin prostředků v cílovém umístění předplatného.
     - V **cílovou virtuální sítí**, vyberte síť, ze seznamu ve virtuální síti v cílové lokalitě.
     - V **dostupnosti**, můžete přidat nastavení skupinu dostupnosti pro virtuální počítač, pokud jsou součástí skupiny dostupnosti ve zdrojové oblasti.

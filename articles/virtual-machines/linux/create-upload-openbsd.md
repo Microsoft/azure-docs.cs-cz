@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/24/2017
 ms.author: huishao
-ms.openlocfilehash: cbd8e6c1d12fe506e5c31c980b1ec13bb121e75e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 33d7322bfa3c6e6143dd2d945c5ed86c15da2fb8
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46958046"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51249961"
 ---
 # <a name="create-and-upload-an-openbsd-disk-image-to-azure"></a>Vytvoření a nahrání image disku OpenBSD do Azure
 V tomto článku se dozvíte, jak vytvořit a nahrát virtuální pevný disk (VHD), který obsahuje operační systém OpenBSD. Po odeslání, můžete ho použít jako vlastní image k vytvoření virtuálního počítače (VM) v Azure pomocí Azure CLI.
@@ -31,7 +31,7 @@ Tento článek předpokládá, že máte následující položky:
 
 * **Předplatné Azure** – Pokud nemáte účet, můžete můžete vytvořit během několika minut. Pokud máte předplatné MSDN, přečtěte si téma [Azure měsíční kredit pro předplatitele sady Visual Studio](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/). V opačném případě zjistěte, jak [vytvořit Bezplatný zkušební účet](https://azure.microsoft.com/pricing/free-trial/).  
 * **Azure CLI** – Ujistěte se, že máte nejnovější [rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli) nainstalovaný a přihlášení k účtu Azure pomocí [az login](/cli/azure/reference-index#az_login).
-* **OpenBSD operační systém nainstalovaný na soubor VHD** – podporované OpenBSD operační systém ([verze 6.1 AMD64](https://ftp.openbsd.org/pub/OpenBSD/6.1/amd64/)) musí být nainstalován na virtuální pevný disk. Postup vytvoření souborů .vhd existují více nástroje. Například můžete použít řešení virtualizace, jako je Hyper-V k vytvoření souboru .vhd a instalace operačního systému. Pokyny o tom, jak nainstalovat a používat technologie Hyper-V najdete v tématu [instalace technologie Hyper-V a vytvoření virtuálního počítače](http://technet.microsoft.com/library/hh846766.aspx).
+* **OpenBSD operační systém nainstalovaný na soubor VHD** – podporované OpenBSD operační systém ([verze 6.1 AMD64](https://ftp.openbsd.org/pub/OpenBSD/6.1/amd64/)) musí být nainstalován na virtuální pevný disk. Postup vytvoření souborů .vhd existují více nástroje. Například můžete použít řešení virtualizace, jako je Hyper-V k vytvoření souboru .vhd a instalace operačního systému. Pokyny o tom, jak nainstalovat a používat technologie Hyper-V najdete v tématu [instalace technologie Hyper-V a vytvoření virtuálního počítače](https://technet.microsoft.com/library/hh846766.aspx).
 
 
 ## <a name="prepare-openbsd-image-for-azure"></a>Příprava OpenBSD image pro Azure
@@ -65,7 +65,7 @@ Na virtuálním počítači, kam jste nainstalovali operačního systému OpenBS
     ln -sf /usr/local/bin/python2.7 /usr/local/bin/python
     ln -sf /usr/local/bin/python2.7-2to3 /usr/local/bin/2to3
     ln -sf /usr/local/bin/python2.7-config /usr/local/bin/python-config
-    ln -sf /usr/local/bin/pydoc2.7  /usr/local/bin/pydoc
+    ln -sf /usr/local/bin/pydoc2.7  /usr/local/bin/pydoc
     ```
 
 6. Nejnovější verzi agenta služby Azure najdete vždy v [Githubu](https://github.com/Azure/WALinuxAgent/releases). Nainstalujte agenta následujícím způsobem:
