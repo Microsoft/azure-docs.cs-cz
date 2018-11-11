@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: ac51dc8b7cbfa08ebca201c42c0c82356b7d5b6c
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: a6564877c05dcd5c611c6bbf7a09c65ac2f1f406
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50254639"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51293202"
 ---
-# <a name="internet-of-things-security-architecture"></a>Architektura zabezpečení Internetu věcí
+# <a name="internet-of-things-iot-security-architecture"></a>Architektura zabezpečení Internetu věcí (IoT)
 
 Při návrhu systému, je důležité porozumět potenciálních hrozeb na daném systému a přidejte odpovídající ochrany podle toho, jak je systém navržený a navržen. Je důležité při návrhu produktů od začátku s ohledem na bezpečnost, protože princip, jak útočník může mohl ohrozit systém pomáhá, ujistěte se, že odpovídající způsoby zmírnění rizik jsou na místě od začátku.
 
@@ -27,23 +27,23 @@ Cílem modelování hrozeb je zjistit, jak útočník může ohrozit zabezpečen
 
 Mnoho vývojových týmů provést úlohu vynikající zachytávání funkční požadavky pro systému, které přináší výhody zákazníkům. Identifikace není zřejmé, že někdo může zneužít v systému způsobů je však ještě náročnější. Modelování hrozeb může pomoct pochopit, co může útočník udělat vývojových týmů a proč. Modelování ohrožení je strukturovaných proces, který vytvoří diskuze o zabezpečení rozhodnutí o návrhu v systému, stejně jako se změní na návrh, který jsou na cestě k zabezpečení dopad. Zatímco model hrozeb je jednoduše dokumentu, tato dokumentace také představuje ideální způsob, jak k zajištění kontinuity podnikových procesů znalostí, uchovávání skupině lekcí se naučili, a pomoc nového týmu připojení rychle. Nakonec jako výsledek modelování hrozeb je umožnit vzít v úvahu další aspekty zabezpečení, jako je například jaké jejích závazků chcete poskytnout zákazníkům. Tyto závazky ve spojení s modelování hrozeb informovat a jednotky testování vašeho řešení Internetu věcí (IoT).
 
-### <a name="when-to-threat-model"></a>Kdy se má model hrozeb
+### <a name="when-to-do-threat-modeling"></a>Když pro modelování hrozeb
 
 [Modelování ohrožení](https://www.microsoft.com/en-us/sdl/adopt/threatmodeling.aspx) nabízí největší hodnoty po začlenění do fáze návrhu. Při návrhu, máte nejvyšší flexibilitu provést změny eliminovat hrozby. Odstranění ohrožení záměrné je požadovaného výsledku. Je mnohem jednodušší než přidání způsoby zmírnění rizik, otestování a zajištění zůstává zachována možnost jejich aktuální a kromě toho toto odstranění není vždy možné. Bude obtížnější eliminovat hrozby podle produktu stane vyspělejší a pak v konečném důsledku vyžaduje více práce a kompromisy mnohem obtížnější než hrozeb modelování raném stádiu při vývoji.
 
-### <a name="what-to-threat-model"></a>Co se má model hrozeb
+### <a name="what-to-consider-for-threat-modeling"></a>Co je potřeba zvážit pro modelování hrozeb
 
-By měl hrozby model řešení jako celek a zaměřte se také v následujících oblastech:
+Byste se podívat na řešení jako celek a také zaměřit se na následující oblasti:
 
 * Funkce zabezpečení a ochrany osobních údajů
 * Funkce, jejíž chyby jsou důležité zabezpečení
 * Funkce, které touch hranice vztahů důvěryhodnosti
 
-### <a name="who-threat-models"></a>Kdo hrozeb modely
+### <a name="who-performs-threat-modeling"></a>Kdo provádí modelování hrozeb
 
 Modelování ohrožení je proces stejně jako jakýkoli jiný. Je vhodné pro zpracování dokumentu model hrozeb jako součást řešení a ověřte ho. Mnoho vývojových týmů provést úlohu vynikající zachytávání funkční požadavky pro systému, které přináší výhody zákazníkům. Identifikace není zřejmé, že někdo může zneužít v systému způsobů je však ještě náročnější. Modelování hrozeb může pomoct pochopit, co může útočník udělat vývojových týmů a proč.
 
-### <a name="how-to-threat-model"></a>Jak model hrozeb
+### <a name="how-to-perform-threat-modeling"></a>Postup pro modelování hrozeb
 
 Hrozby modelování procesů se skládá ze čtyř kroků, Tyto kroky jsou:
 
@@ -57,16 +57,21 @@ Hrozby modelování procesů se skládá ze čtyř kroků, Tyto kroky jsou:
 Tři hrubé odhady potřeba mít na paměti při sestavování model hrozeb:
 
 1. Vytvoření diagramu z referenční architektury.
-1. Spuštění první šířka. Získání přehledu a seznamte se s systém jako celek, než se podíváme hluboko. Tento přístup pomáhá zajistit, že vám podrobně na správných místech.
-1. Jednotka procesu, nenechte procesu je jednotka. Pokud najdete chybu ve fázi modelování a chcete prozkoumat, přejděte k němu! Nebojte se, co potřebujete k slavishly postupujte podle těchto kroků.
+
+2. Spuštění první šířka. Získání přehledu a seznamte se s systém jako celek, než se podíváme hluboko. Tento přístup pomáhá zajistit, že vám podrobně na správných místech.
+
+3. Jednotka procesu, nenechte procesu je jednotka. Pokud najdete chybu ve fázi modelování a chcete prozkoumat, přejděte k němu! Nebojte se, co potřebujete k slavishly postupujte podle těchto kroků.
 
 #### <a name="threats"></a>Hrozby
 
 Čtyři základní prvky modelu před internetovými útoky jsou:
 
 * Procesy, jako jsou webové služby, služby Win32 a * nix procesy démon. Některé složité entity (například bran v terénu a senzory) můžete abstrahovaná jako proces, při technické procházení podrobností v těchto oblastech není možné.
+
 * Úložiště dat (všude, kde jsou data uložena, například konfigurační soubor nebo databáze)
+
 * Tok dat (kde data přesouvána mezi další prvky v aplikaci)
+
 * Externí entity (NIC, která komunikuje s systému, ale není pod kontrolou aplikace, příklady patří uživatelům a satelitní informačních kanálů)
 
 Všechny prvky v diagram architektury jsou v souladu s různé hrozby; Tento článek STRIDE pomůcek. Čtení [hrozeb modelování znovu, STRIDE](https://blogs.msdn.microsoft.com/larryosterman/2007/09/04/threat-modeling-again-stride/) pro další informace o prvcích STRIDE.
@@ -135,7 +140,7 @@ Připojené zařízeními pro zvláštní účely mají velký počet potenciál
 
 Když se budete učit vzory interakcí, podívejte se na "zařízení" a řízení "zařízení" se stejnou úrovní pozornost při modelování hrozeb. "Řídící" dají považovat za veškeré informace, které poskytuje k zařízení stranu s cílem změnu nebo ovlivňující chování na jeho stavu nebo stavu prostředí. "Data zařízení" dají považovat za veškeré informace, které vysílá zařízení na druhou stranu o jejím stavu a zjištěnou stav svého prostředí.
 
-## <a name="threat-modeling-the-azure-iot-reference-architecture"></a>Referenční architektura Azure IoT pro modelování hrozeb
+## <a name="performing-threat-modeling-for-the-azure-iot-reference-architecture"></a>Provádění hrozeb modelování pro referenční architektura Azure IoT
 
 Společnost Microsoft používá rozhraní framework popsané dříve provedete před internetovými útoky pro Azure IoT modelování. Následující části ukazují, jak přemýšlet o ohrožení modelování pro IoT a tom, jak vyřešit hrozby identifikovat pomocí konkrétní příklad referenční architektura IoT v Azure. Tento příklad uvádí čtyři hlavní oblasti výběru:
 
@@ -237,7 +242,7 @@ Tady je několik příkladů hrozby v této kategorii:
 
 **Zpřístupnění informací:** útočník může tajně poslouchat vysílání a získat informace o bez autorizace **Denial of Service:** útočník může jamu signál vysílání a odepřít informace distribuce
 
-#### <a name="storage"></a>Úložiště
+#### <a name="storage"></a>Storage
 
 Každé zařízení a pole brány má určitou formu úložiště (dočasné pro službu Řízení front dat, úložiště bitové kopie operačního systému (OS)).
 
@@ -252,7 +257,7 @@ Každé zařízení a pole brány má určitou formu úložiště (dočasné pro
 
 Cloudové brány je systém, který umožňuje vzdálenou komunikaci od a do zařízení nebo bran v terénu z několika různých lokalit ve veřejné síti místa, obvykle na ovládací prvek založené na cloudu a systém pro analýzy dat, federace těchto systémů. V některých případech cloudové brány může okamžitě usnadnění přístupu k zařízeními pro zvláštní účely z terminály, jako jsou tablety a telefony. V rámci popsané tady "cloud" slouží k odkazování na vyhrazené zpracování dat systému, který není vázán na stejném místě jako připojené zařízení nebo bran v terénu a kde provozní opatření brání cílový fyzický přístup ale není nutně položky " infrastruktura veřejného cloudu". Cloudová brána lze mapovat potenciálně do překrytí virtualizace sítě izolovat Cloudová brána a všechny jeho připojené zařízení nebo bran v terénu od ostatního síťového přenosu. Cloudová brána samotný není systém správy zařízení nebo zpracování nebo obsluhující zařízení úložiště dat v zařízení; Tato zařízení rozhraní s cloudové bráně. Oblast brány cloud zahrnuje brány cloud společně s všech bran v terénu a zařízení k němu připojená přímo nebo nepřímo.
 
-Cloudová brána je ve většině případů vlastní sestavené část softwaru, která běží jako služba s zveřejněných koncových bodů, do kterých zařízení a hraniční brána připojit. Jako takové musí být navržena s ohledem na bezpečnost. Postupujte podle [SDL](http://www.microsoft.com/sdl) proces pro návrh a vytváření této služby.
+Cloudová brána je ve většině případů vlastní sestavené část softwaru, která běží jako služba s zveřejněných koncových bodů, do kterých zařízení a hraniční brána připojit. Jako takové musí být navržena s ohledem na bezpečnost. Postupujte podle [SDL](https://www.microsoft.com/sdl) proces pro návrh a vytváření této služby.
 
 #### <a name="services-zone"></a>Zóna služby
 

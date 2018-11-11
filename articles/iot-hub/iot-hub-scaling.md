@@ -8,21 +8,21 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/02/2018
 ms.author: kgremban
-ms.openlocfilehash: 6ae0217ed4b8833eb42a4719a1f2525461f9dcdd
-ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
+ms.openlocfilehash: d98a890cfb6bd388477ff3f14b81c8df02ece879
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43143644"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51287961"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>Zvolte správné úrovně služby IoT Hub pro vaše řešení
 
-Každé řešení IoT se liší, takže Azure IoT Hub nabízí několik možností, jak na základě ceny a škálování. Účelem tohoto článku je vám pomůže zhodnotit vaše potřeby IoT Hub. Informace o úrovních služby IoT Hub o cenách najdete [ceny služby IoT Hub](https://azure.microsoft.com/pricing/details/iot-hub). 
+Každé řešení IoT se liší, takže Azure IoT Hub nabízí několik možností, jak na základě ceny a škálování. Účelem tohoto článku je vám pomůže zhodnotit vaše potřeby IoT Hub. Informace o úrovních služby IoT Hub o cenách najdete v tématu [ceny služby IoT Hub](https://azure.microsoft.com/pricing/details/iot-hub). 
 
 Chcete-li rozhodnout, jaké úrovně služby IoT Hub je vhodné pro vaše řešení, položte si otázku: dvě otázky:
 
 **Jaké funkce plánu použít?**
-Azure IoT Hub nabízí dvě úrovně, basic a standard, které se liší v počtu funkcí, které podporují. Pokud vaše řešení IoT je založen týkající se shromažďování dat ze zařízení a analýza centrálně úroveň basic je pravděpodobně pro vás ta pravá. Pokud chcete používat pokročilejší konfigurace pro vzdálené řízení zařízení IoT nebo některé z vašich úloh do samotných zařízení distribuci měli byste zvážit úroveň standard. Které funkce jsou zahrnuté v jednotlivých vrstvách podrobný rozpis dál [úrovně Basic a standard](#basic-and-standard-tiers).
+Azure IoT Hub nabízí dvě úrovně, basic a standard, které se liší v počtu funkcí, které podporují. Je-li týkající se shromažďování dat ze zařízení a analýza centrálně řešení IoT, úroveň basic je pravděpodobně pro vás ta pravá. Pokud chcete použít rozšířené konfigurace pro vzdálené řízení zařízení IoT nebo distribuci některé z vašich úloh do samotných zařízení, měli byste zvážit úroveň standard. Které funkce jsou zahrnuté v jednotlivých vrstvách podrobný rozpis dál [úrovně Basic a standard](#basic-and-standard-tiers).
 
 **Kolik dat je naplánovat přesunout každý den?**
 Každé úrovně služby IoT Hub je k dispozici ve třech velikostech, na základě po tom, kolik propustnost dat dokáže zpracovat každý den. Tyto velikosti jsou číselně označeny jako 1, 2 a 3. Každá jednotka služby IoT hub úrovně 1 například zvládne 400 tisíc zpráv denně, zatímco úroveň 3 jednotky zvládne 300 milionů. Podrobné informace o pokynech data i nadále [propustnost zpráv](#message-throughput).
@@ -31,7 +31,7 @@ Každé úrovně služby IoT Hub je k dispozici ve třech velikostech, na zákla
 
 Povolí všechny funkce na úrovni standard služby IoT Hub a je vyžadováno pro jakékoli řešení IoT, které mají být využívají možnosti obousměrnou komunikaci. Úroveň basic umožňuje podmnožinu funkcí a je určena pro řešení IoT, které potřebují pouze jednosměrnou komunikaci ze zařízení do cloudu. Obě úrovně nabízejí stejné funkce zabezpečení a ověřování.
 
-Po vytvoření služby IoT hub můžete upgradovat z úrovně basic na úroveň standard bez přerušení existující operace. Další informace najdete v tématu [pokyny k upgradu služby IoT hub](iot-hub-upgrade.md). Všimněte si, že oddíl maximální limit pro úroveň basic služby IoT Hub je 8 a pro úroveň standard je 32. Většina centra IoT hub stačí jenom 4 oddíly. Omezení počtu oddílů je vybrán při vytvoření služby IoT Hub a souvisí s počtem souběžných čtenářů tyto zprávy zprávy typu zařízení cloud. Tato hodnota zůstane beze změny, když migrujete z úrovně basic na úroveň standard. Všimněte si také, že pouze jeden typ [edition](https://azure.microsoft.com/pricing/details/iot-hub/) v rámci úrovně je možné zvolit jednotlivé služby IoT Hub. Můžete například vytvořit IoT Hub s více jednotek úrovně S1, ale ne s kombinaci jednotek z různých edicích, jako je například S1 a K3 nebo S1 a S2.
+Po vytvoření služby IoT hub, můžete upgradovat z úrovně basic na úroveň standard bez přerušení existující operace. Další informace najdete v tématu [pokyny k upgradu služby IoT hub](iot-hub-upgrade.md). Oddíl maximální limit pro úroveň basic služby IoT Hub je 8 a pro úroveň standard je 32. Většina centra IoT hub stačí jenom 4 oddíly. Omezení počtu oddílů je vybrán při vytvoření služby IoT Hub a souvisí s počtem souběžných čtenářů tyto zprávy zprávy typu zařízení cloud. Tato hodnota zůstane beze změny, když migrujete z úrovně basic na úroveň standard. Všimněte si také, že pouze jeden typ [edition](https://azure.microsoft.com/pricing/details/iot-hub/) v rámci úrovně je možné zvolit jednotlivé služby IoT Hub. Můžete například vytvořit IoT Hub s více jednotek úrovně S1, ale ne s kombinaci jednotek z různých edicích, jako je například S1 a K3 nebo S1 a S2.
 
 | Schopnost | Úroveň Basic | Úroveň Standard |
 | ---------- | ---------- | ------------- |
@@ -42,7 +42,7 @@ Po vytvoření služby IoT hub můžete upgradovat z úrovně basic na úroveň 
 | [Služba Device Provisioning Service](../iot-dps/about-iot-dps.md) | Ano | Ano |
 | [Monitorování a Diagnostika](iot-hub-monitor-resource-health.md) | Ano | Ano |
 | [Zasílání zpráv typu cloud zařízení](iot-hub-devguide-c2d-guidance.md) |   | Ano |
-| [Dvojčata zařízení](iot-hub-devguide-device-twins.md), [dvojčaty modulů](iot-hub-devguide-module-twins.md) a [správy zařízení](iot-hub-device-management-overview.md) |   | Ano |
+| [Dvojčata zařízení](iot-hub-devguide-device-twins.md), [dvojčaty modulů](iot-hub-devguide-module-twins.md), a [správy zařízení](iot-hub-device-management-overview.md) |   | Ano |
 | [Azure IoT Edge](../iot-edge/about-iot-edge.md) |   | Ano |
 
 IoT Hub také nabízí úrovně free, která je určená pro testování a vyhodnocení. Obsahuje všechny funkce úrovně standard, ale omezené limity zasílání zpráv. Nelze upgradovat z úrovně free na basic nebo standard. 
@@ -51,7 +51,7 @@ IoT Hub také nabízí úrovně free, která je určená pro testování a vyhod
 
 Rozdíl v podporované možnosti mezi úrovněmi basic a standard služby IoT Hub znamená, že některá volání rozhraní API, nebudou fungovat s hubs úrovně basic. V následující tabulce jsou uvedeny API, které jsou k dispozici: 
 
-| Rozhraní API | Úroveň Basic | Úroveň Standard |
+| API | Úroveň Basic | Úroveň Standard |
 | --- | ---------- | ------------- |
 | [Odstranění zařízení](https://docs.microsoft.com/rest/api/iothub/service/deletedevice) | Ano | Ano |
 | [Zařízení](https://docs.microsoft.com/rest/api/iothub/service/getdevice) | Ano | Ano |
@@ -68,7 +68,7 @@ Rozdíl v podporované možnosti mezi úrovněmi basic a standard služby IoT Hu
 | [Odeslat událost zařízení](https://docs.microsoft.com/rest/api/iothub/device/senddeviceevent) | Ano | Ano |
 | Odeslání události modulu | Ano | Ano |
 | [Aktualizovat stav nahrávání souboru](https://docs.microsoft.com/rest/api/iothub/device/updatefileuploadstatus) | Ano | Ano |
-| [Operace hromadného zařízení](https://docs.microsoft.com/rest/api/iot-dps/deviceenrollment/bulkoperation) | Ano, s výjimkou možnosti IoT Edge | Ano | 
+| [Operace hromadného zařízení](https://docs.microsoft.com/rest/api/iot-dps/deviceenrollment/bulkoperation) | Ano, s výjimkou funkce IoT Edge | Ano | 
 | [Vyprázdnit frontu příkazů](https://docs.microsoft.com/rest/api/iothub/service/purgecommandqueue) |   | Ano |
 | [Získáte, dvojče zařízení](https://docs.microsoft.com/rest/api/iothub/service/gettwin) |   | Ano |
 | Získáte, dvojče zařízení |   | Ano |
@@ -115,7 +115,7 @@ Zatímco jedno centrum IoT můžete škálovat na miliony zařízení, někdy va
 
 ## <a name="next-steps"></a>Další postup
 
-* Další informace o možnostech služby IoT Hub a podrobnosti o výkonu, naleznete v tématu [ceny centra IoT] [odkaz ceny] nebo [služby IoT Hub kvóty a omezení][IoT Hub quotas and throttles].
+* Další informace o možnostech služby IoT Hub a podrobnosti o výkonu najdete v tématu [ceny služby IoT Hub] [ lnk-pricing] nebo [služby IoT Hub kvóty a omezení] [ IoT Hub quotas and throttles].
 * Chcete-li změnit vaší úrovně služby IoT Hub, postupujte podle kroků v [Upgrade služby IoT hub](iot-hub-upgrade.md).
 
 [lnk-pricing]: https://azure.microsoft.com/pricing/details/iot-hub

@@ -1,9 +1,9 @@
 ---
-title: Importovat certifikáty do kontejneru systémem Azure Service Fabric | Microsoft Docs
-description: Naučte se importujte soubory certifikátů do kontejneru služby Service Fabric.
+title: Naimportujte certifikáty do kontejneru spuštěného v Azure Service Fabric | Dokumentace Microsoftu
+description: Naučte se importujte soubory certifikátů do služby kontejneru Service Fabric.
 services: service-fabric
 documentationcenter: .net
-author: mani-ramaswamy
+author: TylerMSFT
 manager: timlt
 editor: ''
 ms.assetid: ab49c4b9-74a8-4907-b75b-8d2ee84c6d90
@@ -13,17 +13,17 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
-ms.author: subramar
-ms.openlocfilehash: f234a6f6ca56d1833aac53f490feb5f667a6bf1b
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.author: twhitney, subramar
+ms.openlocfilehash: d49c16741f581b2ad09dc173e8380fdf77391dbe
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34208212"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51299057"
 ---
-# <a name="import-a-certificate-file-into-a-container-running-on-service-fabric"></a>Importovat soubor certifikátu do kontejneru systémem Service Fabric
+# <a name="import-a-certificate-file-into-a-container-running-on-service-fabric"></a>Importovat soubor certifikátu do kontejneru spuštěného v Service Fabric
 
-Zadáním certifikát můžete zabezpečit vaše služby kontejneru. Service Fabric poskytuje mechanismus pro služby uvnitř kontejneru pro přístup k certifikátu, který je nainstalován na uzly v clusteru systému Windows nebo Linux (verze 5.7 nebo vyšší). Certifikát musí být nainstalovaný do LocalMachine na všech uzlech clusteru. Informace o certifikátu je součástí manifest aplikace v rámci `ContainerHostPolicies` značce jako následující fragment kódu ukazuje:
+Služby kontejneru můžete zabezpečit zadáním certifikát. Service Fabric poskytuje mechanismus pro služby uvnitř kontejnerů pro přístup k certifikátu, který je nainstalován na uzlech v clusteru s Windows nebo Linuxem (verze 5.7 nebo novější). Certifikát musí být nainstalovány ve LocalMachine na všech uzlech clusteru. Informace o certifikátu je součástí manifest aplikace pod `ContainerHostPolicies` označit jako následující fragment kódu ukazuje:
 
 ```xml
   <ContainerHostPolicies CodePackageRef="NodeContainerService.Code">
@@ -31,24 +31,24 @@ Zadáním certifikát můžete zabezpečit vaše služby kontejneru. Service Fab
     <CertificateRef Name="MyCert2" X509FindValue="[Thumbprint2]"/>
  ```
 
-Modul runtime pro Windows clusterů, při spouštění aplikace, čte certifikáty a vygeneruje soubor PFX a heslo pro každý certifikát. Tento soubor PFX a heslo jsou přístupné uvnitř kontejneru pomocí následující proměnné prostředí: 
+Pro clustery Windows, při spuštění aplikace modul runtime načítá certifikáty a vygeneruje soubor PFX a heslo pro každý certifikát. Tento soubor PFX a heslo jsou dostupné v kontejneru pomocí následující proměnné prostředí: 
 
 * Certificates_ServicePackageName_CodePackageName_CertName_PFX
 * Certificates_ServicePackageName_CodePackageName_CertName_Password
 
-Pro Linux clusterů se zkopíruje certifikáty (PEM) po z obchodu určeného X509StoreName do kontejneru. Odpovídající proměnné prostředí v systému Linux jsou:
+Pro clustery s Linuxem certifikáty (PEM) zkopíruje z určeného X509StoreName do kontejneru úložiště. Odpovídající proměnné prostředí v Linuxu jsou:
 
 * Certificates_ServicePackageName_CodePackageName_CertName_PEM
 * Certificates_ServicePackageName_CodePackageName_CertName_PrivateKey
 
-Případně, pokud už máte ve formuláři požadované certifikáty a chtějí mít přístup k uvnitř kontejneru, můžete vytvořit balíček data uvnitř vaší balíček aplikace a zadejte následující uvnitř manifest aplikace:
+Případně, pokud již máte certifikáty v požadované podobě a chtějí mít přístup k uvnitř kontejneru, můžete vytvořit balíček dat uvnitř balíčku aplikace a zadejte následující v manifestu aplikace:
 
 ```xml
 <ContainerHostPolicies CodePackageRef="NodeContainerService.Code">
   <CertificateRef Name="MyCert1" DataPackageRef="[DataPackageName]" DataPackageVersion="[Version]" RelativePath="[Relative Path to certificate inside DataPackage]" Password="[password]" IsPasswordEncrypted="[true/false]"/>
  ```
 
-Službu kontejneru nebo procesu je zodpovědná za importování soubory certifikátu do kontejneru. Chcete-li import certifikátu, můžete použít `setupentrypoint.sh` skriptů nebo spuštění vlastního kódu v rámci procesu kontejneru. Tady je ukázkový kód v jazyce C# pro import souboru PFX:
+Služba kontejneru nebo procesu je zodpovědná za Import certifikátu souborů do kontejneru. Chcete-li importovat certifikát, můžete použít `setupentrypoint.sh` skripty nebo když spouští vlastní kód v rámci procesu kontejneru. Tady je ukázkový kód v C# pro import souboru PFX:
 
 ```csharp
 string certificateFilePath = Environment.GetEnvironmentVariable("Certificates_MyServicePackage_NodeContainerService.Code_MyCert1_PFX");
@@ -61,9 +61,9 @@ store.Open(OpenFlags.ReadWrite);
 store.Add(cert);
 store.Close();
 ```
-Tento certifikát PFX, který slouží pro ověřování aplikace nebo služby nebo zabezpečenou komunikaci s jinými službami. Ve výchozím nastavení jsou soubory ACLed pouze do systému. Seznam ACL můžete ho na jiné účty podle potřeby službou.
+Tento certifikát PFX lze použít k ověřování aplikace nebo služby nebo zabezpečenou komunikaci s dalšími službami. Ve výchozím nastavení jsou soubory ACLed pouze do systému. Seznam ACL můžete ji na jiné účty podle požadavků službu.
 
-Jako další krok přečtěte si následující články:
+V dalším kroku přečtěte si následující články:
 
-* [Nasazení kontejneru systému Windows pro Service Fabric na Windows Server 2016](service-fabric-get-started-containers.md)
-* [Nasadit kontejner Docker do Service Fabric v systému Linux](service-fabric-get-started-containers-linux.md)
+* [Nasazení kontejneru Windows do Service Fabric na Windows serveru 2016](service-fabric-get-started-containers.md)
+* [Nasazení kontejneru Dockeru pro Service Fabric v Linuxu](service-fabric-get-started-containers-linux.md)

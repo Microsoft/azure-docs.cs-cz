@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 10/11/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: 17efbfffde68208b76120d449f4e1d70e843fc7d
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: 035b12c85720817501da9f4ad580aa8e7da8fdc4
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50914341"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51280505"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-diagnostic-logs"></a>Podporované služby, schémat a kategorie pro diagnostické protokoly Azure
 
@@ -47,7 +47,7 @@ Schéma protokolů diagnostiky prostředků se liší podle kategorie prostředk
 
 | Služba | Schéma a dokumentace |
 | --- | --- |
-| Azure Active Directory | [Přehled](../active-directory/reports-monitoring/overview-activity-logs-in-azure-monitor.md), [schéma protokolu auditu](../active-directory/reports-monitoring/reference-azure-monitor-audit-log-schema.md) a [Sign in schématu](../active-directory/reports-monitoring/reference-azure-monitor-sign-ins-log-schema.md) |
+| Azure Active Directory | [Přehled](../active-directory/reports-monitoring/concept-activity-logs-azure-monitor.md), [schéma protokolu auditu](../active-directory/reports-monitoring/reference-azure-monitor-audit-log-schema.md) a [Sign in schématu](../active-directory/reports-monitoring/reference-azure-monitor-sign-ins-log-schema.md) |
 | Analysis Services | https://azure.microsoft.com/blog/azure-analysis-services-integration-with-azure-diagnostic-logs/ |
 | API Management | [Diagnostické protokoly služby API Management](../api-management/api-management-howto-use-azure-monitor.md#diagnostic-logs) |
 | Brány Application Gateway |[Diagnostika protokolování pro službu Application Gateway](../application-gateway/application-gateway-diagnostics.md) |

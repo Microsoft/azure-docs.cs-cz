@@ -15,19 +15,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2018
-ms.openlocfilehash: 02a12e917ed36367ffac1ac2e7a1fef1c6098ea7
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0594b9b40fdf8647f99946a31dbb47a95c9694ac
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46985363"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51300349"
 ---
 # <a name="vehicle-telemetry-analytics-solution-playbook"></a>Řešení analýzy Telemetrie vozidla
-Tato nabídka odkazy na kapitol v playbook: 
 
-[!INCLUDE [cap-vehicle-telemetry-playbook-selector](../../../includes/cap-vehicle-telemetry-playbook-selector.md)]
-
-## <a name="overview"></a>Přehled
 Superpočítače se přesunuly z testovacího prostředí a jsou teď zaparkované ve garáží. Ty jsou nyní umístěných v špičkové automobily, které obsahují řadu senzorů. Tyto senzory jim umožňuje sledovat a monitorovat miliony událostí za sekundu. Do roku 2020 většinu těchto vozidel připojí k Internetu. Proniknutí do dat v plné šíři poskytuje vyšší bezpečnost, spolehlivost, a tak lepší řízení prostředí. Společnost Microsoft neposkytuje to sní realita s využitím Cortana Intelligence.
 
 Cortana Intelligence je plně spravovaná velké objemy dat a sada pro pokročilou analýzu, který vám pomůže získat z dat na inteligentní interpretovatelné přehledy. Řešení šablona Cortana Intelligence Telemetrie vozidel Analytics ukazuje, jak můžou autorizovaní prodejci, výrobci automobilů a pojišťovací společnosti budou moct získat v reálném čase a prediktivní přehledy o stavu vozidel a jízdních návycích.
@@ -54,3 +50,8 @@ Toto řešení má přístup k dvou různých datových zdrojů:
 * **Simulované vozidla signály a Diagnostika**: simulátor telematiky vozidel vysílá diagnostické informace a signály, které odpovídají stavu vozidla a řízení vzor k danému bodu v čase. 
 * **Katalog vozidel**: Tento referenční sady dat mapuje VIN čísla na modely.
 
+## <a name="next-steps"></a>Další kroky
+
+Prozkoumat další toto řešení, najdete v článku [playbook řešení analýzy Telemetrie vozidla: Podívejte se na řešení](cortana-analytics-playbook-vehicle-telemetry-deep-dive.md).
+
+Další informace o konfiguraci sestavy Power BI a řídicí panely pro toto řešení, najdete v článku [pokyny k instalaci vozidla telemetrická data Analytics řešení šablony Power BI řídicí panel](cortana-analytics-playbook-vehicle-telemetry-powerbi.md).

@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 04/24/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 8137a292045377c5dccb69c21a8118d0dc17874e
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 14e8eb7c73a1e2cf5047410d3571008c1cd1e1ca
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49069936"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51289270"
 ---
-# <a name="internet-of-things-security-from-the-ground-up"></a>Zabezpečení Internetu věcí od počátku
+# <a name="security-for-internet-of-things-iot-from-the-ground-up"></a>Zabezpečení pro Internet věcí (IoT) od počátku
 
 Internet of Things (IoT) představuje jedinečné výzvy zabezpečení, ochrany osobních údajů a dodržování předpisů pro firmy po celém světě. Na rozdíl od tradiční kybernetických technologie, kde tyto problémy točí kolem software a jak je implementován IoT se týká, co se stane, když kybernetických a fyzických světů sloučit. Ochrana řešení IoT vyžaduje zajištění zabezpečeného zřizování zařízení, zabezpečené připojení mezi tato zařízení a cloud a ochranu zabezpečení dat v cloudu při zpracování a ukládání. Práce proti takové funkce, ale zařízení s omezenými zdroji, geografické rozptýlení nasazení a velký počet zařízení v rámci řešení.
 

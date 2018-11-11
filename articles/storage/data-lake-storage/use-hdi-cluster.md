@@ -7,20 +7,20 @@ ms.service: storage
 ms.topic: article
 ms.date: 06/27/2018
 ms.author: jamesbak
-ms.openlocfilehash: 04e2e32de90283da2563395f8b24dbb4b1dab888
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: 8c79107a0081b1c7478ffe8ceb44ec67e1f618c4
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51241749"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51283661"
 ---
 # <a name="use-azure-data-lake-storage-gen2-preview-with-azure-hdinsight-clusters"></a>Použití Azure Data Lake Storage Gen2 Preview s využitím clusterů Azure HDInsight
 
-Pokud chcete analyzovat data v clusteru HDInsight, můžete ukládat data v libovolnou kombinaci služby Azure Storage, Azure Data Lake Storage Gen1 nebo Azure Data Lake Storage Gen2 ve verzi Preview. Všechny možnosti ukládání umožňují bezpečné odstranění clusterů HDInsight, které jsou používány pro výpočty, aniž by se ztratila uživatelská data.
+Pokud chcete analyzovat data v clusteru služby HDInsight, můžete ukládat data v libovolnou kombinaci služby Azure Blob Storage, Azure Blob Storage s Azure Data Lake Storage Gen2 povolenou verzí Preview nebo Azure Data Lake Storage Gen1. Všechny možnosti ukládání umožňují bezpečné odstranění clusterů HDInsight, které jsou používány pro výpočty, aniž by se ztratila uživatelská data.
 
-Hadoop podporuje hodnoty výchozího systému souborů. Výchozí systém souborů znamená výchozí schéma a autoritu. Lze ho také použít k vyřešení relativní cesty. Během procesu vytváření clusteru HDInsight můžete jako výchozí systém souborů zadat kontejner objektů blob v Azure Storage nebo Azure Data Lake Storage. Můžete také u služby HDInsight 3.5 můžete vybrat služby Azure Storage nebo Azure Data Lake Storage jako výchozí systém souborů s několika výjimkami.
+Hadoop podporuje hodnoty výchozího systému souborů. Výchozí systém souborů znamená výchozí schéma a autoritu. Lze ho také použít k vyřešení relativní cesty. Během procesu vytváření clusteru HDInsight můžete zadat kontejner objektů blob v Azure Storage nebo hierarchického oboru názvů, které nabízí Data Lake Storage Gen2 jako výchozí systém souborů. Můžete také u služby HDInsight 3.5 můžete vybrat kontejner nebo hierarchického oboru názvů jako výchozí systém souborů s několika výjimkami.
 
-V tomto článku se dozvíte, jak služba Azure Data Lake Storage Gen2 pracuje s clustery HDInsight. Další informace o vytvoření clusteru HDInsight najdete v tématu [nastavení HDInsight clustery pomocí Hadoop, Spark, Kafka a další služby Azure Data Lake Storage](quickstart-create-connect-hdi-cluster.md).
+V tomto článku se dozvíte, jak služba Data Lake Storage Gen2 pracuje s clustery HDInsight. Další informace o vytvoření clusteru HDInsight najdete v tématu [nastavení HDInsight clustery pomocí Hadoop, Spark, Kafka a další služby Azure Data Lake Storage](quickstart-create-connect-hdi-cluster.md).
 
 Azure Storage je robustní řešení úložiště pro obecné účely, které se jednoduše integruje se službou HDInsight. HDInsight můžete jako výchozí systém souborů pro cluster použít Azure Data Lake Storage. Pomocí rozhraní Hadoop distributed file system (HDFS) může celá sada komponent v HDInsight pracovat přímo se soubory ve službě Azure Data Lake Storage.
 
@@ -80,13 +80,13 @@ Některé úlohy a balíčky MapReduce můžou vytvořit mezilehlé výsledky, k
 > [!NOTE]
 > Většina příkazů HDFS (například `ls`, `copyFromLocal` a `mkdir`) i nadále fungovat podle očekávání. Jenom příkazy, které jsou specifické pro systému souborů DFS, jako je například `fschk` a `dfsadmin`, zobrazit různé chování ve službě Azure storage.
 
-## <a name="create-an-data-lake-storage-file-system"></a>Vytvořit systém souborů Data Lake Storage
+## <a name="create-a-data-lake-storage-file-system"></a>Vytvořit systém souborů Data Lake Storage
 
 Chcete-li použít systém souborů, je třeba nejprve vytvořit [účtu služby Azure Storage][azure-storage-create]. Jako součást tohoto procesu zadáte oblast Azure, které se účet úložiště vytvoří. Účet úložiště a clusteru musí být uloženy ve stejné oblasti. Databáze serveru SQL metaúložiště Hive a databáze serveru SQL metaúložiště Oozie musí být také umístěny ve stejné oblasti.
 
-Ať jsou umístěná kdekoli, do systému souborů ve vašem účtu úložiště Azure Data Lake patří každý objekt blob, které vytvoříte. 
+Ať jsou umístěná kdekoli, každý objekt blob, který vytvoříte patří do systému souborů ve vašem účtu úložiště.
 
-Výchozí systém souborů Data Lake Storage ukládá konkrétní informace, jako je historie úlohy a protokoly. Výchozí systém souborů Data Lake Storage nesdílejte s více clusterů HDInsight. Může dojít k poškození historie úlohy. Doporučujeme použít jiný systém souborů pro každý cluster a umístit sdílená data na propojený účet úložiště zadaný v nasazení všech příslušných clusterů, nikoli výchozí účet úložiště. Další informace o konfiguraci propojených účtů úložiště najdete v tématu [Tvorba clusterů HDInsight][hdinsight-creation]. Ale můžete znovu použít výchozí systém souborů úložiště po odstranění původního clusteru HDInsight. Pro clustery HBase můžete zachovat schéma tabulky HBase a data vytvořením nového clusteru HBase pomocí výchozího kontejneru objektů blob, který používá odstraněné cluster HBase, který je odstraněný.
+Výchozí systém souborů Data Lake Storage Gen2 ukládá konkrétní informace, jako je historie úlohy a protokoly. Výchozí systém souborů Data Lake Storage Gen2 nesdílejte s více clusterů HDInsight. Může dojít k poškození historie úlohy. Doporučujeme použít jiný systém souborů pro každý cluster a umístit sdílená data na propojený účet úložiště zadaný v nasazení všech příslušných clusterů, nikoli výchozí účet úložiště. Další informace o konfiguraci propojených účtů úložiště najdete v tématu [Tvorba clusterů HDInsight][hdinsight-creation]. Ale můžete znovu použít výchozí systém souborů úložiště po odstranění původního clusteru HDInsight. Pro clustery HBase můžete zachovat schéma tabulky HBase a data vytvořením nového clusteru HBase pomocí výchozího kontejneru objektů blob, který používá odstraněné cluster HBase, který je odstraněný.
 
 [!INCLUDE [secure-transfer-enabled-storage-account](../../../includes/hdinsight-secure-transfer.md)]
 
@@ -132,7 +132,7 @@ Pokud jste [nainstalovali a nakonfigurovali Azure PowerShell][powershell-install
     New-AzureStorageContainer -Name $containerName -Context $destContext
 
 > [!NOTE]
-> Vytvoření kontejneru je synonymum pro vytváření systému souborů ve službě Azure Data Lake Storage.
+> Vytvoření kontejneru je synonymum pro vytváření systému souborů v Data Lake Storage Gen2.
 
 ### <a name="use-azure-cli"></a>Použití Azure CLI
 
@@ -164,7 +164,7 @@ Když chcete vytvořit kontejner, použijte následující příkaz:
     azure storage container create <CONTAINER_NAME> --account-name <STORAGE_ACCOUNT_NAME> --account-key <STORAGE_ACCOUNT_KEY>
 
 > [!NOTE]
-> Vytvoření kontejneru je synonymum pro vytváření systému souborů ve službě Azure Data Lake Storage.
+> Vytvoření kontejneru je synonymum pro vytváření systému souborů v Data Lake Storage Gen2.
 
 ## <a name="address-files-in-azure-storage"></a>Adresování souborů ve službě Azure Storage
 
@@ -174,7 +174,7 @@ Schéma identifikátoru URI pro přístup k souborům ve službě Azure Storage 
 
 Schéma identifikátoru URI poskytuje nezašifrovaný přístup (s *abfs:* předpony) a zašifrovaný přístup SSL (s *abfss*). Doporučujeme používat *abfss* kdykoli je to možné, i v případě, že přístup k datům, umístěným uvnitř stejné oblasti v Azure.
 
-* &lt;FILE_SYSTEM_NAME&gt; identifikuje cesta systému souborů Azure Data Lake Storage.
+* &lt;FILE_SYSTEM_NAME&gt; identifikuje cesta systému souborů Data Lake Storage Gen2.
 * &lt;Název účtu&gt; identifikuje název účtu úložiště Azure. Vyžaduje se plně kvalifikovaný název domény (FQDN).
 
     Pokud hodnoty &lt;FILE_SYSTEM_NAME&gt; ani &lt;ACCOUNT_NAME&gt; jste zadali, se používá výchozí systém souborů. Pro soubory ve výchozím systému souborů můžete použít relativní cestu nebo absolutní cestu. Například *hadoop-mapreduce-examples.jar* soubor, který se dodává s clustery HDInsight lze odkazovat pomocí jedné z následujících cest:
@@ -205,9 +205,9 @@ V tomto článku jste zjistili, jak používat HDFS kompatibilní úložiště A
 Další informace naleznete v tématu:
 
 * [Ovladač systému souborů Hadoop ABFS pro Azure Data Lake Storage Gen2](abfs-driver.md)
-* [Úvod do služby Azure Data Lake Storage](introduction.md)
-* [Nastavení clusterů HDInsight pomocí Azure Data Lake Storage s Hadoop, Spark, Kafka a další](quickstart-create-connect-hdi-cluster.md)
-* [Ingestovat data do úložiště Azure Data Lake pomocí distcp](use-distcp.md)
+* [Úvod do služby Azure Data Lake Storage Gen2](introduction.md)
+* [Nastavení clusterů HDInsight pomocí Azure Data Lake Storage Gen2 s Hadoop, Spark, Kafka a další](quickstart-create-connect-hdi-cluster.md)
+* [Ingestovat data do Azure Data Lake Storage Gen2 pomocí distcp](use-distcp.md)
 
 [powershell-install]: /powershell/azureps-cmdlets-docs
 [hdinsight-creation]: ../../hdinsight/hdinsight-hadoop-provision-linux-clusters.md

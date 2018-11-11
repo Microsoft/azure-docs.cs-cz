@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 10/30/2018
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: 3869b47c4e435443bb569ae7b90df7fba9687ba7
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: e8d07922334855a8133cd6271ee98bcfac2243d5
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50421250"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282607"
 ---
 # <a name="monitor-availability-and-responsiveness-of-any-web-site"></a>Sledování dostupnosti a odezvy libovolných webů
 Po nasazení webové aplikace nebo webu na libovolném serveru můžete nastavit testy ke sledování dostupnosti a odezvy. [Azure Application Insights](app-insights-overview.md) odesílá do vaší aplikace webové požadavky v pravidelných intervalech z bodů po celém světě. Upozorní vás v případě, že vaše aplikace reaguje pomalu nebo nereaguje vůbec.
@@ -76,7 +76,7 @@ Otevřete okno Dostupnost a přidejte test.
 Je možné sledovat scénář, který zahrnuje posloupnost adres URL. Například pokud sledujete prodejní web, můžete otestovat, zda správně funguje přidávání položek do nákupního košíku.
 
 > [!NOTE]
-> Vícekrokové webové testy jsou zpoplatněné. [Cenové schéma](http://azure.microsoft.com/pricing/details/application-insights/).
+> Vícekrokové webové testy jsou zpoplatněné. [Cenové schéma](https://azure.microsoft.com/pricing/details/application-insights/).
 > 
 
 Pro vytvoření vícekrokového testu uložte scénář pomocí sady Visual Studio Enterprise a pak nahrajte tento záznam do služby Application Insights. Application Insights přehrává scénář v intervalech a ověřuje odezvy.
@@ -214,6 +214,7 @@ X z Y umístění, pravidlo upozornění je povolená ve výchozím nastavení [
 > [!NOTE]
 > * Konfigurace skupin akcí pro příjem oznámení při aktivaci upozornění podle výše uvedených kroků. Bez tohoto kroku budou dostávat jen na portálu oznámení, když se pravidlo aktivuje.
 >
+
 ### <a name="alert-on-availability-metrics"></a>Upozornění na metriky dostupnosti
 Použití [oznámení pro nové sjednocené](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts), můžete upozornění na segmentovaným agregační dostupnosti a otestovat také doba trvání metriky:
 

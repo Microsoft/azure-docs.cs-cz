@@ -7,31 +7,31 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/21/2018
 ms.author: saudas
-ms.openlocfilehash: d8da717b83b43395309c695a4f9edaeda8144a8b
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: a17e2fa4bef6890d59f7e66c6ede349f8dee3b8a
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49379191"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51280449"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Podporované verze Kubernetes ve službě Azure Kubernetes Service (AKS)
 
-Komunitě Kubernetes verze dílčí verze přibližně jednou za tři měsíce. Tyto verze zahrnují nové funkce a vylepšení. Vydání opravy jsou častější (někdy týdně) a jsou určeny pouze pro důležité opravy chyb v dílčí verze. Tyto opravy verze zahrnují opravy pro chyby zabezpečení nebo hlavní chyby vliv na velký počet zákazníků a produktů, které běží v produkčním prostředí založené na Kubernetes.
+Komunita Kubernetes vydává dílčí verze přibližně každé tři měsíce. Tato vydání obsahují nové funkce a vylepšení. Opravná vydání jsou častější (někdy i každý týden) a slouží jen k opravám kritických chyb v dílčí verzi. Tyto opravy verze zahrnují opravy pro chyby zabezpečení nebo hlavní chyby vliv na velký počet zákazníků a produktů, které běží v produkčním prostředí založené na Kubernetes.
 
-Dílčí verze je k dispozici v nové Kubernetes [acs-engine] [ acs-engine] na jeden den. AKS cíl SLO (Service Level) cíle pro AKS vydání vedlejší verze clusterů do 30 dní v souladu s stabilitu vydání.
+Dílčí verze je k dispozici v nové Kubernetes [acs-engine] [ acs-engine] na jeden den. AKS Service Level Objective (SLO) má za cíl vydat dílčí verzi pro clustery AKS během 30 dní, v závislosti na stabilitě vydané verze.
 
-## <a name="kubernetes-version-support-policy"></a>Zásady podpory verze Kubernetes
+## <a name="kubernetes-version-support-policy"></a>Zásady podpory verzí Kubernetes
 
 AKS podporuje čtyři dílčí verze Kubernetes:
 
 - Aktuální podverzi, která je všeobecně dostupné nadřazeného (n)
-- Předchozí tři dílčí verze. Všechny podporované vedlejší verze také podporuje dva stabilní opravy.
+- Tři předchozí dílčí verze. Každá podporovaná dílčí verze také podporuje dvě stabilní opravy.
 
 Například, pokud představuje AKS *1.11.x* v současné době také poskytuje podporu pro *1.10.a* + *1.10.b*, *1.9.c*  +  *1.9d*, *1.8.e* + *1.8F* (kde lettered aktualizací jsou dvě poslední stabilní sestavení).
 
-Pokud je zavedená nová podverze, byly ukončeny nejstarší vedlejší verze a opravy verze nepodporuje. 15 dnů před vydáním nové podverze a nadcházející verzi vyřazení, oznámení se provádí prostřednictvím Azure aktualizačních kanálech. V příkladu výše where *1.11.x* je všeobecně dostupné, jsou vyřazené verze *1.7.g* + *1.7.h*.
+Při uvedení nové dílčí verze se přestane podporovat nejstarší dílčí verze a její opravná vydání. 15 dnů před vydáním nové podverze a nadcházející verzi vyřazení, oznámení se provádí prostřednictvím [Azure aktualizačních kanálech][azure-update-channel]. V příkladu výše where *1.11.x* je všeobecně dostupné, jsou vyřazené verze *1.7.g* + *1.7.h*.
 
-Když nasadíte cluster AKS na portálu nebo pomocí Azure CLI, clusteru je vždycky nastavený na n-1 podverze a nejnovější opravy. Například, pokud podporuje AKS *1.11.x*, *1.10.a* + *1.10.b*, *1.9.c* + *1.9 d* , *1.8.e* + *1.8F*, je výchozí verze nových clusterů *1.10.b*.
+Když nasadíte cluster AKS na portálu nebo pomocí Azure CLI, cluster se vždycky nastaví na dílčí verzi n-1 a nejnovější opravu. Například, pokud podporuje AKS *1.11.x*, *1.10.a* + *1.10.b*, *1.9.c* + *1.9 d* , *1.8.e* + *1.8F*, je výchozí verze nových clusterů *1.10.b*.
 
 ## <a name="list-currently-supported-versions"></a>Seznam aktuálně podporované verze
 
@@ -62,7 +62,7 @@ KubernetesVersion    Upgrades
 
 Pokud používáte *n-4* verze, které jsou mimo cíle na úrovni služby. Pokud váš upgrade z verze n-4 n-3 úspěšné, pak jste zpátky v cíle na úrovni služby. Příklad:
 
-- Pokud jsou podporované verze AKS *1.10.a* + *1.10.b*, *1.9.c* + *1.9d*, *1.8.e* + *1.8F* a jsou na *1.7.g* nebo *1.7.h*, jsou mimo cíle na úrovni služby.
+- Pokud jsou podporované verze AKS *1.10.a* + *1.10.b*, *1.9.c* + *1.9d*,  *1.8.e* + *1.8F* a jsou na *1.7.g* nebo *1.7.h*, jsou mimo cíle na úrovni služby.
 - Pokud se upgrade z *1.7.g* nebo *1.7.h* k *1.8.e* nebo *1.8.f* proběhne úspěšně, jste zpátky v cíle na úrovni služby.
 
 Upgrady na verzi starší než *n-4* nejsou podporovány. V takovém případě doporučujeme zákazníkům vytvoření nových clusterů AKS a znovu nasadit své úlohy.
@@ -85,6 +85,7 @@ Informace o tom, jak upgradovat váš cluster najdete v tématu [Upgrade cluster
 
 <!-- LINKS - External -->
 [acs-engine]: https://github.com/Azure/acs-engine
+[azure-update-channel]: https://azure.microsoft.com/updates/?product=kubernetes-service
 
 <!-- LINKS - Internal -->
 [aks-upgrade]: upgrade-cluster.md
