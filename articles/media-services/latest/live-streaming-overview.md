@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 10/16/2018
+ms.date: 11/08/2018
 ms.author: juliako
-ms.openlocfilehash: c8e4e84d7ae0defdb053108dc668956062c47ea5
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: a4569505cb9a42f6682391a8b06725dea5e539dc
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50962380"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51344967"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Živé streamování pomocí služby Azure Media Services v3
 
@@ -44,11 +44,11 @@ V případě potřeby můžete také použít **dynamické filtrování**, kter�
 
 Následující nová vylepšení byly dokončeny v nejnovější verzi.
 
-- Nový režim s nízkou latencí pro živé (10 sekund end-to-end).
+- Nový režim s nízkou latencí. Další informace najdete v tématu [latence](#latency).
 - (Zvýšení stability a další podporu zdrojového kodér) Vylepšená podpora RTMP ve službě.
 - Ingestování RTMPS zabezpečené.
 
-    Při vytváření Livestream nyní získáte 4 ingestované adresy URL. Ingestování 4 adresy URL jsou téměř identické, mít stejný token streamování (AppId), jenom část čísla portu se liší. Dva z adres URL jsou primární a záložní pro RTMPS.   
+    Při vytváření Livestream získáte 4 ingestované adresy URL. Ingestování 4 adresy URL jsou téměř identické, mít stejný token streamování (AppId), jenom část čísla portu se liší. Dva z adres URL jsou primární a záložní pro RTMPS.   
 - Podpora překódování 24 hodin. 
 - Vylepšená podpora ad signalizace v RTMP prostřednictvím SCTE35.
 
@@ -82,7 +82,7 @@ Při vytváření tohoto typu Livestream, zadejte **žádný** (LiveEventEncodin
 
 Následující tabulka obsahuje porovnání funkcí těchto dvou typů Livestream.
 
-| Funkce | Předávací Livestream | Základní Livestream |
+| Funkce | Předávací Livestream | Standardní Livestream |
 | --- | --- | --- |
 | Vstup s jednou přenosovou rychlostí je zakódován do více přenosových rychlostí v cloudu |Ne |Ano |
 | Maximální rozlišení, počet vrstev |4Kp30  |720p, 6 vrstvy, 30 snímků za sekundu |
@@ -94,7 +94,7 @@ Následující tabulka obsahuje porovnání funkcí těchto dvou typů Livestrea
 | Podpora ad signalizace prostřednictvím SCTE35 inband|Ano |Ano |
 | Předávací titulky CEA 608/708 |Ano |Ano |
 | Schopnost zotavení z stručný přepínání v příspěvku informačního kanálu |Ano |Ne (Livestream se začne slating po sekundách 6 bez vstupních dat)|
-| Podpora pro vstupní GOPs nerovnoměrné |Ano |Ne – vstup musí být nastaven 2 sekundu GOPs |
+| Podpora pro vstupní GOPs nerovnoměrné |Ano |Ne – vstup musí být nastaven GOPs 2 s |
 | Podpora pro vstup míra proměnné rámce |Ano |Ne – vstup musí být stanovena snímkovou frekvenci.<br/>Malé změny jsou například tolerovat při vysoké pohybu scény. Ale kodér nelze umístit do 10 snímků za sekundu. |
 | Dojde ke ztrátě Auto přístupnými z Livestream při zadání informačního kanálu |Ne |Po 12 hodinách, pokud neexistuje žádný LiveOutput spuštění |
 
@@ -126,6 +126,20 @@ Livestream podporuje až tři současně spuštěné LiveOutputs, takže můžet
 Jakmile se datový proud přenáší do události LiveEvent, můžete zahájit událost streamování vytvořením prostředku, výstupu LiveOutput a lokátoru streamování StreamingLocator. To bude archivovat datového proudu a zpřístupní ji se divákům prostřednictvím [StreamingEndpoint](https://docs.microsoft.com/rest/api/media/streamingendpoints).
 
 Po vytvoření účtu Media Services je ke svému účtu v zastaveném stavu přidá výchozí koncový bod streamování. Pokud chcete spustit streamování vašeho obsahu a využít výhod dynamického balení a dynamického šifrování, musí koncový bod streamování, ze kterého chcete Streamovat obsah musí být ve spuštěném stavu.
+
+## <a name="latency"></a>Latence
+
+Tato část popisuje výsledky, které se zobrazí při použití nastavení s nízkou latencí a různé přehrávače. Výsledky lišit v závislosti na latenci sítě CDN.
+
+Pokud chcete využít novou funkci LowLatency, můžete nastavit **StreamOptionsFlag** k **LowLatency** na Livestream. Po vytvoření a spuštění je datový proud, můžete [Azure Media Player](http://ampdemo.azureedge.net/) (AMP) ukázka stránku a nastavit možnosti přehrávání použít "S nízkou latencí heuristiky profil".
+
+### <a name="pass-through-liveevents"></a>Předávací LiveEvents
+
+||2S GOP nízká latence povoleno|1s GOP nízká latence povoleno|
+|---|---|---|
+|POMLČKA v knihovně AMP|10s|8S|
+|HLS v přehrávači nativní aplikace pro iOS|14s|10s|
+|HLS. JS v přehrávači Mixer|30 s|16s|
 
 ## <a name="billing"></a>Fakturace
 

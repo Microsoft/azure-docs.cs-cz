@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/30/2018
+ms.date: 11/07/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: a9e601d0bd9a4d7879ecd205488c6a901a464021
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 77f9e52da8ada9cdf56d4a710bba65492cc17f75
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50419826"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51280737"
 ---
 # <a name="tutorial-deploy-apps-to-azure-and-azure-stack"></a>Kurz: Nasazení aplikace do Azure a Azure Stack
 
@@ -292,7 +292,7 @@ Můžete vytvořit připojení služby pomocí následující mapování:
 | Název předplatného | name@contoso.com | Název předplatného uživatele ze služby Azure Stack. |
 | ID klienta instančního objektu | FF74AACF-XXXX-4776-93FC-C63E6E021D59 | ID objektu zabezpečení z [to](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-pipeline#create-a-service-principal) části v tomto článku. |
 | Klíč objektu služby | THESCRETGOESHERE = | Klíč ze stejného článku (nebo heslo, pokud jste použili skriptu). |
-| ID tenanta | D073C21E-XXXX-4AD0-B77E-8364FCA78A94 | Identifikátor ID tenanta načíst následující instrukce na získání tenanta. ID tenanta načíst následující instrukce na [získání ID tenanta](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-pipeline#get-the-tenant-id).  |
+| ID tenanta | D073C21E-XXXX-4AD0-B77E-8364FCA78A94 | ID tenanta načíst následující instrukce na [získání ID tenanta](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-pipeline#get-the-tenant-id).  |
 | Připojení: | Neověřeno | Ověření nastavení připojení k instančnímu objektu služby. |
 
 Teď, když je vytvořen koncový bod, DevOps pro připojení služby Azure Stack je připravený k použití. Agent sestavení ve službě Azure Stack získá pokyny od DevOps a pak agenta přenáší informace o koncovém bodu pro komunikaci pomocí služby Azure Stack.
@@ -317,7 +317,7 @@ Můžete vytvořit připojení služby pomocí následující mapování:
 | Název předplatného | name@contoso.com | Název předplatného uživatele ze služby Azure Stack. |
 | ID klienta instančního objektu | FF74AACF-XXXX-4776-93FC-C63E6E021D59 | ID klienta objektu služby, který jste vytvořili pro službu AD FS. |
 | Certifikát | `<certificate>` |  Převeďte soubor certifikátu z formátu PFX na PEM. Vložte obsah souboru PEM certifikátu do tohoto pole. <br> Převod PFX na PEM:<br>`openssl pkcs12 -in file.pfx -out file.pem -nodes -password pass:<password_here>` |
-| ID tenanta | D073C21E-XXXX-4AD0-B77E-8364FCA78A94 | Identifikátor ID tenanta načíst následující instrukce na získání tenanta. ID tenanta načíst následující instrukce na [získání ID tenanta](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-pipeline#get-the-tenant-id). |
+| ID tenanta | D073C21E-XXXX-4AD0-B77E-8364FCA78A94 | ID tenanta načíst následující instrukce na [získání ID tenanta](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-pipeline#get-the-tenant-id). |
 | Připojení: | Neověřeno | Ověření nastavení připojení k instančnímu objektu služby. |
 
 Teď, když je vytvořen koncový bod, je připravený k použití Azure DevOps pro připojení služby Azure Stack. Agent sestavení ve službě Azure Stack získá pokyny z Azure DevOps a pak agenta přenáší informace o koncovém bodu pro komunikaci pomocí služby Azure Stack.

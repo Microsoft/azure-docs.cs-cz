@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: librown
-ms.openlocfilehash: 81c249c8dc8475428f4cb0014e57f09e28a3d9af
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 3a9fba644bd379f3f54cf07cf35c0a54029756da
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48804323"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51287179"
 ---
 # <a name="password-less-phone-sign-in-with-the-microsoft-authenticator-app-public-preview"></a>Přihlašování telefonem bez hesla pomocí aplikace Microsoft Authenticator (public preview)
 
@@ -37,11 +37,16 @@ Pro verzi public preview správce musíte nejprve přidat zásady pomocí powers
 
 ### <a name="steps-to-enable"></a>Postup povolení
 
-1. Nainstalujte [verze public preview služby Azure Active Directory V2 Powershellu modulu](https://www.powershellgallery.com/packages/AzureADPreview/).  
-2. V prostředí PowerShell spusťte dva příkazy:
-   1. `Connect-AzureAD`
-      1. V dialogovém okně pro ověření přihlašují účtem v tenantovi. Účet musí být buď správce zabezpečení nebo globální správce.
-   2. `New-AzureADPolicy -Type AuthenticatorAppSignInPolicy -Definition '{"AuthenticatorAppSignInPolicy":{"Enabled":true}}' -isOrganizationDefault $true -DisplayName AuthenticatorAppSignIn`
+Ujistěte se, že máte nejnovější verzi modulu Azure Active Directory V2 PowerShell verze Public Preview. Možná budete chtít odinstalovat a znovu nainstalujte, potvrďte to spuštěním následujících příkazů:
+
+1. `Uninstall-Module -Name AzureADPreview`
+2. `Install-Module -Name AzureADPreview`
+
+Můžete povolit bez hesla telefon přihlášení preview použijte následující příkazy Powershellu:
+
+1. `Connect-AzureAD`
+   1. V dialogovém okně pro ověření přihlašují účtem v tenantovi. Účet musí být buď správce zabezpečení nebo globální správce.
+1. `New-AzureADPolicy -Type AuthenticatorAppSignInPolicy -Definition '{"AuthenticatorAppSignInPolicy":{"Enabled":true}}' -isOrganizationDefault $true -DisplayName AuthenticatorAppSignIn`
 
 ## <a name="how-do-my-end-users-enable-phone-sign-in"></a>Jak koncovým uživatelům povolit přihlašování telefonem?
 
@@ -61,7 +66,7 @@ Jakmile uživatel má účet MFA s nabízenými oznámeními v aplikaci Microsof
 
 ### <a name="ad-fs-integration"></a>Integrace služby AD FS
 
-Když uživatel povolí přihlašovací údaje bez hesla, které Microsoft Authenticator, ověřování pro tohoto uživatele bude vždy ve výchozím nastavení odesílání oznámení o schválení. Tuto logiku zabraňuje uživatelům v tenantovi hybridní do AD FS pro ověřování přihlášení uživatele, s ohledem na další krok směrovat do příslušných klikněte na tlačítko "Místo toho použít heslo." Tento proces bude také vynechat všechny místní zásady podmíněného přístupu a toky předávací ověřování. Výjimkou z tohoto procesu je login_hint je-li zadán, uživatel bude automaticky předána do služby AD FS a vynechat možnost použití přihlašovacích údajů bez hesla.
+Když uživatel povolí přihlašovací údaje bez hesla, které Microsoft Authenticator, ověřování pro tohoto uživatele bude vždy ve výchozím nastavení odesílání oznámení o schválení. Tuto logiku zabraňuje uživatelům v tenantovi hybridní do AD FS pro ověřování přihlášení uživatele, s ohledem na další krok směrovat do příslušných klikněte na tlačítko "Místo toho použít heslo." Tento proces bude také vynechat všechny místní zásady podmíněného přístupu a toky předávací ověřování. Výjimkou z tohoto procesu je login_hint je-li zadána, uživatel bude automaticky se službou AD FS a vynechat možnost použití přihlašovacích údajů bez hesla.
 
 ### <a name="azure-mfa-server"></a>Azure MFA serveru
 

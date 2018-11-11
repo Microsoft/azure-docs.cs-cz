@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/01/2018
+ms.date: 11/09/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 00ce57dbff749d4ee906e0e7dae1d828ef85326f
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: f44b267a28abd64acdd6bc74a43f1c5be8daf0ab
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50962057"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51515603"
 ---
 # <a name="azure-stack-1809-update"></a>Aktualizace služby Azure Stack 1809
 
@@ -39,7 +39,7 @@ Tento článek popisuje obsah balíčku 1809 aktualizace. Balíček aktualizace 
 
 Tato aktualizace zahrnuje následující vylepšení pro službu Azure Stack:
 
-- V této verzi služby Azure Stack integrované systémy podporuje konfigurace 4 až 16 uzlů. Můžete použít [Azure Stack Capacity Planner](http://aka.ms/azstackcapacityplanner) vám pomůžou při plánování kapacity služby Azure Stack a konfigurace.
+- V této verzi služby Azure Stack integrované systémy podporuje konfigurace 4 až 16 uzlů. Můžete použít [Azure Stack Capacity Planner](https://aka.ms/azstackcapacityplanner) vám pomůžou při plánování kapacity služby Azure Stack a konfigurace.
 
 - <!--  2712869   | IS  ASDK -->  **Klient služby Azure Stack syslog (obecná dostupnost)** tento klient umožňuje předávání auditů, upozornění a protokoly zabezpečení spojených s infrastrukturou Azure Stack na syslog serveru nebo zabezpečení informací a událostí (SIEM) software pro správu externí do služby Azure Stack. Klient syslog nyní podporuje určující port, na kterém naslouchá syslog server.
 
@@ -70,6 +70,17 @@ Tato aktualizace zahrnuje následující vylepšení pro službu Azure Stack:
 - <!-- 2702741 -  IS, ASDK --> Oprava potíží, ve které veřejné IP adresy, které se nasadily pomocí dynamického přidělování metoda nebyly zaručit zachování po zastavte a Navraťte vydání. Nyní jsou zachovány.
 
 - <!-- 3078022 - IS, ASDK --> Pokud se virtuální počítač zastavit a uvolnit před. 1808 ho nebylo možné znovu alokovat po 1808 aktualizaci.  Tento problém je vyřešen v 1809. Instance, které byly v tomto stavu a nebylo možné spustit, může být spuštěný v 1809 s touto opravou. Tento problém vyřešit zabrání také nevyskytla.
+
+<!-- 3090289 – IS, ASDK --> 
+- Byl opraven problém, kde po instalaci aktualizace. 1808, může dojít k následujícím problémům při nasazování virtuálních počítačů se spravovanými disky:
+
+   1. Pokud předplatné bylo vytvořeno před aktualizací. 1808, nasazení virtuálního počítače se spravovanými disky může selhat s interní chybovou zprávu. Chcete chybu vyřešit, postupujte podle těchto kroků pro každé předplatné:
+      1. Portál pro klienty, přejděte na **předplatná** a vyhledejte předplatné. Klikněte na tlačítko **poskytovatelů prostředků**, klikněte na **Microsoft.Compute**a potom klikněte na tlačítko **přeregistrovat**.
+      2. V rámci stejného předplatného, přejděte na **řízení přístupu (IAM)** a ověřte, že **Azure Stack – spravovaný Disk** je uvedena.
+   2. Pokud jste nakonfigurovali prostředí s více tenanty, nasazování virtuálních počítačů v rámci služby předplacené asociovaná s adresářem hosta může selhat s interní chybovou zprávu. Chcete-li chybu vyřešit, postupujte takto:
+      1. Použít [. 1808 Azure Stack opravu Hotfix](https://support.microsoft.com/help/4471992).
+      2. Postupujte podle kroků v [v tomto článku](azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory) změna konfigurace všech vašich adresářů hosta.
+
 
 ### <a name="changes"></a>Změny
 
@@ -128,7 +139,7 @@ Další informace o těchto ohrožení zabezpečení, klikněte na výše uveden
 
 ### <a name="prerequisites"></a>Požadavky
 
-- Instalace nejnovější opravy Hotfix Azure Stack. 1808 před použitím 1809. Další informace najdete v tématu [KB 4468920 – Azure Stack opravu Hotfix Azure Stack opravu Hotfix 1.1808.5.110](https://support.microsoft.com/en-us/help/4468920).
+- Instalace nejnovější opravy Hotfix Azure Stack. 1808 před použitím 1809. Další informace najdete v tématu [KB 4471992 – Azure Stack opravu Hotfix Azure Stack opravu Hotfix 1.1808.7.113](https://support.microsoft.com/help/4471992/).
 
   > [!TIP]  
   > Předplatit následující *RRS* nebo *Atom* kanály, držet krok s Azure Stack opravy hotfix:
@@ -157,9 +168,8 @@ Další informace o těchto ohrožení zabezpečení, klikněte na výše uveden
 > [!Important]  
 > Příprava vašeho nasazení Azure stacku pro rozšíření hostitele, který je povolený další balíček aktualizace. Příprava systému podle následujících pokynů k [Příprava hostitele rozšíření pro službu Azure Stack](azure-stack-extension-host-prepare.md).
 
-<!-- After the installation of this update, install any applicable Hotfixes. For more information view the following knowledge base articles, as well as our [Servicing Policy](azure-stack-servicing-policy.md).  
- - [Link to KB]()  
- -->
+Po instalaci této aktualizace nainstalujte všechny příslušné opravy hotfix. Další informace naleznete následující články znalostní báze, stejně jako naše [zásady obsluhy](azure-stack-servicing-policy.md).  
+- [KB 4471993 – Azure Stack opravu Hotfix Azure Stack Hotfix 1.1809.3.96](https://support.microsoft.com/help/4471993/)  
 
 ## <a name="known-issues-post-installation"></a>Známé problémy (po instalaci)
 

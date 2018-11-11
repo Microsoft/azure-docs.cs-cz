@@ -10,12 +10,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 10/08/2018
 ms.author: glenga
-ms.openlocfilehash: 2c82007092f9ff93086d5caaf188f6922f4a8aea
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: 888b9a256a68b77b91145bb3ccfeea820c97ccfa
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50086178"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51515365"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Vývoj Azure Functions pomocí sady Visual Studio  
 
@@ -29,7 +29,7 @@ Nástroje Azure Functions nabízí následující výhody:
 * Vývoj a nasazení předem kompilovaných funkcí jazyka C#. Předem splněny functions poskytuje lepší studený start výkonu než založených na skriptech funkcí jazyka C#. 
 * Kód vaší funkce v jazyce C# přitom má všechny výhody vývoj sady Visual Studio. 
 
-V tomto článku se dozvíte, jak používat Azure Functions Tools for Visual Studio 2017 na vývoj funkcí v jazyce C#. Také se dozvíte, jak publikovat projekt do Azure jako sestavení .NET.
+Tento článek obsahuje podrobné informace o tom, jak používat Azure Functions Tools for Visual Studio 2017 na vývoj C# funkce a publikovat je do Azure. Předtím, než se pustíte do čtení tohoto článku, měli byste pokračovat [funkce Rychlý start pro Visual Studio](functions-create-your-first-function-visual-studio.md). 
 
 > [!IMPORTANT]
 > Nekombinujte místní vývoj pomocí portálu ve stejné aplikaci function app. Při publikování z místní projekt aplikace function app, procesu nasazení přepíše všechny funkce, které jste vytvořili na portálu.
@@ -81,6 +81,9 @@ Vytvoření a nasazení služby functions, budete také muset:
 * **Host.JSON**: vám umožní nakonfigurovat hostitele funkce. Tato nastavení platí i při spuštění místně i v Azure. Další informace najdete v tématu [referenční materiály k host.json](functions-host-json.md).
 
 * **Local.Settings.JSON**: udržuje nastavení používaná při místním spuštění funkce. Tato nastavení nejsou používány nástrojem Azure, jsou používány [nástrojů Azure Functions Core](functions-run-local.md). Tento soubor můžete použijte k určení nastavení aplikace pro proměnné, které vyžadují vaše funkce. Přidat novou položku do **hodnoty** pole pro každé připojení vyžaduje vazby funkce ve vašem projektu. Další informace najdete v tématu [souboru místní nastavení](functions-run-local.md#local-settings-file) v článku o Azure Functions Core Tools.
+
+    >[!IMPORTANT]
+    >Protože souboru local.settings.json může obsahovat tajné kódy, musíte ho vyloučit ze správy zdrojových kódů pro váš projekt. **Kopírovat do výstupní složky** nastavení pro tento soubor by měl vždy být **kopírovat, pokud je novější**. 
 
 Další informace najdete v tématu [projekt knihovny tříd funkce](functions-dotnet-class-library.md#functions-class-library-project).
 
@@ -186,7 +189,7 @@ Další informace o používání nástrojů Azure Functions Core najdete v tém
 
 Všechna nastavení, které jste přidali v kroku local.settings.json musí být rovněž přidán do aplikace function app v Azure. Tato nastavení nejsou automaticky nahraje při publikování tohoto projektu.
 
-Nejjednodušší způsob, jak nahrát požadovaná nastavení do vaší aplikace funkcí v Azure je použít **spravovat nastavení aplikace...**  odkaz, který se zobrazí po úspěšném publikování projektu. 
+Nejjednodušší způsob, jak nahrát požadovaná nastavení do vaší aplikace funkcí v Azure je použít **spravovat nastavení aplikace...**  odkaz, který se zobrazí po úspěšném publikování projektu.
 
 ![](./media/functions-develop-vs/functions-vstools-app-settings.png)
 
@@ -194,11 +197,13 @@ Zobrazí se **nastavení aplikace** dialogové okno pro aplikaci function app, v
 
 ![](./media/functions-develop-vs/functions-vstools-app-settings2.png)
 
+**Místní** představuje hodnotu nastavení v souboru local.settings.json a **vzdálené** je aktuální nastavení aplikace function App v Azure.  Zvolte **přidat nastavení** vytvořit nové nastavení aplikace. Použití **vložit hodnotu z místního** odkaz zkopírovat hodnotu nastavení **vzdálené** pole. Čekající změny jsou zapsány do souboru místní nastavení a aplikace function app při výběru **OK**.
+
 Můžete také spravovat nastavení aplikace v jednom z těchto způsobů:
 
 * [Pomocí webu Azure portal](functions-how-to-use-azure-function-app-settings.md#settings).
 * [Použití `--publish-local-settings` možnost publikování v Azure Functions Core Tools](functions-run-local.md#publish).
-* [Použití Azure CLI](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set). 
+* [Použití Azure CLI](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set).
 
 ## <a name="monitoring-functions"></a>Funkce monitorování
 

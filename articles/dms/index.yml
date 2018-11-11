@@ -1,0 +1,75 @@
+### YamlMime:YamlDocument
+ms.openlocfilehash: a314401883d0325029ce50502f85c335458e3959
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51285046"
+documentType: LandingData
+title: Dokumentace ke službě Azure Database Migration Service
+metadata:
+  document_id: 83ceabb5-fb4f-a709-3fd2-37d024409f31
+  title: Dokumentace ke službě Azure Database Migration Service – kurzy | Dokumentace Microsoftu
+  meta.description: Learn how to enable seamless migrations from multiple database sources to Azure Data platforms with minimal downtime by using Azure Database Migration Service.
+  services: functions
+  author: pochiraju
+  manager: craigg
+  ms.service: dms
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 10/30/2018
+  ms.author: rajpo
+abstract:
+  description: Služba Azure Database Migration Service umožňuje bezproblémovou migraci z více zdrojů databáze na platformy Azure Data s minimální dobou vyřazení z provozu. Služba používá nástroj Data Migration Assistant k vygenerování sestav vyhodnocení poskytujících doporučení, která vás provedou nutnými změnami před provedením migrace. Až budete připraveni zahájit proces migrace, služba Azure Database Migration Service provede všechny požadované kroky.
+  aside:
+    image:
+      alt: 
+      height: 110
+      src: media/video-thumb-intro2dms.png
+      width: 250
+    title: Seznámení s Azure DMS (1:30)
+    href: https://www.microsoft.com/en-us/videoplayer/embed/RE2IqVu
+    width: 250
+sections:
+- title: Zprovoznění během 5 minut
+  items:
+  - type: paragraph
+    text: 'V této části se dozvíte, jak migrovat místní SQL Server do služby Azure SQL Database s využitím služby Database Migration Service:'
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: https://docs.microsoft.com/media/common/i_portal.svg
+      text: Azure Portal
+      href: /azure/dms/quickstart-create-data-migration-service-portal
+- title: Podrobné kurzy
+  items:
+  - type: paragraph
+    text: 'Naučte se migrovat databáze s využitím služby Database Migration Service:'
+  - type: list
+    style: ordered
+    items:
+    - html: <a href="/azure/dms/tutorial-sql-server-to-azure-sql">Offline migrace SQL Serveru do služby Azure SQL Database pomocí DMS</a>
+    - html: <a href="/azure/dms/tutorial-sql-server-azure-sql-online">Online migrace SQL Serveru do služby Azure SQL Database pomocí DMS</a>
+    - html: <a href="/azure/dms/tutorial-sql-server-to-managed-instance">Offline migrace SQL Serveru do spravované instance Azure SQL Database pomocí DMS</a>
+    - html: <a href="/azure/dms/tutorial-sql-server-managed-instance-online">Online migrace SQL Serveru do spravované instance Azure SQL Database pomocí DMS</a>
+    - html: <a href="/azure/dms/tutorial-mysql-azure-mysql-online">Online migrace MySQL do služby Azure Database for MySQL pomocí DMS</a>
+    - html: <a href="/azure/dms/tutorial-postgresql-azure-postgresql-online">Migrace PostgreSQL do Azure Database for PostgreSQL online pomocí DMS</a>
+- title: Ukázky
+  items:
+  - type: list
+    style: unordered
+    className: spaced noBullet
+    items:
+    - html: <a href="/azure/dms/howto-sql-server-to-azure-sql-powershell">Migrace místního SQL Serveru do databáze Azure SQL s využitím Azure Powershellu</a>
+    - html: <a href="/azure/dms/howto-sql-server-to-azure-sql-mi-powershell">Migrace místního SQL Serveru do spravované instance databáze Azure SQL s využitím Azure Powershellu</a>
+- title: Referenční informace
+  items:
+  - type: list
+    style: unordered
+    className: spaced noBullet
+    items:
+    - html: <a href="/azure/dms/pre-reqs">Přehled požadavků pro používání služby Azure Database Migration Service</a>
+    - html: <a href="/azure/dms/faq">Nejčastější dotazy ohledně používání služby Azure Database Migration Service</a>
+    - html: <a href="/azure/dms/known-issues-azure-sql-online">Známé problémy / omezení migrace s online migrací do databáze Azure SQL</a>

@@ -1,6 +1,6 @@
 ---
-title: Azure poznámkové bloky Jupyter Galerie AI | Microsoft Docs
-description: Zjistit poznámkové bloky Jupyter v galerii Azure AI.
+title: Azure AI Galerie Jupyter notebooks | Dokumentace Microsoftu
+description: Objevte poznámkové bloky Jupyter v galerii Azure AI.
 services: machine-learning
 documentationcenter: ''
 author: heatherbshapiro
@@ -15,60 +15,58 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
-ms.openlocfilehash: 336949d3c3c23041d1907ae2b2a9151ca626d94f
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 81a2f444012085782c377de050e7cb5445f8ebb3
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34834637"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51344650"
 ---
 # <a name="discover-jupyter-notebooks-in-the-azure-ai-gallery"></a>Zjistit poznámkové bloky Jupyter v galerii Azure AI
-[!INCLUDE [machine-learning-gallery-item-selector](../../../includes/machine-learning-gallery-item-selector.md)]
 
-## <a name="jupyter-notebooks"></a>Poznámkové bloky Jupyter
-**[Poznámkové bloky Jupyter](https://gallery.cortanaintelligence.com/notebooks)**  obsahovat kód, vizualizacemi dat a dokumentace v jedné a interaktivní plátno.
-Poznámkových bloků v galerii nabízejí kurzy a podrobné vysvětlení pokročilé strojového učení technik a řešení.
+**[Poznámkové bloky Jupyter](https://gallery.cortanaintelligence.com/notebooks)**  v [galerii Azure AI](http://gallery.cortanaintelligence.com) zahrnout kód, vizualizace dat a dokumentace v jedné, interaktivní plátno.
+Poznámkové bloky ve galerii poskytují kurzy a podrobné vysvětlení pokročilých machine learningu, techniky a řešení.
 
 ## <a name="discover"></a>Informace
-  Chcete-li procházet poznámkových bloků v galerii, otevřete [Galerie](http://gallery.cortanaintelligence.com) a klikněte na tlačítko **poznámkových bloků** v horní části domovské stránce Galerie.
+  Chcete-li vyhledat poznámkových bloků v galerii, otevřete [Galerie](http://gallery.cortanaintelligence.com) a klikněte na tlačítko **poznámkových bloků** v horní části domovskou stránku galerie.
 
- **[Poznámkové bloky Jupyter](https://gallery.cortanaintelligence.com/notebooks)** stránky zobrazí seznam nejčastěji používané poznámkových bloků.
+ **[Poznámkové bloky Jupyter](https://gallery.cortanaintelligence.com/notebooks)** stránka zobrazuje seznam nejoblíbenějšími poznámkovými bloky.
 Klikněte na tlačítko **zobrazit všechny** k zobrazení všech poznámkových bloků.
-Z této stránky můžete procházet všech poznámkových bloků v galerii. Také můžete hledat výběrem kritéria filtru na levé straně stránky a vstup hledaných termínů v horní části.
+Na této stránce můžete procházet všech poznámkových bloků v galerii. Také můžete vyhledávat podle výběru kritéria filtru na levé straně stránky a zadání podmínek vyhledávání v horní části.
 
- Klikněte na možnost žádné poznámkového bloku otevřete stránku Podrobnosti o poznámkového bloku a přečtěte si další informace. Na této stránce můžete komentář, poskytnout zpětnou vazbu nebo klást otázky prostřednictvím sekci komentáře. Můžete je dokonce sdílet s přátele nebo kolegy pomocí možnosti sdílené složky LinkedIn nebo Twitter. E-mailu odkaz v poznámkovém bloku pozvaným jiní uživatelé při zobrazení stránky.
+ Klikněte na libovolné poznámkového bloku otevřete stránku podrobností poznámkového bloku a přečtěte si další informace. Na této stránce, které může přidávat komentáře poskytovat zpětnou vazbu nebo položit dotazy prostřednictvím oddílu pro komentáře na. Ještě ji můžete sdílet s přáteli nebo kolegy pomocí možností sdílení LinkedIn a Twitter. E-mailem odkaz na pozvat další uživatele zobrazíte stránku poznámkového bloku.
 
-![Sdílet tuto položku s friends](./media/gallery-how-to-use-contribute-publish/share-links.png)
+![Sdílet tuto položku s přáteli](./media/gallery-how-to-use-contribute-publish/share-links.png)
 
 ![Přidat vlastní komentáře](./media/gallery-how-to-use-contribute-publish/comments.png)
 
 ## <a name="download"></a>Ke stažení
-Do pracovního prostoru Machine Learning Studio můžete stáhnout kopii všech poznámkového bloku z galerie.
+Kopírovat všechny poznámkového bloku si můžete stáhnout z Galerie do pracovního prostoru Machine Learning Studio.
 
 ### <a name="download-from-the-gallery"></a>Stáhnout z Galerie
 Chcete-li stáhnout kopii Poznámkový blok z galerie:
 
-1. Otevřete stránku Podrobnosti poznámkového bloku v galerii
+1. Otevřete stránku podrobností poznámkového bloku v galerii
 2. Klikněte na tlačítko **Open in Studio**
-3. Vyberte oblast a pracovního prostoru, kterou chcete použít
+3. Vyberte oblast a pracovní prostor, který chcete použít
    
-    ![Otevřete Poznámkový blok Jupyter z Galerie](./media/gallery-jupyter-notebooks/open-notebook-from-gallery.png)
+    ![Otevřete Poznámkový blok Jupyter v galerii](./media/gallery-jupyter-notebooks/open-notebook-from-gallery.png)
 
-Když kliknete na tlačítko **Open in Studio**, poznámkového bloku je načten do pracovního prostoru Machine Learning Studio a otevřít (Pokud jste již přihlášení k Studio, budete vyzváni k přihlášení pomocí účtu Microsoft před poznámkového bloku se zkopíruje do pracovního prostoru). Můžete najít poznámkového bloku později kliknutím **poznámkových bloků** na levé straně domovské stránky Studio.
+Po kliknutí na **Open in Studio**, je načten do pracovního prostoru Machine Learning Studio a otevřít (Pokud jste dosud nejste přihlášeni sadě Studio, zobrazí se výzva k přihlášení pomocí účtu Microsoft, předtím, než je Poznámkový blok poznámkového bloku zkopírováno do pracovního prostoru). Poznámkový blok můžete najít později kliknutím **poznámkových bloků** na levé straně domovské stránky sady Studio.
 
-### <a name="download-in-machine-learning-studio"></a>Stáhněte si v nástroji Machine Learning Studio
-Můžete také otevřít všechny stejné poznámkových bloků Galerie při práci v nástroji Machine Learning Studio:
+### <a name="download-in-machine-learning-studio"></a>Stáhněte si ve službě Machine Learning Studio
+Můžete také otevřít libovolný ze stejné Galerie notebooky při práci v nástroji Machine Learning Studio:
 
 1. V nástroji Machine Learning Studio, klikněte na tlačítko **+ nový**
-2. Vyberte **poznámkového bloku** – můžete zvolit, nebo můžete najít pomocí vyhledávacího pole konkrétní Poznámkový blok, zobrazí se seznam poznámkových bloků z Galerie
-3. Přesunutí ukazatele myši v poznámkovém bloku a vyberte **otevřít poznámkový blok**
+2. Vyberte **Poznámkový blok** – zobrazí se seznam z Galerie notebooky, můžete si vybrat z nebo je vyhledat konkrétní poznámkového bloku pomocí vyhledávacího pole
+3. Přesuňte ukazatel myši v poznámkovém bloku a vyberte **otevření poznámkového bloku**
    
-    ![Poznámkový blok otevřete Galerie z uvnitř Machine Learning Studio](./media/gallery-jupyter-notebooks/open-notebook-from-studio.png)
+    ![Otevřít galerii Poznámkový blok z uvnitř Machine Learning Studio](./media/gallery-jupyter-notebooks/open-notebook-from-studio.png)
 
-Kopie poznámkového bloku je stáhnout a otevřít v pracovním prostoru v části poznámkové bloky Jupyter nástroje Machine Learning Studio.
-Poznámkového bloku bude spolu s další poznámkové bloky, uvedený na **poznámkových bloků** stránky Studio (na [Studio domovskou stránku](https://studio.azureml.net/), klikněte na tlačítko **poznámkových bloků** na levé straně).
+Stáhnout a otevřít v pracovním prostoru v části poznámkových bloků Jupyter nástroje Machine Learning Studio kopie poznámkového bloku.
+Poznámkový blok se společně s další poznámkových bloků, uvedený na **poznámkových bloků** stránky Studio (na [domovskou stránku sady Studio](https://studio.azureml.net/), klikněte na tlačítko **poznámkových bloků** na levé straně).
 
-**[PŘEJÍT DO GALERIE DO &GT;&GT;](http://gallery.cortanaintelligence.com)**
+**[PŘEJÍT NA VE GALERII &GT;&GT;](http://gallery.cortanaintelligence.com)**
 
 [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
 

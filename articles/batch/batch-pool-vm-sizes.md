@@ -12,14 +12,14 @@ ms.workload: ''
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 11/07/2018
 ms.author: danlep
-ms.openlocfilehash: 987cbcc642152a4077cc895ad06e43ac56113497
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: 35e5d13ac358fa5edcb778253340de0f9e15c067
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45544060"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281273"
 ---
 # <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>Výběr velikosti virtuálního počítače pro výpočetní uzly ve fondu služby Azure Batch
 
@@ -42,8 +42,14 @@ Fondy služby batch v konfiguraci virtuálního počítače podporují všechny 
 | A-Series | Standard_A0 |
 | B-Series | Vše |
 
-Virtuální počítače řady M-series jsou podporovány pouze pro uzly s nízkou prioritou.
+Tyto velikosti virtuálních počítačů jsou podporovány pouze pro uzly s nízkou prioritou:
 
+| Rodina  | Podporované velikosti  |
+|---------|---------|
+| M-Series | Standard_M64ms |
+| M-Series | Standard_M128s |
+
+Ostatní velikosti virtuálních počítačů řady M-series se aktuálně nepodporují.
 
 ### <a name="pools-in-cloud-service-configuration"></a>Fondy v konfiguraci cloudové služby
 
@@ -55,6 +61,7 @@ Fondy služby batch v konfiguraci cloudové služby podporují všechny [velikos
 | Av2-series | Standard_A1_v2 Standard_A2_v2, Standard_A2m_v2 |
 
 ## <a name="restricted-vm-families"></a>S omezeným přístupem rodiny virtuálních počítačů
+
 Následující rodiny virtuálních počítačů mohou být přiděleny ve fondech služby Batch, ale musíte požádat o zvýšení kvóty specifická (viz [v tomto článku](batch-quota-limit.md#increase-a-quota)):
 * NCv2-Series
 * NCv3-series

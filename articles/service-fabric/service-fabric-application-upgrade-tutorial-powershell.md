@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: c1005d60df0b1cfd3b24be954ab4ff1b18c8f7a8
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 0f134bdb4f77034dd124027fc960d172d25db721
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44348765"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51515314"
 ---
 # <a name="service-fabric-application-upgrade-using-powershell"></a>Upgrade aplikace Service Fabric pomocí Powershellu
 > [!div class="op_single_selector"]
@@ -79,13 +79,13 @@ Nyní, sestavte projekt výběrem jenom **ActorService** projektu a klikněte pr
 ## <a name="step-3--decide-on-health-policies-and-upgrade-parameters"></a>Krok 3: Při rozhodování o stavu zásady a parametry upgradu
 Seznamte se s [parametry upgradu aplikace](service-fabric-application-upgrade-parameters.md) a [procesu upgradu](service-fabric-application-upgrade.md) získat dobrý přehled o různé parametry upgradu, vypršení časových limitů a kritéria stavu použít. V tomto návodu je kritéria hodnocení stavu služby nastavenou na výchozí hodnotu (a doporučené) hodnoty, které znamená, že by měly být všechny služby a instance *v pořádku* po upgradu.  
 
-Však Řekněme zvýšit *HealthCheckStableDuration* na 60 sekund (tak, že služby jsou v pořádku po dobu 20 sekund před provedením upgradu na další aktualizační domény).  Také nastavíme *UpgradeDomainTimeout* bude 1 200 sekund a *UpgradeTimeout* bude 3000 sekund.
+Však Řekněme zvýšit *HealthCheckStableDuration* 180 sekund (tak, že služby jsou v pořádku po dobu 120 sekund před provedením upgradu na další aktualizační domény).  Také nastavíme *UpgradeDomainTimeout* bude 1 200 sekund a *UpgradeTimeout* bude 3000 sekund.
 
 A konečně, také nastavíme *UpgradeFailureAction* k vrácení zpět. Tato možnost vyžaduje Service Fabric vrátit k předchozí verzi aplikace, pokud nalezne nějaké problémy při upgradu. Proto při spuštění upgradu (v kroku 4), jsou určeny následující parametry:
 
 FailureAction = vrácení zpět
 
-HealthCheckStableDurationSec = 60
+HealthCheckStableDurationSec = 180
 
 UpgradeDomainTimeoutSec = 1200
 

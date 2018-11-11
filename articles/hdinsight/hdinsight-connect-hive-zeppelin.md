@@ -1,32 +1,32 @@
 ---
-title: Použití Zeppelinu ke spouštění dotazů Hive v Azure HDInsight
-description: Další informace o použití Zeppelinu ke spouštění dotazů Hive.
+title: Použití Apache Zeppelinu ke spuštění dotazy Apache Hive v Azure HDInsight
+description: Další informace o použití Apache Zeppelinu ke spuštění dotazy Apache Hive.
 keywords: hdinsight hadoop, hive, interactive query, LLAP
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,
 ms.topic: conceptual
-ms.date: 05/14/2018
-ms.author: jasonh
-ms.openlocfilehash: 3064c9cd141458307891f666bd5af9aa738cc021
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.date: 11/05/2018
+ms.author: hrasheed
+ms.openlocfilehash: 75ec0e17e9866d2cd3420ff6ecf648bf22a8ae8e
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43093164"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51277949"
 ---
-# <a name="use-zeppelin-to-run-hive-queries-in-azure-hdinsight"></a>Použití Zeppelinu ke spouštění dotazů Hive v Azure HDInsight 
+# <a name="use-apache-zeppelin-to-run-apache-hive-queries-in-azure-hdinsight"></a>Použití Apache Zeppelinu ke spuštění dotazy Apache Hive v Azure HDInsight 
 
-Clustery HDInsight Interactive Query zahrnují poznámkových bloků Zeppelin, které můžete použít ke spuštění interaktivních dotazů Hive. V tomto článku se dozvíte, jak k použití Zeppelinu ke spouštění dotazů Hive v Azure HDInsight. 
+Clustery HDInsight Interactive Query zahrnují poznámkových bloků Apache Zeppelin, které můžete použít ke spuštění interaktivních dotazů Hive. V tomto článku se dozvíte, jak k použití Apache Zeppelinu ke spuštění dotazy Apache Hive v Azure HDInsight. 
 
 ## <a name="prerequisites"></a>Požadavky
 Před provedením tohoto článku, musíte mít následující položky:
 
 * **Cluster HDInsight Interactive Query**. Zobrazit [vytvořit cluster](hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster) k vytvoření clusteru HDInsight.  Nezapomeňte vybrat typ Interactive Query. 
 
-## <a name="create-a-zeppelin-note"></a>Vytvořit poznámku Zeppelin
+## <a name="create-a-apache-zeppelin-note"></a>Vytvořit poznámku Apache Zeppelin
 
 1. Přejděte na následující adresu URL:
 

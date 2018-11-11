@@ -9,18 +9,18 @@ ms.date: 02/08/2018
 ms.author: ancav
 ms.custom: mvc
 ms.component: alerts
-ms.openlocfilehash: 8f3be2b1eb9c12aab212fb198283dce9ee3d3912
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 965a35eb4cf33abe78ca802e8d59f13a649dec0a
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45982857"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51279224"
 ---
 # <a name="receive-a-notification-when-a-metric-value-meets-a-condition"></a>Přijímání oznámení, když hodnota metriky splní určitou podmínku
 
 Azure Monitor zpřístupňuje metriky pro řadu prostředků Azure. Tyto metriky vyjadřují výkon a stav těchto prostředků. Hodnoty metrik můžou v řadě případů ukazovat na nějaký problém s daným prostředkem. Můžete vytvářet upozornění metrik, která budou monitorovat neobvyklé chování a v případě, že k němu dojde, vás na to upozorní. Tento rychlý start prochází jednotlivé kroky k vytvoření aplikace logiky, vytvoření úlohy a vizualizaci metrik pro aplikaci logiky. Dále prochází kroky k vytvoření upozornění a přijetí oznámení na metriku pro prostředek aplikace logiky.
 
-Další informace o metrikách a upozorněních metrik najdete v tématech [Přehled metrik služby Azure Monitor](./monitoring-overview-metrics.md) a [Přehled upozornění služby Azure Monitor](./monitoring-overview-alerts.md). 
+Další informace o metrikách a upozorněních metrik najdete v tématech [Přehled metrik služby Azure Monitor](../monitoring/monitoring-data-collection.md) a [Přehled upozornění služby Azure Monitor](./monitoring-overview-alerts.md). 
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 

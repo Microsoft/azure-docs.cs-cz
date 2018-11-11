@@ -2,19 +2,19 @@
 title: Porty používané služby Hadoop v HDInsight – Azure
 description: Seznam portů používaných služby Hadoop spuštěné v HDInsight.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 04/20/2018
-ms.author: jasonh
-ms.openlocfilehash: 29d6aa99b972dacb12ffb016eabb3a46afab7c7a
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.date: 11/06/2018
+ms.author: hrasheed
+ms.openlocfilehash: e6204933d6b9a4a6b296a141520fc8887c9181f1
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48804068"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51279690"
 ---
 # <a name="ports-used-by-hadoop-services-on-hdinsight"></a>Porty používané služby Hadoop v HDInsight
 
@@ -166,7 +166,7 @@ Příklady:
 | --- | --- | --- | --- | --- | --- |
 | Spark Thrift servery |Hlavní uzly |10002 |Thrift | &nbsp; | Služby pro připojení ke Spark SQL (Thrift/JDBC) |
 | Livy server | Hlavní uzly | 8998 | HTTP | &nbsp; | Služba pro spouštění příkazů, úlohy a aplikace |
-| Poznámkový blok Jupyter | Hlavní uzly | 8001 | HTTP | &nbsp; | Web poznámkového bloku Jupyter |
+| Jupyter Notebook | Hlavní uzly | 8001 | HTTP | &nbsp; | Web poznámkového bloku Jupyter |
 
 Příklady:
 

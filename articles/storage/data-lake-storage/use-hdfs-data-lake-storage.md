@@ -8,23 +8,23 @@ ms.topic: article
 ms.date: 06/27/2018
 ms.author: artek
 ms.component: data-lake-storage-gen2
-ms.openlocfilehash: c59331c772e140fccfefb89eef086a35837171e1
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: c5f11cbb12b727f5f308d7a71c51706fa8ec373f
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45576971"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51277082"
 ---
 # <a name="using-the-hdfs-cli-with-data-lake-storage-gen2"></a>Pomocí rozhraní příkazového řádku HDFS s Data Lake Storage Gen2
 
-Azure Data Lake Storage Gen2 Preview umožňuje spravovat a přistupovat k datům, stejně jako při použití [souboru systému HDFS (Hadoop Distributed)](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html). Ať už máte cluster HDInsight připojený nebo spuštění úlohy Apache Spark pomocí Azure Databricks provádět analýzy s daty uloženými v Azure Data Lake Storage Gen2 můžete použít rozhraní příkazového řádku (CLI) pro načítání a manipulaci s načtená data. Zbytek tohoto článku popisuje možnosti mít současně přitom [tým služby Azure Storage pracuje na přidání podpory pro Průzkumníka služby Azure Storage a Azure portal](https://azure.microsoft.com/roadmap/).
+Azure Data Lake Storage Gen2 Preview umožňuje spravovat a přistupovat k datům, stejně jako při použití [souboru systému HDFS (Hadoop Distributed)](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html). Ať už máte cluster HDInsight připojený nebo spuštění úlohy Apache Spark pomocí Azure Databricks provádět analýzu na datech uložených v účtu služby Azure Storage, můžete použít rozhraní příkazového řádku (CLI) pro načítání a manipulaci s načtená data.
 
 ## <a name="hdfs-cli-with-hdinsight"></a>HDFS rozhraní příkazového řádku s HDInsight
 
 Služba HDInsight poskytuje přístup do systému souborů DFS, který je místně připojen k výpočetním uzlům. V tomto systému souborů je přístupný pomocí prostředí, který komunikuje přímo s HDFS a jiných systémů souborů, které podporuje Hadoop. Níže jsou uvedeny často používané příkazy a odkazy na užitečné zdroje informací.
 
 >[!IMPORTANT]
->Účtování clusteru HDInsight začne vytvořením clusteru a skončí jeho odstraněním. Fakturuje se fakturují za minutu, takže cluster měli odstranit vždy když se už používá (zjistěte, jak [odstranění clusteru](../../hdinsight/hdinsight-delete-cluster.md)). Data uložená v Azure Data Lake Storage Gen2 však přetrvává i po odstranění clusteru služby HDInsight.
+>Účtování clusteru HDInsight spustí po vytvoření clusteru a skončí jeho odstraněním. Účtuje se poměrnou částí po minutách, takže byste cluster měli odstranit vždy, když už se nepoužívá. Zjistěte, jak odstranit cluster, najdete v našich [článek na téma](../../hdinsight/hdinsight-delete-cluster.md). Data uložená v účtu úložiště pomocí služby Data Lake Storage Gen2 povolené však přetrvává i po odstranění clusteru služby HDInsight.
 
 Pokud chcete získat seznam souborů či adresářů:
 

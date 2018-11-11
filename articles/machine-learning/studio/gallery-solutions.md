@@ -1,6 +1,6 @@
 ---
-title: Řešení Azure AI Galerie | Microsoft Docs
-description: Hledání řešení v galerii Azure AI.
+title: Řešení galerii Azure AI | Dokumentace Microsoftu
+description: Vyhledání řešení v galerii Azure AI.
 services: machine-learning
 documentationcenter: ''
 author: heatherbshapiro
@@ -15,39 +15,37 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
-ms.openlocfilehash: 19861955dcf82d0ffae674400552ca1f0c439a81
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: cb02ed61ea050c17bc7e6dc0ebc724f29f885dd7
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34834877"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51344331"
 ---
-# <a name="discover-solutions-in-the-azure-ai-gallery"></a>Hledání řešení v galerii Azure AI
-[!INCLUDE [machine-learning-gallery-item-selector](../../../includes/machine-learning-gallery-item-selector.md)]
+# <a name="discover-solutions-in-the-azure-ai-gallery"></a>Vyhledání řešení v galerii Azure AI
 
-## <a name="solutions"></a>Řešení
-A **[řešení](https://gallery.cortanaintelligence.com/solutions)** v galerii poskytuje základní informace se rychle vytvořit řešení Cortana Intelligence z předkonfigurovaných řešení, referenční dokumentace architektury a vzory návrhu.
-Je proveďte vlastní zahrnuté pokyny nebo s doporučenou partnera.  
+A **[řešení](https://gallery.cortanaintelligence.com/solutions)** v [galerii Azure AI](http://gallery.cortanaintelligence.com) poskytuje úvodního kurzu JumpStart týkajícího rychle vytvářet řešení Cortana Intelligence z předkonfigurovaných řešení, referenční architektury, a Vzory návrhu.
+Aby byly vaše vlastní prostřednictvím zahrnutých pokynů nebo doporučeného partnera.  
 
 ## <a name="discover"></a>Informace
-  Chcete-li vyhledat řešení v galerii, otevřete [Galerie](http://gallery.cortanaintelligence.com) a klikněte na tlačítko **řešení** v horní části domovské stránce Galerie.
+  Chcete-li vyhledat řešení v galerii, otevřete [Galerie](http://gallery.cortanaintelligence.com) a klikněte na tlačítko **řešení** v horní části domovskou stránku galerie.
 
- **[Řešení](https://gallery.cortanaintelligence.com/solutions)** stránka zobrazuje seznam nedávno přidané řešení.
+ **[Řešení](https://gallery.cortanaintelligence.com/solutions)** stránka zobrazuje seznam nedávno přidaných řešení.
 Klikněte na tlačítko **zobrazit všechny** zobrazíte všechna řešení.
-Z této stránky můžete vyhledat všechny řešení v galerii. Také můžete hledat výběrem kritéria filtru na levé straně stránky a vstup hledaných termínů v horní části.
+Na této stránce můžete procházet všechna řešení v galerii. Také můžete vyhledávat podle výběru kritéria filtru na levé straně stránky a zadání podmínek vyhledávání v horní části.
 
- Klikněte na tlačítko řešení otevřete stránku s jeho podrobnosti a další informace. Na této stránce můžete komentář, poskytnout zpětnou vazbu nebo klást otázky prostřednictvím sekci komentáře. Můžete je dokonce sdílet s přátele nebo kolegy pomocí možnosti sdílené složky LinkedIn nebo Twitter. E-mailu odkaz k řešení pozvaným jiní uživatelé při zobrazení stránky.
+ Klikněte na možnost žádné řešení, otevřete jeho stránku Podrobnosti a přečtěte si další informace. Na této stránce, které může přidávat komentáře poskytovat zpětnou vazbu nebo položit dotazy prostřednictvím oddílu pro komentáře na. Ještě ji můžete sdílet s přáteli nebo kolegy pomocí možností sdílení LinkedIn a Twitter. E-mailem odkaz na řešení, aby pozvat další uživatele zobrazíte stránku.
 
-![Sdílet tuto položku s friends](./media/gallery-how-to-use-contribute-publish/share-links.png)
+![Sdílet tuto položku s přáteli](./media/gallery-how-to-use-contribute-publish/share-links.png)
 
 ![Přidat vlastní komentáře](./media/gallery-how-to-use-contribute-publish/comments.png)
 
 ## <a name="deploy"></a>Nasazení
-Pokud chcete používat řešení, klikněte na tlačítko **nasadit**. Postupujte podle kroků uvedené můžete nakonfigurovat a nasadit řešení v pracovním prostoru.
+Pokud chcete používat řešení, klikněte na tlačítko **nasadit**. Postupujte takto můžete nakonfigurovat a nasadit řešení ve vašem pracovním prostoru.
 
 ![Nasazení řešení Galerie](./media/gallery-solutions/deploy-solution.png)
 
-**[PŘEJÍT DO GALERIE DO &GT;&GT;](http://gallery.cortanaintelligence.com)**
+**[PŘEJÍT NA VE GALERII &GT;&GT;](http://gallery.cortanaintelligence.com)**
 
 [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
 

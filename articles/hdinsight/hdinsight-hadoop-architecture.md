@@ -1,6 +1,6 @@
 ---
-title: Architektura Hadoop – Azure HDInsight
-description: Popisuje Hadoop ukládání a zpracování v clusterech HDInsight.
+title: Architektura Apache Hadoopu – Azure HDInsight
+description: Popisuje Apache Hadoop, ukládání a zpracování v clusterech HDInsight.
 services: hdinsight
 author: ashishthaps
 ms.author: ashishth
@@ -8,24 +8,24 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 01/19/2018
-ms.openlocfilehash: f22cb6a56e0ef81e3d7799b38e33113f8b175457
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.date: 11/06/2018
+ms.openlocfilehash: 066734c88890d5f1a6e42c5350db47d1a398b60a
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43699426"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51277575"
 ---
-# <a name="hadoop-architecture-in-hdinsight"></a>Architektura Hadoop ve službě HDInsight
+# <a name="apache-hadoop-architecture-in-hdinsight"></a>Architektura Apache Hadoop v HDInsight
 
-Hadoop zahrnuje dva základní součásti: soubor systému HDFS (Hadoop Distributed), která poskytuje úložiště a ještě další Resource Negotiator (YARN), která poskytuje zpracování. S úložištěm a možnosti zpracování bude schopný spustit programů MapReduce k provedení požadované zpracování dat clusteru.
+Apache Hadoop zahrnuje dva základní součásti: soubor systému HDFS (Hadoop Distributed), která poskytuje úložiště a ještě další Resource Negotiator (YARN), která poskytuje zpracování. S úložištěm a možnosti zpracování bude schopný spustit programů MapReduce k provedení požadované zpracování dat clusteru.
 
 > [!NOTE]
 > HDFS není obvykle nasazený v clusteru HDInsight k poskytování úložiště. Vrstva rozhraní HDFS kompatibilního místo toho používá komponenty Hadoop. Funkce skutečného úložiště poskytuje Azure Storage nebo Azure Data Lake Store. Pro Hadoop spuštění v clusteru HDInsight úlohy mapreduce je možné spustit jako kdyby byly k dispozici HDFS a proto nevyžadují žádné změny pro podporu jejich požadavky na úložiště. V systému Hadoop v HDInsight je zajištěný vnějším zdrojem úložiště, ale YARN zpracování zůstane základní součást. Další informace najdete v tématu [Úvod do služby Azure HDInsight](hadoop/apache-hadoop-introduction.md).
 
 Tento článek představuje YARN a jak koordinuje spuštění aplikace v HDInsight.
 
-## <a name="yarn-basics"></a>Základy YARN 
+## <a name="apache-yarn-basics"></a>Základní informace o Apache YARN 
 
 YARN řídí a orchestruje zpracování dat v Hadoopu. YARN má dvě základní služby, které běží jako proces na uzly v clusteru: 
 

@@ -1,25 +1,25 @@
 ---
-title: Streamování s využitím systému Kafka – Azure HDInsight Apache Sparku
-description: Další informace o použití Sparku Apache Spark pro streamování dat do nebo ze systému Apache Kafka pomocí diskretizovanými streamy. V tomto příkladu budete streamovat data pomocí poznámkového bloku Jupyter ze Sparku ve službě HDInsight.
+title: Streamování s využitím Apache Kafka – Azure HDInsight Apache Sparku
+description: Další informace o použití Apache Spark pro streamování dat do nebo ze systému Apache Kafka pomocí diskretizovanými streamy. V tomto příkladu budete streamovat data pomocí poznámkového bloku Jupyter ze Sparku ve službě HDInsight.
 keywords: Příklad kafka, kafka zookeeper, spark, datové proudy kafka, spark, kafka příklad streamování
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 02/23/2018
-ms.author: jasonh
-ms.openlocfilehash: d06e9d26051fbfafc4d717ec180e8760157aefd9
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.date: 11/06/2018
+ms.author: hrasheed
+ms.openlocfilehash: b103300c7d4b72c0605b8355b03fac5201ab6d68
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43094162"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51279156"
 ---
-# <a name="apache-spark-streaming-dstream-example-with-kafka-on-hdinsight"></a>Příklad (DStream) s využitím Kafka na HDInsight streamování Apache Sparku
+# <a name="apache-spark-streaming-dstream-example-with-apache-kafka-on-hdinsight"></a>Příklad (DStream) s Apache Kafka v HDInsight streamování Apache Sparku
 
-Další informace o použití Sparku Apache Spark pro streamování dat do nebo ze systému Apache Kafka v HDInsight pomocí diskretizovanými streamy. Tento příklad používá Poznámkový blok Jupyter, na kterém běží v clusteru Spark.
+Další informace o použití Apache Spark pro streamování dat do nebo ze systému Apache Kafka v HDInsight pomocí diskretizovanými streamy. Tento příklad používá Poznámkový blok Jupyter, na kterém běží v clusteru Spark.
 
 > [!NOTE]
 > Pomocí kroků v tomto dokumentu se vytvoří skupina prostředků Azure obsahující cluster Spark ve službě HDInsight i cluster Kafka ve službě HDInsight. Oba tyto clustery se nacházejí ve virtuální síti Azure, což umožňuje přímou komunikaci clusteru Spark s clusterem Kafka.
@@ -59,7 +59,7 @@ I když můžete vytvořit virtuální síť Azure, Kafka, a clustery Spark ruč
 
     * **Umístění**: Vyberte umístění geograficky blízko vás.
 
-    * **Základní název clusteru**: Tato hodnota se používá jako základní název pro Spark a clusterů Kafka. Například zadání **hdi** vytvoří Spark cluster __spark hdi__ a cluster Kafka s názvem **hdinsight kafka**.
+    * **Základní název clusteru**: Tato hodnota se používá jako základní název pro Spark a clusterů Kafka. Například zadání **hdistreaming** vytvoří Spark cluster __spark hdistreaming__ a cluster Kafka s názvem **kafka hdistreaming**.
 
     * **Uživatelské jméno přihlášení clusteru**: uživatelské jméno správce clusterů Spark a Kafka.
 
@@ -71,7 +71,7 @@ I když můžete vytvořit virtuální síť Azure, Kafka, a clustery Spark ruč
 
 3. Přečtěte si **Podmínky a ujednání** a pak vyberte **Souhlasím s podmínkami a ujednáními uvedenými nahoře**.
 
-4. Nakonec zaškrtněte políčko **Připnout na řídicí panel** a vyberte **Koupit**. Vytvoření clusteru trvá přibližně 20 minut.
+4. Nakonec vyberte **nákupní**. Vytvoření clusteru trvá přibližně 20 minut.
 
 Po vytvoření prostředků se zobrazí stránce souhrnu.
 

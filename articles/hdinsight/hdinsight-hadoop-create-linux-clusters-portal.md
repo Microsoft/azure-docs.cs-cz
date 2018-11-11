@@ -1,20 +1,20 @@
 ---
-title: Vytvoření clusterů Hadoop pomocí webového prohlížeče – Azure HDInsight
-description: Zjistěte, jak vytvářet clustery Hadoop, HBase, Storm nebo Spark na Linuxu pro HDInsight pomocí webového prohlížeče a na portálu Azure preview.
+title: Vytvořte clustery systému Apache Hadoop pomocí webového prohlížeče – Azure HDInsight
+description: Zjistěte, jak vytvářet clustery Apache Hadoop, Apache HBase, Apache Storm nebo Apache Spark v Linuxu pro HDInsight pomocí webového prohlížeče a na portálu Azure preview.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 02/21/2018
-ms.author: jasonh
-ms.openlocfilehash: 77f4b8e8826dab014b81fdb6847755630ac44508
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.date: 11/06/2018
+ms.author: hrasheed
+ms.openlocfilehash: 8d5e29b89d65bc8777feac0c496b3253bc2a6763
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43104938"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51278986"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-using-the-azure-portal"></a>Vytvoření clusterů se systémem Linux v HDInsight pomocí webu Azure portal
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
@@ -34,7 +34,7 @@ Na webu Azure portal poskytuje většinu vlastností clusteru. Pomocí šablony 
 
 
 1. Přihlaste se k [portálu Azure](https://portal.azure.com).
-2. Klikněte na tlačítko **+**, klikněte na tlačítko **inteligence a analýza**a potom klikněte na tlačítko **HDInsight**.
+2. Klikněte na tlačítko **+ vytvořit prostředek**, klikněte na tlačítko **Analytics**a potom klikněte na tlačítko **HDInsight**.
    
     ![Vytváří se nový cluster na webu Azure Portal](./media/hdinsight-hadoop-create-linux-cluster-portal/hdinsight-create-cluster.png "vytvoření nového clusteru na portálu Azure portal")
 
@@ -47,10 +47,6 @@ Na webu Azure portal poskytuje většinu vlastností clusteru. Pomocí šablony 
     * Z **předplatné** rozevíracího seznamu, vyberte předplatné Azure, který se používá pro cluster.
 
     * Klikněte na tlačítko **typ clusteru**a pak vyberte typ clusteru (Hadoopu, Sparku, atd.), kterou chcete vytvořit. Pro **operační systém**, klikněte na tlačítko **Linux** a potom vyberte verzi. Používejte výchozí verzi, pokud si nejste jisti, co k výběru. Další informace najdete v článku [Verze clusterů HDInsight](hdinsight-component-versioning.md).
-
-        Pro typy clusterů Hadoop, Spark a interaktivní dotazy, můžete také vybrat k instalaci **Enterprise Security Package**. Enterprise Security Package umožňuje bezpečnostní funkce, jako je integrace služby Azure Active Directory a Apache Rangeru pro clustery. Další informace najdete v tématu [Enterprise Security Package v Azure HDInsight](./domain-joined/apache-domain-joined-introduction.md).
-
-        ![Povolit Enterprise Security Package](./media/hdinsight-hadoop-create-linux-cluster-portal/hdinsight-enable-enterprise-security-package.png "povolit Enterprise Security Package")
      
         > [!IMPORTANT]
         > HDInsight clustery se dělí na celou řadu typů, které odpovídají úlohy nebo technologie, která clusteru je vyladěný pro. Neexistuje žádná podporovaná metoda pro vytvoření clusteru, který kombinuje více typů, jako je Storm a HBase na jednom clusteru. 
@@ -69,7 +65,9 @@ Na webu Azure portal poskytuje většinu vlastností clusteru. Pomocí šablony 
 
     * Klikněte na **Další**.
 
-4. Pro **úložiště**, zda má být Azure Storage (WASB) nebo Data Lake Storage jako výchozí úložiště. Podívejte se na tabulce pro další informace.
+4. V **zabezpečení a sítě**, clusteru můžete připojit k virtuální síti pomocí zadané rozevíracího seznamu. Vyberte virtuální síť Azure a podsíť, pokud chcete umístit clusteru do virtuální sítě. Informace o používání HDInsight s virtuální sítí, včetně požadavků na konkrétní konfiguraci virtuální sítě, naleznete v tématu [možnosti rozšíření HDInsight pomocí Azure Virtual Network](hdinsight-extend-hadoop-virtual-network.md). Pokud chcete použít **Enterprise Security Package**, budete také postupovat podle pokynů tady: [konfigurace clusteru HDInsight s balíčkem Enterprise Security Package pomocí Azure Active Directory Domain Services](https://docs.microsoft.com/en-us/azure/hdinsight/domain-joined/apache-domain-joined-configure-using-azure-adds).
+
+5. Pro **úložiště**, zda má být Azure Storage (WASB) nebo Data Lake Storage jako výchozí úložiště. Podívejte se na tabulce pro další informace.
 
     ![Vytváří se nový cluster na webu Azure Portal](./media/hdinsight-hadoop-create-linux-cluster-portal/hdinsight-create-cluster-storage.png "vytvoření nového clusteru na portálu Azure portal")
 
@@ -84,7 +82,7 @@ Na webu Azure portal poskytuje většinu vlastností clusteru. Pomocí šablony 
     > [!WARNING]
     > Použití dalšího účtu úložiště v jiném umístění, než je cluster HDInsight, není podporováno.
 
-5. Případně můžete kliknout **aplikací** instalovat aplikace, které fungují s clustery HDInsight. Tyto aplikace mohou být vytvořeny společností Microsoft, nezávislými dodavateli softwaru (ISV) nebo vámi samotnými. Další informace najdete v tématu [aplikací HDInsight nainstalovat](hdinsight-apps-install-applications.md#install-applications-during-cluster-creation).
+6. Případně můžete kliknout **aplikací** instalovat aplikace, které fungují s clustery HDInsight. Tyto aplikace mohou být vytvořeny společností Microsoft, nezávislými dodavateli softwaru (ISV) nebo vámi samotnými. Další informace najdete v tématu [aplikací HDInsight nainstalovat](hdinsight-apps-install-applications.md#install-applications-during-cluster-creation).
 
 
 6. Klikněte na tlačítko **velikost clusteru** k zobrazení informací o uzlech, které se používají pro tento cluster. Nastavte počet pracovních uzlů, které potřebujete pro cluster. Také se zobrazí odhadované náklady na provoz clusteru.
@@ -100,18 +98,10 @@ Na webu Azure portal poskytuje většinu vlastností clusteru. Pomocí šablony 
    
    Klikněte na tlačítko **Další** uložte konfiguraci cen uzlů.
 
-7. Klikněte na tlačítko **upřesňující nastavení** nakonfigurovat další volitelné nastavení, jako je třeba použití **akcí skriptů** přizpůsobení clusteru a nainstalujte vlastní komponenty nebo připojení **virtuálnísítě**. Podívejte se na tabulce pro další informace.
+8. V **akcí skriptů**, si můžete přizpůsobit clusteru a nainstalujte vlastní komponenty.  Tuto možnost použijte, pokud chcete použít vlastní skript, který vlastní cluster, při vytváření clusteru. Další informace o akcí skriptů najdete v tématu [HDInsight přizpůsobit clustery pomocí akce skriptu](hdinsight-hadoop-customize-cluster-linux.md).
+Klikněte na **Další**.
 
-    ![Cenovými úrovněmi uzlů](./media/hdinsight-hadoop-create-linux-cluster-portal/hdinsight-create-cluster-advanced.png "zadejte počet uzlů clusteru")
-
-    | Možnost | Popis |
-    |--------|-------------|
-    | **Akce skriptů** | Tuto možnost použijte, pokud chcete použít vlastní skript, který vlastní cluster, při vytváření clusteru. Další informace o akcí skriptů najdete v tématu [HDInsight přizpůsobit clustery pomocí akce skriptu](hdinsight-hadoop-customize-cluster-linux.md). |
-    | **Virtual Network** | Vyberte virtuální síť Azure a podsíť, pokud chcete umístit clusteru do virtuální sítě. Informace o používání HDInsight s virtuální sítí, včetně požadavků na konkrétní konfiguraci virtuální sítě, naleznete v tématu [možnosti rozšíření HDInsight pomocí Azure Virtual Network](hdinsight-extend-hadoop-virtual-network.md). |
-
-    Klikněte na **Další**.
-
-8. Pro **Souhrn**, zkontrolujte zadané informace, které jste zadali dříve a pak klikněte na tlačítko **vytvořit**.
+9. Pro **Souhrn**, zkontrolujte zadané informace, které jste zadali dříve a pak klikněte na tlačítko **vytvořit**.
 
     ![Cenovými úrovněmi uzlů](./media/hdinsight-hadoop-create-linux-cluster-portal/hdinsight-create-cluster-summary.png "zadejte počet uzlů clusteru")
     
@@ -119,7 +109,7 @@ Na webu Azure portal poskytuje většinu vlastností clusteru. Pomocí šablony 
     > Pro vytvoření, obvykle přibližně 15 minut clusteru nějakou dobu trvá. Použít na dlaždici na úvodním panelu, nebo **oznámení** položku na levé straně stránky můžete zkontrolovat na během procesu zřizování.
     > 
     > 
-12. Po dokončení procesu vytváření kliknutím na dlaždici clusteru na úvodní panel. V okně clusteru obsahuje následující informace.
+10. Po dokončení procesu vytváření kliknutím na dlaždici clusteru na úvodní panel. V okně clusteru obsahuje následující informace.
     
     ![Rozhraní clusteru](./media/hdinsight-hadoop-create-linux-cluster-portal/hdinsight-create-cluster-completed.png "vlastnosti clusteru")
     

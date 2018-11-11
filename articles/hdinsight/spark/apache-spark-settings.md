@@ -8,13 +8,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 01/26/2018
-ms.openlocfilehash: 926ce58872b06b41a0c7942b7090dcb4d5c8df03
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.date: 11/06/2018
+ms.openlocfilehash: 9533992b939983ceda37a7c98d0bc2426168a0ac
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46956485"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51279346"
 ---
 # <a name="configure-spark-settings"></a>Konfigurace nastavení Sparku
 
@@ -30,11 +30,8 @@ Počet virtuálních počítačů a velikosti virtuálních počítačů, pro uz
 
 Používejte doporučené verze Sparku pro váš cluster.  Služba HDInsight zahrnuje několik verzí Spark a HDInsight samotný.  Sada výchozích nastavení clusteru zahrnuje každá verze Sparku.  
 
-Při vytváření nového clusteru, tady je aktuální verze Sparku na výběr:
+Při vytváření nového clusteru existuje více verzí Spark lze vybírat. Pokud chcete zobrazit úplný seznam [HDInsight komponenty a verze](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-component-versioning)
 
-![Verze Sparku](./media/apache-spark-settings/spark-version.png)
-
-Spark 2.x můžete spustit mnohem lepší než 1.x ve Sparku. Spark 2.x má několik optimalizací výkonu, jako je například wolframu, optimalizaci dotazu zprostředkující a další.  
 
 > [!NOTE]
 > Výchozí verze Apache Spark ve službě HDInsight mohou změnit bez předchozího upozornění. Pokud máte verzi závislosti, společnost Microsoft doporučuje, zadejte tuto konkrétní verzi při vytváření clusterů s využitím sady .NET SDK, Azure Powershellu a rozhraní příkazového řádku Azure Classic.

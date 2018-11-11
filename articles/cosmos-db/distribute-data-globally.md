@@ -9,18 +9,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/26/2018
 ms.author: mjbrown
-ms.openlocfilehash: 7f2c242d7040413598864222efdf06843eddc7d9
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 4aa5e4ff46eeaa4e8d8c723f626dd1f1193fd12a
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50959490"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281604"
 ---
 # <a name="global-data-distribution-with-azure-cosmos-db"></a>Distribuce globálních dat pomocí služby Azure Cosmos DB
 
 Řada dnešních aplikací spusťte v globálním měřítku. Tyto aplikace jsou vždy on a jejich zpřístupnění uživatelům po celém světě. Správa globální distribuce dat, která používá tyto aplikace poskytuje vysoký výkon a vysoké dostupnosti je obtížné problém. Azure Cosmos DB je globálně distribuovaná databázová služba, která je navrženo pro zajištění vysokého výkonu a vysoké dostupnosti. Z těchto důvodů je nejvhodnější v případě těchto aplikací v reálném čase služby Azure Cosmos DB.
 
-Je základní služby Azure cosmos DB a je k dispozici ve všech [oblastí Azure](https://azure.microsoft.com/global-infrastructure/regions/) ve výchozím nastavení. Microsoft provozuje datových center Azure ve více než 50 oblastech po celém světě a rozšířit se a plnit rostoucí požadavky zákazníků i nadále. Při vytváření účtu služby Cosmos DB je rozhodnout, které položky nakoupené by měly být nasazeny v. Microsoft provozuje Cosmos DB služeb 24 hodin denně, 7, takže se můžete soustředit na aplikace.
+Je základní služby Azure cosmos DB a je k dispozici ve všech [oblastí Azure](https://azure.microsoft.com/global-infrastructure/regions/) ve výchozím nastavení. Microsoft provozuje datových center Azure v 54 + oblastech po celém světě a rozšířit se a plnit rostoucí požadavky zákazníků i nadále. Při vytváření účtu služby Cosmos DB je rozhodnout, které položky nakoupené by měly být nasazeny v. Microsoft provozuje Cosmos DB služeb 24 hodin denně, 7, takže se můžete soustředit na aplikace.
 
 Můžete nakonfigurovat vaše databáze bude globálně distribuovaná a k dispozici ve všech oblastech Azure více než 50. Snížit latenci, měli byste umístit data blíž umístění uživatele. Volba požadované oblasti závisí na globální dosah aplikace, a kde se nachází vaši uživatelé. Data v rámci svého účtu služby cosmos DB transparentně replikuje do všech oblastí, nakonfigurované. Poskytuje jeden systémový obraz do databáze Cosmos a kontejnery, které vaše aplikace může číst a zapisovat místně. Pomocí služby Cosmos DB můžete přidat nebo odebrat oblasti spojené s vaším účtem v každém okamžiku. Vaše aplikace nemusí pozastavená nebo znovu nasadit do přidat nebo odebrat oblasti. Pokračuje k zajištění vysoké dostupnosti neustále kvůli možnostmi multihomingu, které služba poskytuje.
 
@@ -48,5 +48,5 @@ Přečtěte si další informace o globální distribuci v následujících čl�
 
 * [Globální distribuce - pod pokličkou](global-dist-under-the-hood.md)
 * [Konfigurování klientů pro vícenásobné navádění](how-to-manage-database-account.md#configure-clients-for-multi-homing)
-* [Postup přidání nebo odebrání oblastí z databáze](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
+* [Jak přidat/odebrat oblasti ze svého účtu Cosmos](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
 * [Jak vytvořit zásadu konflikt vlastní řešení pro účty rozhraní SQL API](how-to-manage-conflicts.md#create-a-custom-conflict-resolution-policy)

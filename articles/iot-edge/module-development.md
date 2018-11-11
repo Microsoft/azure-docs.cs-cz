@@ -8,12 +8,12 @@ ms.date: 10/05/2017
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: d4253942ea5cd998bfd3806978e108413949f886
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 2513624aecff652e8a952b3255faf2ab9366f21a
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50741424"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51288692"
 ---
 # <a name="understand-the-requirements-and-tools-for-developing-iot-edge-modules"></a>Pochopení požadavků a nástroje pro vývoj modulů IoT Edge
 
@@ -26,9 +26,9 @@ Modul runtime IoT Edge poskytuje infrastrukturu integrovat funkce více modulů 
 Centrum IoT Edge poskytuje dva hlavní funkce: proxy serveru do služby IoT Hub a místní komunikace.
 
 ### <a name="iot-hub-primitives"></a>IoT Hub primitiv
-IoT Hub vidí a modul instance analogicky k zařízení, v tom smyslu, že:
+IoT Hub vidí instancí modulu analogicky k zařízení, v tom smyslu, že:
 
-* má dvojčete modulu, která je oddělená od [dvojče zařízení](../iot-hub/iot-hub-devguide-device-twins.md) a další modul dvojčata zařízení;
+* má dvojčete modulu, který je samostatný a izolované od [dvojče zařízení](../iot-hub/iot-hub-devguide-device-twins.md) a další modul dvojčata zařízení;
 * můžete odeslat [zpráv typu zařízení cloud](../iot-hub/iot-hub-devguide-messaging.md);
 * může přijímat [přímé metody](../iot-hub/iot-hub-devguide-direct-methods.md) zaměřené na svoji identitu.
 
@@ -41,7 +41,7 @@ V tématu [vývoj a nasazení modul IoT Edge na simulovaném zařízení](tutori
 ### <a name="device-to-cloud-messages"></a>Zprávy typu zařízení-cloud
 Chcete-li povolit komplexní zpracování zpráv typu zařízení cloud, Centrum IoT Edge poskytuje deklarativní směrování zpráv mezi moduly a mezi moduly a IoT Hub. Deklarativní směrování povoluje modulů k zachycení a zpracování zpráv odesílaných ostatní moduly a jejich šíření kanálech složité. Tento článek [složení modulu](module-composition.md) vysvětluje, jak sestavit modulů do složitých kanálů pomocí tras.
 
-Modul IoT Edge, jinak než běžné aplikace zařízení služby IoT Hub může přijímat zprávy typu zařízení cloud, které se připojit přes proxy server pomocí její místní centra IoT Edge, aby bylo možné zpracovat.
+Modul IoT Edge, na rozdíl od normální aplikace zařízení služby IoT Hub, může přijímat zprávy typu zařízení cloud, které se připojit přes proxy server pomocí její místní centra IoT Edge k jejich zpracování.
 
 Centrum IoT Edge šíří zprávy, které mají modul podle deklarativní směrování podle [složení modulu](module-composition.md) článku. Při vývoji modul IoT Edge, mohou přijímat tyto zprávy nastavením obslužné rutiny zpráv.
 
@@ -58,7 +58,9 @@ Zprávy typu zařízení cloud zpracovat Centrum Edge se nakonec razítkem s ná
 | $outputName | Výstup používá k odeslání zprávy. Může být prázdný. |
 
 ### <a name="connecting-to-iot-edge-hub-from-a-module"></a>Připojení k centru IoT Edge z modulu
-Připojení k místní Centrum IoT Edge z modulu zahrnuje dva kroky: použijte připojovací řetězec, pokud při spuštění modulu runtime IoT Edge a ujistěte se, že vaše aplikace přijímá certifikát předložený Centrum IoT Edge na tomto zařízení.
+Připojení k místní Centrum IoT Edge z modulu zahrnuje dva kroky: 
+1. Použijte připojovací řetězec poskytuje modul runtime IoT Edge při spuštění modulu.
+2. Zajistěte, aby že vaše aplikace přijímá certifikát předložený Centrum IoT Edge na tomto zařízení.
 
 Modul runtime IoT Edge v proměnné prostředí se vloží řetězec připojení používaný `EdgeHubConnectionString`. Díky tomu dostupné všem programům, které chce, aby se jeho použití.
 

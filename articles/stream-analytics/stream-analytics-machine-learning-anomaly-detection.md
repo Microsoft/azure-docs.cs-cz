@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/09/2018
-ms.openlocfilehash: 3cd9b5a2bfed49ee712b89040477389ba9ea7715
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: a2bf6ef44a8698e802d9bbc25689988498c55f13
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389628"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51300264"
 ---
 # <a name="anomaly-detection-in-azure-stream-analytics"></a>Detekce anomálií v Azure Stream Analytics
 
@@ -31,7 +31,7 @@ Operátor anomalydetection, který rozpoznává tři typy anomálií:
 
 * **Zpomalit negativní Trend**: pomalé pokles trend v čase.  
 
-Při použití operátor anomalydetection, který je nutné zadat **Limit Duration** klauzuli. Tato klauzule určuje že časový interval (jak daleko zpět v historii z aktuální události) by měl být při detekci anomálií. Tento operátor volitelně může být omezen na pouze události, které odpovídají určité vlastnosti nebo podmínku s použitím **při** klauzuli. Tento operátor může také v případě potřeby zpracovat zvýrazňující skupiny událostí samostatně na základě klíče zadaný v **rozdělit podle** klauzuli. Trénování a predikcí dojít nezávisle pro každý oddíl. 
+Při použití operátor anomalydetection, který je nutné zadat **Limit Duration** klauzuli. Tato klauzule určuje že časový interval (jak daleko zpět v historii z aktuální události) by měl být při detekci anomálií. Tento operátor volitelně může být omezen na pouze události, které odpovídají určité vlastnosti nebo podmínku s použitím **při** klauzuli. Tento operátor může také v případě potřeby zpracovat zvýrazňující skupiny událostí samostatně na základě klíče zadaný v **rozdělit podle** klauzuli. Trénování a predikcí dojít nezávisle pro každý oddíl. 
 
 ## <a name="syntax-for-anomalydetection-operator"></a>Syntaxe pro operátor anomalydetection, který
 
@@ -45,11 +45,11 @@ Při použití operátor anomalydetection, který je nutné zadat **Limit Durati
 
 * **skalární_výraz** -skalární výraz, přes které se provádí pro detekci anomálií. Povolené hodnoty pro tento parametr obsahovat plovoucí desetinnou čárkou nebo Bigint datových typů, který návratový (skalární) hodnotu single. Výraz se zástupnými znaky **\*** není povolený. Skalární výraz, který nemůže obsahovat další analytických funkcí nebo externí funkce. 
 
-* **partition_by_clause** – `PARTITION BY <partition key>` klauzule rozděluje vzdělávání a odbornou v samostatných oddílech. Jinými slovy, samostatného modelu se použije na hodnotu `<partition key>` a pouze události s touto hodnotou se použije pro vzdělávání a odbornou v takovém modelu. Například následující dotaz železniční a vyhodnocování čtení pro další čtení stejné senzor:
+* **partition_by_clause** – `PARTITION BY <partition key>` klauzule rozděluje vzdělávání a odbornou v samostatných oddílech. Jinými slovy, samostatného modelu se použije na hodnotu `<partition key>` a pouze události s touto hodnotou se použije pro vzdělávání a odbornou v takovém modelu. Například následující dotaz železniční a vyhodnocování čtení pro další čtení stejné senzor:
 
   `SELECT sensorId, reading, ANOMALYDETECTION(reading) OVER(PARTITION BY sensorId LIMIT DURATION(hour, 1)) FROM input`
 
-* **klauzule limit_duration** `DURATION(<unit>, <length>)` -Určuje časový interval (jak daleko zpět v historii z aktuální události) by měl být při detekci anomálií. Zobrazit [DATEDIFF](https://msdn.microsoft.com/azure/stream-analytics/reference/datediff-azure-stream-analytics) podrobný popis podporované jednotky a jejich zkratkami. 
+* **klauzule limit_duration**  `DURATION(<unit>, <length>)` -Určuje časový interval (jak daleko zpět v historii z aktuální události) by měl být při detekci anomálií. Zobrazit [DATEDIFF](https://msdn.microsoft.com/azure/stream-analytics/reference/datediff-azure-stream-analytics) podrobný popis podporované jednotky a jejich zkratkami. 
 
 * **when_clause** -určuje je logická podmínka pro události v výpočet detekce anomálií.
 

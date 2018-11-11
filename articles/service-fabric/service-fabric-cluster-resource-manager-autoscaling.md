@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/17/2018
 ms.author: miradic
-ms.openlocfilehash: 1bee48225448a964da7caa2a7b284b274c52bea6
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: 8e57c071c9fd93a8581d574aeec2b23b38b3ab95
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50914052"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281649"
 ---
 # <a name="introduction-to-auto-scaling"></a>Úvod k automatickému škálování
 Automatické škálování je další schopností Service Fabric dynamické škálování služeb na základě zatížení, které služby se hlásí, nebo na základě jejich využití prostředků. Automatické škálování poskytuje skvělé pružnost a umožňuje zřízení dalších instancí nebo oddíly služby na vyžádání. Celý automatické škálování zpracování je automatické a transparentní, a po nastavení zásad pro službu není nutné pro ruční operace škálování na úrovni služby. Automatické škálování je možné zapnout na buď při vytváření služby, nebo kdykoli při aktualizaci.
@@ -28,7 +28,9 @@ Běžný scénář, kde automatické škálování je užitečné při zatížen
 * Pokud všechny výskyty mám bránu jsou v průměru pomocí více než dvě jádra, škálování službě brány navýšení kapacity přidáním více instancí. Provést každou hodinu, ale nikdy mít více než sedm instancí celkem.
 * Pokud všechny výskyty Moje brány používají v průměru méně než 0,5 jádra, pak škálujte službu v odebráním jedné instance. Provést každou hodinu, ale nikdy mají méně než tři instance celkem.
 
-Automatické škálování se podporuje pro kontejnery a pravidelné služeb Service Fabric. Zbývající část tohoto článku popisuje zásad škálování způsoby, jak povolit nebo zakázat automatické škálování a uvádí příklady o tom, jak tuto funkci používat.
+Automatické škálování se podporuje pro kontejnery a pravidelné služeb Service Fabric. Chcete-li použít automatické škálování, budete muset běžet na verze 6.2 nebo nad modulu runtime Service Fabric. 
+
+Zbývající část tohoto článku popisuje zásad škálování způsoby, jak povolit nebo zakázat automatické škálování a uvádí příklady o tom, jak tuto funkci používat.
 
 ## <a name="describing-auto-scaling"></a>Popisující, automatické škálování
 Automatické škálování zásad lze definovat pro každou službu v clusteru Service Fabric. Každé zásady škálování se skládá ze dvou částí:
@@ -41,7 +43,7 @@ Všechny aktivační události, které jsou aktuálně podporovány pracovat s [
 Existují dva mechanismy, které jsou aktuálně podporovány pro automatické škálování. První z nich je určena pro bezstavové služby nebo pro kontejnery, kde automatické škálování se provádí přidáním nebo odebráním [instance](service-fabric-concepts-replica-lifecycle.md). Stavové a bezstavové služby, automatické škálování můžete také provést přidáním nebo odebráním s názvem [oddíly](service-fabric-concepts-partitioning.md) služby.
 
 > [!NOTE]
-> Aktuálně je podpora jen jedny zásady škálování na službu a pouze jeden trigger škálování podle zásad.
+> Aktuálně je podpora jen jedny zásady škálování na službu a pouze jeden škálování aktivační událost pro každou zásady škálování.
 
 ## <a name="average-partition-load-trigger-with-instance-based-scaling"></a>Aktivační událost zatížení průměrné oddílu s instancí na základě škálování
 První typ aktivační události je na základě zatížení instancí v oddílu bezstavové služby. Metrika zatížení jsou nejprve vyhlazené získat zatížení pro každou instanci oddílu, a pak jsou tyto hodnoty průměrovaný napříč všemi instancemi oddílu. Existují tři faktory, které určují, kdy se škálovat službu:

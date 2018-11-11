@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2018
 ms.author: shvija
-ms.openlocfilehash: c4a9a3189f3de101528871e4dba95bf7a76b9846
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: a3f7245d8a648249a4e7179cc02982eae8561037
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42746910"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51280569"
 ---
 # <a name="event-hubs-features-overview"></a>Přehled funkce Event Hubs
 
@@ -28,13 +28,21 @@ Tento článek vychází z informací v [přehledovém článku](event-hubs-what
 ## <a name="namespace"></a>Obor názvů
 Obor názvů služby Event Hubs poskytuje jedinečné kontejner oboru, odkazuje jeho [plně kvalifikovaný název domény](https://en.wikipedia.org/wiki/Fully_qualified_domain_name), ve kterém se vytváří služba event hubs nebo témat Kafka. 
 
+## <a name="event-hubs-for-apache-kafka"></a>Event Hubs pro Apache Kafka
+
+[Tato funkce](event-hubs-for-kafka-ecosystem-overview.md) poskytuje koncový bod, který umožňuje zákazníkům ke komunikaci s Event Hubs pomocí protokolu Kafka. Tato integrace poskytuje zákazníkům koncovým bodem v systému Kafka. To umožňuje zákazníkům konfigurace stávající aplikace Kafka ke komunikaci s Event Hubs, poskytuje alternativu ke spuštění vlastní clustery Kafka. Event Hubs pro Apache Kafka podporuje protokol Kafka 1.0 nebo novější. 
+
+Tato integrace není nutné ke spuštění clusterů Kafka nebo spravovat je pomocí Zookeeper. To také umožňuje pracovat s některými z nejnáročnějších funkce Event Hubs jako zachycení, automatické rozšiřování a zotavení po havárii Geo.
+
+Tato integrační také umožňuje aplikací, jako je Tvůrce zrcadlení nebo architekturu jako třeba připojit Kafka pracoval clusterless pouze změny konfigurace. 
+
 ## <a name="event-publishers"></a>Zdroje událostí
 
-Každá entita, která odesílá data do centra událostí se Tvůrce událostí nebo *vydavatel události*. Zdroje událostí mohou publikovat události pomocí protokolu HTTPS nebo AMQP 1.0. Zdroje událostí se v centru událostí identifikují pomocí tokenu sdíleného přístupového podpisu (SAS) a mohou mít jedinečnou identitu, nebo mohou používat společný token SAS.
+Každá entita, která odesílá data do centra událostí se Tvůrce událostí nebo *vydavatel události*. Zdroje událostí můžou publikovat události pomocí protokolu HTTPS nebo AMQP 1.0 nebo Kafka 1.0 nebo novější. Zdroje událostí se v centru událostí identifikují pomocí tokenu sdíleného přístupového podpisu (SAS) a mohou mít jedinečnou identitu, nebo mohou používat společný token SAS.
 
 ### <a name="publishing-an-event"></a>Publikování události
 
-Událost můžete publikovat prostřednictvím protokolu AMQP 1.0 nebo HTTPS. Služba Event Hubs poskytuje [klientských knihoven a třídy](event-hubs-dotnet-framework-api-overview.md) k publikování událostí z klientů .NET do centra událostí. Pro jiné moduly runtime a platformy můžete použít libovolného klienta protokolu AMQP 1.0, například [Apache Qpid](http://qpid.apache.org/). Události můžete publikovat samostatně nebo v dávce. Jedna publikace (instance dat události) je omezena limitem 256 KB – bez ohledu na to, jestli se jedná o jedinou událost nebo dávku (batch). Publikování události větší než tato prahová hodnota dojde k chybě. Nejvhodnějším postupem pro zdroje je nezajímat se o oddíly v centru událostí a specifikovat pouze *klíč oddílu* (představíme v další části) nebo svoji identitu prostřednictvím tokenu SAS.
+Můžete publikovat události pomocí protokolu AMQP 1.0, Kafka, 1.0 (nebo novější) nebo HTTPS. Služba Event Hubs poskytuje [klientských knihoven a třídy](event-hubs-dotnet-framework-api-overview.md) k publikování událostí z klientů .NET do centra událostí. Pro jiné moduly runtime a platformy můžete použít libovolného klienta protokolu AMQP 1.0, například [Apache Qpid](http://qpid.apache.org/). Události můžete publikovat samostatně nebo v dávce. Jedna publikace (instance dat události) je stanovený limit 1 MB, bez ohledu na to, zda se jedná o jedinou událost nebo dávku. Publikování události větší než tato prahová hodnota dojde k chybě. Nejvhodnějším postupem pro zdroje je nezajímat se o oddíly v centru událostí a specifikovat pouze *klíč oddílu* (představíme v další části) nebo svoji identitu prostřednictvím tokenu SAS.
 
 Volba, jestli se použije protokol AMQP nebo HTTPS, závisí na konkrétním scénáři použití. Protokol AMQP vyžaduje nejen protokol TLS (Transport Level Security) nebo SSL/TLS, ale i vytvoření trvalého obousměrného soketu. AMQP má vyšší náklady na síť při inicializaci relace, ale HTTPS pro každý požadavek vyžaduje další režii SSL. AMQP má pro často používané zdroje vyšší výkon.
 

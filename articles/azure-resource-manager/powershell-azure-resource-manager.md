@@ -12,14 +12,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: powershell
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/20/2018
+ms.date: 11/08/2018
 ms.author: tomfitz
-ms.openlocfilehash: 7cda2a406c6c49e9252bfd5840e8f943e5b7043f
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: 0ecb497e9b07119f6c32149a875f27ee7c338d74
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39205795"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51344633"
 ---
 # <a name="manage-resources-with-azure-powershell"></a>Správa prostředků pomocí Azure Powershellu
 
@@ -56,7 +56,7 @@ V tomto článku nasadíte virtuální počítač a jeho odpovídající virtuá
 * [Přispěvatel sítě](../role-based-access-control/built-in-roles.md#network-contributor)
 * [Přispěvatel účtů úložiště](../role-based-access-control/built-in-roles.md#storage-account-contributor)
 
-Místo přiřazení rolí jednotlivým uživatelům je často jednodušší [vytvořit skupinu Azure Active Directory](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md) pro uživatele, kteří potřebují provádět podobné akce. Potom této skupině přiřaďte odpovídající role. Pro názornost tohoto článku stačí vytvořit skupinu Azure Active Directory bez členů. Této skupině můžete přiřadit role pro některý obor. 
+Místo přiřazení rolí jednotlivým uživatelům je často jednodušší [vytvořit skupinu Azure Active Directory](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md) pro uživatele, kteří potřebují provádět podobné akce. Potom této skupině přiřaďte odpovídající role. Pro názornost tohoto článku stačí vytvořit skupinu Azure Active Directory bez členů. Této skupině můžete přiřadit role pro některý obor.
 
 Následující příklad vytvoří skupinu a přiřadí ji k roli Přispěvatel virtuálních počítačů pro skupinu prostředků. Ke spuštění `New-AzureAdGroup` příkaz, je nutné použít [Azure Cloud Shell](/azure/cloud-shell/overview) nebo [stažení modulu Azure AD PowerShell](https://www.powershellgallery.com/packages/AzureAD/).
 
@@ -74,7 +74,7 @@ Obvykle tento postup zopakujete pro role **Přispěvatel sítě** a **Přispěva
 
 ## <a name="azure-policy"></a>Azure Policy
 
-[Služba Azure Policy](../azure-policy/azure-policy-introduction.md) pomůže vám zajistit, aby všechny prostředky v předplatném splňují standardy elektronického odesílání podnikové. Vaše předplatné už obsahuje několik definic zásad. Pokud chcete zobrazit dostupné definice zásad, použijte:
+[Azure Policy](../azure-policy/azure-policy-introduction.md) pomáhá zajistit, aby všechny prostředky v předplatném splňovaly firemní standardy. Vaše předplatné už obsahuje několik definic zásad. Pokud chcete zobrazit dostupné definice zásad, použijte:
 
 ```azurepowershell-interactive
 (Get-AzureRmPolicyDefinition).Properties | Format-Table displayName, policyType
@@ -211,11 +211,12 @@ Remove-AzureRmResourceLock -LockName LockNSG `
 
 Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků, virtuálního počítače a všech souvisejících prostředků použít příkaz [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup).
 
-```powershell
+```azurepowershell-interactive
 Remove-AzureRmResourceGroup -Name myResourceGroup
 ```
 
 ## <a name="next-steps"></a>Další postup
+
 * Další informace o monitorování virtuálních počítačů najdete v tématu [monitorovat a aktualizovat virtuální počítač Windows s Azure Powershellem](../virtual-machines/windows/tutorial-monitoring.md).
 * Další informace o použití Azure Security Center k implementaci doporučené bezpečnostní postupy [monitorování zabezpečení virtuálních počítačů pomocí Azure Security Center](../virtual-machines/windows/tutorial-azure-security.md).
 * Přesunutí stávajících prostředků do nové skupiny prostředků. Příklady najdete v tématu [přesun prostředků do nové skupiny prostředků nebo předplatného](resource-group-move-resources.md).

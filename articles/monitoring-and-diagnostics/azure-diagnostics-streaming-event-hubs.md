@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: robb
 ms.component: diagnostic-extension
-ms.openlocfilehash: 32cebecbb9185250d7d295eab3074a76dcd6a8b9
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: d21b6235c91a7d2f14b8b39c07891efe967ef572
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51240490"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51278238"
 ---
 # <a name="streaming-azure-diagnostics-data-in-the-hot-path-by-using-event-hubs"></a>Streamování dat diagnostiky Azure do horké cesty s využitím služby Event Hubs
 Diagnostika Azure nabízí flexibilní možnosti, jak shromažďovat metriky a protokoly z cloudové služby virtuálních počítačů (VM) a přenést výsledky do služby Azure Storage. Od března 2016 (SDK 2.9) časový rámec, můžete odeslání diagnostiky do vlastní zdroje dat a přenos dat kritickou cestu během několika sekund pomocí [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/).
@@ -40,7 +40,7 @@ Event Hubs receieving data z Azure Diagnostics se podporuje v cloudových služe
 * Rozšíření Azure Diagnostics 1.6 ([sady Azure SDK pro .NET 2.9 nebo novější](https://azure.microsoft.com/downloads/) cílí to ve výchozím nastavení)
 * [Visual Studio 2013 nebo novější](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx)
 * Existující konfigurace diagnostiky Azure v aplikaci s využitím *.wadcfgx* soubor a jeden z následujících metod:
-  * Visual Studio: [konfigurace diagnostiky pro Azure Cloud Services a Virtual Machines](../vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md)
+  * Visual Studio: [konfigurace diagnostiky pro Azure Cloud Services a Virtual Machines](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines)
   * Prostředí Windows PowerShell: [povolení diagnostiky v Azure Cloud Services pomocí Powershellu](../cloud-services/cloud-services-diagnostics-powershell.md)
 * Zřízeno na článek, obor názvů služby Event Hubs [Začínáme se službou Event Hubs](../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)
 

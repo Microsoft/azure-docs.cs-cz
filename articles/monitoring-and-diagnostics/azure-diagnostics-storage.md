@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 08/01/2016
 ms.author: jeconnoc
 ms.component: diagnostic-extension
-ms.openlocfilehash: 733c84ef9e6cee1a8ea488f0007ade1e72f39737
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: f9ae9e2edea1daf2fda825053c777521f042413d
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47033244"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51278918"
 ---
-# <a name="store-and-view-diagnostic-data-in-azure-storage"></a>Store a zobrazení diagnostických dat ve službě Azure Storage
+# <a name="store-and-view-diagnostic-data-in-azure-storage"></a>Ukládání a zobrazení diagnostických dat v Azure Storage
 Diagnostická data nejsou ukládána trvale, pokud přenos pro emulátor úložiště Microsoft Azure nebo do úložiště Azure. Jednou v úložišti, bude možné dokument zobrazit s jedním z několika dostupných nástrojů.
 
 ## <a name="specify-a-storage-account"></a>Zadejte účet úložiště
@@ -73,7 +73,7 @@ Data protokolu se ukládají v úložišti objektů Blob nebo tabulek s následu
 ## <a name="tools-to-view-diagnostic-data"></a>Nástroje pro zobrazení diagnostických dat
 Několik nástroje jsou k dispozici k zobrazení dat po převedení do úložiště. Příklad:
 
-* Průzkumník serveru v sadě Visual Studio – Pokud jste nainstalovali nástroje Azure pro sadu Microsoft Visual Studio, můžete uzlu služby Azure Storage v Průzkumníku serveru k zobrazení jen pro čtení objektů blob a tabulky data z vašich účtů úložiště Azure. Můžete zobrazit data z vašeho účtu emulátor místního úložiště a také z účtů úložiště jste vytvořili pro Azure. Další informace najdete v tématu [procházení a Správa prostředků úložiště pomocí Průzkumníku serveru](../vs-azure-tools-storage-resources-server-explorer-browse-manage.md).
+* Průzkumník serveru v sadě Visual Studio – Pokud jste nainstalovali nástroje Azure pro sadu Microsoft Visual Studio, můžete uzlu služby Azure Storage v Průzkumníku serveru k zobrazení jen pro čtení objektů blob a tabulky data z vašich účtů úložiště Azure. Můžete zobrazit data z vašeho účtu emulátor místního úložiště a také z účtů úložiště jste vytvořili pro Azure. Další informace najdete v tématu [procházení a Správa prostředků úložiště pomocí Průzkumníku serveru](/visualstudio/azure/vs-azure-tools-storage-resources-server-explorer-browse-manage).
 * [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) je samostatná aplikace, která umožňuje jednoduchá práci s daty Azure Storage ve Windows, os x a Linuxu.
 * [Azure Management Studio](http://www.cerebrata.com/products/azure-management-studio/introduction) zahrnuje správce diagnostiky Azure, které umožňuje zobrazit, stáhnout a spravovat diagnostická data shromážděná z aplikací spuštěných v Azure.
 

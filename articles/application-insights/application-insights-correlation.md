@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 04/09/2018
 ms.reviewer: sergkanz
 ms.author: mbullwin
-ms.openlocfilehash: d9b6f5c08eed5efceafc71feaf654ad8f4fcafa0
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: eb14a3bc76fef37cdff4ed49cdbb6a99eac40928
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49341119"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51280159"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Korelace telemetrie v Application Insights
 
@@ -59,14 +59,14 @@ V poznámce výsledek zobrazení, že všechny položky telemetrie sdílet koře
 |------------|---------------------------|--------------|--------------------|--------------|
 | pageView   | Základní stránka                |              | STYz               | STYz         |
 | závislost | / GET Home/Stock           | qJSXU        | STYz               | STYz         |
-| požadavek    | GET Home/Stock            | KqKwlrSt9PA= | qJSXU              | STYz         |
+| žádost    | GET Home/Stock            | KqKwlrSt9PA= | qJSXU              | STYz         |
 | závislost | ZÍSKAT /api/stock/value      | bBrf2L7mm2g = | KqKwlrSt9PA=       | STYz         |
 
 Teď při volání `GET /api/stock/value` provedené externí služby chcete znát identitu serveru. Abyste mohli nastavit `dependency.target` pole odpovídajícím způsobem. Když externí služba nepodporuje sledování - `target` je nastavena na název hostitele služby jako `stock-prices-api.com`. Nicméně pokud tuto službu identifikuje vrácením i předdefinovanou hlavičky protokolu HTTP - `target` obsahuje identitu služby, která umožňuje vytvářet distribuované trasování pomocí dotazu na telemetrická data ze služby Application Insights. 
 
 ## <a name="correlation-headers"></a>Korelace záhlaví
 
-Pracujeme na RFC návrh [korelační protokol HTTP](https://github.com/lmolkova/correlation/blob/master/http_protocol_proposal_v1.md). Tento návrh definuje dvě záhlaví:
+Pracujeme na RFC návrh [korelační protokol HTTP](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md). Tento návrh definuje dvě záhlaví:
 
 - `Request-Id` provádění globálně jedinečné id volání
 - `Correlation-Context` -provádění kolekce dvojic hodnot název vlastnosti distribuované trasování
@@ -77,7 +77,7 @@ Definuje Application Insights [rozšíření](https://github.com/lmolkova/correl
 
 ### <a name="w3c-distributed-tracing"></a>W3C distribuované trasování
 
-Přeneseme do (formátu W3C distribuované trasování) [https://w3c.github.io/distributed-tracing/report-trace-context.html]. Definuje:
+Můžeme se převádějí na [formátu W3C distribuované trasování](https://w3c.github.io/trace-context/). Definuje:
 - `traceparent` -provádí operace globálně jedinečné id a jedinečný identifikátor hovoru
 - `tracestate` -představuje konkrétní kontext trasování systému.
 
@@ -156,7 +156,7 @@ public class CloudRoleNameInitializer extends WebTelemetryInitializerBase {
     }
   }
 ```
-Prostřednictvím [třídy kontextu zařízení](https://docs.microsoft.com/et-ee/java/api/com.microsoft.applicationinsights.extensibility.context._device_context) (pouze tuto položku telemetrie je označené)
+Prostřednictvím [třídy kontextu zařízení](https://docs.microsoft.com/java/api/com.microsoft.applicationinsights.extensibility.context._device_context) (pouze tuto položku telemetrie je označené)
 ```Java
 telemetry.getContext().getDevice().setRoleName("My Component Name");
 ```

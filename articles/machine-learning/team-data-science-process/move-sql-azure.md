@@ -15,21 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 5/04/2018
 ms.author: deguhath
-ms.openlocfilehash: 99141b7542cc9adadadda6ada670b644d3aba5f3
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 5fa86387861ca87f9280a4c900d9dd83db5f1a39
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49393639"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51344531"
 ---
 # <a name="move-data-to-an-azure-sql-database-for-azure-machine-learning"></a>Přesun dat do služby SQL Database pro Azure Machine Learning
-Toto téma popisuje možnosti pro přesun dat z plochých souborů (sdíleného svazku clusteru nebo TSV formátů) nebo z dat uložených v k místním SQL serveru do Azure SQL database. Tyto úlohy pro přesun dat do cloudu jsou součástí vědecké zpracování týmových dat.
+
+Tento článek popisuje možnosti pro přesun dat z plochých souborů (sdíleného svazku clusteru nebo TSV formáty) nebo z dat uložených v k místním SQL serveru do Azure SQL database. Tyto úlohy pro přesun dat do cloudu jsou součástí vědecké zpracování týmových dat.
 
 Téma, které popisuje možnosti pro přesun dat do SQL serveru v místním pro Machine Learning, naleznete v tématu [přesun dat do SQL serveru na virtuálním počítači Azure](move-sql-server-virtual-machine.md).
-
-Následující **nabídky** odkazy na témata popisující ingestovat data do cílových prostředí, kde můžete data ukládat a zpracovávat během zpracování dat vědy (TDSP) týmu.
-
-[!INCLUDE [cap-ingest-data-selector](../../../includes/cap-ingest-data-selector.md)]
 
 Následující tabulka shrnuje možnosti pro přesun dat do služby Azure SQL Database.
 

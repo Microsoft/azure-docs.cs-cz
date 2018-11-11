@@ -1,30 +1,28 @@
 ---
-title: Správa clusterů Hadoop využívající systém Windows v HDInsight pomocí webu Azure portal
-description: Zjistěte, jak spravovat službu HDInsight. Vytvoření clusteru HDInsight, otevřete interaktivní konzoly jazyka JavaScript a otevřete konzoly příkaz Hadoop.
+title: Správa clusterů Apache Hadoop využívající systém Windows v HDInsight pomocí webu Azure portal
+description: Zjistěte, jak spravovat službu HDInsight. Vytvoření clusteru HDInsight, otevřete interaktivní konzoly jazyka JavaScript a otevřete příkazové konzole Apache Hadoop.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/25/2017
-ms.author: jasonh
+ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 130f684b69a9cfa1936c2a9aa5175f3d5a7631ac
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 651a03f69a7664b68ce3fe5c512c59c01762a505
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46970273"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282471"
 ---
-# <a name="manage-windows-based-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Správa clusterů Hadoop využívající systém Windows v HDInsight pomocí webu Azure portal
+# <a name="manage-windows-based-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Spravovat clustery založené na Windows Apache Hadoop v HDInsight pomocí webu Azure portal
 
-Použití [webu Azure portal][azure-portal], můžete vytvářet clustery Hadoop využívající systém Windows v Azure HDInsight, změnit heslo uživatele Hadoop a povolení protokolu RDP (Remote Desktop), aby měli přístup k příkazu Hadoop konzoly v clusteru.
+Použití [webu Azure portal][azure-portal], můžete vytvářet clustery Apache Hadoop využívající systém Windows v Azure HDInsight, změňte heslo uživatele Hadoop a povolit protokol RDP (Remote Desktop), aby měli přístup k Hadoop příkaz konzoly v clusteru.
 
 Informace v tomto článku se vztahuje pouze na clusterech HDInsight založených na oknech. Informace o správě clusterů se systémem Linux najdete v tématu [spravovat Hadoop clusterů v HDInsight pomocí webu Azure portal](hdinsight-administer-use-portal-linux.md).
 
-> [!IMPORTANT]
-> HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
-
+[!INCLUDE [windows-retirement-notice](../../includes/windows-retirement-notice.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -34,7 +32,7 @@ Je nutné, abyste před zahájením tohoto článku měli tyto položky:
 * **Účet služby Azure Storage** – cluster HDInsight používá kontejneru úložiště objektů Blob v Azure jako výchozí systém souborů. Další informace o tom, jak Azure Blob storage poskytuje bezproblémové prostředí s clustery HDInsight najdete v tématu [použití služby Azure Blob Storage s HDInsight](hdinsight-hadoop-use-blob-storage.md). Podrobnosti o vytvoření účtu služby Azure Storage najdete v tématu [způsob vytvoření účtu úložiště](../storage/common/storage-create-storage-account.md).
 
 ## <a name="open-the-portal"></a>Otevřít na portálu
-1. Přihlaste se k [ https://portal.azure.com ](https://portal.azure.com).
+1. Přihlaste se k webu [https://portal.azure.com](https://portal.azure.com).
 2. Po otevření portálu můžete:
 
    * Klikněte na tlačítko **vytvořit prostředek** v levé nabídce na vytvoření nového clusteru:
@@ -67,7 +65,7 @@ HDInsight funguje s komponentami Hadoop široký rozsah. Seznam komponent, kter�
 Instalace vlastního softwaru v clusteru pomocí připojení ke vzdálené ploše není podporována. Neměli byste ukládat soubory na jednotkách hlavního uzlu, jak budou ztraceny, budete muset znovu vytvořit clustery. Doporučujeme ukládat soubory do úložiště objektů Blob v Azure. Úložiště objektů blob je trvalé.
 
 ## <a name="list-and-show-clusters"></a>Seznam a zobrazení clusterů
-1. Přihlaste se k [ https://portal.azure.com ](https://portal.azure.com).
+1. Přihlaste se k webu [https://portal.azure.com](https://portal.azure.com).
 2. Klikněte na tlačítko **clustery HDInsight** v levé nabídce.
 3. Klikněte na název clusteru. Pokud je dlouhý seznam clusterů, můžete použít filtr horní části stránky.
 4. Dvakrát klikněte na cluster ze seznamu zobrazíte podrobnosti.
@@ -328,7 +326,7 @@ Přihlašovací údaje pro cluster, který jste zadali při jeho vytváření po
     Výchozí hodnoty pro vypršení platnosti na dojde už za týden.
 
    > [!NOTE]
-   > Můžete také sady HDInsight .NET SDK k povolení služby Vzdálená plocha v clusteru. Použití **EnableRdp** metodu na objekt klienta HDInsight následujícím způsobem: **klienta. EnableRdp (název clusteru, umístění, "rdpuser", "rdppassword", DateTime.Now.AddDays(6))**. Podobně, chcete-li zakázat vzdálené plochy v clusteru, můžete použít **klienta. DisableRdp (název clusteru, umístění)**. Další informace o těchto metodách, naleznete v tématu [HDInsight .NET SDK – referenční informace](http://go.microsoft.com/fwlink/?LinkId=529017). To platí pouze pro clustery HDInsight se systémem Windows.
+   > Můžete také sady HDInsight .NET SDK k povolení služby Vzdálená plocha v clusteru. Použití **EnableRdp** metodu na objekt klienta HDInsight následujícím způsobem: **klienta. EnableRdp (název clusteru, umístění, "rdpuser", "rdppassword", DateTime.Now.AddDays(6))**. Podobně, chcete-li zakázat vzdálené plochy v clusteru, můžete použít **klienta. DisableRdp (název clusteru, umístění)**. Další informace o těchto metodách, naleznete v tématu [HDInsight .NET SDK – referenční informace](https://go.microsoft.com/fwlink/?LinkId=529017). To platí pouze pro clustery HDInsight se systémem Windows.
    >
    >
 

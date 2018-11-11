@@ -2,19 +2,19 @@
 title: Použití Apache Sparku ke čtení a zápisu dat do služby Azure SQL database
 description: Zjistěte, jak nastavit připojení mezi clusterem HDInsight Spark a databázi Azure SQL pro data číst, zapisovat data a streamování dat do služby SQL database
 services: hdinsight
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/01/2018
-ms.openlocfilehash: 2aec894da6b4e5ffd59fee12bc8476b25955c991
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: b8494150a060e02145eab3674bdd2dd62cdda225
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43045792"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51277286"
 ---
 # <a name="use-hdinsight-spark-cluster-to-read-and-write-data-to-azure-sql-database"></a>Použití clusteru HDInsight Spark ke čtení a zápisu dat do služby Azure SQL database
 
@@ -234,7 +234,7 @@ V této části jsme Streamovat data do **hvactable** , že jste již vytvořili
         
          var streamingQuery = WriteToSQLQuery.start()
 
-1. Ověřte, že data je přenášen do **hvactable** spuštěním následujícího dotazu v SQL Server Management Studio (SSMS). Při každém spuštění dotazu, zobrazuje počet řádků ve vzestupném tabulky.
+1. Ověřte, že data je přenášen do **hvactable** spuštěním následujícího dotazu v SQL Server Management Studio (SSMS). Při každém spuštění dotazu ukazuje počet řádků ve vzestupném tabulky.
 
         SELECT COUNT(*) FROM hvactable
 

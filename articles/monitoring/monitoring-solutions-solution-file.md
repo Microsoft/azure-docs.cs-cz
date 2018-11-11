@@ -15,18 +15,18 @@ ms.workload: infrastructure-services
 ms.date: 01/09/2018
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 13da68f826f7077acec9a64d1aa0ea18c66be6ff
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: 21e280740d5d7f467ee70952febf858e0dc0b89d
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50914239"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51278204"
 ---
 # <a name="creating-a-management-solution-file-in-azure-preview"></a>Vytváření souboru řešení správy v Azure (Preview)
 > [!NOTE]
 > Toto je předběžná dokumentace pro vytváření řešení pro správu v Azure, které jsou aktuálně ve verzi preview. Žádné schéma je popsáno níže se může změnit.  
 
-Řešení pro správu v Azure jsou implementovány jako [šablon Resource Manageru](../azure-resource-manager/resource-manager-template-walkthrough.md).  Učení hlavního úkolu v tom, jak vytvářet řešení pro správu jak [vytvářet šablony](../azure-resource-manager/resource-group-authoring-templates.md).  Tento článek obsahuje jedinečné podrobnosti šablon použitých pro řešení a konfigurace prostředků typické řešení.
+Řešení pro správu v Azure jsou implementovány jako [šablon Resource Manageru](../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md).  Učení hlavního úkolu v tom, jak vytvářet řešení pro správu jak [vytvářet šablony](../azure-resource-manager/resource-group-authoring-templates.md).  Tento článek obsahuje jedinečné podrobnosti šablon použitých pro řešení a konfigurace prostředků typické řešení.
 
 
 ## <a name="tools"></a>Nástroje

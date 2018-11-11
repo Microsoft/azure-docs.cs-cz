@@ -4,40 +4,46 @@ description: Azure definice zásady mají různé účinky, které určují způ
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/18/2018
+ms.date: 10/30/2018
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 54562401c830232d0a4bf90405cc5a2dbedcd8bc
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 4668b1fe6e59898d81fc71558e21acd1a89be767
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47055964"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51279488"
 ---
-# <a name="understand-policy-effects"></a>Vysvětlení zásad efekty
+# <a name="understand-policy-effects"></a>Vysvětlení efektu služby Policy
 
 Každá definice zásady ve službě Azure Policy obsahuje jediný efekt, který určuje, co se stane při skenování, kdy **Pokud** segmentu pravidla zásad se vyhodnocuje tak, aby odpovídaly prostředek se má zkontrolovat. Účinky mohou také chovat odlišně, pokud jsou pro nový prostředek, prostředek aktualizované nebo existující prostředek.
 
-Aktuálně nejsou pět efekty, které jsou podporovány v definici zásad:
+Aktuálně existuje šest efekty, které jsou podporovány v definici zásad:
 
 - Připojit
 - Auditování
 - AuditIfNotExists
 - Odepřít
 - DeployIfNotExists
+- Zakázáno
 
 ## <a name="order-of-evaluation"></a>Pořadí vyhodnocení
 
 Po provedení požadavku se vytvořit nebo aktualizovat prostředek prostřednictvím Azure Resource Manageru, zásada zpracovává několik efektů před předání požadavku příslušné poskytovatele prostředků.
 Tím zabráníte zbytečnému zpracování přes poskytovatele prostředků, pokud prostředek nesplňuje ovládací prvky zásad navržených zásad správného řízení. Zásady vytvoří seznam všech definic zásad přiřazené zásady nebo přiřazení iniciativy, které použít obor (bez vyloučení) na prostředek a připraví vyhodnotit prostředků pro každou definici.
 
-- **Připojit** je vyhodnocen jako první. Od té doby připojení může změnit požadavek, změny provedené pomocí připojení může zabránit auditu nebo odepřít efekt spouštět.
+- **Zakázané** je nejprve zkontrolována k určení, pokud by se mělo vyhodnotit pravidlo zásad.
+- **Připojit** se pak vyhodnocuje. Od té doby připojení může změnit požadavek, změny provedené pomocí připojení může zabránit auditu nebo odepřít efekt spouštět.
 - **Odepřít** se pak vyhodnocuje. Vyhodnocením odepření před auditu, je zabráněno double protokolování nežádoucí prostředku.
 - **Audit** se pak vyhodnocuje před požadavek na poskytovateli prostředků.
 
 Jakmile se žádost je k dispozici u poskytovatele prostředků a poskytovatele prostředků se vrátí stavový kód úspěchu **AuditIfNotExists** a **DeployIfNotExists** vyhodnocují k určení, zda zpracování je požadováno protokolování dodržování předpisů nebo akce.
+
+## <a name="disabled"></a>Zakázáno
+
+Tento efekt je užitečné pro testování situace a když má definice zásad parametrizované efekt. Je možné vypnout jeden přiřazení těchto zásad změnou přiřazení parametr vliv namísto zakázání všechna přiřazení zásad.
 
 ## <a name="append"></a>Připojit
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2018
 ms.author: shvija
-ms.openlocfilehash: ed337689360428d66657e5391ee52bb0ae39dc14
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 3db77a31dfe92e16d2ec145cc0be595082d0d927
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49365641"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51279377"
 ---
 # <a name="event-hubs-samples"></a>Ukázky služby Event Hubs 
 Ukázky služby Event Hubs můžete najít na [Githubu](https://github.com/Azure/azure-event-hubs/tree/master/samples). Tyto ukázky ukazují klíčové funkce v [Azure Event Hubs](/azure/event-hubs/). Tento článek slouží ke kategorizaci a popisuje ukázek dostupných s odkazy na každý.
@@ -60,7 +60,8 @@ Můžete najít ukázky v Azure CLI pro službu Azure Event Hubs v [azure-event-
 ## <a name="azure-powershell-samples"></a>Ukázky Azure PowerShellu
 Můžete najít ukázky Azure Powershellu pro Azure Event Hubs [azure-event-hubs](https://github.com/Azure/azure-event-hubs/tree/master/samples/Management/PowerShell) úložiště GitHub.
  
-
+## <a name="apache-kafka-samples"></a>Apache Kafka ukázky
+Můžete najít ukázky pro službu Event Hubs pro Apache Kafka funkci [azure-event-hubs pro kafka](https://github.com/Azure/azure-event-hubs-for-kafka) úložiště GitHub.
 
 ## <a name="next-steps"></a>Další postup
 Dozvíte víc o službě Event Hubs v následujících článcích:

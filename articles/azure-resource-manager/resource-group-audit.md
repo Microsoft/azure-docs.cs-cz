@@ -1,6 +1,6 @@
 ---
-title: Zobrazit protokoly aktivita Azure k monitorování zdrojů | Microsoft Docs
-description: Použijte protokoly aktivity zkontrolujte akcemi uživatelů a chyby. Zobrazuje portálu prostředí Azure PowerShell, rozhraní příkazového řádku Azure a REST.
+title: Zobrazení protokolů aktivit Azure pro monitorování prostředků | Dokumentace Microsoftu
+description: Použití protokolů aktivit do akce kontroly uživatelů a chyby. Zobrazuje portálového prostředí Azure PowerShell, rozhraní příkazového řádku Azure a REST.
 services: azure-resource-manager
 documentationcenter: ''
 author: tfitzmac
@@ -12,93 +12,91 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/04/2018
+ms.date: 11/08/2018
 ms.author: tomfitz
-ms.openlocfilehash: 2dcf93a635a8eb0a01ec266d2478b6e5a336ec00
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 09f7fba2b8ae3b3ccc8710ffe9302d02d311c74c
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34358689"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51514328"
 ---
-# <a name="view-activity-logs-to-audit-actions-on-resources"></a>Zobrazit protokoly aktivity akce u prostředků
+# <a name="view-activity-logs-to-audit-actions-on-resources"></a>Zobrazení protokolů aktivit pro auditování akcí u prostředků
 
-Prostřednictvím protokolů činnosti můžete určit:
+Na základě protokolů aktivit můžete zjistit:
 
 * jaké operace provedené na prostředky v rámci vašeho předplatného
-* Kdo inicioval operaci (i když operations iniciovaná back-end službu nevrátí uživatele jako volající)
+* kdo operaci zahájil (i když operací iniciovaných back-end službu nevrátí uživatele jako volající)
 * Při operaci došlo k chybě
 * Stav operace
-* Hodnoty další vlastnosti, které vám můžou pomoct zkoumání operaci
+* Hodnoty dalších vlastností, které vám mohou pomoci při zkoumání operace
 
-Protokol aktivit obsahuje všechny operace zápisu (PUT, POST, DELETE) provést na vašich prostředků. Operace čtení (GET) neobsahuje. Seznam akcí prostředků najdete v tématu [poskytovatel prostředků Azure Resource Manager operations](../role-based-access-control/resource-provider-operations.md). Najít k chybě při odstraňování problémů s nebo k monitorování, jak upravit uživatele ve vaší organizaci prostředek, můžete protokoly auditu.
+Protokol aktivit obsahuje všechny operace zápisu (PUT, POST, DELETE) prováděné s vašimi prostředky. Neobsahuje operace čtení (GET). Seznam prostředků akcí najdete v tématu [operace poskytovatele prostředků Azure Resource Manageru](../role-based-access-control/resource-provider-operations.md). Protokoly auditu můžete použít k vyhledání chyby při odstraňování potíží nebo k monitorování, jak uživatel ve vaší organizaci změnil prostředek.
 
-Protokoly aktivity jsou uchovány 90 dní. Pro libovolný rozsah kalendářních dat, se můžete dotazovat, dokud počáteční datum není více než 90 dní v minulosti.
+Protokoly aktivit se uchovávají 90 dnů. Můžete se dotazovat na libovolný rozsah kalendářních dat, pokud počáteční datum neleží více než 90 dnů v minulosti.
 
-
-
-Můžete načíst informace z protokolů aktivity prostřednictvím portálu, prostředí PowerShell, rozhraní příkazového řádku Azure, rozhraní API pro přehledy REST, nebo [knihovny .NET Insights](https://www.nuget.org/packages/Microsoft.Azure.Insights/).
+Můžete načíst informace z protokolů aktivit na portálu, Powershellu, rozhraní příkazového řádku Azure Insights REST API, nebo [knihovna .NET Insights](https://www.nuget.org/packages/Microsoft.Azure.Insights/).
 
 ## <a name="portal"></a>Portál
 
-1. Chcete-li zobrazit protokoly aktivity přes portál, vyberte **monitorování**.
-   
-    ![Vyberte protokoly aktivity](./media/resource-group-audit/select-monitor.png)
+1. Pokud chcete zobrazit protokoly aktivit na portálu, vyberte **monitorování**.
 
-   Nebo pokud chcete automaticky filtrovat protokol aktivit pro konkrétní prostředek nebo skupina prostředků, vyberte **protokol aktivit**. Všimněte si, že je protokol aktivit automaticky filtrovaná podle vybraného prostředku.
-   
+    ![Vyberte protokoly aktivit](./media/resource-group-audit/select-monitor.png)
+
+   Nebo, pokud chcete automaticky filtrovat protokol aktivity pro určitý prostředek nebo skupinu prostředků, vyberte **protokolu aktivit**. Všimněte si, že v protokolu aktivit se automaticky filtruje podle vybraného prostředku.
+
     ![Filtrovat podle prostředků](./media/resource-group-audit/filtered-by-resource.png)
-2. V **protokol aktivit**, se zobrazí souhrn posledních operací.
-   
+2. V **protokolu aktivit**, prohlédnout souhrnné informace o poslední operace.
+
     ![Zobrazit akce](./media/resource-group-audit/audit-summary.png)
-3. Pokud chcete omezit počet operací zobrazí, vyberte jiné podmínky. Například na následujícím obrázku **časový interval** a **událostí iniciovaná** pole změnit tak, aby zobrazení akce prováděné konkrétního uživatele nebo aplikace pro poslední měsíc. Vyberte **použít** pro zobrazení výsledků dotazu.
-   
-    ![Nastavení možností filtru](./media/resource-group-audit/set-filter.png)
+3. Pokud chcete omezit počet operací zobrazí, vyberte různé podmínky. Například na následujícím obrázku **Timespan** a **zahájit událost** změnit pole, chcete-li zobrazit akce prováděné konkrétního uživatele nebo aplikace pro poslední měsíc. Vyberte **použít** Chcete-li zobrazit výsledky dotazu.
 
-4. Pokud potřebujete spusťte dotaz znovu později, vyberte **Uložit** a zadejte název dotazu.
-   
-    ![uložení dotazu](./media/resource-group-audit/save-query.png)
-5. Chcete-li rychle spuštění dotazu, můžete vybrat jeden z předdefinovaných dotazů, například selhání nasazení.
+    ![nastavení filtru](./media/resource-group-audit/set-filter.png)
 
-    ![Vybrat dotaz](./media/resource-group-audit/select-quick-query.png)
+4. Pokud je potřeba znovu spustit dotaz, vyberte **Uložit** a zadejte název dotazu.
 
-   Vybraný dotaz automaticky nastaví hodnoty požadované filtru.
+    ![Uložit dotaz](./media/resource-group-audit/save-query.png)
+5. K rychlému spouštění dotazu, můžete vybrat jednu z předdefinovaných dotazů, jako je například selhání nasazení.
 
-    ![Zobrazit chyby nasazení](./media/resource-group-audit/view-failed-deployment.png)   
+    ![Výběr dotazu](./media/resource-group-audit/select-quick-query.png)
 
-6. Vyberte jednu z operace se zobrazí souhrn události.
+   Vybraný dotaz automaticky nastaví hodnoty požadovaný filtr.
+
+    ![Zobrazit chyby nasazení](./media/resource-group-audit/view-failed-deployment.png)
+
+6. Vyberte jednu z operací, které chcete zobrazit souhrn události.
 
     ![Operace zobrazení](./media/resource-group-audit/view-operation.png)  
 
 ## <a name="powershell"></a>PowerShell
 
-1. Chcete-li načíst položky protokolu, spusťte **Get-AzureRmLog** příkaz. Můžete zadat další parametry pro filtrování seznamu položek. Pokud nezadáte počáteční a koncový čas, vrátí se položky za poslední hodinu. Chcete-li například získat operace pro skupinu prostředků během poslední hodiny spustit:
+1. Pokud chcete načíst položky protokolu, spusťte **Get-AzureRmLog** příkazu. Další parametry pro filtrování seznamu položek, které zadáte. Pokud nezadáte čas zahájení a ukončení, budou vráceny položky za poslední hodinu. Například pokud chcete načíst operace pro skupinu prostředků za poslední hodinu spusťte:
 
-  ```powershell
+  ```azurepowershell-interactive
   Get-AzureRmLog -ResourceGroup ExampleGroup
   ```
-   
-    Následující příklad ukazuje, jak používat protokol aktivit k operacím research prováděné během zadané doby. Počáteční a koncové datum nejsou zadány ve formátu data.
 
-  ```powershell
+    Následující příklad ukazuje způsob použití protokolu aktivit do výzkumu operací provedených v určitou dobu. Počáteční a koncové datum jsou zadány ve formátu data.
+
+  ```azurepowershell-interactive
   Get-AzureRmLog -ResourceGroup ExampleGroup -StartTime 2015-08-28T06:00 -EndTime 2015-09-10T06:00
   ```
 
-    Nebo můžete použít funkce datum zadat rozsah dat, jako je například posledních 14 dní.
-   
-  ```powershell 
+    Nebo datové funkce můžete zadat rozsah dat, jako je například posledních 14 dní.
+
+  ```azurepowershell-interactive
   Get-AzureRmLog -ResourceGroup ExampleGroup -StartTime (Get-Date).AddDays(-14)
   ```
 
-2. V závislosti na čas spuštění, který zadáte může vrátit předchozí příkazy dlouhý seznam operací pro skupinu prostředků. Můžete filtrovat výsledky pro co hledáte tím, že poskytuje kritéria vyhledávání. Například pokud chcete prozkoumat, jak byla zastavena webovou aplikaci, můžete spustit následující příkaz:
+2. V závislosti na čas spuštění, který zadáte může vrátit předchozí příkazy dlouhý seznam operací pro skupinu prostředků. Můžete filtrovat výsledky pro co jste hledali zadáním kritérií hledání. Například pokud se pokoušíte Chcete-li zjistit, jak byla webová aplikace zastavena, můžete spustit následující příkaz:
 
-  ```powershell
+  ```azurepowershell-interactive
   Get-AzureRmLog -ResourceGroup ExampleGroup -StartTime (Get-Date).AddDays(-14) | Where-Object OperationName -eq Microsoft.Web/sites/stop/action
   ```
 
-    V tomto příkladu zobrazující se provádí akce zastavení someone@contoso.com. 
+    V tomto příkladu zobrazí, že se provádí akce zastavení someone@contoso.com.
 
-  ```powershell 
+  ```powershell
   Authorization     :
   Scope     : /subscriptions/xxxxx/resourcegroups/ExampleGroup/providers/Microsoft.Web/sites/ExampleSite
   Action    : Microsoft.Web/sites/stop/action
@@ -116,47 +114,46 @@ Můžete načíst informace z protokolů aktivity prostřednictvím portálu, pr
   SubStatus         : OK
   ```
 
-3. Můžete vyhledat akce prováděné určitého uživatele, i pro skupinu prostředků, která již existuje.
+3. Můžete vyhledat akce prováděné konkrétní uživatel, dokonce i pro skupinu prostředků, která již existuje.
 
-  ```powershell 
+  ```azurepowershell-interactive
   Get-AzureRmLog -ResourceGroup deletedgroup -StartTime (Get-Date).AddDays(-14) -Caller someone@contoso.com
   ```
 
-4. Můžete filtrovat pro operace se nezdařila.
+4. Můžete filtrovat pro neúspěšné operace.
 
-  ```powershell
+  ```azurepowershell-interactive
   Get-AzureRmLog -ResourceGroup ExampleGroup -Status Failed
   ```
 
-5. Můžete se zaměřit na jednu chybu pohledem na stavové zprávy pro tuto položku.
-   
-        ((Get-AzureRmLog -Status Failed -ResourceGroup ExampleGroup -DetailedOutput).Properties[1].Content["statusMessage"] | ConvertFrom-Json).error
-   
-    Která vrací:
-   
-        code           message                                                                        
-        ----           -------                                                                        
-        DnsRecordInUse DNS record dns.westus.cloudapp.azure.com is already used by another public IP. 
+5. Pohledem na stavové zprávy pro tuto položku se můžete soustředit na jednu chybu.
 
+  ```azurepowershell-interactive
+  ((Get-AzureRmLog -Status Failed -ResourceGroup ExampleGroup -DetailedOutput).Properties[1].Content["statusMessage"] | ConvertFrom-Json).error
+  ```
+
+    Který vrátí:
+
+        code           message
+        ----           -------
+        DnsRecordInUse DNS record dns.westus.cloudapp.azure.com is already used by another public IP.
 
 ## <a name="azure-cli"></a>Azure CLI
 
-Chcete-li načíst položky protokolu, spusťte [az monitorování protokol aktivit seznamu](/cli/azure/monitor/activity-log#az-monitor-activity-log-list) příkaz.
+Pokud chcete načíst položky protokolu, spusťte [az monitor protokolu aktivit seznamu](/cli/azure/monitor/activity-log#az-monitor-activity-log-list) příkazu.
 
   ```azurecli
   az monitor activity-log list --resource-group <group name>
   ```
 
-
 ## <a name="rest-api"></a>REST API
 
-Operace REST pro práci s protokolu aktivit jsou součástí [rozhraní REST API pro přehledy](https://msdn.microsoft.com/library/azure/dn931943.aspx). Načtení aktivity protokolu události, najdete v části [seznam událostí správy v předplatném](https://msdn.microsoft.com/library/azure/dn931934.aspx).
+Operace REST pro práci s protokolu aktivit jsou součástí [rozhraní REST API služby Insights](https://msdn.microsoft.com/library/azure/dn931943.aspx). Pokud chcete načíst události protokolu aktivit, naleznete v tématu [seznamu událostí správy v rámci předplatného](https://msdn.microsoft.com/library/azure/dn931934.aspx).
 
 ## <a name="next-steps"></a>Další postup
 
-* Azure protokoly aktivity s Power BI můžete použít k získání lepší přehled o akcích v rámci vašeho předplatného. V tématu [zobrazení a analýza protokolů Azure aktivity v Power BI a další](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/).
+* Protokoly aktivit Azure je možné s Power BI a získejte větší přehled o akcích ve vašem předplatném. Zobrazit [zobrazení a analýza protokolů aktivit Azure v Power BI a další](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/).
 * Další informace o nastavení zásad zabezpečení najdete v tématu [řízení přístupu na základě Role v Azure](../role-based-access-control/role-assignments-portal.md).
-* Další informace o příkazy pro zobrazení operace nasazení najdete v tématu [zobrazit operace nasazení](resource-manager-deployment-operations.md).
-* Informace o tom, aby se zabránilo odstranění prostředku pro všechny uživatele, najdete v části [zamknutí prostředků pomocí Azure Resource Manageru](resource-group-lock-resources.md).
-* Chcete-li zobrazit seznam operací dostupných pro každého zprostředkovatele Microsoft Azure Resource Manager, přečtěte si téma [operations poskytovatel prostředků Azure Resource Manager](../role-based-access-control/resource-provider-operations.md)
-
+* Další informace o příkazech pro zobrazení operací nasazení, najdete v článku [zobrazení operací nasazení](resource-manager-deployment-operations.md).
+* Naučte se, abyste zabránili odstranění prostředku pro všechny uživatele, najdete v článku [zamknutí prostředků pomocí Azure Resource Manageru](resource-group-lock-resources.md).
+* Pokud chcete zobrazit seznam operací dostupných pro každého zprostředkovatele Microsoft Azure Resource Manageru, najdete v článku [operace poskytovatele prostředků Azure Resource Manageru](../role-based-access-control/resource-provider-operations.md)

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/07/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 32a887d54a239db0c1e40458e1b304d899befff5
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 0f53d71cca70f9340689d3d01fb9c67090f917c5
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48870549"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51277530"
 ---
 # <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Azure AD B2C: Použijte rozhraní Azure AD Graph API
 
@@ -66,8 +66,8 @@ Teď máte aplikaci, který má oprávnění vytvářet, číst a aktualizovat u
 > 
 > 
 
-## <a name="configure-delete-permissions-for-your-application"></a>Konfigurace oprávnění pro vaši aplikaci
-V současné době *pro čtení a zápis dat adresáře* nemá oprávnění **není** patří schopnost provádět všechny odstraněné položky, jako je počet uživatelů se odstraňuje. Pokud chcete aplikaci umožnit odstranit uživatele, budete muset provést tyto dodatečné kroky, které se týkají prostředí PowerShell, jinak můžete přeskočit k další části.
+## <a name="configure-delete-or-update-password-permissions-for-your-application"></a>Konfigurace odstranit nebo aktualizovat oprávnění heslo pro vaši aplikaci
+V současné době *pro čtení a zápis dat adresáře* nemá oprávnění **není** zahrnují možnost odstranění uživatelů nebo aktualizaci hesla uživatelů. Pokud chcete umožnit aplikaci uživatelům odstranění nebo aktualizaci hesla, budete muset provést tyto dodatečné kroky, které se týkají prostředí PowerShell, jinak můžete přeskočit k další části.
 
 Nejprve, pokud ještě nemáte nainstalovaný, nainstalujte [modulu Azure AD PowerShell v1 (MSOnline)](https://docs.microsoft.com/powershell/azure/active-directory/install-msonlinev1?view=azureadps-1.0):
 
@@ -84,7 +84,7 @@ Po instalaci modulu prostředí PowerShell připojení k vašemu tenantovi Azure
 Connect-MsolService
 ```
 
-Nyní použijeme **ID aplikace** ve níže přiřazení role správce účtu uživatele, který vám umožní odstranit uživatele aplikace skriptu. Tyto role mají dobře známé identifikátory, takže všechno, co potřebujete udělat po zadání vaší **ID aplikace** v níže uvedeném skriptu.
+Nyní použijeme **ID aplikace** ve skriptu a přiřaďte aplikaci roli uživatele účtu správce. Tyto role mají dobře známé identifikátory, takže všechno, co potřebujete udělat po zadání vaší **ID aplikace** v níže uvedeném skriptu.
 
 ```powershell
 $applicationId = "<YOUR_APPLICATION_ID>"
@@ -92,7 +92,7 @@ $sp = Get-MsolServicePrincipal -AppPrincipalId $applicationId
 Add-MsolRoleMember -RoleObjectId fe930be7-5e62-47db-91af-98c3a49a38b1 -RoleMemberObjectId $sp.ObjectId -RoleMemberType servicePrincipal
 ```
 
-Aplikace teď má také oprávnění k odstranění uživatele z vašeho tenanta B2C.
+Aplikace teď má také oprávnění uživatele odstranit nebo aktualizovat hesla z vašeho tenanta B2C.
 
 ## <a name="download-configure-and-build-the-sample-code"></a>Stáhněte si, konfigurace a sestavte ukázkový kód
 Nejprve stáhnout ukázkový kód a získat jeho spuštění. Potom my podnikneme na ně podívat.  Je možné [stažení ukázkového kódu ve formě souboru .zip](https://github.com/AzureADQuickStarts/B2C-GraphAPI-DotNet/archive/master.zip). Také ho můžete klonovat do adresáře podle vašeho výběru:

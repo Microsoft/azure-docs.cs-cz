@@ -11,13 +11,13 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: mathoma
 manager: craigg
-ms.date: 09/25/2018
-ms.openlocfilehash: eae7f97799e38d5a4b09e3f193a84b423dced780
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.date: 11/09/2018
+ms.openlocfilehash: abf41f48ffa08867fd0f06ff88da00ca65286803
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48869325"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51515705"
 ---
 # <a name="replication-to-sql-database-single-and-pooled-databases"></a>Replikace do jednoho a ve fondu databází SQL Database
 
@@ -65,7 +65,7 @@ Replikace systému SQL Server lze konfigurovat pro databáze ve fondu a jeden pr
 
 1. Vytvoření publikace transakční replikace na místní databázi systému SQL Server.  
 2. Na místní SQL Server pomocí **Průvodce novým odběrem** nebo příkazy jazyka Transact-SQL k vytvoření oznámení na předplatné Azure SQL Database.  
-3. Počáteční datová sada je obvykle snímek, který je vytvořil agenta snímku a distribuované a použít tak agenta distribuce. Počáteční datová sada může být rovněž poskytnuta prostřednictvím zálohu nebo jiným způsobem, jako je například SQL Server Integration Services.  
+3. Ve službě Azure SQL Database Počáteční sada dat je snímek, který je vytvořil agenta snímku a distribuované a použít tak agenta distribuce.   
 
 ### <a name="data-migration-scenario"></a>Scénáře migrace dat  
 

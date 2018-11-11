@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/30/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 2d289dee6770b0fc70edb0ed5fecf8a39402c6fa
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 3579a17ab28bd39ddad5008e1d0f8f7834237807
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46311987"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281995"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Implementace synchronizace hodnot hash hesel pomocí synchronizace Azure AD Connect
 Tento článek obsahuje informace, které potřebujete k synchronizaci hesel uživatelů mezi místní instancí Active Directory a instanci cloudové služby Azure Active Directory (Azure AD).
@@ -54,7 +54,7 @@ Podrobnější informace najdete v článku [Integrování místních identit do
 >
 
 ## <a name="how-password-hash-synchronization-works"></a>Jak funguje synchronizace hodnot hash hesel
-Active Directory domain Services ukládá ve formě reprezentace hodnoty hash hesla skutečného uživatelského hesla. Hodnota hash je výsledek jednosměrné matematické funkce ( *algoritmus hash*). Neexistuje žádná metoda vrátit výsledek jednosměrné funkce, která se verze hesla v prostém textu. Nelze použít hodnotu hash hesla pro přihlášení k místní síti.
+Active Directory domain Services ukládá ve formě reprezentace hodnoty hash hesla skutečného uživatelského hesla. Hodnota hash je výsledek jednosměrné matematické funkce ( *algoritmus hash*). Neexistuje žádný způsob, jak výsledek jednosměrné funkce převést zpět na heslo v prostém textu. Hodnotu hash hesla není možné použít pro přihlášení k místní síti.
 
 Synchronizace Azure AD Connect synchronizaci hesla, extrahuje vaše hodnoty hash hesla z místní instance Active Directory. Zpracování dodatečné zabezpečení se použije pro hodnoty hash hesla předtím, než se synchronizují do služby ověřování Azure Active Directory. Hesla se nesynchronizují na jednotlivé uživatele a v chronologickém pořadí.
 
@@ -136,7 +136,7 @@ Synchronizace hesla nemá žádný vliv na uživatele Azure, který je přihlá�
 ## <a name="enable-password-hash-synchronization"></a>Povolit synchronizaci hodnot hash hesel
 
 >[!IMPORTANT]
->Při migraci ze služby AD FS (nebo jiné technologie federace) k synchronizaci hodnot Hash hesel, důrazně doporučujeme, abyste postupovali podle našeho podrobné nasazení Průvodce publikování [tady](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Password%20Hash%20Synchronization.docx).
+>Při migraci ze služby AD FS (nebo jiné technologie federace) k synchronizaci hodnot Hash hesel, důrazně doporučujeme, abyste postupovali podle našeho podrobné nasazení Průvodce publikování [tady](https://aka.ms/adfstophsdpdownload).
 
 Při instalaci Azure AD Connect s použitím **Expresní nastavení** automaticky povolena možnost, synchronizaci hodnot hash hesel. Další podrobnosti najdete v tématu [Začínáme se službou Azure AD Connect s použitím expresního nastavení](how-to-connect-install-express.md).
 

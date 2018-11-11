@@ -13,15 +13,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/06/2018
+ms.date: 11/06/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3948c226f13f0ff358f9ca467f19cf0e48795911
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: bed053f812cc5c14e6cfe76b8a08b1ffe0cadcb3
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49429879"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51289117"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Důležité informace týkající se nasazení Azure Virtual Machines DBMS pro úlohy SAP
 [1114181]:https://launchpad.support.sap.com/#/notes/1114181
@@ -64,7 +64,7 @@ V celém dokumentu se používají následující termíny:
 * Součást SAP: Jednotlivé SAP aplikaci jako je třeba ECC, BW, správci řešení nebo podnikovém portálu.  Komponenty SAP může být založen na tradičních technologií ABAP a Java nebo jiných NetWeaver na základě aplikace, například pro obchodní objekty.
 * Prostředí SAP: jedna nebo více součástí SAP logicky seskupeny provádět obchodní funkce jako je vývoj, QAS, školení, zotavení po Havárii nebo produkčního prostředí.
 * Prostředí SAP: Tento termín se vztahuje na celý majetek SAP v zákazníka IT na šířku. Prostředí SAP zahrnuje všechny produkčního prostředí a neprodukční prostředí.
-* Systém SAP: Kombinace DBMS vrstvy a aplikační vrstvu služby, například vývojový systém SAP ERP, SAP BW testovacího systému, SAP CRM produkční systém atd. V nasazení Azure není možné rozdělit tyto dvě vrstvy mezi místními a Azure. To znamená, že je buď systém SAP nasazené v místním nebo je nasazené v Azure. Však můžete nasadit různé systémy prostředí SAP v Azure nebo místně. Můžete například nasazení SAP CRM vývoj a testování v Azure, ale SAP CRM produkční systém místní systémy.
+* Systém SAP: Kombinace DBMS vrstvy a aplikační vrstvu služby, například vývojový systém SAP ERP, SAP BW testovacího systému, SAP CRM produkční systém atd. V nasazení Azure není možné rozdělit tyto dvě vrstvy mezi místními a Azure. V důsledku toho systém SAP je nasazená místně nebo je nasazené v Azure. Však můžete nasadit různé systémy prostředí SAP v Azure nebo místně. Můžete například nasazení SAP CRM vývoj a testování v Azure, ale SAP CRM produkční systém místní systémy.
 * Mezi různými místy: Popisuje scénář, ve které jsou nasazené virtuální počítače s předplatným Azure, který má site-to-site a multi-Site, připojení ExpressRoute mezi místní nápomocni a Azure. Dokumentace v běžných Azure a tyto druhy nasazení jsou také popsány jako scénáře mezi různými místy. Důvod pro připojení je rozšířit místní domény, v místní službě Active Directory a DNS v místním prostředí do Azure. V místním prostředí je rozšířit na prostředky předplatného Azure. S touto příponou, virtuální počítače můžou být součástí místní domény. Domény uživatele z místní domény můžete přistupovat k serverům a spuštěním služby na těchto virtuálních počítačů (například systému DBMS služby). Místně nasadili komunikace a název řešení mezi virtuálními počítači a je možné virtuální počítače nasazené v Azure. Tento scénář je nejběžnější scénáře pro nasazení SAP prostředků v Azure. Další informace najdete v tématu [plánování a návrh pro VPN gateway](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-plan-design).
 
 > [!NOTE]
@@ -74,7 +74,7 @@ V celém dokumentu se používají následující termíny:
 
 Některé dokumentaci Microsoftu popisuje scénáře, mezi různými místy trochu jinak, především pro DBMS HA konfigurace. V případě SAP související dokumenty, scénáře mezi různými místy boils s tím, že site-to-site nebo privátní [ExpressRoute](https://azure.microsoft.com/services/expressroute/) připojení a na skutečnost, že se prostředí SAP distribuuje mezi místními a Azure.
 
-## <a name="resources"></a>Zdroje a prostředky
+## <a name="resources"></a>Materiály
 Jsou různé články týkající se úloh SAP v Azure všeobecně dostupné.  Doporučuje se spuštění v [úloh SAP v Azure – Začínáme](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started) a potom si vyberte oblasti zájmu
 
 Následující poznámky SAP jsou související s řešením SAP v Azure týkající se oblasti zahrnuté v tomto dokumentu:
@@ -161,7 +161,7 @@ Jak již bylo uvedeno Pokud požadavek na vstupně-výstupních operací překro
 >
 
 ### <a name="managed-or-non-managed-disks"></a>Spravované nebo nespravované disky
-Účet úložiště Azure se pouze administrativní konstrukce, ale také předmětem omezení. Omezení jsou rozdíly mezi Azure Standard Storage Accounst a účty služby Azure Premium Storage. Přesné možnosti a omezení jsou uvedená v tomto článku [Azure Storage škálovatelnost a cíle výkonnosti](https://docs.microsoft.com/azure/storage/common/storage-scalability-targets)
+Účet úložiště Azure se pouze administrativní konstrukce, ale také předmětem omezení. Omezení se liší mezi standardní účet úložiště Azure a účtům úložiště Azure úrovně Premium. Přesné možnosti a omezení jsou uvedená v tomto článku [Azure Storage škálovatelnost a cíle výkonnosti](https://docs.microsoft.com/azure/storage/common/storage-scalability-targets)
 
 Pro službu Azure Standard Storage, je důležité, abyste si možná Vzpomínáte, že platí omezení na vstupně-výstupních operací na účet úložiště (řádek, který obsahuje **celková míra žádosti** v článku [Azure Storage škálovatelnost a cíle výkonnosti](https://docs.microsoft.com/azure/storage/common/storage-scalability-targets)). Kromě toho je počáteční limit počtu účtů úložiště na předplatné Azure. Proto budete muset využít při vyrovnávání virtuálních pevných disků pro větší prostředí SAP jiný účet úložiště, aby dosažení omezení těchto účtů úložiště. Tedious práce, když mluvíme o několik stovek virtuálních počítačů s více než tisíce virtuálních pevných disků. 
 
@@ -196,7 +196,7 @@ Následující doporučení jsou za předpokladu, že tyto charakteristiky vstup
 
 Pro službu Azure Standard Storage jsou tyto typy možných mezipaměti:
 
-* Žádný
+* Žádné
 * Čtení
 * Čtení/zápis
 
@@ -204,7 +204,7 @@ Aby bylo možné získat konzistentní vzhledem k aplikacím a deterministický 
 
 Azure Premium Storage existují tyto možnosti ukládání do mezipaměti:
 
-* Žádný
+* Žádné
 * Čtení 
 * Čtení/zápisu 
 * Žádné a akcelerátor zápisu (pouze pro virtuální počítače Azure řady M-Series)
@@ -276,7 +276,10 @@ Existuje několik osvědčených postupů, které je mimo stovky zákaznická na
 > [!NOTE]
 > Byste měli přiřadit statické IP adresy pomocí Azure znamená, že na jednotlivé virtuální síťové adaptéry. Pro virtuální síťový adaptér by neměl přiřadit statické IP adresy v rámci hostovaného operačního systému. Některé služby Azure, jako je služba Azure Backup závisí na skutečnost, který na alespoň primárního virtuálního síťového adaptéru je nastavena, DHCP, ne statické IP adresy. Viz také dokument [Poradce při potížích s Azure se zálohováním virtuálních počítačů](https://docs.microsoft.com/azure/backup/backup-azure-vms-troubleshoot#networking). Pokud je potřeba přiřadit více statických IP adres k virtuálnímu počítači, musíte přiřadit víc karet Vnic k virtuálnímu počítači.
 >
->
+
+
+> [!IMPORTANT]
+> Mimo funkce, ale další důležité z důvodů výkonu, není možné konfigurovat [Azure síťových virtuálních zařízení](https://azure.microsoft.com/solutions/network-appliances/) v komunikační trasa mezi aplikací SAP a úroveň databázového systému SAP NetWeaver Hybris nebo S/4HANA na systému SAP. Další scénáře, ve kterém nejsou podporovány síťová virtuální zařízení jsou v komunikační trasy mezi virtuálními počítači Azure, které představují uzly clusteru Linux Pacemaker SBD zařízení a jak je popsáno v [vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure na SUSE Linux Enterprise Server pro aplikace SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse). Nebo v komunikaci se trasy mezi virtuálními počítači Azure a Windows Server SOFS nastavit až, jak je popsáno v [instanci SAP ASCS/SCS clusteru v clusteru převzetí služeb při selhání Windows s využitím sdílené složky v Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-file-share). Síťová virtuální zařízení v komunikaci cesty může snadno dvakrát latence sítě mezi dva partneři komunikaci, můžete omezit propustnost v kritické cesty mezi aplikační vrstvě SAP a vrstvu DBMS. V některých scénářích zjištěnými se zákazníky může způsobit síťová virtuální zařízení Pacemaker Linuxové clustery selhání v případech, kdy je potřeba komunikace mezi uzly clusteru Linux Pacemaker sdělit své zařízení SBD přes síťové virtuální zařízení.   
 
 Pro nasazení DBMS ve skupině dostupnosti Azure a navíc samostatné směrování pro aplikační vrstvě SAP a operace a správy provozu na dva virtuální počítače DBMS v produkčním prostředí pomocí dvou virtuálních počítačů, přibližnou diagram vypadat nějak takto:
 
@@ -324,7 +327,7 @@ Pokud chcete dál snížit latenci sítě mezi virtuálními počítači Azure, 
 ## <a name="deployment-of-host-monitoring"></a>Nasazení hostitele monitorování
 Pro produkční účely aplikací SAP v Azure Virtual Machines SAP vyžaduje možnost využívat hostitele data monitorování z fyzických hostitelů, které jsou spuštěné virtuální počítače Azure. Vyžaduje se konkrétní úroveň opravy agenta hostitele SAP, která umožňuje tato funkce v SAPOSCOL a Agent hostitele SAP. Úroveň oprav přesně je popsána v Poznámka SAP [1409604].
 
-Podrobné informace o nasazení komponenty, které doručují data hostitele SAPOSCOL a Agent hostitele SAP a správu životního cyklu těchto komponent, najdete [Průvodce nasazením][deployment-guide]
+Podrobné informace o nasazení komponenty, které doručují data hostitele SAPOSCOL a Agent hostitele SAP a správa životního cyklu těchto komponent, najdete [Průvodce nasazením][deployment-guide]
 
 
 ## <a name="next-steps"></a>Další kroky

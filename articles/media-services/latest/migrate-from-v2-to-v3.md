@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 11/05/2018
+ms.date: 11/07/2018
 ms.author: juliako
-ms.openlocfilehash: 2f5c0ef63ba150fdad4aea1a0c65269611d56815
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: 1c8bacf4c6cb22240609fb9f5dc0c3c456bc4531
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51247683"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51287536"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Pokyny k migraci pro přechod ze služby Media Services v2 na v3
 
@@ -45,7 +45,7 @@ Pokud máte službu poskytování videí dnes vyvinuté v horní části [starš
 * Zavádí koncepci [transformuje](transforms-jobs-concept.md) pro zpracování úlohy založené na souborech. Transformace je možné vytvářet opakovaně použitelné konfigurace k vytváření šablon Azure Resource Manageru a izolovat zpracování nastavení mezi více odběratelům nebo tenantů.
 * Prostředek může mít [více StreamingLocators](streaming-locators-concept.md) nichž každá má jiné nastavení dynamické balení a dynamického šifrování.
 * [Ochrana obsahu](content-key-policy-concept.md) podporuje více klíčových funkcí.
-* Můžete Streamovat živé události, které jsou až 24 hodin.
+* Můžete Streamovat živé události, které jsou dlouhé až 24 hodin, pokud informační kanál pomocí služby Media Services pro překódování příspěvek s jednou přenosovou rychlostí do výstupního datového proudu, který má více přenosových rychlostí.
 * Nová s nízkou latencí živé streamování podpory na LiveEvents.
 * Livestream ve verzi Preview podporuje dynamické balení a dynamického šifrování. To umožňuje ochranu obsahu pro balení ve verzi Preview a DASH nebo HLS.
 * LiveOutput je snazší než Program entit v rozhraní API v2. 

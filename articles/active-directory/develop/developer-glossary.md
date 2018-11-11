@@ -17,12 +17,12 @@ ms.date: 11/16/2017
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: elisol
-ms.openlocfilehash: 8d219ecb2d8a6694da038044bcab883a5535e957
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: dc3bbab2242321ae736f3f2cefb1eed5e96e834e
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46999252"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51288726"
 ---
 # <a name="azure-active-directory-developer-glossary"></a>Glosář pro vývojáře Azure Active Directory
 
@@ -69,7 +69,7 @@ Operace náročné stranu pro legitimních přihlašovacích údajů, poskytují
 
 ## <a name="authorization"></a>Autorizace
 
-V rámci udělení oprávnění objektu zabezpečení v ověření zabezpečení něco udělat. Existují dva hlavní případy použití v programovacím modelu služby Azure AD:
+V rámci udělení oprávnění objektu zabezpečení v ověření zabezpečení něco udělat. V modelu programování Azure AD existují dva hlavní případy použití:
 
 * Během [udělení autorizace OAuth2](#authorization-grant) toku: když [vlastníka prostředku](#resource-owner) uděluje oprávnění k [klientská aplikace](#client-application), a umožnil tak klientovi přístup k prostředku prostředky vlastníka.
 * Při přístupu k prostředkům klienta: jak je implementované [server prostředků](#resource-server), pomocí [deklarace identity](#claim) hodnoty prezentovat [přístupový token](#access-token) provádět rozhodnutí o řízení přístupu na základě jejich.
@@ -120,7 +120,7 @@ Zobrazit [odkaz tokenu Azure AD] [ AAD-Tokens-Claims] další podrobnosti.
 
 ## <a name="microsoft-identity-platform"></a>Platforma identit Microsoft
 
-Platforma identit Microsoft jsou výsledkem vývoje platformu služby a pro vývojáře Azure Active Directory (Azure AD) identity. Umožňuje vývojářům vytvářet aplikace, které přihlášení všechny identity Microsoftu, získat tokeny pro volání Microsoft Graphu, jiné APIs Microsoft nebo rozhraní API, která jste vytvořili vývojáři. Je to plně funkční platforma, která se skládá z ověřovací služba, knihovny, registrace aplikace a konfiguraci, dokumentaci pro vývojáře, ukázky kódu a další obsah pro vývojáře. Platforma identit Microsoft podporuje standardní protokoly jako OAuth 2.0 a OpenID Connect. Zobrazit [platforma identit Microsoft o](about-microsoft-identity-platform.md) další podrobnosti.
+Platforma Microsoft Identity Platform vznikla z platformy pro vývojáře a službu identit Azure Active Directory (Azure AD). Umožňuje vývojářům vytvářet aplikace, které přihlašují všechny identity od Microsoftu a získávají tokeny pro volání Microsoft Graphu, dalších rozhraní API od Microsoftu nebo rozhraní API, která vytvořili vývojáři. Je to plně funkční platforma, která se skládá z ověřovací služba, knihovny, registrace aplikace a konfiguraci, dokumentaci pro vývojáře, ukázky kódu a další obsah pro vývojáře. Microsoft Identity Platform podporuje standardní oborové protokoly, jako jsou OAuth 2.0 a OpenID Connect. Zobrazit [platforma identit Microsoft o](about-microsoft-identity-platform.md) další podrobnosti.
 
 ## <a name="multi-tenant-application"></a>aplikace s více tenanty
 
@@ -163,7 +163,7 @@ Role jsou definované prostředek řetězce (například "výdajů schvalovatel"
 
 Podrobnou diskuzi o aplikační role vystavena službou Azure AD Graph API, najdete v části [obory oprávnění rozhraní API Graphu][AAD-Graph-Perm-Scopes]. Implementace podrobný příklad najdete v tématu [správě přístupu pomocí RBAC a webu Azure portal][AAD-RBAC].
 
-## <a name="scopes"></a>Obory
+## <a name="scopes"></a>obory
 
 Stejně jako [role](#roles), obory poskytují způsob, jak [server prostředků](#resource-server) řízení přístupu na chráněné prostředky. Obory se používají k implementaci [obor] [ OAuth2-Access-Token-Scopes] řízení přístupu, pro [klientská aplikace](#client-application) , která se předala Delegovaný přístup k prostředku uděluje její vlastník.
 
@@ -244,7 +244,7 @@ Pomocí následujícího oddílu pro komentáře na svůj názor a pomozte Upře
 [AZURE-portal]: https://portal.azure.com
 [AAD-RBAC]: ../../role-based-access-control/role-assignments-portal.md
 [JWT]: https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32
-[Microsoft-Graph]: https://graph.microsoft.io
+[Microsoft-Graph]: https://developer.microsoft.com/graph
 [O365-Perm-Ref]: https://msdn.microsoft.com/office/office365/howto/application-manifest
 [OAuth2-Access-Token-Scopes]: https://tools.ietf.org/html/rfc6749#section-3.3
 [OAuth2-AuthZ-Endpoint]: https://tools.ietf.org/html/rfc6749#section-3.1

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: robb
 ms.component: diagnostic-extension
-ms.openlocfilehash: 752a0262503550b9995ac76f648a132429203cce
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: a40917ec24ede1107f7d8ae7f5fb2f0f03d1094c
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50961428"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51278323"
 ---
 # <a name="what-is-azure-diagnostics-extension"></a>Co je rozšíření Azure Diagnostics
 Rozšíření Azure Diagnostics je agent v Azure, která umožňuje shromažďování diagnostických dat v nasazené aplikaci. Rozšíření diagnostiky můžete z mnoha různých zdrojů. V tuto chvíli nepodporuje jsou cloudové služby Azure (klasické) webové a pracovní role, Virtual Machines, Virtual Machine Scale sets a Service Fabric. Další služby Azure mají různé diagnostiky metody. Zobrazit [Přehled monitorování v Azure](../azure-monitor/overview.md).
@@ -60,7 +60,7 @@ Zobrazit [historie verzí diagnostiky Azure a schéma](azure-diagnostics-schema.
 Zvolte službu, které se pokoušíte shromažďování diagnostických údajů na a použijte tyto články, abyste mohli začít. Pomocí odkazů obecné diagnostiky Azure pro referenční informace pro konkrétní úlohy.
 
 ## <a name="cloud-services-using-azure-diagnostics"></a>Cloudové služby pomocí diagnostiky Azure
-* Pokud používáte Visual Studio, přečtěte si téma [použijte sadu Visual Studio pro sledování aplikace Cloud Services](../vs-azure-tools-debug-cloud-services-virtual-machines.md) začít. V opačném případě naleznete v tématu
+* Pokud používáte Visual Studio, přečtěte si téma [použijte sadu Visual Studio pro sledování aplikace Cloud Services](/visualstudio/azure/vs-azure-tools-debug-cloud-services-virtual-machines) začít. V opačném případě naleznete v tématu
 * [Monitorování cloudové služby pomocí diagnostiky Azure](../cloud-services/cloud-services-how-to-monitor.md)
 * [Nastavení diagnostiky Azure do aplikace Cloud Services](../cloud-services/cloud-services-dotnet-diagnostics.md)
 
@@ -71,8 +71,8 @@ Pokročilejší témata naleznete v tématu
 * [Nastavení diagnostiky na Cloud Services pomocí Powershellu](../virtual-machines/extensions/diagnostics-windows.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 ## <a name="virtual-machines"></a>Virtuální počítače
-* Pokud používáte Visual Studio, přečtěte si téma [pomocí aplikace Visual Studio trasování Azure Virtual Machines](../vs-azure-tools-debug-cloud-services-virtual-machines.md) začít. V opačném případě naleznete v tématu
-* [Nastavení Azure Diagnostics na virtuálním počítači Azure](../virtual-machines/virtual-machines-dotnet-diagnostics.md)
+* Pokud používáte Visual Studio, přečtěte si téma [pomocí aplikace Visual Studio trasování Azure Virtual Machines](/visualstudio/azure/vs-azure-tools-debug-cloud-services-virtual-machines) začít. V opačném případě naleznete v tématu
+* [Nastavení Azure Diagnostics na virtuálním počítači Azure](/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines)
 
 Pokročilejší témata naleznete v tématu
 

@@ -1,36 +1,33 @@
 ---
-title: Protokolům aplikací Hadoop YARN přístupu na základě Linux HDInsight – Azure
-description: Zjistěte, jak získat přístup k protokolům aplikace YARN na clusteru Linuxovým systémem HDInsight (Hadoop) pomocí příkazového řádku a webový prohlížeč.
+title: Přístup aplikací Apache Hadoop YARN přihlášení založené na Linuxu HDInsight – Azure
+description: Zjistěte, jak získat přístup k protokolům aplikace YARN na cluster HDInsight založených na Linuxu (Apache Hadoop) pomocí příkazového řádku a webový prohlížeč.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/22/2018
-ms.author: jasonh
-ms.openlocfilehash: 179349d059fd75e2da01eb908a786e2e7ac91307
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.author: hrasheed
+ms.openlocfilehash: 302f2f96a7f17699411ab9fdbdb6ab1f9de149c8
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43092256"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51277592"
 ---
-# <a name="access-yarn-application-logs-on-linux-based-hdinsight"></a>Protokoly aplikací YARN přístup na Linuxovým systémem HDInsight
+# <a name="access-apache-yarn-application-logs-on-linux-based-hdinsight"></a>Přístup k aplikaci Apache YARN přihlášení založené na Linuxu HDInsight
 
-Zjistěte, jak získat přístup k protokolům aplikací YARN (zatím jiné Resource Negotiator) v clusteru Hadoop v Azure HDInsight.
+Zjistěte, jak získat přístup k protokolům aplikací Apache YARN (zatím jiné Resource Negotiator) v clusteru Apache Hadoop v Azure HDInsight.
 
 > [!IMPORTANT]
-> Kroky v tomto dokumentu vyžadují cluster HDInsight s Linuxem. HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Správa verzí komponenty HDInsight](hdinsight-component-versioning.md#hdinsight-windows-retirement).
+> Kroky v tomto dokumentu vyžadují cluster HDInsight s Linuxem. Linux je pouze operační systém používaný v HDInsight verze 3.6 nebo novější. Další informace najdete v tématu [Správa verzí komponenty HDInsight](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 ## <a name="YARNTimelineServer"></a>YARN Timeline Server
 
-[YARN Timeline Server](http://hadoop.apache.org/docs/r2.7.3/hadoop-yarn/hadoop-yarn-site/TimelineServer.html) poskytuje obecné informace o hotových aplikacích a informace specifické pro architekturu aplikací prostřednictvím dvou různých rozhraní. Zejména:
+[Apache YARN Timeline Server](http://hadoop.apache.org/docs/r2.7.3/hadoop-yarn/hadoop-yarn-site/TimelineServer.html) poskytuje obecné informace o hotových aplikacích
 
-* Ukládání a načítání informací o obecná aplikace na clusterech HDInsight bylo povolené verze 3.1.1.374 nebo vyšší.
-* Součást informace specifické pro architekturu aplikace serveru časová osa není aktuálně k dispozici v clusterech HDInsight.
-
-Obecné informace o aplikacích zahrnuje následující typ dat:
+YARN Timeline Server zahrnuje následující typ dat:
 
 * ID aplikace, jedinečný identifikátor aplikace
 * Uživatel, který spouští aplikaci

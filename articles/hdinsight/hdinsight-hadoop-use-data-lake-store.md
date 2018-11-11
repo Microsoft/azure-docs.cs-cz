@@ -2,19 +2,19 @@
 title: Použití Data Lake Store se systémem Hadoop v Azure HDInsight
 description: Zjistěte, jak zadávat dotazy na data ze služby Azure Data Lake Store a ukládat výsledky analýzy.
 services: hdinsight,storage
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 07/23/2018
-ms.openlocfilehash: d205a46c672523e029816b573742d991de79b2ae
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.date: 11/06/2018
+ms.openlocfilehash: 0859e480df0111e26d5b64bf835f94b3852b3414
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49956727"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51277354"
 ---
 # <a name="use-data-lake-store-with-azure-hdinsight-clusters"></a>Použití služby Data Lake Store s clustery Azure HDInsight
 
@@ -40,16 +40,17 @@ V současné době podporují použití služby Data Lake Store jako výchozího
 
 | Typ clusteru HDInsight | Data Lake Store jako výchozí úložiště | Data Lake Store jako další úložiště| Poznámky |
 |------------------------|------------------------------------|---------------------------------------|------|
-| HDInsight verze 3.6 | Ano | Ano | |
+| HDInsight verze 3.6 | Ano | Ano | S výjimkou HBase|
 | HDInsight verze 3.5 | Ano | Ano | S výjimkou HBase|
 | HDInsight verze 3.4 | Ne | Ano | |
 | HDInsight verze 3.3 | Ne | Ne | |
 | HDInsight verze 3.2 | Ne | Ano | |
 | Storm | | |Data Lake Store můžete použít k zápisu dat z topologie Storm. Data Lake Store můžete také použít pro referenční data, která pak může číst topologie Storm.|
 
+[!WARNING]
+> HDInsight HBase se nepodporuje s Azure Data Lake Storage Gen 1
+
 Použití služby Data Lake Store jako dalšího účtu úložiště nemá vliv na výkon ani schopnost číst ze služby Azure Storage nebo do ní zapisovat z clusteru.
-
-
 ## <a name="use-data-lake-store-as-default-storage"></a>Použití služby Data Lake Store jako výchozího úložiště
 
 Když je služba HDInsight nasazená se službou Data Lake Store jako výchozím úložištěm, soubory související s clusterem se ukládají do služby Data Lake Store v tomto umístění:

@@ -3,18 +3,18 @@ title: Zobrazit provozu s využitím Azure Maps | Dokumentace Microsoftu
 description: Jak zobrazit data o provozu na mapě jazyka Javascript
 author: jingjing-z
 ms.author: jinzh
-ms.date: 09/14/2018
+ms.date: 11/10/2018
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 532001a0cda22903d0bdf807ee868aef211336e0
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: 45f7913c5cc69f99b01ba1a911910273673856d3
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51240082"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51513756"
 ---
 # <a name="show-traffic-on-the-map"></a>Na mapě Zobrazit provoz
 
@@ -27,7 +27,7 @@ Tento článek ukazuje, jak zobrazit informace o provozu a incidentů na mapě.
 
 Ve výše uvedeném kódu první blok kódu vytvoří objekt Map. Můžete zobrazit [Vytvořte mapu](map-create.md) pokyny.
 
-Druhý blok kódu používá [setTraffic](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#settraffic) funkce třídy Mapa k vykreslení přenosové toky a incidentů na mapě.
+Druhý blok kódu používá [setTraffic](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#settraffic) funkce v rámci mapy [naslouchací proces událostí](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) funkce k vykreslení přenosové toky a incidentů na mapě.
 
 ## <a name="next-steps"></a>Další postup
 

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: f899c2fb871ee528219bd48e94de62746626447f
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 82792414da9df32524e48031089dc18d2dc521cc
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50416116"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51288114"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---motivation-and-benefits"></a>Migrace místních Apache Hadoop clusterů Azure HDInsight – výhody a motivace
 
@@ -30,7 +30,7 @@ Azure HDInsight je Cloudová distribuce komponent Hadoop z [Hortonworks Data Pl
 - Apache Kafka
 - Apache Storm
 - Apache HBase
-- R
+- Č
 
 ## <a name="advantages-that-azure-hdinsight-offers-over-on-premises-hadoop"></a>Výhody, které Azure HDInsight nabízí místního clusteru Hadoop
 
@@ -61,7 +61,7 @@ Azure HDInsight je Cloudová distribuce komponent Hadoop z [Hortonworks Data Pl
     - Azure Data Factory (ADF)
     - Azure Blob Storage
     - Azure Data Lake Storage Gen2
-    - Azure Cosmos DB
+    - Databáze Azure Cosmos
     - Azure SQL Database
     - Azure Analysis Services
 
@@ -114,8 +114,8 @@ Tato část obsahuje šablony dotazníky umožňující získat důležité info
 |Řízení přístupu HDFS|  Ruční, ssh uživatelů|
 |Hive ověřování a autorizace|SENTRY, LDAP, Kerberos, Ranger AD|
 |Auditování|Ambari, Cloudera Navigátor Ranger|
-|Monitorování|Grafitová, shromážděná, statsd, Telegraf, InfluxDB|
-|Zobrazení výstrah|Kapacitor Prometheus, služby Datadog|
+|Sledování|Grafitová, shromážděná, statsd, Telegraf, InfluxDB|
+|Upozorňování|Kapacitor Prometheus, služby Datadog|
 |Doba uchování dat| 3 roky, 5 let.|
 |Správce clusteru|Jeden správce, více správců|
 
@@ -180,7 +180,7 @@ Tato část obsahuje šablony dotazníky umožňující získat důležité info
 |Použití Azure Monitoring a Alerting integrace Vs monitorování třetích stran|Použití Azure Monitoring a Alerting||
 |**Téma**: **předvolby pro zabezpečení** |||
 |Soukromým a chráněným datovým kanálem?|Ano||
-|Cluster připojeno k doméně (ESPP)?|     Ano||
+|Cluster připojeno k doméně (ESP)?|     Ano||
 |On-Premises synchronizace AD do cloudu?|     Ano||
 |Ne. Synchronizace uživatelů AD?|          100||
 |OK pro synchronizaci hesel do cloudu?|    Ano||

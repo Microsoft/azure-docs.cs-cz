@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: sanpil
 author: sanpil
 ms.date: 11/07/2018
-ms.openlocfilehash: 212488b74ba726012966787c7b2de633414e96a4
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: 59a35cd7ca3af446853d518fc7e7d48d2321ff10
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51245337"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51278969"
 ---
 # <a name="pipelines-and-azure-machine-learning"></a>Kanály a Azure Machine Learning
 
@@ -43,6 +43,8 @@ Použití samostatné kroky umožňuje znovu spustit pouze kroky, které je tře
 Jakmile kanálu je určen, je často Další doladění kolem smyčky školení kanálu. Když znovu spusťte kanál, spuštění přejde do kroků, které je potřeba znovu spustit, jako je například aktualizované cvičný skript a přeskočí, co se nezměnil. Stejné paradigma se vztahuje na beze změny skripty používané pro provedení kroku. 
 
 Azure Machine Learning můžete použít různé sady nástrojů a architektur, jako je Microsoft Cognitive Toolkit nebo TensorFlow u každého kroku ve vašem kanálu. Souřadnice Azure mezi různými [cílových výpočetních prostředí](concept-azure-machine-learning-architecture.md) použijete tak, aby dočasných dat je s cíli podřízené výpočetní snadno sdílet. 
+
+Je možné [sledujte metriky pro vaše experimenty kanálu](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-track-experiments) přímo na webu Azure portal. 
 
 ## <a name="key-advantages"></a>Klíčové výhody
 

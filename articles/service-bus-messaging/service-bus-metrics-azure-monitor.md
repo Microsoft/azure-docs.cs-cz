@@ -7,14 +7,14 @@ author: spelluru
 manager: timlt
 ms.service: service-bus-messaging
 ms.topic: article
-ms.date: 09/24/2018
+ms.date: 11/06/2018
 ms.author: spelluru
-ms.openlocfilehash: 7d4b4a98c38757eb33c3f8713f662ed52a686924
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: f02fa8ff80915c23f70db09a1dee393010795132
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50978651"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51277439"
 ---
 # <a name="azure-service-bus-metrics-in-azure-monitor-preview"></a>Metriky Azure Service Bus ve službě Azure Monitor (preview)
 
@@ -29,7 +29,7 @@ Azure Monitor nabízí jednotné uživatelské rozhraní pro monitorování nap�
 
 Azure Monitor poskytuje několik způsobů přístupu metriky. Můžete buď metriky přístup prostřednictvím [webu Azure portal](https://portal.azure.com), nebo pomocí rozhraní API služby Azure Monitor (REST a .NET) a řešení pro analýzu například Log Analytics a Event Hubs. Další informace najdete v tématu [monitorování dat shromážděných službou Azure Monitor](../monitoring/monitoring-data-collection.md).
 
-Ve výchozím nastavení jsou povolené metriky a posledních 30 dnů dat můžete přistupovat. Pokud je potřeba data uchovávat po delší dobu, můžete archivovat data metrik do účtu služby Azure Storage. Toto je nakonfigurováno v [nastavení diagnostiky](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#diagnostic-settings) ve službě Azure Monitor.
+Ve výchozím nastavení jsou povolené metriky a posledních 30 dnů dat můžete přistupovat. Pokud je potřeba data uchovávat po delší dobu, můžete archivovat data metrik do účtu služby Azure Storage. Tato hodnota je nakonfigurovaný v [nastavení diagnostiky](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#diagnostic-settings) ve službě Azure Monitor.
 
 ## <a name="access-metrics-in-the-portal"></a>Přístup metrik na portálu
 
@@ -108,6 +108,54 @@ Azure Service Bus podporuje následující dimenze pro metriky ve službě Azure
 |Název dimenze|Popis|
 | ------------------- | ----------------- |
 |EntityName| Service Bus podporuje entit pro zasílání zpráv v rámci oboru názvů.|
+
+## <a name="set-up-alerts-on-metrics"></a>Nastavte si výstrahy týkající se metrik
+
+1. Na **metriky** karty **služby Service Bus Namespace** stránce **konfigurace výstrah**. 
+
+    ![Metriky stránce – Konfigurace upozornění nabídky](./media/service-bus-metrics-azure-monitor/metrics-page-configure-alerts-menu.png)
+2. Vyberte **Výběr cíle**, a proveďte následující akce na **vyberte prostředek** stránky: 
+    1. Vyberte **obory názvů služby Service Bus** pro **filtrovat podle typu prostředku** pole. 
+    2. Vyberte své předplatné pro **filtrovat podle předplatného** pole.
+    3. Vyberte **obor názvů služby Service bus** ze seznamu. 
+    4. Vyberte **Done** (Hotovo). 
+    
+        ![Výběr oboru názvů](./media/service-bus-metrics-azure-monitor/select-namespace.png)
+1. Vyberte **přidat kritéria**, a proveďte následující akce na **konfigurovat logiku signálů** stránky:
+    1. Vyberte **metriky** pro **signalizuje, že typ**. 
+    2. Vyberte signál. Příklad: **chyby (Preview) služby**. 
+
+        ![Vyberte chyby serveru](./media/service-bus-metrics-azure-monitor/select-server-errors.png)
+    1. Vyberte **větší než** pro **podmínku**.
+    2. Vyberte **celkový** pro **Časová agregace**. 
+    3. Zadejte **5** pro **prahová hodnota**. 
+    4. Vyberte **Done** (Hotovo).    
+
+        ![Zadejte podmínku](./media/service-bus-metrics-azure-monitor/specify-condition.png)    
+1. Na **vytvořit pravidlo** stránce, rozbalte **definujte podrobnosti o upozornění**, a proveďte následující akce:
+    1. Zadejte **název** výstrahy. 
+    2. Zadejte **popis** výstrahy.
+    3. Vyberte **závažnost** výstrahy. 
+
+        ![Podrobnosti upozornění](./media/service-bus-metrics-azure-monitor/alert-details.png)
+1. Na **vytvořit pravidlo** stránce, rozbalte **definujte skupinu akcí**vyberte **nová skupina akcí**, a proveďte následující akce na **stránku skupiny přidat akci**. 
+    1. Zadejte název skupiny akcí.
+    2. Zadejte krátký název skupiny akcí. 
+    3. Vyberte své předplatné. 
+    4. Vyberte skupinu prostředků. 
+    5. V tomto návodu, zadejte **odeslání e-mailu** pro **název akce**.
+    6. Vyberte **e-mailu/SMS nebo nabízená/hlasové** pro **typ akce**. 
+    7. Vyberte **upravit podrobnosti**. 
+    8. Na **e-mailu/SMS nebo nabízená/hlasové** stránce, proveďte následující akce:
+        1. Vyberte **e-mailu**. 
+        2. Typ **e-mailová adresa**. 
+        3. Vyberte **OK**.
+
+            ![Podrobnosti upozornění](./media/service-bus-metrics-azure-monitor/add-action-group.png)
+        4. Na **přidat skupinu akcí** stránce **OK**. 
+1. Na **vytvořit pravidlo** stránce **vytvořit pravidlo upozornění**. 
+
+    ![Vytvoření pravidla upozornění tlačítka](./media/service-bus-metrics-azure-monitor/create-alert-rule.png)
 
 ## <a name="next-steps"></a>Další postup
 

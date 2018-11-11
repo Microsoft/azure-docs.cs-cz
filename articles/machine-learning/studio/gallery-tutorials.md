@@ -1,6 +1,6 @@
 ---
-title: Azure kurzy AI Galerie | Microsoft Docs
-description: Vyhledat a sdílet kurzy v Azure AI Gallery.
+title: Kurzy Azure AI Galerie | Dokumentace Microsoftu
+description: Vyhledat a sdílet kurzy v galerii Azure AI.
 services: machine-learning
 documentationcenter: ''
 author: heatherbshapiro
@@ -15,68 +15,66 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
-ms.openlocfilehash: 3ca7897455f763237533aa15680fbfcf805cdaf9
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 4ef653a603bccc001a5bbbb4c2af97e5ca0b20a8
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34834722"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51344429"
 ---
-# <a name="discover-and-share-tutorials-in-azure-ai-gallery"></a>Vyhledat a sdílet kurzy v galerii Azure AI
-[!INCLUDE [machine-learning-gallery-item-selector](../../../includes/machine-learning-gallery-item-selector.md)]
+# <a name="discover-and-share-tutorials-in-azure-ai-gallery"></a>Zjišťování a sdílení kurzy v galerii Azure AI
 
-## <a name="tutorials"></a>Kurzy
-Galerie Azure AI nabízí několik [kurzy](https://gallery.cortanaintelligence.com/tutorials) který vás provede procesem technologie machine learning a koncepty. Kurzy může také popisují Pokročilé metody pro řešení problémů machine learning.
+[Galerie Azure AI](http://gallery.cortanaintelligence.com) nabízí několik [kurzy](https://gallery.cortanaintelligence.com/tutorials) , které vás provedou prostřednictvím technologií machine learning a konceptů. Kurzy může také popisovat rozšířené metody pro řešení potíží s machine learning.
 
 ## <a name="discover"></a>Informace
-Chcete-li procházet kurzy [v galerii](http://gallery.cortanaintelligence.com)v části **Další**, vyberte **kurzy**.
+Procházet kurzy [ve galerii](http://gallery.cortanaintelligence.com)v části **Další**vyberte **kurzy**.
 
-![Vyberte na domovské stránce Galerie kurzy](./media/gallery-tutorials/select-tutorials-in-gallery.png)
+![Vyberte kurzy na domovskou stránku Galerie](./media/gallery-tutorials/select-tutorials-in-gallery.png)
 
-**[Kurzy](https://gallery.cortanaintelligence.com/tutorials)** stránka zobrazuje seznam kurzů nedávno přidané a Oblíbené. Pokud chcete zobrazit všechny kurzy, vyberte **zobrazit všechny** tlačítko. Chcete-li vyhledat konkrétní kurz, vyberte **zobrazit všechny**a potom vyberte filtr kritéria. Také můžete zadat hledaný text v **vyhledávání** pole v horní části stránky galerie.
+**[Kurzy](https://gallery.cortanaintelligence.com/tutorials)** stránka zobrazuje seznam nedávno přidaných a Oblíbené kurzů. Pokud chcete zobrazit všechny kurzy, vyberte **zobrazit všechny** tlačítko. Chcete-li vyhledat konkrétní kurz, vyberte **zobrazit všechny**a potom vyberte kritéria. Také můžete zadat hledaný text v **hledání** pole v horní části na stránku galerie.
 
-Můžete získat další informace o kurz na stránce podrobností kurzu. Otevřete stránku kurz podrobnosti, vyberte tento kurz. V **komentáře** části na stránce kurz podrobnosti, můžete okomentovat, poskytnout zpětnou vazbu nebo klást otázky týkající se tohoto kurzu. Tento kurz můžete také sdílet s přátele nebo kolegy na Twitteru nebo LinkedIn. Také můžete e-mailem odkaz na stránku kurzu podrobností pozvaným jiní uživatelé při zobrazení stránky.
+Můžete získat další informace o kurz na stránce kurz podrobně popisuje. Otevřete stránku kurz podrobně popisuje, vyberte tento kurz. V **komentáře** části na stránce kurz podrobně popisuje, může přidávat komentáře, poskytnout zpětnou vazbu nebo pokládání otázek na tento kurz. Tento kurz můžete sdílet i s přáteli nebo kolegy na Twitteru nebo LinkedIn. Také můžete poslat e-mail odkaz na stránku kurz podrobně popisuje pozvat další uživatele zobrazíte stránku.
 
-![Sdílet tuto položku s friends](./media/gallery-how-to-use-contribute-publish/share-links.png)
+![Sdílet tuto položku s přáteli](./media/gallery-how-to-use-contribute-publish/share-links.png)
 
 ![Přidat vlastní komentáře](./media/gallery-how-to-use-contribute-publish/comments.png)
 
-## <a name="contribute"></a>Přispívání
-Kurz můžete přidat do Galerie pomohou jiných uživatelů vyřešení problému nebo další koncept.
+## <a name="contribute"></a>Přispívat
+Kurz můžete přidat do Galerie pomoc dalším uživatelům vyřešení problému nebo si přečtěte koncept.
 
-### <a name="create-a-tutorial"></a>Vytvořit kurz
+### <a name="create-a-tutorial"></a>Vytvoření kurz
 
-1. Přihlaste se do Galerie pomocí účtu Microsoft.
+1. Přihlaste se do galerie s použitím účtu Microsoft.
 
-2. Vyberte bitové kopie v horní části stránky a pak vyberte název.
+2. Vyberte bitové kopie v horní části stránky a pak vyberte své jméno.
   
-    ![Vyberte název účtu](./media/gallery-tutorials/click-account-name.png)
+    ![Vyberte název svého účtu](./media/gallery-tutorials/click-account-name.png)
 
 3. Vyberte **New Item** (Nová položka).
   
-    ![Vyberte možnost "Nová položka"](./media/gallery-collections/click-new-item.png)
+    ![Vyberte "Nové položky"](./media/gallery-collections/click-new-item.png)
 
-4. Na **popis** stránky, pro **typ položky**, vyberte **kurzu**. Zadejte název pro tento kurz, stručné souhrnné informace, podrobný popis a všechny značky, které vám může pomoci jiní uživatelé najít kurzu.
+4. Na **popis** stránky, pro **typ položky**vyberte **kurzu**. Zadejte název pro tento kurz, stručný popis, podrobný popis a všechny značky, které vám mohou pomoci ostatním uživatelům najít tento kurz.
   
-    ![Zadejte informace pro nový kurz](./media/gallery-tutorials/create-tutorial-page-1.png)
-5. Na **výběr Image** vyberte obrázek, který se zobrazí s kolekcí. Můžete nahrát soubor bitové kopie, nebo vyberte uložených bitovou kopii. Vyberte obrázek, který vám může pomoci uživatelům identifikovat obsah a účel kurzu.
+    ![Zadejte informace pro novou kurz](./media/gallery-tutorials/create-tutorial-page-1.png)
+5. Na **výběr Image** vyberte bitovou kopii, která se zobrazí s kolekcí. Můžete nahrát vlastní obrázek nebo vyberte základní image. Vyberte bitovou kopii, která může pomoci uživatelům identifikaci obsahu a účel kurzu.
   
-    ![Zadejte informace pro nový kurz](./media/gallery-tutorials/create-tutorial-page-2.png)
+    ![Zadejte informace pro novou kurz](./media/gallery-tutorials/create-tutorial-page-2.png)
 
-6. Na **nastavení** stránky, pro **viditelnost**, vyberte, zda je kolekce **veřejné** (každý, kdo může zobrazit kurz) nebo **Unlisted** () jenom lidé s přímý odkaz na tohoto kurzu můžete ji zobrazit).
+6. Na **nastavení** stránky, pro **viditelnost**vyberte, jestli je kolekce **veřejné** (kdokoli může zobrazit v kurzu) nebo **Unlisted** () pouze lidé s přímým odkazem najdete v tomto kurzu lze ji zobrazit).
   
     > [!IMPORTANT]
-    > Po nastavení kurz na **veřejné** a pak vyberte **vytvořit**, nemůžete později změnit kurzu, který se **Unlisted**.
+    > Po nastavení kurz na **veřejné** a pak vyberte **vytvořit**, nemůžete později změnit kurzu a **Unlisted**.
     > 
     > 
   
-    ![Vyberte "Veřejná" nebo "Neuvedené"](./media/gallery-tutorials/create-tutorial-page-3.png)
+    ![Vyberte "Public" nebo "Neuvedené"](./media/gallery-tutorials/create-tutorial-page-3.png)
 
 7. Vyberte **Vytvořit**.
 
-Tento kurz je nyní v galerii AI Azure. Vaše kurzy jsou uvedené na stránku účtu, na **položky** kartě.
+Tento kurz je nyní v galerii Azure AI. Vaše kurzy jsou uvedené na stránce svého účtu na **položky** kartu.
 
-**[Přejděte do Galerie](http://gallery.cortanaintelligence.com)**
+**[Přejít do Galerie](http://gallery.cortanaintelligence.com)**
 
 [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
 

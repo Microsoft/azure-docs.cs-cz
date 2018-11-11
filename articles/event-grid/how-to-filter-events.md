@@ -5,14 +5,14 @@ services: event-grid
 author: tfitzmac
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 10/29/2018
+ms.date: 11/07/2018
 ms.author: tomfitz
-ms.openlocfilehash: 6d7e9e5a4c60c16c505b0b69f14d22ebd868c1c0
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.openlocfilehash: fd0b2bda91ecb9b717f4cfe366c45bc95b21fd8e
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50748217"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51277553"
 ---
 # <a name="filter-events-for-event-grid"></a>Filtr událostí služby Event Grid
 
@@ -181,30 +181,17 @@ Další příklad šablony Resource Manageru vytvoří odběr pro úložiště o
 
 ## <a name="filter-by-operators-and-data"></a>Filtrovat podle operátory a data
 
-Pokud chcete použít rozšířené filtrování, musíte nainstalovat rozšíření ve verzi preview pro Azure CLI. Můžete použít [cloud Shell](/azure/cloud-shell/quickstart) nebo nainstalujte Azure CLI místně.
+Pro větší flexibilitu při filtrování můžete použít operátory a vlastnosti dat můžete filtrovat události.
 
-### <a name="install-extension"></a>Instalace rozšíření
-
-V cloud Shell:
-
-* Pokud jste dříve nainstalovali rozšíření, aktualizujte `az extension update -n eventgrid`
-* Pokud jste nenainstalovali rozšíření dříve, nainstalujte `az extension add -n eventgrid`
-
-Pro místní instalaci:
-
-1. Odinstalujte Azure CLI místně.
-1. Nainstalujte [nejnovější verzi](/cli/azure/install-azure-cli) příkazového řádku Azure.
-1. Spusťte okno příkazového řádku.
-1. Odinstalujte předchozí verze rozšíření `az extension remove -n eventgrid`
-1. Instalace rozšíření `az extension add -n eventgrid`
-
-Teď jste připraveni používat rozšířené filtrování.
+[!INCLUDE [event-grid-preview-feature-note.md](../../includes/event-grid-preview-feature-note.md)]
 
 ### <a name="subscribe-with-advanced-filters"></a>K přihlášení k rozšířené filtry odběru
 
 Další informace o operátorech a klíče, které můžete použít pro rozšířené filtrování, najdete v článku [rozšířené filtrování](event-filtering.md#advanced-filtering).
 
-Následující příklad vytvoří vlastní téma. Získá odběr vlastního tématu a filtry podle hodnoty datového objektu. Události, které mají nastavenou na modrou barvu vlastnost, červenou nebo zelenou se odesílají do předplatného.
+Tyto příklady vytvoření vlastního tématu. Umožňují přihlášení k odběru vlastního tématu a filtrování podle hodnoty datového objektu. Události, které mají nastavenou na modrou barvu vlastnost, červenou nebo zelenou se odesílají do předplatného.
+
+Pokud používáte Azure CLI, použijte:
 
 ```azurecli-interactive
 topicName=<your-topic-name>
@@ -225,9 +212,33 @@ az eventgrid event-subscription create \
 
 Všimněte si, že [datum vypršení platnosti](concepts.md#event-subscription-expiration) nastavený pro předplatné.
 
+Pokud používáte PowerShell, použijte:
+
+```azurepowershell-interactive
+$topicName = <your-topic-name>
+$endpointURL = <endpoint-URL>
+
+New-AzureRmResourceGroup -Name gridResourceGroup -Location eastus2
+New-AzureRmEventGridTopic -ResourceGroupName gridResourceGroup -Location eastus2 -Name $topicName
+
+$topicid = (Get-AzureRmEventGridTopic -ResourceGroupName gridResourceGroup -Name $topicName).Id
+
+$expDate = '<mm/dd/yyyy hh:mm:ss>' | Get-Date
+$AdvFilter1=@{operator="StringIn"; key="Data.color"; Values=@('blue', 'red', 'green')}
+
+New-AzureRmEventGridSubscription `
+  -ResourceId $topicid `
+  -EventSubscriptionName <event_subscription_name> `
+  -Endpoint $endpointURL `
+  -ExpirationDate $expDate `
+  -AdvancedFilter @($AdvFilter1)
+```
+
 ### <a name="test-filter"></a>Test filtru
 
-Filtr otestovat odeslání události s poli Barva nastavena na zelenou.
+Filtr otestovat odeslání události s poli Barva nastavena na zelenou. Protože zelené je jedna z hodnot ve filtru, se doručí události do koncového bodu.
+
+Pokud používáte Azure CLI, použijte:
 
 ```azurecli-interactive
 topicEndpoint=$(az eventgrid topic show --name $topicName -g gridResourceGroup --query "endpoint" --output tsv)
@@ -238,17 +249,60 @@ event='[ {"id": "'"$RANDOM"'", "eventType": "recordInserted", "subject": "myapp/
 curl -X POST -H "aeg-sas-key: $key" -d "$event" $topicEndpoint
 ```
 
-Událost je odeslána do vašeho koncového bodu.
+Pokud používáte PowerShell, použijte:
 
-K otestování scénář, kde nejsou odesílány události odeslání události s poli Barva nastavena na žlutou barvou.
+```azurepowershell-interactive
+$endpoint = (Get-AzureRmEventGridTopic -ResourceGroupName gridResourceGroup -Name $topicName).Endpoint
+$keys = Get-AzureRmEventGridTopicKey -ResourceGroupName gridResourceGroup -Name $topicName
+
+$eventID = Get-Random 99999
+$eventDate = Get-Date -Format s
+
+$htbody = @{
+    id= $eventID
+    eventType="recordInserted"
+    subject="myapp/vehicles/cars"
+    eventTime= $eventDate
+    data= @{
+        model="SUV"
+        color="green"
+    }
+    dataVersion="1.0"
+}
+
+$body = "["+(ConvertTo-Json $htbody)+"]"
+
+Invoke-WebRequest -Uri $endpoint -Method POST -Body $body -Headers @{"aeg-sas-key" = $keys.Key1}
+```
+
+K otestování scénář, kde nejsou odesílány události odeslání události s poli Barva nastavena na žlutou barvou. Žlutý není jeden z hodnoty zadané v daném předplatném, takže události se doručí do vašeho předplatného.
+
+Pokud používáte Azure CLI, použijte:
 
 ```azurecli-interactive
 event='[ {"id": "'"$RANDOM"'", "eventType": "recordInserted", "subject": "myapp/vehicles/cars", "eventTime": "'`date +%Y-%m-%dT%H:%M:%S%z`'", "data":{ "model": "SUV", "color": "yellow"},"dataVersion": "1.0"} ]'
 
 curl -X POST -H "aeg-sas-key: $key" -d "$event" $topicEndpoint
 ```
+Pokud používáte PowerShell, použijte:
 
-Žlutý není jeden z hodnoty zadané v daném předplatném, takže události se doručí do vašeho předplatného.
+```azurepowershell-interactive
+$htbody = @{
+    id= $eventID
+    eventType="recordInserted"
+    subject="myapp/vehicles/cars"
+    eventTime= $eventDate
+    data= @{
+        model="SUV"
+        color="yellow"
+    }
+    dataVersion="1.0"
+}
+
+$body = "["+(ConvertTo-Json $htbody)+"]"
+
+Invoke-WebRequest -Uri $endpoint -Method POST -Body $body -Headers @{"aeg-sas-key" = $keys.Key1}
+```
 
 ## <a name="next-steps"></a>Další postup
 

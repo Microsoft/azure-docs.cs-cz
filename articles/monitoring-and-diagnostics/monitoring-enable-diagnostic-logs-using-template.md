@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 3/26/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: 6e5bbdf0d43b642816a58419c2ce1c186fd44acb
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 774c313086883bedf4f8e06a46715a438fc02e69
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50960748"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281196"
 ---
 # <a name="automatically-enable-diagnostic-settings-at-resource-creation-using-a-resource-manager-template"></a>Automaticky povolení diagnostických nastavení při vytváření prostředků pomocí šablony Resource Manageru
 V tomto článku vám ukážeme, jak můžete použít [šablony Azure Resource Manageru](../azure-resource-manager/resource-group-authoring-templates.md) ke konfiguraci nastavení diagnostiky pro prostředek při jeho vytvoření. To umožňuje automaticky spustit streamování diagnostických protokolů a metrik do služby Event Hubs, archivovat v účtu úložiště nebo odeslání do Log Analytics, když se vytvoří prostředek.
@@ -26,7 +26,7 @@ V tomto článku vám ukážeme, jak můžete použít [šablony Azure Resource 
 Metoda pro povolení diagnostických protokolů pomocí šablony Resource Manageru závisí na typu prostředku.
 
 * **Non-Compute** používají prostředky (například skupiny zabezpečení sítě, Logic Apps, automatizace) [nastavení diagnostiky, které jsou popsané v tomto článku](monitoring-overview-of-diagnostic-logs.md#diagnostic-settings).
-* **COMPUTE** používají prostředky (WAD/LAD min.) [WAD/LAD konfigurační soubor je popsáno v tomto článku](../vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md).
+* **COMPUTE** používají prostředky (WAD/LAD min.) [WAD/LAD konfigurační soubor je popsáno v tomto článku](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines).
 
 V tomto článku zjistíte, jak nakonfigurovat diagnostiku pomocí některé z metod.
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/23/2018
 ms.author: sethm
 ms.reviewer: harik
-ms.openlocfilehash: f00b175fed36fbe2b28f1d11843bb17c54ac3873
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: 0bbe2ee7436cc03a3780da096a498769d66eb505
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50086960"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51277932"
 ---
 # <a name="azure-stack-servicing-policy"></a>Údržba zásad služby Azure Stack
 Tento článek popisuje údržby zásady pro integrované systémy Azure Stack, a co musíte udělat, aby byl váš systém v podporovaném stavu. 
@@ -55,7 +55,7 @@ Pokračujte k získání podpory, je nutné zachovat vašeho nasazení Azure sta
 
 Například pokud nejvíce dostupného aktualizovanou verzi je 1805 a předchozí dva balíčky aktualizace byly verze 1804 a 1803, 1803 a 1804 zůstanou na podporu. Je však 1802 bez podpory. Zásady platí, pokud neexistuje žádná verze pro měsíc nebo dvě. Například pokud v aktuální verzi je 1805 a nebyly žádné verzi 1804, předchozí dva balíčky aktualizací 1803 a 1802 zůstanou na podporu.
 
-Balíčky aktualizací softwaru společnosti Microsoft jsou mimo kumulativní a vyžadují předchozí aktualizace jako předpoklad. Pokud se rozhodnete odložení jeden nebo více aktualizací, zvažte celkové modulu runtime, pokud chcete získat nejnovější verzi. 
+Balíčky aktualizací softwaru společnosti Microsoft jsou mimo kumulativní a vyžadovat předchozí aktualizace balíčku nebo opravu hotfix jako předpoklad. Pokud se rozhodnete odložení jeden nebo více aktualizací, zvažte celkové modulu runtime, pokud chcete získat nejnovější verzi. 
 
 ## <a name="get-support"></a>Získat podporu
 Azure Stack se řídí podporu stejně jako Azure. Podnikoví zákazníci můžou postupujte podle procesu popsaného v [postupy vytvoření žádosti o podporu Azure](/azure/azure-supportability/how-to-create-azure-support-request). Pokud jste zákazník z Cloud Service Provider (CSP), požádejte o podporu poskytovatel cloudových služeb.  Další informace najdete v tématu [nejčastější dotazy k podpoře Azure](https://azure.microsoft.com/support/faq/). 

@@ -3,18 +3,18 @@ title: 'Kurz: Zpracování dat ze služby Azure Event Hubs s Apache Sparkem v Az
 description: Připojení k Azure Event Hubs Apache Spark v Azure HDInsight a zpracovávat streamovaná data.
 services: hdinsight
 ms.service: hdinsight
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive,mvc
 ms.topic: conceptual
-ms.date: 06/14/2018
-ms.openlocfilehash: 9cdb5ae31e2743b5ebe877ddd8d6680423e3d9b2
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.date: 11/06/2018
+ms.openlocfilehash: eb2145d2e7b787bafa0b546449282454f7059999
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43046248"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51283406"
 ---
 # <a name="tutorial-process-tweets-using-azure-event-hubs-and-spark-in-hdinsight"></a>Kurz: Proces tweetuje pomocí Azure Event Hubs a Spark v HDInsight
 
@@ -73,18 +73,14 @@ Ukládat tweety pomocí centra událostí.
     ![Zadejte název centra událostí pro Spark streaming příklad](./media/apache-spark-eventhub-streaming/hdinsight-provide-event-hub-name-for-spark-streaming.png "zadejte název centra událostí pro příklad streamování Sparku")
 5. Vyberte **vytvořit** k vytvoření oboru názvů.
 
-6. Otevřete obor názvů centra událostí pomocí následujících pokynů:
+7. Otevřete obor názvů centra událostí pomocí následujících pokynů:
 
     1. Z portálu, vyberte **všechny služby**.
     2. V dialogovém okně Filtr zadejte **služby event hubs**.
-    3. Dvakrát klikněte na obor názvů, který jste vytvořili.
+    3. Vyberte nově vytvořený obor názvů.
     4. Vyberte **+ Centrum událostí**.
 
-6. V seznamu Event Hubs oboru názvů vyberte nově vytvořený obor názvů.      
-5. Vyberte **Event Hubs**a pak vyberte **+ Centrum událostí** vytvořit nové Centrum událostí.
-  
-
-6. Zadejte následující hodnoty:
+8. Zadejte následující hodnoty:
 
     - Název: Zadejte název centra událostí.
     - Počet oddílů: 10
@@ -92,12 +88,12 @@ Ukládat tweety pomocí centra událostí.
    
     ![Zadejte podrobnosti o Centru událostí pro Spark streaming příklad](./media/apache-spark-eventhub-streaming/hdinsight-provide-event-hub-details-for-spark-streaming-example.png "poskytují podrobnosti o Centru událostí pro příklad streamování Sparku")
 
-7. Vyberte **Vytvořit**.
-8. Vyberte **zásady sdíleného přístupu** pro obor názvů (Poznámka: není zásady přístupu sdílené centra událostí) a pak vyberte **RootManageSharedAccessKey**.
+9. Vyberte **Vytvořit**.
+10. Vyberte **zásady sdíleného přístupu** pro obor názvů (Poznámka: není zásady přístupu sdílené centra událostí) a pak vyberte **RootManageSharedAccessKey**.
     
      ![Nastavení zásad centra událostí pro Spark streaming příklad](./media/apache-spark-eventhub-streaming/hdinsight-set-event-hub-policies-for-spark-streaming-example.png "zásady nastavení centra událostí pro Spark streaming příklad")
 
-9. Uložit hodnoty **primární klíč** a **připojovací řetězec – primární klíč** použít později v tomto kurzu.
+11. Uložit hodnoty **primární klíč** a **připojovací řetězec – primární klíč** použít později v tomto kurzu.
 
      ![Zobrazení klíče zásad centra událostí pro Spark streaming příklad](./media/apache-spark-eventhub-streaming/hdinsight-view-event-hub-policy-keys.png "zásady centra událostí zobrazení klíče příklad streamování Sparku")
 
@@ -222,7 +218,7 @@ Je potřeba vytvořit jiný Poznámkový blok Jupyter a pojmenujte ho **ReadTwee
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-V případě služby HDInsight se vaše data ukládají ve službě Azure Storage nebo Azure Data Lake Store, takže můžete cluster bezpečně odstranit, když se nepoužívá. Za cluster služby HDInsight se účtují poplatky, i když se nepoužívá. Vzhledem k tomu, že poplatky za cluster představují několikanásobek poplatků za úložiště, dává ekonomický smysl odstraňovat clustery, které nejsou používány. Pokud se chystáte hned začít pracovat na dalším kurzu, měli byste cluster zachovat.
+V případě služby HDInsight se vaše data ukládají ve službě Azure Storage nebo Azure Data Lake Store, takže můžete cluster bezpečně odstranit, když se nepoužívá. Za cluster služby HDInsight se účtují poplatky, i když se nepoužívá. Pokud budete chtít pracovat v dalším kurzu okamžitě, můžete chtít zachovat clusteru, v opačném případě pokračujte a cluster odstranit.
 
 Otevřete cluster na webu Azure Portal a vyberte **Odstranit**.
 

@@ -1,24 +1,7 @@
 ---
-title: PowerShell – ochrana otočit TDE – Azure SQL Database | Dokumentace Microsoftu
-description: Zjistěte, jak otočit ochrana transparentní šifrování dat (TDE) pro server Azure SQL.
-services: sql-database
-ms.service: sql-database
-ms.subservice: security
-ms.custom: ''
-ms.devlang: ''
-ms.topic: conceptual
-author: aliceku
-ms.author: aliceku
-ms.reviewer: vanto
-manager: jhubbard
-ms.date: 08/07/2017
-ms.openlocfilehash: fc8660b6fa6d9778a4eac9ce939181aa24d5097d
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
-ms.translationtype: MT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49309634"
----
+Title: "- ochrana otočit TDE – prostředí PowerShell Azure SQL Database | Microsoft Docs description: Zjistěte, jak otočit ochrana transparentní šifrování dat (TDE) pro server Azure SQL.
+služby: ms.service databáze sql: sql database ms.subservice: zabezpečení ms.custom: ms.devlang: ms.topic: koncepční Autor: aliceku ms.author: aliceku ms.reviewer: vanto správce: jhubbard ms.date: 08/07/2017
+--- 
 # <a name="rotate-the-transparent-data-encryption-tde-protector-using-powershell"></a>Otočit ochrana transparentní šifrování dat (TDE) pomocí Powershellu 
 
 Tento článek popisuje obměna klíčů pro server Azure SQL pomocí ochrana TDE ze služby Azure Key Vault. Otáčení znamená ochranu transparentní šifrování dat serveru Azure SQL přepnutí na novou asymetrický klíč, který chrání databáze na serveru. Obměna klíčů je online operace a zabere jenom pár sekund dokončit, protože to pouze dešifruje a znovu zašifruje databáze šifrovacího klíče dat, ne celou databázi.

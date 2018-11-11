@@ -3,7 +3,7 @@ items:
   href: index.yml
 - name: Služba SQL Database
   items:
-  - name: Informace o databázi SQL
+  - name: Co je databáze SQL?
     href: sql-database-technical-overview.md
   - name: Volba verze Azure SQL
     href: sql-database-paas-vs-sql-server-iaas.md
@@ -58,6 +58,8 @@ items:
       href: sql-database-connect-query-python.md
     - name: Ruby
       href: sql-database-connect-query-ruby.md
+    - name: R
+      href: sql-database-connect-query-r.md
   expanded: true
 - name: Kurzy
   items:
@@ -475,6 +477,8 @@ items:
       items:
       - name: Synchronizace dat SQL
         href: sql-database-sync-data.md
+      - name: Agent synchronizace dat
+        href: sql-database-data-sync-agent.md
       - name: Replikace změn schématu
         href: sql-database-update-sync-schema.md
       - name: Monitorování pomocí OMS
@@ -638,9 +642,9 @@ items:
     href: /azure/architecture/
   - name: Příběhy zákazníků
     href: http://customers.microsoft.com/en-us/search?sq=%22Azure%20SQL%20Database%22&ff=&p=0&so=story_publish_date%20desc
-ms.openlocfilehash: 6bb5612edc4a51af16a861cdaf2a339671775b10
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 4b68124c28a6854bfcdb5a4c5cd9cad557e7d1c4
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037239"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51289032"

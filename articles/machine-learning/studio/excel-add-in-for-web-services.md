@@ -13,22 +13,22 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 2/1/2018
-ms.openlocfilehash: 8fade171095ff6a9f4c10925089452d8925e11fe
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: ed3fc6d1d2a4b674e2866d2e168fb72490575869
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47095804"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281829"
 ---
 # <a name="excel-add-in-for-azure-machine-learning-studio-web-services"></a>Doplněk Excelu pro webové služby Azure Machine Learning Studio
 Excel usnadňuje volání webové služby přímo, bez nutnosti psát jakýkoli kód.
 
 ## <a name="steps-to-use-an-existing-web-service-in-the-workbook"></a>Postup používání webové služby existující v sešitu
 
-1. Otevřít [Excelový soubor ukázka](http://aka.ms/amlexcel-sample-2), který obsahuje doplněk aplikace Excel a data o cestujících Titaniku. 
+1. Otevřít [Excelový soubor ukázka](https://aka.ms/amlexcel-sample-2), který obsahuje doplněk aplikace Excel a data o cestujících Titaniku. 
  
 > [!NOTE]
-> Zobrazí se že seznam webových služeb týkající se do souboru a v dolní části zaškrtávacího políčka "Automatické předpovědět". Pokud povolíte automatické odhad predikce **všechny** vašich služeb budou aktualizované pokaždé, když dojde ke změně na vstupy. Pokud není zaškrtnuto budete muset kliknout na "Předpovědět vše" pro aktualizaci. Pro povolení automatického. odhad na úrovni služby přejít ke kroku 6.
+> Zobrazí se že seznam webových služeb týkající se do souboru a v dolní části zaškrtávacího políčka "Automatické předpovědět". Pokud povolíte automatické odhad predikce **všechny** vašich služeb se aktualizují pokaždé, když dojde ke změně na vstupy. Pokud není zaškrtnuto budete muset kliknout na "Předpovědět vše" pro aktualizaci. Pro povolení automatického. odhad na úrovni služby přejít ke kroku 6.
 
 2. Kliknutím ji vyberte webovou službu – "Titanic pozůstalým prediktivní (ukázka doplňku Excel) [skóre]" v tomto příkladu.
    
@@ -85,7 +85,7 @@ Získání klíče rozhraní API pro webovou službu. Pokud provedete tuto akci 
 ## <a name="sharing-your-workbook"></a>Sdílení vašeho sešitu
 Pokud váš sešit uložit, rozhraní API a primární klíč pro webové služby, které jste přidali také uloží. To znamená, že sešit by měly sdílet jenom uživatele, kterému můžete důvěřovat.
 
-Jakékoli otázky v části komentáře nebo na našem [fórum](http://go.microsoft.com/fwlink/?LinkID=403669&clcid=0x409).
+Jakékoli otázky v části komentáře nebo na našem [fórum](https://go.microsoft.com/fwlink/?LinkID=403669&clcid=0x409).
 
 [01]: ./media/excel-add-in-for-web-services/image1.png
 [02]: ./media/excel-add-in-for-web-services/image2.png

@@ -6,14 +6,14 @@ author: spelluru
 manager: timlt
 ms.service: service-bus-messaging
 ms.topic: article
-ms.date: 09/05/2018
+ms.date: 11/05/2018
 ms.author: spelluru
-ms.openlocfilehash: c851c8a9384acf909dc88d3565d49021e1ee67e9
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: a000c599ecf8287af57aec2f6e9d550bbe61f280
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49362008"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51279877"
 ---
 # <a name="service-bus-faq"></a>Nejčastější dotazy k Service Bus
 
@@ -21,7 +21,7 @@ Tento článek popisuje některé nejčastější dotazy o Microsoft Azure Servi
 
 ## <a name="general-questions-about-azure-service-bus"></a>Obecné dotazy týkající se služby Azure Service Bus
 ### <a name="what-is-azure-service-bus"></a>Co je Azure Service Bus?
-[Azure Service Bus](service-bus-messaging-overview.md) je asynchronní zasílání zpráv Cloudová platforma, která vám umožní odesílat data mezi systémy oddělení. Společnost Microsoft nabízí jako služba, což znamená, že není potřeba hostovat vlastní hardware použít tuto funkci.
+[Azure Service Bus](service-bus-messaging-overview.md) je asynchronní zasílání zpráv Cloudová platforma, která vám umožní odesílat data mezi systémy oddělení. Společnost Microsoft nabízí jako služba, což znamená, že není potřeba hostovat svůj vlastní hardware pro použití této funkce.
 
 ### <a name="what-is-a-service-bus-namespace"></a>Co je obor názvů služby Service Bus?
 A [obor názvů](service-bus-create-namespace-portal.md) poskytuje kontejner oboru pro adresování prostředků služby Service Bus v rámci vaší aplikace. Vytvoření oboru názvů, je potřeba pomocí služby Service Bus a je jedním z prvních kroků v části Začínáme.
@@ -78,6 +78,9 @@ I když společnost Microsoft si vyhrazuje právo zakázat účet zákazníka, k
 
 Stejně jako u jiných služeb v Azure Service Bus vynucuje sadu konkrétní kvót, aby se zajistilo, že veletrh využití prostředků. Další podrobnosti o těchto kvót v můžete najít [přehled kvóty služby Service Bus][Quotas overview].
 
+### <a name="how-to-handle-messages-of-size--1-mb"></a>Jak pro zpracování velikost zprávy > 1 MB?
+Zasílání zpráv služby Service Bus (fronty a témata nebo předplatná), aby aplikace odesílat zprávy o velikosti až 256 KB (úrovně standard) nebo 1 MB (úroveň premium). Pokud pracujete se zprávami o velikosti větší než 1 MB, použijte vzor kontrola deklarací identity je popsáno v [tento příspěvek na blogu](https://www.serverless360.com/blog/deal-with-large-service-bus-messages-using-claim-check-pattern).
+
 ## <a name="troubleshooting"></a>Řešení potíží
 ### <a name="what-are-some-of-the-exceptions-generated-by-azure-service-bus-apis-and-their-suggested-actions"></a>Jaké jsou některé výjimky generované API služby Azure Service Bus a jejich doporučené akce?
 Seznam možných výjimkách služby Service Bus najdete v tématu [výjimky přehled][Exceptions overview].
@@ -112,7 +115,7 @@ Move-AzureRmResource -DestinationResourceGroupName 'targetRG' -DestinationSubscr
 ## <a name="next-steps"></a>Další postup
 Další informace o Service Bus, najdete v následujících článcích:
 
-* [Úvod do Azure Service Bus Premium (příspěvek na blogu)](http://azure.microsoft.com/blog/introducing-azure-service-bus-premium-messaging/)
+* [Úvod do Azure Service Bus Premium (příspěvek na blogu)](https://azure.microsoft.com/blog/introducing-azure-service-bus-premium-messaging/)
 * [Úvod do Azure Service Bus úrovně Premium (Channel9)](https://channel9.msdn.com/Blogs/Subscribe/Introducing-Azure-Service-Bus-Premium-Messaging)
 * [Přehled služby Service Bus](service-bus-messaging-overview.md)
 * [Začínáme s frontami služby Service Bus](service-bus-dotnet-get-started-with-queues.md)

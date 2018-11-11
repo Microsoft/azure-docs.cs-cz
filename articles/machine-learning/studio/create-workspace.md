@@ -1,6 +1,6 @@
 ---
-title: Vytvoření Machine Learning Studio prostoru | Microsoft Docs
-description: Postup vytvoření pracovního prostoru pro Azure Machine Learning Studio
+title: Vytvoření služby Machine Learning Studio prostoru | Dokumentace Microsoftu
+description: Vytvoření pracovního prostoru pro Azure Machine Learning Studio
 services: machine-learning
 author: heatherbshapiro
 ms.author: hshapiro
@@ -12,92 +12,89 @@ ms.component: studio
 ms.workload: data-services
 ms.topic: article
 ms.date: 12/07/2017
-ms.openlocfilehash: 94502cbb0946ad1568cf33716480406b17fd57ac
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 19cbb27221bfb95a0900eb7a604e540cb066037e
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34833950"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51345551"
 ---
 # <a name="create-and-share-an-azure-machine-learning-workspace"></a>Vytvoření a sdílení pracovního prostoru Azure Machine Learning
-Tato nabídka odkazy na témata, které popisují, jak nastavit různé vědě prostředí data používá Cortana proces pro analýzu (CAP).
 
-[!INCLUDE [data-science-environment-setup](../../../includes/cap-setup-environments.md)]
-
-Pokud chcete používat Azure Machine Learning Studio, musíte mít pracovní prostor Machine Learning. Tento pracovní prostor obsahuje nástroje potřebné k vytváření, správě a publikování experimentů.
+Pokud chcete používat Azure Machine Learning Studio, musíte mít pracovní prostor Machine Learning Studio. Tento pracovní prostor obsahuje nástroje potřebné k vytváření, správě a publikování experimentů.
 
 [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
 
-### <a name="to-create-a-workspace"></a>Vytvoření pracovního prostoru
-1. Přihlaste se k [portálu Azure](https://portal.azure.com/)
+### <a name="to-create-a-workspace"></a>Vytvořit pracovní prostor
+1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com/).
 
     > [!NOTE]
-    > Přihlaste se a vytvořit pracovní prostor, musíte být správce předplatného Azure. 
+    > Přihlaste se a vytvořit pracovní prostor, musíte být správcem předplatného Azure. 
     >
     > 
 
-2. Klikněte na tlačítko **+ nové**
+2. Klikněte na tlačítko **+ nová**
 
-3. Do vyhledávacího pole zadejte **pracovní prostor Machine Learning Studio** a vyberte odpovídající položku. Potom klikněte na vybrat **vytvořit** v dolní části stránky.
+3. Do vyhledávacího pole zadejte **pracovní prostor Machine Learning Studio** a vyberte odpovídající položky. Potom klikněte na vybrat **vytvořit** v dolní části stránky.
 
 4. Zadejte informace o pracovním prostoru:
 
-    - *Název pracovního prostoru* může být až 260 znaků, ne končí v prostoru. Název nesmí obsahovat tyto znaky: `< > * % & : \ ? + /`
-    - *Plán webové služby* vyberete (nebo vytvořte), spolu s příslušnými *cenová úroveň* můžete vybrat, se používá při nasazování webových služeb z tohoto pracovního prostoru.
+    - *Název pracovního prostoru* může být až 260 znaků, není koncovou mezerou. Název nemůže obsahovat tyto znaky: `< > * % & : \ ? + /`
+    - *Plán web service* vyberete (nebo vytvoření), spolu s přidruženou *cenovou úroveň* vybrat, se používá při nasazení webové služby z tohoto pracovního prostoru.
 
     ![Vytvořit nový pracovní prostor](./media/create-workspace/create-new-workspace.png)
 
 5. Klikněte na možnost **Vytvořit**.
 
-Po nasazení pracovním prostoru můžete ho otevřít v nástroji Machine Learning Studio.
+Po nasazení se pracovní prostor, lze jej otevřít v nástroji Machine Learning Studio.
 
-1. Procházet a strojového učení Studio na [ https://studio.azureml.net/ ](https://studio.azureml.net/).
+1. Procházení k sadě Machine Learning Studio [ https://studio.azureml.net/ ](https://studio.azureml.net/).
 
-2. V pravém horním rohu vyberte pracovní prostor.
+2. V pravém horním rohu vyberte svůj pracovní prostor.
 
-    ![Vybrat pracovní prostor](./media/create-workspace/open-workspace.png)
+    ![Výběr pracovního prostoru](./media/create-workspace/open-workspace.png)
 
 3. Klikněte na tlačítko **Moje experimenty**.
 
-    ![Otevřete experimenty](./media/create-workspace/my-experiments.png)
+    ![Otevřít experimentů](./media/create-workspace/my-experiments.png)
 
-Informace o správě pracovního prostoru najdete v tématu [spravovat pracovní prostor služby Azure Machine Learning](manage-workspace.md).
-Pokud narazíte na potíže při vytváření pracovního prostoru, přečtěte si téma [Průvodce odstraňováním potíží: Vytvořte a připojte se k pracovní prostor Machine Learning](troubleshooting-creating-ml-workspace.md).
+Informace o správě pracovního prostoru najdete v tématu [Správa pracovního prostoru Azure Machine Learning](manage-workspace.md).
+Pokud narazíte na problém s vytvořením pracovního prostoru, přečtěte si téma [Průvodce odstraňováním potíží: vytvoření a připojení k pracovnímu prostoru Machine Learning](troubleshooting-creating-ml-workspace.md).
 
 
-## <a name="sharing-an-azure-machine-learning-workspace"></a>Sdílení pracovní prostor služby Azure Machine Learning
-Jednou Machine Learning při vytváření pracovního prostoru, můžete uživatele pozvat, do pracovního prostoru sdílet přístup do pracovního prostoru a všechny jeho experimenty, datové sady, poznámkové bloky, atd. Můžete přidat uživatele v jednom ze dvou rolí:
+## <a name="sharing-an-azure-machine-learning-workspace"></a>Sdílení pracovního prostoru služby Azure Machine Learning
+Jednou Machine Learning při vytváření pracovního prostoru, můžete uživatele pozvat do pracovního prostoru pro sdílení přístupu do vašeho pracovního prostoru a všechny jeho experimentů, datových sad, poznámkových bloků, atd. Můžete přidat uživatele v jednom ze dvou rolí:
 
-* **Uživatel** -prostoru uživatel může vytvořit, otevřít, upravit a odstranit experimenty, datové sady atd., v pracovním prostoru.
-* **Vlastník** – vlastníka můžete pozvat a odebírání uživatelů v pracovním prostoru, kromě uživatele, můžete provést.
+* **Uživatel** -uživatel pracovní prostor může vytvoření, otevření, úprava a odstranění experimenty, datové sady atd., v pracovním prostoru.
+* **Vlastník** – může pozvat vlastník a odebírání uživatelů v pracovním prostoru, kromě uživatele, můžete provést.
 
 > [!NOTE]
-> Účet správce, který vytvoří pracovním prostoru se automaticky přidá do pracovního prostoru jako pracovní prostor vlastníka. Ale jiní správci nebo uživatelé v tomto předplatném nejsou automaticky udělí přístup k pracovním prostoru – je potřeba je explicitně pozvat.
+> Účet správce, který vytvoří pracovní prostor se automaticky přidá do pracovního prostoru jako vlastníka pracovního prostoru. Ale jiní správci nebo uživatelé v tomto předplatném nejsou automaticky udělí přístup k pracovnímu prostoru – je potřeba explicitně pozvánku.
 > 
 > 
 
-### <a name="to-share-a-workspace"></a>Chcete-li sdílet pracovního prostoru
+### <a name="to-share-a-workspace"></a>Ke sdílení pracovního prostoru
 
-1. Přihlaste se k strojového učení Studio na [https://studio.azureml.net/Home](https://studio.azureml.net/Home)
+1. Přihlaste se k sadě Machine Learning Studio [https://studio.azureml.net/Home](https://studio.azureml.net/Home)
 
-2. V levém panelu klikněte na tlačítko **nastavení**
+2. Na levém panelu klikněte na tlačítko **nastavení**
 
-3. Klikněte **uživatelé** karta
+3. Klikněte na tlačítko **uživatelé** kartu
 
-4. Klikněte na tlačítko **POZVAT uživatele více** v dolní části stránky
+4. Klikněte na tlačítko **POZVAT další uživatele** v dolní části stránky
 
-    ![Nastavení Studio](./media/create-workspace/settings.png)
+    ![Nastavení sady Studio](./media/create-workspace/settings.png)
 
-5. Zadejte jeden nebo více e-mailové adresy. Uživatelé, potřebujete účet Microsoft nebo účet organizace (z Azure Active Directory).
+5. Zadejte jeden nebo více e-mailové adresy. Uživatelé potřebují platný účet Microsoft nebo účtu organizace (z Azure Active Directory).
 
 6. Vyberte, zda chcete přidat uživatele jako vlastníka nebo uživatele.
 
-7. Klikněte **OK** značku zaškrtnutí.
+7. Klikněte na tlačítko **OK** značku zaškrtnutí.
 
-Každý uživatel, které přidáte obdrží e-mail s pokyny, jak se přihlásit do sdíleného pracovního prostoru.
+Každý uživatel, kterého přidáte obdrží e-mail s pokyny, jak se přihlásit do sdíleného pracovního prostoru.
 
 > [!NOTE]
-> Pro uživatele, abyste mohli nasadit nebo spravovat webových služeb v tomto pracovním prostoru musí být Přispěvatel nebo správce v rámci předplatného Azure. 
+> Pro uživatele, abyste mohli nasazovat nebo spravovat webové služby v tomto pracovním prostoru musí být přispěvatelem nebo správcem v rámci předplatného Azure. 
 
 
 

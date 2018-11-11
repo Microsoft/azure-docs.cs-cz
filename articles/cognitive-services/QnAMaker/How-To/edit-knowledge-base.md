@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 11/06/2018
 ms.author: tulasim
-ms.openlocfilehash: f927e5b7ff65b82aef9d4224d22296e0fa48ad59
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: adcefe8fed927aca2533ea811bac56f0b92288de
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47451880"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51279702"
 ---
 # <a name="edit-a-knowledge-base"></a>Úprava znalostní báze
 
@@ -54,7 +54,7 @@ Aktualizace webech závisí na **cenovou úroveň účtu správy** používá p�
     >[!NOTE]
     Opuštění stránky před kliknutím na tlačítko při uložení a trénování nebude zachová tak změny.
 
-## <a name="add-a-qna-pair"></a>Přidat pár QnA
+## <a name="add-a-qna-pair"></a>Přidání páru otázky a odpovědi
 
 Vyberte **QnA přidat pár** přidáte nový řádek do tabulky znalostní báze knowledge base.
 
@@ -89,6 +89,12 @@ Přidat páry metadata tak, že vyberete ikonu filtru
 3. **Stránkování** umožňuje spravovat velké znalostních bází
 
     ![Hledání, stránkování, skupiny](../media/qnamaker-how-to-edit-kb/search-paginate-group.png)
+
+## <a name="delete-knowledge-bases"></a>Odstranit znalostních bází
+
+Odstraňuje se znalostní bázi (KB) je nevratná operace. Nedá se vrátit zpět. Před odstraněním znalostní báze, je třeba exportovat ve znalostní bázi z **nastavení** stránky portál QnA Maker. 
+
+Pokud sdílíte znalostní BÁZÍ s [spolupracovníci](collaborate-knowledge-base.md) odstraňte ji, všichni ztratí přístup k KB. 
 
 ## <a name="next-steps"></a>Další postup
 

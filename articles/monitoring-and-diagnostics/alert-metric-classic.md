@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: snmuvva
 ms.component: alerts
-ms.openlocfilehash: 76a87b79ccc776e0facd57a1cff50fbbcb4f0b9e
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: e18b670b94962c0e7aa469402228fd4ed95d846b
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50414875"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51287247"
 ---
 # <a name="create-view-and-manage-classic-metric-alerts-using-azure-monitor"></a>Vytvořit, zobrazit a spravovat klasické metriky upozornění pomocí Azure monitoru
 
@@ -24,7 +24,7 @@ Klasického upozornění metrik ve službě Azure Monitor poskytují způsob, ja
 
 2. V **monitorování** vyberte **upozornění (klasická)**. Text a ikona se mohou mírně lišit pro různé prostředky. Pokud nenajdete **upozornění (klasická)** tady, je možné v **výstrahy** nebo **pravidla upozornění**.
 
-    ![Monitorování](media/alert-metric-classic/AlertRulesButton.png)
+    ![Sledování](media/alert-metric-classic/AlertRulesButton.png)
 
 3. Vyberte **přidat upozornění metriky (klasické)** příkaz a potom přejít k vyplnění polí.
 
@@ -124,24 +124,25 @@ Tato část ukazuje, jak pomocí prostředí PowerShell příkazů vytvořit, zo
 
     ```PowerShell
     Get-AzureRmAlertRule -ResourceGroup montest -TargetResourceId /subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig
+    ```
 
-8. You can use the `Add-AlertRule` cmdlet to create, update, or disable an alert rule. You can create email and webhook properties using  `New-AzureRmAlertRuleEmail` and `New-AzureRmAlertRuleWebhook`, respectively. In the Alert rule cmdlet, assign these properties as actions to the **Actions** property of the Alert Rule. The following table describes the parameters and values used to create an alert using a metric.
+8. Můžete použít `Add-AlertRule` rutina pro vytvoření, aktualizace nebo zakázání pravidla upozornění. Můžete vytvořit e-mailu a webhook vlastností pomocí `New-AzureRmAlertRuleEmail` a `New-AzureRmAlertRuleWebhook`v uvedeném pořadí. V rutině pravidlo upozornění přiřadit jako akce, které tyto vlastnosti **akce** vlastnost pravidla výstrahy. Následující tabulka popisuje parametry a hodnoty použité k vytvoření upozornění použitím metrik.
 
-    | parameter | value |
+    | parametr | hodnota |
     | --- | --- |
-    | Name |simpletestdiskwrite |
-    | Location of this alert rule |East US |
-    | ResourceGroup |montest |
-    | TargetResourceId |/subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig |
-    | MetricName of the alert that is created |\PhysicalDisk(_Total)\Disk Writes/sec. See the `Get-MetricDefinitions` cmdlet about how to retrieve the exact metric names |
-    | operator |GreaterThan |
-    | Threshold value (count/sec in for this metric) |1 |
-    | WindowSize (hh:mm:ss format) |00:05:00 |
-    | aggregator (statistic of the metric, which uses Average count, in this case) |Average |
-    | custom emails (string array) |'foo@example.com','bar@example.com' |
-    | send email to owners, contributors and readers |-SendToServiceOwners |
+    | Název |simpletestdiskwrite |
+    | Umístění tohoto upozornění pravidla |Východ USA |
+    | Skupina prostředků |montest |
+    | TargetResourceId |/subscriptions/S1/resourceGroups/montest/providers/Microsoft.COMPUTE/virtualMachines/testconfig |
+    | MetricName výstrahy, která je vytvořena |\PhysicalDisk (využití _celkem) \Disk zápisů za sekundu. Zobrazit `Get-MetricDefinitions` rutiny o tom, jak získat přesné názvy metrik |
+    | – Operátor |GreaterThan |
+    | Prahová hodnota (počet za sekundu za pro tuto metriku) |1 |
+    | Velikost_okna (ve formátu hh: mm:) |00:05:00 |
+    | agregátoru (Statistika metriky, které v tomto případě používá průměrný počet) |Průměr |
+    | vlastní e-mailů (pole řetězců) |'foo@example.com','bar@example.com' |
+    | poslat vlastníci, přispěvatelé a čtenáři e-mailu |-SendToServiceOwners |
 
-9. Create an Email action
+9. Vytvořit e-mailové akce
 
     ```PowerShell
     $actionEmail = New-AzureRmAlertRuleEmail -CustomEmail myname@company.com

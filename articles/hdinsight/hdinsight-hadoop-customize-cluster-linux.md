@@ -2,19 +2,19 @@
 title: Přizpůsobení clusterů HDInsight pomocí skriptových akcí – Azure
 description: Přidáte vlastní komponenty pro clustery založené na Linuxu HDInsight pomocí skriptových akcí. Akce skriptů jsou skripty Bash, které slouží k přizpůsobení konfigurace clusteru nebo přidat další služby a nástroje, jako jsou Hue, Solr nebo R.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/01/2018
-ms.author: jasonh
-ms.openlocfilehash: e9662a0a0def91fa2cace1eb47dceffed5ff1ae6
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.date: 11/06/2018
+ms.author: hrasheed
+ms.openlocfilehash: 24fecd73876228b3665cde21ae312963ec979df6
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978025"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51279699"
 ---
 # <a name="customize-linux-based-hdinsight-clusters-using-script-actions"></a>Přizpůsobení clusterů HDInsight se systémem Linux pomocí akcí skriptů
 
@@ -67,7 +67,7 @@ Akce skriptu je Bash skript, který používá na uzlech v clusteru HDInsight. N
         Například identifikátory URI, najdete v článku [příklady skriptů pro skript akce](#example-script-action-scripts) oddílu.
 
         > [!WARNING]
-        > HDInsight podporuje pouze __pro obecné účely__ účtů služby Azure Storage. Nepodporuje současné době __úložiště objektů Blob__ typ účtu.
+        > HDInsight podporuje pouze objektů Blob v účtech Azure Storage s úrovní výkonu. 
 
 * Je možné omezit na **spouštět pouze určité typy uzlů**, příklad hlavním uzlům nebo pracovních uzlů.
 

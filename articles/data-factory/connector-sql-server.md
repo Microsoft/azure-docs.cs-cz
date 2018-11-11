@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/12/2018
+ms.date: 11/08/2018
 ms.author: jingwang
-ms.openlocfilehash: b0e9f72bad685d569b4a09baecec8cebc33fefde
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: b528507d0f12cda72855db19aa28c7b06a4e26c1
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44717892"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51345202"
 ---
 # <a name="copy-data-to-and-from-sql-server-using-azure-data-factory"></a>Kopírování dat do a z SQL serveru pomocí služby Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -119,7 +119,7 @@ Pro kopírování dat z/do databáze serveru SQL Server, nastavte vlastnost typ 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost typ datové sady, musí být nastavena na: **SqlServerTable** | Ano |
-| tableName |Název tabulky nebo zobrazení v instanci databáze SQL serveru, který propojená služba odkazuje na. | Ano |
+| tableName |Název tabulky nebo zobrazení v instanci databáze SQL serveru, který propojená služba odkazuje na. | Ne pro zdroj, Ano pro jímku |
 
 **Příklad:**
 
@@ -159,7 +159,6 @@ Pro kopírování dat z SQL serveru, nastavte typ zdroje v aktivitě kopírován
 
 - Pokud **sqlReaderQuery** je určená pro SqlSource, spustí aktivita kopírování tohoto dotazu na zdroji systému SQL Server se mají získat data. Alternativně můžete zadat uložené procedury tak, že zadáte **sqlReaderStoredProcedureName** a **storedProcedureParameters** (Pokud uložená procedura parametry).
 - Pokud nezadáte "sqlReaderQuery" nebo "sqlReaderStoredProcedureName" sloupce definované v oddílu "struktura" datové sady JSON se používají k vytvoření dotazu (`select column1, column2 from mytable`) ke spuštění systému SQL Server. Pokud není definice datové sady "struktura", jsou vybrány všechny sloupce z tabulky.
-- Při použití **sqlReaderStoredProcedureName**, stále je třeba zadat fiktivní **tableName** vlastnost v datové sadě JSON.
 
 **Příklad: použití jazyka SQL**
 
@@ -489,7 +488,7 @@ Při kopírování dat z/do systému SQL Server, se používají následující 
 | Binární |Byte] |
 | Bit |Logická hodnota |
 | Char |Řetězec, Char] |
-| datum |DateTime |
+| date |DateTime |
 | Datum a čas |DateTime |
 | datetime2 |DateTime |
 | DateTimeOffset |DateTimeOffset |
@@ -518,7 +517,7 @@ Při kopírování dat z/do systému SQL Server, se používají následující 
 | varchar |Řetězec, Char] |
 | xml |XML |
 
-## <a name="troubleshooting-connection-issues"></a>Řešení potíží s problémy s připojením
+## <a name="troubleshooting-connection-issues"></a>Řešení potíží s připojením
 
 1. Konfigurace SQL serveru tak, aby přijímal vzdálená připojení. Spuštění **SQL Server Management Studio**, klikněte pravým tlačítkem na **server**a klikněte na tlačítko **vlastnosti**. Vyberte **připojení** ze seznamu a kontrola **povolit vzdálená připojení k serveru**.
 

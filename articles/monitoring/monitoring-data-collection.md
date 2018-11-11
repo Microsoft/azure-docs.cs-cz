@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/27/2018
 ms.author: bwren
-ms.openlocfilehash: a810de5c3c70322560bb45bcc2aee5cf0798cea9
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 8aa79d66801ff30fedc725913696d5cfa3c9626f
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50248706"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282816"
 ---
 # <a name="monitoring-data-collected-by-azure-monitor"></a>Sledování dat shromážděných službou Azure Monitor
 [Azure Monitor](../azure-monitor/overview.md) je služba, která vám pomůže sledovat vaše aplikace a prostředky, které spoléhají na to. Centrální pro tuto funkci je úložiště dat a další data z monitorovaných prostředků. Tento článek poskytuje úplný popis toho, jak tato data se ukládají a používat Azure Monitor.
@@ -98,7 +98,7 @@ Existují tři základní zdroje z metrik shromážděných službou Azure Monit
 Úlohy, které můžete provádět pomocí metrik, patří:
 
 - Použití [Průzkumníka metrik](../monitoring-and-diagnostics/monitoring-metric-charts.md) k analýze shromážděných metrik a vykreslit v grafu. Sledování výkonu prostředků (jako je například virtuální počítač, webu nebo logiky aplikace) tak, že připnete grafy [řídicí panel Azure](../azure-portal/azure-portal-dashboards.md).
-- Konfigurace [metriky pravidlo upozornění](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md) , který odešle oznámení, nebo má [automatizované akce](../monitoring-and-diagnostics/monitoring-action-groups.md) Pokud metrika překročí mezní hodnotu.
+- Konfigurace [metriky pravidlo upozornění](../monitoring-and-diagnostics/alert-metric.md) , který odešle oznámení, nebo má [automatizované akce](../monitoring-and-diagnostics/monitoring-action-groups.md) Pokud metrika překročí mezní hodnotu.
 - Použití [automatického škálování](../monitoring-and-diagnostics/monitoring-overview-autoscale.md) zvýšení nebo snížení prostředků na základě metriky překročení prahové hodnoty.
 - Metriky tras do Log Analytics k analýze dat metriky spolu s daty log a k uložení hodnoty metrik déle než 93 dní. 
 - Stream metrik [centra událostí](../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md) směrovat je do [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) nebo k externím systémům.
@@ -138,7 +138,7 @@ Shromážděné službou Azure Monitor protokoly se ukládají ve službě Log A
 Log Analytics může shromažďovat data z široké škály zdrojů i v rámci Azure i z místních prostředků. Zdroje dat zapsaných do Log Analytics patří následující:
 
 - [Protokoly aktivit](../log-analytics/log-analytics-activity.md) z prostředků Azure, které obsahují informace o své konfiguraci a stavu a [diagnostické protokoly](../monitoring-and-diagnostics/monitor-stream-diagnostic-logs-log-analytics.md) , které poskytují přehled o jejich operace.
-- Agenty na [Windows](../log-analytics/log-analytics-windows-agent.md) a [Linux](../log-analytics/log-analytics-linux-agents.md) virtuálních počítačů, které odesílají telemetrii z hostovaného operačního systému a aplikací do Log Analytics podle [zdroje dat](../log-analytics/log-analytics-data-sources.md) , který můžete nakonfigurovat.
+- Agenty na [Windows](../log-analytics/log-analytics-windows-agent.md) a [Linux](../log-analytics/log-analytics-quick-collect-linux-computer.md) virtuálních počítačů, které odesílají telemetrii z hostovaného operačního systému a aplikací do Log Analytics podle [zdroje dat](../log-analytics/log-analytics-data-sources.md) , který můžete nakonfigurovat.
 - Aplikace data shromážděná pomocí [Application Insights](https://docs.microsoft.com/azure/application-insights/).
 - Data a poskytují přehled o konkrétní aplikaci nebo službu [řešení monitorování](../monitoring/monitoring-solutions.md) nebo funkce, jako jsou přehledy o kontejnerech, Insights virtuálního počítače nebo Insights skupiny prostředků.
 - Shromážděná data zabezpečení [Azure Security Center](https://docs.microsoft.com/azure/security-center/).

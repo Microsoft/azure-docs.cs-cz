@@ -1,6 +1,6 @@
 ---
-title: Zkoumat data v virtuálního počítače systému SQL Server na platformě Azure | Microsoft Docs
-description: Jak chcete dynamicky prozkoumávat data, která je uložená ve virtuálním počítači serveru SQL v Azure.
+title: Zkoumání dat na virtuálním počítači SQL serveru v Azure | Dokumentace Microsoftu
+description: Popisuje, jak zkoumat data, která je uložena v virtuálního počítače s SQL serverem v Azure.
 services: machine-learning
 documentationcenter: ''
 author: deguhath
@@ -15,62 +15,61 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: deguhath
-ms.openlocfilehash: d96852006377123f6e9d17c3ae5b79fe930c1e1c
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 546d75172b9e6dbd77d63c36e5b8cebd0835a582
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34836792"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51345602"
 ---
 # <a name="explore-data-in-sql-server-virtual-machine-on-azure"></a>Zkoumání dat na virtuálním počítači s SQL Serverem v Azure
-Tento dokument popisuje, jak chcete dynamicky prozkoumávat data, která je uložená ve virtuálním počítači serveru SQL v Azure. Tento krok můžete provést pomocí dat wrangling pomocí SQL nebo pomocí programovacího jazyka jako Python.
 
-Následující **nabídky** odkazy na témata, které popisují, jak používat nástroje a prozkoumejte data z různých prostředích úložiště. Tato úloha je krok v procesu Cortana Analytics (CAP).
+Tento článek popisuje, jak zkoumat data, která je uložena v virtuálního počítače s SQL serverem v Azure. To můžete udělat tahání dat pomocí SQL nebo pomocí programovacího jazyka, jako je Python.
 
-[!INCLUDE [cap-explore-data-selector](../../../includes/cap-explore-data-selector.md)]
+Tato úloha je nějaký krok [vědecké zpracování týmových dat](overview.md).
 
 > [!NOTE]
-> Ukázkové příkazy SQL v tomto dokumentu předpokládají, že data jsou v systému SQL Server. Pokud tomu tak není, podívejte se na proces mapování cloudu dat vědecké účely se dozvíte, jak pro přesun dat do systému SQL Server.
+> Ukázky příkazů SQL v tomto dokumentu předpokládají, že data jsou v systému SQL Server. Pokud tomu tak není, podívejte se na mapování proces vědy dat cloudu se naučíte přesunout data do SQL serveru.
 > 
 > 
 
-## <a name="sql-dataexploration"></a>Prozkoumejte data SQL pomocí skriptů SQL
-Tady jsou několik ukázkové skripty SQL, které lze použít k prozkoumání datová úložiště v systému SQL Server.
+## <a name="sql-dataexploration"></a>Zkoumání dat SQL pomocí skriptů SQL
+Tady je několik ukázky skriptů SQL, které lze použít k prozkoumání úložiště dat v systému SQL Server.
 
-1. Získat počet připomínky za den
+1. Získat počet vyjádření za den
    
     `SELECT CONVERT(date, <date_columnname>) as date, count(*) as c from <tablename> group by CONVERT(date, <date_columnname>)` 
-2. Získat úrovně ve sloupci kategorií
+2. Získání úrovně ve sloupci zařazené do kategorií
    
     `select  distinct <column_name> from <databasename>`
-3. Získat počet úrovní v kombinaci dvou kategorií sloupců 
+3. Získat počet úrovní v kombinaci dva sloupce a bude zařazené do kategorií 
    
     `select <column_a>, <column_b>,count(*) from <tablename> group by <column_a>, <column_b>`
-4. Získat distribuce pro číselné sloupce
+4. Získání distribuce pro číselné sloupce
    
     `select <column_name>, count(*) from <tablename> group by <column_name>`
 
 > [!NOTE]
-> Praktické příklad, můžete použít [datovou sadu NYC taxíkem](http://www.andresmh.com/nyctaxitrips/) a odkazovat na IPNB s názvem [NYC Data wrangling pomocí poznámkového bloku IPython a SQL Server](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-sql-walkthrough.ipynb) pro návod začátku do konce.
+> Například praktické, můžete použít [NYC taxislužby datovou sadu](http://www.andresmh.com/nyctaxitrips/) a odkazovat na IPNB s názvem [tahání dat NYC pomocí SQL Server a IPython Notebook](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-sql-walkthrough.ipynb) pro návod začátku do konce.
 > 
 > 
 
-## <a name="python"></a>Prozkoumejte data SQL s Pythonem
-Používá Python a zkoumat data funkce generovat, když jsou data v systému SQL Server je podobná zpracování dat v Azure blob pomocí Python, jak je uvedeno v [procesu Azure Blob dat ve vašem prostředí vědecké účely data](data-blob.md). Data musí být vždycky načtená z databáze do pandas DataFrame a pak můžete další zpracování. Jsme dokumentů proces připojení k databázi a načítání dat do DataFrame v této části.
+## <a name="python"></a>Zkoumání dat SQL s využitím Pythonu
+Použití Pythonu k zkoumat data a vygenerovat funkce, když jsou data v systému SQL Server je podobný zpracování dat v Azure blob pomocí Pythonu, jak je uvedeno v [data objektů Blob v Azure procesu v prostředí pro datové vědy](data-blob.md). Data musí být načtena z databáze do pandas DataFrame a pak mohou být další zpracování. Dokumentujeme proces připojení k databázi a načítání dat do datového rámce v této části.
 
-Následující formátu řetězce připojení slouží k připojení k databázi systému SQL Server z Pythonu pomocí pyodbc (servername nahraďte, dbname, uživatelské jméno a heslo s konkrétními hodnotami):
+Následující formát připojovacího řetězce je možné se připojit k databázi SQL serveru z Pythonu pomocí pyodbc (nahraďte název_serveru, dbname, uživatelské jméno a heslo s určitými hodnotami):
 
     #Set up the SQL Azure connection
     import pyodbc    
     conn = pyodbc.connect('DRIVER={SQL Server};SERVER=<servername>;DATABASE=<dbname>;UID=<username>;PWD=<password>')
 
-[Pandas knihovny](http://pandas.pydata.org/) v Pythonu poskytuje bohatou sadu datové struktury a nástrojů pro analýzu dat pro manipulaci s daty pro programování Python. Následující kód čte vráceny výsledky z databáze SQL serveru do rámečku Pandas dat:
+[Knihovny Pandas](http://pandas.pydata.org/) v Pythonu nabízí bohatou sadu datových struktur a nástrojů pro analýzu dat pro manipulaci s daty pro programování v Pythonu. Následující kód načte výsledky vrácené z databáze SQL serveru do Pandas datového rámce:
 
     # Query database and load the returned results in pandas data frame
     data_frame = pd.read_sql('''select <columnname1>, <cloumnname2>... from <tablename>''', conn)
 
-Teď můžete pracovat s Pandas DataFrame jako popsané v tématu [procesu Azure Blob dat ve vašem prostředí vědecké účely data](data-blob.md).
+Teď můžete pracovat s balíčky Pandas DataFrame, jak je popsáno v tématu [data objektů Blob v Azure procesu v prostředí pro datové vědy](data-blob.md).
 
-## <a name="the-team-data-science-process-in-action-example"></a>Proces Team dat. vědecké účely v příkladu akce
-Příklad začátku do konce návod o procesu analýzy Cortana použití veřejné datové sady, naleznete v části [Team datové vědy procesu v akci: pomocí SQL serveru](sql-walkthrough.md).
+## <a name="the-team-data-science-process-in-action-example"></a>Vědecké zpracování týmových dat v příkladu akce
+Příklad začátku do konce Průvodce procesu sady Cortana Analytics pomocí veřejné datové sady, naleznete v tématu [vědecké zpracování týmových dat v akci: použití serveru SQL Server](sql-walkthrough.md).
 

@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: tomsh
-ms.openlocfilehash: 50cfc2e8420d9f427b02c739f497d8546d880d7c
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.openlocfilehash: cceea9fa613d2a2428427bfe73eb50550db6c69a
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50747758"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281621"
 ---
 # <a name="azure-database-security-best-practices"></a>Osvědčené postupy zabezpečení Azure database
-Zabezpečení je velmi důležité pro správu databází a byl vždy prioritu [Azure SQL Database](https://docs.microsoft.com/azure/sql-database/). Vaše databáze je možné úzce svázat s pomáhají splňovat nejvíce zákonné nebo požadavky na zabezpečení, včetně HIPAA, ISO 27001/27002 a PCI DSS úrovně 1. Aktuální seznam certifikací dodržování předpisů zabezpečení je k dispozici na [webu Microsoft Trust Center](http://azure.microsoft.com/support/trust-center/services/). Můžete také umístit své databáze v určité síti datových center Azure na základě zákonných požadavků.
+Zabezpečení je velmi důležité pro správu databází a byl vždy prioritu [Azure SQL Database](https://docs.microsoft.com/azure/sql-database/). Vaše databáze je možné úzce svázat s pomáhají splňovat nejvíce zákonné nebo požadavky na zabezpečení, včetně HIPAA, ISO 27001/27002 a PCI DSS úrovně 1. Aktuální seznam certifikací dodržování předpisů zabezpečení je k dispozici na [webu Microsoft Trust Center](https://azure.microsoft.com/support/trust-center/services/). Můžete také umístit své databáze v určité síti datových center Azure na základě zákonných požadavků.
 
 V tomto článku se podíváme na kolekci osvědčené postupy zabezpečení Azure database. Tyto osvědčené postupy jsou odvozeny z našich zkušeností s zabezpečení služby Azure database a prostředí zákazníků, jako je sami.
 
@@ -122,7 +122,7 @@ Protože autorizovaným uživatelům s jako správce zabezpečení nebo správce
 - Ujistěte se, že uživatelé a aplikace k ověření používat samostatné účty. Tímto způsobem můžete omezit oprávnění udělená uživatelům a aplikacím a snížit rizika škodlivých aktivit.
 - Implementace zabezpečení na úrovni databáze s použitím pevné databázové role (jako je například db_datareader a db_datawriter). Nebo můžete vytvořit vlastní role pro vaši aplikaci udělit explicitní oprávnění pro vybrané databázové objekty.
 
-Existují i jiné možnosti šifrování dat:
+Další způsoby, jak zabezpečit vaše data vezměte v úvahu:
 
 - [Šifrování na úrovni buňky](/sql/relational-databases/security/encryption/encrypt-a-column-of-data) umožňuje šifrovat určité sloupce nebo buňky dat pomocí různých šifrovacích klíčů.
 - [Funkce Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine), která umožňuje klientům šifrovat citlivá data v klientských aplikacích a nikdy odhalit šifrovací klíče pro databázový stroj (SQL Database nebo SQL Server). V důsledku toho funkce Always Encrypted umožňuje oddělit mezi těmi, kdo data vlastní (a mohou je zobrazovat) a těmi, kdo spravovat data (ale nemají žádný přístup).

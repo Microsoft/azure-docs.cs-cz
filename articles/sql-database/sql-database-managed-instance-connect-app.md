@@ -12,12 +12,12 @@ ms.author: srbozovi
 ms.reviewer: bonova, carlrab
 manager: craigg
 ms.date: 09/14/2018
-ms.openlocfilehash: 0221965c51f2287cb6042c33b9ab3402e104abc3
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: fe73d5a2aa63cf127f5df835484cfcc75ef702aa
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48870474"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51514957"
 ---
 # <a name="connect-your-application-to-azure-sql-database-managed-instance"></a>Připojit vaši aplikaci ke spravované instanci Azure SQL Database
 
@@ -60,7 +60,7 @@ Pokud jste úspěšně navázáno připojení Azure k místní a nemůže naváz
 Spravovaná Instance je přístupný pouze prostřednictvím privátních IP adres tak aby bylo možné přistupovat z vašeho seznamu pro vývojáře, musíte nejprve navázat připojení mezi vaší pole pro vývojáře a ve virtuální síti spravované Instance. Uděláte to tak, konfigurace připojení typu Point-to-Site k virtuální síti s použitím nativního ověřování certifikátů Azure. Další informace najdete v tématu [konfigurace připojení typu point-to-site pro připojení k Azure SQL Database Managed Instance z místní počítač](sql-database-managed-instance-configure-p2s.md).
 
 ## <a name="connect-from-on-premises-with-vnet-peering"></a>Připojení z místního s využitím partnerského vztahu virtuální sítě
-Jiný scénář implementovat zákazníky je instalaci brány sítě VPN v samostatné virtuální sítě a předplatné z jedné hostování Managed Instance. Dva virtuální etworks pak vytvoření partnerského vztahu. Následující ukázka diagram architektury ukazuje, jak to lze provést.
+Jiný scénář implementovat zákazníky je instalaci brány sítě VPN v samostatné virtuální sítě a předplatné z jedné hostování Managed Instance. Dvě virtuální sítě pak vytvoření partnerského vztahu. Následující ukázka diagram architektury ukazuje, jak to lze provést.
 
 ![Partnerské vztahy virtuálních sítí](./media/sql-database-managed-instance-connect-app/vnet-peering.png)
 
@@ -83,6 +83,10 @@ Zvláštním případem připojení služby Azure App Service k Managed Instance
 Tento scénář je znázorněn v následujícím diagramu:
 
 ![vytvoření partnerského vztahu integrované aplikace](./media/sql-database-managed-instance/integrated-app-peering.png)
+
+>[!NOTE]
+>Funkci integrace virtuální sítě nejde integrovat do aplikace virtuální síť, která má bránu ExpressRoute. I když bránu ExpressRoute je nakonfigurované v režimu koexistence nefunguje integrace virtuální sítě. Pokud potřebujete přístup k prostředkům pomocí připojení ExpressRoute, můžete pomocí služby App Service Environment, která běží ve vaší virtuální síti.
+>
  
 ## <a name="troubleshooting-connectivity-issues"></a>Řešení potíží s připojením
 

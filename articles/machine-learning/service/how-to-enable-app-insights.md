@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: marthalc
 author: marthalc
 ms.date: 10/01/2018
-ms.openlocfilehash: fa425a5ecd8cf8f4c7b3516534b4c4f0f4257850
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: 962090340cad6bcd95245cffe16c25f08a98226b
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50085338"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51300757"
 ---
 # <a name="monitor-your-azure-machine-learning-models-in-production-with-application-insights"></a>Monitorování vašich modelů Azure Machine Learning v produkčním prostředí pomocí nástroje Application Insights
 
@@ -109,8 +109,11 @@ Pokud chcete zakázat Application Insights, použijte následující kód:
 ## <a name="evaluate-data"></a>Vyhodnocení dat
 Vaše služba data se ukládají v účtu služby Application Insights ve stejné skupině prostředků jako službu Azure Machine Learning.
 Chcete-li zobrazit ho:
-1. Přejděte do vaší skupiny prostředků v [webu Azure portal](https://portal.azure.com) a přejděte do prostředku Application Insights. 
-2. **Přehled** kartě se zobrazí základní sadu metriky pro vaši službu.
+1. Přejděte do pracovního prostoru služby Machine Learning v [webu Azure portal](https://portal.azure.com) a klikněte na odkaz Application Insights.
+
+    [![AppInsightsLoc](media/how-to-enable-app-insights/AppInsightsLoc.png)](./media/how-to-enable-app-insights/AppInsightsLoc.png#lightbox)
+
+1. Vyberte **přehled** kartu pro zobrazení základní sadu metriky pro vaši službu.
 
    [![Přehled](media/how-to-enable-app-insights/overview.png)](./media/how-to-enable-app-insights/overview.png#lightbox)
 
@@ -130,3 +133,7 @@ Další informace o tom, jak pomocí Application Insights najdete v tématu [co 
 
 ## <a name="next-steps"></a>Další postup
 Může také shromažďovat data o vašich modelů v produkčním prostředí. Přečtěte si článek [shromažďování dat modelů v produkčním prostředí](how-to-enable-data-collection.md). 
+
+
+## <a name="other-references"></a>Další odkazy
+* [Azure Monitor pro kontejnery](https://docs.microsoft.com/azure/monitoring/monitoring-container-insights-overview?toc=%2fazure%2fmonitoring%2ftoc.json)

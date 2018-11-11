@@ -11,13 +11,13 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
-ms.date: 11/01/2018
-ms.openlocfilehash: 71e5ae2a6b486873df147e7c2c0518e1c47b09c7
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.date: 11/07/2018
+ms.openlocfilehash: 0a248ec5137a6de43910b1d11184dfeda18601f5
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50914001"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51280343"
 ---
 # <a name="tutorial-set-up-sql-data-sync-to-sync-data-between-azure-sql-database-and-sql-server-on-premises"></a>Kurz: Nastavení synchronizace dat SQL, synchronizaci dat mezi Azure SQL Database a místním SQL serverem
 
@@ -129,7 +129,7 @@ Na **nakonfigurovat místní** stránce, proveďte následující akce:
 
     Pokud jste zvolili **vytvořit nového agenta**, proveďte následující akce:
 
-   1. Stáhnout klientský software agenta synchronizace z uvedený odkaz a nainstalujte ho na počítači, kde se nachází SQL Server.
+   1. Stáhnout klientský software agenta synchronizace z uvedený odkaz a nainstalujte ho na počítači, kde se nachází SQL Server. Můžete si také stáhnout agenta synchronizace dat přímo z [agenta synchronizace dat SQL Azure](https://www.microsoft.com/download/details.aspx?id=27693).
 
         > [!IMPORTANT]
         > Budete muset otevřít odchozí port 1433 protokolu TCP v bráně firewall umožňuje komunikaci se serverem pro agenta klienta.
@@ -253,35 +253,7 @@ Po exportu databáze jako `.bacpac` soubor a naimportujte ho k vytvoření nové
 
 ## <a name="faq-about-the-client-agent"></a>Nejčastější dotazy týkající se agenta klienta
 
-### <a name="why-do-i-need-a-client-agent"></a>Proč potřebuji agenta klienta
-
-Služba synchronizace dat SQL komunikuje s databází systému SQL Server prostřednictvím agenta klienta. Tuto funkci zabezpečení znemožňuje přímé komunikaci s databází za bránou firewall. Při synchronizaci dat SQL service komunikuje s agentem, pomocí provádí šifrované připojení a token jedinečný nebo *klíč agenta*. Databáze systému SQL Server ověření agenta pomocí připojovací řetězec a agent klíč. Tento návrh poskytuje vysokou úroveň zabezpečení pro vaše data.
-
-### <a name="how-many-instances-of-the-local-agent-ui-can-be-run"></a>Kolik instancí místní agent uživatelského rozhraní můžete spustit.
-
-Lze spustit pouze jednu instanci uživatelského rozhraní.
-
-### <a name="how-can-i-change-my-service-account"></a>Jak mohu změnit Můj účet
-
-Po instalaci agenta klienta je jediný způsob, jak změnit účet služby odinstalujte ho a nainstalujte nového agenta klienta pomocí nového účtu služby.
-
-### <a name="how-do-i-change-my-agent-key"></a>Jak mohu změnit můj klíč agenta
-
-Klíč agenta lze použít pouze jednou agentem. Se nesmí znovu použít při odebrání pak ji znovu nainstalujte nového agenta ani mohou využívat více agentů. Pokud je potřeba vytvořit nový klíč pro existujícího agenta, musí být jisti, že stejný klíč je zaznamenán s agenta klienta a synchronizaci dat SQL service.
-
-### <a name="how-do-i-retire-a-client-agent"></a>Jak se vyřadit Klientský agent
-
-Okamžitě zrušení platnosti nebo vyřazení agenta, znovu vygenerovat své klíče na portálu, ale neodešlou v Uživatelském rozhraní služby agentů. Obnovuje se klíč zruší platnost předchozí klíč bez ohledu, pokud je odpovídající agent online nebo offline.
-
-### <a name="how-do-i-move-a-client-agent-to-another-computer"></a>Jak můžu přesunout klientského agenta do jiného počítače
-
-Pokud chcete spustit místní agent z jiného počítače, než je aktuálně v, proveďte následující akce:
-
-1. Nainstalujte agenta na požadovaný počítač.
-2. Připojte se k portálu pro synchronizaci dat SQL a znovu vygenerovat klíč agenta pro nového agenta.
-3. Použijte uživatelské rozhraní nového agenta odeslat nový klíč agenta.
-4. Počkejte, dokud agent klienta stáhne seznam místních databází, které jste zaregistrovali dříve.
-5. Zadejte přihlašovací údaje databáze pro všechny databáze, které zobrazují jako nedostupné. Tyto databáze musí být dosažitelná z nového počítače, na kterém je nainstalovaný agent.
+Nejčastější dotazy týkající se agenta klienta najdete v tématu [nejčastější dotazy týkající se agenta](sql-database-data-sync-agent.md#agent-faq).
 
 ## <a name="next-steps"></a>Další postup
 
