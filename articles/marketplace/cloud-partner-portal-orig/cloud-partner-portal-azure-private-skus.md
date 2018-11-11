@@ -14,17 +14,17 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: fa82db289cd3080cc1e51027b609cc6c8aa66921
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 28fe85c6443701d5fb40d4f90dbec9ba445a234d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48809292"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230236"
 ---
 <a name="private-skus"></a>Privátní skladové položky
 ============
 
-Privátní SKU umožňují omezit dostupnost SKU pro konkrétní zákazníky. Když skladová položka je označena privátní, není k dispozici ve všech veřejných katalogu včetně na [Azure Marketplace](http://azuremarketplace.microsoft.com) a [webu Azure portal](http://portal.azure.com). Na portálu Azure portal jenom zákazníkům s přístupem k SKU je můžou zobrazit. Kromě toho by také být uživatel vyzván, aby měli přístup k soukromé nabídky.
+Privátní SKU umožňují omezit dostupnost SKU pro konkrétní zákazníky. Když skladová položka je označena privátní, není k dispozici ve všech veřejných katalogu včetně na [Azure Marketplace](https://azuremarketplace.microsoft.com) a [webu Azure portal](http://portal.azure.com). Na portálu Azure portal jenom zákazníkům s přístupem k SKU je můžou zobrazit. Kromě toho by také být uživatel vyzván, aby měli přístup k soukromé nabídky.
 
 >[!NOTE]
 >Privátní SKU musí mít nové jedinečné ID SKU nebo plán, aby rozporu s veřejnou skladové jednotky.

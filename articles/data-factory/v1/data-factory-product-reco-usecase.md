@@ -1,6 +1,6 @@
 ---
 title: Případ použití Data Factory - doporučení produktů
-description: Další informace o případ použití implementovaná pomocí Azure Data Factory spolu s jinými službami.
+description: Seznamte se případem použití implementovaný s využitím Azure Data Factory společně s dalšími službami.
 services: data-factory
 documentationcenter: ''
 author: sharonlo101
@@ -14,49 +14,49 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 3328a7c80a05a48b3c04ad5492a7eafe62059681
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: a940b1d2184961d907f72ad072270dad3571e844
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34622461"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51229249"
 ---
 # <a name="use-case---product-recommendations"></a>Příklad použití – doporučení produktu
-Azure Data Factory je jedním z mnoha služby použít k implementaci řešení akcelerátorů Cortana Intelligence Suite.  V tématu [Cortana Intelligence Suite](http://www.microsoft.com/cortanaanalytics) stránku Podrobnosti o této sady. V tomto dokumentu jsme popisují běžné případ použití, který Azure uživatelé už vyřeší a implementovaná pomocí Azure Data Factory a dalším službám součásti Cortana Intelligence.
+Azure Data Factory je jednou z mnoha služeb používaný k implementaci akcelerátorů řešení Cortana Intelligence Suite.  Zobrazit [Cortana Intelligence Suite](https://www.microsoft.com/cortanaanalytics) stránku Podrobnosti o této sadě. V tomto dokumentu popisujeme běžným případem použití, kteří uživatelé Azure už vyřešit a implementované pomocí služby Azure Data Factory a další služby komponent Cortana Intelligence.
 
 ## <a name="scenario"></a>Scénář
-Prodejci běžně chcete přesvědčit jejich zákazníci zakoupit produktů je prezentací s produkty, které jsou nejčastěji zajímat a proto pravděpodobně koupit. K tomu potřeba prodejci přizpůsobit své uživatele online prostředí pomocí přizpůsobené produktu doporučení pro tento konkrétní uživatel. Tato přizpůsobené doporučení se má na základě jejich aktuálním a historickém shopping data o chování, informace o produktu, nově přináší značek a segmentace dat produktu a zákazníka.  Kromě toho můžete poskytují doporučení produktů uživatele na základě analýzy chování celkové využití z jejich uživatelé kombinaci.
+Prodejci se běžně chtít přesvědčit svým zákazníkům zakoupit produkty tím, že předloží s produkty, které jsou pravděpodobně zajímá a proto nejpravděpodobněji koupí. K tomu třeba prodejci přizpůsobit online prostředí svoje uživatele pomocí individuální doporučení produktů pro tento konkrétní uživatel. Tato individuální doporučení se má na základě jejich současné a historické nákupní chování data, informace o produktech, nově zavedená značky a produktům a zákaznickým segmentace dat.  Kromě toho můžete poskytují doporučení produktů uživatele na základě analýzy chování celkové využití všech svých uživatelů v kombinaci.
 
-Cílem těchto prodejců je optimalizovat pro uživatele klikněte na tlačítko Prodej převody a vám vyšší výnosy prodeje.  Se zavedením kontextové, na základě chování produktu doporučení na základě zájmů zákazníka a akce dosáhnout tento převod. Pro tento případ použití používáme prodejci jako příklad firmám, které chcete optimalizovat pro své zákazníky. Ale tyto zásady se vztahují na všechny podnikání, které chce zaujmout svým zákazníkům kolem jeho zboží a služeb a zajištění lepších možností nákupní svým zákazníkům s doporučeními přizpůsobené produktu.
+Cílem těchto prodejci je optimalizovat pro uživatele klikněte na prodej převody a získat vyšší prodejních výnosů.  Tento převod dosahují poskytováním doporučení produktů kontextové, na základě chování na základě zájmy zákazníka a akcí. Pro tento případ použití použijeme jako příklad firmám, které chcete optimalizovat pro své zákazníky prodejci. Ale tyto zásady platí i pro jakoukoli firmu, která chce zapojily své zákazníky po jeho zboží a služeb a zajištění lepších možností nákupu svým zákazníkům s individuální doporučení produktů.
 
 ## <a name="challenges"></a>Výzvy
-Existuje mnoho problémů s této prodejci setkávají při pokusu o implementaci tohoto typu případ použití. 
+Existují řadu výzev tuto plošku prodejci při implementaci tohoto typu případu použití. 
 
-Nejdřív musíte data různých tvarů a obrazců konzumaci z více zdrojů dat, jak místně a v cloudu. Tato data zahrnují data produktu, data o chování historických zákazníka a data uživatele jako uživatel prohlíží web online prodejní. 
+Nejprve musí z různých zdrojů dat, ingestovat data z různých velikostí a tvarů v místním prostředí i v cloudu. Tato data zahrnují data produktu, historických chování dat zákazníků a dat uživatele jako uživatel prohlíží web online maloobchodní prodej. 
 
-Doporučení produktů druhou, přizpůsobené musí být přiměřené a přesně vypočítat a předpovědět. Kromě produktu, značky a chování a prohlížeč data zákazníků třeba prodejci také zahrnout názory zákazníků na posledních nákupy zohlednit při určování nejlepší doporučení produktů pro uživatele. 
+Doporučení produktů druhý vybaveným a přizpůsobeným musí být přiměřeně a přesně počítá a předpovědět. Kromě produktu, značky a zákaznická data chování a prohlížeče prodejci potřebovat zahrnout zpětnou odezvu zákazníků za posledních nákupy zohlednit při určování nejvhodnější doporučení produktů pro uživatele. 
 
-Doporučení třetí, musí být okamžitě dodávky uživateli, aby zadejte plynulé procházení a nákup prostředí a poskytovat doporučení nejnovější a relevantní. 
+Doporučení třetí, musí být okamžitě dodávky uživateli k zajištění bezproblémového procházení a nákup prostředí a nejnovější a relevantní doporučení. 
 
-Nakonec prodejců muset měřit efektivitu jejich přístup pomocí funkce sledování celkového až prodává a cross prodává klikněte na převod prodeje úspěchy a upravit na jejich budoucí doporučení.
+A konečně maloobchodníci muset změřte efektivitu svůj přístup pomocí sledování celkového křížového a křížového kliknutím převod prodejní úspěchy a upravit tak, aby jejich budoucí doporučení.
 
 ## <a name="solution-overview"></a>Přehled řešení
-Tento případ použití příklad je vyřešeno a implementované skutečných Azure uživatele pomocí Azure Data Factory a dalším službám součásti Cortana Intelligence, včetně [HDInsight](https://azure.microsoft.com/services/hdinsight/) a [Power BI](https://powerbi.microsoft.com/).
+Tento případ použití příkladu byl vyřešen a implementované skutečných uživatelů pomocí Azure Data Factory a dalším službám součástí Cortana Intelligence, včetně [HDInsight](https://azure.microsoft.com/services/hdinsight/) a [Power BI](https://powerbi.microsoft.com/).
 
-Online prodejce používá úložiště objektů Blob v Azure, místní SQL server, databázi SQL Azure a relační datové Tržiště jako jejich možnosti ukládání dat v celém pracovním postupu.  Úložiště objektů blob obsahuje informace o zákazníkovi, data o chování zákazníků a data informace o produktu. Data produktu informace obsahují informace o produktu značky a produkt katalogu uložené místně v SQL data warehouse. 
+Online prodejce používá úložiště objektů Blob v Azure, místnímu serveru SQL, Azure SQL DB a relační datové Tržiště jako jejich možnosti úložiště dat v průběhu pracovního postupu.  Úložiště objektů blob obsahuje informace o zákaznících, data o chování zákazníků a data informace o produktu. Data produktu. informace obsahuje informace o produktu značky a produkt katalogu uložené místně v SQL data warehouse. 
 
-Všechna data je kombinaci a dodáni do systému doporučení produktu zajistit přizpůsobený doporučení na základě zájmů zákazníka a akcí, když uživatel prohlíží produktů v katalogu na webu. Zákazníci také zobrazit produkty, které se vztahují k produktu, které jsou prohlížení podle celkové webu vzorce, které nejsou v relaci žádné s jedním uživatelem.
+Všechna data se sloučí a předány do produktu systému doporučení k poskytování individuálních doporučení na základě zájmy zákazníka a akcí, zatímco uživatel prochází produktů v katalogu na webu. Zákazníci také zobrazit produkty, které se vztahují k produktu, které se díváte na základě celkové webu způsobů využití, které spolu nesouvisí žádné s jedním uživatelem.
 
-![diagram případu použití](./media/data-factory-product-reco-usecase/diagram-1.png)
+![Diagram případu použití](./media/data-factory-product-reco-usecase/diagram-1.png)
 
-Gigabajty nezpracovaná webové soubory protokolu jsou generovány denně z webu online prodejce jako částečně strukturovaných soubory. Soubory protokolu nezpracovaná webové a informace o katalogu zákazníka a produkt je konzumována pravidelně do Azure Blob storage pomocí služby Data Factory přesun globálně nasazené dat jako službu. V souborech protokolů nezpracovaná den jsou rozdělena na oddíly (podle roku a měsíce) v úložišti objektů blob pro dlouhodobé uložení.  [Azure HDInsight](https://azure.microsoft.com/services/hdinsight/) se používá k vytvoření oddílů nezpracovaných log soubory v úložišti objektů blob a zpracovávat ingestovaný protokolů škálované použití Hive a Pig skriptů. Oddílů webové protokoly dat je pak zpracovávají extrahovat potřebné vstupy pro machine learning doporučení systému a generovat doporučení přizpůsobené produktu.
+Gigabajtů nezpracovaná webové soubory protokolu jsou generovány, každý den z webu online prodejce jako částečně strukturované soubory. Nezpracovaná webové soubory protokolů a informace o katalogu zákazníků a produktů je pravidelně přijatých do služby Azure Blob storage pomocí Data Factory pro přesuny globálně nasazených dat jako službu. Nezpracovaných souborů protokolu pro tento den dělí (podle roku a měsíce) v úložišti objektů blob pro dlouhodobé uložení.  [Azure HDInsight](https://azure.microsoft.com/services/hdinsight/) se používá k rozdělení nezpracovaných souborů protokolu v úložišti objektů blob a zpracovávat přijaté protokoly ve velkém měřítku pomocí skripty v Hivu a Pigu. Dělené webové protokoly dat je pak zpracovány extrahovat potřebné vstupy pro strojové učení doporučení systému, generovat individuální doporučení produktů.
 
-Systém doporučení použít pro strojového učení v tomto příkladu je otevřeným zdrojem strojového učení platformy doporučení z [Apache Mahout](http://mahout.apache.org/).  Všechny [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) nebo vlastní modelu lze použít pro tento scénář.  Mahout model se používá k předvídání podobnosti mezi položky na webu na základě celkového způsobů využití a ke generování přizpůsobených doporučení na základě jednotlivé uživatele.
+Doporučení systému, použít pro strojové učení v tomto příkladu je open source machine learning platforma pro doporučení [Apache Mahout](http://mahout.apache.org/).  Žádné [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) nebo vlastního modelu lze použít ve scénáři.  Mahout model se používá k předpovědi podobnosti mezi položkami na webu na základě celkové způsobů využití a ke generování individuální doporučení podle jednotlivých uživatelů.
 
-Nakonec sadu výsledků dotazu z přizpůsobené produktu doporučení je přesunuta do relační datové tržiště pro používání webu prodejce.  Sada výsledků může také být přístup přímo z úložiště objektů blob v jiné aplikaci, nebo přesunuta do další úložiště pro ostatní příjemce a případy použití.
+Nakonec sada výsledků individuální doporučení produktů se přesune do relačního datového tržiště za spotřebu na webu prodejce.  Sadu výsledků dotazu může také možné přistupovat přímo z úložiště objektů blob v jiné aplikaci, nebo přesunout do dalších úložišť pro ostatní uživatele a případy použití.
 
 ## <a name="benefits"></a>Výhody
-Optimalizace jejich strategie doporučení produktu a zarovnání s obchodními cíli, splní řešení online prodejce prodeje a marketingu cíle. Kromě toho jsou schopny zprovoznit a spravovat pracovní postup produktu doporučení efektivní, spolehlivou a cenově způsobem. Přístupu usnadnit pro ně k aktualizaci jejich modelu a systém doladit jeho účinnost podle míry prodeje úspěchů klikněte na převod. Pomocí Azure Data Factory byly moct abandon jejich správa prostředků časově náročná a nákladná ruční cloudu a přesunout do správy prostředků cloudu na vyžádání. Proto že byli schopni ušetřit čas, peníze a který snižuje doba pro jejich nasazení řešení. Zobrazení rodokmenu dat a stavu provozní služby se stala usnadňuje vizualizaci a Poradce při potížích s intuitivní monitorování objektu pro vytváření dat a správu uživatelského rozhraní, které jsou k dispozici na portálu Azure. Své řešení lze nyní naplánováno a spravovat tak, že dokončení data jsou spolehlivě vytváří a doručeny uživatelům a dat a zpracování závislosti jsou automaticky spravovány bez lidského zásahu.
+Optimalizace své strategie doporučení produktů a zarovnání s obchodními cíli, splní řešení online prodejce prodeje a marketingových cílů. Kromě toho jsou schopny zprovoznění a správa pracovního postupu doporučení produktů způsobem efektivnější, spolehlivé a cenově výhodnější. Tento přístup provedených můžou snadno aktualizovat své modelu a vyladění jeho efektivity na základě míry prodejní úspěchy klikněte na převod. Pomocí služby Azure Data Factory studenti mohli opustit jejich správy časově náročné a nákladné ruční cloudových prostředků a přechod na správu prostředků na vyžádání v cloudu. Proto se studenti mohli šetřit čas a peníze a snížit jejich čas potřebný k nasazení řešení. Zobrazení rodokmenu dat a provozní službě service health se snadno vizualizovat a řešení potíží se sadou intuitivní monitorování služby Data Factory a uživatelské rozhraní, které jsou k dispozici na webu Azure Portal pro správu. Jejich řešení nyní je možné naplánovat a spravovat tak, aby spolehlivě vytvořený a doručí uživatelům dokončení dat a dat a zpracování závislosti se spravují automaticky bez zásahu člověka.
 
-Díky této přizpůsobené nákupní rozhraní online prodejce vytvořit více produktivní, nestačí, aby zákazník prostředí a proto zvýšit spokojenost zákazníků prodeje a celková.
+Zadáním této personalizované prostředí pro nákup online prodejce vytvořili zákazníka větší konkurenceschopnost a zajímavé prostředí a proto zvýšit spokojenost zákazníků prodejní a celková.
 

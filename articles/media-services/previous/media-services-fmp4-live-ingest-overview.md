@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: cenkd;juliako
-ms.openlocfilehash: 88c152872ef8b571b8bc3e3f06ce486943e724b1
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: c6ff386913ed66cf4f74cb577bb8ca58e6932ada
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39443524"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228874"
 ---
 # <a name="azure-media-services-fragmented-mp4-live-ingest-specification"></a>Specifikace ingestování fragmentovaného MP4 za Azure Media Services
 Tato specifikace popisuje protokol a formáty fragmentovaného MP4 podle živého streamování ingestování pro Azure Media Services. Služba Media Services poskytuje služby živého streamování, které zákazníci mohou používat streamování události v reálném čase a vysílat obsah v reálném čase s využitím Azure jako cloudovou platformu. Tento dokument popisuje také osvědčené postupy pro sestavování vysoce redundantní a robustní živé ingestování mechanismy.
@@ -38,7 +38,7 @@ Následující diagram znázorňuje základní architektura služeb živého str
 ![příjem toku][image1]
 
 ## <a name="3-bitstream-format--iso-14496-12-fragmented-mp4"></a>3. Proud formátu – ISO 14496 12 fragmentovaného MP4
-Přenosový formát pro živé streamování ingestování popsané v tomto dokumentu je podle [ISO-14496-12]. Podrobné vysvětlení fragmentovaného MP4 formátu a rozšíření i pro soubory videa na vyžádání a živé ingestování datových proudů, naleznete v tématu [[MS-SSTR]](http://msdn.microsoft.com/library/ff469518.aspx).
+Přenosový formát pro živé streamování ingestování popsané v tomto dokumentu je podle [ISO-14496-12]. Podrobné vysvětlení fragmentovaného MP4 formátu a rozšíření i pro soubory videa na vyžádání a živé ingestování datových proudů, naleznete v tématu [[MS-SSTR]](https://msdn.microsoft.com/library/ff469518.aspx).
 
 ### <a name="live-ingest-format-definitions"></a>Živé ingestování definice formátů
 Následující seznam popisuje zvláštní formát definice, které platí pro živé ingestování do služby Azure Media Services:
@@ -68,7 +68,7 @@ Tady je podrobné požadavky:
 1. Kodér musí použít `Events()` podstatné jméno, jak je popsáno v 9.2 v [1] pro živé ingestování do Media Services.
 1. Pokud požadavek HTTP POST skončí nebo časového limitu TCP chybou před koncem datového proudu, musíte kodér předal nový požadavek POST s použitím nového připojení a postupujte podle výše uvedených požadavků. Kromě toho musí kodér znovu odeslat předchozí dva fragmenty MP4 pro každý sledování v datovém proudu a pokračovat bez vnášení diskontinuitu na časové ose média. Nové odeslání poslední dva fragmenty MP4 pro každý sledování zajišťuje, že nedochází ke ztrátě dat. Jinými slovy Pokud datový proud obsahuje audio a video sledování a aktuální požadavek POST selže, kodér musíte znovu připojit a znovu odeslat poslední dva fragmenty zvukové stopy, které byly úspěšně jste odeslali dřív, a poslední dva fragmenty pro video sledování, které byly dřív úspěšně odeslána, ujistěte se, že nedochází ke ztrátě dat. Kodér, musíte mít "forward" rezervu fragmenty média, které se odešle při opětovném připojení.
 
-## <a name="5-timescale"></a>5. Časová osa
+## <a name="5-timescale"></a>5. Timescale
 [[MS-SSTR] ](https://msdn.microsoft.com/library/ff469518.aspx) popisuje využití časový rámec pro **SmoothStreamingMedia** (část 2.2.2.1) a **StreamElement** (část 2.2.2.3) a **StreamFragmentElement** () Části 2.2.2.6), a **LiveSMIL** (části 2.2.7.3.1). Pokud hodnota měřítka není k dispozici, je výchozí hodnota používaná pro 10 000 000 (10 MHz). I když specifikace formátu technologie Smooth Streaming nebrání použití jiné časové hodnoty, většina implementací kodér použít tuto výchozí hodnotu (10 MHz) ke generování, technologie Smooth Streaming ingestovat data. Z důvodu [Azure Media dynamické balení](media-services-dynamic-packaging-overview.md) funkcí, doporučujeme použít 90 KHz časovou osu pro datové proudy videa a 44,1 KHz nebo 48.1 KHz pro zvukové datové proudy. Pokud různé časové osy hodnoty se používají pro různé datové proudy, se musí odeslat na časové ose úrovni datového proudu. Další informace najdete v tématu [[MS-SSTR]](https://msdn.microsoft.com/library/ff469518.aspx).     
 
 ## <a name="6-definition-of-stream"></a>6. Definice "datového proudu"
@@ -146,7 +146,7 @@ Požadavky pro tento scénář jsou téměř stejné jako požadavky v tomto př
 ## <a name="10-service-redundancy"></a>10. Redundance služby
 Pro vysoce redundantní globální distribuci někdy musí mít mezi různými oblastmi zálohování pro zpracování regionální havárií. Pokud rozvineme "Kodér redundance" topologie, zákazníci zvolit, aby nasazení redundantní služby v jiné oblasti, která je propojená s druhou sadu kodérů. Zákazníci můžou také spolupracovat s poskytovatelem Content Delivery Network k nasazení na globální Traffic managera před nasazením dvou služeb bez problémů směrovat přenosy klienta. Požadavky na u kodérů jsou stejné jako případ "Kodér redundance". Jedinou výjimkou je, že druhá sada kodérů je potřeba se odkazovala na jinou živé ingestování koncového bodu. Následující diagram znázorňuje tento instalační program:
 
-![redundance služby][image7]
+![Redundance služby][image7]
 
 ## <a name="11-special-types-of-ingestion-formats"></a>11. Speciální typy ingestování formátů
 Tato část popisuje zvláštní typy živé ingestování formáty, které jsou určeny ke zpracování určitých scénářů.

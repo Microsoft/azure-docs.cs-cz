@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 11/07/2018
+ms.date: 11/05/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: c2e50362de48991c818017b59632be3b0e74cb0b
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
-ms.translationtype: MT
+ms.openlocfilehash: 53c50ba75a16c58d7936a6f06de87218f67f5951
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51282063"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51219592"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Pravidla dynamického členství pro skupiny ve službě Azure Active Directory
 
@@ -339,9 +339,7 @@ Název vlastní vlastnosti najdete v adresáři zadáním dotazu na vlastnosti p
 
 ## <a name="rules-for-devices"></a>Pravidla pro zařízení
 
-Můžete také vytvořit pravidlo, které vybere objekty zařízení pro členství ve skupině. Uživatelé a zařízení nemůže mít jako členy skupiny. **OrganizationalUnit** atribut, už nejsou uvedení by se neměl používat. Tento řetězec je nastavena pomocí Intune v určitých případech ale nebyla rozpoznána službou Azure AD, takže žádná zařízení se přidají do skupiny založené na tento atribut.
-
-Můžete použít následující atributy zařízení.
+Můžete také vytvořit pravidlo, které vybere objekty zařízení pro členství ve skupině. Uživatelé a zařízení nemůže mít jako členy skupiny. Můžete použít následující atributy zařízení.
 
  Atribut zařízení  | Hodnoty | Příklad:
  ----- | ----- | ----------------
@@ -357,6 +355,7 @@ Můžete použít následující atributy zařízení.
  enrollmentProfileName | Název profilu profil registrace zařízení Apple nebo Windows Autopilot | (device.enrollmentProfileName - eq "DEP Iphony")
  isRooted | Hodnota TRUE, false | (device.isRooted - eq true)
  managementType | MDM (pro mobilní zařízení)<br>PC (pro počítače spravované pomocí agenta Intune pro počítače) | (device.managementType - eq "MDM")
+ organizationalUnit | libovolnou hodnotu řetězce odpovídající název organizační jednotky nastavuje v místním Active Directory | (device.organizationalUnit - eq "Počítačů USA")
  deviceId | platné ID zařízení Azure AD | (device.deviceId - eq "d4fe7726-5966-431c-b3b8-cddc8fdb717d")
  ID objektu | ID objektu platný Azure AD |  (device.objectId -eq 76ad43c9-32c5-45e8-a272-7b58b58f596d")
  systemLabels | jakýkoli řetězec odpovídající vlastnosti zařízení Intune pro označování moderního pracoviště zařízení | (device.systemLabels – obsahuje "M365Managed")

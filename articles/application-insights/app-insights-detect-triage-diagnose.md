@@ -14,12 +14,12 @@ ms.custom: mvc
 ms.topic: overview
 ms.date: 09/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 799593758bf24924d91d38bd6a626b945247183b
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 41c8fd0092af035153b3161c4a6c3eb5c5ef3f1d
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44050234"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50958895"
 ---
 # <a name="overview-of-application-insights-for-devops"></a>Přehled Application Insights pro DevOps
 
@@ -231,6 +231,6 @@ V závislosti na vlastnostech vaší aplikace můžete začít několika způsob
 * [Webová aplikace ASP.NET](app-insights-asp-net.md)
 * [Webová aplikace Java](app-insights-java-get-started.md)
 * [Webová aplikace Node.js](app-insights-nodejs.md)
-* Již nasazené aplikace hostované ve [službě IIS](app-insights-monitor-web-app-availability.md), na platformě [J2EE](app-insights-java-live.md) nebo v [Azure](app-insights-azure.md).
+* Již nasazené aplikace hostované ve [službě IIS](app-insights-monitor-web-app-availability.md), na platformě [J2EE](app-insights-java-live.md) nebo v [Azure](app-insights-overview.md).
 * [Webové stránky](app-insights-javascript.md) – Samostatná webová stránka nebo obyčejná webová stránka – tuto možnost můžete použít samotnou nebo společně s jakoukoli z možností serveru.
 * [Testy dostupnosti](app-insights-monitor-web-app-availability.md) pro účely testování aplikace z veřejného internetu.

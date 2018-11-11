@@ -10,19 +10,19 @@ ms.component: content-moderator
 ms.topic: reference
 ms.date: 06/25/2017
 ms.author: sajagtap
-ms.openlocfilehash: f065310e3afeaf95af602e513421da6770c9583f
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: ecc22b097c14fc7597d8ee0e31f9691098a2211d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47222400"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51229743"
 ---
 # <a name="content-moderator-api-reference"></a>Referenční informace k rozhraní API Content Moderatoru
 
 Začínáme s Azure Content Moderator API následujícím způsobem: (viz také [Správa přihlašovacích údajů](review-tool-user-guide/credentials.md).)
 
 - Na webu Azure Portal [předplatit rozhraní API Content Moderatoru](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator).
-- Zaregistrovat [nástroj pro kontrolu Content Moderator](http://contentmoderator.cognitive.microsoft.com/). Zobrazit [rychlý Start](quick-start.md).
+- Zaregistrovat [nástroj pro kontrolu Content Moderator](https://contentmoderator.cognitive.microsoft.com/). Zobrazit [rychlý Start](quick-start.md).
 
 ## <a name="moderation-apis"></a>Rozhraní API pro moderování
 

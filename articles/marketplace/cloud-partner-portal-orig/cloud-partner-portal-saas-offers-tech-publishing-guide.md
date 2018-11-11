@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 9d73040f11549741643d96913c42df49594b8d41
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 7430e57ceaec8a280c17f1276d503919a9703182
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48809210"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228891"
 ---
 <a name="saas-application-technical-publishing-guide"></a>SaaS aplikace technický průvodce publikováním
 ===========================================
@@ -34,7 +34,7 @@ Přehled všechny ostatní nabídky Marketplace najdete [Příručka pro vydavat
 
 Portál pro publikování poskytuje přístup na základě rolí na portálu pro povolení více osob ke spolupráci na publikování nabídky. Další informace najdete v tématu [spravovat uživatele](./cloud-partner-portal-manage-users.md). 
 
-Před publikováním nabídky jménem vydavatel účtu, jeden z uživatelé, kteří mají *vlastníka* role je potřeba souhlasit s [Terms of Use](https://azure.microsoft.com/support/legal/website-terms-of-use/), [Microsoft PrivacyStatement](http://www.microsoft.com/privacystatement/default.aspx), a [Microsoft Azure Certified ProgramAgreement](https://azure.microsoft.com/support/legal/marketplace/certified-program-agreement/).
+Před publikováním nabídky jménem vydavatel účtu, jeden z uživatelé, kteří mají *vlastníka* role je potřeba souhlasit s [Terms of Use](https://azure.microsoft.com/support/legal/website-terms-of-use/), [Microsoft PrivacyStatement](https://www.microsoft.com/privacystatement/default.aspx), a [Microsoft Azure Certified ProgramAgreement](https://azure.microsoft.com/support/legal/marketplace/certified-program-agreement/).
 
 
 <a name="creating-an-offer"></a>Vytvoření nabídky
@@ -50,7 +50,7 @@ Nabídky SaaS aplikace se skládá z pěti oddílů, jsou popsané v následují
 |--------------------|-------------------------------------------------------------------------------------------------------------------------------|
 | Nabídka nastavení     | Umožňuje definovat jedinečný název a ID pro aplikace SaaS                                                                         |
 | Technické informace     | Při konfiguraci typu řešení SaaS a poskytují podrobné informace o připojení pro vaši aplikaci                            |
-| Test Drive         | Volitelný oddíl, který umožňuje definovat službu, která vám umožní zákazníkům otestujte předtím, než ji zakoupit. |
+| Testovací verze         | Volitelný oddíl, který umožňuje definovat službu, která vám umožní zákazníkům otestujte předtím, než ji zakoupit. |
 | Prezentace podrobnosti | Obsahuje marketing, právní, Správa potenciálních zákazníků a seznam oddílů:   <br/> -Části Marketing umožňuje zadat popis a loga, vyžaduje se pro nabídky správně zobrazit v portálu user portal webu marketplace.  <br/> – Správa potenciálních zákazníků vám umožní definovat místo where přesměrovat zájemců koncový uživatel generovaných v Azure Marketplace End user portal.  <br/> – Právní část umožňuje zadat zásady ochrany osobních údajů a použití termín právní dokumentace.  |
 | Kontakt            | Umožňuje zadat kontaktní informace podpory nabídky.                                                                  |
 |  |  |
@@ -94,7 +94,7 @@ Pokud jste aplikaci SaaS, která je na webu Azure Marketplace a chce povolit com
 Další informace o připojování aplikace SaaS, naleznete v tématu [SaaS - prodávat prostřednictvím Azure](./cloud-partner-portal-saas-offer-subscriptions.md).
 
 
-### <a name="test-drive"></a>Test Drive
+### <a name="test-drive"></a>Testovací verze
 
 Vytvoření zkušebního prostředí pro vaše zákazníky je osvědčeným postupem je zajistit, že můžete koupit bez obav. Možnosti zkušebních verzí dostupné Test Drive je nejúčinnější pro vysoce kvalitní generování potenciálních zákazníků a větší převodu těchto potenciálních zákazníků.
 
@@ -198,7 +198,7 @@ Existují tři hlavní oblasti: technickým kontaktem, kontaktujte podporu a adr
 | **Obraťte se na**         | **Popis**                                                                                                                          |
 |---------------------|------------------------------------------------------------------------------------------------------------------------------------------|
 | Technický kontakt | Zadejte jméno, e-mailu a telefonní číslo technickým kontaktem, že Microsoft může kontaktovat podporu a obchodní problémy. |
-| Kontakt na podporu     | Zadejte jméno, e-mailu, telefonní číslo a podporu adresu URL, která vaši zákazníci se můžou obrátit, když mají žádosti o podporu.                  |
+| Kontakt podpory     | Zadejte jméno, e-mailu, telefonní číslo a podporu adresu URL, která vaši zákazníci se můžou obrátit, když mají žádosti o podporu.                  |
 |  |  |
 
 

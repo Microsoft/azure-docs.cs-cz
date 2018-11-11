@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 44b4da7c293da0643fb88cc2de21433c6ea72c5c
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: 8035a704a76d8f6287addff9c5503eb93f8e04fc
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42886400"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51227837"
 ---
 # <a name="back-up-your-app-in-azure"></a>Zálohování aplikace v Azure
 Funkce zálohování a obnovení v [služby Azure App Service](app-service-web-overview.md) umožňuje snadno vytvářet zálohy aplikací ručně, nebo podle plánu. Aplikaci můžete obnovit na snímek v předchozím stavu tak přepsání existující aplikace nebo při obnovování do jiné aplikace. 
@@ -155,7 +155,7 @@ Spuštění zálohování stejně jako byste to obvykle udělali, [ručně](#cre
 ## <a name="how-backups-are-stored"></a>Jak jsou zálohy uložené.
 Po provedení jedné nebo více zálohování pro vaši aplikaci, jsou viditelné na zálohy **kontejnery** stránku vašeho účtu úložiště a vaše aplikace. V účtu úložiště, každá záloha se skládá z`.zip` soubor, který obsahuje data záloh a `.xml` soubor, který obsahuje manifest aplikace `.zip` obsah souboru. Můžete rozbalit a procházet tyto soubory, pokud chcete získat přístup k zálohování bez ve skutečnosti obnovení aplikace.
 
-Zálohování databáze aplikace je uložená v kořenovém adresáři souboru ZIP. U databáze SQL je soubor BACPAC (bez přípony souboru) a mohou být naimportovány. Vytvoření SQL database založena na export souboru BACPAC najdete v tématu [Import souboru BACPAC k vytvoření nového uživatele databáze](http://technet.microsoft.com/library/hh710052.aspx).
+Zálohování databáze aplikace je uložená v kořenovém adresáři souboru ZIP. U databáze SQL je soubor BACPAC (bez přípony souboru) a mohou být naimportovány. Vytvoření SQL database založena na export souboru BACPAC najdete v tématu [Import souboru BACPAC k vytvoření nového uživatele databáze](https://technet.microsoft.com/library/hh710052.aspx).
 
 > [!WARNING]
 > Změna některý ze souborů ve vaší **websitebackups** kontejner může způsobit zálohování stane neplatnou a proto není – obnovitelné.

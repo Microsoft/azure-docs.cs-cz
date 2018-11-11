@@ -3,7 +3,7 @@ title: Spravovat problémy s endpoint protection pomocí Azure Security Center |
 description: Zjistěte, jak spravovat problémy s endpoint protection ve službě Azure Security Center.
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
 editor: ''
 ms.assetid: 1599ad5f-d810-421d-aafc-892e831b403f
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/23/2017
-ms.author: terrylan
-ms.openlocfilehash: a3ac23f3874b85da9c0641264ca6f9c55a7b0515
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.date: 10/28/2018
+ms.author: rkarlin
+ms.openlocfilehash: 834e6f2519fe745004894f3791591a3d0aa5757c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44299999"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51229437"
 ---
 # <a name="manage-endpoint-protection-issues-with-azure-security-center"></a>Spravovat problémy s endpoint protection pomocí Azure Security Center
 Azure Security Center monitoruje stav ochrany proti malwaru a oznámí to pod oknem problémy ochrany koncového bodu. Security Center zvýrazňuje problémy, jako je například zjištěných hrozeb a nedostatečná ochrana, které můžou ohrožovat zabezpečení vašeho počítače a virtuální počítače (VM) na ně antimalwaru. Podle informací uvedených v části **problémy s Endpoint protection**, můžete určit plán veškeré zjištěné potíže vyřešit.
@@ -110,7 +110,7 @@ Další informace o službě Security Center, najdete v následujících dokumen
 * [Správa a zpracování výstrah zabezpečení v Azure Security Center](security-center-managing-and-responding-alerts.md) – Zjistěte, jak spravovat výstrahy zabezpečení a reagovat na ně.
 * [Sledování partnerských řešení pomocí Azure Security Center](security-center-partner-solutions.md) – Zjistěte, jak pomocí Azure Security Center sledovat stav vašich partnerských řešení.
 * [Nejčastější dotazy k Azure Security Center](security-center-faq.md) – Přečtěte si nejčastější dotazy k používání této služby.
-* [Blog o zabezpečení Azure](http://blogs.msdn.com/b/azuresecurity/) – přečtěte si blog příspěvky o zabezpečení Azure a dodržování předpisů.
+* [Blog o zabezpečení Azure](https://blogs.msdn.com/b/azuresecurity/) – přečtěte si blog příspěvky o zabezpečení Azure a dodržování předpisů.
 
 <!--Image references-->
 [1]:./media/security-center-install-endpoint-protection/compute.png

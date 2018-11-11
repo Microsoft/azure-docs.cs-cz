@@ -9,11 +9,11 @@ ms.topic: include
 ms.date: 05/21/2018
 ms.custom: include file
 ms.openlocfilehash: 3c76bc6bb10930e738900d680ad8877305238a60
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50979690"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51208283"
 ---
 1. V nabídce sady Visual Studio vyberte **soubor > Nový > projekt**.
 2. V části **šablony** část **nový projekt** dialogu **Visual C# > Web**.

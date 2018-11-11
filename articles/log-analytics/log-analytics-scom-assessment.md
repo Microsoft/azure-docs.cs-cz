@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 06/25/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 5f5bfe6c730f569f0cc902b0e0a132bfca645a45
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: c17c14b015531bf3f978ac30b013c80ad5be779e
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50961683"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51006511"
 ---
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>Optimalizujete si prostředí díky řešení System Center Operations Manager kontroly stavu (Preview)
 
@@ -238,7 +238,7 @@ Pokud máte doporučení, která má být ignorována, můžete vytvořit textov
     ```
 
     >[!NOTE]
-    > Pokud byl váš pracovní prostor upgradován na [dotazovací jazyk Log Analytics nové](log-analytics-log-search.md), pak se změní výše uvedeném dotazu následující.
+    > Pokud byl váš pracovní prostor upgradován na [dotazovací jazyk Log Analytics nové](log-analytics-queries.md), pak se změní výše uvedeném dotazu následující.
     >
     > `SCOMAssessmentRecommendationRecommendation | where RecommendationResult == "Failed" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
 
@@ -263,7 +263,7 @@ Pokud máte doporučení, která má být ignorována, můžete vytvořit textov
     ```
 
     >[!NOTE]
-    > Pokud byl váš pracovní prostor upgradován na [dotazovací jazyk Log Analytics nové](log-analytics-log-search.md), pak se změní výše uvedeném dotazu následující.
+    > Pokud byl váš pracovní prostor upgradován na [dotazovací jazyk Log Analytics nové](log-analytics-queries.md), pak se změní výše uvedeném dotazu následující.
     >
     > `SCOMAssessmentRecommendationRecommendation | where RecommendationResult == "Ignore" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
 
@@ -304,4 +304,4 @@ Pokud máte doporučení, která má být ignorována, můžete vytvořit textov
 
 ## <a name="next-steps"></a>Další postup
 
-- [Hledání protokolů](log-analytics-log-search.md) informace o analýze podrobných dat o stavu systému System Center Operations Manager zkontrolujte a doporučení.
+- [Hledání protokolů](log-analytics-queries.md) informace o analýze podrobných dat o stavu systému System Center Operations Manager zkontrolujte a doporučení.

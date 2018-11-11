@@ -1,6 +1,6 @@
 ---
 title: Instalace publikované aplikace – StreamSets Data Collector – Azure HDInsight
-description: Nainstalovat a používat aplikace Hadoop jiných výrobců StreamSets Data Collector.
+description: Nainstalovat a používat aplikaci Apache Hadoop jiných výrobců StreamSets Data Collector.
 services: hdinsight
 author: ashishthaps
 ms.reviewer: jasonh
@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: ashish
-ms.openlocfilehash: 72ace99a8124b0a288e8facf630e947151169d0b
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: f963ae53e1396b1ef6279f2bd6502e5ab0cd23a1
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43106878"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51034553"
 ---
 # <a name="install-published-application---streamsets-data-collector"></a>Instalace publikované aplikace – StreamSets Data Collector
 
-Tento článek popisuje, jak nainstalovat a spustit [kolekce dat StreamSets pro HDInsight](https://streamsets.com/) publikovaných aplikací Hadoop v Azure HDInsight. Přehled aplikační platforma HDInsight a seznam z dostupných nezávislý výrobce softwaru (ISV) publikované aplikace, najdete v části [instalace aplikací Hadoop jiných výrobců](hdinsight-apps-install-applications.md). Pokyny pro instalaci vašich vlastních aplikací najdete v článku [Instalace vlastních aplikací HDInsight](hdinsight-apps-install-custom-applications.md).
+Tento článek popisuje, jak nainstalovat a spustit [kolekce dat StreamSets pro HDInsight](https://streamsets.com/) publikovat aplikace Apache Hadoop v Azure HDInsight. Přehled aplikační platforma HDInsight a seznam z dostupných nezávislý výrobce softwaru (ISV) publikované aplikace, najdete v části [instalace aplikací Hadoop jiných výrobců](hdinsight-apps-install-applications.md). Pokyny pro instalaci vašich vlastních aplikací najdete v článku [Instalace vlastních aplikací HDInsight](hdinsight-apps-install-custom-applications.md).
 
 ## <a name="about-streamsets-data-collector"></a>O StreamSets Data Collector
 
