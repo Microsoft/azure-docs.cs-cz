@@ -17,12 +17,12 @@ ms.date: 10/02/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 1722f81c55c490d6030dd04e5907e93012051492
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: d063c5e5a5b81f16d8921864ab2e2a0c3504e334
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48817090"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51289015"
 ---
 # <a name="v20-protocols---spas-using-the-implicit-flow"></a>verze 2.0 protokolů – SPA pomocí implicitní tok
 
@@ -145,7 +145,7 @@ Jakmile ověříte zcela požadavku id_token, můžete zahájit relaci s uživat
 
 ## <a name="get-access-tokens"></a>Získání přístupových tokenů
 
-Teď, když uživatel přihlásíte jednostránkovou aplikaci, můžete získat přístupové tokeny pro volání webových rozhraní API zabezpečené pomocí Azure AD, jako [Microsoft Graphu](https://graph.microsoft.io). I v případě, že jste už dostali tokenu pomocí `token` typ odpovědi, tuto metodu můžete použít k získání tokenů na další zdroje bez nutnosti přesměrovat uživatele se znovu přihlásit.
+Teď, když uživatel přihlásíte jednostránkovou aplikaci, můžete získat přístupové tokeny pro volání webových rozhraní API zabezpečené pomocí Azure AD, jako [Microsoft Graphu](https://developer.microsoft.com/graph). I v případě, že jste už dostali tokenu pomocí `token` typ odpovědi, tuto metodu můžete použít k získání tokenů na další zdroje bez nutnosti přesměrovat uživatele se znovu přihlásit.
 
 V normálním toku OpenID Connect a OAuth, provedli byste to provedením požadavku v2.0 `/token` koncového bodu. Koncový bod v2.0 však nepodporuje požadavků CORS, tak volání jazyka AJAX k získání a obnovovacích tokenů je mimo dotaz. Místo můžete použít implicitní tok v skryté iframe získat nové tokeny pro jiné webové rozhraní API: 
 

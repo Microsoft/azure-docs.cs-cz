@@ -1,9 +1,9 @@
 ---
-title: Konfigurace sítě režimy služby Azure Service Fabric kontejneru | Microsoft Docs
-description: Zjistěte, jak nastavit různé režimy sítě, které podporuje Azure Service Fabric.
+title: Konfigurace síťové režimy kontejneru služby Azure Service Fabric | Dokumentace Microsoftu
+description: Zjistěte, jak nastavit jiné síťové režimy, které jsou podporovány službou Azure Service Fabric.
 services: service-fabric
 documentationcenter: .net
-author: mani-ramaswamy
+author: TylerMSFT
 manager: timlt
 editor: ''
 ms.assetid: d552c8cd-67d1-45e8-91dc-871853f44fc6
@@ -13,29 +13,29 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
-ms.author: subramar
-ms.openlocfilehash: 869b87b8df3b1f532a33e943e728681b358ed8b4
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.author: twhitney, subramar
+ms.openlocfilehash: 1a0b7932d8dced086370027e1f8eecaf81841ab3
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36287622"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51300775"
 ---
-# <a name="service-fabric-container-networking-modes"></a>Režimy sítě kontejneru Service Fabric
+# <a name="service-fabric-container-networking-modes"></a>Síťové režimy kontejneru Service Fabric
 
-Cluster služby Azure Service Fabric pro kontejner služeb používá **nat** sítě režimu ve výchozím nastavení. Když více než jedna služba kontejneru naslouchá na stejném portu a nat režim je používán, může dojít k chybám nasazení. Pro podporu více služby kontejneru naslouchá na stejném portu, Service Fabric nabízí **otevřete** sítě režimu (verze 5.7 a novější). V otevřené režim má každý kontejner služby interní, dynamicky přiřadit IP adresu, která podporuje více služeb naslouchá na stejném portu.  
+Cluster Azure Service Fabric pro kontejner služby používá **nat** sítě režimu ve výchozím nastavení. Když se používá režim překladu adres více než jeden kontejner služba naslouchá na stejném portu, může dojít k chybám nasazení. Pro podporu více služeb kontejneru naslouchá na stejném portu, Service Fabric nabízí **otevřít** sítě režimu (verze 5.7 nebo novější). V režimu otevření má každá služba kontejneru interní, dynamickou IP adresu, která podporuje několik služeb, které naslouchá na stejném portu.  
 
-Pokud máte jeden kontejner služby s statického koncového bodu v manifestu služby, můžete vytvořit a odstranit pomocí režim otevření bez chyby nasazení nové služby. Stejný soubor docker-compose.yml lze také u mapování statický port pro vytvoření více služeb.
+Pokud máte jeden container service pomocí statické koncový bod v manifestu služby, můžete vytvořit a odstranit nových služeb pomocí otevřít režimu bez chyby nasazení. Stejný soubor docker-compose.yml také lze pomocí statické mapování portů nevytvářejte více služeb.
 
-Pokud službu kontejneru restartuje nebo přesune do jiného uzlu v clusteru, změní IP adresu. Z tohoto důvodu není doporučeno použít ke zjištění služby kontejneru dynamicky přiřazenou IP adresu. Pro zjišťování služby by měl použít pouze služby prostředků infrastruktury služby DNS nebo služba DNS. 
+Pokud služby container service restartuje nebo přesune do jiného uzlu v clusteru, změní se IP adresa. Z tohoto důvodu nedoporučujeme používat IP adresu dynamicky přiřazeného ke zjišťování služby kontejneru. Zjišťování služby by měla sloužit pouze služba pojmenování Service Fabric nebo službu DNS. 
 
 >[!WARNING]
->Azure umožňuje celkem 4 096 IP adres na jednu virtuální síť. Součet počet uzlů a počet instancí kontejneru služby, (které používají režim otevření) nesmí přesáhnout 4 096 IP adresy v rámci virtuální sítě. Pro scénáře s vysokou hustotou doporučujeme nat sítě režimu.
+>Azure umožňuje celkem 4 096 IP adresy na virtuální síť. Součet počtu uzlů a počet instancí služby kontejneru, (, které používají režim otevření) může mít maximálně 4 096 IP adres ve virtuální síti. Pro scénáře s vysokou hustotou doporučujeme síťový režim překladu adres.
 >
 
 ## <a name="set-up-open-networking-mode"></a>Nastavit režim otevření sítě
 
-1. Nastavte šablony Azure Resource Manageru. V **fabricSettings** povolte službu DNS a IP zprostředkovatele: 
+1. Nastavení šablony Azure Resource Manageru. V **nastavení fabricSettings** povolte službu DNS a IP zprostředkovatele: 
 
     ```json
     "fabricSettings": [
@@ -78,7 +78,7 @@ Pokud službu kontejneru restartuje nebo přesune do jiného uzlu v clusteru, zm
             ],
     ```
 
-2. Nastavte části profil sítě a povolit více IP adres nakonfigurovat na každém uzlu clusteru. Následující příklad nastaví pět IP adres na uzel pro cluster Service Fabric Windows nebo Linuxem. Můžete mít pět instancí služby naslouchání na portu na každém uzlu.
+2. Nastavení části profilu sítě umožňuje víc IP adres musí nakonfigurovat na každém uzlu clusteru. Následující příklad nastaví až 5 IP adres na jeden uzel clusteru Service Fabric s Windows nebo Linuxem. Může mít pět instancí služby naslouchání na portu na každém uzlu.
 
     ```json
     "variables": {
@@ -175,7 +175,7 @@ Pokud službu kontejneru restartuje nebo přesune do jiného uzlu v clusteru, zm
               }
    ```
  
-3. Pro clustery Windows nastavte pravidlo skupina zabezpečení sítě Azure (NSG), které se otevře port UDP/53 pro virtuální síť s následujícími hodnotami:
+3. V případě clusterů Windows nastavte pravidlo skupiny zabezpečení sítě Azure (NSG), které se otevře port UDP/53 virtuální sítě s použitím následujících hodnot:
 
    |Nastavení |Hodnota | |
    | --- | --- | --- |
@@ -187,7 +187,7 @@ Pokud službu kontejneru restartuje nebo přesune do jiného uzlu v clusteru, zm
    |Akce | Povolit  | |
    | | |
 
-4. Zadejte režim sítě v manifestu aplikace pro každou službu: `<NetworkConfig NetworkType="Open">`. **Otevřete** sítě režimu výsledky v rámci služby získávání vyhrazenou IP adresu. Pokud není zadán režim, službu výchozí **nat** režimu. V následujícím příkladu manifestu `NodeContainerServicePackage1` a `NodeContainerServicePackage2` služby můžete každý naslouchání na stejném portu (obě služby jsou naslouchá na `Endpoint1`). Pokud je zadána režim otevření sítí, `PortBinding` konfigurace nelze zadat.
+4. Zadejte síťový režim v manifestu aplikace pro každou službu: `<NetworkConfig NetworkType="Open">`. **Otevřít** sítě výsledky režimu ve službě získat vyhrazenou IP adresu. Je-li režim není zadán, výchozí služba **nat** režimu. V následujícím příkladu manifestu `NodeContainerServicePackage1` a `NodeContainerServicePackage2` služby může každý vlastností listenurimode nastavenou na stejném portu (obě služby naslouchají na `Endpoint1`). Pokud je zadán režim otevření sítě, `PortBinding` nejde zadat konfigurace.
 
     ```xml
     <?xml version="1.0" encoding="UTF-8"?>
@@ -216,13 +216,13 @@ Pokud službu kontejneru restartuje nebo přesune do jiného uzlu v clusteru, zm
     </ApplicationManifest>
     ```
 
-    Můžete kombinovat a párovat síťové různé režimy ve službách v rámci aplikace pro Windows cluster. Některé služby můžete použít režim otevření, jiné zase nat režimu. Pokud služba je nakonfigurována pro použití režimu nat, port, který služba naslouchá na musí být jedinečný.
+    Můžete kombinovat a párovat síťové různé režimy napříč službami v rámci aplikace pro Windows cluster. Některé služby můžete použít režim otevření, zatímco v jiných režimu překladu adres. Pokud služba je nakonfigurovaná pro použití režimu nat, musí být jedinečný port, na kterém služba naslouchá.
 
     >[!NOTE]
-    >Kombinování sítě režimy pro různé služby se nepodporuje v clusterech Linux. 
+    >Na clusterech s Linuxem není podporované kombinace síťové režimy pro různé služby. 
     >
 
-5. Když **otevřete** režimu je vybraná, **koncový bod** definice v service manifest by měla explicitně odkazovat na odpovídající ke koncovému bodu, balíček kódu i v případě, že balíček služby má jenom jeden kód balíček v ní. 
+5. Když **otevřít** je vybraný režim, **koncový bod** definice v manifestu služby by měly explicitně odkazovat na balíček kódu, který odpovídá ke koncovému bodu, i v případě, že balíček služby má pouze jeden kód balíček v ní. 
    
    ```xml
    <Resources>
@@ -232,7 +232,7 @@ Pokud službu kontejneru restartuje nebo přesune do jiného uzlu v clusteru, zm
    </Resources>
    ```
    
-6. Pro systém Windows a restartování virtuálního počítače způsobí, že otevřete sítě znovu vytvořit. Toto je zmírnit základní problém v síťových protokolů. Výchozí chování je znovu vytvořit v síti. Pokud toto chování musí být vypnuté, následující konfigurace lze následuje konfigurace upgradu.
+6. Pro Windows způsobí restartování virtuálního počítače, otevřete sítě znovu vytvořit. Toto je základní problém v sadu síťových protokolů se dá zmírnit. Výchozí chování je znovu vytvořit v síti. Pokud toto chování vypnout, následující konfiguraci je možné za nímž následuje konfigurace upgradu.
 
 ```json
 "fabricSettings": [
@@ -251,5 +251,5 @@ Pokud službu kontejneru restartuje nebo přesune do jiného uzlu v clusteru, zm
 ## <a name="next-steps"></a>Další postup
 * [Pochopení aplikačního modelu služby Service Fabric](service-fabric-application-model.md)
 * [Další informace o prostředky manifestu služby Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-service-manifest-resources)
-* [Nasazení kontejneru systému Windows pro Service Fabric na Windows Server 2016](service-fabric-get-started-containers.md)
-* [Nasadit kontejner Docker do Service Fabric v systému Linux](service-fabric-get-started-containers-linux.md)
+* [Nasazení kontejneru Windows do Service Fabric na Windows serveru 2016](service-fabric-get-started-containers.md)
+* [Nasazení kontejneru Dockeru pro Service Fabric v Linuxu](service-fabric-get-started-containers-linux.md)

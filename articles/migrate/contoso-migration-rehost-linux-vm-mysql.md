@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: raynew
-ms.openlocfilehash: c89ba62ae104d378dc99809e2d96ac993cd2bc35
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 2a7e7f13b68f06bb6c0e9be4730c7346e43e8e5b
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49115964"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51346571"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-linux-app-to-azure-vms-and-azure-mysql"></a>Migrace Contoso: Změna hostitele aplikace Linux místních virtuálních počítačů Azure a Azure MySQL
 
@@ -199,7 +199,7 @@ Po převzetí služeb při selhání do Azure Contoso chce mít možnost se při
 
 - Přístup přes internet, umožňují SSH v Linuxu místní virtuální počítač před migrací.  Pro Ubuntu to můžete provést pomocí následujícího příkazu: **Sudo apt-get ssh, nainstalujte -y**.
 - Po převzetí služeb při selhání, by měl zkontrolovat **Diagnostika spouštění** zobrazíte snímek obrazovky virtuálního počítače.
-- Pokud to nepomůže, je potřeba ověřit, že virtuální počítač běží a přečtěte si tyto [tipy pro řešení potíží](http://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx).
+- Pokud to nepomůže, je potřeba ověřit, že virtuální počítač běží a přečtěte si tyto [tipy pro řešení potíží](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx).
 
 **Potřebujete další pomoc?**
 
@@ -399,7 +399,7 @@ Spuštění testovacího převzetí služeb při pomáhá ověřit, že vše fun
 
 ### <a name="migrate-the-vm"></a>Migrace virtuálního počítače
 
-Migrace virtuálních počítačů společnosti Contoso správci creats plán obnovení, která obsahuje virtuální počítač, a převzetí služeb při selhání plánu do Azure.
+Migrovat virtuální počítač, správce společnosti Contoso vytvoří plán obnovení, která obsahuje virtuální počítač a převzetí služeb při selhání plánu do Azure.
 
 1. Vytvoření plánu a přidání **OSTICKETWEB** k němu.
 

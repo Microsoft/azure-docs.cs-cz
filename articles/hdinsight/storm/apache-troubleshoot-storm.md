@@ -4,17 +4,17 @@ description: Získejte odpovědi na běžné dotazy týkající se použití Apa
 keywords: HDInsight, Storm, nejčastější dotazy k Azure, průvodce, běžné problémy s řešením problémů
 services: hdinsight
 ms.service: hdinsight
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 11/2/2017
-ms.openlocfilehash: 291d292a67dc42b96e14f0d3afc7a9625f7e5be6
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 99ceeea33d3e2d9af798d5eb4161b0c16afc952d
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50960901"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51011370"
 ---
 # <a name="troubleshoot-storm-by-using-azure-hdinsight"></a>Řešení Storm pomocí Azure HDInsight
 

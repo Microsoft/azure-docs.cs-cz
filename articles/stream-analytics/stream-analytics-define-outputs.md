@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/22/2018
-ms.openlocfilehash: abf581430f7cf7020145b0217c387b8c2fc4f795
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: 2ef599fe704b184e82de2d704753e3fb4a274a2a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50979399"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51257795"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Vysvětlení vytvořené jako výstupy z Azure Stream Analytics
 Tento článek popisuje různé typy výstupy, které jsou k dispozici pro úlohy Azure Stream Analytics. Výstupy umožňují ukládat a uložit výsledky úlohy Stream Analytics. Pomocí výstupní data, můžete provést další obchodní analýzy a skladování dat vaše data. 
@@ -297,7 +297,7 @@ Následující tabulka shrnuje podporu oddílu a počet modulů pro zápis výst
 | Typ výstupu | Dělení podpory | Klíč oddílu  | Počet modulů pro zápis výstupu | 
 | --- | --- | --- | --- |
 | Azure Data Lake Store | Ano | Použijte {date} a {time} tokeny v vzor předpony cesty. Vyberte formát data, jako je rrrr/MM/DD, DD/MM/RRRR MM-DD-RRRR. HH se používá pro formát času. | Následuje vstupní dělení pro [plně paralelizovat dotazy](stream-analytics-scale-jobs.md). | 
-| Azure SQL Database | Ano | Podle v klauzuli PARTITION BY v dotazu | Následuje vstupní dělení pro [plně paralelizovat dotazy](stream-analytics-scale-jobs.md). | 
+| Azure SQL Database | Ano | Podle v klauzuli PARTITION BY v dotazu | Následuje vstupní dělení pro [plně paralelizovat dotazy](stream-analytics-scale-jobs.md). Další informace o dosažení lépe zápisu propustnost při načítání dat do databáze SQL Azure najdete v tématu [výstupu Azure Stream Analytics ke službě Azure SQL Database](stream-analytics-sql-output-perf.md). | 
 | Azure Blob Storage | Ano | Použijte {date} a {time} tokeny z polí událostí v vzor cesty. Vyberte formát data, jako je rrrr/MM/DD, DD/MM/RRRR MM-DD-RRRR. HH se používá pro formát času. Jako součást [ve verzi preview](https://aka.ms/ASApreview1), můžete rozdělit na oddíly výstupního objektu blob atributem jednu vlastní událost {pole fieldname} nebo {data a času:\<specifikátor >}. | Následuje vstupní dělení pro [plně paralelizovat dotazy](stream-analytics-scale-jobs.md). | 
 | Centrum událostí Azure | Ano | Ano | Se liší v závislosti na zarovnání oddílu.</br> Výstupem, který klíč oddílu je stejně v souladu s nadřazeného (předchozí) kroku dotazu, počet zapisovače centra událostí je stejný počet výstupu oddílů centra událostí. Každý writer používá pro EventHub [EventHubSender třídy](/dotnet/api/microsoft.servicebus.messaging.eventhubsender?view=azure-dotnet) k odesílání událostí do konkrétních oddílů. </br> Pokud výstup Eventhub klíč oddílu není zarovnána s nadřazeného (předchozí) kroku dotazu, počet modulů pro zápis je stejný jako počet oddílů v tomto dřívějším kroku. Každý writer používá EventHubClient [SendBatchAsync třídy](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventhubclient.sendasync?view=azure-dotnet) k odesílání událostí do všech oddílů výstup. |
 | Power BI | Ne | Žádný | Není k dispozici. | 
@@ -306,6 +306,8 @@ Následující tabulka shrnuje podporu oddílu a počet modulů pro zápis výst
 | Fronty Azure Service Bus | Ano | Automaticky zvolí. Počet oddílů je založen na [SKU služby Service Bus a velikost](../service-bus-messaging/service-bus-partitioning.md). Klíč oddílu je jedinečné celé číslo pro každý oddíl.| Stejný jako počet oddílů ve výstupní frontě. |
 | Azure Cosmos DB | Ano | Pomocí tokenu {partition} v vzor názvu kolekce. Hodnota {partition} je založena na klauzuli PARTITION BY v dotazu. | Následuje vstupní dělení pro [plně paralelizovaná dotazy](stream-analytics-scale-jobs.md). |
 | Azure Functions | Ne | Žádný | Není k dispozici. | 
+
+Pokud adaptér pro výstup není rozdělena na oddíly, chybějící data v jednom oddílu vstupní způsobí zpoždění až pozdní doručení množství času.  V takovém případě je výstupem sloučeny s jedním zapisujícím procesem, který může způsobit problémová místa ve vašem kanálu. Další informace o pozdní přijetí zásad najdete v tématu [aspekty pořadí událostí Azure Stream Analytics](stream-analytics-out-of-order-and-late-events.md).
 
 ## <a name="output-batch-size"></a>Velikost dávky výstupu
 Azure Stream Analytics používá proměnné velikosti dávky pro zpracování událostí a zápis do výstupů. Obvykle modul Stream Analytics nezapisuje jednu zprávu v čase a používá dávky efektivitu. Příchozí a odchozí frekvence událostí je vysoké, využívá větších dávek. Po nízká frekvence odchozího přenosu dat se používá po menších dávkách zachovat s nízkou latencí. 

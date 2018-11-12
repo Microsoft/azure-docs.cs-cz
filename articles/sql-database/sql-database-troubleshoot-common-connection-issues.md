@@ -12,12 +12,12 @@ ms.author: daleche
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: a34745c5586fa90d3e167bb3be22e93dfa83b7af
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 99c7e73bb133349ef1c14295a49f278d64a15226
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041726"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51257955"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-sql-database"></a>Řešení problémů s připojením ke službě Azure SQL Database
 Při připojení ke službě Azure SQL Database selže, obdržíte [chybové zprávy](sql-database-develop-error-messages.md). Tento článek je centralizovaná téma, které vám pomohou s řešením problémům s připojením Azure SQL Database. Zavádí [nejčastější příčiny](#cause) z problémů s připojením, doporučuje [nástroje pro odstraňování potíží](#try-the-troubleshooter-for-azure-sql-database-connectivity-issues) , která pomáhá identity problém a odstraňování potíží vysvětluje, jak vyřešit [přechodné chyby](#troubleshoot-transient-errors) a [trvalé nebo nepřechodných chyb](#troubleshoot-persistent-errors). 
@@ -79,8 +79,8 @@ Pokud aplikace trvale nepodaří připojit ke službě Azure SQL Database, obvyk
 4. Kontrola stavu služeb v řídicím panelu. Pokud si myslíte, dojde k oblastnímu výpadku, přečtěte si téma [zotavení z výpadku](sql-database-disaster-recovery.md) pokyny k obnovení do nové oblasti.
 
 ## <a name="next-steps"></a>Další postup
-* [Hledání v dokumentaci v Microsoft Azure](http://azure.microsoft.com/search/documentation/)
-* [Prohlédněte si nejnovější aktualizace ke službě Azure SQL Database](http://azure.microsoft.com/updates/?service=sql-database)
+* [Hledání v dokumentaci v Microsoft Azure](https://azure.microsoft.com/search/documentation/)
+* [Prohlédněte si nejnovější aktualizace ke službě Azure SQL Database](https://azure.microsoft.com/updates/?service=sql-database)
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 * [Přehled vývoje SQL Database](sql-database-develop-overview.md)

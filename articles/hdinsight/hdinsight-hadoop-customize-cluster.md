@@ -2,19 +2,19 @@
 title: Přizpůsobení clusterů HDInsight pomocí skriptových akcí – Azure
 description: Informace o přizpůsobení clusterů HDInsight pomocí skriptových akcí.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/05/2016
-ms.author: jasonh
+ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 6c4652e65f0f320063d989f97a5428510913005b
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 8923dcb4c35bbf90a6f68bd296bb9a862c5ff07d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43105920"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230797"
 ---
 # <a name="customize-windows-based-hdinsight-clusters-using-script-action"></a>Přizpůsobení clusterů HDInsight se systémem Windows pomocí akce skriptu
 **Skript akce** můžete použít k vyvolání [vlastní skripty](hdinsight-hadoop-script-actions.md) během procesu vytváření clusteru pro instalaci dalšího softwaru v clusteru.
@@ -279,7 +279,7 @@ Následující příklad ukazuje, jak nainstalovat Windows založené na cluster
 5. Stisknutím klávesy **F5** spusťte aplikaci.
 
 ## <a name="support-for-open-source-software-used-on-hdinsight-clusters"></a>Podpora pro open source softwaru používaného v clusterech HDInsight
-Služba Microsoft Azure HDInsight je flexibilní platforma, která vám umožní sestavovat aplikace pro velké objemy dat v cloudu s využitím ekosystém open source technologií formátovaných kolem Hadoop. Microsoft Azure poskytuje obecné úroveň podpory pro open source technologie, jak je popsáno v **rozsah podpory** část <a href="http://azure.microsoft.com/support/faq/" target="_blank">podporují nejčastější dotazy k Azure web</a>. Služba HDInsight poskytuje další úroveň podpory pro některé ze součástí, jak je popsáno níže.
+Služba Microsoft Azure HDInsight je flexibilní platforma, která vám umožní sestavovat aplikace pro velké objemy dat v cloudu s využitím ekosystém open source technologií formátovaných kolem Hadoop. Microsoft Azure poskytuje obecné úroveň podpory pro open source technologie, jak je popsáno v **rozsah podpory** část <a href="https://azure.microsoft.com/support/faq/" target="_blank">podporují nejčastější dotazy k Azure web</a>. Služba HDInsight poskytuje další úroveň podpory pro některé ze součástí, jak je popsáno níže.
 
 Existují dva druhy opensourcové komponenty, které jsou k dispozici ve službě HDInsight:
 

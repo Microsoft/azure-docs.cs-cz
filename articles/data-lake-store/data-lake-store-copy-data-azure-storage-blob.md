@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 0cf5ace29dabd3a55524fe38403a07e3916ea7d6
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: 7e218cea543b48371647531cf6d62d8c10a07978
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44390888"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230746"
 ---
 # <a name="copy-data-from-azure-storage-blobs-to-azure-data-lake-storage-gen1"></a>Kopírování dat z úložiště objektů BLOB Azure do Azure Data Lake Storage Gen1
 > [!div class="op_single_selector"]
@@ -26,7 +26,7 @@ ms.locfileid: "44390888"
 >
 >
 
-Poskytuje nástroj příkazového řádku Azure Data Lake Storage Gen1 [AdlCopy](http://aka.ms/downloadadlcopy), zkopírovat data z následujících zdrojů:
+Poskytuje nástroj příkazového řádku Azure Data Lake Storage Gen1 [AdlCopy](https://aka.ms/downloadadlcopy), zkopírovat data z následujících zdrojů:
 
 * Z Azure Storage BLOB do Data Lake Storage Gen1. Nelze použití AdlCopy ke kopírování dat z Data Lake Storage Gen1 do objektů BLOB Azure Storage.
 * Mezi dva účty Azure Data Lake Storage Gen1.
@@ -43,7 +43,7 @@ Je nutné, abyste před zahájením tohoto článku měli tyto položky:
 * **Azure Storage blob** kontejneru s daty.
 * **Účet Azure Data Lake Storage Gen1**. Pokyny k jeho vytvoření najdete v tématu [Začínáme s Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md)
 * **Účet Azure Data Lake Analytics (volitelné)** – viz [Začínáme s Azure Data Lake Analytics](../data-lake-analytics/data-lake-analytics-get-started-portal.md) pokyny o tom, jak vytvořit účet Data Lake Analytics.
-* **Nástroj AdlCopy**. Nainstalujte nástroj AdlCopy z [ http://aka.ms/downloadadlcopy ](http://aka.ms/downloadadlcopy).
+* **Nástroj AdlCopy**. Nainstalujte nástroj AdlCopy z [ http://aka.ms/downloadadlcopy ](https://aka.ms/downloadadlcopy).
 
 ## <a name="syntax-of-the-adlcopy-tool"></a>Syntaxi nástroje pomocí AdlCopy
 Použijte následující syntaxi pro práci s nástrojem AdlCopy

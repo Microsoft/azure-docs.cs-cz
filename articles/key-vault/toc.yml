@@ -19,7 +19,7 @@ items:
     href: quick-create-node.md
 - name: Kurzy
   items:
-  - name: Jak používat Azure Key Vault s webovou aplikací Azure v .NET | Microsoft Docs
+  - name: Jak používat Azure Key Vault s webovou aplikací Azure v .NET
     href: tutorial-net-create-vault-azure-web-app.md
   - name: Čtení tajného kódu ze služby Key Vault
     href: tutorial-web-application-keyvault.md
@@ -140,9 +140,9 @@ items:
     href: http://blogs.technet.com/b/kv/
 - name: Zpětná vazba k produktu
   href: https://feedback.azure.com/forums/906355-azure-key-vault
-ms.openlocfilehash: 23efba1697209c76233cfbf4215d18da1b352eca
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: 99aeae4573e7f49ce7e23794ad8fc32c0faf4687
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50913458"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51299262"

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/16/2018
 ms.author: daveba
-ms.openlocfilehash: 19963edc3742cc5f09ed02249d313728410711c8
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d55eab128c8ad295b09ee4fe54f803330a1cb1b4
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46973488"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51298798"
 ---
 # <a name="create-list-or-delete-a-user-assigned-managed-identity-using-the-azure-cli"></a>Vytvoření seznamu nebo odstranit uživatelem přidělenou spravovanou identitu pomocí Azure CLI
 
@@ -33,9 +33,6 @@ V tomto článku se dozvíte, jak vytvářet, vypsat a odstranit uživatelsky p�
 
 - Pokud nejste obeznámeni s spravovaných identit pro prostředky Azure, podívejte se [oddílu přehled](overview.md). **Nezapomeňte si přečíst [rozdíl mezi systém přiřadil a uživatelsky přiřazené identity spravované](overview.md#how-does-it-work)**.
 - Pokud ještě nemáte účet Azure, [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než budete pokračovat.
-- Váš účet k provádění operací správy v tomto článku, potřebuje následující přiřazení rolí:
-    - [Spravovaná identita Přispěvatel](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) role k vytvoření, čtení (list), aktualizovat a odstranit spravované identity přiřazené uživateli.
-    - [Operátor Identity spravované](/azure/role-based-access-control/built-in-roles#managed-identity-operator) role ke čtení vlastnosti uživatelsky přiřazené spravovanou identitu (seznam).
 - Spuštění ukázkové skripty rozhraní příkazového řádku, máte tři možnosti:
     - Použití [Azure Cloud Shell](../../cloud-shell/overview.md) z portálu Azure portal (viz další část).
     - Použijte vložené Azure Cloud Shell pomocí "Vyzkoušet" tlačítka, nachází v pravém horním rohu každý blok kódu.
@@ -45,7 +42,9 @@ V tomto článku se dozvíte, jak vytvářet, vypsat a odstranit uživatelsky p�
 
 ## <a name="create-a-user-assigned-managed-identity"></a>Vytvoření spravované identity přiřazené uživatelem 
 
-Pro vytvoření uživatelsky přiřazené identity spravované, použijte [vytvoření az identity](/cli/azure/identity#az-identity-create) příkazu. `-g` Parametr určuje skupinu prostředků, kde k vytvoření uživatelsky přiřazené spravovanou identitu a `-n` parametr určuje její název. Nahradit `<RESOURCE GROUP>` a `<USER ASSIGNED IDENTITY NAME>` parametr hodnoty vlastními hodnotami:
+Pro vytvoření uživatelsky přiřazené identity spravované, musí váš účet [Přispěvatel spravovaných identit](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) přiřazení role.
+
+Použití [vytvoření az identity](/cli/azure/identity#az-identity-create) příkaz pro vytvoření uživatel přiřazenou se identita spravované. `-g` Parametr určuje skupinu prostředků, kde k vytvoření uživatelsky přiřazené spravovanou identitu a `-n` parametr určuje její název. Nahradit `<RESOURCE GROUP>` a `<USER ASSIGNED IDENTITY NAME>` parametr hodnoty vlastními hodnotami:
 
 [!INCLUDE [ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
 
@@ -53,6 +52,8 @@ Pro vytvoření uživatelsky přiřazené identity spravované, použijte [vytvo
 az identity create -g <RESOURCE GROUP> -n <USER ASSIGNED IDENTITY NAME>
 ```
 ## <a name="list-user-assigned-managed-identities"></a>Seznam uživatelsky přiřazené spravované identity
+
+Do seznamu/čtení uživatelsky přiřazené spravovanou identitu, musí váš účet [operátor spravovaných identit](/azure/role-based-access-control/built-in-roles#managed-identity-operator) nebo [Přispěvatel spravovaných identit](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) přiřazení role.
 
 Seznam uživatelsky přiřazené identity spravované, použijte [seznam identit az](/cli/azure/identity#az-identity-list) příkazu. Nahraďte `<RESOURCE GROUP>` s vlastní hodnotou:
 
@@ -64,6 +65,8 @@ V odpovědi json uživatelsky přiřazené identity spravované mají `"Microsof
 `"type": "Microsoft.ManagedIdentity/userAssignedIdentities"`
 
 ## <a name="delete-a-user-assigned-managed-identity"></a>Odstranění spravované identity přiřazené uživateli
+
+Pokud chcete odstranit spravovanou identitu uživatele přiřazeny, musí váš účet [Přispěvatel spravovaných identit](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) přiřazení role.
 
 Chcete-li odstranit spravovanou identitu uživatele přiřazeny, použijte [az identity odstranit](/cli/azure/identity#az-identity-delete) příkazu.  Parametr - n Určuje její název a -g parametr určuje skupinu prostředků, kde byl vytvořen uživatelem přidělenou spravovaná identita. Nahradit `<USER ASSIGNED IDENTITY NAME>` a `<RESOURCE GROUP>` parametry hodnoty vlastními hodnotami:
 

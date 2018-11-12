@@ -9,12 +9,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/20/2017
 ms.author: cshoe
-ms.openlocfilehash: b77b035d829218d7416da4c6d57919e75b278e02
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
-ms.translationtype: HT
+ms.openlocfilehash: 3932ad18ceedb36a4a8c1f9fc78eb8aef27a8a4f
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51288896"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51301012"
 ---
 # <a name="microsoft-graph-bindings-for-azure-functions"></a>Vazeb Microsoft Graphu, Azure functions
 
@@ -834,7 +834,7 @@ Tato část obsahuje následující témata:
 * [Příklad](#outlook-output---example)
 * [Atributy](#outlook-output---attributes)
 * [Konfigurace](#outlook-output---configuration)
-* [Použití](#outlook-outnput---usage)
+* [Použití](#outlook-output---usage)
 
 ### <a name="outlook-output---example"></a>Výstup aplikace Outlook – příklad
 

@@ -128,6 +128,8 @@ items:
       href: directory-assign-admin-roles.md
     - name: Zobrazení a přiřazení rolí
       href: directory-manage-roles-portal.md
+    - name: Role s nejnižšími oprávněními podle úkolu
+      href: roles-delegate-by-task.md
     - name: Zabezpečení role správce
       items:
       - name: Plánování zabezpečení rolí
@@ -159,9 +161,9 @@ items:
     href: https://docs.microsoft.com/cli/azure/ad
   - name: Azure AD PowerShell pro Graph
     href: https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0
-ms.openlocfilehash: a9c4a93bfea82ff205d483dfe9a4ed189400b81f
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 23625fb345d3d27b5966be3a193e21b46408c525
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50241510"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51514210"

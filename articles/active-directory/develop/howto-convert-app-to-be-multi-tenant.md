@@ -17,12 +17,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: justhu, elisol
 ms.custom: aaddev
-ms.openlocfilehash: abca81e0db565c6c84d9be9df07b46c8c338030b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: MT
+ms.openlocfilehash: 61238482339250e45be36162e7eef252f78c74b1
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46960273"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51288981"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>Postupy: přihlášení jakéhokoli uživatele Azure Active Directory pomocí vzoru aplikace s více tenanty
 
@@ -46,9 +46,9 @@ Podívejme se na každý krok v podrobností. Můžete také přejít přímo na
 
 Registrace webové aplikace nebo rozhraní API ve službě Azure AD jsou ve výchozím nastavení jednoho tenanta. Můžete provést registraci více tenantů hledáním **s bezproblémovým** zapnout **vlastnosti** podokně Registrace vaší aplikace v [webu Azure portal] [ AZURE-portal] a nastavíte ho na **Ano**.
 
-Dřív, než aplikace může být více tenantů, vyžaduje Azure AD aplikace být globálně jedinečný identifikátor URI ID aplikace. Identifikátor URI ID aplikace je jedním ze způsobů, které aplikace je definována ve zprávách protokolu. Pro jednoho tenanta aplikaci je dostatečná pro identifikátor URI ID aplikace být jedinečný v rámci tohoto tenanta. Pro aplikaci s více tenanty musí být globálně jedinečný, Azure AD, najdete tuto aplikaci ve všech tenantech. Globální jedinečnost vynucuje vyžadováním identifikátor URI ID aplikace, aby název hostitele, který odpovídá ověřené domény tenanta Azure AD. 
+Dřív, než aplikace může být více tenantů, vyžaduje Azure AD aplikace být globálně jedinečný identifikátor URI ID aplikace. Identifikátor URI ID aplikace je jedním ze způsobů, kterými se může aplikace ve zprávách protokolu identifikovat. U aplikace s jedním tenantem stačí, když bude identifikátor URI ID aplikace jedinečný v rámci daného tenanta. U aplikace s více tenanty musí být globálně jedinečný, aby služba Azure AD aplikaci našla mezi všemi tenanty. Globální jedinečnost se vynucuje požadavkem, aby Identifikátor URI ID aplikace obsahoval název hostitele, který odpovídá ověřené doméně tenanta Azure AD. 
 
-Ve výchozím nastavení aplikace vytvořené prostřednictvím webu Azure portal mají globálně jedinečný identifikátor ID URI aplikace nastavte na vytváření aplikací, ale tuto hodnotu můžete změnit. Například pokud byl název tenanta contoso.onmicrosoft.com pak platný identifikátor URI ID aplikace by `https://contoso.onmicrosoft.com/myapp`. Pokud váš tenant měl ověřené domény `contoso.com`, pak by také platný identifikátor URI ID aplikace `https://contoso.com/myapp`. Pokud identifikátor URI ID aplikace není postupovat podle tohoto vzoru, nastavení aplikace jako více tenantů se nezdaří.
+Ve výchozím nastavení aplikace vytvořené prostřednictvím webu Azure portal mají globálně jedinečný identifikátor ID URI aplikace nastavte na vytváření aplikací, ale tuto hodnotu můžete změnit. Například pokud byl název tenanta contoso.onmicrosoft.com pak platný identifikátor URI ID aplikace by `https://contoso.onmicrosoft.com/myapp`. Pokud váš tenant měl ověřené domény `contoso.com`, pak by také platný identifikátor URI ID aplikace `https://contoso.com/myapp`. Pokud identifikátor URI ID aplikace nepoužívá tento vzor, nastavení aplikace jako aplikace s více tenanty se nezdaří.
 
 > [!NOTE] 
 > Registrace nativního klienta systému stejně jako [aplikace v2.0](./active-directory-appmodel-v2-overview.md) jsou ve výchozím nastavení s více tenanty. Není nutné provádět žádnou akci, aby tyto aplikace registrace více tenantů.
@@ -201,8 +201,8 @@ V tomto článku jste zjistili, jak vytvořit aplikaci, která dokáže přihlá
 [AAD-Samples-MT]: https://azure.microsoft.com/documentation/samples/?service=active-directory&term=multitenant
 [AAD-Why-To-Integrate]: ./active-directory-how-to-integrate.md
 [AZURE-portal]: https://portal.azure.com
-[MSFT-Graph-overview]: https://graph.microsoft.io/en-us/docs/overview/overview
-[MSFT-Graph-permision-scopes]: https://developer.microsoft.com/en-us/graph/docs/concepts/permissions_reference
+[MSFT-Graph-overview]: https://developer.microsoft.com/graph/docs/overview/overview
+[MSFT-Graph-permision-scopes]: https://developer.microsoft.com/graph/docs/concepts/permissions_reference
 
 <!--Image references-->
 [AAD-Sign-In]: ./media/active-directory-devhowto-multi-tenant-overview/sign-in-with-microsoft-light.png
