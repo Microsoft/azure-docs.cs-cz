@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/25/2018
 ms.author: johnkem
 ms.component: activitylog
-ms.openlocfilehash: af8248bb68068c20d62a2d8cc1e86fd9997a740c
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 41965c4a498cfa4c1f0dfefaf7615e43083eb94c
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50962959"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51011829"
 ---
 # <a name="stream-the-azure-activity-log-to-event-hubs"></a>Stream protokolů aktivit Azure do služby Event Hubs
 Můžete Streamovat [protokolu aktivit Azure](monitoring-overview-activity-logs.md) téměř v reálném čase pro libovolné aplikace buď:
@@ -39,10 +39,10 @@ K aktualizaci profilu protokolu aktivit protokolu zahrnout streamování, musí 
 ### <a name="via-the-azure-portal"></a>Prostřednictvím portálu Azure portal
 1. Přejděte **protokolu aktivit** části pomocí **všechny služby** hledání na levé straně na portálu.
    
-   ![Výběr protokolu aktivit ze seznamu služeb na portálu](./media/monitoring-stream-activity-logs-event-hubs/activity.png)
-2. Vyberte **exportovat** tlačítko v horní části v protokolu.
+   ![Výběr protokolu aktivit ze seznamu služeb na portálu](./media/monitoring-stream-activity-logs-event-hubs/activity-logs-portal-navigate-v2.png)
+2. Vyberte **exportovat do centra událostí** tlačítko v horní části v protokolu.
    
-   ![Tlačítko pro export na portálu](./media/monitoring-stream-activity-logs-event-hubs/export.png)
+   ![Tlačítko pro export na portálu](./media/monitoring-stream-activity-logs-event-hubs/activity-logs-portal-export-v2.png)
 
    Všimněte si, že nastavení filtru, který jste použili při zobrazení protokolu aktivit do předchozího zobrazení mít vliv na Exportovat nastavení. Ty jsou určeny pouze pro filtrování, co se zobrazí při procházení váš protokol aktivit na portálu.
 3. V části, která se zobrazí, vyberte **všech oblastech**. Nesmí být zvolen konkrétní oblasti.

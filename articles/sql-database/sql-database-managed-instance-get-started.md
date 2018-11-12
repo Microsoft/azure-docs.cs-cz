@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: Carlrab
 manager: craigg
 ms.date: 09/23/2018
-ms.openlocfilehash: c0c249ffe426e86049024122d9cbf786bb677220
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: ebdb78a762aa212566395734804b9c021e84e6cd
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47160634"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50140870"
 ---
 # <a name="create-an-azure-sql-database-managed-instance"></a>Vytvoření spravované instance Azure SQL Database
 
@@ -89,3 +89,4 @@ Jakmile úspěšně dokončíte nasazení, zkontrolujte vytvořené prostředky 
   - Rychlý start o připojení ke spravované instanci z virtuálního počítače Azure najdete v článku o [konfiguraci připojení virtuálního počítače Azure](sql-database-managed-instance-configure-vm.md).
   - Rychlý start s návodem, jak se z místního klientského počítače připojit ke spravované instanci pomocí připojení typu point-to-site, najdete v článku o [konfiguraci připojení typu point-to-site](sql-database-managed-instance-configure-p2s.md).
 - Pokud chcete obnovit stávající databázi SQL Serveru z místní do spravované instance, můžete k migraci použít [službu Azure Database Migration Service (DMS)](../dms/tutorial-sql-server-to-managed-instance.md) a obnovit zálohu databáze nebo můžete k obnovení zálohy databáze použít [příkaz T-SQL RESTORE](sql-database-managed-instance-get-started-restore.md).
+- Informace o pokročilém monitorování výkonu databáze spravované instance s využitím integrovaných inteligentních funkcí pro řešení potíží najdete v tématu [Monitorování služby Azure SQL Database pomocí Azure SQL Analytics](../log-analytics/log-analytics-azure-sql.md).

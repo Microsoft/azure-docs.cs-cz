@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/03/2018
 ms.author: v-daljep
 ms.component: ''
-ms.openlocfilehash: f43db05cac03d090116d227536e343c4a7bb0df4
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: b20a142007b3422d071de47410f4c9cdd1ff62a7
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50958863"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51006732"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Monitorování Azure SQL Database pomocí Azure SQL Analytics (Preview)
 
@@ -192,7 +192,7 @@ Automatické výstrahy v řešení je založena na psaní dotazu Log Analytics, 
 
 ### <a name="creating-alerts-for-azure-sql-database"></a>Vytvoření výstrah pro službu Azure SQL Database
 
-Můžete snadno [vytvářet upozornění](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md) s daty pocházející z prostředků Azure SQL Database. Tady jsou některé užitečné [prohledávání protokolů](log-analytics-log-search.md) dotazy, které můžete používat upozornění protokolu:
+Můžete snadno [vytvářet upozornění](../monitoring-and-diagnostics/alert-metric.md) s daty pocházející z prostředků Azure SQL Database. Tady jsou některé užitečné [prohledávání protokolů](log-analytics-queries.md) dotazy, které můžete používat upozornění protokolu:
 
 *Vysoké využití procesoru pro službu Azure SQL Database*
 
@@ -289,6 +289,6 @@ Při řešení používat, platí spotřeby telemetrická data diagnostiky nad v
 
 ## <a name="next-steps"></a>Další postup
 
-- Použití [prohledávání protokolů](log-analytics-log-search.md) v Log Analytics k zobrazení podrobných dat Azure SQL.
+- Použití [prohledávání protokolů](log-analytics-queries.md) v Log Analytics k zobrazení podrobných dat Azure SQL.
 - [Vytvářejte vlastní řídicí panely](log-analytics-dashboards.md) zobrazení dat Azure SQL.
 - [Vytvořit upozornění](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md) Pokud dojde k určité událostem Azure SQL.

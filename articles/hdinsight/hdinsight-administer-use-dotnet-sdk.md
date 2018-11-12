@@ -1,22 +1,22 @@
 ---
-title: Správa clusterů Hadoop v HDInsight pomocí sady .NET SDK – Azure
-description: Zjistěte, jak k provádění úloh správy pro clustery Hadoop v HDInsight pomocí sady HDInsight .NET SDK.
+title: Správa clusterů Apache Hadoop v HDInsight pomocí sady .NET SDK – Azure
+description: Zjistěte, jak k provádění úloh správy pro clustery systému Apache Hadoop v HDInsight pomocí sady HDInsight .NET SDK.
 services: hdinsight
 ms.reviewer: jasonh
-author: jasonwhowell
+author: hrasheed-msft
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
-ms.author: jasonh
-ms.openlocfilehash: 0d8238d5f1dca15aaba0f8f5a6580df97164006a
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.author: hrasheed
+ms.openlocfilehash: a7c06d53e3823bd81707608f566f581fa44638fc
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43110795"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51037752"
 ---
-# <a name="manage-hadoop-clusters-in-hdinsight-by-using-net-sdk"></a>Správa clusterů Hadoop v HDInsight pomocí sady .NET SDK
+# <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-net-sdk"></a>Spravovat clustery systému Apache Hadoop v HDInsight pomocí sady .NET SDK
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
 
 Další informace o správě clusterů HDInsight pomocí [HDInsight.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight).
@@ -142,12 +142,12 @@ Funkce škálování clusteru umožňuje změnit počet uzlů pracovního proces
 
 Dopad Změna počtu datových uzlů pro každý typ clusteru podporuje HDInsight:
 
-* Hadoop
+* Apache Hadoop
   
     Bezproblémově můžete zvýšit počet pracovních uzlů v clusteru Hadoop, na kterém běží bez dopadu na všechny úlohy čekající na vyřízení nebo spuštěné. Nové úlohy můžete odeslat také když probíhá operace. Selhání v rámci operace škálování jsou zpracovány bez výpadku v tak, aby cluster zůstane vždy ve funkčním stavu.
   
     Pokud je Hadoop cluster je kapacitu vertikálně snížit snížením počtu datových uzlů, jsou restartovat některé ze služeb v clusteru. To způsobí, že všechny spuštěné a čekající úlohy selhání po dokončení operace škálování. Můžete, ale neúspěšné úlohy po dokončení operace.
-* HBase
+* Apache HBase
   
     Bezproblémově můžete přidat nebo odebrat uzly do clusteru HBase během jejího běhu. Oblastní servery jsou automaticky rovnoměrně rozdělen do několika minut od dokončení operace škálování. Oblastní servery však můžete také ručně vyvážit změnou přihlášení k hlavnímu uzlu clusteru a spustíte tento příkaz z okna příkazového řádku:
   
@@ -156,7 +156,7 @@ Dopad Změna počtu datových uzlů pro každý typ clusteru podporuje HDInsight
     >hbase shell
     >balancer
     ```
-* Storm
+* Apache Storm
   
     Bezproblémově můžete přidat nebo odebrat datových uzlů do clusteru Storm během jejího běhu. Ale po úspěšném dokončení operace škálování, budete muset vyrovnat topologie.
   
@@ -192,9 +192,9 @@ Clustery HDInsight mají následující webové služby HTTP (mít všechny tyto
 
 * ODBC
 * JDBC
-* Ambari
-* Oozie
-* Templeton
+* Apache Ambari
+* Apache Oozie
+* Apache Templeton
 
 Tyto služby jsou ve výchozím nastavení oprávnění pro přístup. Vám může k nim odvolat/udělit přístup. Chcete-li odebrat:
 
@@ -246,19 +246,19 @@ foreach (var key in results.Configuration.Keys)
 
 Zobrazit [ukázky spouštění Hadoop MapReduce v HDInsight](hadoop/apache-hadoop-run-samples-linux.md).
 
-**K odesílání úloh Hive** 
+**Odesílat úlohy Apache Hive** 
 
 Zobrazit [spouštění dotazů Hive pomocí sady .NET SDK](hadoop/apache-hadoop-use-hive-dotnet-sdk.md).
 
-**Odeslání úlohy Pig**
+**Odesílat úlohy Apache Pig**
 
 Zobrazit [úlohy Pig spustit pomocí sady .NET SDK](hadoop/apache-hadoop-use-pig-dotnet-sdk.md).
 
-**K odesílání úloh Sqoop**
+**Odesílat úlohy Apache Sqoop**
 
 Zobrazit [použití nástroje Sqoop se HDInsight](hadoop/apache-hadoop-use-sqoop-dotnet-sdk.md).
 
-**K odesílání úloh Oozie**
+**Odesílat úlohy Apache Oozie**
 
 Zobrazit [použití Oozie s Hadoopem k definování a spuštění workflowu v HDInsight](hdinsight-use-oozie-linux-mac.md).
 

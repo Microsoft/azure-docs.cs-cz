@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: cc7bcefe43eed524f50fcad09d7fb31a80d22b83
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: e06b9ff2134c0bd1fb1ee8515827e9e8c06a3108
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50025799"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51008466"
 ---
 # <a name="perform-cross-resource-log-searches-in-log-analytics"></a>Provedení prohledávání protokolů napříč prostředky ve službě Log Analytics  
 
@@ -38,7 +38,7 @@ Identifikace pracovní prostor může být jedním z několika způsobů:
 
 * Název prostředku – je popisný název pracovního prostoru, někdy označovány jako *název komponenty*. 
 
-    `workspace("contosoretail").Update | count`
+    `workspace("contosoretail-it").Update | count`
  
     >[!NOTE]
     >Identifikace podle názvu pracovního prostoru předpokládá jedinečnost napříč všemi předplatnými přístupné. Pokud máte více aplikací se zadaným názvem, že se dotaz nezdaří z důvodu nejednoznačnosti. V takovém případě musíte použít jeden z další identifikátory.
@@ -59,7 +59,7 @@ Identifikace pracovní prostor může být jedním z několika způsobů:
 
     Příklad:
     ``` 
-    workspace("/subscriptions/e427519-5645-8x4e-1v67-3b84b59a1985/resourcegroups/ContosoAzureHQ/providers/Microsoft.OperationalInsights/workspaces/contosoretail").Update | count
+    workspace("/subscriptions/e427519-5645-8x4e-1v67-3b84b59a1985/resourcegroups/ContosoAzureHQ/providers/Microsoft.OperationalInsights/workspaces/contosoretail-it").Update | count
     ```
 
 ### <a name="identifying-an-application"></a>Určení aplikace

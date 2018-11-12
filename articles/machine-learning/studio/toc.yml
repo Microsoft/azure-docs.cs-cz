@@ -4,12 +4,16 @@ items:
 - name: Přehled
   items:
   - name: Machine Learning Studio
+    displayName: overview
     href: what-is-ml-studio.md
   - name: Možnosti sady ML Studio
+    displayName: overview
     href: studio-overview-diagram.md
   - name: Základy sady ML Studio (infografika)
+    displayName: algorithm, algorithms
     href: basics-infographic-with-algorithm-examples.md
   - name: Nejčastější dotazy
+    displayName: FAQ
     href: faq.md
   - name: Co je nového?
     href: whats-new.md
@@ -17,6 +21,7 @@ items:
 - name: Začínáme
   items:
   - name: Vytvoření prvního experimentu
+    displayName: quickstart
     href: create-experiment.md
   - name: Ukázka podrobného postupu
     items:
@@ -31,8 +36,10 @@ items:
     - name: 4. Trénování a vyhodnocení
       href: walkthrough-4-train-and-evaluate-models.md
     - name: 5. Nasazení webové služby
+      displayName: publish
       href: walkthrough-5-publish-web-service.md
     - name: 6. Přístup k webové službě
+      displayName: consume
       href: walkthrough-6-access-web-service.md
   - name: Vědecké zpracování dat pro začátečníky
     items:
@@ -63,6 +70,7 @@ items:
       - name: Nasazení pomocí architektury ARM
         href: deploy-with-resource-manager-template.md
       - name: Zobrazení a odstranění dat účtu sady Studio
+        displayName: export
         href: export-delete-personal-data-dsr.md
   - name: Získání dat a jejich pochopení
     items:
@@ -77,6 +85,7 @@ items:
       - name: Z experimentu
         href: import-data-from-an-experiment.md
       - name: Použití místního SQL
+        displayName: on-premises
         href: use-data-from-an-on-premises-sql-server.md
   - name: Vývoj modelů
     items:
@@ -87,6 +96,7 @@ items:
       - name: Správa iterací experimentu
         href: manage-experiment-iterations.md
       - name: Vytváření modelů s využitím PowerShellu
+        displayName: endpoint, endpoints
         href: create-models-and-endpoints-with-powershell.md
       - name: Výběr algoritmů
         items:
@@ -103,6 +113,7 @@ items:
         - name: Vyhodnocení výkonu
           href: evaluate-model-performance.md
         - name: Optimalizace parametrů
+          displayName: optimization
           href: algorithm-parameters-optimize.md
         - name: Interpretace výsledků
           href: interpret-model-results.md
@@ -117,20 +128,25 @@ items:
         - name: Spouštění skriptů Pythonu
           href: execute-python-scripts.md
   - name: Zprovoznění modelů
+    displayName: deploy
     items:
     - name: Přehled
+      displayName: deploy, consume, web service
       href: deploy-consume-web-service-guide.md
     - name: Modely nasazení
       items:
       - name: Nasazení webové služby
+        displayName: publish
         href: publish-a-machine-learning-web-service.md
       - name: Jak to funguje
         href: model-progression-experiment-to-web-service.md
       - name: Příprava nasazení
         href: convert-training-experiment-to-scoring-experiment.md
       - name: Použití externích dat
+        displayName: import, export
         href: web-services-that-use-import-export-modules.md
       - name: Nasazení v několika oblastech
+        displayName: multiple regions
         href: how-to-deploy-to-multiple-regions.md
       - name: Použití parametrů webové služby
         href: web-service-parameters.md
@@ -141,6 +157,7 @@ items:
       - name: Použití portálu webových služeb
         href: manage-new-webservice.md
       - name: Správa s využitím rozhraní API
+        displayName: endpoint, endpoints
         href: manage-web-service-endpoints-using-api-management.md
       - name: Vytváření koncových bodů
         href: create-endpoint.md
@@ -238,9 +255,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-machine-learning
   - name: Videa
     href: https://azure.microsoft.com/resources/videos/index/?services=machine-learning
-ms.openlocfilehash: b7c5cea35e8b1441bc8a08e8d8582141cd430868
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 77caf4b0144b8c7d7a7a48053d55864bfa9ae286
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47431521"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51287587"

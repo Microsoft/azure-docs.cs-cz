@@ -12,21 +12,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/08/2018
+ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 17fd9907a5e3e3f4485b35c8e74d6e46fecb7fda
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 01c8f864d25a35d42abcd624e31728f4fee0d80c
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44303502"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51012067"
 ---
 # <a name="monitor-identity-and-access-in-azure-security-center-preview"></a>Monitorování identity a přístupu v Azure Security Center (Preview)
 Tento článek vám pomůže používat Azure Security Center k monitorování identit a aktivit přístupu uživatelů.
 
 > [!NOTE]
 > Monitorování identity a přístupu je ve verzi preview a je k dispozici jenom na úrovni Standard služby Security Center. Další informace o cenových úrovních služby Security Center najdete na stránce s [cenami](security-center-pricing.md).
->
 >
 
 Identita by měla být základní „řídicí plochou“ vaší organizace a její ochrana je tou nejvyšší prioritou. Bezpečnostní hraniční sítě se vyvinula z hraniční sítě do hraniční identity. Zabezpečení bude méně o ochraně sítě a další informace o ochrana vašich dat, jakož i Správa zabezpečení aplikací a uživatelů. V současné době se ale čím dál víc dat a aplikací přesouvá do cloudu a novým perimetrem se proto stává identita.
@@ -107,18 +106,25 @@ V části **předplatná**, je seznam předplatných. První sloupec uvádí př
 ## <a name="recommendations"></a>Doporučení
 V následující tabulce použijte jako odkaz vám pomůžou pochopit dostupné doporučení identita a přístup a každý z nich, co dělá když je použijete.
 
-| Doporučení | Popis |
-| --- | --- |
-| Určení více než jednoho vlastníka předplatného | Doporučuje se určit více než jednoho vlastníka předplatného abyste měli redundance přístup správce. |
-| Určit vlastníky až 3 v rámci předplatného | Doporučuje se určit méně než 3 na vlastníky těchto předplatných za účelem snížení riziko porušení zabezpečení ohroženým uživatelem. |
-| Povolte MFA pro účty s oprávněními vlastníka v rámci předplatného | Doporučuje povolit Vícefaktorové ověřování (MFA) pro všechny účty předplatných s oprávněními správce nedošlo k porušení zabezpečení účtů nebo prostředků. |
-| Povolte MFA pro účty s oprávněním pro zápis v předplatném | Doporučuje povolit Vícefaktorové ověřování (MFA) pro všechny účty předplatných s oprávněními pro zápis do nedošlo k porušení zabezpečení účtů nebo prostředků. |
-| Povolte MFA pro účty s oprávněním pro čtení v rámci předplatného | Doporučuje povolit Vícefaktorové ověřování (MFA) pro všechny účty předplatných s oprávněními pro čtení k nedošlo k porušení zabezpečení účtů nebo prostředků. |
-| Z předplatného odebrat externí účty s oprávněním pro čtení | Doporučuje, aby nedocházelo k nemonitorovanému přístupu odebrat externí účty s oprávněními pro čtení z předplatného. |
-| Odeberte z předplatného externí účty s oprávněním pro zápis | Doporučuje, aby nedocházelo k nemonitorovanému přístupu odebrat externí účty s oprávněními pro zápis z předplatného. |
-| Z předplatného odebrat externí účty s oprávněními vlastníka | Doporučuje, aby nedocházelo k nemonitorovanému přístupu odebrat externí účty s oprávněními vlastníka ze svého předplatného. |
-| Odeberte zastaralé účty z předplatného | Doporučuje odebrat zastaralé účty z vašich předplatných. |
-| Z předplatného odebrat zastaralé účty s oprávněními vlastníka | Doporučuje odebrat zastaralé účty s oprávněními vlastníka z vašich předplatných. |
+|Typ prostředku|Bezpečnostní skóre|Doporučení|Popis|
+|----|----|----|----|
+|Předplatné|50|Povolte MFA pro aplikace pro správu Azure účty s oprávněními vlastníka v rámci předplatného|Povolení služby Multi-Factor Authentication (MFA) pro všechny účty předplatných s oprávněními správce nedošlo k porušení zabezpečení účtů nebo prostředků.|
+|Předplatné|50|Povolit službu security center ve vašich předplatných |Povolit službu Security center na všechna předplatná pro rozšířenou detekci hrozeb, JIT, seznamu povolených aplikací a pokročilé doporučení |
+|Předplatné|50|Povolit security center úrovně standard na předplatná |Povolte službu Security center úrovně Standard na všechna předplatná pro rozšířenou detekci hrozeb, JIT, seznamu povolených aplikací a pokročilé doporučení.|
+|Předplatné|40|Povolte MFA pro aplikace pro správu Azure účty s oprávněním pro zápis v předplatném|Povolení služby Multi-Factor Authentication (MFA) pro všechny účty předplatných s oprávněními pro zápis do nedošlo k porušení zabezpečení účtů nebo prostředků.|
+|Předplatné|30|Z předplatného odebrat externí účty s oprávněními vlastníka|Z předplatného odeberte externí účty s oprávněními vlastníka, aby nedocházelo k nemonitorovanému přístupu. |
+|Předplatné|30|Povolte MFA pro aplikace pro správu Azure účty s oprávněním pro čtení v rámci předplatného|Povolení služby Multi-Factor Authentication (MFA) pro všechny účty předplatných s oprávněními pro čtení k nedošlo k porušení zabezpečení účtů nebo prostředků.|
+|Předplatné|25|Odeberte z předplatného externí účty s oprávněním pro zápis|Z předplatného odeberte externí účty s oprávněním pro zápis, aby nedocházelo k nemonitorovanému přístupu. |
+|Předplatné|20|Z předplatného odebrat zastaralé účty s oprávněními vlastníka|Odeberte zastaralé účty s oprávněními vlastníka z vašich předplatných.|
+|Předplatné|5|Odeberte zastaralé účty z předplatného|Odeberte zastaralé účty z vašich předplatných chcete povolit přístup pouze aktuálního uživatele. |
+|Předplatné|5|Určení více než jednoho vlastníka předplatného|Pokud chcete mít redundance přístupu správce určete více než jednoho vlastníka předplatného.|
+|Předplatné|5|Určit vlastníky až 3 v rámci předplatného|Pokud chcete snížit riziko porušení zabezpečení ohroženým uživatelem, určete méně než 3 na vlastníky těchto předplatných.|
+|Trezor klíčů|5|Povolení diagnostických protokolů v Key Vault|Povolení protokolů a uchovávat až po roce. To umožňuje znovu vytvořit záznamy aktivit za účelem šetření, když dojde k incidentu zabezpečení nebo dojde k ohrožení vaší sítě. |
+|Předplatné|15|Z předplatného odebrat externí účty s oprávněním pro čtení|Z předplatného odeberte externí účty s oprávněními pro čtení, aby nedocházelo k nemonitorovanému přístupu.|
+|Předplatné|1|Poskytnutí podrobností kontaktů zabezpečení|Zadejte kontaktní informace o zabezpečení pro každé z vašich předplatných. Kontaktní údaje je e-mailovou adresu a telefonní číslo. Informace, používá se vás kontaktovat, pokud náš tým zabezpečení zjistí ohrožení vašich prostředků|
+
+> ! [POZNÁMKA] Pokud jste nevytvořili zásady podmíněného přístupu, který vyžaduje vícefaktorové ověřování, ale má nastavení vyloučení, posouzení zabezpečení Center MFA doporučení bere v úvahu zásady nedodržují předpisy, protože umožňuje některé uživatele k přihlášení do Azure bez MFA.
+>
 
 ## <a name="next-steps"></a>Další postup
 Další informace o doporučení, které se vztahují na jiné typy prostředků Azure, naleznete v následujících tématech:

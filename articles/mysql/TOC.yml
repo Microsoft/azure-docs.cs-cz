@@ -94,6 +94,8 @@ items:
       href: concepts-compatibility.md
     - name: Vývoj aplikací
       href: concepts-database-application-development.md
+    - name: Odolnost připojení
+      href: concepts-connectivity.md
   - name: Replikace
     items:
     - name: Replikace příchozích dat
@@ -158,6 +160,16 @@ items:
       href: howto-data-in-replication.md
     - name: Vytváření replik pro čtení – Azure Portal
       href: howto-read-replicas-portal.md
+    - name: Vytváření replik pro čtení – Azure CLI
+      href: howto-read-replicas-cli.md
+  - name: Řešení potíží
+    items:
+    - name: Řešení chyb připojení
+      href: howto-troubleshoot-common-connection-issues.md
+    - name: Řešení potíží s výkonem dotazů
+      href: howto-troubleshoot-query-performance.md
+    - name: Použití zobrazení ve schématu sys
+      href: howto-troubleshoot-sys-schema.md
   - name: Rozšířená ochrana před internetovými útoky
     items:
     - name: portál Azure
@@ -214,9 +226,9 @@ items:
     href: partners-migration-mysql.md
   - name: Průvodce migrací databází
     href: https://datamigration.microsoft.com/
-ms.openlocfilehash: 5e81e536ec941d7822dae39ecf5548a21b2e7a5d
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 39c05df6c48a1a6fe42c1c2e75cbc79441e42bc5
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49986555"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51287510"

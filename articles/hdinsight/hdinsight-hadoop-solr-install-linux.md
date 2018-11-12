@@ -2,19 +2,19 @@
 title: Použití akce skriptu k Linuxovým systémem HDInsight – Azure nainstalovat Solr
 description: Zjistěte, jak nainstalovat Solr na clusterech Hadoop využívající systém Linux HDInsight pomocí skriptových akcí.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.author: jasonh
-ms.openlocfilehash: 205983344be8ae5bbe566a208ceb862b2e93cb8d
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.author: hrasheed
+ms.openlocfilehash: 1c8c63e10e62af60e09af729b115cc675dae7205
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43093093"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51009398"
 ---
 # <a name="install-and-use-solr-on-hdinsight-hadoop-clusters"></a>Instalace a použití Solru na clusterech HDInsight Hadoop
 
@@ -70,7 +70,7 @@ Pokud chcete vytvořit cluster, který se má nainstalovat Solr, použijte postu
 > [!IMPORTANT]
 > Kroky v této části ukazují základní funkce Solr. Další informace o použití Solr, najdete v článku [webu Apache Solr](http://lucene.apache.org/solr/).
 
-### <a name="index-data"></a>Index dat.
+### <a name="index-data"></a>Indexování dat
 
 Pomocí následujícího postupu můžete přidat do Solr příkladu a pak ji dotazujte:
 

@@ -13,28 +13,97 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/18/2018
+ms.date: 10/25/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 40ac3ca92c65607df056b883608dde60d816143e
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: 9c946c9b7d041b1d08dadc9f7bd830d4a1d658ad
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47181769"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50250865"
 ---
 # <a name="hybrid-identity-and-microsofts-identity-solutions"></a>Hybridní identita a řešení pro správu identit od Microsoftu
-Firmy a korporace v současné době stále více používají kombinaci místních a cloudových aplikací.  Když máte aplikace, které provozujete místně a v cloudu, a uživatele, kteří k těmto aplikacím potřebují přístup, začíná to být náročné.
+Řešení hybridní identity v [Microsoft Azure Active Directory (Azure AD)](../../active-directory/fundamentals/active-directory-whatis.md) umožňují synchronizovat místní objekty adresářové služby s Azure AD a zachovat přitom místní správu uživatelů. Při plánování synchronizace místní služby Windows Server Active Directory s Azure AD je nejprve potřeba se rozhodnout, jestli chcete používat synchronizovanou identitu nebo federovanou identitu. 
 
-Řešení pro správu identit od Microsoftu pokrývá místní i cloudové funkce a vytvářejí jedinou identitu uživatele pro ověřování a autorizaci u všech prostředků bez ohledu na umístění. Tomu se říká hybridní identita.
+- **Synchronizované identity** a volitelně hodnoty hash hesel umožňují uživatelům používat stejné heslo pro přístup k místním i cloudovým prostředkům organizace. 
+- **Federované identity** poskytují lepší kontrolu nad uživateli tím, že oddělují ověřování uživatelů od Azure a delegují ověřování důvěryhodnému místnímu zprostředkovateli identity. 
+
+Při konfiguraci hybridní identity je k dispozici několik možností. Při zvažování, který model identit nejlépe vyhovuje potřebám vaší organizace, je potřeba vzít v úvahu také čas, stávající infrastrukturu, složitost a náklady. Tyto faktory se pro každou organizaci liší a v průběhu času se můžou měnit. Pokud se však vaše požadavky změní, máte možnost přepnout na jiný model identit.
+
+## <a name="synchronized-identity"></a>Synchronizovaná identita 
+
+Synchronizovaná identita představuje nejjednodušší způsob, jak synchronizovat místní objekty adresářové služby (uživatele a skupiny) s Azure AD. 
+
+![Synchronizovaná hybridní identita](./media/whatis-hybrid-identity/synchronized-identity.png)
+
+Přestože je synchronizovaná identita nejjednodušší a nejrychlejší metoda, vaši uživatelé stále potřebují samostatné heslo pro cloudové prostředky. Pokud se tomu chcete vyhnout, můžete také (volitelně) [synchronizovat hodnoty hash uživatelských hesel](how-to-connect-password-hash-synchronization.md) s vaším adresářem Azure AD. Synchronizace hodnot hash hesel uživatelům umožní přihlašovat se ke cloudovým prostředkům organizace pomocí stejného uživatelského jména a hesla jako v místním prostředí. Azure AD Connect pravidelně kontroluje změny v místním adresáři a zajišťuje synchronizaci adresáře Azure AD. Když se změní atribut nebo heslo uživatele v místní službě Active Directory, automaticky se aktualizuje i v Azure AD. 
+
+Pro většinu organizací, které pouze potřebují umožnit uživatelům přihlášení k Office 365, aplikacím SaaS nebo jiným prostředkům založeným na Azure AD, se doporučuje výchozí možnost synchronizace hesel. Pokud vám to nestačí, budete se muset rozhodnout mezi předávacím ověřováním a AD FS.
+
+> [!TIP]
+> Uživatelská hesla se ukládají v místní službě Windows Server Active Directory v podobě hodnoty hash, která představuje skutečné uživatelské heslo. Hodnota hash je výsledkem jednosměrné matematické funkce (hashovací algoritmus). Neexistuje žádný způsob, jak výsledek jednosměrné funkce převést zpět na heslo v prostém textu. Hodnotu hash hesla není možné použít pro přihlášení k místní síti. Pokud se rozhodnete pro synchronizaci hesel, Azure AD Connect extrahuje hodnoty hash hesel z místní služby Active Directory a před jejich synchronizací do Azure AD provede jejich dodatečné bezpečnostní zpracování. Synchronizaci hesel je možné používat také společně se zpětným zápisem hesel a umožnit tak samoobslužné resetování hesla v Azure AD. Kromě toho můžete povolit jednotné přihlašování pro uživatele na počítačích připojených k doméně, kteří jsou připojení k podnikové síti. Uživatelům s povoleným jednotným přihlašováním stačí k zabezpečenému přístupu ke cloudovým prostředkům zadat pouze uživatelské jméno. 
+>
+
+## <a name="pass-through-authentication"></a>Předávací ověřování
+
+[Předávací ověřování Azure AD](how-to-connect-pta.md) poskytuje jednoduché řešení ověřování hesel pro služby založené na Azure AD s využitím vaší místní služby Active Directory. Pokud zásady zabezpečení a dodržování předpisů vaší organizace neumožňují odesílat uživatelská hesla, a to ani v podobě hodnoty hash, a potřebujete zajistit pouze podporu jednotného přihlašování na počítači pro zařízení připojená k doméně, doporučujeme zvážit využití předávacího ověřování. Předávací ověřování nevyžaduje žádné nasazení v zóně DMZ, což v porovnání s AD FS zjednodušuje infrastrukturu nasazení. Když se uživatelé přihlásí pomocí Azure AD, tato metoda ověřování ověří jejich hesla přímo v místní službě Active Directory.
+
+![Předávací ověřování](./media/whatis-hybrid-identity/pass-through-authentication.png)
+
+S předávacím ověřováním odpadá potřeba složité síťové infrastruktury a nemusíte ukládat místní hesla v cloudu. V kombinaci s jednotným přihlašováním poskytuje předávací ověřování skutečně integrované prostředí pro přihlašování k Azure AD nebo jiným cloudovým službám.
+
+Předávací ověřování se konfiguruje pomocí nástroje Azure AD Connect, který využívá jednoduchého místního agenta, který naslouchá požadavkům na ověření hesla. Agenta můžete snadno nasadit na více počítačů a zajistit tak vysokou dostupnost a vyrovnávání zatížení. Vzhledem k tomu, že veškerá komunikace je pouze odchozí, není v zóně DMZ potřeba instalovat konektor. Požadavky na počítač serveru pro konektor jsou následující:
+
+- Windows Server 2012 R2 nebo novější
+- Připojení k doméně v doménové struktuře prostřednictvím které se uživatelé ověřují
+
+## <a name="federated-identity-ad-fs"></a>Federovaná identita (AD FS)
+
+Pokud chcete mít větší kontrolu nad přístupem uživatelů k Office 365 a dalším cloudovým službám, můžete pomocí služby [Active Directory Federation Services (AD FS)](how-to-connect-fed-whatis.md) nastavit synchronizaci adresářů s jednotným přihlašováním. Při federování přihlašování uživatelů pomocí AD FS se ověřování deleguje na místní server, který ověřuje přihlašovací údaje uživatelů. V tomto modelu se přihlašovací údaje místní služby Active Directory nikdy nepředávají do Azure AD.
+
+![Federovaná identita](./media/whatis-hybrid-identity/federated-identity.png)
+
+Tato metoda přihlašování, která se označuje také jako federace identity, zajišťuje, že se veškeré ověřování uživatelů řídí v místním prostředí, a umožňuje správcům implementovat přísnější úrovně řízení přístupu. Federace identity pomocí AD FS představuje nejsložitější možnost a vyžaduje nasazení dalších serverů v místním prostředí. Federace identity vás také zavazuje poskytovat nepřetržitou podporu pro službu Active Directory a infrastrukturu AD FS. Takto vysoká úroveň podpory je nezbytná z toho důvodu, že v případě nedostupnosti místního přístupu k internetu, řadiče domény nebo serverů AD FS se uživatelé nebudou moct přihlásit ke cloudovým službám.
+
+> [!TIP]
+> Pokud se rozhodnete využít federaci pomocí služby Active Directory Federation Services (AD FS), můžete volitelně nastavit synchronizaci hesel jako záložní řešení pro případ, že vaše infrastruktura AD FS selže.
+>
+
+## <a name="common-scenarios-and-recommendations"></a>Běžné scénáře a doporučení
+
+Tady najdete několik běžných scénářů souvisejících s hybridní identitou a správou přístupu a doporučení, jaká možnost (nebo možnosti) hybridní identity by mohla být pro každý z nich nejvhodnější.
+
+|Požadavky:|PHS a SSO<sup>1</sup>| PTA a SSO<sup>2</sup> | AD FS<sup>3</sup>|
+|-----|-----|-----|-----|
+|Automatická synchronizace nových uživatelských, kontaktních a skupinových účtů vytvořených v místní službě Active Directory do cloudu|![Doporučené](./media/whatis-hybrid-identity/ic195031.png)| ![Doporučené](./media/whatis-hybrid-identity/ic195031.png) |![Doporučené](./media/whatis-hybrid-identity/ic195031.png)|
+|Nastavení tenanta pro hybridní scénáře Office 365|![Doporučené](./media/whatis-hybrid-identity/ic195031.png)| ![Doporučené](./media/whatis-hybrid-identity/ic195031.png) |![Doporučené](./media/whatis-hybrid-identity/ic195031.png)|
+|Povolení přihlašování a přístupu uživatelů ke cloudovým službám pomocí místního hesla|![Doporučené](./media/whatis-hybrid-identity/ic195031.png)| ![Doporučené](./media/whatis-hybrid-identity/ic195031.png) |![Doporučené](./media/whatis-hybrid-identity/ic195031.png)|
+|Implementace jednotného přihlašování pomocí podnikových přihlašovacích údajů|![Doporučené](./media/whatis-hybrid-identity/ic195031.png)| ![Doporučené](./media/whatis-hybrid-identity/ic195031.png) |![Doporučené](./media/whatis-hybrid-identity/ic195031.png)|
+|Zajištění, aby se žádné hodnoty hash hesel neukládaly v cloudu| |![Doporučené](./media/whatis-hybrid-identity/ic195031.png)|![Doporučené](./media/whatis-hybrid-identity/ic195031.png)|
+|Povolení cloudových řešení vícefaktorového ověřování| |![Doporučené](./media/whatis-hybrid-identity/ic195031.png)|![Doporučené](./media/whatis-hybrid-identity/ic195031.png)|
+|Povolení místních řešení vícefaktorového ověřování| | |![Doporučené](./media/whatis-hybrid-identity/ic195031.png)|
+|Podpora ověřování uživatelů pomocí čipové karty<sup>4</sup>| | |![Doporučené](./media/whatis-hybrid-identity/ic195031.png)|
+|Zobrazování oznámení o vypršení platnosti hesla na portálu Office a na ploše Windows 10| | |![Doporučené](./media/whatis-hybrid-identity/ic195031.png)|
+
+> <sup>1</sup> Synchronizace hesel a jednotné přihlašování.
+>
+> <sup>2</sup> Předávací ověřování a jednotné přihlašování. 
+>
+> <sup>3</sup> Federované jednotné přihlašování pomocí AD FS.
+>
+> <sup>4</sup> AD FS je možné integrovat s podnikovou infrastrukturou veřejných klíčů a umožnit tak přihlašování pomocí certifikátů. Těmito certifikáty můžou být softwarové certifikáty nasazené přes důvěryhodné kanály zřizování, jako MDM nebo GPO, nebo certifikáty čipových karet (včetně karet PIV/CAC) nebo Hello pro firmy (důvěryhodnost certifikátu). Další informace o podpoře ověřování pomocí čipové karty najdete v [tomto blogovém příspěvku](https://blogs.msdn.microsoft.com/samueld/2016/07/19/adfs-certauth-aad-o365/).
+>
 
 ## <a name="what-is-azure-ad-connect"></a>Co je Azure AD Connect?
 
 Azure AD Connect je nástroj od Microsoftu, jehož účelem je splnit a zajistit cíle hybridní identity.  To umožní poskytovat společnou identitu pro uživatele pro aplikace Office 365, Azure a SaaS integrované s Azure AD.  Má následující funkce:
     
 - [Synchronizace](how-to-connect-sync-whatis.md) – tato komponenta odpovídá za vytváření uživatelů, skupin a dalších objektů. Také zajišťuje, aby se informace o identitě místních uživatelů a skupin shodovaly s cloudem.  Odpovídá za synchronizaci hodnot hash hesel se službou Azure AD.
+- [Synchronizace hodnot hash hesel](how-to-connect-password-hash-synchronization.md) – Volitelná komponenta, která uživatelům umožňuje používat stejné heslo v místním prostředí i v cloudu díky tomu, že synchronizuje hodnotu hash uživatelského hesla s Azure AD.
 -   [AD FS a integrace federace](how-to-connect-fed-whatis.md) – federace je volitelná součást Azure AD Connect, která se dá použít ke konfiguraci hybridního prostředí pomocí místní infrastruktury služby AD FS. Poskytuje také možnosti správy služby AD FS, jako je obnovení certifikátů a další nasazení serverů služby AD FS.
 -   [Předávací ověřování](how-to-connect-pta.md) – další volitelná komponenta, která umožňuje uživatelům používat stejné heslo místně i v cloudu, ale nevyžaduje dodatečnou infrastrukturu federovaného prostředí.
+-   [PingFederate a integrace federace](how-to-connect-install-custom.md#configuring-federation-with-pingfederate) – Další možnost federace, která umožňuje využívat jako zprostředkovatele identity PingFederate.
 -   [Monitorování stavu](whatis-hybrid-identity-health.md) – Azure AD Connect Health poskytuje robustní monitorování a centrální umístění na webu Azure Portal, kde je možné tuto aktivitu zobrazit. 
 
 

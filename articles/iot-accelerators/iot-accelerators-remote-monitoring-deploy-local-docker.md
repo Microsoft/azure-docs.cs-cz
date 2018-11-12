@@ -1,6 +1,6 @@
 ---
 title: Nasazení řešení vzdáleného monitorování místně - Dockeru – Azure | Dokumentace Microsoftu
-description: Tato příručka ukazuje, jak do svého místního počítače pro vývoj a testování nasazení akcelerátoru řešení vzdáleného monitorování.
+description: Tato příručka ukazuje, jak do svého místního počítače pomocí Dockeru pro vývoj a testování nasazení akcelerátoru řešení vzdáleného monitorování.
 author: avneet723
 manager: hegate
 ms.author: avneet723
@@ -8,18 +8,18 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/25/2018
 ms.topic: conceptual
-ms.openlocfilehash: 91f43473a5648be5264038993f43b61887e0c363
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
-ms.translationtype: HT
+ms.openlocfilehash: 46cd16c1667d3b33501c1b5680baabf243509f67
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/08/2018
-ms.locfileid: "51284893"
+ms.locfileid: "51288540"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---docker"></a>Nasazení akcelerátoru řešení vzdáleného monitorování místně - Dockeru
 
 [!INCLUDE [iot-accelerators-selector-local](../../includes/iot-accelerators-selector-local.md)]
 
-Tento článek ukazuje, jak nasazení akcelerátoru řešení vzdáleného monitorování do místního počítače pro vývoj a testování. Tento článek ukazuje, jak nasadit mikroslužby do místní kontejnery Dockeru. Nasazení místního mikroslužeb používá tyto cloudové služby: služby IoT Hub, Cosmos DB, Azure Stream Analytics a Azure Time Series Insights v cloudu.
+Tento článek ukazuje, jak nasazení akcelerátoru řešení vzdáleného monitorování do místního počítače pro vývoj a testování. Zjistíte, jak nasadit mikroslužby do místní kontejnery Dockeru. Nasazení místního mikroslužeb používá tyto cloudové služby: služby IoT Hub, Cosmos DB, Azure Stream Analytics a Azure Time Series Insights v cloudu.
 
 Pokud chcete spustit akcelerátor řešení vzdálené monitorování v rozhraní IDE v místním počítači, přečtěte si téma [nasazení akcelerátoru řešení vzdáleného monitorování místně – Visual Studio](iot-accelerators-remote-monitoring-deploy-local.md).
 
@@ -70,13 +70,13 @@ docker-compose up
 Při prvním spuštění tohoto příkazu Docker stáhne mikroslužeb Image z Docker hubu vytvářet kontejnery místně. V následujícím spuštění Docker spouští kontejnery okamžitě.
 
 > [!TIP]
-> Společnost Microsoft často publikují nové Image Dockeru s novými funkcemi. Následující sady příkazů k vyčištění můžete použít místní kontejnery Docker a odpovídající Image před o přijetí změn ta nejnovější. 
+> Microsoft často vydává nové Image Dockeru s novými funkcemi. Následující sady příkazů k vyčištění můžete použít místní kontejnery Docker a odpovídající Image před o přijetí změn nejnovější těm, které jsou:
 
-```cmd/sh
-docker list
-docker rm <list_of_containers>
-docker rmi <list_of_images>
-```
+    ```cmd/sh
+    docker list
+    docker rm <list_of_containers>
+    docker rmi <list_of_images>
+    ```
 
 Chcete-li zobrazit protokoly z kontejneru, můžete použít samostatné prostředí. Napřed Zjistěte ID kontejneru pomocí `docker ps` příkazu. Pak pomocí `docker logs {container-id} --tail 1000` k zobrazení posledních 1000 položek u zadaného kontejneru.
 
@@ -101,14 +101,4 @@ Použití `docker-compose down --rmi all` příkazu odeberte Image Dockeru a uvo
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto kurzu jste se naučili:
-
-> [!div class="checklist"]
-> * Nastavení místního vývojového prostředí
-> * Konfigurace akcelerátoru řešení
-> * Nasazení akcelerátoru řešení
-> * Přihlaste se k akcelerátoru řešení
-
 Teď, když nasadíte řešení vzdáleného monitorování, dalším krokem je [prozkoumat možnosti řídicího panelu řešení](quickstart-remote-monitoring-deploy.md).
-
-<!-- Next tutorials in the sequence -->

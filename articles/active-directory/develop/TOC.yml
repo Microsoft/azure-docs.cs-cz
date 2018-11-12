@@ -207,8 +207,13 @@ items:
         href: howto-app-gallery-listing.md
       - name: Publikování na řídicí panel prodejce Office 365
         href: https://docs.microsoft.com/office/dev/store/use-the-seller-dashboard-to-submit-to-the-office-store
-    - name: Migrace ze služby Azure Access Control Service
-      href: active-directory-acs-migration.md
+    - name: Azure Access Control Service
+      displayName: ACS
+      items:
+      - name: Migrace ze služby Azure Access Control Service
+        href: active-directory-acs-migration.md
+      - name: Opětovná aktivace zakázaných oborů názvů služby Access Control Service
+        href: howto-reactivate-disabled-acs-namespaces.md
     - name: Použití Graph API v Azure AD
       href: active-directory-graph-api-quickstart.md
     - name: AD FS pro vývojáře
@@ -428,9 +433,9 @@ items:
     href: developer-support-help-options.md
   - name: Spravované identity pro prostředky Azure
     href: https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview
-ms.openlocfilehash: 8d37b5b977509b61d31f7ed29571762325188f33
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 00aa04556d555c5e29707287e2cb91db22f34ac7
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49987814"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51011625"

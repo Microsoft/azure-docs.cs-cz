@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: raynew
-ms.openlocfilehash: 923a2a137bb4510e9490ce4077f744a43619a2c6
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 04ae28ca566e97570ec64e78d3408ea8bd1e3d42
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47165020"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51010316"
 ---
 # <a name="dependency-visualization"></a>Vizualizace závislostí
 
@@ -38,6 +38,12 @@ Azure Migrate používá [Service Map](../operations-management-suite/operations
     ![Přejděte v pracovním prostoru Log Analytics](./media/concepts-dependency-visualization/oms-workspace.png)
 
 Pokud chcete použít vizualizaci závislostí, budete muset stáhnout a nainstalovat agenty na každém v místním počítači, který chcete analyzovat.  
+
+- [Microsoft Monitoring agent(MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows) musí být nainstalovaný na každém počítači.
+- [Agenta závislostí](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure) musí být nainstalovaný na každém počítači.
+- Kromě toho pokud máte počítače bez připojení k Internetu, musíte stáhnout a nainstalovat bránu Log Analytics na ně.
+
+Není nutné tyto agenty na počítačích, které chcete posoudit, pokud používáte vizualizace závislostí.
 
 ## <a name="do-i-need-to-pay-for-it"></a>Je potřeba dál za něj platit?
 

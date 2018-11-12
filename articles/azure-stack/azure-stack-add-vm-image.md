@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: get-started-article
-ms.date: 09/05/2018
+ms.date: 11/05/2018
 ms.author: mabrigg
 ms.reviewer: kivenkat
-ms.openlocfilehash: 7a5c6875f080655e69f549e45ec474958128754f
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: a0dc3405cc0e1deb25c1f2772a5018dad95b87e9
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45575809"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51036593"
 ---
 # <a name="make-a-virtual-machine-image-available-in-azure-stack"></a>Zpřístupnit image virtuálního počítače ve službě Azure Stack
 
@@ -30,7 +30,7 @@ Ve službě Azure Stack můžete zpřístupnit imagí virtuálních počítačů
 
 ## <a name="add-a-vm-image-through-the-portal"></a>Přidání image virtuálního počítače pomocí portálu
 
-> [!NOTE]
+> [!NOTE]  
 > S touto metodou musíte vytvořit položku Marketplace samostatně.
 
 Image musí být možné odkazovat identifikátor URI úložiště objektů blob. Příprava image operačního systému Windows nebo Linuxem ve formátu virtuálního pevného disku (VHDX není) a pak ji nahrát do účtu úložiště v Azure nebo ve službě Azure Stack. Pokud vaše image je již nahrána do úložiště objektů blob v Azure nebo ve službě Azure Stack, můžete přeskočit krok 1.
@@ -39,7 +39,7 @@ Image musí být možné odkazovat identifikátor URI úložiště objektů blob
 
    - Azure Stack jenom podporuje generování jedno (1) virtuální počítač ve virtuální pevný disk pevný disk naformátovat. Oprava format struktury logický disk lineárně v rámci souboru, takže posun disku o X je uložen v objektu blob s posunem X. Malé zápatí na konci objektu blob popisuje vlastnosti virtuálního pevného disku. Pokud chcete potvrdit, pokud je oprava disku, použijte [Get-VHD](https://docs.microsoft.com/powershell/module/hyper-v/get-vhd?view=win10-ps) příkaz prostředí PowerShell.  
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     >  Azure Stack nepodporuje dynamického disku VHD. Změna velikosti dynamický disk, který je připojen k virtuálnímu počítači ponechá virtuální počítač ve stavu selhání. Chcete-li tento problém zmírnit, odstraňte virtuální počítač bez odstranění disku Virtuálního počítače, objekt blob VHD v účtu úložiště. Převést virtuální pevný disk z dynamický disk na pevný disk a znovu vytvořte virtuální počítač.
 
    * To je mnohem efektivnější k nahrání obrázku do úložiště objektů blob v Azure stacku, než se do Azure blob storage vzhledem k tomu, že bude trvat kratší dobu nasdílejte image do úložiště imagí Azure Stack.

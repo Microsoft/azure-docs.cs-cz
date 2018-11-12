@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Získání podporovaných jazyků, Node.js – Translator Text API'
+title: 'Rychlý start: Získání seznamu podporovaných jazyků, Node.js – Translator Text API'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu získáte seznam jazyků podporovaných pro překlad, transkripci a vyhledávání ve slovníku a příklady s použitím služby Translator Text API a Node.js.
 services: cognitive-services
@@ -8,178 +8,215 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
-ms.date: 06/21/2018
+ms.date: 10/29/2018
 ms.author: erhopf
-ms.openlocfilehash: ff921243df078010bdc825d28b55d07333016774
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 2d87173384a171d6b96ffa52c1d0bf80069a34c2
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49646405"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50250661"
 ---
-# <a name="quickstart-get-supported-languages-with-the-translator-text-rest-api-nodejs"></a>Rychlý start: Získání podporovaných jazyků pomocí rozhraní REST API služby Translator Text (Node.js)
+# <a name="quickstart-use-the-translator-text-api-to-get-a-list-of-supported-languages-with-nodejs"></a>Rychlý start: Získání seznamu podporovaných jazyků pomocí služby Translator Text API a Node.js
 
-V tomto rychlém startu získáte seznam jazyků podporovaných pro překlad, transkripci a vyhledávání ve slovníku a příklady s použitím služby Translator Text API.
+V tomto rychlém startu se dozvíte, jak pomocí Node.js a rozhraní REST API služby Translator Text vytvořit požadavek GET, který vrátí seznam podporovaných jazyků.
+
+K tomuto rychlému startu potřebujete [účet služby Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s prostředkem služby Translator Text. Pokud účet nemáte, můžete k získání klíče předplatného použít [bezplatnou zkušební verzi](https://azure.microsoft.com/try/cognitive-services/).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Abyste mohli tento kód spustit, budete potřebovat [Node.js 6](https://nodejs.org/en/download/).
+K tomuto rychlému startu potřebujete:
 
-Abyste mohli použít službu Translator Text API, budete potřebovat klíč předplatného. Přečtěte si, [jak se zaregistrovat ve službě Translator Text API](translator-text-how-to-signup.md).
+* [Node.js 8.12.x nebo novější](https://nodejs.org/en/)
+* Klíč předplatného Azure pro službu Translator Text
 
-## <a name="languages-request"></a>Žádost Languages
+## <a name="create-a-project-and-import-required-modules"></a>Vytvoření projektu a import požadovaných modulů
 
-Pomocí následujícího kódu získáte seznam jazyků podporovaných pro překlad, transkripci a vyhledávání ve slovníku a příklady pomocí metody [Languages](./reference/v3-0-languages.md).
-
-1. V oblíbeném editoru kódu vytvořte nový projekt Node.js.
-2. Přidejte níže uvedený kód.
-3. Hodnotu `subscriptionKey` nahraďte přístupovým klíčem platným pro vaše předplatné.
-4. Spusťte program.
+V oblíbeném integrovaném vývojovém prostředí nebo editoru vytvořte nový projekt. Pak do svého projektu, do souboru s názvem `get-languages.js`, zkopírujte tento fragment kódu.
 
 ```javascript
-'use strict';
-
-let fs = require ('fs');
-let https = require ('https');
-
-// **********************************************
-// *** Update or verify the following values. ***
-// **********************************************
-
-// Replace the subscriptionKey string value with your valid subscription key.
-let subscriptionKey = 'ENTER KEY HERE';
-
-let host = 'api.cognitive.microsofttranslator.com';
-let path = '/languages?api-version=3.0';
-
-let output_path = 'output.txt';
-let ws = fs.createWriteStream(output_path);
-
-let response_handler = function (response) {
-    let body = '';
-    response.on ('data', function (d) {
-        body += d;
-    });
-    response.on ('end', function () {
-        let json = JSON.stringify(JSON.parse(body), null, 4);
-        ws.write (json);
-        ws.close ();
-        console.log("File written.");
-
-    });
-    response.on ('error', function (e) {
-        console.log ('Error: ' + e.message);
-    });
-};
-
-let GetLanguages = function () {
-    let request_params = {
-        method : 'GET',
-        hostname : host,
-        path : path,
-        headers : {
-            'Ocp-Apim-Subscription-Key' : subscriptionKey,
-        }
-    };
-
-    let req = https.request (request_params, response_handler);
-    req.end ();
-}
-
-GetLanguages ();
+const request = require('request');
+const uuidv4 = require('uuid/v4');
 ```
 
-## <a name="languages-response"></a>Odpověď metody Languages
+> [!NOTE]
+> Pokud jste tyto moduly ještě nikdy nepoužili, budete je muset před spuštěním programu nainstalovat. Tyto balíčky nainstalujete spuštěním příkazu `npm install request uuidv4`.
 
-Úspěšná odpověď se vrátí ve formátu JSON, jak je znázorněno v následujícím příkladu:
+Tyto moduly jsou potřeba k vytvoření požadavku HTTP a jedinečného identifikátoru pro hlavičku `'X-ClientTraceId'`.
+
+## <a name="set-the-subscription-key"></a>Nastavení klíče předplatného
+
+Tento kód se pokusí přečíst klíč předplatného služby Translator Text z proměnné prostředí `TRANSLATOR_TEXT_KEY`. Pokud proměnné prostředí neznáte, můžete hodnotu `subscriptionKey` nastavit jako řetězec a okomentovat podmíněný příkaz.
+
+Zkopírujte do svého projektu tento kód:
+
+```javascript
+/* Checks to see if the subscription key is available
+as an environment variable. If you are setting your subscription key as a
+string, then comment these lines out.
+
+If you want to set your subscription key as a string, replace the value for
+the Ocp-Apim-Subscription-Key header as a string. */
+const subscriptionKey = process.env.TRANSLATOR_TEXT_KEY;
+if (!subscriptionKey) {
+  throw new Error('Environment variable for your subscription key is not set.')
+};
+```
+
+## <a name="configure-the-request"></a>Konfigurace požadavku
+
+Metoda `request()` zpřístupněná prostřednictvím modulu požadavků nám umožňuje předat metodu HTTP, adresu URL, parametry požadavku, hlavičky a text JSON jako objekt `options`. V tomto fragmentu kódu nakonfigurujeme požadavek:
+
+>[!NOTE]
+> Další informace o koncových bodech, trasách a parametrech požadavků najdete v tématu [Translator Text API 3.0: Jazyky](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages).
+
+```javascript
+let options = {
+    method: 'GET',
+    baseUrl: 'https://api.cognitive.microsofttranslator.com/',
+    url: 'languages',
+    qs: {
+      'api-version': '3.0',
+    },
+    headers: {
+      'Ocp-Apim-Subscription-Key': subscriptionKey,
+      'Content-type': 'application/json',
+      'X-ClientTraceId': uuidv4().toString()
+    },
+    json: true,
+};
+```
+
+### <a name="authentication"></a>Authentication
+
+Nejjednodušším způsobem, jak ověřit požadavek, je předat klíč předplatného jako hlavičku `Ocp-Apim-Subscription-Key`, což děláme i v této ukázce. Alternativně můžete klíč předplatného vyměnit za přístupový token a k ověření požadavku předat přístupový token jako hlavičku `Authorization`. Další informace najdete v tématu [Ověřování](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
+
+## <a name="make-the-request-and-print-the-response"></a>Vytvoření požadavku a tisk odpovědi
+
+Dále pomocí metody `request()` vytvoříme požadavek. Tato metoda jako první argument přebírá objekt `options`, který jsme vytvořili v předchozí části, a pak vytiskne očištěnou odpověď JSON.
+
+```javascript
+request(options, function(err, res, body){
+    console.log(JSON.stringify(body, null, 4));
+});
+```
+
+>[!NOTE]
+> V této ukázce definujeme požadavek HTTP v objektu `options`. Modul požadavků však podporuje také pomocné metody jako `.post` a `.get`. Další informace najdete v článku věnovaném [pomocným metodám](https://github.com/request/request#convenience-methods).
+
+## <a name="put-it-all-together"></a>Spojení všech součástí dohromady
+
+To je vše, sestavili jste jednoduchý program, který zavolá službu Translator Text API a vrátí odpověď JSON. Teď je čas program spustit:
+
+```console
+node get-languages.js
+```
+
+Pokud chcete porovnat svůj kód s naším, kompletní ukázka je k dispozici na [GitHubu](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-NodeJS).
+
+## <a name="sample-response"></a>Ukázková odpověď
+
+Ukázka je zkrácená, aby zobrazovala jenom fragment výsledku:
 
 ```json
 {
-  "translation": {
-    "af": {
-      "name": "Afrikaans",
-      "nativeName": "Afrikaans",
-      "dir": "ltr"
-    },
-    "ar": {
-      "name": "Arabic",
-      "nativeName": "العربية",
-      "dir": "rtl"
-    },
-...
-  },
-  "transliteration": {
-    "ar": {
-      "name": "Arabic",
-      "nativeName": "العربية",
-      "scripts": [
-        {
-          "code": "Arab",
-          "name": "Arabic",
-          "nativeName": "العربية",
-          "dir": "rtl",
-          "toScripts": [
-            {
-              "code": "Latn",
-              "name": "Latin",
-              "nativeName": "اللاتينية",
-              "dir": "ltr"
-            }
-          ]
+    "translation": {
+        "af": {
+            "name": "Afrikaans",
+            "nativeName": "Afrikaans",
+            "dir": "ltr"
         },
-        {
-          "code": "Latn",
-          "name": "Latin",
-          "nativeName": "اللاتينية",
-          "dir": "ltr",
-          "toScripts": [
-            {
-              "code": "Arab",
-              "name": "Arabic",
-              "nativeName": "العربية",
-              "dir": "rtl"
-            }
-          ]
-        }
-      ]
+        "ar": {
+            "name": "Arabic",
+            "nativeName": "العربية",
+            "dir": "rtl"
+        },
+        ...
     },
-...
-  },
-  "dictionary": {
-    "af": {
-      "name": "Afrikaans",
-      "nativeName": "Afrikaans",
-      "dir": "ltr",
-      "translations": [
-        {
-          "name": "English",
-          "nativeName": "English",
-          "dir": "ltr",
-          "code": "en"
-        }
-      ]
+    "transliteration": {
+        "ar": {
+            "name": "Arabic",
+            "nativeName": "العربية",
+            "scripts": [
+                {
+                    "code": "Arab",
+                    "name": "Arabic",
+                    "nativeName": "العربية",
+                    "dir": "rtl",
+                    "toScripts": [
+                        {
+                            "code": "Latn",
+                            "name": "Latin",
+                            "nativeName": "اللاتينية",
+                            "dir": "ltr"
+                        }
+                    ]
+                },
+                {
+                    "code": "Latn",
+                    "name": "Latin",
+                    "nativeName": "اللاتينية",
+                    "dir": "ltr",
+                    "toScripts": [
+                        {
+                            "code": "Arab",
+                            "name": "Arabic",
+                            "nativeName": "العربية",
+                            "dir": "rtl"
+                        }
+                    ]
+                }
+            ]
+        },
+      ...
     },
-    "ar": {
-      "name": "Arabic",
-      "nativeName": "العربية",
-      "dir": "rtl",
-      "translations": [
-        {
-          "name": "English",
-          "nativeName": "English",
-          "dir": "ltr",
-          "code": "en"
-        }
-      ]
-    },
-...
-  }
+    "dictionary": {
+        "af": {
+            "name": "Afrikaans",
+            "nativeName": "Afrikaans",
+            "dir": "ltr",
+            "translations": [
+                {
+                    "name": "English",
+                    "nativeName": "English",
+                    "dir": "ltr",
+                    "code": "en"
+                }
+            ]
+        },
+        "ar": {
+            "name": "Arabic",
+            "nativeName": "العربية",
+            "dir": "rtl",
+            "translations": [
+                {
+                    "name": "English",
+                    "nativeName": "English",
+                    "dir": "ltr",
+                    "code": "en"
+                }
+            ]
+        },
+      ...
+    }
 }
 ```
 
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Pokud jste do svého programu pevně zakódovali klíč předplatného, nezapomeňte po dokončení tohoto rychlého startu tento klíč předplatného odebrat.
+
 ## <a name="next-steps"></a>Další kroky
 
-Prozkoumejte vzorový kód pro tento rychlý start a další, včetně překladu a transkripce, a také další vzorové projekty Translator Text na GitHubu.
-
 > [!div class="nextstepaction"]
-> [Prozkoumejte příklady Node.js na GitHubu](https://aka.ms/TranslatorGitHub?type=&language=javascript)
+> [Prozkoumejte příklady Node.js na GitHubu](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-NodeJS)
+
+## <a name="see-also"></a>Viz také
+
+Kromě rozpoznávání jazyka můžete pomocí služby Translator Text API provádět také následující úlohy:
+
+* [Překlad textu](quickstart-nodejs-translate.md)
+* [Transliterace textu](quickstart-nodejs-transliterate.md)
+* [Identifikace jazyka podle vstupu](quickstart-nodejs-detect.md)
+* [Získání alternativních překladů](quickstart-nodejs-dictionary.md)
+* [Určení délky věty ze vstupu](quickstart-nodejs-sentences.md)

@@ -31,6 +31,8 @@ items:
     href: troubleshoot-authentication-error-rdp-vm.md
   - name: Řešení potíží s připojením RDP virtuálních počítačů Azure podle ID události
     href: event-id-troubleshoot-vm-rdp-connecton.md
+  - name: Řešení chyby protokolu RDP na virtuálním počítači kvůli statické adrese IP
+    href: troubleshoot-rdp-static-ip.md
 - name: SSH
   items:
   - name: Řešení potíží s protokolem SSH
@@ -141,9 +143,9 @@ items:
   href: understand-vm-reboot.md
 - name: Nástroje pro řešení potíží
   href: remote-tools-troubleshoot-azure-vm-issues.md
-ms.openlocfilehash: 677fad7f648d88d5598d1c58da205d6cbb859408
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 4bee38c4ca68ce3bacade4542e67ce33d54a69e2
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50414756"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51345908"

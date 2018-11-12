@@ -1,6 +1,6 @@
 ---
-title: Pochopení správy verzí šablony zařízení pro vaše aplikace Azure IoT centrální | Microsoft Docs
-description: Iterace v šablony zařízení tak, že vytvoříte nové verze a bez dopadu na připojené zařízení za provozu
+title: Principy správy zařízení šablony verzí pro aplikace Azure IoT Central | Dokumentace Microsoftu
+description: Iterovat své šablony zařízení tak, že vytvoříte nové verze a bez dopadu na vaše živé připojená zařízení
 author: sandeeppujar
 ms.author: sandeepu
 ms.date: 01/19/2018
@@ -8,64 +8,64 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: b125d822596675b138560c14c76f9a3120ce3424
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 3b9e6a59b44db9295d86e3bc8a8dda9ec9761f38
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34628823"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51009204"
 ---
-# <a name="create-a-new-device-template-version"></a>Vytvořit novou verzi šablony zařízení
+# <a name="create-a-new-device-template-version"></a>Vytvoření nové šablony verze zařízení
 
-Microsoft Azure IoT centrální umožňuje rychlý vývoj aplikace či aplikace IoT. Návrhy vaše zařízení šablony můžete rychle iterovat přidání, úpravy nebo odstranění měření, nastavení nebo vlastnosti. Některé z těchto změn může být nežádoucí pro aktuálně připojené zařízení. Azure IoT střed identifikuje tyto nejnovější změny a poskytuje způsob, jak bezpečně nasadit tyto aktualizace do zařízení.
+Azure IoT Central umožňuje rychlý vývoj aplikací IoT. Vaše návrhy zařízení šablony můžete rychle iterovat přidání, úpravy nebo odstranění měření, nastavení nebo vlastnosti. Některé z těchto změn může být rušivá pro aktuálně připojená zařízení. Azure IoT Central identifikuje tyto nejnovější změny a poskytuje způsob, jak bezpečně tyto aktualizace nasadit do zařízení.
 
-Šablona zařízení má číslo verze při jeho vytvoření. Ve výchozím nastavení je číslo verze 1.0.0. Pokud upravujete šablonu zařízení, a pokud tato změna by mohlo mít vliv za provozu připojená zařízení, Azure IoT centrální vyzve, abyste vytvořili novou verzi šablony zařízení.
-
-> [!NOTE]
-> Další informace o tom, jak vytvořit šablonu zařízení najdete v části [nastavit šablonu zařízení](howto-set-up-template.md)
-
-## <a name="changes-that-prompt-a-version-change"></a>Změny, které výzva ke změně verze
-
-Obecné změny nastavení nebo vlastnosti šablony zařízení výzva ke změně verze.
+Šablona zařízení má číslo verze po jeho vytvoření. Ve výchozím nastavení je číslo verze 1.0.0. Při úpravě šablony zařízení, a pokud se tato změna může mít vliv na live připojených zařízení, Azure IoT Central vás vyzve k vytvoření nové šablony verze zařízení.
 
 > [!NOTE]
-> Změny provedené v šabloně zařízení nechcete zobrazovat výzvu k vytvoření nové verze, pokud žádné zařízení nebo je připojen na většinu jedno zařízení.
+> Další informace o tom, jak vytvořit šablonu zařízení najdete v článku [nastavit šablonu zařízení](howto-set-up-template.md)
 
-Následující seznam popisuje uživatelské akce, které mohou vyžadovat novou verzi:
+## <a name="changes-that-prompt-a-version-change"></a>Změny, které mění číslo verze řádku
+
+Obecné změny nastavení nebo vlastností šablony zařízení výzvu mění číslo verze.
+
+> [!NOTE]
+> Změny provedené v šabloně zařízení nezobrazovat výzvu k vytvoření nové verze, pokud žádné zařízení nebo připojené na většinu jedno zařízení.
+
+Následující seznam popisuje uživatelské akce, které by mohly vyžadovat nová verze:
 
 * Vlastnosti (povinné)
-    * Přidání nebo odstranění požadovaná vlastnost
-    * Změna názvu pole vlastnosti, název pole, které se vaše zařízení používá k odeslání zprávy.
+    * Přidání nebo odstranění požadovanou vlastnost
+    * Změna pole názvu vlastnosti, název pole, které zařízení používají k odesílání zpráv.
 *  Vlastnosti (volitelné)
-    * Odstraňování volitelná vlastnost
-    * Změna názvu pole vlastnosti, název pole, které se vaše zařízení používá k odeslání zprávy.
-    * Změna volitelná vlastnost na požadovanou vlastnost
+    * Odstraňuje se volitelná vlastnost
+    * Změna pole názvu vlastnosti, název pole, které zařízení používají k odesílání zpráv.
+    * Změna volitelné vlastnosti pro požadovanou vlastnost
 *  Nastavení
     * Přidání nebo odstranění nastavení
-    * Změna názvu pole nastavení, název pole, který je používán zařízení odesílat a přijímat zprávy.
+    * Změna pole názvu nastavení, název pole, které vaše zařízení používá k odesílání a příjem zpráv.
 
 ## <a name="what-happens-on-version-change"></a>Co se stane při změně verze?
 
-Co se stane pravidla a řídicí panely zařízení, když dojde ke změně verze?
+Co se stane k pravidlům a řídicí panely zařízení, když dojde ke změně verze?
 
-**Pravidla** může obsahovat podmínky, které jsou závislé na vlastnosti. Pokud jste odebrali nejméně jeden z těchto vlastností, může být tato pravidla přerušený v nové verzi šablony zařízení. Můžete přejít na tato konkrétní pravidla a aktualizovat podmínky opravit pravidla. Pravidla pro předchozí verze by měla spolupracovat s žádný vliv.
+**Pravidla** by mohla obsahovat podmínky, které jsou závislé na vlastnosti. Pokud jste odebrali jeden nebo více z těchto vlastností, tato pravidla může nebudou fungovat ve vaší nové šablony verzi zařízení. Můžete přejít na tato konkrétní pravidla a aktualizovat podmínky, které mají stanovit pravidla. Pravidla pro předchozí verze by měla fungovat bez jakéhokoli dopadu.
 
-**Řídicí panely zařízení** může obsahovat několik typů dlaždic. Některé dlaždice může obsahovat nastavení a vlastností. Pokud je odebrán vlastnosti nebo nastavení používané v dlaždici, dlaždice je úplně nebo částečně přerušená. Můžete přejít na dlaždici a vyřešte problém buď odebráním dlaždice nebo aktualizuje obsah dlaždice.
+**Řídicí panely zařízení** může obsahovat několik typů dlaždic. Některé dlaždice může obsahovat nastavení a vlastnosti. Při odebrání vlastnosti nebo nastavení použitá dlaždici, dlaždice se úplně nebo částečně přeruší. Můžete přejít na dlaždici a tento problém vyřešit, buď odebráním dlaždice nebo aktualizuje obsah na dlaždici.
 
-## <a name="migrate-a-device-across-device-template-versions"></a>Migrace mezi verzemi šablony zařízení zařízení
+## <a name="migrate-a-device-across-device-template-versions"></a>Migrovat zařízení mezi verzemi šablony zařízení
 
-Můžete vytvořit několik verzí šablony zařízení. V čase budete mít více připojených zařízení pomocí těchto šablon zařízení. Zařízení můžete migrovat z jedné verze šablony zařízení do jiné. Následující kroky popisují, jak migrovat zařízení:
+Můžete vytvořit více verzí šablony zařízení. V průběhu času budou mít více připojenými zařízeními pomocí těchto šablon zařízení. Zařízení z jedné verze šablony zařízení můžete migrovat do jiného. Následující kroky popisují, jak migrovat zařízení:
 
-1. Přejděte na **Explorer** stránky.
-1. Vyberte zařízení, které budete muset migrovat na jinou verzi.
+1. Přejděte **Explorer** stránky.
+1. Vyberte zařízení, které je potřeba migrovat na jinou verzi.
 1. Zvolte **migrovat zařízení**.
-1. Vyberte číslo verze, kterou chcete migrovat na zařízení a zvolte **migrací**.
+1. Vyberte číslo verze, kterou chcete migrovat zařízení a zvolte **migrace**.
 
-![Postup migrace zařízení](media\howto-version-devicetemplate\pick-version.png)
+![Jak migrovat zařízení](media\howto-version-devicetemplate\pick-version.png)
 
 ## <a name="next-steps"></a>Další postup
 
-Teď, když jste se naučili použití verzí šablony zařízení v aplikaci Azure IoT centrální, zde je navržené další krok:
+Teď, když jste se naučili, jak používat šablony verze zařízení v aplikaci Azure IoT Central, tady je navrhované další krok:
 
 > [!div class="nextstepaction"]
-> [Postup vytvoření pravidla telemetrie](howto-create-telemetry-rules.md)
+> [Vytvoření pravidla telemetrie](howto-create-telemetry-rules.md)

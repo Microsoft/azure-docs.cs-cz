@@ -6,14 +6,14 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: v-erkell
-ms.openlocfilehash: 823bf50a54ff43fa95f7136c137e3d8f3303c3e0
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: d32c664049b7e7c1231e78c552e7c61d016fbe84
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50633806"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51286754"
 ---
-# <a name="prepare-to-create-the-avere-vfxt"></a>Příprava k tvorbě Avere vFXT
+# <a name="prepare-to-create-the-avere-vfxt"></a>Příprava k vytvoření Avere vFXT
 
 Tento článek vysvětluje požadované úkoly pro vytváření Avere vFXT clusteru.
 
@@ -45,7 +45,7 @@ Pokud nechcete dát přístup vlastníka uživatele, kteří vytvářejí vFXT e
   * Všechny prostředky vFXT Avere se musí nasadit do skupiny prostředků, včetně:
     * Kontroler clusteru
     * Uzly clusteru
-    * Blob Storage
+    * Úložiště blobů
     * Prvky sítě
  
 * Uživatel s oprávněními bez vlastníka můžete vytvářet clustery vFXT, pokud je vytvořen a přiřazená uživateli, koordinovat předem s rolí přístup. Ale tato role poskytuje významná oprávnění pro tyto uživatele. [Tento článek](avere-vfxt-non-owner.md) vysvětluje, jak autorizovat bez vlastníků k vytvoření clusterů.
@@ -59,10 +59,10 @@ Musíte mít dostatečnou kvótu pro následující komponenty Azure. V případ
 
 |Komponenta Azure|Kvóta|
 |----------|-----------|
-|Virtuální počítače|3 D16s_v3 nebo E32s_v3|
-|SSD storage úrovně Premium|200 GB volného místa na operační systém plus 1 TB na 4 TB místa v mezipaměti na jeden uzel |
+|Virtuální počítače|3 nebo více virtuálních počítačů D16s_v3 nebo E32s_v3|
+|Úložiště SSD úrovně Premium|200 GB místa na operační systém a 1 až 4 TB místa v mezipaměti na uzel |
 |Účet úložiště (volitelné) |v2|
-|Back-endového úložiště dat (volitelné) |Jeden nový kontejner objektů Blob LRS |
+|Back-endové úložiště dat (volitelné) |Jeden nový kontejner objektů Blob LRS |
 
 ## <a name="accept-software-terms-in-advance"></a>Přijměte podmínky předem softwaru
 
@@ -80,11 +80,10 @@ Přijmout podmínky předem software:
     az account set --subscription abc123de-f456-abc7-89de-f01234567890
    ```
 
-1. Přijměte podmínky služby a povolit programový přístup pro vFXT Avere pro Image softwaru Azure používat tento příkaz: 
+1. Přijměte podmínky služby a povolit programový přístup pro vFXT Avere pro image Azure softwaru používat tento příkaz: 
 
    ```azurecli
    az vm image accept-terms --urn microsoft-avere:vfxt:avere-vfxt-controller:latest
-   az vm image accept-terms --urn microsoft-avere:vfxt:avere-vfxt-node:latest
    ```
 
 ## <a name="next-step-create-the-vfxt-cluster"></a>Další krok: Vytvořte vFXT cluster

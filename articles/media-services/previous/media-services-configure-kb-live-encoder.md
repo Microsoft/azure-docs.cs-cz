@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 02/02/2018
+ms.date: 11/04/2018
 ms.author: juliako;dbgeorge
-ms.openlocfilehash: a36e12080cbbcb1a98bf786a6634959362cb52a7
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: f6d4fcf5e6ec8029bb0e7c303849fdceef5bace7
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43666445"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51012084"
 ---
 # <a name="use-the-haivision-kb-live-encoder-to-send-a-single-bitrate-live-stream"></a>Použití živého kodér Haivision KB odesílat živý datový proud s jednou přenosovou rychlostí
 > [!div class="op_single_selector"]
@@ -61,7 +61,7 @@ Video:
 -   Kodek: H.264
 -   Profil: Vysoce (úroveň 4.0)
 -   S přenosovou rychlostí: 5000 kB /
--   Klíčový snímek: 2 sekundy (60 sekund)
+-   Klíčový snímek: 2 sekundy (60 snímků)
 -   Frekvence snímků: 30
 
 Zvuk:

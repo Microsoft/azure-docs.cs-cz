@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/22/2018
-ms.openlocfilehash: 5dba091f62e320d6f9a48bea0208ef74db351402
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: c690e9b864d4b2b378814b478ea4918a9f75fbba
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50095501"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51288523"
 ---
 # <a name="monitoring-azure-sql-database-using-dynamic-management-views"></a>Monitorování databáze Azure SQL Database pomocí zobrazení dynamické správy
 
@@ -333,7 +333,7 @@ ORDER BY start_time ASC;
 
 ## <a name="identify-memory-grant-wait-performance-issues"></a>Identifikujte paměti udělení počkejte problémy s výkonem
 
-Je-li nejvyšší počkejte typ `RESOURCE_SEMAHPORE` a nemáte vysoké využití procesoru problém, možná bude paměť udělit problém čekání.
+Je-li nejvyšší počkejte typ `RESOURCE_SEMAHPORE` a nemáte problém s vysoké využití procesoru, bude pravděpodobně paměti udělit problém čekání.
 
 ### <a name="determine-if-a-resourcesemahpore-wait-is-a-top-wait"></a>Určí, zda `RESOURCE_SEMAHPORE` Počkejte, že se začátek čekání
 
@@ -682,7 +682,7 @@ Pro účely analýzy SQL Database, můžete získat historické statistiky na re
 
 ## <a name="monitoring-query-performance"></a>Sledování výkonu dotazů
 
-Pomalé nebo dlouho probíhající dotazy může spotřebovat významné systémových prostředků. Tato část ukazuje, jak detekovat několik běžných problémech s výkonem dotazů pomocí zobrazení dynamické správy. Odkaz na starší, ale přesto užitečné při řešení potíží, je [řešení potíží s problémy s výkonem v systému SQL Server 2008](http://download.microsoft.com/download/D/B/D/DBDE7972-1EB9-470A-BA18-58849DB3EB3B/TShootPerfProbs2008.docx) článek na Microsoft TechNetu.
+Pomalé nebo dlouho probíhající dotazy může spotřebovat významné systémových prostředků. Tato část ukazuje, jak detekovat několik běžných problémech s výkonem dotazů pomocí zobrazení dynamické správy. Odkaz na starší, ale přesto užitečné při řešení potíží, je [řešení potíží s problémy s výkonem v systému SQL Server 2008](https://download.microsoft.com/download/D/B/D/DBDE7972-1EB9-470A-BA18-58849DB3EB3B/TShootPerfProbs2008.docx) článek na Microsoft TechNetu.
 
 ### <a name="finding-top-n-queries"></a>Hledání dotazy horních N
 

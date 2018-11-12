@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 4097fab5610bf4bee6c14c65d3b45e0de818a0cc
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 58bb3ae39ecd5631508ca1d09bf1d9d8f4d75063
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39160905"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51036661"
 ---
 # <a name="resolve-error-messages-from-the-nps-extension-for-azure-multi-factor-authentication"></a>Řešení chybových zpráv z rozšíření NPS pro Azure Multi-Factor Authentication
 
@@ -30,6 +30,7 @@ Pokud narazíte na chyby pomocí rozšíření NPS pro Azure Multi-Factor Authen
 | **ESTS_TOKEN_ERROR** | Postupujte podle pokynů v [řešení potíží s rozšíření MFA NPS](howto-mfa-nps-extension.md#troubleshooting) k prozkoumání klientský certifikát a ADAL token problémy. |
 | **HTTPS_COMMUNICATION_ERROR** | NPS server je schopna přijímat odpovědi z Azure MFA. Ověřte, zda jsou brány firewall otevřít obousměrně pro provoz do a z https://adnotifications.windowsazure.com |
 | **HTTP_CONNECT_ERROR** | Na serveru, na kterém běží server NPS rozšíření, ověřte, že můžete oslovit https://adnotifications.windowsazure.com a https://login.microsoftonline.com/. Pokud se nenačtou těchto webů, řešení potíží s připojením na tomto serveru. |
+| **Rozšíření NPS pro Azure MFA:** <br> Rozšíření NPS pro Azure MFA pro požadavky protokolu Radius ve stavu AccessAccept provádí pouze sekundární ověřování. Žádost o zadání uživatelského jména uživatele se stavem odpovědi AccessReject ignoruje požadavek. | Tato chyba obvykle odráží selhání ověřování ve službě AD nebo NPS server je schopna přijímat odpovědi ze služby Azure AD. Ověřte, zda jsou brány firewall otevřít obousměrně pro provoz do a z https://adnotifications.windowsazure.com a https://login.microsoftonline.com pomocí porty 80 a 443. Je také důležité zkontrolovat, že na kartě DIAL-IN oprávnění přístupu k síti je nastavená na "řízení přístupu pomocí serveru NPS síťové zásady". |
 | **REGISTRY_CONFIG_ERROR** | Nenašel se klíč v registru pro aplikaci, která může být, že [skript prostředí PowerShell](howto-mfa-nps-extension.md#install-the-nps-extension) po instalaci nespustila. Chybová zpráva by měla obsahovat chybí klíč. Ujistěte se, že máte klíč HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureMfa. |
 | **REQUEST_FORMAT_ERROR** <br> Chybí povinný atribut protokolu Radius userName\Identifier požadavku protokolu RADIUS. Ověřte, že server NPS přijímá požadavky protokolu RADIUS | Tato chyba obvykle odráží potíže s instalací. Rozšíření NPS musí být nainstalován na serverech NPS, které můžou přijímat požadavky protokolu RADIUS. Servery NPS, které se instalují jako závislosti pro služby, jako je RDG a RRAS není přijímal požadavky protokolu radius. Rozšíření serveru NPS nefunguje při instalaci těchto zařízení a chyby, protože jej nelze přečíst podrobnosti ze žádosti o ověření. |
 | **REQUEST_MISSING_CODE** | Ujistěte se, že protokol šifrování hesla mezi servery NPS a server NAS podporuje sekundární ověřování, který používáte. **PAP** podporuje všechny metody ověřování Azure mfa v cloudu: telefonní hovor, jednosměrná textová zpráva, oznámení mobilní aplikace a ověřovací kód z mobilní aplikace. **CHAPV2** a **EAP** podporují telefonních hovorů a oznámení mobilní aplikace. |

@@ -13,12 +13,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 2edaea1cfb02b250b27c47d58b6c1d1ef6501480
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: df020fc3a4e2f57730dea7329b08e1e46660e610
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50420264"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51037035"
 ---
 # <a name="customize-setup-for-the-azure-ssis-integration-runtime"></a>Přizpůsobení nastavení pro prostředí Azure-SSIS integration runtime
 
@@ -141,7 +141,7 @@ K přizpůsobení prostředí Azure-SSIS IR, budete potřebovat následující v
 
        1. A `.NET FRAMEWORK 3.5` složky, která obsahuje vlastní instalačního programu pro instalaci dřívější verzi rozhraní .NET Framework, může být nezbytný pro vlastní komponenty na každém uzlu Azure-SSIS IR.
 
-       1. `AAS` Složky, která obsahuje vlastní instalační program a nainstalujte klientské knihovny na každém uzlu vašeho prostředí Azure-SSIS IR, které vaše úkoly služby Analysis Services pro připojení k instanci služby Azure Analysis Services (AAS) s použitím ověřování instančních objektů. Nejdřív stáhněte nejnovější **MSOLAP (amd64)** a **AMO** klientské knihovny/Windows instalačních programů – například `x64_15.0.900.108_SQL_AS_OLEDB.msi` a `x64_15.0.900.108_SQL_AS_AMO.msi` – od [tady](https://docs.microsoft.com/en-us/azure/analysis-services/analysis-services-data-providers), pak nahrávat všechny spolu s `main.cmd` do kontejneru.  
+       1. `AAS` Složky, která obsahuje vlastní instalační program a nainstalujte klientské knihovny na každém uzlu vašeho prostředí Azure-SSIS IR, které vaše úkoly služby Analysis Services pro připojení k instanci služby Azure Analysis Services (AAS) s použitím ověřování instančních objektů. Nejdřív stáhněte nejnovější **MSOLAP (amd64)** a **AMO** klientské knihovny/Windows instalačních programů – například `x64_15.0.900.108_SQL_AS_OLEDB.msi` a `x64_15.0.900.108_SQL_AS_AMO.msi` – od [tady](https://docs.microsoft.com/azure/analysis-services/analysis-services-data-providers), pak nahrávat všechny spolu s `main.cmd` do kontejneru.  
 
        1. A `BCP` složky, která obsahuje vlastní instalační program a nainstalujte nástroje příkazového řádku systému SQL Server (`MsSqlCmdLnUtils.msi`), včetně program hromadného kopírování (`bcp`), na každém uzlu Azure-SSIS IR.
 

@@ -1,22 +1,22 @@
 ---
-title: Převzetí služeb při selhání a navrácení služeb po obnovení virtuálních počítačů Hyper-V replikovaných do Azure pomocí Site Recovery | Microsoft Docs
-description: Zjistěte, jak provést převzetí služeb při selhání virtuálních počítačů Hyper-V do Azure a navrácení služeb po obnovení do místní lokality pomocí Azure Site Recovery.
+title: Převzetí služeb při selhání a navrácení služeb po obnovení virtuálních počítačů Hyper-V během zotavení po havárii do Azure pomocí Azure Site Recovery | Microsoft Docs
+description: Zjistěte, jak provést převzetí služeb při selhání a navrácení služeb po obnovení virtuálních počítačů Hyper-V během zotavení po havárii do Azure pomocí služby Azure Site Recovery.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 10/10/2018
+ms.date: 10/28/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 31de654e6746cecf5aedabbfe481ab99b2aa3510
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 6dde345e360dc304578b626ee2678dd51fe56dc6
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49076979"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210512"
 ---
-# <a name="failover-and-failback-hyper-v-vms-replicated-to-azure"></a>Převzetí služeb při selhání a navrácení služeb po obnovení virtuálních počítačů Hyper-V replikovaných do Azure
+# <a name="fail-over-and-fail-back-hyper-v-vms-replicated-to-azure"></a>Převzetí služeb při selhání a navrácení služeb po obnovení virtuálních počítačů Hyper-V replikovaných do Azure
 
 Tento kurz popisuje, jak provést převzetí služeb při selhání virtuálního počítače Hyper-V do Azure. Po převzetí služeb při selhání navrátíte služby po obnovení do místní lokality, až bude dostupná. V tomto kurzu se naučíte:
 

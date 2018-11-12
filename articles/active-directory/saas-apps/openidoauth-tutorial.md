@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/25/2018
 ms.author: jeedes
-ms.openlocfilehash: 420ec288b81e0bb12ae9f61a5eaf03880205cc55
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 04639e6d27854d9c25b97936b163cfaaa25fc375
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50247976"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51287434"
 ---
 # <a name="configure-an-openidoauth-application-from-the-azure-ad-app-gallery"></a>Konfigurace OpenID/OAuth aplikaci v galerii aplikací Azure AD
 
@@ -84,7 +84,7 @@ Rozhraní pro udělování souhlasu Azure AD můžete použít k vývoji vícekl
 
 Rozhraní je založené na uživatele nebo správce udělení souhlasu pro aplikaci, která vyzve k registraci do svého adresáře. Registrace může zahrnovat přístup k datům adresáře. Po souhlas, klientská aplikace můžete volání rozhraní Microsoft Graph API jménem uživatele a použijte informace, podle potřeby.
 
-[Microsoft Graph API](https://graph.microsoft.io/) poskytuje přístup k datům v Office 365, jako je třeba:
+[Microsoft Graph API](https://developer.microsoft.com/graph/) poskytuje přístup k datům v Office 365, jako je třeba:
 
 - Kalendáře a zprávy z Exchange.
 - Webům a seznamům ze Sharepointu.
@@ -105,7 +105,7 @@ Následující kroky ukazují, jak souhlasu prostředí funguje pro uživatele a
 
 3. Pokud není uživatel ověřen, Azure AD / authorize koncový bod výzvy k přihlášení.
 
-    ![Authentication](./media/openidoauth-tutorial/authentication.png)
+    ![Ověření](./media/openidoauth-tutorial/authentication.png)
 
 4. Jakmile se uživatel přihlásil, Azure AD Určuje, zda uživatel potřebuje zobrazit stránka pro odsouhlasení podmínek. Toto rozhodnutí je založená na, jestli uživatel (nebo správce ve vaší organizaci) už udělené souhlasu s aplikací.
 

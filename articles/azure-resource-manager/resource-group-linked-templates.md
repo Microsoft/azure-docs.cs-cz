@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/17/2018
 ms.author: tomfitz
-ms.openlocfilehash: ea926a64e3df853d6845266ff20255b76d9ff387
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: fbfe7255f2b848187c74fd832f349186eef5eaef
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49386718"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51287568"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Použití propojené a vnořené šablony při nasazování prostředků Azure.
 
@@ -27,7 +27,7 @@ K nasazení svého řešení, můžete buď s jednou šablonou, nebo hlavní ša
 
 Pro malé až střední řešení s jednou šablonou je snáze pochopit a udržovat. Můžete zobrazit všechny prostředky a hodnoty v jednom souboru. Pro pokročilé scénáře propojené šablony vám umožní rozdělit řešení do cílové komponenty a opakovaně používat šablony.
 
-Při použití propojené šablony, vytvoříte hlavní šablonu, která přijímá hodnot parametrů během nasazování. Hlavní šablony obsahuje propojených šablon a předá tyto šablony podle potřeby hodnoty.
+Při použití propojených šablon, vytvoříte hlavní šablonu, která přijímá hodnot parametrů během nasazování. Hlavní šablony obsahuje propojených šablon a předá tyto šablony podle potřeby hodnoty.
 
 Podívejte se kurz [kurz: vytvoření propojenými šablonami Azure Resource Manageru](./resource-manager-tutorial-create-linked-templates.md).
 

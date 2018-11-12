@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 09/28/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 7cea11f448f20ace2dd50454834e60ce3a3c3b70
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: e1ace09ba293cf80b2dbbe8f746eb7fd5bc8d7cb
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47584264"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51036389"
 ---
 # <a name="tutorial-configure-hybrid-cloud-identity-for-azure-and-azure-stack-applications"></a>Kurz: Konfigurace hybridní cloudové identity pro aplikace Azure a Azure Stack
 
@@ -74,7 +74,7 @@ Instalace služby Azure Stack připojené ke službě Azure Active Directory s p
 Pro připojení ke službě Azure Stack pomocí kódu, použijte k získání ověřování a koncových bodů grafu pro instalaci sady Azure Stack a pak provést ověření pomocí požadavky REST koncových bodů rozhraní API Azure Resource Manageru. Ukázková klientská aplikace můžete najít na [Githubu](https://github.com/shriramnat/HybridARMApplication).
 
 >[!Note]
->Pokud sada Azure SDK pro svůj jazyk podporuje profily rozhraní API Azure, SDK nemusí fungovat s Azure Stack. Další informace o profilech rozhraní API Azure, najdete v článku [Správa profilů verzí API](https://docs.microsoft.com/da-dk/azure/azure-stack/user/azure-stack-version-profiles) článku.
+>Pokud sada Azure SDK pro svůj jazyk podporuje profily rozhraní API Azure, SDK nemusí fungovat s Azure Stack. Další informace o profilech rozhraní API Azure, najdete v článku [Správa profilů verzí API](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-version-profiles) článku.
 
 ## <a name="next-steps"></a>Další postup
 
