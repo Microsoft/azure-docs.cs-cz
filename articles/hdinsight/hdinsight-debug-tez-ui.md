@@ -1,22 +1,22 @@
 ---
-title: Pomocí uživatelského rozhraní Tez založené na Windows HDInsight – Azure
-description: Další informace o použití uživatelského rozhraní Tez k ladění úloh Tez na HDInsight HDInsight založené na Windows.
+title: Použít rozhraní Apache Tez se systémem Windows HDInsight – Azure
+description: Zjistěte, jak použít rozhraní Apache Tez k ladění úloh Tez na HDInsight HDInsight založené na Windows.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/17/2017
-ms.author: jasonh
+ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: ff47d0a71e97ce4ec9fd04e1d0cb9e5592192d53
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: ecb613dd2f624b9e0910a0ddcdf931f4b266aa96
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43112183"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51036576"
 ---
-# <a name="use-the-tez-ui-to-debug-tez-jobs-on-windows-based-hdinsight"></a>Použití uživatelského rozhraní Tez k ladění úloh Tez na HDInsight se systémem Windows
+# <a name="use-the-apache-tez-ui-to-debug-tez-jobs-on-windows-based-hdinsight"></a>Použití uživatelského rozhraní Apache Tez k ladění úloh Tez na HDInsight se systémem Windows
 Uživatelského rozhraní Tez lze použít k ladění úloh Hive, které používají jako prováděcí modul Tez. Uživatelského rozhraní Tez vizualizuje úlohy graf připojené položky, můžete přejít k podrobnostem jednotlivých položek a získání statistik a informace o protokolování.
 
 > [!IMPORTANT]
@@ -26,13 +26,13 @@ Uživatelského rozhraní Tez lze použít k ladění úloh Hive, které použí
 * Cluster HDInsight se systémem Windows. Pokyny k vytvoření nového clusteru, najdete v článku [začněte používat HDInsight se systémem Windows](hdinsight-hadoop-tutorial-get-started-windows.md).
 
   > [!IMPORTANT]
-  > Uživatelského rozhraní Tez je dostupná pouze na clustery HDInsight se systémem Windows, které jsou vytvořené po 8. února 2016.
+  > Rozhraní Apache Tez je dostupná pouze na clustery HDInsight se systémem Windows, které jsou vytvořené po 8. února 2016.
   >
   >
 * Klient vzdálené plochy se systémem Windows.
 
-## <a name="understanding-tez"></a>Principy Tez
-Tez je rozšiřitelná platforma pro zpracování dat v systému Hadoop a poskytuje vyšší rychlostí než tradiční MapReduce zpracování. Můžete povolit Tez zahrnutím následujícího textu jako součást dotazu Hive:
+## <a name="understanding-apache-tez"></a>Principy Apache Tez
+Tez je rozšiřitelná platforma pro zpracování dat v Apache Hadoop a poskytuje vyšší rychlostí než tradiční MapReduce zpracování. Můžete povolit Tez zahrnutím následujícího textu jako součást dotazu Hive:
 
     set hive.execution.engine=tez;
 

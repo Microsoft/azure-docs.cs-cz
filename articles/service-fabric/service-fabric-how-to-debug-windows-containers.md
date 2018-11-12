@@ -3,7 +3,7 @@ title: Ladění kontejnerů Windows s platformou Service Fabric a VS | Dokumenta
 description: Zjistěte, jak ladit kontejnery Windows v Azure Service Fabric pomocí sady Visual Studio 2017.
 services: service-fabric
 documentationcenter: .net
-author: mikkelhegn
+author: TylerMSFT
 manager: msfussell
 editor: ''
 ms.service: service-fabric
@@ -12,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/14/2018
-ms.author: mikhegn
-ms.openlocfilehash: 180bd3709cc9ffefb17f78e337e6f6995024fdcf
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.author: twhitney, mikhegn
+ms.openlocfilehash: b38946f813185a4821520b8591b7fd72a5f0cce0
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39523423"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51300060"
 ---
 # <a name="how-to-debug-windows-containers-in-azure-service-fabric-using-visual-studio-2017"></a>Postupy: ladění kontejnerů Windows v Azure Service Fabric pomocí sady Visual Studio 2017
 

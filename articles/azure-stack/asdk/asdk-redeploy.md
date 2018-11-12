@@ -13,15 +13,15 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.custom: ''
-ms.date: 08/01/2018
+ms.date: 11/05/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: d166916ca54f3b8c26a418ff83093e53dcdbe515
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: ecdfb0f062ebad903d35401a2f5303d3e6d04b5d
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39413731"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51037375"
 ---
 # <a name="redeploy-the-asdk"></a>Opětovné nasazení ASDK
 V tomto článku se dozvíte, jak znovu nasadit Azure Stack Development Kit (ASDK) v neprodukčním prostředí. Protože upgrade ASDK není podporován, budete muset zcela jej přesunout na novější verzi znovu nasadit. Můžete také znovu nasadit ASDK kdykoli, který chcete začít znovu od začátku.
@@ -60,7 +60,10 @@ K odebrání prostředků registrace, použijte **odebrat AzsRegistration** ruti
 3. Zobrazí se výzva k přihlášení k vašemu předplatnému Azure a místní instalace ASDK po spuštění skriptu.
 4. Po dokončení skriptu, měli byste vidět zprávy, jako v následujících příkladech:
 
-    ` De-Activating Azure Stack (this may take up to 10 minutes to complete).` ` Your environment is now unable to syndicate items and is no longer reporting usage data.` ` Remove registration resource from Azure...` ` "Deleting the resource..." on target "/subscriptions/<subscription information>"` ` ********** End Log: Remove-AzsRegistration ********* `
+    ` De-Activating Azure Stack (this may take up to 10 minutes to complete).` ` Your environment is now unable to syndicate items and is no longer reporting usage data.`
+    ` Remove registration resource from Azure...`
+    ` "Deleting the resource..." on target "/subscriptions/<subscription information>"`
+    ` ********** End Log: Remove-AzsRegistration ********* `
 
 
 
@@ -95,7 +98,7 @@ Pokud jste nepoužili skript asdk installer.ps1 k instalaci ASDK, nutné ručně
 
 
 ## <a name="next-steps"></a>Další postup
-[Po dokončení instalace ASDK úlohy konfigurace](asdk-post-deploy.md)
+[Úlohy nasazení ASDK po](asdk-post-deploy.md)
 
 
 

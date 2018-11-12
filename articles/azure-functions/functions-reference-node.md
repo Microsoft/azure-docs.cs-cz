@@ -12,12 +12,12 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 10/26/2018
 ms.author: glenga
-ms.openlocfilehash: 18ff0e3fadad64f7bd7fe014a6dcec6a628ef1b9
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: f99c0fe798baa272bc2c74e8a171dd6bc7ca4304
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50914545"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51036542"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Příručka pro vývojáře Azure Functions JavaScript
 
@@ -109,8 +109,8 @@ module.exports = async function (context, req) {
 ## <a name="bindings"></a>Vazby 
 V jazyce JavaScript [vazby](functions-triggers-bindings.md) se konfigurují a definované v function.json funkce. Funkce s vazby pracovat několika způsoby.
 
-### <a name="reading-trigger-and-input-data"></a>Čtení triggeru a vstupních dat
-Aktivovat a vstupních vazeb (vazby `direction === "in"`) lze číst pomocí funkce třemi způsoby:
+### <a name="inputs"></a>Vstupy
+Vstup dělí do dvou kategorií ve službě Azure Functions: jeden je vstup triggeru a druhý je další vstupy. Aktivační události a dalších vstupních vazeb (vazby `direction === "in"`) lze číst pomocí funkce třemi způsoby:
  - **_[Doporučuje]_  Jako parametry předaný do funkce.** Jsou předávány do funkce ve stejném pořadí, ve kterém jsou definovány v *function.json*. Všimněte si, `name` vlastnosti definované v *function.json* nemusí odpovídat názvu parametru, přestože by měl.
  
    ```javascript
@@ -137,7 +137,7 @@ Aktivovat a vstupních vazeb (vazby `direction === "in"`) lze číst pomocí fun
    };
    ```
 
-### <a name="writing-data"></a>Zápis dat
+### <a name="outputs"></a>Výstupy
 Výstupy (vazby `direction === "out"`) je možné zapisovat na funkci v několika způsoby. Ve všech případech `name` vlastnost vazby, jak jsou definovány v *function.json* odpovídá názvu členem objektu napsané ve své funkci. 
 
 Data můžete přiřadit výstupních vazeb v jednom z následujících způsobů. Tyto metody by neměli kombinovat.

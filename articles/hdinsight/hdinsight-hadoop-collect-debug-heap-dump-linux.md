@@ -1,22 +1,22 @@
 ---
-title: Povolení výpisů paměti haldy pro služby Hadoop v HDInsight – Azure
-description: Povolení výpisů paměti haldy pro služby Hadoop v clusterech HDInsight založených na Linuxu pro ladění a analýzu.
+title: Povolení výpisů paměti haldy pro služby Apache Hadoop v HDInsight – Azure
+description: Povolení výpisů paměti haldy pro služby Apache Hadoop v clusterech HDInsight založených na Linuxu pro ladění a analýzu.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
-ms.author: jasonh
-ms.openlocfilehash: 7fa0ebb1946a856d02296b4ec752113ff8fecbd5
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.author: hrasheed
+ms.openlocfilehash: 966f05fba96cc829c3a11331e2a66609705f6f4f
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43095578"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51037677"
 ---
-# <a name="enable-heap-dumps-for-hadoop-services-on-linux-based-hdinsight"></a>Povolení výpisů paměti haldy pro služby Hadoop v HDInsight se systémem Linux
+# <a name="enable-heap-dumps-for-apache-hadoop-services-on-linux-based-hdinsight"></a>Povolení výpisů paměti haldy pro služby Apache Hadoop v HDInsight se systémem Linux
 
 [!INCLUDE [heapdump-selector](../../includes/hdinsight-selector-heap-dump.md)]
 
@@ -29,11 +29,11 @@ Výpisů paměti haldy obsahují snímek paměti aplikace, včetně hodnot prom�
 
 Můžete povolit výpisů paměti haldy pro následující služby:
 
-* **hcatalog** -tempelton
-* **Hive** -hiveserver2, metastore, derbyserver
+* **Apache hcatalog** -tempelton
+* **Apache hive** -hiveserver2, metastore, derbyserver
 * **mapreduce** -jobhistoryserver
-* **yarn** – správce prostředků, nodemanager, timelineserver
-* **hdfs** -datanode secondarynamenode, namenode
+* **Apache yarn** – správce prostředků, nodemanager, timelineserver
+* **Apache hdfs** -datanode secondarynamenode, namenode
 
 Můžete také povolení výpisů paměti haldy pro mapy a snížit procesy spuštěné prostřednictvím HDInsight.
 
@@ -49,7 +49,7 @@ Mapovací a redukční procesy se mírně liší, jak tyto operace jsou podříz
 * **mapreduce.admin.reduce.child.java.opts**
 
 > [!NOTE]
-> Doporučujeme použít Ambari upravit skripty a nastavení mapred-site.xml, jako popisovač Ambari replikace změn napříč uzly v clusteru. Zobrazit [pomocí Ambari](#using-ambari) najdete konkrétní kroky.
+> Doporučujeme použít k úpravě skripty a nastavení mapred-site.xml, jako popisovač Ambari replikace změn napříč uzly v clusteru Apache Ambari. Zobrazit [pomocí Ambari](#using-ambari) najdete konkrétní kroky.
 
 ### <a name="enable-heap-dumps"></a>Povolení výpisů paměti haldy
 
