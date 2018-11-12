@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: b83e1ef752fede446b41153e3d486a872c2707f3
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 9158e6bfe07fc5d06b0685d77eff26644b594a8b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50227235"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51264427"
 ---
 Rozšíření virtuálních počítačů vám můžou pomoci:
 
@@ -42,10 +42,10 @@ Agent virtuálního počítače je povolený v následujících situacích:
       $vm.VM.ProvisionGuestAgent = $TRUE
       Update-AzureVM –Name $name –VM $vm.VM –ServiceName $svc
 
-* Když vytvoříte image virtuálního počítače, která obsahuje nainstalovaného agenta virtuálního počítače. Jakmile se image s agentem virtuálního počítače vytvoří, můžete ji nahrát do Azure. Pro virtuální počítače s Windows si stáhněte [soubor .msi agenta virtuálního počítače s Windows](http://go.microsoft.com/fwlink/?LinkID=394789) a nainstalujte agenta virtuálního počítače. Pro virtuální počítač s Linuxem, nainstalujte agenta virtuálního počítače z úložiště GitHub na <https://github.com/Azure/WALinuxAgent>. Další informace o instalaci agenta virtuálního počítače v Linuxu najdete v [Uživatelské příručce k agentu virtuálního počítače Azure s Linuxem](../articles/virtual-machines/extensions/agent-linux.md).
+* Když vytvoříte image virtuálního počítače, která obsahuje nainstalovaného agenta virtuálního počítače. Jakmile se image s agentem virtuálního počítače vytvoří, můžete ji nahrát do Azure. Pro virtuální počítače s Windows si stáhněte [soubor .msi agenta virtuálního počítače s Windows](https://go.microsoft.com/fwlink/?LinkID=394789) a nainstalujte agenta virtuálního počítače. Pro virtuální počítač s Linuxem, nainstalujte agenta virtuálního počítače z úložiště GitHub na <https://github.com/Azure/WALinuxAgent>. Další informace o instalaci agenta virtuálního počítače v Linuxu najdete v [Uživatelské příručce k agentu virtuálního počítače Azure s Linuxem](../articles/virtual-machines/extensions/agent-linux.md).
 
 > [!NOTE]
-> V modelu PaaS se agent virtuálního počítače nazývá **WindowsAzureGuestAgent** a vždy je k dispozici na virtuálních počítačích webové role nebo role pracovního procesu. (Další informace najdete v článku [Infrastruktura rolí Azure](http://blogs.msdn.com/b/kwill/archive/2011/05/05/windows-azure-role-architecture.aspx).) Agent virtuálního počítače pro virtuální počítače rolí nyní může přidávat rozšíření do virtuálních počítačů cloudových služeb stejným způsobem jako do trvalých virtuálních počítačů. Největší rozdíl mezi rozšířeními virtuálních počítačů na virtuálních počítačích rolí a trvalých virtuálních počítačích je při přidání rozšíření virtuálních počítačů. V případě virtuálních počítačů rolí se rozšíření přidávají nejprve do cloudové služby a následně do nasazení v rámci této cloudové služby.
+> V modelu PaaS se agent virtuálního počítače nazývá **WindowsAzureGuestAgent** a vždy je k dispozici na virtuálních počítačích webové role nebo role pracovního procesu. (Další informace najdete v článku [Infrastruktura rolí Azure](https://blogs.msdn.com/b/kwill/archive/2011/05/05/windows-azure-role-architecture.aspx).) Agent virtuálního počítače pro virtuální počítače rolí nyní může přidávat rozšíření do virtuálních počítačů cloudových služeb stejným způsobem jako do trvalých virtuálních počítačů. Největší rozdíl mezi rozšířeními virtuálních počítačů na virtuálních počítačích rolí a trvalých virtuálních počítačích je při přidání rozšíření virtuálních počítačů. V případě virtuálních počítačů rolí se rozšíření přidávají nejprve do cloudové služby a následně do nasazení v rámci této cloudové služby.
 >
 > Pokud chcete zobrazit výpis všech dostupných rozšíření virtuálních počítačů rolí, použijte rutinu [Get-AzureServiceAvailableExtension](https://msdn.microsoft.com/library/azure/dn722498.aspx).
 >

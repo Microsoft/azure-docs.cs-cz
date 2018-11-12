@@ -6,14 +6,14 @@ author: trinadhk
 manager: shreeshd
 ms.service: backup
 ms.topic: conceptual
-ms.date: 7/11/2018
+ms.date: 11/1/2018
 ms.author: trinadhk
-ms.openlocfilehash: f293f642db2bd526e761ff570ce97a33845808b7
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: cf06fc9c12493e208832596a27b479dc9dfea942
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50412801"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51011319"
 ---
 # <a name="use-role-based-access-control-to-manage-azure-backup-recovery-points"></a>Použití řízení přístupu na základě rolí ke správě body obnovení Azure Backup
 Řízení přístupu na základě role v Azure umožňuje přesnou správu přístupu. Pomocí řízení přístupu na základě role můžete povinnosti v rámci týmu oddělit a udělit uživatelům jenom takový přístup, který potřebují k výkonu své práce.
@@ -40,23 +40,27 @@ Následující tabulka udává akce správy zálohování a odpovídající mini
 | Povolit zálohování virtuálních počítačů Azure | Operátor zálohování | Skupina prostředků obsahující trezor |
 | | Přispěvatel virtuálních počítačů | Prostředek virtuálního počítače |
 | Zálohování virtuálního počítače na vyžádání | Operátor zálohování | Prostředek trezoru pro obnovení |
-| Obnovení virtuálního počítače | Operátor zálohování | Skupina prostředků, ve kterém bude nasazen virtuální počítač |
+| Obnovení virtuálního počítače | Operátor zálohování | Trezor služby Recovery Services |
 | | Přispěvatel virtuálních počítačů | Skupina prostředků, ve kterém bude nasazen virtuální počítač |
+| | Přispěvatel virtuálních počítačů | Zdrojový virtuální počítač zálohoval |
 | Obnovit zálohování nespravovaných disků virtuálních počítačů | Operátor zálohování | Prostředek trezoru pro obnovení |
-| | Přispěvatel virtuálních počítačů | Prostředek virtuálního počítače |
-| | Přispěvatel účtů úložiště | Prostředek účtu úložiště |
+| | Přispěvatel virtuálních počítačů | Zdrojový virtuální počítač zálohoval |
+| | Přispěvatel účtů úložiště | Pokud se chystáte disky obnovit prostředek účtu úložiště |
 | Obnovení spravovaných disků ze záloh virtuálních počítačů | Operátor zálohování | Prostředek trezoru pro obnovení |
-| | Přispěvatel virtuálních počítačů | Prostředek virtuálního počítače |
-| | Přispěvatel účtů úložiště | Prostředek účtu úložiště |
-| | Přispěvatel | Skupina prostředků, do kterého se obnoví spravovaného disku |
+| | Přispěvatel virtuálních počítačů | Zdrojový virtuální počítač zálohoval |
+| | Přispěvatel účtů úložiště | Dočasné účtu úložiště jako součást obnovení vybraný pro uchovávání dat z trezoru před převodem na spravované disky |
+| | Přispěvatel | Skupina prostředků, ke kterému se obnovit spravované disky |
 | Obnovení jednotlivých souborů ze záloh virtuálních počítačů | Operátor zálohování | Prostředek trezoru pro obnovení |
-| | Přispěvatel virtuálních počítačů | Prostředek virtuálního počítače |
+| | Přispěvatel virtuálních počítačů | Zdrojový virtuální počítač zálohoval |
 | Vytvoření zásady zálohování pro zálohování virtuálních počítačů Azure | Přispěvatel zálohování | Prostředek trezoru pro obnovení |
 | Upravit zásady zálohování, zálohování virtuálních počítačů Azure | Přispěvatel zálohování | Prostředek trezoru pro obnovení |
 | Odstraňování zásady zálohování, zálohování virtuálních počítačů Azure | Přispěvatel zálohování | Prostředek trezoru pro obnovení |
 | Zastavit zálohování (při zachování dat nebo odstranit data) zálohování virtuálních počítačů | Přispěvatel zálohování | Prostředek trezoru pro obnovení |
 | Registr systému Windows na místním serveru/klienta/SCDPM nebo Azure Backup serveru | Operátor zálohování | Prostředek trezoru pro obnovení |
 | Odstranit registrovaný v místním systému Windows Server/klient/SCDPM nebo serveru Azure Backup | Přispěvatel zálohování | Prostředek trezoru pro obnovení |
+
+> [!IMPORTANT]
+> Pokud zadáte Přispěvatel virtuálních počítačů v oboru prostředků virtuálního počítače a klikněte na zálohu jako součást nastavení virtuálního počítače, otevře se obrazovka 'Povolit zálohování' i v případě, že virtuální počítač je již zálohovali jako volání zkontrolujte, jestli stav zálohování funguje pouze na úrovni předplatného. Abyste tomu předešli, buď přejděte do trezoru a otevřete zobrazení zálohovaná položka virtuálního počítače nebo zadejte role Přispěvatel virtuálních počítačů na úrovni předplatného. 
 
 ## <a name="next-steps"></a>Další postup
 * [Řízení přístupu na základě rolí](../role-based-access-control/role-assignments-portal.md): Začínáme s RBAC na webu Azure Portal.

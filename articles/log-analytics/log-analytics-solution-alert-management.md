@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/19/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: e0bc49fb3b85decb97366b62771a191702149b1a
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: fa76ccf7019097c5f27aa126b0a5a7dc81ffbd41
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50960527"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51008143"
 ---
 # <a name="alert-management-solution-in-azure-log-analytics"></a>Řešení alert managementu ve službě Azure Log Analytics
 
@@ -74,7 +74,7 @@ Klikněte na **Správa výstrah** otevřete dlaždici **Správa výstrah** říd
 | Aktivní výstrahy SCOM |Všechny výstrahy shromážděné z nástroje Operations Manager pomocí některému ze stavů, jiné než *uzavřeno* seskupených podle zdroje, které upozornění vygenerovalo. |
 | Všechny aktivní výstrahy |Všechny výstrahy s všechny závažnosti seskupené podle názvu upozornění. Zahrnuje výstrahy nástroje Operations Manager s některému ze stavů jenom jiné než *uzavřeno*. |
 
-Pokud se posunete doprava, řídicí panel obsahuje několik běžných dotazů, které můžete kliknout na provádět [prohledávání protokolů](log-analytics-log-search.md) pro data výstrah.
+Pokud se posunete doprava, řídicí panel obsahuje několik běžných dotazů, které můžete kliknout na provádět [prohledávání protokolů](log-analytics-queries.md) pro data výstrah.
 
 ![Řídicí panel pro správu výstrah](media/log-analytics-solution-alert-management/dashboard.png)
 

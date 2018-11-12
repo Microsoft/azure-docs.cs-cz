@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
 ms.component: ''
-ms.openlocfilehash: 720deec76c57a7aab222ac3e6e76a1cd3f4253c1
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 14ddd92320fdbeab3edf8c155bdb195334c93e16
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50961411"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51006902"
 ---
 # <a name="network-performance-monitor-solution-performance-monitoring"></a>Network Performance Monitor solution: sledování výkonu
 
@@ -137,4 +137,4 @@ Na následujícím obrázku hlavní příčinu problémových oblastí pro konkr
 ![Mapu s vybrané vlastnosti uzlu](media/log-analytics-network-performance-monitor-performance-monitor/topology-dashboard-root-cause.png) 
 
 ## <a name="next-steps"></a>Další postup
-[Hledání protokolů](log-analytics-log-search.md) zobrazíte podrobné sítě výkonu datových záznamů.
+[Hledání protokolů](log-analytics-queries.md) zobrazíte podrobné sítě výkonu datových záznamů.

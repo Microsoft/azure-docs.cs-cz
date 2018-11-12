@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 3ad1f0638284ad1d9b65a5bb6f2d2b03e9c51e04
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 1983e7560c986df241e9c592aaaa6b646a99840f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50226993"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51264294"
 ---
 ## <a name="planning-and-implementation"></a>Plánování a implementace
 Název: SAP NetWeaver na virtuálních počítačích Azure – plánování a implementaci Průvodce
@@ -18,7 +18,7 @@ Shrnutí: Toto je první dokument, po kterém byste měli sáhnout, pokud zvažu
 
 Aktualizace: Srpen 2015
 
-[Stáhnout teď tuto příručku](http://go.microsoft.com/fwlink/?LinkId=397963)
+[Stáhnout teď tuto příručku](https://go.microsoft.com/fwlink/?LinkId=397963)
 
 ## <a name="deployment"></a>Nasazení
 Název: SAP NetWeaver na virtuálních počítačích Azure – Příručka pro nasazení
@@ -27,7 +27,7 @@ Shrnutí: Tento dokument poskytuje postupy a pokyny pro nasazení softwaru SAP N
 
 Aktualizace: Září 2015
 
-[Stáhnout teď tuto příručku](http://go.microsoft.com/fwlink/?LinkId=397964)
+[Stáhnout teď tuto příručku](https://go.microsoft.com/fwlink/?LinkId=397964)
 
 ## <a name="sap-dbms-on-azure"></a>K SAP DBMS v Azure
 Název: SAP DBMS v příručce pro nasazení Azure
@@ -36,7 +36,7 @@ Shrnutí: Tento dokument popisuje důležité aspekty plánování a implementac
 
 Aktualizace: Prosinec 2015
 
-[Stáhnout teď tuto příručku](http://go.microsoft.com/fwlink/?LinkId=397965)
+[Stáhnout teď tuto příručku](https://go.microsoft.com/fwlink/?LinkId=397965)
 
 ## <a name="sap-netweaver-on-azure"></a>SAP NetWeaver v Azure
 Název: SAP NetWeaver – sestavování Azure na základě řešení zotavení po havárii
@@ -45,5 +45,5 @@ Shrnutí: Tento dokument obsahuje podrobné pokyny pro vytváření Azure založ
 
 Aktualizace: Září 2015
 
-[Stáhnout teď tuto příručku](http://go.microsoft.com/fwlink/?LinkID=521971)
+[Stáhnout teď tuto příručku](https://go.microsoft.com/fwlink/?LinkID=521971)
 

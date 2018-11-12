@@ -1,6 +1,6 @@
 ---
 title: Ukázkový skript Azure PowerShellu – Vytvoření testovacího prostředí brány Azure Firewall
-description: Ukázkový skript Azure PowerShellu – Vytvoření testovacího prostředí brány Azure Firewall
+description: Ukázkový skript Azure PowerShellu – Vytvoření testovacího prostředí služby Azure Firewall
 services: virtual-network
 author: vhorne
 ms.service: firewall
@@ -8,12 +8,12 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 8/13/2018
 ms.author: victorh
-ms.openlocfilehash: 7f1986a9a59087d084577e980233ff87360a17e0
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 5100c5723cf3442520d969e3db6aa65439855551
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49390104"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50230875"
 ---
 # <a name="create-an-azure-firewall-test-environment"></a>Vytvoření testovacího prostředí brány Azure Firewall
 

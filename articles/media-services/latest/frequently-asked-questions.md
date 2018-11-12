@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 11/05/2018
 ms.author: juliako
-ms.openlocfilehash: dccbc6e57e970ec7089f81fccb33b741b9c00e74
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 26661a213b5df5424bf9ab9ad799345ae35620ea
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49376716"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51036763"
 ---
 # <a name="azure-media-services-v3-frequently-asked-questions"></a>Nejčastější dotazy k Azure Media Services v3
 
@@ -28,7 +28,7 @@ Zatím ne. Můžete použít jednu z podporovaných sad SDK. Prohlédněte si ku
 
 ## <a name="is-there-an-api-for-configuring-media-reserved-units"></a>Existuje rozhraní API pro konfiguraci rezervovaných jednotek médií?
 
-Tým služby Media Services je odstranění jednotky ru ve verzi 3. Ale není kompletní pracovní nezbytné služby. Dokud to neuděláte, zákazníci mají nastavení ru pomocí webu Azure portal nebo rozhraní API pro AMS v2 (jak je popsáno v [škálování zpracování médií](../previous/media-services-scale-media-processing-overview.md). 
+V současné době je nutné použít rozhraní API pro AMS v2 ke konfiguraci rezervované jednotky médií (jak je popsáno v [škálování zpracování médií](../previous/media-services-scale-media-processing-overview.md). 
 
 Při použití **VideoAnalyzerPreset** a/nebo **AudioAnalyzerPreset**, nastavit váš účet Media Services k 10 rezervované jednotky médií S3.
 

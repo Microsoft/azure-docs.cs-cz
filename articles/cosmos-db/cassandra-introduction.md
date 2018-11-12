@@ -1,6 +1,6 @@
 ---
 title: Úvod do rozhraní API Cassandra v Azure Cosmos DB | Microsoft Docs
-description: Tady se dozvíte, jak se dá používat Azure Cosmos DB k rozšíření a posunutí stávajících aplikací dál a k vytváření nových aplikací pomocí rozhraní API Cassandra s použitím ovladačů Cassandra a CQL, které už znáte.
+description: Zjistěte, jak pomocí služby Azure Cosmos DB provést migraci stávajících aplikací metodou „lift and shift“ a vytvářet nové aplikace využívající rozhraní API Cassandra s použitím ovladačů Cassandra a CQL, které už znáte.
 services: cosmos-db
 author: kanshiG
 manager: kfile
@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 09/24/2018
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: fe0ed06c5ecd0a84e9999c09cd312ddea2557f80
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 1037f7921093d38d9020bafd9fd3597f27ca5011
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47221640"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50230246"
 ---
 # <a name="introduction-to-the-azure-cosmos-db-cassandra-api"></a>Úvod do rozhraní API Cassandra v Azure Cosmos DB
 

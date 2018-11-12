@@ -10,59 +10,113 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.component: pim
-ms.date: 06/06/2017
+ms.date: 11/01/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 4e1cb47989011f179c54061bd29ae55b4ff86d80
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: e7204c223681b9a33c439b0d9fc653167422384a
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43669407"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51011693"
 ---
 # <a name="configure-security-alerts-for-azure-ad-directory-roles-in-pim"></a>Konfigurace výstrah zabezpečení pro role adresáře Azure AD v PIM
+
+Azure AD Privileged Identity Management (PIM) generuje výstrahy, když je aktivita podezřelého nebo nebezpečné ve vašem prostředí. Když se aktivuje upozornění, zobrazí na řídicím panelu PIM. Vyberte výstrahu, pokud chcete zobrazit sestavu obsahující seznam uživatelů nebo rolí, které aktivuje výstrahu.
+
+![Upozornění zabezpečení PIM – snímek obrazovky](./media/pim-how-to-configure-security-alerts/pim-directory-alerts.png)
+
 ## <a name="security-alerts"></a>Výstrahy zabezpečení
-Azure Privileged Identity Management (PIM) generuje výstrahy, když je aktivita podezřelého nebo nebezpečné ve vašem prostředí. Když se aktivuje upozornění, zobrazí na řídicím panelu PIM. Vyberte výstrahu, pokud chcete zobrazit sestavu obsahující seznam uživatelů nebo rolí, které aktivuje výstrahu.
 
-![Výstrahy zabezpečení řídicí panel PIM – snímek obrazovky](./media/pim-how-to-configure-security-alerts/PIM_security_dash.png)
+Tato část obsahuje seznam všech výstrah zabezpečení pro role adresáře, jak vyřešit a jak zabránit. Závažnost má následující význam:
 
-| Výstrahy | Severity | Trigger | Doporučení |
-| --- | --- | --- | --- |
-| **Role se přiřazení mimo PIM** |Vysoký |Uživatel byl trvale přiřazenou privilegovanou roli, mimo PIM rozhraní. |Projděte si uživatelé v seznamu a rušit přiřazení, je z privilegované role přiřazené mimo PIM. |
-| **Role se aktivuje příliš často** |Střednědobé používání |Došlo k příliš mnoho otestovaného stejný atribut role v nastavení povoleném čase. |Kontaktujte uživatele zobrazíte, proč jejich aktivaci role tolik času. Časový limit je pravděpodobně příliš krátká pro jejich dokončení jejich úloh, nebo možná používáte skripty mohl automaticky aktivovat roli. Ujistěte se, že doba trvání aktivace kvůli své roli je nastaven dostatečně dlouhé pro ně k provádění svých úloh. |
-| **Role nevyžadují ověřování službou Multi-Factor Authentication pro aktivaci** |Střednědobé používání |Jsou role bez MFA povolen v nastavení. |Doporučujeme vyžadovat vícefaktorové ověřování pro největší vysoce privilegované role, ale důrazně doporučujeme povolit MFA pro aktivaci všech rolí. |
-| **Uživatelé nepoužívají svoje privilegované role** |Nízká |Existují oprávněné správce, které se nedávno neaktivovali jejich role. |Zahájení kontroly přístupu k určení uživatelů, kteří už nepotřebují přístup. |
-| **Existuje příliš mnoho globálních správců** |Nízká |Existuje více globálních správců, než se nedoporučuje. |Pokud máte velký počet globálních správců, je pravděpodobné, že uživatelé získávají více oprávnění než potřebují. Přesuňte uživatele k méně privilegovaným rolím nebo nastavit některé z nich oprávněné pro roli místo přiřazena trvale. |
-
-### <a name="severity"></a>Severity
-* **Vysoká**: vyžaduje okamžitý zásah kvůli porušení zásad. 
+* **Vysoká**: vyžaduje okamžitý zásah kvůli porušení zásad.
 * **Střední**: není potřeba reagovat okamžitě, ale signály potenciální porušení zásad.
-* **Nízká**: není potřeba reagovat okamžitě, ale navrhuje změna preferrable zásad.
+* **Nízká**: není potřeba reagovat okamžitě, ale navrhuje změna vhodnější zásad.
+
+### <a name="roles-are-being-assigned-outside-of-pim"></a>Role se přiřazení mimo PIM
+
+| | |
+| --- | --- |
+| **Závažnost** | Vysoký |
+| **Proč se zobrazí toto upozornění?** | Přiřazení privilegovaných rolí, které jsou mimo PIM nemonitoruje správně a může znamenat útok aktivní. |
+| **Jak vyřešit?** | Projděte si uživatelé ze seznamu a odebere je z privilegované role přiřazené mimo PIM. |
+| **Ochrany před únikem informací** | Prozkoumejte, kde uživatelé jsou přiřazení privilegovaných rolí mimo PIM a zakázat budoucí přiřazení z něj. |
+| **Na portálu zmírňující opatření** | Odebere účet z svou privilegovanou roli. |
+
+### <a name="potential-stale-accounts-in-a-privileged-role"></a>Potenciální zastaralé účty v privilegovaných rolí
+
+| | |
+| --- | --- |
+| **Závažnost** | Střednědobé používání |
+| **Proč se zobrazí toto upozornění?** | Účty, které nebyly změněny jejich heslo nedávno může být služba nebo sdílené účty, které nejsou dodržovány. Tyto účty v privilegovaných rolích se pak můžou útočníci. |
+| **Jak vyřešit?** | Projděte si účty v seznamu. Pokud už potřebují přístup, odeberte je ze svoje privilegované role. |
+| **Ochrany před únikem informací** | Ujistěte se, že účty, které jsou sdíleny jsou otáčení silná hesla, když dojde ke změně v uživatele, kteří znát heslo. </br>Pravidelně Zkontrolujte účty s privilegované role pomocí kontrol přístupu a odeberte přiřazení rolí, které už nejsou potřeba. |
+| **Na portálu zmírňující opatření** | Odebere účet z svou privilegovanou roli. |
+
+### <a name="users-arent-using-their-privileged-roles"></a>Uživatelé nepoužívají svoje privilegované role
+
+| | |
+| --- | --- |
+| **Závažnost** | Nízká |
+| **Proč se zobrazí toto upozornění?** | Uživatelé, kteří mají přiřazený privilegované role, které nepotřebují se zvyšuje riziko útoku. Je také jednodušší pro útočníky zůstanou v účtech, které nejsou aktivně používá bez povšimnutí. |
+| **Jak vyřešit?** | Projděte si uživatelé ze seznamu a odebere je z privilegované role, které nejsou potřeba. |
+| **Ochrany před únikem informací** | Privilegované role přiřadíte jenom uživatelé, kteří mají obchodní odůvodnění. </br>Plán kontrol pravidelný přístup k ověření, že uživatelé stále potřebují přístup. |
+| **Na portálu zmírňující opatření** | Odebere účet z svou privilegovanou roli. |
+| **Trigger** | Aktivuje, pokud uživatel přejde určitou dobu bez aktivace role. |
+| **Počet dnů** | Toto nastavení určuje počet dní od 0 do 100, který uživatel přejít bez aktivace role.|
+
+### <a name="there-are-too-many-global-administrators"></a>Existuje příliš mnoho globálních správců
+
+| | |
+| --- | --- |
+| **Závažnost** | Nízká |
+| **Proč se zobrazí toto upozornění?** | Globální správce je nejvyšší privilegovaných rolí. Pokud dojde k narušení globální správce útočník získá přístup ke všem jejich oprávnění, která vloží celý systém ohrožení. |
+| **Jak vyřešit?** | Projděte si uživatelé ze seznamu a odeberte všechny, není nezbytně nutné roli globálního správce. </br>Přiřadíte těmto uživatelům nižší privilegovaných rolí. |
+| **Ochrany před únikem informací** | Přiřazení uživatelů nejméně privilegovaných rolí, které potřebují. |
+| **Na portálu zmírňující opatření** | Odebere účet z svou privilegovanou roli. |
+| **Trigger** | Aktivuje, pokud jsou splněny dva různých kritérií a můžete nakonfigurovat obě z nich. Nejprve budete muset dosáhne určité prahové hodnoty globální správci. Za druhé procento celkové role přiřazení musí být globální správce. Pokud splňujete pouze jeden z těchto měření, výstraha se nezobrazí. |
+| **Minimální počet globálních správců** | Toto nastavení určuje počet globálních správců, od 2 do 100, vezměte v úvahu nebezpečné částku. |
+| **Procento globálních správců** | Toto nastavení určuje minimální procento správce, kteří jsou globální správci, od 0 % do 100 %, který nebezpečné ve vašem prostředí. |
+
+### <a name="roles-are-being-activated-too-frequently"></a>Role se aktivuje příliš často
+
+| | |
+| --- | --- |
+| **Závažnost** | Nízká |
+| **Proč se zobrazí toto upozornění?** | Více aktivací na stejný atribut privilegované role stejným uživatelem je signalizovat útok. |
+| **Jak vyřešit?** | Projděte si uživatelé ze seznamu a ujistěte se, že [doba trvání aktivace](pim-how-to-change-default-settings.md) svou privilegovanou roli je nastavený dostatečně dlouhé pro ně k provádění svých úloh. |
+| **Ochrany před únikem informací** | Ujistěte se, [doba trvání aktivace](pim-how-to-change-default-settings.md) pro privilegované role je nastavena dostatečně dlouhé pro uživatele k provádění svých úloh.</br>[Vyžadovat vícefaktorové ověřování](pim-how-to-change-default-settings.md) pro privilegované role, které mají účty, které jsou sdíleny více správců. |
+| **Na portálu zmírňující opatření** | neuvedeno |
+| **Trigger** | Aktivuje, pokud uživatel aktivuje stejné privilegovaných rolí více než jednou v zadaném období. Můžete nakonfigurovat časové období a počet aktivací. |
+| **Časový rámec prodloužení aktivace** | Toto nastavení určuje dny, hodiny, minuty a sekundy časové období chcete použít ke sledování podezřelých obnovení. |
+| **Počet prodloužení aktivace** | Toto nastavení určuje počet aktivací, od 2 do 100, které považujete za albertových upozornění v časovém rámci, kterou jste zvolili. Je toto nastavení můžete změnit přesunutím posuvníku nebo zadáním čísla do textového pole. |
+
+### <a name="roles-dont-require-mfa-for-activation"></a>Role nevyžadují MFA pro aktivaci
+
+| | |
+| --- | --- |
+| **Závažnost** | Nízká |
+| **Proč se zobrazí toto upozornění?** | Bez MFA ohrožených uživatelů můžete aktivovat privilegované role. |
+| **Jak vyřešit?** | Projděte si seznam rolí a [vyžadovat vícefaktorové ověřování](pim-how-to-change-default-settings.md) pro každou roli. |
+| **Ochrany před únikem informací** | [Vyžadovat vícefaktorové ověřování](pim-how-to-change-default-settings.md) pro každou roli.  |
+| **Na portálu zmírňující opatření** | Díky aktivace privilegovaných rolí vyžaduje se MFA. |
 
 ## <a name="configure-security-alert-settings"></a>Konfigurace nastavení výstrah zabezpečení
-Můžete přizpůsobit některé z výstrah zabezpečení ve službě PIM pro práci s vaším prostředím a cíle zabezpečení. Postupujte podle těchto kroků k dosažení okno nastavení:
 
-1. Přihlaste se k [webu Azure portal](https://portal.azure.com/) a vyberte **Azure AD Privileged Identity Management** dlaždici na řídicím panelu.
-2. Vyberte **spravovat privilegované role** > **nastavení** > **nastavení upozornění**.
-   
-    ![Přejděte do nastavení výstrah zabezpečení](./media/pim-how-to-configure-security-alerts/PIM_security_settings.png)
+Můžete přizpůsobit některé z výstrah zabezpečení ve službě PIM pro práci s vaším prostředím a cíle zabezpečení. Postupujte podle těchto kroků a otevřete nastavení výstrah zabezpečení:
 
-### <a name="roles-are-being-activated-too-frequently-alert"></a>Výstraha "Role jsou aktivované příliš často"
-Tato výstraha se aktivuje, pokud uživatel aktivuje stejné privilegovaných rolí více než jednou v zadaném období. Můžete nakonfigurovat časové období a počet aktivací.
+1. Otevřít **Azure AD Privileged Identity Management**.
 
-* **Časový rámec prodloužení aktivace**: Zadejte dnů, hodin, minut a druhá časové období, které chcete použít ke sledování podezřelých obnovení.
-* **Počet prodloužení aktivace**: Zadejte počet aktivací, od 2 do 100, které považujete za albertových upozornění v časovém rámci, které jste zvolili. Je toto nastavení můžete změnit přesunutím posuvníku nebo zadáním čísla do textového pole.
+1. Klikněte na tlačítko **role Azure AD**.
 
-### <a name="there-are-too-many-global-administrators-alert"></a>Výstraha "Existuje příliš mnoho globálních správců"
-PIM aktivuje toto upozornění, pokud jsou splněny dva různých kritérií a můžete nakonfigurovat obě z nich. Nejprve budete muset dosáhne určité prahové hodnoty globální správci. Za druhé procento celkové role přiřazení musí být globální správce. Pokud splňujete pouze jeden z těchto měření, výstraha se nezobrazí.  
+1. Klikněte na tlačítko **nastavení** a potom **výstrahy**.
 
-* **Minimální počet globálních správců**: Zadejte počet globálních správců, od 2 do 100, vezměte v úvahu nebezpečné množství.
-* **Procento globálních správců**: Zadejte procento správce, kteří jsou globálními správci, od 0 % do 100 %, to nebezpečné ve vašem prostředí.
+    ![Přejděte do nastavení výstrah zabezpečení](./media/pim-how-to-configure-security-alerts/settings-alerts.png)
 
-### <a name="administrators-arent-using-their-privileged-roles-alert"></a>Výstraha "Správci nebudou používat svoje privilegované role"
-Tato výstraha se aktivuje, pokud uživatel přejde určitou dobu bez aktivace role.
+1. Klikněte na název výstrahy. ke konfiguraci nastavení pro toto upozornění.
 
-* **Počet dnů**: Zadejte počet dnů od 0 do 100, který uživatel přejít bez aktivace role.
+    ![Nastavení výstrah zabezpečení](./media/pim-how-to-configure-security-alerts/security-alert-settings.png)
 
 ## <a name="next-steps"></a>Další postup
 

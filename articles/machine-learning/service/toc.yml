@@ -4,7 +4,7 @@ items:
 - name: Přehled
   items:
   - name: Co je služba Azure Machine Learning?
-    displayName: AML, services
+    displayName: AML, services, overview
     href: overview-what-is-azure-ml.md
   - name: Jak služba funguje
     displayName: architecture
@@ -17,6 +17,7 @@ items:
   - name: Začínáme – portál
     href: quickstart-get-started.md
   - name: Začínáme – Python
+    displayName: create workspace
     href: quickstart-create-workspace-with-python.md
 - name: Kurzy
   items:
@@ -25,6 +26,7 @@ items:
   - name: 'Nasazení modelů: část 2'
     href: tutorial-deploy-models-with-aml.md
   - name: Trénování automatizovaných modelů ML
+    displayName: automl
     href: tutorial-auto-train-models.md
 - name: Ukázky
   items:
@@ -34,6 +36,7 @@ items:
 - name: Koncepty
   items:
   - name: Správa modelů
+    displayName: deploy, deployment
     href: concept-model-management-and-deployment.md
   - name: Zrychlení pomocí FPGA
     href: concept-accelerate-with-fpgas.md
@@ -51,13 +54,14 @@ items:
     - name: Konfigurace prostředí
       href: how-to-configure-environment.md
     - name: Nástroje VS Code pro AI
+      displayName: Visual Studio Code, vscode
       items:
       - name: Začínáme
         href: how-to-vscode-tools.md
       - name: Trénování a nasazení
         href: how-to-vscode-train-deploy.md
   - name: Příprava dat
-    displayName: data prep, etl, elt
+    displayName: data prep, etl, elt, data preparation
     href: how-to-data-prep.md
     items:
     - name: Načtení dat
@@ -69,6 +73,7 @@ items:
   - name: Trénování modelů
     items:
     - name: Nastavení prostředí trénování
+      displayName: compute target, train
       href: how-to-set-up-training-targets.md
     - name: Přístup k datům při trénování
       href: how-to-access-data.md
@@ -79,13 +84,12 @@ items:
         href: how-to-train-pytorch.md
       - name: TensorFlow
         href: how-to-train-tensorflow.md
-  - name: Ladění modelů
-    items:
     - name: Ladění hyperparametrů
       href: how-to-tune-hyperparameters.md
     - name: Sledování experimentů a metrik
       href: how-to-track-experiments.md
   - name: Automatizace strojového učení
+    displayName: automl
     href: how-to-automated-ml.md
     items:
     - name: Konfigurace automatizovaného trénování
@@ -101,8 +105,10 @@ items:
     - name: Kam se mají modely nasadit
       href: how-to-deploy-and-where.md
     - name: Nasazení do ACI
+      displayName: Azure Container Instances
       href: how-to-deploy-to-aci.md
     - name: Nasazení do AKS
+      displayName: Azure Kubernetes
       href: how-to-deploy-to-aks.md
     - name: Nasazení do FPGA
       href: how-to-deploy-fpga-web-service.md
@@ -112,6 +118,9 @@ items:
       href: how-to-troubleshoot-deployment.md
     - name: Zabezpečení pomocí protokolu SSL
       href: how-to-secure-web-service.md
+    - name: Využití nasazeného modelu
+      displayName: create client, client, consume
+      href: how-to-consume-web-service.md
   - name: Monitorování modelů
     items:
     - name: Shromažďování dat v produkčním prostředí
@@ -126,6 +135,8 @@ items:
     href: http://aka.ms/aml-sdk
   - name: Sada SDK pro přípravu dat
     href: http://aka.ms/data-prep-sdk
+  - name: Sada SDK pro monitorování
+    href: https://aka.ms/aml-monitoring-sdk
   - name: Machine Learning CLI
     href: reference-azure-machine-learning-cli.md
 - name: Zdroje a prostředky
@@ -347,9 +358,9 @@ items:
       href: ../desktop-workbench/frequently-asked-questions.md
     - name: Starší problémy
       href: ../desktop-workbench/known-issues-and-troubleshooting-guide.md
-ms.openlocfilehash: 23e715064db714765a11771182248978f9493bd2
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 8519a04730105537d5bd8639da54afafdf76590b
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50095071"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51344996"

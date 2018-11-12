@@ -121,31 +121,34 @@ items:
       href: plan-your-environment.md
   - name: Získání dat a jejich pochopení
     items:
-    - name: Správa logistiky dat
+    - name: Ingestace dat
+      displayName: move data, manage data logistics
       items:
       - name: Přehled
         href: ingest-data.md
-      - name: Blob Storage
-        href: move-azure-blob.md
-      - name: Použití Storage Exploreru
-        href: move-data-to-azure-blob-using-azure-storage-explorer.md
-      - name: Použití AzCopy
-        href: move-data-to-azure-blob-using-azcopy.md
-      - name: Použití Pythonu
-        href: ../../storage/blobs/storage-python-how-to-use-blob-storage.md
-        maintainContext: true
-      - name: Použití SSIS
-        href: move-data-to-azure-blob-using-ssis.md
-      - name: Přesun do virtuálního počítače
+      - name: Přechod z/na Blob Storage
+        items:
+        - name: Přehled
+          href: move-azure-blob.md
+        - name: Použití Storage Exploreru
+          href: move-data-to-azure-blob-using-azure-storage-explorer.md
+        - name: Použití AzCopy
+          href: move-data-to-azure-blob-using-azcopy.md
+        - name: Použití Pythonu
+          href: ../../storage/blobs/storage-python-how-to-use-blob-storage.md
+          maintainContext: true
+        - name: Použití SSIS
+          href: move-data-to-azure-blob-using-ssis.md
+      - name: Přechod na SQL na virtuálním počítači
         href: move-sql-server-virtual-machine.md
-      - name: Přesun do databáze SQL
+      - name: Přechod na Azure SQL Database
         href: move-sql-azure.md
-      - name: Načítání do tabulek Hive
+      - name: Přechod na tabulky Hive
         href: move-hive-tables.md
-      - name: Načítání z místního SQL
-        href: move-sql-azure-adf.md
-      - name: Načítání z tabulek oddílů SQL
+      - name: Přechod na dělené tabulky SQL
         href: parallel-load-sql-partitioned-tables.md
+      - name: Přechod z místního SQL
+        href: move-sql-azure-adf.md
     - name: Zkoumání a vizualizace dat
       items:
       - name: Příprava dat
@@ -154,11 +157,11 @@ items:
         items:
         - name: Přehled
           href: explore-data.md
-        - name: Použití Pandasu
+        - name: Prozkoumejte Azure Blob Storage
           href: explore-data-blob.md
-        - name: Použití virtuálních počítačů SQL
+        - name: Prozkoumejte SQL na virtuálním počítači
           href: explore-data-sql-server.md
-        - name: Použití tabulek Hive
+        - name: Prozkoumejte tabulky Hive
           href: explore-data-hive-tables.md
       - name: Ukázková data
         items:
@@ -235,9 +238,9 @@ items:
       items:
       - name: Přehled
         href: cortana-analytics-playbook-vehicle-telemetry.md
-      - name: Playbook
+      - name: Podrobné informace o playbooku
         href: cortana-analytics-playbook-vehicle-telemetry-deep-dive.md
-      - name: Nastavení
+      - name: Nastavení Power BI
         href: cortana-analytics-playbook-vehicle-telemetry-powerbi.md
 - name: Zdroje a prostředky
   items:
@@ -269,9 +272,9 @@ items:
       href: http://stackoverflow.com/questions/tagged/azure-machine-learning
     - name: Videa
       href: https://azure.microsoft.com/resources/videos/index/?services=machine-learning
-ms.openlocfilehash: 7a0e7527b62fec7e3c0d65ad59f53709a13039eb
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 64047bdb6dc25a2e31c2c5e282e7706194ff0733
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50092470"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51344667"

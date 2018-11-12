@@ -22,6 +22,8 @@ items:
     items:
     - name: portál Azure
       href: tutorial-design-database-using-portal.md
+    - name: Azure CLI
+      href: tutorial-design-database-cli.md
 - name: Koncepty
   items:
   - name: Databáze a servery
@@ -30,8 +32,6 @@ items:
       href: concepts-servers.md
     - name: Podporované verze
       href: concepts-supported-versions.md
-    - name: Protokoly serveru
-      href: concepts-server-logs.md
     - name: Vysoká dostupnost
       href: concepts-high-availability.md
   - name: Zdroje a prostředky
@@ -52,6 +52,12 @@ items:
       href: concepts-business-continuity.md
     - name: Zálohování a obnovení
       href: concepts-backup.md
+  - name: Monitorování
+    items:
+    - name: Monitorování
+      href: concepts-monitoring.md
+    - name: Protokoly serveru
+      href: concepts-server-logs.md
   - name: Vývoj
     items:
     - name: Odolnost připojení
@@ -66,10 +72,14 @@ items:
     items:
     - name: portál Azure
       href: howto-manage-firewall-portal.md
+    - name: Azure CLI
+      href: howto-manage-firewall-cli.md
   - name: Obnovení serveru
     items:
     - name: portál Azure
       href: howto-restore-server-portal.md
+    - name: Azure CLI
+      href: howto-restore-server-cli.md
   - name: Migrace databáze
     items:
     - name: Výpis a obnovení
@@ -86,10 +96,14 @@ items:
     items:
     - name: portál Azure
       href: howto-server-parameters.md
+    - name: Azure CLI
+      href: howto-configure-server-parameters-cli.md
   - name: Přístup k protokolům serveru
     items:
     - name: portál Azure
       href: howto-configure-server-logs-portal.md
+    - name: Azure CLI
+      href: howto-configure-server-logs-cli.md
   - name: Replikace
     items:
     - name: Konfigurace replikace příchozích dat
@@ -124,9 +138,9 @@ items:
     href: https://azure.microsoft.com/regions/services/
   - name: Možnosti podpory
     href: https://azure.microsoft.com/support/options/
-ms.openlocfilehash: aca88da087f0d51b0c6759e4cecd91889210b614
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: 3fc6bf5571f3ddcfe6d1a6acd7fc4a298f996e63
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51344348"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51515416"

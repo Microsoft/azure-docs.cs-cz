@@ -10,23 +10,24 @@ ms.topic: conceptual
 ms.date: 12/06/2016
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 4ceef533145bea75247eb26998b998552293ef63
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 04eae00d40470d5f6c992d9a0c8c9b0b49d7495f
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37449804"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51007633"
 ---
 # <a name="azure-active-directory-b2c-file-support-requests"></a>Azure Active Directory B2C: Žádosti o podporu soubor
 Podávejte požadavky na podporu pro Azure Active Directory (Azure AD) B2C na webu Azure portal pomocí následujících kroků:
 
-1. [Přejděte do okna s funkcemi B2C na webu Azure portal pomocí těchto kroků](active-directory-b2c-app-registration.md#navigate-to-b2c-settings).
-2. Přepnout do jiného tenanta, který má předplatné Azure spojené s ním z vašeho tenanta B2C. Obvykle je váš tenant zaměstnance nebo výchozímu tenantu vytvoří za vás při registraci předplatného Azure. Další informace najdete v tématu [jak předplatné služby Azure souvisí s Azure AD](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
+1. Přepnout do jiného tenanta, který má předplatné Azure spojené s ním z vašeho tenanta B2C. Obvykle je váš tenant zaměstnance nebo výchozímu tenantu vytvoří za vás při registraci předplatného Azure. Další informace najdete v tématu [jak předplatné služby Azure souvisí s Azure AD](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
    
     ![Podpora – přepínače tenantů](./media/active-directory-b2c-support/support-switch-dir.png)
+
 3. Po přepnutí tenantů, klikněte na tlačítko **Nápověda a podpora**.
    
     ![Podpora – Nápověda a podpora](./media/active-directory-b2c-support/support-support.png)
+    
 4. Klikněte na tlačítko **nová žádost o podporu**.
    
     ![Podpora – nové](./media/active-directory-b2c-support/support-new.png)

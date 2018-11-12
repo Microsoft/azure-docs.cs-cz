@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/14/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: f8ca716f4ab991fecca52ca2d5fed080e6f4c177
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 7c7671578dc22926dabfe7735038186ab1c2c2b3
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47060360"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51264053"
 ---
 # <a name="standard-ssd-managed-disks-for-azure-virtual-machine-workloads"></a>Standardní spravované disky SSD pro úlohy Azure virtuálních počítačů
 
@@ -22,7 +22,7 @@ Služba Azure Managed Disks Solid stavu disky (SSD na úrovni Standard) jsou ře
 ## <a name="standard-ssd-features"></a>Funkce SSD na úrovni Standard
 
 **Spravované disky**: SSD disky Standard jsou dostupné jenom jako Managed Disks. Objekty BLOB stránky a nespravované disky nejsou podporovány na SSD na úrovni Standard. Při vytváření spravovaného disku, můžete zadat typ disku jako SSD na úrovni Standard a určení velikosti disku potřebujete, a Azure vytvoří a spravuje disk za vás.
-SSD disky standard podporují všechny operace správy služby Managed Disks nabízí. Například můžete vytvořit, kopírovat nebo snímku standardní spravované disky SSD stejným způsobem se službou Managed Disks.
+SSD disky standard podporují všechny operace modelu nasazení classic nabízí Managed Disks. Například můžete vytvořit, kopírovat nebo snímku standardní spravované disky SSD stejným způsobem se službou Managed Disks.
 
 **Virtuální počítače**: standardní disky SSD, je možné všechny virtuální počítače Azure, včetně typů virtuálních počítačů, které nepodporují prémiové disky. Například, pokud používáte virtuálních počítačů řady A-series, nebo virtuálních počítačů řady N-series nebo řady DS-series nebo jiné řady virtuálních počítačů Azure můžete používat standardní disky SSD s tohoto virtuálního počítače. Se zavedením SSD na úrovni Standard jsme uvolnili širokou škálu úloh, které dříve používají disky založené na pevný disk pro přechod do založené na discích SSD disků a konzistentní výkon, vyšší dostupnost, latenci lepší a celkové lepší prostředí, které jsou součástí vlastnosti jednotek SSD.
 
@@ -32,7 +32,7 @@ SSD disky standard podporují všechny operace správy služby Managed Disks nab
 
 ## <a name="scalability-and-performance-targets"></a>Škálovatelnost a cíle výkonnosti
 
-Následující tabulka obsahuje velikosti disků, které jsou v současné době nabízena SSD na úrovni Standard.
+Následující tabulka obsahuje velikosti disků, které jsou v současné době nabízena SSD na úrovni Standard. Velikosti označený hvězdičkou jsou aktuálně ve verzi preview.
 
 |Typ disku SSD na úrovni Standard  |Velikost disku  |IOPS na Disk  |Propustnost / disk  |
 |---------|---------|---------|---------|
@@ -42,9 +42,9 @@ Následující tabulka obsahuje velikosti disků, které jsou v současné době
 |E30     |1 024 GB       |Až 500         |Až 60 MiB za sekundu         |
 |E40     |2 048 GB       |Až 500         |Až 60 MiB za sekundu         |
 |E50     |4 095 GB       |Až 500         |Až 60 MiB za sekundu         |
-|E60     |8 192 giB       |1 až 300       |Až 300 MiB za sekundu        |
-|E70     |16 384 GB      |Až 2 000       |Až 500 MiB za sekundu        |
-|E80     |32 767 giB      |Až 2 000       |Až 500 MiB za sekundu        |
+|E60 *     |8 192 giB       |1 až 300       |Až 300 MiB za sekundu        |
+|E70 *    |16 384 GB      |Až 2 000       |Až 500 MiB za sekundu        |
+|E80 *    |32 767 giB      |Až 2 000       |Až 500 MiB za sekundu        |
 
 Standardní disky SSD jsou navržené k poskytnutí latence v řádu milisekund pro většinu operací vstupně-výstupních operací a k poskytování IOPS a propustnost až do omezení je popsáno v tabulce výše. Skutečné IOPS a propustnost může někdy lišit v závislosti na vzory přenosů. Standardní disky SSD zajistí konzistentnější výkon než HDD disky s nižší latencí.
 
@@ -61,7 +61,7 @@ Při použití standardní disky SSD, platí následující aspekty fakturace:
 - Přenosy odchozích dat
 - Transakce
 
-**Spravovaná velikost disku**: spravované disky se účtují na zřízená velikost. Azure maps zřízená velikost (zaokrouhluje nahoru) na nejbližší nabídku velikost disku. Podrobnosti o velikosti disků nabízejí najdete v tabulce škálovatelnost a cíle výkonnosti výše v části. Každý disk mapuje na velikosti zřízeného disku podporované a proto se neúčtují. Například pokud jste zřídili 200 GB SSD na úrovni Standard, mapuje na nabídku velikost disku z E15 (256 GB). Za všechny zajišťovaným diskem se fakturuje po hodinách pomocí cenu za měsíc pro nabídku služby Premium Storage. Například pokud zřízené disk s E10 a odstraní ji po 20 hodin, bude se vám účtovat pro nabídky E10 nebo jeho poměrnou část 20 hodin. To je bez ohledu na velikost skutečných dat zapsaných na disk.
+**Spravovaná velikost disku**: spravované disky se účtují na zřízená velikost. Azure mapuje zřízenou velikost (zaokrouhlenou nahoru) na nejbližší nabídku velikosti disku. Podrobnosti o velikosti disků nabízejí najdete v tabulce škálovatelnost a cíle výkonnosti výše v části. Každý disk mapuje na velikosti zřízeného disku podporované a proto se neúčtují. Například pokud jste zřídili 200 GB SSD na úrovni Standard, mapuje na nabídku velikost disku z E15 (256 GB). Za všechny zajišťovaným diskem se fakturuje po hodinách pomocí cenu za měsíc pro nabídku služby Premium Storage. Například pokud zřízené disk s E10 a odstraní ji po 20 hodin, bude se vám účtovat pro nabídky E10 nebo jeho poměrnou část 20 hodin. To je bez ohledu na velikost skutečných dat zapsaných na disk.
 
 **Snímky**: snímky Managed Disks se vám účtovat kapacita použitá snímky v cílovém a ve zdroji, pokud existuje. Další informace o snímků, najdete v části [snímky služby Managed Disks](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#managed-disk-snapshots).
 

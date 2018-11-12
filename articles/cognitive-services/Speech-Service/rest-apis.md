@@ -9,12 +9,12 @@ ms.component: speech-service
 ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: erhopf
-ms.openlocfilehash: 7f3daf71f4d94371af5f7d98c4e03761d7217a2a
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: be2f6c49a260477e907f1f8f29f64b9eb08e6926
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50025833"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51038599"
 ---
 # <a name="speech-service-rest-apis"></a>Speech Service REST API
 
@@ -42,7 +42,7 @@ Následující parametry mohou být zahrnuty v řetězci dotazu požadavku REST.
 |`format`|Nepovinné<br>Výchozí hodnota: `simple`|Výsledný formát `simple` nebo `detailed`. Jednoduché výsledky obsahují `RecognitionStatus`, `DisplayText`, `Offset`a doby trvání. Podrobné výsledky obsahují více kandidátů s jistotou hodnotami a čtyři různé reprezentace.|
 |`profanity`|Nepovinné<br>Výchozí hodnota: `masked`|Způsob zpracování vulgárních výrazů v výsledky rozpoznávání. Může být `masked` (nahradí vulgárních výrazů hvězdičky z obou stran), `removed` (odebere všechny vulgárních výrazů), nebo `raw` (včetně vulgárních výrazů).
 
-### <a name="request-headers"></a>Hlavičky žádosti
+### <a name="request-headers"></a>Hlavičky požadavku
 
 Následující pole se odesílají v hlavičce požadavku protokolu HTTP.
 
@@ -57,10 +57,12 @@ Následující pole se odesílají v hlavičce požadavku protokolu HTTP.
 
 ### <a name="audio-format"></a>Formát zvuku
 
-Zvuk se poslala v těle HTTP `POST` požadavku. Musí být ve formátu WAV 16 bitů s PCM jeden kanál (mono) na 16 KHz následující formáty/kódování.
+Zvuk se poslala v těle HTTP `POST` požadavku. Musí být v jednom z formátů, v této tabulce:
 
-* Formátu WAV PCM kodek
-* Formát Ogg kodekem DÍLE
+| Formát | Kodek | S přenosovou rychlostí | Vzorkovací frekvence |
+|--------|-------|---------|-------------|
+| WAV | PCM | 16 bitů | 16 kHz, mono |
+| OGG | DÍLE | 16 bitů | 16 kHz, mono |
 
 >[!NOTE]
 >Výše uvedené formáty jsou podporované prostřednictvím rozhraní REST API a objektu websocket na straně služby řeči. [Sadou SDK pro řeč](/index.yml) aktuálně podporuje jenom WAV naformátuje PCM kodek.
@@ -104,7 +106,7 @@ Následuje Typická žádosti.
 ```HTTP
 POST speech/recognition/conversation/cognitiveservices/v1?language=en-US&format=detailed HTTP/1.1
 Accept: application/json;text/xml
-Content-Type: audio/wav; codec=audio/pcm; samplerate=16000
+Content-Type: audio/wav; codec="audio/pcm"; samplerate=16000
 Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY
 Host: westus.stt.speech.microsoft.com
 Transfer-Encoding: chunked
@@ -212,7 +214,7 @@ cs-CZ  | Jazykovou verzi US English | Muž   | "Microsoft serveru řeči Text na
 
 Úplný seznam dostupných hlasů je k dispozici v [podporované jazyky](language-support.md#text-to-speech).
 
-### <a name="request-headers"></a>Hlavičky žádosti
+### <a name="request-headers"></a>Hlavičky požadavku
 
 Následující pole se odesílají v hlavičce požadavku protokolu HTTP.
 
@@ -260,17 +262,17 @@ Authorization: Bearer [Base64 access_token]
 </voice></speak>
 ```
 
-### <a name="http-response"></a>Odpověď HTTP
+### <a name="http-response"></a>Odpověď protokolu HTTP
 
 Stav protokolu HTTP odpovědi označuje úspěch nebo běžné chybové stavy.
 
 Kód HTTP|Význam|Možný důvod
 -|-|-|
 200|OK|Žádost byla úspěšná. text odpovědi je zvukový soubor.
-400 |Chybná žádost |Povinný parametr nebyl nalezen, prázdný nebo null. Nebo hodnota předaná buď povinný nebo volitelný parametr není platný. Běžné potíže se hlavičku, která je příliš dlouhý.
+400 |Chybný požadavek |Povinný parametr nebyl nalezen, prázdný nebo null. Nebo hodnota předaná buď povinný nebo volitelný parametr není platný. Běžné potíže se hlavičku, která je příliš dlouhý.
 401|Neautorizováno |Požadavek není autorizovaný. Ověřte váš klíč předplatného nebo token je platný a v oblasti správné.
 413|Příliš velká entita požadavku|Vstup SSML je delší než 1024 znaků.
-429|Příliš mnoho požadavků|Překročili jste kvótu nebo počet požadavků pro vaše předplatné povolená.
+429|Příliš mnoho žádostí|Překročili jste kvótu nebo počet požadavků pro vaše předplatné povolená.
 502|Chybná brána | Problém sítě nebo na straně serveru. Může také znamenat neplatné záhlaví.
 
 Pokud je stav protokolu HTTP `200 OK`, tělo odpovědi obsahuje zvukový soubor v požadovanému formátu. Tento soubor můžete přehrát, jako má přenesených nebo uložit do vyrovnávací paměti nebo později přehrát či jiné použití souboru.

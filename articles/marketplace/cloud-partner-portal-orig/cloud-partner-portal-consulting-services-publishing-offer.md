@@ -1,6 +1,6 @@
 ---
-title: Konzultační služby | Dokumentace Microsoftu
-description: Příručka pro definování a publikování nabídky na konzultační služby.
+title: Azure a nabídky Dynamcis 365 konzultačních služeb | Dokumentace Microsoftu
+description: Příručka pro definování a publikování konzultační služby nabídky na Azure nebo Dynamcis 365 na portál partnerů cloudu.
 services: Azure, Marketplace, Cloud Partner Portal,
 documentationcenter: ''
 author: dan-wesley
@@ -12,19 +12,29 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/13/2018
+ms.date: 11/01/2018
 ms.author: pbutlerm
-ms.openlocfilehash: b3f6b9166afce9ca0cdeaa1c9dd6e10a5a976453
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 43f1e71486cedbeccb2c02388147a68756581e50
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48809349"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51037758"
 ---
-<a name="defining-and-publishing-your-consulting-services-offer"></a>Definování a publikování vaší nabídky konzultační služby
-======================================================
+# <a name="azure-and-dynamics-365-consulting-service-offer"></a>Azure a nabídky Dynamics 365 konzultační služby
 
-Tato příručka je určená pro vám pomůže definovat a publikování nabídky konzultační služby na portálu Cloud Partner.
+<table> <tr> <td>Tato část vysvětluje, jak publikovat konzultační služby buď Microsoft <a href="https://azuremarketplace.microsoft.com">Azure Marketplace</a> nebo <a href="https://appsource.microsoft.com">AppSource Marketplace</a>. Řešení na základě Microsoft <a href="https://dynamics.microsoft.com">Dynamics 365</a>, <a href="https://products.office.com">Office 365</a>, <a href="https://powerbi.microsoft.com">Power BI</a>, a <a href="https://powerapps.microsoft.com">PowerApps</a> mají nárok na uvedené na AppSource. Další Microsoftu na základě jiné nabídky <a href="https://azure.microsoft.com/services">služeb Azure</a> jsou nárok na uvedení na webu Azure Marketplace. </td> <td><img src="./media/consulting-services-publishing-offer/consulting-icon1.png"  alt="Microsoft consulting icon" /></td> </tr> </table>
+
+
+# <a name="publishing-benefits"></a>Publikování výhody
+
+Publikování na některý z Tržiště Microsoftu má významné výhody:
+
+- Propagace vaší společnosti využitím značky společnosti Microsoft.
+- Potenciálně Oslovte více než 100 milionů uživatelů Office 365 a Dynamics 365 na AppSource; Oslovte více než 200 tisíc organizace prostřednictvím Azure Marketplace.
+- Získejte vysoce kvalitní zájemce z těchto tržišť s řešeními.
+- Získejte služby povýšen pomocí Microsoft teams pole a prodej po telefonu.
+
 
 <a name="define-your-consulting-services-offer"></a>Definujte vaši nabídku konzultační služby
 -------------------------------------
@@ -52,43 +62,36 @@ Pokud chcete vytvořit novou nabídku, proveďte následující kroky:
 
 ### <a name="define-offer-settings"></a>Definujte nastavení nabídky
 
-V dialogovém okně Nová nabídka prvním krokem je vytvoření identity nabídky.
-Nabídka identity se skládá ze tří částí:
-
-1.  ID nabídky
-2.  ID vydavatele
-3.  Název
-
-Každá z těchto částí jsou popsané v následujících částech.
+V dialogovém okně Nová nabídka prvním krokem je vytvoření identity nabídky.  Nabídka identity se skládá ze tří částí: **ID nabídky**, **ID vydavatele**, a **název**.  Každá z těchto částí jsou popsané v následujících částech.
 
 #### <a name="offer-id"></a>ID nabídky
 
-Toto je jedinečný název, který vytvoříte, když nejdřív odešlete nabídky. Musí obsahovat jenom malé alfanumerické znaky, pomlčky nebo podtržítka. ID se nebude zobrazovat v adrese URL a dopady modul výsledky hledání. Například *yourcompanyname\_exampleservice*
+Tento identifikátor je jedinečný název, který vytvoříte, když nejdřív odešlete nabídky. Musí obsahovat jenom malé alfanumerické znaky, pomlčky nebo podtržítka. ID nabídky se nebude zobrazovat v adrese URL a dopady modul výsledky hledání. Například *yourcompanyname\_exampleservice*
 
-Jak je znázorněno v příkladu, získá ID nabídky připojí vaše ID vydavatele k vytvoření jedinečného identifikátoru. To je vystavena jako trvalý odkaz, který může být zapsán a je indexované podle vyhledávací weby.
+Jak je znázorněno v příkladu, připojí získá ID vydavatele vytvořit jedinečný identifikátor ID nabídky. To je vystavena jako trvalý odkaz, který může být zapsán a je indexované podle vyhledávací weby. 
 
-**Poté, co je v provozu v rámci nabídky můžete\'aktualizovat t**
+*Po nabídky je v provozu, nejde aktualizovat její identifikátor*
 
 #### <a name="publisher-id"></a>ID vydavatele
 
-To se vztahuje k vašemu účtu. Pokud jste se přihlásili pomocí účtu organizace, vaše ID vydavatele se zobrazí v rozevírací nabídce.
+Tento identifikátor se vztahuje k vašemu účtu. Pokud jste se přihlásili pomocí účtu organizace, vaše ID vydavatele se zobrazí v rozevírací nabídce.
 
 #### <a name="name"></a>Název
 
-Je to, co se zobrazí jako název nabídky na AppSource nebo Azure Marketplace.
+Tento řetězec představuje, co se zobrazí jako název nabídky na AppSource nebo Azure Marketplace.
 
 **Důležité:** zadat pouze název aktuální služby. Nezahrnují doba trvání a typ služby.
 
-Následující příklad pomocí Edgewater Fullscope ukazuje, jak je sestavena název nabídky. Název nabídky vypadá takto:
+Následující příklad pomocí Edgewater Fullscope ukazuje, jak je sestavena název nabídky. Název nabídky se zobrazí jako:
 
 ![Vytvoření nové nabídky konzultační služby](media/consulting-services-publishing-offer/cppsampleconsultingoffer.png)
 
 Název nabídky se skládá ze čtyř částí:
 
--   **Doba trvání:** to definujete v kartě Podrobnosti z prodejních míst editoru. Doba trvání může být vyjádřena v hodinách, dnech nebo týdnech.
--   **Typ služby:** to definujete v kartě Podrobnosti z prodejních míst editoru. Typy služeb jsou hodnocení, přehledové, implementace, testování konceptu a seminář o.
--   **Mezerami:** vložen recenzentem
--   **Název:** jde definované na stránce nabídky nastavení.
+-   **Doba trvání:** – definované v **podrobnosti z prodejních míst** karta editoru. Doba trvání může být vyjádřena v hodinách, dnech nebo týdnech.
+-   **Typ služby:** – definované v **podrobnosti z prodejních míst** karta editoru. Typy služeb jsou `Assessment`, `Briefing`, `Implementation`, `Proof of concept`, a `Workshop`.
+-   **Mezerami:** – recenzentem vložené:
+-   **Název:** – definován **nabízejí nastavení** stránky.
 
 Následující seznam obsahuje několik názvů dobře pojmenované nabídky:
 
@@ -124,7 +127,7 @@ V části podrobnosti nabídky obsahují následující pole:
 
 ##### <a name="offer-summary"></a>Souhrn nabídky
 
-Souhrn nabídky je stručný popis nabídky, která se zobrazí pod název nabídky. Při zadávání souhrn nabídky byste měli použít prostý text a by neměl mít konce řádků. Následující jsou dobrým příkladem nabídka souhrny spolu s jejich odpovídající názvy nabídky:
+Souhrn nabídky je stručný popis nabídky, která se zobrazí pod název nabídky. Použití prostého textu při zadávání souhrn nabídky a by neměl mít konce řádků. Následující jsou dobrým příkladem nabídka souhrny spolu s jejich odpovídající názvy nabídky:
 
 *Příklad 1*
 
@@ -153,7 +156,7 @@ Souhrn nabídky je stručný popis nabídky, která se zobrazí pod název nabí
 
 ##### <a name="offer-description"></a>Popis nabídky
 
-Toto je popis nabídky konzultační služby. Popis dobré nabídky zahrnuje přesné údaje o zapojení bude vypadat a co se bude koncovým dodávky zákazníkovi. Mělo by to jasně pomoct pochopit, co dostanou zákazníka.
+Popis nabídky konzultační služby. Popis dobré nabídky zahrnuje přesné údaje o zapojení bude vypadat a co se bude koncovým dodávky zákazníkovi. Mělo by to jasně pomoct pochopit, co dostanou zákazníka.
 
 Nezahrnují odkazy na e-mailu nebo telefonních čísel pro kontaktovat a poskytnou vám nabídka popisu. Bude kontakt tlačítko v rámci vaší nabídky, který bude nahrávat vede k cíli správy potenciálních zákazníků, které identifikují na vaši nabídku.
 
@@ -161,7 +164,7 @@ Popis nabídky bude zadejte ve formátu Markdown. Pokud nejste obeznámeni s Mar
 
 Pomocí těchto formátů zajistí, že vaše nabídka má maximální čitelnost pro zákazníky.
 
-Zachovat stručný popis nabídky a dodržovat limit počtu znaků jako uživatelům nebude vyhovovat číst hodně textu. Pořád máte možnost nahrávat marketingové brožury, tabulky faktů a jiných dokumentů, které popisují vaši nabídku v podrobnější informace.
+Zachovat stručný popis nabídky a dodržovat limit počtu znaků jako uživatelům nebude vyhovovat číst dlouhý text. Pořád máte možnost nahrávat marketingové brožury, tabulky faktů a jiných dokumentů, které popisují vaši nabídku v podrobnější informace.
 
 Následující příklad ukazuje také skládá popis nabídky a její související název a souhrn:
 
@@ -223,7 +226,7 @@ Nové centrum ID partnera, pokud nemáte.
 **MPN ID**
 
 Zadejte tajný klíč k náhledu na vaši nabídku před přechodem do ostrého provozu na AppSource.
-Nejedná se o heslo.
+Tento identifikátor není heslo.
 
 #### <a name="listing-details"></a>Podrobnosti
 
@@ -287,4 +290,4 @@ Nahrávání až o pěti obrázků, které poskytují další informace o nabíd
 
 Po dokončení nabízejí nastavení, podrobnosti o prodejních míst a kontakty, vyberte **publikovat** a zadejte e-mailovou adresu. Když Microsoft je připravená k publikování vaší nabídky, dostanete e-mailu můžete zobrazit jeho náhled dříve, než přejde za provozu. Můžete se vrátit na portál a zkontrolovat stav vaší nabídky v libovolném bodě v čase.
 
-Nabídky se může zobrazit v "Publikování bylo zrušeno" nebo "Publikování se nezdařilo" stav během procesu publikování. To je součástí normálního procesu a umožňuje provádět úpravy nabídky společnosti Microsoft. Pokud se zobrazí vaše nabídka v "Publikování bylo zrušeno", nechat ji ve stav.
+Nabídky se může zobrazit v "Publikování bylo zrušeno" nebo "Publikování se nezdařilo" stav během procesu publikování. Tento stav je součástí normálního procesu a umožňuje provádět úpravy nabídky společnosti Microsoft. Pokud se zobrazí vaše nabídka v "Publikování bylo zrušeno", nechat ji ve stav.

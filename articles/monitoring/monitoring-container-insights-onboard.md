@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/04/2018
+ms.date: 11/05/2018
 ms.author: magoedte
-ms.openlocfilehash: 505abe8f3dc19458b3f0e18f349974199ae4ba58
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 2b7045f74a22732337ceb8dc9136da1c93ee7c2c
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50212110"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51037783"
 ---
 # <a name="how-to-onboard-azure-monitor-for-containers-preview"></a>Monitorování připojení Azure pro kontejnery (Preview) 
 Tento článek popisuje, jak nastavit službu Azure Monitor k monitorování výkonu úlohy, které se nasazují do prostředí Kubernetes a hostitelem pro kontejnery [Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/).
@@ -110,7 +110,7 @@ Po povolení sledování, může trvat přibližně 15 minut, než se zobrazí s
 ### <a name="enable-monitoring-from-aks-cluster-in-the-portal"></a>Povolit monitorování z clusteru AKS na portálu
 Pokud chcete povolit monitorování vašeho kontejneru AKS na portálu Azure portal, postupujte takto:
 
-1. Na webu Azure Portal, vyberte **všechny služby**. 
+1. Na webu Azure Portal vyberte **Všechny služby**. 
 2. V seznamu prostředků, začněte psát **kontejnery**.  
     Seznam se průběžně filtruje podle vašeho zadání. 
 3. Vyberte **služby Kubernetes**.  
@@ -244,7 +244,7 @@ Pokud se rozhodnete používat rozhraní příkazového řádku Azure, musíte n
 
     ```json
     {
-       "$schema": "https://schema.management.azure.com/  schemas/2015-01-01/deploymentParameters.json#",
+       "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
        "contentVersion": "1.0.0.0",
        "parameters": {
          "aksResourceId": {
