@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/26/2018
 ms.author: barbkess
-ms.reviewer: harshja
+ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: 5227f756e807a30573733bd408144d869caac9ec
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 59ca9ca7711904fe7882aac4878bd62c597645d8
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39366471"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51034962"
 ---
 # <a name="get-started-with-application-proxy-and-install-the-connector"></a>Začínáme s Proxy aplikace a nainstalujte konektor
 Tento článek vás provede postupem, který umožňuje povolit proxy aplikace u cloudového adresáře služby Microsoft Azure AD.
@@ -33,6 +33,7 @@ Předtím, než budete moct povolit a používat služby proxy aplikace, musíte
 * [Základní nebo prémiové předplatné služby Microsoft Azure AD](../fundamentals/active-directory-whatis.md) a adresář služby Azure AD, u kterého jste globální správce.
 * Serveru se systémem Windows Server 2012 R2 nebo 2016, na který nainstalujete konektor Proxy aplikace. Server musí být schopný se připojit k Proxy aplikace služby v cloudu a místních aplikací, které publikujete.
   * Pro jednotné přihlašování pro aplikace publikované pomocí omezeného delegování protokolu Kerberos tento počítač by měl být připojených k doméně ve stejné doméně AD jako aplikace, které publikujete. Informace najdete v tématu [KCD pro jednotné přihlašování s Proxy aplikací](application-proxy-configure-single-sign-on-with-kcd.md).
+* Protokol TLS 1.2 používá podkladový operační systém. Chcete-li změnit na TLS 1.2, postupujte podle kroků v [povolení protokolu TLS 1.2](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-prerequisites#enable-tls-12-for-azure-ad-connect). Když je obsah pro Azure AD Connect, tento postup je stejný pro všechny klienty .NET.
 
 Pokud vaše organizace používá proxy servery pro připojení k Internetu, přečtěte si [práce s existující místní proxy servery](application-proxy-configure-connectors-with-proxy-servers.md) podrobnosti o tom, jak je nakonfigurovat před zahájením práce s Proxy aplikací.
 

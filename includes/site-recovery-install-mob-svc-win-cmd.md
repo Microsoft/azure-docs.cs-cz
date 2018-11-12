@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: raynew
 ms.openlocfilehash: 65477f62af80511a73307204c2a6f4b5e0f409d6
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50165309"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51019086"
 ---
 1. Zkopírujte instalační program k místní složce (třeba C:\Temp) na serveru, který chcete chránit. Jako správce z příkazového řádku spusťte následující příkazy:
 
@@ -40,7 +40,7 @@ UnifiedAgent.exe /Role <MS|MT> /InstallLocation <Install Location> /Platform “
 
 | Parametr|Typ|Popis|Možné hodnoty|
 |-|-|-|-|
-|/ Role|Povinné|Určuje, jestli se má nainstalovat služba Mobility (MS) nebo hlavní cílový server má (MT) by měly být nainstalovány.|MS </br> MT –|
+|/ Role|Povinné|Určuje, jestli se má nainstalovat služba Mobility (MS) nebo hlavní cílový server má (MT) by měly být nainstalovány.|MS </br> MT|
 |/InstallLocation|Nepovinné|Umístění, ve kterém je nainstalovaná služba Mobility.|Libovolná složka v počítači|
 |/ Platform|Povinné|Určuje platformu, na kterém je nainstalovaná služba Mobility. </br> </br>- **VMware**: tuto hodnotu použijte, pokud instalace služby Mobility na virtuálního počítače se systémem *hostitelů VMware vSphere ESXi*, *hostitele Hyper-V*, a *fyzických serverů*. </br> - **Azure**: tuto hodnotu použijte, pokud instalujete agenta na Virtuálním počítači Azure IaaS. | VMware </br> Azure|
 |/ Silent|Nepovinné|Určuje, ke spuštění instalačního programu v bezobslužném režimu.| neuvedeno|

@@ -15,12 +15,12 @@ ms.date: 10/17/2018
 ms.author: barbkess
 ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: c9c21b9beb891a685d7e264ec55817c0045455bc
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 62738cda8ce37ec7ca50e1e3f285dc71a37113f7
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406273"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51036033"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Principy konektorů Proxy aplikací Azure AD
 
@@ -32,7 +32,7 @@ Konektory jsou zjednodušené agentů nacházejí v místním usnadnění odchoz
 
 ## <a name="requirements-and-deployment"></a>Požadavky a nasazení
 
-Pokud chcete úspěšně nasadit Proxy aplikace, budete potřebovat alespoň jeden konektor, ale doporučujeme dva nebo více pro větší odolnost proti chybám. Konektor nainstalujte na Windows Server 2012 R2 nebo 2016 počítače. Konektor musí být schopni komunikovat se službou Proxy aplikací, jakož i u místních aplikací, které publikujete. 
+Pokud chcete úspěšně nasadit Proxy aplikace, budete potřebovat alespoň jeden konektor, ale doporučujeme dva nebo více pro větší odolnost proti chybám. Konektor nainstalujte na Windows Server 2012 R2 nebo 2016 počítače. Konektor musí být schopni komunikovat se službou Proxy aplikací, jakož i u místních aplikací, které publikujete. Proxy aplikací také vyžaduje protokol TLS 1.2 používá podkladový operační systém. Chcete-li změnit na TLS 1.2, postupujte podle kroků v [povolení protokolu TLS 1.2](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-prerequisites#enable-tls-12-for-azure-ad-connect). Když je obsah pro Azure AD Connect, tento postup je stejný pro všechny klienty .NET.
 
 Další informace o požadavcích na síť pro konektor serveru najdete v tématu [začít pracovat s Proxy aplikací a nainstalovat konektor](application-proxy-enable.md).
 

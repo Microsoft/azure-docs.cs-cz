@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ericrad
-ms.openlocfilehash: d96058ae9415ccb361af8a281a4b65b3f69edfcd
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: 7a7267faae2067a873ee11bfbf4ef3027b285a0b
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42746761"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51034945"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-windows-vms"></a>Služby Azure Metadata: Naplánované události pro virtuální počítače s Windows
 
@@ -42,7 +42,7 @@ Mnoho aplikací můžete těžit z času na přípravu pro údržbu virtuálníh
 - Protokolování událostí
 - Řádné vypnutí 
 
-Pomocí naplánovaných událostí aplikace můžete zjistit, kdy bude údržby dojít k a spouštění úloh a omezit jejich dopad.  
+Pomocí naplánovaných událostí aplikace můžete zjistit, kdy bude údržby dojít k a spouštění úloh a omezit jejich dopad. Povolení naplánované události poskytuje minimální množství času, před provedením aktivity údržby virtuální počítač. V části plánování událostí pod podrobnosti.
 
 Naplánované události poskytuje události v následujících případech použití:
 - Údržby iniciované platformy (například aktualizace operačního systému hostitele)
@@ -71,7 +71,7 @@ Služba naplánované události se systémovou správou verzí. Verze jsou povin
 > Předchozí verze preview naplánované události, které jsou podporované jako verze api-version {nejnovější}. Tento formát se už nepodporuje a v budoucnu budou zastaralé.
 
 ### <a name="enabling-and-disabling-scheduled-events"></a>Povolení a zakázání naplánované události
-Naplánované události je povolený pro vaše služby první čas, který může požádat o události. Měli byste očekávat zpožděné odpovědi v první volání až dvě minuty.
+Naplánované události je povolený pro vaše služby první čas, který může požádat o události. Měli byste očekávat zpožděné odpovědi v první volání až dvě minuty. Koncový bod pravidelně k detekci události nadcházející údržby, jakož i stav činnosti údržby, které jsou prováděny by dotazování.
 
 Naplánované události je zakázaná pro vaši službu, pokud nepoužívá žádost po dobu 24 hodin.
 
@@ -82,7 +82,7 @@ Restartuje se virtuální počítač naplánuje událost s typem `Reboot`. Znovu
 
 ## <a name="using-the-api"></a>Pomocí rozhraní API
 
-### <a name="headers"></a>Záhlaví
+### <a name="headers"></a>Hlavičky
 Když odešlete dotaz na Metadata Service, je nutné zadat hlavičku `Metadata:true` zajistit požadavek nebyl přesměrován náhodně. `Metadata:true` Hlavičky je povinná pro všechny požadavky naplánovaných událostí. Chybná žádost odpověď ze služby Metadata způsobí selhání zahrnout hlavičku požadavku.
 
 ### <a name="query-for-events"></a>Dotaz pro události
@@ -110,6 +110,7 @@ V případě, kdy jsou naplánované události, odpověď obsahuje celou řadu u
     ]
 }
 ```
+DocumentIncarnation je značka ETag a poskytuje snadný způsob, jak zkontrolovat, pokud od posledního dotazu změnil datové části události.
 
 ### <a name="event-properties"></a>Vlastnosti události
 |Vlastnost  |  Popis |
