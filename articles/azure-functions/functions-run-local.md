@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: glenga
-ms.openlocfilehash: cc3a835c0322aded4a92b15c1320259780ffb6d2
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 6ba2fd85e23f3a0b634319f7399f97bec9ef3954
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50249216"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51346418"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Práce s Azure Functions Core Tools
 
@@ -114,16 +114,6 @@ Následující kroky použijte [APT](https://wiki.debian.org/Apt) instalace nás
     sudo apt-get install azure-functions-core-tools
     ```
 
-### <a name="v1"></a>Verzi 1.x
-
-Původní verzi nástrojů používá modul runtime verze 1.x funkce. Tato verze rozhraní .NET Framework (4.7.1) používá a je podporován pouze na počítačích s Windows. Před instalací nástroje verzi 1.x musí [nainstalovat prostředí NodeJS](https://docs.npmjs.com/getting-started/installing-node), což zahrnuje npm.
-
-Použijte následující příkaz k instalaci nástrojů pro verzi 1.x:
-
-```bash
-npm install -g azure-functions-core-tools@v1
-```
-
 ## <a name="create-a-local-functions-project"></a>Vytvořte projekt místní funkce
 
 Adresář projektu funkce obsahuje soubory [host.json](functions-host-json.md) a [local.settings.json](#local-settings-file), spolu s podsložky, které obsahují kód pro jednotlivé funkce. Tento adresář je ekvivalentem aplikaci function app v Azure. Další informace o struktuře složek funkce, najdete v článku [Příručka pro vývojáře Azure Functions](functions-reference.md#folder-structure).
@@ -214,7 +204,7 @@ Hodnoty nastavení aplikace funkcí můžete číst také ve vašem kódu jako p
 
 + [Předkompilované C#](functions-dotnet-class-library.md#environment-variables)
 + [C# skript (.csx)](functions-reference-csharp.md#environment-variables)
-+ [Skript F # (.fsx)](functions-reference-fsharp.md#environment-variables)
++ [F#skript (.fsx)](functions-reference-fsharp.md#environment-variables)
 + [Java](functions-reference-java.md#environment-variables) 
 + [JavaScript](functions-reference-node.md#environment-variables)
 
@@ -288,7 +278,7 @@ Můžete také zadat tyto možnosti v příkaz s následujícími argumenty:
 | Argument     | Popis                            |
 | ------------------------------------------ | -------------------------------------- |
 | **`--csx`** | (Verze 2.x) Generuje stejné jazyka C# (.csx) skript šablony používané ve verzi 1.x a na portálu. |
-| **`--language -l`**| Šablona programovací jazyk, jako je C#, F # nebo JavaScript. Tato možnost je vyžadována ve verzi 1.x. Ve verzi 2.x, tuto možnost použijte, nebo zvolte jazyk, který odpovídá modulu runtime pracovního procesu. |
+| **`--language -l`**| Šablona programovací jazyk, jako například C#, F#, nebo JavaScript. Tato možnost je vyžadována ve verzi 1.x. Ve verzi 2.x, tuto možnost použijte, nebo zvolte jazyk, který odpovídá modulu runtime pracovního procesu. |
 | **`--name -n`** | Název funkce. |
 | **`--template -t`** | Použití `func templates list` příkazu zobrazte úplný seznam dostupných šablon pro každý podporovaný jazyk.   |
 

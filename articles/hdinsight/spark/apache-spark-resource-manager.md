@@ -2,19 +2,19 @@
 title: Správa prostředků v clusteru Apache Spark v Azure HDInsight
 description: Další informace o použití spravovat prostředky pro clustery Spark v Azure HDInsight pro zajištění lepšího výkonu.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/23/2018
-ms.author: jasonh
-ms.openlocfilehash: d7395231662d79d284bdf061e651602dea392c28
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.author: hrasheed
+ms.openlocfilehash: 166d52322504e57e01a4bd798252fc956c1a3e44
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43051494"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51014580"
 ---
 # <a name="manage-resources-for-apache-spark-cluster-on-azure-hdinsight"></a>Správa prostředků v clusteru Apache Spark v Azure HDInsight 
 
@@ -76,7 +76,7 @@ Tři konfigurační parametry se dají konfigurovat na úrovni clusteru (pro vš
 2. Výchozí hodnoty jsou dobré si co čtyři aplikací Spark spuštěné současně v clusteru. Tyto hodnoty můžete změnit z uživatelského rozhraní, jak je znázorněno na následujícím snímku obrazovky:
 
     ![Nastavit parametry pomocí Ambari](./media/apache-spark-resource-manager/set-executor-parameters.png)
-3. Klikněte na tlačítko **Uložit** se uložit změny konfigurace. V horní části stránky zobrazí se výzva k restartování všechny ovlivněné služby. Klikněte na tlačítko **restartovat**.
+3. Klikněte na tlačítko **Uložit** se uložit změny konfigurace. V horní části stránky zobrazí se výzva k restartování všechny ovlivněné služby. Klikněte na **Restartovat**.
 
     ![Restartování služeb](./media/apache-spark-resource-manager/restart-services.png)
 

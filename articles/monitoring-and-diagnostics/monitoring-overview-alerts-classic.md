@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: robb
 ms.component: alerts
-ms.openlocfilehash: c69a61f19b55cd325cd594173dbf3b5f2b4576b8
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 02e69a9e3442f276e89e8515fb506ddd876ad2d2
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50962924"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51015770"
 ---
 # <a name="what-are-classic-alerts-in-microsoft-azure"></a>Co jsou upozornění v Microsoft Azure classic?
 
@@ -29,7 +29,7 @@ V posledních monitorování Azure Application Insights, Log Analytics a stavy s
 
 Upozornění classic můžete zobrazit pouze na obrazovce uživatele klasických upozornění na webu Azure Portal. Získat z této obrazovky **zobrazit upozornění classic** tlačítko na obrazovce oznámení. 
 
- ![Upozornění možností na webu Azure portal](./media/monitoring-overview-alerts-classic/monitor-alert-screen2.png)�
+ ![Upozornění možností na webu Azure portal](./media/monitoring-overview-alerts-classic/monitor-alert-screen2.png)
 
 Nové prostředí upozornění uživatele má tyto výhody nad komfortem při upozornění classic:
 -   **Lepší systému oznámení** – všechny novější upozornění použití skupin akcí, které jsou pojmenované skupiny oznámení a akce, které lze znovu použít ve více výstrah. Klasického upozornění metrik a starší upozornění Log Analytics není použití skupin akcí.
@@ -40,7 +40,7 @@ Nové prostředí upozornění uživatele má tyto výhody nad komfortem při up
 -   **Inteligentní konsolidace výstrah** a **nastavení výstrah stavu** -novější výstrahy obsahují funkci seskupování automaticky zobrazují podobná oznámení dohromady a snížit přetížení v uživatelském rozhraní. 
 
 Novějších upozornění metrik nabízí tyto výhody prostřednictvím klasického upozornění metrik:
--   **Vylepšené latence**: novějších upozornění metrik můžete spustit tak často, jak každou minutu. Upozornění na metriku starší vždy spustit s frekvencí 5 minut. Novější upozornění rostoucími menší prodlevou z problém occurance oznámení nebo akce (3 až 5 minut). Starší výstrahy jsou 5 až 15 minut v závislosti na typu.  Upozornění protokolů mají obvykle 10 až 15 minut zpoždění kvůli době je trvá příjem protokolů, ale novější zpracování metody se zmenší tento čas. 
+-   **Vylepšené latence**: novějších upozornění metrik můžete spustit tak často, jak každou minutu. Upozornění na metriku starší vždy spustit s frekvencí 5 minut. Novější upozornění rostoucími menší prodlevou z výskytu problému oznámení nebo akce (3 až 5 minut). Starší výstrahy jsou 5 až 15 minut v závislosti na typu.  Upozornění protokolů mají obvykle 10 až 15 minut zpoždění kvůli době je trvá příjem protokolů, ale novější zpracování metody se zmenší tento čas. 
 -   **Podpora pro vícerozměrné metriky**: může upozornit na jednodimenzionální metriky, které umožňuje sledovat zajímavé segmentu metriky.
 -   **Větší kontrolu nad metriky podmínky**: můžete definovat bohatší pravidla upozornění. Novější upozornění podporují monitorování maximální minimální, průměrné a celkové hodnoty metriky.
 -   **Kombinované monitorování několika metrik**: můžete sledovat několik metrik (v současné době až dvě metriky) s jedním pravidlem. Výstraha se aktivuje, pokud obě metriky porušení jejich příslušné prahové hodnoty pro zadané časové období.

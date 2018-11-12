@@ -14,16 +14,16 @@ ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 2ab7e0c5d4a62b9c4fa0492b9bc9a19dfab36c74
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
-ms.translationtype: HT
+ms.openlocfilehash: 774ca8d0c893a5672c7f04f3530679204b7262c6
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51005049"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51513753"
 ---
 # <a name="analyze-log-analytics-data-in-azure-monitor"></a>Analýza dat Log Analytics ve službě Azure Monitor
 
-Protokol data shromážděná službou Azure Monitor se ukládají v pracovním prostoru Log Analytics, která je založena na [Průzkumník dat Azure](/data-explorer). Shromažďuje telemetrická data z různých zdrojů a používá [dotazovací jazyk v Průzkumníku dat](/kusto) načíst a analyzovat data.
+Protokol data shromážděná službou Azure Monitor se ukládají v pracovním prostoru Log Analytics, která je založena na [Průzkumník dat Azure](/azure/data-explorer). Shromažďuje telemetrická data z různých zdrojů a používá [dotazovací jazyk v Průzkumníku dat](/azure/kusto/query) načíst a analyzovat data.
 
 > [!NOTE]
 > Log Analytics se dřív považovány za vlastní službu v Azure. Je nyní považovaných za součást služby Azure Monitor a se zaměřuje na úložiště a analýzu dat protokolu pomocí jeho dotazovací jazyk. Funkce, které bylo považováno za součást Log Analytics, jako je například Windows a Linux agentů pro shromažďování dat, zobrazení vizualizovat existující data, výstrahy a proaktivně vás upozorňují na problémy, nedošlo ke změně, ale jsou nyní považovány za součást služby Azure Monitor.

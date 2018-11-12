@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/16/2018
 ms.author: jdial
 ms.custom: include file
-ms.openlocfilehash: d1c5c9a8709467c9f9ca87c841cffcf77a5b5f0b
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
-ms.translationtype: HT
+ms.openlocfilehash: e765739384aa7d18b95394cb0a9b2b6748174e7c
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51219895"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51525640"
 ---
 <a name="virtual-networking-limits-classic"></a>Následující omezení platí pouze pro síťové prostředky spravované přes model nasazení Classic na předplatné. Zjistěte, jak [zobrazit aktuální využití prostředků pro vaše předplatné omezení](../articles/networking/check-usage-against-limits.md).
 
@@ -45,7 +45,7 @@ Následující omezení platí pouze pro síťové prostředky spravované přes
 | Virtuální sítě |1000 |
 | Podsítě na virtuální síť |3000 |
 | Partnerské vztahy virtuálních sítí na virtuální síť |100 |
-| Servery DNS na virtuální síť |25 |
+| Servery DNS na virtuální síť |20 |
 | Privátní IP adresy na virtuální síť |65536 |
 | Privátní IP adresy na síťové rozhraní |256 |
 | Souběžné TCP nebo UDP toky pro síťové rozhraní virtuálního počítače nebo role instance |500 000 |

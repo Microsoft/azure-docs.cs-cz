@@ -1,6 +1,6 @@
 ---
 title: Principy připojení k Azure digitální dvojče zařízení a ověřování | Dokumentace Microsoftu
-description: Použití Azure digitální dvojče pro připojení a ověřování zařízení
+description: Použití Azure digitální dvojče k připojení a ověřování zařízení
 author: lyrana
 manager: alinast
 ms.service: digital-twins
@@ -8,28 +8,28 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: lyrana
-ms.openlocfilehash: adfb4c369ea1b324da8562a5b0b245ebdecff602
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 42c1b0fbb6d87e9ed35d4ecce3971d8512eed4d4
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49324050"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51012458"
 ---
-# <a name="create-and-manage-role-assignments"></a>Vytvořit a spravovat přiřazení rolí
+# <a name="create-and-manage-role-assignments"></a>Vytváření a správa přiřazení rolí
 
 Azure digitální dvojče používá řízení přístupu na základě rolí ([RBAC](./security-role-based-access-control.md)) ke správě přístupu k prostředkům.
 
 Každé role přiřazení zahrnují:
 
-* **Identifikátor objektu** (ID služby Azure Active Directory, ID instančního objektu služby nebo název domény).
-* **Identifikátor typu objektu**.
-* A **ID definice role**.
-* A **místo cesta**.
-* (Ve většině případů) služby Azure Active Directory **ID tenanta**.
+* **Identifikátor objektu**: Azure Active Directory ID, ID instančního objektu služby nebo název domény
+* **Typ identifikátoru objektu**
+* **ID definice role**
+* **Místo cesty**
+* **ID tenanta**: ve většině případů ID tenanta služby Azure Active Directory
 
 ## <a name="role-definition-identifiers"></a>Identifikátory definice role
 
-Následující tabulka ukazuje, co lze získat pomocí dotazu na rozhraní API systému/role:
+Následující tabulka uvádí, co lze získat pomocí dotazu rozhraní API systému/rolí.
 
 | **Role** | **identifikátor** |
 | --- | --- |
@@ -41,11 +41,11 @@ Následující tabulka ukazuje, co lze získat pomocí dotazu na rozhraní API s
 | Uživatel | b1ffdb77-c635-4E7E-ad25-948237d85b30 |
 | Odborné | 6e46958b-dc62-4e7c-990c-c3da2e030969 |
 | Instalační program zařízení | b16dd9fe-4efe-467b-8c8c-720e2ff8817c |
-| GatewayDevice | d4c69766-e9bd-4e61-BFC1-d8b6e686c7a8 |
+| Zařízení brány | d4c69766-e9bd-4e61-BFC1-d8b6e686c7a8 |
 
 ## <a name="supported-objectidtypes"></a>Podporované ObjectIdTypes
 
-Podporované `ObjectIdTypes` jsou:
+Podporované `ObjectIdTypes`:
 
 * `UserId`
 * `DeviceId`
@@ -62,15 +62,15 @@ HTTP POST /api/v1.0/roleassignments
 
 | **Název** | **Vyžaduje** | **Typ** | **Popis** |
 | --- | --- | --- | --- |
-| RoleId| Ano |řetězec | Identifikátor definice role. Definice rolí a jejich identifikátorů můžete vyhledat dotazem na systémové rozhraní API. |
-| ID objektu | Ano |řetězec | ID objektu pro přiřazení rolí, které musí být ve formátu podle jeho přidruženého typu. Pro `DomainName` ObjectIdType, ObjectId musí začínat `“@”` znak. |
-| objectIdType | Ano |řetězec | Typ přiřazení role. Musí být jedna z následujících řádků v této tabulce. |
-| ID Tenanta | Různé | řetězec |Identifikátor tenanta. Zakázáno pro `DeviceId` a `TenantId` ObjectIdTypes. Vyžaduje se pro `UserId` a `ServicePrincipalId` ObjectIdTypes. Volitelné pro DomainName ObjectIdType. |
-| Cesta * | Ano | řetězec |Cesta úplný přístup k `Space` objektu. Např.: `/{Guid}/{Guid}` Pokud identifikátor potřebuje přiřazení role pro celý graf, zadejte `"/"` (který určuje kořenový adresář). Použití, který je však nedoporučuje a **by měla vždy použijte Princip nejnižších oprávnění**. |
+| RoleId| Ano |Řetězec | Identifikátor definice role. Vyhledání definice rolí a jejich identifikátorů dotazem systémové rozhraní API. |
+| ID objektu | Ano |Řetězec | ID objektu pro přiřazení rolí, které musí být ve formátu podle jeho přidruženého typu. Pro `DomainName` ObjectIdType, ObjectId musí začínat `“@”` znak. |
+| objectIdType | Ano |Řetězec | Typ přiřazení role. Musí být jedna z následujících řádků v této tabulce. |
+| ID Tenanta | Různé | Řetězec |Identifikátor tenanta. Zakázáno pro `DeviceId` a `TenantId` ObjectIdTypes. Vyžaduje se pro `UserId` a `ServicePrincipalId` ObjectIdTypes. Volitelné pro DomainName ObjectIdType. |
+| Cesta * | Ano | Řetězec |Cesta úplný přístup k `Space` objektu. Příklad: `/{Guid}/{Guid}`. Pokud identifikátor potřebuje přiřazení role pro celý graf, zadejte `"/"`. Tento znak určuje kořenový adresář, ale jeho použití se nedoporučuje. Vždy použijte Princip nejnižších oprávnění. |
 
 ## <a name="sample-configuration"></a>Ukázky konfigurace
 
-Uživatel potřebuje přístup správce k dolní mez místa tenanta:
+V tomto příkladu uživatel potřebuje přístup správce k dolní mez prostoru tenanta.
 
   ```JSON
     {
@@ -82,7 +82,7 @@ Uživatel potřebuje přístup správce k dolní mez místa tenanta:
     }
   ```
 
-Aplikace, který spuštění testu scénáře napodobování zařízeními a senzory:
+V tomto příkladu je aplikace spuštěna testovacích scénářů napodobování zařízení a senzorů.
 
   ```JSON
     {
@@ -94,7 +94,7 @@ Aplikace, který spuštění testu scénáře napodobování zařízeními a sen
     }
   ```
 
-Všichni uživatelé součástí domény obdrží oprávnění ke čtení pro mezery, senzory a uživatelům, včetně jejich odpovídajících související objekty:
+Všichni uživatelé, kteří jsou součástí domény získají přístup pro čtení pro mezery, senzory a uživatelů. Tento přístup vyžaduje odpovídající souvisejících objektů.
 
   ```JSON
     {
@@ -105,7 +105,7 @@ Všichni uživatelé součástí domény obdrží oprávnění ke čtení pro me
     }
   ```
 
-Pokud chcete získat přiřazení Role:
+Použití získat se odstranit přiřazení role.
 
 ```plaintext
 HTTP GET /api/v1/roleassignments?path={path}
@@ -115,7 +115,7 @@ HTTP GET /api/v1/roleassignments?path={path}
 | --- | --- | --- | --- | --- |
 | Cesta | Cesta | True | Řetězec | Úplná cesta k oboru |
 
-Pokud chcete odstranit přiřazení Role:
+Použijte odstranění se odstranit přiřazení role.
 
 ```plaintext
 HTTP DELETE /api/v1/roleassignments/{id}
