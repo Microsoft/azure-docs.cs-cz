@@ -8,12 +8,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 11/07/2017
 ms.author: revitalb
-ms.openlocfilehash: e19f1a63c478d17154a24c14f6700e2fb07f2467
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: ea69befb1084b08352eb3cf38db0364c5c82c45b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42058043"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51237056"
 ---
 # <a name="security-filters-for-trimming-azure-search-results-using-active-directory-identities"></a>Filtry zabezpečení pro oříznutí výsledky Azure Search pomocí identity služby Active Directory
 
@@ -28,7 +28,7 @@ Tento článek se zabývá následujícími úkony:
 - Vydejte žádost o vyhledávání pomocí filtr identifikátorů skupiny
 
 >[!NOTE]
-> Ukázka fragmentu kódu v tomto článku jsou napsané v C#. Úplný zdrojový kód najdete [na GitHubu](http://aka.ms/search-dotnet-howto). 
+> Ukázka fragmentu kódu v tomto článku jsou napsané v C#. Úplný zdrojový kód najdete [na GitHubu](https://aka.ms/search-dotnet-howto). 
 
 ## <a name="prerequisites"></a>Požadavky
 

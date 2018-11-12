@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 45a6bd349169265ef411d01a3601a27551847633
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 37dc96cf965181c5acba74449c684a08035e37b2
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50226451"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51264267"
 ---
 Tento článek se zabývá některými běžnými dotazy uživatelů k virtuálním počítačům Azure vytvořeným pomocí modelu nasazení Classic.
 
@@ -22,9 +22,9 @@ Ano. Pokyny k migraci najdete tady:
 ## <a name="what-can-i-run-on-an-azure-vm"></a>Co můžu spouštět na virtuálním počítači Azure?
 Všichni předplatitelé můžou na virtuálním počítači Azure spouštět serverový software. Můžete spouštět nejnovější verze Windows Serveru i celou řadu linuxových distribucí. Podrobnosti o podpoře najdete tady:
 
-• Virtuální počítače s Windows – [Podpora serverového softwaru Microsoft pro virtuální počítače Azure](http://go.microsoft.com/fwlink/p/?LinkId=393550)
+• Virtuální počítače s Windows – [Podpora serverového softwaru Microsoft pro virtuální počítače Azure](https://go.microsoft.com/fwlink/p/?LinkId=393550)
 
-• Virtuální počítače s Linuxem – [Linux v distribucích schválených pro Azure](http://go.microsoft.com/fwlink/p/?LinkId=393551)
+• Virtuální počítače s Linuxem – [Linux v distribucích schválených pro Azure](https://go.microsoft.com/fwlink/p/?LinkId=393551)
 
 V případě imagí klienta Windows jsou pro předplatitele MSDN Azure Benefit a předplatitele MSDN s průběžnými platbami podle aktuálního využití pro vývoj/testování dostupné určité verze Windows 7 a Windows 8.1 pro úlohy vývoje a testování. Podrobnosti, včetně pokynů a omezení, najdete v tématu [Image klienta Windows pro předplatitele MSDN](https://azure.microsoft.com/blog/2014/05/29/windows-client-images-on-azure/).
 
@@ -38,10 +38,10 @@ Funkce skupiny vztahů už se nepoužívají v modelu nasazení Azure Resource M
 ## <a name="how-much-storage-can-i-use-with-a-virtual-machine"></a>Kolik úložiště můžu využít s virtuálním počítačem?
 Každý datový disk může mít velikost až 1 TB. Počet datových disků, které můžete využít, závisí na velikosti virtuálního počítače. Podrobnosti najdete v článku [Velikosti služeb Virtual Machines](../articles/virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-Účet úložiště Azure poskytuje úložiště pro disk operačního systému a všechny datové disky. Každý disk je soubor .vhd uložený jako objekt blob stránky. Podrobnosti o cenách najdete v tématu [Podrobnosti o cenách úložiště](http://go.microsoft.com/fwlink/p/?LinkId=396819).
+Účet úložiště Azure poskytuje úložiště pro disk operačního systému a všechny datové disky. Každý disk je soubor .vhd uložený jako objekt blob stránky. Podrobnosti o cenách najdete v tématu [Podrobnosti o cenách úložiště](https://go.microsoft.com/fwlink/p/?LinkId=396819).
 
 ## <a name="which-virtual-hard-disk-types-can-i-use"></a>Jaké typy virtuálních pevných disků můžu použít?
-Azure podporuje pouze virtuální pevné disky s pevnou velikostí a ve formátu VHD. Pokud máte disk ve formátu VHDX, který chcete použít v Azure, musíte ho nejprve převést pomocí Správce technologie Hyper-V nebo rutiny [convert-VHD](http://go.microsoft.com/fwlink/p/?LinkId=393656). Až to uděláte, pomocí rutiny [Add-AzureVHD](https://msdn.microsoft.com/library/azure/dn495173.aspx) (v režimu správy služby) nahrajte disk VHD do účtu úložiště v Azure, abyste ho mohli použít s virtuálními počítači.
+Azure podporuje pouze virtuální pevné disky s pevnou velikostí a ve formátu VHD. Pokud máte disk ve formátu VHDX, který chcete použít v Azure, musíte ho nejprve převést pomocí Správce technologie Hyper-V nebo rutiny [convert-VHD](https://go.microsoft.com/fwlink/p/?LinkId=393656). Až to uděláte, pomocí rutiny [Add-AzureVHD](https://msdn.microsoft.com/library/azure/dn495173.aspx) (v režimu správy služby) nahrajte disk VHD do účtu úložiště v Azure, abyste ho mohli použít s virtuálními počítači.
 
 * Pokyny pro Linux najdete v tématu [Vytvoření a nahrání virtuálního pevného disku obsahujícího operační systém Linux](../articles/virtual-machines/linux/classic/create-upload-vhd-classic.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json).
 
@@ -50,7 +50,7 @@ V mnoha ohledech jsou podobné 1. generaci virtuálních počítačů Hyper-V, a
 
 * Azure neposkytuje přístup k virtuálnímu počítači prostřednictvím konzoly. Neexistuje žádná možnost přístupu k virtuálnímu počítači, dokud se nespustí.
 * Virtuální počítače Azure ve většině [velikostí](../articles/virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) mají pouze 1 virtuální síťový adaptér, což znamená, že také můžou mít pouze 1 externí IP adresu. (Velikosti A8 a A9 používají druhý síťový adaptér pro komunikaci aplikací mezi instancemi v omezených scénářích.)
-* Virtuální počítače Azure nepodporují funkce 2. generace virtuálních počítačů Hyper-V. Podrobnosti o těchto funkcích najdete v tématech [Specifikace virtuálních počítačů pro Hyper-V](http://technet.microsoft.com/library/dn592184.aspx) a [Přehled virtuálních počítačů 2. generace](https://technet.microsoft.com/library/dn282285.aspx).
+* Virtuální počítače Azure nepodporují funkce 2. generace virtuálních počítačů Hyper-V. Podrobnosti o těchto funkcích najdete v tématech [Specifikace virtuálních počítačů pro Hyper-V](https://technet.microsoft.com/library/dn592184.aspx) a [Přehled virtuálních počítačů 2. generace](https://technet.microsoft.com/library/dn282285.aspx).
 
 ## <a name="can-these-virtual-machines-use-my-existing-on-premises-networking-infrastructure"></a>Můžou tyto virtuální počítače používat moji stávající místní síťovou infrastrukturu?
 Pro virtuální počítače vytvořené v modelu nasazení Classic můžete pomocí služby Azure Virtual Network rozšířit vaši stávající infrastrukturu. Přístup je podobný jako při zakládání firemní pobočky. Můžete zřídit a spravovat virtuální privátní sítě (VPN) v Azure nebo je bezpečně připojit k místní IT infrastruktuře. Podrobnosti najdete v článku [Přehled služby Virtual Network](../articles/virtual-network/virtual-networks-overview.md).
@@ -85,7 +85,7 @@ Termín upgrade obecně znamená přesun na aktuálnější verzi operačního s
 * U virtuálních počítačů s Linuxem použijte vhodné nástroje pro správu balíčků a postupy pro příslušnou distribuci.
 * U virtuálních počítačů s Windows je potřeba migrovat server pomocí nějakého nástroje, jako jsou například Nástroje pro migraci systému Windows Server. Nepokoušejte se upgradovat hostovaný operační systém, který se nachází v Azure. Nepodporuje se to kvůli riziku ztráty přístupu k virtuálnímu počítači. Kdyby během upgradu došlo k problémům, mohli byste ztratit možnost spustit relaci vzdálené plochy a nemohli byste problémy odstranit.
 
-Obecné podrobnosti o nástrojích a postupech pro migraci Windows Serveru najdete v tématu [Migrace rolí a funkcí na Windows Server](http://go.microsoft.com/fwlink/p/?LinkId=396940).
+Obecné podrobnosti o nástrojích a postupech pro migraci Windows Serveru najdete v tématu [Migrace rolí a funkcí na Windows Server](https://go.microsoft.com/fwlink/p/?LinkId=396940).
 
 ## <a name="whats-the-default-user-name-and-password-on-the-virtual-machine"></a>Jaké je výchozí uživatelské jméno a heslo na virtuálním počítači?
 Image poskytované Azure nemají předkonfigurované uživatelské jméno a heslo. Při vytváření virtuálního počítače pomocí některé z takových imagí budete muset zadat uživatelské jméno a heslo, které budete používat k přihlášení k virtuálnímu počítači.
@@ -100,8 +100,8 @@ Další podrobnosti:
 ## <a name="can-azure-run-anti-virus-on-my-virtual-machines"></a>Může Azure na mém virtuálním počítači spouštět antivirové produkty?
 Azure nabízí několik možností antivirových řešení, ale jejich správa je na vás. Například můžete potřebovat samostatné předplatné pro antimalwarový software a budete se muset rozhodnout, kdy spouštět prohledávání a instalovat aktualizace. Podporu antivirových produktů můžete přidat při vytváření virtuálního počítače s Windows nebo později pomocí rozšíření virtuálního počítače pro Microsoft Antimalware, Symantec Endpoint Protection nebo agenta TrendMicro Deep Security Agent. Rozšíření Symantec a TrendMicro umožňují použít bezplatnou, časově omezenou zkušební verzi předplatného nebo stávající podnikové předplatné. Microsoft Antimalware je zdarma. Podrobnosti najdete tady:
 
-* [Jak nainstalovat a nakonfigurovat Symantec Endpoint Protection na virtuálním počítači Azure](http://go.microsoft.com/fwlink/p/?LinkId=404207)
-* [Jak nainstalovat a nakonfigurovat Trend Micro Deep Security jako službu na virtuálním počítači Azure](http://go.microsoft.com/fwlink/p/?LinkId=404206)
+* [Jak nainstalovat a nakonfigurovat Symantec Endpoint Protection na virtuálním počítači Azure](https://go.microsoft.com/fwlink/p/?LinkId=404207)
+* [Jak nainstalovat a nakonfigurovat Trend Micro Deep Security jako službu na virtuálním počítači Azure](https://go.microsoft.com/fwlink/p/?LinkId=404206)
 * [Nasazování antimalwarových řešení na virtuálních počítačích Azure](https://azure.microsoft.com/blog/2014/05/13/deploying-antimalware-solutions-on-azure-virtual-machines/)
 
 ## <a name="what-are-my-options-for-backup-and-recovery"></a>Jaké mám možnosti zálohování a obnovení?

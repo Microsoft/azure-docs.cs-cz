@@ -72,7 +72,7 @@
 ## [Tvorba šablon](/azure/azure-resource-manager/resource-group-authoring-templates?toc=%2fazure%2fnetworking%2ftoc.json)
 ## [Plány Azure do budoucna](https://azure.microsoft.com/roadmap/?category=networking)
 ## [Komunitní šablony](https://azure.microsoft.com/resources/templates/)
-## [Blog o sítích](http://azure.microsoft.com/blog/topics/networking)
+## [Blog o sítích](https://azure.microsoft.com/blog/topics/networking)
 ## [Ceny](https://azure.microsoft.com/pricing)
 ## [ Cenová kalkulačka](https://azure.microsoft.com/pricing/calculator/)
 ## [Regionální dostupnost](https://azure.microsoft.com/regions/services/)

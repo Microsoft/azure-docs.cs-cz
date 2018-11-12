@@ -9,18 +9,18 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: ashmaka
-ms.openlocfilehash: 54646a7d4962c5dfe255d28bdb91d272062530dd
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: b7befb46da8674e0bec7d3f73ad33a12529ffc3a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39364270"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51232371"
 ---
 # <a name="design-patterns-for-multitenant-saas-applications-and-azure-search"></a>Modely návrhu pro víceklientské aplikace SaaS a Azure Search
 Víceklientské aplikace je ten, který poskytuje stejné funkce a služby do libovolného počtu klientů, kteří nemohou zobrazovat ani sdílet data žádným jiným tenantem. Tento dokument popisuje strategie izolace tenanta pro víceklientské aplikace integrované s Azure Search.
 
 ## <a name="azure-search-concepts"></a>Koncepty služby Azure Search
-Jako řešení typu hledání jako služba Azure Search umožňuje vývojářům přidat do aplikací bohaté vyhledávací prostředí bez správu jakékoliv infrastruktury, nebo studovat načítání informací. Data se odešlou do služby a uloží se do cloudu. Pomocí jednoduchých požadavků na rozhraní API Azure Search, data pak se dají upravit a prohledávat. Přehled služby najdete v [v tomto článku](http://aka.ms/whatisazsearch). Před diskuze o způsobech návrhu, je důležité pochopit některé koncepty ve službě Azure Search.
+Jako řešení typu hledání jako služba Azure Search umožňuje vývojářům přidat do aplikací bohaté vyhledávací prostředí bez správu jakékoliv infrastruktury, nebo studovat načítání informací. Data se odešlou do služby a uloží se do cloudu. Pomocí jednoduchých požadavků na rozhraní API Azure Search, data pak se dají upravit a prohledávat. Přehled služby najdete v [v tomto článku](https://aka.ms/whatisazsearch). Před diskuze o způsobech návrhu, je důležité pochopit některé koncepty ve službě Azure Search.
 
 ### <a name="search-services-indexes-fields-and-documents"></a>Vyhledávací služby, indexy, polí a dokumenty
 Při použití Azure Search, jeden přihlásí k odběru *služba search*. Do služby Azure Search je nahrávaných dat, je uložena v *index* v rámci služby search. Může existovat několik indexů v rámci jedné služby. Používat známé koncepty databáze, lze vyhledávací službu připodobnit do databáze a indexy, které v rámci služby lze připodobnit do tabulky v databázi.
@@ -126,7 +126,7 @@ Tato metoda je možné dosáhnout funkcionality samostatné uživatelské účty
 > 
 
 ## <a name="next-steps"></a>Další postup
-Azure Search je atraktivní volba pro mnoho aplikací [Další informace o robustní možnosti služby](http://aka.ms/whatisazsearch). Při vyhodnocování různé způsoby návrhu pro víceklientské aplikace, vezměte v úvahu [různých cenových úrovní](https://azure.microsoft.com/pricing/details/search/) a funkcím [omezení služby](search-limits-quotas-capacity.md) nejlépe přizpůsobit podle aplikací Azure Search úlohy a architektury všech velikostí.
+Azure Search je atraktivní volba pro mnoho aplikací [Další informace o robustní možnosti služby](https://aka.ms/whatisazsearch). Při vyhodnocování různé způsoby návrhu pro víceklientské aplikace, vezměte v úvahu [různých cenových úrovní](https://azure.microsoft.com/pricing/details/search/) a funkcím [omezení služby](search-limits-quotas-capacity.md) nejlépe přizpůsobit podle aplikací Azure Search úlohy a architektury všech velikostí.
 
 Mohou být jakékoliv otázky týkající se Azure Search a scénářích s více tenanty přesměrováni na azuresearch_contact@microsoft.com.
 

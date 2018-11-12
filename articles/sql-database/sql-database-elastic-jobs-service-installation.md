@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 09/14/2018
-ms.openlocfilehash: 69a4364c1d110ae78370fbf0ba1b4a92e033a862
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: c2fb3ae20ea2b6ba71408a734c1e0c82cbeb699c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50241560"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51233571"
 ---
 # <a name="installing-elastic-database-jobs-overview"></a>Přehled instalace úloh elastické databáze
 
@@ -31,7 +31,7 @@ Pokud jste již nainstalovali **úlohy elastické databáze** prostřednictvím 
 
 ## <a name="prerequisites"></a>Požadavky
 * Předplatné Azure. Bezplatná zkušební verze, najdete v části [bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
-* Azure PowerShell Nainstalujte nejnovější verzi pomocí [instalačního programu webové platformy](http://go.microsoft.com/fwlink/p/?linkid=320376). Podrobné informace najdete v tématu [Instalace a konfigurace prostředí Azure PowerShell](/powershell/azure/overview).
+* Azure PowerShell Nainstalujte nejnovější verzi pomocí [instalačního programu webové platformy](https://go.microsoft.com/fwlink/p/?linkid=320376). Podrobné informace najdete v tématu [Instalace a konfigurace prostředí Azure PowerShell](/powershell/azure/overview).
 * [Nástroje příkazového řádku NuGet](https://nuget.org/nuget.exe) se používá k instalaci balíčku úlohy elastické databáze. Další informace naleznete v tématu http://docs.nuget.org/docs/start-here/installing-nuget.
 
 ## <a name="download-and-import-the-elastic-database-jobs-powershell-package"></a>Stažení a import balíčků Elastic Database úlohy Powershellu

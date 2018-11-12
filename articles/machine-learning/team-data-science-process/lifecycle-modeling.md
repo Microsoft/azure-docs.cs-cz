@@ -1,6 +1,6 @@
 ---
-title: Modelování fáze životního cyklu proces vědecké účely dat Team - Azure | Microsoft Docs
-description: Cíle, úlohy a úkoly pro modelování fázi projekty vědecké zpracování dat
+title: Modelování fázi životní cyklus vědeckého zpracování týmových dat – Azure | Dokumentace Microsoftu
+description: Cíle, úkoly a úkoly pro fázi modelování vašich projektů datové vědy
 services: machine-learning
 documentationcenter: ''
 author: deguhath
@@ -15,83 +15,83 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: deguhath
-ms.openlocfilehash: ff7434e84473fd68153be8116899ecdfb6a6a831
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 4043ae4cf8ab7d9716db834fed0019456f2a52d4
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34837476"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51227531"
 ---
 # <a name="modeling"></a>Modelování
 
-Tento článek popisuje cíle, úlohy a úkoly spojené s fázi modelování z tým datové vědy procesu (TDSP). Tento proces zajišťuje doporučené životního cyklu, který můžete použít pro struktury vědecké zpracování dat projekty. Životní cyklus popisuje hlavní fází, které projekty obvykle provést, často interaktivně:
+Tento článek popisuje cíle, úkoly a úkoly, které jsou přidružené k modelování fáze nástroje zpracování týmových dat vědy (TDSP). Tento proces zajišťuje doporučené životní cyklus, který vám pomůže strukturovat vaše projekty pro datové vědy. Životní cyklus popisuje hlavní fáze, které jsou projekty obvykle spouštěny, často opakované:
 
-   1. **Pochopení obchodních**
-   2. **Získávání dat a principy**
+   1. **Principy podniku**
+   2. **Získávání a pochopení dat**
    3. **Modelování**
    4. **Nasazení**
-   5. **Přijetí zákazníka**
+   5. **Schválení zákazníkem**
 
-Zde je vizuální reprezentace životního cyklu TDSP:
+Zde je vizuální znázornění životního cyklu TDSP:
 
 ![Životní cyklus TDSP](./media/lifecycle/tdsp-lifecycle2.png) 
 
 
 ## <a name="goals"></a>Cíle
-* Určení funkcí optimální dat pro model machine learning.
-* Vytvoření modelu informativní strojové učení, který nejpřesněji předpovídá cíl.
-* Vytvořte model machine learning, který je vhodný pro produkční prostředí.
+* Určení funkcí optimální dat pro model strojového učení.
+* Vytvoření informativní modelu strojového učení, který bude předpovídat cíl nejpřesněji.
+* Vytvořte model strojového učení, která je vhodná pro produkční prostředí.
 
-## <a name="how-to-do-it"></a>Jak to udělat
-Existují tři hlavní úlohy v této fázi řešit:
+## <a name="how-to-do-it"></a>Jak na to
+Existují tři hlavní úkoly zákazníky a vyřešené v této fázi:
 
-  * **Konstruování**: vytvoření funkce data z původní data, která usnadňují modelu školení.
-  * **Model školení**: najít model, který odpovídá na otázku nejvíce přesně tak, že porovnáte jejich metriky úspěchu.
-  * Určí, zda váš model **vhodná pro produkční prostředí.**
+  * **Konstrukce funkcí**: vytvoření datové funkce z nezpracovaných dat pro usnadnění cvičení modelu.
+  * **Model školení**: najít model, který nejpřesněji odpovědět otázku porovnáním jejich měřítek úspěšnosti.
+  * Určení, zda je model **vhodná pro produkční prostředí.**
 
 ### <a name="feature-engineering"></a>Návrh funkcí
-Funkce inženýrství zahrnuje zahrnutí, agregace a transformaci nezpracovaná proměnných pro vytvoření funkce použité v analýzy. Pokud chcete, aby aspekty faktory určující model, musíte pochopit, jak funkce související se vzájemně k sobě a jak jsou algoritmy strojové učení k používání těchto funkcí. 
+Součástí vytváření funkcí je zahrnutí, agregace a transformaci nezpracovaných proměnné k vytvoření funkce použitého při analýze. Pokud chcete přehled o tom, co ovlivňuje modelu, je potřeba pochopit, jak funkce vzájemně souvisí a jak se používají tyto funkce algoritmů strojového učení. 
 
-Tento krok vyžaduje tvůrčí kombinací domény znalosti a statistiky získat z kroku zkoumání dat. Funkce inženýrství je vyrovnávání act hledání a včetně informativní proměnné, ale současně pokusu vyhnout příliš mnoho nesouvisejícími proměnné. Informativní proměnné zlepšení vaší výsledek; nesouvisejícími proměnné zavést jako zbytečný rušivý element do modelu. Také budete muset vygenerovat tyto funkce pro žádná nová data získané při vyhodnocování. V důsledku toho generování tyto funkce lze pouze závisí na data, která je k dispozici v době vyhodnocování. 
+Tento krok vyžaduje creative kombinace odborné znalosti domény a přehledů získaných z kroku zkoumání dat. Vytváření funkcí je rovnováhu hledání a včetně informativní proměnných, ale současně pokouší vyhnout příliš mnoha nesouvisejících proměnných. Informativní proměnné zlepšit váš výsledek; nesouvisejících proměnné zavést zbytečně hlučné do modelu. Také budete muset vygenerovat tyto funkce pro žádná nová data zjišťovala během vyhodnocování. V důsledku toho generování těchto funkcí mohou záviset pouze na data, která je k dispozici v době vyhodnocení. 
 
-Technické informace o funkci technici, kdy je pomocí různých technologií dat Azure najdete v tématu [konstruování v procesu vědecké účely dat](create-features.md). 
+Technické informace o funkci při analýze provést pomocí různých technologií dat Azure, najdete v článku [konstrukce funkcí v vědecké zpracování dat](create-features.md). 
 
-### <a name="model-training"></a>model školení
-V závislosti na typu otázku, kterou se pokoušíte odpovědět existuje mnoho modelování algoritmy. Pokyny k výběru algoritmy, najdete v části [jak zvolit algoritmy pro Microsoft Azure Machine Learning](../studio/algorithm-choice.md). I když tento článek používá Azure Machine Learning, pokyny, které poskytuje je užitečné pro všechny projekty strojové učení. 
+### <a name="model-training"></a>Cvičení modelu
+V závislosti na typu otázku, na kterou se snažíte odpovědět k dispozici mnoho algoritmů modelování. Rady týkající se algoritmy, naleznete v tématu [jak zvolit algoritmy pro Microsoft Azure Machine Learning](../studio/algorithm-choice.md). I když tento článek používá Azure Machine Learning, je užitečné pro všechny projekty strojového učení pokyny, které poskytuje. 
 
-Proces pro trénování modelu zahrnuje následující kroky: 
+Proces k tréninku modelu zahrnuje následující kroky: 
 
-   * **Rozdělení vstupních dat** náhodně pro modelování do trénovací datové sady a testovací datové sady.
-   * **Vytvářet modely** pomocí trénovací datové sady.
-   * **Vyhodnocení** školení a testovací datové sady. Použijte řadu konkurenční algoritmů machine learningu spolu s různými přidružené parametry (označované jako *parametr oblouku*), jsou mají za cíl zajistit odpovědi na otázky týkající se s aktuálními daty.
-   * **Určit "doporučené" řešení** odpověď na otázku tak, že porovnáte metriky úspěchu mezi alternativní metody.
+   * **Rozdělit vstupní data** náhodně pro modelování do trénovací datové sady a testovací datové sady.
+   * **Vytváření modelů** pomocí trénovací datové sady.
+   * **Vyhodnocení** školení a datové sady testů. Používat řadu konkurenční algoritmů strojového učení spolu s různými přidružené parametry (označované jako *Uklízení parametrů*), které jsou cílené primárně na odpovídání na otázku, která vás zajímá s aktuálními údaji.
+   * **Určit "doporučené" řešení** odpověď na otázku porovnáním měřítek úspěšnosti mezi alternativních metod.
 
 > [!NOTE]
-> **Zabránilo úniku**: může způsobit úniku dat, je-li zahrnout data z mimo trénovací datové sady, který umožňuje modelu nebo strojové učení algoritmu aby unrealistically dobrý předpovědi. Únikům je běžným důvodem, proč data, která vědců získat nervové, když získají prediktivní výsledky, které se zdají příliš výhodné mít hodnotu true. Tyto závislosti může být obtížné zjistit. Aby se zabránilo úniku často vyžaduje iterace mezi vytváření sadu analýzy dat, vytvoření modelu a vyhodnocení přesné výsledky. 
+> **Vyhněte se úniku**: může způsobit úniky dat chránit, zadáte-li data z mimo trénovací datové sady, která umožňuje algoritmus strojového učení pro predikci unrealistically dobré a model. Únik je běžným důvodem, proč data, která odborníci přes získat nervové, pokud se jim zobrazí prediktivní výsledky, které vypadá to, že snad ani na hodnotu true. Tyto závislosti může být obtížné rozpoznat. Aby se zabránilo úniku často vyžaduje iterace mezi sestavení analýze datové sady, vytvoření modelu a vyhodnocení přesnost výsledků. 
 > 
 > 
 
-Poskytujeme [automatizované modelování a vytváření sestav nástroje](https://github.com/Azure/Azure-TDSP-Utilities/blob/master/DataScienceUtilities/Modeling) s TDSP, který se bude moct spustit prostřednictvím více algoritmů a parametr změny k vytvoření základního modelu. Vytváří také směrný plán modelování sestavu, která shrnuje výkon kombinace každý model a parametr včetně proměnné význam. Tento proces je iterativní také jako ho můžete drive inženýrství další funkce. 
+Poskytujeme [automatizované modelování a vytváření sestav nástroje](https://github.com/Azure/Azure-TDSP-Utilities/blob/master/DataScienceUtilities/Modeling) s TDSP, aby bylo možné spustit pomocí několika algoritmů a parametrů změny k vytvoření základního modelu. Také vytvoří směrný plán modelování sestavu, která shrnuje výkon každá kombinace modelu a parametr včetně proměnných význam. Tento proces je iterativní také jako jeho jednotky vytváření dalších funkcí. 
 
 ## <a name="artifacts"></a>Artefakty
-Artefakty vytvořeného v této fázi patří:
+Artefakty vytvořené v této fázi patří:
 
-   * [Funkce sady](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/DataReport/Data%20Defintion.md#feature-sets): funkce vytvořených pro modelování jsou popsány v **sady funkcí** části **definice dat** sestavy. Obsahuje odkazy na kód pro generování funkcí a popis generování funkci.
-   * [Model sestavy](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Model/Model%201/Model%20Report.md): pro každý model, který se pokus o, standard, se vytváří na základě šablon sestav, která poskytuje podrobnosti o každém pokusu.
-   * **Kontrolní bod rozhodnutí**: vyhodnocení, zda model dostatečně a provede ji nasadit do produkčního systému. Jsou některé klíčové otázky:
-     * Model odpovědět na otázku s dostatečnou důvěru zadané testovací data? 
-     * Vyzkoušejte všechny přístupy? By měl můžete shromažďovat další data, provést další funkce inženýrství nebo experimentovat s jiné algoritmy?
+   * [Sady funkcí](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/DataReport/Data%20Defintion.md#feature-sets): funkce vyvinuté pro modelování jsou popsány v **sady funkcí** část **definici dat** sestavy. Obsahuje odkazy na kód ke generování funkcí a popis, jak se vygeneroval funkci.
+   * [Model sestavy](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Model/Model%201/Model%20Report.md): pro každý model, ke které se pokusili, což je standard je vytvořen na základě šablony sestavu, která poskytuje podrobné informace o jednotlivých experimentu.
+   * **Kontrolní bod rozhodnutí**: vyhodnocení, zda model dostatečně dobře provede nasazení do produkčního systému. Jsou některé klíčové otázky:
+     * Model odpovědět na otázku, s dostatečnou důvěru zadaný testovací data? 
+     * Můžete zkusit všechny přístupy? By měl můžete shromažďovat další data, proveďte další vytváření funkcí nebo vyzkoušet ostatní algoritmy?
 
 ## <a name="next-steps"></a>Další postup
 
 Tady jsou odkazy na každý krok v životním cyklu TDSP:
 
-   1. [Pochopení obchodních](lifecycle-business-understanding.md)
-   2. [Získávání dat a principy](lifecycle-data.md)
+   1. [Principy podniku](lifecycle-business-understanding.md)
+   2. [Získávání a pochopení dat](lifecycle-data.md)
    3. [Modelování](lifecycle-modeling.md)
    4. [Nasazení](lifecycle-deployment.md)
-   5. [Přijetí zákazníka](lifecycle-acceptance.md)
+   5. [Schválení zákazníkem](lifecycle-acceptance.md)
 
-Poskytujeme návody úplného začátku do konce, které ukazují všechny kroky v procesu pro konkrétní scénáře. [Příklad návody](walkthroughs.md) článek obsahuje seznam scénářů s odkazy a popisy miniatur. Názorné postupy ukazují, jak kombinovat cloud, místní nástroje a služby do pracovního postupu nebo kanálu vytvoření inteligentního aplikace. 
+Poskytujeme úplného začátku do konce návody, které ukazují všechny kroky v procesu pro konkrétní scénáře. [Příklad návody](walkthroughs.md) článek obsahuje seznam scénářů s odkazy a popisy miniatur. Názorné postupy ukazují, jak zkombinovat cloudové, místní nástroje a služby do pracovního postupu nebo kanálu pro vytváření inteligentních aplikací. 
 
-Příklady, jak provést kroky v TDSPs, které používají Azure Machine Learning Studio, najdete v části [pomocí Azure Machine Learning TDSP](http://aka.ms/datascienceprocess). 
+Příklady toho, jak provést kroky v TDSPs, které používají Azure Machine Learning Studio najdete v tématu [TDSP pomocí služby Azure Machine Learning](https://aka.ms/datascienceprocess). 

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/22/2017
 ms.author: maxluk
-ms.openlocfilehash: 4438cff0dcf5e896f39729d9871d4deb3207b4b8
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: c3bdad6f1c199dda867370126eb7dcf5c296a12d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43107991"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230423"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>Plánování kapacity pro clustery HDInsight
 
@@ -38,7 +38,7 @@ HDInsight je k dispozici v mnoha oblastech Azure. Nejbližší oblast, najdete v
 
 ### <a name="location-of-default-storage"></a>Umístění výchozí úložiště
 
-Výchozím úložištěm, účtu služby Azure Storage nebo Azure Data Lake Store, musí být ve stejném umístění jako cluster. Azure Storage je dostupné ve všech umístěních. Data Lake Store je k dispozici v některých oblastech – viz aktuální dostupnosti Data Lake Store v rámci *úložiště* v [Azure produkty k dispozici podle oblasti](https://azure.microsoft.com/regions/services/).
+Výchozím úložištěm, účtu služby Azure Storage nebo Azure Data Lake Store, musí být ve stejném umístění jako cluster. Azure Storage je dostupné ve všech umístěních. V některých oblastech je k dispozici data Lake Store Gen1 – viz aktuální dostupnosti Data Lake Store v rámci *úložiště* v [Azure produkty k dispozici podle oblasti](https://azure.microsoft.com/regions/services/).
 
 ### <a name="location-of-existing-data"></a>Umístění existujících dat
 
@@ -48,7 +48,7 @@ Pokud už máte účet úložiště nebo Data Lake Store obsahující vaše data
 
 Po nasazení clusteru služby HDInsight můžete připojit další účty Azure Storage nebo přístup k jiné Data Lake Store. Všechny vaše účty úložiště se musí nacházet ve stejném umístění jako cluster. Data Lake Store může být v jiném umístění, i když to může způsobit určitou latenci čtení a zápis dat.
 
-Azure Storage má některé [limity kapacity](../azure-subscription-service-limits.md#storage-limits), zatímco Data Lake Store je prakticky neomezené.
+Azure Storage má některé [limity kapacity](../azure-subscription-service-limits.md#storage-limits), zatímco je Data Lake Store Gen1 prakticky neomezené.
 
 Cluster můžete přistupovat kombinaci různých účtů úložiště. Typické příklady zahrnují:
 

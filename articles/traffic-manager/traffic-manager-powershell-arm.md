@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: kumud
-ms.openlocfilehash: 8dcd89415bdd48b2d8d5c8e1e699159e9d1129e5
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 8696f4780db8b98457b56dd7f1162553697023d4
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50139471"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51237923"
 ---
 # <a name="using-powershell-to-manage-traffic-manager"></a>Použití Powershellu ke správě Traffic Manageru
 
@@ -178,7 +178,7 @@ Každý profil služby Traffic Manager určuje jedinou metodu směrování provo
 Vnořené koncových bodů jsou nakonfigurované v nadřazené profilu, s použitím typu určitého koncového bodu "NestedEndpoints". Při zadávání vnořených koncových bodů:
 
 * Koncový bod musí být zadán pomocí parametru 'targetResourceId.
-* Pokud se používá metodu směrování provozu "Výkonu", 'EndpointLocation' je vyžadována. V opačném případě je volitelný. Hodnota musí být [název platný oblasti Azure](http://azure.microsoft.com/regions/).
+* Pokud se používá metodu směrování provozu "Výkonu", 'EndpointLocation' je vyžadována. V opačném případě je volitelný. Hodnota musí být [název platný oblasti Azure](https://azure.microsoft.com/regions/).
 * "Váhy" a "Priority" jsou volitelné, jako u koncových bodů Azure.
 * "MinChildEndpoints" parametr je nepovinný. Výchozí hodnota je '1'. Pokud počet dostupných koncových bodů klesne pod touto prahovou hodnotou, považuje profil nadřazené podřízené profilu 'snížený výkon' a přesměruje provoz do dalších koncových bodů v nadřazené profilu.
 

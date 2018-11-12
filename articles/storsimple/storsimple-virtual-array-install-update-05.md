@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/10/2017
 ms.author: alkohli
-ms.openlocfilehash: c47da5b90c16e2d5b5709e2a6affc026238b9468
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 297282c03b842a095dba88f14b81df34b9c6d54f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38704517"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51247564"
 ---
 # <a name="install-update-05-on-your-storsimple-virtual-array"></a>Instalace aktualizace 0.5 na StorSimple Virtual Array
 
@@ -27,7 +27,7 @@ ms.locfileid: "38704517"
 
 Tento článek popisuje kroky potřebné k instalaci aktualizace 0.5 StorSimple Virtual Array prostřednictvím místního webového uživatelského rozhraní a prostřednictvím webu Azure portal. Budete muset použít aktualizace softwaru nebo oprav hotfix k udržování aktuálnosti StorSimple Virtual Array.
 
-Před instalací aktualizace, doporučujeme vám věnovat svazky nebo sdílené složky offline na hostiteli první a pak zařízení. Tím se minimalizují možnost poškození dat. Jakmile svazky nebo sdílené složky jsou offline, byste měli také provést ruční zálohování zařízení.
+Před instalací aktualizace, doporučujeme vám věnovat svazky nebo sdílené složky offline na hostiteli první a pak zařízení. Minimalizuje se tak možnost poškození dat. Jakmile svazky nebo sdílené složky jsou offline, byste měli také provést ruční zálohování zařízení.
 
 > [!IMPORTANT]
 > - Aktualizace 0.5 odpovídá **10.0.10290.0** verze softwaru na vašem zařízení. Informace o novinkách v této aktualizaci najdete v části [zpráva k vydání verze pro aktualizace 0.5](storsimple-virtual-array-update-05-release-notes.md).
@@ -57,7 +57,7 @@ Provedením následujících kroků si stáhněte aktualizace softwaru z Katalog
 
 #### <a name="to-download-the-update-or-the-hotfix"></a>Chcete-li stáhnout aktualizace nebo opravy hotfix
 
-1. Spustit aplikaci Internet Explorer a přejděte do [ http://catalog.update.microsoft.com ](http://catalog.update.microsoft.com).
+1. Spustit aplikaci Internet Explorer a přejděte do [ http://catalog.update.microsoft.com ](https://catalog.update.microsoft.com).
 
 2. Pokud na tomto počítači používáte Katalog služby Microsoft Update poprvé, po zobrazení výzvy k instalaci doplňku Katalog služby Microsoft Update klikněte na **Nainstalovat**.
 
@@ -74,7 +74,7 @@ Provedením následujících kroků si stáhněte aktualizace softwaru z Katalog
 6. Otevřete složku, ve kterém se soubory nacházejí.
     ![Soubory v balíčku](./media/storsimple-virtual-array-install-update-05/update05folder.png)
 
-    Zobrazí:
+    Zobrazí se následující:
     -  Microsoft Update samostatného balíčku souboru `WindowsTH-KB3011067-x64`. Tento soubor slouží k aktualizaci softwaru zařízení.
     - Soubor balíčku agenta monitorování Geneva `GenevaMonitoringAgentPackageInstaller`. Tento soubor slouží k aktualizaci agenta monitorování a Diagnostika služby (MDS). Poklikejte na soubor cab. Zobrazí se MSI. Vyberte soubor, klikněte pravým tlačítkem a pak **extrahovat** souboru. Budete používat _MSI_ souboru aktualizace agenta.
 

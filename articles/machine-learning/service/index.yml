@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: f7b1213b7c3a6074f85c74825ed30c0b7ba8b98b
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: dd5817cd2c6c3ce3e1205136232253c42a6b1ab6
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49115998"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51298554"
 documentType: LandingData
 title: Dokumentace ke službě Azure Machine Learning (Preview)
 metadata:
@@ -58,8 +58,9 @@ sections:
   - type: list
     style: unordered
     items:
-    - html: <a href="http://aka.ms/aml-sdk">Sada Azure Machine Learning SDK pro Python (hlavní sada SDK)</a>
     - html: <a href="http://aka.ms/data-prep-sdk">Sada SDK pro přípravu dat Azure Machine Learning</a>
+    - html: <a href="http://aka.ms/aml-sdk">Sada Azure Machine Learning SDK pro Python (hlavní sada SDK)</a>
+    - html: <a href="https://aka.ms/aml-monitoring-sdk">Sada SDK pro monitorování Azure Machine Learning</a>
 - title: Další technologie Azure Machine Learning
   items:
   - type: list

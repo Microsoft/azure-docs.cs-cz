@@ -1,10 +1,10 @@
 ---
-title: Jak zkontrolovat průběh úlohy pomocí rozhraní REST API | Microsoft Docs
+title: Jak zkontrolovat průběh úlohy pomocí rozhraní REST API | Dokumentace Microsoftu
 description: Zjistěte, jak sledovat průběh úlohy.
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: a1a1f956-c035-448a-af9c-5ac15fcce9dd
 ms.service: media-services
@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/07/2017
+ms.date: 11/05/2018
 ms.author: juliako
-ms.openlocfilehash: 0065b12c9ee01bddef664e5c78a4e40af759826a
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: dc78dce667bf00dd6e923b86b9859e29e4a5fde6
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33790283"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51034995"
 ---
-# <a name="how-to-check-job-progress"></a>Postupy: Kontrola průběh úlohy
+# <a name="how-to-check-job-progress"></a>Postupy: Kontrola průběhu úlohy
 > [!div class="op_single_selector"]
 > * [Azure Portal](media-services-portal-check-job-progress.md)
 > * [.NET](media-services-check-job-progress.md)
@@ -29,16 +29,16 @@ ms.locfileid: "33790283"
 > 
 > 
 
-Při spuštění úlohy, často vyžadují způsob, jak sledovat průběh úlohy. Stav úlohy je můžete získat pomocí vlastnosti stavu úlohy. Další informace o stavu vlastnost najdete v tématu [vlastností Entity úlohy](https://docs.microsoft.com/rest/api/media/operations/job#job_entity_properties).
+Při spuštění úlohy, často vyžadují způsob, jak sledovat průběh úlohy. Stav úlohy můžete zjistit pomocí vlastnosti stavu úlohy. Další informace o vlastnosti stavu, najdete v části [vlastnosti Entity úlohy](https://docs.microsoft.com/rest/api/media/operations/job#job_entity_properties).
 
 ## <a name="connect-to-media-services"></a>Připojení ke službě Media Services
 
-Informace o tom, jak připojit k rozhraní API pro AMS najdete v tématu [přístup k Azure Media Services API pomocí ověřování Azure AD](media-services-use-aad-auth-to-access-ams-api.md). 
+Informace o tom, jak se připojit k rozhraní API pro AMS, naleznete v tématu [přístup k rozhraní API Azure Media Services pomocí ověřování Azure AD](media-services-use-aad-auth-to-access-ams-api.md). 
 
 
 ## <a name="check-job-progress"></a>Kontrola průběhu úlohy
 
-Žádost:
+Požadavek:
 
     GET https://media.windows.net/api/Jobs()?$filter=Id%20eq%20'nb%3Ajid%3AUUID%3Af3c43f94-327f-2347-90bb-3bf79f8559f1'&$top=1 HTTP/1.1
     DataServiceVersion: 1.0;NetFx
@@ -76,4 +76,4 @@ Odpověď:
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 
-[Přehled rozhraní REST API operations Media Services](media-services-rest-how-to-use.md)
+[Přehled rozhraní REST API služby Media Services operace](media-services-rest-how-to-use.md)

@@ -1,24 +1,24 @@
 ---
-title: Použití prázdných hraničních uzlů v clusterech Hadoop v HDInsight – Azure
+title: Použití prázdných hraničních uzlů v clusterech Apache Hadoop v HDInsight – Azure
 description: Postup přidání prázdných hraničních uzlů do clusteru služby HDInsight, který může sloužit jako klient a pak test/hostitele aplikace HDInsight.
 services: hdinsight
 ms.reviewer: jasonh
-author: jasonwhowell
+author: hrasheed-msft
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 04/23/2018
-ms.author: jasonh
-ms.openlocfilehash: 1111f3c21e3c3718a9a010284a42ea469e04473d
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.date: 11/06/2018
+ms.author: hrasheed
+ms.openlocfilehash: 276f11bf889927ee74fa4e9078e147db6df78b9e
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43090384"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281366"
 ---
-# <a name="use-empty-edge-nodes-on-hadoop-clusters-in-hdinsight"></a>Použití prázdných hraničních uzlů v clusterech Hadoop v HDInsight
+# <a name="use-empty-edge-nodes-on-apache-hadoop-clusters-in-hdinsight"></a>Použití prázdných hraničních uzlů v clusterech Apache Hadoop v HDInsight
 
-Zjistěte, jak přidat prázdných hraničních uzlů do clusteru HDInsight. Prázdných hraničních uzlů je virtuální počítač s Linuxem pomocí stejných nástrojů klienta nainstalované a nakonfigurované stejně jako v hlavních uzlech, ale žádné služby Hadoop spuštěné. Hraniční uzel můžete použít pro přístup ke clusteru, testování vaší klientské aplikace a který je hostitelem klientských aplikací. 
+Zjistěte, jak přidat prázdných hraničních uzlů do clusteru HDInsight. Prázdných hraničních uzlů je virtuální počítač s Linuxem pomocí stejných nástrojů klienta nainstalované a nakonfigurované stejně jako v hlavních uzlech, ale žádné služby Apache Hadoop spuštěné. Hraniční uzel můžete použít pro přístup ke clusteru, testování vaší klientské aplikace a který je hostitelem klientských aplikací. 
 
 Prázdných hraničních uzlů můžete přidat do existujícího clusteru HDInsight, do nového clusteru při vytváření clusteru. Přidání prázdných hraničních uzlů se provádí pomocí šablony Azure Resource Manageru.  Následující příklad ukazuje, jak se to dělá pomocí šablony:
 
@@ -66,7 +66,7 @@ Po vytvoření hraniční uzel může připojit k hraničnímu uzlu pomocí SSH 
 > Pokud používáte technologie Apache, je možné k vyhledání pomoci prostřednictvím Apache projektovým webům na [ http://apache.org ](http://apache.org), například [Hadoop](http://hadoop.apache.org/) lokality.
 
 > [!NOTE]
-> Stejné jako clustery, hraniční uzly jsou také patch spravované.  Další informace najdete v tématu [opravy operačního systému pro HDInsight](./hdinsight-os-patching.md).
+> Stejně jako ostatní uzly clusteru hraniční uzly jsou také patch spravované.  Další informace najdete v tématu [opravy operačního systému pro HDInsight](./hdinsight-os-patching.md).
 
 ## <a name="add-an-edge-node-to-an-existing-cluster"></a>Přidat hraniční uzel do existujícího clusteru
 V této části pomocí šablony Resource Manageru pro přidání hraniční uzel do existujícího clusteru HDInsight.  Šablony Resource Manageru najdete v [Githubu](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-add-edge-node/). Šablony Resource Manageru volá akci skriptu umístěného v https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-hdinsight-linux-add-edge-node/scripts/EmptyNodeSetup.sh. Skript nebude provádět žádné akce.  Je k předvedení akce volání skriptu z šablony Resource Manageru.

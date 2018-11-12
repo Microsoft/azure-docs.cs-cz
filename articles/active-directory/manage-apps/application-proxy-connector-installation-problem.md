@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/21/2018
 ms.author: barbkess
-ms.reviewer: asteen
-ms.openlocfilehash: 98dc3981e0f34ebfe7d8881d77b84cfe252e3f4f
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.reviewer: japere
+ms.openlocfilehash: 2d528c04a9301998220b5564330f20ed014b68d6
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44356456"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51036925"
 ---
-# <a name="problem-installing-the-application-proxy-agent-connector"></a>Problému s instalací konektorem agenta aplikačního proxy serveru
+# <a name="problem-installing-the-application-proxy-agent-connector"></a>Potíže při instalaci konektoru agenta proxy aplikací
 
 Microsoft AAD Application Proxy Connector je součást interní domény, který používá odchozí připojení k navázání připojení k interní doméně z koncového bodu cloudu k dispozici.
 
@@ -63,13 +63,13 @@ Při instalaci konektoru selže, hlavní příčinou je obvykle jednu z následu
 
 ## <a name="verify-admin-is-used-to-install-the-connector"></a>Ověřte, že správce se používá k instalaci konektoru
 
-**Cíl:** ověřte, že uživatel, který se snaží nainstalovat konektor je správce se správnými přihlašovacími údaji. V současné době uživatel musí být globální správce pro instalace proběhla úspěšně.
+**Cíl:** ověřte, že uživatel, který se snaží nainstalovat konektor je správce se správnými přihlašovacími údaji. V současné době uživatel musí být buď správce aplikace nebo globální správce pro instalace proběhla úspěšně.
 
 **Chcete-li ověřit, že jsou správné přihlašovací údaje:**
 
 Připojte se k <https://login.microsoftonline.com> a použijte stejné přihlašovací údaje. Ujistěte se, že je přihlášení úspěšné. Role uživatele můžete zkontrolovat tak, že přejdete do **Azure Active Directory**  - &gt; **uživatelů a skupin**  - &gt; **všichni uživatelé**. 
 
-Vyberte uživatelský účet, pak "Role adresáře" v nabídce výsledný. Ověřte, zda vybranou roli "Globální správce". Pokud nemůžete získat přístup k žádnému stránek podél těchto kroků, nejste globální správce.
+Vyberte uživatelský účet, pak "Role adresáře" v nabídce výsledný. Ověřte, že vybranou roli "aplikace" globální správce"nebo". Pokud nemůžete získat přístup k žádnému stránek podél těchto kroků, nemáte požadované role.
 
 ## <a name="next-steps"></a>Další postup
 [Principy konektorů Proxy aplikací Azure AD](application-proxy-connectors.md)

@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: afc1ec8e171bc602f2698b4a36f249bc454cbed9
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: a4cd2cec56a15660a03ac111b1b8962d531479ad
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42057174"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51233673"
 ---
 # <a name="graphical-authoring-in-azure-automation"></a>Grafické vytváření obsahu v Azure Automation.
 
@@ -48,7 +48,7 @@ Ovládacím prvku knihovna je, kde můžete vybrat [aktivity](#activities) přid
 |:--- |:--- |
 | Rutiny |Zahrnuje všechny rutiny, které lze použít ve své sadě runbook. Rutiny jsou uspořádané podle modulu. Všechny moduly nainstalované ve vašem účtu automation jsou k dispozici. |
 | Runbooky |Obsahuje sady runbook ve vašem účtu automation. Tyto sady runbook lze přidat na plátno a použít jako podřízené sady runbook. Zobrazují se jenom runbooky stejného typu jako sady runbook, který právě upravujete core; pro grafický jsou uvedeny pouze pomocí prostředí PowerShell runbooky sady runbook, zatímco pro grafický Powershellový pracovní postup sady runbook jsou uvedeny pouze pomocí prostředí PowerShell pracovního postupu-sady runbook. |
-| Prostředky |Zahrnuje [prostředky služby automation](http://msdn.microsoft.com/library/dn939988.aspx) ve vašem účtu automation, který je možné v sadě runbook. Když přidáte prostředek k sadě runbook, přidá aktivitu pracovního postupu, který získá vybraný prostředek. V případě proměnných assetů můžete vybrat, jestli se má přidat aktivitu získat proměnnou nebo nastavit proměnnou. |
+| Prostředky |Zahrnuje [prostředky služby automation](https://msdn.microsoft.com/library/dn939988.aspx) ve vašem účtu automation, který je možné v sadě runbook. Když přidáte prostředek k sadě runbook, přidá aktivitu pracovního postupu, který získá vybraný prostředek. V případě proměnných assetů můžete vybrat, jestli se má přidat aktivitu získat proměnnou nebo nastavit proměnnou. |
 | Řízení sady Runbook |Obsahuje ovládací prvek aktivity sady runbook, které lze použít v aktuální sadě runbook. A *spojení* přijímá více vstupů a počká, dokud nebudou všechny dokončila před pokračováním pracovní postup. A *kód* aktivita spustí jeden nebo více řádků kódu Powershellu nebo pracovním postupu Powershellu v závislosti na typu grafický runbook. Tuto aktivitu lze použít pro vlastní kód nebo pro funkce, které je obtížné dosáhnout s ostatními aktivitami. |
 
 ### <a name="configuration-control"></a>Řízení konfigurace
@@ -336,7 +336,7 @@ Uložená data vytvořená žádnou aktivitu, která nemá odchozího odkazu [v�
 
 ## <a name="powershell-expressions"></a>Výrazy prostředí PowerShell
 
-Jednou z výhod vytváření grafického obsahu vám poskytuje možnost vytvoření sady runbook s minimálními znalostmi prostředí PowerShell. V současné době je potřeba vědět hodně prostředí PowerShell i když k naplnění některých [hodnoty parametrů](#activities) a pro nastavení [odkaz podmínky](#links-and-workflow). Tato část obsahuje stručný úvod do prostředí PowerShell výrazy pro uživatele, kteří nemusí být obeznámeni s ním. Úplné podrobnosti o Powershellu najdete na adrese [skriptování v prostředí Windows PowerShell](http://technet.microsoft.com/library/bb978526.aspx).
+Jednou z výhod vytváření grafického obsahu vám poskytuje možnost vytvoření sady runbook s minimálními znalostmi prostředí PowerShell. V současné době je potřeba vědět hodně prostředí PowerShell i když k naplnění některých [hodnoty parametrů](#activities) a pro nastavení [odkaz podmínky](#links-and-workflow). Tato část obsahuje stručný úvod do prostředí PowerShell výrazy pro uživatele, kteří nemusí být obeznámeni s ním. Úplné podrobnosti o Powershellu najdete na adrese [skriptování v prostředí Windows PowerShell](https://technet.microsoft.com/library/bb978526.aspx).
 
 ### <a name="powershell-expression-data-source"></a>Zdroj dat výraz prostředí PowerShell
 Můžete použít Powershellový výraz jako zdroj dat k naplnění hodnoty [parametr aktivity](#activities) s výsledky kódu Powershellu. Může to být jediný řádek kódu, který provádí některé jednoduché funkce nebo více řádků, které provádějí některé komplexní logiku. Žádný výstup z příkazu, který není přiřazen k proměnné se výstup hodnotu parametru.
@@ -414,7 +414,7 @@ Toho se můžete zapojit několika podmínek použití [logického operátoru](h
 
 ### <a name="hashtables"></a>Zatřiďovací tabulky
 
-[Zatřiďovacích tabulkách](http://technet.microsoft.com/library/hh847780.aspx) jsou páry název/hodnota, které jsou užitečné pro vrácení sady hodnot. Vlastnosti pro určité aktivity může očekávat, že zatřiďovací tabulku místo jednoduchých hodnot. Také může zobrazit jako zatřiďovací tabulky označovány jako slovník.
+[Zatřiďovacích tabulkách](https://technet.microsoft.com/library/hh847780.aspx) jsou páry název/hodnota, které jsou užitečné pro vrácení sady hodnot. Vlastnosti pro určité aktivity může očekávat, že zatřiďovací tabulku místo jednoduchých hodnot. Také může zobrazit jako zatřiďovací tabulky označovány jako slovník.
 
 Vytvoření zatřiďovací tabulku s následující syntaxí. Zatřiďovací tabulka může obsahovat libovolný počet položek, které se ale každý je definován tak, že název a hodnotu.
 

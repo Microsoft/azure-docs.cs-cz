@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: lmolkova
-ms.openlocfilehash: 2e4ff84c957540aa6863cd9836b1744e73c5b2f5
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 770d8950e25431e1edc496e0710cf199b45e5847
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48854877"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51283831"
 ---
 # <a name="distributed-tracing-and-correlation-through-service-bus-messaging"></a>Distribuované trasování a korelace prostřednictvím zasílání zpráv Service Bus
 
@@ -181,7 +181,7 @@ V každé události mohly přistupovat k `Activity.Current` , který uchovává 
 
 #### <a name="logging-additional-properties"></a>Další vlastnosti protokolování
 
-`Activty.Current` poskytuje podrobné kontextu aktuální operace a jejích nadřazených tříd. Další informace najdete v tématu [dokumentace k aktivitám](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) další podrobnosti.
+`Activity.Current` poskytuje podrobné kontextu aktuální operace a jejích nadřazených tříd. Další informace najdete v tématu [dokumentace k aktivitám](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) další podrobnosti.
 Instrumentace služby Service Bus poskytuje další informace v `Activity.Current.Tags` -drží `MessageId` a `SessionId` vždy, když jsou k dispozici.
 
 Aktivity, které sledují "Přijímat", "Náhled" a "ReceiveDeferred" událost také může mít `RelatedTo` značky. Obsahuje seznam různých `Diagnostic-Id`(s) zpráv, které byly přijaty ve výsledku.

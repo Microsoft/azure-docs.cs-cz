@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/28/2018
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: bf73f64cc1e1789b770d7fae5f62e0ec27425263
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.openlocfilehash: 8c8f3cd67186450fdcf65c177ea0353d297a3b01
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42915503"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51264030"
 ---
 ## <a name="generate-the-certificate-signing-request-file"></a>Generování souboru s žádostí o podepsání certifikátu
 
@@ -41,7 +41,7 @@ V dalším kroku svou aplikaci zaregistrujete u Applu, povolíte nabízená ozn�
 
 Abyste mohli odesílat nabízená oznámení do aplikace systému iOS, musíte aplikaci zaregistrovat u Applu a také ji musíte zaregistrovat pro nabízená oznámení.  
 
-1. Pokud jste aplikaci ještě nezaregistrovali, přejděte na stránky [iOS Provisioning Portal](http://go.microsoft.com/fwlink/p/?LinkId=272456) na webu Apple Developer Center, přihlaste se pomocí Apple ID, klikněte na **Identifiers** (Identifikátory), potom na **App IDs** (ID aplikací) a nakonec klikněte na znak **+** a zaregistrujte novou aplikaci.
+1. Pokud jste aplikaci ještě nezaregistrovali, přejděte na stránky [iOS Provisioning Portal](https://go.microsoft.com/fwlink/p/?LinkId=272456) na webu Apple Developer Center, přihlaste se pomocí Apple ID, klikněte na **Identifiers** (Identifikátory), potom na **App IDs** (ID aplikací) a nakonec klikněte na znak **+** a zaregistrujte novou aplikaci.
 
     ![Stránka ID aplikací na portálu zřizování iOS](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-ios-appids.png)
 
@@ -111,7 +111,7 @@ Abyste mohli odesílat nabízená oznámení do aplikace systému iOS, musíte a
 
 ## <a name="create-a-provisioning-profile-for-the-app"></a>Vytvoření zřizovacího profilu pro aplikaci
 
-1. Na stránkách [iOS Provisioning Portal](http://go.microsoft.com/fwlink/p/?LinkId=272456) vyberte **Provisioning Profiles** (Zřizovací profily), potom **All** (Všechny) a nakonec kliknutím na tlačítko **+** (plus) vytvořte nový profil. Zobrazí se průvodce **Add iOS Provisioning Profile** (Přidání zřizovacího profilu iOS):
+1. Na stránkách [iOS Provisioning Portal](https://go.microsoft.com/fwlink/p/?LinkId=272456) vyberte **Provisioning Profiles** (Zřizovací profily), potom **All** (Všechny) a nakonec kliknutím na tlačítko **+** (plus) vytvořte nový profil. Zobrazí se průvodce **Add iOS Provisioning Profile** (Přidání zřizovacího profilu iOS):
 
     ![Seznam zřizovacích profilů](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-new-provisioning-profile.png)
 

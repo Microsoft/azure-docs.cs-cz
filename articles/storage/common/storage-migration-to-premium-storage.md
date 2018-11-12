@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/27/2017
 ms.author: yuemlu
 ms.component: common
-ms.openlocfilehash: c6256fc209a4ffa5308dc3b24794f8295c57f4ef
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 4ec0d4058c512ce420cd6e1bdc393b8043dbf1b6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39521774"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51232547"
 ---
 # <a name="migrating-to-azure-premium-storage-unmanaged-disks"></a>Migrace na Azure Premium Storage (nespravované disky)
 
@@ -54,10 +54,10 @@ Specifikace velikosti virtuálního počítače Azure jsou uvedeny v [velikosti 
 #### <a name="disk-sizes"></a>Velikost disků
 Existuje pět typů disků, které lze použít s virtuálním Počítačem a obsahují konkrétní IOPs a propustnost omezení. Vzít v úvahu tyto limity, když vyberete typ disku pro virtuální počítač podle potřeb vaší aplikace z hlediska kapacity, výkonu, škálovatelnosti a načte ve špičce.
 
-| Typ disky Premium  | P10   | P20   | P30            | P40            | P50            | 
+| Typ disky Premium  | P10   | P20   | P30            | P40            | P50            | 
 |:-------------------:|:-----:|:-----:|:--------------:|:--------------:|:--------------:|
-| Velikost disku           | 128 GB| 512 GB| 1024 GB (1 TB) | 2048 GB (2 TB) | 4095 GB (4 TB) | 
-| Vstupně-výstupní operace za sekundu / disk       | 500   | 2300  | 5000           | 7500           | 7500           | 
+| Velikost disku           | 128 GB| 512 GB| 1024 GB (1 TB) | 2048 GB (2 TB) | 4095 GB (4 TB) | 
+| Vstupně-výstupní operace za sekundu / disk       | 500   | 2300  | 5000           | 7500           | 7500           | 
 | Propustnost / disk | 100 MB za sekundu | 150 MB za sekundu | 200 MB za sekundu | 250 MB za sekundu | 250 MB za sekundu |
 
 V závislosti na velikosti pracovní zátěže určí, jestli další datové disky jsou nezbytné pro váš virtuální počítač. K virtuálnímu počítači můžete připojit několik trvalých datových disků. V případě potřeby můžete prokládanou discích zvýšit kapacitu a výkon svazku. (Podívejte se, co je prokládání disků [tady](../../virtual-machines/windows/premium-storage-performance.md#disk-striping).) Pokud prokládanou datových disků Premium Storage pomocí [prostory úložiště][4], měli byste ji nakonfigurovat s jedním sloupcem pro každý disk, který se používá. Celkový výkon prokládaných svazků v opačném případě může být nižší než očekávané kvůli nerovnoměrné distribuci provozu discích. Pro virtuální počítače s Linuxem můžete použít *mdadm* nástroj to samé. Najdete v článku [konfigurace softwaru diskového pole RAID v Linuxu](../../virtual-machines/linux/configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) podrobnosti.
@@ -94,14 +94,14 @@ Virtuální pevné disky přípravy na migraci, budete potřebovat:
 
 * Předplatné Azure, účet úložiště a kontejner v tomto účtu úložiště, do kterého můžete zkopírovat virtuální pevné disky. Všimněte si, že cílový účet úložiště může být účet Standard nebo Premium Storage podle potřeby.
 * Nástroj pro zobecnit virtuální pevný disk, pokud máte v úmyslu vytvořit několik instancí virtuálních počítačů z něj. Například nástroje sysprep pro Windows nebo virt-sysprep pro Ubuntu.
-* Nástroj pro nahrání souboru VHD do účtu úložiště. Zobrazit [přenos dat pomocí nástroje příkazového řádku Azcopy](storage-use-azcopy.md) nebo použijte [Průzkumníka služby Azure storage](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/03/11/windows-azure-storage-explorers-2014.aspx). Tato příručka popisuje kopírování virtuální pevný disk pomocí nástroje AzCopy.
+* Nástroj pro nahrání souboru VHD do účtu úložiště. Zobrazit [přenos dat pomocí nástroje příkazového řádku Azcopy](storage-use-azcopy.md) nebo použijte [Průzkumníka služby Azure storage](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/03/11/windows-azure-storage-explorers-2014.aspx). Tato příručka popisuje kopírování virtuální pevný disk pomocí nástroje AzCopy.
 
 > [!NOTE]
 > Pokud zvolíte možnost synchronní kopie pomocí nástroje AzCopy, pro zajištění optimálního výkonu, zkopírujte virtuální pevný disk spuštěním jednoho z těchto nástrojů z virtuálního počítače Azure, který je ve stejné oblasti jako cílový účet úložiště. Pokud kopírujete virtuální pevný disk z virtuálního počítače Azure do jiné oblasti, může být pomalejší výkon.
 >
 > Kopírování velkých objemů dat přes omezenou šířkou pásma, vezměte v úvahu [posílat data do úložiště objektů Blob pomocí služby Azure Import/Export](../storage-import-export-service.md); to umožňuje přenos dat přenosem pevných disků do datacentra Azure. Služba Azure Import/Export můžete použít ke zkopírování dat na účet úložiště úrovně standard. Jakmile jsou data ve vašem účtu úložiště úrovně standard, můžete použít buď [kopírování objektů Blob rozhraní API](https://msdn.microsoft.com/library/azure/dd894037.aspx) nebo AzCopy k přenosu dat do účtu premium storage.
 >
-> Všimněte si, že Microsoft Azure podporuje pouze soubory virtuálního pevného disku pevné velikosti. Soubory VHDX nebo dynamický virtuální pevné disky nejsou podporovány. Pokud máte dynamický virtuální pevný disk, můžete ji převést na pevné velikosti pomocí [Convert-VHD](http://technet.microsoft.com/library/hh848454.aspx) rutiny.
+> Všimněte si, že Microsoft Azure podporuje pouze soubory virtuálního pevného disku pevné velikosti. Soubory VHDX nebo dynamický virtuální pevné disky nejsou podporovány. Pokud máte dynamický virtuální pevný disk, můžete ji převést na pevné velikosti pomocí [Convert-VHD](https://technet.microsoft.com/library/hh848454.aspx) rutiny.
 >
 >
 
@@ -123,7 +123,7 @@ Níže najdete provedeme tyto 3 scénáře pro přípravu vašeho virtuálního 
 Pokud nahráváte virtuálního pevného disku, který se použije k vytvoření několika obecných instancí virtuálních počítačů Azure, musíte nejprve zobecnit virtuální pevný disk pomocí nástroje sysprep. To se vztahuje na virtuální pevný disk, který je místně nebo v cloudu. Nástroj Sysprep odebere všechny informace specifické pro počítač z virtuálního pevného disku.
 
 > [!IMPORTANT]
-> Pořízení snímku nebo zálohování virtuálního počítače před že ji zobecníte. Spuštění sysprep se zastavit a uvolnit instanci virtuálního počítače. Postupujte podle kroků níže nástroje Sysprep virtuálního pevného disku operačního systému Windows. Všimněte si, že spuštění příkazu Sysprep bude vyžadovat, abyste vypnout virtuální počítač. Další informace o nástroji Sysprep najdete v tématu [přehled nástroje Sysprep](http://technet.microsoft.com/library/hh825209.aspx) nebo [technické informace o nástroji Sysprep](http://technet.microsoft.com/library/cc766049.aspx).
+> Pořízení snímku nebo zálohování virtuálního počítače před že ji zobecníte. Spuštění sysprep se zastavit a uvolnit instanci virtuálního počítače. Postupujte podle kroků níže nástroje Sysprep virtuálního pevného disku operačního systému Windows. Všimněte si, že spuštění příkazu Sysprep bude vyžadovat, abyste vypnout virtuální počítač. Další informace o nástroji Sysprep najdete v tématu [přehled nástroje Sysprep](https://technet.microsoft.com/library/hh825209.aspx) nebo [technické informace o nástroji Sysprep](https://technet.microsoft.com/library/cc766049.aspx).
 >
 >
 
@@ -163,7 +163,7 @@ Je potřeba najít váš kontejner cesty a klíč účtu úložiště zpracovat 
 ##### <a name="option-1-copy-a-vhd-with-azcopy-asynchronous-copy"></a>Možnost 1: Zkopírujte virtuální pevný disk pomocí nástroje AzCopy (asynchronní kopie)
 Pomocí AzCopy můžete snadno nahrávat VHD přes Internet. V závislosti na velikosti virtuálních pevných disků to může trvat dobu. Nezapomeňte zkontrolovat příchozí a odchozí přenos limity účtu úložiště při použití této možnosti. Zobrazit [Azure Storage škálovatelnost a cíle výkonnosti](storage-scalability-targets.md) podrobnosti.
 
-1. Stáhněte a nainstalujte nástroje AzCopy odsud: [nejnovější verzi AzCopy](http://aka.ms/downloadazcopy)
+1. Stáhněte a nainstalujte nástroje AzCopy odsud: [nejnovější verzi AzCopy](https://aka.ms/downloadazcopy)
 2. Otevřete prostředí Azure PowerShell a přejděte do složky, ve kterém je nástroj AzCopy nainstalovaný.
 3. Použijte následující příkaz pro kopírování souboru virtuálního pevného disku z "Zdroj" na "Cíl".
 
@@ -257,7 +257,7 @@ Příklad <Uri> může být ***"https://storagesample.blob.core.windows.net/myco
 ##### <a name="option-2-using-azcopy-to-upload-the-vhd-file"></a>Možnost 2: Nahrání souboru VHD pomocí AzCopy
 Pomocí AzCopy můžete snadno nahrávat VHD přes Internet. V závislosti na velikosti virtuálních pevných disků to může trvat dobu. Nezapomeňte zkontrolovat příchozí a odchozí přenos limity účtu úložiště při použití této možnosti. Zobrazit [Azure Storage škálovatelnost a cíle výkonnosti](storage-scalability-targets.md) podrobnosti.
 
-1. Stáhněte a nainstalujte nástroje AzCopy odsud: [nejnovější verzi AzCopy](http://aka.ms/downloadazcopy)
+1. Stáhněte a nainstalujte nástroje AzCopy odsud: [nejnovější verzi AzCopy](https://aka.ms/downloadazcopy)
 2. Otevřete prostředí Azure PowerShell a přejděte do složky, ve kterém je nástroj AzCopy nainstalovaný.
 3. Použijte následující příkaz pro kopírování souboru virtuálního pevného disku z "Zdroj" na "Cíl".
 

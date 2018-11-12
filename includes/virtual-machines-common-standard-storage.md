@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: yuemlu
 ms.custom: include file
-ms.openlocfilehash: f1fe45283ef2886a50bf6a36e50e7ffe42055ee2
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: e266b239a44907e8e38e60cfc217aa21e46ab17e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49312355"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51264021"
 ---
 # <a name="cost-effective-standard-storage-and-unmanaged-and-managed-azure-vm-disks"></a>Nákladově efektivní úložiště úrovně Standard a spravované a nespravované disky virtuálních počítačů Azure
 
@@ -61,10 +61,10 @@ V této části popisujeme škálovatelnost a výkonnostní cíle, které je pot
 | **Prostředek** | **Výchozí omezení** |
 |--------------|-------------------|
 | TB na jeden účet úložiště  | 500 TB |
-| Maximální příchozí<sup>1</sup> jeden účet úložiště (nám oblasti) | 10 GB/s je-li povolena GRS/ZRS, 20 GB/s pro LRS |
-| Maximální počet odchozího přenosu dat<sup>1</sup> jeden účet úložiště (nám oblasti) | 20 GB/s je-li povolena RA-GRS/GRS/ZRS, 30 GB/s pro LRS |
-| Maximální příchozí<sup>1</sup> jeden účet úložiště (Evropské a oblasti Asie) | 5 GB/s je-li povolena GRS/ZRS, 10 GB/s pro LRS |
-| Maximální počet odchozího přenosu dat<sup>1</sup> jeden účet úložiště (Evropské a oblasti Asie) | 10 GB/s je-li povolena RA-GRS/GRS/ZRS, 15 GB/s pro LRS |
+| Maximální příchozí<sup>1</sup> jeden účet úložiště (nám oblasti) | 10 GB/s je-li povolena GRS/ZRS, 20 GB/s pro LRS |
+| Maximální počet odchozího přenosu dat<sup>1</sup> jeden účet úložiště (nám oblasti) | 20 GB/s je-li povolena RA-GRS/GRS/ZRS, 30 GB/s pro LRS |
+| Maximální příchozí<sup>1</sup> jeden účet úložiště (Evropské a oblasti Asie) | 5 GB/s je-li povolena GRS/ZRS, 10 GB/s pro LRS |
+| Maximální počet odchozího přenosu dat<sup>1</sup> jeden účet úložiště (Evropské a oblasti Asie) | 10 GB/s je-li povolena RA-GRS/GRS/ZRS, 15 GB/s pro LRS |
 | Celkový počet žádostí rychlost (za předpokladu, že velikost objektu 1 KB) jeden účet úložiště | Až 20 000 IOPS, entity za sekundu nebo zpráv za sekundu |
 
 <sup>1</sup> příchozího přenosu dat odkazuje na všechna data (požadavky) odesílané do účtu úložiště. Výchozí přenos dat se odkazuje na všechna data (požadavky) přijímané z účtu úložiště.
@@ -111,7 +111,7 @@ Pokud spravovaný disk připojen k virtuálnímu počítači, nejsou povolené u
 
 Pokud používáte Storage úrovně Standard, platí následující aspekty fakturace:
 
-* Velikost úložiště úrovně Standard nespravované disky/dat 
+* Velikost úložiště úrovně Standard nespravované disky/dat
 * Spravované disky úrovně Standard
 * Snímky úložiště úrovně Standard
 * Přenosy odchozích dat
@@ -121,14 +121,16 @@ Pokud používáte Storage úrovně Standard, platí následující aspekty fakt
 
 **Spravované disky:** fakturace za spravované disky úrovně standard závisí na velikosti zřízeného disku. Zřízená velikost (zaokrouhluje nahoru) Azure mapuje na nejbližší možnost Managed Disks uvedená v následujících tabulkách. Každý spravovaný disk mapuje na jednu z podporovaných velikostí zřízené a účtuje se odpovídajícím způsobem. Například pokud vytvoříte standardní spravovaný disk a zadejte zřízená velikost 200 GB, účtuje se vám ceníku typ s.15 disku.
 
-| **Standardní HDD spravované <br>typ disku** | **S4** | **S6** | **S10** | **S.15** | **S20** | **S30** | **S40** | **S50** | **S60** | **S70** | **S80** |
+Velikosti označený hvězdičkou jsou aktuálně ve verzi preview.
+
+| **Standardní HDD spravované <br>typ disku** | **S4** | **S6** | **S10** | **S.15** | **S20** | **S30** | **S40** | **S50** | **S60*** | **S70*** | **S80*** |
 |------------------|---------|---------|--------|--------|--------|----------------|----------------|----------------|----------------|----------------|----------------|
 | Velikost disku        | 32 GiB  | 64 GiB  | 128 GiB | 256 GiB | 512 GiB | 1 024 giB (1 TB) | 2 048 giB (2 TB) | 4095 giB (4 TB) | 8192 giB (8 TB) | 16,385 giB (16 TB) | 32 767 giB (32 TB) |
 
 
 **Snímky**: snímky disků standard se účtují další zvýšení kapacity používané snímky. Informace o snímků, najdete v části [vytvoření snímku objektu Blob](/rest/api/storageservices/Creating-a-Snapshot-of-a-Blob).
 
-**Přenosy odchozích dat**: [přenosy odchozích dat](https://azure.microsoft.com/pricing/details/data-transfers/) (data odcházející z Datacenter Azure) jsou zpoplatněné využití šířky pásma.
+**Přenosy odchozích dat**: [přenosy odchozích dat](https://azure.microsoft.com/pricing/details/data-transfers/) (data odcházející z Datacenter Azure) jsou zpoplatněné využití šířky pásma.
 
 **Transakce**: Azure účtuje 0.0036 na 100 000 transakcí pro úložiště úrovně standard. Transakcemi se rozumí operace čtení a zápisu u úložiště.
 

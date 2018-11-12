@@ -13,12 +13,12 @@ ms.author: vanto
 ms.reviwer: ''
 manager: craigg
 ms.date: 10/05/2018
-ms.openlocfilehash: 343782448d4b508e678108ece268f2ce57b6ac1d
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 13e87ef0150924380c18c66c0362974ef599d4bf
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48868135"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51231715"
 ---
 # <a name="always-encrypted-protect-sensitive-data-and-store-encryption-keys-in-the-windows-certificate-store"></a>Funkce Always Encrypted: Chránit citlivá data a ukládat šifrovací klíče do úložiště certifikátů Windows
 
@@ -56,7 +56,7 @@ Připojovací řetězec budete potřebovat v pozdější části kurzu. Po vytvo
 1. Klikněte na tlačítko **databází SQL** > **Clinic** > **zobrazit databázové připojovací řetězce**.
 2. Zkopírujte připojovací řetězec pro **ADO.NET**.
    
-    ![Zkopírujte připojovací řetězec](./media/sql-database-always-encrypted/connection-strings.png)
+    ![Zkopírování připojovacího řetězce](./media/sql-database-always-encrypted/connection-strings.png)
 
 ## <a name="connect-to-the-database-with-ssms"></a>Připojit se k databázi pomocí SSMS
 Otevřete SSMS a připojte se k serveru databáze Clinic.
@@ -64,7 +64,7 @@ Otevřete SSMS a připojte se k serveru databáze Clinic.
 1. Otevřete aplikaci SSMS. (Klikněte na tlačítko **připojit** > **databázový stroj** otevřít **připojit k serveru** okno, pokud není otevřený).
 2. Zadejte název serveru a přihlašovací údaje. Název serveru najdete v okně databáze SQL a v připojovacím řetězci jste si zkopírovali dříve. Zadejte název včetně kompletní server *database.windows.net*.
    
-    ![Zkopírujte připojovací řetězec](./media/sql-database-always-encrypted/ssms-connect.png)
+    ![Zkopírování připojovacího řetězce](./media/sql-database-always-encrypted/ssms-connect.png)
 
 Pokud **nové pravidlo brány Firewall** otevře se okno přihlášení do Azure a umožňují SSMS vytvořit za vás nové pravidlo brány firewall.
 
@@ -514,5 +514,5 @@ Po vytvoření databáze s použitím funkce Always Encrypted, může být vhodn
 * [Transparentní šifrování dat](https://msdn.microsoft.com/library/bb934049.aspx)
 * [Šifrování SQL serveru](https://msdn.microsoft.com/library/bb510663.aspx)
 * [Průvodce Always Encrypted](https://msdn.microsoft.com/library/mt459280.aspx)
-* [Blog Always Encrypted](http://blogs.msdn.com/b/sqlsecurity/archive/tags/always-encrypted/)
+* [Blog Always Encrypted](https://blogs.msdn.com/b/sqlsecurity/archive/tags/always-encrypted/)
 

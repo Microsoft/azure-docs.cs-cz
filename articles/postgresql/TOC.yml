@@ -100,6 +100,8 @@ items:
     items:
     - name: Knihovny připojení
       href: concepts-connection-libraries.md
+    - name: Odolnost připojení
+      href: concepts-connectivity.md
 - name: Návody
   items:
   - name: Vytvoření uživatelů
@@ -140,6 +142,10 @@ items:
     items:
     - name: Vytváření upozornění na metriky
       href: howto-alert-on-metric.md
+  - name: Řešení potíží
+    items:
+    - name: Řešení chyb připojení
+      href: howto-troubleshoot-common-connection-issues.md
   - name: Rozšířená ochrana před internetovými útoky
     items:
     - name: portál Azure
@@ -198,9 +204,9 @@ items:
     href: partners-migration-postgresql.md
   - name: Průvodce migrací databází
     href: https://datamigration.microsoft.com/
-ms.openlocfilehash: cd05ba229be03190dfd43a17fe24f750bdaf57d9
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 72cb09c49c25cd994a66ab0e32a324aeefeb06a7
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49986477"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51280125"

@@ -8,12 +8,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: 6aff31c662a845028a02cecd7a99837f92bc87e5
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 4b4230397da7d97b613b546f33a0cbb764675720
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394217"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50214813"
 ---
 # <a name="quickstart-create-an-azure-data-explorer-cluster-and-database"></a>Rychlý start: Vytvoření clusteru a databáze Azure Data Exploreru
 
@@ -31,11 +31,11 @@ Cluster Azure Data Exploreru vytvoříte ve skupině prostředků Azure s defino
 
 1. Vyberte tlačítko **Vytvořit prostředek** (+) v levém horním rohu portálu.
 
-1. Vyhledejte možnost *Azure Data Explorer* a pak vyberte **Azure Data Explorer**.
+1. Vyhledejte *Azure Data Explorer*.
 
    ![Prohledávat prostředky](media/create-cluster-database-portal/search-resources.png)
 
-1. V pravém horním rohu vyberte **Vytvořit**.
+1. V dolní části obrazovky v části **Azure Data Explorer** vyberte **Vytvořit**.
 
 1. Zadejte pro svůj cluster jedinečný název, vyberte svoje předplatné a vytvořte skupinu prostředků s názvem *test-resource-group*.
 
@@ -51,10 +51,12 @@ Cluster Azure Data Exploreru vytvoříte ve skupině prostředků Azure s defino
     | Předplatné | Vaše předplatné | Vyberte předplatné Azure, které chcete použít pro svůj cluster.|
     | Skupina prostředků | *test-resource-group* | Vytvořte novou skupinu prostředků. |
     | Umístění | *Západní USA* | V tomto rychlém startu vyberte *USA – západ*. Pro produkční systém vyberte oblast, která nejlépe vyhovuje vašim potřebám.
-    | Specifikace výpočtů | *D13_v2* | Pro tento rychlý start vyberte specifikaci nejnižší ceny. Pro produkční systém vyberte specifikaci, která nejlépe vyhovuje vašim potřebám.
+    | Specifikace výpočetních prostředků | *D13_v2* | Pro tento rychlý start vyberte specifikaci nejnižší ceny. Pro produkční systém vyberte specifikaci, která nejlépe vyhovuje vašim potřebám.
     | | |
 
-1. Výběrem možnosti **Vytvořit** spusťte zřizování clusteru. Zřizování obvykle trvá asi deset minut. Pokud chcete proces zřizování monitorovat, vyberte na panelu nástrojů **Oznámení** (ikona zvonku).
+1. Výběrem možnosti **Vytvořit** spusťte zřizování clusteru. Zřizování obvykle trvá asi deset minut. Pokud chcete proces zřizování monitorovat, vyberte na panelu nástrojů **Oznámení**.
+
+    ![Oznámení](media/create-cluster-database-portal/notifications.png)
 
 1. Po dokončení procesu vyberte **Oznámení** a pak vyberte **Přejít k prostředku**.
 

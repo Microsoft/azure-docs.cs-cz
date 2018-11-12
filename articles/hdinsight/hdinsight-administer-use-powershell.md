@@ -1,25 +1,25 @@
 ---
-title: Správa clusterů Hadoop v HDInsight pomocí Powershellu – Azure
-description: Zjistěte, jak k provádění úloh správy pro clustery Hadoop v HDInsight pomocí Azure Powershellu.
+title: Správa clusterů Apache Hadoop v HDInsight pomocí Powershellu – Azure
+description: Zjistěte, jak k provádění úloh správy pro clustery systému Apache Hadoop v HDInsight pomocí Azure Powershellu.
 services: hdinsight
-ms.reviewer: jasonh
-author: jasonwhowell
+ms.reviewer: tyfox
+author: hrasheed-msft
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/14/2018
-ms.author: jasonh
-ms.openlocfilehash: 7abd75347d7bd2673a9e6040ee15def6638de440
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.date: 11/6/2018
+ms.author: tylerfox
+ms.openlocfilehash: 4bf46501a75b9dd5be7ae1b446a0db90c20be559
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43096578"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235254"
 ---
-# <a name="manage-hadoop-clusters-in-hdinsight-by-using-azure-powershell"></a>Správa clusterů Hadoop v HDInsight pomocí Azure Powershellu
+# <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-azure-powershell"></a>Spravovat clustery systému Apache Hadoop v HDInsight pomocí Azure Powershellu
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
 
-Prostředí Azure PowerShell slouží k řízení a automatizaci nasazení a správu vašich úloh v Azure. V tomto článku se dozvíte, jak spravovat clustery Hadoop v Azure HDInsight pomocí Azure Powershellu. Seznam rutin Powershellu pro HDInsight najdete v tématu [Reference k rutinám HDInsight](https://msdn.microsoft.com/library/azure/dn479228.aspx).
+Prostředí Azure PowerShell slouží k řízení a automatizaci nasazení a správu vašich úloh v Azure. V tomto článku se dozvíte, jak spravovat clustery systému Apache Hadoop v Azure HDInsight pomocí Azure Powershellu. Seznam rutin Powershellu pro HDInsight najdete v tématu [Reference k rutinám HDInsight](https://msdn.microsoft.com/library/azure/dn479228.aspx).
 
 **Požadavky**
 
@@ -209,7 +209,7 @@ $resourceGroupName = $cluster.ResourceGroup
 ## <a name="submit-jobs"></a>Odesílání úloh
 **Odesílat úlohy MapReduce**
 
-Zobrazit [ukázky spouštění Hadoop MapReduce v HDInsight se systémem Windows](hdinsight-run-samples.md).
+Zobrazit [spuštění příkladů MapReduce součástí HDInsight](hadoop/apache-hadoop-run-samples-linux.md).
 
 **K odesílání úloh Hive**
 

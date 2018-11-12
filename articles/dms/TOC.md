@@ -1,3 +1,5 @@
+# [Dokumentace ke službě Database Migration Service](index.yml)
+
 # Přehled
 ## [Informace o službě Database Migration Service](dms-overview.md)
 

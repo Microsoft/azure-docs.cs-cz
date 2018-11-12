@@ -8,12 +8,12 @@ ms.assetid: 5c7e209a-458c-4bb4-96bb-7ed178f9528a
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: 9aaba38b7dc0cd2bf659c9d91c9d7660bd17a6dd
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: f08825c17c1ba61fc09edc1d8f2c226af8d4266f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47409180"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51231460"
 ---
 # <a name="azure-data-catalog-frequently-asked-questions"></a>Nejčastější dotazy k Azure Data Catalog
 Tento článek obsahuje odpovědi na nejčastější dotazy týkající se služby Azure Data Catalog.
@@ -99,7 +99,7 @@ Při odstraňování objektu z katalogu dat výběrem objektu v portálu a potom
 Jste odborník je osoba, která má informovaně perspektivu o datový objekt. Objekt může mít několik odborníků. Jste odborník nemusí být "vlastník" pro objekt, ale je jednoduše kdokoli, kdo ví, jak a by měla sloužit data.
 
 ## <a name="how-do-i-share-information-with-the-data-catalog-team-if-i-encounter-problems"></a>Jak se dá sdílet informace s týmem katalogu Data Catalog Pokud I nastat potíže?
-Chcete-li zprávy o problémech, sdílet informace a zeptejte se a přejděte na [fóru služby Azure Data Catalog](http://go.microsoft.com/fwlink/?LinkID=616424&clcid=0x409).
+Chcete-li zprávy o problémech, sdílet informace a zeptejte se a přejděte na [fóru služby Azure Data Catalog](https://go.microsoft.com/fwlink/?LinkID=616424&clcid=0x409).
 
 ## <a name="does-the-catalog-work-with-another-data-source-that-im-interested-in"></a>Funguje s jiným zdrojem dat, které zajímá mě katalogu?
 Aktivně pracujeme na přidání více zdrojů dat do služby Data Catalog. Pokud se chcete podívat na konkrétnímu zdroji dat nepodporuje, navrhněte ji (nebo hlasové vaši podporu, pokud již byla navržena) tak, že přejdete [zpětnou vazbu fóra Azure Data Catalog](https://feedback.azure.com/forums/906052-data-catalog).
@@ -127,4 +127,4 @@ Vyberte datové assety v katalogu dat a klikněte **převzít vlastnictví** tla
 Pro aktualizaci metadat pro datové assety, které jsou již zaregistrovány v katalogu, jednoduše znovu registrovat zdroj dat, která obsahuje prostředky. Všechny změny ve zdroji dat, jako například přidávání nebo odebírání z tabulek nebo zobrazení sloupce se aktualizují v katalogu, ale zachovají jakékoliv anotace poskytované uživatelům.
 
 ## <a name="my-question-isnt-answered-here-where-can-i-go-for-answers"></a>Můj dotaz jsem zde nenalezl odpověď. Kam se můžu obrátit pro odpovědi?
-Přejděte [fóru služby Azure Data Catalog](http://go.microsoft.com/fwlink/?LinkID=616424&clcid=0x409). Otázky, že se najdou svou cestu tady.
+Přejděte [fóru služby Azure Data Catalog](https://go.microsoft.com/fwlink/?LinkID=616424&clcid=0x409). Otázky, že se najdou svou cestu tady.

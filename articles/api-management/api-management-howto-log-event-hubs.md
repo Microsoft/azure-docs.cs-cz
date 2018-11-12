@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: apimpm
-ms.openlocfilehash: 496928697af069f773e47974129bb7d3de3e1cbc
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: a8cda04ccc39e53962ec8c4b57d24df539f38825
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37886967"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51233894"
 ---
 # <a name="how-to-log-events-to-azure-event-hubs-in-azure-api-management"></a>Jak protokolování událostí ve službě Azure Event Hubs ve službě Azure API Management
 Vysoce škálovatelná služba Azure Event Hubs slouží ke zpracování příchozích dat. Dokáže přijímat miliony událostí za sekundu a umožňuje zpracovávat a analyzovat masivní objemy dat vytvářených zařízeními a aplikacemi připojenými k vaší síti. Služba Event Hubs slouží jako "předních dveří" pro kanál událostí, a jakmile jsou data shromážděna do centra událostí, je možné transformovat a uložit pomocí libovolného zprostředkovatele datové analýzy v reálném čase nebo adaptérů dávkování/úložišť. Event Hubs oddělí vytvoření proudu událostí od spotřeby těchto události, aby spotřebitelé událostí mohli k událostem přistupovat podle svého vlastního plánu.
@@ -33,7 +33,7 @@ Podrobné pokyny o tom, jak vytvořit Centrum událostí a připojovací řetěz
 ## <a name="create-an-api-management-logger"></a>Vytvoření API Management protokolovací nástroj
 Teď, když máte Centrum událostí, dalším krokem je konfigurace [protokolovací nástroj](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-logger-entity) ve službě API Management service tak, aby mohl zaprotokolovat události do centra událostí.
 
-Protokolovací nástroje API Management se konfiguruje pomocí [REST API služby API Management](http://aka.ms/smapi). Před prvním použitím rozhraní REST API, projděte si [požadavky](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/api-management-rest#Prerequisites) a ujistěte se, že máte [povolený přístup k rozhraní REST API](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/api-management-rest#EnableRESTAPI).
+Protokolovací nástroje API Management se konfiguruje pomocí [REST API služby API Management](https://aka.ms/smapi). Před prvním použitím rozhraní REST API, projděte si [požadavky](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/api-management-rest#Prerequisites) a ujistěte se, že máte [povolený přístup k rozhraní REST API](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/api-management-rest#EnableRESTAPI).
 
 Pokud chcete vytvořit protokolovací nástroj, ujistěte se, požadavek HTTP PUT pomocí následující šablony adresy URL:
 

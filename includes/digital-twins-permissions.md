@@ -1,19 +1,19 @@
 ---
 title: zahrnout soubor
 description: zahrnout soubor
-services: azure-digital-twins
+services: digital-twins
 author: alinamstanciu
-ms.service: azure-digital-twins
+ms.service: digital-twins
 ms.topic: include
 ms.date: 09/19/2018
 ms.author: alinast
 ms.custom: include file
-ms.openlocfilehash: d08b7a1256a26d1d7d39481ba15a8637339063ea
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 1887efd741f4779a5186707d60b27ca66fc3c06f
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49322780"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51283971"
 ---
 1. Z levého navigačního panelu na webu [Azure Portal](https://portal.azure.com) otevřete **Azure Active Directory** a pak otevřete podokno **Vlastnosti**. Do dočasného souboru zkopírujte **ID adresáře**. Tuto hodnotu použijete při konfiguraci ukázkové aplikace v následující části.
 

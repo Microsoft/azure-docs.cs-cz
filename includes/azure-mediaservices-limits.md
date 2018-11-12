@@ -26,7 +26,7 @@
 
 Od 1. dubna 2017 libovolný záznam úlohy ve vašem účtu, který je starší než 90 dní automaticky odstraní, spolu s jeho přidružené záznamy úkolů, i v případě, že celkový počet záznamů je nižší než maximální kvóta. Pokud potřebujete informace o úlohách/úkolech archivovat, můžete použít kód popsaný [tady](../articles/media-services/previous/media-services-dotnet-manage-entities.md).
 
-<sup>3</sup> při požadavku na seznam úloh entity, maximálně 1 000 úloh se vrátí na žádost. Pokud potřebujete sledovat všechny odeslané úlohy, můžete použít parametry top/skip popsané v tématu věnovaném [možnostem dotazů pro systém OData](http://msdn.microsoft.com/library/gg309461.aspx).
+<sup>3</sup> při požadavku na seznam úloh entity, maximálně 1 000 úloh se vrátí na žádost. Pokud potřebujete sledovat všechny odeslané úlohy, můžete použít parametry top/skip popsané v tématu věnovaném [možnostem dotazů pro systém OData](https://msdn.microsoft.com/library/gg309461.aspx).
 
 <sup>4</sup> Lokátory nejsou určené ke správě řízení přístupu pro jednotlivé uživatele. Pokud chcete konkrétním uživatelům poskytnout různá přístupová práva, použijte řešení pro správu digitálních práv (DRM). Další informace najdete v [tomto](../articles/media-services/previous/media-services-content-protection-overview.md) oddílu.
 

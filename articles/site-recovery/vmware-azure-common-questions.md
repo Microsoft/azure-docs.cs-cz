@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 10/29/2018
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 086acdd74932836627c600b5545bc4353052ad6f
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 05f878d244647a79a2b3e9d0c789ba811dad71ee
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50215442"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51012101"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>Časté otázky – VMware pro replikaci Azure
 
@@ -59,6 +59,8 @@ Chcete-li zjistit Začínáme kroky nasazení konfiguračního serveru na vlastn
 ### <a name="where-do-on-premises-vms-replicate-to"></a>Kde replikace místních virtuálních počítačů do?
 Data se replikují do úložiště Azure. Při spuštění převzetí služeb při selhání Site Recovery automaticky vytvoří virtuální počítače Azure z účtu úložiště.
 
+## <a name="replication"></a>Replikace
+
 ### <a name="what-apps-can-i-replicate"></a>Jaké aplikace můžou replikovat?
 Můžete replikovat jakoukoli aplikaci nebo úlohu spuštěnou na virtuálním počítači VMware, který splňuje [požadavky na replikaci](vmware-physical-azure-support-matrix.md##replicated-machines). Site Recovery poskytuje podporu pro replikaci se sledováním aplikací, tak, aby aplikace, můžete převzetí služeb při selhání a zpět do použitelného stavu se nezdařilo. Site Recovery se integruje s aplikacemi Microsoftu, například SharePoint, Exchange, Dynamics, SQL Server a Active Directory a úzce spolupracuje s předními dodavateli včetně Oracle, SAP, IBM a Red Hat. [Další informace](site-recovery-workload.md) o ochraně úloh.
 
@@ -74,18 +76,17 @@ Ano, je možné replikovat virtuální počítače Azure ExpressRoute. Site Reco
 Při replikaci do Azure, provoz replikace dosáhne veřejné koncové body účtu úložiště Azure, proto vám můžou replikovat jenom přes veřejný internet s ExpressRoute (veřejný partnerský vztah) a VPN nebude fungovat.
 
 
-
-## <a name="what-are-the-replicated-vm-requirements"></a>Jaké jsou požadavky na replikovaných virtuálních počítačů?
+### <a name="what-are-the-replicated-vm-requirements"></a>Jaké jsou požadavky na replikovaných virtuálních počítačů?
 
 Pro účely replikace virtuálního počítače VMware musí běžet podporovaný operační systém. Kromě toho virtuální počítač musí splňovat požadavky pro virtuální počítače Azure. [Další informace](vmware-physical-azure-support-matrix.md##replicated-machines) v matici podpory.
 
-## <a name="how-often-can-i-replicate-to-azure"></a>Jak často můžete replikovat do Azure?
+### <a name="how-often-can-i-replicate-to-azure"></a>Jak často můžete replikovat do Azure?
 Při replikaci virtuálních počítačů VMware do Azure je průběžné replikace.
 
-## <a name="can-i-extend-replication"></a>Je možné rozšířit replikaci?
+### <a name="can-i-extend-replication"></a>Je možné rozšířit replikaci?
 Rozšířená nebo zřetězená replikace není podporována. Žádost o tuto funkci v [fóru pro zpětnou vazbu](http://feedback.azure.com/forums/256299-site-recovery/suggestions/6097959-support-for-exisiting-extended-replication).
 
-## <a name="can-i-do-an-offline-initial-replication"></a>Můžete provést offline počáteční replikaci?
+### <a name="can-i-do-an-offline-initial-replication"></a>Můžete provést offline počáteční replikaci?
 Toto není podporováno. Žádost o tuto funkci [fóru pro zpětnou vazbu](http://feedback.azure.com/forums/256299-site-recovery/suggestions/6227386-support-for-offline-replication-data-transfer-from).
 
 ### <a name="can-i-exclude-disks"></a>Vyloučení disků
@@ -141,7 +142,7 @@ Doporučujeme pravidelných naplánovaných záloh konfiguračního serveru. Ús
 Instalační programy jsou uloženy v **%ProgramData%\ASR\home\svsystems\pushinstallsvc\repository** složky na konfiguračním serveru.
 
 ## <a name="how-do-i-install-the-mobility-service"></a>Jak nainstalovat službu Mobility?
-Nainstalujete na každý virtuální počítač, který chcete replikovat, použití [nabízená instalace](vmware-azure-install-mobility-service.md#install-mobility-service-by-push-installation-from-azure-site-recovery), nebo ruční instalace z [rozhraní](vmware-azure-install-mobility-service.md#install-mobility-service-manually-by-using-the-gui), nebo [pomocí prostředí PowerShell](vmware-azure-install-mobility-service.md#install-mobility-service-manually-at-a-command-prompt). Alternativně můžete nasadit pomocí nástroje nasazení, jako [System Center Configuration Manager](vmware-azure-mobility-install-configuration-mgr.md), nebo [Azure Automation a DSC](vmware-azure-mobility-deploy-automation-dsc.md).
+Nainstalujete na každý virtuální počítač, který chcete replikovat, použití [nabízená instalace](vmware-azure-install-mobility-service.md), nebo [ruční instalace](vmware-physical-mobility-service-install-manual.md) z uživatelského rozhraní nebo Powershellu. Alternativně můžete nasadit pomocí nástroje nasazení, jako [System Center Configuration Manager](vmware-azure-mobility-install-configuration-mgr.md).
 
 
 

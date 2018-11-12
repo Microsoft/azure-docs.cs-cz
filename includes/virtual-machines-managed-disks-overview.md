@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/03/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 40396462cc568a4ad7dea798fc30d72dcd75fd07
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 6ca819b20bd033cc4081fb98a0c22c23aed05a28
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51210159"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51264011"
 ---
 # <a name="azure-managed-disks-overview"></a>Přehled služby Azure Managed Disks
 
@@ -67,21 +67,21 @@ Pojďme se na ně podívat tyto možnosti.
 
 **Velikost disku**: fakturace za spravované disky závisí na velikosti zřízeného disku. Zřízená velikost (zaokrouhluje nahoru) Azure mapuje na nejbližší možnost Managed Disks uvedená v následujících tabulkách. Každý spravovaný disk mapuje na jednu z podporovaných velikostí zřízené a účtuje se odpovídajícím způsobem. Například pokud vytvoříte standardní spravovaný disk a zadejte zřízená velikost 200 GB, účtuje se vám ceníku typ s.15 disku.
 
-Tady jsou k dispozici pro spravovaný disk úrovně premium velikosti disků:
+Tady jsou k dispozici pro spravovaný disk úrovně premium velikosti disků, velikosti označený hvězdičkou jsou aktuálně ve verzi preview:
 
-| **Premium SSD spravované <br>typ disku** | **P4** | **P6** | **P10** | **P15** | **P20** | **P30** | **P40** | **P50** | **P60** | **P70** | **P80** |
+| **Premium SSD spravované <br>typ disku** | **P4** | **P6** | **P10** | **P15** | **P20** | **P30** | **P40** | **P50** | **P60*** | **P70*** | **P80*** |
 |------------------|---------|---------|--------|--------|--------|----------------|----------------|----------------|----------------|----------------|----------------|
 | Velikost disku        | 32 GiB  | 64 GiB  | 128 GiB | 256 GiB | 512 GiB | 1 024 giB (1 TB) | 2 048 giB (2 TB) | 4095 giB (4 TB) | 8192 giB (8 TB) | 16384 giB (16 TB) | 32 767 giB (TB) |
 
-Tady jsou k dispozici pro standardní spravovaný disk SSD velikosti disků:
+Tady je že k dispozici pro SSD na úrovni standard velikost disku spravovaný disk, velikosti označený hvězdičkou jsou aktuálně ve verzi preview:
 
-| **SSD na úrovni Standard Managed <br>typ disku** | **E10** | **E15** | **E20** | **E30** | **E40** | **E50** | **E60** | **E70** | **E80** |
+| **SSD na úrovni Standard Managed <br>typ disku** | **E10** | **E15** | **E20** | **E30** | **E40** | **E50** | **E60*** | **E70*** | **E80*** |
 |------------------|--------|--------|--------|----------------|----------------|----------------|----------------|----------------|----------------|
 | Velikost disku        | 128 GiB | 256 GiB | 512 GiB | 1 024 giB (1 TB) | 2 048 giB (2 TB) | 4095 giB (4 TB) | 8192 giB (8 TB) | 16384 giB (16 TB) | 32 767 giB (TB) |
 
-Tady jsou k dispozici pro spravovaných disků úrovně standard HDD velikosti disků:
+Tady je že k dispozici pro standardní HDD velikosti disků spravovaných disků, velikosti označený hvězdičkou jsou aktuálně ve verzi preview:
 
-| **Standardní HDD spravované <br>typ disku** | **S4** | **S6** | **S10** | **S.15** | **S20** | **S30** | **S40** | **S50** | **S60** | **S70** | **S80** |
+| **Standardní HDD spravované <br>typ disku** | **S4** | **S6** | **S10** | **S.15** | **S20** | **S30** | **S40** | **S50** | **S60*** | **S70*** | **S80*** |
 |------------------|---------|---------|--------|--------|--------|----------------|----------------|----------------|----------------|----------------|----------------|
 | Velikost disku        | 32 GiB  | 64 GiB  | 128 GiB | 256 GiB | 512 GiB | 1 024 giB (1 TB) | 2 048 giB (2 TB) | 4095 giB (4 TB) | 8192 giB (8 TB) | 16384 giB (16 TB) | 32 767 giB (TB) |
 

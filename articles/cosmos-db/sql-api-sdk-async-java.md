@@ -8,14 +8,14 @@ ms.service: cosmos-db
 ms.component: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 09/05/2018
-ms.author: sngun
-ms.openlocfilehash: 57172927011532af9b14fa7ff09d6aad9bac1e92
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.date: 11/02/2018
+ms.author: moderakh
+ms.openlocfilehash: c8b8397e5d51b67895a6a95ed6d1611813a9aaf6
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50417595"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51300842"
 ---
 # <a name="azure-cosmos-db-async-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB asynchronní Java SDK pro rozhraní SQL API: poznámky k verzi a prostředky
 > [!div class="op_single_selector"]
@@ -52,6 +52,18 @@ SQL API asynchronní Java SDK se liší od sady Java SDK API SQL tím, že posky
 </table></br>
 
 ## <a name="release-notes"></a>Poznámky k verzi
+
+### <a name="a-name222222"></a><a name="2.2.2"/>2.2.2
+* Je opravená chyba, balení.
+
+### <a name="a-name221221"></a><a name="2.2.1"/>2.2.1
+* Je opravená chyba NPE v cestě k zápisu zkuste to znovu.
+* Je opravená chyba NPE v koncového bodu správy.
+* Upgradovat zranitelné závislosti ([githubu #68](https://github.com/Azure/azure-cosmosdb-java/issues/68)).
+* Přidání podpory pro protokolování Netty sítě pro řešení potíží.
+
+### <a name="a-name220220"></a><a name="2.2.0"/>2.2.0
+* Přidání podpory pro více oblastí zápisu.
 
 ### <a name="a-name210210"></a><a name="2.1.0"/>2.1.0
 * Přidání podpory pro proxy server.
@@ -110,6 +122,9 @@ Jakoukoli žádost do služby Cosmos DB pomocí vyřazeno sady SDK budou odmítn
 
 | Verze | Datum vydání | Datum vyřazení z provozu |
 | --- | --- | --- |
+| [2.2.2](#2.2.2) |8. listopadu 2018|--- |
+| [2.2.1](#2.2.1) |2. listopadu 2018|--- |
+| [2.2.0](#2.2.0) |22. září 2018|--- |
 | [2.1.0](#2.1.0) |5. září 2018|--- |
 | [2.0.1](#2.0.1) |16. srpna 2018|--- |
 | [2.0.0](#2.0.0) |20. června 2018|--- |

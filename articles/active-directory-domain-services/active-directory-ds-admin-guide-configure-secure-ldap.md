@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/25/2018
+ms.date: 11/02/2018
 ms.author: ergreenl
-ms.openlocfilehash: 9188e7a8dc5364592772b95c302c59a16bfad2be
-ms.sourcegitcommit: 3dcb1a3993e51963954194ba2a5e42260d0be258
+ms.openlocfilehash: 850b721cfa78dde23ebc11944bf023de8798cec9
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50754065"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51236949"
 ---
 # <a name="configure-secure-ldap-ldaps-for-an-azure-ad-domain-services-managed-domain"></a>Konfigurace zabezpečeného protokolu LDAP (LDAPS) pro spravované domény služby Azure AD Domain Services
 Tento článek popisuje, jak můžete zajistit zabezpečení Lightweight Directory Access protokolu (LDAPS) pro spravované domény služby Azure AD Domain Services. Protokol Secure LDAP se také označuje jako "Directory přístup protokolu LDAP (Lightweight) přes vrstvy SSL (Secure Sockets) / zabezpečení TLS (Transport Layer)".
@@ -45,7 +45,7 @@ Získejte platný certifikát podle následujících pokynů, dříve než povol
 
 1. **Důvěryhodného vystavitele** – certifikát musí být vystavené autoritu důvěryhodné počítače připojující se k spravované doméně pomocí protokolu secure LDAP. Tuto autoritu může být veřejná certifikační autorita (CA) nebo certifikační autorita organizace tyto počítače důvěřují.
 2. **Doba života** – certifikát musí být platná pro další 3 až 6 měsíců. Když vyprší platnost certifikátu protokolu Secure LDAP pro spravovanou doménu narušení.
-3. **Název subjektu** – název subjektu certifikátu musí být název vaší spravované domény. Například pokud název domény "contoso100.com", název subjektu certifikátu musí být "contoso100.com". 
+3. **Název subjektu** – název subjektu certifikátu musí být spravované domény. Například pokud název domény "contoso100.com", název subjektu certifikátu musí být "contoso100.com". Nastavte název DNS (alternativní název subjektu) na zástupný název vaší spravované domény.
 4. **Použití klíče** – certifikát musí být nakonfigurované pro následující používá – digitální podpisy a šifrování klíče.
 5. **Účel certifikátu** – certifikát musí být platná pro ověřování serveru SSL.
 
@@ -83,7 +83,7 @@ V počítači Windows otevřete nové okno Powershellu jako **správce** a zadej
 $lifetime=Get-Date
 New-SelfSignedCertificate -Subject contoso100.com `
   -NotAfter $lifetime.AddDays(365) -KeyUsage DigitalSignature, KeyEncipherment `
-  -Type SSLServerAuthentication -DnsName *.contoso100.com
+  -Type SSLServerAuthentication -DnsName *.contoso100.com, contoso100.com
 ```
 
 V předchozím příkladu nahraďte názvem domény DNS vaší spravované domény "contoso100.com". Například pokud jste vytvořili spravovanou doménu nazývá "contoso100.onmicrosoft.com", nahraďte "contoso100.com" v předmětu atributu "contoso100.onmicrosoft.com" a "*. contoso100.com" v atributu DnsName s "*. contoso100.onmicrosoft.com ").

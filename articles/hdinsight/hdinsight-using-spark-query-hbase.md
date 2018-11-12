@@ -8,13 +8,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 07/18/2018
-ms.openlocfilehash: 6f957e5841bbc75756fc42d9496bbc1057cd478e
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.date: 11/05/2018
+ms.openlocfilehash: 1136d97ad1c1d02320331e6d2013b68526d5abb4
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43047756"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51277887"
 ---
 # <a name="use-spark-to-read-and-write-hbase-data"></a>Použití Sparku ke čtení a zápisu dat HBase
 

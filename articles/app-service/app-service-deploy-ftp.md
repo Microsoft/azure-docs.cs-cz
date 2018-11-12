@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/02/2018
 ms.author: cephalin;dariac
-ms.openlocfilehash: 8f32e84e5381a548ada2c5ad393e16c65b17379e
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: f68bf05ef9749794c78898e4464489e7cfb358ff
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50957178"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51231376"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>Nasazení aplikace do Azure App Service pomocí FTP/S
 
-V tomto článku se dozvíte, jak nasadit webovou aplikaci, back-endu mobilní aplikace nebo aplikaci API pomocí FTP a FTPS [služby Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714).
+V tomto článku se dozvíte, jak nasadit webovou aplikaci, back-endu mobilní aplikace nebo aplikaci API pomocí FTP a FTPS [služby Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714).
 
 Koncový bod FTP/S pro aplikace je již aktivní. Žádná konfigurace je nutná pro povolení nasazení FTP/S.
 

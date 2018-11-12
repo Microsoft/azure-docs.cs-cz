@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 126e081bae08d220b0e3921cdfec7d7f58eacea8
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: d6feb24b1e59aee70204d8438f1a4c51f71d1835
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50138289"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281808"
 ---
 # <a name="tutorial-8-extract-key-phrases-of-utterance"></a>Kurz 8: Extrahování klíčových frází z promluvy
 V tomto kurzu použijete předem připravenou entitu keyPhrase k extrahování témat z promluv. Není potřeba označovat promluvy s předem vytvořenými entitami. Příslušná entita se rozpozná automaticky.
@@ -56,7 +56,7 @@ Pokud aplikaci HumanResources z předchozího kurzu nemáte, postupujte takto:
 ## <a name="add-keyphrase-entity"></a>Přidání entity klíčové fráze 
 Přidejte předem připravenou entitu klíčové fráze pro extrahování témat z promluv.
 
-1. [!include[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
+1. [!INCLUDE[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. V levé nabídce vyberte **Entities** (Entity).
 

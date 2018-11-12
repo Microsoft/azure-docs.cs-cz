@@ -9,20 +9,20 @@ ms.assetid: 57143396-ab86-47dd-b6f8-613ba28c28d2
 ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 06/23/2017
-ms.openlocfilehash: daef00bc7b39326b79e5f56bf803dc6aad1ac0ff
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: b70de1e4494bb142da1cad0d0154b5dc7f765983
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47221930"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51233352"
 ---
 # <a name="get-started-with-u-sql-in-azure-data-lake-analytics"></a>Začínáme s jazykem U-SQL ve službě Azure Data Lake Analytics
 U-SQL je jazyk, který spojuje deklarativní SQL pomocí imperativního jazyka C# umožňuje zpracovávat data v libovolném měřítku. Prostřednictvím funkce škálovatelné a distribuované dotazu U-SQL můžete efektivně analyzovat data napříč relačními úložišť, jako je Azure SQL Database. Pomocí U-SQL můžete zpracovávání nestrukturovaných dat použitím schéma při čtení a vložení vlastní logiky a uživatelem definovanými funkcemi. Navíc U-SQL obsahuje rozšíření, která umožňuje velice přesně kontrolovat, jak provádět ve velkém měřítku. 
 
 ## <a name="learning-resources"></a>Studijní materiály
 
-* [Kurzu U-SQL](http://aka.ms/usqltutorial) poskytuje návod většinu jazyk U-SQL. Tento dokument se doporučuje pro všechny vývojáře, kteří chtějí naučit jazyk U-SQL pro čtení.
-* Podrobné informace o **syntaxi jazyka U-SQL**, najdete v článku [referenční příručka jazyka U-SQL](http://go.microsoft.com/fwlink/p/?LinkId=691348).
+* [Kurzu U-SQL](https://aka.ms/usqltutorial) poskytuje návod většinu jazyk U-SQL. Tento dokument se doporučuje pro všechny vývojáře, kteří chtějí naučit jazyk U-SQL pro čtení.
+* Podrobné informace o **syntaxi jazyka U-SQL**, najdete v článku [referenční příručka jazyka U-SQL](https://go.microsoft.com/fwlink/p/?LinkId=691348).
 * K pochopení **filozofie návrhu U-SQL**, najdete v příspěvku blogu Visual Studio [Představujeme jazyk U-SQL – objekt, který usnadňuje velké objemy dat zpracování](https://blogs.msdn.microsoft.com/visualstudio/2015/09/28/introducing-u-sql-a-language-that-makes-big-data-processing-easy/).
 
 ## <a name="prerequisites"></a>Požadavky

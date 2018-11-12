@@ -1,22 +1,22 @@
 ---
 title: Analýza dat Twitteru pomocí Apache Hive – Azure HDInsight
-description: Další informace o použití Hive a Hadoop v HDInsight transformujte nezpracovaná data Twitteru do prohledávání tabulky Hive.
+description: Další informace o použití Apache Hivu a Apache Hadoop v HDInsight transformujte nezpracovaná data Twitteru do prohledávání tabulky Hive.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 06/26/2018
-ms.author: jasonh
+ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: a20f9ef6e42027cf3f499654ac8a43eee7b41854
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: d037c4fc65bc32ff183ddc7a8925cd2f51411ea0
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43104074"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51034622"
 ---
-# <a name="analyze-twitter-data-using-hive-and-hadoop-on-hdinsight"></a>Analýza dat Twitteru pomocí podregistru a Hadoop v HDInsight
+# <a name="analyze-twitter-data-using-apache-hive-and-apache-hadoop-on-hdinsight"></a>Analýza dat Twitteru pomocí Apache Hivu a Apache Hadoop v HDInsight
 
 Informace o používání Apache Hive ke zpracování dat Twitteru. Výsledkem je seznam uživatelů Twitteru, kteří odeslané většina tweety, které obsahují určité slovo.
 

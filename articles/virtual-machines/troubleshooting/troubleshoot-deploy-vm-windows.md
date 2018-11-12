@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 665e3cbf0c0cfbcd4b2d19f34b9be1dc4a45b09e
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.openlocfilehash: 6362b243bff91233c3cd08f26904866dd7be9ebd
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50747792"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51248873"
 ---
 # <a name="troubleshoot-deploying-windows-virtual-machine-issues-in-azure"></a>Řešení potíží s nasazením Windows virtuální počítač v Azure
 
@@ -75,7 +75,7 @@ Další informace najdete v následujících materiálech:
 
  - [Přehled služby Azure Hybrid Use Benefit ](https://azure.microsoft.com/pricing/hybrid-use-benefit/)
 
- - [Nejčastější dotazy ke stažení](http://download.microsoft.com/download/4/2/1/4211AC94-D607-4A45-B472-4B30EDF437DE/Windows_Server_Azure_Hybrid_Use_FAQ_EN_US.pdf)
+ - [Nejčastější dotazy ke stažení](https://download.microsoft.com/download/4/2/1/4211AC94-D607-4A45-B472-4B30EDF437DE/Windows_Server_Azure_Hybrid_Use_FAQ_EN_US.pdf)
 
  - [Program Azure Hybrid Use Benefit pro Windows Server a klienta Windows](../windows/hybrid-use-benefit-licensing.md).
 

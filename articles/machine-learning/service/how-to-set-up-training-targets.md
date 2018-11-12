@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.component: core
 ms.topic: article
 ms.date: 09/24/2018
-ms.openlocfilehash: dfa9da5102c2a47b14cbd70380b70b4561c3191d
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.openlocfilehash: 7eacc475145dac61db1717f1860e22cedd022262
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50748455"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51231443"
 ---
 # <a name="select-and-use-a-compute-target-to-train-your-model"></a>Vyberte a použijte cílové výpočetní prostředí k natrénování modelu
 
@@ -591,7 +591,7 @@ Získejte tyto poznámkové bloky: [!INCLUDE [aml-clone-in-azure-notebook](../..
 
 ## <a name="next-steps"></a>Další postup
 
-* [Referenční informace k Azure Machine Learning SDK](http://aka.ms/aml-sdk)
+* [Referenční informace k Azure Machine Learning SDK](https://aka.ms/aml-sdk)
 * [Kurz: Trénování modelu](tutorial-train-models-with-aml.md)
 * [Kam chcete nasazovat modely](how-to-deploy-and-where.md)
 * [Vytvořit machine learning kanálů prostřednictvím služby Azure Machine Learning](concept-ml-pipelines.md)

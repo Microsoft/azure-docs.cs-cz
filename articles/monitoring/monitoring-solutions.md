@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2018
 ms.author: bwren
-ms.openlocfilehash: fb1a05a92244743ac8b5f980ff912c9e839d0609
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: 53020eeb96927143b2fb7394aee64f9b7ea55df9
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50912990"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51248958"
 ---
 # <a name="management-solutions-in-azure"></a>Řešení pro správu v Azure
 Využijte řešení pro správu služby v Azure a poskytuje další informace o provozu určitá aplikace nebo služby. Tento článek poskytuje stručný přehled o řešení pro správu v Azure a podrobnosti o používání a jejich instalace.
@@ -104,5 +104,5 @@ Odebrání nainstalované řešení, vyhledejte ho [seznam nainstalovaných ře�
 
 ## <a name="next-steps"></a>Další postup
 * Získání [seznam řešení pro správu od Microsoftu](monitoring-solutions-inventory.md).
-* Zjistěte, jak [vytvářet dotazy](../log-analytics/log-analytics-log-search.md) k analýze dat shromažďovaných řešeními pro správu.
+* Zjistěte, jak [vytvářet dotazy](../log-analytics/log-analytics-queries.md) k analýze dat shromažďovaných řešeními pro správu.
 

@@ -9,12 +9,12 @@ ms.date: 04/12/2018
 ms.topic: article
 ms.service: active-directory
 ms.workload: identity
-ms.openlocfilehash: a322edbc6825261dde0fd926a362ca037739e06e
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: f1fd60774f5790a514e540984812fc1aaf6e38e0
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49388054"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238909"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Vyberte metodu správné ověřování pro vaše řešení hybridní identity Azure Active Directory 
 
@@ -68,6 +68,18 @@ Následující část vám pomůže rozhodnout která metoda ověřování je pr
 ## <a name="decision-tree"></a>Rozhodovací strom
 
 ![Azure AD authentication rozhodovací strom](media/azure-ad/azure-ad-authn-image1.png)
+
+Podrobnosti o rozhodnutí otázky:
+
+1. Azure AD dokáže zpracovat přihlášení pro uživatele bez nutnosti spoléhat se na místní komponenty ověření hesla.
+2. Azure AD můžete předat přihlašování uživatelů k ověřování pro důvěryhodného zprostředkovatele například společnosti Microsoft AD FS.
+3. Pokud se mají použít zásady zabezpečení na úrovni uživatele služby Active Directory, jako je vypršení platnosti účtu, deaktivovaný účet, platnost hesla vypršela, účet uzamčen a hodin přihlašování u každého uživatele přihlásit, Azure AD vyžaduje místní součásti.
+4. Přihlášení: funkce, nikoli nativně podporovány službou Azure AD:
+   * Přihlášení pomocí čipové karty ani certifikáty.
+   * Přihlášení pomocí místním MFA serverem.
+   * Přihlášení pomocí řešení ověřování 3. stran.
+   * Multi-Site místní řešení pro ověřování.
+5. Azure AD Identity Protection vyžaduje synchronizaci hodnoty Hash bez ohledu na to, jakou metodu přihlašování rozhodnete, zadejte "Uživatelé s uniklými přihlašovacími údaji" sestavy. Pokud selže primární metodu přihlašování a byl nakonfigurovaný před událostí selhání, můžou organizace převzetí služeb při selhání synchronizace hodnot Hash hesel.
 
 ## <a name="detailed-considerations"></a>Podrobné pokyny
 
@@ -164,7 +176,7 @@ Následující diagramy popisují základní architektura služby komponent pot�
 |Existuje požadavek na certifikát SSL?|Ne|Ne|Ano|
 |Je k dispozici řešení pro monitorování stavu?|Nepožaduje se|Stav agenta poskytované [centra pro správu Azure Active Directory](https://docs.microsoft.com/azure/active-directory/hybrid/tshoot-connect-pass-through-authentication)|[Azure AD Connect Health](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-adfs)|
 |Uživatelé se jednotné přihlašování ke cloudovým prostředkům ze zařízení připojeného k doméně v podnikové síti?|Ano s [bezproblémového jednotného přihlašování](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso)|Ano s [bezproblémového jednotného přihlašování](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso)|Ano|
-|Jaké typy přihlášení jsou podporovány?|UserPrincipalName + heslo<br><br>Integrované ověřování Windows s použitím [bezproblémového jednotného přihlašování](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso)<br><br>[Alternativním přihlašovacím ID](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-custom)|UserPrincipalName + heslo<br><br>Integrované ověřování Windows s použitím [bezproblémového jednotného přihlašování](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso)<br><br>[Alternativním přihlašovacím ID](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta-faq)|UserPrincipalName + heslo<br><br>sAMAccountName + heslo<br><br>Integrované ověřování Windows<br><br>[Ověřování certifikátu a čipové karty](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-user-certificate-authentication)<br><br>[Alternativním přihlašovacím ID](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id)|
+|Jaké typy přihlášení jsou podporovány?|UserPrincipalName + heslo<br><br>Integrované ověřování Windows s použitím [bezproblémového jednotného přihlašování](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso)<br><br>[Alternativním přihlašovacím ID](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-custom)|UserPrincipalName + heslo<br><br>Integrované ověřování Windows s použitím [bezproblémového jednotného přihlašování](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso)<br><br>[Alternativním přihlašovacím ID](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta-faq)|UserPrincipalName + heslo<br><br>sAMAccountName + heslo<br><br>Integrované ověřování systému Windows<br><br>[Ověřování certifikátu a čipové karty](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-user-certificate-authentication)<br><br>[Alternativním přihlašovacím ID](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id)|
 |Je Windows Hello pro firmy, které jsou podporovány?|[Model klíče důvěryhodnosti](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification)<br><br>[Model důvěryhodnosti certifikátu s Intune](https://blogs.technet.microsoft.com/microscott/setting-up-windows-hello-for-business-with-intune/)|[Model klíče důvěryhodnosti](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification)<br><br>[Model důvěryhodnosti certifikátu s Intune](https://blogs.technet.microsoft.com/microscott/setting-up-windows-hello-for-business-with-intune/)|[Model klíče důvěryhodnosti](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification)<br><br>[Model důvěryhodnosti certifikátu](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-key-trust-adfs)|
 |Jaké jsou možnosti vícefaktorové ověřování?|[Azure MFA](https://docs.microsoft.com/azure/multi-factor-authentication/)<br><br>[Vlastní ovládací prvky pomocí podmíněného přístupu *](https://docs.microsoft.com/azure/active-directory/conditional-access/controls#custom-controls-1)|[Azure MFA](https://docs.microsoft.com/azure/multi-factor-authentication/)<br><br>[Vlastní ovládací prvky pomocí podmíněného přístupu *](https://docs.microsoft.com/azure/active-directory/conditional-access/controls#custom-controls-1)|[Azure MFA](https://docs.microsoft.com/azure/multi-factor-authentication/)<br><br>[Azure MFA serveru](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfaserver-deploy)<br><br>[MFA třetích stran](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-additional-authentication-methods-for-ad-fs)<br><br>[Vlastní ovládací prvky pomocí podmíněného přístupu *](https://docs.microsoft.com/azure/active-directory/conditional-access/controls#custom-controls-1)|
 |Jaké stavy účtu uživatele jsou podporovány?|Zakázané účty<br>(až do 30 minut, než)|Zakázané účty<br><br>Účet uzamčen<br><br>Vypršení platnosti účtu<br><br>Platnost hesla vypršela.<br><br>Přihlašovací hodiny|Zakázané účty<br><br>Účet uzamčen<br><br>Vypršení platnosti účtu<br><br>Platnost hesla vypršela.<br><br>Přihlašovací hodiny|
@@ -207,4 +219,4 @@ V dnešním světě hrozeb k dispozici 24 hodin denně a pocházejí z jakéhoko
 
 [Začínáme](https://docs.microsoft.com/azure/active-directory/get-started-azure-ad) s Azure AD a nasaďte řešení správné ověřování pro vaši organizaci.
 
-Pokud uvažujete o migraci z federovanou se cloudovým ověřování, další informace o [Změna metody přihlašování](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-user-signin#changing-the-user-sign-in-method). Chcete-li pomoci při plánování a implementaci migrace, použijte [těchto nasazení plánů projektů](http://aka.ms/deploymentplans).
+Pokud uvažujete o migraci z federovanou se cloudovým ověřování, další informace o [Změna metody přihlašování](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-user-signin#changing-the-user-sign-in-method). Chcete-li pomoci při plánování a implementaci migrace, použijte [těchto nasazení plánů projektů](https://aka.ms/deploymentplans).

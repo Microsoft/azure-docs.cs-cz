@@ -17,12 +17,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: justhu, elisol
 ms.custom: aaddev
-ms.openlocfilehash: 61238482339250e45be36162e7eef252f78c74b1
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
-ms.translationtype: HT
+ms.openlocfilehash: 6581081f0f34f73c915f0b026a3ed50816f6731f
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51288981"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51298939"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>Postupy: přihlášení jakéhokoli uživatele Azure Active Directory pomocí vzoru aplikace s více tenanty
 
@@ -118,7 +118,7 @@ Některá oprávnění lze vyjádřit souhlas podle běžného uživatele, zatí
 
 Oprávnění jen pro aplikace vždy vyžadují souhlas správce tenanta. Pokud vaše aplikace požaduje na oprávnění jen pro aplikace a uživatel se pokusí přihlásit k aplikaci, zobrazí se chybová zpráva o tom, že uživatel není možné vyjádřit souhlas.
 
-Také určité delegovaná oprávnění vyžadují souhlas správce tenanta. Například možnost ke zpětnému zápisu do služby Azure AD jako přihlášený uživatel vyžaduje souhlas správce tenanta. Jako oprávnění jen pro aplikace Pokud jako běžný uživatel se pokusí přihlásit k aplikaci, která požaduje delegovaná oprávnění, která vyžaduje souhlas správce, vaše aplikace obdrží chybu. Určuje, zda oprávnění vyžaduje souhlas správce je určená pro vývojáře, publikovat prostředek, který najdete v dokumentaci k prostředku. V dokumentaci oprávnění [Azure AD Graph API] [ AAD-Graph-Perm-Scopes] a [Microsoft Graph API] [ MSFT-Graph-permision-scopes] označení, vyžadují oprávnění správce vyjádření souhlasu.
+Také určité delegovaná oprávnění vyžadují souhlas správce tenanta. Například možnost ke zpětnému zápisu do služby Azure AD jako přihlášený uživatel vyžaduje souhlas správce tenanta. Jako oprávnění jen pro aplikace Pokud jako běžný uživatel se pokusí přihlásit k aplikaci, která požaduje delegovaná oprávnění, která vyžaduje souhlas správce, vaše aplikace obdrží chybu. Určuje, zda oprávnění vyžaduje souhlas správce je určená pro vývojáře, publikovat prostředek, který najdete v dokumentaci k prostředku. V dokumentaci oprávnění [Azure AD Graph API] [ AAD-Graph-Perm-Scopes] a [Microsoft Graph API] [ MSFT-Graph-permission-scopes] označení, vyžadují oprávnění správce vyjádření souhlasu.
 
 Pokud vaše aplikace používá oprávnění, která vyžadují souhlas správce, musíte mít gesta jako tlačítko nebo odkaz, kde může správce zahájit akci. Žádosti o vaše aplikace odešle tato akce je obvykle autorizace požadavku OAuth2 nebo OpenID Connect, která zahrnuje i `prompt=admin_consent` parametr řetězce dotazu. Jakmile správce schválil a instanční objekt je vytvořen v tenantovi zákazníka, není nutné následných žádostí o přihlášení `prompt=admin_consent` parametru. Vzhledem k tomu, že správce rozhodl, že požadovaná oprávnění jsou přijatelné, žádní jiní uživatelé v tenantovi požádejte ho o souhlas od tohoto okamžiku.
 
@@ -184,7 +184,7 @@ V tomto článku jste zjistili, jak vytvořit aplikaci, která dokáže přihlá
 * [Objekty aplikací a instanční objekty][AAD-App-SP-Objects]
 * [Integrace aplikací s Azure Active Directory][AAD-Integrating-Apps]
 * [Přehled rozhraní pro udělování souhlasu][AAD-Consent-Overview]
-* [Obory oprávnění rozhraní Microsoft Graph API][MSFT-Graph-permision-scopes]
+* [Obory oprávnění rozhraní Microsoft Graph API][MSFT-Graph-permission-scopes]
 * [Obory oprávnění Azure AD Graph API][AAD-Graph-Perm-Scopes]
 
 <!--Reference style links IN USE -->
@@ -202,7 +202,7 @@ V tomto článku jste zjistili, jak vytvořit aplikaci, která dokáže přihlá
 [AAD-Why-To-Integrate]: ./active-directory-how-to-integrate.md
 [AZURE-portal]: https://portal.azure.com
 [MSFT-Graph-overview]: https://developer.microsoft.com/graph/docs/overview/overview
-[MSFT-Graph-permision-scopes]: https://developer.microsoft.com/graph/docs/concepts/permissions_reference
+[MSFT-Graph-permission-scopes]: https://developer.microsoft.com/graph/docs/concepts/permissions_reference
 
 <!--Image references-->
 [AAD-Sign-In]: ./media/active-directory-devhowto-multi-tenant-overview/sign-in-with-microsoft-light.png

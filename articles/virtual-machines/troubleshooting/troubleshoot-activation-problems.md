@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: eeecf37a6cc7a0f86662f002b6f0efab5ef8c35c
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 80799eb716e77a4dec02a2daf028c35589c75da0
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50417459"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235271"
 ---
 # <a name="troubleshoot-azure-windows-virtual-machine-activation-problems"></a>Poradce při potížích aktivace virtuálního počítače Windows Azure
 
@@ -45,9 +45,9 @@ Obecně platí problémů s aktivací virtuálního počítače Azure dojít, po
 ## <a name="solution"></a>Řešení
 
 >[!NOTE]
->Pokud používáte VPN typu site-to-site a vynucené tunelování, naleznete v tématu [Azure použijte vlastní trasy umožňující aktivace služby správy KLÍČŮ se vynucené tunelování](http://blogs.msdn.com/b/mast/archive/2015/05/20/use-azure-custom-routes-to-enable-kms-activation-with-forced-tunneling.aspx). 
+>Pokud používáte VPN typu site-to-site a vynucené tunelování, naleznete v tématu [Azure použijte vlastní trasy umožňující aktivace služby správy KLÍČŮ se vynucené tunelování](https://blogs.msdn.com/b/mast/archive/2015/05/20/use-azure-custom-routes-to-enable-kms-activation-with-forced-tunneling.aspx). 
 >
->Pokud používáte ExpressRoute a vy musíte výchozí trasa publikování naleznete v tématu [virtuálního počítače Azure se pravděpodobně nezdaří aktivovat přes ExpressRoute](http://blogs.msdn.com/b/mast/archive/2015/12/01/azure-vm-may-fail-to-activate-over-expressroute.aspx).
+>Pokud používáte ExpressRoute a vy musíte výchozí trasa publikování naleznete v tématu [virtuálního počítače Azure se pravděpodobně nezdaří aktivovat přes ExpressRoute](https://blogs.msdn.com/b/mast/archive/2015/12/01/azure-vm-may-fail-to-activate-over-expressroute.aspx).
 
 ### <a name="step-1-configure-the-appropriate-kms-client-setup-key-for-windows-server-2016-and-windows-server-2012-r2"></a>Krok 1 konfigurace příslušný instalační klíč klienta služby správy KLÍČŮ (pro Windows Server 2016 a Windows Server 2012 R2)
 
@@ -125,7 +125,7 @@ Ano.
  
 ### <a name="what-happens-if-windows-activation-period-expires"></a>Co se stane, když vyprší platnost období aktivace Windows? 
  
-Po období odkladu vypršelo a ještě není aktivováno Windows, Windows Server 2008 R2 a novějších verzích Windows se zobrazí další oznámení o aktivaci služby Azure. Zůstane černé tapetu plochy a Windows Update budou instalovat zabezpečení a pouze kritické aktualizace, ale ne volitelné aktualizace. V části upozornění v dolní části [licenční podmínky](http://technet.microsoft.com/library/ff793403.aspx) stránky.   
+Po období odkladu vypršelo a ještě není aktivováno Windows, Windows Server 2008 R2 a novějších verzích Windows se zobrazí další oznámení o aktivaci služby Azure. Zůstane černé tapetu plochy a Windows Update budou instalovat zabezpečení a pouze kritické aktualizace, ale ne volitelné aktualizace. V části upozornění v dolní části [licenční podmínky](https://technet.microsoft.com/library/ff793403.aspx) stránky.   
 
 ## <a name="need-help-contact-support"></a>Potřebujete pomoct? Obraťte se na podporu.
 Pokud stále potřebujete pomoc, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) pro rychlé vyřešení problému.

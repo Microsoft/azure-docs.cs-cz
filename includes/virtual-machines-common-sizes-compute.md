@@ -5,21 +5,21 @@ services: virtual-machines
 author: jonbeck7
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 07/06/2018
+ms.date: 11/06/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 0c071fbfb962de1bf077dfa720cd66bc06e42178
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: 3bd4adcd6df07aa47312223c559f0e9ed4fc0b14
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49312506"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51264340"
 ---
 <!-- F-series, Fs-series* -->
 
 COMPUTE optimalizované velikosti virtuálních počítačů mají vysoký poměr procesorů k paměti a jsou vhodné pro webové servery středním provozem, síťová zařízení, dávkové procesy a aplikační servery. Tento článek obsahuje informace o počtu virtuálních procesorů, datové disky a síťové adaptéry, jakož i úložiště propustnost a šířku pásma sítě pro jednotlivé velikosti v této skupině.
 
-Řada Fsv2 je založená na procesor Intel® Xeon® Platinum 8168 frekvenci základní core 2.7 GHz a frekvenci maximální turbo jednojádrový 3,7 GHz. Intel® AVX-512 pokyny, které jsou nové na procesorech Intel škálovatelné, bude poskytovat až 2 X zvýšení výkonu vektoru zpracování úloh na jednoduché i dvojité přesnosti s plovoucí desetinnou čárkou bodu operace. Jinými slovy je velmi rychlá pro všechny výpočetní úlohy. 
+Řada Fsv2 je založená na procesorech Intel® Xeon® Platinum 8168, poskytuje funkci dlouhodobě všech základních Turbo rychlost 3.4GHz a frekvenci maximální turbo jednojádrový 3,7 GHz. Intel® AVX-512 pokyny, které jsou nové na procesorech Intel škálovatelné, bude poskytovat až 2 X zvýšení výkonu vektoru zpracování úloh na jednoduché i dvojité přesnosti s plovoucí desetinnou čárkou bodu operace. Jinými slovy je velmi rychlá pro všechny výpočetní úlohy. 
 
 Za nižší ceníkové za každou hodinu je Fsv2-series nejlepší poměr cena – výkon v portfoliu Azure, na Azure Compute jednotek (ACU) na virtuální procesor. 
 

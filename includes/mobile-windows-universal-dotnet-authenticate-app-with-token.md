@@ -1,9 +1,9 @@
 
-1. V souboru projektu MainPage.xaml.cs, přidejte následující **pomocí** příkazy:
+1. V souboru projektu MainPage.xaml.cs přidejte následující **pomocí** příkazy:
    
         using System.Linq;        
         using Windows.Security.Credentials;
-2. Nahraďte **AuthenticateAsync** metoda následujícím kódem:
+2. Nahradit **AuthenticateAsync** metodu s následujícím kódem:
    
         private async System.Threading.Tasks.Task<bool> AuthenticateAsync()
         {
@@ -72,13 +72,13 @@
             return success;
         }
    
-    V této verzi **AuthenticateAsync**, aplikace se pokusí použít přihlašovací údaje uložené v **PasswordVault** přístup ke službě. Regulární přihlášení je také tehdy, pokud žádné uložených přihlašovacích údajů.
+    V této verzi **AuthenticateAsync**, aplikace se pokusí použít přihlašovací údaje uložené v **PasswordVault** přístup k této službě. Pravidelné přihlášení se také provádí při neexistuje žádné uložené přihlašovací údaje.
    
    > [!NOTE]
-   > Token v mezipaměti jeho platnost vypršela a vypršení platnosti tokenu může také dojít po ověření, když aplikace je používána. Zjistěte, jak určit, pokud vypršela platnost tokenu, najdete v tématu [zkontrolujte vypršela platnost ověřování tokenů](http://aka.ms/jww5vp). Řešení pro zpracování chyb autorizace související s tokeny kterým vyprší platnost, najdete v příspěvku [SDK ke správě ukládání do mezipaměti a zpracování vypršení platnosti tokenů v Azure Mobile Services](http://blogs.msdn.com/b/carlosfigueira/archive/2014/03/13/caching-and-handling-expired-tokens-in-azure-mobile-services-managed-sdk.aspx). 
+   > Možná vypršela platnost tokenu v mezipaměti a vypršení platnosti tokenu může dojít i po ověření v případě aplikace se používá. Zjistěte, jak určit, pokud vypršela platnost tokenu, najdete v článku [vyhledat vypršela platnost ověřovacích tokenů](https://aka.ms/jww5vp). Řešení pro zpracování chyby autorizace související s tokeny u nichž vyprší platnost, najdete v příspěvku [ukládání do mezipaměti a zpracování vypršení platnosti tokenů ve službě Azure Mobile Services SDK spravované](https://blogs.msdn.com/b/carlosfigueira/archive/2014/03/13/caching-and-handling-expired-tokens-in-azure-mobile-services-managed-sdk.aspx). 
    > 
    > 
-3. Restartujte aplikaci dvakrát.
+3. Dvakrát restartuje aplikaci.
    
-    Všimněte si, že na první spuštění, přihlaste se pomocí zprostředkovatele vyžádáním znovu. Ale na druhém restartu se používají přihlašovací údaje v mezipaměti a přihlašování bude přeskočeno. 
+    Všimněte si, že na první spuštění, přihlaste se pomocí zprostředkovatele vyžádáním znovu. Ale na druhém restartu se používají přihlašovací údaje v mezipaměti a přihlásit se přeskočí. 
 

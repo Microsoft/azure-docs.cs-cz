@@ -3,18 +3,18 @@ title: Připojení k systému Kafka pomocí virtuální sítě – Azure HDInsig
 description: Zjistěte, jak k přímému připojení k systému Kafka v HDInsight pomocí Azure Virtual Network. Zjistěte, jak se připojit k systému Kafka od vývoje klientů pomocí VPN gateway nebo od klientů ve vaší místní síti pomocí zařízení brány sítě VPN.
 services: hdinsight
 ms.service: hdinsight
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/02/2018
-ms.openlocfilehash: 973563a0c9a986bb4dec785b4521566acb657d15
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.date: 11/06/2018
+ms.openlocfilehash: da98873b133d69d78271494b991b67caea1d5a11
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43042390"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51283066"
 ---
 # <a name="connect-to-kafka-on-hdinsight-through-an-azure-virtual-network"></a>Připojení k systému Kafka v HDInsight pomocí služby Azure Virtual Network
 
@@ -35,7 +35,7 @@ HDInsight neumožňuje přímé připojení k systému Kafka přes veřejný int
     2. Vytvoření brány VPN, který používá konfiguraci site-to-site. Konfigurace použitá v tomto dokumentu se připojí k zařízení brány sítě VPN v místní síti.
     3. Vytvoření serveru DNS ve virtuální síti.
     4. Konfigurace předávání mezi serverem DNS v každé síti.
-    5. Nainstalujte Kafka na HDInsight do virtuální sítě.
+    5. Vytvořte systém Kafka na clusteru HDInsight ve virtuální síti.
 
     Další informace najdete v tématu [připojení k systému Kafka z místní sítě](#on-premises) oddílu. 
 
@@ -43,8 +43,8 @@ HDInsight neumožňuje přímé připojení k systému Kafka přes veřejný int
 
     1. Vytvořte virtuální síť.
     2. Vytvoření brány VPN, který používá konfiguraci point-to-site. Tuto konfiguraci můžete použít s klienty Windows a MacOS.
-    3. Nainstalujte Kafka na HDInsight do virtuální sítě.
-    4. Nakonfigurujte Kafka pro reklamní účely IP. Tato konfigurace umožňuje klientovi připojit se pomocí přidělování IP adres místo názvů domén.
+    3. Vytvořte systém Kafka na clusteru HDInsight ve virtuální síti.
+    4. Nakonfigurujte Kafka pro reklamní účely IP. Tato konfigurace umožňuje klientovi připojit pomocí zprostředkovatele IP adres místo názvů domény.
     5. Stažení a použití klienta VPN ve vývojovém systému.
 
     Další informace najdete v tématu [připojení k systému Kafka s klienta VPN](#vpnclient) oddílu.

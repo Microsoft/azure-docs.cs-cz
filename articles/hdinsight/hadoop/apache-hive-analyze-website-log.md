@@ -2,19 +2,19 @@
 title: Použití Hivu s Hadoopem pro analýza protokolu webu – Azure HDInsight
 description: Naučte se používat Hive s HDInsight k analýze webových protokolů. Budete pomocí souboru protokolu jako vstup do tabulky HDInsight a použít HiveQL pro dotaz na data.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/17/2016
-ms.author: jasonh
+ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 47175ed4bc01a43d1f21cbfc84b8a788f11b7338
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: c0a15bacd3aaf97a3caa54ee8bf70a9c4cf54663
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43048020"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51233588"
 ---
 # <a name="use-hive-with-windows-based-hdinsight-to-analyze-logs-from-websites"></a>Použití Hivu se službou HDInsight se systémem Windows k analýze protokolů z webů
 Zjistěte, jak použít HiveQL s HDInsight k analýze protokolů na webu. Analýza protokolu webu je možné segmentovat cílovou skupinu podle podobných aktivit, kategorizace návštěvníkům webu podle demografické údaje a přečtěte si obsah, zobrazení, webů, které pocházejí z a tak dále.
@@ -34,7 +34,7 @@ V této ukázce použití clusteru služby HDInsight k analýze soubory protokol
 ## <a name="prerequisites"></a>Požadavky
 * Musí být zřízený cluster Hadoop v Azure HDInsight. Pokyny najdete v tématu [zřizování clusterů HDInsight](../hdinsight-hadoop-provision-linux-clusters.md).
 * Musíte mít aplikaci Microsoft Excel 2013 nebo nainstalována aplikace Excel 2010.
-* Musíte mít [ovladače Microsoft Hive ODBC Driver](http://www.microsoft.com/download/details.aspx?id=40886) k importu dat z Hive do aplikace Excel.
+* Musíte mít [ovladače Microsoft Hive ODBC Driver](https://www.microsoft.com/download/details.aspx?id=40886) k importu dat z Hive do aplikace Excel.
 
 ## <a name="to-run-the-sample"></a>Ke spuštění ukázky
 1. Z [webu Azure portal](https://portal.azure.com/), z úvodního (Pokud je připnutý clusteru existuje), klikněte na dlaždici clusteru, na kterém chcete spustit vzorku.

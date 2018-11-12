@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: deguhath
-ms.openlocfilehash: 4ac07d9d56862f315f7ef1f68fdecad1af700dbf
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 86024316344ccbce87f48adbc0598c94e61c5e6d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49395006"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51253563"
 ---
 # <a name="walkthroughs-executing-the-team-data-science-process"></a>Názorné postupy vědeckého zpracování týmových dat provádění
 
@@ -47,5 +47,5 @@ Diskuzi o klíčové součásti, které tvoří vědecké zpracování týmovýc
 
 Diskuzi o životní cyklus vědeckého zpracování týmových dat, který vám pomůže strukturovat vaše projekty datových věd, naleznete v tématu [životní cyklus vědeckého zpracování týmových dat](lifecycle.md). Životní cyklus popisuje kroky, od začátku do konce, projekty obvykle postupujte při jejich spuštění. 
 
-Přehled o tématech, které vás provedou úkoly, které tvoří vědecké zpracování dat v Azure, najdete v části [vědecké zpracování dat](http://aka.ms/datascienceprocess). 
+Přehled o tématech, které vás provedou úkoly, které tvoří vědecké zpracování dat v Azure, najdete v části [vědecké zpracování dat](https://aka.ms/datascienceprocess). 
 

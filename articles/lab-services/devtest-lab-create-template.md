@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: a961565815ca0d89dc98a8d6a3e14b338b649398
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 9d009847856936d14a182b234910fb717c084d11
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38687804"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51248057"
 ---
 # <a name="create-a-custom-image-from-a-vhd-file"></a>Vytvoření vlastní image ze souboru virtuálního pevného disku
 
@@ -33,7 +33,7 @@ ms.locfileid: "38687804"
 
 Následující kroky vás provedou procesem vytvoření vlastní image ze souboru VHD pomocí webu Azure portal:
 
-1. Přihlaste se k webu [Azure Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Přihlaste se k webu [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
 1. Vyberte **všechny služby**a pak vyberte **DevTest Labs** ze seznamu.
 

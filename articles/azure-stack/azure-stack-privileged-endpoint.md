@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 10/22/2018
 ms.author: mabrigg
 ms.reviewer: fiseraci
-ms.openlocfilehash: f064521929bdaf0565a2993e12be62a3959ad567
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: df1f8d805c950bdfbe2c18f365a450a6d630891b
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945293"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51300434"
 ---
 # <a name="using-the-privileged-endpoint-in-azure-stack"></a>Pomocí privilegovaných koncového bodu ve službě Azure Stack
 
@@ -55,7 +55,7 @@ Před zahájením tohoto postupu pro integrovaný systém, ujistěte se, že obd
       ````PowerShell
         winrm s winrm/config/client '@{TrustedHosts="<IP Address of Privileged Endpoint>"}'
       ````
-    - Pokud spouštíte ADSK, přihlaste se k hostiteli development kit.
+    - Pokud spouštíte ASDK, přihlaste se k hostiteli development kit.
 
 2. Na posílené virtuálního počítače spuštěného na hostiteli životního cyklu hardwaru nebo Privileged Access pracovní stanice otevřete relaci Windows Powershellu. Spusťte následující příkazy k vytvoření vzdálené relace na virtuálním počítači, který je hostitelem období:
  
@@ -67,7 +67,7 @@ Před zahájením tohoto postupu pro integrovaný systém, ujistěte se, že obd
           -ConfigurationName PrivilegedEndpoint -Credential $cred
       ````
       `ComputerName` Parametr může být IP adresa nebo název DNS některého z virtuálních počítačů, jejichž hostitelem období. 
-    - Pokud spouštíte ADSK:
+    - Pokud spouštíte ASDK:
      
       ````PowerShell
         $cred = Get-Credential
@@ -127,7 +127,7 @@ Chcete-li importovat období relaci na místním počítači, proveďte následu
       ````PowerShell
         winrm s winrm/config/client '@{TrustedHosts="<IP Address of Privileged Endpoint>"}'
       ````
-    - Pokud spouštíte ADSK, přihlaste se k hostiteli development kit.
+    - Pokud spouštíte ASDK, přihlaste se k hostiteli development kit.
 
 2. Na posílené virtuálního počítače spuštěného na hostiteli životního cyklu hardwaru nebo Privileged Access pracovní stanice otevřete relaci Windows Powershellu. Spusťte následující příkazy k vytvoření vzdálené relace na virtuálním počítači, který je hostitelem období:
  
@@ -139,7 +139,7 @@ Chcete-li importovat období relaci na místním počítači, proveďte následu
           -ConfigurationName PrivilegedEndpoint -Credential $cred
       ````
       `ComputerName` Parametr může být IP adresa nebo název DNS některého z virtuálních počítačů, jejichž hostitelem období. 
-    - Pokud spouštíte ADSK:
+    - Pokud spouštíte ASDK:
      
       ````PowerShell
        $cred = Get-Credential

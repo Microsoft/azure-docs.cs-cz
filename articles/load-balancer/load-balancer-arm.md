@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: f972495fe1a5a0744cf6d7046b555349e5bc8c54
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 9d11a34c499029550de12e8a47f7de0b1beac7b6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50416422"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235033"
 ---
 # <a name="using-azure-resource-manager-support-with-azure-load-balancer"></a>Podpora Azure Resource Manageru pomocí nástroje pro vyrovnávání zatížení Azure
 
@@ -50,9 +50,9 @@ Používání služby Azure Load Balancer šablony pro rychlý start, najdete v 
 
 Příklady šablon:
 
-* [2 virtuální počítače v Load Balanceru a pravidla Vyrovnávání zatížení](http://go.microsoft.com/fwlink/?LinkId=544799)
-* [2 virtuální počítače ve virtuální síti pomocí pravidel pro interní nástroj pro vyrovnávání zatížení a nástroje pro vyrovnávání zatížení](http://go.microsoft.com/fwlink/?LinkId=544800)
-* [2 virtuální počítače v nástroji pro vyrovnávání zatížení a nakonfigurujte pravidla překladu adres na LB](http://go.microsoft.com/fwlink/?LinkId=544801)
+* [2 virtuální počítače v Load Balanceru a pravidla Vyrovnávání zatížení](https://go.microsoft.com/fwlink/?LinkId=544799)
+* [2 virtuální počítače ve virtuální síti pomocí pravidel pro interní nástroj pro vyrovnávání zatížení a nástroje pro vyrovnávání zatížení](https://go.microsoft.com/fwlink/?LinkId=544800)
+* [2 virtuální počítače v nástroji pro vyrovnávání zatížení a nakonfigurujte pravidla překladu adres na LB](https://go.microsoft.com/fwlink/?LinkId=544801)
 
 ## <a name="setting-up-azure-load-balancer-with-a-powershell-or-cli"></a>Nastavení nástroje pro vyrovnávání zatížení Azure pomocí Powershellu nebo rozhraní příkazového řádku
 

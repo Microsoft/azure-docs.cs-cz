@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 0e1cb2cdd6270590def11479cc5859d996d84caa
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.openlocfilehash: 5572c80879584e7f6df650263ae455a134ee4088
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50749017"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51283593"
 ---
 # <a name="troubleshooting-log-alerts-in-azure-monitor"></a>Řešení potíží s upozorněními protokolu ve službě Azure Monitor  
 
@@ -79,10 +79,10 @@ V závislosti na konfiguraci pravidla upozornění, může být chybně spalová
 ### <a name="alert-query-output-misunderstood"></a>Dotaz na upozornění výstupu nesprávně pochopeny
 Pro upozornění protokolu logiku pro upozornění pochází od uživatele prostřednictvím analytického dotazu. Zadaný dotaz analytics můžete použít různé velké objemy dat a matematické funkce vytvořit konkrétní konstrukce. Výstrahy služby spustí dotaz zajišťované zákazníkem v intervalech zadán s daty za časové období zadaný; upozorňování service umožňuje drobným změní na dotaz zadaný – podle typu výstrahy zvolili a stejné může být dosvědčuje v části "Dotazu má být proveden" Konfigurovat signál logiku obrazovky, jak je znázorněno níže: ![provedení dotazu](./media/monitor-alerts-unified/LogAlertPreview.png)
  
-Jak je zobrazeno v **dotaz, který se spustí** jaké protokolu je oddíl se spustí služba upozornění; uživatel může spustit stanovených dotazu, stejně jako timespan prostřednictvím [portál Analytics](../log-analytics/log-analytics-log-search-portals.md) nebo [rozhraní API pro analýzu](https://docs.microsoft.com/en-us/rest/api/loganalytics/) -Pokud chtějí porozumět, než vytvoření výstrahy, může být jaký výstup dotaz na upozornění.
+Jak je zobrazeno v **dotaz, který se spustí** jaké protokolu je oddíl se spustí služba upozornění; uživatel může spustit stanovených dotazu, stejně jako timespan prostřednictvím [portál Analytics](../log-analytics/log-analytics-log-search-portals.md) nebo [rozhraní API pro analýzu](https://docs.microsoft.com/rest/api/loganalytics/) -Pokud chtějí porozumět, než vytvoření výstrahy, může být jaký výstup dotaz na upozornění.
  
 ## <a name="next-steps"></a>Další postup
 
 * Další informace o [upozornění protokolů ve výstrahách Azure](monitor-alerts-unified-log.md)
 * Další informace o [Application Insights](../application-insights/app-insights-analytics.md)
-* Další informace o [Log Analytics](../log-analytics/log-analytics-overview.md). 
+* Další informace o [Log Analytics](../log-analytics/log-analytics-queries.md). 

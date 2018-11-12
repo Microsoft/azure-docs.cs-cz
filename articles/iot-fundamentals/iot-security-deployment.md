@@ -1,6 +1,6 @@
 ---
-title: Zabezpečení nasazení IOT | Dokumentace Microsoftu
-description: Tento článek podrobně popisuje, jak zabezpečení nasazení IoT
+title: Zabezpečení nasazení Azure Internet of Things (IoT) | Dokumentace Microsoftu
+description: Tento článek podrobně popisuje, jak zabezpečit vaše nasazení Azure IoT
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: dobett
-ms.openlocfilehash: 00acb08f567dbd50522d0e8a0b7b9a18a6658000
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: b2d69f6ee24ced392da09585c9e934f647efbf14
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42060739"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51286873"
 ---
 [!INCLUDE [iot-secure-your-deployment](../../includes/iot-secure-your-deployment.md)]
 

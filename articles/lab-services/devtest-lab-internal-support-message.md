@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 2d12ca26fb2aa5abddcf44b2e634b2f08b1fb01b
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: deb98c2c633200ab4be1d763a94fd2a04979a3b1
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38696246"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235696"
 ---
 # <a name="add-an-internal-support-statement-to-a-lab-in-azure-devtest-labs"></a>Přidání interní podpoře do testovacího prostředí ve službě Azure DevTest Labs
 
@@ -31,7 +31,7 @@ Snadno můžete zakázat nebo upravit podpoře po není nadále vhodné.
 
 ## <a name="steps-to-add-a-support-statement-to-an-existing-lab"></a>Kroky k přidání podpoře na existující testovací prostředí
 
-1. Přihlaste se k webu [Azure Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Přihlaste se k webu [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 1. V případě potřeby vyberte **všechny služby**a pak vyberte **DevTest Labs** ze seznamu. (Testovací prostředí může již zobrazený na řídicím panelu v části **všechny prostředky**).
 1. V seznamu testovacích prostředí vyberte testovací prostředí, ve které chcete přidat podpoře.  
 1. Cvičení **přehled** vyberte **konfigurace a zásad**.  
@@ -55,7 +55,7 @@ Pokud už nechcete zobrazovat tento dialog podpora uživatelům testovacího pro
 
 ## <a name="steps-for-users-to-view-the-support-message"></a>Kroky pro uživatele zobrazíte podpory pro odeslání zprávy
 
-1. Z [webu Azure portal](http://go.microsoft.com/fwlink/p/?LinkID=525040), vyberte testovacího prostředí.
+1. Z [webu Azure portal](https://go.microsoft.com/fwlink/p/?LinkID=525040), vyberte testovacího prostředí.
 
 1. Cvičení **přehled** vyberte **interní podpory**.  
 

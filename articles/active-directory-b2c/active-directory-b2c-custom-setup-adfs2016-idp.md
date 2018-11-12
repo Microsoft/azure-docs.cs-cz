@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/05/2018
+ms.date: 11/07/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 1def5686933a971b1192ec58bc72d64cbc5e8931
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
-ms.translationtype: HT
+ms.openlocfilehash: 31ae13fb84453a7014b66499c983e1f52554775e
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51219320"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51279122"
 ---
 # <a name="add-adfs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>Přidání služby AD FS jako zprostředkovatele identity SAML pomocí vlastních zásad v Azure Active Directory B2C
 
@@ -26,11 +26,11 @@ V tomto článku se dozvíte, jak povolit přihlášení pro uživatelský úče
 ## <a name="prerequisites"></a>Požadavky
 
 - Proveďte kroky v [začít pracovat s vlastními zásadami v Azure Active Directory B2C](active-directory-b2c-get-started-custom.md).
-- Ujistěte se, že máte přístup k souboru PFX certifikátu s privátním klíčem, který byl vydán služby AD FS.
+- Ujistěte se, že máte přístup do souboru .pfx certifikátu s privátním klíčem. Můžete generovat podepsaný certifikát a nahrajte ho do Azure AD B2C. Azure AD B2C používá tento certifikát k podepsání žádosti SAML odeslán váš zprostředkovatel identity SAML.
 
 ## <a name="create-a-policy-key"></a>Vytvoření klíče zásad
 
-Musíte se uloží váš certifikát služby AD FS ve vašem tenantovi Azure AD B2C.
+Musíte se uloží váš certifikát ve vašem tenantovi Azure AD B2C.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 2. Ujistěte se, že používáte adresáře, který obsahuje vašeho tenanta Azure AD B2C kliknutím **filtr adresářů a předplatných** v horní nabídce a výběrem adresáře, který obsahuje váš tenant.
@@ -38,7 +38,7 @@ Musíte se uloží váš certifikát služby AD FS ve vašem tenantovi Azure AD 
 4. Na stránce s přehledem, vyberte **architekturu rozhraní identit - PREVIEW**.
 5. Vyberte **klíče zásad** a pak vyberte **přidat**.
 6. Pro **možnosti**, zvolte `Upload`.
-7. Zadejte **název** klíče zásad. Například, `ADFSSamlCert`. Předpona, která `B2C_1A_` je automaticky přidán do názvu klíče.
+7. Zadejte **název** klíče zásad. Například, `SamlCert`. Předpona, která `B2C_1A_` je automaticky přidán do názvu klíče.
 8. Vyhledejte a vyberte váš soubor PFX certifikátu s privátním klíčem.
 9. Klikněte na možnost **Vytvořit**.
 

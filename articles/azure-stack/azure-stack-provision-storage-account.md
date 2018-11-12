@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/12/2018
 ms.author: mabrigg
-ms.openlocfilehash: ae6539900e201f0559d998ad2d9be24c39d42e3b
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 608525a1f06a396c7df7d764f236f33af77dccc6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44713489"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235339"
 ---
 # <a name="storage-accounts-in-azure-stack"></a>Účty úložiště v Azure Stack
 Účty úložiště zahrnují služby Blob service a Table service a unikátní obor názvů pro datové objekty úložiště. Ve výchozím nastavení jsou data ve vašem účtu dostupná pouze pro vás, vlastníka účtu úložiště.
@@ -38,4 +38,4 @@ ms.locfileid: "44713489"
 
 [Další informace o účtech Azure storage](../storage/common/storage-create-storage-account.md)
 
-[Stáhnout příručku o ověřování úložišť konzistentních s Azure Azure Stack](http://aka.ms/azurestacktp1doc)
+[Stáhnout příručku o ověřování úložišť konzistentních s Azure Azure Stack](https://aka.ms/azurestacktp1doc)

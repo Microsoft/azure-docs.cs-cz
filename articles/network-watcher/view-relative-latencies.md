@@ -1,6 +1,6 @@
 ---
-title: Zobrazit relativní latence k oblastem Azure z určitých umístění | Microsoft Docs
-description: Zjistěte, jak chcete-li zobrazit relativní latenci mezi poskytovatelům internetových k oblastem Azure z určitých umístění.
+title: Zobrazit relativní latence do oblastí Azure z konkrétních míst | Dokumentace Microsoftu
+description: Zjistěte, jak zobrazit relativní latence mezi poskytovatelů internetových služeb do oblastí Azure z konkrétních míst.
 services: network-watcher
 documentationcenter: ''
 author: jimdial
@@ -16,34 +16,34 @@ ms.workload: infrastructure-services
 ms.date: 12/14/2017
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: a6c2ffa619eeff8b455df8a8b2157525af12c640
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: 6ac37c3a53b0cc71bdab85fb86e0e85d998867aa
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2018
-ms.locfileid: "27600954"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51300604"
 ---
-# <a name="view-relative-latency-to-azure-regions-from-specific-locations"></a>Zobrazení relativní latence k oblastem Azure z určitých umístění
+# <a name="view-relative-latency-to-azure-regions-from-specific-locations"></a>Zobrazení relativní latence do oblastí Azure z konkrétních míst
 
-V tomto kurzu, Naučte se používat Azure [sledovací proces sítě](network-watcher-monitoring-overview.md) služby vám pomohou rozhodnout, jaké oblast Azure k nasazení aplikace nebo služby v, na základě vaší demografické údaje uživatele. Kromě toho můžete použít k vyhodnocení poskytovatelé služeb připojení k Azure.  
+V tomto kurzu se naučíte používat Azure [Network Watcher](network-watcher-monitoring-overview.md) služby vám pomohou rozhodnout, jaké oblasti Azure k nasazení aplikace nebo služby, založené na demografických uživatelů. Kromě toho můžete použít k vyhodnocení poskytovatelů služeb připojení k Azure.  
         
-## <a name="create-a-network-watcher"></a>Vytvoření sledovací proces sítě
+## <a name="create-a-network-watcher"></a>Vytvořit network watcher
 
-Pokud už máte sledovací proces sítě v Azure alespoň jeden [oblast](https://azure.microsoft.com/regions), můžete přeskočit úlohy v této části. Vytvořte skupinu prostředků pro sledovací proces sítě. V tomto příkladu se vytvoří skupina prostředků v oblasti Východ USA, ale můžete vytvořit skupinu prostředků v libovolné oblasti Azure.
+Pokud už máte sledovací proces sítě v Azure alespoň jeden [oblasti](https://azure.microsoft.com/regions), můžete přeskočit úkolů v této části. Vytvořte skupinu prostředků pro sledovací proces sítě. V tomto příkladu se vytvoří skupina prostředků v oblasti východní USA, ale můžete vytvořit skupinu prostředků v libovolné oblasti Azure.
 
 ```powershell
 New-AzureRmResourceGroup -Name NetworkWatcherRG -Location eastus
 ```
 
-Vytvořte sledovací proces sítě. Musíte mít sledovací proces sítě vytvořené v alespoň jedné oblasti Azure. V tomto příkladu se vytvoří sledovací proces sítě v oblasti Azure USA – východ.
+Vytvořte network watcher. Musí mít sledovací proces sítě vytvořené v nejméně jedné oblasti Azure. V tomto příkladu se vytvoří network watcheru v oblasti Azure USA – východ.
 
 ```powershell
 New-AzureRmNetworkWatcher -Name NetworkWatcher_eastus -ResourceGroupName NetworkWatcherRG -Location eastus
 ```
 
-## <a name="compare-relative-network-latencies-to-a-single-azure-region-from-a-specific-location"></a>Porovnání relativní síťovou latenci k jedné oblasti Azure z určitého umístění
+## <a name="compare-relative-network-latencies-to-a-single-azure-region-from-a-specific-location"></a>Porovnat relativní síťovou latenci z určitého umístění na jedné oblasti Azure
 
-Vyhodnocení poskytovatelé služeb nebo odstraňovat uživatele sestav problém, jako je "webu bylo pomalé," z konkrétní umístění, které oblasti azure, kde je nasazená služba. Například následující příkaz vrátí průměrnou latenci zprostředkovatele relativní služby Internet mezi státu Washington v USA a oblasti Azure 2 v západní USA mezi 13 až 15 2017 prosinec:
+Služba poskytovatele vyhodnotit nebo řešení potíží s uživateli, jako je "webu bylo pomalé v sítích," ohlášení problému z určitého umístění na základě oblasti azure, ve kterém je nasazená služba. Například následující příkaz vrátí průměrnou latenci poskytovatele relativní služby Internet mezi státu Washington ve Spojených státech amerických a v oblasti západní USA 2 platformě Azure mezi 13 15. prosince 2017:
 
 ```powershell
 Get-AzureRmNetworkWatcherReachabilityReport `
@@ -57,12 +57,12 @@ Get-AzureRmNetworkWatcherReachabilityReport `
 ```
 
 > [!NOTE]
-> Oblast, kterou zadáte v předchozí příkaz nemusí být stejný jako oblast, kterou jste zadali při, který jste získali sledovací proces sítě. Předchozí příkaz jednoduše je potřeba zadat existující sledovací proces sítě. Sledovací proces sítě může být v libovolné oblasti. Pokud zadáte hodnoty pro `-Country` a `-State`, musí být platný. Hodnoty jsou malá a velká písmena. Data jsou k dispozici pro omezený počet zemích, stavy a měst. Spusťte příkazy [zobrazení k dispozici zemích, stavy, města a poskytovatelé](#view-available) zobrazíte seznam dostupných zemích, města a stavy pro použití s předchozí příkaz. 
+> Oblast, kterou jste zadali v předchozím příkazu nemusí být stejná jako oblast, kterou jste zadali při, který jste získali sledovací proces sítě. Předchozí příkaz jednoduše potřeba zadat existující sledovací proces sítě. Sledovací proces sítě může být v libovolné oblasti. Pokud zadáte hodnoty pro `-Country` a `-State`, musí být platný. Hodnoty jsou malá a velká písmena. Data jsou k dispozici omezený počet země, státy a města. Spusťte příkazy [zobrazení k dispozici země, státy, města a poskytovatelé](#view-available) zobrazíte seznam dostupných země, města a stavu pro použití s předchozím příkazem. 
 
 > [!WARNING]
-> Zadejte datum po 14 listopadu 2017 pro `-StartTime` a `-EndTime`. Určením data před 14 listopadu 2017 nevrátí žádná data. 
+> Je nutné zadat data za posledních 30 dnů pro `-StartTime` a `-EndTime`. Určení data před způsobí žádná data se vrací.
 
-Výstup z předchozí příkaz takto:
+Následuje výstup z předchozího příkazu:
 
 ```powershell
 AggregationLevel   : State
@@ -102,11 +102,11 @@ ReachabilityReport : [
                      ]
 ```
 
-Ve výstupu vrácená hodnota **skóre** je relativní latence napříč regiony a zprostředkovatele. Skóre 1 je nejhorší (nejvyšší) latenci, zatímco 100 je nejnižší latenci. Relativní latence zprůměrovány dne. V předchozím příkladu během je zřejmé, že latence byly stejné oba dny a že je malý rozdíl mezi latence dva poskytovatelé, ho má také zřejmé, že latence pro oba poskytovatelé jsou nízkou na rozsahu 1 až 100. Když toto chování se očekává, protože státu Washington v USA je fyzicky blízko oblasti Azure 2 v západní USA, někdy nejsou k dispozici výsledky podle očekávání. Větší rozsah dat zadáte, čím průměrnou latenci v čase.
+Ve výstupu vráceného, hodnotu pro **skóre** je relativní latence mezi oblastmi a poskytovatelů. Skóre 1 je nejhorší (nejvyšší) latenci, zatímco 100 je nejnižší latenci. Relativní latence zprůměrovány daného dne. V předchozím příkladu zatímco je zřejmé, že latence byly stejné dny a, že se jedním malým rozdílem mezi latencí dva poskytovatelé, ale také to je zřejmé, že latence pro oba poskytovatelé jsou nízké v rozsahu 1-100. Když tato situace může nastat, protože státu Washington ve Spojených státech je fyzicky blízko oblast západní USA 2 platformě Azure, někdy nejsou k dispozici výsledky podle očekávání. Větší rozsah dat zadáte, tím více Průměrná latence v čase.
 
-## <a name="compare-relative-network-latencies-across-azure-regions-from-a-specific-location"></a>Porovnání relativní síťovou latenci mezi oblastmi Azure z určitého umístění
+## <a name="compare-relative-network-latencies-across-azure-regions-from-a-specific-location"></a>Porovnat relativní síťovou latenci v různých oblastech Azure z určitého umístění
 
-Pokud místo zadání relativní latenci mezi konkrétní umístění a konkrétní oblasti Azure pomocí `-Location`jste chtěli určit relativní latence pro všechny oblasti Azure z určitého fyzického umístění, můžete to udělat příliš. Například následující příkaz vám pomůže vyhodnotit jakou oblast azure k nasazení služby v, pokud jsou uživatelé společnosti Comcast umístěné ve státě Washington vaši primární uživatelé:
+Pokud místo určení relativní latence mezi na určité místo a konkrétní oblasti Azure pomocí `-Location`, kdybyste chtěli určení relativní latence pro všemi oblastmi Azure z určitého fyzického umístění, můžete to udělat příliš. Například následující příkaz vám pomůže vyhodnotit jaké oblasti azure do nasazení služby v, pokud jsou vaši primární uživatelé tak uživatelům umístěným ve státě Washington:
 
 ```powershell
 Get-AzureRmNetworkWatcherReachabilityReport `
@@ -120,19 +120,19 @@ Get-AzureRmNetworkWatcherReachabilityReport `
 ```
 
 >[!NOTE]
-Na rozdíl od při určit jedno umístění, pokud nechcete zadat umístění, nebo zadejte více umístění, jako například "Západní US2", "Západní USA", musíte zadat poskytovatele služeb Internetu při spuštění příkazu. 
+Na rozdíl od při zadávání na jednom místě, pokud nechcete zadat umístění nebo zadejte několika místy, jako je například "Západní USA 2", "Západní USA", je nutné zadat poskytovatele služeb Internetu při spuštění příkazu. 
 
-## <a name="view-available"></a>Zobrazení k dispozici zemích, stavy, města a zprostředkovatelů
+## <a name="view-available"></a>Zobrazit dostupné země, státy, města a poskytovatelé
 
-Data jsou k dispozici pro konkrétní poskytovatelům internetových služeb, zemích, stavy a měst. Chcete-li zobrazit seznam všech dostupných poskytovatelům internetových služeb, země, stavy a města, které můžete zobrazit data, zadejte následující příkaz:
+Data jsou k dispozici pro konkrétní poskytovatelů internetových služeb, země, státy a města. Chcete-li zobrazit seznam všech dostupných poskytovatelů internetových služeb, země, státy a města, které můžete zobrazit data, zadejte následující příkaz:
 
 ```powershell
 Get-AzureRmNetworkWatcherReachabilityProvidersList -NetworkWatcherName NetworkWatcher_eastus -ResourceGroupName NetworkWatcherRG
 ```
 
-Data je dostupná jenom pro jednotlivé země, stavy a města vrácený předchozí příkaz. Předchozí příkaz vyžaduje, abyste zadejte existující sledovací proces sítě. Příklad zadaný *NetworkWatcher_eastus* sledovací proces sítě ve skupině prostředků s názvem *NetworkWatcherRG*, ale můžete zadat všechny existující sledovací proces sítě. Pokud nemáte existující sledovací proces sítě, vytvořte ji dokončení úkolů v [vytvořit sledovací proces sítě](#create-a-network-watcher). 
+Data dostupná jenom pro země, státy a města vrácené předchozím příkazem. Předchozí příkaz, musíte zadat existující sledovací proces sítě. V příkladu zadaný *NetworkWatcher_eastus* sledovací proces sítě ve skupině prostředků s názvem *NetworkWatcherRG*, ale můžete zadat všechny existující sledovací proces sítě. Pokud nemáte existující sledovací proces sítě, vytvořte ho dokončení úkolů v [vytvořit network watcher](#create-a-network-watcher). 
 
-Po spuštění předchozí příkaz, můžete filtrovat výstup zadáním platné hodnoty pro **země**, **stavu**, a **města**, v případě potřeby.  Například pokud chcete zobrazit seznam dostupných v Praze, Washington, poskytovatelům internetových služeb ve Spojených státech amerických, zadejte následující příkaz:
+Po spuštění předchozího příkazu, můžete filtruje výstup vrácený zadáním platné hodnoty pro **země**, **stavu**, a **Město**, v případě potřeby.  Například chcete-li zobrazit seznam poskytovatelů služeb Internetu v Seattlu ve Washingtonu, k dispozici ve Spojených státech amerických, zadejte následující příkaz:
 
 ```powershell
 Get-AzureRmNetworkWatcherReachabilityProvidersList `
@@ -144,4 +144,4 @@ Get-AzureRmNetworkWatcherReachabilityProvidersList `
 ```
 
 > [!WARNING]
-> Hodnota zadaná pro **země** musí být malá a velká písmena. Hodnoty zadané pro **stavu** a **města** musí být psaný malými písmeny. Hodnoty musí být uvedené v po spuštění příkazu bez hodnot pro výstup **země**, **stavu**, a **města**. Pokud zadáte nesprávný případ, nebo zadejte hodnotu pro **země**, **stavu**, nebo **města** který se nenachází v výstup po spuštění příkazu bez hodnot pro tyto vlastnosti, vrácený výstup je prázdný.
+> Hodnota zadaná pro omezení **země** musí být malá a velká písmena. Hodnoty zadané pro **stavu** a **Město** musí obsahovat malá písmena. Hodnoty musí být uvedené ve výstupu vráceného po spuštění příkazu s žádné hodnoty pro **země**, **stavu**, a **Město**. Pokud zadáte nesprávné velikosti písmen, nebo zadejte hodnotu pro **země**, **stavu**, nebo **Město** , který není ve výstupu vráceného po spuštění příkazu s žádné hodnoty pro tyto Vlastnosti vráceného výstup je prázdný.

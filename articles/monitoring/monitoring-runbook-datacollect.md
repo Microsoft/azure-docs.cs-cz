@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/27/2017
 ms.author: bwren
-ms.openlocfilehash: 2efaae7794cf5f12719d3d1420d9db6903592559
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: 7ef7f6548cd3dd838889fd51ff0521428bbbc2aa
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50913185"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282675"
 ---
 # <a name="collect-data-in-log-analytics-with-an-azure-automation-runbook"></a>Shromažďování dat v Log Analytics runbooku Azure Automation
 Významné množství dat v Log Analytics může shromažďovat z nejrůznějších zdrojů, včetně [zdroje dat](../log-analytics/log-analytics-data-sources.md) na agentech a také [shromažďovat data z Azure](../log-analytics/log-analytics-azure-storage.md).  Potřebujete-li shromažďovat data, která není přístupná prostřednictvím těchto zdrojů na standardní existují scénáře.  V těchto případech můžete použít [rozhraní API kolekce dat HTTP](../log-analytics/log-analytics-data-collector-api.md) zapsat data do Log Analytics z jakéhokoli klienta REST API.  Běžnou metodou k provedení této kolekce dat používá sady runbook ve službě Azure Automation.   
@@ -145,7 +145,7 @@ Azure Automation obsahuje prostředí tak, aby [otestovat sadu runbook](../autom
     ![Výstup příspěvku](media/monitoring-runbook-datacollect/post-output.png)
 
 ## <a name="5-verify-records-in-log-analytics"></a>5. Zkontrolujte záznamy v Log Analytics
-Sada runbook byla dokončena v testu a ověřit, že výstup byl úspěšně přijat, můžete ověřit, že záznamy byly vytvořeny pomocí [prohledávání protokolů v Log Analytics](../log-analytics/log-analytics-log-search.md).
+Sada runbook byla dokončena v testu a ověřit, že výstup byl úspěšně přijat, můžete ověřit, že záznamy byly vytvořeny pomocí [prohledávání protokolů v Log Analytics](../log-analytics/log-analytics-queries.md).
 
 ![Výstup protokolu](media/monitoring-runbook-datacollect/log-output.png)
 

@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 10/27/2016
 ms.author: sumuth
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: f145e879dab4484d647cf8ea21582958df0f0cd4
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: cce6555c71829110781a6dd13757078b105dbb41
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43665718"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230627"
 ---
 # <a name="faq-for-cleardb-mysql-databases-with-azure-app-service"></a>Nejčastější dotazy k databázím ClearDB MySQL ve službě Azure App Service
 Tyto nejčastější dotazy odpovědi na běžné dotazy týkající se použití a nakupování databází ClearDB MySQL pro Azure Web Apps.
@@ -106,7 +106,7 @@ Nepřímí zákazníci EA svá předplatná Azure Marketplace najdete na **sprav
 Správce registrací EA Azure můžete spravovat přístup k webu Azure Marketplace pro služby třetích stran. Mohou zakázat nebo znovu získat přístup k 3. stran nákupy z Store Správa účtů a předplatných na webu Enterprise Portal v části účty.
 
 ## <a name="who-do-i-contact-for-questions-about-my-bill-for-cleardb-services-in-my-ea-subscription"></a>Koho se mám obrátit pro otázky k faktuře služby ClearDB ve svém předplatném EA?
-Kontakt [Enterprise zákaznickou podporu](http://aka.ms/AzureEntSupport) s ohledem na fakturaci podle jejich registraci smlouvy Enterprise. Tým podpory portál EA se odpověď na vaši otázku nebo váš problém vyřešit.
+Kontakt [Enterprise zákaznickou podporu](https://aka.ms/AzureEntSupport) s ohledem na fakturaci podle jejich registraci smlouvy Enterprise. Tým podpory portál EA se odpověď na vaši otázku nebo váš problém vyřešit.
 
 ## <a name="more-information"></a>Další informace
 [Nejčastější dotazy k Azure Marketplace](https://azure.microsoft.com/marketplace/faq/)

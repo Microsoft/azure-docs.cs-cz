@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 6f28a636f4df1343431762cf1eb8aec9b660f2e2
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 442371ffc63e32906d9faafc3b803bb5e6386905
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50962499"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51283440"
 ---
 # <a name="common-questions-for-transition-from-oms-portal-to-azure-portal-for-log-analytics-users"></a>Běžné otázky týkající se přechodu z portálu OMS na webu Azure portal pro uživatele Log Analytics
 Vlastní portál, volá se na portálu OMS log Analytics původně použitý ke správě své konfiguraci a analýzy shromážděných dat.  Všechny funkce z tohoto portálu byl přesunut na webu Azure portal ve kterém bude pokračovat na vývoj.
@@ -35,7 +35,7 @@ Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://p
 ![Pracovní prostor Log Analytics](media/log-analytics-oms-portal-faq/log-analytics.png)
 
 ## <a name="how-do-i-manage-permissions"></a>Jak změním oprávnění?
-Pokud nemáte přístup k pracovnímu prostoru Log Analytics na portálu Azure portal, budete muset nakonfigurovat oprávnění pomocí [přístupu na základě rolí Azure](../active-directory/role-based-access-control-configure.md). Podrobnosti o správě oprávnění pracovního prostoru najdete v tématu [Správa pracovních prostorů](../log-analytics/log-analytics-manage-access.md#manage-accounts-and-users). Informace o správě oprávnění pro výstrahy, najdete v tématu [role, oprávnění a zabezpečení prostřednictvím služby Azure Monitor vám začít](../monitoring-and-diagnostics/monitoring-roles-permissions-security.md).
+Pokud nemáte přístup k pracovnímu prostoru Log Analytics na portálu Azure portal, budete muset nakonfigurovat oprávnění pomocí [přístupu na základě rolí Azure](../role-based-access-control/role-assignments-portal.md). Podrobnosti o správě oprávnění pracovního prostoru najdete v tématu [Správa pracovních prostorů](../log-analytics/log-analytics-manage-access.md#manage-accounts-and-users). Informace o správě oprávnění pro výstrahy, najdete v tématu [role, oprávnění a zabezpečení prostřednictvím služby Azure Monitor vám začít](../monitoring-and-diagnostics/monitoring-roles-permissions-security.md).
 
 ## <a name="how-do-i-create-a-new-workspace"></a>Jak vytvořit nový pracovní prostor? 
 Ze seznamu pracovních prostorů na webu Azure Portal, klikněte na tlačítko **přidat** v seznamu pracovních prostorů.  Úplné podrobnosti najdete v tématu [vytvořit pracovní prostor Log Analytics na portálu Azure portal](../log-analytics/log-analytics-quick-create-workspace.md).
@@ -110,7 +110,7 @@ Spravovat řešení v **řešení** nabídce pracovního prostoru.
 Na portálu OMS z Galerie řešení nainstalovat řešení pro správu a odebrána z **nastavení**. Na webu Azure Portal [nainstalovat řešení pro správu](../monitoring/monitoring-solutions.md#install-a-management-solution) z Azure Marketplace. [Odebrat řešení](../monitoring/monitoring-solutions.md#remove-a-management-solution) ze seznamu nainstalovaná řešení.
 
 ## <a name="how-do-i-create-and-manage-alerts"></a>Jak vytvořit a spravovat upozornění?
-Pravidla upozornění na základě dotazů Log Analytics se teď spravují v [sjednocené prostředí pro upozorňování](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md). Zobrazit [jak rozšíření upozornění z Log Analytics do upozornění Azure](../monitoring-and-diagnostics/monitoring-alerts-extend-tool.md) podrobné informace o konfiguraci a použití upozornění na webu Azure Portal.
+Pravidla upozornění na základě dotazů Log Analytics se teď spravují v [sjednocené prostředí pro upozorňování](../monitoring-and-diagnostics/alert-metric.md). Zobrazit [jak rozšíření upozornění z Log Analytics do upozornění Azure](../monitoring-and-diagnostics/monitoring-alerts-extend-tool.md) podrobné informace o konfiguraci a použití upozornění na webu Azure Portal.
 
 ## <a name="how-do-i-access-my-dashboards"></a>Jak získám přístup do své řídicí panely?
 [Můj řídicí panel](../log-analytics/log-analytics-dashboards.md) funkce v Log Analytics je zastaralá. Tato funkce umožňují mít privátní kolekci částí Návrhář zobrazení a nahrazována integrované funkce řídicího panelu systému Azure. Můžete pokračovat k vizualizaci dat v Log Analytics pomocí [Návrhář zobrazení](../log-analytics/log-analytics-view-designer.md) pro sdílená zobrazení. Můžete také připnout vizualizace z těchto zobrazení nebo [jednotlivé dotazy](../log-analytics/log-analytics-tutorial-dashboards.md) do řídicích panelů Azure.

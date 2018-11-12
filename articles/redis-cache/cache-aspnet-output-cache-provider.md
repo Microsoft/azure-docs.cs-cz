@@ -14,12 +14,12 @@ ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
 ms.date: 02/14/2017
 ms.author: wesmc
-ms.openlocfilehash: a6c3314a981b46aa6f1cbca1f34392d1e1ae6c9a
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 6ea237c406a9d09b500a12755cd1fa99bb7d41cb
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47431640"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51234421"
 ---
 # <a name="aspnet-output-cache-provider-for-azure-redis-cache"></a>Poskytovatel výstupní mezipaměti ASP.NET pro Azure Redis Cache
 Poskytovatel výstupní mezipaměti redis cache je mechanismus úložiště mimo proces pro výstupní data v mezipaměti. Tato data jsou speciálně pro úplné odpovědi protokolu HTTP (stránce ukládání výstupu do mezipaměti). Zprostředkovatel zpřístupní nový výstupní mezipaměť zprostředkovatele rozšíření bod, která byla zavedena v rozhraní ASP.NET 4.
@@ -89,8 +89,8 @@ Nakonfigurovat atributy s hodnotami z okna vaší mezipaměti na webu Microsoft 
   * Port bez SSL je ve výchozím nastavení pro nové mezipaměti zakázán. Zadejte hodnotu PRAVDA pro toto nastavení pro použití portu SSL. Další informace o povolení portu bez SSL, najdete v článku [přístupové porty](cache-configure.md#access-ports) tématu [konfigurace mezipaměti](cache-configure.md) tématu.
 * **ID databáze** – zadanou databázi, kterou má použít pro mezipaměť výstupní data. Pokud není zadán, je použita výchozí hodnota 0.
 * **applicationName** – klíče jsou uložené v redis jako `<AppName>_<SessionId>_Data`. Toto schéma pojmenování umožňuje více aplikacím sdílet stejný klíč. Tento parametr je nepovinný a pokud nezadáte ji použije se výchozí hodnota.
-* **connectionTimeoutInMilliseconds** – toto nastavení umožňuje potlačit connectTimeout nastavení klienta StackExchange.Redis. Pokud není zadán, se používá ve výchozím nastavení connectTimeout 5000. Další informace najdete v tématu [konfigurační model StackExchange.Redis](http://go.microsoft.com/fwlink/?LinkId=398705).
-* **operationTimeoutInMilliseconds** – toto nastavení umožňuje potlačit syncTimeout nastavení klienta StackExchange.Redis. Pokud není zadán, se používá ve výchozím nastavení syncTimeout 1000. Další informace najdete v tématu [konfigurační model StackExchange.Redis](http://go.microsoft.com/fwlink/?LinkId=398705).
+* **connectionTimeoutInMilliseconds** – toto nastavení umožňuje potlačit connectTimeout nastavení klienta StackExchange.Redis. Pokud není zadán, se používá ve výchozím nastavení connectTimeout 5000. Další informace najdete v tématu [konfigurační model StackExchange.Redis](https://go.microsoft.com/fwlink/?LinkId=398705).
+* **operationTimeoutInMilliseconds** – toto nastavení umožňuje potlačit syncTimeout nastavení klienta StackExchange.Redis. Pokud není zadán, se používá ve výchozím nastavení syncTimeout 1000. Další informace najdete v tématu [konfigurační model StackExchange.Redis](https://go.microsoft.com/fwlink/?LinkId=398705).
 
 Přidejte direktivu OutputCache na každou stránku, pro kterou chcete výstupu do mezipaměti.
 
@@ -98,7 +98,7 @@ Přidejte direktivu OutputCache na každou stránku, pro kterou chcete výstupu 
 <%@ OutputCache Duration="60" VaryByParam="*" %>
 ```
 
-V předchozím příkladu stránky v mezipaměti data zůstanou v mezipaměti po dobu 60 sekund, a jinou verzi na stránce se uloží do mezipaměti pro každou kombinaci parametrů. Další informace o direktivě OutputCache najdete v tématu [ @OutputCache ](http://go.microsoft.com/fwlink/?linkid=320837).
+V předchozím příkladu stránky v mezipaměti data zůstanou v mezipaměti po dobu 60 sekund, a jinou verzi na stránce se uloží do mezipaměti pro každou kombinaci parametrů. Další informace o direktivě OutputCache najdete v tématu [ @OutputCache ](https://go.microsoft.com/fwlink/?linkid=320837).
 
 Jakmile jsou tyto kroky provést, vaše aplikace nakonfigurována pro použití zprostředkovatele výstupní mezipaměti Redis.
 
