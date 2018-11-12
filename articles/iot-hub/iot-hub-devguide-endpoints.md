@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: dobett
-ms.openlocfilehash: 12dd93edce365509488631e4ca27462256abfca8
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 43e2101f413985974b964f2261d852692bcac61d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452662"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51251436"
 ---
 # <a name="reference---iot-hub-endpoints"></a>Reference – koncové body IoT Hubu
 
@@ -57,7 +57,7 @@ Následující seznam popisuje koncové body:
 
 * **Koncové body služby**. Každý IoT hub zveřejňuje sadu koncových bodů pro back-endem řešení pro komunikaci ve vašich zařízeních. S jednou výjimkou tyto koncové body jsou dostupná jenom v případě použití [AMQP](https://www.amqp.org/) protokolu. Koncový bod vyvolání metody je přístupná přes protokol HTTPS.
   
-  * *Příjem zpráv typu zařízení cloud*. Tento koncový bod je kompatibilní s [Azure Event Hubs](http://azure.microsoft.com/documentation/services/event-hubs/). Back-end služby ji můžete použít ke čtení [zpráv typu zařízení cloud](iot-hub-devguide-messages-d2c.md) zaslaná z vašich zařízení. Můžete vytvořit vlastní koncové body ve službě IoT hub kromě této integrovaný koncový bod.
+  * *Příjem zpráv typu zařízení cloud*. Tento koncový bod je kompatibilní s [Azure Event Hubs](https://azure.microsoft.com/documentation/services/event-hubs/). Back-end služby ji můžete použít ke čtení [zpráv typu zařízení cloud](iot-hub-devguide-messages-d2c.md) zaslaná z vašich zařízení. Můžete vytvořit vlastní koncové body ve službě IoT hub kromě této integrovaný koncový bod.
   
   * *Odesílat zprávy typu cloud zařízení a přijímat doručování potvrzování*. Tyto koncové body umožňují vaší back-end řešení odesílat spolehlivé [zprávy typu cloud zařízení](iot-hub-devguide-messages-c2d.md)a přijímat odpovídající doručení nebo vypršení platnosti potvrzování.
   

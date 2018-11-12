@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: cephalin
-ms.openlocfilehash: 9b4c87bd0889718fcb8938a9e3bb9207b8fe727a
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 7cf7078353de27c35a607fa8ef1921d6ed4b54b4
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50420452"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51247343"
 ---
 # <a name="operating-system-functionality-on-azure-app-service"></a>Funkce operačního systému ve službě Azure App Service
-Tento článek popisuje běžné funkce operačního systému směrný plán, který je k dispozici pro všechny aplikace Windows běží na [služby Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714). Tato funkce zahrnuje soubor, sítě a přístup k registru a diagnostické protokoly a události. 
+Tento článek popisuje běžné funkce operačního systému směrný plán, který je k dispozici pro všechny aplikace Windows běží na [služby Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). Tato funkce zahrnuje soubor, sítě a přístup k registru a diagnostické protokoly a události. 
 
 > [!NOTE] 
 > [Linuxové aplikace](containers/app-service-linux-intro.md) ve službě App Service, spusťte ve své vlastní kontejnery. Je povolen přístup k hostitelskému operačnímu systému, mají kořenový přístup ke kontejneru. Podobně pro [aplikací spouštěných v kontejnerech Windows](app-service-web-get-started-windows-container.md), máte přístup pro správu do kontejneru, ale žádný přístup k hostitelskému operačnímu systému. 

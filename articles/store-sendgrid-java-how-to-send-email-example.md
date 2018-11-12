@@ -14,12 +14,12 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 10/30/2014
 ms.author: vibhork;dominic.may@sendgrid.com;elmer.thomas@sendgrid.com
-ms.openlocfilehash: 7db7e00ec3f93695cc6bc3369fe1b00582740d0e
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 400c8ac229e00e818e336f1c47b126d3e8a2d155
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45578068"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51253835"
 ---
 # <a name="how-to-send-email-using-sendgrid-from-java-in-an-azure-deployment"></a>Odesílání e-mailu pomocí SendGrid z Javy v nasazení Azure
 Následující příklad ukazuje, jak můžete SendGrid k odesílání e-mailů z webové stránky hostované v Azure. Výsledné aplikace vyzve uživatele k e-mailu hodnot, jak je znázorněno na následujícím snímku obrazovky.
@@ -38,7 +38,7 @@ Bude potřeba ji pomocí kódu v tomto tématu následujícím způsobem:
 
 Musíte také mít vlastní SendGrid uživatelské jméno a heslo, abyste mohli odeslat e-mailu. Chcete-li začít se službou SendGrid, přečtěte si téma [odesílání e-mailu pomocí SendGrid z Javy](store-sendgrid-java-how-to-send-email.md).
 
-Dále, známý s použitím informací v [vytvoření aplikace Hello World pro Azure v Eclipse](http://msdn.microsoft.com/library/windowsazure/hh690944), nebo s dalšími technikami, hostování aplikací Java v Azure, pokud nepoužíváte Eclipse, se důrazně doporučuje.
+Dále, známý s použitím informací v [vytvoření aplikace Hello World pro Azure v Eclipse](https://msdn.microsoft.com/library/windowsazure/hh690944), nebo s dalšími technikami, hostování aplikací Java v Azure, pokud nepoužíváte Eclipse, se důrazně doporučuje.
 
 ## <a name="create-a-web-form-for-sending-email"></a>Vytvoří webový formulář pro odeslání e-mailu
 Následující kód ukazuje, jak vytvořit webový formulář data uživatele k odesílání e-mailu. Pro účely tohoto obsahu, je název souboru JSP **emailform.jsp**.
@@ -214,7 +214,7 @@ Nasazení aplikace na emulátor služby výpočty a v prohlížeči spustit emai
 Tento kód byl poskytnut až vám ukážeme, jak pomocí služby SendGrid v jazyce Java v Azure. Před nasazením v produkčním prostředí do Azure, můžete přidat další zpracování chyb nebo jiné funkce. Příklad: 
 
 * Objekty BLOB služby Azure storage nebo SQL Database může použít k uložení e-mailové adresy a e-mailové zprávy, namísto použití webového formuláře. Informace o použití objektů BLOB Azure storage v Javě, naleznete v tématu [použití služby Blob Storage z Javy](https://azure.microsoft.com/develop/java/how-to-guides/blob-storage/). Informace o použití SQL Database v jazyce Java najdete v tématu [pomocí SQL Database v jazyce Java](https://docs.microsoft.com/azure/sql-database/sql-database-connect-query-java).
-* Můžete použít `RoleEnvironment.getConfigurationSettings` načíst SendGrid uživatelského jména a hesla z nastavení konfigurace vašeho nasazení, namísto použití webového formuláře pro načtení těchto hodnot. Informace o tom, `RoleEnvironment` najdete v tématu [pomocí knihovny Runtime služeb Azure v JSP](http://msdn.microsoft.com/library/windowsazure/hh690948) a dokumentaci balíček modulu Runtime služby Azure na <http://dl.windowsazure.com/javadoc>.
+* Můžete použít `RoleEnvironment.getConfigurationSettings` načíst SendGrid uživatelského jména a hesla z nastavení konfigurace vašeho nasazení, namísto použití webového formuláře pro načtení těchto hodnot. Informace o tom, `RoleEnvironment` najdete v tématu [pomocí knihovny Runtime služeb Azure v JSP](https://msdn.microsoft.com/library/windowsazure/hh690948) a dokumentaci balíček modulu Runtime služby Azure na <http://dl.windowsazure.com/javadoc>.
 * Další informace o používání služby SendGrid v jazyce Java najdete v tématu [odesílání e-mailu pomocí SendGrid z Javy](store-sendgrid-java-how-to-send-email.md).
 
 [emailform]: ./media/store-sendgrid-java-how-to-send-email-example/SendGridJavaEmailform.jpg

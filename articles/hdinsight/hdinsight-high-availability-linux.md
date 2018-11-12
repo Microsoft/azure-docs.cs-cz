@@ -3,19 +3,19 @@ title: Vysoká dostupnost pro Hadoop – Azure HDInsight
 description: Zjistěte, jak clustery HDInsight zvýšit spolehlivost a dostupnost pomocí dalšího hlavního uzlu. Zjistěte, jak to má vliv služby Hadoop jako je například Ambari a Hive, a jak se připojit jednotlivě každému hlavnímu uzlu pomocí SSH.
 services: hdinsight
 ms.reviewer: jasonh
-author: jasonwhowell
+author: hrasheed-msft
 keywords: Vysoká dostupnost systému hadoop
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 03/22/2018
-ms.author: jasonh
-ms.openlocfilehash: 33458794ad74b367f1278364d7b4ace30f7d13a8
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.author: hrasheed
+ms.openlocfilehash: d3326ef4bba5649f5420c1d92b6117d44edba47b
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46953579"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281978"
 ---
 # <a name="availability-and-reliability-of-hadoop-clusters-in-hdinsight"></a>Dostupnost a spolehlivost clusterů Hadoop ve službě HDInsight
 
@@ -23,8 +23,7 @@ Clustery HDInsight poskytují dva hlavní uzly zvýšit dostupnost a spolehlivos
 
 Hadoop dosahuje vysoké dostupnosti a spolehlivosti replikuje data a služby napříč několika uzly v clusteru. Ale standardní distribucích systému Hadoop obvykle mívají pouze jeden hlavní uzel. Jakémkoli výpadku jeden hlavní uzel může způsobit, že cluster přestane fungovat. HDInsight poskytuje dva hlavní uzly zlepšit dostupnost a spolehlivost Hadoop.
 
-> [!IMPORTANT]
-> HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
+[!INCLUDE [windows-retirement-notice](../../includes/windows-retirement-notice.md)]
 
 ## <a name="availability-and-reliability-of-nodes"></a>Dostupnost a spolehlivost uzlů
 
@@ -224,7 +223,7 @@ Další informace o možnosti uvedené v tomto dokumentu pomocí následujícíc
 
 * [Reference k rozhraní Ambari REST](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)
 * [Instalace a konfigurace rozhraní příkazového řádku Azure Classic](../cli-install-nodejs.md)
-* [Nainstalujte a nakonfigurujte Azure PowerShell.](/powershell/azure/overview)
+* [Nainstalujte a nakonfigurujte Azure PowerShell](/powershell/azure/overview)
 * [Správa HDInsight pomocí Ambari](hdinsight-hadoop-manage-ambari.md)
 * [Zřizování clusterů HDInsight se systémem Linux](hdinsight-hadoop-provision-linux-clusters.md)
 

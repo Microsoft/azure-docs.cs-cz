@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/14/2018
 ms.author: spelluru
-ms.openlocfilehash: adc9d64c4756e055b3ff9b772feebd80902d2c9f
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: ef1b8b2dd96a89a553239168d412d84e63a29f2a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857869"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51254583"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>Řízení přístupu služby Service Bus se sdílenými přístupovými podpisy
 
@@ -57,7 +57,7 @@ Při vytváření oboru názvů služby Service Bus s názvem pravidla zásad **
 
 ## <a name="configuration-for-shared-access-signature-authentication"></a>Konfigurace ověřování sdílený přístupový podpis
 
-Můžete nakonfigurovat [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) pravidlo na obory názvů služby Service Bus, front nebo témat. Konfigurace [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) na Service Bus se předplatné aktuálně nepodporuje, ale pravidla, které jsou nakonfigurované na oboru názvů nebo téma můžete použít k zabezpečení přístupu k předplatným. Funkční příklad, který znázorňuje tento postup, najdete v článku [ověřování pomocí sdíleného přístupového podpisu (SAS) se odběry služby Service Bus](http://code.msdn.microsoft.com/Using-Shared-Access-e605b37c) vzorku.
+Můžete nakonfigurovat [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) pravidlo na obory názvů služby Service Bus, front nebo témat. Konfigurace [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) na Service Bus se předplatné aktuálně nepodporuje, ale pravidla, které jsou nakonfigurované na oboru názvů nebo téma můžete použít k zabezpečení přístupu k předplatným. Funkční příklad, který znázorňuje tento postup, najdete v článku [ověřování pomocí sdíleného přístupového podpisu (SAS) se odběry služby Service Bus](https://code.msdn.microsoft.com/Using-Shared-Access-e605b37c) vzorku.
 
 ![SAS](./media/service-bus-sas/service-bus-namespace.png)
 
@@ -102,7 +102,7 @@ Pokud znáte nebo podezření, že dojde k narušení klíč a je nutné odvolat
 
 Následujícím způsobem popsané scénáře patří konfigurace autorizačních pravidel, generování tokenů SAS a autorizaci klientů.
 
-Pro úplný pracovní ukázkové aplikace Service Bus, která znázorňuje konfiguraci a použití SAS autorizace, naleznete v tématu [sdílený přístupový podpis ověřování pomocí služby Service Bus](http://code.msdn.microsoft.com/Shared-Access-Signature-0a88adf8). Související ukázky, která ukazuje použití SAS autorizační pravidla, která je nakonfigurovaná na obory názvů nebo témata k zabezpečení odběry služby Service Bus je k dispozici tady: [ověřování pomocí sdíleného přístupového podpisu (SAS) se odběry služby Service Bus](http://code.msdn.microsoft.com/Using-Shared-Access-e605b37c).
+Pro úplný pracovní ukázkové aplikace Service Bus, která znázorňuje konfiguraci a použití SAS autorizace, naleznete v tématu [sdílený přístupový podpis ověřování pomocí služby Service Bus](https://code.msdn.microsoft.com/Shared-Access-Signature-0a88adf8). Související ukázky, která ukazuje použití SAS autorizační pravidla, která je nakonfigurovaná na obory názvů nebo témata k zabezpečení odběry služby Service Bus je k dispozici tady: [ověřování pomocí sdíleného přístupového podpisu (SAS) se odběry služby Service Bus](https://code.msdn.microsoft.com/Using-Shared-Access-e605b37c).
 
 ## <a name="access-shared-access-authorization-rules-on-an-entity"></a>Přístup sdíleného přístup autorizačních pravidel na entitu
 

@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 511a0122b37f5f34097da38a645790d99212ad18
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: b8a9973738ac28a686488a816da0f7da5fe2ac3e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45737409"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238518"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Zpracování rozsáhlých datových sad pomocí Data Factory a Batch
 > [!NOTE]
@@ -61,9 +61,9 @@ Můžete také vytvořit vlastní aktivity .NET se přesunout nebo zpracování 
 ## <a name="architecture-of-a-sample-solution"></a>Architektura ukázkové řešení
   Architektura popsaných v tomto článku je jednoduché řešení. Také je relevantní pro komplexní scénáře, jako je modelování finančních služeb, zpracování obrázků a vykreslování a genomický analýzy rizik.
 
-Diagram znázorňuje, jak Data Factory orchestruje přesun dat a zpracování. Profil také ukazuje, jak Batch zpracovává data paralelní způsobem. Stáhnout a vytisknout diagram pro snadné odkazování (11 × 17 palců nebo velikost A3). Pro přístup k diagramu tak, aby jej vytisknout, naleznete v tématu [HPC a Orchestrace dat pomocí služby Batch a Data Factory](http://go.microsoft.com/fwlink/?LinkId=717686).
+Diagram znázorňuje, jak Data Factory orchestruje přesun dat a zpracování. Profil také ukazuje, jak Batch zpracovává data paralelní způsobem. Stáhnout a vytisknout diagram pro snadné odkazování (11 × 17 palců nebo velikost A3). Pro přístup k diagramu tak, aby jej vytisknout, naleznete v tématu [HPC a Orchestrace dat pomocí služby Batch a Data Factory](https://go.microsoft.com/fwlink/?LinkId=717686).
 
-[![Diagram rozsáhlé zpracování dat](./media/data-factory-data-processing-using-batch/image1.png)](http://go.microsoft.com/fwlink/?LinkId=717686)
+[![Diagram rozsáhlé zpracování dat](./media/data-factory-data-processing-using-batch/image1.png)](https://go.microsoft.com/fwlink/?LinkId=717686)
 
 Následující seznam uvádí základní kroky procesu. Toto řešení zahrnuje kód a vysvětlení, k vytvoření řešení začátku do konce.
 

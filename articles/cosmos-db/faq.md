@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: sngun
-ms.openlocfilehash: 554718f0bb465ca757fc4dcf6c22d3b0dd80f2fb
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 3f0bf2c6c58afbbf9a1256fa5901591e535fe20c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50251086"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51250760"
 ---
 # <a name="azure-cosmos-db-faq"></a>Nejčastější dotazy k Azure Cosmos DB
 ## <a name="azure-cosmos-db-fundamentals"></a>Základy služby Azure Cosmos DB
@@ -36,7 +36,7 @@ Azure Cosmos DB je dobrou volbou pro nové webové, mobilní a herní zařízen�
 ### <a name="how-does-azure-cosmos-db-offer-predictable-performance"></a>Jak služby Azure Cosmos DB nabízí předvídatelný výkon?
 A [jednotky žádosti](request-units.md) (RU) je míra propustnosti ve službě Azure Cosmos DB. Propustnost 1 RU odpovídá propustnosti operace GET 1 KB dokumentu. Všechny operace ve službě Azure Cosmos DB, včetně čtení, zápisů, dotazů SQL a spouštění uložených procedur, je přiřazená deterministická RU hodnota, která je založena na požadované propustnosti pro dokončení operace. Místo přemýšlení o procesoru, vstupu/výstupu a paměti a jak každý ovlivňují propustnost aplikace, si můžete představit jako jedinou měrnou RU.
 
-Si můžete rezervovat každý kontejner Azure Cosmos DB se zřízenou propustností z hlediska rezervovaných jednotek propustnosti za sekundu. Pro aplikace jakéhokoli rozsahu můžete srovnávací testy k měření své RU hodnoty jednotlivých požadavků a zřídit kontejner pro zpracování celkový součet jednotek žádosti napříč všemi požadavky. Můžete také vertikálně navýšit kapacitu nebo snížit kapacitu propustnosti vašeho kontejneru jako potřebám vaší aplikace. Další informace o jednotkách žádosti a nápovědu pro určení váš kontejner potřebuje, najdete v článku [odhad potřebám propustnosti](request-units.md#estimating-throughput-needs) a zkuste [propustnost kalkulačky](https://www.documentdb.com/capacityplanner). Termín *kontejneru* tady odkazuje na kolekci rozhraní SQL API, Gremlin API graph, kolekce rozhraní MongoDB API a rozhraní Table API služby tabulky. 
+Si můžete rezervovat každý kontejner Azure Cosmos DB se zřízenou propustností z hlediska rezervovaných jednotek propustnosti za sekundu. Pro aplikace jakéhokoli rozsahu můžete srovnávací testy k měření své RU hodnoty jednotlivých požadavků a zřídit kontejner pro zpracování celkový součet jednotek žádosti napříč všemi požadavky. Můžete také vertikálně navýšit kapacitu nebo snížit kapacitu propustnosti vašeho kontejneru jako potřebám vaší aplikace. Další informace o jednotkách žádosti a nápovědu pro určení váš kontejner potřebuje, zkuste [propustnost Kalkulačka](https://www.documentdb.com/capacityplanner). Termín *kontejneru* tady odkazuje na kolekci rozhraní SQL API, Gremlin API graph, kolekce rozhraní MongoDB API a rozhraní Table API služby tabulky. 
 
 ### <a name="how-does-azure-cosmos-db-support-various-data-models-such-as-keyvalue-columnar-document-and-graph"></a>Jak služby Azure Cosmos DB podporuje různé datové modely, jako je například klíč/hodnota, úložiště se sloupcovou strukturou, dokument a graf?
 
@@ -462,7 +462,7 @@ Poplatek za RU vychází z pracovní sady dat procházení a nastavte není výs
 
 ### <a name="whats-the-maximum-scale-that-a-graph-database-can-have-in-azure-cosmos-db-gremlin-api"></a>Jaký je maximální rozsah, který může mít databázi grafu v rozhraní Gremlin API služby Azure Cosmos DB? 
 
-Azure Cosmos DB využívá [horizontální dělení](partition-data.md) automaticky adresu zvýšení požadavky na úložiště a propustnost. Maximální propustnost a úložiště kapacitu úloh se určuje podle počtu oddílů, které jsou spojené s danou kolekci. Rozhraní Gremlin API kolekce má ale konkrétní sadu pokynů k zajištění řádné výkon ve velkém měřítku. Další informace a doporučené postupy najdete v tématu [osvědčené postupy pro dělení](partition-data.md#best-practices-when-choosing-a-partition-key) dokumentu. 
+Azure Cosmos DB využívá [horizontální dělení](partition-data.md) automaticky adresu zvýšení požadavky na úložiště a propustnost. Maximální propustnost a úložiště kapacitu úloh se určuje podle počtu oddílů, které jsou spojené s danou kolekci. Rozhraní Gremlin API kolekce má ale konkrétní sadu pokynů k zajištění řádné výkon ve velkém měřítku. Další informace o vytváření oddílů a osvědčených postupech najdete v části [dělení ve službě Azure Cosmos DB](partition-data.md) článku. 
 
 ### <a name="how-can-i-protect-against-injection-attacks-using-gremlin-drivers"></a>Jak můžete chránit před útoky prostřednictvím injektáže pomocí Gremlin ovladače? 
 

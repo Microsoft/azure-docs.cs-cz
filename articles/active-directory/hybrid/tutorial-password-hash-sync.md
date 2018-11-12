@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 09/17/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 81c88c90ff24cb5e0ab143237fb08678067ea993
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: f830a27e9caf032443c2b27bdd2f95fa8069bcf2
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46311707"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51247275"
 ---
 # <a name="tutorial--integrate-a-single-ad-forest-using-password-hash-sync-phs"></a>Kurz: Integrace jednu doménovou strukturu AD pomocí synchronizace hodnot hash hesel (PHS)
 
@@ -189,7 +189,7 @@ Nyní potřebujeme vytvořit tenanta Azure AD, takže jsme se mohou synchronizov
 ## <a name="create-a-global-administrator-in-azure-ad"></a>Vytvoření globálního správce ve službě Azure AD
 Když teď máme tenanta služby Azure AD, vytvoříme účet globálního správce.  Tento účet slouží k vytvoření účtu Azure AD Connector během instalace služby Azure AD Connect.  Účet Azure AD Connector se používá při zápisu informací do služby Azure AD.   Chcete-li vytvořit globální správce účtu takto:
 
-1.  V části **spravovat**vyberte **uživatelé**.</br>
+1.  V části **Spravovat** vyberte **Uživatele**.</br>
 ![Vytvoření](media/tutorial-password-hash-sync/gadmin1.png)</br>
 2.  Vyberte **všichni uživatelé** a pak vyberte **+ nový uživatel**.
 3.  Zadejte název a uživatelské jméno pro tohoto uživatele. To bude globální správce pro tenanta. Budete také chtít změnit **role adresáře** k **globálního správce.** Můžete také zobrazit dočasné heslo. Jakmile budete hotovi, vyberte **vytvořit**.</br>
@@ -218,13 +218,13 @@ Nyní jsme ověří, že uživatelé, které jsme měli v našem místním adres
 
 1. Přejděte [webu Azure portal](https://portal.azure.com) a přihlaste se pomocí účtu, který má předplatné Azure.
 2. Na levé straně vyberte **Azure Active Directory**
-3. V části **spravovat**vyberte **uživatelé**.
+3. V části **Spravovat** vyberte **Uživatele**.
 4. Ověřte, jestli se nové uživatele v naší tenanta</br>
 ![Synchronizace](media/tutorial-password-hash-sync/synch1.png)</br>
 
 ## <a name="test-signing-in-with-one-of-our-users"></a>Test přihlášení pomocí jednoho z našich uživatelů
 
-1.  Přejděte na [http://myapps.microsoft.com](http://myapps.microsoft.com)
+1.  Přejděte na [http://myapps.microsoft.com](https://myapps.microsoft.com)
 2. Přihlaste se pomocí uživatelského účtu, který byl vytvořen v našich nového tenanta.  Budete muset přihlásit pomocí následujícího formátu: (user@domain.onmicrosoft.com). Použijte stejné heslo, které uživatel použije k přihlášení místní.</br>
 ![Ověření](media/tutorial-password-hash-sync/verify1.png)</br>
 
@@ -233,6 +233,6 @@ Máte teď úspěšně nastavení hybridního prostředí identit, můžete pou�
 ## <a name="next-steps"></a>Další kroky
 
 
-- [Hardware a nezbytné předpoklady](how-to-connect-install-prerequisites.md) 
+- [Hardware a předpoklady](how-to-connect-install-prerequisites.md) 
 - [Expresní nastavení](how-to-connect-install-express.md)
 - [Synchronizace hodnot hash hesel](how-to-connect-password-hash-synchronization.md)|

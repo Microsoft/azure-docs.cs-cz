@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: cshoe
-ms.openlocfilehash: 3066da9a492fc12dd8b333a089b8aabbbb647414
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 3f7b216be79be1307a5668d6686fd73a27ae5574
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50421352"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51237855"
 ---
 # <a name="run-a-cassandra-cluster-on-linux-in-azure-with-nodejs"></a>Spuštění clusteru Cassandra v Linuxu v Azure pomocí Node.js
 
@@ -49,7 +49,7 @@ Cassandra je možné nasadit do jedné oblasti Azure nebo do více oblastí podl
 ### <a name="single-region-deployment"></a>Nasazení v jedné oblasti
 Pojďme začít s nasazením v jedné oblasti a získejte poznatky o při vytváření modelu ve více oblastech. Virtuální sítě Azure slouží k vytvoření podsítě izolované tak, že výše uvedené požadavky zabezpečení sítě mohou být splněny.  Postup při vytváření nasazení jedné oblasti používá Ubuntu 14.04 LTS a Cassandra 2.08. Proces však můžete snadno přijímají na další varianty Linuxu. Následují některé systémové vlastnosti nasazení jedné oblasti.  
 
-**Vysoká dostupnost:** Cassandra uzly zobrazené na obrázku 1 jsou nasazené na dvě skupiny dostupnosti tak, aby uzly jsou rozloženy mezi několik domén selhání pro zajištění vysoké dostupnosti. Virtuální počítače s poznámkami s každou skupinu dostupnosti je namapována na 2 domén selhání. Azure používá koncept doména selhání ke správě neplánovaným výpadkům (například selhání hardwaru nebo softwaru). Koncept upgradovací doméně (například hostitel nebo opravy operačního systému hosta/upgradu, upgrady aplikací) se používá pro správu naplánované časové prodlevy. Podrobnosti najdete na [zotavení po havárii a vysoká dostupnost pro aplikace Azure](http://msdn.microsoft.com/library/dn251004.aspx) pro roli chybových nebo upgradovacích doménách v dosažení vysoké dostupnosti.
+**Vysoká dostupnost:** Cassandra uzly zobrazené na obrázku 1 jsou nasazené na dvě skupiny dostupnosti tak, aby uzly jsou rozloženy mezi několik domén selhání pro zajištění vysoké dostupnosti. Virtuální počítače s poznámkami s každou skupinu dostupnosti je namapována na 2 domén selhání. Azure používá koncept doména selhání ke správě neplánovaným výpadkům (například selhání hardwaru nebo softwaru). Koncept upgradovací doméně (například hostitel nebo opravy operačního systému hosta/upgradu, upgrady aplikací) se používá pro správu naplánované časové prodlevy. Podrobnosti najdete na [zotavení po havárii a vysoká dostupnost pro aplikace Azure](https://msdn.microsoft.com/library/dn251004.aspx) pro roli chybových nebo upgradovacích doménách v dosažení vysoké dostupnosti.
 
 ![Nasazení v jedné oblasti](./media/cassandra-nodejs/cassandra-linux1.png)
 

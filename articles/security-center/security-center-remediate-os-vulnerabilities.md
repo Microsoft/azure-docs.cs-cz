@@ -3,7 +3,7 @@ title: Opravit konfigurace zabezpečení v Azure Security Center | Dokumentace M
 description: Tento dokument popisuje, jak implementovat doporučení služby Azure Security Center, "Opravit konfigurace zabezpečení."
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
 editor: ''
 ms.assetid: 991d41f5-1d17-468d-a66d-83ec1308ab79
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/10/2018
-ms.author: terrylan
-ms.openlocfilehash: 74bfc3435ad6d247dabd3a7cbf2910ede5f8c8ca
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.date: 10/28/2018
+ms.author: rkarlin
+ms.openlocfilehash: d4523a9e2d5a5466c1617930d14a8a2d25a0e16f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44296229"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238773"
 ---
 # <a name="remediate-security-configurations-in-azure-security-center"></a>Opravit konfigurace zabezpečení v Azure Security Center
 Azure Security Center analyzuje denně operační systém (OS) virtuálních počítačů (VM) a počítačů pro konfiguraci, které by mohly znamenat virtuálních počítačů a počítačů, které jsou zranitelnější vůči útokům. Security Center doporučuje, abyste vyřešili ohrožení zabezpečení, když vaše konfigurace operačního systému se neshoduje s pravidla konfigurace doporučené zabezpečení a doporučuje změny konfigurace, které tyto nedostatky zabezpečení řeší.
@@ -107,7 +107,7 @@ Další informace o službě Security Center, najdete v následujících zdrojí
 * Zjistěte, jak spravovat a reagovat na výstrahy zabezpečení, najdete v článku [Správa a zpracování výstrah zabezpečení ve službě Azure Security Center](security-center-managing-and-responding-alerts.md).
 * Zjistěte, jak sledovat stav vašich partnerských řešení, najdete v článku [monitorování partnerských řešení pomocí Azure Security Center](security-center-partner-solutions.md).
 * Odpovědi na nejčastější dotazy k používání této služby najdete v části [Azure Security Center – nejčastější dotazy](security-center-faq.md).
-* Blog příspěvky o zabezpečení Azure a dodržování předpisů, najdete v části [blog o zabezpečení Azure](http://blogs.msdn.com/b/azuresecurity/).
+* Blog příspěvky o zabezpečení Azure a dodržování předpisů, najdete v části [blog o zabezpečení Azure](https://blogs.msdn.com/b/azuresecurity/).
 
 <!--Image references-->
 [1]: ./media/security-center-remediate-os-vulnerabilities/compute-blade.png

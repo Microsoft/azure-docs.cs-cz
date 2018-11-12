@@ -12,12 +12,12 @@ ms.author: moslake
 ms.reviewer: ninarn, carlrab
 manager: craigg
 ms.date: 10/15/2018
-ms.openlocfilehash: 6721b260960cd38b68173a5d973a5716b99a26c0
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: a6e2be02f9954a036fdcb67a15c73cc82670834b
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50241204"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51283559"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>Elastické fondy umožňují spravovat a škálovat několika databázemi Azure SQL
 
@@ -113,10 +113,10 @@ V případech, kdy nejde používat nástroje, vám při odhadování, jestli je
 
 1. Odhad Edtu nebo virtuálních jader potřebných pro fond následujícím způsobem:
 
-   Pro nákupní model založený na DTU: MAX (<*celkový počet databází* X *průměrné využití DTU na databázi* >,<br>
+   Pro nákupní model založený na DTU: MAX (<*celkový počet databází* X *průměrné využití DTU na databázi*>,<br>  
    <*počet databází se souběžnou špičkou* X *využití DTU ve špičce na databázi*)
 
-   Pro nákupní model založený na virtuálních jádrech: MAX (<*celkový počet databází* X *průměrné využití vCore na databázi* >,<br>
+   Pro nákupní model založený na virtuálních jádrech: MAX (<*celkový počet databází* X *průměrné využití vCore na databázi*>,<br>  
    <*Počet špičkou databází* X *vCore využití ve špičce na databázi*)
 
 2. Odhadněte potřebnou velikost úložiště pro fond (sečtěte počet bajtů potřebných pro všechny databáze ve fondu). Potom určete velikost fondu v jednotkách eDTU, která toto úložiště poskytuje.

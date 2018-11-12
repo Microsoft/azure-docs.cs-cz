@@ -14,12 +14,12 @@ ms.topic: overview
 ms.date: 07/07/2016
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 3b1fb14fbb21876d0b3f7d98327353d54bb1cfb2
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 56d5f3b480ddb000f9118fbcc36e39817cb0bce8
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42022321"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238501"
 ---
 # <a name="azure-app-service-virtual-machines-service-fabric-and-cloud-services-comparison"></a>Porovnání služeb App Service, Virtual Machines, Service Fabric a Cloud Services
 
@@ -47,7 +47,7 @@ Následující tabulka porovnává možnosti služeb App Service, Cloud Services
 | Podpora WebMatrixu |× | |× | | |
 | Přístup ke službám, jako jsou Service Bus, Storage a SQL Database |× |× |× |× | |
 | Hostování vrstvy webů nebo webových služeb z vícevrstvé architektury |× |× |× |× | |
-| Hostování střední vrstvy vícevrstvé architektury |× |× |× |× |Webové aplikace App Service můžou snadno hostovat střední vrstvu rozhraní REST API a funkce [WebJobs](http://go.microsoft.com/fwlink/?linkid=390226) může hostovat úlohy zpracování na pozadí. WebJobs můžete spouštět na vyhrazeném webu a dosáhnout tak nezávislého škálování této úrovně. |
+| Hostování střední vrstvy vícevrstvé architektury |× |× |× |× |Webové aplikace App Service můžou snadno hostovat střední vrstvu rozhraní REST API a funkce [WebJobs](https://go.microsoft.com/fwlink/?linkid=390226) může hostovat úlohy zpracování na pozadí. WebJobs můžete spouštět na vyhrazeném webu a dosáhnout tak nezávislého škálování této úrovně. |
 | Integrovaná podpora MySQL jako služby |× |× | | | |
 | Podpora ASP.NET, klasického ASP, Node.js, PHP a Pythonu |× |× |× |× |Service Fabric podporuje vytvoření webového front-endu pomocí [ASP.NET 5](../service-fabric/service-fabric-reliable-services-communication-aspnetcore.md), případně můžete nasadit jakýkoli typ aplikace (Node.js, Java atd.) jako [spustitelný soubor typu Host](../service-fabric/service-fabric-guest-executables-introduction.md). |
 | Horizontální navýšení kapacity na několik instancí bez opětovného nasazení |× |× |× |× |Služba Virtual Machines se může škálovat na více instancí, ale služby v ní spuštěné musí být napsané tak, aby si s tímto škálováním na více instancí poradily. Je potřeba nakonfigurovat nástroj pro vyrovnávání zatížení, který bude přesměrovávat požadavky do počítačů, a ujistit se, že máte v [sadě dostupnosti](../virtual-machines/windows/manage-availability.md) více než jednu instanci virtuálního počítače. |
