@@ -3,7 +3,7 @@ title: Omezení přístupu prostřednictvím internetových koncových bodů v A
 description: Tento dokument popisuje, jak implementovat doporučení služby Azure Security Center **omezit přístup přes internetový koncový bod**.
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
 editor: ''
 ms.assetid: 727d88c9-163b-4ea0-a4ce-3be43686599f
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/03/2017
-ms.author: terrylan
-ms.openlocfilehash: 0b7de1f63f765705a78535ae04c1b844e06c029c
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.date: 10/28/2018
+ms.author: rkarlin
+ms.openlocfilehash: 8e404651fa315f630ff190c9e70ccdd3eec7f117
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44301153"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51229998"
 ---
 # <a name="restrict-access-through-internet-facing-endpoints-in-azure-security-center"></a>Omezení přístupu prostřednictvím internetových koncových bodů v Azure Security Center
 Azure Security Center vám doporučí omezení přístupu prostřednictvím internetových koncových bodů, pokud žádné skupiny zabezpečení sítě (Nsg) obsahuje jeden nebo více příchozí pravidla, která umožňují přístup z "libovolné" zdrojové IP adresy. Otevírání přístup k "žádný" může umožnit útočníkům získat přístup k vašim prostředkům. Security Center vám doporučí, abyste upravili tato příchozích pravidel pro omezení přístupu k zdrojové IP adresy, které skutečně potřebují mít přístup.
@@ -66,7 +66,7 @@ Pokud se o službě Security Center chcete dozvědět víc, pročtěte si tato t
 * [Správa a zpracování výstrah zabezpečení v Azure Security Center](security-center-managing-and-responding-alerts.md) – Zjistěte, jak spravovat výstrahy zabezpečení a reagovat na ně.
 * [Sledování partnerských řešení pomocí Azure Security Center](security-center-partner-solutions.md) – Zjistěte, jak pomocí Azure Security Center sledovat stav vašich partnerských řešení.
 * [Azure Security Center – nejčastější dotazy](security-center-faq.md) – Přečtěte si nejčastější dotazy o použití této služby.
-* [Blog Azure Security](http://blogs.msdn.com/b/azuresecurity/) – Získejte nejnovější informace o zabezpečení Azure.
+* [Blog Azure Security](https://blogs.msdn.com/b/azuresecurity/) – Získejte nejnovější informace o zabezpečení Azure.
 
 <!--Image references-->
 [1]: ./media/security-center-restrict-access-thru-internet-facing-endpoint/restrict-access-thru-internet-facing-endpoint.png

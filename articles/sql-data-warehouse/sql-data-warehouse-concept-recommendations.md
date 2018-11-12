@@ -3,19 +3,19 @@ title: Doporučení – koncepty služby SQL Data Warehouse | Dokumentace Micros
 description: Další informace o doporučení SQL Data Warehouse a jak se generují
 services: sql-data-warehouse
 author: kevinvngo
-manager: craigg
+manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: manage
-ms.date: 07/27/2018
+ms.date: 11/05/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 57bce631a570f549d46a9b0beefcb5adce4decfc
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 712eed36f3a68ee02668849207835e3c8bdb8238
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44380110"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51232150"
 ---
 # <a name="sql-data-warehouse-recommendations"></a>Doporučení pro SQL Data Warehouse
 
@@ -40,3 +40,27 @@ Budete mít statistiky neoptimální může vážně ovlivnit výkon dotazů, pr
 - [Vytváření a aktualizaci statistik tabulek](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics)
 
 Pokud chcete zobrazit seznam ovlivněných tabulek pomocí těchto doporučení, spusťte následující příkaz [skriptu T-SQL](https://github.com/Microsoft/sql-data-warehouse-samples/blob/master/samples/sqlops/MonitoringScripts/ImpactedTables). Advisor nepřetržitě spouští stejný skript T-SQL ke generování těchto doporučení.
+
+## <a name="replicate-tables"></a>Replikovat tabulky
+
+Replikované tabulky doporučení služby Advisor detekuje tabulky kandidáty na základě následující fyzické charakteristiky:
+
+- Replikované tabulky velikostí
+- Počet sloupců
+- Typ distribuce tabulky
+- Počet oddílů
+
+Advisor průběžně využívá heuristiky založený na úlohách, jako je četnost přístupu tabulky, v průměru vráceny řádky a prahové hodnoty kolem údajů o skladu velikost a aktivitu pro Ujistěte se, že jsou generovány vysoce kvalitní doporučení. 
+
+Následující část popisuje heuristickými metodami založený na úlohách, mohou najít na webu Azure Portal pro každou replikovanou tabulku doporučení:
+
+- Kontrola avg-průměrné procento řádků vrácených z tabulky pro každý přístup k tabulce za posledních 7 dnů
+- Častá čtení, není pro sadu vs11 – označuje, že tabulka nebyla aktualizována v posledních sedmi dnech při zobrazování aktivit přístupu
+- Číst/aktualizovat poměr - poměr jak často se použila v tabulce vzhledem k jeho aktualizace za posledních sedm dnů
+- Aktivita – měří využití na základě aktivity přístupu. To porovnává aktivit přístupu tabulky vzhledem k aktivity přístupu k tabulce v datovém skladu za posledních sedm dnů. 
+
+Aktuálně služby Advisor zobrazí pouze maximálně čtyři replikované tabulky kandidáty najednou v clusterovaných indexech columnstore priorit nejvyšší aktivity.
+
+> [!IMPORTANT]
+> Doporučení replikované tabulky není úplné testování a nebere operace přesunu dat účtu. Pracujeme na přidání tohoto jako heuristické metody, ale do té doby by měla vždy ověřovaly vašich úloh po použití doporučení. Obraťte se prosím na sqldwadvisor@service.microsoft.com při zjištění doporučení replikované tabulky, které způsobí, že úlohy chcete vrátit. Další informace o replikované tabulky, navštivte následující [dokumentaci](https://docs.microsoft.com/azure/sql-data-warehouse/design-guidance-for-replicated-tables#what-is-a-replicated-table).
+>
