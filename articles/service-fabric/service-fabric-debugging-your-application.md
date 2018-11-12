@@ -15,12 +15,12 @@ ms.custom: vs-azure
 ms.workload: azure-vs
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: 30e432b34cc586e1671c9ffdf7b48c3997e9eb23
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: f16bf06d03511223b54542ad7a389f78d37f3ea9
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42442382"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235067"
 ---
 # <a name="debug-your-service-fabric-application-by-using-visual-studio"></a>Ladění aplikace Service Fabric pomocí sady Visual Studio
 > [!div class="op_single_selector"]
@@ -68,7 +68,7 @@ Nasazení a ladění aplikace Azure Service Fabric v místním počítači vývo
 Pokud vaše aplikace Service Fabric jsou spuštěné v clusteru Service Fabric v Azure, budete moci vzdáleně ladit tyto přímo ze sady Visual Studio.
 
 > [!NOTE]
-> Tato funkce vyžaduje [Service Fabric SDK 2.0](http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-VS2015) a [sady Azure SDK pro .NET 2.9](https://azure.microsoft.com/downloads/).    
+> Tato funkce vyžaduje [Service Fabric SDK 2.0](https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-VS2015) a [sady Azure SDK pro .NET 2.9](https://azure.microsoft.com/downloads/).    
 > 
 > 
 
@@ -112,7 +112,7 @@ Pokud vaše aplikace Service Fabric jsou spuštěné v clusteru Service Fabric v
 Máte také možnost do datového proudu trasování přímo z uzlu vzdáleného clusteru se sadou Visual Studio. Tato funkce umožňuje trasování událostí trasování událostí pro Windows datového proudu, vytvořený v uzlu clusteru Service Fabric.
 
 > [!NOTE]
-> Tato funkce vyžaduje [Service Fabric SDK 2.0](http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-VS2015) a [sady Azure SDK pro .NET 2.9](https://azure.microsoft.com/downloads/).
+> Tato funkce vyžaduje [Service Fabric SDK 2.0](https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-VS2015) a [sady Azure SDK pro .NET 2.9](https://azure.microsoft.com/downloads/).
 > Tato funkce podporuje pouze clustery spuštěné v Azure.
 > 
 > 

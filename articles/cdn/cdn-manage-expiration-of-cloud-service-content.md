@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/15/2018
 ms.author: magattus
-ms.openlocfilehash: d4ae0c4d5924fab8fcdaf1b4da5c8183a3a5fd0f
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 19f928d854618a5e29841dc45d7846faf7fb83b4
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49092469"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51253121"
 ---
 # <a name="manage-expiration-of-web-content-in-azure-cdn"></a>Správa vypršení platnosti webového obsahu v Azure CDN
 > [!div class="op_single_selector"]
@@ -109,7 +109,7 @@ Následující příklad konfigurační soubor XML ukazuje, jak nastavit `<clien
 Použít **cacheControlMaxAge** atribut, musíte nastavit hodnotu **cacheControlMode** atribut `UseMaxAge`. Toto nastavení způsobila hlavičky protokolu HTTP a směrnice, `Cache-Control: max-age=<nnn>`, přidat do odpovědi. Formát hodnoty timespan pro **cacheControlMaxAge** atribut je `<days>.<hours>:<min>:<sec>`. Jeho hodnota je převedena na sekundy a slouží jako hodnotu `Cache-Control` `max-age` směrnice. Další informace o `<clientCache>` prvku, naleznete v tématu [mezipaměti klienta <clientCache> ](http://www.iis.net/ConfigReference/system.webServer/staticContent/clientCache).  
 
 ## <a name="setting-cache-control-headers-programmatically"></a>Nastavení hlavičky Cache-Control prostřednictvím kódu programu
-Pro aplikace ASP.NET, můžete řídit chování ukládání do mezipaměti prostřednictvím kódu programu nastavením CDN **HttpResponse.Cache** vlastnosti rozhraní .NET API. Informace o **HttpResponse.Cache** vlastnost, naleznete v tématu [HttpResponse.Cache vlastnost](http://msdn.microsoft.com/library/system.web.httpresponse.cache.aspx) a [HttpCachePolicy třídy](http://msdn.microsoft.com/library/system.web.httpcachepolicy.aspx).  
+Pro aplikace ASP.NET, můžete řídit chování ukládání do mezipaměti prostřednictvím kódu programu nastavením CDN **HttpResponse.Cache** vlastnosti rozhraní .NET API. Informace o **HttpResponse.Cache** vlastnost, naleznete v tématu [HttpResponse.Cache vlastnost](https://msdn.microsoft.com/library/system.web.httpresponse.cache.aspx) a [HttpCachePolicy třídy](https://msdn.microsoft.com/library/system.web.httpcachepolicy.aspx).  
 
 Programově obsah do mezipaměti aplikace v ASP.NET postupujte podle těchto kroků:
    1. Ověřte, že obsah je označen jako možné ukládat do mezipaměti tak, že nastavíte `HttpCacheability` k `Public`. 
@@ -132,6 +132,6 @@ Můžete snadno ověřit nastavení TTL webového obsahu. V prohlížeči [vývo
 
 ## <a name="next-steps"></a>Další kroky
 * [Přečtěte si podrobnosti o **clientCache** – element](http://www.iis.net/ConfigReference/system.webServer/staticContent/clientCache)
-* [Přečtěte si jejich dokumentaci **HttpResponse.Cache** vlastnost](http://msdn.microsoft.com/library/system.web.httpresponse.cache.aspx) 
-* [Přečtěte si jejich dokumentaci **HttpCachePolicy třídy**](http://msdn.microsoft.com/library/system.web.httpcachepolicy.aspx)  
+* [Přečtěte si jejich dokumentaci **HttpResponse.Cache** vlastnost](https://msdn.microsoft.com/library/system.web.httpresponse.cache.aspx) 
+* [Přečtěte si jejich dokumentaci **HttpCachePolicy třídy**](https://msdn.microsoft.com/library/system.web.httpcachepolicy.aspx)  
 * [Další informace o ukládání do mezipaměti koncepty](cdn-how-caching-works.md)

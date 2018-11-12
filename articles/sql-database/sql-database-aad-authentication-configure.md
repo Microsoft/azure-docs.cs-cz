@@ -12,12 +12,12 @@ ms.author: mireks
 ms.reviewer: vanto, carlrab
 manager: craigg
 ms.date: 10/05/2018
-ms.openlocfilehash: e0cc8759de6e204ec419053a70d263e21ca0dcf6
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 75108853929ea514a6b8660388d71736e74013e0
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48868628"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51234727"
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql"></a>Konfigurace a Správa služby Azure Active Directory ověřování pomocí SQL
 
@@ -202,7 +202,7 @@ Další informace o příkazech rozhraní příkazového řádku najdete v téma
 Na všechny klientské počítače, ze kterých aplikacím nebo uživatelům připojení k Azure SQL Database nebo Azure SQL Data Warehouse s využitím identit Azure AD, je třeba nainstalovat následující software:
 
 - Rozhraní .NET framework 4.6 nebo novější z [ https://msdn.microsoft.com/library/5a4x27ek.aspx ](https://msdn.microsoft.com/library/5a4x27ek.aspx).
-- Azure Active Directory Authentication Library pro SQL Server (**ADALSQL. Knihovna DLL**) je k dispozici v různých jazycích (x86 a amd64) ze služby Stažení softwaru na [Microsoft Active Directory Authentication Library pro Microsoft SQL Server](http://www.microsoft.com/download/details.aspx?id=48742).
+- Azure Active Directory Authentication Library pro SQL Server (**ADALSQL. Knihovna DLL**) je k dispozici v různých jazycích (x86 a amd64) ze služby Stažení softwaru na [Microsoft Active Directory Authentication Library pro Microsoft SQL Server](https://www.microsoft.com/download/details.aspx?id=48742).
 
 Můžete splňovat tyto požadavky podle:
 
@@ -249,14 +249,14 @@ CREATE USER [appName] FROM EXTERNAL PROVIDER;
 > [!TIP]
 > Uživatele nelze vytvořit přímo z Azure Active Directory než Azure Active Directory, který je přidružený k vašemu předplatnému Azure. Pro skupiny služby Active Directory v tenantovi Active Directory můžete však přidat členy jiné aktivní adresáře, které jsou importované uživatele v přidružené služby Active Directory (označuje se jako externí uživatele). Tak, že vytvoříte uživatele databáze s omezením pro tuto skupinu AD, uživatelé z externí služby Active Directory můžete získat přístup ke službě SQL Database.
 
-Další informace o vytváření obsažené databáze uživatelů na základě identit Azure Active Directory, naleznete v tématu [CREATE USER (Transact-SQL)](http://msdn.microsoft.com/library/ms173463.aspx).
+Další informace o vytváření obsažené databáze uživatelů na základě identit Azure Active Directory, naleznete v tématu [CREATE USER (Transact-SQL)](https://msdn.microsoft.com/library/ms173463.aspx).
 
 > [!NOTE]
 > Odebrání správce Azure Active Directory pro server Azure SQL jakéhokoli uživatele Azure AD authentication brání v připojení k serveru. Pokud je nezbytné, nepůjdou použít uživatelů Azure AD můžete vyřadit ručně správcem databáze SQL.
 > [!NOTE]
 > Pokud se zobrazí **vypršel časový limit připojení**, je nutné nastavit `TransparentNetworkIPResolution` parametr připojovací řetězec na hodnotu false. Další informace najdete v tématu [problém časový limit připojení pomocí rozhraní .NET Framework 4.6.1 – TransparentNetworkIPResolution](https://blogs.msdn.microsoft.com/dataaccesstechnologies/2016/05/07/connection-timeout-issue-with-net-framework-4-6-1-transparentnetworkipresolution/).
 
-Když vytvoříte uživatele databáze, tento uživatel obdrží **připojit** oprávnění a můžou se připojit k databázi jako člen **veřejné** role. Zpočátku to jediná oprávnění, které jsou k dispozici pro uživatele se všechna oprávnění udělená **veřejné** role nebo oprávnění udělená do kterékoli ze skupin Azure AD, že jsou členem. Jakmile zřídíte Azure uživatele databáze založené na AD obsažené, můžete udělit uživateli další oprávnění, stejným způsobem jako udělujete oprávnění pro jakýkoli jiný typ uživatele. Obvykle udělují oprávnění k databázovým rolím a přidání uživatelů do rolí. Další informace najdete v tématu [základy oprávnění modulu databáze](http://social.technet.microsoft.com/wiki/contents/articles/4433.database-engine-permission-basics.aspx). Další informace o rolích speciální SQL Database najdete v tématu [Správa databází a přihlášení ve službě Azure SQL Database](sql-database-manage-logins.md).
+Když vytvoříte uživatele databáze, tento uživatel obdrží **připojit** oprávnění a můžou se připojit k databázi jako člen **veřejné** role. Zpočátku to jediná oprávnění, které jsou k dispozici pro uživatele se všechna oprávnění udělená **veřejné** role nebo oprávnění udělená do kterékoli ze skupin Azure AD, že jsou členem. Jakmile zřídíte Azure uživatele databáze založené na AD obsažené, můžete udělit uživateli další oprávnění, stejným způsobem jako udělujete oprávnění pro jakýkoli jiný typ uživatele. Obvykle udělují oprávnění k databázovým rolím a přidání uživatelů do rolí. Další informace najdete v tématu [základy oprávnění modulu databáze](https://social.technet.microsoft.com/wiki/contents/articles/4433.database-engine-permission-basics.aspx). Další informace o rolích speciální SQL Database najdete v tématu [Správa databází a přihlášení ve službě Azure SQL Database](sql-database-manage-logins.md).
 Federované domény uživatelského účtu, který se importují do spravované domény jako externí uživatel, musí používat identitu spravované domény.
 
 > [!NOTE]
@@ -354,7 +354,7 @@ Další informace najdete v tématu [blogu k SQL serveru zabezpečení](https://
 
 ### <a name="sqlcmd"></a>sqlcmd
 
-Následující příkazy, připojte se pomocí sqlcmd, který je k dispozici od verze 13.1 [Download Center](http://go.microsoft.com/fwlink/?LinkID=825643).
+Následující příkazy, připojte se pomocí sqlcmd, který je k dispozici od verze 13.1 [Download Center](https://go.microsoft.com/fwlink/?LinkID=825643).
 
 ```cmd
 sqlcmd -S Target_DB_or_DW.testsrv.database.windows.net  -G  

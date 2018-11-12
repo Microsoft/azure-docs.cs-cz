@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/31/2017
 ms.author: cwatson
-ms.openlocfilehash: a037f4837be65eb7eac76977a3728c7357e09463
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 83891e1abdb58b4fdae65cee3689195b8f35df12
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47394423"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230457"
 ---
 # <a name="understand-terms-on-your-microsoft-azure-detailed-usage-charges"></a>Vysvětlení podmínek vašeho Microsoft Azure podrobných poplatků za využití 
 
@@ -77,7 +77,7 @@ V části denní využívání ze souboru CSV se zobrazí podrobnosti o použit�
 |Spotřebovaná služba |Služby platformy Azure, který jste použili |
 |Skupina prostředků |Skupina prostředků, ve kterém je spuštěn měřič nasazené v. <br/><br/>Další informace naleznete v tématu [Přehled Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview). |
 |ID instance | Identifikátor pro měřidla. <br/><br/> Identifikátor obsahuje název, který zadáte pro měřidla při vytvoření rovnou uložil. Je název prostředku, nebo plně kvalifikované ID prostředku. Další informace najdete v tématu [API Azure Resource Manageru](https://docs.microsoft.com/rest/api/resources/resources). |
-|Značky | Značka, která přiřadíte k měřidla. Použití značek k seskupení záznamů fakturace.<br/><br/>Například můžete použít značky distribuovat náklady podle oddělení, které používá měřidla. Jsou služby generování značek podporují virtuální počítače, úložiště a síťové služby zřízené pomocí [API Azure Resource Manageru](https://docs.microsoft.com/rest/api/resources/resources). Další informace najdete v tématu [uspořádání prostředků Azure pomocí značek](http://azure.microsoft.com/updates/organize-your-azure-resources-with-tags/). |
+|Značky | Značka, která přiřadíte k měřidla. Použití značek k seskupení záznamů fakturace.<br/><br/>Například můžete použít značky distribuovat náklady podle oddělení, které používá měřidla. Jsou služby generování značek podporují virtuální počítače, úložiště a síťové služby zřízené pomocí [API Azure Resource Manageru](https://docs.microsoft.com/rest/api/resources/resources). Další informace najdete v tématu [uspořádání prostředků Azure pomocí značek](https://azure.microsoft.com/updates/organize-your-azure-resources-with-tags/). |
 |Další informace |Metadata konkrétních služeb. Například typ image u virtuálního počítače. |
 |Informace o službě 1 |Název projektu, který služba patří v rámci předplatného |
 |Informace o službě 2 |Starší verze pole, které zachycuje volitelná metadata konkrétních služeb |

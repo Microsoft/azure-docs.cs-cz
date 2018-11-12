@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/15/2017
 ms.author: fboylu
-ms.openlocfilehash: 04e0a694d3e8d978a21417e728feabf32f85299f
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 28900c39e658a2a8c66b2ded6f2d70b50bf17e80
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394591"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51231511"
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-predictive-maintenance-in-aerospace-and-other-businesses"></a>Šablony řešení Cortana Intelligence pro účely prediktivní údržby v leteckém průmyslu a další provozovny – technický průvodce
 
@@ -39,7 +39,7 @@ Cíle tohoto článku je:
 - Ukazují, jak upravit šablonu řešení.  
 
 > [!TIP]
-> Můžete stáhnout a vytisknout [PDF verzi tohoto článku](http://download.microsoft.com/download/F/4/D/F4D7D208-D080-42ED-8813-6030D23329E9/cortana-analytics-technical-guide-predictive-maintenance.pdf).
+> Můžete stáhnout a vytisknout [PDF verzi tohoto článku](https://download.microsoft.com/download/F/4/D/F4D7D208-D080-42ED-8813-6030D23329E9/cortana-analytics-technical-guide-predictive-maintenance.pdf).
 > 
 > 
 
@@ -47,7 +47,7 @@ Cíle tohoto článku je:
 ![Architektura prediktivní údržby](./media/cortana-analytics-technical-guide-predictive-maintenance/predictive-maintenance-architecture.png)
 
 Když nasadíte řešení, aktivuje služeb Azure v sadě Cortana Analytics Suite (včetně Event Hub, Stream Analytics, HDInsight, objekt pro vytváření dat a Machine Learning). Diagram architektury ukazuje, jak vytvořit prediktivní Údržba leteckých šablony řešení. Můžete prozkoumat tyto služby na webu Azure Portal kliknutím v diagramu šablonu řešení vytvořili s nasazením řešení (s výjimkou HDInsight, které je zřízená na vyžádání, když jsou potřeba ke spouštění aktivit souvisejících kanálu a jsou Odstranit později).
-Stáhněte si [reklamy verze diagramu](http://download.microsoft.com/download/1/9/B/19B815F0-D1B0-4F67-AED3-A40544225FD1/ca-topologies-maintenance-prediction.png).
+Stáhněte si [reklamy verze diagramu](https://download.microsoft.com/download/1/9/B/19B815F0-D1B0-4F67-AED3-A40544225FD1/ca-topologies-maintenance-prediction.png).
 
 Následující části popisují části řešení.
 
@@ -67,7 +67,7 @@ Generování aplikace události naplní Azure Event Hubs pouze tehdy, když je s
 Použití [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) k poskytování téměř v reálném čase analýzy vstupního datového proudu z [Azure Event Hubs](#azure-event-hub) služby. Potom publikovat výsledky do [Power BI](https://powerbi.microsoft.com) i archivovat vše nezpracované příchozí události do řídicího panelu [služby Azure Storage](https://azure.microsoft.com/services/storage/) service pro pozdější zpracování [Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/)služby.
 
 ### <a name="hdinsight-custom-aggregation"></a>Vlastní agregační HDInsight
-Spustit [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) skriptů (orchestrovaných službou Azure Data Factory) pomocí HDInsight poskytuje agregace nezpracovaných událostí archivovaných pomocí služby Azure Stream Analytics.
+Spustit [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) skriptů (orchestrovaných službou Azure Data Factory) pomocí HDInsight poskytuje agregace nezpracovaných událostí archivovaných pomocí služby Azure Stream Analytics.
 
 ### <a name="azure-machine-learning"></a>Azure Machine Learning
 Vytvoření predikcí zbývající životnosti (RUL) konkrétního leteckého motoru pomocí vstupů obdrželi s portálem [služby Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) (orchestrovaných službou Azure Data Factory). 
@@ -122,22 +122,22 @@ Tato část pojednává o nezbytné [kanály a aktivity](../../data-factory/conc
 
 ![Azure Data Factory](./media/cortana-analytics-technical-guide-predictive-maintenance/azure-data-factory.png)
 
-Dva kanály tento objekt pro vytváření obsahovat [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) skripty používané k rozdělení a agregovat data. Pokud jste si poznamenali, skripty jsou umístěny v [služby Azure Storage](https://azure.microsoft.com/services/storage/) účet vytvořený během instalace. Jejich umístění je: maintenancesascript\\\\skript\\\\hive\\ \\ (nebo name].blob.core.windows.net/maintenancesascript https://[Your řešení).
+Dva kanály tento objekt pro vytváření obsahovat [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) skripty používané k rozdělení a agregovat data. Pokud jste si poznamenali, skripty jsou umístěny v [služby Azure Storage](https://azure.microsoft.com/services/storage/) účet vytvořený během instalace. Jejich umístění je: maintenancesascript\\\\skript\\\\hive\\ \\ (nebo name].blob.core.windows.net/maintenancesascript https://[Your řešení).
 
-Podobně jako [Azure Stream Analytics](#azure-stream-analytics-1) dotazy, [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) skripty mají implicitní znalosti o příchozích dat formátu a musí být změněn podle datový formát.
+Podobně jako [Azure Stream Analytics](#azure-stream-analytics-1) dotazy, [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) skripty mají implicitní znalosti o příchozích dat formátu a musí být změněn podle datový formát.
 
 #### <a name="aggregateflightinfopipeline"></a>*AggregateFlightInfoPipeline*
-To [kanálu](../../data-factory/concepts-pipelines-activities.md) obsahuje jednu aktivitu – [HDInsightHive](../../data-factory/transform-data-using-hadoop-hive.md) pomocí aktivity [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) , který běží [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) skript pro rozdělení dat vložte [služby Azure Storage](https://azure.microsoft.com/services/storage/) během [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) úlohy.
+To [kanálu](../../data-factory/concepts-pipelines-activities.md) obsahuje jednu aktivitu – [HDInsightHive](../../data-factory/transform-data-using-hadoop-hive.md) pomocí aktivity [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) , který běží [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) skript pro rozdělení dat vložte [služby Azure Storage](https://azure.microsoft.com/services/storage/) během [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) úlohy.
 
-[Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) skriptu pro tento úkol dělení je ***AggregateFlightInfo.hql***
+[Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) skriptu pro tento úkol dělení je ***AggregateFlightInfo.hql***
 
 #### <a name="mlscoringpipeline"></a>*MLScoringPipeline*
 To [kanálu](../../data-factory/concepts-pipelines-activities.md) obsahuje několik aktivit, jejichž konečný výsledek je Vyhodnocená předpovědí z [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) experiment přidružená k této šabloně řešení.
 
 Aktivity zahrnuté jsou:
 
-* [HDInsightHive](../../data-factory/transform-data-using-hadoop-hive.md) aktivity pomocí [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) , který běží [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) skriptů k provádění agregací a konstruování nezbytné pro [počítači Azure Učení](https://azure.microsoft.com/services/machine-learning/) experimentovat.
-  [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) skriptu pro tento úkol dělení je ***PrepareMLInput.hql***.
+* [HDInsightHive](../../data-factory/transform-data-using-hadoop-hive.md) aktivity pomocí [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) , který běží [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) skriptů k provádění agregací a konstruování nezbytné pro [počítači Azure Učení](https://azure.microsoft.com/services/machine-learning/) experimentovat.
+  [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) skriptu pro tento úkol dělení je ***PrepareMLInput.hql***.
 * [Kopírování](https://msdn.microsoft.com/library/azure/dn835035.aspx) aktivity, který přesouvá výsledků [HDInsightHive](../../data-factory/transform-data-using-hadoop-hive.md) aktivit do jediné [služby Azure Storage](https://azure.microsoft.com/services/storage/) blob přistupuje [AzureMLBatchScoring](https://msdn.microsoft.com/library/azure/dn894009.aspx) aktivita.
 * [AzureMLBatchScoring](https://msdn.microsoft.com/library/azure/dn894009.aspx) volání aktivity [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) experimentu s výsledky do jediného [služby Azure Storage](https://azure.microsoft.com/services/storage/) objektů blob.
 
@@ -241,5 +241,5 @@ Ujistěte se zastavit generátor dat, když aktivně nepoužíváte řešení ja
 Následující dva nástroje jsou k dispozici vám pomůže lépe pochopit celkové náklady při spuštění prediktivní Údržba leteckých šablony řešení ve vašem předplatném:
 
 * [Microsoft Azure Cost Estimator Tool (online)](https://azure.microsoft.com/pricing/calculator/)
-* [Microsoft Azure Cost Estimator nástroj (desktop)](http://www.microsoft.com/download/details.aspx?id=43376)
+* [Microsoft Azure Cost Estimator nástroj (desktop)](https://www.microsoft.com/download/details.aspx?id=43376)
 

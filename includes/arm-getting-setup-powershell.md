@@ -1,8 +1,8 @@
-## <a name="setting-up-powershell-for-resource-manager-templates"></a>Nastavení prostředí PowerShell pro správce prostředků šablony
-Než budete moct použít Azure PowerShell s Resource Managerem, musíte mít práva prostředí Windows PowerShell a verze prostředí Azure PowerShell.
+## <a name="setting-up-powershell-for-resource-manager-templates"></a>Nastavení prostředí PowerShell pro šablony Resource Manageru
+Před použitím Azure Powershellu s Resource Managerem, musíte mít práva prostředí Windows PowerShell a verze prostředí Azure PowerShell.
 
 ### <a name="verify-powershell-versions"></a>Ověření verze prostředí PowerShell
-Ověřte, že máte prostředí Windows PowerShell verze 3.0 nebo 4.0. Pokud chcete vyhledat verzi prostředí Windows PowerShell, zadejte tento příkaz na příkazovém řádku prostředí Windows PowerShell.
+Ověřte, že máte prostředí Windows PowerShell verze 3.0 nebo 4.0. Pokud chcete zjistit verzi prostředí Windows PowerShell, zadejte tento příkaz na příkazovém řádku prostředí Windows PowerShell.
 
     $PSVersionTable
 
@@ -19,16 +19,16 @@ Získáte tento typ informací:
     PSRemotingProtocolVersion      2.2
 
 
-Ověřte, zda hodnota **PSVersion** je 3.0 nebo 4.0. Pokud ne, najdete v části [Windows Management Framework 3.0](http://www.microsoft.com/download/details.aspx?id=34595) nebo [Windows Management Framework 4.0](http://www.microsoft.com/download/details.aspx?id=40855).
+Ověřte, že hodnota **PSVersion** 3.0 nebo 4.0. Pokud ne, přečtěte si téma [Windows Management Framework 3.0](https://www.microsoft.com/download/details.aspx?id=34595) nebo [Windows Management Framework 4.0](https://www.microsoft.com/download/details.aspx?id=40855).
 
 ### <a name="set-your-azure-account-and-subscription"></a>Nastavení předplatného a účtu Azure
-Pokud nemáte předplatné Azure, můžete si aktivovat vaší [výhody pro předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) nebo si zaregistrovat [bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
+Pokud ještě nemáte předplatné Azure, můžete si aktivovat váš [výhody pro předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) nebo se zaregistrovat [bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
 
-Otevřete příkazový řádek prostředí Azure PowerShell a přihlášení do Azure pomocí tohoto příkazu.
+Otevřete příkazový řádek Azure Powershellu a přihlaste se k Azure pomocí tohoto příkazu.
 
     Connect-AzureRmAccount
 
-Pokud máte víc předplatných Azure, můžete seznam vašich předplatných Azure pomocí tohoto příkazu.
+Pokud máte více předplatných Azure, můžete vytvořit seznam vašich předplatných Azure pomocí tohoto příkazu.
 
     Get-AzureRmSubscription
 
@@ -45,10 +45,10 @@ Získáte tento typ informací:
     CurrentStorageAccountName :
     TenantId                  : 32fa88b4-86f1-419f-93ab-2d7ce016dba7
 
-Aktuální předplatné Azure můžete nastavit tak, že spustíte tyto příkazy v příkazovém řádku prostředí Azure PowerShell. Nahraďte všechna data v uvozovkách, včetně < a > znaků, se správným názvem.
+Spuštěním těchto příkazů na příkazovém řádku prostředí Azure PowerShell můžete nastavit aktuální předplatné Azure. Nahradit vše, co v uvozovkách, včetně < a > znaků, ten se správným názvem.
 
     $subscr="<SubscriptionName from the display of Get-AzureRmSubscription>"
     Select-AzureRmSubscription -SubscriptionName $subscr -Current
 
-Další informace o předplatných Azure a účty, najdete v části [postupy: připojení k vašemu předplatnému](/powershell/azureps-cmdlets-docs#step-3-connect).
+Další informace o účtů a předplatných Azure, najdete v části [postupy: připojení k vašemu předplatnému](/powershell/azureps-cmdlets-docs#step-3-connect).
 

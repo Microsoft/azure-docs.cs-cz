@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: f88290043f750122327ddb1fd9b381b6bc24110c
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 83c7862e8a9e3ce069765f81607bfbbeee272be2
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50959320"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51278646"
 ---
 # <a name="use-azure-blob-storage-for-iis-and-azure-table-storage-for-events-with-log-analytics"></a>Používání úložiště objektů blob v Azure pro službu IIS a Azure table storage pro události s využitím Log Analytics
 
@@ -151,7 +151,7 @@ Během přibližně 30 minut budete moct zobrazit data z účtu úložiště ve 
 Postupujte podle kroků v [konfigurace Log Analytics k indexování Azure diagnostics](log-analytics-powershell-workspace-configuration.md#configuring-log-analytics-to-index-azure-diagnostics) čtení z diagnostiky Azure, který se zapisovat do table storage pomocí Powershellu.
 
 Pomocí prostředí Azure PowerShell můžete přesněji určit události, které jsou zapsány do služby Azure Storage.
-Další informace najdete v tématu [povolení diagnostiky v Azure Virtual Machines](../virtual-machines/virtual-machines-dotnet-diagnostics.md).
+Další informace najdete v tématu [povolení diagnostiky v Azure Virtual Machines](/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines).
 
 Můžete povolit a aktualizovat diagnostiky Azure pomocí následujícího skriptu prostředí PowerShell.
 Tento skript můžete použít také s vlastní konfiguraci protokolování.
@@ -195,4 +195,4 @@ Projděte si následující ukázkový skript, zkopírujte ho, podle potřeby up
 ## <a name="next-steps"></a>Další postup
 * [Shromažďovat protokoly a metriky pro služby Azure](log-analytics-azure-storage.md) pro podporované služby Azure.
 * [Povolení řešení](../monitoring/monitoring-solutions.md) k poskytování přehledů o data.
-* [Pomocí vyhledávacích dotazů](log-analytics-log-search.md) chcete analyzovat data.
+* [Pomocí vyhledávacích dotazů](log-analytics-queries.md) chcete analyzovat data.

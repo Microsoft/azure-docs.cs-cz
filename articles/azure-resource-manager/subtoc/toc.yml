@@ -1,9 +1,19 @@
 items:
 - name: AKS
   items:
-  - name: Spravované clustery
-    href: /azure/templates/Microsoft.ContainerService/managedClusters
+  - name: Všechny verze
+    href: /azure/templates/Microsoft.ContainerService/aks-allversions
     maintainContext: true
+  - name: 2018-03-31
+    items:
+    - name: Spravované clustery
+      href: /azure/templates/Microsoft.ContainerService/2018-03-31/managedClusters
+      maintainContext: true
+  - name: 2017-08-31
+    items:
+    - name: Spravované clustery
+      href: /azure/templates/Microsoft.ContainerService/2017-08-31/managedClusters
+      maintainContext: true
 - name: Analysis Services
   items:
   - name: Servery
@@ -356,9 +366,29 @@ items:
     maintainContext: true
 - name: Container Service
   items:
-  - name: Služba kontejneru
-    href: /azure/templates/Microsoft.ContainerService/containerServices
+  - name: Všechny verze
+    href: /azure/templates/Microsoft.ContainerService/containerservices-allversions
     maintainContext: true
+  - name: 2017-07-01
+    items:
+    - name: Služba kontejneru
+      href: /azure/templates/Microsoft.ContainerService/2017-07-01/containerServices
+      maintainContext: true
+  - name: 2017-01-31
+    items:
+    - name: Služba kontejneru
+      href: /azure/templates/Microsoft.ContainerService/2017-01-31/containerServices
+      maintainContext: true
+  - name: 2016-09-30
+    items:
+    - name: Služba kontejneru
+      href: /azure/templates/Microsoft.ContainerService/2016-09-30/containerServices
+      maintainContext: true
+  - name: 2016-03-30
+    items:
+    - name: Služba kontejneru
+      href: /azure/templates/Microsoft.ContainerService/2016-03-30/containerServices
+      maintainContext: true
 - name: Databáze Cosmos
   items:
   - name: Účty databáze
@@ -1192,9 +1222,6 @@ items:
     - name: Poradci
       href: /azure/templates/Microsoft.Sql/servers/advisors
       maintainContext: true
-    - name: Zásady auditování
-      href: /azure/templates/Microsoft.Sql/servers/auditingPolicies
-      maintainContext: true
     - name: Trezory dlouhodobého uchovávání záloh
       href: /azure/templates/Microsoft.Sql/servers/backupLongTermRetentionVaults
       maintainContext: true
@@ -1209,9 +1236,6 @@ items:
       items:
       - name: Poradci
         href: /azure/templates/Microsoft.Sql/servers/databases/advisors
-        maintainContext: true
-      - name: Zásady auditování
-        href: /azure/templates/Microsoft.Sql/servers/databases/auditingPolicies
         maintainContext: true
       - name: Nastavení auditování
         href: /azure/templates/Microsoft.Sql/servers/databases/auditingSettings
@@ -1466,9 +1490,9 @@ items:
         maintainContext: true
       maintainContext: true
     maintainContext: true
-ms.openlocfilehash: 773ae8c38cb98e9c8daff6ef2819d4a3dc687739
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 9ac010b00b474ad71c1bf4f6fcb394ade0480e48
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353947"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51515688"

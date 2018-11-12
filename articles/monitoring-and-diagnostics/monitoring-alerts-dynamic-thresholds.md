@@ -1,6 +1,6 @@
 ---
-title: Vytvoření výstrahy s dynamické mezní hodnoty v Azure monitorování
-description: Vytvoření výstrahy s prahové hodnoty dynamického využívajících machine learning
+title: Vytvoření upozornění s dynamickými prahovými hodnotami ve službě Azure Monitor
+description: Vytvoření upozornění s dynamickými prahovými hodnotami využívajících machine learning
 author: antonfrMSFT
 services: azure-monitor
 ms.service: azure-monitor
@@ -9,96 +9,96 @@ ms.date: 04/27/2018
 ms.author: mbullwin
 ms.reviewer: antonfr
 ms.component: alerts
-ms.openlocfilehash: 01f924e0b3a2976a3f537cb5acac842eeeaccb4b
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 1b47e3804d8be36e3c6c8c570fec06f542e8dbf2
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35263309"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51233962"
 ---
-# <a name="alerts-with-dynamic-thresholds-in-azure-monitor-limited-public-preview"></a>Výstrahy s dynamické mezní hodnoty v Azure monitorování (omezený Public Preview)
+# <a name="alerts-with-dynamic-thresholds-in-azure-monitor-limited-public-preview"></a>Upozornění s dynamickými prahovými hodnotami ve službě Azure Monitor (omezené veřejné verzi Preview)
 
-Výstrahy s dynamické prahové hodnoty jsou rozšíření Azure metrika výstrah v monitorování Azure, který využít rozšířené možnosti Machine Learning (ML) další metriky se historických chování automaticky vypočítat směrné plány a použít je jako prahových hodnot výstrah.
+Upozornění s dynamickými prahovými hodnotami jsou rozšíření Azure Alerts metriky ve službě Azure Monitor, které využívat pokročilé funkce Machine Learning (ML) další metriky historických chování automaticky vypočítat směrné plány a použít je jako prahových hodnot výstrah.
 
-Výhody použití dynamické prahové hodnoty jsou:
+Mezi výhody používání dynamické prahové hodnoty jsou:
 
-- Uložte jednoduchý přidružené nastavení předdefinované pevné hranice, protože monitor automaticky zjišťuje historických výkonu metriky a použije ML algoritmy k určení prahových hodnot výstrah.
-- Můžete identifikují sezónní chování a výstrahu pouze u odchylky od sezónní očekávané chování. Metriky výstrahy s dynamické prahové hodnoty nebudou aktivovat, pokud vaše služba je pravidelně nečinnosti na víkendy a pak špičky každé pondělí. Aktuálně podporované: hodinové, denní a týdenní sezónnosti.
-- Nepřetržitě zjišťuje metriky výkonu a je adaptivní metriky změny.
+- Uložte museli řešit problémy spojené s nastavením hranici předdefinované od rigidních automaticky učí historie výkonu metriky a použije algoritmy k určení prahových hodnot výstrah monitorování.
+- Můžou určit sezónní chování a upozornění jen na odchylky od sezónní očekávaná. Pokud vaše služba se pravidelně nečinnosti o víkendech a potom špičky každé pondělí nebudou aktivovat upozornění na metriku s dynamickými prahovými hodnotami. V tuto chvíli nepodporuje: hodinové, denní nebo týdenní sezónnosti.
+- Průběžně učí metriky výkonu a je adaptivní metriky změny.
 
-Dynamické výstrahy na základě prahové hodnoty jsou k dispozici pro všechny Azure monitorování na základě metriky zdrojích uvedených v tomto [článku](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts#what-resources-can-i-create-near-real-time-metric-alerts-for).
+Dynamická prahová hodnota výstrahy jsou k dispozici pro monitorování všech Azure na základě metrik zdrojích uvedených v tomto [článku](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts#what-resources-can-i-create-near-real-time-metric-alerts-for).
 
-## <a name="sign-up-to-access-the-preview"></a>Zaregistrovat k verzi preview
+## <a name="sign-up-to-access-the-preview"></a>Zaregistrovat se pro přístup k verzi preview
 
-Chcete-li provést tuto možnost u typu číselník, [zaregistrujte si verzi preview](http://aka.ms/DynamicThresholdMetricAlerts). Jako vždy, budeme rádi uslyšíme vaše názory, Udržovat přicházející na [azurealertsfeedback@microsoft.com](mailto:azurealertsfeedback@microsoft.com)
+Abyste mohli tuto funkci pro otáčení, [zaregistrovat verzi preview](https://aka.ms/DynamicThresholdMetricAlerts). Jako vždy, rádi bychom znali váš názor, uchovávejte přicházející v [azurealertsfeedback@microsoft.com](mailto:azurealertsfeedback@microsoft.com)
 
-## <a name="how-to-configure-alerts-with-dynamic-thresholds"></a>Jak konfigurovat výstrahy s dynamické prahovými hodnotami
+## <a name="how-to-configure-alerts-with-dynamic-thresholds"></a>Postup konfigurace výstrah s dynamickými prahovými hodnotami
 
-Výstrahy s dynamické prahové hodnoty můžete nakonfigurovat přes výstrah v monitorování Azure
+Upozornění s dynamickými prahovými hodnotami, které je možné nakonfigurovat pomocí výstrah ve službě Azure Monitor
 
-![Výstrahy preview](./media/monitoring-alerts-dynamic-thresholds/0001.png)
+![Oznámení verze preview](./media/monitoring-alerts-dynamic-thresholds/0001.png)
 
-## <a name="creating-an-alert-rule-with-dynamic-thresholds"></a>Vytvoření pravidla výstrahy s dynamické prahovými hodnotami
+## <a name="creating-an-alert-rule-with-dynamic-thresholds"></a>Vytváří se pravidlo upozornění s dynamickými prahovými hodnotami
 
-1. V podokně výstrahy v části monitorování, vyberte **nové pravidlo výstrahy** tlačítko Vytvořit nové oznámení v Azure.
+1. V podokně výstrahy v části monitorování zvolte **nové pravidlo upozornění** pro vytvoření nového upozornění v Azure.
 
    ![Nové pravidlo upozornění](./media/monitoring-alerts-dynamic-thresholds/002.png)
 
-2. V části Vytvoření pravidla se zobrazí se tří částí, který se skládá z: _definovat výstrahy podmínku_, _definovat podrobnosti výstrahy_, a _definovat akce skupiny_. Nejprve začínat _definovat výstrahy podmínku_ oddílu používají **vyberte cíl** odkaz na zadejte cíl, výběrem prostředku. Jakmile je zvoleno odpovídající prostředek, klikněte na tlačítko Hotovo.
+2. V části Vytvoření pravidla se zobrazí s tři části, který se skládá z: _Definujte podmínku upozornění_, _definujte podrobnosti o upozornění_, a _definujte skupinu akcí_. Nejprve začínat _Definujte podmínku upozornění_ části používají **vyberte cíl** odkaz zadejte cíl, tak, že vyberete prostředku. Jakmile je vybrána odpovídající prostředek, klikněte na tlačítko Hotovo.
 
-   ![Vyberte cíl](./media/monitoring-alerts-dynamic-thresholds/0003.png)
+   ![Výběr cíle](./media/monitoring-alerts-dynamic-thresholds/0003.png)
 
-3. Potom použít **přidat kritéria** tlačítko Zobrazit seznam možností signál k dispozici pro daný prostředek a ze seznamu signál zvolte odpovídající **metrika** možnost. (Například procento procesoru.)
+3. Potom pomocí **přidat kritéria** tlačítko Zobrazit seznam možností signál k dispozici pro prostředek a v seznamu signál zvolte odpovídající **metrika** možnost. (Např. využití CPU.)
 
    ![Přidat kritéria](./media/monitoring-alerts-dynamic-thresholds/004.png)
 
-4. Na obrazovce konfigurace signál logiku v části výstrahy logiku máte možnost přepnout podmínku typ dynamického, který automaticky vytvoří dynamické prahové hodnoty (červené čáry) vedle metrika (modré řádku).
+4. Na obrazovce konfigurace logiky signál v části Alert logic máte možnost přepnout podmínky typu dynamická, která bude automaticky generovat dynamické prahové hodnoty (červené čáry) společně s metriku (modrá čára).
 
    ![Dynamická](./media/monitoring-alerts-dynamic-thresholds/005.png)
 
-5. Prahové hodnoty, které jsou uvedeny v grafu se počítá na základě v posledních sedmi dnů historická data, jakmile je vytvořena výstraha, dynamické prahové hodnoty využijí další historická data, která je k dispozici a bude nepřetržitě informace na základě nová data, aby prahové hodnoty přesnější.
+5. Prahové hodnoty v grafu se počítají na základě v posledních sedmi dnů historických dat, jakmile se vytvoří výstrahu, dynamickými prahovými hodnotami získá další historická data, která je k dispozici a průběžně se dozvíte na základě nových dat, aby prahové hodnoty přesnější.
 
-6. Nastavení další logiku navíc výstrah:
-   - Podmínku – můžete výstrahu, kterou chcete spustit na jednom z následujících tří podmínek:
-       - Větší než prahová hodnota vyšší nebo nižší než nižší prahová hodnota (výchozí)
-       - Větší než vyšší prahová hodnota
+6. Alert logic další nastavení:
+   - Podmínka – můžete nastavit výstrahu, kterou chcete aktivovat na jednu z těchto tří podmínek:
+       - Větší než horní prahová hodnota nebo nižší než nižší prahová hodnota (výchozí)
+       - Větší než horní prahová hodnota
        - Nižší než nižší prahová hodnota.
-   - Čas agregace: průměr (výchozí), sum, min, max.
-   - Výstrahy velkých a malých písmen:
-       - Vysoká – další výstrahy, jako upozornění se spustí na nejmenší odchylku.
-       - Med – méně velká a malá písmena než horní, méně výstrahy než s vysoká citlivost (výchozí)
+   - Časová agregace: průměr (výchozí), sum, min, max.
+   - Citlivost výstrah:
+       - Vysoká – více výstrah, jak se aktivuje upozornění na nejnižší odchylka.
+       - Med – méně citlivé na než vysoká, méně výstrah, než se Vysoká citlivost (výchozí)
        - Nízká – nejnižší citlivostí prahovou hodnotu.
 
-    ![Nastavení výstrah logiky](./media/monitoring-alerts-dynamic-thresholds/00007.png)
+    ![Nastavení logika upozornění](./media/monitoring-alerts-dynamic-thresholds/00007.png)
 
-7. Vyhodnocení na základě:
-    -  Jaké doby trvání výstrahy by měl vypadat pro zadanou podmínku tak, že zvolíte **období**.
+7. Vyhodnotí na základě:
+    -  Jakou dobu trvání výstraha by měl vypadat pro zadanou podmínku výběrem ze **období**.
 
     ![Vyhodnoceno na základě](./media/monitoring-alerts-dynamic-thresholds/007.png)
 
    > [!NOTE]
-   > Podporované hodnoty doby: 5 minut, 10 minut, 30 minut a 1 hodina.
+   > Podporované hodnoty období: 5 minut, 10 minut, 30 minut a 1 hodina.
 
-   Abyste snížili výstrahy nepůsobily generované přechodný špičky, doporučujeme použít nastavení "Počet porušení pro aktivování upozornění". Tato funkce umožňuje získat výstrahu pouze v případě, že porušení prahové hodnoty X po sobě nebo časy Y mimo poslední Z období. Příklad:
+   Aby výstrahy nepůsobily generovaných přechodné špičky, doporučujeme použít nastavení "Počet narušení pro aktivaci upozornění". Tato funkce umožňuje výstrahy jenom v případě, že porušení prahové hodnoty X po sobě jdoucích nebo časy Y z posledních Z období. Příklad:
 
-    Spustí výstrahu, pokud tento problém je souvislý 15 minut, po sobě jdoucích 3krát v daném časovém intervalu 5 minut, použijte následující nastavení:
+    Chcete-li aktivovat upozornění, když tento problém je souvislý 15 minut, 3 po sobě jdoucích v daném časovém intervalu 5 minut, použijte následující nastavení:
 
    ![Vyhodnoceno na základě](./media/monitoring-alerts-dynamic-thresholds/0008.png)
 
-    Ke spuštění výstrahy, když došlo k narušení z dynamické prahová hodnota za 15 minut mimo posledních 30 minut s dobou 5 minut, použijte následující nastavení:
+    Chcete-li aktivovat upozornění, když došlo k narušení z dynamická prahová hodnota za 15 minut z posledních 30 minut s 5 minut, použijte následující nastavení:
 
    ![Vyhodnoceno na základě](./media/monitoring-alerts-dynamic-thresholds/0009.png)
 
-8. Aktuálně uživatelům používat výstrahy s dynamické prahová hodnota kritéria jako jeden kritéria.
+8. Uživatelé nyní mohou mít výstrahy s dynamická prahová hodnota kritéria jako jediné kritérium.
 
    ![Vytvořit pravidlo](./media/monitoring-alerts-dynamic-thresholds/010.png)
 
 ## <a name="q--a"></a>Dotazy a odpovědi
 
-- Otázka: když metrika pomalu změny v čase, aktivuje Tato výstraha s dynamické prahové hodnoty?
+- Otázka: Pokud metrika pomalu mění v průběhu času, aktivuje toto upozornění s dynamickými prahovými hodnotami?
 
-- Odpověď: pravděpodobně ne. Dynamické prahové hodnoty jsou vhodné pro zjišťování významné odchylky než pomalu vyvíjející se problémy.
+- Odpověď: pravděpodobně ne. Jsou vhodné pro zjištění významné odchylky, spíše než pomalu se vyvíjejí problémy s dynamickými prahovými hodnotami.
 
-- Otázka: je možné nakonfigurovat dynamické prahové hodnoty prostřednictvím rozhraní API?
+- Dotaz: lze nakonfigurovat dynamickými prahovými hodnotami pomocí rozhraní API?
 
-- Odpověď: pracujeme na něm.
+- Odpověď: pracujeme na něj.

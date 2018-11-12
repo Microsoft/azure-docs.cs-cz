@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 00143ab1f4aaba0f700e084d9225570c28713d0d
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: 020923a76c94b10165e95bb4c5950419595dff0b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "42054212"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51252339"
 ---
 # <a name="starting-a-runbook-in-azure-automation"></a>Spuštění runbooku ve službě Azure Automation
 Následující tabulka vám pomůže určit metodu pro spuštění sady runbook ve službě Azure Automation, která je nejvhodnější pro váš konkrétní scénář. Tento článek obsahuje podrobnosti o spuštění sady runbook pomocí webu Azure portal a pomocí Windows Powershellu. Podrobnosti o dalších metodách jsou uvedeny v jiné dokumentaci, která se dá dostat z níže uvedených odkazů.
@@ -66,7 +66,7 @@ While ($doLoop) {
 Get-AzureRmAutomationJobOutput –AutomationAccountName $AutomationAcct -Id $job.JobId -ResourceGroupName $ResourceGroup –Stream Output
 ```
 
-Pokud runbook vyžaduje parametry, pak je potřeba je zadat jako [zatřiďovací tabulky](http://technet.microsoft.com/library/hh847780.aspx) kde klíč zatřiďovací tabulky odpovídá názvu parametru a hodnota je hodnota tohoto parametru. Následující příklad ukazuje spuštění runbooku se dvěma řetězcovými parametry s názvy FirstName a LastName, celočíselným parametrem s názvem RepeatCount a logickým parametrem s názvem Show. Další informace o parametrech najdete v tématu [parametry Runbooku](#Runbook-parameters) níže.
+Pokud runbook vyžaduje parametry, pak je potřeba je zadat jako [zatřiďovací tabulky](https://technet.microsoft.com/library/hh847780.aspx) kde klíč zatřiďovací tabulky odpovídá názvu parametru a hodnota je hodnota tohoto parametru. Následující příklad ukazuje spuštění runbooku se dvěma řetězcovými parametry s názvy FirstName a LastName, celočíselným parametrem s názvem RepeatCount a logickým parametrem s názvem Show. Další informace o parametrech najdete v tématu [parametry Runbooku](#Runbook-parameters) níže.
 
 ```
 $params = @{"FirstName"="Joe";"LastName"="Smith";"RepeatCount"=2;"Show"=$true}

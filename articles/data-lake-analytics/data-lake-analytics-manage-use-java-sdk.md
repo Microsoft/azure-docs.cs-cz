@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: 07830b36-2fe3-4809-a846-129cf67b6a9e
 ms.topic: conceptual
 ms.date: 06/18/2017
-ms.openlocfilehash: 6a5d01ed1b3d60ce138fe5c4c5a60812961d9dfd
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: f2a4b98404139abead411c20648b82d9081481f9
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49953725"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230185"
 ---
 # <a name="manage-azure-data-lake-analytics-using-a-java-app"></a>Správa Azure Data Lake Analytics pomocí aplikace v Javě
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -376,6 +376,6 @@ public static String GetJobStatus(UUID jobId) throws IOException, CloudException
 
 ## <a name="next-steps"></a>Další postup
 
-* Pokud se chcete naučit jazyk U-SQL, informace najdete v tématu [Začínáme s jazykem U-SQL Azure Data Lake Analytics](data-lake-analytics-u-sql-get-started.md) a [Referenční informace pro jazyk U-SQL](http://go.microsoft.com/fwlink/?LinkId=691348).
+* Pokud se chcete naučit jazyk U-SQL, informace najdete v tématu [Začínáme s jazykem U-SQL Azure Data Lake Analytics](data-lake-analytics-u-sql-get-started.md) a [Referenční informace pro jazyk U-SQL](https://go.microsoft.com/fwlink/?LinkId=691348).
 * Informace týkající se úloh správy najdete v tématu [Správa služby Azure Data Lake Analytics pomocí webu Azure Portal](data-lake-analytics-manage-use-portal.md).
 * Přehled Data Lake Analytics najdete v tématu [Přehled Azure Data Lake Analytics](data-lake-analytics-overview.md).

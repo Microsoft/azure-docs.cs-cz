@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/20/2018
 ms.author: terrylan
-ms.openlocfilehash: 3174f2d6562030702b14ef1fa3708a1a4e8e373b
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 103e0e353efeaf493fb1d72f03eb6ce6469cd683
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44301945"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235662"
 ---
 # <a name="managing-connected-partner-solutions-with-azure-security-center"></a>Správa připojených partnerských řešení pomocí Azure Security Center
 Tento článek vás provede postupy při správě a monitorování řešení připojená zabezpečení ve službě Azure Security Center.
@@ -65,7 +65,7 @@ V tomto článku jste zjistili, jak spravovat a monitorovat řešení připojen�
 * [Partnerská řešení a jejich integrace](security-center-partner-integration.md) – získejte přehled o integraci jiných řešení zabezpečení.
 * [Správa a zpracování výstrah zabezpečení](security-center-managing-and-responding-alerts.md) – zjistěte, jak spravovat a reagovat na výstrahy zabezpečení.
 * [Azure Security Center – nejčastější dotazy](security-center-faq.md) – Přečtěte si nejčastější dotazy o použití této služby.
-* [Blog o zabezpečení Azure](http://blogs.msdn.com/b/azuresecurity/) – Přečtěte si příspěvky o zabezpečení Azure a dodržování předpisů.
+* [Blog o zabezpečení Azure](https://blogs.msdn.com/b/azuresecurity/) – Přečtěte si příspěvky o zabezpečení Azure a dodržování předpisů.
 
 <!--Image references-->
 [1]: ./media/security-center-partner-solutions/partner-solutions-tile.png

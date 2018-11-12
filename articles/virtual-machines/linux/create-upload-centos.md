@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2018
 ms.author: szark
-ms.openlocfilehash: 5328ee7e3e3035ebce1ff9fccbfc6e9ccfd86ee8
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 171180eb373553dfa0c971b22e3cf62e450829ed
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48888388"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51233594"
 ---
 # <a name="prepare-a-centos-based-virtual-machine-for-azure"></a>Příprava virtuálního počítače založeného na CentOS pro Azure
 * [Příprava virtuálního počítače CentOS 6.x pro Azure](#centos-6x)
@@ -29,7 +29,7 @@ ms.locfileid: "48888388"
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
 ## <a name="prerequisites"></a>Požadavky
-Tento článek předpokládá, že jste už nainstalovali CentOS (nebo podobné odvozených děl na základě) operačního systému Linux na virtuální pevný disk. Existují více nástroje k vytvoření souborů .vhd, třeba řešení virtualizace jako je Hyper-V. Pokyny najdete v tématu [instalace Role Hyper-V a konfigurace virtuálního počítače](http://technet.microsoft.com/library/hh846766.aspx).
+Tento článek předpokládá, že jste už nainstalovali CentOS (nebo podobné odvozených děl na základě) operačního systému Linux na virtuální pevný disk. Existují více nástroje k vytvoření souborů .vhd, třeba řešení virtualizace jako je Hyper-V. Pokyny najdete v tématu [instalace Role Hyper-V a konfigurace virtuálního počítače](https://technet.microsoft.com/library/hh846766.aspx).
 
 **Poznámky k instalaci centOS**
 

@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 07/27/2018
 ms.author: yushwang
-ms.openlocfilehash: 94183b639c02f6a7d74e87e8f8335da67db113d6
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: a232ac111974444848aec82f3c7ab6236f82ac03
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49468173"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51037089"
 ---
 # <a name="vpn-gateway-faq"></a>Nejčastější dotazy k branám VPN
 
@@ -65,7 +65,7 @@ Brány založené na zásadách implementují sítě VPN založené na zásadác
 Brány založené na směrování implementují sítě VPN založené na směrování. Sítě VPN založené na směrování používají ke směrování paketů do příslušných rozhraní tunelových propojení „trasy“ v tabulce předávání IP nebo směrovací tabulce IP. Rozhraní tunelového propojení potom šifrují nebo dešifrují pakety směřující do tunelových propojení nebo z nich. Zásady nebo selektor provozu pro sítě VPN založené na směrování používají konfiguraci typu any-to-any (se zástupnými znaky).
 
 ### <a name="can-i-update-my-policy-based-vpn-gateway-to-route-based"></a>Můžu aktualizovat bránu VPN založenou na zásadách tak, aby byla založená na směrování?
-Ne. Typ brány virtuální sítě Azure se nedá změnit z brány založené na zásadách na bránu založenou na směrování ani naopak. Brána se musí odstranit a znovu vytvořit a tento proces trvá přibližně 60 minut. IP adresa brány ani předsdílený klíč (PSK) se nezachovají.
+Ne. Typ brány virtuální sítě Azure se nedá změnit z brány založené na zásadách na bránu založenou na směrování ani naopak. Brána se musí odstranit a znovu vytvořit a tento proces trvá přibližně 60 minut. IP adresa brány ani předsdílený klíč (PSK) se nezachovají.
 1. Odstraňte všechna připojení přidružená k bráně, která se má odstranit.
 2. Odstraňte bránu:
 * [Azure Portal](vpn-gateway-delete-vnet-gateway-portal.md)
@@ -122,11 +122,11 @@ Ano. Informace najdete v tématu [Konfigurace vynuceného tunelování](vpn-gate
 
 Ano, je možné nasazovat v Azure vlastní servery nebo brány VPN buď z webu Azure Marketplace, nebo vytvořené jako vlastní směrovače sítě VPN. Je třeba nakonfigurovat ve virtuální síti trasy definované uživatelem, aby se zajistilo správné směrování provozu mezi místními sítěmi a podsítěmi virtuálních sítí.
 
-### <a name="why-are-certain-ports-opened-on-my-vpn-gateway"></a>Proč jsou některé porty brány VPN otevřené?
+### <a name="gatewayports"></a>Proč jsou některé porty otevřené u Moje brány virtuální sítě?
 
 Jsou vyžadovány pro komunikaci infrastruktury Azure. Jsou chráněny (uzamknuty) s použitím certifikátů Azure. Bez správných certifikátů nemohou externí entity (včetně zákazníků těchto bran) žádným způsobem ovlivnit činnost těchto koncových bodů.
 
-Brána sítě VPN je v podstatě zařízení s více adresami, přičemž jedna síťová karta je připojena k privátní síti zákazníka a jedna je přístupná z veřejné sítě. Entity infrastruktury Azure nemohou kvůli shodě procházet do privátních sítí zákazníků, takže je pro komunikaci infrastruktury třeba využívat veřejné koncové body. Veřejné koncové body jsou pravidelně kontrolovány auditem zabezpečení Azure.
+Bránu virtuální sítě je v podstatě zařízení s více adresami pomocí jedné síťové karty proniknutí do privátní síti zákazníka a jednou síťovou KARTOU směřující veřejné síti. Entity infrastruktury Azure nemohou kvůli shodě procházet do privátních sítí zákazníků, takže je pro komunikaci infrastruktury třeba využívat veřejné koncové body. Veřejné koncové body jsou pravidelně kontrolovány auditem zabezpečení Azure.
 
 ### <a name="more-information-about-gateway-types-requirements-and-throughput"></a>Další informace o typech brány, požadavcích a propustnosti
 

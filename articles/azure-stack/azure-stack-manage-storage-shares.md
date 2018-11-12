@@ -14,12 +14,12 @@ ms.topic: get-started-article
 ms.date: 09/28/2018
 ms.author: mabrigg
 ms.reviewer: xiaofmao
-ms.openlocfilehash: d979692ba32c596058d28c88f32e7e5872ab7ef9
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 00fa1a78155e1add547b8b165f52cf3c1fba2dfe
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452322"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51249893"
 ---
 # <a name="manage-storage-capacity-for-azure-stack"></a>Správa kapacity úložiště pro službu Azure Stack 
 
@@ -138,7 +138,7 @@ Migrace konsoliduje všechny kontejnery blob na novou sdílenou složku.
 > Migrace objektů BLOB v kontejneru je v režimu offline operace vyžadující použití prostředí PowerShell. Dokud se nedokončí migrace všech objektů blob pro kontejner, který migrujete zůstat offline a nelze jej použít. Byste se měli vyhnout také upgrade služby Azure Stack, dokud se nedokončí všechny probíhající migrace.
 
 #### <a name="to-migrate-containers-using-powershell"></a>K migraci kontejnerů pomocí Powershellu
-1. Potvrďte, že máte [prostředí Azure PowerShell nainstalovaný a nakonfigurovaný](http://azure.microsoft.com/documentation/articles/powershell-install-configure/). Další informace najdete v tématu [Použití Azure PowerShellu s Azure Resource Managerem](http://go.microsoft.com/fwlink/?LinkId=394767).
+1. Potvrďte, že máte [prostředí Azure PowerShell nainstalovaný a nakonfigurovaný](https://azure.microsoft.com/documentation/articles/powershell-install-configure/). Další informace najdete v tématu [Použití Azure PowerShellu s Azure Resource Managerem](https://go.microsoft.com/fwlink/?LinkId=394767).
 2.  Prozkoumejte kontejneru pochopit, jaká data jsou ve sdílené složce, kterou chcete použít k migraci. Chcete-li určit nejlepší kandidát kontejnery pro migraci na svazku, použijte **Get-AzsStorageContainer** rutiny:
 
     ````PowerShell  

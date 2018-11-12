@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/29/2018
 ms.author: markgal
-ms.openlocfilehash: 9e2ef16cffb044409b6f7f8e7785010097bcda87
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: ae02a1bcbf00a022cfd884b02141ce084f1fffa8
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43286648"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51232456"
 ---
 # <a name="plan-your-vm-backup-infrastructure-in-azure"></a>Plánování infrastruktury zálohování virtuálních počítačů v Azure
 Tento článek obsahuje výkonu a prostředků návrhy vám pomohou při plánování infrastruktury zálohování virtuálních počítačů. Také definuje klíčové aspekty služby Backup; Tyto aspekty může být důležité při určování architektury, plánování kapacity a plánování. Pokud jste [připravit vaše prostředí](backup-azure-arm-vms-prepare.md), plánování je dalším krokem, než začnete [k zálohování virtuálních počítačů](backup-azure-arm-vms.md). Pokud potřebujete další informace o virtuálních počítačích Azure, přečtěte si [dokumentace k virtuálním počítačům](https://azure.microsoft.com/documentation/services/virtual-machines/). 
@@ -146,7 +146,7 @@ Fakturace se nespustí, dokud se nedokončí prvního úspěšného zálohován�
 Fakturace za zadaný virtuální počítač zastaví pouze v případě, že ochrana je zastavena a veškerá zálohovaná data se odstraní. Při zastavení ochrany a neexistují žádné aktivní úlohy zálohování, velikost z posledního úspěšného zálohování virtuálního počítače se změní velikost chráněné Instance použitá pro měsíční náklady.
 
 ## <a name="questions"></a>Máte dotazy?
-Máte-li nějaké dotazy nebo pokud víte o funkci, kterou byste uvítali, [odešlete nám svůj názor](http://aka.ms/azurebackup_feedback).
+Máte-li nějaké dotazy nebo pokud víte o funkci, kterou byste uvítali, [odešlete nám svůj názor](https://aka.ms/azurebackup_feedback).
 
 ## <a name="next-steps"></a>Další postup
 * [Zálohování virtuálních počítačů](backup-azure-arm-vms.md)

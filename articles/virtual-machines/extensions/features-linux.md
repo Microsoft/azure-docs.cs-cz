@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: roiyz
-ms.openlocfilehash: 720b8584c201826e55099ad31667478b6aa57b27
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: bf6eca33eb1448eb84065fb7fe184d01e77feb61
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024508"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51036987"
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>Rozšíření virtuálních počítačů a funkce pro Linux
 
@@ -64,7 +64,7 @@ Některá rozšíření nejsou podporovány ve všech operačních systémů a m
 Balíčky rozšíření se stáhnou z rozšíření úložiště Azure Storage a stav nahrávání rozšíření jsou odeslány do služby Azure Storage. Pokud používáte [podporované](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support) verze agentů, není nutné pro povolení přístupu ke službě Azure Storage v oblasti virtuálních počítačů, můžete k používání agenta pro přesměrování komunikace na kontroler prostředků infrastruktury Azure pro komunikaci agenta. Pokud jste v nepodporované verzi agenta, budete muset povolit odchozí přístup k Azure storage v dané oblasti z virtuálního počítače.
 
 > [!IMPORTANT]
-> Pokud budete mít zablokovaný přístup k *168.63.129.1* pomocí brány firewall hosta, pak rozšíření nezdaří bez ohledu na to, výše uvedené.
+> Pokud budete mít zablokovaný přístup k *168.63.129.16* pomocí brány firewall hosta, pak rozšíření nezdaří bez ohledu na to, výše uvedené.
 
 Agenti jde použít jenom chcete stáhnout balíčky rozšíření a vykazování stavu. Například, pokud instalaci rozšíření je potřeba stáhnout skript z Githubu (Custom Script) nebo je nutné získat přístup ke službě Azure Storage (Azure Backup), pak další brány firewall nebo sítě zabezpečení musejí být otevřeny porty skupiny. Různá rozšíření mají různé požadavky, protože jsou aplikace samy. Pro rozšíření, které vyžadují přístup ke službě Azure Storage, můžete povolit přístup pomocí značky služeb Azure NSG pro [úložiště](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags).
 

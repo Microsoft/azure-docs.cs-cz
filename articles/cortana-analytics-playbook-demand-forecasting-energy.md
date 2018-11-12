@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/24/2016
 ms.author: garye
-ms.openlocfilehash: 43a75c31c0f094bdcb7008a39140226815bda163
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 3f45f062cabaf31a10f24b01583575f5066bdaaf
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49390291"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51231517"
 ---
 # <a name="cortana-intelligence-solution-template-playbook-for-demand-forecasting-of-energy"></a>Cortana Intelligence řešení šablony Playbook pro prognózování poptávky po energii
 ## <a name="executive-summary"></a>Shrnutí
@@ -43,7 +43,7 @@ Třetí části dokumentu se vztahuje **technickou implementaci** aspekt řešen
 
 Dokument navíc obsahuje referenční materiál, který vám umožní získat další znalosti domény a technologie.
 
-Je důležité si uvědomit, že neplánujeme zahrnují v tomto dokumentu hlubší vědecké zpracování dat, jejich matematické a technické aspekty. Tyto podrobnosti můžete najít v [dokumentace ke službě Azure ML](http://azure.microsoft.com/services/machine-learning/) a [blogy](http://blogs.microsoft.com/blog/tag/azure-machine-learning/).
+Je důležité si uvědomit, že neplánujeme zahrnují v tomto dokumentu hlubší vědecké zpracování dat, jejich matematické a technické aspekty. Tyto podrobnosti můžete najít v [dokumentace ke službě Azure ML](https://azure.microsoft.com/services/machine-learning/) a [blogy](https://blogs.microsoft.com/blog/tag/azure-machine-learning/).
 
 ### <a name="target-audience"></a>Cílová skupina
 Cílová skupina pro tento dokument se obchodní a technické pracovníky, kteří by chtěli získat znalosti, a porozumění strojového učení na základě řešeními a jak jsou použity konkrétně v rámci domény Prognózování energie.
@@ -176,7 +176,7 @@ Základní vzorce pro výpočet finanční výhody vyžádání prognózy řeše
 
 Protože Cortana Intelligence Suite poskytuje cenového modelu s průběžnými platbami, není nutné pro něj hradit fixní částku součásti na tento vzorec. Tento vzorec může vypočítat každý den, měsíční nebo roční.
 
-Aktuální Cortana Intelligence Suite a Azure ML cenových plánech najdete [tady](http://azure.microsoft.com/pricing/details/machine-learning/).
+Aktuální Cortana Intelligence Suite a Azure ML cenových plánech najdete [tady](https://azure.microsoft.com/pricing/details/machine-learning/).
 
 ### <a name="solution-development-process"></a>Proces vývoje řešení
 Vývojový cyklus poptávku po energii prognóz řešení obvykle zahrnuje 4 fází, které bychom použít cloudové technologie a služby v sadě Cortana Intelligence Suite.
@@ -187,7 +187,7 @@ To je znázorněno v následujícím diagramu:
 
 Následující odstavce popisuje tento proces krok 4:
 
-1. **Shromažďování dat** – všechny pokročilé řešení pro analýzu na základě závisí na datech (naleznete v tématu **pochopení dat**). Konkrétně pokud jde o prediktivní analýzy a prognózy, spoléháme na probíhající, dynamické tok dat. V případě energie Prognózování poptávky, tato data můžete použít jako zdroj přímo z inteligentních měřičů, nebo již agregovat v databázi v místním prostředí. Spoléháme se také na dalších externích zdrojů dat, třeba o počasí a teploty. Tento probíhající tok dat nutné orchestrované, naplánovat a uložit. [Azure Data Factory](http://azure.microsoft.com/services/data-factory/) (ADF) je náš hlavní centrem k provedení této úlohy.
+1. **Shromažďování dat** – všechny pokročilé řešení pro analýzu na základě závisí na datech (naleznete v tématu **pochopení dat**). Konkrétně pokud jde o prediktivní analýzy a prognózy, spoléháme na probíhající, dynamické tok dat. V případě energie Prognózování poptávky, tato data můžete použít jako zdroj přímo z inteligentních měřičů, nebo již agregovat v databázi v místním prostředí. Spoléháme se také na dalších externích zdrojů dat, třeba o počasí a teploty. Tento probíhající tok dat nutné orchestrované, naplánovat a uložit. [Azure Data Factory](https://azure.microsoft.com/services/data-factory/) (ADF) je náš hlavní centrem k provedení této úlohy.
 2. **Modelování** – pro prognózy přesným a spolehlivým energie, jeden musí vývoj (regrese) a skvělé modelu, který umožňuje použít historických dat a extrahuje smysluplné a prediktivní vzory v datech udržovat. V oblasti nástroje Machine Learning (ML) se rychle rozrůstá pokročilé algoritmy pravidelně vyvíjených. Azure ML Studio poskytuje skvělé uživatelské prostředí, které pomáhá využívat nejpokročilejší algoritmů ML v úplný pracovní postup. Tento pracovní postup je znázorněn v intuitivním vývojový diagram a zahrnuje přípravy dat, funkce extrakce, modelování a vyhodnocení modelu. Uživatel pracovat stovky různých modelů, které jsou zahrnuty v tomto prostředí. Na konci této fáze mezi odborníky přes data budou mít funkční modelu, který plně Vyhodnocená a připravený k nasazení.
    
    Následující diagram není moc ilustraci obvyklý pracovní postup:
@@ -387,7 +387,7 @@ Toto jsou kroky, které se provedou v rámci cyklu prognózy poptávky energie:
 7. Předpokládané data uložená v databázi, který je přístupný koncový spotřeby klienta.
 8. Využití klienta načte předpovědí, použije ji zpět do mřížky a využívá v souladu s případ vyžaduje použití.
 
-Je důležité si uvědomit, že tento celý cyklus je plně automatizovaná a spouští podle plánu. Celý Orchestrace tento cyklus dat můžete udělat pomocí nástrojů, jako [Azure Data Factory](http://azure.microsoft.com/services/data-factory/).
+Je důležité si uvědomit, že tento celý cyklus je plně automatizovaná a spouští podle plánu. Celý Orchestrace tento cyklus dat můžete udělat pomocí nástrojů, jako [Azure Data Factory](https://azure.microsoft.com/services/data-factory/).
 
 ### <a name="end-to-end-deployment-architecture"></a>Architektura komplexní nasazení
 Aby bylo možné prakticky nasadit řešení prognózy poptávky energie v Cortana Intelligence, musíme Ujistěte se, že požadované součásti jsou vytvářena a správně nakonfigurovaný.

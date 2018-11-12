@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 06/01/2017
 ms.author: danlep
-ms.openlocfilehash: 4a6327fcfe6f6e6f3b8b5c6ecbd14b832b4134c5
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: f5b8d3aa69d6a141394395f012e5cc57873cafaf
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39421208"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235929"
 ---
 # <a name="get-started-running-excel-and-soa-workloads-on-an-hpc-pack-cluster-in-azure"></a>Začínáme se spouštěním úloh Excelu a SOA v clusteru HPC Pack v Azure
 Tento článek ukazuje, jak nasadit cluster Microsoft HPC Pack 2012 R2 na virtuálních počítačích Azure s použitím šablony Azure pro rychlý start, nebo volitelně nasazení skriptu Azure Powershellu. Cluster využívá určený ke spouštění úloh architektura orientovaná na služby (SOA) nebo Microsoft Excel pomocí sady HPC Pack Image virtuálního počítače Azure Marketplace. Můžete spustit HPC aplikace Excel a SOA služby z klientských počítačů v místním clusteru. Služby HPC pro Excel zahrnují snižování zátěže sešitu aplikace Excel a uživatelsky definovaných funkcí aplikace Excel nebo UDF.
@@ -225,7 +225,7 @@ Použijte následující postup snižování zátěže sešitu aplikace Excel, t
         </startup>
     </configuration>
     ```
-1. Nastavení klienta a odesílat úlohy do clusteru HPC Pack. Jednou z možností je stažení kompletní [HPC Pack 2012 R2 Update 3 instalační](http://www.microsoft.com/download/details.aspx?id=49922) a instalace sady HPC Pack klienta. Můžete také stáhnout a nainstalovat [HPC Pack 2012 R2 Update 3 klientské nástroje](https://www.microsoft.com/download/details.aspx?id=49923) a odpovídající Visual C++ 2010 redistributable pro počítače ([x64](http://www.microsoft.com/download/details.aspx?id=14632), [x86](https://www.microsoft.com/download/details.aspx?id=5555) ).
+1. Nastavení klienta a odesílat úlohy do clusteru HPC Pack. Jednou z možností je stažení kompletní [HPC Pack 2012 R2 Update 3 instalační](https://www.microsoft.com/download/details.aspx?id=49922) a instalace sady HPC Pack klienta. Můžete také stáhnout a nainstalovat [HPC Pack 2012 R2 Update 3 klientské nástroje](https://www.microsoft.com/download/details.aspx?id=49923) a odpovídající Visual C++ 2010 redistributable pro počítače ([x64](https://www.microsoft.com/download/details.aspx?id=14632), [x86](https://www.microsoft.com/download/details.aspx?id=5555) ).
 1. V tomto příkladu používáme ukázkového sešitu aplikace Excel s názvem ConvertiblePricing_Complete.xlsb. Můžete ji stáhnout [tady](https://www.microsoft.com/en-us/download/details.aspx?id=2939).
 1. Pracovní složky, jako je například D:\Excel\Run zkopírujte Excelový sešit.
 1. Otevřete Excelový sešit. Na **vývoj** pásu karet, klikněte na tlačítko **doplňky modelu COM** a potvrďte, že doplněk HPC Pack Excel COM byla úspěšně zavedena.
@@ -262,7 +262,7 @@ Ke spuštění souborů UDF Excelu, postupujte podle předchozích kroků 1 – 
 > 
 > 
 
-Po úspěšném nasazení clusteru pokračovat tyto kroky a spusťte ukázku integrovaných UDF Excelu. Pro vlastní souborů UDF Excelu, informace najdete v těchto [prostředky](http://social.technet.microsoft.com/wiki/contents/articles/1198.windows-hpc-and-microsoft-excel-resources-for-building-cluster-ready-workbooks.aspx) sestavení XLL a jejich nasazení v clusteru IaaS.
+Po úspěšném nasazení clusteru pokračovat tyto kroky a spusťte ukázku integrovaných UDF Excelu. Pro vlastní souborů UDF Excelu, informace najdete v těchto [prostředky](https://social.technet.microsoft.com/wiki/contents/articles/1198.windows-hpc-and-microsoft-excel-resources-for-building-cluster-ready-workbooks.aspx) sestavení XLL a jejich nasazení v clusteru IaaS.
 
 1. Otevřete nový Excelový sešit. Na **vývoj** pásu karet, klikněte na tlačítko **Add-Ins**. Klikněte v dialogovém okně **Procházet**, přejděte do složky %CCP_HOME%Bin\XLL32 a vybrat ukázku ClusterUDF32.xll. Pokud ClusterUDF32 neexistuje v klientském počítači, zkopírujte ho ve složce %CCP_HOME%Bin\XLL32 hlavního uzlu.
    
@@ -280,7 +280,7 @@ Po úspěšném nasazení clusteru pokračovat tyto kroky a spusťte ukázku int
 Pokud chcete spustit obecné aplikace SOA v clusteru IaaS sady HPC Pack, nejprve pomocí jedné z metod v kroku 1 k nasazení clusteru. Zadejte obecný výpočetní uzel bitové kopie v tomto případě, protože není nutné aplikaci Excel na výpočetních uzlech. Pak postupujte podle těchto kroků.
 
 1. Po načtení certifikátu clusteru, importujte ho na klientském počítači v části Cert: \CurrentUser\Root.
-1. Nainstalujte [HPC Pack 2012 R2 Update 3 SDK](http://www.microsoft.com/download/details.aspx?id=49921) a [HPC Pack 2012 R2 Update 3 klientské nástroje](https://www.microsoft.com/download/details.aspx?id=49923). Tyto nástroje umožňují vyvíjet a spouštět SOA klientské aplikace.
+1. Nainstalujte [HPC Pack 2012 R2 Update 3 SDK](https://www.microsoft.com/download/details.aspx?id=49921) a [HPC Pack 2012 R2 Update 3 klientské nástroje](https://www.microsoft.com/download/details.aspx?id=49923). Tyto nástroje umožňují vyvíjet a spouštět SOA klientské aplikace.
 1. Stáhněte si HelloWorldR2 [ukázkový kód](https://www.microsoft.com/download/details.aspx?id=41633). Otevřete HelloWorldR2.sln v sadě Visual Studio 2010 nebo 2012. (Tento příklad není momentálně kompatibilní s novější verzí sady Visual Studio.)
 1. Nejdřív sestavte projekt EchoService. Potom nasaďte služby do clusteru IaaS stejným způsobem, který nasazujete na místní cluster. Podrobné pokyny najdete v článku Readme.doc v HelloWordR2. Upravit a vytvořit HellWorldR2 a jiné projekty, jak je popsáno v následující části generovat klientské aplikace SOA, které běží v clusteru služby Azure IaaS.
 
@@ -343,7 +343,7 @@ Konfigurace použití NetTcp vazby, je podobné propojení místního clusteru. 
 Klientská aplikace SOA nevyžaduje žádné změny, s výjimkou změnit hlavní název pro IaaS úplný název clusteru.
 
 ## <a name="next-steps"></a>Další postup
-* Zobrazit [tyto prostředky](http://social.technet.microsoft.com/wiki/contents/articles/1198.windows-hpc-and-microsoft-excel-resources-for-building-cluster-ready-workbooks.aspx) Další informace o spouštění úloh aplikace Excel pomocí sady HPC Pack.
+* Zobrazit [tyto prostředky](https://social.technet.microsoft.com/wiki/contents/articles/1198.windows-hpc-and-microsoft-excel-resources-for-building-cluster-ready-workbooks.aspx) Další informace o spouštění úloh aplikace Excel pomocí sady HPC Pack.
 * Zobrazit [Správa služby SOA v Microsoft HPC Pack](https://technet.microsoft.com/library/ff919412.aspx) Další informace o nasazení a správu služeb SOA se sadou HPC Pack.
 
 <!--Image references-->

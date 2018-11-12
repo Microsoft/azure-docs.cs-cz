@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/05/2018
-ms.openlocfilehash: 3aca6e29f7701a09fa54e778da180a0ead55deb2
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 253a50f50e94888a5d764e51a4ff49cc0c1424c6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50240728"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51253529"
 ---
 # <a name="deploy-a-split-merge-service-to-move-data-between-sharded-databases"></a>Nasazení služby dělení a slučování pro přesun dat mezi horizontálně dělené databáze
 
@@ -63,7 +63,7 @@ Podrobné pokyny ke konfiguraci zabezpečení služby, najdete [konfigurace zabe
 Pro účely jednoduchá testovací nasazení pro účely tohoto kurzu minimální sadu kroků konfigurace bude provedena zprovoznit službu a spuštěné. Tyto kroky aktivují pouze na jeden počítač/účet spouštějící, aby mohla komunikovat se službou.
 
 ### <a name="create-a-self-signed-certificate"></a>Vytvořit certifikát podepsaný svým držitelem (self-signed certificate)
-Vytvořte nový adresář a z tohoto adresáře spusťte následující příkaz using [Developer Command Prompt pro sadu Visual Studio](http://msdn.microsoft.com/library/ms229859.aspx) okno:
+Vytvořte nový adresář a z tohoto adresáře spusťte následující příkaz using [Developer Command Prompt pro sadu Visual Studio](https://msdn.microsoft.com/library/ms229859.aspx) okno:
 
    ```
     makecert ^

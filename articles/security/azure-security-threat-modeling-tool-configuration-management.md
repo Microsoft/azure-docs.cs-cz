@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 07a86345e49081320663d7706310a71a40ace134
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: fe6251f70ae62440bbbefc8c3aa5d92d934d8ba0
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43302103"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51249349"
 ---
 # <a name="security-frame-configuration-management--mitigations"></a>Zabezpečení Frame: Správa konfigurace | Zmírnění rizik 
 | Produkt nebo službu | Článek |
@@ -210,7 +210,7 @@ Poznámka: tuto funkci žádost o ověření není podporován a není součást
 | **SDL fáze**               | Sestavení |  
 | **Použitelných technologiích** | Obecné |
 | **Atributy**              | neuvedeno  |
-| **Odkazy**              | [Zabezpečení část aplikaci Internet Explorer 8 V: komplexní ochranu](http://blogs.msdn.com/ie/archive/2008/07/02/ie8-security-part-v-comprehensive-protection.aspx), [typ MIME](http://en.wikipedia.org/wiki/Mime_type) |
+| **Odkazy**              | [Zabezpečení část aplikaci Internet Explorer 8 V: komplexní ochranu](https://blogs.msdn.com/ie/archive/2008/07/02/ie8-security-part-v-comprehensive-protection.aspx), [typ MIME](http://en.wikipedia.org/wiki/Mime_type) |
 | **Kroky** | Hlavička X-Content-typ-Options se hlavičky protokolu HTTP, který umožňuje vývojářům určit, že jejich obsahu by neměly být MIME zachycení. Tato hlavička slouží ke zmírnění útoků MIME pro analýzu sítě. Pro každou stránku, který může obsahovat uživatele řídit obsah, je nutné použít záhlaví HTTP X-obsah-typ-možnosti: nosniff. Pokud chcete povolit požadované záhlaví globálně pro všechny stránky v aplikaci, můžete provést jednu z následujících akcí|
 
 ### <a name="example"></a>Příklad:

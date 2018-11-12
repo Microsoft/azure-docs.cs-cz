@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/03/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: c0045af02b307bff686d47dd8fc4aabb290711a4
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: dadff0dc501c20ef525fdfb7578cb391f29b3302
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49400194"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51264209"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Nejčastější dotazy týkající se disky virtuálního počítače Azure IaaS a spravovaných a nespravovaných prémiové disky
 
@@ -292,7 +292,7 @@ Neexistuje žádné nevýhodou použití operace TRIM na Azure disks na premium 
 
 **Co je největší velikost disku spravované podporováno pro operační systém a datové disky?**
 
-Typ oddílu, které Azure podporuje pro disk s operačním systémem je hlavní spouštěcí záznam (MBR). Formát hlavního spouštěcího záznamu podporuje velikost disku až 2 TB. Největší velikost, které Azure podporuje pro disk s operačním systémem je 2 TB. Azure podporuje až 32 TB pro spravované datové disky. Spravované disky o velikosti větší než 4 TB jsou ve verzi preview. Další informace o nich najdete v našich [blogový příspěvek](http://aka.ms/azure-large-disk-32TB-preview-blog).
+Typ oddílu, které Azure podporuje pro disk s operačním systémem je hlavní spouštěcí záznam (MBR). Formát hlavního spouštěcího záznamu podporuje velikost disku až 2 TB. Největší velikost, které Azure podporuje pro disk s operačním systémem je 2 TB. Azure podporuje až 32 TB pro spravované datové disky. Spravované disky o velikosti větší než 4 TB jsou ve verzi preview. Další informace o nich najdete v našich [blogový příspěvek](https://aka.ms/azure-large-disk-32TB-preview-blog).
 
 **Co je největší velikost nespravovaného disku podporované pro operační systém a datové disky?**
 
@@ -309,7 +309,7 @@ Nemusíte upgradovat svoje stávající nástroje Azure k vytvoření, připojen
 |Nástroje Azure      | Podporované verze                                |
 |-----------------|---------------------------------------------------|
 |Azure PowerShell | Číslo verze 4.1.0: verzi z června 2017 nebo novější|
-|Azure CLI verze 1     | Číslo verze 0.10.13: uvolněte. května 2017 nebo novější|
+|Azure CLI verze 1     | Číslo verze 0.10.13: uvolněte. května 2017 nebo novější|
 |Azure CLI verze 2     | Číslo verze 2.0.12: verzi z července 2017 nebo novější|
 |AzCopy           | Číslo verze 6.1.0: verzi z června 2017 nebo novější|
 

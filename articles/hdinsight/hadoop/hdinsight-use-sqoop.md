@@ -3,18 +3,18 @@ title: Spouštět úlohy Apache Sqoop s Azure HDInsight (Hadoop)
 description: Zjistěte, jak pomocí Azure Powershellu z pracovní stanice Sqoop import a export mezi clusterem Hadoop a službě Azure SQL database.
 ms.reviewer: jasonh
 services: hdinsight
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.openlocfilehash: 7834c6365753e290c7d9e232f716e4b1d39f3db5
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 85753376e33f5392be06f7d3ea89a04367e3c9ab
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43042570"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51009857"
 ---
 # <a name="use-sqoop-with-hadoop-in-hdinsight"></a>Použití nástroje Sqoop se systémem Hadoop v HDInsight
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
@@ -27,7 +27,7 @@ Přestože Hadoop je přirozenou volbou pro zpracování nestrukturovaných a č
 
 Sqoop verze, které jsou podporovány v clusterech HDInsight najdete v tématu [co je nového ve verzích clusterů poskytovaných službou HDInsight?][hdinsight-versions]
 
-## <a name="understand-the-scenario"></a>Pochopení scénáře
+## <a name="understand-the-scenario"></a>Vysvětlení scénáře
 
 HDInsight cluster se dodává s ukázkovými daty. Můžete použít následující dvě ukázky:
 

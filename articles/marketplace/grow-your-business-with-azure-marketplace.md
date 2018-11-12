@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 07/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 6c2f20f74ce90f2876ff4040d34a2ede94c92fb1
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: d193cfcd03eb4e686ba829e121fbf77e2e0c18a6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39577321"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51233010"
 ---
 # <a name="grow-your-business-in-the-marketplace"></a>Rozvíjejte své podnikání na Marketplace 
 Po publikování vaší nabídky na AppSource nebo na webu Azure Marketplace, můžete použít svůj výpis jako hlavní panel pro společné aktivity uvedení na trh (GTM) s Microsoftem. Řízení provozu do vaší nabídky na webu Marketplace a péči o zákazníky Marketplace potenciálních zákazníků, třeba jsou skvělé způsoby, jak posílit firemní růst. 
@@ -229,7 +229,7 @@ Propagace vaší aplikace nebo nabídky a přístup k více výhodách a prostř
 
 | Výhody | Zdroje a prostředky |
 |:--- |:--- |
-| Využijte své výhody Core | V rámci programu Microsoft Partner Network získáte základní výhody, které dokáže šetřit čas i peníze. Výhody také umožní posílit vaše dovednosti, lépe zákazníků a navazovat kontakty kontaktovat potenciální podnikání.<br>Další informace o základní výhody [základní výhody a požadavky](http://partner.microsoft.com/membership/core-benefits). |
+| Využijte své výhody Core | V rámci programu Microsoft Partner Network získáte základní výhody, které dokáže šetřit čas i peníze. Výhody také umožní posílit vaše dovednosti, lépe zákazníků a navazovat kontakty kontaktovat potenciální podnikání.<br>Další informace o základní výhody [základní výhody a požadavky](https://partner.microsoft.com/membership/core-benefits). |
 | Získejte kompetenci pro Cloudovou platformu | Získávat kompetencí umožňuje odlišíte se mezi ostatními partnery Microsoftu. Získávat kompetencí vám také pomůže ukazují technické znalosti a úspěchy zákazníků na trhu. S kompetencí je předpokladem pro mnoho klíčový partner programů, jako je například společný prodej.<br> Další informace o kompetenci pro Cloudovou platformu [kompetenci pro Cloudovou platformu](https://partner.microsoft.com/membership/cloud-platform-competency). |
 | Budou připravené společný prodej IP | Můžete mít nárok na IP společný prodej připravené programu, který umožňuje spolupracovat přímo s prodejci Microsoftu a dalšími partnery na cíl zákaznických příležitostí a plánování účtu. Vaše řešení, stane se viditelným pro prodejci Microsoftu v katalogu řešení prodejce. Prodejci Microsoftu jsou nízkou pro spolupráci a winning s vámi.<br> Další informace o programu společného prodeje připravený, včetně požadavky zakládající nárok, [podporovat vaše firma](https://partner.microsoft.com/reach-customers/promote-your-business). |
 

@@ -16,15 +16,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
-ms.openlocfilehash: b1ffc80994244fc44e3cd23cbb05b14e6f878ddb
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 1a64e40b13b05fc7f9fdb6f5aa99c8d8cc47c471
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43125798"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51251606"
 ---
 # <a name="troubleshoot-http-errors-of-502-bad-gateway-and-503-service-unavailable-in-your-azure-web-apps"></a>Řešení potíží s chybami HTTP typu "502 – Chybná brána" a "503 Služba není dostupná" ve službě Azure web apps
-"502 – Chybná brána" a "503 Služba není k dispozici" jsou běžné chyby ve webové aplikaci hostované v [služby Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714). Tento článek pomůže při řešení těchto chyb.
+"502 – Chybná brána" a "503 Služba není k dispozici" jsou běžné chyby ve webové aplikaci hostované v [služby Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). Tento článek pomůže při řešení těchto chyb.
 
 Pokud potřebujete další nápovědu v libovolném bodě v tomto článku, můžete se obrátit odborníků na Azure na [MSDN Azure a Stack Overflow fóra](https://azure.microsoft.com/support/forums/). Alternativně můžete také soubor incidentu podpory Azure. Přejděte [web podpory Azure](https://azure.microsoft.com/support/options/) a klikněte na **získat podporu**.
 

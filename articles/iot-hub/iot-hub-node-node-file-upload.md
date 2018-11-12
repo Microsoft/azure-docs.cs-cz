@@ -9,12 +9,12 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 06/28/2017
 ms.author: dobett
-ms.openlocfilehash: 936063e1419d5e2261033ea74d75687eade928e8
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 12ff4fef5e04819e967a39fe65845b89790e22d6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39187314"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51234441"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub"></a>Nahrání souborů ze zařízení do cloudu pomocí služby IoT Hub
 
@@ -45,7 +45,7 @@ Na konci tohoto kurzu spustíte dvě konzolové aplikace Node.js:
 Pro absolvování tohoto kurzu potřebujete:
 
 * Node.js verze 4.0.x nebo novější.
-* Aktivní účet Azure. (Pokud účet nemáte, můžete vytvořit [bezplatný účet](http://azure.microsoft.com/pricing/free-trial/) během několika minut.)
+* Aktivní účet Azure. (Pokud účet nemáte, můžete vytvořit [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/) během několika minut.)
 
 [!INCLUDE [iot-hub-associate-storage](../../includes/iot-hub-associate-storage.md)]
 

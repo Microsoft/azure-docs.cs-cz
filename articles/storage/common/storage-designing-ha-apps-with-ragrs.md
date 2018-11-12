@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 03/21/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: afcda23faf4e9f0999442fa91d3c016e446c04db
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 718a8fb82c3d85baf94e2e9c316f40b964749912
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39524538"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51231359"
 ---
 # <a name="designing-highly-available-applications-using-ra-grs"></a>Navrhování aplikací s vysokou dostupností pomocí RA-GRS
 
@@ -149,7 +149,7 @@ Dalším aspektem je způsob zpracování více instancí aplikace a co dělat, 
 
 Budete mít tři hlavní možnosti monitorování četnost opakování v primární oblasti, aby bylo možné zjistit, kdy se má přejít do sekundární oblasti a změňte aplikace na spouštění v režimu jen pro čtení.
 
-*   Přidání obslužné rutiny [ **opakování** ](http://msdn.microsoft.com/library/microsoft.windowsazure.storage.operationcontext.retrying.aspx) událostí na [ **OperationContext** ](http://msdn.microsoft.com/library/microsoft.windowsazure.storage.operationcontext.aspx) požaduje objekt posílají do úložiště – metoda zobrazí v tomto článku a používá se v průvodní ukázce. Tyto události se aktivuje vždy, když klient pokus obnovuje žádost, vám umožní sledovat, jak často klient zaznamená opakovatelná chyby na primární koncový bod.
+*   Přidání obslužné rutiny [ **opakování** ](https://msdn.microsoft.com/library/microsoft.windowsazure.storage.operationcontext.retrying.aspx) událostí na [ **OperationContext** ](https://msdn.microsoft.com/library/microsoft.windowsazure.storage.operationcontext.aspx) požaduje objekt posílají do úložiště – metoda zobrazí v tomto článku a používá se v průvodní ukázce. Tyto události se aktivuje vždy, když klient pokus obnovuje žádost, vám umožní sledovat, jak často klient zaznamená opakovatelná chyby na primární koncový bod.
 
     ```csharp 
     operationContext.Retrying += (sender, arguments) =>
@@ -160,7 +160,7 @@ Budete mít tři hlavní možnosti monitorování četnost opakování v primár
     };
     ```
 
-*   V [ **vyhodnotit** ](http://msdn.microsoft.com/library/microsoft.windowsazure.storage.retrypolicies.iextendedretrypolicy.evaluate.aspx) metoda ve vlastní zásady opakování, můžete spustit vlastní kód pokaždé, když probíhá opakování. Kromě zápisu při opakování proběhne, tím také získáte možnost změnit chování opakování.
+*   V [ **vyhodnotit** ](https://msdn.microsoft.com/library/microsoft.windowsazure.storage.retrypolicies.iextendedretrypolicy.evaluate.aspx) metoda ve vlastní zásady opakování, můžete spustit vlastní kód pokaždé, když probíhá opakování. Kromě zápisu při opakování proběhne, tím také získáte možnost změnit chování opakování.
 
     ```csharp 
     public RetryInfo Evaluate(RetryContext retryContext,

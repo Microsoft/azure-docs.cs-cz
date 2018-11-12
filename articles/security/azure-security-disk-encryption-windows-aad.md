@@ -7,12 +7,12 @@ ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
 ms.date: 10/04/2018
-ms.openlocfilehash: 8439998e0919dd22665e3e4d4e9c0e04f0703056
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: abbf47c6671b1f2fa1bc0a764de2deb159939046
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49310755"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51252170"
 ---
 #  <a name="enable-azure-disk-encryption-for-windows-iaas-vms-previous-release"></a>Povolit Disk Encryption pro Windows virtuálních počítačů Azure IaaS (předchozí verze)
 
@@ -76,7 +76,7 @@ V tomto scénáři můžete povolit šifrování pomocí šablony, rutin prostř
 >
 
 ### <a name="bkmk_RunningWinVMPSH"></a> Povoluje šifrování na existující nebo spouštění virtuálních počítačů pomocí Azure Powershellu 
-Použití [Set-AzureRmVMDiskEncryptionExtension](/powershell/module/azurerm.compute/set-azurermvmdiskencryptionextension) rutina pro povolení šifrování u spuštěného virtuálního počítače IaaS v Azure. Informace o povolení šifrování v Azure Disk Encryption pomocí rutin prostředí PowerShell najdete v tématu v příspěvcích na blogu [prozkoumání Azure Disk Encryption pomocí Azure Powershellu – část 1](http://blogs.msdn.com/b/azuresecurity/archive/2015/11/17/explore-azure-disk-encryption-with-azure-powershell.aspx) a [prozkoumání Azure Disk Encryption pomocí Azure Powershellu – část 2](http://blogs.msdn.com/b/azuresecurity/archive/2015/11/21/explore-azure-disk-encryption-with-azure-powershell-part-2.aspx).
+Použití [Set-AzureRmVMDiskEncryptionExtension](/powershell/module/azurerm.compute/set-azurermvmdiskencryptionextension) rutina pro povolení šifrování u spuštěného virtuálního počítače IaaS v Azure. Informace o povolení šifrování v Azure Disk Encryption pomocí rutin prostředí PowerShell najdete v tématu v příspěvcích na blogu [prozkoumání Azure Disk Encryption pomocí Azure Powershellu – část 1](https://blogs.msdn.com/b/azuresecurity/archive/2015/11/17/explore-azure-disk-encryption-with-azure-powershell.aspx) a [prozkoumání Azure Disk Encryption pomocí Azure Powershellu – část 2](https://blogs.msdn.com/b/azuresecurity/archive/2015/11/21/explore-azure-disk-encryption-with-azure-powershell-part-2.aspx).
 
 -  **Šifrování spuštěného virtuálního počítače pomocí tajného klíče klienta:** níže uvedený skript inicializuje proměnných a spustí rutinu Set-AzureRmVMDiskEncryptionExtension. Skupina prostředků, virtuální počítač, trezor klíčů, aplikace AAD a tajný kód klienta by měl již byly vytvořeny jako požadavky. Nahraďte hodnoty MySecureRg MySecureVM, MySecureVault, My-AAD-client-ID a My-AAD-client-secret.
      ```azurepowershell-interactive

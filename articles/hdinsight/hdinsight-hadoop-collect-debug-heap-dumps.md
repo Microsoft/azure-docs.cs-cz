@@ -1,25 +1,25 @@
 ---
-title: Ladění a analýza služby Hadoop s výpisů paměti haldy – Azure
-description: Automatické shromažďování výpisů paměti haldy pro služby Hadoop a umístíte text do účtu úložiště objektů Blob v Azure pro ladění a analýzu.
+title: Ladění a analýza služby Apache Hadoop s výpisů paměti haldy – Azure
+description: Automatické shromažďování výpisů paměti haldy pro služby Apache Hadoop a umístíte text do účtu úložiště objektů Blob v Azure pro ladění a analýzu.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/25/2017
-ms.author: jasonh
+ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 35f7843ebf49e79d9045c72493bb38b218234288
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 2a399899c93addf966d3f2ec0e36d4b1c76b686f
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43099763"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51038303"
 ---
-# <a name="collect-heap-dumps-in-blob-storage-to-debug-and-analyze-hadoop-services"></a>Shromažďování výpisů haldy v úložišti objektů Blob pro ladění a analýza služby Hadoop
+# <a name="collect-heap-dumps-in-blob-storage-to-debug-and-analyze-apache-hadoop-services"></a>Shromažďování výpisů haldy v úložišti objektů Blob pro ladění a analýza služby Apache Hadoop
 [!INCLUDE [heapdump-selector](../../includes/hdinsight-selector-heap-dump.md)]
 
-Výpisů paměti haldy obsahují snímek paměti aplikace, včetně hodnot proměnných v době, kdy byl vytvořen výpis paměti. Takže se hodí pro diagnostiku problémů, ke kterým dochází za běhu. Výpisů paměti haldy můžete automaticky shromážděna pro služby Hadoop a umístit do účtu úložiště objektů Blob v Azure uživatele v rámci HDInsightHeapDumps /.
+Výpisů paměti haldy obsahují snímek paměti aplikace, včetně hodnot proměnných v době, kdy byl vytvořen výpis paměti. Takže se hodí pro diagnostiku problémů, ke kterým dochází za běhu. Výpisů paměti haldy můžete automaticky shromážděna pro služby Apache Hadoop a umístit do účtu úložiště objektů Blob v Azure uživatele v rámci HDInsightHeapDumps /.
 
 Shromažďování výpisů paměti haldy pro různé služby musí být povolena pro služby v jednotlivých clusterech. Výchozí hodnota pro tuto funkci je možné vypnout pro cluster. Tyto výpisů paměti haldy můžou být velké, proto se doporučuje pro monitorování účtu služby Blob storage, kde se uloží po kolekce se povolila.
 
@@ -30,11 +30,11 @@ Shromažďování výpisů paměti haldy pro různé služby musí být povolena
 ## <a name="eligible-services-for-heap-dumps"></a>Opravňující služby pro výpisů paměti haldy
 Můžete povolit výpisů paměti haldy pro následující služby:
 
-* **hcatalog** -tempelton
-* **Hive** -hiveserver2, metastore, derbyserver
+* **Apache hcatalog** -tempelton
+* **Apache hive** -hiveserver2, metastore, derbyserver
 * **mapreduce** -jobhistoryserver
-* **yarn** – správce prostředků, nodemanager, timelineserver
-* **hdfs** -datanode secondarynamenode, namenode
+* **Apache yarn** – správce prostředků, nodemanager, timelineserver
+* **Apache hdfs** -datanode secondarynamenode, namenode
 
 ## <a name="configuration-elements-that-enable-heap-dumps"></a>Konfigurační prvky, které povolení výpisů paměti haldy
 Zapnutí výpisů paměti haldy pro služby, je nutné nastavit odpovídající konfigurační prvky v části pro tuto službu, která je určená **service_name**.

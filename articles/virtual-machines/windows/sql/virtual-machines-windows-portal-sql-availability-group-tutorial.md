@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/30/2018
 ms.author: mikeray
-ms.openlocfilehash: 7dbbfb2d97b7015118edca3db3ae050ad07c51ee
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 42a4ea1e4dc352e56fbd65f69c9ed71e3b0c1038
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43667443"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238071"
 ---
 # <a name="configure-always-on-availability-group-in-azure-vm-manually"></a>Konfigurace skupiny dostupnosti Always On na virtuálním počítači Azure ručně
 
@@ -35,7 +35,7 @@ Diagram znázorňuje, co vytvoříte v tomto kurzu.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Kurz předpokládá, že máte základní znalosti o SQL serveru skupin dostupnosti Always On. Pokud potřebujete další informace, přečtěte si [přehled vždy na skupin dostupnosti (SQL Server)](http://msdn.microsoft.com/library/ff877884.aspx).
+Kurz předpokládá, že máte základní znalosti o SQL serveru skupin dostupnosti Always On. Pokud potřebujete další informace, přečtěte si [přehled vždy na skupin dostupnosti (SQL Server)](https://msdn.microsoft.com/library/ff877884.aspx).
 
 V následující tabulce jsou uvedeny požadavky, které je potřeba dokončit před zahájením tohoto kurzu:
 
@@ -119,7 +119,7 @@ Přidáte do clusteru SQL serveru.
 
 ### <a name="add-a-cluster-quorum-file-share"></a>Přidání sdílené složky kvora clusteru
 
-V tomto příkladu Windows cluster používá sdílené složky k vytvoření kvora clusteru. Tento kurz používá většina uzlů a sdílených sdílené složky kvora. Další informace najdete v tématu [Principy konfigurací kvora v clusteru převzetí služeb při selhání](http://technet.microsoft.com/library/cc731739.aspx).
+V tomto příkladu Windows cluster používá sdílené složky k vytvoření kvora clusteru. Tento kurz používá většina uzlů a sdílených sdílené složky kvora. Další informace najdete v tématu [Principy konfigurací kvora v clusteru převzetí služeb při selhání](https://technet.microsoft.com/library/cc731739.aspx).
 
 1. Připojení k serveru soubor sdílenou složku s kopií clusteru člen pomocí relací vzdálené plochy.
 
@@ -168,7 +168,7 @@ Dále nastavte kvorum clusteru.
 1. Na **vybrat určující disk kvora**, klikněte na tlačítko **nakonfigurovat určující sdílenou složku souboru**.
 
    >[!TIP]
-   >Windows Server 2016 podporuje Cloudová kopie clusteru. Pokud se rozhodnete tento typ určující sdílené složky, není nutné soubor sdílet s kopií clusteru. Další informace najdete v tématu [nasazení cloudové kopie clusteru pro převzetí služeb při selhání clusteru](http://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness). Tento kurz používá určující sdílenou složku souboru, který není podporovaný ve starších operačních systémech.
+   >Windows Server 2016 podporuje Cloudová kopie clusteru. Pokud se rozhodnete tento typ určující sdílené složky, není nutné soubor sdílet s kopií clusteru. Další informace najdete v tématu [nasazení cloudové kopie clusteru pro převzetí služeb při selhání clusteru](https://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness). Tento kurz používá určující sdílenou složku souboru, který není podporovaný ve starších operačních systémech.
 
 1. Na **nakonfigurovat určující sdílenou složku**, zadejte cestu ke sdílené složce, které jste vytvořili. Klikněte na **Další**.
 
@@ -515,7 +515,7 @@ Chcete-li otestovat připojení:
 Připojení SQLCMD se automaticky připojí k libovolným instance systému SQL Server hostuje primární repliku.
 
 > [!TIP]
-> Ujistěte se, že je otevřen v bráně firewall oba servery SQL port, který zadáte. Oba servery vyžadují příchozí pravidlo pro port TCP, který používáte. Další informace najdete v tématu [přidat nebo upravit pravidlo brány Firewall](http://technet.microsoft.com/library/cc753558.aspx).
+> Ujistěte se, že je otevřen v bráně firewall oba servery SQL port, který zadáte. Oba servery vyžadují příchozí pravidlo pro port TCP, který používáte. Další informace najdete v tématu [přidat nebo upravit pravidlo brány Firewall](https://technet.microsoft.com/library/cc753558.aspx).
 
 ## <a name="next-steps"></a>Další postup
 

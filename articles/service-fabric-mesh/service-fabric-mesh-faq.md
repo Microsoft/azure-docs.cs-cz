@@ -9,12 +9,12 @@ ms.date: 06/25/2018
 ms.topic: troubleshooting
 ms.service: service-fabric-mesh
 manager: timlt
-ms.openlocfilehash: b32af29a123ce4d070e1bb68b5a43ba6d0d2c5e1
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
-ms.translationtype: HT
+ms.openlocfilehash: f80f61cbfc1f7b719e73d7d29c6948bebe84aa6c
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51218470"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51278306"
 ---
 # <a name="commonly-asked-service-fabric-mesh-questions"></a>Nejčastější dotazy služby prostředků infrastruktury sítě
 Azure Service Fabric Mesh je plně spravovaná služba, která vývojářům umožňuje nasazovat aplikace zajišťující mikroslužby, aniž by museli spravovat virtuální počítače, úložiště nebo sítě. Tento článek obsahuje odpovědi na nejčastější dotazy.
@@ -44,7 +44,7 @@ Ano, jsou kvóty pro každé předplatné nastavte následujícím způsobem:
 
 **Jak dlouho je můžete nechat nasazené pro Moje aplikace?**
 
-Právě jsme mají omezenou životnost aplikace do dvou dnů. Je to kvůli maximalizovat využití volných jader přidělené ve verzi Preview. V důsledku toho můžete jsou povolené jenom pro spuštění daného nasazení průběžně po dobu 48 hodin, po dobu se odstraní v systému. Pokud se to stát, můžete ověřit, že systém vypnout spuštěním `az mesh app show` v rozhraní příkazového řádku Azure a kontrolu příkaz vrátí-li `"status": "Failed", "statusDetails": "Stopped resource due to max lifetime policies for an application during preview. Delete the resource to continue."` 
+Právě jsme mají omezenou životnost aplikace do dvou dnů. Je to kvůli maximalizovat využití volných jader přidělené ve verzi Preview. V důsledku toho můžete jsou povolené jenom pro spuštění daného nasazení průběžně po dobu 48 hodin, po dobu jeho se vypne se systém. Pokud se to stát, můžete ověřit, že systém vypnout spuštěním `az mesh app show` v rozhraní příkazového řádku Azure a kontrolu příkaz vrátí-li `"status": "Failed", "statusDetails": "Stopped resource due to max lifetime policies for an application during preview. Delete the resource to continue."` 
 
 Příklad: 
 
@@ -71,6 +71,10 @@ chackdan@Azure:~$ az mesh app show --resource-group myResourceGroup --name hello
   "unhealthyEvaluation": null
 }
 ```
+
+Chcete-li pokračovat v nasazení stejné aplikace v síti, by měl odstranit skupinu prostředků, které jsou přidružené k aplikaci nebo jednotlivě odebrat aplikace a všech souvisejících prostředků OK (včetně sítě). 
+
+Chcete-li odstranit skupinu prostředků, použijte `az group delete <nameOfResourceGroup>` příkazu. 
 
 ## <a name="supported-container-os-images"></a>Image kontejnerů podporovaný operační systém
 Následující Image kontejneru operačních systémů lze použít při nasazování služby.

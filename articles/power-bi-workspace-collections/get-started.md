@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: powerbi
 ms.date: 09/25/2017
 ms.author: maghan
-ms.openlocfilehash: b565955abaae44efe20291a6e46b57a5fec941d1
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: c736a9b4962de26f43dc79773149e834c37cbe85
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43046554"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51233401"
 ---
 # <a name="get-started-with-microsoft-power-bi-workspace-collections"></a>Začínáme s kolekcemi Pracovních prostorů Microsoft Power BI
 
@@ -79,7 +79,7 @@ Po vytvoření vaší kolekce pracovních prostorů musíte vytvořit pracovní 
 
 ## <a name="create-power-bi-datasets-and-reports-to-embed-into-an-app-using-power-bi-desktop"></a>Vytváření datových sad a sestav Power BI určených pro vložení do aplikace pomocí Power BI Desktopu
 
-Nyní když jste pro svou aplikaci vytvořili instanci Power BI a máte **přístupové klíče**, musíte si vytvořit datové sady a sestavy Power BI, které do ní chcete vložit. Datové sady a sestavy lze vytvořit pomocí **Power BI Desktopu**. [Power BI Desktop si můžete stáhnout zdarma](https://go.microsoft.com/fwlink/?LinkId=521662). Nebo pokud chcete rychle začít, můžete si stáhnout [ukázkový soubor PBIX prodejní analýzy](http://go.microsoft.com/fwlink/?LinkID=780547).
+Nyní když jste pro svou aplikaci vytvořili instanci Power BI a máte **přístupové klíče**, musíte si vytvořit datové sady a sestavy Power BI, které do ní chcete vložit. Datové sady a sestavy lze vytvořit pomocí **Power BI Desktopu**. [Power BI Desktop si můžete stáhnout zdarma](https://go.microsoft.com/fwlink/?LinkId=521662). Nebo pokud chcete rychle začít, můžete si stáhnout [ukázkový soubor PBIX prodejní analýzy](https://go.microsoft.com/fwlink/?LinkID=780547).
 
 > [!NOTE]
 > Další informace o použití **Power BI Desktop** najdete v části [Začínáme s Power BI Desktop](https://powerbi.microsoft.com/guided-learning/powerbi-learning-0-2-get-started-power-bi-desktop).

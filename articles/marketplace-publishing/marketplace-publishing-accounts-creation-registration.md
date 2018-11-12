@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/04/2017
 ms.author: hascipio
-ms.openlocfilehash: 24dc50a6c78769877bdc07b9521a9d2e33837937
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 3b1d0a7476cff2be00aa44bb8b859261099298d8
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45579611"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51236683"
 ---
 # <a name="create-a-microsoft-developer-account"></a>Vytvoření účtu Microsoft Developer
 Tento článek vás provede vytváření nezbytné účtu a proces registrace schválené Microsoft Developer pro Azure Marketplace.
 
-## <a name="1-create-a-microsoft-account"></a>1. Vytvoření účtu Microsoft
+## <a name="1-create-a-microsoft-account"></a>1. Vytvořit účet Microsoft
 Chcete-li zahájit proces publikování, musíte vytvořit účet Microsoft. Tento účet se použije k registraci v obou **Microsoft Developer Center** a **portál publikování Azure**. Pro svoje nabídky na webu Azure Marketplace byste měli mít jenom jeden účet Microsoft. Neměl by být specifické pro služeb nebo nabídky.
 
 Adresa, která tvoří uživatelské jméno by měly být ve vaší doméně a řídit váš IT tým. Pomocí tohoto účtu se má počítat publikování souvisejících aktivit.
@@ -98,7 +98,7 @@ Microsoft Developer Center, se použije k registraci informací o společnosti j
     ![Kreslení](media/marketplace-publishing-accounts-creation-registration/imgRegisterCo_04.png)
 
    > [!WARNING]
-   > **"Zákazník z" zemí:** Pokud chcete prodávat vaše služby na Azure Marketplace, musí být z jedné ze schválených "prodej z" zemí výše registrované entity. Toto omezení je platební a daňové z důvodů. Těšíme se aktivně na tento seznam zemí, rozbalte v blízké budoucnosti, tak si Nenechte ujít. Další informace najdete v tématu [zásady účasti na webu Marketplace](http://go.microsoft.com/fwlink/?LinkID=526833).
+   > **"Zákazník z" zemí:** Pokud chcete prodávat vaše služby na Azure Marketplace, musí být z jedné ze schválených "prodej z" zemí výše registrované entity. Toto omezení je platební a daňové z důvodů. Těšíme se aktivně na tento seznam zemí, rozbalte v blízké budoucnosti, tak si Nenechte ujít. Další informace najdete v tématu [zásady účasti na webu Marketplace](https://go.microsoft.com/fwlink/?LinkID=526833).
    >
    >
 5. Vyberte typ"účet" jako **společnosti** a potom klikněte na tlačítko **Další** tlačítko.
@@ -127,7 +127,7 @@ Microsoft Developer Center, se použije k registraci informací o společnosti j
 9. Zadejte své platební údaje platí pro váš účet. Pokud máte propagační kód, které zahrnují náklady na registrace, zadejte, který tady. V opačném případě poskytnete informace o platební kartu (nebo PayPal v podporované trhy). Až budete hotovi, klikněte na tlačítko **Další** přesunout do **"Kontrola obrazovky"**.
 
     ![Kreslení](media/marketplace-publishing-accounts-creation-registration/imgRegisterCo_09.png)
-10. Projděte si informace o účtu a potvrďte, že je všechno správně. Potom, přečtěte si a přijměte podmínky a ujednání o [smlouvy vydavatele Microsoft Azure Marketplace](http://go.microsoft.com/fwlink/?LinkID=699560). Zaškrtněte políčko označující vám přečetli a přijali tyto podmínky.
+10. Projděte si informace o účtu a potvrďte, že je všechno správně. Potom, přečtěte si a přijměte podmínky a ujednání o [smlouvy vydavatele Microsoft Azure Marketplace](https://go.microsoft.com/fwlink/?LinkID=699560). Zaškrtněte políčko označující vám přečetli a přijali tyto podmínky.
 11. Klikněte na tlačítko **Dokončit** potvrďte svou registraci. Pošleme vám zprávu potvrzení e-mailovou adresu.
 12. Pokud máte v úmyslu publikovat pouze bezplatných nabídek, klikněte na tlačítko **přejděte na portál publikování Azure Marketplace** a můžete přeskočit k části 3 tohoto dokumentu [registraci účtu na portálu publikování](#3-register-your-account-in-the-publishing-portal).
 

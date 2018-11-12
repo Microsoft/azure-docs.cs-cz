@@ -1,4 +1,4 @@
-Pomocí fóra [User Voice](http://go.microsoft.com/fwlink/?linkid=698785&clcid=0x409) můžete poskytnout zpětnou vazbu a zaslat návrhy pro zlepšení služeb Azure Media Services. Můžete také přejít přímo na jednu z následujících kategorií:
+Pomocí fóra [User Voice](https://go.microsoft.com/fwlink/?linkid=698785&clcid=0x409) můžete poskytnout zpětnou vazbu a zaslat návrhy pro zlepšení služeb Azure Media Services. Můžete také přejít přímo na jednu z následujících kategorií:
 
 * [Přehrávač médií Azure](https://feedback.azure.com/forums/169396-media-services/category/109320-azure-media-player/)
 * [Klientské knihovny SDK](https://feedback.azure.com/forums/169396-media-services/category/144435-client-sdks/)

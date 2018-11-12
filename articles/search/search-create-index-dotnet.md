@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/22/2017
 ms.author: brjohnst
-ms.openlocfilehash: 7e7d1f8110d8470fe7596633563529f397c5551e
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: a1c9340acdc2521b9b74f47b0e17d0e4d37aea77
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31794748"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51236563"
 ---
 # <a name="create-an-azure-search-index-using-the-net-sdk"></a>Vytvoření indexu Azure Search pomocí sady .NET SDK
 > [!div class="op_single_selector"]
@@ -31,7 +31,7 @@ Tento článek vás provede procesem vytvoření [indexu](https://docs.microsoft
 Předtím, než podle těchto pokynů vytvoříte index, byste už měli mít [vytvořenou službu Azure Search](search-create-service-portal.md).
 
 > [!NOTE]
-> Ukázkový kód v tomto článku je napsán v jazyce C#. Úplný zdrojový kód najdete [na GitHubu](http://aka.ms/search-dotnet-howto). Můžete si také přečíst článek o sadě [Azure Search .NET SDK](search-howto-dotnet-sdk.md), který vás podrobněji provede ukázkovým kódem.
+> Ukázkový kód v tomto článku je napsán v jazyce C#. Úplný zdrojový kód najdete [na GitHubu](https://aka.ms/search-dotnet-howto). Můžete si také přečíst článek o sadě [Azure Search .NET SDK](search-howto-dotnet-sdk.md), který vás podrobněji provede ukázkovým kódem.
 
 
 ## <a name="identify-your-azure-search-services-admin-api-key"></a>Identifikace klíče rozhraní API správce služby Azure Search
@@ -53,7 +53,7 @@ Pro účely vytvoření indexu můžete použít primární nebo sekundární kl
 ## <a name="create-an-instance-of-the-searchserviceclient-class"></a>Vytvoření instance třídy SearchServiceClient
 Chcete-li začít používat sadu Azure Search .NET SDK, budete muset vytvořit instanci třídy `SearchServiceClient`. Tato třída obsahuje několik konstruktorů. Ten, který chcete, přijímá jako parametry název vaší vyhledávací služby a objekt `SearchCredentials`. `SearchCredentials` zabalí váš klíč api-key.
 
-Následující kód vytvoří novou instanci `SearchServiceClient` pomocí hodnot pro název vyhledávací služby a klíč api-key, které jsou uložené v konfiguračním souboru aplikace (v případě [ukázkové aplikace](http://aka.ms/search-dotnet-howto) `appsettings.json`):
+Následující kód vytvoří novou instanci `SearchServiceClient` pomocí hodnot pro název vyhledávací služby a klíč api-key, které jsou uložené v konfiguračním souboru aplikace (v případě [ukázkové aplikace](https://aka.ms/search-dotnet-howto) `appsettings.json`):
 
 ```csharp
 private static SearchServiceClient CreateSearchServiceClient(IConfigurationRoot configuration)

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/31/2016
 ms.author: mbullwin
-ms.openlocfilehash: e7e0f6747beea43b55ae1a20da44cde3c070cd89
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 678a31b8c07b21e4bb2c43b8e8bc286d66ee4bab
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47091368"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51233741"
 ---
 # <a name="use-powershell-to-set-alerts-in-application-insights"></a>Použití prostředí PowerShell k nastavení výstrahy v nástroji Application Insights
 Můžete automatizovat konfiguraci [výstrahy](app-insights-alerts.md) v [Application Insights](app-insights-overview.md).
@@ -35,7 +35,7 @@ Pokud jste ještě nepoužívali prostředí PowerShell ve vašem předplatném 
 
 Instalace modulu Azure Powershellu na počítači, ve kterém chcete spustit skripty.
 
-* Nainstalujte [instalačního programu webové platformy (verze 5 nebo vyšší)](http://www.microsoft.com/web/downloads/platform.aspx).
+* Nainstalujte [instalačního programu webové platformy (verze 5 nebo vyšší)](https://www.microsoft.com/web/downloads/platform.aspx).
 * Použít k instalaci prostředí Azure Powershell
 
 ## <a name="connect-to-azure"></a>Připojení k Azure
@@ -108,7 +108,7 @@ Stejné pravidlo lze použít pro metriku hlásí pomocí [měření parametr](a
 | `clientPerformance.sendRequest.value` |Čas odeslání žádosti |Doba, za kterou prohlížeč odešlete žádost. |
 | `clientPerformance.total.value` |Čas načítání stránky prohlížeče |Doba od žádosti uživatele do načtení DOM, šablon stylů, skriptů a obrázků |
 | `performanceCounter.available_bytes.value` |Dostupná paměť |Fyzická paměť k dispozici pro proces nebo pro použití systémem. |
-| `performanceCounter.io_data_bytes_per_sec.value` |Frekvence v/v procesu |Celkem bajtů čtených ze souborů, sítě a zařízení nebo do nich zapisovaných za sekundu |
+| `performanceCounter.io_data_bytes_per_sec.value` |Frekvence V/V procesu |Celkem bajtů čtených ze souborů, sítě a zařízení nebo do nich zapisovaných za sekundu |
 | `performanceCounter.number_of_exceps_thrown_per_sec.value` |frekvence výjimek |Výjimek vyvolaných za sekundu. |
 | `performanceCounter.percentage_processor_time.value` |Proces – procesor |Procentuální hodnotu uplynulého času všechny podprocesy procesu používají procesor pro spouštění instrukcí pro proces aplikace. |
 | `performanceCounter.percentage_processor_total.value` |Čas procesoru |Procento času, které procesor stráví na nečinných vláknech |
@@ -118,7 +118,7 @@ Stejné pravidlo lze použít pro metriku hlásí pomocí [měření parametr](a
 | `performanceCounter.requests_per_sec.value` |Frekvence požadavků ASP.NET |Počet všech žádostí na aplikaci za sekundu z ASP.NET |
 | `remoteDependencyFailed.durationMetric.count` |Chyby závislostí |Počet neúspěšných volání prováděných aplikací serveru vůči externím prostředkům. |
 | `request.duration` |Doba odezvy serveru |Doba mezi přijetím žádosti HTTP a dokončením odesílání odpovědi |
-| `request.rate` |Frekvence žádostí |Počet všech žádostí na aplikaci za sekundu |
+| `request.rate` |Frekvence žádostí |Počet všech žádostí na aplikaci za sekundu. |
 | `requestFailed.count` |Neúspěšné požadavky |Žádosti o počet protokolu HTTP, z kterých vzniklo kódem odpovědi > = 400 |
 | `view.count` |Zobrazení stránek |Počet žádostí uživatele klienta pro webovou stránku. Syntetický provoz je odfiltrována. |
 | {váš vlastní název metriky} |{Váš název metriky} |Metriky hodnotu hlášenou [TrackMetric](app-insights-api-custom-events-metrics.md#trackmetric) nebo [měření parametr sledování volání](app-insights-api-custom-events-metrics.md#properties). |

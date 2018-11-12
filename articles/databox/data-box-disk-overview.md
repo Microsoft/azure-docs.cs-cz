@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 10/30/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand what Data Box Disk is and how it works so I can use it to import on-premises data into Azure.
-ms.openlocfilehash: 47cffbabf073fac3fc24fc070b8d5164fecf3f9c
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: f965d455b3ada48caabb80458d44e841329cf787
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50418751"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51229607"
 ---
 # <a name="what-is-azure-data-box-disk-preview"></a>Co je Azure Data Box Disk? (Preview)
 
@@ -25,7 +25,7 @@ Tyto disky můžete pomocí služby Data Box na portálu Azure Portal rychle nak
 
 > [!IMPORTANT]
 > - Data Box Disk je ve verzi Preview. Před nasazením tohoto řešení si přečtěte [podmínky užívání pro předběžné verze platformy Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
-> - V této službě se musíte zaregistrovat. Pokud se chcete zaregistrovat, přejděte na [portál Preview](http://aka.ms/azuredataboxfromdiskdocs).
+> - V této službě se musíte zaregistrovat. Pokud se chcete zaregistrovat, přejděte na [portál Preview](https://aka.ms/azuredataboxfromdiskdocs).
 > - Po dobu platnosti verze Preview je možné disky poslat zákazníkům služby Data Box Disk v USA a Evropské unii. Další informace najdete v části [Regionální dostupnost](#region-availability).
 
 ## <a name="use-cases"></a>Případy použití

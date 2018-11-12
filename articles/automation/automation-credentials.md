@@ -9,16 +9,16 @@ ms.author: gwallace
 ms.date: 05/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: e5414a7607c036f1d60f58e1eb047da1e54f4db9
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: 07452a97ba16d7745d48e210dd90ce077be64683
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47585336"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51233435"
 ---
 # <a name="credential-assets-in-azure-automation"></a>Assety přihlašovacích údajů ve službě Azure Automation
 
-Prostředek přihlašovacích údajů Automation obsahuje objekt, který obsahuje přihlašovací údaje zabezpečení, jako je například uživatelské jméno a heslo. Runbooků a DSC konfigurace může použít rutiny přijmout objekt PSCredential pro ověřování, nebo se může extrahovat uživatelské jméno a heslo objekt PSCredential poskytovat nějaká aplikace nebo služby, které vyžadují ověřování. Vlastnosti přihlašovacích údajů jsou bezpečně uložené ve službě Azure Automation a je přístupná v runbooku nebo konfigurace DSC se [Get-AutomationPSCredential](http://msdn.microsoft.com/library/system.management.automation.pscredential.aspx) aktivity.
+Prostředek přihlašovacích údajů Automation obsahuje objekt, který obsahuje přihlašovací údaje zabezpečení, jako je například uživatelské jméno a heslo. Runbooků a DSC konfigurace může použít rutiny přijmout objekt PSCredential pro ověřování, nebo se může extrahovat uživatelské jméno a heslo objekt PSCredential poskytovat nějaká aplikace nebo služby, které vyžadují ověřování. Vlastnosti přihlašovacích údajů jsou bezpečně uložené ve službě Azure Automation a je přístupná v runbooku nebo konfigurace DSC se [Get-AutomationPSCredential](https://msdn.microsoft.com/library/system.management.automation.pscredential.aspx) aktivity.
 
 [!INCLUDE [gdpr-dsr-and-stp-note.md](../../includes/gdpr-dsr-and-stp-note.md)]
 
@@ -53,7 +53,7 @@ Aktivity v následující tabulce se používají pro přístup k přihlašovac�
 
 | Aktivity | Popis |
 |:--- |:--- |
-| Get-AutomationPSCredential |Získá přihlašovací údaje pro použití v runbooku nebo konfigurace DSC. Vrátí [System.Management.Automation.PSCredential](http://msdn.microsoft.com/library/system.management.automation.pscredential) objektu. |
+| Get-AutomationPSCredential |Získá přihlašovací údaje pro použití v runbooku nebo konfigurace DSC. Vrátí [System.Management.Automation.PSCredential](https://msdn.microsoft.com/library/system.management.automation.pscredential) objektu. |
 
 > [!NOTE]
 > Měli byste se vyhnout používání proměnných v názvu parametru – Get-AutomationPSCredential, protože to může zkomplikovat zjišťování závislostí mezi runbooky a konfigurace DSC a assety přihlašovacích údajů v době návrhu.
@@ -94,7 +94,7 @@ New-AzureAutomationCredential -AutomationAccountName "MyAutomationAccount" -Name
 
 ## <a name="using-a-powershell-credential"></a>Pomocí přihlašovacích údajů prostředí PowerShell
 
-Načíst asset přihlašovacích údajů v runbooku nebo konfigurace DSC se **Get-AutomationPSCredential** aktivity. Tím se vrátí [objekt PSCredential](http://msdn.microsoft.com/library/system.management.automation.pscredential.aspx) , můžete použít s aktivitu nebo rutinu, která vyžaduje parametr PSCredential. Můžete také načíst vlastnosti objekt přihlašovacích údajů použít jednotlivě. Objekt má vlastnost pro uživatelské jméno a zabezpečené heslo, nebo můžete použít **GetNetworkCredential** metodu pro návrat [NetworkCredential](http://msdn.microsoft.com/library/system.net.networkcredential.aspx) objekt, který bude poskytovat nezabezpečené verze heslo.
+Načíst asset přihlašovacích údajů v runbooku nebo konfigurace DSC se **Get-AutomationPSCredential** aktivity. Tím se vrátí [objekt PSCredential](https://msdn.microsoft.com/library/system.management.automation.pscredential.aspx) , můžete použít s aktivitu nebo rutinu, která vyžaduje parametr PSCredential. Můžete také načíst vlastnosti objekt přihlašovacích údajů použít jednotlivě. Objekt má vlastnost pro uživatelské jméno a zabezpečené heslo, nebo můžete použít **GetNetworkCredential** metodu pro návrat [NetworkCredential](https://msdn.microsoft.com/library/system.net.networkcredential.aspx) objekt, který bude poskytovat nezabezpečené verze heslo.
 
 ### <a name="textual-runbook-sample"></a>Ukázka textové sady runbook
 

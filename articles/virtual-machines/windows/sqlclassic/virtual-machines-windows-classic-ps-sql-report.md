@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/11/2017
 ms.author: maghan
-ms.openlocfilehash: 32be46fb0c41909ce8a8014b13843970555d366f
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 32be473ab93231805cdae097e3e984a2e74da973
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42054458"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51233078"
 ---
 # <a name="use-powershell-to-create-an-azure-vm-with-a-native-mode-report-server"></a>Použití PowerShellu k vytvoření virtuálního počítače Azure se serverem sestav v nativním režimu
 > [!IMPORTANT] 
@@ -56,7 +56,7 @@ Toto téma popisuje a provede nasazení a konfigurace serveru sestav v nativním
     ![nový virtuální počítač z Galerie](./media/virtual-machines-windows-classic-ps-sql-report/IC692020.gif)
 5. Klikněte na tlačítko **SQL Server 2014 RTM Standard – Windows Server 2012 R2** a poté klikněte na šipku pokračujte.
    
-    ![Další](./media/virtual-machines-windows-classic-ps-sql-report/IC692021.gif)
+    ![další](./media/virtual-machines-windows-classic-ps-sql-report/IC692021.gif)
    
     Pokud potřebujete data služby Reporting Services řízené funkce předplatných, zvolte **SQL serveru 2014 RTM Enterprise, Windows Server 2012 R2**. Další informace o edicích systému SQL Server a podporovaných funkcích najdete v tématu [funkce, které jsou podporovány edice systému SQL Server 2012](https://msdn.microsoft.com/library/cc645993.aspx#Reporting).
 6. Na **konfigurace virtuálního počítače** stránky, upravte následující pole:
@@ -79,7 +79,7 @@ Toto téma popisuje a provede nasazení a konfigurace serveru sestav v nativním
      
      * **HTTP**: výchozí veřejné a soukromé porty jsou **80**. Všimněte si, že používáte privátní port než 80, upravte **$HTTPport = 80** ve skriptu http.
      * **HTTPS**: výchozí veřejné a soukromé porty jsou **443**. Osvědčeným postupem zabezpečení je změnit privátní port a konfiguraci brány firewall a server sestav použít privátní port. Další informace o koncových bodech najdete v tématu [jak nastavit komunikaci s virtuálním počítačem](../classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json). Všimněte si, že pokud používáte jiný port než 443, změňte parametr **$HTTPsport = 443** ve skriptu HTTPS.
-   * Klikněte na tlačítko Další. ![Další](./media/virtual-machines-windows-classic-ps-sql-report/IC692021.gif)
+   * Klikněte na tlačítko Další. ![další](./media/virtual-machines-windows-classic-ps-sql-report/IC692021.gif)
 8. Na poslední stránce průvodce, ponechte výchozí **nainstalujte agenta virtuálního počítače** vybrané. Kroky v tomto tématu Neuvedeno agenta virtuálního počítače, ale pokud budete chtít zachovat tento virtuální počítač, agent virtuálního počítače a rozšíření vám umožní zajistit, že CM.  Další informace o agenta virtuálního počítače najdete v tématu [agenta virtuálního počítače a rozšíření – část 1](https://azure.microsoft.com/blog/2014/04/11/vm-agent-and-extensions-part-1/). Jednou z výchozí nainstalovaná rozšíření služby ad s je rozšíření "BGINFO", který zobrazuje na ploše virtuálního počítače, systémové informace, například interní IP adresa a volného místa na disku.
 9. Klikněte na dokončení. ![OK](./media/virtual-machines-windows-classic-ps-sql-report/IC660122.gif)
 10. **Stav** virtuálního počítače se zobrazí jako **spuštění (zřizování)** během procesu zřizování a potom zobrazí jako **systémem** když virtuální počítač je zřízená a připravený k použití.
@@ -90,7 +90,7 @@ Toto téma popisuje a provede nasazení a konfigurace serveru sestav v nativním
 
 Pokud chcete používat protokol HTTPS na virtuálním počítači, musíte důvěryhodný certifikát SSL. V závislosti na vašem scénáři můžete použít jednu z těchto dvou metod:
 
-* Platný certifikát SSL vydaný certifikační autoritou (CA) a považuje Microsoft za důvěryhodnou. Certifikáty kořenové certifikační Autority se musí být distribuovány prostřednictvím programu Microsoft Root Certificate Program. Další informace o tomto programu najdete v tématu [Windows a Windows Phone 8 SSL Root Certificate Program (člen certifikační autority)](http://social.technet.microsoft.com/wiki/contents/articles/14215.windows-and-windows-phone-8-ssl-root-certificate-program-member-cas.aspx) a [Úvod do programu Microsoft Root Certificate Program](http://social.technet.microsoft.com/wiki/contents/articles/3281.introduction-to-the-microsoft-root-certificate-program.aspx).
+* Platný certifikát SSL vydaný certifikační autoritou (CA) a považuje Microsoft za důvěryhodnou. Certifikáty kořenové certifikační Autority se musí být distribuovány prostřednictvím programu Microsoft Root Certificate Program. Další informace o tomto programu najdete v tématu [Windows a Windows Phone 8 SSL Root Certificate Program (člen certifikační autority)](https://social.technet.microsoft.com/wiki/contents/articles/14215.windows-and-windows-phone-8-ssl-root-certificate-program-member-cas.aspx) a [Úvod do programu Microsoft Root Certificate Program](https://social.technet.microsoft.com/wiki/contents/articles/3281.introduction-to-the-microsoft-root-certificate-program.aspx).
 * Certifikát podepsaný svým držitelem. Certifikáty podepsané svým držitelem se nedoporučuje pro produkční prostředí.
 
 ### <a name="to-use-a-certificate-created-by-a-trusted-certificate-authority-ca"></a>Pokud chcete použít certifikát vytvořené pomocí důvěryhodná certifikační autoritu (CA)
@@ -547,7 +547,7 @@ Pokud chcete ověřit, že je port otevřen, otevřete okno Windows Powershellu 
 
     get-netfirewallrule | where {$_.displayname -like "*report*"} | select displayname,enabled,action
 
-## <a name="verify-the-configuration"></a>Zkontrolujte konfiguraci
+## <a name="verify-the-configuration"></a>Ověření konfigurace
 Pokud chcete ověřit, že funkce serveru základní sestavu teď funguje, otevřete prohlížeč s oprávněními správce a přejděte následující sestavu ad správce sestav serveru adresy URL:
 
 * Na virtuálním počítači přejděte na adresu URL serveru sestav:

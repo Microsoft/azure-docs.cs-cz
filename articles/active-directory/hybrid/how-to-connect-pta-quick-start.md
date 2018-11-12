@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/28/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: afd2b31c5829015e11a3875c609ea3171006c501
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: 70c19b394b5c5702a0ec0f18aa3bbd0c05e39dfd
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50914137"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51249791"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quick-start"></a>Azure předávací ověřování služby Active Directory: Rychlý start
 
@@ -142,7 +142,7 @@ Za druhé můžete vytvořit a spustit skript bezobslužné nasazení. To je už
         RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft Azure AD Connect Authentication Agent\Modules\" -moduleName "AppProxyPSModule" -Authenticationmode Credentials -Usercredentials $cred -Feature PassthroughAuthentication
 
 ## <a name="next-steps"></a>Další postup
-- [Migrace ze služby AD FS na předávací ověřování](http://aka.ms/adfstoptadp) – podrobné pokyny k migraci ze služby AD FS (nebo jiné technologie federation) na předávací ověřování.
+- [Migrace ze služby AD FS na předávací ověřování](https://aka.ms/adfstoptadp) – podrobné pokyny k migraci ze služby AD FS (nebo jiné technologie federation) na předávací ověřování.
 - [Inteligentní uzamčení](../authentication/howto-password-smart-lockout.md): Zjistěte, jak nakonfigurovat možnosti inteligentního uzamčení ve svém tenantovi k ochraně uživatelské účty.
 - [Aktuální omezení](how-to-connect-pta-current-limitations.md): Zjistěte, jaké postupy se podporují pomocí předávacího ověřování a ty, které nejsou.
 - [Podrobné technické informace](how-to-connect-pta-how-it-works.md): pochopit, jak funguje funkce předávací ověřování.

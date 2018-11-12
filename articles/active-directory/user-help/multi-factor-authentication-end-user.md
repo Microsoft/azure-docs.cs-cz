@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 06/15/2017
 ms.author: lizross
 ms.reviewer: richagi
-ms.openlocfilehash: f084433efa2476a75714da6eaef674911006bb76
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 297184a2623a6a7cfa3894a51f5de0e3bd3db622
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39344762"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51232772"
 ---
 # <a name="what-does-azure-multi-factor-authentication-mean-for-me"></a>Co pro mě Azure Multi-Factor Authentication znamená?
 Od někoho z IT nebo od šéfa jste dostali e-mail s informací, že k vašemu účtu přidali další ověřování zabezpečení.  Co to tedy znamená?
@@ -44,4 +44,4 @@ Začněte výběrem některého z těchto témat.
 | [Přihlašovací prostředí](multi-factor-authentication-end-user-signin.md) |Ukazuje, co můžete očekávat od přihlašování pomocí různých metod, jako je telefon nebo aplikace. |
 | [Změny nastavení](multi-factor-authentication-end-user-manage-settings.md) |Ukazuje, jak můžete změnit nastavení, jako je telefonní číslo nebo upřednostňovaná metoda registrace. |
 | [Nápověda k heslům aplikací](multi-factor-authentication-end-user-app-passwords.md) |Obsahuje informace o vytváření a používání hesel aplikací. |
-| [Používání mobilní aplikace](microsoft-authenticator-app-how-to.md) |Aplikace Microsoft Authenticator je k dispozici pro [Android](https://go.microsoft.com/fwlink/?linkid=866594), [iOS](https://go.microsoft.com/fwlink/?linkid=866594) a [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071). |
+| [Používání mobilní aplikace](microsoft-authenticator-app-how-to.md) |Aplikace Microsoft Authenticator je k dispozici pro [Android](https://go.microsoft.com/fwlink/?linkid=866594), [iOS](https://go.microsoft.com/fwlink/?linkid=866594) a [Windows Phone](https://go.microsoft.com/fwlink/?Linkid=825071). |

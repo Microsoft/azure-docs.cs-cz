@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/01/2018
+ms.date: 11/07/2018
 ms.author: patricka
-ms.reviewer: ''
-ms.openlocfilehash: f2d843b343fa830adf41352ae692ea98bed52ecc
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.reviewer: fiseraci
+ms.openlocfilehash: a16a6596d6bc33200f87a1dfd3b2ea5b02628e10
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44713642"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51277813"
 ---
 # <a name="identity-architecture-for-azure-stack"></a>Architektura identity pro službu Azure Stack
 Než se rozhodnete zprostředkovatele identity pro použití s Azure Stack, pochopit rozdíly mezi možnosti služby Azure Active Directory (Azure AD) a Active Directory Federation Services (AD FS). 
@@ -32,7 +32,7 @@ Zprostředkovatel identity, kterou zvolíte můžete omezit možnosti, včetně 
 
 |Funkce nebo scénáře        |Azure AD  |AD FS  |
 |------------------------------|----------|-------|
-|Připojení k Internetu     |Ano       |Volitelné|
+|Připojení k Internetu     |Ano       |Nepovinné|
 |Podpora pro více tenantů     |Ano       |Ne      |
 |Položky nabídky na webu Marketplace |Ano       |Ano. Vyžaduje použití [offline syndikace Marketplace](azure-stack-download-azure-marketplace-item.md#disconnected-or-a-partially-connected-scenario) nástroj.|
 |Podpora pro Active Directory Authentication Library (ADAL) |Ano |Ano|
@@ -44,7 +44,7 @@ Zprostředkovatel identity, kterou zvolíte můžete omezit možnosti, včetně 
 |Aplikace můžete použít zprostředkovatele identity pro přihlášení |Ano |Ano. Vyžaduje aplikacím federování s místní instancí AD FS. |
 
 ## <a name="topologies"></a>Topologie
-V následujících částech discus různé topologie identity, které můžete použít.
+Následující části popisují různé topologie identity, které můžete použít.
 
 ### <a name="azure-ad-single-tenant-topology"></a>Azure AD: Topologie jednoho tenanta 
 Při instalaci Azure Stack a používají službu Azure AD, Azure Stack ve výchozím nastavení používá topologii s jedním tenantem. 

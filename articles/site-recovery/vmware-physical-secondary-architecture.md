@@ -1,20 +1,20 @@
 ---
-title: Architektura pro zotavení po havárii VMware nebo fyzický server ve službě Azure Site Recovery | Dokumentace Microsoftu
-description: Tento článek obsahuje přehled komponent a architektury používané při zotavení po havárii místních virtuálních počítačů VMware nebo fyzické servery Windows/Linux do sekundární lokality VMware pomocí Azure Site Recovery
+title: Architektura pro zotavení po havárii serveru VMware/fyzických prostředků do sekundární lokality pomocí Azure Site Recovery | Dokumentace Microsoftu
+description: Tento článek obsahuje přehled komponent a architektury používané při zotavení po havárii místních virtuálních počítačů VMware nebo fyzické servery Windows/Linux do sekundární lokality VMware pomocí Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: raynew
-ms.openlocfilehash: 16e8a9719280b55e86d1d4622a32470b37287dd4
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 77387b52003923dffce7519df9cca47fad8f6e6c
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50215119"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51007429"
 ---
-# <a name="vmware-vmphysical-server-to-vmware-disaster-recovery-architecture"></a>Server virtuálních počítačů VMware/fyzické prostředky architektury pro zotavení po havárii VMware
+# <a name="architecture-for-vmwarephysical-server-replication-to-a-secondary-on-premises-site"></a>Architektury pro replikaci serveru VMware/fyzických prostředků do sekundární místní lokality
 
 Tento článek popisuje, architektury a procesy používané při nastavení replikace pro zotavení po havárii, převzetí služeb při selhání a obnovení virtuálních počítačů (VM) v místním VMware nebo fyzické servery Windows/Linux do sekundární lokality VMware pomocí [Azure Site Recovery](site-recovery-overview.md).
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 09/24/2018
 ms.author: alkohli
-ms.openlocfilehash: 8ecef86841bcf13a469f9c0dc81f114bd54acdba
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0a5b7f93f9ac6cc5b1076881727a42fd5b95ff4b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46946509"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235152"
 ---
 # <a name="what-is-azure-data-box-heavy-preview"></a>Co je Azure Data Box Heavy? (Preview)
 
@@ -31,7 +31,7 @@ Azure Data Box Heavy je aktuálně ve verzi Preview, ale prostřednictvím regis
 
 > [!IMPORTANT]
 > - Data Box Heavy je ve verzi Preview. Před nasazením tohoto řešení si přečtěte [podmínky užívání pro předběžné verze platformy Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
-> - Pokud chcete o zařízení požádat, přihlaste se k webu [Azure Portal Preview](http://aka.ms/).
+> - Pokud chcete o zařízení požádat, přihlaste se k webu [Azure Portal Preview](https://aka.ms/).
 > - Po dobu platnosti verze Preview je možné zařízení poslat zákazníkům služby Data Box Heavy v USA a Evropské unii. Další informace najdete v části [Regionální dostupnost](#region-availability).
 
 ## <a name="use-cases"></a>Případy použití
@@ -95,7 +95,7 @@ Součástí služby Data Box Heavy jsou následující komponenty:
 
 Typický postup zahrnuje tyto kroky:
 
-1. **Objednávka** – na portálu Azure Portal vytvoříte objednávku, zadáte doručovací údaje a cílový účet úložiště Azure pro svoje data. Pokud je zařízení k dispozici, Azure ho připraví a odešle s identifikačním číslem pro sledování zásilky.
+1. **Objednávka** – na portálu Azure Portal vytvoříte objednávku, zadáte doručovací údaje a cílový účet úložiště Azure pro svoje data. Pokud je zařízení k dispozici, připraví se v Azure a odešle se s identifikačním číslem pro sledování zásilky.
 
 2. **Přijetí** – jakmile zařízení obdržíte, připojte ho pomocí přiložených kabelů k síti a napájení. Zařízení zapněte a připojte se k němu. Nakonfigurujte síť zařízení a připojte sdílené složky hostitelského počítače, ze kterého chcete data kopírovat.
 
@@ -103,7 +103,7 @@ Typický postup zahrnuje tyto kroky:
 
 4. **Vrácení** – zařízení připravte, vypněte a odešlete zpět do datacentra Azure.
 
-5. **Nahrání** – data se automaticky zkopírují ze zařízení do Azure. Disky zařízení se bezpečně vymažou podle pokynů organizace NIST (National Institute of Standards and Technology).
+5. **Nahrání** – data ze zařízení se automaticky zkopírují do Azure. Disky zařízení se bezpečně vymažou podle pokynů organizace NIST (National Institute of Standards and Technology).
 
 Během tohoto procesu budete e-mailem dostávat oznámení o všech změnách stavu. 
 
@@ -114,10 +114,10 @@ Data Box Heavy může přenést data na základě oblasti, ve které se služba 
 - **Dostupnost služby** – u této vydané verze je služba Data Box Heavy dostupná v následujících oblastech:
     - Všechny oblasti veřejného cloudu ve Spojených státech amerických – USA – středozápad, USA – západ 2, USA – západ, USA (střed) – jih, USA – střed, USA (střed) – sever, USA – východ a USA – východ 2
     - Evropská unie – západní a severní Evropa
-    - Spojené království – Velká Británie – jih a Velká Británie – západ
-    - Francie – Francie – střed a Francie – jih
+    - Spojené království: Velká Británie – jih a Velká Británie – západ
+    - Francie: Francie – střed a Francie – jih
 
-- **Cílové účty úložiště** – účty úložiště, které ukládají data, jsou dostupné ve všech oblastech Azure, ve kterých je tato služba k dispozici. 
+- **Cílové účty úložiště** – účty úložiště, do kterých se ukládají data, jsou dostupné ve všech oblastech Azure, ve kterých je tato služba k dispozici. 
 
 ## <a name="sign-up"></a>Registrace
 

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 004ce399437ef581b319980c83f00cb1427b934b
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 0d9f4d14d9f6cbeedb667d9d8debd6bfebf8cbd6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49115834"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51239115"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-app-to-azure-vms"></a>Migrace Contoso: Změna hostitele místní aplikaci do virtuálních počítačů Azure
 
@@ -234,7 +234,7 @@ Po převzetí služeb při selhání Contoso chce připojit k virtuálním poč�
 Kromě toho při spuštění převzetí služeb při selhání potřebují zkontrolujte následující:
 
 - Měla by existovat žádné čekající aktualizace Windows na virtuálním počítači při spuštění převzetí služeb při selhání. Pokud nejsou, nebudou moct přihlásit k virtuálnímu počítači, dokud se nedokončí aktualizace.
-- Po převzetí služeb při selhání, můžete zkontrolovat **Diagnostika spouštění** zobrazíte snímek obrazovky virtuálního počítače. Pokud to nepomůže, by měl ověřit, že virtuální počítač spuštěný a najdete v těchto [tipy pro řešení potíží](http://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx).
+- Po převzetí služeb při selhání, můžete zkontrolovat **Diagnostika spouštění** zobrazíte snímek obrazovky virtuálního počítače. Pokud to nepomůže, by měl ověřit, že virtuální počítač spuštěný a najdete v těchto [tipy pro řešení potíží](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx).
 
 
 **Potřebujete další pomoc?**

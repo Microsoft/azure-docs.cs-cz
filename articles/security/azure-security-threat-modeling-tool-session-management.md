@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 97953779f1132d89c7ad07abdb4e08c0f476f4b9
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: 182a0232b5317b1a375a20bdd4c6467578dc775b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43841809"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51232738"
 ---
 # <a name="security-frame-session-management"></a>Zabezpečení rámce: Správa relací
 | Produkt nebo službu | Článek |
@@ -157,7 +157,7 @@ Zavoláním metody Session.Abandon() ji by měl také zničit uživatelské rela
 | **SDL fáze**               | Sestavení |  
 | **Použitelných technologiích** | Obecné |
 | **Atributy**              | EnvironmentType - místního prostředí |
-| **Odkazy**              | [Element (schéma nastavení technologie ASP.NET) httpCookies](http://msdn.microsoft.com/library/ms228262(v=vs.100).aspx), [HttpCookie.Secure vlastnost](http://msdn.microsoft.com/library/system.web.httpcookie.secure.aspx) |
+| **Odkazy**              | [Element (schéma nastavení technologie ASP.NET) httpCookies](https://msdn.microsoft.com/library/ms228262(v=vs.100).aspx), [HttpCookie.Secure vlastnost](https://msdn.microsoft.com/library/system.web.httpcookie.secure.aspx) |
 | **Kroky** | Soubory cookie jsou obvykle přístupné pouze do domény, pro kterou byly obor. Definice "domény" bohužel neobsahuje protokol, tak, aby soubory cookie, které jsou vytvořeny pomocí protokolu HTTPS byly přístupné přes protokol HTTP. Atribut "zabezpečení" označuje do prohlížeče, že soubor cookie by měl být vytvořena pouze k dispozici přes protokol HTTPS. Ujistěte se, že všechny soubory cookie nastavené přes HTTPS pomocí **zabezpečené** atribut. Požadavek lze vynutit v souboru web.config nastavením atributu requireSSL na hodnotu true. Je oblíbený přístup, protože bude vynucovat **zabezpečené** atribut pro všechny aktuální a budoucí soubory cookie bez nutnosti provádět žádné další změny kódu.|
 
 ### <a name="example"></a>Příklad:

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: lizross
-ms.openlocfilehash: 5ff9d1cf76188ff38f59e8b74d4bfd380c8c88e1
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: d58e5816c3b0e7c951c7d6bcfc6bfe4d0789f47a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49408706"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51233792"
 ---
 # <a name="azure-active-directory-faq"></a>Nejčastější dotazy ke službě Azure Active Directory
 Azure Active Directory (Azure AD) je komplexní řešení Identity jako služby (IDaaS), které pokrývá všechny prvky identity, řízení přístupu a zabezpečení.
@@ -86,7 +86,7 @@ Další informace najdete v článku [Integrování místních identit do služb
 - - -
 **Otázka: Poskytuje Azure AD samoobslužný portál pro uživatele v naší organizaci?**
 
-**Odpověď:** Ano, Azure AD poskytuje pro uživatelskou samoobsluhu a přístup k aplikacím [Přístupový panel Azure AD](http://myapps.microsoft.com). Pokud jste zákazníkem služeb Office 365, najdete mnoho stejných funkcí na portálu služeb Office 365.
+**Odpověď:** Ano, Azure AD poskytuje pro uživatelskou samoobsluhu a přístup k aplikacím [Přístupový panel Azure AD](https://myapps.microsoft.com). Pokud jste zákazníkem služeb Office 365, najdete mnoho stejných funkcí na portálu služeb Office 365.
 
 Další informace najdete v tématu [Úvod do přístupového panelu](../user-help/active-directory-saas-access-panel-introduction.md).
 

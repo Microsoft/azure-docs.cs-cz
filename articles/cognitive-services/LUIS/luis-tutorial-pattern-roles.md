@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 3274c25227637d3b23ccd7fd21df01dc05400c11
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: dd73ca876385cf81059228088f7b027f533315eb
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50086433"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51277832"
 ---
 # <a name="tutorial-4-extract-contextually-related-patterns"></a>Kurz 4: Extrakce vzorů souvisejících s kontextem
 
@@ -49,7 +49,7 @@ Pokud máte potíže s určováním jednoduché entity, protože jde o název, n
 > * Vytvořit seznam frází měst
 > * Zjistit záměry a entity z koncového bodu
 
-[!include[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+[!INCLUDE[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="use-existing-app"></a>Použití existující aplikace
 Pokračujte s aplikací **HumanResources**, kterou jste vytvořili v posledním kurzu. 
@@ -64,7 +64,7 @@ Pokud aplikaci HumanResources z předchozího kurzu nemáte, postupujte takto:
 
 ## <a name="create-new-entities"></a>Tvorba nových entit
 
-1. [!include[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
+1. [!INCLUDE[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. V levé navigaci vyberte **Entities** (Entity). 
 
@@ -254,7 +254,7 @@ Názvy měst jsou, stejně jako jména lidí, nevypočitatelné. Můžou obsahov
 
 ## <a name="get-intent-and-entities-from-endpoint"></a>Získání záměru a entit z koncového bodu
 
-1. [!include[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
+1. [!INCLUDE[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. Na konec adresy URL zadejte `Move wayne berry from miami to mount vernon`. Poslední parametr řetězce dotazu je `q`, což je **dotaz** promluvy. 
 

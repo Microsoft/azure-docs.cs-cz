@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: rogarana
 ms.component: common
-ms.openlocfilehash: 32881f815a714e355adf05c07a3cf114933f3fe9
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: f865768e6ebfd9e01de1bd7e69c1224b66f2ea5e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39530846"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51231784"
 ---
 # <a name="microsoft-azure-storage-performance-and-scalability-checklist"></a>Kontrolní seznam pro výkon a škálovatelnost Microsoft Azure Storage
 ## <a name="overview"></a>Přehled
@@ -90,7 +90,7 @@ Každou ze služeb Azure Storage má cíle škálovatelnosti pro kapacita (GB), 
 * [Fronta zpráv za sekundu](#subheading39)  
 
 #### <a name="sub1bandwidth"></a>Cíle škálovatelnosti šířky pásma pro všechny služby
-V době psaní cíle šířky pásma v USA pro účet geograficky redundantní úložiště (GRS) jsou 10 gigabitů za sekundu (GB/s) pro příchozí přenos dat (data odeslaná do účtu úložiště) a 20 GB/s pro výchozí přenos dat (data odeslaná z účtu úložiště). Pro účet místně redundantního úložiště (LRS), omezení jsou vyšší – 20 GB/s pro příchozí přenos dat a 30 GB/s pro výchozí přenos.  Omezení šířky pásma mezinárodní může být nižší a můžete najít na naší [stránky cíle škálovatelnosti](http://msdn.microsoft.com/library/azure/dn249410.aspx).  Další informace o možnostech redundance úložiště, najdete v článku odkazy v [užitečné zdroje](#sub1useful) níže.  
+V době psaní cíle šířky pásma v USA pro účet geograficky redundantní úložiště (GRS) jsou 10 gigabitů za sekundu (GB/s) pro příchozí přenos dat (data odeslaná do účtu úložiště) a 20 GB/s pro výchozí přenos dat (data odeslaná z účtu úložiště). Pro účet místně redundantního úložiště (LRS), omezení jsou vyšší – 20 GB/s pro příchozí přenos dat a 30 GB/s pro výchozí přenos.  Omezení šířky pásma mezinárodní může být nižší a můžete najít na naší [stránky cíle škálovatelnosti](https://msdn.microsoft.com/library/azure/dn249410.aspx).  Další informace o možnostech redundance úložiště, najdete v článku odkazy v [užitečné zdroje](#sub1useful) níže.  
 
 #### <a name="what-to-do-when-approaching-a-scalability-target"></a>Co dělat, když se blíží cíle škálovatelnosti
 Pokud vaše aplikace se blíží cíle škálovatelnosti pro jeden účet úložiště, vezměte v úvahu přijetím jedné z následujících postupů:  
@@ -104,7 +104,7 @@ Pokud vaše aplikace se blíží cíle škálovatelnosti pro jeden účet úlož
 Následující odkazy obsahují další podrobnosti o cíle škálovatelnosti:
 
 * Zobrazit [Azure Storage škálovatelnost a cíle výkonnosti](storage-scalability-targets.md) informace o cíle škálovatelnosti.
-* Zobrazit [replikace Azure Storage](storage-redundancy.md) a v blogovém příspěvku [možnosti redundance Azure Storage a geograficky redundantní úložiště s přístupem pro čtení](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/11/introducing-read-access-geo-replicated-storage-ra-grs-for-windows-azure-storage.aspx) informace o možnostech redundance úložiště.
+* Zobrazit [replikace Azure Storage](storage-redundancy.md) a v blogovém příspěvku [možnosti redundance Azure Storage a geograficky redundantní úložiště s přístupem pro čtení](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/11/introducing-read-access-geo-replicated-storage-ra-grs-for-windows-azure-storage.aspx) informace o možnostech redundance úložiště.
 * Aktuální informace o cenách pro Azure services najdete v tématu [ceny za Azure](https://azure.microsoft.com/pricing/overview/).  
 
 ### <a name="subheading47"></a>Zásady vytváření názvů oddílů
@@ -149,7 +149,7 @@ Obě tyto technologie vám může pomoct vyhnout nepotřebné zatížení (a kri
 #### <a name="useful-resources"></a>Užitečné materiály
 Další informace o SAS najdete v tématu [sdílené přístupové podpisy, část 1: vysvětlení modelu SAS](../storage-dotnet-shared-access-signature-part-1.md).  
 
-Další informace o CORS, najdete v části [podporu sdílení prostředků mezi zdroji (CORS) pro služby Azure Storage](http://msdn.microsoft.com/library/azure/dn535601.aspx).  
+Další informace o CORS, najdete v části [podporu sdílení prostředků mezi zdroji (CORS) pro služby Azure Storage](https://msdn.microsoft.com/library/azure/dn535601.aspx).  
 
 ### <a name="caching"></a>Ukládání do mezipaměti
 #### <a name="subheading7"></a>Získání dat
@@ -159,7 +159,7 @@ V některých případech se může rozhodnout, že vaše aplikace můžete pře
 
 Konfigurace, vyhledávání a další data, která se vždycky použijí aplikací jsou skvělými kandidáty pro ukládání do mezipaměti.  
 
-Příklad toho, jak získat objekt blob vlastnosti zjišťování datum poslední změny pomocí .NET, naleznete v tématu [nastavení a načtení vlastností a metadat](../blobs/storage-properties-metadata.md). Další informace o podmíněné soubory ke stažení najdete v tématu [podmíněně aktualizovat místní kopii objektu Blob](http://msdn.microsoft.com/library/azure/dd179371.aspx).  
+Příklad toho, jak získat objekt blob vlastnosti zjišťování datum poslední změny pomocí .NET, naleznete v tématu [nastavení a načtení vlastností a metadat](../blobs/storage-properties-metadata.md). Další informace o podmíněné soubory ke stažení najdete v tématu [podmíněně aktualizovat místní kopii objektu Blob](https://msdn.microsoft.com/library/azure/dd179371.aspx).  
 
 #### <a name="subheading8"></a>Nahrávání dat do dávek
 V některých scénářích aplikace můžete agregovat data místně a pravidelně nahrajte ji ve službě batch namísto odesílání každá část dat okamžitě. Například webové aplikace mohou mít soubor protokolu aktivit: aplikace by buď nahrát podrobnosti o každé aktivitě, protože se stane jako tabulka entity (která vyžaduje mnoho operací úložiště), nebo podrobnosti o aktivitě může uložit do místního souboru protokolu a pak všechny podrobnosti o aktivitě pravidelně nahrajte jako souboru s oddělovači do objektu blob. Pokud každá položka protokolu má velikost 1KB, můžete nahrát tisíců v rámci jedné transakce "Put Blob" (můžete nahrát objekt blob velikost v rámci jedné transakce až 64MB). Samozřejmě, pokud v místním počítači dojde k chybě před nahrávání, potenciálně ztratíte některá data protokolu: musí vývojář aplikace návrhu pro možnost zařízení klienta nebo chyby nahrávání.  Pokud se data aktivit je potřeba stáhnout pro časových rozpětí (jenom jedna aktivita), se doporučují objekty BLOB přes tabulky.
@@ -178,7 +178,7 @@ Je nutné nastavit limit připojení před otevřením jakékoliv připojení.
 
 Jiných programovacích jazycích najdete v daném jazyce dokumentaci a zjistit, jak nastavit limit připojení.  
 
-Další informace najdete v příspěvku blogu [webové služby: souběžných připojení](http://blogs.msdn.com/b/darrenj/archive/2005/03/07/386655.aspx).  
+Další informace najdete v příspěvku blogu [webové služby: souběžných připojení](https://blogs.msdn.com/b/darrenj/archive/2005/03/07/386655.aspx).  
 
 #### <a name="subheading10"></a>Použití synchronního kódu se úloh s modifikátorem Async zvýšit Min vláken fondu vláken
 Tento kód se zvýší vláken fondu vláken min:  
@@ -187,12 +187,12 @@ Tento kód se zvýší vláken fondu vláken min:
 ThreadPool.SetMinThreads(100,100); //(Determine the right number for your application)  
 ```
 
-Další informace najdete v tématu [ThreadPool.SetMinThreads metoda](http://msdn.microsoft.com/library/system.threading.threadpool.setminthreads%28v=vs.110%29.aspx).  
+Další informace najdete v tématu [ThreadPool.SetMinThreads metoda](https://msdn.microsoft.com/library/system.threading.threadpool.setminthreads%28v=vs.110%29.aspx).  
 
 #### <a name="subheading11"></a>Využijte výhod uvolňování paměti rozhraní .NET 4.5
 Pomocí rozhraní .NET 4.5 nebo novější klientské aplikace využít k vylepšení výkonu v uvolňování paměti serveru.
 
-Další informace najdete v článku [přehled o vylepšení výkonu v rozhraní .NET 4.5](http://msdn.microsoft.com/magazine/hh882452.aspx).  
+Další informace najdete v článku [přehled o vylepšení výkonu v rozhraní .NET 4.5](https://msdn.microsoft.com/magazine/hh882452.aspx).  
 
 ### <a name="subheading12"></a>Bez vazby paralelismu
 Paralelismus mohou být ideální pro výkon, buďte opatrní při použití bez vazby paralelismus (bez omezení počtu vláken a/nebo paralelní požadavky) k ukládání nebo stahování dat pomocí několika pracovních procesů pro přístup k více oddílů (kontejnery, fronty, nebo oddíly tabulky) v rámci stejného účtu úložiště nebo pro přístup k více položek do stejného oddílu. Pokud paralelismus je bez vazby, vaše aplikace může být delší než možnosti klienta zařízení nebo škálovatelnosti účtu úložiště, zaměřuje omezování a výsledkem je delší latence.  
@@ -210,7 +210,7 @@ Všimněte si, že k chybám připojení můžete okamžitě, opakovat, protože
 Klientské knihovny jsou vědět, které chyby jsou možné opakovat a které nejsou. Nezapomeňte však, při psaní vlastního kódu pro rozhraní REST API služby storage jsou nějaké chyby, které se nesmí opakovat: například 400 (Chybný požadavek) v odpovědi vyplývá, že klientská aplikace odesílat žádosti, která nelze zpracovat, protože nebylo v očekávaných formuláře. Tuto žádost se posílá znovu způsobí stejnou odpověď pokaždé, když, proto nemá smysl to zkusíte znovu ji. Při psaní vlastního kódu pro rozhraní REST API služby storage, uvědomte si, co znamená kódy chyb a správný způsob, jak to chcete zkusit znovu (nebo nemusíte) pro každý z nich.  
 
 #### <a name="useful-resources"></a>Užitečné materiály
-Další informace o chybových kódech úložiště najdete v tématu [stavové a chybové kódy](http://msdn.microsoft.com/library/azure/dd179382.aspx) na webu Microsoft Azure.  
+Další informace o chybových kódech úložiště najdete v tématu [stavové a chybové kódy](https://msdn.microsoft.com/library/azure/dd179382.aspx) na webu Microsoft Azure.  
 
 ## <a name="blobs"></a>Objekty blob
 Kromě osvědčených postupů pro [všechny služby](#allservices) je popsáno výše, následující osvědčené postupy platí výhradně pro službu blob service.  
@@ -236,7 +236,7 @@ Jedním z faktorů, ale je, že při kopírování mezi účty úložiště, nen
 
 Všimněte si, že kopie v rámci stejného účtu úložiště, samotné se obecně nedokončí rychle.  
 
-Další informace najdete v tématu [objekt Blob kopírování](http://msdn.microsoft.com/library/azure/dd894037.aspx).  
+Další informace najdete v tématu [objekt Blob kopírování](https://msdn.microsoft.com/library/azure/dd894037.aspx).  
 
 #### <a name="subheading18"></a>Pomocí nástroje AzCopy
 Tým Azure Storage vydala nástroje příkazového řádku "AzCopy", který je určen usnadňující hromadného přenosu velký počet objektů BLOB do, z a mezi různými účty úložiště.  Tento nástroj je optimalizovaná pro tento scénář a dosáhnout vysoké přenosové rychlosti.  Jeho použití je podporováno pro hromadné nahrávání, stahování a kopírování scénáře. Další informace o něm a stáhněte ho najdete v tématu [přenos dat pomocí nástroje příkazového řádku Azcopy](storage-use-azcopy.md).  
@@ -266,7 +266,7 @@ Pokud chcete rychle nahrát velký počet objektů BLOB, nahrání objektů BLOB
 ### <a name="subheading23"></a>Výběr správného typu objektu blob
 Azure Storage podporuje dva typy objektů blob: *stránky* objekty BLOB a *bloku* objekty BLOB. Pro jednotlivé scénáře použití daného zvoleného typu Objekt blob ovlivní výkon a škálovatelnost řešení. Objekty BLOB bloku jsou vhodné, pokud chcete nahrávání velkých objemů dat, efektivně: například může klientská aplikace musí se nahrát fotografie a videa do úložiště objektů blob. Objekty BLOB stránky jsou vhodné v případě musí aplikace provádět náhodné zápisy dat: například virtuální pevné disky Azure jsou uložené jako objekty BLOB stránky.  
 
-Další informace najdete v tématu [vysvětlení objektů BLOB bloku, doplňovací objekty BLOB a objekty BLOB stránky](http://msdn.microsoft.com/library/azure/ee691964.aspx).  
+Další informace najdete v tématu [vysvětlení objektů BLOB bloku, doplňovací objekty BLOB a objekty BLOB stránky](https://msdn.microsoft.com/library/azure/ee691964.aspx).  
 
 ## <a name="tables"></a>Tabulky
 Kromě osvědčených postupů pro [všechny služby](#allservices) je popsáno výše, následující osvědčené postupy platí výhradně pro služby table service.  
@@ -286,12 +286,12 @@ Tato část obsahuje seznam několika rychlé nastavení, které vám umožní p
 #### <a name="subheading25"></a>Použití JSON
 Počínaje verzí služby úložiště 2013-08-15, služby table service podporuje používání JSON namísto formátu AtomPub založený na formátu XML pro přenos dat tabulky. Tím můžete snížit až o 75 % velikosti datových částí a může výrazně zlepšit výkon aplikace.
 
-Další informace najdete v příspěvku [tabulek aplikace Microsoft Azure: Úvod k formátu JSON](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/05/windows-azure-tables-introducing-json.aspx) a [Formát datové části pro operace služby s tabulkou](http://msdn.microsoft.com/library/azure/dn535600.aspx).
+Další informace najdete v příspěvku [tabulek aplikace Microsoft Azure: Úvod k formátu JSON](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/05/windows-azure-tables-introducing-json.aspx) a [Formát datové části pro operace služby s tabulkou](https://msdn.microsoft.com/library/azure/dn535600.aspx).
 
 #### <a name="subheading26"></a>Nagle vypnuto
 Algoritmus pro Nagle je široce implementováno v sítích TCP/IP jako prostředek ke zlepšení výkonu sítě. To však není optimální za všech okolností (jako jsou vysoce interaktivní prostředí). Pro službu Azure Storage na Nagle algoritmus využívající dlaždice má negativní dopad na výkon požadavků na tabulky a fronty služby a měli byste zakázat Pokud je to možné.  
 
-Další informace najdete v blogovém příspěvku [Nagle pro algoritmus není na malých požadavků není popisný](http://blogs.msdn.com/b/windowsazurestorage/archive/2010/06/25/nagle-s-algorithm-is-not-friendly-towards-small-requests.aspx), který vysvětluje, proč jeho Nagle algoritmus špatně komunikuje s požadavky tabulky a fronty a ukazuje, jak zakázat v klientovi aplikace.  
+Další informace najdete v blogovém příspěvku [Nagle pro algoritmus není na malých požadavků není popisný](https://blogs.msdn.com/b/windowsazurestorage/archive/2010/06/25/nagle-s-algorithm-is-not-friendly-towards-small-requests.aspx), který vysvětluje, proč jeho Nagle algoritmus špatně komunikuje s požadavky tabulky a fronty a ukazuje, jak zakázat v klientovi aplikace.  
 
 ### <a name="schema"></a>Schéma
 Jak reprezentaci a dotazování na data je největší jednomu faktoru, který ovlivňuje výkon služby table service. Když každá aplikace, se liší, tato část popisuje některé obecné osvědčené postupy, které se týkají:  

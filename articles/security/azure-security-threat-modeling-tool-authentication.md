@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 23e219fa49146158c97f392427eee7c42c347a7a
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: b4b6e91f9b20166f63a4710f42726bf1d4090022
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43307416"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51251555"
 ---
 # <a name="security-frame-authentication--mitigations"></a>Zabezpečení Frame: Ověřování | Zmírnění rizik 
 | Produkt nebo službu | Článek |
@@ -156,7 +156,7 @@ ms.locfileid: "43307416"
 | **SDL fáze**               | Sestavení |  
 | **Použitelných technologiích** | Místního prostředí, SQL Azure |
 | **Atributy**              | Verze SQL verze - MSSQL2012, verze SQL - 12 |
-| **Odkazy**              | [Osvědčené postupy zabezpečení s databáze s omezením](http://msdn.microsoft.com/library/ff929055.aspx) |
+| **Odkazy**              | [Osvědčené postupy zabezpečení s databáze s omezením](https://msdn.microsoft.com/library/ff929055.aspx) |
 | **Kroky** | Neexistence zásadu vynucené heslo může zvýšit pravděpodobnost, že slabé přihlašovacích údajů zavedeno v databázi s omezením. Využijte ověřování Windows. |
 
 ## <a id="authn-sas-tokens"></a>Podle zařízení ověřování přihlašovacích údajů a tokeny SaS

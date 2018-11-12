@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 2/1/2018
-ms.openlocfilehash: ed3fc6d1d2a4b674e2866d2e168fb72490575869
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
-ms.translationtype: MT
+ms.openlocfilehash: 0d0274b88a15688106f185ede87f576443bdadb0
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51281829"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51229351"
 ---
 # <a name="excel-add-in-for-azure-machine-learning-studio-web-services"></a>Doplněk Excelu pro webové služby Azure Machine Learning Studio
 Excel usnadňuje volání webové služby přímo, bez nutnosti psát jakýkoli kód.
@@ -28,7 +28,7 @@ Excel usnadňuje volání webové služby přímo, bez nutnosti psát jakýkoli 
 1. Otevřít [Excelový soubor ukázka](https://aka.ms/amlexcel-sample-2), který obsahuje doplněk aplikace Excel a data o cestujících Titaniku. 
  
 > [!NOTE]
-> Zobrazí se že seznam webových služeb týkající se do souboru a v dolní části zaškrtávacího políčka "Automatické předpovědět". Pokud povolíte automatické odhad predikce **všechny** vašich služeb se aktualizují pokaždé, když dojde ke změně na vstupy. Pokud není zaškrtnuto budete muset kliknout na "Předpovědět vše" pro aktualizaci. Pro povolení automatického. odhad na úrovni služby přejít ke kroku 6.
+> Zobrazí se že seznam webových služeb týkající se do souboru a v dolní části zaškrtávacího políčka "Automatické předpovědět". Pokud povolíte automatické odhad predikce **všechny** vašich služeb budou aktualizované pokaždé, když dojde ke změně na vstupy. Pokud není zaškrtnuto budete muset kliknout na "Předpovědět vše" pro aktualizaci. Pro povolení automatického. odhad na úrovni služby přejít ke kroku 6.
 
 2. Kliknutím ji vyberte webovou službu – "Titanic pozůstalým prediktivní (ukázka doplňku Excel) [skóre]" v tomto příkladu.
    

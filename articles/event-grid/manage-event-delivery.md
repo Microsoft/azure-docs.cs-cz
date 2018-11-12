@@ -5,38 +5,41 @@ services: event-grid
 author: tfitzmac
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 10/10/2018
+ms.date: 11/06/2018
 ms.author: tomfitz
-ms.openlocfilehash: fcf3ecaff6e8ba1421496a96d01428946cf8ab8e
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 0a89a315f9c97f3cc6a8683f13c22b5066dc5dab
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49077778"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51277745"
 ---
 # <a name="dead-letter-and-retry-policies"></a>Zásady opakování a nedoručené zprávy
 
 Při vytváření odběru událostí, můžete přizpůsobit nastavení pro doručování událostí. V tomto článku se dozvíte, jak nastavit umístění nedoručených zpráv a přizpůsobit nastavení opakování. Informace o těchto funkcích najdete v tématu [doručování zpráv služby Event Grid a zkuste to znovu](delivery-and-retry.md).
 
+## <a name="install-preview-feature"></a>Nainstalujte funkci ve verzi preview
+
 [!INCLUDE [event-grid-preview-feature-note.md](../../includes/event-grid-preview-feature-note.md)]
 
 ## <a name="set-dead-letter-location"></a>Nastavit umístění onta nedoručených zpráv
 
-Pokud chcete nastavit umístění nedoručených zpráv, potřebujete účet úložiště pro uchování událostí, které nelze doručit do koncového bodu. Následující skript načte ID prostředku pro existující účet úložiště a vytvoří odběr událostí, který používá kontejner v účtu úložiště pro koncový bod onta nedoručených zpráv.
+Pokud chcete nastavit umístění nedoručených zpráv, potřebujete účet úložiště pro uchování událostí, které nelze doručit do koncového bodu. V příkladech Získejte ID prostředku pro existující účet úložiště. Vytvoří odběr událostí, který používá kontejner v účtu úložiště pro koncový bod onta nedoručených zpráv.
+
+### <a name="azure-cli"></a>Azure CLI
 
 ```azurecli-interactive
-# if you have not already installed the extension, do it now.
+# If you have not already installed the extension, do it now.
 # This extension is required for preview features.
 az extension add --name eventgrid
 
-storagename=demostorage
 containername=testcontainer
 
-storageid=$(az storage account show --name $storagename --resource-group gridResourceGroup --query id --output tsv)
+topicid=$(az eventgrid topic show --name demoTopic -g gridResourceGroup --query id --output tsv)
+storageid=$(az storage account show --name demoStorage --resource-group gridResourceGroup --query id --output tsv)
 
 az eventgrid event-subscription create \
-  -g gridResourceGroup \
-  --topic-name <topic_name> \
+  --source-resource-id $topicid \
   --name <event_subscription_name> \
   --endpoint <endpoint_URL> \
   --deadletter-endpoint $storageid/blobServices/default/containers/$containername
@@ -44,11 +47,34 @@ az eventgrid event-subscription create \
 
 Chcete-li vypnout dead-lettering, spusťte znovu příkaz pro vytvoření odběru událostí, ale neposkytují hodnotu `deadletter-endpoint`. Není nutné odstranit odběr události.
 
+### <a name="powershell"></a>PowerShell
+
+```azurepowershell-interactive
+# If you have not already installed the module, do it now.
+# This module is required for preview features.
+Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery
+
+$containername = "testcontainer"
+
+$topicid = (Get-AzureRmEventGridTopic -ResourceGroupName gridResourceGroup -Name demoTopic).Id
+$storageid = (Get-AzureRmStorageAccount -ResourceGroupName gridResourceGroup -Name demostorage).Id
+
+New-AzureRmEventGridSubscription `
+  -ResourceId $topicid `
+  -EventSubscriptionName <event_subscription_name> `
+  -Endpoint <endpoint_URL> `
+  -DeadLetterEndpoint "$storageid/blobServices/default/containers/$containername"
+```
+
+Chcete-li vypnout dead-lettering, spusťte znovu příkaz pro vytvoření odběru událostí, ale neposkytují hodnotu `DeadLetterEndpoint`. Není nutné odstranit odběr události.
+
 ## <a name="set-retry-policy"></a>Nastavit zásady opakování
 
-Při vytváření odběr Event gridu, můžete nastavit hodnoty pro jak dlouho by měl zkuste doručování událostí služby Event Grid. Ve výchozím nastavení služby Event Grid pokusí za 24 hodin (1 440 minut) a pokusí až 30krát. Pro váš odběr služby event grid můžete nastavit některé z těchto hodnot. Hodnota time to live události musí být celé číslo od 1 do 1440. Hodnota pro maximální doručování pokusů musí být celé číslo od 1 do 30.
+Při vytváření odběr Event gridu, můžete nastavit hodnoty pro jak dlouho by měl zkuste doručování událostí služby Event Grid. Ve výchozím nastavení služby Event Grid se pokusí za 24 hodin (1 440 minut) nebo 30krát. Pro váš odběr služby event grid můžete nastavit některé z těchto hodnot. Hodnota time to live události musí být celé číslo od 1 do 1440. Hodnota pro maximální počet opakování musí být celé číslo od 1 do 30.
 
 Nejde nakonfigurovat [plán opakování](delivery-and-retry.md#retry-schedule-and-duration).
+
+### <a name="azure-cli"></a>Azure CLI
 
 Pokud chcete nastavit událost time-to-live na jinou hodnotu než 1 440 minut, použijte:
 
@@ -76,7 +102,39 @@ az eventgrid event-subscription create \
   --max-delivery-attempts 18
 ```
 
-Nastavíte-li `event-ttl` a `max-deliver-attempts`, služby Event Grid použije první vypršení platnosti pro opakovaných pokusů.
+Nastavíte-li `event-ttl` a `max-deliver-attempts`, služby Event Grid použije první vyprší k určení, kdy se má zastavit doručování událostí.
+
+### <a name="powershell"></a>PowerShell
+
+Pokud chcete nastavit událost time-to-live na jinou hodnotu než 1 440 minut, použijte:
+
+```azurepowershell-interactive
+# If you have not already installed the module, do it now.
+# This module is required for preview features.
+Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery
+
+$topicid = (Get-AzureRmEventGridTopic -ResourceGroupName gridResourceGroup -Name demoTopic).Id
+
+New-AzureRmEventGridSubscription `
+  -ResourceId $topicid `
+  -EventSubscriptionName <event_subscription_name> `
+  -Endpoint <endpoint_URL> `
+  -EventTtl 720
+```
+
+Pokud chcete nastavit maximální počet opakovaných pokusů na jinou hodnotu než 30, použijte:
+
+```azurepowershell-interactive
+$topicid = (Get-AzureRmEventGridTopic -ResourceGroupName gridResourceGroup -Name demoTopic).Id
+
+New-AzureRmEventGridSubscription `
+  -ResourceId $topicid `
+  -EventSubscriptionName <event_subscription_name> `
+  -Endpoint <endpoint_URL> `
+  -MaxDeliveryAttempt 18
+```
+
+Nastavíte-li `EventTtl` a `MaxDeliveryAttempt`, služby Event Grid použije první vyprší k určení, kdy se má zastavit doručování událostí.
 
 ## <a name="next-steps"></a>Další postup
 

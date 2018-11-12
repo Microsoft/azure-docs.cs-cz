@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 6/20/2018
 ms.author: amitsriva
-ms.openlocfilehash: 563194ea0b3e4bda2021c75c544d068f00d74ba7
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 3163d4d61dba958cdf71dd0470b943bba69b0191
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46963828"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51237192"
 ---
 # <a name="back-end-health-diagnostic-logs-and-metrics-for-application-gateway"></a>Stav back endu, diagnostické protokoly a metriky pro službu Application Gateway
 
@@ -217,7 +217,7 @@ V protokolu výkonu se vygeneruje pouze v případě, že je povolená pro každ
 |HealthyHostCount     | Počet v dobrém stavu hostitelů ve fondu back-end.        |
 |unHealthyHostCount     | Počet není v pořádku hostitelů ve fondu back-end.        |
 |RequestCount     | Počet požadavků, které obsluhují.        |
-|Latence | Latence (v milisekundách) požadavků z instance do back-endu, který obsluhuje požadavky. |
+|latence | Latence (v milisekundách) požadavků z instance do back-endu, který obsluhuje požadavky. |
 |failedRequestCount| Počet neúspěšných žádostí.|
 |Propustnost| Průměrná propustnost od poslední protokolu v bajtech za sekundu.|
 
@@ -258,7 +258,7 @@ Brány firewall protokolu se vytvoří pouze v případě, že je povolená pro 
 |ruleSetVersion     | Verze se používá sada pravidel. Dostupné jsou hodnoty 2.2.9 a 3.0.     |
 |RuleId     | ID pravidla spouštěcí události.        |
 |zpráva     | Uživatelsky přívětivé zprávu pro aktivační událost. Další podrobnosti jsou uvedeny v části Podrobnosti.        |
-|akce     |  Akce v požadavku. Dostupné jsou hodnoty blokováno a povolené.      |
+|action     |  Akce v požadavku. Dostupné jsou hodnoty blokováno a povolené.      |
 |Web     | Web, pro který byl vygenerován v protokolu. V současné době pouze globální je uvedené, protože pravidla jsou globální.|
 |Podrobnosti     | Podrobnosti o spouštěcí události.        |
 |details.Message     | Popis pravidla.        |
@@ -337,7 +337,7 @@ Metriky jsou funkce pro určité prostředky Azure, kde můžete zobrazit číta
 
    Můžete filtrovat základě back-endový fond zobrazíte v pořádku a není v pořádku hostitelů v konkrétním back-endový fond.
 
-Přejděte do služby application gateway, v části **monitorování** klikněte na tlačítko **metriky**. Chcete-li zobrazit dostupné hodnoty, vyberte **METRIKA** rozevíracího seznamu.
+Přejděte do služby application gateway, v části **monitorování** klikněte na tlačítko **metriky**. Chcete-li zobrazit dostupné hodnoty, vyberte rozevírací seznam **METRIKA**.
 
 Na následujícím obrázku uvidíte příklad tří metrik, které se zobrazí za posledních 30 minut:
 
@@ -380,7 +380,7 @@ Informace o tom Další informace o webhooky a jak je můžete využít s výstr
 ## <a name="next-steps"></a>Další postup
 
 * Vizualizujte čítače a protokoly událostí s využitím [Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.md).
-* [Vizualizujte váš protokol aktivit Azure v Power BI](http://blogs.msdn.com/b/powerbi/archive/2015/09/30/monitor-azure-audit-logs-with-power-bi.aspx) blogový příspěvek.
+* [Vizualizujte váš protokol aktivit Azure v Power BI](https://blogs.msdn.com/b/powerbi/archive/2015/09/30/monitor-azure-audit-logs-with-power-bi.aspx) blogový příspěvek.
 * [Zobrazení a analýza protokolů aktivit Azure v Power BI a další](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/) blogový příspěvek.
 
 [1]: ./media/application-gateway-diagnostics/figure1.png

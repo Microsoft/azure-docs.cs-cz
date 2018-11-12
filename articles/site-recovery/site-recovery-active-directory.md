@@ -9,12 +9,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: mayg
-ms.openlocfilehash: 51d435d9edea5e341127cac89bc96a71c7bc8bb4
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: f96ed8659fc2f49b89199a813f9fab9d5f4af5a1
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50211889"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51232167"
 ---
 # <a name="set-up-disaster-recovery-for-active-directory-and-dns"></a>Nastavení zotavení po havárii pro Active Directory a DNS
 
@@ -44,7 +44,7 @@ Site Recovery můžete použít k ochraně virtuálního počítače, který je 
 Řadič domény, který se replikuje s využitím Site Recovery se používá pro [testovací převzetí služeb při selhání](#test-failover-considerations). Ujistěte se, že splňuje následující požadavky:
 
 1. Je řadič domény serverem globálního katalogu.
-2. Řadič domény musí být vlastníkem této role FSMO pro role, které jsou potřeba při selhání testu. V opačném případě tyto role bude potřeba [převzaty](http://aka.ms/ad_seize_fsmo) po převzetí služeb při selhání.
+2. Řadič domény musí být vlastníkem této role FSMO pro role, které jsou potřeba při selhání testu. V opačném případě tyto role bude potřeba [převzaty](https://aka.ms/ad_seize_fsmo) po převzetí služeb při selhání.
 
 ### <a name="configure-vm-network-settings"></a>Konfigurace nastavení sítě virtuálního počítače
 Pro virtuální počítač, který je hostitelem řadiče domény nebo DNS ve službě Site Recovery, konfigurace nastavení sítě v části **výpočty a síť** nastavení replikovaného virtuálního počítače. Tím se zajistí, že virtuální počítač je připojený ke správné síti po převzetí služeb při selhání.
@@ -93,7 +93,7 @@ Většina aplikací vyžaduje přítomnost řadiče domény nebo serveru DNS. Pr
 
 
 ### <a name="remove-references-to-other-domain-controllers"></a>Odebrat odkazy na ostatní řadiče domény
-Když spustíte testovací převzetí služeb, jsou všechny řadiče domény v testovací síti. Chcete-li odebrat odkazy na ostatní řadiče domény, které existují v produkčním prostředí, možná budete muset [převzetí rolí FSMO Active Directory](http://aka.ms/ad_seize_fsmo) a proveďte [Vyčištění metadat](https://technet.microsoft.com/library/cc816907.aspx) chybějících řadiče domény .
+Když spustíte testovací převzetí služeb, jsou všechny řadiče domény v testovací síti. Chcete-li odebrat odkazy na ostatní řadiče domény, které existují v produkčním prostředí, možná budete muset [převzetí rolí FSMO Active Directory](https://aka.ms/ad_seize_fsmo) a proveďte [Vyčištění metadat](https://technet.microsoft.com/library/cc816907.aspx) chybějících řadiče domény .
 
 
 ### <a name="issues-caused-by-virtualization-safeguards"></a>Potíže způsobené službou ochrana virtualizace
@@ -180,7 +180,7 @@ Pokud předchozí podmínky splněny, je pravděpodobné, že řadič domény sp
 
     `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa\IgnoreGCFailures`
 
-    Další informace najdete v tématu [zakažte požadavek na server globálního katalogu se ověření přihlášení uživatele k dispozici](http://support.microsoft.com/kb/241789).
+    Další informace najdete v tématu [zakažte požadavek na server globálního katalogu se ověření přihlášení uživatele k dispozici](https://support.microsoft.com/kb/241789).
 
 ### <a name="dns-and-domain-controller-on-different-machines"></a>DNS a řadič domény na různých počítačích
 
