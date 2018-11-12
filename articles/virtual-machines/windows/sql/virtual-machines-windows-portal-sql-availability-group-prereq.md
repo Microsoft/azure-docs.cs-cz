@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mikeray
-ms.openlocfilehash: d75bb780a17653aaacbc74413fb4240a8052a983
-ms.sourcegitcommit: e45b2aa85063d33853560ec4bc867f230c1c18ce
+ms.openlocfilehash: 2d8a98e6ab38f4156b6e2f5bda81b44e1789a6ed
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43371481"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51253070"
 ---
 # <a name="complete-the-prerequisites-for-creating-always-on-availability-groups-on-azure-virtual-machines"></a>Zajistěte splnění požadavků pro vytváření skupin dostupnosti AlwaysOn na virtuálních počítačích Azure
 
@@ -35,14 +35,14 @@ Následující diagram znázorňuje, co vytvoříte v tomto kurzu.
 
 ## <a name="review-availability-group-documentation"></a>Projděte si dokumentaci k skupiny dostupnosti
 
-V tomto kurzu se předpokládá, že máte základní znalosti o skupinách dostupnosti AlwaysOn SQL serveru. Pokud nejste obeznámeni s touto technologií, přečtěte si téma [přehled vždy na skupin dostupnosti (SQL Server)](http://msdn.microsoft.com/library/ff877884.aspx).
+V tomto kurzu se předpokládá, že máte základní znalosti o skupinách dostupnosti AlwaysOn SQL serveru. Pokud nejste obeznámeni s touto technologií, přečtěte si téma [přehled vždy na skupin dostupnosti (SQL Server)](https://msdn.microsoft.com/library/ff877884.aspx).
 
 
 ## <a name="create-an-azure-account"></a>Vytvoření účtu Azure
 Potřebujete mít účet Azure. Je možné [otevřete si bezplatný účet Azure](https://signup.azure.com/signup?offer=ms-azr-0044p&appId=102&ref=azureplat-generic&redirectURL=https:%2F%2Fazure.microsoft.com%2Fget-started%2Fwelcome-to-azure%2F&correlationId=24f9d452-1909-40d7-b609-2245aa7351a6&l=en-US) nebo [aktivovat výhody pro předplatitele sady Visual Studio](https://docs.microsoft.com/visualstudio/subscriptions/subscriber-benefits).
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
-1. Přihlaste se k [portálu Azure](http://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](http://portal.azure.com).
 2. Klikněte na tlačítko **+** k vytvoření nového objektu na portálu.
 
    ![Nový objekt](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/01-portalplus.png)
@@ -85,7 +85,7 @@ Vytvoření virtuální sítě:
    | --- | --- |
    | **Název** |autoHAVNET |
    | **Adresní prostor** |10.33.0.0/24 |
-   | **Název podsítě** |Správce |
+   | **Název podsítě** |Správa |
    | **Rozsah adres podsítě** |10.33.0.0/29 |
    | **Předplatné** |Určete předplatné, kterou chcete použít. **Předplatné** je prázdné, pokud máte pouze jedno předplatné. |
    | **Skupina prostředků** |Zvolte **použít existující** a vyberte název skupiny prostředků. |
@@ -184,7 +184,7 @@ Následující tabulka ukazuje nastavení pro tyto dva počítače:
 | **Skupina prostředků** |SQL-HA-RG |
 | **Umístění** |*Vaše poloha* |
 | **Velikost** |DS1_V2 |
-| **Úložiště** | **Použití spravovaných disků** - **Ano** |
+| **Storage** | **Použití spravovaných disků** - **Ano** |
 | **Virtuální síť** |autoHAVNET |
 | **Podsíť** |Správce |
 | **Veřejná IP adresa** |*Stejný název jako virtuální počítač* |
@@ -349,7 +349,7 @@ Teď, když jste dokončili konfiguraci služby Active Directory a uživatelský
 
 ## <a name="create-sql-server-vms"></a>Vytvořit virtuální počítače s SQL serverem
 
-Vytvořte další tři virtuální počítače. Toto řešení vyžaduje dva virtuální počítače s instancí systému SQL Server. Třetí virtuální počítač bude fungovat jako určující kopii. Můžete použít Windows Server 2016 [cloudu s kopií clusteru](http://docs.microsoft.com/windows-server/failover-clustering/deploy-cloud-witness), ale konzistence s starších operačních systémech používá tento dokument virtuálního počítače pro určující kopii.  
+Vytvořte další tři virtuální počítače. Toto řešení vyžaduje dva virtuální počítače s instancí systému SQL Server. Třetí virtuální počítač bude fungovat jako určující kopii. Můžete použít Windows Server 2016 [cloudu s kopií clusteru](https://docs.microsoft.com/windows-server/failover-clustering/deploy-cloud-witness), ale konzistence s starších operačních systémech používá tento dokument virtuálního počítače pro určující kopii.  
 
 Než budete pokračovat, zvažte následující rozhodnutí o návrhu.
 
@@ -483,7 +483,7 @@ Způsob otevření portů závisí na vámi používané řešení brány firewa
 1. Na prvním serveru SQL **Start** obrazovky, spusťte **brány Windows Firewall s pokročilým zabezpečením**.
 2. V levém podokně vyberte **příchozí pravidla**. V pravém podokně klikněte na tlačítko **nové pravidlo**.
 3. Pro **typ pravidla**, zvolte **Port**.
-4. Port, zadejte **TCP** a zadejte odpovídající port čísla. Podívejte se na následující příklad:
+4. Port, zadejte **TCP** a zadejte odpovídající port čísla. Prohlédněte si následující příklad:
 
    ![Brána firewall služby SQL](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/35-tcpports.png)
 

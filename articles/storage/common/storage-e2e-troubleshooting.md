@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 03/15/2017
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 41e7f5b4c36ad0bfed0ef5a9a31565474cf4d823
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: cf183b0a78ff3f7e442ea8052f37fc2df58aac54
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42054208"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51262314"
 ---
 # <a name="end-to-end-troubleshooting-using-azure-storage-metrics-and-logging-azcopy-and-message-analyzer"></a>Začátku do konce řešení problémů pomocí metrik Azure Storage a protokolování, AzCopy a analyzátoru zpráv
 [!INCLUDE [storage-selector-portal-e2e-troubleshooting](../../../includes/storage-selector-portal-e2e-troubleshooting.md)]
@@ -37,7 +37,7 @@ Tento kurz obsahuje praktické zkoumání scénáře řešení potíží začát
   
     Zobrazit [monitorování účtu úložiště na webu Azure Portal](storage-monitor-storage-account.md) informace o konfiguraci monitorování na webu Azure Portal.
 * **AzCopy**. Protokoly serveru pro službu Azure Storage jsou uložené jako objekty BLOB, takže můžete pomocí AzCopy můžete kopírovat objekty BLOB protokolů do místního adresáře pro analýzu pomocí Microsoft Message Analyzer. Zobrazit [přenos dat pomocí nástroje příkazového řádku Azcopy](storage-use-azcopy.md) Další informace o AzCopy.
-* **Microsoft Message Analyzer**. Message Analyzer je nástroj, který využívá soubory protokolu a zobrazí data protokolu ve formátu visual, který usnadňuje filter, search a data protokolu pro skupiny do užitečné sad, které můžete použít k analýze chyb a problémů s výkonem. Zobrazit [operační příručce k Microsoft Message Analyzer](http://technet.microsoft.com/library/jj649776.aspx) Další informace o Message Analyzer.
+* **Microsoft Message Analyzer**. Message Analyzer je nástroj, který využívá soubory protokolu a zobrazí data protokolu ve formátu visual, který usnadňuje filter, search a data protokolu pro skupiny do užitečné sad, které můžete použít k analýze chyb a problémů s výkonem. Zobrazit [operační příručce k Microsoft Message Analyzer](https://technet.microsoft.com/library/jj649776.aspx) Další informace o Message Analyzer.
 
 ## <a name="about-the-sample-scenario"></a>Informace o ukázkovém scénáři
 Pro účely tohoto kurzu prozkoumáme scénář, ve kterém metrik Azure Storage určuje frekvence nízká Procento úspěšných pokusů pro aplikaci, která volá úložiště Azure. Metrika frekvence nízká Procento úspěšných pokusů (zobrazené jako **PercentSuccess** v [webu Azure portal](https://portal.azure.com) a v tabulkách metriky) sleduje operace, která sice podaří, ale který vrátit stavový kód HTTP, která je větší než 299. V souborech protokolů úložiště na straně serveru, se zaznamenávají tyto operace se stavem transakce **ClientOtherErrors**. Další podrobnosti o metriku s nízkou Procento úspěšných pokusů najdete v tématu [metrika ukazuje nízkou PercentSuccess nebo položky log analytics mají operací se stavem transakce ClientOtherErrors](storage-monitoring-diagnosing-troubleshooting.md#metrics-show-low-percent-success).
@@ -51,7 +51,7 @@ Pro náš vzorový scénář když jsme jste vytvořili, že míra metrika Proce
 ### <a name="some-causes-of-400-range-errors"></a>Některé příčiny chyby 400 rozsahu
 Následující příklady jsou uvedeny vzorky některé chyby 400-range pro požadavky na úložiště objektů Blob v Azure a jejich možných příčin. Některé z těchto chyb, stejně jako chyby v oblasti 300 a 500 rozsah může přispět k nízké procentuální úspěšnosti.
 
-Poznámka: následující seznamy jsou daleko od dokončení. Zobrazit [stavové a chybové kódy](http://msdn.microsoft.com/library/azure/dd179382.aspx) na webu MSDN pro podrobnosti o chybách obecné služby Azure Storage a o chybách, které jsou specifické pro každou ze služeb úložiště.
+Poznámka: následující seznamy jsou daleko od dokončení. Zobrazit [stavové a chybové kódy](https://msdn.microsoft.com/library/azure/dd179382.aspx) na webu MSDN pro podrobnosti o chybách obecné služby Azure Storage a o chybách, které jsou specifické pro každou ze služeb úložiště.
 
 **Příklady stavový kód 404 (Nenalezeno)**
 
@@ -79,7 +79,7 @@ V tomto kurzu použijeme Message Analyzer pro práci s tři různé typy soubor�
 * **Protokol trasování sítě HTTP**, které shromažďuje údaje o dat požadavků a odpovědí HTTP/HTTPS, včetně pro operace využívající službu Azure Storage. V tomto kurzu vytvoříme trasování v síti prostřednictvím nástroje Message Analyzer.
 
 ### <a name="configure-server-side-logging-and-metrics"></a>Konfigurace protokolování na straně serveru a metriky
-Nejprve jsme budete muset nakonfigurovat protokolování služby Azure Storage a metriky, takže máme data z klientské aplikace k analýze. Protokolování a metrik v mnoha různými způsoby – můžete nakonfigurovat přes [webu Azure portal](https://portal.azure.com), pomocí prostředí PowerShell, nebo prostřednictvím kódu programu. Zobrazit [povolení metrik Storage a zobrazení dat metrik](http://msdn.microsoft.com/library/azure/dn782843.aspx) a [povolení protokolování úložiště a přístup k datům protokolů](http://msdn.microsoft.com/library/azure/dn782840.aspx) na webové stránce MSDN podrobnosti o konfiguraci protokolování a metriky.
+Nejprve jsme budete muset nakonfigurovat protokolování služby Azure Storage a metriky, takže máme data z klientské aplikace k analýze. Protokolování a metrik v mnoha různými způsoby – můžete nakonfigurovat přes [webu Azure portal](https://portal.azure.com), pomocí prostředí PowerShell, nebo prostřednictvím kódu programu. Zobrazit [povolení metrik Storage a zobrazení dat metrik](https://msdn.microsoft.com/library/azure/dn782843.aspx) a [povolení protokolování úložiště a přístup k datům protokolů](https://msdn.microsoft.com/library/azure/dn782840.aspx) na webové stránce MSDN podrobnosti o konfiguraci protokolování a metriky.
 
 **Prostřednictvím portálu Azure portal**
 
@@ -124,7 +124,7 @@ Začínáme s prostředím PowerShell for Azure, najdete v článku [instalace a
     ```
 
 ### <a name="configure-net-client-side-logging"></a>Konfigurace protokolování na straně klienta .NET
-Pokud chcete nakonfigurovat protokolování na straně klienta pro aplikace .NET, povolte diagnostiku .NET v konfiguračním souboru aplikace (web.config nebo app.config). Zobrazit [Client-side protokolování pomocí klientské knihovny úložiště .NET](http://msdn.microsoft.com/library/azure/dn782839.aspx) a [Client-side protokolování pomocí služby Microsoft Azure Storage SDK pro Javu](http://msdn.microsoft.com/library/azure/dn782844.aspx) na webové stránce MSDN o.
+Pokud chcete nakonfigurovat protokolování na straně klienta pro aplikace .NET, povolte diagnostiku .NET v konfiguračním souboru aplikace (web.config nebo app.config). Zobrazit [Client-side protokolování pomocí klientské knihovny úložiště .NET](https://msdn.microsoft.com/library/azure/dn782839.aspx) a [Client-side protokolování pomocí služby Microsoft Azure Storage SDK pro Javu](https://msdn.microsoft.com/library/azure/dn782844.aspx) na webové stránce MSDN o.
 
 V protokolu na straně klienta obsahuje podrobné informace o jak klient připraví žádosti a obdrží a zpracuje odpověď.
 
@@ -160,7 +160,7 @@ Pro tento kurz shromažďovat a nejdříve uložte trasování sítě v Message 
 > 
 > 
 
-Zobrazit [díky funkcím, které trasování sítě](http://technet.microsoft.com/library/jj674819.aspx) na webu Technet pro další podrobnosti.
+Zobrazit [díky funkcím, které trasování sítě](https://technet.microsoft.com/library/jj674819.aspx) na webu Technet pro další podrobnosti.
 
 ## <a name="review-metrics-data-in-the-azure-portal"></a>Zkontrolujte data metrik na webu Azure Portal
 Jakmile vaše aplikace byla spuštěna pro určitou dobu, můžete zkontrolovat grafů metrik, které se zobrazují v [webu Azure portal](https://portal.azure.com) sledovat, jak vaši službu vede.
@@ -186,15 +186,15 @@ AzCopy.exe /Source:http://<storageaccountname>.blob.core.windows.net/$logs /Dest
 ```
 AzCopy je k dispozici ke stažení [soubory ke stažení Azure](https://azure.microsoft.com/downloads/) stránky. Podrobnosti o použití nástroje AzCopy najdete v tématu [přenos dat pomocí nástroje příkazového řádku Azcopy](storage-use-azcopy.md).
 
-Další informace o stahování protokolů na straně serveru, naleznete v tématu [stáhnout protokolování úložiště dat protokolu](http://msdn.microsoft.com/library/azure/dn782840.aspx#DownloadingStorageLogginglogdata).
+Další informace o stahování protokolů na straně serveru, naleznete v tématu [stáhnout protokolování úložiště dat protokolu](https://msdn.microsoft.com/library/azure/dn782840.aspx#DownloadingStorageLogginglogdata).
 
 ## <a name="use-microsoft-message-analyzer-to-analyze-log-data"></a>Umožňuje analyzovat data protokolů Microsoft Message Analyzer
-Microsoft Message Analyzer je nástroj pro digitalizaci, zobrazení a analýza protokolů přenosů, události a další zprávy systému nebo aplikace v scénáře řešení potíží a diagnostiku pro zasílání zpráv. Message Analyzer také umožňuje načíst, agregaci a analýzu dat z protokolu a uložit soubory trasování. Další informace o analyzátoru zpráv, najdete v části [operační příručce k Microsoft Message Analyzer](http://technet.microsoft.com/library/jj649776.aspx).
+Microsoft Message Analyzer je nástroj pro digitalizaci, zobrazení a analýza protokolů přenosů, události a další zprávy systému nebo aplikace v scénáře řešení potíží a diagnostiku pro zasílání zpráv. Message Analyzer také umožňuje načíst, agregaci a analýzu dat z protokolu a uložit soubory trasování. Další informace o analyzátoru zpráv, najdete v části [operační příručce k Microsoft Message Analyzer](https://technet.microsoft.com/library/jj649776.aspx).
 
 Message Analyzer zahrnuje prostředky pro službu Azure Storage, který vám pomůže analyzovat serveru, klienta a protokoly sítě. V této části probereme, jak používat tyto nástroje k vyřešení problému s nízkou Procento úspěšných pokusů v protokolech úložiště.
 
 ### <a name="download-and-install-message-analyzer-and-the-azure-storage-assets"></a>Stáhněte a nainstalujte nástroje Message Analyzer a prostředky úložiště Azure
-1. Stáhněte si [Message Analyzer](http://www.microsoft.com/download/details.aspx?id=44226) z Microsoft Download Center a spusťte instalační program.
+1. Stáhněte si [Message Analyzer](https://www.microsoft.com/download/details.aspx?id=44226) z Microsoft Download Center a spusťte instalační program.
 2. Spuštění nástroje Message Analyzer.
 3. Z **nástroje** nabídce vyberte možnost **správce inventáře**. V **správce inventáře** dialogového okna, vyberte **stáhne**, potom vyfiltrujte **služby Azure Storage**. Úložiště prostředků Azure, uvidíte, jak je znázorněno na obrázku níže.
 4. Klikněte na tlačítko **synchronizace všechny položky zobrazí** instalace prostředků úložiště Azure. K dispozici prostředky patří:
@@ -231,7 +231,7 @@ Nejprve určit časový rámec, který vás zajímá revizí a udržovat co nejm
 
 Pokud máte velké množství dat protokolu, můžete chtít určit relace filtr data protokolů teprve potom ho načíst. V **filtru relace** vyberte **knihovny** tlačítko Vybrat předdefinovaný filtr, například zvolte **globální doba filtr I** ze služby Azure Storage filtry pro filtrování v časovém intervalu. Potom můžete upravit kritéria filtru pro zadejte počáteční a koncovou časové razítko pro interval, po který chcete zobrazit. Můžete také filtrovat na konkrétní stavový kód; Můžete například načíst pouze ty položky protokolu, kde je stavový kód 404.
 
-Další informace o importu dat protokolu do Microsoft Message Analyzer, naleznete v tématu [načítání dat zprávy](http://technet.microsoft.com/library/dn772437.aspx) na webu TechNet.
+Další informace o importu dat protokolu do Microsoft Message Analyzer, naleznete v tématu [načítání dat zprávy](https://technet.microsoft.com/library/dn772437.aspx) na webu TechNet.
 
 ### <a name="use-the-client-request-id-to-correlate-log-file-data"></a>ID žádosti klienta můžete korelovat data protokolů
 Klientská knihovna pro úložiště Azure automaticky vygeneruje ID žádosti klienta jedinečný pro každý požadavek. Tato hodnota jsou zapsány do protokolu klienta, serveru protokolu a trasování sítě, ve kterém můžete korelovat data mezi všechny tři protokoly v rámci nástroje Message Analyzer. Zobrazit [ID žádosti klienta](storage-monitoring-diagnosing-troubleshooting.md#client-request-id) pro další informace o klientovi požádat o ID.
@@ -337,7 +337,7 @@ Data zobrazená v rozložení zobrazení v těchto dvou karet můžete analyzova
 Jakmile budete znát adresu objektu blob, který vrátil chybu 404, může prozkoumat podrobnosti. Pokud budete hledat položky protokolu pro ostatní zprávy související s operacemi na stejný objekt blob, můžete zkontrolovat, zda klient dříve odstraněné entity.
 
 ## <a name="analyze-other-types-of-storage-errors"></a>Analýza jiných typů chyb úložiště
-Teď, když jste se seznámili s použitím nástroje Message Analyzer k analýze dat protokolů, můžete analyzovat jiné typy chyb s použitím zobrazení rozložení, barva pravidla a hledání a filtrování. Následující tabulky uvádí některé problémy, na které můžete narazit a kritéria filtru, která vám pomůže najít je. Další informace o vytváření filtrů a nástroje Message Analyzer filtrování jazyka najdete v tématu [filtrování Data zprávy](http://technet.microsoft.com/library/jj819365.aspx).
+Teď, když jste se seznámili s použitím nástroje Message Analyzer k analýze dat protokolů, můžete analyzovat jiné typy chyb s použitím zobrazení rozložení, barva pravidla a hledání a filtrování. Následující tabulky uvádí některé problémy, na které můžete narazit a kritéria filtru, která vám pomůže najít je. Další informace o vytváření filtrů a nástroje Message Analyzer filtrování jazyka najdete v tématu [filtrování Data zprávy](https://technet.microsoft.com/library/jj819365.aspx).
 
 | K prozkoumání... | Použijte výraz filtru... | Výraz se vztahuje na protokolu (klient, Server, sítě, všechny) |
 | --- | --- | --- |
@@ -361,7 +361,7 @@ Teď, když jste se seznámili s použitím nástroje Message Analyzer k analýz
 Další informace o odstraňování potíží začátku do konce scénáře ve službě Azure Storage naleznete v následujících zdrojích:
 
 * [Monitorování, diagnostika a řešení problémů s Microsoft Azure Storage](storage-monitoring-diagnosing-troubleshooting.md)
-* [Storage Analytics](http://msdn.microsoft.com/library/azure/hh343270.aspx)
+* [Storage Analytics](https://msdn.microsoft.com/library/azure/hh343270.aspx)
 * [Monitorování účtu úložiště na webu Azure Portal](storage-monitor-storage-account.md)
 * [Přenos dat pomocí nástroje příkazového řádku AzCopy](storage-use-azcopy.md)
-* [Microsoft Message Analyzer Provozní příručka](http://technet.microsoft.com/library/jj649776.aspx)
+* [Microsoft Message Analyzer Provozní příručka](https://technet.microsoft.com/library/jj649776.aspx)

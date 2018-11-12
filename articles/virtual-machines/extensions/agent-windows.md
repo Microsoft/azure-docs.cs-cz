@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: roiyz
-ms.openlocfilehash: d93fc81241053418ea2ff0576d50cbaefa0df9fb
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: bba03d8e62c481e9eb5cce8468a6a84f5e492d2f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49428551"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51253988"
 ---
 # <a name="azure-virtual-machine-agent-overview"></a>Přehled služby Azure agenta virtuálního počítače
 Agent virtuálního počítače Microsoft Azure (VM Agent) je zabezpečeného a nenáročného proces, který spravuje interakci virtuálních počítačů (VM) s Kontrolerem prostředků infrastruktury Azure. Agent virtuálního počítače má primární roli při povolování a spouštění rozšíření virtuálního počítače Azure. Rozšíření virtuálních počítačů povolit konfiguraci po nasazení virtuálního počítače, jako je například instalací a konfigurací softwaru. Rozšíření virtuálních počítačů povolit také funkce pro obnovení, jako je resetování hesla pro správu virtuálního počítače. Rozšíření virtuálních počítačů nelze spustit bez agenta virtuálního počítače Azure.
@@ -60,7 +60,7 @@ Ke spuštění virtuálního počítače musí mít nainstalovaný na virtuáln�
 Pokud nemáte nainstalovaní agenti, nelze použít některé služby Azure, jako je Azure Backup nebo zabezpečení Azure. Tyto služby vyžadují rozšíření k instalaci. Pokud jste nasadili virtuální počítač bez WinGA, můžete nainstalovat nejnovější verzi agenta později.
 
 ### <a name="manual-installation"></a>Ruční instalace
-Agent virtuálního počítače Windows můžete ručně nainstalovat balíček Instalační služby systému Windows. Ruční instalace může být nutné, když vytvoříte vlastní image virtuálního počítače, který je nasazený do Azure. Pro ruční instalaci agenta virtuálního počítače Windows [stáhnout instalační program agenta virtuálního počítače](http://go.microsoft.com/fwlink/?LinkID=394789).
+Agent virtuálního počítače Windows můžete ručně nainstalovat balíček Instalační služby systému Windows. Ruční instalace může být nutné, když vytvoříte vlastní image virtuálního počítače, který je nasazený do Azure. Pro ruční instalaci agenta virtuálního počítače Windows [stáhnout instalační program agenta virtuálního počítače](https://go.microsoft.com/fwlink/?LinkID=394789).
 
 Poklikáním soubor Instalační služby systému Windows lze nainstalovat agenta virtuálního počítače. Pro automatizované nebo bezobslužné instalace agenta virtuálního počítače spusťte následující příkaz:
 

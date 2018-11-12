@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/10/2017
 ms.author: dekapur
-ms.openlocfilehash: 3ce47d631e8a2ec7daf96ef95200001e5d4f8327
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: f91a6b305a3d531aa1c733685f6d896ed07054ae
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42818577"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51257601"
 ---
 # <a name="create-a-standalone-cluster-running-on-windows-server"></a>Vytvoření samostatného clusteru běžící na Windows serveru
 Azure Service Fabric můžete použít k vytvoření clusterů Service Fabric na všechny virtuální počítače nebo počítače se systémem Windows Server. To znamená, že můžete nasadit a spouštět aplikace Service Fabric v jakémkoli prostředí, které obsahuje sadu propojených počítačů Windows serveru, už to jsou v místním prostředí nebo jakýkoli jiný poskytovatel cloudu. Service Fabric nabízí instalační balíček pro vytváření clusterů Service Fabric volá samostatného balíčku Windows serveru.
@@ -27,7 +27,7 @@ Azure Service Fabric můžete použít k vytvoření clusterů Service Fabric na
 Tento článek vás provede kroky pro vytvoření samostatného clusteru Service Fabric.
 
 > [!NOTE]
-> Tento samostatný balíček Windows serveru je komerčně dostupný a mohou být použity pro nasazení v produkčním prostředí. Tento balíček může obsahovat nové funkce Service Fabric, které jsou v "Verze Preview". Přejděte dolů k položce "[součástí tohoto balíčku funkce ve verzi Preview](#previewfeatures_anchor)." oddíl seznamu funkce ve verzi preview. Je možné [stáhnout kopii této smlouvy EULA](http://go.microsoft.com/fwlink/?LinkID=733084) nyní.
+> Tento samostatný balíček Windows serveru je komerčně dostupný a mohou být použity pro nasazení v produkčním prostředí. Tento balíček může obsahovat nové funkce Service Fabric, které jsou v "Verze Preview". Přejděte dolů k položce "[součástí tohoto balíčku funkce ve verzi Preview](#previewfeatures_anchor)." oddíl seznamu funkce ve verzi preview. Je možné [stáhnout kopii této smlouvy EULA](https://go.microsoft.com/fwlink/?LinkID=733084) nyní.
 > 
 > 
 
@@ -35,7 +35,7 @@ Tento článek vás provede kroky pro vytvoření samostatného clusteru Service
 
 ## <a name="get-support-for-the-service-fabric-for-windows-server-package"></a>Získat podporu pro balíček aplikace Service Fabric pro Windows Server
 * Zeptejte se komunity o samostatného balíčku Service Fabric pro Windows Server v [fórum pro Azure Service Fabric](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=AzureServiceFabric?).
-* Vytvořit lístek pro [profesionální podpory pro Service Fabric](http://support.microsoft.com/oas/default.aspx?prid=16146).  Další informace o profesionální podpory od Microsoftu [tady](https://support.microsoft.com/en-us/gp/offerprophone?wa=wsignin1.0).
+* Vytvořit lístek pro [profesionální podpory pro Service Fabric](https://support.microsoft.com/oas/default.aspx?prid=16146).  Další informace o profesionální podpory od Microsoftu [tady](https://support.microsoft.com/en-us/gp/offerprophone?wa=wsignin1.0).
 * Můžete také získat podporu pro tento balíček v rámci [programem Microsoft Premier Support](https://support.microsoft.com/en-us/premier).
 * Další podrobnosti najdete v tématu [možnosti podpory Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-support).
 * Chcete-li shromažďovat protokoly pro účely podpory, spusťte [kolektoru protokolů samostatné Service Fabric](service-fabric-cluster-standalone-package-contents.md).
@@ -44,7 +44,7 @@ Tento článek vás provede kroky pro vytvoření samostatného clusteru Service
 
 ## <a name="download-the-service-fabric-for-windows-server-package"></a>Stažení balíčku Service Fabric pro Windows Server
 K vytvoření clusteru použijte balíček aplikace Service Fabric pro Windows Server (Windows Server 2012 R2 a novější) najdete tady: <br>
-[Stáhněte si odkaz - samostatného balíčku Service Fabric – Windows Server](http://go.microsoft.com/fwlink/?LinkId=730690)
+[Stáhněte si odkaz - samostatného balíčku Service Fabric – Windows Server](https://go.microsoft.com/fwlink/?LinkId=730690)
 
 Podrobnosti najít v obsahu balíčku [tady](service-fabric-cluster-standalone-package-contents.md).
 

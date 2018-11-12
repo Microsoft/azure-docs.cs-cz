@@ -9,18 +9,18 @@ ms.author: gwallace
 ms.date: 03/15/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d9dbf816d4fd0d9f6044ebeea9a23a60adcc5bc8
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 1e9ca18d2075d40f6f55bc84723f79ae7e10850b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48044599"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261209"
 ---
 # <a name="connection-assets-in-azure-automation"></a>Assety připojení v Azure Automation.
 
 Asset připojení Automation obsahuje informace potřebné pro připojení k externí službě nebo aplikaci z runbooku nebo konfigurace DSC. To může zahrnovat informace požadované pro ověřování, jako je uživatelské jméno a heslo spolu s informacemi o připojení, jako je například adresa URL nebo portu. Hodnota připojení se zachovat všechny vlastnosti pro připojení ke konkrétní aplikaci v jeden prostředek na rozdíl od vytváření několika proměnných. Uživatel může upravovat hodnoty pro připojení na jednom místě a název připojení můžete předat do runbooku nebo konfigurace DSC v jeden parametr. Vlastnosti připojení jsou přístupné z runbooku nebo konfigurace DSC se **Get-AutomationConnection** aktivity. 
 
-Když vytvoříte připojení, je nutné zadat *typ připojení*. Typ připojení je šablonu, která definuje sadu vlastností. Připojení se definuje hodnoty pro jednotlivé vlastnosti definované v jeho typ připojení. Typy připojení jsou přidány do služby Azure Automation v integračních modulech nebo vytvářené pomocí [rozhraní API služby Azure Automation](http://msdn.microsoft.com/library/azure/mt163818.aspx) Pokud modulu integrace obsahuje typ připojení a importovat do účtu Automation. V opačném případě je potřeba vytvořit soubor metadat pro určení typu připojení služby Automation.  Další informace ohledně této najdete v tématu [moduly integrace](automation-integration-modules.md).  
+Když vytvoříte připojení, je nutné zadat *typ připojení*. Typ připojení je šablonu, která definuje sadu vlastností. Připojení se definuje hodnoty pro jednotlivé vlastnosti definované v jeho typ připojení. Typy připojení jsou přidány do služby Azure Automation v integračních modulech nebo vytvářené pomocí [rozhraní API služby Azure Automation](https://msdn.microsoft.com/library/azure/mt163818.aspx) Pokud modulu integrace obsahuje typ připojení a importovat do účtu Automation. V opačném případě je potřeba vytvořit soubor metadat pro určení typu připojení služby Automation.  Další informace ohledně této najdete v tématu [moduly integrace](automation-integration-modules.md).  
 
 >[!NOTE]
 >Zabezpečené prostředky ve službě Azure Automation zahrnovat přihlašovací údaje, certifikátů, připojení a zašifrované proměnné. Tyto prostředky jsou zašifrované a uložené ve službě Azure Automation jednotlivých účtů automation pomocí jedinečný klíč, který je generován. Tento klíč uložený ve službě Key Vault. Před uložením o zabezpečený prostředek, je klíč načíst ze služby Key Vault a použije k zašifrování assetu.
@@ -70,7 +70,7 @@ Funkce v následující tabulce se používá pro přístup k připojením v sad
 
 ### <a name="to-create-a-new-connection-with-windows-powershell"></a>Chcete-li vytvořit nové připojení pomocí prostředí Windows PowerShell
 
-Vytvoření nového připojení pomocí prostředí Windows PowerShell [New-AzureRmAutomationConnection](/powershell/module/azurerm.automation/new-azurermautomationconnection) rutiny. Tato rutina má parametr s názvem **ConnectionFieldValues** , který očekává, že [zatřiďovací tabulku](http://technet.microsoft.com/library/hh847780.aspx) definování hodnot pro vlastnosti určené typ připojení.
+Vytvoření nového připojení pomocí prostředí Windows PowerShell [New-AzureRmAutomationConnection](/powershell/module/azurerm.automation/new-azurermautomationconnection) rutiny. Tato rutina má parametr s názvem **ConnectionFieldValues** , který očekává, že [zatřiďovací tabulku](https://technet.microsoft.com/library/hh847780.aspx) definování hodnot pro vlastnosti určené typ připojení.
 
 Pokud jste se seznámili s automatizace [účet Spustit jako](automation-sec-configure-azure-runas-account.md) k ověření runbooků pomocí instančního objektu, skript prostředí PowerShell, uvedený jako alternativu k vytvoření účtu spustit jako z portálu, vytvoří nové připojení pomocí následující ukázkové příkazy z prostředku.  
 
@@ -84,7 +84,7 @@ Budete moct vytvořit asset připojení, protože při vytváření účtu Autom
   
 ## <a name="using-a-connection-in-a-runbook-or-dsc-configuration"></a>Použití připojení v runbooku nebo konfigurace DSC
 
-Načíst připojení v runbooku nebo konfigurace DSC se **Get-AutomationConnection** rutiny.  Nelze použít [Get-AzureRmAutomationConnection](/powershell/module/azurerm.automation/get-azurermautomationconnection) aktivity.  Tato aktivita načítá hodnoty různých polí v připojení a vrátí je jako [zatřiďovací tabulku](http://go.microsoft.com/fwlink/?LinkID=324844) které pak jde použít s příslušnými příkazy v runbooku nebo konfigurace DSC.
+Načíst připojení v runbooku nebo konfigurace DSC se **Get-AutomationConnection** rutiny.  Nelze použít [Get-AzureRmAutomationConnection](/powershell/module/azurerm.automation/get-azurermautomationconnection) aktivity.  Tato aktivita načítá hodnoty různých polí v připojení a vrátí je jako [zatřiďovací tabulku](https://go.microsoft.com/fwlink/?LinkID=324844) které pak jde použít s příslušnými příkazy v runbooku nebo konfigurace DSC.
 
 ### <a name="textual-runbook-sample"></a>Ukázka textové sady runbook
 

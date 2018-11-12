@@ -15,12 +15,12 @@ ms.component: report-monitor
 ms.date: 05/14/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: fe5bcce06ef02bae75bf9fdaf5702a99f485885c
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: e4aa4a87bec8f737405c90bb42bdb5fc60cb379a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42054206"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51232993"
 ---
 # <a name="azure-active-directory-risk-events"></a>Azure Active Directory rizikových událostí
 
@@ -155,7 +155,7 @@ Tato riziková událost identifikuje IP adresy, nikoli zařízením uživatele. 
 
 Doporučujeme kontaktovat uživatele a prohledávání všech jeho zařízeních. Je také možné, že je nakažená osobní zařízení uživatele, nebo jak bylo zmíněno dříve, že používal někdo nakažené zařízení ze stejné IP adresy jako uživatel. Nakažených zařízení jsou často infikované malwarem, který dosud nebyly určeny pomocí antivirového softwaru a může také označovat jako chybných uživatelských návyky, které může způsobit nakaženy zařízení.
 
-Další informace o tom, jak adresu napadení malwarem, najdete v článku [Malware Protection Center](http://go.microsoft.com/fwlink/?linkid=335773&clcid=0x409).
+Další informace o tom, jak adresu napadení malwarem, najdete v článku [Malware Protection Center](https://go.microsoft.com/fwlink/?linkid=335773&clcid=0x409).
 
 
 ### <a name="sign-ins-from-ip-addresses-with-suspicious-activity"></a>Přihlášení z IP adres s podezřelou aktivitou

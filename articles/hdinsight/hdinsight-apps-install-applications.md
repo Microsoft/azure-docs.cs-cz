@@ -1,24 +1,24 @@
 ---
-title: Instalace aplikací Hadoop jiných výrobců v Azure HDInsight
+title: Instalace aplikací jiných výrobců v Azure HDInsight
 description: Přečtěte si, jak v Azure HDInsight instalovat aplikace Hadoop jiných výrobců.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/14/2018
-ms.author: jasonh
-ms.openlocfilehash: c50bd7c314c88c0950478cc3068d9a5873b65263
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.date: 11/06/2018
+ms.author: hrasheed
+ms.openlocfilehash: 71c371594a0ee2b2b8e976fffb7641ccb6b72c0a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46996958"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261787"
 ---
-# <a name="install-third-party-hadoop-applications-on-azure-hdinsight"></a>Instalace aplikací Hadoop jiných výrobců v Azure HDInsight
+# <a name="install-third-party-apache-hadoop-applications-on-azure-hdinsight"></a>Instalace aplikací třetích stran Apache Hadoop v Azure HDInsight
 
-Zjistěte, jak nainstalovat aplikaci Hadoop jiného výrobce v Azure HDInsight. Pokyny pro instalaci vašich vlastních aplikací najdete v článku [Instalace vlastních aplikací HDInsight](hdinsight-apps-install-custom-applications.md).
+Zjistěte, jak nainstalovat aplikaci Apache Hadoop jiných výrobců v Azure HDInsight. Pokyny pro instalaci vašich vlastních aplikací najdete v článku [Instalace vlastních aplikací HDInsight](hdinsight-apps-install-custom-applications.md).
 
 Aplikace HDInsight je aplikace, které uživatelé můžou nainstalovat na clusteru HDInsight. Tyto aplikace mohou být vytvořeny společností Microsoft, nezávislými dodavateli softwaru (ISV) nebo vámi samotnými.  
 
@@ -27,13 +27,18 @@ Následující seznam uvádí publikované aplikace:
 * **Platforma Intelligence AtScale** změní váš cluster HDInsight do serveru OLAP horizontální navýšení kapacity. Aplikace lze dotaz až miliardy řádků dat interaktivně pomocí nástrojů BI z Microsoft Excelu, Power BI, Tableau Software k QlikView.
 * **Cask CDAP pro HDInsight** poskytuje první jednotnou integrační platformu pro velké objemy dat, která snižuje čas do produkčního prostředí pro data aplikací a datových jezer o 80 %. Tato aplikace podporuje pouze clustery Standard HBase 3.4.
 * **DATAIKU DDS v HDInsight** umožňuje odborníkům v oblasti dat vytvářet prototypy, sestavovat a nasazovat vysoce specifické služby, které transformují nezpracovaná data na účinné obchodní předpovědi.
+* **Datameer** je samoobslužné škálovatelná platforma pro přípravu, zkoumání, a kterými se řídí vaše data pro analýzu zrychluje zapnutí komplexní s více zdroji dat do cenné informace připravené pro potřeby doručování rychlejší a chytřejší vytváření přehledů na podnikové úrovni.
 * **H2O umělé inteligence pro HDInsight (beta verze)** H2O Sparkling Water podporuje následující distribuované algoritmy: GLM, Naive Bayes, distribuované Random doménové struktury, přechod počítače zvýšení skóre, hluboké Neuronové sítě, obsáhlý learning K-means, PCA, Využívajících modely s nízkou řadit, detekce anomálií a Autoencoders.
-* **Kyligence Analytics Platform** Kyligence Analytics Platform (CAPE) je připravená pro podnikové datový sklad s využitím analytické jádro Apache Kylin a Apache Hadoop, nabízí sekunda dotazování čekací doba na datové sadě škálování ve velkém rozsahu a zjednodušuje analýzu dat pro Podnikoví uživatelé a analytiky. 
+* **Kyligence Analytics Platform** Kyligence Analytics Platform (CAPE) je připravená pro podnikové datový sklad s využitím analytické jádro Apache Kylin a Apache Hadoop, nabízí subsecond dotazování čekací doba na datové sadě škálování ve velkém rozsahu a zjednodušuje analýzu dat pro Podnikoví uživatelé a analytiky. 
 * **Adaptive samoobslužné přípravu dat**
 * **Server úloh Spart pro prováděcí modul Sparku KNIME** serveru úloh Spark pro prováděcí modul KNIME Spark se používá k připojení analytická platforma KNIME do clusterů HDInsight.
+* **Presto hvězdice** Presto je rychlé a škálovatelné distribuované modul dotazů SQL. Navržen k oddělení úložiště a výpočetního výkonu, je ideální pro dotazování na data v Azure Data Lake Storage, Azure Blob Storage, SQL a NoSQL databáze a další zdroje dat Presto.
 * **Kolekce dat Streamsets pro HDInsight** poskytuje plně vybavené integrované vývojové prostředí (IDE) umožňující navrhovat, testovat, nasazovat a spravovat kanály ingestace typu any-to-any, které zachytávají streamovaná data a data dávek a zahrnují celou řadu transformací v průběhu streamování – to vše bez nutnosti psát vlastní kód. 
-* **[Trifacta](http://www.trifacta.com/)**  umožňuje datovými architekty a analytici efektivněji a příprava různorodých dnes s využitím strojového učení a poskytuje Převratné uživatelské prostředí, pracovní postup a architektury.
+* **Striim** (vyslovováno "datový proud stream") je začátku do konce streamování integrace dat + platforma informací, povolení průběžného příjem, zpracování a analýzy různorodé datové proudy.
+* **[Trifacta](http://www.trifacta.com/)**  umožňuje datovými architekty a analytici efektivněji a příprava různorodých dnes s využitím strojového učení k zajištění převratných uživatelské prostředí, pracovní postup a architektury.
+* **Datová platforma Unifi** je bezproblémově integrovaná sada nástrojů pro samoobslužné dat navržená tak, aby obchodní uživatelům řešit problémy dat této jednotky přírůstkové výnosy, snížit náklady a složitost. 
 * **WANdisco Fusion HDI aplikace** umožňuje nepřetržité konzistentní připojení k datům, protože změny bez ohledu na to se nachází. Poskytuje přístup k vašim datům kdykoli a kdekoli bez výpadku a bez přerušení.
+* **Vodoryskou** katalogů slouží k uspořádání a řídí data automatického tagování dat s podmínkami podnikání pomocí AI. Vodoryskou vaší firmy chtějí katalogu je zásadní, součástí úspěch pro samoobslužné analýzy, dodržování předpisů a zásad správného řízení a iniciativy správy IT.
 
 Pokyny uvedené v tomto článku se týkají webu Azure Portal. Můžete také exportovat šablonu Azure Resource Manageru z portálu nebo získejte kopii souboru šablony Resource Manageru od dodavatelů a pomocí Azure Powershellu a rozhraní příkazového řádku Azure Classic k nasazení šablony.  Zobrazit [vytváření clusterů Hadoop v HDInsight pomocí šablon Resource Manageru](hdinsight-hadoop-create-linux-clusters-arm-templates.md).
 

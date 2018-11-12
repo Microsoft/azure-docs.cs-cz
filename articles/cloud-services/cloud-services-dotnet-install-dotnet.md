@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/22/2018
 ms.author: jeconnoc
-ms.openlocfilehash: 3821e13fd968e458e463e90ef338da6637d8d8f2
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 698cae13b9e78de6318c28bde998e195540c513c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39622010"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51256795"
 ---
 # <a name="install-net-on-azure-cloud-services-roles"></a>Instalace rozhraní .NET pro role Azure Cloud Services
 Tento článek popisuje, jak nainstalovat verze rozhraní .NET Framework, které nejsou součástí hostovaného operačního systému Azure. .NET na hostovaný operační systém můžete nakonfigurovat role cloudové služby webové a pracovní proces.
@@ -34,7 +34,7 @@ Instalace rozhraní .NET pro webové a pracovní role, zahrňte projekt cloudov�
 ## <a name="add-the-net-installer-to-your-project"></a>Přidání instalačního programu .NET do projektu
 Pokud chcete stáhnout webovou Instalační službu pro rozhraní .NET Framework, zvolte verzi, kterou chcete nainstalovat:
 
-* [.NET 4.7.2 Webová instalační služba](http://go.microsoft.com/fwlink/?LinkId=863262)
+* [.NET 4.7.2 Webová instalační služba](https://go.microsoft.com/fwlink/?LinkId=863262)
 * [.NET 4.6.2 Webová instalační služba](https://www.microsoft.com/download/details.aspx?id=53345)
 
 Chcete-li přidat instalační program *webové* role:

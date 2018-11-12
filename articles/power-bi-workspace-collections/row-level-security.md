@@ -9,12 +9,12 @@ ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
 ms.author: maghan
-ms.openlocfilehash: ce1e3818edea6e0fdaedd33b6ec0c3214f475340
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 80208c83c96ba78db052017c2baa3bc0db63953f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43048552"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51258846"
 ---
 # <a name="row-level-security-with-power-bi-workspace-collections"></a>Zabezpečení na úrovni řádků s kolekcemi pracovních prostorů Power BI
 
@@ -35,7 +35,7 @@ Pokud chcete využít výhod zabezpečení na úrovni řádků, je důležité p
 
 ### <a name="example"></a>Příklad:
 
-Pro zbývající část tohoto článku poskytujeme příklad vytváření zabezpečení na úrovni řádků a následného využití uvnitř vložené aplikace. Naše Ukázka používá [ukázka analýzy maloobchodního prodeje](http://go.microsoft.com/fwlink/?LinkID=780547) souboru PBIX.
+Pro zbývající část tohoto článku poskytujeme příklad vytváření zabezpečení na úrovni řádků a následného využití uvnitř vložené aplikace. Naše Ukázka používá [ukázka analýzy maloobchodního prodeje](https://go.microsoft.com/fwlink/?LinkID=780547) souboru PBIX.
 
 ![Příklad prodejní sestavy](media/row-level-security/scenario-2.png)
 
@@ -87,7 +87,7 @@ Teď můžete také tok filtry z tabulky Sales **položky** tabulky:
 1. **Soubor** -> **možnosti a nastavení** -> **funkce ve verzi Preview** -> **povolit křížové filtrování v obou směrech pro DirectQuery** .
 2. **Soubor** -> **možnosti a nastavení** -> **DirectQuery** -> **Povolit neomezené míry v režimu DirectQuery**.
 
-Další informace o obousměrné křížové filtrování, stáhněte si [obousměrné křížové filtrování v SQL Server Analysis Services 2016 a Power BI Desktopu](http://download.microsoft.com/download/2/7/8/2782DF95-3E0D-40CD-BFC8-749A2882E109/Bidirectional%20cross-filtering%20in%20Analysis%20Services%202016%20and%20Power%20BI.docx) dokument White Paper.
+Další informace o obousměrné křížové filtrování, stáhněte si [obousměrné křížové filtrování v SQL Server Analysis Services 2016 a Power BI Desktopu](https://download.microsoft.com/download/2/7/8/2782DF95-3E0D-40CD-BFC8-749A2882E109/Bidirectional%20cross-filtering%20in%20Analysis%20Services%202016%20and%20Power%20BI.docx) dokument White Paper.
 
 Tím končí naše shrnutí všechnu práci, kterou je potřeba udělat v Power BI Desktopu, ale je, že jeden další část práce, kterou je potřeba udělat, aby bylo zabezpečení na úrovni řádků pravidel, že jsme definovali práce v Power BI Embedded. Uživatele se ověří a autorizuje vaší aplikace a tokenů aplikace se používají k udělení tohoto přístupu uživatelů do konkrétní sestavy Power BI Embedded. Power BI Embedded nemá žádné konkrétní informace o identitě uživatele je. Zabezpečení na úrovni řádků pro práci je potřeba předat širší kontext jako součást tokenu mechanismu vaší aplikace:
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 11/07/2016
 ms.author: mandia
-ms.openlocfilehash: 61776b19ba0ee273b78e3b0a6f610e5701251dd0
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: fe56b84b881b2afce9da9a7f7dfe4637c3494aa8
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
-ms.locfileid: "26632716"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261957"
 ---
 # <a name="create-biztalk-services-using-the-azure-portal"></a>Vytvoření služby BizTalk Services pomocí webu Azure Portal
 
@@ -28,7 +28,7 @@ ms.locfileid: "26632716"
 > [!INCLUDE [Use APIs to manage MABS](../../includes/biztalk-services-retirement-azure-classic-portal.md)]
 
 > [!TIP]
-> Abyste se mohli přihlásit na webu Azure Portal, potřebujete účet Azure a předplatné Azure. Pokud účet nemáte, můžete si během několika minut vytvořit bezplatný zkušební účet. Podívejte se na stránku [bezplatné zkušební verze Azure](http://go.microsoft.com/fwlink/p/?LinkID=239738).
+> Abyste se mohli přihlásit na webu Azure Portal, potřebujete účet Azure a předplatné Azure. Pokud účet nemáte, můžete si během několika minut vytvořit bezplatný zkušební účet. Podívejte se na stránku [bezplatné zkušební verze Azure](https://go.microsoft.com/fwlink/p/?LinkID=239738).
 
 
 ## <a name="CreateService"></a>Vytvoření služby BizTalk
@@ -84,7 +84,7 @@ Tyto požadavky se netýkají edice Free.
 <br/><br/>
 Účet Azure může obsahovat víc předplatných a může ho spravovat každý, kdo k tomu má oprávnění. Váš držitel účtu Azure například vytvoří předplatné s názvem <em>Predplatne_sluzby_BizTalk</em> a dá k tomuto předplatnému přístup správcům služby BizTalk z vaší společnosti (třeba ContosoBTSAdmins@live.com). V tomto scénáři budou mít správci služby BizTalk po přihlášení k Azure úplná práva správce ke všem hostovaným službám v daném předplatném, včetně služby Azure BizTalk Services. Správci služby BizTalk nejsou držiteli účtu Azure, takže nemají přístup k informacím o fakturaci.
 <br/><br/>Další informace najdete v článku 
-<a HREF="http://go.microsoft.com/fwlink/p/?LinkID=267577">Správa předplatných a účtů úložiště v Azure</a>.
+<a HREF="https://go.microsoft.com/fwlink/p/?LinkID=267577">Správa předplatných a účtů úložiště v Azure</a>.
 </td>
 </tr>
 <tr>
@@ -93,7 +93,7 @@ Tyto požadavky se netýkají edice Free.
 <br/><br/>
 Když vytváříte službu BizTalk, můžete použít existující server SQL Azure nebo službu Azure SQL Database nebo můžete automaticky vytvořit nový server nebo databázi.
 <br/><br/>
-Škálování služby SQL Database se konfiguruje automaticky. Pro službu BizTalk většinou stačí výchozí škálování. Změna škálování má vliv na ceny. Další informace najdete v tématu <a HREF="http://go.microsoft.com/fwlink/p/?LinkID=234930">o účtech a cenách služby Azure SQL Database</a>
+Škálování služby SQL Database se konfiguruje automaticky. Pro službu BizTalk většinou stačí výchozí škálování. Změna škálování má vliv na ceny. Další informace najdete v tématu <a HREF="https://go.microsoft.com/fwlink/p/?LinkID=234930">o účtech a cenách služby Azure SQL Database</a>
 .<br/><br/>
 <strong>Poznámky</strong>
 <br/>
@@ -123,7 +123,7 @@ Pro službu BizTalk stačí výchozí nastavení služby Storage.
 <br/><br/>
 Při vytváření účtu služby Storage se automaticky vytvoří primární a sekundární klíč. Tyto klíče řídí přístup k vašemu účtu služby Storage. Služba BizTalk automaticky používá primární klíč.
 <br/><br/>
-Další informace najdete v článku o <a HREF="http://go.microsoft.com/fwlink/p/?LinkID=285671">službě Storage</a>.
+Další informace najdete v článku o <a HREF="https://go.microsoft.com/fwlink/p/?LinkID=285671">službě Storage</a>.
 </td>
 </tr>
 
@@ -165,7 +165,7 @@ Hybridní připojení slouží k připojení webu Azure nebo mobilní služby Az
  Další informace, třeba o vytváření a správě hybridních připojení, najdete v článku [Hybridní připojení](integration-hybrid-connection-overview.md).
 
 ## <a name="next-steps"></a>Další kroky
-Služba BizTalk je teď vytvořená a vy se můžete seznámit s různými kartami: [BizTalk Services: Karty Řídicí panel, Sledování a Škálování](biztalk-dashboard-monitor-scale-tabs.md). Služba BizTalk je připravená pro vaše aplikace. Pokud chcete začít vytvářet aplikace, přejděte na článek [Azure BizTalk Services](http://go.microsoft.com/fwlink/p/?LinkID=235197).
+Služba BizTalk je teď vytvořená a vy se můžete seznámit s různými kartami: [BizTalk Services: Karty Řídicí panel, Sledování a Škálování](biztalk-dashboard-monitor-scale-tabs.md). Služba BizTalk je připravená pro vaše aplikace. Pokud chcete začít vytvářet aplikace, přejděte na článek [Azure BizTalk Services](https://go.microsoft.com/fwlink/p/?LinkID=235197).
 
 ## <a name="see-also"></a>Viz také
 * [BizTalk Services: Tabulka edic](biztalk-editions-feature-chart.md)<br/>
@@ -173,7 +173,7 @@ Služba BizTalk je teď vytvořená a vy se můžete seznámit s různými karta
 * [BizTalk Services: Zálohování a obnovení](biztalk-backup-restore.md)<br/>
 * [BizTalk Services: Omezování](biztalk-throttling-thresholds.md)<br/>
 * [BizTalk Services: Název a klíč vystavitele](biztalk-issuer-name-issuer-key.md)<br/>
-* [Jak začít používat sadu SDK Azure BizTalk Services](http://go.microsoft.com/fwlink/p/?LinkID=302335)<br/>
+* [Jak začít používat sadu SDK Azure BizTalk Services](https://go.microsoft.com/fwlink/p/?LinkID=302335)<br/>
 * [Hybridní připojení](integration-hybrid-connection-overview.md)
 
 [NewBizTalkService]: ./media/biztalk-provision-services/WABS_NewBizTalkService.png

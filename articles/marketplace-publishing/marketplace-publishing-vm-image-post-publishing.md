@@ -14,12 +14,12 @@ ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 08/03/2016
 ms.author: hascipio;
-ms.openlocfilehash: e1f90650e71345957c2d353774cb8bef62c1868b
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: d4c7dce1876e9838fe986aebb7e38a09e8a82baf
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39715011"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51252968"
 ---
 # <a name="post-production-guide-for-virtual-machine-offers-in-the-azure-marketplace"></a>Průvodce postprodukční nabídky virtuálního počítače na webu Azure Marketplace
 Tento článek vysvětluje, jak můžete aktualizovat nabídku na živé virtuálního počítače na webu Azure Marketplace. Provede vás provede procesem přidávání jeden nebo více nové skladové položky do existující nabídky. Také provede vás procesem jeho odebrání nabídky živé virtuálního počítače nebo skladové položky z webu Marketplace.
@@ -30,7 +30,7 @@ Po nabídka/SKU je umístěné v [webu Azure portal](http://portal.azure.com), n
 * **Identifikátor SKU**: V publikování portál, přejděte na **virtuálních počítačů** a vyberte možnost nabídky. Pak klikněte na tlačítko **SKU** > **přidejte skladovou jednotku**.
 * **Vydavatel Namespace**: V publikování portál, přejděte na **virtuálních počítačů** > **návod** > **Řekněte nám o vaši společnost**(tuto možnost najdete v části "Krok 2 zaregistrujte vaši společnost.") > **vydavatele Namespace** > **Namespace**.
 
-Po nabídka/SKU je uveden v [Marketplace](http://azure.microsoft.com/marketplace), nebudete moct změnit následující textová pole:
+Po nabídka/SKU je uveden v [Marketplace](https://azure.microsoft.com/marketplace), nebudete moct změnit následující textová pole:
 
 * **Nabízejí identifikátor**: V publikování portál, přejděte na **virtuálních počítačů** a vyberte možnost nabídky. Pak klikněte na tlačítko **IMAGÍ virtuálních počítačů** > **nabízejí identifikátor**.
 * **Identifikátor SKU**: V publikování portál, přejděte na **virtuálních počítačů** a vyberte možnost nabídky. Pak klikněte na tlačítko **SKU** > **přidejte skladovou jednotku**.
@@ -48,7 +48,7 @@ Přidání nové verze uvedené SKU a nové publikování vaší nabídky, postu
 2. Přejděte **virtuálních počítačů** kartu a vyberte vaši nabídku.
 3. V nabídce na levé straně klikněte **IMAGÍ virtuálních počítačů** kartu.
 4. V **SKU** části, vyhledejte jednotky SKU, které chcete aktualizovat.
-5. Přidejte nové číslo verze pro danou skladovou jednotku a klikněte na tlačítko ** + ** tlačítko. Nová verze musí být ve formátu X.Y.Z, kde X, Y a jsou celá čísla. By měly být jenom přírůstkové změny verze.
+5. Přidejte nové číslo verze pro danou skladovou jednotku a klikněte na tlačítko **+** tlačítko. Nová verze musí být ve formátu X.Y.Z, kde X, Y a jsou celá čísla. By měly být jenom přírůstkové změny verze.
 6. V **URL virtuálního pevného disku operačního systému** zadejte sdílený přístupový podpis pro operační systém virtuální pevný disk vytvořit identifikátor URI a uložte změny.
 
    > [!IMPORTANT]
@@ -208,7 +208,7 @@ Přidat novou skladovou Položku nabídky za provozu, postupujte podle těchto k
 1. Přihlaste se k [portál pro publikování](https://publish.windowsazure.com).
 2. Přejděte **virtuálních počítačů** kartu a vyberte vaši nabídku.
 3. V nabídce na levé straně klikněte **SKU** kartu. Pak klikněte na tlačítko **přidejte skladovou jednotku**. 
-4. V dialogovém okně zadejte **identifikátor SKU** malými písmeny. Vyberte **používání vlastní licence (BYOL) model fakturace** zaškrtávací políčko, pokud chcete publikovat novou skladovou Položku s fakturační model BYOL. Jinak zrušte zaškrtnutí políčka. Klikněte na tlačítko Vytvořit novou skladovou Položku značky zaškrtnutí. Pokud jste nezvolili fakturační model BYOL, model fakturace se automaticky nastaví na jednu hodinu. Pokud chcete 30denní bezplatnou zkušební verzi pro modelem hodinové fakturace, vyberte **jeden měsíc** pro **je k dispozici bezplatná zkušební verze?** V opačném případě vyberte **ne zkušební**. (**Je k dispozici bezplatná zkušební verze? ** se zobrazí pouze v případě, že jste nevybrali BYOL při vytváření nové SKU.)
+4. V dialogovém okně zadejte **identifikátor SKU** malými písmeny. Vyberte **používání vlastní licence (BYOL) model fakturace** zaškrtávací políčko, pokud chcete publikovat novou skladovou Položku s fakturační model BYOL. Jinak zrušte zaškrtnutí políčka. Klikněte na tlačítko Vytvořit novou skladovou Položku značky zaškrtnutí. Pokud jste nezvolili fakturační model BYOL, model fakturace se automaticky nastaví na jednu hodinu. Pokud chcete 30denní bezplatnou zkušební verzi pro modelem hodinové fakturace, vyberte **jeden měsíc** pro **je k dispozici bezplatná zkušební verze?** V opačném případě vyberte **ne zkušební**. (**Je k dispozici bezplatná zkušební verze?**  se zobrazí pouze v případě, že jste nevybrali BYOL při vytváření nové SKU.)
 
    > [!IMPORTANT]
    > **Skrýt tato skladová položka z webu Marketplace, protože by měl koupil(a) vždy pomocí šablony řešení** by měl být **Ano** *pouze* jste schválení pro publikování šablony řešení. V opačném případě tuto možnost by měla být vždy **ne**.

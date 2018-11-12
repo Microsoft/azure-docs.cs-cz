@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 25c9cbcaf852aa07bcbe4f71bf69de366d4dbb87
-ms.sourcegitcommit: 3dcb1a3993e51963954194ba2a5e42260d0be258
+ms.openlocfilehash: 9511e4f90348d58c7b5f6e85d9a5eb74af276461
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50754031"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51260495"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Řešení potíží se selháním Azure Backup: problémy s agentů nebo rozšíření
 
@@ -153,7 +153,7 @@ Agent virtuálního počítače může být poškozený nebo služba zastavila. 
 1. Určení, zda se službou Windows agenta hosta virtuálního počítače službami (services.msc). Pokuste se restartovat službu agenta hosta Windows a zahajte zálohování.    
 2. Pokud službu agenta hosta Windows nejsou viditelná ve službách, v Ovládacích panelech, přejděte na **programy a funkce** k určení, zda je nainstalována služba Windows agenta hosta.
 4. Pokud se zobrazí v agentovi hosta Windows **programy a funkce**, odinstalujte agenta hosta Windows.
-5. Stáhněte a nainstalujte [nejnovější verzi MSI agenta](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). Musíte mít oprávnění správce k dokončení instalace.
+5. Stáhněte a nainstalujte [nejnovější verzi MSI agenta](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). Musíte mít oprávnění správce k dokončení instalace.
 6. Ověřte, že služby agenta hosta Windows služby.
 7. Spusťte zálohu na vyžádání:
     * Na portálu vyberte **zálohovat nyní**.

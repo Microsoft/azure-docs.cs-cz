@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: raynew
-ms.openlocfilehash: dd11c50940dc35524b6d10c6043e906cc813498d
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.openlocfilehash: 6de0d29895a6d12d3a5aa761c0c4c5148f62dd81
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50748285"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51256268"
 ---
 # <a name="prepare-to-back-up-azure-vms"></a>Příprava na zálohování virtuálních počítačů Azure
 
@@ -182,8 +182,8 @@ Pokud máte problémy se zálohováním virtuálních počítačů Azure, zkontr
 
 | **Operace** | **Windows** | **Linux** |
 | --- | --- | --- |
-| Instalace agenta virtuálního počítače |Stáhněte si a nainstalujte [MSI agenta](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). K dokončení instalace budete potřebovat oprávnění správce. |<li> Nainstalujte nejnovější [agenta pro Linux](../virtual-machines/extensions/agent-linux.md). K dokončení instalace budete potřebovat oprávnění správce. Doporučujeme vám však nainstalovat agenta z úložiště distribuce. Jsme **není vhodné řešit podobné** instalace agenta virtuálního počítače s Linuxem přímo z githubu.  |
-| Aktualizace agenta virtuálního počítače |Aktualizace agenta virtuálního počítače je stejně jednoduchá, jako přeinstalace [binárních souborů agenta virtuálního počítače](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). <br>Ujistěte se, že během aktualizace agenta virtuálního počítače neběží žádná operace zálohování. |Postupujte podle pokynů v tématu [Aktualizace agenta virtuálního počítače s Linuxem](../virtual-machines/linux/update-agent.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Doporučujeme aktualizovat agenta ze svého úložiště distribuce. Jsme **není vhodné řešit podobné** aktualizace agenta virtuálního počítače s Linuxem přímo z githubu.<br>Ujistěte se, že během aktualizace agenta virtuálního počítače neběží žádná operace zálohování. |
+| Instalace agenta virtuálního počítače |Stáhněte si a nainstalujte [MSI agenta](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). K dokončení instalace budete potřebovat oprávnění správce. |<li> Nainstalujte nejnovější [agenta pro Linux](../virtual-machines/extensions/agent-linux.md). K dokončení instalace budete potřebovat oprávnění správce. Doporučujeme vám však nainstalovat agenta z úložiště distribuce. Jsme **není vhodné řešit podobné** instalace agenta virtuálního počítače s Linuxem přímo z githubu.  |
+| Aktualizace agenta virtuálního počítače |Aktualizace agenta virtuálního počítače je stejně jednoduchá, jako přeinstalace [binárních souborů agenta virtuálního počítače](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). <br>Ujistěte se, že během aktualizace agenta virtuálního počítače neběží žádná operace zálohování. |Postupujte podle pokynů v tématu [Aktualizace agenta virtuálního počítače s Linuxem](../virtual-machines/linux/update-agent.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Doporučujeme aktualizovat agenta ze svého úložiště distribuce. Jsme **není vhodné řešit podobné** aktualizace agenta virtuálního počítače s Linuxem přímo z githubu.<br>Ujistěte se, že během aktualizace agenta virtuálního počítače neběží žádná operace zálohování. |
 | Ověření instalace agenta virtuálního počítače |<li>Ve virtuálním počítači Azure přejděte do složky *C:\WindowsAzure\Packages*. <li>Měl by být přítomný soubor WaAppAgent.exe.<li> Pravým tlačítkem myši klikněte na soubor, přejděte na **Vlastnosti** a poté vyberte kartu **Podrobnosti**. Pole Verze produktu by mělo být 2.6.1198.718 nebo vyšší. |neuvedeno |
 
 ### <a name="backup-extension"></a>Rozšíření zálohování
@@ -194,7 +194,7 @@ Služba Backup nainstaluje rozšíření zálohování, jestli je virtuální po
 ## <a name="establish-network-connectivity"></a>Vytvoření připojení k síti
 Spravovat snímky virtuálních počítačů, rozšíření zálohování vyžaduje připojení k Azure veřejné IP adresy. Bez správné připojení k Internetu vypršení časového limitu žádostí HTTP virtuálního počítače a selže celá operace zálohování. Pokud má vaše nasazení omezení přístupu na místě – pomocí skupiny zabezpečení sítě (NSG), například – zvolte jednu z těchto možností se poskytne jasný pro provoz zálohování:
 
-* [Seznam povolených adres Azure datacenter IP rozsahy](http://www.microsoft.com/download/details.aspx?id=41653).
+* [Seznam povolených adres Azure datacenter IP rozsahy](https://www.microsoft.com/download/details.aspx?id=41653).
 * Nasazení proxy server HTTP pro směrování provozu.
 
 Když jste rozhodování o tom, kterou možnost použít, kompromisy konfigurace jsou mezi možnosti správy, podrobnou kontrolu a náklady.
@@ -205,7 +205,7 @@ Když jste rozhodování o tom, kterou možnost použít, kompromisy konfigurace
 | Použít proxy server HTTP |Detailní kontrola v proxy serveru úložiště je povolené adresy URL.<br><br>Jeden bod internetový přístup k virtuálním počítačům.<br><br>Není v souladu s Azure IP adresa změní. |Další náklady pro spuštění virtuálního počítače se softwarem proxy serveru. |
 
 ### <a name="whitelist-the-azure-datacenter-ip-ranges"></a>Rozsahy IP adres seznamu povolených IP adres datacentra Azure
-Seznam povolených rozsahů IP adres datacentra Azure najdete v článku [web Azure](http://www.microsoft.com/download/details.aspx?id=41653) podrobné informace o rozsahy IP adres a pokyny.
+Seznam povolených rozsahů IP adres datacentra Azure najdete v článku [web Azure](https://www.microsoft.com/download/details.aspx?id=41653) podrobné informace o rozsahy IP adres a pokyny.
 
 Připojení ke službě storage konkrétní oblasti, můžete povolit pomocí [značky služeb](../virtual-network/security-overview.md#service-tags). Ujistěte se, že pravidlo, které umožňuje přístup k účtu úložiště má vyšší prioritu než pravidla, která blokuje přístup k Internetu.
 
@@ -305,7 +305,7 @@ Set-AzureNetworkSecurityRule -Name "allow-proxy " -Action Allow -Protocol TCP -T
 ```
 
 ## <a name="questions"></a>Máte dotazy?
-Pokud máte dotazy nebo pokud všechny funkce, které chcete zobrazit zahrnuty, [pošlete nám svůj názor](http://aka.ms/azurebackup_feedback).
+Pokud máte dotazy nebo pokud všechny funkce, které chcete zobrazit zahrnuty, [pošlete nám svůj názor](https://aka.ms/azurebackup_feedback).
 
 ## <a name="next-steps"></a>Další postup
 Teď připravíte prostředí pro zálohování virtuálního počítače, dalším logickým krokem je vytvoření zálohy. Plánování článek obsahuje podrobné informace o zálohování virtuálních počítačů.

@@ -9,12 +9,12 @@ ms.author: omidm
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 06/26/2018
-ms.openlocfilehash: 052afbe185f9c66af3759775b38b6bf0f2c2e6b2
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: a2b209dc0204c390b16039ed1cf58b47f29629f1
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43783317"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51252101"
 ---
 # <a name="use-oozie-with-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Použití Oozie s Hadoopem k definování a spuštění workflowu v Azure HDInsight založených na Linuxu
 
@@ -30,12 +30,12 @@ Další informace o použití Apache Oozie se systémem Hadoop v Azure HDInsight
 Oozie můžete také použít k plánování úloh, které jsou specifické pro systém, jako jsou programy v jazyce Java nebo skripty prostředí.
 
 > [!NOTE]
-> Další možností pro definování pracovních postupů pomocí HDInsight je pomocí služby Azure Data Factory. Další informace o službě Data Factory najdete v tématu [použití Pigu a Hivu s Data Factory][azure-data-factory-pig-hive].
+> Další možností pro definování pracovních postupů pomocí HDInsight je pomocí služby Azure Data Factory. Další informace o službě Data Factory najdete v tématu [použití Pigu a Hivu s Data Factory][azure-data-factory-pig-hive]. Použití Oozie v clusterech s balíčkem Enterprise Security Package najdete v tématu [spustit Apache Oozie v HDInsight Hadoop clusterů s balíčkem Enterprise Security Package](domain-joined/hdinsight-use-oozie-domain-joined-clusters.md).
 
 
 ## <a name="prerequisites"></a>Požadavky
 
-* **HDInsight cluster**: viz [Začínáme s HDInsight v Linuxu](hadoop/apache-hadoop-linux-tutorial-get-started.md)
+* **Pravidelné clusteru HDInsight**: viz [Začínáme s HDInsight v Linuxu](hadoop/apache-hadoop-linux-tutorial-get-started.md)
 
 > [!IMPORTANT]
 > Kroky v tomto dokumentu vyžadují cluster HDInsight s Linuxem. Linux je pouze operační systém používaný v HDInsight verze 3.4 a vyšší. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).

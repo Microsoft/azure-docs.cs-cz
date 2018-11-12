@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/23/2018
 ms.author: alkohli
-ms.openlocfilehash: 23fde5fab8f223ff1d958a8fac6a31818f1fdd7c
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: a638487fb0a622f899095989ca5341013299e181
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42818912"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51234404"
 ---
 # <a name="migrate-data-from-storsimple-5000-7000-series-to-8000-series-device"></a>Migrovat data z StorSimple 5000 – 7000 series do zařízení 8000 series
 
@@ -57,7 +57,7 @@ Migrace straně hostitele umožňuje nezávisle na sobě nastavení z řady 8000
 | 3.   | Po úspěšné migraci je lokální na zařízení všechna data. Neexistují žádné latenci při přístupu k datům. | Spotřebu úložiště Azure se zvýší, dokud data se odstraní ze zařízení 5000/7000.                                                                                                        |
 | 4.   |                                                                                                                           | Pokud má zařízení řady 7000/5000 velké množství dat, během migrace tato data musí být stažené z azure, který bude mít za následek náklady a latence související se stahování dat z Azure |
 
-Tento článek se zaměřuje pouze na tuto funkci migrace z 5000/7000 zařízení řady 8000. Další informace o migraci na straně hostitele, přejděte na [migrace z jiných zařízení úložišť](http://download.microsoft.com/download/9/4/A/94AB8165-CCC4-430B-801B-9FD40C8DA340/Migrating%20Data%20to%20StorSimple%20Volumes_09-02-15.pdf).
+Tento článek se zaměřuje pouze na tuto funkci migrace z 5000/7000 zařízení řady 8000. Další informace o migraci na straně hostitele, přejděte na [migrace z jiných zařízení úložišť](https://download.microsoft.com/download/9/4/A/94AB8165-CCC4-430B-801B-9FD40C8DA340/Migrating%20Data%20to%20StorSimple%20Volumes_09-02-15.pdf).
 
 ## <a name="migration-prerequisites"></a>Požadavky na migraci
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: ad77f1f0a99fbdb355163e1bc83461c8c4eb75fa
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 7b2dd4e97d23f37c8261e51f3f65e78436493ddc
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50157696"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238724"
 ---
 # <a name="device-connectivity-in-azure-iot-central"></a>Připojení zařízení v Azure IoT Central
 
@@ -150,7 +150,7 @@ Připojení zařízení k IoT Central X509 pomocí certifikátů, existuje se vy
     
     Níže jsou některé nástroje příkazového řádku nástroje, které můžete použít ke generování certifikátů certifikační Autority a certifikátů zařízení.
 
-    * Pokud používáte MxChip tady je [nástroj příkazového řádku](http://aka.ms/iotcentral-docs-dicetool) ke generování certifikační Autority ho přidejte do své aplikace IoT Central a ověřit certifikáty. 
+    * Pokud používáte MxChip tady je [nástroj příkazového řádku](https://aka.ms/iotcentral-docs-dicetool) ke generování certifikační Autority ho přidejte do své aplikace IoT Central a ověřit certifikáty. 
 
     *   Použijte tento [nástroj příkazového řádku](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md ) do
         * Vytvořte řetěz certifikátů (v Githubu dokumentace postupujte podle kroku 2). 
@@ -165,7 +165,7 @@ Připojení zařízení k IoT Central X509 pomocí certifikátů, existuje se vy
     Program zařízení umožňuje získat jeho podrobnosti připojení a IoT Central přiřazení aplikace při přepnutí informace o službě zřizování.    
 
     **Další referene** 
-    *   Ukázková implementace pro [raspberrypi nebo.](http://aka.ms/iotcentral-docs-Raspi-releases)  
+    *   Ukázková implementace pro [raspberrypi nebo.](https://aka.ms/iotcentral-docs-Raspi-releases)  
 
     *   [Ukázky klienta zařízení v jazyce C.](https://github.com/Azure/azure-iot-sdk-c/blob/dps_symm_key/provisioning_client/devdoc/using_provisioning_client.md)
 

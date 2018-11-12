@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/5/2018
 ms.author: terrylan
-ms.openlocfilehash: 3c198ea44953c0b2e72a544cd0e83b6592d9a81f
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 0b38c6895421b43d6f80e0c34cc23b379a673559
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47032068"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261940"
 ---
 # <a name="setting-security-policies-in-security-center-or-in-azure-policy"></a>Nastavení zásad zabezpečení ve službě Security Center nebo ve službě Azure Policy
 
@@ -125,6 +125,6 @@ V tomto článku jste zjistili, jak ve službě Security Center konfigurovat zá
 * [Sledování partnerských řešení pomocí Azure Security Center](security-center-partner-solutions.md) – Zjistěte, jak pomocí Azure Security Center sledovat stav vašich partnerských řešení.
 * [Získání viditelnosti v rámci celého tenanta pro Azure Security Center](security-center-management-groups.md) – Zjistěte, jak nastavit skupiny pro správu pro Azure Security Center. 
 * [Azure Security Center – nejčastější dotazy](security-center-faq.md) – Získejte odpovědi na nejčastější dotazy týkající se použití této služby.
-* [Blog o zabezpečení Azure](http://blogs.msdn.com/b/azuresecurity/): Přečtěte si příspěvky o zabezpečení a dodržování předpisů Azure.
+* [Blog o zabezpečení Azure](https://blogs.msdn.com/b/azuresecurity/): Přečtěte si příspěvky o zabezpečení a dodržování předpisů Azure.
 
 Další informace o Azure Policy najdete v tématu [Co je Azure Policy](../azure-policy/azure-policy-introduction.md).

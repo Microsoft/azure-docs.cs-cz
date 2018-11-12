@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/30/2018
 ms.author: spelluru
-ms.openlocfilehash: bde5629fdd500896e557f89ce6b819169366df97
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 33dda074bd1aeb6b6187ca01347f31219ac86e91
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47407679"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51250199"
 ---
 # <a name="service-bus-premium-and-standard-messaging-tiers"></a>Úrovně zasílání zpráv Service Bus Premium a Standard
 
@@ -67,7 +67,7 @@ Můžete také vytvářet [obory názvů Premium pomocí šablon Azure Resource 
 
 Pokud se o zasílání zpráv Service Bus chcete dozvědět více, podívejte se na následující odkazy:
 
-* [Představení zasílání zpráv Azure Service Bus úrovně Premium (příspěvek na blogu)](http://azure.microsoft.com/blog/introducing-azure-service-bus-premium-messaging/)
+* [Představení zasílání zpráv Azure Service Bus úrovně Premium (příspěvek na blogu)](https://azure.microsoft.com/blog/introducing-azure-service-bus-premium-messaging/)
 * [Představení zasílání zpráv Azure Service Bus úrovně Premium (Channel9)](https://channel9.msdn.com/Blogs/Subscribe/Introducing-Azure-Service-Bus-Premium-Messaging)
 * [Přehled zasílání zpráv Service Bus](service-bus-messaging-overview.md)
 * [Začínáme s frontami služby Service Bus](service-bus-dotnet-get-started-with-queues.md)

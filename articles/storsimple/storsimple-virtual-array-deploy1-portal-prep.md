@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 11/14/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2126ff7ffd503e1d7b30997f3f32f30429cffefb
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 2d87642b93d58d92660a2df71f2561ffe502315a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42060124"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51257261"
 ---
 # <a name="deploy-storsimple-virtual-array---prepare-the-azure-portal"></a>Nasazení virtuálních polí StorSimple – Příprava na webu Azure portal
 
@@ -44,16 +44,16 @@ Nasadit StorSimple Virtual Array, naleznete v následujících článcích v př
 | --- | --- | --- | --- |
 | 1. |**Nastavit na webu Azure portal** |Vytvoření a konfigurace služby Správce zařízení StorSimple před zřizování StorSimple Virtual Array. |[Příprava portálu](storsimple-virtual-array-deploy1-portal-prep.md) |
 | 2. |**Zřízení virtuálního pole** |Pro Hyper-V zřídit a připojte se k StorSimple Virtual Array v hostitelském systému na Windows Server 2012 R2, Windows Server 2012 nebo Windows Server 2008 R2 s technologií Hyper-V. <br></br> <br></br> Pro replikaci z VMware zřídit a připojte se k StorSimple Virtual Array v hostitelském systému, s VMware ESXi 5.0, 5.5 a 6.0.<br></br> |[Zřízení virtuálního pole v Hyper-V](storsimple-virtual-array-deploy2-provision-hyperv.md) <br></br> <br></br> [Zřízení virtuálního pole v prostředí VMware](storsimple-virtual-array-deploy2-provision-vmware.md) |
-| 3. |**Nastavit virtuální pole** |Pro souborový server se provést počáteční nastavení, zaregistrujte StorSimple souborového serveru a dokončete nastavování zařízení. Potom můžete zřídit sdílené složky protokolu SMB. <br></br> <br></br> Pro server iSCSI provést počáteční nastavení, zaregistrujte serveru iSCSI StorSimple a dokončete nastavování zařízení. Potom můžete zřídit svazky iSCSI. |[Nastavit virtuální pole jako souborový server](storsimple-virtual-array-deploy3-fs-setup.md)<br></br> <br></br>[Nastavit virtuální pole jako serveru iSCSI](storsimple-virtual-array-deploy3-iscsi-setup.md) |
+| 3. |**Nastavit virtuální pole** |Pro souborový server se provést počáteční nastavení, zaregistrujte StorSimple souborového serveru a dokončete nastavování zařízení. Potom můžete zřídit sdílené složky SMB. <br></br> <br></br> Pro server iSCSI provést počáteční nastavení, zaregistrujte serveru iSCSI StorSimple a dokončete nastavování zařízení. Potom můžete zřídit svazky iSCSI. |[Nastavit virtuální pole jako souborový server](storsimple-virtual-array-deploy3-fs-setup.md)<br></br> <br></br>[Nastavit virtuální pole jako serveru iSCSI](storsimple-virtual-array-deploy3-iscsi-setup.md) |
 
-Teď můžete začít nastavit na webu Azure portal.
+Teď můžete začít nastavovat Azure Portal.
 
 ## <a name="configuration-checklist"></a>Kontrolní seznam konfigurace
 
 Kontrolní seznam konfigurace popisuje informace, které je třeba shromáždit před konfigurací softwaru na StorSimple Virtual Array. Připravuje se tyto informace předem pomáhá zjednodušit proces nasazení zařízení StorSimple ve vašem prostředí. Podle toho, jestli je nasazená StorSimple Virtual Array jako souborový server nebo iSCSI server, budete potřebovat následující kontrolní seznamy.
 
-* Stáhněte si [StorSimple Virtual Array soubor serveru kontrolní seznam konfigurace](http://download.microsoft.com/download/E/E/6/EE690BB0-B442-4B84-8165-4731EE727ACF/MicrosoftAzureStorSimpleVirtualArrayFileServerConfigurationChecklist.pdf).
-* Stáhněte si [StorSimple Virtual Array iSCSI kontrolní seznam konfigurace serveru](http://download.microsoft.com/download/E/E/6/EE690BB0-B442-4B84-8165-4731EE727ACF/MicrosoftAzureStorSimpleVirtualArrayiSCSIServerConfigurationChecklist.pdf).
+* Stáhněte si [StorSimple Virtual Array soubor serveru kontrolní seznam konfigurace](https://download.microsoft.com/download/E/E/6/EE690BB0-B442-4B84-8165-4731EE727ACF/MicrosoftAzureStorSimpleVirtualArrayFileServerConfigurationChecklist.pdf).
+* Stáhněte si [StorSimple Virtual Array iSCSI kontrolní seznam konfigurace serveru](https://download.microsoft.com/download/E/E/6/EE690BB0-B442-4B84-8165-4731EE727ACF/MicrosoftAzureStorSimpleVirtualArrayiSCSIServerConfigurationChecklist.pdf).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -74,17 +74,17 @@ Před nasazením virtuálního pole, ujistěte se, že:
 * Máte přístup k systému hostitele s technologií Hyper-V v systému Windows Server 2008 R2 nebo novější nebo VMware (ESXi 5.0, 5.5 a 6.0), kterou lze použít na základě zařízení.
 * Systém hostitele je možné vyhradit následující prostředky pro zřízení virtuálního pole:
   
-  * Minimálně 4 jádra.
-  * Minimálně 8 GB paměti RAM. Pokud chcete nakonfigurovat virtuální pole jako souborový server, podporuje 8 GB 2 miliony souborů. Je třeba 16 GB paměti RAM pro podporu 2 – 4 miliony souborů.
-  * Jedno síťové rozhraní.
+  * Minimálně 4 jádra
+  * Minimálně 8 GB paměti RAM Pokud chcete nakonfigurovat virtuální pole jako souborový server, podporuje 8 GB 2 miliony souborů. Je třeba 16 GB paměti RAM pro podporu 2 – 4 miliony souborů.
+  * Jedno síťové rozhraní
   * 500 GB virtuální disk pro data systému.
 
-### <a name="for-the-datacenter-network"></a>Pro síť datových center
+### <a name="for-the-datacenter-network"></a>Síť datacentra
 
 Než začnete, ujistěte se, že:
 
 * Sítě ve vašem datovém centru, je nakonfigurovaný podle požadavků na síť pro zařízení StorSimple. Další informace najdete v tématu [požadavky systému virtuálních polí StorSimple](storsimple-ova-system-requirements.md).
-* StorSimple Virtual Array má vyhrazenou šířku pásma 5 MB/s sítě Internet (nebo více) vždy k dispozici. Tuto šířku pásma by neměly sdílet s jinými aplikacemi.
+* StorSimple Virtual Array má vyhrazenou šířku pásma 5 MB/s sítě Internet (nebo více) vždy k dispozici. Tato šířka pásma by se neměla sdílet s žádnými jinými aplikacemi.
 
 ## <a name="step-by-step-preparation"></a>Krok za krokem přípravy
 
@@ -108,7 +108,7 @@ Jednu instanci služby Správce zařízení StorSimple můžete spravovat více 
 
 Po vytvoření a spuštění služby Správce zařízení StorSimple je nutné získat registrační klíč služby. Tento klíč se používá k registraci a připojení zařízení StorSimple ke službě.
 
-Proveďte následující kroky v [webu Azure portal](https://portal.azure.com/).
+Na webu [Azure Portal](https://portal.azure.com/) proveďte následující kroky.
 
 [!INCLUDE [storsimple-virtual-array-get-service-registration-key](../../includes/storsimple-virtual-array-get-service-registration-key.md)]
 
@@ -126,19 +126,19 @@ Jakmile budete mít registrační klíč služby, je potřeba stáhnout bitovou 
 > 
 > 
 
-Proveďte následující kroky v [webu Azure portal](https://portal.azure.com/).
+Na webu [Azure Portal](https://portal.azure.com/) proveďte následující kroky.
 
 #### <a name="to-get-the-virtual-array-image"></a>Chcete-li získat image virtuálního pole
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/). 
 2. Na webu Azure Portal, klikněte na tlačítko **procházet > Správce zařízení StorSimple**.
 3. Vyberte existující službu Správce zařízení StorSimple. V **Správce zařízení StorSimple** okna, klikněte na tlačítko **rychlý Start**. 
-4. Klikněte na odkaz odpovídající bitovou kopii, kterou chcete stáhnout z webu Microsoft Download Center. Soubory obrázků jsou přibližně 4,8 GB.
+4. Klikněte na odkaz odpovídající bitovou kopii, kterou chcete stáhnout z webu Microsoft Download Center. Soubory imagí mají velikost přibližně 4,8 GB.
    
    * VHDX pro Hyper-V ve Windows serveru 2012 a novějších verzích
    * Virtuální pevný disk pro technologii Hyper-V ve Windows serveru 2008 R2 a novějších verzích
    * VMDK pro VMWare ESXi 5.0, 5.5 a 6.0
-5. Stáhněte a rozbalte soubor na místní disk, a poznamenejte si kde je umístěn soubor rozbaleny.
+5. Stáhněte soubor na místní disk, rozbalte ho a poznamenejte si umístění rozbaleného souboru.
 
 ## <a name="optional-step-configure-a-new-storage-account-for-the-service"></a>Volitelný krok: Nakonfigurujte nový účet úložiště pro službu
 
@@ -167,7 +167,7 @@ Proveďte následující kroky v [webu Azure portal](https://ms.portal.azure.com
 
 ## <a name="next-step"></a>Další krok
 
-Dalším krokem je zřízení virtuálního počítače pro StorSimple Virtual Array. V závislosti na hostitelském operačním systému najdete v podrobných pokynů v:
+Dalším krokem je zřízení virtuálního počítače pro StorSimple Virtual Array. V závislosti na vašem hostitelském operačním systému najdete podrobné pokyny v jednom z následujících témat:
 
 * [Zřízení virtuálního pole StorSimple v Hyper-V](storsimple-virtual-array-deploy2-provision-hyperv.md)
 * [Zřízení virtuálního pole StorSimple v prostředí VMware](storsimple-virtual-array-deploy2-provision-vmware.md)

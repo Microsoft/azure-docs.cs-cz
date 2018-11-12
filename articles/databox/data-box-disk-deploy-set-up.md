@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 10/31/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: b3b686815b86e28c0473668825b89736b9af5bf1
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: f2e18db7bd1766901ffb36cc74172f4c8414135c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50740480"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51232878"
 ---
 # <a name="tutorial-unpack-connect-and-unlock-azure-data-box-disk"></a>Kurz: Rozbalení, připojení a odemknutí Azure Data Box Disku
 
@@ -75,7 +75,7 @@ Disky připojíte a odemknete pomocí následujících kroků.
     V tomto postupu použijete jenom nástroj Data Box Disk Unlock. Ostatní dva nástroje použijeme později.
 
     > [!div class="nextstepaction"]
-    > [Stáhnout sadu nástrojů Data Box Disk pro Windows](http://aka.ms/databoxdisktoolswin)         
+    > [Stáhnout sadu nástrojů Data Box Disk pro Windows](https://aka.ms/databoxdisktoolswin)         
 
 3. Rozbalte sadu nástrojů na stejném počítači, který budete používat ke kopírování dat. 
 4. Ve stejném počítači otevřete okno příkazového řádku nebo spusťte Windows PowerShell jako správce.
@@ -131,7 +131,7 @@ Disky připojíte a odemknete pomocí následujících kroků.
 2. Stáhněte si sadu nástrojů Data Box Disk odpovídající klientovi pro Linux.  
 
     > [!div class="nextstepaction"]
-    > [Stáhnout sadu nástrojů Data Box Disk pro Linux](http://aka.ms/databoxdisktoolslinux) 
+    > [Stáhnout sadu nástrojů Data Box Disk pro Linux](https://aka.ms/databoxdisktoolslinux) 
 
 3. Na klientovi pro Linux otevřete terminál. Přejděte do složky, kam jste tento software stáhli. Změňte oprávnění souboru tak, abyste tyto soubory mohli spouštět. Zadejte následující příkaz: 
 

@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 668882b8b39052c3c8e7d7b72c881a64c5c05a10
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 044a3bae75cb385e7a3542b920e0cb3b5bcedcd0
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49321786"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51233622"
 ---
 # <a name="troubleshoot-self-service-password-reset"></a>Řešení potíží s resetováním hesla pomocí samoobslužné služby
 
@@ -99,7 +99,7 @@ Osvědčeným postupem při řešení potíží se zpětným zápisem hesla je k
 | Kód | Název nebo zprávy | Popis |
 | --- | --- | --- |
 | 6329 | NICHŽ: MMS(4924) 0x80230619: "omezení brání změny do aktuálního zadat heslo." | Když službu zpětného zápisu hesla, pokusí se nastavit heslo na váš místní adresář, který nesplňuje stáří hesla, historie, složitost nebo filtrování požadavky domény dojde k této události. <br> <br> Pokud máte minimální stáří hesla a jste nedávno změnili heslo v rámci této časové okno, nejste schopni změnit heslo znovu, dokud nedosáhne zadané stáří ve vaší doméně. Pro účely testování, by měla minimální stáří nastavena na hodnotu 0. <br> <br> Pokud máte požadavky na heslo historie povolené, pak je nutné vybrat heslo, které nebyl použit za posledních *N* krát, kde *N* je nastavení historie hesel. Pokud vyberete heslo, které se používá v posledním *N* vícekrát, pak můžete zobrazit informace o selhání v tomto případě. Pro účely testování, je třeba nastavit historii hesel na 0. <br> <br> Pokud máte požadavky na složitost hesla, všechny z nich se vynucují, když se uživatel pokusí o změnu nebo resetování hesla. <br> <br> Pokud máte povolené filtry hesla a uživatel vybere heslo, které splňují kritéria filtru, klikněte resetovat nebo změnit operace se nezdaří. |
-| 6329 | MMS(3040): admaexport.cpp(2837): server neobsahuje prvek zásad heslo protokolu LDAP. | K tomuto problému dochází, pokud ovládací prvek LDAP_SERVER_POLICY_HINTS_OID (1.2.840.113556.1.4.2066) není povolena na řadiče domény. Pokud chcete použít funkci zpětného zápisu hesla, třeba povolte stažení ovládacího prvku. Uděláte to tak, musí být řadiče domény v systému Windows Server 2008 (s nejnovější aktualizací SP) nebo novější. Pokud vaše řadiče domény jsou 2008 (starší verzi než R2), pak také musíte použít opravu hotfix [KB2386717](http://support.microsoft.com/kb/2386717). |
+| 6329 | MMS(3040): admaexport.cpp(2837): server neobsahuje prvek zásad heslo protokolu LDAP. | K tomuto problému dochází, pokud ovládací prvek LDAP_SERVER_POLICY_HINTS_OID (1.2.840.113556.1.4.2066) není povolena na řadiče domény. Pokud chcete použít funkci zpětného zápisu hesla, třeba povolte stažení ovládacího prvku. Uděláte to tak, musí být řadiče domény v systému Windows Server 2008 (s nejnovější aktualizací SP) nebo novější. Pokud vaše řadiče domény jsou 2008 (starší verzi než R2), pak také musíte použít opravu hotfix [KB2386717](https://support.microsoft.com/kb/2386717). |
 | HR 8023042 | Modul synchronizace vrácena chyba hr = 80230402, zpráva = pokus o získání objektu se nezdařilo, protože existují duplicitní položky s stejné kotvě. | Tato chyba nastane, pokud stejného ID uživatele je povoleno ve více doménách. Příkladem je Pokud jste synchronizaci doménových struktur účtů a prostředků a mají stejné ID uživatele k dispozici a povoleno v každé doménové struktuře. <br> <br> K této chybě může dojít také jako alias nebo hlavní název uživatele a dva uživatelé sdílet tento stejný atribut ukotvení používáte atribut ukotvení není jedinečný. <br> <br> Chcete-li vyřešit tento problém, ujistěte se, že nemáte žádné duplicitní uživatele v rámci vaší domény a používat atribut jedinečné ukotvení pro každého uživatele. |
 
 ### <a name="if-the-source-of-the-event-is-passwordresetservice"></a>Pokud je zdroj události PasswordResetService
@@ -215,7 +215,7 @@ Doporučujeme, abyste tento krok proveďte až po pokusu o první dva kroky pops
 > Pokud jste upravili out-of-the-box synchronizační pravidla, *zálohování je před pokračováním v upgradu a poté ručně znovu nasadit až budete hotovi.*
 >
 
-1. Stáhněte si nejnovější verzi služby Azure AD Connect z [Microsoft Download Center](http://go.microsoft.com/fwlink/?LinkId=615771).
+1. Stáhněte si nejnovější verzi služby Azure AD Connect z [Microsoft Download Center](https://go.microsoft.com/fwlink/?LinkId=615771).
 1. Vzhledem k tomu, že jste již nainstalovali Azure AD Connect, budete muset provést místní upgrade na nejnovější verzi aktualizace instalace služby Azure AD Connect.
 1. Spuštění staženého balíčku a postupujte podle na obrazovce pokyny k aktualizaci vašeho počítače v Azure AD Connect.
 

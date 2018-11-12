@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/18/2016
 ms.author: ccompy
-ms.openlocfilehash: 819af52bb10c9ffcb7e1133437f6d0afbe6105ae
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: fa38d0ef3d00bf5fdb886703cd882ec5ba552b95
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
-ms.locfileid: "26629682"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51234030"
 ---
 # <a name="hybrid-connections-overview"></a>Přehled hybridních připojení
 
@@ -94,7 +94,7 @@ Hybridní připojení používají tyto porty TCP:
 [Vytváření a správa hybridních připojení](integration-hybrid-connection-create-manage.md)
 
 ## <a name="see-also"></a>Viz také
-[Rozhraní REST API pro správu služby BizTalk Services v Microsoft Azure](http://msdn.microsoft.com/library/azure/dn232347.aspx)  
+[Rozhraní REST API pro správu služby BizTalk Services v Microsoft Azure](https://msdn.microsoft.com/library/azure/dn232347.aspx)  
 [BizTalk Services: Tabulka edic](biztalk-editions-feature-chart.md)  
 [Vytvoření služby BizTalk](biztalk-provision-services.md)  
 [BizTalk Services: Karty Řídicí panel, Sledování a Škálování](biztalk-dashboard-monitor-scale-tabs.md)  

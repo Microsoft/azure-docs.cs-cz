@@ -12,12 +12,12 @@ services: machine-learning
 ms.workload: data-services
 ms.date: 12/13/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: 5ca47c8234239b56a2d829903828dda8220d53cb
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e71de2d543c8f29b7195e74d574855bcbe739162
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46967604"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51260546"
 ---
 # <a name="aerial-image-classification"></a>Klasifikace leteckých snímků
 
@@ -154,7 +154,7 @@ Teď vytvoříme účet úložiště, že hostitelé soubory projektu, které mu
     az storage share create --account-name %STORAGE_ACCOUNT_NAME% --account-key %STORAGE_ACCOUNT_KEY% --name baitshare
     ```
 1. V oblíbeném textovém editoru, načtěte `settings.cfg` soubor z projektu aplikace Azure Machine Learning Workbench "Code" podadresáře a vložte název účtu úložiště a klíč, jak je uvedeno. Uložte a zavřete `settings.cfg` souboru.
-1. Pokud jste tak již neučinili, stáhněte a nainstalujte [AzCopy](http://aka.ms/downloadazcopy) nástroj. Zajistěte, aby byl spustitelný soubor AzCopy v systémové cestě psát "AzCopy" a stisknutím klávesy Enter zobrazíte jeho dokumentaci.
+1. Pokud jste tak již neučinili, stáhněte a nainstalujte [AzCopy](https://aka.ms/downloadazcopy) nástroj. Zajistěte, aby byl spustitelný soubor AzCopy v systémové cestě psát "AzCopy" a stisknutím klávesy Enter zobrazíte jeho dokumentaci.
 1. Tyto příkazy ke zkopírování všech ukázkových dat, které je předem vytrénované modely a skripty trénování modelu do vhodného umístění ve vašem účtu úložiště:
 
     ```
@@ -255,7 +255,7 @@ Cluster Batch AI přistupuje k cvičných dat na souborovém serveru sítě. Př
 
 V případě potřeby můžete potvrdit, že se přenos dat proběhl podle plánu tak, že přihlášení k souborovému serveru pomocí vašeho oblíbeného nástroje SSH a kontrola `/mnt/data` obsah adresáře. Byste měli najít dvě složky training_images a validation_images, každá obsahuje s podsložek pojmenovaných podle pozemního pomocí kategorií.  Školení a ověření sady by měl obsahovat ~ 44 tisíc a ~ 11 tisíc obrázků v uvedeném pořadí.
 
-#### <a name="create-a-batch-ai-cluster"></a>Vytvořte cluster Batch AI
+#### <a name="create-a-batch-ai-cluster"></a>Vytvoření clusteru Batch AI
 
 1. Vytvoření clusteru pomocí následujícího příkazu:
 

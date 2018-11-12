@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/19/2018
 ms.author: barclayn
-ms.openlocfilehash: 263c04fd15240f365f2325c69d5cb25aa1a539f0
-ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
+ms.openlocfilehash: 86724ca49884f1072297ffcf4fc6498db5ae8ac3
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46465873"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51254634"
 ---
 # <a name="azure-data-security-and-encryption-best-practices"></a>Doporučené postupy pro zabezpečení dat v Azure a šifrování
 K ochraně dat v cloudu, budete muset počítat možné stavy, v nichž může dojít, vaše data a jaké ovládací prvky jsou k dispozici pro tento stav. Osvědčené postupy pro zabezpečení dat v Azure a šifrování se týkají následující stavy dat:
@@ -132,7 +132,7 @@ Doporučujeme vám:
 - Použití popisků, které odpovídají vašim podnikovým požadavkům. Příklad: popisek s názvem "vysoce důvěrné informace" na všechny dokumenty a e-maily, které obsahují top-secret data, klasifikovat a chránit tato data použít. Jenom Autorizovaní uživatelé pak můžete přístup k těmto datům, s libovolnými nakonfigurovanými omezeními, které zadáte.
 - Konfigurace [protokolování použití pro službu Azure RMS](https://docs.microsoft.com/azure/information-protection/log-analyze-usage) tak, aby můžete sledovat, jak vaše organizace používá službu ochrany.
 
-Organizace, které jsou na slabé [klasifikace dat](http://download.microsoft.com/download/0/A/3/0A3BE969-85C5-4DD2-83B6-366AA71D1FE3/Data-Classification-for-Cloud-Readiness.pdf) a ochranu souborů může být více náchylný k úniku nebo zneužití dat. S ochranou správná můžete analyzovat datové toky, chcete-li získat informace o svojí firmě, rozpoznali nebezpečné chování a podnikli nápravná opatření, sledovali přístup k dokumentům a tak dále.
+Organizace, které jsou na slabé [klasifikace dat](https://download.microsoft.com/download/0/A/3/0A3BE969-85C5-4DD2-83B6-366AA71D1FE3/Data-Classification-for-Cloud-Readiness.pdf) a ochranu souborů může být více náchylný k úniku nebo zneužití dat. S ochranou správná můžete analyzovat datové toky, chcete-li získat informace o svojí firmě, rozpoznali nebezpečné chování a podnikli nápravná opatření, sledovali přístup k dokumentům a tak dále.
 
 ## <a name="next-steps"></a>Další postup
 Zobrazit [osvědčené postupy zabezpečení Azure a vzory](security-best-practices-and-patterns.md) pro další doporučené postupy zabezpečení, mají použít, když jste návrhu, nasazení a správa cloudových řešení pomocí služby Azure.

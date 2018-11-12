@@ -10,12 +10,12 @@ ms.component: content-moderator
 ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: sajagtap
-ms.openlocfilehash: f25434814a7fb3d0f49cab539b394970c9bcfb3b
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 79fe761bc6d8bb9561701fd11b06b010bf3454f6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50023436"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51260002"
 ---
 # <a name="quickstart-get-familiar-with-content-moderator"></a>Rychlý start: Seznamte se s Content Moderatorem
 
@@ -26,7 +26,7 @@ V tomto rychlém startu použijete online nástroje pro recenze Content Moderato
 - Webový prohlížeč
 
 ## <a name="set-up-the-review-tool"></a>Nastavení nástroje pro recenze
-Nástroj pro recenze Content Moderator je webový nástroj, který umožňuje lidské revidující na podporu služby cognitive Services v rozhodování. V tomto průvodci budou procházet krátký proces nastavení nástroje pro recenze tak, abyste viděli, jak funguje služba Content Moderatoru. Přejděte [nástroj pro kontrolu Content Moderator](http://contentmoderator.cognitive.microsoft.com/) webu a zaregistrovat.
+Nástroj pro recenze Content Moderator je webový nástroj, který umožňuje lidské revidující na podporu služby cognitive Services v rozhodování. V tomto průvodci budou procházet krátký proces nastavení nástroje pro recenze tak, abyste viděli, jak funguje služba Content Moderatoru. Přejděte [nástroj pro kontrolu Content Moderator](https://contentmoderator.cognitive.microsoft.com/) webu a zaregistrovat.
 
 ![Content Moderator domovské stránky](images/homepage.PNG)
 
@@ -48,7 +48,7 @@ Svůj obsah odešlete k moderování. Nástroj pro recenze interně, zavolá roz
 
 ## <a name="review-moderation-tags"></a>Zkontrolujte moderování značky
 
-Projděte si značky použité pro moderování. Můžete zobrazit značky, které byly použity k vašemu obsahu a skóre byla v každé kategorii.
+Projděte si značky použité pro moderování. Můžete zobrazit značky, které byly použity k vašemu obsahu a skóre byla v každé kategorii. Najdete v článku [Image](image-moderation-api.md), [Text](text-moderation-api.md), a [Video](video-moderation-api.md) označení moderování témata pro další informace o klíčových jiný obsah.
 
 ![Kontrola výsledků](images/reviewresults_text.png)
 
@@ -70,4 +70,4 @@ Nebo můžete pokračovat s dalšími kroky, abyste mohli začít používat roz
 Další informace o použití rozhraní API pro moderování sami ve vaší aplikaci.
 - Implementace moderování obrázků. Použití [rozhraní API konzoly](try-image-api.md) nebo [ C# rychlý Start](image-moderation-quickstart-dotnet.md) prohledávat obrázky a detekovat potenciální obsah pro dospělé nebo pikantního pomocí značek, skóre spolehlivosti a další extrahovat informace.
 - Implementace moderování textu. Použít [rozhraní API konzoly](try-text-api.md) nebo použijte [ C# rychlý Start](text-moderation-quickstart-dotnet.md) kontrolovat textový obsah pro potenciální vulgární výrazy, klasifikace s podporou počítače nežádoucího textu (preview) a identifikovatelné osobní údaje informace o (PII). 
-- Implementace moderování videa. Použití [ C# rychlý Start](video-moderation-api.md) kontrolovat videa a detekovat potenciální obsah pro dospělé nebo pikantního. 
+- Implementace moderování videa. Postupujte podle [Průvodce postupy moderování videa pro C# ](video-moderation-api.md) kontrolovat videa a detekovat potenciální obsah pro dospělé nebo pikantního. 

@@ -1,8 +1,8 @@
 ---
-title: Tokeny ověřování předat Azure Media Services | Microsoft Docs
+title: Předání ověřovacích tokenů do služby Azure Media Services | Dokumentace Microsoftu
 description: Zjistěte, jak odeslat ověřovací tokeny z klienta ke službě Azure Media Services doručení klíče
 services: media-services
-keywords: Ochrana obsahu, DRM, ověření pomocí tokenu
+keywords: Ochrana obsahu, DRM, ověřování pomocí tokenu
 documentationcenter: ''
 author: dbgeorge
 manager: jasonsue
@@ -15,25 +15,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2017
 ms.author: dwgeo
-ms.openlocfilehash: b6aca2928465b73e35ac15f01bb776b1f69add0b
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 204a2122f38306f2c883436fb13397b45fd91980
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33788449"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51254617"
 ---
-# <a name="learn-how-clients-pass-tokens-to-the-azure-media-services-key-delivery-service"></a>Zjistěte, jak klienti předat tokeny ke službě Azure Media Services doručení klíče
-Zákazníci často požádejte jak přehrávač můžete předat tokeny ke službě Azure Media Services doručení klíče pro ověřování tak přehrávač můžete získat klíč. Služba Media Services podporuje jednoduchého webového tokenu (SWT) a formátů JSON Web Token (JWT). Ověření pomocí tokenu je použita k libovolnému typu klíč, bez ohledu na to, jestli používáte běžným šifrováním nebo Advanced Encryption (Standard AES) obálky šifrování v systému.
+# <a name="learn-how-clients-pass-tokens-to-the-azure-media-services-key-delivery-service"></a>Zjistěte, jak klienti předání tokenů ve službě Azure Media Services doručení klíče
+Zákazníci se často ptají, jak přehrávač můžete předat tokeny ke službě Azure Media Services doručení klíče pro ověření, přehrávače můžete získat klíč. Služba Media Services podporuje jednoduchý webový token (SWT) a formátů JSON Web Token (JWT). Ověření tokenu se použije na libovolný typ klíče, bez ohledu na to, jestli používat standard common encryption nebo Obálka šifrování Advanced Encryption (Standard AES) v systému.
 
- V závislosti na player a platformy, na které cílí můžete předat token s vaší player následujícími způsoby:
+ V závislosti na player a platformy, na kterou cílíte můžete předat token s přehrávače následujícími způsoby:
 
 - Prostřednictvím protokolu HTTP autorizační hlavičky.
     > [!NOTE]
-    > Předpona "Nosiče" je očekáván podle specifikace OAuth 2.0. Ukázka přehrávač tokenu konfigurace hostitelem je Azure Media Player [ukázkové stránky](http://ampdemo.azureedge.net/). Pokud chcete nastavit zdroj videa, zvolte **AES (JWT Token)** nebo **AES (SWT Token)**. Token je předán prostřednictvím autorizační hlavičky.
+    > Předpona "Nosiče" očekává podle specifikace OAuth 2.0. Ukázka player se konfigurace tokenu je hostované na Azure Media Player [ukázkové stránky](http://ampdemo.azureedge.net/). Chcete-li nastavit zdroj videa, zvolte **AES (tokenů JWT)** nebo **AES (SWT Token)**. Token, který se předá prostřednictvím autorizační hlavičky.
 
-- Prostřednictvím přidání adresy URL parametr s dotazu "tokenu = tokenvalue."  
+- Prostřednictvím přidání adresy URL parametr pomocí dotazu "token = tokenvalue."  
     > [!NOTE]
-    > Předpona "Nosiče" není očekáván. Protože token se budou odesílat prostřednictvím adresy URL, je třeba k obraně řetězec tokenu. Tady je ukázkový kód C#, který ukazuje, jak to udělat:
+    > Předpona "Nosiče" není očekáván. Vzhledem k tomu, že token, který se odesílá prostřednictvím adresy URL, budete muset obraně řetězec tokenu. Tady je C# ukázkový kód, který ukazuje, jak to udělat:
 
     ```csharp
     string armoredAuthToken = System.Web.HttpUtility.UrlEncode(authToken);
@@ -41,8 +41,8 @@ Zákazníci často požádejte jak přehrávač můžete předat tokeny ke služ
     Uri keyDeliveryUrlWithTokenParameter = new Uri(uriWithTokenParameter);
     ```
 
-- Přes pole CustomData.
-Tato možnost slouží k získání licence PlayReady pouze přes pole CustomData výzvy získání licence PlayReady. V takovém případě token musí být uvnitř dokumentu XML podle postupu popsaného tady:
+- Prostřednictvím CustomData pole.
+Tato možnost se používá pro získání licence PlayReady jenom přes pole CustomData výzvy získání licence PlayReady. V takovém případě musí být token uvnitř dokumentu XML, podle postupu popsaného tady:
 
     ```xml
     <?xml version="1.0"?>
@@ -50,9 +50,9 @@ Tato možnost slouží k získání licence PlayReady pouze přes pole CustomDat
         <Token></Token> 
     </CustomData>
     ```
-    Uveďte ověřovací token v elementu Token.
+    Vložte ověřovací token do prvku Token.
 
-- Pomocí alternativní stop HTTP Live Streaming (HLS). Pokud potřebujete nakonfigurovat ověření pomocí tokenu pro AES + HLS přehrávání na iOS nebo Safari, není k dispozici způsob, jak můžete přímo odeslat v tokenu. Další informace o tom, jak chcete-li povolit tento scénář alternativní najdete [příspěvku na blogu](http://azure.microsoft.com/blog/2015/03/06/how-to-make-token-authorized-aes-encrypted-hls-stream-working-in-safari/).
+- Prostřednictvím alternativní stop HTTP Live Streaming (HLS). Pokud je nutné nakonfigurovat ověřování pomocí tokenu pro AES + HLS přehrávání na iOS/Safari, není k dispozici způsob, jak můžete odeslat přímo v tokenu. Další informace o tom, jak alternativní seznam stop, chcete-li povolit tento scénář, najdete v tomto [blogový příspěvek](https://azure.microsoft.com/blog/2015/03/06/how-to-make-token-authorized-aes-encrypted-hls-stream-working-in-safari/).
 
 ## <a name="next-steps"></a>Další postup
 

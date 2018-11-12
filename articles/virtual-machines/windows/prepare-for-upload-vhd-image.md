@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/10/2018
 ms.author: genli
-ms.openlocfilehash: f9b950b1d85f50331d556a54b4237d78ec5c07ac
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 4d30cca0106e52706326bfd91a2d0dfb0a64ca04
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49388151"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51258448"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Příprava Windows VHD nebo VHDX, který chcete nahrát do Azure
 Před odesláním Windows virtuálních počítačů (VM) z místního na Microsoft Azure, musíte připravit virtuální pevný disk (VHD nebo VHDX). Azure podporuje **pouze virtuální počítače generace 1** , které jsou ve formátu souboru virtuálního pevného disku a mají pevnou velikostí disku. Maximální velikost povolenou pro virtuální pevný disk je 1,023 GB. Můžete převést generace 1 virtuální počítač z VHDX souborový systém pro virtuální pevný disk a z dynamicky se zvětšující disku na pevnou velikostí. Nelze však změnit generaci Virtuálního počítače. Další informace najdete v tématu [bych si měl vytvořit generace 1 nebo 2 virtuálních počítačů Hyper-v](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v).
@@ -48,7 +48,7 @@ Po převedení disku vytvořte virtuální počítač, který používá převed
 >Příkazy v tomto článku je třeba spustit na relaci Powershellu se zvýšenými oprávněními.
 
 ### <a name="convert-disk-by-using-powershell"></a>Převod disku pomocí prostředí PowerShell
-Můžete převést virtuální disk s použitím [Convert-VHD](http://technet.microsoft.com/library/hh848454.aspx) příkazu v prostředí Windows PowerShell. Vyberte **spustit jako správce** při spuštění PowerShell. 
+Můžete převést virtuální disk s použitím [Convert-VHD](https://technet.microsoft.com/library/hh848454.aspx) příkazu v prostředí Windows PowerShell. Vyberte **spustit jako správce** při spuštění PowerShell. 
 
 V tomto ukázkovém příkazu převede z VHDX na VHD a dynamicky se zvětšující disku pevné velikosti:
 
@@ -58,7 +58,7 @@ Convert-VHD –Path c:\test\MY-VM.vhdx –DestinationPath c:\test\MY-NEW-VM.vhd 
 V tomto příkazu nahraďte hodnotu pro "-cesta" s cestou virtuální pevný disk, který chcete převést a hodnota "-DestinationPath" s novou cestu a název převedený disku.
 
 ### <a name="convert-from-vmware-vmdk-disk-format"></a>Převod z formátu VMware VMDK disku
-Pokud máte image virtuálního počítače Windows ve [formát souboru VMDK](https://en.wikipedia.org/wiki/VMDK), převeďte jej na virtuální pevný disk s použitím [převaděč virtuálního počítače Microsoft](https://www.microsoft.com/download/details.aspx?id=42497). Další informace najdete v článku blogu [jak převést VMware VMDK na Hyper-V virtuálního pevného disku](http://blogs.msdn.com/b/timomta/archive/2015/06/11/how-to-convert-a-vmware-vmdk-to-hyper-v-vhd.aspx).
+Pokud máte image virtuálního počítače Windows ve [formát souboru VMDK](https://en.wikipedia.org/wiki/VMDK), převeďte jej na virtuální pevný disk s použitím [převaděč virtuálního počítače Microsoft](https://www.microsoft.com/download/details.aspx?id=42497). Další informace najdete v článku blogu [jak převést VMware VMDK na Hyper-V virtuálního pevného disku](https://blogs.msdn.com/b/timomta/archive/2015/06/11/how-to-convert-a-vmware-vmdk-to-hyper-v-vhd.aspx).
 
 ## <a name="set-windows-configurations-for-azure"></a>Konfigurace sady Windows Azure
 
@@ -377,7 +377,7 @@ Další informace o vytvoření virtuálního počítače ze specializovaného d
 - [Vytvoření virtuálního počítače ze specializovaného disku](create-vm-specialized.md)
 - [Vytvoření virtuálního počítače ze specializovaného disku VHD](https://docs.microsoft.com/azure/virtual-machines/windows/create-vm-specialized-portal?branch=master)
 
-Pokud chcete vytvořit generalizované image, budete muset spustit nástroj sysprep. Další informace o nástroji Sysprep najdete v tématu [použití nástroje Sysprep: Úvod](http://technet.microsoft.com/library/bb457073.aspx). 
+Pokud chcete vytvořit generalizované image, budete muset spustit nástroj sysprep. Další informace o nástroji Sysprep najdete v tématu [použití nástroje Sysprep: Úvod](https://technet.microsoft.com/library/bb457073.aspx). 
 
 Ne každá role nebo aplikaci, která je nainstalovaná na počítači s Windows podporuje této generalizaci. Před použitím tohoto postupu naleznete v následujícím článku, abyste měli jistotu, že nástroj sysprep podporuje roli tohoto počítače. Další informace najdete [podpory nástroje Sysprep pro role serveru](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles).
 
@@ -401,7 +401,7 @@ Ne každá role nebo aplikaci, která je nainstalovaná na počítači s Windows
 ## <a name="complete-recommended-configurations"></a>Dokončete doporučené konfigurace
 Tato nastavení neovlivní nahrání virtuálního pevného disku. Nicméně důrazně doporučujeme, že jste je nakonfigurovali.
 
-* Nainstalujte [agenta virtuální počítače Azure](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). Pak můžete povolit rozšíření virtuálních počítačů. Rozšíření virtuálních počítačů implementovat většinu důležitých funkcí, které může použít pomocí vašich virtuálních počítačů jako je resetování hesla, konfigurace protokolu RDP a tak dále. Další informace naleznete v tématu:
+* Nainstalujte [agenta virtuální počítače Azure](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). Pak můžete povolit rozšíření virtuálních počítačů. Rozšíření virtuálních počítačů implementovat většinu důležitých funkcí, které může použít pomocí vašich virtuálních počítačů jako je resetování hesla, konfigurace protokolu RDP a tak dále. Další informace naleznete v tématu:
 
     - [Agent virtuálního počítače a rozšíření – část 1](https://azure.microsoft.com/blog/vm-agent-and-extensions-part-1/)
     - [Agent virtuálního počítače a rozšíření – část 2](https://azure.microsoft.com/blog/vm-agent-and-extensions-part-2/)

@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 11/15/2017
 ms.author: sngun
-ms.openlocfilehash: 0187bf51d36f16001f0f7f67f4f72f5f3df2e05d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: a41ffdb31cb54e1488c0f114632c605b92d4c444
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46974132"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51255281"
 ---
 # <a name="build-mobile-applications-with-xamarin-and-azure-cosmos-db"></a>Vytváření mobilních aplikací s Xamarinem a Azure Cosmos DB
 
@@ -85,7 +85,7 @@ Podle těchto pokynů upravte aplikaci seznamu úkolů na víceuživatelskou apl
 
   4. Upravte aplikaci tak, aby se ve zprostředkovateli tokenu prostředku ověřovala přes Facebook a odesílala požadavky na tokeny prostředků pro přihlášené uživatele Facebooku. Pak můžete přistupovat k jejich datům v kolekci UserItems.  
 
-Kompletní vzorový kód tohoto modelu najdete v úložišti [zprostředkovatele tokenu prostředku na GitHubu](http://aka.ms/documentdb-xamarin-todouser). Toto řešení znázorňuje tento diagram:
+Kompletní vzorový kód tohoto modelu najdete v úložišti [zprostředkovatele tokenu prostředku na GitHubu](https://aka.ms/documentdb-xamarin-todouser). Toto řešení znázorňuje tento diagram:
 
 ![Uživatelé služby Azure Cosmos DB a zprostředkovatel oprávnění](media/mobile-apps-with-xamarin/documentdb-resource-token-broker.png)
 

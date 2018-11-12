@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: christoc;xpouyat;juliako
-ms.openlocfilehash: 79b2aa22307e4742d00d9422535d52c80485e2db
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 0a20f7629fbc102ae05c51c7388bbfd6915d6204
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50249030"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51257358"
 ---
 # <a name="advanced-media-encoder-premium-workflow-tutorials"></a>Pokročilé kurzy pracovní postup kodéru Media Encoder Premium
 ## <a name="overview"></a>Přehled
@@ -939,9 +939,9 @@ S pod klauzule jednoduché guard, můžeme zkontrolujte, jestli se vyžaduje oř
 ```
 
 ## <a name="also-see"></a>Viz také
-[Úvod do Premium Encoding v Azure Media Services](http://azure.microsoft.com/blog/2015/03/05/introducing-premium-encoding-in-azure-media-services)
+[Úvod do Premium Encoding v Azure Media Services](https://azure.microsoft.com/blog/2015/03/05/introducing-premium-encoding-in-azure-media-services)
 
-[Jak používat Premium Encoding v Azure Media Services](http://azure.microsoft.com/blog/2015/03/06/how-to-use-premium-encoding-in-azure-media-services)
+[Jak používat Premium Encoding v Azure Media Services](https://azure.microsoft.com/blog/2015/03/06/how-to-use-premium-encoding-in-azure-media-services)
 
 [Kódování obsahu na vyžádání pomocí Azure Media Service](media-services-encode-asset.md#media-encoder-premium-workflow)
 
@@ -949,7 +949,7 @@ S pod klauzule jednoduché guard, můžeme zkontrolujte, jestli se vyžaduje oř
 
 [Ukázkové soubory pracovního postupu](http://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows)
 
-[Nástroj Azure Media Services Explorer](http://aka.ms/amse)
+[Nástroj Azure Media Services Explorer](https://aka.ms/amse)
 
 ## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

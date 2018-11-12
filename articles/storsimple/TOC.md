@@ -61,6 +61,7 @@
 
 ## Přehled
 ### [Informace o řešení](storsimple-overview.md)
+### [Porovnání možností přenosu dat](storsimple-8000-choose-storage-solution.md)
 ### [Mapa kurzů StorSimple](https://azure.microsoft.com/documentation/learning-paths/storsimple-typical/)
 ### [Aspekty zabezpečení](storsimple-8000-security.md)
 ### [Dostupnost v oblastech](storsimple-regions.md)
@@ -183,7 +184,7 @@
 #### [Ze zařízení řady 5000/7000](storsimple-8000-migration-options.md)
 ##### [Do zařízení řady StorSimple 8000](storsimple-8000-migrate-from-5000-7000.md)
 ##### [Do funkce Synchronizace souborů Azure](storsimple-5000-7000-afs-migration.md)
-#### [Z jiných zařízení úložišť](http://download.microsoft.com/download/9/4/A/94AB8165-CCC4-430B-801B-9FD40C8DA340/Migrating Data to StorSimple Volumes_09-02-15.pdf)
+#### [Z jiných zařízení úložišť](https://download.microsoft.com/download/9/4/A/94AB8165-CCC4-430B-801B-9FD40C8DA340/Migrating Data to StorSimple Volumes_09-02-15.pdf)
 
 ### Aktualizace
 #### [Instalace aktualizace 5 – aktuální](storsimple-8000-install-update-5.md)
@@ -248,8 +249,8 @@
 ## [Ceny](https://azure.microsoft.com/pricing/details/storsimple/)
 ## [ Cenová kalkulačka](https://azure.microsoft.com/pricing/calculator/)
 ## [Aktualizace služeb](https://azure.microsoft.com/updates/?product=storsimple)
-## [Blog podpory](http://blogs.msdn.com/b/storsimple/)
-## [Oznámení třetích stran](http://download.microsoft.com/download/2/0/0/2003271D-69D5-4143-85A2-F1D8EA058F52/StorSimple TPNs.zip)
+## [Blog podpory](https://blogs.msdn.com/b/storsimple/)
+## [Oznámení třetích stran](https://download.microsoft.com/download/2/0/0/2003271D-69D5-4143-85A2-F1D8EA058F52/StorSimple TPNs.zip)
 ## [Videa](https://azure.microsoft.com/documentation/videos/index/?services=storsimple)
 
 

@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 03/21/2018
 ms.author: michaelhauss
 ms.component: blobs
-ms.openlocfilehash: 35cfa36aba8042bcc753c1005c8fd8dbcdb70e79
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 43e9acb79b363e8f2cb00f6a4676d450c097bf3e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39397668"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261991"
 ---
 # <a name="how-to-use-blob-storage-from-ios"></a>Používání úložiště Blob z iOS
 
@@ -382,8 +382,8 @@ Teď, když jste zjistili, jak používat úložiště objektů Blob z iOS, pou�
 * [Klientská knihovna Azure Storage pro iOS](https://github.com/azure/azure-storage-ios)
 * [Azure Storage iOS referenční dokumentaci](http://azure.github.io/azure-storage-ios/)
 * [REST API služby Azure Storage](https://msdn.microsoft.com/library/azure/dd179355.aspx)
-* [Blog týmu Azure Storage](http://blogs.msdn.com/b/windowsazurestorage)
+* [Blog týmu Azure Storage](https://blogs.msdn.com/b/windowsazurestorage)
 
-Pokud máte dotazy týkající se této knihovny, neváhejte přidat do našich [fóra MSDN Azure](http://social.msdn.microsoft.com/Forums/windowsazure/home?forum=windowsazuredata) nebo [Stack Overflow](http://stackoverflow.com/questions/tagged/windows-azure-storage+or+windows-azure-storage+or+azure-storage-blobs+or+azure-storage-tables+or+azure-table-storage+or+windows-azure-queues+or+azure-storage-queues+or+azure-storage-emulator+or+azure-storage-files).
+Pokud máte dotazy týkající se této knihovny, neváhejte přidat do našich [fóra MSDN Azure](https://social.msdn.microsoft.com/Forums/windowsazure/home?forum=windowsazuredata) nebo [Stack Overflow](http://stackoverflow.com/questions/tagged/windows-azure-storage+or+windows-azure-storage+or+azure-storage-blobs+or+azure-storage-tables+or+azure-table-storage+or+windows-azure-queues+or+azure-storage-queues+or+azure-storage-emulator+or+azure-storage-files).
 Pokud máte návrhy funkcí pro službu Azure Storage, přidejte příspěvek do [zpětné vazby úložiště Azure](https://feedback.azure.com/forums/217298-storage/).
 

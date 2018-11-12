@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 10/28/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 63a45aa02eadd0b5739c1624af524883171a7055
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 8dc6b7da77988a789de04578d6653b192f58afa8
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50211192"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261719"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-to-a-secondary-azure-region"></a>Nastavení zotavení po havárii pro virtuální počítače Azure do sekundární oblasti Azure
 
@@ -81,9 +81,9 @@ Pokud k řízení odchozího připojení používáte proxy server brány firewa
 
 Pokud chcete řídit odchozí připojení pomocí IP adres místo adres URL, přidejte na seznam povolených pro brány firewall založené na protokolu IP, proxy servery nebo pravidla NSG odpovídající rozsahy datacenter, adresy Office 365 a adresy koncových bodů služby.
 
-  - [Rozsahy IP adres datacentra Microsoft Azure](http://www.microsoft.com/en-us/download/details.aspx?id=41653)
-  - [Rozsahy IP adres datacentra Windows Azure v Německu](http://www.microsoft.com/en-us/download/details.aspx?id=54770)
-  - [Rozsahy IP adres datacentra Windows Azure v Číně](http://www.microsoft.com/en-us/download/details.aspx?id=42064)
+  - [Rozsahy IP adres datacentra Microsoft Azure](https://www.microsoft.com/en-us/download/details.aspx?id=41653)
+  - [Rozsahy IP adres datacentra Windows Azure v Německu](https://www.microsoft.com/en-us/download/details.aspx?id=54770)
+  - [Rozsahy IP adres datacentra Windows Azure v Číně](https://www.microsoft.com/en-us/download/details.aspx?id=42064)
   - [Adresy URL a rozsahy IP adres pro Office 365](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity)
   - [IP adresy koncových bodů služby Site Recovery](https://aka.ms/site-recovery-public-ips)
 

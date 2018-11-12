@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.author: jingwang
-ms.openlocfilehash: 844440d22bc0a524e9e61bde457ee9f43fd367b2
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 6cab6559cb38b7d6d1dc2105b694acbcac85108c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42444608"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51262042"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Podporované formáty souborů a komprese kodeky ve službě Azure Data Factory
 
@@ -434,7 +434,7 @@ Pokud chcete analyzovat soubory ORC nebo zapisovat data ve formátu ORC, nastavt
 ```
 
 > [!IMPORTANT]
-> Pro kopírování pověřený modul Integration Runtime například mezi místním prostředím a cloudem úložiště dat, pokud soubory ORC nekopírujete **jako-je**, je nutné nainstalovat prostředí JRE 8 (Java Runtime Environment) na svém počítači reakcí na Incidenty. Prostředí IR 64-bit vyžaduje 64bitovou platformu JRE. Obě verze najdete [tady](http://go.microsoft.com/fwlink/?LinkId=808605).
+> Pro kopírování pověřený modul Integration Runtime například mezi místním prostředím a cloudem úložiště dat, pokud soubory ORC nekopírujete **jako-je**, je nutné nainstalovat prostředí JRE 8 (Java Runtime Environment) na svém počítači reakcí na Incidenty. Prostředí IR 64-bit vyžaduje 64bitovou platformu JRE. Obě verze najdete [tady](https://go.microsoft.com/fwlink/?LinkId=808605).
 >
 
 Je třeba počítat s následujícím:
@@ -478,7 +478,7 @@ Pokud chcete analyzovat soubory Parquet nebo zapisovat data ve formátu Parquet,
 ```
 
 > [!IMPORTANT]
-> Pro kopírování pověřený modul Integration Runtime například mezi místním prostředím a cloudem úložiště dat, pokud soubory Parquet nekopírujete **jako-je**, je nutné nainstalovat prostředí JRE 8 (Java Runtime Environment) na svém počítači reakcí na Incidenty. Prostředí IR 64-bit vyžaduje 64bitovou platformu JRE. Obě verze najdete [tady](http://go.microsoft.com/fwlink/?LinkId=808605).
+> Pro kopírování pověřený modul Integration Runtime například mezi místním prostředím a cloudem úložiště dat, pokud soubory Parquet nekopírujete **jako-je**, je nutné nainstalovat prostředí JRE 8 (Java Runtime Environment) na svém počítači reakcí na Incidenty. Prostředí IR 64-bit vyžaduje 64bitovou platformu JRE. Obě verze najdete [tady](https://go.microsoft.com/fwlink/?LinkId=808605).
 >
 
 Je třeba počítat s následujícím:

@@ -15,12 +15,12 @@ ms.workload: na
 ms.date: 09/19/2018
 ms.author: terrylan
 Customer intent: As a IT Pro or decision maker I am trying to learn about identity mangement capabilities in Azure
-ms.openlocfilehash: f15846f3de7162c61edce8aaf5c493bb1444df36
-ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
+ms.openlocfilehash: 84ab35c269af66f58f3886a5dd0606ce69a11be9
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46498551"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51255877"
 ---
 # <a name="azure-identity-management-security-overview"></a>Přehled zabezpečení správy identit Azure
 
@@ -169,7 +169,7 @@ Další informace:
 
 ## <a name="hybrid-identity-managementazure-ad-connect"></a>Hybridní identity management a Azure AD connect
 
-Řešení pro správu identit od Microsoftu pokrývá místní i cloudové funkce a vytvářejí jedinou identitu uživatele pro ověřování a autorizaci u všech prostředků bez ohledu na umístění. Tomu se říká hybridní identita. Azure AD Connect je nástroj Microsoft určený pro setkávání a dosáhnout cílů hybridní identity. To umožní poskytovat společnou identitu pro uživatele pro aplikace Office 365, Azure a SaaS integrované s Azure AD. Má následující funkce:
+Řešení pro správu identit od Microsoftu pokrývá místní i cloudové funkce a vytvářejí jedinou identitu uživatele pro ověřování a autorizaci u všech prostředků bez ohledu na umístění. Tomu se říká hybridní identita. Azure AD Connect je nástroj od Microsoftu, jehož účelem je splnit a zajistit cíle hybridní identity. To umožní poskytovat společnou identitu pro uživatele pro aplikace Office 365, Azure a SaaS integrované s Azure AD. Má následující funkce:
 
 * Synchronizace
 * Integrace služby AD FS a federation
@@ -178,7 +178,7 @@ Další informace:
 
 Další informace:
 
-* [Dokument white paper k hybridní identity](http://download.microsoft.com/download/D/B/A/DBA9E313-B833-48EE-998A-240AA799A8AB/Hybrid_Identity_White_Paper.pdf)
+* [Dokument white paper k hybridní identity](https://download.microsoft.com/download/D/B/A/DBA9E313-B833-48EE-998A-240AA799A8AB/Hybrid_Identity_White_Paper.pdf)
 * [Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/)
 * [Blog týmu Azure AD](https://blogs.technet.microsoft.com/ad/)
 

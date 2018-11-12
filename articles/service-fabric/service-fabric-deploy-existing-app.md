@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 07/02/2017
 ms.author: mfussell
-ms.openlocfilehash: a80895db8a89b8d9392d0ed067b95daa23474d8b
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 0f4bb3f32b264bd894341a8776d48eb9f8b061a2
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49113865"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51258727"
 ---
 # <a name="package-and-deploy-an-existing-executable-to-service-fabric"></a>Balení a nasazení existujícího spustitelného souboru do Service Fabric
 Při vytváření balíčku existujícího spustitelného souboru jako [spustitelný soubor typu Host](service-fabric-guest-executables-introduction.md), můžete buď použít šablonu projektu sady Visual Studio nebo [ručně vytvořit balíček aplikace](#manually). Pomocí sady Visual Studio, struktury balíček aplikace a soubory manifestu jsou vytvářeny nová šablona projektu pro vás.
@@ -69,7 +69,7 @@ Proces ručně balení spustitelný soubor typu Host jsou založené na těmito 
 4. Upravte soubor manifestu aplikace.
 
 <!--
->[AZURE.NOTE] We do provide a packaging tool that allows you to create the ApplicationPackage automatically. The tool is currently in preview. You can download it from [here](http://aka.ms/servicefabricpacktool).
+>[AZURE.NOTE] We do provide a packaging tool that allows you to create the ApplicationPackage automatically. The tool is currently in preview. You can download it from [here](https://aka.ms/servicefabricpacktool).
 -->
 
 ### <a name="create-the-package-directory-structure"></a>Vytvoření balíčku adresářovou strukturu

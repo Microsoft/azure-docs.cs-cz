@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: pbutlerm
-ms.openlocfilehash: f12a15a0d739ae6e98be3871fa8bb4104f49565c
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 74cde720af012b3355b813cf6da2b2bdf10b9b8e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48809559"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51257203"
 ---
 # <a name="publish-a-cortana-intelligence-offer-using-the-cloud-partner-portal"></a>Publikovat nabídku na Cortana Intelligence pomocí portál Cloud Partner
 
@@ -29,7 +29,7 @@ Tento článek popisuje, jak publikovat nabídku na Cortana Intelligence pomocí
 
 Portál Cloud Partner podporuje přístup na základě rolí na portál, který umožňuje přispěvatelům spolupracovat na publikování nabídky. Další informace najdete v tématu [cloudu portálu spravovat uživatele](./cloud-partner-portal-manage-users.md).
 
-Před publikováním nabídky jménem vydavatel účtu, jeden z uživatelé, kteří mají \"vlastníka\" role je potřeba souhlasit s [Terms of Use](https://azure.microsoft.com/support/legal/website-terms-of-use/), [prohlášení o ochraně osobních údajů Microsoft](http://www.microsoft.com/privacystatement/default.aspx), a [smlouva k programu Microsoft Azure Certified](https://azure.microsoft.com/support/legal/marketplace/certified-program-agreement/).
+Před publikováním nabídky jménem vydavatel účtu, jeden z uživatelé, kteří mají \"vlastníka\" role je potřeba souhlasit s [Terms of Use](https://azure.microsoft.com/support/legal/website-terms-of-use/), [prohlášení o ochraně osobních údajů Microsoft](https://www.microsoft.com/privacystatement/default.aspx), a [smlouva k programu Microsoft Azure Certified](https://azure.microsoft.com/support/legal/marketplace/certified-program-agreement/).
 
 ## <a name="to-start-creating-a-cortana-inteligence-offer"></a>Chcete začít vytvářet nabídky Cortana Inteligence
 
@@ -208,7 +208,7 @@ Partneři můžete poskytnout dva druhy prostředí pro zkušební verze na AppS
         - [Provádění maloobchodních POP AFS](https://appsource.microsoft.com/product/web-apps/afs.fa9fc926-3bc3-43dd-becd-3ef41b52c10b?tab=Overview)
         - [Služby pro občany avepointu poskytovat](https://appsource.microsoft.com/product/web-apps/avepoint.7738ac97-fd40-4ed3-aaab-327c3e0fe0b3?tab=Overview). (Tato aplikace poskytuje způsob s cestami k Vymazat vybrané sady osob uživatele.)
 
-     - Test Drive
+     - Testovací verze
         - Vaše (nebo váš partner) řešení, nebo podmnožina to se dá zabalit pomocí šablon Azure Resource Manageru, které lze vytvořit instanci AppSource a. AppSource můžete spravovat aplikaci v rámci předplatného na partnera s časem zabalení a udržování horké/studené fond instancí atd.
         - Můžeme poskytnout šablony a ukázky kódu pro případ, že zvolíte tuto možnost.
 
@@ -216,7 +216,7 @@ Partneři můžete poskytnout dva druhy prostředí pro zkušební verze na AppS
 
         - [Optimalizace inventáře Neal Analytics](https://appsource.microsoft.com/product/web-apps/neal_analytics.8066ad01-1e61-40cd-bd33-9b86c65fa73a?tab=Overview&tag=CISHome)
 
-- **Žádost o zkušební verzi** (**zkušebních verzí vedla partnera / čas načtení stránky**) možnost vyžaduje, aby zákazníci k vyplnění formuláře kontaktní informace pro zpracování partnera. Partnera sleduje a poskytuje ukázku nebo zkušební verze aplikace. Další informace najdete v tématu [AppSource zkušební prostředí návod](http://aka.ms/trialexperienceforwebapps) videa pro základní přehled.
+- **Žádost o zkušební verzi** (**zkušebních verzí vedla partnera / čas načtení stránky**) možnost vyžaduje, aby zákazníci k vyplnění formuláře kontaktní informace pro zpracování partnera. Partnera sleduje a poskytuje ukázku nebo zkušební verze aplikace. Další informace najdete v tématu [AppSource zkušební prostředí návod](https://aka.ms/trialexperienceforwebapps) videa pro základní přehled.
 
 >[!Note]
 >Data, která ukazuje **zkušebních verzí vedla zákazníka** mají vyšší generování potenciálních zákazníků potenciální než **zkušebních verzí vedla partnera**.

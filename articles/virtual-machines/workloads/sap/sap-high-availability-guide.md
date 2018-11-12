@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 353caf2bca68513a1153fe7b569c85606f72e753
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 55c8d3ff394fcf2df92bc80886bc86d29441e547
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45631034"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51254685"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver"></a>Azure Virtual Machines vysoká dostupnost pro SAP NetWeaver
 
@@ -220,7 +220,7 @@ V Azure Resource Manageru, všech prostředků Azure je nutné umístit do skupi
 
 V Azure Resource Manageru můžete nainstalovat více SAP systému identifikátor (SID) ASCS/SCS instancí v jednom clusteru. Instance s několika SID je možné z důvodu podpory pro několik IP adres pro každý nástroj pro vyrovnávání zatížení Azure interní.
 
-Chcete-li použít model nasazení Azure classic, postupujte podle postupů popsaných v [SAP NetWeaver v Azure: instancí clusteringu SAP ASCS/SCS s použitím systému Windows Server Failover Clustering v Azure se SIOS Datakeeperem](http://go.microsoft.com/fwlink/?LinkId=613056).
+Chcete-li použít model nasazení Azure classic, postupujte podle postupů popsaných v [SAP NetWeaver v Azure: instancí clusteringu SAP ASCS/SCS s použitím systému Windows Server Failover Clustering v Azure se SIOS Datakeeperem](https://go.microsoft.com/fwlink/?LinkId=613056).
 
 > [!IMPORTANT]
 > Důrazně doporučujeme použít model nasazení Azure Resource Manageru pro vaše instalace SAP. Nabízí řadu výhod, které nejsou k dispozici v modelu nasazení classic. Další informace o Azure [modely nasazení][virtual-machines-azure-resource-manager-architecture-benefits-arm].   

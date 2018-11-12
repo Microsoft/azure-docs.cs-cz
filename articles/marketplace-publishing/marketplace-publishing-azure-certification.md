@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/05/2016
 ms.author: hascipio
-ms.openlocfilehash: aadc695b1f07d04f1fcc7f2f2e3ff90fb7f54849
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 300b94aea0c06092a5fb6bdecd49771ef1cd517d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39713998"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51234183"
 ---
 # <a name="get-pre-approved-via-the-microsoft-azure-certified-program"></a>Získejte předem schválené prostřednictvím programu Microsoft Azure Certified
 Tento článek obsahuje pokyny k programu Microsoft Azure Certified, mohli publikování řešení na webu Azure Marketplace a nárok na výhody marketing. Podrobný přehled o programu Microsoft Azure Certified a jeho výhody, navštivte web [ http://azure.com/certified ](http://azure.com/certified).
@@ -34,7 +34,7 @@ Tento článek obsahuje pokyny k programu Microsoft Azure Certified, mohli publi
 3. Při práci s partnerem Account manažera nebo manažera pro partnerský DX prosím požádejte ho, aby nominujte vaše řešení Azure Certified programu nebo můžete přejít na [Microsoft Azure Certified](http://createopportunity.azurewebsites.net) webové stránky, vyplňte formulář žádosti a zadejte Partner Account manažera nebo manažera pro partnerský DX v poli kontaktu sponzor Microsoft e-mailu.
 
 > [!IMPORTANT]
-> **"Zákazník z" země** – Pokud chcete prodávat vaše služby na webu Microsoft Azure Marketplace, vaše registrovaná entity musí být z jedné ze zemí schválené "prodej z". Toto omezení je platební a daňové z důvodů. Těšíme se aktivně na tento seznam zemí, rozbalte v blízké budoucnosti, tak si Nenechte ujít. Úplný seznam najdete v části 1b [zásady účasti na webu Azure Marketplace](http://go.microsoft.com/fwlink/?LinkID=526833).
+> **"Zákazník z" země** – Pokud chcete prodávat vaše služby na webu Microsoft Azure Marketplace, vaše registrovaná entity musí být z jedné ze zemí schválené "prodej z". Toto omezení je platební a daňové z důvodů. Těšíme se aktivně na tento seznam zemí, rozbalte v blízké budoucnosti, tak si Nenechte ujít. Úplný seznam najdete v části 1b [zásady účasti na webu Azure Marketplace](https://go.microsoft.com/fwlink/?LinkID=526833).
 
 
 ## <a name="next-step"></a>Další krok

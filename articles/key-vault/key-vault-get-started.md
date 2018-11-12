@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/15/2018
 ms.author: barclayn
-ms.openlocfilehash: d0be0cbd9ff16acc1ecb209997a0c87cd4e43b36
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: a28bf1dc23d678c710d7bd6b13f067427e76ef41
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49955084"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238395"
 ---
 # <a name="get-started-with-azure-key-vault"></a>Začínáme s Azure Key Vault
 Tento článek vám pomůže začít s Azure Key Vault pomocí PowerShellu a provede vás těmito aktivitami:
@@ -36,7 +36,7 @@ Než budete pokračovat, zkontrolujte, že máte:
 
 - **Předplatné Azure**. Pokud žádné nemáte, můžete si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/)
 - **Azure PowerShell**, **minimálně verze 1.1.0**. Chcete-li nainstalovat Azure PowerShell a přidružit ho ke svému předplatnému Azure, prohlédněte si téma [Instalace a konfigurace Azure PowerShellu](/powershell/azure/overview). Pokud jste již Azure PowerShell nainstalovali, ale neznáte jeho verzi, z konzoly Azure PowerShell zadejte `(Get-Module azure -ListAvailable).Version`. Máte-li nainstalovaný Azure PowerShell ve verzi 0.9.1 až 0.9.8, stále můžete tento kurz použít, pouze s menšími změnami. Například musíte použít příkaz `Switch-AzureMode AzureResourceManager` a zároveň se změnily některé příkazy Azure Key Vault. Seznam rutin Key Vault pro verze 0.9.1 až 0.9.8 naleznete v tématu [Rutiny Azure Key Vault](/powershell/module/azurerm.keyvault/#key_vault).
-- **Aplikaci, kterou je možné nakonfigurovat tak, aby používala Key Vault**. Vzorová aplikace je k dispozici ve službě [Microsoft Download Center](http://www.microsoft.com/download/details.aspx?id=45343). Pokyny naleznete v souvisejícím souboru **Readme**.
+- **Aplikaci, kterou je možné nakonfigurovat tak, aby používala Key Vault**. Vzorová aplikace je k dispozici ve službě [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=45343). Pokyny naleznete v souvisejícím souboru **Readme**.
 
 >[!NOTE]
 Tento článek předpokládá základní znalost PowerShellu a Azure. Další informace o PowerShellu najdete v tématu [Začínáme s prostředím Windows PowerShell](https://technet.microsoft.com/library/hh857337.aspx).

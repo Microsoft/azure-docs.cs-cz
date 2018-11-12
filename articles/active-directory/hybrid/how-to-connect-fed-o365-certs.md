@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/20/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 0205552c073bf03c40da4d108256fa09e71fbbe3
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 311c16ba0c6b3378fd743b77e263a5d91f8b6a37
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46314752"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51237091"
 ---
 # <a name="renew-federation-certificates-for-office-365-and-azure-active-directory"></a>Obnovení federačních certifikátů pro Office 365 a Azure Active Directory
 ## <a name="overview"></a>Přehled
@@ -51,9 +51,9 @@ Azure AD se pokusí federačních metadat. monitorování a aktualizace je urče
 > [!IMPORTANT]
 > Pokud používáte službu AD FS, zajištění kontinuity obchodních procesů, ověřte prosím, že vaše servery mají následující aktualizace tak, aby se nevyskytují chyby ověřování známých problémů. To snižuje riziko zneužití známých problémů služby AD FS proxy serveru pro toto obnovení a budoucí obnovování:
 >
-> Server 2012 R2 - [Windows serveru. května 2014 souhrn](http://support.microsoft.com/kb/2955164)
+> Server 2012 R2 - [Windows serveru. května 2014 souhrn](https://support.microsoft.com/kb/2955164)
 >
-> Server 2008 R2 a 2012 - [ověřování přes proxy server selže v systému Windows Server 2012 nebo Windows 2008 R2 SP1](http://support.microsoft.com/kb/3094446)
+> Server 2008 R2 a 2012 - [ověřování přes proxy server selže v systému Windows Server 2012 nebo Windows 2008 R2 SP1](https://support.microsoft.com/kb/3094446)
 >
 >
 

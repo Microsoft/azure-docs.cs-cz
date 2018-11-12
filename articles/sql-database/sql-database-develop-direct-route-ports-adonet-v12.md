@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: sstein
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 89802722e9e848b5cd5ede952287d5c934c142c3
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 594d181a5452317267157415bdaf68f572f0f0af
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49351315"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51260019"
 ---
 # <a name="ports-beyond-1433-for-adonet-45"></a>Porty nad 1433 pro ADO.NET 4.5
 Toto téma popisuje chování připojení Azure SQL Database pro klienty, kteří používají technologii ADO.NET 4.5 nebo novější. 
@@ -48,7 +48,7 @@ Ujistěte se, že port, který rozsahů 11000 11999 a 14000 14999 na svém poč�
 * Porty v rozsahu musí být zejména bez dalších odchozí blokování.
 * Na svém virtuálním počítači Azure **brány Windows Firewall s pokročilým zabezpečením** řídí nastavení portu.
   
-  * Můžete použít [brány firewall na uživatelské rozhraní](http://msdn.microsoft.com/library/cc646023.aspx) přidáte pravidlo, u kterého nastavíte **TCP** protokolu společně s rozsah portů se syntaxí, jako jsou **11000 11999**.
+  * Můžete použít [brány firewall na uživatelské rozhraní](https://msdn.microsoft.com/library/cc646023.aspx) přidáte pravidlo, u kterého nastavíte **TCP** protokolu společně s rozsah portů se syntaxí, jako jsou **11000 11999**.
 
 ## <a name="version-clarifications"></a>Vyjasnění verze
 Tato část vysvětluje zástupných názvů, které odkazují na verze produktu. Také uvádí seznam některých páry verze mezi produkty.
@@ -65,9 +65,9 @@ Tato část vysvětluje zástupných názvů, které odkazují na verze produktu
 
 
 ## <a name="related-links"></a>Související odkazy
-* 20. července 2015 byla vydána ADO.NET 4.6. Oznámení blogu od týmu .NET je k dispozici [tady](http://blogs.msdn.com/b/dotnet/archive/2015/07/20/announcing-net-framework-4-6.aspx).
-* 15. srpna 2012 byla vydána ADO.NET 4.5. Oznámení blogu od týmu .NET je k dispozici [tady](http://blogs.msdn.com/b/dotnet/archive/2012/08/15/announcing-the-release-of-net-framework-4-5-rtm-product-and-source-code.aspx). 
-  * Blogový příspěvek o ADO.NET 4.5.1 je k dispozici [tady](http://blogs.msdn.com/b/dotnet/archive/2013/06/26/announcing-the-net-framework-4-5-1-preview.aspx).
+* 20. července 2015 byla vydána ADO.NET 4.6. Oznámení blogu od týmu .NET je k dispozici [tady](https://blogs.msdn.com/b/dotnet/archive/2015/07/20/announcing-net-framework-4-6.aspx).
+* 15. srpna 2012 byla vydána ADO.NET 4.5. Oznámení blogu od týmu .NET je k dispozici [tady](https://blogs.msdn.com/b/dotnet/archive/2012/08/15/announcing-the-release-of-net-framework-4-5-rtm-product-and-source-code.aspx). 
+  * Blogový příspěvek o ADO.NET 4.5.1 je k dispozici [tady](https://blogs.msdn.com/b/dotnet/archive/2013/06/26/announcing-the-net-framework-4-5-1-preview.aspx).
 
 * Microsoft® ODBC Driver 17 pro SQL Server® – Windows, Linux a macOS https://www.microsoft.com/download/details.aspx?id=56567
 

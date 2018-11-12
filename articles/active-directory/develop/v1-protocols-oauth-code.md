@@ -16,12 +16,12 @@ ms.date: 07/23/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: e896392404c23e88d697d45146f802576d6045d3
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: b7b8ccf7e84239db4eef0914346c453a2f205f91
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48870821"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51237889"
 ---
 # <a name="authorize-access-to-azure-active-directory-web-applications-using-the-oauth-20-code-grant-flow"></a>Autorizace přístupu k webovým aplikacím služby Azure Active Directory pomocí toku přidělení kódu OAuth 2.0
 
@@ -183,7 +183,7 @@ Pokud webové rozhraní API prostředku vrátí `invalid_token` kód chyby: to m
 | refresh_token |Aktualizace tokenu OAuth 2.0. Aplikace můžete používat tento token se po vypršení platnosti přístupového tokenu aktuální získat dodatečné přístupové tokeny. Aktualizace jsou dlouhodobé tokeny a slouží k přístupu k prostředkům uchovávat po dlouhou dobu. |
 | id_token |Bez znaménka představující JSON Web Token (JWT) [ID token](id-tokens.md). Base64Url aplikace může dekódovat segmenty tento token na žádost o informace o uživateli, který přihlášení. Aplikaci můžete ukládat do mezipaměti hodnoty a jejich zobrazení, ale na ně neměli spoléhat pro povolení nebo hranice zabezpečení. |
 
-Další informace o webových tokenů JSON najdete v článku [specifikace konceptu JWT IETF](http://go.microsoft.com/fwlink/?LinkId=392344).   Další informace o `id_tokens`, najdete v článku [v1.0 tok OpenID Connect](v1-protocols-openid-connect-code.md).
+Další informace o webových tokenů JSON najdete v článku [specifikace konceptu JWT IETF](https://go.microsoft.com/fwlink/?LinkId=392344).   Další informace o `id_tokens`, najdete v článku [v1.0 tok OpenID Connect](v1-protocols-openid-connect-code.md).
 
 ### <a name="error-response"></a>Odpověď na chybu
 Koncový bod chyby vystavování tokenů jsou kódy chyb protokolu HTTP, protože klient zavolá koncový bod vystavování tokenů přímo. Kromě stavový kód HTTP vrátí koncový bod vystavení tokenu Azure AD také dokument JSON s objekty, které popisují chybu.

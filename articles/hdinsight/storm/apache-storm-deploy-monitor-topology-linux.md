@@ -3,18 +3,18 @@ title: Nasazení a správa topologií Apache Storm v Azure HDInsight
 description: Zjistěte, jak nasadit, monitorovat a správa topologií Apache Storm pomocí řídicího panelu Storm v HDInsight se systémem Linux. Použití nástrojů Hadoopu pro Visual Studio.
 services: hdinsight
 ms.service: hdinsight
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/22/2018
-ms.openlocfilehash: 486fcdfecf70b13d01c259f36b74676fb8e4d54f
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 6cb3102206174422a3d8b4a0fb18f989d875e093
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43042952"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51259050"
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-azure-hdinsight"></a>Nasazení a správa topologií Apache Storm v Azure HDInsight 
 
@@ -38,7 +38,7 @@ V tomto dokumentu přečtěte si základní informace o správě a monitorován�
 
   * Visual Studio 2012 s aktualizací Update 4
 
-  * Visual Studio 2013 with Update 4 nebo [Visual Studio 2013 Community](http://go.microsoft.com/fwlink/?LinkId=517284)
+  * Visual Studio 2013 with Update 4 nebo [Visual Studio 2013 Community](https://go.microsoft.com/fwlink/?LinkId=517284)
   * [Visual Studio 2015](https://www.visualstudio.com/downloads/)
 
   * Visual Studio 2015 (libovolná edice)

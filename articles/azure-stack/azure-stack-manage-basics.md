@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/15/2018
 ms.author: jeffgilb
-ms.openlocfilehash: 37b8eff2d4ed89c90f1fa6f128673ed5bacaaa90
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 5d3073c3ed499ecdb20243e6db2b217aec3e1448
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49339946"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51254515"
 ---
 # <a name="azure-stack-administration-basics"></a>Základy správy Azure Stack
 Existuje několik věcí, které je potřeba vědět, pokud je pro vás nová pro správu služby Azure Stack. Tento návod poskytuje přehled o vaší role jako jejich operátory Azure stacku a co je potřeba říct uživatelům pro ně a být tak produktivní rychle.
@@ -81,7 +81,7 @@ Existuje několik důležitých informací účtu, které byste měli vědět p�
  
 Můžete použít [portálu správce](azure-stack-manage-portals.md) nebo prostředí PowerShell pro správu služby Azure Stack. Nejjednodušší způsob, jak informace o základních konceptech je prostřednictvím portálu. Pokud chcete použít PowerShell, jsou přípravné kroky. Je nutné [nainstalovat](azure-stack-powershell-install.md) prostředí PowerShell, [Stáhnout](azure-stack-powershell-download.md) dalších modulů, a [konfigurace](azure-stack-powershell-configure-admin.md) prostředí PowerShell.
 
-Azure Stack jako základní mechanismus nasazování, správu a organizace používá Azure Resource Manageru. Pokud budete ke správě služby Azure Stack a bylo možné podporovat uživatele, měli byste získat informace o Resource Manageru. Zobrazit [Začínáme s Azure Resource Managerem](http://download.microsoft.com/download/E/A/4/EA4017B5-F2ED-449A-897E-BD92E42479CE/Getting_Started_With_Azure_Resource_Manager_white_paper_EN_US.pdf) dokument White Paper.
+Azure Stack jako základní mechanismus nasazování, správu a organizace používá Azure Resource Manageru. Pokud budete ke správě služby Azure Stack a bylo možné podporovat uživatele, měli byste získat informace o Resource Manageru. Zobrazit [Začínáme s Azure Resource Managerem](https://download.microsoft.com/download/E/A/4/EA4017B5-F2ED-449A-897E-BD92E42479CE/Getting_Started_With_Azure_Resource_Manager_white_paper_EN_US.pdf) dokument White Paper.
 
 ## <a name="your-typical-responsibilities"></a>Typické odpovědnosti
 

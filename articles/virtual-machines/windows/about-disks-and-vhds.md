@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 11/15/2017
 ms.author: rogarana
 ms.component: disks
-ms.openlocfilehash: d6491ea1fd46d1dbd3d258a79a8d8e932173dae5
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: b1127475b873c5679946121e570ef2bb51f25be1
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50912284"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51234710"
 ---
 # <a name="about-disks-storage-for-azure-windows-vms"></a>O diskové úložiště pro virtuální počítače Azure s Windows
 
@@ -51,8 +51,9 @@ Azure vytvoří disk s operačním systémem, když vytváříte virtuální po�
 
 Můžete přidat datové disky na virtuální počítač v každém okamžiku podle **připojení** disku k virtuálnímu počítači. Můžete použít virtuální pevný disk, který jste nahráli nebo zkopírovat do svého účtu úložiště, nebo použít prázdný virtuální pevný disk, který pro vás vytvoří Azure. Připojení datového disku přidruží k souboru virtuálního pevného disku virtuálního počítače tak, že "zapůjčení na virtuální pevný disk, proto ji nelze odstranit z úložiště je pořád připojený.
 
-
 [!INCLUDE [storage-about-vhds-and-disks-windows-and-linux](../../../includes/storage-about-vhds-and-disks-windows-and-linux.md)]
+
+Velikosti ve verzi preview najdete v tématu naše [nejčastější dotazy k](faq-for-disks.md#new-disk-sizes-managed-and-unmanaged) se dozvíte, jaké oblasti jsou k dispozici v.
 
 ## <a name="one-last-recommendation-use-trim-with-unmanaged-standard-disks"></a>Jedním z poslední doporučení: použití uvolnění dočasné paměti s nespravovanými disky standard
 

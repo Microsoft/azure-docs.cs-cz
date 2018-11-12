@@ -14,12 +14,12 @@ ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 08/18/2016
 ms.author: hascipio
-ms.openlocfilehash: 4f86d444a2f2b97fd8605d480db358813bc39fd3
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: ef19380372354b8f34343f9f94ebf6b384996f14
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39714185"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261549"
 ---
 # <a name="general-prerequisites-for-creating-an-offer-for-the-azure-marketplace"></a>Obecné požadavky pro vytváření v rámci nabídky Azure Marketplace
 Seznamte se s Obecné, proces napjaté požadavky, které jsou potřeba k pokračovat v procesu vytváření nabídky.
@@ -70,7 +70,7 @@ Toto je předplatné, které použijete k vytvoření vašich imagí virtuální
 
 ## <a name="sell-from-countries"></a>"Zákazník z" země
 > [!WARNING]
-> Pokud chcete prodávat vaše služby na Azure Marketplace, ujistěte se, že je registrovaný entita z jedné ze zemí schválené "prodej z". Toto omezení je platební a daňové z důvodů. Těšíme se aktivně na tento seznam zemí, rozbalte v blízké budoucnosti, tak si Nenechte ujít. Úplný seznam najdete v části 1b [zásady účasti na webu Azure Marketplace](http://go.microsoft.com/fwlink/?LinkID=526833).
+> Pokud chcete prodávat vaše služby na Azure Marketplace, ujistěte se, že je registrovaný entita z jedné ze zemí schválené "prodej z". Toto omezení je platební a daňové z důvodů. Těšíme se aktivně na tento seznam zemí, rozbalte v blízké budoucnosti, tak si Nenechte ujít. Úplný seznam najdete v části 1b [zásady účasti na webu Azure Marketplace](https://go.microsoft.com/fwlink/?LinkID=526833).
 > 
 > 
 

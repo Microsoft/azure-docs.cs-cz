@@ -1,6 +1,6 @@
 ---
-title: Obnovení dat ze serveru Azure Backup
-description: Obnovte data, která jste chránili do trezoru služeb zotavení z jakéhokoli serveru zálohování Azure zaregistrovat do tohoto trezoru.
+title: Obnovení dat ze Azure Backup serveru
+description: Obnovte data, která jste chránili do trezoru služby Recovery Services z jakékoli Azure Backup Server zaregistrovaný do tohoto trezoru.
 services: backup
 author: nkolli1
 manager: shreeshd
@@ -8,94 +8,94 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: adigan
-ms.openlocfilehash: 8559532f873e8073e736f881374fec1c080d08c3
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: aa2796ab8e4cd9b8ab5e7fc3b4804f5535ac3518
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34604399"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51254447"
 ---
 # <a name="recover-data-from-azure-backup-server"></a>Obnovení dat z Azure Backup Serveru
-Azure Backup Server můžete použít k obnovení dat, které jste zálohovali do trezoru služeb zotavení. Proces pro to, je integrována do konzoly pro správu serveru Azure Backup a je podobný postupu obnovení pro jiné komponenty Azure Backup.
+Použití Azure Backup serveru k obnovení dat, které jste zálohovali pro trezor služby Recovery Services. Proces pro to tak je integrovaná Konzola pro správu Azure Backup serveru a je podobný postupu obnovení pro jiné komponenty Azure Backup.
 
 > [!NOTE]
-> Tento článek se použije pro [System Center Data Protection Manager 2012 R2 s kumulativní aktualizací 7 nebo novější] (https://support.microsoft.com/en-us/kb/3065246), kombinované s [nejnovější verze agenta Azure Backup](http://aka.ms/azurebackup_agent).
+> Tento článek je možné použít [System Center Data Protection Manager 2012 R2 s UR7 nebo novější] (https://support.microsoft.com/en-us/kb/3065246)kombinované s [nejnovější verzi agenta Azure Backup](https://aka.ms/azurebackup_agent).
 >
 >
 
-Chcete-li obnovit data ze serveru Azure Backup:
+Chcete-li obnovit data ze Azure Backup serveru:
 
-1. Z **obnovení** kartu konzoly pro správu serveru Azure Backup, klikněte na tlačítko **přidat externí DPM** (v levém horním rohu obrazovky).   
+1. Z **obnovení** kartu konzoly pro správu Azure Backup Server, klikněte na tlačítko **přidat externí DPM** (v levém horním rohu obrazovky).   
     ![Přidat externí DPM](./media/backup-azure-alternate-dpm-server/add-external-dpm.png)
-2. Stažení nové **přihlašovací údaje trezoru** z trezoru přidružené **serveru Azure Backup** tam, kde se obnovuje data, zvolte serveru Azure Backup Server ze seznamu serverů pro zálohování Azure zaregistrována trezor služeb zotavení a zadejte **šifrovací přístupové heslo** přidružené k serveru, jehož data obnovena.
+2. Stáhnout nové **přihlašovací údaje trezoru** z trezoru přidružené **Azure Backup serveru** tam, kde probíhá obnovení dat, zvolte Azure Backup serveru ze seznamu serverů Azure Backup zaregistrované pomocí služby Recovery Services trezoru a zadejte **šifrovací heslo** přidružené k serveru, jehož data obnovena.
 
     ![Přihlašovací údaje externí DPM](./media/backup-azure-alternate-dpm-server/external-dpm-credentials.png)
 
    > [!NOTE]
-   > Pouze servery zálohování Azure přidružený ke stejnému trezoru registrace můžete obnovit data druhé strany.
+   > Pouze servery pro zálohování Azure přidružené k stejnému trezoru registraci můžete obnovit data uživatele toho druhého.
    >
    >
 
-    Po úspěšném přidání externího serveru Azure Backup můžete procházet data z externího serveru a místní Server Azure Backup z **obnovení** kartě.
-3. Procházet seznam dostupných provozních serverů, které jsou chráněny externího serveru zálohování Azure a vyberte odpovídající zdroj dat.
+    Po úspěšném přidání externí Azure Backup serveru můžete procházet data z externího serveru a místní Azure Backup serveru z **obnovení** kartu.
+3. Seznam dostupných provozních serverech, chráněné službou externí Azure Backup serveru procházením vyberte příslušný zdroj dat.
 
     ![Procházet externí DPM Server](./media/backup-azure-alternate-dpm-server/browse-external-dpm.png)
-4. Vyberte **měsíci a roce** z **body obnovení** rozevírací nabídku, vyberte požadované **obnovení datum** pro vytvoření bodu obnovení a vyberte možnost **čas obnovení**.
+4. Vyberte **měsíci a roce** z **body obnovení** rozevírací seznam, vyberte požadované **datum obnovení** bod obnovení byl vytvořen, a vyberte **Čas obnovení**.
 
-    V dolním podokně, které můžete procházet a obnovit do libovolného umístění, zobrazí se seznam souborů a složek.
+    Seznam souborů a složek se zobrazí v dolním podokně, které můžete procházet a obnovit do libovolného umístění.
 
-    ![Body obnovení serveru externí aplikace DPM](./media/backup-azure-alternate-dpm-server/external-dpm-recoverypoint.png)
-5. Klikněte pravým tlačítkem na příslušnou položku a klikněte na tlačítko **obnovit**.
+    ![Body obnovení serveru externí DPM](./media/backup-azure-alternate-dpm-server/external-dpm-recoverypoint.png)
+5. Klikněte pravým tlačítkem myši klikněte na příslušnou položku a klikněte na tlačítko **obnovit**.
 
     ![Externí obnovení aplikace DPM](./media/backup-azure-alternate-dpm-server/recover.png)
-6. Zkontrolujte **Obnovit výběr**. Zkontrolujte data a času záložní kopie obnovuje, jakož i zdroj, ze kterého byl vytvořen záložní kopii. Pokud není v pořádku výběr, klikněte na tlačítko **zrušit** přejděte zpět na kartu obnovení vyberte bod obnovení odpovídající. Pokud je výběr správné, klikněte na tlačítko **Další**.
+6. Zkontrolujte **obnovení výběru**. Zkontrolujte data a času záložní kopie, Probíhá obnovení, jakož i zdroj, ze kterého byl vytvořen záložní kopie. Pokud je výběr správné, klikněte na tlačítko **zrušit** přejděte zpátky na kartě obnovení vyberte bod obnovení odpovídající. Pokud je výběr správné, klikněte na tlačítko **Další**.
 
     ![Externí souhrnu obnovení aplikace DPM](./media/backup-azure-alternate-dpm-server/external-dpm-recovery-summary.png)
-7. Vyberte **obnovit do alternativního umístění**. **Procházet** do správného umístění pro obnovení.
+7. Vyberte **obnovení do alternativního umístění**. **Procházet** do správného umístění pro obnovení.
 
-    ![Externí DPM alternativní umístění pro obnovení](./media/backup-azure-alternate-dpm-server/external-dpm-recovery-alternate-location.png)
-8. Zvolte možnost související s **vytvořit kopii**, **přeskočit**, nebo **přepsat**.
+    ![Externí aplikace DPM pro obnovení alternativního umístění](./media/backup-azure-alternate-dpm-server/external-dpm-recovery-alternate-location.png)
+8. Zvolte si možnost související s **vytvořit kopii**, **přeskočit**, nebo **přepsat**.
 
-   * **Vytvořit kopii** -vytvoří kopii souboru, pokud je kolize názvů.
+   * **Vytvořit kopii** -vytvoří kopii souboru, pokud dojde ke kolizi názvu.
    * **Přeskočit** – Pokud je kolize názvů, nedojde k odstranění souboru, což ponechá původní soubor.
-   * **Přepsat** – Pokud je kolize názvů, přepíše existující kopii souboru.
+   * **Přepsat** – Pokud je kolize názvů, přepíše stávající kopie souboru.
 
-     Vyberte odpovídající možnost **obnovit zabezpečení**. Můžete použít nastavení zabezpečení cílového počítače, kde se obnovuje data nebo nastavení zabezpečení, které byly pro produkt v době vytvoření bodu obnovení.
+     Vyberte odpovídající možnost **obnovit zabezpečení**. Můžete použít nastavení zabezpečení cílového počítače, ve kterém se obnovuje data nebo nastavení zabezpečení, které byly pro produkt v době vytvoření bodu obnovení.
 
-     Identifikovat zda **oznámení** se odesílají, jednou úspěšně dokončí obnovení.
+     Určení, zda **oznámení** přijde, po úspěšném dokončení obnovení.
 
-     ![Externí DPM obnovení oznámení](./media/backup-azure-alternate-dpm-server/external-dpm-recovery-notifications.png)
-9. **Souhrn** obrazovky je uveden seznam možností, pokud vybraná. Po kliknutí na tlačítko **'Obnovit'**, data budou obnovena do odpovídající místní umístění.
+     ![Oznámení o obnovení externí DPM](./media/backup-azure-alternate-dpm-server/external-dpm-recovery-notifications.png)
+9. **Souhrn** obrazovky je uveden seznam možností zatím zvolili. Po kliknutí na **"Obnovit"**, data budou obnovena do odpovídající místní umístění.
 
-    ![Souhrn možnosti obnovení externí DPM](./media/backup-azure-alternate-dpm-server/external-dpm-recovery-options-summary.png)
+    ![Souhrn možností obnovení externí DPM](./media/backup-azure-alternate-dpm-server/external-dpm-recovery-options-summary.png)
 
    > [!NOTE]
-   > Úlohu obnovení můžete sledovat v **monitorování** kartě serveru Azure Backup.
+   > Úloha obnovení můžete sledovat v **monitorování** kartu Azure Backup serveru.
    >
    >
 
     ![Monitorování obnovení](./media/backup-azure-alternate-dpm-server/monitoring-recovery.png)
-10. Můžete kliknout na **vymazat externí DPM** na **obnovení** kartě serveru aplikace DPM odebrat zobrazení externího serveru aplikace DPM.
+10. Můžete kliknout na **vymazat externí DPM** na **obnovení** kartu serveru DPM, odeberete zobrazení externího serveru aplikace DPM.
 
     ![Vymazat externí DPM](./media/backup-azure-alternate-dpm-server/clear-external-dpm.png)
 
 ## <a name="troubleshooting-error-messages"></a>Řešení potíží s chybové zprávy
 | Ne. | Chybová zpráva | Postup při řešení potíží |
 |:---:|:--- |:--- |
-| 1. |Tento server není registrovaný k úložišti určenému přihlašovacími údaji úložiště. |**Příčina:** tato chyba se zobrazí, když soubor s přihlašovacími údaji trezoru vybrané nepatří do trezoru služeb zotavení přidružené k serveru Azure Backup Server, na kterém dojde k pokusu o obnovení. <br> **Řešení:** stažení souboru přihlašovacích údajů trezoru služeb zotavení trezoru serveru Azure Backup je zaregistrovaný. |
-| 2. |Buď obnovitelná data nejsou k dispozici nebo vybraný server není DPM server. |**Příčina:** nejsou zaregistrované žádné jiné servery Azure zálohování do trezoru služeb zotavení, nebo servery ještě jste zatím neodeslali metadata nebo vybraný server není Server Azure Backup (neboli systému Windows Server nebo klienta Windows). <br> **Řešení:** Pokud existují, ostatní servery zálohování Azure zaregistrovat do trezoru služeb zotavení, zkontrolujte, zda je nainstalován nejnovější agent Azure Backup. <br>Pokud existují další servery zálohování Azure zaregistrován do trezoru služeb zotavení, počkejte denně po instalaci zahájíte proces obnovení. Na noční úlohu odešlete metadata pro všechny chráněné zálohování do cloudu. Data budou k dispozici pro obnovení. |
-| 3. |Žádný jiný server DPM je zaregistrován k tomuto úložišti. |**Příčina:** nejsou žádné další Azure Backup servery, které jsou registrovány k trezoru, ze kterého je probíhají pokusy o obnovení.<br>**Řešení:** Pokud existují, ostatní servery zálohování Azure zaregistrovat do trezoru služeb zotavení, zkontrolujte, zda je nainstalován nejnovější agent Azure Backup.<br>Pokud existují další servery zálohování Azure zaregistrován do trezoru služeb zotavení, počkejte denně po instalaci zahájíte proces obnovení. Na noční úlohu ukládání metadata pro všechny chráněné zálohování do cloudu. Data budou k dispozici pro obnovení. |
-| 4. |Zadaná šifrovací přístupové heslo neodpovídá přístupovému heslu přidruženému k následujícímu serveru: **<server name>** |**Příčina:** používá při šifrování dat ze serveru Azure Backup dat, který obnovuje šifrovací přístupové heslo neodpovídá zadané šifrovací přístupové heslo. Agent se nepodařilo dešifrovat data. Proto se obnovení nezdaří.<br>**Řešení:** zadejte přesně stejný šifrovací přístupové heslo přidružené k serveru Azure Backup, jejichž data obnovena. |
+| 1. |Tento server není registrovaný pro trezor určený přihlašovacími údaji. |**Příčina:** tato chyba se zobrazí, když vybraný soubor přihlašovacích údajů trezoru nepatří do trezoru služby Recovery Services, které jsou spojené s Azure Backup Server, na kterém dojde k pokusu o obnovení. <br> **Řešení:** stáhnout soubor přihlašovacích údajů trezoru služby Recovery Services vault do Azure Backup Server je zaregistrovaný. |
+| 2. |Buď obnovitelná data nejsou k dispozici, nebo vybraný server není DPM server. |**Příčina:** neexistují žádné jiné servery Azure Backup zaregistrované do trezoru služby Recovery Services, nebo na serverech ještě nepřidali metadata nebo vybraný server není Server služby Azure Backup (označuje se také jako Windows Server nebo klienta Windows). <br> **Řešení:** vyvstanou jiné servery Azure Backup zaregistrované do trezoru služby Recovery Services, ujistěte se, že je nainstalovaný nejnovější agent Azure Backup. <br>Pokud jsou že servery Azure Backup zaregistrované do trezoru služby Recovery Services, počkejte po instalaci zahájit proces obnovení za den. Noční úlohu odešlete metadata pro všechny chráněné zálohování do cloudu. Data budou k dispozici pro obnovení. |
+| 3. |Žádným jiným serverem aplikace DPM je registrované k tomuto trezoru. |**Příčina:** nejsou žádné další Azure Backup servery, které jsou zaregistrované do trezoru, ze kterého je Probíhá pokus o obnovení.<br>**Řešení:** vyvstanou jiné servery Azure Backup zaregistrované do trezoru služby Recovery Services, ujistěte se, že je nainstalovaný nejnovější agent Azure Backup.<br>Pokud jsou že servery Azure Backup zaregistrované do trezoru služby Recovery Services, počkejte po instalaci zahájit proces obnovení za den. Noční úlohu ukládání metadat pro všechny chráněné zálohování do cloudu. Data budou k dispozici pro obnovení. |
+| 4. |Zadané šifrovací heslo neodpovídá heslu přidruženému k následujícímu serveru: **<server name>** |**Příčina:** heslo šifrování Probíhá šifrování dat od Azure Backup Server, který se obnovuje neodpovídá zadané šifrovací heslo. Agent se nemůže data dešifrovat. Proto obnovení není úspěšné.<br>**Řešení:** zadejte přesně stejné šifrovací heslo přidružené k Azure Backup serveru, jehož data obnovena. |
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
-### <a name="why-cant-i-add-an-external-dpm-server-after-installing-ur7-and-latest-azure-backup-agent"></a>Proč nelze přidat externí server aplikace DPM po instalaci kumulativní aktualizací 7 a nejnovější verze agenta Azure Backup?
+### <a name="why-cant-i-add-an-external-dpm-server-after-installing-ur7-and-latest-azure-backup-agent"></a>Proč nelze přidat externí DPM server po instalaci UR7 a nejnovější verzi agenta Azure Backup?
 
-Pro servery aplikace DPM se zdroji dat, které jsou chráněné do cloudu (s použitím kumulativní aktualizace starší než kumulativní aktualizace 7), je nutné počkat alespoň jeden den po instalaci kumulativní aktualizací 7 a nejnovější agenta Azure Backup, spusťte **přidat externí DPM serveru**. K nahrání metadata skupiny ochrany DPM do Azure je nutné za jeden den časové období. Metadata skupiny ochrany nahraje poprvé prostřednictvím noční úlohu.
+Pro servery aplikace DPM se zdroji dat, které jsou chráněné do cloudu (s použitím kumulativní aktualizace starší než kumulativní aktualizace 7), musíte počkat aspoň jeden den po instalaci UR7 a nejnovější verzi agenta Azure Backup, aby vám začali **přidat externí DPM server**. Jeden den časové období, je potřeba nahrát metadat skupiny ochrany DPM do Azure. Při prvním průchodu noční úlohu nahraje metadat skupiny ochrany.
 
-### <a name="what-is-the-minimum-version-of-the-microsoft-azure-recovery-services-agent-needed"></a>Co je minimální verze agenta služeb zotavení Microsoft Azure potřeba?
+### <a name="what-is-the-minimum-version-of-the-microsoft-azure-recovery-services-agent-needed"></a>Co je minimální verze agenta Microsoft Azure Recovery Services potřeby?
 
-Minimální verze agenta služeb zotavení Microsoft Azure nebo agenta Azure Backup potřebné k povolení této funkce je 2.0.8719.0.  Chcete-li zobrazit verze agenta: Otevřete ovládací panely **>** všechny položky **>** programy a funkce **>** agenta služeb zotavení Microsoft Azure. Pokud verze je menší než 2.0.8719.0, stáhněte a nainstalujte [nejnovější verze agenta Azure Backup](https://go.microsoft.com/fwLink/?LinkID=288905).
+Minimální verze systému Microsoft Azure Recovery Services agenta a agenta Azure Backup, nutné k povolení této funkce je 2.0.8719.0.  Chcete-li zobrazit verze agenta: Otevřete ovládací panely **>** všech ovládacích panelů **>** programy a funkce **>** Agent Microsoft Azure Recovery Services. Pokud je verze nižší než 2.0.8719.0, stáhněte a nainstalujte [nejnovější verzi agenta Azure Backup](https://go.microsoft.com/fwLink/?LinkID=288905).
 
 ![Vymazat externí DPM](./media/backup-azure-alternate-dpm-server/external-dpm-azurebackupagentversion.png)
 

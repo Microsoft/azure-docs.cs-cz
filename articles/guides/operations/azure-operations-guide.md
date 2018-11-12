@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 08/24/2018
 ms.author: mibender
-ms.openlocfilehash: c10e071100410f6d5d995d88657bdd85c08a9715
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.openlocfilehash: 07faf5efd1c7eec3e209a5d971185655cc949bb9
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47423489"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51250777"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Začínáme pro operátory Azure IT
 
@@ -227,7 +227,7 @@ Další informace najdete v tématu [získání přehledů o spotřebě prostře
 
 ### <a name="forecast-cost-with-the-pricing-calculator"></a>Prognózy náklady pomocí cenové kalkulačky
 
-Ceny pro každou službu v Azure se liší. Mnoho služeb Azure nabízí úrovní Basic, Standard a Premium. Každá úroveň má obvykle několik úrovní cenou a výkonem. S použitím [online cenová Kalkulačka](http://azure.microsoft.com/pricing/calculator), odhady cen je možné vytvořit. Kalkulačce zahrnuje flexibilitu pro odhad nákladů na jeden prostředek nebo skupinu prostředků.
+Ceny pro každou službu v Azure se liší. Mnoho služeb Azure nabízí úrovní Basic, Standard a Premium. Každá úroveň má obvykle několik úrovní cenou a výkonem. S použitím [online cenová Kalkulačka](https://azure.microsoft.com/pricing/calculator), odhady cen je možné vytvořit. Kalkulačce zahrnuje flexibilitu pro odhad nákladů na jeden prostředek nebo skupinu prostředků.
 
 ## <a name="azure-resource-manager"></a>Azure Resource Manager
 
@@ -415,7 +415,7 @@ Existuje několik možností pro nasazení účtu úložiště.
 
 #### <a name="portal"></a>Portál
 
-Nasazení účtu úložiště pomocí webu Azure portal vyžaduje jenom aktivní předplatné Azure a přístup k webovému prohlížeči. Nový účet úložiště můžete nasadit do skupiny nové nebo existující prostředek. Po vytvoření účtu úložiště, můžete vytvořit objektů blob v kontejneru nebo ve sdílené složce pomocí portálu. Můžete vytvářet tabulky a fronty úložiště entity prostřednictvím kódu programu. Další informace najdete v tématu [vytvořit účet úložiště](../../storage/common/storage-quickstart-create-account.md).
+Nasazení účtu úložiště pomocí webu Azure portal vyžaduje jenom aktivní předplatné Azure a přístup k webovému prohlížeči. Nový účet úložiště můžete nasadit do skupiny nové nebo existující prostředek. Po vytvoření účtu úložiště, můžete vytvořit objektů blob v kontejneru nebo ve sdílené složce pomocí portálu. Můžete vytvářet tabulky a fronty úložiště entity prostřednictvím kódu programu. Další informace najdete v článku o [vytvoření účtu úložiště](../../storage/common/storage-quickstart-create-account.md).
 
 Kromě nasazení účtu úložiště na webu Azure Portal, můžete nasadit šablonu Azure Resource Manageru z portálu. To nasadí a nakonfiguruje všechny prostředky, jak jsou definovány v šabloně, včetně účtů úložiště. Další informace najdete v tématu [nasazení prostředků pomocí šablon Resource Manageru a webu Azure portal](../../azure-resource-manager/resource-group-template-deploy-portal.md).
 

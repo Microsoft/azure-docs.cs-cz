@@ -1,6 +1,6 @@
 ---
-title: 'Přidat bránu virtuální sítě k virtuální síti pro ExpressRoute: portál: Azure | Microsoft Docs'
-description: Tento článek vás provede přidáním bránu virtuální sítě k již vytvořené virtuální sítě Resource Manageru pro ExpressRoute.
+title: 'Přidat bránu virtuální sítě k virtuální síti pro ExpressRoute: portál: Azure | Dokumentace Microsoftu'
+description: Tento článek vás provede přidání brány virtuální sítě k již vytvořené virtuální síti správce prostředků pro ExpressRoute.
 documentationcenter: na
 services: expressroute
 author: cherylmc
@@ -15,45 +15,45 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/17/2017
 ms.author: cherylmc
-ms.openlocfilehash: 2bd0cf8be87937044ad515a2c6f253b1711bb2bf
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 6198c8723ccbb225a4cc60526e66f4651390b26c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2017
-ms.locfileid: "23850865"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51255689"
 ---
 # <a name="configure-a-virtual-network-gateway-for-expressroute-using-the-azure-portal"></a>Konfigurace brány virtuální sítě pro ExpressRoute pomocí webu Azure portal
 > [!div class="op_single_selector"]
 > * [Resource Manager – Azure Portal](expressroute-howto-add-gateway-portal-resource-manager.md)
 > * [Resource Manager – PowerShell](expressroute-howto-add-gateway-resource-manager.md)
-> * [Classic – prostředí PowerShell](expressroute-howto-add-gateway-classic.md)
-> * [Video – portál Azure](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-vpn-gateway-for-your-virtual-network)
+> * [Classic – PowerShell](expressroute-howto-add-gateway-classic.md)
+> * [Video – Azure portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-vpn-gateway-for-your-virtual-network)
 > 
 > 
 
-Tento článek vás provede kroky k přidání brány virtuální sítě pro už existující virtuální síť. Tento článek vás provede kroky k přidání, změně velikosti a odebrání brány virtuální sítě (VNet) pro už existující virtuální síť. Kroky pro tuto konfiguraci jsou speciálně určené pro virtuální sítě vytvořené pomocí modelu nasazení Resource Manager, který se použije v konfiguraci ExpressRoute. Další informace o brány virtuální sítě a nastavení konfigurace brány ExpressRoute najdete v tématu [o brány virtuální sítě pro ExpressRoute](expressroute-about-virtual-network-gateways.md). 
+Tento článek vás provede kroky k přidání brány virtuální sítě pro už existující virtuální síť. Tento článek vás provede kroky k přidání, změna velikosti a odebrání brány virtuální sítě (VNet) pro už existující virtuální síť. Tady jsou kroky pro tuto konfiguraci speciálně pro virtuální sítě vytvořené pomocí modelu nasazení Resource Manageru, který se použije v konfiguraci služby ExpressRoute. Další informace o branách virtuálních sítí a nastavení konfigurace brány pro ExpressRoute najdete v tématu [o branách virtuálních sítí pro ExpressRoute](expressroute-about-virtual-network-gateways.md). 
 
 
 ## <a name="before-beginning"></a>Před zahájením
 
-Kroky pro tuto úlohu použijte virtuální sítě na základě hodnot v následujícím seznamu odkaz konfigurace. V našem příkladu kroky jsme pomocí tohoto seznamu. Seznam, aby používal jako odkaz, můžete zkopírovat nahraďte hodnoty vlastními.
+Kroky pro tuto úlohu použijte na základě hodnot v seznamu následující odkaz Konfigurace virtuální sítě. Tento seznam použijeme v našem příkladu krocích. Můžete zkopírovat seznam, aby používal jako odkaz, nahraďte hodnoty vlastními.
 
-**Seznam odkazů konfigurace**
+**Přehled konfigurace**
 
 * Název virtuální sítě = "TestVNet"
-* Virtuální adresní prostor sítě = 192.168.0.0/16
+* Adresní prostor virtuální sítě = 192.168.0.0/16
 * Název podsítě = "FrontEnd" 
-    * Adresního prostoru podsítě = "192.168.1.0/24"
+    * Adresní prostor podsítě = "192.168.1.0/24"
 * Skupina prostředků = "TestRG"
 * Umístění = "East US"
-* Název podsítě brány: "GatewaySubnet" název musí být vždy podsíť brány *GatewaySubnet*.
-    * Adresního prostoru podsítě brány = "192.168.200.0/26"
+* Název podsítě brány: "GatewaySubnet" je nutné vždy pojmenovat podsíť brány *GatewaySubnet*.
+    * Adresní prostor podsítě brány = "192.168.200.0/26"
 * Název brány = "ERGW"
-* Název brány IP = "MyERGWVIP"
-* Typ brány = "ExpressRoute" Tento typ je požadovaná konfigurace ExpressRoute.
+* Název IP brány = "MyERGWVIP"
+* Typ brány "ExpressRoute" = Tento typ je požadován pro konfiguraci služby ExpressRoute.
 * Název veřejné IP adresy brány = "MyERGWVIP"
 
-Můžete zobrazit [Video](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-vpn-gateway-for-your-virtual-network) z těchto kroků před zahájením konfigurace.
+Můžete zobrazit [Video](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-vpn-gateway-for-your-virtual-network) z těchto kroků před zahájením konfigurace.
 
 ## <a name="create-the-gateway-subnet"></a>Vytvoření podsítě brány
 
@@ -64,7 +64,7 @@ Můžete zobrazit [Video](http://azure.microsoft.com/documentation/videos/azure-
     ![Přidání podsítě brány](./media/expressroute-howto-add-gateway-portal-resource-manager/addgwsubnet.png "Přidání podsítě brány")
 
 
-4. **Název** podsítě se automaticky vyplní hodnotou GatewaySubnet. To je požadovaná hodnota, aby služba Azure podsíť rozpoznala jako podsíť brány. Upravte automaticky vyplněné hodnoty **Rozsah adres** tak, aby odpovídaly požadavkům vaší konfigurace. Doporučujeme vytvořit podsíť brány/27 nebo větší (/ 26, / 25 atd.). Potom klikněte na **OK** uložte hodnoty a vytvořit podsíť brány.
+4. **Název** podsítě se automaticky vyplní hodnotou GatewaySubnet. To je požadovaná hodnota, aby služba Azure podsíť rozpoznala jako podsíť brány. Upravte automaticky vyplněné hodnoty **Rozsah adres** tak, aby odpovídaly požadavkům vaší konfigurace. Doporučujeme vytvořit podsíť brány/27 nebo větší (/ 26, / 25 atd.). Potom klikněte na **OK** vytvořit podsíť brány a uložte příslušné hodnoty.
 
     ![Přidání podsítě](./media/expressroute-howto-add-gateway-portal-resource-manager/addsubnetgw.png "Přidání podsítě")
 
@@ -84,7 +84,7 @@ Můžete zobrazit [Video](http://azure.microsoft.com/documentation/videos/azure-
 11. **Skupina prostředků**: Toto nastavení je určeno vámi vybranou virtuální sítí.
 12. Po zadání předchozích nastavení už hodnotu **Umístění** neupravujte.
 13. Ověřte nastavení. Pokud chcete, aby se brána zobrazovala na řídicím panelu, můžete v dolní části okna vybrat **Připnout na řídicí panel**.
-14. Kliknutím na **Vytvořit** zahajte proces vytváření brány. Nastavení se ověří a provede se nasazení brány. Vytvoření brány virtuální sítě může trvat až 45 minut na dokončení.
+14. Kliknutím na **Vytvořit** zahajte proces vytváření brány. Nastavení se ověří a provede se nasazení brány. Vytvoření brány virtuální sítě může trvat až 45 minut.
 
-## <a name="next-steps"></a>Další kroky
-Po vytvoření brány virtuální sítě, můžete se propojit virtuální sítě k okruhu ExpressRoute. V tématu [propojení virtuální sítě k okruhu ExpressRoute](expressroute-howto-linkvnet-portal-resource-manager.md).
+## <a name="next-steps"></a>Další postup
+Po vytvoření brány virtuální sítě můžete propojit vaši virtuální síť k okruhu ExpressRoute. Zobrazit [propojení virtuální sítě k okruhu ExpressRoute](expressroute-howto-linkvnet-portal-resource-manager.md).

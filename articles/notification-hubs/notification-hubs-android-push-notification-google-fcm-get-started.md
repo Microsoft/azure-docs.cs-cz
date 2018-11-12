@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: 2bc085989ff3bbbc50042c46b338f748a10aa87e
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 0ec429407324210fca824ebd0734ddb39bce56ac
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38232789"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51256557"
 ---
 # <a name="tutorial-push-notifications-to-android-devices-by-using-azure-notification-hubs-and-google-firebase-cloud-messaging"></a>Kurz: Zasílání nabízených oznámení zařízením s Androidem službami Azure Notification Hubs a Google Firebase Cloud Messaging
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
@@ -45,7 +45,7 @@ V tomto kurzu provedete následující kroky:
 ## <a name="prerequisites"></a>Požadavky
 K dokončení tohoto kurzu potřebujete mít aktivní účet Azure. Pokud účet nemáte, můžete si během několika minut vytvořit bezplatný zkušební účet. Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com/free/).
 
-* Kromě aktivního účtu Azure uvedeného výše budete v tomto kurzu potřebovat nejnovější verzi [Android Studia](http://go.microsoft.com/fwlink/?LinkId=389797).
+* Kromě aktivního účtu Azure uvedeného výše budete v tomto kurzu potřebovat nejnovější verzi [Android Studia](https://go.microsoft.com/fwlink/?LinkId=389797).
 * Android 2.3 nebo novější pro službu Firebase Cloud Messaging.
 * Služba Firebase Cloud Messaging vyžaduje úložiště Google verze 27 nebo novější.
 * Služby Google Play 9.0.2 nebo novější pro službu Firebase Cloud Messaging.

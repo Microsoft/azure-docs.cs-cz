@@ -6,16 +6,16 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 09/21/2018
 ms.author: snehaa
-ms.openlocfilehash: e39cf260cc4931fc0dddc4922479522cb521d08e
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 2f04fe103d010a64a77b7d80730cf80007c3c126
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49407057"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51256371"
 ---
 # <a name="azure-migrate---frequently-asked-questions-faq"></a>Azure Migrate – nejčastější dotazy (FAQ)
 
-Tento článek obsahuje nejčastější dotazy týkající se Azure Migrate. Pokud máte další dotazy, po přečtení tohoto článku, publikujte je na [fórum pro Azure Migrate](http://aka.ms/AzureMigrateForum).
+Tento článek obsahuje nejčastější dotazy týkající se Azure Migrate. Pokud máte další dotazy, po přečtení tohoto článku, publikujte je na [fórum pro Azure Migrate](https://aka.ms/AzureMigrateForum).
 
 ## <a name="general"></a>Obecné
 
@@ -54,9 +54,9 @@ Azure Migrate aktuálně podporuje východní USA a střed USA – Západ jako u
 
 Připojení může být přes internet nebo pomocí veřejného partnerského vztahu ExpressRoute.
 
-### <a name="can-i-harden-the-vm-set-up-with-the-ova-template"></a>Můžete posílení virtuálního počítače s. Šablony pro soubory OVA?
+### <a name="can-i-harden-the-vm-set-up-with-the-ova-template"></a>Můžete posílit ochranu virtuálních počítačů s OVA šablony?
 
-Další součásti (například antivirový program) mohou být přidány do. Šablony pro soubory OVA za předpokladu, jako jsou ponechána komunikaci a pravidel brány firewall vyžadované pro zařízení Azure Migrate pro práci se.   
+Další součásti (například antivirový program) je možné přidat do šablony pro soubory OVA tak dlouho, dokud komunikaci a pravidel brány firewall vyžadované pro zařízení Azure Migrate pro práci se ponechán beze změny.   
 
 ## <a name="discovery"></a>Zjišťování
 
@@ -114,7 +114,7 @@ Zařízení kolektoru se připojuje k systému vCenter Server (port 443) pomocí
 
 Ano, jeden kolektor zařízení je možné zjistit více vCenter servery, ale ne současně. Budete muset spustit zjišťování jeden po druhém.
 
-### <a name="is-the-ova-template-used-by-site-recovery-integrated-with-the-ova-used-by-azure-migrate"></a>Je. Soubory OVA šablony používané pro Site Recovery integrovaná. Soubory OVA použít se službou Azure Migrate?
+### <a name="is-the-ova-template-used-by-site-recovery-integrated-with-the-ova-used-by-azure-migrate"></a>Šablona OVA používané pro Site Recovery integrovaná OVA použít se službou Azure Migrate?
 
 Aktuálně neexistuje žádná integrace. Na. Šablony pro soubory OVA ve službě Site Recovery se používá k nastavení konfiguračního serveru Site Recovery pro replikaci virtuálních počítačů VMware nebo fyzický server. Na. Soubory OVA použít se službou Azure Migrate se používá ke zjišťování virtuálních počítačů VMware, které jsou spravovány serverem vCenter, pro účely posouzení migrace.
 
@@ -141,9 +141,23 @@ Azure Migrate aktuálně nepodporuje odhad nákladů pro [nabídky Enterprise Ag
 
 ## <a name="dependency-visualization"></a>Vizualizace závislostí
 
+### <a name="what-is-dependency-visualization"></a>Co je vizualizace závislostí?
+
+Vizualizace závislostí můžete posouzení skupiny virtuálních počítačů pro migraci s větší jistotou napříč Kontrola závislostí počítačů před spuštěním posouzení. Vizualizace závislostí vám pomůže zajistit, že nic se zachovají, jak se vyhnout nečekaných výpadků při migraci do Azure. Azure Migrate využívá řešení Service Map ve službě Log Analytics umožňuje vizualizace závislostí.
+
 ### <a name="do-i-need-to-pay-to-use-the-dependency-visualization-feature"></a>Musím zaplatit pomocí funkce vizualizace závislostí?
 
-Služba Azure Migrate je dostupná bez dalších poplatků. Další informace o cenách služby Azure Migrate najdete [zde](https://azure.microsoft.com/pricing/details/azure-migrate/).
+Ne. Další informace o cenách služby Azure Migrate najdete [zde](https://azure.microsoft.com/pricing/details/azure-migrate/).
+
+### <a name="do-i-need-to-install-anything-for-dependency-visualization"></a>Je potřeba instalovat cokoli, co je pro vizualizace závislostí?
+
+Pokud chcete použít vizualizaci závislostí, budete muset stáhnout a nainstalovat agenty na každém v místním počítači, který chcete vyhodnotit. 
+
+- [Microsoft Monitoring agent(MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows) musí být nainstalovaný na každém počítači.
+- [Agenta závislostí](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure) musí být nainstalovaný na každém počítači.
+- Kromě toho pokud máte počítače bez připojení k Internetu, musíte stáhnout a nainstalovat bránu Log Analytics na ně.
+
+Není nutné tyto agenty na počítačích, které chcete posoudit, pokud používáte vizualizace závislostí.
 
 ### <a name="can-i-use-an-existing-workspace-for-dependency-visualization"></a>Můžete použít stávající pracovní prostor pro vizualizace závislostí?
 

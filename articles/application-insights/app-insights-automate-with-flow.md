@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/25/2017
 ms.author: mbullwin
-ms.openlocfilehash: 60605e7bdeeef32889bc0ac104fa34bd66d4444d
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 65909e13c75ae4d2577ea29f562b841a1eb20477
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50962873"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51256421"
 ---
 # <a name="automate-azure-application-insights-processes-with-the-connector-for-microsoft-flow"></a>Automatizace procesů Azure Application Insights pomocí konektoru pro Microsoft Flow
 
@@ -34,7 +34,7 @@ Můžete přidat i další akce. Microsoft Flow je k dispozici stovky akce. Nap�
 V tomto kurzu se dozvíte, jak vytvořit tok, který používá algoritmus automatického clusteru Analytics skupiny atributů v datech pro webovou aplikaci. Tento tok automaticky odesílá výsledky e-mailem, pouze jeden příklad použití Microsoft Flow a Application Insights Analytics dohromady. 
 
 ### <a name="step-1-create-a-flow"></a>Krok 1: Vytvoření toku
-1. Přihlaste se k [Microsoft Flow](http://flow.microsoft.com)a pak vyberte **Moje toky**.
+1. Přihlaste se k [Microsoft Flow](https://flow.microsoft.com)a pak vyberte **Moje toky**.
 1. Klikněte na tlačítko **vytvoření toku od začátku**.
 
 ### <a name="step-2-create-a-trigger-for-your-flow"></a>Krok 2: Vytvoření aktivační události pro váš tok

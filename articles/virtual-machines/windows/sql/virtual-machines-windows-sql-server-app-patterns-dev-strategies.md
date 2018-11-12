@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/31/2017
 ms.author: ninarn
-ms.openlocfilehash: 18de5b3d71922effa72414a6a52b126a34076cf3
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 9ccf7d85b52759a3f2cd64facc6ee8d7255f0fac
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44722125"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51253172"
 ---
 # <a name="application-patterns-and-development-strategies-for-sql-server-in-azure-virtual-machines"></a>Modely aplikací a vývojové strategie pro SQL Server v Azure Virtual Machines
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-both-include.md)]
@@ -236,7 +236,7 @@ V Azure, můžete použít služby Active Directory jako samostatný cloudový a
 
 Ve vzoru vícevrstvé hybridní aplikace můžete implementovat následující pracovní postup v uvedeném pořadí:
 
-1. Určení podnikových databázových aplikací, které je třeba přesunout do cloudu s využitím [Microsoft Assessment and Planning (MAP) Toolkit](http://microsoft.com/map). MAP Toolkit shromažďuje data inventáře a výkonu z počítačů, které uvažujete o pro virtualizaci a poskytuje doporučení na kapacitu a plánování posouzení.
+1. Určení podnikových databázových aplikací, které je třeba přesunout do cloudu s využitím [Microsoft Assessment and Planning (MAP) Toolkit](https://microsoft.com/map). MAP Toolkit shromažďuje data inventáře a výkonu z počítačů, které uvažujete o pro virtualizaci a poskytuje doporučení na kapacitu a plánování posouzení.
 2. Plánování prostředků a konfigurace potřebná na platformě Azure, jako jsou účty úložiště a virtuální počítače.
 3. Nastavit připojení k síti mezi podnikové sítě v místním a [Azure Virtual Network](../../../virtual-network/virtual-networks-overview.md). Pokud chcete nastavit připojení mezi podnikovou síť místní a virtuální počítač v Azure, použijte jednu z těchto dvou metod:
    

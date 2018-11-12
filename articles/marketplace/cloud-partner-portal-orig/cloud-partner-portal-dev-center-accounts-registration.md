@@ -14,19 +14,19 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: bdcd1d0cc9f9979d898410180d364716b344d641
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 8bfd4ca6a9bdac999653fa9448bf7e754e9e6180
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48809325"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51254464"
 ---
 <a name="create-a-microsoft-developer-account"></a>Vytvoření účtu Microsoft Developer
 ====================================
 
 Tento článek popisuje, jak se stát schválené Microsoft Developer pro publikování na webu Azure Marketplace.
 
-## <a name="create-a-microsoft-account"></a>Vytvoření účtu Microsoft
+## <a name="create-a-microsoft-account"></a>Vytvořit účet Microsoft
 
 Chcete-li zahájit proces publikování, budete potřebovat k dokončení **Microsoft Developer Center** registrace. Budete používat stejný účet registrované na **[portál partnerů cloudu](https://cloudpartner.azure.com/)** zahájíte proces publikování.
 
@@ -133,7 +133,7 @@ Microsoft Developer Center, se použije k registraci informací o společnosti j
 
    ![Registrace plateb](./media/cloud-partner-portal-create-dev-center-registration/imgRegisterCo_09.png)
 
-10. Projděte si informace o vašem účtu a potvrďte, že je všechno správně. Přečtěte si a přijměte podmínky a ujednání o [smlouvy vydavatele Microsoft Azure Marketplace](http://go.microsoft.com/fwlink/?LinkID=699560). Zaškrtněte políčko označující vám přečetli a přijali tyto podmínky.
+10. Projděte si informace o vašem účtu a potvrďte, že je všechno správně. Přečtěte si a přijměte podmínky a ujednání o [smlouvy vydavatele Microsoft Azure Marketplace](https://go.microsoft.com/fwlink/?LinkID=699560). Zaškrtněte políčko označující vám přečetli a přijali tyto podmínky.
 
 11. Vyberte **Dokončit** potvrďte svou registraci. Na e-mailovou adresu přijde potvrzovací zpráva.
 

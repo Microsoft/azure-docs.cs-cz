@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 370700f8d146dd626e6e13deceb09dcaea34a9f3
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: b5ad6321a41c84928cbc6f8c51c4f5fe3567410f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45983946"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51262025"
 ---
 # <a name="azure-devtest-labs-faq"></a>Nejčastější dotazy k Azure DevTest Labs
 Získejte odpovědi na některé nejběžnější otázky o Azure DevTest Labs.
@@ -100,7 +100,7 @@ Následující příspěvky nabídka pokyny a informace o použití rozšířen�
 * [Nasazení nového virtuálního počítače v existující testovací prostředí DevTest Labs ze služeb Azure DevOps](http://www.visualstudiogeeks.com/blog/DevOps/Deploy-New-VM-To-Existing-AzureDevTestLab-From-VSTS)
 * [Pomocí nástroje Azure DevOps služby release management pro průběžné nasazení na DevTest Labs](http://www.visualstudiogeeks.com/blog/DevOps/Use-VSTS-ReleaseManagement-to-Deploy-and-Test-in-AzureDevTestLabs)
 
-Pro další kontinuální integrace (CI) / průběžné doručování (CD) sady nástrojů, které můžete dosáhnout stejné scénáře podle nasazení [šablon Azure Resource Manageru](https://aka.ms/dtlquickstarttemplate) pomocí [rutin prostředí Azure PowerShell](../azure-resource-manager/resource-group-template-deploy.md) a [Sady .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.DevTestLabs/). Můžete také použít [rozhraní REST API pro DevTest Labs](http://aka.ms/dtlrestapis) integrovat sady nástrojů.  
+Pro další kontinuální integrace (CI) / průběžné doručování (CD) sady nástrojů, které můžete dosáhnout stejné scénáře podle nasazení [šablon Azure Resource Manageru](https://aka.ms/dtlquickstarttemplate) pomocí [rutin prostředí Azure PowerShell](../azure-resource-manager/resource-group-template-deploy.md) a [Sady .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.DevTestLabs/). Můžete také použít [rozhraní REST API pro DevTest Labs](https://aka.ms/dtlrestapis) integrovat sady nástrojů.  
 
 
 **Virtual Machines**
@@ -141,7 +141,7 @@ Automatizace nahrávání souborů virtuálního pevného disku k vytváření v
 
 Chcete-li najít cílový účet úložiště, který je spojen s testovacího prostředí:
 
-1. Přihlaste se k webu [Azure Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Přihlaste se k webu [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 2. V nabídce vlevo vyberte **skupiny prostředků**.
 3. Vyhledejte a vyberte skupinu prostředků, který je spojen s testovacího prostředí.
 4. V části **přehled**, vyberte jeden z účtů úložiště.

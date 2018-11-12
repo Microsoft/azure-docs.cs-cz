@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: ccompy
-ms.openlocfilehash: 5f2dd31488ae61bec061a81986a208bd328bf39b
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: ce0123528b3fb2454d8b83d59b5916363ae0e944
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093614"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51251572"
 ---
 # <a name="locking-down-an-app-service-environment"></a>Používat jenom služby App Service Environment
 
@@ -28,7 +28,7 @@ Existuje mnoho příchozí závislosti, které má služba ASE. Řízení příc
 
 Odchozí závislostí služby ASE jsou téměř úplně definovány pomocí plně kvalifikovaných názvů domén, které nemají statické adresy za nimi stojí. Chybějící statické adresy znamená, že skupiny zabezpečení sítě (Nsg) nelze použít pro uzamčení odchozí přenosy ze služby ASE. Adresy změnit dostatečně často, že jeden nelze nastavit pravidla založená na aktuální řešení a použít k vytvoření skupin zabezpečení sítě. 
 
-Řešení zabezpečení odchozí adresy spočívá v použití zařízení brány firewall, které můžete řídit odchozí provoz na základě názvů domén. Tým Azure sítě zavedla nové síťové zařízení do volá Brána Firewall služby Azure ve verzi Preview. Brány Firewall Azure je schopen omezení odchozího přenosu dat HTTP a provoz HTTPS na základě názvu DNS cílového umístění.  
+Řešení zabezpečení odchozí adresy spočívá v použití zařízení brány firewall, které můžete řídit odchozí provoz na základě názvů domén. Brány Firewall na Azure můžete omezit odchozí přenosy HTTP i HTTPS založené na plně kvalifikovaný název domény cílový.  
 
 ## <a name="configuring-azure-firewall-with-your-ase"></a>Konfigurace brány Firewall Azure s vaší služby ASE 
 
@@ -36,11 +36,11 @@ Postup uzamčení výchozí přenosy ze služby ASE s bránou Firewall služby A
 
 1. Vytvoření brány Firewall Azure ve virtuální síti, kde je vaše služba ASE, nebo bude. [Azure jejich brány Firewall](https://docs.microsoft.com/azure/firewall/)
 2. V uživatelském rozhraní brány Firewall Azure vyberte značku aplikace služby prostředí plně kvalifikovaný název domény
-3. Vytvoření směrovací tabulky pomocí adresy pro správu z [adresy pro správu služby App Service Environment]( https://docs.microsoft.com/azure/app-service/environment/management-addresses) s dalším segmentem směrování do Internetu. Položky tabulky trasy je potřeba Předcházejte problémům asymetrického směrování. 
-4. Přidání tras pro závislosti IP adresy uvedené níže v závislostech IP adresu s dalším segmentem směrování do Internetu. 
-5. Přidání trasy do směrovací tabulky pro 0.0.0.0/0 s dalším směrováním, přičemž vaše Brána Firewall služby Azure síťové zařízení
-6. Vytvoření koncových bodů služby pro podsítě služby ASE pro Azure SQL a službu Azure Storage
-7. Přiřazení směrovací tabulku, kterou jste vytvořili k podsíti služby ASE  
+3. Vytvoření směrovací tabulky pomocí adresy pro správu z [adresy pro správu služby App Service Environment]( https://docs.microsoft.com/azure/app-service/environment/management-addresses) s dalším segmentem směrování do Internetu. Položky tabulky trasy je potřeba Předcházejte problémům asymetrického směrování.
+4. Přidání tras pro závislosti IP adresy uvedené níže v závislostech IP adresu s dalším segmentem směrování do Internetu.
+5. Přidání trasy do směrovací tabulky pro 0.0.0.0/0 s dalším směrováním, přičemž vaše Brána Firewall služby Azure.
+6. Vytvoření koncových bodů služby pro podsítě služby ASE pro Azure SQL a službu Azure Storage.
+7. Přiřazení směrovací tabulku, kterou jste vytvořili k podsíti služby ASE.
 
 ## <a name="application-traffic"></a>Provoz aplikací 
 

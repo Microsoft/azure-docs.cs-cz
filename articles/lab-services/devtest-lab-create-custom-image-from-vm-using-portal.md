@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/05/2018
 ms.author: spelluru
-ms.openlocfilehash: 22f1579b2df2acdc736ed4c1d5cee64d096c320a
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: a91e14afa8325e75507b2f65cd9d71ab38df4524
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38635333"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235237"
 ---
 # <a name="create-a-custom-image-from-a-vm"></a>Vytvoření vlastní image z virtuálního počítače
 
@@ -29,7 +29,7 @@ ms.locfileid: "38635333"
 
 Můžete vytvořit vlastní image z virtuálního počítače s zřízené a později použít tuto vlastní image k vytvoření identických virtuálních počítačů. Následující postup ukazuje, jak vytvořit vlastní image z virtuálního počítače:
 
-1. Přihlaste se k webu [Azure Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Přihlaste se k webu [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
 1. Vyberte **všechny služby**a pak vyberte **DevTest Labs** ze seznamu.
 

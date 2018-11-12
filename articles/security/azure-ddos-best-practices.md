@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2018
 ms.author: barclayn
-ms.openlocfilehash: 29aea0171c767b2188e3eac23b1d61ffbda8e284
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 37748aaa7f34a51d24091ee04608496ebd45fa90
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46986844"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51231619"
 ---
 # <a name="azure-ddos-protection-best-practices-and-reference-architectures"></a>Azure DDoS Protection: Osvědčené postupy a referenční architektury
 
@@ -28,7 +28,7 @@ Navrhování pro distribuované s cílem odepření služeb (DDoS) odolnost prot
 
 ## <a name="types-of-attacks"></a>Typy útoků
 
-Před útoky DDoS je typ útoku, který se pokouší vyčerpání prostředků aplikace. Cílem je mít vliv na dostupnost vaší aplikace a její schopnost zpracovávat oprávněné požadavky. Útokům se stávají propracované a větší velikost a dopad. Útoky DDoS můžete cílit na libovolný koncový bod, který je veřejně dostupný prostřednictvím Internetu.
+Před útoky DDoS je typ útoku, který se pokouší vyčerpání prostředků aplikace. Cílem je mít vliv na dostupnost vaší aplikace a její schopnost zpracovávat oprávněné požadavky. Útokům se stávají propracované a větší velikost a dopad. Útoky DDoS můžou cílit na jakýkoli koncový bod, který je veřejně dostupný přes internet.
 
 Azure poskytuje trvalou ochranu před útoky DDoS. Tato ochrana je integrovaná do platformy Azure ve výchozím nastavení a bez dalších poplatků. 
 
@@ -75,7 +75,7 @@ Ujistěte se, že zabezpečení je priorita v průběhu celého životního cykl
 K ochraně služby spuštěné v Microsoft Azure, musí mít dostatečné povědomí o vaší aplikace architektury a zaměřit [pět pilířů kvality softwaru](https://docs.microsoft.com/azure/architecture/guide/pillars).
 Typické provozem, měli byste vědět model připojení mezi aplikací a další aplikace a koncové body služby, které jsou vystaveny do veřejného Internetu.
 
-Zajištění, že aplikace je dostatečně odolné pro zpracování odepření služby, který je zaměřený na vlastní aplikace je nejdůležitější. Zabezpečení a ochrana osobních údajů jsou integrované do platformy Azure počínaje [Security Development Lifecycle (SDL)](https://www.microsoft.com/sdl/default.aspx). Do procesu SDL zajišťuje zabezpečení ve všech fázích vývoje a zajišťuje, že Azure se průběžně aktualizuje, aby byl ještě větší zabezpečení.
+Zajištění, že aplikace je dostatečně odolné pro zpracování odepření služby, který je zaměřený na vlastní aplikace je nejdůležitější. Zabezpečení a ochrana osobních údajů jsou integrované do platformy Azure počínaje [Security Development Lifecycle (SDL)](https://www.microsoft.com/sdl/default.aspx). Do procesu SDL zajišťuje zabezpečení ve všech fázích vývoje a zajišťuje, že Azure se průběžně aktualizuje, aby byl ještě větší zabezpečení.
 
 ### <a name="design-for-scalability"></a>Návrh pro zajištění škálovatelnosti
 
@@ -182,7 +182,7 @@ Kybernetického zabezpečení vyžaduje stálé inovace v obrany. Služba Azure 
 
 S útoky DDoS, které cílí na prostředky Azure obvykle vyžaduje minimem zásahů z pohledu uživatele. Stále zahrnutí před útoky DDoS zmírnění jako součást strategie reakce na incidenty pomáhá minimalizovat dopad na obchodní kontinuity podnikových procesů.
 
-### <a name="microsoft-threat-intelligence"></a>Analýzy hrozeb Microsoftu
+### <a name="microsoft-threat-intelligence"></a>Analýza hrozeb Microsoftu
 
 Microsoft má síť rozsáhlé threat intelligence. Tato síť používá kolektivních znalostí komunitě rozšířené zabezpečení, který podporuje online služeb Microsoftu, partnerů Microsoftu a relace v rámci komunity zabezpečení Internetu. 
 
@@ -265,7 +265,7 @@ V této architektuře před útoky DDoS Protection Standard je povolena ve virtu
 
 #### <a name="paas-web-application"></a>Webová aplikace PaaS
 
-Tato referenční architektura ukazuje spuštění aplikace Azure App Service v jedné oblasti. Tato architektura představuje sadu osvědčených postupů pro webovou aplikaci, která používá [služby Azure App Service](https://azure.microsoft.com/documentation/services/app-service/) a [Azure SQL Database](https://azure.microsoft.com/documentation/services/sql-database/).
+Tato referenční architektura ukazuje spuštění aplikace Azure App Service v jedné oblasti. Tato architektura představuje sadu osvědčených postupů pro webovou aplikaci, která používá [služby Azure App Service](https://azure.microsoft.com/documentation/services/app-service/) a [Azure SQL Database](https://azure.microsoft.com/documentation/services/sql-database/).
 Pohotovostní oblasti je nastavený pro scénáře převzetí služeb při selhání.
 
 ![Diagram referenční architektury pro webové aplikace PaaS](media/azure-ddos-best-practices/image11.png)
@@ -300,6 +300,6 @@ Další informace o této referenční architektuře, najdete v článku [rozš�
 
 * [Produktová stránka Azure DDoS Protection](https://azure.microsoft.com/services/ddos-protection/)
 
-* [Blog o Azure DDoS Protection](http://aka.ms/ddosblog)
+* [Blog o Azure DDoS Protection](https://aka.ms/ddosblog)
 
 * [Dokumentace ke službě Azure DDoS Protection](../virtual-network/ddos-protection-overview.md)

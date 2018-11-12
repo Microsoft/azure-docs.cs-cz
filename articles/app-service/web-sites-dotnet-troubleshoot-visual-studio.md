@@ -14,16 +14,16 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/29/2016
 ms.author: cephalin
-ms.openlocfilehash: ba84d297420ca5a9b75b4cfa432373d3070e0d01
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 2028de68b3c50f24c46bfafd804b00e84301a9d7
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43125240"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51256591"
 ---
 # <a name="troubleshoot-a-web-app-in-azure-app-service-using-visual-studio"></a>Řešení potíží s webovou aplikací ve službě Azure App Service pomocí sady Visual Studio
 ## <a name="overview"></a>Přehled
-Tento kurz ukazuje, jak používat nástroje Visual Studia k ladění webové aplikace v [služby App Service](http://go.microsoft.com/fwlink/?LinkId=529714), běží v [režimu ladění](https://docs.microsoft.com/visualstudio/debugger/) vzdáleně nebo zobrazením aplikačních protokolů a protokolů webového serveru.
+Tento kurz ukazuje, jak používat nástroje Visual Studia k ladění webové aplikace v [služby App Service](https://go.microsoft.com/fwlink/?LinkId=529714), běží v [režimu ladění](https://docs.microsoft.com/visualstudio/debugger/) vzdáleně nebo zobrazením aplikačních protokolů a protokolů webového serveru.
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
@@ -36,7 +36,7 @@ Naučíte se:
 * Postup zobrazení protokolů webového serveru, včetně podrobných chybových zpráv a trasování neúspěšných žádostí.
 * Postup odesílání diagnostických protokolů do služby Azure Storage account a zobrazit je.
 
-Pokud máte Visual Studio Ultimate, můžete také použít [IntelliTrace](http://msdn.microsoft.com/library/vstudio/dd264915.aspx) pro ladění. IntelliTrace nejsou uvedeny v tomto kurzu.
+Pokud máte Visual Studio Ultimate, můžete také použít [IntelliTrace](https://msdn.microsoft.com/library/vstudio/dd264915.aspx) pro ladění. IntelliTrace nejsou uvedeny v tomto kurzu.
 
 ## <a name="prerequisites"></a>Požadavky
 Tento kurz pracuje s vývojovým prostředím, webový projekt a webovou aplikaci Azure, které jste nastavili v [Začínáme s Azure a ASP.NET](app-service-web-get-started-dotnet-framework.md). U oddílů, WebJobs, budete potřebovat aplikaci, kterou vytvoříte v [Začínáme se sadou Azure WebJobs SDK][GetStartedWJ].
@@ -48,7 +48,7 @@ Kurz předpokládá, že používáte Visual Studio 2017.
 Datový proud protokolů funkce funguje pouze u aplikací určených pro rozhraní .NET Framework 4 nebo novější.
 
 ## <a name="sitemanagement"></a>Konfigurace webové aplikace a Správa
-Poskytuje přístup k podmnožinu funkcí správy webové aplikace a nastavení konfigurace, které jsou k dispozici v sadě Visual Studio [webu Azure portal](http://go.microsoft.com/fwlink/?LinkId=529715). V této části se zobrazí, co je k dispozici prostřednictvím **Průzkumníka serveru**. Pokud chcete zobrazit nejnovější funkce integrace služby Azure, vyzkoušejte si **Průzkumníka cloudu** také. Můžete otevřít z windows **zobrazení** nabídky.
+Poskytuje přístup k podmnožinu funkcí správy webové aplikace a nastavení konfigurace, které jsou k dispozici v sadě Visual Studio [webu Azure portal](https://go.microsoft.com/fwlink/?LinkId=529715). V této části se zobrazí, co je k dispozici prostřednictvím **Průzkumníka serveru**. Pokud chcete zobrazit nejnovější funkce integrace služby Azure, vyzkoušejte si **Průzkumníka cloudu** také. Můžete otevřít z windows **zobrazení** nabídky.
 
 1. Pokud nejste ještě přihlášení do Azure v sadě Visual Studio, klikněte pravým tlačítkem na **Azure** a vyberte připojit k **předplatné Microsoft Azure** v **Průzkumníka serveru**.
 
@@ -59,7 +59,7 @@ Poskytuje přístup k podmnožinu funkcí správy webové aplikace a nastavení 
    >
    >
 
-    Další informace o připojení k prostředkům Azure ze sady Visual Studio najdete v tématu [Správa účtů, předplatných a správních rolí](http://go.microsoft.com/fwlink/?LinkId=324796#BKMK_AccountVCert).
+    Další informace o připojení k prostředkům Azure ze sady Visual Studio najdete v tématu [Správa účtů, předplatných a správních rolí](https://go.microsoft.com/fwlink/?LinkId=324796#BKMK_AccountVCert).
 2. V **Průzkumníka serveru**, rozbalte **Azure** a rozbalte **služby App Service**.
 3. Rozbalte skupinu prostředků obsahující webovou aplikaci, kterou jste vytvořili v [vytvoření webové aplikace ASP.NET v Azure](app-service-web-get-started-dotnet-framework.md)a pak klikněte pravým tlačítkem na uzel webové aplikace a klikněte na tlačítko **nastavení zobrazení**.
 
@@ -253,13 +253,13 @@ Pokud vaše funkce [napsal protokoly](https://github.com/Azure/azure-webjobs-sdk
 ```
 * Pokud zjistíte, že ladicí program nebude Krokovat s vnořením kód, který chcete ladit, budete možná muset změnit nastavení pouze můj kód.  Další informace najdete v tématu [určit, jestli se má ladit jenom uživatelský kód, pomocí funkce pouze můj kód v sadě Visual Studio](https://docs.microsoft.com/visualstudio/debugger/just-my-code).
 * Časovač spustí na serveru, když povolíte funkci vzdáleného ladění, a po 48 hodinách se tato funkce automaticky vypne. Tento limit 48 hodin se provádí z důvodů zabezpečení a výkonu. Můžete snadno zapnout funkci zpět jako tolikrát, kolikrát chcete. Doporučujeme, abyste v něm zakázán, když se aktivně ladění.
-* Můžete ručně připojit ladicí program k libovolnému procesu, ne jenom webové aplikace procesu (w3wp.exe). Další informace o tom, jak použít režim ladění v sadě Visual Studio najdete v tématu [ladění v sadě Visual Studio](http://msdn.microsoft.com/library/vstudio/sc65sadd.aspx).
+* Můžete ručně připojit ladicí program k libovolnému procesu, ne jenom webové aplikace procesu (w3wp.exe). Další informace o tom, jak použít režim ladění v sadě Visual Studio najdete v tématu [ladění v sadě Visual Studio](https://msdn.microsoft.com/library/vstudio/sc65sadd.aspx).
 
 ## <a name="logsoverview"></a>Přehled diagnostických protokolů
 Aplikace ASP.NET, na kterém běží ve webové aplikaci Azure můžete vytvořit následující typy protokolů:
 
 * **Protokoly trasování aplikací**<br/>
-  Aplikace vytvoří těchto protokolů voláním metod [System.Diagnostics.Trace](http://msdn.microsoft.com/library/system.diagnostics.trace.aspx) třídy.
+  Aplikace vytvoří těchto protokolů voláním metod [System.Diagnostics.Trace](https://msdn.microsoft.com/library/system.diagnostics.trace.aspx) třídy.
 * **Protokoly webového serveru**<br/>
   Webový server vytvoří položku protokolu pro každý požadavek HTTP do webové aplikace.
 * **Podrobné chybové zprávy protokoly**<br/>
@@ -340,7 +340,7 @@ public ActionResult Contact()
 ```
 
 `WebPageTraceListener` Zobrazují tak, že přejdete do výstupu trasování `/trace.axd`.
-3. Přidat <a href="http://msdn.microsoft.com/library/vstudio/6915t83k(v=vs.100).aspx">trasování – element</a> pod `<system.web>` v souboru Web.config, jako v následujícím příkladu:
+3. Přidat <a href="https://msdn.microsoft.com/library/vstudio/6915t83k(v=vs.100).aspx">trasování – element</a> pod `<system.web>` v souboru Web.config, jako v následujícím příkladu:
 
 ``` xml
 <trace enabled="true" writeToDiagnosticsTrace="true" mostRecent="true" pageOutput="false" />
@@ -475,7 +475,7 @@ Všechny protokoly, které můžete monitorovat v **výstup** okno lze také st�
     ![Stažený soubor](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-logfilefolders.png)
 
    * Protokoly trasování aplikace jsou v *.txt* soubory *LogFiles\Application* složky.
-   * Protokoly webového serveru jsou v *.log* soubory *LogFiles\http\RawLogs* složky. Můžete použít nástroj, jako [analyzátoru protokolů](http://www.microsoft.com/download/details.aspx?displaylang=en&id=24659) k zobrazení a manipulaci s těchto souborů.
+   * Protokoly webového serveru jsou v *.log* soubory *LogFiles\http\RawLogs* složky. Můžete použít nástroj, jako [analyzátoru protokolů](https://www.microsoft.com/download/details.aspx?displaylang=en&id=24659) k zobrazení a manipulaci s těchto souborů.
    * Podrobné chybové zprávy protokolů jsou v *.html* soubory *LogFiles\DetailedErrors* složky.
 
     ( *Nasazení* složka je pro soubory vytvořené pomocí správy zdrojového kódu publikování; není třeba nic, co souvisí s publikováním sady Visual Studio. Tím *Git* složka je pro trasování týkající se správy zdrojových kódů publikování a protokol služby streamování souborů.)  
@@ -554,7 +554,7 @@ Storage accounts offer more storage and longer-lasting retention for logs compar
 
      ![Storage logs in table view](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-tracelogtableview.png)
 
-     This view shows additional fields you don't see in any other views. This view also enables you to filter logs by using special Query Builder UI for constructing a query. For more information, see Working with Table Resources - Filtering Entities in [Browsing Storage Resources with Server Explorer](http://msdn.microsoft.com/library/ff683677.aspx).
+     This view shows additional fields you don't see in any other views. This view also enables you to filter logs by using special Query Builder UI for constructing a query. For more information, see Working with Table Resources - Filtering Entities in [Browsing Storage Resources with Server Explorer](https://msdn.microsoft.com/library/ff683677.aspx).
 14. To look at the details for a single row, double-click one of the rows.
 
      ![Trace table in Server Explorer](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-tracetablerow.png)
@@ -624,17 +624,17 @@ Už víte, jak Visual Studio umožňuje snadno zobrazit protokoly vytvořené we
 Další informace o řešení potíží s webovými aplikacemi ve službě Azure App Service naleznete na následujících odkazech:
 
 * [Monitorování webových aplikací](web-sites-monitor.md)
-* [Zkoumání nevracení paměti ve službě Azure Web Apps pomocí sady Visual Studio 2013](http://blogs.msdn.com/b/visualstudioalm/archive/2013/12/20/investigating-memory-leaks-in-azure-web-sites-with-visual-studio-2013.aspx). Příspěvek na blogu Microsoft ALM funkcemi sady Visual Studio pro analýzu spravovaných problémy s pamětí.
+* [Zkoumání nevracení paměti ve službě Azure Web Apps pomocí sady Visual Studio 2013](https://blogs.msdn.com/b/visualstudioalm/archive/2013/12/20/investigating-memory-leaks-in-azure-web-sites-with-visual-studio-2013.aspx). Příspěvek na blogu Microsoft ALM funkcemi sady Visual Studio pro analýzu spravovaných problémy s pamětí.
 * [Online nástroje pro Azure web apps byste měli vědět o](https://azure.microsoft.com/blog/2014/03/28/windows-azure-websites-online-tools-you-should-know-about-2/). Příspěvek na blogu od Amitu Apple.
 
 Nápovědu k řešení problémů s konkrétní dotaz otevřete vlákno ve jednu z následujících fór služby:
 
 * [Fórum Azure na webu ASP.NET](http://forums.asp.net/1247.aspx/1?Azure+and+ASP+NET).
-* [Fórum Azure na webu MSDN](http://social.msdn.microsoft.com/Forums/windowsazure/).
+* [Fórum Azure na webu MSDN](https://social.msdn.microsoft.com/Forums/windowsazure/).
 * [StackOverflow.com](http://www.stackoverflow.com).
 
 ### <a name="debugging-in-visual-studio"></a>Ladění v sadě Visual Studio
-Další informace o tom, jak použít režim ladění v sadě Visual Studio najdete v tématu [ladění v sadě Visual Studio](http://msdn.microsoft.com/library/vstudio/sc65sadd.aspx) a [tipy k ladění pomocí Visual Studio 2010](http://weblogs.asp.net/scottgu/archive/2010/08/18/debugging-tips-with-visual-studio-2010.aspx).
+Další informace o tom, jak použít režim ladění v sadě Visual Studio najdete v tématu [ladění v sadě Visual Studio](https://msdn.microsoft.com/library/vstudio/sc65sadd.aspx) a [tipy k ladění pomocí Visual Studio 2010](http://weblogs.asp.net/scottgu/archive/2010/08/18/debugging-tips-with-visual-studio-2010.aspx).
 
 ### <a name="remote-debugging-in-azure"></a>Vzdálené ladění v Azure
 Další informace o vzdáleném ladění pro Azure web apps a WebJobs najdete v následujících zdrojích:
@@ -644,21 +644,21 @@ Další informace o vzdáleném ladění pro Azure web apps a WebJobs najdete v 
 * [Úvod do vzdáleného ladění na Azure App Service Web Apps – část 3 – prostředí s více instancemi a GIT](https://azure.microsoft.com/blog/2014/05/08/introduction-to-remote-debugging-on-azure-web-sites-part-3-multi-instance-environment-and-git/)
 * [WebJobs ladění (video)](https://www.youtube.com/watch?v=ncQm9q5ZFZs&list=UU_SjTh-ZltPmTYzAybypB-g&index=1)
 
-Pokud vaše webová aplikace používá back endové webové rozhraní API Azure nebo Mobile Services a je třeba ladit, který najdete v tématu [ladění back-end .NET v sadě Visual Studio](http://blogs.msdn.com/b/azuremobile/archive/2014/03/14/debugging-net-backend-in-visual-studio.aspx).
+Pokud vaše webová aplikace používá back endové webové rozhraní API Azure nebo Mobile Services a je třeba ladit, který najdete v tématu [ladění back-end .NET v sadě Visual Studio](https://blogs.msdn.com/b/azuremobile/archive/2014/03/14/debugging-net-backend-in-visual-studio.aspx).
 
 ### <a name="tracing-in-aspnet-applications"></a>Trasování v aplikacích ASP.NET
 Na Internetu nejsou k dispozici žádné důkladné a aktuální přehled trasování rozhraní ASP.NET. Nejlepší, co můžete dělat je začít s původní úvodní materiály, které jsou napsané pro webové formuláře protože MVC nebyla ještě neexistuje a doplněk, který se novější blogu příspěvky, které se zaměřují na konkrétní problémy. Některé dobré místa, kde začít jsou následující prostředky:
 
 * [Monitorování a Telemetrie (vytváření skutečných cloudových aplikací s Azure)](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/monitoring-and-telemetry).<br>
   Elektronická kniha kapitoly s doporučeními pro trasování v Azure cloudové aplikace.
-* [Trasování rozhraní ASP.NET](http://msdn.microsoft.com/library/ms972204.aspx)<br/>
+* [Trasování rozhraní ASP.NET](https://msdn.microsoft.com/library/ms972204.aspx)<br/>
   Starý, ale stále vhodným místem k zadání základní informace o subjektu.
-* [Naslouchací procesy trasování](http://msdn.microsoft.com/library/4y5y10s7.aspx)<br/>
-  Informace o naslouchacích procesů trasování, ale nebude zmiňovat [WebPageTraceListener](http://msdn.microsoft.com/library/system.web.webpagetracelistener.aspx).
-* [Návod: Integrování trasování System.Diagnostics trasování rozhraní ASP.NET](http://msdn.microsoft.com/library/b0ectfxd.aspx)<br/>
+* [Naslouchací procesy trasování](https://msdn.microsoft.com/library/4y5y10s7.aspx)<br/>
+  Informace o naslouchacích procesů trasování, ale nebude zmiňovat [WebPageTraceListener](https://msdn.microsoft.com/library/system.web.webpagetracelistener.aspx).
+* [Návod: Integrování trasování System.Diagnostics trasování rozhraní ASP.NET](https://msdn.microsoft.com/library/b0ectfxd.aspx)<br/>
   Tento článek je také starý, ale zahrnuje některé další informace, které úvodní článek nepopisuje.
-* [Trasování v zobrazení syntaxe Razor rozhraní ASP.NET MVC](http://blogs.msdn.com/b/webdev/archive/2013/07/16/tracing-in-asp-net-mvc-razor-views.aspx)<br/>
-  Kromě trasování v zobrazení syntaxe Razor příspěvek také vysvětluje, jak vytvořit filtr chyba protokolovat všechny neošetřené výjimky v aplikaci MVC. Informace o tom, jak protokolovat všechny neošetřené výjimky v aplikaci webových formulářů, podívejte se na příklad Global.asax v [kompletní příklad pro obslužné rutiny chyb](http://msdn.microsoft.com/library/bb397417.aspx) na webové stránce MSDN. V MVC nebo webového formuláře Pokud chcete protokolovat určité výjimky, ale nechat výchozí rozhraní zpracování se projeví, můžete zachytit a znovu vyvolat jako v následujícím příkladu:
+* [Trasování v zobrazení syntaxe Razor rozhraní ASP.NET MVC](https://blogs.msdn.com/b/webdev/archive/2013/07/16/tracing-in-asp-net-mvc-razor-views.aspx)<br/>
+  Kromě trasování v zobrazení syntaxe Razor příspěvek také vysvětluje, jak vytvořit filtr chyba protokolovat všechny neošetřené výjimky v aplikaci MVC. Informace o tom, jak protokolovat všechny neošetřené výjimky v aplikaci webových formulářů, podívejte se na příklad Global.asax v [kompletní příklad pro obslužné rutiny chyb](https://msdn.microsoft.com/library/bb397417.aspx) na webové stránce MSDN. V MVC nebo webového formuláře Pokud chcete protokolovat určité výjimky, ale nechat výchozí rozhraní zpracování se projeví, můžete zachytit a znovu vyvolat jako v následujícím příkladu:
 
 ``` c#
 try
@@ -684,12 +684,12 @@ Navíc není nutné používat technologie ASP.NET nebo `System.Diagnostics` tra
 ### <a name="analyzing-web-server-logs"></a>Analýza protokolů webového serveru
 Další informace o analýze protokolů webového serveru najdete v následujících zdrojích:
 
-* [LogParser](http://www.microsoft.com/download/details.aspx?id=24659)<br/>
+* [LogParser](https://www.microsoft.com/download/details.aspx?id=24659)<br/>
   Nástroj pro zobrazení dat v protokolů webového serveru (*.log* soubory).
 * [Řešení potíží s problémy s výkonem služby IIS nebo chyby aplikace pomocí LogParser ](http://www.iis.net/learn/troubleshoot/performance-issues/troubleshooting-iis-performance-issues-or-application-errors-using-logparser)<br/>
   Úvod do nástroje analyzátoru protokolů, který můžete použít k analýze protokolů webového serveru.
-* [Příspěvky do blogu podle Robert McMurray pomocí LogParser](http://blogs.msdn.com/b/robert_mcmurray/archive/tags/logparser/)<br/>
-* [Stavový kód HTTP ve službě IIS 7.0, IIS 7.5 a IIS 8.0](http://support.microsoft.com/kb/943891)
+* [Příspěvky do blogu podle Robert McMurray pomocí LogParser](https://blogs.msdn.com/b/robert_mcmurray/archive/tags/logparser/)<br/>
+* [Stavový kód HTTP ve službě IIS 7.0, IIS 7.5 a IIS 8.0](https://support.microsoft.com/kb/943891)
 
 ### <a name="analyzing-failed-request-tracing-logs"></a>Analýza protokolů trasování chybných požadavků
 Zahrnuje webu Microsoft TechNet [pomocí trasování neúspěšných žádostí](http://www.iis.net/learn/troubleshoot/using-failed-request-tracing) oddíl, což může být užitečné pro pochopení způsobu, jak používat tyto protokoly. Nicméně tato dokumentace je zaměřen především na Konfigurace trasování chybných požadavků ve službě IIS, které nelze použít ve službě Azure Web Apps.

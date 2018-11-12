@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: szark
-ms.openlocfilehash: 67796cc3cbb925bb18a917d17b8abb7c085de370
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 3aa2803550c445e0b30ff998cf3adb779515e487
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49638189"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235968"
 ---
 # <a name="information-for-non-endorsed-distributions"></a>Informace pro neschválené distribuce
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -76,7 +76,7 @@ Image virtuálních pevných disků v Azure musí mít virtuální velikost, zar
 
 * Virtuální pevný disk http://<mystorageaccount>.blob.core.windows.net/vhds/MyLinuxVM.vhd má nepodporovanou virtuální velikost 21475270656 bajtů. Velikost musí být celé číslo (v MB).
 
-V takovém případě změňte velikost virtuálního počítače pomocí konzoly Správce technologie Hyper-V nebo [změny velikosti virtuálního pevného disku](http://technet.microsoft.com/library/hh848535.aspx) rutiny Powershellu.  Pokud nejsou spuštěny v prostředí s Windows, doporučujeme použít `qemu-img` pro převod (v případě potřeby) a změna velikosti virtuálního pevného disku.
+V takovém případě změňte velikost virtuálního počítače pomocí konzoly Správce technologie Hyper-V nebo [změny velikosti virtuálního pevného disku](https://technet.microsoft.com/library/hh848535.aspx) rutiny Powershellu.  Pokud nejsou spuštěny v prostředí s Windows, doporučujeme použít `qemu-img` pro převod (v případě potřeby) a změna velikosti virtuálního pevného disku.
 
 > [!NOTE]
 > Je [známého problému nástroje qemu img](https://bugs.launchpad.net/qemu/+bug/1490611) verze > = 2.2.1, jejímž výsledkem nesprávně formátovaná VHD. Problém byl vyřešen ve verzi 2.6 QEMU. Doporučujeme použít buď `qemu-img` 2.2.0 nebo nižší, nebo 2.6 nebo novější.
@@ -125,7 +125,7 @@ V takovém případě změňte velikost virtuálního počítače pomocí konzol
 
 Jsou ovladače služby Linux Integration Services (LIS) pro Hyper-V a Azure přispět přímo do nadřazeného jádro Linuxu. Množství distribucí, které obsahují nejnovější verze jádra Linuxu (například 3.x) již mít k dispozici tyto ovladače nebo jiný způsob dodání přeneseny zpět verze těchto ovladačů s jejich jádra.  Tyto ovladače neustále aktualizují se v jádru nadřazeného se nové opravy a funkce, takže pokud je to možné, doporučujeme vám běží [distribuce schválené pro](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) , který obsahuje tyto opravy a aktualizace.
 
-Pokud používáte hodnotu typu variant Red Hat Enterprise Linux verze 6.0 k 6.3 a potom budete muset nainstalovat [nejnovější ovladače služby LIS pro Hyper-V](http://go.microsoft.com/fwlink/p/?LinkID=254263&clcid=0x409). Od verze RHEL 6.4 + (a vy) ovladače služby LIS jsou již zahrnuty v rámci jádra a proto žádné další instalační balíčky nejsou potřeba.
+Pokud používáte hodnotu typu variant Red Hat Enterprise Linux verze 6.0 k 6.3 a potom budete muset nainstalovat [nejnovější ovladače služby LIS pro Hyper-V](https://go.microsoft.com/fwlink/p/?LinkID=254263&clcid=0x409). Od verze RHEL 6.4 + (a vy) ovladače služby LIS jsou již zahrnuty v rámci jádra a proto žádné další instalační balíčky nejsou potřeba.
 
 Pokud vlastní jádra je potřeba, doporučujeme nejnovější verze jádra (například 3.8 +). Pro distribuce nebo dodavatele, kteří udržují vlastní jádra bude potřeba pravidelně backport ovladače služby LIS z nadřazeného jádra na vlastní jádra.  I v případě, že už používáte relativně novější verze jádra, důrazně doporučujeme udržovat přehled o žádné upstream opravuje ovladače služby LIS a backport je podle potřeby. Umístění zdrojových souborů ovladače služby LIS jsou určené v [programu](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/tree/MAINTAINERS) soubor ve zdrojovém stromu jádro Linuxu:
 ```

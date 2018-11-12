@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2016
 ms.author: mandia
-ms.openlocfilehash: 90cf2d0ddbba47a856bf1299a101c5185873b5d8
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 6dc3fb97c912aa9ac66e3d40a8a0318a6938905c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39214408"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230287"
 ---
 # <a name="biztalk-services-backup-and-restore"></a>BizTalk Services: Zálohování a obnovení
 
@@ -132,18 +132,18 @@ Pokud se odstraní databázi sledování a potřeby databáze obnovena, musí ex
 </table>
 
 ## <a name="next"></a>Další
-Vytvoření služby Azure BizTalk Services, přejděte na [BizTalk Services: zřízení](http://go.microsoft.com/fwlink/p/?LinkID=302280). Pokud chcete začít vytvářet aplikace, přejděte na článek [Azure BizTalk Services](http://go.microsoft.com/fwlink/p/?LinkID=235197).
+Vytvoření služby Azure BizTalk Services, přejděte na [BizTalk Services: zřízení](https://go.microsoft.com/fwlink/p/?LinkID=302280). Pokud chcete začít vytvářet aplikace, přejděte na článek [Azure BizTalk Services](https://go.microsoft.com/fwlink/p/?LinkID=235197).
 
 ## <a name="see-also"></a>Viz také
-* [Zálohování služby BizTalk](http://go.microsoft.com/fwlink/p/?LinkID=325584)
-* [Obnovení ze zálohy služby BizTalk](http://go.microsoft.com/fwlink/p/?LinkID=325582)
-* [BizTalk Services: Developer, Basic, Standard a Premium tabulka edic](http://go.microsoft.com/fwlink/p/?LinkID=302279)
-* [BizTalk Services: zřízení](http://go.microsoft.com/fwlink/p/?LinkID=302280)
-* [BizTalk Services: Tabulka stavů zřízení](http://go.microsoft.com/fwlink/p/?LinkID=329870)
-* [BizTalk Services: Karty Řídicí panel, Sledování a Škálování](http://go.microsoft.com/fwlink/p/?LinkID=302281)
-* [BizTalk Services: Omezování](http://go.microsoft.com/fwlink/p/?LinkID=302282)
-* [BizTalk Services: Název a klíč vystavitele](http://go.microsoft.com/fwlink/p/?LinkID=303941)
-* [Jak začít používat sadu SDK Azure BizTalk Services](http://go.microsoft.com/fwlink/p/?LinkID=302335)
+* [Zálohování služby BizTalk](https://go.microsoft.com/fwlink/p/?LinkID=325584)
+* [Obnovení ze zálohy služby BizTalk](https://go.microsoft.com/fwlink/p/?LinkID=325582)
+* [BizTalk Services: Developer, Basic, Standard a Premium tabulka edic](https://go.microsoft.com/fwlink/p/?LinkID=302279)
+* [BizTalk Services: zřízení](https://go.microsoft.com/fwlink/p/?LinkID=302280)
+* [BizTalk Services: Tabulka stavů zřízení](https://go.microsoft.com/fwlink/p/?LinkID=329870)
+* [BizTalk Services: Karty Řídicí panel, Sledování a Škálování](https://go.microsoft.com/fwlink/p/?LinkID=302281)
+* [BizTalk Services: Omezování](https://go.microsoft.com/fwlink/p/?LinkID=302282)
+* [BizTalk Services: Název a klíč vystavitele](https://go.microsoft.com/fwlink/p/?LinkID=303941)
+* [Jak začít používat sadu SDK Azure BizTalk Services](https://go.microsoft.com/fwlink/p/?LinkID=302335)
 
 [BackupStatus]: ./media/biztalk-backup-restore/status-last-backup.png
 [Restore]: ./media/biztalk-backup-restore/restore-ui.png

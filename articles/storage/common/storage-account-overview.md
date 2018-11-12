@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/13/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: d7dbb808205c78b53277c6d916f5166a41c7e93d
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 227ef61ee4809d376c6ac5e8e8c1a7f9c364b7fc
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49638421"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51255758"
 ---
 # <a name="azure-storage-account-overview"></a>Přehled účtu Azure storage
 
@@ -107,7 +107,7 @@ Azure Storage nabízí různé možnosti pro přístup k datům objektu blob blo
 K dispozici přístup úrovně jsou:
 
 > [!NOTE]
-> [Přístup na úrovni Premium](../blobs/storage-blob-storage-tiers.md#premium-access-tier) je k dispozici ve verzi limited preview jako účet místně redundantního úložiště (LRS) v oblastech severní Evropa, USA – východ 2, USA – střed a USA – západ. Zjistěte, jak zaregistrovat verzi preview, najdete v článku [Úvod do Azure Blob Storage úrovně Premium](http://aka.ms/premiumblob).
+> [Přístup na úrovni Premium](../blobs/storage-blob-storage-tiers.md#premium-access-tier) je k dispozici ve verzi limited preview jako účet místně redundantního úložiště (LRS) v oblastech severní Evropa, USA – východ 2, USA – střed a USA – západ. Zjistěte, jak zaregistrovat verzi preview, najdete v článku [Úvod do Azure Blob Storage úrovně Premium](https://aka.ms/premiumblob).
 
 * **Hot** úrovně přístupu, která je optimalizovaná pro časté přístup k objektům v účtu úložiště. Přístup k datům v horké úrovni je cenově nejvýhodnější, zatímco jsou o něco vyšší náklady na úložiště. Nové účty úložiště jsou vytvořené v horké vrstvy ve výchozím nastavení.
 * **Cool** úrovně přístupu, která je optimalizovaná pro ukládání velkých objemů dat, která se nevyužívají často a ukládají nejméně na 30 dnů. Ukládání dat do studené vrstvy začne být cenově výhodnější, ale přístup k těmto datům může být trochu nákladnější než přístup k datům v horké úrovni.

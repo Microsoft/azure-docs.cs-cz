@@ -1,7 +1,7 @@
 ---
-title: 'Infografice: Základy learning - algoritmus příklady počítač | Microsoft Docs'
-description: Přehled snadno pochopit základy machine learning obsahuje příklady algoritmus. Zaváděná infografice popisuje většina strojového učení otázky.
-keywords: Machine learning základy, příklady algoritmus strojového učení pro začátečníky, machine learning otázky, oblíbených algoritmy, infografice algoritmus
+title: 'Infografika: Základy služby Machine learning – příklady algoritmů | Dokumentace Microsoftu'
+description: Přehled snadno pochopit základy machine learning obsahuje příklady algoritmů. Infografika ke stažení obsahuje většina strojového učení dotazy.
+keywords: Machine learning základy příklady algoritmů strojového učení pro začátečníky, machine learning dotazy, Oblíbené algoritmy, algoritmus infografika
 services: machine-learning
 documentationcenter: ''
 author: heatherbshapiro
@@ -16,30 +16,30 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2017
-ms.openlocfilehash: a7d2d1e46847f6126ad2905e9f2d3ce52957dad5
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 8ef67add44428e08a1851a039e7e8c2c747e930d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34833352"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51253852"
 ---
 # <a name="downloadable-infographic-machine-learning-basics-with-algorithm-examples"></a>Infografika ke stažení: Základy služby Machine Learning s příklady algoritmů
-Stáhněte si tento snadno pochopit infografice přehled nástroje machine learning základní informace o další informace o oblíbených algoritmy používané k odpovědi na časté otázky machine learning. Příklady algoritmus pomoct pochopit, jaké algoritmy mají být použity a co se používají pro začátečníka machine learning.
+Stáhněte si tento snadno pochopitelné infografika přehled nástroje machine learning základní informace o další informace o Oblíbené algoritmy, které jsou použity jako odpovědi na běžné dotazy machine learning. Příklady algoritmů pomoct pochopit, jaké algoritmy mají použít, a co slouží pro začátečníky learning počítače.
 
-## <a name="popular-algorithms-in-machine-learning-studio"></a>Oblíbené algoritmy v Machine Learning Studio
-[Azure Machine Learning Studio](https://studio.azureml.net/) se dodává s velké knihovny algoritmů prediktivní analýzy. Infografice identifikuje čtyři oblíbených rodiny algoritmů - regrese, detekce anomálií, clustering a klasifikace - a poskytuje odkazy na příklady práci v [Azure AI Galerie](https://gallery.cortanaintelligence.com/). Galerie obsahuje příklad experimentů a návodů, které ukazují, jak tyto algoritmy lze použít mnoho skutečná řešení.
+## <a name="popular-algorithms-in-machine-learning-studio"></a>Oblíbené algoritmy v nástroji Machine Learning Studio
+[Azure Machine Learning Studio](https://studio.azureml.net/) přinášejí velké knihovny algoritmů pro prediktivní analýzy. Infografiku čtyři oblíbené rodiny algoritmů - regrese, detekce anomálií, clustering a klasifikace - určuje a poskytuje odkazy na funkčních příkladů v [galerii Azure AI](https://gallery.cortanaintelligence.com/). Galerie obsahuje příklady experimentů a kurzy, které ukazují, jak tyto algoritmy lze použít v mnoha řešeních reálného světa.
 
-## <a name="download-the-infographic-with-algorithm-examples"></a>Stáhněte si infografice s příklady algoritmus
-**[Stáhnout: Infografice nástroje machine learning základy s odkazy na příklady algoritmus (PDF)](http://download.microsoft.com/download/0/5/A/05AE6B94-E688-403E-90A5-6035DBE9EEC5/machine-learning-basics-infographic-with-algorithm-examples.pdf)**
+## <a name="download-the-infographic-with-algorithm-examples"></a>Stáhněte si informační grafiky s příklady algoritmů
+**[Ke stažení: Infografika machine learning zásad s odkazy na příklady algoritmů (PDF)](https://download.microsoft.com/download/0/5/A/05AE6B94-E688-403E-90A5-6035DBE9EEC5/machine-learning-basics-infographic-with-algorithm-examples.pdf)**
 
-![Infografice: Strojového učení základy s příklady algoritmus. Oblíbené algoritmy. Strojového učení pro začátečníky.](./media/basics-infographic-with-algorithm-examples/machine-learning-basics-infographic-with-algorithm-examples.png)
+![Infografika: Základy služby Machine learning s příklady algoritmů. Oblíbené algoritmy. Machine learning pro začátečníky.](./media/basics-infographic-with-algorithm-examples/machine-learning-basics-infographic-with-algorithm-examples.png)
 
-## <a name="more-help-with-algorithms-for-beginners-and-advanced-users"></a>Další pomoc s algoritmy pro začátečníky a pokročilé uživatele
-* Podrobnější diskuzi o různé typy algoritmy strojového učení, jak se používají a jak zvolit ten správný pro vaše řešení, najdete v části [jak zvolit algoritmy pro Microsoft Azure Machine Learning](algorithm-choice.md).
-* Seznam podle kategorie všechny algoritmy strojového učení dostupné v nástroji Machine Learning Studio najdete v tématu [inicializovat Model] [ initialize-model] v Machine Learning Studio algoritmus a pomáhají modulu.
-* Dokončení abecední seznam algoritmů a modulů v Machine Learning Studio najdete v tématu [seznam A-Z modulů Machine Learning Studio] [ a-z-list] v Machine Learning Studio algoritmus a pomoci modulu.
+## <a name="more-help-with-algorithms-for-beginners-and-advanced-users"></a>Další pomoc s algoritmy pro začátečníky a zkušené uživatele
+* Podrobnější diskuzi o různé typy algoritmů strojového učení, jak se používají a jak zvolit ten správný pro vaše řešení, najdete v části [jak zvolit algoritmy pro Microsoft Azure Machine Learning](algorithm-choice.md).
+* Seznam podle kategorie všechny dostupných algoritmů strojového učení v nástroji Machine Learning Studio najdete v tématu [inicializovat Model] [ initialize-model] Machine Learning Studio algoritmus a pomůže modulu.
+* Úplný abecední seznam algoritmů a modulů v Machine Learning Studio najdete v tématu [seznam A-Z modulů Machine Learning Studio] [ a-z-list] Studio algoritmu strojového učení a pomůže modulu.
 * Pokud si chcete stáhnout a vytisknout diagram s přehledem funkcí nástroje Machine Learning Studio, nahlédněte do tématu [Diagram s přehledem možností nástroje Machine Learning Studio](studio-overview-diagram.md).
-* Přehled Azure AI Gallery a mnoho vytvářené komunitou dostupné prostředky došlo, najdete v části [sdílené složky a zjišťovat prostředky v Azure AI Gallery](gallery-how-to-use-contribute-publish.md).
+* Přehled o galerii Azure AI a mnoho vytvářené komunitou prostředky k dispozici, najdete v části [sdílené složky a vyhledejte prostředky v galerii Azure AI](gallery-how-to-use-contribute-publish.md).
 
 [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
 

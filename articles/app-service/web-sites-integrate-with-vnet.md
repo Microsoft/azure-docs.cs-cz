@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: ccompy
-ms.openlocfilehash: 5eab09d5dffe16517e8c18eb0281716618ca0286
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 5e7a2150757afeecb6b0b100f3259f1628f42074
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47166206"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51262076"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Integrujte svou aplikaci s Azure Virtual Network
-Tento dokument popisuje funkci integrace virtuální sítě Azure App Service a ukazuje, jak ho nastavit s aplikacemi v [služby Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714). Pokud nejste obeznámeni s Azure Virtual Networks (Vnet), jedná se o funkci, která umožňuje umístit řadu prostředků Azure, které řídí přístup k síti možnosti směrování Internetu jiných. Potom se dá propojit tyto sítí na vaše místní sítě pomocí různých technologií VPN. Další informace o Azure Virtual Network, začněte s tyto informace tady: [Přehled služby Azure Virtual Network][VNETOverview]. 
+Tento dokument popisuje funkci integrace virtuální sítě Azure App Service a ukazuje, jak ho nastavit s aplikacemi v [služby Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). Pokud nejste obeznámeni s Azure Virtual Networks (Vnet), jedná se o funkci, která umožňuje umístit řadu prostředků Azure, které řídí přístup k síti možnosti směrování Internetu jiných. Potom se dá propojit tyto sítí na vaše místní sítě pomocí různých technologií VPN. Další informace o Azure Virtual Network, začněte s tyto informace tady: [Přehled služby Azure Virtual Network][VNETOverview]. 
 
 Azure App Service má dvě formy. 
 

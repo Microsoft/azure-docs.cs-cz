@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: 2fd0fe55b975010a1eaafeb455d61a6cb3ebff77
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 8e13ba0bcbd24dcc3cd08a0d2886f1da9d85de79
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46970919"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51249910"
 ---
 # <a name="structure-projects-with-the-team-data-science-process-template"></a>Strukturování projektů s šablonou vědecké zpracování týmových dat
 
@@ -54,7 +54,7 @@ Zkontrolujte následující položky *před* vytvoření nového projektu:
 * Obsah (jiné než co je již k dispozici ve složce "dokumenty") se musí být kratší než 25 MB. Přečtěte si poznámku, která následuje tohoto seznamu.
 * Ukázka\_složka dat je pouze pro malé datové soubory (méně než 5 MB), se kterými můžete testovat kód nebo spustit raného vývoje.
 * Ukládání souborů, jako je Word a PowerPoint soubory, zvýšit velikost složky "docs" podstatně. Doporučujeme, který chcete najít spolupráci Wiki [SharePoint](https://products.office.com/sharepoint/collaboration), nebo jiný spolupracující prostředek k ukládání těchto souborů.
-* Další způsob zpracování velkých souborů a výstupy ve službě Machine Learning, [uložením změn a práci s velkými soubory](http://aka.ms/aml-largefiles).
+* Další způsob zpracování velkých souborů a výstupy ve službě Machine Learning, [uložením změn a práci s velkými soubory](https://aka.ms/aml-largefiles).
 
 > [!NOTE]
 > Všechny související s dokumentací obsah (text, markdowns, obrázky a další soubory dokumentu), který je *není* použít během spuštění projektu, jiné než souboru readme.md se musí nacházet ve složce s názvem "dokumenty" (malými písmeny). Složka "dokumenty" je speciální složky ignorují spouštěním Machine Learning, takže obsah v této složce nemáte se zkopíruje do cílových výpočetních prostředí zbytečně. Objekty v této složce také není počítají 25 MB limit pro velikost projektu. Složce "docs" například je místem, kde můžete ukládat soubory velký obrázek, je potřeba v dokumentaci k sadě. Tyto soubory jsou pořád sledovat Git prostřednictvím historie spuštění. 

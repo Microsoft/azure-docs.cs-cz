@@ -1,6 +1,6 @@
 ---
-title: Vytvoření a správa vymahatelných virtuálních počítačů v testovacím prostředí v Azure DevTest Labs | Microsoft Docs
-description: Informace o postupu přidání vymahatelných virtuálního počítače do testovacího prostředí v Azure DevTest Labs
+title: Vytvoření a správa nárokovatelných virtuálních počítačů v testovacím prostředí ve službě Azure DevTest Labs | Dokumentace Microsoftu
+description: Zjistěte, jak přidat nárokovatelný virtuální počítač do testovacího prostředí ve službě Azure DevTest Labs
 services: devtest-lab,virtual-machines
 documentationcenter: na
 author: spelluru
@@ -14,87 +14,87 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2018
 ms.author: spelluru
-ms.openlocfilehash: 669dfab75f34a0d1f997dc34f600402d3c10669b
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 3bfb674fa66f0701a099d237f4e760453c7b6a6e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33787490"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51232123"
 ---
-# <a name="create-and-manage-claimable-vms-in-azure-devtest-labs"></a>Vytvoření a správa vymahatelných virtuálních počítačů v Azure DevTest Labs
-Přidat vymahatelných virtuálního počítače do testovacího prostředí podobným způsobem, jak můžete [přidat standardní virtuální počítač](devtest-lab-add-vm.md) – z *základní* to znamená buď [vlastní image](devtest-lab-create-template.md), [vzorec](devtest-lab-manage-formulas.md), nebo [Marketplace image](devtest-lab-configure-marketplace-images.md). V tomto kurzu vás provede pomocí portálu Azure pro přidání do testovacího prostředí v DevTest Labs vymahatelných virtuálního počítače a zobrazuje procesy že uživatel bude postupovat pro deklarace identity a unclaim virtuálního počítače.
+# <a name="create-and-manage-claimable-vms-in-azure-devtest-labs"></a>Vytvoření a správa nárokovatelných virtuálních počítačů ve službě Azure DevTest Labs
+Podobným způsobem, jak přidat nárokovatelných virtuálních počítačů do testovacího prostředí můžete [přidat virtuální počítače standard](devtest-lab-add-vm.md) – od *základní* , který je buď [vlastní image](devtest-lab-create-template.md), [vzorec](devtest-lab-manage-formulas.md) , nebo [image z Marketplace](devtest-lab-configure-marketplace-images.md). Tento kurz vás provede přidání nárokovatelných virtuálních počítačů pro testovací prostředí v DevTest Labs pomocí webu Azure portal a procesy, které ukazuje, že uživatel sleduje deklarace identity a jejich převzetí zruší virtuálního počítače.
 
-## <a name="steps-to-add-a-claimable-vm-to-a-lab-in-azure-devtest-labs"></a>Postup pro přidání do testovacího prostředí v Azure DevTest Labs vymahatelných virtuálního počítače
-1. Přihlaste se k webu [Azure Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040).
-1. Vyberte **všechny služby**a potom vyberte **DevTest Labs** ze seznamu.
-1. Ze seznamu labs vyberte testovací prostředí, ve kterém chcete vytvořit vymahatelných virtuálního počítače.  
-1. V tomto prostředí **přehled** podokně, vyberte **+ přidat**.  
+## <a name="steps-to-add-a-claimable-vm-to-a-lab-in-azure-devtest-labs"></a>Postup přidání nárokovatelných virtuálních počítačů do testovacího prostředí ve službě Azure DevTest Labs
+1. Přihlaste se k webu [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Vyberte **všechny služby**a pak vyberte **DevTest Labs** ze seznamu.
+1. V seznamu testovacích prostředí vyberte prostředí, ve kterém chcete vytvořit nárokovatelných virtuálních počítačů.  
+1. Cvičení **přehled** vyberte **+ přidat**.  
 
-    ![Virtuální počítač tlačítko Přidat](./media/devtest-lab-add-vm/devtestlab-home-blade-add-vm.png)
+    ![Přidání tlačítka virtuálního počítače](./media/devtest-lab-add-vm/devtestlab-home-blade-add-vm.png)
 
-1. Na **zvolte na základní** oblasti, vyberte základ pro virtuální počítač.
-1. V **virtuálního počítače** podokně, zadejte název pro nový virtuální počítač **název virtuálního počítače** textového pole.
+1. Na **vyberte bázi** vyberte základ pro virtuální počítač.
+1. V **virtuálního počítače** podokně, zadejte název pro nový virtuální počítač v **název virtuálního počítače** textového pole.
 
-    ![Virtuální počítač podokně testovacího prostředí](./media/devtest-lab-add-vm/devtestlab-lab-vm-blade.png)
+    ![Podokno virtuálního počítače testovacího prostředí](./media/devtest-lab-add-vm/devtestlab-lab-vm-blade.png)
 
-1. Zadejte **uživatelské jméno** , jsou udělena oprávnění správce na virtuálním počítači.  
-1. Pokud chcete použít heslo uložené v vaše [tajný úložiště](https://azure.microsoft.com/updates/azure-devtest-labs-keep-your-secrets-safe-and-easy-to-use-with-the-new-personal-secret-store), vyberte **použít uložené tajný klíč**a zadejte hodnotu klíče, která odpovídá váš tajný klíč (heslo). Jinak, zadejte heslo do textového pole s názvem bez přípony **zadejte hodnotu**.
-1. **Typ disku virtuálního počítače** určuje disku typů úložiště, které u virtuálních počítačů v testovacím prostředí.
-1. Vyberte **velikost virtuálního počítače** a vyberte jednu z předdefinovaných položky, které zadejte jader procesoru, velikosti paměti RAM a velikost pevného disku pro vytvoření virtuálního počítače.
-1. Vyberte **artefakty** a ze seznamu artefaktů, vyberte a nakonfigurujte artefaktů, které chcete přidat do základní bitové kopie. Pokud nepracovali DevTest Labs nebo konfigurace artefaktů, vyhledejte [přidat existující artefaktů pro virtuální počítač](devtest-lab-add-vm.md#add-an-existing-artifact-to-a-vm) části a vraťte se sem po dokončení.
-1. Vyberte **upřesňující nastavení** nakonfigurovat možnosti sítě a vypršení platnosti možnosti Virtuálního počítače. V části **deklarace identity možnosti**, zvolte **Ano** k zajištění vymahatelných počítače.
+1. Zadejte **uživatelské jméno** , která jsou udělena oprávnění správce na virtuálním počítači.  
+1. Pokud chcete použít heslo uložené v vaše [úložiště tajných kódů](https://azure.microsoft.com/updates/azure-devtest-labs-keep-your-secrets-safe-and-easy-to-use-with-the-new-personal-secret-store)vyberte **použít uložený tajný kód**a zadat hodnotu klíče, který odpovídá váš tajný klíč (heslo). V opačném případě zadejte heslo do textového pole s popiskem **zadejte hodnotu**.
+1. **Typ disku virtuálního počítače** Určuje, jaký typ disku úložiště je povolený pro virtuální počítače v testovacím prostředí.
+1. Vyberte **velikost virtuálního počítače** a vyberte jednu z předdefinovaných položek, které určují jader procesoru, velikosti paměti RAM a velikost pevného disku virtuálního počítače k vytvoření.
+1. Vyberte **artefakty** a ze seznamu artefakty, vyberte a nakonfigurujte artefakty, které chcete přidat do základní image. Pokud začínáte s DevTest Labs začínáte nebo konfigurace artefakty, vyhledejte [k virtuálnímu počítači přidat existující artefakt](devtest-lab-add-vm.md#add-an-existing-artifact-to-a-vm) části a pak se sem vraťte po dokončení.
+1. Vyberte **upřesňující nastavení** konfigurovat možnosti sítě Virtuálního počítače a možností vypršení platnosti. V části **možnosti Nárokování**, zvolte **Ano** nárokovatelných aby na počítači.
 
-  ![Zvolte, aby vymahatelných virtuálního počítače.](./media/devtest-lab-add-vm/devtestlab-claim-VM-option.png)
+  ![Zvolte, jestli nárokovatelných virtuálního počítače.](./media/devtest-lab-add-vm/devtestlab-claim-VM-option.png)
 
-1. Pokud chcete zobrazit nebo zkopírování šablony Azure Resource Manager, přečtěte si [šablony uložit Azure Resource Manageru](devtest-lab-add-vm.md#save-azure-resource-manager-template) části a sem vraťte po dokončení.
-1. Vyberte **vytvořit** přidat zadaný virtuální počítač do testovacího prostředí.
+1. Pokud chcete zobrazit nebo zkopírujte šablony Azure Resource Manageru, přečtěte si [šablonu uložte Azure Resource Manageru](devtest-lab-add-vm.md#save-azure-resource-manager-template) části a vraťte se sem po dokončení.
+1. Vyberte **vytvořit** zadaný virtuální počítač přidat do testovacího prostředí.
 
-   Stav vytvoření Virtuálního počítače se zobrazí, jako první **vytváření**, pak jako **systémem** po spuštění virtuálního počítače.
+   Se zobrazí stav vytváření Virtuálního počítače jako první **vytváření**, pak jako **systémem** po spuštění virtuálního počítače.
 
 > [!NOTE]
-> Pokud nasadíte virtuální počítače testovacího prostředí prostřednictvím [šablon Azure Resource Manageru](devtest-lab-create-environment-from-arm.md), můžete vytvořit virtuální počítače vymahatelných nastavením **allowClaim** vlastnost na hodnotu true v části Vlastnosti.
+> Pokud nasadíte virtuální počítače testovacího prostředí prostřednictvím [šablon Azure Resource Manageru](devtest-lab-create-environment-from-arm.md), nárokovatelných virtuálních počítačů můžete vytvořit tak, že nastavíte **allowClaim** vlastnost na hodnotu true v oddílu Vlastnosti.
 >
 >
 
-## <a name="using-a-claimable-vm"></a>Pomocí vymahatelných virtuálního počítače
+## <a name="using-a-claimable-vm"></a>Pomocí nárokovatelných virtuálních počítačů
 
-Uživatel může deklarace identity žádné virtuální počítače ze seznamu "Vymahatelných virtuální počítače" jedním z těchto kroků:
+Uživatel si může nárokovat libovolný virtuální počítač ze seznamu "Nárokovatelné virtuální počítače" jedním z těchto kroků:
 
-* Ze seznamu "Vymahatelných virtuální počítače" v dolní části podokna "Přehled" v prostředí, klikněte pravým tlačítkem na jednu z virtuálních počítačů v seznamu a vyberte **deklarace identity počítače**.
+* Ze seznamu "Nárokovatelných virtuálních počítačů" v dolní části podokna "Přehled" testovací prostředí, klikněte pravým tlačítkem na jeden z virtuálních počítačů v seznamu a zvolte **nárokovat počítač**.
 
- ![Požádat o konkrétní vymahatelných virtuální počítač.](./media/devtest-lab-add-vm/devtestlab-claim-VM.png)
-
-
-* V horní části podokna "Přehled", zvolte **všechny deklarace**. Náhodné virtuální počítač přidělenou ze seznamu vymahatelných virtuálních počítačů.
-
- ![Požádat o žádné vymahatelných virtuální počítače.](./media/devtest-lab-add-vm/devtestlab-claim-any.png)
+ ![Požádat o konkrétní nárokovatelných virtuálních počítačů.](./media/devtest-lab-add-vm/devtestlab-claim-VM.png)
 
 
-Poté, co uživatel deklarací virtuálního počítače, je do jejich seznam "Moje virtuální počítače" Přesunout nahoru a již není vymahatelných jiným uživatelem.
+* V horní části podokna "Přehled", zvolte **nárokovat libovolný**. Ze seznamu nárokovatelných virtuálních počítačů je náhodný virtuální počítač přiřazený.
 
-## <a name="unclaim-a-vm"></a>Unclaim virtuálního počítače
+ ![Požádat o žádné nárokovatelných virtuálních počítačů.](./media/devtest-lab-add-vm/devtestlab-claim-any.png)
 
-Když uživatel přestane používat deklarovaný virtuálních počítačů a chce, aby byl k dispozici někomu jinému, jejich deklarovaný virtuální počítač vrátit do seznamu vymahatelných virtuálních počítačů pomocí jedné z těchto kroků:
 
-- Ze seznamu "Moje virtuální počítače", klikněte pravým tlačítkem na jednu z virtuálních počítačů v seznamu – nebo vyberte jeho třemi tečkami (...) – a zvolte **Unclaim**.
+Jakmile uživatel deklarací identity virtuálního počítače, přesunuty do svého seznamu "Moje virtual machines" a není už nárokovatelných žádný uživatel.
 
-  ![Unclaim virtuální počítač na seznam virtuálních počítačů.](./media/devtest-lab-add-vm/devtestlab-unclaim-VM2.png)
+## <a name="unclaim-a-vm"></a>Vzdát se virtuálního počítače
 
-- V seznamu "Moje virtuální počítače", vyberte virtuální počítač otevřete podokno jeho správu a pak vyberte **Unclaim** z hlavní nabídky panelu.
+Když uživatel přestane používat nárokován. virtuální počítač a chce, aby byla k dispozici někomu jinému, se vrátí nárokován. virtuální počítač do seznam nárokovatelných virtuálních počítačů pomocí jedné z těchto kroků:
 
-  ![Unclaim virtuálních počítačů v podokně Správa Virtuálního počítače.](./media/devtest-lab-add-vm/devtestlab-unclaim-VM.png)
+- Ze seznamu "Moje virtuální počítače", klikněte pravým tlačítkem na jeden z virtuálních počítačů v seznamu – nebo vyberte jeho ikonu tří teček (...) – a zvolte **Unclaim**.
 
-Když uživatel unclaims virtuální počítač, mají už veškerá oprávnění pro tento konkrétní testovací prostředí virtuálních počítačů.
+  ![Vzdát se virtuálního počítače na seznam virtuálních počítačů.](./media/devtest-lab-add-vm/devtestlab-unclaim-VM2.png)
 
-### <a name="transferring-the-data-disk"></a>Přenos dat disku
-Pokud má vymahatelných virtuální počítač datový disk připojen k jeho a uživatel ho unclaims, zůstává datový disk s virtuálním Počítačem. Když jiný uživatel pak deklarací, že virtuální počítač, tento nový uživatel deklarací datový disk, jakož i virtuální počítač.
+- V seznamu "Moje virtuální počítače", vyberte virtuální počítač otevřete jeho panel pro správu a pak vyberte **Unclaim** v horní nabídce.
 
-To se označuje jako "přenosu datový disk". Datový disk se pak stane k dispozici v seznamu nového uživatele **Moje datových disků** pro ně ke správě.
+  ![Vrátit. virtuální počítač v podokně Správa Virtuálního počítače.](./media/devtest-lab-add-vm/devtestlab-unclaim-VM.png)
 
-![Unclaim datových disků.](./media/devtest-lab-add-vm/devtestlab-unclaim-datadisks.png)
+Když uživatel unclaims virtuálního počítače, že už nebude mít žádná oprávnění pro tento konkrétní testovací virtuální počítač.
+
+### <a name="transferring-the-data-disk"></a>Převod datového disku
+Pokud nárokovatelných virtuálních počítačů má datový disk připojený a uživatel ho unclaims, datový disk zůstává s virtuálním Počítačem. Když jiný uživatel potom deklarací identity, že virtuální počítač, tento nový uživatel deklarací datový disk, stejně jako virtuální počítač.
+
+To se označuje jako "převod datový disk". Datový disk pak bude k dispozici v seznamu nového uživatele **Moje datové disky** spravuje.
+
+![Vzdát datové disky.](./media/devtest-lab-add-vm/devtestlab-unclaim-datadisks.png)
 
 
 
 ## <a name="next-steps"></a>Další postup
-* Jakmile je vytvořen, se můžete připojit k virtuálnímu počítači pomocí výběr **Connect** na jeho podokně Správa.
-* Prozkoumejte [šablony galerii pro rychlý start DevTest Labs Azure Resource Manager](https://github.com/Azure/azure-devtestlab/tree/master/Samples).
+* Jakmile se vytvoří, můžete připojit k virtuálnímu počítači tak, že vyberete **připojit** v podokně pro správu.
+* Prozkoumejte [Galerie šablon rychlý start DevTest Labs Azure Resource Manageru](https://github.com/Azure/azure-devtestlab/tree/master/Samples).

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: juliako
-ms.openlocfilehash: fbfb52b758089acf65f89c62f716d46d62b0f289
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 794c2cf6c52ead465d35d3d551cfe76e87c06787
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233816"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51237600"
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-rest"></a>Začínáme s doručováním obsahu na vyžádání pomocí REST
 [!INCLUDE [media-services-selector-get-started](../../../includes/media-services-selector-get-started.md)]
@@ -460,7 +460,7 @@ Následující kód požádá o id kodér.
 ### <a name="create-a-job"></a>Vytvoření úlohy
 Každá úloha může mít jednu nebo více úloh v závislosti na typu zpracování, které chcete dosáhnout. Prostřednictvím rozhraní REST API, můžete vytvořit úlohy a jejich související úlohy v jedné ze dvou způsobů: úloh může být definována vložením prostřednictvím navigační vlastnost úkoly u úlohy entit nebo dávkovým zpracováním OData. Media Services SDK používá dávkové zpracování. Pro lepší čitelnost příklady kódu v tomto článku, ale úlohy jsou definována vložením. Informace o zpracování služby batch najdete v tématu [Open Data Protocol (OData), dávkové zpracování](http://www.odata.org/documentation/odata-version-3-0/batch-processing/).
 
-Následující příklad ukazuje, jak vytvořit a odeslat úlohu pomocí jednoho úkolu nastavená na kódování videa na konkrétní řešení a kvalitu. Následující část dokumentace obsahuje seznam všech [předvolby úloh](http://msdn.microsoft.com/library/mt269960) podporován pomocí procesoru Media Encoder Standard.  
+Následující příklad ukazuje, jak vytvořit a odeslat úlohu pomocí jednoho úkolu nastavená na kódování videa na konkrétní řešení a kvalitu. Následující část dokumentace obsahuje seznam všech [předvolby úloh](https://msdn.microsoft.com/library/mt269960) podporován pomocí procesoru Media Encoder Standard.  
 
 **Požadavek HTTP**
 

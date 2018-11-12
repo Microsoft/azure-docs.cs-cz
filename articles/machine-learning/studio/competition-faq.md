@@ -15,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2017
-ms.openlocfilehash: 693fd7b80d69c20971315d8636f27daeb0cacaee
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 28be219c35d382cbd141bb050b35893da02ab775
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50240881"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51256441"
 ---
 # <a name="microsoft-cortana-intelligence-competitions-faq"></a>Nejčastější dotazy k soutěžím Microsoft Cortana Intelligence Competitions
 **Co je Cortana Intelligence soutěže?**
 
-: Soutěže Microsoft Cortana Intelligence sjednotí globální komunita nadšenci do dat pomocí některé z celého světa nejsložitější data science problémů souhrnně řešení. Soutěže zaměřené na Cortana Intelligence umožňuje nadšenci do dat z po celém světě soutěží a vytvářet modely s vysokou přesností a inteligentní datovou vědu. Tyto hostované soutěže jsou založeny na unikátní datové sady, které byly zpřístupněny veřejně poprvé. Účastníky můžete vyhrát odměny nebo získat rozpoznávání přes horní 10 žebříček veřejných. Přístupné na domovské stránce soutěže [aka.ms/CIComp](http://aka.ms/CIComp).
+: Soutěže Microsoft Cortana Intelligence sjednotí globální komunita nadšenci do dat pomocí některé z celého světa nejsložitější data science problémů souhrnně řešení. Soutěže zaměřené na Cortana Intelligence umožňuje nadšenci do dat z po celém světě soutěží a vytvářet modely s vysokou přesností a inteligentní datovou vědu. Tyto hostované soutěže jsou založeny na unikátní datové sady, které byly zpřístupněny veřejně poprvé. Účastníky můžete vyhrát odměny nebo získat rozpoznávání přes horní 10 žebříček veřejných. Přístupné na domovské stránce soutěže [aka.ms/CIComp](https://aka.ms/CIComp).
 
 **Jak často Microsoft vydá nové soutěže?**
 
@@ -37,7 +37,7 @@ Obecné dotazy, můžete použít [fóra Microsoft Azure Machine Learning](https
 
 **Zadávání soutěž.**
 
-Přístup [soutěže](https://gallery.cortanaintelligence.com/competitions) domovskou stránku [galerii Azure AI](https://gallery.cortanaintelligence.com/), nebo můžete přejít na [ http://aka.ms/CIComp ](http://aka.ms/CIComp). Domovská stránka obsahuje seznam všech soutěží, které jsou aktuálně spuštěny. Každý soutěže obsahuje podrobné pokyny a pravidla účasti, věcné ceny a doba trvání na její stránce registrace.
+Přístup [soutěže](https://gallery.cortanaintelligence.com/competitions) domovskou stránku [galerii Azure AI](https://gallery.cortanaintelligence.com/), nebo můžete přejít na [ http://aka.ms/CIComp ](https://aka.ms/CIComp). Domovská stránka obsahuje seznam všech soutěží, které jsou aktuálně spuštěny. Každý soutěže obsahuje podrobné pokyny a pravidla účasti, věcné ceny a doba trvání na její stránce registrace.
 
 1. Vyhledat soutěž, do které chcete se zúčastnit, přečtěte si pokyny a podívejte se na Výukové video. Klikněte **zadejte soutěže** tlačítko a zkopírujte Experiment Startovní do vašeho existujícího pracovního prostoru Azure Machine Learning. Pokud ještě nemáte přístup k pracovnímu prostoru, je nutné vytvořit předem. Spusťte Experiment Startovní, sledujte metriky výkonu a pak použít svou kreativitu ke zlepšení výkonu modelu. Budete pravděpodobně tráví většinu svého času v tomto kroku.   
 
@@ -98,7 +98,7 @@ Microsoft ověří, jestli výsledky privátní tabulek výsledků a pak vás bu
 
 **Jak se zobrazí ocenění peníze, když se mi vyhrajte soutěž?**
 
-Pokud se Vítěz soutěže, budou muset přihlásit deklaraci nároku, licence a vydání verze ze. Tento formulář znovu zdůrazňuje pravidla soutěže. Vítězové muset vyplnit formulář nám daně W-9 nebo formulář W-8BEN Pokud nejsou poplatníků USA. Budeme kontaktovat všechny vítězové jako součást procesu úhrad odměny pomocí e-mailu jejich registraci. Najdete na naší [podmínky a ujednání](http://aka.ms/comptermsandconditions) další podrobnosti.
+Pokud se Vítěz soutěže, budou muset přihlásit deklaraci nároku, licence a vydání verze ze. Tento formulář znovu zdůrazňuje pravidla soutěže. Vítězové muset vyplnit formulář nám daně W-9 nebo formulář W-8BEN Pokud nejsou poplatníků USA. Budeme kontaktovat všechny vítězové jako součást procesu úhrad odměny pomocí e-mailu jejich registraci. Najdete na naší [podmínky a ujednání](https://aka.ms/comptermsandconditions) další podrobnosti.
 
 **Co když více než jedna položka obdrží stejné skóre?**
 
@@ -114,5 +114,5 @@ V současné době soutěže platforma podporuje pouze položky z pracovního pr
 
 **Uchováváme soutěže řešení a záznamy uživatelů?**
 
-Uživatelské položky se zachovají jenom pro účely testování k identifikaci vítězné řešení. Najdete na naší [podmínky a ujednání](http://aka.ms/comptermsandconditions) pro konkrétní.
+Uživatelské položky se zachovají jenom pro účely testování k identifikaci vítězné řešení. Najdete na naší [podmínky a ujednání](https://aka.ms/comptermsandconditions) pro konkrétní.
 

@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: haining
 author: haining
 ms.date: 09/24/2018
-ms.openlocfilehash: 9778d348cf49d4066f034931dc350a1f4a608ad2
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: e2b3545c020f41f25f19843eab158cfb1b419164
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48236580"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51253444"
 ---
 # <a name="migrate-to-the-latest-version-of-azure-machine-learning-service"></a>Migrace na nejnovější verzi služby Azure Machine Learning 
 
@@ -38,7 +38,7 @@ Následující tabulka a článek vysvětluje, co můžete dělat s vašimi stá
 |Registrovaný imagí|Ne|Znovu vytvořte image Dockeru nasazení v rámci nový pracovní prostor.|
 |Nasazené webové služby|Ne|Žádné. Budete i nadále fungovat jako-je <br/>nebo [nasadit je znovu pomocí nejnovější verze](#services).|
 |Experimentování a <br/>Účty správy modelů|Ne|[Vytvoření pracovního prostoru](#resources) místo.|
-|Strojové učení, rozhraní příkazového řádku a sady SDK|Ne|Pomocí nové [rozhraní příkazového řádku](reference-azure-machine-learning-cli.md) a [SDK](http://aka.ms/aml-sdk) pro novou práci.|
+|Strojové učení, rozhraní příkazového řádku a sady SDK|Ne|Pomocí nové [rozhraní příkazového řádku](reference-azure-machine-learning-cli.md) a [SDK](https://aka.ms/aml-sdk) pro novou práci.|
 
 
 Další informace o [co se změnilo v této verzi](overview-what-happened-to-workbench.md)?
@@ -52,7 +52,7 @@ Další informace o [co se změnilo v této verzi](overview-what-happened-to-wor
 
 Prostředí nejde migrovat na nejnovější verzi služby Azure Machine Learning výpočetní prostředky, jako jsou účty služby experimentování ve službě, účty správy modelů a machine learningu. Zobrazit [časová osa](overview-what-happened-to-workbench.md#timeline) na jak dlouho by vaše prostředky budou nadále fungovat.
 
-Začínáme s nejnovější verzí tím, že vytvoříte pracovní prostor služby Azure Machine Learning service v [webu Azure portal](quickstart-get-started.md). Řídicí panel pracovního prostoru na portálu se podporuje jenom prohlížeče Edge, Chrome a Firefox.
+Začínáme s nejnovější verzí tím, že vytvoříte pracovní prostor služby Azure Machine Learning service v [webu Azure portal](quickstart-get-started.md). Řídicí panel pracovního prostoru portálu je podporovaný jenom v prohlížečích Edge, Chrome a Firefox.
 
 Tento pracovní prostor je prostředek nejvyšší úrovně služby a umožňuje využívat všechny nejnovější funkce služby Azure Machine Learning. Další informace o tomto [pracovní prostor a architektura](concept-azure-machine-learning-architecture.md).
 
@@ -62,7 +62,7 @@ Tento pracovní prostor je prostředek nejvyšší úrovně služby a umožňuje
 
 Namísto toho, aby vaše projekty v pracovním prostoru v cloudu, projekty jsou nyní adresáře na místním počítači v nejnovější verzi. Zobrazit diagram [nejnovější architektura](concept-azure-machine-learning-architecture.md). 
 
-Dál používat místní adresář obsahující soubory a skripty, zadejte název adresáře ["experiment.submit"](http://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py) Python příkaz nebo pomocí příkazu az ml projektu připojení rozhraní příkazového řádku.
+Dál používat místní adresář obsahující soubory a skripty, zadejte název adresáře ["experiment.submit"](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py) Python příkaz nebo pomocí příkazu az ml projektu připojení rozhraní příkazového řádku.
 
 Příklad:
 ```python

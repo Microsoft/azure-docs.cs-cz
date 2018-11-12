@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: fbd11eb23b10800e115a63549f233e0239763420
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 09c869bf28b804d8fabe331c4a9c2d222accc1e5
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49638138"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51300366"
 ---
 # <a name="patterns-improve-prediction-accuracy"></a>Vzory zvyšte přesnost předpovědi
 Vzory jsou navržené pro zlepšení přesnosti, když několik projevy jsou velmi podobné.  Vzor umožňuje získat vyšší přesnost pro záměru bez zadání projevy mnoho více. 
@@ -89,7 +89,7 @@ Chcete-li přidat **Pattern.any** entity do modelu šablony obklopit Pattern.any
 V těchto příkladech název knihy nejsou kontextové slova název knihy pro LUIS matoucí. Služba LUIS ví, kde název knihy skončí, protože je ve vzoru a označené Pattern.any entity.
 
 ### <a name="explicit-lists"></a>Explicitní seznamy
-Pokud váš model obsahuje Pattern.any a umožňuje vzor syntaxe pro možnost extrakci nesprávné entity podle utterance, vytvořte [explicitní seznam](https://aka.ms/ExplicitList) prostřednictvím rozhraní API pro vytváření povolit výjimku. 
+Pokud váš model obsahuje Pattern.any a umožňuje vzor syntaxe pro možnost extrakci nesprávné entity podle utterance, vytvořte [explicitní seznam](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5ade550bd5b81c209ce2e5a8) prostřednictvím rozhraní API pro vytváření povolit výjimku. 
 
 Předpokládejme například, že máte model obsahující jak syntaxi volitelné `[]`a syntaxi entity `{}`kombinované v způsob, jak extrahovat data nesprávně.
 
@@ -102,7 +102,7 @@ Zvažte vzor "[najít] e-mailu o {subject} [od {osoby}]". V následující proje
 
 V předchozí tabulce, utterance `email about the man from La Mancha`, předmět by měl být `the man from La Mancha` (název knihy), ale vzhledem k tomu subjekt zahrnuje volitelné slovo `from`, nesprávně očekává název. 
 
-Chcete-li vyřešit tato výjimka se vzorem, přidejte `the man from la mancha` jako explicitní seznam v případě shody s využitím entity {subject} [vytváření rozhraní API pro explicitní seznam](https://aka.ms/ExplicitList).
+Chcete-li vyřešit tato výjimka se vzorem, přidejte `the man from la mancha` jako explicitní seznam v případě shody s využitím entity {subject} [vytváření rozhraní API pro explicitní seznam](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5ade550bd5b81c209ce2e5a8).
 
 ### <a name="syntax-to-mark-optional-text-in-a-template-utterance"></a>Syntaxe pro označení volitelný text, který v šabloně utterance
 Označit volitelný text, který v utterance pomocí syntaxe regulárních výrazů hranatá závorka, `[]`. Nepovinný text můžete vnořit hranaté závorky až pouze dvě závorky.
