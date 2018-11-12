@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: be2fd826ffa658ec04bd937036e37bf55cbf65a4
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 96163188fad464bc4b94457f7061a78b3f4997a9
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50964131"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51014495"
 ---
 # <a name="optimize-your-sql-environment-with-the-sql-server-health-check-solution-in-log-analytics"></a>Optimalizujete si prostředí SQL s řešením kontroly stavu SQL serveru ve službě Log Analytics
 
@@ -184,7 +184,7 @@ Pokud máte doporučení, která má být ignorována, můžete vytvořit textov
     ```
 
     >[!NOTE]
-    > Pokud byl váš pracovní prostor upgradován na [dotazovací jazyk Log Analytics nové](log-analytics-log-search.md), pak se změní výše uvedeném dotazu následující.
+    > Pokud byl váš pracovní prostor upgradován na [dotazovací jazyk Log Analytics nové](log-analytics-queries.md), pak se změní výše uvedeném dotazu následující.
     >
     > `SQLAssessmentRecommendation | where RecommendationResult == "Failed" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
 
@@ -209,7 +209,7 @@ Pokud máte doporučení, která má být ignorována, můžete vytvořit textov
     ```
 
     >[!NOTE]
-    > Pokud byl váš pracovní prostor upgradován na [dotazovací jazyk Log Analytics nové](log-analytics-log-search.md), pak se změní výše uvedeném dotazu následující.
+    > Pokud byl váš pracovní prostor upgradován na [dotazovací jazyk Log Analytics nové](log-analytics-queries.md), pak se změní výše uvedeném dotazu následující.
     >
     > `SQLAssessmentRecommendation | where RecommendationResult == "Ignored" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
 
@@ -265,4 +265,4 @@ Pokud máte doporučení, která má být ignorována, můžete vytvořit textov
 * Ano, naleznete v tématu [ignorujte doporučení](#ignore-recommendations) výše uvedené části.
 
 ## <a name="next-steps"></a>Další postup
-* [Hledání protokolů](log-analytics-log-search.md) informace o analýze podrobných dat o kontrolu stavu SQL a doporučení.
+* [Hledání protokolů](log-analytics-queries.md) informace o analýze podrobných dat o kontrolu stavu SQL a doporučení.

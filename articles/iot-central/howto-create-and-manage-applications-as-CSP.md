@@ -8,12 +8,12 @@ ms.author: tanmayb
 ms.date: 10/29/2018
 ms.topic: conceptual
 manager: peterpr
-ms.openlocfilehash: 5db215a3bf87ac42ac832a59ce39f7e72c45527f
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: dbc72e040f3d68ca77c036c41612f57616d1e74e
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50963349"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51016824"
 ---
 # <a name="as-a-csp-create-and-manage-an-azure-iot-central-application-on-behalf-of-your-customer"></a>Jako zprostředkovatel kryptografických služeb vytvářet a spravovat Azure IoT Central aplikace jménem vašich zákazníků 
 
@@ -29,7 +29,7 @@ Azure IoT Central je uveden jako služba pro správu k dispozici. Klikněte na A
 
 ![K dispozici pro správu Azure IoT Central](media\howto-create-application-asCSP\image2.png)
 
-Budete přesměrováni na stránku Azure IoT Central aplikace správce. Azure IoT Central udržuje kontext, pochází z webu Microsoft Partner Center a že jste ke správě daného zákazníka. Uvidíte toto potvrzení v záhlaví stránky Správce aplikací. Odsud můžete přejít k existující aplikaci jste dříve vytvořili pro tohoto zákazníka k její správě nebo vytvořte novou aplikaci pro zákazníka.
+Budete přesměrováni na stránku Azure IoT Central aplikace správce. Azure IoT Central udržuje kontext, pochází z webu Microsoft Partner Center a že jste ke správě daného zákazníka. Uvidíte toto potvrzení v záhlaví stránky Správce aplikací. Z tohoto místa můžete buď přejít do stávající aplikace, kterou jste vytvořili dříve pro tohoto zákazníka ke správě nebo vytvořte novou aplikaci pro zákazníka.
 
 ![Vytvoření správce pro poskytovatele CSP](media\howto-create-application-asCSP\image3.png)
 
@@ -51,7 +51,7 @@ Název aplikace se zobrazí na **Správce aplikací** stránky a v každé aplik
 
 Adresa URL aplikace je odkaz na vaši aplikaci. Můžete uložit záložku v prohlížeči nebo sdílet s ostatními.
 
-Pokud zadáte název vaší aplikace, adresa URL vaší aplikace se generuje automaticky. Pokud dáváte přednost, můžete vybrat jinou adresu URL pro aplikaci. Každá Azure IoT Central adresa URL musí být jedinečný v rámci Azure IoT Central. Pokud zvolíte adresa URL již byla přijata se zobrazí chybová zpráva.
+Pokud zadáte název vaší aplikace, adresa URL vaší aplikace se automaticky generuje. Pokud dáváte přednost, můžete vybrat jinou adresu URL pro aplikaci. Každá Azure IoT Central adresa URL musí být jedinečný v rámci Azure IoT Central. Pokud zvolíte adresa URL již byla přijata se zobrazí chybová zpráva.
 
 ## <a name="directory"></a>Adresář
 

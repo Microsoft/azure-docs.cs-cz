@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/11/2018
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: 575c8a5bec4c7763c75154835830ba350f009e93
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: cf8c82f597cd659911cd66b0b7db8139e8d9d1a5
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46946931"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50416881"
 ---
 # <a name="tutorial-configure-message-routing-with-iot-hub"></a>Kurz: Konfigurace směrování zpráv s Azure IoT Hub
 
@@ -268,7 +268,9 @@ Potřebujete směrovat zprávy do různých prostředků na základě vlastnost�
 
 ### <a name="routing-to-a-storage-account"></a>Směrování do účtu úložiště 
 
-Nyní nastavte směrování pro účet úložiště. Přejděte do podokna Směrování zpráv a přidejte trasu. Při přidávání trasy pro ni definujte nový koncový bod. Po tomto nastavení se zprávy s vlastností **level** nastavenou na **storage** budou do účtu úložiště zapisovat automaticky.
+Nyní nastavte směrování pro účet úložiště. Přejděte do podokna Směrování zpráv a přidejte trasu. Při přidávání trasy pro ni definujte nový koncový bod. Po tomto nastavení se zprávy s vlastností **level** nastavenou na **storage** budou do účtu úložiště zapisovat automaticky. 
+
+Data se do úložiště objektů blob zapisují ve formátu Avro.
 
 1. Na webu [Azure Portal](https://portal.azure.com) klikněte na **Skupiny prostředků** a vyberte vaši skupinu prostředků. Tento kurz používá **ContosoResources**. 
 
@@ -286,9 +288,19 @@ Nyní nastavte směrování pro účet úložiště. Přejděte do podokna Směr
 
 6. Klikněte na **Vybrat kontejner**. Tím přejdete na seznam vašich účtů úložiště. Vyberte účet, který jste nastavili v rámci přípravy. Tento kurz používá **contosostorage**. Zobrazí se seznam kontejnerů v daném účtu úložiště. Vyberte kontejner, který jste nastavili v rámci přípravy. Tento kurz používá **contosoresults**. Klikněte na **Vybrat**. Vrátíte se do podokna **Přidat koncový bod**. 
 
-7. Pro zbývající pole použijte výchozí hodnoty. Kliknutím na **Vytvořit** vytvořte koncový bod úložiště a přidejte ho do trasy. Vrátíte se do podokna **Přidat trasu**.
+7. Pro účely tohoto kurzu použijte u zbývajících polí výchozí hodnoty. 
 
-8.  Teď vyplňte zbývající informace o dotazu směrování. Tento dotaz určuje kritéria pro odesílání zpráv do kontejneru úložiště, který jste právě přidali jako koncový bod. Vyplňte pole na obrazovce. 
+   > [!NOTE]
+   > Pomocí pole **Formát názvu souboru objektu blob** můžete nastavit formát názvu objektu blob. Výchozí formát je `{iothub}/{partition}/{YYYY}/{MM}/{DD}/{HH}/{mm}`. Formát musí obsahovat {iothub}, {partition}, {YYYY}, {MM}, {DD}, {HH} a {mm} v libovolném pořadí. 
+   > 
+   > Například při použití výchozího formátu názvu souboru objektu blob a za předpokladu, že název centra je ContosoTestHub a datum a čas je 30. října 2018 v 10:56, bude název objektu blob vypadat takto: `ContosoTestHub/0/2018/10/30/10/56`.
+   > 
+   > Objekty blob se zapisují ve formátu Avro.
+   >
+
+8. Kliknutím na **Vytvořit** vytvořte koncový bod úložiště a přidejte ho do trasy. Vrátíte se do podokna **Přidat trasu**.
+
+9. Teď vyplňte zbývající informace o dotazu směrování. Tento dotaz určuje kritéria pro odesílání zpráv do kontejneru úložiště, který jste právě přidali jako koncový bod. Vyplňte pole na obrazovce. 
 
    **Název:** Zadejte název dotazu směrování. Tento kurz používá **StorageRoute**.
 
@@ -368,17 +380,17 @@ Fronta Service Bus se použije pro příjem zpráv označených jako kritické. 
 
    Klikněte na možnost **Vytvořit**.
 
-1. Teď přejděte do aplikace logiky. Nejjednodušší způsob, jak se dostat do aplikace logiky, je kliknout na **Skupiny prostředků**, vybrat vaši skupinu prostředků (tento kurz používá **ContosoResources**) a vybrat ze seznamu prostředků aplikaci logiky. Zobrazí se stránka návrháře aplikace logiky (možná se budete muset kvůli zobrazení celé stránky posunout doprava). Na stránce návrháře aplikace logiky přejděte dolů až k dlaždici **Prázdná aplikace logiky +** a klikněte na ni. 
+2. Teď přejděte do aplikace logiky. Nejjednodušší způsob, jak se dostat do aplikace logiky, je kliknout na **Skupiny prostředků**, vybrat vaši skupinu prostředků (tento kurz používá **ContosoResources**) a vybrat ze seznamu prostředků aplikaci logiky. Zobrazí se stránka návrháře aplikace logiky (možná se budete muset kvůli zobrazení celé stránky posunout doprava). Na stránce návrháře aplikace logiky přejděte dolů až k dlaždici **Prázdná aplikace logiky +** a klikněte na ni. 
 
-1. Zobrazí se seznam konektorů. Vyberte **Service Bus**. 
+3. Zobrazí se seznam konektorů. Vyberte **Service Bus**. 
 
    ![Snímek obrazovky zobrazující seznam konektorů.](./media/tutorial-routing/logic-app-connectors.png)
 
-1. Zobrazí se seznam aktivačních událostí. Vyberte **Service Bus – Při doručení zprávy do fronty (automatické dokončení)**. 
+4. Zobrazí se seznam aktivačních událostí. Vyberte **Service Bus – Při doručení zprávy do fronty (automatické dokončení)**. 
 
    ![Snímek obrazovky se seznamem aktivačních událostí pro Service Bus.](./media/tutorial-routing/logic-app-triggers.png)
 
-1. Na další obrazovce zadejte Název připojení. Tento kurz používá **ContosoConnection**. 
+5. Na další obrazovce zadejte Název připojení. Tento kurz používá **ContosoConnection**. 
 
    ![Snímek obrazovky vytváření připojení pro frontu Service Bus.](./media/tutorial-routing/logic-app-define-connection.png)
 
@@ -386,21 +398,21 @@ Fronta Service Bus se použije pro příjem zpráv označených jako kritické. 
    
    ![Snímek obrazovky zobrazující dokončení nastavení připojení.](./media/tutorial-routing/logic-app-finish-connection.png)
 
-1. Na další obrazovce vyberte z rozevíracího seznamu název fronty (tento kurz používá **contososbqueue**). Pro zbývající pole můžete použít výchozí hodnoty. 
+6. Na další obrazovce vyberte z rozevíracího seznamu název fronty (tento kurz používá **contososbqueue**). Pro zbývající pole můžete použít výchozí hodnoty. 
 
    ![Snímek obrazovky s možnostmi fronty.](./media/tutorial-routing/logic-app-queue-options.png)
 
-1. Nyní nastavte akci odeslání e-mailu při přijetí nové zprávy do fronty. V Návrháři aplikace logiky klikněte na **+ Nový krok** a pak na **Přidat akci**. V podokně **Vybrat akci** vyhledejte a klikněte na **Office 365 Outlook**. Na obrazovce aktivačních událostí vyberte **Office 365 Outlook – Odeslat e-mail**.  
+7. Nyní nastavte akci odeslání e-mailu při přijetí nové zprávy do fronty. V Návrháři aplikace logiky klikněte na **+ Nový krok** a pak na **Přidat akci**. V podokně **Vybrat akci** vyhledejte a klikněte na **Office 365 Outlook**. Na obrazovce aktivačních událostí vyberte **Office 365 Outlook – Odeslat e-mail**.  
 
    ![Snímek obrazovky s možnostmi Office 365.](./media/tutorial-routing/logic-app-select-outlook.png)
 
-1. Pak se přihlaste k účtu Office 365, aby se vytvořilo připojení. Zadejte e-mailové adresy příjemců e-mailu. Také zadejte předmět a zprávu, kterou chcete mít v těle zprávy. Pro testování zadejte jako adresu příjemce vlastní e-mail.
+8. Pak se přihlaste k účtu Office 365, aby se vytvořilo připojení. Zadejte e-mailové adresy příjemců e-mailu. Také zadejte předmět a zprávu, kterou chcete mít v těle zprávy. Pro testování zadejte jako adresu příjemce vlastní e-mail.
 
    Kliknutím na tlačítko **Přidat dynamický obsah** zobrazíte obsah, který můžete do zprávy zahrnout. Vyberte **Obsah** – příchozí zpráva bude zahrnuta do e-mailu. 
 
    ![Snímek obrazovky znázorňující možnosti e-mailu v aplikaci logiky.](./media/tutorial-routing/logic-app-send-email.png)
 
-1. Klikněte na **Uložit**. Pak návrháře aplikace logiky zavřete.
+9. Klikněte na **Uložit**. Pak návrháře aplikace logiky zavřete.
 
 ## <a name="set-up-azure-stream-analytics"></a>Nastavení služby Azure Stream Analytics
 
@@ -410,7 +422,7 @@ Pokud chcete zobrazit data ve vizualizaci Power BI, nejprve vytvořte úlohu Str
 
 1. Na webu [Azure Portal](https://portal.azure.com) klikněte na **Vytvořit prostředek** > **Internet věcí** > **Úloha Stream Analytics**.
 
-1. Zadejte o úloze následující informace.
+2. Zadejte o úloze následující informace.
 
    **Název úlohy:** Název, který chcete úloze dát. Název musí být globálně jedinečný. Tento kurz používá **contosoJob**.
 
@@ -420,13 +432,13 @@ Pokud chcete zobrazit data ve vizualizaci Power BI, nejprve vytvořte úlohu Str
 
    ![Snímek obrazovky předvádějící vytvoření úlohy Stream Analytics.](./media/tutorial-routing/stream-analytics-create-job.png)
 
-1. Vytvořte úlohu kliknutím na **Vytvořit**. Zpět do úlohy se vrátíte kliknutím na **Skupiny prostředků**. Tento kurz používá **ContosoResources**. Vyberte skupinu prostředků a potom v seznamu prostředků klikněte na úlohu Stream Analytics. 
+3. Vytvořte úlohu kliknutím na **Vytvořit**. Zpět do úlohy se vrátíte kliknutím na **Skupiny prostředků**. Tento kurz používá **ContosoResources**. Vyberte skupinu prostředků a potom v seznamu prostředků klikněte na úlohu Stream Analytics. 
 
 ### <a name="add-an-input-to-the-stream-analytics-job"></a>Přidání vstupu úlohy Stream Analytics
 
-1. V části **Topologie úlohy** klikněte na **Vstupy**.
+4. V části **Topologie úlohy** klikněte na **Vstupy**.
 
-1. V podokně **Vstupy** klikněte na **Přidat vstup streamu** a vyberte IoT Hub. Na další obrazovce vyplňte následující pole:
+5. V podokně **Vstupy** klikněte na **Přidat vstup streamu** a vyberte IoT Hub. Na další obrazovce vyplňte následující pole:
 
    **Alias pro vstup:** Tento kurz používá **contosoinputs**.
 
@@ -444,13 +456,13 @@ Pokud chcete zobrazit data ve vizualizaci Power BI, nejprve vytvořte úlohu Str
 
    ![Snímek obrazovky předvádějící nastavení vstupů úlohy Stream Analytics.](./media/tutorial-routing/stream-analytics-job-inputs.png)
 
-1. Klikněte na **Uložit**.
+6. Klikněte na **Uložit**.
 
 ### <a name="add-an-output-to-the-stream-analytics-job"></a>Přidání vstupu úlohy Stream Analytics
 
 1. V části **Topologie úlohy** klikněte na **Výstupy**.
 
-1. V podokně **Výstupy** klikněte na **Přidat** a potom vyberte **Power BI**. Na další obrazovce vyplňte následující pole:
+2. V podokně **Výstupy** klikněte na **Přidat** a potom vyberte **Power BI**. Na další obrazovce vyplňte následující pole:
 
    **Alias pro výstup:** Jedinečný alias pro výstup. Tento kurz používá **contosooutputs**. 
 
@@ -460,25 +472,25 @@ Pokud chcete zobrazit data ve vizualizaci Power BI, nejprve vytvořte úlohu Str
 
    Pro zbývající pole můžete použít výchozí hodnoty.
 
-1. Klikněte na **Autorizovat** a přihlaste se do účtu Power BI.
+3. Klikněte na **Autorizovat** a přihlaste se do účtu Power BI.
 
    ![Snímek obrazovky předvádějící nastavení výstupů úlohy Stream Analytics.](./media/tutorial-routing/stream-analytics-job-outputs.png)
 
-1. Klikněte na **Uložit**.
+4. Klikněte na **Uložit**.
 
 ### <a name="configure-the-query-of-the-stream-analytics-job"></a>Konfigurace dotazu pro úlohu Stream Analytics
 
 1. V části **Topologie úlohy** klikněte na **Dotaz**.
 
-1. Nahraďte `[YourInputAlias]` názvem aliasu pro vstup úlohy. Tento kurz používá **contosoinputs**.
+2. Nahraďte `[YourInputAlias]` názvem aliasu pro vstup úlohy. Tento kurz používá **contosoinputs**.
 
-1. Nahraďte `[YourOutputAlias]` názvem aliasu pro výstup. Tento kurz používá **contosooutputs**.
+3. Nahraďte `[YourOutputAlias]` názvem aliasu pro výstup. Tento kurz používá **contosooutputs**.
 
    ![Snímek obrazovky předvádějící nastavení dotazu pro úlohu Stream Analytics.](./media/tutorial-routing/stream-analytics-job-query.png)
 
-1. Klikněte na **Uložit**.
+4. Klikněte na **Uložit**.
 
-1. Zavřete podokno dotazu. Tím se vrátíte k zobrazení prostředků ve Skupině prostředků. Klikněte na úlohu Stream Analytics. V tomto kurzu má název **contosoJob**.
+5. Zavřete podokno dotazu. Tím se vrátíte k zobrazení prostředků ve Skupině prostředků. Klikněte na úlohu Stream Analytics. V tomto kurzu má název **contosoJob**.
 
 ### <a name="run-the-stream-analytics-job"></a>Spuštění úlohy Stream Analytics
 
@@ -520,7 +532,7 @@ Pokud je všechno správně nastavené, v tomto okamžiku byste měli získat n�
    * Aplikace logiky přebírající zprávy z fronty Service Bus pracuje správně.
    * Konektor aplikace logiky do Outlooku pracuje správně. 
 
-1. Na webu [Azure Portal](https://portal.azure.com) klikněte na **Skupiny prostředků** a vyberte vaši skupinu prostředků. Tento kurz používá **ContosoResources**. Vyberte účet úložiště, klikněte na tlačítko **Objekty Blob** a pak vyberte kontejner. Tento kurz používá **contosoresults**. Měli byste vidět složku, ve které můžete procházet adresáře, dokud neuvidíte jeden nebo několik souborů. Otevřete jeden z těchto souborů; obsahují položky směrované do účtu úložiště. 
+2. Na webu [Azure Portal](https://portal.azure.com) klikněte na **Skupiny prostředků** a vyberte vaši skupinu prostředků. Tento kurz používá **ContosoResources**. Vyberte účet úložiště, klikněte na tlačítko **Objekty Blob** a pak vyberte kontejner. Tento kurz používá **contosoresults**. Měli byste vidět složku, ve které můžete procházet adresáře, dokud neuvidíte jeden nebo několik souborů. Otevřete jeden z těchto souborů; obsahují položky směrované do účtu úložiště. 
 
    ![Snímek obrazovky s výslednými soubory v úložišti.](./media/tutorial-routing/results-in-storage.png)
 
@@ -534,35 +546,35 @@ Nyní se stále běžící aplikací vytvořte vizualizaci Power BI pro zprávy 
 
 1. Přihlaste se ke svému účtu [Power BI](https://powerbi.microsoft.com/).
 
-1. Přejděte na **Pracovní prostory** a vyberte pracovní prostor, který jste nastavili při vytváření výstupu pro úlohu služby Stream Analytics. Tento kurz používá **My Workspace**. 
+2. Přejděte na **Pracovní prostory** a vyberte pracovní prostor, který jste nastavili při vytváření výstupu pro úlohu služby Stream Analytics. Tento kurz používá **My Workspace**. 
 
-1. Klikněte na **Datové sady**.
+3. Klikněte na **Datové sady**.
 
    Měli byste vidět datovou sadu určenou při vytváření výstupu pro úlohu služby Stream Analytics. Tento kurz používá **contosodataset**. (Zobrazení datové sady může na začátku 5 až 10 minut trvat.)
 
-1. V části **AKCE** kliknutím na první ikonu vytvořte sestavu.
+4. V části **AKCE** kliknutím na první ikonu vytvořte sestavu.
 
    ![Snímek obrazovky pracovního prostoru Power BI se zvýrazněnou položkou Akce a ikonou sestavy.](./media/tutorial-routing/power-bi-actions.png)
 
-1. Vytvořte spojnicový graf zobrazující v reálném čase vývoj teploty.
+5. Vytvořte spojnicový graf zobrazující v reálném čase vývoj teploty.
 
-   a. Na stránce pro vytvoření sestavy přidejte graf kliknutím na ikonu spojnicového grafu.
+   * Na stránce pro vytvoření sestavy přidejte graf kliknutím na ikonu spojnicového grafu.
 
    ![Snímek obrazovky s vizualizacemi a poli.](./media/tutorial-routing/power-bi-visualizations-and-fields.png)
 
-   b. V podokně **Pole** rozbalte tabulku, kterou jste určili při vytváření výstupu pro úlohu služby Stream Analytics. Tento kurz používá **contosotable**.
+   * V podokně **Pole** rozbalte tabulku, kterou jste určili při vytváření výstupu pro úlohu služby Stream Analytics. Tento kurz používá **contosotable**.
 
-   c. Přetáhněte **EventEnqueuedUtcTime** na **Osu** v podokně **Vizualizace**.
+   * Přetáhněte **EventEnqueuedUtcTime** na **Osu** v podokně **Vizualizace**.
 
-   d. Přetáhněte položku **temperature** na **Hodnoty**.
+   * Přetáhněte položku **temperature** na **Hodnoty**.
 
    Vytvoří spojnicový graf. Na ose x bude datum a čas v časovém pásmu UTC. Na ose y bude hodnota snímače teploty.
 
-1. Vytvořte jiný spojnicový graf zobrazující v reálném čase vývoj vlhkosti. Při vytváření druhého grafu postupujte stejně a přetáhněte **EventEnqueuedUtcTime** na osu x a **humidity** na osu y.
+6. Vytvořte jiný spojnicový graf zobrazující v reálném čase vývoj vlhkosti. Při vytváření druhého grafu postupujte stejně a přetáhněte **EventEnqueuedUtcTime** na osu x a **humidity** na osu y.
 
    ![Snímek obrazovky předvádějící konečnou sestavu Power BI se dvěma grafy.](./media/tutorial-routing/power-bi-report.png)
 
-1. Kliknutím na **Uložit** sestavu uložte.
+7. Kliknutím na **Uložit** sestavu uložte.
 
 Nyní byste měli vidět příchozí data v obou grafech. To znamená následující:
 
@@ -595,7 +607,6 @@ K odebrání skupiny prostředků použijte příkaz [Remove-AzureRmResourceGrou
 Remove-AzureRmResourceGroup -Name $resourceGroup
 ```
 
-
 ## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se naučili, jak používat směrování zpráv služby IoT Hub na různé cíle provedením následujících úloh.  
@@ -615,5 +626,3 @@ V dalším kurzu se dozvíte, jak spravovat stav zařízení IoT.
 
 > [!div class="nextstepaction"]
 [Konfigurace zařízení z back-endové služby](tutorial-device-twins.md)
-
- <!--  [Manage the state of a device](./tutorial-manage-state.md) -->

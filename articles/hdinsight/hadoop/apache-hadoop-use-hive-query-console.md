@@ -2,19 +2,19 @@
 title: Použití Hadoop Hive v konzole pro dotazy v HDInsight – Azure
 description: Informace o používání webové konzoly pro dotazy ke spouštění dotazů Hive v clusteru HDInsight Hadoop z prohlížeče.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/12/2017
-ms.author: jasonh
+ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 36bf64e44103c8568c7cb47b18e32e8f7f879e5c
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 4083ceca8c9181c8acb1a90e782cb5bca981e684
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50249148"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51013960"
 ---
 # <a name="run-hive-queries-using-the-query-console"></a>Spouštění dotazů Hive pomocí konzoly pro dotazy
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]

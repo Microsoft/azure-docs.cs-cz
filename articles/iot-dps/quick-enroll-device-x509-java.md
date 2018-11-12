@@ -1,6 +1,6 @@
 ---
 title: Registrace zařízení X.509 do služby Azure Device Provisioning Service pomocí Javy | Microsoft Docs
-description: V tomto rychlém startu zaregistrujete zařízení X.509 do služby Azure IoT Hub Device Provisioning Service pomocí Javy
+description: V tomto rychlém startu se používají skupinové i jednotlivé registrace. V tomto rychlém startu zaregistrujete zařízení X.509 do služby Azure IoT Hub Device Provisioning pomocí Javy.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 12/20/2017
@@ -10,12 +10,12 @@ services: iot-dps
 manager: timlt
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: 505aee35c839a0224ca158d918fc5e54dc6e0f28
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: 3eec6628ca7dbc16e0cc01701620f1699ba8d368
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39205761"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50412767"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-java"></a>Rychlý start: Registrace zařízení X.509 do služby Device Provisioning Service pomocí Javy
 
@@ -31,7 +31,7 @@ Přestože sada SDK služby pro Javu funguje na počítačích s Windows i Linux
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Nainstalujte sadu [Java SE Development Kit 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html).
+* Nainstalujte sadu [Java SE Development Kit 8](https://aka.ms/azure-jdks).
 * Nainstalujte [Maven 3](https://maven.apache.org/download.cgi). Aktuální verzi Mavenu zjistíte spuštěním tohoto příkazu:
 
     ```cmd/sh

@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 08/09/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 9cd5789cd2ee6e167f3d3ed05c2fde077f7ec9a3
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 2043e0fc9fa63903073311856e7e8d31fb34c506
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43344937"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51015345"
 ---
 # <a name="azure-ad-b2c-requesting-access-tokens"></a>Azure AD B2C: Žádosti o přístupové tokeny
 
-Přístupový token (označené jako **přístup\_token** v odpovědi z Azure AD B2C) je forma tokenu zabezpečení, který může klient používat pro přístup k prostředkům, které jsou zabezpečené pomocí [autorizační server](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-protocols#the-basics), jako je například webové rozhraní API. Přístupové tokeny jsou reprezentovány ve formě [tokeny Jwt](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-tokens#types-of-tokens) a obsahují informace o serveru zamýšleného prostředku a udělená oprávnění k serveru. Při volání serveru prostředku, musí být přístupový token v požadavku HTTP.
+Přístupový token (označené jako **přístup\_token** v odpovědi z Azure AD B2C) je forma tokenu zabezpečení, který může klient používat pro přístup k prostředkům, které jsou zabezpečené pomocí [autorizační server](active-directory-b2c-reference-protocols.md), jako je například webové rozhraní API. Přístupové tokeny jsou reprezentovány ve formě [tokeny Jwt](active-directory-b2c-reference-tokens.md) a obsahují informace o serveru zamýšleného prostředku a udělená oprávnění k serveru. Při volání serveru prostředku, musí být přístupový token v požadavku HTTP.
 
 Tento článek popisuje, jak nakonfigurovat klientskou aplikaci a aby bylo možné získat rozhraní web API **přístup\_token**.
 
@@ -37,22 +37,22 @@ Než požádáte o přístupový token, musíte nejprve zaregistrovat webové ro
 ### <a name="register-a-web-api"></a>Registrace webové rozhraní API
 
 1. V nabídce funkcí Azure AD B2C na webu Azure portal, klikněte na **aplikací**.
-1. Klikněte na tlačítko **+ přidat** v horní nabídce.
-1. Zadejte **Název** aplikace, který popíše aplikaci uživatelům. Můžete například zadat "Contoso API".
-1. Přepněte přepínač **Zahrnout webovou aplikaci / webové rozhraní API** na **Ano**.
-1. Zadejte libovolnou hodnotu pro **adresy URL odpovědí**. Zadejte například `https://localhost:44316/`. Hodnota není důležitá, protože rozhraní API by neměl přijímají token přímo z Azure AD B2C.
-1. Zadejte **Identifikátor URI ID aplikace**. To je identifikátor použitý pro vaše webového rozhraní API. Zadejte například "notes" v poli. **Identifikátor ID URI aplikace** pak budou `https://{tenantName}.onmicrosoft.com/notes`.
-1. Pro registraci aplikace klikněte na **Vytvořit**.
-1. Klikněte na aplikaci, kterou jste právě vytvořili, a poznamenejte si globálně jedinečné**ID klienta aplikace**, které použijete později ve svém kódu.
+2. Klikněte na tlačítko **+ přidat** v horní nabídce.
+3. Zadejte **Název** aplikace, který popíše aplikaci uživatelům. Můžete například zadat "Contoso API".
+4. Přepněte přepínač **Zahrnout webovou aplikaci / webové rozhraní API** na **Ano**.
+5. Zadejte libovolnou hodnotu pro **adresy URL odpovědí**. Zadejte například `https://localhost:44316/`. Hodnota není důležitá, protože rozhraní API by neměl přijímají token přímo z Azure AD B2C.
+6. Zadejte **Identifikátor URI ID aplikace**. To je identifikátor použitý pro vaše webového rozhraní API. Zadejte například "notes" v poli. **Identifikátor ID URI aplikace** pak budou `https://{tenantName}.onmicrosoft.com/notes`.
+7. Pro registraci aplikace klikněte na **Vytvořit**.
+8. Klikněte na aplikaci, kterou jste právě vytvořili, a poznamenejte si globálně jedinečné**ID klienta aplikace**, které použijete později ve svém kódu.
 
 ### <a name="publishing-permissions"></a>Publikování oprávnění
 
 Obory, které jsou obdobou oprávnění, jsou nezbytné, pokud vaše aplikace volá rozhraní API. Některé příklady obory jsou "čtení" nebo "zápis". Předpokládejme, že chcete svou webovou nebo nativní aplikaci "číst" z rozhraní API. Vaše aplikace by volání Azure AD B2C a žádost o přístupový token, který poskytuje přístup k oboru "čtení". Pro Azure AD B2C ke generování těchto přístupový token, aplikace musí být udělena oprávnění ke "čtení" z konkrétního rozhraní API. K tomuto účelu potřebuje vaše rozhraní API nejprve publikovat obor "číst".
 
 1. V rámci Azure AD B2C **aplikací** nabídce otevřít webového rozhraní API aplikace ("Contoso API").
-1. Klikněte na **Publikované obory**. Tady můžete definovat oprávnění (obory), která lze udělit ostatním aplikacím.
-1. Přidat **hodnoty oboru** podle potřeby (například "číst"). Ve výchozím nastavení bude definován obor „user_impersonation“. To můžete ignorovat, pokud chcete. Zadejte popis tohoto oboru ve **název oboru** sloupce.
-1. Klikněte na **Uložit**.
+2. Klikněte na **Publikované obory**. Tady můžete definovat oprávnění (obory), která lze udělit ostatním aplikacím.
+3. Přidat **hodnoty oboru** podle potřeby (například "číst"). Ve výchozím nastavení bude definován obor „user_impersonation“. To můžete ignorovat, pokud chcete. Zadejte popis tohoto oboru ve **název oboru** sloupce.
+4. Klikněte na **Uložit**.
 
 > [!IMPORTANT]
 > **Název oboru** je popis **hodnota rozsahu**. Při použití oboru, je nutné použít **hodnota rozsahu**.
@@ -62,11 +62,11 @@ Obory, které jsou obdobou oprávnění, jsou nezbytné, pokud vaše aplikace vo
 Jakmile rozhraní API je nakonfigurována pro publikování obory, klientská aplikace potřebuje mít tyto obory prostřednictvím webu Azure portal.
 
 1. Přejděte **aplikací** nabídky v nabídce funkcí Azure AD B2C.
-1. Registrace aplikace klienta ([webovou aplikaci](active-directory-b2c-app-registration.md#register-a-web-app) nebo [nativního klienta](active-directory-b2c-app-registration.md#register-a-mobile-or-native-app)) Pokud již nemáte. Pokud jsou podle těchto pokynů jako výchozí bod, budete muset zaregistrovat klientské aplikace.
-1. Klikněte na **přístup přes rozhraní API**.
-1. Klikněte na **Přidat**.
-1. Vyberte vaše webové rozhraní API a obory (oprávnění), které chcete udělit.
-1. Klikněte na **OK**.
+2. Registrace aplikace klienta ([webovou aplikaci](active-directory-b2c-app-registration.md) nebo [nativního klienta](active-directory-b2c-app-registration.md)) Pokud již nemáte. Pokud jsou podle těchto pokynů jako výchozí bod, budete muset zaregistrovat klientské aplikace.
+3. Klikněte na **přístup přes rozhraní API**.
+4. Klikněte na **Přidat**.
+5. Vyberte vaše webové rozhraní API a obory (oprávnění), které chcete udělit.
+6. Klikněte na **OK**.
 
 > [!NOTE]
 > Azure AD B2C nevyžaduje váš klient uživatele aplikace pro svůj souhlas. Místo toho všechny souhlasu poskytuje správu, na základě oprávnění nakonfigurovaná mezi aplikacemi je popsáno výše. Udělení oprávnění pro aplikaci odvolá, všichni uživatelé, kteří byli schopní získat oprávnění se už by mohl Uděláte to tak.

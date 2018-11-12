@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: overview
-ms.date: 09/28/2018
+ms.date: 10/30/2018
 ms.author: alkohli
-ms.openlocfilehash: 8acb808e4b60926fbe6b3faa3fa6a7174a190884
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: fff1684efda0e7e7b857c668eaa28dc79b7534d7
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49094237"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50416371"
 ---
 # <a name="what-is-azure-data-box-disk-preview"></a>Co je Azure Data Box Disk? (Preview)
 
@@ -44,7 +44,7 @@ Disky jsou šifrované pomocí nástroje Microsoft BitLocker Drive Encryption a 
 A. Pokud máte 40 TB dat (nebo méně), které chcete přenést do Azure, je pro vás použití disků Data Box Disk výhodné.
 
 ### <a name="q-what-is-the-price-of-data-box-disks"></a>Otázka: Jaká je cena disků Data Box Disk?
-A. Během období Preview jsou disky Data Box Disk dostupné bezplatně. Dodání je také bezplatné, avšak účtují se poplatky za úložiště Azure.
+A. Informace o cenách Data Box Disků najdete na [stránce s cenami verze Preview](https://azure.microsoft.com/pricing/details/storage/databox/disk/).
 
 ### <a name="q-how-do-i-get-data-box-disks"></a>Otázka: Jak lze disky Data Box Disk získat? 
 A.  Pokud chcete získat disky Azure Data Box Disk, nejprve si zaregistrujte [Data Box Disk ve verzi Preview](http://aka.ms/AzureDataBox). Pak se přihlaste na web Azure Portal a vytvořte objednávku disků Data Box. Zadejte svoje kontaktní údaje a podrobnosti o oznámení. Po provedení objednávky vám budou disky dodány podle dostupnosti do 10 dnů.   
@@ -72,7 +72,7 @@ A.  Na webu Azure Portal přejděte k vaší objednávce disků Data Box Disk a 
 Podrobný postup najdete v článku o [odemknutí disků v klientovi pro Windows](data-box-disk-deploy-set-up.md#unlock-disks-on-windows-client) nebo o [odemknutí disků v klientovi pro Linux](data-box-disk-deploy-set-up.md#unlock-disks-on-linux-client).
 
 ### <a name="q-can-i-use-a-linux-host-computer-to-connect-and-copy-the-data-on-to-the-data-box-disks"></a>Otázka: Můžu k připojení a zkopírování dat na disky Data Box Disk použít hostitelský počítač Linux?
-A.  Ano. Klient pro Linux i Windows se dá použít k připojení a zkopírování dat na Data Box Disky. Další informace získáte, když přejdete na seznam [podporovaných operačních systémů](data-box-disk-system-requirements.md) hostitelského počítače.
+A.  Ano. K připojení a zkopírování dat na Data Box Disky je možné použít klienty pro Linux i Windows. Další informace získáte, když přejdete na seznam [podporovaných operačních systémů](data-box-disk-system-requirements.md) hostitelského počítače.
 
 ### <a name="q-my-disks-are-dispatched-but-now-i-want-to-cancel-this-order-why-is-the-cancel-button-not-available"></a>Otázka: Moje disky se odeslaly, ale já teď chci tuto objednávku zrušit. Proč není dostupné tlačítko pro zrušení?
 A.  Objednávku lze po vytvoření zrušit jenom do doby její expedice. Jakmile se disky odešlou, není už možné danou objednávku zrušit. V období Preview lze disky bezplatně vrátit, ale až bude toto řešení obecně dostupné, pravděpodobně se to změní. 

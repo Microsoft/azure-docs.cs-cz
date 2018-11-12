@@ -3,18 +3,18 @@ title: Vytvoření vysoce dostupné úlohy streamování Sparku v YARNU – Azur
 description: Jak vytvořit Spark Streaming pro scénáře vysoké dostupnosti.
 services: hdinsight
 ms.service: hdinsight
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/26/2018
-ms.openlocfilehash: 0725c70668ca3089028bff5fc1d8374c6bfdecde
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 8f680b60a8f457e1a8619ac044798ff02df15694
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43051987"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51013645"
 ---
 # <a name="create-high-availability-spark-streaming-jobs-with-yarn"></a>Vytvoření úlohy Spark Streaming vysokou dostupnost s YARN
 

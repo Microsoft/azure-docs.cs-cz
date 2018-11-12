@@ -10,20 +10,20 @@ ms.component: bing-spell-check
 ms.topic: quickstart
 ms.date: 09/14/2017
 ms.author: v-jaswel
-ms.openlocfilehash: 00e0b7db5bfc8b763d9b16524bd783601d1ec4d8
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 20677167c88b4e3cf326067fac7a33bede9ee4c3
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48800991"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50420335"
 ---
 # <a name="quickstart-for-bing-spell-check-api-with-java"></a>Rychlý start pro rozhraní API pro kontrolu pravopisu Bingu s využitím Javy 
 
-V tomto článku se dozvíte, jak používat [rozhraní API pro kontrolu pravopisu Bingu](https://azure.microsoft.com/services/cognitive-services/spell-check/) společně s Javou. Rozhraní API pro kontrolu pravopisu vrací seznam slov, která nerozpozná, a jejich navrhované náhrady. Většinou odešlete do tohoto rozhraní API text a potom buď provedete v textu navrhovaná nahrazení, nebo návrhy ukážete uživateli vaší aplikace, aby se mohl rozhodnout, zda chcete nahrazení provést. V tomto článku se dozvíte, jak odeslat požadavek obsahující text „Hollo, wrld!“. Navrhované náhrady budou „Hello“ a „world“.
+V tomto článku se dozvíte, jak používat [rozhraní API pro kontrolu pravopisu Bingu](https://azure.microsoft.com/services/cognitive-services/spell-check/) s využitím Javy. Rozhraní API pro kontrolu pravopisu vrací seznam slov, která nerozpozná, a jejich navrhované náhrady. Většinou odešlete do tohoto rozhraní API text a potom buď provedete v textu navrhovaná nahrazení, nebo návrhy ukážete uživateli vaší aplikace, aby se mohl rozhodnout, zda chcete nahrazení provést. V tomto článku se dozvíte, jak odeslat požadavek obsahující text „Hollo, wrld!“. Navrhované náhrady budou „Hello“ a „world“.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pro kompilaci a spuštění tohoto kódu budete potřebovat [JDK 7 nebo 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html). Můžete použít prostředí Java IDE, pokud je vaše oblíbené, ale stačit bude i textový editor.
+Pro kompilaci a spuštění tohoto kódu budete potřebovat [JDK 7 nebo 8](https://aka.ms/azure-jdks). Můžete použít prostředí Java IDE, pokud je vaše oblíbené, ale stačit bude i textový editor.
 
 Potřebujete [účet rozhraní API Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s **rozhraním API pro kontrolu pravopisu Bingu v7**. Pro účely tohoto rychlého startu stačí [bezplatná zkušební verze](https://azure.microsoft.com/try/cognitive-services/#lang). Při aktivaci bezplatné zkušební verze budete potřebovat poskytnutý přístupový klíč nebo můžete použít klíč placeného předplatného z řídicího panelu Azure.
 
@@ -131,9 +131,9 @@ public class HelloWorld {
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Kurz o kontrole pravopisu Bingu](../tutorials/spellcheck.md)
+> [Kurz rozhraní API pro kontrolu pravopisu Bingu](../tutorials/spellcheck.md)
 
 ## <a name="see-also"></a>Viz také
 
-- [Přehled kontroly pravopisu Bingu](../proof-text.md)
+- [Přehled rozhraní API pro kontrolu pravopisu Bingu](../proof-text.md)
 - [Referenční informace k rozhraní API pro kontrolu pravopisu Bingu v7](https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference)

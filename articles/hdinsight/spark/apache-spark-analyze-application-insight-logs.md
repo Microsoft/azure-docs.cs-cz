@@ -2,19 +2,19 @@
 title: Analýza protokolů Application Insights pomocí Sparku – Azure HDInsight
 description: Zjistěte, jak exportovat protokoly Application Insights do úložiště objektů blob a pak analyzovat protokoly pomocí Spark v HDInsight.
 services: hdinsight
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/09/2018
-ms.openlocfilehash: 51123fee9a3ab3c79e57af12a64e1c0b05daf79a
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: a1b21afb02cffe608ece8687359a021c84b05e1e
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43041601"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51014291"
 ---
 # <a name="analyze-application-insights-telemetry-logs-with-spark-on-hdinsight"></a>Analýza protokolů telemetrie Application Insights pomocí Sparku v HDInsight
 

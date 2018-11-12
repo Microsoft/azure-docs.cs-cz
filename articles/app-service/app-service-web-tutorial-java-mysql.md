@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/22/2017
 ms.author: bbenz
 ms.custom: mvc
-ms.openlocfilehash: db1005bbce25b0fa3fec76e6f9428a4cdd6fa4aa
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: ec942d97e7671c0477d8d723afacb06b73565c1c
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024359"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50414553"
 ---
 # <a name="tutorial-build-a-java-and-mysql-web-app-in-azure"></a>Kurz: Vytvoření webové aplikace Java využívající databázi MySQL v Azure
 
@@ -47,7 +47,7 @@ V tomto kurzu se naučíte:
 ## <a name="prerequisites"></a>Požadavky
 
 1. [Stažení a instalace Gitu](https://git-scm.com/)
-1. [Stažení a instalace sady Java 7 JDK nebo novější](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
+1. [Stažení a instalace sady Java JDK](https://aka.ms/azure-jdks)
 1. [Stažení, instalace a spuštění MySQL](https://dev.mysql.com/doc/refman/5.7/en/installing.html) 
 
 ## <a name="prepare-local-mysql"></a>Příprava místního MySQL 
@@ -272,7 +272,7 @@ Jakmile bude definice webové aplikace připravená, v Azure CLI se zobrazí pod
 
 Ve službě Cloud Shell pomocí příkazu [`az webapp config set`](/cli/azure/webapp/config#az-webapp-config-set) nastavte konfiguraci modulu runtime Java podle potřeb vaší aplikace.
 
-Následující příkaz nakonfiguruje spouštění webové aplikace na nejnovější sadě Java 8 JDK a [Apache Tomcat](http://tomcat.apache.org/) 8.0.
+Následující příkaz nakonfiguruje spouštění webové aplikace na nejnovější sadě [Java 8 JDK](https://aka.ms/azure-jdks) a [Apache Tomcat](http://tomcat.apache.org/) 8.0.
 
 ```azurecli-interactive
 az webapp config set --name <app_name> --resource-group myResourceGroup --java-version 1.8 --java-container Tomcat --java-container-version 8.0

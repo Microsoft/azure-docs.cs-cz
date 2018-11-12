@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/29/2018
+ms.date: 11/05/2018
 ms.author: raynew
-ms.openlocfilehash: b472ed1c32e64b8f8ac881c09f22590c49f39c75
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 076cd987cdc74cad07287c15ad52394ef304f251
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50215357"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51015362"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Matice podpory pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů do Azure
 
@@ -63,16 +63,9 @@ Site Recovery podporuje jakoukoli úlohu spuštěnou na podporovaném počítač
 --- | ---
 Nastavení počítače | Počítače, které se replikují do Azure, musí splňovat [požadavky služby Azure](#azure-vm-requirements).
 Operační systém Windows | 64bitová verze Windows serveru 2016 (jádro serveru, Server s desktopovým prostředím), Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2 s na minimálně SP1. </br></br>  [Windows Server 2008 s na minimálně SP2 – 32bitové a 64bitové](migrate-tutorial-windows-server-2008.md) (pouze migrace). </br></br> Windows 2016 Nano Server není podporován.
-Operační systém platformy Linux | Red Hat Enterprise Linux: 5.2 na 5,11<b>\*\*</b>, 6.1 k 6.10<b>\*\*</b>, 7.0 pro 7.5 <br/><br/>CentOS: 5.2 na 5,11<b>\*\*</b>, 6.1 k 6.10<b>\*\*</b>, 7.0 pro 7.5 <br/><br/>Server se systémem Ubuntu 14.04 LTS[ (podporované verze jádra)](#ubuntu-kernel-versions)<br/><br/>Server se systémem Ubuntu 16.04 LTS[ (podporované verze jádra)](#ubuntu-kernel-versions)<br/><br/>Debian 7/Debian 8[ (podporované verze jádra)](#debian-kernel-versions)<br/><br/>SUSE Linux Enterprise Server 12 SP1, SP2 SP3 [ (podporované verze jádra)](#suse-linux-enterprise-server-12-supported-kernel-versions)<br/><br/>SUSE Linux Enterprise Server 11 SP3<b>\*\*</b>, operačním systémem SUSE Linux Enterprise Server 11 SP4 * </br></br>Oracle Linux 6.4, 6.5, 6.6, 6.7 kompatibilní jádra Red Hat nebo nedělitelné Enterprise jádra verze 3 (UEK3) <br/><br/></br>* *Upgrade replikované počítače z operačního systému SUSE Linux Enterprise Server 11 SP3 SP4 není podporován. Pokud chcete upgradovat, zakažte replikaci a povolte znovu po dokončení upgradu.*</br></br><b>\*\*</b> *Odkazovat na [podporu pro virtuální počítače s Linuxem v Azure](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure) o podpoře pro Linux a opensourcové technologie v Azure. Azure Site Recovery umožňuje převzetí služeb při selhání a spouštění servery s Linuxem v Azure, ale dodavatelů Linux může omezit podporu jenom tyto verze jejich distribuce, které nebylo dosaženo konce jejich životnosti.*
+Operační systém platformy Linux | Red Hat Enterprise Linux: 5.2 na 5,11<b>\*\*</b>, 6.1 k 6.10<b>\*\*</b>, 7.0 pro 7.5 <br/><br/>CentOS: 5.2 na 5,11<b>\*\*</b>, 6.1 k 6.10<b>\*\*</b>, 7.0 pro 7.5 <br/><br/>Server se systémem Ubuntu 14.04 LTS[ (podporované verze jádra)](#ubuntu-kernel-versions)<br/><br/>Server se systémem Ubuntu 16.04 LTS[ (podporované verze jádra)](#ubuntu-kernel-versions)<br/><br/>Debian 7/Debian 8[ (podporované verze jádra)](#debian-kernel-versions)<br/><br/>SUSE Linux Enterprise Server 12 SP1, SP2 SP3 [ (podporované verze jádra)](#suse-linux-enterprise-server-12-supported-kernel-versions)<br/><br/>SUSE Linux Enterprise Server 11 SP3<b>\*\*</b>, operačním systémem SUSE Linux Enterprise Server 11 SP4 * </br></br>Oracle Linux 6.4, 6.5, 6.6, 6.7 kompatibilní jádra Red Hat nebo nedělitelné Enterprise jádra verze 3 (UEK3) <br/><br/></br>-Upgrade replikované počítače z operačního systému SUSE Linux Enterprise Server 11 SP3 SP4 není podporován. Pokud chcete upgradovat, zakažte replikaci a povolte znovu po dokončení upgradu.</br></br> - [Další informace](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure) informace o podpoře pro Linux a opensourcové technologie v Azure. Site Recovery orchestruje převzetí služeb při selhání spuštění servery s Linuxem v Azure. Linux dodavatelů ale může omezit podporu pouze verze distribuce, které se ještě nedostaly ukončenou životností.<br/><br/> – V Linuxových distribucích jsou podporovány pouze uložených jader, které jsou součástí vydání/aktualizace podverze distribuce.<br/><br/> -Upgradu chráněné počítače napříč hlavní Linux není podporována verze distribuce. K upgradu, zakažte replikaci, upgradovat operační systém a pak replikaci zase povolte.<br/><br/> -Servery se systémem Red Hat Enterprise Linux 5,11 5.2 nebo CentOS 5.2 5,11 by měly mít [komponenty služby Linux Integration Services (LIS)](https://www.microsoft.com/download/details.aspx?id=55106) nainstalována počítačů pro spuštění v Azure.
 
 
->[!NOTE]
->
-> - V Linuxových distribucích jsou podporovány pouze uložených jader, které jsou součástí vydání/aktualizace podverze distribuce.
->
-> - Mezi hlavní Linux není podporována verze distribuční upgrade chráněných počítačů. K upgradu, zakažte replikaci, upgradovat operační systém a pak replikaci zase povolte.
->
-> - Servery se systémem Red Hat Enterprise Linux 5.2 5,11 nebo CentOS 5.2 na 5,11 by měly mít [součásti systému Linux Integration Services(LIS)](https://www.microsoft.com/en-us/download/details.aspx?id=55106) nainstalováno počítačů pro spuštění v Azure.
 
 ### <a name="ubuntu-kernel-versions"></a>Ubuntu verze jádra
 
@@ -249,7 +242,7 @@ Přesunout úložiště, sítě, virtuální počítače Azure mezi skupinami pr
 --- | --- | --- | --- | ---
 Konfigurační server | Koordinuje komunikaci mezi servery VMware v místním prostředím a Azure <br/><br/> Nainstalovat na místní servery VMware | Pro novou instalaci, klikněte na tlačítko [tady](vmware-azure-deploy-configuration-server.md). Pro upgrade existující komponentu na nejnovější verzi, klikněte na tlačítko [tady](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server).
 Procesový server|Obvykle se instaluje na konfigurační server. Přijímá data replikace; optimalizuje je pomocí ukládání do mezipaměti, komprese a šifrování. a odesílá je do služby Azure Storage. Jak vaše nasazení poroste, můžete přidat další, samostatné procesní servery pro zpracování větší objemy přenosů replikace.| Pro novou instalaci, klikněte na tlačítko [tady](vmware-azure-set-up-process-server-scale.md). Pro upgrade existující komponentu na nejnovější verzi, klikněte na tlačítko [tady](vmware-azure-manage-process-server.md#upgrade-a-process-server).
-Služba mobility | Koordinuje replikaci mezi servery pro/fyzické servery VMware v místním a Azure nebo sekundární lokality<br/><br/> Nainstalovat na virtuální počítač VMware nebo fyzické servery, které chcete replikovat | Pro novou instalaci, klikněte na tlačítko [tady](vmware-azure-install-mobility-service.md). Pro upgrade existující komponentu na nejnovější verzi, klikněte na tlačítko [tady](vmware-azure-install-mobility-service.md#update-mobility-service).
+Služba mobility | Koordinuje replikaci mezi servery pro/fyzické servery VMware v místním a Azure nebo sekundární lokality<br/><br/> Nainstalovat na virtuální počítač VMware nebo fyzické servery, které chcete replikovat | Pro novou instalaci, klikněte na tlačítko [tady](vmware-azure-install-mobility-service.md). Pro upgrade existující komponentu na nejnovější verzi, klikněte na tlačítko [tady](vmware-physical-mobility-service-overview.md#update-the-mobility-service).
 
 Další informace o nejnovější funkce a opravy, klikněte na tlačítko [tady](https://aka.ms/latest_asr_updates).
 

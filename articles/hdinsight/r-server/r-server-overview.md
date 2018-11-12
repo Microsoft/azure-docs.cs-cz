@@ -3,18 +3,18 @@ title: Úvod do služby ML v Azure HDInsight
 description: Zjistěte, jak vytvářet aplikace pro analýzy velkých objemů dat pomocí služby ML na HDInsight.
 services: hdinsight
 ms.service: hdinsight
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: af7a0d01fcf9df42da79a6529c8d4b0e31d73aa1
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 74d8629eb8fc29f3cb572be0b1ccb8b6149ab971
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49985484"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51016280"
 ---
 # <a name="introduction-to-ml-services-and-open-source-r-capabilities-on-hdinsight"></a>Úvod do služby ML a možnosti open-source jazyka R v HDInsight
 

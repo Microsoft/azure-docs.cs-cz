@@ -4,18 +4,18 @@ description: Zjistěte, jak pomocí sady HDInsight .NET SDK spustit Sqoop import
 keywords: sqoop úlohy
 ms.reviewer: jasonh
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.author: jasonh
-ms.openlocfilehash: ffcc2bff17fbe07c58df032dbb8994edb04ae5d0
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.author: hrasheed
+ms.openlocfilehash: 423934dee0b490bb12522cec6d37393a1ec5e2f4
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43046773"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51014869"
 ---
 # <a name="run-sqoop-jobs-by-using-net-sdk-for-hadoop-in-hdinsight"></a>Spouštění úloh Sqoop pomocí sady .NET SDK pro Hadoop v HDInsight
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]

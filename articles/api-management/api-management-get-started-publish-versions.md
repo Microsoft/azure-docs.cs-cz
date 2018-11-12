@@ -14,12 +14,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: a7e5051248a579b0943fa69620215b060bd1e235
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: f9b63beeb6979d7dec5fc2cf2d91a3327ba7c43c
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47092689"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50415232"
 ---
 # <a name="publish-multiple-versions-of-your-api"></a>Publikování několika verzí rozhraní API 
 
@@ -37,8 +37,9 @@ V tomto kurzu se naučíte:
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Projděte si následující rychlý start: [Vytvoření instance Azure API Managementu](get-started-create-service-instance.md).
-* Projděte si také následující kurz: Navíc kurzu: [Import a publikování vašeho prvního rozhraní API](import-and-publish.md).
++ Seznamte se s [terminologií služby Azure API Management](api-management-terminology.md).
++ Projděte si následující rychlý start: [Vytvoření instance Azure API Managementu](get-started-create-service-instance.md).
++ Projděte si také následující kurz: Navíc kurzu: [Import a publikování vašeho prvního rozhraní API](import-and-publish.md).
 
 ## <a name="add-a-new-version"></a>Přidání nové verze
 
@@ -48,8 +49,8 @@ V tomto kurzu se naučíte:
 2. Vyberte místní nabídku (**...**) vedle něj.
 3. Vyberte **+ Přidat verzi**.
 
-    > [!TIP]
-    > Verze je možné povolit také při vytváření nového rozhraní API – vyberte **Chcete vytvořit verzi tohoto rozhraní API?** na obrazovce **Přidat rozhraní API**.
+> [!TIP]
+> Verze je možné povolit také při vytváření nového rozhraní API – vyberte **Chcete vytvořit verzi tohoto rozhraní API?** na obrazovce **Přidat rozhraní API**.
 
 ## <a name="choose-a-versioning-scheme"></a>Výběr schématu vytváření verzí
 
@@ -77,15 +78,14 @@ Azure API Management umožňuje zvolit způsob, jakým umožníte volajícím ur
 
 Aby se volajícím zobrazila nová verze, musí se přidat do **produktu**.
 
+![Produkty API Managementu](media/api-management-getstarted-publish-versions/08-AddMultipleVersions-03-AddVersionToProduct.png)
+
 1. Na stránce modelu nasazení Classic vyberte **Produkty**.
-
-    ![Produkty API Managementu](media/api-management-getstarted-publish-versions/Products.png)
-
 2. Vyberte **Neomezeno**.
 3. Vyberte **Rozhraní API**.
 4. Vyberte **Přidat**.
 5. Vyberte **Demo Conference API, verze v1**.
-6. Přejděte na stránku pro správu služby a vyberte **Rozhraní API**.
+6. Klikněte na **Vybrat**.
 
 ## <a name="browse-the-developer-portal-to-see-the-version"></a>Zobrazení verze na portálu pro vývojáře
 

@@ -3,18 +3,18 @@ title: Průvodce programováním pro SCP.NET pro Storm v Azure HDInsight
 description: Další informace o použití SCP.NET vytvořit. Na základě NET topologií Storm pro použití se Stormem spuštěné v Azure HDInsight.
 services: hdinsight
 ms.service: hdinsight
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2016
-ms.openlocfilehash: fb7a8ed81794e3a5c1a772fd242f5ef85a800365
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: e6025ba2645c284cca87483b48b2d79a9558d574
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50959201"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51012526"
 ---
 # <a name="scp-programming-guide"></a>Průvodce programováním pro spojovací bod služby
 Spojovací bod služby je platformou můžete tvořit v reálném čase spolehlivé a konzistentní a zpracování dat vysoce výkonné aplikace. Systém orchard je založen na horní [Apache Storm](http://storm.incubator.apache.org/) – systém ve komunity OSS pro zpracování datových proudů. Storm je určen Nathan marz a byla open source služba Twitter. Využívá [Apache ZooKeeper](http://zookeeper.apache.org/), jiný projekt Apache umožňující vysoce spolehlivých distribuovaných správy koordinace a stavu. 

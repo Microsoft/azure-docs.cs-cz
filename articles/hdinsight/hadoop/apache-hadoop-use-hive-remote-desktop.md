@@ -2,19 +2,19 @@
 title: Použití Hadoop Hive a Vzdálená plocha v HDInsight – Azure
 description: Zjistěte, jak se připojit ke clusteru Hadoop v HDInsight pomocí vzdálené plochy a následné spouštění dotazů Hive pomocí rozhraní příkazového řádku Hive.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/12/2017
-ms.author: jasonh
+ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: d8a0f1baa03d718b2a8e41d82a528a2c7a857c96
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 32fb2bc9514b911d0a1ce295eee651e4b6b6388a
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50250559"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51015073"
 ---
 # <a name="use-hive-with-hadoop-on-hdinsight-with-remote-desktop"></a>Použití Hivu s Hadoopem v HDInsight pomocí vzdálené plochy
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]

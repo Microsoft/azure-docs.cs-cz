@@ -14,12 +14,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 08/10/2018
 ms.author: apimpm
-ms.openlocfilehash: 0346cf456c53b14fd3c5b14b2e40eddd8b89fe4d
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 0f2b45685d2976c567c16666e2ca89d334914b63
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465946"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50417289"
 ---
 # <a name="create-and-publish-a-product"></a>Vytvoření a publikování produktu  
 
@@ -35,6 +35,7 @@ V tomto kurzu se naučíte:
 
 ## <a name="prerequisites"></a>Požadavky
 
++ Seznamte se s [terminologií služby Azure API Management](api-management-terminology.md).
 + Projděte si následující rychlý start: [Vytvoření instance Azure API Managementu](get-started-create-service-instance.md).
 + Projděte si také následující kurz: Navíc kurzu: [Import a publikování vašeho prvního rozhraní API](import-and-publish.md).
 
@@ -83,6 +84,9 @@ Vývojáři se nejprve musí přihlásit k odběru produktu, a teprve pak získa
 2. Přejděte na kartu **Rozhraní API**.
 3. Klikněte na tlačítko **+ Přidat**.
 4. Zvolte rozhraní API a klikněte na **Vybrat**.
+
+> [!TIP]
+> Uživatelské předplatné *produktu* můžete vytvořit nebo aktualizovat s použitím vlastních klíčů předplatného [prostřednictvím rozhraní REST API](https://docs.microsoft.com/rest/api/apimanagement/subscription/createorupdate) nebo pomocí příkazu PowerShellu.
 
 ## <a name="next-steps"></a>Další kroky
 

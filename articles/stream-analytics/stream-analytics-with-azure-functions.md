@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.workload: data-services
 ms.date: 04/09/2018
-ms.author: mamccrea
+ms.author: jasonh
 ms.reviewer: jasonh
-ms.openlocfilehash: 0a187bbc476738294e2f7f31de4e11ea92e604f9
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: f58d72fe2a14b24272c9f03bbba6a33ed0f18ae7
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50977990"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50413753"
 ---
 # <a name="run-azure-functions-from-azure-stream-analytics-jobs"></a>Spouštění Azure Functions z úloh Azure Stream Analytics 
 

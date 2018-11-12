@@ -1,5 +1,5 @@
 ---
-title: Principy Azure digitální dvojče na základě rolí řízení přístupu | Dokumentace Microsoftu
+title: Principy řízení přístupu na základě rolí Azure digitální dvojče | Dokumentace Microsoftu
 description: Další ověřování v digitální dvojče s řízením přístupu na základě rolí.
 author: lyrana
 manager: alinast
@@ -8,31 +8,40 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: lyrana
-ms.openlocfilehash: 7a6d8565a0f85b4cb81d9f5f23b04fe6b2edc53e
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: b9ccdb9030a24520be8f24f757c279241f3a07e1
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49324063"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51014784"
 ---
 # <a name="role-based-access-control"></a>Řízení přístupu na základě role
 
-Azure digitální dvojče umožňuje řízení přístupu na přesné ke konkrétní data, prostředkům a akcím v prostorových grafu. Provádí se prostřednictvím detailní role a oprávnění správy volá _řízení přístupu na základě Role_. Řízení přístupu na základě role se skládá z _role_, nebo úroveň oprávnění, a _přiřazení rolí_, nebo přidružení roli uživatele nebo zařízení.
+Azure digitální dvojče umožňuje řízení přístupu na přesné ke konkrétní data, prostředkům a akcím v prostorových grafu. Dělá to pomocí granulární role a oprávnění správy nazývá řízení přístupu na základě role (RBAC). RBAC se skládá z _role_ a _přiřazení rolí_. Role určete úroveň oprávnění. Přiřazení rolí roli přidružit uživateli nebo zařízení.
 
-Pomocí řízení přístupu na základě Role, oprávnění lze udělit práva uživatele, zařízení, instanční objekt služby, uživatelem definované funkce, všichni uživatelé náležející k doméně nebo tenanta. Kromě toho stupeň přístup také možné podrobně nastavit.
+Pomocí RBAC, oprávnění lze udělit práva:
 
-Řízení přístupu na základě role je jedinečný v tom, že se oprávnění dědí dolů na prostorový graf.
+- Uživatel.
+- Zařízení.
+- Objekt služby.
+- Uživatelem definované funkce. 
+- Všichni uživatelé, kteří patří do nějaké domény. 
+- Tenant.
+ 
+Úroveň přístupu také možné podrobně nastavit.
 
-## <a name="what-can-i-do-with-role-based-access-control"></a>Co můžu dělat s řízením přístupu na základě rolí?
+RBAC je jedinečný v tom, že se oprávnění dědí dolů na prostorový graf.
 
-Vývojáři mohou využít řízení přístupu na základě rolí pro:
+## <a name="what-can-i-do-with-rbac"></a>Co mi RBAC umožňuje?
+
+Vývojáři mohou využít RBAC pro:
 
 * Udělte schopnost spravovat zařízení pro celé sestavení, nebo jenom pro konkrétní místnost nebo dolní mez.
 * Udělení globální přístup správce ke všem uzlům prostorový graf pro celý graf nebo pouze pro části grafu.
 * Udělte přístup k podpoře specialista pro čtení do grafu, s výjimkou přístupové klíče.
 * Udělení přístupu k doméně pro čtení ke všem objektům grafu každého člena.
 
-## <a name="role-based-access-control-best-practices"></a>Osvědčené postupy pro řízení přístupu na základě role
+## <a name="rbac-best-practices"></a>Osvědčené postupy RBAC
 
 [!INCLUDE [digital-twins-permissions](../../includes/digital-twins-rbac-best-practices.md)]
 
@@ -40,7 +49,7 @@ Vývojáři mohou využít řízení přístupu na základě rolí pro:
 
 ### <a name="role-definitions"></a>Definice rolí
 
-A **definice role** je kolekce oprávnění a se někdy označuje jako **role**. Definice role obsahuje seznam povolených operací včetně *vytvořit*, *čtení*, *aktualizovat*, a *odstranit*. Určuje také na typy objektů, které se vztahují tato oprávnění.
+Definice role je soubor oprávnění a se někdy označuje jako role. Seznamy definice role, které povolené operace, mezi které patří vytvoření, čtení, aktualizace a odstraňování. Určuje také na typy objektů, které se vztahují tato oprávnění.
 
 Následující role jsou k dispozici v digitální dvojče Azure:
 
@@ -49,24 +58,24 @@ Následující role jsou k dispozici v digitální dvojče Azure:
 * **Správce zařízení**: vytvořit, číst, aktualizovat a odstranit oprávnění pro zařízení a zařízení související objekty. Oprávnění ke čtení pro mezery.
 * **Klíč správce**: vytvořit, číst, aktualizovat a odstranit oprávnění pro přístupové klíče. Oprávnění ke čtení pro mezery.
 * **Token správce**: oprávnění pro čtení a aktualizace pro přístupové klíče. Oprávnění ke čtení pro mezery.
-* **Uživatel**: oprávnění ke čtení pro mezery, senzory a uživatelů, včetně jejich odpovídající souvisejících objektů.
+* **Uživatel**: oprávnění ke čtení pro mezery, senzory a uživatelů, což zahrnuje odpovídající související objekty.
 * **Podpora odborných**: oprávnění ke čtení pro všechno, co s výjimkou přístupové klíče.
-* **Instalační program zařízení**: oprávnění pro čtení a aktualizace pro zařízení a snímačů, včetně jejich odpovídajících související objekty. Oprávnění ke čtení pro mezery.
-* **Zařízení brány**: vytvořit oprávnění pro senzory. Oprávnění ke čtení pro zařízení a senzorů, včetně jejich odpovídajících souvisejících objektů.
+* **Instalační program zařízení**: oprávnění pro čtení a aktualizace pro zařízení a senzorů, které obsahuje odpovídající související objekty. Oprávnění ke čtení pro mezery.
+* **Zařízení brány**: vytvořit oprávnění pro senzory. Oprávnění ke čtení pro zařízení a senzorů, která obsahuje odpovídající související objekty.
 
 >[!NOTE]
-> *Úplná definice za položky uvedené výše se dá načíst pomocí dotazu rozhraní API systému/rolí.*
+> K načtení úplné definice pro předchozí role, dotaz rozhraní API systému/rolí.
 
 ### <a name="object-types"></a>Typy objektů
 
-`ObjectIdType` Odkazuje na typ identity, který je právě přiřazen do role. Kromě `DeviceId` a `UserDefinedFunctionId` typy, typy odpovídají vlastnost objektu služby Azure Active Directory (Azure AD):
+`ObjectIdType` Odkazuje na typ identitu, která udělil roli. Kromě `DeviceId` a `UserDefinedFunctionId` typy, typy odpovídají vlastnost objektu služby Azure Active Directory (Azure AD):
   
 * `UserId` Typ přiřadí roli uživatele.
 * `DeviceId` Typ role přiřadí k zařízení.
-* `DomainName` Typ přiřadí roli na název domény. Každý uživatel pomocí zadaného názvu domény bude mít přístupová práva odpovídající roli.
-* `TenantId` Typ přiřadí roli do tenanta. Každý uživatel, který patří do zadané ID tenanta Azure AD bude mít přístupová práva odpovídající roli.
+* `DomainName` Typ přiřadí roli na název domény. Přístupová práva odpovídající roli má každý uživatel pomocí zadaného názvu domény.
+* `TenantId` Typ přiřadí roli do tenanta. Každý uživatel, který patří do zadané ID tenanta Azure AD má přístupová práva odpovídající roli.
 * `ServicePrincipalId` Typ přiřadí ID objektu zabezpečení služby role
-* `UserDefinedFunctionId` Typ přiřadí roli pro uživatelsky definovaná funkce (UDF).
+* `UserDefinedFunctionId` Typ přiřadí roli uživatelem definované funkce (UDF).
 
 > [!div class="nextstepaction"]
 > [Dotaz nebo ID objektu uživatele](https://docs.microsoft.com/powershell/module/azuread/get-azureaduser?view=azureadps-2.0)
@@ -79,9 +88,9 @@ Následující role jsou k dispozici v digitální dvojče Azure:
 
 ## <a name="role-assignments"></a>Přiřazení rolí
 
-Oprávnění jsou udělena příjemci vytvořením přiřazení role a odvolat tak, že odeberete přiřazení role. Přiřazení role Azure digitální dvojče přidruží objektu (uživatel, tenanta Azure AD, atd.), role a mezerou. Potom jsou udělena oprávnění ke všem objektům, které patří do tohoto místa, včetně celý prostorový graf pod ním.
+Udělení oprávnění pro příjemce, vytvořte přiřazení role. Odvolat oprávnění, odeberte přiřazení role. Přiřazení role Azure digitální dvojče objektu, například uživatele nebo tenantem Azure AD přidruží roli a mezerou. Oprávnění jsou udělena pro všechny objekty, které patří do tohoto místa. Místo zahrnuje celý prostorový graf pod ním.
 
-Například uživatel dostane přiřazení role s rolí `DeviceInstaller` pro kořenový uzel prostorový graf, který představuje budovy. Uživatel bude moct číst a aktualizovat zařízení s nejen k tomuto uzlu, ale všechny ostatní podřízené prostory v budově.
+Například uživatel dostane přiřazení role s rolí `DeviceInstaller` pro kořenový uzel prostorový graf, který představuje budovy. Uživatel pak číst a aktualizovat zařízení pro tento uzel a všechny ostatní podřízené prostory v budově.
 
 ## <a name="next-steps"></a>Další postup
 

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 824be21623892b8810ca4af5b885daf65bfb1594
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 087e11f906fe7f5c2fe67c43a597de8551dfc951
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50959150"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51013050"
 ---
 # <a name="container-monitoring-solution-in-log-analytics"></a>Řešení pro monitorování kontejnerů ve službě Log Analytics
 
@@ -604,7 +604,7 @@ Hledání v protokolu se otevře, zobrazení informací o stavu kontejnery.
 
 ![Prohledávání protokolů pro kontejnery](./media/log-analytics-containers/containers-log-search.png)
 
-Tady můžete upravit vyhledávací dotaz upravit ho k nalezení konkrétních informací, že máte zájem. Další informace o hledání v protokolu najdete v tématu [prohledávání protokolů v Log Analytics](log-analytics-log-search.md).
+Tady můžete upravit vyhledávací dotaz upravit ho k nalezení konkrétních informací, že máte zájem. Další informace o hledání v protokolu najdete v tématu [prohledávání protokolů v Log Analytics](log-analytics-queries.md).
 
 ## <a name="troubleshoot-by-finding-a-failed-container"></a>Řešení potíží s tím, že hledá selhání kontejneru
 
@@ -672,4 +672,4 @@ Ukládání dotazů je standardní funkce v Log Analytics. Uložením, budete m�
 Jakmile vytvoříte dotaz, který je pro vás užitečné, uložte ho kliknutím **Oblíbené** v horní části stránky prohledávání protokolů. Pak můžete jednoduše přejít později **Můj řídicí panel** stránky.
 
 ## <a name="next-steps"></a>Další postup
-* [Hledání protokolů](log-analytics-log-search.md) zobrazíte podrobné kontejneru datových záznamů.
+* [Hledání protokolů](log-analytics-queries.md) zobrazíte podrobné kontejneru datových záznamů.

@@ -15,16 +15,16 @@ ms.topic: conceptual
 ms.date: 05/03/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: bb95caf7f50b52d2c423de31d4fda701f4c16b40
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: f96d18c2e1a00008f2e391302a41d145d6b47efd
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50963753"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51016601"
 ---
 # <a name="computer-groups-in-log-analytics-log-searches"></a>Prohledávání protokolů skupiny počítačů v Log Analytics
 
-Skupiny počítačů v Log Analytics vám umožní oboru [prohledávání protokolů](log-analytics-log-search.md) konkrétní sadě počítačů.  Každá skupina se zaplní, buď dotaz, který definujete pomocí počítače nebo importováním skupiny z různých zdrojů.  Skupiny je obsažen v prohledávání protokolu, výsledky jsou omezené na záznamy, které odpovídají počítačů ve skupině.
+Skupiny počítačů v Log Analytics vám umožní oboru [prohledávání protokolů](log-analytics-queries.md) konkrétní sadě počítačů.  Každá skupina se zaplní, buď dotaz, který definujete pomocí počítače nebo importováním skupiny z různých zdrojů.  Skupiny je obsažen v prohledávání protokolu, výsledky jsou omezené na záznamy, které odpovídají počítačů ve skupině.
 
 ## <a name="creating-a-computer-group"></a>Vytvořit skupinu počítačů
 Vytvořit skupinu počítačů v Log Analytics pomocí některé z metod v následující tabulce.  Podrobnosti o každé metody jsou k dispozici v následujících částech. 
@@ -136,5 +136,5 @@ V pracovním prostoru Log Analytics pro každého členství ve skupině počít
 | TimeGenerated |Datum a čas vytvoření nebo aktualizace skupiny počítačů. |
 
 ## <a name="next-steps"></a>Další postup
-* Další informace o [prohledávání protokolů](log-analytics-log-search.md) analyzovat data shromážděná ze zdrojů dat a jejich řešení.  
+* Další informace o [prohledávání protokolů](log-analytics-queries.md) analyzovat data shromážděná ze zdrojů dat a jejich řešení.  
 

@@ -2,19 +2,19 @@
 title: Generování doporučení pomocí Mahout a HDInsight (SSH) – Azure
 description: Další informace o použití Apache Mahout strojového učení knihovny ke generování filmových doporučení pomocí HDInsight (Hadoop).
 services: hdinsight
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/01/2018
-ms.openlocfilehash: bdf2de58db87841b4dd0dda808667baa38851d02
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 4e91074fe5c003522138c9e202dc21d2af69227c
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43050827"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51014750"
 ---
 # <a name="generate-movie-recommendations-by-using-apache-mahout-with-linux-based-hadoop-in-hdinsight-ssh"></a>Generování filmových doporučení pomocí Apache Mahout se systémem Linux Hadoop v HDInsight (SSH)
 

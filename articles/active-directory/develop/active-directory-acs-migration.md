@@ -1,5 +1,5 @@
 ---
-title: Migrace ze služby Azure Access Control service | Dokumentace Microsoftu
+title: Migrace z Azure Access Control Service | Dokumentace Microsoftu
 description: Další informace o možnostech pro přesun aplikace a služby z Azure Access Control Service (ACS).
 services: active-directory
 documentationcenter: dev-center-name
@@ -16,14 +16,14 @@ ms.workload: identity
 ms.date: 10/03/2018
 ms.author: celested
 ms.reviewer: jlu, annaba, hirsin
-ms.openlocfilehash: 4fd7617bf45608cdae15919a40920ea0d214acb8
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: da114cc343d04165d5a6a2137aeb2b675258230a
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49407467"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51015328"
 ---
-# <a name="how-to-migrate-from-the-azure-access-control-service"></a>Postupy: migrace ze služby Azure Access Control service
+# <a name="how-to-migrate-from-the-azure-access-control-service"></a>Postupy: Migrace z Azure Access Control Service
 
 Microsoft Azure Access Control Service (ACS), služba Azure Active Directory (Azure AD), se vyřadí dne 7. května 2018. Aplikací a služeb, které používají řízení přístupu musí být plně migrovat na jiný mechanismus ověřování té. Tento článek popisuje doporučení pro stávající zákazníky, plánujete přestat používat vaše užívání řízení přístupu. Pokud nepoužíváte aktuálně řízení přístupu, není nutné provádět žádnou akci.
 

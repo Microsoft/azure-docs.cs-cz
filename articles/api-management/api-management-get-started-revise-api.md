@@ -14,12 +14,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: c1c884e05d357db7e23574dbd31f206d6c3fe23c
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: 757c710ddca72ec6a1383b51a8b536d196e6cb8c
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "41920673"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50414462"
 ---
 # <a name="use-revisions-to-make-non-breaking-changes-safely"></a>Použití revizí k bezpečnému provedení nevýznamných změn
 Jakmile bude vaše rozhraní API připravené a začnou ho využívat vývojáři, časem bude potřeba provádět změny rozhraní API, aniž by to mělo negativní vliv na volající vašeho rozhraní API. Také je užitečné informovat vývojáře o prováděných změnách. Ve službě Azure API Management k tomu můžeme použít **revize**. Další informace najdete v tématech [Verze a revize](https://blogs.msdn.microsoft.com/apimanagement/2017/09/14/versions-revisions/) a [Správa verzí rozhraní API pomocí služby Azure API Management](https://blogs.msdn.microsoft.com/apimanagement/2017/09/13/api-versioning-with-azure-api-management/).
@@ -36,10 +36,13 @@ V tomto kurzu se naučíte:
 
 ## <a name="prerequisites"></a>Požadavky
 
++ Seznamte se s [terminologií služby Azure API Management](api-management-terminology.md).
 + Projděte si následující rychlý start: [Vytvoření instance Azure API Managementu](get-started-create-service-instance.md).
 + Projděte si také následující kurz: Navíc kurzu: [Import a publikování vašeho prvního rozhraní API](import-and-publish.md).
 
 ## <a name="add-a-new-revision"></a>Přidání nové revize
+
+![Přidání revize rozhraní API](media/api-management-getstarted-revise-api/07-AddRevisions-01-AddNewRevision.png)
 
 1. Vyberte stránku **Rozhraní API**.
 2. V seznamu rozhraní API vyberte rozhraní **Demo Conference API** (nebo jiné rozhraní API, ke kterému chcete přidat revize).
@@ -48,8 +51,6 @@ V tomto kurzu se naučíte:
 
     > [!TIP]
     > Můžete také zvolit **Přidat revizi** v místní nabídce (**...**) rozhraní API.
-    
-    ![Nabídka Revize v horní části obrazovky](media/api-management-getstarted-revise-api/TopMenu.PNG)
 
 5. Zadejte popis nové revize, který vám pomůže zapamatovat si, k čemu se bude používat.
 6. Vyberte **Vytvořit**.
@@ -59,6 +60,8 @@ V tomto kurzu se naučíte:
     > Původní rozhraní API zůstane v **Revizi 1**. Vaši uživatelé nadále volají tuto revizi, dokud se nerozhodnete nastavit jako aktuální jinou revizi.
 
 ## <a name="make-non-breaking-changes-to-your-revision"></a>Provedení nevýznamných změn revize
+
+![Úprava revize](media/api-management-getstarted-revise-api/07-AddRevisions-02-MakeChanges.png)
 
 1. V seznamu rozhraní API vyberte rozhraní **Demo Conference API**.
 2. V horní části obrazovky vyberte kartu **Návrh**.
@@ -78,6 +81,7 @@ V tomto kurzu se naučíte:
 1. V nabídce v horní části stránky vyberte kartu **Revize**.
 
     ![Nabídka Revize na obrazovce Revize](media/api-management-getstarted-revise-api/RevisionsMenu.PNG)
+
 2. Otevřete místní nabídku (**...**) pro **Revizi 2**.
 3. Vyberte **Nastavit jako aktuální**.
 4. Zaškrtněte políčko **Odeslat do veřejného protokolu změn pro toto rozhraní API**, pokud chcete odesílat poznámky o této změně. Zadejte popis provedené změny, který se zobrazí vývojářům, například: **Testování revizí. Přidání nové operace test.**

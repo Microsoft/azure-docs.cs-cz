@@ -2,19 +2,19 @@
 title: MapReduce a vzdálené plochy se systémem Hadoop v HDInsight – Azure
 description: Další informace o použití vzdálené plochy pro připojení ke clusteru Hadoop v HDInsight a spouštění úloh MapReduce.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/12/2017
-ms.author: jasonh
+ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 2ff0677117f67c63ab0dbf050d81db0b3b75d86b
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: ee87bd5743307ea5b9ee3ca1258e8cd985a095c5
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43051683"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51012924"
 ---
 # <a name="use-mapreduce-in-hadoop-on-hdinsight-with-remote-desktop"></a>Použití MapReduce se v clusteru Hadoop v HDInsight pomocí vzdálené plochy
 [!INCLUDE [mapreduce-selector](../../../includes/hdinsight-selector-use-mapreduce.md)]

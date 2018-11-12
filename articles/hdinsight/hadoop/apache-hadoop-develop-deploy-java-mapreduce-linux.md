@@ -3,18 +3,18 @@ title: Vytvoření Java MapReduce pro Hadoop – Azure HDInsight
 description: Zjistěte, jak vytvářet aplikace založené na jazyce Java MapReduce a pak spustit ji s Hadoop v Azure HDInsight pomocí nástroje Apache Maven.
 services: hdinsight
 ms.reviewer: jasonh
-author: jasonwhowell
+author: hrasheed-msft
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/23/2018
-ms.author: jasonh
-ms.openlocfilehash: 6ad61957af65268fa9e3d58a3e0f3a5e9b4d4531
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.author: hrasheed
+ms.openlocfilehash: a1a47494f0298fae30d4711918bcafe07e8aff04
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49957747"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51016620"
 ---
 # <a name="develop-java-mapreduce-programs-for-hadoop-on-hdinsight"></a>Vývoj programů Java MapReduce pro Hadoop v HDInsight
 

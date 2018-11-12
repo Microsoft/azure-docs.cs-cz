@@ -1,6 +1,6 @@
 ---
 title: Nastavení kanálu CI/CD pomocí úlohy sestavení emulátoru služby Azure Cosmos DB
-description: Kurz týkající se nastavení sestavení a pracovního postupu verzí ve Visual Studio Team Services (VSTS) pomocí úlohy sestavení emulátoru služby Cosmos DB
+description: Kurz týkající se nastavení pracovního postupu sestavení a verzí v Azure DevOps pomocí úlohy sestavení emulátoru služby Cosmos DB
 services: cosmos-db
 keywords: Emulátor služby Azure Cosmos DB
 author: deborahc
@@ -8,41 +8,41 @@ manager: kfile
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 8/28/2018
+ms.date: 08/28/2018
 ms.author: dech
-ms.openlocfilehash: 37bb43435c34f14145b3642aa12c5cb0f16d780c
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: 4f4cc18bb8423a20358476142488c94361d6b72d
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43783712"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50419210"
 ---
-# <a name="set-up-a-cicd-pipeline-with-the-azure-cosmos-db-emulator-build-task-in-visual-studio-team-services"></a>Nastavení kanálu CI/CD pomocí úlohy sestavení emulátoru služby Azure Cosmos DB ve Visual Studio Team Services
+# <a name="set-up-a-cicd-pipeline-with-the-azure-cosmos-db-emulator-build-task-in-azure-devops"></a>Nastavení kanálu CI/CD pomocí úlohy sestavení emulátoru služby Azure Cosmos DB v Azure DevOps
 
 Emulátor služby Azure Cosmos DB zajistí místní prostředí, které emuluje službu Azure Cosmos DB pro účely vývoje. Emulátor umožňuje vyvíjet a testovat aplikace místně bez vytváření předplatného Azure a bez jakýchkoli nákladů. 
 
-Úloha sestavení emulátoru služby Azure Cosmos DB pro Visual Studio Team Services (VSTS) vám umožňuje provádět stejné úlohy v prostředí CI. Pomocí úlohy sestavení můžete spouštět testy emulátoru jako součást vašich pracovních postupů sestavení a verzí. Úloha se spustí v kontejneru Dockeru s už spuštěným emulátorem a poskytuje koncový bod, který lze použít zbývající částí definice sestavení. Můžete vytvořit a spustit tolik instancí emulátoru, kolik potřebujete, každá z nich poběží v samostatném kontejneru. 
+Úloha sestavení emulátoru služby Azure Cosmos DB pro Azure DevOps vám umožňuje provádět stejné úlohy v prostředí CI. Pomocí úlohy sestavení můžete spouštět testy emulátoru jako součást vašich pracovních postupů sestavení a verzí. Úloha se spustí v kontejneru Dockeru s už spuštěným emulátorem a poskytuje koncový bod, který lze použít zbývající částí definice sestavení. Můžete vytvořit a spustit tolik instancí emulátoru, kolik potřebujete, každá z nich poběží v samostatném kontejneru. 
 
-Tento článek ukazuje, jak nastavit kanál CI ve VSTS pro aplikaci ASP.NET, která ke spouštění testů používá úlohu sestavení emulátoru Cosmos DB. 
+Tento článek ukazuje, jak v Azure DevOps nastavit kanál CI pro aplikaci ASP.NET, která ke spouštění testů používá úlohu sestavení emulátoru služby Cosmos DB. 
 
 ## <a name="install-the-emulator-build-task"></a>Instalace úlohy sestavení emulátoru
 
-Abychom mohli použít úlohu sestavení, musíme ji nejprve nainstalovat do vaší organizace VSTS. Rozšíření **Emulátor Azure Cosmos DB** vyhledejte na webu [Marketplace](https://marketplace.visualstudio.com/items?itemName=azure-cosmosdb.emulator-public-preview) a klikněte na tlačítko pro **získání zdarma**.
+Abychom mohli použít úlohu sestavení, musíme ji nejprve nainstalovat do naší organizace Azure DevOps. Rozšíření **Emulátor Azure Cosmos DB** vyhledejte na webu [Marketplace](https://marketplace.visualstudio.com/items?itemName=azure-cosmosdb.emulator-public-preview) a klikněte na tlačítko pro **získání zdarma**.
 
-![Vyhledání a instalace úlohy sestavení emulátoru služby Azure Cosmos DB na webu VSTS Marketplace](./media/tutorial-setup-ci-cd/addExtension_1.png)
+![Vyhledání a instalace úlohy sestavení emulátoru služby Azure Cosmos DB na webu Azure DevOps Marketplace](./media/tutorial-setup-ci-cd/addExtension_1.png)
 
 Potom vyberte organizaci, do které se má rozšíření nainstalovat. 
 
 > [!NOTE]
-> Pokud chcete do organizace VSTS nainstalovat rozšíření, musíte být vlastníkem účtu nebo správcem kolekce projektů. Pokud nemáte oprávnění, ale jste členem účtu, můžete o rozšíření požádat. [Další informace](https://docs.microsoft.com/vsts/marketplace/faq-extensions?view=vsts#install-request-assign-and-access-extensions) 
+> Pokud chcete do organizace Azure DevOps nainstalovat rozšíření, musíte být vlastníkem účtu nebo správcem kolekce projektů. Pokud nemáte oprávnění, ale jste členem účtu, můžete o rozšíření požádat. [Další informace](https://docs.microsoft.com/azure/devops/marketplace/faq-extensions?view=vsts#install-request-assign-and-access-extensions)
 
-![Výběr organizace VSTS, do které se má rozšíření nainstalovat](./media/tutorial-setup-ci-cd/addExtension_2.png)
+![Výběr organizace Azure DevOps, do které se má rozšíření nainstalovat](./media/tutorial-setup-ci-cd/addExtension_2.png)
 
 ## <a name="create-a-build-definition"></a>Vytvoření definice sestavení
 
-Teď, když je rozšíření nainstalováno, potřebujeme ho přidat do [definice sestavení.](https://docs.microsoft.com/vsts/pipelines/get-started-designer?view=vsts&tabs=new-nav) Můžete upravit existující definici sestavení nebo vytvořit novou. Pokud už máte existující definici sestavení, můžete přeskočit k části [Přidání úlohy sestavení emulátoru do definice sestavení](#addEmulatorBuildTaskToBuildDefinition).
+Teď, když je rozšíření nainstalováno, potřebujeme ho přidat do [definice sestavení.](https://docs.microsoft.com/en-us/azure/devops/pipelines/get-started-designer?view=vsts&tabs=new-nav) Můžete upravit existující definici sestavení nebo vytvořit novou. Pokud už máte existující definici sestavení, můžete přeskočit k části [Přidání úlohy sestavení emulátoru do definice sestavení](#addEmulatorBuildTaskToBuildDefinition).
 
-Pokud chcete vytvořit novou definici sestavení, přejděte na kartu **Build and Release** (Sestavení a verze) ve VSTS. Vyberte **+New** (+Nový).
+Pokud chcete vytvořit novou definici sestavení, přejděte v Azure DevOps na kartu **Build and Release** (Sestavení a verze). Vyberte **+New** (+Nový).
 
 ![Vytvoření nové definice sestavení](./media/tutorial-setup-ci-cd/CreateNewBuildDef_1.png) Vyberte požadovaný týmový projekt, úložiště a větev pro povolení sestavení. 
 
@@ -68,7 +68,7 @@ Kompletní definice sestavení vypadá takto.
 ## <a name="configure-tests-to-use-the-emulator"></a>Konfigurace testů pro použití emulátoru
 Teď nakonfigurujeme naše testy, aby používaly emulátor. Úloha sestavení emulátoru exportuje proměnnou prostředí – CosmosDbEmulator.Endpoint – aby jakékoli další úlohy v kanálu sestavení mohly žádost znovu vydat. 
 
-V tomto kurzu použijeme [úkol nástroje Visual Studio Test](https://github.com/Microsoft/vsts-tasks/blob/master/Tasks/VsTestV2/README.md) ke spouštění testů jednotek nakonfigurovaných prostřednictvím souboru **.runsettings**. Pokud se chcete o nastavení testu jednotek dozvědět více, přečtěte si [dokumentaci](https://docs.microsoft.com/visualstudio/test/configure-unit-tests-by-using-a-dot-runsettings-file?view=vs-2017).
+V tomto kurzu použijeme [úkol nástroje Visual Studio Test](https://github.com/Microsoft/azure-pipelines-tasks/blob/master/Tasks/VsTestV2/README.md) ke spouštění testů jednotek nakonfigurovaných prostřednictvím souboru **.runsettings**. Pokud se chcete o nastavení testu jednotek dozvědět více, přečtěte si [dokumentaci](https://docs.microsoft.com/visualstudio/test/configure-unit-tests-by-using-a-dot-runsettings-file?view=vs-2017).
 
 Níže je uvedený příklad souboru **.runsettings**, který definuje parametry předávané do testů jednotek aplikace. Všimněte si, že použitá proměnná `authKey` je [dobře známý klíč](https://docs.microsoft.com/azure/cosmos-db/local-emulator#authenticating-requests) pro emulátor. Tento klíč `authKey` je očekávaný úlohou sestavení emulátoru a měl by být definovaný ve vašem souboru **.runsettings**.
 
@@ -82,7 +82,8 @@ Níže je uvedený příklad souboru **.runsettings**, který definuje parametry
   </TestRunParameters>
 </RunSettings>
 ```
-Tyto parametry `TestRunParameters` jsou odkazovány prostřednictvím vlastnosti `TestContext` v projektu testů aplikace. Tady je příklad testu, který se spouští ve službě Cosmos DB. 
+
+Tyto parametry `TestRunParameters` jsou odkazovány prostřednictvím vlastnosti `TestContext` v projektu testů aplikace. Tady je příklad testu, který se spouští ve službě Cosmos DB.
 
 ```csharp
 namespace todo.Tests

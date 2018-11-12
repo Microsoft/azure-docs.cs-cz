@@ -3,18 +3,18 @@ title: Použití interaktivního dotazu pomocí Azure HDInsight
 description: Zjistěte, jak pomocí HDInsight Interactive Query (Hive LLAP).
 services: hdinsight
 ms.service: hdinsight
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/22/2018
-ms.openlocfilehash: a90ec3102f3ce821193d58b6d14ca119f6d7e916
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: c1af99d64f9d9a7544d98ad34da5953fdda58222
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46959678"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51012873"
 ---
 # <a name="use-interactive-query-with-hdinsight"></a>Pomocí HDInsight Interactive Query
 Interactive Query (také nazývané Hive LLAP nebo [s nízkou latencí analytické zpracování](https://cwiki.apache.org/confluence/display/Hive/LLAP)) Azure HDInsight je [typ clusteru](../hdinsight-hadoop-provision-linux-clusters.md#cluster-types). Interactive Query podporuje ukládání do mezipaměti v paměti, takže se dotazy Hive mnohem více interaktivní a rychlejší.

@@ -10,12 +10,12 @@ ms.component: custom-vision
 ms.topic: tutorial
 ms.date: 08/28/2018
 ms.author: areddish
-ms.openlocfilehash: d4af3315cfca18da594730cc402236684f81bfc8
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 3ffef348467a34f40730c122afa6a7111ebad486
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49957331"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50416898"
 ---
 # <a name="tutorial-create-an-object-detection-project-with-the-custom-vision-sdk-for-java"></a>Kurz: Vytvoření projektu detekce objektů pomocí sady Custom Vision SDK pro Javu
 
@@ -25,7 +25,7 @@ Prozkoumejte základní aplikaci v Javě, která používá rozhraní API pro po
 
 Pro tento kurz budete muset:
 
-- Nainstalovat sadu JDK 7 nebo 8
+- Nainstalovat sadu [JDK 7 nebo 8](https://aka.ms/azure-jdks)
 - Nainstalovat Maven
 
 ## <a name="install-the-custom-vision-service-sdk"></a>Nainstalovat sadu Custom Vision Service SDK

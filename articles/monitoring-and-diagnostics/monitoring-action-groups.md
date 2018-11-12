@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/12/2018
 ms.author: dukek
 ms.component: alerts
-ms.openlocfilehash: 6163a099894a823614355f71a3e1af4a6a9026ec
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 3ce7c5111fa176bb7fa734f54084b9e14e7afbef
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44717671"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51016042"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Vytvoření a Správa skupin akcí na webu Azure Portal
 ## <a name="overview"></a>Přehled ##
@@ -24,8 +24,8 @@ V tomto článku se dozvíte, jak vytvořit a spravovat skupiny akcí na webu Az
 Každá akce se skládá z následujících vlastností:
 
 * **Název**: Jedinečný identifikátor v rámci skupiny akcí.  
-* **Typ akce**: odesílat hlasový hovor nebo SMS, odeslat e-mailu, volání webhooku, odesílání dat k nástroji ITSM, volat aplikaci logiky, odesílání nabízených oznámení do aplikace Azure nebo spustit runbook služby Automation.
-* **Podrobnosti o**: odpovídající telefonního čísla, e-mailovou adresu, webhooku identifikátor URI nebo podrobnosti připojení ITSM.
+* **Typ akce**: akce k provedení. Mezi příklady patří odesílání hlasový hovor, SMS, e-mailů; nebo aktivace různé automatizované akce. Zobrazit typy dále v tomto článku. 
+* **Podrobnosti o**: související podrobnosti, které se liší podle *typ akce*. 
 
 Informace o tom, jak nakonfigurovat skupiny akcí pomocí šablon Azure Resource Manageru najdete v tématu [šablon Resource Manageru skupiny akcí](monitoring-create-action-group-with-resource-manager-template.md).
 
@@ -57,64 +57,45 @@ Informace o tom, jak nakonfigurovat skupiny akcí pomocí šablon Azure Resource
 
 1. Vyberte **OK** k vytvoření skupiny akcí.
 
-## <a name="action-specific-information"></a>Informace o konkrétní akci
-<dl>
-<dt>Nabídky Azure aplikace</dt>
-<dd>Do skupiny akcí může mít až 10 akce aplikace Azure.</dd>
-<dd>V tuto chvíli podporuje pouze akce Azure aplikace ServiceHealth výstrahy. Další upozornění vždy se bude ignorovat. Zobrazit [konfigurace oznámení pokaždé, když se pošle oznámení o stavu služby](monitoring-activity-log-alerts-on-service-notifications.md).</dd>
-
-<dt>E-mailu</dt>
-<dd>E-maily se budou odesílat z těchto e-mailových adres. Ujistěte se, že filtrování e-mailu je správně nakonfigurována
-<ul>
-    <li>azure-noreply@microsoft.com</li>
-    <li>azureemail-noreply@microsoft.com</li>
-    <li>alerts-noreply@mail.windowsazure.com</li>
-</ul>
-</dd>
-<dd>Může mít až 1 000 e-mailových akcí do skupiny akcí</dd>
-<dd>Zobrazit [tady informace](./monitoring-alerts-rate-limiting.md) článku</dd>
-
-<dt>ITSM</dt>
-<dd>Můžete mít až 10 akce ITSM v skupiny akcí</dd>
-<dd>Akce ITSM vyžaduje připojení ITSM. Zjistěte, jak vytvořit [připojení ITSM](../log-analytics/log-analytics-itsmc-overview.md).</dd>
-
-<dt>Aplikace logiky</dt>
-<dd>Může mít až 10 akce aplikace logiky do skupiny akcí</dd>
-
-<dt>Sady Runbook</dt>
-<dd>Můžete mít až 10 akce sada Runbook v skupiny akcí</dd>
-<dd>Odkazovat [limity předplatného Azure](../azure-subscription-service-limits.md) pro omezení datových částí sady Runbook</dd>
-
-<dt>SMS</dt>
-<dd>Můžete mít až 10 SMS akce v skupiny akcí</dd>
-<dd>Zobrazit [tady informace](./monitoring-alerts-rate-limiting.md) článku</dd>
-<dd>Zobrazit [chování výstrah SMS](monitoring-sms-alert-behavior.md) článku</dd>
-
-<dt>Hlasu</dt>
-<dd>Můžete mít až 10 hlasové akce v skupiny akcí</dd>
-<dd>Zobrazit [tady informace](./monitoring-alerts-rate-limiting.md) článku</dd>
-
-<dt>Webhook</dt>
-<dd>Můžete mít až 10 akce Webhooku v skupiny akcí
-<dd>Zkuste logic - časový limit pro odpověď je 10 sekund. Volání webhooku se bude opakovat maximálně 2 při následující stavové kódy HTTP vrácené časy jsou časy: 408, 429, 503, 504 nebo koncový bod HTTP neodpovídá. Prvním opakováním se stane po 10 sekundách. Druhý a poslední opakování se stane po 100 sekund.</dd>
-<dd>Zdrojové rozsahy IP adres
-<ul>
-    <li>13.106.57.181</li>
-    <li>13.106.54.3</li>
-    <li>13.106.54.19</li>
-    <li>13.106.38.142</li>
-    <li>13.106.38.148</li>
-    <li>13.106.57.196</li>
-</ul>
-Získat informace o změnách na tyto IP adresy, doporučujeme, abyste konfiguraci [upozornění na stav služby](./monitoring-service-notifications.md) monitoruje informační upozornění týkající se služby skupiny akcí.
-</dd>
-</dl>
-
 ## <a name="manage-your-action-groups"></a>Spravovat skupiny akcí ##
 Po vytvoření skupiny akcí je viditelná ve **skupiny akcí** část **monitorování** okno. Vyberte skupinu akcí, které chcete spravovat:
 
 * Přidání, úprava nebo odebrání akce.
 * Odstraňte skupinu akcí.
+
+## <a name="action-specific-information"></a>Informace o konkrétní akci
+**Aplikace Azure nabízené** -může obsahovat až 10 aplikací Azure akce skupiny akcí. V tuto chvíli podporuje pouze akce Azure aplikace ServiceHealth výstrahy. Další upozornění vždy se bude ignorovat. Zobrazit [konfigurace oznámení pokaždé, když se pošle oznámení o stavu služby](monitoring-activity-log-alerts-on-service-notifications.md).
+
+**E-mailu** – E-maily se budou odesílat z těchto e-mailových adres. Ujistěte se, že filtrování e-mailu je správně nakonfigurována
+   - azure-noreply@microsoft.com
+   - azureemail-noreply@microsoft.com
+   - alerts-noreply@mail.windowsazure.com
+
+Můžete mít až 1 000 e-mailových akcí do skupiny akcí. Zobrazit [tady informace](./monitoring-alerts-rate-limiting.md) článku
+
+**ITSM** – můžete mít až 10 akce ITSM jedná o smluvní jednání akce skupiny ITSM vyžaduje připojení ITSM. Zjistěte, jak vytvořit [připojení ITSM](../log-analytics/log-analytics-itsmc-overview.md).
+
+**Aplikace logiky** – může mít až 10 akce aplikace logiky do skupiny akcí
+
+**Sada Runbook** -může obsahovat až 10 akce sada Runbook akce skupiny najdete [limity předplatného Azure](../azure-subscription-service-limits.md) omezení datových částí sady Runbook pro
+
+**SMS** – může mít až 10 SMS akce v skupiny akcí v [tady informace](./monitoring-alerts-rate-limiting.md) najdete v článku [chování výstrah SMS](monitoring-sms-alert-behavior.md) článku
+
+**Hlasové** -může obsahovat až 10 hlasové akce skupiny akcí</dd>
+Zobrazit [tady informace](./monitoring-alerts-rate-limiting.md) článku</dd>
+
+**Webhook** – můžete mít až 10 akce Webhooku v skupiny akcí. Zkuste logic - časový limit pro odpověď je 10 sekund. Volání webhooku se bude opakovat maximálně 2 při následující stavové kódy HTTP vrácené časy jsou časy: 408, 429, 503, 504 nebo koncový bod HTTP neodpovídá. Prvním opakováním se stane po 10 sekundách. Druhý a poslední opakování se stane po 100 sekund.
+
+Zdrojové rozsahy IP adres
+    - 13.106.57.181
+    - 13.106.54.3
+    - 13.106.54.19
+    - 13.106.38.142
+    - 13.106.38.148
+    - 13.106.57.196
+
+Získat informace o změnách na tyto IP adresy, doporučujeme, abyste konfiguraci [upozornění na stav služby](./monitoring-service-notifications.md) monitoruje informační upozornění týkající se služby skupiny akcí.
+
 
 ## <a name="next-steps"></a>Další postup ##
 * Další informace o [chování výstrah SMS](monitoring-sms-alert-behavior.md).  

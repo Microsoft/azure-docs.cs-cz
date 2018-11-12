@@ -14,12 +14,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: cf9c56fa2ba75dc5b5ad4af59d111a0124f1a9df
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: ff3dde8ac95b678866ba6f5216ba23357b067765
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39057323"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50415878"
 ---
 # <a name="debug-your-apis-using-request-tracing"></a>Ladění rozhraní API s využitím trasování požadavků
 
@@ -34,18 +34,19 @@ V tomto kurzu se naučíte:
 
 ## <a name="prerequisites"></a>Požadavky
 
++ Seznamte se s [terminologií služby Azure API Management](api-management-terminology.md).
 + Projděte si následující rychlý start: [Vytvoření instance Azure API Managementu](get-started-create-service-instance.md).
 + Projděte si také následující kurz: Navíc kurzu: [Import a publikování vašeho prvního rozhraní API](import-and-publish.md).
 
 ## <a name="trace-a-call"></a>Trasování volání
 
+![Trasování rozhraní API](media/api-management-howto-api-inspector/06-DebugYourAPIs-01-TraceCall.png)
+
 1. Vyberte **Rozhraní API**.
 2. V seznamu rozhraní API klikněte na **Demo Conference API**.
-3. Vyberte operaci **GetSpeakers**.
-4. Přepněte na kartu **Test**.
+3. Přepněte na kartu **Test**.
+4. Vyberte operaci **GetSpeakers**.
 5. Nezapomeňte zahrnout hlavičku HTTP **Ocp-Apim-Trace** s hodnotou nastavenou na **true**.
-
-    ![Hlavička trasování rozhraní API](media/api-management-howto-api-inspector/api-management-tracing-header.png)
 
     > [!NOTE]
     > Pokud nedojde k automatickému doplnění hodnoty Ocp-Apim-Subscription-Key, můžete ji získat tak, že přejdete na portál pro vývojáře a zveřejníte klíče na stránce profilu.
@@ -57,9 +58,9 @@ V tomto kurzu se naučíte:
     V části **příchozí** se zobrazí původní požadavek, který služba API Management přijala od volajícího, a všechny zásady aplikované na požadavek, včetně zásad omezení četnosti a nastavení hlaviček, které jsme přidali v kroku 2:
 
     V části **back-end** se zobrazí požadavky, které služba API Management odeslala do back-endu rozhraní API, a přijaté odpovědi.
-    
+
     V části **odchozí** se zobrazí všechny zásady aplikované na odpověď před jejím odesláním volajícímu.
- 
+
     > [!TIP]
     > Každý krok také ukazuje uplynulý čas od přijetí požadavku službou API Management.
 
