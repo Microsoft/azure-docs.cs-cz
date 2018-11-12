@@ -1,127 +1,151 @@
 ---
 title: 'Rychlý start: Získání délky vět, Node.js – Translator Text API'
 titleSuffix: Azure Cognitive Services
-description: V tomto rychlém startu zjistíte délky vět v textu pomocí služby Translator Text API s Node.js.
+description: V tomto rychlém startu se dozvíte, jak pomocí Node.js a rozhraní REST API služby Translator Text určit délku věty (ve znacích).
 services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
-ms.date: 06/21/2018
+ms.date: 10/29/2018
 ms.author: erhopf
-ms.openlocfilehash: 60b7bf8de0f0f296d0efb49a1e08030c2d5999e3
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 08c01f8c73f8d25b824a97d31f1681d9a7eb302e
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49644895"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50249098"
 ---
-# <a name="quickstart-get-sentence-lengths-with-the-translator-text-rest-api-nodejs"></a>Rychlý start: Získání délky vět pomocí rozhraní REST API služby Translator Text (Node.js)
+# <a name="quickstart-use-the-translator-text-api-to-determine-sentence-length-with-nodejs"></a>Rychlý start: Určení délky věty pomocí služby Translator Text API a Node.js
 
-V tomto rychlém startu zjistíte délky vět v textu pomocí služby Translator Text API.
+V tomto rychlém startu se dozvíte, jak pomocí Node.js a rozhraní REST API služby Translator Text určit délku věty (ve znacích).
+
+K tomuto rychlému startu potřebujete [účet služby Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s prostředkem služby Translator Text. Pokud účet nemáte, můžete k získání klíče předplatného použít [bezplatnou zkušební verzi](https://azure.microsoft.com/try/cognitive-services/).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Abyste mohli tento kód spustit, budete potřebovat [Node.js 6](https://nodejs.org/en/download/).
+K tomuto rychlému startu potřebujete:
 
-Abyste mohli použít službu Translator Text API, budete potřebovat klíč předplatného. Přečtěte si, [jak se zaregistrovat ve službě Translator Text API](translator-text-how-to-signup.md).
+* [Node.js 8.12.x nebo novější](https://nodejs.org/en/)
+* Klíč předplatného Azure pro službu Translator Text
 
-## <a name="breaksentence-request"></a>Žádost BreakSentence
+## <a name="create-a-project-and-import-required-modules"></a>Vytvoření projektu a import požadovaných modulů
 
-Následující kód rozdělí zdrojový text do vět pomocí metody [BreakSentence](./reference/v3-0-break-sentence.md).
-
-1. V oblíbeném editoru kódu vytvořte nový projekt Node.js.
-2. Přidejte níže uvedený kód.
-3. Hodnotu `subscriptionKey` nahraďte přístupovým klíčem platným pro vaše předplatné.
-4. Spusťte program.
+V oblíbeném integrovaném vývojovém prostředí nebo editoru vytvořte nový projekt. Pak do svého projektu, do souboru s názvem `sentence-length.js`, zkopírujte tento fragment kódu.
 
 ```javascript
-'use strict';
-
-let fs = require ('fs');
-let https = require ('https');
-
-// **********************************************
-// *** Update or verify the following values. ***
-// **********************************************
-
-// Replace the subscriptionKey string value with your valid subscription key.
-let subscriptionKey = 'ENTER KEY HERE';
-
-let host = 'api.cognitive.microsofttranslator.com';
-let path = '/breaksentence?api-version=3.0';
-
-let params = '';
-
-let text = 'How are you? I am fine. What did you do today?';
-
-let response_handler = function (response) {
-    let body = '';
-    response.on ('data', function (d) {
-        body += d;
-    });
-    response.on ('end', function () {
-        let json = JSON.stringify(JSON.parse(body), null, 4);
-        console.log(json);
-    });
-    response.on ('error', function (e) {
-        console.log ('Error: ' + e.message);
-    });
-};
-
-let get_guid = function () {
-  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-    var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
-    return v.toString(16);
-  });
-}
-
-let BreakSentences = function (content) {
-    let request_params = {
-        method : 'POST',
-        hostname : host,
-        path : path + params,
-        headers : {
-            'Content-Type' : 'application/json',
-            'Ocp-Apim-Subscription-Key' : subscriptionKey,
-            'X-ClientTraceId' : get_guid (),
-        }
-    };
-
-    let req = https.request (request_params, response_handler);
-    req.write (content);
-    req.end ();
-}
-
-let content = JSON.stringify ([{'Text' : text}]);
-
-BreakSentences (content);
+const request = require('request');
+const uuidv4 = require('uuid/v4');
 ```
 
-## <a name="breaksentence-response"></a>Odpověď metody BreakSentence
+> [!NOTE]
+> Pokud jste tyto moduly ještě nikdy nepoužili, budete je muset před spuštěním programu nainstalovat. Tyto balíčky nainstalujete spuštěním příkazu `npm install request uuidv4`.
 
-Úspěšná odpověď se vrátí ve formátu JSON, jak je znázorněno v následujícím příkladu:
+Tyto moduly jsou potřeba k vytvoření požadavku HTTP a jedinečného identifikátoru pro hlavičku `'X-ClientTraceId'`.
+
+## <a name="set-the-subscription-key"></a>Nastavení klíče předplatného
+
+Tento kód se pokusí přečíst klíč předplatného služby Translator Text z proměnné prostředí `TRANSLATOR_TEXT_KEY`. Pokud proměnné prostředí neznáte, můžete hodnotu `subscriptionKey` nastavit jako řetězec a okomentovat podmíněný příkaz.
+
+Zkopírujte do svého projektu tento kód:
+
+```javascript
+/* Checks to see if the subscription key is available
+as an environment variable. If you are setting your subscription key as a
+string, then comment these lines out.
+
+If you want to set your subscription key as a string, replace the value for
+the Ocp-Apim-Subscription-Key header as a string. */
+const subscriptionKey = process.env.TRANSLATOR_TEXT_KEY;
+if (!subscriptionKey) {
+  throw new Error('Environment variable for your subscription key is not set.')
+};
+```
+
+## <a name="configure-the-request"></a>Konfigurace požadavku
+
+Metoda `request()` zpřístupněná prostřednictvím modulu požadavků nám umožňuje předat metodu HTTP, adresu URL, parametry požadavku, hlavičky a text JSON jako objekt `options`. V tomto fragmentu kódu nakonfigurujeme požadavek:
+
+>[!NOTE]
+> Další informace o koncových bodech, trasách a parametrech požadavků najdete v tématu [Translator Text API 3.0: Rozklad věty ve slovníku](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-break-sentence).
+
+```javascript
+let options = {
+    method: 'POST',
+    baseUrl: 'https://api.cognitive.microsofttranslator.com/',
+    url: 'breaksentence',
+    qs: {
+      'api-version': '3.0',
+    },
+    headers: {
+      'Ocp-Apim-Subscription-Key': subscriptionKey,
+      'Content-type': 'application/json',
+      'X-ClientTraceId': uuidv4().toString()
+    },
+    body: [{
+          'text': 'How are you? I am fine. What did you do today?'
+    }],
+    json: true,
+};
+```
+
+### <a name="authentication"></a>Authentication
+
+Nejjednodušším způsobem, jak ověřit požadavek, je předat klíč předplatného jako hlavičku `Ocp-Apim-Subscription-Key`, což děláme i v této ukázce. Alternativně můžete klíč předplatného vyměnit za přístupový token a k ověření požadavku předat přístupový token jako hlavičku `Authorization`. Další informace najdete v tématu [Ověřování](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
+
+## <a name="make-the-request-and-print-the-response"></a>Vytvoření požadavku a tisk odpovědi
+
+Dále pomocí metody `request()` vytvoříme požadavek. Tato metoda jako první argument přebírá objekt `options`, který jsme vytvořili v předchozí části, a pak vytiskne očištěnou odpověď JSON.
+
+```javascript
+request(options, function(err, res, body){
+    console.log(JSON.stringify(body, null, 4));
+});
+```
+
+>[!NOTE]
+> V této ukázce definujeme požadavek HTTP v objektu `options`. Modul požadavků však podporuje také pomocné metody jako `.post` a `.get`. Další informace najdete v článku věnovaném [pomocným metodám](https://github.com/request/request#convenience-methods).
+
+## <a name="put-it-all-together"></a>Spojení všech součástí dohromady
+
+To je vše, sestavili jste jednoduchý program, který zavolá službu Translator Text API a vrátí odpověď JSON. Teď je čas program spustit:
+
+```console
+node sentence-length.js
+```
+
+Pokud chcete porovnat svůj kód s naším, kompletní ukázka je k dispozici na [GitHubu](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-NodeJS).
+
+## <a name="sample-response"></a>Ukázková odpověď
 
 ```json
 [
-  {
-    "detectedLanguage": {
-      "language": "en",
-      "score": 1.0
-    },
-    "sentLen": [
-      13,
-      11,
-      22
-    ]
-  }
+    {
+        "sentLen": [
+            13,
+            11,
+            22
+        ]
+    }
 ]
 ```
 
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Pokud jste do svého programu pevně zakódovali klíč předplatného, nezapomeňte po dokončení tohoto rychlého startu tento klíč předplatného odebrat.
+
 ## <a name="next-steps"></a>Další kroky
 
-Prozkoumejte vzorový kód pro tento rychlý start a další, včetně překladu a transkripce, a také další vzorové projekty Translator Text na GitHubu.
-
 > [!div class="nextstepaction"]
-> [Prozkoumejte příklady Node.js na GitHubu](https://aka.ms/TranslatorGitHub?type=&language=javascript)
+> [Prozkoumejte příklady Node.js na GitHubu](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-NodeJS)
+
+## <a name="see-also"></a>Viz také
+
+Kromě rozpoznávání jazyka můžete pomocí služby Translator Text API provádět také následující úlohy:
+
+* [Překlad textu](quickstart-nodejs-translate.md)
+* [Transliterace textu](quickstart-nodejs-transliterate.md)
+* [Identifikace jazyka podle vstupu](quickstart-nodejs-detect.md)
+* [Získání alternativních překladů](quickstart-nodejs-dictionary.md)
+* [Získání seznamu podporovaných jazyků](quickstart-nodejs-languages.md)

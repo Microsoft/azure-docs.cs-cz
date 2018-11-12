@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: ca93d97c3e0ddab0377ef437a04e7e3e31197b97
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 6967805044bb11e9aed3fe66d580df059f7a461a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47166356"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51231389"
 ---
 # <a name="split-merge-security-configuration"></a>Konfigurace zabezpečení dělení a slučování
 Použití služby dělení a slučování, musíte správně nakonfigurovat zabezpečení. Tato služba je součástí funkce elastické škálování služby Microsoft Azure SQL Database. Další informace najdete v tématu [elastické škálování rozdělení a sloučení kurz Service](sql-database-elastic-scale-configure-deploy-split-and-merge.md).
@@ -29,21 +29,21 @@ Certifikáty jsou nakonfigurovat dvěma způsoby.
 2. [Ke konfiguraci klientských certifikátů](#to-configure-client-certificates) 
 
 ## <a name="to-obtain-certificates"></a>Chcete-li získat certifikáty
-Certifikáty můžete získat z veřejné certifikační autority (CA) nebo [služby certifikátů Windows](http://msdn.microsoft.com/library/windows/desktop/aa376539.aspx). Toto jsou upřednostňované metody k získání certifikátů.
+Certifikáty můžete získat z veřejné certifikační autority (CA) nebo [služby certifikátů Windows](https://msdn.microsoft.com/library/windows/desktop/aa376539.aspx). Toto jsou upřednostňované metody k získání certifikátů.
 
 Pokud tyto možnosti nejsou k dispozici, můžete vygenerovat **certifikáty podepsané svým držitelem**.
 
 ## <a name="tools-to-generate-certificates"></a>Nástroje pro generování certifikátů
-* [makecert.exe](http://msdn.microsoft.com/library/bfsktky3.aspx)
-* [pvk2pfx.exe](http://msdn.microsoft.com/library/windows/hardware/ff550672.aspx)
+* [makecert.exe](https://msdn.microsoft.com/library/bfsktky3.aspx)
+* [pvk2pfx.exe](https://msdn.microsoft.com/library/windows/hardware/ff550672.aspx)
 
 ### <a name="to-run-the-tools"></a>Chcete-li spustit nástroje
-* Z příkazový řádek vývojáře pro Visual Studia, najdete v článku [příkazový řádek sady Visual Studio](http://msdn.microsoft.com/library/ms229859.aspx) 
+* Z příkazový řádek vývojáře pro Visual Studia, najdete v článku [příkazový řádek sady Visual Studio](https://msdn.microsoft.com/library/ms229859.aspx) 
   
     Pokud je nainstalovaná, přejděte na:
   
         %ProgramFiles(x86)%\Windows Kits\x.y\bin\x86 
-* Získat ze sady WDK [Windows 8.1: stažení sad a nástrojů](http://msdn.microsoft.com/windows/hardware/gg454513#drivers)
+* Získat ze sady WDK [Windows 8.1: stažení sad a nástrojů](https://msdn.microsoft.com/windows/hardware/gg454513#drivers)
 
 ## <a name="to-configure-the-ssl-certificate"></a>Konfigurace certifikátu SSL
 Certifikát SSL se vyžaduje k zašifrování komunikace a ověřování serveru. Zvolte nejvíce hodí následující tři scénáře a spusťte všechny jeho kroky:

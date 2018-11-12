@@ -6,15 +6,15 @@ manager: garavd
 ms.service: site-recovery
 ms.date: 10/28/2018
 ms.topic: conceptual
-ms.author: rayne
-ms.openlocfilehash: 9bc0d5976cf01eb61c2a09a35ccd3a834313ca00
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.author: nisoneji
+ms.openlocfilehash: c6ec47017d944a206642932223ebb1d9df9cf942
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50210495"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51011727"
 ---
-# <a name="plan-capacity-and-scaling-for-vmware-disaster-recovery-to-auzre"></a>Plánování kapacity a škálování pro zotavení po havárii VMware do Azure
+# <a name="plan-capacity-and-scaling-for-vmware-disaster-recovery-to-azure"></a>Plánování kapacity a škálování pro zotavení po havárii VMware do Azure
 
 Pomocí tohoto článku můžete zjistit, plánování kapacity a škálování, při replikaci místních virtuálních počítačů VMware a fyzických serverů do Azure s využitím [Azure Site Recovery](site-recovery-overview.md).
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: 8312841b5f8e4b9979de8abf32ce1009b4243f06
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 7107c4ebd3f7df5966dd4c66aa8f453bd4f3d1d6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49388146"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228347"
 ---
 # <a name="deploy-and-manage-notification-hubs-using-powershell"></a>Nasazení a správa Notification Hubs pomocí PowerShellu
 ## <a name="overview"></a>Přehled
@@ -147,8 +147,8 @@ else
 
 ## <a name="additional-resources"></a>Další prostředky
 * [Správa služby Service Bus pomocí PowerShellu](../service-bus-messaging/service-bus-powershell-how-to-provision.md)
-* [Vytvoření fronty, témata a odběry pomocí skriptu prostředí PowerShell služby Service Bus](http://blogs.msdn.com/b/paolos/archive/2014/12/02/how-to-create-a-service-bus-queues-topics-and-subscriptions-using-a-powershell-script.aspx)
-* [Jak vytvořit Namespace služby Service Bus a centra událostí pomocí skriptu prostředí PowerShell](http://blogs.msdn.com/b/paolos/archive/2014/12/01/how-to-create-a-service-bus-namespace-and-an-event-hub-using-a-powershell-script.aspx)
+* [Vytvoření fronty, témata a odběry pomocí skriptu prostředí PowerShell služby Service Bus](https://blogs.msdn.com/b/paolos/archive/2014/12/02/how-to-create-a-service-bus-queues-topics-and-subscriptions-using-a-powershell-script.aspx)
+* [Jak vytvořit Namespace služby Service Bus a centra událostí pomocí skriptu prostředí PowerShell](https://blogs.msdn.com/b/paolos/archive/2014/12/01/how-to-create-a-service-bus-namespace-and-an-event-hub-using-a-powershell-script.aspx)
 
 Některé předdefinované skripty jsou také k dispozici ke stažení:
 

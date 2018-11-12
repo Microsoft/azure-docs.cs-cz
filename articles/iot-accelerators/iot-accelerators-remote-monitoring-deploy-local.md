@@ -1,6 +1,6 @@
 ---
 title: Nasazení řešení vzdáleného monitorování místně (přes Visual Studio IDE) – Azure | Dokumentace Microsoftu
-description: Tato příručka ukazuje, jak do svého místního počítače pro vývoj a testování nasazení akcelerátoru řešení vzdáleného monitorování.
+description: Tato příručka ukazuje, jak do svého místního počítače pomocí sady Visual Studio pro vývoj a testování nasazení akcelerátoru řešení vzdáleného monitorování.
 author: avneet723
 manager: hegate
 ms.author: avneet723
@@ -8,18 +8,18 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/25/2018
 ms.topic: conceptual
-ms.openlocfilehash: c667782ef49f41cda8ccefc2f56e5f1265531037
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
-ms.translationtype: HT
+ms.openlocfilehash: 5068f0277726b7c468aa24d0629c4350b60b78b5
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/08/2018
-ms.locfileid: "51278816"
+ms.locfileid: "51287604"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---visual-studio"></a>Nasazení akcelerátoru řešení vzdáleného monitorování místně – Visual Studio
 
 [!INCLUDE [iot-accelerators-selector-local](../../includes/iot-accelerators-selector-local.md)]
 
-Tento článek ukazuje, jak nasazení akcelerátoru řešení vzdáleného monitorování do místního počítače pro vývoj a testování. Tento článek ukazuje, jak spouštět mikroslužby v sadě Visual Studio. Nasazení místního mikroslužeb používá tyto cloudové služby: služby IoT Hub, Cosmos DB, Azure Stream Analytics a Azure Time Series Insights v cloudu.
+Tento článek ukazuje, jak nasazení akcelerátoru řešení vzdáleného monitorování do místního počítače pro vývoj a testování. Zjistíte, jak spouštět mikroslužby v sadě Visual Studio. Nasazení místního mikroslužeb používá tyto cloudové služby: služby IoT Hub, Cosmos DB, Azure Stream Analytics a Azure Time Series Insights v cloudu.
 
 Pokud chcete spustit akcelerátor řešení vzdálené monitorování v Dockeru na místním počítači, přečtěte si téma [nasazení akcelerátoru řešení vzdáleného monitorování místně - Docker](iot-accelerators-remote-monitoring-deploy-local-docker.md).
 
@@ -115,14 +115,4 @@ Můžete také odstranit místní kopie úložiště vzdálené monitorování v
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto kurzu jste se naučili:
-
-> [!div class="checklist"]
-> * Nastavení místního vývojového prostředí
-> * Konfigurace akcelerátoru řešení
-> * Nasazení akcelerátoru řešení
-> * Přihlaste se k akcelerátoru řešení
-
 Teď, když nasadíte řešení vzdáleného monitorování, dalším krokem je [prozkoumat možnosti řídicího panelu řešení](quickstart-remote-monitoring-deploy.md).
-
-<!-- Next tutorials in the sequence -->

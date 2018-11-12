@@ -15,17 +15,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: gokuma
-ms.openlocfilehash: 7576c479b9e3e443b048a9295c0ff0f30d4b9423
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 49956234c00129508254b96d7d63a4b30af3ad55
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50240320"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51037579"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-on-azure"></a>Pro datovou vědu Data Science virtuálním počítačem s Linuxem v Azure
 Tento návod ukazuje, jak provádět několik běžných úloh vědeckého zpracování virtuálního počítače s Linuxem datové vědy. Systému Linux dat virtuálního počítače VĚDY je image virtuálního počítače k dispozici v Azure, který může být předinstalovaný s kolekcí nástrojů používaných pro analýzu dat a strojové učení. Klíčové softwarové komponenty je uvedeno v [zřídit virtuální počítač Linux datové vědy](linux-dsvm-intro.md) tématu. Image virtuálního počítače umožňuje snadno a rychle začít, datových věd v řádech minut, aniž byste museli instalovat a konfigurovat každý z nástrojů jednotlivě. Můžete snadno vertikálně navýšit kapacitu virtuálních počítačů, v případě potřeby a zastavte ji není při použití. Proto tento prostředek je elastická a nákladově efektivní.
 
-Úloh datových věd v tomto názorném postupu jsme vám ukázali, postupujte podle kroků uvedených v [vědecké zpracování týmových dat](https://docs.microsoft.com/en-us/azure/machine-learning/team-data-science-process/overview). Tento proces zajišťuje systematický přístup k datové vědy, které umožňuje týmům odborníků přes data efektivně spolupracovat přes životní cyklus sestavovat inteligentní aplikace. Vědecké zpracování dat také poskytuje rozšiřovatelnou platformu pro iterativní pro datové vědy, které může být následován jednotlivec.
+Úloh datových věd v tomto názorném postupu jsme vám ukázali, postupujte podle kroků uvedených v [vědecké zpracování týmových dat](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/overview). Tento proces zajišťuje systematický přístup k datové vědy, které umožňuje týmům odborníků přes data efektivně spolupracovat přes životní cyklus sestavovat inteligentní aplikace. Vědecké zpracování dat také poskytuje rozšiřovatelnou platformu pro iterativní pro datové vědy, které může být následován jednotlivec.
 
 Analyzujeme [spambase](https://archive.ics.uci.edu/ml/datasets/spambase) datová sada v tomto názorném postupu. Toto je sada e-mailů, které jsou označené jako spam nebo šunku (tj. nejsou nevyžádané pošty), a také obsahuje statistikami o obsah e-mailů. Statistiky zahrnuté jsou popsány v následujících, ale jeden oddíl.
 

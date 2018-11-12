@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/16/2018
 ms.author: sutalasi
-ms.openlocfilehash: f8f690a4f94ee56cfaa5532fa090fada1a33bddf
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 4b008cc119951e50567218e332818585fb017e5a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50214779"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51229403"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-hyper-v-vms-using-powershell-and-azure-resource-manager"></a>Nastavení zotavení po havárii do Azure pro virtuální počítače Hyper-V pomocí Powershellu a Azure Resource Manageru
 
@@ -24,7 +24,7 @@ Tento článek popisuje, jak replikovat virtuální počítače Hyper-V do Azure
 
 Prostředí Azure PowerShell poskytuje rutiny pro správu Azure pomocí prostředí Windows PowerShell. Rutiny prostředí PowerShell pro obnovení lokality pomocí Azure Powershellu pro Azure Resource Manageru umožňují ochrana a obnovení vašich serverů v Azure.
 
-Nemusíte být odborné prostředí PowerShell pro použití v tomto článku, ale musíte pochopit základní koncepty, jako jsou moduly, rutiny a relace. Čtení [Začínáme s prostředím Windows PowerShell](http://technet.microsoft.com/library/hh857337.aspx), a [pomocí Azure Powershellu s Azure Resource Managerem](../powershell-azure-resource-manager.md).
+Nemusíte být odborné prostředí PowerShell pro použití v tomto článku, ale musíte pochopit základní koncepty, jako jsou moduly, rutiny a relace. Čtení [Začínáme s prostředím Windows PowerShell](https://technet.microsoft.com/library/hh857337.aspx), a [pomocí Azure Powershellu s Azure Resource Managerem](../powershell-azure-resource-manager.md).
 
 > [!NOTE]
 > Partneři Microsoftu v programu Cloud Solution Provider (CSP) můžete konfigurovat a spravovat ochranu zákazníků serverů za účelem jejich odpovídajících předplatných CSP (tenanta předplatná).

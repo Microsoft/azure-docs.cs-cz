@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 10/16/2018
+ms.date: 11/08/2018
 ms.author: raiye
-ms.openlocfilehash: c153e87224c596929440d814d30b94cc49d7ba76
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: 35888b205822e5d7c9576c9855610bad814901b6
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50978736"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51346163"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Azure verzí hostovaného operačního systému a matice kompatibility sady SDK
 Poskytuje že vám aktuální informace o nejnovější verzi operačního systému hosta Azure uvolní pro cloudové služby. Tyto informace pomohou při plánování způsob upgradu, než je zakázáno hostovaného operačního systému. Je-li konfigurovat vaše role používat *automatické* aktualizace hostovaného operačního systému, jak je popsáno v [nastavení aktualizace operačního systému hosta Azure][Azure Guest OS Update Settings], není důležité, abyste si přečetli tuto stránku.
@@ -42,6 +42,9 @@ Poskytuje že vám aktuální informace o nejnovější verzi operačního syst�
 Informace o tom, jak aktualizovat vaše hostovaného operačního systému nejste si jistí? Zkontrolujte [to] [ cloud updates] navýšení kapacity.
 
 ## <a name="news-updates"></a>Aktualizace zprávy
+
+###### <a name="november-8-2018"></a>**8. listopadu 2018**
+Hostovaný operační systém. října vydala.
 
 ###### <a name="october-12-2018"></a>**12. října 2018**
 Hostovaný operační systém. září vydala.
@@ -74,8 +77,9 @@ Nainstalováno rozhraní .NET framework: 3.5, 4.6.2
 
 | Konfigurační řetězec | Datum vydání | Zakázat datum |
 | --- | --- | --- |
+| WA-GUEST-OS-5.24_201810-01 |8. listopadu 2018 |Příspěvek 5.26 |
 | WA-GUEST-OS-5.23_201809-01 |12. října 2018 |Příspěvek 5,25 |
-| WA-GUEST-OS-5.22_201808-01 |12. září 2018 |Příspěvek 5,24 |
+|~~WA-GUEST-OS-5.22_201808-01~~ |12. září 2018 |8. listopadu 2018 |
 |~~WA-GUEST-OS-5.21_201807-02~~ |3. srpna 2018 |12. října 2018 |
 |~~WA-GUEST-OS-5.20_201806-01~~ |3. července 2018 |12. září 2018 |
 |~~WA-GUEST-OS-5.19_201805-01~~ |1. června 2018 |3. srpna 2018 |
@@ -88,8 +92,9 @@ Nainstalováno rozhraní .NET framework: 3.5, 4.5.1
 
 | Konfigurační řetězec | Datum vydání | Zakázat datum |
 | --- | --- | --- |
+| WA-GUEST-OS-4.59_201810-01 |8. listopadu 2018 |Příspěvek 4.61 |
 | WA-GUEST-OS-4.58_201809-01 |12. října 2018 |Příspěvek 4.60 |
-| WA-GUEST-OS-4.57_201808-01 |12. září 2018 |Příspěvek 4.59 |
+|~~WA-GUEST-OS-4.57_201808-01~~ |12. září 2018 |8. listopadu 2018 |
 |~~WA-GUEST-OS-4.56_201807-02~~ |3. srpna 2018 |12. října 2018 |
 |~~WA-GUEST-OS-4.55_201806-01~~ |3. července 2018 |12. září 2018 |
 |~~WA-GUEST-OS-4.54_201805-01~~ |1. června 2018 |3. srpna 2018 |
@@ -102,8 +107,9 @@ Nainstalováno rozhraní .NET framework: 3.5, 4.5
 
 | Konfigurační řetězec | Datum vydání | Zakázat datum |
 | --- | --- | --- |
+| WA-GUEST-OS-3.66_201810-01 |8. listopadu 2018 |Příspěvek 3.68 |
 | WA-GUEST-OS-3.65_201809-01 |12. října 2018 |Příspěvek 3.67 |
-| WA-GUEST-OS-3.64_201808-01 |12. září 2018 |Příspěvek 3,66 |
+|~~WA-GUEST-OS-3.64_201808-01~~ |12. září 2018 |8. listopadu 2018 |
 |~~WA-GUEST-OS-3.63_201807-02~~ |3. srpna 2018 |12. října 2018 |
 |~~WA-GUEST-OS-3.62_201806-01~~ |3. července 2018 |12. září 2018 |
 |~~WA-GUEST-OS-3.61_201805-01~~ |1. června 2018 |3. srpna 2018 |
@@ -116,8 +122,9 @@ Nainstalováno rozhraní .NET framework: 3.5 (zahrnuje 2.0 a 3.0)
 
 | Konfigurační řetězec | Datum vydání | Zakázat datum |
 | --- | --- | --- |
+| WA-GUEST-OS-2.79_201810-01 |8. listopadu 2018 |Příspěvek 2.81 |
 | WA-GUEST-OS-2.78_201809-01 |12. října 2018 |Příspěvek 2,80 |
-| WA-GUEST-OS-2.77_201808-01 |12. září 2018 |Příspěvek 2.79 |
+|~~WA-GUEST-OS-2.77_201808-01~~ |12. září 2018 |8. listopadu 2018 |
 |~~WA-GUEST-OS-2.76_201807-02~~ |3. srpna 2018 |12. října 2018 |
 |~~WA-GUEST-OS-2.75_201806-01~~ |3. července 2018 |12. září 2018 |
 |~~WA-GUEST-OS-2.74_201805-01~~ |1. června 2018 |3. srpna 2018|

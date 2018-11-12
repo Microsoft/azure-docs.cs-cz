@@ -9,18 +9,18 @@ ms.reviewer: jasonwhowell
 ms.assetid: bcd0b01e-1755-4112-8e8a-a5cabdca4df2
 ms.topic: conceptual
 ms.date: 11/30/2017
-ms.openlocfilehash: 1fd1ce54dea672b19baea84bbf3a40b4365093b8
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 11587d5a0520d42d554c13a525c3b57db82326aa
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43046214"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51229471"
 ---
 # <a name="debug-user-defined-c-code-for-failed-u-sql-jobs"></a>Ladění uživatelského kódu C# pro selhání úloh U-SQL
 
 U-SQL poskytuje model rozšiřitelnosti pomocí jazyka C#. V skriptů U-SQL je jednoduché volání funkcí jazyka C# a provádějí analytické funkce, které deklarativní jazyce podobném SQL nepodporuje. Další informace pro rozšíření U-SQL najdete v tématu [Průvodce programovatelností U-SQL](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-u-sql-programmability-guide#use-user-defined-functions-udf). 
 
-V praxi může být nutné jakéhokoli kódu, ladění, ale je obtížné ladit distribuované úlohy pomocí vlastního kódu v cloudu s omezenou protokolu souborů. [Azure Data Lake Tools for Visual Studio](http://aka.ms/adltoolsvs) poskytuje funkci s názvem **ladění vrcholu se nepovedlo**, která pomáhá můžete snadněji ladit chyby, ke kterým dochází ve vlastním kódu. Selhání úlohy U-SQL služby udržuje stavu selhání a nástroje vám umožní stáhnout selhání prostředí cloudu do místního počítače pro ladění. Místní stažení zachycuje celý cloudovém prostředí, včetně všech vstupních dat a uživatelského kódu.
+V praxi může být nutné jakéhokoli kódu, ladění, ale je obtížné ladit distribuované úlohy pomocí vlastního kódu v cloudu s omezenou protokolu souborů. [Azure Data Lake Tools for Visual Studio](https://aka.ms/adltoolsvs) poskytuje funkci s názvem **ladění vrcholu se nepovedlo**, která pomáhá můžete snadněji ladit chyby, ke kterým dochází ve vlastním kódu. Selhání úlohy U-SQL služby udržuje stavu selhání a nástroje vám umožní stáhnout selhání prostředí cloudu do místního počítače pro ladění. Místní stažení zachycuje celý cloudovém prostředí, včetně všech vstupních dat a uživatelského kódu.
 
 Toto video ukazuje nepovedlo vrcholu ladění v Azure Data Lake Tools pro Visual Studio.
 
@@ -64,7 +64,7 @@ Existují dva možné případy, že jsou zachyceny zdrojový kód C#:
 
 Pokud zdrojový kód, je naimportován do řešení, můžete použít ladicí nástroje Visual Studio (sledování, proměnné atd.) k vyřešení tohoto problému:
 
-1. Stisknutím klávesy **F5** pro spuštění ladění. Kód se spustí, dokud nebude zastaven výjimky.
+1. Stisknutím klávesy **F5** spusťte ladění. Kód se spustí, dokud nebude zastaven výjimky.
 
 2. Otevření souboru se zdrojovým kódem a nastavit zarážky, stiskněte klávesu **F5** na ladění kódu krok za krokem.
 

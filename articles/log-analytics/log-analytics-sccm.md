@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: ad5721ff7304629ba786b1fed308ccb05b4a5211
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: a5deccbe87bc8de6f6438259c2a43cc4618c24ab
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50962720"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51016697"
 ---
 # <a name="connect-configuration-manager-to-log-analytics"></a>Propojení Configuration Manageru k Log Analytics
 Můžete svoje prostředí System Center Configuration Manager připojit ke službě Azure Log Analytics k synchronizaci zařízení shromažďování dat a odkazují na tyto kolekce v Log Analytics a Azure Automation.  
@@ -113,7 +113,7 @@ Po importu kolekce se zobrazí, kolik počítačů s členstvím v kolekci byl z
 
 ![Skupiny počítačů – SCCM kartu](./media/log-analytics-sccm/sccm-computer-groups02.png)
 
-Po kliknutí na některé z nich, otevře se vyhledávání, zobrazí všechny importované skupiny nebo všechny počítače, které patří do jednotlivých skupin. Pomocí [prohledávání protokolů](log-analytics-log-search.md), můžete začít potřebují podrobně analyzovat data Configuration Manageru.
+Po kliknutí na některé z nich, otevře se vyhledávání, zobrazí všechny importované skupiny nebo všechny počítače, které patří do jednotlivých skupin. Pomocí [prohledávání protokolů](log-analytics-queries.md), můžete začít potřebují podrobně analyzovat data Configuration Manageru.
 
 ## <a name="next-steps"></a>Další postup
-* Použití [prohledávání protokolů](log-analytics-log-search.md) Chcete-li zobrazit podrobné informace týkající se vašich dat nástroje Configuration Manager.
+* Použití [prohledávání protokolů](log-analytics-queries.md) Chcete-li zobrazit podrobné informace týkající se vašich dat nástroje Configuration Manager.

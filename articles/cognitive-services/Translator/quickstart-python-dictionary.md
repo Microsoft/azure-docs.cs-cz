@@ -1,239 +1,176 @@
 ---
-title: 'Rychlý start: Vyhledání alternativních překladů, Python – Translator Text API'
+title: 'Rychlý start: Získání alternativních překladů, Python – Translator Text API'
 titleSuffix: Azure Cognitive Services
-description: V tomto rychlém startu vyhledáte alternativní překlady a příklady termínů v kontextu pomocí rozhraní Translator Text API a Pythonu.
+description: V tomto rychlém startu se dozvíte, jak pro zadaný text vyhledat alternativní překlady a příklady použití pomocí Pythonu a rozhraní REST API služby Translator Text.
 services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
-ms.date: 06/21/2018
+ms.date: 10/21/2018
 ms.author: erhopf
-ms.openlocfilehash: cb8f6addd9fa68cd5a4683f52621b05dcd25e7b4
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 6e75ceb388b3111ea9ec31ba6bffded4077a019b
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49646404"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50248661"
 ---
-# <a name="quickstart-find-alternate-translations-with-the-translator-text-rest-api-python"></a>Rychlý start: Vyhledání alternativních překladů pomocí rozhraní REST API služby Translator Text (Python)
+# <a name="quickstart-use-the-translator-text-api-to-get-alternate-translations-using-python"></a>Rychlý start: Získání alternativních překladů pomocí služby Translator Text API a Pythonu
 
-V tomto rychlém startu vyhledáte podrobnosti možných alternativních překladů termínu a také příklady použití těchto alternativních překladů pomocí služby Translator Text API.
+V tomto rychlém startu se dozvíte, jak pro zadaný text vyhledat alternativní překlady a příklady použití pomocí Pythonu a rozhraní REST API služby Translator Text.
+
+K tomuto rychlému startu potřebujete [účet služby Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s prostředkem služby Translator Text. Pokud účet nemáte, můžete k získání klíče předplatného použít [bezplatnou zkušební verzi](https://azure.microsoft.com/try/cognitive-services/).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Abyste mohli tento kód spustit, budete potřebovat [Python 3.x](https://www.python.org/downloads/).
+K tomuto rychlému startu potřebujete:
 
-Abyste mohli použít službu Translator Text API, budete potřebovat klíč předplatného. Přečtěte si, [jak se zaregistrovat ve službě Translator Text API](translator-text-how-to-signup.md).
+* Python 2.7.x nebo 3.x
+* Klíč předplatného Azure pro službu Translator Text
 
-## <a name="dictionary-lookup-request"></a>Žádost Dictionary Lookup
+## <a name="create-a-project-and-import-required-modules"></a>Vytvoření projektu a import požadovaných modulů
 
-Následující kód získá alternativní překlady slova pomocí metody [Dictionary Lookup](./reference/v3-0-dictionary-lookup.md).
-
-1. V oblíbeném editoru kódu vytvořte nový projekt Pythonu.
-2. Přidejte níže uvedený kód.
-3. Hodnotu `subscriptionKey` nahraďte přístupovým klíčem platným pro vaše předplatné.
-4. Spusťte program.
+Vytvořte nový projekt v jazyce Python v oblíbeném integrovaném vývojovém prostředí nebo editoru. Pak do svého projektu, do souboru s názvem `dictionary-lookup.py`, zkopírujte tento fragment kódu.
 
 ```python
 # -*- coding: utf-8 -*-
+import os, requests, uuid, json
+```
 
-import http.client, urllib.parse, uuid, json
+> [!NOTE]
+> Pokud jste tyto moduly ještě nikdy nepoužili, budete je muset před spuštěním programu nainstalovat. Tyto balíčky nainstalujete spuštěním příkazu `pip install requests uuid`.
 
-# **********************************************
-# *** Update or verify the following values. ***
-# **********************************************
+První komentář říká interpretu Pythonu, že má použít kódování UTF-8. Pak se importují požadované moduly pro čtení klíče předplatného z proměnné prostředí, vytvoření požadavku HTTP, vytvoření jedinečného identifikátoru a zpracování odpovědi JSON vrácené službou Translator Text API.
 
-# Replace the subscriptionKey string value with your valid subscription key.
-subscriptionKey = 'ENTER KEY HERE'
+## <a name="set-the-subscription-key-base-url-and-path"></a>Nastavení klíče předplatného, základní adresy URL a cesty
 
-host = 'api.cognitive.microsofttranslator.com'
+Tato ukázka se pokusí přečíst klíč předplatného služby Translator Text z proměnné prostředí `TRANSLATOR_TEXT_KEY`. Pokud proměnné prostředí neznáte, můžete hodnotu `subscriptionKey` nastavit jako řetězec a okomentovat podmíněný příkaz.
+
+Zkopírujte do svého projektu tento kód:
+
+```python
+# Checks to see if the Translator Text subscription key is available
+# as an environment variable. If you are setting your subscription key as a
+# string, then comment these lines out.
+if 'TRANSLATOR_TEXT_KEY' in os.environ:
+    subscriptionKey = os.environ['TRANSLATOR_TEXT_KEY']
+else:
+    print('Environment variable for TRANSLATOR_TEXT_KEY is not set.')
+    exit()
+# If you want to set your subscription key as a string, uncomment the line
+# below and add your subscription key.
+#subscriptionKey = 'put_your_key_here'
+```
+
+V současné době je pro službu Translator Text dostupný jeden koncový bod, který je nastavený jako `base_url`. `path` nastaví trasu `dictionary/lookup` a určuje, že chceme cílit na rozhraní API verze 3.
+
+`params` slouží k nastavení jazyků zdroje a výstupu. V této ukázce používáme angličtinu a španělštinu: `en` a `es`.
+
+>[!NOTE]
+> Další informace o koncových bodech, trasách a parametrech požadavků najdete v tématu [Translator Text API 3.0: Slovníkové vyhledávání](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-dictionary-lookup).
+
+```python
+base_url = 'https://api.cognitive.microsofttranslator.com'
 path = '/dictionary/lookup?api-version=3.0'
-
-params = '&from=en&to=fr';
-
-text = 'great'
-
-def lookup (content):
-
-    headers = {
-        'Ocp-Apim-Subscription-Key': subscriptionKey,
-        'Content-type': 'application/json',
-        'X-ClientTraceId': str(uuid.uuid4())
-    }
-
-    conn = http.client.HTTPSConnection(host)
-    conn.request ("POST", path + params, content, headers)
-    response = conn.getresponse ()
-    return response.read ()
-
-requestBody = [{
-    'Text' : text,
-}]
-content = json.dumps(requestBody, ensure_ascii=False).encode('utf-8')
-result = lookup (content)
-
-# Note: We convert result, which is JSON, to and from an object so we can pretty-print it.
-# We want to avoid escaping any Unicode characters that result contains. See:
-# https://stackoverflow.com/questions/18337407/saving-utf-8-texts-in-json-dumps-as-utf8-not-as-u-escape-sequence
-output = json.dumps(json.loads(result), indent=4, ensure_ascii=False)
-
-print (output)
+params = '&from=en&to=es';
+constructed_url = base_url + path + params
 ```
 
-## <a name="dictionary-lookup-response"></a>Odpověď metody Dictionary Lookup
+## <a name="add-headers"></a>Přidání hlaviček
 
-Úspěšná odpověď se vrátí ve formátu JSON, jak je znázorněno v následujícím příkladu:
+Nejjednodušším způsobem, jak ověřit požadavek, je předat klíč předplatného jako hlavičku `Ocp-Apim-Subscription-Key`, což děláme i v této ukázce. Alternativně můžete klíč předplatného vyměnit za přístupový token a k ověření požadavku předat přístupový token jako hlavičku `Authorization`. Další informace najdete v tématu [Ověřování](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
 
-```json
-[
-  {
-    "normalizedSource": "great",
-    "displaySource": "great",
-    "translations": [
-      {
-        "normalizedTarget": "grand",
-        "displayTarget": "grand",
-        "posTag": "ADJ",
-        "confidence": 0.2783,
-        "prefixWord": "",
-        "backTranslations": [
-          {
-            "normalizedText": "great",
-            "displayText": "great",
-            "numExamples": 15,
-            "frequencyCount": 34358
-          },
-          {
-            "normalizedText": "big",
-            "displayText": "big",
-            "numExamples": 15,
-            "frequencyCount": 21770
-          },
-...
-        ]
-      },
-      {
-        "normalizedTarget": "super",
-        "displayTarget": "super",
-        "posTag": "ADJ",
-        "confidence": 0.1514,
-        "prefixWord": "",
-        "backTranslations": [
-          {
-            "normalizedText": "super",
-            "displayText": "super",
-            "numExamples": 15,
-            "frequencyCount": 12023
-          },
-          {
-            "normalizedText": "great",
-            "displayText": "great",
-            "numExamples": 15,
-            "frequencyCount": 10931
-          },
-...
-        ]
-      },
-...
-    ]
-  }
-]
-```
-
-## <a name="dictionary-examples-request"></a>Žádost Dictionary Examples
-
-Následující kód získá kontextové příklady použití termínu ve slovníku pomocí metody [Dictionary Examples](./reference/v3-0-dictionary-examples.md).
-
-1. V oblíbeném editoru kódu vytvořte nový projekt Pythonu.
-2. Přidejte níže uvedený kód.
-3. Hodnotu `subscriptionKey` nahraďte přístupovým klíčem platným pro vaše předplatné.
-4. Spusťte program.
+Zkopírujte do svého projektu tento fragment kódu:
 
 ```python
-# -*- coding: utf-8 -*-
-
-import http.client, urllib.parse, uuid, json
-
-# **********************************************
-# *** Update or verify the following values. ***
-# **********************************************
-
-# Replace the subscriptionKey string value with your valid subscription key.
-subscriptionKey = 'ENTER KEY HERE'
-
-host = 'api.cognitive.microsofttranslator.com'
-path = '/dictionary/examples?api-version=3.0'
-
-params = '&from=en&to=fr';
-
-text = 'great'
-translation = 'formidable'
-
-def examples (content):
-
-    headers = {
-        'Ocp-Apim-Subscription-Key': subscriptionKey,
-        'Content-type': 'application/json',
-        'X-ClientTraceId': str(uuid.uuid4())
-    }
-
-    conn = http.client.HTTPSConnection(host)
-    conn.request ("POST", path + params, content, headers)
-    response = conn.getresponse ()
-    return response.read ()
-
-requestBody = [{
-    'Text' : text,
-    'Translation' : translation,
-}]
-content = json.dumps(requestBody, ensure_ascii=False).encode('utf-8')
-result = examples (content)
-
-# Note: We convert result, which is JSON, to and from an object so we can pretty-print it.
-# We want to avoid escaping any Unicode characters that result contains. See:
-# https://stackoverflow.com/questions/18337407/saving-utf-8-texts-in-json-dumps-as-utf8-not-as-u-escape-sequence
-output = json.dumps(json.loads(result), indent=4, ensure_ascii=False)
-
-print (output)
+headers = {
+    'Ocp-Apim-Subscription-Key': subscriptionKey,
+    'Content-type': 'application/json',
+    'X-ClientTraceId': str(uuid.uuid4())
+}
 ```
 
-## <a name="dictionary-examples-response"></a>Odpověď metody Dictionary Examples
+## <a name="create-a-request-to-find-alternate-translations"></a>Vytvoření požadavku na vyhledání alternativních překladů
 
-Úspěšná odpověď se vrátí ve formátu JSON, jak je znázorněno v následujícím příkladu:
+Definujte řetězec (nebo řetězce), pro který chcete vyhledat překlady:
+
+```python
+# You can pass more than one object in body.
+body = [{
+    'text': 'Elephants'
+}]
+```
+
+Dále pomocí modulu `requests` vytvoříme požadavek POST. Tento modul přebírá tři argumenty – zřetězenou adresu URL, hlavičky požadavku a text požadavku:
+
+```python
+request = requests.post(constructed_url, headers=headers, json=body)
+response = request.json()
+```
+
+## <a name="print-the-response"></a>Tisk odpovědi
+
+Posledním krokem je vytisknout výsledky. Tento fragment kódu očistí výsledky tím, že seřadí klíče, nastaví odsazení a deklaruje oddělovače položek a klíčů.
+
+```python
+print(json.dumps(response, sort_keys=True, indent=4, ensure_ascii=False, separators=(',', ': ')))
+```
+
+## <a name="put-it-all-together"></a>Spojení všech součástí dohromady
+
+To je vše, sestavili jste jednoduchý program, který zavolá službu Translator Text API a vrátí odpověď JSON. Teď je čas program spustit:
+
+```console
+python dictionary-lookup.py
+```
+
+Pokud chcete porovnat svůj kód s naším, kompletní ukázka je k dispozici na [GitHubu](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Python).
+
+## <a name="sample-response"></a>Ukázková odpověď
 
 ```json
 [
-  {
-    "normalizedSource": "great",
-    "normalizedTarget": "formidable",
-    "examples": [
-      {
-        "sourcePrefix": "You have a ",
-        "sourceTerm": "great",
-        "sourceSuffix": " expression there.",
-        "targetPrefix": "Vous avez une expression ",
-        "targetTerm": "formidable",
-        "targetSuffix": "."
-      },
-      {
-        "sourcePrefix": "You played a ",
-        "sourceTerm": "great",
-        "sourceSuffix": " game today.",
-        "targetPrefix": "Vous avez été ",
-        "targetTerm": "formidable",
-        "targetSuffix": "."
-      },
-...
-    ]
-  }
+    {
+        "displaySource": "elephants",
+        "normalizedSource": "elephants",
+        "translations": [
+            {
+                "backTranslations": [
+                    {
+                        "displayText": "elephants",
+                        "frequencyCount": 1207,
+                        "normalizedText": "elephants",
+                        "numExamples": 5
+                    }
+                ],
+                "confidence": 1.0,
+                "displayTarget": "elefantes",
+                "normalizedTarget": "elefantes",
+                "posTag": "NOUN",
+                "prefixWord": ""
+            }
+        ]
+    }
 ]
 ```
+
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Pokud jste do svého programu pevně zakódovali klíč předplatného, nezapomeňte po dokončení tohoto rychlého startu tento klíč předplatného odebrat.
 
 ## <a name="next-steps"></a>Další kroky
 
-Prozkoumejte vzorový kód pro tento rychlý start a další, včetně překladu a transkripce, a také další vzorové projekty Translator Text na GitHubu.
-
 > [!div class="nextstepaction"]
-> [Prozkoumejte příklady Pythonu na GitHubu](https://aka.ms/TranslatorGitHub?type=&language=python)
+> [Prozkoumejte příklady Pythonu na GitHubu](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Python)
+
+## <a name="see-also"></a>Viz také
+
+Kromě transkripce textu můžete pomocí služby Translator Text API provádět také následující úlohy:
+
+* [Překlad textu](quickstart-python-translate.md)
+* [Transliterace textu](quickstart-python-transliterate.md)
+* [Identifikace jazyka podle vstupu](quickstart-python-detect.md)
+* [Získání seznamu podporovaných jazyků](quickstart-python-languages.md)
+* [Určení délky věty ze vstupu](quickstart-python-sentences.md)

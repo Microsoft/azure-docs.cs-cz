@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 03/07/2018
 ms.author: msangapu
 ms.custom: mvc
-ms.openlocfilehash: 92dde19e42c1adb6d83e1708106f844f228e8989
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: e286942f092d2e8c22824a18f5a6503d04a1be0c
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48239338"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50247551"
 ---
 # <a name="quickstart-create-a-java-web-app-in-app-service-on-linux"></a>Rychlý start: Vytvoření webové aplikace v Javě ve službě App Service v Linuxu
 
@@ -77,26 +77,7 @@ Pak do elementu `<build>` souboru `pom.xml` přidejte následující definici mo
 
 
 > [!NOTE] 
-> V tomto článku pracujeme jenom s aplikacemi Java zabalenými do souborů WAR. Modul plug-in podporuje také webové aplikace JAR. Pro tyto aplikace použijte následující alternativní definici modulu plug-in. Tato konfigurace nasadí JAR vytvořený pomocí Mavenu v `${project.build.directory}/${project.build.finalName}.jar` v místním systému souborů.
->
->```xml
-><plugin>
->            <groupId>com.microsoft.azure</groupId>
->            <artifactId>azure-webapp-maven-plugin</artifactId>
->            <version>1.4.0</version>
->            <configuration>
->                <deploymentType>jar</deploymentType>
->
->           <!-- Web App information -->
->            <resourceGroup>${RESOURCEGROUP_NAME}</resourceGroup>
->            <appName>${WEBAPP_NAME}</appName>
->            <region>${REGION}</region>  
->
->                <!-- Java Runtime Stack for Web App on Linux-->
->                <linuxRuntime>jre8</linuxRuntime>
->            </configuration>
->         </plugin>
->```    
+> V tomto článku pracujeme jenom s aplikacemi Java zabalenými do souborů WAR. Modul plug-in podporuje také webové aplikace JAR. Pokud si to chcete vyzkoušet, přečtěte si téma věnované [nasazení souboru Java SE JAR do služby App Service v Linuxu](https://docs.microsoft.com/java/azure/spring-framework/deploy-spring-boot-java-app-with-maven-plugin?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json).
 
 
 V konfiguraci modulu plug-in aktualizujte následující zástupné symboly:
@@ -127,8 +108,8 @@ Po dokončení nasazení přejděte ve webovém prohlížeči pomocí následuj�
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste použili Maven k vytvoření webové aplikace v Javě, nakonfigurovali jste [modul plug-in Maven pro Azure Web Apps (Preview)](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin) a potom jste nasadili webovou aplikaci v Javě zabalenou do webového archivu do App Service v Linuxu. Další informace o používání Javy v Azure získáte po kliknutí na následující odkaz.
+V tomto rychlém startu jste použili Maven k vytvoření webové aplikace v Javě, nakonfigurovali jste [modul plug-in Maven pro Azure Web Apps](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin) a potom jste nasadili aplikaci v Javě zabalenou do webového archivu do služby App Service v Linuxu. Informace o propojení databází, nastavení protokolování a monitorování, konfiguraci zabezpečení a nastavení možností modulu runtime najdete v příručce pro vývojáře v Javě pro službu App Service v Linuxu.
 
 > [!div class="nextstepaction"]
-> [Azure pro vývojáře v Javě](https://docs.microsoft.com/java/azure/)
+> [Příručka pro vývojáře v Javě pro službu App Service v Linuxu](app-service-linux-java.md)
 

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 09/12/2018
 ms.author: barclayn
 ms.custom: mvc
-ms.openlocfilehash: 7f71e92513aedb1eb9c394c1e8f547173cfb4dbe
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: 4f7955c013ce7f45ebe6db8bb23eeec92303876e
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45604174"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50230927"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-by-using-a-net-web-app"></a>Rychlý start: Nastavení a načtení tajného klíče ze služby Azure Key Vault pomocí webové aplikace .NET
 
@@ -25,7 +25,7 @@ V tomto rychlém startu si projdete nezbytné kroky pro využití webové aplika
 > * Uložení tajného klíče v trezoru klíčů
 > * Načtení tajného klíče z trezoru klíčů
 > * Vytvoření webové aplikace Azure
-> * Povolení [spravované identity](../active-directory/managed-identities-azure-resources/overview.md) pro webovou aplikaci
+> * Povolení [identity spravované služby](../active-directory/managed-identities-azure-resources/overview.md) pro webovou aplikaci
 > * Udělení požadovaných oprávnění k načtení dat z trezoru klíčů pro webovou aplikaci
 
 Než budeme pokračovat, přečtěte si [základní koncepty](key-vault-whatis.md#basic-concepts).
@@ -33,7 +33,7 @@ Než budeme pokračovat, přečtěte si [základní koncepty](key-vault-whatis.m
 >[!NOTE]
 >Služba Key Vault je centrální úložiště pro ukládání tajných klíčů prostřednictvím kódu programu. Aby to bylo možné, aplikace a uživatelé se nejprve musí ve službě Key Vault ověřit, tedy předložit tajný klíč. Za účelem dodržení osvědčených postupů zabezpečení je potřeba tento první tajný klíč pravidelně obměňovat. 
 >
->Při použití [spravovaných identit pro prostředky Azure](../active-directory/managed-identities-azure-resources/overview.md) se aplikacím spouštěným v Azure udělí identita, kterou automaticky spravuje Azure. To vám pomůže vyřešit *problém se zavedením tajného klíče*, abyste uživatelům a aplikacím umožnili dodržovat osvědčené postupy bez starostí o obměňování prvního tajného klíče.
+>Při použití [identit spravovaných služeb pro prostředky Azure](../active-directory/managed-identities-azure-resources/overview.md) se aplikacím spouštěným v Azure udělí identita, kterou automaticky spravuje Azure. To vám pomůže vyřešit *problém se zavedením tajného klíče*, abyste uživatelům a aplikacím umožnili dodržovat osvědčené postupy bez starostí o obměňování prvního tajného klíče.
 
 ## <a name="prerequisites"></a>Požadavky
 

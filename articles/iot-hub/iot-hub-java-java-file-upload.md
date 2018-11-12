@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 06/28/2017
 ms.author: dobett
-ms.openlocfilehash: a3019a18fe28840f69a6e14b20dddc72516aa593
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 86967f2e4c495cc0a2689dd4312b262fdb5943d9
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50419533"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230644"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub"></a>Nahrání souborů ze zařízení do cloudu pomocí služby IoT Hub
 
@@ -41,7 +41,7 @@ Na konci tohoto kurzu spustíte dvě konzolové aplikace Java:
 * **čtení souboru odesílání oznámení**, který obdrží oznámení o nahrávání souborů ze služby IoT hub.
 
 > [!NOTE]
-> IoT Hub podporuje mnoho platforem zařízení a jazyků (včetně C, .NET a Javascript) prostřednictvím sady SDK pro zařízení Azure IoT. Odkazovat [centrum pro vývojáře Azure IoT](http://azure.microsoft.com/develop/iot) podrobné pokyny o tom, jak připojit zařízení ke službě Azure IoT Hub.
+> IoT Hub podporuje mnoho platforem zařízení a jazyků (včetně C, .NET a Javascript) prostřednictvím sady SDK pro zařízení Azure IoT. Odkazovat [centrum pro vývojáře Azure IoT](https://azure.microsoft.com/develop/iot) podrobné pokyny o tom, jak připojit zařízení ke službě Azure IoT Hub.
 
 Pro absolvování tohoto kurzu potřebujete:
 
@@ -49,7 +49,7 @@ Pro absolvování tohoto kurzu potřebujete:
 
 * [Maven 3](https://maven.apache.org/install.html)
 
-* Aktivní účet Azure. (Pokud účet nemáte, můžete vytvořit [bezplatný účet](http://azure.microsoft.com/pricing/free-trial/) během několika minut.)
+* Aktivní účet Azure. (Pokud účet nemáte, můžete vytvořit [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/) během několika minut.)
 
 [!INCLUDE [iot-hub-associate-storage](../../includes/iot-hub-associate-storage.md)]
 

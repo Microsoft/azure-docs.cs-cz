@@ -8,12 +8,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: efaf551d134d339205d40966cb84f41b408559bd
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 3350c222cced036af6319cee166c53da0b14f2a9
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394174"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210444"
 ---
 # <a name="quickstart-ingest-data-from-event-hub-into-azure-data-explorer"></a>Rychlý start: Ingestování dat z centra událostí do Azure Data Exploreru
 
@@ -27,7 +27,7 @@ Kromě předplatného Azure budete k dokončení tohoto rychlého startu potřeb
 
 * [Testovací cluster a databázi](create-cluster-database-portal.md)
 
-* [Ukázkovou aplikaci](https://github.com/Azure-Samples/event-hubs-dotnet-ingest), která generuje data
+* [Ukázkovou aplikaci](https://github.com/Azure-Samples/event-hubs-dotnet-ingest), která generuje data a odesílá je do centra událostí
 
 * [Visual Studio 2017 verze 15.3.2 nebo vyšší](https://www.visualstudio.com/vs/) ke spuštění ukázkové aplikace
 
@@ -37,9 +37,9 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-an-event-hub"></a>Vytvoření centra událostí
 
-V tomto rychlém startu vygenerujete ukázková data a odešlete je do centra událostí. Prvním krokem je vytvoření centra událostí. To provedete pomocí šablony Azure Resource Manageru (ARM) na webu Azure Portal.
+V tomto rychlém startu vygenerujete ukázková data a odešlete je do centra událostí. Prvním krokem je vytvoření centra událostí. To provedete pomocí šablony Azure Resource Manageru na webu Azure Portal.
 
-1. Výběrem následujícího tlačítka spusťte nasazení.
+1. Pomocí následujícího tlačítka spusťte nasazení. Doporučujeme otevřít odkaz na nové kartě nebo v novém okně, abyste mohli postupovat podle zbývajících kroků v tomto článku.
 
     [![Nasazení do Azure](media/ingest-data-event-hub/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-event-hubs-create-event-hub-and-consumer-group%2Fazuredeploy.json)
 
@@ -69,13 +69,15 @@ V tomto rychlém startu vygenerujete ukázková data a odešlete je do centra ud
 
 1. Výběrem možnosti **Purchase** (Zakoupit) potvrdíte vytvoření prostředků ve vašem předplatném.
 
-1. Pokud chcete proces zřizování monitorovat, vyberte na panelu nástrojů **Oznámení** (ikona zvonku). Úspěšné nasazení může trvat několik minut, můžete teď ale přejít na další krok.
+1. Pokud chcete proces zřizování monitorovat, vyberte na panelu nástrojů **Oznámení**. Úspěšné nasazení může trvat několik minut, můžete teď ale přejít na další krok.
+
+    ![Oznámení](media/ingest-data-event-hub/notifications.png)
 
 ## <a name="create-a-target-table-in-azure-data-explorer"></a>Vytvoření cílové tabulky v Azure Data Exploreru
 
 Teď v Azure Data Exploreru vytvoříte tabulku, do které bude služba Event Hubs odesílat data. Tabulku vytvoříte v clusteru a databázi, které jste zřídili v části **Požadavky**.
 
-1. Na portálu Azure Portal vyberte v rámci svého clusteru možnost **Dotaz**.
+1. Na webu Azure Portal přejděte ke svému clusteru a vyberte **Dotaz**.
 
     ![Dotaz – odkaz aplikace](media/ingest-data-event-hub/query-explorer-link.png)
 
@@ -92,11 +94,11 @@ Teď v Azure Data Exploreru vytvoříte tabulku, do které bude služba Event Hu
     ```Kusto
     .create table TestTable ingestion json mapping 'TestMapping' '[{"column":"TimeStamp","path":"$.timeStamp","datatype":"datetime"},{"column":"Name","path":"$.name","datatype":"string"},{"column":"Metric","path":"$.metric","datatype":"int"},{"column":"Source","path":"$.source","datatype":"string"}]'
     ```
-    Tento příkaz namapuje příchozí data JSON na názvy sloupců a datové typy použité při vytváření tabulky.
+    Tento příkaz namapuje příchozí data JSON na názvy sloupců a datové typy tabulky (TestTable).
 
 ## <a name="connect-to-the-event-hub"></a>Připojení k centru událostí
 
-Teď se z Azure Data Exploreru připojíte k centru událostí, aby se data tekoucí do centra událostí streamovala do testovací tabulky.
+Teď se můžete z Azure Data Exploreru připojit k centru událostí. Po navázání připojení se budou data, která tečou do centra událostí, streamovat do testovací tabulky, kterou jste vytvořili v dřívější části tohoto článku.
 
 1. Výběrem možnosti **Oznámení** na panelu nástrojů ověřte úspěšné nasazení centra událostí.
 
@@ -118,27 +120,27 @@ Teď se z Azure Data Exploreru připojíte k centru událostí, aby se data teko
     | Obor názvů centra událostí | Jedinečný název oboru názvů | Název, který jste zvolili dříve a který identifikuje váš obor názvů |
     | Centrum událostí | *test-hub* | Centrum událostí, které jste vytvořili |
     | Skupina uživatelů | *test-group* | Skupina uživatelů, kterou jste definovali v centrum událostí, které jste vytvořili |
+    | Cílová tabulka | Možnost **Moje data zahrnují informace o směrování** ponechte nevybranou. | Existují dvě možnosti směrování: *statické* a *dynamické*. Pro účely tohoto rychlého startu použijete statické směrování (výchozí), kde zadáte název tabulky, formát souboru a mapování. Můžete použít také dynamické směrování, kde vaše data zahrnují nezbytné informace o směrování. |
     | Table | *TestTable* | Tabulka, kterou jste vytvořili v databázi **TestDatabase** |
     | Formát dat | *JSON* | Jsou podporované formáty JSON a CSV. |
-    | Mapování sloupců | *TestMapping* | Mapování, které jste vytvořili v databázi **TestDatabase**. |
-
-    Pro účely tohoto rychlého startu použijte *statické směrování* z centra událostí, kde zadáte název tabulky, formát souboru a mapování. Můžete také použít dynamické směrování, kde aplikace nastaví tyto vlastnosti.
+    | Mapování sloupců | *TestMapping* | Mapování, které jste vytvořili v databázi **TestDatabase** a které mapuje příchozí data JSON na názvy sloupců a datové typy tabulky **TestTable**.|
+    | | |
 
 ## <a name="copy-the-connection-string"></a>Zkopírování připojovacího řetězce
 
-Při spuštění aplikace pro vygenerování ukázkových dat potřebujete připojovací řetězec pro obor názvů centra událostí.
+Při spuštění [ukázkové aplikace](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) uvedené v části Požadavky potřebujete připojovací řetězec pro obor názvů centra událostí.
 
 1. V rámci oboru názvů centra událostí, který jste vytvořili, vyberte **Zásady sdíleného přístupu** a pak vyberte **RootManageSharedAccessKey**.
 
     ![Zásady sdíleného přístupu](media/ingest-data-event-hub/shared-access-policies.png)
 
-1. Zkopírujte **připojovací řetězec – primární klíč**.
+1. Zkopírujte **připojovací řetězec – primární klíč**. Tuto hodnotu vložíte v další části.
 
     ![Připojovací řetězec](media/ingest-data-event-hub/connection-string.png)
 
 ## <a name="generate-sample-data"></a>Generování ukázkových dat
 
-Teď, když je Azure Data Explorer propojený s centrem událostí, si pomocí ukázkové aplikace, kterou jste si stáhli, vygenerujete data.
+Teď, když je Azure Data Explorer propojený s centrem událostí, použijete [ukázkovou aplikaci](https://github.com/Azure-Samples/event-hubs-dotnet-ingest), kterou jste si stáhli, ke generování dat.
 
 1. Otevřete řešení ukázkové aplikace v sadě Visual Studio.
 
@@ -156,20 +158,22 @@ Teď, když je Azure Data Explorer propojený s centrem událostí, si pomocí u
 
 ## <a name="review-the-data-flow"></a>Kontrola toku dat
 
+Když teď aplikace generuje data, můžete zobrazit tok těchto dat z centra událostí do tabulky ve vašem clusteru.
+
 1. Na portálu Azure Portal v rámci vašeho centra událostí uvidíte při běhu aplikace špičkový nárůst aktivity.
 
     ![Graf centra událostí](media/ingest-data-event-hub/event-hub-graph.png)
 
-1. Přejděte zpět do aplikace a po 99. zprávě ji zastavte.
+1. Vraťte se do ukázkové aplikace a po 99. zprávě ji zastavte.
 
-1. Spuštěním následujícího dotazu v testovací databázi zkontrolujte, kolik zpráv se zatím dostalo do databáze.
+1. Pokud chcete zkontrolovat, kolik zpráv se zatím dostalo do databáze, spusťte v testovací databázi následující dotaz.
 
     ```Kusto
     TestTable
     | count
     ```
 
-1. Spuštěním následujícího dotazu si zobrazte obsah zpráv.
+1. Pokud chcete zobrazit obsah zpráv, spusťte následující dotaz.
 
     ```Kusto
     TestTable

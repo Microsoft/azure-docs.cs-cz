@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: deguhath
-ms.openlocfilehash: be6bda4f5c420d1e631690fc648f982d4910e198
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: 6688432342ff08d2ca177570cc6bbbe0095ccbe0
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47585981"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51229061"
 ---
 # <a name="scalable-data-science-with-azure-data-lake-an-end-to-end-walkthrough"></a>Škálovatelné vědecké zkoumání dat s Azure Data Lake: návod začátku do konce
-Tento návod ukazuje, jak pomocí Azure Data Lake a zkoumání dat a úlohy binární klasifikace na vzorek cesty taxíkem NYC jízdenky datovou sadu, která předpovědět, jestli je tip zaplaceno tarif. Provede vás provede postupem [vědecké zpracování týmových dat](http://aka.ms/datascienceprocess), začátku do konce, od získání dat pro trénování modelu a nasazení webové služby, který publikuje modelu.
+Tento návod ukazuje, jak pomocí Azure Data Lake a zkoumání dat a úlohy binární klasifikace na vzorek cesty taxíkem NYC jízdenky datovou sadu, která předpovědět, jestli je tip zaplaceno tarif. Provede vás provede postupem [vědecké zpracování týmových dat](https://aka.ms/datascienceprocess), začátku do konce, od získání dat pro trénování modelu a nasazení webové služby, který publikuje modelu.
 
 ### <a name="azure-data-lake-analytics"></a>Azure Data Lake Analytics
 [Microsoft Azure Data Lake](https://azure.microsoft.com/solutions/data-lake/) má všechny funkce potřebné k tomu, aby pro odborníky přes data ukládat data libovolné velikosti, tvaru a rychlost a provádět zpracování dat, pokročilé analýzy a machine learningu modelování s vysokou škálovatelnost v nákladově efektivní způsob.   Platíte na základě za úlohu pouze v případě, že data ve skutečnosti zpracovávají. Azure Data Lake Analytics zahrnuje U-SQL, jazyka, která spojuje deklarativní charakter jazyka SQL a výrazové Možnosti C# k poskytování škálovatelných distribuovaných možnosti dotazů. Umožňuje zpracování nestrukturovaných dat s použitím schéma při čtení, vložit vlastní logiku a uživatelem definované funkce (UDF) a zahrnuje rozšíření k povolení potřebujete jemněji odstupňované kontroly nad tom, jak spustit ve velkém měřítku. Další informace o filosofie návrhu tříd za U-SQL najdete v tématu [příspěvek na blogu Visual Studio](https://blogs.msdn.microsoft.com/visualstudio/2015/09/28/introducing-u-sql-a-language-that-makes-big-data-processing-easy/).
@@ -684,7 +684,7 @@ Krátce se zobrazí řídicím panelu webové služby:
 V tomto návodu jste vytvořili, prostředí pro datové vědy pro vytváření škálovatelných řešení začátku do konce ve službě Azure Data Lake. Toto prostředí byl použit k analýze velkých veřejné datové sady, jejího canonical kroky vědecké zpracování dat, od získání dat prostřednictvím trénování modelu a nasazení modelu jako webové služby. U-SQL se použije ke zpracování, prozkoumejte a ukázková data. Python a Hive byly použity s Azure Machine Learning Studio pro sestavování a nasazování prediktivních modelů.
 
 ## <a name="whats-next"></a>Co dále?
-Naučná stezka [vědecké zpracování týmových dat (TDSP)](http://aka.ms/datascienceprocess) obsahuje odkazy na témata popisující každý krok v procesu pokročilých analýz. Existuje řada návodů, které najdete na [názorné postupy vědeckého zpracování týmových dat](walkthroughs.md) stránka, která předvádí použití prostředků a služeb v různých scénářích prediktivní analýzy:
+Naučná stezka [vědecké zpracování týmových dat (TDSP)](https://aka.ms/datascienceprocess) obsahuje odkazy na témata popisující každý krok v procesu pokročilých analýz. Existuje řada návodů, které najdete na [názorné postupy vědeckého zpracování týmových dat](walkthroughs.md) stránka, která předvádí použití prostředků a služeb v různých scénářích prediktivní analýzy:
 
 * [Vědecké zpracování týmových dat v akci: použití služby SQL Data Warehouse](sqldw-walkthrough.md)
 * [Vědecké zpracování týmových dat v akci: clusterů systému HDInsight Hadoop](hive-walkthrough.md)

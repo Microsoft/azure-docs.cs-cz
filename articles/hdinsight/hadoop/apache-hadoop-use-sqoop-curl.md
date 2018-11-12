@@ -2,19 +2,19 @@
 title: Použití nástroje Hadoop Sqoop se Curl v HDInsight – Azure
 description: Zjistěte, jak vzdálené odeslání úloh Sqoop k HDInsight pomocí příkazu Curl.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.author: jasonh
-ms.openlocfilehash: 44b151cdd66bdcb5bb2ec005298f58186d98e97a
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.author: hrasheed
+ms.openlocfilehash: fd05ee18ccad7e689f9679df2bbf80dc19e39368
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43050064"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51010435"
 ---
 # <a name="run-sqoop-jobs-with-hadoop-in-hdinsight-with-curl"></a>Spouštění úloh Sqoop se systémem Hadoop v HDInsight pomocí Curl
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]

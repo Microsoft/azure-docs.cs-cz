@@ -12,12 +12,12 @@ ms.author: jodebrui
 ms.reviewer: ''
 manager: craigg
 ms.date: 07/16/2018
-ms.openlocfilehash: 8fd430aa710c7e36133b40c7079b9d727774c68f
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: d850aff8ddb2a8b6cdd68620ae823d582c527581
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47166924"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51229086"
 ---
 # <a name="optimize-performance-by-using-in-memory-technologies-in-sql-database"></a>Optimalizace výkonu pomocí v začleňování paměťových technologií ve službě SQL Database
 
@@ -57,11 +57,11 @@ Prohlédněte si následující zdroje informací pro další informace.
 Podrobné informace o technologiích:
 
 - [Přehled OLTP v paměti a scénáře použití](https://msdn.microsoft.com/library/mt774593.aspx) (včetně odkazů na Zákaznické případové studie a informace, abyste mohli začít)
-- [Dokumentace pro OLTP v paměti](http://msdn.microsoft.com/library/dn133186.aspx)
+- [Dokumentace pro OLTP v paměti](https://msdn.microsoft.com/library/dn133186.aspx)
 - [Průvodce indexy Columnstore](https://msdn.microsoft.com/library/gg492088.aspx)
 - Hybridní transakční a analytické zpracování (HTAP), označované také jako [provozní analýzy v reálném čase](https://msdn.microsoft.com/library/dn817827.aspx)
 
-Rychlý úvod do na OLTP v paměti: [1 rychlý Start: technologie OLTP v paměti pro rychlejší výkon T-SQL](http://msdn.microsoft.com/library/mt694156.aspx) (jiného článku vám pomůžou začít)
+Rychlý úvod do na OLTP v paměti: [1 rychlý Start: technologie OLTP v paměti pro rychlejší výkon T-SQL](https://msdn.microsoft.com/library/mt694156.aspx) (jiného článku vám pomůžou začít)
 
 Podrobná videa o technologiích:
 
@@ -158,7 +158,7 @@ Více zjednodušenou, ale atraktivnější výkonu ukázku pro OLTP v paměti na
 
 1. V [webu Azure portal](https://portal.azure.com/), vytvoření databáze úrovně Premium nebo pro důležité obchodní informace na serveru. Nastavte **zdroj** ukázkové databáze AdventureWorksLT. Podrobné pokyny najdete v tématu [vytvořit svoji první databázi Azure SQL](sql-database-get-started-portal.md).
 
-2. Připojení k databázi pomocí aplikace SQL Server Management Studio [(SSMS.exe)](http://msdn.microsoft.com/library/mt238290.aspx).
+2. Připojení k databázi pomocí aplikace SQL Server Management Studio [(SSMS.exe)](https://msdn.microsoft.com/library/mt238290.aspx).
 
 3. Kopírovat [OLTP v paměti příkazů jazyka Transact-SQL skriptů](https://raw.githubusercontent.com/Microsoft/sql-server-samples/master/samples/features/in-memory/t-sql-scripts/sql_in-memory_oltp_sample.sql) do schránky. Skript T-SQL vytvoří objekty nezbytné v paměti v ukázkové databáze AdventureWorksLT, který jste vytvořili v kroku 1.
 
@@ -291,9 +291,9 @@ V ideálním případě by plánujete spouštět ostress.exe na virtuálním po�
 Na virtuálním počítači nebo na cokoli, co můžete hostovat zvolte, nainstalujte nástroje opětovného přehrání Markup Language (RML). Nástroje zahrnují ostress.exe.
 
 Další informace naleznete v tématu:
-- Ostress.exe diskuze v [ukázkovou databázi pro OLTP v paměti](http://msdn.microsoft.com/library/mt465764.aspx).
-- [Ukázková databáze pro OLTP v paměti](http://msdn.microsoft.com/library/mt465764.aspx).
-- [Blogu pro instalaci ostress.exe](http://blogs.msdn.com/b/psssql/archive/2013/10/29/cumulative-update-2-to-the-rml-utilities-for-microsoft-sql-server-released.aspx).
+- Ostress.exe diskuze v [ukázkovou databázi pro OLTP v paměti](https://msdn.microsoft.com/library/mt465764.aspx).
+- [Ukázková databáze pro OLTP v paměti](https://msdn.microsoft.com/library/mt465764.aspx).
+- [Blogu pro instalaci ostress.exe](https://blogs.msdn.com/b/psssql/archive/2013/10/29/cumulative-update-2-to-the-rml-utilities-for-microsoft-sql-server-released.aspx).
 
 
 
@@ -379,7 +379,7 @@ Naše testy v paměti ukázalo tento výkon vylepšit **devětkrát** pro danou 
 V této části porovnejte výsledky vstupně-výstupní operace a statistiky při použití s indexem columnstore a indexu tradiční b stromu.
 
 
-Pro analýzu v reálném čase na úloh s online zpracováním často je nejvhodnější použít neclusterovaný index columnstore. Podrobnosti najdete v tématu [popsané indexy Columnstore](http://msdn.microsoft.com/library/gg492088.aspx).
+Pro analýzu v reálném čase na úloh s online zpracováním často je nejvhodnější použít neclusterovaný index columnstore. Podrobnosti najdete v tématu [popsané indexy Columnstore](https://msdn.microsoft.com/library/gg492088.aspx).
 
 
 
@@ -493,7 +493,7 @@ V databázi s cenovou úroveň P2 můžete očekávat přibližně devětkrát z
 
 ## <a name="next-steps"></a>Další postup
 
-- [Rychlý Start 1: Technologie OLTP v paměti pro dosažení vyššího výkonu T-SQL](http://msdn.microsoft.com/library/mt694156.aspx)
+- [Rychlý Start 1: Technologie OLTP v paměti pro dosažení vyššího výkonu T-SQL](https://msdn.microsoft.com/library/mt694156.aspx)
 
 - [OLTP v paměti pro použití v existující aplikaci Azure SQL](sql-database-in-memory-oltp-migration.md)
 
@@ -508,17 +508,17 @@ V databázi s cenovou úroveň P2 můžete očekávat přibližně devětkrát z
 
 - [OLTP v paměti v příspěvku na blogu Azure SQL Database](https://azure.microsoft.com/blog/in-memory-oltp-in-azure-sql-database/)
 
-- [Další informace o OLTP v paměti](http://msdn.microsoft.com/library/dn133186.aspx)
+- [Další informace o OLTP v paměti](https://msdn.microsoft.com/library/dn133186.aspx)
 
 - [Seznamte se s indexy columnstore](https://msdn.microsoft.com/library/gg492088.aspx)
 
-- [Další informace o provozní analýzy v reálném čase](http://msdn.microsoft.com/library/dn817827.aspx)
+- [Další informace o provozní analýzy v reálném čase](https://msdn.microsoft.com/library/dn817827.aspx)
 
-- Zobrazit [běžné vzory úlohy a důležité informace o migraci](http://msdn.microsoft.com/library/dn673538.aspx) (které popisuje vzory zatížení kde OLTP v paměti obvykle poskytují významného zvýšení výkonu)
+- Zobrazit [běžné vzory úlohy a důležité informace o migraci](https://msdn.microsoft.com/library/dn673538.aspx) (které popisuje vzory zatížení kde OLTP v paměti obvykle poskytují významného zvýšení výkonu)
 
 #### <a name="application-design"></a>Návrh aplikace
 
-- [Paměti OLTP (Optimalizace v paměti)](http://msdn.microsoft.com/library/dn133186.aspx)
+- [Paměti OLTP (Optimalizace v paměti)](https://msdn.microsoft.com/library/dn133186.aspx)
 
 - [OLTP v paměti pro použití v existující aplikaci Azure SQL](sql-database-in-memory-oltp-migration.md)
 
@@ -528,4 +528,4 @@ V databázi s cenovou úroveň P2 můžete očekávat přibližně devětkrát z
 
 - [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx)
 
-- [SQL Server Data Tools (SSDT)](http://msdn.microsoft.com/library/mt204009.aspx)
+- [SQL Server Data Tools (SSDT)](https://msdn.microsoft.com/library/mt204009.aspx)

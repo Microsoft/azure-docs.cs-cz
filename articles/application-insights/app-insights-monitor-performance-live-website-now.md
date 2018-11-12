@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: mbullwin
-ms.openlocfilehash: 24ab8e5171ebb33a5f3be5c6bf08e361fff4e4cc
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 275eb5f32def94fa974f0cb180b9de9dcedf1a00
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50959541"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230916"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights"></a>Instrumentace webových aplikací za běhu pomocí nástrojů Application Insights
 
@@ -78,7 +78,7 @@ Každá webová stránka má teď vloženou sadu SDK Application Insights JavaSc
 Pokud je vaše aplikace hostovaná na serveru služby IIS, povolte Application Insights pomocí Monitorování stavu.
 
 1. Na webovém serveru služby IIS se přihlaste pomocí přihlašovacích údajů správce.
-2. Pokud Monitorování stavu Application Insights ještě není nainstalované, stáhněte si a spusťte [instalační program Monitorování stavu](http://go.microsoft.com/fwlink/?LinkId=506648) (nebo spusťte [Instalaci webové platformy](https://www.microsoft.com/web/downloads/platform.aspx) a vyhledejte v ní Monitorování stavu Application Insights).
+2. Pokud Monitorování stavu Application Insights ještě není nainstalované, stáhněte si a spusťte [instalační program Monitorování stavu](https://go.microsoft.com/fwlink/?LinkId=506648) (nebo spusťte [Instalaci webové platformy](https://www.microsoft.com/web/downloads/platform.aspx) a vyhledejte v ní Monitorování stavu Application Insights).
 3. V Monitorování stavu vyberte nainstalovanou webovou aplikaci nebo web, které chcete monitorovat. Přihlaste se pomocí přihlašovacích údajů Azure.
 
     Nakonfigurujte prostředek,ve kterém chcete zobrazovat výsledky na portálu Application Insights. (Obvykle je nejlepší vytvořit nový prostředek. Vyberte existující prostředek, pokud už pro tuto aplikaci máte [webové testy][availability] dostupnosti nebo [monitorování klienta][client] .) 

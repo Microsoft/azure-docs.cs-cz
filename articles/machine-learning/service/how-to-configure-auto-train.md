@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.component: core
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 1aeb1315cfafbcdf3507a6e49d71e1f1e69b537c
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 5a539aebc9b1ccb5f52f89d511fc992ee6a24c81
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49430183"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51008942"
 ---
 # <a name="configure-your-automated-machine-learning-experiment"></a>Konfigurovat vaše automatizované experimentu strojového učení
 
@@ -183,7 +183,7 @@ Tato tabulka shrnuje nastavení parametrů, které jsou k dispozici pro experime
 
 Vlastnost |  Popis | Výchozí hodnota
 --|--|--
-`task`  |Zadejte typ problému machine learning. Povolené hodnoty jsou <li>Klasifikace</li><li>Regrese</li>    | Žádný |
+`task`  |Zadejte typ problému machine learning. Povolené hodnoty jsou <li>klasifikace</li><li>Regrese</li>    | Žádný |
 `primary_metric` |Metrika, kterou chcete optimalizovat při vytváření modelu. Například pokud zadáte jako primary_metric přesnost, automatizované ML vypadá najít model s nejvyšší přesností. Můžete zadat pouze jeden primary_metric na experiment. Povolené hodnoty jsou <br/>**Klasifikace**:<br/><li> accuracy  </li><li> AUC_weighted</li><li> precision_score_weighted </li><li> balanced_accuracy </li><li> average_precision_score_weighted </li><br/>**Regrese**: <br/><li> normalized_mean_absolute_error </li><li> spearman_correlation </li><li> normalized_root_mean_squared_error </li><li> normalized_root_mean_squared_log_error</li><li> R2_score    </li> | Pro klasifikaci: přesnost <br/>Pro regresní: spearman_correlation <br/> |
 `exit_score` |  Nastavení cílové hodnoty pro váš primary_metric. Po nalezení modelu, který splňuje cíl primary_metric, automatizované ML zastaví, iterace a ukončí experimentu. Pokud tato hodnota není nastavená (výchozí), bude nadále spuštěna počet iterací podle iterace experimentu ML automatizované. Přebírá hodnotu double. Pokud cíl nikdy dosáhne, bude pokračovat automatizované ML, dokud nebude dosaženo počtu iterací podle iterace.|   Žádný
 `iterations` |Maximální počet průchodu cyklem. Každá iterace je rovna trénovací úlohu, která vede kanálu. Kanál je předzpracování dat a modelu. Chcete-li získat model vysoce kvalitní použít 250 nebo více | 100
@@ -192,7 +192,7 @@ Vlastnost |  Popis | Výchozí hodnota
 `max_time_sec` |    Omezuje množství času (v sekundách), trvá konkrétní iteraci. Pokud iterace překročí zadanou hodnotu, bude zrušen danou iteraci. Pokud není nastavena, pak iterace běží nepřetržitě až do dokončení. |   Žádný
 `n_cross_validations`   |Počet rozdělení křížových ověření| Žádný
 `validation_size`   |Velikost ověření nastavit jako procento všech ukázka školení.|  Žádný
-`preprocess` | True nebo False <br/>Hodnota TRUE povolí experimentovat provádět předběžného zpracování na vstupu. Tady je podmnožinou předběžného zpracování<li>Chybějící Data: Uplatňuje chybí data číselná s průměrem, Text se většina occurance </li><li>Hodnoty zařazené do kategorií: Pokud datový typ je číselné a počet jedinečných hodnot je méně než 5 procentech, převede do jedné hot kódování </li><li>Atd. pro úplný seznam kontrolu [úložiště GitHub](https://aka.ms/aml-notebooks)</li><br/>Poznámka: Pokud je zhuštěný dat nelze použít předzpracování = true |  False | 
+`preprocess` | True nebo False <br/>Hodnota TRUE povolí experimentovat provádět předběžného zpracování na vstupu. Tady je podmnožinou předběžného zpracování<li>Chybějící Data: Uplatňuje chybí data číselná s průměrem, Text se většina výskyt </li><li>Hodnoty zařazené do kategorií: Pokud datový typ je číselné a počet jedinečných hodnot je méně než 5 procentech, převede do jedné hot kódování </li><li>Atd. pro úplný seznam kontrolu [úložiště GitHub](https://aka.ms/aml-notebooks)</li><br/>Poznámka: Pokud je zhuštěný dat nelze použít předzpracování = true | False | 
 `blacklist_algos`   | Automatizované experimentu ML má mnoho různých algoritmů, které se pokusí. Konfigurujte automatické ML vyloučení určitých algoritmů z experimentu. Je užitečné, pokud jste si vědomi, že algoritmy nefungují dobře u datové sady. S výjimkou algoritmů můžete ušetřit vám výpočetní prostředky a školení čas.<br/>Povolené hodnoty pro klasifikaci<br/><li>Logistické regrese</li><li>SGD třídění</li><li>MultinomialNB</li><li>BernoulliNB</li><li>SVM</li><li>LinearSVM</li><li>kNN</li><li>DT</li><li>RF</li><li>Navíc stromů</li><li>přechodu zvýšení skóre</li><li>lgbm_classifier</li><br/>Povolené hodnoty pro regresní<br/><li>Elastic net</li><li>Regresor přechodu zvýšení skóre</li><li>Regresor DT</li><li>regresor kNN</li><li>Laso lars</li><li>Regresor SGD</li><li>Regresor RF</li><li>regresor navíc stromů</li>|   Žádný
 `verbosity` |Určuje úroveň protokolování s informacemi, které se nejvíce podrobné a kritické přičemž nejmenší.<br/>Povolené hodnoty jsou:<br/><li>logging.INFO</li><li>protokolování. UPOZORNĚNÍ</li><li>protokolování. CHYBA</li><li>protokolování. KRITICKÁ</li>  | logging.INFO</li> 
 `X` | Všechny funkce k trénování s |  Žádný

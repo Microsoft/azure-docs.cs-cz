@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 10/19/2018
+ms.date: 10/30/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 5e198310dd18cc8574b5510b9318ff4badaffca3
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 2b8cc34e5ace5e252acae94a16858a69edc63a1c
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49646298"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50240235"
 ---
 # <a name="tutorial-create-azure-resource-manager-templates-with-dependent-resources"></a>Kurz: Vytváření šablon Azure Resource Manageru se závislými prostředky
 
@@ -29,10 +29,8 @@ V tomto kurzu vytvoříte účet úložiště, virtuální počítač, virtuáln
 Tento kurz se zabývá následujícími úkony:
 
 > [!div class="checklist"]
-> * Nastavení zabezpečeného prostředí
-> * Otevření šablony rychlého startu
+> * Otevření šablony pro rychlý start
 > * Prozkoumání šablony
-> * Úprava souboru parametrů
 > * Nasazení šablony
 
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
@@ -42,7 +40,7 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
 K dokončení tohoto článku potřebujete:
 
 * [Visual Studio Code](https://code.visualstudio.com/) s rozšířením Nástroje Resource Manageru  Přečtěte si, [jak toto rozšíření nainstalovat](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#prerequisites).
-* Aby se zabránilo útokům password spray, vygenerujte pro účet správce virtuálního počítače heslo. Tady je ukázka:
+* Pro zlepšení zabezpečení použijte pro účet správce virtuálního počítače vygenerované heslo. Tady ukázka generování hesla:
 
     ```azurecli-interactive
     openssl rand -base64 32
@@ -66,37 +64,45 @@ K dokončení tohoto článku potřebujete:
 
 Při zkoumání šablony v této části zkuste zodpovědět tyto otázky:
 
-- Kolik prostředků Azure se v této šabloně definuje?
-- Jedním z prostředků je účet úložiště Azure.  Vypadá jeho definice jako ta, kterou jsme použili v posledním kurzu?
-- Najdete referenční informace k šablonám pro prostředky definované v této šabloně?
-- Najdete závislosti těchto prostředků?
+* Kolik prostředků Azure se v této šabloně definuje?
+* Jedním z prostředků je účet úložiště Azure.  Vypadá jeho definice jako ta, kterou jsme použili v posledním kurzu?
+* Najdete referenční informace k šablonám pro prostředky definované v této šabloně?
+* Najdete závislosti těchto prostředků?
 
 1. V nástroji Visual Studio Code sbalte elementy tak, abyste viděli jenom elementy první úrovně a u položky **resources** elementy druhé úrovně:
 
     ![Šablony Azure Resource Manageru ve Visual Studio Code](./media/resource-manager-tutorial-create-templates-with-dependent-resources/resource-manager-template-visual-studio-code.png)
 
-    Šablona definuje pět prostředků.
-2. Rozbalte první prostředek. Jedná se o účet úložiště. Jeho definice by měla být stejná jako ta, kterou jsme použili na začátku posledního kurzu.
+    Šablona definuje pět prostředků:
+
+    * `Microsoft.Storage/storageAccounts`. Viz [referenční informace k šablonám](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts).
+    * `Microsoft.Network/publicIPAddresses`. Viz [referenční informace k šablonám](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses).
+    * `Microsoft.Network/virtualNetworks`. Viz [referenční informace k šablonám](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks).
+    * `Microsoft.Network/networkInterfaces`. Viz [referenční informace k šablonám](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces).
+    * `Microsoft.Compute/virtualMachines`. Viz [referenční informace k šablonám](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines).
+
+    Než začnete šablonu přizpůsobovat, je vhodné se s ní nejprve trochu seznámit.
+
+2. Rozbalte první prostředek. Jedná se o účet úložiště. Porovnejte definici prostředku s [referenčními informacemi k šablonám](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts).
 
     ![Šablony Azure Resource Manageru ve Visual Studio Code – definice účtu úložiště](./media/resource-manager-tutorial-create-templates-with-dependent-resources/resource-manager-template-storage-account-definition.png)
 
-3. Rozbalte druhý prostředek. Typ tohoto prostředku je **Microsoft.Network/publicIPAddresses**. Pokud chcete najít referenční informace k šablonám, přejděte na stránku s [referenčními informacemi k šablonám](https://docs.microsoft.com/azure/templates/) a do pole **Filtrovat podle názvu** zadejte **veřejná IP adresa** nebo **veřejné IP adresy**. Porovnejte definici prostředku s referenčními informacemi k šablonám.
+3. Rozbalte druhý prostředek. Typ prostředku je `Microsoft.Network/publicIPAddresses`. Porovnejte definici prostředku s [referenčními informacemi k šablonám](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses).
 
     ![Šablony Azure Resource Manageru ve Visual Studio Code – definice veřejné IP adresy](./media/resource-manager-tutorial-create-templates-with-dependent-resources/resource-manager-template-public-ip-address-definition.png)
-4. Zopakujte poslední krok a vyhledejte referenční informace k šablonám pro ostatní prostředky definované v této šabloně.  Porovnejte definice prostředků s referenčními informacemi.
-5. Rozbalte čtvrtý prostředek:
+4. Rozbalte čtvrtý prostředek. Typ prostředku je `Microsoft.Network/networkInterfaces`:  
 
     ![Šablony Azure Resource Manageru ve Visual Studio Code – dependson](./media/resource-manager-tutorial-create-templates-with-dependent-resources/resource-manager-template-visual-studio-code-dependson.png)
 
-    Element DependsOn umožňuje definovat jeden prostředek jako závislý na jednom nebo více prostředcích. V tomto příkladu se jedná o prostředek networkInterface.  Ten závisí na dvou dalších prostředcích:
+    Element DependsOn umožňuje definovat jeden prostředek jako závislý na jednom nebo více prostředcích. Prostředek závisí na dvou dalších prostředcích:
 
-    * publicIPAddress
-    * virtualNetwork
+    * `Microsoft.Network/publicIPAddresses`
+    * `Microsoft.Network/virtualNetworks`
 
-6. Rozbalte pátý prostředek. Tento prostředek je virtuální počítač. Ten závisí na dvou dalších prostředcích:
+5. Rozbalte pátý prostředek. Tento prostředek je virtuální počítač. Ten závisí na dvou dalších prostředcích:
 
-    * storageAccount
-    * networkInterface
+    * `Microsoft.Storage/storageAccounts`
+    * `Microsoft.Network/networkInterfaces`
 
 Následující diagram znázorňuje prostředky a informace o závislostech pro tuto šablonu:
 
@@ -134,17 +140,18 @@ Určení závislostí umožňuje Resource Manageru účinně nasadit řešení. 
     ```azurepowershell
     $deploymentName = Read-Host -Prompt "Enter the name for this deployment"
     $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
+    $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
     $adminUsername = Read-Host -Prompt "Enter the virtual machine admin username"
-    $adminPassword = Read-Host -Prompt "Enter the admin password"
-    $dnsLablePrefix = Read-Host -Prompt "Enter the DNS label prefix"
+    $adminPassword = Read-Host -Prompt "Enter the admin password" -AsSecureString
+    $dnsLabelPrefix = Read-Host -Prompt "Enter the DNS label prefix"
 
     New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
     New-AzureRmResourceGroupDeployment -Name $deploymentName `
         -ResourceGroupName $resourceGroupName `
-        -adminUsername = $adminUsername `
-        -adminPassword = $adminPassword `
-        -dnsLabelPrefix = $dnsLabelPrefix `
-        -TemplateFile azuredeploy.json 
+        -adminUsername $adminUsername `
+        -adminPassword $adminPassword `
+        -dnsLabelPrefix $dnsLabelPrefix `
+        -TemplateFile azuredeploy.json
     ```
 8. Spuštěním následujícího příkazu PowerShellu zobrazíte nově vytvořený virtuální počítač:
 
@@ -155,7 +162,7 @@ Určení závislostí umožňuje Resource Manageru účinně nasadit řešení. 
 
     V šabloně je pevně zakódovaný název virtuálního počítače **SimpleWinVM**.
 
-9. Přihlaste se k virtuálnímu počítači, abyste otestovali přihlašovací údaje správce. 
+9. Ověřte úspěšné vytvoření virtuálního počítače tím, že se k němu připojíte přes protokol RDP.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -170,7 +177,5 @@ Pokud už nasazené prostředky Azure nepotřebujete, vyčistěte je odstraněn�
 
 V tomto kurzu vyvinete a nasadíte šablonu pro vytvoření virtuálního počítače, virtuální sítě a závislých prostředků. Informace o tom, jak nasazovat prostředky Azure na základě podmínek, najdete v tomto tématu:
 
-
 > [!div class="nextstepaction"]
 > [Použití podmínek](./resource-manager-tutorial-use-conditions.md)
-

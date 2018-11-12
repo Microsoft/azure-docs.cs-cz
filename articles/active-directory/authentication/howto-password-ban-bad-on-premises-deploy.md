@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: jsimmons
-ms.openlocfilehash: 6599d634ec1e13715bdd34b6e8ab6fbd9f4f3e61
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 02c2b7560a0a609f6d902af78877d5f0236615d3
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50743265"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51011489"
 ---
 # <a name="preview-deploy-azure-ad-password-protection"></a>Ve verzi Preview: Nasazení ochrany hesla Azure AD
 
@@ -53,6 +53,13 @@ Po funkci byl spuštěný v režimu auditování rozumné době, můžete konfig
 * Všechny počítače, kde jsou nainstalovány součásti ochrany hesla Azure AD, včetně řadičů domény musí mít Universal C runtime nainstalovaný.
 Nejlépe to provádí plně opravy počítače prostřednictvím služby Windows Update. V opačném případě může být vhodné balíček aktualizací specifické pro operační systém nainstalovaný – viz [aktualizace pro Universal C Runtime ve službě Windows](https://support.microsoft.com/help/2999226/update-for-universal-c-runtime-in-windows)
 * Připojení k síti musí existovat mezi aspoň jeden řadič domény v každé doméně a alespoň jeden server, který hostuje službu Azure AD ochrany heslo proxy serveru. Toto připojení musí umožňovat řadič domény pro přístup k port mapovač koncových bodů RPC (135) a port serveru RPC na službu proxy serveru.  Port serveru RPC je ve výchozím nastavení dynamický port vzdáleného volání Procedur, ale dá se (viz níže) pro použití statického portu.
+* Všechny počítače hostující službu proxy služby Azure AD hesla ochrany musí mít přístup k síti pro následující koncové body:
+
+    |Koncový bod |Účel|
+    | --- | --- |
+    |`https://login.microsoftonline.com`|Požadavky na ověření|
+    |`https://enterpriseregistration.windows.net`|Funkce Ochrana hesel Azure AD|
+
 * Účet globálního správce pro registraci služby proxy ochrany hesla Azure AD a doménové struktury s Azure AD.
 * Účet s oprávněním správce domény služby Active Directory v kořenové doméně doménové struktury pro registraci doménové struktury Windows Server Active Directory s Azure AD.
 * Libovolné doméně Active Directory, který je spuštěn řadič domény služby softwaru agenta musíte použít DFSR k replikování adresáře sysvol.

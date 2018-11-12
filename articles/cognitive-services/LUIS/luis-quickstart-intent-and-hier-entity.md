@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: a469bc600715b2e276d6654596da50d75659aadb
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: d3adb6c27d3550777f0a5b34b3e7e329f42432ab
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48831020"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50138459"
 ---
 # <a name="tutorial-5-extract-contextually-related-data"></a>Kurz 5: Extrakce dat souvisejících s kontextem
 V tomto kurzu vyhledáte související části dat na základě kontextu. Spolu například souvisí počáteční a cílová umístění pro fyzický přesun z jedné budovy a kanceláře do jiné. Pro vygenerování pracovního zařazení se mohou vyžadovat obě části dat, které spolu vzájemně souvisí.  
@@ -119,7 +119,7 @@ Přidejte předem připravenou entitu čísla zpět do aplikace.
 
 1. V levé navigační nabídce vyberte **Entities** (Entity).
 
-2. Vyberte tlačítko **Manage prebuilt entities** (Spravovat předem připravené entity).
+2. Vyberte tlačítko **Add prebuilt entity** (Přidat předem připravenou entitu).
 
 3. V seznamu předem připravených entit vyberte možnost **number** (číslo) a pak vyberte **Done** (Hotovo).
 
@@ -248,6 +248,10 @@ Místa v tomto příkladu, jako je třeba `a-1234`, používají specifický for
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
+
+## <a name="hierarchical-entities-versus-roles"></a>Hierarchické entity a role
+
+Další informace najdete v tématu věnovaném [porovnání rolí a hierarchických entit](luis-concept-roles.md#roles-versus-hierarchical-entities).
 
 ## <a name="next-steps"></a>Další kroky
 V tomto kurzu jste vytvořili nový záměr a přidali ukázkové promluvy pro kontextově naučená data počátečního a cílového umístění. Jakmile aplikaci vytrénujete a publikujete, klientská aplikace může tyto informace použít k vytvoření lístku přesunu s relevantními informacemi.

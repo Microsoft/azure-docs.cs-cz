@@ -10,12 +10,12 @@ ms.component: translator-text
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: v-jansko
-ms.openlocfilehash: d01a5a8a9a60bef315327721b9f55345bc3d1361
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: bbfffe948080c87feaa8c9f0a46ef9afd90eae96
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49645024"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51229675"
 ---
 # <a name="customize-your-text-translations"></a>Upravte svoje textové překlady
 
@@ -37,7 +37,7 @@ Přizpůsobený systém je pak k dispozici prostřednictvím pravidelné volán�
 
 Zadaný odpovídající typ a velikost trénovacích dat není, můžete očekávat zvýšení rozsahu 5 až 10 nebo ještě více BLEU odkazuje na kvalitu překladu s použitím překladač vlastní.
 
-Další podrobnosti o různých úrovních přizpůsobení na základě dostupných dat najdete v [uživatelská příručka k vlastní Translator](http://aka.ms/CustomTranslatorDocs).
+Další podrobnosti o různých úrovních přizpůsobení na základě dostupných dat najdete v [uživatelská příručka k vlastní Translator](https://aka.ms/CustomTranslatorDocs).
 
 
 ## <a name="microsoft-translator-hub"></a>Centrum Microsoft Translatoru
@@ -53,7 +53,7 @@ Starší verze centra Microsoft Translator umožňuje překládat statistické s
 | Přizpůsobení SMT | Ano   | Ne |
 | Přizpůsobení NMT | Ne    | Ano |
 | Nové sjednocené přizpůsobení služby řeči | Ne    | Ano |
-| [Bez trasování](http://www.aka.ms/notrace) | Ano   | Ano |
+| [Bez trasování](https://www.aka.ms/notrace) | Ano  | Ano |
 
 ## <a name="collaborative-translations-framework"></a>Framework spolupráci překlady
 
@@ -65,4 +65,4 @@ Starší verze centra Microsoft Translator umožňuje překládat statistické s
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Nastavení vlastní jazyk systému pomocí Translatoru Custom](http://aka.ms/CustomTranslatorDocs)
+> [Nastavení vlastní jazyk systému pomocí Translatoru Custom](https://aka.ms/CustomTranslatorDocs)

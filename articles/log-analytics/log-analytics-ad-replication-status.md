@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/24/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: c248e126d99c7cb83895871ec24d41ffcfd84d29
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 08d17566faa61c5dcac01a49f99f0f39eb280946
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50960680"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51009738"
 ---
 # <a name="monitor-active-directory-replication-status-with-log-analytics"></a>Monitorování stavu replikace služby Active Directory pomocí služby Log Analytics
 
@@ -110,7 +110,7 @@ Po kliknutí na libovolnou položku v jednom seznamu se zobrazí další podrobn
 
 ![Chyby stavu replikace AD ve výsledcích hledání](./media/log-analytics-ad-replication-status/oms-ad-replication-search-details.png)
 
-Z tohoto místa můžete dále filtrovat, Upravit vyhledávací dotaz a podobně. Další informace o používání prohledávání protokolů, najdete v části [prohledávání protokolů](log-analytics-log-search.md).
+Z tohoto místa můžete dále filtrovat, Upravit vyhledávací dotaz a podobně. Další informace o používání prohledávání protokolů, najdete v části [prohledávání protokolů](log-analytics-queries.md).
 
 **HelpLink** poli se zobrazí adresa URL stránky TechNet s dalšími podrobnosti o této konkrétní chyba. Můžete zkopírovat a vložit tento odkaz do okna prohlížeče, pokud chcete zobrazit informace o řešení potíží a opravě chyby.
 
@@ -154,4 +154,4 @@ Pokud potřebujete pomoc s připojením jeden z řadičů domény, můžete zobr
 Pokud nechcete, aby všechny řadiče domény připojit přímo ke službě Log Analytics nebo System Center Operations Manager, najdete v článku [povolit řadiči domény k odesílání dat AD do služby Log Analytics](#to-enable-a-non-domain-controller-to-send-ad-data-to-oms).
 
 ## <a name="next-steps"></a>Další postup
-* Použití [prohledávání protokolů v Log Analytics](log-analytics-log-search.md) zobrazíte podrobné údaje o stavu replikace služby Active Directory.
+* Použití [prohledávání protokolů v Log Analytics](log-analytics-queries.md) zobrazíte podrobné údaje o stavu replikace služby Active Directory.

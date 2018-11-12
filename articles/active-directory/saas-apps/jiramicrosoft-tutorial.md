@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/31/2018
+ms.date: 11/01/2018
 ms.author: jeedes
-ms.openlocfilehash: 7d25b072ffc41608bca9e0b23116b2eb453dd160
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: f3f7fc3b837dd4eef9bab8ff34a36329436bad9a
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50740344"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51010724"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jira-saml-sso-by-microsoft"></a>Kurz: Integrace Azure Active Directory s jednotným Přihlašováním SAML JIRA společností Microsoft
 
@@ -43,7 +43,7 @@ Povolit jednotné přihlašování pomocí účtu Microsoft Azure Active Directo
 Konfigurace integrace Azure AD s jednotným Přihlašováním SAML JIRA microsoftem, potřebujete následující položky:
 
 - Předplatné Azure AD
-- Základní JIRA a softwaru 6.0 k 7.8 nebo JIRA Service Desk 3.0 3.2 by měl nainstalovaná a nakonfigurovaná na verzi Windows 64-bit
+- JIRA Core a Software 6.0 do 7.12 nebo JIRA služby podpory 3.0 na 3.5 by měl nainstalovaná a nakonfigurovaná na verzi Windows 64-bit
 - JIRA server je povolen protokol HTTPS
 - Všimněte si, že podporované verze pro modul plug-in JIRA jsou uvedeny v následující části.
 - JIRA server je dostupný na Internetu zejména na stránku pro přihlášení k Azure AD pro ověřování a měli byste může přijímat token ze služby Azure AD

@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: b6f1185a94f865578d9a6514fb6841f8811b2230
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 58992c80344902674b2b21a71b07925c752911a4
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42058076"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230935"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Nejčastější dotazy k Azure Multi-Factor Authentication
 
@@ -145,7 +145,7 @@ Pokud vaše organizace nemá starší verze klientů, by neměla uživatelům po
 
 Doručování textových zpráv a příjem odpovědí v obousměrné služby SMS není zaručena. protože neovladatelném faktorů, které by mohly ovlivnit spolehlivost služby. Tyto faktory zahrnují určení země, poskytovatelé mobilních služeb a sílu signálu.
 
-Pokud mají vaši uživatelé často potíže se spolehlivým příjmem textových zpráv, řekněte jim, aby místo toho použijte metodu mobilní aplikace nebo telefonní hovor. Mobilní aplikace může přijímat oznámení i přes mobilní síť a připojení Wi-Fi. Mobilní aplikace navíc můžete generovat ověřovací kódy, i v případě, že zařízení nemá žádné signál vůbec. Aplikace Microsoft Authenticator je dostupná pro [Android](http://go.microsoft.com/fwlink/?Linkid=825072), [IOS](http://go.microsoft.com/fwlink/?Linkid=825073), a [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071).
+Pokud mají vaši uživatelé často potíže se spolehlivým příjmem textových zpráv, řekněte jim, aby místo toho použijte metodu mobilní aplikace nebo telefonní hovor. Mobilní aplikace může přijímat oznámení i přes mobilní síť a připojení Wi-Fi. Mobilní aplikace navíc můžete generovat ověřovací kódy, i v případě, že zařízení nemá žádné signál vůbec. Aplikace Microsoft Authenticator je dostupná pro [Android](https://go.microsoft.com/fwlink/?Linkid=825072), [IOS](https://go.microsoft.com/fwlink/?Linkid=825073), a [Windows Phone](https://go.microsoft.com/fwlink/?Linkid=825071).
 
 Pokud je nutné použít textové zprávy, doporučujeme používat jednosměrná zpráva SMS, spíše než obousměrné služby SMS, pokud je to možné. Jednosměrné služby SMS je spolehlivější a zabraňuje uživatelům v poplatků globální služby SMS v odpovědi na textovou zprávu, která byla odeslána z jiné země.
 

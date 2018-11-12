@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: a70bb09edb5ccaf4e216785933af80e2fcb2153a
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 924fea7a8a8e6fb1ab25584a49f38b25156d1ec6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49363602"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230508"
 ---
 # <a name="tutorial-create-and-use-a-custom-image-for-virtual-machine-scale-sets-with-azure-powershell"></a>Kurz: Vytvoření a použití vlastní image pro škálovací sady virtuálních počítačů pomocí Azure PowerShellu
 Při vytváření škálovací sady zadáte image, která se použije při nasazení instancí virtuálních počítačů. Pokud chcete snížit počet úloh po nasazení instancí virtuálních počítačů, můžete použít vlastní image virtuálního počítače. Tato vlastní image virtuálního počítače obsahuje instalace a konfigurace všech požadovaných aplikací. Všechny instance virtuálních počítačů vytvořené ve škálovací sadě používají vlastní image virtuálního počítače a jsou připravené k obsluze provozu aplikace. V tomto kurzu se naučíte:
@@ -76,7 +76,7 @@ Teď vlastní virtuální počítač přizpůsobte nainstalováním základního
 Install-WindowsFeature -name Web-Server -IncludeManagementTools
 ```
 
-Posledním krokem přípravy virtuálního počítače pro použití jako vlastní image je jeho generalizace. Sysprep odebere všechny informace o vašem osobním účtu a konfigurace a resetuje virtuální počítač do čistého stavu pro budoucí nasazení. Další informace najdete v tématu [Použití nástroje Sysprep: Úvod](http://technet.microsoft.com/library/bb457073.aspx).
+Posledním krokem přípravy virtuálního počítače pro použití jako vlastní image je jeho generalizace. Sysprep odebere všechny informace o vašem osobním účtu a konfigurace a resetuje virtuální počítač do čistého stavu pro budoucí nasazení. Další informace najdete v tématu [Použití nástroje Sysprep: Úvod](https://technet.microsoft.com/library/bb457073.aspx).
 
 Pokud chcete virtuální počítač generalizovat, spusťte Sysprep a nastavte virtuální počítač do počátečního nastavení. Po dokončení dejte nástroji Sysprep pokyn k vypnutí virtuálního počítače:
 
