@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: rajraj
-ms.openlocfilehash: cf25d08fc9a0e1ae458d350be93af31447928ecb
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: c8ba9ac3150b5a84b2902afaaefcf78c76764fed
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49069450"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51036183"
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Automatické upgrady bitové kopie operačního systému sady škálování virtuálních počítačů Azure
 
@@ -121,7 +121,7 @@ Test paměti nástroje pro vyrovnávání zatížení můžete odkazovat *polož
   ...
 ```
 > [!NOTE]
-> Pokud používáte automatické upgrady operačního systému s využitím Service Fabric, image nového operačního systému nasazení aktualizační doména podle aktualizačních domén udržet vysokou dostupnost služby spuštěné v Service Fabric. Další informace o odolnosti charakteristiky clustery Service Fabric najdete v tématu [této dokumentace](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-durability-characteristics-of-the-cluster).
+> Pokud používáte automatické upgrady operačního systému s využitím Service Fabric, image nového operačního systému nasazení aktualizační doména podle aktualizačních domén udržet vysokou dostupnost služby spuštěné v Service Fabric. Aby se začala používat automatické upgrady operačního systému v Service Fabric musí být váš cluster nastavená úroveň Silver odolnosti nebo vyšší. Další informace o odolnosti charakteristiky clustery Service Fabric najdete v tématu [této dokumentace](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-durability-characteristics-of-the-cluster).
 
 ### <a name="keep-credentials-up-to-date"></a>Aktualizovat přihlašovací údaje
 Pokud vaše škálovací sada používá žádné přihlašovací údaje pro přístup k externím prostředkům, například pokud je nakonfigurovaná rozšíření virtuálního počítače využívající SAS token pro účet úložiště, musíte zajistit, aby že přihlašovací údaje jsou tak pořád aktuální. Pokud žádné přihlašovací údaje, včetně certifikátů a tokeny mají platnost, se upgrade nezdaří a první dávku virtuálních počítačů zůstanou ve stavu selhání.

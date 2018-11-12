@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: abnarain
-ms.openlocfilehash: 2dc81a96f1e83c3a6b1ddee92f57b2f0bae4196d
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: cae81bd2b856ae0fb4a648c03cbec1f87f222902
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50248911"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51038464"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Vytvoření a konfigurace místní prostředí integration runtime
 Prostředí integration runtime (IR) je výpočetní infrastruktura, která Azure Data Factory používá pro poskytují funkce integrace dat v různých síťových prostředích. Podrobnosti o prostředí IR najdete v tématu [přehled modulu runtime integrace](concepts-integration-runtime.md).
@@ -148,6 +148,10 @@ Tady jsou požadavky na certifikát TLS/SSL, který se používá k zabezpečen�
 Můžete znovu použít existující infrastrukturu modulu runtime integrace v místním prostředí, které jste už nastavili ve službě data factory. To vám umožní vytvořit *propojená místní prostředí integration runtime* v různých datových pomocí odkazu na existující objekt pro vytváření v místním prostředí IR (sdílené).
 
 Sdílet místní prostředí integration runtime pomocí Powershellu, najdete v článku [vytvořit sdílené místní prostředí integration runtime ve službě Azure Data Factory pomocí Powershellu](create-shared-self-hosted-integration-runtime-powershell.md).
+
+Pro zavedení dvanácti minutu a ukázku této funkce z následujícího videa:
+
+> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Hybrid-data-movement-across-multiple-Azure-Data-Factories/player]
 
 ### <a name="terminology"></a>Terminologie
 

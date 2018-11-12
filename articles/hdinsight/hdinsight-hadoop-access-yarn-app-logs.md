@@ -2,25 +2,25 @@
 title: Protokolům aplikací Hadoop YARN přístup prostřednictvím kódu programu – Azure
 description: Přístup k protokolům aplikací prostřednictvím kódu programu na clusteru Hadoop v HDInsight.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/25/2017
-ms.author: jasonh
+ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: e92f9f7bb49b0b7cc33c73a9c5eb2d0ca7532592
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: b7b93ca9c8638451d23a27edeed823e593a95b23
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43094397"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51035641"
 ---
-# <a name="access-yarn-application-logs-on-windows-based-hdinsight"></a>Protokoly aplikací YARN přístup na HDInsight se systémem Windows
-Tento dokument popisuje, jak získat přístup k protokolům aplikací YARN, které dokončení na clusteru Hadoop využívající systém Windows v Azure HDInsight
+# <a name="access-apache-yarn-application-logs-on-windows-based-hdinsight"></a>Přístup k Apache YARN protokolům aplikací na HDInsight se systémem Windows
+Tento dokument popisuje, jak získat přístup k protokolům aplikací Apache YARN, které dokončení na clusteru Hadoop využívající systém Windows v Azure HDInsight
 
 > [!IMPORTANT]
-> Informace v tomto dokumentu se vztahuje pouze na clustery HDInsight se systémem Windows. HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement). Informace o přístupu k YARN protokoly na clusterech HDInsight založených na Linuxu, naleznete v tématu [protokolům aplikací YARN přístup v systému Linux Hadoop v HDInsight](hdinsight-hadoop-access-yarn-app-logs-linux.md)
+> Informace v tomto dokumentu se vztahuje pouze na clustery HDInsight se systémem Windows. HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement). Informace o přístupu k YARN protokoly na clusterech HDInsight založených na Linuxu, naleznete v tématu [protokolům aplikací YARN Apache přístup v systému Linux Hadoop v HDInsight](hdinsight-hadoop-access-yarn-app-logs-linux.md)
 >
 
 

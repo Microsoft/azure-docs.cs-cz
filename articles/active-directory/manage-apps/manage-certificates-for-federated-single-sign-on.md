@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: barbkess
 ms.reviewer: jeedes
-ms.openlocfilehash: d7a5bf23f2855b43c4a2e4022568028d852c094b
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 0f6e690bc80ae8004fba4faf53c0403b0cb7edd9
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44719575"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51035332"
 ---
 # <a name="manage-certificates-for-federated-single-sign-on-in-azure-active-directory"></a>Správa certifikátů pro federované jednotné přihlašování v Azure Active Directory
 Tento článek se věnuje běžné otázky a informace související s certifikáty, které vytvoří Azure Active Directory (Azure AD) k vytvoření federovaného jednotného přihlašování (SSO) k aplikacím SaaS. Přidáte aplikace z Galerie aplikací Azure AD nebo pomocí šablony aplikace mimo galerii. Konfigurace aplikace s použitím možnosti federované jednotné přihlašování.
@@ -76,16 +76,20 @@ Následující kroky obnovení by měl mít za následek bez významnějších v
 
     ![Vygenerovat nový certifikát](./media/manage-certificates-for-federated-single-sign-on/create_new_certficate.png)
 
-2. Vyberte požadovanou vypršení platnosti datum a čas pro váš nový certifikát a klikněte na tlačítko **Uložit**.
+2. Vyberte požadovanou vypršení platnosti datum a čas pro váš nový certifikát a klikněte na tlačítko **Uložit**. Výběr data, která se překrývá s existující certifikát zajistí, že odstávky z důvodu vypršení platnosti certifikátu je omezené. 
 
-3. Stáhněte si certifikát **certifikát pro podpis SAML** možnost. Nahrajte nový certifikát na obrazovku Konfigurace jednotného přihlašování aplikace SaaS. Zjistěte, jak to provést pro určité aplikaci SaaS, klikněte na tlačítko **zobrazit kurz ke konfiguraci aplikace** odkaz.
+3. Pokud aplikace může automaticky nespotřebujete certifikát, nastavte nový certifikát na aktivní.  Přihlásit se k aplikaci a zkontrolujte, že funguje.
+
+4. Pokud aplikace nebude automaticky vyzvednutí nový certifikát, ale můžete popisovač více než jeden podpisový certifikát, před vypršením platnosti ten starý, nahrajte novou aplikaci, pak přejděte zpět na portál a nastavte ji aktivní certifikát. 
+
+5. Pokud aplikace může najednou zpracovat pouze jeden certifikát, vyberte oknu prostoje, stáhněte si nový certifikát, nahrajte ho do aplikace, vraťte se na webu Azure Portal a nastavit nový certifikát jako aktivní. 
    
-4. K aktivaci nového certifikátu ve službě Azure AD, vyberte **nastavit nový certifikát jako aktivní** zaškrtávací políčko a klikněte **Uložit** tlačítko v horní části stránky. Zobrazí přes nový certifikát na straně služby Azure AD. Stav certifikátu se změní z **nový** k **aktivní**. Od tohoto okamžiku spuštění služby Azure AD pomocí nového certifikátu pro podepisování odpovědi. 
+6. K aktivaci nového certifikátu ve službě Azure AD, vyberte **nastavit nový certifikát jako aktivní** zaškrtávací políčko a klikněte **Uložit** tlačítko v horní části stránky. Zobrazí přes nový certifikát na straně služby Azure AD. Stav certifikátu se změní z **nový** k **aktivní**. Od tohoto okamžiku spuštění služby Azure AD pomocí nového certifikátu pro podepisování odpovědi. 
    
     ![Vygenerovat nový certifikát](./media/manage-certificates-for-federated-single-sign-on/new_certificate_download.png)
 
 ## <a name="related-articles"></a>Související články
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](../saas-apps/tutorial-list.md)
-* [Správa aplikací v Azure Active Directory](what-is-application-management.md)
+* [Správa aplikací ve službě Azure Active Directory](what-is-application-management.md)
 * [Přístup k aplikaci a jednotné přihlašování s Azure Active Directory](what-is-single-sign-on.md)
 * [Řešení potíží s založené na SAML jednotného přihlašování](../develop/howto-v1-debug-saml-sso-issues.md)

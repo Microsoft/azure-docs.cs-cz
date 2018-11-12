@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ergreenl
-ms.openlocfilehash: 5bc1212cc6e894cd82a60abb42f92893c0bb2d43
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: bba7c70a5078d309a55f898c24389d42a8a604ab
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39579540"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51035031"
 ---
 # <a name="troubleshoot-invalid-service-principal-configuration-for-your-managed-domain"></a>Řešení potíží s neplatná konfigurace instančního objektu vaší spravované domény
 
@@ -45,7 +45,7 @@ Určit, která služba objekty zabezpečení muset znovu vytvořit pomocí násl
 | 2565bd9d-da50-47d4-8b85-4c97f669dc36 | [Znovu vytvořte chybějící instančního objektu pomocí Powershellu](#recreate-a-missing-service-principal-with-powershell) |
 | 443155a6-77f3-45e3-882b-22b3a8d431fb | [Znovu zaregistrovat do oboru názvů Microsoft.AAD](#re-register-to-the-microsoft-aad-namespace-using-the-azure-portal) |
 | abba844e-bc0e-44b0-947a-dc74e5d09022  | [Znovu zaregistrovat do oboru názvů Microsoft.AAD](#re-register-to-the-microsoft-aad-namespace-using-the-azure-portal) |
-| d87dcbc6-a371-462e-88e3-28ad15ec4e64 | [Instanční objekty, které vlastní opravit](#service-principals-that-self-correct) |
+| d87dcbc6-a371-462e-88e3-28ad15ec4e64 | [Znovu zaregistrovat do oboru názvů Microsoft.AAD](#re-register-to-the-microsoft-aad-namespace-using-the-azure-portal) |
 
 ## <a name="recreate-a-missing-service-principal-with-powershell"></a>Znovu vytvořte chybějící instančního objektu pomocí Powershellu
 Postupujte podle těchto kroků, pokud objekt služby s ID ```2565bd9d-da50-47d4-8b85-4c97f669dc36``` chybí z adresáře služby Azure AD.
@@ -76,7 +76,7 @@ A tento problém vyřešit, zadejte v okně Powershellu následující příkazy
 
 
 ## <a name="re-register-to-the-microsoft-aad-namespace-using-the-azure-portal"></a>Znovu zaregistrovat do oboru názvů Microsoft AAD pomocí webu Azure portal
-Postupujte podle těchto kroků, pokud objekt služby s ID ```443155a6-77f3-45e3-882b-22b3a8d431fb``` nebo ```abba844e-bc0e-44b0-947a-dc74e5d09022``` chybí z adresáře služby Azure AD.
+Postupujte podle těchto kroků, pokud objekt služby s ID ```443155a6-77f3-45e3-882b-22b3a8d431fb``` nebo ```abba844e-bc0e-44b0-947a-dc74e5d09022``` nebo ```d87dcbc6-a371-462e-88e3-28ad15ec4e64``` chybí z adresáře služby Azure AD.
 
 **Řešení:** pomocí následujících kroků obnovíte Domain Services na adresáři:
 
@@ -85,12 +85,6 @@ Postupujte podle těchto kroků, pokud objekt služby s ID ```443155a6-77f3-45e3
 3. Použití na levém navigačním panelu zvolte **poskytovatelů prostředků**
 4. Vyhledejte "Microsoft.AAD" v tabulce a klikněte na **znovu zaregistrovat.**
 5. K zajištění, že výstraha vyřeší, zobrazení stavu stránky vaší spravované domény do dvou hodin.
-
-
-## <a name="service-principals-that-self-correct"></a>Instanční objekty, které vlastní opravit
-Postupujte podle těchto kroků, pokud objekt služby s ID ```d87dcbc6-a371-462e-88e3-28ad15ec4e64``` chybí z adresáře služby Azure AD.
-
-**Řešení:** Azure AD Domain Services může rozpoznat, kdy se tento konkrétní instanční objekt se nenašel, chybně nakonfigurovaná nebo odstranit. Služba automaticky znovu vytvoří tento instanční objekt. Ale budete muset aplikaci odstranit a objekt, který pracoval s odstraněné aplikace, stejně jako při certifikace navyšování, aplikace a objekt již nebude moci upravit nový instanční objekt. To povede k novou chybu ve vaší doméně. Postupujte podle kroků uvedených v [části AADDS105](#alert-aadds105-password-synchronization-application-is-out-of-date) jak tomuto problému zabránit. Po zkontrolujte stav vaší spravované domény po dvou hodin k zajištění, že nový instanční objekt služby byly znovu vytvořeny.
 
 
 ## <a name="alert-aadds105-password-synchronization-application-is-out-of-date"></a>Upozornění AADDS105: Aplikace synchronizace hesla je zastaralá
@@ -110,8 +104,8 @@ A tento problém vyřešit, zadejte v okně Powershellu následující příkazy
 2. Odstranit staré aplikace a pomocí následujících příkazů Powershellu
 
     ```powershell
-    $app = Get-AzureADApplication -Filter "IdentifierUris eq 'https://sync.aaddc.activedirectory.windowsazure.com'"
-    Remove-AzureADApplication -ObjectId $app.ObjectId
+    $app = Get-AzureADApplication -Filter "IdentifierUris eq 'https://sync.aaddc.activedirectory.windowsazure.com'"
+    Remove-AzureADApplication -ObjectId $app.ObjectId
     $spObject = Get-AzureADServicePrincipal -Filter "DisplayName eq 'Azure AD Domain Services Sync'"
     Remove-AzureADServicePrincipal -ObjectId $app.ObjectId
     ```

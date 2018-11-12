@@ -1,5 +1,5 @@
 ---
-title: Směrování provozu virtuální sítě Azure | Microsoft Docs
+title: Směrování provozu virtuální sítě Azure | Dokumentace Microsoftu
 description: Zjistěte, jak Azure směruje provoz virtuální sítě a jak můžete směrování Azure přizpůsobit.
 services: virtual-network
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 97e192312619455c0055a917df880cc48eb082dd
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 9efb08922f3e6f78266baaf8ae623dd241c09522
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978900"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51037613"
 ---
 # <a name="virtual-network-traffic-routing"></a>Směrování provozu virtuální sítě
 
@@ -167,7 +167,7 @@ Když přepíšete předponu adresy 0.0.0.0/0, kromě přenosu odchozího provoz
         - Být schopné překládat a předávat síťové adresy nebo předávat provoz přes proxy do cílového prostředku v podsíti a vracet provoz zpět do internetu. 
     - **Brána virtuální sítě:** Pokud je brána bránou virtuální sítě ExpressRoute, místní zařízení připojené k internetu musí být schopné překládat a předávat síťové adresy nebo předávat provoz přes proxy do cílového prostředku v podsíti přes [soukromý partnerský vztah](../expressroute/expressroute-circuit-peerings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-private-peering) ExpressRoute. 
 
-Pokud je vaše virtuální síť připojená k Azure VPN gateway, nepřidružujte k [podsíti brány](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub) směrovací tabulku, která má směrování s cílem 0.0.0.0/0. Mohli byste tím bráně znemožnit správné fungování. Podrobnosti najdete v otázce *Proč jsou některé porty brány VPN otevřené?* v [nejčastějších dotazech ke službě VPN Gateway](../vpn-gateway/vpn-gateway-vpn-faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#why-are-certain-ports-opened-on-my-vpn-gateway).
+Pokud je vaše virtuální síť připojená k Azure VPN gateway, nepřidružujte k [podsíti brány](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub) směrovací tabulku, která má směrování s cílem 0.0.0.0/0. Mohli byste tím bráně znemožnit správné fungování. Podrobnosti najdete v otázce *Proč jsou některé porty brány VPN otevřené?* v [nejčastějších dotazech ke službě VPN Gateway](../vpn-gateway/vpn-gateway-vpn-faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gatewayports).
 
 V tématech [DMZ mezi Azure a místním datovým centrem](/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?toc=%2fazure%2fvirtual-network%2ftoc.json) a [DMZ mezi Azure a internetem](/azure/architecture/reference-architectures/dmz/secure-vnet-dmz?toc=%2fazure%2fvirtual-network%2ftoc.json) najdete podrobné informace k implementaci při použití bran virtuálních sítí a virtuálních zařízení mezi internetem a Azure.
 

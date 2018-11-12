@@ -2,18 +2,18 @@
 title: Neměnné úložiště pro objekty BLOB Azure Storage | Dokumentace Microsoftu
 description: Azure Storage nabízí podporu ČERV (zápis, mnoho čtení) pro úložiště objektů Blob (objekt), který uživatelům umožňuje ukládat data v nepůjdou upravit stavu pro zadaný interval.
 services: storage
-author: MichaelHauss
+author: xyh1
 ms.service: storage
 ms.topic: article
-ms.date: 09/18/2018
-ms.author: mihauss
+ms.date: 11/05/2018
+ms.author: hux
 ms.component: blobs
-ms.openlocfilehash: 38e34391294e1a070d506583fbc30dcdb703bea0
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 261f66013ab9c0ba493d18b84856d17db953402e
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50156897"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51036991"
 ---
 # <a name="store-business-critical-data-in-azure-blob-storage"></a>Store důležitých podnikových dat ve službě Azure Blob storage
 
@@ -194,7 +194,7 @@ V případě neuhrazení zásady uchovávání informací normální data použi
 
 **Nabízíte zkušební období nebo období odkladu pouze na vyzkoušení této funkce?**
 
-Ano. Při prvním vytvoření zásady uchovávání informací podle času je *odemknout* stavu. V tomto stavu můžete provádět požadované změny pro interval uchovávání informací, jako je například zvýšení nebo snížení a dokonce odstranit zásady. Jakmile se zásady uzamknou, zůstane uzamčen forever, brání odstranění. Navíc není možné zkrátit interval uchovávání informací, když je zásada uzamknutá. Důrazně doporučujeme používat *odemknout* pouze pro zkušební účely a zamknout zásady v období 24 hodin. Tyto postupy umožňují v souladu s Sekundu 17a-4(f) a nařízení.
+Ano. Při prvním vytvoření zásady uchovávání informací podle času je *odemknout* stavu. V tomto stavu můžete provádět požadované změny pro interval uchovávání informací, jako je například zvýšení nebo snížení a dokonce odstranit zásady. Jakmile se zásady uzamknou, zůstane uzamčena než interval uchovávání informací vyprší. To zabraňuje odstranění a změny interval uchovávání informací. Důrazně doporučujeme používat *odemknout* pouze pro zkušební účely a zamknout zásady v období 24 hodin. Tyto postupy umožňují v souladu s Sekundu 17a-4(f) a nařízení.
 
 **Je tato funkce dostupná v národních cloudech a cloudech pro státní správu?**
 

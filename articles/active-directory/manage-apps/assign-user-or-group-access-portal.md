@@ -12,21 +12,21 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/06/2018
+ms.date: 11/05/2018
 ms.author: barbkess
 ms.reviewer: luleon
-ms.openlocfilehash: f23c9976dacc1ca696772d6bf02b5d59e3e0b4d5
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: ee0b14123e193f219e403d2608368c27f953013d
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39369181"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51037970"
 ---
 # <a name="assign-a-user-or-group-to-an-enterprise-app-in-azure-active-directory"></a>Přiřadit uživatele nebo skupiny k podnikové aplikace v Azure Active Directory
 Přiřadit uživatele nebo skupinu pro podnikové aplikace, musí mít příslušná oprávnění ke správě podnikové aplikace a musíte být globální správce adresáře.
 
 > [!NOTE]
-> Funkce popsané v tomto článku vyžadují licenci Azure Active Directory Premium P1 nebo P2. Další informace najdete v tématu [Azure Active Directory, na stránce s cenami](https://azure.microsoft.com/pricing/details/active-directory).
+> Licenční požadavky pro funkce popsané v tomto článku najdete v článku [Azure Active Directory, na stránce s cenami](https://azure.microsoft.com/pricing/details/active-directory).
 
 > [!NOTE]
 > For Applications Microsoftu (jako jsou například aplikace Office 365) přiřazení uživatelů k podnikové aplikace pomocí Powershellu.
@@ -35,7 +35,7 @@ Přiřadit uživatele nebo skupinu pro podnikové aplikace, musí mít příslu�
 ## <a name="how-do-i-assign-user-access-to-an-enterprise-app-in-the-azure-portal"></a>Jak přiřadit přístup uživatelů k podnikové aplikace na webu Azure Portal?
 1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com) prostřednictvím účtu, který má k adresáři oprávnění globálního správce.
 2. Vyberte **všechny služby**, v textovém poli zadejte Azure Active Directory a pak vyberte **Enter**.
-3. Na **Azure Active Directory – *NazevAdresare***  blade (to znamená, Azure AD okna pro directory spravujete), vyberte **podnikové aplikace**.
+3. Vyberte **podnikové aplikace**.
 
     ![Otevření podnikové aplikace](./media/assign-user-or-group-access-portal/open-enterprise-apps.png)
 4. Na **podnikové aplikace** okně vyberte **všechny aplikace**. Tady se uvádí aplikace, které můžete spravovat.

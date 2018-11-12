@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 7/20/2018
 ms.author: msfussell
-ms.openlocfilehash: 70ea33f2c3e3a79d1754b72d12e8fc27689e38ea
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 434f0639baa45dc83ee2fae4ec8b67a80517db14
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49387934"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51035906"
 ---
 # <a name="dns-service-in-azure-service-fabric"></a>Služba DNS v Azure Service Fabric
 Služba DNS je volitelná systémová služba, kterou můžete povolit ve vašem clusteru na zjišťovat další služby pomocí protokolu DNS. 
@@ -43,6 +43,9 @@ Následující diagram ukazuje, jak funguje služba DNS pro dělené stavové sl
 Dynamické porty nejsou podporovány službou DNS. K rozpoznávání služeb, které jsou zveřejněné na dynamické porty, použijte [reverzní proxy service](./service-fabric-reverseproxy.md).
 
 ## <a name="enabling-the-dns-service"></a>Povolení služby DNS
+> [!NOTE]
+> Služba DNS pro služby Service Fabric ještě není v Linuxu podporováno.
+
 Při vytváření clusteru pomocí portálu, služba DNS je povolena ve výchozím nastavení **služba DNS zahrnují** zaškrtávací políčko na **konfigurace clusteru** nabídky:
 
 ![Povolení služby DNS na portálu](./media/service-fabric-dnsservice/enable-dns-service.png)
@@ -251,6 +254,8 @@ public class ValuesController : Controller
 
 ## <a name="known-issues"></a>Známé problémy
 * Pro Service Fabric verze 6.3 a vyšší dojde k problému s vyhledávání DNS pro názvy služeb, které obsahuje pomlčky v názvu DNS. Další informace o tomto problému, sledovat následující [problém Githubu](https://github.com/Azure/service-fabric-issues/issues/1197). V dalším 6.3 aktualizace Připravujeme opravu pro tento. 
+
+* Služba DNS pro služby Service Fabric ještě není v Linuxu podporováno. Služba DNS je podporována pro kontejnery v Linuxu. Ruční řešení pomocí klienta Fabric/ServicePartitionResolver je k dispozici alternativní.
 
 ## <a name="next-steps"></a>Další postup
 Další informace o komunikaci služby v rámci clusteru pomocí [připojení a komunikace se službami](service-fabric-connect-and-communicate-with-services.md)

@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 07/13/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: a197b3c7aa423323f984a793851a458733391e33
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 08d9566c3ce8f486465f0ed7fb5aab4419e592d8
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50243108"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228585"
 ---
 #  <a name="use-a-saml-20-identity-provider-idp-for-single-sign-on"></a>Použití zprostředkovatele 2.0 Identity (IdP) SAML pro jednotné přihlašování na
 
@@ -167,7 +167,7 @@ Je nutné povolit komunikaci mezi zprostředkovatele identity SAML 2.0 a Azure A
 ## <a name="install-windows-powershell-for-sign-on-with-saml-20-identity-provider"></a>Instalace prostředí Windows PowerShell pro přihlášení pomocí zprostředkovatele identity SAML 2.0
 Po nakonfigurování zprostředkovatele identity SAML 2.0 pro použití s přihlašováním k Azure AD, dalším krokem je ke stažení a instalaci Azure Active Directory modulu pro Windows PowerShell. Po instalaci budete používat tyto rutiny ke konfiguraci domény Azure AD jako federovaných domén.
 
-Sada Azure Active Directory modulu pro Windows PowerShell je ke stažení pro správu dat organizace ve službě Azure AD. Tento modul nainstaluje sadu rutin Windows powershellu; Spusťte tyto rutiny k nastavení přístupu jednotné přihlašování do služby Azure AD a v důsledku ke všem cloudovým službám jste se nepřihlásili k odběru. Pokyny o tom, jak stáhnout a nainstalovat nejnovější verzi rutin najdete v tématu [http://technet.microsoft.com/library/jj151815.aspx](http://technet.microsoft.com/library/jj151815.aspx)
+Sada Azure Active Directory modulu pro Windows PowerShell je ke stažení pro správu dat organizace ve službě Azure AD. Tento modul nainstaluje sadu rutin Windows powershellu; Spusťte tyto rutiny k nastavení přístupu jednotné přihlašování do služby Azure AD a v důsledku ke všem cloudovým službám jste se nepřihlásili k odběru. Pokyny o tom, jak stáhnout a nainstalovat nejnovější verzi rutin najdete v tématu [http://technet.microsoft.com/library/jj151815.aspx](https://technet.microsoft.com/library/jj151815.aspx)
 
 ## <a name="set-up-a-trust-between-your-saml-identity-provider-and-azure-ad"></a>Nastavení vztahu důvěryhodnosti mezi SAML zprostředkovatele identity a Azure AD
 Před konfigurací federace pro doménu služby Azure AD, musí mít v konfiguraci vlastní domény. Nelze vytvořit federaci výchozí doménu, kterou zajišťuje Microsoft. Výchozí doménu od Microsoftu končí řetězcem "onmicrosoft.com".
@@ -190,12 +190,12 @@ Následující postup vás provede převod existující standardní domény na f
 
     `<IDPSSODescriptor protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol"> <KeyDescriptor use="signing"> <KeyInfo xmlns="http://www.w3.org/2000/09/xmldsig#"> <X509Data> <X509Certificate>MIIC5jCCAc6gAwIBAgIQLnaxUPzay6ZJsC8HVv/QfTANBgkqhkiG9w0BAQsFADAvMS0wKwYDVQQDEyRBREZTIFNpZ25pbmcgLSBmcy50ZWNobGFiY2VudHJhbC5vcmcwHhcNMTMxMTA0MTgxMzMyWhcNMTQxMTA0MTgxMzMyWjAvMS0wKwYDVQQDEyRBREZTIFNpZ25pbmcgLSBmcy50ZWNobGFiY2VudHJhbC5vcmcwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCwMdVLTr5YTSRp+ccbSpuuFeXMfABD9mVCi2wtkRwC30TIyPdORz642MkurdxdPCWjwgJ0HW6TvXwcO9afH3OC5V//wEGDoNcI8PV4enCzTYFe/h//w51uqyv48Fbb3lEXs+aVl8155OAj2sO9IX64OJWKey82GQWK3g7LfhWWpp17j5bKpSd9DBH5pvrV+Q1ESU3mx71TEOvikHGCZYitEPywNeVMLRKrevdWI3FAhFjcCSO6nWDiMqCqiTDYOURXIcHVYTSof1YotkJ4tG6mP5Kpjzd4VQvnR7Pjb47nhIYG6iZ3mR1F85Ns9+hBWukQWNN2hcD/uGdPXhpdMVpBAgMBAAEwDQYJKoZIhvcNAQELBQADggEBAK7h7jF7wPzhZ1dPl4e+XMAr8I7TNbhgEU3+oxKyW/IioQbvZVw1mYVCbGq9Rsw4KE06eSMybqHln3w5EeBbLS0MEkApqHY+p68iRpguqa+W7UHKXXQVgPMCpqxMFKonX6VlSQOR64FgpBme2uG+LJ8reTgypEKspQIN0WvtPWmiq4zAwBp08hAacgv868c0MM4WbOYU0rzMIR6Q+ceGVRImlCwZ5b7XKp4mJZ9hlaRjeuyVrDuzBkzROSurX1OXoci08yJvhbtiBJLf3uPOJHrhjKRwIt2TnzS9ElgFZlJiDIA26Athe73n43CT0af2IG6yC7e6sK4L3NEXJrwwUZk=</X509Certificate> </X509Data> </KeyInfo> </KeyDescriptor>` 
 
-Další informace o "Set-MsolDomainAuthentication" v tématu: [ http://technet.microsoft.com/library/dn194112.aspx ](http://technet.microsoft.com/library/dn194112.aspx).
+Další informace o "Set-MsolDomainAuthentication" v tématu: [ http://technet.microsoft.com/library/dn194112.aspx ](https://technet.microsoft.com/library/dn194112.aspx).
 
 >[!NOTE]
 >Je nutné spustit pomocí "$ecpUrl ="https://WS2012R2-0.contoso.com/PAOS"" pouze v případě, že nastavíte ECP rozšíření pro zprostředkovatele identity. Exchange Online, s výjimkou Outlook Web Application (OWA), klienty na základě příspěvek aktivní koncový bod. Pokud váš protokol SAML 2.0 STS implementuje active koncový bod podobná společnosti Shibboleth ECP provádění aktivní koncový bod je možné, že pro tyto bohatých klientů k interakci se službou Exchange Online.
 
-Jakmile federation není nakonfigurovaná můžete přepnout zpět na "nefederovaných" (nebo "spravovaný"), ale tato změna trvá až dvě hodiny a vyžaduje přiřazení nové náhodná hesla pro cloudové přihlašování k jednotlivým uživatelům. Přepnutí zpět do "spravovaný" může být nutné v některých scénářích resetování chybu v nastavení. Další informace o převodu domény naleznete v tématu: [ http://msdn.microsoft.com/library/windowsazure/dn194122.aspx ](http://msdn.microsoft.com/library/windowsazure/dn194122.aspx).
+Jakmile federation není nakonfigurovaná můžete přepnout zpět na "nefederovaných" (nebo "spravovaný"), ale tato změna trvá až dvě hodiny a vyžaduje přiřazení nové náhodná hesla pro cloudové přihlašování k jednotlivým uživatelům. Přepnutí zpět do "spravovaný" může být nutné v některých scénářích resetování chybu v nastavení. Další informace o převodu domény naleznete v tématu: [ http://msdn.microsoft.com/library/windowsazure/dn194122.aspx ](https://msdn.microsoft.com/library/windowsazure/dn194122.aspx).
 
 ## <a name="provision-user-principals-to-azure-ad--office-365"></a>Zřízení objekty zabezpečení uživatelů do služby Azure AD nebo Office 365
 Předtím, než můžete ověřovat uživatele pro Office 365, je třeba zřídit služby Azure AD s objekty zabezpečení uživatelů, které odpovídají kontrolního výrazu v deklaraci identity SAML 2.0. Pokud jsou tyto objekty zabezpečení uživatelů nejsou známé do služby Azure AD předem, nelze použít pro federované přihlášení. Azure AD Connect nebo prostředí Windows PowerShell lze použít ke zřízení objekty zabezpečení uživatelů.
@@ -218,7 +218,7 @@ Tento postup ukazuje, jak přidat do služby Azure AD jednoho uživatele.
         -LicenseAssignment "samlp2test:ENTERPRISEPACK" 
         -UsageLocation "US" ` 
 
-Další informace o rezervaci "New-MsolUser" [http://technet.microsoft.com/library/dn194096.aspx](http://technet.microsoft.com/library/dn194096.aspx)
+Další informace o rezervaci "New-MsolUser" [http://technet.microsoft.com/library/dn194096.aspx](https://technet.microsoft.com/library/dn194096.aspx)
 
 >[!NOTE]
 >Hodnota "UserPrinciplName" musí odpovídat hodnotě, kterou odešlete "IDPEmail" ve vaší deklarace identity SAML 2.0 a hodnota "ImmutableID" musí odpovídat hodnotě poslaná vaše kontrolní výraz "NameID".

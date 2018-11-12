@@ -1,5 +1,5 @@
-# [Dokumentace k platformám Azure Marketplace a AppSource](index.md)  
-
+# [Dokumentace k platformám Azure Marketplace a AppSource](index.md)
+## [Zásady hodnocení a recenzí](./rating-review-policies.md)   
 ## [Přehled a výhody platforem Azure Marketplace a AppSource](./marketplace-publishers-guide.md)  
 
 ### [Jak se stát vydavatelem v Marketplace](./become-publisher.md)  
@@ -34,6 +34,14 @@
 <!-- Following section is for Cloud Partner Portal (CPP). -->
 
 # [Portál Cloud Partner](./cloud-partner-portal-orig/cloud-partner-portal-getting-started-with-the-cloud-partner-portal.md) 
+
+## Správa portálu
+### [Registrace účtu centra pro vývojáře](./cloud-partner-portal-orig/cloud-partner-portal-dev-center-accounts-registration.md)
+### [Privátní skladové položky](./cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus.md)
+### [Doprovodné materiály pro SEO](./cloud-partner-portal-orig/cloud-partner-portal-seo-guidance.md)
+### [Správa profilu vydavatele](./cloud-partner-portal-orig/cloud-partner-portal-manage-publisher-profile.md)
+### [Správa uživatelů](./cloud-partner-portal-orig/cloud-partner-portal-manage-users.md)
+### [Dodržování předpisů GDPR](./cloud-partner-portal-orig/cloud-partner-portal-gdpr.md)
 
 ## [Nabídka virtuálních počítačů](./cloud-partner-portal/virtual-machine/cpp-virtual-machine-offer.md)
 ### [Požadavky](./cloud-partner-portal/virtual-machine/cpp-prerequisites.md)
@@ -70,8 +78,7 @@
 ### [Automate offer publishing](./cloud-partner-portal-orig/cloud-partner-portal-automate-offer-publishing.md)
 -->
 
-## Aplikace Azure
-### [Registrace účtu centra pro vývojáře](./cloud-partner-portal-orig/cloud-partner-portal-dev-center-accounts-registration.md)
+## [Nabídka aplikace Azure](./cloud-partner-portal-orig/cpp-azure-app-offer.md)
 ### [Vytvoření spravované aplikace](./cloud-partner-portal-orig/cloud-partner-portal-managed-app-publish.md)
 ### [Vytvoření šablony řešení](./cloud-partner-portal-orig/cloud-partner-portal-solution-template-offer-publish.md)
 ### [Publikování řešení pro správu](./cloud-partner-portal-orig/cloud-partner-portal-management-solution-publish.md)
@@ -79,14 +86,12 @@
 ### [Zveřejnění nabídky](./cloud-partner-portal-orig/cloud-partner-portal-managed-app-offer-go-live.md)
 ### [Aktualizace stávající nabídky](./cloud-partner-portal-orig/cloud-partner-portal-managed-app-offer-update.md)
 ### [Odstranění nabídky](./cloud-partner-portal-orig/cloud-partner-portal-managed-app-offer-delete.md)
-### [Migrace nabídek](./cloud-partner-portal-orig/cloud-partner-portal-how-to-migrate-to-the-new-cloud-partner-portal.md)
+<!-- Obsolete ### [Migrate offers](./cloud-partner-portal-orig/cloud-partner-portal-how-to-migrate-to-the-new-cloud-partner-portal.md)  -->
 
-## Aplikace SaaS
+## [Nabídka aplikace SaaS](./cloud-partner-portal-orig/cpp-saas-app-offer.md)
 ### [Technický průvodce publikováním aplikací SaaS](./cloud-partner-portal-orig/cloud-partner-portal-saas-offers-tech-publishing-guide.md)
 ### [Prodej SaaS přes Azure](./cloud-partner-portal-orig/cloud-partner-portal-saas-offer-subscriptions.md)
 ### [Rozhraní API SaaS](./cloud-partner-portal-orig/cloud-partner-portal-saas-subscription-apis.md)
-
-<!-- Legacy ## [Containers](./cloud-partner-portal-orig/cloud-partner-portal-containers-guide.md) -->
 
 ## [Nabídka kontejnerů](./cloud-partner-portal/containers/cpp-containers-offer.md)
 ### [Požadavky](./cloud-partner-portal/containers/cpp-prerequisites.md)
@@ -98,6 +103,7 @@
 ### [Vytvoření technických prostředků kontejneru](./cloud-partner-portal/containers/cpp-create-technical-assets.md)
 ### [Publikace nabídky kontejnerů](./cloud-partner-portal/containers/cpp-publish-offer.md)
 ### [Aktualizace stávající nabídky](./cloud-partner-portal/containers/cpp-update-existing-offer.md)
+<!-- Legacy ## [Containers](./cloud-partner-portal-orig/cloud-partner-portal-containers-guide.md) -->
 
 ## [Nabídka modul IoT Edge](./cloud-partner-portal/iot-edge-module/cpp-offer-process-parts.md)
 ### [Požadavky](./cloud-partner-portal/iot-edge-module/cpp-prerequisites.md)
@@ -118,24 +124,16 @@
 ### [IoT Edge module FAQ](./cloud-partner-portal-orig/cloud-partner-portal-iot-edge-module-faq.md)
 -->
 
-## Správa potenciálních zákazníků
-### [Konfigurace potenciálních zákazníků](./cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads.md)
-### [Tabulka Azure](./cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-azure-table.md)
-### [Dynamics](./cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics.md)
-### [Koncový bod HTTPS](./cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-https.md)
-### [Marketo](./cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-marketo.md)
-### [Salesforce](./cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-salesforce.md)
-
 <!-- ## [Cortana Intelligence](./cloud-partner-portal-orig/cloud-partner-portal-publish-cortana-intelligence-app.md)  -->
 
-## Dynamics 365 for Customer Engagement
+## [Nabídka Dynamics 365 for Customer Engagement](./cloud-partner-portal-orig/cpp-customer-engagement-offer.md)
 ### [Vytvoření řešení](./cloud-partner-portal-orig/dynamics-365-solution-preparation.md)
 ### [Vytvoření balíčku](./cloud-partner-portal-orig/appSource-package-preparation.md)
 ### [Vygenerování klíče SAS](./cloud-partner-portal-orig/store-your-appSource-package-to-azure-storage-and-generate-sas-key.md)
 ### [Vytvoření nabídky](./cloud-partner-portal-orig/setup-your-application-in-the-publishing-portal.md)
 ### [Publikování nabídky](./cloud-partner-portal-orig/request-to-publish-the-app.md)
 
-## Dynamics 365 for Business Central
+## [Nabídka Dynamics 365 for Business Central](./cloud-partner-portal-orig/cpp-business-central-offer.md)
 ### [Přehled publikování](./cloud-partner-portal-orig/d365-finance-overview-publish-your-app.md)
 ### [Vytvoření nové nabídky](./cloud-partner-portal-orig/d365-finance-create-new-offer.md)
 ### [Nastavení nabídky](./cloud-partner-portal-orig/d365-finance-create-offer-settings.md)
@@ -143,7 +141,7 @@
 ### [Podrobnosti o prodejních místech](./cloud-partner-portal-orig/d365-finance-create-storefront-details.md)
 ### [Proces publikování](./cloud-partner-portal-orig/d365-finance-app-publishing-process.md)
 
-## Dynamics 365 for Operations
+## [Nabídka Dynamics 365 for Operations](./cloud-partner-portal-orig/cpp-dynamics-365-operations-offer.md)
 ### [Požadavky](./cloud-partner-portal-orig/pre-requisites.md)
 ### [Jak publikovat](./cloud-partner-portal-orig/manage-dynamics-365-for-operations.md)
 ### [Předplatné LCS](./cloud-partner-portal-orig/lcs-subscription.md)
@@ -151,6 +149,11 @@
 ### [Datové entity](./cloud-partner-portal-orig/data-entities.md)
 ### [BPM a metodologie](./cloud-partner-portal-orig/bpm-and-methodologies.md)
 ### [Wikiweb nápovědy](./cloud-partner-portal-orig/help-wiki.md)
+
+## [Konzultační služby](./cloud-partner-portal-orig/cloud-partner-portal-consulting-services-publishing-offer.md)
+## [Správa profilu vydavatele](./cloud-partner-portal-orig/cloud-partner-portal-manage-publisher-profile.md)
+## [Správa uživatelů](./cloud-partner-portal-orig/cloud-partner-portal-manage-users.md)
+## [Dodržování předpisů GDPR](./cloud-partner-portal-orig/cloud-partner-portal-gdpr.md)
 
 ## Testovací verze
 ### [Co je testovací verze?](./cloud-partner-portal-orig/what-is-test-drive.md)
@@ -160,12 +163,15 @@
 ### [Transformace příkladů pro testovací verzi](./cloud-partner-portal-orig/transforming-examples-for-test-drive.md)
 ### [Marketing a osvědčené postupy](./cloud-partner-portal-orig/marketing-and-best-practices.md)
 
-## [Konzultační služby](./cloud-partner-portal-orig/cloud-partner-portal-consulting-services-publishing-offer.md)
-## [Správa profilu vydavatele](./cloud-partner-portal-orig/cloud-partner-portal-manage-publisher-profile.md)
-## [Správa uživatelů](./cloud-partner-portal-orig/cloud-partner-portal-manage-users.md)
-## [Dodržování předpisů GDPR](./cloud-partner-portal-orig/cloud-partner-portal-gdpr.md)
+## Správa potenciálních zákazníků
+### [Konfigurace potenciálních zákazníků](./cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads.md)
+### [Tabulka Azure](./cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-azure-table.md)
+### [Dynamics](./cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics.md)
+### [Koncový bod HTTPS](./cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-https.md)
+### [Marketo](./cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-marketo.md)
+### [Salesforce](./cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-salesforce.md)
 
-## Insights
+## Seller Insights
 ### [Začínáme](./cloud-partner-portal-orig/si-getting-started.md)
 ### [Co je nového](./cloud-partner-portal-orig/si-changes.md)
 ### [Webové analýzy](./cloud-partner-portal-orig/web-analytics.md)
