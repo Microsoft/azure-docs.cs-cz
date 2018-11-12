@@ -8,12 +8,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: overview
 ms.date: 09/24/2018
-ms.openlocfilehash: 4281a79b88675df192574ab2dd3dfa39c9eefe1b
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: ebce27f3558661aca9e1bd6e7130c96c396d33ee
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49954160"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51257118"
 ---
 # <a name="what-is-azure-data-explorer"></a>Co je Azure Data Explorer?
 
@@ -67,7 +67,7 @@ Budeme rádi, když nám napíšete svůj názor na službu Azure Data Explorer 
   - [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-data-explorer)
   - [Technická komunita Microsoftu](https://techcommunity.microsoft.com/t5/Azure-Data-Explorer/bd-p/Kusto)
   - [MSDN](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureKusto)
-- [Posílání návrhů na vylepšení produktu prostřednictvím služby User Voice](http://aka.ms/AzureDataExplorer.UserVoice)
+- [Posílání návrhů na vylepšení produktu prostřednictvím služby User Voice](https://aka.ms/AzureDataExplorer.UserVoice)
 
 ## <a name="next-steps"></a>Další kroky
 

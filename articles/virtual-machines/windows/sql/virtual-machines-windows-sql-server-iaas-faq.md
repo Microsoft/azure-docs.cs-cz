@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 07/12/2018
 ms.author: v-shysun
-ms.openlocfilehash: 906cec35c30c277ac1e8bc641d12fe37c29413dd
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: edddc40b17adde685f875dfaa6b20879c6e61b15
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49427174"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51259152"
 ---
 # <a name="frequently-asked-questions-for-sql-server-running-on-windows-virtual-machines-in-azure"></a>Nejčastější dotazy ke službě SQL Server běžící na virtuálních počítačích Windows v Azure
 
@@ -79,7 +79,7 @@ Tento článek obsahuje odpovědi na některé nejběžnější otázky o spušt
 
 1. **Musím zaplatit licence SQL serveru na Virtuálním počítači Azure, pokud se slouží pouze pro pohotovostní režim/převzetí služeb při selhání?**
 
-   Pokud máte Software Assurance a využít mobilitu licencí, jak je popsáno v [virtuálního počítače nejčastější dotazy ohledně licencování](http://azure.microsoft.com/pricing/licensing-faq/) potom není potřeba platit licenční Server SQL účasti jako pasivní sekundární replika v nasazení vysokou DOSTUPNOSTÍ. V opačném případě budete muset zaplatit jeho licence.
+   Pokud máte Software Assurance a využít mobilitu licencí, jak je popsáno v [virtuálního počítače nejčastější dotazy ohledně licencování](https://azure.microsoft.com/pricing/licensing-faq/) potom není potřeba platit licenční Server SQL účasti jako pasivní sekundární replika v nasazení vysokou DOSTUPNOSTÍ. V opačném případě budete muset zaplatit jeho licence.
 
 
 ## <a name="administration"></a>Správa

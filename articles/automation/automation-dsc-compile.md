@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 09/10/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: fae415d158a9fced0c63078cd09c0cc070c88372
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: ca3c29101e17a7970ba782b5c49267bf9f18482e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45629997"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51257152"
 ---
 # <a name="compiling-dsc-configurations-in-azure-automation-state-configuration"></a>Kompilace konfigurací DSC v konfiguraci stavu služby Azure Automation
 
@@ -171,7 +171,7 @@ Node ($AllNodes.Where{$_.Role -eq 'WebServer'}).NodeName
 
 ## <a name="configurationdata"></a>ConfigurationData
 
-**ConfigurationData** umožňuje oddělit strukturální konfiguraci z jakékoli konfigurace specifických pro prostředí při použití prostředí PowerShell DSC. Zobrazit [oddělení "Co" z "Kde" v prostředí PowerShell DSC](http://blogs.msdn.com/b/powershell/archive/2014/01/09/continuous-deployment-using-dsc-with-minimal-change.aspx) Další informace o **ConfigurationData**.
+**ConfigurationData** umožňuje oddělit strukturální konfiguraci z jakékoli konfigurace specifických pro prostředí při použití prostředí PowerShell DSC. Zobrazit [oddělení "Co" z "Kde" v prostředí PowerShell DSC](https://blogs.msdn.com/b/powershell/archive/2014/01/09/continuous-deployment-using-dsc-with-minimal-change.aspx) Další informace o **ConfigurationData**.
 
 > [!NOTE]
 > Můžete použít **ConfigurationData** při kompilaci konfigurace stavu automatizace Azure pomocí Azure Powershellu, ale ne na webu Azure portal.

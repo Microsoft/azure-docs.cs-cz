@@ -2,19 +2,19 @@
 title: Použití Sparku Livy odesílat úlohy do clusteru Spark v Azure HDInsight
 description: Zjistěte, jak použít rozhraní Apache Spark REST API k odeslání úloh Spark vzdáleně do clusteru Azure HDInsight.
 services: hdinsight
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 07/18/2018
-ms.openlocfilehash: 677c7d27d34725b75c5dfed70cc377735f5d7d61
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.date: 11/06/2018
+ms.openlocfilehash: 86a047fe291c7872fe275ba7246b9f3e59044723
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43045208"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51236819"
 ---
 # <a name="use-apache-spark-rest-api-to-submit-remote-jobs-to-an-hdinsight-spark-cluster"></a>Pomocí rozhraní Apache Spark REST API můžete odesílat vzdálené úlohy ke clusteru HDInsight Spark
 
@@ -152,9 +152,9 @@ Proveďte následující kroky:
    
     Poslední řádek výstupu ukazuje, že dávka byla úspěšně odstraněna. Odstraňuje se úloha, když je spuštěn, ukončuje také úlohu. Pokud odstraníte úlohu, která byla dokončena úspěšně, nebo v opačném případě odstraní informace o úloze úplně.
 
-## <a name="using-livy-spark-on-hdinsight-35-clusters"></a>Pomocí Livy Sparku na clusterech HDInsight 3.5
+## <a name="updates-to-livy-configuration-starting-with-hdinsight-35-version"></a>Aktualizace konfigurace Livy od verze 3.5 pro HDInsight
 
-Cluster HDInsight 3.5 ve výchozím nastavení, zakáže použití místní cesty souborů přístup ukázkových datových souborů nebo souborů JAR. Doporučujeme vám použít `wasb://` cesta místo pro přístup k kromě souborů JAR nebo ukázková data souborů z clusteru. Pokud chcete použít místní cestu, je nutné aktualizovat konfiguraci Ambari odpovídajícím způsobem. Postupujte následovně:
+HDInsight 3.5 clusterů a výše, ve výchozím nastavení, zakázat použití místní cesty souborů přístup ukázkových datových souborů nebo souborů JAR. Doporučujeme vám použít `wasb://` cesta místo pro přístup k kromě souborů JAR nebo ukázková data souborů z clusteru. Pokud chcete použít místní cestu, je nutné aktualizovat konfiguraci Ambari odpovídajícím způsobem. Postupujte následovně:
 
 1. Přejděte na portál Ambari clusteru. Webové uživatelské rozhraní Ambari je k dispozici v clusteru HDInsight na https://**CLUSTERNAME**. azurehdidnsight.net, kde CLUSTERNAME představuje název vašeho clusteru.
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 3a62440b9fe44dfed14cfd9887d4d3cc2e4dbb92
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 6a0c4158b85a6bc6c9276eff19466fb742c6f442
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49430234"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235917"
 ---
 # <a name="supplemental-lesson---dynamic-security"></a>Doplňková lekce – Dynamické zabezpečení
 
@@ -21,7 +21,7 @@ V této doplňkové lekci vytvoříte další roli, která implementuje dynamick
   
 Za účelem implementace dynamického zabezpečení přidáte do svého modelu tabulku obsahující uživatelská jména uživatelů, kteří se můžou připojit k modelu a procházet objekty a data modelu. Model, který pomocí tohoto kurzu vytvoříte, je v kontextu Adventure Works. Pro absolvování tohoto kurzu však budete muset přidat tabulku obsahující uživatele z vaší vlastní domény. Pro přidaná uživatelská jména nepotřebujete hesla. K vytvoření tabulky EmployeeSecurity s malým vzorkem uživatelů z vaší vlastní domény použijete funkci Vložit, pomocí které vložíte data zaměstnanců z tabulky aplikace Excel. V reálném scénáři by tabulka obsahující uživatelská jména obvykle byla tabulka ze skutečné databáze jako zdroje dat, například skutečná tabulka DimEmployee.  
   
-K implementaci dynamického zabezpečení použijete dvě funkce DAX: [funkci USERNAME (DAX)](http://msdn.microsoft.com/22dddc4b-1648-4c89-8c93-f1151162b93f) a [funkci LOOKUPVALUE (DAX)](http://msdn.microsoft.com/73a51c4d-131c-4c33-a139-b1342d10caab). Tyto funkce použité ve vzorci filtru řádků jsou definované v nové roli. Pomocí funkce LOOKUPVALUE vzorec určuje hodnotu z tabulky EmployeeSecurity. Vzorec pak tuto hodnotu předá do funkce USERNAME, která určí, jestli uživatelské jméno přihlášeného uživatele patří do této role. Uživatel pak může procházet pouze data určená filtrem řádků role. V tomto scénáři určíte, že zaměstnanci prodeje můžou procházet pouze data o internetovém prodeji pro prodejní oblasti, ve kterých jsou členem.  
+K implementaci dynamického zabezpečení použijete dvě funkce DAX: [funkci USERNAME (DAX)](https://msdn.microsoft.com/22dddc4b-1648-4c89-8c93-f1151162b93f) a [funkci LOOKUPVALUE (DAX)](https://msdn.microsoft.com/73a51c4d-131c-4c33-a139-b1342d10caab). Tyto funkce použité ve vzorci filtru řádků jsou definované v nové roli. Pomocí funkce LOOKUPVALUE vzorec určuje hodnotu z tabulky EmployeeSecurity. Vzorec pak tuto hodnotu předá do funkce USERNAME, která určí, jestli uživatelské jméno přihlášeného uživatele patří do této role. Uživatel pak může procházet pouze data určená filtrem řádků role. V tomto scénáři určíte, že zaměstnanci prodeje můžou procházet pouze data o internetovém prodeji pro prodejní oblasti, ve kterých jsou členem.  
   
 Úkoly specifické pro tento scénář tabelárního modelu Adventure Works, které se ale nutně netýkají reálného scénáře, jsou jako takové označeny. Každý úkol obsahuje další informace s popisem účelu daného úkolu.  
   

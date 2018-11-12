@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 09/17/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c94fd0bb68a03c64935c20fef1fab7b68c9c2c9b
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 83820440a6304886785a175b27614b45fdb98b13
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47032984"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51252220"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Nasazení Windows Hybrid Runbook Worker
 
@@ -132,7 +132,7 @@ Chcete-li zobrazit podrobné informace o instalaci, použijte **-Verbose** přep
 
 Sady Runbook můžete použít některou z aktivit a rutiny, které jsou definovány v modulech, které jsou nainstalovány ve vašem prostředí Azure Automation. Tyto moduly nejsou automaticky nasazují do místních počítačů, takže je nutné nainstalovat ručně. Výjimkou je modul Azure, která je ve výchozím nastavení nainstalované a poskytuje přístup k rutiny pro všechny služby Azure a aktivity pro Azure Automation.
 
-Protože primárním účelem funkce Hybrid Runbook Worker je můžou spravovat místní prostředky, budete pravděpodobně muset nainstalovat moduly, které podporují tyto prostředky. Informace o instalaci moduly Windows Powershellu najdete v tématu [instalaci modulů](http://msdn.microsoft.com/library/dd878350.aspx). 
+Protože primárním účelem funkce Hybrid Runbook Worker je můžou spravovat místní prostředky, budete pravděpodobně muset nainstalovat moduly, které podporují tyto prostředky. Informace o instalaci moduly Windows Powershellu najdete v tématu [instalaci modulů](https://msdn.microsoft.com/library/dd878350.aspx). 
 
 Moduly, které jsou nainstalované musí být v umístění odkazuje **PSModulePath** proměnnou prostředí tak, aby je automaticky importovat procesu hybrid worker. Další informace najdete v tématu [úpravy Instalační_cesta PSModulePath](https://msdn.microsoft.com/library/dd878326%28v=vs.85%29.aspx).
 

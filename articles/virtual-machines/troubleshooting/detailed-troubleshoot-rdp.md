@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 3b6b505be4a0084059d8c37a21099a784cacbed1
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: af36f033dbca6c9f594b3568bfe7567a959e2d2f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50414119"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51237148"
 ---
 # <a name="detailed-troubleshooting-steps-for-remote-desktop-connection-issues-to-windows-vms-in-azure"></a>Podrobný Poradce při potížích kroky pro připojení ke vzdálené ploše pro virtuální počítače s Windows v Azure
 Tento článek obsahuje podrobný postup řešení potíží, Diagnostika a řešení složitých chybami ke vzdálené ploše pro založené na Windows Azure virtual machines.
@@ -130,7 +130,7 @@ Zkuste připojení znovu z vašeho počítače. Pokud jste pořád nejste schopn
 * Brána Windows Firewall nebo jiné místní brány firewall má výstupní pravidlo, které brání provozu vzdálené plochy.
 * Zjišťování neoprávněných vniknutí nebo software spuštěný na virtuálním počítači Azure pro monitorování sítě brání připojení ke vzdálené ploše.
 
-Pro virtuální počítače vytvořené pomocí modelu nasazení classic můžete použít vzdálenou relaci Azure Powershellu na virtuálním počítači Azure. Nejprve potřebujete k instalaci certifikátu pro virtuální počítač hostující cloudovou službu. Přejděte na [nakonfigurovat zabezpečený vzdálený PowerShell přístup k Azure Virtual Machines](http://gallery.technet.microsoft.com/scriptcenter/Configures-Secure-Remote-b137f2fe) a stáhněte si **InstallWinRMCertAzureVM.ps1** soubor skriptu do místního počítače.
+Pro virtuální počítače vytvořené pomocí modelu nasazení classic můžete použít vzdálenou relaci Azure Powershellu na virtuálním počítači Azure. Nejprve potřebujete k instalaci certifikátu pro virtuální počítač hostující cloudovou službu. Přejděte na [nakonfigurovat zabezpečený vzdálený PowerShell přístup k Azure Virtual Machines](https://gallery.technet.microsoft.com/scriptcenter/Configures-Secure-Remote-b137f2fe) a stáhněte si **InstallWinRMCertAzureVM.ps1** soubor skriptu do místního počítače.
 
 V dalším kroku nainstalujte Azure PowerShell, pokud jste tak již neučinili. Viz téma [Instalace a konfigurace prostředí Azure PowerShell](/powershell/azure/overview).
 

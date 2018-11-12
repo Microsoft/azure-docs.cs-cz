@@ -14,17 +14,17 @@ ms.devlang: php
 ms.topic: article
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: b0aa61c86b08a4fe2eddb5eb1fb5b33c4cb901a0
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 68754f85347fe6bc075af513580697d1e7a83c18
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49386583"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51247411"
 ---
 # <a name="how-to-use-notification-hubs-from-python"></a>Jak používat Notification Hubs z Pythonu
 [!INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]
 
-Dostanete všechny funkce Notification Hubs z Javy/PHP nebo Python nebo Ruby back endem pomocí rozhraní REST centra oznámení, jak je popsáno v článku na webu MSDN [rozhraní REST API Notification Hubs](http://msdn.microsoft.com/library/dn223264.aspx).
+Dostanete všechny funkce Notification Hubs z Javy/PHP nebo Python nebo Ruby back endem pomocí rozhraní REST centra oznámení, jak je popsáno v článku na webu MSDN [rozhraní REST API Notification Hubs](https://msdn.microsoft.com/library/dn223264.aspx).
 
 > [!NOTE]
 > Toto je ukázková implementace referenční implementace odešle oznámení v Pythonu a není oficiálně podporovaných Python SDK centra oznámení.
@@ -47,7 +47,7 @@ Můžete postupovat podle [kurz Začínáme](notification-hubs-windows-store-dot
 > 
 
 ## <a name="client-interface"></a>Rozhraní klienta
-Hlavní klientského rozhraní můžete zadat stejné metody, které jsou k dispozici v [sadu SDK serveru .NET Notification Hubs](http://msdn.microsoft.com/library/jj933431.aspx). Toto rozhraní umožňuje přímo přeložit těchto kurzů a ukázek aktuálně k dispozici na tomto webu a přispěla komunita na Internetu.
+Hlavní klientského rozhraní můžete zadat stejné metody, které jsou k dispozici v [sadu SDK serveru .NET Notification Hubs](https://msdn.microsoft.com/library/jj933431.aspx). Toto rozhraní umožňuje přímo přeložit těchto kurzů a ukázek aktuálně k dispozici na tomto webu a přispěla komunita na Internetu.
 
 K dispozici v kódu lze najít [Ukázky Pythonu REST obálky].
 
@@ -64,7 +64,7 @@ Odeslání oznámení s informační zprávou Windows:
 ## <a name="implementation"></a>Implementace
 Pokud jste dosud provedli, postupujte [kurz Začínáme] až na poslední část, ve kterém bude nutné implementovat back endu.
 
-Všechny podrobnosti, které chcete implementovat úplné obálku REST můžete najít na [MSDN](http://msdn.microsoft.com/library/dn530746.aspx). Tato část popisuje implementaci Python hlavní kroky potřebné pro přístup k koncové body Notification Hubs REST a posílat oznámení
+Všechny podrobnosti, které chcete implementovat úplné obálku REST můžete najít na [MSDN](https://msdn.microsoft.com/library/dn530746.aspx). Tato část popisuje implementaci Python hlavní kroky potřebné pro přístup k koncové body Notification Hubs REST a posílat oznámení
 
 1. Analýza připojovacího řetězce
 2. Vygenerování tokenu autorizace
@@ -96,7 +96,7 @@ Tady je hlavní třída implementace klienta, jejíž konstruktor analyzuje při
 
 
 ### <a name="create-security-token"></a>Vytvořit token zabezpečení
-Podrobnosti o vytvoření tokenu zabezpečení jsou k dispozici [tady](http://msdn.microsoft.com/library/dn495627.aspx).
+Podrobnosti o vytvoření tokenu zabezpečení jsou k dispozici [tady](https://msdn.microsoft.com/library/dn495627.aspx).
 Přidejte následující metody, které **NotificationHub** třídy za účelem vytvoření tokenu podle identifikátoru URI aktuální žádosti a extrahovat z připojovacího řetězce přihlašovacích údajů.
 
     @staticmethod
@@ -148,7 +148,7 @@ První, umožňují použití definice třídy reprezentující oznámení.
 
 Tato třída je kontejner pro nativní oznámení textu nebo sadu vlastností šablony oznámení, sadu hlaviček, který obsahuje formát (nativní platformy nebo šablony) a vlastnosti specifické pro platformu (např. vlastnost vypršení platnosti Apple a služby nabízených oznámení Windows záhlaví).
 
-Odkazovat [dokumentace k rozhraní REST API Notification Hubs](http://msdn.microsoft.com/library/dn495827.aspx) , který se naformátuje na platformách konkrétní oznámení pro všechny možnosti, které jsou k dispozici.
+Odkazovat [dokumentace k rozhraní REST API Notification Hubs](https://msdn.microsoft.com/library/dn495827.aspx) , který se naformátuje na platformách konkrétní oznámení pro všechny možnosti, které jsou k dispozici.
 
 Teď s touto třídou zapsat odeslat oznámení metody uvnitř **NotificationHub** třídy.
 

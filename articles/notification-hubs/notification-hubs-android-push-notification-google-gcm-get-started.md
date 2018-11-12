@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/05/2018
 ms.author: dimazaid
-ms.openlocfilehash: 1e9ed9d3500b112f98492e6a85d02a1f1843c7c3
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: ab47db7629c92b0e6a5b268c9d233135485a37a1
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49365573"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51237705"
 ---
 # <a name="tutorial-push-notifications-to-android-devices-by-using-azure-notification-hubs-and-google-cloud-messaging"></a>Kurz: Zasílání nabízených oznámení zařízením s Androidem službami Azure Notification Hubs a Google Cloud Messaging
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
@@ -46,7 +46,7 @@ V tomto kurzu provedete následující akce:
 ## <a name="prerequisites"></a>Požadavky
 
 - **Předplatné Azure**. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete. 
-- [Android Studio](http://go.microsoft.com/fwlink/?LinkId=389797).
+- [Android Studio](https://go.microsoft.com/fwlink/?LinkId=389797).
 
 ## <a name="creating-a-project-that-supports-google-cloud-messaging"></a>Vytvoření projektu, který podporuje službu GCM (Google Cloud Messaging)
 [!INCLUDE [mobile-services-enable-Google-cloud-messaging](../../includes/mobile-services-enable-google-cloud-messaging.md)]
@@ -524,7 +524,7 @@ Za normálních okolností byste odesílali oznámení pomocí serveru backend. 
     private String HubSasKeyName = null;
     private String HubSasKeyValue = null;
     ```
-6. Vytvořte token SaS (Software Access Signature) pro ověření požadavku POST kvůli odeslání zpráv do centra oznámení. Parsujte data klíče připojovacího řetězce a vytvořte token SaS podle pokynů v referenční dokumentaci k rozhraní REST API v části [Základní pojmy](http://msdn.microsoft.com/library/azure/dn495627.aspx). Následující kód představuje příklad implementace.
+6. Vytvořte token SaS (Software Access Signature) pro ověření požadavku POST kvůli odeslání zpráv do centra oznámení. Parsujte data klíče připojovacího řetězce a vytvořte token SaS podle pokynů v referenční dokumentaci k rozhraní REST API v části [Základní pojmy](https://msdn.microsoft.com/library/azure/dn495627.aspx). Následující kód představuje příklad implementace.
    
     Do `MainActivity.java` přidejte následující metodu do třídy `MainActivity` k analýze připojovacího řetězce.
    

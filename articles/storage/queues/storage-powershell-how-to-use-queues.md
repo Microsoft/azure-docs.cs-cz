@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 09/14/2017
 ms.author: rogarana
 ms.component: queues
-ms.openlocfilehash: 2f347ef0bd53a8d148a56d8431e004e9e88894d8
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: b89c2607a1b21b999e5f95224e4aefc97e321f14
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43128567"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51251351"
 ---
 # <a name="perform-azure-queue-storage-operations-with-azure-powershell"></a>Provádění operací Azure Queue storage pomocí Azure Powershellu
 
@@ -82,7 +82,7 @@ $queueName = "howtoqueue"
 $queue = New-AzureStorageQueue –Name $queueName -Context $ctx
 ```
 
-Informace o vytváření názvů pro službu front Azure, najdete v části [pojmenování front a Metadata](http://msdn.microsoft.com/library/azure/dd179349.aspx).
+Informace o vytváření názvů pro službu front Azure, najdete v části [pojmenování front a Metadata](https://msdn.microsoft.com/library/azure/dd179349.aspx).
 
 ## <a name="retrieve-a-queue"></a>Načíst do fronty
 
@@ -100,7 +100,7 @@ Get-AzureStorageQueue -Context $ctx | select Name
 
 ## <a name="add-a-message-to-a-queue"></a>Přidání zprávy do fronty
 
-Operace, které mají vliv skutečné zprávy ve frontě pomocí klientské knihovny úložiště .NET jako viditelné v prostředí PowerShell. Přidat zprávu do fronty, vytvořte novou instanci objektu zpráva [Microsoft.WindowsAzure.Storage.Queue.CloudQueueMessage](http://msdn.microsoft.com/library/azure/jj732474.aspx) třídy. Pak zavolejte metodu [AddMessage](http://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.queue.cloudqueue.addmessage.aspx). CloudQueueMessage lze vytvořit z řetězce (ve formátu UTF-8) nebo s polem bajtů.
+Operace, které mají vliv skutečné zprávy ve frontě pomocí klientské knihovny úložiště .NET jako viditelné v prostředí PowerShell. Přidat zprávu do fronty, vytvořte novou instanci objektu zpráva [Microsoft.WindowsAzure.Storage.Queue.CloudQueueMessage](https://msdn.microsoft.com/library/azure/jj732474.aspx) třídy. Pak zavolejte metodu [AddMessage](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.queue.cloudqueue.addmessage.aspx). CloudQueueMessage lze vytvořit z řetězce (ve formátu UTF-8) nebo s polem bajtů.
 
 Následující příklad ukazuje, jak přidat zprávu do fronty.
 
@@ -128,7 +128,7 @@ Zprávy jsou čteny nejlepší – zkuste first-in-first-out pořadí. To není 
 
 To **časový limit neviditelnosti** definuje, jak dlouho zpráva zůstává neviditelná dřív, než bude opět k dispozici pro zpracování. Výchozí hodnota je 30 sekund. 
 
-Váš kód načítá zprávy z fronty ve dvou krocích. Při volání [Microsoft.WindowsAzure.Storage.Queue.CloudQueue.GetMessage](http://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.queue.cloudqueue.getmessage.aspx) metoda, získáte další zprávu ve frontě. Zpráva vrácená metodou **GetMessage** se stane neviditelnou pro jakýkoli jiný kód, který čte zprávy z této fronty. K dokončení odebrání zprávy z fronty, volání [Microsoft.WindowsAzure.Storage.Queue.CloudQueue.DeleteMessage](http://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.queue.cloudqueue.deletemessage.aspx) metody. 
+Váš kód načítá zprávy z fronty ve dvou krocích. Při volání [Microsoft.WindowsAzure.Storage.Queue.CloudQueue.GetMessage](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.queue.cloudqueue.getmessage.aspx) metoda, získáte další zprávu ve frontě. Zpráva vrácená metodou **GetMessage** se stane neviditelnou pro jakýkoli jiný kód, který čte zprávy z této fronty. K dokončení odebrání zprávy z fronty, volání [Microsoft.WindowsAzure.Storage.Queue.CloudQueue.DeleteMessage](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.queue.cloudqueue.deletemessage.aspx) metody. 
 
 V následujícím příkladu, přečtěte si tři fronty zpráv a potom počkejte 10 sekund (vypršel časový limit neviditelnosti). Číst tři zprávy znovu, odstranění zprávy po přečtení voláním **DeleteMessage**. Pokud se pokusíte načíst fronty po odstranění zprávy, $queueMessage budou vráceny jako hodnota NULL.
 

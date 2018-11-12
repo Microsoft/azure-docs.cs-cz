@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/05/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 9ea901d51403096166b367a1586cb26d2d914e2d
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 08633b52e6b7cfef28635925ad9fcf34e065e9bf
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46312400"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51251794"
 ---
 # <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Synchronizace Azure AD Connect: atributy synchronizované do Azure Active Directory
 Toto téma obsahuje seznam atributy, které jsou synchronizovány pomocí synchronizace Azure AD Connect.  
@@ -211,7 +211,7 @@ V tomto případě začněte seznamem atributů v tomto tématu a identifikujte 
 | Iniciály |X |X | | |
 | ipPhone |X |X | | |
 | l |X |X | | |
-| e-mailu |X |X |X | |
+| mail |X |X |X | |
 | mailnickname |X |X |X | |
 | managedBy | | |X | |
 | manažer |X |X | | |
@@ -271,7 +271,7 @@ V tomto případě začněte seznamem atributů v tomto tématu a identifikujte 
 | Telefon domů |X |X | | |
 | ipPhone |X |X | | |
 | l |X |X | | |
-| e-mailu |X |X |X | |
+| mail |X |X |X | |
 | mailNickname |X |X |X | |
 | managedBy | | |X | |
 | manažer |X |X | | |
@@ -310,7 +310,7 @@ V tomto případě začněte seznamem atributů v tomto tématu a identifikujte 
 | accountEnabled |X | | |Definuje, jestli je účet povolený. |
 | CN |X | |X |Běžný název nebo alias. Nejčastěji předponu hodnotu [e-mailu]. |
 | displayName |X |X |X |Řetězec, který představuje název často zobrazuje jako popisný název (křestní jméno příjmení). |
-| e-mailu |X |X |X |úplné e-mailovou adresu. |
+| mail |X |X |X |úplné e-mailovou adresu. |
 | člen | | |X | |
 | atributy objectSID |X | |X |mechanickým vlastnost. Identifikátor uživatele AD používá k udržení synchronizace mezi Azure AD a AD. |
 | proxyAddresses |X |X |X |mechanickým vlastnost. Azure AD používá. Obsahuje všechny sekundární e-mailové adresy uživatele. |
@@ -328,7 +328,7 @@ V tomto případě začněte seznamem atributů v tomto tématu a identifikujte 
 | CN |X | |X | |
 | description |X |X |X | |
 | displayName |X |X |X | |
-| e-mailu |X |X |X | |
+| mail |X |X |X | |
 | mailnickname |X |X |X | |
 | člen | | |X | |
 | atributy objectSID |X | |X |mechanickým vlastnost. Identifikátor uživatele AD používá k udržení synchronizace mezi Azure AD a AD. |
@@ -376,7 +376,7 @@ V tomto případě začněte seznamem atributů v tomto tématu a identifikujte 
 Tato skupina je sadu atributů používat jako minimální atributy, které jsou potřebné pro obecné úlohy nebo aplikace. Můžete použít pro pracovní postup není uvedený v jiné části nebo aplikace jiných výrobců. Používá se explicitně pro následující:
 
 * Yammer (využívá jenom uživatele)
-* [Hybridní Business-to-Business (B2B) napříč organizací scénáře využívající spolupráci nabízí prostředky, jako je SharePoint](http://go.microsoft.com/fwlink/?LinkId=747036)
+* [Hybridní Business-to-Business (B2B) napříč organizací scénáře využívající spolupráci nabízí prostředky, jako je SharePoint](https://go.microsoft.com/fwlink/?LinkId=747036)
 
 Tato skupina je sada atributů, které lze použít, pokud se nepoužívá v adresáři Azure AD pro podporu Office 365, Dynamics nebo Intune. Má malou sadu základních atributů.
 
@@ -386,7 +386,7 @@ Tato skupina je sada atributů, které lze použít, pokud se nepoužívá v adr
 | CN |X | |X | |
 | displayName |X |X |X | |
 | givenName |X |X | | |
-| e-mailu |X | |X | |
+| mail |X | |X | |
 | managedBy | | |X | |
 | mailNickName |X |X |X | |
 | člen | | |X | |
@@ -442,7 +442,7 @@ Tyto atributy jsou synchronizované z místní služby Active Directory do služ
 | Název atributu | PublicFolder | Poznámka |
 | --- | :---:| --- |
 | displayName | X |  |
-| e-mailu | X |  |
+| mail | X |  |
 | msExchRecipientTypeDetails | X |  |
 | objectGUID | X |  |
 | proxyAddresses | X |  |

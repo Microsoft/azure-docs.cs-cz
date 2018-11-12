@@ -10,23 +10,23 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: maquaran
-ms.openlocfilehash: 3c97c89bde40357981d82dce8dd53febff25c8f3
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: bc31c7ebec7c1f7a02be65b15805fb48b1ef275d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50239878"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51260308"
 ---
 # <a name="going-social-with-azure-cosmos-db"></a>Sociální funkce s Azure Cosmos DB
 Žijete ve vysoce propojených společnosti znamená, že v určitém okamžiku v životě stanou součástí **sociálních sítí**. Sociální sítě používáte zachovat ve spojení s přáteli, kolegům, řada, nebo někdy také sdílet s lidmi s společné zájmy vaše nadšení.
 
 Jako technici a vývojáři, pravděpodobně vás zajímá, jak tyto sítě úložiště a propojení vašich dat, nebo může mít byl úkol i k vytvoření nebo navrhovat sami sobě nové sociálních sítí pro konkrétní volné místo na trhu. Kdy vzniká významné Otázka: jak jsou tato data uložena?
 
-Předpokládejme, že vytváříte nové a shiny sociální síť, kde vaši uživatelé můžete publikovat články s související média jako obrázky, videa nebo dokonce music. Uživatelé mohou přidávat komentáře na příspěvky a poskytují body pro hodnocení. Bude kanál, které příspěvky, které se zobrazí uživatelům a mohli pracovat na cílové stránce hlavní webové stránky. Toto není znít komplexní (zpočátku), ale z důvodu zjednodušení, Pojďme zastavit existuje (můžete delve do vlastní uživatelské kanály ovlivněny relace, ale přesahuje cílem tohoto článku).
+Předpokládejme, že vytváříte nové a shiny sociální síť, kde vaši uživatelé můžete publikovat články s související média jako obrázky, videa nebo dokonce music. Uživatelé mohou přidávat komentáře na příspěvky a poskytují body pro hodnocení. Bude kanál, které příspěvky, které se zobrazí uživatelům a mohli pracovat na cílové stránce hlavní webové stránky. Tato metoda není zvukové komplexní (zpočátku), ale z důvodu zjednodušení, Pojďme zastavit existuje (můžete delve do vlastní uživatelské kanály ovlivněny relace, ale přesahuje cílem tohoto článku).
 
 Takže jak to můžete ukládat a kde?
 
-Řada z vás možná prostředí u databází SQL nebo mít aspoň pojem [relační modelování dat](https://en.wikipedia.org/wiki/Relational_model) a můžete mít tendenci spustit vykreslování vypadat přibližně takto:
+Možná máte prostředí u databází SQL nebo hodnoty z [relační modelování dat](https://en.wikipedia.org/wiki/Relational_model) a můžete začít kreslení přibližně takto:
 
 ![Diagram ilustrující relativní relační model](./media/social-media-apps/social-media-apps-sql.png) 
 
@@ -34,9 +34,9 @@ Nemusíte zajistit dokonalou normalizovaná a přehlednou datová struktura... k
 
 Nezískávat mě chybný, jsem pracovala s databázemi SQL všechny životnost, jsou skvělé, ale jako platforem vzor, postupů a softwaru není ideální pro každý scénář.
 
-Proč SQL není v tomto scénáři o nejlepší volbu? Podívejme se na struktuře jeden příspěvek kdybych chtěl k zobrazení tohoto příspěvku na webu nebo aplikace, že bude nutné provést dotaz s... Zobrazíte jednu jeden příspěvek, nyní obrázek streamovaných příspěvky, které dynamicky načíst a zobrazit na obrazovce a může se zobrazit kde teď předvedu právě osm spoje tabulky platná (!).
+Proč SQL není v tomto scénáři o nejlepší volbu? Podívejme se na struktuře jeden příspěvek kdybych chtěl k zobrazení tohoto příspěvku na webu nebo aplikace, že bude nutné provést dotaz s... Díky připojení ke službě osm tables(!) pouze k zobrazení jedné jeden příspěvek, nyní obrázek streamovaných příspěvky, které dynamicky načíst a zobrazit na obrazovce a může se zobrazit kde teď předvedu.
 
-Můžete, samozřejmě, použít obrovské instance SQL s dostatek power vyřešit tisíce dotazů s těmito mnoho spojení k poskytování obsahu, ale skutečně, proč byste, pokud mezi doménami existuje jednodušší řešení?
+Můžete použít instanci SQL obrovské s dostatek power vyřešit tisíce dotazů s mnoha spojení k poskytování obsahu, ale skutečně, proč byste, pokud mezi doménami existuje jednodušší řešení?
 
 ## <a name="the-nosql-road"></a>Silniční NoSQL
 Tento článek vás provede do modelování dat sociální platforma databáze NoSQL Azure [služby Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) v nákladově efektivní způsob přitom můžete využívat další služby Azure Cosmos DB funkce, například [rozhraní Gremlin API](../cosmos-db/graph-introduction.md). Použití [NoSQL](https://en.wikipedia.org/wiki/NoSQL) přístup, ukládání dat ve formátu JSON a použití [denormalizace](https://en.wikipedia.org/wiki/Denormalization), dříve složité příspěvek je možné transformovat do jednoho [dokumentu](https://en.wikipedia.org/wiki/Document-oriented_database):
@@ -59,7 +59,7 @@ Tento článek vás provede do modelování dat sociální platforma databáze N
         ]
     }
 
-A s pomocí jediného dotazu a žádná spojení lze získat. To je mnohem více jednoduché a nekomplikované a budget-wise, vyžaduje méně prostředků k dosažení lepších výsledků.
+A s pomocí jediného dotazu a žádná spojení lze získat. Tento dotaz je velmi jednoduché a nekomplikované a budget-wise, vyžaduje méně prostředků k dosažení lepších výsledků.
 
 Azure Cosmos DB zajišťuje, že všechny vlastnosti jsou indexovány pomocí jeho automatické indexování, které můžou být [přizpůsobené](indexing-policies.md). Přístup bez schémat umožňují ukládání dokumentů s jinou a dynamické struktur, možná zítra chcete příspěvků na seznam kategorií nebo k nim má přiřazené hashtagy, Cosmos DB bude zpracovávat nové dokumenty s přidané atributy se žádná další práce vyžaduje od nás.
 
@@ -165,7 +165,7 @@ Nejmenší kroku se říká UserChunk, minimální část informace identifikuj�
 
 Střední krok se nazývá uživatelem, je úplná data, která se použije na většinu závislé na výkonu dotazů ve službě Cosmos DB, přístupu a kritické. Obsahuje informace UserChunk představované.
 
-Největší je rozšířená uživatele. Obsahuje všechny informace o důležitých uživatele a další data, která nevyžaduje, aby skutečně rychle čtení nebo jeho použití je konečné (např. proces přihlášení). Tato data mohou být uloženy mimo Cosmos DB v Azure SQL Database nebo úložiště tabulek Azure.
+Největší je rozšířená uživatele. Obsahuje všechny informace o důležitých uživatele a další data, která nevyžaduje, aby skutečně rychle čtení nebo jeho využití se konečné (např. proces přihlášení). Tato data mohou být uloženy mimo Cosmos DB v Azure SQL Database nebo úložiště tabulek Azure.
 
 Proč by i tyto informace ukládaly na různých místech a rozdělit uživatele? Protože z hlediska výkonu, tím větší dokumenty, costlier dotazy. Zachovat dokumenty tenký správné informace, které se všechny vaše dotazy závislé na výkonu pro sociální sítě a uložit další informace pro konečné scénáře, jako jsou úpravy celých profilů, přihlášení, a to i dolování dat pro analýzy využití a velké objemy dat iniciativy. Ve skutečnosti není vás v případě, shromažďování dat pro dolování dat je pomalejší, protože běží na Azure SQL Database, budete mít problém ale aby uživatelé měli rychlý a tenký prostředí. Uživatel, uložené ve službě Cosmos DB, bude vypadat takto:
 
@@ -216,12 +216,12 @@ Teď, když mám tady připojeny, vám dovolí přemýšlet pravděpodobně pot�
 
 K dosažení některého z těchto scénářů Machine Learning, můžete použít [Azure Data Lake](https://azure.microsoft.com/services/data-lake-store/) ingestovat informace z různých zdrojů a použijte [U-SQL](https://azure.microsoft.com/documentation/videos/data-lake-u-sql-query-execution/) pro zpracování informací a generovat výstup, která se dá zpracování Azure Machine Learning.
 
-K dispozici další možností je použít [Microsoft Cognitive Services](https://www.microsoft.com/cognitive-services) k analýze obsahu; nejen můžete je jim lépe porozumět uživatelům (prostřednictvím analýza zapisovaly s [rozhraní Text Analytics API](https://www.microsoft.com/cognitive-services/en-us/text-analytics-api)), ale může zjišťovat nežádoucí nebo až po zralé obsah a příslušně na ně s [rozhraní API pro počítačové zpracování obrazu](https://www.microsoft.com/cognitive-services/en-us/computer-vision-api). Služby cognitive Services zahrnuje mnoho out-of-the-box řešení, které nevyžadují jakýkoli druh znalostní báze Machine Learning k použití.
+K dispozici další možností je použít [Azure Cognitive Services](https://www.microsoft.com/cognitive-services) k analýze obsahu; nejen můžete je jim lépe porozumět uživatelům (prostřednictvím analýza zapisovaly s [rozhraní Text Analytics API](https://www.microsoft.com/cognitive-services/en-us/text-analytics-api)), ale může také zjistit nežádoucí nebo až po zralé obsah a příslušně na ně s [rozhraní API pro počítačové zpracování obrazu](https://www.microsoft.com/cognitive-services/en-us/computer-vision-api). Služby cognitive Services zahrnuje mnoho out-of-the-box řešení, které nevyžadují jakýkoli druh znalostní báze Machine Learning k použití.
 
 ## <a name="a-planet-scale-social-experience"></a>Sociální prostředí globálním měřítku
 Je last, ale ne nejméně důležité článku můžu musí řešit: **škálovatelnost**. Při návrhu architektury, je důležité, že jednotlivé komponenty můžete škálovat sama o sobě, buď protože je potřeba zpracovat víc dat, nebo protože budete chtít mít větší zeměpisném pokrytí (nebo obojí!). Naštěstí je dosažení složitý úkol **předpřipravené prostředí** pomocí služby Cosmos DB.
 
-Cosmos DB podporuje [dynamické dělení na oddíly](https://azure.microsoft.com/blog/10-things-to-know-about-documentdb-partitioned-collections/) out-of-the-box protože automaticky vytvoří oddíly na základě danou **klíč oddílu** (definované jako jeden z atributů v dokumentech). Definování správného klíče oddílu je třeba provést v době návrhu a dodržujte při tom [osvědčené postupy](../cosmos-db/partition-data.md#designing-for-partitioning) k dispozici; v případě sociálních prostředí, musí být zarovnány strategii dělení do toho, jak dotazovat (čtení v rámci stejného oddíl je žádoucí) a zápis (vyhnout "hotspotů" tím, že rozprostírá zápisy na několik oddílů). Některé možnosti jsou: oddíly na základě dočasné klíče (den/měsíc/týden), podle obsahu kategorie, podle zeměpisné oblasti, podle uživatele. všechno ve skutečnosti závisí na jak budete zadávat dotazy na data a zobrazte ji v sociálních sítích prostředí. 
+Cosmos DB podporuje [dynamické dělení na oddíly](https://azure.microsoft.com/blog/10-things-to-know-about-documentdb-partitioned-collections/) out-of-the-box protože automaticky vytvoří oddíly na základě danou **klíč oddílu** (definované jako jeden z atributů v dokumentech). Definování správného klíče oddílu je třeba provést v době návrhu, další informace najdete v tématu [zvolit klíč oddílu správné](partitioning-overview.md#choose-partitionkey) článku. V případě sociálních prostředí, musí být zarovnány strategii dělení do toho, jak můžete dotaz (čtení v rámci stejného oddílu jsou žádoucí) a zápis (vyhnout "hotspotů" tím, že rozprostírá zápisy na několik oddílů). Některé možnosti jsou: oddíly na základě dočasné klíče (den/měsíc/týden), podle obsahu kategorie, podle zeměpisné oblasti, podle uživatele. všechno ve skutečnosti závisí na jak budete zadávat dotazy na data a zobrazte ji v sociálních sítích prostředí. 
 
 Jeden je zajímavé bod za zmínku, že Cosmos DB se spustí vaše dotazy (včetně [agregace](https://azure.microsoft.com/blog/planet-scale-aggregates-with-azure-documentdb/)) na všechny oddíly transparentně, nemusíte přidávat žádné logiku růst objemu dat.
 

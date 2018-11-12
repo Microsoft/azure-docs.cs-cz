@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 988a2433f098f41bca4796299825293efd4de44b
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: da261beeec4f02dfa7c7cf9071e51dc17cf5c7cd
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39171130"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51254379"
 ---
 # <a name="how-to-use-cards-part-1-of-2"></a>Použití karty (část 1 ze 2)
 
@@ -26,7 +26,7 @@ Tento kurz ukazuje, jak přidat a používat jednoduché karty svého robota.
 
 ## <a name="video"></a>Video
 
-[![Kurz 13 ve verzi Preview](http://aka.ms/cl-tutorial-13-preview)](http://aka.ms/blis-tutorial-13)
+[![Kurz 13 ve verzi Preview](https://aka.ms/cl-tutorial-13-preview)](https://aka.ms/blis-tutorial-13)
 
 ## <a name="requirements"></a>Požadavky
 Tento kurz vyžaduje, zda je spuštěna obecné kurz bot

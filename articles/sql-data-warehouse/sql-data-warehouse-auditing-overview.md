@@ -10,12 +10,12 @@ ms.component: manage
 ms.date: 04/11/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: 18a6234eb56902625fdcc8f150a41b7551d229cc
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 199095c3cffc8df7f9755f1f2c4bb5a1acba3748
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49318533"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51260376"
 ---
 # <a name="auditing-in-azure-sql-data-warehouse"></a>Auditování ve službě Azure SQL Data Warehouse
 
@@ -150,7 +150,7 @@ Existuje několik metod, které lze použít k zobrazení protokolů auditován�
 ### <a name="database-level-policy-audit-logs"></a>Protokoly auditu zásady na úrovni databáze
 Protokoly auditování na úrovni databáze se agregují v kolekci Store tabulek s **SQLDBAuditLogs** předponu v účtu úložiště Azure, který jste zvolili během instalace. Můžete zobrazit soubory protokolů pomocí nástroje, jako například [Průzkumníka služby Azure Storage](http://azurestorageexplorer.codeplex.com).
 
-Je k dispozici jako šablona sestavy řídicí panel předkonfigurovaného [ke stažení Excelové tabulce](http://go.microsoft.com/fwlink/?LinkId=403540) umožňují rychle analyzovat data protokolů. Použití šablony v protokolech auditu, budete potřebovat Excel 2013 nebo novější a Power Query, který můžete [stáhnete tady](http://www.microsoft.com/download/details.aspx?id=39379).
+Je k dispozici jako šablona sestavy řídicí panel předkonfigurovaného [ke stažení Excelové tabulce](https://go.microsoft.com/fwlink/?LinkId=403540) umožňují rychle analyzovat data protokolů. Použití šablony v protokolech auditu, budete potřebovat Excel 2013 nebo novější a Power Query, který můžete [stáhnete tady](https://www.microsoft.com/download/details.aspx?id=39379).
 
 Šablona v sobě obsahuje fiktivní ukázková data a můžete nastavit Power Query importovat protokolů auditu přímo ze svého účtu úložiště Azure.
 

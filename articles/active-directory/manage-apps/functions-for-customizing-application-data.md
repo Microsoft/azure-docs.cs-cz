@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: barbkess
-ms.openlocfilehash: 7a7f959f54281dcce5b8d1349f5d6607f0e5da30
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
-ms.translationtype: MT
+ms.openlocfilehash: d8e390fc185c3cb0b63bcea56feb4b133652673d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51345789"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51258829"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Zápis výrazů pro mapování atributů ve službě Azure Active Directory
 Při konfiguraci zřizování pro aplikace SaaS, je jedním z typů mapování atributů, které můžete zadat mapování výrazu. Pro ty musíte napsat skript jako výraz, který umožňuje transformovat data uživatelů na formáty, které jsou více přijatelné pro aplikace SaaS.
@@ -37,7 +37,7 @@ Syntaxe výrazů pro mapování atributů je připomínající Visual Basic pro 
 * Pro řetězcové konstanty Pokud potřebujete zpětného lomítka (\) nebo uvozovky (") v řetězci, se musejí být uvozeny symbol zpětného lomítka (\). Příklad: "název společnosti: \"Contoso\""
 
 ## <a name="list-of-functions"></a>Seznam funkcí
-[Připojit](#append) &nbsp; &nbsp; &nbsp; &nbsp; [FormatDateTime](#formatdatetime) &nbsp; &nbsp; &nbsp; &nbsp; [připojení](#join) &nbsp; &nbsp; &nbsp; &nbsp; [Mid](#mid) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [NormalizeDiacritics](#normalizediacritics) [není](#not) &nbsp; &nbsp; &nbsp; &nbsp; [nahradit](#replace) &nbsp; &nbsp; &nbsp; &nbsp; [SelectUniqueValue](#selectuniquevalue) &nbsp; &nbsp; &nbsp; &nbsp; [SingleAppRoleAssignment](#singleapproleassignment) &nbsp; &nbsp; &nbsp; &nbsp; [StripSpaces](#stripspaces) &nbsp; &nbsp; &nbsp; &nbsp; [Přepínače](#switch)
+[Připojit](#append) &nbsp; &nbsp; &nbsp; &nbsp; [FormatDateTime](#formatdatetime) &nbsp; &nbsp; &nbsp; &nbsp; [připojení](#join) &nbsp; &nbsp; &nbsp; &nbsp; [Mid](#mid) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [NormalizeDiacritics](#normalizediacritics) [není](#not) &nbsp; &nbsp; &nbsp; &nbsp; [nahradit](#replace) &nbsp; &nbsp; &nbsp; &nbsp; [SingleAppRoleAssignment](#singleapproleassignment) &nbsp; &nbsp; &nbsp; &nbsp; [StripSpaces](#stripspaces) &nbsp; &nbsp; &nbsp; &nbsp; [Přepínače](#switch)
 
 - - -
 ### <a name="append"></a>Připojit
@@ -152,24 +152,6 @@ Nahradí hodnoty v řetězci. V závislosti na parametry, které poskytnou fungu
 | **Šablony** |Nepovinné |Řetězec |Když **šablony** je zadána hodnota, podíváme se **oldValue** uvnitř šablony a nahraďte ji metodou zdrojovou hodnotu. |
 
 - - -
-### <a name="selectuniquevalue"></a>SelectUniqueValue
-**Funkce:**<br> SelectUniqueValue (uniqueValueRule1, uniqueValueRule2, uniqueValueRule3,...)
-
-**Popis:**<br> Vyžaduje minimálně dva argumenty, které jsou definovány pomocí výrazů pravidel pro vytvoření jedinečnou hodnotu. Funkce vyhodnocuje každé pravidlo a poté zkontroluje hodnotu vygenerovat jedinečný v cílové aplikaci/adresáři. První jedinečnou hodnotu najít, bude vrácena ten. Pokud všechny hodnoty již existují v cíli, položka bude získat mezi a důvod získá protokolovat v protokolech auditu. Neexistuje žádná horní mez počtu argumentů, které mohou být k dispozici.
-
-> [!NOTE]
->1. Toto je funkce nejvyšší úrovně, nemohou být vnořeny.
->2. Tato funkce je určená jenom pro vytvoření položky. Při použití ho atributem, nastavte **použít mapování** vlastnost **pouze při vytváření objektu**.
-
-
-**Parametry:**<br> 
-
-| Název | Požadovaný / s opakováním | Typ | Poznámky |
-| --- | --- | --- | --- |
-| ** uniqueValueRule1... uniqueValueRuleN ** |Minimálně 2 jsou povinné, ne horní mez |Řetězec | Seznam pravidel pro vytvoření jedinečnou hodnotu pro vyhodnocení |
-
-
-- - -
 ### <a name="singleapproleassignment"></a>SingleAppRoleAssignment
 **Funkce:**<br> SingleAppRoleAssignment([appRoleAssignments])
 
@@ -256,7 +238,6 @@ NormalizeDiacritics([givenName])
 * **VÝSTUP**: "Zoe"
 
 ### <a name="output-date-as-a-string-in-a-certain-format"></a>Výstupní data jako řetězec v určitém formátu
-
 Chcete odesílat data do aplikace SaaS v určitém formátu. <br>
 Je třeba k formátování kalendářních dat pro ServiceNow.
 
@@ -270,7 +251,6 @@ Je třeba k formátování kalendářních dat pro ServiceNow.
 * **VÝSTUP**: "2015-01-23"
 
 ### <a name="replace-a-value-based-on-predefined-set-of-options"></a>Nahraďte hodnotu podle předdefinovanou sadu možností
-
 Budete muset definovat časové pásmo uživatele na základě kódu stavu uložené ve službě Azure AD. <br>
 Pokud kód stavu neodpovídá žádné z předdefinovaných možností, použijte výchozí hodnotu "Austrálie/Sydney".
 
@@ -282,26 +262,6 @@ Pokud kód stavu neodpovídá žádné z předdefinovaných možností, použijt
 
 * **VSTUP** (stav): "QLD"
 * **VÝSTUP**: "Austrálie/Brisbane"
-
-### <a name="generate-unique-value-for-userprincipalname-upn-attribute"></a>Generovat jedinečnou hodnotu pro atribut userPrincipalName (UPN)
-
-Založené na uživatele křestní jméno, křestní jméno a příjmení, je potřeba vygenerovat hodnotu pro atribut hlavního názvu uživatele a vyhledat jeho jedinečnosti v adresáři cílového AD před přiřazením hodnoty pro atribut hlavního názvu uživatele.
-
-**Výraz:** <br>
-
-    SelectUniqueValue( 
-        Join("@", NormalizeDiacritics(StripSpaces(Join(".",  [PreferredFirstName], [PreferredLastName]))), "contoso.com"), 
-        Join("@", NormalizeDiacritics(StripSpaces(Join(".",  Mid([PreferredFirstName], 1, 1), [PreferredLastName]))), "contoso.com")
-        Join("@", NormalizeDiacritics(StripSpaces(Join(".",  Mid([PreferredFirstName], 1, 2), [PreferredLastName]))), "contoso.com")
-    )
-
-**Ukázkový vstup/výstup:**
-
-* **VSTUP** (PreferredFirstName): "John"
-* **VSTUP** (PreferredLastName): "Macek"
-* **VÝSTUP**: "John.Smith@contoso.com" Pokud hodnotu hlavního názvu uživatele John.Smith@contoso.com ještě neexistuje v adresáři
-* **VÝSTUP**: "J.Smith@contoso.com" Pokud hodnotu hlavního názvu uživatele John.Smith@contoso.com již existuje v adresáři
-* **VÝSTUP**: "Jo.Smith@contoso.com" Pokud výše uvedené hodnoty dva hlavní název uživatele v adresáři už existuje
 
 ## <a name="related-articles"></a>Související články
 * [Automatizace uživatele zřizování a jeho rušení pro aplikace SaaS](user-provisioning.md)

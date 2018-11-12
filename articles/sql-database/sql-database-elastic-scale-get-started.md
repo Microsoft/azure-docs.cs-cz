@@ -12,12 +12,12 @@ ms.author: anjangsh
 ms.reviewer: ''
 manager: craigg
 ms.date: 08/27/2018
-ms.openlocfilehash: 74bbaeeee390952bf42407a53684bc33a7cfc543
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: ad07b0a9ae2d0c90f63d4f3a842a5d386ac4c59b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50242769"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51249859"
 ---
 # <a name="get-started-with-elastic-database-tools"></a>Začínáme s nástroji Elastic Database
 Tento dokument vás seznámí se vývojářské prostředí pro [Klientská knihovna elastic database](sql-database-elastic-database-client-library.md) tím, že pomáhá spustíte ukázkovou aplikaci. Ukázková aplikace vytvoří jednoduchou horizontálně dělenou aplikaci a popisuje klíčové funkce funkci nástroje pro elastické databáze Azure SQL Database. Zaměřuje se na případy použití pro [správy mapování horizontálních oddílů](sql-database-elastic-scale-shard-map-management.md), [směrování závislé na datech](sql-database-elastic-scale-data-dependent-routing.md), a [dotazování více horizontálních oddílů](sql-database-elastic-scale-multishard-querying.md). Klientská knihovna je k dispozici pro rozhraní .NET i Javu. 
@@ -67,7 +67,7 @@ Knihovna klienta přidat do projektu Maven, přidejte do souboru POM následují
 
 ## <a name="elastic-database-tools-for-net"></a>Nástroje elastic Database pro .NET 
 ### <a name="prerequisites"></a>Požadavky
-* Visual Studio 2012 nebo novějším s jazykem C#. Stáhněte si bezplatnou verzi na [stahování sady Visual Studio](http://www.visualstudio.com/downloads/download-visual-studio-vs.aspx).
+* Visual Studio 2012 nebo novějším s jazykem C#. Stáhněte si bezplatnou verzi na [stahování sady Visual Studio](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx).
 * NuGet 2.7 nebo novější. Pokud chcete získat nejnovější verzi, najdete v článku [instalace balíčků NuGet](http://docs.nuget.org/docs/start-here/installing-nuget).
 
 ### <a name="download-and-run-the-sample-app"></a>Stažení a spuštění ukázkové aplikace
@@ -95,13 +95,13 @@ Blahopřejeme! Úspěšně jste sestavíte a spuštění vaší první horizont�
 > 
 
 ## <a name="key-pieces-of-the-code-sample"></a>Klíčových součástí ukázkového kódu
-* **Správa horizontálních oddílů a horizontální oddíl map**: kód ukazuje, jak pracovat s horizontálními oddíly, rozsahy a mapování v *ShardManagementUtils.cs* souboru. Další informace najdete v tématu [horizontální navýšení kapacity pomocí Správce mapování horizontálních oddílů databáze](http://go.microsoft.com/?linkid=9862595).  
+* **Správa horizontálních oddílů a horizontální oddíl map**: kód ukazuje, jak pracovat s horizontálními oddíly, rozsahy a mapování v *ShardManagementUtils.cs* souboru. Další informace najdete v tématu [horizontální navýšení kapacity pomocí Správce mapování horizontálních oddílů databáze](https://go.microsoft.com/?linkid=9862595).  
 
-* **Směrování závislé na datech**: směrování transakce do správné horizontálního oddílu je zobrazena ve *DataDependentRoutingSample.cs* souboru. Další informace najdete v tématu [směrování závislé na datech](http://go.microsoft.com/?linkid=9862596). 
+* **Směrování závislé na datech**: směrování transakce do správné horizontálního oddílu je zobrazena ve *DataDependentRoutingSample.cs* souboru. Další informace najdete v tématu [směrování závislé na datech](https://go.microsoft.com/?linkid=9862596). 
 
-* **Dotazování více horizontálních oddílů**: dotazování napříč horizontálními oddíly je znázorněno *MultiShardQuerySample.cs* souboru. Další informace najdete v tématu [dotazování více horizontálních oddílů](http://go.microsoft.com/?linkid=9862597).
+* **Dotazování více horizontálních oddílů**: dotazování napříč horizontálními oddíly je znázorněno *MultiShardQuerySample.cs* souboru. Další informace najdete v tématu [dotazování více horizontálních oddílů](https://go.microsoft.com/?linkid=9862597).
 
-* **Přidání prázdné horizontálních oddílů**: iterativní přidávání nových horizontálních oddílů prázdný se provádí pomocí kódu v *CreateShardSample.cs* souboru. Další informace najdete v tématu [horizontální navýšení kapacity pomocí Správce mapování horizontálních oddílů databáze](http://go.microsoft.com/?linkid=9862595).
+* **Přidání prázdné horizontálních oddílů**: iterativní přidávání nových horizontálních oddílů prázdný se provádí pomocí kódu v *CreateShardSample.cs* souboru. Další informace najdete v tématu [horizontální navýšení kapacity pomocí Správce mapování horizontálních oddílů databáze](https://go.microsoft.com/?linkid=9862595).
 
 ## <a name="other-elastic-scale-operations"></a>Další operace elastické škálování
 * **Rozdělení existující horizontálních oddílů**: dělení a slučování poskytuje schopnost rozdělení horizontálních oddílů. Další informace najdete v tématu [přesouvá data mezi databázemi s horizontálním navýšením kapacity](sql-database-elastic-scale-overview-split-and-merge.md).
@@ -119,12 +119,12 @@ Informace o cenách najdete v tématu [podrobnosti o cenách SQL Database](https
 Další informace o nástroje pro elastické databáze najdete v následujících článcích:
 
 * Ukázky kódu: 
-  * Nástroje pro elastické databáze ([.NET](http://code.msdn.microsoft.com/Elastic-Scale-with-Azure-a80d8dc6?SRC=VSIDE), [Java](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-elasticdb-tools%22))
-  * [Nástroje elastic Database pro Azure SQL – integrace Entity Frameworku](http://code.msdn.microsoft.com/Elastic-Scale-with-Azure-bae904ba?SRC=VSIDE)
+  * Nástroje pro elastické databáze ([.NET](https://code.msdn.microsoft.com/Elastic-Scale-with-Azure-a80d8dc6?SRC=VSIDE), [Java](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-elasticdb-tools%22))
+  * [Nástroje elastic Database pro Azure SQL – integrace Entity Frameworku](https://code.msdn.microsoft.com/Elastic-Scale-with-Azure-bae904ba?SRC=VSIDE)
   * [Elasticita horizontálních oddílů v Centru skriptů](https://gallery.technet.microsoft.com/scriptcenter/Elastic-Scale-Shard-c9530cbe)
 * Blog: [oznámení elastické škálování](https://azure.microsoft.com/blog/2014/10/02/introducing-elastic-scale-preview-for-azure-sql-database/)
 * Kanál 9: [video s přehledem elastické škálování](http://channel9.msdn.com/Shows/Data-Exposed/Azure-SQL-Database-Elastic-Scale)
-* Diskuzní fórum: [fórum pro Azure SQL Database](http://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted)
+* Diskuzní fórum: [fórum pro Azure SQL Database](https://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted)
 * K měření výkonu: [čítače výkonu pro správce mapování horizontálních oddílů](sql-database-elastic-database-client-library.md)
 
 <!--Anchors-->

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: ce2b4304ea53be7e9a7be42b8a7fb30f713d85f8
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: f11012c90ab2b82e945fdb67e224783c3f05c6dd
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49405204"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51237549"
 ---
 # <a name="introduction-to-azure-security"></a>Úvod do zabezpečení Azure
 ## <a name="overview"></a>Přehled
@@ -62,7 +62,7 @@ Funkce uvedené následující jsou funkce, které můžete zkontrolovat na posk
 | [Povinné školení o zabezpečení, kontroly back základu](https://downloads.cloudsecurityalliance.org/star/self-assessment/StandardResponsetoRequestforInformationWindowsAzureSecurityPrivacy.docx) |  [Ovládací prvek na umístění dat](https://www.microsoft.com/en-us/trustcenter/Privacy/Where-your-data-is-located) |  [Běžné ovládací prvky centra](https://www.microsoft.com/en-us/trustcenter/Common-Controls-Hub) |[Jak Microsoft spravuje umístění dat ve službách Azure](http://azuredatacentermap.azurewebsites.net/)|
 | [Testování průniku](https://downloads.cloudsecurityalliance.org/star/self-assessment/StandardResponsetoRequestforInformationWindowsAzureSecurityPrivacy.docx), [zjišťování neoprávněných vniknutí, před útoky DDoS](https://www.microsoft.com/en-us/trustcenter/Security/ThreatManagement), [auditování a protokolování](https://www.microsoft.com/en-us/trustcenter/Security/AuditingAndLogging) | [Poskytuje přístup k datům podle vašich představ](https://www.microsoft.com/en-us/trustcenter/Privacy/Who-can-access-your-data-and-on-what-terms) |  [Cloud Services z důvodu co Nejopatrněji kontrolní seznam](https://www.microsoft.com/en-us/trustcenter/Compliance/Due-Diligence-Checklist) |[Kdo v Microsoftu přístup k vašim datům na jaké podmínky](https://www.microsoft.com/en-us/trustcenter/Privacy/Who-can-access-your-data-and-on-what-terms)|
 | [Stav grafiky datacentra](https://www.microsoft.com/en-us/cloud-platform/global-datacenters), fyzické zabezpečení, [zabezpečení sítě](https://docs.microsoft.com/azure/security/security-network-overview) | [Reagovat orgánům zajišťujícím vymáhání zákona](https://www.microsoft.com/en-us/trustcenter/Privacy/Responding-to-govt-agency-requests-for-customer-data) |  [Dodržování předpisů u služeb, umístění a průmysl](https://www.microsoft.com/en-us/trustcenter/Compliance/default.aspx) |[Jak společnost Microsoft chrání vaše zákaznická data ve službách Azure](https://www.microsoft.com/en-us/trustcenter/Transparency/default.aspx)|
-|  [Reakce na incidenty zabezpečení](http://aka.ms/SecurityResponsepaper), [sdílených odpovědností](http://aka.ms/sharedresponsibility) |[Standardy přísné zásady ochrany osobních údajů](https://www.microsoft.com/en-us/TrustCenter/Privacy/We-set-and-adhere-to-stringent-standards) |  | [Projděte si certifikaci pro služby Azure, Centrum transparentnosti](https://www.microsoft.com/en-us/trustcenter/Compliance/default.aspx)|
+|  [Reakce na incidenty zabezpečení](https://aka.ms/SecurityResponsepaper), [sdílených odpovědností](https://aka.ms/sharedresponsibility) |[Standardy přísné zásady ochrany osobních údajů](https://www.microsoft.com/en-us/TrustCenter/Privacy/We-set-and-adhere-to-stringent-standards) |  | [Projděte si certifikaci pro služby Azure, Centrum transparentnosti](https://www.microsoft.com/en-us/trustcenter/Compliance/default.aspx)|
 
 
 

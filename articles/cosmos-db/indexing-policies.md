@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: rafats
-ms.openlocfilehash: fea3455b31ff2ea7119fa4146aa84f855a3b6e35
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: cd3b5f49788282b535f07c6f84bf7e4002132ab9
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44054668"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51237583"
 ---
 # <a name="how-does-azure-cosmos-db-index-data"></a>Jak funguje Azure Cosmos DB indexuje data?
 
@@ -323,7 +323,7 @@ Můžete zvolit, zda má být kolekce, kterou chcete automaticky indexuje všech
 
 Pomocí automatické indexování, vypnutý, můžete stále selektivně přidat pouze konkrétní dokumenty do indexu. Naopak můžete nechat automatické indexování, abyste si zvolit vyloučit konkrétní dokumenty. Indexování zapnout nebo vypnout konfigurace jsou užitečné, pokud máte jenom podmnožinu dokumentů, které potřebuje, aby se dalo dotazovat.
 
-Následující příklad ukazuje, jak vložit dokument explicitně pomocí [SQL SDK pro .NET API](https://docs.microsoft.com/azure/cosmos-db/sql-api-sdk-dotnet) a [RequestOptions.IndexingDirective](http://msdn.microsoft.com/library/microsoft.azure.documents.client.requestoptions.indexingdirective.aspx) vlastnost.
+Následující příklad ukazuje, jak vložit dokument explicitně pomocí [SQL SDK pro .NET API](https://docs.microsoft.com/azure/cosmos-db/sql-api-sdk-dotnet) a [RequestOptions.IndexingDirective](https://msdn.microsoft.com/library/microsoft.azure.documents.client.requestoptions.indexingdirective.aspx) vlastnost.
 
     // If you want to override the default collection behavior to either
     // exclude (or include) a document in indexing,
@@ -413,7 +413,7 @@ Pokud by provedete indexování změny zásad kolekce Azure Cosmos DB? Následuj
 ## <a name="performance-tuning"></a>Ladění výkonu
 Rozhraní SQL API poskytují informace o metrikách výkonu, jako je například využité úložiště indexů a náklady na propustnost (jednotky žádostí) u každé operace. Tyto informace můžete použít k porovnání různé zásady indexování a pro optimalizaci výkonu.
 
-Můžete zkontrolovat kvótu úložiště a využití kolekce spuštěním **HEAD** nebo **získat** požadavek proti kolekci prostředků. Poté, zkontrolujte **x-ms žádost quota** a **x-ms žádost využití** záhlaví. V sadě .NET SDK [DocumentSizeQuota](http://msdn.microsoft.com/library/dn850325.aspx) a [DocumentSizeUsage](http://msdn.microsoft.com/library/azure/dn850324.aspx) vlastnosti v [ResourceResponse < T\> ](http://msdn.microsoft.com/library/dn799209.aspx) obsahovat tyto hodnoty, které odpovídají.
+Můžete zkontrolovat kvótu úložiště a využití kolekce spuštěním **HEAD** nebo **získat** požadavek proti kolekci prostředků. Poté, zkontrolujte **x-ms žádost quota** a **x-ms žádost využití** záhlaví. V sadě .NET SDK [DocumentSizeQuota](https://msdn.microsoft.com/library/dn850325.aspx) a [DocumentSizeUsage](https://msdn.microsoft.com/library/azure/dn850324.aspx) vlastnosti v [ResourceResponse < T\> ](https://msdn.microsoft.com/library/dn799209.aspx) obsahovat tyto hodnoty, které odpovídají.
 
      // Measure the document size usage (which includes the index size) against   
      // different policies.
@@ -421,7 +421,7 @@ Můžete zkontrolovat kvótu úložiště a využití kolekce spuštěním **HEA
      Console.WriteLine("Document size quota: {0}, usage: {1}", collectionInfo.DocumentQuota, collectionInfo.DocumentUsage);
 
 
-K měření režii indexování na každou operaci zápisu (vytvoření, aktualizace nebo odstranění), zkontrolujte **x-ms žádost poplatek** záhlaví (nebo ekvivalentní [RequestCharge](http://msdn.microsoft.com/library/dn799099.aspx) vlastnost v [ ResourceResponse < T\> ](http://msdn.microsoft.com/library/dn799209.aspx) v sadě .NET SDK) k měření počtu jednotek žádosti, které se spotřebovávají tyto operace.
+K měření režii indexování na každou operaci zápisu (vytvoření, aktualizace nebo odstranění), zkontrolujte **x-ms žádost poplatek** záhlaví (nebo ekvivalentní [RequestCharge](https://msdn.microsoft.com/library/dn799099.aspx) vlastnost v [ ResourceResponse < T\> ](https://msdn.microsoft.com/library/dn799209.aspx) v sadě .NET SDK) k měření počtu jednotek žádosti, které se spotřebovávají tyto operace.
 
      // Measure the performance (request units) of writes.     
      ResourceResponse<Document> response = await client.CreateDocumentAsync(UriFactory.CreateDocumentCollectionUri("db", "coll"), myDocument);              

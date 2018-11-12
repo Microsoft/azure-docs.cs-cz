@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 7e8afc02c738a2bba445b1d84b7cb899dfbb93a0
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: bc724f57a25e2ca12d334192d2171899345e72de
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43301550"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51247377"
 ---
 # <a name="security-frame-communication-security--mitigations"></a>Zabezpečení Frame: Zabezpečení komunikace | Zmírnění rizik 
 | Produkt nebo službu | Článek |
@@ -113,7 +113,7 @@ ms.locfileid: "43301550"
 | **Použitelných technologiích** | Obecné |
 | **Atributy**              | EnvironmentType – Azure |
 | **Odkazy**              | [Vynucení protokolu HTTPS ve službě Azure App Service](../app-service/app-service-web-tutorial-custom-ssl.md#enforce-https) |
-| **Kroky** | <p>I když Azure již povolí protokol HTTPS pro Azure app Service s certifikát se zástupným znakem domény *. azurewebsites.net, Nevynucovat HTTPS. Návštěvníci může pořád přístup k aplikaci pomocí protokolu HTTP, což může ohrozit zabezpečení aplikace a proto HTTPS musí být explicitně vynutit. Aplikace ASP.NET MVC by měly používat [atribut RequireHttps filtr](http://msdn.microsoft.com/library/system.web.mvc.requirehttpsattribute.aspx) , který vynutí opětovné odeslání přes protokol HTTPS nezabezpečeného požadavku HTTP.</p><p>Alternativně modulem přepisu adresy URL, která je zahrnutá ve službě Azure App Service slouží k vynucení protokolu HTTPS. Modul přepisování adres URL umožňuje vývojářům definovat pravidla, která se použijí pro příchozí požadavky před požadavky jsou předány do vaší aplikace. Přepisování adres URL pravidla jsou definovány v souboru web.config uložená v kořenovém adresáři aplikace</p>|
+| **Kroky** | <p>I když Azure již povolí protokol HTTPS pro Azure app Service s certifikát se zástupným znakem domény *. azurewebsites.net, Nevynucovat HTTPS. Návštěvníci může pořád přístup k aplikaci pomocí protokolu HTTP, což může ohrozit zabezpečení aplikace a proto HTTPS musí být explicitně vynutit. Aplikace ASP.NET MVC by měly používat [atribut RequireHttps filtr](https://msdn.microsoft.com/library/system.web.mvc.requirehttpsattribute.aspx) , který vynutí opětovné odeslání přes protokol HTTPS nezabezpečeného požadavku HTTP.</p><p>Alternativně modulem přepisu adresy URL, která je zahrnutá ve službě Azure App Service slouží k vynucení protokolu HTTPS. Modul přepisování adres URL umožňuje vývojářům definovat pravidla, která se použijí pro příchozí požadavky před požadavky jsou předány do vaší aplikace. Přepisování adres URL pravidla jsou definovány v souboru web.config uložená v kořenovém adresáři aplikace</p>|
 
 ### <a name="example"></a>Příklad:
 Následující příklad obsahuje základní pravidlo přepisování adres URL, která vynutí pro veškeré příchozí přenosy na používání protokolu HTTPS
@@ -156,7 +156,7 @@ Toto pravidlo funguje tak, že vrací stavový kód HTTP 301 (trvalé přesměro
 | **SDL fáze**               | Sestavení |  
 | **Použitelných technologiích** | SQL Azure  |
 | **Atributy**              | Verze SQL - V12 |
-| **Odkazy**              | [Osvědčené postupy při psaní zabezpečené připojovací řetězce pro službu SQL Database](http://social.technet.microsoft.com/wiki/contents/articles/2951.windows-azure-sql-database-connection-security.aspx#best) |
+| **Odkazy**              | [Osvědčené postupy při psaní zabezpečené připojovací řetězce pro službu SQL Database](https://social.technet.microsoft.com/wiki/contents/articles/2951.windows-azure-sql-database-connection-security.aspx#best) |
 | **Kroky** | <p>Veškerá komunikace mezi SQL Database a klientské aplikace jsou šifrované pomocí vrstvy SSL (Secure Sockets) po celou dobu. SQL Database nepodporuje nezašifrované připojení. K ověření certifikátů pomocí kódu aplikace nebo nástroje, explicitně vyžadoval šifrované připojení a nepovažujete certifikáty serveru. Pokud váš kód aplikace nebo nástroje žádosti šifrované připojení, se stále mu šifrovaná připojení</p><p>Ale nemusí být ověřeny certifikáty serveru a proto může být napadeno útočníky "man in the middle" útoky. Chcete-li ověřit certifikáty s kódem aplikace ADO.NET, nastavte `Encrypt=True` a `TrustServerCertificate=False` připojovacího řetězce databáze. K ověření certifikátů přes SQL Server Management Studio, otevřete připojení k serveru dialogovému oknu. Klikněte na tlačítko šifrovat připojení na kartě Vlastnosti připojení</p>|
 
 ## <a id="encrypted-sqlserver"></a>Platnost šifrované komunikace se serverem SQL

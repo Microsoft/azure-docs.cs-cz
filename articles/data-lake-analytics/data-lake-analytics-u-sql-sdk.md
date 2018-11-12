@@ -8,12 +8,12 @@ ms.author: yanacai
 ms.reviewer: jasonwhowell
 ms.topic: conceptual
 ms.date: 03/01/2017
-ms.openlocfilehash: ae5334dcb93e34569131ab51dca99c310831082d
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 6a73ef058a76152678099eca3f1bd15590b0b03d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43052083"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238790"
 ---
 # <a name="run-and-test-u-sql-with-azure-data-lake-u-sql-sdk"></a>Spuštění a testování U-SQL s Azure Data Lake U-SQL SDK
 
@@ -36,7 +36,7 @@ Data Lake U-SQL SDK vyžaduje následující závislosti:
 
     ![Data Lake Tools pro Visual Studio Windows 10 SDK místního spuštění](./media/data-lake-analytics-data-lake-tools-local-run/data-lake-tools-for-visual-studio-local-run-windows-10-sdk.png)
 
-    - Nainstalujte [nástroje Data Lake pro Visual Studio](http://aka.ms/adltoolsvs). Můžete najít předpřipravenou Visual C++ a Windows SDK soubory na C:\Program Files (x86) \Microsoft Visual Studio 14.0\Common7\IDE\Extensions\Microsoft\ADL Tools\X.X.XXXX.X\CppSDK. Místní kompilátor U-SQL v tomto případě nelze najít závislosti automaticky. Je třeba zadat cestu CppSDK pro něj. Můžete buď zkopírujte soubory jinam nebo použít to tak je.
+    - Nainstalujte [nástroje Data Lake pro Visual Studio](https://aka.ms/adltoolsvs). Můžete najít předpřipravenou Visual C++ a Windows SDK soubory na C:\Program Files (x86) \Microsoft Visual Studio 14.0\Common7\IDE\Extensions\Microsoft\ADL Tools\X.X.XXXX.X\CppSDK. Místní kompilátor U-SQL v tomto případě nelze najít závislosti automaticky. Je třeba zadat cestu CppSDK pro něj. Můžete buď zkopírujte soubory jinam nebo použít to tak je.
 
 ## <a name="understand-basic-concepts"></a>Základní koncepce
 
@@ -362,7 +362,7 @@ veřejné LocalRunHelper ([System.IO.TextWriter messageOutput = null])
 |WorkDir|řetězec|Upřednostňované pracovní adresář|
 
 
-**– Metoda**
+**Metoda**
 
 |Metoda|Popis|Vrátí|Parametr|
 |------|-----------|------|---------|

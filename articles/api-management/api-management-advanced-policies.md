@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: cc327695a91a39c4d910a4f2421b22cc3b100627
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.openlocfilehash: 803fa89145d3a38b2df34666754fe8949a74eb53
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50747877"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51262331"
 ---
 # <a name="api-management-advanced-policies"></a>Pokročilé zásady API managementu
-Toto téma obsahuje odkaz pro následující zásady služby API Management. Informace o přidávání a konfiguraci zásad najdete v tématu [zásady ve službě API Management](http://go.microsoft.com/fwlink/?LinkID=398186).
+Toto téma obsahuje odkaz pro následující zásady služby API Management. Informace o přidávání a konfiguraci zásad najdete v tématu [zásady ve službě API Management](https://go.microsoft.com/fwlink/?LinkID=398186).
 
 ##  <a name="AdvancedPolicies"></a> Pokročilé zásady
 
@@ -136,7 +136,7 @@ Toto téma obsahuje odkaz pro následující zásady služby API Management. Inf
 |podmínka = "logický výraz &#124; Logická – konstanta"|Logický výraz nebo konstantu, která vyhodnotí při obsahující `when` vyhodnocení prohlášení o zásadách.|Ano|
 
 ###  <a name="ChooseUsage"></a> Využití
- Tyto zásady můžete použít v následujících zásad [oddíly](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+ Tyto zásady můžete použít v následujících zásad [oddíly](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
 -   **Části zásad:** vstupní, výstupní a back-endu na chyby
 
@@ -247,7 +247,7 @@ Toto téma obsahuje odkaz pro následující zásady služby API Management. Inf
 |postupujte podle přesměrování = "true &#124; false"|Určuje, zda přesměrování z back-end služby jsou za nímž následuje brány nebo vrátit zpět volajícímu.|Ne|false (nepravda)|
 
 ### <a name="usage"></a>Využití
- Tyto zásady můžete použít v následujících zásad [oddíly](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+ Tyto zásady můžete použít v následujících zásad [oddíly](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
 -   **Části zásad:** back-endu
 -   **Zásady obory:** všechny obory
@@ -294,7 +294,7 @@ Toto téma obsahuje odkaz pro následující zásady služby API Management. Inf
 |maximální počet|Celé číslo. Určuje maximální počet požadavků, které se můžou zadat zásady.|Ano|neuvedeno|
 
 ### <a name="usage"></a>Využití
- Tyto zásady můžete použít v následujících zásad [oddíly](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+ Tyto zásady můžete použít v následujících zásad [oddíly](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
 -   **Části zásad:** vstupní, výstupní a back-endu na chyby
 
@@ -345,7 +345,7 @@ Toto téma obsahuje odkaz pro následující zásady služby API Management. Inf
 |klíč oddílu|Určuje hodnotu sloužící pro přiřazení k oddílu při odesílání zpráv.|Volitelné. Tento atribut nelze použít, pokud `partition-id` se používá.|
 
 ### <a name="usage"></a>Využití
- Tyto zásady můžete použít v následujících zásad [oddíly](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+ Tyto zásady můžete použít v následujících zásad [oddíly](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
 -   **Části zásad:** vstupní, výstupní a back-endu na chyby
 
@@ -387,7 +387,7 @@ status code and media type. If no example or schema found, the content is empty.
 |Typ obsahu|Určuje `Content-Type` hodnota hlavičky odpovědi a slouží k výběru příslušné příklad nebo schématu.|Ne|Žádný|
 
 ### <a name="usage"></a>Využití
- Tyto zásady můžete použít v následujících zásad [oddíly](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+ Tyto zásady můžete použít v následujících zásad [oddíly](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
 -   **Části zásad:** příchozí, odchozí, na chyby
 
@@ -452,7 +452,7 @@ status code and media type. If no example or schema found, the content is empty.
 > Když `interval`, `max-interval` a `delta` nejsou zadány, **exponenciální** interval opakování algoritmus použije, pokud doba čekání mezi opakované pokusy řešení roste exponenciálně každým z hodnoty `interval` do Hodnota `max-interval` podle následujících forumula - `min(interval + (2^count - 1) * random(delta * 0.8, delta * 1.2), max-interval)`.
 
 ### <a name="usage"></a>Využití
- Tyto zásady můžete použít v následujících zásad [oddíly](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) . Všimněte si, že podřízená omezení použití zásad zdědí tyto zásady.
+ Tyto zásady můžete použít v následujících zásad [oddíly](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) . Všimněte si, že podřízená omezení použití zásad zdědí tyto zásady.
 
 -   **Části zásad:** vstupní, výstupní a back-endu na chyby
 
@@ -500,7 +500,7 @@ status code and media type. If no example or schema found, the content is empty.
 |Název proměnné odpovědi|Název proměnné kontextu odkazován z, například upstreamové [požadavků na odeslání](api-management-advanced-policies.md#SendRequest) zásad a který obsahuje `Response` objektu|Volitelné.|
 
 ### <a name="usage"></a>Využití
- Tyto zásady můžete použít v následujících zásad [oddíly](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+ Tyto zásady můžete použít v následujících zásad [oddíly](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
 -   **Části zásad:** vstupní, výstupní a back-endu na chyby
 
@@ -572,7 +572,7 @@ status code and media type. If no example or schema found, the content is empty.
 |existuje akce|Určuje, jaká akce se má provést, když je už zadaná hlavičce. Tento atribut musí mít jednu z následujících hodnot.<br /><br /> -override - nahradí hodnotu existujícího hlavičky.<br />-skip - nenahrazuje existující hodnota hlavičky.<br />-Přidat – přidá hodnotu do existující hodnota hlavičky.<br />-delete - odstraní hlavičku ze žádosti.<br /><br /> Pokud je nastavena na `override` uvedení několik záznamů se stejným názvem výsledků v hlavičce nastavena podle všechny položky (které bude uveden více než jednou), nastaví se pouze uvedené hodnoty ve výsledku.|Ne|přepsání|
 
 ### <a name="usage"></a>Využití
- Tyto zásady můžete použít v následujících zásad [oddíly](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+ Tyto zásady můžete použít v následujících zásad [oddíly](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
 -   **Části zásad:** vstupní, výstupní a back-endu na chyby
 
@@ -656,7 +656,7 @@ status code and media type. If no example or schema found, the content is empty.
 |existuje akce|Určuje, jaká akce se má provést, když je už zadaná hlavičce. Tento atribut musí mít jednu z následujících hodnot.<br /><br /> -override - nahradí hodnotu existujícího hlavičky.<br />-skip - nenahrazuje existující hodnota hlavičky.<br />-Přidat – přidá hodnotu do existující hodnota hlavičky.<br />-delete - odstraní hlavičku ze žádosti.<br /><br /> Pokud je nastavena na `override` uvedení několik záznamů se stejným názvem výsledků v hlavičce nastavena podle všechny položky (které bude uveden více než jednou), nastaví se pouze uvedené hodnoty ve výsledku.|Ne|přepsání|
 
 ### <a name="usage"></a>Využití
- Tyto zásady můžete použít v následujících zásad [oddíly](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+ Tyto zásady můžete použít v následujících zásad [oddíly](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
 -   **Části zásad:** vstupní, výstupní a back-endu na chyby
 
@@ -695,7 +695,7 @@ Všimněte si použití [vlastnosti](api-management-howto-properties.md) jako ho
 |heslo = "řetězec"|Heslo má být použit pro ověřování s proxy serverem.|Ne|neuvedeno|
 
 ### <a name="usage"></a>Využití
- Tyto zásady můžete použít v následujících zásad [oddíly](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+ Tyto zásady můžete použít v následujících zásad [oddíly](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
 -   **Části zásad:** příchozí
 
@@ -747,7 +747,7 @@ Všimněte si použití [vlastnosti](api-management-howto-properties.md) jako ho
 |set – metoda|Kořenový element. Hodnota elementu, který určuje metodu HTTP.|Ano|
 
 ### <a name="usage"></a>Využití
- Tyto zásady můžete použít v následujících zásad [oddíly](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+ Tyto zásady můžete použít v následujících zásad [oddíly](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
 -   **Části zásad:** příchozí, při chybě
 
@@ -794,7 +794,7 @@ Všimněte si použití [vlastnosti](api-management-howto-properties.md) jako ho
 |z důvodu = "řetězec"|Popis důvod vrátí stavový kód.|Ano|neuvedeno|
 
 ### <a name="usage"></a>Využití
- Tyto zásady můžete použít v následujících zásad [oddíly](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+ Tyto zásady můžete použít v následujících zásad [oddíly](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
 -   **Části zásad:** odchozí, back-endu na chyby
 -   **Zásady obory:** všechny obory
@@ -829,7 +829,7 @@ Všimněte si použití [vlastnosti](api-management-howto-properties.md) jako ho
 |hodnota|Hodnota proměnné. To může být výraz nebo literálovou hodnotou.|Ano|
 
 ### <a name="usage"></a>Využití
- Tyto zásady můžete použít v následujících zásad [oddíly](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+ Tyto zásady můžete použít v následujících zásad [oddíly](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
 -   **Části zásad:** vstupní, výstupní a back-endu na chyby
 -   **Zásady obory:** všechny obory
@@ -895,7 +895,7 @@ Všimněte si použití [vlastnosti](api-management-howto-properties.md) jako ho
 |source|Řetězcový literál smysl v daném prohlížeči trasování a zadáte zdroj zprávy.|Ano|neuvedeno|
 
 ### <a name="usage"></a>Využití
- Tyto zásady můžete použít v následujících zásad [oddíly](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) .
+ Tyto zásady můžete použít v následujících zásad [oddíly](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) .
 
 -   **Části zásad:** vstupní, výstupní a back-endu na chyby
 
@@ -963,7 +963,7 @@ Všimněte si použití [vlastnosti](api-management-howto-properties.md) jako ho
 
 ### <a name="usage"></a>Využití
 
-Tyto zásady můžete použít v následujících zásad [oddíly](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+Tyto zásady můžete použít v následujících zásad [oddíly](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
 -   **Části zásad:** vstupní, výstupní a back-endu
 -   **Zásady obory:** všechny obory

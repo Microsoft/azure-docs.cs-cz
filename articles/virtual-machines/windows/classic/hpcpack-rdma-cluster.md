@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 03/06/2018
 ms.author: danlep
-ms.openlocfilehash: 7bb49e48f3777304aa6f40cee40e0b7147994201
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 52338cc21e46b544c2abb79cd7094615c837a2e8
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49345233"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51233775"
 ---
 # <a name="set-up-a-windows-rdma-cluster-with-hpc-pack-to-run-mpi-applications"></a>Nastavení clusteru Windows RDMA pomocí sady HPC Pack pro spouštění aplikací MPI
 Nastavení clusteru Windows RDMA v Azure pomocí [sady Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029) a [velikosti virtuálních počítačů s podporou RDMA HPC](../sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#rdma-capable-instances) ke spouštění paralelních aplikací rozhraní MPI (Message Passing Interface). Při nastavování podporující RDMA, založené na Windows Server uzly v clusteru HPC Pack aplikací MPI efektivně komunikovat prostřednictvím s nízkou latencí a vysokou propustnost sítě v Azure, která je založena na technologii vzdáleného přímého paměti přístup (počítače RDMA).
@@ -51,19 +51,19 @@ Toto jsou požadavky a kroky k přejít na RDMA podporovat Azure instancí z exi
     Stažení instalačního balíčku ze sady HPC Pack [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=49922). Požadavky a pokyny k přípravě nasazení služby Azure burst najdete v tématu [Burst to Azure instancí pracovních procesů pomocí sady Microsoft HPC Pack](https://technet.microsoft.com/library/gg481749.aspx).
 2. **Konfigurace certifikátu pro správu v rámci předplatného Azure**
    
-    Konfigurace certifikátu pro zabezpečené připojení mezi hlavní uzel a Azure. Možnosti a postupy najdete v tématu [scénáře ke konfiguraci certifikátu pro správu Azure pro prostředí HPC Pack](http://technet.microsoft.com/library/gg481759.aspx). Pro testovací nasazení nainstaluje sady HPC Pack výchozí Microsoft HPC certifikát správy platformy Azure můžete rychle nahrát do vašeho předplatného Azure.
+    Konfigurace certifikátu pro zabezpečené připojení mezi hlavní uzel a Azure. Možnosti a postupy najdete v tématu [scénáře ke konfiguraci certifikátu pro správu Azure pro prostředí HPC Pack](https://technet.microsoft.com/library/gg481759.aspx). Pro testovací nasazení nainstaluje sady HPC Pack výchozí Microsoft HPC certifikát správy platformy Azure můžete rychle nahrát do vašeho předplatného Azure.
 3. **Vytvořit novou cloudovou službu a účet úložiště**
    
     Vytvoření cloudové služby (klasické) a účet úložiště (classic) pro nasazení pomocí webu Azure portal. Vytvoření těchto prostředků v oblasti, kde je k dispozici řada H-series, instance A8 nebo A9 velikost, kterou chcete použít. Zobrazit [produkty Azure podle oblastí](https://azure.microsoft.com/regions/services/).
 
 4. **Vytvoření šablony uzlu Azure**
    
-    Použití uzlu Průvodce vytvořením šablony ve Správci clusteru HPC. Pokyny najdete v tématu [vytvořit šablonu Azure uzel](http://technet.microsoft.com/library/gg481758.aspx#BKMK_Templ) v "Kroky k nasazení Azure uzly pomocí sady Microsoft HPC Pack".
+    Použití uzlu Průvodce vytvořením šablony ve Správci clusteru HPC. Pokyny najdete v tématu [vytvořit šablonu Azure uzel](https://technet.microsoft.com/library/gg481758.aspx#BKMK_Templ) v "Kroky k nasazení Azure uzly pomocí sady Microsoft HPC Pack".
    
     Pro počáteční testování doporučujeme konfigurace zásad ruční dostupnosti v šabloně.
 5. **Přidání uzlů do clusteru**
    
-    Použití Průvodce přidáním uzlu ve Správci clusteru HPC. Další informace najdete v tématu [Azure přidat uzly do clusteru Windows HPC](http://technet.microsoft.com/library/gg481758.aspx#BKMK_Add).
+    Použití Průvodce přidáním uzlu ve Správci clusteru HPC. Další informace najdete v tématu [Azure přidat uzly do clusteru Windows HPC](https://technet.microsoft.com/library/gg481758.aspx#BKMK_Add).
    
     Při zadávání velikost uzlů, vyberte jednu z podporující RDMA velikostí instancí.
    
@@ -76,7 +76,7 @@ Toto jsou požadavky a kroky k přejít na RDMA podporovat Azure instancí z exi
     Vyberte uzly a použít **Start** akcí ve Správci clusteru HPC. Jakmile je zřizování dokončeno, vyberte uzly a použít **přepnout do režimu Online** akcí ve Správci clusteru HPC. Uzly jsou připravené ke spuštění úlohy.
 7. **Odesílání úloh do clusteru**
    
-   Pomocí nástroje pro odeslání úlohy HPC Pack můžete spouštět úlohy clusteru. Zobrazit [sady Microsoft HPC Pack: Správa úloh](http://technet.microsoft.com/library/jj899585.aspx).
+   Pomocí nástroje pro odeslání úlohy HPC Pack můžete spouštět úlohy clusteru. Zobrazit [sady Microsoft HPC Pack: Správa úloh](https://technet.microsoft.com/library/jj899585.aspx).
 8. **Zastavení (zrušení zřízení) uzly**
    
    Po dokončení spuštěné úlohy, odpojit, uzly a použít **Zastavit** akcí ve Správci clusteru HPC.

@@ -14,15 +14,15 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: b60e4f3547e049dc35c08ce115bdfcbbf6ebb18a
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 5345ca3a9c2f35b45669a3a54ecb42ca627cde32
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42057215"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51259815"
 ---
 # <a name="use-case---customer-profiling"></a>Příklad použití – profilace zákazníka
-Azure Data Factory je jednou z mnoha služeb používaný k implementaci akcelerátorů řešení Cortana Intelligence Suite.  Další informace o Cortana Intelligence [Cortana Intelligence Suite](http://www.microsoft.com/cortanaanalytics). V tomto dokumentu popisujeme jednoduchý případ použití pro zahájení práce při pochopení, jak Azure Data Factory můžete vyřešit běžné problémy analýzy.
+Azure Data Factory je jednou z mnoha služeb používaný k implementaci akcelerátorů řešení Cortana Intelligence Suite.  Další informace o Cortana Intelligence [Cortana Intelligence Suite](https://www.microsoft.com/cortanaanalytics). V tomto dokumentu popisujeme jednoduchý případ použití pro zahájení práce při pochopení, jak Azure Data Factory můžete vyřešit běžné problémy analýzy.
 
 ## <a name="scenario"></a>Scénář
 Contoso je společnost vyrábějící, která vytvoří her pro různé platformy: her konzol, dlaně zařízení a osobních počítačů (počítače). Jak hráči hraní her, je vytvořen velkého objemu dat protokolu, který sleduje vzorce používání, herní stylu a předvolby uživatele.  V kombinaci s demografické, místní a data produktu Contoso můžete provádět analýzy a provede je o tom, jak zlepšit přimět hráče zahrát prostředí a nákupech cíl pro inovace a hry. 

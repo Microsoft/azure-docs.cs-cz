@@ -7,24 +7,24 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 09/27/2017
-ms.author: maxluk
-ms.openlocfilehash: 434b3ecf65aaa5ecea81f5a9773f1bc6e8f6f2be
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.date: 11/06/2018
+ms.author: arindamc
+ms.openlocfilehash: 727ecdb06f9a43bf3722f82fa10b7a3304cf4958
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43092323"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51255298"
 ---
 # <a name="monitor-cluster-performance"></a>Monitorování výkonu clusteru
 
-Monitorování stavu a výkonu clusteru služby HDInsight je nezbytná pro zajištění maximálního výkonu a využití prostředků. Monitorování vám také umožňují možného kódování, adresu či chyby konfigurace clusteru.
+Monitorování stavu a výkonu clusteru služby HDInsight je nezbytné pro udržování optimálního výkonu a využití prostředků. Monitorování vám také umožňují zjistit a řešit chyby v konfiguraci clusteru a potíží s kódem uživatele.
 
-Následující části popisují, jak optimalizovat cluster načítání, YARN fronty efektivitu a usnadnění přístupu úložiště.
+Následující části popisují, jak sledovat a optimalizovat zatížení vašich clusterů, YARN fronty a zjištění problémů s úložištěm omezení.
 
-## <a name="cluster-loading"></a>Zatížení clusteru
+## <a name="monitor-cluster-load"></a>Monitorování clusteru zatížení
 
-Clustery Hadoop by měl zajistit rovnováhu mezi, načítají se na uzlech clusteru. Toto vyrovnávání zabraňuje úlohy související se zpracováním omezovaná paměti RAM, procesoru nebo diskové prostředky.
+Clustery Hadoop doručovat dosáhli co nejoptimálnějšího výkonu při zatížení v clusteru je rovnoměrně rozdělené mezi všechny uzly. To umožňuje zpracování úloh, které chcete spustit bez omezovaná paměti RAM, procesoru nebo prostředky disku v jednotlivých uzlech.
 
 Pokud chcete získat podrobný pohled na uzlech clusteru a jejich načítání, přihlaste se k [webovému uživatelskému rozhraní Ambari](hdinsight-hadoop-manage-ambari.md)a pak vyberte **hostitele** kartu. Vaši hostitelé jsou seřazeny podle jejich plně kvalifikovaných názvů domény. Provozní stav každého hostitele je znázorněná indikátor barevné stavu:
 
@@ -47,11 +47,11 @@ Zobrazit [HDInsight Správa clusterů pomocí webového uživatelského rozhran�
 
 ## <a name="yarn-queue-configuration"></a>Konfigurace fronty YARN
 
-Hadoop má různé služby fungovat v různých její distribuovanou platformu. YARN (zatím jiné Resource Negotiator) koordinuje těchto služeb, přidělí prostředky clusteru a spravuje přístup k běžné datové sady.
+Hadoop má různé služby fungovat v různých její distribuovanou platformu. YARN (zatím jiné Resource Negotiator) koordinuje tyto služby a přiděluje prostředky clusteru k zajištění, že je jakékoliv zatížení rovnoměrně distribuovat napříč clusterem.
 
 YARN rozdělí dvě odpovědnosti JobTracker, Správa prostředků a plánování a monitorování, úloh na dva procesy démon: Globální správce prostředků a jednotlivým aplikacím ApplicationMaster (dop).
 
-Je správce prostředků *plánovači čisté*a pouze řeší dostupných prostředků mezi všechny konkurující si aplikace. Správce prostředků zajišťuje, že všechny prostředky se vždycky nacházejí v použití, optimalizaci pro různé konstant, jako je smlouvách SLA, kapacity zaručuje a tak dále. ApplicationMaster vyjedná prostředků ze Správce prostředků a pracuje s NodeManager(s) pro spouštění a sledování kontejnery a jejich spotřeby prostředků.
+Resource Manager je *plánovači čisté*a pouze řeší dostupných prostředků mezi všechny konkurující si aplikace. Správce prostředků zajišťuje, že všechny prostředky jsou vždy se používají, optimalizace pro různé konstant, jako je smlouvách SLA, kapacity zaručuje a tak dále. ApplicationMaster vyjedná prostředků v Resource Manageru a pracuje s NodeManager(s) pro spouštění a sledování kontejnery a jejich spotřeby prostředků.
 
 Když několik tenantů sdílí velký cluster, je konkurenční žádosti o prostředky clusteru. CapacityScheduler je modulární plánovače, která pomáhá při sdílení podle jejich zařazování do fronty požadavky prostředků. Podporuje také CapacityScheduler *hierarchické fronty* zajistit, že se prostředky sdílejí mezi dílčí fronty organizace, před fronty jiné aplikace můžou používat bezplatné zdroje.
 
@@ -63,7 +63,7 @@ Na stránce Správce fronty YARN zobrazí seznam vašich front na levé straně 
 
 ![Stránka podrobností Správce fronty YARN](./media/hdinsight-key-scenarios-to-monitor/yarn-queue-manager-details.png)
 
-Podrobnější pohled na vaše front z Ambari řídicího panelu, vyberte **YARN** služby ze seznamu na levé straně. Pak v oblasti **rychlé odkazy** rozevírací nabídce vyberte **uživatelské rozhraní správce prostředků** pod aktivní uzel.
+Podrobnější pohled na vaše front z Ambari řídicího panelu, vyberte **YARN** služby ze seznamu na levé straně. Pak v oblasti **rychlé odkazy** rozevírací nabídce vyberte **uživatelského rozhraní správce prostředků** pod aktivní uzel.
 
 ![Odkaz uživatelského rozhraní správce prostředků nabídky](./media/hdinsight-key-scenarios-to-monitor/resource-manager-ui-menu.png)
 

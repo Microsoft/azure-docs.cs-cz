@@ -9,12 +9,12 @@ ms.service: event-hubs
 ms.topic: article
 ms.date: 10/07/2018
 ms.author: shvija
-ms.openlocfilehash: 4e0f762a69451ce0dc9ec00db5992fce0707f275
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
-ms.translationtype: HT
+ms.openlocfilehash: 9bd1649c0ec89abf660865971314becb6580852f
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51282437"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51300671"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Nejčastější dotazy k Event Hubs
 
@@ -50,7 +50,7 @@ Event Hubs úrovně Standard úroveň momentálně podporuje maximální doba se
 ### <a name="how-do-i-monitor-my-event-hubs"></a>Jak můžu monitorovat Moje služby Event Hubs?
 Event Hubs vysílá vyčerpávající metriky, které poskytují stavu vašich prostředků, aby [Azure Monitor](../azure-monitor/overview.md). Také vám umožňují posouzení celkového stavu služby Event Hubs pouze na úrovni oboru názvů, ale také na úrovni entity. Další informace o monitorování, které nabízíte [Azure Event Hubs](event-hubs-metrics-azure-monitor.md).
 
-## <a name="apache-kakfa-integration"></a>Integrace Apache Kakfa
+## <a name="apache-kafka-integration"></a>Integrace Apache Kafka
 
 ### <a name="how-do-i-integrate-my-existing-kafka-application-with-event-hubs"></a>Jak integrovat existující aplikaci Kafka s Event Hubs?
 Služba Event Hubs poskytuje Kafka koncového bodu, který lze použít ve svých stávajících aplikací na základě Apache Kafka. Změna konfigurace je vše, co je potřeba mít prostředí PaaS Kafka. To poskytuje alternativu ke spuštění clusteru Kafka. Event Hubs podporuje Apache Kafka 1.0 a novějšími verzemi klienta a spolupracuje s vaší stávající Kafka aplikace, nástroje a architektury. Další informace najdete v tématu [Event Hubs pro úložiště pro Kafka](https://github.com/Azure/azure-event-hubs-for-kafka).

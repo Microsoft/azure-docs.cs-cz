@@ -3,19 +3,19 @@ title: Apache Sqoop se systémem Hadoop – Azure HDInsight
 description: Další informace o použití Apache Sqoop k importu a exportu mezi platformou Hadoop v HDInsight a Azure SQL Database.
 keywords: hadoop, sqoop, sqoop
 services: hdinsight
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 03/26/2018
-ms.openlocfilehash: e9ee4ceb51b2de58010f3e6cf7feba9df64b9bad
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 6aa5627a0b5e8cb29f0ec68b948084a0bed30529
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43050165"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51259441"
 ---
 # <a name="use-apache-sqoop-to-import-and-export-data-between-hadoop-on-hdinsight-and-sql-database"></a>Použití Apache Sqoop k importu a exportu dat mezi platformou Hadoop v HDInsight a SQL Database
 
@@ -125,7 +125,7 @@ Můžete také použít Sqoop k importu a exportu dat z SQL serveru. Rozdíly me
 
 * SQL Server musí být nakonfigurované pro umožnění ověřování SQL. Další informace najdete v tématu [volba režimu ověřování](https://msdn.microsoft.com/ms144284.aspx) dokumentu.
 
-* Bude pravděpodobně nutné nakonfigurovat SQL Server tak, aby přijímal vzdálená připojení. Další informace najdete v tématu [postupy řešení potíží s připojením k databázovému stroji SQL serveru](http://social.technet.microsoft.com/wiki/contents/articles/2102.how-to-troubleshoot-connecting-to-the-sql-server-database-engine.aspx) dokumentu.
+* Bude pravděpodobně nutné nakonfigurovat SQL Server tak, aby přijímal vzdálená připojení. Další informace najdete v tématu [postupy řešení potíží s připojením k databázovému stroji SQL serveru](https://social.technet.microsoft.com/wiki/contents/articles/2102.how-to-troubleshoot-connecting-to-the-sql-server-database-engine.aspx) dokumentu.
 
 * Pomocí následujících příkazů jazyka Transact-SQL k vytvoření **mobiledata** tabulky:
 

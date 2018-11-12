@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 09/05/2018
 ms.author: spelluru
-ms.openlocfilehash: f48e9a5600dca1e13d6ee94a675d5bc824915118
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 0254762de49f37c591a7847fe9b40b3ecbabe1bd
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393957"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261056"
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>Fronty služby Storage a fronty služby Service Bus – porovnání a rozdíly
 Tento článek analyzuje rozdíly a podobnosti mezi dvěma typy front, které nabízí Microsoft Azure ještě dnes: fronty služby Storage a fronty služby Service Bus. Tyto informace můžete použít ke srovnání příslušných technologií a pomůžou vám kvalifikovaněji se rozhodnout, které řešení nejlíp vyhovuje vašim potřebám.
@@ -70,7 +70,7 @@ Tato část porovnává některých základních funkcí front zpráv poskytuje 
 | Řazení se zárukou |**Ne** <br/><br>Další informace najdete v tématu první poznámky v části "Další informace".</br> |**Ano - First-In-First-Out (FIFO)**<br/><br>(pomocí zasílání zpráv relací) |
 | Garance doručení |**Na alespoň jedno** |**Na alespoň jedno**<br/><br/>**Jednou na většinu** |
 | Podpora atomické operace |**Ne** |**Ano**<br/><br/> |
-| Přijímat chování |**Neblokující**<br/><br/>(dokončení okamžitě pokud se nenajde žádné nové zprávy) |**Blokování s nebo bez časového limitu**<br/><br/>(nabízí dlouhý interval dotazování, nebo ["Comet techniku"](http://go.microsoft.com/fwlink/?LinkId=613759))<br/><br/>**Neblokující**<br/><br/>(pomocí rozhraní .NET API režim pouze spravovaný) |
+| Přijímat chování |**Neblokující**<br/><br/>(dokončení okamžitě pokud se nenajde žádné nové zprávy) |**Blokování s nebo bez časového limitu**<br/><br/>(nabízí dlouhý interval dotazování, nebo ["Comet techniku"](https://go.microsoft.com/fwlink/?LinkId=613759))<br/><br/>**Neblokující**<br/><br/>(pomocí rozhraní .NET API režim pouze spravovaný) |
 | Push – vizuální styl rozhraní API |**Ne** |**Ano**<br/><br/>[OnMessage](/dotnet/api/microsoft.servicebus.messaging.queueclient.onmessage#Microsoft_ServiceBus_Messaging_QueueClient_OnMessage_System_Action_Microsoft_ServiceBus_Messaging_BrokeredMessage__) a **OnMessage** relace rozhraní .NET API. |
 | Zobrazí režim |**Náhled & zapůjčení** |**Náhled & uzamčení**<br/><br/>**Zobrazit & Odstranit** |
 | Režim výhradní přístup |**Na základě zapůjčení** |**Na základě zámku** |
