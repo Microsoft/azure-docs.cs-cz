@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2017
 ms.author: chackdan
-ms.openlocfilehash: 70372f30ffaea1fafda3f76d4754489ae89a0a7c
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: cc86a18b0db67bf968006c42f5791e1ad7a093f0
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49390172"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51016689"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Nejčastější dotazy k Service Fabric
 
@@ -48,13 +48,9 @@ Pár věcí k uvážení:
 
 ### <a name="do-service-fabric-nodes-automatically-receive-os-updates"></a>Uzly Service Fabricu automaticky přijímat aktualizace operačního systému?
 
-Není dnes ale je také běžné žádosti, která Azure si klade za cíl poskytovat.
+Můžete použít [virtuálního počítače Škálovací nastavit automatické aktualizace operačního systému Image](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade) všeobecně dostupnou funkci ještě dnes.
 
-Mezitím jsme [aplikace k dispozici](service-fabric-patch-orchestration-application.md) , že zůstanou v operačních systémech pod uzly Service Fabric opravené a aktuální.
-
-Problém s aktualizacemi operačního systému je, že obvykle vyžadují restartování počítače, což vede ke ztrátě dočasné dostupnosti. Samostatně, to není problém, protože Service Fabric automaticky přesměruje provoz za tyto služby do dalších uzlů. Pokud nejsou aktualizace operačního systému koordinovat napříč clusterem, existuje ale riziko, najednou ujmout mnoha uzly. Takové souběžných restartování může způsobit ztrátu kompletní dostupnost pro službu, nebo na nejnižší u konkrétního oddílu (pro stavové služby).
-
-V budoucnu plánujeme podporu zásadu aktualizace operačního systému, která je plně automatizovaná a koordinovat napříč aktualizačních domén zajistí zachování dostupnosti bez ohledu na restartování nebo jiné neočekávané chyby.
+Pro clustery, které nejsou spuštěné v Azure, máme [aplikace k dispozici](service-fabric-patch-orchestration-application.md) o opravu operačních systémů pod uzly Service Fabric.
 
 ### <a name="can-i-use-large-virtual-machine-scale-sets-in-my-sf-cluster"></a>Můžete použít velký virtuální počítač škálovací sady v mém clusteru SF? 
 
