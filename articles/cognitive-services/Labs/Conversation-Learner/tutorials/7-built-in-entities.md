@@ -10,19 +10,19 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 84d73add5586aaaf130253a8122a4152e39bcbe9
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 2dbbf2a47cdc4240e5b0ba38658a4cb8d5307ff8
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39171363"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51260053"
 ---
 # <a name="how-to-add-pre-built-entities"></a>Postup přidání předem připravených entit
 Tento kurz ukazuje, jak přidat "předchystané" entity do modelu Learner konverzace.
 
 ## <a name="video"></a>Video
 
-[![Kurz 7 Preview](http://aka.ms/cl-tutorial-07-preview)](http://aka.ms/blis-tutorial-07)
+[![Kurz 7 Preview](https://aka.ms/cl-tutorial-07-preview)](https://aka.ms/blis-tutorial-07)
 
 ## <a name="requirements"></a>Požadavky
 Tento kurz vyžaduje, zda je spuštěna obecné kurz bot

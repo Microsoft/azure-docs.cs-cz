@@ -1,5 +1,5 @@
 ---
-title: Začínáme s používáním Azure Notification Hubs s Baidu | Microsoft Docs
+title: Začínáme s používáním Azure Notification Hubs s Baidu | Dokumentace Microsoftu
 description: V tomto kurzu zjistíte, jak používat Azure Notification Hubs k odesílání nabízených oznámení do zařízení se systémem Android pomocí Baidu.
 services: notification-hubs
 documentationcenter: android
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: mobile-baidu
 ms.workload: mobile
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: c680de254c55adaad8cedde6cf4748efd0c2c858
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: d8ece15e7e8fa3b74fbefc78aea65683229712ca
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38700896"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51246765"
 ---
 # <a name="get-started-with-notification-hubs-using-baidu"></a>Začínáme s použitím Notification Hubs pomocí Baidu
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
@@ -31,7 +31,7 @@ Vzhledem k nedostupnosti obchodu Google Play a služby Firebase Cloud Messaging 
 ## <a name="prerequisites"></a>Požadavky
 V tomto kurzu budete potřebovat:
 
-* Sadu Android SDK (předpokládáme, že používáte Android Studio), kterou si můžete stáhnout z <a href="http://go.microsoft.com/fwlink/?LinkId=389797">webu Android</a>
+* Sadu Android SDK (předpokládáme, že používáte Android Studio), kterou si můžete stáhnout z <a href="https://go.microsoft.com/fwlink/?LinkId=389797">webu Android</a>
 * [Baidu Push Android SDK]
 
 > [!NOTE]
@@ -475,7 +475,7 @@ Nabízená oznámení se většinou posílají ve službě back-end, jako je slu
 Tento kurz pro zjednodušení používá konzolovou aplikaci jako ukázku odeslání oznámení pomocí sady .NET SDK. Nicméně jako další krok pro odesílání oznámení z back-endu ASP.NET doporučujeme absolvovat kurz [Použití Notification Hubs k odesílání nabízených oznámení uživatelům](notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md). 
 
 Tady jsou různé přístupy k odesílání oznámení:
-* **Rozhraní REST**: oznámení můžete podporovat na jakékoli backend platformě pomocí [rozhraní REST](http://msdn.microsoft.com/library/windowsazure/dn223264.aspx).
+* **Rozhraní REST**: oznámení můžete podporovat na jakékoli backend platformě pomocí [rozhraní REST](https://msdn.microsoft.com/library/windowsazure/dn223264.aspx).
 * **Microsoft Azure oznámení centra .NET SDK**: Ve správci balíčků Nuget pro Visual Studio spusťte položku [Install-Package Microsoft.Azure.NotificationHubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
 * **Node.js:**[Jak používat Notification Hubs z Node.js](notification-hubs-nodejs-push-notification-tutorial.md).
 * **Mobile Apps**: Příklad zasílání oznámení z back-endu Azure App Service Mobile Apps integrovaného se službou Notification Hubs najdete v tématu [Přidání nabízených oznámení do mobilních aplikací](../app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push.md).

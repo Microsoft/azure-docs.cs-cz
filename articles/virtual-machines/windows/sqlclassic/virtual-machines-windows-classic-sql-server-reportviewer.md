@@ -1,6 +1,6 @@
 ---
-title: Pomocí prohlížeče sestav na webu | Microsoft Docs
-description: Toto téma popisuje postup vytvoření webu služby Microsoft Azure pomocí ovládacího prvku prohlížeče sestav Visual Studio, který se zobrazí zpráva uložené na virtuální počítač Azure Microsoft.
+title: Použití Reportvieweru na webu | Dokumentace Microsoftu
+description: Toto téma popisuje, jak vytvořit web Microsoft Azure pomocí ovládacího prvku Visual Studio ReportViewer, která zobrazuje sestavy uloženou na virtuálním počítači Azure společnosti Microsoft.
 services: virtual-machines-windows
 documentationcenter: na
 author: markingmyname
@@ -15,80 +15,80 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/11/2017
 ms.author: maghan
-ms.openlocfilehash: af8a4a9c25005925bed3ddb78ced618e669f7f09
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 514e85fc61240834d8db152ece65a4f9cce9023e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31424614"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51250403"
 ---
 # <a name="use-reportviewer-in-a-web-site-hosted-in-azure"></a>Použití ReportVieweru na webu hostovaném v Azure
 > [!IMPORTANT] 
-> Azure má dva různé modely nasazení pro vytváření a práci s prostředky: [Resource Manager a klasický](../../../azure-resource-manager/resource-manager-deployment-model.md). Tento článek se zabývá pomocí modelu nasazení Classic. Microsoft doporučuje, aby byl ve většině nových nasazení použit model Resource Manager.
+> Azure má dva různé modely nasazení pro vytváření a práci s prostředky: [Resource Manager a Classic](../../../azure-resource-manager/resource-manager-deployment-model.md). Tento článek se věnuje modelu nasazení Classic. Microsoft doporučuje, aby byl ve většině nových nasazení použit model Resource Manager.
 
-Můžete vytvořit webu služby Microsoft Azure pomocí ovládacího prvku prohlížeče sestav Visual Studio, který se zobrazí zpráva uložené na virtuální počítač Azure Microsoft. Ovládací prvek prohlížeče sestav je ve webové aplikaci vytvořit pomocí šablony aplikace technologie ASP.NET.
+Můžete vytvořit web Microsoft Azure Web pomocí ovládacího prvku Visual Studio ReportViewer, která zobrazuje sestavy uloženou na virtuálním počítači Azure společnosti Microsoft. Ovládací prvek prohlížeče sestav je ve webové aplikaci vytvoříte pomocí šablony ASP.NET webové aplikace.
 
 > [!IMPORTANT]
-> Šablony webové aplikace ASP.NET MVC nepodporují ovládacího prvku prohlížeče sestav.
+> Webová aplikace ASP.NET MVC šablony nepodporují ovládacího prvku ReportViewer.
 
-Zahrnout prohlížeče sestav do vašeho webu Microsoft Azure, budete muset provést následující úlohy.
+Zahrnout ReportViewer na webu Microsoft Azure, budete muset provést následující úlohy.
 
-* **Přidat** sestavení do balíčku nasazení
+* **Přidat** sestavení do balíčku pro nasazení
 * **Konfigurace** ověřování a autorizace
-* **Publikování** ASP.NET – webové aplikace do Azure
+* **Publikování** webovou aplikaci ASP.NET do Azure
 
 ## <a name="prerequisites"></a>Požadavky
-Projděte si část "obecné doporučení a osvědčené postupy" v [SQL Server Business Intelligence v Azure Virtual Machines](../classic/ps-sql-bi.md).
+Projděte si část "Obecná doporučení a osvědčené postupy" v [SQL Server Business Intelligence ve službě Azure Virtual Machines](../classic/ps-sql-bi.md).
 
 > [!NOTE]
-> Ovládací prvky prohlížeče sestav jsou dodávané s Visual Studio, Standard Edition nebo vyšší. Pokud používáte Web Developer Express Edition, je nutné nainstalovat [MICROSOFT sestavy VIEWER 2012 RUNTIME](https://www.microsoft.com/download/details.aspx?id=35747) používat funkce runtime prohlížeče sestav.
+> Ovládací prvky prohlížeče sestav se dodávají pomocí sady Visual Studio, edice Standard nebo vyšší. Pokud používáte Web Developer Express Edition, je nutné nainstalovat [MICROSOFT sestavy VIEWER 2012 RUNTIME](https://www.microsoft.com/download/details.aspx?id=35747) používat funkce modulu runtime prohlížeče sestav.
 > 
-> Prohlížeče sestav nakonfigurovaný v místním zpracování režimu není podporována v Microsoft Azure.
+> ReportViewer nakonfigurované v režimu místního zpracování se nepodporuje v Microsoft Azure.
 
-## <a name="adding-assemblies-to-the-deployment-package"></a>Přidání sestavení do balíčku nasazení
-Pokud je hostitelem ASP.NET aplikace místní, sestavení prohlížeče sestav jsou obvykle nainstalovány přímo v globální mezipaměti sestavení (GAC) serveru služby IIS při instalaci sady Visual Studio a je přístupný přímo z aplikace. Ale pokud je hostitelem vaší aplikace ASP.NET v cloudu, Microsoft Azure nepovoluje položky, které lze nainstalovat do mezipaměti GAC, proto je nutné zajistit, aby že sestavení prohlížeče sestav jsou k dispozici místně pro vaši aplikaci. Můžete to udělat tak, že přidáte odkazy na ně ve vašem projektu a nakonfigurovat je potřeba lokálně zkopírovat.
+## <a name="adding-assemblies-to-the-deployment-package"></a>Přidávání sestavení do balíčku pro nasazení
+Když hostujete ASP.NET aplikace místní, ReportViewer sestavení jsou obvykle nainstalovány přímo v globální mezipaměti sestavení (GAC) služby IIS serveru během instalace sady Visual Studio a je přístupný přímo aplikací. Nicméně pokud je hostitelem aplikace technologie ASP.NET v cloudu, Microsoft Azure neumožňuje nic, aby nainstalovat do mezipaměti GAC, takže je nutné zajistit, aby že sestavení prohlížeče sestav jsou k dispozici místně pro vaši aplikaci. Můžete to udělat tak, že přidáte odkazy na ně ve vašem projektu a nakonfigurujete je, aby potřeba lokálně zkopírovat.
 
-V režimu vzdálené zpracování ovládacího prvku prohlížeče sestav používá následující sestavení:
+Ovládací prvek ReportViewer v režimu vzdáleného zpracování, používá následující sestavení:
 
-* **Microsoft.ReportViewer.WebForms.dll**: obsahuje kód prohlížeče sestav, které budete muset použít prohlížeče sestav v stránku. Referenční dokumentace pro toto sestavení se přidá do projektu při vyřadit ovládacího prvku prohlížeče sestav na stránky ASP.NET ve vašem projektu.
-* **Microsoft.ReportViewer.Common.dll**: obsahuje třídy používané nástrojem ovládacího prvku prohlížeče sestav za běhu. Automaticky není přidáno do projektu.
+* **Microsoft.ReportViewer.WebForms.dll**: obsahuje kód prohlížeče sestav, které jsou nutné k použití Reportvieweru na stránce. Referenční informace pro toto sestavení se přidá do vašeho projektu při umístění ovládacího prvku ReportViewer na stránky ASP.NET ve vašem projektu.
+* **Microsoft.ReportViewer.Common.dll**: obsahuje třídy, které využívá ovládacím prvkem ReportViewer za běhu. Není automaticky přidáno do projektu.
 
 ### <a name="to-add-a-reference-to-microsoftreportviewercommon"></a>Chcete-li přidat odkaz na Microsoft.ReportViewer.Common
-* Klikněte pravým tlačítkem na projekt **odkazy** uzel a vyberte možnost **přidat odkaz na**, vyberte na kartě .NET sestavení a klikněte na **OK**.
+* Klikněte pravým tlačítkem na váš projekt **odkazy** uzel a vyberte možnost **přidat odkaz**, vyberte na kartě .NET sestavení a klikněte na tlačítko **OK**.
 
-### <a name="to-make-the-assemblies-locally-accessible-by-your-aspnet-application"></a>Chcete-li místně dostupné sestavení aplikací ASP.NET
-1. V **odkazy** složku, klikněte na tlačítko Microsoft.ReportViewer.Common sestavení tak, aby jeho vlastnosti se zobrazí v podokně vlastností.
-2. V podokně vlastností nastavit **místní kopie** na hodnotu True.
+### <a name="to-make-the-assemblies-locally-accessible-by-your-aspnet-application"></a>Chcete-li sestavení místně dostupné v aplikaci ASP.NET
+1. V **odkazy** složky, klikněte na tlačítko Microsoft.ReportViewer.Common sestavení tak, aby jeho vlastnosti se zobrazí v podokně vlastností.
+2. V podokně vlastností nastavte **Kopírovat místně** na hodnotu True.
 3. Opakujte kroky 1 a 2 pro Microsoft.ReportViewer.WebForms.
 
 ### <a name="to-get-reportviewer-language-pack"></a>Chcete-li získat jazykovou sadu prohlížeče sestav
-1. Nainstalovat odpovídající redistribuovatelný balíček Microsoft sestavy Viewer 2012 Runtime z [Microsoft Download Center](http://go.microsoft.com/fwlink/?LinkId=317386).
-2. Z rozevíracího seznamu vyberte jazyk a stránce se přesměruje na stránce odpovídající download center.
+1. Nainstalujte příslušný redistribuovatelný balíček Microsoft sestavy Viewer 2012 Runtime z [Microsoft Download Center](https://go.microsoft.com/fwlink/?LinkId=317386).
+2. Z rozevíracího seznamu vyberte jazyk, a na stránce přesměrován na odpovídající stránce pro stažení softwaru.
 3. Klikněte na tlačítko **Stáhnout** zahájíte stahování ReportViewerLP.exe.
-4. Po stažení ReportViewerLP.exe, klikněte na tlačítko **spustit** instalovat hned, nebo kliknutím na tlačítko **Uložit** ji uložit do vašeho počítače. Pokud kliknete na tlačítko **Uložit**, mějte na paměti, název složky, kam jste uložili soubor.
-5. Vyhledejte složku, kam jste uložili soubor. Klikněte pravým tlačítkem na ReportViewerLP.exe, klikněte na tlačítko **spustit jako správce**a potom klikněte na **Ano**.
-6. Po spuštění ReportViewerLP.exe, zobrazí se c:\windows\assembly má soubory prostředků **Microsoft.ReportViewer.Webforms.Resources** a **Microsoft.ReportViewer.Common.Resources**.
+4. Po stažení ReportViewerLP.exe, klikněte na tlačítko **spustit** instalovat hned, nebo klikněte na **Uložit** uložte do počítače. Vyberete-li **Uložit**, mějte na paměti název složky, kam jste uložili soubor.
+5. Vyhledejte složku, kam jste soubor uložili. Klikněte pravým tlačítkem na ReportViewerLP.exe, klikněte na tlačítko **spustit jako správce**a potom klikněte na tlačítko **Ano**.
+6. Po spuštění ReportViewerLP.exe, uvidíte, c:\windows\assembly má soubory prostředků **Microsoft.ReportViewer.Webforms.Resources** a **Microsoft.ReportViewer.Common.Resources**.
 
-### <a name="to-configure-for-localized-reportviewer-control"></a>Konfigurace pro lokalizované ovládacího prvku prohlížeče sestav
-1. Stáhněte a nainstalujte redistribuovatelný balíček Microsoft sestavy Viewer 2012 Runtime podle pokynů uvedených výše zadaný.
-2. Vytvoření <language> souborů složku v projektu a zkopírujte sestavení přidružených prostředků existuje. Kopírování souborů sestavení prostředků jsou: **Microsoft.ReportViewer.Webforms.Resources.dll** a **Microsoft.ReportViewer.Common.Resources.dll**. Vyberte soubory sestavení prostředků a v podokně vlastností nastavte **kopírovat do výstupního adresáře** na "**vždy Kopírovat**".
-3. Nastavte jazykovou verzi & UICulture pro webový projekt. Další informace o tom, jak nastavit jazykovou verzi a jazyková verze uživatelského rozhraní pro webovou stránku ASP.NET najdete v tématu [postupy: nastavení jazykové verze a jazyková verze uživatelského rozhraní pro globalizaci webové stránky ASP.NET](http://go.microsoft.com/fwlink/?LinkId=237461).
+### <a name="to-configure-for-localized-reportviewer-control"></a>Konfigurace pro lokalizované ovládací prvek prohlížeče sestav
+1. Stáhněte si a nainstalujte redistribuovatelný balíček Microsoft sestavy Viewer 2012 Runtime podle pokynů uvedených výše zadané.
+2. Vytvoření <language> soubory složky v projektu a zkopírujte sestavení přidružený prostředek existuje. Kopírování souborů sestavení prostředků jsou: **Microsoft.ReportViewer.Webforms.Resources.dll** a **Microsoft.ReportViewer.Common.Resources.dll**. Vyberte soubory prostředků sestavení a v podokně vlastností nastavte **kopírovat do výstupního adresáře** na "**vždy Kopírovat**".
+3. Nastavte Culture a UICulture pro webový projekt. Další informace o tom, jak nastavit jazykovou verzi a jazykové verze uživatelského rozhraní pro webovou stránku ASP.NET najdete v tématu [postupy: nastavení jazykové verze a jazykové verze uživatelského rozhraní pro globalizaci webové stránky ASP.NET](https://go.microsoft.com/fwlink/?LinkId=237461).
 
 ## <a name="configuring-authentication-and-authorization"></a>Konfigurace ověřování a autorizace
-ReportViewer potřebuje používat správné přihlašovací údaje k ověřování pro server sestav a přihlašovací údaje musí být autorizovaný serverem sestav, k přístupu k sestavy, které chcete. Informace o ověřování, najdete v dokumentu white paper [sestavy služby Reporting Services ovládací prvek prohlížeče a servery sestav na základě virtuálního počítače Microsoft Azure](https://msdn.microsoft.com/library/azure/dn753698.aspx).
+ReportViewer je potřeba použít správné přihlašovací údaje k ověření na serveru sestav a přihlašovací údaje musí být povoleno na serveru sestav pro přístup k sestavám, které chcete. Informace o ověřování najdete v dokumentu white paper [sestavy služby Reporting Services ovládací prvek prohlížeče a servery sestav založené na virtuálních počítačích Microsoft Azure](https://msdn.microsoft.com/library/azure/dn753698.aspx).
 
-## <a name="publish-the-aspnet-web-application-to-azure"></a>Publikování aplikace technologie ASP.NET do Azure
-Pokyny k publikování webové aplikace technologie ASP.NET do Azure, najdete v části [postup: migrace a publikovat webovou aplikaci do Azure ze sady Visual Studio](../../../vs-azure-tools-migrate-publish-web-app-to-cloud-service.md) a [Začínáme s webovými aplikacemi a ASP.NET](../../../app-service/app-service-web-get-started-dotnet.md).
+## <a name="publish-the-aspnet-web-application-to-azure"></a>Publikovat webovou aplikaci ASP.NET do Azure
+Pokyny k publikování webové aplikace ASP.NET do Azure najdete v tématu [postupy: migrace a publikovat webovou aplikaci do Azure ze sady Visual Studio](../../../vs-azure-tools-migrate-publish-web-app-to-cloud-service.md) a [Začínáme s Web Apps a ASP.NET](../../../app-service/app-service-web-get-started-dotnet.md).
 
 > [!IMPORTANT]
-> Pokud příkaz Přidat projekt nasazení Azure nebo přidat projekt cloudové služby Azure se nezobrazí v místní nabídce v Průzkumníku řešení, budete muset změnit cílový framework projektu na .NET Framework 4.
+> Pokud příkaz Přidat projekt nasazení Azure nebo přidat projekt cloudové služby Azure se nezobrazí v místní nabídce v Průzkumníkovi řešení, budete muset změnit cílový rámec pro projekt rozhraní .NET Framework 4.
 > 
-> Dva příkazy poskytují v podstatě stejné funkce. Jedna nebo jiných příkazu se zobrazí v místní nabídce závislosti na instalované verzi Microsoft Azure SDK jste nainstalovali.
+> Dva příkazy poskytují v podstatě stejné funkce. Jeden nebo jiných příkazu se zobrazí v místní nabídce závislosti na instalované verzi Microsoft Azure SDK je nainstalována.
 > 
 > 
 
 ## <a name="resources"></a>Zdroje a prostředky
-[Sestavy Microsoft](http://go.microsoft.com/fwlink/?LinkId=205399)
+[Sestavy Microsoft](https://go.microsoft.com/fwlink/?LinkId=205399)
 
 [SQL Server Business Intelligence v Azure Virtual Machines](../classic/ps-sql-bi.md)
 

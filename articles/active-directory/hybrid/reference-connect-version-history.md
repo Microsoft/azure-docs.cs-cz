@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/06/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 335db0130ae6dd3d11d6592208fdf37e762509e5
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: 1f74538deab38db536bfcdc6d0f703d455039d51
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50914817"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235900"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Historie vydaných verzí
 Tým služby Azure Active Directory (Azure AD) pravidelně aktualizuje s novými funkcemi a funkce služby Azure AD Connect. Ne všechny položky se vztahují na všechny cílové skupiny.
@@ -35,7 +35,7 @@ Téma |  Podrobnosti
 Kroky pro upgrade z Azure AD Connect | Různé způsoby [upgrade z předchozí verze na nejnovější verzi](how-to-upgrade-previous-version.md) verzi služby Azure AD Connect.
 Požadovaná oprávnění | Oprávnění potřebná k aktualizaci použít, najdete v části [účtech a oprávněních](reference-connect-accounts-permissions.md#upgrade).
 
-Stáhnout | [Stažení služby Azure AD Connect](http://go.microsoft.com/fwlink/?LinkId=615771).
+Stáhnout | [Stažení služby Azure AD Connect](https://go.microsoft.com/fwlink/?LinkId=615771).
 
 ## <a name="12650"></a>1.2.65.0 
 

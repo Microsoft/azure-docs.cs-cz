@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/30/2017
 ms.author: seguler
 ms.component: common
-ms.openlocfilehash: e563c7000b600bed917f42d8ffb87df883564ef8
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 28c9e342aec3eb3ba61b46f4f80c7d097b0653b6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46979324"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51258710"
 ---
 # <a name="using-the-azure-classic-cli-with-azure-storage"></a>Použití Azure classic CLI s Azure Storage
 
@@ -122,7 +122,7 @@ export AZURE_STORAGE_CONNECTION_STRING=<connection_string>
 ```
 
 ## <a name="create-and-manage-blobs"></a>Vytvoření a Správa objektů BLOB
-Azure Blob storage je služba pro ukládání velkých objemů nestrukturovaných dat, jako jsou textová nebo binární data, ke kterým můžete přistupovat odkudkoli na světě prostřednictvím protokolu HTTP nebo HTTPS. V této části se předpokládá, že jste už obeznámení s koncepty úložiště objektů Blob v Azure. Podrobné informace najdete v tématu [Začínáme s Azure Blob storage pomocí .NET](../blobs/storage-dotnet-how-to-use-blobs.md) a [koncepty služby Blob Service](http://msdn.microsoft.com/library/azure/dd179376.aspx).
+Azure Blob storage je služba pro ukládání velkých objemů nestrukturovaných dat, jako jsou textová nebo binární data, ke kterým můžete přistupovat odkudkoli na světě prostřednictvím protokolu HTTP nebo HTTPS. V této části se předpokládá, že jste už obeznámení s koncepty úložiště objektů Blob v Azure. Podrobné informace najdete v tématu [Začínáme s Azure Blob storage pomocí .NET](../blobs/storage-dotnet-how-to-use-blobs.md) a [koncepty služby Blob Service](https://msdn.microsoft.com/library/azure/dd179376.aspx).
 
 ### <a name="create-a-container"></a>Vytvoření kontejneru
 Každý objekt blob ve službě Azure storage, musí být v kontejneru. Můžete vytvořit privátní kontejneru pomocí `azure storage container create` příkaz:
@@ -137,7 +137,7 @@ azure storage container create mycontainer
 >
 
 ### <a name="upload-a-blob-into-a-container"></a>Nahrání objektu blob do kontejneru
-Úložiště objektů blob v Azure podporuje objekty blob bloku a objekty blob stránky. Další informace najdete v tématu [vysvětlení objektů BLOB bloku, doplňovací objekty BLOB a objekty BLOB stránky](http://msdn.microsoft.com/library/azure/ee691964.aspx).
+Úložiště objektů blob v Azure podporuje objekty blob bloku a objekty blob stránky. Další informace najdete v tématu [vysvětlení objektů BLOB bloku, doplňovací objekty BLOB a objekty BLOB stránky](https://msdn.microsoft.com/library/azure/ee691964.aspx).
 
 K nahrání objektů BLOB v kontejneru, můžete použít `azure storage blob upload`. Ve výchozím nastavení tento příkaz nahraje místní soubory do objektu blob bloku. Chcete-li určit typ pro tento objekt blob, můžete použít `--blobtype` parametru.
 

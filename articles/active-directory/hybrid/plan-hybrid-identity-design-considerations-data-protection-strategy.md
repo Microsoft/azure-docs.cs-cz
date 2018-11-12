@@ -16,12 +16,12 @@ ms.date: 11/13/2017
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: a3cbbf887c4b7df57f2df89dfb8649967d6d9b1b
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 9f02c6779b3561f6eea57512ecb27dd2fd451d90
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434751"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238144"
 ---
 # <a name="define-data-protection-strategy-for-your-hybrid-identity-solution"></a>Definování strategie ochrany dat pro vaše řešení hybridní identity
 V této úloze budete definovat strategie ochrany dat pro vaše řešení hybridní identity plnění obchodních požadavků, který jste definovali v:
@@ -74,7 +74,7 @@ Důležitou součástí správy obsahu je pochopit, kdo přistupuje k který pro
 * Přidání nebo odebrání licencí
 
 > [!NOTE]
-> Čtení [zabezpečení Microsoft Azure a Správa protokolů auditu](http://download.microsoft.com/download/B/6/C/B6C0A98B-D34A-417C-826E-3EA28CDFC9DD/AzureSecurityandAuditLogManagement_11132014.pdf) Další informace o možnosti protokolování v Azure.
+> Čtení [zabezpečení Microsoft Azure a Správa protokolů auditu](https://download.microsoft.com/download/B/6/C/B6C0A98B-D34A-417C-826E-3EA28CDFC9DD/AzureSecurityandAuditLogManagement_11132014.pdf) Další informace o možnosti protokolování v Azure.
 > V závislosti na tom, jak jste odpověděli na otázky v [určení požadavků na správu obsahu](plan-hybrid-identity-design-considerations-contentmgt-requirements.md), byste měli určit, jak mají obsah, který se spravují v hybridní řešení identit. Když jsou všechny možnosti v tabulce 6 může integrovat s Azure AD, je důležité určit, která možnost je vhodnější pro vaše obchodní potřeby.
 >
 >

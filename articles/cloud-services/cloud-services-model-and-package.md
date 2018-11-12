@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 90d810916599db50249a3e2ec677046c5af42a09
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 7e43a32a415e58925bda5195b3943afca315f9be
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39005845"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238178"
 ---
 # <a name="what-is-the-cloud-service-model-and-how-do-i-package-it"></a>Jaký je model cloudové služby a jak ho balíček?
 Cloudové služby je vytvořen z tři komponenty, definice služby *(.csdef)*, konfigurace služby *(.cscfg)* a balíček služby *(.cspkg)*. Oba **ServiceDefinition.csdef** a **ServiceConfig.cscfg** soubory jsou založené na XML a popisují strukturu cloudové služby a jak je nakonfigurován; nazývají modelu. **ServicePackage.cspkg** je soubor zip, který je generován z **ServiceDefinition.csdef** a mimo jiné obsahuje všechny požadované závislosti založené na binární soubor. Azure vytvoří cloudovou službu z obou **ServicePackage.cspkg** a **ServiceConfig.cscfg**.
@@ -144,7 +144,7 @@ Konfigurační soubor služby není zabalena v aplikaci, ale je nahráli do Azur
 Můžete se podívat do [schématu konfigurace služby](https://msdn.microsoft.com/library/azure/ee758710.aspx) pro lepší pochopení schématu XML se tady použít, ale tady je rychlý vysvětlení prvky:
 
 **Instance**  
-Konfiguruje počet spuštěných instancí role. Abyste zabránili potenciálně nedostupností během upgradu vaší cloudové služby, se doporučuje nasadit více než jeden výskyt určených pro webové role. Nasazení více než jednu instanci, jsou splněny pokyny v [Azure Compute služby smlouva o úrovni (SLA)](http://azure.microsoft.com/support/legal/sla/), což zaručuje externí připojení v 99,95 % pro role přístupem k Internetu, pokud dvě nebo více instancí role jsou nasadit službu.
+Konfiguruje počet spuštěných instancí role. Abyste zabránili potenciálně nedostupností během upgradu vaší cloudové služby, se doporučuje nasadit více než jeden výskyt určených pro webové role. Nasazení více než jednu instanci, jsou splněny pokyny v [Azure Compute služby smlouva o úrovni (SLA)](https://azure.microsoft.com/support/legal/sla/), což zaručuje externí připojení v 99,95 % pro role přístupem k Internetu, pokud dvě nebo více instancí role jsou nasadit službu.
 
 **ConfigurationSettings**  
 Konfiguruje nastavení pro spuštěné instance role. Název `<Setting>` prvky musí odpovídat definici nastavení v definičním souboru služby.

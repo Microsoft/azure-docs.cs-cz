@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/14/2017
 ms.author: rogarana
 ms.component: common
-ms.openlocfilehash: fc3a594e6757f6a49cb88bdfca9a64889a97d042
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 347092fd7d5865379911265b19477ac16e3bcd69
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50740191"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261379"
 ---
 #  <a name="tutorial-migrate-on-premises-data-to-cloud-storage-by-using-azcopy"></a>Kurz: Migrace místních dat do cloudového úložiště pomocí AzCopy
 
@@ -36,7 +36,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="prerequisites"></a>Požadavky
 
-Abyste mohli absolvovat tento kurz, stáhněte si nejnovější verzi AzCopy v [Linuxu](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-linux#download-and-install-azcopy) nebo ve [Windows](http://aka.ms/downloadazcopy).
+Abyste mohli absolvovat tento kurz, stáhněte si nejnovější verzi AzCopy v [Linuxu](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-linux#download-and-install-azcopy) nebo ve [Windows](https://aka.ms/downloadazcopy).
 
 Pokud používáte Windows, budete potřebovat nástroj [Schtasks](https://msdn.microsoft.com/library/windows/desktop/bb736357(v=vs.85).aspx), který se v tomto kurzu používá k naplánování úlohy. Uživatelé Linuxu místo toho použijí příkaz crontab.
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: bcd2b2199628a7f717a7ce1d8eba032f5778379b
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 7f1bb400650a223a9f0b4249c33f7c480a1bc009
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43301457"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51262365"
 ---
 # <a name="security-frame-sensitive-data--mitigations"></a>Zabezpečení Frame: Citlivá Data | Zmírnění rizik 
 | Produkt nebo službu | Článek |
@@ -141,7 +141,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 | **SDL fáze**               | Sestavení |  
 | **Použitelných technologiích** | Obecné |
 | **Atributy**              | neuvedeno  |
-| **Odkazy**              | [MSDN: atribut automatického dokončování](http://msdn.microsoft.com/library/ms533486(VS.85).aspx), [pomocí automatické dokončování ve formátu HTML](http://msdn.microsoft.com/library/ms533032.aspx), [ohrožení zabezpečení Sanitizace HTML](http://technet.microsoft.com/security/bulletin/MS10-071), [automatické dokončování., znovu?](http://blog.mindedsecurity.com/2011/10/autocompleteagain.html) |
+| **Odkazy**              | [MSDN: atribut automatického dokončování](https://msdn.microsoft.com/library/ms533486(VS.85).aspx), [pomocí automatické dokončování ve formátu HTML](https://msdn.microsoft.com/library/ms533032.aspx), [ohrožení zabezpečení Sanitizace HTML](https://technet.microsoft.com/security/bulletin/MS10-071), [automatické dokončování., znovu?](http://blog.mindedsecurity.com/2011/10/autocompleteagain.html) |
 | **Kroky** | Atribut automatického dokončování Určuje, zda formulář má mít automatické dokončování zapnutí nebo vypnutí. Po zapnutí automatického dokončování v prohlížeči automatického dokončení hodnoty na základě hodnot, které uživatel zadal před. Například když se odešle formulář je ve formě zadat nový název a heslo, prohlížeč požádá, pokud by měla uložit heslo. Po tomto datu když je formulář zobrazen, uživatelské jméno a heslo se vyplní automaticky, nebo jsou dokončit, protože název je zadán. Útočník s místním přístupem lze získat hesla v nešifrovaném textu z mezipaměti prohlížeče. Ve výchozím nastavení je povoleno automatické dokončování a musí explicitně zakázat. |
 
 ### <a name="example"></a>Příklad:

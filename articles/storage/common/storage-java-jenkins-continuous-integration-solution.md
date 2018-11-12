@@ -8,12 +8,12 @@ services: devops
 custom: jenkins
 ms.date: 07/31/2018
 ms.component: common
-ms.openlocfilehash: b7ac5c277b45ae5c005a284d5c38e55099c11e33
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 040f7ef8d9b50998ac2b84ed9d4e3712f4ed5835
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45735558"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51246863"
 ---
 # <a name="using-azure-storage-with-a-jenkins-continuous-integration-solution"></a>Použití služby Azure Storage s řešením Jenkins kontinuální integrace
 
@@ -129,7 +129,7 @@ Tato část obsahuje přehled komponent služby objektů Blob.
 
 * **Účet služby Storage:** Veškerý přístup ke službě Azure Storage se provádí prostřednictvím účtu úložiště. Účet úložiště je nejvyšší úroveň oboru názvů pro přístup k objektům BLOB. Účet může obsahovat neomezený počet kontejnerů, jejich celkové velikosti je v části 100 TB.
 * **Kontejner**: kontejner zajišťuje seskupení sady objektů BLOB. Všechny objekty blob musí být v kontejneru. Účet může obsahovat neomezený počet kontejnerů. Kontejner můžete pojmout neomezený počet objektů blob.
-* **Objekt BLOB**: soubor libovolného typu a velikosti. Existují dva typy objektů BLOB, které mohou být uloženy ve službě Azure Storage: objekty BLOB bloků a stránek. Většina souborů jsou objekty BLOB bloku. Jeden objekt blob bloku může být až do velikosti 200 GB. Tento kurz používá objekty BLOB bloku. Objekty BLOB stránky, jiný typ objektu blob může být až 1 TB, velikost a jsou efektivnější, pokud jsou často upravit rozsah bajtů v souboru. Další informace o objektech BLOB najdete v tématu [vysvětlení objektů BLOB bloku, doplňovací objekty BLOB a objekty BLOB stránky](http://msdn.microsoft.com/library/azure/ee691964.aspx).
+* **Objekt BLOB**: soubor libovolného typu a velikosti. Existují dva typy objektů BLOB, které mohou být uloženy ve službě Azure Storage: objekty BLOB bloků a stránek. Většina souborů jsou objekty BLOB bloku. Jeden objekt blob bloku může být až do velikosti 200 GB. Tento kurz používá objekty BLOB bloku. Objekty BLOB stránky, jiný typ objektu blob může být až 1 TB, velikost a jsou efektivnější, pokud jsou často upravit rozsah bajtů v souboru. Další informace o objektech BLOB najdete v tématu [vysvětlení objektů BLOB bloku, doplňovací objekty BLOB a objekty BLOB stránky](https://msdn.microsoft.com/library/azure/ee691964.aspx).
 * **Formát adresy URL**: objekty BLOB jsou adresovatelné v následujícím formátu adresy URL:
   
     `http://storageaccount.blob.core.windows.net/container_name/blob_name`
@@ -149,6 +149,6 @@ Pokud v modulech plug-in Jenkinse narazíte na nějaké chyby, založte problém
 * [Azure Storage SDK pro Javu](https://github.com/azure/azure-storage-java)
 * [Referenční informace ke klientské sadě SDK služby Azure Storage](http://dl.windowsazure.com/storage/javadoc/)
 * [REST API služby Azure Storage](https://msdn.microsoft.com/library/azure/dd179355.aspx)
-* [Blog týmu Azure Storage](http://blogs.msdn.com/b/windowsazurestorage/)
+* [Blog týmu Azure Storage](https://blogs.msdn.com/b/windowsazurestorage/)
 
 Další informace najdete na webu [Azure pro vývojáře v Javě](/java/azure).

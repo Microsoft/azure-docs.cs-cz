@@ -7,14 +7,14 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: ponatara
-ms.openlocfilehash: 3e26e40c26a27fdab1ec565dd4112b40acdd17d2
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: ae212bebf5a34e9a80f49a750735137d7a8814be
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39213363"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51232660"
 ---
-# <a name="set-up-disaster-recovery-for-azure-vms-after-migration-to-azure"></a>Nastavení zotavení po havárii pro virtuální počítače Azure po migraci do Azure 
+# <a name="set-up-disaster-recovery-for-azure-vms-after-migration-to-azure"></a>Nastavení zotavení po havárii virtuálních počítačů Azure po migraci do Azure 
 
 
 Pomocí tohoto článku po [migraci místních počítačů na virtuálních počítačích Azure](tutorial-migrate-on-premises-to-azure.md) pomocí [Site Recovery](site-recovery-overview.md) služby. Tento článek pomůže připravit virtuální počítače Azure k nastavení zotavení po havárii do sekundární oblasti Azure, pomocí služby Site Recovery.
@@ -32,7 +32,7 @@ Před nastavením zotavení po havárii, ujistěte se, že migrace byla dokonče
 Azure [agenta virtuálního počítače](../virtual-machines/extensions/agent-windows.md) musí být nainstalována na virtuálním počítači, tak, aby Site Recovery dokáže replikovat ho.
 
 
-1. Chcete-li nainstalovat agenta virtuálního počítače na virtuální počítače se systémem Windows, stáhněte a spusťte [instalační program agenta](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). Budete potřebovat oprávnění správce na virtuálním počítači pro dokončení instalace.
+1. Chcete-li nainstalovat agenta virtuálního počítače na virtuální počítače se systémem Windows, stáhněte a spusťte [instalační program agenta](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). Budete potřebovat oprávnění správce na virtuálním počítači pro dokončení instalace.
 2. Pokud chcete nainstalovat agenta virtuálního počítače na virtuálních počítačích s Linuxem, nainstalujte nejnovější [agenta pro Linux](../virtual-machines/extensions/agent-linux.md). Budete potřebovat oprávnění správce k dokončení instalace. Doporučujeme že nainstalovat ze svého úložiště distribuce. Nedoporučujeme ale, instalace agenta virtuálního počítače s Linuxem přímo z Githubu. 
 
 

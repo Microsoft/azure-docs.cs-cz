@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2017
 ms.author: spelluru
-ms.openlocfilehash: 12902fef0a27aa0af5995d2fd6ab87d951413d1d
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 9c76e535fe0585ec6ff08a0c9dcab700d8eb5424
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857971"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51262008"
 ---
 # <a name="azure-wcf-relay-tutorial"></a>Kurz pro Azure WCF Relay
 
@@ -35,7 +35,7 @@ Poslední tři kroky popisují, jak vytvořit klientskou aplikaci, nakonfigurova
 
 K absolvování tohoto kurzu potřebujete:
 
-* [Microsoft Visual Studio 2015 nebo vyšší](http://visualstudio.com). Tento kurz používá Visual Studio 2017.
+* [Microsoft Visual Studio 2015 nebo vyšší](https://visualstudio.com). Tento kurz používá Visual Studio 2017.
 * Aktivní účet Azure. Pokud účet nemáte, můžete si ho bezplatně vytvořit během několika minut. Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com/free/).
 
 ## <a name="create-a-service-namespace"></a>Vytvoření oboru názvů služby
@@ -55,7 +55,7 @@ Kontrakt služby specifikuje, jaké operace (termín webových služeb pro metod
 
 3. Nainstalujte balíček Service Bus NuGet. Tento balíček automaticky přidá reference na knihovny Service Bus a WCF **System.ServiceModel**. [System.ServiceModel](https://msdn.microsoft.com/library/system.servicemodel.aspx) je obor názvů, který vám umožňuje programový přístup k základním funkcím WCF. Service Bus používá mnoho objektů a atributů WCF k definování kontraktů služby.
 
-    V Průzkumníku řešení klikněte pravým tlačítkem myši na projekt a potom klikněte na tlačítko **spravovat balíčky NuGet...** . Klikněte na kartu **Procházet** a pak vyhledejte **WindowsAzure.ServiceBus**. Zkontrolujte, že je v části **Verze** označený název projektu. Klikněte na **Instalovat** a přijměte podmínky použití.
+    V Průzkumníku řešení klikněte pravým tlačítkem myši na projekt a potom klikněte na tlačítko **spravovat balíčky NuGet...** . Klikněte na kartu Procházet a pak vyhledejte **WindowsAzure.ServiceBus**. Zkontrolujte, že je v části **Verze** označený název projektu. Klikněte na **Instalovat** a přijměte podmínky použití.
 
     ![][3]
 4. V Průzkumníku řešení poklikejte na soubor Program.cs a pokud ještě není otevřený, otevře se v editoru Visual Studio.
@@ -81,7 +81,7 @@ Kontrakt služby specifikuje, jaké operace (termín webových služeb pro metod
     ```
 
    > [!NOTE]
-   > Obor názvů kontraktu služby obvykle obsahuje schéma pojmenování s informacemi o verzi. Informace o verzi, které jsou v oboru názvů kontraktu služby, službám umožňuje službám izolovat výrazné změny pomocí definice nové služby s novým oborem názvů, která bude vystavená na novém koncovém bodu. Tímto způsobem můžete dál používat starého kontraktu služby bez nutnosti ho aktualizovat klienty. Informace o verzi může mít podobu data nebo čísla sestavení. Další informace najdete v článku o [Správa verzí služeb](http://go.microsoft.com/fwlink/?LinkID=180498). Pro účely tohoto kurzu nebude mít schéma pojmenování oboru názvů kontraktu služby žádné informace o verzi.
+   > Obor názvů kontraktu služby obvykle obsahuje schéma pojmenování s informacemi o verzi. Informace o verzi, které jsou v oboru názvů kontraktu služby, službám umožňuje službám izolovat výrazné změny pomocí definice nové služby s novým oborem názvů, která bude vystavená na novém koncovém bodu. Tímto způsobem můžete dál používat starého kontraktu služby bez nutnosti ho aktualizovat klienty. Informace o verzi může mít podobu data nebo čísla sestavení. Další informace najdete v článku o [Správa verzí služeb](https://go.microsoft.com/fwlink/?LinkID=180498). Pro účely tohoto kurzu nebude mít schéma pojmenování oboru názvů kontraktu služby žádné informace o verzi.
    >
    >
 8. V rámci `IEchoContract` rozhraní, deklarujte metodu pro jednu operaci `IEchoContract` kontrakt vystaví v rozhraní a použít `OperationContractAttribute` atribut do metody, kterou chcete vystavit v rámci veřejného kontraktu WCF Relay, následujícím způsobem:

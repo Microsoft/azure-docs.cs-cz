@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: 0ec2e31ae3127d27e0f494222385e7f6d456aa65
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 248fd094a8655af2a21035267a6b8f69f268683d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50231861"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51262161"
 ---
 # <a name="tutorial-push-notifications-to-chrome-apps-with-azure-notification-hubs"></a>Kurz: Zasílání nabízených oznámení aplikacím pro Chrome službou Azure Notification Hubs
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
@@ -362,7 +362,7 @@ Aplikace pro Chrome se vytváří prostřednictvím JavaScriptu a můžete k tom
    * **registerWithGCM** je první obslužná rutina kliknutí na tlačítko, která prostřednictvím volání `chrome.gcm.register` do služby GCM registruje aktuální instanci aplikace pro Chrome.
    * **registerCallback** je funkce zpětného volání, která je volána v případě, že skončí volání registrace služby GCM.
    * **registerWithNH** je druhá obslužná rutina kliknutí na tlačítko, která provádí registraci do Notification Hubs. Získává `hubName` a `connectionString` (které zadal uživatel) a sestavuje volání REST API pro registraci do Notification Hubs.
-   * **splitConnectionString** a **generateSaSToken** jsou pomocné funkce, které představují javascriptovou implementaci procesu vytvoření tokenu SaS, jenž se musí použít ve všech voláních REST API. Další informace najdete v tématu [Běžné koncepty](http://msdn.microsoft.com/library/dn495627.aspx).
+   * **splitConnectionString** a **generateSaSToken** jsou pomocné funkce, které představují javascriptovou implementaci procesu vytvoření tokenu SaS, jenž se musí použít ve všech voláních REST API. Další informace najdete v tématu [Běžné koncepty](https://msdn.microsoft.com/library/dn495627.aspx).
    * **sendNHRegistrationRequest** je funkce, která provádí volání HTTP REST do Azure Notification Hubs.
    * **registrationPayload** definuje datovou část registrace XML. Další informace najdete v tématu o [vytvoření NH REST API registrace]. Aktualizujte registrační ID. Použijte hodnotu získanou ze služby GCM.
    * **client** je instance **XMLHttpRequest**, kterou aplikace používá k odeslání požadavku HTTP POST. Hlavičku `Authorization` aktualizujte na `sasToken`. Pokud se toto volání dokončí úspěšně, bude instance aplikace pro Chrome zaregistrována do Azure Notification Hubs.
@@ -390,7 +390,7 @@ Aplikace pro Chrome se vytváří prostřednictvím JavaScriptu a můžete k tom
 Pro účely testování pošlete nabízené oznámení Chrome pomocí konzolové aplikace .NET. 
 
 > [!NOTE]
-> Pomocí veřejného <a href="http://msdn.microsoft.com/library/windowsazure/dn223264.aspx">rozhraní REST</a> je možné pomocí Notification Hubs posílat nabízená oznámení z jakéhokoli back-endu. Další ukázky pro více platforem najdete na [portálu dokumentace](https://azure.microsoft.com/documentation/services/notification-hubs/).
+> Pomocí veřejného <a href="https://msdn.microsoft.com/library/windowsazure/dn223264.aspx">rozhraní REST</a> je možné pomocí Notification Hubs posílat nabízená oznámení z jakéhokoli back-endu. Další ukázky pro více platforem najdete na [portálu dokumentace](https://azure.microsoft.com/documentation/services/notification-hubs/).
 > 
 > 
 

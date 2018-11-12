@@ -2,25 +2,25 @@
 title: Použití Caffe pro distribuované obsáhlého learningu v Azure HDInsight Spark
 description: Použití Caffe pro distribuované obsáhlého learningu v Azure HDInsight Spark
 services: hdinsight
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/17/2017
-ms.openlocfilehash: a7873996d83dbc79b4d44c58bd964c274f9c7709
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 71322869eb9272fb59b98a0e21b1f639129572b7
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39622911"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51255914"
 ---
 # <a name="use-caffe-on-azure-hdinsight-spark-for-distributed-deep-learning"></a>Použití Caffe pro distribuované obsáhlého learningu v Azure HDInsight Spark
 
 
 ## <a name="introduction"></a>Úvod
 
-Obsáhlý learning se dopadu na všechno od zdravotní péče na transportation do výroby a další. Podniky přecházejí ke hloubkového učení řeší těžké problémy, jako je třeba [klasifikace obrázků](http://blogs.microsoft.com/next/2015/12/10/microsoft-researchers-win-imagenet-computer-vision-challenge/), [rozpoznávání řeči](http://googleresearch.blogspot.jp/2015/08/the-neural-networks-behind-google-voice.html)objektu rozpoznávání a počítač překladu. 
+Obsáhlý learning se dopadu na všechno od zdravotní péče na transportation do výroby a další. Podniky přecházejí ke hloubkového učení řeší těžké problémy, jako je třeba [klasifikace obrázků](https://blogs.microsoft.com/next/2015/12/10/microsoft-researchers-win-imagenet-computer-vision-challenge/), [rozpoznávání řeči](http://googleresearch.blogspot.jp/2015/08/the-neural-networks-behind-google-voice.html)objektu rozpoznávání a počítač překladu. 
 
 Existují [mnoho oblíbených architektur](https://en.wikipedia.org/wiki/Comparison_of_deep_learning_software), včetně [Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/research/product/cognitive-toolkit/), [Tensorflow](https://www.tensorflow.org/), MXNet, Theano, atd. Caffe je jedno z rozhraní nejslavnějšího-symbolické (imperativní) neuronové sítě a běžně používá v mnoha oblastech, včetně pro počítačové zpracování obrazu. Kromě toho [CaffeOnSpark](http://yahoohadoop.tumblr.com/post/139916563586/caffeonspark-open-sourced-for-distributed-deep) kombinuje Caffe s Apache Sparkem v takovém případě obsáhlý learning můžete snadno použít v existujícím clusteru Hadoop. Obsáhlý learning spolu s kanály Spark ETL, snížení složitosti systému a latence můžete použít pro učení tak získají kompletní řešení.
 

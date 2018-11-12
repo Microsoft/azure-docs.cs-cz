@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: overview
 ms.date: 10/30/2018
 ms.author: alkohli
-ms.openlocfilehash: fff1684efda0e7e7b857c668eaa28dc79b7534d7
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 5e4461a910f13c5047c4a2aadd7326c4e12c533f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50416371"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238127"
 ---
 # <a name="what-is-azure-data-box-disk-preview"></a>Co je Azure Data Box Disk? (Preview)
 
@@ -47,7 +47,7 @@ A. Pokud máte 40 TB dat (nebo méně), které chcete přenést do Azure, je pro
 A. Informace o cenách Data Box Disků najdete na [stránce s cenami verze Preview](https://azure.microsoft.com/pricing/details/storage/databox/disk/).
 
 ### <a name="q-how-do-i-get-data-box-disks"></a>Otázka: Jak lze disky Data Box Disk získat? 
-A.  Pokud chcete získat disky Azure Data Box Disk, nejprve si zaregistrujte [Data Box Disk ve verzi Preview](http://aka.ms/AzureDataBox). Pak se přihlaste na web Azure Portal a vytvořte objednávku disků Data Box. Zadejte svoje kontaktní údaje a podrobnosti o oznámení. Po provedení objednávky vám budou disky dodány podle dostupnosti do 10 dnů.   
+A.  Pokud chcete získat disky Azure Data Box Disk, nejprve si zaregistrujte [Data Box Disk ve verzi Preview](https://aka.ms/AzureDataBox). Pak se přihlaste na web Azure Portal a vytvořte objednávku disků Data Box. Zadejte svoje kontaktní údaje a podrobnosti o oznámení. Po provedení objednávky vám budou disky dodány podle dostupnosti do 10 dnů.   
 
 ### <a name="q-what-is-the-maximum-amount-of-data-i-can-transfer-with-data-box-disks-in-one-instance"></a>Otázka: Jaký je maximální objem dat, který se dá přenést pomocí disků Data Box Disk v jedné instanci?
 A. Při 5 discích, kdy každý má velikost 8 TB (7 TB využitelné kapacity), je maximální využitelná kapacita 35 TB. V jedné instanci je tedy možné přenést 35 TB dat.  Pro přenos většího objemu dat je nutné objednat další disky.

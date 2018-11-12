@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/10/2018
+ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 279818e6b43e53206deb9e33591f75ef381a8962
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: f4bc90b2d1a80125ae88b4b5c4c11e42a34a985a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49319978"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240422"
 ---
 # <a name="platforms-and-features-supported-by-azure-security-center"></a>Platformy a funkcí podporovaných službou Azure Security Center
 
@@ -80,16 +80,16 @@ Podporují se také virtuální počítače spuštěné v cloudové službě. Po
 |Konfigurace zabezpečení|✔|✔|✔|✔|
 |Anti-malware|✔|✔|X|X|
 |Přístup k virtuálnímu počítači podle potřeby|✔|X|✔|X|
-|Adaptivní řízení aplikací|✔ (pouze Azure)|X|X|X|
+|Adaptivní řízení aplikací|✔|X|X|X|
 |FIM|✔|✔|✔|✔|
 |Šifrování disku|✔|X|✔|X|
 |Nasazení třetích stran|✔|X|✔|X|
 |Skupiny NSG|✔|X|✔|X|
-|Filess V1|✔|✔|X|X|
+|Detekce hrozeb Filess|✔|✔|X|X|
 |Mapování sítě|✔|X|✔|X|
-|Adaptivní posílení zabezpečení sítě|✔|X|✔|X|
+|Ovládací prvky pro adaptivní síť|✔|X|✔|X|
 
-* Tyto funkce jsou aktuálně podporované ve verzi public preview.
+\* Tyto funkce jsou aktuálně podporované ve verzi public preview.
 
 
 ## <a name="supported-paas-features"></a>Podporované funkce PaaS
@@ -103,26 +103,17 @@ Podporují se také virtuální počítače spuštěné v cloudové službě. Po
 |Účty úložiště BLOB *|✔| ✔|
 |Aplikační služby|✔| ✔|
 |Cloud Services|✔| X|
-|Redis Cache|✔| X|
-|Service fabric|✔| X|
-|Azure Automation|✔| X|
-|Data Lake |✔| X|
-|Trezor klíčů|✔| X|
-|Služby Service bus|✔| X|
-|Stream analytics|✔| X|
-|Batch|✔| X|
-|Logické aplikace|✔| X|
 |Virtuální sítě|✔| Není k dispozici|
 |Podsítě|✔| Není k dispozici|
 |Síťové karty|✔| ✔|
 |Skupiny NSG|✔| Není k dispozici|
 |Předplatné|✔| ✔|
 
-* Tyto funkce jsou aktuálně podporované ve verzi public preview.
+\* Tyto funkce jsou aktuálně podporované ve verzi public preview.
 
 ## <a name="next-steps"></a>Další postup
 
 - [Průvodce Azure Security Center plánováním a provozem](security-center-planning-and-operations-guide.md) – zjistěte, jak naplánovat a pochopit aspekty návrhu, abyste mohli přejít na Azure Security Center
 - [Výstrahy zabezpečení podle typu ve službě Azure Security Center](security-center-alerts-type.md#virtual-machine-behavioral-analysis) – Další informace o analýza chování virtuálního počítače a k chybě při analýze výpisu paměti ve službě Security Center
 - [Azure Security Center – nejčastější dotazy](security-center-faq.md) – Přečtěte si nejčastější dotazy o použití této služby.
-- [Blog o zabezpečení Azure](http://blogs.msdn.com/b/azuresecurity/) – přečtěte si blog příspěvky o zabezpečení Azure a dodržování předpisů
+- [Blog o zabezpečení Azure](https://blogs.msdn.com/b/azuresecurity/) – přečtěte si blog příspěvky o zabezpečení Azure a dodržování předpisů

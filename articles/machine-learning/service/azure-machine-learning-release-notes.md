@@ -9,16 +9,53 @@ author: hning86
 ms.author: haining
 ms.reviewer: j-martens
 ms.date: 10/24/2018
-ms.openlocfilehash: 0927ae14d232ec2ce3a46bb66ed535deabbe0138
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 5ceb47f437f736829d0be10a856fe787fab944b0
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50158682"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261566"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Zpráva k vydání verze služby Azure Machine Learning
 
 V tomto článku najdete další informace o vydaných verzích služby Azure Machine Learning. 
+
+## <a name="2018-11-05"></a>2018-11-05
+
+### <a name="azure-portal"></a>portál Azure 
+Na webu Azure portal pro službu Azure Machine Learning má následující aktualizace:
+  * Nový **kanály** kartu pro publikované kanály.
+  * Přidání podpory pro připojení k existujícímu clusteru HDInsight jako cílové výpočetní prostředí.
+
+### <a name="azure-machine-learning-sdk-for-python-v0174"></a>Azure Machine Learning sady SDK pro Python v0.1.74
+
++ **Rozbíjející změny v** 
+  * *Workspace.compute_targets, úložišť, experimenty, obrázky, modely* a *webservices* jsou vlastnosti namísto metod. Nahraďte třeba *Workspace.compute_targets()* s *Workspace.compute_targets*.
+  * *Run.get_context* zastarání *Run.get_submitted_run*. Druhá metoda odebere v dalších verzích.
+  * *PipelineData* třídy nyní očekává, že objekt úložiště dat jako parametr spíše než datastore_name. Obdobně *kanálu* přijímá default_datastore spíše než default_datastore_name.
+
++ **Nové funkce**
+  * Kanály Azure Machine Learning [ukázkový poznámkový blok](https://github.com/Azure/MachineLearningNotebooks/tree/master/pipeline/pipeline-mpi-batch-prediction.ipynb) teď používá MPI kroky.
+  * RunDetails widget pro poznámkové bloky Jupyter se aktualizuje a zobrazí vizualizaci kanálu.
+
+### <a name="azure-machine-learning-data-prep-sdk-v040"></a>Sada SDK v0.4.0 pro přípravu dat Azure Machine Learning 
+ 
++ **Nové funkce**
+  * Počet typů přidat Data profilu 
+  * Počet hodnot a Histogram je nyní k dispozici
+  * Další percentily v profil dat
+  * Je k dispozici v Summarize Medián
+  * Python 3.7 se teď podporuje.
+  * Při uložení toku dat, která obsahuje úložišť do balíčku přípravy informace úložiště dat bude trvalé jako součást balíčku přípravy
+  * Zápis do úložiště dat se teď podporuje. 
+        
++ **Chyba opravená**
+  * 64bitový celé číslo bez znaménka, které přetečení jsou teď správně zpracovány v Linuxu
+  * Oprava nesprávné textový popisek pro soubory ve formátu prostého textu v smart_read
+  * Typ sloupce řetězec se zobrazí v zobrazení metrik
+  * Počet typů je teď pevně zobrazíte ValueKinds namapován na jeden typ pole namísto jednotlivé značky
+  * Write_to_csv už selže, pokud je poskytnuta cesta jako řetězec
+  * Při použití nahradit, byste museli opustit "najít" prázdné už neselže 
 
 ## <a name="2018-10-12"></a>2018-10-12
 
@@ -26,9 +63,6 @@ V tomto článku najdete další informace o vydaných verzích služby Azure Ma
 
 + **Nové funkce**
   * Více tenantů podporu při vytváření nového pracovního prostoru.
-
-+ **Rozbíjející změny v**
-  * **V další vydané verzi nadcházející** *Workspace.compute_targets, úložišť, experimenty, obrázky, modely* a *webservices* se stanou vlastnosti namísto metod. Nahraďte třeba *Workspace.compute_targets()* s *Workspace.compute_targets*.
 
 + **Opravy chyb**
   * Verze knihovny pynacl už musí být odkazována při nasazování webové front-end služby.
@@ -217,7 +251,7 @@ Vítá vás třetí aktualizace služby Azure Machine Learning. Tato aktualizace
 **Důležité nové funkce**
 - [Podpora pro SQL Server a Azure SQL DB jako zdroje dat](../desktop-workbench/data-prep-appendix2-supported-data-sources.md#types) 
 - [Hloubkové učení ve Sparku s podporou GPU používání MMLSpark](https://github.com/Azure/mmlspark/blob/master/docs/gpu-setup.md)
-- [Všechny kontejnery AML musí být kompatibilní s Azure IoT Edge zařízení po nasazení (žádné další kroky vyžadované)](http://aka.ms/aml-iot-edge-blog)
+- [Všechny kontejnery AML musí být kompatibilní s Azure IoT Edge zařízení po nasazení (žádné další kroky vyžadované)](https://aka.ms/aml-iot-edge-blog)
 - Registrovanému modelu seznamu a podrobností zobrazení k dispozici webu Azure portal
 - Přístup k cílových výpočetních prostředí pomocí ověřování na základě klíčů SSH kromě přístupu pomocí uživatelského jména a hesla. 
 - Nový model frekvence inspektoru v datech pro přípravu prostředí. 
@@ -282,7 +316,7 @@ Další informace o vytvoření cílových výpočetních prostředí najdete v 
 - Přidání `az ml datasource create` příkaz umožňuje vytvoření zdroje dat z příkazového řádku
 
 #### <a name="model-management-and-operationalization"></a>Správa modelů a Operacionalizace
-- [Všechny kontejnery AML musí být kompatibilní s Azure IoT Edge zařízení, když mají zprovoznit (žádné další kroky vyžadované)](http://aka.ms/aml-iot-edge-blog) 
+- [Všechny kontejnery AML musí být kompatibilní s Azure IoT Edge zařízení, když mají zprovoznit (žádné další kroky vyžadované)](https://aka.ms/aml-iot-edge-blog) 
 - Vylepšení chybových zpráv v rozhraní příkazového řádku o16n
 - Opravy chyb v portálu pro správu modelu uživatelského prostředí  
 - Konzistentní písmeno malých a velkých písmen pro atributy model správy na stránce podrobností

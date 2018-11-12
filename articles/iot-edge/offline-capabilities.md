@@ -8,12 +8,12 @@ ms.date: 09/20/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: d84df3e5e0b961b8a53044102f99205ee0fe9896
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: c4ab33f4d706eb677b2b790ff871c1fb900846ff
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50914103"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235628"
 ---
 # <a name="understand-extended-offline-capabilities-for-iot-edge-devices-modules-and-child-devices-preview"></a>Seznamte se s rozšířenou offline funkcí pro zařízení IoT Edge, moduly a podřízená zařízení (preview)
 
@@ -46,7 +46,7 @@ Následující příklad ukazuje, jak funguje scénáři IoT Edge v režimu offl
 
 ## <a name="restrictions-and-limits"></a>Omezení a omezení
 
-Rozšířené možnosti offline popsaných v tomto článku jsou dostupné v [IoT Edge verze 1.0.2 nebo novější](https://github.com/Azure/azure-iotedge/releases). Starší verze mají podmnožinu offline funkcí. Existující hraničních zařízeních IoT zařízení, která nemají rozšířené možnosti offline nelze upgradovat tak, že změníte verzi modulu runtime, ale je potřeba překonfigurovat tak s novou identitu zařízení IoT Edge k získání těchto funkcí. 
+Rozšířené možnosti offline popsaných v tomto článku jsou dostupné v [IoT Edge verze 1.0.4 nebo vyšší](https://github.com/Azure/azure-iotedge/releases). Starší verze mají podmnožinu offline funkcí. Existující hraničních zařízeních IoT zařízení, která nemají rozšířené možnosti offline nelze upgradovat tak, že změníte verzi modulu runtime, ale je potřeba překonfigurovat tak s novou identitu zařízení IoT Edge k získání těchto funkcí. 
 
 Prodloužená odborná pomoc offline je k dispozici ve všech oblastech, kde je k dispozici, s výjimkou východní USA a západní Evropa služby IoT Hub. 
 
@@ -56,34 +56,7 @@ Zařízení IoT Edge a jejich zařízení přiřazené podřízené, můžou fun
 
 ## <a name="set-up-an-edge-device"></a>Nastavit hraniční zařízení
 
-Pro libovolné zařízení IoT Edge, který chcete provést během delší dobu offline a nakonfigurujte modul runtime IoT Edge pro komunikaci pomocí protokolu MQTT. 
-
 Pro zařízení IoT Edge rozšířit možnosti rozšířené offline do zařízení IoT podřízené musíte deklarovat vztahy nadřazenosti a podřízenosti na webu Azure Portal.
-
-### <a name="set-the-upstream-protocol-to-mqtt"></a>Nastavit nadřazený protokol MQTT
-
-Nakonfigurujte Centrum Edge a agent Edge ke komunikaci s jako nadřazený protokol MQTT. Tento protokol je deklarován pomocí proměnných prostředí v manifestu nasazení. 
-
-Na webu Azure Portal, můžete přístup Centrum Edge a definice modulu agenta Edge tak, že vyberete **konfigurovat rozšířená nastavení modulu Runtime Edge** tlačítko při nastavování moduly pro nasazení. Pro oba moduly, vytvořte proměnnou prostředí volá **UpstreamProtocol** a nastavte jej na hodnotu **MQTT**. 
-
-Nasazení šablony JSON proměnné prostředí jsou deklarovány, jak je znázorněno v následujícím příkladu: 
-
-```json
-"edgeHub": {
-    "type": "docker",
-    "settings": {
-        "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
-        "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"8883/tcp\":[{\"HostPort\":\"8883\"}],\"443/tcp\":[{\"HostPort\":\"443\"}],\"5671/tcp\":[{\"HostPort\":\"5671\"}]}}}"
-    },
-    "env": {
-        "UpstreamProtocol": {
-            "value": "MQTT"
-        }
-    },
-    "status": "running",
-    "restartPolicy": "always"
-}
-```
 
 ### <a name="assign-child-devices"></a>Přiřazení zařízení podřízené
 

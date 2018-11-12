@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 302607df2292fe7a67a8b6860dab19eef7f391a9
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 8577b6a1d0f57820cbdd4096b0e8412096ff3af3
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47160362"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51232072"
 ---
 # <a name="event-file-target-code-for-extended-events-in-sql-database"></a>Cílový kód souboru události pro rozšířené události ve službě SQL Database
 
@@ -25,7 +25,7 @@ ms.locfileid: "47160362"
 
 Chcete ukázku dokončení kódu pro robustní způsob, jak informace sběr dat a sestavy pro rozšířené události.
 
-V systému Microsoft SQL Server [cíle souboru událostí](http://msdn.microsoft.com/library/ff878115.aspx) se používá k ukládání výstupů události do souboru místním pevném disku. Ale tyto soubory nejsou k dispozici ke službě Azure SQL Database. Místo toho jsme pomocí služby Azure Storage podporují cíle souboru událostí.
+V systému Microsoft SQL Server [cíle souboru událostí](https://msdn.microsoft.com/library/ff878115.aspx) se používá k ukládání výstupů události do souboru místním pevném disku. Ale tyto soubory nejsou k dispozici ke službě Azure SQL Database. Místo toho jsme pomocí služby Azure Storage podporují cíle souboru událostí.
 
 Toto téma představuje ukázku kódu dvoufázového:
 
@@ -44,9 +44,9 @@ Toto téma představuje ukázku kódu dvoufázového:
 * SQL Server Management Studio (ssms.exe), v ideálním případě jeho nejnovější měsíční aktualizovanou verzi. 
   Si můžete stáhnout nejnovější ssms.exe od:
   
-  * Téma s názvem [stažení aplikace SQL Server Management Studio](http://msdn.microsoft.com/library/mt238290.aspx).
-  * [Přímý odkaz na stažení.](http://go.microsoft.com/fwlink/?linkid=616025)
-* Musíte mít [moduly Azure Powershellu](http://go.microsoft.com/?linkid=9811175) nainstalované.
+  * Téma s názvem [stažení aplikace SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx).
+  * [Přímý odkaz na stažení.](https://go.microsoft.com/fwlink/?linkid=616025)
+* Musíte mít [moduly Azure Powershellu](https://go.microsoft.com/?linkid=9811175) nainstalované.
   
   * Moduly zadat příkazy, jako - **New-AzureStorageAccount**.
 
@@ -506,11 +506,11 @@ SELECT 'AFTER__Updates', EmployeeKudosCount, * FROM gmTabEmployee;
 
 Předchozí skript Transact-SQL použít následující funkce systému ke čtení event_file:
 
-* [sys.fn_xe_file_target_read_file (Transact-SQL)](http://msdn.microsoft.com/library/cc280743.aspx)
+* [sys.fn_xe_file_target_read_file (Transact-SQL)](https://msdn.microsoft.com/library/cc280743.aspx)
 
 Vysvětlení rozšířené možnosti pro zobrazení dat z rozšířených událostí je k dispozici na:
 
-* [Rozšířené zobrazení cíl dat z rozšířené události](http://msdn.microsoft.com/library/mt752502.aspx)
+* [Rozšířené zobrazení cíl dat z rozšířené události](https://msdn.microsoft.com/library/mt752502.aspx)
 
 
 ## <a name="converting-the-code-sample-to-run-on-sql-server"></a>Převod vzorový kód pro spuštění na SQL serveru
@@ -528,10 +528,10 @@ Předpokládejme, že chcete spustit v předchozím příkladu příkazů jazyka
 Další informace o účtech a kontejnerů ve službě Azure Storage najdete v tématu:
 
 * [Použití Blob storage pomocí technologie .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md)
-* [Názvy kontejnerů, objektů blob a metadat a odkazování na ně](http://msdn.microsoft.com/library/azure/dd135715.aspx)
-* [Práce s Kořenový kontejner](http://msdn.microsoft.com/library/azure/ee395424.aspx)
-* [Lekce 1: Vytvoření uložené zásady přístupu a sdílený přístupový podpis Azure kontejneru](http://msdn.microsoft.com/library/dn466430.aspx)
-  * [Lekce 2: Vytvoření přihlašovacích údajů systému SQL Server pomocí sdíleného přístupového podpisu](http://msdn.microsoft.com/library/dn466435.aspx)
+* [Názvy kontejnerů, objektů blob a metadat a odkazování na ně](https://msdn.microsoft.com/library/azure/dd135715.aspx)
+* [Práce s Kořenový kontejner](https://msdn.microsoft.com/library/azure/ee395424.aspx)
+* [Lekce 1: Vytvoření uložené zásady přístupu a sdílený přístupový podpis Azure kontejneru](https://msdn.microsoft.com/library/dn466430.aspx)
+  * [Lekce 2: Vytvoření přihlašovacích údajů systému SQL Server pomocí sdíleného přístupového podpisu](https://msdn.microsoft.com/library/dn466435.aspx)
 * [Rozšířené události pro Microsoft SQL Server](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events)
 
 <!--

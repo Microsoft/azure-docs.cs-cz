@@ -3,18 +3,18 @@ title: Správa služby ML clusteru v HDInsight – Azure
 description: Další informace o správě clusteru služby ML služby v Azure HDInsight.
 services: hdinsight
 ms.service: hdinsight
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 06/27/2018
-ms.openlocfilehash: 38a8366a586b032c3b11cbef8ee5f01ad2b822a5
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.date: 11/06/2018
+ms.openlocfilehash: 35b80223552181e44beac011f5fb541158466acc
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43702397"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51255395"
 ---
 # <a name="manage-ml-services-cluster-on-azure-hdinsight"></a>Správa služby ML clusteru v Azure HDInsight
 
@@ -80,7 +80,7 @@ Všimněte si také, že nově přidaní uživatelé nemají v systému Linux ko
 
 ## <a name="connect-remotely-to-microsoft-ml-services"></a>Vzdálené připojení ke službám Microsoft ML
 
-Můžete nastavit přístup k výpočetním kontextu HDInsight Hadoop Spark ze vzdálené instance ML klienta spuštěná na ploše. Uděláte to tak, je nutné zadat možnosti (hdfsShareDir, shareDir, sshUsername, sshHostname, sshSwitches a sshProfileScript) při definování RxSpark výpočetním kontextu na ploše: Příklad:
+Můžete nastavit přístup k výpočetním kontextu Spark v HDInsight ze vzdálené instance ML klienta spuštěná na ploše. Uděláte to tak, je nutné zadat možnosti (hdfsShareDir, shareDir, sshUsername, sshHostname, sshSwitches a sshProfileScript) při definování RxSpark výpočetním kontextu na ploše: Příklad:
 
     myNameNode <- "default"
     myPort <- 0
@@ -226,16 +226,13 @@ Výpočetní kontext vám umožňuje řídit, jestli se výpočty provádějí m
         summary(modelSpark)
 
 
-   > [!NOTE]
-   > Distribuovat výpočty napříč uzly clusteru můžete také pomocí MapReduce. Další informace o výpočetním kontextu najdete v tématu [výpočetní možnosti v kontextu služby ML clusteru v HDInsight](r-server-compute-contexts.md).
-
 ## <a name="distribute-r-code-to-multiple-nodes"></a>Distribuování kódu R do více uzlů
 
 Pomocí služby ML na HDInsight, můžete vzít existující kód R a spustit ho napříč několika uzly v clusteru pomocí příkazu `rxExec`. Tato funkce je užitečná při uklízení parametrů nebo provádění simulací. Následující kód je příklad použití příkazu `rxExec`:
 
     rxExec( function() {Sys.info()["nodename"]}, timesToRun = 4 )
 
-Pokud stále používáte kontext Spark nebo MapReduce, tento příkaz vrátí hodnoty nodename (název uzlu) všech pracovních uzlů, ve kterých je spuštěný kód `(Sys.info()["nodename"])`. Například v clusteru se čtyřmi uzly, které by se měl zobrazit výstup podobný následujícímu fragmentu kódu:
+Pokud stále používáte kontext Spark, tento příkaz vrátí hodnoty nodename pracovních uzlů, který kód `(Sys.info()["nodename"])` je spouštět. Například v clusteru se čtyřmi uzly, které by se měl zobrazit výstup podobný následujícímu fragmentu kódu:
 
     $rxElem1
         nodename

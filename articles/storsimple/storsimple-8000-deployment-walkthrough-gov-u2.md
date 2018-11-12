@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/22/2017
 ms.author: alkohli
-ms.openlocfilehash: 5a622eb5ae14a6c6b0c2dd4eceb6ffdb9733dcff
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 4f093251ce3c711cc060369abb27770157024d91
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38681532"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238688"
 ---
 # <a name="deploy-your-on-premises-storsimple-device-in-the-government-portal"></a>Nasazení místního zařízení StorSimple na portálu Government
 
@@ -67,7 +67,7 @@ Pomocí níže uvedených požadovaných kroků zařízení StorSimple nakonfigu
 ## <a name="deployment-configuration-checklist"></a>Kontrolní seznam konfigurace nasazení
 Před nasazením zařízení StorSimple je potřeba shromáždit informace ke konfiguraci softwaru na vašem zařízení. Předběžná příprava některých z těchto informací vám pomůže urychlit a zjednodušit proces nasazení zařízení StorSimple ve vašem prostředí. Stáhněte si a kontrolní seznam použijte si podrobnosti o konfiguraci během nasazování zařízení.
 
-[Stáhnout kontrolní seznam konfigurace nasazení zařízení StorSimple](http://www.microsoft.com/download/details.aspx?id=49159)
+[Stáhnout kontrolní seznam konfigurace nasazení zařízení StorSimple](https://www.microsoft.com/download/details.aspx?id=49159)
 
 ## <a name="deployment-prerequisites"></a>Požadavky nasazení
 Následující části popisují požadavky konfigurace pro službu Správce zařízení StorSimple a zařízení StorSimple.

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/10/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 41d27b9a173cc019549f1dea0c66ffcaa51fbb10
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 9cffbeae3e73682f5e76523de7ee607285c9fc75
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44719439"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238622"
 ---
 # <a name="azure-stack-deployment-planning-considerations"></a>Co zvážit při plánování nasazení Azure Stack
 Než nasadíte Azure Stack Development Kit (ASDK), zkontrolujte, zda že splňuje požadavky popsané v tomto článku hostitelského počítače development kit.
@@ -82,7 +82,7 @@ Pokud nasadíte pomocí služby AD FS, je nutné znovu nasadit Azure Stack pro p
 ### <a name="azure-active-directory-accounts"></a>Účty služby Azure Active Directory
 Nasazení Azure Stack pomocí účtu Azure AD, musíte připravit účet Azure AD, před spuštěním Powershellový skript nasazení. Tento účet stane globálním správcem tenanta Azure AD. Používá se ke zřízení a delegování aplikace a instanční objekty pro všechny služby Azure Stack, které pracují s Azure Active Directory a rozhraní Graph API. Používá se také jako vlastník výchozí předplatné poskytovatele (který můžete později změnit). K portálu správce systému služby Azure Stack se můžete přihlásit pomocí tohoto účtu.
 
-1. Vytvoření účtu služby Azure AD, který je správcem adresáře nejméně jedné služby Azure AD. Pokud už účet máte, můžete ho použít. Jinak můžete jej vytvořit zdarma na [ https://azure.microsoft.com/free/ ](http://azure.microsoft.com/pricing/free/) (v Číně, navštivte <http://go.microsoft.com/fwlink/?LinkID=717821> místo). Pokud budete chtít později [registraci Azure Stack v Azure](asdk-register.md), také musíte mít předplatné v tomto nově vytvořeném účtu.
+1. Vytvoření účtu služby Azure AD, který je správcem adresáře nejméně jedné služby Azure AD. Pokud už účet máte, můžete ho použít. Jinak můžete jej vytvořit zdarma na [ https://azure.microsoft.com/free/ ](https://azure.microsoft.com/pricing/free/) (v Číně, navštivte <http://go.microsoft.com/fwlink/?LinkID=717821> místo). Pokud budete chtít později [registraci Azure Stack v Azure](asdk-register.md), také musíte mít předplatné v tomto nově vytvořeném účtu.
    
     Uložte tyto přihlašovací údaje pro použití jako správce služeb. Tento účet můžete konfigurovat a spravovat cloudy prostředků, uživatelské účty, plány tenantů, kvóty a ceny. Na portálu může vytvářet webové cloudy, soukromé cloudy pro virtuální počítače a plány a spravovat předplatné uživatelů.
 1. Vytvořte aspoň jeden testovací uživatelský účet ve službě Azure AD tak, aby se můžete přihlásit jako tenant development Kit.

@@ -12,15 +12,15 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 695da176d2bc86fd67608cc28d14cf15a7728980
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 58b109651408a51ca7505c92d3875de63aae2cc6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47161484"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261923"
 ---
 # <a name="elastic-database-client-library-with-entity-framework"></a>Klientská knihovna elastic Database s Entity Framework
-Tento dokument ukazuje změny v aplikaci Entity Framework, které jsou potřebné k integraci s [nástrojů Elastic Database](sql-database-elastic-scale-introduction.md). Zaměřuje se na vytváření [správy mapování horizontálních oddílů](sql-database-elastic-scale-shard-map-management.md) a [směrování závislé na datech](sql-database-elastic-scale-data-dependent-routing.md) s rozhraním Entity Framework **Code First** přístup. [Code First – nová databáze](http://msdn.microsoft.com/data/jj193542.aspx) EF v tomto kurzu slouží jako příklad v tomto dokumentu. Vzorový kód doprovodném tohoto dokumentu je součástí nástrojů elastic database nastavit vzorků v kódu ukázky sady Visual Studio.
+Tento dokument ukazuje změny v aplikaci Entity Framework, které jsou potřebné k integraci s [nástrojů Elastic Database](sql-database-elastic-scale-introduction.md). Zaměřuje se na vytváření [správy mapování horizontálních oddílů](sql-database-elastic-scale-shard-map-management.md) a [směrování závislé na datech](sql-database-elastic-scale-data-dependent-routing.md) s rozhraním Entity Framework **Code First** přístup. [Code First – nová databáze](https://msdn.microsoft.com/data/jj193542.aspx) EF v tomto kurzu slouží jako příklad v tomto dokumentu. Vzorový kód doprovodném tohoto dokumentu je součástí nástrojů elastic database nastavit vzorků v kódu ukázky sady Visual Studio.
 
 ## <a name="downloading-and-running-the-sample-code"></a>Stažení a spuštění vzorového kódu
 Stažení kódu pro účely tohoto článku:
@@ -169,9 +169,9 @@ Následující vzorový kód ukazuje, jak lze kolem nové zásady opakování SQ
             } 
         }); 
 
-**SqlDatabaseUtils.SqlRetryPolicy** ve výše uvedeném kódu je definován jako **SqlDatabaseTransientErrorDetectionStrategy** s počtem opakování 10 a 5 sekund čekací dobu mezi opakovanými pokusy. Tento přístup je podobný pokyny pro EF a uživatelem iniciované operace (viz [omezení strategie provádění opakováním (ef6 nebo novější)](http://msdn.microsoft.com/data/dn307226). Obě situace vyžadují, aby program aplikace určuje obor, ke které se vrátí přechodnou výjimkou: znovu otevřít transakce, nebo (jak jsme ukázali) znovu vytvořit kontext ze správné konstruktor, který používá Klientská knihovna elastic database.
+**SqlDatabaseUtils.SqlRetryPolicy** ve výše uvedeném kódu je definován jako **SqlDatabaseTransientErrorDetectionStrategy** s počtem opakování 10 a 5 sekund čekací dobu mezi opakovanými pokusy. Tento přístup je podobný pokyny pro EF a uživatelem iniciované operace (viz [omezení strategie provádění opakováním (ef6 nebo novější)](https://msdn.microsoft.com/data/dn307226). Obě situace vyžadují, aby program aplikace určuje obor, ke které se vrátí přechodnou výjimkou: znovu otevřít transakce, nebo (jak jsme ukázali) znovu vytvořit kontext ze správné konstruktor, který používá Klientská knihovna elastic database.
 
-Potřeba řídit, kdy přechodným výjimkám převzít nám zpět v oboru také nemůžete použít předdefinované **SqlAzureExecutionStrategy** , který je součástí EF. **SqlAzureExecutionStrategy** by znovu otevřít připojení, ale nepoužívá **OpenConnectionForKey** a tedy obejít ověření se provádí jako součást **OpenConnectionForKey**volání. Místo toho vzorový kód používá předdefinované **DefaultExecutionStrategy** , která se také dodává s EF. Nikoli **SqlAzureExecutionStrategy**, funguje správně v kombinaci s zásady opakování z zpracování přechodných chyb. Zásady spouštění v nastavena **ElasticScaleDbConfiguration** třídy. Všimněte si, že jsme se rozhodli nepoužívat **DefaultSqlExecutionStrategy** od navrhuje použití **SqlAzureExecutionStrategy** Pokud dojde k přechodným výjimkám – což by mohlo dojít k nesprávné chování jak je popsáno. Další informace o různých opakování zásady a EF, naleznete v tématu [odolnost připojení EF](http://msdn.microsoft.com/data/dn456835.aspx).     
+Potřeba řídit, kdy přechodným výjimkám převzít nám zpět v oboru také nemůžete použít předdefinované **SqlAzureExecutionStrategy** , který je součástí EF. **SqlAzureExecutionStrategy** by znovu otevřít připojení, ale nepoužívá **OpenConnectionForKey** a tedy obejít ověření se provádí jako součást **OpenConnectionForKey**volání. Místo toho vzorový kód používá předdefinované **DefaultExecutionStrategy** , která se také dodává s EF. Nikoli **SqlAzureExecutionStrategy**, funguje správně v kombinaci s zásady opakování z zpracování přechodných chyb. Zásady spouštění v nastavena **ElasticScaleDbConfiguration** třídy. Všimněte si, že jsme se rozhodli nepoužívat **DefaultSqlExecutionStrategy** od navrhuje použití **SqlAzureExecutionStrategy** Pokud dojde k přechodným výjimkám – což by mohlo dojít k nesprávné chování jak je popsáno. Další informace o různých opakování zásady a EF, naleznete v tématu [odolnost připojení EF](https://msdn.microsoft.com/data/dn456835.aspx).     
 
 #### <a name="constructor-rewrites"></a>Konstruktor přepisů
 Výše uvedené příklady kódu ukazují výchozí konstruktor přepíše potřebné pro vaši aplikaci k použití s rozhraním Entity Framework směrování závislé na datech. V následující tabulce zobecňuje tento přístup k další konstruktory. 

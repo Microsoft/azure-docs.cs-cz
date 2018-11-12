@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: bb9a2a884439b00f52adfa9b7c1010a4610a77f7
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 050308e1c8de160f1671ded991e550087299ae2f
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47401599"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51285722"
 ---
 # <a name="ultra-ssd-preview-managed-disks-for-azure-virtual-machine-workloads"></a>Ultra (preview) spravované disky SSD pro úlohy virtuálních počítačů Azure
 
@@ -23,7 +23,7 @@ Ultra SSD Azure (preview) poskytuje vysokou propustnost, vysoké IOPS a stálá 
 
 **Spravované disky**: Ultra SSD disků jsou dostupné jenom jako Managed Disks. Ultra vlastnosti jednotek SSD se nedá nasadit jako nespravovaný Disk nebo objekt Blob stránky. Při vytváření spravovaného disku, zadáváte sku disku jako UltraSSD_LRS typ a určení velikosti disku, vstupně-výstupních operací, a propustnost, které potřebujete a Azure vytvoří a spravuje disk za vás.  
 
-**Virtuální počítače**: Ultra jednotky SSD jsou navrženy pro práci všech skladových položek virtuálních počítačů Azure Premium SSD povolené, ale v době ve verzi preview bude omezená na instance virtuálních počítačů v3 ES/DS velikosti virtuálních počítačů.
+**Virtuální počítače**: Ultra jednotky SSD jsou navrženy pro práci s všech skladových položek virtuálních počítačů Azure Premium SSD povoleno; ale protože je momentálně ve verzi preview, virtuální počítače jsou velikost jako ES/DS v3.
 
 **Konfigurace dynamické výkonu**: Ultra SSD umožňují dynamicky měnit výkon (IOPS a propustnost) disku spolu s vaší potřebám provádění úloh bez nutnosti restartování virtuálních počítačů.
 
@@ -55,7 +55,7 @@ Následující tabulka shrnuje různé podporované konfigurace pro různé veli
 
 ## <a name="pricing-and-billing"></a>Ceny a fakturace
 
-Při použití Ultra disků SSD, platí následující aspekty fakturace:
+Při použití Ultra disků SSD, uplatní se následující fakturační aspekty:
 
 - Spravovaná velikost disku
 - Spravovaný Disk zřízené IOPS
@@ -64,11 +64,11 @@ Při použití Ultra disků SSD, platí následující aspekty fakturace:
 
 ### <a name="managed-disk-size"></a>Spravovaná velikost disku
 
-Spravované disky se účtují na zřízené velikosti. Azure mapuje zřízenou velikost (zaokrouhlenou nahoru) na nejbližší nabídku velikosti disku. Podrobnosti o velikosti disků nabízejí najdete v tabulce škálovatelnost a cíle výkonnosti výše v části. Každý disk mapuje na velikosti zřízeného disku podporované a odpovídajícím způsobem fakturuje po hodinách. Například pokud zřízený 200 GB Ultra Disk SSD na úrovni a odstraní po 20 hodin se namapuje do nabídky velikost disků 256 GB a vám budeme účtovat 256 GB po dobu 20 hodin. To je bez ohledu na velikost skutečných dat zapsaných na disk.
+Spravované disky se účtují na virtuální počítač o velikosti tohoto vám choosed při provisionning nového virtuálního počítače Azure. Azure mapuje zřízenou velikost (zaokrouhlenou nahoru) na nejbližší nabídku velikosti disku. Podrobnosti o velikosti disků nabízejí najdete v tabulce škálovatelnost a cíle výkonnosti výše v části. Každý disk mapuje na podporovaná zřízená velikost disku a bude odpovídajícím způsobem se účtuje po hodinách. Například pokud zřízený 200 GB Ultra Disk SSD na úrovni a odstraní po 20 hodin se namapuje do nabídky velikost disků 256 GB a vám budeme účtovat 256 GB po dobu 20 hodin. Toto účtování byl založen na využití výpočetních hodinách bez ohledu na objem dat ve skutečnosti zapsaných na disk.
 
 ### <a name="managed-disk-provisioned-iops"></a>Spravovaný Disk zřízené IOPS
 
-Vstupně-výstupních operací se počet požadavků, které vaše aplikace posílá na discích v jedné sekundy. Vstupně výstupní operace může být sekvenční nebo náhodné, čte nebo zapisuje. Třeba velikost disku zřízené IOPS se účtují po hodinách. Podrobnosti o disku, který nabízí vstupně-výstupních operací najdete v tabulce škálovatelnost a cíle výkonnosti výše v části.
+Počet požadavků, které vaše aplikace posílá se vstupně-výstupních operací za sekundu na disky. Vstupně výstupní operace může být sekvenčního čtení nebo zápisu nebo náhodného čtení nebo zápisu. Podle velikosti disku nebo počet disků připojených k virtuálnímu počítači, je průměrný počet vstupně-výstupních operací se účtují po hodinách. Podrobnosti o disku, který nabízí vstupně-výstupních operací najdete v tabulce škálovatelnost a cíle výkonnosti výše v části.
 
 ### <a name="managed-disk-provisioned-throughput"></a>Zřízená propustnost spravovaného disku
 

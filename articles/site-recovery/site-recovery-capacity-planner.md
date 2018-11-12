@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/28/2018
 ms.author: raynew
-ms.openlocfilehash: f600471e8a3602628a5040051f382e6e020f29d5
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: d53e8fe6588b7e1b068431a4cd530d0a80a603e6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50211413"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261872"
 ---
 # <a name="plan-capacity-for-hyper-v-vm-disaster-recovery"></a>Plánování kapacity pro zotavení po havárii virtuálních počítačů Hyper-V 
 
@@ -43,7 +43,7 @@ Nástroj můžete spustit ve dvou režimech:
 
 
 ## <a name="run-the-quick-planner"></a>Spuštění rychlého plánovače
-1. Stáhnout a otevřít [Site Recovery Capacity Planneru](http://aka.ms/asr-capacity-planner-excel). Budete muset spustit makra. Po zobrazení výzvy, dle popisu na povolit úpravy a obsah.
+1. Stáhnout a otevřít [Site Recovery Capacity Planneru](https://aka.ms/asr-capacity-planner-excel). Budete muset spustit makra. Po zobrazení výzvy, dle popisu na povolit úpravy a obsah.
 
 2. V **vyberte typ Plánovač** pole se seznamem, vyberte **rychlé Planneru**.
 
@@ -81,7 +81,7 @@ Nástroj můžete spustit ve dvou režimech:
 
 ## <a name="run-the-detailed-planner"></a>Spustit podrobnou Planneru
 
-1. Stáhnout a otevřít [Site Recovery Capacity Planneru](http://aka.ms/asr-capacity-planner-excel). Budete muset spustit makra. Po zobrazení výzvy, dle popisu na povolit úpravy a obsah.
+1. Stáhnout a otevřít [Site Recovery Capacity Planneru](https://aka.ms/asr-capacity-planner-excel). Budete muset spustit makra. Po zobrazení výzvy, dle popisu na povolit úpravy a obsah.
 
 2. V **vyberte typ Plánovač**vyberte **podrobné Planneru** ze seznamu.
 

@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/27/2016
-ms.openlocfilehash: ff30afdcfebe51d914d2f7504ab3bf530309c222
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: d201d8848891038355fad01f610070259ad1e42a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42056600"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51259186"
 ---
 # <a name="application-lifecycle-management-in-azure-machine-learning-studio"></a>Správa životního cyklu aplikací v nástroji Azure Machine Learning Studio
 Azure Machine Learning Studio je nástroj pro vývoj experimenty machine learning, které se mají zprovoznit v cloudové platformy Azure. Je třeba Visual Studio IDE a škálovatelné cloudové služby sloučena do jedné platformy. Standardní postupy Application Lifecycle Management (ALM) ze správy verzí můžete začlenit různých prostředků a na automatické spuštění a nasazení do Azure Machine Learning Studio. Tento článek popisuje některé z možností a přístupů.
@@ -43,7 +43,7 @@ Po jejím otevření, můžete uložit snímek experimentu jako nový experiment
 Pokud odstraníte experiment, odstraní se všechny snímky tohoto testu.
 
 ### <a name="exportimport-experiment-in-json-format"></a>Export a import experiment ve formátu JSON
-Snímky historie spuštění zachovat neměnné verzi experiment v nástroji Azure Machine Learning Studio pokaždé, když se odešle ke spuštění. Můžete také uložit místní kopii experimentu a vrácení se změnami do systému správy vaše oblíbené zdroje, jako je Team Foundation Server a později znovu vytvořit experiment z místního souboru. Můžete použít [Azure Machine Learning PowerShell](http://aka.ms/amlps) rutin [ *Export-AmlExperimentGraph* ](https://github.com/hning86/azuremlps#export-amlexperimentgraph) a [  *Import-AmlExperimentGraph* ](https://github.com/hning86/azuremlps#import-amlexperimentgraph) to udělat.
+Snímky historie spuštění zachovat neměnné verzi experiment v nástroji Azure Machine Learning Studio pokaždé, když se odešle ke spuštění. Můžete také uložit místní kopii experimentu a vrácení se změnami do systému správy vaše oblíbené zdroje, jako je Team Foundation Server a později znovu vytvořit experiment z místního souboru. Můžete použít [Azure Machine Learning PowerShell](https://aka.ms/amlps) rutin [ *Export-AmlExperimentGraph* ](https://github.com/hning86/azuremlps#export-amlexperimentgraph) a [  *Import-AmlExperimentGraph* ](https://github.com/hning86/azuremlps#import-amlexperimentgraph) to udělat.
 
 Soubor JSON je textovou reprezentaci řetězce grafem experimentu, který může obsahovat odkaz na prostředky v pracovním prostoru jako datová sada nebo trénovaného modelu. Serializovaná verze prostředku neobsahuje. Při pokusu o import dokumentu JSON zpět do pracovního prostoru, musí již existovat odkazované prostředky s identifikátory, které jsou odkazovány v experimentu na stejný prostředek. Jinak nelze přistupovat k importované experimentu.
 
@@ -85,7 +85,7 @@ Pokud vytvoříte novou službu založené na Azure Resource Manageru, konstrukc
 Až budete mít exportovaný soubor WSD a verze řídit, můžete taky nasadit WSD jako nové webové služby v plánu jiné webové služby v jiné oblasti Azure. Ujistěte se, že zadáte konfiguraci účtu úložiště správné, jakož i nové ID webové služby plánu. O opravu v různých iLearner soubory, můžete upravit soubor WSD a aktualizovat odkaz na umístění trénovaného modelu a nasadit ho jako nové webové služby.
 
 ## <a name="automate-experiment-execution-and-deployment"></a>Automatizace nasazení a spuštění experimentu
-Abyste mohli automatizovat proces nasazení aplikace a zpracování je důležitou součástí ALM. Ve službě Azure Machine Learning, lze provést pomocí [modulu PowerShell](http://aka.ms/amlps). Tady je příklad začátku do konce kroky, které jsou relevantní pro standardní ALM automatizovat proces spuštění a nasazení pomocí [modulu Powershellu pro Azure Machine Learning Studio](http://aka.ms/amlps). Každý krok je propojen s jeden nebo více rutin Powershellu, které můžete použít k provedení tohoto kroku.
+Abyste mohli automatizovat proces nasazení aplikace a zpracování je důležitou součástí ALM. Ve službě Azure Machine Learning, lze provést pomocí [modulu PowerShell](https://aka.ms/amlps). Tady je příklad začátku do konce kroky, které jsou relevantní pro standardní ALM automatizovat proces spuštění a nasazení pomocí [modulu Powershellu pro Azure Machine Learning Studio](https://aka.ms/amlps). Každý krok je propojen s jeden nebo více rutin Powershellu, které můžete použít k provedení tohoto kroku.
 
 1. [Nahrát datovou sadu](https://github.com/hning86/azuremlps#upload-amldataset).
 2. Zkopírujte výukového experimentu do pracovního prostoru z [pracovní prostor](https://github.com/hning86/azuremlps#copy-amlexperiment) nebo z [Galerie](https://github.com/hning86/azuremlps#copy-amlexperimentfromgallery), nebo [importovat](https://github.com/hning86/azuremlps#import-amlexperimentgraph) [exportovat](https://github.com/hning86/azuremlps#export-amlexperimentgraph) experiment z místního disk.
@@ -99,6 +99,6 @@ Abyste mohli automatizovat proces nasazení aplikace a zpracování je důležit
 10. Test webové službě [RRS](https://github.com/hning86/azuremlps#invoke-amlwebservicerrsendpoint) nebo [BES](https://github.com/hning86/azuremlps#invoke-amlwebservicebesendpoint) koncového bodu.
 
 ## <a name="next-steps"></a>Další postup
-* Stáhněte si [Azure Machine Learning Studio PowerShell](http://aka.ms/amlps) modulu a spuštění automatizovat úkoly ALM.
+* Stáhněte si [Azure Machine Learning Studio PowerShell](https://aka.ms/amlps) modulu a spuštění automatizovat úkoly ALM.
 * Zjistěte, jak [vytvářet a spravovat velký počet modelů ML pomocí pouze jednoho experimentu](create-models-and-endpoints-with-powershell.md) prostřednictvím Powershellu a přetrénování rozhraní API.
 * Další informace o [nasazování webových služeb Azure Machine Learning](publish-a-machine-learning-web-service.md).

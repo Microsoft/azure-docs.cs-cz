@@ -1,6 +1,6 @@
 ---
-title: Azure Backup Server chrání stav systému a obnoví holý počítač
-description: Použijte Azure Backup Server k zálohování stavu systému a zajištění ochrany úplné obnovení systému (BMR).
+title: Azure Backup Server chrání stav systému a obnoví do holých počítačů
+description: Použití Azure Backup serveru k zálohování stavu systému a zajistit ochranu úplným obnovením (BMR).
 services: backup
 author: markgalioto
 manager: carmonm
@@ -9,216 +9,216 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: markgal
-ms.openlocfilehash: d35f8667cb1ca9a0b3abd08450ebc647d6d12276
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 7cb87847d6a1e191fb20dfa9cdf263066704eb6d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34607204"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238807"
 ---
-# <a name="back-up-system-state-and-restore-to-bare-metal-with-azure-backup-server"></a>Zálohování stavu systému a obnovení na holý počítač pomocí serveru Azure Backup
+# <a name="back-up-system-state-and-restore-to-bare-metal-with-azure-backup-server"></a>Zálohování stavu systému a obnovit do holých počítačů pomocí Azure Backup serveru
 
 Azure Backup Server zálohuje stav systému a poskytuje ochranu úplné obnovení systému (BMR).
 
-*   **Zálohování stavu systému**: zálohuje soubory operačního systému, takže můžete obnovit, pokud se počítač spustí, ale systém souborů a registr budou ztraceny. Zahrnuje zálohu stavu systému:
-    * Člen domény: spouštěcí soubory, registrační databáze třídy modelu COM +, registru
-    * Řadič domény: Windows Server Active Directory (NTDS), spouštěcí soubory, registrační databáze třídy modelu COM +, registru, systémový svazek (SYSVOL)
-    * Počítač, který spouští služby clusteru: metadata clusterového serveru
-    * Počítač, který spouští služby certificate services: certifikát dat
-* **Úplné zálohování**: zálohuje soubory operačního systému a všechna data na nepostradatelné svazky (s výjimkou uživatelských dat). Podle definice zálohování BMR zahrnuje zálohu stavu systému. Když se počítač nespustí a je nutné obnovit vše poskytuje ochranu.
+*   **Zálohování stavu systému**: zálohuje soubory operačního systému, tak můžete obnovit při spuštění počítače, ale systém souborů a registr se ztratí. Zahrnuje i zálohu stavu systému:
+    * Člen domény: spouštěcí soubory, registrační databáze třídy modelu COM +, registr
+    * Řadič domény: Windows Server Active Directory (NTDS), spouštěcí soubory, registrační databáze třídy modelu COM +, registr, systémový svazek (SYSVOL)
+    * Počítač, na kterém běží služba cluster services: metadata clusterového serveru
+    * Počítač, který spouští služby certificate services: data certifikátu
+* **Úplné zálohování**: zálohuje soubory operačního systému a všechna data na klíčové svazky (s výjimkou uživatelských dat). Podle definice zahrnuje BMR i zálohu stavu systému. Poskytuje ochranu, když se počítač nespustí a je nutné obnovit vše.
 
-Následující tabulka shrnuje, co můžete zálohovat a obnovit. Podrobné informace o verzích aplikace, které se dají chránit pomocí stavu systému a úplné obnovení systému najdete v tématu [jaké serveru Azure Backup zálohuje?](backup-mabs-protection-matrix.md).
+Následující tabulka shrnuje možnosti zálohování a obnovení. Podrobné informace o verzích aplikací, které se dají chránit pomocí stavu systému a BMR, najdete v části [čemu zálohování Azure Backup serveru?](backup-mabs-protection-matrix.md).
 
-|Backup|Problém|Obnovení ze zálohy Azure Backup Server|Obnovení ze zálohy stavu systému|ÚPLNÉ OBNOVENÍ SYSTÉMU|
+|Backup|Problém|Obnovení ze zálohy Azure Backup serveru|Obnovení ze zálohy stavu systému|ÚPLNÉ OBNOVENÍ SYSTÉMU|
 |----------|---------|---------------------------|------------------------------------|-------|
-|**Data souborů**<br /><br />Zálohování regulární dat<br /><br />Zálohu BMR nebo stavu|Soubor ke ztrátě dat|Ano|Ne|Ne|
-|**Data souborů**<br /><br />Azure Backup Server zálohování dat souborů<br /><br />Zálohu BMR nebo stavu|Ztraceného nebo poškozeného operačního systému|Ne|Ano|Ano|
-|**Data souborů**<br /><br />Azure Backup Server zálohování dat souborů<br /><br />Zálohu BMR nebo stavu|Ztráta serveru (datové svazky v pořádku)|Ne|Ne|Ano|
-|**Data souborů**<br /><br />Azure Backup Server zálohování dat souborů<br /><br />Zálohu BMR nebo stavu|Ztráta serveru (datové svazky ztraceny)|Ano|Ne|Ano (BMR následované pravidelným obnovením zálohovaných souborová data)|
-|**Data služby SharePoint**:<br /><br />Zálohování Azure záložní Server farmy dat<br /><br />Zálohu BMR nebo stavu|Ke ztrátě lokality, seznamy, položky seznamu, dokumenty|Ano|Ne|Ne|
-|**Data služby SharePoint**:<br /><br />Zálohování Azure záložní Server farmy dat<br /><br />Zálohu BMR nebo stavu|Ztraceného nebo poškozeného operačního systému|Ne|Ano|Ano|
-|**Data služby SharePoint**:<br /><br />Zálohování Azure záložní Server farmy dat<br /><br />Zálohu BMR nebo stavu|Zotavení po havárii|Ne|Ne|Ne|
-|Windows Server 2012 R2 Hyper-V<br /><br />Zálohování Azure zálohování serveru hostitele Hyper-V nebo hosta<br /><br />Zálohování BMR nebo systému stav hostitele|Ke ztrátě virtuálních počítačů|Ano|Ne|Ne|
-|Hyper-V<br /><br />Zálohování Azure zálohování serveru hostitele Hyper-V nebo hosta<br /><br />Zálohování BMR nebo systému stav hostitele|Ztraceného nebo poškozeného operačního systému|Ne|Ano|Ano|
-|Hyper-V<br /><br />Zálohování Azure zálohování serveru hostitele Hyper-V nebo hosta<br /><br />Zálohování BMR nebo systému stav hostitele|Ke ztrátě hostitele Hyper-V (virtuálních počítačů beze změn)|Ne|Ne|Ano|
-|Hyper-V<br /><br />Zálohování Azure zálohování serveru hostitele Hyper-V nebo hosta<br /><br />Zálohování BMR nebo systému stav hostitele|Ke ztrátě hostitele Hyper-V (virtuální počítače ke ztrátě)|Ne|Ne|Ano<br /><br />BMR, následované pravidelným obnovením serveru Azure Backup|
-|SQL Server nebo Exchange<br /><br />Azure zálohování aplikace Zálohování serveru<br /><br />Zálohu BMR nebo stavu|Data ke ztrátě aplikací|Ano|Ne|Ne|
-|SQL Server nebo Exchange<br /><br />Azure zálohování aplikace Zálohování serveru<br /><br />Zálohu BMR nebo stavu|Ztraceného nebo poškozeného operačního systému|Ne|Y|Ano|
-|SQL Server nebo Exchange<br /><br />Azure zálohování aplikace Zálohování serveru<br /><br />Zálohu BMR nebo stavu|Ztráta serveru (protokoly databáze nebo transakcí beze změn)|Ne|Ne|Ano|
-|SQL Server nebo Exchange<br /><br />Azure zálohování aplikace Zálohování serveru<br /><br />Zálohu BMR nebo stavu|Ztráta serveru (protokoly transakcí databáze nebo ke ztrátě)|Ne|Ne|Ano<br /><br />Obnovení BMR následované pravidelným obnovením serveru Azure Backup|
+|**Data souborů**<br /><br />Zálohování běžných dat<br /><br />BMR nebo záloha stavu systému|Ztracená data souborů|Ano|Ne|Ne|
+|**Data souborů**<br /><br />Azure Backup Server zálohování dat souborů<br /><br />BMR nebo záloha stavu systému|Ztracený nebo poškozený operační systém|Ne|Ano|Ano|
+|**Data souborů**<br /><br />Azure Backup Server zálohování dat souborů<br /><br />BMR nebo záloha stavu systému|Ztráta serveru (datové svazky v pořádku)|Ne|Ne|Ano|
+|**Data souborů**<br /><br />Azure Backup Server zálohování dat souborů<br /><br />BMR nebo záloha stavu systému|Ztráta serveru (datové svazky ztracené)|Ano|Ne|Ano (BMR následované pravidelným obnovením zálohovaných souborová data)|
+|**Data Sharepointu**:<br /><br />Azure Backup Server zálohování dat farmy<br /><br />BMR nebo záloha stavu systému|Ztracený web, seznamy, položky seznamu, dokumenty|Ano|Ne|Ne|
+|**Data Sharepointu**:<br /><br />Azure Backup Server zálohování dat farmy<br /><br />BMR nebo záloha stavu systému|Ztracený nebo poškozený operační systém|Ne|Ano|Ano|
+|**Data Sharepointu**:<br /><br />Azure Backup Server zálohování dat farmy<br /><br />BMR nebo záloha stavu systému|Zotavení po havárii|Ne|Ne|Ne|
+|Windows Server 2012 R2 Hyper-V<br /><br />Zálohování Azure Backup Server hostitele technologie Hyper-V nebo hosta<br /><br />BMR nebo záloha stavu systému hostitele|Ztracený virtuální počítač|Ano|Ne|Ne|
+|Hyper-V<br /><br />Zálohování Azure Backup Server hostitele technologie Hyper-V nebo hosta<br /><br />BMR nebo záloha stavu systému hostitele|Ztracený nebo poškozený operační systém|Ne|Ano|Ano|
+|Hyper-V<br /><br />Zálohování Azure Backup Server hostitele technologie Hyper-V nebo hosta<br /><br />BMR nebo záloha stavu systému hostitele|Ztracený hostitel Hyper-V (virtuální počítače beze změny)|Ne|Ne|Ano|
+|Hyper-V<br /><br />Zálohování Azure Backup Server hostitele technologie Hyper-V nebo hosta<br /><br />BMR nebo záloha stavu systému hostitele|Ztracený hostitel Hyper-V (virtuální počítače ztracené)|Ne|Ne|Ano<br /><br />BMR následované pravidelným obnovením Azure Backup serveru|
+|SQL Server nebo Exchange<br /><br />Zálohování aplikace Azure Backup serveru<br /><br />BMR nebo záloha stavu systému|Ztracená data aplikací|Ano|Ne|Ne|
+|SQL Server nebo Exchange<br /><br />Zálohování aplikace Azure Backup serveru<br /><br />BMR nebo záloha stavu systému|Ztracený nebo poškozený operační systém|Ne|Y|Ano|
+|SQL Server nebo Exchange<br /><br />Zálohování aplikace Azure Backup serveru<br /><br />BMR nebo záloha stavu systému|Ztracený server (databáze a soubory protokolů transakcí beze změny)|Ne|Ne|Ano|
+|SQL Server nebo Exchange<br /><br />Zálohování aplikace Azure Backup serveru<br /><br />BMR nebo záloha stavu systému|Ztracený server (databáze a soubory protokolu transakcí ztracené)|Ne|Ne|Ano<br /><br />Obnovení úplné zálohy systému následované pravidelným obnovením Azure Backup serveru|
 
-## <a name="how-system-state-backup-works"></a>Jak funguje zálohování stavu systému
+## <a name="how-system-state-backup-works"></a>Způsob fungování zálohy stavu systému
 
-Při spuštění zálohy stavu systému, Backup Server komunikuje se zálohování serveru o zálohu stavu systému serveru. Ve výchozím nastavení zálohování serveru a zálohování serveru používají na jednotku, která má nejvíce dostupného volného místa. Informace o této jednotky se ukládají do soubor PSDataSourceConfig.xml. Toto je na jednotku, která používá zálohování serveru k zálohování.
+Po spuštění zálohy stavu systému Backup Server komunikuje s zálohování Windows serveru pro žádost o zálohu stavu systému serveru. Ve výchozím nastavení zálohování serveru a Windows Server Backup použít na jednotku, která má nejvíce dostupného volného místa. Informace o této jednotce se uloží do souboru PSDataSourceConfig.xml. Je to jednotka, která používá zálohování Windows serveru pro zálohování.
 
-Můžete přizpůsobit na jednotku, která používá záložní Server pro zálohování stavu systému. Na chráněném serveru přejděte na C:\Program Files\Microsoft Data Protection Manager\MABS\Datasources. Otevřete soubor PSDataSourceConfig.xml pro úpravy. Změna \<FilesToProtect\> hodnotu pro písmeno jednotky. Uložte soubor a zavřete ho. Pokud je sada skupiny ochrany k ochraně stav systému počítače, spusťte kontrolu konzistence. Pokud je vygenerována výstraha, vyberte **upravit skupinu ochrany** ve výstraze a pak dokončete průvodce. Pak spusťte další kontrolu konzistence.
+Můžete přizpůsobit na jednotku, kterou používá záložní Server pro zálohování stavu systému. Na chráněném serveru přejděte do C:\Program Files\Microsoft Data Protection Manager\MABS\Datasources. Otevřete soubor PSDataSourceConfig.xml pro úpravy. Změnit \<FilesToProtect\> písmeno jednotky v hodnotě. Uložte soubor a zavřete ho. Pokud sadu ochranné skupiny ochrany stavu systému počítače, spusťte kontrolu konzistence. Pokud je vygenerována výstraha, vyberte **upravit skupinu ochrany** ve výstraze a pak dokončete průvodce. Pak spusťte další kontrolu konzistence.
 
-Všimněte si, že pokud ochranný server v clusteru, je možné, že disk klastru bude zvolen jako jednotku s největším místem na. Pokud změně vlastnictví této jednotky byla přepnuta na jiný uzel a spuštění zálohy stavu systému, jednotka není k dispozici a zálohování se nezdaří. V tomto scénáři upravte soubor PSDataSourceConfig.xml a nasměrovat na místní disk.
+Všimněte si, že pokud je server ochrany v clusteru, je možné, že disk klastru bude zvolen jako disk s největším množstvím volného místa. Pokud vlastnictví této jednotky byla přepnuta na jiný uzel a spuštění zálohy stavu systému, jednotka není k dispozici a zálohování se nezdaří. V tomto scénáři upravte soubor PSDataSourceConfig.xml a nasměrovat na místní disk.
 
-V dalším kroku zálohování serveru vytvoří složku s názvem WindowsImageBackup v kořenové složce obnovení. Jako Zálohování serveru Windows vytváření zálohy se všechna data je umístěn v této složce. Po dokončení zálohování se soubor přenese k počítači zálohování serveru. Všimněte si následujících informací:
+V dalším kroku zálohování serveru vytvoří složku s názvem WindowsImageBackup v kořenovém adresáři složky pro obnovení. Protože zálohování Windows serveru vytváření zálohy se všechna data nachází v této složce. Po dokončení zálohování se soubor se přenesou do počítače záložní Server. Všimněte si následujících informací:
 
-* Tato složka a její obsah nejsou vyčistit až po dokončení zálohování nebo přenos. Nejlepší způsob, jak nad tímto problémem přemýšlet je, že pro příští zálohy je dokončena dochází k rezervaci místo.
-* Vytvoření složky se pokaždé, když se provádí zálohu. Razítko času a data reflektovat čas poslední zálohy stavu systému.
+* Tato složka a její obsah se vymaže se po dokončení zálohování nebo přenos. Nejlepší způsob, jak nad tímto problémem přemýšlet je, že dochází místo k dalším dokončení zálohování rezervaci.
+* Složka se vytvoří při každém provedení zálohy. Razítko času a data reflektovat čas poslední zálohy stavu systému.
 
 ## <a name="bmr-backup"></a>Zálohování BMR
 
-Pro BMR (včetně zálohu stavu systému) úloha zálohování uložit přímo do sdílené složky v počítači zálohování serveru. Není uložit do složky na chráněném serveru.
+Pro BMR (které zahrnuje i zálohu stavu systému) úlohy zálohování uložit přímo do sdílené složky v počítači zálohování serveru. Se neukládá do složky na chráněném serveru.
 
-Zálohování serveru volá zálohování serveru a sdílí svazek repliky pro tuto zálohu BMR. V takovém případě neříká zálohování Windows serveru, aby použila jednotku s nejvíce volného místa. Místo toho používá sdílenou složku, která byla vytvořena pro úlohu.
+Zálohování serveru vyžaduje zálohování Windows serveru a nasdílí svazek repliky pro tuto zálohu BMR. V takovém případě neříká zálohování Windows serveru, aby použila jednotku s největším množstvím volného místa. Místo toho používá sdílenou složku, která byla vytvořena pro úlohu.
 
-Po dokončení zálohování se soubor přenese k počítači zálohování serveru. Protokoly se ukládají do C:\Windows\Logs\WindowsServerBackup.
+Po dokončení zálohování se soubor se přenesou do počítače záložní Server. Protokoly se ukládají do C:\Windows\Logs\WindowsServerBackup.
 
 ## <a name="prerequisites-and-limitations"></a>Požadavky a omezení
 
--   Úplné obnovení systému není podporována pro počítače se systémem Windows Server 2003 nebo pro počítače s operačním systémem klienta.
+-   BMR není podporováno pro počítače se systémem Windows Server 2003 nebo počítačích, na kterých běží klientský operační systém.
 
--   Nelze chránit BMR a stav systému pro stejný počítač v různých skupinách ochrany.
+-   BMR a stav systému u stejného počítače ve různých ochranných skupinách nelze chránit.
 
--   Zálohování serveru počítač nemůže chránit sám sebe pro BMR.
+-   Zálohování serveru nemůže chránit sám sebe pro BMR.
 
--   Krátkodobá ochrana na pásku (disk na pásku nebo D2T) není u BMR podporována. Dlouhodobé ukládání na pásku (disku na disk na pásku nebo D2D2T) je podporováno.
+-   Krátkodobá ochrana na pásku (disk na pásku nebo D2T) není u BMR podporována. Dlouhodobé ukládání na pásku (disk na disk na pásku nebo D2D2T) se podporuje.
 
--   Pro ochranu BMR zálohování serveru musí být nainstalován na chráněném počítači.
+-   U ochrany BMR na ochranu je potřeba nainstalovat Windows Server Backup v chráněném počítači.
 
--   Pro ochranu BMR na rozdíl od ochrany stavu systému, zálohovat Server nemá žádné požadavky na místo v chráněném počítači. Zálohování serveru přímo přenáší zálohy k počítači zálohování serveru. Úloha zálohování přenosu se nezobrazí v zálohování serveru **úlohy** zobrazení.
+-   Pro ochranu BMR na rozdíl od ochrany stavu systému, zálohu serveru nemá žádné požadavky na místo v chráněném počítači. Zálohování Windows serveru přímo přenáší zálohy k zálohování serveru. Úloha zálohování přenosu se už nebude na záložní Server **úlohy** zobrazení.
 
--   Zálohování serveru rezervuje pro BMR 30 GB místa na svazku repliky. Toto můžete změnit na **přidělení disku** v Průvodci změnou skupiny ochrany nebo pomocí rutiny Get-DatasourceDiskAllocation a Set-DatasourceDiskAllocation prostředí PowerShell. Na svazku bodu obnovení vyžaduje ochrana BMR přibližně 6 GB pro uchování 5 dní.
-    * Všimněte si, že nemůžete snížit velikost svazku repliky na méně než 15 GB.
-    * Zálohování serveru nepočítá velikost zdroje dat BMR. Předpokládá 30 GB pro všechny servery. Změňte hodnotu podle velikosti záloh BMR, které byste očekávali ve vašem prostředí. Velikost zálohy BMR může být přibližně počítá jako součet využitého místa na všech klíčových svazcích. Nepostradatelné svazky = spouštěcí svazek + systémový svazek + svazek, který je hostitelem dat stavu systému, jako je Active Directory.
+-   Záložní Server rezervuje pro BMR 30 GB místa na svazku repliky. Toto můžete změnit na **přidělení disku** stránky v Průvodci změnou skupiny ochrany nebo pomocí rutiny Get-DatasourceDiskAllocation a Set-DatasourceDiskAllocation prostředí PowerShell. Na svazku bodu obnovení vyžaduje ochrana BMR přibližně 6 GB pro ukládání na pět dní.
+    * Všimněte si, že velikost svazku repliky nemůžete zmenšit na méně než 15 GB.
+    * Zálohování serveru nepočítá velikost zdroje dat BMR. Předpokládá 30 GB pro všechny servery. Změňte hodnotu podle velikosti záloh BMR, které očekáváte, že ve vašem prostředí. Velikost zálohy BMR můžete přibližně vypočítat jako součet využitého místa na všech nepostradatelných svazcích. Nepostradatelné svazky = spouštěcí svazek + systémový svazek + svazek, který je hostitelem dat stavu systému, jako je Active Directory.
 
--   Pokud změníte z ochrany stavu systému na ochranu BMR, ochrana BMR vyžaduje méně místa na *svazek bodu obnovení*. Volné místo na svazku se však neuvolní. Velikost svazku můžete zmenšit ručně na **upravit přidělení disku** Průvodce změnou skupiny ochrany nebo pomocí rutiny Get-DatasourceDiskAllocation a Set-DatasourceDiskAllocation prostředí PowerShell.
+-   Pokud změníte z ochrany stavu systému na ochranu BMR, ochrana BMR vyžaduje méně místa na *svazek bodu obnovení*. Přebytečné místo na svazku se však neuvolní. Velikost svazku můžete zmenšit ručně na **upravit alokaci disku** stránky Průvodce změnou skupiny ochrany nebo pomocí rutiny Get-DatasourceDiskAllocation a Set-DatasourceDiskAllocation prostředí PowerShell.
 
-    Pokud změníte z ochrany stavu systému na ochranu BMR, ochrana BMR vyžaduje více místa na *svazek repliky*. Svazek je automaticky rozšířena. Pokud chcete změnit výchozí přidělení prostoru, použijte rutinu prostředí PowerShell Modify-DiskAllocation.
+    Pokud změníte z ochrany stavu systému na ochranu BMR, ochrana BMR vyžaduje více místa na *svazku repliky*. Svazek se automaticky rozšíří. Pokud chcete změnit výchozí alokaci místa, použijte rutinu Powershellu rutinu Modify-DiskAllocation.
 
--   Pokud změníte z ochrany BMR na ochranu stavu systému, je třeba více místa na svazku bodu obnovení. Zálohování serveru se může pokusit automaticky zvětšit svazek. Pokud ve fondu úložiště není dostatek místa, dojde k chybě.
+-   Pokud se změní z ochrany BMR na ochranu stavu systému potřebujete více místa na svazku bodu obnovení. Zálohování serveru může pokusit automaticky zvětšit svazek. Pokud není dostatek místa ve fondu úložiště, dojde k chybě.
 
-    Pokud změníte z ochrany BMR na ochranu stavu systému, musíte místo v chráněném počítači. Je to proto ochrany stavu systému nejprve zapíše repliku do místního počítače a pak ji přesune k počítači zálohování serveru.
+    Pokud změníte z ochrany BMR na ochranu stavu systému, musíte místo v chráněném počítači. To je, protože ochrana stavu systému nejprve zapíše repliku do místního počítače a přenese je na počítači zálohování serveru.
 
 ## <a name="before-you-begin"></a>Než začnete
 
-1.  **Nasadit Azure Backup Server**. Ověřte, zda je správně nasazeny zálohování serveru. Další informace naleznete v tématu:
-    * [Požadavky na systém pro Azure Backup Server](http://docs.microsoft.com/system-center/dpm/install-dpm#setup-prerequisites)
-    * [Matice ochrany zálohování serveru](backup-mabs-protection-matrix.md)
+1.  **Nasazení Azure Backup Server**. Ověřte, zda je správně nasazeny zálohování serveru. Další informace naleznete v tématu:
+    * [Požadavky na systém pro Azure Backup serveru](https://docs.microsoft.com/system-center/dpm/install-dpm#setup-prerequisites)
+    * [Systém ochrany zálohování serveru](backup-mabs-protection-matrix.md)
 
-2.  **Nastavení úložiště**. Zálohovaná data můžete ukládat na disk na pásku a v cloudu s Azure. Další informace najdete v tématu [Příprava úložiště dat](https://docs.microsoft.com/system-center/dpm/plan-long-and-short-term-data-storage).
+2.  **Nastavení úložiště**. Zálohovaná data můžete ukládat na disk, na pásku a v cloudu s Azure. Další informace najdete v tématu [Příprava datového úložiště](https://docs.microsoft.com/system-center/dpm/plan-long-and-short-term-data-storage).
 
-3.  **Nastavte agenta ochrany**. Nainstalujte agenta ochrany na počítači, který chcete zálohovat. Další informace najdete v tématu [nasadit agenta ochrany DPM](http://docs.microsoft.com/system-center/dpm/deploy-dpm-protection-agent).
+3.  **Nastavte agenta ochrany**. Nainstalujte agenta ochrany na počítači, který chcete zálohovat. Další informace najdete v tématu [nasazení agenta ochrany aplikace DPM](https://docs.microsoft.com/system-center/dpm/deploy-dpm-protection-agent).
 
-## <a name="back-up-system-state-and-bare-metal"></a>Zálohování stavu systému a úplné obnovení
-Nastavit skupinu ochrany, jak je popsáno v [nasazení skupin ochrany](http://docs.microsoft.com/system-center/dpm/create-dpm-protection-groups). Všimněte si, že nemůžete chránit BMR a stav systému pro stejný počítač v různých skupinách. Navíc když vyberete BMR, stav systému je automaticky povolené.
+## <a name="back-up-system-state-and-bare-metal"></a>Zálohování stavu systému a úplné obnovení systému
+Nastavte skupinu ochrany, jak je popsáno v [nasazení skupin ochrany](https://docs.microsoft.com/system-center/dpm/create-dpm-protection-groups). Všimněte si, že BMR a stav systému u stejného počítače v různých skupinách nelze chránit. Také když vyberete BMR, stav systému bude automaticky povolený.
 
 
-1.  Chcete-li spustit Průvodce vytvořením nové skupiny ochrany v konzoli správce zálohování serveru, vyberte **ochrany** > **akce** > **vytvořením skupiny ochrany** .
+1.  Chcete-li spustit Průvodce vytvořením nové skupiny ochrany v konzole správce zálohování serveru, vyberte **ochrany** > **akce** > **vytvořením skupiny ochrany** .
 
-2.  Na **vybrat typ skupiny ochrany** vyberte **servery**a potom vyberte **Další**.
+2.  Na **vybrat typ skupiny ochrany** stránce **servery**a pak vyberte **Další**.
 
-3.  Na **vybrat členy skupiny** stránky, rozbalte položku počítače a pak vyberte buď **BMR** nebo **stav systému**.
+3.  Na **vybrat členy skupiny** stránce, rozbalte počítač a pak vyberte buď **BMR** nebo **stavu systému**.
 
-    Mějte na paměti, že nemůžete chránit jak BMR a stav systému pro stejný počítač v různých skupinách. Navíc když vyberete BMR, stav systému je automaticky povolené. Další informace najdete v tématu [nasazení skupin ochrany](http://docs.microsoft.com/system-center/dpm/create-dpm-protection-groups).
+    Mějte na paměti, že BMR a systém stav u stejného počítače v různých skupinách nelze chránit. Také když vyberete BMR, stav systému bude automaticky povolený. Další informace najdete v tématu [nasazení skupin ochrany](https://docs.microsoft.com/system-center/dpm/create-dpm-protection-groups).
 
-4.  Na **vyberte způsob ochrany dat** vyberte, jakým způsobem chcete zpracovávat krátkodobé a dlouhodobé zálohování. Krátkodobé zálohování je vždy první disk, s možností zálohování z disku Azure v cloudu pomocí Azure Backup (krátkodobá nebo dlouhodobá). Alternativu k dlouhodobé zálohování do cloudu je nastavit dlouhodobé zálohování na samostatné pásky nebo zařízení knihovny pásků připojený k zálohování serveru.
+4.  Na **vybrat způsob ochrany dat** stránky, vyberte požadovaný způsob zpracování krátkodobého a dlouhodobého zálohování. Krátkodobé zálohy se vždy nejprve na disku, s možností zálohování z disku do Azure v cloudu pomocí Azure Backup (krátkodobé nebo dlouhodobé uložení). O alternativu k dlouhodobému zálohování do cloudu je nastavení dlouhodobého zálohování na samostatná zařízení nebo na pásce knihovnu pásek, která je připojena k zálohování serveru.
 
-5.  Na **vybrat krátkodobé cíle** vyberte, jakým způsobem chcete zálohování na krátkodobé úložiště na disku:
-    1. Pro **rozsah uchování**, vyberte, jak dlouho chcete zachovat data na disku. 
-    2. Pro **četnost synchronizace**, vyberte, jak často chcete spustit přírůstkové zálohování na disk. Pokud nechcete nastavit interval zálohování, můžete zkontrolovat **těsně před bodem obnovení** možnost. Zálohování serveru se spustí expresní úplné zálohování těsně před každým bodem obnovení je naplánováno.
+5.  Na **vybrat krátkodobé cíle** stránky, vyberte požadovaný způsob zálohování do krátkodobého úložiště na disk:
+    1. Pro **rozsah uchování**, vyberte, jak dlouho chcete data na disku uchovávat. 
+    2. Pro **četnost synchronizací**, vyberte, jak často chcete spouštět přírůstkové zálohování na disk. Pokud nechcete nastavit interval zálohování, můžete zkontrolovat **těsně před bodem obnovení** možnost. Zálohování serveru se spustí expresní úplné zálohování těsně před každým bodem obnovení naplánován.
 
-6.  Pokud chcete uložit data na pásku pro dlouhodobé uložení na **zadat dlouhodobé cíle** vyberte, jak dlouho chcete zachovat data na pásce (1 – 99 let). 
-    1. Pro **četnost záloh**, vyberte, jak často zálohování na pásku má spustit. Frekvence je založena na rozsahu uchování, kterou jste vybrali:
-        * Když je rozsah uchování 1 – 99 let, můžete zvolit vytváření záloh každý denně, týdně, jednou za dva týdny, měsíčně, čtvrtletně, půl roku nebo každý rok.
+6.  Pokud chcete ukládat data na pásku pro dlouhodobé ukládání na **zadat dlouhodobé cíle** vyberte, jak dlouho chcete uchovat data pásky (1 – 99 let). 
+    1. Pro **četnost záloh**, by měly být spuštěny vyberte četnost zálohování na pásku. Četnost je založená na rozsahu uchování, kterou jste vybrali:
+        * Když je rozsah uchování 1 – 99 let, můžete zvolit vytváření záloh dojde k denně, týdně, jednou za dva týdny, měsíčně, čtvrtletně, půlročně nebo ročně.
         * Když je rozsah uchování 1 – 11 měsíců, můžete zvolit vytváření záloh každý den, každý týden, každých čtrnáct dní nebo každý měsíc.
         * Když je rozsah uchování 1 – 4 týdny, můžete zvolit vytváření záloh každý den nebo každý týden.
 
-    2. Na **vyberte pásku a podrobnosti ke knihovně** vyberte pásku a knihovnu používat, a zda má komprimovaná a šifrovaná data.
+    2. Na **vyberte pásku a podrobnosti ke knihovně** stránky, vyberte pásku a knihovnu použít, a určuje, zda by měl komprimovaná a šifrovaná data.
 
-7.  Na **zkontrolovat přidělení disku** si prohlédněte místo disku fondu úložiště, který je přidělen pro skupinu ochrany.
+7.  Na **zkontrolovat přidělení disku** stránky, zkontrolujte úložiště fondu místo na disku, který je přidělen do skupiny ochrany.
 
     1. **Celková velikost dat** je velikost dat, které chcete zálohovat.
-    2. **Chcete-li být zřízena na serveru Azure Backup místa na disku** je místo, které doporučuje zálohovat Server pro skupinu ochrany. Zálohování serveru zvolí ideální zálohování svazku, na základě nastavení. Však můžete upravit možnosti zálohování svazku v **podrobnosti přidělení disku**. 
-    3. Pro úlohy v rozevírací nabídce vyberte upřednostňovaný úložiště. Vaše úpravy změnit hodnoty nastavení **celkové úložiště** a **volného** v **úložiště k dispozici disku** podokně. Underprovisioned prostor je velikost úložiště, který Backup Server naznačuje, že přidáte do svazku, ujistěte se, technologie smooth zálohy.
+    2. **Místo, které se mají zřídit v Azure Backup serveru na disku** místo zálohovat Server doporučuje pro skupinu ochrany. Zálohování serveru vybere ideální záložní svazek na základě nastavení. Však můžete upravit možnosti záložního svazku v **podrobnosti přidělení disku**. 
+    3. Pro úlohy v rozevírací nabídce vyberte požadované úložiště. Úpravy změnit hodnoty **celkový úložiště** a **volné úložiště** v **dostupné diskové úložiště** podokně. Nevytížené místo představuje velikost úložiště, který Backup Server navrhuje že přidat do svazku pro zajištění plynulého zálohování.
 
-8.  Na **vyberte způsob vytvoření repliky** vyberte, jakým způsobem chcete zpracovat počáteční úplná data replikace. Pokud se rozhodnete replikaci přes síť, doporučujeme, abyste zvolili dobu mimo špičku. Pro velké objemy dat nebo síťové podmínky, které jsou menší než optimální zvažte replikaci dat offline pomocí vyměnitelného média.
+8.  Na **vyberte způsob vytvoření repliky** stránky, vyberte požadovaný způsob počáteční úplné replikace dat. zpracování. Pokud se rozhodnete pro replikaci přes síť, doporučujeme, abyste zvolili dobu mimo špičku. Pro velké objemy dat nebo ne úplně optimální síťové podmínky zvažte replikaci dat offline pomocí vyměnitelného média.
 
-9. Na **zvolte možnosti kontroly konzistence** vyberte, jak chcete automatizovat kontroly konzistence. Můžete spustit kontrolu jenom v případě, že data repliky stane nekonzistentní, nebo podle plánu. Pokud nechcete konfigurovat automatickou kontrolu konzistence, můžete kdykoli spustit ruční kontrolu. Chcete-li spustit ruční kontrolu, ve **ochrany** konzoly Správce serveru zálohování, klikněte pravým tlačítkem na skupinu ochrany a potom vyberte **provést kontrolu konzistence**.
+9. Na **zvolte možnosti kontroly konzistence** vyberte, jak chcete automatizovat kontroly konzistence. Můžete spustit kontrolu jenom v případě, že data repliky stane nekonzistentní, nebo podle plánu. Pokud nechcete konfigurovat automatickou kontrolu konzistence, můžete kdykoli spustit ruční kontrolu. Chcete-li spustit ruční kontrolu, v **ochrany** oblasti konzoly pro správu zálohování serveru, klikněte pravým tlačítkem na skupinu ochrany a pak vyberte **provést kontrolu konzistence**.
 
-10. Pokud jste vybrali pro zálohování do cloudu pomocí Azure Backup **zadat Data Online ochrany** se ujistěte, že jste vybrali úlohy, které chcete zálohovat do Azure.
+10. Pokud jste vybrali možnost zálohování do cloudu pomocí Azure Backup na **zadat Data Online ochrany** stránky, ujistěte se, že jste vybrali úlohy, které chcete zálohovat do Azure.
 
-11. Na **zadejte plán Online zálohování** stránky, dojde k vyberte jak často přírůstkové zálohování do Azure. Můžete naplánovat zálohování spouštět každý den, týden, měsíc a rok, a vyberte čas a datum, na kterých by měly být spuštěny. Zálohování může dojít, až dvakrát za den. Při každém spuštění zálohy dat vytvoří bod obnovení je v Azure z kopie zálohovaná data uložená na disku zálohování serveru.
+11. Na **zadat plán Online zálohování** stránky, dojde k vyberte četnost přírůstkové zálohování do Azure. Můžete naplánovat zálohování na spouštění každý den, týden, měsíc a rok a vyberte čas a datum, za které se mají spustit. Zálohování se může spouštět až dvakrát denně. Pokaždé, když běží zálohování, bodem obnovení dat se vytvoří v Azure z kopie zálohovaných dat uložených na disku pro zálohování serveru.
 
-12. Na **zadejte zásady uchovávání Online** vyberte, jak se uchovají body obnovení vytvořené ze zálohy denní, týdenní, měsíční a roční v Azure.
+12. Na **zadat zásady Online uchovávání** vyberte, jak jsou body obnovení, které jsou vytvořeny z denní, týdenní, měsíční a roční záloh uchovávaných v Azure.
 
-13. Na **výběr Online replikace** vyberte, jak proběhne počáteční úplná replikace dat. Můžete replikovat přes síť nebo proveďte offline zálohování (offline synchronizace replik indexů). Zálohování offline používá funkce Import úložiště Azure. Další informace najdete v tématu [pracovní postup Offline zálohování v Azure Backup](backup-azure-backup-import-export.md).
+13. Na **zvolit Online replikace** vyberte, jak proběhne počáteční úplné replikace dat. Můžete replikovat přes síť nebo provést offline zálohování (offline předvyplnění). Zálohování offline používá funkci Azure Import. Další informace najdete v tématu [pracovní postup Offline zálohování ve službě Azure Backup](backup-azure-backup-import-export.md).
 
-14. Na **Souhrn** stránka, zkontrolujte nastavení. Po výběru **vytvořit skupinu**, dojde k počáteční replikaci dat. Po replikaci dat dokončení, na **stav** stránky, je stav skupiny ochrany **OK**. Potom se provede na ochranu nastavení skupiny.
+14. Na **Souhrn** stránky, zkontrolujte nastavení. Po výběru **vytvořit skupinu**, dojde k počáteční replikaci dat. Při replikaci dat dokončí, dále **stav** stránka, stav skupiny ochrany je **OK**. Potom se provede na ochranu nastavení skupiny.
 
-## <a name="recover-system-state-or-bmr"></a>Obnovení stavu systému nebo úplné obnovení systému
-Můžete obnovit BMR nebo stavu systém do umístění v síti. Pokud jste zálohovali BMR, použijte prostředí Windows Recovery Environment (WinRE) ke spuštění systému a připojit k síti. Pak pomocí zálohování serveru k obnovení z umístění v síti. Pokud jste zálohovali stav systému, použijte právě zálohování serveru k obnovení z umístění v síti.
+## <a name="recover-system-state-or-bmr"></a>Obnovení stavu systému nebo BMR
+Můžete obnovit BMR nebo stav systému do umístění v síti. Pokud jste zálohovali BMR, použijte prostředí Windows Recovery Environment (WinRE) ke spuštění systému a připojení k síti. Potom použijte zálohování Windows serveru k obnovení ze síťového umístění. Pokud jste zálohovali stav systému, použijte zálohování Windows serveru k obnovení ze síťového umístění.
 
 ### <a name="restore-bmr"></a>Obnovit BMR
-Spusťte obnovení na počítači zálohování serveru:
+Spustíte obnovení na počítači zálohování serveru:
 
-1.  V **obnovení** , najít počítače, kterou chcete obnovit a pak vyberte **úplné obnovení systému**.
+1.  V **obnovení** podokno, najít počítače, kterou chcete obnovit a pak vyberte **úplné obnovení systému**.
 
-2.  Dostupné body obnovení jsou vypsány v kalendáři tučně. Vyberte datum a čas pro bod obnovení, který chcete použít.
+2.  Dostupné body obnovení jsou vypsány v kalendáři tučně. Vyberte datum a čas bodu obnovení, který chcete použít.
 
-3.  Na **vybrat typ obnovení** vyberte **kopírovat do síťové složky.**
+3.  Na **vybrat typ obnovení** stránce **kopírovat do síťové složky.**
 
-4.  Na **zadejte cíl** vyberte, kam chcete zkopírovat data, která mají. Mějte na paměti, že vybraný cíl musí mít dostatek místa. Doporučujeme vám, že vytvoříte novou složku.
+4.  Na **zadejte cíl** stránky, vyberte ve které chcete data zkopírovat. Mějte na paměti, že vybraný cíl musí mít dostatek volného místa. Doporučujeme vytvořit novou složku.
 
-5.  Na **zadat možnosti obnovení** vyberte nastavení zabezpečení pro použití. Potom vyberte, zda chcete použít (SAN) storage area network – na základě snímků hardwaru pro rychlejší obnovení. (Toto je možnost, pouze v případě, že máte síť SAN se tato funkce je k dispozici a možnost vytvářet a rozdělovat je tak aby zapisovatelné. Kromě toho chráněného počítače a počítač zálohování serveru musí být připojen ke stejné síti.)
+5.  Na **zadat možnosti obnovení** vyberte nastavení zabezpečení, které chcete použít. Vyberte, jestli chcete použít síti storage area network (SAN) – na základě snímků hardwaru pro rychlejší obnovení. (Toto je možné, pouze v případě, že máte síť SAN se tato funkce je dostupná a možnost vytvářet a rozdělovat je umožnit zápis. Kromě toho chráněného počítače a záloha serveru musí být připojený ke stejné síti.)
 
-6.  Nastavte možnosti oznámení. Na **potvrzení** vyberte **obnovit**.
+6.  Nastavte možnosti oznámení. Na **potvrzení** stránce **obnovit**.
 
 Nastavte umístění sdílené složky:
 
 1.  V umístění pro obnovení přejděte do složky, která má zálohování.
 
-2.  Sdílenou složku, která je jednu úroveň nad souborem WindowsImageBackup tak, aby kořenovém adresáři sdílené složky nacházela složka WindowsImageBackup. Pokud to neuděláte, obnovení zálohu nenalezne. Chcete-li připojit pomocí prostředí Windows Recovery Environment (WinRE), je třeba sdílené složky, která se zobrazí v prostředí WinRE se správnou IP adresu a přihlašovací údaje.
+2.  Sdílejte složku, která je jednu úroveň nad souborem WindowsImageBackup tak, aby nacházela složka WindowsImageBackup kořenovém adresáři sdílené složky. Pokud to neuděláte, obnovení zálohu nenalezne. Připojení pomocí prostředí Windows Recovery Environment (WinRE), budete potřebovat sdílenou složku, můžete přistupovat v prostředí WinRE otevřít pomocí správné IP adresy a přihlašovacích údajů.
 
 Obnovení systému:
 
-1.  Spusťte počítač, na který chcete obnovit bitovou kopii pomocí disku DVD systému Windows pro systém, které obnovujete.
+1.  Spusťte počítač, na kterém chcete obnovit bitovou kopii pomocí disku DVD Windows pro systém, který provádíte obnovení.
 
-2.  Na první stránce ověřte nastavení jazyka a národního prostředí. Na **nainstalovat** vyberte **opravit tento počítač**.
+2.  Na stránce první ověřte nastavení jazyka a národního prostředí. Na **nainstalovat** stránce **opravit tento počítač**.
 
-3.  Na **možnosti obnovení systému** vyberte **obnovení počítače pomocí bitové kopie systému, který jste vytvořili dříve**.
+3.  Na **možnosti obnovení systému** stránce **obnovení počítače pomocí bitové kopie systému, který jste vytvořili dříve**.
 
-4.  Na **výběr zálohy bitové kopie systému** vyberte **Vybrat bitovou kopii systému** > **Upřesnit** > **hledat bitovou kopii systému v síti**. Pokud se zobrazí upozornění, vyberte **Ano**. Přejděte cestu ke sdílené složce, zadejte přihlašovací údaje a potom vyberte bod obnovení. Tato funkce proskenuje pro konkrétní zálohování, které jsou k dispozici v daném bodě obnovení. Vyberte bod obnovení, který chcete použít.
+4.  Na **výběr zálohy bitové kopie systému** stránce **Vybrat bitovou kopii systému** > **Upřesnit** > **hledat bitovou kopii systému v síti**. Pokud se zobrazí upozornění, vyberte **Ano**. Přejděte do sdílené cesty, zadejte přihlašovací údaje a pak vyberte bod obnovení. Tato funkce proskenuje pro konkrétní zálohy, které jsou k dispozici v daném bodě obnovení. Vyberte bod obnovení, který chcete použít.
 
-5.  Na **Vvybrat způsob obnovení zálohy** vyberte **formátovat a znovu rozdělit disky**. Na další stránce ověřte nastavení. 
+5.  Na **Vvybrat způsob obnovení zálohy** stránce **formátovat a znovu rozdělit disky**. Na další stránce ověřte nastavení. 
 
-6.  Chcete-li zahájit obnovení, vyberte **Dokončit**. Je vyžadováno restartování.
+6.  Zahajte obnovení, vyberte **Dokončit**. Je vyžadováno restartování.
 
 ### <a name="restore-system-state"></a>Obnovení stavu systému
 
 Spuštění obnovení zálohování serveru:
 
-1.  V **obnovení** , najít počítače, který chcete obnovit a pak vyberte **úplné obnovení systému**.
+1.  V **obnovení** podokno, najít počítače, který chcete obnovit a pak vyberte **úplné obnovení systému**.
 
-2.  Dostupné body obnovení jsou vypsány v kalendáři tučně. Vyberte datum a čas pro bod obnovení, který chcete použít.
+2.  Dostupné body obnovení jsou vypsány v kalendáři tučně. Vyberte datum a čas bodu obnovení, který chcete použít.
 
-3.  Na **vybrat typ obnovení** vyberte **kopírovat do síťové složky**.
+3.  Na **vybrat typ obnovení** stránce **kopírovat do síťové složky**.
 
-4.  Na **zadejte cíl** vyberte, kam chcete zkopírovat data. Mějte na paměti, že vybrané cílové vyžaduje dostatek místa. Doporučujeme vám, že vytvoříte novou složku.
+4.  Na **zadejte cíl** stránky, vyberte místo, kam chcete zkopírovat data. Mějte na paměti, že vybraný cíl by měl dostatek volného místa. Doporučujeme vytvořit novou složku.
 
-5.  Na **zadat možnosti obnovení** vyberte nastavení zabezpečení pro použití. Potom vyberte, zda chcete použít snímky hardwaru založené na síti SAN pro rychlejší obnovení. (Toto je možnost, pouze v případě, že máte síť SAN s Tato funkce a možnosti vytvoření a rozdělovat je tak aby zapisovatelné. Kromě toho chráněným počítačem a zálohování serveru musí být připojen ke stejné síti.)
+5.  Na **zadat možnosti obnovení** vyberte nastavení zabezpečení, které chcete použít. Vyberte, zda chcete použít snímky hardwaru založené na síti SAN pro rychlejší obnovení. (To je možné, pouze v případě, že máte síť SAN s tuto funkci a možnost vytvářet a rozdělovat je tak, aby byl zapisovatelný. Kromě toho chráněného počítače a záloha serveru musí být připojený ke stejné síti.)
 
-6.  Nastavte možnosti oznámení. Na **potvrzení** vyberte **obnovit**.
+6.  Nastavte možnosti oznámení. Na **potvrzení** stránce **obnovit**.
 
-Spusťte zálohování serveru:
+Spuštění zálohování Windows serveru:
 
 1.  Vyberte **akce** > **obnovit** > **tento Server** > **Další**.
 
-2.  Vyberte **jiný Server**, vyberte **zadat typ umístění** a pak vyberte **vzdálené sdílené složce**. Zadejte cestu ke složce, která obsahuje bod obnovení.
+2.  Vyberte **jiný Server**, vyberte **zadat typ umístění** stránce a pak vyberte **Vzdálená sdílená složka**. Zadejte cestu ke složce, která obsahuje bod obnovení.
 
-3.  Na **vybrat typ obnovení** vyberte **stav systému**. 
+3.  Na **vybrat typ obnovení** stránce **stavu systému**. 
 
-4. Na **vyberte umístění pro obnovení stavu systému** vyberte **původního umístění**.
+4. Na **vybrat umístění obnovení stavu systému** stránce **původního umístění**.
 
-5.  Na **potvrzení** vyberte **obnovit**. Po obnovení restartujte server.
+5.  Na **potvrzení** stránce **obnovit**. Po obnovení restartujte server.
 
-6.  Také můžete spustit obnovení stavu systému na příkazovém řádku. K tomu spusťte zálohování serveru v počítači, který chcete obnovit. Chcete-li získat identifikátor verze, na příkazovém řádku, zadejte: ```wbadmin get versions -backuptarget \<servername\sharename\>```
+6.  Obnovení stavu systému také můžete spustit z příkazového řádku. K tomu spusťte zálohování Windows serveru na počítači, který chcete obnovit. Chcete-li získat identifikátor verze z příkazového řádku, zadejte: ```wbadmin get versions -backuptarget \<servername\sharename\>```
 
     Identifikátor verze slouží ke spuštění obnovení stavu systému. Na příkazovém řádku zadejte: ```wbadmin start systemstaterecovery -version:<versionidentified> -backuptarget:<servername\sharename>```
 
-    Potvrďte, že chcete spustit obnovení. Zobrazí se v procesu v okně příkazového řádku. Vytvoří se protokol obnovení. Po obnovení restartujte server.
+    Potvrďte, že chcete spustit obnovení. Proces v okně příkazového řádku můžete vidět. Vytvoří se protokol obnovení. Po obnovení restartujte server.
 

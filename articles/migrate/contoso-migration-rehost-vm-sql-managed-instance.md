@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 0e4576ad4f7eece543ef572073919bcf3ca3a4e9
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: ae719e6daa3c07ffe298cfefcc5a0a2846a49032
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49116138"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51231817"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-app-on-an-azure-vm-and-sql-database-managed-instance"></a>Migrace Contoso: Změna hostitele aplikace v místním na virtuálním počítači Azure a SQL Database Managed Instance
 
@@ -366,7 +366,7 @@ Po převzetí služeb při selhání do Azure Contoso chce mít možnost se při
 Správce společnosti Contoso se také muset zkontrolovat tyto položky při spuštění převzetí služeb při selhání:
 
 - Měla by existovat žádné čekající aktualizace Windows na virtuálním počítači při aktivaci převzetí služeb při selhání. Pokud jsou čekající aktualizace Windows, uživatelé Contoso nemůže přihlásit k virtuálnímu počítači až po dokončení aktualizace.
-- Po převzetí služeb při selhání, musí správce zkontrolovat **Diagnostika spouštění** zobrazíte snímek obrazovky virtuálního počítače. Pokud nemůže zobrazit diagnostiku spouštění, by měl zkontrolovat, že je virtuální počítač spuštěný a poté zkontrolovat [tipy pro řešení potíží](http://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx).
+- Po převzetí služeb při selhání, musí správce zkontrolovat **Diagnostika spouštění** zobrazíte snímek obrazovky virtuálního počítače. Pokud nemůže zobrazit diagnostiku spouštění, by měl zkontrolovat, že je virtuální počítač spuštěný a poté zkontrolovat [tipy pro řešení potíží](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx).
 
 ## <a name="step-5-replicate-the-on-premises-vms-to-azure"></a>Krok 5: Replikace místních virtuálních počítačů do Azure
 

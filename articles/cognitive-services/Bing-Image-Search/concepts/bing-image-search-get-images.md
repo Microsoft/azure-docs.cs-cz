@@ -11,12 +11,12 @@ ms.component: bing-image-search
 ms.topic: conceptual
 ms.date: 8/8/2018
 ms.author: aahi
-ms.openlocfilehash: c21741ebb8f68797b31a2ba1de4bb6f0f8d32cb7
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 621c2844b6952e5ea1f6b9f7c8bc2ed170fee310
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46297123"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51246782"
 ---
 # <a name="get-images-from-the-web-with-the-bing-image-search-api"></a>Získat Image z webu pomocí rozhraní API Bingu pro vyhledávání obrázků
 
@@ -38,7 +38,7 @@ Host: api.cognitive.microsoft.com
 
 ## <a name="get-images-from-a-specific-web-domain"></a>Získání bitové kopie z konkrétní webové domény
 
-Pokud chcete získat obrázky z konkrétní domény, použijte operátor dotazu [site:](http://msdn.microsoft.com/library/ff795613.aspx).
+Pokud chcete získat obrázky z konkrétní domény, použijte operátor dotazu [site:](https://msdn.microsoft.com/library/ff795613.aspx).
 
 ```http
 GET https://api.cognitive.microsoft.com/bing/v7.0/images/search?q=sailing+dinghies+site:contososailing.com&mkt=en-us HTTP/1.1
@@ -71,7 +71,7 @@ Host: api.cognitive.microsoft.com
 * [licence](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#license)– filtrovat podle typu licence přiřazené k lokalitě Image.
 * [velikost](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#size)– filtr imagí podle velikosti, jako je například malé obrázky až 200 x 200 pixelů.
 
-Pokud chcete získat obrázky z konkrétní domény, použijte operátor dotazu [site:](http://msdn.microsoft.com/library/ff795613.aspx).
+Pokud chcete získat obrázky z konkrétní domény, použijte operátor dotazu [site:](https://msdn.microsoft.com/library/ff795613.aspx).
 
  > [!NOTE]
  > Odpovědi na dotazy, které používají `site:` operátor může zahrnovat obsah pro dospělé bez ohledu [bezpečné hledání](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#safesearch) nastavení. Používejte pouze `site:` Pokud si nejste vědomi obsah v doméně.

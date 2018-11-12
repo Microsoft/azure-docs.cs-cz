@@ -15,17 +15,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/16/2016
 ms.author: cephalin
-ms.openlocfilehash: 35027b4eadba72776fd27826a389763cc0832eee
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: ea9167404034911a0e917374fbdb9962da1578d5
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48044310"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51257829"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Nastavení přípravných prostředí ve službě Azure App Service
 <a name="Overview"></a>
 
-Když nasadíte webovou aplikaci, webové aplikace v Linuxu, mobilních back-endu a aplikace API k [služby App Service](http://go.microsoft.com/fwlink/?LinkId=529714), můžete nasadit do samostatného nasazení slotu místo produkčního slotu výchozí při spuštění v **standardní** nebo **Premium** úroveň plánu služby App Service. Sloty nasazení jsou ve skutečnosti živé aplikace s vlastními názvy hostitele. Elementy obsahu a konfigurace aplikace je možné Prohodit mezi dvěma sloty nasazení, včetně produkčního slotu. Nasazení aplikace do slotu nasazení má následující výhody:
+Když nasadíte webovou aplikaci, webové aplikace v Linuxu, mobilních back-endu a aplikace API k [služby App Service](https://go.microsoft.com/fwlink/?LinkId=529714), můžete nasadit do samostatného nasazení slotu místo produkčního slotu výchozí při spuštění v **standardní** nebo **Premium** úroveň plánu služby App Service. Sloty nasazení jsou ve skutečnosti živé aplikace s vlastními názvy hostitele. Elementy obsahu a konfigurace aplikace je možné Prohodit mezi dvěma sloty nasazení, včetně produkčního slotu. Nasazení aplikace do slotu nasazení má následující výhody:
 
 * Před přepnutím pomocí produkčního slotu můžete ověřit změny aplikace do přípravného slotu nasazení.
 * Nasazení aplikace do slotu nejprve a přepnutím do produkčního prostředí mít jistotu, že všechny instance slotu zahřejí před přepnutím do produkčního prostředí. Tím se eliminuje prostoje při nasazení vaší aplikace. Přesměrování provozu je bezproblémové a jako výsledek operace prohození se zahodí žádné žádosti. Tento celý pracovní postup je možné automatizovat pomocí konfigurace [automatického prohození](#Auto-Swap) když není potřeba prohození předběžné ověření.

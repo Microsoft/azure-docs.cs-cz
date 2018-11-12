@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: cd688ec1f5b7b46138a3b601f52b54dd6f3615e3
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 694129fa39a84deac118c35da52a0617fe805d6c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43046486"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261139"
 ---
 # <a name="analyze-hadoop-logs"></a>Analýza protokolů Hadoop
 
@@ -59,7 +59,7 @@ Celá řada nástrojů, k dispozici pro přístup k datům v těchto tabulkách:
 * Power Query pro Excel
 
 #### <a name="use-power-query-for-excel"></a>Pomocí Power Query pro Excel
-Power Query lze instalovat z [Microsoft Power Query pro Excel](http://www.microsoft.com/en-us/download/details.aspx?id=39379). Zobrazit stránku ke stažení pro požadavky na systém.
+Power Query lze instalovat z [Microsoft Power Query pro Excel](https://www.microsoft.com/en-us/download/details.aspx?id=39379). Zobrazit stránku ke stažení pro požadavky na systém.
 
 **Pomocí Power Query k otevření a analýza protokolů služby**
 
@@ -83,7 +83,7 @@ Power Query lze instalovat z [Microsoft Power Query pro Excel](http://www.micros
 Teď můžete aplikaci Excel k filtrování a řazení podle potřeby. Můžete zahrnout další sloupce (jako je například zpráva) Pokud chcete přejít na problémy, když k nim dojde, ale výběru a seskupování sloupců výše popsané poskytuje vrazíme přehled o co se děje s služby Hadoop. Stejné nápad lze použít pro setuplog a hadoopinstalllog tabulky.
 
 #### <a name="use-visual-studio"></a>Použití Visual Studia
-**Pomocí sady Visual Studio**
+**Použití sady Visual Studio**
 
 1. Otevřete sadu Visual Studio.
 2. Z **zobrazení** nabídky, klikněte na tlačítko **Průzkumníka cloudu**. Nebo jednoduše klikněte na tlačítko **CTRL +\, CTRL + X**.

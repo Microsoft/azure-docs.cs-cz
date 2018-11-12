@@ -16,16 +16,16 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/11/2018
 ms.author: mikeray
-ms.openlocfilehash: 8e107c1721d5623239a694eba39b32e8a2a6089d
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 382027782044a5a1011976560b7460047544f521
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42055490"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51237960"
 ---
 # <a name="configure-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>Konfigurace Instance clusteru převzetí služeb při selhání SQL serveru na virtuálních počítačích Azure
 
-Tento článek vysvětluje, jak vytvořit SQL Server převzetí služeb při selhání clusteru Instance (FCI) na virtuálních počítačích Azure v modelu Resource Manager. Toto řešení používá [systému Windows Server 2016 Datacenter edition prostorů úložiště s přímým \(S2D\) ](http://technet.microsoft.com/windows-server-docs/storage/storage-spaces/storage-spaces-direct-overview) jako softwarovou virtuální síť SAN, který synchronizuje mezi uzly (virtuální počítače Azure) v úložišti (datové disky) Windows Cluster. S2D je nového ve Windows serveru 2016.
+Tento článek vysvětluje, jak vytvořit SQL Server převzetí služeb při selhání clusteru Instance (FCI) na virtuálních počítačích Azure v modelu Resource Manager. Toto řešení používá [systému Windows Server 2016 Datacenter edition prostorů úložiště s přímým \(S2D\) ](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/storage-spaces-direct-overview) jako softwarovou virtuální síť SAN, který synchronizuje mezi uzly (virtuální počítače Azure) v úložišti (datové disky) Windows Cluster. S2D je nového ve Windows serveru 2016.
 
 Následující diagram ukazuje kompletní řešení na virtuálních počítačích Azure:
 
@@ -44,7 +44,7 @@ Předchozí diagram znázorňuje:
    >[!NOTE]
    >Všechny prostředky Azure jsou v diagramu jsou ve stejné skupině prostředků.
 
-Podrobnosti o S2D najdete v tématu [systému Windows Server 2016 Datacenter edition prostory úložiště – přímé \(S2D\)](http://technet.microsoft.com/windows-server-docs/storage/storage-spaces/storage-spaces-direct-overview).
+Podrobnosti o S2D najdete v tématu [systému Windows Server 2016 Datacenter edition prostory úložiště – přímé \(S2D\)](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/storage-spaces-direct-overview).
 
 S2D podporuje dva typy architektur - konvergované a konvergované na hyper v. Architektura v tomto dokumentu je konvergované na hyper v. Infrastrukturu konvergované na hyper v umístí na stejných serverů, které hostují aplikaci v clusteru úložiště. V této architektuře je úložiště na každý uzel SQL serveru FCI.
 
@@ -52,13 +52,13 @@ S2D podporuje dva typy architektur - konvergované a konvergované na hyper v. A
 
 Ve službě Azure Virtual Machines můžete licence SQL serveru pomocí průběžných plateb (PAYG) nebo používání vlastní licence Image virtuálních počítačů (BYOL). Typ image, kterou zvolíte ovlivňuje, jak se vám účtuje.
 
-Instance clusteru převzetí služeb při selhání (FCI) systému SQL Server na virtuálních počítačích Azure s průběžnými PLATBAMI licencování, neúčtují poplatky za pro všechny uzly FCI, včetně pasivní uzly. Další informace najdete v tématu [ceník funkce SQL Server Enterprise Virtual Machines](http://azure.microsoft.com/pricing/details/virtual-machines/sql-server-enterprise/). 
+Instance clusteru převzetí služeb při selhání (FCI) systému SQL Server na virtuálních počítačích Azure s průběžnými PLATBAMI licencování, neúčtují poplatky za pro všechny uzly FCI, včetně pasivní uzly. Další informace najdete v tématu [ceník funkce SQL Server Enterprise Virtual Machines](https://azure.microsoft.com/pricing/details/virtual-machines/sql-server-enterprise/). 
 
-Zákazníci se smlouvou Enterprise s programem Software Assurance mají právo používat jeden bezplatný pasivní uzel FCI pro každý aktivní uzel. Abyste mohli využívat tuto výhodu v Azure, používat Image virtuálních počítačů BYOL a potom použijte stejné licence na aktivními a pasivními uzly FCI. Další informace najdete v tématu [smlouvy Enterprise](http://www.microsoft.com/en-us/Licensing/licensing-programs/enterprise.aspx).
+Zákazníci se smlouvou Enterprise s programem Software Assurance mají právo používat jeden bezplatný pasivní uzel FCI pro každý aktivní uzel. Abyste mohli využívat tuto výhodu v Azure, používat Image virtuálních počítačů BYOL a potom použijte stejné licence na aktivními a pasivními uzly FCI. Další informace najdete v tématu [smlouvy Enterprise](https://www.microsoft.com/en-us/Licensing/licensing-programs/enterprise.aspx).
 
 Můžete porovnat průběžné platby a BYOL licencování pro SQL Server na virtuálních počítačích Azure najdete v článku [Začínáme s virtuálními počítači SQL](virtual-machines-windows-sql-server-iaas-overview.md#get-started-with-sql-vms).
 
-Kompletní informace o licencování SQL serveru najdete v tématu [ceny](http://www.microsoft.com/sql-server/sql-server-2017-pricing).
+Kompletní informace o licencování SQL serveru najdete v tématu [ceny](https://www.microsoft.com/sql-server/sql-server-2017-pricing).
 
 ### <a name="example-azure-template"></a>Příklad šablony Azure
 
@@ -71,12 +71,12 @@ Existuje několik věcí, které potřebujete znát a několik věcí, které bu
 ### <a name="what-to-know"></a>Co potřebujete vědět
 Měli byste provozní znalost následujících technologií:
 
-- [Technologie clusteru Windows](http://technet.microsoft.com/library/hh831579.aspx)
-- [Instance clusteru převzetí služeb při selhání SQL serveru](http://msdn.microsoft.com/library/ms189134.aspx).
+- [Technologie clusteru Windows](https://technet.microsoft.com/library/hh831579.aspx)
+- [Instance clusteru převzetí služeb při selhání SQL serveru](https://msdn.microsoft.com/library/ms189134.aspx).
 
 Také byste měli mít obecné principy systému následující technologie:
 
-- [Konvergované na Hyper v řešení využívající prostory úložiště – přímé ve Windows serveru 2016](http://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct)
+- [Konvergované na Hyper v řešení využívající prostory úložiště – přímé ve Windows serveru 2016](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct)
 - [Skupiny prostředků Azure](../../../azure-resource-manager/resource-group-portal.md)
 
 > [!IMPORTANT]
@@ -225,11 +225,11 @@ Dalším krokem je konfigurace clusteru převzetí služeb při selhání s S2D.
    Invoke-Command  $nodes {Install-WindowsFeature Failover-Clustering -IncludeAllSubFeature -IncludeManagementTools}
    ```
 
-Pro srovnání dalších kroků, postupujte podle pokynů v kroku 3 [konvergované na Hyper v řešení využívající prostory úložiště – přímé ve Windows serveru 2016](http://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-3-configure-storage-spaces-direct).
+Pro srovnání dalších kroků, postupujte podle pokynů v kroku 3 [konvergované na Hyper v řešení využívající prostory úložiště – přímé ve Windows serveru 2016](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-3-configure-storage-spaces-direct).
 
 ### <a name="validate-the-cluster"></a>Ověření clusteru
 
-Tato příručka odkazuje na pokyny v části [ověření clusteru](http://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-31-run-cluster-validation).
+Tato příručka odkazuje na pokyny v části [ověření clusteru](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-31-run-cluster-validation).
 
 Ověření clusteru v uživatelském rozhraní nebo Powershellu.
 
@@ -259,7 +259,7 @@ Po ověření clusteru vytvořte cluster převzetí služeb při selhání.
 
 ### <a name="create-the-failover-cluster"></a>Vytvoření clusteru převzetí služeb při selhání
 
-Tato příručka odkazuje na [vytvoření clusteru převzetí služeb při selhání](http://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-32-create-a-cluster).
+Tato příručka odkazuje na [vytvoření clusteru převzetí služeb při selhání](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-32-create-a-cluster).
 
 K vytvoření clusteru převzetí služeb při selhání, budete potřebovat:
 - Názvy virtuálních počítačů, které se stanou uzly clusteru.
@@ -276,19 +276,19 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 
 Disk s kopií cloudu je nový typ určujícího disku kvora clusteru, která je uložena v objektu Blob služby Azure Storage. To odstraní potřebu samostatných virtuálních počítačů hostování sdílenou složku s kopií clusteru.
 
-1. [Vytvoření cloudové kopie clusteru pro převzetí služeb při selhání clusteru](http://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness).
+1. [Vytvoření cloudové kopie clusteru pro převzetí služeb při selhání clusteru](https://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness).
 
 1. Vytvořte kontejner objektů blob.
 
 1. Uložte přístupové klávesy a adresa URL kontejneru.
 
-1. Konfigurace určujícího prvku kvora clusteru převzetí služeb při selhání. Zobrazit, [konfigurace určujícího prvku kvora v uživatelském rozhraní](http://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness#to-configure-cloud-witness-as-a-quorum-witness) v uživatelském rozhraní.
+1. Konfigurace určujícího prvku kvora clusteru převzetí služeb při selhání. Zobrazit, [konfigurace určujícího prvku kvora v uživatelském rozhraní](https://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness#to-configure-cloud-witness-as-a-quorum-witness) v uživatelském rozhraní.
 
 ### <a name="add-storage"></a>Přidání úložiště
 
-Disky pro S2D musí být prázdné a bez oddílů nebo jiná data. K vyčištění disků podle [kroky v tomto průvodci](http://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-34-clean-disks).
+Disky pro S2D musí být prázdné a bez oddílů nebo jiná data. K vyčištění disků podle [kroky v tomto průvodci](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-34-clean-disks).
 
-1. [Povolit Store prostory přímo \(S2D\)](http://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-35-enable-storage-spaces-direct).
+1. [Povolit Store prostory přímo \(S2D\)](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-35-enable-storage-spaces-direct).
 
    Následující příkaz Powershellu povolí prostory úložiště s přímým přístupem.  
 
@@ -298,7 +298,7 @@ Disky pro S2D musí být prázdné a bez oddílů nebo jiná data. K vyčištěn
 
    V **Správce clusteru převzetí služeb při selhání**, uvidíte teď fond úložiště.
 
-1. [Vytvoření svazku](http://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-36-create-volumes).
+1. [Vytvoření svazku](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-36-create-volumes).
 
    Jednou z funkcí S2D je, že ji automaticky vytvoří fond úložiště Pokud je povolená. Nyní jste připraveni vytvořit svazek. Rutiny Powershellu `New-Volume` automatizuje proces vytváření svazku, včetně formátování, přidání do clusteru a vytvoření sdíleného svazku clusteru (CSV). Následující příklad vytvoří 800 gigabajt (GB) sdíleného svazku clusteru.
 
@@ -343,7 +343,7 @@ Po nakonfigurování clusteru převzetí služeb při selhání a všechny souč
 1. Klikněte na tlačítko **přidat uzel do clusteru převzetí služeb při selhání systému SQL Server**. Postupujte podle pokynů v průvodci k instalaci systému SQL server a přidejte tento server FCI.
 
    >[!NOTE]
-   >Pokud jste použili image Galerie Azure Marketplace se systémem SQL Server, nástroje SQL Server byly součástí image. Pokud jste nepoužili tuto bitovou kopii, nainstalujte nástroje SQL Server samostatně. Zobrazit [stáhnout SQL Server Management Studio (SSMS)](http://msdn.microsoft.com/library/mt238290.aspx).
+   >Pokud jste použili image Galerie Azure Marketplace se systémem SQL Server, nástroje SQL Server byly součástí image. Pokud jste nepoužili tuto bitovou kopii, nainstalujte nástroje SQL Server samostatně. Zobrazit [stáhnout SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx).
 
 ## <a name="step-5-create-azure-load-balancer"></a>Krok 5: Vytvoření nástroje pro vyrovnávání zatížení Azure
 
@@ -478,7 +478,7 @@ Testovací převzetí služeb při selhání FCI k ověření clusteru funkce. P
 K otestování připojení, připojte se k jinému virtuálnímu počítači ve stejné virtuální síti. Otevřít **SQL Server Management Studio** a připojte se k názvu SQL serveru FCI.
 
 >[!NOTE]
->Pokud třeba, můžete [stáhnout SQL Server Management Studio](http://msdn.microsoft.com/library/mt238290.aspx).
+>Pokud třeba, můžete [stáhnout SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx).
 
 ## <a name="limitations"></a>Omezení
 
@@ -491,10 +491,10 @@ Na virtuálních počítačích Azure služby MSDTC nepodporuje ve Windows serve
 
 ## <a name="see-also"></a>Viz také
 
-[Instalační program S2D pomocí vzdálené plochy (Azure)](http://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/rds-storage-spaces-direct-deployment)
+[Instalační program S2D pomocí vzdálené plochy (Azure)](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/rds-storage-spaces-direct-deployment)
 
-[Hyperkonvergované řešení s prostory úložiště s přímým přístupem](http://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct).
+[Hyperkonvergované řešení s prostory úložiště s přímým přístupem](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct).
 
-[Přímé prostor úložiště – přehled](http://technet.microsoft.com/windows-server-docs/storage/storage-spaces/storage-spaces-direct-overview)
+[Přímé prostor úložiště – přehled](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/storage-spaces-direct-overview)
 
 [Podpora systému SQL Server pro S2D](https://blogs.technet.microsoft.com/dataplatforminsider/2016/09/27/sql-server-2016-now-supports-windows-server-2016-storage-spaces-direct/)

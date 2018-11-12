@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/05/2018
 ms.author: yijenj
-ms.openlocfilehash: 9d2745f1211aa6f818f89d9597867e1b3b2de03f
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 4e89664bf980717dbfd7994d6469fc4a412307a0
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49362649"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51258540"
 ---
 # <a name="lead-management-for-cloud-marketplace"></a>Vedoucí správy pro cloudové Tržiště
 
@@ -97,7 +97,7 @@ Po technické nastavení je na místě, by měl obsahovat těchto potenciálníc
 
 **Co jsou zájemci a proč jsou pro mě důležité jako vydavatele na webu Marketplace?** 
 
-Potenciální zákazníci jsou zákazníci, kteří jsou nasazení produktů z webu Marketplace. Zda váš produkt je uvedená na [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us) nebo [AppSource](http://appsource.microsoft.com/), bude moci přijímat zájemců zákazníky, kteří mají zájem o produktu, pokud mají nastavení cílové zájemce vaší nabídky.  
+Potenciální zákazníci jsou zákazníci, kteří jsou nasazení produktů z webu Marketplace. Zda váš produkt je uvedená na [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us) nebo [AppSource](https://appsource.microsoft.com/), bude moci přijímat zájemců zákazníky, kteří mají zájem o produktu, pokud mají nastavení cílové zájemce vaší nabídky.  
 
 
 **Kde získám pomoc při nastavování mé určení potenciálních zákazníků?** 

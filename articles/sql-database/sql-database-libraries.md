@@ -12,27 +12,27 @@ ms.author: genemi
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 40de6a93516a556958c1fd0cd3f861304e55a600
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: d7c0a2060d1ec084e575edaf128d72495b1d7b85
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47165513"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51259633"
 ---
 # <a name="connectivity-libraries-and-frameworks-for-sql-server"></a>Připojení knihoven a architektur pro SQL Server
 
-Podívejte se na naše [získat tutoriály Začínáme](http://aka.ms/sqldev) rychle začít s programovacích jazyků, jako je C#, Java, Node.js, PHP a Pythonu. Začnete vytvářejte aplikace s použitím SQL serveru v Linuxu nebo Windows nebo Dockeru v systému macOS.
+Podívejte se na naše [získat tutoriály Začínáme](https://aka.ms/sqldev) rychle začít s programovacích jazyků, jako je C#, Java, Node.js, PHP a Pythonu. Začnete vytvářejte aplikace s použitím SQL serveru v Linuxu nebo Windows nebo Dockeru v systému macOS.
 
 V následující tabulce jsou uvedeny knihovny pro připojení nebo *ovladače* , klientské aplikace můžou použít z celé řady jazyků k připojení a použití SQL serveru spuštěné místně nebo v cloudu. Můžete je použít v systému Linux, Windows nebo Docker a použít pro připojení k Azure SQL Database a Azure SQL Data Warehouse. 
 
 | Jazyk | Platforma | Další zdroje informací: | Ke stažení | Začínáme |
 | :-- | :-- | :-- | :-- | :-- |
 | C# | Windows, Linux, macOS | [Microsoft ADO.NET pro SQL Server](https://docs.microsoft.com/sql/connect/ado-net/microsoft-ado-net-for-sql-server) | [Stáhnout](https://www.microsoft.com/net/download/) | [Začínáme](https://www.microsoft.com/sql-server/developer-get-started/csharp/ubuntu)
-| Java | Windows, Linux, macOS | [Ovladač Microsoft JDBC pro SQL Server](http://msdn.microsoft.com/library/mt484311.aspx) | [Stáhnout](https://go.microsoft.com/fwlink/?linkid=852460) |  [Začínáme](https://www.microsoft.com/sql-server/developer-get-started/java/ubuntu)
-| PHP | Windows, Linux, macOS| [Ovladač PHP SQL pro SQL Server](http://msdn.microsoft.com/library/dn865013.aspx) | Operační systém: <br/> \* [Windows](https://www.microsoft.com/download/details.aspx?id=55642) <br/> \* [Linux](https://github.com/Microsoft/msphpsql/tree/dev#install-unix) <br/> \* [macOS](https://github.com/Microsoft/msphpsql/tree/dev#install-unix) |  [Začínáme](https://www.microsoft.com/sql-server/developer-get-started/php/ubuntu)
-| Node.js | Windows, Linux, macOS | [Ovladač Node.js pro SQL Server](http://msdn.microsoft.com/library/mt652093.aspx) | [Instalace](https://msdn.microsoft.com/library/mt652094.aspx) |  [Začínáme](https://www.microsoft.com/sql-server/developer-get-started/node/ubuntu)
-| Python | Windows, Linux, macOS | [Ovladače Python SQL](http://msdn.microsoft.com/library/mt652092.aspx) | Možnosti instalace: <br/> \* [pymssql](https://msdn.microsoft.com/library/mt694094.aspx) <br/> \* [modul pyodbc](http://msdn.microsoft.com/library/mt763257.aspx) |  [Začínáme](https://www.microsoft.com/sql-server/developer-get-started/python/ubuntu)
-| Ruby | Windows, Linux, macOS | [Ovladače Ruby pro SQL Server](http://msdn.microsoft.com/library/mt691981.aspx) | [Instalace](https://msdn.microsoft.com/library/mt711041.aspx) | [Začínáme](https://www.microsoft.com/sql-server/developer-get-started/ruby/ubuntu)
+| Java | Windows, Linux, macOS | [Ovladač Microsoft JDBC pro SQL Server](https://msdn.microsoft.com/library/mt484311.aspx) | [Stáhnout](https://go.microsoft.com/fwlink/?linkid=852460) |  [Začínáme](https://www.microsoft.com/sql-server/developer-get-started/java/ubuntu)
+| PHP | Windows, Linux, macOS| [Ovladač PHP SQL pro SQL Server](https://msdn.microsoft.com/library/dn865013.aspx) | Operační systém: <br/> \* [Windows](https://www.microsoft.com/download/details.aspx?id=55642) <br/> \* [Linux](https://github.com/Microsoft/msphpsql/tree/dev#install-unix) <br/> \* [macOS](https://github.com/Microsoft/msphpsql/tree/dev#install-unix) |  [Začínáme](https://www.microsoft.com/sql-server/developer-get-started/php/ubuntu)
+| Node.js | Windows, Linux, macOS | [Ovladač Node.js pro SQL Server](https://msdn.microsoft.com/library/mt652093.aspx) | [Instalace](https://msdn.microsoft.com/library/mt652094.aspx) |  [Začínáme](https://www.microsoft.com/sql-server/developer-get-started/node/ubuntu)
+| Python | Windows, Linux, macOS | [Ovladače Python SQL](https://msdn.microsoft.com/library/mt652092.aspx) | Možnosti instalace: <br/> \* [pymssql](https://msdn.microsoft.com/library/mt694094.aspx) <br/> \* [modul pyodbc](https://msdn.microsoft.com/library/mt763257.aspx) |  [Začínáme](https://www.microsoft.com/sql-server/developer-get-started/python/ubuntu)
+| Ruby | Windows, Linux, macOS | [Ovladače Ruby pro SQL Server](https://msdn.microsoft.com/library/mt691981.aspx) | [Instalace](https://msdn.microsoft.com/library/mt711041.aspx) | [Začínáme](https://www.microsoft.com/sql-server/developer-get-started/ruby/ubuntu)
 | C++ | Windows, Linux, macOS | [Ovladač Microsoft ODBC pro SQL Server](https://msdn.microsoft.com/library/mt654048(v=sql.1).aspx) | [Stáhnout](https://msdn.microsoft.com/library/mt654048(v=sql.1).aspx) |  
 
 V následující tabulce jsou uvedeny příklady architektur objektově relační mapování (ORM) a webová rozhraní, které klientské aplikace můžou použít s využitím SQL serveru spuštěné místně nebo v cloudu. Můžete použít rozhraní v systému Linux, Windows nebo Dockeru a použít pro připojení k SQL Database a SQL Data Warehouse. 
@@ -48,7 +48,7 @@ V následující tabulce jsou uvedeny příklady architektur objektově relačn�
 ||||
 
 ## <a name="related-links"></a>Související odkazy
-- [Ovladače SQL serveru](http://msdn.microsoft.com/library/mt654049.aspx) , který slouží k připojení z klientské aplikace
+- [Ovladače SQL serveru](https://msdn.microsoft.com/library/mt654049.aspx) , který slouží k připojení z klientské aplikace
 - Připojení k SQL Database:
     - [Připojení k SQL Database s použitím rozhraní .NET (C#)](sql-database-connect-query-dotnet.md)
     - [Připojení k SQL Database s použitím jazyka PHP](sql-database-connect-query-php.md)

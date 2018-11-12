@@ -1,6 +1,6 @@
 ---
-title: Služby společnosti Microsoft v počítačové bezpečnosti | Microsoft Docs
-description: Článek poskytuje základní informace o službách společnosti Microsoft týkající se počítačové bezpečnosti a jak získat další informace o těchto službách.
+title: Microsoft Services byla v příkazu o Kyberbezpečnosti | Dokumentace Microsoftu
+description: Tento článek poskytuje přehled o službách společnosti Microsoft týkající se kyberbezpečnosti a jak můžete získat další informace o těchto službách.
 services: security
 documentationcenter: na
 author: TomShinder
@@ -14,30 +14,30 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/26/2018
 ms.author: barclayn
-ms.openlocfilehash: 5502f315a29e6bcc31038c7c05e779925fe295f0
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: eed545c88b840f942ad763793595ef5b9c3cd19d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32181027"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51233690"
 ---
-# <a name="microsoft-services-in-cybersecurity"></a>Služby společnosti Microsoft v počítačové bezpečnosti
+# <a name="microsoft-services-in-cybersecurity"></a>Microsoft Services byla v příkazu o Kyberbezpečnosti
 
-Microsoft Services poskytuje komplexní přístup k zabezpečení, identity a počítačové bezpečnosti. Microsoft Services poskytuje řadu zabezpečení a identita služby v rámci strategie, plánování, implementaci a probíhající podpory. Tyto služby může pomoci podnikoví zákazníci implementovat řešení pro komplexní zabezpečení, které jsou zarovnané s svých strategických cílů.
+Microsoft Services poskytují komplexní přístup k zabezpečení: identity a zabezpečení. Microsoft Services poskytuje celou řadu služeb zabezpečení a Identity v rámci strategie, plánování, provádění a průběžnou podporu. Tyto služby pomáhají podnikovým zákazníkům implementovat řešení holistické zabezpečení, které odpovídají obvyklému svých strategických cílů.
 
-S přímým přístupem k produktu vývojové týmy můžeme vytvářet řešení, které se integrují a zlepšit nejnovější zabezpečení a identity funkce našich produktů a pomáhá chránit obchodní a implementovat inovace našeho zákazníka.
+S přímým přístupem k produktu vývojové týmy můžeme vytvořit řešení, které se integrují a zlepšit nejnovější zabezpečení a identity možnosti našich produktů a pomoc při ochraně našich zákazníků a obchodní a posilujte inovace.
 
-Svěřených s pomáhá chránit a umožňují organizacím největší na světě, naší různých skupiny technické Odborníci v oblasti se skládá z vysoce vyškolení odborníci, kteří nabízejí širokou řadu zabezpečení a prostředí identit.
+Pověřen pomáhá chránit a umožňují organizacím největší na světě, naše různorodé skupina odborníky obsahuje vysoce vyškolení odborníci, kteří nabízejí širokou řadu prostředí identit a zabezpečení.
 
-Další informace o služby poskytované Microsoft Services:
+Další informace o službách poskytovaných službou Microsoft Services:
 
-* [Vyhodnocení rizik zabezpečení](http://download.microsoft.com/download/5/1/6/516F59A7-91EE-4463-8612-C85FD3BEBDC7/microsoft-security-risk-assessment-solution-brief.pdf)
-* [Dynamické Identity Framework hodnocení](http://download.microsoft.com/download/0/7/F/07FA8BFC-17D5-4F55-AD4F-3A987A7324AA/dynamic-identity-framework-identity-assessment-datasheet.pdf)
-* [Offline Assessment pro službu Active Directory](http://download.microsoft.com/download/5/1/6/516F59A7-91EE-4463-8612-C85FD3BEBDC7/offline-assessment-for-active-directory-security-datasheet.pdf)
-* [Rozšířené zabezpečení správy prostředí](http://download.microsoft.com/download/5/1/6/516F59A7-91EE-4463-8612-C85FD3BEBDC7/enhanced-security-administrative-environment-solution-brief.pdf)
-* [Služby Azure AD implementace](http://download.microsoft.com/download/0/7/F/07FA8BFC-17D5-4F55-AD4F-3A987A7324AA/azure-active-directory-implementation-services-solution-brief.pdf)
-* [Zabezpečení proti účet laterální pohyb](http://download.microsoft.com/download/5/1/6/516F59A7-91EE-4463-8612-C85FD3BEBDC7/pop-securing-lateral-account-movement.pdf)
-* [Microsoft Threat zjišťování služby](http://download.microsoft.com/download/5/1/6/516F59A7-91EE-4463-8612-C85FD3BEBDC7/microsoft-threat-detection-services-solution-brief.pdf)
-* [Reakce na incidenty a obnovení](http://download.microsoft.com/download/5/1/6/516F59A7-91EE-4463-8612-C85FD3BEBDC7/microsoft-incident-response-and-recovery-process-brief.pdf)
+* [Posouzení ohrožení zabezpečení](https://download.microsoft.com/download/5/1/6/516F59A7-91EE-4463-8612-C85FD3BEBDC7/microsoft-security-risk-assessment-solution-brief.pdf)
+* [Dynamické Identity Framework posouzení](https://download.microsoft.com/download/0/7/F/07FA8BFC-17D5-4F55-AD4F-3A987A7324AA/dynamic-identity-framework-identity-assessment-datasheet.pdf)
+* [Offline posouzení pro službu Active Directory](https://download.microsoft.com/download/5/1/6/516F59A7-91EE-4463-8612-C85FD3BEBDC7/offline-assessment-for-active-directory-security-datasheet.pdf)
+* [Rozšířené zabezpečení správy prostředí](https://download.microsoft.com/download/5/1/6/516F59A7-91EE-4463-8612-C85FD3BEBDC7/enhanced-security-administrative-environment-solution-brief.pdf)
+* [Služby Azure AD implementace](https://download.microsoft.com/download/0/7/F/07FA8BFC-17D5-4F55-AD4F-3A987A7324AA/azure-active-directory-implementation-services-solution-brief.pdf)
+* [Zabezpečení proti účtu laterální pohyb](https://download.microsoft.com/download/5/1/6/516F59A7-91EE-4463-8612-C85FD3BEBDC7/pop-securing-lateral-account-movement.pdf)
+* [Služby pro zjišťování hrozeb Microsoftu](https://download.microsoft.com/download/5/1/6/516F59A7-91EE-4463-8612-C85FD3BEBDC7/microsoft-threat-detection-services-solution-brief.pdf)
+* [Reakce na incidenty a zotavení](https://download.microsoft.com/download/5/1/6/516F59A7-91EE-4463-8612-C85FD3BEBDC7/microsoft-incident-response-and-recovery-process-brief.pdf)
 
-[Další informace](https://aka.ms/cyberserv) o zabezpečení služby Microsoft konzultační služby.
+[Další informace](https://aka.ms/cyberserv) o zabezpečení služeb společnosti Microsoft consulting services.

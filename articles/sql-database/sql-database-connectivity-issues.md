@@ -13,12 +13,12 @@ ms.author: ninarn
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 08/01/2018
-ms.openlocfilehash: f381eaad61c98228ea9be2665ebed5878b666317
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: ee5542c72991a2aa8de94f5dc2e819eb5d311a27
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47064233"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51246799"
 ---
 # <a name="troubleshoot-diagnose-and-prevent-sql-connection-errors-and-transient-errors-for-sql-database"></a>Oprava a diagnostika chyb připojení SQL a přechodných chyb služby SQL Database a jejich předcházení
 Tento článek popisuje, jak zabránit, řešení potíží, diagnostiku a zmírnění chyby připojení a přechodné chyby, které klientské aplikace, zaznamená při interakci s Azure SQL Database. Zjistěte, jak konfigurovat logiku opakování, vytvoření připojovacího řetězce a další nastavení připojení.
@@ -63,7 +63,7 @@ Pokud váš program komunikuje s SQL Database prostřednictvím třetích stran 
 ### <a name="interval-increase-between-retries"></a>Zvyšte interval mezi opakovanými pokusy
 Doporučujeme vám, počkat po dobu 5 sekund před prvním opakováním. Opakování po prodlevě kratší než 5 sekund rizika zahlcení cloudovou službu. Pro každým dalším pokusem zpoždění růst exponenciálně, až do maximálního počtu 60 sekund.
 
-Informace o blokování období pro klienty, kteří používají rozhraní ADO.NET, naleznete v tématu [připojení SQL serveru (ADO.NET) sdružování](http://msdn.microsoft.com/library/8xx3tyca.aspx).
+Informace o blokování období pro klienty, kteří používají rozhraní ADO.NET, naleznete v tématu [připojení SQL serveru (ADO.NET) sdružování](https://msdn.microsoft.com/library/8xx3tyca.aspx).
 
 Můžete také chtít nastavit maximální počet opakování před svým ukončí program.
 
@@ -115,13 +115,13 @@ Chcete-li tento test praktické, váš program rozpozná parametr modulu runtime
 <a id="net-sqlconnection-parameters-for-connection-retry" name="net-sqlconnection-parameters-for-connection-retry"></a>
 
 ## <a name="net-sqlconnection-parameters-for-connection-retry"></a>Parametry připojení SqlConnection .NET pro připojení opakování
-Pokud váš klientský program připojuje ke službě SQL Database s použitím rozhraní .NET Framework třída **System.Data.SqlClient.SqlConnection**, použijte verzi .NET 4.6.1 nebo novější (nebo .NET Core) tak, aby můžete používat jeho funkce opakovat připojení. Další informace o funkci najdete v tématu [tuto webovou stránku](http://go.microsoft.com/fwlink/?linkid=393996).
+Pokud váš klientský program připojuje ke službě SQL Database s použitím rozhraní .NET Framework třída **System.Data.SqlClient.SqlConnection**, použijte verzi .NET 4.6.1 nebo novější (nebo .NET Core) tak, aby můžete používat jeho funkce opakovat připojení. Další informace o funkci najdete v tématu [tuto webovou stránku](https://go.microsoft.com/fwlink/?linkid=393996).
 
 <!--
 2015-11-30, FwLink 393996 points to dn632678.aspx, which links to a downloadable .docx related to SqlClient and SQL Server 2014.
 -->
 
-Při sestavení [připojovací řetězec](http://msdn.microsoft.com/library/System.Data.SqlClient.SqlConnection.connectionstring.aspx) pro vaše **SqlConnection** objektu, koordinovat hodnoty mezi následujícími parametry:
+Při sestavení [připojovací řetězec](https://msdn.microsoft.com/library/System.Data.SqlClient.SqlConnection.connectionstring.aspx) pro vaše **SqlConnection** objektu, koordinovat hodnoty mezi následujícími parametry:
 
 * **Atributy ConnectRetryCount**:&nbsp;&nbsp;výchozí hodnota je 1. Rozsah je 0 až 255.
 * **ConnectRetryInterval**:&nbsp;&nbsp;výchozí hodnota je 1 sekunda. Rozsah je 1 až 60.
@@ -211,7 +211,7 @@ Pokud váš program se nedokázal připojit ke službě SQL Database, je jednou 
 Na libovolném počítači s Windows můžete vyzkoušet tyto nástroje:
 
 * SQL Server Management Studio (ssms.exe), který se připojuje pomocí ADO.NET
-* Sqlcmd.exe, který se připojuje pomocí [ODBC](http://msdn.microsoft.com/library/jj730308.aspx)
+* Sqlcmd.exe, který se připojuje pomocí [ODBC](https://msdn.microsoft.com/library/jj730308.aspx)
 
 Po připojení aplikace otestujte, zda funguje krátký dotaz SQL SELECT.
 
@@ -226,7 +226,7 @@ V Linuxu můžou být užitečné následující nástroje:
 * `nmap -sS -O 127.0.0.1`
   * Změňte hodnotu příkladu bude vaši IP adresu.
 
-Na Windows [PortQry.exe](http://www.microsoft.com/download/details.aspx?id=17148) nástroje můžou být užitečné. Tady je příklad spuštění, který dotazovat situace port na serveru služby SQL Database a, která byla spuštěna na přenosný počítač:
+Na Windows [PortQry.exe](https://www.microsoft.com/download/details.aspx?id=17148) nástroje můžou být užitečné. Tady je příklad spuštění, který dotazovat situace port na serveru služby SQL Database a, která byla spuštěna na přenosný počítač:
 
 ```
 [C:\Users\johndoe\]
@@ -253,7 +253,7 @@ Přerušovaně docházelo k problému se někdy nejlépe zjištěném detekce ob
 
 Váš klient může být užitečné při diagnózu funkcí protokolování všech chyb, který nalezne. Je možné korelovat s daty chyba z interně SQL Database samotné protokolování záznamů protokolu.
 
-Knihovna Enterprise 6 (EntLib60) nabízí třídy .NET spravovat jako pomoc s protokolování. Další informace najdete v tématu [5 - stejně jednoduše jako si pádům protokol: použijte Logging Application Block](http://msdn.microsoft.com/library/dn440731.aspx).
+Knihovna Enterprise 6 (EntLib60) nabízí třídy .NET spravovat jako pomoc s protokolování. Další informace najdete v tématu [5 - stejně jednoduše jako si pádům protokol: použijte Logging Application Block](https://msdn.microsoft.com/library/dn440731.aspx).
 
 <a id="h-diagnostics-examine-logs-errors" name="h-diagnostics-examine-logs-errors"></a>
 
@@ -262,8 +262,8 @@ Tady jsou některé příkazy jazyka Transact-SQL SELECT, které se dotazují pr
 
 | Dotaz protokolu | Popis |
 |:--- |:--- |
-| `SELECT e.*`<br/>`FROM sys.event_log AS e`<br/>`WHERE e.database_name = 'myDbName'`<br/>`AND e.event_category = 'connectivity'`<br/>`AND 2 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, e.end_time, GetUtcDate())`<br/>`ORDER BY e.event_category,`<br/>&nbsp;&nbsp;`e.event_type, e.end_time;` |[Sys.event_log](http://msdn.microsoft.com/library/dn270018.aspx) nabízí informace o jednotlivých událostech, které zahrnuje některé, které mohou způsobit přechodné chyby nebo selhání připojení k zobrazení.<br/><br/>V ideálním případě by mohli porovnat **start_time** nebo **end_time** hodnoty s informacemi o Pokud váš klientský program došlo k potížím.<br/><br/>Musíte se připojit k *hlavní* databáze ke spuštění tohoto dotazu. |
-| `SELECT c.*`<br/>`FROM sys.database_connection_stats AS c`<br/>`WHERE c.database_name = 'myDbName'`<br/>`AND 24 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, c.end_time, GetUtcDate())`<br/>`ORDER BY c.end_time;` |[Sys.database_connection_stats](http://msdn.microsoft.com/library/dn269986.aspx) zobrazení nabízí souhrnné počty typů událostí pro další diagnostiku.<br/><br/>Musíte se připojit k *hlavní* databáze ke spuštění tohoto dotazu. |
+| `SELECT e.*`<br/>`FROM sys.event_log AS e`<br/>`WHERE e.database_name = 'myDbName'`<br/>`AND e.event_category = 'connectivity'`<br/>`AND 2 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, e.end_time, GetUtcDate())`<br/>`ORDER BY e.event_category,`<br/>&nbsp;&nbsp;`e.event_type, e.end_time;` |[Sys.event_log](https://msdn.microsoft.com/library/dn270018.aspx) nabízí informace o jednotlivých událostech, které zahrnuje některé, které mohou způsobit přechodné chyby nebo selhání připojení k zobrazení.<br/><br/>V ideálním případě by mohli porovnat **start_time** nebo **end_time** hodnoty s informacemi o Pokud váš klientský program došlo k potížím.<br/><br/>Musíte se připojit k *hlavní* databáze ke spuštění tohoto dotazu. |
+| `SELECT c.*`<br/>`FROM sys.database_connection_stats AS c`<br/>`WHERE c.database_name = 'myDbName'`<br/>`AND 24 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, c.end_time, GetUtcDate())`<br/>`ORDER BY c.end_time;` |[Sys.database_connection_stats](https://msdn.microsoft.com/library/dn269986.aspx) zobrazení nabízí souhrnné počty typů událostí pro další diagnostiku.<br/><br/>Musíte se připojit k *hlavní* databáze ke spuštění tohoto dotazu. |
 
 <a id="d-search-for-problem-events-in-the-sql-database-log" name="d-search-for-problem-events-in-the-sql-database-log"></a>
 
@@ -309,12 +309,12 @@ database_xml_deadlock_report  2015-10-16 20:28:01.0090000  NULL   NULL   NULL   
 <a id="l-enterprise-library-6" name="l-enterprise-library-6"></a>
 
 ## <a name="enterprise-library-6"></a>Knihovna Enterprise 6
-Knihovna Enterprise 6 (EntLib60) je architektura tříd .NET, která pomáhá implementovat robustní klienti cloudových služeb, z nichž jeden je služba SQL Database. Pokud chcete vyhledat témata vyhrazený pro jednotlivé oblasti, ve kterém může být užitečné EntLib60, naleznete v tématu [knihovny Enterprise 6. dubna 2013](http://msdn.microsoft.com/library/dn169621%28v=pandp.60%29.aspx).
+Knihovna Enterprise 6 (EntLib60) je architektura tříd .NET, která pomáhá implementovat robustní klienti cloudových služeb, z nichž jeden je služba SQL Database. Pokud chcete vyhledat témata vyhrazený pro jednotlivé oblasti, ve kterém může být užitečné EntLib60, naleznete v tématu [knihovny Enterprise 6. dubna 2013](https://msdn.microsoft.com/library/dn169621%28v=pandp.60%29.aspx).
 
-Logika opakování pro zpracování přechodných chyb je jednu oblast, ve kterém může být užitečné EntLib60. Další informace najdete v tématu [4 - Perseverance, tajný klíč všechny vítězství: použít blok aplikací zpracování přechodných selhání](http://msdn.microsoft.com/library/dn440719%28v=pandp.60%29.aspx).
+Logika opakování pro zpracování přechodných chyb je jednu oblast, ve kterém může být užitečné EntLib60. Další informace najdete v tématu [4 - Perseverance, tajný klíč všechny vítězství: použít blok aplikací zpracování přechodných selhání](https://msdn.microsoft.com/library/dn440719%28v=pandp.60%29.aspx).
 
 > [!NOTE]
-> Zdrojový kód pro EntLib60 je k dispozici ke stažení veřejné [Download Center](http://go.microsoft.com/fwlink/p/?LinkID=290898). Společnost Microsoft nemá žádné plány na EntLib provádět další aktualizace funkcí nebo aktualizací údržby.
+> Zdrojový kód pro EntLib60 je k dispozici ke stažení veřejné [Download Center](https://go.microsoft.com/fwlink/p/?LinkID=290898). Společnost Microsoft nemá žádné plány na EntLib provádět další aktualizace funkcí nebo aktualizací údržby.
 >
 >
 
@@ -341,7 +341,7 @@ V oboru názvů **Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling.T
 
 Tady je pár odkazů na informace o EntLib60:
 
-* Knihu zdarma ke stažení: [Příručka pro vývojáře k Microsoft Enterprise Library 2 edition](http://www.microsoft.com/download/details.aspx?id=41145).
+* Knihu zdarma ke stažení: [Příručka pro vývojáře k Microsoft Enterprise Library 2 edition](https://www.microsoft.com/download/details.aspx?id=41145).
 * Osvědčené postupy: [obecné pokyny k opakovaným](../best-practices-retry-general.md) má skvělé diskuzi o logika opakovaných pokusů.
 * Stažení NuGet: [Enterprise Library - přechodné selhání zpracování aplikace bloku 6.0](http://www.nuget.org/packages/EnterpriseLibrary.TransientFaultHandling/).
 

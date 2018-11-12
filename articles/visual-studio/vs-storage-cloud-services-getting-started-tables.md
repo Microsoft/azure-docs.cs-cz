@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: f1e663463ff91da887a4afaebde4b2257347d4f4
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 44056ae1bca2595965abd3a47b4a2aa29d221623
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42055049"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51255229"
 ---
 # <a name="getting-started-with-azure-table-storage-and-visual-studio-connected-services-cloud-services-projects"></a>Začínáme s Azure table storage a Visual Studio připojené služby (projekty cloudových služeb)
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
@@ -29,7 +29,7 @@ Služba Azure Table storage umožňuje ukládat velké objemy strukturovaných d
 
 Abyste mohli začít, musíte nejprve vytvořit tabulku v účtu úložiště. Vám ukážeme, jak vytvořit tabulku Azure v kódu a jak provádět základní tabulky a entity operace, jako jsou přidání, úprava, čtení a čtení tabulkové entity. Ukázky jsou napsané v jazyce C\# kód a použít [Klientská knihovna pro Microsoft Azure Storage pro .NET](https://msdn.microsoft.com/library/azure/dn261237.aspx).
 
-**Poznámka:** některá rozhraní API, provádět volání si do služby Azure storage jsou asynchronní. Zobrazit [asynchronní programování s Async a Await](http://msdn.microsoft.com/library/hh191443.aspx) Další informace. Následující kód předpokládá, že se používají asynchronní programovací metody.
+**Poznámka:** některá rozhraní API, provádět volání si do služby Azure storage jsou asynchronní. Zobrazit [asynchronní programování s Async a Await](https://msdn.microsoft.com/library/hh191443.aspx) Další informace. Následující kód předpokládá, že se používají asynchronní programovací metody.
 
 * Zobrazit [Začínáme s Azure Table storage pomocí .NET](../storage/storage-dotnet-how-to-use-tables.md) Další informace o programově práci s tabulkami.
 * Zobrazit [dokumentace ke službě Storage](https://azure.microsoft.com/documentation/services/storage/) obecné informace o službě Azure Storage.

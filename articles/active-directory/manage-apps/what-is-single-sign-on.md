@@ -14,12 +14,12 @@ ms.date: 09/11/2018
 ms.author: barbkess
 ms.reviewer: asmalser
 ms.custom: it-pro
-ms.openlocfilehash: db008953b9aa596a64aceccacc0e4632ebfff596
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 72665ed4c25d2719ac5030bce59157a3ccd9dec7
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44720119"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51236002"
 ---
 # <a name="what-is-application-access-and-single-sign-on-with-azure-active-directory"></a>Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?
 Jednotné přihlašování znamená možnost přistupovat ke všem aplikacím a prostředkům, které je potřeba udělat firmy, tak, že stačí, když pomocí jediného uživatelského účtu. Jakmile se přihlásíte, dostanete všechny aplikace, které potřebujete, aniž byste museli znovu ověřovat (třeba zadávat heslo) podruhé.
@@ -102,7 +102,7 @@ Chcete začít? Nasadit jednotné přihlašování mezi Azure AD a aplikace SaaS
 Zde jsou některé tipy pro hledání ve funkcích, které podporují aplikace:
 
 * Azure AD podporuje automatické zřizování a jeho rušení pro všemi aplikacemi "Doporučené" v [Galerie aplikací Azure Active Directory](https://azure.microsoft.com/marketplace/active-directory/all/).
-* Seznam federovaným aplikacím, které specificky podporují federované jednotné přihlašování pomocí protokolu, jako je SAML, WS-Federation nebo OpenID Connect najdete [tady](http://social.technet.microsoft.com/wiki/contents/articles/20235.azure-active-directory-application-gallery-federated-saas-apps.aspx).
+* Seznam federovaným aplikacím, které specificky podporují federované jednotné přihlašování pomocí protokolu, jako je SAML, WS-Federation nebo OpenID Connect najdete [tady](https://social.technet.microsoft.com/wiki/contents/articles/20235.azure-active-directory-application-gallery-federated-saas-apps.aspx).
 
 Jakmile jste nalezené vaší aplikace, můžete začít podle podrobných pokynů v galerii aplikací a na webu Azure Portal můžete povolit jednotné přihlašování.
 

@@ -5,15 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 03/21/2018
+ms.date: 11/06/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 605533f25b36a92a660301d28aa63cb2ecdd44f4
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: 9ae3a17c9756a38414ee25fd24f7d12d6179e95f
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37909963"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51285744"
 ---
 Při vytváření brány virtuální sítě musíte určit SKU brány, které chcete použít. Vyberte jednotku SKU, která splňuje vaše požadavky na základě typů úloh, propustnosti, funkcí a SLA.
 
@@ -29,7 +29,7 @@ Nová brána VPN skladové jednotky zjednodušují sady funkcí nabízen brány:
 
 | **SKU**| **Funkce**|
 | ---    | ---         |
-|**Základní** (*)   | **Síť VPN založená na směrování**: 10 tunelů s P2S; bez ověřování RADIUS pro P2S; bez IKEv2 pro P2S<br>**Síť VPN založená na zásadách (IKEv1):** 1 tunel, bez P2S|
+|**Základní** (*)   | **Síť VPN založená na směrování**: 10 tunelů S2S nebo připojení; bez ověřování RADIUS pro P2S; bez IKEv2 pro P2S<br>**Síť VPN založená na zásadách**: (IKEv1): 1 tunel S2S nebo připojení, bez P2S|
 | **VpnGw1, VpnGw2 a VpnGw3** | **Síť VPN založená na směrování**: až 30 tunelů (*), P2S, BGP, aktivní aktivní, vlastní protokolu IPsec/IKE zásad, koexistence ExpressRoute/VPN |
 |        |             |
 

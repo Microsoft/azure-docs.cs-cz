@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 07/12/2018
 ms.author: ryanwi,mikhegn
 ms.custom: mvc
-ms.openlocfilehash: 443d37f5b45db9495c09d68300c9ea4978466eb9
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: fe6df20d294a3b1802d396085c36a6587dc45730
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49388224"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51249077"
 ---
 # <a name="tutorial-deploy-a-service-fabric-application-to-a-cluster-in-azure"></a>Kurz: Nasazení aplikace Service Fabric do clusteru v Azure
 
@@ -87,7 +87,7 @@ Pro vaše předplatné Azure otevřete tento port v Azure pomocí pravidla vyrov
 
 Party Clustery jsou bezplatné, časově omezené clustery Service Fabric hostované v Azure a provozované týmem Service Fabric. Kdokoli je může použít k nasazování aplikací a seznámení se s platformou. Cluster k zajištění zabezpečení mezi uzly i mezi klientem a uzlem využívá jeden certifikát podepsaný svým držitelem.
 
-Přihlaste se a [připojte se ke clusteru Windows](http://aka.ms/tryservicefabric). Pokud si do počítače chcete stáhnout certifikát PFX, vyberte odkaz **PFX**. Vyberte odkaz **How to connect to a secure Party cluster?** (Jak se připojit k zabezpečenému Party Clusteru?) a zkopírujte heslo certifikátu. Certifikát, heslo certifikátu a hodnotu **Koncový bod připojení** použijete v následujících krocích.
+Přihlaste se a [připojte se ke clusteru Windows](https://aka.ms/tryservicefabric). Pokud si do počítače chcete stáhnout certifikát PFX, vyberte odkaz **PFX**. Vyberte odkaz **How to connect to a secure Party cluster?** (Jak se připojit k zabezpečenému Party Clusteru?) a zkopírujte heslo certifikátu. Certifikát, heslo certifikátu a hodnotu **Koncový bod připojení** použijete v následujících krocích.
 
 ![PFX a koncový bod připojení](./media/service-fabric-quickstart-dotnet/party-cluster-cert.png)
 

@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2018
 ms.author: sachins
-ms.openlocfilehash: ef2b5fe6c9b70eaea5ab4db2d4a0ca59ff82dbb9
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: 2c7e624344605b24e78962ac2b6d23278c06c0cc
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391891"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51255144"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen1"></a>Doporučené postupy pro používání Azure Data Lake Storage Gen1
 
@@ -27,7 +27,7 @@ V tomto článku se dozvíte o osvědčených postupech a důležité informace 
 
 Azure Data Lake Storage Gen1 nabídky POSIX ovládací prvky přístupu a podrobné auditování pro Azure Active Directory (Azure AD) uživatele, skupiny nebo instanční objekty. Tyto ovládací prvky přístupu je možné nastavit pro existující soubory a složky. Řízení přístupu lze také vytvořit výchozí hodnoty, které lze použít u nových souborů nebo složek. Pokud jsou oprávnění nastavena na existující složky a podřízených objektů, musí být rozšíří rekurzivně na každém objektu oprávnění. Pokud existuje velký počet souborů, šíření oprávnění může trvat dlouhou dobu. Doba trvání může být v rozsahu mezi objekty 30 – 50 zpracovaných za sekundu. Proto složky strukturu a uživatelské skupiny odpovídající plán. V opačném případě může způsobit neočekávané prodlevy a problémů při práci s vašimi daty. 
 
-Předpokládejme, že máte složku s 100 000 podřízené objekty. Pokud budete postupovat dolní mez 30 objekty zpracovaných za sekundu, chcete-li aktualizovat oprávnění pro celou složku může trvat hodiny. Další informace o Data Lake Storage Gen1 seznamy řízení přístupu najdete na adrese [řízení přístupu v Azure Data Lake Storage Gen1](data-lake-store-access-control.md). Za účelem vylepšení výkonu v přiřazení rekurzivně seznamy ACL můžete použít nástroj příkazového řádku Azure Data Lake. Nástroj vytvoří několik vláken a logiku navigace rekurzivní rychle použít seznamy ACL na miliony souborů. Nástroj je k dispozici pro systémy Linux a Windows a [dokumentaci](https://github.com/Azure/data-lake-adlstool) a [stáhne](http://aka.ms/adlstool-download) pro tento nástroj najdete na Githubu. Tyto stejné vylepšení výkonu se dá nastavit podle svých vlastních nástrojů napsané v Data Lake Storage Gen1 [.NET](data-lake-store-data-operations-net-sdk.md) a [Java](data-lake-store-get-started-java-sdk.md) sady SDK.
+Předpokládejme, že máte složku s 100 000 podřízené objekty. Pokud budete postupovat dolní mez 30 objekty zpracovaných za sekundu, chcete-li aktualizovat oprávnění pro celou složku může trvat hodiny. Další informace o Data Lake Storage Gen1 seznamy řízení přístupu najdete na adrese [řízení přístupu v Azure Data Lake Storage Gen1](data-lake-store-access-control.md). Za účelem vylepšení výkonu v přiřazení rekurzivně seznamy ACL můžete použít nástroj příkazového řádku Azure Data Lake. Nástroj vytvoří několik vláken a logiku navigace rekurzivní rychle použít seznamy ACL na miliony souborů. Nástroj je k dispozici pro systémy Linux a Windows a [dokumentaci](https://github.com/Azure/data-lake-adlstool) a [stáhne](https://aka.ms/adlstool-download) pro tento nástroj najdete na Githubu. Tyto stejné vylepšení výkonu se dá nastavit podle svých vlastních nástrojů napsané v Data Lake Storage Gen1 [.NET](data-lake-store-data-operations-net-sdk.md) a [Java](data-lake-store-get-started-java-sdk.md) sady SDK.
 
 ### <a name="use-security-groups-versus-individual-users"></a>Pomocí skupin zabezpečení a jednotlivé uživatele 
 

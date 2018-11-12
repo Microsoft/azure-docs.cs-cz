@@ -11,18 +11,18 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 08/24/2018
-ms.openlocfilehash: 24d3cf0c4b1a1283e7a6a7f61f0bb23dae7143d5
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 7322b07740d5dec85b6217e122fb262647527c96
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43112993"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51258404"
 ---
 # <a name="deploy-an-azure-machine-learning-model-to-an-azure-iot-edge-device"></a>Nasadit model ve službě Azure Machine Learning pro zařízení Azure IoT Edge
 
 Modely Azure Machine Learning můžete kontejnerizovaných jako webových služeb využívajících Docker. Azure IoT Edge umožňuje nasazení kontejnerů do zařízení vzdáleně. Tyto služby použijte současně ke spuštění vašich modelů na hraničních zařízeních pro kratší doby odezvy a menší datové přenosy. 
 
-Další skripty a pokyny najdete v [AI Toolkit pro Azure IoT Edge](http://aka.ms/AI-toolkit).
+Další skripty a pokyny najdete v [AI Toolkit pro Azure IoT Edge](https://aka.ms/AI-toolkit).
 
 ## <a name="operationalize-the-model"></a>Zprovoznění modelu
 

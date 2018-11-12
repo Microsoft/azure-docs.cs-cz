@@ -12,12 +12,12 @@ ms.service: machine-learning
 ms.component: studio
 ms.topic: article
 ms.date: 12/18/2017
-ms.openlocfilehash: 92db2a86f5f698945cd2252476e951d658dc75ac
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: c3aa1bfe2cc1513d636452031de62da814af6cd7
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46959202"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51262297"
 ---
 # <a name="how-to-choose-algorithms-for-azure-machine-learning-studio"></a>Jak zvolit algoritmy pro Azure Machine Learning Studio
 
@@ -121,7 +121,7 @@ Některé studijní algoritmy určité domněnky o struktuře dat nebo požadova
 | [rozhodovací les](https://msdn.microsoft.com/library/azure/dn906008.aspx) |● |○ | |6 | |
 | [rozhodovací Džungle](https://msdn.microsoft.com/library/azure/dn905976.aspx) |● |○ | |6 |Nedostatek paměti nároky na místo |
 | [Posílený rozhodovací strom](https://msdn.microsoft.com/library/azure/dn906025.aspx) |● |○ | |6 |Velké paměťové nároky |
-| [neurálních sítí](https://msdn.microsoft.com/library/azure/dn905947.aspx) |● | | |9 |[Další přizpůsobení je možné](http://go.microsoft.com/fwlink/?LinkId=402867) |
+| [neurálních sítí](https://msdn.microsoft.com/library/azure/dn905947.aspx) |● | | |9 |[Další přizpůsobení je možné](https://go.microsoft.com/fwlink/?LinkId=402867) |
 | [průměrné perceptron](https://msdn.microsoft.com/library/azure/dn906036.aspx) |○ |○ |● |4 | |
 | [počítač vektorové podpory](https://msdn.microsoft.com/library/azure/dn905835.aspx) | |○ |● |5 |Vhodné pro velké funkce sad |
 | [místně důkladné podpoře vector machine](https://msdn.microsoft.com/library/azure/dn913070.aspx) |○ | | |8 |Vhodné pro velké funkce sad |
@@ -130,7 +130,7 @@ Některé studijní algoritmy určité domněnky o struktuře dat nebo požadova
 | [Logistické regrese](https://msdn.microsoft.com/library/azure/dn905853.aspx) | |● |● |5 | |
 | [rozhodovací les](https://msdn.microsoft.com/library/azure/dn906015.aspx) |● |○ | |6 | |
 | [rozhodovací Džungle ](https://msdn.microsoft.com/library/azure/dn905963.aspx) |● |○ | |6 |Nedostatek paměti nároky na místo |
-| [neurálních sítí](https://msdn.microsoft.com/library/azure/dn906030.aspx) |● | | |9 |[Další přizpůsobení je možné](http://go.microsoft.com/fwlink/?LinkId=402867) |
+| [neurálních sítí](https://msdn.microsoft.com/library/azure/dn906030.aspx) |● | | |9 |[Další přizpůsobení je možné](https://go.microsoft.com/fwlink/?LinkId=402867) |
 | [one-v-all](https://msdn.microsoft.com/library/azure/dn905887.aspx) |- |- |- |- |Zobrazit vlastnosti vybrané metody dvěma třídami |
 | **Regrese** | | | | | |
 | [Lineární](https://msdn.microsoft.com/library/azure/dn905978.aspx) | |● |● |4 | |
@@ -138,7 +138,7 @@ Některé studijní algoritmy určité domněnky o struktuře dat nebo požadova
 | [rozhodovací les](https://msdn.microsoft.com/library/azure/dn905862.aspx) |● |○ | |6 | |
 | [Posílený rozhodovací strom](https://msdn.microsoft.com/library/azure/dn905801.aspx) |● |○ | |5 |Velké paměťové nároky |
 | [quantile rychlé doménové struktury](https://msdn.microsoft.com/library/azure/dn913093.aspx) |● |○ | |9 |Distribuce spíše než bodu predikcí |
-| [neurálních sítí](https://msdn.microsoft.com/library/azure/dn905924.aspx) |● | | |9 |[Další přizpůsobení je možné](http://go.microsoft.com/fwlink/?LinkId=402867) |
+| [neurálních sítí](https://msdn.microsoft.com/library/azure/dn905924.aspx) |● | | |9 |[Další přizpůsobení je možné](https://go.microsoft.com/fwlink/?LinkId=402867) |
 | [Poissonovo](https://msdn.microsoft.com/library/azure/dn905988.aspx) | | |● |5 |Technicky protokolu lineární. Pro odhad počtu |
 | [Pořadí](https://msdn.microsoft.com/library/azure/dn906029.aspx) | | | |0 |Pro predikci, pořadí řazení |
 | **Detekce anomálií** | | | | | |
@@ -190,7 +190,7 @@ Posílený rozhodovací stromy vyhnout overfitting tím, že omezíte počet opa
 Neuronové sítě jsou brain INSPIROVANÉ učení se supervizí pokrývající [multiclass](https://msdn.microsoft.com/library/azure/dn906030.aspx), [dvěma třídami](https://msdn.microsoft.com/library/azure/dn905947.aspx), a [regrese](https://msdn.microsoft.com/library/azure/dn905924.aspx) problémy. Přišli v nekonečné řadě, ale neuronových sítí v Azure Machine Learning jsou všechny formuláře orientované Acyklické grafy. Která znamená, že vstupní funkce jsou předány vpřed (nikdy zpět) prostřednictvím pořadí vrstev před zapnutí do výstupů. V každé vrstvě jsou vstupy váha v různých kombinacích, sčítat a předávají do další vrstva. Tato kombinace jednoduché výpočty výsledkem schopnost další sofistikované třídy hranice a data trendy zdánlivě magic. N vrstvami sítí toto řazení provést "obsáhlého learningu", který zaznamenává díky tolik Odborný generování sestav a Sci-fi.
 
 Tento vysoký výkon nepřejde do stavu zdarma, ale. Neuronové sítě může trvat dlouhou dobu pro trénování, zejména u velkých datových sad s velkým množstvím funkcí. Mají také další parametry, než většina algoritmy, které znamená, že parametr sweeping zajistí rozšíří doba školení.
-A pro tyto overachievers, kteří chtějí [zadat své vlastní struktury sítě](http://go.microsoft.com/fwlink/?LinkId=402867), možností je inexhaustible.
+A pro tyto overachievers, kteří chtějí [zadat své vlastní struktury sítě](https://go.microsoft.com/fwlink/?LinkId=402867), možností je inexhaustible.
 
 ![Hranice zjistili neuronových sítí][6]
 ***hranice zjistili neuronových sítí může být složité a nestandardní***

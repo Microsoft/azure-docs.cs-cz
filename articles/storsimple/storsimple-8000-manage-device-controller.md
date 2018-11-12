@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/19/2017
 ms.author: alkohli
-ms.openlocfilehash: 9a5be85b917682afeaecd67a4176edb7040d5b4b
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 5e461f340e1c58f64c6d645a1e47cfd811bc4de5
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50215425"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261702"
 ---
 # <a name="manage-your-storsimple-device-controllers"></a>Správa řadičů zařízení StorSimple
 
@@ -117,7 +117,7 @@ Proveďte následující kroky a obnovíte výchozí tovární nastavení zaří
    
     `Reset-HcsFactoryDefault`
    
-    Chcete-li obnovit místo jediného kontroleru, použijte [resetování HcsFactoryDefault](http://technet.microsoft.com/library/dn688132.aspx) rutinu s `-scope` parametru.)
+    Chcete-li obnovit místo jediného kontroleru, použijte [resetování HcsFactoryDefault](https://technet.microsoft.com/library/dn688132.aspx) rutinu s `-scope` parametru.)
    
     Systém se restartuje více než jednou. Při obnovení byla úspěšně dokončena, budete upozorněni. V závislosti na modelu systému může trvat 45 – 60 minut pro zařízení s 8100 a 8600 k dokončení tohoto procesu 60 – 90 minut.
    

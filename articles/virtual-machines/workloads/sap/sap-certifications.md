@@ -14,15 +14,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 08/27/2018
+ms.date: 11/06/2018
 ms.author: rclaus
 ms.custom: ''
-ms.openlocfilehash: 2962e81f1623457a3b4b6644b89dbd8d63bc2b48
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: de282041066e18a52d596f051def598eef3d458d
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43111706"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51287213"
 ---
 # <a name="sap-certifications-and-configurations-running-on-microsoft-azure"></a>Certifikace SAP a konfigurace běžící v Microsoft Azure
 
@@ -36,7 +36,7 @@ Odkazy:
 | Produkt SAP | Podporovaný operační systém | Nabídky Azure |
 | --- | --- | --- |
 | SAP HANA Developer Edition (včetně klientského softwaru HANA sestává z SQLDBC, ODBO – Windows pouze, ODBC a ovladače JDBC, HANA studio a HANA database) | Red Hat Enterprise Linux, SUSE Linux Enterprise | Řady virtuálních počítačů řady D-Series |
-| Obchodní jeden on HANA | SUSE Linux Enterprise | DS14_v2 <br /> [SAP HANA s certifikací platformy IaaS](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure%23SAP%20Business%20One) |
+| Obchodní jeden on HANA | SUSE Linux Enterprise | DS14_v2, M32ts, M32ls, M64ls, M64s <br /> [SAP HANA s certifikací platformy IaaS](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure%23SAP%20Business%20One) |
 | SAP S/4 HANA | Red Hat Enterprise Linux, SUSE Linux Enterprise | Řízená dostupnost pro GS5. Plná podpora pro M64s M64ms, M128s, M128ms, M64ls, M32ls, M32ts, <br /> SAP HANA v Azure (velké instance) [platformách IaaS certifikací SAP HANA](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) |
 | Suite on HANA, OLTP | Red Hat Enterprise Linux, SUSE Linux Enterprise | M64s, M64ms, M128s, M128ms, M64ls, M32ls, M32ts, od SAP HANA v Azure (velké instance) <br /> [SAP HANA s certifikací platformy IaaS](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) |
 | HANA Enterprise for BW, OLAP | Red Hat Enterprise Linux, SUSE Linux Enterprise | GS5, M64s, M64ms, M128s, M128ms, M64ls, M32ls, M32ts, <br /> SAP HANA v Azure (velké instance) [platformách IaaS certifikací SAP HANA](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) |
@@ -51,16 +51,16 @@ Odkazy:
 - [1928533 – SAP aplikace v Azure: podporované produkty a virtuálních počítačů Azure typy](https://launchpad.support.sap.com/#/notes/1928533) u všech aplikací využívajících SAP NetWeaver, jako je SAP TREX, SAP LiveCache a SAP obsahu. A všechny databáze, s výjimkou SAP HANA.
 
 
-| Produkt SAP | Hostovaný operační systém | RDBMS | Typy virtuálních počítačů |
+| Produkt SAP | Hostovaný operační systém | Relační databázový systém | Typy virtuálních počítačů |
 | --- | --- | --- | --- |
 | SAP Business Suite Software | Windows, SUSE Linux Enterprise, Red Hat Enterprise Linux, Oracle Linux |SQL Server, Oracle (Windows a Oracle Linux pouze), DB2, SAP ASE |A5 až A11, D11 až D14, DS11 až DS14, DS11_v2 k DS15_v2, GS1 až GS5, D2s_v3 k D64s_v3, E2s_v3 E64s_v3 M64s, M64ms, M128s, M128ms, M64ls, M32ls, M32ts |
 | SAP Business All-in-One | Windows, SUSE Linux Enterprise, Red Hat Enterprise Linux, Oracle Linux |SQL Server, Oracle (Windows a Oracle Linux pouze), DB2, SAP ASE |A5 až A11, D11 až D14, DS11 až DS14, DS11_v2 k DS15_v2, GS1 až GS5, D2s_v3 k D64s_v3, E2s_v3 E64s_v3 M64s, M64ms, M128s, M128ms, M64ls, M32ls, M32ts |
-| SAP BusinessObjects BI | Windows |neuvedeno |A5 až A11, D11 až D14, DS11 až DS14, DS11_v2 k DS15_v2, GS1 až GS5, D2s_v3 k D64s_v3, E2s_v3 E64s_v3 M64s, M64ms, M128s, M128ms, M64ls, M32ls, M32ts |
+| SAP BusinessObjects BI | Windows |– |A5 až A11, D11 až D14, DS11 až DS14, DS11_v2 k DS15_v2, GS1 až GS5, D2s_v3 k D64s_v3, E2s_v3 E64s_v3 M64s, M64ms, M128s, M128ms, M64ls, M32ls, M32ts |
 | SAP NetWeaver | Windows, SUSE Linux Enterprise, Red Hat Enterprise Linux, Oracle Linux |SQL Server, Oracle (Windows a Oracle Linux pouze), DB2, SAP ASE |A5 až A11, D11 až D14, DS11 až DS14, DS11_v2 k DS15_v2, GS1 až GS5, D2s_v3 k D64s_v3, E2s_v3 E64s_v3 M64s, M64ms, M128s, M128ms, M64ls, M32ls, M32ts |
 
 ## <a name="other-sap-workload-supported-on-azure"></a>Další úlohy SAP v Azure nepodporuje
 
-| Produkt SAP | Hostovaný operační systém | RDBMS | Typy virtuálních počítačů |
+| Produkt SAP | Hostovaný operační systém | Relační databázový systém | Typy virtuálních počítačů |
 | --- | --- | --- | --- |
 | SAP Business jeden na SQL Server | Windows  | SQL Server | Všechny NetWeaver certified typy virtuálních počítačů<br /> [Poznámka SAP #928839](https://launchpad.support.sap.com/#/notes/928839) |
 | SAP SP08 10.01 MS BITŮ NA KANÁL | Windows a Linux | | Všechny typy NetWeaver certifikace virtuálního počítače<br /> Poznámka SAP #2451795 |

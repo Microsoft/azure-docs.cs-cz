@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: ecfaf24d1122b711a93e1335b79acbbc4235bdae
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: eedab085098c34cdac3c49a3892f7cb0d5824f1b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39049945"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51259917"
 ---
 # <a name="post-an-announcement-to-a-lab-in-azure-devtest-labs"></a>Odeslání oznámení do testovacího prostředí ve službě Azure DevTest Labs
 
@@ -35,7 +35,7 @@ Funkce oznámení je určena pro použití dočasného oznámení.  Můžete sna
 
 ## <a name="steps-to-post-an-announcement-in-an-existing-lab"></a>Postup odeslání oznámení v existující testovací prostředí
 
-1. Přihlaste se k webu [Azure Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Přihlaste se k webu [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 1. V případě potřeby vyberte **všechny služby**a pak vyberte **DevTest Labs** ze seznamu. (Testovací prostředí může již zobrazený na řídicím panelu v části **všechny prostředky**).
 1. V seznamu testovacích prostředí vyberte prostředí, ve kterém chcete odeslat oznámení.  
 1. Cvičení **přehled** vyberte **konfigurace a zásad**.  
@@ -70,7 +70,7 @@ Pokud už nechcete zobrazit toto oznámení uživatelům testovacího prostřed�
 
 ## <a name="steps-for-users-to-view-an-announcement"></a>Kroky pro uživatele, chcete-li zobrazit oznámení
 
-1. Z [webu Azure portal](http://go.microsoft.com/fwlink/p/?LinkID=525040), vyberte testovacího prostředí.
+1. Z [webu Azure portal](https://go.microsoft.com/fwlink/p/?LinkID=525040), vyberte testovacího prostředí.
 
 1. Pokud testovací prostředí se ji odeslat oznámení, oznámení informace se zobrazí v horní části stránky přehled testovacího prostředí. Toto upozornění je název oznámení, který byl zadán při vytvoření oznámení.
 

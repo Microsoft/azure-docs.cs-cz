@@ -12,12 +12,12 @@ ms.topic: get-started-article
 ms.date: 09/18/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 04d950b0a8001fd76e3754b73a9d7c4c5fe2893d
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 5da946ff0c9bdda91668999db2fccdd12a67c0d2
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49318635"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51253189"
 ---
 # <a name="azure-ad-connect-and-azure-ad-connect-health-installation-roadmap"></a>Plán instalace Azure AD Connect a Azure AD Connect Health
 
@@ -26,7 +26,7 @@ ms.locfileid: "49318635"
 > [!IMPORTANT]
 > Microsoft nepodporuje úpravy ani provoz synchronizace služby Azure AD Connect mimo formálně zdokumentované akce. Některé z těchto akcí můžou způsobit nekonzistentní nebo nepodporovaný stav synchronizace služby Azure AD Connect. Microsoft proto nemůže pro taková nasazení poskytovat technickou podporu.
 
-Azure AD Connect si můžete stáhnout ze stránek [Stažení softwaru](http://go.microsoft.com/fwlink/?LinkId=615771).
+Azure AD Connect si můžete stáhnout ze stránek [Stažení softwaru](https://go.microsoft.com/fwlink/?LinkId=615771).
 
 | Řešení | Scénář |
 | --- | --- |
@@ -41,7 +41,7 @@ Azure AD Connect si můžete stáhnout ze stránek [Stažení softwaru](http://g
 ### <a name="next-steps-to-install-azure-ad-connect"></a>Další kroky instalace služby Azure AD Connect
 |Téma |Odkaz|  
 | --- | --- |
-|Stažení služby Azure AD Connect | [Stažení služby Azure AD Connect](http://go.microsoft.com/fwlink/?LinkId=615771)|
+|Stažení služby Azure AD Connect | [Stažení služby Azure AD Connect](https://go.microsoft.com/fwlink/?LinkId=615771)|
 |Instalace s expresním nastavením | [Expresní instalace služby Azure AD Connect](./how-to-connect-install-express.md)|
 |Instalace s vlastním nastavením | [Vlastní instalace služby Azure AD Connect](./how-to-connect-install-custom.md)|
 |Upgrade z nástroje DirSync | [Upgrade ze synchronizačního nástroje služby Azure AD (DirSync)](./how-to-dirsync-upgrade-get-started.md)|
@@ -141,12 +141,12 @@ Pokud chcete začít se službou Azure AD Connect Health, použijte následujíc
 ## <a name="download-and-install-azure-ad-connect-health-agent"></a>Stažení a instalace agenta služby Azure AD Connect Health
 * Ověřte, že [splňujete požadavky](how-to-connect-health-agent-install.md#requirements) pro službu Azure AD Connect Health.
 * Začínáme s využitím Azure AD Connect Health pro službu AD FS
-    * [Stažení agenta Azure AD Connect Health pro službu AD FS](http://go.microsoft.com/fwlink/?LinkID=518973)
+    * [Stažení agenta Azure AD Connect Health pro službu AD FS](https://go.microsoft.com/fwlink/?LinkID=518973)
     * [Pokyny k instalaci](how-to-connect-health-agent-install.md#installing-the-azure-ad-connect-health-agent-for-ad-fs)
 * Začínáme s využitím Azure AD Connect Health pro synchronizaci
-    * [Stažení a instalace nejnovější verze služby Azure AD Connect](http://go.microsoft.com/fwlink/?linkid=615771) Agent služby Health pro synchronizaci se nainstaluje jako součást instalace služby Azure AD Connect (verze 1.0.9125.0 nebo vyšší).
+    * [Stažení a instalace nejnovější verze služby Azure AD Connect](https://go.microsoft.com/fwlink/?linkid=615771) Agent služby Health pro synchronizaci se nainstaluje jako součást instalace služby Azure AD Connect (verze 1.0.9125.0 nebo vyšší).
 * Začínáme s využitím Azure AD Connect Health pro službu AD DS
-    * [Stažení agenta služby Azure AD Connect Health pro službu AD DS](http://go.microsoft.com/fwlink/?LinkID=820540)
+    * [Stažení agenta služby Azure AD Connect Health pro službu AD DS](https://go.microsoft.com/fwlink/?LinkID=820540)
     * [Pokyny k instalaci](how-to-connect-health-agent-install.md#installing-the-azure-ad-connect-health-agent-for-ad-ds)
 
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 2ae2ea14bc712563867f32b83eddbd9d4129ac1d
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: c7d8ab8beced055d10cebcecf36d957b155c63b7
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49409488"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51256217"
 ---
 # <a name="azure-operational-security"></a>Provozní zabezpečení Azure
 ## <a name="introduction"></a>Úvod
@@ -74,7 +74,7 @@ Základní funkce služby Log Analytics poskytuje sadu služeb, které běží v
 
 ### <a name="log-analytics"></a>Log Analytics
 
-[Log Analytics](http://azure.microsoft.com/documentation/services/log-analytics) zajišťuje služby monitorování získáváním dat ze spravovaných prostředků do centrálního úložiště. Tato data mohou zahrnovat události, výkonnostní data nebo vlastní data poskytovaná prostřednictvím rozhraní API. Po získání jsou data dostupná pro výstrahy, analýzu a export.
+[Log Analytics](https://azure.microsoft.com/documentation/services/log-analytics) zajišťuje služby monitorování získáváním dat ze spravovaných prostředků do centrálního úložiště. Tato data mohou zahrnovat události, výkonnostní data nebo vlastní data poskytovaná prostřednictvím rozhraní API. Po získání jsou data dostupná pro výstrahy, analýzu a export.
 
 
 Tato metoda umožňuje konsolidovat data z různých zdrojů, takže můžete kombinovat data ze služeb Azure s vaší stávající místní prostředí. Také jasně odděluje získávání dat od akcí provedených na těchto datech, takže všechny akce jsou dostupné pro všechny druhy dat.
@@ -92,7 +92,7 @@ Služba Log Analytics spravuje vaše data založené na cloudu bezpečně pomoc�
 
 ### <a name="azure-backup"></a>Azure Backup
 
-[Azure Backup](http://azure.microsoft.com/documentation/services/backup) poskytuje data zálohování a obnovení služby a je součástí sady Log Analytics produktů a služeb.
+[Azure Backup](https://azure.microsoft.com/documentation/services/backup) poskytuje data zálohování a obnovení služby a je součástí sady Log Analytics produktů a služeb.
 Chrání data vaší aplikace a dlouhá léta je uchovává bez nutnosti velkých investic a s minimálními provozními náklady. To můžete zálohovat data z fyzických a virtuálních serverů Windows kromě úloh aplikací, jako je SQL Server a SharePoint. Je také možné pomocí [System Center Data Protection Manager (DPM)](https://en.wikipedia.org/wiki/System_Center_Data_Protection_Manager) k replikaci chráněných dat do Azure pro redundance a dlouhodobého úložiště.
 
 

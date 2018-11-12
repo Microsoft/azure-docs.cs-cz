@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: powerbi
 ms.date: 09/25/2017
 ms.author: maghan
-ms.openlocfilehash: e6e2c0b82f306e399454c1672c56e2933e3f1158
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: eed970d46c8a895001ce0a6d7d7f37acf6c02a55
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43040861"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51249196"
 ---
 # <a name="power-bi-workspace-collections-faq"></a>Power BI pracovního prostoru kolekce – nejčastější dotazy
 
@@ -61,7 +61,7 @@ Projděte si naši dokumentaci služby podrobnosti o tom, jak použít službu k
 Ano. Zřízení a použití služby kolekce pracovních prostorů Power BI společnosti Microsoft můžete použít stávající předplatné Azure.
 
 ## <a name="does-my-application-end-user-need-a-power-bi-license"></a>Potřebuje Moje aplikace koncového uživatele licencí Power BI?
-Ne. Koncoví uživatelé vaší aplikace nejsou nutné k nákupu nebo předplatné Power BI samostatně za účelem přístupu k vizualizace dat v aplikaci. V modelu kolekce pracovních prostorů Power BI, jako poskytovatele aplikace, se účtuje služby prostřednictvím měření využití Azure. Odkazovat [cenové a licenční stránka](http://go.microsoft.com/fwlink/?LinkId=760527).
+Ne. Koncoví uživatelé vaší aplikace nejsou nutné k nákupu nebo předplatné Power BI samostatně za účelem přístupu k vizualizace dat v aplikaci. V modelu kolekce pracovních prostorů Power BI, jako poskytovatele aplikace, se účtuje služby prostřednictvím měření využití Azure. Odkazovat [cenové a licenční stránka](https://go.microsoft.com/fwlink/?LinkId=760527).
 
 ## <a name="how-does-user-authentication-work-with-power-bi-workspace-collections"></a>Jak funguje ověřování uživatelů pomocí kolekcí pracovních prostorů Power BI?
 Služba kolekce pracovních prostorů Power BI používá tokeny aplikací pro ověřování a autorizaci namísto ověřování koncového uživatele. V modelu tokenu aplikace spravuje vaše aplikace ověřování a autorizace pro koncové uživatele. Pak v případě potřeby vytvoří vaší aplikace
@@ -80,7 +80,7 @@ Vývojáři/zaměstnanci pracující na nebo vytváření vaší aplikace musí 
 Můžete přejít [stránce dokumentace s kolekcí pracovních prostorů Power BI](get-started.md). Abyste mohli zůstat si přehled o tom, tato služba [blogu Power BI](https://powerbi.microsoft.com/blog/) nebo stačí navštívit středisko pro vývojáře Power BI najdete na webu dev.powerbi.com. Můžete také klást otázky v [Stackoverflow](http://stackoverflow.com/questions/tagged/powerbi).
 
 ## <a name="how-do-i-get-started"></a>Jak mám začít?
-Můžete začít zdarma teď! Pokud máte předplatné Azure, můžete nyní zřídit kolekce pracovních prostorů Power BI na webu Azure Portal přímo. Můžete také vytvořit váš [bezplatný účet Azure](https://azure.microsoft.com/free/). Jakmile zřídíte služba kolekce pracovních prostorů Power BI, můžete snadno používat rozhraní REST API Power BI přímo, nebo použít developer SDK, které jsou k dispozici na [Githubu](http://go.microsoft.com/fwlink/?LinkID=746472). Ukázky jsou k dispozici na tom, jak využít pro vývojáře sady SDK.
+Můžete začít zdarma teď! Pokud máte předplatné Azure, můžete nyní zřídit kolekce pracovních prostorů Power BI na webu Azure Portal přímo. Můžete také vytvořit váš [bezplatný účet Azure](https://azure.microsoft.com/free/). Jakmile zřídíte služba kolekce pracovních prostorů Power BI, můžete snadno používat rozhraní REST API Power BI přímo, nebo použít developer SDK, které jsou k dispozici na [Githubu](https://go.microsoft.com/fwlink/?LinkID=746472). Ukázky jsou k dispozici na tom, jak využít pro vývojáře sady SDK.
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 

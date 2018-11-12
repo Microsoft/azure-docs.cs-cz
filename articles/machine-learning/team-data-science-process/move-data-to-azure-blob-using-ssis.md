@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: deguhath
-ms.openlocfilehash: 1a0d8106c6a48494a938ee7a9da6f43f467516f6
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 2fe57480f7d8e22cfffafec6845372718587958e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394013"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51258421"
 ---
 # <a name="move-data-to-or-from-azure-blob-storage-using-ssis-connectors"></a>Přesun dat do nebo z Azure Blob Storage pomocí konektorů SSIS
 [SQL Server Integration Services Feature Pack for Azure](https://msdn.microsoft.com/library/mt146770.aspx) obsahuje součásti pro připojení k Azure, přenos dat mezi Azure a místních zdrojů dat a zpracování dat uložených v Azure.
@@ -31,7 +31,7 @@ Po zákazníci bylo přesunuto místních dat do cloudu, jsou k ní mohou z libo
 
 Obvykle je to být první krok pro [SQL](sql-walkthrough.md) a [HDInsight](hive-walkthrough.md) návody.
 
-Diskuzi o canonical scénáře, které používají služby SSIS k dosažení obchodních potřeb běžné v scénáře integrace hybridních dat, naleznete v tématu [udělat více s SQL Server Integration Services Feature Pack for Azure](http://blogs.msdn.com/b/ssis/archive/2015/06/25/doing-more-with-sql-server-integration-services-feature-pack-for-azure.aspx) blogu.
+Diskuzi o canonical scénáře, které používají služby SSIS k dosažení obchodních potřeb běžné v scénáře integrace hybridních dat, naleznete v tématu [udělat více s SQL Server Integration Services Feature Pack for Azure](https://blogs.msdn.com/b/ssis/archive/2015/06/25/doing-more-with-sql-server-integration-services-feature-pack-for-azure.aspx) blogu.
 
 > [!NOTE]
 > Dokončení Úvod do Azure blob storage, najdete v tématu [základy Azure Blob](../../storage/blobs/storage-dotnet-how-to-use-blobs.md) a [služby Azure Blob](https://msdn.microsoft.com/library/azure/dd179376.aspx).
@@ -47,10 +47,10 @@ K provedení úloh popsaných v tomto článku, musíte mít předplatné Azure 
 Použít **konektorů SSIS**, je nutné stáhnout:
 
 * **SQL Server 2014 nebo 2016 Standard (nebo novější)**: instalace zahrnuje SQL Server Integration Services.
-* **Microsoft SQL Server 2014 nebo 2016 integrace služby Feature Pack for Azure**: tyto soubory můžete stáhnout, v uvedeném pořadí, z [SQL Server 2014 Integration Services](http://www.microsoft.com/download/details.aspx?id=47366) a [integrace SQL serveru 2016 Služby](https://www.microsoft.com/download/details.aspx?id=49492) stránky.
+* **Microsoft SQL Server 2014 nebo 2016 integrace služby Feature Pack for Azure**: tyto soubory můžete stáhnout, v uvedeném pořadí, z [SQL Server 2014 Integration Services](https://www.microsoft.com/download/details.aspx?id=47366) a [integrace SQL serveru 2016 Služby](https://www.microsoft.com/download/details.aspx?id=49492) stránky.
 
 > [!NOTE]
-> Služby SSIS je nainstalovaná se systémem SQL Server, ale není zahrnutý ve verzi Express. Informace o tom, jaké aplikace jsou zahrnuté v různých edicích systému SQL Server, naleznete v tématu [edice SQL serveru](http://www.microsoft.com/en-us/server-cloud/products/sql-server-editions/)
+> Služby SSIS je nainstalovaná se systémem SQL Server, ale není zahrnutý ve verzi Express. Informace o tom, jaké aplikace jsou zahrnuté v různých edicích systému SQL Server, naleznete v tématu [edice SQL serveru](https://www.microsoft.com/en-us/server-cloud/products/sql-server-editions/)
 > 
 > 
 

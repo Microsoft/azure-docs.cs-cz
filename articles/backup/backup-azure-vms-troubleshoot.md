@@ -8,19 +8,19 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/7/2018
 ms.author: trinadhk
-ms.openlocfilehash: 8ef8241e9f0f6223b29fa29f7a5803f57f4d6203
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 90e03c66717cafc1cd33f4629e88aba8e76c2c3f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50414994"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51245719"
 ---
 # <a name="troubleshoot-azure-virtual-machine-backup"></a>Odstraňování potíží se zálohováním virtuálních počítačů Azure
 Řešení potíží s chybami při používání Azure Backup s informacemi o uvedené v následující tabulce došlo k chybě.
 
 | Podrobnosti o chybě | Alternativní řešení |
 | --- | --- |
-| Operace se nedá provést, protože virtuální počítač už neexistuje. -Zastaví ochranu virtuálního počítače bez odstranění dat záloh. Další podrobnosti najdete v http://go.microsoft.com/fwlink/?LinkId=808124 |To se stane, když primární virtuální počítač se odstraní, ale zásady zálohování pokračuje v hledání pro virtuální počítač k zálohování. Chcete-li vyřešit tuto chybu: <ol><li> Znovu vytvořte virtuální počítač se stejným názvem a stejný název skupiny prostředků [název cloudové služby],<br>(NEBO)</li><li> Zastavte ochranu virtuálního počítače s nebo bez něj odstraňují se záložní data. [Další podrobnosti](http://go.microsoft.com/fwlink/?LinkId=808124)</li></ol> |
+| Operace se nedá provést, protože virtuální počítač už neexistuje. -Zastaví ochranu virtuálního počítače bez odstranění dat záloh. Další podrobnosti najdete v http://go.microsoft.com/fwlink/?LinkId=808124 |To se stane, když primární virtuální počítač se odstraní, ale zásady zálohování pokračuje v hledání pro virtuální počítač k zálohování. Chcete-li vyřešit tuto chybu: <ol><li> Znovu vytvořte virtuální počítač se stejným názvem a stejný název skupiny prostředků [název cloudové služby],<br>(NEBO)</li><li> Zastavte ochranu virtuálního počítače s nebo bez něj odstraňují se záložní data. [Další podrobnosti](https://go.microsoft.com/fwlink/?LinkId=808124)</li></ol> |
 | Operace snímku nebyla úspěšná kvůli bez připojení k síti na virtuální počítač – Ujistěte se, že virtuální počítač má přístup k síti. Pro snímek úspěšný buď seznamu povolených IP adres Azure datacenter IP rozsahů adres nebo nastavení proxy serveru pro přístup k síti. Další informace najdete v http://go.microsoft.com/fwlink/?LinkId=800034. Pokud už používáte proxy server, ujistěte se, že jsou správně nakonfigurované nastavení proxy serveru | Nastane, pokud odepřete odchozí připojení k Internetu na virtuálním počítači. Rozšíření snímku virtuálního počítače vyžaduje připojení k Internetu pro pořízení snímku discích. [Na opravě snímku chyby způsobené blokované síťového přístupu najdete v části](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#ExtensionSnapshotFailedNoNetwork-snapshot-operation-failed-due-to-no-network-connectivity-on-the-virtual-machine). |
 | Agent virtuálního počítače není schopen komunikovat se službou Azure Backup. – Ujistěte se virtuální počítač má síťové připojení a agent virtuálního počítače je nejnovější a spuštěna. Další informace najdete v článku http://go.microsoft.com/fwlink/?LinkId=800034. |K této chybě dojde, pokud dojde k nějakému problému s agentem VM, nebo blokovaný přístup k síti na infrastrukturu Azure nějakým způsobem. [Další informace](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#UserErrorGuestAgentStatusUnavailable-vm-agent-unable-to-communicate-with-azure-backup) o ladění můžete virtuální počítač snímek problémy.<br> Agent virtuálního počítače není způsobuje problémy, restartujte virtuální počítač. Nesprávný stav virtuálního počítače může způsobit problémy a restartování virtuálního počítače obnoví stav. |
 | Virtuální počítač je ve stavu nezdařeného zřizování – restartování virtuálního počítače a ujistěte se, že je virtuální počítač spuštěný nebo vypnout. | Tato chyba nastane, pokud jeden z rozšíření selhání vede stav virtuálního počítače ve stavu selhání zřizování. Přejít na seznam přípon a zjistit, jestli se nezdařilo rozšíření, odeberte ji a zkuste restartovat virtuální počítač. Pokud všechna rozšíření, je v běžícím stavu, kontrola, zda je spuštěná Služba agenta virtuálního počítače. Pokud ne, restartujte službu agenta virtuálního počítače. |
@@ -28,7 +28,7 @@ ms.locfileid: "50414994"
 | Může nelze zkopírovat snímek virtuálního počítače, protože je dostatek volného místa v účtu úložiště – Ujistěte se, že účet úložiště obsahuje volné místo odpovídající množství dat na disky premium storage připojených k virtuálnímu počítači | V případě virtuálních počítačů úrovně premium na zásobník záloh virtuálních počítačů V1 jsme zkopírování snímku do účtu úložiště. Toto je zajistit, že provoz správy zálohování, který pracuje na snímek, neomezuje počet vstupně-výstupních operací aplikace díky diskům premium k dispozici. Společnost Microsoft doporučuje že přidělit jenom 50 % (17,5 TB) prostoru účet celkový úložiště tak, že služba Azure Backup můžete zkopírování snímku do úložiště účtu a přenos dat z tohoto umístění zkopírovaného v účtu úložiště do trezoru. | 
 | Nelze operaci provést, protože agent virtuálního počítače nereaguje |K této chybě dojde, pokud dojde k nějakému problému s agentem VM, nebo blokovaný přístup k síti na infrastrukturu Azure nějakým způsobem. Pro virtuální počítače s Windows zkontrolujte stav služby agenta virtuálního počítače do služby a určuje, zda agent zobrazí v programy v Ovládacích panelech. Zkuste odebrat program z ovládacího panelu a opětovné instalaci agenta, jak je uvedeno [níže](#vm-agent). Po opětovné instalaci agenta, aktivujte zálohování ad hoc k ověření. |
 | Operace rozšíření služby Recovery services se nezdařilo. – Ujistěte se, že nejnovější agent virtuálního počítače je k dispozici na virtuálním počítači a je spuštěna Služba agenta. Zkuste operaci zálohování zopakujte. Pokud selže celá operace zálohování, kontaktujte podporu Microsoftu. |Tato chyba se vyvolá, když se agent virtuálního počítače je zastaralá. Přečtěte si níže aktualizace agenta virtuálního počítače v části "Aktualizace the Agent virtuálního počítače". |
-| Virtuální počítač neexistuje. – Ujistěte se, že virtuální počítač existuje, nebo vyberte jiný virtuální počítač. |Nastane, pokud primární virtuální počítač se odstraní, ale zásady zálohování i nadále vyhledejte virtuální počítač k zálohování. Chcete-li vyřešit tuto chybu: <ol><li> Znovu vytvořte virtuální počítač se stejným názvem a stejný název skupiny prostředků [název cloudové služby],<br>(NEBO)<br></li><li>Zastavte ochranu virtuálního počítače bez odstranění zálohovaná data. [Další podrobnosti](http://go.microsoft.com/fwlink/?LinkId=808124)</li></ol> |
+| Virtuální počítač neexistuje. – Ujistěte se, že virtuální počítač existuje, nebo vyberte jiný virtuální počítač. |Nastane, pokud primární virtuální počítač se odstraní, ale zásady zálohování i nadále vyhledejte virtuální počítač k zálohování. Chcete-li vyřešit tuto chybu: <ol><li> Znovu vytvořte virtuální počítač se stejným názvem a stejný název skupiny prostředků [název cloudové služby],<br>(NEBO)<br></li><li>Zastavte ochranu virtuálního počítače bez odstranění zálohovaná data. [Další podrobnosti](https://go.microsoft.com/fwlink/?LinkId=808124)</li></ol> |
 | Příkaz se nepodařilo spustit. -U této položky právě probíhá jiná operace. Počkejte, dokud se nedokončí předchozí operace a pak zkuste operaci zopakovat. |Spuštěná existující úloha zálohování a novou úlohu nelze spustit, dokud se nedokončí aktuální úlohu. |
 | Kopírování virtuálních pevných disků ze služby Recovery Services vault vypršení časového limitu – zkuste operaci zopakovat za několik minut. Pokud to problém nevyřeší, obraťte se na oddělení podpory Microsoftu. | Nastane, pokud dochází k přechodné chybě na straně úložiště nebo pokud službu Backup v účtu úložiště dostatek vstupně-výstupních operací pro přenos dat do trezoru, v časovém limitu. Ujistěte se, že chcete postupovat podle [osvědčené postupy při konfiguraci vašich virtuálních počítačů](backup-azure-vms-introduction.md#best-practices). Váš virtuální počítač přesunout do jiného účtu úložiště, který není načten a opakujte úlohu zálohování.|
 | Zálohování selhalo s interní chybou – zkuste operaci zopakovat za několik minut. Pokud se problém nevyřeší, obraťte se na Microsoft Support |Tato chyba se zobrazí dvou důvodů: <ol><li> K používání úložiště virtuálního počítače je přechodný problém. Zkontrolujte [web Azure stavu](https://azure.microsoft.com/status/) zobrazíte, pokud dojde k problémům výpočetní prostředky, úložiště nebo sítě v oblasti. Po vyřešení problému opakujte úlohu zálohování. <li>Původní virtuální počítač odstranil a bod obnovení nelze provést. Chcete zachovat zálohovaná data pro odstraněného virtuálního počítače, ale odebrat chyby zálohování: zrušit ochranu virtuálního počítače a vyberte možnost zachovat data. Tato akce zastaví naplánované úlohy zálohování a opakované chybové zprávy. |
@@ -82,18 +82,18 @@ Obvykle je Agent virtuálního počítače už ve virtuálních počítačích v
 
 Pro virtuální počítače s Windows:
 
-* Stáhněte si a nainstalujte [MSI agenta](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). K dokončení instalace je potřeba oprávnění správce.
-* Pro klasické virtuální počítače [aktualizovat vlastnosti virtuálního počítače](http://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx) označující, zda je agent nainstalovaný. Tento krok není povinný pro virtuální počítače Resource Manageru.
+* Stáhněte si a nainstalujte [MSI agenta](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). K dokončení instalace je potřeba oprávnění správce.
+* Pro klasické virtuální počítače [aktualizovat vlastnosti virtuálního počítače](https://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx) označující, zda je agent nainstalovaný. Tento krok není povinný pro virtuální počítače Resource Manageru.
 
 Pro virtuální počítače s Linuxem:
 
 * Nainstalujte nejnovější verzi agenta z úložiště distribuce. Podrobnosti o název balíčku, najdete v článku [úložiště agent systému Linux](https://github.com/Azure/WALinuxAgent).
-* Pro klasické virtuální počítače [použijte příspěvku na blogu k aktualizaci vlastností virtuálního počítače](http://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx)a ověřit, že agent je nainstalovaný. Tento krok není povinný pro virtuální počítače Resource Manageru.
+* Pro klasické virtuální počítače [použijte příspěvku na blogu k aktualizaci vlastností virtuálního počítače](https://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx)a ověřit, že agent je nainstalovaný. Tento krok není povinný pro virtuální počítače Resource Manageru.
 
 ### <a name="updating-the-vm-agent"></a>Aktualizace agenta virtuálního počítače
 Pro virtuální počítače s Windows:
 
-* Pokud chcete aktualizovat agenta virtuálního počítače, přeinstalujte [binárních souborů agenta virtuálního počítače](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). Před aktualizací agenta, ujistěte se, že žádná operace zálohování, k nimž došlo při aktualizaci agenta virtuálního počítače.
+* Pokud chcete aktualizovat agenta virtuálního počítače, přeinstalujte [binárních souborů agenta virtuálního počítače](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). Před aktualizací agenta, ujistěte se, že žádná operace zálohování, k nimž došlo při aktualizaci agenta virtuálního počítače.
 
 Pro virtuální počítače s Linuxem:
 
@@ -135,7 +135,7 @@ Stejně jako všechna rozšíření záložní linka se potřebují přístup k 
 * Operace zálohování (např. snímku disku) může selhat.
 * Zobrazení stavu operace zálohování může selhat.
 
-Byla kloubové potřebu řešení veřejné internetové adresy [tady](http://blogs.msdn.com/b/mast/archive/2014/06/18/azure-vm-provisioning-stuck-on-quot-installing-extensions-on-virtual-machine-quot.aspx). Budete muset Zkontrolujte konfiguraci DNS pro virtuální síť a ujistěte se, že identifikátory URI Azure lze vyřešit.
+Byla kloubové potřebu řešení veřejné internetové adresy [tady](https://blogs.msdn.com/b/mast/archive/2014/06/18/azure-vm-provisioning-stuck-on-quot-installing-extensions-on-virtual-machine-quot.aspx). Budete muset Zkontrolujte konfiguraci DNS pro virtuální síť a ujistěte se, že identifikátory URI Azure lze vyřešit.
 
 Po dokončení správně překlad názvů, přístup k IP adresy Azure také musí být k dispozici. Pokud chcete odblokovat přístup k infrastruktuře Azure, použijte jeden z těchto kroků:
 

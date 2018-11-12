@@ -2,18 +2,18 @@
 title: Rozšíření pomocí virtuální sítě – Azure HDInsight
 description: Zjistěte, jak pomocí Azure Virtual Network připojení HDInsight k jiným cloudovým prostředkům nebo prostředkům ve vašem datovém centru
 services: hdinsight
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/08/2018
-ms.openlocfilehash: 5ee249aee5d95f22f2e1f52d6356f09ea41ccd68
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.date: 11/06/2018
+ms.openlocfilehash: 62502e946922928b8b4179d38ce9f9ae55f9930d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945752"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238977"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Rozšíření Azure HDInsight pomocí Azure Virtual Network
 
@@ -25,7 +25,7 @@ Zjistěte, jak používat HDInsight s [Azure Virtual Network](../virtual-network
 
 * Připojování k datům HDInsight ukládají ve službě Azure Virtual network.
 
-* Přímý přístup k systému Hadoop služby, které nejsou k dispozici veřejně přes internet. Například rozhraní API systému Kafka nebo HBase Java API.
+* Přímý přístup k systému Apache Hadoop služby, které nejsou k dispozici veřejně přes internet. Například rozhraní API systému Kafka nebo HBase Java API.
 
 > [!WARNING]
 > Informace v tomto dokumentu jsou nutné znalosti toho sítě TCP/IP. Pokud nejste obeznámeni s prací v síti TCP/IP, by měla spolupracovat s někým, kdo je před provedením změny do produkčních sítích.
@@ -64,7 +64,7 @@ Pomocí kroků v této části zjistíte, jak přidat nové HDInsight do existuj
 
     Jakmile připojený, HDInsight, které jsou nainstalovány v síti správce prostředků může interagovat s prostředky v klasickou síť.
 
-2. Používáte vynucené tunelování? Vynucené tunelování znamená nastavení podsítě, která vynutí odchozí internetový provoz do zařízení pro kontrolu a protokolování. HDInsight nepodporuje vynucené tunelování. Buď odeberte vynucené tunelování před instalací HDInsight do podsítě, nebo vytvořte novou podsíť pro HDInsight.
+2. Používáte vynucené tunelování? Vynucené tunelování znamená nastavení podsítě, která vynutí odchozí internetový provoz do zařízení pro kontrolu a protokolování. HDInsight nepodporuje vynucené tunelování. Buď odeberte vynucené tunelování před nasazením HDInsight do existující podsítě, nebo vytvořte novou podsíť žádné vynucené tunelování pro HDInsight.
 
 3. Používáte skupiny zabezpečení sítě, tras definovaných uživatelem nebo virtuální síťová zařízení k omezení provozu do nebo ven z virtuální sítě?
 
@@ -121,7 +121,7 @@ Největším problémem s několika síťovými konfigurací se překlad mezi s�
 
 Azure nabízí řešení názvů pro služby Azure, které jsou nainstalovány ve virtuální síti. Ten integrované umožňuje HDInsight pro připojení k následujícím prostředkům pomocí použitím plně kvalifikovaného názvu domény (FQDN):
 
-* Prostředek, který je dostupný na Internetu. Třeba microsoft.com, google.com.
+* Prostředek, který je dostupný na Internetu. Třeba microsoft.com, windowsupdate.com.
 
 * Prostředek, který je ve stejné virtuální síti Azure, pomocí __interní název DNS__ prostředku. Například při použití výchozí název rozhodnutí, následují interní názvy DNS příklad přiřazené pracovní uzly HDInsight:
 
@@ -173,7 +173,7 @@ Další informace najdete v tématu [překlad názvů pro virtuální počítač
 
 ## <a name="directly-connect-to-hadoop-services"></a>Připojit přímo k služby Hadoop
 
-Můžete připojit ke clusteru v https://CLUSTERNAME.azurehdinsight.net. Tato adresa se používá veřejnou IP adresu, která možná nejsou dostupná, pokud jste použili skupiny zabezpečení sítě nebo udr omezit příchozí provoz z Internetu. Kromě toho při nasazování clusteru ve virtuální síti k němu máte přístup pomocí privátního koncového bodu https://CLUSTERNAME-int.azurehdinsight.net. Tento koncový bod se přeloží na privátní IP adresu ve virtuální síti pro přístup ke clusteru.
+Můžete připojit ke clusteru v https://CLUSTERNAME.azurehdinsight.net. Tato adresa se používá veřejnou IP adresu, která nemusí být dostupný, pokud jste použili skupiny Nsg k omezení příchozí provoz z Internetu. Kromě toho při nasazování clusteru ve virtuální síti k němu máte přístup pomocí privátního koncového bodu https://CLUSTERNAME-int.azurehdinsight.net. Tento koncový bod se přeloží na privátní IP adresu ve virtuální síti pro přístup ke clusteru.
 
 Pro připojení k Ambari a další webové stránky prostřednictvím virtuální sítě, postupujte následovně:
 
@@ -213,13 +213,13 @@ Síťový provoz v Azure Virtual Network se dá řídit pomocí následujících
 * **Skupiny zabezpečení sítě** (NSG) umožňují filtrovat příchozí a odchozí přenosy v síti. Další informace najdete v tématu [filtrování provozu sítě s použitím skupin zabezpečení sítě](../virtual-network/security-overview.md) dokumentu.
 
     > [!WARNING]
-    > HDInsight nepodporuje omezení odchozího provozu.
+    > HDInsight nepodporuje omezení odchozího provozu. Má povolený veškerý odchozí provoz.
 
 * **Trasy definované uživatelem** (UDR) definovat provozní tok mezi prostředky v síti. Další informace najdete v tématu [trasy definované uživatelem a předávání IP](../virtual-network/virtual-networks-udr-overview.md) dokumentu.
 
 * **Síťová virtuální zařízení** replikovat funkce zařízení, jako jsou brány firewall a směrovače. Další informace najdete v tématu [síťová zařízení](https://azure.microsoft.com/solutions/network-appliances) dokumentu.
 
-HDInsight je spravovaná služba, vyžaduje neomezený přístup ke stavu a Správa služby Azure v cloudu Azure. Při použití skupin zabezpečení sítě a trasy definované uživatelem, musíte zajistit, že HDInsight tyto služby nadále komunikovat s HDInsight.
+Je spravovaná služba HDInsight vyžaduje neomezený přístup ke stavu HDinsight a správu služeb pro příchozí a odchozí provoz z virtuální sítě. Při použití skupin zabezpečení sítě a trasy definované uživatelem, musíte zajistit, že tyto služby můžete stále komunikovat s clusterem HDInsight.
 
 HDInsight poskytuje služby na několika portech. Při použití brány firewall virtuální zařízení, musí umožňovat provoz na portech používaných pro tyto služby. Další informace najdete v části [požadované porty].
 
@@ -233,8 +233,8 @@ Pokud máte v úmyslu používat **skupiny zabezpečení sítě** nebo **trasy d
 
 3. Vytvoření nebo úprava skupiny zabezpečení sítě nebo trasy definované uživatelem pro podsíť, která budete chtít nainstalovat do HDInsight.
 
-    * __Skupiny zabezpečení sítě__: Povolit __příchozí__ přenosy na portu __443__ z IP adresy.
-    * __Trasy definované uživatelem__: vytvořit trasu pro každou IP adresu a nastavit __typem dalšího segmentu směrování__ k __Internet__.
+    * __Skupiny zabezpečení sítě__: Povolit __příchozí__ přenosy na portu __443__ z IP adresy. Tím se zajistí, že správa služby Hdinsight můžete oslovit clusteru od mimo virtuální síť.
+    * __Trasy definované uživatelem__: Pokud máte v plánu použít trasy definované uživatelem, vytvořte trasu pro každou IP adresu a nastavte __typem dalšího segmentu směrování__ k __Internet__. By mělo také umožnit veškerého odchozího provozu z virtuální sítě s bez omezení. Například může směrovat veškerý ostatní provoz Azure brány firwall nebo síťové virtuální zařízení (hostované v Azure) pro účely monitorování ale odchozí provoz by neměl být zablokovaný.
 
 Další informace o skupinách zabezpečení sítě nebo trasy definované uživatelem najdete v následující dokumentaci:
 
@@ -242,9 +242,9 @@ Další informace o skupinách zabezpečení sítě nebo trasy definované uživ
 
 * [Trasy definované uživatelem](../virtual-network/virtual-networks-udr-overview.md)
 
-#### <a name="forced-tunneling"></a>Vynucené tunelování
+#### <a name="forced-tunneling-to-on-premise"></a>Vynucené tunelování na místní
 
-Vynucené tunelování znamená konfigurace směrování definované uživatelem, ve kterém musí veškerý provoz z jedné podsítě určitého síťového umístění nebo umístění, například v místní síti. HDInsight nepodporuje __není__ podporu vynucené tunelování.
+Vynucené tunelování znamená konfigurace směrování definované uživatelem, ve kterém musí veškerý provoz z jedné podsítě určitého síťového umístění nebo umístění, například v místní síti. HDInsight nepodporuje __není__ podporu vynuceným tunelovým propojením do místní sítě. Pokud používáte Firewall služby Azure nebo virtuální zařízení síťový hostované v Azure, můžete použít trasy definované uživatelem pro směrování provozu k němu pro účely monitorování a povolují veškerý odchozí provoz.
 
 ## <a id="hdinsight-ip"></a> Požadované IP adresy
 

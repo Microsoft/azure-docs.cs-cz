@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: 4b4669ecdae474c8926a346ed02f40913cf67265
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: a73559e233f647d5bf0812a5acdf5e19f05b0858
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47093487"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51255417"
 ---
 # <a name="troubleshoot-cloud-service-roles-that-fail-to-start"></a>Řešení potíží s rolí cloudové služby, které nejde spustit
 Tady jsou některé běžné problémy a řešení souvisejících s Azure Cloud Services role, které nejde spustit.
@@ -66,7 +66,7 @@ Vzdálená plocha můžete použít pro přístup k roli a vzdáleně zobrazit p
 2. Při nasazení řešení pomocí sady Visual Studio povolte vzdálenou plochu. Další informace najdete v tématu [povolit připojení ke vzdálené ploše pro roli v cloudových službách Azure pomocí sady Visual Studio](cloud-services-role-enable-remote-desktop-visual-studio.md).
 3. Na portálu Microsoft Azure, jakmile se zobrazí stav instance **připravené**, vzdáleně se přihlaste k instanci. Další informace o použití vzdálené plochy s cloudovými službami, naleznete v tématu [vzdáleném připojení k instancím rolí](cloud-services-role-enable-remote-desktop-new-portal.md#remote-into-role-instances).
 5. Přihlaste se k virtuálnímu počítači pomocí přihlašovacích údajů, které se zadaly během konfigurace vzdálené plochy.
-6. Otevřete okno příkazového řádku.
+6. Otevřete příkazové okno.
 7. Zadejte `IPconfig`.
 8. Poznamenejte si IPV4 adresu hodnotu.
 9. Spusťte aplikaci Internet Explorer.
@@ -125,4 +125,4 @@ Jakmile si ověříte, že byly odstraněny všechny chyby, můžete nasadit slu
 ## <a name="next-steps"></a>Další postup
 Zobrazit další [článků o řešení potíží](https://azure.microsoft.com/documentation/articles/?tag=top-support-issue&product=cloud-services) pro cloudové služby.
 
-Zjistěte, jak řešit problémy s cloudovou službou role pomocí Azure PaaS počítače diagnostická data, najdete v článku [Kevin Williamson blogovou sérii](http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx).
+Zjistěte, jak řešit problémy s cloudovou službou role pomocí Azure PaaS počítače diagnostická data, najdete v článku [Kevin Williamson blogovou sérii](https://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx).

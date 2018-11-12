@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 manager: cgronlun
 ms.topic: conceptual
 ms.date: 11/6/2018
-ms.openlocfilehash: b95b62ab2c51fec93870e3f5593d53a599f3dad2
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
-ms.translationtype: HT
+ms.openlocfilehash: 8ce411e424d538a4a1f94300bfe5510658017f56
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51218946"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238313"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Konfigurace prostředí pro vývoj pro Azure Machine Learning
 
@@ -98,11 +98,19 @@ Příklad použití poznámkových bloků Azure se službou Azure Machine Learni
   - Integrované vývojové prostředí (IDE), jako je PyCharm a nástroje RStudio
   - Balíčků, jako jsou poznámkové bloky Jupyter a Tensorflow
 
-Datové VĚDY se dodává s více prostředími Anaconda už nainstalovaná. Pokud chcete používat Azure Machine Learning Python SDK bez jakékoli instalace balíčku, otevřete okno příkazového řádku a aktivovat toto prostředí.
+Datové VĚDY se dodává s více prostředími Anaconda už nainstalovaná. Pokud chcete používat Azure Machine Learning Python SDK bez jakékoli instalace balíčku, otevřete příkazový řádek nebo prostředí a k aktivaci prostředí použít jeden z následujících příkazů:
 
-```shell
-conda activate AzureML
-```
+* Na __Ubuntu__ DSVM, použijte tento příkaz:
+
+    ```shell
+    conda activate py36
+    ```
+
+* Na __Windows__ DSVM, použijte tento příkaz:
+
+    ```shell
+    conda activate AzureML
+    ```
 
 Jednou v tomto prostředí můžete okamžitě importovat sady SDK Azure Machine Learning v sestavení nástroje podle vašeho výběru, bez instalace balíčku.
 

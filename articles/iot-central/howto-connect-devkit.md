@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: cca475f552495a42aabc60faf0bd57382f148120
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 1bfa52d07ddc4eaf86bce17c0ad7c63493a8b5fd
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50958563"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51255723"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>Připojení MXChip IoT DevKit zařízení do aplikace Azure IoT Central
 
@@ -69,7 +69,7 @@ V aplikaci Azure IoT Central přidat z reálného zařízení **MXChip** šablon
 #### <a name="to-prepare-the-devkit-device"></a>K přípravě DevKit zařízení:
 
 
-1. Stáhněte si nejnovější předem sestavených Azure IoT Central firmware pro MXChip z [uvolní](http://aka.ms/iotcentral-docs-MXChip-releases) stránku na Githubu.
+1. Stáhněte si nejnovější předem sestavených Azure IoT Central firmware pro MXChip z [uvolní](https://aka.ms/iotcentral-docs-MXChip-releases) stránku na Githubu.
 1. Připojte zařízení DevKit na vývojovém počítači pomocí kabelu USB. Ve Windows otevře se okno Průzkumníka souborů na jednotce namapované na úložiště na zařízení DevKit. Například může být volán na jednotce **AZ3166 (D:)**.
 1. Přetáhněte **iotCentral.bin** soubor do okna jednotky. Po dokončení kopírování s novým firmwarem restartování zařízení.
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: juliako;anilmur
-ms.openlocfilehash: ef74ebfab9450d0aa22b5a2f3287491d96573cff
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 9c6e26b082fb52f7d23bb1a827af30483f7fbd4f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50249165"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51255706"
 ---
 # <a name="media-encoder-standard-formats-and-codecs"></a>Kodeky a standardní formáty kodéru médií
 Tento dokument obsahuje seznam nejběžnějších import a export formátů souborů, které můžete použít pomocí kodéru Media Encoder Standard.
@@ -87,7 +87,7 @@ Pro explicitní nebo uživatelem zadaný kanál mapování poskytneme vám podpo
 | Windows Media zvuku |Ano |
 | WAV/PCM |Ano |
 | [FLAC](https://en.wikipedia.org/wiki/FLAC)</a> |Ano |
-| [Díle](http://go.microsoft.com/fwlink/?LinkId=822667) |Ano |
+| [Díle](https://go.microsoft.com/fwlink/?LinkId=822667) |Ano |
 | [Vorbis](https://en.wikipedia.org/wiki/Vorbis)</a> |Ano |
 | AMR (Adaptivní s více rychlost) |Ano |
 | AES (SMPTE 331 M a 302 M, AES3-2003) |Ne |

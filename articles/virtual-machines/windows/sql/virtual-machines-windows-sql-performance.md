@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 09/26/2018
 ms.author: jroth
-ms.openlocfilehash: 0119c6642d68db6a90af07395882e620b1af08c6
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 395994e2ac017bcdadaca4defad4ec0f910cea17
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47394945"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51258125"
 ---
 # <a name="performance-guidelines-for-sql-server-in-azure-virtual-machines"></a>Pokyny k výkonu pro SQL Server ve službě Azure Virtual Machines
 
@@ -40,7 +40,7 @@ Následuje seznam Rychlá kontrola pro optimální výkon systému SQL Server na
 | Oblast | Optimalizace |
 | --- | --- |
 | [Velikost virtuálního počítače](#vm-size-guidance) |[DS3_v2](../sizes-general.md) nebo vyšší pro SQL Enterprise edition.<br/><br/>[DS2_v2](../sizes-general.md) nebo vyšší pro edice SQL Standard a Web. |
-| [Úložiště](#storage-guidance) |Použití [Storage úrovně Premium](../premium-storage.md). Storage úrovně standard se doporučuje jenom pro vývoj a testování.<br/><br/>Zachovat [účtu úložiště](../../../storage/common/storage-create-storage-account.md) a virtuální počítač s SQL serverem ve stejné oblasti.<br/><br/>Zakázat Azure [geograficky redundantní úložiště](../../../storage/common/storage-redundancy.md) (geografickou replikaci) do účtu úložiště. |
+| [Storage](#storage-guidance) |Použití [Storage úrovně Premium](../premium-storage.md). Storage úrovně standard se doporučuje jenom pro vývoj a testování.<br/><br/>Zachovat [účtu úložiště](../../../storage/common/storage-create-storage-account.md) a virtuální počítač s SQL serverem ve stejné oblasti.<br/><br/>Zakázat Azure [geograficky redundantní úložiště](../../../storage/common/storage-redundancy.md) (geografickou replikaci) do účtu úložiště. |
 | [Disky](#disks-guidance) |Použijte nejméně 2 [disky P30](../premium-storage.md#scalability-and-performance-targets) (1 pro soubory protokolů a 1 pro datové soubory databáze TempDB včetně).<br/><br/>Vyhněte se použití operačního systému nebo dočasné disky úložiště databáze nebo protokolování.<br/><br/>Povolte čtení ukládání do mezipaměti na discích hostování datové soubory a datové soubory databáze TempDB.<br/><br/>Nepovolujte ukládání do mezipaměti na disky, který je hostitelem souboru protokolu.<br/><br/>Důležité: Zastavte službu systému SQL Server, když Změna nastavení mezipaměti pro disk virtuálního počítače Azure.<br/><br/>Prokládané více datové disky Azure a zajistit si vyšší propustnost vstupně-výstupních operací.<br/><br/>Formátovat dokument přidělení velikosti. |
 | [VSTUPNĚ-VÝSTUPNÍCH OPERACÍ](#io-guidance) |Povolte kompresi stránky databáze.<br/><br/>Povolte rychlé soubor inicializace pro datové soubory.<br/><br/>Omezit zahrnout do automatického zvětšování databáze.<br/><br/>Zakážete automatické zmenšování v databázi.<br/><br/>Přesuňte všechny databáze na datové disky, včetně systémových databází.<br/><br/>SQL Server chybu protokolu a trasování adresářů se soubory přesuňte do datových disků.<br/><br/>Nastavte výchozí zálohování a databáze umístění souborů.<br/><br/>Povolte uzamčených stránek.<br/><br/>Použijte opravy výkonu systému SQL Server. |
 | [Konkrétní funkce](#feature-specific-guidance) |Zálohovat přímo do úložiště objektů blob. |
@@ -166,7 +166,7 @@ Pro virtuální počítače, které podporují službu Premium Storage (řady DS
     ![Soubory protokolu SQL dat a zálohování](./media/virtual-machines-windows-sql-performance/sql_server_default_data_log_backup_locations.png)
 * Povolte uzamčených stránek ke snížení vstupně-výstupní operace a všech aktivit stránkování. Další informace najdete v tématu [povolit Uzamknout stránky v paměti (Windows)](https://msdn.microsoft.com/library/ms190730.aspx).
 
-* Pokud používáte systém SQL Server 2012, nainstalujte Service Pack 1 kumulativní aktualizací 10. Tato aktualizace obsahuje opravy nízký výkon vstupně-výstupní operace při spuštění vyberte Select dočasné tabulky v SQL Server 2012. Informace najdete v tomto [znalostní báze Knowledge base](http://support.microsoft.com/kb/2958012).
+* Pokud používáte systém SQL Server 2012, nainstalujte Service Pack 1 kumulativní aktualizací 10. Tato aktualizace obsahuje opravy nízký výkon vstupně-výstupní operace při spuštění vyberte Select dočasné tabulky v SQL Server 2012. Informace najdete v tomto [znalostní báze Knowledge base](https://support.microsoft.com/kb/2958012).
 
 * Vezměte v úvahu při přenosu vstup/výstup Azure komprese všechny datové soubory.
 

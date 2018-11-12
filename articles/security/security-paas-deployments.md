@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/21/2018
 ms.author: terrylan
-ms.openlocfilehash: 35650eec65fa9181d035c52e6b466985b483500c
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 98eee29dc6810d35ee1792c601e6d2f147602cae
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47036503"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51262178"
 ---
 # <a name="securing-paas-deployments"></a>Zabezpečení nasazení PaaS
 
@@ -115,7 +115,7 @@ Následující tabulka uvádí hrozby ROZTEČ a poskytuje některá příklad zm
 | Manipulace | Integrita | Ověření certifikátů SSL. |
 | odmítnutí | Neodvolatelnost | Povolení služby Azure [monitorováním a diagnostikou](https://docs.microsoft.com/azure/architecture/best-practices/monitoring). |
 | Zpřístupnění informací | Důvěrnost | Šifrovat citlivá data v klidovém stavu pomocí [služby certifikáty](https://docs.microsoft.com/rest/api/appservice/certificates). |
-| Útok DoS | Dostupnost | Monitorovat metriky výkonu pro potenciální útok na dostupnost služby podmínky. Implementace připojení filtry. |
+| Přerušení služby | Dostupnost | Monitorovat metriky výkonu pro potenciální útok na dostupnost služby podmínky. Implementace připojení filtry. |
 | Zvýšení úrovně oprávnění | Autorizace | Použití [Privileged Identity Management](../active-directory/privileged-identity-management/subscription-requirements.md). |
 
 ## <a name="develop-on-azure-app-service"></a>Vývoj pro služby Azure App Service
@@ -151,7 +151,7 @@ Webové aplikace se čím dál častěji stávají cílem škodlivých útoků, 
 ## <a name="monitor-the-performance-of-your-applications"></a>Monitorování výkonu aplikací
 Monitorování je shromažďování a analýza dat s cílem určit výkon, stav a dostupnost vaší aplikace. Efektivní strategie monitorování vám pomůže porozumět provozu jednotlivých komponent vaší aplikace. Pomůže vám prodloužit dobu provozu podle vás upozorní na kritické problémy tak, aby je mohli vyřešit předtím, než začnou způsobovat problémy. Také pomáhá detekovat anomálie, které může být týkající se zabezpečení.
 
-Použití [Azure Application Insights](http://azure.microsoft.com/documentation/services/application-insights) monitorovat dostupnost, výkon a využití vaší aplikace, jestli je hostovaný v cloudu nebo místně. S využitím Application Insights, můžete rychle identifikovat a diagnostikovat chyby ve vaší aplikaci bez čekání na jejich nahlášení uživatelem. Na základě shromažďovaných informací můžete informovaně rozhodovat o údržbě a vylepšení vaší aplikace.
+Použití [Azure Application Insights](https://azure.microsoft.com/documentation/services/application-insights) monitorovat dostupnost, výkon a využití vaší aplikace, jestli je hostovaný v cloudu nebo místně. S využitím Application Insights, můžete rychle identifikovat a diagnostikovat chyby ve vaší aplikaci bez čekání na jejich nahlášení uživatelem. Na základě shromažďovaných informací můžete informovaně rozhodovat o údržbě a vylepšení vaší aplikace.
 
 Application Insights obsahuje řadu nástrojů pro interakci se shromažďovanými daty. Application Insights ukládá svoje data do běžného úložiště. Může využívat sdílené funkce, například upozornění, řídicí panely a hloubkovou analýzu pomocí dotazovacího jazyka Log Analytics.
 

@@ -2,19 +2,19 @@
 title: Použití zobrazení Ambari k práci s Hive v HDInsight (Hadoop) – Azure
 description: Další informace o použití zobrazení Hivu z webového prohlížeče k odesílání dotazů Hive. Zobrazení Hive je součástí webového rozhraní Ambari, opatřeného vašeho clusteru HDInsight se systémem Linux.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.author: jasonh
-ms.openlocfilehash: 43b82070ced57c0654d646fbea5a12aeab7c2a31
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.author: hrasheed
+ms.openlocfilehash: c481889eda53ff46a8899676da2529fe4165dfd5
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43048517"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51233147"
 ---
 # <a name="use-ambari-hive-view-with-hadoop-in-hdinsight"></a>Použití zobrazení Ambari Hive se systémem Hadoop v HDInsight
 
@@ -166,7 +166,7 @@ Pak můžete systému souborů UDF v dotazu. Například, `SELECT myawesomeudf(n
 Další informace o používání funkcí UDF pomocí Hive v HDInsight najdete v následujících článcích:
 
 * [Použití Pythonu s Hivem a Pigem ve HDInsight](python-udf-hdinsight.md)
-* [Jak přidat vlastní Hive UDF pro HDInsight](http://blogs.msdn.com/b/bigdatasupport/archive/2014/01/14/how-to-add-custom-hive-udfs-to-hdinsight.aspx)
+* [Jak přidat vlastní Hive UDF pro HDInsight](https://blogs.msdn.com/b/bigdatasupport/archive/2014/01/14/how-to-add-custom-hive-udfs-to-hdinsight.aspx)
 
 ## <a name="hive-settings"></a>Nastavení hivu
 

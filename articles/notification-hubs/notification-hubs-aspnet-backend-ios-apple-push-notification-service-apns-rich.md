@@ -14,12 +14,12 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 04/25/2018
 ms.author: dimazaid
-ms.openlocfilehash: f2fa2b8b43a4840d8c6956efb7704327cca78d7c
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 8aad769da4d1c831dc0222c39daf86801a4f850b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50232508"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51244283"
 ---
 # <a name="azure-notification-hubs-rich-push"></a>Azure Notification Hubs bohaté Push
 ## <a name="overview"></a>Přehled
@@ -94,7 +94,7 @@ Na vysoké úrovni:
         }
    
    > [!NOTE]
-   > (volitelné) Odkazovat na [vložení a přístup k prostředkům pomocí Vizuálu C# ](http://support.microsoft.com/kb/319292) Další informace o tom, jak přidat a získání prostředků projektu.
+   > (volitelné) Odkazovat na [vložení a přístup k prostředkům pomocí Vizuálu C# ](https://support.microsoft.com/kb/319292) Další informace o tom, jak přidat a získání prostředků projektu.
    > 
    > 
 7. V **NotificationsController.cs**, znovu definovat **NotificationsController** s následující fragmenty kódu. To odesílá id počáteční tiché bohaté oznámení do zařízení a umožní na straně klienta načtení bitové kopie:

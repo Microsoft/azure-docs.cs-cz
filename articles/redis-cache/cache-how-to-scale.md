@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/11/2017
 ms.author: wesmc
-ms.openlocfilehash: 885258379e71ea945e41c4b43c34b35b16dd4a7a
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 91a2b112000e970b73420abaa26efc7de1caa626
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42056805"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261449"
 ---
 # <a name="how-to-scale-azure-redis-cache"></a>Postup škálování Azure Redis Cache
 Azure Redis Cache má jiný nabídek, které poskytují flexibilitu při výběru velikosti a funkcí mezipaměti. Po vytvoření mezipaměti je možné škálovat velikost a cenovou úroveň mezipaměti, pokud se změní požadavky aplikace. Tento článek popisuje, jak se dá škálovat mezipaměť pomocí webu Azure portal a nástrojů, jako je Azure PowerShell a rozhraní příkazového řádku Azure.
@@ -81,7 +81,7 @@ Chcete-li škálovat vaše instance Azure Redis Cache pomocí Azure CLI, zavolej
 Další informace o škálování pomocí Azure CLI najdete v tématu [změnit nastavení existující služby Redis cache](cache-manage-cli.md#scale).
 
 ### <a name="scale-using-maml"></a>Škálování pomocí MAML
-Azure Redis Cache škálovat instance pomocí [Microsoft Azure Management knihovny (MAML)](http://azure.microsoft.com/updates/management-libraries-for-net-release-announcement/), volání `IRedisOperations.CreateOrUpdate` metoda a předejte jí nové velikost `RedisProperties.SKU.Capacity`.
+Azure Redis Cache škálovat instance pomocí [Microsoft Azure Management knihovny (MAML)](https://azure.microsoft.com/updates/management-libraries-for-net-release-announcement/), volání `IRedisOperations.CreateOrUpdate` metoda a předejte jí nové velikost `RedisProperties.SKU.Capacity`.
 
     static void Main(string[] args)
     {

@@ -10,12 +10,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 10/08/2018
 ms.author: glenga
-ms.openlocfilehash: b2676e8f86955a7601f9656f0a038b5ba904a462
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
-ms.translationtype: HT
+ms.openlocfilehash: 888b9a256a68b77b91145bb3ccfeea820c97ccfa
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51036423"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51515365"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Vývoj Azure Functions pomocí sady Visual Studio  
 
@@ -189,7 +189,7 @@ Další informace o používání nástrojů Azure Functions Core najdete v tém
 
 Všechna nastavení, které jste přidali v kroku local.settings.json musí být rovněž přidán do aplikace function app v Azure. Tato nastavení nejsou automaticky nahraje při publikování tohoto projektu.
 
-Nejjednodušší způsob, jak nahrát požadovaná nastavení do vaší aplikace funkcí v Azure je použít **spravovat nastavení aplikace...**  odkaz, který se zobrazí po úspěšném publikování projektu. 
+Nejjednodušší způsob, jak nahrát požadovaná nastavení do vaší aplikace funkcí v Azure je použít **spravovat nastavení aplikace...**  odkaz, který se zobrazí po úspěšném publikování projektu.
 
 ![](./media/functions-develop-vs/functions-vstools-app-settings.png)
 
@@ -197,11 +197,13 @@ Zobrazí se **nastavení aplikace** dialogové okno pro aplikaci function app, v
 
 ![](./media/functions-develop-vs/functions-vstools-app-settings2.png)
 
+**Místní** představuje hodnotu nastavení v souboru local.settings.json a **vzdálené** je aktuální nastavení aplikace function App v Azure.  Zvolte **přidat nastavení** vytvořit nové nastavení aplikace. Použití **vložit hodnotu z místního** odkaz zkopírovat hodnotu nastavení **vzdálené** pole. Čekající změny jsou zapsány do souboru místní nastavení a aplikace function app při výběru **OK**.
+
 Můžete také spravovat nastavení aplikace v jednom z těchto způsobů:
 
 * [Pomocí webu Azure portal](functions-how-to-use-azure-function-app-settings.md#settings).
 * [Použití `--publish-local-settings` možnost publikování v Azure Functions Core Tools](functions-run-local.md#publish).
-* [Použití Azure CLI](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set). 
+* [Použití Azure CLI](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set).
 
 ## <a name="monitoring-functions"></a>Funkce monitorování
 

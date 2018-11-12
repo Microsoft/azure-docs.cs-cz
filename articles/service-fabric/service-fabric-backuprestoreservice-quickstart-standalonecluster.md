@@ -1,5 +1,5 @@
 ---
-title: Rychlý start – pravidelné zálohování a obnovení v Azure Service Fabric (verze Preview) | Dokumentace Microsoftu
+title: Pravidelné zálohování a obnovení v Azure Service Fabric (verze Preview) | Dokumentace Microsoftu
 description: Použít Service Fabric pravidelné zálohování a obnovení funkce umožňující použití periodických dat. zálohování dat ve vašich aplikacích.
 services: service-fabric
 documentationcenter: .net
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/04/2018
 ms.author: hrushib
-ms.openlocfilehash: 5666ed4226104104b91b6f964abeb0490ef80866
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: bcbb8e60d14615d4bddb4a1efa5ecf1487aab093
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38990740"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51234676"
 ---
-# <a name="quickstart-periodic-backup-and-restore-in-azure-service-fabric-preview"></a>Rychlý start: Pravidelné zálohování a obnovení v Azure Service Fabric (verze Preview)
+# <a name="periodic-backup-and-restore-in-azure-service-fabric-preview"></a>Pravidelné zálohování a obnovení v Azure Service Fabric (verze Preview)
 > [!div class="op_single_selector"]
 > * [Clustery v Azure](service-fabric-backuprestoreservice-quickstart-azurecluster.md) 
 > * [Samostatné clustery](service-fabric-backuprestoreservice-quickstart-standalonecluster.md)

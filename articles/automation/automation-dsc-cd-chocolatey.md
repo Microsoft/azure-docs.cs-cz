@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 08/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 43f4a37ce0425503337cffa58570f3468fca6b29
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: f685b584b701d2772ec5b3915facb97f0d15658a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45634245"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51259169"
 ---
 # <a name="usage-example-continuous-deployment-to-virtual-machines-using-automation-state-configuration-and-chocolatey"></a>Příklad použití: Průběžné nasazování pomocí Chocolatey a automatizace stavu konfigurace virtuálních počítačů
 
@@ -87,7 +87,7 @@ Nebo je ruční přístup. Struktura složek integrace modulu prostředí PowerS
 Tento postup vyžaduje trochu úprava z vaší strany. Ale není pevný, a to se provádí jenom jednou pro každý prostředek (Pokud nechcete v budoucnu ho upgradovat.) Další informace o vytváření modulů Powershellu integrace, najdete v tomto článku: [vytváření modulů integrace pro Azure Automation.](https://azure.microsoft.com/blog/authoring-integration-modules-for-azure-automation/)
 
 - Nainstalujte modul, který je nutné na pracovní stanice následujícím způsobem:
-  - Nainstalujte [Windows Management Framework, verze 5](http://aka.ms/wmf5latest) (nevyžaduje se pro Windows 10)
+  - Nainstalujte [Windows Management Framework, verze 5](https://aka.ms/wmf5latest) (nevyžaduje se pro Windows 10)
   - `Install-Module –Name MODULE-NAME`    < – okamžikem vydání modulu z Galerie prostředí PowerShell
 - Zkopírujte složku modulu z `c:\Program Files\WindowsPowerShell\Modules\MODULE-NAME` do dočasné složky
 - Odstranit ukázky a dokumentaci ve složce hlavní

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 09/05/2018
 ms.author: bryanla
-ms.openlocfilehash: 3dc80c97a43c35295deacefc37a76471912c9b42
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: 9ab399ae50f9b04acad411b225797f89547a2824
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45603987"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51237532"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Příručka pro vývojáře Azure Key Vault
 
@@ -48,8 +48,8 @@ Toto video ukazuje, jak vytvořit trezor klíčů a jak ji používat z "Hello" 
 
 Prostředky ve zmíněné videa:
 
-- [Azure PowerShell](http://go.microsoft.com/fwlink/p/?linkid=320376&clcid=0x409)
-- [Ukázky kódu Azure Key Vault](http://go.microsoft.com/fwlink/?LinkId=521527&clcid=0x409)
+- [Azure PowerShell](https://go.microsoft.com/fwlink/p/?linkid=320376&clcid=0x409)
+- [Ukázky kódu Azure Key Vault](https://go.microsoft.com/fwlink/?LinkId=521527&clcid=0x409)
 
 ## <a name="creating-and-managing-key-vaults"></a>Vytváření a správa trezorů klíčů
 
@@ -151,8 +151,8 @@ Tyto články jsou o další scénáře a služby, které používají nebo inte
 
 ## <a name="social"></a>Sociální
 
-- [Blog služby Key Vault](http://aka.ms/kvblog)
-- [Fórum služby Key Vault](http://aka.ms/kvforum)
+- [Blog služby Key Vault](https://aka.ms/kvblog)
+- [Fórum služby Key Vault](https://aka.ms/kvforum)
 
 ## <a name="supporting-libraries"></a>Podpora knihovny
 

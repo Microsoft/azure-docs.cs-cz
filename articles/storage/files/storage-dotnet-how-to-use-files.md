@@ -9,12 +9,12 @@ ms.topic: hero-article
 ms.date: 11/22/2017
 ms.author: renash
 ms.component: files
-ms.openlocfilehash: d9ec9929de6b21aeddf35faf72cf1b2f1bb4c88a
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 380a7be6a42109f90da5dbd39ea557c06be4be6a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39561942"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51253699"
 ---
 # <a name="develop-for-azure-files-with-net"></a>Vývoj pro Soubory Azure pomocí .NET
 
@@ -471,10 +471,10 @@ Další informace o službě Soubory Azure najdete na těchto odkazech.
 
 ### <a name="reference"></a>Referenční informace
 * [Klientská knihovna Storage pro .NET – referenční informace](https://msdn.microsoft.com/library/azure/dn261237.aspx)
-* [REST API služby File – referenční informace](http://msdn.microsoft.com/library/azure/dn167006.aspx)
+* [REST API služby File – referenční informace](https://msdn.microsoft.com/library/azure/dn167006.aspx)
 
 ### <a name="blog-posts"></a>Příspěvky na blozích
 * [Služba Soubory Azure je teď obecně dostupná](https://azure.microsoft.com/blog/azure-file-storage-now-generally-available/)
 * [Uvnitř služby Soubory Azure](https://azure.microsoft.com/blog/inside-azure-file-storage/)
-* [Představujeme službu Microsoft Azure File](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
-* [Nastavení trvalých připojení k Microsoft Azure Files](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)
+* [Představujeme službu Microsoft Azure File](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
+* [Nastavení trvalých připojení k Microsoft Azure Files](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)

@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 09/19/2018
 ms.author: sethm
 ms.reviewer: jeffgo
-ms.openlocfilehash: 21fd3a33181542d86eccc4292ae68f7ce25e0a05
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 16cf679f91dae185a857813ec27441b9a4440e37
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46366722"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51244045"
 ---
 # <a name="azure-resource-manager-template-considerations"></a>Aspekty šablon Azure Resource Manageru
 
 *Platí pro: Azure Stack integrované systémy a Azure Stack Development Kit*
 
-Při vývoji vaší aplikace, je důležité pro zajištění přenositelnosti šablony mezi Azure a Azure Stack. Tento článek obsahuje aspekty pro vývoj Azure Resource Manageru [šablony](http://download.microsoft.com/download/E/A/4/EA4017B5-F2ED-449A-897E-BD92E42479CE/Getting_Started_With_Azure_Resource_Manager_white_paper_EN_US.pdf), což vám umožní prototypu nasazení vaší aplikace a testování v Azure bez přístupu k prostředí Azure Stack.
+Při vývoji vaší aplikace, je důležité pro zajištění přenositelnosti šablony mezi Azure a Azure Stack. Tento článek obsahuje aspekty pro vývoj Azure Resource Manageru [šablony](https://download.microsoft.com/download/E/A/4/EA4017B5-F2ED-449A-897E-BD92E42479CE/Getting_Started_With_Azure_Resource_Manager_white_paper_EN_US.pdf), což vám umožní prototypu nasazení vaší aplikace a testování v Azure bez přístupu k prostředí Azure Stack.
 
 ## <a name="resource-provider-availability"></a>Dostupnost poskytovatele prostředků
 

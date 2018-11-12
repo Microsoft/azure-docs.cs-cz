@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/05/2018
 ms.author: spelluru
-ms.openlocfilehash: 0141ea8a88c0322e6f56cbea56d3a43c923769af
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 8fb3b4ac748fcae2e3aad5b3bfb2a893340dc61a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38687784"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51256132"
 ---
 # <a name="configure-a-virtual-network-in-azure-devtest-labs"></a>Konfigurace virtuální sítě ve službě Azure DevTest Labs
 Jak je popsáno v článku [Přidání virtuálního počítače do testovacího prostředí](devtest-lab-add-vm.md), při vytváření virtuálního počítače v testovacím prostředí, můžete zadat virtuální síť nakonfigurované. Například můžete potřebovat pro přístup k prostředkům podnikové sítě z vašich virtuálních počítačů pomocí virtuální sítě, který byl nakonfigurován s využitím ExpressRoute nebo VPN typu site-to-site.
@@ -29,7 +29,7 @@ Tento článek vysvětluje, jak přidat existující virtuální sítě do nasta
 ## <a name="configure-a-virtual-network-for-a-lab-using-the-azure-portal"></a>Konfigurace virtuální sítě pro testovací prostředí pomocí webu Azure portal
 Následující postup vás provede přidáním stávající virtuální síť (a podsítě) do testovacího prostředí tak, aby ho lze použít při vytváření virtuálního počítače ve stejném prostředí. 
 
-1. Přihlaste se k webu [Azure Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Přihlaste se k webu [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 1. Vyberte **všechny služby**a pak vyberte **DevTest Labs** ze seznamu.
 1. V seznamu testovacích prostředí vyberte požadované prostředí. 
 1. V hlavním podokně testovacího prostředí, vyberte **konfigurace a zásad**.

@@ -2,19 +2,19 @@
 title: Použití Hadoop Hive pomocí prostředí PowerShell ve službě HDInsight – Azure
 description: Spouštění dotazů Hive v systému Hadoop v HDInsight pomocí Powershellu.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
-ms.author: jasonh
-ms.openlocfilehash: 16caee1b04b8fb3ae2e83b8105b802e121092f60
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.author: hrasheed
+ms.openlocfilehash: e02f6b17dff93ce2df1f06ad9681e3086c35300c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43051772"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51257863"
 ---
 # <a name="run-hive-queries-using-powershell"></a>Spouštění dotazů Hive pomocí Powershellu
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
@@ -83,7 +83,7 @@ Následující kroky ukazují, jak tyto rutiny použít ke spuštění úlohy ve
    >
    > `Invoke-AzureRmHDInsightHiveJob -File "wasb://<ContainerName>@<StorageAccountName>/<Path>/query.hql"`
    >
-   > Další informace o **tady řetězce**, naleznete v tématu <a href="http://technet.microsoft.com/library/ee692792.aspx" target="_blank">pomocí Windows Powershellu tady řetězce</a>.
+   > Další informace o **tady řetězce**, naleznete v tématu <a href="https://technet.microsoft.com/library/ee692792.aspx" target="_blank">pomocí Windows Powershellu tady řetězce</a>.
 
 ## <a name="troubleshooting"></a>Řešení potíží
 

@@ -1,6 +1,6 @@
 ---
-title: Zálohování stavu systému Windows Azure
-description: Postup zálohování stavu systému Windows Server nebo Windows počítačů do Azure.
+title: Zálohování stavu systému Windows do Azure
+description: Zjistěte, jak zálohovat stav systému Windows Server a/nebo Windows počítačů do Azure.
 services: backup
 author: saurabhsensharma
 manager: shivamg
@@ -9,22 +9,22 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/23/2018
 ms.author: saurse
-ms.openlocfilehash: 61ee1ce7d5cc6dc2aa4b7a8b02c2e5ba77539725
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: a28e3fb18f2c0b65557034e388d08918c622b8f4
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34606065"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51255860"
 ---
-# <a name="back-up-windows-system-state-in-resource-manager-deployment"></a>Zálohování stavu systému Windows v nasazení Resource Manager
-Tento článek vysvětluje, jak zálohovat stav systému Windows Server do Azure. Tento kurz vás má provést základy.
+# <a name="back-up-windows-system-state-in-resource-manager-deployment"></a>Zálohování stavu systému Windows v nasazení podle modelu Resource Manager
+Tento článek vysvětluje, jak zálohování stavu systému Windows Server do Azure. Tento kurz vás má provést základy.
 
 Chcete-li se dozvědět více o Azure Backup, přečtěte si tento [přehled](backup-introduction-to-azure-backup.md).
 
 Pokud předplatné Azure nemáte, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/), který vám umožní přístup ke službám Azure.
 
 ## <a name="create-a-recovery-services-vault"></a>Vytvoření trezoru služby Recovery Services
-Zálohování stavu systému Windows Server, musíte vytvořit trezor služeb zotavení v oblasti, ve které chcete data uložit. Musíte také určit způsob replikace úložiště.
+Zálohování stavu systému Windows Server, je potřeba vytvořit trezor služby Recovery Services v oblasti, ve které chcete uložit data. Musíte také určit způsob replikace úložiště.
 
 ### <a name="to-create-a-recovery-services-vault"></a>Vytvoření trezoru Služeb zotavení
 1. Pokud jste to ještě neudělali, přihlaste se k [portálu Azure](https://portal.azure.com/) pomocí svého předplatného Azure.
@@ -84,7 +84,7 @@ Při vytváření trezoru služby Recovery Services se ujistěte, že je redunda
 
     Ve výchozím nastavení má váš trezor nastavené geograficky redundantní úložiště. Pokud používáte Azure jako primární koncový bod úložiště záloh, pokračujte v používání **geograficky redundantního** úložiště. Pokud Azure nepoužíváte jako primární koncový bod úložiště záloh, vyberte **Místně redundantní** – snížíte tím náklady na úložiště Azure. Další informace o možnostech [geograficky redundantního](../storage/common/storage-redundancy-grs.md) a [místně redundantního](../storage/common/storage-redundancy-lrs.md) úložiště najdete v tomto [přehledu redundance úložiště](../storage/common/storage-redundancy.md).
 
-Teď, když jste vytvořili trezor, můžete ho nakonfigurujte pro zálohování stavu systému Windows.
+Teď, když jste vytvořili trezor, nakonfigurujte pro zálohování stavu systému Windows.
 
 ## <a name="configure-the-vault"></a>Konfigurace trezoru
 1. V okně trezoru služby Recovery Services (pro trezor, který jste právě vytvořili) klikněte v části Začínáme na **Zálohovat** a potom v okně **Začínáme se zálohováním** vyberte **Cíl zálohování**.
@@ -99,7 +99,7 @@ Teď, když jste vytvořili trezor, můžete ho nakonfigurujte pro zálohování
 
     Možnost **Místní** jste vybrali proto, že počítačem s Windows Serverem nebo Windows je fyzický počítač, který není v Azure.
 
-3. Z **co chcete zálohovat?** nabídce vyberte možnost **stav systému**a klikněte na tlačítko **OK**.
+3. Z **co chcete zálohovat?** nabídce vyberte možnost **stavu systému**a klikněte na tlačítko **OK**.
 
     ![Konfigurace souborů a složek](./media/backup-azure-system-state/backup-goal-system-state.png)
 
@@ -131,7 +131,7 @@ Teď, když jste vytvořili trezor, můžete ho nakonfigurujte pro zálohování
 
     ![dokončené stahování přihlašovacích údajů trezoru](./media/backup-try-azure-backup-in-10-mins/vault-credentials-downloaded.png)
 > [!NOTE]
-> Přihlašovací údaje úložiště, musíte ho uložit pouze do umístění, která je místní pro Windows Server, na kterém chcete používat agenta. 
+> Přihlašovací údaje trezoru musí být uložen pouze do umístění, je lokální vzhledem k systému Windows Server, na které máte v úmyslu používat agenta. 
 >
 
 [!INCLUDE [backup-upgrade-mars-agent.md](../../includes/backup-upgrade-mars-agent.md)]
@@ -139,7 +139,7 @@ Teď, když jste vytvořili trezor, můžete ho nakonfigurujte pro zálohování
 ## <a name="install-and-register-the-agent"></a>Instalace a registrace agenta
 
 > [!NOTE]
-> Povolení zálohování prostřednictvím webu Azure Portal ještě není dostupné. Agent služeb zotavení Microsoft Azure pomocí zálohování stavu systému Windows Server.
+> Povolení zálohování prostřednictvím webu Azure Portal ještě není dostupné. Pomocí agenta Microsoft Azure Recovery Services pro zálohování stavu systému Windows Server.
 >
 
 1. Ve složce Stažené soubory (nebo ve složce, kterou jste vybrali pro stahování) vyhledejte soubor **MARSagentinstaller.exe** a dvakrát na něj klikněte.
@@ -172,7 +172,7 @@ Prvotní záloha zahrnuje dvě úlohy:
 K dokončení prvotního zálohování použijte agenta Microsoft Azure Recovery Services.
 
 > [!NOTE]
-> Můžete zálohovat stav systému v systému Windows Server 2008 R2 prostřednictvím systému Windows Server 2016. Stav systému zpět na klienta SKU až není podporována. Stav systému není zobrazen jako možnost pro klienty se systémem Windows nebo Windows Server 2008 SP2 počítače.
+> Můžete zálohovat stav systému na Windows Server 2008 R2 do systému Windows Server 2016. Zpět stav systému až se nepodporuje u klienta SKU. Stav systému se nezobrazí jako možnost pro klienty Windows nebo Windows Server 2008 SP2 počítače.
 >
 >
 
@@ -190,11 +190,11 @@ K dokončení prvotního zálohování použijte agenta Microsoft Azure Recovery
 
 4. Na stránce Výběr položek k zálohování klikněte na **Přidat**.
 
-5. Vyberte **stav systému** a pak klikněte na **OK**.
+5. Vyberte **stavu systému** a potom klikněte na tlačítko **OK**.
 
 6. Klikněte na **Další**.
 
-7. Vyberte požadovanou četnost zálohování a zásady uchovávání informací pro zálohování stavu systému na následujících stránkách. 
+7. Vyberte požadovanou četnost zálohování a zásadu uchovávání informací pro své zálohy stavu systému na následujících stránkách. 
 
 8. Na stránce Potvrzení zkontrolujte informace a poté klikněte na **Dokončit**.
 
@@ -202,13 +202,13 @@ K dokončení prvotního zálohování použijte agenta Microsoft Azure Recovery
 
 ### <a name="to-back-up-windows-server-system-state-for-the-first-time"></a>Zálohování stavu systému Windows Server poprvé
 
-1. Ujistěte se, že neexistují žádné čekající aktualizace pro systém Windows Server, které vyžadují restart počítače.
+1. Ujistěte se, že nejsou žádné čekající aktualizace pro systém Windows Server, které vyžadují restartování.
 
 2. Chcete-li dokončit prvotní synchronizaci přes síť, v agentu Služeb zotavení klikněte na **Zálohovat nyní**.
 
     ![Zálohovat nyní ve Windows Serveru](./media/backup-try-azure-backup-in-10-mins/backup-now.png)
 
-3. Vyberte **stav systému** na **zálohované položky. Vyberte** obrazovky, který se zobrazí a klikněte na **Další**.
+3. Vyberte **stavu systému** na **vyberte zálohovaná položka** obrazovku, která se zobrazí a klikněte na tlačítko **Další**.
 
 4. Na stránce Potvrzení zkontrolujte nastavení, které Průvodce Zálohování nyní použije k zálohování počítače. Poté klikněte na **Zálohovat**.
 
@@ -220,9 +220,9 @@ Po dokončení prvotní zálohy se v konzole Zálohování zobrazí stav **Úloh
   ![Dokončení IR](./media/backup-try-azure-backup-in-10-mins/ircomplete.png)
 
 ## <a name="questions"></a>Máte dotazy?
-Máte-li nějaké dotazy nebo pokud víte o funkci, kterou byste uvítali, [odešlete nám svůj názor](http://aka.ms/azurebackup_feedback).
+Máte-li nějaké dotazy nebo pokud víte o funkci, kterou byste uvítali, [odešlete nám svůj názor](https://aka.ms/azurebackup_feedback).
 
 ## <a name="next-steps"></a>Další postup
 * Zdroj dalších informací o [zálohování počítačů se systémem Windows](backup-configure-vault.md).
-* Teď, když jste zálohovali stav systému Windows Server, můžete [spravovat svoje trezory a servery](backup-azure-manage-windows-server.md).
+* Teď, když jste zálohovali stavu systému Windows Server, můžete [Správa serverů a trezorů](backup-azure-manage-windows-server.md).
 * Potřebujete-li obnovit zálohu, použijte tento článek k [obnovení souborů na počítač se systémem Windows](backup-azure-restore-windows-server.md).

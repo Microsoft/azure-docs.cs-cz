@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/15/2018
 ms.author: bwren
-ms.openlocfilehash: 4a5f820c9e6d39c65ef0942091b247c5d52fe17f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: 5e9dc207d84a9a66d83f01f49c3aefe2d77a64fa
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51253206"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281434"
 ---
 # <a name="sources-of-data-in-azure-monitor"></a>Zdroje dat ve službě Azure Monitor
 Tento článek popisuje zdroje dat shromážděných službou Azure Monitor k monitorování stavu a výkonu svých prostředků a aplikace běžící na ně. Tyto prostředky může být v Azure, v jiném cloudu nebo lokálně.  Zobrazit [Data shromážděná službou Azure Monitor](monitoring-data-collection.md) podrobnosti o tom, jak tato data uložená a jak ji zobrazit.
@@ -63,7 +63,7 @@ Většina služeb Azure vygeneruje [platformy metriky](monitoring-data-collectio
 ### <a name="resource-diagnostic-logs"></a>Protokolů diagnostiky prostředků
 Poskytuje informace o operace prováděné s prostředky Azure zdrojem pro úroveň protokolu aktivit [diagnostické protokoly](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) poskytují přehled o provozu vlastní prostředek.   Požadavky na konfiguraci a obsah těchto protokolů [se liší podle typu prostředku](../monitoring-and-diagnostics/monitoring-diagnostic-logs-schema.md).
 
-Nelze přímo zobrazit diagnostické protokoly na webu Azure Portal, ale můžete [odeslání do úložiště Azure pro archivaci](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md) a exportovat je do [centra událostí](../event-hubs/event-hubs-what-is-event-hubs.md) pro přesměrování do dalších služeb nebo [do protokolu Analytics](../monitoring-and-diagnostics/monitor-stream-diagnostic-logs-log-analytics.md) pro analýzu. Některé prostředky dokáže zapisovat přímo do Log Analytics, zatímco ostatní teprve pak ji bude zapisovat do účtu úložiště [importovat do Log Analytics](../log-analytics/log-analytics-azure-storage-iis-table.md#use-the-azure-portal-to-collect-logs-from-azure-storage).
+Nelze přímo zobrazit diagnostické protokoly na webu Azure Portal, ale můžete [odeslání do úložiště Azure pro archivaci](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md) a exportovat je do [centra událostí](../event-hubs/event-hubs-about.md) pro přesměrování do dalších služeb nebo [do protokolu Analytics](../monitoring-and-diagnostics/monitor-stream-diagnostic-logs-log-analytics.md) pro analýzu. Některé prostředky dokáže zapisovat přímo do Log Analytics, zatímco ostatní teprve pak ji bude zapisovat do účtu úložiště [importovat do Log Analytics](../log-analytics/log-analytics-azure-storage-iis-table.md#use-the-azure-portal-to-collect-logs-from-azure-storage).
 
 ### <a name="monitoring-solutions"></a>Řešení monitorování
  [Řešení monitorování](monitoring-solutions.md) shromažďování dat k poskytování dalších přehledů o fungování nějaká konkrétní služba nebo aplikace. Shromažďovat data do Log Analytics, kde mohou být analyzovány pomocí [dotazovací jazyk](../log-analytics/log-analytics-queries.md) nebo [zobrazení](../log-analytics/log-analytics-view-designer.md) , které jsou typicky zahrnuty v řešení.
@@ -81,7 +81,7 @@ S [rozšíření Azure Diagnostics](../monitoring-and-diagnostics/azure-diagnost
 Agenta Log Analytics můžete nainstalovat na jakémkoli [Windows](../log-analytics/log-analytics-agent-windows.md) nebo [Linux]() virtuálního počítače nebo fyzického počítače. Virtuální počítač může běžet v Azure, jiného cloudu nebo místně.  Agent se připojí ke službě Log Analytics buď přímo nebo prostřednictvím [připojené skupiny pro správu System Center Operations Manager](../log-analytics/log-analytics-om-agents.md) a umožňuje shromažďovat data z [zdroje dat](../log-analytics/log-analytics-data-sources.md) , které nakonfigurujete nebo z [řešení pro správu](monitoring-solutions.md) , poskytování dalších přehledů o aplikace běžící na virtuálním počítači.
 
 ### <a name="service-map"></a>Mapa služeb
-[Řešení Service Map](../operations-management-suite/operations-management-suite-service-map.md) vyžaduje, aby Agent závislost na virtuální počítače s Windows a Linux. Tento postup funguje s Log Analytics, agent shromažďuje data o procesy spuštěné na virtuálním počítači a závislosti v externím procesu. Ukládá tato data do Log Analytics a zahrnuje konzolu, která vizuálně zobrazí data, která shromažďuje kromě jiných dat uložených ve službě Log Analytics.
+[Řešení Service Map](../monitoring/monitoring-service-map.md) vyžaduje, aby Agent závislost na virtuální počítače s Windows a Linux. Tento postup funguje s Log Analytics, agent shromažďuje data o procesy spuštěné na virtuálním počítači a závislosti v externím procesu. Ukládá tato data do Log Analytics a zahrnuje konzolu, která vizuálně zobrazí data, která shromažďuje kromě jiných dat uložených ve službě Log Analytics.
 
 ## <a name="applications"></a>Aplikace
 Kromě telemetrická data, která vaše aplikace může zapisovat do hostovaného operačního systému, podrobné application monitoring pro aplikace se provádí pomocí [Application Insights](https://docs.microsoft.com/azure/application-insights/). Application Insights může shromažďovat data z aplikací běžících na různých platformách. Aplikace může běžet v Azure, jiného cloudu nebo místně.

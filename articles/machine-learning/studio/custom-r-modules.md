@@ -1,6 +1,6 @@
 ---
-title: Vytvořit vlastní R moduly v Azure Machine Learning | Microsoft Docs
-description: Rychlý start pro vytváření vlastních modulů R v Azure Machine Learning.
+title: Vytváření modulů vlastní R ve službě Azure Machine Learning | Dokumentace Microsoftu
+description: Rychlý start pro vytváření vlastních modulů R ve službě Azure Machine Learning.
 services: machine-learning
 documentationcenter: ''
 author: heatherbshapiro
@@ -15,36 +15,36 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 11/29/2017
-ms.openlocfilehash: 555672df5b0b86858d460ff7606bc6ca23f4f103
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 1a578e8cc05b42d05a8dfb31c0baeefb4822e3e5
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34834351"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261105"
 ---
 # <a name="author-custom-r-modules-in-azure-machine-learning"></a>Vytváření vlastních modulů R ve službě Azure Machine Learning
-Toto téma popisuje, jak vytvořit a nasadit vlastní modul R v Azure Machine Learning. Vysvětluje, co jsou vlastních modulů R a jaké soubory se používají k definovat. Ukazuje, jak vytvořit soubory, které definují modul a jak registrace modulu pro nasazení v pracovním prostoru Machine Learning. Elementy a atributy používané v definici vlastní modul jsou pak popsány podrobněji. Postup použití pomocného funkce a soubory a několik výstupů také popsané. 
+Toto téma popisuje, jak vytvořit a nasadit vlastní modul R ve službě Azure Machine Learning. Vysvětluje, co jsou vlastních modulů R a jaké soubory se používají k jejich definování. Ukazuje, jak vytvořit soubory, které definují modulu a zaregistrovat modul pro nasazení v pracovním prostoru Machine Learning. Elementy a atributy použité v definici vlastního modulu jsou pak popsány podrobněji. Použití pomocné funkce a soubory a několik výstupů se probírá také. 
 
 [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
 
 ## <a name="what-is-a-custom-r-module"></a>Co je vlastní modul R?
-A **vlastní modul** je modul definovaný uživatelem, který může být nahrán do pracovního prostoru a provést v rámci experimentu Azure Machine Learning. A **vlastní modul R** je vlastní modul, který provede uživatelsky definované funkce R. **R** je programovací jazyk pro statistické výpočty a obrázky, které se často používá podle vědců statistikami a dat pro implementaci algoritmy. V současné době R je jediným podporovaným v vlastní moduly, ale podpory pro další jazyky je naplánována na budoucích verzích jazykem.
+A **vlastního modulu** je modul definovaný uživatelem, který může odeslat do pracovního prostoru a spustit v rámci experimentu Azure Machine Learning. A **vlastní modul R** je vlastní modul, který se spustí uživatelem definovanou funkci jazyka R. **R** je programovací jazyk pro statistické výpočty a grafiku, které je běžně používaný v vědeckými pracovníky a odborníky přes data pro implementaci algoritmy. V současné době R je jediným podporovaným v vlastních modulů, ale podpora pro další jazyky je plánovaná pro budoucí verze jazykem.
 
-Vlastní moduly mají **prvotřídní stav** v Azure Machine Learning v tom smyslu, že je lze použít stejně jako ostatní moduly. Mohou být provedeny další moduly zahrnuté v publikované experimenty nebo vizualizace. Budete mít kontrolu nad algoritmus implementovaný modul, vstup a výstupních portů, který se má použít, modelování parametry a další různé chování za běhu. Experimentu, který obsahuje vlastní moduly můžete také publikovat do Galerie AI Azure pro snadné sdílení.
+Vlastní moduly mají **stavu hodnoty první kategorie** ve službě Azure Machine Learning v tom smyslu, že můžete použít stejně jako ostatní moduly. Je možné provést s ostatními moduly, zahrnuté v publikovaných experimentů nebo ve vizualizacích. Budete mít kontrolu nad algoritmus implementovaný pomocí modulu, vstupní a výstupní porty, který se má použít, modelování parametry a další různé chování za běhu. Experiment, který obsahuje vlastní moduly můžete taky publikovat v galerii Azure AI pro snadné sdílení.
 
 ## <a name="files-in-a-custom-r-module"></a>Soubory ve vlastní modul R
-Vlastní modul R je definováno soubor .zip, který obsahuje minimálně dva soubory:
+Vlastní modul R je definována v souboru ZIP, který obsahuje minimálně dva soubory:
 
-* A **zdrojový soubor** , která implementuje funkce R vystavené modulu
-* **Soubor definice XML** rozhraní vlastní modul, který popisuje
+* A **zdrojový soubor** , který implementuje funkci R vystavené modulu
+* **Definiční soubor XML** popisující rozhraní vlastního modulu
 
-Další pomocné soubory můžou být součástí souboru .zip, který poskytuje funkce, která je přístupná z vlastní modul. Tato možnost je podrobněji **argumenty** část oddílu referenční **elementy v definičním souboru XML** následující ukázka rychlý start.
+Další pomocné soubory mohou být i součástí souboru ZIP, který poskytuje funkce, které lze přistupovat z vlastního modulu. Tato možnost je podrobněji popsána **argumenty** součástí referenční části **elementy v souboru definice XML** následujícího příkladu rychlého startu.
 
-## <a name="quickstart-example-define-package-and-register-a-custom-r-module"></a>Příklad rychlý start: Definujte, balíčků a zaregistrovat vlastní modul R
-Tento příklad ukazuje, jak sestavit soubory vyžadované vlastní modul R, zabalit do souboru zip a potom proveďte registraci modulu v pracovním prostoru Machine Learning. Příklad zip balíčku a ukázkové soubory si můžete stáhnout z [CustomAddRows.zip stáhnout soubor](http://go.microsoft.com/fwlink/?LinkID=524916&clcid=0x409).
+## <a name="quickstart-example-define-package-and-register-a-custom-r-module"></a>Příklad rychlý start: Definujte, balení a zaregistrovat vlastní modul R
+Tento příklad ukazuje, jak vytvořit soubory vyžadují vlastní modul R, zabalit je do souboru zip a zaregistrujte modul ve vašem pracovním prostoru Machine Learning. Příklad zip balíčku a ukázkové soubory můžete stáhnout z [soubor stáhnout CustomAddRows.zip](https://go.microsoft.com/fwlink/?LinkID=524916&clcid=0x409).
 
 ## <a name="the-source-file"></a>Zdrojový soubor
-Podívejte se na příklad z **řádky přidat vlastní** modul, který upravuje standardní implementace **přidat řádky** modul použít ke zřetězení řádky (připomínky) z dvě datové sady (datových rámců). Standardní **přidat řádky** modulu připojí řádky druhé vstupní datové sady na konec první použití vstupní datové sady `rbind` algoritmus. Vlastní `CustomAddRows` funkce podobně přijímá dvě datové sady, ale také přijme parametr Boolean odkládacího souboru jako další vstup. Pokud parametr odkládacího souboru je nastaven na **FALSE**, vrátí sadu dat jako standardní implementace. Ale pokud je parametr swap **TRUE**, funkce připojí řádky první vstupní datové sady na konec druhý datovou sadu místo. CustomAddRows.R soubor, který obsahuje implementaci r `CustomAddRows` funkce vystavené **řádky přidat vlastní** modul má následující kód R.
+Podívejte se na příklad z **vlastní přidat řádky** modul, který upravuje standardní implementace **přidat řádky** modul používaný ke zřetězení řádky (poznámky) z dvě datové sady (datové rámce). Standardní **přidat řádky** modulu připojí řádky druhé vstupní datovou sadu na konec první vstupní datové sady pomocí `rbind` algoritmus. Upravené `CustomAddRows` funkce podobně přijímá dvě datové sady, ale také přijímá parametr logická odkládacího souboru jako další vstup. Pokud parametr odkládacího souboru je nastaven na **FALSE**, vrátí stejnou sadu dat jako standardní implementace. Ale pokud je parametr prohození **TRUE**, funkce připojí řádky první vstupní datovou sadu na konec datové sady druhé místo. CustomAddRows.R souboru, který obsahuje implementace jazyka R `CustomAddRows` funkce vystavené **vlastní přidat řádky** module obsahuje následující kód R.
 
     CustomAddRows <- function(dataset1, dataset2, swap=FALSE) 
     {
@@ -58,8 +58,8 @@ Podívejte se na příklad z **řádky přidat vlastní** modul, který upravuje
         } 
     } 
 
-### <a name="the-xml-definition-file"></a>Soubor definice XML
-To vystavit `CustomAddRows` funkce jako modul služby Azure Machine Learning, soubor definice XML musí být vytvořený zadat jak **řádky přidat vlastní** modul by měl vzhled a chování. 
+### <a name="the-xml-definition-file"></a>Definiční soubor XML
+To vystavit `CustomAddRows` funkce jako modul služby Azure Machine Learning, definičního souboru XML musí být vytvořený zadat jak **vlastní přidat řádky** modul by měl vypadat a fungovat. 
 
     <!-- Defined a module using an R Script -->
     <Module name="Custom Add Rows">
@@ -94,96 +94,96 @@ To vystavit `CustomAddRows` funkce jako modul služby Azure Machine Learning, so
     </Module>
 
 
-Je důležité si uvědomit, že hodnota **id** atributy **vstup** a **Arg** elementů v souboru XML musí odpovídat názvům parametr funkce kód R CustomAddRows.R souboru přesně: (*dataset1*, *dataset2*, a *swap* v příkladu). Podobně, hodnota **entryPoint** atribut **jazyk** element musí přesně odpovídat názvu funkce ve skriptu jazyka R: (*CustomAddRows* v příkladu) . 
+Je důležité si uvědomit, že hodnota **id** atributy **vstup** a **Arg** elementy v souboru XML musí shodovat s názvy parametru funkce kódu R v CustomAddRows.R přesně souborů: (*dataset1*, *dataset2*, a *prohození* v příkladu). Podobně, hodnota **entryPoint** atribut **jazyka** elementu musí přesně odpovídat názvu funkce ve skriptu R: (*CustomAddRows* v příkladu) . 
 
-Naproti tomu **id** atribut pro **výstup** element neodpovídá žádné proměnné ve skriptu R. Pokud je vyžadován více než jeden výstup, jednoduše vrácení seznamu z funkce R s výsledky umístit *ve stejném pořadí* jako **výstupy** elementy jsou deklarované v souboru XML.
+Naproti tomu **id** atribut pro **výstup** elementu neodpovídá žádné proměnné ve skriptu R. Když se vyžaduje více než jeden výstup, jednoduše vrátila seznam z funkce R s výsledky umístit *ve stejném pořadí* jako **výstupy** elementů jsou deklarovány v souboru XML.
 
-### <a name="package-and-register-the-module"></a>Balíček a registrace modulu
-Uložit tyto dva soubory jako *CustomAddRows.R* a *CustomAddRows.xml* a pak zip společně do dvou souborech *CustomAddRows.zip* souboru.
+### <a name="package-and-register-the-module"></a>Balení a zaregistrovat modul
+Uložte tyto dva soubory jako *CustomAddRows.R* a *CustomAddRows.xml* a potom zip společně do příslušné dva soubory *CustomAddRows.zip* souboru.
 
-Chcete-li zaregistrovat je v pracovním prostoru Machine Learning, přejděte do pracovního prostoru v nástroji Machine Learning Studio, klikněte na **+ nový** tlačítko v dolní a zvolte **modulu -> z ZIP balíčku** nahrát nový **Řádky přidat vlastní** modulu.
+K registraci je ve vašem pracovním prostoru Machine Learning, přejděte do pracovního prostoru Machine Learning Studio, klikněte na tlačítko **+ nová** tlačítko v dolní části a zvolte **modulu -> z ZIP balíčku** nahrát nový **Vlastní přidat řádky** modulu.
 
 ![Nahrát Zip](./media/custom-r-modules/upload-from-zip-package.png)
 
-**Řádky přidat vlastní** modulu je nyní připravena ke kterým přistupují experimentů Machine Learning.
+**Vlastní přidat řádky** modulu je teď připravený k přístupný vaše experimenty Machine Learning.
 
-## <a name="elements-in-the-xml-definition-file"></a>Elementy v definičním souboru XML
-### <a name="module-elements"></a>Modul elementy
-**Modulu** element se používá k definování vlastní modul v souboru XML. Více modulů lze definovat v jednom souboru XML pomocí několika **modulu** elementy. Každý modulu v pracovním prostoru musí mít jedinečný název. Registrovat vlastní modul se stejným názvem jako stávající vlastní modul a nahrazuje existující modul s tímto novým připojením. Vlastní moduly lze však zaregistrována stejný název jako existující modul Azure Machine Learning. Pokud ano, se objeví v **vlastní** kategorii palety modulů.
+## <a name="elements-in-the-xml-definition-file"></a>Elementy v souboru definice XML
+### <a name="module-elements"></a>Elementy modulu
+**Modulu** element slouží k definování vlastní modul v souboru XML. Více modulů lze definovat v jednom souboru XML pomocí více **modulu** elementy. V pracovním prostoru každý modul musí mít jedinečný název. Registrovat vlastní modul se stejným názvem jako stávající vlastní modul a nahradí existující modul s novým. Vlastní moduly lze však registrována se stejným názvem jako existující modul Azure Machine Learning. Pokud ano, jsou uvedeny v **vlastní** kategorie palety modulů.
 
     <Module name="Custom Add Rows" isDeterministic="false"> 
         <Owner>Microsoft Corporation</Owner>
         <Description>Appends one dataset to another...</Description>/> 
 
 
-V rámci **modulu** elementu, můžete určit dva další volitelné prvky:
+V rámci **modulu** element, můžete zadat dva další volitelné prvky:
 
-* **vlastníka** element, který se vloží do modulu  
-* **popis** element, který obsahuje text, který se zobrazí v rychlé nápovědy pro modul a pokud ponecháte modul v uživatelském rozhraní Machine Learning.
+* **vlastníka** element, který je součástí modulu  
+* **popis** element, který obsahuje text, který se zobrazí v rychlé nápovědě se dozvíte v modulu a když najedete myší modulu v uživatelském rozhraní Machine Learning.
 
-Pravidla pro omezení znaků v elementech modul:
+Pravidla pro omezení znaků v prvcích modulu:
 
-* Hodnota **název** atribut **modulu** element nesmí být delší než 64 znaků. 
-* Obsah **popis** element nesmí být delší než 128 znaků.
-* Obsah **vlastníka** element nesmí být delší než 32 znaků.
+* Hodnota **název** atribut **modulu** prvek nesmí být delší než 64 znaků. 
+* Obsah **popis** prvek nesmí být delší než 128 znaků.
+* Obsah **vlastníka** prvek nesmí být delší než 32 znaků.
 
-Výsledky modulu může být deterministický nebo nondeterministic.* * ve výchozím nastavení, všechny moduly se považují za deterministický. To znamená, danou neměnné sadu vstupní parametry a data, modul by měl vrátit stejné výsledky eacRAND nebo functionh čas, který je spuštěn. Vzhledem k tomuto chování, Azure Machine Learning Studio pouze opakovaně moduly, které jsou označeny jako deterministický, pokud parametr nebo vstupní data změnila. Vrací výsledky uložené v mezipaměti také poskytuje mnohem rychlejší provádění experimenty.
+Může být deterministické výsledky modulu nebo nondeterministic.* * ve výchozím nastavení, všechny moduly jsou považovány za deterministický. To znamená, zadaný neměnné sady vstupní parametry a dat, modul by měl vrátit stejný eacRAND výsledky nebo functionh čas, ve kterém se spouští. Toto chování, Azure Machine Learning Studio zhodnotíte pouze moduly, které jsou označeny jako deterministické, pokud parametr nebo vstupní data se změnila. Vrací výsledky uložené v mezipaměti obsahuje také mnohem rychlejší spouštění experimentů.
 
-Jsou funkce, které jsou deterministický, jako je například rand – nebo funkci, která vrátí aktuální datum nebo čas. Pokud modul používá nedeterministická funkce, můžete určit, že modul bude Nedeterministický nastavením nepovinný **isDeterministic** atribut **FALSE**. To zajistí, že modul se znovu spustí při každém spuštění experimentu, i pokud nedošlo ke změně modulu vstup a parametry. 
+Jsou funkce, které jsou nedeterministické, jako je například RAND nebo funkci, která vrátí aktuální datum nebo čas. Pokud modul používá nedeterministická funkci, můžete určit, že modul je Nedeterministický nastavením nepovinný **isDeterministic** atribut **FALSE**. To zajistí, že modul se znovu spustí při každém spuštění experimentu, i v případě, že nedošlo ke změně modulu vstup a parametry. 
 
 ### <a name="language-definition"></a>Definice jazyka
-**Jazyk** element v souboru definice XML slouží k určení vlastní modul jazyk. V současné době R je jediný podporovaný jazyk. Hodnota **zdrojový soubor** atribut musí být název souboru R, který obsahuje funkce, které má být volána při spuštění modulu. Tento soubor musí být součástí balíček zip. Hodnota **entryPoint** atribut je název funkce volané a platný funkci definovanou s ve zdrojovém souboru se musí shodovat.
+**Jazyk** element v souboru definice XML je možné určit jazyk vlastního modulu. R je aktuálně jediný podporovaný jazyk. Hodnota **zdrojový soubor** atribut musí být název souboru R, který obsahuje funkce, která má být volána při spuštění modulu. Tento soubor musí být součástí balíček zip. Hodnota **entryPoint** atribut je název volané funkce a musí odpovídat platné funkce definované s ve zdrojovém souboru.
 
     <Language name="R" sourceFile="CustomAddRows.R" entryPoint="CustomAddRows" />
 
 
 ### <a name="ports"></a>Porty
-Vstupní a výstupní porty pro vlastní modul jsou určené v podřízených elementů **porty** část definičního soubor XML. Pořadí těchto prvků určuje rozložení zkušeného (UX) uživatelé. Prvním podřízeným objektem **vstupní** nebo **výstup** uvedené v **porty** vstupní port nejvíce vlevo v UX Learning počítač se změní na element souboru XML
-Každý vstupní a výstupní port je pravděpodobně volitelný **popis** podřízený element, který určuje text, který zobrazí, když najedete myší portu v uživatelském rozhraní Machine Learning.
+Vstupní a výstupní porty pro vlastní modul jsou určené v podřízených elementů **porty** část definičního souboru XML. Určuje pořadí z těchto elementů rozložení zkušení (UX) uživatelé. Prvním podřízeným objektem **vstupní** nebo **výstup** uvedené v **porty** – element XML souboru stane krajní levý vstupní port v uživatelské prostředí Machine Learning
+Každá vstupní a výstupní port může mít volitelně **popis** podřízený prvek, který určuje text zobrazený po najeďte myší do portu v uživatelském rozhraní Machine Learning.
 
-**Porty pravidla**:
+**Pravidla portů**:
 
-* Maximální počet **vstupní a výstupní porty** je 8 pro každou.
+* Maximální počet **vstupní a výstupní porty** je 8 příkaz for each.
 
 ### <a name="input-elements"></a>Elementy vstupu
-Vstupní porty umožňují předat data do funkce R a pracovního prostoru. **Datové typy** jsou podporovány pro vstupní porty jsou následujícím způsobem: 
+Vstupní porty umožní předat data do R funkce a pracovní prostor. **Datové typy** , které jsou podporovány pro vstupní porty jsou následující: 
 
-**DataTable:** tento typ je předán funkce R jako data.frame. Ve skutečnosti všechny typy (například CSV soubory nebo soubory ARFF), které jsou podporovány nástrojem Machine Learning a že jsou kompatibilní s **DataTable** se převedou na data.frame automaticky. 
+**Objekt DataTable:** tento typ je předán do funkce R jako data.frame. Ve skutečnosti všechny typy (například soubory CSV nebo ARFF soubory), které jsou podporovány v Machine Learning a, která jsou kompatibilní s **DataTable** jsou převedeny na data.frame automaticky. 
 
         <Input id="dataset1" name="Input 1" type="DataTable" isOptional="false">
             <Description>Input Dataset 1</Description>
            </Input>
 
-**Id** atribut spojený s každou **DataTable** vstupní port musí mít jedinečnou hodnotu a tato hodnota musí odpovídat jeho odpovídající parametr v R funkce s názvem.
-Volitelné **DataTable** porty, které nejsou předány jako vstup v experimentu mají hodnotu **NULL** předaný funkci R a volitelné zip porty jsou ignorovány, pokud vstup není připojen. **IsOptional** atribut je volitelný pro oba **DataTable** a **Zip** typy a je *false* ve výchozím nastavení.
+**Id** atribut spojené s jednotlivými **DataTable** vstupního portu musí mít jedinečnou hodnotu a tato hodnota se musí shodovat s názvem parametru ve funkci R odpovídající.
+Volitelné **DataTable** porty, které nejsou předané jako vstup v jednom experimentu mají hodnotu **NULL** předaný funkci jazyka R a volitelné zip, porty jsou ignorovány, pokud vstup není připojený. **Schedule** atribut je volitelný pro obě **DataTable** a **Zip** typů a je *false* ve výchozím nastavení.
 
-**ZIP:** vlastní moduly může přijmout soubor zip jako vstup. Tento vstup je vybaleno do R pracovní adresář vaší – funkce
+**ZIP:** vlastní moduly může přijmout komprimovaného souboru jako vstup. Tento vstup je vybaleno do pracovního adresáře r. vaší funkce
 
         <Input id="zippedData" name="Zip Input" type="Zip" IsOptional="false">
             <Description>Zip files to be extracted to the R working directory.</Description>
            </Input>
 
-Pro vlastních modulů R tak, aby odpovídaly žádné parametry funkce R nemá id pro Zip port. Je to proto, že je soubor zip automaticky extrahovány do R pracovní adresář.
+U vlastních modulů R nemá identifikátor pro PSČ port tak, aby odpovídaly žádné parametry funkce jazyka R. Je to proto, že je soubor zip automaticky extrahován do pracovního adresáře r.
 
 **Vstupní pravidla:**
 
 * Hodnota **id** atribut **vstup** element musí být platný název proměnné R.
-* Hodnota **id** atribut **vstup** element nesmí být delší než 64 znaků.
-* Hodnota **název** atribut **vstup** element nesmí být delší než 64 znaků.
-* Obsah **popis** element nesmí být delší než 128 znaků.
+* Hodnota **id** atribut **vstup** prvek nesmí být delší než 64 znaků.
+* Hodnota **název** atribut **vstup** prvek nesmí být delší než 64 znaků.
+* Obsah **popis** prvek nesmí být delší než 128 znaků.
 * Hodnota **typ** atribut **vstup** element musí být *Zip* nebo *DataTable*.
-* Hodnota **isOptional** atribut **vstup** element není požadovaná (a je *false* ve výchozím nastavení není-li zadána); ale pokud je zadán, musí být *true* nebo *false*.
+* Hodnota **Schedule** atribut **vstup** element není vyžadován (a je *false* ve výchozím nastavení, pokud není zadán); ale pokud je zadán, musí být *true* nebo *false*.
 
 ### <a name="output-elements"></a>Výstup elementy
-**Standardní výstupní porty:** výstupních portů jsou namapované na vrácené hodnoty z funkce R, který můžete použít následující moduly. *DataTable* je typ pouze standardní výstupní port v současné době podporován. (Podpora pro *inteligentních algoritmů* a *transformuje* je chystaný.) A *DataTable* výstup je definován jako:
+**Standardní výstupní porty:** výstupní porty jsou namapovány na návratové hodnoty z funkce R, který můžete použít následující moduly. *Objekt DataTable* je momentálně nepodporuje typ portu pouze standardní výstup. (Podpora *inteligentních algoritmů* a *transformuje* je připravovaný.) A *DataTable* výstup je definován jako:
 
     <Output id="dataset" name="Dataset" type="DataTable">
         <Description>Combined dataset</Description>
     </Output>
 
-Pro výstupy ve vlastních modulů R, hodnota **id** atribut nemá tak, aby odpovídaly s nic v R skript, ale musí být jedinečný. Pro jeden modul výstupu, musí být návratovou hodnotou z funkce R *data.frame*. Chcete-li více než jeden objekt podporovaného typu výstupu odpovídající výstupních portů potřeba zadat v definičním souboru XML a objekty musí být vrácen jako seznam. Objektů výstupního jsou přiřazeny k vypsání porty zleva doprava, která znázorňuje pořadí, ve kterém jsou objekty umístěn ve vráceném seznamu.
+Pro výstupy ve vlastních modulů R, hodnota **id** atribut nemá odpovídat všechno ve skriptu R, ale musí být jedinečný. Pro jeden modul výstup, vrácená hodnota z funkce R musí být *data.frame*. Aby bylo možné předat více než jeden objekt podporovaného typu, musí být zadána v definičním souboru XML odpovídající výstupní porty a objekty musí být vrácena jako seznam. Výstup objekty jsou přiřazeny k výstupní porty zleva doprava, odrážející pořadí, ve kterém jsou objekty umístěny ve vráceném seznamu.
 
-Například, pokud chcete upravit **řádky přidat vlastní** modulu výstup původní dvě datové sady, *dataset1* a *dataset2*, kromě nového připojené k datové sadě, *datovou sadu*, (v pořadí, zleva doprava, jako: *datovou sadu*, *dataset1*, *dataset2*), pak zadejte výstupních portů v CustomAddRows.xml souboru následujícím způsobem:
+Například, pokud chcete změnit **vlastní přidat řádky** modulu do výstupního původní dvě datové sady, *dataset1* a *dataset2*, kromě novou datovou sadu připojené k doméně, *datovou sadu*, (v pořadí zleva doprava, jako: *datovou sadu*, *dataset1*, *dataset2*), pak definujte výstupní porty v CustomAddRows.xml souboru následujícím způsobem:
 
     <Ports> 
         <Output id="dataset" name="Dataset Out" type="DataTable"> 
@@ -204,7 +204,7 @@ Například, pokud chcete upravit **řádky přidat vlastní** modulu výstup p�
     </Ports> 
 
 
-A vrátí seznam objektů v seznamu ve správném pořadí v 'CustomAddRows.R':
+A vrátí seznam objektů v seznamu ve správném pořadí v "CustomAddRows.R":
 
     CustomAddRows <- function(dataset1, dataset2, swap=FALSE) { 
         if (swap) { dataset <- rbind(dataset2, dataset1)) } 
@@ -213,7 +213,7 @@ A vrátí seznam objektů v seznamu ve správném pořadí v 'CustomAddRows.R':
     return (list(dataset, dataset1, dataset2)) 
     } 
 
-**Vizualizace výstup:** můžete také určit na výstupní port typu *vizualizace*, zobrazuje výstup z výstupu R grafiky zařízení a konzoly. Tento port není součástí výstup funkce R a nebudou v konfliktu s pořadí ostatních typů výstupní port. Pokud chcete přidat do vlastní moduly vizualizace port, přidejte **výstup** element s hodnotou *vizualizace* pro jeho **typ** atribut:
+**Vizualizace výstupu:** můžete také určit výstupní port modulu typu *vizualizace*, který se zobrazí výstup z výstupu R grafiky zařízení a konzoly. Tento port není součástí výstupu funkce R a není v konfliktu s pořadím z ostatních typů výstupní port. Pokud chcete přidat do modulů, které vlastní vizualizace port, přidejte **výstup** element s hodnotou *vizualizace* pro jeho **typ** atribut:
 
     <Output id="deviceOutput" name="View Port" type="Visualization">
       <Description>View the R console graphics device output.</Description>
@@ -222,19 +222,19 @@ A vrátí seznam objektů v seznamu ve správném pořadí v 'CustomAddRows.R':
 **Výstup pravidla:**
 
 * Hodnota **id** atribut **výstup** element musí být platný název proměnné R.
-* Hodnota **id** atribut **výstup** element nesmí být delší než 32 znaků.
-* Hodnota **název** atribut **výstup** element nesmí být delší než 64 znaků.
+* Hodnota **id** atribut **výstup** prvek nesmí být delší než 32 znaků.
+* Hodnota **název** atribut **výstup** prvek nesmí být delší než 64 znaků.
 * Hodnota **typ** atribut **výstup** element musí být *vizualizace*.
 
 ### <a name="arguments"></a>Argumenty
-Další data mohou být předána do funkce R prostřednictvím modulu parametry, které jsou definovány v **argumenty** elementu. Tyto parametry se zobrazí v podokně nejvíce vpravo vlastnosti UI Machine Learning, pokud je vybrána modul. Argumenty může být jakýkoli z podporovaných typů nebo můžete vytvořit vlastní výčet v případě potřeby. Podobně jako **porty** elementů **argumenty** elementy může mít volitelný **popis** element, který určuje text, který se zobrazí, když ukazatel myši Název parametru.
-Volitelné vlastnosti pro modul, jako je například výchozí hodnota, minValue a maxValue lze přidat na některý argument jako atributy, které mají **vlastnosti** elementu. Platný vlastnosti **vlastnosti** element závisí na typ argumentu a jsou popsány s typy argumentů podporované v další části. Argumenty s **isOptional** vlastnost nastavena na hodnotu **"true"** nevyžadují, aby uživatel zadal hodnotu. Pokud není zadána hodnota pro argument, není argument předaný funkci vstupního bodu. Argumenty funkce vstupního bodu, které jsou volitelné nutné explicitně zpracovávat funkce, například přiřadit výchozí hodnotu NULL v definici funkce vstupního bodu. Nepovinný argument pouze vynutí jiných argument omezení, tj. min nebo max, pokud je hodnota zadaná uživatelem.
-Stejně jako u vstupy a výstupy, je velmi důležité, že všechny parametry mají hodnoty jedinečné id s nimi spojených. V našem příkladu úvodní přidružené id a parametru se *swap*.
+Další data může být předán funkci R prostřednictvím modulu parametrů, které jsou definovány v **argumenty** elementu. Tyto parametry se zobrazí v podokně úplně vpravo vlastnosti uživatelského rozhraní Machine Learning, pokud je vybrána modulu. Argumenty mohou být některé z podporovaných typů nebo můžete vytvořit vlastní výčtu v případě potřeby. Podobně jako **porty** prvky, **argumenty** prvků může mít volitelně **popis** element, který určuje text, který se zobrazí, když myší najedete myší Název parametru.
+Volitelné vlastnosti pro některý z modulů, jako je například výchozí hodnota, hodnota minValue a maxValue lze přidat na libovolný argument jako atributy, které mají **vlastnosti** elementu. Platné vlastnosti pro **vlastnosti** element závisí na typu argumentu a jsou popsané společně s typy argumentů podporovaných v další části. Argumenty s **Schedule** vlastnost nastavena na hodnotu **"true"** nevyžadují, aby uživatel zadal hodnotu. Pokud hodnota není k dispozici na argument, není argument předaný funkci vstupního bodu. Je nutné explicitně zacházet funkcí, třeba přiřadit výchozí hodnotu NULL v definici vstupní bod funkce argumenty funkci vstupního bodu, které jsou volitelné. Volitelný argument bude vynucovat, jenom dalších argumentů omezení, například min nebo max, pokud je uživatel zadal hodnotu.
+Stejně jako u vstupy a výstupy, je velmi důležité, že parametry mají jedinečné id hodnoty k nim má přiřazené. V našem příkladu úvodní byla přidružená parametr/id *prohození*.
 
 ### <a name="arg-element"></a>Arg – element
-Parametr modulu je definován pomocí **Arg** podřízený element **argumenty** část definičního soubor XML. Stejně jako u podřízených elementů v **porty** části řazení parametry v **argumenty** oddíl definuje rozložení v UX Parametry zobrazí shora dolů v uživatelském rozhraní ve stejném pořadí, ve kterém jsou definovány v souboru XML. Typy podporované nástrojem Machine Learning pro parametry jsou zde uvedeny. 
+Parametr modulu je definován pomocí **Arg** podřízený prvek **argumenty** část definičního souboru XML. Stejně jako u podřízené elementy v **porty** části pořadí parametrů **argumenty** oddíl definuje rozložení v uživatelské prostředí Parametry zobrazí shora dolů v uživatelském rozhraní ve stejném pořadí, ve kterém jsou definovány v souboru XML. Typy podporované nástrojem Machine Learning pro parametry jsou uvedeny zde. 
 
-**int** – parametru typu (32 bitů) celé číslo.
+**int** – parametrem (32 bitů) typu celé číslo.
 
     <Arg id="intValue1" name="Int Param" type="int">
         <Properties min="0" max="100" default="0" />
@@ -242,7 +242,7 @@ Parametr modulu je definován pomocí **Arg** podřízený element **argumenty**
     </Arg>
 
 
-* *Volitelné vlastnosti*: **min**, **maximální**, **výchozí** a **isOptional**
+* *Volitelné vlastnosti*: **min**, **maximální**, **výchozí** a **Schedule**
 
 **dvojité** – parametr typu double.
 
@@ -252,9 +252,9 @@ Parametr modulu je definován pomocí **Arg** podřízený element **argumenty**
     </Arg>
 
 
-* *Volitelné vlastnosti*: **min**, **maximální**, **výchozí** a **isOptional**
+* *Volitelné vlastnosti*: **min**, **maximální**, **výchozí** a **Schedule**
 
-**BOOL** – logického parametru, která je reprezentována zaškrtávací políčko UX
+**BOOL** – parametr logické hodnoty, která je reprezentována zaškrtávací políčko uživatelské prostředí
 
     <Arg id="boolValue1" name="Boolean Param" type="bool">
         <Properties default="true" />
@@ -263,7 +263,7 @@ Parametr modulu je definován pomocí **Arg** podřízený element **argumenty**
 
 
 
-* *Volitelné vlastnosti*: **výchozí** -false v případě není nastavena.
+* *Volitelné vlastnosti*: **výchozí** -false v případě není nastavený.
 
 **řetězec**: standardní řetězec
 
@@ -272,9 +272,9 @@ Parametr modulu je definován pomocí **Arg** podřízený element **argumenty**
         <Description>String Parameter 1</Description>
     </Arg>    
 
-* *Volitelné vlastnosti*: **výchozí** a **isOptional**
+* *Volitelné vlastnosti*: **výchozí** a **Schedule**
 
-**ColumnPicker**: Parametr výběr sloupce. Tento typ se vykreslí v uživatelského jako zvolit sloupce. **Vlastnost** element zde slouží k určení id portu, ze které se vybírají sloupce, které musí být cílový port typ *DataTable*. Výsledek výběr sloupce je předaný funkci R jako seznam řetězců obsahujících názvy vybraných sloupců. 
+**ColumnPicker**: Parametr výběr sloupce. Tento typ se zobrazí v uživatelském prostředí jako výběr sloupců. **Vlastnost** element zde slouží k určení id portu, ze kterého jsou vybrané sloupce, kde cílový typ portu musí být *DataTable*. Výsledek výběr sloupce je předán do funkce R jako seznam řetězců obsahující názvy vybraných sloupců. 
 
         <Arg id="colset" name="Column set" type="ColumnPicker">      
           <Properties portId="datasetIn1" allowedTypes="Numeric" default="NumericAll"/>
@@ -282,10 +282,10 @@ Parametr modulu je definován pomocí **Arg** podřízený element **argumenty**
         </Arg>
 
 
-* *Požadované vlastnosti*: **portId** -odpovídá id elementu vstupu s typem *DataTable*.
+* *Požadované vlastnosti*: **identifikátor portId** -odpovídá id elementu Input s typem *DataTable*.
 * *Volitelné vlastnosti*:
   
-  * **allowedTypes** -filtry typy sloupci, ze kterého můžete vybrat. Platné hodnoty patří: 
+  * **allowedTypes** – filtry sloupci typy je možné vybrat. Platné hodnoty jsou: 
     
     * Čísla
     * Logická hodnota
@@ -295,7 +295,7 @@ Parametr modulu je definován pomocí **Arg** podřízený element **argumenty**
     * Funkce
     * Skóre
     * Vše
-  * **výchozí** -platný výchozí možnosti pro výběr sloupce patří: 
+  * **výchozí** -platný výchozí výběry pro výběr sloupce zahrnují: 
     
     * Žádný
     * NumericFeature
@@ -319,7 +319,7 @@ Parametr modulu je definován pomocí **Arg** podřízený element **argumenty**
     * AllScore
     * Vše
 
-**Rozevírací seznam**: seznam uživatelská výčtového (rozevírací). Rozevírací seznam položek, které jsou určené v rámci **vlastnosti** pomocí elementu **položky** elementu. **Id** pro každou **položky** musí být jedinečný a platná proměnná R. Hodnota **název** z **položky** slouží jako text, který se zobrazí a hodnotu, která je předaný funkci R.
+**Rozevírací seznam**: uživatelem zadaný výčet (rozevírací seznam). Položky rozevíracího seznamu jsou uvedeny v rámci **vlastnosti** prvku pomocí **položky** elementu. **Id** pro každou **položky** musí být jedinečný a platná proměnná R. Hodnota **název** ze **položky** slouží jako text, který se zobrazí a hodnotu, která je předána funkci R.
 
     <Arg id="color" name="Color" type="DropDown">
       <Properties default="red">
@@ -331,17 +331,17 @@ Parametr modulu je definován pomocí **Arg** podřízený element **argumenty**
     </Arg>    
 
 * *Volitelné vlastnosti*:
-  * **výchozí** -hodnotu pro vlastnost výchozí, musí být shodná s hodnotou id z jednoho z **položky** elementy.
+  * **výchozí** -hodnota pro výchozí vlastnost musí odpovídat s hodnotou id z jednoho z **položky** elementy.
 
 ### <a name="auxiliary-files"></a>Pomocné soubory
-Všechny soubory, které je umístěn v souboru ZIP vlastní modul bude k dispozici pro použití v době spuštění. Všechny adresáře struktury přítomen se zachovají. To znamená, že soubor sourcing funguje stejné místně a při provádění Azure Machine Learning. 
+Každý soubor, který je umístěn v souboru ZIP vlastní modul bude k dispozici pro použití při spuštění. Všechny adresáře struktury k dispozici jsou zachovány. To znamená, že tento soubor sourcing works stejné místně a v Azure Machine Learning spuštění. 
 
 > [!NOTE]
-> Všimněte si, že všechny soubory extrahují do adresáře, src, proto by měly mít všechny cesty ' src /' předponu.
+> Všimněte si, že všechny soubory jsou extrahovány do adresáře "src", musí mít všechny cesty "src /" předponu.
 > 
 > 
 
-Řekněme například, že chcete odebrat všechny řádky s NAs z datové sady a také odebrat všechny duplicitní řádky před výstup do CustomAddRows a jste již zapsány R funkce, která nemá v souboru RemoveDupNARows.R:
+Předpokládejme například, že chcete odebrat všechny řádky s NAs z datové sady a taky před výstupu do CustomAddRows odebrat všechny duplicitní řádky a už jste napsali R funkce, který činí v souboru RemoveDupNARows.R:
 
     RemoveDupNARows <- function(dataFrame) {
         #Remove Duplicate Rows:
@@ -350,7 +350,7 @@ Všechny soubory, které je umístěn v souboru ZIP vlastní modul bude k dispoz
         finalDataFrame <- dataFrame[complete.cases(dataFrame),]
         return(finalDataFrame)
     }
-Zdrojem může být pomocného souboru RemoveDupNARows.R ve funkci CustomAddRows:
+Pomocný soubor RemoveDupNARows.R ve funkci CustomAddRows mají možnost:
 
     CustomAddRows <- function(dataset1, dataset2, swap=FALSE) {
         source("src/RemoveDupNARows.R")
@@ -363,13 +363,13 @@ Zdrojem může být pomocného souboru RemoveDupNARows.R ve funkci CustomAddRows
         return (dataset)
     }
 
-V dalším kroku nahrajte soubor zip obsahující 'CustomAddRows.R', 'CustomAddRows.xml' a 'RemoveDupNARows.R' jako vlastní modul R.
+V dalším kroku nahrajte soubor zip obsahující "CustomAddRows.R", "CustomAddRows.xml" a "RemoveDupNARows.R" jako vlastní modul R.
 
-## <a name="execution-environment"></a>Prostředí pro spuštění
-Prostředí pro spuštění skriptu R používá stejnou verzi nástroje R jako **spustit skript jazyka R** modulu a můžete použít stejné výchozí balíčky. Můžete také přidat další balíčky R pro vlastní modul zahrnutím v balíčku zip vlastní modul. Jenom je načte ve vašem skriptu R stejně jako v prostředí R. 
+## <a name="execution-environment"></a>Spuštění prostředí
+Prostředí pro spuštění skriptu R používá stejnou verzi jazyka R, jako **spustit skript jazyka R** modulu a můžete použít stejnou výchozí balíčky. Další balíčky r. na vlastní modul můžete také přidat jejich zahrnutím do vlastního modulu zip balíčku. Stačí je načte ve skriptu R stejně jako v prostředí R. 
 
-**Omezení prostředí pro spuštění** zahrnují:
+**Omezení spouštěcí prostředí** patří:
 
-* Systém souborů bez trvalé: soubory zapsané při spuštění vlastního modulu nejsou trvalé napříč více spustí stejný modulu.
+* Dočasný soubor systému: během různých spuštění stejného modulu nejsou trvalé soubory zapsané při spuštění vlastního modulu.
 * Žádný přístup k síti
 

@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: sstein
 manager: craigg
 ms.date: 09/19/2018
-ms.openlocfilehash: 1e74a0c915471fecb3b8e0662559eb5bfe189b3d
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.openlocfilehash: 85c5ff33fbf5979dd07ab27ccf5993149151b38a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47423013"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51252407"
 ---
 # <a name="deploy-and-explore-a-standalone-single-tenant-application-that-uses-azure-sql-database"></a>Nasazení a zkoumání samostatné aplikace jednoho tenanta, který používá Azure SQL Database
 
@@ -44,11 +44,11 @@ Další kurzy budou vydané. Že vám umožní prozkoumejte celou řadu scéná�
 Nasazení aplikace pro tři zadané klienty:
 
 1. Klikněte na každý modrá **nasadit do Azure** tlačítko otevře šablonu nasazení v [webu Azure portal](https://portal.azure.com). Každá šablona vyžaduje dvě hodnoty parametrů; název pro novou skupinu prostředků a uživatelskému jménu, která odlišuje od ostatních nasazení aplikace tohoto nasazení. Dalším krokem poskytuje podrobnosti pro nastavení tyto hodnoty.<br><br>
-    <a href="http://aka.ms/deploywingtipsa-contoso" target="_blank"><img style="vertical-align:middle" src="media/saas-standaloneapp-get-started-deploy/deploy.png"/></a> &nbsp; **Contoso koncertní Hall**
+    <a href="https://aka.ms/deploywingtipsa-contoso" target="_blank"><img style="vertical-align:middle" src="media/saas-standaloneapp-get-started-deploy/deploy.png"/></a> &nbsp; **Contoso koncertní Hall**
 <br><br>
-    <a href="http://aka.ms/deploywingtipsa-dogwood" target="_blank"><img style="vertical-align:middle" src="media/saas-standaloneapp-get-started-deploy/deploy.png"/></a> &nbsp; **Svída Dojo**
+    <a href="https://aka.ms/deploywingtipsa-dogwood" target="_blank"><img style="vertical-align:middle" src="media/saas-standaloneapp-get-started-deploy/deploy.png"/></a> &nbsp; **Svída Dojo**
 <br><br>
-    <a href="http://aka.ms/deploywingtipsa-fabrikam" target="_blank"><img style="vertical-align:middle" src="media/saas-standaloneapp-get-started-deploy/deploy.png"/></a> &nbsp; **Fabrikam Jazz Club**
+    <a href="https://aka.ms/deploywingtipsa-fabrikam" target="_blank"><img style="vertical-align:middle" src="media/saas-standaloneapp-get-started-deploy/deploy.png"/></a> &nbsp; **Fabrikam Jazz Club**
 
 2. Zadejte požadované hodnoty parametrů pro každé nasazení.
 

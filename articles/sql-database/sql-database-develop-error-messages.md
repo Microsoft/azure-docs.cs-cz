@@ -13,12 +13,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/31/2018
-ms.openlocfilehash: 233e6e9bccd8729cd61514f2855799cf3d22d72b
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: 71a23e982f1e4ae5609d4f9a160cd1861e043ea1
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50914664"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51251811"
 ---
 # <a name="sql-error-codes-for-sql-database-client-applications-database-connection-errors-and-other-issues"></a>Kódy chyb SQL pro klientské aplikace SQL Database: chyby připojení a dalších problémů databáze
 
@@ -45,7 +45,7 @@ Příklady kódu logiku opakování naleznete v tématu:
 * [Připojení knihoven pro službu SQL Database a SQL Server](sql-database-libraries.md) 
 * [Akce k vyřešení chyb připojení a přechodné chyby ve službě SQL Database](sql-database-connectivity-issues.md)
 
-Diskuze nad aspekty *blokování období* pro klienty, kteří používají ADO.NET je k dispozici v [SQL sdružování připojení serveru (ADO.NET)](http://msdn.microsoft.com/library/8xx3tyca.aspx).
+Diskuze nad aspekty *blokování období* pro klienty, kteří používají ADO.NET je k dispozici v [SQL sdružování připojení serveru (ADO.NET)](https://msdn.microsoft.com/library/8xx3tyca.aspx).
 
 ### <a name="transient-fault-error-codes"></a>Kódy chyb přechodných chyb
 Tyto chyby jsou přechodné a je třeba opakovat v aplikaci logiky: 
@@ -94,8 +94,8 @@ Související témata:
 
 | Kód chyby | Severity | Popis |
 | ---:| ---:|:--- |
-| 10928 |20 |ID prostředku: %d. Limit %s pro databázi je %d a bylo ho dosaženo. Další informace najdete na adrese [http://go.microsoft.com/fwlink/?LinkId=267637](http://go.microsoft.com/fwlink/?LinkId=267637).<br/><br/>ID prostředku, které určuje prostředek, který byl dosažen limit. Pro pracovní vlákna, ID zdroje = 1. Pro relace, ID zdroje = 2.<br/><br/>Další informace o této chybě a způsobu jeho řešení najdete v tématu:<br/>• [Limity prostředků azure SQL Database](sql-database-service-tiers-dtu.md). |
-| 10929 |20 |ID prostředku: %d. Minimální záruka %s je %d, maximální limit je %d, a aktuální využití databáze je %d. Server je však aktuálně zaneprázdněna větší než %d žádosti o podporu pro tuto databázi. Další informace najdete na adrese [http://go.microsoft.com/fwlink/?LinkId=267637](http://go.microsoft.com/fwlink/?LinkId=267637). Jinak zkuste to prosím znovu později.<br/><br/>ID prostředku, které určuje prostředek, který byl dosažen limit. Pro pracovní vlákna, ID zdroje = 1. Pro relace, ID zdroje = 2.<br/><br/>Další informace o této chybě a způsobu jeho řešení najdete v tématu:<br/>• [Limity prostředků azure SQL Database](sql-database-service-tiers-dtu.md). |
+| 10928 |20 |ID prostředku: %d. Limit %s pro databázi je %d a bylo ho dosaženo. Další informace najdete na adrese [http://go.microsoft.com/fwlink/?LinkId=267637](https://go.microsoft.com/fwlink/?LinkId=267637).<br/><br/>ID prostředku, které určuje prostředek, který byl dosažen limit. Pro pracovní vlákna, ID zdroje = 1. Pro relace, ID zdroje = 2.<br/><br/>Další informace o této chybě a způsobu jeho řešení najdete v tématu:<br/>• [Limity prostředků azure SQL Database](sql-database-service-tiers-dtu.md). |
+| 10929 |20 |ID prostředku: %d. Minimální záruka %s je %d, maximální limit je %d, a aktuální využití databáze je %d. Server je však aktuálně zaneprázdněna větší než %d žádosti o podporu pro tuto databázi. Další informace najdete na adrese [http://go.microsoft.com/fwlink/?LinkId=267637](https://go.microsoft.com/fwlink/?LinkId=267637). Jinak zkuste to prosím znovu později.<br/><br/>ID prostředku, které určuje prostředek, který byl dosažen limit. Pro pracovní vlákna, ID zdroje = 1. Pro relace, ID zdroje = 2.<br/><br/>Další informace o této chybě a způsobu jeho řešení najdete v tématu:<br/>• [Limity prostředků azure SQL Database](sql-database-service-tiers-dtu.md). |
 | 40544 |20 |Databáze dosáhla své kvóty velikosti. Oddíl nebo odstranění dat, případně odstraňte indexy najdete v dokumentaci k možná řešení. |
 | 40549 |16 |Relace je ukončena, protože máte dlouhotrvající transakci. Zkuste transakci zkrátit. |
 | 40550 |16 |Relace byla ukončena, protože získala příliš mnoho zámků. Zkuste problém se čtením nebo upravit menší počet řádků v rámci jedné transakce. |
@@ -109,7 +109,7 @@ Tyto chyby se vztahují k vytváření a používání elastických fondů:
 | Kód chyby | Severity | Popis | Nápravné opatření |
 |:--- |:--- |:--- |:--- |
 | 1132 | 17 |Elastický fond dosáhl svého limitu úložiště. Využití úložiště pro elastický fond nemůže být delší než (%d) MB. Došlo k pokusu o zápis dat do databáze, když byl dosažen limit úložiště elastického fondu. |Zvažte možnost zvýšit počet jednotek Dtu a/nebo přidání úložiště do elastického fondu pokud je to možné za účelem zvýšení limitu úložiště, snížit využití strany jednotlivých databází v elastickém fondu úložiště nebo odebrat databáze z elastického fondu. |
-| 10929 | 16 |Minimální záruka %s je %d, maximální limit je %d, a aktuální využití databáze je %d. Server je však aktuálně zaneprázdněna větší než %d žádosti o podporu pro tuto databázi. Zobrazit [ http://go.microsoft.com/fwlink/?LinkId=267637 ](http://go.microsoft.com/fwlink/?LinkId=267637) žádostí o pomoc. Jinak zkuste to prosím znovu později. DTU nebo minimální počet virtuálních jader na databázi. DTU nebo na databázi maximální počet virtuálních jader. Celkový počet souběžných pracovních procesů (požadavků) napříč všemi databázemi v elastickém fondu došlo k pokusu o překročení limitu fondu. |Zvažte zvýšení počtu jednotek Dtu nebo virtuálních jader, pokud je to možné elastického fondu za účelem zvýšení limitu pracovního procesu, nebo odeberte databáze z elastického fondu. |
+| 10929 | 16 |Minimální záruka %s je %d, maximální limit je %d, a aktuální využití databáze je %d. Server je však aktuálně zaneprázdněna větší než %d žádosti o podporu pro tuto databázi. Zobrazit [ http://go.microsoft.com/fwlink/?LinkId=267637 ](https://go.microsoft.com/fwlink/?LinkId=267637) žádostí o pomoc. Jinak zkuste to prosím znovu později. DTU nebo minimální počet virtuálních jader na databázi. DTU nebo na databázi maximální počet virtuálních jader. Celkový počet souběžných pracovních procesů (požadavků) napříč všemi databázemi v elastickém fondu došlo k pokusu o překročení limitu fondu. |Zvažte zvýšení počtu jednotek Dtu nebo virtuálních jader, pokud je to možné elastického fondu za účelem zvýšení limitu pracovního procesu, nebo odeberte databáze z elastického fondu. |
 | 40844 | 16 |Databáze: %ls"na serveru"%ls"je"%ls"edice databáze v elastickém fondu a nemůže mít vztah průběžného kopírování.  |neuvedeno |
 | 40857 | 16 |Elastický fond pro server se nepodařilo najít: "%ls", název elastického fondu: "%ls". Zadaný elastického fondu v zadaný server neexistuje. | Zadejte název platné elastického fondu. |
 | 40858 | 16 |Elastický fond "%ls" již existuje v serveru: "%ls". Zadaný elastického fondu v zadané logické serveru již existuje. | Zadejte nový název elastického fondu. |

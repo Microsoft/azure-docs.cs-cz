@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: barclayn
-ms.openlocfilehash: d1a6da5d599296a11678ee58cadc42d61296e8e7
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: d7de20e1de91e37b2437091e6d7503e2cb2a4590
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230297"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51246527"
 ---
 # <a name="what-is-azure-key-vault"></a>Co je Azure Key Vault?
 
@@ -75,18 +75,11 @@ Trezory klíčů může vytvářet a používat každý, kdo má předplatné Az
 
 Tento správce potom poskytne vývojářům identifikátory URI, které mohou volat z aplikací, a správcům zabezpečení poskytne informace o protokolování používání klíčů. 
 
-![Přehled Azure Key Vault][1]
+! [Přehled služby Azure Key Vault] [1]
 
 Vývojáři také mohou spravovat klíče přímo, pomocí rozhraní API. Další informace najdete v [příručce pro vývojáře Key Vault](key-vault-developers-guide.md).
 
 ## <a name="next-steps"></a>Další postup
 
-Úvodní kurz pro správce najdete v tématu [Začínáme s Azure Key Vault](key-vault-get-started.md).
-
-Další informace o protokolování využití služby Key Vault najdete v tématu [Protokolování v Azure Key Vault](key-vault-logging.md).
-
-Další informace o používání klíčů a tajných klíčů se službou Azure Key Vault najdete v tématu [Informace o klíčích, tajných klíčích a certifikátech](https://msdn.microsoft.com/library/azure/dn903623\(v=azure.1\).aspx).
-
-<!--Image references-->
-[1]: ./media/key-vault-whatis/AzureKeyVault_overview.png
-Azure Key Vault je dostupný ve většině oblastí. Další informace najdete na [stránce s cenami Key Vault](https://azure.microsoft.com/pricing/details/key-vault/).
+Zjistěte, jak [zabezpečení trezoru](key-vault-secure-your-key-vault.md) 
+ <!--Image references--> [1]:./media/key-vault-whatis/AzureKeyVault_overview.png Azure Key Vault je k dispozici ve většině oblastí. Další informace najdete na [stránce s cenami Key Vault](https://azure.microsoft.com/pricing/details/key-vault/).

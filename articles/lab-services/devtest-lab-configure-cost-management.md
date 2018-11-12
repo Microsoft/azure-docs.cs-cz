@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/05/2018
 ms.author: spelluru
-ms.openlocfilehash: 13535dae82ef2c8896dad7d6221553d15e4e6a95
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: e616df772bf11d1247f96c78bea2392252f5e5d0
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38573807"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51259747"
 ---
 # <a name="view-the-monthly-estimated-lab-cost-trend-in-azure-devtest-labs"></a>Zobrazit měsíční trend nákladů odhadované testovacího prostředí ve službě Azure DevTest Labs
 Funkci náklady na správu služby DevTest Labs pomáhá sledovat náklady testovacího prostředí. Tento článek ukazuje, jak používat **měsíční Trend odhadovaných nákladů** grafu chcete zobrazit aktuální kalendářní měsíc odhadované náklady k datu a očekávané náklady na konci měsíce pro zbytek aktuálního měsíce. Tento článek také ukazuje, jak lépe spravovat náklady na laboratoře nastavením útraty cílům a prahovým hodnotám, které po dosažení aktivační událost DevTest Labs můžete zprávu o výsledcích.
@@ -27,7 +27,7 @@ Funkci náklady na správu služby DevTest Labs pomáhá sledovat náklady testo
 ## <a name="viewing-the-monthly-estimated-cost-trend-chart"></a>Zobrazení grafu měsíční Trend odhad nákladů
 Chcete-li zobrazit graf měsíční Trend nákladů odhad, postupujte takto: 
 
-1. Přihlaste se k webu [Azure Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Přihlaste se k webu [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 1. V případě potřeby vyberte **všechny služby**a pak vyberte **DevTest Labs** ze seznamu. (Testovací prostředí může již zobrazený na řídicím panelu v části **všechny prostředky**).
 1. V seznamu testovacích prostředí vyberte požadované prostředí.  
 1. Cvičení **přehled** vyberte **konfigurace a zásad**.   

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/30/2018
 ms.author: TomSh
-ms.openlocfilehash: a61f3572037b1c62ea5ed4e0ac4496b057e2b96d
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 7ead955be3835f4ce3e602fe27a06c00d014195c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50249047"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51262195"
 ---
 # <a name="azure-database-security-overview"></a>Přehled zabezpečení služby Azure database
 
@@ -35,7 +35,7 @@ Společnost Microsoft poskytuje další způsoby, jak šifrování podnikových 
 
 Auditování Azure SQL Database umožňuje podnikům záznam událostí auditování protokolu ve službě Azure Storage. Auditování služby SQL Database je také integrované do služby Microsoft Power BI kvůli snadnějšímu procházení sestav a analýz.
 
-Azure SQL Database je možné svázat úzce splňovat nejvíce zákonné nebo požadavky na zabezpečení, včetně HIPAA, ISO 27001/27002 a PCI DSS úrovně 1. Aktuální seznam certifikací dodržování předpisů zabezpečení je k dispozici na [webu Microsoft Azure Trust Center](http://azure.microsoft.com/support/trust-center/services/).
+Azure SQL Database je možné svázat úzce splňovat nejvíce zákonné nebo požadavky na zabezpečení, včetně HIPAA, ISO 27001/27002 a PCI DSS úrovně 1. Aktuální seznam certifikací dodržování předpisů zabezpečení je k dispozici na [webu Microsoft Azure Trust Center](https://azure.microsoft.com/support/trust-center/services/).
 
 Tento článek vás provede základy zabezpečení databáze Microsoft Azure SQL pro strukturovaná, tabulková a relační data. Tento článek vám především pomůže začít s prostředky pro ochranu dat, řízením přístupu a proaktivním monitorováním.
 
@@ -44,7 +44,7 @@ Tento článek vás provede základy zabezpečení databáze Microsoft Azure SQL
 SQL Database pomáhá je zabezpečit vaše data zajištěním šifrování:
 
 - Pro data přenášená prostřednictvím [zabezpečení TLS (Transport Layer)](https://support.microsoft.com/kb/3135244).
-- Pro data v klidovém stavu pomocí [transparentní šifrování dat](http://go.microsoft.com/fwlink/?LinkId=526242).
+- Pro data v klidovém stavu pomocí [transparentní šifrování dat](https://go.microsoft.com/fwlink/?LinkId=526242).
 - Pro data použitá prostřednictvím [s funkcí Always Encrypted](https://msdn.microsoft.com/library/mt163865.aspx).
 
 Existují i jiné možnosti šifrování dat:

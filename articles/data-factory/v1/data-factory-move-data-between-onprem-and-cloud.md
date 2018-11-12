@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: b221697b7450ad1c6dac87b7a08c7db8b11810bf
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 1bf915bf702cdf9492cce1f32886c0049fbf9867
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50240456"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51242836"
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>Přesun dat mezi místním zdrojům a cloudem pomocí brány správy dat
 > [!NOTE]
@@ -47,7 +47,7 @@ V tomto návodu provedete následující kroky:
 ## <a name="prerequisites-for-the-tutorial"></a>Předpoklady pro kurz
 Před zahájením tohoto návodu, musíte mít splněné následující požadavky:
 
-* **Předplatné Azure**.  Pokud nemáte předplatné, můžete si během několika minut bezplatně vytvořit zkušební účet. Zobrazit [bezplatnou zkušební verzi](http://azure.microsoft.com/pricing/free-trial/) , kde najdete podrobnosti.
+* **Předplatné Azure**.  Pokud nemáte předplatné, můžete si během několika minut bezplatně vytvořit zkušební účet. Zobrazit [bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/) , kde najdete podrobnosti.
 * **Účet úložiště Azure**. Použijete jako úložiště objektů blob **cíl/jímka** úložiště dat v tomto kurzu. Pokud nemáte účet úložiště Azure, přečtěte si článek [Vytvoření účtu úložiště](../../storage/common/storage-quickstart-create-account.md), kde najdete kroky pro jeho vytvoření.
 * **SQL Server**. V tomto kurzu použijete místní databázi SQL Serveru jako **zdrojové** úložiště dat. 
 

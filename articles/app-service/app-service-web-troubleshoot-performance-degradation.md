@@ -16,15 +16,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/03/2016
 ms.author: cephalin
-ms.openlocfilehash: 3ec67488b238118067e771baf3dd5124308a84cf
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: b1ae61b5372fa1061448c02e7b5c589a167888c9
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44296189"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51237209"
 ---
 # <a name="troubleshoot-slow-web-app-performance-issues-in-azure-app-service"></a>Řešení problémů s výkonem pomalých webových aplikací ve službě Azure App Service
-V tomto článku vám pomůžou s řešením problémů s výkonem pomalých webových aplikací v [služby Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714).
+V tomto článku vám pomůžou s řešením problémů s výkonem pomalých webových aplikací v [služby Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714).
 
 Pokud potřebujete další nápovědu v libovolném bodě v tomto článku, můžete se obrátit odborníků na Azure na [MSDN Azure a Stack Overflow fóra](https://azure.microsoft.com/support/forums/). Alternativně můžete také soubor incidentu podpory Azure. Přejděte [web podpory Azure](https://azure.microsoft.com/support/options/) a klikněte na **získat podporu**.
 

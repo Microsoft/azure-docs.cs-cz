@@ -12,12 +12,12 @@ ms.author: v-daljep
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 09/20/2018
-ms.openlocfilehash: 1cbb46f5238c2019225ab724abaf49e878d19598
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 6dff1b2fe40acdef1fde95444d70f0bcfc120a64
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353862"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230032"
 ---
 # <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>Řešení problémů s výkonem Azure SQL Database s Intelligent Insights
 
@@ -167,7 +167,7 @@ Protože pagelatch je mechanismus interní kontroly služby SQL Database, automa
 
 Jedním ze způsobů pro zpracování západky překročila kolizí je sekvenční index klíč nahradit počátečních klíčem a vloží rovnoměrně distribuuje mezi rozsahem indexu. Obvykle počáteční sloupec v indexu distribuuje zatížení proporcionálně. Jinou metodou vezměte v úvahu je dělení tabulky. Vytvoření hodnoty hash s vypočítaným sloupcem na dělenou tabulku schéma vytváření oddílů je běžný postup pro snížení rizik souvisejících s nadměrné západku kolize. V případě sporu pagelatch vstupně-výstupních operací Představujeme indexy pomáhá ke zmírnění tohoto problému s výkonem. 
 
-Další informace najdete v tématu [diagnostikovat a vyřešit opatřit kolizí v systému SQL Server](http://download.microsoft.com/download/B/9/E/B9EDF2CD-1DBF-4954-B81E-82522880A2DC/SQLServerLatchContention.pdf) (soubor PDF ke stažení).
+Další informace najdete v tématu [diagnostikovat a vyřešit opatřit kolizí v systému SQL Server](https://download.microsoft.com/download/B/9/E/B9EDF2CD-1DBF-4954-B81E-82522880A2DC/SQLServerLatchContention.pdf) (soubor PDF ke stažení).
 
 ## <a name="missing-index"></a>Chybějící Index
 

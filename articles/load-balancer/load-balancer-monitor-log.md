@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/10/2018
 ms.author: kumud
-ms.openlocfilehash: eaa44b4fff47f8e3385e86f5c86a090ff84a6bf8
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
-ms.translationtype: HT
+ms.openlocfilehash: e8d38aaff2e7f20a3935608bcf4d610828d2b84f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51218878"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261498"
 ---
 # <a name="log-analytics-for-public-basic-load-balancer"></a>Log analytics pro veřejný Load balancer úrovně Basic
 
@@ -143,7 +143,7 @@ Budete muset připojit ke svému účtu úložiště a načtení položky protok
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 
-* [Vizualizace protokolů auditu Azure pomocí Power BI](http://blogs.msdn.com/b/powerbi/archive/2015/09/30/monitor-azure-audit-logs-with-power-bi.aspx) blogový příspěvek.
+* [Vizualizace protokolů auditu Azure pomocí Power BI](https://blogs.msdn.com/b/powerbi/archive/2015/09/30/monitor-azure-audit-logs-with-power-bi.aspx) blogový příspěvek.
 * [Zobrazení a analýza protokolů auditu Azure v Power BI a další](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/) blogový příspěvek.
 
 ## <a name="next-steps"></a>Další postup

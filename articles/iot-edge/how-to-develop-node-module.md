@@ -9,12 +9,12 @@ ms.author: xshi
 ms.date: 09/21/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: a1459e3cbd433e2997ffd822b961ac781a72ca90
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.openlocfilehash: b05492941defc6ac3aa252d6bb29043d55e6b66c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47423523"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261770"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-nodejs-modules-for-azure-iot-edge"></a>Použití Visual Studio Code pro vývoj a ladění modulů Node.js pro Azure IoT Edge
 
@@ -123,7 +123,7 @@ Modul IoT Edge Node.js závisí na sadu SDK pro zařízení Azure IoT Node.js. V
 
 5. V integrovaném terminálu VS Code, spusťte následující příkaz k odeslání **Hello World** zpráva, která má modul. Toto je příkaz v předchozích krocích jsme si ukázali, jakmile se instalační program IoT Edge simulátor úspěšně. Můžete potřebovat k vytvoření nebo přechod na jiný integrovaný terminál, pokud aktuální blokovaný.
 
-    ```cmd
+    ```bash
     curl --header "Content-Type: application/json" --request POST --data '{"inputName": "input1","data":"hello world"}' http://localhost:53000/api/v1/messages
     ```
 

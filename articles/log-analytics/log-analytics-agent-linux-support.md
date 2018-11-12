@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 10/15/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 3f23464776036a8c91b180d46341782fddb9d5e8
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 2720ecece86133bf551ab42c415b2e9a87420e93
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50140955"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51237821"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>Řešení potíží pomocí agenta Log Analytics pro Linux 
 
@@ -32,7 +32,7 @@ Pokud žádný z těchto kroků pro vás nejvhodnější, jsou také k dispozici
 * Zákazníci s smlouvy o podpoře Azure můžou otevřít žádost o podporu [na webu Azure Portal](https://manage.windowsazure.com/?getsupport=true).
 * Diagnostikujte problémy OMI pomocí [Průvodce odstraňováním potíží OMI](https://github.com/Microsoft/omi/blob/master/Unix/doc/diagnose-omi-problems.md).
 * Soubor [problém Githubu](https://github.com/Microsoft/OMS-Agent-for-Linux/issues).
-* Na stránce Log Analytics zpětnou vazbu ke kontrole odeslané nápady a chyby [ http://aka.ms/opinsightsfeedback ](http://aka.ms/opinsightsfeedback) nebo soubor nový.  
+* Na stránce Log Analytics zpětnou vazbu ke kontrole odeslané nápady a chyby [ http://aka.ms/opinsightsfeedback ](https://aka.ms/opinsightsfeedback) nebo soubor nový.  
 
 ## <a name="important-log-locations-and-log-collector-tool"></a>Umístění protokolu důležité a nástroj Kolektoru protokolů
 

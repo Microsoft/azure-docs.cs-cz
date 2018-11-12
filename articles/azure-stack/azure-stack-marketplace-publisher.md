@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/24/2018
 ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: 98a7ae31aeeae29b81a1053b38992d3bc4e0e03f
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: 4758c29d1cdb7e09c397524574ba1ab6701efeeb
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50085305"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238018"
 ---
 #  <a name="add-marketplace-items-using-publishing-tool"></a>Přidat pomocí nástroje pro publikování položky marketplace
 
@@ -32,7 +32,7 @@ Přidání obsahu [Azure Stack Marketplace](azure-stack-marketplace.md) zpříst
 
  - Stáhněte si [šabloně QuickStart pro Azure Stack](https://github.com/Azure/AzureStack-QuickStart-Templates/archive/master.zip) a extrahovat.
 
- - Stáhněte si [nástroje balení Galerie Azure](http://aka.ms/azurestackmarketplaceitem) (AzureGalleryPackage.exe). 
+ - Stáhněte si [nástroje balení Galerie Azure](https://aka.ms/azurestackmarketplaceitem) (AzureGalleryPackage.exe). 
 
  - Publikování na webu Marketplace vyžaduje ikony a souboru s miniaturami. Můžete použít vlastní nebo Uložit [ukázka](azure-stack-marketplace-publisher.md#support-files) soubory místně pro účely tohoto příkladu.
 

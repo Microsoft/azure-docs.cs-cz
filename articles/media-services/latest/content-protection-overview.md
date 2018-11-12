@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/15/2018
 ms.author: juliako
-ms.openlocfilehash: f8ef92a335dd6faee076356dbffc873b08afbdc0
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 1c7454aead07c728d55ff2c309cca83a792aac88
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394256"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238345"
 ---
 # <a name="content-protection-overview"></a>Přehled ochrany obsahu
 
@@ -59,7 +59,7 @@ Pro úspěšné dokončení návrhu "content protection" systému nebo aplikace,
 
     Pro testování AES nebo šifrování CENC (Widevine a/nebo technologií PlayReady) zašifrovaný obsah, můžete použít [Azure Media Player](https://ampdemo.azureedge.net/azuremediaplayer.html). Ujistěte se, že klikněte na "Pokročilé možnosti" a zkontrolujte možnosti šifrování.
 
-    Pokud chcete testovat FairPlay zašifrovaný obsah, použijte [tento test přehrávač](http://aka.ms/amtest). Přehrávač podporuje Widevine, PlayReady, a technologiemi FairPlay DRM a standardu AES-128 s nezašifrovaným klíčem. Musíte zvolit správný prohlížeče k testování různých technologiemi DRM: Chrome/Opera/Firefox pro MS Edge/11 pro PlayReady, Widevine, Safari v systému macOS pro FairPlay.
+    Pokud chcete testovat FairPlay zašifrovaný obsah, použijte [tento test přehrávač](https://aka.ms/amtest). Přehrávač podporuje Widevine, PlayReady, a technologiemi FairPlay DRM a standardu AES-128 s nezašifrovaným klíčem. Musíte zvolit správný prohlížeče k testování různých technologiemi DRM: Chrome/Opera/Firefox pro MS Edge/11 pro PlayReady, Widevine, Safari v systému macOS pro FairPlay.
 
 3. Zabezpečení služby tokenů (STS), která vydává JSON Web Token (JWT) jako přístupový token pro přístup k prostředkům back-endu. AMS služeb doručování licencí můžete použít jako back-endový prostředek. Služby STS musí definovat následující:
 
@@ -149,7 +149,7 @@ Příklad ukazuje postup:
 
 2. Vytvoření StreamingLocator, nakonfigurovaný tak, aby Streamovat prostředek šifrované. 
 
-  Můžete například nastavit StreamingLocator.StreamingPolicyName zásady "Predefined_MultiDrmCencStreaming". Tato zásada udává, že chcete vygenerovat a nastavit v lokátoru dva symetrické klíče (obálku a CENC). Tím dojde k nastavení obálky a šifrování PlayReady a Widevine (klíč se doručí klientovi pro přehrávání na základě nakonfigurovaných licencí DRM). Pokud chcete zašifrovat datový proud s CBCS (FairPlay), použijte "Predefined_MultiDrmStreaming".
+  Můžete například nastavit StreamingLocator.StreamingPolicyName zásady "Predefined_MultiDrmCencStreaming". Tato zásada udává, že chcete vygenerovat a nastavit v lokátoru dva symetrické klíče (obálku a CENC). Tím dojde k nastavení obálky a šifrování PlayReady a Widevine (klíč se doručí klientovi pro přehrávání na základě nakonfigurovaných licencí DRM). Pokud zároveň chcete svůj stream zašifrovat pomocí CBCS (FairPlay), použijte zásadu Predefined_MultiDrmStreaming.
 
 3. Vytvořte token testu.
 
@@ -168,8 +168,8 @@ Jak a kde se získat token JWT před jeho použitím žádosti o licenci nebo kl
 1. Pro produkční prostředí musíte mít zabezpečení Token služby (STS) (webová služba) který vystaví token JWT na vyžádání protokolu HTTPS. Pro testování, můžete použít kód zobrazený v **GetTokenAsync** metody definované v [Program.cs](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs).
 2. Přehrávač, bude nutné vytvořit žádost, po ověření uživatele, na službu STS pro takový token a přiřaďte ji jako hodnotu tokenu. Můžete použít [rozhraní API služby Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/).
 
-* Příkladem s symetrické i asymetrické klíč služby tokenů zabezpečení, najdete v tématu [ http://aka.ms/jwt ](http://aka.ms/jwt). 
-* Příklad přehrávač založené na Azure Media Player pomocí těchto tokenu JWT, naleznete v tématu [ http://aka.ms/amtest ](http://aka.ms/amtest) (expand na token vstup odkaz "player_settings").
+* Příkladem s symetrické i asymetrické klíč služby tokenů zabezpečení, najdete v tématu [ http://aka.ms/jwt ](https://aka.ms/jwt). 
+* Příklad přehrávač založené na Azure Media Player pomocí těchto tokenu JWT, naleznete v tématu [ http://aka.ms/amtest ](https://aka.ms/amtest) (expand na token vstup odkaz "player_settings").
 
 ### <a name="question"></a>Otázka
 

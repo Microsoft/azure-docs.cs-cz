@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 5710ebc1c52737e27aafa88eef5e9ae402f8e53f
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: a56d595ca88541779f5213c6b0ec88fc87913b6a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45579835"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51239045"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Izolace ve veřejném cloudu Azure
 ##  <a name="introduction"></a>Úvod
@@ -91,7 +91,7 @@ Azure RBAC má tři základní role, které platí pro všechny typy prostředk�
 
 - **Čtečka** můžete zobrazit existující prostředky Azure.
 
-![Řízení přístupu na základě role Azure](./media/azure-isolation/azure-isolation-fig3.png)
+![Řízení přístupu na základě rolí Azure](./media/azure-isolation/azure-isolation-fig3.png)
 
 Ostatní role RBAC v Azure umožňují správu konkrétních prostředků Azure. Třeba role Přispěvatel virtuálních počítačů umožňuje uživatelům vytvářet a spravovat virtuální počítače. Ho nezískává přístup na Azure Virtual Network nebo podsíť, která se připojí k virtuálnímu počítači.
 
@@ -111,7 +111,7 @@ Některé další možnosti pro Azure Active Directory patří:
 - [Azure Active Directory B2C](https://azure.microsoft.com/services/active-directory-b2c/) poskytuje službu správy s vysokou dostupností globálních identit pro zákaznické aplikace s možností škálování na stovky milionů identit. Dá se integrovat do mobilních i webových platforem. Zákazníky můžete přihlásit ke všem vašim aplikacím přes přizpůsobitelné prostředí pomocí svých existujících účtů v sociálních sítích nebo vytváření přihlašovacích údajů.
 
 ### <a name="isolation-from-microsoft-administrators--data-deletion"></a>Izolaci od správců Microsoft a odstranění dat
-Společnost Microsoft má silné opatření k ochraně vašich dat před neoprávněném přístupu nebo použití neoprávněné osoby. Tyto provozní procesy a kontroly se zálohují [podmínky Online služeb](http://aka.ms/Online-Services-Terms), které nabízejí smluvní závazky, které řídí přístup k vašim datům.
+Společnost Microsoft má silné opatření k ochraně vašich dat před neoprávněném přístupu nebo použití neoprávněné osoby. Tyto provozní procesy a kontroly se zálohují [podmínky Online služeb](https://aka.ms/Online-Services-Terms), které nabízejí smluvní závazky, které řídí přístup k vašim datům.
 
 -   Technici Microsoftu nemají výchozí přístup k datům v cloudu. Místo toho, získají přístup, v části Přehled správy, pouze v případě potřeby. Tento přístup je pečlivě řídí a protokolují a odvolán, pokud už je nepotřebujete.
 
@@ -119,7 +119,7 @@ Společnost Microsoft má silné opatření k ochraně vašich dat před neoprá
 
 Obchodní služby s využitím certifikace toto auditování se provádí, jako jsou ISO/IEC 27001 jsou pravidelně ověření od Microsoftu a akreditovanými auditorskými, které provádějí vzorkové audity, ověřit tento přístup pouze pro účely hlediska podniku oprávněný požadavek. Kdykoli a z jakéhokoli důvodu můžete vždycky přistupovat k datům zákazníků.
 
-Pokud odstraníte všechna data, Microsoft Azure odstraní data, včetně žádné uložené v mezipaměti nebo záložní kopie. Pro příslušné služby, které do 90 dnů po uplynutí doby uchování dojde k odstranění. (V oboru služby jsou definovány v části podmínky pro zpracování dat naše [podmínky Online služeb](http://aka.ms/Online-Services-Terms).)
+Pokud odstraníte všechna data, Microsoft Azure odstraní data, včetně žádné uložené v mezipaměti nebo záložní kopie. Pro příslušné služby, které do 90 dnů po uplynutí doby uchování dojde k odstranění. (V oboru služby jsou definovány v části podmínky pro zpracování dat naše [podmínky Online služeb](https://aka.ms/Online-Services-Terms).)
 
 Pokud na disku používané pro úložiště odkážete selhání hardwaru, se zabezpečeně [vymaže nebo zničení](https://microsoft.com/en-us/trustcenter/privacy/you-own-your-data) dříve, než je Microsoft vrátí výrobce pro nahrazení nebo opravit. Data na jednotce se přepíší zajistit, že data nelze obnovit všechny prostředky.
 

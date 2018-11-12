@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/16/2016
 ms.author: garye
-ms.openlocfilehash: 8ff5c52b324c95bb48de0f9bbb1011ede737efb0
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: e18e1fb3e97dd9f846ee71be4f0fbb66aeca3d88
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49387656"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238858"
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-demand-forecast-in-energy"></a>Technický průvodce do šablony řešení Cortana Intelligence pro energie prognózy poptávky
 ## <a name="overview"></a>**Přehled**
@@ -47,7 +47,7 @@ Generování aplikace události naplní Azure Event Hubs pouze tehdy, když je s
 [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) služby slouží k poskytování téměř v reálném čase analýzy vstupního datového proudu z [Azure Event Hubs](#azure-event-hub) služby a publikovat výsledky do [Power BI](https://powerbi.microsoft.com)řídicího panelu a také archivuje všechny nezpracované příchozí události do [služby Azure Storage](https://azure.microsoft.com/services/storage/) service pro pozdější zpracování [Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/) služby.
 
 ### <a name="hdinsight-custom-aggregation"></a>HDInsight vlastní agregace
-Služba Azure HDInsight se používá ke spouštění [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) skriptů (orchestrovaných službou Azure Data Factory) a poskytuje agregace nezpracovaných událostí archivovaných pomocí služby Azure Stream Analytics.
+Služba Azure HDInsight se používá ke spouštění [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) skriptů (orchestrovaných službou Azure Data Factory) a poskytuje agregace nezpracovaných událostí archivovaných pomocí služby Azure Stream Analytics.
 
 ### <a name="azure-machine-learning"></a>Azure Machine Learning
 [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) service (orchestrovaná službou Azure Data Factory) k Prognózování hladiny v budoucí spotřebu energie v konkrétní oblasti na základě přijatých vstupů.
@@ -102,14 +102,14 @@ Tato část pojednává o nezbytné [kanály](data-factory/concepts-pipelines-ac
 
 ![](media/cortana-analytics-technical-guide-demand-forecast/ADF2.png)
 
-Pět kanály tento objekt pro vytváření obsahovat [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) skripty, které se používají k rozdělení a agregovat data. Pokud jste si poznamenali, skripty jsou umístěny v [služby Azure Storage](https://azure.microsoft.com/services/storage/) účet vytvořený během instalace. Jejich umístění je: demandforecasting\\\\skript\\\\hive\\ \\ (nebo name].blob.core.windows.net/demandforecasting https://[Your řešení).
+Pět kanály tento objekt pro vytváření obsahovat [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) skripty, které se používají k rozdělení a agregovat data. Pokud jste si poznamenali, skripty jsou umístěny v [služby Azure Storage](https://azure.microsoft.com/services/storage/) účet vytvořený během instalace. Jejich umístění je: demandforecasting\\\\skript\\\\hive\\ \\ (nebo name].blob.core.windows.net/demandforecasting https://[Your řešení).
 
-Podobně jako [Azure Stream Analytics](#azure-stream-analytics-1) dotazy, [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) skripty mají implicitní znalosti o příchozích formát dat, tyto dotazy by bylo potřeba změnit na základě formátu data a [konstruování](machine-learning/team-data-science-process/create-features.md) požadavky.
+Podobně jako [Azure Stream Analytics](#azure-stream-analytics-1) dotazy, [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) skripty mají implicitní znalosti o příchozích formát dat, tyto dotazy by bylo potřeba změnit na základě formátu data a [konstruování](machine-learning/team-data-science-process/create-features.md) požadavky.
 
 #### <a name="aggregatedemanddatato1hrpipeline"></a>*AggregateDemandDataTo1HrPipeline*
-To [kanálu](data-factory/concepts-pipelines-activities.md) obsahuje jednu aktivitu – [HDInsightHive](data-factory/transform-data-using-hadoop-hive.md) pomocí aktivity [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) , který běží [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) skript data o poptávce agregační datovým proudem v každých 10 sekund v úrovni transformovny každou hodinu oblasti úroveň a vložit [služby Azure Storage](https://azure.microsoft.com/services/storage/) prostřednictvím úlohy Azure Stream Analytics.
+To [kanálu](data-factory/concepts-pipelines-activities.md) obsahuje jednu aktivitu – [HDInsightHive](data-factory/transform-data-using-hadoop-hive.md) pomocí aktivity [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) , který běží [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) skript data o poptávce agregační datovým proudem v každých 10 sekund v úrovni transformovny každou hodinu oblasti úroveň a vložit [služby Azure Storage](https://azure.microsoft.com/services/storage/) prostřednictvím úlohy Azure Stream Analytics.
 
-[Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) skriptu pro tento úkol dělení je ***AggregateDemandRegion1Hr.hql***
+[Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) skriptu pro tento úkol dělení je ***AggregateDemandRegion1Hr.hql***
 
 #### <a name="loadhistorydemanddatapipeline"></a>*LoadHistoryDemandDataPipeline*
 To [kanálu](data-factory/concepts-pipelines-activities.md) obsahuje dvě aktivity:
@@ -117,7 +117,7 @@ To [kanálu](data-factory/concepts-pipelines-activities.md) obsahuje dvě aktivi
 * [HDInsightHive](data-factory/transform-data-using-hadoop-hive.md) pomocí aktivity [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) , která spouští skript Hive k agregaci hodinové data o poptávce historie transformovny úrovni každou hodinu úrovni oblasti a put ve službě Azure Storage během Azure Stream Analýza úloh
 * [Kopírování](https://msdn.microsoft.com/library/azure/dn835035.aspx) aktivity, který přesouvá agregovaná data z Azure Storage blob do Azure SQL Database, které bylo zřízené jako součást instalace šablony řešení.
 
-[Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) skriptu pro tento úkol je ***AggregateDemandHistoryRegion.hql***.
+[Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) skriptu pro tento úkol je ***AggregateDemandHistoryRegion.hql***.
 
 #### <a name="mlscoringregionxpipeline"></a>*MLScoringRegionXPipeline*
 Tyto [kanály](data-factory/concepts-pipelines-activities.md) obsahovat několik aktivit a jejichž konečný výsledek je Vyhodnocená předpovědí z experimentu Azure Machine Learning spojené s touto šablonou řešení. Jsou téměř shodné s tím rozdílem, každý z nich pouze zpracovává jiné oblasti, které se provádí různé RegionID předaný kanálu ADF a skript hive pro každou oblast.  
@@ -231,7 +231,7 @@ Ujistěte se zastavit generátor dat, když aktivně nepoužíváte řešení ja
 Následující dva nástroje jsou k dispozici vám pomůže lépe pochopit celkové náklady, které jsou součástí běží Prognózování poptávky po energii šablonu řešení ve vašem předplatném:
 
 * [Microsoft Azure Cost Estimator Tool (online)](https://azure.microsoft.com/pricing/calculator/)
-* [Microsoft Azure Cost Estimator nástroj (desktop)](http://www.microsoft.com/download/details.aspx?id=43376)
+* [Microsoft Azure Cost Estimator nástroj (desktop)](https://www.microsoft.com/download/details.aspx?id=43376)
 
 ## <a name="acknowledgements"></a>**Potvrzení**
 Tento článek je autorem je mezi odborníky přes data Yijing Svoboda a softwarový inženýr Qiu Min v Microsoftu.

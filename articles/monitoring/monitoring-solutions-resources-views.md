@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/16/2018
 ms.author: bwren
-ms.openlocfilehash: 27bec2b7fa53e7564841e6f89be7e4d81a9b9f1a
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: a0d543ebe435b616306690bfb5e3de63ecc1ff6c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50913032"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51259118"
 ---
 # <a name="views-in-management-solutions-preview"></a>Zobrazení v řešení pro správu (Preview)
 > [!NOTE]
@@ -90,7 +90,7 @@ Všimněte si, že celé zobrazení prostředků lze zkopírovat ze souboru expo
 * Proměnné by měl definovaný v řešení a použít v příslušné vlastnosti.
 
 ### <a name="log-analytics-api-version"></a>Verze rozhraní API pro analýzu protokolů
-Všechny prostředky Log Analytics, které jsou definované v šabloně Resource Manageru, mít vlastnost **apiVersion** , který určuje verzi rozhraní API prostředku by měl používat.  Tato verze se liší pro zobrazení s dotazy, které používají [starší verze a upgradované dotazovací jazyk](../log-analytics/log-analytics-log-search.md).  
+Všechny prostředky Log Analytics, které jsou definované v šabloně Resource Manageru, mít vlastnost **apiVersion** , který určuje verzi rozhraní API prostředku by měl používat.  Tato verze se liší pro zobrazení s dotazy, které používají [starší verze a upgradované dotazovací jazyk](../log-analytics/log-analytics-queries.md).  
 
  Následující tabulka obsahuje verze rozhraní API služby Log Analytics pro zobrazení v pracovních prostorech starších verzí a upgradovat: 
 

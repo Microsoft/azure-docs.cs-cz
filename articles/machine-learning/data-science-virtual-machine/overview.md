@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 10/27/2017
 ms.author: gokuma
-ms.openlocfilehash: 8b2180b09267a10479bf5b16be9b43d6cb6310a2
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 10a63768550182309f3193b39c2d00992398d190
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49428840"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51244555"
 ---
 # <a name="introduction-to-azure-data-science-virtual-machine-for-linux-and-windows"></a>Úvod k virtuálnímu počítači pro datové vědy pro Linux a Windows
 
@@ -76,7 +76,7 @@ Virtuální počítač pro datovou vědu obsahuje mnoho oblíbených nástrojů 
 | JupyterHub (server poznámkového bloku pro více uživatelů)| Ne | Ano |
 | JupyterLab (server poznámkového bloku pro více uživatelů) | Ne | Ano (pouze Ubuntu) |
 | **Vývojové nástroje, integrovaná vývojová prostředí a editory kódu**| | |
-| &nbsp;&nbsp;&nbsp;&nbsp;* [Visual Studio 2017 (Community Edition)](https://www.visualstudio.com/community/) s modulem plug-in Git, Azure HDInsight (Hadoop), Data Lake, nástroji SQL Server Data Tools, [Node.js](https://github.com/Microsoft/nodejstools), [Pythonem](http://aka.ms/ptvs) a [nástroji R pro Visual Studio (RTVS)](http://microsoft.github.io/RTVS-docs/) | Ano | Ne |
+| &nbsp;&nbsp;&nbsp;&nbsp;* [Visual Studio 2017 (Community Edition)](https://www.visualstudio.com/community/) s modulem plug-in Git, Azure HDInsight (Hadoop), Data Lake, nástroji SQL Server Data Tools, [Node.js](https://github.com/Microsoft/nodejstools), [Pythonem](https://aka.ms/ptvs) a [nástroji R pro Visual Studio (RTVS)](http://microsoft.github.io/RTVS-docs/) | Ano | Ne |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Visual Studio Code](https://code.visualstudio.com/) | Ano | Ano |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [RStudio Desktop](https://www.rstudio.com/products/rstudio/#Desktop) | Ano | Ano |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [RStudio Server](https://www.rstudio.com/products/rstudio/#Server) | Ne | Ano |

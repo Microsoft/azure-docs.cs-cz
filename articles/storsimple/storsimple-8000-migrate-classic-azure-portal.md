@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/08/2018
 ms.author: alkohli
-ms.openlocfilehash: 5a0da47b854e625f2f4a2fcf4c95ec566ba63093
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 3a76063b05327e0dcb3ce5c8c9a46113a4c63ef8
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47095674"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51255127"
 ---
 # <a name="migrate-subscriptions-and-storage-accounts-associated-with-storsimple-device-manager-service"></a>Migrovat předplatná a účty úložiště přidružené služby Správce zařízení StorSimple
 
@@ -29,8 +29,8 @@ Budete muset přesunout služby StorSimple na nový registrace nebo do nového p
 
 | Lze je přesunout...| Podporováno| Prostoje| Azure procesu podpory| Přístup|
 |-----|-----|-----|-----|-----|
-| Celý předplatné (zahrnuje účty služby a úložiště StorSimple) a další registraci? | Ano       | Ne       | **Registrace přenosu**<br>Použití:<li>Při nákupu nových závazků Azure v rámci nové smlouvy.</li><li>Chcete provést migraci všech účtů a předplatných ze staré registrace na nový. To zahrnuje všechny služby Azure v rámci původní předplatného.</li> | **Krok 1: Otevřete lístek podpory operace Azure Enterprise.**<li>Přejděte do [ (Nastavení)http://aka.ms/AzureEntSupport](http://aka.ms/AzureEntSupport) (Integrace a služby).</li><li> Vyberte **Správa registrace** a pak vyberte **přenést z jednoho registrace do nové registrace**.<br>**Krok 2: Zadejte požadované informace**<br>Zahrnout:<li>číslo registrace zdroje</li><li> určení registrační číslo</li><li>Datum účinnosti přenosu|
-| Služby StorSimple z existujícího účtu a novou registraci?    | Ano       | Ne       | **Převod účtu**<br>Použití:<li>Pokud nechcete, aby plně zaregistrované přenosu.</li><li>Chcete přesunout specifické účty a novou registraci.</li>| **Krok 1: Otevřete lístek podpory operace Azure Enterprise.**<li>Přejděte do [ (Nastavení)http://aka.ms/AzureEntSupport](http://aka.ms/AzureEntSupport) (Integrace a služby).</li><li>Vyberte **Správa registrace** a pak vyberte **přenést do nové registrace účtu EA**.<br>**Krok 2: Zadejte požadované informace**<br>Zahrnout:<li>číslo registrace zdroje</li><li> určení registrační číslo</li><li>Datum účinnosti přenosu|
+| Celý předplatné (zahrnuje účty služby a úložiště StorSimple) a další registraci? | Ano       | Ne       | **Registrace přenosu**<br>Použití:<li>Při nákupu nových závazků Azure v rámci nové smlouvy.</li><li>Chcete provést migraci všech účtů a předplatných ze staré registrace na nový. To zahrnuje všechny služby Azure v rámci původní předplatného.</li> | **Krok 1: Otevřete lístek podpory operace Azure Enterprise.**<li>Přejděte do [ (Nastavení)http://aka.ms/AzureEntSupport](https://aka.ms/AzureEntSupport) (Integrace a služby).</li><li> Vyberte **Správa registrace** a pak vyberte **přenést z jednoho registrace do nové registrace**.<br>**Krok 2: Zadejte požadované informace**<br>Zahrnout:<li>číslo registrace zdroje</li><li> určení registrační číslo</li><li>Datum účinnosti přenosu|
+| Služby StorSimple z existujícího účtu a novou registraci?    | Ano       | Ne       | **Převod účtu**<br>Použití:<li>Pokud nechcete, aby plně zaregistrované přenosu.</li><li>Chcete přesunout specifické účty a novou registraci.</li>| **Krok 1: Otevřete lístek podpory operace Azure Enterprise.**<li>Přejděte do [ (Nastavení)http://aka.ms/AzureEntSupport](https://aka.ms/AzureEntSupport) (Integrace a služby).</li><li>Vyberte **Správa registrace** a pak vyberte **přenést do nové registrace účtu EA**.<br>**Krok 2: Zadejte požadované informace**<br>Zahrnout:<li>číslo registrace zdroje</li><li> určení registrační číslo</li><li>Datum účinnosti přenosu|
 | Služby StorSimple z jednoho předplatného do jiného předplatného?      | Ne        |    Ano         | Žádný proces ručního nastavení|<li>Migrace dat mimo zařízení StorSimple.</li><li>Proveďte obnovení do výrobního nastavení zařízení, tím se odstraní všechna místní data na zařízení.</li><li>Registrace zařízení pomocí nového předplatného a služby Správce zařízení StorSimple.</li><li>Migrace dat zpět do zařízení.|
   |Je možné převést vlastnictví předplatného Azure do jiného adresáře? | Ano       | Ne       | Přiřazení existujícího předplatného do adresáře služby Azure AD | Přečtěte si [k přiřazení existujícího předplatného do adresáře služby Azure AD](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md). Správné zobrazení všech komponent může trvat až 10 minut.|
 | Zařízení StorSimple z jedné služby Správce zařízení StorSimple do jiné služby v jiné oblasti?      | Ne        | Ano            | Žádný proces ručního nastavení |Stejné jako výše.|

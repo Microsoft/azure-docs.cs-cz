@@ -3,19 +3,19 @@ title: Příklad Machine learning s MLlib Spark v HDInsight – Azure
 description: Další informace o použití Spark MLlib k vytvoření aplikace machine learning, která analyzuje datové sady pomocí klasifikace prostřednictvím logistické regrese.
 keywords: Spark machine learning, spark machine learning příklad
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 05/18/2018
-ms.author: jasonh
-ms.openlocfilehash: 78f9240e6b01bafc68b71d20044c7ec7458cc972
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.date: 11/06/2018
+ms.author: hrasheed
+ms.openlocfilehash: e553833f8b9a5daab5c454cea628acdda0320e76
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43047292"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51257635"
 ---
 # <a name="use-spark-mllib-to-build-a-machine-learning-application-and-analyze-a-dataset"></a>Knihovna Spark MLlib používat k sestavení služby machine learning aplikací a analyzovat datové sady
 
@@ -78,7 +78,7 @@ Vzhledem k tomu, že nezpracovaná data se ve formátu CSV, můžete o přijetí
         sio.close()
         return value
     
-    inspections = sc.textFile('wasb:///HdiSamples/HdiSamples/FoodInspectionData/Food_Inspections1.csv')\
+    inspections = sc.textFile('/HdiSamples/HdiSamples/FoodInspectionData/Food_Inspections1.csv')\
                     .map(csvParse)
     ```
 
@@ -372,7 +372,7 @@ Nyní můžete vytvořit finální vizualizace umožňující odůvodnitelný v�
     plt.axis('equal')
     ```
 
-    Byste měli vidět následující výstup:
+    Měl by se zobrazit následující výstup:
 
     ![Spark machine learningu výstup aplikace – procenta výsečový graf neúspěšných potravin kontrol. ](./media/apache-spark-machine-learning-mllib-ipython/spark-machine-learning-result-output-2.png "Spark machine learningu výstupu výsledku")
 

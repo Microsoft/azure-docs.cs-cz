@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-multiple
 ms.workload: big-compute
 ms.date: 05/14/2018
 ms.author: danlep
-ms.openlocfilehash: f2cf26bc9f980729e74c4a4e0b4e3f4b311fd754
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: ce8e2457c1d575e890174de3b9cf7faf6e16a7cb
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39421130"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51258812"
 ---
 # <a name="submit-hpc-jobs-from-an-on-premises-computer-to-an-hpc-pack-cluster-deployed-in-azure"></a>Odeslání úloh HPC z místního počítače do clusteru HPC Pack nasazeného v Azure
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -37,7 +37,7 @@ Konfigurace v místním klientském počítači odesílat úlohy do [sady Micros
 ## <a name="step-1-install-and-configure-the-web-components-on-the-head-node"></a>Krok 1: Instalace a konfigurace webové komponenty hlavního uzlu
 Povolit rozhraní REST odesílat úlohy do clusteru pomocí protokolu HTTPS, ujistěte se, že jsou webové součásti sady HPC Pack nakonfigurovány na hlavní uzel HPC Pack. Pokud požadavky nejsou nainstalovány, nejprve nainstalujte komponenty webové spuštěním HpcWebComponents.msi instalační soubor. Nakonfigurujte komponenty spuštěním skriptu prostředí HPC PowerShell **Set-HPCWebComponents.ps1**.
 
-Podrobné pokyny najdete v části [nainstalovat webové komponenty Microsoft HPC Pack](http://technet.microsoft.com/library/hh314627.aspx).
+Podrobné pokyny najdete v části [nainstalovat webové komponenty Microsoft HPC Pack](https://technet.microsoft.com/library/hh314627.aspx).
 
 > [!TIP]
 > Některé šablony rychlý start Azure clusterů HPC Pack instalace a konfigurace webové komponenty automaticky.
@@ -169,7 +169,7 @@ Pokud chcete ověřit konfiguraci, zkuste probíhajících úloh na clusteru v A
 1. Chcete-li zobrazit výsledky úlohy, které jste odeslali, klikněte na úlohu s ID a potom klikněte na tlačítko **úlohy v zobrazení** Chcete-li zobrazit výstup příkazu (v části **výstup**).
 
 ## <a name="next-steps"></a>Další postup
-* Mohou také odesílat úlohy do clusteru Azure se [rozhraní REST API služby HPC Pack](http://social.technet.microsoft.com/wiki/contents/articles/7737.creating-and-submitting-jobs-by-using-the-rest-api-in-microsoft-hpc-pack-windows-hpc-server.aspx).
+* Mohou také odesílat úlohy do clusteru Azure se [rozhraní REST API služby HPC Pack](https://social.technet.microsoft.com/wiki/contents/articles/7737.creating-and-submitting-jobs-by-using-the-rest-api-in-microsoft-hpc-pack-windows-hpc-server.aspx).
 * Pokud chcete odesílat úlohy clusteru z klienta systému Linux, přečtěte si ukázku Pythonu v [HPC Pack 2012 R2 SDK a ukázkový kód](https://www.microsoft.com/download/details.aspx?id=41633).
 
 <!--Image references-->

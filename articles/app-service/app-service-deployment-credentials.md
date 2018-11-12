@@ -13,15 +13,15 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 01/05/2016
 ms.author: dariagrigoriu
-ms.openlocfilehash: a17260770f0b2e0a73585ce4108bd5625ac22229
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 79841887ce8413970cb7dff0ca0099d4e0745a68
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39436144"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51259305"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>Nakonfigurujte přihlašovací údaje nasazení pro službu Azure App Service
-[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) podporuje dva typy přihlašovacích údajů pro [místní nasazení přes Git](app-service-deploy-local-git.md) a [nasazení FTP/S](app-service-deploy-ftp.md). Se nejedná stejná jako přihlašovacích údajů Azure Active Directory.
+[Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) podporuje dva typy přihlašovacích údajů pro [místní nasazení přes Git](app-service-deploy-local-git.md) a [nasazení FTP/S](app-service-deploy-ftp.md). Se nejedná stejná jako přihlašovacích údajů Azure Active Directory.
 
 * **Přihlašovací údaje na úrovni uživatele**: jednu sadu přihlašovacích údajů pro celý účet Azure. Slouží k nasazení do služby App Service pro libovolnou aplikaci, v libovolné předplatné, který má oprávnění pro přístup k účtu Azure. Jedná se o výchozí sadu přihlašovacích údajů, které nakonfigurujete v **App Services** > **&lt;app_name >** > **přihlašovacíúdajenasazení**. Je také výchozí sadu, která se zobrazí v grafickém uživatelském rozhraní portálu (například **přehled** a **vlastnosti** vaší aplikace [stránka s materiály pro](../azure-resource-manager/resource-group-portal.md#manage-resources)).
 

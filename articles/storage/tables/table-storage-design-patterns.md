@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/23/2018
 ms.author: sngun
 ms.component: tables
-ms.openlocfilehash: b06f5a66566c250eef608ddccc551aaebe24ef74
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: d055ea9b30732e1cc0fc4ae5471bae26adc08b35
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39522794"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238892"
 ---
 # <a name="table-design-patterns"></a>Způsoby návrhu tabulek
 Tento článek popisuje některé vzory, které jsou vhodné pro použití s řešeními služby tabulky. Uvidíte také, jak se prakticky vyřešit některé problémy a kompromisy popsané v dalších článcích návrh tabulky úložiště. Následující diagram obsahuje souhrn vztahy mezi různé vzorce:  
@@ -48,7 +48,7 @@ Když odešlete dotaz rozsahu entit zaměstnanců, můžete zadat rozsah seřaze
 * Najít všechny zaměstnance z oddělení prodeje se zaměstnanec ID v rozsahu 000100 k 000199 použití: $filter = (PartitionKey eq "Prodeje") a (RowKey ge "empid_000100") a (RowKey le "empid_000199")  
 * Najít všechny zaměstnance z oddělení prodeje s e-mailovou adresu, začíná písmenem "a" použití: $filter = (PartitionKey eq "Prodeje") a (RowKey ge "email_a") a (RowKey lt "email_b")  
   
-  Všimněte si, že je filtr syntaxe používané ve výše uvedených příkladech z rozhraní REST API služby tabulky pro další informace najdete v tématu [dotazu entity](http://msdn.microsoft.com/library/azure/dd179421.aspx).  
+  Všimněte si, že je filtr syntaxe používané ve výše uvedených příkladech z rozhraní REST API služby tabulky pro další informace najdete v tématu [dotazu entity](https://msdn.microsoft.com/library/azure/dd179421.aspx).  
 
 ### <a name="issues-and-considerations"></a>Problémy a důležité informace
 Když se budete rozhodovat, jak tento model implementovat, měli byste vzít v úvahu následující skutečnosti:  
@@ -104,7 +104,7 @@ Když odešlete dotaz rozsahu entit zaměstnanců, můžete zadat rozsah seřaze
 * Najít všechny zaměstnance z oddělení prodeje s ID zaměstnance v rozsahu **000100** k **000199** seřazeny vzestupně v zaměstnance ID pořadí použití: $filter = (PartitionKey eq ' empid_Sales") a (RowKey ge"000100") a (RowKey le "000199")  
 * Najít všechny zaměstnance z oddělení prodeje s e-mailovou adresu, která začíná textem "a" v e-mailovou adresu pořadí použijte seřazený: $filter = (PartitionKey eq ' email_Sales") a (RowKey ge"a") a (RowKey lt"b")  
 
-Všimněte si, že je filtr syntaxe používané ve výše uvedených příkladech z rozhraní REST API služby tabulky pro další informace najdete v tématu [dotazu entity](http://msdn.microsoft.com/library/azure/dd179421.aspx).  
+Všimněte si, že je filtr syntaxe používané ve výše uvedených příkladech z rozhraní REST API služby tabulky pro další informace najdete v tématu [dotazu entity](https://msdn.microsoft.com/library/azure/dd179421.aspx).  
 
 ### <a name="issues-and-considerations"></a>Problémy a důležité informace
 Když se budete rozhodovat, jak tento model implementovat, měli byste vzít v úvahu následující skutečnosti:  
@@ -617,7 +617,7 @@ Optimální dotaz vrací jednotlivé entity na základě **PartitionKey** hodnot
 
 V takových situacích by měl vždy plně testování výkonu vaší aplikace.  
 
-Dotaz vůči službě table service může vrátit maximálně 1 000 entit najednou a mohou spouštět maximálně pět sekund. Pokud sada výsledků obsahuje víc než 1 000 entity, pokud dotaz nebyla dokončena do pěti sekund, nebo pokud dotaz překročí hranice oddílu, vrátí služba Table service token pro pokračování umožňuje klientské aplikaci požádat o další sadu entit. Další informace o jak pokračování tokeny práce, naleznete v tématu [časový limit dotazu a stránkování](http://msdn.microsoft.com/library/azure/dd135718.aspx).  
+Dotaz vůči službě table service může vrátit maximálně 1 000 entit najednou a mohou spouštět maximálně pět sekund. Pokud sada výsledků obsahuje víc než 1 000 entity, pokud dotaz nebyla dokončena do pěti sekund, nebo pokud dotaz překročí hranice oddílu, vrátí služba Table service token pro pokračování umožňuje klientské aplikaci požádat o další sadu entit. Další informace o jak pokračování tokeny práce, naleznete v tématu [časový limit dotazu a stránkování](https://msdn.microsoft.com/library/azure/dd135718.aspx).  
 
 Pokud používáte klientskou knihovnu pro úložiště, je pokračování tokeny automaticky zpracovat za vás jako vrátí entity ze služby Table service. Následující vzorový kód C# pomocí klientskou knihovnu pro úložiště automaticky zpracovává pokračování tokeny služby table service je vrátí v odpovědi:  
 
