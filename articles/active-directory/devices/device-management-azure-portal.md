@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/26/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: bda1a9df8a58833a544dc065dee0110bccf3ec59
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 0497cba4cae66e63f710c9678f6d87c2f9fb8fb1
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50138856"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51515076"
 ---
 # <a name="how-to-manage-devices-using-the-azure-portal"></a>Správa zařízení pomocí webu Azure portal
 
@@ -151,7 +151,7 @@ Chcete-li povolit / zakázat zařízení, máte dvě možnosti:
 **Poznámky:**
 
 - Musíte být globálním správcem ve službě Azure AD pro povolení / zákaz zařízení. 
-- Zařízení zakázáním zařízení brání v přístupu k prostředkům Azure AD. 
+- Zakázáním zařízení brání zařízení v úspěšném ověření pomocí Azure AD, brání zařízení v přístupu k prostředkům Azure AD, které jsou chráněné pomocí zařízení certifikační Autority nebo pomocí přihlašovacích údajů WH4B tím uvolní. 
 
 
 

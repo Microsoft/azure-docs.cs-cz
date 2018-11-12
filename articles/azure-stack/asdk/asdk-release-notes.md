@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/09/2018
+ms.date: 11/07/2018
 ms.author: sethm
 ms.reviewer: misainat
-ms.openlocfilehash: 27dbd4215deef6574622ffcd2c62a64503459258
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
-ms.translationtype: MT
+ms.openlocfilehash: 8e8518cdf95e1b97bd4b641322c1b2a3fdc3bf9e
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51515756"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282454"
 ---
 # <a name="asdk-release-notes"></a>Zpráva k vydání verze ASDK  
 Tento článek obsahuje informace o vylepšení, oprav a známé problémy v Azure Stack Development Kit (ASDK). Pokud si nejste jistí, kterou verzi používáte, můžete si [použití portálu ke kontrole](.\.\azure-stack-updates.md#determine-the-current-version).
@@ -46,7 +46,7 @@ Další informace najdete v tématu [předávání syslog Azure Stack](../azure-
 <!-- TBD - IS ASDK --> 
 - Opravili jsme problém, ve kterém jste vytvořili virtuální počítače na portálu user portal Azure Stack, a na portálu zobrazuje nesprávný počet datových disků, které můžete připojit k DS-series virtuálních počítačů. Virtuálních počítačů řady DS může obsahovat libovolný počet datových disků jako konfiguraci Azure.
 
-- Následující problémy se spravovanými disky jsou opravené v 1809 a také řeší. 1808 [Azure Stack Hotfix 1.1808.7.113](https://support.microsoft.com/help/4471992/): 
+- Následující problémy se spravovanými disky jsou opravené v 1809 a také řeší. 1808 [Azure Stack Hotfix 1.1808.5.110](https://support.microsoft.com/help/4468920/): 
 
    <!--  2966665 – IS, ASDK --> 
    - Byl opraven problém, v které připojování datových disků SSD na premium velikost spravovaného disku virtuální počítače (DS, DSv2, Fs, Fs_V2) se nezdařilo s chybou: *nepovedlo se aktualizovat disky pro virtuální počítač 'vmname' Chyba: operaci nelze provést, protože požadovaná Typ účtu úložiště 'Premium_LRS' není podporován pro velikost virtuálního počítače "Standard_DS/Ds_V2/FS/Fs_v2)*. 
@@ -59,16 +59,6 @@ Další informace najdete v tématu [předávání syslog Azure Stack](../azure-
 - <!-- 2702741 -  IS, ASDK --> Oprava potíží, ve které veřejné IP adresy, které se nasadily pomocí dynamického přidělování metoda nebyly zaručit zachování po zastavte a Navraťte vydání. Nyní jsou zachovány.
 
 - <!-- 3078022 - IS, ASDK --> Pokud se virtuální počítač zastavit a uvolnit před. 1808 ho nebylo možné znovu alokovat po 1808 aktualizaci.  Tento problém je vyřešen v 1809. Instance, které byly v tomto stavu a nebylo možné spustit, může být spuštěný v 1809 s touto opravou. Tento problém vyřešit zabrání také nevyskytla.
-
-<!-- 3090289 – IS, ASDK --> 
-- Opravili jsme problém, kde po instalaci aktualizace. 1808, může dojít k následujícím problémům při nasazování virtuálních počítačů se spravovanými disky:
-
-   1. Pokud předplatné bylo vytvořeno před aktualizací. 1808, nasazení virtuálního počítače se spravovanými disky může selhat s interní chybovou zprávu. Chcete chybu vyřešit, postupujte podle těchto kroků pro každé předplatné:
-      1. Portál pro klienty, přejděte na **předplatná** a vyhledejte předplatné. Klikněte na tlačítko **poskytovatelů prostředků**, klikněte na **Microsoft.Compute**a potom klikněte na tlačítko **přeregistrovat**.
-      2. V rámci stejného předplatného, přejděte na **řízení přístupu (IAM)** a ověřte, že **Azure Stack – spravovaný Disk** je uvedena.
-   2. Pokud jste nakonfigurovali prostředí s více tenanty, nasazování virtuálních počítačů v rámci služby předplacené asociovaná s adresářem hosta může selhat s interní chybovou zprávu. Chcete-li chybu vyřešit, postupujte takto:
-      1. Použít [. 1808 Azure Stack opravu Hotfix](https://support.microsoft.com/help/4471992).
-      2. Postupujte podle kroků v [v tomto článku](../azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory) změna konfigurace všech vašich adresářů hosta.
 
 - **Různé opravy** výkonu, stability, zabezpečení a operační systém, který se používá ve službě Azure Stack
 
@@ -110,7 +100,7 @@ Další informace najdete v tématu [předávání syslog Azure Stack](../azure-
 
 #### <a name="compute"></a>Compute 
 
-<!-- 3164607 – IS, ASDK -->
+<!-- TBD – IS, ASDK -->
 - Opětovné odpojený disk do stejného virtuálního počítače (VM) se stejným názvem a logická jednotka se nezdaří s chybou jako **nelze připojit datový disk "datadisk" k virtuálnímu počítači "vm1"**. Protože disk je v tuto chvíli odpojuje nebo poslední operace odpojení nebyla úspěšná, dojde k chybě. Počkejte, dokud je zcela odpojit disk a potom opakujte operaci nebo odstraňte nebo odpojte disk explicitně znovu. Alternativním řešením je se znovu připojit s jiným názvem nebo na různých logických jednotkách. 
 
 <!-- 3235634 – IS, ASDK -->
@@ -118,6 +108,16 @@ Další informace najdete v tématu [předávání syslog Azure Stack](../azure-
 
 <!-- 3099544 – IS, ASDK --> 
 - Při vytváření nového virtuálního počítače (VM) pomocí portálu Azure Stack, a vyberte velikost virtuálního počítače, zobrazí se sloupec USD za měsíc s **není k dispozici** zprávy. Tento sloupec by se neměl zobrazit; zobrazení virtuální počítač cenové sloupec není podporován ve službě Azure Stack.
+
+<!-- 3090289 – IS, ASDK --> 
+- Po použití. 1808 aktualizace, kterým může dojít k následujícím problémům při nasazování virtuálních počítačů se spravovanými disky:
+
+   1. Pokud předplatné bylo vytvořeno před aktualizací. 1808, nasazení virtuálního počítače se spravovanými disky může selhat s interní chybovou zprávu. Chcete chybu vyřešit, postupujte podle těchto kroků pro každé předplatné:
+      1. Portál pro klienty, přejděte na **předplatná** a vyhledejte předplatné. Klikněte na tlačítko **poskytovatelů prostředků**, klikněte na **Microsoft.Compute**a potom klikněte na tlačítko **přeregistrovat**.
+      2. V rámci stejného předplatného, přejděte na **řízení přístupu (IAM)** a ověřte, že **Azure Stack – spravovaný Disk** je uvedena.
+   2. Pokud jste nakonfigurovali prostředí s více tenanty, nasazování virtuálních počítačů v rámci služby předplacené asociovaná s adresářem hosta může selhat s interní chybovou zprávu. Chcete-li chybu vyřešit, postupujte takto:
+      1. Použít [. 1808 Azure Stack opravu Hotfix](https://support.microsoft.com/help/4468920).
+      2. Postupujte podle kroků v [v tomto článku](../azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory) změna konfigurace všech vašich adresářů hosta.
 
 <!-- 2869209 – IS, ASDK --> 
 - Při použití [ **přidat AzsPlatformImage** rutiny](https://docs.microsoft.com/powershell/module/azs.compute.admin/add-azsplatformimage?view=azurestackps-1.4.0), je nutné použít **- OsUri** parametr jako identifikátor URI, kde je odeslána na disk účtu úložiště. Pokud používáte místní cesta na disku, rutina selže s následující chybou: *dlouho běžící operace se nezdařila se stavem "Failed"*. 

@@ -8,12 +8,12 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.topic: tutorial
 ms.date: 09/24/2018
-ms.openlocfilehash: 1a8f04f39568816252175fc9e0893f1ab3e2cdc6
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 48cfba6f62d75470efd27e3a4cdcb995e716798b
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47224813"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51037137"
 ---
 # <a name="tutorial-configure-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>Kurz: Konfigurace zásad Kafka ve službě HDInsight s balíčkem zabezpečení podniku (Preview)
 
@@ -33,7 +33,7 @@ V tomto kurzu se naučíte:
 
 * Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
-* Vytvořte [cluster HDInsight Kafka s balíčkem zabezpečení podniku](https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-run-hive).
+* Vytvořte [cluster HDInsight Kafka s balíčkem zabezpečení podniku](apache-domain-joined-configure-using-azure-adds.md).
 
 ## <a name="connect-to-apache-ranger-admin-ui"></a>Připojení k uživatelskému rozhraní správce Apache Ranger
 
@@ -117,15 +117,18 @@ Abyste vytvořili dvě témata **salesevents** a **marketingspend**:
 
    ```bash
    export KAFKAZKHOSTS=`curl -sS -u admin -G https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/ZOOKEEPER/components/ZOOKEEPER_SERVER | jq -r '["\(.host_components[].HostRoles.host_name):2181"] | join(",")' | cut -d',' -f1,2`; \
-   
    export KAFKABROKERS=`curl -sS -u admin -G https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/KAFKA/components/KAFKA_BROKER | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")' | cut -d',' -f1,2`; \
    ```
+> [!Note]
+> Než budete pokračovat, možná budete muset nastavit své vývojové prostředí, pokud jste to ještě neudělali. Budete potřebovat komponenty, jako jsou sada Java JDK, Apache Maven a klient SSH s scp. Další podrobnosti najdete v těchto [pokynech k instalaci](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/tree/master/DomainJoined-Producer-Consumer).
+1. Stáhněte si [příklady pro producenta a konzumenta Apache Kafka připojené k doméně](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/tree/master/DomainJoined-Producer-Consumer).
 
-4. Spusťte následující příkazy: 
+1. Postupujte podle kroků 2 a 3 v části **Sestavení a nasazení příkladu** v [kurzu použití rozhraní Apache Kafka Producer and Consumer API](https://docs.microsoft.com/azure/hdinsight/kafka/apache-kafka-producer-consumer-api#build-and-deploy-the-example).
+
+1. Spusťte následující příkazy:
 
    ```bash
    java -jar -Djava.security.auth.login.config=/usr/hdp/current/kafka-broker/config/kafka_client_jaas.conf kafka-producer-consumer.jar create salesevents $KAFKABROKERS
-   
    java -jar -Djava.security.auth.login.config=/usr/hdp/current/kafka-broker/config/kafka_client_jaas.conf kafka-producer-consumer.jar create marketingspend $KAFKABROKERS
    ```
 

@@ -15,15 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: deguhath
-ms.openlocfilehash: acb02df7a1ca49e822062ec5658b4875388b85ab
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: 043d19e3917bcdac7e963225af7e614315e414bd
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47586015"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51344701"
 ---
 # <a name="overview-of-data-science-using-spark-on-azure-hdinsight"></a>Přehled vědeckého zkoumání dat pomocí Sparku v Azure HDInsight
-[!INCLUDE [machine-learning-spark-modeling](../../../includes/machine-learning-spark-modeling.md)]
 
 Tato sada témat ukazuje způsob použití Spark v HDInsight dokončete běžných úloh datových věd, jako je příjem dat, vytváření funkcí, modelování a vyhodnocení modelu. Data používaná je ukázka 2013 NYC taxislužby cesty a tarif datové sady. Historické modely budou vytvářeny zahrnují logistické a lineární regrese, náhodných doménové struktury a přechodu Posílený stromové struktury. Témata také ukazují, jak k uložení těchto modelů ve službě Azure blob storage (WASB) a jak stanovení skóre a vyhodnotit prediktivní výkonu. Pokročilejší témata se týkají, jak může být modelů trénovaných pomocí křížového ověření a hyperparametrické sweeping. Toto přehledové téma také odkazuje na témata, která popisují, jak vytvořit cluster Spark, které potřebujete k dokončení kroků v návody k dispozici. 
 

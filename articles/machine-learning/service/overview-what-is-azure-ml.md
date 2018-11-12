@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 author: garyericson
 ms.author: garye
 ms.date: 09/24/2018
-ms.openlocfilehash: 1dac11b8ad71a936b33742b52c95ac998176baf7
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: e3b8d6bfaa54991e0e521a0c42eba8ca3f995c92
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51244933"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50741160"
 ---
 # <a name="what-is-azure-machine-learning-service-preview"></a>Co je služba Azure Machine Learning (Preview)?
 
@@ -48,7 +48,7 @@ Během experimentování při hledání nejlepšího řešení můžete nasazen�
 Služba Azure Machine Learning za vás dokáže automaticky vygenerovat a optimalizovat model.
 Příklad najdete v článku s [kurzem pro automatické trénování modelu klasifikace pomocí automatizovaného strojového učení Azure](tutorial-auto-train-models.md).
 
-Nebo si můžete s využitím sady Azure Machine Learning <a href="https://aka.ms/aml-sdk" target="_blank">SDK</a> pro Python v kombinaci s open source balíčky Pythonu v pracovním prostoru služby Azure Machine Learning sami sestavit a vytrénovat vysoce přesné modely strojového a hloubkového učení.
+Nebo si můžete s využitím sady Azure Machine Learning <a href="http://aka.ms/aml-sdk" target="_blank">SDK</a> pro Python v kombinaci s open source balíčky Pythonu v pracovním prostoru služby Azure Machine Learning sami sestavit a vytrénovat vysoce přesné modely strojového a hloubkového učení.
 Na výběr máte celou řadu komponent strojového učení dostupných v Open Source balíčcích Pythonu, například:
 
 - <a href="http://scikit-learn.org/stable/" target="_blank">Scikit-learn</a>

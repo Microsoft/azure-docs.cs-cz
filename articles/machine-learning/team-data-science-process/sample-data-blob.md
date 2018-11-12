@@ -1,6 +1,6 @@
 ---
-title: Ukázková data v Azure blob storage | Microsoft Docs
-description: Ukázková data do Azure Blob Storage
+title: Ukázková data v Azure blob storage | Dokumentace Microsoftu
+description: Ukázková data ve službě Azure Blob Storage
 services: machine-learning,storage
 documentationcenter: ''
 author: deguhath
@@ -15,27 +15,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: deguhath
-ms.openlocfilehash: ffb92df0e0727d02985ec26f61739cdc759d0f93
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 9f987daf8b0f111f8d527b2f18dc5e3428df282a
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34837663"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51344922"
 ---
 # <a name="heading"></a>Ukázková data v Azure blob storage
-Tento dokument popisuje vzorkování dat uložených v Azure blob storage stáhnout prostřednictvím kódu programu a potom ji pomocí postupů, které jsou napsané v Pythonu vzorkování.
 
-Následující **nabídky** odkazy na témata, které popisují, jak ukázková data z různých prostředích úložiště. 
-
-[!INCLUDE [cap-sample-data-selector](../../../includes/cap-sample-data-selector.md)]
+Tento článek se týká vzorkování data uložená ve službě Azure blob storage pomocí stahování prostřednictvím kódu programu a pak ho pomocí procedury napsané v Pythonu vzorkování.
 
 **Proč ukázková data?**
-Pokud je velké datové sady, které chcete analyzovat, je obvykle vhodné nižší ukázková data, která mají snížit velikost menší, ale reprezentativní a lepší správu bitlockeru. To usnadňuje pochopení dat, zkoumání a funkce inženýrství. Jeho role v procesu Cortana Analytics je umožnit rychlé vytváření prototypů zpracování dat funkcí a modelů strojového učení.
+Pokud je velké datové sady, které chcete analyzovat, je obvykle vhodné na nižší dat ke snížení velikosti menší, ale reprezentativní a lépe zvládnutelné. To usnadňuje pochopení dat, prozkoumávání a vytváření funkcí. Jejich rolí v procesu sady Cortana Analytics je umožnit rychlé vytváření prototypů funkcí pro zpracování dat a modelů strojového učení.
 
-Tato úloha vzorkování je krok v [tým datové vědy procesu (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/).
+Tato úloha vzorkování je krok [vědecké zpracování týmových dat (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/).
 
-## <a name="download-and-down-sample-data"></a>Stažení a nižší ukázková data
-1. Stáhněte data z Azure blob storage pomocí služby objektů blob z následující vzorový kód Python: 
+## <a name="download-and-down-sample-data"></a>Stažení a seznamu ukázkových dat
+1. Stáhněte data z úložiště objektů blob v Azure pomocí služby blob service z následujícího vzorového kódu Pythonu: 
    
         from azure.storage.blob import BlobService
         import tables
@@ -53,14 +50,14 @@ Tato úloha vzorkování je krok v [tým datové vědy procesu (TDSP)](https://a
         t2=time.time()
         print(("It takes %s seconds to download "+blobname) % (t2 - t1))
 
-2. Čtení dat do data rámečku Pandas z soubor stažený výše.
+2. Čtení dat do dat – rámec Pandas ze souboru stáhnout výše.
    
         import pandas as pd
    
         #directly ready from file on disk
         dataframe_blobdata = pd.read_csv(LOCALFILE)
 
-3. Nižší sample dat pomocí `numpy`na `random.choice` následujícím způsobem:
+3. Data s využitím dolů sample `numpy`společnosti `random.choice` následujícím způsobem:
    
         # A 1 percent sample
         sample_ratio = 0.01 
@@ -68,16 +65,16 @@ Tato úloha vzorkování je krok v [tým datové vědy procesu (TDSP)](https://a
         sample_rows = np.random.choice(dataframe_blobdata.index.values, sample_size)
         dataframe_blobdata_sample = dataframe_blobdata.ix[sample_rows]
 
-Nyní můžete pracovat s výše rámečku dat s ukázkou procent 1 pro další zkoumání a funkce generování.
+Teď můžete pracovat s výše datový rámec s ukázkou procento 1 pro další zkoumání a funkce generování.
 
-## <a name="heading"></a>Nahrání dat a načtení do Azure Machine Learning
-Následující vzorový kód vám pomůže nižší sample data a použít ho přímo v Azure Machine Learning:
+## <a name="heading"></a>Nahrání dat a načíst do Azure Machine Learning
+Vám pomůže následující ukázka kódu dolů – ukázková data a použít ho přímo ve službě Azure Machine Learning:
 
-1. Zápis dat rámečku do místního souboru
+1. Zápis datového rámce do místního souboru
    
         dataframe.to_csv(os.path.join(os.getcwd(),LOCALFILENAME), sep='\t', encoding='utf-8', index=False)
 
-2. Nahrajte místního souboru do služby Azure blob pomocí následující vzorový kód:
+2. Nahrání místního souboru do objektu blob Azure pomocí následujícího ukázkového kódu:
    
         from azure.storage.blob import BlobService
         import tables
@@ -99,7 +96,7 @@ Následující vzorový kód vám pomůže nižší sample data a použít ho p�
         except:            
             print ("Something went wrong with uploading to the blob:"+ BLOBNAME)
 
-3. Čtení dat z Azure blob pomocí Azure Machine Learning [importovat Data](https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/) jak je znázorněno na obrázku níže:
+3. Číst data z Azure blob pomocí Azure Machine Learning [Import dat](https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/) jak je znázorněno na následujícím obrázku:
 
 ![Čtečka objektů blob](./media/sample-data-blob/reader_blob.png)
 

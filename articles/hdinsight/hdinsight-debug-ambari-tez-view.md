@@ -1,24 +1,24 @@
 ---
-title: Použití zobrazení Ambari Tez s HDInsight – Azure
-description: Další informace o použití zobrazení Ambari Tez k ladění úloh Tez v HDInsight.
+title: Použití Apache Ambari Tez zobrazení s HDInsight – Azure
+description: Další informace o použití zobrazení Apache Ambari Tez k ladění úloh Tez v HDInsight.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
-ms.author: jasonh
-ms.openlocfilehash: 576460f4b68d670e534e0ddeed920f7ac99e1458
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.author: hrasheed
+ms.openlocfilehash: c85ad59acc8e307de05f41365855f3a9669ac2b5
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43108882"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51034672"
 ---
-# <a name="use-ambari-views-to-debug-tez-jobs-on-hdinsight"></a>Použití zobrazení Ambari k ladění úloh Tez v HDInsight
+# <a name="use-apache-ambari-views-to-debug-apache-tez-jobs-on-hdinsight"></a>Použití zobrazení Apache Ambari k ladění úloh Tez Apache v HDInsight
 
-Webové uživatelské rozhraní Ambari pro HDInsight obsahuje zobrazení Tez, které můžete použít k pochopení a ladění úloh, které používají Tez. Zobrazení Tez umožňuje vizualizovat úlohy jako graf připojené položky, jednotlivé položky Přejít k podrobnostem a získat statistiky a informace o protokolování.
+Apache Ambari webového uživatelského rozhraní pro HDInsight obsahuje Apache Tez zobrazení, které můžete použít k pochopení a ladění úloh, které používají Tez. Zobrazení Tez umožňuje vizualizovat úlohy jako graf připojené položky, jednotlivé položky Přejít k podrobnostem a získat statistiky a informace o protokolování.
 
 > [!IMPORTANT]
 > Kroky v tomto dokumentu vyžadují cluster HDInsight s Linuxem. HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Správa verzí komponenty HDInsight](hdinsight-component-versioning.md#hdinsight-windows-retirement).
@@ -28,9 +28,9 @@ Webové uživatelské rozhraní Ambari pro HDInsight obsahuje zobrazení Tez, kt
 * Cluster HDInsight se systémem Linux. Pokyny týkající se vytvoření clusteru, najdete v článku [začněte používat HDInsight se systémem Linux](hadoop/apache-hadoop-linux-tutorial-get-started.md).
 * Moderní webový prohlížeč, který podporuje HTML5.
 
-## <a name="understanding-tez"></a>Principy Tez
+## <a name="understanding-apache-tez"></a>Principy Apache Tez
 
-Tez je rozšiřitelná platforma pro zpracování dat v Hadoopu, která poskytuje vyšší rychlostí než tradiční MapReduce zpracování. Pro clustery HDInsight založené na Linuxu je výchozí modul pro Hive.
+Tez je rozšiřitelná platforma pro zpracování dat v Apache Hadoop, která poskytuje vyšší rychlostí než tradiční MapReduce zpracování. Pro clustery HDInsight založené na Linuxu je výchozí modul pro Hive.
 
 Tez vytvoří přesměruje acyklický graf (DAG), který popisuje pořadí akce požadované úlohami. Jednotlivé akce se nazývají vrcholy a spustit část celkové úlohy. Aktuální provádění práce popsané ve vrcholu je volána úloha a mohou být distribuovány napříč několika uzly v clusteru.
 
