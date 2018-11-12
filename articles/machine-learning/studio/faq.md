@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/02/2017
-ms.openlocfilehash: 87695e6e7e1f1abce7204ebbbbed2b492297f177
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 77ae05c240dbb099528d7224a936d90416366816
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393294"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51247768"
 ---
 # <a name="azure-machine-learning-frequently-asked-questions-billing-capabilities-limitations-and-support"></a>Nejčastější dotazy ke službě Azure Machine Learning: fakturace, možnosti, omezení a podpora
 Zde jsou některé nejčastější dotazy (a příslušné odpovědi) týkající se cloudové služby Azure Machine Learning, která slouží k vývoji prediktivních modelů a zprovozňování řešení prostřednictvím webových služeb. Najdete tu dotazy ke způsobu používání této služby, včetně modelu fakturace, možností, omezení a podpory.
 
 **Máte dotaz, který tady nemůžete najít?**
 
-Azure Machine Learning má fórum na webu MSDN, kde se členové komunity odborníků přes data můžou ptát na věci související se službou Azure Machine Learning. Toto fórum monitoruje tým služby Azure Machine Learning. Přejděte na [fórum služby Azure Machine Learning](http://social.msdn.microsoft.com/Forums/windowsazure/home?forum=MachineLearning) a vyhledejte odpovědi nebo zadejte novou vlastní otázku.
+Azure Machine Learning má fórum na webu MSDN, kde se členové komunity odborníků přes data můžou ptát na věci související se službou Azure Machine Learning. Toto fórum monitoruje tým služby Azure Machine Learning. Přejděte na [fórum služby Azure Machine Learning](https://social.msdn.microsoft.com/Forums/windowsazure/home?forum=MachineLearning) a vyhledejte odpovědi nebo zadejte novou vlastní otázku.
 
 ## <a name="general-questions"></a>Obecné otázky
 **Co je Azure Machine Learning?**
@@ -123,7 +123,7 @@ Informace o funkci obrazového vstupu najdete v referenci [Import obrázků][ima
 ### <a name="modules"></a>Moduly
 **V Azure Machine Learning Studiu není algoritmus, zdroj dat, formát dat nebo operace transformace dat, kterou hledám. Jaké mám možnosti?**
 
-Můžete navštívit [fórum pro zpětnou vazbu uživatelů](http://go.microsoft.com/fwlink/?LinkId=404231), kde najdete žádosti o funkce, které sledujeme. Pokud už existuje žádost o funkci, kterou sami hledáte, přidejte k ní svůj hlas. Pokud funkce, kterou hledáte, neexistuje, vytvořte novou žádost. Na tomto fóru můžete také sledovat stav své žádosti. Tento seznam pečlivě sledujeme a často aktualizujeme stav dostupnosti funkce. Navíc díky integrované podpoře R a Pythonu můžete podle potřeby vytvářet vlastní transformace.
+Můžete navštívit [fórum pro zpětnou vazbu uživatelů](https://go.microsoft.com/fwlink/?LinkId=404231), kde najdete žádosti o funkce, které sledujeme. Pokud už existuje žádost o funkci, kterou sami hledáte, přidejte k ní svůj hlas. Pokud funkce, kterou hledáte, neexistuje, vytvořte novou žádost. Na tomto fóru můžete také sledovat stav své žádosti. Tento seznam pečlivě sledujeme a často aktualizujeme stav dostupnosti funkce. Navíc díky integrované podpoře R a Pythonu můžete podle potřeby vytvářet vlastní transformace.
 
 **Můžu převést svůj existující kód do nástroje Machine Learning Studio?**
 
@@ -182,7 +182,7 @@ V současnosti k vytvoření nových vlastních modulů můžete využít jenom 
 ### <a name="r-module"></a>Modul R
 **Jaké balíčky R jsou k dispozici v nástroji Machine Learning Studio?**
 
-K dnešnímu dni Machine Learning Studio podporuje přes 400 balíčků CRAN R. Všechny zahrnuté balíčky jsou uvedené v [aktuálním seznamu](http://az754797.vo.msecnd.net/docs/RPackages.xlsx). Pokud chcete zjistit, jak tento seznam získat sami, přečtěte si také téma o [rozšíření experimentů pomocí R](extend-your-experiment-with-r.md). Pokud požadovaný balíček není v seznamu, uveďte název balíčku na [fóru pro zpětnou vazbu uživatelů](http://go.microsoft.com/fwlink/?LinkId=404231).
+K dnešnímu dni Machine Learning Studio podporuje přes 400 balíčků CRAN R. Všechny zahrnuté balíčky jsou uvedené v [aktuálním seznamu](http://az754797.vo.msecnd.net/docs/RPackages.xlsx). Pokud chcete zjistit, jak tento seznam získat sami, přečtěte si také téma o [rozšíření experimentů pomocí R](extend-your-experiment-with-r.md). Pokud požadovaný balíček není v seznamu, uveďte název balíčku na [fóru pro zpětnou vazbu uživatelů](https://go.microsoft.com/fwlink/?LinkId=404231).
 
 **Je možné vytvořit vlastní modul R?**
 
@@ -312,7 +312,7 @@ Průběžně do centra pro Machine Learning přidáváme nové materiály. Na [f
 
 Pokud potřebujete technickou podporu pro Azure Machine Learning, přejděte k [podpoře Azure](https://azure.microsoft.com/support/options/) a vyberte **Machine Learning**.
 
-Azure Machine Learning má i fórum komunity na webu MSDN, kde se můžete ptát na věci související se službou Azure Machine Learning. Toto fórum monitoruje tým služby Azure Machine Learning. Navštivte [fórum Azure](http://social.msdn.microsoft.com/Forums/windowsazure/home?forum=MachineLearning).
+Azure Machine Learning má i fórum komunity na webu MSDN, kde se můžete ptát na věci související se službou Azure Machine Learning. Toto fórum monitoruje tým služby Azure Machine Learning. Navštivte [fórum Azure](https://social.msdn.microsoft.com/Forums/windowsazure/home?forum=MachineLearning).
 
 ## <a name="billing-questions"></a>Dotazy k fakturaci
 **Jak se Machine Learning fakturuje?**
