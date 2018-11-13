@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 3d9a5b3c0ae0b6058d3e8ccf8cdb340bd1200edc
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 38ec93afd27ac75a97a28fef59bd10fafdf963c9
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38299107"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51247037"
 ---
 # <a name="add-tags-to-a-lab-in-azure-devtest-labs"></a>Přidání značek do testovacího prostředí ve službě Azure DevTest Labs
 
@@ -40,7 +40,7 @@ Každá značka se skládá z **název**/**hodnotu** pár. Můžete například 
 
 ## <a name="steps-to-manage-tags-in-an-existing-lab"></a>Kroky týkající se správy klíčových slov do existující testovací prostředí
 
-1. Přihlaste se k webu [Azure Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Přihlaste se k webu [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 1. V případě potřeby vyberte **všechny služby**a pak vyberte **DevTest Labs** ze seznamu. Vaše testovací prostředí může již zobrazený na řídicím panelu v části **všechny prostředky**.
 1. V seznamu testovacích prostředí vyberte prostředí, ve které chcete přidat nebo správě značek.  
 1. Cvičení **přehled** vyberte **konfigurace a zásad**.  

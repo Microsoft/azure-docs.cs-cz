@@ -11,7 +11,7 @@ ms.date: 11/14/2017
 ms.author: ashishth
 ms.openlocfilehash: 694129fa39a84deac118c35da52a0617fe805d6c
 ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/07/2018
 ms.locfileid: "51261139"

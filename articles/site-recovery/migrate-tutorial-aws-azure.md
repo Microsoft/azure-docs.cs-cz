@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 10/28/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: b09cfe106eefe9f6ab76cd1bfea91a0b6ff13b7c
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: cd33b7cb45bb165a120a7efe20eba962ec75e273
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50214524"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51252135"
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>Migrace virtuálních počítačů služby Amazon Web Services (AWS) do Azure
 
@@ -119,7 +119,7 @@ Na stránce **Připravit zdroj** vyberte **+ Konfigurační server**.
 
 1. Použijte instanci EC2, na které běží Windows Server 2012 R2, abyste vytvořili konfigurační server a zaregistrovali ho ve svém trezoru služby Site Recovery.
 2. Na virtuálním počítači instance EC2, který používáte jako konfigurační server, nakonfigurujte proxy, aby měl přístup k [adresám URL služby](site-recovery-support-matrix-to-azure.md).
-3. Stáhněte si [sjednocenou instalaci Microsoft Azure Site Recovery](http://aka.ms/unifiedinstaller_wus). Můžete ji stáhnout na místní počítač a pak ji zkopírovat na virtuální počítač, který používáte jako konfigurační server.
+3. Stáhněte si [sjednocenou instalaci Microsoft Azure Site Recovery](https://aka.ms/unifiedinstaller_wus). Můžete ji stáhnout na místní počítač a pak ji zkopírovat na virtuální počítač, který používáte jako konfigurační server.
 4. Vyberte tlačítko **Stáhnout** a stáhněte si registrační klíč trezoru. Zkopírujte stažený soubor do virtuálního počítače, který používáte jako konfiguračních server.
 5. Na tomto virtuálním počítači klikněte pravým tlačítkem na stažený instalační soubor sjednocené instalace Microsoft Azure Site Recovery a pak vyberte **Run as administrator** (Spustit jako správce).
 

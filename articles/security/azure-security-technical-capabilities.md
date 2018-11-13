@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: TomSh
-ms.openlocfilehash: 862143aec0ac54abb3c62677c5a1ab1c15007edb
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: b58d6315c4399a7bb23514eb90ab5a94acda2592
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49405561"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51249026"
 ---
 # <a name="azure-security-technical-capabilities"></a>Technické možnosti zabezpečení Azure
 
@@ -238,7 +238,7 @@ Azure Disk Encryption aktuálně nepodporuje PaaS v1. Proto musíte použít ši
 
 Většina služeb má pokusit o využívat šifrování zprostředkovatele prostředku úložiště. Některé služby je nutné provést explicitní šifrování, například všechny trvalé materiál klíče (certifikáty, kořenový / hlavního klíče) musí být uložen ve službě Key Vault.
 
-Pokud vyvíjíte šifrování na straně služby pomocí klíčů spravovaných zákazníkem existuje musí být způsob, jak zákazník získat klíč pro nás. Podporované a doporučený způsob, jak to udělat díky integraci s Azure Key Vaultu (AKV). V tomto případě Zákazníci můžete přidat a spravovat své klíče ve službě Azure Key Vault. Zákazník může Další informace o použití přes AKV [Začínáme se službou Key Vault](http://go.microsoft.com/fwlink/?linkid=521402).
+Pokud vyvíjíte šifrování na straně služby pomocí klíčů spravovaných zákazníkem existuje musí být způsob, jak zákazník získat klíč pro nás. Podporované a doporučený způsob, jak to udělat díky integraci s Azure Key Vaultu (AKV). V tomto případě Zákazníci můžete přidat a spravovat své klíče ve službě Azure Key Vault. Zákazník může Další informace o použití přes AKV [Začínáme se službou Key Vault](https://go.microsoft.com/fwlink/?linkid=521402).
 
 Integrace se službou Azure Key Vault, by přidáte kód požádat o klíč z službou AZURE v případě potřeby pro dešifrování.
 
@@ -283,7 +283,7 @@ Při plánování přechodu na službu Azure RMS, doporučujeme následující:
 
 - Vytvoření [vlastní šablony](https://technet.microsoft.com/library/dn642472.aspx) , který odráží vaše obchodní požadavky. Příklad: šablony pro začátek tajná data, která bude použito všechny hlavní tajný klíč související s e-mailů.
 
-Organizace, které jsou na slabé [klasifikace dat](http://download.microsoft.com/download/0/A/3/0A3BE969-85C5-4DD2-83B6-366AA71D1FE3/Data-Classification-for-Cloud-Readiness.pdf) a ochranu souborů může být náchylnější k úniku. Bez ochrany správný soubor organizace nebude možné získat obchodní přehledy, sledovat zneužití a brání škodlivým přístupem k souborům.
+Organizace, které jsou na slabé [klasifikace dat](https://download.microsoft.com/download/0/A/3/0A3BE969-85C5-4DD2-83B6-366AA71D1FE3/Data-Classification-for-Cloud-Readiness.pdf) a ochranu souborů může být náchylnější k úniku. Bez ochrany správný soubor organizace nebude možné získat obchodní přehledy, sledovat zneužití a brání škodlivým přístupem k souborům.
 
 > [!Note]
 > Další informace o službě Azure RMS najdete v článku [Začínáme se službou Azure Rights Management](https://technet.microsoft.com/library/jj585016.aspx).
@@ -408,7 +408,7 @@ Pomocí služby Log Analytics můžete spravovat všechny instance v libovolném
 
 ### <a name="log-analytics"></a>Log Analytics
 
-[Log Analytics](http://azure.microsoft.com/documentation/services/log-analytics) zajišťuje služby monitorování získáváním dat ze spravovaných prostředků do centrálního úložiště. Tato data mohou zahrnovat události, výkonnostní data nebo vlastní data poskytovaná prostřednictvím rozhraní API. Po získání jsou data dostupná pro výstrahy, analýzu a export.
+[Log Analytics](https://azure.microsoft.com/documentation/services/log-analytics) zajišťuje služby monitorování získáváním dat ze spravovaných prostředků do centrálního úložiště. Tato data mohou zahrnovat události, výkonnostní data nebo vlastní data poskytovaná prostřednictvím rozhraní API. Po získání jsou data dostupná pro výstrahy, analýzu a export.
 
 ![Log Analytics](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig9.png)
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 5a179c0c6b777ee6b2afdd0f2e9267d247665d8d
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 00f64deaa5e02f9bb74baaf86bfdf71690a3345d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38675961"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51248244"
 ---
 # <a name="scale-quotas-and-limits-in-devtest-labs"></a>Kvóty a omezení škálování ve službě DevTest Labs
 Při práci ve službě DevTest Labs, můžete si všimnout, že jsou některé výchozí limity pro několik prostředků Azure, které mohou ovlivnit služby DevTest Labs. Tato omezení jsou označovány jako **kvóty**.
@@ -35,7 +35,7 @@ Například každé předplatné má výchozí kvóta 20 jader. Proto pokud vytv
 ## <a name="view-your-usage-and-quotas"></a>Zobrazit využití a kvóty
 Tyto kroky ukazují, jak chcete-li zobrazit aktuální kvóty ve vašem předplatném pro konkrétní prostředky Azure a chcete zobrazit, jaké je procento každá kvóta, jste už použili.
 
-1. Přihlaste se k webu [Azure Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Přihlaste se k webu [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 1. Vyberte **další služby**a pak vyberte **fakturace** ze seznamu.
 1. V okně fakturace vyberte předplatné.
 4. Vyberte **využití a kvóty**.
@@ -49,7 +49,7 @@ Tyto kroky ukazují, jak chcete-li zobrazit aktuální kvóty ve vašem předpla
 ## <a name="requesting-more-resources-in-your-subscription"></a>Požadování další prostředky ve vašem předplatném
 Pokud dosáhnete limitu kvóty, výchozí limit prostředků v předplatném je možné zvýšit až do maximálního limitu, jak je popsáno v [předplatné Azure a omezení služeb](https://docs.microsoft.com/azure/azure-subscription-service-limits).
 
-Tyto kroky ukazují, jak požádat o zvýšení kvóty prostřednictvím [webu Azure portal](http://go.microsoft.com/fwlink/p/?LinkID=525040).
+Tyto kroky ukazují, jak požádat o zvýšení kvóty prostřednictvím [webu Azure portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
 1. Vyberte **další služby**vyberte **fakturace**a pak vyberte **využití a kvóty**.
 1. V využití a kvóty okno, vyberte **požádat o zvýšení** tlačítko.
