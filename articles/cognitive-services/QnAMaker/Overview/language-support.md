@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: article
-ms.date: 09/25/2018
+ms.date: 11/09/2018
 ms.author: tulasim
-ms.openlocfilehash: 1a61d8f4008b0183ab5ddb51332d887217f52f48
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 8c47c4a59f03328b1dc8d3df7771bac81864bb34
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47435463"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51566631"
 ---
 # <a name="language-and-region-support-for-qna-maker"></a>Podpora jazyka a oblasti pro nástroj QnA Maker
 
@@ -34,6 +34,8 @@ Nástroj QnA Maker podporuje extrakce otázek a odpovědí na libovolné stránc
 
 ## <a name="query-matching-and-relevance"></a>Odpovídající dotaz a relevance
 Nástroj QnA Maker závisí na [jazykové analyzátory](https://docs.microsoft.com/rest/api/searchservice/language-support) ve službě Azure search pro poskytování výsledků. Speciální znovu hodnocení funkce jsou k dispozici En-* jazyky, které umožňují lepší podle relevance.
+
+Možnosti Azure Search jsou na pamětích pro podporované jazyky, nástroje QnA Maker je další klasifikátor, který je umístěný nad výsledky Azure search. V tomto klasifikátor modelu, můžeme použít některé zvláštní sémantické a založené na funkcích aplikace word v en-*, které ještě nejsou k dispozici pro jiné jazyky. Jsme Nedovolte, aby byly tyto k dispozici, protože jde o součást vnitřní fungování klasifikátor. 
 
 Nástroj QnA Maker automaticky zjistí jazyk znalostní báze během vytváření a příslušným způsobem nastaví analyzátor. Můžete vytvořit znalostních bází v těchto jazycích. Čtení [to](../How-To/language-knowledge-base.md) podrobné informace o tom, jak QnA Maker zpracovává jazyky.
 

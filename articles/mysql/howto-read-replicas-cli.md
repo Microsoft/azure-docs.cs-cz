@@ -8,12 +8,12 @@ editor: jasonwhowell
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 11/07/2018
-ms.openlocfilehash: 5709c71210b1e4ae4b2b0ccb959669a5ac6a3b1f
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: c1c550e6b99b9933b66c85e1de7e0a5cc2eb711d
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51289719"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51564839"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-the-azure-cli"></a>Jak vytvořit a spravovat čtení replik ve službě Azure Database for MySQL pomocí Azure CLI
 
@@ -39,7 +39,7 @@ az mysql server replica create --name mydemoreplicaserver --source-server mydemo
 | Nastavení | Příklad hodnoty | Popis  |
 | --- | --- | --- |
 | resource-group |  myresourcegroup |  Skupina prostředků, ve kterém server repliky bude vytvořena.  |
-| name | mydemoreplicaserver | Název nového serveru repliky, který je vytvořen. |
+| jméno | mydemoreplicaserver | Název nového serveru repliky, který je vytvořen. |
 | source-server | mydemoserver | Název nebo ID existující hlavní server pro replikaci z. |
 
 > [!NOTE]
@@ -60,7 +60,7 @@ az mysql server replica stop --name mydemoreplicaserver --resource-group myresou
 | Nastavení | Příklad hodnoty | Popis  |
 | --- | --- | --- |
 | resource-group |  myresourcegroup |  Skupina prostředků, které se nachází serveru repliky.  |
-| name | mydemoreplicaserver | Název na zastavení replikace na serveru repliky. |
+| jméno | mydemoreplicaserver | Název na zastavení replikace na serveru repliky. |
 
 ## <a name="delete-a-replica-server"></a>Odstranění serveru repliky
 

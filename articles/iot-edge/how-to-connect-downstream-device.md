@@ -2,18 +2,18 @@
 title: Konfigurace zařízení příjem dat s Azure IoT Edge | Dokumentace Microsoftu
 description: Jak nakonfigurovat směru server-klient nebo zařízení typu list pro připojení prostřednictvím zařízení brány Azure IoT Edge.
 author: kgremban
-manager: timlt
+manager: philmea
 ms.author: kgremban
 ms.date: 11/01/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 7b9993650492574fc45b7f15fa3424060079f5fe
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: bd9d8c4a75df0d9070476fb72d2b60f5cb182a87
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50915291"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51566223"
 ---
 # <a name="connect-a-downstream-device-to-an-azure-iot-edge-gateway"></a>Připojte zařízení za příjem dat k bráně Azure IoT Edge
 

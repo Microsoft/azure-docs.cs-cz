@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/09/2018
-ms.openlocfilehash: a2bf6ef44a8698e802d9bbc25689988498c55f13
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: 3f6d6f700ccf232dacb512f22dd1f9fb5d870740
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300264"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51567039"
 ---
 # <a name="anomaly-detection-in-azure-stream-analytics"></a>Detekce anomálií v Azure Stream Analytics
 
@@ -131,7 +131,7 @@ Pojďme se podívat na výpočet strangeness podrobně (Předpokládejme existuj
    - Sklon, pokud je záporné sklon  
    - 0, jinak  
 
-Jakmile je vypočítán strangeness hodnotu Příchozí události, je vypočítán na základě hodnoty strangeness martingale hodnotu (najdete v článku [blog o Machine Learning](https://blogs.technet.microsoft.com/machinelearning/2014/11/05/anomaly-detection-using-machine-learning-to-detect-abnormalities-in-time-series-data/) podrobnosti o jak martingale hodnota byla vypočítána). Tato hodnota martingale je retuned jako hodnocení anomálie. Hodnota martingale zvýší pomalu v reakci na neobvyklé hodnoty, což umožňuje detektor k zajištění robustní sporadické změny a snižuje falešným výstrahám. Obsahuje také užitečné vlastnost: 
+Jakmile je vypočítán strangeness hodnotu Příchozí události, je vypočítán na základě hodnoty strangeness martingale hodnotu (najdete v článku [blog o Machine Learning](https://blogs.technet.microsoft.com/machinelearning/2014/11/05/anomaly-detection-using-machine-learning-to-detect-abnormalities-in-time-series-data/) podrobnosti o jak martingale hodnota byla vypočítána). Tato hodnota martingale se vrátí jako hodnocení anomálie. Hodnota martingale zvýší pomalu v reakci na neobvyklé hodnoty, což umožňuje detektor k zajištění robustní sporadické změny a snižuje falešným výstrahám. Obsahuje také užitečné vlastnost: 
 
 Pravděpodobnost [existuje t takové této M<sub>t</sub> > λ] < 1/λ, kde M<sub>t</sub> martingale hodnotu rychlé t a λ je skutečné hodnoty. Například, pokud je výstraha při M<sub>t</sub>> 100 a pravděpodobnosti výskytu falešně pozitivních testů je menší než 1/100.  
 

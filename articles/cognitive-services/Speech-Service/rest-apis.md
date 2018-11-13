@@ -7,14 +7,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: conceptual
-ms.date: 05/09/2018
+ms.date: 11/12/2018
 ms.author: erhopf
-ms.openlocfilehash: be2f6c49a260477e907f1f8f29f64b9eb08e6926
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: a8aa2600c8f3bcbc9d2ebc7f55ac0d2f038d8ecd
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51038599"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51566614"
 ---
 # <a name="speech-service-rest-apis"></a>Speech Service REST API
 
@@ -127,14 +127,43 @@ Kód HTTP|Význam|Možný důvod
 
 ### <a name="json-response"></a>Odpověď JSON
 
-Výsledky jsou vráceny ve formátu JSON. `simple` Formátu obsahuje pouze následující pole nejvyšší úrovně.
+Výsledky jsou vráceny ve formátu JSON. V závislosti na parametry dotazu `simple` nebo `detailed` formát se vrací.
+
+#### <a name="the-simple-format"></a>`simple` Formátu 
+
+Tento formát obsahuje následující pole nejvyšší úrovně.
 
 |Název pole|Obsah|
 |-|-|
-|`RecognitionStatus`|Stav, jako například `Success` pro úspěšné rozpoznávání. Najdete v následující tabulce.|
+|`RecognitionStatus`|Stav, jako například `Success` pro úspěšné rozpoznávání. Najdete v tomto [tabulky](rest-apis.md#recognitionstatus).|
 |`DisplayText`|Rozpoznaný text po malá a velká písmena, interpunkční znaménka, normalizace inverzní text (převod textu na mluvené slovo na kratší formulářů, jako je například 200 pro "dvě stě" nebo "zotavení po havárii. Smith""lékař Smith") a maskování vulgárních výrazů. K dispozici pouze v případě úspěchu.|
 |`Offset`|Čas (v jednotkách 100 nanosekund), ve kterém začíná rozpoznané řeči v zvukový datový proud.|
 |`Duration`|Doba (v jednotkách 100 nanosekund) rozpoznané řeči v zvukový datový proud.|
+
+#### <a name="the-detailed-format"></a>`detailed` Formátu 
+
+Tento formát obsahuje následující pole nejvyšší úrovně.
+
+|Název pole|Obsah|
+|-|-|
+|`RecognitionStatus`|Stav, jako například `Success` pro úspěšné rozpoznávání. Najdete v tomto [tabulky](rest-apis.md#recognition-status).|
+|`Offset`|Čas (v jednotkách 100 nanosekund), ve kterém začíná rozpoznané řeči v zvukový datový proud.|
+|`Duration`|Doba (v jednotkách 100 nanosekund) rozpoznané řeči v zvukový datový proud.|
+|`NBest`|Seznam alternativních interpretace stejné řeči seřazeny od pravděpodobně k nejméně pravděpodobně. Zobrazit [NBest popis](rest-apis.md#nbest).|
+
+#### <a name="nbest"></a>NBest
+
+`NBest` Seznam alternativních interpretace stejné řeči řazeny od nejpodezřelejších po nejpravděpodobněji nejméně pravděpodobně je pole. První položka je stejný jako výsledek hlavní rozpoznání. Každá položka obsahuje následující pole:
+
+|Název pole|Obsah|
+|-|-|
+|`Confidence`|Skóre spolehlivosti položky od 0.0 (bez obav) 1.0 (plnou důvěru)
+|`Lexical`|Lexikální formu textové rozpoznaných: vlastních slov rozpoznán.
+|`ITN`|Inverzní text normalized ("canonical") formu rozpoznaný text pomocí telefonního čísla, čísla, zkratky ("lékař smith" k "zotavení po havárii smith") a dalších transformací použít.
+|`MaskedITN`| Formulář není s vulgárních výrazů maskování použít, pokud o to požádá.
+|`Display`| Zobrazení formu rozpoznaný text s interpunkce a přidali malá a velká písmena.
+
+#### <a name="recognitionstatus"></a>RecognitionStatus
 
 `RecognitionStatus` Pole může obsahovat následující hodnoty.
 
@@ -148,17 +177,6 @@ Výsledky jsou vráceny ve formátu JSON. `simple` Formátu obsahuje pouze násl
 
 > [!NOTE]
 > Pokud se zvuk skládá pouze z vulgárních výrazů a `profanity` parametr dotazu je nastaven na `remove`, služba nevrací výsledek řeči.
-
-
-`detailed` Formátu obsahuje stejné pole, jako `simple` formátovat, spolu s `NBest` pole. `NBest` Seznam alternativních interpretace stejné řeči řazeny od nejpodezřelejších po nejpravděpodobněji nejméně pravděpodobně je pole. První položka je stejný jako výsledek hlavní rozpoznání. Každá položka obsahuje následující pole:
-
-|Název pole|Obsah|
-|-|-|
-|`Confidence`|Skóre spolehlivosti položky od 0.0 (bez obav) 1.0 (plnou důvěru)
-|`Lexical`|Lexikální formu textové rozpoznaných: vlastních slov rozpoznán.
-|`ITN`|Inverzní text normalized ("canonical") formu rozpoznaný text pomocí telefonního čísla, čísla, zkratky ("lékař smith" k "zotavení po havárii smith") a dalších transformací použít.
-|`MaskedITN`| Formulář není s vulgárních výrazů maskování použít, pokud o to požádá.
-|`Display`| Zobrazení formu rozpoznaný text s interpunkce a přidali malá a velká písmena. Stejné jako `DisplayText` ve výsledku nejvyšší úrovně.
 
 ### <a name="sample-responses"></a>Ukázkové odpovědi
 

@@ -4,17 +4,17 @@ description: Použití Visual Studio Code pro vývoj a ladění modulů Node.js 
 services: iot-edge
 keywords: ''
 author: shizn
-manager: timlt
+manager: philmea
 ms.author: xshi
 ms.date: 09/21/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: b05492941defc6ac3aa252d6bb29043d55e6b66c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: 92746b37d6c7577691b46bf34a00f607ad707ff9
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51261770"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51569035"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-nodejs-modules-for-azure-iot-edge"></a>Použití Visual Studio Code pro vývoj a ladění modulů Node.js pro Azure IoT Edge
 

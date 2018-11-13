@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/22/2018
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: 6d31e6a4d424b8e3c634c9d5075b1f02c512187b
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 8c3c7e94db1f09164d6248cf0b9b093db0cf1d69
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49651373"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51578667"
 ---
 # <a name="how-to-use-managed-identities-with-azure-container-instances"></a>Použití spravované identity s Azure Container Instances
 
@@ -38,7 +38,7 @@ Použití spravované identity v spuštěný kontejner ověřování do libovoln
 
 ### <a name="enable-a-managed-identity"></a>Povolit spravované identity
 
- Ve službě Azure Container Instances podporují spravované identity pro prostředky Azure od verze rozhraní REST API verze 2018-10-01 a odpovídající sady SDK a nástroje. Když vytvoříte skupinu kontejnerů, povolte jeden nebo více spravovaných identit nastavením [ContainerGroupIdentity](/rest/api/container-instances/containergroups/containergroups_createorupdate#containergroupidentity) vlastnost. Můžete také povolit nebo po skupiny kontejnerů běží aktualizovat spravované identity obě akce způsobí, že skupina kontejnerů restartovat. Nastavení identit v kontejneru nové nebo existující skupiny, použijte Azure CLI, šablony Resource Manageru nebo soubor YAML. 
+ Ve službě Azure Container Instances podporují spravované identity pro prostředky Azure od verze rozhraní REST API verze 2018-10-01 a odpovídající sady SDK a nástroje. Když vytvoříte skupinu kontejnerů, povolte jeden nebo více spravovaných identit nastavením [ContainerGroupIdentity](/rest/api/container-instances/containergroups/createorupdate#containergroupidentity) vlastnost. Můžete také povolit nebo po skupiny kontejnerů běží aktualizovat spravované identity obě akce způsobí, že skupina kontejnerů restartovat. Nastavení identit v kontejneru nové nebo existující skupiny, použijte Azure CLI, šablony Resource Manageru nebo soubor YAML. 
 
 Služba Azure Container Instances podporuje oba typy spravované identity Azure: uživatelsky přiřazené a systém přiřadil. Skupiny kontejnerů můžete povolit identitu se systém přiřadil, jeden nebo více uživatelsky přiřazené identity nebo obou typů identit. 
 

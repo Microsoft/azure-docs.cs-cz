@@ -1,3 +1,16 @@
+---
+author: SnehaGunda
+ms.service: cosmos-db
+ms.topic: include
+ms.date: 11/09/2018
+ms.author: sngun
+ms.openlocfilehash: 99dddd86c9348c9791d3012b382298bb020e63c9
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51571978"
+---
 **1. Jak bude zákazníky informovat retiring SDK?**
 
 Microsoft bude poskytovat 12 měsíců předem za účelem podpory retiring SDK pro usnadnění s hladkým přechodem na podporovaná sada SDK. Dále budeme zákazníky informovat přes různé komunikační kanály – portál pro správu Azure, Centrum pro vývojáře, blogový příspěvek, a přímá komunikace na přiřazené Správci služeb.

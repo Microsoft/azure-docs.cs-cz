@@ -1,3 +1,16 @@
+---
+author: linda33wj
+ms.service: data-factory
+ms.topic: include
+ms.date: 11/09/2018
+ms.author: jingwang
+ms.openlocfilehash: 1ab404b838af65dcb75395dfeee1ca0553e497a1
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51571968"
+---
 ## <a name="specifying-structure-definition-for-rectangular-datasets"></a>Určení definice struktury pro obdélníkové datové sady
 Části struktury v datových sadách JSON je **volitelné** obdélníkové tabulky (s řádky a sloupce) v části a obsahuje kolekci sloupců pro tabulku. Části struktury použije pro buď poskytující informace o typu pro převod na typ nebo provádění mapování sloupců. Následující části popisují tyto funkce podrobně. 
 
@@ -5,8 +18,8 @@ Všechny sloupce obsahují následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
-| jméno |Definuje chování kopírování, pokud je zdroj BlobSource nebo systému souborů. |Ano |
-| type |PreserveHierarchy: zachová hierarchií souborů v cílové složce. Zobrazit typ části převody pro více podrobností, kdy by měla zadáte informace o typu |Ne |
+| jméno |Název sloupce. |Ano |
+| type |Datový typ sloupce. Zobrazit typ části převody pro více podrobností, kdy by měla zadáte informace o typu |Ne |
 | Jazyková verze |.NET na základě jazykové verze se použije, když je zadán typ a je typ formátu .NET Datetime nebo Datetimeoffset. Výchozí hodnota je "en-us". |Ne |
 | Formát |Formátovací řetězec se použije, když je zadán typ a je typ formátu .NET Datetime nebo Datetimeoffset. |Ne |
 

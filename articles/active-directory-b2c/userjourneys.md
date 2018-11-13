@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 65b34a49006e6a2f9be003414498d9a8fc9955ae
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 231a3e87692e47ec33f8a613832acf5102257c96
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47161811"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51567056"
 ---
 # <a name="userjourneys"></a>UserJourneys
 
@@ -49,8 +49,7 @@ K definování cest uživatele podporovaného zásadami, **Userjourney** prvek p
 
 Cesty uživatele představuje orchestraci pořadí, který musí být následován úspěšná transakce. Pokud kterýkoli krok selže, transakce se nezdaří. V souboru zásad povoleny poskytovatele deklarací identity a kroků Orchestrace odkazovat na stavební bloky. Libovolný krok Orchestrace, která odpovídá zobrazení nebo vykreslení uživatelské prostředí také obsahuje odkaz na odpovídající identifikátor definici obsahu.
 
-Orchestrace postup může být conditionaly ecxetuted podle předběžné podmínky definované v elementu krok Orchestrace. Pro examle můžete zkontrolovat provést krok Orchestrace pouze v případě, že konkrétní deklarace identity existuje, nebo pokud se deklarace identity rovná nebo není na zadanou hodnotu. 
-
+Orchestrace postup může být conditionaly provedl a vytvořil podle předběžné podmínky definované v elementu krok Orchestrace. Pro examle můžete zkontrolovat provést krok Orchestrace pouze v případě, že konkrétní deklarace identity existuje, nebo pokud se deklarace identity rovná nebo není na zadanou hodnotu. 
 
 Chcete-li určit seřazený seznam kroků Orchestrace, **OrchestrationSteps** prvek se přidá jako součást této zásady. Tento element je povinný.
 
@@ -66,7 +65,7 @@ Chcete-li určit seřazený seznam kroků Orchestrace, **OrchestrationSteps** pr
 | --------- | -------- | ----------- |
 | Objednání | Ano | Pořadí kroků Orchestrace. | 
 | Typ | Ano | Typ kroku Orchestrace. Možné hodnoty: <ul><li>**ClaimsProviderSelection** – označuje, že krok Orchestrace představuje různých zprostředkovatelů deklarací identity k uživateli vybrat jednu.</li><li>**CombinedSignInAndSignUp** – označuje, že krok Orchestrace představuje kombinovanou poskytovatele sociálních sítí registrační stránku pro přihlášení a místní účet.</li><li>**ClaimsExchange** – označuje, že krok Orchestrace výměny deklarací identity se zprostředkovatelem deklarací identity.</li><li>**SendClaims** – označuje, že krok Orchestrace, odešle se u tokenu vydaného službou deklarace identity vystavitele deklarace identity na přijímající straně.</li></ul> | 
-| ContentDefinitionReferenceId | Ne | Identifikátor [obsahu definice](contentdefinitions.md) přidružené k tento krok Orchestrace. Obvykle identifikátor obsahu definice odkazu je definován v s vlastním potvrzením technický profil. Ale existují případy, když Azure AD B2C potřebuje rychle zobrazit něco bez technického profilu. Existují dva příklady, pokud je typ kroku Orchestrace některý z naleznete: `ClaimsProviderSelection` nebo `CombinedSignInAndSignUp`. Azure AD B2C musí zobrazit výběru zprostředkovatele identity bez nutnosti technický profil. | 
+| ContentDefinitionReferenceId | Ne | Identifikátor [obsahu definice](contentdefinitions.md) přidružené k tento krok Orchestrace. Obvykle identifikátor obsahu definice odkazu je definován v s vlastním potvrzením technický profil. Ale existují případy, když Azure AD B2C potřebuje rychle zobrazit něco bez technického profilu. Existují dva příklady, pokud je typ kroku Orchestrace jednu z následujících akcí: `ClaimsProviderSelection` nebo `CombinedSignInAndSignUp`. Azure AD B2C musí zobrazit výběru zprostředkovatele identity bez nutnosti technický profil. | 
 | CpimIssuerTechnicalProfileReferenceId | Ne | Typ kroku Orchestrace je `SendClaims`. Tato vlastnost definuje technický profil identifikátor zprostředkovatele deklarací identity, který vydá token pro předávající stranu.  Pokud chybí, je vytvořen žádný předávající strany token. |
 
 

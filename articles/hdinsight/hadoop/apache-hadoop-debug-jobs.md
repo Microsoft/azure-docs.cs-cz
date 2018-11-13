@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: 694129fa39a84deac118c35da52a0617fe805d6c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: 7600ff1a11435ee079fef80ecfa5ad88de1b4750
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51261139"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51569018"
 ---
 # <a name="analyze-hadoop-logs"></a>Analýza protokolů Hadoop
 
@@ -131,7 +131,7 @@ Chybové zprávy najdete v této části jsou k dispozici k poskytování pomoci
 
 Některé z těchto chybových zpráv může také zobrazit na webu Azure Portal při se používá ke správě clusterů HDInsight. Další chybové zprávy, které můžete narazit, ale jsou méně granulární z důvodu omezení na nápravné akce v tomto kontextu je to možné. Další chybové zprávy jsou k dispozici v kontextech, ve kterém je zřejmý omezení rizik. 
 
-### <a id="AtleastOneSqlMetastoreMustBeProvided"></a>AtleastOneSqlMetastoreMustBeProvided
+### <a id="AtLeastOneSqlMetastoreMustBeProvided"></a>AtLeastOneSqlMetastoreMustBeProvided
 * **Popis**: Chcete-li použít vlastní nastavení u metaúložiště Hive a Oozie zadejte podrobnosti databáze Azure SQL pro nejméně jednu součást.
 * **Zmírnění dopadů**: uživatel musí zadat platné metastore SQL Azure a opakujte žádost.  
 

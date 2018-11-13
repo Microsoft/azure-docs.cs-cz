@@ -2,24 +2,20 @@
 title: Postup konfigurace hesel jednotného přihlašování pro aplikaci mimo Galerii applicationn | Dokumentace Microsoftu
 description: Jak nakonfigurovat vlastní aplikaci mimo galerii pro zabezpečení založené na heslech jednotného přihlašování, když není uvedená v galerii aplikací Azure AD
 services: active-directory
-documentationcenter: ''
 author: barbkess
 manager: mtillman
-ms.assetid: ''
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/11/2017
+ms.date: 11/12/2018
 ms.author: barbkess
-ms.openlocfilehash: 37ac3b5fb680a9966f5b8f3da43a2b3013554557
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: d880a142b54d253cc1522b3dcc521c86119e0997
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44356382"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51578395"
 ---
 # <a name="how-to-configure-password-single-sign-on-for-a-non-gallery-application"></a>Postup konfigurace hesel jednotného přihlašování pro aplikaci mimo Galerii
 
@@ -115,7 +111,6 @@ Pokud chcete nakonfigurovat jednotné přihlašování pro aplikaci, postupujte 
 
 11. Kromě toho můžete také zadat přihlašovací údaje jménem uživatele výběr řádků uživatele a kliknutím na **aktualizaci přihlašovacích údajů** a zadáním uživatelského jména a hesla jménem uživatele. V opačném případě uživatelé vyzváni k zadání samotné přihlašovací údaje při spuštění.
 
-12. **Volitelné:** pro určité aplikace sociálních médií jako Twitter a Facebook, je také možné povolit automatické Změna hesla pro aplikaci za vybranou frekvenci. Povolit tento výběr **přes Azure AD k automatické správě tohoto uživatele nebo skupiny heslo** při zadávání přihlašovacích údajů jménem uživatele nebo skupinu. Vyberte **četnost výměny (v týdnech)**.
 
 ## <a name="assign-a-user-to-an-application-directly"></a>Přiřadit uživatele k aplikaci přímo
 

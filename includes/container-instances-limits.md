@@ -1,3 +1,16 @@
+---
+author: dlepow
+ms.service: container-instances
+ms.topic: include
+ms.date: 11/09/2018
+ms.author: danlep
+ms.openlocfilehash: 44bdaec78e1fad574f29a5945b07041b588aaff8
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51571961"
+---
 | Prostředek | Výchozí omezení |
 | --- | :--- |
 | Skupiny kontejnerů na [předplatné](../articles/billing-buy-sign-up-azure-subscription.md) | 100<sup>1</sup> |

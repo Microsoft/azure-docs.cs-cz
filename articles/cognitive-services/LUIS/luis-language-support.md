@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/26/2018
 ms.author: diberry
-ms.openlocfilehash: ce0a2f36ca11c704062deb28bf47c45a91a32222
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: a26fa1f64f1ef8ecef8140b1feab89fdd57875fe
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47435462"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51569195"
 ---
 # <a name="language-and-region-support-for-luis"></a>Podpora jazyka a oblasti pro LUIS
 
@@ -32,10 +32,10 @@ Služba LUIS rozumí projevy v následujících jazycích:
 | Jazyk |Národní prostředí  |  Předem připravená doména | Předem připravených entit | Fráze návrhy | **[Analýza textu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)<br>(Mínění a<br>Klíčová slova)|
 |--|--|:--:|:--:|:--:|:--:|
 | Americkou angličtinu |`en-US` | ✔ | ✔  |✔|✔|
-| Francouzština (Kanada) |`fr-CA` |-|   -   |-|✔|
 | *[Čínština](#chinese-support-notes) |`zh-CN` | ✔ | ✔ |✔|-|
 | Holandština |`nl-NL` |-|  -   |-|✔|
 | Francouzština (Francie) |`fr-FR` |-| ✔ |✔ |✔|
+| Francouzština (Kanada) |`fr-CA` |-|   -   |-|✔|
 | Němčina |`de-DE` |-| ✔ |✔ |✔|
 | italština |`it-IT` |-| ✔ |✔|✔|
 | *[Japonština](#japanese-support-notes) |`ja-JP` |-| ✔ |✔|Pouze klíčových frází|

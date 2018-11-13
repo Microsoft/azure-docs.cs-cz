@@ -1,31 +1,31 @@
 ---
-title: Tichou instalaci serveru Azure Backup v2
-description: Použití skriptu prostředí PowerShell k bezobslužné instalaci serveru Azure Backup v2. Tento typ instalace je také označován bezobslužné instalace.
+title: Tiché instalace Azure Backup Server V2
+description: Použijte Powershellový skript bezobslužné instalace Azure Backup Server V2. Tento typ instalace se také nazývá bezobslužné instalace.
 services: backup
 author: markgalioto
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 05/30/2017
+ms.date: 11/06/2018
 ms.author: markgal
-ms.openlocfilehash: 126c1971d83a8874c096caf407231fb6dee2ff59
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 3e106d7f669cf14014114ed0fe63651a1a2fe0eb
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34606405"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51578096"
 ---
-# <a name="run-an-unattended-installation-of-azure-backup-server-v2"></a>Spusťte bezobslužnou instalaci serveru Azure Backup v2
+# <a name="run-an-unattended-installation-of-azure-backup-server"></a>Spuštění bezobslužné instalace Azure Backup serveru
 
-Postup spuštění bezobslužné instalace serveru Azure Backup v2. 
+Zjistěte, jak spuštění bezobslužné instalace Azure Backup serveru.
 
-Tyto kroky neplatí, pokud instalujete Azure Backup Server v1.
+Tyto kroky nevztahují při instalaci Azure Backup Server V1.
 
-## <a name="install-backup-server-v2"></a>Nainstalujte Backup Server v2
+## <a name="install-backup-server"></a>Instalace serveru pro zálohování
 
-1. Na serveru, který je hostitelem serveru Azure Backup v2 vytvořte textový soubor. (Soubor můžete vytvořit v poznámkovém bloku nebo v jiném textovém editoru.) Uložte soubor jako MABSSetup.ini. 
+1. Na serveru, který hostuje Azure Backup Server V2 nebo později, vytvořte textový soubor. (Tento soubor můžete vytvořit v programu Poznámkový blok nebo jiném textovém editoru.) Uložte soubor jako MABSSetup.ini.
 
-2. Vložte následující kód v souboru MABSSetup.ini. Nahraďte text v závorkách (\< \>) s hodnotami ze svého prostředí. Tento text je příklad:
+2. Vložte následující kód do souboru MABSSetup.ini. Nahraďte text v závorkách (\< \>) s hodnotami ze svého prostředí. Následující text je příklad:
 
   ```
   [OPTIONS]
@@ -48,22 +48,22 @@ Tyto kroky neplatí, pokud instalujete Azure Backup Server v1.
   UseExistingSQL=<1/0 use or do not use existing SQL>
   ```
 
-3. Uložte soubor. Na příkazovém řádku se zvýšenými oprávněními na serveru pro instalaci, zadejte tento příkaz:
+3. Uložte soubor. Na příkazového řádku se zvýšenými oprávněními na instalačním serveru zadejte tento příkaz:
 
   ```
   start /wait <cdlayout path>/Setup.exe /i  /f <.ini file path>/setup.ini /L <log path>/setup.log
   ```
 
-Pro instalaci můžete použít tyto příznaky:</br>
+Pro instalaci, můžete použít tyto příznaky:</br>
 **/f**: cesta k souboru INI</br>
-**/l**: cesta protokolu</br>
+**/l**: cesta k protokolu</br>
 **/i**: Instalační cesta</br>
 **/x**: Odinstalujte cesta</br>
 
 ## <a name="next-steps"></a>Další postup
-Po instalaci serveru zálohování, zjistěte, jak připravit server nebo začít chránit zatížení.
+Po instalaci serveru pro zálohování zjistěte, jak připravit váš server, nebo začít chránit úlohy.
 
-- [Příprava úlohy zálohování serveru](backup-azure-microsoft-azure-backup.md)
-- [Pomocí zálohování serveru zálohovat VMware server](backup-azure-backup-server-vmware.md)
-- [Použít zálohování serveru k zálohování systému SQL Server](backup-azure-sql-mabs.md)
-- [Přidat moderní úložiště zálohování k zálohování serveru](backup-mabs-add-storage.md)
+- [Příprava úloh zálohování serveru](backup-azure-microsoft-azure-backup.md)
+- [Pomocí zálohování serveru k zálohování serveru VMware](backup-azure-backup-server-vmware.md)
+- [Pomocí zálohování serveru k zálohování SQL serveru](backup-azure-sql-mabs.md)
+- [Přidání moderního úložiště záloh k zálohování serveru](backup-mabs-add-storage.md)
