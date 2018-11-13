@@ -230,6 +230,8 @@ items:
       href: azure-stack-add-vm-image.md
     - name: Nabízejí škálovací sadu virtuálních počítačů
       href: azure-stack-compute-add-scalesets.md
+    - name: Windows Server na nejčastější dotazy k Marketplace
+      href: azure-stack-windows-server-faq.md
     - name: Nabízejí virtuální počítače s Linuxem
       href: azure-stack-linux.md
     - name: Přidání virtuálního počítače Red Hat
@@ -386,9 +388,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-stack
   - name: Školení a certifikace
     href: https://docs.microsoft.com/azure/azure-stack/azure-stack-train-and-cert
-ms.openlocfilehash: 0e8b5d3661de005acf93b871106242f484cf0eb8
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 60487f16002df5a55d2859a14ec34559acd5cd5f
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51011506"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51578141"

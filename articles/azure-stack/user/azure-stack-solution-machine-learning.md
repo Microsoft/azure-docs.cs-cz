@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 09/26/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 28ff8dbf073596e5f9565c56ae903af6af68f3e2
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 59696245dc33302c65aee5a39dc856926347b8fb
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353704"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51569110"
 ---
 # <a name="tutorial-create-an-edge-machine-learning-solution-with-azure-and-azure-stack"></a>Kurz: Vytvoření edge řešení strojového učení s využitím Azure a Azure Stack
 
@@ -287,7 +287,7 @@ Pomocí webu Azure portal ke zřízení účtů Azure Machine Learning:
     | Nastavení | Navrhovaná hodnota pro tento kurz | Popis |
     |---------------------------------------|----------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
     | Název účtu služby Experimentování | Jedinečný název | Zadejte jedinečný název, který identifikuje tento účet. Použijte název oddělení nebo projekt, který experiment nejlépe identifikuje. Název musí mít délku od 2 do 32 znaků. Může obsahovat jenom alfanumerické znaky a znak spojovníku (-). |
-    | Předplatné | Předplatné | Zvolte předplatné Azure, které pro experiment použít. Pokud existuje více předplatných, vyberte odpovídající předplatné, ve kterém se prostředek účtuje. |
+    | Předplatné | Odběr | Zvolte předplatné Azure, které pro experiment použít. Pokud existuje více předplatných, vyberte odpovídající předplatné, ve kterém se prostředek účtuje. |
     | Skupina prostředků | Skupina prostředků | Použít existující skupinu prostředků v předplatném nebo zadejte název pro vytvoření pro tento účet experimentování novou skupinu prostředků. |
     | Umístění | Oblast nejbližší uživatelům | Zvolte umístění co nejblíže uživatelům a datovým prostředkům. |
     | Počet licencí | 2 | Zadejte počet licencí. Informace o tom, jak [licence ovlivňují ceny](https://azure.microsoft.com/pricing/details/machine-learning/).<br><br>Pro účely tohoto rychlého startu je potřeba jenom dvě licence. Licence je možné podle potřeby přidávat nebo odebírat na webu Azure Portal. |
@@ -1175,7 +1175,7 @@ Z v rámci subsystém Windows pro Linux relace použijte následující příkaz
 
 ### <a name="create-a-service-principal-in-azure-ad"></a>Vytvoření instančního objektu ve službě Azure AD
 
-1.  Přihlaste se na globální [ *webu Azure portal*](http://www.poartal.azure.com/).
+1.  Přihlaste se na globální [ *webu Azure portal*](http://portal.azure.com/).
 
 2.  Přihlaste se pomocí tenanta Azure AD přidružené k instanci služby Azure Stack.
 

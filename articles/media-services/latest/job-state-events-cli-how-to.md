@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 11/09/2018
 ms.author: juliako
-ms.openlocfilehash: 8145b4eb3c39511eb9cd0ed052c36b8338191d4f
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 84f8a45f4755eb478c7ec8074796a6f732800922
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389492"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51564897"
 ---
 # <a name="create-and-monitor-media-services-events-with-event-grid-using-the-azure-cli"></a>Vytvořit a monitorovat události služby Media Services pomocí služby Event Grid pomocí Azure CLI
 
@@ -60,8 +60,6 @@ V následujícím příkazu uveďte ID předplatného Azure, které chcete pro �
 ```azurecli-interactive
 az account set --subscription mySubscriptionId
 ```
- 
-[!INCLUDE [media-services-cli-create-v3-account-include](../../../includes/media-services-cli-create-v3-account-include.md)]
 
 ## <a name="subscribe-to-media-services-events"></a>Přihlášení k odběru událostí služby Media Services
 
