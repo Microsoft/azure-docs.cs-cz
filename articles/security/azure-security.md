@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: f11012c90ab2b82e945fdb67e224783c3f05c6dd
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 2dd6ebb9e2f35eccae3b267402a4ef9b0e1b2dbe
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51237549"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51567158"
 ---
 # <a name="introduction-to-azure-security"></a>Úvod do zabezpečení Azure
 ## <a name="overview"></a>Přehled
@@ -59,9 +59,9 @@ Funkce uvedené následující jsou funkce, které můžete zkontrolovat na posk
 | [Zabezpečená platforma](https://www.microsoft.com/en-us/trustcenter/Security/default.aspx)  | [Ochrana osobních údajů a ovládací prvky](https://www.microsoft.com/en-us/trustcenter/Privacy/default.aspx)  |[Dodržování předpisů](https://www.microsoft.com/en-us/trustcenter/Compliance/default.aspx)   | [Transparentnost](https://www.microsoft.com/en-us/trustcenter/Transparency/default.aspx) |
 | :-- | :-- | :-- | :-- |
 | [Zabezpečení vývojový cyklus](https://www.microsoft.com/en-us/sdl/)interní auditování | [Umožňuje spravovat vaše data neustále](https://www.microsoft.com/en-us/trustcenter/Privacy/You-own-your-data) | [Centrum zabezpečení](https://www.microsoft.com/en-us/trustcenter/default.aspx) |[Jak společnost Microsoft chrání vaše zákaznická data ve službách Azure](https://www.microsoft.com/en-us/trustcenter/Transparency/default.aspx) |
-| [Povinné školení o zabezpečení, kontroly back základu](https://downloads.cloudsecurityalliance.org/star/self-assessment/StandardResponsetoRequestforInformationWindowsAzureSecurityPrivacy.docx) |  [Ovládací prvek na umístění dat](https://www.microsoft.com/en-us/trustcenter/Privacy/Where-your-data-is-located) |  [Běžné ovládací prvky centra](https://www.microsoft.com/en-us/trustcenter/Common-Controls-Hub) |[Jak Microsoft spravuje umístění dat ve službách Azure](http://azuredatacentermap.azurewebsites.net/)|
+| [Povinné školení o zabezpečení, kontroly na pozadí](https://downloads.cloudsecurityalliance.org/star/self-assessment/StandardResponsetoRequestforInformationWindowsAzureSecurityPrivacy.docx) |  [Ovládací prvek na umístění dat](https://www.microsoft.com/en-us/trustcenter/Privacy/Where-your-data-is-located) |  [Běžné ovládací prvky centra](https://www.microsoft.com/en-us/trustcenter/Common-Controls-Hub) |[Jak Microsoft spravuje umístění dat ve službách Azure](http://azuredatacentermap.azurewebsites.net/)|
 | [Testování průniku](https://downloads.cloudsecurityalliance.org/star/self-assessment/StandardResponsetoRequestforInformationWindowsAzureSecurityPrivacy.docx), [zjišťování neoprávněných vniknutí, před útoky DDoS](https://www.microsoft.com/en-us/trustcenter/Security/ThreatManagement), [auditování a protokolování](https://www.microsoft.com/en-us/trustcenter/Security/AuditingAndLogging) | [Poskytuje přístup k datům podle vašich představ](https://www.microsoft.com/en-us/trustcenter/Privacy/Who-can-access-your-data-and-on-what-terms) |  [Cloud Services z důvodu co Nejopatrněji kontrolní seznam](https://www.microsoft.com/en-us/trustcenter/Compliance/Due-Diligence-Checklist) |[Kdo v Microsoftu přístup k vašim datům na jaké podmínky](https://www.microsoft.com/en-us/trustcenter/Privacy/Who-can-access-your-data-and-on-what-terms)|
-| [Stav grafiky datacentra](https://www.microsoft.com/en-us/cloud-platform/global-datacenters), fyzické zabezpečení, [zabezpečení sítě](https://docs.microsoft.com/azure/security/security-network-overview) | [Reagovat orgánům zajišťujícím vymáhání zákona](https://www.microsoft.com/en-us/trustcenter/Privacy/Responding-to-govt-agency-requests-for-customer-data) |  [Dodržování předpisů u služeb, umístění a průmysl](https://www.microsoft.com/en-us/trustcenter/Compliance/default.aspx) |[Jak společnost Microsoft chrání vaše zákaznická data ve službách Azure](https://www.microsoft.com/en-us/trustcenter/Transparency/default.aspx)|
+| [Nejmodernější optimalizaci pspo datového centra](https://www.microsoft.com/en-us/cloud-platform/global-datacenters), fyzické zabezpečení, [zabezpečení sítě](https://docs.microsoft.com/azure/security/security-network-overview) | [Reagovat orgánům zajišťujícím vymáhání zákona](https://www.microsoft.com/en-us/trustcenter/Privacy/Responding-to-govt-agency-requests-for-customer-data) |  [Dodržování předpisů u služeb, umístění a průmysl](https://www.microsoft.com/en-us/trustcenter/Compliance/default.aspx) |[Jak společnost Microsoft chrání vaše zákaznická data ve službách Azure](https://www.microsoft.com/en-us/trustcenter/Transparency/default.aspx)|
 |  [Reakce na incidenty zabezpečení](https://aka.ms/SecurityResponsepaper), [sdílených odpovědností](https://aka.ms/sharedresponsibility) |[Standardy přísné zásady ochrany osobních údajů](https://www.microsoft.com/en-us/TrustCenter/Privacy/We-set-and-adhere-to-stringent-standards) |  | [Projděte si certifikaci pro služby Azure, Centrum transparentnosti](https://www.microsoft.com/en-us/trustcenter/Compliance/default.aspx)|
 
 
@@ -345,7 +345,7 @@ Aktualizace poskytují základ pro vyhledání a opravě potenciální problémy
 ### <a name="azure-security-center"></a>Azure Security Center
 Security Center pomáhá předcházet hrozbám, zjišťovat je a reagovat na ně a nabízí lepší přehled o zabezpečení prostředků Azure a kontrolu nad nimi. Poskytuje integrované bezpečnostní sledování a správu zásad ve vašich předplatných Azure, pomáhá zjišťovat hrozby, kterých byste si jinak nevšimli, a spolupracuje s řadou řešení zabezpečení.
 
-## <a name="identify-and-access-management"></a>Identifikovat a správy přístupu
+## <a name="identity-and-access-management"></a>Správa identit a přístupu
 
 Zabezpečení systémů, aplikací a dat začíná řízení přístupu založené na identitě. Funkce správy identit a přístupu, které jsou součástí Microsoft podnikové produkty a služby pomáhají chránit vaše organizace a osobní informace před neoprávněným přístupem při nastavování je dostupná pro oprávněné uživatele, kdykoli a kdekoli, potřebujete.
 

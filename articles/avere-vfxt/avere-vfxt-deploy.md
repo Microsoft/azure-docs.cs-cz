@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: v-erkell
-ms.openlocfilehash: eb0f5a4a4219c63334e0a5be3ea4378c3c317bec
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: c8bad3642f1e98cac3857d536f539554235e1a51
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51288097"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51578633"
 ---
 # <a name="deploy-the-vfxt-cluster"></a>Nasazení clusteru vFXT
 
@@ -90,6 +90,7 @@ V části **podmínky a ujednání**:
 
   > [!NOTE] 
   > Pokud nejste vlastníkem předplatného, mít vlastníka, přijměte podmínky, můžete pomocí následujících kontrolu požadovaných součástí kroků [přijměte podmínky předem softwaru](avere-vfxt-prereqs.md#accept-software-terms-in-advance). 
+
 
 Klikněte na tlačítko **nákupní** po dokončení. Po pěti nebo šesti minut bude uzel vaše řadiče do provozu.
 
@@ -225,7 +226,9 @@ Proveďte zbývající kroky nasazení, budete muset připojit ke kontroleru clu
 ## <a name="create-the-cluster-node-access-role"></a>Umožňuje vytvořit roli přístup k uzlu clusteru
 
 > [!NOTE] 
-> Pokud si nejste vlastník předplatného a dosud nebyla vytvořena role, jste vlastníkem předplatného, postupujte podle těchto kroků nebo použijte postup uvedený v [vytvořit přístup role Avere vFXT clusteru runtime bez kontroleru](avere-vfxt-pre-role.md).
+> * Pokud si nejste vlastník předplatného a dosud nebyla vytvořena role, jste vlastníkem předplatného, postupujte podle těchto kroků nebo použijte postup uvedený v [vytvořit přístup role Avere vFXT clusteru runtime bez kontroleru](avere-vfxt-pre-role.md).
+> 
+> * Interní uživatele Microsoftu by měl použít existující roli s názvem "Operátor modulu Runtime clusteru Avere" namísto pokusu o k jejímu vytvoření. 
 
 [Řízení přístupu na základě rolí](https://docs.microsoft.com/azure/role-based-access-control/) (RBAC) poskytuje vFXT uzly clusteru oprávnění k provedení nezbytných úloh.  
 

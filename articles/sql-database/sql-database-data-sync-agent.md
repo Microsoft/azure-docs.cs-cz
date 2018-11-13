@@ -11,13 +11,13 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
-ms.date: 11/08/2018
-ms.openlocfilehash: 9e873de5899f0cf84fe76b70ffb70b38638055ef
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.date: 11/12/2018
+ms.openlocfilehash: 08585b795b8c407bc66162a961fca92777f78076
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51299890"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51578616"
 ---
 # <a name="data-sync-agent-for-azure-sql-data-sync"></a>Agent synchronizace dat pro synchronizaci dat Azure SQL
 
@@ -31,8 +31,14 @@ Chcete-li stáhnout agenta synchronizace dat, přejděte na [agenta synchronizac
 
 Pro tichou instalaci agenta synchronizace dat z příkazového řádku, zadejte příkaz podobně jako v následujícím příkladu. Zkontrolujte název souboru .msi staženého souboru a zadejte vlastní hodnoty **TARGETDIR** a **SERVICEACCOUNT** argumenty.
 
+- Pokud nezadáte hodnotu **TARGETDIR**, výchozí hodnota je `C:\Program Files (x86)\Microsoft SQL Data Sync 2.0`.
+
+- Pokud zadáte `LocalSystem` jako hodnotu **SERVICEACCOUNT**, při konfiguraci agenta pro připojení k místnímu SQL serveru pomocí ověřování SQL serveru.
+
+- Pokud zadáte účet uživatele domény nebo místní uživatelský účet jako hodnotu **SERVICEACCOUNT**, musíte také zadat heslo, **SERVICEPASSWORD** argument. Například, `SERVICEACCOUNT="<domain>\<user>"  SERVICEPASSWORD="<password>"`.
+
 ```cmd
-msiexec /i SQLDataSyncAgent-2.0--ENU.msi TARGETDIR="C:\Program Files (x86)\Microsoft SQL Data Sync 2.0" SERVICEACCOUNT="LocalSystem" /qn 
+msiexec /i "SQLDataSyncAgent-2.0-x86-ENU.msi" TARGETDIR="C:\Program Files (x86)\Microsoft SQL Data Sync 2.0" SERVICEACCOUNT="LocalSystem" /qn
 ```
 
 ## <a name="sync-data-with-sql-server-on-premises"></a>Synchronizace dat s místním SQL serverem
@@ -91,10 +97,10 @@ Pokud chcete spustit místní agent z jiného počítače, než je aktuálně v,
 
 - **Příčina**. Mnoho scénářů může vést k této chybě. Chcete-li zjistit, konkrétní příčinu této chyby, podívejte se na protokoly.
 
-- **Rozlišení**. Pokud chcete najít konkrétní příčinu selhání, generovat a podívejte se na protokoly Instalační služby systému Windows. Můžete zapnout protokolování na příkazovém řádku. Například pokud stažený soubor AgentServiceSetup.msi LocalAgentHost.msi, generovat a prozkoumejte soubory protokolu s použitím následujících příkazových řádků:
+- **Rozlišení**. Pokud chcete najít konkrétní příčinu selhání, generovat a podívejte se na protokoly Instalační služby systému Windows. Můžete zapnout protokolování na příkazovém řádku. Například, pokud je staženého instalačního souboru `SQLDataSyncAgent-2.0-x86-ENU.msi`, generovat a prozkoumejte soubory protokolu s použitím následujících příkazových řádků:
 
-    -   Pro instalace: `msiexec.exe /i SQLDataSyncAgent-Preview-ENU.msi /l\*v LocalAgentSetup.InstallLog`
-    -   Pro odinstaluje: `msiexec.exe /x SQLDataSyncAgent-se-ENU.msi /l\*v LocalAgentSetup.InstallLog`
+    -   Pro instalace: `msiexec.exe /i SQLDataSyncAgent-2.0-x86-ENU.msi /l*v LocalAgentSetup.Log`
+    -   Pro odinstaluje: `msiexec.exe /x SQLDataSyncAgent-2.0-x86-ENU.msi /l*v LocalAgentSetup.Log`
 
     Můžete také zapnout protokolování pro všechna zařízení, které se provádí pomocí Instalační služby systému Windows. Článek znalostní báze Microsoft [jak povolit protokolování Instalační služby systému Windows](https://support.microsoft.com/help/223300/how-to-enable-windows-installer-logging) poskytuje řešení jedním kliknutím k zapnutí protokolování pro Instalační služby systému Windows. Poskytuje také umístění protokolů.
 
@@ -275,6 +281,8 @@ SqlDataSyncAgentCommand.exe -action "registerdatabase" -serverName localhost -da
 ```
 
 ### <a name="unregister-a-database"></a>Zrušit registraci databáze
+
+Při použití tohoto příkazu ke zrušení registrace databázi deprovisions databáze úplně. Pokud se databáze účastní jiné skupiny synchronizace, tato operace zruší ostatní skupiny synchronizace.
 
 #### <a name="usage"></a>Využití
 

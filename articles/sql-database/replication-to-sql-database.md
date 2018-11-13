@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: mathoma
 manager: craigg
 ms.date: 11/09/2018
-ms.openlocfilehash: abf41f48ffa08867fd0f06ff88da00ca65286803
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: 44d6135c8a259d3d4c791d359136963483088c5a
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51515705"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51567889"
 ---
 # <a name="replication-to-sql-database-single-and-pooled-databases"></a>Replikace do jednoho a ve fondu databází SQL Database
 
@@ -65,7 +65,7 @@ Replikace systému SQL Server lze konfigurovat pro databáze ve fondu a jeden pr
 
 1. Vytvoření publikace transakční replikace na místní databázi systému SQL Server.  
 2. Na místní SQL Server pomocí **Průvodce novým odběrem** nebo příkazy jazyka Transact-SQL k vytvoření oznámení na předplatné Azure SQL Database.  
-3. Ve službě Azure SQL Database Počáteční sada dat je snímek, který je vytvořil agenta snímku a distribuované a použít tak agenta distribuce.   
+3. S databázemi ve fondu a jeden ve službě Azure SQL Database Počáteční sada dat je snímek, který je vytvořil agenta snímku a distribuované a použít tak agenta distribuce. S Azure SQL Database Managed Instance můžete také použít zálohu databáze k přidání dat do databáze odběratele.
 
 ### <a name="data-migration-scenario"></a>Scénáře migrace dat  
 

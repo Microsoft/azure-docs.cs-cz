@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/23/2018
 ms.author: chackdan
-ms.openlocfilehash: a1cfd68b526d8ce63fcfbc3b6e0eac84926fabaa
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: ad32bd521975312b72aa55fc44e9b4d213519a07
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42057496"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51567872"
 ---
 # <a name="add-or-remove-certificates-for-a-service-fabric-cluster-in-azure"></a>Přidat nebo odebrat certifikáty pro cluster Service Fabric v Azure
 Doporučujeme seznámit se s jak Service Fabric používá certifikáty X.509 a znáte [scénáře zabezpečení clusteru](service-fabric-cluster-security.md). Musíte porozumět tomu, jaký certifikát clusteru je a k čemu slouží, než budete pokračovat dál.
@@ -47,7 +47,7 @@ Pokud máte v úmyslu odebrat certifikát, který je označen jako primární, p
 > [!TIP]
 > To je teď vyšší a jednodušší způsob přidání sekundárního certifikátu pomocí [Add-AzureRmServiceFabricClusterCertificate](/powershell/module/azurerm.servicefabric/add-azurermservicefabricclustercertificate) rutiny. Není nutné postupujte podle zbývajících kroků v této části.  Navíc není nutné původně použili k vytvoření a nasazení clusteru při použití šablony [Add-AzureRmServiceFabricClusterCertificate](/powershell/module/azurerm.servicefabric/add-azurermservicefabricclustercertificate) rutiny.
 
-Tyto kroky předpokládají se seznámíte s tím, jak funguje Resource Manageru a nasadili alespoň jeden Service Fabric cluster pomocí šablony Resource Manageru a jste šablonu, kterou jste použili k nastavení clusteru po ruce. Taky se předpokládá, že jste obeznámeni pomocí formátu JSON.
+Tyto kroky předpokládají se seznámíte s tím, jak funguje Resource Manageru a nasadili alespoň jeden cluster Service Fabric pomocí šablony Resource Manageru a jste šablonu, kterou jste použili k nastavení clusteru po ruce. Taky se předpokládá, že jste obeznámeni pomocí formátu JSON.
 
 > [!NOTE]
 > Pokud hledáte Ukázková šablona a parametry, které vám umožní sledovat podél nebo jako výchozí bod, pak si ho stáhnout z této [úložiště git](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Cert%20Rollover%20Sample). 

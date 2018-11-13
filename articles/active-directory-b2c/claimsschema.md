@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 92328ffd8b6dbbb2be82bc70352e19f3097eb2a7
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 2d11283ccf58fdc356742d6f4042afd15bf6faab
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49637727"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51568638"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
@@ -50,7 +50,7 @@ ms.locfileid: "49637727"
 
 | Element | Výskyty | Popis |
 | ------- | ----------- | ----------- |
-| displayName | 0:1 | Název, který se zobrazí uživatelům na různých obrazovkách. Hodnota může být [lokalizované](localization.md). |
+| Zobrazovaný název | 0:1 | Název, který se zobrazí uživatelům na různých obrazovkách. Hodnota může být [lokalizované](localization.md). |
 | DataType | 0:1 | Typ deklarace identity. Datové typy logická hodnota, date, dateTime, int, long, string, třída stringCollection, je možné alternativeSecurityIdCollection. |
 | DefaultPartnerClaimTypes | 0:1 | Výchozí partnerské deklarace typů, který chcete použít pro zadaný protokol. Hodnota se dají přepsat v **PartnerClaimType** zadané v poli **InputClaim** nebo **OutputClaim** elementy. Tento element slouží k určení výchozí název pro určitý protokol.  |
 | Maska | 0:1 | Volitelný řetězec maskování znaků, které mohou být použity při zobrazení deklarace identity. Například můžete jako XXX XXX-4343 maskována 324-232-4343 číslo telefonu. |
@@ -109,7 +109,7 @@ V důsledku toho tokenu JWT vydaného službou Azure AD B2C, generuje `family_na
 | Typ | Ano | Typ deklarace identity masky. Možné hodnoty: `Simple` nebo `Regex`. `Simple` Hodnota označuje, že maska jednoduchý text platí pro přední části deklarace řetězec. `Regex` Hodnota značí, že regulární výraz se použije k deklaraci řetězec jako celek.  Pokud `Regex` není zadána hodnota, volitelný atribut musí být také definován pomocí regulárních výrazů používat. |
 | regulární výraz | Ne | Pokud **typ** je nastavena na `Regex`, zadejte regulární výraz k použití.
 
-Naleznete příklad konfiguruje **PhoneNumber** deklarace identity s `Simple` masky:
+Následující příklad nastaví **PhoneNumber** deklarace identity s `Simple` masky:
 
 ```XML
 <ClaimType Id="PhoneNumber">
@@ -124,7 +124,7 @@ Architekturu rozhraní identit vykreslí telefonní číslo při skrytí prvníc
 
 ![Typ s maskou pomocí deklarace.](./media/claimsschema/mask.png)
 
-Nakonfiguruje naleznete příklad **AlternateEmail** deklarace identity s `Regex` masky:
+Následující příklad nastaví **AlternateEmail** deklarace identity s `Regex` masky:
 
 ```XML
 <ClaimType Id="AlternateEmail">

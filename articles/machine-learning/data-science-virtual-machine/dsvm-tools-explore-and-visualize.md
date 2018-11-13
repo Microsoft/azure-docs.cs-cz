@@ -1,7 +1,7 @@
 ---
-title: Zkoumání a vizualizace dat nástroje - Azure | Microsoft Docs
-description: Zkoumání a vizualizace nástrojů data pro virtuální počítač vědecké účely Data.
-keywords: datové vědy nástroje, datové vědy virtuálního počítače, nástroje pro vědecké zpracování dat, vědecké zpracování dat linux
+title: Zkoumání a vizualizaci dat nástroje – Azure | Dokumentace Microsoftu
+description: Data vizualizace nástroje pro zkoumání a pro virtuální počítač pro datové vědy.
+keywords: nástroje pro datové vědy, virtuální počítač pro datové vědy, datové vědy pro linux
 services: machine-learning
 documentationcenter: ''
 author: gopitk
@@ -15,53 +15,53 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: df29d0a55317d06d656d8444c6bd7754c6c955eb
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: c83c9929019e6e236ead783c0c617e51523a5a8a
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31407210"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51567379"
 ---
-# <a name="data-exploration-and-visualization-tools-on-the-data-science-virtual-machine"></a>Zkoumání a vizualizace nástrojů data na Data virtuálního počítače vědecké účely
+# <a name="data-exploration-and-visualization-tools-on-the-data-science-virtual-machine"></a>Data vizualizace nástroje pro zkoumání a na virtuální počítač pro datové vědy
 
-Klíče krok v vědecké zpracování dat je pochopit data. Vizualizace a nástroje pro zkoumání dat pomáhají urychlit Principy data. Tady jsou některé nástroje k dispozici na DSVM této faciliate krok tohoto klíče. 
+Klíče krok pro datové vědy je rozumět datům. Vizualizace a nástroje na prozkoumávání dat pomáhají urychlit Principy data. Tady jsou některé nástroje k dispozici na datové VĚDY, které využívají tento krok klíče. 
 
-## <a name="apache-drill"></a>Apache procházení
+## <a name="apache-drill"></a>Apache Drill
 |    |           |
 | ------------- | ------------- |
-| Co je to?   | Stroj dotazů SQL s otevřeným zdrojem velkých objemů dat    |
+| Co je to?   | Opensourcový modul dotazů SQL u velkých objemů dat.    |
 | Podporované DSVM verze      | Windows, Linux  |
-| Jak je ho nakonfigurovaná a nainstalovaná na DSVM?      |  Nainstalované v `/dsvm/tools/drill*` embedded pouze v režimu   |
-| Typické použití      |  Zkoumání dat na místě bez nutnosti ETL. Dotaz na různé datové zdroje a formáty includign CSV, formát JSON, relační tabulky, Hadoop     |
-| Jak se použít nebo ji spustit?      | Zástupce na ploše  <br/> [Začínáme s procházení za 10 minut](https://drill.apache.org/docs/drill-in-10-minutes/)  |
-| Na DSVM souvisejících nástrojích      |   Rattle, Weka, SQL Server Management Studio      |
+| Jak ho nakonfigurovat či nainstalovaná na datové VĚDY?      |  Nainstalované v `/dsvm/tools/drill*` vložený pouze v režimu   |
+| Typické použití      |  Která zkoumání dat bez nutnosti ETL. Dotazování různých datových zdrojů a formátů includign CSV, JSON, relačních tabulkách, Hadoop     |
+| Jak používat nebo ji spustit?      | Zástupce na ploše  <br/> [Začínáme se přejít na 10 minut](https://drill.apache.org/docs/drill-in-10-minutes/)  |
+| Související nástroje na datové VĚDY      |   Rattle, Weka, SQL Server Management Studio      |
 
 ## <a name="weka"></a>Weka
 |    |           |
 | ------------- | ------------- |
-| Co je to?   |  Weka je kolekce algoritmů strojového učení pro úlohy dolování dat. Algoritmy můžete být použitých přímo na datovou sadu nebo volat z kódu Java. Weka obsahuje nástroje pro předběžné zpracování dat, klasifikace, regrese, clustering, přidružení pravidel a vizualizace. |
+| Co je to?   |  Weka je kolekce algoritmů strojového učení pro úlohy dolování dat. Algoritmy můžete buď použít přímo k datové sadě nebo ji volat z kódu Java. Weka obsahuje nástroje potřebné pro předběžné zpracování dat, klasifikace, regrese, clusteringu, asociačních pravidel a vizualizace. |
 | Podporované DSVM edice     | Windows, Linux     |
 | Typické použití      | Obecné nástroje ML     |
-| Jak se použít nebo ji spustit?      | V systému Windows vyhledejte Weka v nabídce Start. V systému Linux, přihlaste se pomocí X2Go a pak přejděte do aplikace -> Vývoj -> Weka. |
+| Jak používat nebo ji spustit?      | Na Windows vyhledejte Weka v nabídce Start. V Linuxu, přihlaste se pomocí X2Go a pak přejděte do aplikace -> Vývoj -> Weka. |
 | Odkazy na ukázky      | [Ukázky weka](http://www.cs.waikato.ac.nz/ml/weka/documentation.html) |
-| Na DSVM souvisejících nástrojích      |Xgboost LightGBM, Rattle,   |
+| Související nástroje na datové VĚDY      |Xgboost LightGBM Rattle,   |
 
 ## <a name="rattle"></a>Rattle
 |    |           |
 | ------------- | ------------- |
-| Co je to?   |   Grafické uživatelské rozhraní pro dolování dat pomocí R   |
+| Co je to?   |   Grafické uživatelské rozhraní pro dolování dat pomocí jazyka R   |
 | Podporované DSVM edice     | Windows, Linux     |
-| Typické použití      | Nástroj pro dolování dat obecné uživatelského rozhraní pro R    |
-| Jak se použít nebo ji spustit?      | Nástroj uživatelského rozhraní. V systému Windows, spusťte příkazový řádek, spusťte R a pak uvnitř R spustit `rattle()`. V systému Linux, spojte se s X2Go, počáteční terminál, spusťte R a pak uvnitř R spustit `rattle()`. |
+| Typické použití      | Obecné uživatelského rozhraní nástroje dolování dat pro R    |
+| Jak používat nebo ji spustit?      | Uživatelské rozhraní nástroje. Na Windows, spusťte příkazový řádek, využívejte jazyk R, pak v R spustit `rattle()`. V Linuxu, spojte se s X2Go, spusťte terminál, spusťte R a potom v R spustit `rattle()`. |
 | Odkazy na ukázky      | [Rattle](https://togaware.com/onepager/) |
-| Na DSVM souvisejících nástrojích      |Xgboost LightGBM, Weka,   |
+| Související nástroje na datové VĚDY      |Xgboost LightGBM, Weka,   |
 
 ## <a name="powerbi-desktop"></a>PowerBI Desktop 
 |    |           |
 | ------------- | ------------- |
-| Co je to?   | Nástroj BI a interaktivní vizualizaci dat    |
+| Co je to?   | Interaktivní vizualizace dat a nástroje BI    |
 | Podporované DSVM verze      | Windows  |
 | Typické použití      |  Vizualizace dat a vytváření řídicích panelů   |
-| Jak se použít nebo ji spustit?      | Zástupce na ploše (`C:\Program Files\Microsoft Power BI Desktop\bin\PBIDesktop.exe`)      |
-| Na DSVM souvisejících nástrojích      |   Visual Studio 2017, Visual Studio Code, Juno      |
+| Jak používat nebo ji spustit?      | Zástupce na ploše (`C:\Program Files\Microsoft Power BI Desktop\bin\PBIDesktop.exe`)      |
+| Související nástroje na datové VĚDY      |   Visual Studio 2017, Visual Studio Code, Juno      |
 

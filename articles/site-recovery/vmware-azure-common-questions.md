@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 10/29/2018
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 05f878d244647a79a2b3e9d0c789ba811dad71ee
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 2436a4e75045200a8d2f48586e31ebfa0c03705a
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51012101"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51566257"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>Časté otázky – VMware pro replikaci Azure
 
@@ -110,6 +110,8 @@ Konfigurační server běží v místním součásti Site Recovery, včetně:
 - Procesový server, který funguje jako replikační brána. Přijímá data replikace; optimalizuje je pomocí ukládání do mezipaměti, komprese a šifrování. a odešle ho do úložiště Azure., že procesový server na virtuálních počítačích, které chcete replikovat a provádí automatické zjišťování virtuálních počítačů VMware v místním také nainstaluje službu Mobility.
 - Hlavní cílový server zpracovává replikační data během navrácení služeb po obnovení z Azure.
 
+[Další informace](vmware-azure-architecture.md) o součásti konfiguračního serveru a procesů.
+
 ### <a name="where-do-i-set-up-the-configuration-server"></a>Kde můžu nastavit konfigurační server?
 Potřebujete jeden vysoce dostupný místní VMware virtuálního počítače pro konfigurační server.
 
@@ -126,15 +128,35 @@ Ne. K tomu potřeba nastavit konfigurační server v jednotlivých oblastech.
 ### <a name="can-i-host-a-configuration-server-in-azure"></a>Můžete hostovat konfigurační server v Azure?
 Při nejbližším virtuálnímu počítači Azure s konfiguračního serveru potřebuje komunikovat s virtuálními počítači a na místní infrastrukturu VMware. Může přidat latenci a mít vliv na probíhající replikaci.
 
-
-### <a name="where-can-i-get-the-latest-version-of-the-configuration-server-template"></a>Kde lze získat nejnovější verzi šablona konfiguračního serveru?
-Stáhněte si nejnovější verzi z [Microsoft Download Center](https://aka.ms/asrconfigurationserver).
-
 ### <a name="how-do-i-update-the-configuration-server"></a>Jak můžu aktualizovat konfigurační server?
-Instalaci kumulativní aktualizace. Můžete najít informace o nejnovější aktualizaci v [aktualizace wikistránka](https://social.technet.microsoft.com/wiki/contents/articles/38544.azure-site-recovery-service-updates.aspx).
+[Další informace o](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server) aktualizuje konfigurační server. Můžete najít informace o nejnovější aktualizaci v [stránku aktualizace Azure](https://azure.microsoft.com/updates/?product=site-recovery). Můžete také přímo stáhnout nejnovější verzi konfiguračního serveru z [Microsoft Download Center](https://aka.ms/asrconfigurationserver).
 
 ### <a name="should-i-backup-the-deployed-configuration-server"></a>Můžu zálohovat nasazené konfiguračního serveru?
 Doporučujeme pravidelných naplánovaných záloh konfiguračního serveru. Úspěšné navrácení služeb po obnovení se při navrácení služeb obnoví virtuální počítač musí existovat v databázi konfigurací serveru a konfiguračního serveru musí být spuštěn a v připojeném stavu. Další informace o běžných úloh správy serveru konfigurace [tady](vmware-azure-manage-configuration-server.md).
+
+### <a name="when-im-setting-up-the-configuration-server-can-i-download-and-install-mysql-manually"></a>Když mám jsem nastavíte konfigurační server, můžete I stáhnout a nainstalovat MySQL ručně?
+Ano. Stáhnout MySQL a jeho umístění **C:\Temp\ASRSetup** složky. Nainstalujte je ručně. Při nastavení konfigurace serveru virtuálního počítače a přijmout podmínky, MySQL bude uvedená jako **už nainstalovaná** v **stáhnout a nainstalovat**.
+
+### <a name="can-i-avoid-downloading-mysql-but-let-site-recovery-install-it"></a>Můžete vyhnout stahování MySQL ale nechat nainstalovat Site Recovery?
+Ano. Stáhněte instalační program MySQL a umístěte ho **C:\Temp\ASRSetup** složky.  Když nastavíte konfigurační server VM, přijměte podmínky a klikněte na kartu **stáhnout a nainstalovat**, portál použije instalační program přidá k instalaci MySQL.
+ 
+### <a name="canl-i-use-the-configuration-server-vm-for-anything-else"></a>CanL používám konfiguračního serveru virtuálního počítače na něco jiného?
+Ne, byste měli používat jenom virtuální počítač pro konfigurační server. 
+
+### <a name="can-i-change-the-vault-registered-in-the-configuration-server"></a>Můžete změnit trezoru zaregistrovaný na konfiguračním serveru?
+Ne. Konfigurační server zaregistruje trezoru, nejde změnit.
+
+### <a name="can-i-use-the-same-configuration-server-for-disaster-recovery-of-both-vmware-vms-and-physical-servers"></a>Můžete použít stejný konfigurační server pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů
+Ano, ale nezapomeňte tento fyzický počítač může být pouze se zpět do virtuálního počítače VMware.
+
+### <a name="where-can-i-download-the-passphrase-for-the-configuration-server"></a>Kde lze stáhnout přístupové heslo pro konfigurační server?
+[Přečtěte si tento článek](vmware-azure-manage-configuration-server.md#generate-configuration-server-passphrase) Další informace o stahování přístupové heslo.
+
+### <a name="where-can-i-download-vault-registration-keys"></a>Kde lze stáhnout registrační klíče trezoru?
+
+V **trezor služby Recovery Services**, **spravovat** > **infrastruktura Site Recovery** > **konfigurační servery**. V **servery**vyberte **stáhnout registrační klíč** ke stažení souboru s přihlašovacími údaji.
+
+
 
 ## <a name="mobility-service"></a>Služba Mobility
 

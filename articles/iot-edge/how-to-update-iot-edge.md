@@ -3,18 +3,18 @@ title: Aktualizujte zařízení na nejnovější verzi služby Azure IoT Edge | 
 description: Jak aktualizovat zařízení IoT Edge spustit nejnovější verze démona zabezpečení a modul runtime IoT Edge
 keywords: ''
 author: kgremban
-manager: timlt
+manager: philmea
 ms.author: kgremban
 ms.date: 10/05/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: b04f909d58e1555cad9f34b682f9062bbd96cd0e
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 1522d9c9bc4fda178d8571fb57cb9c94ed1044ae
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394727"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51567787"
 ---
 # <a name="update-the-iot-edge-runtime"></a>Aktualizace modulu runtime IoT Edge
 

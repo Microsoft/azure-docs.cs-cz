@@ -1,3 +1,16 @@
+---
+author: dlepow
+ms.service: container-service
+ms.topic: include
+ms.date: 11/09/2018
+ms.author: danlep
+ms.openlocfilehash: 4f542f313b1c55ea68532efcbd6da780caae399f
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51571960"
+---
 # <a name="securing-docker-containers-in-azure-container-service"></a>Zabezpečení kontejnerů Dockeru ve službě Azure Container Service
 
 Tento článek uvádí důležité informace a doporučení pro zabezpečení kontejnerů Dockeru nasazených ve službě Azure Container Service. Řada těchto důležitých informací platí obecně pro kontejnery Dockeru nasazené v Azure nebo jiných prostředích. 
@@ -49,7 +62,7 @@ Další informace o zabezpečení specifické pro orchestrátor najdete v násle
 
 * **Docker Swarm:**[Docker Security](https://www.docker.com/docker-security) (Zabezpečení Dockeru)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * Další informace o architektuře Dockeru a zabezpečení kontejnerů najdete v článku [Introduction to Container Security](https://www.docker.com/sites/default/files/WP_IntrotoContainerSecurity_08.19.2016.pdf) (Úvod do zabezpečení kontejnerů).
 

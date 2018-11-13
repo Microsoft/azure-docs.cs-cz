@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/14/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 7c7671578dc22926dabfe7735038186ab1c2c2b3
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 75b3934a7329b4e83a0f36f79bbc8365eaf8a086
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51264053"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51571962"
 ---
 # <a name="standard-ssd-managed-disks-for-azure-virtual-machine-workloads"></a>Standardní spravované disky SSD pro úlohy Azure virtuálních počítačů
 
@@ -46,9 +46,9 @@ Následující tabulka obsahuje velikosti disků, které jsou v současné době
 |E70 *    |16 384 GB      |Až 2 000       |Až 500 MiB za sekundu        |
 |E80 *    |32 767 giB      |Až 2 000       |Až 500 MiB za sekundu        |
 
-Standardní disky SSD jsou navržené k poskytnutí latence v řádu milisekund pro většinu operací vstupně-výstupních operací a k poskytování IOPS a propustnost až do omezení je popsáno v tabulce výše. Skutečné IOPS a propustnost může někdy lišit v závislosti na vzory přenosů. Standardní disky SSD zajistí konzistentnější výkon než HDD disky s nižší latencí.
+Standardní disky SSD jsou navržené k poskytnutí latence v řádu milisekund pro většinu operací vstupně-výstupních operací a k poskytování IOPS a propustnost až do omezení podle výše uvedené tabulky 99 % času. Skutečné IOPS a propustnost může někdy lišit v závislosti na vzory přenosů. Standardní disky SSD zajistí konzistentnější výkon než HDD disky s nižší latencí.
 
-Disky Premium SSD na druhé straně poskytují vyšší výkon než standardní disky SSD s nízkou latencí, vysoké IOPS a propustnosti a konzistence ještě lepší výkon zřízených disků. Je doporučené diskové typ pro důležité produkční úlohy. Pokud vaše úloha vyžaduje podporu vysoce výkonných disků s nízkou latencí, zvažte použití služby Premium Storage.
+Disky Premium SSD na druhé straně poskytují vyšší výkon než standardní disky SSD s nízkou latencí, vysoké IOPS a propustnosti a konzistence ještě lepší výkon zřízených disků. Premium SSD je doporučené diskové typ pro důležité produkční úlohy. Pokud vaše úloha vyžaduje podporu vysoce výkonných disků s nízkou latencí, zvažte použití služby Premium Storage.
 
 Standardní disky SSD jako disky Premium SSD také použít velikost 256 KiB jednotky vstupně-výstupních operací. Méně než 256 KiB při přenosu dat se považuje za 1 jednotkovou vstupně-výstupních operací. Větší velikosti vstupně-výstupní operace se počítají jako více vstupně-výstupních operací, o velikosti 256 KiB. Například 1100 KiB vstupně-výstupní operace se počítá jako pět jednotky vstupně-výstupních operací.
 

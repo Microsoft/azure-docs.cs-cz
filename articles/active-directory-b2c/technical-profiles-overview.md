@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: fe7d18cdfa88988e1c7dda7f1120d4750fa52e8c
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: faf3cc6c333ee8f8757ec24ecc8ea8299657c4a7
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48269424"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51578480"
 ---
 # <a name="about-technical-profiles-in-azure-active-directory-b2c-custom-policies"></a>O technické profily v Azure Active Directory B2C vlastních zásad
 
@@ -38,8 +38,7 @@ Technický profil umožňuje tyto druhy scénářů:
 - [SAML2](saml-technical-profile.md) -federace se službou jakýkoli poskytovatel identity protokolu SAML.
 - [Samoobslužné s prohlašovanou](self-asserted-technical-profile.md) -komunikovat s uživatelem. Například shromažďovat přihlašovací údaje uživatele k přihlášení, vykreslení na stránku pro přihlášení nebo resetování hesla.
 - **WsFed** -federace se službou jakýkoli poskytovatel identity WsFed protokolu. 
-- **Správa relací** – zpracování různých typů relací. 
-- **Zprostředkovatel kontext cesty uživatele**
+- [Správa relací](active-directory-b2c-reference-sso-custom.md) – zpracování různých typů relací. 
 - **Application insights**
 
 ## <a name="technical-profile-flow"></a>Technický profil toku
@@ -56,7 +55,7 @@ Všechny typy technické profily sdílet stejný koncept. Odeslání vstupních 
     - Vytvořit nebo aktualizovat uživatelský účet.
     - Odešle a ověří textovou zprávu vícefaktorové ověřování.
 4. **ValidationTechnicalProfiles** – [samopopisné technický profil](self-asserted-technical-profile.md), můžete volat vstup [technický profil ověření](validation-technical-profile.md). Technický profil ověření ověřuje data profilované uživatelem a vrátí chybovou zprávu nebo Ok, s nebo bez něj výstupní deklarace identit. Například předtím, než Azure AD B2C vytvoří nový účet, zkontroluje, zda uživatel již existuje v adresářové služby. Můžete volat rozhraní REST API technický profil přidat vlastní obchodní logikou.<p>Rozsah výstupní deklarace identit technického profilu ověření je omezená na technický profil, který volá technický profil ověření a další technické profily ověřování v rámci stejné technický profil. Pokud chcete použít výstupní deklarace identit v dalším kroku Orchestrace, budete muset přidat výstupní deklarace identit technický profil, který vyvolá technický profil ověření.
-5. **OutputClaims** – deklarace identity jsou retuned zpět do kontejneru deklarací identity. Můžete použít tyto deklarace identit v dalším kroku Orchestrace nebo výstup transformace deklarací identity.
+5. **OutputClaims** – deklarace identity se vrátíte zpět do kontejneru deklarací identity. Můžete použít tyto deklarace identit v dalším kroku Orchestrace nebo výstup transformace deklarací identity.
 6. **OutputClaimsTransformations** – vstupní deklarace identity každý výstupu [transformace deklarací identity](claimstransformations.md) byly vybrány z kontejneru deklarací identity. Výstupní deklarace identit technického profilu z předchozích kroků může být vstupní deklarace identity transformace deklarací identity výstup. Po spuštění jsou v kontejneru a deklarace identity vrátit výstupní deklarace identit. Výstupní deklarace identity transformace deklarací identity výstup může být také vstupními deklaracemi identity transformace deklarací identity následující výstup.
 7. **Jednotné přihlašování (SSO) Správa relací** - [Správa relací jednotného přihlašování](active-directory-b2c-reference-sso-custom.md) ovládací prvky interakce s uživatelem, až uživatel už provedl ověření. Správce může například řídit, určuje, zda je zobrazena škály zprostředkovatelů identity, nebo zda místní účet podrobnosti nutné znovu zadat.
 

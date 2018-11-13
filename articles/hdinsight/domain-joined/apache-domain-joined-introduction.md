@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: cf94ba73d57763f5e05ed9b33d10bb335103400a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: a1b4565d4875b60ce36d74f8c99e4c7d79999c36
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46946387"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51578259"
 ---
 # <a name="an-introduction-to-hadoop-security-with-enterprise-security-package"></a>Úvod do zabezpečení Hadoop s balíčkem Enterprise Security Package
 
@@ -25,7 +25,7 @@ Můžete vytvořit cluster služby HDInsight s Enterprise Security Package (ESP)
 Podnikový správce můžete konfigurovat řízení přístupu na základě role (RBAC) pro zabezpečení Hivu pomocí [Apache Ranger](http://hortonworks.com/apache/ranger/). Konfigurace RBAC omezí přístup k datům jenom to, co je potřeba. Nakonec správce můžete auditovat přístup k datům zaměstnanci a jakýchkoli změn provedených v zásadách řízení přístupu. Správce pak může dosáhnout vysokého stupně dohledu nad firemními prostředky.
 
 > [!NOTE]
-> Nové funkce popsané v tomto článku jsou dostupné ve verzi preview pouze následující typy clusteru: Hadoop, Spark a interaktivní dotaz. Oozie je nyní zapnuta ESP clustery. Pro přístup k webovým Uživatelským rozhraním Oozie, musí uživatelé povolit [tunelování](../hdinsight-linux-ambari-ssh-tunnel.md).
+> Oozie je nyní zapnuta ESP clustery. Pro přístup k webovým Uživatelským rozhraním Oozie, musí uživatelé povolit [tunelování](../hdinsight-linux-ambari-ssh-tunnel.md).
 
 Podnikové zabezpečení obsahuje čtyři hlavní pilíře: zabezpečení perimetru, ověřování, autorizace a šifrování.
 

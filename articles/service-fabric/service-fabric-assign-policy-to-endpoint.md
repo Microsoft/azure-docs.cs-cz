@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/21/2018
 ms.author: mfussell
-ms.openlocfilehash: 8d5017cbd2177d080e5cef3d99a9f6b62eae08d5
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: dac15f0b96e9e295f92f250fe387e5b6ba9ae000
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50978957"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51567600"
 ---
 # <a name="assign-a-security-access-policy-for-http-and-https-endpoints"></a>Přiřazení zásad zabezpečení přístupu pro koncové body HTTP a HTTPS
 Pokud použijete zásady Spustit jako a manifest služby deklaruje prostředky koncový bod HTTP, je nutné zadat **SecurityAccessPolicy**.  **SecurityAccessPolicy** zajistí, že porty, které jsou přiděleny s těmito koncovými body jsou správně omezeny na uživatelský účet, který je služba spuštěna jako. V opačném případě **http.sys** nebudou mít přístup ke službě, a získáte selhání při voláních z klienta. Následující příklad používá účet Customer1 do koncového bodu volá **Název_koncového_bodu**, které jí úplná přístupová práva.

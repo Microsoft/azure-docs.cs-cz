@@ -6,20 +6,23 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/25/2018
+ms.date: 11/12/2018
 ms.author: adgera
-ms.openlocfilehash: 69b8f64574427a6b3d3d2cf0312eac88d86e5907
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 0fae059db53668da2d71906bbe94e9dabae931bc
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50960190"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51578582"
 ---
 # <a name="use-azure-digital-twins-swagger"></a>Použití Azure digitální dvojče Swagger
 
 Každá instance zřízené digitální dvojče Azure zahrnuje vlastní automaticky generované referenční dokumentaci Swagger.
 
 [Swagger](https://swagger.io/), nebo [OpenAPI](https://www.openapis.org/), sjednotí komplexní informace o rozhraní API do prostředek referenční dokumentace pro interaktivní a jazykově nezávislé. Swagger obsahuje důležité referenční materiály, o které datové části JSON, metod HTTP a konkrétní koncové body používat k provedení operací k rozhraní API.
+
+> [!IMPORTANT]
+> Podpora pro ověřování Swaggeru je dočasně zakázané ve verzi Public Preview.
 
 ## <a name="swagger-summary"></a>Souhrn swagger
 
@@ -43,10 +46,10 @@ Je možné otevřít vlastní vygenerovaná dokumentace Swagger rozhraní API Ma
 https://yourInstanceName.yourLocation.azuresmartspaces.net/management/swagger
 ```
 
-| Název vlastního atributu | Nahradit hodnotou |
+| Vlastní název | Nahradit hodnotou |
 | --- | --- |
-| *Název_vaší_instance* | Název instance digitální dvojče Azure |
-| *yourLocation* | Jaké oblasti serveru vaší instance je hostován aplikací |
+| Název_vaší_instance | Název instance digitální dvojče Azure |
+| yourLocation | Jaké oblasti serveru vaší instance je hostován aplikací |
 
 ## <a name="reference-material"></a>Referenční materiál
 
@@ -104,7 +107,10 @@ Příklady také kódy chyb umožňující ladit nebo vylepšit selhání testů
 
 ## <a name="swagger-oauth-20-authorization"></a>Swagger autorizace OAuth 2.0
 
-Testovat požadavků na prostředky rozhraní API OAuth 2.0, najdete v článku [oficiální dokumentaci](https://swagger.io/docs/specification/authentication/oauth2/).
+Další informace o interaktivním testování požadavků, které jsou chráněné pomocí OAuth 2.0, najdete v článku [oficiální dokumentaci](https://swagger.io/docs/specification/authentication/oauth2/).
+
+> [!NOTE]
+> Podpora pro ověřování OAuth 2.0 je dočasně zakázané ve verzi Public Preview.
 
 ## <a name="next-steps"></a>Další postup
 

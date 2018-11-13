@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/15/2018
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: cef3eef86cbb4abde5005f7a5bc278f9cd831b64
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: 7ea379516c6e636abd1309416374be75bcdbb686
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51515263"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51578735"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>Vysoká dostupnost s využitím služby Azure Cosmos DB
 
@@ -55,17 +55,7 @@ Nejsou místních výpadků a Azure Cosmos DB zajišťuje, že vaše databáze b
 
 - Účty v jedné oblasti může dojít ke ztrátě dostupnosti po regionálního výpadku. Doporučujeme nastavit alespoň dvou oblastech (pokud možno měly aspoň dva oblasti) pomocí svého účtu Cosmos k zajištění vysoké dostupnosti po celou dobu.
 
-### <a name="durability-following-a-regional-disaster"></a>Následující regionálního odolnosti
-
-Předtím, než je potvrzení operace zápisu do klienta data trvale potvrzena kvorum replik v rámci oblasti, která přijímá operace zápisu. Následující tabulka ukazuje okno potenciální ztráta dat pro jednotlivé úrovně konzistence po neopravitelné regionální po havárii pro účty služby Cosmos pokrývající několik oblastí.
-
-| **Úrovně konzistence** | **Následující regionálního potenciální okno ztráty dat** |
-| - | - |
-| Silné | Nula |
-| Omezená neaktuálnost | Omezit na "neaktuálnost okno" nastavení pro účet Cosmos. |
-| Relace | Až 5 sekund |
-| Konzistentní předpona | Až 5 sekund |
-| Nahodilé | Až 5 sekund |
+- I v případě velmi vzácné a unfortunate při oblast Azure je trvale nezotavitelnou neexistuje žádné ztrátě dat pokud je nakonfigurovaný účet Cosmos ve více oblastech s výchozí úroveň konzistence silná. V případě trvale nezotavitelnou zápisu oblasti, pro více oblastí účty Cosmos nakonfigurovanou konzistenci omezená neaktuálnost okno potenciální ztráty dat je omezená neaktuálnost okna. pro relace, konzistentní Předpona a konečný výsledek úrovním, okno potenciální ztráty dat je omezen na maximálně pět sekund.
 
 ## <a name="building-highly-available-applications"></a>Vytváření aplikací s vysokou dostupností
 

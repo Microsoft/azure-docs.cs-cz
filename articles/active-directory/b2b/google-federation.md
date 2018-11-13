@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.component: B2B
 ms.topic: conceptual
-ms.date: 08/20/2018
+ms.date: 11/07/2018
 ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: mal
-ms.openlocfilehash: 396fb947a95ebc634ab0dea24d20f35126bc006e
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 5bc94b6fe69a9ffec11fcbab952a6f8aa3e2259a
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389441"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51569001"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>Přidat služby Google jako zprostředkovatele identity pro uživatele typu Host B2B
 
@@ -43,15 +43,21 @@ Nejprve vytvořte nový projekt v konzole pro vývojáře Google získat klienta
 
    ![Přihlašovací údaje Google API](media/google-federation/google-api.png)
  
-4. Zvolte **obrazovku se souhlasem Oauth** kartě a zadejte **název produktu, který se uživatelům zobrazí**. (Další nastavení ponechte). Vyberte **Uložit**.
+4. Zvolte **obrazovku se souhlasem OAuth** kartu a zadat **název_aplikace**. (Další nastavení ponechte).
 
    ![Obrazovka pro vyjádření souhlasu Google OAuth](media/google-federation/google-oauth-consent-screen.png)
 
-5. Zvolte **pověření** kartu. V **Vytvořte přihlašovací údaje** nabídce zvolte **ID klienta OAuth**.
+5. Přejděte **oprávnění domény** části a zadejte microsoftonline.com.
+
+   ![Části oprávnění domény](media/google-federation/google-oauth-authorized-domains.png)
+
+6. Vyberte **Uložit**.
+
+7. Zvolte **pověření** kartu. V **Vytvořte přihlašovací údaje** nabídce zvolte **ID klienta OAuth**.
 
    ![Přihlašovací údaje Google API](media/google-federation/google-api-credentials.png)
 
-6. V části **typ aplikace**, zvolte **webovou aplikaci**a potom v části **identifikátory URI pro přesměrování autorizovaní**, zadejte následující identifikátory URI:
+8. V části **typ aplikace**, zvolte **webovou aplikaci**a potom v části **identifikátory URI pro přesměrování autorizovaní**, zadejte následující identifikátory URI:
    - `https://login.microsoftonline.com` 
    - `https://login.microsoftonline.com/te/<directory id>/oauth2/authresp` <br>(kde `<directory id>` je vaše ID adresáře)
    
@@ -60,7 +66,7 @@ Nejprve vytvořte nový projekt v konzole pro vývojáře Google získat klienta
 
    ![Vytvoření ID klienta OAuth](media/google-federation/google-create-oauth-client-id.png)
 
-7. Vyberte **Vytvořit**. Zkopírujte ID klienta a tajný kód klienta, které budete používat při přidání poskytovatele identit na portálu Azure AD.
+9. Vyberte **Vytvořit**. Zkopírujte ID klienta a tajný kód klienta, které budete používat při přidání poskytovatele identit na portálu Azure AD.
 
    ![OAuth klienta ID a tajný klíč klienta](media/google-federation/google-auth-client-id-secret.png)
 

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: fce96cf5be9e70863fd75e5d4b3045bc49f638cf
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 08991829c9c3d628b5028e04dbd4836647d94826
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47432617"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51567481"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen1"></a>Řízení přístupu v Azure Data Lake Storage Gen1
 
@@ -128,9 +128,11 @@ Uživatel, který položku vytvořil, je automaticky jejím vlastníkem. Vlastn�
 
 V seznamech ACL POSIX je ke každému uživateli přiřazena „primární skupina“. Uživatel „alice“ může například patřit do skupiny „finance“. Alice může patřit do více skupin, ale jedna skupina je vždy určena jako její primární skupina. Když Alice vytvoří soubor v rámci specifikace POSIX, bude jako vlastnící skupina tohoto souboru nastavena její primární skupina, což je v tomto případě skupina „finance“. Jinak se vlastnící skupina chová podobně jako přiřazená oprávnění pro jiné uživatele nebo skupiny.
 
-**Přiřazení vlastnící skupinu pro nový soubor nebo složku**
+Protože neexistuje žádná "primární skupina" přidružené k uživateli v Data Lake Storage Gen1, vlastnící skupinu je přiřazen jako níže.
 
-* **Případ 1:** Kořenová složka „/“. Tato složka se vytvoří při vytvoření účtu Data Lake Storage Gen1. V takovém případě je vlastnící skupina nastavena podle uživatele, který účet vytvořil.
+**Přiřazuje se vlastnící skupina pro nový soubor nebo složku**
+
+* **Případ 1:** Kořenová složka „/“. Tato složka se vytvoří při vytvoření účtu Data Lake Storage Gen1. V takovém případě je vlastnící skupina nastavena na identifikátor GUID pro všemi nulovými.  Tato hodnota neumožňuje přístup.  Do té doby, které je skupina přiřazena je zástupný symbol.
 * **Případ 2** (všechny ostatní případy): Při vytvoření nové položky se vlastnící skupina zkopíruje z nadřazené složky.
 
 **Mění se vlastnící skupina**
@@ -140,7 +142,9 @@ Vlastnící skupinu smí změnit:
 * Vlastnící uživatel, pokud je také členem cílové skupiny.
 
 > [!NOTE]
-> Vlastnící skupina *nemůže* měnit přístupové seznamy souboru nebo složky.  Přestože v případě kořenového adresáře (výše uvedený **Případ 1**) je vlastnící skupina nastavená na uživatele, který vytvořil účet, prostřednictvím vlastnící skupiny není možné poskytnout oprávnění jednomu uživatelskému účtu.  Toto oprávnění můžete přiřadit platné skupině uživatelů, pokud nějaká existuje.
+> Vlastnící skupina *nemůže* měnit přístupové seznamy souboru nebo složky.
+>
+> Pro účty vytvořené před. září 2018 dnem, byla vlastnící skupina nastavena na uživatele, který vytvořil účet v případě kořenové složky pro **případ 1**výše.  Jeden uživatelský účet není možné poskytnout oprávnění prostřednictvím vlastnící skupiny, tedy žádná oprávnění jsou udělena podle tohoto výchozího nastavení. Tato oprávnění můžete přiřadit platné skupině uživatelů.
 
 
 ## <a name="access-check-algorithm"></a>Algoritmus kontroly přístupu

@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: ramamill
-ms.openlocfilehash: 8a9342a2354cd4c92fa0230965b4eef6284ee826
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: d99b5d1fdca39466d5e09ca077329b7ffa8622bc
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50209118"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51568848"
 ---
 # <a name="manage-process-servers"></a>Správa procesních serverů
 
@@ -79,4 +79,16 @@ Pokud na procesovém serveru používá proxy server pro připojení k Site Reco
 
 [!INCLUDE [site-recovery-vmware-unregister-process-server](../../includes/site-recovery-vmware-unregister-process-server.md)]
 
+## <a name="manage-anti-virus-software-on-process-servers"></a>Správa antivirový software na procesových serverech.
+
+Pokud je na samostatný procesový server nebo hlavní cílový server aktivní antivirový software, vylučte z operace antivirový program následující složky:
+
+
+- Agent C:\Program Files\Microsoft Azure Recovery Services
+- C:\ProgramData\ASR
+- C:\ProgramData\ASRLogs
+- C:\ProgramData\ASRSetupLogs
+- C:\ProgramData\LogUploadServiceLogs
+- C:\ProgramData\Microsoft Azure Site Recovery
+- Proces serveru instalační adresář, například: C:\Program Files (x86) \Microsoft Azure Site Recovery
 

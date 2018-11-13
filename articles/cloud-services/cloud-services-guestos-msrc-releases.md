@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 11/08/2018
+ms.date: 11/12/2018
 ms.author: raiye
-ms.openlocfilehash: cfd0d9d7484e82ee130f4de860190238718c149c
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: 19f9584c86993942e949716e14d2190fc5b31ce0
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51301063"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51578769"
 ---
 # <a name="azure-guest-os"></a>Azure hostovaného operačního systému
 Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hostovaného operačního systému Azure v následujících tabulkách. Hledání Tento článek k určení, pokud platí konkrétní aktualizace do hostovaného operačního systému, kterou používáte. Aktualizace vždy převést do dalšího období pro konkrétní [řady] [ family-explain] byly zavedeny v.
@@ -28,11 +28,10 @@ Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hosto
 | Kategorie produktů | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
 | --- | --- | --- | --- | --- |
 | Rel 18 až 10 | [4462917] | Zabezpečení systému Windows 10 | 5,24 | 9. října 2018 |
-| Rel 18 až 10 | [4464330] | Zabezpečení systému Windows 10 | 6.0 | 9. října 2018 |
 | Rel 18 až 10 | [4462915] | Zabezpečení Windows | 2.79 | 9. října 2018 |
 | Rel 18 až 10 | [4462931] | Zabezpečení Windows | 3,66 | 9. října 2018 |
 | Rel 18 až 10 | [4462941] | Zabezpečení Windows | 4.59 | 9. října 2018 |
-| Rel 18 až 10 | [4462930] | Animace Flash | 3,66, 4.59, 5,24, 6.0 | 9. října 2018 |
+| Rel 18 až 10 | [4462930] | Animace Flash | 3,66, 4.59, 5,24 | 9. října 2018 |
 | Rel 18 až 10 | [4462949] | Internet Explorer | 2.79, 3,66, 4.59 | 9. října 2018 |
 | neuvedeno | [4339284] | Aktualizace časového pásma | 2.79, 3,66, 4.59 | 24. července 2018 |
 | neuvedeno | [4457144] | Souhrn září Non-zabezpečení | 2.79 | 11. září 2018 |
@@ -46,7 +45,6 @@ Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hosto
 | neuvedeno | [4457036] | Souhrn září zabezpečením .NET 4.5.2 | 4.59 | 11. září 2018 |
 
 [4462917]: http://support.microsoft.com/kb/4462917
-[4464330]: http://support.microsoft.com/kb/4464330
 [4462915]: http://support.microsoft.com/kb/4462915
 [4462931]: http://support.microsoft.com/kb/4462931
 [4462941]: http://support.microsoft.com/kb/4462941

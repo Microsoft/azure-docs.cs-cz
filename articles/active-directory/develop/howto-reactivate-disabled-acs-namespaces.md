@@ -15,27 +15,27 @@ ms.date: 11/07/2018
 ms.author: celested
 ms.reviewer: jlu
 ms.custom: aaddev
-ms.openlocfilehash: 298afda7549690a9ea0314bff63a714be50a33b9
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 0f0de122dc3dbd770e91a8412430423bee222b30
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51019101"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51577941"
 ---
 # <a name="how-to-reactivate-disabled-access-control-service-namespaces"></a>Postupy: nová aktivace deaktivovaného Access Control Service obory názvů
 
 V listopadu 2017 jsme oznámili, že Microsoft Azure Access Control Service (ACS), služba Azure Active Directory (Azure AD), se vyřazuje k 7. listopadu 2018.
 
-Protože potom odeslali jsme několik e-mailů k e-mailu správce že ACS předplatná informace o vyřazení ACS 12 měsíců, 9 měsíců, 6 měsíců, 3 měsíce, 1 měsíc, 2 týdny, 1 týden, a 1 den před vyřazením 7. listopadu 2018.
+Protože potom odeslali jsme vám e-mailů k e-mailu správce že ACS předplatná informace o vyřazení ACS 12 měsíců, 9 měsíců, 6 měsíců, 3 měsíce, 1 měsíc, 2 týdny, 1 týden, a 1 den před vyřazením 7. listopadu 2018.
 
-3. října 2018 jsme oznámili (prostřednictvím e-mailu a [blogový příspěvek](https://azure.microsoft.com/blog/one-month-retirement-notice-access-control-service/)) rozšíření nabídky zákazníkům, kteří nejde dokončit, jejich migraci před 7. listopadu 2018. Oznámení obsahuje také pokyny, jak požaduje rozšíření.
+3. října 2018 jsme oznámili (prostřednictvím e-mailu a [blogový příspěvek](https://azure.microsoft.com/blog/one-month-retirement-notice-access-control-service/)) rozšíření nabídky zákazníkům, kteří nejde dokončit, jejich migraci před 7. listopadu 2018. Oznámení bylo také pokyny, jak požaduje rozšíření.
 
 ## <a name="why-your-namespace-is-disabled"></a>Proč je neaktivní váš obor názvů
 
 Pokud rozšíření ještě výslovného souhlasu, začneme zakazovat obory názvů ACS od 7. listopadu 2018. Pokud se vynechalo komunikací a přesto chcete vyjádřit výslovný souhlas pro rozšíření do 4. února 2019, postupujte podle pokynů v následujících částech.
 
 > [!NOTE]
-> Musíte být správcem předplatného spustit příkazy Powershellu a požádali o prodloužení.
+> Musíte být správce služeb nebo spolusprávcem předplatného, který chcete spustit příkazy Powershellu a požádali o prodloužení.
 
 ## <a name="find-and-enable-your-acs-namespaces"></a>Najít a povolit obory názvů ACS
 
@@ -62,6 +62,9 @@ ACS Powershellu můžete použít k zobrazení seznamu všech oborů názvů ACS
         ```
     
         kde `[Command-Name]` je název příkazu ACS.
+1. Připojte se k používání služby ACS **AcsAccount připojit** rutiny. 
+
+    Budete muset změnit vaše zásady spouštění spuštěním **Set-ExecutionPolicy** před spuštěním příkazu.
 1. Dostupná předplatná Azure pomocí seznamu **Get-AcsSubscription** rutiny.
 1. Seznam pomocí oborů názvů ACS **Get-AcsNamespace** rutiny.
 1. Potvrďte, že tím, že jsou zakázané obory názvů `State` je `Disabled`.

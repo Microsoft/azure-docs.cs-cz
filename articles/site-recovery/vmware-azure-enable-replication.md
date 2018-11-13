@@ -1,8 +1,18 @@
 ---
-Title: povolení replikace virtuálních počítačů VMware pro zotavení po havárii VMware do Azure pomocí Azure Site Recovery | Microsoft Docs description: Tento článek popisuje, jak povolit replikaci virtuálních počítačů VMware pro zotavení po havárii do Azure pomocí Azure Site Recovery.
-Autor: asgang ms.service: site recovery ms.date: 07/06/2018 ms.topic: koncepční ms.author: asgang
-
-
+title: Povolení replikace virtuálních počítačů VMware pro zotavení po havárii VMware do Azure pomocí Azure Site Recovery | Dokumentace Microsoftu
+description: Tento článek popisuje, jak povolit replikaci virtuálních počítačů VMware pro zotavení po havárii do Azure pomocí Azure Site Recovery.
+author: asgang
+ms.service: site-recovery
+ms.date: 07/06/2018
+ms.topic: conceptual
+ms.author: asgang
+ms.openlocfilehash: c6c5aeece9e49a44654d63a7dc243991a62f2d9a
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51566349"
+---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>Povolit replikaci do Azure pro virtuální počítače VMware
 
 
@@ -68,10 +78,7 @@ Při replikaci virtuálních počítačů VMware:
     ![Povolení replikace](./media/vmware-azure-enable-replication/enable-replication7.png)
 14. Klikněte na **Povolit replikaci**. Průběh úlohy **Povolení ochrany** můžete sledovat tady: **Nastavení** > **Úlohy** > **Úlohy Site Recovery**. Po spuštění úlohy **Dokončit ochranu** je počítač připravený k převzetí služeb při selhání.
 
-> [!NOTE]
-> Pokud je počítač připravený na nabízenou instalaci, je nainstalována součást služby Mobility, když je povolena ochrana. Poté, co je nainstalována na počítači, úloha ochrany spustí a selže. Po selhání budete muset ručně restartovat každý počítač. Po restartování znovu spustí úlohu ochrany a dojde k počáteční replikaci.
->
->
+
 
 ## <a name="view-and-manage-vm-properties"></a>Zobrazení a správa vlastností virtuálního počítače
 

@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: marthalc
 author: marthalc
 ms.date: 10/01/2018
-ms.openlocfilehash: 962090340cad6bcd95245cffe16c25f08a98226b
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: 285486d5fe641d49ee21d7340b62f83d75862553
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300757"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51578293"
 ---
 # <a name="monitor-your-azure-machine-learning-models-in-production-with-application-insights"></a>Monitorování vašich modelů Azure Machine Learning v produkčním prostředí pomocí nástroje Application Insights
 
@@ -24,6 +24,10 @@ V tomto článku se dozvíte, jak nastavit Azure Application Insights pro vaši 
 * Výjimky.
 
 [Další informace o Application Insights](../../application-insights/app-insights-overview.md). 
+
+>[!NOTE]
+> V tomto článku kódu byl testován s Azure Machine Learning SDK verze 0.1.74
+
 
 ## <a name="prerequisites"></a>Požadavky
 * Předplatné Azure. Pokud ho nemáte, než začnete, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
