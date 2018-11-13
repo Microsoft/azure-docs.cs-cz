@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: rafats
-ms.openlocfilehash: 09f827e8784fe2a97c587524d70baf76ae4458ba
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: ad2032345332519713b177596df0556e4c35c18c
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50741857"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51567736"
 ---
 # <a name="working-with-the-change-feed-support-in-azure-cosmos-db"></a>Práce s změnu podpora kanálu ve službě Azure Cosmos DB
 
@@ -177,7 +177,7 @@ Knihovnou change feed processor usnadňuje čtení změn napříč oddíly a fun
 
 Byl spuštěn první levé klienta a jeho spuštění, sledování, které všechny oddíly, pak druhého klienta byla spuštěna a potom první opustila některých zapůjčení pro druhého klienta. Jak je vidět, to je dobrý způsob, jak k rozložení práce mezi různé počítače a klienty.
 
-Poznámka: Pokud máte dva bez serveru Azure funkcí monitorování stejné kolekce a pomocí stejného zapůjčení, pak tyto dvě funkce může získat různé dokumenty v závislosti na způsobu knihovny procesoru rozhodne zpracujte oddíly.
+Všimněte si, že pokud máte dvě funkce bez serveru Azure monitoring stejné kolekce a pomocí stejného zapůjčení pak tyto dvě funkce může získat různé dokumenty v závislosti na tom, jak knihovny procesoru rozhodne zpracovat oddíly.
 
 <a id="understand-cf"></a>
 ### <a name="understanding-the-change-feed-processor-library"></a>Principy změn kanálu knihovny procesoru

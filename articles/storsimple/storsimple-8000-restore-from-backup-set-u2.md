@@ -1,6 +1,6 @@
 ---
-title: Obnovit svazek ze zálohy na řadu zařízení StorSimple 8000 | Microsoft Docs
-description: Vysvětluje, jak používat službu StorSimple Manager zařízení katalogu zálohy obnovit svazek StorSimple ze zálohovacího skladu.
+title: Obnovit ze zálohy na řadu StorSimple 8000 svazek | Dokumentace Microsoftu
+description: Vysvětluje, jak obnovit svazek StorSimple ze zálohovacího skladu pomocí služby Správce zařízení StorSimple katalog záloh.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,112 +14,112 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/23/2017
 ms.author: alkohli
-ms.openlocfilehash: aff0710ead4f76bb80c38e2d88fe9cd3ce6a7b48
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 55a4b150471b87289cdd67dc8fbce92336850364
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23875456"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51568814"
 ---
-# <a name="restore-a-storsimple-volume-from-a-backup-set"></a>Obnovit svazek StorSimple ze zálohovacího skladu
+# <a name="restore-a-storsimple-volume-from-a-backup-set"></a>Obnovení svazku StorSimple ze zálohovacího skladu
 
 ## <a name="overview"></a>Přehled
 
-Tento kurz popisuje operaci obnovení provést na zařízení řady StorSimple 8000 pomocí existujícího zálohovacího skladu. Použití **katalog zálohování** okno obnovení svazku z místní nebo cloudové zálohování. **Katalog zálohování** zobrazuje všechny zálohovací sklady, které vytvářejí, když jsou provedeny ruční nebo automatické zálohy. Operace obnovení ze zálohovacího skladu připojí svazek online okamžitě, když data se stáhne na pozadí.
+Tento kurz popisuje operace obnovení provést na zařízení řady StorSimple 8000 pomocí existujícího zálohovacího skladu. Použití **katalog zálohování** okna obnovení svazku z místního nebo zálohování do cloudu. **Katalog zálohování** okně se zobrazí všechny zálohovací sklady, které jsou vytvořeny při ruční nebo automatické zálohy jsou prováděny. Operace obnovení ze zálohovacího skladu připojí svazek online hned, zatímco data se stáhne na pozadí.
 
-Alternativní metoda zahájíte obnovení je přejít na **zařízení > [zařízení] > svazky**. V **svazky** okně, vyberte svazek, klikněte pravým tlačítkem na vyvolání v místní nabídce a potom vyberte **obnovení**.
+Alternativní způsob spuštění obnovení, je přejít na **zařízení > [zařízení] > svazky**. V **svazky** okno, vyberte svazek, kliknutím pravým tlačítkem myši vyvolejte místní nabídku a zvolte **obnovení**.
 
 ## <a name="before-you-restore"></a>Před obnovením
 
 Před zahájením obnovení, přečtěte si následující upozornění:
 
-* **Je nutné provést svazek offline** – trvat svazek offline na hostiteli a zařízení, před spuštěním operace obnovení. Přestože operace obnovení automaticky připojí svazek online na zařízení, je nutné ručně přenést zařízení online na hostiteli. Převedete online svazek na hostiteli, jakmile je svazek online na zařízení. (Není nutné čekat, až po dokončení operace obnovení.) Postupy, přejděte na [do offline režimu svazku](storsimple-8000-manage-volumes-u2.md#take-a-volume-offline).
+* **Svazek musíte převést do režimu offline** – trvat svazek do režimu offline na tomto hostiteli a zařízení, před spuštěním operace obnovení. I když operace obnovení automaticky připojí svazek online na zařízení, musíte převést zařízení online ručně na hostiteli. Jakmile svazek je online na zařízení je možné přenést online hlasitosti na hostiteli. (Nepotřebujete čekat na dokončení operace obnovení.) Postupy najdete v části [svazek převést do režimu offline](storsimple-8000-manage-volumes-u2.md#take-a-volume-offline).
 
-* **Typ svazku po obnovení** – odstraněné svazky jsou obnoveny podle typu ve snímku; to znamená, svazky, které byly místně vázaný se obnoví jako místně vázaných svazků a svazky, které byly zřízeny vrstvené se obnoví jako vrstvené svazky.
+* **Typ svazku po obnovení** – odstraněné svazky jsou obnoveny podle typu ve snímku; to znamená, svazky, které byly místně připnuté se obnoví jako místně připojené svazky a svazky, které byly vrstvené se obnoví jako vrstvené svazky.
 
-    Pro existující svazky přepíše aktuální typ použití svazku typ, který je uložený ve snímku. Například pokud obnovujete svazek ze snímku, která se provede, když byla vrstvené typ svazku a typ svazku je nyní místně vázaný (z důvodu převodu operace, která byla provedena), pak svazek se obnoví jako místně vázaný svazek. Podobně pokud existující místně vázaný svazek byla rozšířena a následně obnovit ze starší snímek pořízený při menší svazek, obnovený svazek bude zachovat aktuální rozbalenou velikost.
+    Pro existující svazky přepíše aktuální typ použití svazku typ, který je uložený do snímku. Například pokud svazek obnovit ze snímku, který se provede, když byl vrstveného svazku typ a typ svazku je teď místně připnuté (kvůli operaci převodu, která byla provedena), pak svazek se obnoví jako místně vázaný svazek. Podobně pokud existující místně vázaný svazek byl rozšířit a následně obnovit ze starší snímku provedená v případě, že svazek je menší, obnovené svazku zachová aktuální rozbalenou velikost.
 
-    Svazek nelze převést z vrstvený svazek k místně vázaný svazek nebo z místně vázaný svazek k vrstvený svazek, při obnovení svazku. Počkejte na dokončení operace obnovení, a pak můžete převést svazek k jinému typu. Informace o převodu svazku, přejděte na [změnit typ svazku](storsimple-8000-manage-volumes-u2.md#change-the-volume-type). 
+    Svazek nelze převést z vrstveného svazku pro místně vázaný svazek nebo z místně vázaný svazek vrstvený svazek, když obnovujete svazek. Počkejte na dokončení operace obnovení, a převeďte svazek do jiného typu. Informace o převodu svazku, přejděte na [změnu typu svazku](storsimple-8000-manage-volumes-u2.md#change-the-volume-type). 
 
-* **Velikost svazku se odrazí v obnovené svazku** – Toto je důležitý faktor, pokud obnovujete místně vázaný svazek, který byl odstraněn, (protože místně vázaných svazků jsou plně zřízený). Ujistěte se, že máte dostatek místa, před dalším pokusem o obnovení místně vázaný svazek, který byl dříve odstraněn.
+* **Velikost svazku se projeví v obnovené svazku** – to je důležitým aspektem, pokud obnovujete místně vázaný svazek, který je odstraněný (protože místně připojené svazky jsou plně zřízený). Ujistěte se, že máte dostatek místa, než se pokusíte obnovit místně vázaný svazek, který byl dříve odstraněn.
 
-* **Nelze rozbalit svazku, zatímco je obnovena** – počkejte na dokončení operace obnovení před dalším pokusem o rozšířit svazek. Informace o rozšiřování svazek, přejděte na [upravit svazek](storsimple-8000-manage-volumes-u2.md#modify-a-volume).
+* **Nelze rozšířit svazek, zatímco se obnovuje** – počkejte na dokončení operace obnovení před pokusem o rozšíření svazku. Informace o rozšiřování svazku, přejděte na [upravit svazek](storsimple-8000-manage-volumes-u2.md#modify-a-volume).
 
-* **Při obnovení místního svazku můžete provést zálohu** – postupy naleznete na [použít službu StorSimple Manager zařízení ke správě zásady zálohování](storsimple-8000-manage-backup-policies-u2.md).
+* **Můžete provést zálohu, zatímco obnovit místní svazek** – postupy najdete [Správa zásad zálohování pomocí služby Správce zařízení StorSimple](storsimple-8000-manage-backup-policies-u2.md).
 
-* **Můžete zrušit operaci obnovení** – Pokud zrušíte úlohy obnovení, pak svazek bude vrácena zpět do stavu, který byl předtím, než jste spustili operaci obnovení. Postupy, přejděte na [zrušení úlohy](storsimple-8000-manage-jobs-u2.md#cancel-a-job).
+* **Můžete je zrušit operaci obnovení** – v případě zrušení úlohy obnovení, pak svazek bude vrácena zpět do stavu, který byl před zahájením operace obnovení. Postupy najdete v části [zrušení úlohy](storsimple-8000-manage-jobs-u2.md#cancel-a-job).
 
 ## <a name="how-does-restore-work"></a>Jak obnovit práci
 
-Pro zařízení se systémem Update 4 nebo novější se implementuje na základě heatmap obnovení. Jako hostitele požadavky na přístup k datům přístup zařízení, tyto požadavky jsou sledovány a k vytvoření heatmap. Rychlost vysokou požadavků výsledkem bloky dat s vyšší heat, zatímco překládá nižší rychlost požadavků na bloky dat s nižší heat. Je nutné získat přístup dat alespoň dvakrát na označit jako _aktivní_. Soubor, který se mění je také označena jako _aktivní_. Jakmile zahájíte obnovení, nastane proaktivní dosazováním dat podle heatmap. Verze starší než aktualizace 4, data se stáhne během obnovení založená na přístupu jen.
+Pro zařízení s verzí Update 4 nebo novější je implementováno obnovení na základě heatmapu. Hostitele žádostí o přístup k datům spojit se zařízením, tyto požadavky jsou sledovány a je vytvořen heatmapu. Frekvence požadavků vysokou bloků dat s vyšší heat způsobí, že nižší frekvence požadavků se přeloží na bloky dat s nižšími heat. Musí přístup k datům alespoň dvakrát být označený jako _horké_. Soubor, který je upraven je také označena jako _horké_. Po zahájení obnovení proaktivní dosazení dat dochází podle Heat mapě. Pro verze starší než Update 4, data se stáhne během obnovení založené na pouze přístup.
 
-Zohledněním těchto aspektů použít na základě heatmap obnovení:
+Následující upozornění se vztahují na základě heatmapu obnovení:
 
-* Sledování Heatmap je povolená jenom pro vrstvené svazky a místně vázaných svazků nejsou podporovány.
+* Sledování Heatmapu je povoleno pouze vrstvené svazky a místně připojené svazky nepodporují.
 
-* Obnovení na základě Heatmap není podporováno při klonování svazku na jiné zařízení. 
+* Při klonování svazku na jiné zařízení, na základě Heatmapu obnovení se nepodporuje. 
 
-* Pokud dojde obnovení na místě a místní snímek pro svazek, který se má obnovit v zařízení existuje, pak jsme není rehydrataci při spotřebě (protože data je již k dispozici místně). 
+* Pokud je obnovení místně a v zařízení existuje místní snímek pro svazek pro obnovení, pak jsme není dosazení (protože data jsou již k dispozici místně). 
 
-* Ve výchozím nastavení Pokud obnovujete, rehydrataci úlohy se spouští které proaktivně rehydrataci při spotřebě dat podle heatmap. 
+* Ve výchozím nastavení při obnovování, dosazování úlohy, které jsou spuštěny, které proaktivně dosazení dat založené na Heat mapě. 
 
-V aktualizaci 4 lze použít rutiny prostředí Windows PowerShell pro dotazování spuštěné úlohy rehydrataci, zrušení úlohy rehydrataci a získat stav úlohy rehydrataci.
+V aktualizaci 4 rutin prostředí Windows PowerShell slouží k dotazování spuštěné úlohy dosazování dosazování úlohu zrušit a získat stav úlohy dosazování.
 
-* `Get-HcsRehydrationJob`– Tato rutina načte stav úlohy rehydrataci. Aktivuje úlohu jeden rehydrataci se pro jeden svazek.
+* `Get-HcsRehydrationJob` – Tato rutina načte stav úlohy dosazování. Dosazování jedné úlohy se aktivuje pro jeden svazek.
 
-* `Set-HcsRehydrationJob`– Tato rutina umožňuje pozastavit, zastavit, obnovte úlohu rehydrataci, když probíhá rehydrataci.
+* `Set-HcsRehydrationJob` – Tato rutina umožňuje pozastavit, zastavit, pokud probíhá dosazování umožňuje pokračovat v úloze dosazování.
 
-Další informace o rutinách rehydrataci, přejděte na [odkazu na rutiny Windows Powershellu pro StorSimple](https://technet.microsoft.com/library/dn688168.aspx).
+Další informace o rutinách dosazování, přejděte na [Reference k rutinám Windows Powershellu pro StorSimple](https://technet.microsoft.com/library/dn688168.aspx).
 
-S automatickou rehdyration obvykle vyšší výkon přechodný pro čtení se očekává. Skutečné magniutde vylepšení závisí na různých faktorech, jako je například vzor přístupu, mísení dat a typu dat. 
+S automatickou rehdyration obvykle vyšší přechodné výkonu při čtení se očekává. Skutečné magniutde vylepšení závisí na různých faktorech, jako je například přístup k nim, četnost změn dat a datovým typem. 
 
-Pokud chcete zrušit úlohu rehydrataci, můžete použít rutinu prostředí PowerShell. Pokud chcete trvale zakázat rehydrataci úloh pro všechny budoucí obnovení [kontaktovat Microsoft Support](storsimple-8000-contact-microsoft-support.md).
+Pokud chcete zrušit úlohu dosazování, můžete použít rutinu prostředí PowerShell. Pokud chcete trvale zakázat dosazování úlohy pro všechny budoucí obnovení [obraťte se na Microsoft Support](storsimple-8000-contact-microsoft-support.md).
 
-## <a name="how-to-use-the-backup-catalog"></a>Použití zálohování katalogu
+## <a name="how-to-use-the-backup-catalog"></a>Použití katalogu záloh
 
-**Zálohování katalogu** okno obsahuje dotaz, který umožňuje zúžit zálohování nastavte výběr. Můžete filtrovat zálohovací sklady, které jsou načteny na základě následujících parametrů:
+**Katalog záloh** okno obsahuje dotaz, který umožňuje zúžit zálohování nastavte výběr. Můžete filtrovat zálohovacích skladů, které jsou načteny na základě následujících parametrů:
 
-* **Čas rozsah** – rozsah data a času v okamžiku vytvoření zálohovacího skladu.
-* **Zařízení** – zařízení, v němž byla vytvořena zálohovacího skladu.
+* **Časový rozsah** – rozsah data a času při vytvoření zálohovacího skladu.
+* **Zařízení** – zařízení, na kterém byl zálohovací sklad vytvořen.
 * **Zásady zálohování** nebo **svazku** – zásady zálohování nebo svazku přidruženém k tohoto zálohovacího skladu.
 
-Filtrované zálohovací sklady jsou pak poskytovalo na základě následujících atributů:
+Filtrované sady záloh jsou pak uvedených na základě následujících atributů:
 
 * **Název** – název zásady zálohování nebo svazku přidruženém k zálohovacího skladu.
-* **Typ** – zálohovací sklady může být místní snímky nebo cloudových snímků. Místní snímek je zálohování všech dat uložených místně na zařízení, svazku, zatímco cloudový snímek odkazuje na zálohování svazku dat umístěných v cloudu. Místní snímky poskytují rychlejší přístup, že jsou pro záleží na odolnosti dat zvolena cloudových snímků.
+* **Typ** – zálohovací sklady může být místní snímky nebo cloudových snímků. Místní snímek je zálohu všechna data svazku ukládají místně na zařízení, zatímco odkazuje snímek v cloudu k zálohování dat svazků umístěných v cloudu. Místní snímky poskytují rychlejší přístup, že cloudové snímky jsou zvolena větší odolnost dat.
 * **Velikost** – skutečná velikost zálohovacího skladu.
-* **Vytvořit v** – datum a čas, kdy byly vytvořeny zálohy. 
-* **Svazky** -počet svazků, které jsou přidružené k zálohovacího skladu.
-* **Iniciované** – zálohy lze inicializovat automaticky podle plánu nebo ručně uživatelem. (Můžete použít zásady zálohování naplánovat zálohování. Alternativně můžete použít **provést zálohování** možnost provést zálohu interaktivní nebo na vyžádání.)
+* **Vytvořit na** – datum a čas, kdy byly vytvořeny zálohy. 
+* **Svazky** – počet svazků, které jsou přidružené k zálohovacího skladu.
+* **Zahájené** – zálohy, nepůjdou automaticky podle plánu nebo ručně uživatelem. (Zásady zálohování můžete použít k naplánování zálohování. Alternativně můžete použít **vytvořit zálohu** možnost vytvořit interaktivní nebo na vyžádání zálohu.)
 
-## <a name="how-to-restore-your-storsimple-volume-from-a-backup"></a>Jak obnovit svazek StorSimple ze zálohy
+## <a name="how-to-restore-your-storsimple-volume-from-a-backup"></a>Postup při obnovení svazku StorSimple ze zálohy
 
-Můžete použít **zálohování katalogu** okno obnovit svazek StorSimple ze konkrétní zálohy. Mějte na paměti, ale, obnovení svazku vrátíte svazku stavu, ve kterém byl v době vytvoření zálohy. Žádná data, která byla přidána po operace zálohování se ztratí.
+Můžete použít **katalog záloh** okno při obnovení svazku StorSimple ze konkrétní zálohy. Mějte na paměti, ale, obnovení svazku místo něj se uplatní svazku do stavu, ve kterém byla, když bylo provedeno zálohování. Všechna data, která byla přidána po zálohování se ztratí.
 
 > [!WARNING]
-> Obnovení ze zálohy nahradí existující svazky ze zálohy. To může způsobit ztrátu všechna data, která byla zapsána po vytvoření zálohy.
+> Obnovení ze zálohy nahradí existující svazky ze zálohy. To může způsobit ztrátu všechna data, která byla zapsána po bylo provedeno zálohování.
 
 
-### <a name="to-restore-your-volume"></a>K obnovení svazku
-1. Přejděte do služby StorSimple Manager zařízení a pak klikněte na tlačítko **katalog zálohování**.
+### <a name="to-restore-your-volume"></a>Chcete-li obnovit svazek
+1. Přejděte do služby Správce zařízení StorSimple a potom klikněte na tlačítko **katalog zálohování**.
 
-2. Vyberte zálohovací sklad následujícím způsobem:
+2. Vyberte zálohu, nastavte následujícím způsobem:
    
    1. Zadejte časový rozsah.
    2. Vyberte příslušné zařízení.
-   3. V rozevíracím seznamu vyberte svazek nebo zálohování zásady pro zálohu, kterou chcete vybrat.
+   3. V rozevíracím seznamu vyberte svazek nebo zálohování zásadu pro zálohu, kterou chcete vybrat.
    4. Klikněte na tlačítko **použít** ke spuštění tohoto dotazu.
 
-    Zálohování přidružené k vybranému svazku nebo zásady zálohování by se měla objevit v seznamu sad záloh.
+    Zálohy přidružené vybraný svazek nebo zásady zálohování by se měla zobrazit v seznamu sad záloh.
    
     ![Zálohovací sklad seznamu](./media/storsimple-8000-restore-from-backup-set-u2/bucatalog.png)     
      
-3. Rozbalte zálohovací sklad zobrazíte přidružené svazky. Tyto svazky musí být převedeno do režimu offline v hostiteli a zařízení, než bude možné obnovit. Přístup ke svazkům na **svazky** okno vašeho zařízení a pak postupujte podle kroků v [do offline režimu svazek](storsimple-8000-manage-volumes-u2.md#take-a-volume-offline) je uvedení do režimu offline.
+3. Rozbalte zálohovacího skladu zobrazíte přidružené svazky. Tyto svazky musí být převedeno do režimu offline v hostiteli a zařízení, než bude možné obnovit. Přístup ke svazkům na **svazky** okno vašeho zařízení a pak postupujte podle kroků v [svazek převést do režimu offline](storsimple-8000-manage-volumes-u2.md#take-a-volume-offline) jejich uvedení do režimu offline.
    
    > [!IMPORTANT]
-   > Ujistěte se, že jste provedli svazky do offline režimu na hostiteli nejprve, před provedením svazky do režimu offline v zařízení. Pokud neprovedete offline svazky na hostiteli, může potenciálně vést k poškození dat.
+   > Ujistěte se, že jste provedli svazky na hostiteli nejprve před uveďte svazky do režimu offline v zařízení. Pokud neprovedete svazky na hostiteli, může potenciálně vést k poškození.
    
-4. Přejděte zpět **zálohování katalogu** a vyberte zálohovacího skladu. Klikněte pravým tlačítkem myši a potom v místní nabídce vyberte **obnovení**.
+4. Přejděte zpět **katalog záloh** kartě a vyberte sadu záloh. Klikněte pravým tlačítkem a pak v místní nabídce vyberte **obnovení**.
 
     ![Zálohovací sklad seznamu](./media/storsimple-8000-restore-from-backup-set-u2/restorebu1.png)
 
@@ -127,20 +127,20 @@ Můžete použít **zálohování katalogu** okno obnovit svazek StorSimple ze k
    
     ![Stránka potvrzení](./media/storsimple-8000-restore-from-backup-set-u2/restorebu2.png)
 
-7.  Klikněte na tlačítko **obnovení**. Tím se vyvolá úloha obnovení, který si můžete zobrazit přístup k **úlohy** stránky.
+7.  Klikněte na tlačítko **obnovení**. Tím se spustí úlohy obnovení, které můžete zobrazit přechodem k **úlohy** stránky.
 
     ![Stránka potvrzení](./media/storsimple-8000-restore-from-backup-set-u2/restorebu5.png)
 
-8. Po dokončení obnovení ověřte, že obsah svazků jsou nahrazovány svazků ze zálohy.
+8. Po dokončení obnovení ověřte, že obsah svazky jsou nahrazené svazků ze zálohy.
 
 
 ## <a name="if-the-restore-fails"></a>Pokud se nezdaří obnovení
 
-Obdržíte výstrahu, pokud z nějakého důvodu selže operace obnovení. Pokud k tomu dojde, aktualizujte seznamu zálohování a ověřte, zda zálohování je stále platný. Pokud záloha není platná a zda obnovujete z cloudu, pak problémy s připojením k může být příčinou problému.
+Pokud z nějakého důvodu selže operace obnovení, dostanete upozornění. Pokud k tomu dojde, obnovte záložní seznam k ověření, že je záloha stále platná. Pokud je záloha platná a provádíte obnovení z cloudu, pak problémy s připojením může být příčinou problému.
 
-Chcete-li dokončit operaci obnovení, provést offline svazek na hostiteli a opakujte operaci obnovení. Všimněte si, že veškeré úpravy data na svazku, které byly provedeny během procesu obnovení budou ztraceny.
+K dokončení operace obnovení provést offline svazek na hostiteli a opakujte operaci obnovení. Všimněte si, že všechny úpravy dat svazku, které byly provedeny během procesu obnovení budou ztraceny.
 
-## <a name="next-steps"></a>Další kroky
-* Zjistěte, jak [svazky spravovat zařízení StorSimple](storsimple-8000-manage-volumes-u2.md).
-* Zjistěte, jak [použít službu StorSimple Manager zařízení ke správě zařízení StorSimple](storsimple-8000-manager-service-administration.md).
+## <a name="next-steps"></a>Další postup
+* Zjistěte, jak [svazky zařízení StorSimple spravovat](storsimple-8000-manage-volumes-u2.md).
+* Zjistěte, jak [použití služby Správce zařízení StorSimple ke správě zařízení StorSimple](storsimple-8000-manager-service-administration.md).
 

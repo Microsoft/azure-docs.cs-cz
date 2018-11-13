@@ -5,16 +5,16 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/29/2018
+ms.date: 11/11/2018
 ms.author: raynew
-ms.openlocfilehash: f76a55778a5d4c00060192bfaa704724d5fe1045
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.openlocfilehash: e8f41ef44adbd72e8ab16329d5fec94c08df2fe7
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51219476"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51568450"
 ---
-# <a name="manage-the-configuration-server-for-vmware-vms"></a>Správa konfiguračního serveru pro virtuální počítače VMware
+# <a name="manage-the-configuration-server-for-vmware-vm-disaster-recovery"></a>Správa konfiguračního serveru pro zotavení po havárii virtuálního počítače VMware
 
 Nastavíte místní konfigurační server, když použijete [Azure Site Recovery](site-recovery-overview.md) pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů do Azure. Konfigurační server koordinuje komunikaci mezi místní VMware a Azure a spravuje replikaci dat. Tento článek shrnuje běžné úlohy správy serveru konfigurace po nasazení.
 
@@ -124,7 +124,7 @@ Pokud je potřeba, můžete znovu zaregistrujte konfigurační server ve stejné
 2. Otevřete okno příkazového prostředí PowerShell správce a spusťte následující příkaz:
 
     ```
-    reg delete HKLM\Software\Microsoft\Azure Site Recovery\Registration
+    reg delete "HKLM\Software\Microsoft\Azure Site Recovery\Registration"
     net stop dra
     ```
 3. Spusťte portál pro zařízení prohlížeče konfigurační server pomocí zástupce na ploše.
