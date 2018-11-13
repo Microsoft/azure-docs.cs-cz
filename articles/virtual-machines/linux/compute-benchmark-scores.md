@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/09/2018
 ms.author: cynthn;davberg
-ms.openlocfilehash: 6127da5bfd8824537ea3b4de46e26ae47da0ce01
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 1d7f11b7d9db87ebea5cb31b2918dba3fe8a56b2
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39056898"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51262348"
 ---
 # <a name="compute-benchmark-scores-for-linux-vms"></a>Srovnávacích testů COMPUTE pro virtuální počítače s Linuxem
 Následující srovnávacích CoreMark zobrazit výpočetní výkon pro vysoce výkonné produktové řadě virtuálního počítače Azure s Ubuntu. Výpočetní srovnávacích jsou také k dispozici pro [virtuální počítače s Windows](../windows/compute-benchmark-scores.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
@@ -373,5 +373,5 @@ Linux čísla byly vypočítané spuštěním [CoreMark](http://www.eembc.org/co
 
 ## <a name="next-steps"></a>Další postup
 * Kapacity úložiště, podrobných informací o discích a další faktory pro výběr mezi velikostmi virtuálních počítačů najdete v tématu [velikosti virtuálních počítačů](sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-* Spouštění skriptů CoreMark na virtuální počítače s Linuxem, stáhněte si [CoreMark skript pack](http://download.microsoft.com/download/3/0/5/305A3707-4D3A-4599-9670-AAEB423B4663/AzureCoreMarkScriptPack.zip).
+* Spouštění skriptů CoreMark na virtuální počítače s Linuxem, stáhněte si [CoreMark skript pack](https://download.microsoft.com/download/3/0/5/305A3707-4D3A-4599-9670-AAEB423B4663/AzureCoreMarkScriptPack.zip).
 

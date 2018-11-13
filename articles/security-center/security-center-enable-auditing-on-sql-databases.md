@@ -3,7 +3,7 @@ title: Povolení auditování a detekce hrozeb u databází SQL v Azure Security
 description: Tento dokument popisuje, jak implementovat doporučení služby Azure Security Center **povolení auditování a detekce hrozeb v databázích SQL**.
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
 editor: ''
 ms.assetid: 224b6755-2b36-4ecd-9af8-139a198e0df1
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/30/2017
-ms.author: terrylan
-ms.openlocfilehash: bad06cb8d0b0a55f01101582e034ffac3b62414b
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.date: 10/28/2018
+ms.author: rkarlin
+ms.openlocfilehash: 99b78b063803ff1fb1cda6dfb3b240577d8bbbe6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44295883"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51258880"
 ---
 # <a name="enable-auditing-and-threat-detection-on-sql-databases-in-azure-security-center"></a>Povolení auditování a detekce hrozeb u databází SQL v Azure Security Center
 Azure Security Center vám doporučí, že můžete zapnout auditování a detekce hrozeb pro všechny databáze SQL, pokud auditování a detekce hrozeb ještě není povolené. Auditování a hrozeb, zjišťování vám mohou pomoci při zajistit dodržování předpisů, porozumět databázové aktivitě a proniknout do nesrovnalostí a anomálií, které můžou značit problémy obchodního charakteru nebo vzbuzovat podezření na narušení zabezpečení.
@@ -57,7 +57,7 @@ Pokud se o službě Security Center chcete dozvědět víc, pročtěte si tato t
 * [Správa a zpracování výstrah zabezpečení v Azure Security Center](security-center-managing-and-responding-alerts.md) – Zjistěte, jak spravovat výstrahy zabezpečení a reagovat na ně.
 * [Sledování partnerských řešení pomocí Azure Security Center](security-center-partner-solutions.md) – Zjistěte, jak pomocí Azure Security Center sledovat stav vašich partnerských řešení.
 * [Nejčastější dotazy k Azure Security Center](security-center-faq.md) – Přečtěte si nejčastější dotazy k používání této služby.
-* [Blog o zabezpečení Azure](http://blogs.msdn.com/b/azuresecurity/) – získejte nejnovější zprávy zabezpečení Azure a informace.
+* [Blog o zabezpečení Azure](https://blogs.msdn.com/b/azuresecurity/) – získejte nejnovější zprávy zabezpečení Azure a informace.
 
 <!--Image references-->
 [1]: ./media/security-center-enable-auditing-on-sql-databases/enable-auditing-on-sql-databases.png

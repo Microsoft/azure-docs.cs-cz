@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/24/2018
 ms.author: sngun
-ms.openlocfilehash: a805294ecb416d18f3ce13981d26a7d25cd5a204
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 3e724301d235db49ab9332dedc877d7315460ecc
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47432847"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51256166"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Tipy ke zvýšení výkonu pro službu Azure Cosmos DB a .NET
 
@@ -25,7 +25,7 @@ ms.locfileid: "47432847"
 > * [.NET](performance-tips.md)
 > 
 
-Azure Cosmos DB je rychlé a flexibilní distribuovanou databázi, která se škáluje bez problémů s garantovanou latencí a propustností. Není nutné měnit hlavní architektury nebo zapsat složitý kód škálování databáze pomocí služby Azure Cosmos DB. Vertikální navýšení a snížení je stejně jednoduché jako jednoho volání rozhraní API nebo [volání metody SDK](set-throughput.md#set-throughput-sdk). Protože Azure Cosmos DB se přistupuje přes síťová volání jsou však můžete provést k dosažení maximální výkon při použití optimalizací na straně klienta [SQL SDK pro .NET](documentdb-sdk-dotnet.md).
+Azure Cosmos DB je rychlé a flexibilní distribuovanou databázi, která se škáluje bez problémů s garantovanou latencí a propustností. Není nutné měnit hlavní architektury nebo zapsat složitý kód škálování databáze pomocí služby Azure Cosmos DB. Vertikální navýšení a snížení je stejně jednoduché jako jednoho volání rozhraní API. Další informace najdete v tématu [jak zřídit propustnosti kontejneru](how-to-provision-container-throughput.md) nebo [jak zřídit propustnost databáze](how-to-provision-database-throughput.md). Protože Azure Cosmos DB se přistupuje přes síťová volání jsou však můžete provést k dosažení maximální výkon při použití optimalizací na straně klienta [SQL SDK pro .NET](documentdb-sdk-dotnet.md).
 
 Takže pokud máte s dotazem "Jak můžu vylepšit výkon Moje databáze?" Zvažte následující možnosti:
 
@@ -118,7 +118,7 @@ Takže pokud máte s dotazem "Jak můžu vylepšit výkon Moje databáze?" Zvaž
     V některých případech může pomoct snížení frekvence uvolňování paměti. V rozhraní .NET, nastavte [gcServer](https://msdn.microsoft.com/library/ms229357.aspx) na hodnotu true.
 6. **Implementace omezení rychlosti intervalech RetryAfter**
 
-    Během testování výkonnosti, měli byste zvýšit zatížení dokud malý počet žádostí o získání omezené. Když omezený, klientská aplikace má omezení rychlosti na omezení pro interval opakování zadaný server. Respektování omezení rychlosti zajistí, že strávíte co nejkratším čase čekat mezi opakovanými pokusy. Podpora zásad opakování je součástí verze 1.8.0 a nad SQL [.NET](sql-api-sdk-dotnet.md) a [Java](sql-api-sdk-java.md), verze 1.9.0 a novější z [Node.js](sql-api-sdk-node.md) a [Python](sql-api-sdk-python.md), a všechny podporované verze [.NET Core](sql-api-sdk-dotnet-core.md) sady SDK. Další informace najdete v tématu [vyhrazené překročení omezení propustnosti](request-units.md#RequestRateTooLarge) a [RetryAfter](https://msdn.microsoft.com/library/microsoft.azure.documents.documentclientexception.retryafter.aspx).
+    Během testování výkonnosti, měli byste zvýšit zatížení dokud malý počet žádostí o získání omezené. Když omezený, klientská aplikace má omezení rychlosti na omezení pro interval opakování zadaný server. Respektování omezení rychlosti zajistí, že strávíte co nejkratším čase čekat mezi opakovanými pokusy. Podpora zásad opakování je součástí verze 1.8.0 a nad SQL [.NET](sql-api-sdk-dotnet.md) a [Java](sql-api-sdk-java.md), verze 1.9.0 a novější z [Node.js](sql-api-sdk-node.md) a [Python](sql-api-sdk-python.md), a všechny podporované verze [.NET Core](sql-api-sdk-dotnet-core.md) sady SDK. Další informace najdete [RetryAfter](https://msdn.microsoft.com/library/microsoft.azure.documents.documentclientexception.retryafter.aspx).
     
     S verzí 1.19 a novější sady .NET SDK je mechanismus pro protokolování dalších diagnostických informací a řešit problémy s latencí, jak je znázorněno v následujícím příkladu. Můžete protokolovat diagnostické řetězec pro požadavky, které mají vyšší latence čtení. Zachycený diagnostických řetězec vám pomůže pochopit, kolikrát jste zaznamenali 429s pro daný požadavek.
     ```csharp

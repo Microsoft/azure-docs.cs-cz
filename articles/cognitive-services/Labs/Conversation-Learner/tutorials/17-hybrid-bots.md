@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: v-jaswel
-ms.openlocfilehash: a03596ff8383a085314508d4a25d0ba89bcc3094
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 82b0d1494e983d033889d588bcb73d0364fcfc89
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39174569"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51256285"
 ---
 # <a name="how-to-use-conversation-learner-with-other-bot-building-technologies"></a>Jak používat Learner konverzace s další robotem vytváření technologie
 
@@ -23,7 +23,7 @@ Tento kurz se zaměřuje na použití Learner konverzace s další bot vytváře
 
 ## <a name="video"></a>Video
 
-[![Kurz 15 Preview](http://aka.ms/cl-tutorial-15-preview)](http://aka.ms/blis-tutorial-15)
+[![Kurz 15 Preview](https://aka.ms/cl-tutorial-15-preview)](https://aka.ms/blis-tutorial-15)
 
 ## <a name="requirements"></a>Požadavky
 Tento kurz vyžaduje použití emulátoru bot k vytvoření protokolu dialogová okna, ne protokolu dialogové okno webového uživatelského rozhraní.  

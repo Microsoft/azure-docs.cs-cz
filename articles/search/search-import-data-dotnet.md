@@ -9,12 +9,12 @@ ms.service: search
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 01/13/2017
-ms.openlocfilehash: fb8fb153c7393af0e084cb96ee2f5e82fba5b220
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: dc59531b282f6c99dd399ac384a8c6264ee260ea
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31798049"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51258761"
 ---
 # <a name="upload-data-to-azure-search-using-the-net-sdk"></a>Odesílání dat do služby Azure Search pomocí .NET SDK
 > [!div class="op_single_selector"]
@@ -29,7 +29,7 @@ Tento článek vám ukáže, jak používat [.NET SDK služby Azure Search](http
 Před zahájením tohoto názorného průvodce byste již měli mít [vytvořený index Azure Search](search-what-is-an-index.md). Tento článek také předpokládá, že jste již vytvořili objekt `SearchServiceClient`, jak je ukázáno v tématu [Vytvoření indexu Azure Search pomocí .NET SDK](search-create-index-dotnet.md#CreateSearchServiceClient).
 
 > [!NOTE]
-> Ukázkový kód v tomto článku je napsán v jazyce C#. Úplný zdrojový kód najdete [na GitHubu](http://aka.ms/search-dotnet-howto). Můžete si také přečíst článek o sadě [Azure Search .NET SDK](search-howto-dotnet-sdk.md), který vás podrobněji provede ukázkovým kódem.
+> Ukázkový kód v tomto článku je napsán v jazyce C#. Úplný zdrojový kód najdete [na GitHubu](https://aka.ms/search-dotnet-howto). Můžete si také přečíst článek o sadě [Azure Search .NET SDK](search-howto-dotnet-sdk.md), který vás podrobněji provede ukázkovým kódem.
 
 Pro vkládání dokumentů do indexu pomocí .NET SDK budete potřebovat:
 
