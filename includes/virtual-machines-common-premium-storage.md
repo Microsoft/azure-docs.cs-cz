@@ -10,7 +10,7 @@ ms.author: ramankum
 ms.custom: include file
 ms.openlocfilehash: 7fa7e6126c415a0a33b77b78975e8f4a533c4675
 ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/07/2018
 ms.locfileid: "51263283"

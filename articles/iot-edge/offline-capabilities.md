@@ -10,7 +10,7 @@ ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: c4ab33f4d706eb677b2b790ff871c1fb900846ff
 ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/07/2018
 ms.locfileid: "51235628"
