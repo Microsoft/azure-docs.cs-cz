@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: f1242b299c6d2278bd75b576f225987854a2d8a5
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 45ea2a28b4b2fb3d55d7ae949152e6f51b5d3162
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44381219"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51566529"
 ---
 # <a name="technicalprofiles"></a>TechnicalProfiles
 
@@ -272,7 +272,7 @@ A **metadat** prvek obsahuje následující prvky:
 | referenceId | Ano | Identifikátor technického profilu už definovaných v souboru zásad nebo nadřazený soubor zásad. |
 
 ### <a name="enabledforuserjourneys"></a>EnabledForUserJourneys
-**ClaimsProviderSelections** uživatele cesty definuje seznam možnosti výběru zprostředkovatele deklarací identity a jejich pořadí. S **EnabledForUserJourneys** element můžete filtrovat, které zprostředkovatel deklarací identity je dostupná pro uživatele. **EnabledForUserJourneys** element obsahuje jeden z následujících hodnot:
+**ClaimsProviderSelections** uživatele cesty definuje seznam možnosti výběru zprostředkovatele deklarací identity a jejich pořadí. S **EnabledForUserJourneys** element můžete filtrovat, které zprostředkovatel deklarací identity je k dispozici pro uživatele. **EnabledForUserJourneys** element obsahuje jeden z následujících hodnot:
 
 - **Vždy**, provedení technického profilu.
 - **Nikdy**, přeskočte technický profil. 

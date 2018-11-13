@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: f08d5732939e853785e2cce1d1e9ed8eea7f9ad7
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: c21a5c5b23b709ce6683c51cf96f0e6ff89efc78
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45543135"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51568672"
 ---
 # <a name="define-a-validation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Technický profil ověření definování ve vlastních zásadách pro Azure Active Directory B2C
 
@@ -31,7 +31,7 @@ Technický profil ověření, jako je běžný technický profil z libovolného 
 }
 ```
 
-Deklarace identity, které jsou retuned z technického profilu ověření jsou přidána zpět do kontejneru deklarací identity. V další ověření technické profily můžete použít tyto deklarace identit.
+Deklarace identity, které jsou vráceny z technického profilu ověření jsou přidána zpět do kontejneru deklarací identity. V další ověření technické profily můžete použít tyto deklarace identit.
 
 Ověření technické profily jsou provedeny v pořadí uvedeném v **ValidationTechnicalProfiles** elementu. Můžete nakonfigurovat v technickém profilu ověření, jestli spuštění jakékoli následné ověření technické profily by měly pokračovat, pokud technický profil ověření vyvolá chybu nebo je úspěšné.  
 
@@ -53,8 +53,8 @@ S vlastním potvrzením technický profil může definovat profil technické ov�
 | Atribut | Požaduje se | Popis |
 | --------- | -------- | ----------- |
 | referenceId | Ano | Identifikátor technického profilu již definována v zásadách nebo nadřazené zásady. |
-|ContinueOnError –|Ne| Označující, zda ověření žádné další ověření technické profily by měly pokračovat, pokud tento profil technické validaiton vyvolá chybu. Hodnoty překročila povolený: `true` nebo `false` (výchozí, se zastaví zpracování další ověření profilů a vrátí chyba). 
-|ContinueOnSuccess | Ne | Označující, zda ověření jakékoli následné ověření profilů by měly pokračovat, pokud tento profil technické ověření proběhne úspěšně. Hodnoty překročila povolený: `true` nebo `false`. Výchozí hodnota je `true`, což znamená, že zpracování další ověření profily bude pokračovat. |
+|ContinueOnError –|Ne| Označující, zda ověření žádné další ověření technické profily by měly pokračovat, pokud tento profil technické validaiton vyvolá chybu. Možné hodnoty: `true` nebo `false` (výchozí, se zastaví zpracování další ověření profilů a vrátí chyba). 
+|ContinueOnSuccess | Ne | Označující, zda ověření jakékoli následné ověření profilů by měly pokračovat, pokud tento profil technické ověření proběhne úspěšně. Možné hodnoty: `true` nebo `false`. Výchozí hodnota je `true`, což znamená, že zpracování další ověření profily bude pokračovat. |
 
 **ValidationTechnicalProfile** prvek obsahuje následující element:
 
@@ -81,8 +81,8 @@ S vlastním potvrzením technický profil může definovat profil technické ov�
 Následující příklad používá tyto technické profily ověření: 
 
 1. První technický profil ověření ověří přihlašovací údaje uživatele a nebude dále, pokud dojde k chybě, jako je například neplatné uživatelské jméno nebo špatné heslo. 
-2. Další ověření technický profil, neprovede, pokud deklarace identity userType neexistuje, nebo pokud je hodnota userType `Partner`. Technický profil ověření se pokusí čtení profilu uživatele z databáze interní zákazníky a pokračovat v případě, že dojde k chybě, jako je REST API služby není dostupná, nebo všechny vnitřní chyby.
-3. Poslední ověření technický profil, neprovede, pokud userType deklarace identity, nebo pokud je hodnota userType `Customer`. Technický profil ověření se pokusí načíst profil uživatele z interní partnerská databáze a bude pokračovat, pokud dojde k chybě, jako je REST API služby není dostupná, nebo všechny vnitřní chyby.
+2. Další ověření technický profil, neprovede, pokud deklarace identity userType neexistuje, nebo pokud je hodnota userType `Partner`. Technický profil ověření se pokusí čtení profilu uživatele z databáze interní zákazníky a pokračovat v případě, že dojde k chybě, jako je REST API služby není k dispozici, nebo všechny vnitřní chyby.
+3. Poslední ověření technický profil, neprovede, pokud userType deklarace identity, nebo pokud je hodnota userType `Customer`. Technický profil ověření se pokusí načíst profil uživatele z interní partnerská databáze a bude pokračovat, pokud dojde k chybě, jako je REST API služby není k dispozici, nebo všechny vnitřní chyby.
 
 ```XML
 <ValidationTechnicalProfiles>

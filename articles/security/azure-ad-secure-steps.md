@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 06/18/2018
 ms.author: martincoetzer
-ms.openlocfilehash: cb1c525527f7261c10b502a25b3cab3db89dd85f
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: 8ce75efae2d735c5653f9dae72c670b0714351ac
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51515130"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51567946"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Zabezpečení vaší infrastruktury identit v pěti krocích
 
@@ -51,8 +51,6 @@ Všechny sady? Pusťme se do práce v kontrolním seznamu.
 S účtem dojde k ohrožení bezpečnosti s jedním z několika metod, jako je heslo zařízení, opakování porušení zabezpečení nebo phishing pocházejí z většiny porušení zabezpečení organizace. Další informace o těchto útocích v tomto videu (45 minut):
 > [!VIDEO https://www.youtube.com/embed/uy0j1_t5Hd4]
 
-Pokud uživatelé ve vašem systému identit používáte Slabá hesla a posílení jejich není službou Multi-Factor authentication, není otázkou Pokud nebo pokud vám dojde k ohrožení zabezpečení – stačí "jak často."
-
 ### <a name="make-sure-your-organization-use-strong-authentication"></a>Ujistěte se, že vaše organizace používá silné ověřování
 
 S ohledem na frekvenci se hádání hesel phished vám ho někdo ukradne s malwaru nebo znovu použít, je velmi důležité zpět heslo s určitou formu silné přihlašovací údaje – Další informace o [ověřování Azure Multi-Factor Authentication](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication).
@@ -69,7 +67,7 @@ Microsoft doporučuje přijetí tyto zásady moderní heslo na základě [pokyn�
 2. Zákaz pravidel vypršení platnosti, které se dají snadno uhádnout hesla, jako uživatele přimět, **Summer2018!**
 3. Zakázat znak složení požadavky a zabránit uživatelům ve výběru běžně napadené hesla, protože mohou způsobit uživatelům si vybrat předvídatelné znak nahrazení hesla.
 
-Můžete použít [prostředí PowerShell, jak zabránit vypršení platnosti hesla](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-policy) pro uživatele, pokud vytvoříte identit ve službě Azure AD přímo. Hybridní organizace by měly implementovat tyto zásady pomocí [nastavení zásad skupiny domény] (https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/hh994572(v%3dws.10) nebo [prostředí Windows PowerShell](https://docs.microsoft.com/powershell/module/addsadministration/set-addefaultdomainpasswordpolicy).
+Můžete použít [prostředí PowerShell, jak zabránit vypršení platnosti hesla](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-policy) pro uživatele, pokud vytvoříte identit ve službě Azure AD přímo. Hybridní organizace by měly implementovat tyto zásady, které používají [nastavení zásad skupiny domény](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/hh994572(v%3dws.10)) nebo [prostředí Windows PowerShell](https://docs.microsoft.com/powershell/module/addsadministration/set-addefaultdomainpasswordpolicy).
 
 ### <a name="protect-against-leaked-credentials-and-add-resilience-against-outages"></a>Ochrana s uniklými přihlašovacími údaji a přidejte odolnost proti výpadkům
 

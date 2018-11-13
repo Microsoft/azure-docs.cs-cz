@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 07/06/2018
 ms.topic: conceptual
 ms.author: sutalasi
-ms.openlocfilehash: 631225e6e0a7bb3bc42741e2761e3746c001c217
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 50dcd2a6a2c8dc703b4c8c0ee8fb6270e0840581
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50211634"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51566461"
 ---
 # <a name="set-up-disaster-recovery-of-vmware-vms-to-azure-with-powershell"></a>Nastavení zotavení po havárii virtuálních počítačů VMware do Azure pomocí Powershellu
 
@@ -23,7 +23,8 @@ Získáte informace o těchto tématech:
 > [!div class="checklist"]
 > - Vytvořte trezor služby Recovery Services a nastavte kontext trezoru.
 > - Ověření registrace serveru v trezoru.
-> - Nastavení replikace, včetně zásad replikace. Přidání serveru vCenter a zjištění virtuálních počítačů. > – Přidání serveru vCenter a zjišťování 
+> - Nastavení replikace, včetně zásad replikace. Přidání serveru vCenter a zjištění virtuálních počítačů. 
+> - Přidání serveru vCenter a zjišťování 
 > - Vytvoření účtů úložiště pro uložení dat replikace a replikovat virtuální počítače.
 > - Převzetí služeb při selhání Konfigurace nastavení převzetí služeb při selhání, proveďte e nastavení pro replikaci virtuálních počítačů.
 
@@ -93,7 +94,7 @@ Select-AzureRmSubscription -SubscriptionName "ASR Test Subscription"
    ```
 
 4. Pomocí registračního klíče stažený trezor a postupujte podle pokynů v článcích uvedených níže pro dokončení instalace a registrace konfiguračního serveru.
-   - [Volba cílů ochrany](vmware-azure-set-up-source.md#choose-your-protection-goals)
+   - [Volba cílů ochrany](vmware-azure-set-up-source.md#choose-protection-goals)
    - [Nastavení zdrojového prostředí](vmware-azure-set-up-source.md#set-up-the-configuration-server) 
 
 ### <a name="set-the-vault-context"></a>Nastavte kontext trezoru

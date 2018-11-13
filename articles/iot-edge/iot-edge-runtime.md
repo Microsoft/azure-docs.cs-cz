@@ -2,18 +2,18 @@
 title: Pochopení runtime Azure IoT Edge | Dokumentace Microsoftu
 description: Další informace o modulu runtime Azure IoT Edge a jak umožňuje hraničních zařízení
 author: kgremban
-manager: timlt
+manager: philmea
 ms.author: kgremban
 ms.date: 08/13/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 97a2180aaf236d3541cff30d2151f26ce70b14af
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 51f00b46283adf0f64bf37d5813640aa4e36f667
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49393470"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51567243"
 ---
 # <a name="understand-the-azure-iot-edge-runtime-and-its-architecture"></a>Pochopení runtime Azure IoT Edge a jeho architektura
 
@@ -31,40 +31,40 @@ Modul runtime IoT Edge zajišťuje následující funkce na zařízeních IoT Ed
 
 ![Modul runtime IoT Edge. komunikuje přehledy a stav modulů pro službu IoT Hub](./media/iot-edge-runtime/Pipeline.png)
 
-Odpovědnosti modul runtime IoT Edge spadají do dvou kategorií: modul komunikaci a správu. Tyto dvě role provádí dvě komponenty, které tvoří modul runtime IoT Edge. Centrum IoT Edge je zodpovědná za komunikaci, zatímco agenta IoT Edge spravuje nasazení a monitorování modulů. 
+Odpovědnosti modul runtime IoT Edge spadají do dvou kategorií: modul komunikaci a správu. Tyto dvě role provádí dvě komponenty, které tvoří modul runtime IoT Edge. Centrum IoT Edge je zodpovědná za komunikaci, zatímco agenta IoT Edge spravuje nasazení a monitorování modulů. 
 
 Centrum Edge a Edge agent jsou moduly, stejně jako ostatní moduly běžící na zařízení IoT Edge. 
 
 ## <a name="iot-edge-hub"></a>Centrum IoT Edge
 
-Centrum Edge je jedním ze dvou modulů, které tvoří modul runtime Azure IoT Edge. Funguje jako místní proxy server pro službu IoT Hub zveřejněním stejné koncové body protokolu jako služby IoT Hub. Taková konzistence znamená, že klienti (ať už zařízení nebo moduly) můžete připojit k modulu runtime IoT Edge, stejně jako do služby IoT Hub. 
+Centrum Edge je jedním ze dvou modulů, které tvoří modul runtime Azure IoT Edge. Funguje jako místní proxy server pro službu IoT Hub zveřejněním stejné koncové body protokolu jako služby IoT Hub. Taková konzistence znamená, že klienti (ať už zařízení nebo moduly) můžete připojit k modulu runtime IoT Edge, stejně jako do služby IoT Hub. 
 
 >[!NOTE]
 >Centrum Edge podporuje klienty, kteří se připojují pomocí protokolu MQTT nebo AMQP. Klienti, kteří používají protokol HTTP nepodporuje. 
 
-Centrum Edge není s plnou verzí služby IoT Hub spuštěná místně. Existuje několik věcí, které Centrum Edge tiše deleguje se do služby IoT Hub. Například Centrum Edge předává požadavky na ověření do služby IoT Hub, když se zařízení poprvé pokusí připojit. Po prvním připojení jsou místně uložené informace o zabezpečení Edge hub. Další připojení z těchto zařízení jsou povolené a nemusí k ověření do cloudu. 
+Centrum Edge není s plnou verzí služby IoT Hub spuštěná místně. Existuje několik věcí, které Centrum Edge tiše deleguje se do služby IoT Hub. Například Centrum Edge předává požadavky na ověření do služby IoT Hub, když se zařízení poprvé pokusí připojit. Po prvním připojení jsou místně uložené informace o zabezpečení Edge hub. Další připojení z těchto zařízení jsou povolené a nemusí k ověření do cloudu. 
 
 >[!NOTE]
 >Modul runtime musí být připojen pokaždé, když se pokusí o ověření zařízení.
 
-Používá ke snížení šířky pásma vašeho řešení IoT Edge a Centrum Edge optimalizuje tak počet skutečných připojení probíhají do cloudu. Centrum Edge přebírá logickou připojení od klientů, jako jsou moduly nebo zařízení typu list a kombinuje je pro jedno fyzické připojení ke cloudu. Podrobnosti tohoto procesu je transparentní pro zbytek tohoto řešení. Klienti myslíte, že budou mít svoje vlastní připojení ke cloudu i v případě, že všechny se odešlou přes stejné připojení. 
+Používá ke snížení šířky pásma vašeho řešení IoT Edge a Centrum Edge optimalizuje tak počet skutečných připojení probíhají do cloudu. Centrum Edge přebírá logickou připojení od klientů, jako jsou moduly nebo zařízení typu list a kombinuje je pro jedno fyzické připojení ke cloudu. Podrobnosti tohoto procesu je transparentní pro zbytek tohoto řešení. Klienti myslíte, že budou mít svoje vlastní připojení ke cloudu i v případě, že všechny se odešlou přes stejné připojení. 
 
 ![Centrum Edge funguje jako brána mezi několik fyzických zařízení a cloudu](./media/iot-edge-runtime/Gateway.png)
 
-Centrum Edge můžete určit, jestli je připojený ke službě IoT Hub. Pokud dojde ke ztrátě připojení, Centrum Edge uloží zprávy nebo aktualizace dvojčete místně. Po připojení se obnoví, synchronizuje všechna data. Umístění použité pro tato dočasná mezipaměť se určuje podle vlastnosti tohoto dvojčete modulu Centrum Edge. Velikost mezipaměti není omezené a se zvýší, dokud zařízení má kapacitu úložiště. 
+Centrum Edge můžete určit, jestli je připojený ke službě IoT Hub. Pokud dojde ke ztrátě připojení, Centrum Edge uloží zprávy nebo aktualizace dvojčete místně. Po připojení se obnoví, synchronizuje všechna data. Umístění použité pro tato dočasná mezipaměť se určuje podle vlastnosti tohoto dvojčete modulu Centrum Edge. Velikost mezipaměti není omezené a se zvýší, dokud zařízení má kapacitu úložiště. 
 
 ### <a name="module-communication"></a>Komunikační modul
 
-Centrum Edge usnadňuje komunikaci modulu do modulu. Pomocí Centrum Edge jako zprostředkovatel zpráv uchovává moduly nezávisle na sobě navzájem. Moduly stačí zadat vstupy, na kterých přijetí zprávy a výstupy, ke kterým se zápis zpráv. Pro vývojáře řešení pak spojí tyto vstupy a výstupy dohromady tak, aby moduly zpracovávat data v pořadí, které jsou specifické pro příslušné řešení. 
+Centrum Edge usnadňuje komunikaci modulu do modulu. Pomocí Centrum Edge jako zprostředkovatel zpráv uchovává moduly nezávisle na sobě navzájem. Moduly stačí zadat vstupy, na kterých přijetí zprávy a výstupy, ke kterým se zápis zpráv. Pro vývojáře řešení pak spojí tyto vstupy a výstupy dohromady tak, aby moduly zpracovávat data v pořadí, které jsou specifické pro příslušné řešení. 
 
 ![Centrum Edge usnadňuje komunikaci modulu modulu](./media/iot-edge-runtime/ModuleEndpoints.png)
 
 K odesílání dat do Centrum Edge, volá modul SendEventAsync metodu. První argument určuje, na které výstupu pro odeslání zprávy. Následujícím pseudokódu odešle zprávu na output1:
 
    ```csharp
-   ModuleClient client = new ModuleClient.CreateFromEnvironmentAsync(transportSettings); 
-   await client.OpenAsync(); 
-   await client.SendEventAsync(“output1”, message); 
+   ModuleClient client = new ModuleClient.CreateFromEnvironmentAsync(transportSettings); 
+   await client.OpenAsync(); 
+   await client.SendEventAsync(“output1”, message); 
    ```
 
 Při příjmu zprávy, zaregistrujte zpětné volání, která zpracovává zprávy přicházející na specifický vstup. Následujícím pseudokódu zaregistruje messageProcessor funkce má být použit pro všechny zprávy přijaté ve vstup1 zpracování:
@@ -75,21 +75,21 @@ Při příjmu zprávy, zaregistrujte zpětné volání, která zpracovává zpr�
 
 Řešení pro vývojáře je zodpovědná za určení pravidel, které určují, jak Centrum Edge předává zpráv mezi moduly. Pravidla směrování jsou definovány v cloudu a přesunout dolů ke Centrum Edge v jeho dvojče zařízení. Podle stejné syntaxe pro službu IoT Hub trasy se používá k definování tras mezi moduly ve službě Azure IoT Edge. 
 
-<!--- For more info on how to declare routes between modules, see []. --->   
+<!--- For more info on how to declare routes between modules, see []. --->   
 
 ![Trasy mezi moduly](./media/iot-edge-runtime/ModuleEndpointsWithRoutes.png)
 
 ## <a name="iot-edge-agent"></a>Agenta IoT Edge
 
-Agenta IoT Edge je další modul, který vytvoří modul runtime Azure IoT Edge. Zodpovídá za vytvoření instance moduly, zajištění, že nadále spouštět a hlásí stav modulů zpět do služby IoT Hub. Stejně jako ostatní moduly používá se agent Edge jeho dvojče zařízení pro ukládání těchto dat konfigurace. 
+Agenta IoT Edge je další modul, který vytvoří modul runtime Azure IoT Edge. Zodpovídá za vytvoření instance moduly, zajištění, že nadále spouštět a hlásí stav modulů zpět do služby IoT Hub. Stejně jako ostatní moduly používá se agent Edge jeho dvojče zařízení pro ukládání těchto dat konfigurace. 
 
-[Démon zabezpečení IoT Edge](iot-edge-security-manager.md) začne Edge agent při spuštění zařízení. Agent načte její dvojče zařízení ze služby IoT Hub a zkontroluje, zda obsahuje manifest nasazení. Manifest nasazení je soubor JSON, který deklaruje moduly, které je potřeba spustit. 
+[Démon zabezpečení IoT Edge](iot-edge-security-manager.md) začne Edge agent při spuštění zařízení. Agent načte její dvojče zařízení ze služby IoT Hub a zkontroluje, zda obsahuje manifest nasazení. Manifest nasazení je soubor JSON, který deklaruje moduly, které je potřeba spustit. 
 
-Každá položka v manifestu nasazení obsahuje konkrétní informace o modulu a používá se agent Edge pro řízení životního cyklu modulu. Zde jsou některé další zajímavé vlastnosti: 
+Každá položka v manifestu nasazení obsahuje konkrétní informace o modulu a používá se agent Edge pro řízení životního cyklu modulu. Zde jsou některé další zajímavé vlastnosti: 
 
 * **Settings.Image** – image kontejneru, který se agent Edge se používá ke spuštění v modulu. Edge agent musí být nakonfigurované pomocí přihlašovacích údajů pro službu container registry, pokud na obrázku je chráněn heslem. Přihlašovací údaje pro registr kontejneru dá vzdáleně pomocí manifest nasazení, nebo na samotném zařízení Edge aktualizací `config.yaml` souboru ve složce program IoT Edge.
-* **settings.createOptions** – řetězec, který je předán přímo do démona Dockeru, při spouštění modulu kontejneru. Přidání možnosti Docker v této vlastnosti umožňuje rozšířené možnosti, jako je port předávání nebo připojení svazků do kontejneru modulu.  
-* **Stav** – stavu, ve kterém se agent Edge umístí modul. Tato hodnota je obvykle nastavená *systémem* jako většina lidí chcete agenta Edge k okamžitému spuštění všech modulů na zařízení. Můžete však zadat počáteční stav modulu můžete zastavit a počkat na budoucí dobu říct se agent Edge spustit modul. Edge agent hlásí stav každého modulu, zpět do cloudu v ohlášené vlastnosti. Rozdíl mezi požadované vlastnosti a ohlášených vlastností je indikátorem identifikovala zařízení. Podporované stavy jsou:
+* **settings.createOptions** – řetězec, který je předán přímo do démona Dockeru, při spouštění modulu kontejneru. Přidání možnosti Docker v této vlastnosti umožňuje rozšířené možnosti, jako je port předávání nebo připojení svazků do kontejneru modulu.  
+* **Stav** – stavu, ve kterém se agent Edge umístí modul. Tato hodnota je obvykle nastavená *systémem* jako většina lidí chcete agenta Edge k okamžitému spuštění všech modulů na zařízení. Můžete však zadat počáteční stav modulu můžete zastavit a počkat na budoucí dobu říct se agent Edge spustit modul. Edge agent hlásí stav každého modulu, zpět do cloudu v ohlášené vlastnosti. Rozdíl mezi požadované vlastnosti a ohlášených vlastností je indikátorem identifikovala zařízení. Podporované stavy jsou:
    * Stahuje se
    * Spuštěno
    * Není v pořádku

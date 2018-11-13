@@ -3,18 +3,18 @@ title: Nasazení, monitorování modulů Azure IoT Edge | Dokumentace Microsoftu
 description: Správa modulů, které běží na hraničních zařízeních
 keywords: ''
 author: kgremban
-manager: timlt
+manager: philmea
 ms.author: kgremban
 ms.date: 07/25/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: c6700dc4bc0cc458e34e129b2468daad88ecc8be
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 6ebd2a4e24a5f0bd9a9adad97bf26ae61219c8e0
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49393453"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51566240"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-portal"></a>Nasazení a monitorování modulů IoT Edge ve velkém měřítku pomocí webu Azure portal
 
@@ -106,7 +106,7 @@ Můžete cílit na konkrétní zařízení, které by měl obdrží toto nasazen
 Protože více nasazení mohou být zaměřeny na stejném zařízení, je třeba přiřadit každého nasazení priorita. Pokud někdy dojde ke konfliktu, wins nasazení s nejvyšší prioritou (vyšší hodnoty znamenat vyšší prioritou). Pokud mají dvě nasazení stejnou prioritu číslo, ten, který byl vytvořen většina nedávno wins. 
 
 1. Zadejte kladné celé číslo pro nasazení **Priority**. V případě, že dvě nebo víc nasazení cílí na stejném zařízení, budou platit nasazení s nejvyšší číselnou hodnotou priority.
-1. Zadejte **cílová podmínka** k určení zařízení, která budou cílem s tímto nasazením. Podmínka je založen na značky dvojčat zařízení nebo ohlášené vlastnosti dvojčete zařízení a by měl odpovídat formátu výrazu. Například `tags.environment='test'` nebo `properties.reported.devicemodel='4000x'`. 
+1. Zadejte **cílová podmínka** k určení zařízení, která budou cílem s tímto nasazením. Podmínka je založen na značky dvojčat zařízení nebo ohlášené vlastnosti dvojčete zařízení a by měl odpovídat formátu výrazu. Například `tags.environment='test'` nebo `properties.reported.devicemodel='4000x'`. 
 1. Vyberte **Další** přejít k poslednímu kroku.
 
 ### <a name="step-5-review-template"></a>Krok 5: Zkontrolujte šablony
@@ -123,14 +123,14 @@ Chcete-li zobrazit podrobnosti o nasazení a monitorování zařízení, na kter
 
    ![Zobrazení nasazení IoT Edge](./media/how-to-deploy-monitor/iot-edge-deployments.png)
 
-1. Zkontrolujte seznam nasazení. U každého nasazení se zobrazí následující podrobnosti:
+1. Zkontrolujte seznam nasazení. U každého nasazení se zobrazí následující podrobnosti:
    * **ID** – název nasazení.
    * **Cílová podmínka** – značka sloužících k definování cílových zařízení.
    * **Priorita** -priority číslo přidružené k nasazení.
    * **Systémové metriky** - **cílové** určuje počet dvojčat zařízení ve službě IoT Hub, která splňují cílovou podmínku a **použito** určuje počet zařízení, která mají použili obsahu nasazení do jejich dvojčaty modulů ve službě IoT Hub. 
    * **Metriky zařízení** – počet hraničních zařízení v nasazení generování sestav úspěchu nebo chyby z modulu runtime IoT Edge klienta.
    * **Čas vytvoření** – časové razítko od vytvoření nasazení. Tímto časovým razítkem se používá pro přerušení vazby, pokud mají dvě nasazení stejnou prioritu. 
-2. Vyberte nasazení, které chcete monitorovat.  
+2. Vyberte nasazení, které chcete monitorovat.  
 3. Zkontrolujte podrobnosti o nasazení. Chcete-li zkontrolovat podrobnosti nasazení můžete použít karty.
 
 ## <a name="modify-a-deployment"></a>Upravit nasazení
@@ -151,10 +151,10 @@ Pokud chcete upravit nasazení, postupujte následovně:
    ![Zobrazení nasazení IoT Edge](./media/how-to-deploy-monitor/iot-edge-deployments.png)
 
 1. Vyberte nasazení, které chcete upravit. 
-1. Proveďte aktualizace na následující pole: 
-   * Cílová podmínka 
-   * Popisky 
-   * Priorita 
+1. Proveďte aktualizace na následující pole: 
+   * Cílová podmínka 
+   * Popisky 
+   * Priorita 
 1. Vyberte **Uložit**.
 1. Postupujte podle kroků v [monitorování nasazení](#monitor-a-deployment) sledovat změny zavádět. 
 
@@ -170,7 +170,7 @@ Při odstranění nasazení nějaká zařízení provést další nejvyšší pr
 
 1. Pomocí zaškrtávacího políčka vyberte nasazení, které chcete odstranit. 
 1. Vyberte **Odstranit**.
-1. Řádku bude informovat, že tato akce bude toto nasazení odstranit a vrátit do předchozího stavu pro všechna zařízení.  To znamená, že se použít nasazení s nižší prioritou.  Pokud se nastaví cílení není žádné další nasazení, odebere se žádné moduly. Pokud chcete odebrat všechny moduly ze zařízení, vytvořit nasazení s nulovou moduly a nasadíte ho do stejného zařízení. Vyberte **Ano** pokračujte. 
+1. Řádku bude informovat, že tato akce bude toto nasazení odstranit a vrátit do předchozího stavu pro všechna zařízení.  To znamená, že se použít nasazení s nižší prioritou.  Pokud se nastaví cílení není žádné další nasazení, odebere se žádné moduly. Pokud chcete odebrat všechny moduly ze zařízení, vytvořit nasazení s nulovou moduly a nasadíte ho do stejného zařízení. Vyberte **Ano** pokračujte. 
 
 ## <a name="next-steps"></a>Další postup
 

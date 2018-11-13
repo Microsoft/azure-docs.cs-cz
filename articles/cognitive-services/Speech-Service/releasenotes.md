@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: conceptual
-ms.date: 11/06/2018
+ms.date: 11/12/2018
 ms.author: wolfma
-ms.openlocfilehash: e2c676932541866df081f6db54fa0b1ec4da7088
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.openlocfilehash: 706f51ae1e2d81e2003f2fcd637def95c7a42f8e
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51218589"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51567532"
 ---
 # <a name="release-notes"></a>Poznámky k verzi
 
@@ -48,7 +48,7 @@ ms.locfileid: "51218589"
 
 **Ukázky**
 
-* Přidání ukázkou jazyka C++ pro pull a push datový proud stream využití v našich [ukázkové úložiště](https://aka.ms/csspeech/samples).
+* Přidání C++ a C# samplea pull a push využití datový proud v [ukázkové úložiště](https://aka.ms/csspeech/samples).
 
 ## <a name="speech-service-sdk-101"></a>Speech Service SDK 1.0.1
 

@@ -14,12 +14,12 @@ ms.date: 04/10/2018
 ms.reviewer: mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
-ms.openlocfilehash: 35737b91d8ef0b58223f51530f56408df1c7eb8e
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: d8bb7a975bd5bab8698d20e5d21514b79945eac6
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50138788"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51564914"
 ---
 # <a name="application-insights-cohorts"></a>Application Insights kohorty
 
@@ -49,9 +49,9 @@ Váš tým definuje Angažované uživatele jako každý, kdo používá vaše a
     Existují tři parametry pro tato kohorta:
     * **Aktivity**, kde vyberete, které události nebo zobrazení stránek se počítají jako "použití."
     * **Období**, definice za měsíc.
-    * **UsedAtleastCustom**, počet pokusů o uživatelé muset použít něco v období počítat jako zapojení.
+    * **UsedAtLeastCustom**, počet pokusů o uživatelé muset použít něco v období počítat jako zapojení.
 
-4. Změna **UsedAtleastCustom** k **víc než 5 dnů**a nechat **období** na výchozí hodnotu 28 dnů.
+4. Změna **UsedAtLeastCustom** k **víc než 5 dnů**a nechat **období** na výchozí hodnotu 28 dnů.
 
     ![Znamenají angažovaní uživatelé](.\media\app-insights-usage-cohorts\003.png)
 
