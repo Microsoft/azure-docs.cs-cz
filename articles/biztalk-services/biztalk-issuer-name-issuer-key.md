@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2016
 ms.author: mandia
-ms.openlocfilehash: 78796b5dc62cb573f149c24d90205d26fb139cf7
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: eb5b4b3741b064a934833b3094c69db85e9ccabb
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39628643"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238705"
 ---
 # <a name="biztalk-services-issuer-name-and-issuer-key"></a>BizTalk Services: Název a klíč vystavitele
 
@@ -77,24 +77,24 @@ Více o [New-AzureSBNamespace](https://docs.microsoft.com/powershell/module/serv
 Název vystavitele služby Service Bus a klíč vystavitele používají služby adaptér BizTalk. V projektu BizTalk Services v sadě Visual Studio pomocí služby adaptér BizTalk pro připojení místnímu systému obchodní (LOB). Pro připojení, vytvoření LOB Relay a zadejte podrobnosti o systému LOB. Při tomto postupu můžete také zadat název vystavitele služby Service Bus a klíč vystavitele.
 
 ### <a name="to-retrieve-the-service-bus-issuer-name-and-issuer-key"></a>Chcete-li načíst název vystavitele služby Service Bus a klíč vystavitele
-1. Přihlaste se k [portálu Azure](http://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](http://portal.azure.com).
 2. Vyhledejte **služby Service Bus**a vyberte váš obor názvů. 
 3. Otevřít **zásady sdíleného přístupu** vlastnosti, vyberte zásady a zobrazit **připojovací řetězec** zadání jména a hodnoty klíče.  
 
 ## <a name="next"></a>Další
 Další témata týkající se služby Azure BizTalk Services:
 
-* [Instalace sady SDK pro Azure BizTalk Services](http://go.microsoft.com/fwlink/p/?LinkID=241589)<br/>
-* [Kurzy: Azure BizTalk Services](http://go.microsoft.com/fwlink/p/?LinkID=236944)<br/>
-* [Jak začít používat sadu SDK Azure BizTalk Services](http://go.microsoft.com/fwlink/p/?LinkID=302335)<br/>
-* [Azure BizTalk Services](http://go.microsoft.com/fwlink/p/?LinkID=303664)<br/>
+* [Instalace sady SDK pro Azure BizTalk Services](https://go.microsoft.com/fwlink/p/?LinkID=241589)<br/>
+* [Kurzy: Azure BizTalk Services](https://go.microsoft.com/fwlink/p/?LinkID=236944)<br/>
+* [Jak začít používat sadu SDK Azure BizTalk Services](https://go.microsoft.com/fwlink/p/?LinkID=302335)<br/>
+* [Azure BizTalk Services](https://go.microsoft.com/fwlink/p/?LinkID=303664)<br/>
 
 ## <a name="see-also"></a>Viz také
-* [Postupy: používání služby ACS Management ke konfiguraci identity služby](http://go.microsoft.com/fwlink/p/?LinkID=303942)<br/>
-* [BizTalk Services: Developer, Basic, Standard a Premium tabulka edic](http://go.microsoft.com/fwlink/p/?LinkID=302279)<br/>
-* [BizTalk Services: zřízení](http://go.microsoft.com/fwlink/p/?LinkID=302280)<br/>
-* [BizTalk Services: Tabulka stavů zřízení](http://go.microsoft.com/fwlink/p/?LinkID=329870)<br/>
-* [BizTalk Services: Karty Řídicí panel, Sledování a Škálování](http://go.microsoft.com/fwlink/p/?LinkID=302281)<br/>
-* [BizTalk Services: Zálohování a obnovení](http://go.microsoft.com/fwlink/p/?LinkID=329873)<br/>
-* [BizTalk Services: Omezování](http://go.microsoft.com/fwlink/p/?LinkID=302282)<br/>
+* [Postupy: používání služby ACS Management ke konfiguraci identity služby](https://go.microsoft.com/fwlink/p/?LinkID=303942)<br/>
+* [BizTalk Services: Developer, Basic, Standard a Premium tabulka edic](https://go.microsoft.com/fwlink/p/?LinkID=302279)<br/>
+* [BizTalk Services: zřízení](https://go.microsoft.com/fwlink/p/?LinkID=302280)<br/>
+* [BizTalk Services: Tabulka stavů zřízení](https://go.microsoft.com/fwlink/p/?LinkID=329870)<br/>
+* [BizTalk Services: Karty Řídicí panel, Sledování a Škálování](https://go.microsoft.com/fwlink/p/?LinkID=302281)<br/>
+* [BizTalk Services: Zálohování a obnovení](https://go.microsoft.com/fwlink/p/?LinkID=329873)<br/>
+* [BizTalk Services: Omezování](https://go.microsoft.com/fwlink/p/?LinkID=302282)<br/>
 

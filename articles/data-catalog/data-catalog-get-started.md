@@ -8,12 +8,12 @@ ms.assetid: 03332872-8d84-44a0-8a78-04fd30e14b18
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: 4386f87b6986e6ab1742a8d3c14a100fea112182
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: dd3cb108844cd009d74de42630511073021d94b1
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47406307"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238484"
 ---
 # <a name="get-started-with-azure-data-catalog"></a>Začínáme s Azure Data Catalog
 Azure Data Catalog je plně spravovaná cloudová služba, která slouží jako systém pro registraci a zjišťování podnikových datových assetů. Podrobný přehled naleznete v části [Co je Azure Data Catalog?](data-catalog-what-is-data-catalog.md).
@@ -96,7 +96,7 @@ Databáze Adventure Works podporuje scénáře standardního online zpracování
 Postup instalace databáze Adventure Works:
 
 1. Stáhněte soubor [Adventure Works 2014 Full Database Backup.zip](https://msftdbprodsamples.codeplex.com/downloads/get/880661) na webu CodePlex.
-2. Pokud chcete obnovit databázi na svém počítači, řiďte se pokyny v tématu [Obnovení zálohy databáze pomocí služby SQL Server Management Studio](http://msdn.microsoft.com/library/ms177429.aspx) nebo postupujte takto:
+2. Pokud chcete obnovit databázi na svém počítači, řiďte se pokyny v tématu [Obnovení zálohy databáze pomocí služby SQL Server Management Studio](https://msdn.microsoft.com/library/ms177429.aspx) nebo postupujte takto:
    1. Otevřete SQL Server Management Studio a připojte se k databázovému stroji SQL Server.
    2. Klikněte pravým tlačítkem myši na **Databáze** a vyberte možnost **Obnovit databázi**.
    3. V části **Obnovit databázi** vyberte pro **Zdroj** možnost **Zařízení** a klikněte na **Procházet**.
