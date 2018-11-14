@@ -8,16 +8,16 @@ ms.service: storage
 ms.topic: tutorial
 ms.date: 6/27/2018
 ms.author: dineshm
-ms.openlocfilehash: fd9dfaa2042cae0923c919f4e76d7b59a170918e
-ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
+ms.openlocfilehash: c46a9f827bdeeaf7a2b9897b262484f64f83b9a8
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46466026"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51283457"
 ---
 # <a name="tutorial-access-azure-data-lake-storage-gen2-preview-data-with-azure-databricks-using-spark"></a>Kurz: Přístup k datům v Azure Data Lake Storage Gen2 Preview v Azure Databricks pomocí Sparku
 
-V tomto kurzu se naučíte spouštět dotazy Sparku v clusteru Azure Databricks, abyste se mohli dotazovat na data v účtu, který podporuje Azure Data Lake Storage Gen2 Preview.
+V tomto kurzu se naučíte spouštět dotazy Sparku v clusteru Azure Databricks, abyste se mohli dotazovat na data v účtu úložiště Azure s povolenou službou Azure Data Lake Storage Gen2 Preview.
 
 > [!div class="checklist"]
 > * Vytvoření clusteru Databricks
@@ -31,9 +31,9 @@ V tomto kurzu si ukážeme, jak využívat a dotazovat se na data o odletech aer
 > [!NOTE]
 > Pokud chcete vybrat všechna datová pole, klikněte na zaškrtávací políčko **Prezipped file** (Komprimovaný soubor). Budete stahovat mnoho gigabajtů, ale k analýze potřebujete velký objem dat.
 
-## <a name="create-an-azure-data-lake-storage-gen2-account"></a>Vytvoření účtu Azure Data Lake Storage Gen2
+## <a name="create-an-azure-storage-account-with-analytic-capabilities"></a>Vytvoření účtu úložiště Azure s možnostmi analýzy
 
-Napřed si vytvořte nový [účet Azure Data Lake Storage Gen2](quickstart-create-account.md) a dejte mu jedinečný název. Pak přejděte k účtu úložiště, abyste mohli načíst konfigurační nastavení.
+Začněte vytvořením nového [účtu úložiště s možnostmi analýzy](quickstart-create-account.md) a jedinečným názvem. Pak přejděte k účtu úložiště, abyste mohli načíst konfigurační nastavení.
 
 1. V části **Nastavení** klikněte na **Přístupové klíče**.
 2. Klikněte na tlačítko **Kopírovat** vedle **Key1** a zkopírujte hodnotu klíče.
@@ -137,11 +137,12 @@ dbutils.fs.help()
 dbutils.fs.put(source + "/temp/1.txt", "Hello, World!", True)
 dbutils.fs.ls(source + "/temp/parquet/flights")
 ```
-Těmito ukázkami kódu jste prozkoumali hierarchickou povahu systému souborů HDFS (Hadoop Distributed File System) v účtu, který podporuje Azure Data Lake Storage Gen2.
+
+Na těchto vzorových kódech jste prozkoumali hierarchickou povahu systému souborů HDFS s využitím dat uložených v účtu úložiště s povolenou službou Data Lake Storage Gen2.
 
 ## <a name="query-the-data"></a>Vytváření dotazů na data
 
-Teď můžete začít vytvářet dotazy na data, která jste nahráli do Azure Data Lake Storage. Do buňky **Cmd 1** zadejte všechny následující bloky kódu a stiskněte **Cmd+Enter**, abyste spustili skript Pythonu.
+Teď můžete začít vytvářet dotazy na data, která jste nahráli do svého účtu úložiště. Do buňky **Cmd 1** zadejte všechny následující bloky kódu a stiskněte **Cmd+Enter**, abyste spustili skript Pythonu.
 
 ### <a name="simple-queries"></a>Ukázkové dotazy
 

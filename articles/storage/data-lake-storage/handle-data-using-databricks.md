@@ -9,16 +9,16 @@ ms.reviewer: jasonwhowell
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/27/2018
-ms.openlocfilehash: 96114270c246e23db0423dec7871e4c24fe1be10
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 5c1684f7367aec2d283cd6ad310657def49dd3cb
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024339"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282556"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-azure-databricks"></a>Kurz: Extrakce, transformace a načtení dat pomocí Azure Databricks
 
-V tomto kurzu provedete operace ETL (extrakce, transformace a načítání), kterými data přesunete z Azure Data Lake Storage Gen2 Preview do Azure SQL Data Warehouse pomocí Azure Databricks.
+V tomto kurzu provedete operaci ETL (extrakce, transformace a načítání), kterou přesunete data z účtu služby Azure Storage s povolenou službou Azure Data Lake Storage Gen2 do služby Azure SQL Data Warehouse pomocí Azure Databricks.
 
 Následující obrázek ukazuje běh aplikace:
 
@@ -52,7 +52,7 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-an-azure-databricks-workspace"></a>Vytvoření pracovního prostoru Azure Databricks
 
-V této části vytvoříte pomocí portálu Azure pracovní prostor služby Azure Databricks. 
+V této části vytvoříte pomocí portálu Azure pracovní prostor služby Azure Databricks.
 
 1. Na webu Azure Portal vyberte **Vytvořit prostředek** > **Analýza** > **Azure Databricks**.
 
@@ -138,7 +138,7 @@ V dalším kroku nahrajete do účtu úložiště soubor s ukázkovými daty, ab
 
 2. Potom nahrajete ukázková data do svého účtu úložiště. Způsob nahrání dat do účtu úložiště se liší podle toho, jestli máte aktivovaný hierarchický obor názvů.
 
-    Pokud máte v účtu Azure Storage, který je vytvořený pro účet Gen2, aktivovaný hierarchický obor názvů, můžete k nahrání použít Azure DataFactory, distp nebo AzCopy (verze 10). Nástroj AzCopy verze 10 mají k dispozici jen zákazníci s verzí Preview. Pokud chcete použít AzCopy, vložte do příkazového okna následující kód:
+    Pokud máte v účtu služby Azure Storage povolený hierarchický obor názvů, můžete k nahrání použít Azure Data Factory, distp nebo AzCopy (verze 10). Nástroj AzCopy verze 10 je v současné době k dispozici ve verzi Preview pouze pro zákazníky s verzí Preview. Pokud chcete použít AzCopy, vložte do příkazového okna následující kód:
 
     ```bash
     set ACCOUNT_NAME=<ACCOUNT_NAME>

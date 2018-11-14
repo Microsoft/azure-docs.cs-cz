@@ -9,13 +9,13 @@ editor: jasonwhowell
 ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 09/12/2018
-ms.openlocfilehash: f26cadf28205359b111a8f92b8fadcbd9f26f958
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.date: 11/01/2018
+ms.openlocfilehash: b413636f173a682ed74bf92688126d33d429839e
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47407617"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50959218"
 ---
 # <a name="create-an-azure-database-for-mysql-server-by-using-the-azure-portal"></a>Vytvoření serveru Azure Database for MySQL pomocí webu Azure Portal
 
@@ -98,20 +98,9 @@ Pokud chcete tyto hodnoty vyhledat, postupujte následovně:
 V tomto příkladu je název serveru **mydemoserver.mysql.database.azure.com** a přihlašovací jméno správce serveru je **myadmin@mydemoserver**.
 
 ## <a name="connect-to-mysql-by-using-the-mysql-command-line-tool"></a>Připojení k MySQL pomocí nástroje pro příkazový řádek mysql
-Existuje řada aplikací, které můžete použít pro připojení k vašemu serveru Azure Database for MySQL. 
+Připojte se k serveru pomocí nástroje příkazového řádku **mysql.exe**. MySQL můžete stáhnout [odsud](https://dev.mysql.com/downloads/) a nainstalovat do svého počítače. 
 
-Nejprve si ukážeme, jak se k serveru připojit pomocí nástroje pro příkazový řádek [mysql](https://dev.mysql.com/doc/refman/5.7/en/mysql.html). Můžete také použít webový prohlížeč a Azure Cloud Shell, jak je zde popsáno, bez instalace dalšího softwaru. Pokud máte nástroj mysql nainstalovaný místně, můžete se připojit i z něj.
-
-1. Spusťte Azure Cloud Shell pomocí ikony terminálu (**>_**) v pravém horním rohu webu Azure Portal.
-![Symbol terminálu Azure Cloud Shell](./media/quickstart-create-mysql-server-database-using-azure-portal/7-cloud-console.png)
-
-2.  V prohlížeči se otevře Azure Cloud Shell, kde můžete zadávat příkazy prostředí Bash.
-
-   ![Příkazový řádek – příklad příkazového řádku mysql](./media/quickstart-create-mysql-server-database-using-azure-portal/8-bash.png)
-
-3. V příkazovém řádku služby Cloud Shell se zadáním příkazového řádku mysql připojte k serveru Azure Database for MySQL.
-
-    Pro připojení k serveru Azure Database for MySQL pomocí nástroje mysql použijte následující formát:
+1. Pro připojení k serveru Azure Database for MySQL pomocí nástroje mysql použijte následující formát:
 
     ```bash
     mysql --host <fully qualified server name> --user <server admin login name>@<server name> -p
@@ -119,7 +108,7 @@ Nejprve si ukážeme, jak se k serveru připojit pomocí nástroje pro příkazo
 
     Například následující příkaz se připojí k našemu ukázkovému serveru:
 
-    ```azurecli-interactive
+    ```bash
     mysql --host mydemoserver.mysql.database.azure.com --user myadmin@mydemoserver -p
     ```
 
@@ -149,7 +138,7 @@ Nejprve si ukážeme, jak se k serveru připojit pomocí nástroje pro příkazo
     mysql>
     ```
     > [!TIP]
-    > Pokud brána firewall není nakonfigurovaná k povolení IP adres služby Azure Cloud Shell, dojde k následující chybě:
+    > Pokud brána firewall není nakonfigurovaná k povolení IP adresy vašeho klienta, dojde k následující chybě:
     >
     > ERROR 2003 (28000): Client with IP address 123.456.789.0 is not allowed to access the server. (CHYBA 2003 (28000): Klient s IP adresou 123.456.789.0 nemá povolený přístup k tomuto serveru.)
     >
@@ -178,7 +167,7 @@ Nejprve si ukážeme, jak se k serveru připojit pomocí nástroje pro příkazo
     SHOW DATABASES;
     ```
 
-7.  Zadejte `\q` a pak stisknutím klávesy **Enter** ukončete nástroj mysql. Jakmile budete hotovi, můžete zavřít Azure Cloud Shell.
+7.  Zadejte `\q` a pak stisknutím klávesy **Enter** ukončete nástroj mysql. 
 
 Právě jste se připojili k serveru Azure Database for MySQL a vytvořili prázdnou uživatelskou databázi. Pokračujte k další části, kde najdete podobné cvičení. V dalším cvičení se ke stejnému serveru připojíte pomocí dalšího běžného nástroje MySQL Workbench.
 

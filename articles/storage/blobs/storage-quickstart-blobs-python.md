@@ -6,16 +6,16 @@ author: tamram
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 04/09/2018
+ms.date: 10/31/2018
 ms.author: tamram
-ms.openlocfilehash: a264f5bdec6d09c0cbdd6ebec3a6b760deaf9547
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 3550d9e63288ad0cfb45dc6267f20762d3068b6a
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50139071"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51219388"
 ---
-# <a name="quickstart-upload-download-and-list-blobs-using-python"></a>Rychlý start: Nahrávání, stahování a výpis objektů blob pomocí Pythonu
+# <a name="quickstart-upload-download-and-list-blobs-with-python"></a>Rychlý start: Nahrávání, stahování a výpis objektů blob pomocí Pythonu
 
 V tomto rychlém startu zjistíte, jak pomocí Pythonu nahrávat, stahovat a vypisovat objekty blob bloku v kontejneru v úložišti objektů blob v Azure. 
 
@@ -30,7 +30,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 [!INCLUDE [storage-create-account-portal-include](../../../includes/storage-create-account-portal-include.md)]
 
 ## <a name="download-the-sample-application"></a>Stažení ukázkové aplikace
-[Ukázková aplikace](https://github.com/Azure-Samples/storage-blobs-python-quickstart.git) použitá v tomto rychlém startu je základní aplikace v Pythonu.  
+[Ukázková aplikace](https://github.com/Azure-Samples/storage-blobs-python-quickstart.git) v tomto rychlém startu je základní aplikace v Pythonu.  
 
 Pomocí [gitu](https://git-scm.com/) stáhněte kopii aplikace do svého vývojového prostředí. 
 
@@ -38,25 +38,25 @@ Pomocí [gitu](https://git-scm.com/) stáhněte kopii aplikace do svého vývojo
 git clone https://github.com/Azure-Samples/storage-blobs-python-quickstart.git 
 ```
 
-Tento příkaz naklonuje úložiště do vaší místní složky gitu. Pokud chcete otevřít program v Pythonu, vyhledejte složku storage-blobs-python-quickstart a soubor example.py.  
+Tento příkaz naklonuje úložiště *Azure-Samples/storage-blobs-python-quickstart* do vaší místní složky gitu. Pokud chcete spustit program v Pythonu, otevřete soubor *example.py* v kořenovém adresáři úložiště.  
 
 [!INCLUDE [storage-copy-account-key-portal](../../../includes/storage-copy-account-key-portal.md)]
 
 ## <a name="configure-your-storage-connection-string"></a>Konfigurace připojovacího řetězce úložiště
-V aplikaci je potřeba zadat název účtu úložiště a klíč úložiště pro vytvoření objektu `BlockBlobService`. V Průzkumníku řešení vašeho integrovaného vývojového prostředí (IDE) otevřete soubor `example.py`. Hodnoty **accountname** a **accountkey** nahraďte názvem a klíčem vašeho účtu. 
+V aplikaci zadejte název účtu úložiště a klíč účtu pro vytvoření objektu `BlockBlobService`. V Průzkumníku řešení vašeho integrovaného vývojového prostředí (IDE) otevřete soubor *example.py*. Nahraďte hodnoty `accountname` a `accountkey` názvem a klíčem vašeho účtu. 
 
 ```python 
 block_blob_service = BlockBlobService(account_name='accountname', account_key='accountkey') 
 ```
 
 ## <a name="run-the-sample"></a>Spuštění ukázky
-Tato ukázka vytvoří testovací soubor ve složce Dokumenty. Ukázkový program nahraje testovací soubor do úložiště objektů blob, vypíše objekty blob v kontejneru a stáhne soubor s novým názvem. 
+Tato ukázka vytvoří testovací soubor ve složce *Dokumenty*. Ukázkový program nahraje testovací soubor do úložiště objektů blob, vypíše objekty blob v kontejneru a stáhne soubor s novým názvem. 
 
 Nejprve nainstalujte závislosti spuštěním příkazu `pip install`:
 
     pip install azure-storage
 
-Potom spusťte ukázku. Následující výstup je příkladem výstupu vráceného po spuštění aplikace:
+Potom spusťte ukázku. Zobrazí se zprávy podobné následujícímu výstupu:
   
 ```
 Temp file = C:\Users\azureuser\Documents\QuickStart_9f4ed0f9-22d3-43e1-98d0-8b2c05c01078.txt
@@ -68,24 +68,24 @@ List blobs in the container
 
 Downloading blob to C:\Users\azureuser\Documents\QuickStart_9f4ed0f9-22d3-43e1-98d0-8b2c05c01078_DOWNLOADED.txt
 ```
-Když budete pokračovat stisknutím libovolné klávesy, ukázkový program odstraní kontejner úložiště i soubory. Než budete pokračovat, zkontrolujte, jestli složka Dokumenty obsahuje příslušné dva soubory. Můžete je otevřít a podívat se, že jsou identické.
+Než budete pokračovat, vyhledejte ve složce *Dokumenty* příslušné dva soubory. Můžete je otevřít a podívat se, že jsou stejné.
 
 K zobrazení souborů v úložišti objektů blob můžete použít také nástroj, jako je [Průzkumník služby Azure Storage](http://storageexplorer.com). Průzkumník služby Azure Storage je bezplatný nástroj pro více platforem, který umožňuje přístup k informacím o účtu úložiště. 
 
-Po ověření souborů stiskněte libovolnou klávesu a dokončete ukázku a odstraňte testovací soubory. Když teď víte, co ukázka dělá, otevřete soubor example.py a prohlédněte si kód. 
+Po ověření souborů stiskněte libovolnou klávesu a dokončete ukázku a odstraňte testovací soubory. Když teď víte, co ukázka dělá, otevřete soubor *example.py* a prohlédněte si kód. 
 
 ## <a name="understand-the-sample-code"></a>Vysvětlení vzorového kódu
 
-Dále si projdeme vzorový kód, abyste pochopili, jak funguje.
+Teď si projdeme vzorový kód a vysvětlíme si, jak funguje.
 
 ### <a name="get-references-to-the-storage-objects"></a>Získání odkazů na objekty úložiště
-První věc, kterou je potřeba udělat, je vytvořit odkazy na objekty sloužící k přístupu k úložišti objektů blob a jeho správě. Tyto objekty se vzájemně využívají a každý z nich je využívaný dalším objektem v seznamu.
+Nejprve vytvoříte odkazy na objekty sloužící k přístupu k úložišti objektů blob a jeho správě. Tyto objekty se vzájemně využívají a každý z nich je využívaný dalším objektem v seznamu.
 
 * Vytvořte instanci objektu **BlockBlobService**, která odkazuje na službu Blob service ve vašem účtu úložiště. 
 
 * Vytvořte instanci objektu **CloudBlobContainer**, která představuje kontejner, ke kterému přistupujete. Kontejnery slouží k uspořádání objektů blob podobně jako složky na počítači k uspořádání souborů.
 
-Jakmile budete mít CloudBlobContainer, můžete vytvořit instanci objektu **CloudBlockBlob**, která odkazuje na konkrétní objekt blob, který vás zajímá, a provádět operace, jako jsou nahrávání, stahování a kopírování.
+Jakmile budete mít CloudBlobContainer, vytvořte instanci objektu **CloudBlockBlob**, která odkazuje na konkrétní objekt blob, který vás zajímá. Tento objekt blob pak můžete podle potřeby nahrát, stáhnout nebo zkopírovat.
 
 > [!IMPORTANT]
 > Názvy kontejnerů musí obsahovat jen malá písmena. Další informace o pojmenování kontejnerů a objektů blob najdete v tématu [Názvy kontejnerů, objektů blob a metadat a odkazování na ně](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata).
@@ -107,9 +107,9 @@ block_blob_service.set_container_acl(container_name, public_access=PublicAccess.
 
 Úložiště objektů blob podporuje objekty blob bloku, doplňovací objekty blob a objekty blob stránky. Nejčastěji používané jsou objekty blob bloku, které se používají také v tomto rychlém startu.  
 
-Pokud chcete nahrát soubor do objektu blob, získejte úplnou cestu k souboru spojením názvu adresáře a názvu souboru na místním disku. Pak můžete soubor nahrát do zadané cesty pomocí metody **create\_blob\_from\_path**. 
+Pokud chcete nahrát soubor do objektu blob, získejte úplnou cestu k souboru spojením názvu adresáře a názvu souboru na místním disku. Pak můžete soubor nahrát do zadané cesty pomocí metody `create\_blob\_from\_path`. 
 
-Vzorový kód vytvoří místní soubor, který se použije k nahrání a stažení. Soubor k nahrání uloží do proměnné **full\_path\_to\_file** a název objektu blob do proměnné **local\_file\_name**. Následující příklad nahraje soubor do kontejneru **quickstartblobs**.
+Vzorový kód vytvoří místní soubor, který se použije k nahrání a stažení. Soubor k nahrání uloží do proměnné `file\_path\_to\_file` a název objektu blob do proměnné `local\_file\_name`. Následující příklad nahraje soubor do kontejneru **quickstartblobs**.
 
 ```python
 # Create a file in Documents to test the upload and download.
@@ -129,13 +129,13 @@ print("\nUploading to Blob storage as blob" + local_file_name)
 block_blob_service.create_blob_from_path(container_name, local_file_name, full_path_to_file)
 ```
 
-V případě úložiště objektů blob můžete k nahrání použít několik metod. Například pokud máte paměťový proud, můžete místo **create\_blob\_from\_path** použít metodu **create\_blob\_from\_stream**. 
+V případě úložiště objektů blob můžete k nahrání použít několik metod. Například pokud máte paměťový proud, můžete místo metody `create\_blob\_from\_path` použít metodu `create\_blob\_from\_stream`. 
 
 Objekty blob bloku můžou mít velikost až 4,7 TB a můžou být čímkoli od tabulky aplikace Excel po velké videosoubory. Objekty blob stránky se používají hlavně pro soubory VHD využívané virtuálními počítači IaaS. Doplňovací objekty blob se používají k protokolování, například když chcete zapisovat do souboru a pak přidávat další informace. Většina objektů blob ukládaných do úložiště jsou typu blok.
 
 ### <a name="list-the-blobs-in-a-container"></a>Zobrazí seznam objektů blob v kontejneru
 
-Získejte seznam souborů v kontejneru pomocí metody **list_blobs**. Tato metoda vrací generátor. Následující kód načte seznam objektů blob, pak je ve smyčce projde a zobrazí názvy nalezených objektů blob v kontejneru.  
+Seznam souborů v kontejneru můžete získat pomocí metody `list_blobs`. Tato metoda vrací generátor. Následující kód načte seznam objektů blob &mdash; pak je ve smyčce projde &mdash; a zobrazí názvy nalezených objektů blob v kontejneru.  
 
 ```python
 # List the blobs in the container
@@ -147,7 +147,7 @@ for blob in generator:
 
 ### <a name="download-the-blobs"></a>Stažení objektů blob
 
-Stáhněte objekty blob na místní disk pomocí metody **get\_blob\_to\_path**. Následující kód stáhne objekt blob nahraný v předchozí části. K názvu objektu blob se přidá přípona „_DOWNLOADED“, takže na místním disku uvidíte oba soubory. 
+Objekty blob můžete stáhnout na místní disk pomocí metody `the get\_blob\_to\_path`. Následující kód stáhne objekt blob nahraný v předchozí části. K názvu objektu blob se přidá přípona *_DOWNLOADED*, takže na místním disku uvidíte oba soubory. 
 
 ```python
 # Download the blob(s).
@@ -158,7 +158,7 @@ block_blob_service.get_blob_to_path(container_name, local_file_name, full_path_t
 ```
 
 ### <a name="clean-up-resources"></a>Vyčištění prostředků
-Pokud už nepotřebujete objekty blob nahrané v rámci tohoto rychlého startu, můžete celý kontejner odstranit pomocí metody **delete\_container**. Pokud už nepotřebujete vytvořené soubory, pomocí metody **delete\_blob** je odstraníte.
+Pokud už nepotřebujete objekty blob nahrané v rámci tohoto rychlého startu, můžete celý kontejner odstranit pomocí metody `delete\_container`. Pokud místo toho chcete odstranit jednotlivé soubory, použijte metodu `delete\_blob`.
 
 ```python
 # Clean up resources. This includes the container and the temp files
@@ -168,7 +168,7 @@ os.remove(full_path_to_file2)
 ```
 ## <a name="resources-for-developing-python-applications-with-blobs"></a>Zdroje informací pro vývoj aplikací v Pythonu s využitím objektů blob
 
-Prohlédněte si tyto další zdroje informací o vývoji v Pythonu s využitím úložiště objektů blob:
+Další informace o vývoji v Pythonu s využitím úložiště objektů blob najdete v těchto dalších zdrojích informací:
 
 ### <a name="binaries-and-source-code"></a>Binární soubory a zdrojový kód
 

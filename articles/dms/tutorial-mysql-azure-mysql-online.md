@@ -1,5 +1,5 @@
 ---
-title: Provedení online migrace MySQL do služby Azure Database for MySQL pomocí služby Azure Database Migration Service | Microsoft Docs
+title: 'Kurz: Provedení online migrace MySQL do služby Azure Database for MySQL pomocí služby Azure Database Migration Service | Microsoft Docs'
 description: Zjistěte, jak pomocí služby Azure Database Migration Service provést online migraci z místního MySQL do služby Azure Database for MySQL.
 services: dms
 author: HJToland3
@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
 ms.date: 10/06/2018
-ms.openlocfilehash: 4825985253f5525314a496f2adbc40657231f5d5
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: 8b0e15ac6cd59a77e283d9256ab5fa4542dfc9a9
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48829847"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50960510"
 ---
-# <a name="migrate-mysql-to-azure-database-for-mysql-online-using-dms"></a>Online migrace MySQL do služby Azure Database for MySQL pomocí DMS
+# <a name="tutorial-migrate-mysql-to-azure-database-for-mysql-online-using-dms"></a>Kurz: Online migrace MySQL do služby Azure Database for MySQL pomocí DMS
 Pomocí služby Azure Database Migration Service můžete migrovat databáze z místní instance MySQL do služby [Azure Database for MySQL](https://docs.microsoft.com/azure/mysql/) s minimálními výpadky. Jinými slovy, můžete dosáhnout migrace s minimálními výpadky aplikace. V tomto kurzu provedete migraci ukázkové databáze **Employees** (Zaměstnanci) z místní instance MySQL verze 5.7 do služby Azure Database for MySQL pomocí aktivity online migrace ve službě Azure Database Migration Service.
 
 V tomto kurzu se naučíte:

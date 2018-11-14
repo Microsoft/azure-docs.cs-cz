@@ -9,18 +9,18 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 06/27/2018
 ms.author: jamesbak
-ms.openlocfilehash: 2dae7938c63ee141ea6705ab4c324882f575e298
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 41f25496d089a5c6487176afee01f7cb06330794
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49426868"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281553"
 ---
-# <a name="quickstart-create-an-azure-data-lake-storage-gen2-preview-storage-account"></a>Rychlý start: Vytvoření účtu úložiště Azure Data Lake Storage Gen2 Preview
+# <a name="quickstart-create-a-storage-account-for-analytics"></a>Rychlý start: Vytvoření účtu úložiště pro analýzu
 
-Účty Azure Data Lake Storage Gen2 Preview [podporují službu Hierarchical Namespace Service](introduction.md), která nabízí nativní adresářový systém souborů přizpůsobený pro práci se systémem souborů HDFS (Hadoop Distributed File System). Přístup k datům v Data Lake Storage Gen2 je z HDFS možný prostřednictvím [ovladače ABFS](abfs-driver.md).
+Účty úložiště s povolenou službou Data Lake Storage Gen2 Preview [podporují službu hierarchického oboru názvů](introduction.md), která nabízí nativní adresářový systém souborů přizpůsobený pro práci se systémem souborů HDFS (Hadoop Distributed File System). Přístup k datům v Data Lake Storage Gen2 je z HDFS možný prostřednictvím [ovladače ABFS](abfs-driver.md).
 
-Pokud chcete v účtu úložiště povolit možnosti Data Lake Storage Gen2, [vyplňte průzkum k verzi Preview s žádostí o přístup](https://aka.ms/adlsgen2signup). Po schválení budete moci vytvořit nový účet Data Lake Storage Gen2. Tento rychlý start ukazuje, jak vytvořit účet pomocí webu [Azure Portal](https://portal.azure.com/), [Azure PowerShellu](https://docs.microsoft.com/powershell/azure/overview) nebo prostřednictvím [Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest).
+Pokud chcete v účtu úložiště povolit možnosti Data Lake Storage Gen2, [vyplňte průzkum k verzi Preview s žádostí o přístup](https://aka.ms/adlsgen2signup). Po schválení budete moct vytvořit účet úložiště s povolenou službou Data Lake Storage Gen2. Tento rychlý start ukazuje, jak vytvořit účet pomocí webu [Azure Portal](https://portal.azure.com/), [Azure PowerShellu](https://docs.microsoft.com/powershell/azure/overview) nebo prostřednictvím [Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest).
 
 > [!NOTE]
 > Uživatelské rozhraní pro vytvoření účtu na webu Azure Portal se aktualizuje, jakmile budete mít schváleno vytvoření účtu Data Lake Storage Gen2. To samé platí i o argumentech PowerShellu a rozhraní příkazového řádku týkajících se Data Lake Storage Gen2, které fungují až po schválení verze Preview.
@@ -51,7 +51,7 @@ Toto tlačítko spustí interaktivní prostředí, které můžete použít k p
 
 Azure CLI můžete také nainstalovat a používat místně. Tento rychlý start vyžaduje použití Azure CLI verze 2.0.38 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
 
-## <a name="overview-of-creating-an-azure-data-lake-storage-gen2-account"></a>Přehled vytvoření účtu Azure Data Lake Storage Gen2
+## <a name="create-a-storage-account-with-azure-data-lake-storage-gen2-enabled"></a>Vytvoření účtu úložiště s povolenou službou Azure Data Lake Storage Gen2
 
 Než vytvoříte účet, musíte nejprve vytvořit skupinu prostředků, která funguje jako logický kontejner účtů úložiště nebo jiných vámi vytvořených prostředků Azure. Pokud chcete vyčistit prostředky vytvořené v tomto rychlém startu, stačí jednoduše odstranit skupinu prostředků. Odstraněním skupiny prostředků odstraníte také přidružený účet úložiště a všechny další prostředky, které jsou k příslušné skupině prostředků přidružené. Další informace o skupinách prostředků najdete v [přehledu Azure Resource Manageru](../../azure-resource-manager/resource-group-overview.md).
 
@@ -135,7 +135,7 @@ Pak prostředí restartujte.
 Pokud chcete vytvořit novou skupinu prostředků pomocí PowerShellu, použijte příkaz [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup): 
 
 > [!NOTE]
-> > Hierarchický obor názvů je v současné době dostupný ve všech veřejných oblastech, ale v žádných soukromých oblastech. Momentálně není k dispozici v suverénních cloudech.
+> > Hierarchický obor názvů je v současné době dostupný ve všech veřejných oblastech. Momentálně není k dispozici v suverénních cloudech.
 
 ```powershell
 # put resource group in a variable so you can use the same group name going forward,
@@ -222,6 +222,6 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste vytvořili účet úložiště Data Lake Storage Gen2. Pokud chcete zjistit, jak v účtu úložiště nahrávat a stahovat objekty blob, pokračujte k rychlému startu pro úložiště objektů blob.
+V tomto rychlém startu jste vytvořili účet úložiště s možnostmi Data Lake Storage Gen2. Pokud chcete zjistit, jak v účtu úložiště nahrávat a stahovat objekty blob, pokračujte k rychlému startu pro úložiště objektů blob.
 
 * [Přesun dat do nebo ze služby Azure Blob Storage nástrojem AzCopy](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/move-data-to-azure-blob-using-azcopy)

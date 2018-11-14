@@ -1,57 +1,52 @@
 ---
-title: 'Kurz: Vytvoření projektu detekce objektů pomocí sady Custom Vision SDK pro Python – Custom Vision Service'
+title: 'Rychlý start: Vytvoření projektu detekce objektů pomocí sady Custom Vision SDK pro Python'
 titlesuffix: Azure Cognitive Services
-description: Vytvořte projekt, přidejte značky, nahrajte obrázky, vytrénujte svůj projekt a vytvořte předpověď pomocí výchozího koncového bodu.
+description: Vytvořte projekt, přidejte značky, nahrajte obrázky, natrénujte svůj projekt a detekujte objekty pomocí sady Python SDK.
 services: cognitive-services
 author: areddish
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-vision
-ms.topic: tutorial
-ms.date: 05/03/2018
+ms.topic: quickstart
+ms.date: 11/5/2018
 ms.author: areddish
-ms.openlocfilehash: 36b283965766130e86e079c807139998cd01c8a6
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 35548284302dead41df1a4b9bf6218d842214e11
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49958529"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51278748"
 ---
-# <a name="tutorial-create-an-object-detection-project-with-the-custom-vision-sdk-for-python"></a>Kurz: Vytvoření projektu detekce objektů pomocí sady Custom Vision SDK pro Python
+# <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-python-sdk"></a>Rychlý start: Vytvoření projektu detekce objektů pomocí sady Custom Vision Python SDK
 
-Prozkoumejte základní skript Pythonu, který používá rozhraní API pro počítačové zpracování obrazu k vytvoření projektu detekce objektů. Po jeho vytvoření můžete přidat označené oblasti, nahrát obrázky, vytrénovat projekt, získat adresu URL výchozího koncového bodu předpovědi projektu a použít tento koncový bod k programovému testování obrázku. Tento opensourcový příklad použijte jako šablonu pro vytvoření vlastní aplikace pomocí rozhraní Custom Vision API.
+Tento článek obsahuje informace a vzorový kód, které vám pomůžou začít s vytvořením modelu detekce objektů pomocí sady Custom Vision SDK a Pythonu. Po jeho vytvoření můžete přidat označené oblasti, nahrát obrázky, vytrénovat projekt, získat adresu URL výchozího koncového bodu předpovědi projektu a použít tento koncový bod k programovému testování obrázku. Tento příklad použijte jako šablonu pro vytvoření vlastní aplikace v Pythonu.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pro tento kurz budete muset:
+- [Python 2.7+ nebo 3.5+](https://www.python.org/downloads/)
+- Nástroj [pip](https://pip.pypa.io/en/stable/installing/)
 
-- Nainstalovat Python 2.7+ nebo Python 3.5+.
-- Nainstalovat pip.
+## <a name="install-the-custom-vision-sdk"></a>Instalace sady Custom Vision SDK
 
-### <a name="platform-requirements"></a>Požadavky platformy
-Tento příklad byl vyvinut pro Python.
+Pokud chcete nainstalovat sadu SDK služby Custom Vision pro Python, spusťte v PowerShellu následující příkaz:
 
-### <a name="get-the-custom-vision-sdk"></a>Získání sady Custom Vision SDK
-
-K vytvoření tohoto příkladu je potřeba nainstalovat sadu Python SDK pro rozhraní Custom Vision API:
-
-```
+```PowerShell
 pip install azure-cognitiveservices-vision-customvision
 ```
 
 Obrázky si můžete stáhnout s [ukázkami Pythonu](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples).
 
-## <a name="step-1-get-the-training-and-prediction-keys"></a>Krok 1: Získání tréninkového klíče a klíče předpovědi
+[!INCLUDE [get-keys](includes/get-keys.md)]
 
-Klíče používané v tomto příkladu získáte tak, že přejdete na [stránku služby Custom Vision](https://customvision.ai) a vyberete __ikonu ozubeného kola__ v pravém horním rohu. V části __Účty__ zkopírujte hodnoty z polí pro __tréninkový klíč__ a __klíč předpovědi__.
+[!INCLUDE [python-get-images](includes/python-get-images.md)]
 
-![Obrázek uživatelského rozhraní klíčů](./media/python-tutorial/training-prediction-keys.png)
+## <a name="add-the-code"></a>Přidání kódu
 
-Tento příklad používá obrázky z [tohoto umístění](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/tree/master/samples/vision/images).
+V upřednostňovaném adresáři projektu vytvořte nový soubor *sample.py*.
 
-## <a name="step-2-create-a-custom-vision-service-project"></a>Krok 2: Vytvoření projektu služby Custom Vision Service
+### <a name="create-the-custom-vision-service-project"></a>Vytvoření projektu služby Custom Vision
 
-Chcete-li vytvořit nový projekt služby Custom Vision Service, vytvořte soubor skriptu sample.py a přidejte následující obsah. Všimněte si, že rozdíl mezi vytvářením projektu detekce objektů a klasifikace obrázků je doména, která je zadána při volání create_project.
+Přidáním následujícího kódu do svého skriptu vytvořte nový projekt služby Custom Vision. Do odpovídajících definic vložte své klíče předplatného. Všimněte si, že rozdíl mezi vytvářením projektu detekce objektů a klasifikace obrázků je doména, která se zadává při volání metody **create_project**.
 
 ```Python
 from azure.cognitiveservices.vision.customvision.training import training_api
@@ -71,9 +66,9 @@ print ("Creating project...")
 project = trainer.create_project("My Detection Project", domain_id=obj_detection_domain.id)
 ```
 
-## <a name="step-3-add-tags-to-your-project"></a>Krok 3: Přidání značek do projektu
+### <a name="create-tags-in-the-project"></a>Vytvoření značek v projektu
 
-Pokud chcete přidat značky do projektu, vložte následující kód, kterým vytvoříte dvě značky:
+Pokud chcete pro svůj projekt vytvořit klasifikační značky, přidejte na konec souboru *sample.py* následující kód:
 
 ```Python
 # Make two tags in the new project
@@ -81,14 +76,13 @@ fork_tag = trainer.create_tag(project.id, "fork")
 scissors_tag = trainer.create_tag(project.id, "scissors")
 ```
 
-## <a name="step-4-upload-images-to-the-project"></a>Krok 4: Nahrání obrázků do projektu
+### <a name="upload-and-tag-images"></a>Nahrání a označení obrázků
 
-U projektu detekce objektů je potřeba nahrát obrázek, oblasti a značky. Oblast je v normalizovaných souřadnicích a určuje umístění označeného objektu.
+Při označování obrázků v projektech detekce obrázků je potřeba zadat oblast každého označeného objektu pomocí normalizovaných souřadnic.
 
-Obrázky, oblast a značky do projektu přidáte tak, že po vytvoření značky vložíte následující kód. Všimněte si, že pro účely tohoto kurzu jsou oblasti pevně vloženy v kódu. Oblasti určují ohraničující rámeček v normalizovaných souřadnicích.
+Obrázky, značky a oblasti do projektu přidáte tak, že po vytvoření značky vložíte následující kód. Všimněte si, že pro účely tohoto kurzu jsou oblasti pevně vloženy v kódu. Oblasti určují ohraničující rámeček s normalizovanými souřadnicemi, které jsou v tomto pořadí: vlevo, nahoře, šířka, výška.
 
 ```Python
-
 fork_image_regions = {
     "fork_1": [ 0.145833328, 0.3509314, 0.5894608, 0.238562092 ],
     "fork_2": [ 0.294117659, 0.216944471, 0.534313738, 0.5980392 ],
@@ -134,7 +128,10 @@ scissors_image_regions = {
     "scissors_19": [ 0.333333343, 0.0274019931, 0.443627447, 0.852941155 ],
     "scissors_20": [ 0.158088237, 0.04047389, 0.6691176, 0.843137264 ]
 }
+```
+Potom pomocí této mapy přidružení nahrajte jednotlivé ukázkové obrázky s odpovídajícími souřadnicemi oblasti. Přidejte následující kód.
 
+```Python
 # Go through the data table above and create the images
 print ("Adding images...")
 tagged_images_with_regions = []
@@ -157,12 +154,9 @@ for file_name in scissors_image_regions.keys():
 trainer.create_images_from_files(project.id, images=tagged_images_with_regions)
 ```
 
-## <a name="step-5-train-the-project"></a>Krok 5: Trénování projektu
+### <a name="train-the-project"></a>Trénování projektu
 
-Když jste do projektu přidali značky a obrázky, můžete ho vytrénovat: 
-
-1. Vložte následující kód. Vytvoříte tak první iteraci v projektu. 
-2. Tuto iteraci označte jako výchozí iteraci.
+Tento kód vytvoří první iteraci v projektu a označí ji jako výchozí iteraci. Výchozí iterace odráží verzi modelu, který bude odpovídat na požadavky na předpověď. Při každém přetrénování modelu byste ji měli aktualizovat.
 
 ```Python
 import time
@@ -179,12 +173,9 @@ trainer.update_iteration(project.id, iteration.id, is_default=True)
 print ("Done!")
 ```
 
-## <a name="step-6-get-and-use-the-default-prediction-endpoint"></a>Krok 6: Získání a použití výchozího koncového bodu předpovědi
+### <a name="get-and-use-the-default-prediction-endpoint"></a>Získání a použití výchozího koncového bodu předpovědi
 
-Teď jste připraveni použít model pro předpověď: 
-
-1. Získejte koncový bod spojený s výchozí iterací. 
-2. Odešlete testovací obrázek do projektu pomocí tohoto koncového bodu.
+Pokud chcete odeslat obrázek do koncového bodu předpovědi a načíst předpověď, přidejte na konec souboru následující kód:
 
 ```Python
 from azure.cognitiveservices.vision.customvision.prediction import prediction_endpoint
@@ -203,10 +194,21 @@ for prediction in results.predictions:
     print ("\t" + prediction.tag_name + ": {0:.2f}%".format(prediction.probability * 100), prediction.bounding_box.left, prediction.bounding_box.top, prediction.bounding_box.width, prediction.bounding_box.height)
 ```
 
-## <a name="step-7-run-the-example"></a>Krok 7: Spuštění příkladu
+## <a name="run-the-application"></a>Spuštění aplikace
 
-Spusťte řešení. V konzole se zobrazí výsledky předpovědi.
+Spusťte soubor *sample.py*.
 
-```
+```PowerShell
 python sample.py
 ```
+
+V konzole by se měl zobrazit výstup aplikace. Pak můžete ověřit správné označení testovacího obrázku (ve složce **samples/vision/images/Test**) a správnost oblasti detekce.
+
+[!INCLUDE [clean-od-project](includes/clean-od-project.md)]
+
+## <a name="next-steps"></a>Další kroky
+
+Právě jste viděli, jak se dají jednotlivé kroky procesu detekce objektů provádět v kódu. Tato ukázka provede jednu iteraci trénování, ale často je potřeba model trénovat a testovat vícekrát, aby byl přesnější. Následující příručka se zabývá klasifikací obrázků, ale její principy jsou podobné jako u detekce objektů.
+
+> [!div class="nextstepaction"]
+> [Testování a přetrénování modelu](test-your-model.md)

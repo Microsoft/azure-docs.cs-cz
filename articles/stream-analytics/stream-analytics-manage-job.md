@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 10/30/2018
-ms.openlocfilehash: 9ad4462bba861e2bcc940661242d8801355c2f6c
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: f35585fc77f085f58b7be2d55e03919cc1e8b248
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50240797"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51283780"
 ---
 # <a name="create-a-stream-analytics-job-to-analyze-phone-call-data-and-visualize-results-in-a-power-bi-dashboard"></a>Vytvoření úlohy Stream Analytics k analýze dat telefonních hovorů a vizualizaci výsledků v řídicím panelu Power BI
 
@@ -36,7 +36,8 @@ Než začnete, ujistěte se, že jste provedli následující akce:
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/).  
 * Přihlaste se k webu [Azure Portal](https://portal.azure.com/).  
-* Stáhněte si aplikaci pro generování událostí telefonních hovorů [TelcoGenerator.zip](http://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip) z webu Microsoft Download Center. Případně získejte zdrojový kód z [GitHubu](https://aka.ms/azure-stream-analytics-telcogenerator).  
+* Stáhněte si aplikaci pro generování událostí telefonních hovorů [TelcoGenerator.zip](https://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip) z webu Microsoft Download Center. Případně získejte zdrojový kód z [GitHubu](https://aka.ms/azure-stream-analytics-telcogenerator).
+* Budete potřebovat účet Power BI.
 
 ## <a name="create-an-azure-event-hub"></a>Vytvoření centra událostí Azure 
 
@@ -86,9 +87,7 @@ Předtím než aplikace může odesílat data do služby Azure Event Hubs, musí
 
    `Endpoint=sb://<Your event hub namespace>.servicebus.windows.net/;SharedAccessKeyName=<Your shared access policy name>;SharedAccessKey=<generated key>;EntityPath=<Your event hub name>` 
 
-   Všimněte si, že připojovací řetězec obsahuje více párů klíč-hodnota oddělené středníky: **Endpoint**, **SharedAccessKeyName**, **SharedAccessKey** a **EntityPath**.  
-
-5. Odeberte z připojovacího řetězce pár **EntityPath** a středník, který mu předchází.
+   Všimněte si, že připojovací řetězec obsahuje více párů klíč-hodnota oddělené středníky: **Endpoint**, **SharedAccessKeyName**, **SharedAccessKey** a **EntityPath**.
 
 ## <a name="start-the-event-generator-application"></a>Spuštění aplikace generátoru událostí
 
@@ -253,7 +252,7 @@ Dotaz z editoru dotazů můžete otestovat s použitím ukázkových dat. Otestu
 
    ![Vytvoření dlaždice](media/stream-analytics-manage-job/create-tiles.png)
 
-6. Zopakujte kroky 4 a 5 s následujícími možnostmi:
+6. Zopakujte krok 5 s následujícími možnostmi:
    * Jako typ vizualizace vyberte spojnicový graf.  
    * Přidejte osu a vyberte **windowend**.  
    * Přidejte hodnotu a vyberte **podvodnávolání**.  

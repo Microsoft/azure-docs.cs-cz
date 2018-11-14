@@ -299,6 +299,8 @@ items:
         href: azure-stack-app-service-release-notes-update-two.md
       - name: App Service v Azure stacku zpráva k vydání verze update 3
         href: azure-stack-app-service-release-notes-update-three.md
+      - name: App Service v Azure stacku zpráva k vydání verze update 4
+        href: azure-stack-app-service-release-notes-update-four.md
   - name: Vytvoření plánů, nabídek a kvót
     items:
     - name: Přehled plánů, nabídek, kvót a předplatných
@@ -388,9 +390,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-stack
   - name: Školení a certifikace
     href: https://docs.microsoft.com/azure/azure-stack/azure-stack-train-and-cert
-ms.openlocfilehash: 60487f16002df5a55d2859a14ec34559acd5cd5f
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.openlocfilehash: b68cebd2d6e2a7965eef61bf35c50824f7102c8e
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/13/2018
-ms.locfileid: "51578141"
+ms.locfileid: "51614748"

@@ -1,5 +1,5 @@
 ---
-title: Provedení online migrace PostgreSQL do služby Azure Database for MySQL pomocí služby Azure Database Migration Service | Microsoft Docs
+title: 'Kurz: Provedení online migrace PostgreSQL do služby Azure Database for MySQL pomocí služby Azure Database Migration Service | Microsoft Docs'
 description: Zjistěte, jak pomocí služby Azure Database Migration Service provést online migraci z místního PostgreSQL do služby Azure Database for PostgreSQL.
 services: dms
 author: HJToland3
@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
 ms.date: 09/26/2018
-ms.openlocfilehash: 51103f6661be22e355aafe01783af5afddd51f54
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: 004db061e721f0169491e98bd8e7cdd86e08bb01
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47182463"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50963588"
 ---
-# <a name="migrate-postgresql-to-azure-database-for-postgresql-online-using-dms"></a>Migrace PostgreSQL do Azure Database for PostgreSQL online pomocí DMS
+# <a name="tutorial-migrate-postgresql-to-azure-database-for-postgresql-online-using-dms"></a>Kurz: Online migrace PostgreSQL do služby Azure Database for PostgreSQL pomocí DMS
 Pomocí služby Azure Database Migration Service můžete migrovat databáze z místní instance PostgreSQL do služby [Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/) s minimálními výpadky. Jinými slovy, můžete dosáhnout migrace s minimálními výpadky aplikace. V tomto kurzu provedete migraci ukázkové databáze **DVD Rental** z místní instance PostgreSQL verze 9.6 do služby Azure Database for PostgreSQL pomocí aktivity online migrace ve službě Azure Database Migration Service.
 
 V tomto kurzu se naučíte:

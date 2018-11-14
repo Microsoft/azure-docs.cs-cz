@@ -12,12 +12,12 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: azure-cli
 manager: jeconnoc
-ms.openlocfilehash: 07a079e00963f1f5aff96369649e2e4fb248aae0
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: fdee336298212f2536c2408e49f40e25e2c24161
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49985994"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51227684"
 ---
 # <a name="create-your-first-function-from-the-command-line"></a>Vytvoření první funkce z příkazového řádku
 
@@ -108,17 +108,19 @@ Po vytvoření aplikace Function App se v Azure CLI zobrazí podobné informace 
 }
 ```
 
-## <a name="configure-the-function-app"></a>Konfigurace aplikace Function App
+### <a name="configure-the-function-app-nodejs"></a>Konfigurace aplikace funkcí (Node.js)
 
-Tools Core verze 2.x vytvoří projekty pomocí šablon pro modul runtime Azure Functions verze 2.x. Z tohoto důvodu se musíte ujistit, že se v Azure používá modul runtime verze 2.x. Nastavení aplikace `FUNCTIONS_WORKER_RUNTIME` na `~2` připne aplikaci funkcí k nejnovější verzi 2.x. Pomocí příkazu [az functionapp config appsettings set](https://docs.microsoft.com/cli/azure/functionapp/config/appsettings#set) nastavte nastavení aplikace.
+Při vytváření aplikace funkcí v JavaScriptu je důležité cílit na správnou verzi Node.js. Modul runtime služby Functions verze 2.x vyžaduje Node.js verze 8.x. Verzi Node.js, kterou používá aplikace funkcí v Azure, řídí nastavení aplikace `WEBSITE_NODE_DEFAULT_VERSION`. Pomocí příkazu [az functionapp config appsettings set](https://docs.microsoft.com/cli/azure/functionapp/config/appsettings#set) nastavte verzi Node.js na `8.11.1`.
 
 V následujícím příkazu Azure CLI je <app_name> název vaší aplikace funkcí.
 
 ```azurecli-interactive
 az functionapp config appsettings set --name <app_name> \
 --resource-group myResourceGroup \
---settings FUNCTIONS_WORKER_RUNTIME=~2
+--settings WEBSITE_NODE_DEFAULT_VERSION=8.11.1
 ```
+
+Ověřte nové nastavení ve výstupu.
 
 [!INCLUDE [functions-publish-project](../../includes/functions-publish-project.md)]
 
@@ -127,3 +129,4 @@ az functionapp config appsettings set --name <app_name> \
 [!INCLUDE [functions-cleanup-resources](../../includes/functions-cleanup-resources.md)]
 
 [!INCLUDE [functions-quickstart-next-steps-cli](../../includes/functions-quickstart-next-steps-cli.md)]
+

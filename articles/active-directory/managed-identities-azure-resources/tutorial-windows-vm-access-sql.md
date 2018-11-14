@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/20/2017
+ms.date: 11/07/2018
 ms.author: daveba
-ms.openlocfilehash: 57f9def09f498c3fc644cbee979d5ae552f2206c
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 61b176f4f1fccbb975ee53de497d5afcc8ede060
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46369337"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238110"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-sql"></a>Kurz: Použití spravované identity přiřazené systémem na virtuálním počítači s Windows pro přístup k Azure SQL
 
@@ -29,9 +29,8 @@ V tomto kurzu se dozvíte, jak pomocí identity přiřazené systémem pro virtu
 
 > [!div class="checklist"]
 > * Udělení přístupu virtuálnímu počítači k serveru SQL Azure
-> * Vytvoření skupiny v Azure AD a nastavení spravované identity přiřazené systémem na virtuálním počítači jako člena této skupiny
 > * Povolení ověřování Azure AD pro server SQL
-> * Vytvoření uživatele v databázi reprezentujícího skupinu Azure AD
+> * Vytvoření uživatele v databázi reprezentujícího systémem přiřazenou identitu virtuálního počítače
 > * Získání přístupového tokenu pomocí identity virtuálního počítače a jeho použití k dotazování serveru SQL Azure
 
 ## <a name="prerequisites"></a>Požadavky
@@ -48,74 +47,16 @@ V tomto kurzu se dozvíte, jak pomocí identity přiřazené systémem pro virtu
 
 ## <a name="grant-your-vm-access-to-a-database-in-an-azure-sql-server"></a>Udělení přístupu virtuálnímu počítači k databázi na serveru SQL Azure
 
-Teď můžete virtuálnímu počítači udělit přístup k databázi na serveru SQL Azure.  Pro tento krok můžete použít stávající server SQL nebo vytvořit nový.  Pokud chcete vytvořit nový server a databázi pomocí webu Azure Portal, postupujte podle tohoto [rychlého startu k Azure SQL](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal). Rychlé starty s využitím Azure CLI a Azure PowerShellu najdete v [dokumentaci k Azure SQL](https://docs.microsoft.com/azure/sql-database/).
+Pokud chcete virtuálnímu počítači udělit přístup k databázi na serveru SQL Azure, můžete použít existující server SQL nebo vytvořit nový.  Pokud chcete vytvořit nový server a databázi pomocí webu Azure Portal, postupujte podle tohoto [rychlého startu k Azure SQL](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal). Rychlé starty s využitím Azure CLI a Azure PowerShellu najdete v [dokumentaci k Azure SQL](https://docs.microsoft.com/azure/sql-database/).
 
-Udělení přístupu virtuálnímu počítači k databázi se skládá ze tří kroků:
-1.  Vytvoření skupiny v Azure AD a nastavení spravované identity přiřazené systémem virtuálního počítače jako člena této skupiny
-2.  Povolení ověřování Azure AD pro server SQL
-3.  Vytvoření **uživatele** v databázi reprezentujícího skupinu Azure AD
+Udělení přístupu virtuálnímu počítači k databázi se skládá ze dvou kroků:
 
-> [!NOTE]
-> Za normálních okolností byste vytvořili obsaženého uživatele, který se mapuje přímo na spravovanou identitu přiřazenou systémem na virtuálním počítači.  Azure SQL v současné době neumožňuje mapování instančního objektu Azure AD, který představuje spravovanou identitu přiřazenou systémem virtuálního počítače, na obsaženého uživatele.  Podporovaným alternativním řešením je nastavit spravovanou identitu přiřazenou systémem virtuálního počítače jako člena skupiny Azure AD a pak v databázi vytvořit uživatele, který tuto skupinu představuje.
-
-
-## <a name="create-a-group-in-azure-ad-and-make-the-vms-system-assigned-managed-identity-a-member-of-the-group"></a>Vytvoření skupiny v Azure AD a nastavení spravované identity přiřazené systémem na virtuálním počítači jako člena této skupiny
-
-Můžete vytvořit stávající skupinu Azure AD nebo pomocí Azure AD PowerShellu vytvořit novou.  
-
-Nejprve nainstalujte modul [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2). Pak se přihlaste pomocí příkazu `Connect-AzureAD` a spuštěním následujícího příkazu vytvořte skupinu a uložte ji do proměnné:
-
-```powershell
-$Group = New-AzureADGroup -DisplayName "VM managed identity access to SQL" -MailEnabled $false -SecurityEnabled $true -MailNickName "NotSet"
-```
-
-Výstup bude vypadat jako v následujícím příkladu, který také ukazuje hodnotu proměnné:
-
-```powershell
-$Group = New-AzureADGroup -DisplayName "VM managed identity access to SQL" -MailEnabled $false -SecurityEnabled $true -MailNickName "NotSet"
-$Group
-ObjectId                             DisplayName          Description
---------                             -----------          -----------
-6de75f3c-8b2f-4bf4-b9f8-78cc60a18050 VM managed identity access to SQL
-```
-
-V dalším kroku přidáte spravovanou identitu přiřazenou systémem virtuálního počítače do této skupiny.  Potřebujete **ID objektu** spravované identity přiřazené systémem, které můžete získat pomocí Azure PowerShellu.  Nejprve stáhněte [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps). Pak se přihlaste pomocí příkazu `Connect-AzureRmAccount` a spusťte následující příkazy, které:
-- Zajistí nastavení kontextu relace na požadované předplatné Azure, pokud jich máte několik.
-- Vypíše seznam dostupných prostředků ve vašem předplatném Azure a ověří správnost názvů skupiny prostředků a virtuálního počítače.
-- Získejte vlastnosti spravované identity přiřazené systémem virtuálního počítače pomocí odpovídajících hodnot pro `<RESOURCE-GROUP>` a `<VM-NAME>`.
-
-```powershell
-Set-AzureRMContext -subscription "bdc79274-6bb9-48a8-bfd8-00c140fxxxx"
-Get-AzureRmResource
-$VM = Get-AzureRmVm -ResourceGroup <RESOURCE-GROUP> -Name <VM-NAME>
-```
-
-Výstup bude vypadat jako v následujícím příkladu, který také ukazuje ID instančního objektu spravované identity přiřazené systémem virtuálního počítače:
-```powershell
-$VM = Get-AzureRmVm -ResourceGroup DevTestGroup -Name DevTestWinVM
-$VM.Identity.PrincipalId
-b83305de-f496-49ca-9427-e77512f6cc64
-```
-
-Teď přidejte spravovanou identitu přiřazenou systémem virtuálního počítače do této skupiny.  Instanční objekt můžete do skupiny přidat pouze pomocí Azure AD PowerShellu.  Spusťte tento příkaz:
-```powershell
-Add-AzureAdGroupMember -ObjectId $Group.ObjectId -RefObjectId $VM.Identity.PrincipalId
-```
-
-Pokud pak prozkoumáte také členství ve skupině, bude výstup vypadat následovně:
-
-```powershell
-Add-AzureAdGroupMember -ObjectId $Group.ObjectId -RefObjectId $VM.Identity.PrincipalId
-Get-AzureAdGroupMember -ObjectId $Group.ObjectId
-
-ObjectId                             AppId                                DisplayName
---------                             -----                                -----------
-b83305de-f496-49ca-9427-e77512f6cc64 0b67a6d6-6090-4ab4-b423-d6edda8e5d9f DevTestWinVM
-```
+1.  Povolení ověřování Azure AD pro server SQL
+2.  Vytvoření **uživatele** v databázi reprezentujícího systémem přiřazenou identitu virtuálního počítače
 
 ## <a name="enable-azure-ad-authentication-for-the-sql-server"></a>Povolení ověřování Azure AD pro server SQL
 
-Vytvořili jste skupinu a přidali do ní identitu spravované služby přiřazené systémem virtuálního počítače jako člena. Teď můžete pomocí následujících kroků [nakonfigurovat ověřování Azure AD pro server SQL](/azure/sql-database/sql-database-aad-authentication-configure#provision-an-azure-active-directory-administrator-for-your-azure-sql-server):
+[Nakonfigurujte pro server SQL ověřování Azure AD](/azure/sql-database/sql-database-aad-authentication-configure#provision-an-azure-active-directory-administrator-for-your-azure-sql-server) pomocí následujících kroků:
 
 1.  Na levém navigačním panelu na webu Azure Portal vyberte **Servery SQL**.
 2.  Kliknutím na server SQL u něj povolte ověřování Azure AD.
@@ -124,7 +65,7 @@ Vytvořili jste skupinu a přidali do ní identitu spravované služby přiřaze
 5.  Vyberte uživatelský účet Azure AD, který se má stát správcem serveru, a klikněte na **Vybrat**.
 6.  Na panelu příkazů klikněte na **Uložit**.
 
-## <a name="create-a-contained-user-in-the-database-that-represents-the-azure-ad-group"></a>Vytvoření uživatele v databázi reprezentujícího skupinu Azure AD
+## <a name="create-a-contained-user-in-the-database-that-represents-the-vms-system-assigned-identity"></a>Vytvoření uživatele v databázi reprezentujícího systémem přiřazenou identitu virtuálního počítače
 
 Pro tento další krok budete potřebovat aplikaci [Microsoft SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) (SSMS). Než začnete, můžete si také přečíst následující články se základními informacemi o integraci Azure AD:
 
@@ -140,17 +81,23 @@ Pro tento další krok budete potřebovat aplikaci [Microsoft SQL Server Managem
 7.  Klikněte na **Připojit**.  Dokončete proces přihlašování.
 8.  V **Průzkumníku objektů** rozbalte složku **Databáze**.
 9.  Klikněte pravým tlačítkem na uživatelskou databázi a pak klikněte na **Nový dotaz**.
-10.  V okně dotazu zadejte následující řádek a na panelu nástrojů klikněte na **Provést**:
+10. V okně dotazu zadejte následující řádek a na panelu nástrojů klikněte na **Provést**:
+
+    > [!NOTE]
+    > `VMName` v následujícím příkazu je název virtuálního počítače, pro který jste v části Požadavky povolili identitu přiřazenou systémem.
     
      ```
-     CREATE USER [VM managed identity access to SQL] FROM EXTERNAL PROVIDER
+     CREATE USER [VMName] FROM EXTERNAL PROVIDER
      ```
     
-     Příkaz by se měl úspěšně provést a vytvořit uživatele pro skupinu.
+     Příkaz by se měl úspěšně provést a vytvořit uživatele pro systémem přiřazenou identitu virtuálního počítače.
 11.  Vymažte okno dotazu, zadejte následující řádek a na panelu nástrojů klikněte na **Provést**:
+
+    > [!NOTE]
+    > `VMName` v následujícím příkazu je název virtuálního počítače, pro který jste v části Požadavky povolili identitu přiřazenou systémem.
      
      ```
-     ALTER ROLE db_datareader ADD MEMBER [VM managed identity access to SQL]
+     ALTER ROLE db_datareader ADD MEMBER [VMName]
      ```
 
      Příkaz by se měl úspěšně provést a udělit uživateli možnost čtení celé databáze.

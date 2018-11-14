@@ -11,15 +11,15 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 04/24/2018
-ms.openlocfilehash: 576e0adca21f5cd3313893035ff66bd83a0a0164
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.date: 11/01/2018
+ms.openlocfilehash: 01f1ac19cbab5ec60034b75fb15ccdb45df8541e
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47063519"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50913304"
 ---
-# <a name="azure-sql-database-connect-and-query-quickstarts"></a>Připojení ke službě Azure SQL Database a její dotazování – Rychlé starty
+# <a name="quickstarts-azure-sql-database-connect-and-query"></a>Rychlé starty: Připojení ke službě Azure SQL Database a její dotazování
 
 Následující dokument obsahuje odkazy na příklady Azure, které ukazují připojení k databázi SQL Azure a její dotazování. Obsahuje také několik doporučení týkající se protokolu TLS (Transport Level Security).
 

@@ -8,14 +8,14 @@ manager: kfile
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/28/2018
+ms.date: 11/02/2018
 ms.author: dech
-ms.openlocfilehash: 4f4cc18bb8423a20358476142488c94361d6b72d
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 782975cfa548d214515761e45b8f79a2219831e2
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50419210"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51036967"
 ---
 # <a name="set-up-a-cicd-pipeline-with-the-azure-cosmos-db-emulator-build-task-in-azure-devops"></a>Nastavení kanálu CI/CD pomocí úlohy sestavení emulátoru služby Azure Cosmos DB v Azure DevOps
 
@@ -40,32 +40,32 @@ Potom vyberte organizaci, do které se má rozšíření nainstalovat.
 
 ## <a name="create-a-build-definition"></a>Vytvoření definice sestavení
 
-Teď, když je rozšíření nainstalováno, potřebujeme ho přidat do [definice sestavení.](https://docs.microsoft.com/en-us/azure/devops/pipelines/get-started-designer?view=vsts&tabs=new-nav) Můžete upravit existující definici sestavení nebo vytvořit novou. Pokud už máte existující definici sestavení, můžete přeskočit k části [Přidání úlohy sestavení emulátoru do definice sestavení](#addEmulatorBuildTaskToBuildDefinition).
+Když je teď rozšíření nainstalované, přihlaste se ke svému účtu Azure DevOps a na řídicím panelu projektů vyhledejte svůj projekt. Do svého projektu můžete přidat [kanál sestavení](https://docs.microsoft.com/azure/devops/pipelines/get-started-designer?view=vsts&tabs=new-nav) nebo můžete upravit existující kanál sestavení. Pokud už máte kanál sestavení, můžete přeskočit k části [Přidání úlohy sestavení emulátoru do definice sestavení](#addEmulatorBuildTaskToBuildDefinition).
 
-Pokud chcete vytvořit novou definici sestavení, přejděte v Azure DevOps na kartu **Build and Release** (Sestavení a verze). Vyberte **+New** (+Nový).
+1. Pokud chcete vytvořit novou definici sestavení, přejděte v Azure DevOps na kartu **Builds** (Sestavení). Vyberte **+New** (+Nový). > **Nový kanál sestavení**
 
-![Vytvoření nové definice sestavení](./media/tutorial-setup-ci-cd/CreateNewBuildDef_1.png) Vyberte požadovaný týmový projekt, úložiště a větev pro povolení sestavení. 
+   ![Vytvoření nového kanálu sestavení](./media/tutorial-setup-ci-cd/CreateNewBuildDef_1.png)
 
-![Výběr týmového projektu, úložiště a větve pro definici sestavení ](./media/tutorial-setup-ci-cd/CreateNewBuildDef_2.png)
+2. Vyberte požadovaný **zdroj**, **Týmový projekt**, **Úložiště** a **Výchozí větev pro ruční a plánovaná sestavení**. Až zvolíte požadované možnosti, vyberte **Pokračovat**.
 
-Nakonec vyberte požadovanou šablonu pro definici sestavení. V tomto kurzu vybereme šablonu **ASP.NET**. 
+   ![Výběr týmového projektu, úložiště a větve pro kanál sestavení ](./media/tutorial-setup-ci-cd/CreateNewBuildDef_2.png)
 
-![Výběr požadované šablony definice sestavení ](./media/tutorial-setup-ci-cd/CreateNewBuildDef_3.png)
+3. Nakonec vyberte požadovanou šablonu pro kanál sestavení. V tomto kurzu vybereme šablonu **ASP.NET**. 
 
-Teď máme definici sestavení, kterou můžeme nastavit pro používání v úloze sestavení emulátoru Azure Cosmos DB, která vypadá podobně jako ta následující. 
+Teď máme kanál sestavení, který můžeme nastavit pro používání úlohy sestavení emulátoru služby Azure Cosmos DB. 
 
-![Šablona definice sestavení ASP.NET](./media/tutorial-setup-ci-cd/CreateNewBuildDef_4.png)
+## <a name="addEmulatorBuildTaskToBuildDefinition"></a>Přidání úlohy do kanálu sestavení
 
-## <a name="addEmulatorBuildTaskToBuildDefinition"></a>Přidání úlohy do definice sestavení
+1. Před přidáním úlohy do kanálu sestavení byste měli přidat úlohu agenta. Přejděte do kanálu sestavení, vyberte **...** a zvolte **Přidat úlohu agenta**.
 
-Pokud chcete přidat úlohu sestavení emulátoru, zadejte do vyhledávacího pole **cosmos** a vyberte **Add** (Přidat). Úloha sestavení spustí kontejner s již běžící instancí emulátoru Cosmos DB, proto je potřeba umístit úlohu před jakékoli další úlohy, které očekávají, že emulátor je spuštěný.
+1. Potom vyberte symbol **+** vedle úlohy agenta a přidejte úlohu sestavení emulátoru. Ve vyhledávacím poli vyhledejte **cosmos**, vyberte **Emulátor služby Azure Cosmos DB** a přidejte ho k úloze agenta. Úloha sestavení spustí kontejner s již spuštěnou instancí emulátoru služby Cosmos DB. Úloha emulátoru služby Azure Cosmos DB se musí nacházet před všemi ostatními úlohami, které očekávají, že je emulátor spuštěný.
 
-![Přidání úlohy sestavení emulátoru do definice sestavení](./media/tutorial-setup-ci-cd/addExtension_3.png) V tomto kurzu přidáme úlohu na začátek fáze 1, abychom zajistili, že bude emulátor přístupný před zahájením našich testů.
-Kompletní definice sestavení vypadá takto. 
+   ![Přidání úlohy sestavení emulátoru k definici sestavení](./media/tutorial-setup-ci-cd/addExtension_3.png)
 
-![Šablona definice sestavení ASP.NET](./media/tutorial-setup-ci-cd/CreateNewBuildDef_5.png)
+V tomto kurzu přidáte úlohu na začátek, abyste zajistili, že emulátor bude dostupný před provedením testů.
 
 ## <a name="configure-tests-to-use-the-emulator"></a>Konfigurace testů pro použití emulátoru
+
 Teď nakonfigurujeme naše testy, aby používaly emulátor. Úloha sestavení emulátoru exportuje proměnnou prostředí – CosmosDbEmulator.Endpoint – aby jakékoli další úlohy v kanálu sestavení mohly žádost znovu vydat. 
 
 V tomto kurzu použijeme [úkol nástroje Visual Studio Test](https://github.com/Microsoft/azure-pipelines-tasks/blob/master/Tasks/VsTestV2/README.md) ke spouštění testů jednotek nakonfigurovaných prostřednictvím souboru **.runsettings**. Pokud se chcete o nastavení testu jednotek dozvědět více, přečtěte si [dokumentaci](https://docs.microsoft.com/visualstudio/test/configure-unit-tests-by-using-a-dot-runsettings-file?view=vs-2017).
@@ -136,7 +136,8 @@ V úkolu nástroje Visual Studio Test přejděte na Execution Options (Možnosti
 ![Přepsání proměnné koncového bodu koncovým bodem úlohy sestavení emulátoru](./media/tutorial-setup-ci-cd/addExtension_5.png)
 
 ## <a name="run-the-build"></a>Spuštění sestavení
-Teď sestavení uložte a vložte do fronty. 
+
+Teď pro sestavení vyberte **Uložit a vložit do fronty**. 
 
 ![Uložení a spuštění sestavení](./media/tutorial-setup-ci-cd/runBuild_1.png)
 

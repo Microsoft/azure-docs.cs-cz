@@ -7,16 +7,16 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 10/17/2018
 ms.author: chrande
-ms.openlocfilehash: 69eafaa3be7a966bec179713d3e7eecd48ea3b67
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 67cd78d4900b8ce53cf0c50116c02a9c1b967687
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50243686"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50958759"
 ---
-# <a name="manage-database-account"></a>Správa účtu databáze
+# <a name="manage-database-accounts-in-azure-cosmos-db"></a>Správa účtů databáze ve službě Azure Cosmos DB
 
-Tento článek popisuje, jak spravovat účet služby Cosmos DB a nastavit vícenásobné navádění, přidat nebo odebrat oblast a nakonfigurovat více oblastí zápisu a priority převzetí služeb při selhání. 
+Tento článek popisuje, jak spravovat účet služby Cosmos DB a nastavit vícenásobné navádění, přidat nebo odebrat oblast, nakonfigurovat více oblastí zápisu a nastavit priority převzetí služeb při selhání. 
 
 ## <a name="create-a-database-account"></a>Vytvoření účtu databáze
 
@@ -33,7 +33,7 @@ az cosmosdb create --name <Cosmos DB Account name> --resource-group <Resource Gr
 
 ## <a name="configure-clients-for-multi-homing"></a>Konfigurace klientů pro vícenásobné navádění
 
-### <a id="configure-clients-multi-homing-dotnet"></a>.NET
+### <a id="configure-clients-multi-homing-dotnet"></a>.NET SDK
 
 ```csharp
 // Create a new Connection Policy
@@ -54,7 +54,7 @@ policy.PreferredLocations.Add("North Europe");
 DocumentClient client = new DocumentClient(new Uri(this.accountEndpoint), this.accountKey, policy);
 ```
 
-### <a id="configure-clients-multi-homing-java-async"></a>Java Async
+### <a id="configure-clients-multi-homing-java-async"></a>Java Async SDK
 
 ```java
 ConnectionPolicy policy = new ConnectionPolicy();
@@ -66,7 +66,7 @@ AsyncDocumentClient client =
                 .withConnectionPolicy(policy).build();
 ```
 
-### <a id="configure-clients-multi-homing-java-sync"></a>Java Sync
+### <a id="configure-clients-multi-homing-java-sync"></a>Java Sync SDK
 
 ```java
 ConnectionPolicy connectionPolicy = new ConnectionPolicy();
@@ -76,7 +76,7 @@ connectionPolicy.setPreferredLocations(preferredLocations);
 DocumentClient client = new DocumentClient(accountEndpoint, accountKey, connectionPolicy);
 ```
 
-### <a id="configure-clients-multi-homing-javascript"></a>Node.js/JavaScript/TypeScript
+### <a id="configure-clients-multi-homing-javascript"></a>Node.js/JavaScript/TypeScript SDK
 
 ```javascript
 // Set up the connection policy with your preferred regions
@@ -91,7 +91,7 @@ const client = new CosmosClient({
 });
 ```
 
-### <a id="configure-clients-multi-homing-python"></a>Python
+### <a id="configure-clients-multi-homing-python"></a>Python SDK
 
 ```python
 connection_policy = documents.ConnectionPolicy()
@@ -212,7 +212,7 @@ Následující kód JSON je příkladem šablony Resource Manageru. Můžete ji 
 
    ![Nabídka Globální replikace dat](./media/how-to-manage-database-account/replicate-data-globally.png)
 
-3. V nabídce **Ruční převzetí služeb při selhání** vyberte novou oblast zápisu a zaškrtnutím políčka vyjádřete, že chápete, že se tím změní oblast zápisu.
+3. V nabídce **Ruční převzetí služeb při selhání** vyberte novou oblast zápisu a zaškrtnutím políčka vyjádřete, že chápete, že se výběrem této možnosti změní oblast zápisu.
 
 4. Kliknutím na OK aktivujte převzetí služeb při selhání.
 
@@ -275,7 +275,7 @@ az cosmosdb update --name <Cosmos DB Account name> --resource-group <Resource Gr
 
    ![Nabídka portálu Automatické převzetí služeb při selhání](./media/how-to-manage-database-account/automatic-failover.png)
 
-V této nabídce není možné změnit oblast zápisu. Je potřeba provést ruční převzetí služeb při selhání a změnit oblast zápisu ručně.
+V této nabídce není možné změnit oblast zápisu. Pokud chcete změnit oblast zápisu ručně, je potřeba provést ruční převzetí služeb při selhání.
 
 ### <a id="set-failover-priorities-via-cli"></a>Azure CLI
 

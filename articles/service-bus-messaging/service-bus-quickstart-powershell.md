@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 09/22/2018
 ms.author: spelluru
-ms.openlocfilehash: ce357fcff3313ae0216d5a7a00b3d845f83bba91
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 2669b3ad9abc2370b4ecb66596d6edde17c82ddd
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47405882"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51242428"
 ---
 # <a name="quickstart-send-and-receive-messages-using-azure-powershell-and-net"></a>Rychlý start: Odesílání a přijímání zpráv pomocí PowerShellu a knihovny .NET
 
@@ -31,10 +31,10 @@ Pokud ještě nemáte předplatné Azure, vytvořte si nejprve [bezplatný úče
 
 Před tímto kurzem se ujistěte, že máte nainstalované tyto položky:
 
-- [Visual Studio 2017 s aktualizací Update 3 (verze 15.3, 26730.01)](http://www.visualstudio.com/vs) nebo novější.
+- [Visual Studio 2017 s aktualizací Update 3 (verze 15.3, 26730.01)](https://www.visualstudio.com/vs) nebo novější.
 - [NET Core SDK](https://www.microsoft.com/net/download/windows) verze 2.0 nebo novější.
 
-Tento rychlý start vyžaduje použití nejnovější verze Azure PowerShellu. Pokud PowerShell potřebujete nainstalovat nebo upgradovat, přečtěte si téma [Nainstalujte a nakonfigurujte Azure PowerShell][].
+Tento rychlý start vyžaduje použití nejnovější verze Azure PowerShellu. Pokud PowerShell potřebujete nainstalovat nebo upgradovat, přečtěte si téma [Instalace a konfigurace Azure PowerShellu][].
 
 ## <a name="log-in-to-azure"></a>Přihlášení k Azure
 
@@ -91,10 +91,10 @@ Kód spustíte následovně:
 
 3. Přejděte do složky s ukázkou `azure-service-bus\samples\DotNet\GettingStarted\BasicSendReceiveQuickStart\BasicSendReceiveQuickStart`.
 
-4. Pokud jste to ještě neudělali, získejte pomocí následující rutiny PowerShellu připojovací řetězec. Zástupné texty `my-resourcegroup` a `namespace-name` nezapomeňte nahradit svými konkrétními hodnotami: 
+4. Pokud jste to ještě neudělali, získejte pomocí následující rutiny PowerShellu připojovací řetězec. Zástupné texty `my-resourcegroup` a `namespace-name` nezapomeňte nahradit svými konkrétními hodnotami: 
 
    ```azurepowershell-interactive
-   Get-AzureRmServiceBusKey -ResourceGroupName my-resourcegroup -Namespace namespace-name -Name RootManageSharedAccessKey
+   Get-AzureRmServiceBusKey -ResourceGroupName my-resourcegroup -Namespace namespace-name -Name RootManageSharedAccessKey
    ```
 
 5.  Do příkazového řádku PowerShellu zadejte následující příkaz:
@@ -264,4 +264,4 @@ V tomto článku jste vytvořil obor názvů služby Service Bus a další prost
 > [Aktualizace zásob pomocí Azure PowerShellu](./service-bus-tutorial-topics-subscriptions-powershell.md)
 
 [bezplatný účet]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
-[Nainstalujte a nakonfigurujte Azure PowerShell]: /powershell/azure/install-azurerm-ps
+[Instalace a konfigurace Azure PowerShellu]: /powershell/azure/install-azurerm-ps

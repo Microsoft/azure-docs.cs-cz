@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: tutorial
 ms.date: 9/25/2018
 ms.author: victorh
-ms.openlocfilehash: 07f10ebbb99712b62c6807560777587033718d2b
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: fc56fe3a5bdfa0f5e1ef4bc309932cb7f57cf27d
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50091947"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50978089"
 ---
 # <a name="tutorial-configure-an-alias-record-to-support-apex-domain-names-with-traffic-manager"></a>Kurz: Konfigurace záznamu aliasu pro podporu vrcholů názvů domén ve službě Traffic Manager 
 
@@ -121,4 +121,4 @@ Pokud už prostředky vytvořené pro účely tohoto kurzu nepotřebujete, odstr
 V tomto kurzu jste vytvořili záznam aliasu umožňující použít vrchol názvu vaší domény k odkazování na profil služby Traffic Manager. Další informace o Azure DNS a webových aplikacích získáte v kurzu o webových aplikacích.
 
 > [!div class="nextstepaction"]
-> [Vytvoření záznamů DNS pro webovou aplikaci ve vlastní doméně](./dns-web-sites-custom-domain.md)
+> [Hostování aplikací s vyrovnáváním zatížení ve vrcholu zóny](./dns-alias-appservice.md)

@@ -4,17 +4,17 @@ description: Azure Blueprints je služba v Azure, která se používá k vytvá�
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 10/25/2018
+ms.date: 11/07/2018
 ms.topic: overview
 ms.service: blueprints
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 8118fd1fb0b7fa753ec8c6ed019743d763a95f4d
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: b2e767bf27962472a19e5d2e704b456cffe18423
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50092334"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51277524"
 ---
 # <a name="what-is-azure-blueprints"></a>Co je Azure Blueprints?
 
@@ -26,6 +26,9 @@ Podrobné plány představují deklarativní způsob, jak orchestrovat nasazení
 - Přiřazení zásad
 - Šablony Azure Resource Manageru
 - Skupiny prostředků
+
+Služba Azure Blueprints využívá globálně distribuovanou službu [Azure Cosmos DB](../../cosmos-db/introduction.md).
+Objekty podrobného plánu se replikují do několika oblastí Azure. Tato replikace zajišťuje nízkou latenci, vysokou dostupnost a konzistentní přístup k objektům podrobného plánu bez ohledu na to, do které oblasti služba Blueprints nasazuje prostředky.
 
 ## <a name="how-its-different-from-resource-manager-templates"></a>V čem se liší od šablon Resource Manageru
 
@@ -55,12 +58,12 @@ Podrobný plán se skládá z _artefaktů_. Podrobné plány aktuálně jako art
 |---------|---------|---------|
 |Skupiny prostředků     | Předplatné | Vytvořte novou skupinu prostředků pro použití jinými artefakty v rámci podrobného plánu.  Tyto zástupné skupiny prostředků vám umožní uspořádat prostředky přesně tak, jak je chcete mít strukturované, a poskytují omezovač oboru pro zahrnuté artefakty zásad a přiřazení rolí a šablony Azure Resource Manageru.         |
 |Šablona Azure Resource Manageru      | Skupina prostředků | Šablony slouží k vytváření složitých prostředí. Příklady prostředí: farma SharePointu, konfigurace stavu Azure Automation nebo pracovní prostor Log Analytics. |
-|Přiřazení zásad     | Předplatné, skupina prostředků | Umožňuje přiřazení zásad nebo iniciativy k skupině pro správu nebo předplatnému, k nimž je přiřazený podrobný plán. Zásady nebo iniciativa musí být v rámci oboru podrobného plánu (ve skupině pro správu podrobného plánu nebo pod ní). Pokud zásady nebo iniciativa obsahuje parametry, tyto parametry se přiřadí při vytvoření podrobného plánu nebo během přiřazení podrobného plánu.       |
+|Přiřazení zásad     | Předplatné, skupina prostředků | Umožňuje přiřazení zásady nebo iniciativy k předplatnému, ke kterému je podrobný plán přiřazený. Zásady nebo iniciativa musí být v rámci oboru podrobného plánu (ve skupině pro správu podrobného plánu nebo pod ní). Pokud zásady nebo iniciativa obsahuje parametry, tyto parametry se přiřadí při vytvoření podrobného plánu nebo během přiřazení podrobného plánu.       |
 |Přiřazení role   | Předplatné, skupina prostředků | Přidejte existujícího uživatele nebo skupinu k předdefinované roli, aby se zajistilo, že k vašim prostředkům budou mít vždy správný přístup správní lidé. Přiřazení rolí se dá definovat pro celé předplatné nebo vnořit do konkrétní skupiny prostředků, která je součástí podrobného plánu. |
 
 ### <a name="blueprints-and-management-groups"></a>Podrobné plány a skupiny pro správu
 
-Při vytváření definice podrobného plánu definujete, kam se podrobný plán uloží. V současnosti se podrobné plány můžou uložit jednom do [skupiny pro správu](../management-groups/overview.md), ke které máte přístup jako **Přispěvatel**. Podrobný plán je k dispozici pro přiřazení ke všem podřízeným prvkům (skupina pro správu nebo předplatné) této skupiny pro správu.
+Při vytváření definice podrobného plánu definujete, kam se podrobný plán uloží. V současnosti se podrobné plány můžou uložit jednom do [skupiny pro správu](../management-groups/overview.md), ke které máte přístup jako **Přispěvatel**. Podrobný plán je k dispozici pro přiřazení ke všem podřízeným předplatným této skupiny pro správu.
 
 > [!IMPORTANT]
 > Pokud nemáte přístup k žádné skupině pro správu nebo nemáte žádné skupiny pro správu nakonfigurované, při načtení seznamu definic podrobných plánů se ukáže, že žádná není k dispozici, a při kliknutí na **Obor** se otevře okno s upozorněním o načítání skupin pro správu. Pokud to chcete vyřešit, ujistěte se, že součástí [skupiny pro správu](../management-groups/overview.md) je předplatné, ke kterému máte náležitý přístup.

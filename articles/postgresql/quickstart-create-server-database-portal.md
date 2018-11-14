@@ -9,13 +9,13 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 03/20/2018
-ms.openlocfilehash: 4e14cde99aaf74b5058e4f9d55c386151036594e
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.date: 11/01/2018
+ms.openlocfilehash: 5cb51a412738c2361bbe30ecd1415f81c3f85c9c
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49987796"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50959031"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql-server-in-the-azure-portal"></a>Rychlý start: Vytvoření serveru Azure Database for PostgreSQL na webu Azure Portal
 
@@ -97,21 +97,13 @@ Otevřete stránku **Přehled** vašeho serveru. Poznamenejte si **Název server
 
  ![Stránka Přehled serveru](./media/quickstart-create-database-portal/6-server-name.png)
 
-## <a name="connect-to-the-postgresql-database-by-using-psql-in-cloud-shell"></a>Připojení k databázi PostgreSQL pomocí psql ve službě Cloud Shell
+## <a name="connect-to-the-postgresql-database-using-psql"></a>Připojení k databázi PostgreSQL pomocí nástroje psql
 
-Existuje řada aplikací, které můžete použít pro připojení k vašemu serveru Azure Database for PostgreSQL. Nejprve si ukážeme, jak se k serveru připojit pomocí nástroje příkazového řádku psql. Můžete použít webový prohlížeč a Azure Cloud Shell, jak je zde popsáno, aniž by bylo nutné instalovat další software. Pokud máte nástroj psql nainstalovaný místně na svém počítači, můžete se připojit i z něj.
+Existuje řada aplikací, které můžete použít pro připojení k vašemu serveru Azure Database for PostgreSQL. Pokud má klientský počítač nainstalovaný systém PostgreSQL, můžete se připojit k serveru Azure PostgreSQL pomocí místní instance nástroje [psql](https://www.postgresql.org/docs/current/static/app-psql.html). Teď se pomocí nástroje příkazového řádku psql připojíme k serveru Azure PostgreSQL.
 
-1. V horním navigačním podokně vyberte symbol terminálu a otevřete Cloud Shell.
+1. V prostředí se zadáním příkazového řádku psql připojte k databázi na vašem serveru Azure Database for PostgreSQL.
 
-   ![Symbol terminálu Azure Cloud Shell](./media/quickstart-create-database-portal/7-cloud-console.png)
-
-2. V prohlížeči se otevře Cloud Shell, kde můžete zadávat příkazy prostředí Bash.
-
-   ![Příkazový řádek Bash služby Cloud Shell](./media/quickstart-create-database-portal/8-bash.png)
-
-3. V příkazovém řádku služby Cloud Shell se zadáním příkazového řádku psql připojte k databázi na vašem serveru Azure Database for PostgreSQL.
-
-    Pokud se chcete připojit k serveru Azure Database for PostgreSQL pomocí nástroje [psql](https://www.postgresql.org/docs/9.6/static/app-psql.html), použijte následující formát:
+    Pokud se chcete připojit k serveru Azure Database for PostgreSQL pomocí nástroje [psql](https://www.postgresql.org/docs/current/static/app-psql.html), použijte následující formát:
     ```bash
     psql --host=<yourserver> --port=<port> --username=<server admin login> --dbname=<database name>
     ```
@@ -124,7 +116,7 @@ Existuje řada aplikací, které můžete použít pro připojení k vašemu ser
 
     Parametr psql |Hodnota|Popis
     ---|---|---
-    --host | Název serveru | Hodnota názvu serveru, kterou jste použili dříve při vytváření serveru Azure Database for PostgreSQL. Ukázkový server v příkladu je **mydemoserver.postgres.database.azure.com**. Použijte plně kvalifikovaný název domény (**\*.postgres.database.azure.com), jak je znázorněno v příkladu. Pokud si název vašeho serveru nepamatujete, získejte informace o připojení pomocí postupu v předchozí části. 
+    --host | Název serveru | Hodnota názvu serveru, kterou jste použili dříve při vytváření serveru Azure Database for PostgreSQL. Ukázkový server v příkladu je **mydemoserver.postgres.database.azure.com**. Použijte plně kvalifikovaný název domény (**\*.postgres.database.azure.com**), jak je znázorněno v příkladu. Pokud si název vašeho serveru nepamatujete, získejte informace o připojení pomocí postupu v předchozí části. 
     --port | 5432 | Port, který se použije pro připojení k serveru Azure Database for PostgreSQL. 
     --username | Přihlašovací jméno správce serveru |Přihlašovací uživatelské jméno správce serveru, které jste zadali dříve při vytváření serveru Azure Database for PostgreSQL. Pokud si své uživatelské jméno nepamatujete, získejte informace o připojení pomocí postupu v předchozí části. Formát je *username@servername*.
     --dbname | *postgres* | Výchozí systémem vygenerovaný název databáze vytvořený pro první připojení. Později vytvoříte vlastní databázi.
@@ -135,7 +127,7 @@ Existuje řada aplikací, které můžete použít pro připojení k vašemu ser
     ---|---|---
     heslo | Vaše heslo správce | Na příkazovém řádku Bash se zadávané znaky hesla nezobrazí. Po zadání všech znaků stiskněte klávesu Enter, abyste se ověřili a připojili.
 
-    Jakmile budete připojeni, nástroj psql zobrazí příkazový řádek postgres, kde můžete zadávat příkazy jazyka SQL. Ve výstupu počátečního připojení se může zobrazit varování, protože nástroj psql ve službě Cloud Shell může mít jinou verzi než na serveru Azure Database for PostgreSQL. 
+    Jakmile budete připojeni, nástroj psql zobrazí příkazový řádek postgres, kde můžete zadávat příkazy jazyka SQL. Ve výstupu počátečního připojení se může zobrazit upozornění, protože nástroj psql, který používáte, může mít jinou verzi než na serveru Azure Database for PostgreSQL. 
     
     Příklad výstupu nástroje psql:
     ```bash
@@ -149,26 +141,26 @@ Existuje řada aplikací, které můžete použít pro připojení k vašemu ser
     ```
 
     > [!TIP]
-    > Pokud brána firewall není nakonfigurovaná k povolení IP adres služby Cloud Shell, dojde k následující chybě:
+    > Pokud brána firewall není nakonfigurovaná k povolení IP adresy vašeho klienta, dojde k následující chybě:
     > 
-    > "psql: FATAL: no pg_hba.conf entry for host "0.0.0.0", user "myadmin", database "postgres", SSL on FATAL: SSL connection is required. (psql: ZÁVAŽNÁ CHYBA: nenalezen žádný záznam pg_hba.conf pro hostitele 0.0.0.0, uživatele myadmin, databázi postgres, ZÁVAŽNÁ CHYBA SSL: vyžaduje se připojení SSL.) Zadejte možnosti SSL a zkuste to znovu.
+    > "psql: FATAL: no pg_hba.conf entry for host "<IP address>", user "myadmin", database "postgres", SSL on FATAL: SSL connection is required. (psql: ZÁVAŽNÁ CHYBA: nenalezen žádný záznam pg_hba.conf pro hostitele <IP_adresa>, uživatele myadmin, databázi postgres, ZÁVAŽNÁ CHYBA SSL: vyžaduje se připojení SSL.) Zadejte možnosti SSL a zkuste to znovu.
     > 
     > Pokud chcete chybu vyřešit, ujistěte se, že konfigurace serveru odpovídá postupu v části Konfigurace pravidla brány firewall na úrovni serveru tohoto článku.
 
-4. Vytvořte prázdnou databázi s názvem mypgsqldb zadáním následujícího příkazu na příkazovém řádku:
+2. Vytvořte prázdnou databázi s názvem mypgsqldb zadáním následujícího příkazu na příkazovém řádku:
     ```bash
     CREATE DATABASE mypgsqldb;
     ```
     Dokončení příkazu může trvat několik minut. 
 
-5. Na příkazovém řádku spusťte následující příkaz pro přepnutí připojení na nově vytvořenou databázi **mypgsqldb**:
+3. Na příkazovém řádku spusťte následující příkaz pro přepnutí připojení na nově vytvořenou databázi **mypgsqldb**:
     ```bash
     \c mypgsqldb
     ```
 
-6. Zadejte `\q` a pak stisknutím klávesy Enter ukončete nástroj psql. Jakmile budete hotovi, můžete Cloud Shell zavřít.
+4. Zadejte `\q` a pak stisknutím klávesy Enter ukončete nástroj psql. 
 
-Připojili jste se k serveru Azure Database for PostgreSQL pomocí nástroje psql ve službě Cloud Shell a vytvořili prázdnou uživatelskou databázi. Pokračujte k další části a připojte se pomocí dalšího běžného nástroje pgAdmin.
+Připojili jste se k serveru Azure Database for PostgreSQL pomocí nástroje psql a vytvořili jste prázdnou uživatelskou databázi. Pokračujte k další části a připojte se pomocí dalšího běžného nástroje pgAdmin.
 
 ## <a name="connect-to-the-postgresql-server-using-pgadmin"></a>Připojení k serveru PostgreSQL pomocí nástroje pgAdmin
 
@@ -188,7 +180,7 @@ pgAdmin je opensourcový nástroj používaný se systémem PostgreSQL. Nástroj
 
     Parametr pgAdmin |Hodnota|Popis
     ---|---|---
-    Název nebo adresa hostitele | Název serveru | Hodnota názvu serveru, kterou jste použili dříve při vytváření serveru Azure Database for PostgreSQL. Ukázkový server v příkladu je **mydemoserver.postgres.database.azure.com**. Použijte plně kvalifikovaný název domény (**\*.postgres.database.azure.com), jak je znázorněno v příkladu. Pokud si název vašeho serveru nepamatujete, získejte informace o připojení pomocí postupu v předchozí části. 
+    Název nebo adresa hostitele | Název serveru | Hodnota názvu serveru, kterou jste použili dříve při vytváření serveru Azure Database for PostgreSQL. Ukázkový server v příkladu je **mydemoserver.postgres.database.azure.com**. Použijte plně kvalifikovaný název domény (**\*.postgres.database.azure.com**), jak je znázorněno v příkladu. Pokud si název vašeho serveru nepamatujete, získejte informace o připojení pomocí postupu v předchozí části. 
     Port | 5432 | Port, který se použije pro připojení k serveru Azure Database for PostgreSQL. 
     Databáze údržby | *postgres* | Výchozí systémem vygenerovaný název databáze.
     Uživatelské jméno | Přihlašovací jméno správce serveru | Přihlašovací uživatelské jméno správce serveru, které jste zadali dříve při vytváření serveru Azure Database for PostgreSQL. Pokud si uživatelské jméno nepamatujete, získejte informace o připojení pomocí postupu v předchozí části. Formát je *username@servername*.

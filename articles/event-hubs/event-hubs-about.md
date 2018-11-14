@@ -10,12 +10,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 08/01/2018
 ms.author: shvija
-ms.openlocfilehash: 5493819efb32fa594cf27695b2ab5d1273225756
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: f3f9abfb8373e7257237b39d16dfb3f36259ddd5
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49429883"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281910"
 ---
 # <a name="what-is-azure-event-hubs"></a>Co je služba Azure Event Hubs?
 
@@ -58,9 +58,9 @@ Pomocí Event Hubs můžete začít se streamy v megabajtech a přejít na gigab
 
 ## <a name="rich-ecosystem"></a>Ekosystém plný možností
 
-[Služba Event Hubs pro ekosystémy Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md) umožňuje klientům a aplikacím [Apache Kafka (1.0 nebo vyšší)](https://kafka.apache.org/) komunikovat se službou Event Hubs a nemusí se přitom spravovat žádné clustery.
+[Služba Event Hubs pro ekosystémy Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md) umožňuje klientům a aplikacím [Apache Kafka (1.0 nebo novější)](https://kafka.apache.org/) komunikovat se službou Event Hubs a nemusí se přitom spravovat žádné clustery.
  
-Díky širokému ekosystému dostupnému v různých [jazycích (.NET, Java, Python, Go, Node.js)](https://github.com/Azure/azure-event-hubs) můžete snadno začít zpracovávat streamy ze služby Event Hubs. Všechny podporované jazyky klientů poskytují integraci na nízké úrovni.
+Díky širokému ekosystému dostupnému v různých [jazycích (.NET, Java, Python, Go, Node.js)](https://github.com/Azure/azure-event-hubs) můžete snadno začít zpracovávat streamy ze služby Event Hubs. Všechny podporované jazyky klientů poskytují integraci na nízké úrovni. Tento ekosystém poskytuje také bezproblémovou integraci se službami Azure, jako je Stream Analytics a Azure Functions, která umožňuje vytvářet bezserverové architektury.
 
 ## <a name="key-architecture-components"></a>Klíčové komponenty architektury
 

@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/25/2018
+ms.date: 11/07/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: c7396d7322958442fab51417eb350f26f7ada78e
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: e40c18edadebae1f92cf811ea054503b9cd6b1ae
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49352656"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51277966"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-federated-domains"></a>Kurz: Konfigurace hybridního připojení k Azure Active Directory pro federované domény
 
@@ -156,6 +156,8 @@ Pokud jsou některá z vašich zařízení připojených k doméně zařízení 
  
 - Konfigurace nastavení místního intranetu pro registraci zařízení
 
+- Řízení zařízení s Windows nižší úrovně 
+
 
 ### <a name="update-device-settings"></a>Aktualizace nastavení zařízení 
 
@@ -176,8 +178,6 @@ Pokud chcete úspěšně dokončit hybridní připojení zařízení s Windows n
 
 - `https://device.login.microsoftonline.com`
 
-- `https://device.login.microsoftonline.com`
-
 - Služba tokenů zabezpečení vaší organizace (STS – federované domény)
 
 - `https://autologon.microsoftazuread-sso.com` (pro bezproblémové jednotné přihlašování)
@@ -185,6 +185,10 @@ Pokud chcete úspěšně dokončit hybridní připojení zařízení s Windows n
 Kromě toho je potřeba v zóně místního intranetu uživatele povolit možnost **Povolit aktualizace stavového řádku přes skript**.
 
 
+
+### <a name="control-windows-down-level-devices"></a>Řízení zařízení s Windows nižší úrovně 
+
+Pokud chcete registrovat zařízení s Windows nižší úrovně, musíte si z webu Download Center stáhnout a nainstalovat balíček Instalační služby systému Windows (.msi). Další informace získáte kliknutím [sem](hybrid-azuread-join-control.md#control-windows-down-level-devices). 
 
 ## <a name="verify-the-registration"></a>Ověření registrace
 

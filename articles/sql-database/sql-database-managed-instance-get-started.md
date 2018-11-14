@@ -11,15 +11,15 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: Carlrab
 manager: craigg
-ms.date: 09/23/2018
-ms.openlocfilehash: ebdb78a762aa212566395734804b9c021e84e6cd
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.date: 11/01/2018
+ms.openlocfilehash: 3eadc2d233fd1716716c323f4c7087ee8363c67c
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50140870"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50912318"
 ---
-# <a name="create-an-azure-sql-database-managed-instance"></a>Vytvoření spravované instance Azure SQL Database
+# <a name="quickstart-create-an-azure-sql-database-managed-instance"></a>Rychlý start: Vytvoření spravované instance Azure SQL Database
 
 V tomto rychlém startu se dozvíte, jak na webu Azure Portal vytvořit [spravovanou instanci](sql-database-managed-instance.md) Azure SQL Database. 
 

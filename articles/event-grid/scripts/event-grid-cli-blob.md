@@ -4,20 +4,19 @@ description: Ukázkový skript Azure CLI – Přihlášení k odběru účtu úl
 services: event-grid
 documentationcenter: na
 author: tfitzmac
-manager: timlt
 ms.service: event-grid
 ms.devlang: azurecli
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/05/2018
+ms.date: 11/02/2018
 ms.author: tomfitz
-ms.openlocfilehash: 434d94b9ba2c06c85c84c17be68d8493e8344d2b
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 3ecf5cd0906e04625f44584d0b668f764665075e
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31425816"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51037854"
 ---
 # <a name="subscribe-to-events-for-a-blob-storage-account-with-azure-cli"></a>Přihlášení k odběru událostí účtu úložiště objektů blob pomocí Azure CLI
 
@@ -27,9 +26,15 @@ Tento skript vytvoří odběr Event Gridu pro události účtu úložiště obje
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="sample-script"></a>Ukázkový skript
+Ukázkový skript ve verzi Preview vyžaduje rozšíření Event Grid. Pokud ho chcete nainstalovat, spusťte příkaz `az extension add --name eventgrid`.
+
+## <a name="sample-script---stable"></a>Ukázkový skript – stabilní
 
 [!code-azurecli[main](../../../cli_scripts/event-grid/subscribe-to-blob-storage/subscribe-to-blob-storage.sh "Subscribe to Blob storage")]
+
+## <a name="sample-script---preview-extension"></a>Ukázkový skript – rozšíření ve verzi Preview
+
+[!code-azurecli[main](../../../cli_scripts/event-grid/subscribe-to-blob-storage-preview/subscribe-to-blob-storage-preview.sh "Subscribe to Blob storage")]
 
 ## <a name="script-explanation"></a>Vysvětlení skriptu
 
@@ -38,7 +43,7 @@ Tento skript k vytvoření odběru událostí používá následující příkaz
 | Příkaz | Poznámky |
 |---|---|
 | [az eventgrid event-subscription create](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription#az-eventgrid-event-subscription-create) | Vytvoří odběr Event Gridu. |
-
+| [az eventgrid event-subscription create](/cli/azure/ext/eventgrid/eventgrid/event-subscription#ext-eventgrid-az-eventgrid-event-subscription-create) – verze rozšíření | Vytvoří odběr Event Gridu. |
 
 ## <a name="next-steps"></a>Další kroky
 

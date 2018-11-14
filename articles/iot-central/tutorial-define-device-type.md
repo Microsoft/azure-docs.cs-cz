@@ -3,24 +3,24 @@ title: Definování nového typu zařízení v aplikaci Azure IoT Central | Micr
 description: Tento kurz vám jako tvůrci ukáže, jak definovat nový typ zařízení v aplikaci Azure IoT Central. Pro váš typ definujete telemetrická data, stav, vlastnosti a nastavení.
 author: tbhagwat3
 ms.author: tanmayb
-ms.date: 10/12/2018
+ms.date: 10/30/2018
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 8c69a863d8719a0e4eba30a6d5a619210e7f95b8
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: dd81c10bcda6665de7ffabe94a4c1be991687797
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50156030"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50963586"
 ---
 # <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application"></a>Kurz: Definování nového typu zařízení v aplikaci Azure IoT Central
 
 Tento kurz vám jako tvůrci ukáže, jak pomocí šablony zařízení definovat nový typ zařízení v aplikaci Microsoft Azure IoT Central. Šablona zařízení definuje telemetrická data, stav, vlastnosti a nastavení pro váš typ zařízení.
 
-Aby bylo možné otestovat aplikaci před připojením skutečného zařízení, Azure IoT Central při vytvoření šablony zařízení vygeneruje simulované zařízení.
+Aby bylo možné otestovat aplikaci před připojením skutečného zařízení, IoT Central při vytváření šablony zařízení vygeneruje simulované zařízení.
 
 V tomto kurzu vytvoříte šablonu zařízení **Connected Air Conditioner** (Připojená klimatizace). Připojené klimatizační zařízení:
 
@@ -59,9 +59,9 @@ K dokončení tohoto kurzu potřebujete aplikaci Azure IoT Central. Pokud jste d
 
 4. Vytvoření nové aplikace Azure IoT Central:
     
-    * Zvolte **Free**. 7denní bezplatná zkušební verze nemá žádné požadavky na předplatné.
+    * Zvolte **Trial** (Zkušební verze). K vytvoření zkušební verze aplikace nepotřebujete předplatné Azure.
     
-       Další informace o adresářích a předplatných najdete v tématu [Vytvoření aplikace Azure IoT Central](howto-create-application.md).
+       Další informace o adresářích a předplatných najdete v [rychlém startu k vytvoření aplikace](quick-deploy-iot-central.md).
     
     * Zvolte **Vlastní aplikace**.
     
@@ -69,9 +69,9 @@ K dokončení tohoto kurzu potřebujete aplikaci Azure IoT Central. Pokud jste d
     
     * Zvolte **Vytvořit**.
 
-    ![Stránka vytvoření aplikace Azure IoT Central](./media/tutorial-define-device-type/iotcentralcreatenew.png)
+    ![Stránka vytvoření aplikace Azure IoT Central](./media/tutorial-define-device-type/iotcentralcreate.png)
 
-    Další informace najdete v tématu popisujícím [postup vytvoření aplikace Azure IoT Central](howto-create-application.md).
+    Další informace najdete v [rychlém startu k vytvoření aplikace](quick-deploy-iot-central.md).
 
 ## <a name="create-a-new-custom-device-template"></a>Vytvoření nové vlastní šablony zařízení
 

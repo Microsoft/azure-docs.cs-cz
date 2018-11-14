@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/18/2018
+ms.date: 11/01/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 33fc8a3822def68cc0baad4670233f57044d1985
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: a3c35057af883eb790c44b3547072031eaf4ad2f
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49408403"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50962006"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>Kurz: Ruční konfigurace hybridních zařízení připojených k Azure Active Directory 
 
@@ -504,6 +504,9 @@ Pokud jsou některá z vašich zařízení připojených k doméně zařízení 
  
 - Přidat koncový bod ověřování zařízení Azure AD do zón místního intranetu, aby se zabránilo zobrazování výzev k zadání certifikátu při ověřování zařízení.
 
+- Řízení zařízení s Windows nižší úrovně 
+
+
 ### <a name="set-policy-in-azure-ad-to-enable-users-to-register-devices"></a>Nastavení zásady v Azure AD, která uživatelům umožní registrovat zařízení
 
 Pokud chcete registrovat zařízení s Windows nižší úrovně, je potřeba zajistit nastavení, které uživatelům umožní registrovat zařízení v Azure AD. Na webu Azure Portal najdete toto nastavení v části:
@@ -551,6 +554,12 @@ Ve službě AD FS musíte přidat pravidlo transformace vystavování, které pr
 Pokud se chcete vyhnout zobrazování výzev k zadání certifikátu při ověřování uživatelů na zaregistrovaných zařízeních v Azure AD, můžete do zařízení připojených k doméně odeslat nabízenou zásadu, která přidá následující adresy URL do zóny Místní intranet v aplikaci Internet Explorer:
 
 `https://device.login.microsoftonline.com`
+
+
+### <a name="control-windows-down-level-devices"></a>Řízení zařízení s Windows nižší úrovně 
+
+Pokud chcete registrovat zařízení s Windows nižší úrovně, musíte si z webu Download Center stáhnout a nainstalovat balíček Instalační služby systému Windows (.msi). Další informace získáte kliknutím [sem](hybrid-azuread-join-control.md#control-windows-down-level-devices). 
+
 
 
 ## <a name="verify-joined-devices"></a>Ověření připojených zařízení

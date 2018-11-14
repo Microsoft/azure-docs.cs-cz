@@ -14,12 +14,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: f9b63beeb6979d7dec5fc2cf2d91a3327ba7c43c
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 6820b44309ac2b3dbeb5ad6f0beb460c8712e9af
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50415232"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50912114"
 ---
 # <a name="publish-multiple-versions-of-your-api"></a>Publikování několika verzí rozhraní API 
 
@@ -59,20 +59,25 @@ Azure API Management umožňuje zvolit způsob, jakým umožníte volajícím ur
 ![Obrazovka Přidat verzi](media/api-management-getstarted-publish-versions/AddVersion.PNG)
 
 1. Jako **schéma vytváření verzí** ponechte vybranou možnost **cesta**.
-2. Přidejte **v1** jako **název** a **identifikátor verze**.
+2. Do pole **Název** zadejte **demo-conference-api-v1**.
+
+    > [!NOTE]
+    > Verze je ve skutečnosti nové rozhraní API založené na revizi rozhraní API. **Název** je název nového rozhraní API a musí být jedinečný v rámci instance služby API Management.
+
+3. Do pole **Identifikátor verze** zadejte **v1**.
 
     > [!TIP]
     > Pokud jako schéma vytváření verzí vyberete **hlavičku** nebo **řetězec dotazu**, je potřeba zadat další hodnotu – název hlavičky nebo parametr řetězce dotazu.
 
-3. Vyberte **Vytvořit** a nastavte svou novou verzi.
-4. V seznamu rozhraní API se teď pod položkou **Demo Conference API** zobrazí dvě různá rozhraní API – **Original** (Původní) a **v1**.
+4. Vyberte **Vytvořit** a nastavte svou novou verzi.
+5. V seznamu rozhraní API se teď pod položkou **Demo Conference API** zobrazí dvě různá rozhraní API – **Original** (Původní) a **v1**.
 
     ![Verze uvedené pod rozhraním API na webu Azure Portal](media/api-management-getstarted-publish-versions/VersionList.PNG)
 
     > [!Note]
     > Pokud přidáte verzi k rozhraní bez správy verzí, automaticky se vytvoří verze **Original**, která odpovídá na výchozí adrese URL. Tím se zajistí, že proces přidání verze negativně neovlivní žádné stávající volající. Pokud vytvoříte nové rozhraní API, které má už od začátku povolené verze, verze Original se nevytvoří.
 
-5. Teď můžete upravit a nakonfigurovat verzi **v1** jako rozhraní API, které je oddělené od verze **Original**. Změny jedné verze nemají vliv na jinou verzi.
+6. Teď můžete upravit a nakonfigurovat verzi **v1** jako rozhraní API, které je oddělené od verze **Original**. Změny jedné verze nemají vliv na jinou verzi.
 
 ## <a name="add-the-version-to-a-product"></a>Přidání verze do produktu
 

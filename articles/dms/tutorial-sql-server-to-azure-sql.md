@@ -1,5 +1,5 @@
 ---
-title: Offline migrace SQL Serveru do služby Azure SQL Database pomocí služby Azure Database Migration Service | Microsoft Docs
+title: 'Kurz: Offline migrace SQL Serveru do služby Azure SQL Database pomocí služby Azure Database Migration Service | Microsoft Docs'
 description: Zjistěte, jak pomocí služby Azure Database Migration Service provést offline migraci z místního SQL Serveru do služby Azure SQL Database.
 services: dms
 author: pochiraju
@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
 ms.date: 10/10/2018
-ms.openlocfilehash: 6b8b6994b810db939a5e690d16d3c5d2f1a0825f
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 783785a73b3a6a99126b07f3759be540fe3098d8
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945395"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50959235"
 ---
-# <a name="migrate-sql-server-to-azure-sql-database-offline-using-dms"></a>Offline migrace SQL Serveru do služby Azure SQL Database pomocí DMS
+# <a name="tutorial-migrate-sql-server-to-azure-sql-database-offline-using-dms"></a>Kurz: Offline migrace SQL Serveru do služby Azure SQL Database pomocí DMS
 Pomocí služby Azure Database Migration Service můžete migrovat databáze z místní instance SQL Serveru do služby [Azure SQL Database](https://docs.microsoft.com/azure/sql-database/). V tomto kurzu pomocí služby Azure Database Migration Service provedete migraci databáze **Adventureworks2012** obnovené do místní instance SQL Serveru 2016 (nebo novější) do služby Azure SQL Database.
 
 V tomto kurzu se naučíte:

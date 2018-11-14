@@ -13,19 +13,19 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 02/09/2018
+ms.date: 11/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 94c36316f201abb7b86d56547551c4baefbcc031
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: c69a91ce360b5476541de29dc52ea89057aa726c
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48867829"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51037630"
 ---
 # <a name="tutorial---manage-azure-disks-with-azure-powershell"></a>Kurz: Správa disků v Azure pomocí Azure PowerShellu
 
-Virtuální počítače Azure využívají disky k ukládání svých operačních systémů, aplikací a dat. Při vytváření virtuálního počítače je důležité, abyste zvolili vhodnou velikost disku a konfiguraci pro očekávané úlohy. Tento kurz se zaměřuje na nasazení a správu disků virtuálních počítačů. Dozvíte se o těchto tématech:
+Virtuální počítače Azure využívají disky k ukládání svých operačních systémů, aplikací a dat. Při vytváření virtuálního počítače je důležité, abyste zvolili vhodnou velikost a konfiguraci disku pro očekávanou pracovní zátěž. Tento kurz se zaměřuje na nasazení a správu disků virtuálních počítačů. Dozvíte se o těchto tématech:
 
 > [!div class="checklist"]
 > * Disky s operačním systémem a dočasné disky
@@ -34,63 +34,42 @@ Virtuální počítače Azure využívají disky k ukládání svých operační
 > * Výkon disků
 > * Připojení a příprava datových disků
 
-[!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
+## <a name="launch-azure-cloud-shell"></a>Spuštění služby Azure Cloud Shell
 
-Pokud se rozhodnete nainstalovat a používat PowerShell místně, musíte v tomto kurzu použít modul Azure PowerShell verze 5.7.0 nebo novější. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzureRmAccount` pro vytvoření připojení k Azure.
+Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. 
+
+Pokud chcete otevřít Cloud Shell, vyberte **Vyzkoušet** v pravém horním rohu bloku kódu. Cloud Shell můžete spustit také na samostatné kartě prohlížeče na adrese [https://shell.azure.com/powershell](https://shell.azure.com/powershell). Zkopírujte bloky kódu výběrem možnosti **Kopírovat**, vložte je do služby Cloud Shell a potom je spusťte stisknutím klávesy Enter.
 
 ## <a name="default-azure-disks"></a>Výchozí disky v Azure
 
 Při vytvoření virtuálního počítače Azure se k němu automaticky připojí dva disky. 
 
-**Disk s operačním systémem:** Disky s operačním systémem můžou mít velikost až 4 terabajty a hostují operační systém virtuálního počítače.  Disku s operačním systémem je ve výchozím nastavení přiřazeno písmeno jednotky *c*. Konfigurace ukládání do mezipaměti na disku je u disku s operačním systémem optimalizovaná s ohledem na výkon operačního systému. Disk s operačním systémem **by neměl** hostit aplikace nebo data. Pro aplikace a data použijte datový disk, který je podrobněji popsán dále v tomto článku.
+**Disk s operačním systémem:** Disky s operačním systémem můžou mít velikost až 4 terabajty a hostují operační systém virtuálního počítače.  Disku s operačním systémem je ve výchozím nastavení přiřazené písmeno jednotky *C*. Konfigurace ukládání do mezipaměti na disku je u disku s operačním systémem optimalizovaná s ohledem na výkon operačního systému. Disk s operačním systémem **by neměl** hostit aplikace nebo data. Pro aplikace a data použijte datový disk, který je podrobněji popsán dále v tomto článku.
 
-**Dočasný disk:** Dočasné disky používají jednotku SSD, která je umístěná na stejném hostiteli Azure jako virtuální počítač. Dočasné disky mají vysoký výkon a můžou se používat pro operace, jako je zpracování dočasných dat. V případě přesunutí virtuálního počítače na nového hostitele se ale všechna data uložená na dočasném disku odeberou. Velikost dočasného disku se určuje podle velikosti virtuálního počítače. Dočasným diskům se ve výchozím nastavení přiřazuje písmeno jednotky *d*.
+**Dočasný disk:** Dočasné disky používají jednotku SSD, která je umístěná na stejném hostiteli Azure jako virtuální počítač. Dočasné disky mají vysoký výkon a můžou se používat pro operace, jako je zpracování dočasných dat. V případě přesunutí virtuálního počítače na nového hostitele se ale všechna data uložená na dočasném disku odeberou. Velikost dočasného disku se určuje podle [velikosti virtuálního počítače](sizes.md). Dočasným diskům se ve výchozím nastavení přiřazuje písmeno jednotky *D*.
 
-### <a name="temporary-disk-sizes"></a>Velikosti dočasného disku
 
-| Typ | Běžné velikosti | Maximální velikost dočasného disku (GiB) |
-|----|----|----|
-| [Obecné účely](sizes-general.md) | Řady A, B a D | 1600 |
-| [Optimalizované z hlediska výpočetních služeb](sizes-compute.md) | Řada F | 576 |
-| [Optimalizované z hlediska paměti](sizes-memory.md) | Řady D, E, G a M | 6144 |
-| [Optimalizované z hlediska úložiště](sizes-storage.md) | Řada L | 5630 |
-| [GPU](sizes-gpu.md) | Řada N | 1440 |
-| [Vysoký výkon](sizes-hpc.md) | Řady A a H | 2000 |
 
 ## <a name="azure-data-disks"></a>Datové disky Azure
 
-Pro instalaci aplikací a ukládání dat je možné přidat další datové disky. Datové disky by se měly používat v každé situaci, kdy se vyžaduje odolné a responzivní úložiště dat. Každý datový disk má maximální kapacitu 4 terabajty. Velikost virtuálního počítače určuje, kolik datových disků se k němu může připojit. Na každý virtuální procesor virtuálního počítače je možné připojit dva datové disky. 
+Pro instalaci aplikací a ukládání dat je možné přidat další datové disky. Datové disky by se měly používat v každé situaci, kdy se vyžaduje odolné a responzivní úložiště dat. Každý datový disk má maximální kapacitu 4 terabajty. Velikost virtuálního počítače určuje, kolik datových disků se k němu může připojit. Na každý virtuální procesor virtuálního počítače je možné připojit čtyři datové disky. 
 
-### <a name="max-data-disks-per-vm"></a>Maximum datových disků na virtuální počítač
-
-| Typ | Běžné velikosti | Maximum datových disků na virtuální počítač |
-|----|----|----|
-| [Obecné účely](sizes-general.md) | Řady A, B a D | 64 |
-| [Optimalizované z hlediska výpočetních služeb](sizes-compute.md) | Řada F | 64 |
-| [Optimalizované z hlediska paměti](sizes-memory.md) | Řady D, E, G a M | 64 |
-| [Optimalizované z hlediska úložiště](sizes-storage.md) | Řada L | 64 |
-| [GPU](sizes-gpu.md) | Řada N | 64 |
-| [Vysoký výkon](sizes-hpc.md) | Řady A a H | 64 |
 
 ## <a name="vm-disk-types"></a>Typy disků virtuálního počítače
 
 Azure poskytuje dva typy disků.
 
-### <a name="standard-disk"></a>Disk Standard
+**Disky Standard:** využívají pevné disky a poskytují nákladově efektivní úložiště se zachováním výkonu. Disky Standard jsou ideální pro nákladově efektivní vývoj a testování.
 
-Služba Storage úrovně Standard je založená na jednotkách HDD a poskytuje nákladově efektivní úložiště se zachováním výkonu. Disky Standard jsou ideální pro nákladově efektivní vývoj a testování.
-
-### <a name="premium-disk"></a>Disk Premium
-
-Disky Premium jsou založené na vysoce výkonných discích SSD s nízkou latencí. Jsou ideální pro virtuální počítače s produkčními úlohami. Služba Premium Storage podporuje virtuální počítače řad DS, DSv2, GS a FS. Disky Premium se dělí na pět typů (P10, P20, P30, P40, P50) podle své velikosti. Při výběru se hodnota velikosti disku zaokrouhluje nahoru na nejbližší typ. Pokud je například velikost menší než 128 GB, jedná se o typ disku P10, nebo pokud je mezi 129 GB a 512 GB, je to disk P20.
+**Disky Premium:** využívají vysoce výkonné disky SSD s nízkou latencí. Jsou ideální pro virtuální počítače s produkčními úlohami. Služba Premium Storage podporuje virtuální počítače řad DS, DSv2, GS a FS. Disky Premium se dělí na pět typů (P10, P20, P30, P40, P50) podle své velikosti. Při výběru se hodnota velikosti disku zaokrouhluje nahoru na nejbližší typ. Pokud je například velikost menší než 128 GB, jedná se o typ disku P10, nebo pokud je mezi 129 GB a 512 GB, je to disk P20.
 
 ### <a name="premium-disk-performance"></a>Výkon disků Premium
 
-|Typ disku pro Premium Storage | P4 | P6 | P10 | P20 | P30 | P40 | P50 |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| Velikost disku (zaokrouhluje se nahoru) | 32 GB | 64 GB | 128 GB | 512 GB | 1 024 GB (1 TB) | 2 048 GB (2 TB) | 4 095 GB (4 TB) |
-| Maximum vstupně-výstupních operací za sekundu (IOPS) na disk | 120 | 240 | 500 | 2 300 | 5 000 | 7 500 | 7 500 |
-Propustnost / disk | 25 MB/s | 50 MB/s | 100 MB/s | 150 MB/s | 200 MB/s | 250 MB/s | 250 MB/s |
+|Typ disku pro Premium Storage | P4 | P6 | P10 | P20 | P30 | P40 | P50 | P60 |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Velikost disku (zaokrouhluje se nahoru) | 32 GiB | 64 GiB | 128 GiB | 512 GiB | 1 024 GiB (1 TiB) | 2 048 GiB (2 TiB) | 4 095 GiB (4 TiB) | 8 192 GiB (8 TiB)
+| Maximum vstupně-výstupních operací za sekundu (IOPS) na disk | 120 | 240 | 500 | 2 300 | 5 000 | 7 500 | 7 500 | 12 500 |
+Propustnost / disk | 25 MB/s | 50 MB/s | 100 MB/s | 150 MB/s | 200 MB/s | 250 MB/s | 250 MB/s | 480 MB/s |
 
 V tabulce výše se sice uvádí maximum vstupně-výstupních operací za sekundu (IOPS), ale prokládáním více datových disků je možné dosáhnout i vyšší úrovně výkonu. Například k virtuálnímu počítači Standard_GS5 je možné připojit 64 datových disků. Pokud je velikost každého z těchto disků P30, můžete dosáhnout maximální hodnoty 80 000 IOPS. Podrobné informace o maximálních hodnotách IOPS u virtuálních počítačů najdete v článku o [velikostech a typech virtuálních počítačů](./sizes.md).
 
@@ -100,11 +79,8 @@ K dokončení příkladu v tomto kurzu potřebujete existující virtuální po�
 
 Uživatelské jméno a heslo potřebné pro účet správce na virtuálním počítači můžete nastavit pomocí příkazu [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential):
 
-```azurepowershell-interactive
-$cred = Get-Credential
-```
 
-Vytvořte virtuální počítač pomocí příkazu [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm).
+Vytvořte virtuální počítač pomocí příkazu [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm). Zobrazí se výzva k zadání uživatelského jména a hesla pro účet správce virtuálního počítače.
 
 ```azurepowershell-interactive
 New-AzureRmVm `
@@ -114,12 +90,9 @@ New-AzureRmVm `
     -VirtualNetworkName "myVnet" `
     -SubnetName "mySubnet" `
     -SecurityGroupName "myNetworkSecurityGroup" `
-    -PublicIpAddressName "myPublicIpAddress" `
-    -Credential $cred `
-    -AsJob
+    -PublicIpAddressName "myPublicIpAddress" 
 ```
 
-Parametr `-AsJob` vytvoří virtuální počítač jako úlohu na pozadí, takže budete mít k dispozici příkazový řádek PowerShellu. Podrobnosti úloh na pozadí můžete zobrazit pomocí rutiny `Job`.
 
 Vytvořte počáteční konfiguraci pomocí rutiny [New-AzureRmDiskConfig](/powershell/module/azurerm.compute/new-azurermdiskconfig). Následující příklad nakonfiguruje disk o velikosti 128 GB.
 
@@ -176,6 +149,27 @@ Initialize-Disk -PartitionStyle MBR -PassThru | `
 New-Partition -AssignDriveLetter -UseMaximumSize | `
 Format-Volume -FileSystem NTFS -NewFileSystemLabel "myDataDisk" -Confirm:$false
 ```
+
+## <a name="verify-the-data-disk"></a>Ověření datového disku
+
+Pokud chcete ověřit připojení datového disku, podívejte se na profil úložiště (`StorageProfile`) připojených datových disků (`DataDisks`).
+
+```azurepowershell-interactive
+$vm.StorageProfile.DataDisks
+```
+
+Výstup by měl vypadat přibližně jako v tomto příkladu:
+
+```
+Name            : myDataDisk
+DiskSizeGB      : 128
+Lun             : 1
+Caching         : None
+CreateOption    : Attach
+SourceImage     :
+VirtualHardDisk :
+```
+
 
 ## <a name="next-steps"></a>Další kroky
 

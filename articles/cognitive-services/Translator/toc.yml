@@ -1,180 +1,241 @@
 items:
-- name: Dokumentace k rozhraní Translator Text API
+- name: Dokumentace ke službě Translator Text
   href: index.yml
-- name: Přehled
+- name: Translator Text API
   items:
-  - name: Co je Translator Text API?
-    href: translator-info-overview.md
-- name: Šablony Rychlý start
+  - name: Přehled
+    items:
+    - name: Co je Translator Text API?
+      href: translator-info-overview.md
+  - name: Šablony Rychlý start
+    items:
+    - name: Přeložení textu
+      items:
+      - name: C#, REST
+        href: quickstart-csharp-translate.md
+      - name: Go, REST
+        href: quickstart-go-translate.md
+      - name: Java, REST
+        href: quickstart-java-translate.md
+      - name: Node.js, REST
+        href: quickstart-nodejs-translate.md
+      - name: PHP, REST
+        href: quickstart-php-translate.md
+      - name: Python, REST
+        href: quickstart-python-translate.md
+      - name: Ruby, REST
+        href: quickstart-ruby-translate.md
+    - name: Transliterace textu
+      items:
+      - name: C#, REST
+        href: quickstart-csharp-transliterate.md
+      - name: Go, REST
+        href: quickstart-go-transliterate.md
+      - name: Java, REST
+        href: quickstart-java-transliterate.md
+      - name: Node.js, REST
+        href: quickstart-nodejs-transliterate.md
+      - name: PHP, REST
+        href: quickstart-php-transliterate.md
+      - name: Python, REST
+        href: quickstart-python-transliterate.md
+      - name: Ruby, REST
+        href: quickstart-ruby-transliterate.md
+    - name: Identifikace jazyka
+      items:
+      - name: C#, REST
+        href: quickstart-csharp-detect.md
+      - name: Go, REST
+        href: quickstart-go-detect.md
+      - name: Java, REST
+        href: quickstart-java-detect.md
+      - name: Node.js, REST
+        href: quickstart-nodejs-detect.md
+      - name: PHP, REST
+        href: quickstart-php-detect.md
+      - name: Python, REST
+        href: quickstart-python-detect.md
+      - name: Ruby, REST
+        href: quickstart-ruby-detect.md
+    - name: Získání alternativních překladů
+      items:
+      - name: C#, REST
+        href: quickstart-csharp-dictionary.md
+      - name: Go, REST
+        href: quickstart-go-dictionary.md
+      - name: Java, REST
+        href: quickstart-java-dictionary.md
+      - name: Node.js, REST
+        href: quickstart-nodejs-dictionary.md
+      - name: PHP, REST
+        href: quickstart-php-dictionary.md
+      - name: Python, REST
+        href: quickstart-python-dictionary.md
+      - name: Ruby, REST
+        href: quickstart-ruby-dictionary.md
+    - name: Zjištění podporovaných jazyků
+      items:
+      - name: C#, REST
+        href: quickstart-csharp-languages.md
+      - name: Go, REST
+        href: quickstart-go-languages.md
+      - name: Java, REST
+        href: quickstart-java-languages.md
+      - name: Node.js, REST
+        href: quickstart-nodejs-languages.md
+      - name: PHP, REST
+        href: quickstart-php-languages.md
+      - name: Python, REST
+        href: quickstart-python-languages.md
+      - name: Ruby, REST
+        href: quickstart-ruby-languages.md
+    - name: Určení délky věty
+      items:
+      - name: C#, REST
+        href: quickstart-csharp-sentences.md
+      - name: Go, REST
+        href: quickstart-go-sentences.md
+      - name: Java, REST
+        href: quickstart-java-sentences.md
+      - name: Node.js, REST
+        href: quickstart-nodejs-sentences.md
+      - name: PHP, REST
+        href: quickstart-php-sentences.md
+      - name: Python, REST
+        href: quickstart-python-sentences.md
+      - name: Ruby, REST
+        href: quickstart-ruby-sentences.md
+  - name: Kurzy
+    items:
+    - name: Vytvoření aplikace WPF pro Translator Text
+      href: tutorial-wpf-translation-csharp.md
+  - name: Koncepty
+    items:
+    - name: Přizpůsobení a vylepšení překladů textu
+      href: customization.md
+    - name: Jak rozhraní API počítá znaky
+      href: character-counts.md
+  - name: Návody
+    items:
+    - name: Registrace k rozhraní Translator Text API
+      href: translator-text-how-to-signup.md
+    - name: Migrace na Text API v3
+      href: migrate-to-v3.md
+    - name: Přidání filtrování vulgárních výrazů
+      href: profanity-filtering.md
+    - name: Získání informací o přidružení slov
+      href: word-alignment.md
+    - name: Použití funkce dynamického slovníku
+      href: dynamic-dictionary.md
+  - name: Referenční informace
+    items:
+    - name: Referenční informace k rozhraní Translator Text API v3
+      href: reference/v3-0-reference.md
+      items:
+      - name: Jazyky
+        href: reference/v3-0-languages.md
+      - name: Překlad
+        href: reference/v3-0-translate.md
+      - name: Transliterace
+        href: reference/v3-0-transliterate.md
+      - name: Zjišťování
+        href: reference/v3-0-detect.md
+      - name: BreakSentence
+        href: reference/v3-0-break-sentence.md
+      - name: Slovníkové vyhledávání
+        href: reference/v3-0-dictionary-lookup.md
+      - name: Příklady slovníku
+        href: reference/v3-0-dictionary-examples.md
+    - name: Referenční informace k rozhraní Translator Text API v2 (zastaralé)
+      href: reference/v2-0-reference.md
+      items:
+      - name: Transformace textu
+        href: transform-text.md
+      - name: Jak použít vytváření sestav CTF (Collaborative Translation Framework)
+        href: ctf-reporting.md
+      - name: Vracení N nejvhodnějších překladů
+        href: return-n-best-translations.md
+  - name: Zdroje a prostředky
+    items:
+    - name: Vzorový kód na GitHubu
+      href: https://aka.ms/TranslatorGitHub
+    - name: Nejčastější dotazy
+      href: https://www.microsoft.com/translator/faq.aspx
+    - name: Znalostní báze
+      href: https://cognitive.uservoice.com/knowledgebase/topics/132647-translator
+    - name: Podpora jazyků a oblastí
+      href: language-support.md
+    - name: Ceny a omezení
+      href: https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/
+    - name: Regionální dostupnost
+      href: https://azure.microsoft.com/global-infrastructure/services/
+    - name: Stack Overflow
+      href: https://stackoverflow.com/questions/tagged/microsoft-translator
+    - name: UserVoice
+      href: https://cognitive.uservoice.com/forums/558796-translator
+- name: Custom Translator
   items:
-  - name: Přeložení textu
+  - name: Přehled
     items:
-    - name: C#, REST
-      href: quickstart-csharp-translate.md
-    - name: Go, REST
-      href: quickstart-go-translate.md
-    - name: Java, REST
-      href: quickstart-java-translate.md
-    - name: Node.js, REST
-      href: quickstart-nodejs-translate.md
-    - name: PHP, REST
-      href: quickstart-php-translate.md
-    - name: Python, REST
-      href: quickstart-python-translate.md
-    - name: Ruby, REST
-      href: quickstart-ruby-translate.md
-  - name: Transliterace textu
+    - name: Co je Custom Translator?
+      href: custom-translator/overview.md
+  - name: Šablony Rychlý start
     items:
-    - name: C#, REST
-      href: quickstart-csharp-transliterate.md
-    - name: Go, REST
-      href: quickstart-go-transliterate.md
-    - name: Java, REST
-      href: quickstart-java-transliterate.md
-    - name: Node.js, REST
-      href: quickstart-nodejs-transliterate.md
-    - name: PHP, REST
-      href: quickstart-php-transliterate.md
-    - name: Python, REST
-      href: quickstart-python-transliterate.md
-    - name: Ruby, REST
-      href: quickstart-ruby-transliterate.md
-  - name: Identifikace jazyka
+    - name: Vytvoření vlastního modelu
+      href: custom-translator/quickstart-build-deploy-custom-model.md
+  - name: Koncepty
     items:
-    - name: C#, REST
-      href: quickstart-csharp-detect.md
-    - name: Go, REST
-      href: quickstart-go-detect.md
-    - name: Java, REST
-      href: quickstart-java-detect.md
-    - name: Node.js, REST
-      href: quickstart-nodejs-detect.md
-    - name: PHP, REST
-      href: quickstart-php-detect.md
-    - name: Python, REST
-      href: quickstart-python-detect.md
-    - name: Ruby, REST
-      href: quickstart-ruby-detect.md
-  - name: Získání alternativních překladů
+    - name: Pracovní prostor a projekty
+      href: custom-translator/workspace-and-project.md
+    - name: Paralelní dokumenty
+      href: custom-translator/what-are-parallel-documents.md
+    - name: Slovník
+      href: custom-translator/what-is-dictionary.md
+    - name: Formáty dokumentů
+      href: custom-translator/document-formats-naming-convention.md
+    - name: Přidružení vět
+      href: custom-translator/sentence-alignment.md
+    - name: Trénování a model
+      href: custom-translator/training-and-model.md
+    - name: Skóre BLEU
+      href: custom-translator/what-is-bleu-score.md
+  - name: Návody
     items:
-    - name: C#, REST
-      href: quickstart-csharp-dictionary.md
-    - name: Go, REST
-      href: quickstart-go-dictionary.md
-    - name: Java, REST
-      href: quickstart-java-dictionary.md
-    - name: Node.js, REST
-      href: quickstart-nodejs-dictionary.md
-    - name: PHP, REST
-      href: quickstart-php-dictionary.md
-    - name: Python, REST
-      href: quickstart-python-dictionary.md
-    - name: Ruby, REST
-      href: quickstart-ruby-dictionary.md
-  - name: Zjištění podporovaných jazyků
+    - name: Vytvoření projektu
+      href: custom-translator/how-to-create-project.md
+    - name: Řízení projektů
+      href: custom-translator/how-to-search-edit-delete-projects.md
+    - name: Nahrání dokumentu
+      href: custom-translator/how-to-upload-document.md
+    - name: Zobrazení podrobností o dokumentu
+      href: custom-translator/how-to-view-document-details.md
+    - name: Učení modelu
+      href: custom-translator/how-to-train-model.md
+    - name: Zobrazení podrobností o modelu
+      href: custom-translator/how-to-view-model-details.md
+    - name: Zobrazení výsledků systémových testů
+      href: custom-translator/how-to-view-system-test-results.md
+    - name: Správa nastavení
+      href: custom-translator/how-to-manage-settings.md
+    - name: Migrace z centra
+      href: custom-translator/how-to-migrate.md
+  - name: Zdroje a prostředky
     items:
-    - name: C#, REST
-      href: quickstart-csharp-languages.md
-    - name: Go, REST
-      href: quickstart-go-languages.md
-    - name: Java, REST
-      href: quickstart-java-languages.md
-    - name: Node.js, REST
-      href: quickstart-nodejs-languages.md
-    - name: PHP, REST
-      href: quickstart-php-languages.md
-    - name: Python, REST
-      href: quickstart-python-languages.md
-    - name: Ruby, REST
-      href: quickstart-ruby-languages.md
-  - name: Určení délky věty
-    items:
-    - name: C#, REST
-      href: quickstart-csharp-sentences.md
-    - name: Go, REST
-      href: quickstart-go-sentences.md
-    - name: Java, REST
-      href: quickstart-java-sentences.md
-    - name: Node.js, REST
-      href: quickstart-nodejs-sentences.md
-    - name: PHP, REST
-      href: quickstart-php-sentences.md
-    - name: Python, REST
-      href: quickstart-python-sentences.md
-    - name: Ruby, REST
-      href: quickstart-ruby-sentences.md
-  expanded: true
-- name: Kurzy
-  items:
-  - name: Vytvoření aplikace WPF pro Translator Text
-    href: tutorial-wpf-translation-csharp.md
-- name: Koncepty
-  items:
-  - name: Přizpůsobení a vylepšení překladů textu
-    href: customization.md
-  - name: Jak rozhraní API počítá znaky
-    href: character-counts.md
-- name: Návody
-  items:
-  - name: Registrace k rozhraní Translator Text API
-    href: translator-text-how-to-signup.md
-  - name: Migrace na Text API v3
-    href: migrate-to-v3.md
-  - name: Přidání filtrování vulgárních výrazů
-    href: profanity-filtering.md
-  - name: Získání informací o přidružení slov
-    href: word-alignment.md
-  - name: Použití funkce dynamického slovníku
-    href: dynamic-dictionary.md
-- name: Referenční informace
-  items:
-  - name: Referenční informace k rozhraní Translator Text API v3
-    href: reference/v3-0-reference.md
-    items:
-    - name: Jazyky
-      href: reference/v3-0-languages.md
-    - name: Překlad
-      href: reference/v3-0-translate.md
-    - name: Transliterace
-      href: reference/v3-0-transliterate.md
-    - name: Zjišťování
-      href: reference/v3-0-detect.md
-    - name: BreakSentence
-      href: reference/v3-0-break-sentence.md
-    - name: Slovníkové vyhledávání
-      href: reference/v3-0-dictionary-lookup.md
-    - name: Příklady slovníku
-      href: reference/v3-0-dictionary-examples.md
-  - name: Referenční informace k rozhraní Translator Text API v2 (zastaralé)
-    href: reference/v2-0-reference.md
-    items:
-    - name: Transformace textu
-      href: transform-text.md
-    - name: Jak použít vytváření sestav CTF (Collaborative Translation Framework)
-      href: ctf-reporting.md
-    - name: Vracení N nejvhodnějších překladů
-      href: return-n-best-translations.md
-- name: Zdroje a prostředky
-  items:
-  - name: Vzorový kód na GitHubu
-    href: https://aka.ms/TranslatorGitHub
-  - name: Nejčastější dotazy
-    href: https://www.microsoft.com/translator/faq.aspx
-  - name: Znalostní báze
-    href: https://cognitive.uservoice.com/knowledgebase/topics/132647-translator
-  - name: Podpora jazyků a oblastí
-    href: language-support.md
-  - name: Ceny a omezení
-    href: https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/
-  - name: Regionální dostupnost
-    href: https://azure.microsoft.com/global-infrastructure/services/
-  - name: Stack Overflow
-    href: https://stackoverflow.com/questions/tagged/microsoft-translator
-  - name: UserVoice
-    href: https://cognitive.uservoice.com/forums/558796-translator
-ms.openlocfilehash: acc5019177bf75a0bb34eb739cc8e2400552832e
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+    - name: Podpora jazyků
+      href: https://docs.microsoft.com/en-us/azure/cognitive-services/translator/language-support
+    - name: Glosář
+      href: custom-translator/glossary.md
+    - name: Nejčastější dotazy
+      href: custom-translator/faq.md
+    - name: Ceny
+      href: https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/
+    - name: Stackoverflow
+      href: https://stackoverflow.com/questions/tagged/microsoft-translator
+    - name: UserVoice
+      href: https://cognitive.uservoice.com/knowledgebase/articles/1855897-custom-translator-preview-resource-guide
+ms.openlocfilehash: e0a2c0d461cd87ef1ff53e2d8b2b68a2135e6e10
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945259"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51624484"

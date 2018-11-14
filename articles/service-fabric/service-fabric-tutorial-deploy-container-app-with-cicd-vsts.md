@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 08/29/2018
 ms.author: ryanwi,v-steg
 ms.custom: mvc
-ms.openlocfilehash: 5ec898465b550a136db71ee731be5943c7441dcd
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: db0abf2c70ac79356496c78275dc658d1ee29a23
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44381942"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51035902"
 ---
 # <a name="tutorial-deploy-a-container-application-with-cicd-to-a-service-fabric-cluster"></a>Kurz: Nasazení aplikace typu kontejner s CI/CD do clusteru Service Fabric
 
@@ -76,6 +76,9 @@ Definice verze Team Services popisuje pracovní postup, který nasadí balíček
 Otevřete webový prohlížeč a přejděte do nového týmového projektu na adrese: [https://&lt;váš_účet&gt;.visualstudio.com/Voting/Voting%20Team/_git/Voting](https://myaccount.visualstudio.com/Voting/Voting%20Team/_git/Voting).
 
 Vyberte kartu **Sestavení a vydání**, pak **Sestavení** a pak klikněte na **Nový kanál**.
+
+>[!NOTE]
+>Pokud se šablona definice sestavení nezobrazí, ujistěte se, že je vypnutá funkce **Nové prostředí pro tvorbu kanálů YAML**. Tato funkce se konfiguruje v části **Funkce Preview** vašeho účtu DevOps.
 
 ![Nový kanál][new-pipeline]
 

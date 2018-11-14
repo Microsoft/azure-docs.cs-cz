@@ -8,20 +8,24 @@ services: digital-twins
 ms.devlang: csharp
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 10/02/2018
+ms.date: 11/7/2018
 ms.author: alinast
-ms.openlocfilehash: e0b47b1322a520ad8b09fd2fe2967e628b5e4e03
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 6e83ca543937948ad8028969cceca0f8787972c9
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49322769"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281214"
 ---
 # <a name="quickstart-find-available-rooms-using-azure-digital-twins"></a>Rychlý start: Zjištění dostupných místností pomocí služby Azure Digital Twins
 
 Služba Azure Digital Twins umožňuje vytvořit digitální obrázek vašeho fyzického prostředí. Následně můžete dostávat oznámení od událostí ve vašem prostředí a přizpůsobovat své reakce na tato oznámení. 
 
 Tento rychlý start používá [dvě ukázky v .NET](https://github.com/Azure-Samples/digital-twins-samples-csharp) k digitalizaci imaginární kancelářské budovy a ukazuje, jak v této budově najít dostupné místnosti. Pomocí služby Digital Twins můžete ke svému prostředí přidružit několik senzorů. Kromě dostupnosti místnosti můžete také zjistit, jestli je kvalita vzduchu v dostupné místnosti optimální, a to s pomocí simulovaného senzoru úrovně oxidu uhličitého. Jedna z ukázkových aplikací bude generovat náhodná data ze senzorů, která vám pomůžou s vizualizací tohoto scénáře.
+
+Následující video shrnuje nastavení pro rychlý start:
+
+> [!VIDEO https://www.youtube.com/embed/1izK266tbMI]
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -36,7 +40,7 @@ Tento rychlý start používá [dvě ukázky v .NET](https://github.com/Azure-Sa
 
 Pomocí postupu v této části vytvořte na [portálu](https://portal.azure.com) novou instanci služby Digital Twins.
 
-[!INCLUDE [create-digital-twins-portal](../../includes/create-digital-twins-portal.md)]
+[!INCLUDE [create-digital-twins-portal](../../includes/digital-twins-create-portal.md)]
 
 ## <a name="set-permissions-for-your-app"></a>Nastavení oprávnění pro aplikaci
 

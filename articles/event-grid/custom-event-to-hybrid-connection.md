@@ -8,12 +8,12 @@ ms.author: tomfitz
 ms.date: 10/30/2018
 ms.topic: tutorial
 ms.service: event-grid
-ms.openlocfilehash: 788e0c8cf799922c425424fe4733e1e6618215e4
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 488f4e09e329ee41fb307dc3579e76b5378d3a9f
+ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50421012"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50747775"
 ---
 # <a name="route-custom-events-to-azure-relay-hybrid-connections-with-azure-cli-and-event-grid"></a>Směrování vlastních událostí do Azure Relay Hybrid Connections pomocí Azure CLI a Event Gridu
 
@@ -73,10 +73,10 @@ az eventgrid event-subscription create \
   --name <event_subscription_name> \
   --endpoint-type hybridconnection \
   --endpoint $hybridid \
-  --expiration-date "2018-11-30"
+  --expiration-date "<yyyy-mm-dd>"
 ```
 
-Všimněte si, že je nastavené datum vypršení platnosti odběru. Po tomto datu automaticky vyprší platnost odběru událostí. Nastavte vypršení platnosti pro odběry událostí, které jsou potřeba jenom po omezenou dobu.
+Všimněte si, že je nastavené [datum vypršení platnosti](concepts.md#event-subscription-expiration) odběru.
 
 ## <a name="create-application-to-process-events"></a>Vytvoření aplikace pro zpracování událostí
 

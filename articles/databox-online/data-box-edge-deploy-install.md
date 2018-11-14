@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 10/08/2018
+ms.date: 11/01/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to install Data Box Edge in datacenter so I can use it to transfer data to Azure.
-ms.openlocfilehash: 21ac3de793f5ce559c3a03de2a09f11ccb86b12a
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 6bd3c1b2cdbd83673a181ee7e088adb39749036e
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167354"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50963842"
 ---
 # <a name="tutorial-install-azure-data-box-edge-preview"></a>Kurz: Instalace Azure Data Boxu Edge (Preview)
 
@@ -111,8 +111,14 @@ Než začnete zapojovat kabeláž zařízení, budete potřebovat následující
 
 - Rozbalené fyzické zařízení Edge usazené do racku
 - Dva napájecí kabely 
-- Dva síťové kabely 1 GbE RJ-45 a čtyři měděné kabely 25 GbE SFP+
+- Alespoň jeden síťový kabel 1 GbE RJ-45 pro připojení k rozhraní pro správu. Na zařízení jsou dvě síťová rozhraní 1 GbE – jedno pro správu a druhé pro data.
+- Jeden měděný kabel 25 GbE SFP+ pro každé datové síťové rozhraní, které chcete konfigurovat. Alespoň jedno datové síťové rozhraní (PORT 2, PORT 3, PORT 4, PORT 5 nebo PORT 6) musí být připojené k internetu (pro zajištění možnosti připojení k Azure).
 - Přístup ke dvěma rozvodným energetickým jednotkám (doporučeno)
+
+> [!NOTE]
+> - Pokud připojujete pouze jedno datové síťové rozhraní, doporučujeme k odesílání dat do Azure použít síťové rozhraní 25 GbE, jako je PORT 3, PORT 4, PORT 5 nebo PORT 6. 
+> - Pro zajištění nejlepšího výkonu a zpracování velkých objemů dat zvažte připojení všech datových portů.
+> - Zařízení Edge musí být připojené k síti datacentra, aby mohlo ingestovat data ze serverů zdroje dat. 
 
 Vaše zařízení Edge má 8 disků SSD NVMe. Přední panel obsahuje také indikátory LED stavu a tlačítka napájení. Na zadní straně zařízení se nacházejí také redundantní jednotky PSU (Power Supply Unit). Vaše zařízení má 6 síťových rozhraní: dvě rozhraní 1 Gb/s a čtyři rozhraní 25 Gb/s. Vaše zařízení obsahuje kontroler BMC (Baseboard Management Controller). Identifikujte různé porty na propojovacím rozhraní vašeho zařízení.
  
@@ -123,13 +129,7 @@ Při zapojování napájecího a síťového kabelu zařízení postupujte násl
 1. Připojte napájecí kabely k oběma jednotkám PSU ve skříni. Pokud chcete zajistit vysokou dostupnost, nainstalujte a připojte obě jednotky k různým zdrojům napájení.
 2. Připojte napájecí kabely k rozvodným energetickým jednotkám racku. Ujistěte se, že obě jednotky PSU používají samostatné zdroje napájení.
 3. Připojte PORT 1 síťového rozhraní 1 GbE k počítači, který slouží ke konfiguraci fyzického zařízení. PORT 1 představuje vyhrazené rozhraní pro správu.
-4. Pomocí síťových kabelů RJ-45 připojte PORT 2 síťového rozhraní 1 GbE k internetu nebo síti datacentra. 
-5. Pomocí měděných kabelů SFP+ připojte PORT 3, PORT 4, PORT 5 a PORT 6 čtyř síťových rozhraní 25 GbE k internetu nebo síti datacentra. 
-
-> [!NOTE]
-> - Alespoň jedno datové síťové rozhraní (PORT 2, PORT 3, PORT 4, PORT 5 nebo PORT 6) musí být připojené k internetu (pro zajištění možnosti připojení k Azure). 
-> - K odesílání dat do Azure doporučujeme použít síťová rozhraní 25 GbE, jako je PORT 3, PORT 4, PORT 5 nebo PORT 6. 
-> - Zařízení Edge musí být připojené k síti datacentra, aby mohlo ingestovat data ze serverů zdroje dat.  
+4. Připojte jeden nebo několik portů PORT 2, PORT 3, PORT 4, PORT 5 nebo PORT 6 k internetu nebo síti datacentra. Pokud připojujete PORT 2, použijte síťový kabel RJ-45. V případě síťových rozhraní 25 GbE použijte měděné kabely SFP+.  
 
 
 ## <a name="next-steps"></a>Další kroky

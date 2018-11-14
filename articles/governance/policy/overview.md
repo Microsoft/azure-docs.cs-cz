@@ -4,17 +4,17 @@ description: Azure Policy je služba v Azure, pomocí které vytváříte, při�
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/18/2018
+ms.date: 11/06/2018
 ms.topic: overview
 ms.service: azure-policy
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: dbdffc7a6f77f3f34ce7937c60eb7a53e5f72590
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: c016e21ff59d5f68afee79b2159218d10e90a7ec
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46961276"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51252815"
 ---
 # <a name="what-is-azure-policy"></a>Co je Azure Policy?
 
@@ -35,12 +35,14 @@ Zásady se zaměřují na vlastnosti prostředků během nasazování a vlastnos
 
 ### <a name="rbac-permissions-in-azure-policy"></a>Oprávnění RBAC ve službě Azure Policy
 
-Služba Azure Policy má oprávnění, která jsou reprezentovaná operacemi ve dvou různých poskytovatelích prostředků:
+Služba Azure Policy má několik oprávnění, která se označují jako operace, ve dvou poskytovatelích prostředků:
 
 - [Microsoft.Authorization](../../role-based-access-control/resource-provider-operations.md#microsoftauthorization)
-- [Microsoft.PolicyInsight](../../role-based-access-control/resource-provider-operations.md#microsoftpolicyinsights)
+- [Microsoft.PolicyInsights](../../role-based-access-control/resource-provider-operations.md#microsoftpolicyinsights)
 
-Některé předdefinované role mají různé úrovně oprávnění k prostředkům Azure Policy, třeba **Správce zabezpečení** může spravovat přiřazení a definice zásad, ale nemůže zobrazovat informace o dodržování předpisů, a **Čtenář** může jenom číst informace o přiřazení a definicích zásad, ale nemůže provádět změny ani zobrazovat informace o dodržování předpisů. **Vlastník** má veškerá práva, kdežto **Přispěvatel** nemá žádná oprávnění k Azure Policy. Pokud chcete udělit oprávnění ke zobrazení podrobností o dodržování zásad, vytvořte [vlastní roli](../../role-based-access-control/custom-roles.md).
+Řada předdefinovaných rolí uděluje oprávnění k prostředkům Azure Policy. Role **Přispěvatel zásad prostředků (Preview)** zahrnuje většinu operací zásad a **Vlastník** má veškerá práva. Role **Přispěvatel** i **Čtenář** můžou číst všechny podrobnosti týkající se zásad, ale **Přispěvatel** může také aktivovat nápravu.
+
+Pokud žádná z předdefinovaných rolí nemá požadovaná oprávnění, vytvořte [vlastní roli](../../role-based-access-control/custom-roles.md).
 
 ## <a name="policy-definition"></a>Definice zásady
 

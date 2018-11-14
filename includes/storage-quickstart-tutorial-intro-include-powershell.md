@@ -4,12 +4,12 @@ ms.service: storage
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
-ms.openlocfilehash: 31ef8577a2304091fc4df1b394555c4b30fcf96e
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 027b370d2497822dcbd6f3958556357957f9e8f5
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50164841"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50964658"
 ---
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
@@ -19,7 +19,7 @@ Přihlaste se ke svému předplatnému Azure pomocí příkazu `Connect-AzureRmA
 Connect-AzureRmAccount
 ```
 
-Pokud nevíte, jaké umístění máte použít, můžete vypsat všechna dostupná umístění. Po zobrazení seznamu vyhledejte umístění, které chcete použít. Tento příklad používá **eastus**. Uložte tuto hodnotu do proměnné a používejte tuto proměnnou, abyste umístění mohli změnit na jednom místě.
+Pokud nevíte, jaké umístění máte použít, můžete vypsat všechna dostupná umístění. Pomocí následujícího příkladu kódu zobrazte seznam umístění a vyhledejte umístění, které chcete použít. Tento příklad používá **eastus**. Uložte umístění do proměnné a používejte tuto proměnnou, abyste umístění mohli změnit na jednom místě.
 
 ```powershell
 Get-AzureRmLocation | select Location 
@@ -37,13 +37,13 @@ New-AzureRmResourceGroup -Name $resourceGroup -Location $location
 
 ## <a name="create-a-storage-account"></a>vytvořit účet úložiště
 
-Pomocí příkazu [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/New-AzureRmStorageAccount) vytvořte standardní obecný účet úložiště s replikací LRS a pak načtěte kontext účtu úložiště, který definuje účet úložiště, které chcete použít. Když používáte účet úložiště, namísto opakovaného zadávání přihlašovacích údajů odkazujete na jeho kontext. V tomto příkladu vytvoříte účet úložiště s názvem *mystorageaccount* s místně redundantním úložištěm (LRS) a šifrováním objektů blob (které bude ve výchozím nastavení povolené).
+Vytvořte standardní účet úložiště pro obecné účely s replikací LRS pomocí rutiny [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/New-AzureRmStorageAccount). Dále získejte kontext účtu úložiště definující účet úložiště, který chcete použít. Když používáte účet úložiště, namísto opakovaného předávání přihlašovacích údajů odkazujte na jeho kontext. Pomocí následujícího příkladu vytvořte účet úložiště *mystorageaccount* s místně redundantním úložištěm (LRS) a šifrováním objektů blob (které bude ve výchozím nastavení povolené).
 
 ```powershell
 $storageAccount = New-AzureRmStorageAccount -ResourceGroupName $resourceGroup `
   -Name "mystorageaccount" `
-  -Location $location `
   -SkuName Standard_LRS `
+  -Location $location `
   -Kind Storage
 
 $ctx = $storageAccount.Context

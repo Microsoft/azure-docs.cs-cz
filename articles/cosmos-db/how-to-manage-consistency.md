@@ -7,14 +7,14 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 10/17/2018
 ms.author: chrande
-ms.openlocfilehash: aa42737274432180540584c01a7125c1a9765b49
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: be2c68922221af848c9e484d03527d02808c071a
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50243652"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51283803"
 ---
-# <a name="manage-consistency"></a>Správa konzistence
+# <a name="manage-consistency-levels-in-azure-cosmos-db"></a>Správa úrovní konzistence ve službě Azure Cosmos DB
 
 Tento článek vysvětluje různé způsoby, jak nastavit výchozí konzistenci, přepsat tuto konzistenci na klientovi a ručně spravovat tokeny relace, a vysvětluje metriku Pravděpodobnostně omezená neaktuálnost (PBS).
 
@@ -70,7 +70,7 @@ Pokud chcete zobrazit nebo upravit výchozí úroveň konzistence, přihlaste se
 
 Klienti můžou přepsat výchozí úroveň konzistence nastavenou službou. To je možné provést pro celého klienta nebo pro jednotlivé požadavky.
 
-### <a id="override-default-consistency-dotnet"></a>.NET
+### <a id="override-default-consistency-dotnet"></a>.NET SDK
 
 ```csharp
 // Override consistency at the client level
@@ -88,7 +88,7 @@ RequestOptions requestOptions = new RequestOptions { ConsistencyLevel = Consiste
 var response = await client.CreateDocumentAsync(collectionUri, document, requestOptions);
 ```
 
-### <a id="override-default-consistency-java-async"></a>Java Async
+### <a id="override-default-consistency-java-async"></a>Java Async SDK
 
 ```java
 // Override consistency at the client level
@@ -102,7 +102,7 @@ AsyncDocumentClient client =
                 .withConnectionPolicy(policy).build();
 ```
 
-### <a id="override-default-consistency-java-sync"></a>Java Sync
+### <a id="override-default-consistency-java-sync"></a>Java Sync SDK
 
 ```java
 // Override consistency at the client level
@@ -110,7 +110,7 @@ ConnectionPolicy connectionPolicy = new ConnectionPolicy();
 DocumentClient client = new DocumentClient(accountEndpoint, accountKey, connectionPolicy, ConsistencyLevel.Strong);
 ```
 
-### <a id="override-default-consistency-javascript"></a>Node.js/JavaScript/TypeScript
+### <a id="override-default-consistency-javascript"></a>Node.js/JavaScript/TypeScript SDK
 
 ```javascript
 // Override consistency at the client level
@@ -123,7 +123,7 @@ const client = new CosmosClient({
 const { body } = await item.read({ consistencyLevel: ConsistencyLevel.Eventual });
 ```
 
-### <a id="override-default-consistency-python"></a>Python
+### <a id="override-default-consistency-python"></a>Python SDK
 
 ```python
 # Override consistency at the client level
@@ -135,7 +135,7 @@ client = cosmos_client.CosmosClient(self.account_endpoint, {'masterKey': self.ac
 
 Pokud chcete ručně spravovat tokeny relace, můžete je získat z odpovědí a nastavit pro jednotlivé požadavky. Pokud nepotřebujete ručně spravovat tokeny relace, následující ukázky využívat nemusíte. Sada SDK bude automaticky sledovat tokeny relace, a pokud sami nenastavíte token relace, použije nejnovější token relace.
 
-### <a id="utilize-session-tokens-dotnet"></a>.NET
+### <a id="utilize-session-tokens-dotnet"></a>.NET SDK
 
 ```csharp
 var response = await client.ReadDocumentAsync(
@@ -148,7 +148,7 @@ var response = await client.ReadDocumentAsync(
                 UriFactory.CreateDocumentUri(databaseName, collectionName, "SalesOrder1"), options);
 ```
 
-### <a id="utilize-session-tokens-java-async"></a>Java Async
+### <a id="utilize-session-tokens-java-async"></a>Java Async SDK
 
 ```java
 // Get session token from response
@@ -170,7 +170,7 @@ requestOptions.setSessionToken(sessionToken);
 Observable<ResourceResponse<Document>> readObservable = client.readDocument(document.getSelfLink(), options);
 ```
 
-### <a id="utilize-session-tokens-java-sync"></a>Java Sync
+### <a id="utilize-session-tokens-java-sync"></a>Java Sync SDK
 
 ```java
 // Get session token from response
@@ -183,7 +183,7 @@ options.setSessionToken(sessionToken);
 ResourceResponse<Document> response = client.readDocument(documentLink, options);
 ```
 
-### <a id="utilize-session-tokens-javascript"></a>Node.js/JavaScript/TypeScript
+### <a id="utilize-session-tokens-javascript"></a>Node.js/JavaScript/TypeScript SDK
 
 ```javascript
 // Get session token from response
@@ -194,7 +194,7 @@ const sessionToken = headers["x-ms-session-token"];
 const { body } = await item.read({ sessionToken });
 ```
 
-### <a id="utilize-session-tokens-python"></a>Python
+### <a id="utilize-session-tokens-python"></a>Python SDK
 
 ```python
 // Get the session token from the last response headers
@@ -214,7 +214,7 @@ Pokud chcete zobrazit metriku PBS, na webu Azure Portal přejděte ke svému ú�
 
 ![Obrázek grafu PBS na webu Azure Portal](./media/how-to-manage-consistency/pbs-metric.png)
 
-Pokud chcete tuto metriku zobrazit, musíte k tomu použít nabídku metrik služby Cosmos DB. V prostředí metrik monitorování Azure se nezobrazí.
+Pokud chcete tuto metriku zobrazit, použijte nabídku metrik služby Cosmos DB. V prostředí metrik monitorování Azure se nezobrazí.
 
 ## <a name="next-steps"></a>Další kroky
 

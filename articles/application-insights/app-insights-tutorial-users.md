@@ -1,6 +1,6 @@
 ---
-title: Pochopení vašim zákazníkům ve službě Azure Application Insights | Microsoft Docs
-description: Kurz k používání služby Azure Application Insights pochopit, jak zákazníci používají aplikaci.
+title: Porozumění zákazníkům v Azure Application Insights | Microsoft Docs
+description: Kurz použití Azure Application Insights k pochopení, jakým způsobem zákazníci používají vaši aplikaci.
 keywords: ''
 services: application-insights
 author: mrbullwinkle
@@ -10,25 +10,25 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: db61c300ad82270e59d315fa3372d9e4390c7a21
-ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
+ms.openlocfilehash: 6d4f96a2c1d288648543a92614cab0f8cf5ee2ea
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2017
-ms.locfileid: "24099017"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51255996"
 ---
-# <a name="use-azure-application-insights-to-understand-how-customers-are-using-your-application"></a>Slouží k pochopení, jak zákazníci používají aplikaci Azure Application Insights
+# <a name="use-azure-application-insights-to-understand-how-customers-are-using-your-application"></a>Použití Azure Application Insights k pochopení, jakým způsobem zákazníci používají vaši aplikaci
 
-Azure Application Insights shromažďuje informace o využití, které vám pomohou pochopit, jak uživatelům interakci s vaší aplikací.  Tento kurz vás provede různými prostředky, které jsou k dispozici k analýze tyto informace.  Se dozvíte, jak:
+Azure Application Insights shromažďuje informace o využití a pomáhá pochopit, jakým způsobem uživatelé pracují s vaší aplikací.  Tento kurz vás provede různými prostředky, které jsou k dispozici pro analýzu těchto informací.  V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Analyzovat podrobnosti o uživatele, kteří používají aplikace
-> * Pomocí informací o relaci k analýze jak zákazníci používat vaši aplikaci
-> * Definování nálevky, které umožňují porovnat vaše aktivity požadované uživatelů k jejich skutečné aktivity 
-> * Vytvořte sešit konsolidovat vizualizace a dotazy do jednoho dokumentu
-> * Seskupování podobných uživatelů k jejich analýze společně
-> * Zjistěte, kteří uživatelé jsou vrácení do vaší aplikace
-> * Zkontrolujte, jak uživatelé přecházejí mezi vaší aplikace
+> * Analýza podrobností o uživatelích, kteří přistupují k vaší aplikaci
+> * Použití informací o relacích k analýze, jakým způsobem zákazníci používají vaši aplikaci
+> * Definování trychtýřů umožňujících porovnat požadované aktivity uživatelů s jejich skutečnou aktivitou 
+> * Vytvoření sešitu pro konsolidaci vizualizací a dotazů v jednom dokumentu
+> * Seskupení podobných uživatelů za účelem jejich společné analýzy
+> * Zjištění, kteří uživatelé se vracejí k vaší aplikaci
+> * Prozkoumání způsobu, jakým uživatelé procházejí vaši aplikaci
 
 
 ## <a name="prerequisites"></a>Požadavky
@@ -38,133 +38,133 @@ K provedení kroků v tomto kurzu je potřeba:
 - Nainstalovat [Visual Studio 2017](https://www.visualstudio.com/downloads/) s následujícími sadami funkcí:
     - Vývoj pro ASP.NET a web
     - Vývoj pro Azure
-- Stáhněte a nainstalujte [Visual Studio Debugger snímku](http://aka.ms/snapshotdebugger).
-- Nasazení aplikace .NET do Azure a [povolit Application Insights SDK](app-insights-asp-net.md). 
-- [Odeslání telemetrie z vaší aplikace](app-insights-usage-overview.md#send-telemetry-from-your-app) pro přidání vlastních událostí nebo stránky zobrazení
-- Odeslat [uživatelský kontext](https://docs.microsoft.com/azure/application-insights/app-insights-usage-send-user-context) ke sledování, co uživatel provede v čase a plně využívat funkce využití.
+- Stáhnout a nainstalovat [Visual Studio Snapshot Debugger](https://aka.ms/snapshotdebugger).
+- Nasadit aplikaci .NET do Azure a [povolit sadu Application Insights SDK](app-insights-asp-net.md). 
+- [Odesílat z aplikace telemetrii](app-insights-usage-overview.md#send-telemetry-from-your-app) umožňující přidání vlastních zobrazení událostí a stránek.
+- Odesílat [kontext uživatele](https://docs.microsoft.com/azure/application-insights/app-insights-usage-send-user-context) umožňující sledovat aktivity uživatele v průběhu času a naplno využívat funkce využití.
 
-## <a name="log-in-to-azure"></a>Přihlaste se k Azure.
-Přihlaste se k portálu Azure v [https://portal.azure.com](https://portal.azure.com).
+## <a name="log-in-to-azure"></a>Přihlášení k Azure
+Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
 
-## <a name="get-information-about-your-users"></a>Získání informací o vaši uživatelé
-**Uživatelé** panel umožňuje pochopit důležité podrobnosti o vaši uživatelé v mnoha různými způsoby. Tento panel můžete použít k pochopení informace jako kde vaši uživatelé se připojují z podrobnosti svého klienta a oblasti vaší aplikace, které máte přístup. 
+## <a name="get-information-about-your-users"></a>Získání informací o uživatelích
+Panel **Uživatelé** umožňuje různými způsoby porozumět důležitým podrobnostem o vašich uživatelích. Pomocí tohoto panelu můžete získat informace, jako například odkud se uživatelé připojují, podrobnosti o jejich klientech a oblasti aplikace, ke kterým přistupují. 
 
-1. Vyberte **Application Insights** a potom vyberte své předplatné.
-2. Vyberte **uživatelé** v nabídce.
-3. Výchozí zobrazení se zobrazuje počet jedinečných uživatelů, kterým se připojili k vaší aplikaci za posledních 24 hodin.  Můžete změnit časové okno a nastavit různé další kritéria filtru pro tyto informace.
+1. Vyberte **Application Insights** a pak vyberte své předplatné.
+2. V nabídce vyberte **Uživatelé**.
+3. Ve výchozím zobrazení se zobrazí počet jedinečných uživatelů, kteří se k vaší aplikaci připojili za posledních 24 hodin.  Tyto informace můžete filtrovat změnou časového intervalu a nastavením různých dalších kritérií.
 
     ![Tvůrce dotazů](media\app-insights-tutorial-users\QueryBuilder.png)
 
-6. Klikněte **během** rozevíracího seznamu a změnit časové okno na 7 dní.  Tím se zvyšuje dat obsažených v různých grafů v panelu.
+6. Klikněte na rozevírací nabídku **V období** a změňte časový interval na 7dnů.  Tím se zvýší množství zahrnutých dat na různých grafech na panelu.
 
-    ![Změnit časové rozmezí](media\app-insights-tutorial-users\TimeRange.png)
+    ![Změna časového rozsahu](media\app-insights-tutorial-users\TimeRange.png)
 
-4. Klikněte **rozdělit** rozevírací přidat rozpis podle vlastnosti uživatele do grafu.  Vyberte **zemi nebo oblast**.  Graf obsahuje stejná data, ale můžete zobrazit rozpis počet uživatelů, pro každou zemi.
+4. Klikněte na rozevírací nabídku **Rozdělit podle** a přidejte do grafu rozpis podle jednotlivých vlastností uživatele.  Vyberte **Země nebo oblast**.  Graf obsahuje stejná data, ale umožňuje zobrazit rozpis počtu uživatelů v jednotlivých zemích.
 
-    ![Země nebo oblasti grafu](media\app-insights-tutorial-users\CountryorRegion.png)
+    ![Graf Země nebo oblast](media\app-insights-tutorial-users\CountryorRegion.png)
 
-5. Umístěte kurzor na různé řádky v tabulce a Všimněte si, že počet pro každou zemi odráží pouze časový interval určený parametrem tento panel.
-6. Podívejte se na **Insights** sloupec vpravo, která provádět analýzy na uživatelská data.  To poskytuje informace, jako je počet jedinečných relací v průběhu období a záznamy s společných vlastností, které tvoří významné dat uživatele 
+5. Umístěte kurzor nad různé pruhy v grafu a všimněte si, že počty pro jednotlivé země odrážejí pouze časový interval, který daný pruh představuje.
+6. Podívejte se na sloupec **Přehledy** na pravé straně, který provádí analýzu dat o vašich uživatelích.  Najdete zde informace, jako je počet jedinečných relací v daném časovém období a záznamy se společnými vlastnostmi, které tvoří významnou část dat o uživatelích. 
 
-    ![Statistika sloupce](media\app-insights-tutorial-users\insights.png)
+    ![Sloupec Přehledy](media\app-insights-tutorial-users\insights.png)
 
 
 ## <a name="analyze-user-sessions"></a>Analýza uživatelských relací
-**Relací** panel je podobná **uživatelé** panelu.  Kde **uživatelé** vám pomůže pochopit podrobnosti o uživatele, kteří používají aplikaci **relací** vám pomůže pochopit, jak uživatelům používat aplikace.  
+Panel **Relace** je podobný panelu **Uživatelé**.  Zatímco panel **Uživatelé** pomáhá porozumět podrobnostem o uživatelích, kteří přistupují k vaší aplikací, panel **Relace** pomáhá porozumět způsobu, jakým tito uživatelé vaši aplikaci používali.  
 
-1. Vyberte **relací** v nabídce.
-2. Podívejte se na graf a poznamenejte si, že máte stejné možnosti k filtrování a rozdělení dat jako v **uživatelé** panelu.
+1. V nabídce vyberte **Relace**.
+2. Podívejte se na graf a všimněte si, že máte k dispozici stejné možnosti filtrování a rozdělení dat jako na panelu **Uživatelé**.
 
-    ![Tvůrce dotazů relací](media\app-insights-tutorial-users\SessionsBuilder.png)
+    ![Tvůrce dotazů pro relace](media\app-insights-tutorial-users\SessionsBuilder.png)
 
-3. **Ukázka tyto relace** podokně na pravé straně zobrazí relací, které zahrnují velké množství událostí.  Jedná se o zajímavých relace k analýze.
+3. V podokně **Vzorek těchto relací** na pravé straně je seznam relací zahrnujících velký počet událostí.  Jedná se o zajímavé relace k analýze.
 
-    ![Ukázka tyto relace](media\app-insights-tutorial-users\SessionsSample.png)
+    ![Vzorek těchto relací](media\app-insights-tutorial-users\SessionsSample.png)
 
-4. Klikněte na jednu relaci zobrazíte jeho **časová osa relace**, který zobrazuje každou akci v relací.  Můžete určit informace, jako je relace s velkým počtem výjimky.
+4. Kliknutím na některou z relací zobrazte její **časovou osu relace**, na které se zobrazí všechny akce v rámci relace.  To vám může pomoct identifikovat informace, jako jsou relace s velkým počtem výjimek.
 
-    ![Časová osa relací](media\app-insights-tutorial-users\SessionsTimeline.png)
+    ![Časová osa relace](media\app-insights-tutorial-users\SessionsTimeline.png)
 
-## <a name="group-together-similar-users"></a>Seskupit podobné uživatelů
-A **kohorty** je sada uživatelů groupd na podobnou charakteristikou.  Můžete vytvořit kohorty pro filtrování dat v jiných panelů umožňuje analyzovat konkrétní skupiny uživatelů.  Například můžete chtít analyzovat pouze uživatelé, kteří dokončení nákupu.
+## <a name="group-together-similar-users"></a>Seskupení podobných uživatelů
+**Kohorta** je skupina uživatelů seskupených podle podobných vlastností.  Kohorty můžete použít k filtrování dat na dalších panelech, což vám umožní analyzovat konkrétní skupiny uživatelů.  Můžete například chtít analyzovat pouze uživatele, kteří dokončili nákup.
 
-1.  Vyberte **kohorty** v nabídce.
-2.  Klikněte na tlačítko **nový** k vytvoření nové kohorty.
-3.  Vyberte **kdo používá** rozevírací seznam a vyberte akci.  Pouze uživatelé, kteří provést tuto akci v rámci časový interval sestavy budou zahrnuty.
+1.  V nabídce vyberte **Kohorty**.
+2.  Kliknutím na **Nová** vytvořte novou kohortu.
+3.  Vyberte rozevírací nabídku **Kteří použili** a vyberte akci.  Do sestavy se zahrnou pouze uživatelé, kteří v daném časovém intervalu provedli tuto akci.
 
-    ![Kohorty, který provedl zadané akce](media\app-insights-tutorial-users\CohortsDropdown.png)
+    ![Kohorta uživatelů, kteří provedli zadané akce](media\app-insights-tutorial-users\CohortsDropdown.png)
 
-4.  Vyberte **uživatelé** v nabídce.
-5.  V **zobrazit** rozevíracího seznamu, vyberte kohorty jste právě vytvořili.  Data grafu je omezená na uživatele.
+4.  V nabídce vyberte **Uživatelé**.
+5.  V rozevírací nabídce **Zobrazit** vyberte kohortu, kterou jste právě vytvořili.  Data grafu se omezí na tyto uživatele.
 
-    ![Kohorty v nástroji pro uživatele](media\app-insights-tutorial-users\UsersCohort.png)
+    ![Kohorty v nástroji Uživatelé](media\app-insights-tutorial-users\UsersCohort.png)
 
 
-## <a name="compare-desired-activity-to-reality"></a>Porovnání požadované aktivity skutečnosti
-Při předchozí panelů se zaměřuje na co se uživatelům vaší aplikace, **nálevky** soustředit na co chcete uživatelům.  Ikona představuje sadu kroků ve vaší aplikaci a procento uživatelů, kteří se pohybují mezi kroky.  Můžete například vytvořit trychtýřového grafu, které měří podíl uživatelů, kteří se připojují k vaší aplikace, kteří vyhledávání produktu.  Můžete se podívat, procento uživatelů, kteří přidat produktu do nákupního košíku a procento uživatelů, kteří dokončete nákup.
+## <a name="compare-desired-activity-to-reality"></a>Porovnání požadované aktivity se skutečností
+Zatímco předchozí panely se zaměřovaly na to, co prováděli uživatelé vaší aplikace, panel **Trychtýře** se zaměřuje na to, co chcete, aby uživatelé prováděli.  Trychtýř představuje posloupnost kroků ve vaší aplikaci a procento uživatelů, kteří procházejí mezi jednotlivými kroky.  Můžete například vytvořit trychtýř, který měří procento uživatelů, kteří se připojí k vaší aplikaci a vyhledají produkt.  Následně můžete zobrazit procento uživatelů, kteří si produkt přidají do nákupního košíku, a procento uživatelů, kteří dokončí nákup.
 
-1. Vyberte **nálevky** v nabídce a pak klikněte na tlačítko **nový**. 
+1. V nabídce vyberte **Trychtýře** a pak klikněte na **Nový**. 
 
     ![](media\app-insights-tutorial-users\funnelsnew.png)
 
-2. Zadejte **Trychtýřový název**.
-3. Vytvořte trychtýřového grafu s alespoň dva kroky výběrem akce pro každý krok.  Seznam akcí, vychází z dat využití získané nástrojem Application Insights.
+2. Zadejte **Název trychtýře**.
+3. Vytvořte trychtýř s alespoň dvěma kroky a pro každý krok vyberte akci.  Seznam akcí se sestavuje na základě dat o využití shromážděných službou Application Insights.
 
     ![](media\app-insights-tutorial-users\funnelsedit.png)
 
-4. Klikněte na tlačítko **Uložit** uložte trychtýřového grafu a zobrazte jeho výsledky.  Napravo od trychtýřového grafu zobrazí nejčastější události před první aktivitu a za poslední aktivity, které vám pomohou pochopit uživatele tendence kolem konkrétní pořadí.
+4. Kliknutím na **Uložit** trychtýř uložte a pak zobrazte jeho výsledky.  V okně napravo od trychtýře se zobrazí nejčastější události před první aktivitou a po poslední aktivitě, které vám pomůžou porozumět tendencím uživatelů kolem konkrétní posloupnosti.
 
     ![](media\app-insights-tutorial-users\funnelsright.png)
 
 
-## <a name="learn-which-customers-return"></a>Další informace, které zákazníci vrátit
-**Uchování** vám pomůže pochopit, kteří uživatelé jsou vracející se zpět do vaší aplikace.  
+## <a name="learn-which-customers-return"></a>Zjištění, kteří zákazníci se vracejí
+**Uchování** pomáhá porozumět tomu, kteří uživatelé se vracejí k vaší aplikaci.  
 
-1. Vyberte **uchování** v nabídce.
-2. Ve výchozím nastavení zahrnuje analyzovaných informace uživatelů, kteří provádět žádnou akci a poté vrácen provádět veškeré akce.  Tento filtr můžete změnit na jakékoli zahrnout, například jenom uživatelé, kteří vrácené po dokončení nákupu.
+1. V nabídce vyberte **Uchování**.
+2. Analyzované informace ve výchozím nastavení zahrnují uživatele, kteří provedli jakoukoli akci a pak se vrátili, aby provedli jakoukoli akci.  Tento filtr můžete změnit například tak, aby zahrnoval pouze uživatele, kteří se vrátili po dokončení nákupu.
 
     ![](media\app-insights-tutorial-users\retentionquery.png)
 
-3. Vracejících uživatelů, které odpovídají kritériím se zobrazují v grafické a tabulky tvar různých dobách trvání.  Typický vzor je pro postupné pokles při vracení uživatele v průběhu času.  Náhlé vyřaďte z jednoho časového období na další může vyvolat o problém. 
+3. Vracející se uživatelé, kteří splňují kritéria, se zobrazí v grafické a tabulkové podobě pro různé doby.  Typickým vzorem je postupné klesání počtu vracejících se uživatelů v průběhu času.  Náhlý pokles mezi časovými obdobími může vzbuzovat obavy. 
 
     ![](media\app-insights-tutorial-users\retentiongraph.png)
 
-## <a name="analyze-user-navigation"></a>Analýza navigační uživatele
-A **uživatelskému toku** vizualizuje, jak uživatelé přecházejí mezi stránkami a funkce vaší aplikace.  To lze zodpovědět otázky, například kde uživatelé obvykle přesunout z konkrétní stránky, jak obvykle ukončete aplikaci a pokud jsou všechny akce, které jsou pravidelně opakovat.
+## <a name="analyze-user-navigation"></a>Analýza procházení uživatelů
+**Tok uživatelů** vizualizuje, jak uživatelé procházejí mezi jednotlivými stránkami a funkcemi vaší aplikace.  To vám pomůže najít odpověď na otázky, jako například kam uživatelé obvykle přecházejí z konkrétní stránky, jak obvykle opouštějí vaši aplikaci a jestli existují nějaké akce, které se pravidelně opakují.
 
-1.  Vyberte **uživatele toky** v nabídce.
-2.  Klikněte na tlačítko **nový** vytvořit nový tok uživatele a potom klikněte na **upravit** upravit její podrobnosti.
-3.  Zvýšit **časový rozsah** na 7 dní a pak vyberte počáteční událost.  Tok bude sledovat uživatelské relace, které začínají tuto událost.
+1.  V nabídce vyberte **Toky uživatelů**.
+2.  Kliknutím na **Nový** vytvořte nový tok uživatelů a pak klikněte na **Upravit**, abyste mohli upravit jeho podrobnosti.
+3.  Rozšiřte **Časový rozsah** na 7 dnů a vyberte počáteční událost.  Tento tok bude sledovat uživatelské relace začínající touto událostí.
 
     ![](media\app-insights-tutorial-users\flowsedit.png)
 
-4.  Zobrazí se uživatelskému toku a uvidíte cesty jiný uživatel a počty jejich relace.  Modré čáry označují akci, která uživatel provedl po aktuální akce.  Red řádek označuje konec relace uživatele.
+4.  Zobrazí se tok uživatelů s různými cestami uživatelů a počty jejich relací.  Modré čáry označují akci, kterou uživatel provedl po aktuální akci.  Červená čára označuje konec uživatelské relace.
 
     ![](media\app-insights-tutorial-users\flows.png)
 
-5.  Postup odebrání události z toku, klikněte na tlačítko **x** v horním rohu akci a pak klikněte na tlačítko **vytvoření grafu**.  Graf bude překreslen pomocí všechny instance této události odebrán.  Klikněte na tlačítko **upravit** zobrazíte, že událost je nyní přidána do **vyloučené události**.
+5.  Pokud chcete z toku odebrat událost, klikněte na **x** v rohu akce a pak klikněte na **Vytvořit graf**.  Graf se překreslí a všechny instance dané události se odeberou.  Klikněte na **Upravit** a všimněte si, že událost je teď přidaná mezi **Vyloučené události**.
 
     ![](media\app-insights-tutorial-users\flowsexclude.png)
 
-## <a name="consolidate-usage-data"></a>Konsolidovat data o využití
-**Sešity** zkombinovat dokumenty interaktivní vizualizaci dat, analytické dotazy a text.  Sešity můžete seskupit běžných informací o využití, konsolidovat informace z konkrétní incidentu nebo zpětně hlásit si s týmem využití vaší aplikace.
+## <a name="consolidate-usage-data"></a>Konsolidace dat o využití
+**Sešity** kombinují v interaktivních dokumentech vizualizace dat, analytické dotazy a text.  Pomocí sešitů můžete seskupovat běžné informace o využití, konsolidovat informace o konkrétním incidentu nebo informovat váš tým o využití vaší aplikace.
 
-1.  Vyberte **sešity** v nabídce.
-2.  Klikněte na tlačítko **nový** k vytvoření nového sešitu.
-3.  Dotaz je již k dispozici, která zahrnuje všechna data využití za posledních den zobrazí jako pruhový graf.  Můžete použít tento dotaz, ručně upravit nebo klikněte na tlačítko **ukázkové dotazy** vybrat z jiné užitečné dotazy.
+1.  V nabídce vyberte **Sešity**.
+2.  Kliknutím na **Nový** vytvořte nový sešit.
+3.  K dispozici již máte dotaz, který zahrne veškerá data o využití za poslední den a zobrazí je v pruhovém grafu.  Můžete použít tento dotaz, ručně ho upravit nebo kliknout na **Ukázkové dotazy** a vybrat si z dalších užitečných dotazů.
 
     ![](media\app-insights-tutorial-users\samplequeries.png)
 
-4.  Klikněte na tlačítko **dokončení úprav**.
-5.  Klikněte na tlačítko **upravit** v horním podokně můžete upravit text v horní části sešitu.  To je naformátován pomocí markdownu.
+4.  Klikněte na **Úpravy hotovy**.
+5.  V horním podokně klikněte na **Upravit** a upravte text v horní části sešitu.  Tento text je formátovaný s využitím markdownu.
 
     ![](media\app-insights-tutorial-users\markdown.png)
 
-6.  Klikněte na tlačítko **přidat uživatele** přidat graf s informace o uživateli.  V případě, že chcete a pak klikněte na tlačítko Upravit podrobnosti grafu **dokončení úprav** ji uložit.
+6.  Kliknutím na **Přidat uživatele** přidejte graf s informacemi o uživatelích.  Pokud chcete, upravte podrobnosti grafu, a pak ho uložte kliknutím na **Úpravy hotovy**.
 
 
 ## <a name="next-steps"></a>Další kroky
-Teď, když jste se naučili jak analyzovat vaši uživatelé, přechodu na v dalším kurzu se dozvíte, jak vytvořit vlastní řídicí panely, které tyto informace zkombinovat s další užitečné data o vaší aplikaci.
+Teď, když jste zjistili, jak analyzovat uživatele, přejděte k dalšímu kurzu, ve kterém se dozvíte, jak vytvářet vlastní řídicí panely, které tyto informace kombinují s dalšími užitečnými daty o vaší aplikaci.
 
 > [!div class="nextstepaction"]
-> [Vytvořit vlastní řídicí panely](app-insights-tutorial-dashboards.md)
+> [Vytváření vlastních řídicích panelů](app-insights-tutorial-dashboards.md)

@@ -1,40 +1,44 @@
 ---
 title: Zkouška spuštění řešení pro simulaci zařízení v Azure | Microsoft Docs
-description: V tomto rychlém startu nasadíte akcelerátor řešení simulace zařízení Azure IoT. Přihlásíte se k řídicímu panelu řešení a na něm vytvoříte simulaci.
-author: dominicbetts
+description: V tomto rychlém startu nasadíte Simulaci zařízení Azure IoT a spustíte simulaci.
+author: troyhopwood
 manager: timlt
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 07/05/2018
-ms.author: dobett
-ms.openlocfilehash: 549a1b867ad35c6de42969722ba5a2bd28c8f99a
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.date: 09/28/2018
+ms.author: troyhop
+ms.openlocfilehash: a109f3536ea8709313de3d1d6d17ce69c5652289
+ms.sourcegitcommit: 3dcb1a3993e51963954194ba2a5e42260d0be258
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39213152"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50753926"
 ---
-# <a name="quickstart-deploy-and-run-a-cloud-based-device-simulation-solution"></a>Rychlý start: Nasazení a spuštění cloudového řešení simulace zařízení
+# <a name="quickstart-deploy-and-run-an-iot-device-simulation-in-azure"></a>Rychlý start: Nasazení a spuštění simulace zařízení IoT v Azure
 
-V tomto rychlém startu se dozvíte, jak nasadit akcelerátor řešení simulace zařízení Azure IoT pro účely testování řešení IoT. Po nasazení akcelerátoru řešení na stránce **Simulace** vytvoříte a spustíte simulaci.
+V tomto rychlém startu se dozvíte, jak nasadit Simulaci zařízení Azure IoT pro účely testování řešení IoT. Po nasazení akcelerátoru řešení začnete spuštěním ukázkové simulace.
 
 K dokončení tohoto rychlého startu potřebujete aktivní předplatné Azure.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="deploy-the-solution"></a>Nasazení řešení
+## <a name="deploy-device-simulation"></a>Nasazení Simulace zařízení
 
-Při nasazování akcelerátoru řešení do předplatného Azure je potřeba nastavit několik možností konfigurace.
+Při nasazování Simulace zařízení do předplatného Azure je potřeba nastavit několik možností konfigurace.
 
 Přihlaste se k webu [azureiotsolutions.com](https://www.azureiotsolutions.com/Accelerators) pomocí přihlašovacích údajů svého účtu Azure.
 
-Klikněte na **Vyzkoušejte** na dlaždici **Simulace zařízení**.
+Klikněte na dlaždici **Simulace zařízení**:
 
 ![Výběr simulace zařízení](./media/quickstart-device-simulation-deploy/devicesimulation.png)
 
-Na stránce **Vytvoření řešení Simulace zařízení** zadejte jedinečný **Název řešení**. Poznamenejte si název řešení – je to název skupiny prostředků Azure, která obsahuje všechny prostředky řešení.
+Na stránce popisu Simulace zařízení klikněte na **Vyzkoušet**:
+
+![Kliknutí na Vyzkoušet](./media/quickstart-device-simulation-deploy/devicesimulationPDP.png)
+
+Na stránce **Vytvoření řešení Simulace zařízení** zadejte jedinečný **Název řešení**.
 
 Vyberte **Předplatné** a **Oblast**, které chcete při nasazování akcelerátoru řešení použít. Obvykle byste měli zvolit oblast, která je vám nejblíže. V předplatném musíte být [globálním správcem nebo uživatelem](iot-accelerators-permissions.md).
 
@@ -46,55 +50,49 @@ Kliknutím na **Vytvořit řešení** zahájíte zřizování řešení. Dokonč
 
 ## <a name="sign-in-to-the-solution"></a>Přihlášení k řešení
 
-Po dokončení procesu zřizování se můžete přihlásit k řídicímu panelu akcelerátoru řešení simulace zařízení.
+Po dokončení procesu zřizování se můžete přihlásit k instanci Simulace zařízení kliknutím na tlačítko **Spustit**:
 
-Na stránce **Zřízená řešení** klikněte na nový akcelerátor řešení simulace zařízení:
+![Otevření Simulace zařízení](./media/quickstart-device-simulation-deploy/choosenew.png)
 
-![Výběr nového řešení](./media/quickstart-device-simulation-deploy/choosenew.png)
+Kliknutím na **Přijmout** přijměte žádost o oprávnění. Ve vašem prohlížeči se zobrazí řídicí panel řešení Simulace zařízení.
 
-Na panelu, který se zobrazí, si můžete prohlédnout informace o akcelerátoru řešení simulace zařízení. Zvolte **Řídicí panel řešení** a zobrazte akcelerátor řešení simulace zařízení:
+Při prvním otevření se zobrazí řídicí panel Simulace zařízení s příručkou **Začínáme**. Kliknutím na první dlaždici otevřete ukázkovou simulaci. Pokud zavřete příručku **Začínáme**, můžete **jednoduchou ukázkovou simulaci** otevřít kliknutím na příslušnou dlaždici na řídicím panelu:
 
-![Panel řešení](./media/quickstart-device-simulation-deploy/solutionpanel.png)
+![Řídicí panel řešení](./media/quickstart-device-simulation-deploy/GettingStarted.png)
 
-Kliknutím na **Přijmout** přijměte žádost o oprávnění. Ve vašem prohlížeči se zobrazí řídicí panel řešení simulace zařízení:
+## <a name="sample-simulation"></a>Ukázková simulace
 
-[![Řídicí panel řešení](./media/quickstart-device-simulation-deploy/solutiondashboard-inline.png)](./media/quickstart-device-simulation-deploy/solutiondashboard-expanded.png#lightbox)
-
-## <a name="configure-the-simulation"></a>Konfigurace simulace
-
-Simulaci nakonfigurujete a spustíte z řídicího panelu. Ke konfiguraci simulace použijte hodnoty v následující tabulce:
+Protože se jedná o ukázkovou simulaci, není možné ji upravit. Pro simulaci jsou nakonfigurovaná následující nastavení:
 
 | Nastavení             | Hodnota                       |
 | ------------------- | --------------------------- |
 | Cílová služba IoT Hub      | Použít předem zřízenou službu IoT Hub |
-| Model zařízení        | Chladič                     |
+| Model zařízení        | Nákladní vůz                       |
 | Počet zařízení   | 10                          |
 | Frekvence telemetrie | 10 sekund                  |
-| Doba trvání simulace | 5 minut                   |
+| Doba trvání simulace | Spustit po neomezenou dobu            |
 
-[![Konfigurace simulace](./media/quickstart-device-simulation-deploy/simulationconfig-inline.png)](./media/quickstart-device-simulation-deploy/simulationconfig-expanded.png#lightbox)
+![Konfigurace simulace](./media/quickstart-device-simulation-deploy/SampleSimulation.png)
 
 ## <a name="run-the-simulation"></a>Spuštění simulace
 
-Klikněte na **Spustit simulaci**. Simulace bude spuštěná po vámi zvolenou dobu. Simulaci můžete kdykoli zastavit kliknutím na **Zastavit simulaci**. Simulace ukazuje statistiku aktuálního spuštění. Kliknutím na **Zobrazit metriky služby IoT Hub na webu Azure Portal** zobrazte metriky hlášené centrem IoT:
+Klikněte na **Spustit simulaci**. Simulace se podle konfigurace spustí po neomezenou dobu. Simulaci můžete kdykoli zastavit kliknutím na **Zastavit simulaci**. Simulace ukazuje statistiku aktuálního spuštění.
 
-[![Spuštění simulace](./media/quickstart-device-simulation-deploy/simulationrun-inline.png)](./media/quickstart-device-simulation-deploy/simulationrun-expanded.png#lightbox)
+![Spuštění simulace](./media/quickstart-device-simulation-deploy/runningsimulation.png)
 
-Z každé zřízené instance akcelerátoru řešení můžete spustit pouze jednu simulaci najednou.
+Z každé instance Simulace zařízení můžete spustit pouze jednu simulaci najednou.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud chcete pokračovat v prozkoumávání, ponechte akcelerátor řešení simulace zařízení nasazený.
+Pokud chcete pokračovat v prozkoumávání, ponechte Simulaci zařízení nasazenou.
 
-Pokud už akcelerátor řešení nepotřebujete, odstraňte ho na stránce [Zřízená řešení](https://www.azureiotsolutions.com/Accelerators#dashboard) tak, že ho vyberete a pak kliknete na **Odstranit řešení**:
+Pokud už Simulaci zařízení nepotřebujete, odstraňte ji na stránce [Zřízená řešení](https://www.azureiotsolutions.com/Accelerators#dashboard) tak, že kliknete na příslušnou dlaždici a pak na **Odstranit řešení**:
 
 ![Odstranění řešení](media/quickstart-device-simulation-deploy/deletesolution.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste nasadili akcelerátor řešení simulace zařízení a spustili jste simulaci zařízení IoT.
-
-Informace o tom, jak v simulaci použít stávající IoT Hub, najdete v této příručce:
+V tomto rychlém startu jste nasadili Simulaci zařízení a spustili jste ukázkovou simulaci zařízení IoT.
 
 > [!div class="nextstepaction"]
-> [Použití stávajícího centra IoT s akcelerátorem řešení simulace zařízení](iot-accelerators-device-simulation-choose-hub.md)
+> [Vytvoření simulace s jedním nebo několika typy zařízení](iot-accelerators-device-simulation-create-simulation.md)

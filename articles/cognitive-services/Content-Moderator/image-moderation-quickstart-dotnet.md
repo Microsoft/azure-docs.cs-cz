@@ -1,56 +1,53 @@
 ---
-title: 'Rychlý start: Kontrola obsahu obrázků v jazyce C# – Content Moderator'
+title: 'Rychlý start: Analýza problematického materiálu v obsahu obrázků v jazyce C#'
 titlesuffix: Azure Cognitive Services
-description: Jak kontrolovat obsah obrázků pomocí sady Content Moderator SDK pro jazyk C#
+description: Postup analýzy různého problematického materiálu v obsahu obrázků pomocí sady Content Moderator SDK pro .NET
 services: cognitive-services
 author: sanjeev3
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: quickstart
-ms.date: 10/10/2018
+ms.date: 10/26/2018
 ms.author: sajagtap
-ms.openlocfilehash: 4973d78eac02aed42689bf5742155c375d5f78ae
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: 8f407a42ab2e1538193206dec1955257a5f9940a
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49309293"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51005491"
 ---
-# <a name="quickstart-check-image-content-in-c"></a>Rychlý start: Kontrola obsahu obrázků v jazyce C# 
+# <a name="quickstart-analyze-image-content-for-objectionable-material-in-c"></a>Rychlý start: Analýza problematického materiálu v obsahu obrázků v jazyce C#
 
-Tento článek obsahuje informace a ukázky kódu, které vám pomůžou začít používat [sadu Content Moderator SDK pro .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) ke kontrole, jestli se na obrázku vyskytuje něco z následujícího: 
-
-- Nevhodný obsah nebo obsah pro dospělé
-- Extrahovatelný text
-- Lidské tváře
+Tento článek obsahuje informace a vzorové kódy, které vám pomůžou začít používat [sadu Content Moderator SDK pro .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/). Dozvíte se, jak hledat nevhodný obsah nebo obsah pro dospělé, extrahovatelný text a lidské tváře za účelem moderování potenciálně problematického materiálu.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete. 
 
-## <a name="sign-up-for-content-moderator-services"></a>Registrace do služeb Content Moderatoru
+## <a name="prerequisites"></a>Požadavky
 
-Než začnete služby Content Moderatoru prostřednictvím rozhraní REST API nebo sady SDK používat, budete potřebovat klíč rozhraní API a oblast vašeho účtu rozhraní API. Obě hodnoty získáte přihlášením k odběru služby Content Moderator na webu [Azure Portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator).
-
-## <a name="create-your-visual-studio-project"></a>Vytvoření projektu Visual Studio
-
-1. Přidejte ke svému řešení nový projekt **Konzolová aplikace (.NET Framework)**.
-
-   Ve vzorovém kódu pojmenujte tento projekt **ImageModeration**.
-
-1. Projekt vyberte jako jediný spouštěný projekt řešení.
+- Klíč předplatného Content Moderatoru. Podle pokynů v tématu [Vytvoření účtu služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) se přihlaste k odběru Content Moderatoru a získejte svůj klíč.
+- Libovolná edice sady [Visual Studio 2015 nebo 2017](https://www.visualstudio.com/downloads/)
 
 
-### <a name="install-required-packages"></a>Instalace požadovaných balíčků
+> [!NOTE]
+> V této příručce se používá předplatné Content Moderatoru úrovně Free. Informace o tom, co je součástí jednotlivých úrovní předplatného, najdete na stránce [Ceny a omezení](https://azure.microsoft.com/pricing/details/cognitive-services/content-moderator/).
 
-Nainstalujte následující balíčky NuGet:
+## <a name="create-the-visual-studio-project"></a>Vytvoření projektu sady Visual Studio
 
-- Microsoft.Azure.CognitiveServices.ContentModerator
-- Microsoft.Rest.ClientRuntime
-- Newtonsoft.Json
+1. V sadě Visual Studio vytvořte nový projekt **Konzolová aplikace (.NET Framework)** a pojmenujte ho **ImageModeration**. 
+1. Pokud vaše řešení obsahuje i jiné projekty, vyberte tento projekt jako jediný spouštěný projekt.
+1. Získejte požadované balíčky NuGet. Klikněte pravým tlačítkem na svůj projekt v Průzkumníku řešení a vyberte **Spravovat balíčky NuGet**. Potom vyhledejte a nainstalujte následující balíčky:
+    - Microsoft.Azure.CognitiveServices.ContentModerator
+    - Microsoft.Rest.ClientRuntime
+    - Newtonsoft.Json
 
-### <a name="update-the-programs-using-statements"></a>Aktualizace příkazů using programu
+## <a name="add-image-moderation-code"></a>Přidání kódu pro moderování obrázků
 
-Přidejte následující příkazy `using`.
+Dále zkopírováním kódu z této příručky a jeho vložením do svého projektu implementujete základní scénář moderování obsahu.
+
+### <a name="include-namespaces"></a>Zahrnutí oborů názvů
+
+Na začátek souboru *Program.cs* přidejte následující příkazy `using`.
 
 ```csharp
 using Microsoft.Azure.CognitiveServices.ContentModerator;
@@ -65,44 +62,24 @@ using System.Threading;
 
 ### <a name="create-the-content-moderator-client"></a>Vytvoření klienta Content Moderatoru
 
-Přidejte následující kód, abyste pro své předplatné vytvořili klienta Content Moderatoru.
-
-> [!IMPORTANT]
-> Aktualizujte pole **AzureRegion** a **CMSubscriptionKey** hodnotami identifikátoru oblasti a klíče předplatného.
+Do souboru *Program.cs* přidejte následující kód, který pro vaše předplatné vytvoří zprostředkovatele klienta Content Moderatoru. Přidejte kód společně s třídou **Program** do stejného oboru názvů. Budete muset aktualizovat pole **AzureRegion** a **CMSubscriptionKey** hodnotami identifikátoru oblasti a klíče předplatného.
 
 ```csharp
-/// <summary>
-/// Wraps the creation and configuration of a Content Moderator client.
-/// </summary>
-/// <remarks>This class library contains insecure code. If you adapt this 
-/// code for use in production, use a secure method of storing and using
-/// your Content Moderator subscription key.</remarks>
+// Wraps the creation and configuration of a Content Moderator client.
 public static class Clients
 {
-    /// <summary>
-    /// The region/location for your Content Moderator account, 
-    /// for example, westus.
-    /// </summary>
+    // The region/location for your Content Moderator account, 
+    // for example, westus.
     private static readonly string AzureRegion = "YOUR API REGION";
 
-    /// <summary>
-    /// The base URL fragment for Content Moderator calls.
-    /// </summary>
+    // The base URL fragment for Content Moderator calls.
     private static readonly string AzureBaseURL =
         $"https://{AzureRegion}.api.cognitive.microsoft.com";
 
-    /// <summary>
-    /// Your Content Moderator subscription key.
-    /// </summary>
+    // Your Content Moderator subscription key.
     private static readonly string CMSubscriptionKey = "YOUR API KEY";
 
-    /// <summary>
-    /// Returns a new Content Moderator client for your subscription.
-    /// </summary>
-    /// <returns>The new client.</returns>
-    /// <remarks>The <see cref="ContentModeratorClient"/> is disposable.
-    /// When you have finished using the client,
-    /// you should dispose of it either directly or indirectly. </remarks>
+    // Returns a new Content Moderator client for your subscription.
     public static ContentModeratorClient NewClient()
     {
         // Create and initialize an instance of the Content Moderator API wrapper.
@@ -114,93 +91,63 @@ public static class Clients
 }
 ```
 
-### <a name="initialize-application-specific-settings"></a>Inicializace nastavení specifických pro aplikaci
+### <a name="set-up-input-and-output-targets"></a>Nastavení vstupních a výstupních cílů
 
-Do třídy **Program** v souboru Program.cs přidejte následující statická pole.
+Do třídy **Program** v souboru _Program.cs_ přidejte následující statická pole. Tato pole určují soubory pro vstupní obsah obrázku a výstupní obsah JSON.
 
 ```csharp
-///<summary>
-///The name of the file that contains the image URLs to evaluate.
-///</summary>
-///<remarks>You will need to create an input file and update 
-///this path accordingly. Paths are relative to the execution directory.
-///</remarks>
+//The name of the file that contains the image URLs to evaluate.
 private static string ImageUrlFile = "ImageFiles.txt";
 
-///<summary>
 ///The name of the file to contain the output from the evaluation.
-///</summary>
-///<remarks>Paths are relative to the execution directory.
-///</remarks>
 private static string OutputFile = "ModerationOutput.json";
 ```
 
-Vytvořte vstupní soubor _ImageFiles.txt_ a přidejte do něj adresy URL obrázků, které chcete analyzovat. V tomto rychlém startu se k vygenerování ukázkového výstupu používají následující dvě adresy URL.
-- https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg
-- https://moderatorsampleimages.blob.core.windows.net/samples/sample5.png
+Budete muset vytvořit vstupní soubor *ImageFiles.txt* a odpovídajícím způsobem aktualizovat jeho cestu (relativní cesty jsou relativní vzhledem k adresáři provádění). Otevřete soubor _ImageFiles.txt_ a přidejte do něj adresy URL obrázků, které se mají moderovat. V tomto rychlém startu se jako ukázkový vstup používají následující adresy URL.
+```
+https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg
+https://moderatorsampleimages.blob.core.windows.net/samples/sample5.png
+```
 
-## <a name="create-a-class-to-handle-results"></a>Vytvoření třídy pro zpracování výsledků
+### <a name="create-a-class-to-handle-results"></a>Vytvoření třídy pro zpracování výsledků
 
-Do třídy **Program** přidejte následující třídu. Instanci této třídy použijete k zaznamenávání výsledků moderování jednotlivých kontrolovaných obrázků.
+Do souboru *Program.cs* přidejte následující kód společně s třídou **Program** do stejného oboru názvů. Instanci této třídy použijete k zaznamenávání výsledků moderování jednotlivých kontrolovaných obrázků.
 
 ```csharp
-/// <summary>
-/// Contains the image moderation results for an image, 
-/// including text and face detection results.
-/// </summary>
+// Contains the image moderation results for an image, 
+// including text and face detection results.
 public class EvaluationData
 {
-    /// <summary>
-    /// The URL of the evaluated image.
-    /// </summary>
+    // The URL of the evaluated image.
     public string ImageUrl;
 
-    /// <summary>
-    /// The image moderation results.
-    /// </summary>
+    // The image moderation results.
     public Evaluate ImageModeration;
 
-    /// <summary>
-    /// The text detection results.
-    /// </summary>
+    // The text detection results.
     public OCR TextDetection;
 
-    /// <summary>
-    /// The face detection results;
-    /// </summary>
+    // The face detection results;
     public FoundFaces FaceDetection;
 }
 ```
 
-## <a name="create-the-image-evaluation-method"></a>Vytvoření metody pro hodnocení obrázků
+### <a name="define-the-image-evaluation-method"></a>Definování metody pro hodnocení obrázků
 
-Do třídy **Program** přidejte následující metodu. Tato metoda ohodnotí jeden obrázek a vrátí výsledky hodnocení.
-
-> [!NOTE]
-> Klíč služby Content Moderator má limit četnosti žádostí za sekundu (RPS), a pokud ho překročíte, sada SDK vyvolá výjimku s kódem chyby 429. Klíč úrovně Free má limit nastavený na 1 RPS.
+Do třídy **Program** přidejte následující metodu. Tato metoda ohodnotí jeden obrázek třemi různými způsoby a vrátí výsledky hodnocení. Další informace o tom, co jednotlivé operace dělají, najdete na odkazu v části [Další kroky](#next-steps).
 
 ```csharp
-/// <summary>
-/// Evaluates an image using the Image Moderation APIs.
-/// </summary>
-/// <param name="client">The Content Moderator API wrapper to use.</param>
-/// <param name="imageUrl">The URL of the image to evaluate.</param>
-/// <returns>Aggregated image moderation results for the image.</returns>
-/// <remarks>This method throttles calls to the API.
-/// Your Content Moderator service key will have a requests per second (RPS)
-/// rate limit, and the SDK will throw an exception with a 429 error code 
-/// if you exceed that limit. A free tier key has a 1 RPS rate limit.
-/// </remarks>
+// Evaluates an image using the Image Moderation APIs.
 private static EvaluationData EvaluateImage(
   ContentModeratorClient client, string imageUrl)
 {
-    var url = new ImageUrl("URL", imageUrl.Trim());
+    var url = new BodyModel("URL", imageUrl.Trim());
 
     var imageData = new EvaluationData();
 
     imageData.ImageUrl = url.Value;
 
-  // Evaluate for adult and racy content.
+    // Evaluate for adult and racy content.
     imageData.ImageModeration =
         client.ImageModeration.EvaluateUrlInput("application/json", url, true);
     Thread.Sleep(1000);
@@ -219,18 +166,9 @@ private static EvaluationData EvaluateImage(
 }
 ```
 
-Metoda **EvaluateUrlInput** tvoří obálku pro rozhraní REST API moderování obrázků.
-Návratová hodnota obsahuje objekt vrácený z volání rozhraní API.
+### <a name="load-the-input-images"></a>Načtení vstupních obrázků
 
-Metoda **OCRUrlInput** tvoří obálku pro rozhraní REST API OCR obrázků.
-Návratová hodnota obsahuje objekt vrácený z volání rozhraní API.
-
-Metoda **FindFacesUrlInput** tvoří obálku pro rozhraní REST API rozpoznávání tváří v obrázcích.
-Návratová hodnota obsahuje objekt vrácený z volání rozhraní API.
-
-## <a name="evaluate-the-images-in-your-code"></a>Hodnocení obrázků v kódu
-
-Do metody **Main** přidejte následující kód.
+Do metody **Main** ve třídě **Program** přidejte následující kód. Tím se program nastaví tak, aby pro všechny adresy URL obrázků ve vstupním souboru načetl data hodnocení. Tato data pak zapíše do jednoho výstupního souboru.
 
 ```csharp
 // Create an object to store the image moderation results.
@@ -265,9 +203,9 @@ using (StreamWriter outputWriter = new StreamWriter(OutputFile, false))
 }
 ```
 
-## <a name="run-the-program-and-review-the-output"></a>Spuštění programu a kontrola výstupu
+## <a name="run-the-program"></a>Spuštění programu
 
-Otevřete soubor _ModerationOutput.json_ a prohlédněte si výstupní obsah. Měl by vypadat přibližně jako následující obsah. Všimněte si, že oba obrázky mají různé části `ImageModeration`, `FaceDetection` a `TextDetection`, které odpovídají třem voláním rozhraní API v metodě **EvaluateImage**.
+Program zapíše řetězcová data JSON do souboru _ModerationOutput.json_. Pro ukázkové obrázky použité v tomto rychlém startu bude výstup následující. Všimněte si, že oba obrázky mají různé části `ImageModeration`, `FaceDetection` a `TextDetection`, které odpovídají třem voláním rozhraní API v metodě **EvaluateImage**.
 
 ```json
 [{
@@ -451,6 +389,9 @@ Otevřete soubor _ModerationOutput.json_ a prohlédněte si výstupní obsah. M�
 }]
 ```
 
-## <a name="next-steps---get-the-source-code"></a>Další kroky – získat zdrojový kód
+## <a name="next-steps"></a>Další kroky
 
-Získejte pro tento rychlý start a jiné rychlé starty Content Moderatoru pro .NET [sadu Content Moderator .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) a [řešení Visual Studio](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) a začněte se svou integrací.
+V tomto rychlém startu jste vytvořili jednoduchou aplikaci v .NET, která s využitím služby Content Moderator vrací relevantní informace o poskytnutém ukázkovém obrázku. Dále si můžete přečíst další informace o tom, co znamenají různé příznaky a klasifikace, abyste se mohli rozhodnout, jaká data potřebujete a jak by je vaše aplikace měla zpracovávat.
+
+> [!div class="nextstepaction"]
+> [Příručka moderování obrázků](image-moderation-api.md)

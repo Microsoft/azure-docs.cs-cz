@@ -1,24 +1,24 @@
 ---
-title: 'Kurz: Strukturované streamování Apache Sparku s využitím systému Kafka – Azure HDInsight '
+title: 'Kurz: Strukturované streamování Apache Sparku s využitím systému Apache Kafka – Azure HDInsight '
 description: Zjistěte, jak pomocí streamování Apache Sparku přenášet data do nebo ze systému Apache Kafka. V tomto kurzu budete streamovat data pomocí poznámkového bloku Jupyter ze Sparku ve službě HDInsight.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
-ms.date: 05/08/2018
-ms.author: jasonh
-ms.openlocfilehash: 11169e45d5fbdc5e51b81c06d814524a7b09c614
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.date: 11/06/2018
+ms.author: hrasheed
+ms.openlocfilehash: 83e277eceea2df746de6f6e9a33130989e2d874d
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43108285"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51278357"
 ---
-# <a name="tutorial-use-spark-structured-streaming-with-kafka-on-hdinsight"></a>Kurz: Použití strukturovaného streamování Sparku se systémem Kafka ve službě HDInsight
+# <a name="tutorial-use-apache-spark-structured-streaming-with-apache-kafka-on-hdinsight"></a>Kurz: Použití strukturovaného streamování Apache Sparku se systémem Apache Kafka ve službě HDInsight
 
-V tomto kurzu se dozvíte, jak pomocí strukturovaného streamování Sparku číst a zapisovat data s využitím systému Apache Kafka ve službě Azure HDInsight.
+V tomto kurzu se dozvíte, jak pomocí strukturovaného streamování Apache Sparku číst a zapisovat data s využitím systému Apache Kafka ve službě Azure HDInsight.
 
 Strukturované streamování Sparku je modul pro zpracování datových proudů založený na Spark SQL. Umožňuje zrychlit streamované i dávkové výpočty se statickými daty. 
 

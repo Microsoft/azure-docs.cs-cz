@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 06/11/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 0fd843b150148057399a4e05f5e25a728cd4ae56
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 7cf3db5020d6a100ca6afdd5a1dccd522189720d
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44298506"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50978498"
 ---
 # <a name="tutorial-use-azure-security-center-to-monitor-windows-virtual-machines"></a>Kurz: Použití služby Azure Security Center k monitorování virtuálních počítačů s Windows
 
@@ -133,7 +133,7 @@ V tomto kurzu jste nastavili Azure Security Center a pak jste v Security Center 
 > * Zobrazení a oprava problémů se stavem konfigurace
 > * Kontrola zjištěných hrozeb
 
-V dalším kurzu se dozvíte, jak vytvořit kanál CI/CD pomocí Azure DevOps Services a virtuálního počítače s Windows a IIS.
+V dalším kurzu se dozvíte, jak na pár virtuálních počítačů s Windows nainstalovat stack SQL, služby IIS a .NET.
 
 > [!div class="nextstepaction"]
-> [Azure Pipelines(./tutorial-vsts-iis-cicd.md)
+> [Stack SQL, služby IIS a .NET](tutorial-iis-sql.md)

@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 09/24/2018
+ms.date: 11/02/2018
 ms.author: celested
 ms.reviewer: lenalepa
 ms.custom: aaddev
-ms.openlocfilehash: b2dea11b6573be8f574bd18fa69ee76658d6d698
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: c0bf5bbdf496a23a5ed66a149933f25a059984a9
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46975806"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50913274"
 ---
 # <a name="quickstart-register-an-app-with-the-azure-active-directory-v20-endpoint"></a>Rychlý start: Registrace aplikace pomocí koncového bodu Azure Active Directory verze 2.0
 
@@ -30,8 +30,10 @@ ms.locfileid: "46975806"
 
 Pokud budete chtít sestavit aplikaci, která přijímá přihlášení přes osobní účet Microsoft (MSA) i pracovní nebo školní účet (Azure AD), budete muset zaregistrovat aplikaci pomocí koncového bodu Azure Active Directory (Azure AD) verze 2.0. V tuto chvíli není možné používat žádné existující aplikace, které případně máte, s Azure AD nebo MSA – bude potřeba vytvořit úplně novou.
 
+Ne všechny funkce a scénáře služby Azure AD jsou podporovány koncovým bodem verze 2.0. Pokud chcete zjistit, jestli máte použít koncový bod verze 2.0, přečtěte si informace o [omezeních verze 2.0](active-directory-v2-limitations.md).
+
 > [!NOTE]
-> Ne všechny funkce a scénáře služby Azure AD jsou podporovány koncovým bodem verze 2.0. Pokud chcete zjistit, jestli máte použít koncový bod verze 2.0, přečtěte si informace o [omezeních verze 2.0](active-directory-v2-limitations.md).
+> Registrujete novou aplikaci? Vyzkoušejte nové prostředí **Registrace aplikací (Preview)** na webu Azure Portal. Začněte tím, že si přečtete téma [Registrace aplikace (Preview)](quickstart-register-app.md).
 
 ## <a name="step-1-sign-in-to-the-microsoft-application-registration-portal"></a>1. krok: Přihlaste se k portálu pro registraci aplikací Microsoftu
 

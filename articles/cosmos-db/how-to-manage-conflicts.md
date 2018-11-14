@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 10/17/2018
 ms.author: chrande
-ms.openlocfilehash: 0dd0abae8ae912ebb7160d995672a97ce0bab69b
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 6b44e08fc1dce489e703bea1cbef2a7e94ae0f2a
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50243584"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50961022"
 ---
 # <a name="manage-conflicts-between-regions"></a>Správa konfliktů mezi oblastmi
 
@@ -22,7 +22,7 @@ V případě zápisů do více oblastí platí, že pokud dojde ke konfliktu dat
 
 Tyto ukázky předvádějí, jak nastavit kontejner s vlastní zásadou řešení konfliktů. Tyto konflikty se zobrazí v informačním kanálu konfliktů.
 
-### <a id="create-custom-conflict-resolution-policy-dotnet"></a>.NET
+### <a id="create-custom-conflict-resolution-policy-dotnet"></a>.NET SDK
 
 ```csharp
 DocumentCollection manualCollection = await createClient.CreateDocumentCollectionIfNotExistsAsync(
@@ -36,7 +36,7 @@ DocumentCollection manualCollection = await createClient.CreateDocumentCollectio
   });
 ```
 
-### <a id="create-custom-conflict-resolution-policy-java-async"></a>Java Async
+### <a id="create-custom-conflict-resolution-policy-java-async"></a>Java Async SDK
 
 ```java
 DocumentCollection collection = new DocumentCollection();
@@ -46,7 +46,7 @@ collection.setConflictResolutionPolicy(policy);
 DocumentCollection createdCollection = client.createCollection(databaseUri, collection, null).toBlocking().value();
 ```
 
-### <a id="create-custom-conflict-resolution-policy-java-sync"></a>Java Sync
+### <a id="create-custom-conflict-resolution-policy-java-sync"></a>Java Sync SDK
 
 ```java
 DocumentCollection manualCollection = new DocumentCollection();
@@ -56,7 +56,7 @@ manualCollection.setConflictResolutionPolicy(customPolicy);
 DocumentCollection createdCollection = client.createCollection(database.getSelfLink(), collection, null).getResource();
 ```
 
-### <a id="create-custom-conflict-resolution-policy-javascript"></a>Node.js/JavaScript/TypeScript
+### <a id="create-custom-conflict-resolution-policy-javascript"></a>Node.js/JavaScript/TypeScript SDK
 
 ```javascript
 const database = client.database(this.databaseName);
@@ -70,7 +70,7 @@ const {
 });
 ```
 
-### <a id="create-custom-conflict-resolution-policy-python"></a>Python
+### <a id="create-custom-conflict-resolution-policy-python"></a>Python SDK
 
 ```python
 database = client.ReadDatabase("dbs/" + self.database_name)
@@ -87,7 +87,7 @@ manual_collection = client.CreateContainer(database['_self'], collection)
 
 Tyto ukázky předvádějí, jak nastavit kontejner s vlastní zásadou řešení konfliktů s využitím uložené procedury, která konflikt vyřeší. Tyto konflikty se **nezobrazí** v informačním kanálu konfliktů, pokud ve vaší uložené proceduře nedojde k chybě.
 
-### <a id="create-custom-conflict-resolution-policy-stored-proc-dotnet"></a>.NET
+### <a id="create-custom-conflict-resolution-policy-stored-proc-dotnet"></a>.NET SDK
 
 ```csharp
 DocumentCollection udpCollection = await createClient.CreateDocumentCollectionIfNotExistsAsync(
@@ -104,7 +104,7 @@ DocumentCollection udpCollection = await createClient.CreateDocumentCollectionIf
 
 Po vytvoření kontejneru bude potřeba vytvořit uloženou proceduru `resolver`.
 
-### <a id="create-custom-conflict-resolution-policy-stored-proc-java-async"></a>Java Async
+### <a id="create-custom-conflict-resolution-policy-stored-proc-java-async"></a>Java Async SDK
 
 ```java
 DocumentCollection collection = new DocumentCollection();
@@ -116,7 +116,7 @@ DocumentCollection createdCollection = client.createCollection(databaseUri, coll
 
 Po vytvoření kontejneru bude potřeba vytvořit uloženou proceduru `resolver`.
 
-### <a id="create-custom-conflict-resolution-policy-stored-proc-java-sync"></a>Java Sync
+### <a id="create-custom-conflict-resolution-policy-stored-proc-java-sync"></a>Java Sync SDK
 
 ```java
 DocumentCollection udpCollection = new DocumentCollection();
@@ -129,7 +129,7 @@ DocumentCollection createdCollection = this.tryCreateDocumentCollection(createCl
 
 Po vytvoření kontejneru bude potřeba vytvořit uloženou proceduru `resolver`.
 
-### <a id="create-custom-conflict-resolution-policy-stored-proc-javascript"></a>Node.js/JavaScript/TypeScript
+### <a id="create-custom-conflict-resolution-policy-stored-proc-javascript"></a>Node.js/JavaScript/TypeScript SDK
 
 ```javascript
 const database = client.database(this.databaseName);
@@ -148,7 +148,7 @@ const { container: udpContainer } = await database.containers.createIfNotExists(
 
 Po vytvoření kontejneru bude potřeba vytvořit uloženou proceduru `resolver`.
 
-### <a id="create-custom-conflict-resolution-policy-stored-proc-python"></a>Python
+### <a id="create-custom-conflict-resolution-policy-stored-proc-python"></a>Python SDK
 
 ```python
 
@@ -160,7 +160,7 @@ Po vytvoření kontejneru bude potřeba vytvořit uloženou proceduru `resolver`
 
 Tyto ukázky předvádějí, jak nastavit kontejner se zásadou řešení konfliktů Poslední zapisovatel vyhrává. Pokud cesta není zadaná nebo je neplatná, jako výchozí hodnota se použije vlastnost `_ts` (pole časového razítka). Tyto konflikty se **nezobrazí** v informačním kanálu konfliktů.
 
-### <a id="create-custom-conflict-resolution-policy-lww-dotnet"></a>.NET
+### <a id="create-custom-conflict-resolution-policy-lww-dotnet"></a>.NET SDK
 
 ```csharp
 DocumentCollection lwwCollection = await createClient.CreateDocumentCollectionIfNotExistsAsync(
@@ -175,7 +175,7 @@ DocumentCollection lwwCollection = await createClient.CreateDocumentCollectionIf
   });
 ```
 
-### <a id="create-custom-conflict-resolution-policy-lww-java-async"></a>Java Async
+### <a id="create-custom-conflict-resolution-policy-lww-java-async"></a>Java Async SDK
 
 ```java
 DocumentCollection collection = new DocumentCollection();
@@ -185,7 +185,7 @@ collection.setConflictResolutionPolicy(policy);
 DocumentCollection createdCollection = client.createCollection(databaseUri, collection, null).toBlocking().value();
 ```
 
-### <a id="create-custom-conflict-resolution-policy-lww-java-sync"></a>Java Sync
+### <a id="create-custom-conflict-resolution-policy-lww-java-sync"></a>Java Sync SDK
 
 ```java
 DocumentCollection lwwCollection = new DocumentCollection();
@@ -195,7 +195,7 @@ lwwCollection.setConflictResolutionPolicy(lwwPolicy);
 DocumentCollection createdCollection = this.tryCreateDocumentCollection(createClient, database, lwwCollection);
 ```
 
-### <a id="create-custom-conflict-resolution-policy-lww-javascript"></a>Node.js/JavaScript/TypeScript
+### <a id="create-custom-conflict-resolution-policy-lww-javascript"></a>Node.js/JavaScript/TypeScript SDK
 
 ```javascript
 const database = client.database(this.databaseName);
@@ -212,7 +212,7 @@ const { container: lwwContainer } = await database.containers.createIfNotExists(
 
 Pokud vynecháte vlastnost `conflictResolutionPath`, jako výchozí hodnota se použije vlastnost `_ts`.
 
-### <a id="create-custom-conflict-resolution-policy-lww-python"></a>Python
+### <a id="create-custom-conflict-resolution-policy-lww-python"></a>Python SDK
 
 ```python
 udp_collection = {
@@ -229,13 +229,13 @@ udp_collection = self.try_create_document_collection(create_client, database, ud
 
 Tyto ukázky předvádějí, jak číst z informačního kanálu konfliktů kontejneru. V informačním kanálu konfliktů se zobrazí pouze konflikty, které se nevyřešily automaticky.
 
-### <a id="read-from-conflict-feed-dotnet"></a>.NET
+### <a id="read-from-conflict-feed-dotnet"></a>.NET SDK
 
 ```csharp
 FeedResponse<Conflict> conflicts = await delClient.ReadConflictFeedAsync(this.collectionUri);
 ```
 
-### <a id="read-from-conflict-feed-java-async"></a>Java Async
+### <a id="read-from-conflict-feed-java-async"></a>Java Async SDK
 
 ```java
 FeedResponse<Conflict> response = client.readConflicts(this.manualCollectionUri, null)
@@ -245,7 +245,7 @@ for (Conflict conflict : response.getResults()) {
 }
 ```
 
-### <a id="read-from-conflict-feed-java-sync"></a>Java Sync
+### <a id="read-from-conflict-feed-java-sync"></a>Java Sync SDK
 
 ```java
 Iterator<Conflict> conflictsIterartor = client.readConflicts(this.collectionLink, null).getQueryIterator();
@@ -255,7 +255,7 @@ while (conflictsIterartor.hasNext()) {
 }
 ```
 
-### <a id="read-from-conflict-feed-javascript"></a>Node.js/JavaScript/TypeScript
+### <a id="read-from-conflict-feed-javascript"></a>Node.js/JavaScript/TypeScript SDK
 
 ```javascript
 const container = client

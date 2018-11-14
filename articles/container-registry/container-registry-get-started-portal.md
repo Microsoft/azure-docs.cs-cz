@@ -5,15 +5,15 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: quickstart
-ms.date: 03/03/2018
+ms.date: 11/06/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: a75d7e599b10b1d56bd41db1d6785dace67d5d06
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 1e039c465bf37e0ee5ca1db5837798680e27463d
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857835"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51278663"
 ---
 # <a name="quickstart-create-a-container-registry-using-the-azure-portal"></a>Rychlý start: Vytvoření registru kontejnerů pomocí webu Azure Portal
 
@@ -27,11 +27,11 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
 ## <a name="create-a-container-registry"></a>Vytvoření registru kontejnerů
 
-Vyberte **Vytvořit prostředek** > **Kontejnery** > **Azure Container Registry**.
+Vyberte **Vytvořit prostředek** > **Kontejnery** > **Container Registry**.
 
 ![Vytvoření registru kontejnerů na webu Azure Portal][qs-portal-01]
 
-Zadejte odpovídající hodnoty pro **Název registru** a **Skupina prostředků**. Název registru musí být jedinečný v rámci Azure a musí obsahovat 5 až 50 alfanumerických znaků. Vytvořte novou skupinu prostředků `myResourceGroup` a jako **Skladová položka** vyberte Basic. Vyberte **Vytvořit** a nasaďte instanci služby ACR.
+Zadejte odpovídající hodnoty pro **Název registru** a **Skupina prostředků**. Název registru musí být jedinečný v rámci Azure a musí obsahovat 5 až 50 alfanumerických znaků. Pro účely tohoto rychlého startu vytvořte novou skupinu prostředků `myResourceGroup` v umístění `West US` a jako **skladovou položku** vyberte Basic. Vyberte **Vytvořit** a nasaďte instanci služby ACR.
 
 ![Vytvoření registru kontejnerů na webu Azure Portal][qs-portal-03]
 
@@ -71,29 +71,29 @@ Pokud chcete nasdílet image do služby Azure Container Registry, musíte nejprv
 docker pull microsoft/aci-helloworld
 ```
 
-Před nasdílením image do registru k ní musíte přidat značku s názvem přihlašovacího serveru služby ACR. Označte image pomocí příkazu [docker tag][docker-tag]. Nahraďte *login server* názvem přihlašovacího serveru, který jste si poznamenali dříve.
+Před nasdílením image do registru k ní musíte přidat značku s názvem přihlašovacího serveru služby ACR. Označte image pomocí příkazu [docker tag][docker-tag]. Nahraďte *login server* názvem přihlašovacího serveru, který jste si poznamenali dříve. Přidejte *název úložiště*, například **`myrepo`**, aby se vaše image umístila do úložiště.
 
 ```bash
-docker tag microsoft/aci-helloworld <login server>/aci-helloworld:v1
+docker tag microsoft/aci-helloworld <login server>/<repository name>/aci-helloworld:v1
 ```
 
-Nakonec pomocí příkazu [docker push][docker-push] nasdílejte image do instance služby ACR. Nahraďte *login server* názvem přihlašovacího serveru vaší instance služby ACR.
+Nakonec pomocí příkazu [docker push][docker-push] nasdílejte image do instance služby ACR. Nahraďte *login server* názvem přihlašovacího serveru vaší instance ACR a *repository name* nahraďte názvem úložiště, který jste použili v předchozím příkazu.
 
 ```bash
-docker push <login server>/aci-helloworld:v1
+docker push <login server>/<repository name>/aci-helloworld:v1
 ```
 
 Výstup z úspěšného příkazu `docker push` vypadá nějak takto:
 
 ```
-The push refers to a repository [uniqueregistryname.azurecr.io/aci-helloworld]
-7c701b1aeecd: Pushed
-c4332f071aa2: Pushed
-0607e25cc175: Pushed
+The push refers to repository [specificregistryname.azurecr.io/myrepo/aci-helloworld]
+31ba1ebd9cf5: Pushed
+cd07853fe8be: Pushed
+73f25249687f: Pushed
 d8fbd47558a8: Pushed
 44ab46125c35: Pushed
 5bef08742407: Pushed
-v1: digest: sha256:f2867748615cc327d31c68b1172cc03c0544432717c4d2ba2c1c2d34b18c62ba size: 1577
+v1: digest: sha256:565dba8ce20ca1a311c2d9485089d7ddc935dd50140510050345a1b0ea4ffa6e size: 1576
 ```
 
 ## <a name="list-container-images"></a>Výpis imagí kontejnerů
@@ -114,7 +114,7 @@ Zobrazí se místní nabídka, ve které vyberte **Spustit instanci**:
 
 ![Spuštění ACI – Místní nabídka][qs-portal-11]
 
-Vyplňte **Název kontejneru**, ujistěte se, že je vybrané správné předplatné, vyberte existující **skupinu prostředků** myResourceGroup a pak kliknutím na **OK** spusťte instanci kontejneru Azure.
+Vyplňte **Název kontejneru**, ujistěte se, že je vybrané správné předplatné, a vyberte existující **skupinu prostředků** myResourceGroup. Ujistěte se, že je povolená možnost Veřejná IP adresa (je nastavená na **Ano**), a pak kliknutím na **OK** spusťte instanci kontejneru Azure.
 
 ![Spuštění ACI – Možnosti nasazení][qs-portal-12]
 
@@ -136,7 +136,7 @@ Jakmile bude kontejner ve stavu **Spuštěno**, v oblíbeném prohlížeči pře
 
 Pokud chcete vyčistit prostředky, přejděte na portálu do skupiny prostředků **myResourceGroup**. Po načtení skupiny prostředků kliknutím na **Odstranit skupinu prostředků** odeberte skupinu prostředků, službu Azure Container Registry a všechny instance kontejnerů Azure.
 
-![Vytvoření registru kontejnerů na webu Azure Portal][qs-portal-08]
+![Odstranění skupiny prostředků na webu Azure Portal][qs-portal-08]
 
 ## <a name="next-steps"></a>Další kroky
 

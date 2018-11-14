@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/24/2018
+ms.date: 11/01/2018
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: aa91701fd289be171a2e9f63165c669953dac918
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: d61d0220a87f81ca68255d40c00a6b7783943231
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50086790"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50960191"
 ---
 # <a name="quickstart-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>Rychlý start: Volání rozhraní Microsoft Graph API z aplikace pro Univerzální platformu Windows (UPW)
 
@@ -51,12 +51,12 @@ Tento rychlý start obsahuje vzorový kód, který předvádí, jak může aplik
 > 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
 > 1. Pokud váš účet umožňuje přístup k více tenantům, vyberte svůj účet v pravém horním rohu a nastavte relaci portálu na požadovaného tenanta Azure AD.
 > 1. V levém navigačním podokně vyberte službu **Azure Active Directory** a pak vyberte **Registrace aplikací (Preview)** > **Nová registrace**.
-> 1. Když se zobrazí **stránka Registrace aplikace**, zadejte registrační informace vaší aplikace:
+> 1. Když se zobrazí stránka **Registrace aplikace**, zadejte registrační informace vaší aplikace:
 >      - V části **Název** zadejte smysluplný název aplikace, který se zobrazí uživatelům aplikace, například `UWP-App-calling-MsGraph`.
 >      - V části **Podporované typy účtu** vyberte **Účty v libovolném organizačním adresáři a osobní účty Microsoft (například Skype, Xbox, Outlook.com)**.
 >      - Výběrem možnosti **Registrovat** aplikaci vytvořte.
 > 1. V seznamu stránek pro aplikaci vyberte **Ověřování**.
-> 1. V části **Identifikátory URI pro přesměrování** vyhledejte část **Navrhované identifikátory URI pro přesměrování pro veřejné klienty (mobilní, desktopové)** a vyberte **urn:ietf:wg:oauth:2.0:oob**.
+> 1. V části **Adresy URL pro přesměrování** vyhledejte část **Navrhované identifikátory URI pro přesměrování pro veřejné klienty (mobilní, desktopové)** a vyberte **urn:ietf:wg:oauth:2.0:oob**.
 > 1. Vyberte **Uložit**.
 
 > [!div renderon="portal" class="sxs-lookup alert alert-info"]
@@ -76,11 +76,23 @@ Tento rychlý start obsahuje vzorový kód, který předvádí, jak může aplik
 
 1. Extrahujte soubor zip do místní složky blízko ke kořenovému adresáři disku, například **C:\Azure-Samples**.
 1. Otevřete projekt v sadě Visual Studio.
-1. Upravte soubor **App.Xaml.cs** a nahraďte řádek začínající na `private static string ClientId` následujícím kódem:
+1. Upravte soubor **App.Xaml.cs** a nahraďte hodnoty polí `ClientId` a `Tenant` tímto:
 
     ```csharp
     private static string ClientId = "Enter_the_Application_Id_here";
+    private static string Tenant = "Enter_the_Tenant_Info_Here";
     ```
+
+> [!div renderon="docs"]
+> Kde:
+> - `Enter_the_Application_Id_here` je ID aplikace, kterou jste zaregistrovali.
+> - `Enter_the_Tenant_Info_Here` je jedna z následujících možností:
+>   - Pokud vaše aplikace podporuje režim **Jen moje organizace**, nahraďte tuto hodnotu za **ID tenanta** nebo **Název tenanta** (například contoso.microsoft.com).
+>   - Pokud vaše aplikace podporuje režim **Účty v libovolném organizačním adresáři**, nahraďte tuto hodnotu za `organizations`.
+>   - Pokud vaše aplikace podporuje režim **Všichni uživatelé účtu Microsoft**, nahraďte tuto hodnotu za `common`.
+>
+> > [!TIP]
+> > Hodnoty *ID aplikace*, *ID adresáře (tenanta)* a *Podporované typy účtu* najdete na stránce **Přehled**.
 
 ## <a name="more-information"></a>Další informace
 
@@ -102,7 +114,7 @@ Odkaz na knihovnu MSAL můžete přidat tak, že přidáte následující kód:
 using Microsoft.Identity.Client;
 ```
 
-Pak můžete MSAL inicializovat pomocí následujícího kódu:
+Potom inicializujte knihovnu MSAL pomocí následujícího kódu:
 
 ```csharp
 public static PublicClientApplication PublicClientApp = new PublicClientApplication(ClientId);
@@ -118,11 +130,11 @@ Knihovna MSAL používá k získání tokenů dvě metody: `AcquireTokenAsync` a
 
 #### <a name="get-a-user-token-interactively"></a>Interaktivní získání tokenu uživatele
 
- V některých situacích je nutné, aby uživatelé komunikovali s koncovým bodem Azure Active Directory v2.0 prostřednictvím automaticky otevíraných oken, kde se ověřují jejich přihlašovací údaje nebo kde udělují souhlas. Mezi ukázkové scénáře patří:
+V některých situacích je nutné, aby uživatelé komunikovali s koncovým bodem Azure AD v2.0 prostřednictvím automaticky otevíraných oken, kde se ověřují jejich přihlašovací údaje nebo kde udělují souhlas. Možné příklady:
 
-- První přihlášení uživatele k aplikaci
-- Když je potřeba, aby uživatel znovu zadal své přihlašovací údaje, protože vypršela platnost hesla
-- Vaše aplikace žádá o přístup k prostředku, ke kterému musí dát uživatel souhlas
+- Při prvním přihlášení uživatele k aplikaci
+- Když je potřeba, aby uživatelé znovu zadali svoje přihlašovací údaje, protože vypršela platnost hesla
+- Když vaše aplikace žádá o přístup k prostředku, ke kterému musí dát uživatel souhlas
 - Když je nutné dvoufaktorové ověřování
 
 ```csharp
@@ -135,7 +147,7 @@ authResult = await App.PublicClientApp.AcquireTokenAsync(scopes);
 
 #### <a name="get-a-user-token-silently"></a>Získání tokenu uživatele bez upozornění
 
-Nechcete, aby uživatelé ověřovali své přihlašovací údaje pokaždé, když potřebují přístup k prostředku. Ve většině případů budete chtít tokeny pořizovat a obnovovat bez nutnosti zásahu uživatele. `AcquireTokenSilentAsync` je metoda běžně používaná k získání tokenů, které slouží k přístupu k chráněným prostředkům po počáteční metodě `AcquireTokenAsync`:
+Nechcete vyžadovat, aby uživatel ověřoval přihlašovací údaje pokaždé, když potřebuje přístup k prostředku. Ve většině případů budete chtít tokeny pořizovat a obnovovat bez nutnosti zásahu uživatele. Po počáteční metodě `AcquireTokenAsync` můžete použít metodu `AcquireTokenSilentAsync` a získat tokeny pro přístup k chráněným prostředkům:
 
 ```csharp
 var accounts = await App.PublicClientApp.GetAccountsAsync();

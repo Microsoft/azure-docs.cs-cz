@@ -11,12 +11,12 @@ ms.custom: mvc
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 02/28/2018
-ms.openlocfilehash: 7eef3d71a35b5016e48e519b95c2573fbe3390e7
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 54b25aa141da15224d5d8034ba54783d3633f5be
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35265101"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50914732"
 ---
 # <a name="azure-database-for-mysql-use-python-to-connect-and-query-data"></a>Azure Database for MySQL: Použití Pythonu k připojení a dotazování dat
 Tento rychlý start ukazuje, jak se připojit ke službě Azure Database for MySQL pomocí [Pythonu](https://python.org). Používá příkazy jazyka SQL k dotazování, vkládání, aktualizaci a odstraňování dat v databázi z platforem Mac OS, Ubuntu Linux a Windows. Toto téma předpokládá, že máte zkušenosti s vývojem pomocí Pythonu a teprve začínáte pracovat se službou Azure Database for MySQL.
@@ -27,7 +27,11 @@ Tento rychlý start jako výchozí bod využívá prostředky vytvořené v něk
 - [Vytvoření serveru Azure Database for MySQL pomocí Azure CLI](./quickstart-create-mysql-server-database-using-azure-cli.md)
 
 ## <a name="install-python-and-the-mysql-connector"></a>Instalace Pythonu a konektoru MySQL
-Nainstalujte na svém počítači [Python](https://www.python.org/downloads/) a [konektor MySQL pro Python](https://dev.mysql.com/downloads/connector/python/). V závislosti na vaší platformě postupujte podle kroků v příslušné části:
+Nainstalujte na svém počítači [Python](https://www.python.org/downloads/) a [konektor MySQL pro Python](https://dev.mysql.com/downloads/connector/python/). V závislosti na vaší platformě postupujte podle kroků v příslušné části níže. 
+
+> [!NOTE]
+> V tomto rychlém startu se k připojení k MySQL za účelem spouštění dotazů využívají čistě příkazy jazyka SQL. Pokud používáte webovou architekturu, použijte doporučený konektor pro tuto architekturu. Například pro Django se doporučuje použít konektor [mysqlclient](https://pypi.org/project/mysqlclient/).
+>
 
 ### <a name="windows"></a>Windows
 1. Z webu [python.org](https://www.python.org/downloads/windows/) stáhněte a nainstalujte Python 2.7. 
@@ -56,17 +60,16 @@ Nainstalujte na svém počítači [Python](https://www.python.org/downloads/) a 
 
    ```bash
    pip install mysql-connector-python-rf
-   ```
+   ``` 
 
 ## <a name="get-connection-information"></a>Získání informací o připojení
 Získejte informace o připojení potřebné pro připojení ke službě Azure Database for MySQL. Potřebujete plně kvalifikovaný název serveru a přihlašovací údaje.
 
-1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 2. V nabídce vlevo na webu Azure Portal klikněte na **Všechny prostředky** a vyhledejte vytvořený server (například **mydemoserver**).
 3. Klikněte na název serveru.
 4. Na panelu **Přehled** serveru si poznamenejte **Název serveru** a **Přihlašovací jméno správce serveru**. Pokud zapomenete své heslo, můžete ho na tomto panelu také resetovat.
  ![Název serveru Azure Database for MySQL](./media/connect-python/1_server-overview-name-login.png)
-   
 
 ## <a name="run-python-code"></a>Spuštění kódu Pythonu
 - Vložte kód do textového souboru a ten uložte s příponou .py do složky projektu (například C:\pythonmysql\createtable.py nebo /home/username/pythonmysql/createtable.py).

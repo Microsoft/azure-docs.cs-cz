@@ -1,36 +1,38 @@
 ---
 title: 'Rychlý start: Vytvoření znalostní báze – REST, C# – QnA Maker'
 titlesuffix: Azure Cognitive Services
-description: Tento rychlý start založený na REST vás provede procesem vytvoření ukázkové znalostní báze služby QnA Maker prostřednictvím kódu programu. Tato znalostní báze se zobrazí na řídicím panelu Azure účtu rozhraní API služeb Cognitive Services.
+description: Tento rychlý start založený na REST a jazyce C# vás provede procesem vytvoření ukázkové znalostní báze služby QnA Maker prostřednictvím kódu programu. Tato znalostní báze se zobrazí na řídicím panelu Azure účtu rozhraní API služeb Cognitive Services.
 services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: quickstart
-ms.date: 10/19/2018
+ms.date: 11/6/2018
 ms.author: diberry
-ms.openlocfilehash: e1456cb0e7b7662cd460e51af3456fc496502798
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: d9040965a0cfaf022bf4cc582cb2aeaa34d04849
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49645028"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51252441"
 ---
 # <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-c"></a>Rychlý start: Vytvoření znalostní báze ve službě QnA Maker pomocí jazyka C#
 
-Tento rychlý start vás provede vytvořením ukázkové znalostní báze služby QnA Maker pomocí kódu programu. Služba QnA Maker automaticky extrahuje otázky a odpovědi z částečně strukturovaného obsahu, jako jsou třeba časté otázky, ze [zdrojů dat](../Concepts/data-sources-supported.md). Model pro znalostní bázi je definovaný v kódu ve formátu JSON poslaném v těle požadavku rozhraní API. 
+Tento rychlý start vás provede vytvořením a publikováním ukázkové znalostní báze služby QnA Maker pomocí kódu programu. Služba QnA Maker automaticky extrahuje otázky a odpovědi z částečně strukturovaného obsahu, jako jsou třeba časté otázky, ze [zdrojů dat](../Concepts/data-sources-supported.md). Model pro znalostní bázi je definovaný v kódu ve formátu JSON poslaném v těle požadavku rozhraní API. 
 
 Tento rychlý start volá rozhraní API služby QnA Maker:
 * [Create KB](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)
 * [Get Operation Details](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/operations_getoperationdetails)
+* [Publikování](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fe) 
 
 ## <a name="prerequisites"></a>Požadavky
 
 * Nejnovější verze sady [**Visual Studio Community Edition**](https://www.visualstudio.com/downloads/).
 * Potřebujete [službu QnA Maker](../How-To/set-up-qnamaker-service-azure.md). Pokud chcete získat klíč, vyberte na řídicím panelu **Klíče** v části **Správa prostředků**. 
 
-[!INCLUDE [Code is available in Azure-Samples Github repo](../../../../includes/cognitive-services-qnamaker-csharp-repo-note.md)]
+> [!NOTE] 
+> Kompletní soubor(y) řešení jsou k dispozici v [**Azure-Samples/cognitive-services-qnamaker-csharp** úložišti GitHub](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/tree/master/documentation-samples/quickstarts/create-and-publish-knowledge-base).
 
 ## <a name="create-a-knowledge-base-project"></a>Vytvoření projektu znalostní báze
 
@@ -38,80 +40,34 @@ Tento rychlý start volá rozhraní API služby QnA Maker:
 
 ## <a name="add-the-required-dependencies"></a>Přidání požadovaných závislostí
 
-[!INCLUDE [Add required constants to code file](../../../../includes/cognitive-services-qnamaker-quickstart-csharp-required-dependencies.md)]  
+V horní části souboru Program.cs nahraďte samostatný příkaz using následujícími řádky, které do projektu přidají potřebné závislosti:
+
+[!code-csharp[Add the required dependencies](~/samples-qnamaker-csharp/documentation-samples/quickstarts/create-knowledge-base/QnaQuickstartCreateKnowledgebase/Program.cs?range=1-11 "Add the required dependencies")]
 
 ## <a name="add-the-required-constants"></a>Přidání požadovaných konstant
 
-[!INCLUDE [Add required constants to code file](../../../../includes/cognitive-services-qnamaker-quickstart-csharp-required-constants.md)] 
+Do horní části třídy Program přidejte následující konstanty, které umožní přístup ke službě QnA Maker:
+
+[!code-csharp[Add the required constants](~/samples-qnamaker-csharp/documentation-samples/quickstarts/create-knowledge-base/QnaQuickstartCreateKnowledgebase/Program.cs?range=17-24 "Add the required constants")]
 
 ## <a name="add-the-kb-definition"></a>Přidání definice znalostní báze
 
 Za konstanty přidejte následující definici znalostní báze:
 
-```csharp
-static string kb = @"
-{
-  'name': 'QnA Maker FAQ from quickstart',
-  'qnaList': [
-    {
-      'id': 0,
-      'answer': 'You can use our REST APIs to manage your knowledge base. See here for details: https://westus.dev.cognitive.microsoft.com/docs/services/58994a073d9e04097c7ba6fe/operations/58994a073d9e041ad42d9baa',
-      'source': 'Custom Editorial',
-      'questions': [
-        'How do I programmatically update my knowledge base?'
-      ],
-      'metadata': [
-        {
-          'name': 'category',
-          'value': 'api'
-        }
-      ]
-    }
-  ],
-  'urls': [
-    'https://docs.microsoft.com/azure/cognitive-services/qnamaker/faqs',
-    'https://docs.microsoft.com/bot-framework/resources-bot-framework-faq'
-  ],
-  'files': []
-}
-";
-```
+[!code-csharp[Add the required constants](~/samples-qnamaker-csharp/documentation-samples/quickstarts/create-knowledge-base/QnaQuickstartCreateKnowledgebase/Program.cs?range=32-57 "Add the required constants")]
 
 ## <a name="add-supporting-functions-and-structures"></a>Přidání podpůrných funkcí a struktur
+Přidejte následující blok kódu do třídy Program:
 
-[!INCLUDE [Add supporting functions and structures](../../../../includes/cognitive-services-qnamaker-quickstart-csharp-support-functions.md)] 
+[!code-csharp[Add supporting functions and structures](~/samples-qnamaker-csharp/documentation-samples/quickstarts/create-knowledge-base/QnaQuickstartCreateKnowledgebase/Program.cs?range=62-82 "Add supporting functions and structures")]
 
 ## <a name="add-a-post-request-to-create-kb"></a>Přidání požadavku POST na vytvoření znalostní báze
 
 Následující kód odešle do rozhraní API služby QnA Maker požadavek HTTPS, který vytvoří znalostní bázi. Potom kód přijme odpověď:
 
-```csharp
-async static Task<Response> PostCreateKB(string kb)
-{
-    // Builds the HTTP request URI.
-    string uri = host + service + method;
+[!code-csharp[Add a POST request to create KB](~/samples-qnamaker-csharp/documentation-samples/quickstarts/create-knowledge-base/QnaQuickstartCreateKnowledgebase/Program.cs?range=91-105 "Add a POST request to create KB")]
 
-    // Writes the HTTP request URI to the console, for display purposes.
-    Console.WriteLine("Calling " + uri + ".");
-
-    // Asynchronously invokes the Post(string, string) method, using the
-    // HTTP request URI and the specified data source.
-    using (var client = new HttpClient())
-    using (var request = new HttpRequestMessage())
-    {
-        request.Method = HttpMethod.Post;
-        request.RequestUri = new Uri(uri);
-        request.Content = new StringContent(kb, Encoding.UTF8, "application/json");
-        request.Headers.Add("Ocp-Apim-Subscription-Key", key);
-
-        var response = await client.SendAsync(request);
-        var responseBody = await response.Content.ReadAsStringAsync();
-        return new Response(response.Headers, responseBody);
-    }
-}
-```
-
-Toto volání rozhraní API vrátí odpověď ve formátu JSON, která obsahuje i ID operace. Toto ID operace použijte ke zjištění toho, jestli se znalostí báze úspěšně vytvořila. 
+Toto volání rozhraní API vrátí odpověď JSON, která v poli hlavičky **Location** obsahuje ID operace. Toto ID operace použijte ke zjištění toho, jestli se znalostí báze úspěšně vytvořila. 
 
 ```JSON
 {
@@ -127,30 +83,7 @@ Toto volání rozhraní API vrátí odpověď ve formátu JSON, která obsahuje 
 
 Zkontrolujte stav operace.
 
-```csharp
-async static Task<Response> GetStatus(string operationID)
-{
-    // Builds the HTTP request URI.
-    string uri = host + service + operationID;
-
-    // Writes the HTTP request URI to the console, for display purposes.
-    Console.WriteLine("Calling " + uri + ".");
-
-    // Asynchronously invokes the Get(string) method, using the
-    // HTTP request URI.
-    using (var client = new HttpClient())
-    using (var request = new HttpRequestMessage())
-    {
-        request.Method = HttpMethod.Get;
-        request.RequestUri = new Uri(uri);
-        request.Headers.Add("Ocp-Apim-Subscription-Key", key);
-
-        var response = await client.SendAsync(request);
-        var responseBody = await response.Content.ReadAsStringAsync();
-        return new Response(response.Headers, responseBody);
-    }
-}
-```
+[!code-csharp[Add GET request to determine creation status](~/samples-qnamaker-csharp/documentation-samples/quickstarts/create-knowledge-base/QnaQuickstartCreateKnowledgebase/Program.cs?range=159-170 "Add GET request to determine creation status")]
 
 Toto volání rozhraní API vrátí odpověď ve formátu JSON, která obsahuje i stav operace: 
 
@@ -179,95 +112,24 @@ Volání opakujte, dokud neskočí úspěchem nebo neúspěchem:
 
 ## <a name="add-createkb-method"></a>Přidání metody CreateKB
 
-Následující metoda vytvoří znalostní bázi a opakovaně zkontroluje stav. Jelikož může vytvoření znalostní báze nějakou dobu trvat, je potřeba volání pro kontrolu stavu opakovat, dokud vrácený stav neoznámí úspěch nebo neúspěch.
+Následující metoda vytvoří znalostní bázi a opakovaně zkontroluje stav.  V poli hlavičky odpovědi POST **Location** se vrátí **ID operace** _vytváření_, které se pak použije jako část trasy v požadavku GET. Jelikož může vytvoření znalostní báze nějakou dobu trvat, je potřeba volání pro kontrolu stavu opakovat, dokud vrácený stav neoznámí úspěch nebo neúspěch. Pokud operace proběhne úspěšně, ve vlastnosti **resourceLocation** se vrátí ID znalostní báze. 
 
-```csharp
-async static void CreateKB()
-{
-    try
-    {
-        // Starts the QnA Maker operation to create the knowledge base.
-        var response = await PostCreateKB(kb);
-
-        // Retrieves the operation ID, so the operation's status can be
-        // checked periodically.
-        var operation = response.headers.GetValues("Location").First();
-
-        // Displays the JSON in the HTTP response returned by the 
-        // PostCreateKB(string) method.
-        Console.WriteLine(PrettyPrint(response.response));
-
-        // Iteratively gets the state of the operation creating the
-        // knowledge base. Once the operation state is set to something other
-        // than "Running" or "NotStarted", the loop ends.
-        var done = false;
-        while (true != done)
-        {
-            // Gets the status of the operation.
-            response = await GetStatus(operation);
-
-            // Displays the JSON in the HTTP response returned by the
-            // GetStatus(string) method.
-            Console.WriteLine(PrettyPrint(response.response));
-
-            // Deserialize the JSON into key-value pairs, to retrieve the
-            // state of the operation.
-            var fields = JsonConvert.DeserializeObject<Dictionary<string, string>>(response.response);
-
-            // Gets and checks the state of the operation.
-            String state = fields["operationState"];
-            if (state.CompareTo("Running") == 0 || state.CompareTo("NotStarted") == 0)
-            {
-                // QnA Maker is still creating the knowledge base. The thread is 
-                // paused for a number of seconds equal to the Retry-After header value,
-                // and then the loop continues.
-                var wait = response.headers.GetValues("Retry-After").First();
-                Console.WriteLine("Waiting " + wait + " seconds...");
-                Thread.Sleep(Int32.Parse(wait) * 1000);
-            }
-            else
-            {
-                // QnA Maker has completed creating the knowledge base. 
-                done = true;
-            }
-        }
-    }
-    catch
-    {
-        // An error occurred while creating the knowledge base. Ensure that
-        // you included your QnA Maker subscription key where directed in the sample.
-        Console.WriteLine("An error occurred while creating the knowledge base.");
-    }
-    finally
-    {
-        Console.WriteLine("Press any key to continue.");
-    }
-
-}
-``` 
+[!code-csharp[Add CreateKB method](~/samples-qnamaker-csharp/documentation-samples/quickstarts/create-knowledge-base/QnaQuickstartCreateKnowledgebase/Program.cs?range=176-237 "Add CreateKB method")]
 
 ## <a name="add-the-createkb-method-to-main"></a>Přidání metody CreateKB do metody Main
 
 Změňte metodu Main, aby volala metodu CreateKB:
 
-```csharp
-static void Main(string[] args)
-{
-    // Call the CreateKB() method to create a knowledge base, periodically 
-    // checking the status of the QnA Maker operation until the 
-    // knowledge base is created.
-    CreateKB();
-
-    // The console waits for a key to be pressed before closing.
-    Console.ReadLine();
-}
-```
+[!code-csharp[Add CreateKB method](~/samples-qnamaker-csharp/documentation-samples/quickstarts/create-knowledge-base/QnaQuickstartCreateKnowledgebase/Program.cs?range=239-248 "Add CreateKB method")]
 
 ## <a name="build-and-run-the-program"></a>Sestavení a spuštění programu
 
 Sestavte program a spusťte ho. Program automaticky odešle do rozhraní API služby QnA Maker požadavek na vytvoření znalostní báze a dál se bude každých 30 sekund dotazovat na výsledky. Každá odpověď se zobrazí v okně konzoly.
 
 Jakmile se znalostní báze vytvoří, můžete se na ni podívat na portálu služby QnA Maker na stránce [vašich znalostních bází](https://www.qnamaker.ai/Home/MyServices). 
+
+
+[!INCLUDE [Clean up files and KB](../../../../includes/cognitive-services-qnamaker-quickstart-cleanup-resources.md)] 
 
 ## <a name="next-steps"></a>Další kroky
 
