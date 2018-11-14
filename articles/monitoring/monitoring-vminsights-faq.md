@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/25/2018
+ms.date: 11/08/2018
 ms.author: magoedte
-ms.openlocfilehash: ff870f948acaae14ba772e14d48b27683f0bf07e
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 7d65752787e65eeabf203f9bdc3ea11a1569f8a1
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50091687"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51613371"
 ---
 # <a name="azure-monitor-for-vms-preview-frequently-asked-questions"></a>Nejčastější dotazy k Azure Monitor pro virtuální počítače (Preview)
 Tato FAQ Microsoft je uveden seznam nejčastější dotazy týkající se Azure Monitor pro virtuální počítače. Pokud máte nějaké další dotazy ohledně řešení, přejděte [diskusní fórum](https://feedback.azure.com/forums/34192--general-feedback) a zveřejněte své dotazy. Pokud je dotaz pokládán často, přidáme ji k tomuto článku tak, aby jej lze rychle a snadno najít.
@@ -93,6 +93,11 @@ Zatímco provedli jsme vylepšení Map pro zpracování velkých a složitých k
 ## <a name="why-does-the-network-chart-on-the-performance-tab-look-different-than-the-network-chart-on-the-azure-vm-overview-page"></a>Proč grafu sítě na kartě Výkon vypadat jinak než sítě graf na stránce Přehled virtuálních počítačů Azure?
 
 Stránka s přehledem pro virtuální počítač Azure zobrazuje grafy založené na hostitele měření aktivity ve virtuálním počítači hosta.  Sítě grafu na Přehled virtuálních počítačů Azure se zobrazí pouze síťový provoz, který se bude účtovat.  To nezahrnuje provoz mezi virtuálními sítěmi vnet.  Data a grafy, které jsou uvedené pro monitorování Azure pro virtuální počítače je na základě dat z hosta virtuálního počítače a sítě grafu se zobrazuje veškerý provoz protokolu TCP/IP, který je příchozí a odchozí tomuto virtuálnímu počítači, včetně mezi sítěmi vnet.
+
+## <a name="are-their-limitations-if-i-am-on-the-log-analytics-free-pricing-plan"></a>Pokud jsem v Log Analytics zdarma cenového plánu jsou jejich omezení?
+Pokud jste nakonfigurovali Azure Monitor se pomocí pracovního prostoru Log Analytics *Free* cenovou úroveň, Azure Monitor pro funkci Mapa virtuální počítače se podporují pouze pět připojené počítače připojený k pracovnímu prostoru. Pokud máte pět virtuální počítače připojené k bezplatný pracovní prostor, odpojit jeden z virtuálních počítačů a pak připojit nový virtuální počítač, nový virtuální počítač není monitorovat a uvedených na stránce mapy.  
+
+Za těchto podmínek, zobrazí se výzva s **vyzkoušet** při otevření virtuálního počítače a vyberte možnost **Insights (preview)** v levém podokně, i po jeho instalaci už na virtuálním počítači.  Však můžete nezobrazí výzva s možnostmi jako obvykle ke kterým by tento virtuální počítač nebylo zapojený do služby Azure Monitor pro virtuální počítače. 
 
 ## <a name="next-steps"></a>Další postup
 Kontrola [připojení Azure Monitor pro virtuální počítače](monitoring-vminsights-onboard.md) vám pomohou pochopit požadavky a metody, pokud chcete povolit monitorování virtuálních počítačů.

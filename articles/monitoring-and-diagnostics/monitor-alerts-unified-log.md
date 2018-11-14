@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: f6f94f12fc0a639743f310638af0f0b6ac0d2932
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 51bdc228e27d643cfda75d1e21bc8ea45fe09e3c
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50958147"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51613286"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Upozornění protokolů ve službě Azure Monitor
-Tento článek obsahuje podrobnosti o upozornění protokolů jsou jedním z typů výstrah, které jsou podporovány v rámci [Azure Alerts](monitoring-overview-unified-alerts.md) a umožnit uživatelům použít analytické platformy Azure jako základ pro generování výstrah.
+Tento článek obsahuje podrobnosti o upozornění protokolů jsou jedním z typů výstrah, které jsou podporovány v rámci [Azure Alerts](monitoring-overview-alerts.md) a umožnit uživatelům použít analytické platformy Azure jako základ pro generování výstrah.
 
 Upozornění protokolu se skládá z prohledávání protokolů pravidel vytvořených pro [Azure Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) nebo [Application Insights](../application-insights/app-insights-cloudservices.md#view-azure-diagnostic-events). Další informace o jejich využití najdete v tématu [vytvoření upozornění protokolu v Azure](alert-log.md)
 
@@ -120,6 +120,6 @@ Ceny za upozornění protokolů použít je uvedeno v [ceny služby Azure Monito
 ## <a name="next-steps"></a>Další postup
 * Další informace o [vytváření v protokolu upozornění v Azure](alert-log.md).
 * Vysvětlení [webhooky v protokolu upozornění v Azure](monitor-alerts-unified-log-webhook.md).
-* Další informace o [upozornění Azure](monitoring-overview-unified-alerts.md).
+* Další informace o [upozornění Azure](monitoring-overview-alerts.md).
 * Další informace o [Application Insights](../application-insights/app-insights-analytics.md).
 * Další informace o [Log Analytics](../log-analytics/log-analytics-queries.md).    

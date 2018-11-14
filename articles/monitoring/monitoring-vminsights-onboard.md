@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/25/2018
+ms.date: 11/13/2018
 ms.author: magoedte
-ms.openlocfilehash: 8591e723cad1c44e9cc8d00008485e6b304fc4d3
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 9b6fd9a1eb9e5b27f62507e58f9b1a85caa92dea
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51283358"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51625415"
 ---
 # <a name="how-to-onboard-the-azure-monitor-for-vms-preview"></a>Jak připojit Azure monitorovat pro virtuální počítače (Preview)
-Tento článek popisuje, jak nastavit monitorování Azure pro virtuální počítače, které monitoroval stav operačního systému vašich virtuálních počítačů Azure a zjišťuje a mapuje závislosti aplikací, které mohou být hostovány na ně.  
+Tento článek popisuje, jak nastavit monitorování Azure pro virtuální počítače s monitorováním stavu operačního systému virtuálních počítačů Azure a škálovací sady virtuálních počítačů a virtuálních počítačů ve vašem prostředí, včetně zjišťování a mapování závislostí aplikace který může hostovat na ně.  
 
 Povolení monitorování Azure pro virtuální počítače se provádí pomocí jedné z následujících metod a podrobnosti o použití každé metody jsou k dispozici později v tomto článku.  
 
@@ -50,16 +50,12 @@ Momentálně se podporuje pracovní prostor Log Analytics v těchto oblastech:
 
 Pokud nemáte pracovní prostor, můžete vytvořit pomocí [rozhraní příkazového řádku Azure](../log-analytics/log-analytics-quick-create-workspace-cli.md), pomocí [PowerShell](../log-analytics/log-analytics-quick-create-workspace-posh.md)v [webu Azure portal](../log-analytics/log-analytics-quick-create-workspace.md), nebo s [Azure Resource Manageru](../log-analytics/log-analytics-template-workspace-configuration.md).  Chcete-li povolit monitorování pro jeden virtuální počítač Azure na webu Azure Portal, máte možnost vytvořit pracovní prostor během tohoto procesu.  
 
-Pokud chcete řešení povolit, musíte být členem role Přispěvatel Log Analytics. Další informace o tom, jak řídit přístup k pracovnímu prostoru Log Analytics najdete v tématu [Správa pracovních prostorů](../log-analytics/log-analytics-manage-access.md).
-
-[!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)]
-
 Povolení řešení pro ve velkém měřítku scénář nejprve vyžaduje následující konfigurace ve vašem pracovním prostoru Log Analytics:
 
-* Nainstalujte **ServiceMap** a **InfrastructureInsights** řešení
-* Konfigurovat pracovní prostor Log Analytics ke shromažďování čítačů výkonu
+* Nainstalujte **ServiceMap** a **InfrastructureInsights** řešení. To lze provést pouze s použitím šablony Azure Resource Manageru uvedené v tomto článku.   
+* Konfigurovat pracovní prostor Log Analytics ke shromažďování čítačů výkonu.
 
-Konfiguraci pracovního prostoru v tomto scénáři najdete v tématu [pracovní prostor analýzy protokolů instalace](#setup-log-analytics-workspace).
+Proveďte konfiguraci pracovního prostoru pro scénáře škálování, naleznete v [pracovní prostor Log Analytics instalační program pro při škálování nasazení](#setup-log-analytics-workspace).
 
 ### <a name="supported-operating-systems"></a>Podporované operační systémy
 
@@ -148,20 +144,16 @@ Následující tabulka uvádí operační systémy Windows a Linuxem, které jso
 |12 SP2 | 4.4. * |
 |12 SP3 | 4.4. * |
 
-### <a name="hybrid-environment-connected-sources"></a>Hybridní prostředí, které jsou připojené zdroje
-Azure Monitor pro mapování virtuálních počítačů získává data od agenta Microsoft Dependency. Agent závislostí závisí na Log Analytics, agent pro připojení k Log Analytics a proto systém musí mít agenta Log Analytics, instalaci a konfiguraci agenta závislostí. Následující tabulka popisuje připojené zdroje, které podporuje funkce mapy v hybridním prostředí.
+### <a name="microsoft-dependency-agent"></a>Agent služby Microsoft Dependency
+Azure Monitor pro mapování virtuálních počítačů získává data od agenta Microsoft Dependency. Agent závislostí závisí na Log Analytics, agent pro připojení k Log Analytics a proto systém musí mít agenta Log Analytics, instalaci a konfiguraci agenta závislostí. Když povolíte monitorování Azure pro virtuální počítače pro jeden virtuální počítač Azure nebo při použití metody při škálování nasazení rozšíření agenta závislostí virtuálního počítače Azure se používá k instalaci agenta jako součást registrace zkušenosti. S hybridním prostředí agenta závislostí je možné stáhnout a nainstalovat ručně nebo pomocí metody automatizované nasazení těchto virtuálních počítačů hostovaných mimo Azure.  
+
+Následující tabulka popisuje připojené zdroje, které podporuje funkce mapy v hybridním prostředí.
 
 | Připojený zdroj | Podporováno | Popis |
 |:--|:--|:--|
-| Agenti systému Windows | Ano | Kromě [agenta Log Analytics pro Windows](../log-analytics/log-analytics-concept-hybrid.md), agenti Windows vyžadují agent služby Microsoft Dependency. Úplný seznam verzí operačních systémů najdete v [podporovaných operačních systémech](#supported-operating-systems). |
-| Agenti systému Linux | Ano | Kromě [agenta Log Analytics pro Linux](../log-analytics/log-analytics-concept-hybrid.md), vyžadují agent služby Microsoft Dependency agenti systému Linux. Úplný seznam verzí operačních systémů najdete v [podporovaných operačních systémech](#supported-operating-systems). |
+| Agenti systému Windows | Ano | Kromě [agenta Log Analytics pro Windows](../log-analytics/log-analytics-agent-overview.md), agenti Windows vyžadují agent služby Microsoft Dependency. Úplný seznam verzí operačních systémů najdete v [podporovaných operačních systémech](#supported-operating-systems). |
+| Agenti systému Linux | Ano | Kromě [agenta Log Analytics pro Linux](../log-analytics/log-analytics-agent-overview.md), vyžadují agent služby Microsoft Dependency agenti systému Linux. Úplný seznam verzí operačních systémů najdete v [podporovaných operačních systémech](#supported-operating-systems). |
 | Skupina pro správu nástroje System Center Operations Manager | Ne | |  
-
-Na Windows, Microsoft Monitoring Agent (MMA) používá System Center Operations Manager a Log Analytics ke shromažďování a odesílání dat monitorování. System Center Operations Manager a Log Analytics poskytují různé out v poli verze agenta. Tyto verze dokážou podávat hlášení nástroji System Center Operations Manager, službě Log Analytics nebo oběma.  
-
-V Linuxu, agenta Log Analytics pro Linux shromáždí a pošle monitorování dat do služby Log Analytics.   
-
-Pokud počítače Windows nebo Linuxem nemůžete připojit přímo ke službě, budete muset nakonfigurovat agenta Log Analytics pro připojení ke službě Log Analytics pomocí brány OMS. Další informace o tom, jak nasadit a nakonfigurovat bránu OMS najdete v tématu [bez připojení k Internetu pomocí brány OMS připojit počítače](../log-analytics/log-analytics-oms-gateway.md).  
 
 Agent závislostí lze stáhnout z následujícího umístění.
 
@@ -170,63 +162,23 @@ Agent závislostí lze stáhnout z následujícího umístění.
 | [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.7.1 | 55030ABF553693D8B5112569FB2F97D7C54B66E9990014FC8CC43EFB70DE56C6 |
 | [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.7.1 | 43C75EF0D34471A0CBCE5E396FFEEF4329C9B5517266108FA5D6131A353D29FE |
 
-## <a name="diagnostic-and-usage-data"></a>Diagnostická data a data použití
-Microsoft automaticky shromažďuje data o využití a výkonu prostřednictvím používání služby Azure Monitor. Tato data Microsoft používá k poskytování a vylepšování kvality, zabezpečení a integrity služby. Poskytnout přesné a efektivní možnosti pro odstraňování potíží, data z mapování funkce obsahuje informace o konfiguraci vašeho softwaru, jako je operační systém a verze, IP adresu, název DNS a název pracovní stanice. Společnost Microsoft neshromažďuje jména, adresy ani jiné kontaktní údaje.
+## <a name="role-based-access-control"></a>Řízení přístupu na základě role
+Tento přístup je potřeba udělit uživatelům, aby bylo možné povolit a přístup k funkcím ve službě Azure Monitor pro virtuální počítače.  
+  
+- Pokud chcete řešení povolit, musíte přidat jako člen role Přispěvatel Log Analytics.  
 
-Další informace o shromažďování a používání dat najdete v článku [prohlášení o ochraně osobních údajů Microsoft Online Services](https://go.microsoft.com/fwlink/?LinkId=512132).
+- Zobrazení výkonu, stavu, a mapování dat, musíte přidat jako člen role Čtenář monitorování pro virtuální počítač Azure a pracovní prostor Log Analytics nakonfigurované pro virtuální počítače pomocí Azure monitoru.   
 
-[!INCLUDE [GDPR-related guidance](../../includes/gdpr-dsr-and-stp-note.md)]
-
-## <a name="performance-counters-enabled"></a>Čítače výkonu povolena
-Azure Monitor pro virtuální počítače lze konfigurovat pracovní prostor Log Analytics ke shromažďování čítačů výkonu, které jsou používané řešení.  V následující tabulce jsou uvedeny objekty a čítače nakonfigurované řešení, které byly shromážděny každých 60 sekund.
-
-### <a name="windows-performance-counters"></a>Čítače výkonu Windows
-
-|Název objektu |Název čítače |  
-|------------|-------------|  
-|Logický disk |% Volného místa |  
-|Logický disk |Střední Doba disku/čtení |  
-|Logický disk |Střední Doba disku/přenos |  
-|Logický disk |Střední Doby disku/zápis |  
-|Logický disk |Bajty disku/s |  
-|Logický disk |Bajty čtení z disku/s |  
-|Logický disk |Čtení disku/s |  
-|Logický disk |Přenosy disku/s |  
-|Logický disk |Bajty zapisování na disk/s |  
-|Logický disk |Zápis disku/s |  
-|Logický disk |Volné megabajty |  
-|Memory (Paměť) |Počet MB k dispozici |  
-|Síťový adaptér |Přijaté bajty/s |  
-|Síťový adaptér |Odeslané bajty/s |  
-|Procesor |% Času procesoru |  
-
-### <a name="linux-performance-counters"></a>Čítače výkonu Linuxu
-
-|Název objektu |Název čítače |  
-|------------|-------------|  
-|Logický Disk |% Využitého místa |  
-|Logický Disk |Bajty čtení z disku/s |  
-|Logický Disk |Čtení disku/s |  
-|Logický Disk |Přenosy disku/s |  
-|Logický Disk |Bajty zapisování na disk/s |  
-|Logický Disk |Zápis disku/s |  
-|Logický Disk |Volné megabajty |  
-|Logický Disk |Bajtů logického disku/s |  
-|Memory (Paměť) |Dostupná paměť v MB |  
-|Síť |Celkový počet přijatých bajtů |  
-|Síť |Celkový počet bajtů přenesených |  
-|Procesor |% Času procesoru |  
-
-## <a name="sign-in-to-azure-portal"></a>Přihlášení k webu Azure Portal
-Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com). 
+Další informace o tom, jak řídit přístup k pracovnímu prostoru Log Analytics najdete v tématu [Správa pracovních prostorů](../log-analytics/log-analytics-manage-access.md).
 
 ## <a name="enable-from-the-azure-portal"></a>Povolit z portálu Azure portal
 Pokud chcete povolit monitorování virtuálního počítače Azure na webu Azure Portal, postupujte takto:
 
-1. Na webu Azure Portal, vyberte **virtuálních počítačů**. 
-2. V seznamu vyberte virtuální počítač. 
-3. Na stránce virtuální počítač v **monitorování** vyberte **Insights (preview)**.
-4. Na **Insights (preview)** stránce **vyzkoušet**.
+1. Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com). 
+2. Na webu Azure Portal, vyberte **virtuálních počítačů**. 
+3. V seznamu vyberte virtuální počítač. 
+4. Na stránce virtuální počítač v **monitorování** vyberte **Insights (preview)**.
+5. Na **Insights (preview)** stránce **vyzkoušet**.
 
     ![Povolit monitorování Azure pro virtuální počítače pro virtuální počítač](./media/monitoring-vminsights-onboard/enable-vminsights-vm-portal-01.png)
 
@@ -241,7 +193,13 @@ Po povolení sledování, může trvat přibližně 10 minut, než můžete zobr
 
 
 ## <a name="on-boarding-at-scale"></a>Zavádění ve velkém měřítku
-V této části pokyny, jak k provádění při škálování nasazení služby Azure Monitor pro virtuální počítače pomocí buď zásady Azure nebo pomocí Azure Powershellu.  Prvním krokem nutné je nakonfigurovat váš pracovní prostor Log Analytics.  
+V této části pokyny, jak k provádění při škálování nasazení služby Azure Monitor pro virtuální počítače pomocí buď zásady Azure nebo pomocí Azure Powershellu.  
+
+Shrnuto jsou kroky, které je potřeba provést předem nakonfigurovat váš pracovní prostor Log Analytics, abyste mohli pokračovat s připojováním vašich virtuálních počítačů.
+
+1. Vytvořte nový pracovní prostor, pokud již neexistuje, který slouží k podpoře monitorování Azure pro virtuální počítače. Kontrola [Správa pracovních prostorů](../log-analytics/log-analytics-manage-access.md?toc=/azure/azure-monitor/toc.json) před vytvořením nového pracovního prostoru zvážení všech faktorů náklady, správy a dodržování předpisů než budete pokračovat.       
+2. Povolte čítače výkonu v pracovním prostoru pro kolekci na virtuální počítače s Windows a Linux.
+3. Instalace a povolení **ServiceMap** a **InfrastructureInsights** řešení ve vašem pracovním prostoru.  
 
 ### <a name="setup-log-analytics-workspace"></a>Nastavení pracovního prostoru Log Analytics
 Pokud nemáte pracovní prostor Log Analytics, projděte si dostupné metody navrhované pod [požadavky](#log-analytics) části k jejímu vytvoření.  
@@ -337,7 +295,7 @@ Pokud se rozhodnete používat rozhraní příkazového řádku Azure, musíte n
     ```
 
 ### <a name="enable-using-azure-policy"></a>Povolení s využitím Azure Policy
-Povolit monitorování Azure pro virtuální počítače ve velkém měřítku, která zajišťuje konzistentní dodržování předpisů a automatické podpory pro nové virtuální počítače zřízené, [Azure Policy](../governance/policy/overview.md) se doporučuje. Tyto zásady:
+Povolit monitorování Azure pro virtuální počítače ve velkém měřítku, která zajišťuje konzistentní dodržování předpisů a automatické podpory pro nové virtuální počítače zřízené, [Azure Policy](../azure-policy/azure-policy-introduction.md) se doporučuje. Tyto zásady:
 
 * Nasadit agenta Log Analytics a agenta závislostí 
 * Sestav o výsledcích dodržování předpisů 
@@ -573,14 +531,16 @@ Failed: (0)
 ## <a name="enable-for-hybrid-environment"></a>Povolit pro hybridní prostředí
 Tato část vysvětluje, jak připojit virtuální počítače nebo fyzického počítače, které se hostované ve vašem datovém centru nebo jiné cloudové prostředí pro monitorování, tak monitorování Azure pro virtuální počítače.  
 
-Azure Monitor pro virtuální počítače mapu závislostí agenta nepřenáší vlastní data a nevyžaduje žádné změny brány firewall nebo porty. Data v mapě je vždy přenášených v rámci agenta Log Analytics ve službě Azure Monitor, buď přímo nebo prostřednictvím [bránu OMS](../log-analytics/log-analytics-oms-gateway.md) Pokud zásady zabezpečení IT neumožňují počítače v síti pro připojení k Internetu.
+Azure Monitor pro virtuální počítače mapu závislostí agenta nepřenáší vlastní data a nevyžaduje žádné změny brány firewall nebo porty. Mapy dat je vždy přenášených v rámci agenta Log Analytics ve službě Azure Monitor, buď přímo nebo prostřednictvím [bránu OMS](../log-analytics/log-analytics-oms-gateway.md) Pokud zásady zabezpečení IT neumožňují počítače v síti pro připojení k Internetu.
 
-Seznamte se s požadavky a metody nasazení pro [agenta Log Analytics Linux a Windows](../log-analytics/log-analytics-concept-hybrid.md).
+Seznamte se s požadavky a metody nasazení pro [agenta Log Analytics Linux a Windows](../log-analytics/log-analytics-agent-overview.md).  
+
+[!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)]
 
 Souhrnná kroky:
 
 1. Instalace agenta Log Analytics pro Windows nebo Linux
-2. Instalace agenta závislostí mapování virtuálních počítačů Azure Monitor
+2. Stáhněte a nainstalujte Azure Monitor pro agenta závislostí mapování virtuálních počítačů pro [Windows](https://aka.ms/dependencyagentwindows) nebo [Linux](https://aka.ms/dependencyagentlinux).
 3. Povolte shromažďování čítačů výkonu
 4. Připojení Azure Monitor pro virtuální počítače
 
@@ -723,6 +683,52 @@ Pokud se rozhodnete používat rozhraní příkazového řádku Azure, musíte n
     ```
 Po povolení sledování, může trvat přibližně 10 minut, než můžete zobrazit stav a metriky pro počítač hybridní. 
 
+## <a name="performance-counters-enabled"></a>Čítače výkonu povolena
+Azure Monitor pro virtuální počítače lze konfigurovat pracovní prostor Log Analytics ke shromažďování čítačů výkonu, které jsou používané řešení.  V následující tabulce jsou uvedeny objekty a čítače nakonfigurované řešení, které byly shromážděny každých 60 sekund.
+
+### <a name="windows-performance-counters"></a>Čítače výkonu Windows
+
+|Název objektu |Název čítače |  
+|------------|-------------|  
+|Logický disk |% Volného místa |  
+|Logický disk |Střední Doba disku/čtení |  
+|Logický disk |Střední Doba disku/přenos |  
+|Logický disk |Střední Doby disku/zápis |  
+|Logický disk |Bajty disku/s |  
+|Logický disk |Bajty čtení z disku/s |  
+|Logický disk |Čtení disku/s |  
+|Logický disk |Přenosy disku/s |  
+|Logický disk |Bajty zapisování na disk/s |  
+|Logický disk |Zápis disku/s |  
+|Logický disk |Volné megabajty |  
+|Memory (Paměť) |Počet MB k dispozici |  
+|Síťový adaptér |Přijaté bajty/s |  
+|Síťový adaptér |Odeslané bajty/s |  
+|Procesor |% Času procesoru |  
+
+### <a name="linux-performance-counters"></a>Čítače výkonu Linuxu
+
+|Název objektu |Název čítače |  
+|------------|-------------|  
+|Logický Disk |% Využitého místa |  
+|Logický Disk |Bajty čtení z disku/s |  
+|Logický Disk |Čtení disku/s |  
+|Logický Disk |Přenosy disku/s |  
+|Logický Disk |Bajty zapisování na disk/s |  
+|Logický Disk |Zápis disku/s |  
+|Logický Disk |Volné megabajty |  
+|Logický Disk |Bajtů logického disku/s |  
+|Memory (Paměť) |Dostupná paměť v MB |  
+|Síť |Celkový počet přijatých bajtů |  
+|Síť |Celkový počet bajtů přenesených |  
+|Procesor |% Času procesoru |  
+
+## <a name="diagnostic-and-usage-data"></a>Diagnostická data a data použití
+Microsoft automaticky shromažďuje data o využití a výkonu prostřednictvím používání služby Azure Monitor. Tato data Microsoft používá k poskytování a vylepšování kvality, zabezpečení a integrity služby. Poskytnout přesné a efektivní možnosti pro odstraňování potíží, data z mapování funkce obsahuje informace o konfiguraci vašeho softwaru, jako je operační systém a verze, IP adresu, název DNS a název pracovní stanice. Společnost Microsoft neshromažďuje jména, adresy ani jiné kontaktní údaje.
+
+Další informace o shromažďování a používání dat najdete v článku [prohlášení o ochraně osobních údajů Microsoft Online Services](https://go.microsoft.com/fwlink/?LinkId=512132).
+
+[!INCLUDE [GDPR-related guidance](../../includes/gdpr-dsr-and-stp-note.md)]
 ## <a name="next-steps"></a>Další postup
 
 Pomocí monitorování povoleno pro váš virtuální počítač, tyto informace jsou dostupné pro analýzy a monitorování Azure pro virtuální počítače.  Zjistěte, jak použít funkci stavu, najdete v článku [zobrazení monitorování Azure pro virtuální počítače stavu](monitoring-vminsights-health.md), nebo chcete-li zobrazit závislosti zjištěných aplikací, najdete v článku [zobrazení monitorování Azure pro virtuální počítače mapu](monitoring-vminsights-maps.md).  

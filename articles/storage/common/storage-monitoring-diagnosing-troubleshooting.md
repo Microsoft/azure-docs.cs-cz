@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/11/2017
 ms.author: fhryo-msft
 ms.component: common
-ms.openlocfilehash: 1b949d2baedc7a7da3230212e267c3ac98b30bbd
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 64e7b6ad79fc26f8ab2ba796bbca2909417b113c
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51239538"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51625993"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Monitorování, diagnostika a řešení problémů s Microsoft Azure Storage
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -56,7 +56,7 @@ Praktické vodítko na začátku do konce odstraňování potíží v aplikacíc
   * [Metrika ukazuje zvýšení u PercentThrottlingError]
   * [Metrika ukazuje zvýšení u PercentTimeoutError]
   * [Metrika ukazuje zvýšení u PercentNetworkError]
-  * [Klient dostává zprávy HTTP 403 (zakázáno)]
+  * [Klient dostává zprávy HTTP 403 (Zakázáno)]
   * [Klient dostává zprávy HTTP 404 (Nenalezeno)]
   * [Klient je přijímání zpráv protokolu HTTP 409 (konflikt)]
   * [Metriky ukazují nízkou PercentSuccess nebo položky protokolu analýzy mít operací s stav transakce ClientOtherErrors]
@@ -197,7 +197,7 @@ Uživatelům vaší aplikace může upozorňovat na chyby oznámené službou kl
 V následujících zdrojích informací jsou užitečné pro pochopení souvisejících s úložištěm stavu a chybové kódy:
 
 * [Běžné kódy chyb rozhraní API REST](https://msdn.microsoft.com/library/azure/dd179357.aspx)
-* [Kódy chyb služby objektů BLOB](https://msdn.microsoft.com/library/azure/dd179439.aspx)
+* [Kódy chyb služby Blob Service](https://msdn.microsoft.com/library/azure/dd179439.aspx)
 * [Kódy chyb služby Queue](https://msdn.microsoft.com/library/azure/dd179446.aspx)
 * [Kódy chyb služby Table](https://msdn.microsoft.com/library/azure/dd179438.aspx)
 * [Kódy chyb služby souborů](https://msdn.microsoft.com/library/azure/dn690119.aspx)
@@ -319,7 +319,7 @@ Souvisí váš problém dostupnosti jedné služby úložiště?
 ---
  Klientské aplikace přijímá odpovědi HTTP 4XX (například 404) ze služby úložiště?
 
-* [Klient dostává zprávy HTTP 403 (zakázáno)]
+* [Klient dostává zprávy HTTP 403 (Zakázáno)]
 * [Klient dostává zprávy HTTP 404 (Nenalezeno)]
 * [Klient je přijímání zpráv protokolu HTTP 409 (konflikt)]
 
@@ -642,7 +642,7 @@ Klientská aplikace by měl použít názvy kontejnerů jedinečné pokaždé, k
 Je důležité si uvědomit, že tyto operace byly úspěšně dokončeny a proto nemají vliv na jiné metriky, jako je dostupnost. Mezi operace, která proběhl úspěšně, ale, který může mít za následek neúspěšné stavové kódy HTTP patří:
 
 * **ResourceNotFound** (nebyl nalezen 404), třeba z požadavek GET na objekt blob, který neexistuje.
-* **ResouceAlreadyExists** (409 konflikt), např. ze **CreateIfNotExist** operace, kde už existuje prostředek.
+* **ResourceAlreadyExists** (409 konflikt), např. ze **CreateIfNotExist** operace, kde už existuje prostředek.
 * **ConditionNotMet** (ne upravit 304), třeba z podmíněné operace, například když klient odešle **ETag** hodnotu a HTTP **If-None-Match** záhlaví požádat o bitovou kopii pouze v případě, že má byly aktualizovány od poslední operaci.
 
 Můžete najít seznam běžné kódy chyb rozhraní REST API, které vracejí služby úložiště na stránce [běžné kódy chyb rozhraní REST API](https://msdn.microsoft.com/library/azure/dd179357.aspx).
@@ -843,7 +843,7 @@ Další informace najdete [co je Application Insights](../../application-insight
 [Metrika ukazuje zvýšení u PercentTimeoutError]: #metrics-show-an-increase-in-PercentTimeoutError
 [Metrika ukazuje zvýšení u PercentNetworkError]: #metrics-show-an-increase-in-PercentNetworkError
 
-[Klient dostává zprávy HTTP 403 (zakázáno)]: #the-client-is-receiving-403-messages
+[Klient dostává zprávy HTTP 403 (Zakázáno)]: #the-client-is-receiving-403-messages
 [Klient dostává zprávy HTTP 404 (Nenalezeno)]: #the-client-is-receiving-404-messages
 [Klient nebo jiným procesem dříve odstraněné objektu]: #client-previously-deleted-the-object
 [Chybu ověřování sdíleného přístupového podpisu (SAS)]: #SAS-authorization-issue
