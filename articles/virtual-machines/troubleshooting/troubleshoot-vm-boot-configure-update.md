@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: delhan
-ms.openlocfilehash: 4a51bd5c16a569d0464d4456e57933a09f2fb285
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 2bcdb2b458327a5e87dc36e4a5f50f0ac46bf96a
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567294"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51621023"
 ---
 # <a name="vm-startup-is-stuck-on-getting-windows-ready-dont-turn-off-your-computer-in-azure"></a>Spuštění virtuálního počítače se zaseklo na Probíhá příprava Windows. Nevypínejte počítač. v Azure
 
@@ -184,7 +184,7 @@ $osDiskName = "OsDiskName";
 $DataDiskName = "DataDiskName"
 
 #This can be found by selecting the Managed Disks you wish you use in the Azure Portal if the format below doesn't match
-$osDiskResouceId = "/subscriptions/$subid/resourceGroups/$rgname/providers/Microsoft.Compute/disks/$osDiskName";
+$osDiskResourceId = "/subscriptions/$subid/resourceGroups/$rgname/providers/Microsoft.Compute/disks/$osDiskName";
 $dataDiskResourceId = "/subscriptions/$subid/resourceGroups/$rgname/providers/Microsoft.Compute/disks/$DataDiskName";
 
 $vm = New-AzureRmVMConfig -VMName $vmName -VMSize $vmSize;
@@ -202,10 +202,10 @@ $vm = Add-AzureRmVMNetworkInterface -VM $vm -Id $nic1.Id -Primary;
 #$vm = Add-AzureRmVMNetworkInterface -VM $vm -Id $nic2.Id;
 
 #Windows VM
-$vm = Set-AzureRmVMOSDisk -VM $vm -ManagedDiskId $osDiskResouceId -name $osDiskName -CreateOption Attach -Windows;
+$vm = Set-AzureRmVMOSDisk -VM $vm -ManagedDiskId $osDiskResourceId -name $osDiskName -CreateOption Attach -Windows;
 
 #Linux VM
-#$vm = Set-AzureRmVMOSDisk -VM $vm -ManagedDiskId $osDiskResouceId -name $osDiskName -CreateOption Attach -Linux;
+#$vm = Set-AzureRmVMOSDisk -VM $vm -ManagedDiskId $osDiskResourceId -name $osDiskName -CreateOption Attach -Linux;
 
 #Uncomment to add additional Data Disk
 #Add-AzureRmVMDataDisk -VM $vm -ManagedDiskId $dataDiskResourceId -Name $dataDiskName -Caching None -DiskSizeInGB 1024 -Lun 0 -CreateOption Attach;

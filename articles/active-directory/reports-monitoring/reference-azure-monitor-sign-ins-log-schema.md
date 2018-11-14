@@ -13,15 +13,15 @@ ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: report-monitor
-ms.date: 07/13/2018
+ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: b9ad4e69c0693bc856789c52870a588671573b5c
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 4a610780d11452a8207a1108e4469bc9de62ecb8
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42058078"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51620914"
 ---
 # <a name="interpret-the-azure-ad-sign-in-logs-schema-in-azure-monitor-preview"></a>Interpretace schéma protokolů přihlášení Azure AD ve službě Azure Monitor (preview)
 
@@ -157,7 +157,7 @@ Tento článek popisuje schéma protokolu přihlašování Azure Active Director
 | OperationName | Pro přihlášení, tato hodnota je vždy *aktivit přihlašování*. |
 | OperationVersion | Verze rozhraní REST API, které jsou požadovány klientem. |
 | Kategorie | Pro přihlášení, tato hodnota je vždy *SignIn*. | 
-| ID Tenanta | Klient identifikátor GUID, který je spojen s protokoly. |
+| TenantId | Klient identifikátor GUID, který je spojen s protokoly. |
 | Hodnota resultType | Výsledek operace přihlášení může být *úspěch* nebo *selhání*. | 
 | resultSignature | Obsahuje kód chyby, pokud existuje, pro přihlašovací operaci. |
 | resultDescription | Obsahuje popis chyby pro operace přihlášení. |

@@ -6,14 +6,14 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 11/12/2018
+ms.date: 11/13/2018
 ms.author: adgera
-ms.openlocfilehash: 0fae059db53668da2d71906bbe94e9dabae931bc
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.openlocfilehash: 737c33f6b8cdf9bcb2530816601ff9b5eb994087
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51578582"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51624246"
 ---
 # <a name="use-azure-digital-twins-swagger"></a>Použití Azure digitální dvojče Swagger
 
@@ -36,20 +36,7 @@ Swagger poskytuje interaktivní přehled vašeho rozhraní API, která zahrnuje:
 
 Swagger je praktický nástroj, který vám pomůže s vývoj a testování volání rozhraní API pro správu.
 
-> [!TIP]
-> Neoficiální Swagger ve verzi preview neposkytujeme k předvedení funkcí rozhraní API nastavit.
-> Je hostovaný na [docs.westcentralus.azuresmartspaces.net/management/swagger](https://docs.westcentralus.azuresmartspaces.net/management/swagger).
-
-Je možné otevřít vlastní vygenerovaná dokumentace Swagger rozhraní API Management na:
-
-```plaintext
-https://yourInstanceName.yourLocation.azuresmartspaces.net/management/swagger
-```
-
-| Vlastní název | Nahradit hodnotou |
-| --- | --- |
-| Název_vaší_instance | Název instance digitální dvojče Azure |
-| yourLocation | Jaké oblasti serveru vaší instance je hostován aplikací |
+[!INCLUDE [Digital Twins Swagger](../../includes/digital-twins-swagger.md)]
 
 ## <a name="reference-material"></a>Referenční materiál
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/23/2018
 ms.author: mbullwin
-ms.openlocfilehash: 76037419730aac57e880b71f5b885e657533553d
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 2202fb952d8287f283fff5bce9fe8a6e439603c1
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50157441"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51616244"
 ---
 # <a name="ip-addresses-used-by-application-insights-and-log-analytics"></a>IP adresy používané službou Application Insights a Log Analytics
 [Azure Application Insights](app-insights-overview.md) služba používá počet IP adres. Můžete potřebovat znát tyto adresy, pokud je aplikace, kterou monitorujete hostována za bránou firewall.
@@ -38,7 +38,7 @@ Je třeba otevřít některé Odchozí porty v bráně firewall serveru povolit 
 
 | Účel | zprostředkovatele identity | IP adresa | Porty |
 | --- | --- | --- | --- |
-| Telemetrická data |dc.services.visualstudio.com<br/>dc.applicationinsights.microsoft.com |40.114.241.141<br/>104.45.136.42<br/>40.84.189.107<br/>168.63.242.221<br/>52.167.221.184<br/>52.169.64.244<br/>40.85.218.175<br/>104.211.92.54<br/>52.175.198.74<br/>51.140.6.23 | 443 |
+| Telemetrická data |dc.services.visualstudio.com<br/>dc.applicationinsights.microsoft.com |40.114.241.141<br/>104.45.136.42<br/>40.84.189.107<br/>168.63.242.221<br/>52.167.221.184<br/>52.169.64.244<br/>40.85.218.175<br/>104.211.92.54<br/>52.175.198.74<br/>51.140.6.23<br/>40.71.12.231 | 443 |
 | Live Metrics Stream |rt.services.visualstudio.com<br/>rt.applicationinsights.microsoft.com |23.96.28.38<br/>13.92.40.198 |443 |
 
 ## <a name="status-monitor"></a>Monitorování stavu

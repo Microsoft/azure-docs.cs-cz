@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 0c22072d0eaa328fdf786421344e8ef2caaa575c
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: 31ce23bf6249ef21a2c9fe515b78cdd6ebea9b9c
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51515654"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51614375"
 ---
 # <a name="enable-diagnostics-logging-for-web-apps-in-azure-app-service"></a>Povolení protokolování diagnostiky pro webové aplikace ve službě Azure App Service
 ## <a name="overview"></a>Přehled
@@ -73,16 +73,16 @@ Ve výchozím nastavení, nejsou automaticky odstraněny protokoly (s výjimkou 
 > Pokud jste [znovu vygenerovat přístupové klíče účtu úložiště](../storage/common/storage-create-storage-account.md), musíte obnovit konfiguraci příslušných protokolování použití aktualizované klíčů. Použijte následující postup:
 >
 > 1. V **konfigurovat** kartu, nastavte funkci příslušných protokolování na **vypnout**. Uložte nastavení.
-> 2. Povolení protokolování pro tento objekt blob účtu úložiště nebo tabulku znovu. Uložte nastavení.
+> 2. Povolte protokolování do účtu blob storage to znovu. Uložte nastavení.
 >
 >
 
-Libovolnou kombinaci systému souborů, table storage a blob storage je možné povolit ve stejnou dobu a mají vlastní protokol úrovni konfigurace. Můžete například chtít protokolovat chyby a upozornění do úložiště objektů blob jako dlouhodobé řešení pro protokolování při povolování protokolování systému souborů s úroveň verbose.
+Libovolnou kombinaci systému nebo objekt blob úložiště souborů je možné povolit ve stejnou dobu a mají vlastní protokol úrovni konfigurace. Můžete například chtít protokolovat chyby a upozornění do úložiště objektů blob jako dlouhodobé řešení pro protokolování při povolování protokolování systému souborů s úroveň verbose.
 
-Zatímco všech tří umístění úložiště poskytují stejné základní informace o protokolované události **tabulky úložiště** a **úložiště objektů blob** Protokolovat další informace, jako je například instance ID, ID vlákna a více Detailní časové razítko (formát značek) než protokolování **systém souborů**.
+Zatímco i umístění úložiště poskytují stejné základní informace o protokolované události **úložiště objektů blob** protokoly Další informace, jako je instance ID, ID vlákna a časové razítko podrobnější (formát značek) než protokolování **systém souborů**.
 
 > [!NOTE]
-> Informace uložené v **tabulky úložiště** nebo **úložiště objektů blob** lze přistupovat pouze pomocí klienta úložiště nebo aplikaci, která může pracovat přímo s těmito systémy úložišť. Například sadu Visual Studio 2013 obsahuje Průzkumníka služby Storage, který slouží k prozkoumání tabulkou nebo objektem blob storage a HDInsight můžete přístup k datům uloženým ve službě blob storage. Můžete také psát aplikace, která přistupuje k Azure Storage pomocí jednoho z [sady Azure SDK](https://azure.microsoft.com/downloads/).
+> Informace uložené v **úložiště objektů blob** lze přistupovat pouze pomocí klienta úložiště nebo aplikaci, která může pracovat přímo s těmito systémy úložišť. Například sadu Visual Studio 2013 obsahuje Průzkumníka služby Storage, který slouží k prozkoumání úložiště objektů blob a HDInsight můžete přístup k datům uloženým ve službě blob storage. Můžete také psát aplikace, která přistupuje k Azure Storage pomocí jednoho z [sady Azure SDK](https://azure.microsoft.com/downloads/).
 >
 
 ## <a name="download"></a> Postupy: stažení protokolů
@@ -159,7 +159,7 @@ Chcete-li filtrovat konkrétní typy, jako je například HTTP, použijte **– 
 
 ## <a name="understandlogs"></a> Postupy: pochopení diagnostické protokoly
 ### <a name="application-diagnostics-logs"></a>Protokoly diagnostiky aplikací
-Konzole Application diagnostics ukládá informace v určitém formátu pro aplikace .NET, v závislosti na tom, jestli ukládání protokolů do systému souborů, table storage a blob storage. Základní sadu uložených dat je stejná napříč všemi třemi typy úložiště – datum a čas, ke které došlo k události, ID procesu, který vytvořil události, typu události (informace, upozornění a chyby) a zpráva o události.
+Konzole Application diagnostics ukládá informace v určitém formátu pro aplikace .NET, v závislosti na tom, jestli ukládání protokolů do služby file storage systému nebo objekt blob. Základní sadu uložených dat je stejná napříč všemi třemi typy úložiště – datum a čas, ke které došlo k události, ID procesu, který vytvořil události, typu události (informace, upozornění a chyby) a zpráva o události.
 
 **Systém souborů**
 
@@ -173,27 +173,9 @@ Například událost chyby vypadat podobně jako v následujícím příkladu:
 
 Protokolování do systému souborů poskytuje základní informace o tři dostupné metody pouze čas, ID procesu, úroveň události a zprávy.
 
-**Table Storage**
-
-Při přihlašování do table storage, se používají další vlastnosti pro usnadnění vyhledávání data uložená v tabulce, stejně jako podrobnější informace o události. Pro každou entitu (řádků), uložené v tabulce se používají následující vlastnosti (sloupce).
-
-| Název vlastnosti | / Ve formátu |
-| --- | --- |
-| PartitionKey |Datum a čas ve formátu yyyyMMddHH události |
-| RowKey |Hodnota identifikátoru GUID, který jedinečně identifikuje tuto entitu |
-| Časové razítko |Datum a čas, kdy došlo k události |
-| EventTickCount |Datum a čas, kdy došlo k události, formát značky (větší přesnost) |
-| ApplicationName |Název webové aplikace |
-| Úroveň |Úroveň události (například Chyba, upozornění, informace) |
-| ID události |ID události této události<p><p>Výchozí hodnota je 0, pokud zadaný žádný |
-| ID instance |Instance webové aplikace, které i připadá na |
-| Identifikátor PID |ID procesu |
-| TID. |ID vlákna vlákna, která vytváří události |
-| Zpráva |Podrobná zpráva o události |
-
 **Blob Storage**
 
-Při přihlašování do úložiště objektů blob, data se ukládají ve formátu hodnot oddělených čárkami (CSV). Table Storage, podobně jako další pole jsou protokolovány k poskytnutí podrobnější informace o události. Pro každý řádek ve sdíleném svazku clusteru se používají následující vlastnosti:
+Při přihlašování do úložiště objektů blob, data se ukládají ve formátu hodnot oddělených čárkami (CSV). Další pole jsou protokolovány k poskytnutí podrobnější informace o události. Pro každý řádek ve sdíleném svazku clusteru se používají následující vlastnosti:
 
 | Název vlastnosti | / Ve formátu |
 | --- | --- |

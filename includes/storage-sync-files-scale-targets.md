@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 07/18/2018
 ms.author: wgries
 ms.custom: include file
-ms.openlocfilehash: a29f1c4a625552dd958884c6a172bee470e61ca6
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 03fe587ede297ac7dea90b7a5fb2d5323f60659e
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49312561"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51628113"
 ---
 | Prostředek | Cíl | Pevný limit |
 |----------|--------------|------------|
-| Služby synchronizace úložiště na předplatné | 15 služby synchronizace úložiště | Ne |
+| Služby synchronizace úložiště na předplatné | 15 služby synchronizace úložiště na oblast | Ne |
 | Skupiny synchronizace služby synchronizace úložiště | 100 skupiny synchronizace. | Ano |
 | Registrované servery služby synchronizace úložiště | 99 servery | Ano |
 | Koncové body cloudu na skupinu synchronizace | koncový bod cloudu. 1 | Ano |
@@ -30,4 +30,4 @@ ms.locfileid: "49312561"
 | Velikost popisovač zabezpečení objektu maximální pro (adresářů a souborů) | 4 KiB | Ano |
 | Velikost souboru | 100 GiB | Ne |
 | Minimální velikost souboru pro soubor, který chcete být rozvrstvena | 64 KiB | Ano |
-| Synchronizace souběžných relací | 2 activesyncu relací na procesor nebo maximálního počtu relací 8 active sync na serveru | Ano |
+| Synchronizace souběžných relací | V4 agent: omezení se liší v závislosti na dostupných systémových prostředcích. <BR> Agent verze 3: 2 activesyncu relací na procesor nebo maximálně 8 active synchronizovat relace na serveru | Ano

@@ -13,24 +13,21 @@ ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.component: report-monitor
-ms.date: 05/10/2018
+ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 68028fd1ba116251860e5c370e9e9ce61fd314bb
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 601169cc62a99438f661adc06ab166b545606edb
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47106823"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51624586"
 ---
 # <a name="azure-active-directory-report-retention-policies"></a>Zásady uchování sestav Azure Active Directory
 
+V tomto článku se dozvíte o zásad uchovávání dat pro různé aktivity sestavy ve službě Azure Active Directory. 
 
-Tento článek obsahuje odpovědi na nejčastější dotazy ve spojení s uchováním dat pro různé aktivity sestavy ve službě Azure Active Directory. 
-
-### <a name="q-how-can-you-get-the-collection-of-activity-data-started"></a>Otázka: jak lze získat shromažďování dat aktivity spuštění?
-
-**ODPOVĚĎ:**
+### <a name="when-does-azure-ad-start-collecting-data"></a>Pokud Azure AD spusťte shromažďování dat?
 
 | Edice Azure AD | Počáteční kolekce |
 | :--              | :--   |
@@ -38,25 +35,21 @@ Tento článek obsahuje odpovědi na nejčastější dotazy ve spojení s uchov�
 | Azure AD Free | Při prvním otevření [okno Azure Active Directory](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) nebo použijte [rozhraní API pro generování sestav](https://aka.ms/aadreports)  |
 
 ---
-### <a name="q-when-is-your-activity-data-available-in-the-azure-portal"></a>Otázka: kdy je vaše data aktivit k dispozici na webu Azure Portal?
 
-**ODPOVĚĎ:**
+### <a name="when-is-the-activity-data-available-in-the-azure-portal"></a>Když se data aktivit k dispozici na webu Azure Portal
 
 - **Okamžitě** – Pokud již pracujete se sestavami na webu Azure Portal.
 - **Do 2 hodin** – Pokud jste nezapnuli generování sestav na webu Azure Portal.
 
 ---
 
-### <a name="q-how-can-you-get-the-collection-of-security-signals-started"></a>Dotaz: jak lze získat kolekce signálů zabezpečení začít?  
+### <a name="when-does-azure-ad-start-collecting-security-signal-data"></a>Pokud Azure AD začít signál shromažďování dat o zabezpečení?  
 
-**Odpověď:** pro zabezpečení signály, proces shromažďování začíná můžete vyjádřit výslovný souhlas používat Centrum Identity Protection. 
-
+Pro zabezpečení signály, proces shromažďování začíná můžete vyjádřit výslovný souhlas pro použití **centrum Identity Protection**. 
 
 ---
 
-### <a name="q-for-how-long-is-the-collected-data-stored"></a>Otázka: jak dlouho se shromážděná data uloženy?
-
-**ODPOVĚĎ:**
+### <a name="how-long-does-azure-ad-store-the-data"></a>Jak dlouho Azure AD ukládat data?
 
 **Sestavy aktivit**    
 

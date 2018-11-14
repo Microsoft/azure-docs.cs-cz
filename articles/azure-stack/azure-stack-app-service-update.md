@@ -11,21 +11,21 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 11/13/2018
 ms.author: anwestg
-ms.openlocfilehash: fcbc924675a97a17b4fcfdf0e1ac39ad5aae9ffd
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.openlocfilehash: e8a75afe2c7dbe91c7c98d0d35c319088f40748f
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51218504"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51612674"
 ---
 # <a name="update-azure-app-service-on-azure-stack"></a>Aktualizace služby Azure App Service v Azure stacku
 
 *Platí pro: Azure Stack integrované systémy a Azure Stack Development Kit*
 
 > [!IMPORTANT]  
-> Aktualizace 1807 do služby Azure Stack integrované systému nebo nasadit nejnovější sady Azure Stack development kit před nasazením Azure App Service 1.3.
+> Aktualizace 1809 do služby Azure Stack integrované systému nebo nasadit nejnovější sady Azure Stack development kit před nasazením Azure App Service 1.4.
 >
 >
 
@@ -33,7 +33,6 @@ Podle pokynů v tomto článku, můžete upgradovat [poskytovatele prostředků 
 
 > [!IMPORTANT]  
 > Před spuštěním upgradu, ujistěte se, že jste již dokončili [nasazení služby Azure App Service na poskytovatele prostředků služby Azure Stack](azure-stack-app-service-deploy.md)
-
 
 ## <a name="run-the-app-service-resource-provider-installer"></a>Spusťte instalační program zprostředkovatele prostředků App Service
 
@@ -53,7 +52,7 @@ Během tohoto procesu inovace bude:
 
 Při upgradu nasazení služby App Service ve službě Azure Stack, postupujte podle těchto kroků:
 
-1. Stáhněte si [instalační program služby App Service](https://aka.ms/appsvcupdate3installer)
+1. Stáhněte si [instalační program služby App Service](https://aka.ms/appsvcupdate4installer)
 
 2. Spustit appservice.exe jako správce
 
@@ -65,7 +64,7 @@ Při upgradu nasazení služby App Service ve službě Azure Stack, postupujte p
 
 5. Zkontrolujte a přijměte podmínky licence třetí strany a klikněte na **Další**.
 
-6. Ujistěte se, že koncový bod Azure stacku Azure Resource Manageru a Tenanta Active Directory správnost informací. Pokud jste použili výchozí nastavení při nasazení Azure Stack Development Kit, můžete přijmout výchozí hodnoty. Pokud jste si přizpůsobili možností při nasazení Azure Stack, však musíte upravit hodnoty v tomto okně tak, aby odrážely, který. Například, pokud používáte příponu domény *mycloud.com*, koncový bod služby Azure Stack Azure Resource Managerem musíte změnit na *management.region.mycloud.com*. Jakmile potvrdíte vaše informace, klikněte na tlačítko **Další**.
+6. Ujistěte se, že koncový bod Azure stacku Azure Resource Manageru a Tenanta Active Directory správnost informací. Pokud jste použili výchozí nastavení při nasazení Azure Stack Development Kit, můžete přijmout výchozí hodnoty. Pokud jste si přizpůsobili možností při nasazení Azure Stack, však musíte upravit hodnoty v tomto okně. Například, pokud používáte příponu domény *mycloud.com*, koncový bod služby Azure Stack Azure Resource Managerem musíte změnit na *management.region.mycloud.com*. Jakmile potvrdíte vaše informace, klikněte na tlačítko **Další**.
 
     ![Informace o cloudu Azure Stack][2]
 
@@ -76,7 +75,7 @@ Při upgradu nasazení služby App Service ve službě Azure Stack, postupujte p
         * Pokud používáte služby Active Directory Federation Services (AD FS), zadejte účet správce. Příklad: *cloudadmin@azurestack.local*. Zadejte své heslo a klikněte na tlačítko **Sign In**.
    2. V **předplatná Azure Stack** vyberte **výchozí předplatné poskytovatele**.
    3. V **lokality Azure Stack** , vyberte umístění, které odpovídá nasazujete do oblasti. Vyberte například **místní** Pokud vaše nasazení Azure Stack Development Kit.
-   4. Pokud je zjištěno existující nasazení služby App Service, pak prostředku skupiny a účet úložiště bude naplněna a šedě.
+   4. Pokud se detekuje existující nasazení služby App Service, klikněte prostředek skupiny a účet úložiště bude vyplní a šedě.
    5. Klikněte na tlačítko **Další** Zkontrolujte souhrn upgradu.
 
     ![Nezjistila se instalace služby App Service][3]

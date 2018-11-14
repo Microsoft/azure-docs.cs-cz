@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: johnkem
 ms.component: activitylog
-ms.openlocfilehash: 538481088d6355729486c1d9fbaaa6af16a1b841
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 0f69a7f5e7aef4da798ec7c9ce3b7af3a456c00e
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51006018"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51613354"
 ---
 # <a name="monitor-subscription-activity-with-the-azure-activity-log"></a>Monitorování aktivit předplatného s protokolem aktivit Azure
 
@@ -33,7 +33,7 @@ Protokol aktivit se liší od [diagnostické protokoly](monitoring-overview-of-d
 Události můžete načíst z váš protokol aktivit pomocí webu Azure portal, rozhraní příkazového řádku, rutin prostředí PowerShell a rozhraní REST API služby Azure Monitor.
 
 > [!NOTE]
->  [Novější upozornění](monitoring-overview-unified-alerts.md) nabízí vylepšené prostředí při vytváření a správa aktivit pravidel upozornění protokolů.  [Další informace](alert-activity-log.md).
+> [Novější upozornění](monitoring-overview-alerts.md) nabídnout vylepšené prostředí při vytváření a správa aktivit pravidel upozornění protokolů.  [Další informace](alert-activity-log.md).
 
 
 ## <a name="categories-in-the-activity-log"></a>Kategorie v protokolu aktivit

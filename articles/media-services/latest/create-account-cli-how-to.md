@@ -10,14 +10,14 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: article
 ms.custom: ''
-ms.date: 10/15/2018
+ms.date: 11/11/2018
 ms.author: juliako
-ms.openlocfilehash: 988b56569c2537f9f0c74b1bcc2bf5e2a9400a80
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: cb49b642137517c0ceef7d2fa01994a554db1f4e
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49378801"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51613155"
 ---
 # <a name="create-an-azure-media-services-account"></a>Vytvoření účtu Azure Media Services
 
@@ -27,19 +27,18 @@ Tento článek popisuje postup vytvoření nového účtu Azure Media Services p
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="sign-in-to-azure"></a>Přihlášení k Azure
+## <a name="prerequisites"></a>Požadavky
 
-Přihlaste se k [webu Azure portal](http://portal.azure.com) a spusťte **cloud Shell** provádět příkazy rozhraní příkazového řádku, jak je znázorněno v dalších krocích.
+- Aktivní předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) před tím, než začnete.
+- Nainstalovat a používat rozhraní příkazového řádku místně, musíte mít Azure CLI verze 2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli). 
 
-[!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
-
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít verzi Azure CLI 2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli). 
+    V současné době všechny [Media Services v3 CLI](https://aka.ms/ams-v3-cli-ref) příkazy fungují ve službě Azure Cloud Shell. Doporučujeme používat rozhraní příkazového řádku místně.
 
 ## <a name="set-the-azure-subscription"></a>Nastavení předplatného Azure
 
 V následujícím příkazu uveďte ID předplatného Azure, které chcete pro účet Media Services použít. Když přejdete na [Předplatná](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) zobrazí se seznam předplatných, ke kterým máte přístup.
 
-```azurecli-interactive
+```azurecli
 az account set --subscription mySubscriptionId
 ```
  
@@ -47,5 +46,9 @@ az account set --subscription mySubscriptionId
  
 ## <a name="next-steps"></a>Další postup
 
-> [!div class="nextstepaction"]
-> [Streamování souboru](stream-files-dotnet-quickstart.md)
+[Streamování souboru](stream-files-dotnet-quickstart.md)
+
+## <a name="see-also"></a>Další informace najdete v tématech
+
+[Azure CLI](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest)
+

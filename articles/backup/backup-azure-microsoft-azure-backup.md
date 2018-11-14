@@ -7,14 +7,14 @@ manager: shivamg
 keywords: Azure backup serveru. Chraňte úlohy; zálohování úloh
 ms.service: backup
 ms.topic: conceptual
-ms.date: 11/12/2018
+ms.date: 11/13/2018
 ms.author: adigan; kasinh
-ms.openlocfilehash: 602b7b2a81ec727c9acaf86165867daa20370947
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.openlocfilehash: e1ed8b1f62eeb52d65ba178c8ca13f94b57da6f0
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/13/2018
-ms.locfileid: "51578718"
+ms.locfileid: "51616312"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Instalace a upgrade Azure Backup serveru
 > [!div class="op_single_selector"]
@@ -169,18 +169,20 @@ Po dokončení procesu extrakce zaškrtněte políčko ke spuštění čerstvě 
 
    **Ruční konfigurace**
 
-    > [!IMPORTANT]
+   Pokud používáte vlastní instanci serveru SQL, ujistěte se, že přidejte builtin\Administrators do role sysadmin k hlavní databázi.
 
-    > Při ruční konfiguraci MABS, po konfiguraci, ujistěte se, že *IsInitialized* služby SSRS je nastavena na *True*. Pokud je nastavené na True, MABS předpokládá, že služby SSRS je už nakonfigurovaná a přeskočí konfigurace služby SSRS.
+    **Konfigurace služby SSRS 2017 SQL**
 
-    > Použijte následující hodnoty pro konfiguraci služby SSRS:
+    Pokud používáte vlastní instanci SQL 2017, budete muset ručně konfigurovat služby SSRS. Po konfiguraci služby SSRS, ujistěte se, že *IsInitialized* služby SSRS je nastavena na *True*. Pokud je nastavené na True, MABS předpokládá, že služby SSRS je už nakonfigurovaná a přeskočí konfigurace služby SSRS.
 
-      >- Účet služby: Použijte předdefinovaný účet by měl být síťové služby
-    >- Adresa URL webové služby: 'Virtuální adresář' by měla být ReportServer_MSDPMINSTANCE
-    > - Databáze: DatabaseName by měla být ReportServer$ MSDPMINSTANCE
-    > - Adresy URL webového portálu: 'Virtuální adresář' by měla být Reports_MSDPMINSTANCE
+    Použijte následující hodnoty pro konfiguraci služby SSRS:
 
-    > [Další informace](https://docs.microsoft.com/sql/reporting-services/report-server/configure-and-administer-a-report-server-ssrs-native-mode?view=sql-server-2017) o konfiguraci služby SSRS.
+        - Service Account: ‘Use built-in account’ should be Network Service
+        - Web Service URL: ‘Virtual Directory’ should be ReportServer_<SQLInstanceName>
+        - Database: DatabaseName should be ReportServer$<SQLInstanceName>
+        - Web Portal URL: ‘Virtual Directory’ should be Reports_<SQLInstanceName>
+
+    [Další informace](https://docs.microsoft.com/sql/reporting-services/report-server/configure-and-administer-a-report-server-ssrs-native-mode?view=sql-server-2017) o konfiguraci služby SSRS.
 
 4. Zadejte umístění pro instalační soubory aplikace Microsoft Azure Backup serveru a klikněte na **Další**.
 
@@ -323,6 +325,8 @@ Pro upgrade MABS použijte následující kroky:
   > [!IMPORTANT]
 
   >  Jako součást upgradu SQL 2017 jsme zálohovat šifrovací klíče SQL a odinstalaci služby reporting services. Po upgradu SQL server reporting je nainstalován service(14.0.6827.4788) & obnoví šifrovací klíče.
+
+ > Při konfiguraci SQL 2017 ručně, najdete *konfigurace služby SSRS 2017 SQL* části Postup instalace.
 
 3. Aktualizujte agenty ochrany na chráněných serverech.
 4. Zálohování by měly pokračovat bez potřeby restartu provozních serverech.

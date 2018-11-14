@@ -6,13 +6,13 @@ ms.service: security
 ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 11/06/2018
-ms.openlocfilehash: 5d72d883b8d28e1ca71ea9c69488da5e1659e407
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.date: 11/12/2018
+ms.openlocfilehash: e5c7d51428c66bf9e6c245f28fb13b8d4a316d18
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51219677"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51614664"
 ---
 # <a name="appendix-for-azure-disk-encryption"></a>Dodatek pro Azure Disk Encryption 
 Tento článek je dodatek k [Azure Disk Encryption pro virtuální počítače IaaS](azure-security-disk-encryption-overview.md). Nezapomeňte že si přečíst Azure Disk Encryption pro virtuální počítače IaaS články nejprve k pochopení kontextu. Tento článek popisuje, jak připravit předem šifrované virtuální pevné disky a další úlohy.
@@ -553,7 +553,7 @@ Chcete-li nastavit tajný klíč v trezoru klíčů, použijte [Set-AzureKeyVaul
 ```powershell
 # Change the VM Name, key vault name, and specify the path to the BEK file.
 $VMName ="MySecureVM"
-$BEKFilepath = "C:\test\BEK\E60CF855-1B47-4AE5-A70C-4FE6E8386AAA.BEK"
+$BEKFilepath = "C:\test\BEK\12345678-90AB-CDEF-A1B2-C3D4E5F67890A.BEK"
 $VeyVaultName ="MySecureVault"
 
 # Get the name of the BEK file from the BEK file path. This will be a tag for the key vault secret.

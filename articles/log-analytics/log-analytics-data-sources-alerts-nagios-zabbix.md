@@ -15,16 +15,16 @@ ms.workload: infrastructure-services
 ms.date: 04/13/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 469d97385fd86952c2d287e2b5d15d7470a9e34e
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 6050771ee1d129edd4370079c07da721f60d2065
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51008330"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51613541"
 ---
 # <a name="collect-alerts-from-nagios-and-zabbix-in-log-analytics-from-log-analytics-agent-for-linux"></a>Shromažďovat výstrahy z řešení Nagios a Zabbix v Log Analytics z agenta Log Analytics pro Linux 
 [!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)]
-[Nagios](https://www.nagios.org/) a [Zabbix](http://www.zabbix.com/) jsou open source nástroje pro monitorování. Výstrahy můžete shromažďovat z těchto nástrojů do Log Analytics, aby mohl analyzovat spolu s [výstrahy z jiných zdrojů](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md).  Tento článek popisuje, jak nakonfigurovat agenta Log Analytics pro Linux ke shromažďování výstrah z těchto systémů.
+[Nagios](https://www.nagios.org/) a [Zabbix](http://www.zabbix.com/) jsou open source nástroje pro monitorování. Výstrahy můžete shromažďovat z těchto nástrojů do Log Analytics, aby mohl analyzovat spolu s [výstrahy z jiných zdrojů](../monitoring-and-diagnostics/monitoring-overview-alerts.md).  Tento článek popisuje, jak nakonfigurovat agenta Log Analytics pro Linux ke shromažďování výstrah z těchto systémů.
  
 ## <a name="prerequisites"></a>Požadavky
 Agenta Log Analytics pro Linux podporuje shromažďování údajů o výstrahy Nagios verzi 4.2.x a Zabbix verzi 2.x.
@@ -118,5 +118,5 @@ Výstrahy mají záznamy shromážděné Zabbix **typ** z **výstrah** a **Sourc
 
 
 ## <a name="next-steps"></a>Další postup
-* Další informace o [výstrahy](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md) v Log Analytics.
+* Další informace o [výstrahy](../monitoring-and-diagnostics/monitoring-overview-alerts.md) v Log Analytics.
 * Další informace o [prohledávání protokolů](log-analytics-queries.md) analyzovat data shromážděná ze zdrojů dat a jejich řešení. 

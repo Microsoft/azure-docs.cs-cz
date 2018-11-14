@@ -10,29 +10,31 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.component: report-monitor
-ms.date: 12/06/2017
+ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 182537d6f07b624f2395f591681ed4596579bde0
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: fab94088d1d54012a955b0663b078d03b13d6299
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42060067"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51624908"
 ---
 # <a name="find-activity-reports-in-the-azure-portal"></a>Vyhledávání sestav aktivit na webu Azure Portal
 
-V tomto článku probereme možnosti vyhledávání sestav aktivit uživatelů Azure Active Directory na webu Azure Portal.
+V tomto článku se dozvíte, jak najít sestavy aktivit uživatelů Azure Active Directory (Azure AD) na webu Azure Portal.
 
-## <a name="activity-and-integrated-app-reports"></a>Aktivity a integrované aplikace sestav
+## <a name="audit-logs-report"></a>Sestava protokolů auditu
 
-Na základě kontextu vytváření sestav na webu Azure Portal, existující sestavy jsou sloučeny do jednoho zobrazení. Jediné, základní rozhraní API poskytuje data do zobrazení.
+Sestava protokolů auditu kombinuje několik sestavy na základě aplikace aktivit do jediné zobrazení pro vytváření sestav založené na kontextu. Pro přístup k sestavě protokolů auditu:
 
-V tomto zobrazení **Azure Active Directory** okně v části **aktivity**vyberte **protokoly auditu**.
+1. Přejděte na [Azure Portal](https://portal.azure.com).
+2. V pravém horním rohu vyberte svůj adresář a potom vyberte **Azure Active Directory** okno v levém navigačním podokně.
+3. Vyberte **protokoly auditu** z **aktivity** část okno Azure Active Directory. 
 
-![Protokoly auditu](./media/howto-find-activity-reports/482.png "Protokoly auditu")
+    ![Protokoly auditu](./media/howto-find-activity-reports/482.png "Protokoly auditu")
 
-V tomto zobrazení jsou konsolidovány následující sestavy:
+Sestava protokolů auditu konsoliduje následující sestavy:
 
 * Sestava auditování
 * Aktivity resetování hesla
@@ -43,26 +45,11 @@ V tomto zobrazení jsou konsolidovány následující sestavy:
 * Stav hesla při přechodu myší
 * Chyby zřizování účtů
 
+### <a name="filtering-on-audit-logs"></a>Filtrování protokolů auditování
 
-Sestava využití aplikace byla vylepšena a je součástí **přihlášení** zobrazení. V tomto zobrazení **Azure Active Directory** okně v části **aktivity**vyberte **přihlášení**.
+Rozšířené filtrování sestavy auditu můžete použít pro přístup k určité kategorie dat auditu tak, že ho zadáte **kategorie aktivit** filtru. Například, chcete-li zobrazit všechny aktivity související se samoobslužné resetování hesla, vyberte **Samoobslužná správa hesel** kategorie. 
 
-![Zobrazení přihlášení](./media/howto-find-activity-reports/483.png "zobrazení přihlášení")
-
-**Přihlášení** zobrazení zahrnuje všechna přihlášení uživatele. Tyto informace můžete získat informace o využití aplikace. Také můžete zobrazit informace o použití aplikace v **podnikové aplikace** přehled v **SPRAVOVAT** oddílu.
-
-![Podnikové aplikace](./media/howto-find-activity-reports/484.png "podnikových aplikací")
-
-## <a name="access-a-specific-report"></a>Přístup ke konkrétní sestavy
-
-I když na webu Azure portal nabízí jedno zobrazení, můžete také můžete podívat na konkrétní sestavy.
-
-### <a name="audit-logs"></a>Protokoly auditu
-
-V reakci na zpětnou vazbu zákazníků na webu Azure Portal můžete rozšířené filtrování pro přístup k datům, které chcete. Je jeden filtr, můžete použít *kategorie aktivit*, která uvádí různé typy aktivit protokolů ve službě Azure AD. Chcete-li zúžit výsledky co hledáte, můžete vybrat kategorii.
-
-Například pokud se zajímáte pouze aktivit související se resetování hesla pomocí samoobslužné služby, můžete **samoobslužné správy hesel** kategorie. Kategorie, které se zobrazí jsou založeny na prostředek, který se k práci používáte.  
-
-![Kategorie možnosti na stránce protokoly auditu filtr](./media/howto-find-activity-reports/06.png "kategorie možnosti na stránce protokoly auditu filtru")
+    ![Category options on the Filter Audit Logs page](./media/howto-find-activity-reports/06.png "Category options on the Filter Audit Logs page")
 
 Kategorie aktivit patří:
 
@@ -71,19 +58,36 @@ Kategorie aktivit patří:
 - Samoobslužná správa skupin
 - Zřizování účtů
 
-### <a name="application-usage"></a>Využití aplikace
 
-Chcete-li zobrazit podrobnosti o použití aplikace pro všechny aplikace nebo pro jednu aplikaci, v části **aktivity**vyberte **přihlášení**. Chcete-li zúžit výsledky, můžete filtrovat podle uživatelské jméno nebo název aplikace.
+## <a name="sign-ins-report"></a>Sestava přihlášení 
+
+**Přihlášení** zobrazení obsahuje všechny uživatele přihlášení, stejně jako **využití aplikace** sestavy. Také můžete zobrazit informace o použití aplikace v **spravovat** část **podnikové aplikace** Přehled.
+
+    ![Enterprise applications](./media/howto-find-activity-reports/484.png "Enterprise applications")
+
+Pro přístup k sestavě přihlášení:
+
+1. Přejděte na [Azure Portal](https://portal.azure.com).
+2. V pravém horním rohu vyberte svůj adresář a potom vyberte **Azure Active Directory** okno v levém navigačním podokně.
+3. Vyberte **přehledu přihlášení** z **aktivity** část okno Azure Active Directory. 
+
+    ![Zobrazení přihlášení](./media/howto-find-activity-reports/483.png "zobrazení přihlášení")
+
+
+### <a name="filtering-on-application-name"></a>Filtrování podle názvu aplikace
+
+Sestava přihlašování slouží k zobrazení podrobností o využití aplikace pomocí filtrování podle uživatelské jméno nebo název aplikace.
 
 ![Stránka filtru událostí přihlášení](./media/howto-find-activity-reports/07.png "události přihlášení filtr stránky")
 
-### <a name="security-reports"></a>Sestavy zabezpečení
+## <a name="security-reports"></a>Sestavy zabezpečení
 
-#### <a name="azure-ad-anomalous-activity-reports"></a>Sestavy neobvyklých aktivit služby Azure AD
+### <a name="anomalous-activity-reports"></a>Sestavy neobvyklých aktivit
 
-Sestavy zabezpečení Azure AD anomální aktivity konsolidované poskytnout centralizovaný pohled na jeden. Toto zobrazení uvádí všechny události související se zabezpečením riziko, že Azure AD můžete zjišťovat a vytvoření sestavy.
+Anomální aktivity sestavy poskytují informace o souvisejících se zabezpečením rizikových událostí, které Azure AD můžete zjišťovat a vytvoření sestavy.
 
-Následující tabulka seznamy Azure AD anomální aktivity zabezpečení zprávy a odpovídající typy rizikových událostí na webu Azure Portal.
+Následující tabulka seznamy Azure AD anomální aktivity zabezpečení zprávy a odpovídající typy rizikových událostí na webu Azure Portal. Další informace najdete v tématu věnovaném [rizikovým událostem služby Azure Active Directory](concept-risk-events.md).  
+
 
 | Sestava anomální aktivity služby Azure AD |  Typ události rizika identity protection|
 | :--- | :--- |
@@ -99,29 +103,18 @@ Sestavy zabezpečení anomální aktivity služby Azure AD nejsou zahrnuty jako 
 * Přihlášení po několika neúspěších
 * Přihlášení z více geografických poloh
 
-Další informace najdete v tématu věnovaném [rizikovým událostem služby Azure Active Directory](concept-risk-events.md).  
 
+### <a name="detected-risk-events"></a>Zjištěné rizikové události
 
-#### <a name="detected-risk-events"></a>Zjištěné rizikové události
+Můžete přístup k sestavám o zjištěné rizikové události v **zabezpečení** část **Azure Active Directory** okna portálu [webu Azure portal](https://portal.azure.com). Zjištěné rizikové události jsou sledovány v následující sestavy:   
 
-Na webu Azure Portal je k dispozici sestavy o zjištěné rizikové události na **Azure Active Directory** okně v části **zabezpečení**. Zjištěné rizikové události jsou sledovány v následující sestavy:   
+- [Ohrožení uživatelé](concept-user-at-risk.md)
+- [Riziková přihlášení](concept-risky-sign-ins.md)
 
-- Ohrožení uživatelé
-- Riziková přihlášení
-
-![Sestavy zabezpečení](./media/howto-find-activity-reports/04.png "zprávy o zabezpečení")
-
-Další informace o sestavách zabezpečení naleznete v tématu:
-
-- [Sestava ohrožených zabezpečení na portálu Azure Active Directory uživatelů](concept-user-at-risk.md)
-- [Sestavy rizikových přihlášení na portálu Azure Active Directory](concept-risky-sign-ins.md)
-
-
-Chcete-li zobrazit **využití aplikace** sestavy na **Azure Active Directory** okně v části **SPRAVOVAT**vyberte **podnikové aplikace**, a pak vyberte **přihlášení**.
-
-
-![Sestava podnikových aplikací přihlášení](./media/howto-find-activity-reports/199.png)
+    ![Sestavy zabezpečení](./media/howto-find-activity-reports/04.png "zprávy o zabezpečení")
 
 ## <a name="next-steps"></a>Další postup
 
-Přehled generování sestav najdete v tématu [Generování sestav v Azure Active Directory](overview-reports.md).
+* [Přehled protokolů auditování](concept-audit-logs.md)
+* [Přehled přihlášení](concept-sign-ins.md)
+* [Přehled rizikových událostí](concept-risk-events.md)

@@ -12,21 +12,21 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 11/13/2018
 ms.author: anwestg
-ms.openlocfilehash: 4b6ad2e237d73d5d8ca414bffc3a679ee552105f
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 54ceadc8173526e8638e70c8c859109eea157fa7
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44718725"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51614034"
 ---
 # <a name="add-an-app-service-resource-provider-to-a-disconnected-azure-stack-environment-secured-by-ad-fs"></a>Přidání poskytovatele prostředků App Service pro odpojené prostředí Azure Stack zabezpečené službou AD FS
 
 *Platí pro: Azure Stack integrované systémy a Azure Stack Development Kit*
 
 > [!IMPORTANT]
-> Aktualizace 1807 do služby Azure Stack integrované systému nebo nasadit nejnovější sady Azure Stack development kit před nasazením Azure App Service 1.3.
+> Aktualizace 1809 do služby Azure Stack integrované systému nebo nasadit nejnovější sady Azure Stack development kit před nasazením Azure App Service 1.4.
 >
 >
 
@@ -84,8 +84,7 @@ Chcete-li nasadit službu App Service v odpojeném prostředí, musíte nejdří
     2. V **předplatná Azure Stack** vyberte **výchozí předplatné poskytovatele**.
     
     > [!NOTE]
-    > App Service můžete nasadit jenom do **výchozí předplatné poskytovatele** v tuto chvíli.  V budoucí aktualizaci služby App Service nasadí do nového předplatného měření zavedené ve verzi 1804 Azure Stack a všechna existující nasazení budou migrovány na tento nový odběr také.
-    >
+    > App Service můžete nasadit jenom do **výchozí předplatné poskytovatele**.
     >
     
     3. V **lokality Azure Stack** , vyberte umístění, které odpovídá nasazujete do oblasti. Vyberte například **místní** Pokud vaše nasazení Azure Stack Development Kit.
@@ -170,7 +169,7 @@ Chcete-li nasadit službu App Service v odpojeném prostředí, musíte nejdří
     ![Instalační program služby App Service][14]
 
     > [!NOTE]
-    > **Jádru Windows serveru 2016 není image platformy podporované pro použití se službou Azure App Service ve službě Azure Stack.  Nepoužívejte vyhodnocení Image pro nasazení v produkčním prostředí.  Azure App Service ve službě Azure Stack vyžaduje, aby Microsoft.NET 3.5.1 SP1 se aktivuje na imagi použité pro nasazení.   Syndikovaný Tržiště imagí nemají povolení této funkce Windows serveru 2016.**
+    > **Jádru Windows serveru 2016 není image platformy podporované pro použití se službou Azure App Service ve službě Azure Stack.  Nepoužívejte vyhodnocení Image pro nasazení v produkčním prostředí.  Azure App Service ve službě Azure Stack vyžaduje, aby Microsoft.NET 3.5.1 SP1 se aktivuje na imagi použité pro nasazení.   Syndikovaný Tržiště imagí nemají povolení této funkce Windows serveru 2016, proto musíte vytvořit a použít image Windows serveru 2016 této předem.**
 
 14. V **vyberte Image platformy** zvolte image virtuálního počítače nasazení Windows serveru 2016 z dostupných v poskytovateli výpočetních prostředků pro cloudové služby App Service. Klikněte na **Další**.
 
@@ -198,7 +197,7 @@ Chcete-li nasadit službu App Service v odpojeném prostředí, musíte nejdří
 
 1. V portálu pro správu služby Azure Stack, přejděte na **Správa – App Service**.
 
-2. V přehledu stavu zaškrtněte, pokud chcete vidět, že **stav** ukazuje **připravené jsou všechny role**.
+2. V přehledu, v oblasti stav, zkontrolujte, **stav** zobrazí **připravené jsou všechny role**.
 
     ![Správa služby App Service](media/azure-stack-app-service-deploy/image12.png)
     

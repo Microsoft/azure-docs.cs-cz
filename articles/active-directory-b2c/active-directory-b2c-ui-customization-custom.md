@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: f36d08a397836f17ec25a61e77cb1db5ce10b9d4
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: d4b4d99ac943749faaca8cd699b1455795b9c399
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945056"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51625790"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Přizpůsobení uživatelského rozhraní aplikace pomocí vlastních zásad v Azure Active Directory B2C
 
@@ -99,17 +99,13 @@ Vytvoření veřejného kontejneru v úložišti objektů Blob, postupujte takto
 
 Konfigurace úložiště objektů Blob pro sdílení prostředků různého původu následujícím způsobem:
 
->[!NOTE]
->Chcete si vyzkoušet si funkce přizpůsobení uživatelského rozhraní pomocí našich ukázkový kód HTML a CSS obsah? Vytvořili jsme [jednoduché pomocným nástrojem](active-directory-b2c-reference-ui-customization-helper-tool.md) , která nahraje a nakonfiguruje náš ukázkový obsah na vašem účtu úložiště objektů Blob. Pokud používáte nástroj, přeskočte k části [upravit vlastní zásady registrace / přihlášení](#modify-your-sign-up-or-sign-in-custom-policy).
-
-1. Na **úložiště** okně v části **nastavení**, otevřete **CORS**.
-2. Klikněte na tlačítko **Add** (Přidat).
-3. Pro **povolené zdroje**, zadejte hvězdičku (\*).
-4. V **povolených operací** rozevíracího seznamu, vyberte **získat** a **možnosti**.
-5. Pro **povolené hlavičky**, zadejte hvězdičku (\*).
-6. Pro **zveřejněné hlavičky**, zadejte hvězdičku (\*).
-7. Pro **maximální stáří (sekundy)**, typ **200**.
-8. Klikněte na tlačítko **Add** (Přidat).
+1. V nabídce vyberte **CORS**.
+2. Pro **povolené zdroje**, zadejte `your-tenant-name.b2clogin.com`. Nahraďte `your-tenant-name` s názvem vašeho tenanta Azure AD B2C. Například, `fabrikam.b2clogin.com`.
+3. Pro **povolené metody**, vyberte oba `GET` a `OPTIONS`.
+4. Pro **povolené hlavičky**, zadejte hvězdičku (*).
+5. Pro **zveřejněné hlavičky**, zadejte hvězdičku (*).
+6. Pro **maximální stáří**, zadejte 200.
+7. Klikněte na **Uložit**.
 
 ## <a name="test-cors"></a>Test CORS
 

@@ -12,14 +12,14 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 11/13/2018
 ms.author: anwestg
-ms.openlocfilehash: 08f08d926a9e27e421ff8db46051d8a1e7229041
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: aa745d827db7633dc9f8601f65fa31dfadbb4076
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49166878"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51614051"
 ---
 # <a name="add-an-app-service-resource-provider-to-azure-stack"></a>Přidání poskytovatele prostředků App Service do služby Azure Stack
 
@@ -28,7 +28,7 @@ ms.locfileid: "49166878"
 K nasazení služby App Service ve službě Azure Stack, použijte pokyny v tomto článku.
 
 > [!IMPORTANT]  
-> Aktualizace 1807 do služby Azure Stack integrované systému nebo nasadit nejnovější Azure Stack Development Kit (ASDK) před nasazením Azure App Service 1.3.
+> Aktualizace 1809 do služby Azure Stack integrované systému nebo nasadit nejnovější Azure Stack Development Kit (ASDK) před nasazením Azure App Service 1.4.
 
 Může dát uživatelům možnost vytvářet webové aplikace a aplikace API. Umožníte uživatelům vytvářet tyto aplikace, budete muset:
 
@@ -74,8 +74,8 @@ Nasazení poskytovatele prostředků App Service, postupujte podle těchto krok�
 
    b. V **předplatná Azure Stack**, vyberte **výchozí předplatné poskytovatele**.
 
-     >[!NOTE]
-     >V současné době služby App Service můžete lze nasadit pouze do **výchozí předplatné poskytovatele**.
+     > [!IMPORTANT]  
+     > App Service **musí** nasadit **výchozí předplatné poskytovatele**.
 
    c. V **lokality Azure Stack**, vyberte umístění, které odpovídá nasazujete do oblasti. Vyberte například **místní** Pokud vaše nasazení Azure Stack Development Kit.
 
@@ -198,7 +198,7 @@ Nasazení poskytovatele prostředků App Service, postupujte podle těchto krok�
 
 1. V portálu pro správu služby Azure Stack, přejděte na **Správa – App Service**.
 
-2. V přehledu stavu zaškrtněte, pokud chcete vidět, že **stav** ukazuje **připravené jsou všechny role**.
+2. V přehledu, v oblasti stav, zkontrolujte, **stav** zobrazí **připravené jsou všechny role**.
 
     ![Správa služby App Service](media/azure-stack-app-service-deploy/image12.png)
 

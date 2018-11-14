@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: raynew
-ms.openlocfilehash: da9319934068709d5635352fdbd52c3ca6ac49be
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: d7dcf27e106f73c828c2c46d4d7180b1f906e4d8
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51568882"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51614850"
 ---
 # <a name="remove-servers-and-disable-protection"></a>Odebrání serverů a zakázání ochrany
 
@@ -51,7 +51,7 @@ Hostitelé Hyper-V, které nejsou spravovány nástrojem VMM se shromažďují d
 5. Pokud se váš hostitel Hyper-v **odpojeno** stavu a pak spusťte následující skript na každém hostiteli Hyper-V, který jste odebrali. Skript vyčistí nastavení na serveru a zruší jeho registraci v trezoru.
 
 
-
+```powershell
         pushd .
         try
         {
@@ -112,7 +112,7 @@ Hostitelé Hyper-V, které nejsou spravovány nástrojem VMM se shromažďují d
                 "Registry keys removed."
             }
 
-            # First retrive all the certificates to be deleted
+            # First retrieve all the certificates to be deleted
             $ASRcerts = Get-ChildItem -Path cert:\localmachine\my | where-object {$_.friendlyname.startswith('ASR_SRSAUTH_CERT_KEY_CONTAINER') -or $_.friendlyname.startswith('ASR_HYPER_V_HOST_CERT_KEY_CONTAINER')}
             # Open a cert store object
             $store = New-Object System.Security.Cryptography.X509Certificates.X509Store("My","LocalMachine")
@@ -131,7 +131,7 @@ Hostitelé Hyper-V, které nejsou spravovány nástrojem VMM se shromažďují d
             Write-Host "FAILED" -ForegroundColor "Red"
         }
         popd
-
+```
 
 
 ## <a name="disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure"></a>Zakažte ochranu pro virtuální počítač VMware nebo fyzický server (z VMware do Azure)
@@ -158,10 +158,12 @@ Hostitelé Hyper-V, které nejsou spravovány nástrojem VMM se shromažďují d
     > Pokud jste zvolili **odebrat** možnost pak spusťte následující sadu skriptů a vyčistit nastavení replikace v místním serveru technologie Hyper-V.
 1. Na zdrojovém Hyper-V hostitelském serveru, chcete-li odebrat replikaci pro virtuální počítač. Nahraďte názvem vašeho virtuálního počítače SQLVM1 a spusťte skript ze správy prostředí PowerShell
 
-
-    
-    $vmName = "SQLVM1" $vm = Get-WmiObject – Namespace "root\virtualization\v2"-dotazu "vybrat * z Msvm_ComputerSystem kde ElementName ="$vmName"" $replicationService = Get-WmiObject – Namespace "root\virtualization\v2"-dotaz "vybrat * z Msvm_ $ReplicationService.RemoveReplicationRelationship($vm.__PATH) ReplicationService"
-    
+```powershell
+    $vmName = "SQLVM1"
+    $vm = Get-WmiObject -Namespace "root\virtualization\v2" -Query "Select * From Msvm_ComputerSystem Where ElementName = '$vmName'"
+    $replicationService = Get-WmiObject -Namespace "root\virtualization\v2"  -Query "Select * From Msvm_ReplicationService"
+    $replicationService.RemoveReplicationRelationship($vm.__PATH)
+```
 
 ## <a name="disable-protection-for-a-hyper-v-virtual-machine-replicating-to-azure-using-the-system-center-vmm-to-azure-scenario"></a>Zakažte ochranu pro virtuální počítač Hyper-V, které se replikují do Azure pomocí nástroje System Center VMM do Azure scénáře
 
@@ -179,11 +181,14 @@ Hostitelé Hyper-V, které nejsou spravovány nástrojem VMM se shromažďují d
         Set-SCVirtualMachine -VM $vm -ClearDRProtection
 4. Výše uvedené kroky zrušte nastavení replikace na serveru VMM. Pokud chcete zastavit replikaci pro virtuální počítač provozovaný na hostitelském serveru Hyper-V, spusťte tento skript. SQLVM1 nahraďte názvem vašeho virtuálního počítače a host01.contoso.com s názvem hostitelský server Hyper-V.
 
-    
-    $vmName = "SQLVM1" $hostName = "host01.contoso.com" $vm = Get-WmiObject – Namespace "root\virtualization\v2"-dotazu "vybrat * z Msvm_ComputerSystem kde ElementName ="$vmName"" - computername $hostName $replicationService = Get-WmiObject – Namespace "root\virtualization\v2"-"Vybrat * z Msvm_ReplicationService" - computername $hostName $replicationService.RemoveReplicationRelationship($vm.__PATH) dotazu
-    
-       
- 
+```powershell
+    $vmName = "SQLVM1"
+    $hostName  = "host01.contoso.com"
+    $vm = Get-WmiObject -Namespace "root\virtualization\v2" -Query "Select * From Msvm_ComputerSystem Where ElementName = '$vmName'" -computername $hostName
+    $replicationService = Get-WmiObject -Namespace "root\virtualization\v2"  -Query "Select * From Msvm_ReplicationService"  -computername $hostName
+    $replicationService.RemoveReplicationRelationship($vm.__PATH)
+```
+
 ## <a name="disable-protection-for-a-hyper-v-virtual-machine-replicating-to-secondary-vmm-server-using-the-system-center-vmm-to-vmm-scenario"></a>Zakažte ochranu virtuálního počítače Hyper-V, které se replikují do sekundární Server VMM pomocí nástroje System Center VMM do VMM scénáře
 
 1. V **chráněné položky** > **replikované položky**, klikněte pravým tlačítkem na počítač > **zakázat replikaci**.

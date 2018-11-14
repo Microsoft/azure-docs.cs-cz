@@ -1,6 +1,6 @@
 ---
-title: 'Vzájemná funkční spolupráce ExpressRoute, VPN typu Site-to-site a VNet Peering – roviny dat analýzy: připojení k back-endu Azure funkce Interoperability | Dokumentace Microsoftu'
-description: Tato stránka umožňuje analyzovat data roviny nastavení testu, který je vytvořen pro analýzu interoperability funkce ExpressRoute, VPN typu Site-to-site a VNet Peering.
+title: 'Vzájemná funkční spolupráce v Azure připojení k back-end funkce: analýzu RP roviny dat | Dokumentace Microsoftu'
+description: Tento článek obsahuje analýza roviny dat z nastavení testu, které lze použít k analýze vzájemná funkční spolupráce mezi ExpressRoute, site-to-site VPN a virtuální síť vytvoření partnerského vztahu v Azure.
 documentationcenter: na
 services: networking
 author: rambk
@@ -10,24 +10,24 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
-ms.openlocfilehash: c9f3824b1e0f44338696ba3c2e434d60eee3af8b
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 8b9e5b2b073309f177fa0ce4bb2a2d08009a06ff
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49947183"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51614409"
 ---
-# <a name="interoperability-of-expressroute-site-to-site-vpn-and-vnet-peering---data-plane-analysis"></a>Vzájemná funkční spolupráce ExpressRoute, Site-to-site VPN a partnerského vztahu – analýza roviny dat
+# <a name="interoperability-in-azure-back-end-connectivity-features-data-plane-analysis"></a>Vzájemná funkční spolupráce v Azure připojení k back-end funkce: analýzu RP roviny dat
 
-V tomto článku Podívejme se analýza roviny dat z nastavení testu. Pokud chcete zkontrolovat nastavení testu, naleznete v tématu [nastavení testu][Setup]. Projděte si podrobnosti o konfiguraci nastavení testu, naleznete v tématu [konfiguraci nastavení testu][Configuration]. Analýza roviny řízení nastavení testu najdete v tématu [analýzy rovina řízení][Control-Analysis].
+Tento článek popisuje analýzu roviny dat [nastavení testu][Setup]. Můžete také zkontrolovat [konfiguraci nastavení testu] [ Configuration] a [analýzy rovina řízení] [ Control-Analysis] nastavení testu.
 
-Analýza roviny dat prozkoumá cestu pakety procházení z jedné místní sítě (LAN/virtuální sítě) do jiného v rámci topologie. Na cestu k datům mezi dvě místní sítě nemusí být nutně symetrické. Proto v tomto článku umožňuje analyzovat cestu pro předávání z místní sítě do druhé odděleně od Obrátit cestu.
+Analýza roviny dat prozkoumá cestu přijatých paketů, které překračují z jedné místní sítě (LAN nebo virtuální sítě) do jiného v rámci topologie. Není nutně symetrické na cestu k datům mezi dvě místní sítě. Proto v tomto článku budeme analyzovat cestu přesměrování z místní sítě k jiné síti, která je oddělená od Obrátit cestu.
 
-##<a name="data-path-from-hub-vnet"></a>Cesta k datům z virtuální sítě centra
+## <a name="data-path-from-the-hub-vnet"></a>Cesta k datům z virtuální síti centra
 
-###<a name="path-to-spoke-vnet"></a>Cesta k virtuální sítě paprsků
+### <a name="path-to-the-spoke-vnet"></a>Cesta k virtuální sítě paprsků
 
-Partnerský vztah virtuální sítě emuluje funkčnost síťový most mezi dvěma virtuálními sítěmi, které jsou v partnerském vztahu. Traceroute výstup z virtuální sítě centra k virtuálnímu počítači v paprsku virtuální sítě jsou uvedeny níže:
+Partnerské vztahy virtuálních sítí (VNet) emuluje funkčnost sítě most mezi dvěma virtuálními sítěmi, které jsou v partnerském vztahu. Traceroute výstup z centra virtuální sítě k virtuálnímu počítači v paprsku, virtuální síť je zobrazena zde:
 
     C:\Users\rb>tracert 10.11.30.4
 
@@ -37,12 +37,14 @@ Partnerský vztah virtuální sítě emuluje funkčnost síťový most mezi dvě
 
     Trace complete.
 
-Následující obrazovku Galerie je zobrazení grafického připojení virtuální sítě centra a paprsku přednášející: Azure Network Watcher:
+Následující obrázek znázorňuje připojení grafické zobrazení virtuální síti centra a paprsku z hlediska Azure Network Watcher:
 
 
 [![1]][1]
 
-###<a name="path-to-branch-vnet"></a>Cesta k virtuální síti větve
+### <a name="path-to-the-branch-vnet"></a>Cesta k větev virtuální sítě
+
+Traceroute výstup z centra virtuální sítě k virtuálnímu počítači na větev, kterou virtuální sítě je znázorněna zde:
 
     C:\Users\rb>tracert 10.11.30.68
 
@@ -54,17 +56,19 @@ Následující obrazovku Galerie je zobrazení grafického připojení virtuáln
 
     Trace complete.
 
-Ve výše uvedené traceroute je první segment směrování VPN brány virtuální sítě centra. Druhý segment směrování je VPN brány virtuální sítě větev, jejichž IP adresa se neinzeruje v rámci virtuální sítě centra. Třetí segment směrování je virtuální počítač ve virtuální síti větve.
+V tomto traceroute je první segment směrování VPN gateway ve službě Azure VPN Gateway o virtuální síti centra. Druhý segment směrování je brána VPN větve virtuální sítě. IP adresa brány VPN větve virtuální sítě se neinzeruje ve virtuální síti centra. Třetí segment směrování je virtuální počítač na větev virtuální sítě.
 
-Následující obrazovku Galerie je zobrazení grafického připojení virtuální sítě centra a virtuální síť větev přednášející: Azure Network Watcher:
+Následující obrázek znázorňuje připojení grafické zobrazení virtuální síti centra a větve virtuální sítě z perspektivy sledovacího procesu sítě:
 
 [![2]][2]
 
-Následující obrazovku Galerie pro stejné připojení, je zobrazení tabulky přednášející: Azure Network Watcher:
+Pro stejné připojení následující obrázek znázorňuje zobrazení mřížky ve službě Network Watcher:
 
 [![3]][3]
 
-###<a name="path-to-on-premises-location-1"></a>Cesta na místní umístění-1
+### <a name="path-to-on-premises-location-1"></a>Cesta k místnímu umístění 1
+
+Traceroute výstup z centra virtuální sítě k virtuálnímu počítači v místním umístění 1 je znázorněna zde:
 
     C:\Users\rb>tracert 10.2.30.10
 
@@ -77,10 +81,12 @@ Následující obrazovku Galerie pro stejné připojení, je zobrazení tabulky 
 
     Trace complete.
 
-Ve výše uvedené traceroute první segment směrování je koncový bod brány ExpressRoute tunel ke směrovači MSEE. Druhý a třetí směrování jsou CE směrovače a IP adres LAN v místním umístění 1, tyto IP adresy nejsou inzerované v rámci virtuální sítě centra. Čtvrtý segment směrování je virtuální počítač na místní umístění-1.
+V tomto traceroute první segment směrování je koncový bod služby gateway tunelového připojení Azure ExpressRoute pro Microsoft Enterprise Edge směrovač (MSEE). Druhý a třetí segmentů směrování se (CE) hraniční směrovač zákazníka a IP adres LAN v místním umístění 1. Tyto IP adresy nejsou inzerované ve virtuální síti centra. Čtvrtý segment směrování je virtuální počítač v 1 v místním umístění.
 
 
-###<a name="path-to-on-premises-location-2"></a>Cesta k umístění v místním-2
+### <a name="path-to-on-premises-location-2"></a>Cesta k místnímu umístění 2
+
+Traceroute výstup z centra virtuální sítě k virtuálnímu počítači v místním umístění 2 je znázorněna zde:
 
     C:\Users\rb>tracert 10.1.31.10
 
@@ -93,9 +99,11 @@ Ve výše uvedené traceroute první segment směrování je koncový bod brány
 
     Trace complete.
 
-Ve výše uvedené traceroute první segment směrování je koncový bod brány ExpressRoute tunel ke směrovači MSEE. Druhý a třetí směrování jsou CE směrovače a IP adres LAN v místním umístění 2, tyto IP adresy nejsou inzerované v rámci virtuální sítě centra. Čtvrtý segment směrování je virtuální počítač na místní umístění-2.
+V tomto traceroute první segment směrování je koncový bod služby ExpressRoute gateway tunel ke směrovači MSEE. Druhý a třetí segmentů směrování se CE směrovače a IP adres LAN v místním umístění 2. Tyto IP adresy nejsou inzerované ve virtuální síti centra. Čtvrtý segment směrování je virtuální počítač na místní umístění 2.
 
-###<a name="path-to-remote-vnet"></a>Cesta k vzdálené virtuální sítě
+### <a name="path-to-the-remote-vnet"></a>Cesta k vzdálené virtuální sítě
+
+Traceroute výstup z centra virtuální sítě do virtuálního počítače ve vzdálené virtuální sítě je znázorněna zde:
 
     C:\Users\rb>tracert 10.17.30.4
 
@@ -107,13 +115,15 @@ Ve výše uvedené traceroute první segment směrování je koncový bod brány
 
     Trace complete.
 
-Ve výše uvedené traceroute první segment směrování je koncový bod brány ExpressRoute tunel ke směrovači MSEE. Druhý segment směrování je IP adresa brány vzdálené virtuální sítě. Druhý rozsah IP adres pro směrování se neinzeruje v rámci virtuální sítě centra. Třetí segment směrování je virtuální počítač na vzdálené virtuální sítě.
+V tomto traceroute první segment směrování je koncový bod služby ExpressRoute gateway tunel ke směrovači MSEE. Druhý segment směrování je IP adresa brány vzdálené virtuální sítě. Druhý rozsah IP adres pro směrování se neinzeruje ve virtuální síti centra. Třetí segment směrování je virtuální počítač na vzdálené virtuální sítě.
 
-##<a name="data-path-from-spoke-vnet"></a>Cesta k datům z virtuální sítě paprsků
+## <a name="data-path-from-the-spoke-vnet"></a>Cesta k datům z virtuální sítě paprsků
 
-Vzpomínáte, že virtuální sítě paprsků sdílet zobrazení sítě o virtuální síti centra. Prostřednictvím partnerského vztahu virtuální sítě, virtuální sítě paprsků používá Brána vzdálené připojení k virtuální síti centra, jako by byli přímo připojení k virtuální sítě paprsků.
+Virtuální sítě paprsků sdílí zobrazení sítě o virtuální síti centra. Prostřednictvím partnerského vztahu virtuální sítě, virtuální sítě paprsků využívá Brána vzdálené připojení k virtuální síti centra jako v případě, že je přímo připojený do virtuální sítě paprsků.
 
-###<a name="path-to-hub-vnet"></a>Cesta k virtuální síti centra
+### <a name="path-to-the-hub-vnet"></a>Cesta k virtuální síti centra
+
+Traceroute výstup z virtuální sítě paprsků k virtuálnímu počítači, kterou virtuální sítě je znázorněna zde:
 
     C:\Users\rb>tracert 10.10.30.4
 
@@ -123,7 +133,9 @@ Vzpomínáte, že virtuální sítě paprsků sdílet zobrazení sítě o virtu�
 
     Trace complete.
 
-###<a name="path-to-branch-vnet"></a>Cesta k virtuální síti větve
+### <a name="path-to-the-branch-vnet"></a>Cesta k větev virtuální sítě
+
+Traceroute výstup z virtuální sítě paprsků k virtuálnímu počítači na větev, kterou virtuální sítě je znázorněna zde:
 
     C:\Users\rb>tracert 10.11.30.68
 
@@ -135,24 +147,11 @@ Vzpomínáte, že virtuální sítě paprsků sdílet zobrazení sítě o virtu�
 
     Trace complete.
 
-Ve výše uvedené traceroute je první segment směrování VPN brány virtuální sítě centra. Druhý segment směrování je VPN brány virtuální sítě větev, jejichž IP adresa se neinzeruje v rámci virtuální sítě centra/paprsky. Třetí segment směrování je virtuální počítač ve virtuální síti větve.
+V tomto traceroute první segment směrování je bránu VPN virtuální síti centra. Druhý segment směrování je brána VPN větve virtuální sítě. IP adresa brány VPN větve virtuální sítě se neinzeruje v rámci virtuální sítě centra/paprsků. Třetí segment směrování je virtuální počítač na větev virtuální sítě.
 
-###<a name="path-to-on-premises-location-1"></a>Cesta na místní umístění-1
+### <a name="path-to-on-premises-location-1"></a>Cesta k místnímu umístění 1
 
-    C:\Users\rb>tracert 10.2.30.10
-
-    Tracing route to 10.2.30.10 over a maximum of 30 hops
-
-      1    24 ms     2 ms     3 ms  10.10.30.132
-      2     *        *        *     Request timed out.
-      3     *        *        *     Request timed out.
-      4     3 ms     2 ms     2 ms  10.2.30.10
-
-    Trace complete.
-
-Ve výše uvedené traceroute první segment směrování je koncový bod brány ExpressRoute tunelového propojení virtuální sítě centra ke směrovači MSEE. Druhý a třetí směrování jsou CE směrovače a IP adres LAN v místním umístění 1, tyto IP adresy nejsou inzerované v rámci virtuální sítě centra/paprsky. Čtvrtý segment směrování je virtuální počítač na místní umístění-1.
-
-###<a name="path-to-on-premises-location-2"></a>Cesta k umístění v místním-2
+Traceroute výstup z virtuální sítě paprsků k virtuálnímu počítači v místním umístění 1 je znázorněna zde:
 
     C:\Users\rb>tracert 10.2.30.10
 
@@ -165,9 +164,29 @@ Ve výše uvedené traceroute první segment směrování je koncový bod brány
 
     Trace complete.
 
-Ve výše uvedené traceroute první segment směrování je koncový bod brány ExpressRoute tunelového propojení virtuální sítě centra ke směrovači MSEE. Druhý a třetí směrování jsou CE směrovače a IP adres LAN v místním umístění 2, tyto IP adresy nejsou inzerované v rámci virtuální sítě centra/paprsky. Čtvrtý segment směrování je virtuální počítač na místní umístění-2.
+V tomto traceroute první segment směrování je koncový bod služby virtuální síť centra ExpressRoute gateway tunel ke směrovači MSEE. Druhý a třetí segmentů směrování se CE směrovače a IP adres LAN v místním umístění 1. Tyto IP adresy nejsou inzerované v centru/paprsku virtuální sítě. Čtvrtý segment směrování je virtuální počítač v 1 v místním umístění.
 
-###<a name="path-to-remote-vnet"></a>Cesta k vzdálené virtuální sítě
+### <a name="path-to-on-premises-location-2"></a>Cesta k místnímu umístění 2
+
+Traceroute výstup z virtuální sítě paprsků k virtuálnímu počítači v místním umístění 2 je znázorněna zde:
+
+
+    C:\Users\rb>tracert 10.2.30.10
+
+    Tracing route to 10.2.30.10 over a maximum of 30 hops
+
+      1    24 ms     2 ms     3 ms  10.10.30.132
+      2     *        *        *     Request timed out.
+      3     *        *        *     Request timed out.
+      4     3 ms     2 ms     2 ms  10.2.30.10
+
+    Trace complete.
+
+V tomto traceroute první segment směrování je koncový bod služby virtuální síť centra ExpressRoute gateway tunel ke směrovači MSEE. Druhý a třetí segmentů směrování se CE směrovače a IP adres LAN v místním umístění 2. Tyto IP adresy nejsou inzerované v centru/paprsku virtuální sítě. Čtvrtý segment směrování je virtuální počítač v místním umístění 2.
+
+### <a name="path-to-the-remote-vnet"></a>Cesta k vzdálené virtuální sítě
+
+Traceroute výstup z virtuální sítě paprsků do virtuálního počítače ve vzdálené virtuální sítě je znázorněna zde:
 
     C:\Users\rb>tracert 10.17.30.4
 
@@ -179,11 +198,13 @@ Ve výše uvedené traceroute první segment směrování je koncový bod brány
 
     Trace complete.
 
-Ve výše uvedené traceroute první segment směrování je koncový bod brány ExpressRoute tunelového propojení virtuální sítě centra ke směrovači MSEE. Druhý segment směrování je IP adresa brány vzdálené virtuální sítě. Druhý rozsah IP adres pro směrování se neinzeruje v rámci virtuální sítě centra/paprsky. Třetí segment směrování je virtuální počítač na vzdálené virtuální sítě.
+V tomto traceroute první segment směrování je koncový bod služby virtuální síť centra ExpressRoute gateway tunel ke směrovači MSEE. Druhý segment směrování je IP adresa brány vzdálené virtuální sítě. Druhý rozsah IP adres pro směrování se neinzeruje v centru/paprsku virtuální sítě. Třetí segment směrování je virtuální počítač na vzdálené virtuální sítě.
 
-##<a name="data-path-from-branch-vnet"></a>Cesta k datům z větve virtuální sítě
+## <a name="data-path-from-the-branch-vnet"></a>Cesta k datům z větve virtuální sítě
 
-###<a name="path-to-hub-vnet"></a>Cesta k virtuální síti centra
+### <a name="path-to-the-hub-vnet"></a>Cesta k virtuální síti centra
+
+Traceroute výstup z větve virtuální sítě k virtuálnímu počítači, kterou virtuální sítě je znázorněna zde:
 
     C:\Windows\system32>tracert 10.10.30.4
 
@@ -195,9 +216,11 @@ Ve výše uvedené traceroute první segment směrování je koncový bod brány
 
     Trace complete.
 
-Ve výše uvedené traceroute je první segment směrování VPN brány sítě vnet, větev. Druhý segment směrování je VPN brány virtuální sítě centra, jejichž IP adresa se neinzeruje v rámci vzdálené virtuální sítě. Třetí segment směrování je virtuální počítač ve virtuální síti centra.
+V tomto traceroute je první segment směrování VPN gateway větve virtuální sítě. Druhý segment směrování je bránu VPN virtuální síti centra. IP adresa brány VPN virtuální síti centra se neinzeruje v vzdálené virtuální sítě. Třetí segment směrování je virtuální počítač ve virtuální síti centra.
 
-###<a name="path-to-spoke-vnet"></a>Cesta k virtuální sítě paprsků
+### <a name="path-to-the-spoke-vnet"></a>Cesta k virtuální sítě paprsků
+
+Traceroute výstup z větve virtuální sítě k virtuálnímu počítači v paprsku, virtuální síť je zobrazena zde:
 
     C:\Users\rb>tracert 10.11.30.4
 
@@ -209,9 +232,11 @@ Ve výše uvedené traceroute je první segment směrování VPN brány sítě v
 
     Trace complete.
 
-Ve výše uvedené traceroute je první segment směrování VPN brány sítě vnet, větev. Druhý segment směrování je VPN brány virtuální sítě centra, jejichž IP adresa se neinzeruje v rámci vzdálené virtuální sítě, a třetí segment směrování je virtuální počítač na virtuální sítě paprsků.
+V tomto traceroute je první segment směrování VPN gateway větve virtuální sítě. Druhý segment směrování je bránu VPN virtuální síti centra. IP adresa brány VPN virtuální síti centra se neinzeruje v vzdálené virtuální sítě. Třetí segment směrování je virtuální počítač na virtuální sítě paprsků.
 
-###<a name="path-to-on-premises-location-1"></a>Cesta na místní umístění-1
+### <a name="path-to-on-premises-location-1"></a>Cesta k místnímu umístění 1
+
+Traceroute výstup z větve virtuální sítě do virtuálního počítače v místním umístění 1 je znázorněna zde:
 
     C:\Users\rb>tracert 10.2.30.10
 
@@ -225,11 +250,11 @@ Ve výše uvedené traceroute je první segment směrování VPN brány sítě v
 
     Trace complete.
 
-Ve výše uvedené traceroute je první segment směrování VPN brány sítě vnet, větev. Druhý segment směrování je VPN brány virtuální sítě centra, jejichž IP adresa se neinzeruje v rámci vzdálené virtuální sítě. Třetí segment směrování je ukončení tunelu VPN ve primárního CE směrovači. Čtvrtý segment směrování je interní IP adresu v místním umístění – 1 IP adresy sítě LAN, které se neinzeruje mimo CE směrovače. Pátý segment směrování je cílový virtuální počítač na místní umístění-1.
+V tomto traceroute je první segment směrování VPN gateway větve virtuální sítě. Druhý segment směrování je bránu VPN virtuální síti centra. IP adresa brány VPN virtuální síti centra se neinzeruje v vzdálené virtuální sítě. Třetí segment směrování je ukončení tunelu VPN ve primárního CE směrovači. Čtvrtý segment směrování je interní IP adresa 1 v místním umístění. Tato síť LAN IP adresa se neinzeruje mimo CE směrovače. Pátý segment směrování je cílový virtuální počítač v 1 v místním umístění.
 
-###<a name="path-to-on-premises-location-2-and-remote-vnet"></a>Cesta k místní umístění-2 a vzdálené virtuální sítě
+### <a name="path-to-on-premises-location-2-and-the-remote-vnet"></a>Cesta k umístění 2 místní a vzdálené virtuální sítě
 
-Jak jsme probírali před analýzou rovina řízení, větev virtuální síť nemá žádné viditelnost v místním umístění-2 nebo vzdálené virtuální sítě na konfiguraci sítě. Následující výsledky příkazu ping zkontrolujte skutečnost. 
+Jak jsme probírali v analýze rovina řízení, větev virtuální síť nemá žádné viditelnost 2 umístění místní nebo vzdálené virtuální sítě na konfiguraci sítě. Následující výsledky příkazu ping zkontrolujte: 
 
     C:\Users\rb>ping 10.1.31.10
 
@@ -253,9 +278,11 @@ Jak jsme probírali před analýzou rovina řízení, větev virtuální síť n
     Ping statistics for 10.17.30.4:
         Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),
 
-##<a name="data-path-from-on-premises-location-1"></a>Cesta k datům z místních umístění-1
+## <a name="data-path-from-on-premises-location-1"></a>Cesta k datům z místních umístění 1
 
-###<a name="path-to-hub-vnet"></a>Cesta k virtuální síti centra
+### <a name="path-to-the-hub-vnet"></a>Cesta k virtuální síti centra
+
+Traceroute výstup z 1 v místním umístění k virtuálnímu počítači, kterou virtuální sítě je znázorněna zde:
 
     C:\Users\rb>tracert 10.10.30.4
 
@@ -269,15 +296,15 @@ Jak jsme probírali před analýzou rovina řízení, větev virtuální síť n
 
     Trace complete.
 
-Ve výše uvedené traceroute jsou prvními dvěma segmenty směrování části místní sítě. Třetí segment směrování je primární MSEE rozhraní směřující CE směrovače. Čtvrtý segment směrování je ExpressRoute G/W ve virtuální síti, jejichž rozsah IP adres se neinzeruje k místní síti centra. Pátý segment směrování je cílový virtuální počítač.
+V tomto traceroute jsou prvními dvěma segmenty směrování součástí v místní síti. Třetí segment směrování je primární MSEE rozhraní, který směřuje směrovače CE. Čtvrtý segment směrování je bránu ExpressRoute virtuální síti centra. Rozsah IP bránu ExpressRoute virtuální síti centra se neinzeruje k místní síti. Pátý segment směrování je cílový virtuální počítač.
 
-Azure Network Watcher poskytuje pouze zaměřené na Azure. Proto pro zobrazení na střed v místním jsme použili Azure Network Performance Monitor (NPM). NPM obsahuje agenty, které můžou být nainstalované serverů v síti mimo Azure a provádět analýzu dat path.
+Network Watcher představuje pouze zobrazení zaměřené na Azure. Pro v místním perspektivu používáme Azure Network Performance monitoru. Network Performance Monitor poskytuje agenty, které můžete nainstalovat na servery v sítích mimo Azure pro analýzu dat cestu.
 
-Následující obrazovku Galerie je zobrazení topologie v místním umístění 1 virtuální počítač připojení k virtuálnímu počítači ve virtuální síti přes ExpressRoute centra.
+Následující obrázek znázorňuje topologii zobrazení místní virtuální počítač 1 umístění připojení k virtuálnímu počítači ve virtuální síti přes ExpressRoute centra:
 
 [![4]][4]
 
-Vzpomínáte, nastavení testu používá VPN typu Site-to-Site jako záložní připojení expressroute mezi místní umístění-1 a virtuální síť centra. K otestování back datapath, Pojďme zahájit chybu spojení ExpressRoute mezi místní směrovač CE primární umístění-1 a odpovídající směrovači MSEE vypněte rozhraní CE směřující směrovači MSEE.
+Jak je uvedeno výše, použije instalační program testovací VPN typu site-to-site jako záložní připojení expressroute mezi místní umístění 1 a virtuální síti centra. K otestování cesta zálohovaná data, můžeme vyvolat chybu spojení ExpressRoute mezi místní umístění 1 primární CE směrovač a odpovídající směrovači MSEE. Chcete-li vyvolat chybu spojení ExpressRoute, vypnete rozhraní CE, která směřuje směrovači MSEE:
 
     C:\Users\rb>tracert 10.10.30.4
 
@@ -289,13 +316,15 @@ Vzpomínáte, nastavení testu používá VPN typu Site-to-Site jako záložní 
 
     Trace complete.
 
-Následující obrazovku Galerie je topologie zobrazení místní umístění 1 virtuální počítač připojení k virtuálnímu počítači přes připojení VPN typu Site-to-Site k virtuální síti centra, když připojení ExpressRoute je mimo provoz.
+Následující obrázek znázorňuje zobrazení topologie připojení k místní virtuální počítač 1 umístění k virtuálnímu počítači ve virtuální síti centra prostřednictvím připojení site-to-site VPN při připojení ExpressRoute je mimo provoz:
 
 [![5]][5]
 
-###<a name="path-to-spoke-vnet"></a>Cesta k virtuální sítě paprsků
+### <a name="path-to-the-spoke-vnet"></a>Cesta k virtuální sítě paprsků
 
-Dejte nám vrácení primární připojení ExpressRoute k analýzám datapath směrem k virtuální sítě paprsků.
+Traceroute výstup z 1 v místním umístění k virtuálnímu počítači v paprsku, virtuální síť je zobrazena zde:
+
+Pojďme vrácení primární připojení ExpressRoute jak provádět analýzu dat cesta směrem paprsek virtuální sítě:
 
     C:\Users\rb>tracert 10.11.30.4
 
@@ -309,9 +338,11 @@ Dejte nám vrácení primární připojení ExpressRoute k analýzám datapath s
 
     Trace complete.
 
-Dejte nám vyvolali primární připojení ExpressRoute-1 pro zbytek analýzy datapath.
+Vyvolali primární připojení ExpressRoute 1 pro zbytek analýzy dat cestu.
 
-###<a name="path-to-branch-vnet"></a>Cesta k virtuální síti větve
+### <a name="path-to-the-branch-vnet"></a>Cesta k větev virtuální sítě
+
+Traceroute výstup z 1 v místním umístění k virtuálnímu počítači na větev, kterou virtuální sítě je znázorněna zde:
 
     C:\Users\rb>tracert 10.11.30.68
 
@@ -323,9 +354,9 @@ Dejte nám vyvolali primární připojení ExpressRoute-1 pro zbytek analýzy da
 
     Trace complete.
 
-###<a name="path-to-on-premises-location-2"></a>Cesta k umístění v místním-2
+### <a name="path-to-on-premises-location-2"></a>Cesta k místnímu umístění 2
 
-Jak jsme probírali před analýzou rovina řízení, v místním umístění-1 nemá žádné viditelnosti v místním umístění-2 za konfiguraci sítě. Následující výsledky příkazu ping zkontrolujte skutečnost. 
+Probereme v [analýzy rovina řízení][Control-Analysis], v místním umístění 1 nemá žádné viditelnosti v místním umístění 2 za konfiguraci sítě. Následující výsledky příkazu ping zkontrolujte: 
 
     C:\Users\rb>ping 10.1.31.10
     
@@ -338,7 +369,9 @@ Jak jsme probírali před analýzou rovina řízení, v místním umístění-1 
     Ping statistics for 10.1.31.10:
         Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),
 
-###<a name="path-to-remote-vnet"></a>Cesta k vzdálené virtuální sítě
+### <a name="path-to-the-remote-vnet"></a>Cesta k vzdálené virtuální sítě
+
+Traceroute výstup z 1 v místním umístění do virtuálního počítače ve vzdálené virtuální sítě je znázorněna zde:
 
     C:\Users\rb>tracert 10.17.30.4
 
@@ -352,9 +385,11 @@ Jak jsme probírali před analýzou rovina řízení, v místním umístění-1 
 
     Trace complete.
 
-##<a name="data-path-from-on-premises-location-2"></a>Cesta k datům z místních umístění-2
+## <a name="data-path-from-on-premises-location-2"></a>Cesta k datům z místních umístění 2
 
-###<a name="path-to-hub-vnet"></a>Cesta k virtuální síti centra
+### <a name="path-to-the-hub-vnet"></a>Cesta k virtuální síti centra
+
+Traceroute výstup z místních umístění 2 k virtuálnímu počítači, kterou virtuální sítě je znázorněna zde:
 
     C:\Windows\system32>tracert 10.10.30.4
 
@@ -368,7 +403,9 @@ Jak jsme probírali před analýzou rovina řízení, v místním umístění-1 
 
     Trace complete.
 
-###<a name="path-to-spoke-vnet"></a>Cesta k virtuální sítě paprsků
+### <a name="path-to-the-spoke-vnet"></a>Cesta k virtuální sítě paprsků
+
+Traceroute výstup z místních umístění 2 k virtuálnímu počítači v paprsku, virtuální síť je zobrazena zde:
 
     C:\Windows\system32>tracert 10.11.30.4
 
@@ -381,13 +418,15 @@ Jak jsme probírali před analýzou rovina řízení, v místním umístění-1 
 
     Trace complete.
 
-###<a name="path-to-branch-vnet-on-premises-location-1-and-remote-vnet"></a>Cesta k virtuální síti, virtuální sítě v místním umístění-1 a vzdálené větve
+### <a name="path-to-the-branch-vnet-on-premises-location-1-and-the-remote-vnet"></a>Cesta k větev virtuální síť, v místním umístění 1 a vzdálené virtuální sítě
 
-Jak jsme probírali před analýzou rovina řízení, v místním umístění-1 nemá žádné viditelnost do větve virtuální síť, v místním umístění-1 a vzdálené virtuální sítě na konfiguraci sítě. 
+Probereme v [analýzy rovina řízení][Control-Analysis], v místním umístění 1 nemá žádné viditelnost větev virtuální sítě, 1 umístění místní nebo vzdálené virtuální sítě podle konfigurace sítě. 
 
-##<a name="data-path-from-remote-vnet"></a>Cesta k datům ze vzdálené virtuální sítě
+## <a name="data-path-from-the-remote-vnet"></a>Cesta k datům ze vzdálené virtuální sítě
 
-###<a name="path-to-hub-vnet"></a>Cesta k virtuální síti centra
+### <a name="path-to-the-hub-vnet"></a>Cesta k virtuální síti centra
+
+Traceroute výstup z vzdálené virtuální sítě k virtuálnímu počítači, kterou virtuální sítě je znázorněna zde:
 
     C:\Users\rb>tracert 10.10.30.4
 
@@ -399,7 +438,9 @@ Jak jsme probírali před analýzou rovina řízení, v místním umístění-1 
 
     Trace complete.
 
-###<a name="path-to-spoke-vnet"></a>Cesta k virtuální sítě paprsků
+### <a name="path-to-the-spoke-vnet"></a>Cesta k virtuální sítě paprsků
+
+Traceroute výstup z vzdálené virtuální sítě k virtuálnímu počítači v paprsku, virtuální síť je zobrazena zde:
 
     C:\Users\rb>tracert 10.11.30.4
 
@@ -411,12 +452,13 @@ Jak jsme probírali před analýzou rovina řízení, v místním umístění-1 
 
     Trace complete.
 
-### <a name="path-to-branch-vnet-and-on-premises-location-2"></a>Cesta k větev virtuální síť a v místním umístění-2
+### <a name="path-to-the-branch-vnet-and-on-premises-location-2"></a>Cesta na větev virtuální síť a v místním umístění 2
 
-Jak jsme probírali před analýzou rovina řízení, vzdálenou virtuální síť nemá žádné viditelnosti na větev virtuální sítě a v místním umístění-2 za konfiguraci sítě. 
+Probereme v [analýzy rovina řízení][Control-Analysis], Vzdálená virtuální síť nemá žádné viditelnost větev virtuální síti nebo v místním umístění 2 za konfiguraci sítě. 
 
+### <a name="path-to-on-premises-location-1"></a>Cesta k místnímu umístění 1
 
-### <a name="path-to-on-premises-location-1"></a>Cesta na místní umístění-1
+Výstup Traceroute ze vzdálené virtuální sítě do virtuálního počítače v místním umístění 1 je znázorněna zde:
 
     C:\Users\rb>tracert 10.2.30.10
 
@@ -430,46 +472,49 @@ Jak jsme probírali před analýzou rovina řízení, vzdálenou virtuální sí
     Trace complete.
 
 
-## <a name="further-reading"></a>Další čtení
+## <a name="expressroute-and-site-to-site-vpn-connectivity-in-tandem"></a>Připojení VPN typu site-to-site a ExpressRoute při vytvoření celostní
 
-### <a name="using-expressroute-and-site-to-site-vpn-connectivity-in-tandem"></a>Při vytvoření celostní pomocí připojení VPN typu Site-to-Site a ExpressRoute
+###  <a name="site-to-site-vpn-over-expressroute"></a>VPN typu Site-to-site přes ExpressRoute
 
-####<a name="site-to-site-vpn-over-expressroute"></a>VPN typu Site-to-Site přes ExpressRoute
+Můžete nakonfigurovat VPN typu site-to-site s využitím partnerského vztahu pro soukromě výměnu dat mezi vaší místní sítí a virtuální sítě Azure ExpressRoute Microsoftu. V této konfiguraci může vyměňovat data s důvěrnost, pravosti a integrita. Výměna dat je taky zneužitím. Další informace o konfiguraci sítě VPN site-to-site protokolu IPsec v režimu tunelového propojení s využitím partnerského vztahu Microsoftu ExpressRoute najdete v části [VPN typu Site-to-site přes partnerský vztah ExpressRoute Microsoftu][S2S-Over-ExR]. 
 
-Je možné nakonfigurovat VPN typu Site-to-Site přes partnerský vztah ExpressRoute Microsoftu k soukromě výměně dat mezi vaší místní sítě a sítě Azure Vnet s důvěrnost, zneužitím, pravosti a integrita. Další informace týkající se konfigurace IPSec Site-to-Site VPN v tunelovém režimu přes partnerský vztah ExpressRoute Microsoftu najdete v tématu [VPN typu Site-to-site přes ExpressRoute-partnerský vztah Microsoftu][S2S-Over-ExR]. 
+Omezení na primární konfigurace site-to-site VPN, který používá partnerského vztahu Microsoftu je propustnost. Propustnost přes tunel IPsec je omezená kapacita brány VPN. Propustnost brány sítě VPN je nižší než propustnost pro ExpressRoute. V tomto scénáři použití tunelu IPsec pro vysoce zabezpečená provozu a používání soukromý partnerský vztah pro veškerý ostatní provoz optimalizovat využití šířky pásma ExpressRoute.
 
-Konfigurace sítě VPN typu S2S prostřednictvím partnerského vztahu Microsoftu hlavním omezením je propustnost. Propustnost přes tunel IPSec je omezená kapacita brány VPN. Propustnost brány sítě VPN je že menší ve srovnání s ExpressRoute propustnosti. V takových scénářích použití tunelu IPSec pro vysoké zabezpečení provozu a soukromého partnerského vztahu pro všechny ostatní provoz by vám pomůžou optimalizovat využití šířky pásma ExpressRoute.
+### <a name="site-to-site-vpn-as-a-secure-failover-path-for-expressroute"></a>VPN typu Site-to-site jako cestu zabezpečené převzetí služeb při selhání pro ExpressRoute
 
-#### <a name="site-to-site-vpn-as-a-secure-failover-path-for-expressroute"></a>VPN typu Site-to-Site jako cestu zabezpečené převzetí služeb při selhání pro ExpressRoute
-ExpressRoute se nabízí jako dvojici redundantních okruh k zajištění vysoké dostupnosti. Geograficky redundantní připojení ExpressRoute můžete nakonfigurovat v různých oblastech Azure. Také jako hotové v našich nastavení testu v rámci dané oblasti Azure, pokud chcete cestu převzetí služeb při selhání pro připojení k ExpressRoute, můžete provést pomocí Site-to-Site VPN. Pokud jsou stejné předpony inzerované prostřednictvím ExpressRoute a S2S VPN, preferuje Azure ExpressRoute přes síť VPN typu S2S. Aby se zabránilo asymetrické směrování mezi ExpressRoute a S2S VPN pro místní konfigurace sítě by měl také oplátku preferují ExpressRoute přes připojení S2S VPN.
+ExpressRoute slouží jako dvojici redundantních okruh k zajištění vysoké dostupnosti. Geograficky redundantní připojení ExpressRoute můžete nakonfigurovat v různých oblastech Azure. Také jak je ukázáno v našich nastavení testu, v rámci oblasti Azure, můžete použít VPN typu site-to-site vytvoříte cestu převzetí služeb při selhání pro připojení k ExpressRoute. Pokud jsou stejné předpony inzerované přes VPN typu site-to-site a ExpressRoute, upřednostňuje Azure ExpressRoute. Aby se zabránilo asymetrické směrování mezi ExpressRoute a VPN typu site-to-site, pro místní konfigurace sítě by měl také oplátku pomocí připojení ExpressRoute, použije připojení VPN typu site-to-site.
 
-Další informace o tom, jak konfigurace současně existujících připojení ExpressRoute a VPN typu Site-to-Site najdete v tématu [koexistence Site-to-Site a ExpressRoute][ExR-S2S-CoEx].
+Další informace o tom, jak konfigurace současně existujících připojení pro ExpressRoute a VPN typu site-to-site najdete v tématu [ExpressRoute a site-to-site koexistence][ExR-S2S-CoEx].
 
-### <a name="extending-backend-connectivity-to-spoke-vnets-and-branch-locations"></a>Rozšíření back-end připojení k paprsků virtuální sítě a větve umístění
+## <a name="extend-back-end-connectivity-to-spoke-vnets-and-branch-locations"></a>Rozšíření back-end připojení k virtuální sítě paprsků a místech firemních poboček
 
-#### <a name="spoke-vnet-connectivity-using-vnet-peering"></a>Připojení virtuálních sítí pomocí VNet peering paprsků
+### <a name="spoke-vnet-connectivity-by-using-vnet-peering"></a>Připojení virtuální sítě paprsků pomocí VNet peering
 
-Architektura střed a paprsek virtuální sítě se běžně používá. Centrum je virtuální síť (VNet) v Azure, která funguje jako ústřední bod připojení mezi vaší virtuální sítě paprsků a v místní síti. Paprsky jsou virtuální sítě v partnerském vztahu s centra a slouží k izolaci úloh. Data jsou přenášena mezi místním datovým centrem a centra prostřednictvím připojení ExpressRoute nebo VPN. Další informace o architektuře, najdete v části [střed a paprsek architektury][Hub-n-Spoke]
+Hvězdicová Architektura virtuální sítě se běžně používá. Centrum je virtuální sítě v Azure, která funguje jako ústřední bod připojení mezi vaší virtuální sítě paprsků a v místní síti. Paprsky jsou virtuální sítě v partnerském vztahu s rozbočovači, a který můžete použít k izolaci úloh. Data jsou přenášena mezi místním datovým centrem a centra prostřednictvím připojení ExpressRoute nebo VPN. Další informace o architektuře, najdete v části [implementace síťové topologie centra s rameny v Azure][Hub-n-Spoke].
 
-Vytvoření partnerského vztahu v rámci oblasti virtuální sítě umožňuje virtuální sítě do brány virtuální sítě centra (brány sítě VPN a ExpressRoute) použít ke komunikaci se vzdálenými sítěmi paprsků.
+V partnerského vztahu v rámci oblasti virtuální sítě můžete použít s virtuálními sítěmi paprsků brány virtuální sítě centra (brány sítě VPN a ExpressRoute) ke komunikaci se vzdálenými sítěmi.
 
-#### <a name="branch-vnet-connectivity-using-site-to-site-vpn"></a>Nepodmíněný skok připojení k virtuální síti pomocí sítě VPN typu Site-to-Site
+### <a name="branch-vnet-connectivity-by-using-site-to-site-vpn"></a>Větev připojení k virtuální síti pomocí sítě site-to-site VPN
 
-Pokud chcete, aby větev virtuálními sítěmi (v různých oblastech) a místními sítěmi vzájemně komunikovat přes virtuální síť centra, nativní řešení Azure je připojení k síti VPN site-to-site pomocí sítě VPN. Alternativní možností je použít síťové virtuální zařízení pro směrování v centru.
+Může být vhodné větve virtuální sítě, které jsou v různých oblastech a místními sítěmi mezi sebou komunikovat přes virtuální síti centra. Nativní řešení Azure pro tato konfigurace je připojení VPN typu site-to-site pomocí sítě VPN. Alternativou je použití síťové virtuální zařízení (NVA) pro směrování v centru.
 
-Konfigurace bran VPN, naleznete v tématu [konfigurace brány VPN][VPN]. Nasazení vysoce dostupných síťových virtuálních zařízení, najdete v části [nasazení vysoce dostupné síťové virtuální zařízení][Deploy-NVA].
+Další informace najdete v tématu [co je VPN Gateway?] [ VPN] a [nasazení vysoce dostupné síťové virtuální zařízení][Deploy-NVA].
+
 
 ## <a name="next-steps"></a>Další postup
 
-Zjistěte, kolik okruhy ExpressRoute, můžete se připojit k bránu ExpressRoute nebo kolik brány ExpressRoute můžete připojit k okruhu ExpressRoute, přečtěte si další limity škálování služby ExpressRoute, najdete v článku [ExpressRoute – nejčastější dotazy][ExR-FAQ]
+Zobrazit [ExpressRoute – nejčastější dotazy] [ ExR-FAQ] na:
+-   Přečtěte si, kolik okruhy ExpressRoute, můžete se připojit k bránu ExpressRoute.
+-   Přečtěte si, kolik brány ExpressRoute se můžete připojit k okruhu ExpressRoute.
+-   Další informace o dalších limity škálování služby ExpressRoute.
 
 
 <!--Image References-->
-[1]: ./media/backend-interoperability/HubVM-SpkVM.jpg "network Watcher zobrazení připojení z virtuální sítě centra do virtuální sítě paprsků"
-[2]: ./media/backend-interoperability/HubVM-BranchVM.jpg "network Watcher zobrazení připojení z virtuální sítě centra k virtuální síti větve"
-[3]: ./media/backend-interoperability/HubVM-BranchVM-Grid.jpg "zobrazení mřížky network Watcher připojení z virtuální sítě centra k virtuální síti větve"
-[4]: ./media/backend-interoperability/Loc1-HubVM.jpg "network Performance Monitor zobrazení připojení z virtuálního počítače 1 umístění k virtuální síti centra prostřednictvím ExpressRoute 1"
-[5]: ./media/backend-interoperability/Loc1-HubVM-S2S.jpg "network Performance Monitor zobrazení připojení z virtuálního počítače 1 umístění k virtuální síti centra přes síť VPN S2S"
+[1]: ./media/backend-interoperability/HubVM-SpkVM.jpg "network Watcher zobrazení připojení z virtuální síti centra pro paprsek virtuální sítě"
+[2]: ./media/backend-interoperability/HubVM-BranchVM.jpg "network Watcher zobrazení připojení z virtuální síti centra na větev virtuální sítě"
+[3]: ./media/backend-interoperability/HubVM-BranchVM-Grid.jpg "zobrazení mřížky network Watcher připojení z virtuální síti centra na větev virtuální sítě"
+[4]: ./media/backend-interoperability/Loc1-HubVM.jpg "network Performance Monitor zobrazení připojení z virtuálního počítače 1 umístění k virtuální síti přes ExpressRoute 1 centra"
+[5]: ./media/backend-interoperability/Loc1-HubVM-S2S.jpg "network Performance Monitor zobrazení připojení z virtuálního počítače 1 umístění k virtuální síti prostřednictvím sítě site-to-site VPN centra"
 
 <!--Link References-->
 [Setup]: https://docs.microsoft.com/azure/networking/connectivty-interoperability-preface
@@ -486,7 +531,5 @@ Zjistěte, kolik okruhy ExpressRoute, můžete se připojit k bránu ExpressRout
 [Hub-n-Spoke]: https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke
 [Deploy-NVA]: https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/nva-ha
 [VNet-Config]: https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-peering
-
-
 
 

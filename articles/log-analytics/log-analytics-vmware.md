@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/04/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: fe2407f67e2ef7a2eb14105db0fef10917f34ba9
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 5c9f37d326d66e69e87ec846ca6f22d1788203f5
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51005219"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51613983"
 ---
 # <a name="vmware-monitoring-preview-solution-in-log-analytics"></a>Řešení VMware Monitoring (Preview) ve službě Log Analytics
 
@@ -165,7 +165,7 @@ Ukládání vyhledávacích dotazů je standardní funkce v Log Analytics a mů�
 ![DockerDashboardView](./media/log-analytics-vmware/dockerdashboardview.png)
 
 #### <a name="create-alerts-from-queries"></a>Vytvářet upozornění z dotazů
-Po vytvoření dotazů, můžete využívat dotazy a zobrazí vám upozornění, když dojde k určité události. Zobrazit [upozornění v Log Analytics](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md) informace o tom, jak vytvářet výstrahy. Příklady výstrah dotazy a další příklady dotazů, najdete v článku [VMware monitorování pomocí Log Analytics](https://blogs.technet.microsoft.com/msoms/2016/06/15/monitor-vmware-using-oms-log-analytics) blogový příspěvek.
+Po vytvoření dotazů, můžete využívat dotazy a zobrazí vám upozornění, když dojde k určité události. Zobrazit [upozornění v Log Analytics](../monitoring-and-diagnostics/monitoring-overview-alerts.md) informace o tom, jak vytvářet výstrahy. Příklady výstrah dotazy a další příklady dotazů, najdete v článku [VMware monitorování pomocí Log Analytics](https://blogs.technet.microsoft.com/msoms/2016/06/15/monitor-vmware-using-oms-log-analytics) blogový příspěvek.
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 ### <a name="what-do-i-need-to-do-on-the-esxi-host-setting-what-impact-will-it-have-on-my-current-environment"></a>Co je potřeba na ESXi hostovat nastavení? Jaký vliv bude mít na mé aktuální prostředí?
@@ -208,4 +208,4 @@ Může existovat několik důvodů:
 ## <a name="next-steps"></a>Další postup
 * Použití [prohledávání protokolů](log-analytics-queries.md) v Log Analytics, chcete-li zobrazit podrobné VMware hostovat data.
 * [Vytvářejte vlastní řídicí panely](log-analytics-dashboards.md) zobrazující data hostitele VMware.
-* [Vytvořit upozornění](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md) Pokud dojde k určité událostem hostitele VMware.
+* [Vytvořit upozornění](../monitoring-and-diagnostics/monitoring-overview-alerts.md) Pokud dojde k určité událostem hostitele VMware.

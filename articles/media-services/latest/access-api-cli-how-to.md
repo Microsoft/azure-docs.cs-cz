@@ -12,12 +12,12 @@ ms.topic: article
 ms.custom: mvc
 ms.date: 10/15/2018
 ms.author: juliako
-ms.openlocfilehash: 5d7c338dc9d5028552d9b33802982ffda97a56f0
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 54a92e56df21b59430ed12f191a9cf7a918e14c9
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389838"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51612895"
 ---
 # <a name="access-azure-media-services-api-with-the-azure-cli"></a>Přístup k Azure Media Services rozhraní API pomocí Azure CLI
  
@@ -32,22 +32,19 @@ Tento článek popisuje, jak používat rozhraní příkazového řádku Azure k
 
 ## <a name="prerequisites"></a>Požadavky 
 
-Vytvořit si nový účet služby Azure Media Services podle popisu [v tomto rychlém startu](create-account-cli-quickstart.md)
+- Nainstalovat a používat rozhraní příkazového řádku místně, musíte mít Azure CLI verze 2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli). 
 
-## <a name="sign-in-to-azure"></a>Přihlášení k Azure
+    V současné době všechny [Media Services v3 CLI](https://aka.ms/ams-v3-cli-ref) příkazy fungují ve službě Azure Cloud Shell. Doporučujeme používat rozhraní příkazového řádku místně.
 
-Přihlaste se k [webu Azure portal](http://portal.azure.com) a spusťte **cloud Shell** provádět příkazy rozhraní příkazového řádku, jak je znázorněno v dalších krocích.
+- [Vytvoření účtu Media Services](create-account-cli-how-to.md).
 
-[!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
-
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít verzi Azure CLI 2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli). 
+    Ujistěte se, že hodnoty, které jste použili pro název skupiny prostředků a název účtu Media Services mějte na paměti.
 
 [!INCLUDE [media-services-v3-cli-access-api-include](../../../includes/media-services-v3-cli-access-api-include.md)]
 
 ## <a name="next-steps"></a>Další postup
 
-> [!div class="nextstepaction"]
-> [Streamování souboru](stream-files-dotnet-quickstart.md)
+[Streamování souboru](stream-files-dotnet-quickstart.md)
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 

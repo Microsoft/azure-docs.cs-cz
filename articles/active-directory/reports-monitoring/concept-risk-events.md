@@ -12,20 +12,26 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.component: report-monitor
-ms.date: 05/14/2018
+ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: e4aa4a87bec8f737405c90bb42bdb5fc60cb379a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 6c1b9fabe89d254524006a21e3a422221791022d
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51232993"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51625262"
 ---
 # <a name="azure-active-directory-risk-events"></a>Azure Active Directory rizikových událostí
 
-Většinu narušení zabezpečení se použijí při útočníci získají přístup k prostředí krádeží identity uživatele. Zjišťování ohrožení zabezpečení identit je žádný snadný úkol. Azure Active Directory používá algoritmy adaptivní strojového učení a heuristik ke zjištění podezřelé akce, které souvisejí s vašimi uživatelskými účty. Každou zjištěnou podezřelé akce, které jsou uloženy v záznam nazvaný *riziková událost*.
+Většinu narušení zabezpečení se použijí při útočníci získají přístup k prostředí krádeží identity uživatele. Zjišťování ohrožení zabezpečení identit je žádný snadný úkol. Azure Active Directory používá algoritmy adaptivní strojového učení a heuristik ke zjištění podezřelé akce, které souvisejí s vašimi uživatelskými účty. Každou zjištěnou podezřelé akce, které jsou uloženy v záznam nazvaný **riziková událost**.
 
+Existují dvě místa, kde můžete zkontrolovat rizikové události oznámené:
+
+ - **Generování sestav v Azure AD** – rizikové události jsou součástí zabezpečení Azure AD sestavy. Další informace najdete v tématu [zabezpečení Sestava ohrožených uživatelů](concept-user-at-risk.md) a [sestavy rizikových přihlášení zabezpečení](concept-risky-sign-ins.md).
+
+ - **Azure AD Identity Protection** – rizikové události jsou taky součástí vytváření sestav funkce [Azure Active Directory Identity Protection](../active-directory-identityprotection.md).
+    
 V současné době Azure Active Directory zjistí šest typy rizikových událostí:
 
 - [Uživatelé s uniklými přihlašovacími údaji](#leaked-credentials) 
@@ -35,18 +41,18 @@ V současné době Azure Active Directory zjistí šest typy rizikových událos
 - [Přihlášení z IP adres s podezřelou aktivitou](#sign-ins-from-ip-addresses-with-suspicious-activity) 
 - [Přihlášení z neznámých míst](#sign-in-from-unfamiliar-locations) 
 
-
 ![Riziková událost](./media/concept-risk-events/91.png)
 
-Podrobnější informace o získání zjištěné rizikové události se váže k předplatnému služby Azure AD. V edici Azure AD Premium P2 získáte nejpodrobnější informace o základní všechna nalezení. S edicí Azure AD Premium P1 detekcí, které nejsou pokryty všemi vaše licence se zobrazí jako rizikovou událost **přihlášení s dalšími riziky zjistil**.
+Podrobnější informace o získání zjištěné rizikové události se váže k předplatnému služby Azure AD. 
 
+* S **edice Azure AD Premium P2**, získáte nejpodrobnější informace o základní všechna nalezení. 
+* S **edice Azure AD Premium P1**, detekce, které nejsou pokryty všemi licence se zobrazí jako rizikovou událost **přihlášení s dalšími riziky zjistil**.
 
-Tento článek obsahuje vás podrobnější přehled o jaké rizikové události jsou, a jak je můžete využít k ochraně svých identit Azure AD.
-
+Při zjišťování rizikových událostí již představuje důležitou součástí ochrany identit, máte také možnost ručně řešení nebo implementovat automatické odpovědi prostřednictvím konfigurace zásad podmíněného přístupu. Další informace najdete v tématu [Azure Active Directory Identity Protection](../active-directory-identityprotection.md).
 
 ## <a name="risk-event-types"></a>Typy rizikových událostí
 
-Vlastnost typu události rizika je, že se vytvořil identifikátor podezřelé akce záznamu události rizika.
+**Rizikových událostí typu** vlastnost je identifikátor podezřelé akce se vytvořil záznam rizikové události.
 
 Průběžné investice Microsoftu do procesu zjišťování vést k:
 
@@ -55,19 +61,18 @@ Průběžné investice Microsoftu do procesu zjišťování vést k:
 
 ### <a name="leaked-credentials"></a>Uniklé přihlašovací údaje
 
-Když internetovým zločincům ohrozit platný hesla oprávněným uživatelům, pachatelů často sdílí své přihlašovací údaje. To se obvykle provádí účtování je veřejně na tmavě web nebo vložit lokalit nebo obchodování nebo prodej přihlašovací údaje na černém trhu. Microsoft úniku přihlašovacích údajů služby získá uživatelské jméno / heslo dvojice monitorování veřejné a tmavé webů a práce s:
+Když internetovým zločincům ohrozit platný hesla oprávněným uživatelům, ale často sdílet své přihlašovací údaje. To se obvykle provádí účtování je veřejně na tmavě web nebo vložit lokalit nebo obchodování nebo prodej přihlašovací údaje na černém trhu. Microsoft úniku přihlašovacích údajů služby získá uživatelské jméno / heslo dvojice monitorování veřejné a tmavé webů a práce s:
 
 - Výzkumní pracovníci
 - Vymáhání zákona
 - Zabezpečení týmů v Microsoftu
 - Jiných důvěryhodných zdrojů 
 
-Když služba získá uživatelské jméno / heslo dvojice, jsou porovnávána s aktuální platné přihlašovací údaje uživatelů AAD. Když se najde shoda, znamená to, že heslo uživatele došlo k napadení a *úniku přihlašovacích údajů riziková událost* se vytvoří.
+Když služba získá uživatelské jméno / heslo dvojice, jsou porovnávána s aktuální platné přihlašovací údaje uživatelů AAD. Když se najde shoda, znamená to, že heslo uživatele došlo k napadení a **úniku přihlašovacích údajů riziková událost** se vytvoří.
 
 ### <a name="sign-ins-from-anonymous-ip-addresses"></a>Přihlášení z anonymních IP adres
 
 Tento typ rizikové události identifikuje uživatele, kteří úspěšně přihlášení z IP adresy, která se identifikovala jako IP adresa anonymního proxy serveru. Tato proxy používají lidé, kteří mají skrýt IP adresu svého zařízení a může sloužit ke škodlivým činnostem.
-
 
 ### <a name="impossible-travel-to-atypical-locations"></a>Nemožná cesta do netypických míst
 
@@ -86,12 +91,11 @@ Identity Protection zjistí přihlášení z neznámých míst také pro základ
 Tento typ rizikové události identifikuje přihlášení z napadený malwarem, zařízení, která se ví, že aktivně komunikovat se serverem robota. To se určují podle korelace IP adresy zařízení uživatele s IP adresami, které byly v kontaktu s bot serveru. 
 
 ### <a name="sign-ins-from-ip-addresses-with-suspicious-activity"></a>Přihlášení z IP adres s podezřelou aktivitou
-Tento typ rizikové události identifikuje IP adresy, ze kterých vysoký počet neúspěšných pokusů o přihlášení se zjistily, několika uživatelským účtům během krátké doby času. Shoduje se vzorem provozu IP adres používaných útočníky a je silným indikátorem, že účty již jsou nebo se chystáte dojít k ohrožení bezpečnosti. Toto je algoritmu strojového učení, které ignoruje zřejmé "*false pozitivní*", jako jsou IP adresy, které se pravidelně používají jinými uživateli v organizaci.  Systém má období učení 14 dní, ve kterém se naučí chování přihlášení z nového uživatele a nového tenanta.
-
+Tento typ rizikové události identifikuje IP adresy, ze kterých vysoký počet neúspěšných pokusů o přihlášení se zjistily, několika uživatelským účtům během krátké doby času. Shoduje se vzorem provozu IP adres používaných útočníky a je silným indikátorem, že účty již jsou nebo se chystáte dojít k ohrožení bezpečnosti. Jde algoritmu strojového učení, které ignoruje zřejmé false-pozitivní výsledky, jako je například IP adresy, které se pravidelně používají jinými uživateli v organizaci.  Systém má období učení 14 dní, ve kterém se naučí chování přihlášení z nového uživatele a nového tenanta.
 
 ## <a name="detection-type"></a>Typ detekce
 
-Vlastnost typu zjišťování je indikátorem (v reálném čase nebo Offline) pro zjišťování časovém rámci rizikové události. V současné době většina rizikové události jsou rozpoznána offline v operaci následného zpracování rizikové události došlo.
+Vlastnost typu zjišťování je indikátorem (**v reálném čase** nebo **Offline**) pro zjišťování časovém rámci rizikové události. V současné době většina rizikové události jsou rozpoznána offline v operaci následného zpracování rizikové události došlo.
 
 Následující tabulka uvádí dobu potřebnou pro typ zjišťování se zobrazí v sestavě:
 
@@ -115,7 +119,7 @@ Pro typy rizikových událostí, které Azure Active Directory zjistí jsou tyto
 
 ## <a name="risk-level"></a>Úroveň rizika
 
-Vlastnost úrovně rizika rizikové události je indikátor (vysoká, střední nebo nízká) pro závažnost a spolehlivosti rizikové události. Tato vlastnost vám umožní určit prioritu akce, které je třeba provést. 
+Vlastnost úrovně rizika rizikové události je indikátor (**vysokou**, **střední**, nebo **nízká**) pro závažnost a spolehlivosti rizikové události. Tato vlastnost vám umožní určit prioritu akce, které je třeba provést. 
 
 Závažnost riziková událost představuje sílu signálu jako prediktorem identita ohrozit zabezpečení. Důvěra je indikátorem možnost počet falešně pozitivních výsledků. 
 
@@ -151,40 +155,19 @@ Neznámé umístění může poskytovat silné indikace, že se útočník použ
 
 ### <a name="sign-ins-from-infected-devices"></a>Přihlášení z nakažených zařízení
 
-Tato riziková událost identifikuje IP adresy, nikoli zařízením uživatele. Pokud jsou několik zařízení za jednu IP adresu pouze některé jsou dané sítě robota, přihlášení z jiných zařízení Moje aktivační události Tato událost zbytečně, což je důvod pro tuto rizikovou událost klasifikaci jako **nízká**.  
+Tato riziková událost identifikuje IP adresy, nikoli zařízením uživatele. Pokud jsou několik zařízení za jednu IP adresu pouze některé jsou dané síti robota, přihlášení z jiných zařízení Moje aktivační události Tato událost zbytečně, proto tuto rizikovou událost je klasifikován tak, **nízká**.  
 
-Doporučujeme kontaktovat uživatele a prohledávání všech jeho zařízeních. Je také možné, že je nakažená osobní zařízení uživatele, nebo jak bylo zmíněno dříve, že používal někdo nakažené zařízení ze stejné IP adresy jako uživatel. Nakažených zařízení jsou často infikované malwarem, který dosud nebyly určeny pomocí antivirového softwaru a může také označovat jako chybných uživatelských návyky, které může způsobit nakaženy zařízení.
+Doporučujeme kontaktovat uživatele a prohledávání všech jeho zařízeních. Je také možné, že je nakažená osobní zařízení uživatele nebo aby používal někdo nakažené zařízení ze stejné IP adresy jako uživatel. Nakažených zařízení jsou často infikované malwarem, který dosud nebyly určeny pomocí antivirového softwaru a může také znamenat žádné chybných uživatelských návyky, které může způsobit nakaženy zařízení.
 
 Další informace o tom, jak adresu napadení malwarem, najdete v článku [Malware Protection Center](https://go.microsoft.com/fwlink/?linkid=335773&clcid=0x409).
-
 
 ### <a name="sign-ins-from-ip-addresses-with-suspicious-activity"></a>Přihlášení z IP adres s podezřelou aktivitou
 
 Doporučujeme, abyste se obrátili uživatele k ověření, pokud jsou ve skutečnosti přihlášení z IP adresy, která byla označena jako podezřelá. Úroveň rizika pro tento typ události je "**střední**" protože několika zařízeními může být za stejnou IP adresu, zatímco jen některé mohou být za podezřelé aktivity. 
 
 
- 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Rizikové události jsou základem ochrany identit Azure AD. Azure AD můžete zjistit aktuálně šest rizikových událostí: 
-
-
-| Typ rizikové události | Úroveň rizika | Typ zjištění |
-| :-- | --- | --- |
-| [Uživatelé s uniklými přihlašovacími údaji](#leaked-credentials) | Vysoký | Offline |
-| [Přihlášení z anonymních IP adres](#sign-ins-from-anonymous-ip-addresses) | Střednědobé používání | V reálném čase |
-| [Nemožná cesta do netypických míst](#impossible-travel-to-atypical-locations) | Střednědobé používání | Offline |
-| [Přihlášení z neznámých míst](#sign-in-from-unfamiliar-locations) | Střednědobé používání | V reálném čase |
-| [Přihlášení z nakažených zařízení](#sign-ins-from-infected-devices) | Nízká | Offline |
-| [Přihlášení z IP adres s podezřelou aktivitou](#sign-ins-from-ip-addresses-with-suspicious-activity) | Střednědobé používání | Offline|
-
-Kde lze najít rizikové události, které byly zjištěny v prostředí?
-Existují dvě místa, kde můžete zkontrolovat rizikové události oznámené:
-
- - **Generování sestav v Azure AD** – rizikové události jsou součástí zabezpečení Azure AD sestavy. Další informace najdete v tématu [zabezpečení Sestava ohrožených uživatelů](concept-user-at-risk.md) a [sestavy rizikových přihlášení zabezpečení](concept-risky-sign-ins.md).
-
- - **Azure AD Identity Protection** – rizikové události jsou také součástí [Azure Active Directory Identity Protection od](../active-directory-identityprotection.md) funkce vytváření sestav.
-    
-
-Při zjišťování rizikových událostí již představuje důležitou součástí ochrany identit, máte také možnost ručně řešení nebo dokonce implementovat automatické odpovědi prostřednictvím konfigurace zásad podmíněného přístupu. Další informace najdete v tématu o [Azure Active Directory Identity Protection od](../active-directory-identityprotection.md).
- 
+* [Sestava zabezpečení ohrožení uživatelé](concept-user-at-risk.md)
+* [Sestavy rizikových přihlášení zabezpečení](concept-risky-sign-ins.md)
+* [Azure AD Identity Protection](../active-directory-identityprotection.md).

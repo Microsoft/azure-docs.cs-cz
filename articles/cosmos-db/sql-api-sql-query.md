@@ -1,5 +1,5 @@
 ---
-title: Dotazy SQL pro službu Azure Cosmos DB | Dokumentace Microsoftu
+title: Dotazy SQL ve službě Azure Cosmos DB | Dokumentace Microsoftu
 description: Další informace o syntaxi jazyka SQL, databázových koncepcí a dotazů SQL pro službu Azure Cosmos DB. SQL můžete použít jako dotazovací jazyk typu JSON ve službě Azure Cosmos DB.
 keywords: syntaxe SQL, příkaz jazyka sql, dotazů sql, json dotazovací jazyk, databázových koncepcí a dotazy sql, agregační funkce
 services: cosmos-db
@@ -10,27 +10,27 @@ ms.service: cosmos-db
 ms.component: cosmosdb-sql
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/10/2018
+ms.date: 11/02/2018
 ms.author: laviswa
-ms.openlocfilehash: 22b31e7df4e11f8f98877a8497b533203dcc26b3
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 8799371c911f3e120cb8654bf26fa933b17e4b3c
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51233299"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51623396"
 ---
-# <a name="query-azure-cosmos-db-data-with-sql-queries"></a>Dotazování na data služby Azure Cosmos DB pomocí dotazů SQL
+# <a name="sql-queries-in-azure-cosmos-db"></a>Dotazy SQL ve službě Azure Cosmos DB
 
-Microsoft Azure Cosmos DB podporuje dotazování dokumentů pomocí jazyka SQL (Structured Query Language) jako dotazovací jazyk typu JSON na účty rozhraní SQL API. Při navrhování dotazovací jazyk pro službu Azure Cosmos DB, jsou považovány za tyto dva cíle:
+Azure Cosmos DB podporuje dotazování pomocí jazyka SQL (Structured Query Language) jako dotazovací jazyk typu JSON v databázích SQL rozhraní API Cosmos. Při navrhování dotazovací jazyk pro rozhraní API Cosmos SQL databáze, se považuje za následující dva cíle:
 
-* Místo inventing nový dotazovací jazyk, provedli jsme služby Azure Cosmos DB pro podporu SQL, jeden z nejčastěji známé a Oblíbené dotazovací jazyky. Azure Cosmos DB SQL poskytuje formální programovací model pro bohaté dotazy na dokumenty JSON.  
+* Místo inventing nový dotazovací jazyk, Cosmos DB podporuje SQL, jeden z nejčastěji známé a Oblíbené dotazovací jazyky. Cosmos DB SQL poskytuje formální programovací model pro bohaté dotazy nad daty JSON.  
 
-* Azure Cosmos DB používá model programování v jazyce JavaScript jako základ pro dotazovací jazyk. Rozhraní SQL API je integrován do systému typů v jazyce JavaScript, vyhodnocení výrazu a volání funkce. Tento naopak poskytuje přirozený programovací model pro projekce relačních, hierarchických navigaci mezi dokumenty JSON, vlastní spojení, prostorových dotazů a volání uživatelem definované funkce (UDF) vytvořené zcela v JavaScriptu, kromě jiných funkcí. 
+* Cosmos DB používá model programování v jazyce JavaScript jako základ pro dotazovací jazyk. Rozhraní SQL API je integrován do systému typů v jazyce JavaScript, vyhodnocení výrazu a volání funkce. To poskytuje přirozený programovací model pro relační projekce, hierarchická navigace mezi dokumenty JSON, vlastní spojení, prostorových dotazů a volání uživatelem definované funkce (UDF) vytvořené zcela v JavaScriptu, kromě jiných funkcí.
 
-Tento článek vás provede Příklady dotazů SQL pomocí jednoduchého dokumentů JSON. Další informace o syntaxi jazyka SQL služby Azure Cosmos DB najdete v tématu [referenční příručka syntaxe SQL](sql-api-sql-query-reference.md) článku. 
+Tento článek vás provede vás provedou Příklady dotazů Cosmos DB SQL pomocí jednoduchého dokumentů JSON. Další informace o syntaxi jazyka Cosmos DB SQL najdete v tématu [referenční příručka syntaxe SQL](sql-api-sql-query-reference.md).
 
 ## <a id="GettingStarted"></a>Začínáme s příkazy jazyka SQL
-Vytvoříme dvě jednoduché dokumenty JSON a dotazovat data. Vezměte v úvahu dva dokumenty JSON o rodiny, vložte tyto dokumenty JSON do kolekce a následně dotazovat data. Tady máme jednoduchý JSON dokumentů pro rodinu a Wakefieldů rodiny, rodiče, podřízené položky (a jejich mazlíčků), adresu a informace o registraci. Dokument obsahuje řetězce, čísla, logické hodnoty, pole a vnořené vlastnosti. 
+Umožňuje vytvořit dva jednoduché dokumenty JSON popisující rodiny a psát dotazy proti těmto datům. Po vložení tyto dva dokumenty do kontejneru Cosmos, můžeme začít zadávat dotazy na data. Tady definujeme jednoduché dokumenty JSON rodin Andersen a Wakefieldů. Každý dokument obsahuje řetězce, čísla, logické hodnoty, pole a vnořené vlastnosti.
 
 **Dokument1**  
 
@@ -44,8 +44,8 @@ Vytvoříme dvě jednoduché dokumenty JSON a dotazovat data. Vezměte v úvahu 
   ],
   "children": [
      {
-         "firstName": "Henriette Thaulow", 
-         "gender": "female", 
+         "firstName": "Henriette Thaulow",
+         "gender": "female",
          "grade": 5,
          "pets": [{ "givenName": "Fluffy" }]
      }
@@ -89,9 +89,9 @@ Tady je druhý dokument s jeden malý rozdíl – `givenName` a `familyName` se 
 }
 ```
 
-Teď si vyzkoušíme několik dotazů na tato data pochopit některé z klíčových aspektů dotazovací jazyk SQL služby Azure Cosmos DB. 
+Teď si vyzkoušíme několik dotazů na tato data se dozvíte o některých klíčových aspektů dotazovací jazyk SQL služby Cosmos DB.
 
-**Query1**: například následující dotaz vrátí dokumenty, jejichž pole id odpovídá `AndersenFamily`. Protože se jedná `SELECT *`, je výstupem dotazu bude celý dokument JSON, další informace o syntaxi najdete v tématu [příkaz SELECT](sql-api-sql-query-reference.md#select-query):
+**Query1**: následující dotaz vrátí dokumenty, jejichž pole id odpovídá `AndersenFamily`. Protože se jedná `SELECT *`, je výstupem dotazu bude celý dokument JSON. Další informace o syntaxi dotazu najdete v tématu [příkaz SELECT](sql-api-sql-query-reference.md#select-query):
 
 ```sql
     SELECT * 
@@ -121,7 +121,7 @@ Teď si vyzkoušíme několik dotazů na tato data pochopit některé z klíčov
     }]
 ```
 
-**Dotaz2** : nyní vezměte si situaci, kdy budeme potřebovat opakovaně formátovat výstup JSON v odlišném tvaru. Tento dotaz projekty nový objekt JSON s dvěma vybraná pole jméno a Město, když na adresu město má stejný název jako stav. V takovém případě odpovídá "NY, USA".   
+**Dotaz2** : nyní Představte si případ, kdy budeme potřebovat opakovaně formátovat výstup JSON. Tento dotaz vrátí objekt JSON s dvěma vybraná pole, jméno a Město, pro dokumenty, ve kterých jsou identické Město a stát. V tomto případě "NY, USA" je shoda.
 
 ```sql
     SELECT {"Name":f.id, "City":f.address.city} AS Family 
@@ -159,15 +159,15 @@ Teď si vyzkoušíme několik dotazů na tato data pochopit některé z klíčov
     ]
 ```
 
-Několik aspektů dotazovací jazyk služby Cosmos DB provede příklady, které jste zatím viděli jsou následující:  
+Některé důležité aspekty dotazovacího jazyka Cosmos DB SQL provede příklady, které jste viděli, pokud:  
 
-* Protože rozhraní SQL API pracuje na hodnoty JSON, zabývá strom entit místo řádků a sloupců ve tvaru. Proto jazyk umožňuje odkazovat na uzly stromu v jakékoli libovolné hloubky, jako je třeba `Node1.Node2.Node3…..Nodem`, podobně jako relační databáze SQL odkazující na odkaz na dvě části `<table>.<column>`.   
+* Protože rozhraní SQL API pracuje na hodnoty JSON, zabývá strom entit místo řádků a sloupců ve tvaru. Proto jazyk umožňuje odkazovat na uzly stromu v jakékoli libovolné hloubky, jako je třeba `Node1.Node2.Node3…..Nodem`, podobně jako relační databáze SQL odkazující na odkaz na dvě části `<table>.<column>`.
 
-* Jazyk SQL pracuje s daty bez schématu. Systém typů, třeba navázat dynamicky. Stejný výraz může přinést různé typy na různé dokumenty. Výsledek dotazu je platnou hodnotu JSON, ale není zaručeno, že bude pevné schéma.  
+* Rozhraní SQL API pracuje s daty bez schématu. Systém typů, třeba navázat dynamicky. Stejný výraz mohou přinést různé typy při vyhodnocování na různé dokumenty. Výsledek dotazu je platnou hodnotu JSON, ale nemusí být konkrétní schématu.
 
-* Azure Cosmos DB podporuje pouze striktní dokumenty JSON. To znamená, že do systému typů a výrazy jsou omezené na řešil pouze typy JSON. Odkazovat [JSON specifikace](http://www.json.org/) další podrobnosti.  
+* Cosmos DB podporuje pouze striktní dokumenty JSON. To znamená, že do systému typů a výrazy jsou omezené na řešil pouze typy JSON. Odkazovat [JSON specifikace](http://www.json.org/) další podrobnosti.  
 
-* Kolekce Cosmos DB je kontejner dokumentů JSON bez schématu. Vztahy v datových entit v a mezi dokumenty v kolekci jsou implicitně zachycena členství ve skupině a ne primární klíč a cizí klíče relace. To je důležitý aspekt zmínku nedávným uvnitř dokumentu spojení popsané dále v tomto článku.
+* Cosmos kontejneru je kontejner dokumentů JSON bez schématu. Vztahy v datových entit v rámci a v dokumentech v kontejneru jsou implicitně zachycena členství ve skupině a ne primární klíč a cizí klíče relace. To je důležitý aspekt zmínku nedávným uvnitř dokumentu spojení popsané dále v tomto článku.
 
 ## <a id="SelectClause"></a>Select – klauzule
 
@@ -264,17 +264,19 @@ Podívejme se na roli `$1` tady. `SELECT` Klauzule potřebuje k vytvoření obje
 
 ## <a id="FromClause"></a>FROM – klauzule
 
-Z < from_specification > klauzule je nepovinný, pokud je zdroj filtrovaná nebo předpokládané později v dotazu. Další informace o syntaxi najdete v tématu [ze syntaxe](sql-api-sql-query-reference.md#bk_from_clause). Dotaz, jako jsou `SELECT * FROM Families` znamená, že je celou kolekci rodiny zdroji nad tím, které chcete získat výčet. Speciální identifikátor KOŘENOVÉ slouží k reprezentaci kolekce místo názvu kolekce. Následující seznam obsahuje pravidla, která vynucují každý dotaz:
+Z < from_specification > klauzule je nepovinný, pokud je zdroj filtrovaná nebo předpokládané později v dotazu. Další informace o syntaxi najdete v tématu [ze syntaxe](sql-api-sql-query-reference.md#bk_from_clause). Dotaz, jako jsou `SELECT * FROM Families` znamená, že celé řady kontejneru je zdroj nad tím, které chcete získat výčet. Speciální identifikátor KOŘENOVÉ slouží k reprezentaci kontejneru místo názvu kontejneru.
 
-* Kolekce lze použít alias, jako například `SELECT f.id FROM Families AS f` nebo jednoduše `SELECT f.id FROM Families f`. Tady `f` je ekvivalentem `Families`. `AS` optional – klíčové slovo na alias je identifikátor.  
+Následující seznam obsahuje pravidla, která vynucují každý dotaz:
 
-* Jednou alias nemůže být vázán na původní zdroj. Například `SELECT Families.id FROM Families f` je syntakticky neplatný, protože již nelze přeložit identifikátor "Rodiny".  
+* Kontejner může být například vytvořen alias, `SELECT f.id FROM Families AS f` nebo jednoduše `SELECT f.id FROM Families f`. Tady `f` je alias pro `Families`. `AS` optional – klíčové slovo na alias je identifikátor.  
+
+* Jednou alias nemůže být vázán na původní zdroj. Například `SELECT Families.id FROM Families f` je syntakticky neplatný, protože identifikátor "Rodiny" nelze přeložit po se alias.  
 
 * Všechny vlastnosti, které je potřeba na něj odkazovat musí být plně kvalifikovaný. Chybí splňuje striktní schéma tato velikost je vyžadována, aby všechny vazby, které nejednoznačný. Proto `SELECT id FROM Families f` je syntakticky neplatný, protože vlastnost `id` není vázán.
 
 ### <a name="get-subdocuments-using-from-clause"></a>Získání vnořených dokumentů pomocí klauzule FROM
 
-Zdroj může být také omezené na menší podmnožinu. Například k vytvoření výčtu pouze podstrom v jednotlivých dokumentech, subroot může pak můžou stát zdroji, jak je znázorněno v následujícím příkladu:
+Zdroj lze vybrat také být podmnožinou. Například výčet podstromy zdroji se dá nastavit jak je znázorněno v následujícím příkladu:
 
 **Dotaz**
 
@@ -316,7 +318,7 @@ Zdroj může být také omezené na menší podmnožinu. Například k vytvořen
     ]
 ```
 
-Při výše uvedeném příkladu používá pole jako zdroj, objekt může také sloužit jako zdroj, což je, jak je znázorněno v následujícím příkladu: k zařazení do výsledků dotazu se nepovažuje za jakékoli platnou hodnotu JSON (nedefinované), který najdete ve zdroji. Pokud nemáte některé rodiny `address.state` hodnotu, jsou vyloučeny ve výsledku dotazu.
+Při výše uvedeném příkladu používá pole jako zdroj, objekt může také použít jako zdroj, jak je znázorněno v následujícím příkladu. Pro zařazení do výsledků dotazu se považuje za jakékoli platnou hodnotu JSON (nedefinované), který najdete ve zdroji. Pokud nemáte některé řady `address.state` hodnotu, že jsou vyloučené z výsledku dotazu.
 
 **Dotaz**
 
@@ -335,7 +337,7 @@ Při výše uvedeném příkladu používá pole jako zdroj, objekt může také
 ```
 
 ## <a id="WhereClause"></a>Klauzule WHERE
-Klauzule WHERE (**`WHERE <filter_condition>`**) je volitelný. Určuje, že-li být zahrnuty jako součást výsledku musí splňovat tyto podmínky, která ve zdroji k dispozici dokumenty JSON. Jakýkoliv dokument JSON musí být zadané podmínky na "true", která se má zohlednit výsledek. Klauzule WHERE index vrstvy používají k určení absolutní nejmenší podmnožinu dokumentů zdroje, které můžou být součástí výsledku. Další informace o syntaxi najdete v tématu [syntaxe WHERE](sql-api-sql-query-reference.md#bk_where_clause).
+Klauzule WHERE (**`WHERE <filter_condition>`**) je volitelný. Určuje, že-li být zahrnuty jako součást výsledku musí splňovat tyto podmínky, která ve zdroji k dispozici dokumenty JSON. Jakýkoliv dokument JSON musí být zadané podmínky na "true", která se má zohlednit výsledek. Klauzule WHERE používá index vrstvy k určení nejmenší podmnožinu dokumentů zdroje, které můžou být součástí výsledku. Další informace o syntaxi najdete v tématu [syntaxe WHERE](sql-api-sql-query-reference.md#bk_where_clause).
 
 Následující dotaz požaduje dokumenty, které obsahují vlastnost name, jehož hodnota je `AndersenFamily`. Další dokument, který nemá vlastnost name, nebo pokud hodnota se neshoduje s `AndersenFamily` je vyloučený. 
 
@@ -366,10 +368,10 @@ Následující binární operátory jsou aktuálně podporovány a je možné v 
 |**Typ operátoru**  |**Hodnoty**  |
 |---------|---------|
 |Aritmetické operace    |   +,-,*,/,%   |
-|bitové operace  |   |, &, ^, <<>>,, >>> (výplně nulové posunutí doprava)      |
+|bitové operace  |   , &, ^, &lt; &lt;, &gt; &gt;, &gt; &gt; &gt; (výplně nulové posunutí doprava)      |
 |Logické   |   A, NEBO NE      |
 |Porovnání   |    =, !=, &lt;, &gt;, &lt;=, &gt;=, <>     |
-|Řetězec  |  || (zřetězení)       |
+|Řetězec  |  \|\| (zřetězení)       |
 
 Pojďme se podívat na některé dotazy pomocí binární operátory.
 
@@ -925,7 +927,7 @@ HORNÍ – klíčové slovo je možné omezit počet hodnot z dotazu. Při horn�
 NAHORU je možné s konstantní hodnotou (jak jsme ukázali výše) nebo s hodnotou proměnné použití parametrizovaných dotazů. Další podrobnosti najdete v tématu parametrizované dotazy níže.
 
 ## <a id="Aggregates"></a>Agregační funkce
-Můžete také provádět agregace v `SELECT` klauzuli. Agregační funkce provádí výpočet na sadu hodnot a vrátí jednu hodnotu. Například následující dotaz vrátí počet řady dokumentů v kolekci.
+Můžete také provádět agregace v `SELECT` klauzuli. Agregační funkce provádí výpočet na sadu hodnot a vrátí jednu hodnotu. Například následující dotaz vrátí počet řady dokumentů v rámci kontejneru.
 
 **Dotaz**
 
@@ -992,7 +994,7 @@ Agregace lze také provést přes výsledky iterace pole. Další informace najd
 >
 
 ## <a id="OrderByClause"></a>ORDER BY – klauzule
-Stejně jako v ANSI SQL, můžete zahrnout volitelné klauzuli Order By při dotazování. V klauzuli může obsahovat nepovinný argument ASC/DESC pro určení pořadí, ve kterém musí načíst výsledky.
+LikJust jako ANSI SQL, můžete zahrnout volitelné klauzuli Order By při dotazování. V klauzuli může obsahovat nepovinný argument ASC/DESC pro určení pořadí, ve kterém musí načíst výsledky.
 
 Tady je příklad dotaz, který načte skupin v pořadí podle názvu rezidenční město.
 
@@ -1085,7 +1087,7 @@ Novou konstrukci bylo přidáno prostřednictvím operace **v** – klíčové s
     ]
 ```
 
-Nyní Pojďme se podívat na jiný dotaz, který provádí iteraci podřízené položky v kolekci. Všimněte si rozdílů v poli výstup. V tomto příkladu rozdělí `children` a výsledky se sloučí do jediného pole.  
+Nyní Pojďme se podívat na jiný dotaz, který provádí iteraci podřízené prvky v kontejneru. Všimněte si rozdílů v poli výstup. V tomto příkladu rozdělí `children` a výsledky se sloučí do jediného pole.  
 
 **Dotaz**
 
@@ -1159,7 +1161,7 @@ Můžete také provést agregaci přes výsledek pole iterace. Například násl
 ### <a id="Joins"></a>Spojení
 Nutnost připojení u tabulek v relační databázi, je důležité. Je logický důsledkem do navrhování schémat normalizovaná. Naopak se zabývá rozhraní SQL API Nenormalizovaná datový model bez schémat dokumentů. To je proto logickým ekvivalentem metod a "spojení sama na sebe".
 
-Syntaxe, která podporuje jazyk je spojení JOIN < from_source2 > < from_source1 >... Připojte se k < from_sourceN >. Celkově, vrátí sadu **N**- řazených kolekcí členů (řazené kolekce členů s **N** hodnoty). Všechny řazené kolekce členů obsahuje hodnoty vytvořené ve všechny aliasy kolekce iterování celého jejich příslušných sad. Jinými slovy Toto je úplná smíšený produkt sad účastní spojení.
+Syntaxe, která podporuje jazyk je spojení JOIN < from_source2 > < from_source1 >... Připojte se k < from_sourceN >. Celkově, vrátí sadu **N**- řazených kolekcí členů (řazené kolekce členů s **N** hodnoty). Všechny řazené kolekce členů obsahuje hodnoty vytvořené ve všechny aliasy kontejneru iterování celého jejich příslušných sad. Jinými slovy Toto je úplná smíšený produkt sad účastní spojení.
 
 Následující příklady ukazují, jak funguje klauzule JOIN. V následujícím příkladu výsledkem je prázdný od smíšený produkt každého dokumentu ze zdroje a Prázdná množina je prázdný.
 
@@ -1321,17 +1323,17 @@ V následujícím příkladu je další filtr na `pet`. To nezahrnuje všechny z
 ```
 
 ## <a id="JavaScriptIntegration"></a>Integrace jazyka JavaScript
-Azure Cosmos DB poskytuje programovací model pro spouštění logiky aplikací JavaScript na základě přímo na kolekce z hlediska uložené procedury a triggery. To umožňuje u obou:
+Cosmos DB poskytuje programovací model pro spouštění logiky aplikací JavaScript na základě přímo na kontejnerech z hlediska uložené procedury a triggery. To umožňuje u obou:
 
-* Možnost pro vysoce výkonné transakční operace CRUD a dotazů na dokumenty v kolekci tím, že tato těsná integrace modulu runtime jazyka JavaScript přímo uvnitř databázového stroje. 
-* Přirozené modelování toku řízení, proměnné rozsahu a přiřazení a integrace primitivních elementů s transakcemi databáze zpracování výjimek. Další podrobnosti o podpoře služby Azure Cosmos DB pro integraci jazyka JavaScript naleznete v dokumentaci JavaScript programování na straně serveru.
+* Možnost pro vysoce výkonné transakční operace CRUD a dotazů na dokumenty v kontejneru tím, že tato těsná integrace modulu runtime jazyka JavaScript přímo uvnitř databázového stroje. 
+* Přirozené modelování toku řízení, proměnné rozsahu a přiřazení a integrace primitivních elementů s transakcemi databáze zpracování výjimek. Podrobné informace o podpoře služby Cosmos DB pro integrace v jazyce JavaScript naleznete v dokumentaci JavaScript programování na straně serveru.
 
 ### <a id="UserDefinedFunctions"></a>Uživatelem definované funkce (UDF)
 Spolu s typy již definované v tomto článku rozhraní SQL API poskytuje podporu pro uživateli definované funkce (UDF). Skalární funkce UDF jsou podporovány zejména, kde mohou vývojáři předat argumenty nula nebo více a vrácení zpět výsledku jeden argument. Každá z těchto argumentů se kontroluje u právě platné hodnoty JSON.  
 
 Syntaxe jazyka SQL je rozšířit o podporu vlastní logiky aplikace pomocí těchto uživatelsky definovaných funkcí. Uživatelem definovanými funkcemi lze registrovat pomocí rozhraní SQL API a klikněte na něho odkazovat jako součást příkazu jazyka SQL. Ve skutečnosti UDF jsou navrženy exquisitely mohly vyvolávat dotazy. Jako důsledkem této volby funkcí UDF nebudou mít přístup k objektu context, které mají jiné typy jazyka JavaScript (uložených procedur a aktivačních událostí). Protože provádějí se dotazy jen pro čtení, můžou běžet na primárním nebo na sekundárních replikách. Proto se funkce UDF jsou navrženy ke spouštění na sekundárních replikách na rozdíl od jiných typů jazyka JavaScript.
 
-Níže je příklad, jak lze registrovat systému souborů UDF v databázi Cosmos DB, konkrétně v rámci kolekce dokumentů.
+Níže je příklad, jak lze registrovat systému souborů UDF v databázi Cosmos, konkrétně v dokumentu kontejneru.
 
 ```javascript
        UserDefinedFunction regexMatchUdf = new UserDefinedFunction
@@ -1456,7 +1458,7 @@ Cosmos DB, důsledku toho, že databáze JSON, nakreslí parallels s operátory 
 
 V rozhraní SQL API na rozdíl od v tradiční SQL, typy hodnot jsou často není známé dokud hodnoty se načítají z databáze. Aby bylo možné efektivní provádění dotazů, většina operátory mají požadavky na striktní typy. 
 
-Rozhraní SQL API neprovádí implicitních převodů, na rozdíl od jazyka JavaScript. Například dotaz jako `SELECT * FROM Person p WHERE p.Age = 21` odpovídá dokumenty, které obsahují některou vlastnost stáří, jehož hodnota je 21. Další dokument, jejichž stáří vlastnosti odpovídají může být nekonečné varianty řetězců "21" nebo jiné, například "021", "21.0", "0021", "00021", nebude odpovídat atd. Toto je oproti jazyka JavaScript, kde jsou implicitně převedena na čísla řetězcové hodnoty (podle operátoru: ==). Tato volba je zásadní pro efektivní indexu odpovídající v rozhraní SQL API. 
+Rozhraní SQL API neprovádí implicitních převodů, na rozdíl od jazyka JavaScript. Například dotaz jako `SELECT * FROM Person p WHERE p.Age = 21` odpovídá dokumenty, které obsahují některou vlastnost stáří, jehož hodnota je 21. Další dokument, jejichž stáří vlastnosti odpovídají může být nekonečné varianty řetězců "21" nebo jiné, například "021", "21.0", "0021", "00021", nebude odpovídat atd. To je rozdíl od jazyka JavaScript, kde řetězcové hodnoty jsou implicitně přetypován na čísla (podle operátoru: ==). Tato volba je zásadní pro efektivní indexu odpovídající v rozhraní SQL API. 
 
 ## <a name="parameterized-sql-queries"></a>Parametrizované dotazy SQL
 Cosmos DB podporuje dotazy s parametry vyjádřit pomocí známé \@ zápis. Parametrizovaný dotaz SQL poskytuje robustní zpracování a uvozovací znaky z uživatelský vstup, brání náhodnou expozici dat prostřednictvím útoku prostřednictvím injektáže SQL. 
@@ -1806,7 +1808,7 @@ Prostorové funkce lze použít k provádění dotazů blízkosti prostorová da
     }]
 ```
 
-Další podrobnosti o podpoře geoprostorových ve službě Cosmos DB najdete v tématu [práce s Geoprostorová data ve službě Azure Cosmos DB](geospatial.md). Tím končí naše shrnutí prostorové funkce a syntaxe SQL pro službu Cosmos DB. Nyní Pojďme se podívat, jak funguje a jak komunikuje se službou syntaxe dotazu LINQ zaznamenali jsme dosud.
+Další podrobnosti o podpoře geoprostorových ve službě Cosmos DB najdete v tématu [práce s Geoprostorová data ve službě Cosmos DB](geospatial.md). Tím končí naše shrnutí prostorové funkce a syntaxe SQL pro službu Cosmos DB. Nyní Pojďme se podívat, jak funguje a jak komunikuje se službou syntaxe dotazu LINQ zaznamenali jsme dosud.
 
 ## <a id="Linq"></a>Technologie LINQ to SQL API
 LINQ je programovací model rozhraní .NET, který vyjadřuje výpočet jako dotazy na datové proudy objektů. Cosmos DB poskytuje knihovnu na straně klienta pro rozhraní s dotazy LINQ usnadněním převod mezi objekty JSON a .NET a mapování z určité podmnožiny dotazů LINQ dotazy Cosmos DB. 
@@ -2138,14 +2140,14 @@ V vnořeného dotazu se použije vnitřní dotaz na každý prvek vnější kole
 ## <a id="ExecutingSqlQueries"></a>Zpracování dotazů SQL
 Cosmos DB zveřejňuje prostředky přes rozhraní REST API, které je možné vyvolat v jakémkoli jazyce schopném zasílat požadavky HTTP/HTTPS. Cosmos DB dále nabízí programovací knihovny pro několik oblíbených jazyků, jako je .NET, Node.js, JavaScript a Python. Rozhraní REST API různé knihovny podporují a dotazování pomocí SQL. Sady .NET SDK podporuje kromě SQL dotazu LINQ.
 
-Následující příklady ukazují, jak vytvořit dotaz a odeslat ji proti účtu databáze Cosmos DB.
+Následující příklady ukazují, jak vytvořit dotaz a odeslat ji proti účtu Cosmos.
 
 ### <a id="RestAPI"></a>ROZHRANÍ REST API
-Cosmos DB nabízí otevřete programovací model RESTful přes HTTP. Účty databází lze zřizovat pomocí předplatného Azure. Model prostředků služby Cosmos DB obsahuje sadu prostředků v rámci účtu databáze, z nichž každý je adresovatelné logické a stabilní identifikátor URI. Sada prostředků se označuje jako kanál v tomto dokumentu. Databázový účet se skládá ze sady databází, každá obsahuje několik kolekcí, každý z které naopak obsahovat dokumenty, funkcí UDF a další typy prostředků.
+Cosmos DB nabízí otevřete programovací model RESTful přes HTTP. Účty cosmos lze zřizovat pomocí předplatného Azure. Model prostředků služby Cosmos DB obsahuje sadu prostředků v rámci účtu Cosmos, z nichž každý je adresovatelné logické a stabilní identifikátor URI. Sada prostředků se označuje jako kanál v tomto dokumentu. Účet Cosmos sestává ze sady databází, každá obsahuje několik kontejnerů, každý z které naopak obsahovat dokumenty, funkcí UDF a další typy prostředků.
 
 Základní interakce s těmito prostředky je model pomocí příkazů HTTP GET, PUT, POST a DELETE s jejich standardní interpretaci. Operace POST se používá pro vytvoření nového prostředku, pro provedení uložené procedury nebo pro zadání dotazu Cosmos DB. Dotazy jsou vždy jen pro čtení operací s žádným vedlejším účinkům.
 
-Následující příklady ukazují příspěvek pro dotaz rozhraní SQL API provedená oproti kolekce obsahující dva ukázkové dokumenty, že jsme si zatím. Dotaz obsahuje jednoduchý filtr na název vlastnosti JSON. Všimněte si, `x-ms-documentdb-isquery` a Content-Type: `application/query+json` hlavičky k označení, že operace je dotaz.
+Následující příklady ukazují příspěvek pro dotaz rozhraní SQL API provedená oproti kontejner obsahující dva ukázkové dokumenty, že jsme si zatím. Dotaz obsahuje jednoduchý filtr na název vlastnosti JSON. Všimněte si, `x-ms-documentdb-isquery` a Content-Type: `application/query+json` hlavičky k označení, že operace je dotaz.
 
 **Požadavek**
 
@@ -2271,11 +2273,11 @@ Druhý příklad ukazuje komplexnější dotaz, který vrátí více výsledků 
 
 Pokud výsledky dotazu se nemůže vejít na jedné stránce výsledky a potom vrátí token pro pokračování prostřednictvím rozhraní REST API `x-ms-continuation-token` hlavičky odpovědi. Klienti můžou stránkovat výsledky včetně záhlaví v dalších výsledků. Počet výsledků na stránku je možné řídit také prostřednictvím `x-ms-max-item-count` číslo hlavičky. Pokud zadaný dotaz obsahuje agregační funkci jako `COUNT`, pak na stránce dotazů může vracet částečně agregovaná hodnota na stránku s výsledky. Klienti musí provést druhé úrovně agregace přes tyto výsledky poslední výsledky, například, součet přes počty vrácené v jednotlivých stránek vrátit celkový počet.
 
-Chcete-li spravovat zásady konzistence dat pro dotazy, použijte `x-ms-consistency-level` záhlaví stejně jako všechny požadavky rozhraní REST API. Pro zajištění konzistence relace, je potřeba také echo nejnovější `x-ms-session-token` hlavička Cookie v dotazu žádosti. Zásady indexování kolekce poslal dotaz může také ovlivnit konzistence výsledky dotazu. S výchozí nastavení zásady indexování pro kolekce index je vždy aktuální pomocí obsahu dokumentu a výsledky dotazu odpovídá konzistence, které jste zvolili pro data. Pokud k opožděné je mírnější zásady indexování, dotazy mohou vracet zastaralé výsledky. Další informace najdete v tématu [Azure Cosmos DB úrovním][consistency-levels].
+Chcete-li spravovat zásady konzistence dat pro dotazy, použijte `x-ms-consistency-level` záhlaví stejně jako všechny požadavky rozhraní REST API. Pro zajištění konzistence relace, je potřeba také echo nejnovější `x-ms-session-token` hlavička Cookie v dotazu žádosti. Zásady indexování dotazované kontejner může také ovlivnit konzistence výsledky dotazu. S výchozí nastavení zásady indexování pro kontejnery index je vždy aktuální pomocí obsahu dokumentu a výsledky dotazu odpovídá konzistence, které jste zvolili pro data. Pokud k opožděné je mírnější zásady indexování, dotazy mohou vracet zastaralé výsledky. Další informace najdete v tématu [úrovně konzistence Cosmos DB][consistency-levels].
 
-Pokud nakonfigurované zásady indexování v kolekci nepodporuje zadaný dotaz, server služby Azure Cosmos DB vrátí 400 "Chybný požadavek". Ten vrací pro dotazy na rozsah proti cesty, které jsou nakonfigurované pro vyhledávání hodnoty hash (rovnost) a explicitně vyloučené z indexování cesty. `x-ms-documentdb-query-enable-scan` Může být zadáno záhlaví umožňující dotazu má provést kontrola při indexu není k dispozici.
+Pokud nakonfigurované zásady indexování v kontejneru nepodporuje zadaný dotaz, Cosmos DB server vrátí 400 "Chybný požadavek". Ten vrací pro dotazy na rozsah proti cesty, které jsou nakonfigurované pro vyhledávání hodnoty hash (rovnost) a explicitně vyloučené z indexování cesty. `x-ms-documentdb-query-enable-scan` Může být zadáno záhlaví umožňující dotazu má provést kontrola při indexu není k dispozici.
 
-Můžete získat podrobné metriky spouštění dotazů nastavením `x-ms-documentdb-populatequerymetrics` záhlaví `True`. Další informace najdete v tématu [metriky dotaz SQL pro službu Azure Cosmos DB](sql-api-sql-query-metrics.md).
+Můžete získat podrobné metriky spouštění dotazů nastavením `x-ms-documentdb-populatequerymetrics` záhlaví `True`. Další informace najdete v tématu [metriky dotaz SQL pro službu Cosmos DB](sql-api-sql-query-metrics.md).
 
 ### <a id="DotNetSdk"></a>SADY SDK JAZYKA C# (.NET)
 Sady .NET SDK podporuje LINQ a SQL dotazování. Následující příklad ukazuje, jak provádět jednoduché filtr dotazu zavedené dříve v tomto dokumentu.
@@ -2364,12 +2366,12 @@ Další příklad ukazuje spojení vyjádřen prostřednictvím operátor Select
 
 .NET client automaticky Iteruje přes všechny stránky výsledků dotazu v blocích foreach, jak je znázorněno výše. Možnosti dotazu představíme v části rozhraní REST API jsou dostupné v pomocí sady .NET SDK `FeedOptions` a `FeedResponse` třídy v metodě CreateDocumentQuery. Počet stránek se dá řídit pomocí `MaxItemCount` nastavení. 
 
-Můžete také explicitně kontrolovat stránkování tak, že vytvoříte `IDocumentQueryable` pomocí `IQueryable` objekt, potom načtením` ResponseContinuationToken` hodnoty a jejich předávání zpátky jako `RequestContinuationToken` v `FeedOptions`. `EnableScanInQuery` je možné nastavit pro povolení vyhledávání, když dotaz nemůže být podporována nakonfigurované zásady indexování. Používejte u dělených kolekcí, můžete použít `PartitionKey` ke spuštění dotazu jediného oddílu (v případě, že Cosmos DB můžete automaticky extrahovat to z textu dotazu), a `EnableCrossPartitionQuery` ke spouštění dotazů, které může být nutné spustit proti více oddílů. 
+Můžete také explicitně kontrolovat stránkování tak, že vytvoříte `IDocumentQueryable` pomocí `IQueryable` objekt, potom načtením` ResponseContinuationToken` hodnoty a jejich předávání zpátky jako `RequestContinuationToken` v `FeedOptions`. `EnableScanInQuery` je možné nastavit pro povolení vyhledávání, když dotaz nemůže být podporována nakonfigurované zásady indexování. Pro dělené kontejnerů, můžete použít `PartitionKey` ke spuštění dotazu jediného oddílu (v případě, že Cosmos DB můžete automaticky extrahovat to z textu dotazu), a `EnableCrossPartitionQuery` ke spouštění dotazů, které může být nutné spustit proti více oddílů. 
 
-Odkazovat na [ukázek Azure Cosmos DB .NET](https://github.com/Azure/azure-documentdb-net) pro další ukázky obsahující dotazy. 
+Odkazovat na [ukázky Cosmos DB .NET](https://github.com/Azure/azure-documentdb-net) pro další ukázky obsahující dotazy. 
 
 ### <a id="JavaScriptServerSideApi"></a>Rozhraní API pro JavaScript na straně serveru
-Cosmos DB poskytuje programovací model pro spouštění logiky aplikací JavaScript na základě přímo na kolekce pomocí uložené procedury a triggery. Logiky JavaScript zaregistrované na úrovni kolekce pak můžou provádět databázové operace operací s dokumenty kolekci. Tyto operace jsou zabaleny v okolí transakce ACID.
+Cosmos DB poskytuje programovací model pro spouštění logiky aplikací JavaScript na základě přímo na kontejnery pomocí uložené procedury a triggery. Logiky JavaScript zaregistrovaných na úrovni kontejneru pak můžou provádět databázové operace operací s dokumenty daném kontejneru. Tyto operace jsou zabaleny v okolí transakce ACID.
 
 Následující příklad ukazuje způsob použití queryDocuments v rozhraní API jazyka JavaScript serveru dotazy z vnitřního uložených procedur a aktivačních událostí.
 

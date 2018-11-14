@@ -12,21 +12,21 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/26/2017
+ms.date: 11/13/2018
 ms.author: barbkess
 ms.reviewer: asmalser
-ms.openlocfilehash: 95d2f65e99b37b38f99ec5a750d74828661fe7ee
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 13ce1a7c9008a7893892e5d7e6b67a243c381c9f
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44349139"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51622002"
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>Správa uživatelského účtu zřizování pro podnikové aplikace na webu Azure Portal
-Tento článek popisuje způsob použití [webu Azure portal](https://portal.azure.com) ke správě automatické účet zřizování uživatelů pro aplikace, které jej podporují, zejména těch, které jsou přidané z "doporučené" kategorie ajehorušení[ Galerie aplikací Azure Active Directory](what-is-single-sign-on.md#get-started-with-the-azure-ad-application-gallery). Další informace o zřizování automatické uživatelských účtů a jak to funguje, najdete v článku [automatizace zřizování uživatelů a jeho rušení pro aplikace SaaS ve službě Azure Active Directory](user-provisioning.md).
+Tento článek popisuje způsob použití [webu Azure portal](https://portal.azure.com) ke správě automatické účet zřizování uživatelů pro aplikace, které se na ně a jeho rušení. Další informace o zřizování automatické uživatelských účtů a jak to funguje, najdete v článku [automatizace zřizování uživatelů a jeho rušení pro aplikace SaaS ve službě Azure Active Directory](user-provisioning.md).
 
 ## <a name="finding-your-apps-in-the-portal"></a>Vyhledání aplikace na portálu
-Všechny aplikace, které jsou nakonfigurované pro jednotné přihlašování v adresáři, správcem adresáře pomocí [Galerie aplikací Azure Active Directory](what-is-single-sign-on.md#get-started-with-the-azure-ad-application-gallery), můžete zobrazit a spravovat [webu Azure portal](https://portal.azure.com). Aplikace lze nalézt v **všechny služby** &gt; **podnikové aplikace** části portálu. Podnikové aplikace jsou aplikace, které se nasazují a používané ve vaší organizaci.
+Všechny aplikace, které jsou nakonfigurované pro jednotné přihlašování v adresáři jde prohlížet a spravovat [webu Azure portal](https://portal.azure.com). Aplikace lze nalézt v **všechny služby** &gt; **podnikové aplikace** části portálu. Podnikové aplikace jsou aplikace, které se nasazují a používané ve vaší organizaci.
 
 ![Podokno podnikových aplikací](./media/configure-automatic-user-provisioning-portal/enterprise-apps-pane.png)
 
@@ -77,7 +77,5 @@ Tato část obsahuje další podrobnosti o operaci služby zřizování, včetn�
 
 Jsou uvedeny odkazy na **sestavu aktivit zřizování** , který poskytuje protokol všichni uživatelé a skupiny, vytvoření, aktualizace a odebrání mezi Azure AD a cílovou aplikaci a **zřizování zprávu o chybách** , který obsahuje další podrobné chybové zprávy pro uživatele a skupinu objektů, které se nepodařilo přečíst, vytvořit, aktualizovat ani odebrat. 
 
-## <a name="feedback"></a>Váš názor
 
-Nechte prosím už zpětnou vazbu! Publikovat vaše názory a návrhy pro zlepšení **portál pro správu** část naší [fóru pro zpětnou vazbu](https://feedback.azure.com/forums/169401-azure-active-directory/category/162510-admin-portal).  Technický tým je nadšený, vytváření nových co skvělého každý den a používat vaše pokyny na obrazec a definujte, co chcete sestavit jako další.
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/27/2017
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: 6a197cf5667e1668b2007a5f552b813cb8ed68d3
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: caa1b4b3bf1f9b8fb1a34bd58dde04f13fbc6c88
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50957824"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51614562"
 ---
 # <a name="get-started-with-roles-permissions-and-security-with-azure-monitor"></a>Začínáme s rolemi, oprávnění a zabezpečení prostřednictvím služby Azure Monitor
 Mnoho týmů potřebuje pro výhradně regulovat přístup k monitorování data a nastavení. Například pokud jste členy týmu, kteří pracují výhradně na monitorování (techniky podpory, technikům devops) nebo pokud používáte poskytovatel spravované služby, můžete jim udělit přístup k datům monitorování pouze při omezení jejich schopnost vytvářet, upravovat, nebo Odstraňte prostředky. Tento článek ukazuje, jak rychle použít předdefinované role RBAC monitorování na uživatele v Azure nebo vytvářet vlastní vlastní role pro uživatele, který potřebuje monitorování omezená oprávnění. Pak popisuje aspekty zabezpečení pro vaše prostředky související s Azure Monitor a jak můžete omezit přístup k datům, které obsahují.
@@ -25,7 +25,7 @@ Azure Monitor předdefinované role jsou účelem je pomoci omezit přístup k p
 Lidem přiřadit role Čtenář monitorování můžete zobrazit všechna data monitorování v rámci předplatného, ale nelze upravit prostředek nebo upravit nastavení související s monitorování prostředků. Tato role je vhodný pro uživatele v organizaci, jako je například podpora nebo operace technici, kteří potřebují mít možnost:
 
 * Zobrazit řídicí panely monitorování na portálu a vytvořit svoje vlastní privátní monitorování řídicí panely.
-* Zobrazit upozornění pravidel definovaných v [Azure Alerts](monitoring-overview-unified-alerts.md)
+* Zobrazit upozornění pravidel definovaných v [Azure Alerts](monitoring-overview-alerts.md)
 * Dotaz pro používání metrik [REST API služby Azure Monitor](https://msdn.microsoft.com/library/azure/dn931930.aspx), [rutin prostředí PowerShell](insights-powershell-samples.md), nebo [– multiplatformního rozhraní příkazového řádku](insights-cli-samples.md).
 * Dotaz protokolu aktivit pomocí portálu, rozhraní REST API služby Azure Monitor, rutin Powershellu nebo CLI pro různé platformy.
 * Zobrazení [nastavení diagnostiky](monitoring-overview-of-diagnostic-logs.md#diagnostic-settings) pro prostředek.
@@ -51,7 +51,7 @@ Uživatelé se přiřadila role Přispěvatel monitorování můžete zobrazit v
 * Publikujte jako sdílený řídicí panel monitorování řídicí panely.
 * Nastavte [nastavení diagnostiky](monitoring-overview-of-diagnostic-logs.md#diagnostic-settings) pro resource.*
 * Nastavte [profil protokolu](monitoring-overview-activity-logs.md#export-the-activity-log-with-a-log-profile) pro subscription.*
-* Nastavení prostřednictvím pravidel upozornění aktivity a [Azure Alerts](monitoring-overview-unified-alerts.md).
+* Nastavení prostřednictvím pravidel upozornění aktivity a [Azure Alerts](monitoring-overview-alerts.md).
 * Vytvořte webové testy Application Insights a komponenty.
 * Sdílené klíče pracovního prostoru Log Analytics seznamu.
 * Povolí nebo zakáže sad intelligence Pack Log Analytics.

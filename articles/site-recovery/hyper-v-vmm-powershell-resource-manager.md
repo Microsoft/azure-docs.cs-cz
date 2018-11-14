@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: sutalasi
-ms.openlocfilehash: 6ade1d584fad05e33a72a0ff5099378a9cf7f29f
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 8e1494594546c432123b8b1b98d646e8637eea99
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50214575"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51622835"
 ---
 # <a name="set-up-disaster-recovery-of-hyper-v-vms-to-a-secondary-site-by-using-powershell-resource-manager"></a>Nastavení zotavení po havárii virtuálních počítačů Hyper-V do sekundární lokality pomocí prostředí PowerShell (Resource Manager)
 
@@ -21,7 +21,7 @@ Tento článek popisuje, jak automatizovat kroky pro replikaci virtuálních po�
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Zkontrolujte [komponent a architektury scénáře](hyper-v-vmm-architecture.md).
+- Prostudujte si [architekturu a komponenty scénáře](hyper-v-vmm-architecture.md).
 - Zkontrolujte [požadavky na podporu](site-recovery-support-matrix-to-sec-site.md) pro všechny komponenty.
 - Ujistěte se, že servery Virtual Machine Manager a hostitelů Hyper-V souladu s [požadavky na podporu](site-recovery-support-matrix-to-sec-site.md).
 - Zkontrolujte, jestli virtuální počítače, které chcete replikovat v souladu s [počítač podporu replikovaných](site-recovery-support-matrix-to-sec-site.md).
@@ -29,20 +29,20 @@ Tento článek popisuje, jak automatizovat kroky pro replikaci virtuálních po�
 
 ## <a name="prepare-for-network-mapping"></a>Příprava mapování sítě
 
-[Mapování sítě](hyper-v-vmm-network-mapping.md) mapování mezi místní sítí virtuálních počítačů Virtual Machine Manager v zdrojovým a cílovým cloudem. Mapování provede následující akce:
+[Mapování sítě](hyper-v-vmm-network-mapping.md) mapování mezi místní sítí virtuálních počítačů Virtual Machine Manager v zdrojovým a cílovým cloudem. Mapování provádí následující:
 
-- Připojí virtuální počítače do příslušné cílové sítě virtuálních počítačů po převzetí služeb při selhání. 
-- Virtuální počítače repliky optimálně umístí na hostitelské servery Hyper-V cílové. 
+- Po převzetí služeb při selhání připojí virtuální počítače k odpovídajícím cílovým sítím virtuálních počítačů. 
+- Optimálně umístí repliky virtuálních počítačů na cílové hostitelské servery Hyper-V. 
 - Pokud nenakonfigurujete mapování sítě, virtuální počítače replik nebude připojen k síti virtuálních počítačů po převzetí služeb při selhání.
 
 Příprava Virtual Machine Manager následujícím způsobem:
 
 * Ujistěte se, že máte [logických sítí Virtual Machine Manager](https://docs.microsoft.com/system-center/vmm/network-logical) ve zdrojové i cílové servery Virtual Machine Manager:
 
-    - Přidružený zdrojový cloud, ve kterém se nachází hostitelé Hyper-V by měl být logická síť na zdrojovém serveru.
-    - Přidružený cílový cloud by měl být logická síť na cílovém serveru.
-* Ujistěte se, že máte [sítě virtuálních počítačů](https://docs.microsoft.com/system-center/vmm/network-virtual) ve zdrojové i cílové servery Virtual Machine Manager. Sítě virtuálních počítačů musí být propojena na logickou síť v jednotlivých oblastech.
-* Propojení virtuálních počítačů na hostitelích Hyper-V zdrojového ke zdrojové síti virtuálních počítačů. 
+    - Logická síť na zdrojovém serveru musí být přidružená ke zdrojovému cloudu, ve kterém se nacházejí hostitelé Hyper-V.
+    - Logická síť na cílovém serveru musí být přidružená k cílovému cloudu.
+* Ujistěte se, že máte [sítě virtuálních počítačů](https://docs.microsoft.com/system-center/vmm/network-virtual) ve zdrojové i cílové servery Virtual Machine Manager. Sítě virtuálních počítačů musí být v obou umístěních propojené s logickou sítí.
+* Připojte virtuální počítače na zdrojových hostitelích Hyper-V ke zdrojové síti virtuálních počítačů. 
 
 ## <a name="prepare-for-powershell"></a>Příprava pro prostředí PowerShell
 
@@ -73,7 +73,7 @@ Ujistěte se, že máte Azure PowerShell, jste připravení začít:
         New-AzureRmResourceGroup -Name #ResourceGroupName -Location #location
 2. Vytvořte nový trezor služby Recovery Services. Uložte objekt trezoru v proměnné pro pozdější použití. 
 
-        $vault = New-AzureRmRecoveryServicesVault -Name #vaultname -ResouceGroupName #ResourceGroupName -Location #location
+        $vault = New-AzureRmRecoveryServicesVault -Name #vaultname -ResourceGroupName #ResourceGroupName -Location #location
    
     Po vytvoření pomocí rutiny Get-AzureRMRecoveryServicesVault můžete pak získat objekt trezoru.
 

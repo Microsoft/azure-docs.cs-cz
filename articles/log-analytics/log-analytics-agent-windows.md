@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/06/2018
+ms.date: 11/13/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: a16230b6f51f0ce93f4a9bf53591abbcd6b4bd3b
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 4e99656319f543fb40d8509cb4ae9e1c25cfc75b
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51283678"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51622478"
 ---
 # <a name="connect-windows-computers-to-the-log-analytics-service-in-azure"></a>Připojení počítačů s Windows ke službě Log Analytics v Azure
 
@@ -35,7 +35,7 @@ Může být agent nainstalovaný pomocí jedné z následujících metod. Větš
 * Skript prostředí PowerShell.
 * Šablona Resource Manageru pro virtuální počítače s Windows v místním ve službě Azure Stack.  
 
-Abyste lépe porozuměli podporované konfiguraci, přečtěte si o [podporovaných operačních systémech Windows](log-analytics-concept-hybrid.md#supported-windows-operating-systems) a [konfiguraci síťové brány firewall](log-analytics-concept-hybrid.md#network-firewall-requirements).
+Abyste lépe porozuměli podporované konfiguraci, přečtěte si o [podporovaných operačních systémech Windows](log-analytics-agent-overview.md#supported-windows-operating-systems) a [konfiguraci síťové brány firewall](log-analytics-agent-overview.md#network-firewall-requirements).
 
 ## <a name="obtain-workspace-id-and-key"></a>Získání ID a klíče pracovního prostoru
 Před instalací agenta Microsoft Monitoring Agent pro Windows potřebujete ID a klíč vašeho pracovního prostoru Log Analytics.  Tyto informace jsou nezbytné při instalaci z každé metody instalace ke správné konfiguraci agenta a zajistěte, aby že mohla úspěšně komunikovat s Log Analytics v Azure komerční a cloud pro státní správu USA.  

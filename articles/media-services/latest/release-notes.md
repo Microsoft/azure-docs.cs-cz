@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 10/22/2018
+ms.date: 11/09/2018
 ms.author: juliako
-ms.openlocfilehash: db68f979239a5783338d99360209ae231a75c936
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 70a3de35f6fd942bca5355db3a7c6b57aec6adbc
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945031"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51613932"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure Media Services v3 poznámky k verzi 
 
@@ -27,6 +27,54 @@ Abyste mohli používat aktuální pomocí nejnovější vývoj, tento článek 
 * Opravy chyb
 * Zastaralé funkce
 * Plány pro změny
+
+## <a name="november-2018"></a>. Listopadu 2018
+
+Modul CLI 2.0 je nyní k dispozici pro [všeobecné dostupnosti služby Azure Media Services v3](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest) – v 2.0.50.
+
+### <a name="new-commands"></a>Nové příkazy
+
+- [AZ jeden účet ams](https://docs.microsoft.com/cli/azure/ams/account?view=azure-cli-latest)
+- [účet ams az-filtru](https://docs.microsoft.com/cli/azure/ams/account-filter?view=azure-cli-latest)
+- [AZ ams asset](https://docs.microsoft.com/cli/azure/ams/asset?view=azure-cli-latest)
+- [asset ams az-filtru](https://docs.microsoft.com/cli/azure/ams/asset-filter?view=azure-cli-latest)
+- [AZ ams obsah key-policy](https://docs.microsoft.com/cli/azure/ams/content-key-policy?view=azure-cli-latest)
+- [Úloha az ams](https://docs.microsoft.com/cli/azure/ams/job?view=azure-cli-latest)
+- [živá ams az – událost](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest)
+- [ams az live-output](https://docs.microsoft.com/cli/azure/ams/live-output?view=azure-cli-latest)
+- [streamování ams az-endpoint](https://docs.microsoft.com/cli/azure/ams/streaming-endpoint?view=azure-cli-latest)
+- [streamování ams az-lokátoru](https://docs.microsoft.com/cli/azure/ams/streaming-locator?view=azure-cli-latest)
+- [AZ ams account naposledy použité položky](https://docs.microsoft.com/cli/azure/ams/account/mru?view=azure-cli-latest) – umožňuje spravovat rezervované jednotky médií
+
+### <a name="new-features-and-breaking-changes"></a>Nové funkce a změny způsobující chyby
+
+#### <a name="asset-commands"></a>Příkazy Asset
+
+- ```--storage-account``` a ```--container``` argumenty přidán.
+- Výchozí hodnoty pro oprávnění (čtení) a čas vypršení platnosti (Now + 23h) v ```az ams asset get-sas-url``` příkazu přidaného.
+
+#### <a name="job-commands"></a>Příkazy úlohy
+
+- ```--correlation-data``` a ```--label``` Přidat argumenty
+- ```--output-asset-names``` přejmenovat na ```--output-assets```. Nyní přijímá místo oddělený seznam prostředků v "assetName = label" formátu. Prostředek bez popisku je možné odeslat takto: "assetName =".
+
+#### <a name="streaming-locator-commands"></a>Příkazy Lokátor streamování
+
+- ```az ams streaming locator``` základní příkaz nahradí ```az ams streaming-locator```.
+- ```--streaming-locator-id``` a ```--alternative-media-id support``` argumenty přidán.
+- ```--content-keys argument``` argument aktualizovat.
+- ```--content-policy-name``` přejmenovat na ```--content-key-policy-name```.
+
+#### <a name="streaming-policy-commands"></a>Streamování příkazy zásad
+
+- ```az ams streaming policy``` základní příkaz nahradí ```az ams streaming-policy```.
+- Podpora šifrování parametry v ```az ams streaming-policy create``` přidán.
+
+#### <a name="transform-commands"></a>Transformovat
+
+- ```--preset-names``` argument nahrazena ```--preset```. Nyní lze nastavit pouze 1 výstup/přednastavení najednou (abyste mohli přidat další musíte spustit ```az ams transform output add```). Také můžete nastavit vlastní StandardEncoderPreset předáním cesty do vaší vlastní formátu JSON.
+- ```az ams transform output remove``` můžete provést předáním výstup index odebrat.
+- ```--relative-priority, --on-error, --audio-language and --insights-to-extract``` argumenty přidá ```az ams transform create``` a ```az ams transform output add``` příkazy.
 
 ## <a name="october-2018---ga"></a>. Října 2018 – GA
 
@@ -120,5 +168,4 @@ Následující funkce jsou k dispozici v rozhraní .net SDK:
 
 ## <a name="next-steps"></a>Další postup
 
-> [!div class="nextstepaction"]
-> [Přehled](media-services-overview.md)
+[Přehled](media-services-overview.md)

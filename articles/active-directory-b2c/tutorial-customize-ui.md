@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/30/2018
+ms.date: 11/12/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 9c206ac7a13ea222a01cac78c447c0764f753517
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: ee6d7735a2983f642eff82a7dabe036af100e60e
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50633788"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51622665"
 ---
 # <a name="tutorial-customize-the-user-interface-of-your-applications-in-azure-active-directory-b2c"></a>Kurz: Přizpůsobení uživatelského rozhraní aplikací v Azure Active Directory B2C
 
@@ -64,9 +64,11 @@ I když můžete ukládat soubory v mnoha směrech pro účely tohoto kurzu, jso
  Azure AD B2C kód v prohlížeči používá moderní a standardní přístup k načtení vlastního obsahu z adresy URL, který zadáte v zásadách. Prostředků mezi zdroji (CORS) pro sdílení obsahu s omezeným přístupem prostředků umožňuje na webové stránce vyžadované z jiných domén.
 
 1. V nabídce vyberte **CORS**.
-2. Pro **povolené zdroje**, **povolené hlavičky**, a **zveřejněné hlavičky**, zadejte `your-tenant-name.b2clogin.com`. Nahraďte `your-tenant-name` s názvem vašeho tenanta Azure AD B2C. Například, `fabrikam.b2clogin.com`.
-3. Pro **povolených operací**, vyberte oba `GET` a `OPTIONS`.
-4. Pro **maximální stáří**, zadejte 200.
+2. Pro **povolené zdroje**, zadejte `your-tenant-name.b2clogin.com`. Nahraďte `your-tenant-name` s názvem vašeho tenanta Azure AD B2C. Například, `fabrikam.b2clogin.com`.
+3. Pro **povolené metody**, vyberte oba `GET` a `OPTIONS`.
+4. Pro **povolené hlavičky**, zadejte hvězdičku (*).
+5. Pro **zveřejněné hlavičky**, zadejte hvězdičku (*).
+6. Pro **maximální stáří**, zadejte 200.
 
     ![Povolení CORS](./media/tutorial-customize-ui/enable-cors.png)
 

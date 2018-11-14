@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/19/2018
 ms.author: rafats
-ms.openlocfilehash: cfd1160d1592c03eea94e3c4d04fdc5754eca671
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: ed97a2c31897d1e5e61421ea489a35af377f4f37
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42060795"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51621441"
 ---
 # <a name="securing-access-to-azure-cosmos-db-data"></a>Zabezpečení přístupu k datům služby Azure Cosmos DB
 Tento článek obsahuje základní informace o zabezpečení přístupu k datům uloženým v [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/).
@@ -40,7 +40,7 @@ Každý účet se skládá ze dvou hlavních klíčů: primární klíč a sekun
 
 Kromě dva hlavní klíče pro účet služby Cosmos DB jsou k dispozici dva klíče jen pro čtení. Tyto klíče jen pro čtení povolí jenom operace čtení pro účet. Klíče jen pro čtení se neposkytuje přístup ke čtení zdrojů oprávnění.
 
-Jen pro čtení primární, sekundární, a je možné načíst hlavní klíče pro čtení i zápis a znovu vygenerován pomocí webu Azure portal. Pokyny najdete v tématu [zobrazení, kopírování a obnovení přístupových klíčů](manage-account.md#keys).
+Jen pro čtení primární, sekundární, a je možné načíst hlavní klíče pro čtení i zápis a znovu vygenerován pomocí webu Azure portal. Pokyny najdete v tématu [zobrazení, kopírování a obnovení přístupových klíčů](manage-with-cli.md#regenerate-account-key).
 
 ![Řízení přístupu (IAM) na webu Azure Portal – ukázka zabezpečení databáze typu NoSQL](./media/secure-access-to-data/nosql-database-security-master-key-portal.png)
 
@@ -196,5 +196,4 @@ Azure Cosmos DB umožňuje hledat, vybrat, upravit a odstranit všechny osobní 
 
 ## <a name="next-steps"></a>Další postup
 * Další informace o zabezpečení databáze Cosmos DB najdete v tématu [Cosmos DB: databáze zabezpečení](database-security.md).
-* Další informace o správě klíče hlavní a jen pro čtení, naleznete v tématu [jak spravovat účet služby Azure Cosmos DB](manage-account.md#keys).
 * Zjistěte, jak vytvořit službu Azure Cosmos DB autorizačních tokenech, najdete v článku [řízení přístupu na prostředky Azure Cosmos DB](https://docs.microsoft.com/rest/api/cosmos-db/access-control-on-cosmosdb-resources).

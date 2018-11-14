@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/11/2018
+ms.date: 11/12/2018
 ms.author: barbkess
 ms.reviewer: asmalser,luleon
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fc7510fdc635de03ac4dd4f64118bc5be040e969
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 29a2be1735561d31f934f1353a336b5e4d198227
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44719405"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51622189"
 ---
 # <a name="configure-single-sign-on-to-applications-that-are-not-in-the-azure-active-directory-application-gallery"></a>Konfigurace jednotného přihlašování k aplikacím, které nejsou v galerii aplikací Azure Active Directory
 
@@ -31,9 +31,9 @@ Galerie aplikací Azure Active Directory poskytuje seznam aplikací, které jsou
 Zákazníci s [Azure Active Directory Premium](../fundamentals/active-directory-whatis.md) licenci získáte také tyto další funkce:
 
 * Samoobslužná integrace každou aplikaci, která podporuje zprostředkovatelů identity SAML 2.0 (iniciovaného Zprostředkovatelem přihlašování nebo zahájené pomocí IdP)
-* Samoobslužná integrace webové aplikace, který je založený na jazyce HTML přihlašovací stránky pomocí [jednotného přihlašování pomocí hesla](what-is-single-sign-on.md#password-based-single-sign-on)
+* Samoobslužná integrace webové aplikace, který je založený na jazyce HTML přihlašovací stránky pomocí [jednotného přihlašování pomocí hesla](what-is-single-sign-on.md#password-based-sso)
 * Připojení aplikace, které používají protokol SCIM pro zřizování uživatelů samoobslužné služby ([je zde popsáno,](use-scim-to-provision-users-and-groups.md))
-* Možnost přidání odkazů do libovolné aplikace v [Spouštěči aplikací Office 365](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/) nebo [přístupový panel služby Azure AD](what-is-single-sign-on.md#deploying-azure-ad-integrated-applications-to-users)
+* Možnost přidání odkazů do libovolné aplikace v [Spouštěči aplikací Office 365](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/) nebo [přístupový panel služby Azure AD](what-is-single-sign-on.md#linked-sso)
 
 To může zahrnovat jenom aplikace SaaS, které můžete použít, ale nebyly dosud byl zprovozněná v galerii aplikací Azure AD, ale třetí strany webových aplikací, které vaše organizace má nasazené na servery, které sami kontrolujete, buď v cloudu nebo místně.
 
@@ -165,7 +165,7 @@ Jakmile jsou zachyceny na přihlašovací stránku, může být přiřazena uži
 ## <a name="existing-single-sign-on"></a>Existující jednotné přihlašování
 Vyberte tuto možnost, chcete-li přidat odkaz na aplikaci na přístupový Panel Azure AD nebo Office 365 portál vaší organizace. Můžete přidat odkazy na vlastní webové aplikace, které používají Azure Active Directory Federation Services (nebo jiné služby federation service) místo Azure AD pro ověřování. Nebo můžete přidat přímé odkazy na konkrétní stránky SharePoint nebo jiných webových stránek, které chcete zobrazit na přístupových panelech uživatele. 
 
-Po výběru **Další**, zobrazí se výzva k zadání adresu URL aplikace propojení. Po dokončení, uživatelů a skupin může být přiřazen k aplikaci, což způsobí, že aplikace bude zobrazovat v [Spouštěči aplikací Office 365](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/) nebo [přístupový panel služby Azure AD](what-is-single-sign-on.md#deploying-azure-ad-integrated-applications-to-users) pro tyto uživatele.
+Po výběru **Další**, zobrazí se výzva k zadání adresu URL aplikace propojení. Po dokončení, uživatelů a skupin může být přiřazen k aplikaci, což způsobí, že aplikace bude zobrazovat v [Spouštěči aplikací Office 365](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/) nebo [přístupový panel služby Azure AD](end-user-experiences.md) pro tyto uživatele.
 
 > [!NOTE] 
 > Můžete nahrát logo dlaždice aplikace s využitím **nahrajte Logo** tlačítko **konfigurovat** kartu pro aplikaci. 

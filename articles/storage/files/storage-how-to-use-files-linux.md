@@ -8,14 +8,14 @@ ms.topic: article
 ms.date: 03/29/2018
 ms.author: renash
 ms.component: files
-ms.openlocfilehash: bbd250e9ee987403d670b2605fdb8deda8c19092
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: 4b844fe50623782f23c1819c14eb7626eb9506cf
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43782042"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51614938"
 ---
-# <a name="use-azure-files-with-linux"></a>Použití služby soubory Azure s Linuxem
+# <a name="use-azure-files-with-linux"></a>Použití služby Soubory Azure s Linuxem
 Služba [Soubory Azure](storage-files-introduction.md) je snadno použitelný cloudový systém souborů od Microsoftu. Sdílené složky Azure je možné připojit v Linuxových distribucích pomocí [klient SMB jádra](https://wiki.samba.org/index.php/LinuxCIFS). Tento článek ukazuje dva způsoby připojení sdílené složky Azure: na vyžádání pomocí `mount` příkazů a na spouštění tak, že vytvoříte položku v `/etc/fstab`.
 
 > [!NOTE]  
@@ -117,7 +117,7 @@ Služba [Soubory Azure](storage-files-introduction.md) je snadno použitelný cl
     fi
     ```
 
-4. **Změna oprávnění u soubor s přihlašovacími údaji, tak jenom kořenový může číst nebo upravovat soubor hesla.** Klíč účtu úložiště je v podstatě velmi správce heslo pro účet úložiště, nastavení oprávnění pro soubor, který se dostanete tak, aby se pouze hlavní je důležité, aby nižší oprávnění uživatelé nemůžou načíst klíč účtu úložiště.   
+4. **Změna oprávnění u soubor s přihlašovacími údaji, tak jenom kořenový může číst nebo upravovat soubor hesla.** Klíč účtu úložiště je v podstatě velmi správce heslo pro účet úložiště, nastavení oprávnění pro soubor, který se dostanete tak, aby se pouze hlavní je důležité, aby nižší oprávnění uživatele nelze načíst klíč účtu úložiště.   
 
     ```bash
     sudo chmod 600 /etc/smbcredentials/<storage-account-name>.cred

@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 11/12/2018
 ms.author: cherylmc
-ms.openlocfilehash: de24e8b308c6adf3f69caae4ab671f57fc2f6b8c
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 7d76827a4e4ba4ccb7a146c5f8282000d143eb35
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51565050"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51624433"
 ---
 # <a name="configure-openvpn-clients-for-azure-vpn-gateway-preview"></a>Konfigurace klientů OpenVPN pro Azure VPN Gateway (Preview)
 
@@ -38,7 +38,7 @@ Ověřte, že jste dokončili postup pro konfiguraci OpenVPN pro bránu VPN. Pod
   openssl.exe pkcs12 -in "filename.pfx" -nodes -out "profileinfo.txt"
   ```
 6. Otevřít *profileinfo.txt* v poznámkovém bloku. Pokud chcete získat kryptografický otisk certifikátu klienta (podřízený), vyberte text (včetně a mezi) "---BEGIN CERTIFICATE---" a "---konec certifikát---" pro podřízené certifikát a zkopírujte ho. Certifikát podřízené můžete identifikovat podle předmětu = / řádek.
-7. Přepněte *vpnconfig.ovpn* soubor otevřený v poznámkovém bloku z kroku 3. Vyhledejte část uvedenou níže nahradit všechno mezi "cert" a "/ certifikátu".
+7. Přepněte *vpnconfig.ovpn* soubor otevřený v poznámkovém bloku z kroku 3. Část uvedenou níže najít a nahradit všechno mezi "cert" a "/ certifikátu".
 
   ```
   # P2S client certificate
@@ -119,7 +119,7 @@ Ověřte, že jste dokončili postup pro konfiguraci OpenVPN pro bránu VPN. Pod
 11. Připojení pomocí příkazového řádku, zadejte následující příkaz:
   
   ```
-  Sudo openvpn –config <name and path of your VPN profile file>
+  sudo openvpn –-config <name and path of your VPN profile file>
   ```
 12. Chcete-li připojit pomocí grafického uživatelského rozhraní, přejděte na nastavení systému.
 13. Klikněte na tlačítko **+** přidat nové připojení VPN.

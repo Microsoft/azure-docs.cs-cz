@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.component: fundamentals
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/14/2017
+ms.date: 11/12/2018
 ms.author: lizross
-ms.openlocfilehash: d58e5816c3b0e7c951c7d6bcfc6bfe4d0789f47a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: b004968fc53e368497632cb18d6bb7a254d347e6
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51233792"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51621747"
 ---
 # <a name="azure-active-directory-faq"></a>Nejčastější dotazy ke službě Azure Active Directory
 Azure Active Directory (Azure AD) je komplexní řešení Identity jako služby (IDaaS), které pokrývá všechny prvky identity, řízení přístupu a zabezpečení.
@@ -171,7 +171,7 @@ Další informace naleznete v tématu:
 * Přímé přihlášení k federovaným aplikacím
 * Přímé odkazy na federované nebo existující aplikace či aplikace založené na hesle
 
-Další informace naleznete v tématu [Nasazení integrovaných aplikací Azure AD pro uživatele](../manage-apps/what-is-single-sign-on.md#deploying-azure-ad-integrated-applications-to-users).
+Další informace najdete v tématu [prostředí koncového uživatele pro aplikace](../manage-apps/end-user-experiences.md).
 
 - - -
 **Otázka: Jakými způsoby služba Azure AD umožňuje ověřování a jednotné přihlašování k aplikacím?**
@@ -182,7 +182,7 @@ Další informace naleznete v tématu:
 
 * [Scénáře ověřování pro Azure AD](../develop/authentication-scenarios.md)
 * [Protokoly ověřování pro Active Directory](https://msdn.microsoft.com/library/azure/dn151124.aspx)
-* [Jak funguje jednotné přihlašování pomocí služby Azure Active Directory?](../manage-apps/what-is-single-sign-on.md#how-does-single-sign-on-with-azure-active-directory-work)
+* [Jednotné přihlašování pro aplikace ve službě Azure AD](../manage-apps/what-is-single-sign-on.md)
 
 - - -
 **Otázka: Je možné přidat místní aplikace?**

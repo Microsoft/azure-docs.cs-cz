@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/16/2018
 ms.author: jdial
 ms.custom: include file
-ms.openlocfilehash: e765739384aa7d18b95394cb0a9b2b6748174e7c
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: 3a7c91f4a83cd69bdb87ffaccce555b04eca67cc
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51525640"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51597590"
 ---
 <a name="virtual-networking-limits-classic"></a>Následující omezení platí pouze pro síťové prostředky spravované přes model nasazení Classic na předplatné. Zjistěte, jak [zobrazit aktuální využití prostředků pro vaše předplatné omezení](../articles/networking/check-usage-against-limits.md).
 
@@ -49,7 +49,7 @@ Následující omezení platí pouze pro síťové prostředky spravované přes
 | Privátní IP adresy na virtuální síť |65536 |
 | Privátní IP adresy na síťové rozhraní |256 |
 | Souběžné TCP nebo UDP toky pro síťové rozhraní virtuálního počítače nebo role instance |500 000 |
-| Síťová rozhraní (NIC) |24000 |
+| Síťová rozhraní (NIC) |65536 |
 | Skupiny zabezpečení sítě (NSG) |5000 |
 | Počet pravidel NSG na skupinu NSG |1000 |
 | IP adresy a rozsahy zadané pro zdroj nebo cíl ve skupině zabezpečení |4000 |
@@ -64,28 +64,27 @@ Následující omezení platí pouze pro síťové prostředky spravované přes
 | Klepněte na konfiguraci síťového rozhraní na virtuální síť, klepněte na |100 |
 
 #### <a name="publicip-address"></a>Veřejné IP adresy omezení
-
 | Prostředek | Výchozí omezení | Maximální omezení |
 | --- | --- | --- |
-| Veřejné IP adresy – dynamická |200 (základní) |kontaktovat podporu |
+| Veřejné IP adresy – dynamická |1000 (základní) |kontaktovat podporu |
 | Veřejné IP adresy – statické |200 (základní) |kontaktovat podporu |
 | Veřejné IP adresy – statické |200 (standard) |kontaktovat podporu |
 
 #### <a name="load-balancer"></a>Omezení nástroje pro vyrovnávání zatížení
 Následující omezení platí pouze pro síťové prostředky spravované přes Azure Resource Manager na oblast a předplatné. Zjistěte, jak [zobrazit aktuální využití prostředků pro vaše předplatné omezení](../articles/networking/check-usage-against-limits.md)
 
-| Prostředek | Výchozí omezení | Maximální omezení |
+| Prostředek | Výchozí omezení |
 | --- | --- | --- |
-| Nástroje pro vyrovnávání zatížení | 100 | 1000 |
-| Pravidla pro každý prostředek, Basic | 250 | 250 |
-| Pravidla pro každý prostředek, Standard | 1 500 | 1 500 |
-| Pravidla na konfiguraci IP adresy | 299 |299 |
-| Konfigurace protokolu IP front-endu, Basic | 10 | 200 |
-| Konfigurace protokolu IP front-endu, Standard | 10 | 600 |
-| Back-endový fond Basic | 100, jedna skupina dostupnosti | 100, jedna skupina dostupnosti |
-| Back-endový fond Standard | 1 000, jedna virtuální síť | 1 000, jedna virtuální síť |
-| Back-Endovým prostředkům za nástroj pro vyrovnávání zatížení, standardní * | 150 | 150 |
-| HA portů a Standard | 1 za interní front-endu | 1 za interní front-endu |
+| Nástroje pro vyrovnávání zatížení | 1000 | 
+| Pravidla pro každý prostředek, Basic | 250 |
+| Pravidla pro každý prostředek, Standard | 1 500 | 
+| Pravidla na konfiguraci IP adresy | 299 |
+| Konfigurace protokolu IP front-endu, Basic | 200 |
+| Konfigurace protokolu IP front-endu, Standard | 600 |
+| Back-endový fond Basic | 100, jedna skupina dostupnosti |
+| Back-endový fond Standard | 1 000, jedna virtuální síť |
+| Back-Endovým prostředkům za nástroj pro vyrovnávání zatížení, standardní * | 150 |
+| HA portů a Standard | 1 za interní front-endu |
 
 ** Až 150 zdrojů libovolnou kombinaci samostatné virtuální počítače, skupiny dostupnosti a škálovací sady virtuálních počítačů.
 

@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/04/2017
+ms.date: 11/08/2018
 ms.author: barbkess
-ms.reviewer: harshja
-ms.openlocfilehash: cf92b5b6ee3c6a529a43e7fa4cfeeb09954ad9ea
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.reviewer: japere
+ms.openlocfilehash: bb04f1965764413c474c2e0d057d77d5d30edd07
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39365387"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51623097"
 ---
 # <a name="working-with-claims-aware-apps-in-application-proxy"></a>Práce s deklaracemi identity aplikace v Proxy aplikací
 [S deklaracemi identity aplikace](https://msdn.microsoft.com/library/windows/desktop/bb736227.aspx) provést přesměrování do tokenů zabezpečení služby (STS). Služba tokenů zabezpečení přihlašovacích údajů požádá uživatele výměnou za token a pak přesměruje uživatele k aplikaci. Existuje několik způsobů, jak povolit Proxy aplikace pro práci s těmito přesměrování. Tento článek slouží ke konfiguraci svého nasazení s deklaracemi identity aplikace. 
@@ -54,7 +54,7 @@ Pokud všechny interní adresy URL pro vaše aplikace jsou plně kvalifikované 
    ![Přidání koncového bodu - nastavit hodnotu adresy URL důvěryhodných – snímek obrazovky](./media/application-proxy-configure-for-claims-aware-applications/appproxyendpointtrustedurl.png)  
 
 ## <a name="next-steps"></a>Další postup
-* [Povolení jednoduchého přihlášení na](application-proxy-single-sign-on.md) pro aplikace, které nejsou s deklaracemi identity
+* [Povolení jednoduchého přihlášení na](configure-single-sign-on-portal.md) pro aplikace, které nejsou s deklaracemi identity
 * [Povolit nativní klientské aplikace pro interakci s proxy aplikací](application-proxy-configure-native-client-application.md)
 
 

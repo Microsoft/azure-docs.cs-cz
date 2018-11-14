@@ -9,12 +9,12 @@ ms.date: 10/16/2018
 ms.topic: conceptual
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: d031965a812cd218fbb4e78dfbf90ee01c26f5bb
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: b91c3dec1dda401fbacab39325b2c8980ec7254f
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50085965"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51625060"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions"></a>Začlenění řešení Update Management, Change Tracking a Inventory
 
@@ -81,7 +81,7 @@ Klikněte na tlačítko **+ přidat virtuální počítače Azure**, vyberte jed
 
 Počítače není v Azure je potřeba přidat ručně. Z vaší automatizace účtu vyberte **inventáře** nebo **řešení Change tracking** pod **CONFIGURATION MANAGEMENT**, nebo **Správa aktualizací** v části **UPDATE MANAGEMENT**.
 
-Klikněte na tlačítko **přidat počítače umístěné mimo Azure**. Tato akce otevře nové okno prohlížeče se [pokyny o tom, jak nainstalovat a nakonfigurovat agenta Microsoft Monitoring Agent na počítači](../log-analytics/log-analytics-concept-hybrid.md) počítači mohli začít vytváření sestav do řešení. Pokud jste připojení počítač aktuálně spravován nástrojem System Center Operations Manager, bude nový agent není povinné, informace o pracovním prostoru se zadá do existujícího agenta.
+Klikněte na tlačítko **přidat počítače umístěné mimo Azure**. Tato akce otevře nové okno prohlížeče se [pokyny o tom, jak nainstalovat a nakonfigurovat agenta Microsoft Monitoring Agent na počítači](../log-analytics/log-analytics-agent-overview.md) počítači mohli začít vytváření sestav do řešení. Pokud jste připojení počítač aktuálně spravován nástrojem System Center Operations Manager, bude nový agent není povinné, informace o pracovním prostoru se zadá do existujícího agenta.
 
 ## <a name="onboard-machines-in-the-workspace"></a>Připojit počítače v pracovním prostoru
 

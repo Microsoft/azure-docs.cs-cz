@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 09/20/2018
 ms.author: robb
 ms.component: diagnostic-extension
-ms.openlocfilehash: 603ed12bf74f2d75543fd7e60834e695138c991d
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: dbe2619b99fdc5281375e2c6c1300432d9a4cbb9
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50963797"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51616125"
 ---
 # <a name="azure-diagnostics-extension-configuration-schema-versions-and-history"></a>Verze rozšíření schématu konfigurace Azure Diagnostics a historie
 Tato stránka indexy verze schématu rozšíření Azure Diagnostics se dodávají jako součást sady Microsoft Azure SDK.  
@@ -67,7 +67,7 @@ Různé verze diagnostiky Azure pomocí různých konfiguračních schémat.
 ### <a name="diagnostics-extension-111"></a>Diagnostické rozšíření 1.11
 Přidání podpory pro jímka Azure monitoru. Tuto jímku platí pouze pro čítače výkonu. Povolí odesílání počítadla výkonu shromažďovaných na virtuálním počítači, VMSS nebo cloudové služby Azure monitor jako vlastní metriky. Jímka Azure monitoru podporuje:
 * Načítání všech čítačů výkonu odesílat přes Azure Monitor [Azure Monitor metriky rozhraní API.](https://docs.microsoft.com/rest/api/monitor/metrics/list)
-* Upozorňuje na všechny čítače výkonu odeslané do Azure monitoru na novém [sjednocené prostředí upozornění](monitoring-overview-unified-alerts.md) ve službě Azure Monitor
+* Upozorňuje na všechny čítače výkonu odeslané do Azure monitoru na novém [sjednocené prostředí upozornění](monitoring-overview-alerts.md) ve službě Azure Monitor
 * Použít zástupný znak operátoru v čítače výkonu jako dimenze "Instance" na vaše metriky. Například pokud jste shromáždili "logický disk (\*) / DiskWrites za sekundu" čítače by být schopen filtr a rozdělit na dimenzi "Instanci" do diagramů nebo upozorňovat na zápis disku/s pro každý logický Disk (C:, D: atd.)
 
 Definovat jako nové jímka v konfiguraci rozšíření diagnostiky Azure Monitor

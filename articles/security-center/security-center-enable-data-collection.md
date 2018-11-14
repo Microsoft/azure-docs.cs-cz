@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/2/2018
 ms.author: rkarlin
-ms.openlocfilehash: 9100722042bfdcbee48af1fc44e294df046c828e
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: d88a59d3b9a39a42120b302fd8e7989c968db952
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51007208"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51624773"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Shromažďování dat ve službě Azure Security Center
 Security Center shromažďuje data z Azure virtual machines (VM) a počítače mimo Azure monitorovat ohrožení zabezpečení a hrozby. Data se shromažďují pomocí agenta Microsoft Monitoring Agent, který z počítače načítá různé protokoly událostí a konfigurace související se zabezpečením a kopíruje data k analýze do vašeho pracovního prostoru. Příkladem takových dat jsou: operační systém typu a verzi, protokoly operačního systému (protokoly událostí Windows), spuštěné procesy, název počítače, IP adresy a přihlášeného uživatele. Microsoft Monitoring Agent také zkopíruje soubory se stavem systému do pracovního prostoru.
@@ -81,7 +81,7 @@ Výběr pracovního prostoru vytvořených službou Security Center:
 
 2. Klikněte na **Uložit**.<br>
     Security Center vytvoří nový prostředek skupiny a výchozí pracovní prostor v této informace o zeměpisné poloze a agent se připojí k tomuto pracovnímu prostoru. Zásady vytváření názvů pracovní prostor a skupiny prostředků je:<br>
-**Pracovní prostor: DefaultWorkspace-[Id_předplatného]-[zeměpisné_umístění]<br> skupina prostředků: DefaultResouceGroup-[zeměpisné_umístění]**
+**Pracovní prostor: DefaultWorkspace-[Id_předplatného]-[zeměpisné_umístění]<br> skupina prostředků: DefaultResourceGroup-[zeměpisné_umístění]**
 
    Pokud předplatné obsahuje virtuální počítače z více geolocations, Security Center vytvoří několik pracovních prostorů. Zachovat data pravidla ochrany osobních údajů se vytvoří víc pracovních prostorů.
 -   Security Center automaticky povolí řešení Security Center v pracovním prostoru pro jednotlivé cenové úrovně pro předplatné. 

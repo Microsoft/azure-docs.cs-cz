@@ -11,31 +11,31 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: report-monitor
-ms.date: 11/14/2017
+ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 38ae18dca08b50a90102149d7e44169c956a1c0e
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 2e4406a75ea1d9f1968d994ae2294b39ca7613d5
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48869631"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51623855"
 ---
 # <a name="risky-sign-ins-report-in-the-azure-active-directory-portal"></a>Sestavy rizikových přihlášení na portálu Azure Active Directory
 
-Sestavy zabezpečení v Azure Active Directory (Azure AD) umožňují získat přehled o pravděpodobnosti ohrožení uživatelských účtů ve vašem prostředí. 
+Azure Active Directory (Azure AD) detekuje podezřelé akce, které souvisejí s vašimi uživatelskými účty. Pro každou zjištěnou akci, vytvoří záznam nazvaný **riziková událost** se vytvoří. Další podrobnosti najdete v tématu [rizikových událostí služby Azure AD](concept-risk-events.md). 
 
-Azure AD detekuje podezřelé akce, které souvisejí s vašimi uživatelskými účty. Pro každou zjištěnou akci se vytvoří záznam nazvaný *riziková událost*. Další podrobnosti najdete v tématu věnovaném [rizikovým událostem služby Azure Active Directory](concept-risk-events.md). 
+Přístupné sestavy zabezpečení z [webu Azure portal](https://portal.azure.com) tak, že vyberete **Azure Active Directory** okna a pak přejdete do **zabezpečení** oddílu. 
 
-Zjištěné rizikové události se použijí k výpočtu těchto údajů:
+Existují dvě sestavy zabezpečení, které se počítají podle rizikových událostí:
 
-- **Riziková přihlášení** –Rizikové přihlášení je indikátorem pokusu o přihlášení, který mohl provést někdo, kdo není legitimním vlastníkem uživatelského účtu. Další podrobnosti najdete v tématu [jak nakonfigurovat zásady rizik přihlašování](../identity-protection/howto-sign-in-risk-policy.md). 
+- **Riziková přihlášení** –Rizikové přihlášení je indikátorem pokusu o přihlášení, který mohl provést někdo, kdo není legitimním vlastníkem uživatelského účtu.
 
-- **Uživatelé označení příznakem rizika** – Rizikový uživatel je indikátorem uživatelského účtu, který mohl být ohrožený. Další podrobnosti najdete v tématu [jak nakonfigurovat zásady rizik uživatelů](../identity-protection/howto-user-risk-policy.md).  
-
-Na webu [Azure Portal](https://portal.azure.com) najdete sestavy zabezpečení v okně **Azure Active Directory** v části **Zabezpečení**. 
+- **Uživatelé označení příznakem rizika** – Rizikový uživatel je indikátorem uživatelského účtu, který mohl být ohrožený. 
 
 ![Riziková přihlášení](./media/concept-risky-sign-ins/10.png)
+
+Zjistěte, jak nakonfigurovat zásady, které aktivují tyto rizikové události, najdete v článku [jak nakonfigurovat zásady rizik uživatelů](../identity-protection/howto-user-risk-policy.md).  
 
 ## <a name="who-can-access-the-risky-sign-ins-report"></a>Kdo má přístup k sestavě rizikových přihlášení?
 
@@ -49,18 +49,17 @@ Zjistěte, jak přiřadit správní role pro uživatele v Azure Active Directory
 
 ## <a name="what-azure-ad-license-do-you-need-to-access-a-security-report"></a>Jaká licence Azure AD je potřeba pro přístup k sestavě zabezpečení?  
 
-Sestavy rizikových přihlášení nabízí všechny edice Azure Active Directory.  
-Úroveň podrobností sestav se však mezi jednotlivými edicemi liší: 
+Všechny edice Azure AD poskytují sestavy rizikových přihlášení. Úroveň podrobností sestav se však mezi jednotlivými edicemi liší: 
 
-- **Edice Azure Active Directory Free a Basic** již nabízí seznam rizikových přihlášení. 
+- V **edice Azure Active Directory Free a Basic**, získejte seznam rizikových přihlášení. 
 
-- Edice **Azure Active Directory Premium 1** tento model rozšiřuje tím, že umožňuje také prozkoumávat některé ze základních rizikových událostí, které byly v každé sestavě rozpoznány. 
+- Kromě toho **Azure Active Directory Premium 1** edition umožňuje prozkoumávat některé ze základních rizikových událostech, které byly zjištěny pro každou sestavu. 
 
 - Edice **Azure Active Directory Premium 2** poskytuje nejpodrobnější informace o všech základních rizikových událostech a umožňuje také konfigurovat zásady zabezpečení, které automaticky reagují na nakonfigurované úrovně rizika.
 
-## <a name="azure-active-directory-free-and-basic-edition"></a>Edice Free a Basic služby Azure Active Directory
+## <a name="risky-sign-ins-report-for-azure-ad-free-and-basic-edition"></a>Sestavy rizikových přihlášení pro službu Azure AD free a basic edition
 
-Edice Free a Basic služby Azure Active Directory poskytují seznam rizikových přihlášení, která byla zjištěná pro vaše uživatele. Tato sestava uvádí:
+Edice free a basic služby Azure AD poskytují seznam rizikových přihlášení, které byly zjištěny pro vaše uživatele. Každý záznam obsahuje následující atributy:
 
 - **Uživatel** – Jméno uživatele použité během přihlašovací operace
 - **IP** – IP adresa zařízení použitá pro připojení k Azure Active Directory
@@ -68,10 +67,9 @@ Edice Free a Basic služby Azure Active Directory poskytují seznam rizikových 
 - **Čas přihlášení** – Čas, kdy k přihlášení došlo
 - **Stav** – Stav přihlášení
 
-
 ![Riziková přihlášení](./media/concept-risky-sign-ins/01.png)
 
-Na základě prošetření rizikového přihlášení můžete službě Azure Active Directory poskytnout zpětnou vazbu ve formě následujících akcí:
+Založené na šetření rizikových přihlášení, můžete poskytnout zpětnou vazbu ke službě Azure AD pomocí následujících kroků:
 
 - Vyřešit
 - Označit jako falešně pozitivní
@@ -80,28 +78,23 @@ Na základě prošetření rizikového přihlášení můžete službě Azure Ac
 
 ![Riziková přihlášení](./media/concept-risky-sign-ins/21.png)
 
-
-
-V tomto dialogovém okně máte možnost:
+Tato sestava také nabízí možnost:
 
 - Prohledávat prostředky
 - Stáhnout data sestavy
 
-
 ![Riziková přihlášení](./media/concept-risky-sign-ins/93.png)
 
 
-## <a name="azure-active-directory-premium-editions"></a>Edice Premium služby Azure Active Directory
+## <a name="risky-sign-ins-report-for-azure-ad-premium-editions"></a>Sestavy rizikových přihlášení pro edice premium služby Azure AD
 
-Sestavy rizikových přihlášení v edicích Premium služby Azure Active Directory vám nabízí:
+Sestavy rizikových přihlášení v edicích premium služby Azure AD vám nabízí:
 
 - Agregované informace o [typech rizikových událostí](concept-risk-events.md), které byly zjištěné
 
 - Možnost stažení sestavy
 
-
 ![Riziková přihlášení](./media/concept-risky-sign-ins/456.png)
-
 
 Při výběru rizikové události získáte zobrazení podrobné sestavy pro tuto rizikovou událost, které umožňuje následující akce:
 
@@ -112,7 +105,6 @@ Při výběru rizikové události získáte zobrazení podrobné sestavy pro tut
 - Kontrola seznamu uživatelů, pro které byla riziková událost zjištěná
 
 - Ruční zavření rizikové události. 
-
 
 ![Riziková přihlášení](./media/concept-risky-sign-ins/457.png)
 
@@ -126,21 +118,15 @@ Po výběru uživatele získáte podrobné zobrazení sestavy pro tohoto uživat
 
 - Vyšetřit rizikové události oznámené pro uživatele 
 
-
 ![Riziková přihlášení](./media/concept-risky-sign-ins/324.png)
 
-
 Pokud chcete vyšetřovat rizikovou událost, vyberte ji ze seznamu.  
-Tím otevřete okno **Podrobnosti** pro tuto rizikovou událost. Na **podrobnosti** okně máte možnost buď ruční zavření rizikové události a znovu aktivovat ručně zavřené rizikové události. 
-
+Tím otevřete okno **Podrobnosti** pro tuto rizikovou událost. V okně **Podrobnosti** můžete buď ručně zavřít rizikovou událost, nebo znovu aktivovat ručně zavřenou rizikovou událost. 
 
 ![Riziková přihlášení](./media/concept-risky-sign-ins/325.png)
 
-
-
-
-
 ## <a name="next-steps"></a>Další postup
 
-- Další informace o Azure Active Directory Identity Protection najdete v tématu [Azure Active Directory Identity Protection](../active-directory-identityprotection.md).
-
+- [Jak nakonfigurovat zásady rizik uživatelů](../identity-protection/howto-user-risk-policy.md)
+- [Jak nakonfigurovat zásady odstraňování rizik](../identity-protection/howto-user-risk-policy.md)
+- [Typy rizikových událostí](concept-risk-events.md)

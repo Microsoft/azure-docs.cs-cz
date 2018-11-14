@@ -13,38 +13,40 @@ ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: report-monitor
-ms.date: 05/07/2018
+ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 1e6ad35702b15090202278cfdead62b245040302
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: 860d602ecba257ed9015d1e080e5dcb1aa5ab872
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49309616"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51624620"
 ---
 # <a name="get-started-with-the-azure-active-directory-reporting-api"></a>Začínáme s Azure Active Directory API pro vytváření sestav
 
-Azure Active Directory poskytuje širokou škálu [sestavy](overview-reports.md). Data z těchto sestav můžou být velmi užitečná pro vaše aplikace, jako jsou systémy SIEM nebo nástroje pro auditování a business intelligence. 
+Azure Active Directory poskytuje širokou škálu [sestavy](overview-reports.md), který obsahuje užitečné informace pro aplikace, jako jsou systémy SIEM, audit a nástroje business intelligence. 
 
-S použitím rozhraní API pro generování sestav Azure AD, můžete získat programový přístup k datům prostřednictvím sady založené na protokolu REST API. Tato rozhraní API můžete volat z nejrůznějších programovacích jazyků a nástrojů.
+S použitím rozhraní Microsoft Graph API pro sestavy Azure AD, můžete získat programový přístup k datům prostřednictvím sady založené na protokolu REST API. Tato rozhraní API můžete volat z nejrůznějších programovacích jazyků a nástrojů.
 
-Tento článek poskytuje návod pro přístup k datům sestav pomocí rozhraní API související.
+Tento článek poskytuje přehled o vytváření sestav rozhraní API, včetně způsobů, jak k němu přístup.
 
 Pokud narazíte na problémy, přečtěte si téma [jak získat podporu pro Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-troubleshooting-support-howto).
 
-Tento článek se týká k Azure AD Graph API.  Podobně jako informace související s Microsoft Graph API najdete v tématu [typ prostředku directoryAudit](https://developer.microsoft.com/en-us/graph/docs/api-reference/beta/resources/directoryaudit).
-
 ## <a name="prerequisites"></a>Požadavky
 
-Pro přístup k rozhraní API pro generování sestav, i v případě, že plánujete přístup k rozhraní API pomocí skriptu, budete muset:
+Přístup k vytváření sestav rozhraní API, s nebo bez zásahu uživatele, budete muset:
 
 1. Přiřazení rolí (čtenář zabezpečení, správce zabezpečení, globální správce)
 2. Registrace aplikace
 3. Udělení oprávnění
 4. Shromážděte nastavení konfigurace
 
-Podrobné pokyny najdete v tématu [požadavky pro přístup k API pro vytváření sestav Azure Active Directory](howto-configure-prerequisites-for-reporting-api.md).
+Podrobné pokyny najdete v tématu [požadavky pro přístup k API pro vytváření sestav Azure Active Directory](howto-configure-prerequisites-for-reporting-api.md). 
+
+## <a name="api-endpoints"></a>Koncové body rozhraní API 
+
+Koncový bod rozhraní Microsoft Graph API k protokolům auditu je `https://graph.microsoft.com/beta/auditLogs/directoryAudits` a koncový bod rozhraní Microsoft Graph API pro přihlášení je `https://graph.microsoft.com/beta/auditLogs/signIns`. Další informace najdete v tématu [referenční informace k rozhraní API auditu](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) a [přihlášení reference k rozhraní API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signIn).
 
 ## <a name="apis-with-graph-explorer"></a>Rozhraní API pomocí Graph Exploreru
 
@@ -60,11 +62,10 @@ Použijte API generování sestav Azure AD s certifikáty, pokud budete chtít n
 
 Podrobné pokyny najdete v tématu [získání dat pomocí API generování sestav Azure AD s certifikáty](tutorial-access-api-with-certificates.md).
 
-
 ## <a name="next-steps"></a>Další postup
 
- * [Referenční informace k rozhraní API auditu](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) 
- * [Sestavy aktivit přihlašování reference k rozhraní API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin)
+ * [Požadavky pro přístup k API pro vytváření sestav](howto-configure-prerequisites-for-reporting-api.md) 
+ * [Získání dat pomocí API generování sestav Azure AD s certifikáty](tutorial-access-api-with-certificates.md)
  * [Řešení potíží s chybami v rozhraní API pro generování sestav Azure AD](troubleshoot-graph-api.md)
 
 

@@ -7,12 +7,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: andrl
-ms.openlocfilehash: 36b57fd98de206641422d80bf3ea3d2a3853f578
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 006d0ef28d82a7648a56b3bf871c5a3afd6a55a6
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51252560"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51624416"
 ---
 # <a name="unique-keys-in-azure-cosmos-db"></a>Jedinečné klíče ve službě Azure Cosmos DB
 
@@ -48,17 +48,6 @@ Jedinečné klíče můžete definovat pouze při vytváření kontejneru Cosmos
 * Zhuštěný jedinečné klíče nejsou podporovány. Pokud chybí některé hodnoty jedinečnou cestu, jsou považovány za hodnoty null, které jsou zahrnuty v omezení jedinečnosti. Proto může existovat pouze jednu položku s hodnotou null pro toto omezení.
 
 * Jedinečné názvy klíčů jsou malá a velká písmena. Představte si třeba kontejner s omezení unique key nastavena na /address/zipcode. Pokud data obsahují pole s názvem PSČ, vloží Cosmos DB "null" jako jedinečný klíč, protože není stejný jako "PSČ" "PSČ". Z důvodu tohoto rozlišování velikosti písmen nelze všechny záznamy s PSČ vložit, protože duplicitní "null" bude porušovat omezení unique key.
-
-## <a name="supported-apis-and-sdks"></a>Podporované rozhraní API a sad SDK
-
-Jedinečné klíče funkce v současné době nepodporuje následující rozhraní API Cosmos DB a klientské sady SDK: 
-
-|Ovladače klienta|SQL API|Rozhraní Cassandra API|Rozhraní MongoDB API|Rozhraní Gremlin API|Rozhraní Table API|
-|---|---|---|---|---|---|
-|.NET|Ano|Ne|Ano|Ne|Ne|
-|Java|Ano|Ne|Ano|Ne|Ne|
-|Python|Ano|Ne|Ano|Ne|Ne|
-|Uzel/JS|Ano|Ne|Ano|Ne|Ne|
 
 ## <a name="next-steps"></a>Další postup
 

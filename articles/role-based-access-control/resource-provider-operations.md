@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 10/19/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: fd5b0637ab21c9859f2ed06a96c69b51f4681097
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 4f2fc320d0d66e19ec8a1e591377c482a7ec64d9
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51569280"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51626129"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Operace poskytovatele prostředků Azure Resource Manageru
 
@@ -935,7 +935,7 @@ Operace poskytovatele prostředků se vždy vyvíjejí. Chcete-li získat nejnov
 > | Akce | Microsoft.ClassicCompute/virtualMachines/delete | Umožňuje odebrat virtuální počítače. |
 > | Akce | Microsoft.ClassicCompute/virtualMachines/detachDisk/action | Umožňuje odpojit datový disk od virtuálního počítače. |
 > | Akce | Microsoft.ClassicCompute/virtualMachines/diagnosticsettings/read | Získá nastavení diagnostiky virtuálního počítače. |
-> | Akce | Microsoft.ClassicCompute/virtualMachines/disks/read | Umožňuje načíst seznam datových disků. |
+> | Akce | Microsoft.ClassicCompute/virtualMachines/disks/read | Načte seznam datových disků |
 > | Akce | Microsoft.ClassicCompute/virtualMachines/downloadRemoteDesktopConnectionFile/action | Umožňuje stáhnout soubor RDP pro virtuální počítač. |
 > | Akce | Microsoft.ClassicCompute/virtualMachines/extensions/operationStatuses/read | Přečte stav operace pro rozšíření virtuálních počítačů. |
 > | Akce | Microsoft.ClassicCompute/virtualMachines/extensions/read | Umožňuje načíst rozšíření virtuálního počítače. |

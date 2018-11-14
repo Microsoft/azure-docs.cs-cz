@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 06/18/2018
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 427ac67b812da449333e4868e54ca36d2c6f54af
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: b4d6e1137b9e0404675a48260ea6c9f2c0d5c76f
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51282321"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51614069"
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>Přidání Log Analytics uložené hledání a výstrahy do řešení pro správu (Preview)
 
@@ -27,7 +27,7 @@ ms.locfileid: "51282321"
 > Toto je předběžná dokumentace pro vytváření řešení pro správu, které jsou aktuálně ve verzi preview. Žádné schéma je popsáno níže se může změnit.   
 
 
-[Řešení pro správu](monitoring-solutions.md) by měl obvykle zahrnovat [uložená hledání](../log-analytics/log-analytics-queries.md) v Log Analytics k analýze data shromážděná tímto řešením.  Můžou také definovat [výstrahy](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md) upozornit uživatele, nebo automaticky provést akce v reakci na kritický problém.  Tento článek popisuje, jak definovat uložené výsledky hledání Log Analytics a upozornění [šablony Resource Manageru](../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md) tak mohou být zahrnuty v [řešení pro správu](monitoring-solutions-creating.md).
+[Řešení pro správu](monitoring-solutions.md) by měl obvykle zahrnovat [uložená hledání](../log-analytics/log-analytics-queries.md) v Log Analytics k analýze data shromážděná tímto řešením.  Můžou také definovat [výstrahy](../monitoring-and-diagnostics/monitoring-overview-alerts.md) upozornit uživatele, nebo automaticky provést akce v reakci na kritický problém.  Tento článek popisuje, jak definovat uložené výsledky hledání Log Analytics a upozornění [šablony Resource Manageru](../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md) tak mohou být zahrnuty v [řešení pro správu](monitoring-solutions-creating.md).
 
 > [!NOTE]
 > Ukázky v tomto článku použijte parametry a proměnné, které jsou povinné nebo společné pro řešení pro správu a jsou popsány v [návrh a sestavení řešení pro správu v Azure](monitoring-solutions-creating.md)  
@@ -380,8 +380,7 @@ Ukázka používá [standardní řešení parametry]( monitoring-solutions-solut
             "dependsOn": [
               "[resourceId('Microsoft.OperationalInsights/workspaces/savedSearches', parameters('workspacename'), variables('MySearch').Name)]",
               "[resourceId('Microsoft.OperationalInsights/workspaces/savedSearches/schedules', parameters('workspacename'), variables('MySearch').Name, variables('MyAlert').Schedule.Name)]",
-              "[resourceId('Microsoft.OperationalInsights/workspaces/savedSearches/schedules/actions', parameters('workspacename'), variables('MySearch').Name, variables('MyAlert').Schedule.Name, variables('MyAlert').Name)]",
-              "[resourceId('Microsoft.OperationalInsights/workspaces/savedSearches/schedules/actions', parameters('workspacename'), variables('MySearch').Name, variables('MyAlert').Schedule.Name, variables('MyAlert').Webhook.Name)]"
+              "[resourceId('Microsoft.OperationalInsights/workspaces/savedSearches/schedules/actions', parameters('workspacename'), variables('MySearch').Name, variables('MyAlert').Schedule.Name, variables('MyAlert').Name)]"
             ],
             "properties": {
               "workspaceResourceId": "[resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspacename'))]",

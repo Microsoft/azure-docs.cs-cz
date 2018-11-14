@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/26/2018
 ms.author: mjbrown
-ms.openlocfilehash: 4aa5e4ff46eeaa4e8d8c723f626dd1f1193fd12a
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: cc7bd6bab76ee6617a2594cb0b84ace3f6f3dafc
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51281604"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51622121"
 ---
 # <a name="global-data-distribution-with-azure-cosmos-db"></a>Distribuce globálních dat pomocí služby Azure Cosmos DB
 
@@ -36,7 +36,7 @@ Vylepšení výkonu, které jsou součástí schopnost provádět zápisy (míst
 
 **Vytvářejte aplikace s vysokou dostupností**: spuštění databáze ve více oblastech, zvýšíte dostupnost databáze. Pokud jedna oblast nedostupný, ostatní oblasti automaticky zpracovává žádosti o aplikace. Azure Cosmos DB nabízí 99,999 % čtení a zápis dostupnost pro databáze ve více oblastech.
 
-**Kontinuita podnikových procesů během regionální výpadky**: Azure Cosmos DB podporuje [automatické převzetí služeb při selhání](how-to-manage-database-account.md#enable-automatic-failover-for-your-cosmos-account) během oblastního výpadku. Kromě toho během oblastního výpadku, Cosmos DB nadále udržovat latence, dostupnosti, konzistence a propustnost smlouvy o úrovni služeb. K zajištění, že má vysokou dostupnost celé aplikace, služby Azure Cosmos DB nabízí rozhraní API ruční převzetí služeb při selhání k simulaci místního výpadku. Pomocí tohoto rozhraní API můžete provádět pravidelné Obchodní kontinuity podnikových procesů cvičení.
+**Kontinuita podnikových procesů během regionální výpadky**: Azure Cosmos DB podporuje [automatické převzetí služeb při selhání](how-to-manage-database-account.md#automatic-failover) během oblastního výpadku. Kromě toho během oblastního výpadku, Cosmos DB nadále udržovat latence, dostupnosti, konzistence a propustnost smlouvy o úrovni služeb. K zajištění, že má vysokou dostupnost celé aplikace, služby Azure Cosmos DB nabízí rozhraní API ruční převzetí služeb při selhání k simulaci místního výpadku. Pomocí tohoto rozhraní API můžete provádět pravidelné Obchodní kontinuity podnikových procesů cvičení.
 
 **Globální čtení a zápis škálovatelnost**: S několika hlavními databázemi funkce, které se můžete Elasticky škálovat pro čtení a zápis propustnost po celém světě. Více hlavních schopností zaručuje, že propustnost, které vaše aplikace nakonfiguruje na databázi Azure Cosmos DB nebo kontejner je dodáno ve všech oblastech a je chráněn [finančně zajištěné smlouvy SLA](https://aka.ms/acdbsla).
 

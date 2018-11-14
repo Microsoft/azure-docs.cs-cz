@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/26/2018
+ms.date: 11/13/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 087e11f906fe7f5c2fe67c43a597de8551dfc951
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 6bde2fb0fc9534d170be1d755856f6f779e47d7c
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51013050"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51625857"
 ---
 # <a name="container-monitoring-solution-in-log-analytics"></a>Řešení pro monitorování kontejnerů ve službě Log Analytics
 
@@ -126,7 +126,7 @@ Po instalaci Dockeru, použijte následující nastavení pro hostitele kontejne
 
 **Pro všechny hostitele kontejneru Linuxu s výjimkou CoreOS:**
 
-- Další informace a pokyny k instalaci agenta Log Analytics pro Linux najdete v tématu [připojení počítačů s Linuxem ke službě Log Analytics](log-analytics-concept-hybrid.md).
+- Další informace a pokyny k instalaci agenta Log Analytics pro Linux najdete v tématu [přehled agenta Log Analytics](log-analytics-agent-overview.md).
 
 **Pro včetně CoreOS všichni hostitelé s kontejneru Linuxu:**
 

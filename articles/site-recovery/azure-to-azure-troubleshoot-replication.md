@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/30/2018
 ms.author: asgang
-ms.openlocfilehash: c1cc8769617e4c9cd823b1e44d60c49b73f4bdb9
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: 0ac90d8ef29d4293a5eeb5f932687788320c218e
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51289712"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51615792"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-ongoing-replication-issues"></a>Řešení potíží s probíhající replikaci virtuálních počítačů Azure do Azure
 
@@ -56,12 +56,6 @@ Disk úrovně Premium P10 nebo P15 | 16 kB | 4 MB/s |  336 GB na disk
 Disk úrovně Premium P10 nebo P15 | 32 kB nebo větší | 8 MB/s | 672 GB na disk
 Disk úrovně Premium P20 nebo P30 nebo P40 nebo P50 | 8 kB    | 5 MB/s | 421 GB na disk
 Disk úrovně Premium P20 nebo P30 nebo P40 nebo P50 | 16 kB nebo větší |10 MB/s | 842 GB na disk
-
-
-**Četnost změn dat zdroje** | **Maximální limit**
----|---
-Průměrná četnost změn dat na virtuální počítač| 25 MB/s
-Četnost změn dat ve špičce napříč všemi disky virtuálního počítače | 54 MB/s
 
 ### <a name="solution"></a>Řešení
 Musíte rozumí tomu, že Azure Site Recovery obsahuje data změnit šířku pásma na základě typu disku. Pokud chcete vědět, pokud se tento problém opakuje, nebo okamžik, je potřeba najít změn dat míra vzor ovlivněných virtuálních počítačů.

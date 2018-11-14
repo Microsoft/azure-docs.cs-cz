@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/15/2018
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 7ea379516c6e636abd1309416374be75bcdbb686
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.openlocfilehash: dd018dca2de018733783605bfdb2802f91ebd76b
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51578735"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51621169"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>Vysoká dostupnost s využitím služby Azure Cosmos DB
 
@@ -49,7 +49,7 @@ Nejsou místních výpadků a Azure Cosmos DB zajišťuje, že vaše databáze b
 
 - Nakonfigurovaná s několika oblasti účty ve více oblastech budou s vysokou dostupností pro zápisy a čtení. Regionální převzetí služeb při selhání jsou okamžité a nevyžadují žádné změny z aplikace.
 
-- Účty ve více oblastech s oblastí zápisu jedním: během výpadku oblasti zápisu, tyto účty zůstane s vysokou dostupností pro čtení. Však pro zápis musí "Povolit automatické převzetí služeb při selhání" na vašem účtu Cosmos ovlivněné oblasti do jiné oblasti přidružené převzetí služeb při selhání. Převzetí služeb při selhání dojde v pořadí podle priority oblasti, kterou jste zadali. Nakonec pokud ovlivněné oblasti je zpátky do online režimu, nereplikované data k dispozici v oblasti ovlivněné zápisu během výpadku je k dispozici prostřednictvím konflikty informačního kanálu. Aplikace může číst konflikty informačního kanálu, vyřešte konflikty, na základě specifické pro aplikaci logiky a zapsat aktualizovaná data zpět do kontejneru Cosmos podle potřeby. Po obnoví dříve ovlivněné zápisu oblasti stane automaticky k dispozici jako oblasti čtení. Můžete vyvolat ruční převzetí služeb při selhání a nakonfigurovat ovlivněné oblasti jako oblast pro zápis. Ruční převzetí služeb při selhání můžete provést pomocí [webu Azure portal nebo rozhraní příkazového řádku Azure](how-to-manage-database-account.md#enable-manual-failover-for-your-cosmos-account).  
+- Účty ve více oblastech s oblastí zápisu jedním: během výpadku oblasti zápisu, tyto účty zůstane s vysokou dostupností pro čtení. Však pro zápis musí "Povolit automatické převzetí služeb při selhání" na vašem účtu Cosmos ovlivněné oblasti do jiné oblasti přidružené převzetí služeb při selhání. Převzetí služeb při selhání dojde v pořadí podle priority oblasti, kterou jste zadali. Nakonec pokud ovlivněné oblasti je zpátky do online režimu, nereplikované data k dispozici v oblasti ovlivněné zápisu během výpadku je k dispozici prostřednictvím konflikty informačního kanálu. Aplikace může číst konflikty informačního kanálu, vyřešte konflikty, na základě specifické pro aplikaci logiky a zapsat aktualizovaná data zpět do kontejneru Cosmos podle potřeby. Po obnoví dříve ovlivněné zápisu oblasti stane automaticky k dispozici jako oblasti čtení. Můžete vyvolat ruční převzetí služeb při selhání a nakonfigurovat ovlivněné oblasti jako oblast pro zápis. Ruční převzetí služeb při selhání můžete provést pomocí [webu Azure portal nebo rozhraní příkazového řádku Azure](how-to-manage-database-account.md#manual-failover).  
 
 - Účty ve více oblastech s oblastí zápisu jedním: během výpadku oblasti čtení tyto účty zůstane s vysokou dostupností pro čtení a zápis. Ovlivněné oblasti se automaticky odpojí z oblasti pro zápis a budou označeny v režimu offline. Cosmos DB SDK přesměruje volání další dostupné oblasti v seznamu preferované oblasti čtení. Pokud žádná z oblasti v seznamu preferované oblasti není k dispozici, volání automaticky vrátit do aktuální oblasti pro zápis. Nevyžaduje žádné změny v kódu aplikace zpracovávat výpadku oblasti čtení. Nakonec při ovlivněné oblasti je zpátky do online režimu, budou automaticky synchronizovat s aktuální oblasti pro zápis dříve ovlivněné oblasti čtení a bude možné znovu obsluhovat požadavky na čtení. Další čtení se přesměrují na obnoveném oblasti nevyžaduje žádné změny kódu aplikace. Během převzetí služeb při selhání i některých dříve nezdařené oblasti záruky konzistence čtení dál respektovat Cosmos DB.
 
@@ -61,20 +61,15 @@ Nejsou místních výpadků a Azure Cosmos DB zajišťuje, že vaše databáze b
 
 - K zajištění vysoké zápisu a dostupnost pro čtení, nastavte v účtu Cosmos rozložit alespoň dvě oblasti s několika oblasti. Tato konfigurace zajistí dostupnost, nejnižší latenci a škálovatelnost pro obě operace čtení a zápisu zajištěnými smlouvami SLA. Další informace najdete v tématu Jak [nakonfigurujte svůj účet Cosmos s využitím více oblastí zápisu](tutorial-global-distribution-sql-api.md).
 
-- Pro účty Cosmos ve více oblastech, které jsou nakonfigurovány s oblastí zápisu jedním [povolit automatické – převzetí služeb při selhání s využitím webu Azure portal nebo rozhraní příkazového řádku Azure](how-to-manage-database-account.md#enable-automatic-failover-for-your-cosmos-account). Když povolíte automatické převzetí služeb při selhání, vždycky, když je regionálního, Cosmos DB bude automaticky převzetí služeb při selhání vašeho účtu.  
+- Pro účty Cosmos ve více oblastech, které jsou nakonfigurovány s oblastí zápisu jedním [povolit automatické – převzetí služeb při selhání s využitím webu Azure portal nebo rozhraní příkazového řádku Azure](how-to-manage-database-account.md#automatic-failover). Když povolíte automatické převzetí služeb při selhání, vždycky, když je regionálního, Cosmos DB bude automaticky převzetí služeb při selhání vašeho účtu.  
 
-- I v případě, že je váš účet Cosmos s vysokou dostupností, aplikace nemusí správně navržená k dispozici. K otestování začátku do konce vysoká dostupnost pro aplikace, pravidelně vyvolat [ruční převzetí služeb při selhání s využitím webu Azure portal nebo rozhraní příkazového řádku Azure](how-to-manage-database-account.md#enable-manual-failover-for-your-cosmos-account), jako součást vašeho testování aplikace nebo zotavení po havárii (DR) cvičení.
+- I v případě, že je váš účet Cosmos s vysokou dostupností, aplikace nemusí správně navržená k dispozici. K otestování začátku do konce vysoká dostupnost pro aplikace, pravidelně vyvolat [ruční převzetí služeb při selhání s využitím webu Azure portal nebo rozhraní příkazového řádku Azure](how-to-manage-database-account.md#manual-failover), jako součást vašeho testování aplikace nebo zotavení po havárii (DR) cvičení.
 
 ## <a name="next-steps"></a>Další postup
 
 Další informace o škálování propustnosti v následujícím článku:
 
-- [Škálování propustnosti](scaling-throughput.md)
-
-- [Dostupnost a výkon kompromisy pro různé úrovně konzistence](consistency-levels-tradeoffs.md)
-
-- [Globální škálování zřízená propustnost](scaling-throughput.md)
-
-- [Globální distribuce - pod pokličkou](global-dist-under-the-hood.md)
-
-- [Úrovně konzistence ve službě Azure Cosmos DB](consistency-levels.md)
+* [Dostupnost a výkon kompromisy pro různé úrovně konzistence](consistency-levels-tradeoffs.md)
+* [Globální škálování zřízená propustnost](scaling-throughput.md)
+* [Globální distribuce - pod pokličkou](global-dist-under-the-hood.md)
+* [Úrovně konzistence ve službě Azure Cosmos DB](consistency-levels.md)

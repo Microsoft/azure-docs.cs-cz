@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/02/2018
 ms.author: yurid
-ms.openlocfilehash: 454cfc97aa203d5de7b00f47e1f87fd0aed0d28a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 76d472ff75f66973b3e680d8a30d7691c1cd36dc
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51255945"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51622563"
 ---
 # <a name="azure-security-center-planning-and-operations-guide"></a>Průvodce plánováním a provozem služby Azure Security Center
 Tento průvodce je určený odborníkům na informační technologie (IT), IT architektům, analytikům zabezpečení informací a správcům cloudů, jejichž společnosti hodlají začít používat Azure Security Center.
@@ -162,7 +162,7 @@ Data shromážděná z agenta Microsoft Monitoring Agent (jménem služby Azure 
 Na webu Azure Portal můžete procházením zobrazit seznam pracovních prostorů Log Analytics, včetně těch vytvořených službou Azure Security Center. Pro nové pracovní prostory se vytvoří související skupina prostředků. Budou se řídit těmito zásadami vytváření názvů: 
 
 * Pracovní prostor: *DefaultWorkspace-[ID_předplatného]-[zeměpisné umístění]*
-* Skupina prostředků: *DefaultResouceGroup-[zeměpisné_umístění]*
+* Skupina prostředků: *DefaultResourceGroup-[zeměpisné_umístění]*
 
 U pracovních prostorů vytvořených službou Azure Security Center se data uchovávají po dobu 30 dnů. U existujících pracovních prostorů uchovávání závisí na cenové úrovni pracovního prostoru. Pokud chcete, můžete použít také existující pracovní prostor.
 

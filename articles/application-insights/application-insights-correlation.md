@@ -3,22 +3,22 @@ title: Korelace Telemetrie Azure Application Insights | Dokumentace Microsoftu
 description: Korelace telemetrie Application Insights
 services: application-insights
 documentationcenter: .net
-author: mrbullwinkle
+author: lgayhardt
 manager: carmonm
 ms.service: application-insights
 ms.workload: TBD
 ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 04/09/2018
+ms.date: 10/31/2018
 ms.reviewer: sergkanz
-ms.author: mbullwin
-ms.openlocfilehash: eb14a3bc76fef37cdff4ed49cdbb6a99eac40928
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.author: lagayhar
+ms.openlocfilehash: b61163f7e2bc4cf4e7029c9852e5baad431fa0e0
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51280159"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51615836"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Korelace telemetrie v Application Insights
 
@@ -146,19 +146,15 @@ V současné době se nepodporuje automatické kontextu šíření napříč tec
 ### <a name="role-name"></a>Název role
 V některých případech může být vhodné přizpůsobit způsob názvů součástí se zobrazuje v [Mapa aplikace](app-insights-app-map.md). Uděláte to tak, můžete ručně nastavit `cloud_roleName` pomocí jedné z následujících akcí:
 
-Pomocí inicializátoru telemetrie (všech položkách telemetrie jsou označené)
-```Java
-public class CloudRoleNameInitializer extends WebTelemetryInitializerBase {
-
-    @Override
-    protected void onInitializeTelemetry(Telemetry telemetry) {
-        telemetry.getContext().getTags().put(ContextTagKeys.getKeys().getDeviceRoleName(), "My Component Name");
-    }
-  }
+Pokud používáte `WebRequestTrackingFilter`, `WebAppNameContextInitializer` automaticky nastaví název aplikace. Přidejte následující konfigurační soubor (soubor ApplicationInsights.xml):
+```XML
+<ContextInitializers>
+  <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebAppNameContextInitializer" />
+</ContextInitializers>
 ```
-Prostřednictvím [třídy kontextu zařízení](https://docs.microsoft.com/java/api/com.microsoft.applicationinsights.extensibility.context._device_context) (pouze tuto položku telemetrie je označené)
+Pomocí třídy kontextu cloud:
 ```Java
-telemetry.getContext().getDevice().setRoleName("My Component Name");
+telemetryClient.getContext().getCloud().setRole("My Component Name");
 ```
 
 ## <a name="next-steps"></a>Další postup

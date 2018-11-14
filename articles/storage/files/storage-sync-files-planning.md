@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: 0c9c254625ccca27a3525c45da0303f5e045ef44
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: a2864ca743adf4ced1418630940146fed21b7fd5
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50914324"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51625296"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Plánování nasazení Synchronizace souborů Azure
 Azure File Sync umožňuje centralizovat sdílené složky organizace ve službě soubory Azure, při zachování flexibility, výkonu a kompatibility s místními souborového serveru. Azure File Sync transformuje serveru systému Windows na rychlou mezipaměť sdílené složky Azure. Můžete použít jakýkoli protokol dostupný ve Windows serveru pro přístup k datům místně, včetně SMB, NFS a FTPS. Můžete mít libovolný počet mezipamětí po celém světě potřebujete.
@@ -27,7 +27,7 @@ Před získáním na podrobné informace o plánování nasazení služby Azure 
 Služba synchronizace úložiště je prostředek Azure nejvyšší úrovně pro Azure File Sync. Zdroj služby synchronizace úložiště je partnerské zařízení prostředek účtu úložiště a podobně je možné nasadit do skupin prostředků Azure. Distinct prostředku nejvyšší úrovně z prostředek účtu úložiště není nutná, protože služba synchronizace úložiště můžete vytvořit synchronizační relace s více účty úložiště pomocí více skupin synchronizace. Předplatné může mít více prostředky služby synchronizace úložiště, které jsou nasazené.
 
 ### <a name="sync-group"></a>Skupina synchronizace
-Skupina synchronizace definuje topologii synchronizace sady souborů. Koncové body v rámci skupiny synchronizace se udržovat synchronizované mezi sebou. Pokud máte například dvě různé sady souborů, které chcete spravovat pomocí služby Azure File Sync, by vytvořit dvě skupiny synchronizace a přidání různých koncových bodů do všech skupin synchronizace. Služba synchronizace úložiště může být hostitelem libovolný počet skupin synchronizace podle potřeby.  
+Skupina synchronizace definuje topologii synchronizace sady souborů. Koncové body v rámci skupiny synchronizace se mezi sebou synchronizují. Pokud máte například dvě různé sady souborů, které chcete spravovat pomocí služby Azure File Sync, by vytvořit dvě skupiny synchronizace a přidání různých koncových bodů do všech skupin synchronizace. Služba synchronizace úložiště může být hostitelem libovolný počet skupin synchronizace podle potřeby.  
 
 ### <a name="registered-server"></a>Zaregistrovaný server
 Objekt registrovaný server představuje vztah důvěryhodnosti mezi serverem (nebo clusteru) a služba synchronizace úložiště. Může zaregistrovat libovolný počet serverů do instance služby synchronizace úložiště má. Ale serveru (nebo v clusteru) lze dokument zaregistrovat u pouze jedna služba synchronizace úložiště po jednom.
@@ -191,19 +191,9 @@ Pomocí nástroje sysprep na serveru, který má nainstalovaného agenta Azure F
 Pokud cloud na koncovém bodu serveru vrstvení je povoleno, soubory, které proběhne jsou vynechány a není indexované podle Windows Search. Bez vrstvené soubory jsou správně indexovány.
 
 ### <a name="antivirus-solutions"></a>Antivirová řešení
-Protože antivirové ochrany v programu funguje tak, že prohledávání souborů známých škodlivý kód, může způsobit antivirový odvolání vrstvené soubory. Vzhledem k tomu, že vrstvené soubory mít nastaven atribut "offline", doporučujeme konzultaci s dodavatelem softwaru se naučíte konfigurovat jejich řešení Chcete-li přeskočit čtení offline soubory. 
+Protože antivirové ochrany v programu funguje tak, že prohledávání souborů známých škodlivý kód, může způsobit antivirový odvolání vrstvené soubory. Do verze 4.0 a vyšší než agenta Azure File Sync vrstvené soubory sady FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS atribut zabezpečení Windows. Doporučujeme, abyste konzultaci s dodavatelem softwaru se naučíte konfigurovat jejich řešení Chcete-li přeskočit čtení souborů s touto sadou atribut (mnoho tomu automaticky).
 
-Následující řešení zaručeně podporují, přeskakuje se offline soubory:
-
-- [Program Windows Defender](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/configure-extension-file-exclusions-windows-defender-antivirus)
-    - Program Windows Defender automaticky přeskočí čtení souborů, které mají nastaven atribut offline. Jsme otestovali Defender a identifikovat jeden menší problém: Když přidáte server do existující skupiny synchronizace, soubory menší než 800 bajtů se odvolání (Stáhnout) na novém serveru. Tyto soubory zůstanou na novém serveru a nebude vrstvený, protože nesplňují požadavek vrstvení velikost (> 64 kb).
-- [System Center Endpoint Protection (SCEP)](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/configure-extension-file-exclusions-windows-defender-antivirus)
-    - SCEP funguje stejně jako Defender; viz výše
-- [Symantec Endpoint Protection](https://support.symantec.com/en_US/article.tech173752.html)
-- [Zabezpečení koncových bodů McAfee](https://kc.mcafee.com/resources/sites/MCAFEE/content/live/PRODUCT_DOCUMENTATION/26000/PD26799/en_US/ens_1050_help_0-00_en-us.pdf) (viz "Vše, co potřebujete k prohledávání" na stránce 90 PDF)
-- [Kaspersky Anti-Virus](https://support.kaspersky.com/4684)
-- [Sophos Endpoint Protection](https://community.sophos.com/kb/en-us/40102)
-- [TrendMicro OfficeScan](https://success.trendmicro.com/solution/1114377-preventing-performance-or-backup-and-restore-issues-when-using-commvault-software-with-osce-11-0#collapseTwo) 
+Společnosti Microsoft interní antivirových řešení, program Windows Defender a System Center Endpoint Protection (SCEP), i automatické přeskočení čtení souborů, které mají tento atribut nastavit. Jsme otestovali je a identifikovat jeden menší problém: Když přidáte server do existující skupiny synchronizace, soubory menší než 800 bajtů se odvolání (Stáhnout) na novém serveru. Tyto soubory zůstanou na novém serveru a nebude vrstvený, protože nesplňují požadavek vrstvení velikost (> 64 kb).
 
 ### <a name="backup-solutions"></a>Řešení zálohování
 Jako jsou antivirové řešení řešení pro zálohování může způsobit odvolání vrstvené soubory. Doporučujeme použít zálohování sdílené složky Azure místo produktu pro zálohování místních řešení cloudového zálohování.

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2017
 ms.author: magoedte
-ms.openlocfilehash: c76b922d311a0e0bc5af2b4c8a95c2ef2ec09ba1
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: 7b05876214c08c9298cca30e01958e43e2ef81d6
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50914154"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51615327"
 ---
 #  <a name="agent-health-solution-in-azure"></a>Řešení Agent Health v Azure
 Řešení Agent Health v Azure vám pomůže pochopit, u všech agentů odesílajících sestavy přímo do pracovního prostoru Log Analytics nebo skupinu pro správu System Center Operations Manager připojení k Log Analytics, která jsou reagovat a odešlete provozní data.  Můžete také sledovat, kolik agentů je nasazených a jak jsou geograficky distribuováni, a provádět další dotazy, abyste si udrželi přehled o distribuci agentů nasazených v Azure, dalších cloudových prostředích nebo místně.    
@@ -118,4 +118,4 @@ V následující tabulce jsou uvedeny ukázky prohledávání protokolu pro záz
 
 ## <a name="next-steps"></a>Další postup
 
-* Podrobnosti o generování upozornění ze služby Log Analytics najdete v tématu [Upozornění v Log Analytics](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md).
+* Podrobnosti o generování upozornění ze služby Log Analytics najdete v tématu [Upozornění v Log Analytics](../monitoring-and-diagnostics/monitoring-overview-alerts.md). 

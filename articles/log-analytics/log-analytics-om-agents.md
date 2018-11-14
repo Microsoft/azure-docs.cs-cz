@@ -12,18 +12,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/02/2018
+ms.date: 11/13/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: fcdc14534e833ee394645e19cf8bc4bd9d6a7aaa
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 6ed1d9fc810bfa14beed83609d13c1010d479ed9
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50961139"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51622241"
 ---
 # <a name="connect-operations-manager-to-log-analytics"></a>Připojení nástroje Operations Manager ke službě Log Analytics
-Nástroj Operations Manager můžete integrovat do svého pracovního prostoru Log Analytics, abyste nepřišli o své investice do systému System Center Operations Manager a mohli využívat rozšířené možnosti Log Analytics. Díky tomu budete moct využívat to, co nabízí Log Analytics, a současně nadále používat nástroj Operations Manager pro tyto činnosti:
+Chcete-li zachovat stávající investice do [System Center Operations Manager](https://docs.microsoft.com/system-center/scom/key-concepts?view=sc-om-1807) a použití rozšířené možnosti službou Log Analytics, můžete integrovat nástroje Operations Manager se službou pracovního prostoru Log Analytics. Díky tomu budete moct využívat to, co nabízí Log Analytics, a současně nadále používat nástroj Operations Manager pro tyto činnosti:
 
 * Monitorování stavu vašich IT služeb pomocí nástroje Operations Manager
 * Údržba integrace s vašimi řešeními ITSM pro podporu správy incidentů a problémů
@@ -44,7 +44,7 @@ Než začnete, zkontrolujte následující požadavky.
 
 * Log Analytics podporuje pouze System Center Operations Manager 1807, Operations Manager 1801, Operations Manager 2016, Operations Manager 2012 SP1 UR6 nebo vyšší a Operations Manager 2012 R2 UR2 nebo novější. V nástrojích Operations Manager 2012 SP1 UR7 a Operations Manager 2012 R2 UR3 je přidaná podpora proxy serverů.
 * Všichni agenti nástroje Operations Manager musí splňovat minimální požadavky na podporu. Ujistěte se, že jsou agenti na minimální aktualizace, jinak komunikaci agenta Windows může selhat a způsobit chyby v protokolu událostí nástroje Operations Manager.
-* Pracovní prostor Log Analytics. Další informace najdete v tématu [připojení počítačů ke službě Log Analytics z vašeho prostředí](log-analytics-concept-hybrid.md).
+* Pracovní prostor Log Analytics. Další informace najdete v tématu [přehled pracovního prostoru Log Analytics](log-analytics-manage-access.md?toc=/azure/azure-monitor/toc.json) ).
 * Ověření pro Azure pomocí účtu, který je členem skupiny [role Přispěvatel Log Analytics](log-analytics-manage-access.md#manage-accounts-and-users).  
 
 >[!NOTE]

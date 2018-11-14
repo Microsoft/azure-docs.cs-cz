@@ -13,55 +13,50 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: report-monitor
-ms.date: 06/21/2018
+ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: bc8d3525ab7cdbdf298ecbbc686ced16fa7bc77c
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: ae962cba5e3d08661eb1c93edfc2feb221a9367e
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42055022"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51623761"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Sestavy aktivit přihlašování na portálu Azure Active Directory
 
-Generování sestav Azure Active Directory (Azure AD) na webu [Azure Portal](https://portal.azure.com) umožňuje získat všechny informace potřebné ke zjištění stavu vašeho prostředí.
-
-Architektuře generování sestav v Azure Active Directory se skládá z těchto součástí:
+Architektura generování sestav v Azure Active Directory (Azure AD) se skládá z následujících součástí:
 
 - **Aktivita** 
-    - **Aktivity přihlašování** – informace o použití spravovaných aplikací a aktivitách přihlašování uživatelů
-    - **Protokoly auditu** – informace aktivit systému o správě uživatelů a skupin, spravovaných aplikacích a aktivitách adresářů
+    - **Přihlášení** – informace o použití spravovaných aplikací a aktivitách přihlašování uživatelů.
+    - **Protokoly auditu** - [protokoly auditu](concept-audit-logs.md) poskytují informace aktivit systému o uživatelích a Správa skupin, spravovaných aplikacích a aktivitách adresářů.
 - **Zabezpečení** 
-    - **Riziková přihlášení** –Rizikové přihlášení je indikátorem pokusu o přihlášení, který mohl provést někdo, kdo není legitimním vlastníkem uživatelského účtu. Další podrobnosti najdete v tématu Riziková přihlášení.
-    - **Uživatelé označení příznakem rizika** – Rizikový uživatel je indikátorem uživatelského účtu, který mohl být ohrožený. Další podrobnosti najdete v tématu Uživatelé označení příznakem rizika.
+    - **Riziková přihlášení** – [rizikových přihlášení](concept-risky-sign-ins.md) je indikátorem pokusu přihlásit, který mohl provést někdo, kdo není legitimním vlastníkem uživatelského účtu.
+    - **Uživatelé označení příznakem rizika** – [rizikový uživatel](concept-user-at-risk.md) je indikátorem uživatelského účtu, který mohl být ohrožený.
 
-V toto tématu najdete přehled aktivit přihlašování.
+Toto téma poskytuje přehled o sestavy přihlášení.
 
 ## <a name="prerequisites"></a>Požadavky
 
 ### <a name="who-can-access-the-data"></a>Kdo má přístup k datům?
-* Uživatelé v správce zabezpečení, čtenář zabezpečení, role čtenáře sestav
+* Uživatelé v rolích zabezpečení správce, čtenáře zabezpečení a čtečky sestav
 * Globální správci
-* Každý uživatel (bez oprávnění správce) může přistupovat k vlastnímu přihlašování. 
+* Kromě toho může každý uživatel (bez oprávnění správce) přístup k vlastní přihlášení 
 
 ### <a name="what-azure-ad-license-do-you-need-to-access-sign-in-activity"></a>Jaká licence Azure AD je potřeba pro přístup k přihlašovací aktivitě?
 * Klient musí mít přiřazenou licenci Azure AD Premium, aby mohl zobrazit sestavu veškerých aktivit přihlašování.
 
+## <a name="sign-ins-report"></a>Sestava přihlášení
 
-## <a name="sign-in-activities"></a>Aktivity přihlašování
-
-Na základě informací poskytnutých sestavou přihlašování uživatelů najdete odpovědi na otázky tohoto typu:
+Sestava přihlášení uživatele poskytuje odpovědi na následující otázky:
 
 * Jaký je vzorec přihlašování uživatele?
 * Kolik uživatelů se přihlásilo za týden?
 * Jaký je stav těchto přihlášení?
 
-Váš první vstupní bod pro všechna přihlášení data aktivit je **přihlášení** v části aktivity služby **Azure Active Directory**.
-
+Sestavy přihlášení můžete přistupovat výběrem **přihlášení** v **aktivity** část **Azure Active Directory** okna portálu [webuAzureportal](https://portal.azure.com).
 
 ![Aktivita přihlašování](./media/concept-sign-ins/61.png "Aktivita přihlašování")
-
 
 Protokol přihlášení má výchozí zobrazení seznamu, které obsahuje následující položky:
 
@@ -82,7 +77,7 @@ To umožňuje zobrazit další pole, nebo odebrat pole, která jsou už zobrazen
 
 ![Aktivita přihlašování](./media/concept-sign-ins/02.png "Aktivita přihlašování")
 
-Kliknutím na položku v zobrazení seznamu k ní zobrazíte všechny dostupné podrobnosti ve vodorovném zobrazení.
+Vyberte položku v zobrazení seznamu zobrazíte podrobnější informace.
 
 ![Aktivita přihlašování](./media/concept-sign-ins/03.png "Aktivita přihlašování")
 
@@ -100,7 +95,7 @@ Abyste omezili zobrazovaná data na úroveň, která vám vyhovuje, můžete fil
 - Uživatel
 - Aplikace
 - Stav přihlášení
-- Stav detekce rizik
+- Podmíněný přístup
 - Datum
 
 ![Aktivita přihlašování](./media/concept-sign-ins/04.png "Aktivita přihlašování")
@@ -115,11 +110,12 @@ Filtr **Stav přihlášení** umožňuje vybrat jednu z následujících možnos
 - Úspěch
 - Selhání
 
-Filtr **Detekované riziko** umožňuje vybrat jednu z následujících možností:
+**Podmíněného přístupu** filtr umožňuje vybrat stav zásad certifikační Autority pro přihlášení:
 
 - Vše
-- Ano
-- Ne
+- Nevztahuje se.
+- Úspěch
+- Selhání
 
 Filtr **Datum** umožňuje definovat časový rámec pro vracená data.  
 Možné hodnoty:
@@ -149,11 +145,14 @@ Pokud do svého zobrazení přihlášení přidáte další pole, tato pole se a
 
 ## <a name="download-sign-in-activities"></a>Stažení aktivit přihlašování
 
-Pokud chcete pracovat s daty aktivit přihlašování mimo web Azure Portal, můžete si je stáhnout. Kliknutím na tlačítko **Stáhnout** vytvoříte soubor CSV s 5000 nejnovějších záznamů.  Kromě tlačítka pro stahování máte také na webu Azure Portal možnost vygenerovat skript, který data stáhne.  
+Je možné [stáhnout data přihlášení](quickstart-download-sign-in-report.md) Pokud budete chtít pracovat s ním mimo na webu Azure portal. Kliknutím na tlačítko **Stáhnout** vytvoříte soubor CSV s 5000 nejnovějších záznamů.  Kromě tlačítko Stáhnout na webu Azure portal také poskytuje možnost [vygenerovat skript k stáhnout data](tutorial-signin-logs-download-script.md).  
 
 ![Stáhnout](./media/concept-sign-ins/71.png "Stáhnout")
 
 Pokud potřebujete větší flexibilitu, můžete použít řešení se skriptem. Kliknutím na **skript** vytvoří skript Powershellu, který zahrnuje všechny filtry, které jste nastavili. Stáhněte a spusťte tento skript **režimu správce** ke generování souboru CSV. 
+
+> [!IMPORTANT]
+> Počet záznamů, které si můžete stáhnout, které je omezená [zásady uchování sestav Azure Active Directory](reference-reports-data-retention.md).  
 
 ### <a name="running-the-script-on-a-windows-10-machine"></a>Spuštění skriptu na počítač s Windows 10
 
@@ -164,28 +163,18 @@ Pokud chcete spustit skript v **Windows 10** počítače, musíte nejprve prové
 3. Spustit **Set-ExecutionPolicy unrestricted** a zvolte **Ano všem**. 
 4. Teď můžete spouštět staženého skriptu prostředí PowerShell v režimu správce k vygenerování souboru CSV.
 
-Kromě technické implementace je počet záznamů, které si můžete stáhnout, také omezený [zásadami uchování sestav Azure Active Directory](reference-reports-data-retention.md).  
+## <a name="sign-ins-data-shortcuts"></a>Klávesové zkratky data přihlášení
 
-
-## <a name="sign-in-activities-shortcuts"></a>Zkratky pro aktivity přihlašování
-
-Kromě Azure Active Directory, na webu Azure portal vám poskytne další vstupní body k přihlášení v datech o aktivitách:
+Kromě služby Azure AD na webu Azure portal vám poskytne další vstupní body k datům přihlášení:
 
 - Přehled ochrany zabezpečení identit
 - Uživatelé
 - Skupiny
 - Podnikové aplikace
 
+### <a name="users-sign-ins-data-in-identity-security-protection"></a>Data přihlašování uživatelů v ochrany zabezpečení identit
 
-### <a name="users-sign-ins-activities"></a>Aktivity přihlašování uživatelů
-
-Na základě informací poskytnutých sestavou přihlašování uživatelů najdete odpovědi na otázky tohoto typu:
-
-- Jaký je vzorec přihlašování uživatele?
-- Kolik uživatelů se přihlásilo za týden?
-- Jaký je stav těchto přihlášení?
-
-Vaším vstupním bodem k těmto datům je graf přihlašování uživatelů na stránce přehledu **ochrany zabezpečení identit**. V grafu přihlašování uživatelů jsou znázorněny týdenní agregace přihlášení všech uživatelů za dané časové období. Výchozí časové období je 30 dnů.
+Uživatele v grafu přihlašování v **ochrany zabezpečení identit** stránka s přehledem jsou znázorněny týdenní agregace přihlášení všech uživatelů v daném časovém období. Výchozí časové období je 30 dnů.
 
 ![Aktivita přihlašování](./media/concept-sign-ins/06.png "Aktivita přihlašování")
 
@@ -211,7 +200,6 @@ Kliknutím na položku zobrazíte další podrobnosti o přihlašovací operaci:
 - Datum
 - Vyžaduje se MFA
 - Stav přihlášení
-
  
 Na stránce **Uživatelé** zobrazíte úplný přehled všech přihlášení uživatelů kliknutím na **Přihlášení** v části **Aktivita**.
 
@@ -243,9 +231,9 @@ Možnost **Přihlášení** poskytuje úplný přehled o všech událostech při
 
 ![Aktivita přihlašování](./media/concept-sign-ins/11.png "Aktivita přihlašování")
 
-
-
 ## <a name="next-steps"></a>Další postup
 
-Pokud se chcete dozvědět více o kódech chyb aktivit přihlašování, přečtěte si téma [Kódy chyb v sestavě aktivit přihlašování na portálu Azure Active Directory](reference-sign-ins-error-codes.md).
+* [Kódy chyb sestavě aktivit přihlašování](reference-sign-ins-error-codes.md)
+* [Zásady uchovávání dat služby Azure AD](reference-reports-data-retention.md)
+* [Latence sestav Azure AD](reference-reports-latencies.md)
 

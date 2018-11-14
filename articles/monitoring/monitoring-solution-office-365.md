@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2018
 ms.author: bwren
-ms.openlocfilehash: 04211a00bcdce3baf8060e00a9ce81831a39acb9
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 22e22a2eb6eefb84c6745de9b19e7710913b4ee7
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51257659"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51616278"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Řešení pro správu Office 365 v Azure (Preview)
 
@@ -711,4 +711,4 @@ V následující tabulce jsou uvedeny ukázky hledání v protokolech pro zázna
 ## <a name="next-steps"></a>Další postup
 * K zobrazení podrobných údajů o aktualizaci použijte Hledání v protokolu služby [Log Analytics](../log-analytics/log-analytics-queries.md).
 * [Vytvářejte vlastní řídicí panely](../log-analytics/log-analytics-dashboards.md) zobrazíte váš oblíbený vyhledávací dotazy Office 365.
-* [Vytvořit upozornění](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md) proaktivně upozornit důležité aktivit Office 365.  
+* [Vytvořit upozornění](../monitoring-and-diagnostics/monitoring-overview-alerts.md) proaktivně upozornit důležité aktivit Office 365.  

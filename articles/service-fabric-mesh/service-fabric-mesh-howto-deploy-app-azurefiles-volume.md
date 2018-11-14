@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 08/09/2018
 ms.author: ryanwi
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 3b350deff2883761af6a3a2b3c5c9ef22235bde0
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: cb5b421c1bcfe888d65335f3ab7f67bed80eec34
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42054616"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51614255"
 ---
 # <a name="store-state-in-an-azure-service-fabric-mesh-application-by-mounting-an-azure-files-based-volume-inside-the-container"></a>Stav Store v aplikaci Azure Service Fabric sítě pomocí připojení soubory Azure na základě objemu uvnitř kontejneru
 
@@ -62,10 +62,10 @@ Vytvoření aplikace a související prostředky, pomocí následujícího pří
 
 `storageAccountKey` Parametr v šabloně je zabezpečený řetězec. Se nebude zobrazovat ve stavu nasazení a `az mesh service show` příkazy. Ujistěte se, že je správně zadán v následujícím příkazu.
 
-Následující příkaz nasadí aplikaci Linux pomocí [mesh_rp.linux.json šablony](https://sfmeshsamples.blob.core.windows.net/templates/counter/mesh_rp.linux.json). Chcete-li nasadit aplikaci s Windows, použijte [mesh_rp.windows.json šablony](https://sfmeshsamples.blob.core.windows.net/templates/counter/mesh_rp.windows.json). Mějte na paměti, že může trvat delší dobu nasazení větších imagí kontejnerů.
+Následující příkaz nasadí aplikaci Linux pomocí [counter.azurefilesvolume.linux.json šablony](https://sfmeshsamples.blob.core.windows.net/templates/counter/counter.azurefilesvolume.linux.json). Chcete-li nasadit aplikaci s Windows, použijte [counter.azurefilesvolume.windows.json šablony](https://sfmeshsamples.blob.core.windows.net/templates/counter/counter.azurefilesvolume.windows.json). Mějte na paměti, že může trvat delší dobu nasazení větších imagí kontejnerů.
 
 ```azurecli-interactive
-az mesh deployment create --resource-group myResourceGroup --template-uri https://sfmeshsamples.blob.core.windows.net/templates/counter/mesh_rp.linux.json  --parameters "{\"location\": {\"value\": \"eastus\"}, \"fileShareName\": {\"value\": \"<fileShareName>\"}, \"storageAccountName\": {\"value\": \"<storageAccountName>\"}, \"storageAccountKey\": {\"value\": \"<storageAccountKey>\"}}"
+az mesh deployment create --resource-group myResourceGroup --template-uri https://sfmeshsamples.blob.core.windows.net/templates/counter/counter.azurefilesvolume.linux.json  --parameters "{\"location\": {\"value\": \"eastus\"}, \"fileShareName\": {\"value\": \"<fileShareName>\"}, \"storageAccountName\": {\"value\": \"<storageAccountName>\"}, \"storageAccountKey\": {\"value\": \"<storageAccountKey>\"}}"
 ```
 
 V několika minutách se příkaz by měl vrátit s `counterApp has been deployed successfully on counterAppNetwork with public ip address <IP Address>`
@@ -97,5 +97,5 @@ az group delete --resource-group myResourceGroup
 ## <a name="next-steps"></a>Další postup
 
 - Zobrazit soubory Azure svazku ukázkovou aplikaci na [Githubu](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/src/counter).
-- Další informace o modelu prostředků služby Service Fabric najdete v tématu [modelu služby Service Fabric mřížky prostředků](service-fabric-mesh-service-fabric-resources.md).
-- Další informace o Service Fabric sítě najdete v článku [sítě pro Service Fabric přehled](service-fabric-mesh-overview.md).
+- Další informace o modelu prostředků Service Fabric najdete v článku o [modelu prostředků Service Fabric Mesh](service-fabric-mesh-service-fabric-resources.md).
+- Další informace o službě Service Fabric Mesh najdete v článku s [přehledem služby Service Fabric Mesh](service-fabric-mesh-overview.md).

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/24/2018
+ms.date: 11/13/2018
 ms.author: bwren
-ms.openlocfilehash: 653ed7e4cdbd2df166e21acfd1e376638cad6290
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 52476488307b9467665b1b8df35c92419825078f
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51257220"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51622376"
 ---
 # <a name="configure-service-map-in-azure"></a>Konfigurace řešení Service Map v Azure
 Service Map automaticky rozpozná komponenty aplikace v systémech Windows a Linux a mapuje komunikaci mezi službami. Můžete ho zobrazit servery přirozeným způsobem – propojené systémy, které doručují důležité služby. Service Map ukazuje propojení mezi servery, procesy a porty v jakékoli architektuře propojené TCP žádnou konfiguraci kromě instalace agenta vyžaduje.
@@ -133,8 +133,8 @@ Následující část obsahuje seznam podporovaných operačních systémech pro
 
 | Připojený zdroj | Podporováno | Popis |
 |:--|:--|:--|
-| Agenti systému Windows | Ano | Řešení Service Map analyzuje a shromažďuje data z počítačů s Windows. <br><br>Kromě [agenta Log Analytics pro Windows](../log-analytics/log-analytics-concept-hybrid.md), agenti Windows vyžadují agent služby Microsoft Dependency. Úplný seznam verzí operačních systémů najdete v [podporovaných operačních systémech](#supported-operating-systems). |
-| Agenti systému Linux | Ano | Řešení Service Map analyzuje a shromažďuje data z počítačů s Linuxem. <br><br>Kromě [agenta Log Analytics pro Linux](../log-analytics/log-analytics-concept-hybrid.md), vyžadují agent služby Microsoft Dependency agenti systému Linux. Úplný seznam verzí operačních systémů najdete v [podporovaných operačních systémech](#supported-operating-systems). |
+| Agenti systému Windows | Ano | Řešení Service Map analyzuje a shromažďuje data z počítačů s Windows. <br><br>Kromě [agenta Log Analytics pro Windows](../log-analytics/log-analytics-agent-overview.md), agenti Windows vyžadují agent služby Microsoft Dependency. Úplný seznam verzí operačních systémů najdete v [podporovaných operačních systémech](#supported-operating-systems). |
+| Agenti systému Linux | Ano | Řešení Service Map analyzuje a shromažďuje data z počítačů s Linuxem. <br><br>Kromě [agenta Log Analytics pro Linux](../log-analytics/log-analytics-agent-overview.md), vyžadují agent služby Microsoft Dependency agenti systému Linux. Úplný seznam verzí operačních systémů najdete v [podporovaných operačních systémech](#supported-operating-systems). |
 | Skupina pro správu nástroje System Center Operations Manager | Ano | Řešení Service Map analyzuje a shromažďuje data z agentů Windows a Linux v připojeného [skupiny pro správu System Center Operations Manager](../log-analytics/log-analytics-om-agents.md). <br><br>Vyžaduje se přímé připojení z počítače s agentem nástroje System Center Operations Manager ke službě Log Analytics. |
 | Účet služby Azure Storage | Ne | Řešení Service Map shromažďuje data z počítačů s agenty, takže není žádná data z něj získat ze služby Azure Storage. |
 
@@ -230,7 +230,7 @@ Agent závislostí můžete nainstalovat ručně počítačích s Windows spušt
 
 Použijte následující postup k instalaci agenta závislostí na každém počítači s Windows:
 
-1.  Instalace agenta Log Analytics pro Windows, jednu z metod popsaných v následující [shromažďovat data v hybridním prostředí pomocí agenta Log Analytics](../log-analytics/log-analytics-concept-hybrid.md).
+1.  Instalace agenta Log Analytics pro Windows, jednu z metod popsaných v následující [přehled agenta Log Analytics](../log-analytics/log-analytics-agent-overview.md).
 2.  Stáhnout agenta Windows a spusťte ho pomocí následujícího příkazu: 
     
     `InstallDependencyAgent-Windows.exe`
@@ -258,7 +258,7 @@ Agenta závislostí je nainstalován na počítačích s Linuxem z `InstallDepen
 
 Instalace agenta závislostí na každý počítač s Linuxem pomocí následujících kroků:
 
-1.  Instalace agenta Log Analytics, jednu z metod popsaných v následující [shromažďovat data v hybridním prostředí pomocí agenta Log Analytics](../log-analytics/log-analytics-concept-hybrid.md).
+1.  Instalace agenta Log Analytics, jednu z metod popsaných v následující [přehled agenta Log Analytics](../log-analytics/log-analytics-agent-overview.md).
 2.  Instalace agenta závislostí Linux jako uživatel root spuštěním následujícího příkazu:
     
     `sh InstallDependencyAgent-Linux64.bin`

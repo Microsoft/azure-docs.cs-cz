@@ -5,14 +5,14 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 10/29/2018
+ms.date: 11/13/2018
 ms.author: cherylmc
-ms.openlocfilehash: bc48101decce9a92a01b8e6958bed08850a94b7e
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 8776a07f4fb1ffcc573bfedace38280576fa3184
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50241391"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51622957"
 ---
 # <a name="about-virtual-network-gateways-for-expressroute"></a>O branách virtuálních sítí pro ExpressRoute
 Bránu virtuální sítě slouží k posílání síťového provozu mezi virtuálními sítěmi Azure a místními umístěními. Můžete použít virtuální síťová brána lze použít pro provoz ExpressRoute nebo VPN provoz. Tento článek se týká bran virtuální sítě ExpressRoute.
@@ -43,19 +43,19 @@ Následující tabulka ukazuje typy brány a odhadovanou funkční. Tato tabulka
 > 
 >
 
-### <a name="zrgw"></a>Zónově redundantní brány skladové položky (Preview)
+### <a name="zrgw"></a>Zónově redundantní SKU brány
 
 Můžete také nasadit brány ExpressRoute v zónách dostupnosti Azure. To fyzicky a logicky je odděluje do různých zón dostupnosti, chrání před výpadky na úrovni zóny připojení k místní síti do Azure.
 
 ![Zónově redundantní brány ExpressRoute](./media/expressroute-about-virtual-network-gateways/zone-redundant.png)
 
-Zónově redundantní brány používají konkrétní nové SKU brány pro bránu ExpressRoute. Nové SKU jsou nyní dostupné v **ve verzi Public Preview**.
+Zónově redundantní brány používají konkrétní nové SKU brány pro bránu ExpressRoute.
 
 * ErGw1AZ
 * ErGw2AZ
 * ErGw3AZ
 
-Nové SKU brány podporovat i jiné možnosti nasazení, aby co nejlépe odpovídaly vašim potřebám. Při vytváření brány virtuální sítě pomocí nové SKU brány, máte také možnost k nasazení brány v konkrétní zóně. To se označuje jako brána oblastmi. Při nasazení oblastmi brány všechny instance brány jsou nasazené ve stejné zóně dostupnosti. K registraci ve verzi Preview, najdete v článku [vytvořit bránu virtuální sítě zónově redundantní](../../articles/vpn-gateway/create-zone-redundant-vnet-gateway.md).
+Nové SKU brány podporovat i jiné možnosti nasazení, aby co nejlépe odpovídaly vašim potřebám. Při vytváření brány virtuální sítě pomocí nové SKU brány, máte také možnost k nasazení brány v konkrétní zóně. To se označuje jako brána oblastmi. Při nasazení oblastmi brány všechny instance brány jsou nasazené ve stejné zóně dostupnosti. 
 
 ## <a name="resources"></a>Rutiny Powershellu a rozhraní REST API
 Pro další zdroje technických informací a požadavky na konkrétní syntaxe při použití rozhraní REST API a rutin prostředí PowerShell pro konfiguraci brány virtuální sítě naleznete na následujících stránkách:
@@ -69,3 +69,5 @@ Pro další zdroje technických informací a požadavky na konkrétní syntaxe p
 Zobrazit [přehled ExpressRoute](expressroute-introduction.md) pro další informace o konfiguracích dostupné připojení.
 
 Zobrazit [vytvořit bránu virtuální sítě pro ExpressRoute](expressroute-howto-add-gateway-resource-manager.md) pro další informace o vytváření brány ExpressRoute.
+
+Zobrazit [vytvořit bránu virtuální sítě zónově redundantní](../../articles/vpn-gateway/create-zone-redundant-vnet-gateway.md) pro další informace o konfiguraci brány zónově redundantní.

@@ -4,16 +4,16 @@ description: Další informace o životním cyklu, který prochází podrobný p
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 10/25/2018
+ms.date: 11/12/2018
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 4adf427727e7244bbde64a673e7353c1f8270c8a
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: fcfffe6094361c8b47b1cc7ce42cb79561261b15
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50094574"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51620591"
 ---
 # <a name="understand-the-deployment-sequence-in-azure-blueprints"></a>Vysvětlení pořadí nasazení v Azure podrobné plány
 
@@ -47,6 +47,9 @@ V každé **skupiny prostředků** artefaktu, následovně pořadí slouží pro
 Při vytváření velké plány, může být nezbytné pro prostředky vytvořené v určitém pořadí. Nejběžnější vzor používání tohoto scénáře je při podrobný plán obsahuje několik šablon Azure Resource Manageru. Plány zpracovává tohoto modelu tím, že pořadí řazení, aby byla definována.
 
 Řazení se provádí tak, že definujete `dependsOn` vlastností v kódu JSON. Podrobný plán (pro skupiny prostředků) a objekty artefaktů podporují tuto vlastnost. `dependsOn` je pole řetězců názvů artefaktů, které konkrétní artefaktů je potřeba vytvořit předtím, než je vytvořen.
+
+> [!NOTE]
+> **Skupina prostředků** podporují artefakty `dependsOn` vlastnost, ale nemůže být cílem `dependsOn` žádným typem artefaktů.
 
 ### <a name="example---blueprint-with-ordered-resource-group"></a>Příklad: podrobného plánu se skupinou prostředků seřazený
 

@@ -11,26 +11,22 @@ ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: andrl
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2611c25764503551c4da918d06bcaabe315cbf7c
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 6ace11cf3704ddbd503c0202d45874670476198e
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50963077"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51624823"
 ---
 # <a name="consistency-levels-in-azure-cosmos-db"></a>Úrovně konzistence ve službě Azure Cosmos DB
 
 Distribuované databáze spoléhat na replikaci pro vysokou dostupnost, s nízkou latencí nebo obojí, ujistěte se, základní kompromis mezi konzistence čtení a dostupnosti, latence a propustnosti. Většina komerčně dostupný distribuovaných databází požádejte vývojáři zvolit mezi těmito dvěma modely extreme konzistence: silnou konzistenci a konečné konzistence. Zatímco [linearizovatelnosti](http://cs.brown.edu/~mph/HerlihyW90/p463-herlihy.pdf) nebo model pro zajištění konzistence je zlatým standardem programovatelnosti dat, přidá strmá cenu vyšší latence (v stabilního stavu) a nižší dostupnost (při selhání). Na druhé straně konečné konzistence nabízí vyšší dostupnost a lepší výkon, ale je obtížné, jak programovat aplikace.
 
-Cosmos DB blíží konzistence dat jako celé spektrum od volby místo dvou extrémů. Silná konzistence a konečné konzistence jsou dva elementy end třídy spektra, existuje mnoho voleb konzistence podél spektra. Tyto možnosti konzistence umožňují vývojářům přesné volby a detailní kompromisy s ohledem na vysokou dostupnost nebo výkon. Cosmos DB umožňuje vývojářům vybírat (nejsilnější do nejslabší) – spektra konzistence mezi pět jasně definované modely konzistence **silné**, **omezená neaktuálnost**, **relace** , **konzistentní předpona**, a **konečné**. Každá z těchto modelů konzistence je dobře definovaný a intuitivní a je možné u konkrétních scénářů reálného světa. Zadejte každou pět modelů konzistence [dostupnost a výkon kompromisy](consistency-levels-tradeoffs.md) a je zajištěná komplexní smlouvy SLA.
+Cosmos DB blíží konzistence dat jako celé spektrum od volby místo dvou extrémů. Silná konzistence a konečné konzistence jsou dva elementy end třídy spektra, existuje mnoho voleb konzistence podél spektra. Tyto možnosti konzistence umožňují vývojářům přesné volby a detailní kompromisy s ohledem na vysokou dostupnost nebo výkon. Cosmos DB umožňuje vývojářům vybírat (nejsilnější do nejslabší) – spektra konzistence mezi pět jasně definované modely konzistence **silné**, **omezená neaktuálnost**, **relace** , **konzistentní předpona**, a **konečné**. Každá z těchto modelů konzistence je dobře definovaný a intuitivní a je možné u konkrétních scénářů reálného světa. Zadejte každou pět modelů konzistence [dostupnost a výkon kompromisy](consistency-levels-tradeoffs.md) a je zajištěná komplexní smlouvy SLA. Následující obrázek ukazuje různé úrovním jako škála možností:
 
 ![Konzistence jako spektrum](./media/consistency-levels/five-consistency-levels.png)
 
-Úrovně konzistence jsou nezávislá na oblast. Úroveň konzistence účtu Cosmos DB je zaručeno, že pro všechny operace čtení bez ohledu na to následující vlastnosti:
-
-- Oblast, ze které se obsluhují čtení a zápisy
-- Počet oblastí přidružených k účtu Cosmos
-- Určuje, zda váš účet je nakonfigurovaný pomocí jednoho nebo více oblastí zápisu
+Úrovně konzistence jsou nezávislá na oblast. Úroveň konzistence účtu Cosmos DB je zaručeno, že pro všechny operace bez ohledu na oblast, ze kterého operací čtení a zápisu jsou poskytovány, počet oblastí přidružených k účtu Cosmos nebo zda váš účet je nakonfigurovaný s jedním čtení nebo více oblastí zápisu.
 
 ## <a name="scope-of-the-read-consistency"></a>Rozsah konzistence čtení
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 7761b6f034eae6b23be51930a1498957debafe8b
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 3e792eb9ab2e2902bfc9c84db7c1c344fb0cf67f
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51566580"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51622338"
 ---
 # <a name="analyze-flight-delay-data-by-using-hive-in-hdinsight"></a>Analyzovat zpoždění letů pomocí Hivu ve službě HDInsight
 Hive poskytuje způsob zpracování úlohy Apache Hadoop MapReduce nástrojem podobném SQL skriptovacího jazyka nazvaného  *[HiveQL][hadoop-hiveql]*, které lze použít ke shrnutí, dotazování a analýze velkých objemů dat.
@@ -639,7 +639,7 @@ Skript HiveQL provede následující:
     catch{Connect-AzureRmAccount}
     #EndRegion
 
-    #region - Create and validate Azure resouce group
+    #region - Create and validate Azure resource group
     try{
         Get-AzureRmResourceGroup -Name $resourceGroupName
     }

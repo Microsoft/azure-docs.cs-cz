@@ -12,24 +12,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/09/2018
+ms.date: 11/08/2018
 ms.author: barbkess
-ms.openlocfilehash: 3a9f27a92a4bc808ff9bcf04b66523a92f1bcf03
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 3fe268b6491a2a3cc1237173506ef5a91beb7d26
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44356396"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51625077"
 ---
-# <a name="how-to-choose-which-application-type-to-use-when-adding-an-application"></a>Jak zvolit typ aplikace, který se má použít při přidávání aplikace
+# <a name="choosing-the-application-type-when-adding-an-application-in-azure-active-directory"></a>Volba typu aplikace, při přidávání aplikace v Azure Active Directory
+Další informace o čtyři typy aplikací, které můžete přidat do služby Azure Active Directory (Azure AD). Při přidávání aplikace v Azure Active Directory, zobrazí se výzva k výběru jednoho typu čtyři aplikace. 
 
-Tento článek vám pomůže lépe porozumět čtyři hlavní typy aplikací, které můžete integrovat se službou Azure AD:
-
-* Co je podporováno každou z nich
-* Proč je možné, která aplikace
-* Postup konfigurace vlastností core tyto aplikace, třeba jak se uživatelé budou **zřízené**, nebo co **jednotného přihlašování** technologie používat.
-
-## <a name="supported-application-types-in-azure-ad"></a>Typy podporovaných aplikací ve službě Azure AD
+## <a name="what-are-the-types-of-applications"></a>Jaké jsou typy aplikací?
 
 Azure AD podporuje čtyři typy hlavní aplikace, které můžete přidat pomocí **přidat** funkce nalezené pod **podnikové aplikace**. Mezi ně patří:
 
@@ -41,7 +36,7 @@ Azure AD podporuje čtyři typy hlavní aplikace, které můžete přidat pomoc�
 
 -   **Aplikace mimo galerii** – používání vlastních aplikací. Libovolný webový odkaz, který chcete nebo jakékoliv aplikace, která vykreslí pole uživatelského jména a hesla, podporuje přes protokol SAML nebo OpenID Connect nebo SCIM, kterou chcete integrovat pro jednotné přihlašování s Azure AD podporuje.
 
-## <a name="features-and-capabilities-supported-by-all-the-preceding-application-types"></a>Funkce a možnosti, které jsou podporovány všechny předchozí typy aplikací
+## <a name="features-and-capabilities-supported-by-the-application-types"></a>Funkce a možnosti podporované typy aplikací
 
 Žádné typy předchozí čtyři aplikací ve službě Azure AD jsou podporovány následující funkce:
 

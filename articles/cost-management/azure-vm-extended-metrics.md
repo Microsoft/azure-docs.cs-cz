@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/27/2018
+ms.date: 11/13/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: bc3eb2721dd9fc0c4cde407a8257f6be73201a2a
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.openlocfilehash: 5f1b4cf63379f0007b87c44164168b8510612f52
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47423353"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51624093"
 ---
 # <a name="add-extended-metrics-for-azure-virtual-machines"></a>Přidání rozšířené metriky pro virtuální počítače Azure
 
@@ -67,6 +67,8 @@ Uvědomte si, že Azure a Linuxu monitorování na úrovni hosta se vyžaduje ú
 Při vytváření nové virtuální počítače, na kartě Správa, vyberte **na** pro **operačního systému hosta diagnostiky**.
 
 ![Povolte diagnostiku hostovaného operačního systému](./media/azure-vm-extended-metrics/new-enable-diag.png)
+
+Další informace o povolení rozšířené metriky pro virtuální počítače Azure najdete v tématu [porozumění a pomocí agenta Azure Linux](../virtual-machines/extensions/agent-linux.md) a [agenta virtuálního počítače Azure přehled](../virtual-machines/extensions/agent-windows.md).
 
 ## <a name="resource-manager-credentials"></a>Přihlašovací údaje správce prostředků
 

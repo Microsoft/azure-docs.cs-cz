@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2017
 ms.author: jeedes
-ms.openlocfilehash: f7fa4c9b0926d796c0c12b39d0056fe72e4028c7
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 3dac1d18a021c8d6c1b6e3db370c60b9aa782f1c
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44349020"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51625347"
 ---
 # <a name="tutorial-configure-box-for-automatic-user-provisioning"></a>Kurz: Konfigurace pole pro automatické zřizování uživatelů
 
@@ -51,11 +51,11 @@ Před konfigurací a povolení služby zřizování, je potřeba rozhodnout, jak
 
 [Přiřadit uživatele nebo skupiny k podnikové aplikace](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
 
-## <a name="assign-users-and-groups"></a>Přiřazení uživatelů a skupin
+## <a name="assign-users-and-groups"></a>Přiřadit uživatele a skupiny
 **Pole > Uživatelé a skupiny** karta na portálu Azure portal umožňuje určit, kteří uživatelé a skupiny by měl být udělen přístup k poli. Přiřazení uživatele nebo skupiny způsobí, že dojde k následující věci:
 
 * Azure AD umožňuje přiřazené uživateli (buď pomocí přímého přiřazení nebo členství ve skupině) k ověření pole. Pokud uživatel není přiřazen, Azure AD je k přihlášení do pole neumožňuje a vrátí chybu na přihlašovací stránce služby Azure AD.
-* Dlaždice aplikace pro pole se přidá do daného uživatele [Spouštěče aplikací](../manage-apps/what-is-single-sign-on.md#deploying-azure-ad-integrated-applications-to-users).
+* Dlaždice aplikace pro pole se přidá do daného uživatele [Spouštěče aplikací](../manage-apps/end-user-experiences.md).
 * Pokud je povoleno automatické zřizování, pak přiřazené uživatele a/nebo skupiny se přidají do zřizovacího fronty automaticky zřídit.
   
   * Pokud pouze uživatelské objekty byly nakonfigurovány zřídit, pak všechny přímo přiřazené uživatele jsou umístěné ve frontě zřizování a všechny uživatele, kteří jsou členy jakékoli přiřazených skupin jsou umístěné ve frontě zřizování. 

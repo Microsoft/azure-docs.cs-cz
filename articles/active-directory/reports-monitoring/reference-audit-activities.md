@@ -13,32 +13,31 @@ ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: report-monitor
-ms.date: 04/19/2018
+ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 818f4f4d8ea51cb278190d6e41953f0b04b2e995
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: 4d86bcf99d5b4cf2b04980e72a2bd0a422233dc3
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42058638"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51622870"
 ---
 # <a name="azure-ad-audit-activity-reference"></a>Referenční informace k aktivitám auditování Azure AD
 
-Generování sestav v Azure Active Directory (Azure AD) umožňuje získat všechny informace potřebné ke zjištění stavu vašeho prostředí.
+Pomocí sestav Azure Active Directory (Azure AD) můžete získat informace, které potřebujete ke zjištění stavu vašeho prostředí.
 
 Architektura generování sestav v Azure AD se skládá z následujících komponent:
 
-- **Aktivita** 
-    - **Aktivity přihlašování** – informace o použití spravovaných aplikací a aktivitách přihlašování uživatelů
-    - **Protokoly auditu** – Zajišťuje sledovatelnost prostřednictvím protokolů všech změn provedených různými funkcemi v rámci Azure AD. Mezi příklady protokolů auditu patří změny jakýchkoli prostředků v rámci Azure AD, jako jsou uživatelé, aplikace, skupiny, role, zásady, ověřování atd.
-- **Zabezpečení** 
-    - **Riziková přihlášení** –Rizikové přihlášení je indikátorem pokusu o přihlášení, který mohl provést někdo, kdo není legitimním vlastníkem uživatelského účtu. Další podrobnosti najdete v tématu Riziková přihlášení.
-    - **Uživatelé označení příznakem rizika** – Rizikový uživatel je indikátorem uživatelského účtu, který mohl být ohrožený. Další podrobnosti najdete v tématu Uživatelé označení příznakem rizika.
+- **Sestavy aktivit** 
+    - [Přihlášení](concept-sign-ins.md) – poskytuje informace o využití spravovaných aplikací a uživatel aktivit přihlašování
+    - [Protokoly auditu](concept-audit-logs.md) – Zajišťuje sledovatelnost prostřednictvím protokolů všech změn provedených různými funkcemi v rámci Azure AD. 
+    
+- **Sestavy zabezpečení** 
+    - [Riziková přihlášení](concept-risky-sign-ins.md) –Rizikové přihlášení je indikátorem pokusu o přihlášení, který mohl provést někdo, kdo není legitimním vlastníkem uživatelského účtu. 
+    - [Uživatelé označení příznakem rizika](concept-user-at-risk.md) – Rizikový uživatel je indikátorem uživatelského účtu, který mohl být ohrožený. 
 
 Tento článek obsahuje seznam aktivit auditování, které můžete protokolovat v protokolech auditu.
- 
-
 
 ## <a name="access-reviews"></a>Kontroly přístupu
 
@@ -72,9 +71,6 @@ Tento článek obsahuje seznam aktivit auditování, které můžete protokolova
 |Správa uživatelů|Získání aplikací V1|
 |Správa uživatelů|Získání aplikace V2|
 |Správa uživatelů|Získání aplikací V2|
-
-
-
 
 ## <a name="account-provisioning"></a>Zřizování účtů
 
@@ -593,13 +589,8 @@ Tento článek obsahuje seznam aktivit auditování, které můžete protokolova
 |Správa zásad|Registrace uživatele pro samoobslužné resetování hesla|
 
 
-
-
 ## <a name="next-steps"></a>Další postup
 
-Přehled:
-
-- Generování sestav – [Generování sestav v Azure Active Directory](overview-reports.md)
-
-- Sestavy aktivit auditování – [Sestavy aktivit auditování na portálu Azure Active Directory](concept-audit-logs.md) 
-
+- [Přehled sestav Azure AD](overview-reports.md).
+- [Sestava protokolů auditu](concept-audit-logs.md). 
+- [Programový přístup k sestavám Azure AD](concept-reporting-api.md)

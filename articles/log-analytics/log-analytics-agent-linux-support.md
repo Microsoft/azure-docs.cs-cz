@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/15/2018
+ms.date: 11/13/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 2720ecece86133bf551ab42c415b2e9a87420e93
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 55a3f3d7ac08554273464ed7c6f665e27661c6f8
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51237821"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51625517"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>Řešení potíží pomocí agenta Log Analytics pro Linux 
 
@@ -85,7 +85,7 @@ Pokud žádný z těchto kroků pro vás nejvhodnější, jsou také k dispozici
 | --- | --- |
 | 2 | Neplatná možnost omsadmin skriptu předávají. Spustit `sudo sh /opt/microsoft/omsagent/bin/omsadmin.sh -h` za využití. |
 | 3 | Neplatná konfigurace skriptu omsadmin předávají. Spustit `sudo sh /opt/microsoft/omsagent/bin/omsadmin.sh -h` za využití. |
-| 4 | Neplatná adresa proxy omsadmin skriptu předávají. Ověřit proxy serveru a v tématu naše [dokumentace pro používání proxy serveru HTTP](log-analytics-concept-hybrid.md#network-firewall-requirements). |
+| 4 | Neplatná adresa proxy omsadmin skriptu předávají. Ověřit proxy serveru a v tématu naše [dokumentace pro používání proxy serveru HTTP](log-analytics-agent-overview.md#network-firewall-requirements). |
 | 5 | Chyba 403 HTTP přijatých ze služby Log Analytics. Zobrazit celý výstup skriptu omsadmin podrobnosti. |
 | 6 | Než 200 HTTP došlo k chybě: ze služby Log Analytics. Zobrazit celý výstup skriptu omsadmin podrobnosti. |
 | 7 | Nelze se připojit ke službě Log Analytics. Zobrazit celý výstup skriptu omsadmin podrobnosti. |

@@ -8,16 +8,17 @@ ms.topic: conceptual
 ms.date: 06/29/2018
 ms.author: snmuvva
 ms.component: alerts
-ms.openlocfilehash: 15ecbcafd3397b425b669a48f19bee6073b71149
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 89b412a58291dd542b38cd0cbfa1288795024151
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51279785"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51613710"
 ---
 # <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>Podporované zdroje pro upozornění metrik ve službě Azure Monitor
 
-Azure Monitor teď podporuje nové metriky upozornění typ, který má významné výhody starší [klasického upozornění metrik](alert-metric-classic.md). Metriky jsou k dispozici pro [velké seznam služeb Azure](monitoring-supported-metrics.md). Novější upozornění podporují podmnožinu typů prostředků (rostoucí). Tento článek uvádí tuto podmnožinu.
+Azure teď podporuje sledování [novou výstrahu typu metrika](monitoring-overview-alerts.md) která má významné výhody přes starší [klasického upozornění metrik](monitoring-overview-alerts-classic.md). Metriky jsou k dispozici pro [velké seznam služeb Azure](monitoring-supported-metrics.md). Novější upozornění podporují podmnožinu typů prostředků (rostoucí). Tento článek uvádí tuto podmnožinu.
+
 
 Můžete také novějších upozornění metrik na oblíbené protokoly analýzy protokolu extrahovat jako metriky. Další informace získáte [upozornění metriky pro protokoly](monitoring-metric-alerts-logs.md).
 
@@ -120,6 +121,6 @@ Operace POST obsahuje následující datovou část JSON a schéma pro všechny 
 
 ## <a name="next-steps"></a>Další postup
 
-* Další informace o novém [výstrahy prostředí](monitoring-overview-unified-alerts.md).
+* Další informace o novém [výstrahy prostředí](monitoring-overview-alerts.md).
 * Další informace o [upozornění protokolů ve službě Azure](monitor-alerts-unified-log.md).
 * Další informace o [výstrah ve službě Azure](monitoring-overview-alerts.md).

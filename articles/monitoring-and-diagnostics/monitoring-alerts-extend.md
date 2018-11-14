@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 60ecc2bc1d700c223d4a52b05e3b9362241f3f82
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: a4d62dd0bc984ce80324b405ddd0dcb625694b21
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50414606"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51612569"
 ---
 # <a name="extend-log-analytics-alerts-to-azure-alerts"></a>Rozšíření upozornění Log Analytics do Azure Alerts
 Dokud se nedávno, Azure Log Analytics zahrnuté vlastní výstrahy funkce, které by vás proaktivně upozorní podmínek založených na datech Log Analytics. Můžete spravovat pravidla výstrah ve službě portál Microsoft Operations Management Suite. Nové prostředí upozornění teď obsahuje integrované výstrahy napříč různými službami v Microsoft Azure. Tato možnost je dostupná jako **výstrahy** v části Azure Monitor na webu Azure Portal a podporuje upozornění z aktivity protokolů, metrik a protokolů v Log Analytics a Azure Application Insights. 
@@ -60,5 +60,5 @@ Můžete pokračovat k vytvoření výstrahy [rozhraní API služby Log Analytic
 ## <a name="next-steps"></a>Další postup
 
 * Další informace o nástrojích pro [zahájit rozšiřování upozornění z Log Analytics do Azure](monitoring-alerts-extend-tool.md).
-* Další informace o [prostředí Azure Alerts](monitoring-overview-unified-alerts.md).
+* Další informace o [prostředí Azure Alerts](monitoring-overview-alerts.md).
 * Zjistěte, jak vytvořit [upozornění protokolů ve službě Azure Alerts](monitor-alerts-unified-log.md).

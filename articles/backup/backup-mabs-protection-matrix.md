@@ -5,16 +5,16 @@ services: backup
 author: markgalioto
 ms.service: backup
 keywords: ''
-ms.date: 11/12/2018
+ms.date: 11/13/2018
 ms.topic: conceptual
 ms.author: markgal
 manager: carmonm
-ms.openlocfilehash: 30435512eac82f1a0a069d05af9d7ac879379fb3
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.openlocfilehash: a48944beda52e134fcd02f6d12a35789a41aad31
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/13/2018
-ms.locfileid: "51578684"
+ms.locfileid: "51614731"
 ---
 # <a name="azure-backup-server-protection-matrix"></a>Systém ochrany Azure Backup Serveru
 

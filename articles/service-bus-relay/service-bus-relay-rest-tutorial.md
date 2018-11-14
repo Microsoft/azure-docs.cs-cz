@@ -12,26 +12,42 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/06/2017
+ms.date: 11/06/2018
 ms.author: spelluru
-ms.openlocfilehash: a0f2cc0d76ef3c857bb7c13f46f1397f05b60977
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 40562c77cf38ad316d64f68b54dd4174dae6da1a
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51232439"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51614468"
 ---
 # <a name="azure-wcf-relay-rest-tutorial"></a>Kurz pro Azure WCF Relay REST
-
 Tento kurz popisuje, jak vytvořit jednoduchou hostitelskou aplikaci Azure Relay, která vystavuje rozhraní založené na protokolu REST. REST webovému klientovi, jako je třeba webový prohlížeč, umožňuje přístup k API pro Service Bus přes požadavky HTTP.
 
 Tento kurz používá programovací model REST Windows Communication Foundation (WCF) k vytvoření služby v Azure Relay. Další informace najdete v dokumentaci [Programovací model Rest WCF](/dotnet/framework/wcf/feature-details/wcf-web-http-programming-model) a [Návrh a implementace služeb](/dotnet/framework/wcf/designing-and-implementing-services).
 
-## <a name="step-1-create-a-namespace"></a>Krok 1: Vytvoření oboru názvů
+V tomto kurzu provedete následující kroky:
+
+> [!div class="checklist"]
+> * Vytvořte obor názvů služby Relay.
+> * Definování kontraktu služby WCF na bázi REST
+> * Implementace kontraktu WCF na bázi REST
+> * Hostování a spuštění služby WCF na bázi REST
+> * Spuštění a testování služby
+
+## <a name="prerequisites"></a>Požadavky
+
+Pro absolvování tohoto kurzu musí být splněné následující požadavky:
+
+- Předplatné Azure. Pokud ho nemáte, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+- [Sada Visual Studio 2015 nebo novější](http://www.visualstudio.com). V příkladech v tomto kurzu se používá sada Visual Studio 2017.
+- Azure SDK pro .NET. Nainstalujte ji z [stránky pro stažení sady SDK](https://azure.microsoft.com/downloads/).
+
+## <a name="create-a-relay-namespace"></a>Vytvořit obor názvů služby Relay
 
 Pokud chcete začít používat přenosové funkce v Azure, musíte nejdříve vytvořit obor názvů služby. Obor názvů poskytuje kontejner oboru pro adresování prostředků Azure v rámci vaší aplikace. Pokud chcete vytvořit obor názvů Relay, postupujte podle [těchto pokynů](relay-create-namespace-portal.md).
 
-## <a name="step-2-define-a-rest-based-wcf-service-contract-to-use-with-azure-relay"></a>Krok 2: Definování kontraktu služby WCF na bázi REST pro použití s Azure Relay
+## <a name="define-a-rest-based-wcf-service-contract-to-use-with-azure-relay"></a>Definování kontraktu služby WCF na bázi REST pro použití s Azure Relay
 
 Když vytvoříte službu WCF stylu REST, je nutné definovat kontrakt. Kontrakt určuje, které operace hostitel podporuje. Operaci služby se můžeme představit jako metodu webové služby. Kontrakty se vytvoří definováním základního rozhraní C++, C# nebo Visual Basic. Každá metoda v rozhraní odpovídá konkrétní operaci služby. Atribut [ServiceContractAttribute](/dotnet/api/system.servicemodel.servicecontractattribute) se musí použít na každé rozhraní a atribut [OperationContractAttribute](/dotnet/api/system.servicemodel.operationcontractattribute) se musí použít na každou operaci. Pokud metoda v rozhraní, které má atribut [ServiceContractAttribute](/dotnet/api/system.servicemodel.servicecontractattribute), nemá atribut [OperationContractAttribute](/dotnet/api/system.servicemodel.operationcontractattribute), taková metoda se nevystaví. Kód použitý pro tyto úlohy je v následujícím příkladu za postupem.
 
@@ -136,7 +152,7 @@ namespace Microsoft.ServiceBus.Samples
 }
 ```
 
-## <a name="step-3-implement-a-rest-based-wcf-service-contract-to-use-service-bus"></a>Krok 3: Implementace kontraktu služby WCF na bázi REST pro použití služby Service Bus
+## <a name="implement-the-rest-based-wcf-service-contract"></a>Implementace kontraktu služby WCF na bázi REST
 Vytvoření služby WCF Relay REST – vizuální styl vyžaduje, abyste nejdřív vytvořili kontrakt, který se definuje pomocí rozhraní. Dalším krokem je implementace rozhraní. K tomu patří vytvoření třídy s názvem **ImageService**, která implementuje uživatelsky definované rozhraní **IImageContract**. Po implementaci kontraktu nakonfigurujete rozhraní pomocí souboru App.config. Konfigurační soubor obsahuje informace potřebné pro aplikaci, jako je název služby, název kontraktu a typ protokolu, který se používá ke komunikaci se službou relay. Kód použitý k těmto úlohám najdete v příkladu za postupem.
 
 Stejně jako u předchozích krocích je jen malý rozdíl mezi implementací kontraktu ve stylu REST a kontraktu WCF Relay.
@@ -430,7 +446,7 @@ Následující příklad ukazuje soubor App.config přidružený ke službě.
 </configuration>
 ```
 
-## <a name="step-4-host-the-rest-based-wcf-service-to-use-azure-relay"></a>Krok 4: Hostování služby WCF na bázi REST pro Azure Relay
+## <a name="host-the-rest-based-wcf-service-to-use-azure-relay"></a>Hostování služby WCF na bázi REST pro Azure Relay
 Tento krok popisuje, jak spustit webovou službu pomocí konzolové aplikace s WCF Relay. Úplný kód napsaný v tomto kroku najdete v příkladu za postupem.
 
 ### <a name="to-create-a-base-address-for-the-service"></a>Vytvoření bázové adresy pro tuto službu
@@ -476,7 +492,7 @@ Tento krok popisuje, jak spustit webovou službu pomocí konzolové aplikace s W
     host.Close();
     ```
 
-## <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad:
 Následující příklad obsahuje kontrakt a implementaci služby z předchozích kroků tohoto kurzu a hostuje službu v konzolové aplikaci. Zkompilujte následující kód do spustitelného souboru s názvem ImageListener.exe.
 
 ```csharp
@@ -551,7 +567,7 @@ namespace Microsoft.ServiceBus.Samples
 }
 ```
 
-### <a name="compiling-the-code"></a>Zkompilování kódu
+## <a name="run-and-test-the-service"></a>Spuštění a testování služby
 Po sestavení řešení proveďte následující kroky pro spuštění aplikace:
 
 1. Spusťte službu stisknutím klávesy**F5** nebo přejděte k umístění spustitelného souboru (ImageListener\bin\Debug\ImageListener.exe) a spusťte ho. Nechte aplikaci spuštěnou, protože je potřeba při dalším kroku.

@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: article
-ms.date: 09/25/2018
+ms.date: 11/08/2018
 ms.author: tulasim
-ms.openlocfilehash: 88e55468c4018b73cb26087c4fbbdbee65cd5db3
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: e6c654b00ee6be0ed87feb0fb2a5ccba38e5cbe4
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51515518"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51624873"
 ---
 # <a name="data-sources-for-qna-maker-content"></a>Zdroje dat pro nástroj QnA Maker obsahu
 
@@ -131,6 +131,10 @@ Import znalostní báze nahradí obsah znalostní báze existující. Strukturov
 ## <a name="editorially-add-to-knowledge-base"></a>Znalostní báze pomocí redakčních úprav přidat
 
 Pokud nemáte existující obsah k vyplnění znalostní báze, můžete přidat maximálně pomocí redakčních úprav v nástroje QnA Maker znalostní bázi. Zjistěte, jak aktualizovat znalostní báze [tady](../How-To/edit-knowledge-base.md).
+
+## <a name="formatting-considerations"></a>Důležité informace o formátování
+
+Po importu souboru nebo adresy URL, je převeden na Markdown a uložená v tomto formátu. Pokud proces převodu není správně převod odkazů na soubory a adresy URL, měli upravovat dotazy a odpovědi na **upravit** stránky. 
 
 ## <a name="next-steps"></a>Další postup
 

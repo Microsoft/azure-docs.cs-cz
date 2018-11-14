@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/31/2018
+ms.date: 11/08/2018
 ms.author: barbkess
-ms.reviewer: harshja
+ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: 91f75fdbe7bc7c66bbe581e9d4b295467acd4cd5
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: b4476579665b0e6b574827d1bec06233560038a8
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46989664"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51621084"
 ---
 # <a name="how-to-enable-native-client-apps-to-interact-with-proxy-applications"></a>Jak povolit nativní klientské aplikace pro interakci s proxy aplikací
 
@@ -98,4 +98,4 @@ Po ADAL je upravit s použitím těchto parametrů, uživatelé by mělo být sc
 
 Další informace o toku nativní aplikace, najdete v části [nativní aplikace pro webové rozhraní API](../develop/native-app.md)
 
-Další informace o nastavení [jednotného přihlašování pro Proxy aplikací](application-proxy-single-sign-on.md)
+Další informace o nastavení [jednotného přihlašování pro Proxy aplikací](what-is-single-sign-on.md#single- sign-on-methods)

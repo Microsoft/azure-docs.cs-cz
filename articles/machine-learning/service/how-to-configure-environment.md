@@ -10,118 +10,94 @@ ms.reviewer: larryfr
 manager: cgronlun
 ms.topic: conceptual
 ms.date: 11/6/2018
-ms.openlocfilehash: 8ce411e424d538a4a1f94300bfe5510658017f56
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 2fd2d35bde95a3e268f46b398f2163f9d40ab1ee
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238313"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51613949"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Konfigurace prostředí pro vývoj pro Azure Machine Learning
 
-V tomto článku se naučíte, jak nakonfigurovat vývojové prostředí pro práci se službou Azure Machine Learning, včetně:
+V tomto dokumentu zjistěte, jak nakonfigurovat vývojové prostředí pro práci se službou Azure Machine Learning. Služba Azure Machine Learning je pro více platforem. Jediným požadavkem pro vaše vývojové prostředí je __Python 3__, __Conda__ (pro izolované prostředí) a konfigurační soubor, který obsahuje informace o pracovním prostoru Azure Machine Learning.
 
-- Jak vytvořit konfigurační soubor, který se přidruží k pracovnímu prostoru Azure Machine Learning service vaše prostředí.
-- Jak nakonfigurovat následující vývojových prostředích:
-  - Poznámkové bloky Jupyter v počítači
-  - Visual Studio Code
-  - Editor vlastního kódu
-- Jak nastavit [virtuální prostředí conda](https://conda.io/docs/user-guide/tasks/manage-environments.html) a jeho použití pro službu Azure Machine Learning. Doporučujeme používat Continuum Anaconda izolovat vaše pracovní prostředí, aby se zabránilo konfliktům v závislostech mezi balíčky.
+Tento dokument se zaměřuje na tyto konkrétní prostředí a nástroje:
+
+* [Azure Notebooks](#aznotebooks): poznámkové bloky Jupyter A služby hostované v cloudu Azure. Je __nejsnadněji__ způsob, jak začít, jak sada SDK Azure Machine Learning je již nainstalována.
+* [Virtuální počítač pro datové vědy](#dsvm): virtuální počítač v cloudu Azure, který je __navržené pro datové vědy pracovní__. Python 3, Conda, poznámkové bloky Jupyter a sady SDK Azure Machine Learning jsou již nainstalovány. Virtuální počítač obsahuje oblíbených architektur, nástrojů a editory pro vývoj řešení pro ML ML. To je pravděpodobně __nejúplnější__ vývojové prostředí pro ML na platformě Azure.
+* [Poznámkové bloky Jupyter](#jupyter): Pokud už používáte poznámkové bloky Jupyter, sady SDK má některé funkce, které byste měli nainstalovat.
+* [Visual Studio Code](#vscode): Pokud používáte Visual Studio Code, jsou některá užitečná rozšíření, které můžete nainstalovat.
+
+Pokud už máte prostředí Python 3, nebo chcete jenom základní kroky pro instalaci sady SDK, přečtěte si článek [místního počítače](#local) oddílu.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Nastavte pracovní prostor služby Azure Machine Learning service. Postupujte podle kroků v [Začínáme se službou Azure Machine Learning](quickstart-get-started.md).
-- Instalovat buď [Continuum Anaconda](https://www.anaconda.com/download/) nebo [Miniconda](https://conda.io/miniconda.html) Správce balíčků.
-- Pokud používáte Visual Studio Code, můžete získat [rozšíření Python](https://code.visualstudio.com/docs/python/python-tutorial).
+- Pracovní prostor služby Azure Machine Learning. Postupujte podle kroků v [Začínáme se službou Azure Machine Learning](quickstart-get-started.md) k jejímu vytvoření.
 
-> [!NOTE]
-> Můžete testovat příkazy prostředí, které jsou uvedené v tomto článku pomocí prostředí bash (v systému Linux a Mac OS) nebo na příkazovém řádku (ve Windows).
+- Buď [Continuum Anaconda](https://www.anaconda.com/download/) nebo [Miniconda](https://conda.io/miniconda.html) Správce balíčků.
 
-## <a name="create-a-workspace-configuration-file"></a>Vytvořte konfigurační soubor pracovního prostoru
+    > [!IMPORTANT]
+    > Anaconda a Miniconda nejsou vyžadovány, při použití poznámkových bloků Azure.
 
-Sady SDK Azure Machine Learning používá konfigurační soubor pracovního prostoru ke komunikaci s pracovním prostorem služby Azure Machine Learning.
+- V systému Linux nebo Mac OS je nutné prostředí bash.
 
-- Pokud chcete vytvořit konfigurační soubor, proveďte [rychlý start Azure Machine Learning](quickstart-get-started.md).
-  - Tento rychlý start proces vytvoří `config.json` souboru v poznámkových bloků Azure. Tento soubor obsahuje informace o konfiguraci pro váš pracovní prostor.
-  - Stáhněte nebo zkopírujte `config.json` do stejného adresáře jako skripty nebo poznámkových bloků, které na něj odkazovat.
+    > [!TIP]
+    > Pokud jste v systému Linux nebo Mac OS a využívat prostředí, než je bash (například zsh) při spuštění některých příkazů může vyskytnout chyby. Chcete-li tento problém obejít, použijte `bash` příkaz ke spuštění nového prostředí bash a spusťte příkazy existuje.
 
-- Alternativně můžete vytvořit soubor ručně pomocí následujících kroků:
+- Na Windows musíte příkazový řádek nebo Anaconda řádek (nainstalovaných Anaconda a Miniconda).
 
-    1. Otevření pracovního prostoru v [webu Azure portal](https://portal.azure.com). Kopírovat __název pracovního prostoru__, __skupiny prostředků__, a __ID předplatného__. Tyto hodnoty slouží k vytvoření konfiguračního souboru.
-        ![Azure Portal](./media/how-to-configure-environment/configure.png)
+## <a id="anotebooks"></a>Poznámkových bloků Azure
 
-    1. Vytvoření souboru následujícím kódem Python a ujistěte se, že chcete kód spustit ve stejném adresáři jako skripty nebo poznámkových bloků, které odkazují na pracovním prostoru:
+[Azure Notebooks](https://notebooks.azure.com) (preview) je interaktivní vývojové prostředí v cloudu Azure. Je __nejsnadněji__ způsob, jak začít s vývojem pro Azure Machine Learning.
 
-        ```python
-        from azureml.core import Workspace
+* Sada SDK Azure Machine Learning je __už nainstalovaná__.
+* Po vytvoření pracovního prostoru služby Azure Machine Learning service na webu Azure Portal, můžete kliknout na tlačítko pro automatickou konfiguraci prostředí Azure poznámkového bloku pro práci s pracovním prostorem.
 
-        subscription_id ='<subscription-id>'
-        resource_group ='<resource-group>'
-        workspace_name = '<workspace-name>'
+Abyste mohli začít vyvíjet s poznámkovými bloky Azure, postupujte [Začínáme se službou Azure Machine Learning](quickstart-get-started.md) dokumentu.
 
-        try:
-           ws = Workspace(subscription_id = subscription_id, resource_group = resource_group, workspace_name = workspace_name)
-           ws.write_config()
-           print('Library configuration succeeded')
-        except:
-           print('Workspace not found')
-        ```
-        Kód se zapíše následující `aml_config/config.json` souboru:
+## <a id="dsvm"></a>Virtuální počítač pro datové vědy
 
-        ```json
-        {
-        "subscription_id": "<subscription-id>",
-        "resource_group": "<resource-group>",
-        "workspace_name": "<workspace-name>"
-        }
-        ```
-        Můžete zkopírovat `aml_config` adresář nebo právě `config.json` souboru do jiného adresáře, který odkazuje na pracovním prostoru.
+Je přizpůsobenou image virtuálního počítače (VM) na Data virtuálního počítače VĚDY **navržené pro datové vědy pracovní**. Zahrnuje:
 
-       > [!NOTE]
-       > Jiné skripty a poznámkovými bloky ve stejném adresáři, nebo verzi uvedenou níže načíst pracovní prostor s `ws=Workspace.from_config()`.
-
-## <a name="azure-notebooks-and-data-science-virtual-machines"></a>Azure poznámkových bloků a virtuální počítače pro datové vědy
-
-Azure poznámkových bloků a Azure virtuální počítače pro datové vědy (datové) jsou nakonfigurovaná tak, aby fungovaly se službou Azure Machine Learning. Tato prostředí patří požadované součásti, jako je Azure Machine Learning SDK.
-
-### <a name="azure-notebooks"></a>Azure Notebooks
-
-- Poznámkových bloků Azure je služba Poznámkový blok Jupyter v cloudu Azure.
-- Stále budete potřebovat konfigurační soubor pracovního prostoru do těchto prostředí používat.
-
-Příklad použití poznámkových bloků Azure se službou Azure Machine Learning najdete v tématu [Začínáme se službou Azure Machine Learning](quickstart-get-started.md).
-
-### <a name="data-science-virtual-machines"></a>Virtuální počítače pro vědecké zpracování dat
-
-- Virtuální počítač pro datové vědy je přizpůsobenou image virtuálního počítače (VM) navržené pro datové vědy práce. Zahrnuje:
   - Nástrojů pro oblíbené datové vědy
   - Integrované vývojové prostředí (IDE), jako je PyCharm a nástroje RStudio
   - Balíčků, jako jsou poznámkové bloky Jupyter a Tensorflow
 
-Datové VĚDY se dodává s více prostředími Anaconda už nainstalovaná. Pokud chcete používat Azure Machine Learning Python SDK bez jakékoli instalace balíčku, otevřete příkazový řádek nebo prostředí a k aktivaci prostředí použít jeden z následujících příkazů:
+Azure Machine Learning SDK funguje na Ubuntu nebo Windows verzi DSVM. Použití DSVM jako vývojové prostředí, postupujte takto:
 
-* Na __Ubuntu__ DSVM, použijte tento příkaz:
+1. Pokud chcete vytvořit virtuální počítač pro datové vědy, postupujte podle pokynů v některém z následujících dokumentech:
 
-    ```shell
-    conda activate py36
+    * [Vytvoření Ubuntu Data Science virtuálního počítače](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro)
+    * [Vytvoření virtuálního počítače Windows datové vědy](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/provision-vm)
+
+1. Sada SDK Azure Machine Learning je **už nainstalovaná** na datové VĚDY. Pokud chcete používat prostředí Conda, který obsahuje sadu SDK, použijte jednu z následujících příkazů:
+
+    * Na __Ubuntu__ DSVM, použijte tento příkaz:
+
+        ```shell
+        conda activate py36
+        ```
+
+    * Na __Windows__ DSVM, použijte tento příkaz:
+
+        ```shell
+        conda activate AzureML
+        ```
+
+1. Pokud chcete ověřit, že můžete používat sadu SDK a zkontrolujte verzi, použijte následující kód Pythonu:
+
+    ```python
+    import azureml.core
+    print(azureml.core.VERSION)
     ```
 
-* Na __Windows__ DSVM, použijte tento příkaz:
-
-    ```shell
-    conda activate AzureML
-    ```
-
-Jednou v tomto prostředí můžete okamžitě importovat sady SDK Azure Machine Learning v sestavení nástroje podle vašeho výběru, bez instalace balíčku.
-
-```python
-import azureml.core
-print(azureml.core.VERSION)
-```
+1. Konfigurace datové VĚDY pro použití vašeho pracovního prostoru služby Azure Machine Learning, najdete v článku [konfigurovat pracovní prostor](#workspace) oddílu.
 
 Další informace o virtuální počítače pro datové vědy, naleznete v tématu [virtuální počítače pro datové vědy](https://azure.microsoft.com/services/virtual-machines/data-science-virtual-machines/).
 
-## <a name="configure-jupyter-notebooks-on-your-computer"></a>Konfigurace poznámkové bloky Jupyter v počítači
+## <a id="local"></a>Místní počítač
+
+Při použití místního počítače (který může být také vzdálené virtuálního počítače), pomocí následujících kroků vytvořit prostředí conda a instalace sady SDK:
 
 1. Otevřete příkazový řádek nebo prostředí.
 
@@ -146,10 +122,6 @@ Další informace o virtuální počítače pro datové vědy, naleznete v téma
     pip install --upgrade azureml-sdk[notebooks,automl] azureml-dataprep
     ```
 
-   Můžete zobrazit v referenčních dokumentech Python pro třídy a metody v následujících sad SDK:
-   + [Azure Machine Learning sady SDK pro Python](https://aka.ms/aml-sdk)
-   + [Sada SDK pro přípravu dat Azure Machine Learning](https://aka.ms/data-prep-sdk)
-
    > [!NOTE]
    > Pokud se zobrazí zpráva `PyYAML` nelze odinstalovat, použijte následující příkaz:
    >
@@ -163,7 +135,22 @@ Další informace o virtuální počítače pro datové vědy, naleznete v téma
     conda install <new package>
     ```
 
-1. Instalace serveru s ohledem na conda Poznámkový blok Jupyter a povolení experiment pomůcky (Chcete-li zobrazit informace o běhu). Pomocí následujících příkazů:
+1. Chcete-li ověřit, že sada SDK je nainstalovaná, následující kód Pythonu:
+
+    ```python
+    import azureml.core
+    azureml.core.VERSION
+    ```
+
+### <a id="jupyter"></a>Poznámkové bloky Jupyter
+
+Poznámkové bloky Jupyter jsou součástí [Jupyter projektu](https://jupyter.org/). Poskytuje interaktivní prostředí pro psaní kódu ve kterém vytvoříte dokumenty, které kombinovat živého kódu s vyprávěného textu a grafiky. Poznámkové bloky Jupyter se také skvělý způsob, jak sdílet výsledky s ostatními, se po uložení výstupu oddíly kódu v dokumentu. Poznámkové bloky Jupyter můžete nainstalovat na různých platformách.
+
+Kroky v [místního počítače](#local) části instalaci volitelné součásti pro aplikace Jupyter notebook. Pokud chcete povolit tyto komponenty ve vašem prostředí poznámkového bloku Jupyter, postupujte následovně:
+
+1. Otevřete příkazový řádek nebo prostředí.
+
+1. Instalace serveru s ohledem na conda Poznámkový blok Jupyter a povolení experiment widgetů, použijte následující příkazy:
 
     ```shell
     # install Jupyter
@@ -182,63 +169,80 @@ Další informace o virtuální počítače pro datové vědy, naleznete v téma
     jupyter notebook
     ```
 
-1. Otevřete nový poznámkový blok, vyberte "myenv" jako vaše jádra a ověřte, že máte nainstalované Azure Machine Learning SDK. Spusťte následující příkaz v buňce Poznámkový blok:
+1. Pokud chcete ověřit, že sadu SDK můžete použít Poznámkový blok Jupyter, otevřete nový poznámkový blok a vyberte "myenv" jako vaše jádra. Potom spusťte následující příkaz v buňce Poznámkový blok:
 
     ```python
     import azureml.core
     azureml.core.VERSION
     ```
 
-## <a name="configure-visual-studio-code"></a>Konfigurace sady Visual Studio Code
+1. Konfigurace Poznámkový blok Jupyter pro použití vašeho pracovního prostoru služby Azure Machine Learning, najdete v článku [konfigurovat pracovní prostor](#workspace) oddílu.
 
-1. Otevřete příkazový řádek nebo prostředí.
+### <a id="vscode"></a>Visual Studio Code
 
-1. Vytvořte prostředí conda pomocí následujících příkazů:
+Visual Studio Code je editor kódu napříč platformami. Spoléhá na místní Python 3 a Conda instalace podpory Pythonu, ale poskytuje dodatečné nástroje pro práci s umělou Inteligencí. Také poskytuje podporu pro výběr prostředí Conda z editoru kódu.
 
-    ```shell
-    # create a new conda environment with Python 3.6, numpy and cython
-    conda create -n myenv Python=3.6 cython numpy
+Pokud chcete použít Visual Studio Code pro vývoj, použijte následující kroky:
 
-    # activate the conda environment
-    conda activate myenv
+1. Zjistěte, jak používat Visual Studio Code pro vývoj v jazyce Python, najdete v článku [Začínáme s Pythonem v VSCode](https://code.visualstudio.com/docs/python/python-tutorial) dokumentu.
 
-    # If you are running Mac OS you should run
-    source activate myenv
-    ```
+1. Chcete-li vybrat prostředí Conda, spusťte VS Code a pak použijte __Ctrl-Shift-P__ (Linux a Windows) nebo __příkazu-Shift-P__ (Mac), chcete-li získat __příkaz palety__. Zadejte __Python: Select Interpreter__ a pak vyberte prostředí conda.
 
-1. Nainstalujte sadu SDK Azure Machine Learning a sady SDK přípravy dat pomocí následujícího příkazu:
-
-    ```shell
-    pip install --upgrade azureml-sdk[automl] azureml-dataprep
-    ```
-
-1. Instalace sady Visual Studio code Tools pro AI rozšíření. Zobrazit [Tools pro AI](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai).
-
-1. Instalace balíčků pro strojového učení experimentování. Použijte následující příkaz a nahraďte `<new package>` názvem balíčku, kterou chcete nainstalovat:
-
-    ```shell
-    conda install <new package>
-    ```
-
-1. Otevřít Visual Studio Code a potom použít **CTRL-SHIFT-P** (ve Windows) nebo **příkazu-SHIFT-P** (v systému Mac OS) zobrazíte **paletu příkazů**. Zadejte _Python: Select Interpreter_ a vyberte prostředí conda, který jste vytvořili.
-
-   > [!NOTE]
-   > Visual Studio Code je automaticky znát prostředí conda ve vašem počítači. Další informace najdete v tématu [dokumentaci kódu sady Visual Studio](https://code.visualstudio.com/docs/python/environments#_conda-environments).
-
-1. Ověření konfigurace pomocí Visual Studio Code k vytvoření nového souboru skriptu Pythonu s následujícím kódem a pak ho spusťte:
+1. Pokud chcete ověřit, které můžete použít sady SDK, vytvořte nový soubor Pythonu (.py), který obsahuje následující kód. Potom spusťte soubor:
 
     ```python
     import azureml.core
     azureml.core.VERSION
     ```
 
-## <a name="configure-a-custom-code-editor"></a>Konfigurace vlastního kódu editoru
+1. Pokud chcete nainstalovat Visual Studio code Tools pro AI rozšíření, naleznete v tématu [Tools pro AI](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai) stránky.
 
-Pomocí sady SDK Azure Machine Learning můžete použít editor kódu podle vašeho výběru.
+    Další informace najdete v tématu [použití VS Code Tools pro AI pomocí služby Azure Machine Learning](how-to-vscode-tools.md) dokumentu.
 
-1. Vytvořit prostředí conda, jak je popsáno v kroku 2 [konfigurovat Visual Studio Code](#configure-visual-studio-code) výše.
-1. Postupujte podle pokynů pro každý editor používat prostředí conda. Například můžete použít [PyCharm pokyny](https://www.jetbrains.com/help/pycharm/2018.2/conda-support-creating-conda-virtual-environment.html).
+## <a id="workspace"></a>Vytvořte konfigurační soubor pracovního prostoru
+
+Konfigurační soubor pracovního prostoru je dokument JSON, která říká sady SDK ke komunikaci s pracovním prostorem služby Azure Machine Learning. Soubor `config.json` a má následující formát:
+
+```json
+{
+    "subscription_id": "<subscription-id>",
+    "resource_group": "<resource-group>",
+    "workspace_name": "<workspace-name>"
+}
+```
+
+Tento soubor musí být do struktury adresářů, který obsahuje skripty Python nebo poznámkových bloků Jupyter. Může jí být buď ve stejném adresáři, podadresáři s názvem `aml_config`, nebo v nadřazeném adresáři.
+
+Chcete-li použít tento soubor z vašeho kódu, použijte `ws=Workspace.from_config()`. Tento kód načte informace ze souboru a připojí k vašemu pracovnímu prostoru.
+
+Existují tři způsoby, jak vytvořit konfigurační soubor:
+
+* Pokud budete postupovat podle [rychlý start Azure Machine Learning](quickstart-get-started.md), `config.json` vytvoří soubor v knihovně poznámkových bloků Azure. Tento soubor obsahuje informace o konfiguraci pro váš pracovní prostor. Stáhněte nebo zkopírujte tento `config.json` do jiných vývojových prostředích.
+
+* Je možné **soubor ručně vytvořit** pomocí textového editoru. Hodnoty, přejděte do konfiguračního souboru návštěvou pracovního prostoru v můžete najít [webu Azure portal](https://portal.azure.com). Kopírovat __název pracovního prostoru__, __skupiny prostředků__, a __ID předplatného__ hodnoty a jejich použití v konfiguračním souboru.
+        ![Azure Portal](./media/how-to-configure-environment/configure.png)
+
+* Je možné **prostřednictvím kódu programu vytvořit soubor**. Následující fragment kódu ukazuje, jak se připojit k pracovnímu prostoru zadáním ID předplatného, skupiny prostředků a název pracovního prostoru. Pak uloží konfigurace pracovního prostoru do souboru:
+
+    ```python
+    from azureml.core import Workspace
+
+    subscription_id = '<subscription-id>'
+    resource_group  = '<resource-group>'
+    workspace_name  = '<workspace-name>'
+
+    try:
+        ws = Workspace(subscription_id = subscription_id, resource_group = resource_group, workspace_name = workspace_name)
+        ws.write_config()
+        print('Library configuration succeeded')
+    except:
+        print('Workspace not found')
+    ```
+
+    Tento kód zapíše konfigurační soubor tak, `aml_config/config.json` souboru.
 
 ## <a name="next-steps"></a>Další postup
 
 - [Trénování modelu v Azure Machine Learning s datovou sadou mnist ručně](tutorial-train-models-with-aml.md)
+- [Azure Machine Learning sady SDK pro Python](https://aka.ms/aml-sdk)
+- [Sada SDK pro přípravu dat Azure Machine Learning](https://aka.ms/data-prep-sdk)

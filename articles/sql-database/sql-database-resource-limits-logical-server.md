@@ -1,6 +1,6 @@
 ---
 title: Limity prostředků Azure SQL Database – logický server | Dokumentace Microsoftu
-description: Tento článek obsahuje přehled limity prostředků Azure SQL Database pro izolované databáze a databáze ve fondu pomocí elastických fondů. Poskytuje také informace o co se stane, když jsou zásahů nebo překročení těchto omezení prostředků.
+description: Tento článek obsahuje přehled logického serveru Azure SQL Database omezení prostředků pro izolované databáze a databáze ve fondu pomocí elastických fondů. Poskytuje také informace o co se stane, když jsou zásahů nebo překročení těchto omezení prostředků.
 services: sql-database
 ms.service: sql-database
 ms.subservice: ''
@@ -11,15 +11,15 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: sashan,moslake
 manager: craigg
-ms.date: 09/19/2018
-ms.openlocfilehash: b48c090cc67d4557140b5734f1a5e1f763b271ab
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.date: 11/13/2018
+ms.openlocfilehash: a423f5c112faa615b7888dacfa20f9ff8f6a595a
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48829559"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51620886"
 ---
-# <a name="sql-database-resource-limits-for-single-and-pooled-databases-on-a-logical-server"></a>Limity pro databáze ve fondu a jeden na logickém serveru prostředků SQL Database 
+# <a name="sql-database-resource-limits-for-single-and-pooled-databases"></a>Limity pro databáze ve fondu a jeden prostředků SQL Database
 
 Tento článek obsahuje přehled služby SQL Database omezení prostředků pro databáze ve fondu a jeden na logickém serveru. Poskytuje také informace o co se stane, když jsou zásahů nebo překročení těchto omezení prostředků.
 
@@ -35,18 +35,17 @@ Tento článek obsahuje přehled služby SQL Database omezení prostředků pro 
 | Maximální počet serverů na předplatné v libovolné oblasti | 200 |  
 | DTU nebo eDTU kvóta na serveru | 54,000 |  
 | vCore kvóty podle serveru či instance | 540 |
-| Maximální počet fondů na serveru | počet je omezen počet Dtu nebo virtuálních jader |
+| Maximální počet fondů na serveru | Počet je omezen počet Dtu nebo virtuálních jader. Například pokud každý fond je 1 000 Dtu, pak jeden server podporují 54 fondy.|
 ||||
 
 > [!NOTE]
-> K získání další /eDTU kvóty DTU, vCore kvóty nebo více serverů než výchozí dobu, můžete odeslat novou žádost o podporu na webu Azure Portal pro předplatné se typ problému "Quota". DTU / limitu eDTU kvótu a databáze na serveru omezuje počet elastických fondů na jeden server. 
-
+> K získání další /eDTU kvóty DTU, vCore kvóty nebo více serverů než výchozí dobu, můžete odeslat novou žádost o podporu na webu Azure Portal pro předplatné se typ problému "Quota". DTU / limitu eDTU kvótu a databáze na serveru omezuje počet elastických fondů na jeden server.
 > [!IMPORTANT]
 > Jako počet databází, které se blíží limitu v rámci logického serveru, může dojít následujících:
 > - Zvyšování latence ve spuštěném dotazy v hlavní databázi.  To zahrnuje zobrazení statistik využití prostředků, jako je například sys.resource_stats.
 > - Zvyšuje latenci při operacích správy a vykreslování portálu přehledů, které se týkají databáze na serveru.
 
-## <a name="what-happens-when-database-resource-limits-are-reached"></a>Co se stane, když je dosaženo omezení prostředků databáze?
+## <a name="what-happens-when-database-resource-limits-are-reached"></a>Co se stane, když je dosaženo omezení prostředků databáze
 
 ### <a name="compute-dtus-and-edtus--vcores"></a>COMPUTE (počet jednotek Dtu a Edtu / virtuálních jader)
 
@@ -66,11 +65,12 @@ Pokud dochází k vysoké využití, možnosti omezení rizik:
 - Pokud je databáze v elastickém fondu, pak také databázi lze přesunout mimo fond tak, aby její prostor úložiště se nesdílí s jinými databázemi.
 - Zmenšit databázi uvolnění nevyužívaného místa. Další informace najdete v tématu [spravovat místo souborů ve službě Azure SQL Database](sql-database-file-space-management.md)
 
-### <a name="sessions-and-workers-requests"></a>Relace a pracovních procesů (požadavků) 
+### <a name="sessions-and-workers-requests"></a>Relace a pracovních procesů (požadavků)
 
-Maximální počet relací a pracovních procesů se určují podle úrovně služeb a vypočítat velikost (v jednotkách Dtu a Edtu). Nové požadavky byly zamítnuty, když je dosaženo omezení relace nebo pracovního procesu a klienti obdrží chybovou zprávu. Když počet připojení, které jsou k dispozici, které mohou být řízena aplikace, je často obtížné odhadnout a řídit počet souběžných pracovních procesů. To platí zejména během špiček zatížení kdy je dosaženo omezení prostředků databáze a pracovní procesy hromadí kvůli delší dobu spouštění dotazů. 
+Maximální počet relací a pracovních procesů se určují podle úrovně služeb a vypočítat velikost (v jednotkách Dtu a Edtu). Nové požadavky byly zamítnuty, když je dosaženo omezení relace nebo pracovního procesu a klienti obdrží chybovou zprávu. Když počet připojení, které jsou k dispozici, které mohou být řízena aplikace, je často obtížné odhadnout a řídit počet souběžných pracovních procesů. To platí zejména během špiček zatížení kdy je dosaženo omezení prostředků databáze a pracovní procesy hromadí kvůli delší dobu spouštění dotazů.
 
 Pokud dochází k vysoké využití relace nebo pracovního procesu, možnosti omezení rizik:
+
 - Zvýšení službu úroveň nebo velikost databázi nebo elastický fond – compute úrovně. Zobrazit [škálování izolované databáze prostředků](sql-database-single-database-scale.md) a [škálování elastického fondu prostředků](sql-database-elastic-pool-scale.md).
 - Optimalizace dotazů, aby se snížilo využití prostředků každého dotazu, je-li příčinou využití zvýšenou pracovního procesu je z důvodu kolize pro výpočetní prostředky. Další informace najdete v tématu [dotazu ladění/Hinting](sql-database-performance-guidance.md#query-tuning-and-hinting).
 

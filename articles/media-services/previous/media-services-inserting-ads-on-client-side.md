@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2016
 ms.author: juliako
-ms.openlocfilehash: 0ca9c7ff1ac4cfbb50f251679286a933429bf03f
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 71ac963f00993f8a66d41a8d6f3f67528d9c0583
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37903043"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51625145"
 ---
 # <a name="inserting-ads-on-the-client-side"></a>Vkládání reklam na straně klienta
 Tento článek obsahuje informace o tom, jak vložit různé typy reklam na straně klienta.
@@ -107,7 +107,7 @@ Lineární reklamy lze zobrazit v uvedeném pořadí. Chcete-li to provést, př
           <Description>Unknown</Description>
           <Survey></Survey>
           <Error></Error>
-          <Impression id="Atlas"><![CDATA[http://myserver.com/Impression/Ad1trackingResouce]]></Impression>
+          <Impression id="Atlas"><![CDATA[http://myserver.com/Impression/Ad1trackingResource]]></Impression>
           <Creatives>
             <Creative id="video" sequence="0" AdID="">
               <Linear>
@@ -127,7 +127,7 @@ Lineární reklamy lze zobrazit v uvedeném pořadí. Chcete-li to provést, př
           <Description>Unknown</Description>
           <Survey></Survey>
           <Error></Error>
-          <Impression id="Atlas"><![CDATA[http://myserver.com/Impression/Ad2trackingResouce]]></Impression>
+          <Impression id="Atlas"><![CDATA[http://myserver.com/Impression/Ad2trackingResource]]></Impression>
           <Creatives>
             <Creative id="video" sequence="0" AdID="">
               <Linear>
@@ -160,7 +160,7 @@ Nelineárních reklamy jsou určené v <Creative> i element. Následující př�
     </Creative>
 ```
 
-<**NonLinearAds**> element může obsahovat jeden nebo více <**NonLinear**> elementy, z nichž každý lze popsat nelineárních ad. <**NonLinear**> prvek určuje prostředek pro nelineárních ad. Prostředek může být <**StaticResouce**>, <**IFrameResource**>, nebo <**HTMLResouce**>. <**StaticResource**> popisuje prostředků jiného typu než HTML a definuje atribut creativeType, který určuje způsob zobrazení zdroje:
+<**NonLinearAds**> element může obsahovat jeden nebo více <**NonLinear**> elementy, z nichž každý lze popsat nelineárních ad. <**NonLinear**> prvek určuje prostředek pro nelineárních ad. Prostředek může být <**StaticResource**>, <**IFrameResource**>, nebo <**HTMLResource**>. <**StaticResource**> popisuje prostředků jiného typu než HTML a definuje atribut creativeType, který určuje způsob zobrazení zdroje:
 
 Image/gif, image/jpeg, image/png – prostředku se zobrazí v HTML <**img**> značky.
 

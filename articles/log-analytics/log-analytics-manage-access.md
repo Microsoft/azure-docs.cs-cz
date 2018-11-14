@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/30/2018
+ms.date: 11/13/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 796e10053df79f8f7106d98dd9c9be6083d9f719
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: de464cfeca01e492139e8bf9679d8f9876eedda6
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50964148"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51625619"
 ---
 # <a name="manage-workspaces"></a>Správa pracovních prostorů
 
@@ -239,7 +239,7 @@ Váš nový datový tarif se zobrazí pásu karet portálu OMS v horní části 
 ![Pás karet OMS](./media/log-analytics-manage-access/data-plan-changed.png)
 
 ## <a name="next-steps"></a>Další postup
-* V článku [Shromažďování dat z počítačů v prostředí se službou Log Analytics](log-analytics-concept-hybrid.md) najdete informace o shromažďování dat z počítačů v datacentru nebo jiném cloudovém prostředí.
+* Zobrazit [přehled agenta Log Analytics](log-analytics-agent-overview.md) ke shromažďování dat z počítačů ve vašem datovém centru nebo jiných cloudovém prostředí.
 * V článku [Shromažďování dat o virtuálních počítačích Azure](log-analytics-quick-collect-azurevm.md) najdete informace o konfiguraci shromažďování dat z virtuálních počítačů Azure.  
 * Článek [Přidání řešení Log Analytics z galerie řešení](../monitoring/monitoring-solutions.md) popisuje přidání funkcí a shromažďování dat.
 

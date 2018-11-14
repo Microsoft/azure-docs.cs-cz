@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/25/2018
 ms.author: magoedte
-ms.openlocfilehash: 0f149d09b310553ecd5b03e94601408f279d9c0c
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: 1b9afa89e5d355668defac30afe4c012b684c71e
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50914307"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51614392"
 ---
 # <a name="understand-the-health-of-your-azure-virtual-machines-with-azure-monitor-for-vms-preview"></a>Vysvětlení stavu virtuálních počítačů Azure pomocí Azure monitoru pro virtuální počítače (Preview)
 Azure obsahuje několik služeb, které jednotlivě provádět konkrétní role nebo úkolu v prostoru pro monitorování, ale poskytuje perspektivy podrobný stav operačního systému hostované na Azure virtual machines nebyl k dispozici.  V průběhu monitorování může pro různé podmínky použití Log Analytics nebo Azure Monitor, nejsou určeny pro modelování a představují stavu základní součásti nebo celkového stavu virtuálního počítače.  Prostřednictvím služby Azure Monitor pro funkci stav virtuálních počítačů aktivně Monitoruje dostupnost a výkon Windows nebo Linuxem hostovaného operačního systému s modelem, které představují klíčových komponent a jejich vztahů kritéria, která určuje, jak měřit kvalitu ty komponenty, a upozorní vás při zjištění není v pořádku podmínky.  
@@ -119,7 +119,7 @@ Na **stavu** kartu, je možné získat následující:
 * Kolik virtuálních počítačů jsou kvůli problému zjištěnému s procesoru, disku, paměti nebo síťový adaptér, zařazených do kategorií podle stavu není v pořádku?  
 * Kolik virtuálních počítačů jsou kvůli problému zjištěnému službou jádra operačního systému, zařazených do kategorií podle stavu není v pořádku?
 
-Tady můžete rychle identifikovat hlavní kritické problémy zjištěné podle kritérií stavu Proaktivní monitorování virtuálního počítače a zkontrolujte podrobnosti výstrahy stavu virtuálních počítačů a článek znalostní báze přidružené určené pro diagnostiku a opravy problému.  Vyberte některou z závažnosti otevřete [všechny výstrahy](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md#all-alerts-page) stránka se vyfiltruje podle tohoto závažnosti.
+Tady můžete rychle identifikovat hlavní kritické problémy zjištěné podle kritérií stavu Proaktivní monitorování virtuálního počítače a zkontrolujte podrobnosti výstrahy stavu virtuálních počítačů a článek znalostní báze přidružené určené pro diagnostiku a opravy problému.  Vyberte některou z závažnosti otevřete [všechny výstrahy](../monitoring-and-diagnostics/monitoring-overview-alerts.md#all-alerts-page) stránka se vyfiltruje podle tohoto závažnosti.
 
 **Distribuce virtuálního počítače podle operačního systému** seznam virtuálních počítačů uvedených ve verzi Windows nebo distribuce Linuxu, spolu s jejich verze. V každé kategorii operačního systému virtuálních počítačů jsou rozdělené další na základě stavu virtuálního počítače. 
 
@@ -247,7 +247,7 @@ V příkladu výše, když jednu vybere **/mnt (logický Disk)**, je filtrovaná
 Pokud chcete zobrazit aktualizovaný stav, můžete aktualizovat stránku diagnostiky stavu kliknutím **aktualizovat** odkaz.  Při aktualizaci stavu kritérium stav podle předem definovaného intervalu dotazování tento úkol vám umožní vyhnout čekání a odráží nejnovější stav.  **Kritéria stavu** je filtr umožňuje určit obor výsledky na základě vybraného stavu – v pořádku, varování, kritické, neznámý a všechny.  **Poslední aktualizace** čas v pravém horním rohu představuje poslední čas při poslední aktualizace stavu stránku diagnostiky.  
 
 ## <a name="alerting-and-alert-management"></a>Správa výstrah a upozornění 
-Pro funkci stav virtuálních počítačů Azure Monitor integruje s [Azure Alerts](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md) a vygeneruje výstrahu, pokud kritéria předdefinované stavu změnit dobrý do stavu není v pořádku, při zjištění stavu. Výstrahy jsou rozdělené podle závažnosti - závažnost 0 až 4, s závažnost 0 představuje nejvyšší úroveň závažnosti.  
+Pro funkci stav virtuálních počítačů Azure Monitor integruje s [Azure Alerts](../monitoring-and-diagnostics/monitoring-overview-alerts.md) a vygeneruje výstrahu, pokud kritéria předdefinované stavu změnit dobrý do stavu není v pořádku, při zjištění stavu. Výstrahy jsou rozdělené podle závažnosti - závažnost 0 až 4, s závažnost 0 představuje nejvyšší úroveň závažnosti.  
 
 Celkový počet zařazených do kategorií podle závažnosti upozornění na stav virtuálního počítače je k dispozici na **stavu** řídicího panelu v části **výstrahy**. Když vyberete buď celkový počet výstrah nebo číslo odpovídající úroveň závažnosti, **výstrahy** se otevře a zobrazí seznam všech výstrah odpovídající výběru.  Například, pokud jste vybrali na řádek odpovídající **úroveň závažnost 1**, pak se zobrazí následující zobrazení:
 

@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/20/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 09dd046f9dc7d6b73207ab1ab739e913a8ed5b92
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: b7839fc498b54d2128528c8d655d78bb759a7cd5
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51282046"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51612435"
 ---
 # <a name="design-and-build-a-management-solution-in-azure-preview"></a>Návrh a vytváření řešení pro správu v Azure (Preview)
 > [!NOTE]
@@ -54,7 +54,7 @@ Pokud potřebujete data, která není dostupný pomocí některého z dostupnýc
 Byste měli definovat žádné dotazy, které si myslíte, že bude pro uživatele užitečné, i v případě, že nejsou použity žádné zobrazení nebo výstrahy.  To budou k dispozici jako uložená hledání na portálu, a můžete je použít také [části vizualizace dotazy seznamu](../log-analytics/log-analytics-view-designer-parts.md#list-of-queries-part) vlastní zobrazení.
 
 ### <a name="alerts"></a>Výstrahy
-[Upozornění v Log Analytics](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md) identifikovat problémy prostřednictvím [prohledávání protokolů](#log-searches) s daty v úložišti.  Jsou buď upozornit uživatele, nebo automaticky spustit akci v odpovědi. By měl určit různé podmínky upozornění pro vaši aplikaci a zahrnout do souboru řešení odpovídající pravidla upozornění.
+[Upozornění v Log Analytics](../monitoring-and-diagnostics/monitoring-overview-alerts.md) identifikovat problémy prostřednictvím [prohledávání protokolů](#log-searches) s daty v úložišti.  Jsou buď upozornit uživatele, nebo automaticky spustit akci v odpovědi. By měl určit různé podmínky upozornění pro vaši aplikaci a zahrnout do souboru řešení odpovídající pravidla upozornění.
 
 Pokud tento problém můžete opravit potenciálně pomocí automatizovaného procesu, pak obvykle vytvoříte sady runbook ve službě Azure Automation, abyste mohli provést tento nápravu.  Většina služeb Azure je možné spravovat pomocí [rutiny](/powershell/azure/overview) kterém sada runbook by využívat k provádění těchto funkcí.
 

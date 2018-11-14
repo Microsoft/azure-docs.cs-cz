@@ -1,118 +1,141 @@
 ---
-title: O rozšíření rozhraní příkazového řádku pro Azure Machine Learning
-description: Další informace o machine learningu rozšíření rozhraní příkazového řádku pro Azure Machine Learning.
+title: Jak používat rozšíření rozhraní příkazového řádku pro Azure Machine Learning
+description: Další informace o rozšíření Azure Machine Learning rozhraní příkazového řádku Azure CLI. Azure CLI je nástroj příkazového řádku napříč platformami, která umožňuje pracovat s prostředky v cloudu Azure. Rozšíření Machine Learning umožňuje pracovat s služby Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
-ms.topic: reference
+ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: jordane
 author: jpe316
 ms.date: 09/24/2018
-ms.openlocfilehash: 45ed1867d6d151250340bb21450b4b0d9b00e993
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: f5c74055747cacbede479e12397bbb66ac74d10e
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51243143"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51615632"
 ---
-# <a name="what-is-the-azure-machine-learning-cli"></a>Co je rozhraní příkazového řádku Azure Machine Learning?
+# <a name="use-the-azure-machine-learning-cli-extension"></a>Použití rozšíření Azure Machine Learning CLI
 
-Rozšíření Azure Machine Learning rozhraní příkazového řádku (CLI) je pro odborníky přes data a vývojáři práci se službou Azure Machine Learning. Umožňuje vám rychle automatizovat pracovní postupy machine learning a umístit je do produkčního prostředí, jako například:
+Rozhraní příkazového řádku Azure Machine Learning je rozšíření [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest), multiplatformního rozhraní příkazového řádku pro platformu Azure. Toto rozšíření poskytuje příkazy pro práci se službou Azure Machine Learning z příkazového řádku. Umožňuje vytvořit skripty pro automatizaci strojového učení pracovních postupů. Například můžete vytvořit skripty, které provést následující akce:
+
 + Spustit vytváření modelů strojového učení
 
 + Zaregistrujte modelů strojového učení pro využití ze strany zákazníků
 
 + Balení, nasazování a sledování životního cyklu vašich modelů machine learning
 
-Tato strojového učení rozhraní příkazového řádku je rozšířením [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) a byla vytvořena na základě Python <a href="https://aka.ms/aml-sdk" target="_blank">SDK</a> pro službu Azure Machine Learning.
+Rozhraní příkazového řádku, není to náhrada pro sadu SDK Azure Machine Learning. Doplňkové nástroj, který je optimalizovaný pro zpracování vysoce parametrizované úkoly, jako je:
+
+* Vytváření výpočetních prostředků
+
+* odeslání experimentu parametrizované
+
+* Registrace modelu
+
+* Vytvoření Image
+
+* Nasazení služby
+
+## <a name="prerequisites"></a>Požadavky
+
+* [Rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest).
 
 > [!NOTE]
-> Rozhraní příkazového řádku je aktuálně v předběžné verzi preview a budou aktualizovány.
+> Pokud chcete používat rozhraní příkazového řádku, musíte mít předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="installing-and-uninstalling"></a>Instalace a odinstalace
+## <a name="install-the-extension"></a>Instalace rozšíření
 
-Můžete nainstalovat rozhraní příkazového řádku pomocí tohoto příkazu z našich náhledu PyPi indexu:
-```AzureCLI
+Pokud chcete nainstalovat rozšíření Machine Learning CLI, použijte následující příkaz:
+
+```azurecli-interactive
 az extension add -s https://azuremlsdktestpypi.blob.core.windows.net/wheels/sdk-release/Preview/E7501C02541B433786111FE8E140CAA1/azure_cli_ml-0.1.68-py2.py3-none-any.whl --pip-extra-index-urls  https://azuremlsdktestpypi.azureedge.net/sdk-release/Preview/E7501C02541B433786111FE8E140CAA1
 ```
 
-Odebrat rozhraní příkazového řádku pomocí tohoto příkazu:
-```AzureCLI
+Po zobrazení výzvy vyberte `y` nainstalovat rozšíření.
+
+Pokud chcete ověřit, jestli je nainstalovaná rozšíření, použijte následující příkaz k zobrazení seznamu podpříkazů specifické pro ML:
+
+```azurecli-interactive
+az ml -h
+```
+
+> [!TIP]
+> Rozšíření je nutné aktualizovat __odebrat__ a potom __nainstalovat__ ho. Tím se nainstaluje nejnovější verzi.
+
+## <a name="remove-the-extension"></a>Odebrat rozšíření
+
+Chcete-li odebrat rozšíření rozhraní příkazového řádku, použijte následující příkaz:
+
+```azurecli-interactive
 az extension remove -n azure-cli-ml
 ```
 
-Můžete aktualizovat pomocí rozhraní příkazového řádku **odebrat** a **přidat** výše uvedených kroků.
+## <a name="resource-management"></a>Správa prostředků
 
-## <a name="using-the-cli-vs-the-sdk"></a>Pomocí rozhraní příkazového řádku a sady SDK
-Rozhraní příkazového řádku je vhodnější automatizace dev ops osoby, nebo jako součást kanálu průběžné integrace a doručování. Je optimalizovaný pro zpracování úlohy s řídkým a vysoce parametry úlohy. 
+Následující příkazy ukazují, jak používat rozhraní příkazového řádku ke správě prostředků používat Azure Machine Learning.
 
-Příklady obsahují:
-- COMPUTE zřizování
-- odeslání experimentu parametrizované
-- registrace modelu, vytvoření bitové kopie
-- Nasazení služby
 
-Odborníci přes data jsou vhodné pro použití sady SDK Azure ML.
++ Vytvořte pracovní prostor služby Azure Machine Learning:
 
-## <a name="common-machine-learning-cli-commands"></a>Běžné strojového učení příkazy rozhraní příkazového řádku
-> [!NOTE]
-> Ukázkové soubory, které vám umožní byl úspěšně spuštěn následujících příkazů můžete najít [tady.](https://github.com/Azure/MachineLearningNotebooks/tree/cli/cli)
-
-Využijte bohatou sadu `az ml` příkazy pracovat služby v jakémkoli příkazového řádku prostředí, včetně portálu Azure cloud shellu.
-
-Tady je ukázka běžné příkazy:
-
-### <a name="workspace-creation--compute-setup"></a>Nastavení pracovního prostoru vytváření a výpočetní prostředky
-
-+ Vytvoření Azure Machine Learning pracovního prostoru služby, prostředku nejvyšší úrovně pro machine learning.
-   ```AzureCLI
+   ```azurecli-interactive
    az ml workspace create -n myworkspace -g myresourcegroup
    ```
 
-+ Nastavení rozhraní příkazového řádku a ve výchozím nastavení používají tento pracovní prostor.
-   ```AzureCLI
++ Nastavení výchozího pracovního prostoru:
+
+   ```azurecli-interactive
    az configure --defaults aml_workspace=myworkspace group=myresourcegroup
    ```
 
 + Vytvoření DSVM (datové vědy virtuálního počítače). Můžete také vytvořit BatchAI clustery pro distribuované trénování nebo nasazení clusterů AKS.
-  ```AzureCLI
+
+
+  ```azurecli-interactive
   az ml computetarget setup dsvm -n mydsvm
   ```
 
-### <a name="experiment-submission"></a>Odeslání experimentu
-+ Připojení k projektu (Konfigurace spuštění) pro odeslání experimentu. To se používá ke sledování spuštění experimentů.
-  ```AzureCLI
-  az ml project attach --experiment-name myhistory
-  ```
+## <a name="experiments"></a>Experimenty
 
-+ Odeslání experimentu na službu Azure Machine Learning na cílové výpočetní prostředí podle vašeho výběru. V tomto příkladu se spustí před místním výpočetním prostředí. Ujistěte se, že váš soubor prostředí conda zachycuje závislosti pythonu.
+Následující příkazy ukazují, jak pracovat s experimenty pomocí rozhraní příkazového řádku:
 
-  ```AzureCLI
-  az ml run submit -c local train.py
-  ```
+* Před odesláním experiment připojte projekt (Konfigurace spuštění):
 
-+ Zobrazte seznam odeslaných experimentů.
-```AzureCLI
-az ml history list
-```
+    ```azurecli-interactive
+    az ml project attach --experiment-name myhistory
+    ```
 
-### <a name="model-registration-image-ceation--deployment"></a>Model registrace, image ceation a nasazení
+* Spusťte běh experimentu. Při použití tohoto příkazu, zadejte cílové výpočetní prostředí. V tomto příkladu `local` používá k natrénování modelu pomocí místního počítače `train.py` skriptu:
 
-+ Zaregistrujte model Azure Machine Learning.
-  ```AzureCLI
+    ```azurecli-interactive
+    az ml run submit -c local train.py
+    ```
+
+* Zobrazte seznam odeslaných experimentů:
+
+    ```azurecli-interactive
+    az ml history list
+    ```
+
+## <a name="model-registration-image-creation--deployment"></a>Model registrace, vytvoření image a nasazení
+
+Následující příkazy ukazují, jak registrace trénovaného modelu a pak ho nasadíme jako služby v produkčním prostředí:
+
++ Zaregistrujte model Azure Machine Learning:
+
+  ```azurecli-interactive
   az ml model register -n mymodel -m sklearn_regression_model.pkl
   ```
 
-+ Vytvoření image tak, aby obsahovala vašeho modelu strojového učení a závislosti. 
-  ```AzureCLI
++ Vytvořte bitovou kopii, která obsahuje vaše modelu strojového učení a závislosti: 
+
+  ```azurecli-interactive
   az ml image create container -n myimage -r python -m mymodel:1 -f score.py -c myenv.yml
   ```
 
-+ Nasazení modelu zabalené do cíle, včetně ACI a AKS.
-  ```AzureCLI
++ Nasazení bitové kopie do cílového výpočetního prostředí:
+
+  ```azurecli-interactive
   az ml service create aci -n myaciservice --image-id myimage:1
   ```
-    
-## <a name="full-command-list"></a>Celý příkaz seznamu
-Úplný seznam příkazů pro rozšíření rozhraní příkazového řádku (a jejich podporovaných parametrů) můžete najít spuštěním ```az ml COMMANDNAME -h```. 

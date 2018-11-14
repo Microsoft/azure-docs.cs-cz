@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 08/14/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: a2b6b3334176cb6fdd86c17b4d11cb03a42dd4bf
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 42697f7f4bb8c6b9ef785eef0fe2f5f33b2b38a7
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45731798"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51615599"
 ---
 # <a name="store-batch-ai-job-input-and-output-with-azure-storage"></a>Store vstup úlohy služby Batch AI a výstup s Azure Storage
 
@@ -30,7 +30,7 @@ Azure Storage je řešení cloudového úložiště Microsoftu. Batch AI podporu
 
 Při výběru úložiště Azure pro vaše prostředí služby Batch AI, doporučujeme ukládat vstupních souborů (třeba datových sad) v kontejneru objektů Blob, který má vyšší propustnost, a ukládání výstupu školení ve sdílené složce, která podporuje datové proudy (povoluje čtení protokolů výstup úlohy je spuštěn současně). 
 
-Než budete moct použít Azure Storage, je potřeba [vytvoření účtu služby Azure Storage](../storage/common/storage-quickstart-create-account.md). Služba batch AI podporuje připojení svazků z obou pro obecné účely v1 (GPv1) a pro obecné účely v2 (GPv2) a Azure Storage účty. Účet služby Azure Storage může obsahovat více kontejnerů objektů Blob nebo soubor instance sdílené složky. Zvažte své požadavky na náklady a výkon, když vyberete typ účtu úložiště vytvořit. Další informace najdete v tématu [přehled účtu Azure storage](../storage/common/storage-account-overview.md). 
+Než budete moct použít Azure Storage, je potřeba [vytvoření účtu služby Azure Storage](../storage/common/storage-quickstart-create-account.md). Služba batch AI podporuje připojení svazků z obou pro obecné účely v1 (GPv1) a pro obecné účely v2 (GPv2) a Azure Storage účty. Účet služby Azure Storage může obsahovat více kontejnerů objektů Blob nebo soubor instance sdílené složky. Zvažte své požadavky na náklady a výkon, když vyberete typ účtu úložiště vytvořit. Další informace najdete v tématu [Přehled účtu Azure Storage](../storage/common/storage-account-overview.md). 
 
 Vytvořte kontejner objektů Blob a nahrajte vaše datová sada na kontejner objektů Blob v Azure, vyberte jednu z následujících metod:
 - [Azure portal](../storage/blobs/storage-quickstart-blobs-portal.md) pro nahrávání pomocí grafického uživatelského rozhraní založeného na webu. Pokud chcete nahrát malý počet souborů, webu Azure portal poskytuje nejjednodušší operaci.
@@ -98,7 +98,7 @@ Pokud cvičný skript vyžaduje znalosti cesty, je třeba předat jako argument 
 
 ### <a name="abbreviate-input-paths"></a>Zkrátit vstupní cesta
 
-Chcete-li zkrátit vstupní cesta jako proměnnou prostředí, použijte `inputDirectories` vlastnost vaše `job.json` souboru (nebo `models.JobCreateParamters.input_directories` Pokud pomocí sady SDK služby Batch AI). Schéma `inputDirectories` je:
+Chcete-li zkrátit vstupní cesta jako proměnnou prostředí, použijte `inputDirectories` vlastnost vaše `job.json` souboru (nebo `models.JobCreateParameters.input_directories` Pokud pomocí sady SDK služby Batch AI). Schéma `inputDirectories` je:
 
 ```json
 {
@@ -115,7 +115,7 @@ Další informace najdete v tématu [tady](https://github.com/Azure/BatchAI/blob
 
 ### <a name="abbreviate-output-paths"></a>Zkrátit výstupní cesta
 
-Chcete-li zkrátit výstupní cesta jako proměnnou prostředí, použijte `outputDirectories` vlastnost vaše `job.json` souboru (nebo `models.JobCreateParamters.output_directories` Pokud pomocí sady SDK služby Batch AI). Pomocí této metody můžete zjednodušit cesty pro výstupní soubory. Schéma `outputDirectories` je:
+Chcete-li zkrátit výstupní cesta jako proměnnou prostředí, použijte `outputDirectories` vlastnost vaše `job.json` souboru (nebo `models.JobCreateParameters.output_directories` Pokud pomocí sady SDK služby Batch AI). Pomocí této metody můžete zjednodušit cesty pro výstupní soubory. Schéma `outputDirectories` je:
 
 ```json
 {

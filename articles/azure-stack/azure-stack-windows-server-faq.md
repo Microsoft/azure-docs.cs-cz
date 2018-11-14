@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 11/12/2018
 ms.author: sethm
 ms.reviewer: avishwan
-ms.openlocfilehash: 91404f01a1a675ac59898336ef8aa81e1d2638b6
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.openlocfilehash: bf70f9a74b58758e03800d7f6fb92a8f8754828a
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/13/2018
-ms.locfileid: "51579228"
+ms.locfileid: "51613091"
 ---
 # <a name="windows-server-in-azure-stack-marketplace-faq"></a>Windows Server v Azure stacku nejčastější dotazy k Marketplace
 
@@ -38,7 +38,7 @@ Dále pokud všechny Virtual Machine Scale Sets odkazovat na konkrétní verzi, 
 Společnost Microsoft nabízí dvě verze Image Windows serveru z Tržiště Azure Stack:
 
 - **Platit používáte**: těchto imagí spustit plné ceny měřiče Windows. 
-   Kdo by měl používat: Zákazníci EA, kteří používají *model fakturace spotřeby*; Poskytovatelé CSP, kteří nechtějí použít licencování SPLA.
+   Kdo by měl používat: Enterprise Agreement (EA) Zákazníci, kteří používají *model fakturace spotřeby*; Poskytovatelé CSP, kteří nechtějí použít licencování SPLA.
 - **Používání vlastní licence (BYOL)**: spustit základní měřiče využití těchto imagí.
    Kdo by měl používat: Zákazníci EA s licencí k Windows serveru; Poskytovatelé CSP, kteří používají licence SPLA.
 
@@ -52,7 +52,7 @@ Nejprve odstraňte nesprávnou verzi prostřednictvím webu Marketplace správu.
 
 Zobrazit [převod virtuálních počítačů Windows serveru s programem zvýhodněné využití zpět na průběžné platby](../virtual-machines/windows/hybrid-use-benefit-licensing.md#powershell-1).
 
-### <a name="what-if-i-have-an-older-image-and-my-user-forgot-to-check-the-i-have-a-license-box-or-we-use-our-own-images-and-we-do-have-ea-entitlement"></a>Co když mám starší obrázek a Moje uživatel zapomněl zaškrtněte políčko "Mám licenci k", nebo jsme použít naše vlastní Image a budeme mít nárok EA?
+### <a name="what-if-i-have-an-older-image-and-my-user-forgot-to-check-the-i-have-a-license-box-or-we-use-our-own-images-and-we-do-have-enterprise-agreement-entitlement"></a>Co když mám starší obrázek a Moje uživatel zapomněl zaškrtněte políčko "Mám licenci k", nebo jsme použít naše vlastní Image a budeme mít smlouvu Enterprise, nárok?
 
 Zobrazit [převod existujícího virtuálního počítače pomocí programu Azure Hybrid Benefit pro Windows Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md#convert-an-existing-vm-using-azure-hybrid-benefit-for-windows-server). Všimněte si, že v programu Azure Hybrid Benefit nevztahuje na služby Azure Stack, ale účinek tohoto nastavení se nevztahuje.
 
@@ -60,7 +60,7 @@ Zobrazit [převod existujícího virtuálního počítače pomocí programu Azur
 
 Tyto Image se vztahují **licenseType** parametr, tak, aby byly placené, jaké používáte. Tento parametr lze nastavit (viz Nejčastější dotazy týkající se předchozí odpověď). To platí pouze pro software Windows serveru, aby vrstvami produkty, jako jsou SQL, které vyžadují, abyste si přinesli vlastní licenci. Platba používáte licencování nevztahuje na vrstvený softwarových produktů.
 
-### <a name="i-have-an-ea-and-i-create-my-own-images-how-do-i-make-sure-they-are-billed-correctly"></a>Mám smlouvu EA a vytvořit vlastní Image; Jak můžu ujistit, že se účtují správně?
+### <a name="i-have-an-enterprise-agreement-ea-and-will-be-using-my-ea-windows-server-license-how-do-i-make-sure-images-are-billed-correctly"></a>Mám smlouvu Enterprise (EA) a budou používat licenci na EA Windows Server; Jak můžu ujistit Image se účtují správně?
 
 Můžete přidat **typ licence: Windows_Server** v šabloně Azure Resource Manageru. Toto nastavení musí být přidaný do každý blok prostředků virtuálního počítače.
 

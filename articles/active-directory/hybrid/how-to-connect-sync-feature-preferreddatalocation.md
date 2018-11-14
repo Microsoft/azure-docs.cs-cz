@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/30/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 951ac39e1bb6ce050da26fa8ff3f93fd4e27e7d7
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 1dfc01d0f2f0f5f3eae58fd6c889fee3ad306135
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49318382"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51623023"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Synchronizace služby Azure Active Directory Connect: Konfigurace upřednostňované umístění dat pro prostředky služeb Office 365
 Účelem tohoto tématu je pro vás provedou postupem konfigurace atribut upřednostňované umístění dat ve službě Azure Active Directory (Azure AD) Connect sync. Při použití možnosti geografickým oblastem v Office 365, můžete použít tento atribut k určení geografické umístění dat uživatele v Office 365. (Podmínky *oblasti* a *geograficky* zaměňují.)
@@ -31,7 +31,7 @@ Ve výchozím nastavení Office 365 prostředky pro vaše uživatele jsou umíst
 Nastavením atributu **preferredDataLocation**, můžete definovat geograficky uživatele. Můžete mít uživatele Office 365 prostředky, jako jsou poštovní schránka a Onedrivu, v rámci stejné Geografie jako uživatel a stále máte jednoho tenanta pro celou organizaci.
 
 > [!IMPORTANT]
-> Geografickým oblastem je momentálně dostupný pro zákazníky s minimálně 2 500 předplatné služeb Office 365. Obraťte se prosím na zástupce společnosti Microsoft pro podrobnosti.
+> Geografickým oblastem je momentálně dostupný pro zákazníky s minimálně 5000 předplatné služeb Office 365. Obraťte se prosím na zástupce společnosti Microsoft pro podrobnosti.
 >
 >
 

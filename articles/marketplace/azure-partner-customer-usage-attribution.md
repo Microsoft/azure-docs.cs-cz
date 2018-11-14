@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/15/2018
 ms.author: yijenj
-ms.openlocfilehash: 7937f3d0db414d7a9cc2adaefd4324d49d734fcb
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 49d68a28180c384a181f29e41c12a5e32bd76aee
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51280669"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51625211"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Attribution využití zákazníka partnerů Azure
 
@@ -126,14 +126,14 @@ Identifikátor GUID je jedinečný referenční číslo, které má 32 šestnác
 > [!Note]
 > Je důrazně doporučujeme použít [služby Azure Storage GUID generátor formuláře](https://aka.ms/StoragePartners) vytvořit váš identifikátor GUID. Další informace najdete v tématu naše [nejčastější dotazy k](#faq).
 
-Vytvořte jedinečný GUID pro každou nabídku a distribuční kanál. Pokud nasadíte dvě řešení pomocí šablony a každý z nich je k dispozici na webu Azure Marketplace a na Githubu, je třeba vytvořit čtyři GUID:
+Doporučujeme že vytvořit jedinečný identifikátor GUID pro každou nabídku a distribuční kanál pro jednotlivé produkty. Můžete se rozhodnout použít jeden identifikátor GUID pro více distribučních kanálů produktu, pokud nechcete, aby vytváření sestav, který se má rozdělit. 
 
-*   Nabídky A webu Azure Marketplace 
-*   Nabídky A na Githubu
-*   Nabídky B v Azure Marketplace 
-*   Nabídky B na Githubu
+Pokud nasadíte produktu pomocí šablony a je k dispozici na Azure Marketplace a na Githubu, můžete vytvořit a zaregistrovat 2 odlišné identifikátory GUID:
 
-Vytváření sestav se provádí tak, že hodnota partnera (ID partnera společnosti Microsoft) a identifikátor GUID. 
+*   Produkt A na webu Azure Marketplace 
+*   Produkt A na Githubu
+
+Vytváření sestav se provádí tak, že hodnota partnera (ID partnera společnosti Microsoft) a identifikátory GUID. 
 
 Můžete také sledovat identifikátory GUID na podrobnější úrovni jako SKU, ve kterém se tyto skladové položky varianty nabídky.
 

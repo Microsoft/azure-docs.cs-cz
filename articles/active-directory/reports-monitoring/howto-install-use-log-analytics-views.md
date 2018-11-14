@@ -13,15 +13,15 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: report-monitor
-ms.date: 10/01/2018
+ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 11cc6a69b8072fca0639da5e517a39c22645710e
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: 7f3db8b16e275ff130cc3d8cb162780d595a7f32
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300502"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51624637"
 ---
 # <a name="install-and-use-the-log-analytics-views-for-azure-active-directory"></a>Nainstalovat a používat zobrazení Log Analytics pro Azure Active Directory
 

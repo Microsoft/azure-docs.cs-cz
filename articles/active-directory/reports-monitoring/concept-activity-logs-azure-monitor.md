@@ -1,6 +1,6 @@
 ---
 title: Protokoly aktivit Azure Active Directory ve službě Azure Monitor (Preview) | Microsoft Docs
-description: Přehled protokolů aktivit Azure Active Directory ve službě Azure Monitor (Preview)
+description: Úvod do služby Azure Active Directory aktivit protokolů ve službě Azure Monitor (preview)
 services: active-directory
 documentationcenter: ''
 author: priyamohanram
@@ -13,30 +13,30 @@ ms.topic: concept
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: report-monitor
-ms.date: 07/13/2018
+ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 3a4fc814a40bf370a137a2045c6218d3ee4b8778
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 760110d0ac359f6b7f135bf869e2520b8028ba6e
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49395616"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51625432"
 ---
 # <a name="azure-ad-activity-logs-in-azure-monitor-preview"></a>Protokoly aktivit Azure AD ve službě Azure Monitor (Preview)
 
-Teď můžete pomocí služby Azure Monitor směrovat protokoly aktivit Azure Active Directory (Azure AD) do vlastního účtu úložiště nebo centra událostí. Verze Public Preview protokolů Azure Active Directory ve službě Azure Monitor umožňuje:
+Protokoly aktivit Azure Active Directory (Azure AD) můžete nyní provést směrování na několik koncových bodů pro dlouho období uchovávání dat a dat přehledy. Verze public preview služby Azure AD protokolů ve službě Azure Monitor vám umožní:
 
-* Archivovat protokoly auditu pro určitý účet úložiště Azure, abyste mohli uchovávat data po dlouhou dobu.
-* Streamovat protokoly auditu do centra událostí Azure pro účely analýzy pomocí oblíbených nástrojů pro správu akcí a informací o zabezpečení (SIEM), jako jsou Splunk a QRadar.
-* Integrovat protokoly auditu s vlastními řešeními protokolů tím, že je budete streamovat do centra událostí.
+* Protokoly aktivit archiv služby Azure AD pro účet úložiště Azure pro data uchovávat po delší dobu.
+* Protokoly aktivit Stream služby Azure AD do služby Azure event hub Analytics pomocí oblíbených nástrojů informace o zabezpečení a správu událostí (SIEM), jako je například Splunk a QRadar.
+* Integrace Azure AD protokolů aktivit se svoje vlastní řešení vlastního protokolu pomocí streamování do centra událostí.
 * Odeslat Azure AD protokolů aktivit do Log Analytics umožňují přehledné vizualizace, monitorování a upozorňování pro připojené data.
 
 > [!VIDEO https://www.youtube.com/embed/syT-9KNfug8]
 
 ## <a name="supported-reports"></a>Podporované sestavy
 
-Pomocí této funkce můžete směrovat protokoly aktivit auditu a přihlašování do svého účtu úložiště Azure, centra událostí nebo vlastního řešení. 
+Můžete směrování Azure AD auditovat protokoly a protokoly přihlášení k účtu úložiště Azure, Centrum událostí, Log Analytics nebo vlastní řešení s použitím této funkce. 
 
 * **Protokoly auditu:** [Sestava aktivit protokolů auditu](concept-audit-logs.md) poskytuje přístup k historii každé úlohy provedené ve vašem tenantovi.
 * **Protokoly přihlašování:** Se [sestavou aktivit přihlašování](concept-sign-ins.md) můžete určit, kdo provedl úlohy hlášené v protokolech auditu.
@@ -101,25 +101,19 @@ Náklady související se správou pracovní prostor Log Analytics najdete v té
 
 V této části najdete odpovědi na nejčastější dotazy a popis známých problémů s protokoly Azure AD ve službě Azure Monitor.
 
-**Otázka: Kde mám začít?** 
-
-**Odpověď:** Tento článek popisuje, co potřebujete k nasazení této funkce. Jakmile splníte požadavky, přejděte ke kurzům, které vám pomůžou nakonfigurovat protokoly a směrovat je do centra událostí.
-
----
-
 **Otázka: Jaké protokoly jsou zahrnuté?**
 
 **Odpověď:** Pomocí této funkce se dají směrovat jak protokoly aktivit přihlašování, tak protokoly auditu, i když události auditu související s B2C se momentálně nepodporují. Informace o tom, jaké typy protokolů a jaké protokoly podle funkcí se momentálně podporují, najdete v článcích o [schématu protokolů auditu](reference-azure-monitor-audit-log-schema.md) a [schématu protokolů přihlašování](reference-azure-monitor-sign-ins-log-schema.md). 
 
 ---
 
-**Otázka: Jak brzy po akci se v centrech událostí zobrazí odpovídající protokoly?**
+**Otázka: jak krátce po akci se odpovídající protokoly zobrazí v Centru událostí?**
 
 **Odpověď:** Protokoly by se v centru událostí měly zobrazit během dvou až pěti minut od provedení akce. Další informace o službě Event Hubs najdete v tématu [Co je Azure Event Hubs?](../../event-hubs/event-hubs-about.md).
 
 ---
 
-**Otázka: Jak brzy po akci se v účtech úložiště zobrazí odpovídající protokoly?**
+**Otázka: jak krátce po akci bude odpovídající protokoly objeví ve svém účtu úložiště?**
 
 **Odpověď:** V případě účtů úložiště Azure se latence pohybuje mezi 5 až 15 minutami od provedení akce.
 

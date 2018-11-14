@@ -13,15 +13,15 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: report-monitor
-ms.date: 10/01/2018
+ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: bc918d0ee3b3b435905546507287dc655f68e8c9
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 7509081bbf43aeaf39570f84afef81b6dd5a39fe
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49429775"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51621662"
 ---
 # <a name="integrate-azure-ad-logs-with-log-analytics-using-azure-monitor-preview"></a>Integrace protokolů Azure AD pomocí služby Log Analytics pomocí Azure monitoru (preview)
 
@@ -57,7 +57,7 @@ Pokud chcete používat tuto funkci, potřebujete tyto položky:
 * Uživatele, který je *globálním správcem* nebo *správcem zabezpečení* pro tohoto tenanta Azure AD.
 * Pracovní prostor Log Analytics ve vašem předplatném Azure. Zjistěte, jak [vytvořit pracovní prostor Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-create-workspace).
 
-## <a name="send-logs-to-log-analytics"></a>Odeslání protokolů do Log Analytics
+## <a name="send-logs-to-log-analytics"></a>Odesílání protokolů do Log Analytics
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
 

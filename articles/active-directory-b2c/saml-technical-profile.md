@@ -10,18 +10,18 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 301ae251413cc174f115479e9ebef2310aa83ba7
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: c99099c9b0fdf485bcf1db1d00b23e1e119ec557
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47162438"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51614153"
 ---
 # <a name="define-a-saml-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Technický profil SAML definování ve vlastních zásadách pro Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory (Azure AD) B2C poskytuje podporu pro zprostředkovatele identity SAML 2.0. Tento článek popisuje, jaké jsou specifikace technický profil pro interakci s zprostředkovatele deklarací identity, která podporuje tento protokol standardizované. Pomocí SAML podle technického profilu, který může provést federaci s SAML zprostředkovatele identity, jako je služba AD FS nebo Salesforce, umožňuje uživatelům přihlásit se s jejich existujícími sociálních sítí nebo podnikové identity.
+Azure Active Directory (Azure AD) B2C poskytuje podporu pro zprostředkovatele identity SAML 2.0. Tento článek popisuje, jaké jsou specifikace technický profil pro interakci s zprostředkovatele deklarací identity, která podporuje tento protokol standardizované. S technický profil SAML, který může provést federaci pomocí zprostředkovatele identity na základě SAML, jako je služba AD FS nebo Salesforce, umožňuje uživatelům přihlásit se pomocí svých podnikových identit nebo existující sociální sítě.
 
 ## <a name="metadata-exchange"></a>Metadata exchange
 
@@ -111,7 +111,7 @@ Při vytváření zprostředkovatele identity spuštění toku vezměte v úvahu
 | WantsSignedAssertions | Ne | Určuje, zda technický profil vyžaduje všechny příchozí kontrolní výrazy byly podepsané. Možné hodnoty: `true` nebo `false`. Výchozí hodnota je `true`. Pokud je hodnota nastavena na `true`, všechny části kontrolní výrazy `saml:Assertion` odeslané podle identity musí být podepsané zprostředkovatele na Azure AD B2C. Pokud je hodnota nastavena na `false`, zprostředkovatel identity neměli podepisovat kontrolní výrazy, ale i v případě, že dělá, Azure AD B2C se ověřit podpis. Tato metadata řídí také příznak metadata **WantsAssertionsSigned**, což je výstup v metadatech technický profil Azure AD B2C, jež jsou sdílena s tímto poskytovatelem identity. Pokud zakážete ověření kontrolních výrazů, můžete také chtít zakázat ověřování podpisu odpovědi (Další informace najdete v tématu **ResponsesSigned**). |
 | ResponsesSigned | Ne | Možné hodnoty: `true` nebo `false`. Výchozí hodnota je `true`. Pokud je hodnota nastavena na `false`, zprostředkovatel identity by neměl podepsat odpověď SAML, ale i v případě, že dělá, Azure AD B2C se ověřit podpis. Pokud je hodnota nastavena na `true`, odpověď SAML odeslanou poskytovatelem identity Azure AD B2C je podepsaná a musí být ověřené. Pokud zakážete ověření odpověď SAML, můžete také chtít zakázat ověřování podpisu kontrolního výrazu (Další informace najdete v tématu **WantsSignedAssertions**). |
 | WantsEncryptedAssertions | Ne | Určuje, zda technický profil vyžaduje všechny příchozí kontrolní výrazy byly šifrované. Možné hodnoty: `true` nebo `false`. Výchozí hodnota je `false`. Pokud je hodnota nastavena na `true`, kontrolní výrazy odesílat poskytovatelem identity Azure AD B2C musí být podepsané a **SamlAssertionDecryption** kryptografický klíč se musí zadat. Pokud je hodnota nastavena na `true`, obsahuje metadata technický profil Azure AD B2C **šifrování** oddílu. Zprostředkovatel identity načte metadata a šifruje odpověď kontrolní výraz SAML s veřejným klíčem, který je k dispozici v metadatech technický profil Azure AD B2C. Pokud povolíte šifrování kontrolní výrazy, budete také muset zakázat ověřování podpisu odpovědi (Další informace najdete v tématu **ResponsesSigned**). | 
-| IdpInitiatedProfileEnabled | Ne |Určuje, zda je povoleno profil relace přihlášení, která byla spuštěna v rámci profilu poskytovatele identity SAML. Možné hodnoty: `true` nebo `false`. Výchozí hodnota je `false`. V aplikaci flow zahájené poskytovatelem identity je uživatel ověřený externě a nevyžádané odpovědi jsou odeslána do Azure AD B2C, který pak token využívá, provede kroků Orchestrace a pak odešle odpověď aplikaci předávající strany. |
+| IdpInitiatedProfileEnabled | Ne |Určuje, zda je povoleno profil relace přihlášení, která byla spuštěna v rámci profilu poskytovatele identity SAML. Možné hodnoty: `true` nebo `false`. Výchozí formát je `false`. V aplikaci flow zahájené poskytovatelem identity je uživatel ověřený externě a nevyžádané odpovědi jsou odeslána do Azure AD B2C, který pak token využívá, provede kroků Orchestrace a pak odešle odpověď aplikaci předávající strany. |
 
 ## <a name="cryptographic-keys"></a>Kryptografické klíče
 

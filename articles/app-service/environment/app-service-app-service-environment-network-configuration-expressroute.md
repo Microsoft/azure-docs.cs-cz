@@ -1,6 +1,6 @@
 ---
-title: Podrobnosti konfigurace sítě pro práci s Express Route
-description: Podrobnosti konfigurace sítě pro spuštění prostředí App Service ve virtuální sítě připojen k okruhu ExpressRoute.
+title: Podrobnosti o konfiguraci sítě pro práci se službou Express Route
+description: Podrobnosti o konfiguraci sítě pro spouštění služby App Service Environment ve virtuálních sítích připojené k okruhu ExpressRoute.
 services: app-service
 documentationcenter: ''
 author: stefsch
@@ -14,111 +14,111 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/14/2016
 ms.author: stefsch
-ms.openlocfilehash: fcb9fa9004039205fa49f63c50d5907a8029a079
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 7873192e4a66cd2faed5a1a1255377139d33d750
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32153214"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51616057"
 ---
 # <a name="network-configuration-details-for-app-service-environments-with-expressroute"></a>Podrobnosti o konfiguraci sítě pro službu App Service Environment používající ExpressRoute
 ## <a name="overview"></a>Přehled
-Zákazníci mohou připojit [Azure ExpressRoute] [ ExpressRoute] okruhu jejich infrastruktury virtuální sítě, tak rozšířit jejich místní sítě do Azure.  Služby App Service Environment lze vytvořit v této podsíti [virtuální sítě] [ virtualnetwork] infrastruktury.  Aplikace běžící na App Service Environment pak může navázat zabezpečené připojení k back endové prostředky, které jsou přístupné pouze prostřednictvím připojení ExpressRoute.  
+Zákazníci mohou připojit [Azure ExpressRoute] [ ExpressRoute] okruh ke své virtuální síťové infrastruktury, tak rozšířit jejich místní síť do Azure.  Služby App Service Environment je možné vytvořit v této podsíti [virtuální sítě] [ virtualnetwork] infrastruktury.  Aplikace běžící na App Service Environment pak můžete navazovat zabezpečená připojení k back endové prostředky, které jsou přístupné pouze prostřednictvím připojení ExpressRoute.  
 
-Služby App Service Environment se dají vytvářet v **buď** virtuální síť Azure Resource Manager **nebo** virtuální síť modelu nasazení classic.  Nedávné změny provedené v června 2016, ASEs také teď můžou být nasazené do virtuální sítě, které používají rozsahů veřejných adres nebo RFC1918 adresní prostory (tj. privátní adresy). 
+Služby App Service Environment je možné vytvořit v **buď** virtuální sítí Azure Resource Manageru **nebo** virtuální síť modelu nasazení classic.  Nedávné změny provedené v červnu 2016 služby ase můžete také nasadit do virtuální sítě, které používají rozsahy adres veřejné nebo definice RFC1918 adresní prostory (tj. privátní adresy). 
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../../includes/app-service-web-to-api-and-mobile.md)]
 
 ## <a name="required-network-connectivity"></a>Vyžaduje síťové připojení
-Existují požadavky na síťové připojení pro prostředí App Service, která nemusí být splněna původně ve virtuální síti připojené k ExpressRoute.  Služby App Service Environment vyžadují ke správnému všechny z následujících:
+Existují požadavky síťového připojení pro služby App Service Environment, která nemusí být splněny zpočátku do virtuální sítě připojené k ExpressRoute.  Služby App Service Environment vyžadovat mohl správně fungovat všechny z následujících akcí:
 
-* Odchozí síťové připojení k Azure Storage koncových bodů po celém světě na oba porty 80 a 443.  To zahrnuje koncové body umístěné ve stejné oblasti jako služba App Service Environment, stejně jako koncové body úložiště, které jsou umístěné v **jiných** oblastech Azure.  Koncové body Azure úložiště vyřešit v rámci z následujících domén DNS: *table.core.windows.net*, *blob.core.windows.net*, *queue.core.windows.net* a *file.core.windows.net*.  
-* Odchozí síťové připojení ke službě Azure soubory na port 445.
-* Odchozí síťové připojení k databázi Sql koncové body umístěné ve stejné oblasti jako služba App Service Environment.  Koncové body SQL DB vyřešit pod následující domény: *database.windows.net*.  To vyžaduje přístup k portům 1433, 11000 11999 a 14000 14999 otevření.  Podrobnosti najdete v části [Tento článek na použití portu Sql Database verze 12](../../sql-database/sql-database-develop-direct-route-ports-adonet-v12.md).
-* Odchozí síťové připojení ke koncovým bodům roviny Azure management (ASM i ARM koncových bodů).  To zahrnuje odchozí připojení pro obě *management.core.windows.net* a *management.azure.com*. 
-* Odchozí síťové připojení k *ocsp.msocsp.com*, *mscrl.microsoft.com* a *crl.microsoft.com*.  To je potřeba k podpoře funkce SSL.
-* Konfiguraci DNS pro virtuální síť musí být schopen překladu všechny koncové body a domény uvedený v dřívějších bodů.  Pokud tyto koncové body nelze přeložit, se nezdaří pokusy o vytvoření služby App Service Environment a budou označeny stávající prostředí App Service není v pořádku.
-* Je nutný pro komunikaci se servery DNS odchozí přístup na port 53.
-* Pokud na druhém konci brány VPN existuje vlastního serveru DNS, DNS server musí být dostupný z podsítě obsahující App Service Environment. 
-* Odchozí síťovou cestu nelze procházet i podnikové interní proxy, ani lze vynutit tunelovým propojením místně.  Díky tomu změní adresu efektivní NAT odchozího provozu z App Service Environment.  Změna adres NAT odchozího provozu služby App Service Environment způsobí selhání připojení k mnoha koncových bodů uvedené výše.  Výsledkem neúspěšných pokusech o vytvoření služby App Service Environment, stejně jako dříve pořádku prostředí App Service bude označena jako není v pořádku.  
-* Příchozí síťový přístup k požadované porty pro prostředí App Service musí být povoleno, jak je popsáno v tomto [článku][requiredports].
+* Odchozího síťového připojení k Azure Storage koncových bodů po celém světě na oba porty 80 a 443.  Jedná se o koncových bodech, které jsou umístěné ve stejné oblasti jako služba App Service Environment, stejně jako koncové body úložiště nachází v **jiných** oblastí Azure.  Koncové body služby Azure Storage vyřešit podle následujících domén DNS: *table.core.windows.net*, *blob.core.windows.net*, *queue.core.windows.net* a *file.core.windows.net*.  
+* Odchozího síťového připojení ke službě soubory Azure na portu 445.
+* Odchozí síťové připojení ke koncovým bodům Sql DB umístěný ve stejné oblasti jako služba App Service Environment.  Koncové body SQL DB řešení v rámci následující domény: *database.windows.net*.  To vyžaduje přístup k portům 1433, 11000 11999 a 14000 14999 otevření.  Další podrobnosti najdete v tématu [Tento článek na použití portů Sql Database V12](../../sql-database/sql-database-develop-direct-route-ports-adonet-v12.md).
+* Odchozí síťové připojení ke koncovým bodům roviny správy Azure (ASM a ARM koncových bodů).  Jedná se o odchozí připojení k oběma *management.core.windows.net* a *management.azure.com*. 
+* Odchozího síťového připojení k *ocsp.msocsp.com*, *mscrl.microsoft.com* a *crl.microsoft.com*.  To je potřeba pro podporu funkcí protokolu SSL.
+* Konfigurace DNS pro virtuální síť musí být schopné řeší všechny koncové body a domén, které jsou uvedené v předchozích bodů.  Pokud tyto koncové body nelze vyřešit, se nezdaří pokusy o vytvoření služby App Service Environment a stávající služby App Service Environment se označí jako špatný.
+* Odchozí přístup na port 53, je nutné pro komunikaci se servery DNS.
+* Pokud vlastní server DNS existuje na druhém konci bránu VPN, musí být dostupný z podsítě služby App Service Environment obsahující DNS server. 
+* Odchozí síťová cesta nemůže přecházet mezi interní podnikové proxy servery ani nemůže být vynuceným tunelovým propojením do místní.  Efektivní adresa NAT odchozích síťových přenosů tím změní ze služby App Service Environment.  Změna adres NAT odchozího provozu sítě služby App Service Environment způsobí selhání připojení k několika koncových bodů uvedených výše.  To má za následek neúspěšné pokusy o vytvoření služby App Service Environment, stejně jako dříve v pořádku App Service Environment se označí jako špatný.  
+* Příchozí síťový přístup k požadované porty pro App Service Environment musí být povoleno, jak je popsáno v tomto [článku][requiredports].
 
-Požadavky na DNS můžete splnit zajištěním platný infrastruktura DNS je nakonfigurován a udržuje pro virtuální síť.  Pokud z nějakého důvodu dojde ke změně konfigurace DNS po vytvoření služby App Service Environment, vývojáři vynutit služby App Service Environment načíst novou konfiguraci DNS.  Aktivuje restartu postupného prostředí pomocí ikony "Restartovat" nachází v horní části okna Správa služby App Service Environment ve [portál Azure] [ NewPortal] způsobí, že prostředí tak, aby se vyzvedávat novou konfiguraci DNS.
+Mohou být splněny požadavky na DNS tím, že zajišťuje platný infrastruktury služby DNS je konfiguraci a údržbu pro virtuální síť.  Pokud z nějakého důvodu dojde ke změně konfigurace DNS po vytvoření služby App Service Environment, vývojáři můžete vynutit službu App Service Environment, aby se získaly novou konfiguraci DNS.  Aktivuje se zajištěním provozu restartování prostředí pomocí ikony "Restart" umístěný v horní části okna správy služby App Service Environment [webu Azure portal] [ NewPortal] způsobí, že prostředí tak, aby získaly nové DNS konfigurace.
 
-Nelze splnit požadavky na přístup příchozích síťových konfigurací [skupinu zabezpečení sítě] [ NetworkSecurityGroups] v podsíti App Service Environment umožňující požadovaný přístup, jak je popsáno v tomto [článku][requiredports].
+Mohou být splněny požadavky na přístup příchozí síťová konfigurace [skupinu zabezpečení sítě] [ NetworkSecurityGroups] v podsíti služby App Service Environment umožňující požadovaný přístup, jak je popsáno v tomto [ článek][requiredports].
 
 ## <a name="enabling-outbound-network-connectivity-for-an-app-service-environment"></a>Povolení odchozího síťového připojení pro služby App Service Environment
-Ve výchozím nastavení nově vytvořený okruh ExpressRoute inzeruje výchozí trasu, která umožňuje odchozí připojení k Internetu.  Pomocí této konfigurace bude moci připojit k jiné koncové body Azure App Service Environment.
+Ve výchozím nastavení nově vytvořený okruh ExpressRoute inzeruje výchozí trasu, která umožňuje odchozí připojení k Internetu.  S touto konfigurací bude moct připojit k jiné koncové body Azure App Service Environment.
 
-Obvyklé konfigurace zákazníka je ale definovat vlastní výchozí trasa (0.0.0.0/0), který vynutí odchozí přenosy z Internetu do místo toku místní.  Tento tok provozu vždy dělí prostředí App Service, protože odchozí provoz je blokované místně nebo NAT by nerozpoznatelný sadu adresy, které přestane fungovat v různých koncové body Azure.
+Běžnou konfigurací zákazníků je ale definovat vlastní výchozí trasa (0.0.0.0/0), která vynutí odchozí internetový provoz místo toho tok místní.  Tento tok provozu vždy přeruší App Service Environment, protože odchozí provoz je blokované v místním nebo NAT by nerozpoznatelný sadu adresy, které přestane fungovat v různých koncových bodů Azure.
 
-Řešení je definovat jeden (nebo více) trasy definované uživatelem (udr) v podsíti, který obsahuje App Service Environment.  UDR definuje tras konkrétní podsítě, které bude dodržení místo výchozí trasu.
+Toto řešení je definování (nejméně) trasy definované uživatelem (udr) na podsíť, která obsahuje služby App Service Environment.  Trasu UDR definuje konkrétní podsítě tras, které bude použito místo výchozí trasu.
 
-Pokud je to možné doporučujeme použít následující konfigurace:
+Pokud je to možné doporučuje se použijte následující konfiguraci:
 
-* Konfigurace ExpressRoute inzeruje 0.0.0.0/0 a ve výchozím nastavení vynucené tunelových propojení všechny odchozí přenosy na místě.
-* UDR použije na podsíť obsahující App Service Environment definuje 0.0.0.0/0 s další typ směrování Internet (příkladem je dále dolů v tomto článku).
+* Konfigurace ExpressRoute inzeruje 0.0.0.0/0 a ve výchozím nastavení vynucené tunelů všechny odchozí provoz do místní.
+* Uživatelem definovaná TRASA použitá na podsíť obsahující služby App Service Environment definuje 0.0.0.0/0 s dalším segmentem směrování typu Internet (příkladem je mimo provoz dále v tomto článku).
 
-Celkové požadavky tyto kroky je, že úrovni podsítě UDR bude mít přednost přes ExpressRoute vynucené tunelování, čímž zajišťuje odchozí přístup k Internetu z App Service Environment.
+Celkové požadavky z těchto kroků je, že úrovni podsítě uživatelem definovaná TRASA bude mít přednost přes ExpressRoute vynucené tunelování, čímž zajišťuje odchozí internetový přístup ze služby App Service Environment.
 
 > [!IMPORTANT]
-> Trasy definované v UDR **musí** být dost konkrétní, aby mají přednost před všechny trasy inzerované konfigurace ExpressRoute.  Následující příklad používá rozsah adres široký 0.0.0.0/0 a jako takový se dá potenciálně omylem přepsat inzerování tras pomocí podrobnější rozsahy adres.
+> Trasy definované v trase UDR **musí** být dost konkrétní, aby přednost před všemi trasami inzerovanými konfigurací ExpressRoute.  Následující příklad používá široký rozsah adres 0.0.0.0/0 a proto může nechtěně dojít k jeho podle inzerování tras pomocí konkrétnější rozsahy adres.
 > 
-> Prostředí App Service nejsou podporovány s konfigurací ExpressRoute, **mezi Inzerovat trasy z cesty veřejného partnerského vztahu k cestou soukromého partnerského vztahu**.  Konfigurace ExpressRoute, které mají veřejné partnerské vztahy nakonfigurované, obdrží inzerování trasy od společnosti Microsoft pro velké sady rozsahů adres Microsoft Azure IP.  Pokud tyto rozsahy adres ohlášené mezi na cestou soukromého partnerského vztahu, konečným výsledkem je, že všechny odchozí síťových paketů z podsítě App Service Environment bude tunelovým propojením force zákazníka místní síťové infrastruktuře.  Tento tok sítě se aktuálně nepodporuje s prostředí App Service.  Jedno řešení tohoto problému je zastavit směrování mezi – reklamu z cesty veřejného partnerského vztahu cestou soukromého partnerského vztahu.
+> App Service Environment nejsou podporované v konfiguracích ExpressRoute, který **trasy z cesty veřejného partnerského vztahu pro cestou soukromého partnerského vztahu mezi inzerovat**.  Konfigurace ExpressRoute, které mají veřejné partnerské vztahy nakonfigurované, bude přijímají inzerci tras od Microsoftu pro velkou sadu rozsahů adres IP adres Microsoft Azure.  Pokud tyto rozsahy adres křížová inzerce na cestou soukromého partnerského vztahu, konečný výsledek je, že všechny odchozí síťové pakety z podsítě služby App Service Environment bude platnost s děleným tunelovým propojením do zákazníka místní síťové infrastruktury.  App Service Environment v současné době nepodporuje tento tok sítí.  Jedním řešením tohoto problému je ukončit křížovou inzerci tras z cesty veřejného partnerského vztahu pro cestou soukromého partnerského vztahu.
 > 
 > 
 
-Základní informace o trasy definované uživatelem je k dispozici v tomto [přehled][UDROverview].  
+Základní informace o uživatelsky definované trasy je k dispozici v tomto [přehled][UDROverview].  
 
-Informace o vytváření a konfigurace trasy definované uživatelem je k dispozici v tomto [jak pro průvodce][UDRHowTo].
+Podrobnosti o vytvoření a konfigurace trasy definované uživatelem je k dispozici v tomto [jak pro průvodce][UDRHowTo].
 
-## <a name="example-udr-configuration-for-an-app-service-environment"></a>Ukázková konfigurace UDR služby App Service Environment
+## <a name="example-udr-configuration-for-an-app-service-environment"></a>Příklad konfigurace uživatelem definovaná TRASA pro služby App Service Environment
 **Předpoklady**
 
-1. Nainstalovat Azure Powershell z [Azure stáhne stránky][AzureDownloads] (s datem červen 2015 nebo novější).  V části "Nástroje příkazového řádku" existuje propojení "Instalace" v části "Windows Powershell", který bude instalovat nejnovější rutiny prostředí Powershell.
-2. Doporučuje se, že jedinečnou podsíť je vytvořený pro výhradní použití služby App Service Environment.  To zaručuje, že udr použije na podsíť pouze otevřít odchozí přenosy App Service Environment.
-3. **Důležité**: nenasazujte App Service Environment, dokud **po** dodržíte následující kroky konfigurace.  To zajišťuje, že odchozí síťové připojení k dispozici před pokusem o nasazení služby App Service Environment.
+1. Nainstalovat Azure Powershell z [Azure stáhne stránky][AzureDownloads] (s datem červen 2015 nebo novější).  V části "Nástroje příkazového řádku" je odkazem pro "Instalaci" v části "Windows Powershell", který nainstaluje nejnovější rutiny prostředí Powershell.
+2. Doporučuje se, že jedinečnou podsíť se vytvoří pro výhradní použití ve službě App Service Environment.  Tím se zajistí, že použije na podsíť trasy definované uživatelem se otevře, jenom odchozí provoz pro App Service Environment.
+3. **Důležité**: nezvolíte nasazení do služby App Service Environment **po** následovaných následující kroky konfigurace.  Tím se zajistí, že odchozího síťového připojení je k dispozici před pokusem o nasazení služby App Service Environment.
 
-**Krok 1: Vytvoření tabulky pojmenovanou trasu**
+**Krok 1: Vytvoření pojmenovaných směrovací tabulky**
 
-Následující fragment kódu vytvoří směrovací tabulku v oblasti Azure USA – Západ jako "DirectInternetRouteTable":
+Následující fragment kódu vytvoří směrovací tabulku nazývá "DirectInternetRouteTable" v oblasti Azure USA – západ:
 
     New-AzureRouteTable -Name 'DirectInternetRouteTable' -Location uswest
 
-**Krok 2: Vytvoření jednu nebo víc tras ve směrovací tabulce**
+**Krok 2: Vytvořte jeden nebo několik tras ve směrovací tabulce**
 
-Musíte přidat jeden nebo více trasy do směrovací tabulky. Chcete-li povolit odchozí přístup k Internetu.  
+Je potřeba přidat jeden nebo více trasy do směrovací tabulky, chcete-li povolit odchozí internetový přístup.  
 
-Doporučený postup pro konfiguraci odchozí přístup k Internetu je definovat trasu pro 0.0.0.0/0, jak je uvedeno níže.
+Doporučený postup pro konfiguraci odchozí přístup k Internetu je definovat trasu pro 0.0.0.0/0, jak je znázorněno níže.
 
     Get-AzureRouteTable -Name 'DirectInternetRouteTable' | Set-AzureRoute -RouteName 'Direct Internet Range 0' -AddressPrefix 0.0.0.0/0 -NextHopType Internet
 
-Mějte na paměti, že 0.0.0.0/0 je adresa široký rozsah a jako takový bude přepsáno podrobnější rozsahy adres inzerovaných ExpressRoute.  Znovu iteraci starší doporučení, UDR s trasou 0.0.0.0/0 by měl používat ve spojení s konfigurací ExressRoute, pouze inzeruje 0.0.0.0/0 také. 
+Mějte na paměti, že 0.0.0.0/0 je rozsah adres široké a jako takové, budou přepsaná identifikátorem konkrétnější rozsahy adres inzerovat pomocí ExpressRoute.  K iteraci znovu předchozí doporučení, trasu UDR s trasy 0.0.0.0/0 byste měli použít ve spojení s konfigurací ExpressRoute, který pouze zajistí inzerci také 0.0.0.0/0. 
 
-Jako alternativu můžete si stáhnout seznam rozsahy CIDR používá Azure komplexní a aktualizované.  Soubor Xml obsahující všechny rozsahy Azure IP adres je k dispozici z [Microsoft Download Center][DownloadCenterAddressRanges].  
+Jako alternativu můžete stáhnout kompletní a aktualizovaný seznam rozsahy CIDR používaných službou Azure.  Soubor Xml obsahující všechny rozsahy adres IP adres Azure je k dispozici [Microsoft Download Center][DownloadCenterAddressRanges].  
 
-Všimněte si ale, že tyto rozsahy časem změnit, proto očekávání pravidelné ruční aktualizace trasy definované uživatelem pro synchronizaci.  Navíc vzhledem k tomu, že je výchozí maximální limit je 100 trasy v jednom UDR, budete muset "shrnout" rozsahů adres Azure IP nevejde se do limit 100 trasy, pamatujte, že UDR definované trasy musejí být konkrétnější než trasy inzerované podle vaší ExpressRoute.  
+Nezapomeňte, že tyto rozsahy v průběhu času měnit, takže vyžadovala pravidelné ruční aktualizace trasy definované uživatelem pro synchronizaci.  Také protože výchozí horní limit 100 tras v jedné uživatelem definovaná TRASA, budete muset "shrnout" rozsahy Azure IP adres, aby vyhovovaly limitu 100 trasy, dodržujte při tom, že směrování definovaného uživatelem definované trasy musí být konkrétnější než trasy inzerované podle vaší ExpressRo ustit.  
 
-**Krok 3: Přidružení tabulku směrování pro podsíť obsahující App Service Environment**
+**Krok 3: Přidružení směrovací tabulky pro podsíť obsahující služby App Service Environment**
 
-Poslední krok konfigurace je přidružit k podsíti směrovací tabulka, kde bude nasazen App Service Environment.  Následující příkaz přidruží "DirectInternetRouteTable" na "ASESubnet", bude obsahovat nakonec služby App Service Environment.
+Posledním krokem konfigurace je přidružení směrovací tabulky k podsíti nasazená služba App Service Environment.  Následující příkaz přiřadí "DirectInternetRouteTable" k "ASESubnet", která bude obsahovat nakonec služby App Service Environment.
 
     Set-AzureSubnetRouteTable -VirtualNetworkName 'YourVirtualNetworkNameHere' -SubnetName 'ASESubnet' -RouteTableName 'DirectInternetRouteTable'
 
 
 **Krok 4: Závěrečné kroky**
 
-Jakmile směrovací tabulka je vázána k podsíti, doporučujeme nejprve testování a potvrďte zamýšlený účinek.  Například nasazení virtuálního počítače do podsítě a ověřte, že:
+Jakmile směrovací tabulka je vázána k podsíti, se doporučuje nejprve otestovat a potvrďte zamýšlený efekt.  Například nasazení virtuálního počítače do podsítě a ujistěte se, že:
 
-* Odchozí přenosy na Azure a koncové body mimo Azure uvedených výše v otázce Tento článek je **není** toku okruhu ExpressRoute.  Je velmi důležité ověřit toto chování vzhledem k tomu, že pokud odchozí provoz z podsítě je stále vynucené tunelovým propojením na místních počítačích App Service Environment vytvoření vždycky selže. 
-* Vyhledávání DNS pro koncové body již bylo zmíněno dříve všechny řešíme správně. 
+* Odchozí provoz do Azure i mimo Azure koncových bodů uvedených výše v tento článek je **není** toku okruhu ExpressRoute.  Je velmi důležité ověřit toto chování, protože pokud odchozího provozu z podsítě je stále vynuceným tunelovým propojením selže vždy vytvoření služby App Service Environment v místním. 
+* Vyhledávání DNS pro koncové body již bylo zmíněno dříve všechny řeší správně. 
 
-Jakmile se potvrzují výše uvedené kroky, musíte odstranit virtuální počítač, protože podsíť musí být v době, kdy se vytvoří služba App Service Environment "prázdný".
+Jakmile jsou potvrzeny výše uvedené kroky, musíte odstranit virtuální počítač, protože podsíť musí být "prázdný" v době vytvoření služby App Service Environment.
 
 Potom pokračujte ve vytváření služby App Service Environment!
 
 ## <a name="getting-started"></a>Začínáme
-Chcete-li začít pracovat s prostředí App Service, přečtěte si téma [Úvod do služby App Service Environment][IntroToAppServiceEnvironment]
+Začínáme s App Service Environment najdete v článku [Úvod do služby App Service Environment][IntroToAppServiceEnvironment]
 
 <!-- LINKS -->
 [virtualnetwork]: http://azure.microsoft.com/services/virtual-network/

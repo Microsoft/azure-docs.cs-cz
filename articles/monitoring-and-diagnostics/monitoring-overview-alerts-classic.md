@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: robb
 ms.component: alerts
-ms.openlocfilehash: 02e69a9e3442f276e89e8515fb506ddd876ad2d2
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: e7622ffcfbaca4f83f0b5233159fc94720148365
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51015770"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51614136"
 ---
 # <a name="what-are-classic-alerts-in-microsoft-azure"></a>Co jsou upozornění v Microsoft Azure classic?
 
@@ -55,7 +55,7 @@ Existují dva typy upozornění classic k dispozici – upozornění na metriky 
 
 * **Upozornění protokolu aktivit Classic** – datové proudy upozornění na protokol, který se aktivuje při vygenerování události protokolu aktivit, že odpovídá filtru kritérií, které jste přiřadili. Tyto výstrahy obsahují pouze jeden stav "Aktivovaná," protože modul pro správu oznámení kritéria filtru, která jednoduše platí pro všechny nové události. Tyto výstrahy je možné, abyste byli informováni v případě nového incidentu Service Health, nebo když uživatele nebo aplikace provádí operace ve vašem předplatném, například "Odstranit virtuální počítač."
 
-Pro diagnostický protokol data k dispozici prostřednictvím služby Azure Monitor směrovat data do Log Analytics (dříve OMS) a používat upozornění dotazu Log Analytics. Protokolovat Analytics teď používá [nové výstrahy – metoda](monitoring-overview-unified-alerts.md) 
+Pro diagnostický protokol data k dispozici prostřednictvím služby Azure Monitor směrovat data do Log Analytics (dříve OMS) a používat upozornění dotazu Log Analytics. Protokolovat Analytics teď používá [nové výstrahy – metoda](monitoring-overview-alerts.md) 
 
 Následující diagram obsahuje souhrn zdrojů dat v Azure Monitor a, koncepčně, jak může upozornit mimo tato data.
 

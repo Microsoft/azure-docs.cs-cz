@@ -8,44 +8,47 @@ ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 5572c80879584e7f6df650263ae455a134ee4088
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 68488788f73c9662b5d1eaa3b670f2120941defc
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51283593"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51616482"
 ---
 # <a name="troubleshooting-log-alerts-in-azure-monitor"></a>Řešení potíží s upozorněními protokolu ve službě Azure Monitor  
-
 ## <a name="overview"></a>Přehled
-Tento článek ukazuje, že zpracování běžných problémů viděli při nastavování upozornění protokolů do Azure monitoru. A poskytovat řešení na nejčastější dotazy týkající se konfigurace upozornění protokolů nebo funkce. Termín **upozornění protokolů** k popisu výstrahy, pokud je signál vlastní dotaz na základě [Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) nebo [Application Insights](../application-insights/app-insights-analytics.md). Další informace o funkci, terminologie a typy z [upozornění - Přehled protokolů](monitor-alerts-unified-log.md).
+Tento článek ukazuje, jak řešit běžné problémy, kterým dochází při nastavování upozornění protokolů ve službě Azure monitor. Poskytuje také řešení, která často kladené dotazy týkající se konfigurace upozornění protokolů nebo funkce. 
+
+Termín **upozornění protokolů** k popisu výstrahy, fire podle vlastního dotazu v [Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) nebo [Application Insights](../application-insights/app-insights-analytics.md). Další informace o funkci, terminologie a typy v [upozornění - Přehled protokolů](monitor-alerts-unified-log.md).
 
 > [!NOTE]
-> Tento článek nebere v úvahu případy při pravidlo upozornění se zobrazí jako aktivuje webu Azure portal a oznámení prostřednictvím přidružené skupiny akcí. Pro tyto případy, najdete informace v článku na [skupiny akcí](monitoring-action-groups.md).
+> Tento článek nebere v úvahu případech, kdy se zobrazí na webu Azure portal a výstraha spuštěná pravidla a provádí přidružené skupiny akcí oznámení. Pro tyto případy, najdete informace v článku na [skupiny akcí](monitoring-action-groups.md).
 
 
 ## <a name="log-alert-didnt-fire"></a>Neměli aktivovat upozornění protokolu
 
-Další podrobné jsou některé běžné důvody, proč nakonfigurovaného [pravidel upozornění protokolů ve službě Azure Monitor](alert-log.md) nebude aktivují v [Azure Alerts](monitoring-alerts-managing-alert-states.md), pokud očekáváte, že se nebudou vydány. 
+Tady je několik běžných příčin, proč nakonfigurovaného [pravidel upozornění protokolů ve službě Azure Monitor](alert-log.md) nezobrazí stav [jako *aktivuje* očekával](monitoring-alerts-managing-alert-states.md). 
 
 ### <a name="data-ingestion-time-for-logs"></a>Doba příjem dat protokolů
-Pravidelně spuštěním dotazu zajišťované zákazníkem, na základě protokolu upozornění funguje [Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) nebo [Application Insights](../application-insights/app-insights-analytics.md). Obě využívají sílu Analytics, která zpracovává obrovské množství dat protokolu a poskytuje funkce na stejné. Jak služba Log Analytics zahrnuje zpracování po mnoho terabajtů dat z tisíce zákazníků a z různých zdrojů po celém světě – služba je náchylný k časovou prodlevu. Další informace najdete v tématu [doba příjem dat v Log Analytics](../log-analytics/log-analytics-data-ingestion-time.md).
+Upozornění protokolu pravidelně spouští dotaz na základě [Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) nebo [Application Insights](../application-insights/app-insights-analytics.md). Protože Log Analytics zpracovává mnoho terabajtů dat z tisíce zákazníků z různých zdrojů po celém světě, tato služba je náchylný k různým časovou prodlevu. Další informace najdete v tématu [doba příjem dat v Log Analytics](../log-analytics/log-analytics-data-ingestion-time.md).
 
-Abyste vyřešili zpoždění příjmu dat, ke kterému může dojít v Log Analytics nebo protokoly Application Insights. upozornění protokolu vyčká a pokusí se znovu po určité době, když zjistí, že není dosud objem přijatých dat za toto časové období výstrah. Upozornění protokolů má skupinu exponenciálně rostoucím čas čekání tak, aby se ujistěte se, že jsme čekací doba potřebná pro dat přijatý službou Log Analytics. Proto pokud protokoly dotazovat vašich pravidel upozornění protokolů jsou ovlivněny ingestování zpoždění, pak upozornění protokolu se aktivuje pouze po data jsou k dispozici v Log Analytics po ingestování a po exponenciální časové prodlevy kvůli protokolu služba upozornění opakováním více než jednou v prozatím .
+Ke zmírnění zpoždění příjmu dat, systému vyčká a pokusí znovu výstraha dotazu více než jednou pokud zjistí, že zatím není přijatých potřebná data. Systém má exponenciálně rostoucím čekací doba nastavena. Protokol výstrah pouze aktivační události po dat je k dispozici, takže jejich zpoždění může být způsobeno ingestování protokol pomalých operací. 
 
 ### <a name="incorrect-time-period-configured"></a>Nakonfigurované správné časové období
-Jak je popsáno v článku na [terminologie pro výstrahy protokolu](monitor-alerts-unified-log.md#log-search-alert-rule---definition-and-types), určuje časové období, uvádí konfigurace časový rozsah dotazu. Dotaz vrátí pouze záznamy, které byly vytvořeny v tomto časovém rozsahu. Časové období omezuje data načtena dotaz protokolu, aby se zabránilo zneužití a připojení, vyřešíte nepřetržitou jakýkoli příkaz času (například před) používaných v dotazu protokolu. 
-*Například toto časové období je nastavený na 60 minut a spuštění dotazu v 13:15, se vrátí pouze záznamy vytvořené mezi 12:15 PM a 1:15 PM do spuštění protokolu dotazu. Když teď dotaz protokolu používá čas příkazu, jako jsou před (1d), protokolu by spustí dotaz pouze pro data mezi 12:15 PM a 1:15 PM - jakoby dat existuje pouze posledních 60 minut. A ne po dobu sedmi dní dat, jak je uvedeno v protokolu dotazu.*
+Jak je popsáno v článku na [terminologie pro výstrahy protokolu](monitor-alerts-unified-log.md#log-search-alert-rule---definition-and-types), čas období uvedená v konfiguraci Určuje časový rozsah dotazu. Dotaz vrátí pouze záznamy, které byly vytvořeny v tomto časovém rozsahu. Časové období omezuje data načtena dotaz protokolu, aby se zabránilo zneužití a připojení, vyřešíte nepřetržitou jakýkoli příkaz času (například před) používaných v dotazu protokolu. 
+*Například toto časové období je nastavený na 60 minut a spuštění dotazu v 13:15, se používají pouze záznamy vytvořené mezi 12:15 PM a 1:15 PM pro dotaz protokolu. Pokud dotaz protokolu používá čas příkaz podobný *před (1d)*, dotaz stále pouze používá data mezi 12:15 PM a 1:15 PM, protože toto časové období je nastavena na tento interval.*
 
-Založené na logiku dotazu, zkontrolujte, pokud má k dispozici odpovídající časové období v konfiguraci. Například bylo uvedeno dříve Pokud v protokolu dotazu používá před (1d), jak je znázorněno s zelené značky - pak časového období by měla být nastavena na 24 hodin nebo 1440 minut (jak je uvedeno červeně), aby zadaný dotaz provede správně předpokládaný.
-    ![Časové období](./media/monitor-alerts-unified/LogAlertTimePeriod.png)
+Proto zkontrolujte v konfiguraci tohoto časového období odpovídá vašemu dotazu. Například bylo uvedeno dříve, pokud používá dotaz protokolu *před (1d)* jak je znázorněno s zelené značky, pak časové období musí být nastavená na 24 hodin nebo 1 440 minut (jak je uvedeno v Red), aby se dotaz provádí tak, jak má.
+
+![Časové období](./media/monitor-alerts-unified/LogAlertTimePeriod.png)
 
 ### <a name="suppress-alerts-option-is-set"></a>Potlačit výstrahy nastavit možnost
-Jak je popsáno v kroku 8 tohoto článku na [vytváření pravidel upozornění protokolů na webu Azure portal](alert-log.md#managing-log-alerts-from-the-azure-portal), upozornění protokolu poskytuje možnost konfigurovat automatické potlačení pravidlo upozornění a jejich předcházení oznámení nebo triggeru stanoveného časového intervalu. Potlačit výstrahy možnost způsobí, že fungují, a přitom není aktivuje skupina akcí po dobu uvedenou v upozornění protokolu **potlačit výstrahy** možnost, a proto může uživatel můžete toto upozornění neměli aktivovat, když ve skutečnosti byla potlačena, protože nakonfigurovaná .
-    ![Potlačit výstrahy](./media/monitor-alerts-unified/LogAlertSuppress.png)
+Jak je popsáno v kroku 8 tohoto článku na [vytváření pravidel upozornění protokolů na webu Azure portal](alert-log.md#managing-log-alerts-from-the-azure-portal), poskytují upozornění protokolů **potlačit výstrahy** možnost potlačit akce aktivuje a oznámení pro nakonfigurované čas. V důsledku toho může myslíte, že nebyla ve skutečnosti nebyla, ale došlo k potlačení aktivuje výstrahu.  
+
+![Potlačit upozornění](./media/monitor-alerts-unified/LogAlertSuppress.png)
 
 ### <a name="metric-measurement-alert-rule-is-incorrect"></a>Pravidlo upozornění metriky měření je nesprávný
-Typ metriky měření pravidel upozornění protokolů není podtypem typu upozornění protokolů, které mají speciální funkce, ale pak využívá omezení syntaxe dotaz na upozornění. Upozornění metriky měření protokolu pravidlo je vyžadováno výstup dotaz na upozornění poskytnout metrik časové řadě – tabulky s dobami odlišné stejně velké času spolu s odpovídajícími hodnotami AggregatedValue vypočítat. Kromě toho můžete uživatelům zvolit, aby v další proměnné tabulky spolu s AggregatedValue jako počítače, uzel atd. lze je řadit pomocí která data v tabulce.
+**Upozornění protokolů měření metriky** jsou podtypem typu upozornění protokolů, které mají speciální funkce a syntaxi s omezeným přístupem dotaz na upozornění. Základě měření metriky pravidel upozornění protokolů vyžaduje dotazu výstup bude metrik časové řady; To znamená tabulku s distinct stejné velikosti časová období společně s odpovídající agregované hodnoty. Kromě toho se uživatelé mohou mít další proměnné v tabulce spolu s AggregatedValue. Tyto proměnné slouží k seřazení tabulky. 
 
 Předpokládejme například, že pravidel upozornění protokolů měření metriky byla nakonfigurovaná jako:
 - Dotaz byl: `search *| summarize AggregatedValue = count() by $table, bin(timestamp, 1h)`  
@@ -54,9 +57,9 @@ Předpokládejme například, že pravidel upozornění protokolů měření met
 - alert logic tří po sobě jdoucí porušení
 - Agregace: při vybrána jako $table
 
-Nyní vzhledem k tomu, že v příkazu jsme použili shrnutí... podle a k dispozici dvě proměnné: časové razítko & $table; upozornění služby zvolí $table "Agregační po" – v podstatě řazení výsledků tabulku podle pole: $table – jak je znázorněno níže a pak vyhledejte více AggregatedValue pro každou tabulku typu (například availabilityResults) zobrazíte, pokud došlo po sobě jdoucí porušení 3 nebo více.
+Vzhledem k tomu, že příkaz zahrnuje *... vytvořit souhrn podle* a k dispozici dvě proměnné (časové razítko & $table), systém zvolí $table na "Agregační po". Seřadí tabulku výsledků podle pole *$table* jak je znázorněno níže a poté hledá v několika AggregatedValue pro každý typ tabulky (například availabilityResults) Chcete-li zobrazit, pokud došlo po sobě jdoucí porušení 3 nebo více.
 
-   ![Metriky měření provádění dotazu s více hodnotami](./media/monitor-alerts-unified/LogMMQuery.png)
+![Metriky měření provádění dotazu s více hodnotami](./media/monitor-alerts-unified/LogMMQuery.png)
 
 "Agregační po" je $table – data je seřazená podle sloupce $table (stejně jako v RED); Potom jsme skupině a hledat typy pole "Agregační po" (to znamená) $table – například: hodnoty pro availabilityResults bude považovat za jeden vykreslení na entitu (jako ve zvýrazněných oranžovou). V tuto zobrazovanou hodnotu/entitu – služba upozornění kontroluje tří po sobě jdoucí porušení, ke kterým dochází (jako je uvedené v zelené) pro výstrahy, které se aktivují pro tabulkovou hodnotu "availabilityResults". Podobně pokud pro jakoukoli jinou hodnotu $table Pokud jsou tři po sobě jdoucí porušení – další oznámení se budou aktivovat pro stejné. pomocí výstrah služby automaticky řazení hodnot v jedné vykreslení na entitu (jako oranžová) podle času.
 
@@ -85,4 +88,5 @@ Jak je zobrazeno v **dotaz, který se spustí** jaké protokolu je oddíl se spu
 
 * Další informace o [upozornění protokolů ve výstrahách Azure](monitor-alerts-unified-log.md)
 * Další informace o [Application Insights](../application-insights/app-insights-analytics.md)
-* Další informace o [Log Analytics](../log-analytics/log-analytics-queries.md). 
+* Další informace o [Log Analytics](../log-analytics/log-analytics-overview.md). 
+

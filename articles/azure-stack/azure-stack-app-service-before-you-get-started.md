@@ -12,14 +12,14 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/20/2018
+ms.date: 11/13/2018
 ms.author: anwestg
-ms.openlocfilehash: 786f6ca3b3a1ad26d36c751c54d3cf69ae1d2fd4
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 4f669d44582c47cc6c7c090627f957288fee0f1a
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50240864"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51615870"
 ---
 # <a name="before-you-get-started-with-app-service-on-azure-stack"></a>Před zahájením práce s App Service ve službě Azure Stack
 
@@ -28,7 +28,7 @@ ms.locfileid: "50240864"
 Před nasazením služby Azure App Service ve službě Azure Stack, musíte dokončit požadované kroky uvedené v tomto článku.
 
 > [!IMPORTANT]
-> Aktualizace 1807 do služby Azure Stack integrované systému nebo nasadit nejnovější Azure Stack Development Kit (ASDK) před nasazením Azure App Service 1.3.
+> Aktualizace 1809 do služby Azure Stack integrované systému nebo nasadit nejnovější Azure Stack Development Kit (ASDK) před nasazením Azure App Service 1.4.
 
 ## <a name="download-the-installer-and-helper-scripts"></a>Stáhněte si instalační program a pomocné skripty
 
@@ -44,6 +44,10 @@ Před nasazením služby Azure App Service ve službě Azure Stack, musíte doko
    - Remove-AppService.ps1
    - Složky modulů
      - GraphAPI.psm1
+
+## <a name="syndicate-the-custom-script-extension-from-the-marketplace"></a>Publikování rozšíření vlastních skriptů z Marketplace
+
+Azure App Service ve službě Azure Stack vyžaduje v1.9.0 rozšíření vlastních skriptů.  Přípona musí být [syndikovat markeplace](https://docs.microsoft.com/azure/azure-stack/azure-stack-download-azure-marketplace-item) před zahájením nasazení nebo upgradu služby Azure App Service ve službě Azure Stack
 
 ## <a name="high-availability"></a>Vysoká dostupnost
 
@@ -61,7 +65,7 @@ Otevřete relaci Powershellu se zvýšenými oprávněními na počítači, se k
 
 Spustit *Get-AzureStackRootCert.ps1* skriptu ze složky, které jste extrahovali pomocné skripty. Skript vytvoří ve stejné složce jako skript, který potřebuje služby App Service pro vytváření certifikátů kořenový certifikát.
 
-Když spustíte následující příkaz Powershellu budete mít k poskytnutí privileged koncového bodu a přihlašovací údaje pro AzureStack\CloudAdmin.
+Při spuštění následujícího příkazu Powershellu, budete mít k poskytnutí privileged koncového bodu a přihlašovací údaje pro AzureStack\CloudAdmin.
 
 ```PowerShell
     Get-AzureStackRootCert.ps1
@@ -151,6 +155,9 @@ Certifikát identity musí obsahovat subjektem, který odpovídá formátu.
 
 ## <a name="virtual-network"></a>Virtuální síť
 
+> [!NOTE]
+> Před vytvořením vlastní virtuální sítě je volitelné, protože Azure App Service ve službě Azure Stack můžete vytvořit požadované virtuální sítě, ale pak budou muset komunikovat s SQL a souborový Server prostřednictvím veřejné IP adresy.
+
 Azure App Service ve službě Azure Stack umožňuje nasazení poskytovatele prostředků do existující virtuální síť nebo vám umožní vytvářet virtuální sítě jako součást svého nasazení. Použití existující virtuální síť umožňuje využívání interní IP adresy pro připojení k souborový server a SQL server vyžaduje ve službě Azure App Service ve službě Azure Stack. Virtuální síť musí mít nakonfigurovanou následující rozsah adres a podsítí před instalací služby Azure App Service ve službě Azure Stack:
 
 Virtuální sítě – /16
@@ -167,12 +174,20 @@ Podsítě
 
 Azure App Service vyžaduje použití souborového serveru. Pro nasazení v produkčním prostředí musí být souborový server nakonfigurovaný jako vysoce dostupné a umožňuje zpracovávat chyby.
 
+### <a name="quickstart-template-for-file-server-for-deployments-of-azure-app-service-on-asdk"></a>Šablony rychlý start pro souborový Server pro nasazení služby Azure App Service na ASDK.
+
 Pouze nasazení Azure Stack Development Kit, můžete použít [příklad šablony nasazení Azure Resource Manageru](https://aka.ms/appsvconmasdkfstemplate) pro nasazení nakonfigurované jedním uzlem souborového serveru. Jeden souborový server se bude v pracovní skupině.
+
+### <a name="quickstart-template-for-highly-available-file-server-and-sql-server"></a>Šablony rychlý start pro vysoce dostupný souborový Server a SQL Server
+
+A [šablonu pro rychlý start referenční architektury](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/appservice-fileserver-sqlserver-ha) je nyní k dispozici, který bude nasazení souborového serveru, systému SQL Server, podporu služby Active Directory infrastruktury ve virtuální síti nakonfigurovat tak, aby podporují nasazení s vysokou dostupností Azure App Service v Azure stacku.  
+
+### <a name="steps-to-deploy-a-custom-file-server"></a>Postup nasazení souborových serverů se vlastní
 
 >[!IMPORTANT]
 > Pokud budete chtít nasadit službu App Service v existující virtuální síť, souborový Server musí být nasazené do samostatné podsítě ze služby App Service.
 
-### <a name="provision-groups-and-accounts-in-active-directory"></a>Zřízení skupin a účtů ve službě Active Directory
+#### <a name="provision-groups-and-accounts-in-active-directory"></a>Zřízení skupin a účtů ve službě Active Directory
 
 1. Vytvořte následující skupiny globálního zabezpečení služby Active Directory:
 
@@ -195,7 +210,7 @@ Pouze nasazení Azure Stack Development Kit, můžete použít [příklad šablo
    - Přidat **vlastníka sdílené složky** k **FileShareOwners** skupiny.
    - Přidat **uživatele sdílené složky** k **FileShareUsers** skupiny.
 
-### <a name="provision-groups-and-accounts-in-a-workgroup"></a>Zřízení skupin a účtů v pracovní skupině
+#### <a name="provision-groups-and-accounts-in-a-workgroup"></a>Zřízení skupin a účtů v pracovní skupině
 
 >[!NOTE]
 > Když konfigurujete souborového serveru, spusťte následující příkazy z **příkazový řádek správce**. <br>***Nepoužívejte prostředí PowerShell.***
@@ -225,7 +240,7 @@ Při použití šablony Azure Resource Manageru jsou uživatelé už vytvořili.
    net localgroup FileShareOwners FileShareOwner /add
    ```
 
-### <a name="provision-the-content-share"></a>Poskytování obsahu sdílené složky
+#### <a name="provision-the-content-share"></a>Poskytování obsahu sdílené složky
 
 Sdílená složka obsahu obsahuje obsah webu tenanta. Postup pro zřízení sdílené složky obsahu na jeden souborový server je stejný pro prostředí služby Active Directory a pracovní skupiny. Ale to se liší pro cluster převzetí služeb při selhání ve službě Active Directory.
 

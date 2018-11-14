@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: rimman
-ms.openlocfilehash: eabfe503d9b92252ada0014eba4c83390dd6fd97
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 709cd16c7eee30dd2d88ea87b5f704ad20530ffb
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51236071"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51621339"
 ---
 # <a name="request-units-in-azure-cosmos-db"></a>Požadované jednotky ve službě Azure Cosmos DB
 
@@ -53,7 +53,7 @@ Při odhadování počet RU/s na zřízení funkce, je důležité vzít v úvah
 ## <a name="next-steps"></a>Další postup
 
 * Další informace o [zřizování propustnosti pro kontejnery služby Cosmos DB a databáze](set-throughput.md)
-* Další informace o [logickými oddíly](partition-data.md)
-* Další informace o [škálování propustnosti](scaling-throughput.md)
+* Další informace o [Llogical oddílů](partition-data.md)
+* Další informace o [globální škálování zřízená propustnost](scaling-throughput.md)
 * Přečtěte si [jak zřídit propustnosti kontejneru Cosmos](how-to-provision-container-throughput.md)
 * Přečtěte si [jak zřídit propustnost v databázi Cosmos](how-to-provision-database-throughput.md)

@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 08/27/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 8aec6ae3532acaaa5d039ee9db8745927c66957b
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: 2e14112220eeea1df094ff0c5844429fa3891a9b
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51288777"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51612801"
 ---
 # <a name="oms-portal-moving-to-azure"></a>Portál OMS do Azure
 
@@ -84,7 +84,7 @@ Jsou už nebude možné vytvořit nové pracovní prostory na portálu OMS. Post
 Byl [rozšíří do portálu Azure portal](../monitoring-and-diagnostics/monitoring-alerts-extend.md). Po jejím dokončení akce správy na výstrahy budou k dispozici pouze na webu Azure portal. Existující výstrahy bude dál zobrazovat na portálu OMS. Pokud k upozorněním přistupujete programově s využitím Log Analytics výstrah REST API nebo šablonu oznámení prostředku Log Analytics, budete muset použít skupiny akcí místo akcí ve volání rozhraní API, šablon Azure Resource Manageru a příkazech Powershellu.
 
 ### <a name="alert-management-solution"></a>Řešení pro správu výstrah
-Místo [řešení alert managementu](log-analytics-solution-alert-management.md), můžete použít [unified Azure Monitor výstrah rozhraní](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md) vizualizovat a spravovat upozornění. Toto nové prostředí agreguje výstrahy z více zdrojů v rámci Azure včetně upozornění protokolů ze služby Log Analytics. Můžete naleznete v tématu distribuce upozornění, využít výhod automatizovaného seskupení souvisejících výstrah pomocí inteligentní skupin a zobrazit výstrahy napříč několika předplatnými při použití bohaté filtrů. Všechny tyto funkce jsou dostupné ve verzi preview od 4. června 2018. Správa výstrah řešení nebude k dispozici na webu Azure Portal. 
+Místo [řešení alert managementu](log-analytics-solution-alert-management.md), můžete použít [unified Azure Monitor výstrah rozhraní](../monitoring-and-diagnostics/monitoring-overview-alerts.md) vizualizovat a spravovat upozornění. Toto nové prostředí agreguje výstrahy z více zdrojů v rámci Azure včetně upozornění protokolů ze služby Log Analytics. Můžete naleznete v tématu distribuce upozornění, využít výhod automatizovaného seskupení souvisejících výstrah pomocí inteligentní skupin a zobrazit výstrahy napříč několika předplatnými při použití bohaté filtrů. Všechny tyto funkce jsou dostupné ve verzi preview od 4. června 2018. Správa výstrah řešení nebude k dispozici na webu Azure Portal. 
 
 Údaje shromážděné tímto řešením Správa výstrah (záznamů s typem upozornění) i nadále v Log Analytics, dokud je řešení nainstalováno pro pracovní prostor. Od srpna 2018 se datové proudy upozornění neupozorňovala sjednocené do pracovních prostorů se povolí, nahraďte tuto funkci. Některé změny schématu se očekává, že a oznámíme později.
 

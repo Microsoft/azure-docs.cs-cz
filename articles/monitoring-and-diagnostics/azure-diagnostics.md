@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: robb
 ms.component: diagnostic-extension
-ms.openlocfilehash: a40917ec24ede1107f7d8ae7f5fb2f0f03d1094c
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 7da75e052aaf36d0f59a5f23c28e42c0e4661b0a
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51278323"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51615243"
 ---
 # <a name="what-is-azure-diagnostics-extension"></a>Co je rozšíření Azure Diagnostics
 Rozšíření Azure Diagnostics je agent v Azure, která umožňuje shromažďování diagnostických dat v nasazené aplikaci. Rozšíření diagnostiky můžete z mnoha různých zdrojů. V tuto chvíli nepodporuje jsou cloudové služby Azure (klasické) webové a pracovní role, Virtual Machines, Virtual Machine Scale sets a Service Fabric. Další služby Azure mají různé diagnostiky metody. Zobrazit [Přehled monitorování v Azure](../azure-monitor/overview.md).
@@ -47,7 +47,7 @@ Můžete také odeslat ho do [Application Insights](../application-insights/app-
 ### <a name="azure-monitor"></a>Azure Monitor
 Máte také možnost odeslání dat do služby Azure Monitor. V současné době tuto jímku platí pouze pro čítače výkonu. Umožňuje vám odesílat čítače výkonu shromážděné na vašem virtuálním počítači, VMSS, nebo cloudové služby Azure monitor jako vlastní metriky. Jímka Azure monitoru podporuje:
 * Načítání všech čítačů výkonu odesílat přes Azure Monitor [Azure Monitor metriky rozhraní API.](https://docs.microsoft.com/rest/api/monitor/)
-* Upozorňuje na všechny čítače výkonu odeslané do Azure monitoru na novém [sjednocené prostředí upozornění](monitoring-overview-unified-alerts.md) ve službě Azure Monitor
+* Upozorňuje na všechny čítače výkonu odeslané do Azure monitoru na novém [sjednocené prostředí upozornění](monitoring-overview-alerts.md) ve službě Azure Monitor
 * Použít zástupný znak operátoru v čítače výkonu jako dimenze "Instance" na vaše metriky.  Například pokud jste shromáždili "logický disk (\*) / DiskWrites za sekundu" čítače by být schopen filtr a rozdělit na dimenzi "Instanci" do diagramů nebo upozorňovat na zápis disku/s pro jednotlivé logické disky na virtuálním počítači (C:, D: atd.)
 
 Další informace o tom, jak nakonfigurovat tento jímky, najdete [dokumentace schématu Azure diagnostics.](azure-diagnostics-schema-1dot3-and-later.md)

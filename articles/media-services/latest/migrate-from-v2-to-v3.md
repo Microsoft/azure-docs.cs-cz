@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 11/07/2018
 ms.author: juliako
-ms.openlocfilehash: 1c8bacf4c6cb22240609fb9f5dc0c3c456bc4531
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: 8c3ff4af3b556614d0b2179dceed6cabd9cbabff
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51287536"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51616006"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Pokyny k migraci pro přechod ze služby Media Services v2 na v3
 
@@ -59,6 +59,7 @@ Pokud máte službu poskytování videí dnes vyvinuté v horní části [starš
 * Sady SDK verze 3 se nyní oddělený od sady SDK služby Storage, což vám dává větší kontrolu nad verzi sady SDK služby Storage použít a správa verzí – potíže se vyhnete. 
 * V rozhraní API v3 kódování přenosové rychlosti jsou všechny bity za sekundu. To se liší od v2, který přednastavení kodéru Media Encoder Standard. Například s přenosovou rychlostí v v2 by byl zadán jako 128 (kb/s), ale ve verzi 3 by bylo 128000 (bitů za sekundu). 
 * Entity AssetFiles AccessPolicies a IngestManifests neexistují ve verzi 3.
+* Vlastnost IAsset.ParentAssets neexistuje ve verzi 3.
 * Klíčů ContentKeys už není entita, je teď součástí StreamingLocator.
 * Event Grid podporu nahradí NotificationEndpoints.
 * Následující entity byly přejmenovány.

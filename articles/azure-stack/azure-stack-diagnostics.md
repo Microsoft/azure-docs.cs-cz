@@ -7,15 +7,15 @@ manager: femila
 cloud: azure-stack
 ms.service: azure-stack
 ms.topic: article
-ms.date: 11/02/2018
+ms.date: 11/13/2018
 ms.author: jeffgilb
 ms.reviewer: adshar
-ms.openlocfilehash: 6e15fee02fd001bddd25a19b8a9420eb899d4f85
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: f9a7ae76f2d52b3439bfb33f306e164bb81549eb
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50978668"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51623974"
 ---
 # <a name="azure-stack-diagnostics-tools"></a>Azure Stack diagnostické nástroje
 
@@ -70,12 +70,10 @@ if($s)
     Remove-PSSession $s
 }
 ```
+- Parametry **OutputSharePath** a **OutputShareCredential** se používají k ukládání protokolů v uživatele zadaného umístění.
+- **Datum FromDate** a **ToDate** parametry můžete použít ke shromažďování protokolů pro určité časové období. Pokud tyto parametry nejsou zadané, se shromáždí protokoly pro poslední 4 hodiny ve výchozím nastavení.
 
-- Parametry **OutputSharePath** a **OutputShareCredential** slouží k nahrávání protokolů do externí sdílené složky.
-- Jak je znázorněno v předchozím příkladu **datum FromDate** a **ToDate** parametry můžete použít ke shromažďování protokolů pro určité časové období. To může hodit pro scénáře, jako je shromažďování protokolů po použití balíčku aktualizace na integrovaný systém.
 
-
- 
 ### <a name="to-run-get-azurestacklog-on-an-azure-stack-development-kit-asdk-system"></a>Spuštění Get-AzureStackLog v systému Azure Stack Development Kit (ASDK)
 1. Přihlaste se jako **AzureStack\CloudAdmin** na hostiteli.
 2. Otevřete okno Powershellu jako správce.
@@ -111,15 +109,17 @@ if($s)
 
 - Pokud **datum FromDate** a **ToDate** nejsou zadány parametry, se shromáždí protokoly pro poslední 4 hodiny ve výchozím nastavení.
 - Použití **FilterByNode** parametr pro filtrování protokolů podle názvu počítače. Příklad:
-```powershell
-Get-AzureStackLog -OutputSharePath “<path>” -OutputShareCredential $cred -FilterByNode azs-xrp01
-```
+
+    ```powershell
+    Get-AzureStackLog -OutputSharePath “<path>” -OutputShareCredential $cred -FilterByNode azs-xrp01
+    ```
 - Použití **FilterByLogType** parametr pro filtrování protokolů podle typu. Můžete filtrovat podle souborů, sdílené složky nebo WindowsEvent. Příklad:
-```powershell
-Get-AzureStackLog -OutputSharePath “<path>” -OutputShareCredential $cred -FilterByLogType File
-```
+
+    ```powershell
+    Get-AzureStackLog -OutputSharePath “<path>” -OutputShareCredential $cred -FilterByLogType File
+    ```
 - Můžete použít **TimeOutInMinutes** parametr nastavit časový limit pro shromažďování protokolů. Ve výchozím nastavení nastavená 150 (2,5 hodin).
-- Ve verzi 1805 a novější je ve výchozím nastavení zakázána shromažďování výpisu stavu systému souborů protokolu. Chcete-li ji povolit, použijte **IncludeDumpFile** přepnout parametru. 
+- Shromažďování výpisu stavu systému soubor protokolu je ve výchozím nastavení zakázána. Chcete-li ji povolit, použijte **IncludeDumpFile** přepnout parametru. 
 - V současné době můžete použít **FilterByRole** parametr filtru shromažďování protokolů pomocí následujících rolí:
 
  |   |   |   |    |

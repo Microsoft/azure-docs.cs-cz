@@ -8,25 +8,23 @@ manager: mtillman
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/20/2017
+ms.date: 11/12/2018
 ms.author: barbkess
-ms.reviewer: harshja
+ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: fa12dd5e9dbe25bad947abed5ab1c732d231b25c
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 8cdb5b89bf43d3265f3f9c73d29708f11e17b21c
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39362818"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51624025"
 ---
 # <a name="password-vaulting-for-single-sign-on-with-application-proxy"></a>Heslo vaulting pro jednotné přihlašování s Proxy aplikací
 
 Azure Active Directory Application Proxy vám pomůže zlepšit produktivitu a publikujte místní aplikace tak, aby vzdálení zaměstnanci můžou bezpečně k nim přístup, příliš. Na webu Azure Portal můžete také nastavíte jednotné přihlašování (SSO) k těmto aplikacím. Uživatelé potřebují jenom k ověření ve službě Azure AD a bude moct své podnikové aplikace bez nutnosti znovu přihlásit.
 
-Proxy aplikací podporuje několik [jednotného přihlašování režimy](application-proxy-single-sign-on.md). Přihlašování na základě heslo je určená pro aplikace, které používají kombinace uživatelského jména a hesla pro ověřování. Když konfigurujete přihlašování na základě heslo pro vaši aplikaci, pro přihlášení k místní aplikaci jednou mít uživatelé. Azure Active Directory, ukládá přihlašovací údaje a automaticky poskytuje k aplikaci při vaši uživatelé k němu přistupovat vzdáleně. 
+Proxy aplikací podporuje několik [jednotného přihlašování režimy](what-is-single-sign-on.md#choosing-a-single-sign-on-method). Přihlašování na základě heslo je určená pro aplikace, které používají kombinace uživatelského jména a hesla pro ověřování. Když konfigurujete přihlašování na základě heslo pro vaši aplikaci, pro přihlášení k místní aplikaci jednou mít uživatelé. Azure Active Directory, ukládá přihlašovací údaje a automaticky poskytuje k aplikaci při vaši uživatelé k němu přistupovat vzdáleně. 
 
 By měl už máte publikování a testování aplikace s využitím Proxy aplikací. Pokud ne, postupujte podle kroků v [publikování aplikací pomocí Proxy aplikací Azure AD](application-proxy-publish-azure-portal.md) poté vraťte se sem. 
 
@@ -56,5 +54,5 @@ Přejděte na externí adresu URL, kterou jste nakonfigurovali pro vzdálený p�
 
 ## <a name="next-steps"></a>Další postup
 
-- Přečtěte si informace o další možnosti, jak implementovat [jednotné přihlašování s Proxy aplikací](application-proxy-single-sign-on.md)
+- Přečtěte si informace o další možnosti, jak implementovat [jednotného přihlašování](what-is-single-sign-on.md)
 - Další informace o [aspekty zabezpečení pro přístup k aplikacím s využitím Azure AD Application Proxy](application-proxy-security.md)

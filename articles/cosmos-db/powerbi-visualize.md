@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/03/2018
 ms.author: sngun
-ms.openlocfilehash: 90f5caa13bf95fb5298a06bda5a03e9bc17bcb1a
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 782de7dc6e099fade0d2f1099ac19b9398562023
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945174"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51622087"
 ---
 # <a name="visualize-azure-cosmos-db-data-by-using-the-power-bi-connector"></a>Vizualizace dat služby Azure Cosmos DB pomocí konektoru služby Power BI
 
@@ -76,11 +76,11 @@ Bude načítat data sopka z účtu služby Azure Cosmos DB a vizualizace dat v i
 
 5. Na **Předběžná verze konektoru** klikněte na **pokračovat**. **Služby Azure Cosmos DB** zobrazí se okno.
 
-6. Zadejte by rádi načíst data, jak je znázorněno níže a potom klikněte na URL koncového bodu účtu služby Azure Cosmos DB **OK**. Použít svůj vlastní účet, můžete zjistit adresu URL z panelu identifikátor URI v **[klíče](manage-account.md#keys)** okna na webu Azure portal. Volitelně můžete zadat název databáze, název kolekce nebo pomocí Navigátor vyberte databázi a kolekci k identifikaci, odkud data pocházejí z.
+6. Zadejte by rádi načíst data, jak je znázorněno níže a potom klikněte na URL koncového bodu účtu služby Azure Cosmos DB **OK**. Použít svůj vlastní účet, můžete zjistit adresu URL z panelu identifikátor URI v **klíče** okna na webu Azure portal. Volitelně můžete zadat název databáze, název kolekce nebo pomocí Navigátor vyberte databázi a kolekci k identifikaci, odkud data pocházejí z.
    
-7. Pokud se připojujete k tomuto koncovému bodu poprvé, zobrazí se výzva k zadání klíč účtu. Pro vlastní účet načíst klíč z **primární klíč** pole **[klíče jen pro čtení](manage-account.md#keys)** okna na webu Azure portal. Zadejte příslušný klíč a potom klikněte na tlačítko **připojit**.
+7. Pokud se připojujete k tomuto koncovému bodu poprvé, zobrazí se výzva k zadání klíč účtu. Pro vlastní účet načíst klíč z **primární klíč** pole **klíče jen pro čtení** okna na webu Azure portal. Zadejte příslušný klíč a potom klikněte na tlačítko **připojit**.
    
-   Doporučujeme použít klíč jen pro čtení, při vytváření sestav. To zabraňuje ohrožením hlavního klíče na potenciální rizika zabezpečení. Klíč jen pro čtení je k dispozici [klíče](manage-account.md#keys) okna na webu Azure portal. 
+   Doporučujeme použít klíč jen pro čtení, při vytváření sestav. To zabraňuje ohrožením hlavního klíče na potenciální rizika zabezpečení. Klíč jen pro čtení je k dispozici **klíče** okna na webu Azure portal. 
     
 8. Když se účet úspěšně připojí, **Navigátor** otevře se podokno. **Navigátor** zobrazí seznam databází v rámci účtu.
 

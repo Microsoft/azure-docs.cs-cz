@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: sngun
-ms.openlocfilehash: 7348f76ab0d5a1057e9fd929e8a55dd0a9e99eb6
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 39b071c258a7aab3f8f0287ef2ce581a8f1b333e
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50140972"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51623144"
 ---
 # <a name="serverless-database-computing-using-azure-cosmos-db-and-azure-functions"></a>Výpočetní prostředí bez serveru databázi s využitím služby Azure Cosmos DB a Azure Functions
 
@@ -98,7 +98,7 @@ V implementacích maloobchodního prodeje když uživatel přidá položky do n�
 
 **Implementace:** naslouchání na jeden kontejner triggery více služby Azure Cosmos DB
 
-1. Víc funkcí Azure můžete vytvořit přidáním aktivace služby Azure Cosmos DB ke každému – které naslouchat na stejný změnit informační kanál data nákupního košíku. Všimněte si, že při naslouchání více funkcí pro stejný kanálu změn novou kolekci zapůjčení se vyžaduje pro každou funkci. Další informace o zapůjčení kolekcí najdete v tématu [Principy knihovnou Change Feed Processor](change-feed.md#understand-cf).
+1. Víc funkcí Azure můžete vytvořit přidáním aktivace služby Azure Cosmos DB ke každému – které naslouchat na stejný změnit informační kanál data nákupního košíku. Všimněte si, že při naslouchání více funkcí pro stejný kanálu změn novou kolekci zapůjčení se vyžaduje pro každou funkci. Další informace o zapůjčení kolekcí najdete v tématu [Principy knihovnou Change Feed Processor](change-feed-processor.md).
 2. Pokaždé, když uživatelé nákupní košík přidá nová položka, každá funkce nezávisle na sobě vyvolá kanál z nákupního košíku kontejneru změn.
     * Jednu funkci použít ke změně zobrazení položek, které uživatel může zajímat obsah aktuální nákupní košík.
     * Jiné funkce může aktualizovat inventáře součty.

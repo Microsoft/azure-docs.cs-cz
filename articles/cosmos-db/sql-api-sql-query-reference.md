@@ -10,18 +10,18 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 08/19/2018
 ms.author: laviswa
-ms.openlocfilehash: 762997492d18e9b14525dc6a196f98815f27fbbb
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: 4492324b174c97325f40110b7500d5b0e99a926b
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50979501"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51623940"
 ---
 # <a name="azure-cosmos-db-sql-syntax-reference"></a>Reference k syntaxi služby Azure Cosmos DB SQL
 
-Azure Cosmos DB podporuje dotazování dokumentů pomocí známých SQL (Structured Query Language), jako je gramatika přes hierarchické dokumenty JSON bez nutnosti explicitního schématu nebo vytváření sekundárních indexů. Tento článek obsahuje syntaxi odkazu na/dokumentaci k SQL dotazovací jazyk, který je kompatibilní s účty SQL API. Návod k SQL najdete v článku dotazů s ukázkovými daty [dotazování na data služby Azure Cosmos DB](sql-api-sql-query.md).  
+Azure Cosmos DB podporuje dotazování dokumentů pomocí známých SQL (Structured Query Language), jako je gramatika přes hierarchické dokumenty JSON bez nutnosti explicitního schématu nebo vytváření sekundárních indexů. Tento článek poskytuje dokumentaci pro syntaxi jazyka dotazů SQL, který je kompatibilní s účty SQL API. Postup ukázky dotazů SQL, najdete v části [dotazy SQL ve službě Cosmos DB](sql-api-sql-query.md).  
   
-Přejděte [Query Playground](http://www.documentdb.com/sql/demo) kde vyzkoušejte si Azure Cosmos DB a spouštět dotazy SQL proti naší datové sadě.  
+Přejděte [Query Playground](http://www.documentdb.com/sql/demo) kde zkuste Cosmos DB a spouštět dotazy SQL proti naší datové sadě.  
   
 ## <a name="select-query"></a>Zpracování dotazu SELECT  
 Každý dotaz se skládá z klauzule SELECT a volitelné a klauzulí WHERE za standardy ANSI SQL. Pro každý dotaz, obvykle je vypočten zdroji v klauzuli FROM. Filtr v klauzuli WHERE je pak použije ve zdroji se načíst podmnožinu dokumentů JSON. Nakonec se používá klauzuli SELECT do projektu požadované hodnoty JSON v seznamu select. Konvence pro příkazy SELECT popisující jsou uvedených v části konvence syntaxe. Příklady najdete v tématu [Příklady zpracování dotazu SELECT](sql-api-sql-query.md#SelectClause)
@@ -60,7 +60,7 @@ Všimněte si, že se liší od pořadí, v jakém jsou uvedeny v syntaxi. Řaze
 
 ### <a name="whitespace-characters-and-comments"></a>Prázdné znaky a komentáře  
 
-Všechny prázdných znaků, které nejsou součástí řetězec v uvozovkách nebo identifikátor v uvozovkách nejsou součástí jazyk gramatiky a ignorují během analýzy.  
+Všechny prázdné znaky, které nejsou součástí řetězec v uvozovkách nebo identifikátor v uvozovkách nejsou součástí jazyk gramatiky a ignorují během analýzy.  
 
 Dotazovací jazyk podporuje komentáře stylu jazyka T-SQL jako  
 
@@ -69,7 +69,7 @@ Dotazovací jazyk podporuje komentáře stylu jazyka T-SQL jako
 Zatímco prázdné znaky a komentáře nemají žádné význam v gramatice, musíte použít k oddělení tokeny. Například: `-1e5` je jednotné číslo token, nějakou`: – 1 e5` minus token následuje číslo 1 a identifikátor e5.  
 
 ##  <a name="bk_select_query"></a> Klauzule SELECT  
-Klauzule v příkazu SELECT musejí být seřazeny, jak je znázorněno výše. Některý volitelný klauzule lze vynechat. Ale v případě volitelná klauzule používají, musí být ve správném pořadí. Příklady najdete v tématu [Příklady zpracování dotazu SELECT](sql-api-sql-query.md#SelectClause)
+Klauzule v příkazu SELECT musejí být seřazeny, jak je znázorněno výše. Některý volitelný klauzule lze vynechat. Ale v případě volitelná klauzule používají, musí být ve správném pořadí. Příklady najdete v tématu [Příklady zpracování dotazu SELECT](sql-api-sql-query.md#SelectClause).
 
 **Syntaxe**  
 
@@ -112,7 +112,7 @@ SELECT <select_specification>
   
 `SELECT *` Syntaxe je platná pouze pokud klauzule FROM deklaroval přesně jeden alias. `SELECT *` poskytuje identitu projekce, které mohou být užitečné v případě potřeby žádná projekce. Vyberte * je platná pouze pokud je zadaná klauzule FROM a zavedl pouze jednoho vstupního zdroje.  
   
-Všimněte si, že `SELECT <select_list>` a `SELECT *` jsou "syntaktické sugar" a může být také vyjádřena pomocí jednoduchých příkazů SELECT, jak je znázorněno níže.  
+Obě `SELECT <select_list>` a `SELECT *` jsou "syntaktické sugar" a může být také vyjádřena pomocí jednoduchých příkazů SELECT, jak je znázorněno níže.  
   
 1. `SELECT * FROM ... AS from_alias ...`  
   
@@ -132,7 +132,7 @@ Všimněte si, že `SELECT <select_list>` a `SELECT *` jsou "syntaktické sugar"
 [Klauzule SELECT](#bk_select_query)  
   
 ##  <a name="bk_from_clause"></a> FROM – klauzule  
-Určuje zdroj nebo zdroje připojené k doméně. V klauzuli FROM je nepovinný, pokud je zdroj filtrovaná nebo předpokládané později v dotazu. Účelem tuto klauzuli je určení zdroje dat, na kterém musí pracovat dotazu. Běžně celé kolekce se zdroji, ale jeden místo toho zadat podmnožinu kolekce. Pokud tato klauzule není zadán, bude spuštěn další klauzule stále jakoby z klauzule zadaný jednotlivý dokument. Příklady najdete v tématu [z příkladů – klauzule](sql-api-sql-query.md#FromClause)
+Určuje zdroj nebo zdroje připojené k doméně. V klauzuli FROM je nepovinný, pokud je zdroj filtrovaná nebo předpokládané později v dotazu. Účelem tuto klauzuli je určení zdroje dat, na kterém musí pracovat dotazu. Běžně celého kontejneru se zdroji, ale jeden místo toho zadejte podmnožinu kontejneru. Pokud tato klauzule není zadán, bude spuštěn další klauzule stále jakoby z klauzule zadaný jednotlivý dokument. Příklady najdete v tématu [z příkladů – klauzule](sql-api-sql-query.md#FromClause)
   
 **Syntaxe**  
   
@@ -143,98 +143,98 @@ FROM <from_specification>
         <from_source> {[ JOIN <from_source>][,...n]}  
   
 <from_source> ::=   
-          <collection_expression> [[AS] input_alias]  
-        | input_alias IN <collection_expression>  
+          <container_expression> [[AS] input_alias]  
+        | input_alias IN <container_expression>  
   
-<collection_expression> ::=   
+<container_expression> ::=   
         ROOT   
-     | collection_name  
+     | container_name  
      | input_alias  
-     | <collection_expression> '.' property_name  
-     | <collection_expression> '[' "property_name" | array_index ']'  
+     | <container_expression> '.' property_name  
+     | <container_expression> '[' "property_name" | array_index ']'  
 ```  
   
 **Argumenty**  
   
 - `<from_source>`  
   
-  Určuje zdroj dat, s nebo bez něj alias. Pokud není zadaný alias, bude odvodit z `<collection_expression>` pomocí následujících pravidel:  
+  Určuje zdroj dat, s nebo bez něj alias. Pokud není zadaný alias, bude odvodit z `<container_expression>` pomocí následujících pravidel:  
   
-  -  Pokud má výraz hodnotu název_kolekce, se Název_kolekce používat jako alias.  
+  -  Pokud má výraz hodnotu container_name, bude container_name použít jako alias.  
   
-  -  Pokud má výraz hodnotu `<collection_expression>`, pak %{Property_Name/ pak %{Property_Name/ se použije jako alias. Pokud má výraz hodnotu název_kolekce, se Název_kolekce používat jako alias.  
+  -  Pokud má výraz hodnotu `<container_expression>`, pak %{Property_Name/ pak %{Property_Name/ se použije jako alias. Pokud má výraz hodnotu container_name, bude container_name použít jako alias.  
   
 - STEJNĚ JAKO `input_alias`  
   
-  Určuje, že `input_alias` je sada hodnot vrácených základní výrazu kolekce.  
+  Určuje, že `input_alias` je sada hodnot vrácených základní výraz kontejneru.  
  
 - `input_alias` INDIE  
   
-  Určuje, že `input_alias` by měly představovat sadu hodnot získala iterace přes všechny prvky pole každé pole vrácené výrazem podkladová kolekce. Libovolnou hodnotu vrácenou základní výrazu kolekce, která není pole se ignoruje.  
+  Určuje, že `input_alias` by měly představovat sadu hodnot získala iterace přes všechny prvky pole každé pole vrácené výrazem základní kontejneru. Libovolnou hodnotu vrácenou základní výraz kontejneru, který není pole se ignoruje.  
   
-- `<collection_expression>`  
+- `<container_expression>`  
   
-  Určuje výraz kolekce se použije k načtení dokumentů.  
+  Určuje výraz kontejneru se použije k načtení dokumentů.  
   
 - `ROOT`  
   
-  Určuje, že tento dokument by mělo být získáno z výchozí hodnoty, aktuálně připojeného kolekce.  
+  Určuje, že tento dokument by mělo být získáno z výchozí hodnoty, aktuálně připojeného kontejneru.  
   
-- `collection_name`  
+- `container_name`  
   
-  Určuje, že tento dokument by mělo být získáno ze zadané kolekce. Název kolekce musí odpovídat názvu kolekce aktuálně připojeni.  
+  Určuje, že tento dokument by měl být načten ze zadaného kontejneru. Název kontejneru musí odpovídat názvu kontejneru aktuálně připojeni.  
   
 - `input_alias`  
   
   Určuje, že tento dokument by měl být načten z jiného zdroje určené zadaný alias.  
   
-- `<collection_expression> '.' property_`  
+- `<container_expression> '.' property_`  
   
-  Určuje tento dokument by mělo být získáno díky přístupu `property_name` zadaná vlastnost nebo array_index prvek pole pro všechny dokumenty pomocí výrazu kolekce.  
+  Určuje tento dokument by mělo být získáno díky přístupu `property_name` vlastnost nebo array_index prvek pole pro všechny dokumenty načte zadaný výraz kontejneru.  
   
-- `<collection_expression> '[' "property_name" | array_index ']'`  
+- `<container_expression> '[' "property_name" | array_index ']'`  
   
-  Určuje tento dokument by mělo být získáno díky přístupu `property_name` zadaná vlastnost nebo array_index prvek pole pro všechny dokumenty pomocí výrazu kolekce.  
+  Určuje tento dokument by mělo být získáno díky přístupu `property_name` vlastnost nebo array_index prvek pole pro všechny dokumenty načte zadaný výraz kontejneru.  
   
 **Poznámky**  
   
-K dispozici všechny aliasy nebo odvozen `<from_source>(`s) musí být jedinečný. Syntaxe `<collection_expression>.`%{Property_Name/ je stejný jako `<collection_expression>' ['"property_name"']'`. Druhá možnost syntaxi však můžete použít, pokud název vlastnosti obsahuje znaky jiné identifikátor.  
+K dispozici všechny aliasy nebo odvozen `<from_source>(`s) musí být jedinečný. Syntaxe `<container_expression>.`%{Property_Name/ je stejný jako `<container_expression>' ['"property_name"']'`. Druhá možnost syntaxi však můžete použít, pokud název vlastnosti obsahuje znak identifikátoru.  
   
 ### <a name="handling-missing-properties-missing-array-elements-and-undefined-values"></a>zpracování chybí vlastnosti chybějící prvky pole a nedefinované hodnoty
   
-Pokud kolekce výrazu přistupuje k vlastnosti nebo prvky pole a že hodnota neexistuje, tuto hodnotu budou ignorovány a další nebyl zpracován.  
+Pokud výraz kontejneru, který přistupuje k vlastnosti nebo prvky pole a že hodnota neexistuje, tuto hodnotu budou ignorovány a další nebyl zpracován.  
   
-### <a name="collection-expression-context-scoping"></a>Zkoumání kontextu výraz kolekce  
+### <a name="container-expression-context-scoping"></a>Zkoumání kontextu výrazu kontejneru  
   
-Výraz kolekce může být kolekce rozsahem nebo rozsahem dokumentu:  
+Kontejner výrazu může být kontejner rozsahem nebo rozsahem dokumentu:  
   
--   Výraz je kolekce s rozsahem, pokud je podkladový zdroj výrazu kolekce buď ROOT nebo `collection_name`. Takový výraz představuje sadu dokumentů načíst přímo z kolekce a není závislá na zpracování jiných výrazech kolekce.  
+-   Výraz je kontejner s rozsahem, pokud podkladový zdroj výraz kontejneru je buď ROOT nebo `container_name`. Takový výraz představuje sadu dokumentů načíst přímo z kontejneru a není závislá na zpracování jiných výrazech kontejneru.  
   
--   Výraz je dokument s rozsahem, pokud je podkladový zdroj výrazu kolekce `input_alias` zavedené dříve v dotazu. Takový výraz představuje sadu dokumentů získanou vyhodnocením výrazu kolekce v rámci každého dokumentu, které patří do sady přidružené ke kolekci alias.  Výsledná sada bude sjednocení sad získanou vyhodnocením výrazu kolekce pro jednotlivé dokumenty v základní sadě.  
+-   Výraz je dokument s rozsahem, pokud je podkladový zdroj výrazu kontejneru `input_alias` zavedené dříve v dotazu. Takový výraz představuje sadu dokumentů získanou vyhodnocením výrazu kontejneru v rámci jednotlivých dokumentů, které patří do sady spojenými s daným kontejnerem alias.  Výsledná sada bude sjednocení sad získanou vyhodnocením výrazu kontejner pro všechny dokumenty v základní sadě.  
   
 ### <a name="joins"></a>Spojení 
   
-V aktuální verzi služby Azure Cosmos DB podporuje vnitřní spojení. Zobrazování poruch se připojení k další možnosti. 
+V aktuální verzi Cosmos DB podporuje vnitřní spojení. Zobrazování poruch se připojení k další možnosti. 
 
 Vnitřní spojení za následek úplnou smíšený produkt sad účastní spojení. Výsledek spojení N-způsob, jak je sada N prvek řazené kolekce členů, kde každá hodnota řazené kolekce členů je přidružen alias nastavit účast ve spojení a je přístupný pomocí odkazu na tento alias v jiných klauzule. Příklady najdete v tématu [příklady – klíčové slovo JOIN](sql-api-sql-query.md#Joins)
   
 Vyhodnocení spojení závisí na kontext rozsah zúčastněných sad:  
   
--  Spojení mezi sadu kolekce A a celou kolekci nastavení B, výsledkem smíšený produkt všechny prvky v sadách A a B.
+-  Spojení mezi container-set A a rozsahem kontejneru nastavit B, výsledkem smíšený produkt všechny prvky v sadách A a B.
   
 -   Spojení mezi sada A a rozsahem dokumentu sada B, výsledkem sjednocení všech sad získanou vyhodnocením rozsahem dokumentu nastavte B pro každý dokument z A.  
   
- V aktuální verzi maximálně jeden výraz s rozsahem kolekce podporuje procesor dotazů.  
+ V aktuální verzi maximálně jeden výraz s rozsahem kontejner podporuje procesor dotazů.  
   
 ### <a name="examples-of-joins"></a>Příklady spojení  
   
 Podívejme se na následující klauzule FROM: `<from_source1> JOIN <from_source2> JOIN ... JOIN <from_sourceN>`  
   
- Umožnit každému zdroji definovat `input_alias1, input_alias2, …, input_aliasN`. Tato klauzule FROM vrací sadu N-řazených kolekcí členů (řazené kolekce členů s N hodnot). Všechny řazené kolekce členů obsahuje hodnoty vytvořené ve všechny aliasy kolekce iterování celého jejich příslušných sad.  
+ Umožnit každému zdroji definovat `input_alias1, input_alias2, …, input_aliasN`. Tato klauzule FROM vrací sadu N-řazených kolekcí členů (řazené kolekce členů s N hodnot). Všechny řazené kolekce členů obsahuje hodnoty vytvořené ve všechny aliasy kontejneru iterování celého jejich příslušných sad.  
   
 **Příklad 1** -2 zdroje  
   
-- Umožní `<from_source1>` být kolekce rozsahem a reprezentaci sady {A, B, C}.  
+- Umožní `<from_source1>` být kontejner rozsahem a reprezentaci sady {A, B, C}.  
   
 - Umožní `<from_source2>` být dokument s rozsahem odkazující na input_alias1 a představují sady:  
   
@@ -252,7 +252,7 @@ Podívejme se na následující klauzule FROM: `<from_source1> JOIN <from_source
   
 **Příklad 2** -3 zdrojů  
   
-- Umožní `<from_source1>` být kolekce rozsahem a reprezentaci sady {A, B, C}.  
+- Umožní `<from_source1>` být kontejner rozsahem a reprezentaci sady {A, B, C}.  
   
 - Umožní `<from_source2>` být odkazující na dokument s rozsahem `input_alias1` a představují sady:  
   
@@ -279,9 +279,9 @@ Podívejme se na následující klauzule FROM: `<from_source1> JOIN <from_source
   
 **Příklad 3** -3 zdrojů  
   
-- Umožní < from_source1 > se s rozsahem kolekce a reprezentaci sady {A, B, C}.  
+- Umožní < from_source1 > se s rozsahem kontejneru a reprezentaci sady {A, B, C}.  
   
-- Umožní `<from_source1>` být kolekce rozsahem a reprezentaci sady {A, B, C}.  
+- Umožní `<from_source1>` být kontejner rozsahem a reprezentaci sady {A, B, C}.  
   
 - Umožní < from_source2 > se s rozsahem dokumentu odkazující input_alias1 a představují sady:  
   
@@ -371,12 +371,12 @@ ORDER BY <sort_specification>
   
  **Poznámky**  
   
- I když gramatiky dotazů podporuje více pořadí podle vlastností, dotaz runtime služby Azure Cosmos DB podporuje řazení pouze proti jedné vlastnosti a pouze názvy vlastností, to znamená, nejsou proti vypočítané vlastnosti. Řazení také vyžaduje, zásady indexování obsahuje index rozsahu pro vlastnost a zadaného typu s nejvyšší přesností. Odkazovat na indexování dokumentace k zásadám pro další podrobnosti.  
+ I když gramatiky dotazů podporuje více pořadí podle vlastností, modul runtime dotazu Cosmos DB podporuje řazení pouze proti jedné vlastnosti a pouze názvy vlastností (ne před vypočítané vlastnosti). Řazení také vyžaduje, zásady indexování obsahuje index rozsahu pro vlastnost a zadaného typu s nejvyšší přesností. Odkazovat na indexování dokumentace k zásadám pro další podrobnosti.  
   
 ##  <a name="bk_scalar_expressions"></a> Skalární výrazy  
  Skalární výraz, který je kombinací symbolů a operátorů, které lze vyhodnotit na získání jedné hodnoty. Jednoduché výrazy mohou být konstanty, odkazy na vlastnosti, odkazy na prvky pole, odkazy na alias nebo volání funkce. Jednoduché výrazy je možné kombinovat do složité výrazy pomocí operátorů. Příklady najdete v tématu [příklady skalární výrazy](sql-api-sql-query.md#scalar-expressions)
   
- Podrobnosti o hodnoty, které skalární výraz, který může mít, naleznete v tématu [konstanty](#bk_constants) oddílu.  
+ Podrobnosti na hodnoty, které mohou mít skalární výraz, který najdete v tématu [konstanty](#bk_constants) oddílu.  
   
  **Syntaxe**  
   
@@ -424,7 +424,7 @@ ORDER BY <sort_specification>
   
 -   `<scalar_expression>'['"property_name"|array_index']'`  
   
-     Reprezentuje hodnotu vlastnosti s názvem `property_name` nebo element pole s indexem `array_index` objekt nebo pole. Pokud vlastnost nebo pole index neexistuje nebo index vlastnost nebo pole se odkazuje na hodnotu, která není objekt nebo pole, pak je výraz vyhodnocen nedefinovaná hodnota.  
+     Reprezentuje hodnotu vlastnosti s názvem `property_name` nebo element pole s indexem `array_index` objekt nebo pole. Pokud vlastnost nebo pole index neexistuje nebo index vlastnost nebo pole se odkazuje na hodnotu, která není objekt nebo pole a pak je výraz vyhodnocen nedefinovaná hodnota.  
   
 -   `unary_operator <scalar_expression>`  
   
@@ -440,7 +440,7 @@ ORDER BY <sort_specification>
   
 -   `udf_scalar_function`  
   
-     Jméno uživatele definované skalární funkci.  
+     Název definovaný uživatelem skalární funkci.  
   
 -   `builtin_scalar_function`  
   
@@ -460,7 +460,7 @@ ORDER BY <sort_specification>
   
  **Poznámky**  
   
- Při volání na uživatele nebo integrovanou skalární funkci definovanou všechny argumenty musí být definovaný. Pokud některý z argumentů není definován, nebude volána funkce a bude výsledek nedefinovaný.  
+ Při volání skalární funkce vestavěný nebo uživatelem definované všechny argumenty musí být definovaný. Pokud některý z argumentů není definován, nebude volána funkce a bude výsledek nedefinovaný.  
   
  Při vytvoření objektu, bude přeskočen a není součástí vytvořený objekt jakákoli vlastnost, která je přiřazena hodnota undefined.  
   
@@ -517,9 +517,9 @@ ORDER BY <sort_specification>
   
  **Poznámky**  
   
- Ve službě Azure Cosmos DB typy hodnot, často nejsou známé, dokud se ve skutečnosti jsou načteny z databáze. Aby bylo možné podporovat efektivní provádění dotazů, většina operátory mají požadavky na striktní typy. Operátory samy také neprovádějte implicitní převody.  
+ Ve službě Cosmos DB typy hodnot, často nejsou známé, dokud se načítají z databáze. Aby bylo možné podporovat efektivní provádění dotazů, většina operátory mají požadavky na striktní typy. Operátory samy také neprovádějte implicitní převody.  
   
- To znamená, že jako dotaz: vybrat * z kořenového r WHERE r.Age = 21 vrátí jenom dokumenty s vlastností stáří rovná počtu 21. Dokumenty s vlastností rovno řetězci "21" nebo "0021" řetězec věk nebudou odpovídat jako výraz "21" = 21 vyhodnotí na nedefinovaný. To umožňuje lepší využití indexy, protože vyhledávání konkrétní hodnotu (tj. číslo 21) je rychlejší než hledání nekonečný počet možných shod (tj. číslo 21 nebo řetězce "21", "021", "21.0"...). Tím se liší od způsob, jak JavaScript vyhodnocuje operátory na hodnoty různých typů.  
+ To znamená, že jako dotaz: vybrat * z kořenového r WHERE r.Age = 21 vrátí jenom dokumenty s vlastností stáří rovná počtu 21. Dokumenty s vlastností rovno řetězci "21" nebo "0021" řetězec věk nebudou odpovídat jako výraz "21" = 21 vyhodnotí na nedefinovaný. To umožňuje lepší využití indexy, protože je rychlejší než hledání nekonečný počet vyhledávání konkrétní hodnotu (například číslo 21) potenciál odpovídá (číslo 21 nebo řetězce "21", "021", "21.0"...). Tím se liší od způsob, jak JavaScript vyhodnocuje operátory na hodnoty různých typů.  
   
  **Pole a objekty rovnosti a porovnání**  
   
@@ -632,7 +632,7 @@ ORDER BY <sort_specification>
 |\uXXXX|Znak Unicode definované 4 šestnáctkovými číslicemi.|U+XXXX|  
   
 ##  <a name="bk_query_perf_guidelines"></a> Pokyny k výkonu dotazů  
- Aby dotazu pro velkou kolekci efektivně provádět měla by používat filtry, které se dají obsluhovat pomocí jednoho nebo více indexů.  
+ Aby dotazu pro kontejner velká efektivně provádět měla by používat filtry, které se dají obsluhovat pomocí jednoho nebo více indexů.  
   
  Následující filtry se budou považovat za pro index vyhledávání:  
   
@@ -640,15 +640,15 @@ ORDER BY <sort_specification>
   
 -   Použití operátorů rozsah (<, \<=, >, > =) pomocí výrazu cesty dokumentu a číselné konstanty.  
   
--   Výraz cesty dokumentu jsou zahrnovaného libovolný výraz, který identifikuje konstantní cestu v dokumentech z kolekce odkazovaná databáze.  
+-   Výraz cesty dokumentu jsou zahrnovaného libovolný výraz, který identifikuje konstantní cestu v dokumentech z kontejneru odkazovaná databáze.  
   
  **Výraz cesty dokumentu**  
   
- Výrazy jsou výrazy cesta k dokumentu, který cestu vlastnosti nebo pole assessors indexer přes dokumentu z databáze kolekce dokumentů. Tuto cestu můžete použít pro určení umístění hodnoty odkazované ve filtru přímo v rámci dokumenty v databázové kolekci.  
+ Výrazy jsou výrazy cesta k dokumentu, který cestu vlastnosti nebo pole assessors indexer přes dokumentu z databáze kontejnerové dokumenty. Tato cesta je možné pro určení umístění hodnoty odkazované ve filtru přímo v rámci dokumenty v databázi kontejneru.  
   
  Pro výraz považuje za výraz cesty dokumentu by měl:  
   
-1.  Kořenové kolekce odkazovat přímo.  
+1.  Kořenový kontejner odkazovat přímo.  
   
 2.  Odkaz na vlastnost nebo konstantu indexer pole některé výrazu cesta dokumentu  
   
@@ -674,14 +674,14 @@ ORDER BY <sort_specification>
     |[ ...n ]|Označuje, že předchozí položka může být n počet opakovaných pokusů o. Opakování jsou oddělené mezerami.|  
   
 ##  <a name="bk_built_in_functions"></a> Předdefinované funkce  
- Azure Cosmos DB poskytuje mnoho předdefinovaných funkcí SQL. Kategorie předdefinované funkce jsou uvedeny níže.  
+ Cosmos DB poskytuje mnoho předdefinovaných funkcí SQL. Kategorie předdefinované funkce jsou uvedeny níže.  
   
 |Funkce|Popis|  
 |--------------|-----------------|  
 |[Matematické funkce](#bk_mathematical_functions)|Matematické funkce provádí výpočet, obvykle podle vstupní hodnoty, které jsou k dispozici jako argumenty a vrátit číselnou hodnotu.|  
 |[Kontrola funkce typu](#bk_type_checking_functions)|Funkce pro kontrolu typů umožňují zkontrolujte typ výrazu v rámci dotazů SQL.|  
 |[Funkce řetězců](#bk_string_functions)|Řetězcové funkce provádění operací na vstupní hodnotu řetězce a vrátí řetězec, číslo nebo logickou hodnotu.|  
-|[Funkce pole](#bk_array_functions)|Funkce pole provést operaci na hodnotu vstupního pole a vrátit číselné, hodnota logická hodnota nebo pole.|  
+|[Funkce pole](#bk_array_functions)|Funkce pole provádění operací na hodnotu vstupního pole a vrácené číselné, logickou hodnotu nebo hodnotu pole.|  
 |[Prostorové funkce](#bk_spatial_functions)|Prostorové funkce provádění operací na prostorový vstupní hodnotu a vrátí číslo nebo logickou hodnotu.|  
   
 ###  <a name="bk_mathematical_functions"></a> Matematické funkce  
@@ -1761,7 +1761,7 @@ SELECT
 ```  
   
 ####  <a name="bk_is_primitive"></a> IS_PRIMITIVE  
- Vrátí logickou hodnotu označující, zda je typ z určeného výrazu jednoduchého typu (string, Boolean, číselné nebo mít hodnotu null).  
+ Vrátí logickou hodnotu označující, zda je typ z určeného výrazu jednoduchého typu (string, Boolean, číselné nebo null).  
   
  **Syntaxe**  
   
@@ -2808,7 +2808,7 @@ ST_INTERSECTS (<spatial_expr>, <spatial_expr>)
   
  **Příklady**  
   
- Následující příklad ukazuje, jak najít všechny oblasti, která protíná s danou mnohoúhelníku.  
+ Následující příklad ukazuje, jak najít všechny oblasti, které průnik s danou mnohoúhelníku.  
   
 ```  
 SELECT a.id   
@@ -2904,7 +2904,7 @@ SELECT ST_ISVALIDDETAILED({
 ```  
   
 ## <a name="next-steps"></a>Další postup  
- [Syntaxe SQL a dotaz SQL pro službu Azure Cosmos DB](sql-api-sql-query.md)   
- [Dokumentace ke službě Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/)  
-  
-  
+
+- [Syntaxe SQL a dotaz SQL pro službu Cosmos DB](sql-api-sql-query.md)
+
+- [Dokumentace ke službě cosmos DB](https://docs.microsoft.com/azure/cosmos-db/)  

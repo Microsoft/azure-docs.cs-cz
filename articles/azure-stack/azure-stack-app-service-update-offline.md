@@ -12,21 +12,21 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2018
+ms.date: 11/13/2018
 ms.author: anwestg
-ms.openlocfilehash: f48872d1853dfd4c40022f42c8e237973ac70fe6
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: c91f92a519c91f4c0fe32ed102c5bb9fab528868
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42059404"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51614799"
 ---
 # <a name="offline-update-of-azure-app-service-on-azure-stack"></a>Offline aktualizace služby Azure App Service ve službě Azure Stack
 
 *Platí pro: Azure Stack integrované systémy a Azure Stack Development Kit*
 
 > [!IMPORTANT]
-> Aktualizace 1807 do služby Azure Stack integrované systému nebo nasadit nejnovější sady Azure Stack development kit před nasazením Azure App Service 1.3.
+> Aktualizace 1809 do služby Azure Stack integrované systému nebo nasadit nejnovější sady Azure Stack development kit před nasazením Azure App Service 1.4.
 >
 >
 
@@ -44,7 +44,7 @@ Podle pokynů v tomto článku, můžete upgradovat [poskytovatele prostředků 
 
 Pokud chcete upgradovat poskytovatele prostředků App Service v prostředí Azure Stack, musíte dokončit tyto úlohy:
 
-1. Stáhněte si [instalační program služby App Service](https://aka.ms/appsvcupdate3installer)
+1. Stáhněte si [instalační program služby App Service](https://aka.ms/appsvcupdate4installer)
 2. Vytvořte offline balíček s upgradem.
 3. Spusťte instalační program služby App Service (appservice.exe) a dokončit upgrade.
 
@@ -93,7 +93,7 @@ Chcete-li upgradovat službu App Service v odpojeném prostředí, musíte nejd�
 
 5. Zkontrolujte a přijměte podmínky licence třetí strany a klikněte na **Další**.
 
-6. Ujistěte se, že koncový bod Azure stacku Azure Resource Manageru a Tenanta Active Directory správnost informací. Pokud jste použili výchozí nastavení při nasazení Azure Stack Development Kit, můžete přijmout výchozí hodnoty. Pokud jste si přizpůsobili možností při nasazení Azure Stack, však musíte upravit hodnoty v tomto okně tak, aby odrážely, který. Například, pokud používáte příponu domény *mycloud.com*, koncový bod služby Azure Stack Azure Resource Managerem musíte změnit na *management.region.mycloud.com*. Jakmile potvrdíte vaše informace, klikněte na tlačítko **Další**.
+6. Ujistěte se, že koncový bod Azure stacku Azure Resource Manageru a Tenanta Active Directory správnost informací. Pokud jste použili výchozí nastavení při nasazení Azure Stack Development Kit, můžete přijmout výchozí hodnoty. Pokud jste si přizpůsobili možností při nasazení Azure Stack, však musíte upravit hodnoty v tomto okně. Například, pokud používáte příponu domény *mycloud.com*, koncový bod služby Azure Stack Azure Resource Managerem musíte změnit na *management.region.mycloud.com*. Jakmile potvrdíte vaše informace, klikněte na tlačítko **Další**.
 
     ![Informace o cloudu Azure Stack][3]
 
@@ -104,7 +104,7 @@ Chcete-li upgradovat službu App Service v odpojeném prostředí, musíte nejd�
         * Pokud používáte služby Active Directory Federation Services (AD FS), zadejte účet správce. Příklad: *cloudadmin@azurestack.local*. Zadejte své heslo a klikněte na tlačítko **Sign In**.
    2. V **předplatná Azure Stack** vyberte **výchozí předplatné poskytovatele**.
    3. V **lokality Azure Stack** , vyberte umístění, které odpovídá nasazujete do oblasti. Vyberte například **místní** Pokud vaše nasazení Azure Stack Development Kit.
-   4. Pokud je zjištěno existující nasazení služby App Service, pak prostředku skupiny a účet úložiště bude naplněna a šedě.
+   4. Pokud se detekuje existující nasazení služby App Service, klikněte prostředek skupiny a účet úložiště bude vyplní a šedě.
    5. Klikněte na tlačítko **Další** Zkontrolujte souhrn upgradu.
 
     ![Nezjistila se instalace služby App Service][4]

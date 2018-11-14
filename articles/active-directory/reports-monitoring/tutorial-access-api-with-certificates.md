@@ -12,21 +12,21 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.component: report-monitor
-ms.date: 05/07/2018
+ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 5c54af76fc1e145ea062c6bcb37f354a7de94781
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 0ee756828a50cdf62471923614afbe88e238b9ef
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46364169"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51624553"
 ---
 # <a name="tutorial-get-data-using-the-azure-active-directory-reporting-api-with-certificates"></a>Kurz: Získání dat pomocí Azure Active Directory API pro vytváření sestav s certifikáty
 
 [Rozhraní API pro generování sestav v Azure Active Directory (Azure AD)](concept-reporting-api.md) poskytují programový přístup k těmto datům prostřednictvím sady rozhraní API založených na REST. Tato rozhraní API můžete volat z nejrůznějších programovacích jazyků a nástrojů. Pokud chcete získat přístup Azure AD API pro generování sestav bez zásahu uživatele, musíte nakonfigurovat váš přístup k používání certifikátů.
 
-V tomto kurzu se dozvíte, jak vytvořit testovací certifikát a jeho použití pro přístup k rozhraní Graph API MS pro vytváření sestav. Nedoporučujeme používat testovací certifikát v produkčním prostředí. 
+V tomto kurzu se dozvíte, jak používat testovací certifikát pro přístup k rozhraní Graph API MS pro vytváření sestav. Nedoporučujeme používat testovací certifikáty v produkčním prostředí. 
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -39,28 +39,24 @@ V tomto kurzu se dozvíte, jak vytvořit testovací certifikát a jeho použití
     - Přístupové tokeny od uživatele, klíče aplikace a certifikáty pomocí ADAL
     - Rozhraní Graph API zpracovávající stránkové výsledky
 
-4. Pokud je vaše první přihlášení pomocí modulu spustit **instalace MSCloudIdUtilsModule**, jinak jej importujte **Import-Module** příkaz prostředí Powershell.
+4. Pokud je vaše první přihlášení pomocí modulu spustit **instalace MSCloudIdUtilsModule**, jinak jej importujte **Import-Module** příkaz prostředí Powershell. Vaše relace by měl vypadat podobně jako tato obrazovka:
 
-Vaše relace by měl vypadat podobně jako tato obrazovka:
-
-  ![Windows Powershell](./media/tutorial-access-api-with-certificates/module-install.png)
+        ![Windows Powershell](./media/tutorial-access-api-with-certificates/module-install.png)
   
-## <a name="create-a-test-certificate"></a>Vytvoření testovacího certifikátu
-
-1. Použití **New-SelfSignedCertificate** rutinu Powershellu k vytvoření testovacího certifikátu.
+5. Použití **New-SelfSignedCertificate** rutinu Powershellu k vytvoření testovacího certifikátu.
 
    ```
    $cert = New-SelfSignedCertificate -Subject "CN=MSGraph_ReportingAPI" -CertStoreLocation "Cert:\CurrentUser\My" -KeyExportPolicy Exportable -KeySpec Signature -KeyLength 2048 -KeyAlgorithm RSA -HashAlgorithm SHA256
    ```
 
-2. Použití **Export certifikátu** rutiny a jejich export do souboru certifikátu.
+6. Použití **Export certifikátu** rutiny a jejich export do souboru certifikátu.
 
    ```
    Export-Certificate -Cert $cert -FilePath "C:\Reporting\MSGraph_ReportingAPI.cer"
 
    ```
 
-## <a name="register-the-certificate-in-your-app"></a>Registrace certifikátu v aplikaci
+## <a name="get-data-using-the-azure-active-directory-reporting-api-with-certificates"></a>Získání dat pomocí rozhraní API pro generování sestav Azure Active Directory s certifikáty
 
 1. Přejděte [webu Azure portal](https://portal.azure.com)vyberte **Azure Active Directory**a pak vyberte **registrace aplikací** a vyberte aplikaci ze seznamu. 
 
@@ -86,29 +82,22 @@ Vaše relace by měl vypadat podobně jako tato obrazovka:
 
 6. Uložte manifest. 
   
-## <a name="get-an-access-token-for-ms-graph-api"></a>Získání přístupového tokenu pro rozhraní Graph API MS
-
-1. Použití **Get-MSCloudIdMSGraphAccessTokenFromCert** rutiny z modulu MSCloudIdUtils PowerShell předávání do ID aplikace a kryptografický otisk jste získali v předchozím kroku. 
+7. Teď je můžete získání přístupového tokenu pro rozhraní Graph API MS pomocí tohoto certifikátu. Použití **Get-MSCloudIdMSGraphAccessTokenFromCert** rutiny z modulu MSCloudIdUtils PowerShell předávání do ID aplikace a kryptografický otisk jste získali v předchozím kroku. 
 
  ![portál Azure](./media/tutorial-access-api-with-certificates/getaccesstoken.png)
 
-## <a name="use-the-access-token-to-call-the-graph-api"></a>Použití přístupového tokenu pro volání rozhraní Graph API
+8. Přístupový token ve skriptu prostředí Powershell použijte k dotazování rozhraní Graph API. Použití **Invoke-MSCloudIdMSGraphQuery** rutiny z MSCloudIDUtils výčet přehledu přihlášení a directoryAudits koncový bod. Tato rutina zpracuje vícestránkové výsledky a tyto výsledky odešle do kanálu Powershellu.
 
-1. Teď můžete použít přístupový token Powershellového skriptu pro dotazování rozhraní Graph API. Použití **Invoke-MSCloudIdMSGraphQuery** rutiny z MSCloudIDUtils výčet přehledu přihlášení a directoryAudits koncový bod. Tato rutina zpracuje vícestránkové výsledky a tyto výsledky odešle do kanálu Powershellu.
-
-2. Dotazování na koncový bod directoryAudits načíst protokoly auditu. 
+9. Dotazování na koncový bod directoryAudits načíst protokoly auditu. 
  ![Azure Portal](./media/tutorial-access-api-with-certificates/query-directoryAudits.png)
 
-3. Dotazování na koncový bod přehledu přihlášení k načtení protokolů přihlášení.
+10. Dotazování na koncový bod přehledu přihlášení k načtení protokolů přihlášení.
  ![Azure Portal](./media/tutorial-access-api-with-certificates/query-signins.png)
 
-4. Teď můžete tato data exportovat do sdíleného svazku clusteru a uložit do systému SIEM. Můžete také zabalit váš skript do naplánované úlohy, abyste získávali data Azure AD z vašeho klienta pravidelně bez nutnosti ukládat klíče aplikace ve zdrojovém kódu. 
+11. Teď můžete tato data exportovat do sdíleného svazku clusteru a uložit do systému SIEM. Můžete také zabalit váš skript do naplánované úlohy, abyste získávali data Azure AD z vašeho klienta pravidelně bez nutnosti ukládat klíče aplikace ve zdrojovém kódu. 
 
 ## <a name="next-steps"></a>Další postup
 
 * [Získejte představu o rozhraní API pro generování sestav](concept-reporting-api.md)
 * [Referenční informace k rozhraní API auditu](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) 
 * [Sestavy aktivit přihlašování reference k rozhraní API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin)
-
-
-

@@ -6,14 +6,14 @@ author: markgalioto
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 11/06/2018
+ms.date: 11/13/2018
 ms.author: markgal
-ms.openlocfilehash: 3e106d7f669cf14014114ed0fe63651a1a2fe0eb
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.openlocfilehash: 8f7bda070e613e5495d3733dd1610cb291e12c36
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/13/2018
-ms.locfileid: "51578096"
+ms.locfileid: "51612691"
 ---
 # <a name="run-an-unattended-installation-of-azure-backup-server"></a>Spuštění bezobslužné instalace Azure Backup serveru
 

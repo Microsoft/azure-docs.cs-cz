@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 7f85de79b683ba7b10f5466c4a8042fc0ffdea90
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 3f1e34b4d527d076a0bac2e0cb6ef3a901296c57
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44381140"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51612471"
 ---
 # <a name="define-a-oauth2-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Technický profil OAuth2 definování ve vlastních zásadách pro Azure Active Directory B2C
 
@@ -46,7 +46,7 @@ Azure Active Directory (Azure AD) B2C poskytuje podporu pro zprostředkovatele i
 
 ## <a name="output-claims"></a>Výstupní deklarace identit.
 
-**OutputClaims** prvek obsahuje seznam deklarací identity vrácený zprostředkovatelem identity OAuth2. Budete muset namapovat název deklarace identity, definovaný ve svojí zásadě název definovaný ve zprostředkovateli identity. Může také obsahovat deklarace identity, které nejsou vrácené zprostředkovatelem identity, za předpokladu, jste nastavili `DefaultValue` atribut.
+**OutputClaims** prvek obsahuje seznam deklarací identity vrácený zprostředkovatelem identity OAuth2. Budete muset namapovat název deklarace identity, definovaný ve svojí zásadě název definovaný ve zprostředkovateli identity. Může také obsahovat deklarace identity, které nejsou vrácené zprostředkovatelem identity tak dlouho, dokud jste nastavili `DefaultValue` atribut.
 
 **OutputClaimsTransformations** element může obsahovat kolekci **OutputClaimsTransformation** prvky, které se používají ke změně výstupní deklarace identit nebo generovat nové značky.
 

@@ -1,5 +1,5 @@
 ---
-title: Kurz služby Azure Service Bus WCF Relay | Dokumentace Microsoftu
+title: Zpřístupňují služby WCF REST v místním klientovi externí s využitím Azure WCF Relay | Dokumentace Microsoftu
 description: Vytvoření aplikace klienta a služby pomocí WCF Relay.
 services: service-bus-relay
 documentationcenter: na
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/02/2017
+ms.date: 11/01/2018
 ms.author: spelluru
-ms.openlocfilehash: 9c76e535fe0585ec6ff08a0c9dcab700d8eb5424
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 6927788fa79c567222a199064f5b375546ecf9ad
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51262008"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51615464"
 ---
-# <a name="azure-wcf-relay-tutorial"></a>Kurz pro Azure WCF Relay
+# <a name="expose-an-on-premises-wcf-rest-service-to-external-client-by-using-azure-wcf-relay"></a>Zpřístupňují služby WCF REST v místním klientovi externí s využitím Azure WCF Relay
 
 Tento kurz popisuje, jak vytvořit jednoduchý klienta WCF Relay, aplikace a služby pomocí Azure Relay. Podobný kurz, který používá [zasílání zpráv Service Bus](../service-bus-messaging/service-bus-messaging-overview.md), naleznete v tématu [Začínáme s frontami služby Service Bus](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md).
 
@@ -31,19 +31,32 @@ Po dokončení řady témat v tomto kurzu budete mít funkční službu a klient
 
 Poslední tři kroky popisují, jak vytvořit klientskou aplikaci, nakonfigurovat klientskou aplikaci a vytvořit a použít klienta, který může přistupovat k funkcím hostitele.
 
+V tomto kurzu provedete následující kroky:
+
+> [!div class="checklist"]
+> * Vytvořte obor názvů služby Relay.
+> * Vytvoření kontraktu služby WCF
+> * Implementace kontraktu WCF
+> * Hostování a spuštění služby WCF, který chcete zaregistrovat do služby Relay
+> * Vytvoření klienta WCF pro kontrakt služby
+> * Konfigurace klienta WCF
+> * Implementace klienta WFG
+> * Spuštění aplikace. 
+
 ## <a name="prerequisites"></a>Požadavky
 
-K absolvování tohoto kurzu potřebujete:
+Pro absolvování tohoto kurzu musí být splněné následující požadavky:
 
-* [Microsoft Visual Studio 2015 nebo vyšší](https://visualstudio.com). Tento kurz používá Visual Studio 2017.
-* Aktivní účet Azure. Pokud účet nemáte, můžete si ho bezplatně vytvořit během několika minut. Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com/free/).
+- Předplatné Azure. Pokud ho nemáte, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+- [Sada Visual Studio 2015 nebo novější](http://www.visualstudio.com). V příkladech v tomto kurzu se používá sada Visual Studio 2017.
+- Azure SDK pro .NET. Nainstalujte ji z [stránky pro stažení sady SDK](https://azure.microsoft.com/downloads/).
 
-## <a name="create-a-service-namespace"></a>Vytvoření oboru názvů služby
+## <a name="create-a-relay-namespace"></a>Vytvořit obor názvů služby Relay
+Prvním krokem je vytvoření oboru názvů a získat [sdíleného přístupového podpisu (SAS)](../service-bus-messaging/service-bus-sas.md) klíč. Obor názvů aplikaci poskytuje hranice pro každou aplikaci vystavenou přes službu relay. Systém automaticky vygeneruje SAS klíč při vytvoření oboru názvů služby. Kombinace oboru názvů služby a klíče SAS poskytuje přihlašovací údaje pro Azure k ověření přístupu k aplikaci.
 
-Prvním krokem je vytvoření oboru názvů a získat [sdíleného přístupového podpisu (SAS)](../service-bus-messaging/service-bus-sas.md) klíč. Obor názvů aplikaci poskytuje hranice pro každou aplikaci vystavenou přes službu relay. Systém automaticky vygeneruje SAS klíč při vytvoření oboru názvů služby. Kombinace oboru názvů služby a klíče SAS poskytuje přihlašovací údaje pro Azure k ověření přístupu k aplikaci. Pokud chcete vytvořit obor názvů Relay, postupujte podle [těchto pokynů](relay-create-namespace-portal.md).
+[!INCLUDE [relay-create-namespace-portal](../../includes/relay-create-namespace-portal.md)]
 
 ## <a name="define-a-wcf-service-contract"></a>Definování kontraktu služby WCF
-
 Kontrakt služby specifikuje, jaké operace (termín webových služeb pro metody nebo funkce) služba podporuje. Kontrakty se vytvoří definováním základního rozhraní C++, C# nebo Visual Basic. Každá metoda v rozhraní odpovídá konkrétní operaci služby. Na každé rozhraní musí mít aplikovaný atribut [ServiceContractAttribute](https://msdn.microsoft.com/library/system.servicemodel.servicecontractattribute.aspx) a na každou operace musí byt aplikovaný atribut [OperationContractAttribute](https://msdn.microsoft.com/library/system.servicemodel.operationcontractattribute.aspx). Pokud metoda v rozhraní, které má atribut [ServiceContractAttribute](https://msdn.microsoft.com/library/system.servicemodel.servicecontractattribute.aspx), nemá atribut [OperationContractAttribute](https://msdn.microsoft.com/library/system.servicemodel.operationcontractattribute.aspx), taková metoda se nevystaví. Kód k těmto úlohám najdete v příkladu za postupem. Podrobnější diskuzi o kontraktech a službách najdete v dokumentaci WCF v části [Návrh a implementace služeb](https://msdn.microsoft.com/library/ms729746.aspx).
 
 ### <a name="create-a-relay-contract-with-an-interface"></a>Vytvoření kontraktu relay s rozhraní
@@ -51,13 +64,13 @@ Kontrakt služby specifikuje, jaké operace (termín webových služeb pro metod
 1. Otevřete Visual Studio jako správce tak, že v nabídce **Start** kliknete na program pravým tlačítkem a vyberete možnost **Spustit jako správce**.
 2. Vytvořte nový projekt konzolové aplikace. Klikněte na nabídku **Soubor** a vyberte možnost **Nový**, a pak klikněte na **Projekt**. V dialogu **Nový projekt** klikněte na **Visual C#** (pokud se **Visual C#** nezobrazí, podívejte se do části **Jiné jazyky**). Klikněte na tlačítko **Konzolová aplikace (.NET Framework)** šablony a pojmenujte ho **EchoService**. Projekt vytvoříte kliknutím na **OK**.
 
-    ![][2]
+    ![Vytvoření konzolové aplikace][2]
 
 3. Nainstalujte balíček Service Bus NuGet. Tento balíček automaticky přidá reference na knihovny Service Bus a WCF **System.ServiceModel**. [System.ServiceModel](https://msdn.microsoft.com/library/system.servicemodel.aspx) je obor názvů, který vám umožňuje programový přístup k základním funkcím WCF. Service Bus používá mnoho objektů a atributů WCF k definování kontraktů služby.
 
     V Průzkumníku řešení klikněte pravým tlačítkem myši na projekt a potom klikněte na tlačítko **spravovat balíčky NuGet...** . Klikněte na kartu Procházet a pak vyhledejte **WindowsAzure.ServiceBus**. Zkontrolujte, že je v části **Verze** označený název projektu. Klikněte na **Instalovat** a přijměte podmínky použití.
 
-    ![][3]
+    ![Balíček Service Bus][3]
 4. V Průzkumníku řešení poklikejte na soubor Program.cs a pokud ještě není otevřený, otevře se v editoru Visual Studio.
 5. Na začátek souboru přidejte následující příkazy:
 
@@ -231,7 +244,7 @@ Následující kód ukazuje základní formát souboru App.config přidruženéh
 </configuration>
 ```
 
-## <a name="host-and-run-a-basic-web-service-to-register-with-the-relay-service"></a>Hostování a spuštění základní webové služby pro registraci ve službě relay
+## <a name="host-and-run-the-wcf-service-to-register-with-the-relay-service"></a>Hostování a spuštění služby WCF, který chcete zaregistrovat do služby relay
 
 Tento krok popisuje, jak spouštět služby Azure Relay.
 
@@ -501,7 +514,7 @@ V tomto kroku vytvoříte soubor App.config pro základní klientskou aplikaci, 
     Tento krok definuje název koncového bodu, kontrakt definovaný ve službě a fakt, že klientská aplikace používá TCP ke komunikaci s Azure Relay. Název koncového bodu se použije v následujícím kroku k propojení této konfigurace koncového bodu s URI služby.
 5. Klikněte na tlačítko **souboru**, pak klikněte na tlačítko **Uložit vše**.
 
-## <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad:
 
 Následující kód ukazuje soubor App.config pro klienta Echo.
 
@@ -607,7 +620,7 @@ Jedním z hlavních rozdílů je ale, že klientská aplikace používá kanál 
     channelFactory.Close();
     ```
 
-## <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad:
 
 Dokončený kód by měl vypadat následovně, zobrazuje, jak vytvořit klientskou aplikaci, jak volat operace služby a jak zavřít klienta po volání operace byla dokončena.
 
@@ -714,13 +727,10 @@ namespace Microsoft.ServiceBus.Samples
 12. Tímto způsobem můžete dál posílat textové zprávy z klienta do služby. Když skončíte, stiskněte Enter v oknech konzoly klienta a služby a obě aplikace se ukončí.
 
 ## <a name="next-steps"></a>Další postup
+Přejděte k následujícímu kurzu: 
 
-Tento kurz vám ukázal, jak vytvořit klienta Azure Relay, aplikace a služby pomocí funkce služby Service Bus WCF Relay. Podobný kurz, který používá [zasílání zpráv Service Bus](../service-bus-messaging/service-bus-messaging-overview.md), naleznete v tématu [Začínáme s frontami služby Service Bus](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md).
-
-Další informace o Azure Relay, najdete v následujících tématech.
-
-* [Přehled služby Azure Relay](relay-what-is-it.md)
-* [Jak používat službu WCF relay v .NET](relay-wcf-dotnet-get-started.md)
+> [!div class="nextstepaction"]
+>[Vystavení služby WCF REST v místním klientovi mimo vaši síť](service-bus-relay-rest-tutorial.md)
 
 [2]: ./media/service-bus-relay-tutorial/create-console-app.png
 [3]: ./media/service-bus-relay-tutorial/install-nuget.png

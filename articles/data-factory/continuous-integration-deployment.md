@@ -10,18 +10,18 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/09/2018
+ms.date: 11/12/2018
 ms.author: douglasl
-ms.openlocfilehash: 94633ce2f11f9efa99f1ad44820abd5aecdec923
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 60c715e97f6b1d2046fb4050ae41b27146c0610a
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49457202"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51623765"
 ---
 # <a name="continuous-integration-and-delivery-cicd-in-azure-data-factory"></a>Průběžná integrace a doručování (CI/CD) v Azure Data Factory
 
-Průběžná integrace spočívá v testování každé změny udělat, aby vašeho základu kódu automaticky a co nejdříve. Průběžné doručování se řídí testování, který se stane během průběžnou integraci a nasdílí změny do pracovní nebo produkční systém.
+Průběžná integrace spočívá v testování každé změny udělat, aby vašeho základu kódu automaticky a co nejdříve. Průběžné doručování se řídí testování, který se stane během průběžnou integraci a nasdílí změny do pracovní nebo produkční systém.
 
 Pro službu Azure Data Factory průběžná integrace a doručování znamená přesun kanálů Data Factory z jednoho prostředí (vývojové, testovací, produkční) do jiného. Průběžná integrace a doručování proveďte můžete integrace uživatelské rozhraní služby Data Factory pomocí šablony Azure Resource Manageru. Uživatelské rozhraní služby Data Factory můžete vygenerovat šablonu Resource Manageru, když vyberete **šablony ARM** možnosti. Když vyberete **šablony ARM exportovat**, portálu vygeneruje šablony Resource Manageru pro vytváření dat a konfigurační soubor, který zahrnuje všechny řetězce připojení a další parametry. Pak budete muset vytvořit jeden konfigurační soubor pro každé prostředí (vývojové, testovací, produkčním prostředí). Hlavní soubor šablony Resource Manageru zůstává stejná pro všechna prostředí.
 
@@ -75,11 +75,11 @@ Tady je postup nastavení vydání verze Azure kanály, abyste mohli automatizov
 
 ### <a name="requirements"></a>Požadavky
 
--   Předplatné Azure propojené s Team Foundation Server nebo úložiště Azure pomocí [ *koncový bod služby Azure Resource Manageru*](https://docs.microsoft.com/azure/devops/pipelines/library/service-endpoints#sep-azure-rm).
+-   Předplatné Azure propojené s Team Foundation Server nebo úložiště Azure pomocí [*koncový bod služby Azure Resource Manageru*](https://docs.microsoft.com/azure/devops/pipelines/library/service-endpoints#sep-azure-rm).
 
 -   Objekt pro vytváření dat s nakonfigurovanou integraci s Azure úložiště Git.
 
--   [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) obsahující tajné klíče.
+-    [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) obsahující tajné klíče.
 
 ### <a name="set-up-an-azure-pipelines-release"></a>Nastavte si o Azure kanály verzi
 
@@ -832,6 +832,48 @@ else {
 ## <a name="use-custom-parameters-with-the-resource-manager-template"></a>Pomocí vlastních parametrů šablony Resource Manageru
 
 Můžete definovat vlastní parametry pro šablonu Resource Manageru. Chcete-li soubor s názvem `arm-template-parameters-definition.json` v kořenové složce úložiště. (Název souboru musí odpovídat názvu právě ukázali.) Data Factory se pokusí přečíst soubor z toho větve, kterou právě pracujete, ne jenom z větve spolupráci. Pokud se nenajde žádný soubor, datová továrna používá výchozí parametry a hodnoty.
+
+### <a name="syntax-of-a-custom-parameters-file"></a>Syntaxe souboru vlastních parametrů
+
+Zde jsou uvedeny pokyny pro použití při vytváření souboru vlastních parametrů. Podívejte se na příklady syntaxe, naleznete v následující části [ukázkový soubor vlastní parametry](#sample).
+
+1. Když zadáte pole v definičním souboru, určujete, že odpovídající vlastnost v šabloně je pole. Data Factory Iteruje přes všechny objekty v poli pomocí definice zadaná v první objektu array. Druhý objekt, řetězec, se stane názvem vlastnosti, která se používá jako název parametru pro každou iteraci.
+
+    ```json
+    ...
+    "Microsoft.DataFactory/factories/triggers": {
+        "properties": {
+            "pipelines": [{
+                    "parameters": {
+                        "*": "="
+                    }
+                },
+                "pipelineReference.referenceName"
+            ],
+            "pipeline": {
+                "parameters": {
+                    "*": "="
+                }
+            }
+        }
+    },
+    ...
+    ```
+
+2. Pokud nastavíte vlastnost název na `*`, určujete, že chcete šablonu, kterou chcete používat všechny vlastnosti na této úrovni, s výjimkou těch explicitně definované.
+
+3. Když nastavíte hodnotu vlastnosti jako řetězec, určujete, že chcete parametrizovat vlastnost. Použijte formát `<action>:<name>:<stype>`.
+    1.  `<action>` může být jedna z následujících znaků: 
+        1.  `=`  prostředky zachovat aktuální hodnoty jako výchozí hodnota pro parametr.
+        2.  `-` znamená, že není ponechte výchozí hodnotu pro parametr.
+        3.  `|` je zvláštní případ pro tajné klíče z Azure Key Vault pro připojovací řetězec.
+    2.  `<name>` je název parametru. Pokud `<name`> je pole prázdné, bude trvat název parametru 
+    3.  `<stype>` je typ parametru. Pokud `<stype>` je prázdný, je výchozí typ řetězec.
+4.  Pokud zadáte `-` znak na začátku názvu parametru, úplný název parametru se zkrátila na správce prostředků `<objectName>_<propertyName>`.
+Například `AzureStorage1_properties_typeProperties_connectionString` zkrátila na `AzureStorage1_connectionString`.
+
+
+### <a name="sample"></a> Ukázkový soubor vlastní parametry
 
 Následující příklad ukazuje ukázkové parametry souboru. Tuto ukázku použijte jako odkaz na vytvořte svůj vlastní soubor vlastní parametry. Pokud soubor, který zadáte, není ve správném formátu JSON, Data Factory výstup chybovou zprávu v konzole prohlížeče a vrátí na výchozí parametry a hodnoty zobrazené v Uživatelském rozhraní služby Data Factory.
 

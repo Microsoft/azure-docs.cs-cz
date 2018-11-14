@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/18/2018
+ms.date: 11/13/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: c79a44422944fd2049c47a6729a86d063dbcd15e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: e2a931b14719775ac3d901591b6424d9c9e9ee10
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51232337"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51625823"
 ---
 # <a name="log-analytics-faq"></a>Nejčastější dotazy k Log Analytics
 Tato FAQ Microsoft je uveden seznam nejčastější dotazy o službě Log Analytics v Microsoft Azure. Pokud máte nějaké další dotazy o službě Log Analytics, pokračujte [diskusní fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights) a zveřejněte své dotazy. Pokud je dotaz pokládán často, přidáme ji k tomuto článku tak, aby jej lze rychle a snadno najít.
@@ -160,7 +160,7 @@ A. Ne, není v tuto chvíli možné si číst z libovolného tabulky nebo kontej
 
 A. Služba Log Analytics je postavená na Azure. Log Analytics IP adresy jsou ve [Microsoft Azure rozsahů IP adres Datacentra](https://www.microsoft.com/download/details.aspx?id=41653).
 
-Jakmile dojde k nasazení služeb, změňte skutečné IP adresy služby Log Analytics. Názvy DNS, aby prostřednictvím brány firewall jsou dokumentovány v článku [požadavky na síťovou](log-analytics-concept-hybrid.md#network-firewall-requirements).
+Jakmile dojde k nasazení služeb, změňte skutečné IP adresy služby Log Analytics. Názvy DNS, aby prostřednictvím brány firewall jsou dokumentovány v článku [požadavky na síťovou](log-analytics-agent-overview.md#network-firewall-requirements).
 
 ### <a name="q-i-use-expressroute-for-connecting-to-azure-does-my-log-analytics-traffic-use-my-expressroute-connection"></a>Otázka: Můžu použít ExpressRoute pro připojení k Azure. Používá Moje Log Analytics provoz připojení ExpressRoute?
 

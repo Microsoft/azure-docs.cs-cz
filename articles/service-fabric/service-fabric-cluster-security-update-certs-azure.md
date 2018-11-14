@@ -3,7 +3,7 @@ title: Správa certifikátů v clusteru Azure Service Fabric | Dokumentace Micro
 description: Popisuje, jak přidat nové certifikáty, certifikát výměny a odebrat certifikát do nebo z clusteru Service Fabric.
 services: service-fabric
 documentationcenter: .net
-author: ChackDan
+author: aljo-microsoft
 manager: timlt
 editor: ''
 ms.assetid: 91adc3d3-a4ca-46cf-ac5f-368fb6458d74
@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/23/2018
-ms.author: chackdan
-ms.openlocfilehash: ad32bd521975312b72aa55fc44e9b4d213519a07
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.date: 11/13/2018
+ms.author: aljo-microsoft
+ms.openlocfilehash: cca48e78278cf234d6f6062eadac4f85ecbcb79b
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567872"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51625925"
 ---
 # <a name="add-or-remove-certificates-for-a-service-fabric-cluster-in-azure"></a>Přidat nebo odebrat certifikáty pro cluster Service Fabric v Azure
 Doporučujeme seznámit se s jak Service Fabric používá certifikáty X.509 a znáte [scénáře zabezpečení clusteru](service-fabric-cluster-security.md). Musíte porozumět tomu, jaký certifikát clusteru je a k čemu slouží, než budete pokračovat dál.
@@ -175,7 +175,7 @@ Z důvodu snadnějšího následující podél obsahuje ukázkové 5-VM-1-NodeTy
 > 
 
 ### <a name="edit-your-template-file-to-reflect-the-new-parameters-you-added-above"></a>Upravte soubor šablony tak, aby odrážela nové parametry, které jste přidali výše
-Pokud používáte ukázku z [úložiště git](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Cert%20Rollover%20Sample) Pokud chcete postup sledovat, můžete začít provádět změny v ukázkové 5-VM-1-NodeTypes-Secure.paramters_Step2.JSON 
+Pokud používáte ukázku z [úložiště git](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Cert%20Rollover%20Sample) Pokud chcete postup sledovat, můžete začít provádět změny v ukázkové 5-VM-1-NodeTypes-Secure.parameters_Step2.JSON 
 
 Upravit parametr šablony Resource Manageru souboru, přidejte dva nové parametry pro secCertificateThumbprint a secCertificateUrlValue. 
 
@@ -221,11 +221,11 @@ New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName <R
 Zde je příklad vyplněné stejné prostředí PowerShell.
 
 ```powershell
-$ResouceGroup2 = "chackosecure5"
+$ResourceGroup2 = "chackosecure5"
 $TemplateFile = "C:\GitHub\Service-Fabric\ARM Templates\Cert Rollover Sample\5-VM-1-NodeTypes-Secure_Step2.json"
 $TemplateParmFile = "C:\GitHub\Service-Fabric\ARM Templates\Cert Rollover Sample\5-VM-1-NodeTypes-Secure.parameters_Step2.json"
 
-New-AzureRmResourceGroupDeployment -ResourceGroupName $ResouceGroup2 -TemplateParameterFile $TemplateParmFile -TemplateUri $TemplateFile -clusterName $ResouceGroup2
+New-AzureRmResourceGroupDeployment -ResourceGroupName $ResourceGroup2 -TemplateParameterFile $TemplateParmFile -TemplateUri $TemplateFile -clusterName $ResourceGroup2
 
 ```
 

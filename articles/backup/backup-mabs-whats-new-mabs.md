@@ -6,18 +6,18 @@ author: markgalioto
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 11/12/2018
+ms.date: 11/13/2018
 ms.author: adigan; kasinh
-ms.openlocfilehash: 1026b103b8bb2b16114147b1c58deaf5b20cc437
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.openlocfilehash: 8e80d935bac94f3d4b2380799a1aed256828af75
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51579699"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51625874"
 ---
 # <a name="whats-new-in-microsoft-azure-backup-server"></a>Co je nového v Microsoft Azure Backup serveru
 
-Microsoft Azure Backup serveru verze 3 (MABS V3) je nejnovější inovace a obsahuje důležité opravy chyb, podporu 2019 systému Windows Server, SQL 2017 – podpora a další funkce a vylepšení. Chcete-li zobrazit seznam opravy chyb a pokyny pro MABS V3, najdete v článku znalostní BÁZE 4457852.
+Microsoft Azure Backup serveru verze 3 (MABS V3) je nejnovější inovace a obsahuje důležité opravy chyb, podporu 2019 systému Windows Server, SQL 2017 – podpora a další funkce a vylepšení. Chcete-li zobrazit seznam opravy chyb a pokyny pro MABS V3, najdete v článku KB [4457852](https://support.microsoft.com/en-us/help/4457852/microsoft-azure-backup-server-v3).
 
 Následující funkce jsou zahrnuté v MABS V3:
 

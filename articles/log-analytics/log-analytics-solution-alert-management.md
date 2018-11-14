@@ -15,23 +15,23 @@ ms.workload: infrastructure-services
 ms.date: 01/19/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: fa76ccf7019097c5f27aa126b0a5a7dc81ffbd41
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: bba008bc6d1214aa4b2ca7cc609586a3d18159fd
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51008143"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51613609"
 ---
 # <a name="alert-management-solution-in-azure-log-analytics"></a>Řešení alert managementu ve službě Azure Log Analytics
 
 ![Ikona upozornění správy](media/log-analytics-solution-alert-management/icon.png)
 
-Správa výstrah řešení pomáhá analyzovat všechny výstrahy v úložišti Log Analytics.  Tyto výstrahy mohou pocházet z nejrůznějších zdrojů, včetně těchto zdrojů [vytvořené službou Log Analytics](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md) nebo [naimportované z Nagios a Zabbix](log-analytics-quick-collect-linux-computer.md). Řešení také importuje výstrahy z libovolného [připojené skupiny pro správu System Center Operations Manager](log-analytics-om-agents.md).
+Správa výstrah řešení pomáhá analyzovat všechny výstrahy v úložišti Log Analytics.  Tyto výstrahy mohou pocházet z nejrůznějších zdrojů, včetně těchto zdrojů [vytvořené službou Log Analytics](../monitoring-and-diagnostics/monitoring-overview-alerts.md) nebo [naimportované z Nagios a Zabbix](log-analytics-quick-collect-linux-computer.md). Řešení také importuje výstrahy z libovolného [připojené skupiny pro správu System Center Operations Manager](log-analytics-om-agents.md).
 
 ## <a name="prerequisites"></a>Požadavky
 Toto řešení funguje se všechny záznamy v úložišti Log Analytics s typem **výstrah**, takže je nutné provést jakékoli konfigurace je nutná pro shromažďování těchto záznamů.
 
-- Pro upozornění Log Analytics [vytvořit pravidla výstrah](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md) vytvořit záznamy upozornění přímo v úložišti.
+- Pro upozornění Log Analytics [vytvořit pravidla výstrah](../monitoring-and-diagnostics/monitoring-overview-alerts.md) vytvořit záznamy upozornění přímo v úložišti.
 - Výstrahy Nagios a Zabbix [konfiguraci těchto serverů](log-analytics-quick-collect-linux-computer.md) k odesílání upozornění Log Analytics.
 - Pro System Center Operations Manageru výstrahy [připojení skupiny pro správu nástroje Operations Manager do vašeho pracovního prostoru Log Analytics](log-analytics-om-agents.md).  Všechny výstrahy vytvořené v nástroji System Center Operations Manager jsou importovány do Log Analytics.  
 
@@ -123,4 +123,4 @@ V následující tabulce jsou uvedeny ukázky hledání v protokolech pro zázna
 
 
 ## <a name="next-steps"></a>Další postup
-* Podrobnosti o generování upozornění ze služby Log Analytics najdete v tématu [Upozornění v Log Analytics](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md).
+* Podrobnosti o generování upozornění ze služby Log Analytics najdete v tématu [Upozornění v Log Analytics](../monitoring-and-diagnostics/monitoring-overview-alerts.md).

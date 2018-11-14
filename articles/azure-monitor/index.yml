@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 3e73ed1e774b2054cc403598c227b48fc6c99c21
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 128a6a767cfdebe66c884b12659fbb270ead3882
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49645486"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51614697"
 documentType: LandingData
 title: Dokumentace ke službě Azure Monitor
 metadata:
@@ -98,11 +98,11 @@ sections:
   - type: list
     style: ordered
     items:
-    - html: <a href="app-insights-tutorial-runtime-exceptions">Vyhledání a diagnostika běhových výjimek</a>
-    - html: <a href="app-insights-tutorial-performance">Vyhledání a diagnostika potíží s výkonem</a>
-    - html: <a href="app-insights-tutorial-alert">Monitorování a upozornění na stav aplikace</a>
-    - html: <a href="app-insights-tutorial-users">Analýza informací a využití ze strany zákazníků</a>
-    - html: <a href="app-insights-tutorial-dashboards">Vytvoření vlastních řídicích panelů klíčových ukazatelů výkonu</a>
+    - html: <a href="/azure/application-insights/app-insights-tutorial-runtime-exceptions">Vyhledání a diagnostika běhových výjimek</a>
+    - html: <a href="/azure/application-insights/app-insights-tutorial-performance">Vyhledání a diagnostika potíží s výkonem</a>
+    - html: <a href="/azure/application-insights/app-insights-tutorial-alert">Monitorování a upozornění na stav aplikace</a>
+    - html: <a href="/azure/application-insights/app-insights-tutorial-users">Analýza informací a využití ze strany zákazníků</a>
+    - html: <a href="/azure/application-insights/app-insights-tutorial-dashboards">Vytvoření vlastních řídicích panelů klíčových ukazatelů výkonu</a>
 - title: Bezplatné školicí video od Pluralsightu
   items:
   - type: list

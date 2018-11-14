@@ -13,41 +13,39 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: report-monitor
-ms.date: 04/19/2018
+ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: b6fa26cb7947658af77496831d7239b4331aa1f2
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: 883f521040c67cb8fe9578bc5c490bc3dfccba28
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42058639"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51624654"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Sestavy aktivit auditu na portálu Azure Active Directory 
 
-Generování sestav v Azure Active Directory (Azure AD) umožňuje získat všechny informace potřebné ke zjištění stavu vašeho prostředí.
+Pomocí sestav Azure Active Directory (Azure AD) můžete získat informace, které potřebujete ke zjištění stavu vašeho prostředí.
 
-Architektura generování sestav v Azure AD se skládá z následujících komponent:
+Architektura generování sestav se skládá z následujících součástí:
 
 - **Aktivita** 
-    - **Aktivity přihlašování** – informace o použití spravovaných aplikací a aktivitách přihlašování uživatelů
-    - **Protokoly auditu** – Zajišťuje sledovatelnost prostřednictvím protokolů všech změn provedených různými funkcemi v rámci Azure AD. Mezi příklady protokolů auditu patří změny jakýchkoli prostředků v rámci Azure AD, jako jsou uživatelé, aplikace, skupiny, role, zásady, ověřování atd.
+    - **Přihlášení** – [sestavy přihlášení](concept-sign-ins.md) poskytuje informace o využití spravovaných aplikací a uživatel aktivit přihlašování.
+    - **Protokoly auditu** – Zajišťuje sledovatelnost prostřednictvím protokolů všech změn provedených různými funkcemi v rámci Azure AD. Mezi příklady protokolů auditu patří změny jakýchkoli prostředků v rámci Azure AD, jako jsou přidávání nebo odebírání uživatelů, aplikace, skupiny, role a zásady.
 - **Zabezpečení** 
-    - **Riziková přihlášení** –Rizikové přihlášení je indikátorem pokusu o přihlášení, který mohl provést někdo, kdo není legitimním vlastníkem uživatelského účtu. Další podrobnosti najdete v tématu Riziková přihlášení.
-    - **Uživatelé označení příznakem rizika** – Rizikový uživatel je indikátorem uživatelského účtu, který mohl být ohrožený. Další podrobnosti najdete v tématu Uživatelé označení příznakem rizika.
+    - **Riziková přihlášení** – [rizikových přihlášení](concept-risky-sign-ins.md) je indikátorem pokusu přihlásit, který mohl provést někdo, kdo není legitimním vlastníkem uživatelského účtu. 
+    - **Uživatelé označení příznakem rizika** – [rizikový uživatel](concept-user-at-risk.md) je indikátorem uživatelského účtu, který mohl být ohrožený.
 
-V toto tématu najdete přehled aktivit auditu.
+Tento článek obsahuje přehled sestavy auditu.
  
 ## <a name="who-can-access-the-data"></a>Kdo má přístup k datům?
-* Uživatelé v roli Správce zabezpečení nebo Čtenář zabezpečení
-* Globální správci
-* Jednotliví uživatelé (bez oprávnění správce) mohou zobrazit své vlastní aktivity.
 
+* Uživatelé v **zabezpečení uživatelské**, **Čtenář zabezpečení** nebo **globálního správce** role
+* Kromě toho všichni uživatelé (bez oprávnění správce) mohou zobrazit své vlastní aktivity auditu
 
 ## <a name="audit-logs"></a>Protokoly auditu
 
-Protokoly auditu v Azure Active Directory obsahují záznamy aktivit systému pro zajištění dodržování předpisů.  
-Prvním vstupním bodem k veškerým datům auditování je možnost **Protokoly auditu** v oddílu **Aktivita** služby **Azure Active Directory**.
+Auditování Azure AD protokoly obsahují záznamy aktivit systému kvůli dodržování předpisů. Pro přístup k sestavě auditu, vyberte **protokoly auditu** v **aktivity** část **Azure Active Directory**. 
 
 ![Protokoly auditu](./media/concept-audit-logs/61.png "Protokoly auditu")
 
@@ -68,15 +66,14 @@ To umožňuje zobrazit další pole, nebo odebrat pole, která jsou už zobrazen
 
 ![Protokoly auditu](./media/concept-audit-logs/21.png "Protokoly auditu")
 
-
-Kliknutím na položku v zobrazení seznamu k ní zobrazíte všechny dostupné podrobnosti.
+Vyberte položku v zobrazení seznamu zobrazíte podrobnější informace.
 
 ![Protokoly auditu](./media/concept-audit-logs/22.png "Protokoly auditu")
 
 
 ## <a name="filtering-audit-logs"></a>Filtrování protokolů auditu
 
-Abyste omezili zobrazovaná data na úroveň, která vám vyhovuje, můžete filtrovat data přihlašování s využitím následujících polí:
+Můžete filtrovat data auditu pro následující pole:
 
 - Rozsah dat
 - Spustil(a) (činitel)
@@ -85,7 +82,6 @@ Abyste omezili zobrazovaná data na úroveň, která vám vyhovuje, můžete fil
 - Aktivita
 
 ![Protokoly auditu](./media/concept-audit-logs/23.png "Protokoly auditu")
-
 
 Filtr pro **rozsah dat** umožňuje definovat časový rámec pro vracená data.  
 Možné hodnoty:
@@ -97,7 +93,7 @@ Možné hodnoty:
 
 Když vyberete vlastní časový rámec, můžete nakonfigurovat počáteční a koncový čas.
 
-Filtr **Spustil(a)** umožňuje definovat jméno aktéra nebo hlavní název uživatele (UPN).
+**Iniciovaných** filtr umožňuje definovat jméno prvek "actor" nebo univerzální hlavní název (UPN).
 
 Filtr **Kategorie** umožňuje vybrat jeden z následujících filtrů:
 
@@ -129,10 +125,9 @@ Když jako **Typ prostředku aktivity** vyberete **Skupina**, zobrazí se dalš�
 - O365
 
 
-Filtr **Aktivita** je založený na vybrané kategorii a typu prostředku aktivity. Můžete vybrat konkrétní aktivitu, kterou chcete zobrazit, nebo zvolit všechny. 
+**Aktivity** filtr podle kategorií a aktivit prostředků typ výběru provedete. Můžete vybrat konkrétní aktivitu, kterou chcete zobrazit, nebo zvolit všechny. 
 
-Seznam všech aktivit auditu můžete získat pomocí Graph API https://graph.windows.net/$tenantdomain/activities/auditActivityTypes?api-version=beta, kde $tenantdomain = název domény. Také se můžete podívat na článek o [událostech sestavy auditování](concept-audit-logs.md).
-
+Seznam všech aktivit auditu můžete získat pomocí Graph API https://graph.windows.net/$tenantdomain/activities/auditActivityTypes?api-version=beta, kde $tenantdomain = název domény. Také se můžete podívat na článek o [událostech sestavy auditování](reference-audit-activities.md).
 
 ## <a name="audit-logs-shortcuts"></a>Zástupci pro protokoly auditu
 
@@ -175,19 +170,17 @@ S použitím sestav auditu orientovaných na aplikace můžete najít odpovědi 
 * Změnily se názvy aplikací?
 * Kdo udělil souhlas pro aplikaci?
 
-Pokud chcete jenom zkontrolovat data auditování týkající se aplikací, najdete filtrované zobrazení v sekci **Protokoly auditu** v oddílu **Aktivity** v části **Podnikové aplikace**. Tento vstupní bod má jako **Typ prostředku aktivity** předem vybranou možnost **Podniková aplikace**.
+Pokud chcete zkontrolovat data auditování týkající se aplikací, najdete filtrované zobrazení v sekci **protokoly auditu** v **aktivity** část **podnikové aplikace** okno. Tento vstupní bod má **podnikové aplikace** Zkontrolujte předem vybrané jako **typ prostředku aktivity**.
 
 ![Protokoly auditu](./media/concept-audit-logs/134.png "Protokoly auditu")
 
-Toto zobrazení je možné dál filtrovat až na samotné **skupiny** nebo **uživatele**.
+Můžete filtrovat toto zobrazení dolů na **skupiny** nebo **uživatelé**.
 
 ![Protokoly auditu](./media/concept-audit-logs/25.png "Protokoly auditu")
 
 
-
 ## <a name="next-steps"></a>Další postup
 
-- Přehled generování sestav najdete v tématu [Generování sestav v Azure Active Directory](overview-reports.md).
-
-- Úplný seznam všech aktivit auditu najdete v [referenčních informacích k aktivitám auditování Azure AD](reference-audit-activities.md).
-
+- [Referenční informace aktivit auditu Azure AD](reference-audit-activities.md)
+- [Odkaz na uchování sestavy Azure AD](reference-reports-data-retention.md)
+- [Odkazovat na latenci protokolu Azure AD](reference-reports-latencies.md)

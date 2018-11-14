@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
 ms.component: common
-ms.openlocfilehash: 4f0558f9619aa06557cf89e885154f6326d4b150
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: ec12da6ccd5b681c85da87d53f944fc4430149b5
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51281764"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51616193"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Průvodce odstraňováním potíží Azure Storage Exploreru
 
@@ -81,7 +81,7 @@ MacOS řetězce klíčů můžete získat někdy do stavu, která způsobuje pro
 * Restartování Storage Exploreru
 * Pokud je prázdné okno ověřování, počkejte aspoň jednu minutu před jeho zavřením dialogu ověřování.
 * Ujistěte se, že nastavení proxy serveru a certifikátů pro počítače a Průzkumníka služby Storage jsou správně nakonfigurované nastavení.
-* Pokud jste na Windows a mají přístup k sadě Visual Studio 2017 na stejném počítači a přihlášení, zkuste se přihlásit do sady Visual Studio 2017. Po úspěšném přihlášení do sady Visual Studio 2017 byste měli moct otevírat Průzkumníka služby Storage a zobrazí váš účet v panel účtu. 
+* Pokud jste na Windows a mají přístup k sadě Visual Studio 2017 na stejném počítači a přihlášení, zkuste se přihlásit do sady Visual Studio 2017. Po úspěšném přihlášení do sady Visual Studio 2017 byste měli moct otevírat Průzkumníka služby Storage a zobrazí váš účet v panel účtu.
 
 Pokud nefunguje žádný z těchto metod [otevřete problém na Githubu](https://github.com/Microsoft/AzureStorageExplorer/issues).
 
@@ -115,6 +115,8 @@ Nejprve se ujistěte, že jsou správně následující informace, které jste z
 
 * Adresa URL proxy serveru a číslo portu
 * Uživatelské jméno a heslo v případě potřeby proxy serverem
+
+Všimněte si, že Průzkumníka služby Storage nepodporuje soubor PAC ke konfiguraci nastavení proxy serveru.
 
 ### <a name="common-solutions"></a>Běžná řešení
 

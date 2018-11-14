@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 06/26/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: d514728b892126522a73827bb79952612f34704b
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 071e4694bc3e2a8dc70a199fe7d6021332693b88
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51014019"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51613864"
 ---
 # <a name="data-sources-in-log-analytics"></a>Zdroje dat v Log Analytics
 Log Analytics shromažďuje data z vašeho připojené zdroje a ukládá ho do pracovního prostoru Log Analytics.  Je definována data, která se shromažďují ze všech zdrojů dat, který nakonfigurujete.  Data ve službě Log Analytics se ukládají jako sady záznamů.  Každý zdroj dat vytvoří záznamy určitého typu s jednotlivými typu s vlastní sadu vlastností.
@@ -69,4 +69,4 @@ Všechna data shromážděná službou Log Analytics je v pracovním prostoru ul
 ## <a name="next-steps"></a>Další postup
 * Další informace o [řešení](../monitoring/monitoring-solutions.md) , které doplňují do Log Analytics a také shromažďovat data do pracovního prostoru.
 * Další informace o [prohledávání protokolů](log-analytics-queries.md) analyzovat data shromážděná ze zdrojů dat a jejich řešení.  
-* Konfigurace [výstrahy](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md) můžete zajistit aktivní upozorňování kritických dat shromážděných ze zdroje dat a řešení.
+* Konfigurace [výstrahy](../monitoring-and-diagnostics/monitoring-overview-alerts.md) můžete zajistit aktivní upozorňování kritických dat shromážděných ze zdroje dat a řešení.
